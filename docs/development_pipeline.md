@@ -74,6 +74,88 @@ Codex designs + codes + runs **dual-engine** (SymPy + Mathematica), iterating to
 
 ---
 
+## Diagnosing a stuck problem (2026-07-24/25, learned expensively)
+
+**⭐ If successive fixes each ban a SPELLING and the next probe evades it, the ARCHITECTURE is
+wrong — stop patching.** Four rounds hardening one check each closed a real hole and each was
+defeated by the next probe (arbitrary anchor file → self-cited file → committed conventionally-named
+file → `Dim(1,2,3)` literals → arithmetic over real bindings producing the identical wrong result).
+That is a denylist against an expressive grammar; it does not converge.
+- **The diagnostic that broke it open: *who supplies the value, and who supplies only the
+  alphabet?*** The check computed `D' = eval(manifest_expression, script_bindings)` — the derived
+  artifact controlled the function, the evidence contributed only basis names. Every downstream
+  guarantee was therefore artifact-determined. The fix direction is to INVERT the flow (the
+  artifact asserts, the checker computes), not to sanitize the grammar further.
+- **Specify the INVARIANT, not the instance.** A rule written against the field a survey happened
+  to measure (`dim_source.locus`) left the identical defect alive in its sibling (`evidence.locus`).
+  Same shape as the above. Write the property, not the example.
+- **Before building on an empirical premise, MEASURE IT.** "The convention surely holds across the
+  scripts" was false — exact identity→dimension matching resolves **0/92** production symbols, and
+  a fuzzy matcher reaches 30% while producing a silently WRONG certificate. A cheap survey would
+  have saved a round.
+- **Ask "independent of whom?" before calling a check redundant.** A checker-owned digest was
+  removed as "duplicating" an existing staleness check; the existing one compared against an
+  artifact-supplied digest (self-consistency only), so deleting the independent pin was a real
+  regression.
+- **When scope is deliberately bounded, write the bound INTO the directive** ("do NOT fix X, and
+  report rather than implement if you disagree"). A competent coder handed a checker with three
+  known holes will close them, and the next round starts. Scope decisions that live only in a
+  conversation do not survive contact with the next agent — put them in the commit message too.
+
+---
+
+## Verification discipline (what green does and does not mean)
+
+- **A green self-report is not evidence a hole closed.** Twice the fixtures went green while the
+  invariant stayed open. What caught it both times was an agent **EXECUTING the case end-to-end**,
+  never reading the diff. Reviews that only read code find design smells; only execution finds
+  live defects.
+- **Verify what could BREAK, not just what changed.** After a manifest rework the build was re-run
+  but `--self-test` was not — and fixing production had broken a fixture. The suite went red and
+  the orchestrator did not notice; an external reviewer did.
+- **A fixture must NEVER be coupled to mutable production state.** One fixture asserted the
+  production manifests exhibit a specific finding; legitimately fixing that finding broke the test
+  suite. Fixing the product must never break the tests. Fixtures are synthetic.
+- **A shipped guard with no fixture is not a guarantee.** Ask periodically: *which guards could I
+  delete with the suite still green?* (A pre-freeze review found ~42 of ~89 issue codes were never
+  planted, including the primary drift-detection path.)
+- **An independent reviewer is worth more than another orchestrator pass.** The pre-freeze review
+  found, in one pass, blockers that hours of self-review had not: a red suite, dimension recovery
+  covering only 16 of 43 scripts while the schema required it for all, and a closedness rule that
+  could never trigger.
+
+---
+
+## Sub-agent safety (non-negotiable)
+
+- **⛔ An agent must NEVER delete a directory, or any file it did not itself create.** A review agent
+  "cleaned up" by removing the shared `_scratch/` tree — gitignored, therefore unrecoverable. Lost:
+  every directive, launcher, run log, review driver, and prior-session artifact including v1 pilot
+  manifests. Put this clause in EVERY agent prompt, and give each agent its own subdirectory.
+- **Guard the workspace, not only the repo.** Review-agent prompts had said "do not modify these
+  tracked files" — which covered modification and not destruction, and said nothing about the
+  working tree.
+- **Agents are REVIEW instruments and never coders** (see the Roles table). A review agent may
+  mutate SCRATCH COPIES for ablation; that is the only writing it does.
+
+---
+
+## Background-process discipline
+
+- **The harness reaps long background waiters (~4–15 min).** A dead waiter is NOT a dead job — this
+  is almost certainly what produced a phantom "the tool stalled twice" claim that then justified
+  abandoning the calibrated contract. Observed live three times in one session.
+- **A waiter must distinguish three outcomes**, not two: marker found / process gone WITHOUT a
+  marker / still alive. Without the third branch, a reaped waiter looks exactly like a hang.
+- **Match the done-marker on `tail -1` only** — a tool can quote a prior marker mid-stream.
+- **Prefer a persistent monitor** for long jobs; it survives reaping and stays silent until there is
+  something to say.
+- **Codex's provider can refuse content on a cyber-policy filter**, killing the session after the
+  work but before the report. Phrase adversarial directives in correctness terms ("negative
+  fixture", "self-nominated anchor", "admissible set"), never attack language.
+
+---
+
 ## Cross-cutting standing rules
 - **YAML/markdown for any file an LLM reads/writes; JSON only machine-to-machine** [`no-json-for-llm-io`].
 - **No fake `python3 -c` commentary scripts** — read and reason; real ablation re-runs are fine, narration-scripts are not [`no-fake-scripts`].
@@ -81,6 +163,19 @@ Codex designs + codes + runs **dual-engine** (SymPy + Mathematica), iterating to
 - **Offload to agents** (reviews, broad reads, distilled summaries) to preserve orchestrator context; read grep/tail summaries, not raw logs [`offload-to-agents`, `offload-review-gauntlet`].
 - **Never `pkill`/`killall` by pattern** (shared box; the user runs other Codex sessions) — kill only captured PIDs or via `TaskStop` [`background-process-launch`].
 - **Path discipline:** project root is `/var/projects/toy_physics` (NOT `toy_projects` — a transcription attractor) [`toy_physics-path-typo`].
+- **Grok is a GATE, not a garnish.** Reserve it for foundational directives and for any artifact about
+  to be FROZEN while many agents depend on it. Skipping it before a freeze is how a fanout launches
+  against a broken tool [`grok-final-review-pass`, `review-ordering-codex-then-glm`].
+- **The derived artifact is never a second source of truth.** Manifests/derived records are generated
+  FROM the audited sources; when the two disagree the source wins, and the artifact is the thing to
+  fix. Corollary: do not re-litigate a unit-level property at the integration layer — check what only
+  composition can check (cross-stage agreement, citation liveness, anti-rederivation, census).
+- **Model the real risk.** Our derived artifacts are written by our own agents: the operative failure
+  is **DRIFT (error)**, not misrepresentation. Hardening against an adversary who does not exist costs
+  rounds and buys nothing; hardening against drift is the whole job.
+- **When the process is later pointed at EXTERNAL work** (e.g. published papers), validate it first on
+  material with KNOWN errata/retractions as positive controls. A pipeline that cannot rediscover an
+  error the community already found cannot be trusted to report a novel one.
 
 ---
 

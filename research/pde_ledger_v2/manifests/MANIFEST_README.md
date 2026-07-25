@@ -78,25 +78,39 @@ producer fails. A `RETIRED` claim, or a claim carrying `discharged_by`, is not
 an operative export and cannot be newly consumed. The checker also verifies the
 producer/consumer C7 facet metadata is present.
 
-**C4 — Manifest-relative dimensional homogeneity plus source certificate.**
-Recompute dimensions from the manifest's named symbol table. For relations,
-both sides must agree; when `expected_dim` is present, lhs and rhs must both
-equal it. Claims of `kind: dimensional` require `expected_dim`. Callable
-functions and operators use their declared domain/codomain signatures.
-Integer and exact rational powers, including `sqrt`, are supported.
-Derivatives and integrals adjust dimensions by their measures; transcendental
-arguments must be dimensionless.
+**DIMENSIONAL_CONSISTENCY — manifest-internal dimensional algebra plus source
+certificate.** Verifies manifest-internal dimensional algebra: relation
+homogeneity, declared-vs-recovered agreement for symbols whose dimensions are
+recoverable from the stage's audit script, and cross-stage agreement of shared
+quantities. It does NOT independently certify that a stage's dimensions are
+physically correct — that is owned by the stage's dual-engine unit audit.
 
-This is intentionally named *manifest-relative dimensional homogeneity*: an
-internally consistent manifest could still be uniformly wrong. Therefore C4
-also reads each symbol's `dim_source`, recovers the positional order from the
-script's own `Dim(...)` signature/field order and order docstring at that
-locus, and reads the raw tuple. It fails if the recovered order differs from
-`dim_source_order`, if the raw tuple differs from `dim_source_tuple`, or if
-transposition by the recovered order differs from the named `{L,M,T}` map.
-Missing or unreadable source certificates and unsupported function rules are
-`UNSUPPORTED` and fail the build. The named map is authoritative for
-interchange.
+For relations, both sides must agree; when `expected_dim` is present, lhs and
+rhs must both equal it. Claims of `kind: dimensional` require `expected_dim`.
+Callable functions and operators use their declared domain/codomain signatures.
+Integer and exact rational powers, including `sqrt`, are supported. Derivatives
+and integrals adjust dimensions by their measures; transcendental arguments
+must be dimensionless.
+
+Each new stage declares `dimension_basis` as a stable basis `id` and an ordered,
+unique `axes` array. A dimension is a sparse map from any of those named axes
+to exact rational strings; omitted axes are zero, and JSON numbers/floats are
+not accepted. `dim_source_order` is an axis array for arbitrary bases. The
+legacy compact permutations such as `"LTM"` remain valid, and omission of
+`dimension_basis` means `{id: "LMT", axes: ["L", "M", "T"]}` so existing
+manifests do not migrate. Cross-stage dimensional comparisons proceed only
+when both the basis id and axes declaration agree; otherwise the checker emits
+`CROSS_BASIS_DIMENSION_COMPARISON` instead of comparing exponent vectors.
+
+The check also reads each symbol's `dim_source`, recovers the positional order
+from the script's `Dim(...)` structure or an independently digest-pinned
+bare-tuple order, and reads the raw tuple. It fails if the recovered order
+differs from `dim_source_order`, if the raw tuple differs from
+`dim_source_tuple`, or if transposition by the recovered order differs from the
+named dimension map. Missing or unreadable source certificates and unsupported
+function rules are `UNSUPPORTED` and fail the build. The named map is
+authoritative for interchange, but it is still a manifest claim rather than an
+independent physical-correctness proof.
 
 **C5 — Range-aware lifecycle census.** The composite config pins
 `notes/parameter_register.md` by path and SHA-256; a changed digest fails before
@@ -190,7 +204,8 @@ A headline never reports PASS while material edges are unresolved. Under full
   `all|any|not|xor|domain`; its leaves are claim refs or structured domain
   predicates.
 - Named dimensions omit zero exponents. For example,
-  `a_B = L^-2 M^1 T^-2` is `{"L":"-2","M":"1","T":"-2"}`.
+  `a_B = L^-2 M^1 T^-2` is `{"L":"-2","M":"1","T":"-2"}` in the legacy
+  basis; arbitrary declared axis names use the same sparse exact-string form.
 - Claim kind and payload kind are coupled: identity/inequality/dimensional
   claims use relations, operator identities use operator payloads, spectral
   claims use spectra, adjudication claims use adjudications, range claims use

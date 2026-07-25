@@ -38,6 +38,9 @@
       "type": "string",
       "minLength": 1
     },
+    "dimension_basis": {
+      "$ref": "#/$defs/dimension_basis"
+    },
     "symbols": {
       "type": "array",
       "items": {
@@ -91,30 +94,67 @@
       "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
       "description": "An exact rational exponent. Rational exponents are supported so sqrt and other rational-power dimensional rules remain exact."
     },
-    "dim": {
+    "axis_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A stage-local named dimension axis. Multi-character names and punctuation such as E-charge are permitted."
+    },
+    "dimension_basis": {
       "type": "object",
+      "required": [
+        "id",
+        "axes"
+      ],
       "additionalProperties": false,
       "properties": {
-        "L": {
-          "$ref": "#/$defs/rational"
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Stable identity of the dimensional basis. Cross-stage dimensional comparisons require both this id and the ordered axes declaration to agree."
         },
-        "M": {
-          "$ref": "#/$defs/rational"
-        },
-        "T": {
-          "$ref": "#/$defs/rational"
+        "axes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/axis_name"
+          }
         }
       },
-      "description": "Authoritative named dimension map. An absent L, M, or T key means exponent zero."
+      "description": "The stage's dimensional basis. For backward compatibility, omission means the legacy basis {id: LMT, axes: [L, M, T]}; new non-L/M/T stages declare this object explicitly."
+    },
+    "dim": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/axis_name"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/rational"
+      },
+      "description": "Authoritative named dimension map over the stage's declared basis. An absent declared axis means exponent zero. The checker rejects axes outside that basis; numeric JSON values, including floats, are invalid because exponents are exact rational strings."
     },
     "dim_source_order": {
-      "enum": [
-        "LMT",
-        "LTM",
-        "MLT",
-        "MTL",
-        "TLM",
-        "TML"
+      "oneOf": [
+        {
+          "enum": [
+            "LMT",
+            "LTM",
+            "MLT",
+            "MTL",
+            "TLM",
+            "TML"
+          ],
+          "description": "Backward-compatible compact spelling for a permutation of the legacy L/M/T basis."
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/axis_name"
+          },
+          "description": "Positional source order for an arbitrary named basis. Its axes must exactly match the stage basis."
+        }
       ]
     },
     "dim_source": {
@@ -127,7 +167,8 @@
       "properties": {
         "script_path": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "description": "Repository-relative dimension anchor path. The checker rejects absolute paths and parent traversal, confines resolution to a configured repository root, and requires a matching full evidence object in the same stage."
         },
         "locus": {
           "type": "string",
@@ -137,20 +178,10 @@
     },
     "dim_source_tuple": {
       "type": "array",
-      "prefixItems": [
-        {
-          "$ref": "#/$defs/rational"
-        },
-        {
-          "$ref": "#/$defs/rational"
-        },
-        {
-          "$ref": "#/$defs/rational"
-        }
-      ],
-      "items": false,
-      "minItems": 3,
-      "maxItems": 3,
+      "items": {
+        "$ref": "#/$defs/rational"
+      },
+      "minItems": 1,
       "description": "Raw positional exponent vector exactly as printed at dim_source. The checker recovers its order from the source script; dim_source_order is an assertion, not an input to recovery."
     },
     "digest": {
@@ -2015,6 +2046,26 @@
         },
         "mathematica_script": {
           "type": "string"
+        },
+        "mathematica_output": {
+          "type": "object",
+          "description": "Digest-pinned, non-empty output for mathematica_script. The checker requires the deterministic mathematica/out/<script-stem>.out path and activates cohort-wide requiredness when output citations are introduced.",
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\.out$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
         },
         "teeth": {
           "type": "array",

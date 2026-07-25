@@ -17,7 +17,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+        "locus": "run_mouth_reconstruction: wp, a, ell, width, sleeve = symbols(\"w_pos a ell W_B L_s\", positive=True, real=True), lines 194-196; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -31,7 +31,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "locus": "run_mouth_reconstruction: wp, a, ell, width, sleeve = symbols(\"w_pos a ell W_B L_s\", positive=True, real=True), lines 194-196; dimension expression LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -49,7 +49,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+        "locus": "run_mouth_reconstruction: w, u = symbols(\"w u\", real=True), line 193; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -63,7 +63,7 @@
       "role": "index",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "locus": "run_mouth_reconstruction: w, u = symbols(\"w u\", real=True), line 193; dimension expression LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -79,7 +79,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_H\"] entry (\"dim_h\", ONE, ONE), lines 554-580; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -92,7 +92,7 @@
       "role": "field",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_H\"] entry (\"dim_h\", ONE, ONE), lines 554-580; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -111,7 +111,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH**2 in run_units"
+        "locus": "response_objects: c is the source surrogate in c, zb, zg = symbols(\"c z_b z_g\", real=True), line 419; no source-level C_hu symbol binding; dimension expression ENERGY/LENGTH**2"
       },
       "dim_source_tuple": [
         "0",
@@ -124,7 +124,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH**2 in run_units",
+        "locus": "response_objects: c is the source surrogate in c, zb, zg = symbols(\"c z_b z_g\", real=True), line 419; no source-level C_hu symbol binding; dimension expression ENERGY/LENGTH**2",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -144,7 +144,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units"
+        "locus": "response_objects: b, k = symbols(\"b K_h\", positive=True, real=True), line 418; dimension expression ENERGY/LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -157,7 +157,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units",
+        "locus": "response_objects: b, k = symbols(\"b K_h\", positive=True, real=True), line 418; dimension expression ENERGY/LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -176,7 +176,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**2/LENGTH**4 in run_units"
+        "locus": "response_objects: delta = b*k - c**2, line 420; dimension expression ENERGY**2/LENGTH**4"
       },
       "dim_source_tuple": [
         "0",
@@ -189,7 +189,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**2/LENGTH**4 in run_units",
+        "locus": "response_objects: delta = b*k - c**2, line 420; dimension expression ENERGY**2/LENGTH**4",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -207,7 +207,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units"
+        "locus": "run_mouth_reconstruction: f0_test = 1/(ell*cosh(w/ell)**f0_power), lines 214-216; dimension expression LENGTH**-1"
       },
       "dim_source_tuple": [
         "-1",
@@ -220,7 +220,7 @@
       "role": "function",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units",
+        "locus": "run_mouth_reconstruction: f0_test = 1/(ell*cosh(w/ell)**f0_power), lines 214-216; dimension expression LENGTH**-1",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -248,7 +248,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-2 in run_units"
+        "locus": "module: LENGTH = Dim(1, 0, 0), line 166; no source-level O_perp binding; dimension expression LENGTH**-2"
       },
       "dim_source_tuple": [
         "-2",
@@ -261,7 +261,7 @@
       "role": "operator",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-2 in run_units",
+        "locus": "module: LENGTH = Dim(1, 0, 0), line 166; no source-level O_perp binding; dimension expression LENGTH**-2",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -291,7 +291,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH**3 in run_units"
+        "locus": "response_objects: b is the source surrogate in b, k = symbols(\"b K_h\", positive=True, real=True), line 418; no source-level B_eff symbol binding; dimension expression ENERGY/LENGTH**3"
       },
       "dim_source_tuple": [
         "-1",
@@ -304,7 +304,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH**3 in run_units",
+        "locus": "response_objects: b is the source surrogate in b, k = symbols(\"b K_h\", positive=True, real=True), line 418; no source-level B_eff symbol binding; dimension expression ENERGY/LENGTH**3",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -322,7 +322,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_XI_W\"] entry (\"dim_xi\", LENGTH, LENGTH), lines 554-580; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -335,7 +335,7 @@
       "role": "field",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_XI_W\"] entry (\"dim_xi\", LENGTH, LENGTH), lines 554-580; dimension expression LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -353,7 +353,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+        "locus": "run_mouth_reconstruction: wp, a, ell, width, sleeve = symbols(\"w_pos a ell W_B L_s\", positive=True, real=True), lines 194-196; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -367,7 +367,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "locus": "run_mouth_reconstruction: wp, a, ell, width, sleeve = symbols(\"w_pos a ell W_B L_s\", positive=True, real=True), lines 194-196; dimension expression LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -385,7 +385,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+        "locus": "run_mouth_reconstruction: rho = symbols(\"rho\", positive=True, real=True), line 192; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -399,7 +399,7 @@
       "role": "index",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "locus": "run_mouth_reconstruction: rho = symbols(\"rho\", positive=True, real=True), line 192; dimension expression LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -417,7 +417,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+        "locus": "run_exterior_and_shell: r, a, kappa = symbols(\"r a kappa\", positive=True, real=True), line 496; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -431,7 +431,7 @@
       "role": "index",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "locus": "run_exterior_and_shell: r, a, kappa = symbols(\"r a kappa\", positive=True, real=True), line 496; dimension expression LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -449,7 +449,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+        "locus": "run_exterior_and_shell: R = symbols(\"R\", positive=True, real=True), line 527; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -463,7 +463,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "locus": "run_exterior_and_shell: R = symbols(\"R\", positive=True, real=True), line 527; dimension expression LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -481,7 +481,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+        "locus": "run_mouth_reconstruction: width binds source symbol W_B, lines 194-196; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -495,7 +495,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "locus": "run_mouth_reconstruction: width binds source symbol W_B, lines 194-196; dimension expression LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -513,7 +513,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+        "locus": "run_mouth_reconstruction: sleeve binds source symbol L_s, lines 194-196; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -527,7 +527,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "locus": "run_mouth_reconstruction: sleeve binds source symbol L_s, lines 194-196; dimension expression LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -547,7 +547,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH**2 in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_K_M\"] entry (\"dim_Km\", ENERGY*LENGTH**2, ENERGY*LENGTH**2), lines 554-580; dimension expression ENERGY*LENGTH**2"
       },
       "dim_source_tuple": [
         "4",
@@ -560,7 +560,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH**2 in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_K_M\"] entry (\"dim_Km\", ENERGY*LENGTH**2, ENERGY*LENGTH**2), lines 554-580; dimension expression ENERGY*LENGTH**2",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -580,7 +580,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_J_M\"] entry (\"dim_Jm\", ENERGY*LENGTH, ENERGY*LENGTH), lines 554-580; dimension expression ENERGY*LENGTH"
       },
       "dim_source_tuple": [
         "3",
@@ -593,7 +593,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_J_M\"] entry (\"dim_Jm\", ENERGY*LENGTH, ENERGY*LENGTH), lines 554-580; dimension expression ENERGY*LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -613,7 +613,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_K_M_REDUCED\"] entry (\"dim_km\", ENERGY, ENERGY), lines 554-580; dimension expression ENERGY"
       },
       "dim_source_tuple": [
         "2",
@@ -626,7 +626,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_K_M_REDUCED\"] entry (\"dim_km\", ENERGY, ENERGY), lines 554-580; dimension expression ENERGY",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -646,7 +646,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_G_CHIH\"] entry (\"dim_g\", ENERGY, ENERGY), lines 554-580; dimension expression ENERGY"
       },
       "dim_source_tuple": [
         "2",
@@ -660,7 +660,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_G_CHIH\"] entry (\"dim_g\", ENERGY, ENERGY), lines 554-580; dimension expression ENERGY",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -676,7 +676,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "run_mouth_reconstruction: h, H0, Jm, Km, s = symbols(...), line 197; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -690,7 +690,7 @@
       "role": "index",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "run_mouth_reconstruction: h, H0, Jm, Km, s = symbols(...), line 197; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -706,7 +706,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "run_mouth_reconstruction: q_plus = 1 and q_minus = i_minus_sign, lines 373-378; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -719,7 +719,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "run_mouth_reconstruction: q_plus = 1 and q_minus = i_minus_sign, lines 373-378; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -737,7 +737,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_N_CHI\"] entry (\"dim_nchi\", LENGTH**-1, LENGTH**-1), lines 554-580; dimension expression LENGTH**-1"
       },
       "dim_source_tuple": [
         "-1",
@@ -750,7 +750,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_N_CHI\"] entry (\"dim_nchi\", LENGTH**-1, LENGTH**-1), lines 554-580; dimension expression LENGTH**-1",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -768,7 +768,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units"
+        "locus": "run_mouth_reconstruction: canonical_f0_mouth = 1/ell, line 227; dimension expression LENGTH**-1"
       },
       "dim_source_tuple": [
         "-1",
@@ -782,7 +782,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units",
+        "locus": "run_mouth_reconstruction: canonical_f0_mouth = 1/ell, line 227; dimension expression LENGTH**-1",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -802,7 +802,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+        "locus": "run_mouth_reconstruction: bare_amplitude = integrated_euler.subs(h, 0), line 405; dimension expression ENERGY"
       },
       "dim_source_tuple": [
         "2",
@@ -815,7 +815,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units",
+        "locus": "run_mouth_reconstruction: bare_amplitude = integrated_euler.subs(h, 0), line 405; dimension expression ENERGY",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -831,7 +831,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "run_mouth_reconstruction: r_plus = normalized tanh sleeve profile, lines 240-243; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -845,7 +845,7 @@
       "role": "field",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "run_mouth_reconstruction: r_plus = normalized tanh sleeve profile, lines 240-243; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -861,7 +861,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "response_objects: c, zb, zg = symbols(\"c z_b z_g\", real=True), line 419; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -874,7 +874,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "response_objects: c, zb, zg = symbols(\"c z_b z_g\", real=True), line 419; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -890,7 +890,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "response_objects: c, zb, zg = symbols(\"c z_b z_g\", real=True), line 419; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -903,7 +903,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "response_objects: c, zb, zg = symbols(\"c z_b z_g\", real=True), line 419; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -923,7 +923,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_KAPPA\"] entry (\"dim_kappa\", ENERGY/LENGTH, ENERGY/LENGTH), lines 554-580; dimension expression ENERGY/LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -936,7 +936,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_KAPPA\"] entry (\"dim_kappa\", ENERGY/LENGTH, ENERGY/LENGTH), lines 554-580; dimension expression ENERGY/LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -956,7 +956,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units"
+        "locus": "run_exterior_and_shell: local kappa in r, a, kappa = symbols(...), line 496; no kappa_ext binding; dimension expression ENERGY/LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -970,7 +970,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units",
+        "locus": "run_exterior_and_shell: local kappa in r, a, kappa = symbols(...), line 496; no kappa_ext binding; dimension expression ENERGY/LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -990,7 +990,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**3/ENERGY in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_M_UU\"] entry (\"dim_muu\", LENGTH**3/ENERGY, LENGTH**3/ENERGY), lines 554-580; dimension expression LENGTH**3/ENERGY"
       },
       "dim_source_tuple": [
         "1",
@@ -1003,7 +1003,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**3/ENERGY in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_M_UU\"] entry (\"dim_muu\", LENGTH**3/ENERGY, LENGTH**3/ENERGY), lines 554-580; dimension expression LENGTH**3/ENERGY",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1022,7 +1022,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**2/ENERGY in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_M_UG\"] entry (\"dim_mug\", LENGTH**2/ENERGY, LENGTH**2/ENERGY), lines 554-580; dimension expression LENGTH**2/ENERGY"
       },
       "dim_source_tuple": [
         "0",
@@ -1035,7 +1035,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**2/ENERGY in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_M_UG\"] entry (\"dim_mug\", LENGTH**2/ENERGY, LENGTH**2/ENERGY), lines 554-580; dimension expression LENGTH**2/ENERGY",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1055,7 +1055,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH/ENERGY in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_M_GG\"] entry (\"dim_mgg\", LENGTH/ENERGY, LENGTH/ENERGY), lines 554-580; dimension expression LENGTH/ENERGY"
       },
       "dim_source_tuple": [
         "-1",
@@ -1068,7 +1068,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH/ENERGY in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_M_GG\"] entry (\"dim_mgg\", LENGTH/ENERGY, LENGTH/ENERGY), lines 554-580; dimension expression LENGTH/ENERGY",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1087,7 +1087,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression MASS**-2*TIME**4 in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_DET_M\"] entry (\"dim_detm\", LENGTH**4/ENERGY**2, MASS**-2*TIME**4), lines 554-580; dimension expression MASS**-2*TIME**4"
       },
       "dim_source_tuple": [
         "0",
@@ -1100,7 +1100,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression MASS**-2*TIME**4 in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_DET_M\"] entry (\"dim_detm\", LENGTH**4/ENERGY**2, MASS**-2*TIME**4), lines 554-580; dimension expression MASS**-2*TIME**4",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1116,7 +1116,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "run_response: star_m = m.subs(star), lines 472-479; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -1130,7 +1130,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "run_response: star_m = m.subs(star), lines 472-479; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1150,7 +1150,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**-1 in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_S_GG\"] entry (\"dim_sgg\", ENERGY**-1, ENERGY**-1), lines 554-580; dimension expression ENERGY**-1"
       },
       "dim_source_tuple": [
         "-2",
@@ -1163,7 +1163,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**-1 in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_S_GG\"] entry (\"dim_sgg\", ENERGY**-1, ENERGY**-1), lines 554-580; dimension expression ENERGY**-1",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1179,7 +1179,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_H_A\"] entry (\"dim_hA\", ONE, ONE), lines 554-580; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -1192,7 +1192,7 @@
       "role": "field",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_H_A\"] entry (\"dim_hA\", ONE, ONE), lines 554-580; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1208,7 +1208,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "run_exterior_and_shell: h_exterior = hA*a/r, line 506; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -1221,7 +1221,7 @@
       "role": "field",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "run_exterior_and_shell: h_exterior = hA*a/r, line 506; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1249,7 +1249,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+        "locus": "run_exterior_and_shell: energy = integrate(...), lines 507-510; dimension expression ENERGY"
       },
       "dim_source_tuple": [
         "2",
@@ -1262,7 +1262,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units",
+        "locus": "run_exterior_and_shell: energy = integrate(...), lines 507-510; dimension expression ENERGY",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1278,7 +1278,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "run_exterior_and_shell: stationary = solve(diff(varied_energy, hA), hA), lines 519-524; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -1291,7 +1291,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "run_exterior_and_shell: stationary = solve(diff(varied_energy, hA), hA), lines 519-524; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1311,7 +1311,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_SHELL_A\"] entry (\"dim_A\", ENERGY*LENGTH, ENERGY*LENGTH), lines 554-580; dimension expression ENERGY*LENGTH"
       },
       "dim_source_tuple": [
         "3",
@@ -1324,7 +1324,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_SHELL_A\"] entry (\"dim_A\", ENERGY*LENGTH, ENERGY*LENGTH), lines 554-580; dimension expression ENERGY*LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1344,7 +1344,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**2 in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_SHELL_C\"] entry (\"dim_C\", ENERGY**2, ENERGY**2), lines 554-580; dimension expression ENERGY**2"
       },
       "dim_source_tuple": [
         "4",
@@ -1357,7 +1357,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**2 in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_SHELL_C\"] entry (\"dim_C\", ENERGY**2, ENERGY**2), lines 554-580; dimension expression ENERGY**2",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1377,7 +1377,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_U\"] entry (\"dim_U\", ENERGY, ENERGY), lines 554-580; dimension expression ENERGY"
       },
       "dim_source_tuple": [
         "2",
@@ -1390,7 +1390,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_U\"] entry (\"dim_U\", ENERGY, ENERGY), lines 554-580; dimension expression ENERGY",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1410,7 +1410,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units"
+        "locus": "run_units: dims[\"PASS_UNITS_F\"] entry (\"dim_F\", ENERGY/LENGTH, ENERGY/LENGTH), lines 554-580; dimension expression ENERGY/LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -1423,7 +1423,7 @@
       "role": "derived",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units",
+        "locus": "run_units: dims[\"PASS_UNITS_F\"] entry (\"dim_F\", ENERGY/LENGTH, ENERGY/LENGTH), lines 554-580; dimension expression ENERGY/LENGTH",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1439,7 +1439,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "run_exterior_and_shell: s1, s2, C = symbols(\"s_1 s_2 C\", real=True), line 528; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -1453,7 +1453,7 @@
       "role": "index",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "run_exterior_and_shell: s1, s2, C = symbols(\"s_1 s_2 C\", real=True), line 528; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1469,7 +1469,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "locus": "run_exterior_and_shell: s1, s2, C = symbols(\"s_1 s_2 C\", real=True), line 528; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -1483,37 +1483,7 @@
       "role": "index",
       "evidence": {
         "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
-        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
-        "engine": "sympy",
-        "method": "derived_from_relation"
-      }
-    },
-    {
-      "name": "pi",
-      "parse_alias": "pi",
-      "quantity_id": "q.math.pi",
-      "definition_ref": "here/declare_pi",
-      "latex": "\\pi",
-      "dim": {},
-      "dim_source_order": "LTM",
-      "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
-      },
-      "dim_source_tuple": [
-        "0",
-        "0",
-        "0"
-      ],
-      "assumptions": [
-        "positive",
-        "real"
-      ],
-      "role": "convention",
-      "evidence": {
-        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "locus": "run_exterior_and_shell: s1, s2, C = symbols(\"s_1 s_2 C\", real=True), line 528; dimension expression ONE",
         "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -1935,34 +1905,6 @@
         "note": "Second-throat Z2 orientation sign s_2."
       },
       "note": "Ownership declaration binding s_2."
-    },
-    {
-      "id": "declare_pi",
-      "kind": "convention",
-      "status": "CONV",
-      "payload_kind": "relation",
-      "payload": {
-        "lhs": {
-          "sympy": "pi"
-        },
-        "rhs": {
-          "sympy": "pi"
-        },
-        "relation": "defines"
-      },
-      "evidence": {
-        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "stage031 symbol declaration pi",
-        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
-        "engine": "sympy",
-        "method": "derived_from_relation"
-      },
-      "genesis": {
-        "introduced": "2026-07-22",
-        "origin": "unknown",
-        "note": "The dimensionless circle constant pi declared as a stage-local symbol so the frozen checker's dimension_of can dimension the 4*pi/2*pi/sqrt(2*pi) normalization factors it whitelists for parsing but does not handle as a NumberSymbol; pi is dimensionless."
-      },
-      "note": "pi is the dimensionless circle constant; declared as a symbol only to bridge the frozen checker's dimension_of gap on sympy NumberSymbol pi."
     },
     {
       "id": "declare_nchi",
@@ -3037,6 +2979,98 @@
     {
       "claim_id": "far_field_force",
       "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_a",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_rho",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_r",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_r_big",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_wb",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_ls",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_km",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_jm",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_s",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_zb",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_zg",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_kappa_ext",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_c",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_s1",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_s2",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_nchi",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_sgg",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "declare_ha",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "bounded_representative",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "z_g_witness",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "eta_normalization",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "reflection_antisymmetry",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "holding_curvature",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
     }
   ],
   "knobs": [
@@ -3121,6 +3155,10 @@
   "verification": {
     "sympy_script": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
     "mathematica_script": "mathematica/ledger_stage031_puncture_deflection_field_identity_source_mathematica_audit.wl",
+    "mathematica_output": {
+      "path": "mathematica/out/ledger_stage031_puncture_deflection_field_identity_source_mathematica_audit.out",
+      "sha256": "1828ea5fc62f3d06a87818945c70722c99e7f8e681934fe80374d5fcbced11b4"
+    },
     "teeth": [
       {
         "predicate": "PASS_FIELD_IDENTITY",
@@ -3833,13 +3871,17 @@
   },
   "extraction": {
     "report": {
-      "ungrounded": [],
+      "ungrounded": [
+        "DIMENSION LOCUS GAP (§0b): O_perp has no source-level binding in the stage031 audit, and kappa_ext has only the local exterior kappa analogue. Their manifest dimensions are anchored to real same-script Dim algebra without claiming nonexistent symbol-specific assignments.",
+        "DIMENSION LOCUS GAP (§0b): C_hu and B_eff are printed as consumed names but have no source-level symbols in the stage031 audit; response_objects uses the surrogates c and b. Their manifest dimensions are anchored to real same-script Dim algebra without treating main line 605 as a dimension binding."
+      ],
       "provisional_consumes": [
         "stage003/b_eff_definition"
       ],
       "prose_script_mismatches": [
-        "v1 det_m dim was M^2 T^-4; corrected to M^-2 T^4 per run_units PASS_UNITS_DET_M and response_det (z_g^2/D).",
-        "v1 cited nonexistent stage030/kernel_determinant_star for D*=7/4; retargeted to stage030/kernel_stability (value_equal, D*=2*1-(1/2)^2=7/4)."
+        "v1 det_m was already M^-2 T^4 in [L,M,T] axis order. The v2 tuple is the same dimension transposed into the stage031 script's [L,T,M] order and is confirmed by run_units PASS_UNITS_DET_M plus response_det (z_g^2/D); this was a re-ordering, not a correction.",
+        "v1 cited nonexistent stage030/kernel_determinant_star for D*=7/4; retargeted to stage030/kernel_stability (value_equal, D*=2*1-(1/2)^2=7/4).",
+        "DIMENSION LOCUS GAP (§0b): of the survey's 30 invalid stage031 loci, declare_pi's locus departed with the removed workaround and the other 29 were replaced by real module/function/dims-entry pointers. The 17 already source-backed unit entries were also tightened to name their PASS_UNITS_* rows."
       ],
       "judgment_calls": [
         "Dropped the unused D_star symbol; D*=7/4 is consumed as a numeric value_equal on stage030/kernel_stability (no payload references D_star).",
@@ -3847,7 +3889,8 @@
         "Shared upstream quantities (ell,w,h,C_hu,K_h,D,f0,O_perp,B_eff) consumed via opaque_quantity_match / cas_equivalence for import-completeness; B_eff pinned to the stage030 re-export digest pending stage003 extraction (provisional).",
         "holds_within and genesis coordination anchored to stage030/pt_operator (the real static-closure postulate) in place of v1's non-claim token stage030/electric_scalar_closure_static.",
         "nonzero_ha_core_holder retyped from adjudication to identity/relation (eq, coreless_stationary_hA=0) so it binds its quantity.",
-        "CHECKER GAP (frozen composite_build.py faa7e8f1): dimension_of does NOT handle sympy NumberSymbol pi (pi.is_Number is False) although pi is parse-whitelisted in FUNCTION_NAMES; any claim with 4*pi/2*pi/sqrt(2*pi) hit DIMENSION_RULE_UNSUPPORTED in C4. Worked around faithfully by declaring pi as a dimensionless stage-local symbol (declare_pi), preserving every exact pi-bearing expression. Not patched; reported."
+        "The obsolete declare_pi symbol and claim were removed: the frozen Phase-1 checker now treats SymPy NumberSymbol pi as dimensionless, so the exact pi-bearing formulas need no local ownership workaround and no double-definition remains.",
+        "Export-completeness exports all 44 surviving operative and ownership claims. Newly exported relative to v1 are declare_a, declare_rho, declare_r, declare_r_big, declare_wb, declare_ls, declare_km, declare_jm, declare_s, declare_zb, declare_zg, declare_kappa_ext, declare_c, declare_s1, declare_s2, declare_nchi, declare_sgg, declare_ha, bounded_representative, z_g_witness, eta_normalization, reflection_antisymmetry, and holding_curvature."
       ]
     },
     "source_digests": [

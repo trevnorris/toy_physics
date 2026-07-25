@@ -17,8 +17,8 @@
       },
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH/ENERGY in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dimension expression dim_L/dim_E"
       },
       "dim_source_tuple": [
         "-1",
@@ -30,11 +30,11 @@
       ],
       "role": "derived",
       "evidence": {
-        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "response_m_gg: m_gg = B_eff*z_g**2/D (consumed opaquely)",
-        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "module: mgg = sp.Symbol(\"m_gg\", nonnegative=True, real=True), line 264",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
         "engine": "sympy",
-        "method": "derived_from_relation"
+        "method": "script_asserted"
       }
     },
     {
@@ -49,8 +49,8 @@
       },
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dim_A = tuple(x + y for x, y in zip(dim_E, dim_L))"
       },
       "dim_source_tuple": [
         "3",
@@ -81,8 +81,8 @@
       },
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dim_A = tuple(x + y for x, y in zip(dim_E, dim_L))"
       },
       "dim_source_tuple": [
         "3",
@@ -113,8 +113,8 @@
       },
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dim_A = tuple(x + y for x, y in zip(dim_E, dim_L))"
       },
       "dim_source_tuple": [
         "3",
@@ -145,8 +145,8 @@
       },
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dim_A = tuple(x + y for x, y in zip(dim_E, dim_L))"
       },
       "dim_source_tuple": [
         "3",
@@ -166,24 +166,52 @@
       }
     },
     {
-      "name": "C_V",
-      "parse_alias": "C_V",
-      "quantity_id": "q.charge.v_class_numerator",
-      "definition_ref": "here/declare_c_v",
+      "name": "S_gg",
+      "parse_alias": "S_gg",
+      "quantity_id": "q.charge.self_response",
+      "definition_ref": "stage031/declare_sgg",
       "dim": {
-        "L": "4",
-        "M": "2",
-        "T": "-4"
+        "L": "-2",
+        "M": "-1",
+        "T": "2"
       },
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**2 in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dimension expression dim_E**-1"
       },
       "dim_source_tuple": [
-        "4",
-        "-4",
-        "2"
+        "-2",
+        "2",
+        "-1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "module: sgg = sp.Symbol(\"S_gg\", positive=True, real=True), line 265",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "name": "phi",
+      "parse_alias": "phi",
+      "quantity_id": "q.charge.ensemble_value_phi",
+      "definition_ref": "here/declare_phi",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dimension expression dim_L/dim_L"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
       ],
       "assumptions": [
         "real"
@@ -191,7 +219,7 @@
       "role": "primitive",
       "evidence": {
         "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
-        "locus": "V/Dirichlet class numerator phi**2/S_gg**2 (opaque; S_gg binding claim declare_sgg not exported by stage031)",
+        "locus": "module: phi, j = sp.symbols(\"phi j\", real=True), line 266",
         "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
         "engine": "sympy",
         "method": "script_asserted"
@@ -209,8 +237,8 @@
       },
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dimension expression dim_E"
       },
       "dim_source_tuple": [
         "2",
@@ -241,8 +269,8 @@
       },
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dimension expression dim_E"
       },
       "dim_source_tuple": [
         "2",
@@ -274,8 +302,8 @@
       },
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dimension expression dim_E"
       },
       "dim_source_tuple": [
         "2",
@@ -303,8 +331,8 @@
       "dim": {},
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dimension expression dim_L/dim_L"
       },
       "dim_source_tuple": [
         "0",
@@ -331,8 +359,8 @@
       "dim": {},
       "dim_source_order": "LTM",
       "dim_source": {
-        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+        "script_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "run_ranges_and_units: dimension expression dim_L/dim_L"
       },
       "dim_source_tuple": [
         "0",
@@ -354,28 +382,28 @@
   ],
   "claims": [
     {
-      "id": "declare_c_v",
+      "id": "declare_phi",
       "kind": "convention",
       "status": "CONV",
       "payload_kind": "relation",
       "payload": {
         "lhs": {
-          "sympy": "C_V"
+          "sympy": "phi"
         },
         "rhs": {
-          "sympy": "C_V"
+          "sympy": "phi"
         },
         "relation": "defines"
       },
       "genesis": {
         "introduced": "2026-07-22",
         "origin": "unknown",
-        "note": "Opaque V/Dirichlet class numerator [E^2] = phi^2/S_gg^2; declared opaque because S_gg's binding claim stage031/declare_sgg is NOT exported by stage031, so S_gg cannot be referenced symbolically."
+        "note": "Dirichlet held-value datum phi; dimensionless BC-ensemble selection data, R1-deferred by the dated stage032 record and declared at module line 266 of the audit."
       },
-      "note": "Ownership-only declaration of the stage032-local ensemble symbol C_V.",
+      "note": "Ownership-only declaration of the stage032-local ensemble symbol phi.",
       "evidence": {
         "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
-        "locus": "V/Dirichlet numerator, run_ensembles A_V line 286",
+        "locus": "module: phi, j = sp.symbols(\"phi j\", real=True), line 266",
         "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
         "engine": "sympy",
         "method": "script_asserted"
@@ -503,7 +531,7 @@
           "sympy": "A_V"
         },
         "rhs": {
-          "sympy": "m_gg*C_V"
+          "sympy": "m_gg*phi**2/S_gg**2"
         },
         "relation": "eq"
       },
@@ -515,10 +543,11 @@
       "holds_within": {
         "op": "all",
         "operands": [
-          "stage031/neutral_shell_amplitude"
+          "stage031/neutral_shell_amplitude",
+          "stage031/declare_sgg"
         ]
       },
-      "note": "V/DIRICHLET_VALUE decided-given-class coefficient A_V = m_gg*C_V with the opaque [E^2] numerator C_V = phi^2/S_gg^2 (reshape of the source V-ensemble through 031's symmetric self/cross response; the audit proves derived_A_V == A_V = m_gg*phi**2/S_gg**2). Written as m_gg*C_V because S_gg's binding claim stage031/declare_sgg is not exported (see extraction report). [A_V]=EL; repel at the nondegenerate witness (A_V>0).",
+      "note": "V/DIRICHLET_VALUE decided-given-class coefficient A_V = m_gg*phi**2/S_gg**2, exactly as the stage032 audit and dated note derive by reshaping the source V-ensemble through 031's symmetric self/cross response. S_gg is imported through exported ownership claim stage031/declare_sgg. [A_V]=EL; repel at the nondegenerate witness (A_V>0).",
       "evidence": {
         "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
         "locus": "PASS_A_V_FORMULA",
@@ -936,6 +965,24 @@
       "note": "v1 pair_coupling_m_gg -> response_m_gg. Pair-coupling amplitude m_gg (producer m_gg=B_eff*z_g^2/D); enters all four A_X. Opaque: scope firewall forbids re-deriving its formula."
     },
     {
+      "ref": "stage031/declare_sgg",
+      "as_consumed": {
+        "payload_kind": "relation",
+        "payload": {
+          "lhs": {
+            "sympy": "S_gg"
+          },
+          "rhs": {
+            "sympy": "S_gg"
+          },
+          "relation": "defines"
+        }
+      },
+      "check": "cas_equivalence",
+      "substitutions": [],
+      "note": "Restored symbolic import of the Galerkin self-response S_gg through stage031's now-exported ownership claim. This makes A_V cite S_gg directly without an opaque numerator fold."
+    },
+    {
       "ref": "stage031/response_det",
       "check": "opaque_quantity_match",
       "substitutions": [],
@@ -949,7 +996,7 @@
       "substitutions": [],
       "producer_quantity_id": "q.charge.shell_amplitude",
       "producer_source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
-      "note": "v1 neutral_far_field_shell -> neutral_shell_amplitude. The neutral far-field shell amplitude A=m_gg*C ([A]=EL). CHECK CHANGED from v1 cas_equivalence(m_gg*C) to opaque_quantity_match because C's binding claim stage031/declare_c is NOT exported (C unreferenceable)."
+      "note": "v1 neutral_far_field_shell -> neutral_shell_amplitude. The neutral far-field shell amplitude A=m_gg*C ([A]=EL) remains an opaque citation because stage032 must not re-derive the stage031 shell, even though export-completeness now exposes declare_c."
     },
     {
       "ref": "stage031/nonzero_ha_core_holder",
@@ -965,7 +1012,7 @@
       "substitutions": [],
       "producer_quantity_id": "q.charge.pair_force",
       "producer_source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
-      "note": "v1 far_field_falloff -> far_field_force (the 1/R^2 form F=s1*s2*A/(4*pi*R^2)). Cites the target-blind 1/R^2 falloff + [F]=E/L. Opaque because the s_1,s_2,pi,R factors are owned by non-exported stage031 claims (declare_s1/s2/pi/r_big)."
+      "note": "v1 far_field_falloff -> far_field_force (the 1/R^2 form F=s1*s2*A/(4*pi*R^2)). Cites the target-blind 1/R^2 falloff + [F]=E/L opaquely to preserve the scope firewall; export-completeness does not authorize re-derivation."
     },
     {
       "ref": "stage031/far_field_potential",
@@ -1031,6 +1078,42 @@
     },
     {
       "claim_id": "magnitude_coblocker",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "declare_phi",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "declare_j",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "declare_q",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "declare_g",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "declare_lam",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "a_v_sign",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "a_j_sign",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "source_predicate_manifest",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "consumed_bundle_firewall",
       "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
     }
   ],
@@ -1123,6 +1206,10 @@
   "verification": {
     "sympy_script": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
     "mathematica_script": "mathematica/ledger_stage032_electric_sign_bc_ensembles_landing_mathematica_audit.wl",
+    "mathematica_output": {
+      "path": "mathematica/out/ledger_stage032_electric_sign_bc_ensembles_landing_mathematica_audit.out",
+      "sha256": "4902fb2de895404ced1370ad7d4b4aa298ed5489fd3382753b2e658bcbf5989f"
+    },
     "teeth": [
       {
         "predicate": "PASS_STAGE031_CONSUMED_INPUTS",
@@ -1949,21 +2036,22 @@
   "extraction": {
     "report": {
       "ungrounded": [
-        "S_gg (q.charge.self_response) is owned by stage031/declare_sgg which is NOT in stage031.exports (only the inequality s_gg_self_response, which does not bind S_gg, is exported); S_gg is therefore not symbolically referenceable. Folded opaquely into the stage032-local V-class numerator C_V = phi^2/S_gg^2. The v1 self_response_s_gg consume is DROPPED.",
-        "stage031 quantities C (declare_c, DEFERRED), s_1 (declare_s1), s_2 (declare_s2), pi (declare_pi), R (declare_r_big) are all owned by NON-exported binding claims and are unreferenceable; consequently the explicit far-field formulas U=s1*s2*A/(4*pi*R) and F=s1*s2*A/(4*pi*R^2) are NOT re-stated in stage032 (also barred by the scope firewall) and U/F are cited opaquely from far_field_potential/force."
+        "DIMENSION LOCUS GAP (§0b): the stage032 audit has no symbol-specific dimension binding for 8 symbols: m_gg, S_gg, phi, j, q, g, lam, and lam_star. Their tuples are declared honestly from same-script bare algebra rooted in run_ranges_and_units dim_L/dim_E, while their actual symbol assignments are cited separately; only A_V, A_J, A_M, and A_MIXED bind directly to dim_A."
       ],
       "provisional_consumes": [],
       "prose_script_mismatches": [
-        "Note/register write A_V = m_gg*phi^2/S_gg^2 explicitly; the manifest writes A_V = m_gg*C_V with an opaque [E^2] numerator C_V because S_gg cannot be symbolically imported (declare_sgg unexported). The script's PASS_A_V_FORMULA still verifies the full phi^2/S_gg^2 form.",
-        "The stage032 audit script exposes NO live Dim class (dims are bare exponent tuples dim_L=(1,0,0), dim_E=(2,-2,1) in a local function), while DIM_ORDER_DECISION and the extraction protocol assume stage032 has its own recoverable Dim/run_units."
+        "The stage032 audit exposes no live Dim class and no run_units function: its only dimension bindings are function-local dim_L=(1,0,0), dim_E=(2,-2,1), and dim_A=dim_E+dim_L in run_ranges_and_units. All 11 surveyed false scope pointers were removed; the 8 surviving/new non-A loci disclose their rooted algebra rather than claiming nonexistent LENGTH/ENERGY/ONE bindings."
       ],
       "judgment_calls": [
-        "CHECKER-SCHEMA GAP: because the stage032 script has no live Dim class, the frozen C4 source-certificate cannot be recovered from it. Every stage032 symbol's dim_source is anchored to the stage031 audit script (LTM Dim class; defines ONE/LENGTH/ENERGY and ENERGY*LENGTH/ENERGY**2/LENGTH/ENERGY), which is the SAME [L,T,M] convention DIM_ORDER_DECISION records for stage032. Dims/order/tuples recover correctly; only the certificate script_path is borrowed. Recommended real fix (out of write-scope): add a Dim class to the stage032 audit script.",
-        "PI/known-gap workaround was NOT needed: no pi appears in any stage032 dimensional expression (the 4*pi/R factors live only in the unreferenceable, non-re-stated far-field formulas), so no declare_pi symbol was added.",
+        "Stage032 now certifies every symbol against its own audit script using the frozen bare-tuple recovery. The independently registered source order is LTM; A_X uses the real run_ranges_and_units dim_A assignment, and other exact tuples use dimension expressions rooted in the real dim_L/dim_E assignments.",
+        "A_V is represented directly as m_gg*phi**2/S_gg**2. S_gg is a real symbol imported by cas_equivalence from newly exported stage031/declare_sgg; the local phi ownership claim is sourced at audit line 266.",
+        "stage031/declare_sgg is the ownership-only tautology S_gg=S_gg: stage032's cas_equivalence consume establishes ownership/import completeness, not a substantive drift check. The checkable self-response content lives in the separately exported stage031/s_gg_self_response claim.",
+        "No pi workaround is present: SymPy NumberSymbol pi is dimensionless in the frozen checker, and the stage032 far-field claims remain citations rather than re-derivations.",
         "g is a stage032-LOCAL positive-real ENERGY symbol (name 'g'); prose-identified with 031's g_chih (real, nonzero) but NOT unified (different name + assumptions, so no C1 collision); reduced_coupling is cited as the DECIDED-coupling provenance, not a symbolic substitution.",
         "The four A_X coefficient claims are typed 'dimensional' (expected_dim EL) so PASS_UNITS_A and PASS_A_*_FORMULA share a home; PASS_UNITS_U/PASS_UNITS_F attach to consumed_bundle_firewall (U/F cited from stage031, not re-derived).",
         "The six adjudication claims carry bucket_counts (and production_landing also axes) that reconcile to domain_cardinality: production_landing 23040 (buckets sum, axes 5*6*6*4*2*2*2*2*2 product), decided_conditional_typing 5, internal_inconsistency_none 4, qbc_undetermined 5, magnitude_coblocker 4, source_predicate_manifest 44.",
-        "The knob census declares exactly one knob (registry_row 'Q_E', R65) because 'Q_E' is the only stage032-owned register row of knob kind; C ('C'), A_X, {phi,q,j,lam} and internal_inconsistency=none register rows classify non_knob (DERIVED/R1-tracked)."
+        "The knob census declares exactly one knob (registry_row 'Q_E', R65) because 'Q_E' is the only stage032-owned register row of knob kind; C ('C'), A_X, {phi,q,j,lam} and internal_inconsistency=none register rows classify non_knob (DERIVED/R1-tracked).",
+        "Export-completeness exports all 19 claims. Newly exported relative to v1 are declare_phi (replacing the departed opaque-numerator ownership), declare_j, declare_q, declare_g, declare_lam, a_v_sign, a_j_sign, source_predicate_manifest, and consumed_bundle_firewall."
       ]
     },
     "source_digests": [

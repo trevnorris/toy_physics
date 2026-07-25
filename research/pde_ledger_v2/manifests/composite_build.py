@@ -3382,7 +3382,8 @@ def _build_self_test_fixture(root: Path) -> tuple[list[dict[str, Any]], dict[str
     session.write_text(
         "import argparse, json, os\n"
         "p=argparse.ArgumentParser(); p.add_argument('--decorative', action='store_true'); "
-        "p.add_argument('--undeclared', action='store_true'); a=p.parse_args()\n"
+        "p.add_argument('--undeclared', action='store_true'); "
+        "p.add_argument('--wrong-first', action='store_true'); a=p.parse_args()\n"
         "facet=os.environ.get('C7_FACET','')\n"
         "mapping={\n"
         " 'facet_x': {'stage002':'TOOTH_X'},\n"
@@ -3396,6 +3397,7 @@ def _build_self_test_fixture(root: Path) -> tuple[list[dict[str, Any]], dict[str
         "out=dict(mapping.get(facet,{}))\n"
         "if a.decorative and facet=='facet_spectrum': out['stage002']='PASS'\n"
         "if a.undeclared and facet=='facet_spectrum': out['stage003']='TOOTH_STAGE3'\n"
+        "if a.wrong_first and facet=='facet_spectrum': out['stage002']='TOOTH_X'\n"
         "print(json.dumps(out, sort_keys=True))\n"
     )
     command = f"{shlex.quote(sys.executable)} {shlex.quote(str(session))}"
@@ -3990,54 +3992,6 @@ def run_self_test() -> int:
             failures.append(f"clean fixture: {clean_statuses}")
             lines.append(f"[FAIL] clean fixture | {clean_statuses}")
 
-        total += 1
-        production_manifests = [
-            load_json(path)
-            for path in sorted(DEFAULT_MANIFEST_DIR.glob("*.json"))
-        ]
-        production_report = CompositeChecker(
-            production_manifests,
-            load_json(DEFAULT_CONFIG),
-            roots=(PROJECT_ROOT, PROJECT_ROOT.parent.parent, Path.cwd()),
-        ).run()
-        production_dimensional = production_report.results["DIMENSIONAL_CONSISTENCY"]
-        production_non_dimensional = {
-            name: result.status
-            for name, result in production_report.results.items()
-            if name != "DIMENSIONAL_CONSISTENCY"
-        }
-        expected_production_non_dimensional = {
-            name: (
-                "PARTIAL" if name in {"C3", "C5", "C7"} else "PASS"
-            )
-            for name in CHECK_NAMES
-            if name != "DIMENSIONAL_CONSISTENCY"
-        }
-        if (
-            production_dimensional.status == "FAIL"
-            and len(production_dimensional.issues) == 1
-            and production_dimensional.issues[0].code == "DIM_SOURCE_NOT_REGISTERED"
-            and production_dimensional.issues[0].detail.startswith("stage032:")
-            and production_non_dimensional == expected_production_non_dimensional
-        ):
-            passed += 1
-            lines.append(
-                "[PASS] DIMENSIONAL_CONSISTENCY production structural anchors isolate stage032 borrow | "
-                "target=DIMENSIONAL_CONSISTENCY | clean=same-stage anchors PASS planted=FAIL | "
-                "code=DIM_SOURCE_NOT_REGISTERED"
-            )
-        else:
-            failures.append(
-                "DIMENSIONAL_CONSISTENCY production structural dimension anchors: "
-                f"status={production_dimensional.status}, "
-                f"issues={[(issue.code, issue.detail) for issue in production_dimensional.issues]}, "
-                f"extras={production_non_dimensional}"
-            )
-            lines.append(
-                "[FAIL] DIMENSIONAL_CONSISTENCY production structural anchors isolate stage032 borrow | "
-                f"observed={production_dimensional.status}"
-            )
-
         class FlippingReadSource:
             def __init__(self) -> None:
                 self.calls = 0
@@ -4218,6 +4172,8 @@ def run_self_test() -> int:
                     for name in CHECK_NAMES
                     if name != target
                 }
+            elif target == "C3" and planted_status in BAD_STATUSES:
+                expected_non_target["C7"] = "SKIPPED"
             planted_extras = {
                 name: status
                 for name, status in planted_statuses.items()
@@ -4254,6 +4210,123 @@ def run_self_test() -> int:
                     f"planted={planted_statuses[target]}/"
                     f"{sorted(planted_codes)} extras={planted_extras}"
                 )
+
+        def arrange_same_stage_dim_anchor(
+            manifests: list[dict[str, Any]], _: dict[str, Any]
+        ) -> None:
+            symbol = next(
+                item
+                for item in next(
+                    manifest
+                    for manifest in manifests
+                    if manifest["stage_id"] == "stage002"
+                )["symbols"]
+                if item["parse_alias"] == "x"
+            )
+            source = Path(paths["stage2_source"])
+            symbol["dim_source"]["script_path"] = str(source)
+            symbol["evidence"] = _self_test_evidence(
+                source, paths["source_digest"], "x"
+            )
+
+        def plant_borrowed_dim_anchor(
+            manifests: list[dict[str, Any]], _: dict[str, Any]
+        ) -> None:
+            symbol = next(
+                item
+                for item in next(
+                    manifest
+                    for manifest in manifests
+                    if manifest["stage_id"] == "stage002"
+                )["symbols"]
+                if item["parse_alias"] == "x"
+            )
+            source = Path(paths["stage1_source"])
+            symbol["dim_source"]["script_path"] = str(source)
+            symbol["evidence"] = _self_test_evidence(
+                source, paths["source_digest"], "x"
+            )
+
+        paired_case(
+            "DIMENSIONAL_CONSISTENCY same-stage anchor rejects borrowed stage script",
+            "DIMENSIONAL_CONSISTENCY",
+            "FAIL",
+            "DIM_SOURCE_NOT_REGISTERED",
+            arrange_same_stage_dim_anchor,
+            plant_borrowed_dim_anchor,
+        )
+
+        def plant_citation_drift(
+            manifests: list[dict[str, Any]], _: dict[str, Any]
+        ) -> None:
+            _find_claim(
+                manifests, "stage001", "define_x"
+            )["payload"]["rhs"]["sympy"] = "3"
+
+        paired_case(
+            "C2 producer claim body drift with stable id",
+            "C2",
+            "FAIL",
+            "CITATION_DRIFT",
+            lambda m, c: None,
+            plant_citation_drift,
+        )
+
+        def plant_export_digest_mismatch(
+            manifests: list[dict[str, Any]], _: dict[str, Any]
+        ) -> None:
+            _find_export(
+                manifests, "stage001", "define_x"
+            )["source_digest"] = "0" * 64
+
+        paired_case(
+            "C3 export digest disagrees with claim evidence",
+            "C3",
+            "FAIL",
+            "EXPORT_DIGEST_MISMATCH",
+            lambda m, c: None,
+            plant_export_digest_mismatch,
+        )
+
+        def plant_wrong_first_failure(
+            manifests: list[dict[str, Any]], _: dict[str, Any]
+        ) -> None:
+            binding = _find_export(
+                manifests, "stage001", "zero_mode"
+            )["c7_binding"]
+            binding["mutation_command"] = paths["command"] + " --wrong-first"
+
+        paired_case(
+            "C7 mutation fires a different declared tooth",
+            "C7",
+            "FAIL",
+            "WRONG_FIRST_FAILURE",
+            lambda m, c: None,
+            plant_wrong_first_failure,
+        )
+
+        def plant_range_endpoint_drift(
+            manifests: list[dict[str, Any]], _: dict[str, Any]
+        ) -> None:
+            knob = next(
+                item
+                for item in next(
+                    manifest
+                    for manifest in manifests
+                    if manifest["stage_id"] == "stage001"
+                )["knobs"]
+                if item["registry_row"] == "row_a"
+            )
+            knob["count_effect"]["high"] = 2
+
+        paired_case(
+            "C5 lifecycle census endpoint drift",
+            "C5",
+            "FAIL",
+            "RANGE_ENDPOINT_DRIFT",
+            lambda m, c: None,
+            plant_range_endpoint_drift,
+        )
 
         total += 1
         schema_invalid_manifests = copy.deepcopy(baseline_manifests)

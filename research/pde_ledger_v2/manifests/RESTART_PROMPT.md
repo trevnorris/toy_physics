@@ -1,80 +1,70 @@
-# RESTART PROMPT — paste this after a compact / at the start of the next session
+# RESTART PROMPT — paste after compact / at session start
 
-> ⭐ **Read `research/pde_ledger_v2/manifests/PIVOT_TO_REWRITE.md` FIRST.** It supersedes
-> `LEDGER_WIDE_PLAN.md` §2.1–§2.2. Then `HANDOFF_NEXT_SESSION.md`, then repo-root
-> `docs/development_pipeline.md` (process). Do NOT read vision docs.
+> ⭐ **Read `research/pde_ledger_v2/manifests/REWRITE_HANDOFF.md` FIRST**, then
+> `notes/rewrite_reference_table.md` (per-stage data). Background = `manifests/PIVOT_TO_REWRITE.md`.
+> ⛔ Do NOT read survey-era docs (`HANDOFF_NEXT_SESSION.md`, `SURVEY_DIRECTIVE.md`, `PILOT_DIRECTIVE.md`)
+> — that approach is dead. Do NOT read vision docs.
 >
-> Branch `ledger-v2-rebuild`. The approach **changed on 2026-07-26** after two measurements:
-> we are **no longer surveying 43 scripts to discover idioms the module must accommodate**.
-> We **rewrite** each script's dimension handling onto a designed module, gated by a
-> cross-engine comparison harness plus the standing multi-AI red-team pass.
+> Branch `ledger-v2-rebuild`. **We are rewriting 30 audit scripts onto a shared dimension module,
+> one stage at a time. 2 are done (`adcfbdfd`), 28 remain.**
 >
-> **Why (do not re-litigate — evidence in `PIVOT_TO_REWRITE.md` §2):**
-> - `notes/parameter_register.md` covers only **105 / 226 = 46.5 %** of the scripts'
->   dimension-bearing quantities, its identity key is **not machine-readable**, stage042's
->   stiffness-basis quantities are **absent**, stage038's four-axis quantities are normalised into
->   `{L,T,M}` **with contradictory values**, and some rows claim dual-engine verification for stages
->   that **compute nothing dimensional**. It is an ORACLE for the 105 it covers, not a seed.
-> - There is **no single idiom to consolidate** — 6 basis conventions over 4 axis sets, including a
->   2-axis `(L,T)` (008) and a 4-axis (038); 8 scripts use fractional exponents.
+> **The per-stage loop** (REWRITE_HANDOFF §2): add print-only dimension output to the stage's `.wl` →
+> re-run and re-baseline its `.out` → **write the prediction down** → rewrite the `.py` onto
+> `scripts/ledger_dimensions.py` → compare `.py` vs `.wl` **axis-labelled** → commit.
+> Acceptance: `.py` exits 0 with an identical PASS multiset; `.wl` exits 0 with an unchanged tally and
+> reproduces its `.out` byte-identically after `$NNNNN` normalisation; zero unpredicted mismatches.
 >
-> **NEXT: build the cross-engine dimension comparison harness (task #20).**
-> ⭐ It does not exist — the two runners write to separate trees and **never diff**, and only 9 of 30
-> `.out` files print a computed exponent triple. Every dimension-bearing stage must print its computed
-> exponent triple; the harness diffs `.py` against `.wl` **on values**, not pass/fail.
-> **Why it is load-bearing:** the `.wl` only reveals a `.py` error when the declared dimension and its
-> assertion target *disagree*. A shared module supplies **both from one place**, so a module bug moves
-> them together and both stay green. It also catches the transposition class — 22 of 30 stages need
-> literals transposed between orderings, and a transposition error is symmetric, hence otherwise
-> invisible.
+> ⭐ **Why step (e) is mandatory:** transposing stage011's basis left the script **passing all 60
+> markers, exit 0** — a script's own assertions cannot see a transposition once both ends come from the
+> module. The labelled cross-engine comparison caught 7 of 10 values. It is the only thing between us
+> and a silent corpus-wide transposition.
 >
-> Then: fix the register's false provenance (#2 in §4) → design the module against **stage042 and
-> stage038 first** (the extremes that broke the register) → rewrite stage-by-stage, **adjudicating**
-> the 9 cross-stage conflicts (task #21) rather than transcribing them → red-team pass.
+> **FIRST TWO ACTIONS, in order:**
+> 1. **Settle the open decision in REWRITE_HANDOFF §7** — write stage038's and stage042's basis
+>    declarations on paper and confirm nothing in the module structurally blocks them. Short check, not
+>    a redesign. Cheap now; a re-run of groups A–C if discovered late.
+> 2. **Settle whether the `.py` should emit exponent triples** (§2 note). The pilot's comparison came
+>    from an **external in-process script**, not a transcript diff — so the cross-check is not currently
+>    reproducible from committed artifacts. Decide before scaling.
 >
-> **Operating model: THIN CONDUCTOR.** Agents return ≤12-line checkable receipts; full reports go to
-> disk and you read them only on a negative verdict. **Pass `model: opus` explicitly on every agent
-> dispatch.** Gate every Codex launch on a check that PRECEDES it (Codex snapshots its prompt into
-> argv). ⚠ **Never wait on `pgrep` for a pattern your own waiter contains** — that cost 6h43m on
-> 2026-07-26; wait on the captured PID from a pidfile, or on artifact + log quiescence.
-> Grok is the default tertiary reviewer, not GLM.
+> Then **group A** in order: 012, 013, 018, 016, 023, 027, 021.
+> ⭐ Group A first because the 9 stages whose `.out` already renders computed values are exactly the
+> `(L,M,T)` group plus 004 — no `.wl` edit and no Mathematica seat needed. 012/013 reuse stage011's
+> scaffolding almost verbatim.
 >
-> Standing principles that decided most calls: **findings are the product, green is not the goal**;
-> **a rule whose only honest outcome is an invented value is worse than no rule**; **a check that
-> cannot fail is worse than no check**; and **if each fix bans a spelling and the next probe evades
-> it, the architecture is wrong.**
+> ⚠ **Adjudication lands at group A step 2**: `K_eta` carries three different dimensions across
+> 013/016/023. **Stop and bring it to the user** — it is a question about the model, not the code. There
+> are **13** such conflicts, not the 9 listed in PIVOT §3.
+>
+> **Gotchas:** `grep -c '^PASS'` over-counts by exactly 1 (the tally line self-matches) · Codex needs
+> `--sandbox danger-full-access` for Mathematica · **never >2 concurrent `math -script`** · never wait
+> on a `pgrep` pattern your own waiter contains (cost 6h43m).
+>
+> **Landmines** (REWRITE_HANDOFF §5): stage003's `.wl` is `(M,L,T)` and says so nowhere · stage042's
+> `.wl` comment mislabels its basis · stage021 emits three renderings under two conventions · **five
+> stages where the `.wl` print step is impossible**: 037, 036, 035, 044, 042.
+>
+> **Operating model:** thin conductor, agents return ≤12-line receipts, `model: opus` on every dispatch,
+> gate every Codex launch on a check that precedes it. **Do not build a corpus-wide inventory, oracle,
+> or completeness proof** — three such gates were specified and rejected; the per-stage loop replaces
+> them. **Do not generalise the module beyond what the stage in front of you needs.**
 
 ---
 
-## Quick state table
+## State
 
 | Item | State |
 |---|---|
-| Approach | ⭐ **PIVOTED** to rewrite-and-gate (`PIVOT_TO_REWRITE.md`) |
-| Scripts surveyed | **0 / 43** — survey premise is dead, apparatus parked |
-| Cross-engine harness | ⏭ **NEXT (task #20)** — does not exist |
-| Shared module | not started; design against 042 + 038 first |
-| SymPy baseline | ✅ 43/43 exit 0, reproducible |
-| Mathematica `.out` determinism | ✅ 44/44 reproduce after `$NNNNN` normalisation |
-| Survey apparatus | ⏸ parked: schemas + validator committed (`35dc6aa0`), 173 fixtures green, directive at r18 |
+| Module | ✅ `scripts/ledger_dimensions.py`, 179 lines, axis-labelled + per-stage basis |
+| Stages done | **2 / 30** — stage004 `(L,T,M)`, stage011 `(L,M,T)` (`adcfbdfd`) |
+| Remaining | **28** (dim lines 3,752 → 3,675) |
+| Cross-check | ✅ proven able-to-fail (7/10 caught on a deliberate transposition) |
+| Open decisions | §7 four-axis/stiffness paper check · `.py` triple emission |
+| Conflicts | **13**, first at group A step 2 (`K_eta`, 013/016/023) |
 
-## Open findings carried forward (catalogue, do not silently fix)
-`PIVOT_TO_REWRITE.md` §3 — **9 cross-stage dimension conflicts** (`K_eta` has three values; `r_BA`
-computed in incompatible unit systems; `A_E` 038-vs-037; `ε0/ε1` vs `Z0_ret/Z1_ret`; `M0`; `μ_η`/`T_w`),
-plus **tautological checks in committed work**: stage031 has 20 of 21 `PASS_UNITS_*` rows comparing an
-expression to a copy of itself, and stage017 asserts a hardcoded `True` in both engines (task #22).
-Register locus mis-attribution (stage017/stage015) — task in §4.2.
-
-## Weakened gate — do not reuse "identical PASS counts" naively
-16 scripts emit no `PASS tally:` (001–003, 016–028); the **ordered** marker list is not stable
-(stage007 swaps two adjacent lines between baseline runs); duplicates lose 6 under set comparison
-(stage013 ×5, stage042 ×1). Use a **multiset** comparison, plus the harness, plus `mathematica/out/`
-byte-identity after `$NNNNN` normalisation.
-
-## Do not re-do
-`.out` determinism probe · SymPy baseline · the two measurements
-(`notes/measure_register_sufficiency.md`, `notes/measure_rewrite_feasibility.md`) · repair round 8.
+## Do not redo
+`.out` determinism (44/44) · SymPy baseline (43/43 exit 0) · the two measurements
+(`notes/measure_*.md`) · the reference table · repair round 8 (parked, survey-era).
 
 ## Parked, only if the survey is revived
-Tasks #12 (4-script pilot), #16 (pilot directive), #17 (F3 ownership on `REAL+ABSENT`), #18 (checker
-basename surrogate), #19 (multi-locus `any()` acceptance), #13 (computed register adjudication).
+`schemas/` + validator (`35dc6aa0`, 173 fixtures green), `SURVEY_DIRECTIVE.md` r18, tasks #12/#13/#16–#19.

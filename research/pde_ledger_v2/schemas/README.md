@@ -1,6 +1,6 @@
 # Dimension-survey schemas
 
-These files implement the document shapes fixed by `SURVEY_DIRECTIVE.md` r17:
+These files implement the document shapes fixed by `SURVEY_DIRECTIVE.md` r18:
 
 - `dimension_survey_report_v1.yaml` governs one per-script survey report.
 - `dimension_survey_verification_v1.yaml` governs one independent verifier output.
@@ -32,12 +32,40 @@ statuses are checked by the same whitespace-only comparison as the register
 channel.
 
 An explicit `dim_source_text` must occur at its cited source and carry
-`dim_text_form` plus a `basis_locus` from the report's declared basis.
-`NAMED_AXIS` requires a standalone source or interpreted axis spelling (or
-exactly `1` for dimensionless); identifier fragments such as the `time` in
-`run_time` do not qualify. `POSITIONAL` binds an ordered component sequence to
-the cited basis and requires one component per declared axis. There is no
-length floor: honest `M`, `T⁻²`, and `L⁻¹` values are valid.
+`dim_text_form`. **`basis_locus` is required exactly on `EXPLICIT_* +
+POSITIONAL`, and forbidden on `EXPLICIT_* + NAMED_AXIS`, `EXPLICIT_* +
+DIMENSIONLESS_CONSTRUCTOR`, and every non-`EXPLICIT_*` entry.**
+`NAMED_AXIS` parses as a named-axis expression and requires a standalone source
+or interpreted axis spelling (or exactly `1` for dimensionless); identifier
+fragments such as the `time` in `run_time` do not qualify. Both the bare named
+dimension and a fuller verbatim named expression are legal.
+
+`POSITIONAL` must parse in its entirety as an ordered component sequence, binds
+that sequence to the cited basis, and requires one component per declared axis.
+For an arg-bearing constructor or factory, record only the narrow verbatim
+parenthesized arguments—not the assignment or call wrapper. At
+`scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py:218`, record
+`LENGTH = Dim(1, 0, 0)` as `dim_source_text: '(1, 0, 0)'`. The lowercase
+factories have opposite orders: stage002's definition at
+`scripts/ledger_stage002_matter_stress_force_assembly_sympy_audit.py:69` is
+`def dim(l_power: int, t_power: int, m_power: int) -> Dim:`, so its `:199`
+call uses `(L,T,M)` and records `'(1, 0, 0)'`; stage003's definition at
+`scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py:87`
+is `def dim(m_power: int, l_power: int, t_power: int) -> Dim:`, so its `:866`
+call uses `(M,L,T)` and records `'(1, -1, -2)'`. Read the local `def` line
+before assigning axes.
+
+`DIMENSIONLESS_CONSTRUCTOR` records the complete zero-argument call, for
+example `dim_source_text: 'Dim()'` at
+`scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py:143`.
+It accepts only when the bare-name module-scope callee has exactly one lexical
+binding event in the whole module: a preceding in-file `class`/`def` cited by
+this report as its dimension machinery. Qualified, conditional, imported,
+parameter-bound, and non-module forms reject as unsupported; an unmodelled
+binding construct rejects fail-closed. Those diagnostics say the form is not
+recordable and direct the surveyor to `UNDETERMINED` plus a finding rather than
+inventing a binding. There is no length floor: honest `M`, `T⁻²`, and `L⁻¹`
+values are valid.
 
 `qualified_scope` records a lexical scope, with an optional terminal binding
 or mapping-key spelling. For stage042's `dims` keys, all of
@@ -79,7 +107,7 @@ Only committed records under `schemas/examples/` may use
 
 ## Committed example gate
 
-The committed gate covers every §3.0 classification, both r17 ownership
+The committed gate covers every §3.0 classification, both r18 ownership
 coverage cases, all register and Mathematica evidence states, a valid verifier
 `overall_verdict: FAIL`, and at least one minimal reject fixture for every
 declared rule:

@@ -2,7 +2,7 @@ $schema: "https://json-schema.org/draft/2020-12/schema"
 $id: "https://toy-physics.invalid/schemas/dimension_survey_report_v1.yaml"
 title: Dimension survey per-script report, version 1
 description: >-
-  Structural schema for SURVEY_DIRECTIVE.md r17 sections 3 and 4.0.  The
+  Structural schema for SURVEY_DIRECTIVE.md r18 sections 3 and 4.0.  The
   companion validator applies the cross-field rules named in x-directive-rules.
 type: object
 additionalProperties: false
@@ -96,7 +96,7 @@ x-enums:
     - EXPLICIT_STAGE_NOTE
     - CONSTRAINED_BUT_NOT_STATED
     - UNDETERMINED
-  dim_text_form: [NAMED_AXIS, POSITIONAL]
+  dim_text_form: [NAMED_AXIS, POSITIONAL, DIMENSIONLESS_CONSTRUCTOR]
   register_evidence_status:
     - TEXT_IDENTICAL
     - TEXT_DIFFERS
@@ -213,12 +213,24 @@ x-directive-rules:
     Every EXPLICIT_* status requires dim_source_text whose token sequence
     occurs at one of dimension_source_loci, allowing differences only in
     whitespace, indentation, and line wrapping. Every such entry declares its
-    dim_text_form and cites an axis_evidence/orders locus from this report.
-    NAMED_AXIS contains a standalone source or interpreted axis spelling, or
-    exactly 1 for dimensionless. POSITIONAL contains an ordered component
-    sequence whose arity equals this report's declared axis count. There is no
-    character-count floor. Source-kind status must match the cited Python, WL,
-    stage-note, or real parameter-register source.
+    dim_text_form. basis_locus is required exactly on EXPLICIT_* + POSITIONAL,
+    and forbidden on EXPLICIT_* + NAMED_AXIS, EXPLICIT_* +
+    DIMENSIONLESS_CONSTRUCTOR, and every non-EXPLICIT_* entry. NAMED_AXIS
+    parses as a named-axis expression containing a standalone source or
+    interpreted axis spelling, or exactly 1 for dimensionless. POSITIONAL
+    parses in its entirety as an ordered component sequence whose arity equals
+    this report's declared axis count; for an arg-bearing constructor or
+    factory, record only the verbatim parenthesized argument span, not the
+    assignment or call wrapper. There is no character-count floor. Source-kind
+    status must match the cited Python, WL, stage-note, or real
+    parameter-register source.
+  REPORT_DIMENSION_CONSTRUCTOR_BINDING: >-
+    DIMENSIONLESS_CONSTRUCTOR records a complete source-present zero-argument
+    call whose bare-name callee resolves at a module-scope assignment to
+    exactly one whole-module lexical binding event: a preceding class/def in
+    this file that is the construct this report cites as its dimension
+    machinery. Unsupported resolution forms and unmodelled binding constructs
+    reject fail-closed under this rule.
   REPORT_EVIDENCE_RECORDS: >-
     register_evidence and wl_evidence preserve whole verbatim text and real
     single-row loci. TEXT_IDENTICAL/TEXT_DIFFERS are decided only by comparing
@@ -829,7 +841,7 @@ $defs:
       dim_source_text:
         $ref: "#/$defs/stringFact"
       dim_text_form:
-        enum: [NAMED_AXIS, POSITIONAL]
+        enum: [NAMED_AXIS, POSITIONAL, DIMENSIONLESS_CONSTRUCTOR]
       basis_locus:
         $ref: "#/$defs/locus"
       ownership:
@@ -856,7 +868,18 @@ $defs:
                     - EXPLICIT_PARAMETER_REGISTER
                     - EXPLICIT_STAGE_NOTE
         then:
-          required: [dim_text_form, basis_locus]
+          required: [dim_text_form]
+          allOf:
+            - if:
+                required: [dim_text_form]
+                properties:
+                  dim_text_form:
+                    const: POSITIONAL
+              then:
+                required: [basis_locus]
+              else:
+                not:
+                  required: [basis_locus]
         else:
           not:
             anyOf:

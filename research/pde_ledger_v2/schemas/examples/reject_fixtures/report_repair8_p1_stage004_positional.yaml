@@ -1,0 +1,12 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_rule_fixture_accept.yaml
+mutations:
+  - {op: replace, path: [identity, stage], value: "004"}
+  - {op: replace, path: [identity, script_path, value], value: scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py}
+  - {op: replace, path: [static_recovery_surface, items, 0, current_checker_visibility, loci], value: [synthetic/rule_fixture.py:1, research/pde_ledger_v2/manifests/composite_build.py:1]}
+  - {op: replace, path: [quantities, items, 0, dimension_value_status], value: {value: EXPLICIT_PY, loci: [scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py:143]}}
+  - {op: replace, path: [quantities, items, 0, dimension_source_loci], value: {items: [scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py:143]}}
+  - {op: replace, path: [quantities, items, 0, dim_source_text], value: {value: "Dim()", loci: [scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py:143]}}
+  - {op: replace, path: [quantities, items, 0, dim_text_form], value: POSITIONAL}
+  - {op: add, path: [quantities, items, 0, basis_locus], value: synthetic/rule_fixture.py:1}
+  - {op: replace, path: [wl_evidence], value: {states_dimensions: {value: false, loci: [synthetic/rule_fixture.wl:1]}, pairs: {items: [], reason: No paired WL constructor evidence is used by this fixture.}}}

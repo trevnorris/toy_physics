@@ -89,7 +89,6 @@ quantities:
         value: L
         loci: [scripts/ledger_stage027_port_checks_closure_sympy_audit.py:793]
       dim_text_form: NAMED_AXIS
-      basis_locus: synthetic/rule_fixture.py:1
       ownership: {value: CHECK_LOCAL, loci: *locus_one}
       binding_refs: {items: [fixture.binding.x]}
       register_evidence:

@@ -88,7 +88,6 @@ quantities:
         value: ""
         loci: [synthetic/real_absent_note.md:12]
       dim_text_form: NAMED_AXIS
-      basis_locus: synthetic/real_absent_note.md:12
       ownership:
         value: MODULE_OWNED
         loci: [synthetic/real_absent_note.md:10-12]

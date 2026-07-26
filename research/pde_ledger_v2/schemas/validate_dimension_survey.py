@@ -189,6 +189,29 @@ class RegisterRow:
         return re.match(r"^pending(?:\s|\()", self.dimension_cell) is not None
 
 
+@dataclass(frozen=True)
+class BindingEvent:
+    kind: str
+    line: int
+    conditional: bool
+
+
+@dataclass(frozen=True)
+class ConstructorBindingCheck:
+    accepted: bool
+    message: str
+    event_count: int | None
+    events: tuple[BindingEvent, ...] = ()
+    unmodelled_construct: str | None = None
+
+
+class UnmodelledBindingConstruct(Exception):
+    def __init__(self, node: ast.AST):
+        self.kind = type(node).__name__
+        self.line = getattr(node, "lineno", 0)
+        super().__init__(f"{self.kind} at line {self.line}")
+
+
 def problem(code: str, path: str, message: str) -> Problem:
     return Problem(code=code, path=path or "$", message=message)
 
@@ -709,32 +732,76 @@ def report_preflight(report: Any, document_path: Path | None = None) -> list[Pro
             for locus in items(quantity.get("dimension_source_loci"))
             if isinstance(locus, str)
         ]
-        if (
-            status in EXPLICIT_DIMENSION_STATUSES
-            and (
-                not isinstance(source_text, str)
-                or not source_tokens(source_text)
-                or not explicit_dimension_text_matches_declared_basis(
-                    quantity,
-                    report,
+        if status in EXPLICIT_DIMENSION_STATUSES:
+            form = quantity.get("dim_text_form")
+            basis_locus = quantity.get("basis_locus")
+            applicability_valid = (
+                (
+                    form == "POSITIONAL"
+                    and isinstance(basis_locus, str)
+                    and basis_locus in declared_basis_loci(report)
                 )
-                or document_path is None
-                or not any(
+                or (
+                    form in {"NAMED_AXIS", "DIMENSIONLESS_CONSTRUCTOR"}
+                    and basis_locus is None
+                )
+            )
+            text_present = (
+                isinstance(source_text, str)
+                and bool(source_tokens(source_text))
+                and document_path is not None
+                and any(
                     source_text_occurs_at_locus(source_text, locus, document_path)
                     for locus in source_loci
                 )
             )
-        ):
-            result.append(
-                problem(
-                    "REPORT_EXPLICIT_DIM_SOURCE_TEXT",
-                    f"$.quantities.items[{index}].dim_source_text",
-                    f"{status} requires source-present dimension text with a valid "
-                    "dim_text_form and in-report basis_locus; NAMED_AXIS uses a "
-                    "standalone declared spelling (or exactly 1), while POSITIONAL "
-                    "requires one component per declared axis",
+            if not applicability_valid:
+                result.append(
+                    problem(
+                        "REPORT_EXPLICIT_DIM_SOURCE_TEXT",
+                        f"$.quantities.items[{index}].basis_locus",
+                        "basis_locus is required exactly on EXPLICIT_* + POSITIONAL, "
+                        "and forbidden on EXPLICIT_* + NAMED_AXIS, EXPLICIT_* + "
+                        "DIMENSIONLESS_CONSTRUCTOR, and every non-EXPLICIT_* entry. "
+                        "Record an in-report basis locus for POSITIONAL; remove "
+                        "basis_locus for NAMED_AXIS or DIMENSIONLESS_CONSTRUCTOR; "
+                        "record neither explicit-value field off EXPLICIT_*",
+                    )
                 )
-            )
+            elif form == "DIMENSIONLESS_CONSTRUCTOR" and text_present:
+                if document_path is not None:
+                    binding = dimensionless_constructor_binding_check(
+                        quantity,
+                        report,
+                        document_path,
+                    )
+                    if not binding.accepted:
+                        result.append(
+                            problem(
+                                "REPORT_DIMENSION_CONSTRUCTOR_BINDING",
+                                f"$.quantities.items[{index}].dim_source_text",
+                                binding.message,
+                            )
+                        )
+            elif (
+                not text_present
+                or not explicit_dimension_text_matches_declared_basis(
+                    quantity,
+                    report,
+                )
+            ):
+                result.append(
+                    problem(
+                        "REPORT_EXPLICIT_DIM_SOURCE_TEXT",
+                        f"$.quantities.items[{index}].dim_source_text",
+                        f"{status} requires source-present dimension text in exactly "
+                        "the recorded form. NAMED_AXIS parses as a standalone declared "
+                        "spelling (or exactly 1). POSITIONAL parses in its entirety as "
+                        "one component per declared axis; for an arg-bearing constructor "
+                        "or factory, record only its verbatim parenthesized argument span "
+                        "(for example '(1, 0, 0)'), not the assignment or call wrapper",
+                    )
+                )
         expected_source_field = {
             "EXPLICIT_PY": "script_path",
             "EXPLICIT_WL": "wl_path",
@@ -2129,6 +2196,820 @@ def positional_component_count(source_text: str) -> int | None:
     return wl_sequence_component_count(source_text)
 
 
+class ModuleBindingEnumerator:
+    """Enumerate lexical events that can affect one module-scope name.
+
+    Statement, expression, target, and pattern dispatches are deliberately
+    closed.  A node that reaches no shared branch raises
+    ``UnmodelledBindingConstruct``; callers must reject rather than silently
+    skip it.
+    """
+
+    def __init__(self, name: str):
+        self.name = name
+        self.events: list[BindingEvent] = []
+        self._nested_global_scope = False
+
+    def enumerate(self, tree: ast.Module) -> tuple[BindingEvent, ...]:
+        for statement in tree.body:
+            self._statement(statement, conditional_depth=0)
+        return tuple(sorted(self.events, key=lambda event: (event.line, event.kind)))
+
+    def _event(self, kind: str, node: ast.AST, conditional_depth: int) -> None:
+        self.events.append(
+            BindingEvent(
+                kind=kind,
+                line=getattr(node, "lineno", 0),
+                conditional=conditional_depth > 0,
+            )
+        )
+
+    def _target(
+        self,
+        target: ast.AST,
+        kind: str,
+        owner: ast.AST,
+        conditional_depth: int,
+        *,
+        binding: bool = True,
+    ) -> None:
+        if isinstance(target, ast.Name):
+            if binding and target.id == self.name:
+                self._event(kind, owner, conditional_depth)
+            return
+        if isinstance(target, (ast.Tuple, ast.List)):
+            for element in target.elts:
+                self._target(
+                    element,
+                    kind,
+                    owner,
+                    conditional_depth,
+                    binding=binding,
+                )
+            return
+        if isinstance(target, ast.Starred):
+            self._target(
+                target.value,
+                kind,
+                owner,
+                conditional_depth,
+                binding=binding,
+            )
+            return
+        if isinstance(target, ast.Attribute):
+            self._expression(target.value, conditional_depth)
+            return
+        if isinstance(target, ast.Subscript):
+            self._expression(target.value, conditional_depth)
+            self._expression(target.slice, conditional_depth)
+            return
+        raise UnmodelledBindingConstruct(target)
+
+    def _arguments_evaluated_in_enclosing_scope(
+        self,
+        arguments: ast.arguments,
+        conditional_depth: int,
+    ) -> None:
+        for default in arguments.defaults:
+            self._expression(default, conditional_depth)
+        for default in arguments.kw_defaults:
+            if default is not None:
+                self._expression(default, conditional_depth)
+        for argument in (
+            list(arguments.posonlyargs)
+            + list(arguments.args)
+            + list(arguments.kwonlyargs)
+        ):
+            if argument.annotation is not None:
+                self._expression(argument.annotation, conditional_depth)
+        if arguments.vararg is not None and arguments.vararg.annotation is not None:
+            self._expression(arguments.vararg.annotation, conditional_depth)
+        if arguments.kwarg is not None and arguments.kwarg.annotation is not None:
+            self._expression(arguments.kwarg.annotation, conditional_depth)
+
+    def _scope_declares_global(self, statements: Sequence[ast.stmt]) -> bool:
+        for statement in statements:
+            if isinstance(statement, ast.Global) and self.name in statement.names:
+                return True
+            if isinstance(
+                statement,
+                (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef),
+            ):
+                continue
+            for body in self._same_scope_child_bodies(statement):
+                if self._scope_declares_global(body):
+                    return True
+        return False
+
+    @staticmethod
+    def _same_scope_child_bodies(statement: ast.stmt) -> tuple[list[ast.stmt], ...]:
+        if isinstance(statement, (ast.For, ast.AsyncFor, ast.While, ast.If)):
+            return statement.body, statement.orelse
+        if isinstance(statement, (ast.With, ast.AsyncWith)):
+            return (statement.body,)
+        if isinstance(statement, (ast.Try, getattr(ast, "TryStar", ast.Try))):
+            handler_bodies = tuple(handler.body for handler in statement.handlers)
+            return (statement.body, statement.orelse, statement.finalbody, *handler_bodies)
+        if isinstance(statement, ast.Match):
+            return tuple(case.body for case in statement.cases)
+        return ()
+
+    def _inspect_nested_scope(self, statements: Sequence[ast.stmt]) -> None:
+        if self._scope_declares_global(statements):
+            previous = self._nested_global_scope
+            self._nested_global_scope = True
+            try:
+                for statement in statements:
+                    self._statement(statement, conditional_depth=0)
+            finally:
+                self._nested_global_scope = previous
+            return
+        self._find_deeper_scopes(statements)
+
+    def _find_deeper_scopes(self, statements: Sequence[ast.stmt]) -> None:
+        for statement in statements:
+            if isinstance(
+                statement,
+                (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef),
+            ):
+                self._inspect_nested_scope(statement.body)
+                continue
+            for body in self._same_scope_child_bodies(statement):
+                self._find_deeper_scopes(body)
+
+    def _definition(
+        self,
+        node: ast.FunctionDef | ast.AsyncFunctionDef,
+        conditional_depth: int,
+    ) -> None:
+        if node.name == self.name:
+            self._event(type(node).__name__, node, conditional_depth)
+        for decorator in node.decorator_list:
+            self._expression(decorator, conditional_depth)
+        self._arguments_evaluated_in_enclosing_scope(node.args, conditional_depth)
+        if node.returns is not None:
+            self._expression(node.returns, conditional_depth)
+        if getattr(node, "type_params", ()):
+            raise UnmodelledBindingConstruct(node)
+        self._inspect_nested_scope(node.body)
+
+    def _class_definition(self, node: ast.ClassDef, conditional_depth: int) -> None:
+        if node.name == self.name:
+            self._event("ClassDef", node, conditional_depth)
+        for decorator in node.decorator_list:
+            self._expression(decorator, conditional_depth)
+        for base in node.bases:
+            self._expression(base, conditional_depth)
+        for keyword in node.keywords:
+            self._expression(keyword.value, conditional_depth)
+        if getattr(node, "type_params", ()):
+            raise UnmodelledBindingConstruct(node)
+        self._inspect_nested_scope(node.body)
+
+    def _statement(self, node: ast.stmt, conditional_depth: int) -> None:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            self._definition(node, conditional_depth)
+            return
+        if isinstance(node, ast.ClassDef):
+            self._class_definition(node, conditional_depth)
+            return
+        if isinstance(node, ast.Return):
+            if node.value is not None:
+                self._expression(node.value, conditional_depth)
+            return
+        if isinstance(node, ast.Delete):
+            for target in node.targets:
+                self._target(target, "Delete", node, conditional_depth)
+            return
+        if isinstance(node, ast.Assign):
+            self._expression(node.value, conditional_depth)
+            for target in node.targets:
+                self._target(target, "Assign", node, conditional_depth)
+            return
+        if isinstance(node, ast.AugAssign):
+            self._target(node.target, "AugAssign", node, conditional_depth)
+            self._expression(node.value, conditional_depth)
+            return
+        if isinstance(node, ast.AnnAssign):
+            self._expression(node.annotation, conditional_depth)
+            if node.value is None:
+                self._target(
+                    node.target,
+                    "AnnAssign",
+                    node,
+                    conditional_depth,
+                    binding=False,
+                )
+            else:
+                self._expression(node.value, conditional_depth)
+                self._target(node.target, "AnnAssign", node, conditional_depth)
+            return
+        if isinstance(node, (ast.For, ast.AsyncFor)):
+            self._expression(node.iter, conditional_depth)
+            self._target(node.target, type(node).__name__, node, conditional_depth + 1)
+            for statement in node.body:
+                self._statement(statement, conditional_depth + 1)
+            for statement in node.orelse:
+                self._statement(statement, conditional_depth + 1)
+            return
+        if isinstance(node, ast.While):
+            self._expression(node.test, conditional_depth)
+            for statement in node.body:
+                self._statement(statement, conditional_depth + 1)
+            for statement in node.orelse:
+                self._statement(statement, conditional_depth + 1)
+            return
+        if isinstance(node, ast.If):
+            self._expression(node.test, conditional_depth)
+            for statement in node.body:
+                self._statement(statement, conditional_depth + 1)
+            for statement in node.orelse:
+                self._statement(statement, conditional_depth + 1)
+            return
+        if isinstance(node, (ast.With, ast.AsyncWith)):
+            for entry in node.items:
+                self._expression(entry.context_expr, conditional_depth)
+                if entry.optional_vars is not None:
+                    self._target(
+                        entry.optional_vars,
+                        f"{type(node).__name__}As",
+                        node,
+                        conditional_depth,
+                    )
+            for statement in node.body:
+                self._statement(statement, conditional_depth)
+            return
+        try_nodes = (ast.Try,)
+        if hasattr(ast, "TryStar"):
+            try_nodes += (ast.TryStar,)
+        if isinstance(node, try_nodes):
+            for statement in node.body:
+                self._statement(statement, conditional_depth + 1)
+            for handler in node.handlers:
+                if handler.type is not None:
+                    self._expression(handler.type, conditional_depth)
+                if handler.name == self.name:
+                    self._event("ExceptHandlerAs", handler, conditional_depth + 1)
+                for statement in handler.body:
+                    self._statement(statement, conditional_depth + 1)
+            for statement in node.orelse:
+                self._statement(statement, conditional_depth + 1)
+            for statement in node.finalbody:
+                self._statement(statement, conditional_depth + 1)
+            return
+        if isinstance(node, ast.Match):
+            self._expression(node.subject, conditional_depth)
+            for case in node.cases:
+                self._pattern(case.pattern, conditional_depth + 1)
+                if case.guard is not None:
+                    self._expression(case.guard, conditional_depth + 1)
+                for statement in case.body:
+                    self._statement(statement, conditional_depth + 1)
+            return
+        if isinstance(node, (ast.Raise, ast.Assert)):
+            values: list[ast.expr | None]
+            if isinstance(node, ast.Raise):
+                values = [node.exc, node.cause]
+            else:
+                values = [node.test, node.msg]
+            for value in values:
+                if value is not None:
+                    self._expression(value, conditional_depth)
+            return
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                bound = alias.asname or alias.name.split(".", 1)[0]
+                if bound == self.name:
+                    self._event("Import", node, conditional_depth)
+            return
+        if isinstance(node, ast.ImportFrom):
+            for alias in node.names:
+                if alias.name == "*":
+                    self._event("ImportFromStar", node, conditional_depth)
+                    continue
+                bound = alias.asname or alias.name
+                if bound == self.name:
+                    self._event("ImportFrom", node, conditional_depth)
+            return
+        if isinstance(node, (ast.Global, ast.Nonlocal, ast.Pass, ast.Break, ast.Continue)):
+            return
+        if isinstance(node, ast.Expr):
+            self._expression(node.value, conditional_depth)
+            return
+        raise UnmodelledBindingConstruct(node)
+
+    def _pattern(self, node: ast.pattern, conditional_depth: int) -> None:
+        if isinstance(node, (ast.MatchValue, ast.MatchSingleton)):
+            if isinstance(node, ast.MatchValue):
+                self._expression(node.value, conditional_depth)
+            return
+        if isinstance(node, ast.MatchSequence):
+            for pattern in node.patterns:
+                self._pattern(pattern, conditional_depth)
+            return
+        if isinstance(node, ast.MatchMapping):
+            for key in node.keys:
+                self._expression(key, conditional_depth)
+            for pattern in node.patterns:
+                self._pattern(pattern, conditional_depth)
+            if node.rest == self.name:
+                self._event("MatchMappingRest", node, conditional_depth)
+            return
+        if isinstance(node, ast.MatchClass):
+            self._expression(node.cls, conditional_depth)
+            for pattern in (*node.patterns, *node.kwd_patterns):
+                self._pattern(pattern, conditional_depth)
+            return
+        if isinstance(node, ast.MatchStar):
+            if node.name == self.name:
+                self._event("MatchStar", node, conditional_depth)
+            return
+        if isinstance(node, ast.MatchAs):
+            if node.pattern is not None:
+                self._pattern(node.pattern, conditional_depth)
+            if node.name == self.name:
+                self._event("MatchAs", node, conditional_depth)
+            return
+        if isinstance(node, ast.MatchOr):
+            for pattern in node.patterns:
+                self._pattern(pattern, conditional_depth)
+            return
+        raise UnmodelledBindingConstruct(node)
+
+    def _comprehension(
+        self,
+        generators: Sequence[ast.comprehension],
+        values: Sequence[ast.expr],
+        conditional_depth: int,
+    ) -> None:
+        if generators:
+            self._expression(generators[0].iter, conditional_depth)
+        for index, generator in enumerate(generators):
+            self._target(
+                generator.target,
+                "ComprehensionTarget",
+                generator,
+                conditional_depth,
+                binding=False,
+            )
+            if index:
+                self._expression(generator.iter, conditional_depth)
+            for condition in generator.ifs:
+                self._expression(condition, conditional_depth)
+        for value in values:
+            self._expression(value, conditional_depth)
+
+    def _expression(self, node: ast.expr, conditional_depth: int) -> None:
+        if isinstance(node, ast.NamedExpr):
+            if isinstance(node.target, ast.Name) and node.target.id == self.name:
+                if self._nested_global_scope:
+                    self._expression(node.value, conditional_depth)
+                    self._event("NamedExpr", node, conditional_depth)
+                    return
+            if isinstance(node.target, ast.Name) and node.target.id != self.name:
+                self._expression(node.value, conditional_depth)
+                return
+            # A module-scope target equal to the callee deliberately reaches the
+            # common unmodelled-node fallback at the end of this dispatcher.
+        if isinstance(node, ast.BoolOp):
+            for value in node.values:
+                self._expression(value, conditional_depth)
+            return
+        if isinstance(node, ast.BinOp):
+            self._expression(node.left, conditional_depth)
+            self._expression(node.right, conditional_depth)
+            return
+        if isinstance(node, ast.UnaryOp):
+            self._expression(node.operand, conditional_depth)
+            return
+        if isinstance(node, ast.Lambda):
+            self._arguments_evaluated_in_enclosing_scope(node.args, conditional_depth)
+            return
+        if isinstance(node, ast.IfExp):
+            self._expression(node.test, conditional_depth)
+            self._expression(node.body, conditional_depth + 1)
+            self._expression(node.orelse, conditional_depth + 1)
+            return
+        if isinstance(node, ast.Dict):
+            for key, value in zip(node.keys, node.values):
+                if key is not None:
+                    self._expression(key, conditional_depth)
+                self._expression(value, conditional_depth)
+            return
+        if isinstance(node, (ast.Set, ast.List, ast.Tuple)):
+            for element in node.elts:
+                self._expression(element, conditional_depth)
+            return
+        if isinstance(node, ast.ListComp):
+            self._comprehension(node.generators, [node.elt], conditional_depth)
+            return
+        if isinstance(node, ast.SetComp):
+            self._comprehension(node.generators, [node.elt], conditional_depth)
+            return
+        if isinstance(node, ast.GeneratorExp):
+            self._comprehension(node.generators, [node.elt], conditional_depth)
+            return
+        if isinstance(node, ast.DictComp):
+            self._comprehension(
+                node.generators,
+                [node.key, node.value],
+                conditional_depth,
+            )
+            return
+        if isinstance(node, (ast.Await, ast.Yield, ast.YieldFrom)):
+            value = node.value
+            if value is not None:
+                self._expression(value, conditional_depth)
+            return
+        if isinstance(node, ast.Compare):
+            self._expression(node.left, conditional_depth)
+            for comparator in node.comparators:
+                self._expression(comparator, conditional_depth)
+            return
+        if isinstance(node, ast.Call):
+            self._expression(node.func, conditional_depth)
+            for argument in node.args:
+                self._expression(argument, conditional_depth)
+            for keyword in node.keywords:
+                self._expression(keyword.value, conditional_depth)
+            return
+        if isinstance(node, ast.FormattedValue):
+            self._expression(node.value, conditional_depth)
+            if node.format_spec is not None:
+                self._expression(node.format_spec, conditional_depth)
+            return
+        if isinstance(node, ast.JoinedStr):
+            for value in node.values:
+                self._expression(value, conditional_depth)
+            return
+        if isinstance(node, (ast.Constant, ast.Name)):
+            return
+        if isinstance(node, ast.Attribute):
+            self._expression(node.value, conditional_depth)
+            return
+        if isinstance(node, ast.Subscript):
+            self._expression(node.value, conditional_depth)
+            self._expression(node.slice, conditional_depth)
+            return
+        if isinstance(node, ast.Starred):
+            self._expression(node.value, conditional_depth)
+            return
+        if isinstance(node, ast.Slice):
+            for value in (node.lower, node.upper, node.step):
+                if value is not None:
+                    self._expression(value, conditional_depth)
+            return
+        raise UnmodelledBindingConstruct(node)
+
+
+def source_path_for_locus(raw_locus: str, document_path: Path) -> Path | None:
+    parsed = parsed_locus(raw_locus)
+    if parsed is None:
+        return None
+    for candidate in locus_file_candidates(parsed[0], document_path):
+        if candidate.is_file():
+            return candidate.resolve()
+    return None
+
+
+def node_overlaps_locus(node: ast.AST, start: int, end: int) -> bool:
+    node_start = getattr(node, "lineno", 0)
+    node_end = getattr(node, "end_lineno", node_start)
+    return node_start <= end and start <= node_end
+
+
+def enclosing_lexical_scope(node: ast.AST, parents: Mapping[ast.AST, ast.AST]) -> str:
+    current = parents.get(node)
+    while current is not None:
+        if isinstance(current, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            return "function"
+        if isinstance(current, ast.ClassDef):
+            return "class"
+        if isinstance(current, ast.Lambda):
+            return "lambda"
+        if isinstance(current, (ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp)):
+            return "comprehension"
+        current = parents.get(current)
+    return "module"
+
+
+def direct_call_at_locus(
+    tree: ast.Module,
+    source: str,
+    source_text: str,
+    start: int,
+    end: int,
+) -> tuple[ast.Call | None, str]:
+    parents = {
+        child: parent
+        for parent in ast.walk(tree)
+        for child in ast.iter_child_nodes(parent)
+    }
+    recorded_tokens = source_tokens(source_text)
+    candidates: list[ast.Call] = []
+    for statement in ast.walk(tree):
+        if not isinstance(statement, (ast.Assign, ast.AnnAssign)):
+            continue
+        call = statement.value
+        if not isinstance(call, ast.Call) or not node_overlaps_locus(statement, start, end):
+            continue
+        call_text = ast.get_source_segment(source, call)
+        if not isinstance(call_text, str):
+            continue
+        if token_subsequence(source_tokens(call_text), recorded_tokens):
+            candidates.append(call)
+    if len(candidates) != 1:
+        if not candidates:
+            return None, (
+                "DIMENSIONLESS_CONSTRUCTOR must record the complete direct-RHS "
+                "zero-argument call (including its callee), not an empty span, "
+                "container, or non-call expression; record the actual source form "
+                "instead, or use UNDETERMINED with a finding if no supported form exists"
+            )
+        return None, (
+            "DIMENSIONLESS_CONSTRUCTOR text identifies more than one direct-RHS call; "
+            "record one complete call at one locus"
+        )
+    call = candidates[0]
+    scope = enclosing_lexical_scope(call, parents)
+    if scope != "module":
+        return None, (
+            f"unsupported non-module {scope} call; this line is not recordable as "
+            "DIMENSIONLESS_CONSTRUCTOR under the static policy, so record "
+            "UNDETERMINED with a finding rather than inventing a binding"
+        )
+    if not isinstance(call.func, ast.Name):
+        return None, (
+            "unsupported qualified/attribute callee; this line is not recordable as "
+            "DIMENSIONLESS_CONSTRUCTOR under the static policy, so record "
+            "UNDETERMINED with a finding rather than rewriting the source"
+        )
+    if call.args or call.keywords:
+        return None, (
+            "DIMENSIONLESS_CONSTRUCTOR requires a zero-argument call; record an "
+            "arg-bearing constructor as POSITIONAL using only its verbatim "
+            "parenthesized argument span"
+        )
+    return call, ""
+
+
+def fact_loci(node: Any) -> list[str]:
+    if not isinstance(node, Mapping):
+        return []
+    loci = node.get("loci")
+    if not isinstance(loci, list):
+        return []
+    return [locus for locus in loci if isinstance(locus, str)]
+
+
+def definition_node_at_locus(
+    tree: ast.Module,
+    raw_locus: str,
+) -> ast.ClassDef | ast.FunctionDef | ast.AsyncFunctionDef | None:
+    parsed = parsed_locus(raw_locus)
+    if parsed is None:
+        return None
+    _, start, end = parsed
+    definitions = [
+        node
+        for node in ast.walk(tree)
+        if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef))
+        and start <= node.lineno <= end
+    ]
+    return definitions[0] if len(definitions) == 1 else None
+
+
+def report_declared_machinery_definition(
+    report: Mapping[str, Any],
+    tree: ast.Module,
+    source_path: Path,
+    document_path: Path,
+    callee_name: str,
+) -> ast.ClassDef | ast.FunctionDef | ast.AsyncFunctionDef | None:
+    raw_definition_locus = fact_value(report.get("definition_locus"))
+    idiom_cites_definition = (
+        isinstance(raw_definition_locus, str)
+        and any(
+            fact_value(entry) not in {None, "NONE", "UNDETERMINED"}
+            and bool(
+                overlapping_loci(
+                    [raw_definition_locus],
+                    fact_loci(entry),
+                )
+            )
+            for entry in items(report.get("idiom"))
+            if isinstance(entry, Mapping)
+        )
+    )
+    if (
+        fact_value(report.get("machinery")) == "PRESENT"
+        and isinstance(raw_definition_locus, str)
+        and idiom_cites_definition
+        and source_path_for_locus(raw_definition_locus, document_path) == source_path
+    ):
+        node = definition_node_at_locus(tree, raw_definition_locus)
+        if (
+            isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef))
+            and node.name == callee_name
+        ):
+            return node
+
+    contract = report.get("representation_contract")
+    algebra = items(contract.get("algebra")) if isinstance(contract, Mapping) else []
+    for entry in algebra:
+        if (
+            not isinstance(entry, Mapping)
+            or fact_value(entry.get("semantic_operation")) != "CONSTRUCT"
+        ):
+            continue
+        syntax = fact_value(entry.get("python_syntax_or_function"))
+        if syntax != callee_name:
+            continue
+        loci: list[str] = []
+        for value in entry.values():
+            loci.extend(fact_loci(value))
+        for raw_locus in loci:
+            if source_path_for_locus(raw_locus, document_path) != source_path:
+                continue
+            node = definition_node_at_locus(tree, raw_locus)
+            if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+                if node.name == callee_name:
+                    return node
+    return None
+
+
+def constructor_binding_check_at_locus(
+    quantity: Mapping[str, Any],
+    report: Mapping[str, Any],
+    raw_locus: str,
+    document_path: Path,
+) -> ConstructorBindingCheck:
+    parsed = parsed_locus(raw_locus)
+    source_text = fact_value(quantity.get("dim_source_text"))
+    source_path = source_path_for_locus(raw_locus, document_path)
+    if parsed is None or source_path is None or not isinstance(source_text, str):
+        return ConstructorBindingCheck(
+            False,
+            "the cited constructor locus cannot be resolved; record a real source "
+            "locus or use UNDETERMINED with a finding",
+            None,
+        )
+    try:
+        source = source_path.read_text(encoding="utf-8")
+        tree = ast.parse(source)
+    except (OSError, SyntaxError, ValueError) as exc:
+        return ConstructorBindingCheck(
+            False,
+            f"the cited source cannot be parsed statically ({exc}); this line is not "
+            "recordable as DIMENSIONLESS_CONSTRUCTOR, so use UNDETERMINED with a finding",
+            None,
+        )
+    _, start, end = parsed
+    call, call_failure = direct_call_at_locus(tree, source, source_text, start, end)
+    if call is None:
+        callee_hint: str | None = None
+        for candidate in ast.walk(tree):
+            if (
+                isinstance(candidate, ast.Call)
+                and node_overlaps_locus(candidate, start, end)
+            ):
+                if isinstance(candidate.func, ast.Name):
+                    callee_hint = candidate.func.id
+                elif isinstance(candidate.func, ast.Attribute):
+                    callee_hint = candidate.func.attr
+                break
+        events: tuple[BindingEvent, ...] = ()
+        event_count: int | None = None
+        if callee_hint is not None:
+            try:
+                events = ModuleBindingEnumerator(callee_hint).enumerate(tree)
+                event_count = len(events)
+            except UnmodelledBindingConstruct:
+                pass
+        return ConstructorBindingCheck(
+            False,
+            call_failure,
+            event_count,
+            events,
+        )
+
+    callee_name = call.func.id
+    try:
+        events = ModuleBindingEnumerator(callee_name).enumerate(tree)
+    except UnmodelledBindingConstruct as exc:
+        return ConstructorBindingCheck(
+            False,
+            "static callee binding is unrecordable because the shared enumerator "
+            f"does not model {exc.kind} at line {exc.line}; this line is not "
+            "recordable as DIMENSIONLESS_CONSTRUCTOR, so record UNDETERMINED with "
+            "a finding",
+            None,
+            unmodelled_construct=exc.kind,
+        )
+    if len(events) != 1:
+        rendered = ", ".join(f"{event.kind}@{event.line}" for event in events) or "none"
+        conditional = (
+            " and includes conditional-control binding"
+            if any(event.conditional for event in events)
+            else ""
+        )
+        return ConstructorBindingCheck(
+            False,
+            f"callee {callee_name!r} has {len(events)} module-scope binding events "
+            f"({rendered}){conditional}; exactly one preceding in-file class/def "
+            "cited by this report is required. This whole-module binding shape is "
+            "unsupported, so the line is not recordable as DIMENSIONLESS_CONSTRUCTOR "
+            "and must be UNDETERMINED with a finding",
+            len(events),
+            events,
+        )
+    event = events[0]
+    if event.conditional:
+        return ConstructorBindingCheck(
+            False,
+            f"callee {callee_name!r} has one binding event "
+            f"({event.kind}@{event.line}), but it is established under conditional "
+            "control flow; that resolution form is unsupported and is not recordable "
+            "as DIMENSIONLESS_CONSTRUCTOR, so use UNDETERMINED with a finding",
+            1,
+            events,
+        )
+    if event.kind not in {"ClassDef", "FunctionDef", "AsyncFunctionDef"}:
+        return ConstructorBindingCheck(
+            False,
+            f"callee {callee_name!r} has one binding event, but it is "
+            f"{event.kind}@{event.line}, not a definition in this file; this "
+            "unsupported import/assignment/parameter form is not recordable as "
+            "DIMENSIONLESS_CONSTRUCTOR, so use UNDETERMINED with a finding",
+            1,
+            events,
+        )
+    if event.line >= call.lineno:
+        return ConstructorBindingCheck(
+            False,
+            f"callee {callee_name!r} has one definition at line {event.line}, but "
+            f"it does not precede the call at line {call.lineno}; this line is not "
+            "recordable as DIMENSIONLESS_CONSTRUCTOR, so use UNDETERMINED with a finding",
+            1,
+            events,
+        )
+    declared = report_declared_machinery_definition(
+        report,
+        tree,
+        source_path,
+        document_path,
+        callee_name,
+    )
+    if (
+        declared is None
+        or declared.lineno != event.line
+        or type(declared).__name__ != event.kind
+    ):
+        return ConstructorBindingCheck(
+            False,
+            f"callee {callee_name!r} does not resolve to the single construct this "
+            "report cites as its dimension machinery; this line is not recordable "
+            "as DIMENSIONLESS_CONSTRUCTOR, so cite the true machinery relation or "
+            "record UNDETERMINED with a finding",
+            1,
+            events,
+        )
+    return ConstructorBindingCheck(
+        True,
+        f"callee {callee_name!r} resolves to {event.kind}@{event.line}",
+        1,
+        events,
+    )
+
+
+def dimensionless_constructor_binding_check(
+    quantity: Mapping[str, Any],
+    report: Mapping[str, Any],
+    document_path: Path,
+) -> ConstructorBindingCheck:
+    failures: list[ConstructorBindingCheck] = []
+    for raw_locus in items(quantity.get("dimension_source_loci")):
+        if not isinstance(raw_locus, str):
+            continue
+        result = constructor_binding_check_at_locus(
+            quantity,
+            report,
+            raw_locus,
+            document_path,
+        )
+        if result.accepted:
+            return result
+        failures.append(result)
+    if failures:
+        return failures[0]
+    return ConstructorBindingCheck(
+        False,
+        "DIMENSIONLESS_CONSTRUCTOR requires a cited source locus; record the real "
+        "call locus or use UNDETERMINED with a finding",
+        None,
+    )
+
+
 def declared_basis_loci(report: Mapping[str, Any]) -> set[str]:
     result: set[str] = set()
     for path in (("basis", "axis_evidence"), ("basis", "orders")):
@@ -2154,14 +3035,18 @@ def explicit_dimension_text_matches_declared_basis(
     if (
         not isinstance(source_text, str)
         or not axes
-        or not isinstance(basis_locus, str)
-        or basis_locus not in declared_basis_loci(report)
     ):
         return False
     if form == "NAMED_AXIS":
-        return dimension_text_has_declared_axis(source_text, report)
+        return basis_locus is None and dimension_text_has_declared_axis(source_text, report)
     if form == "POSITIONAL":
-        return positional_component_count(source_text) == len(axes)
+        return (
+            isinstance(basis_locus, str)
+            and basis_locus in declared_basis_loci(report)
+            and positional_component_count(source_text) == len(axes)
+        )
+    if form == "DIMENSIONLESS_CONSTRUCTOR":
+        return basis_locus is None
     return False
 
 

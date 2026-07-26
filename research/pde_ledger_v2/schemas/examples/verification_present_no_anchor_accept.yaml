@@ -5,7 +5,7 @@ identity:
     value: research/pde_ledger_v2/schemas/examples/report_rule_fixture_accept.yaml
     method: FILESYSTEM
   report_sha256:
-    value: 8985023a9ce0afb0e73cb431306de92fc67ad7b36ddd500504c03ee0a2aa2234
+    value: 92b44f5a55e95a34fa66a240369524d00d669dee87acc105e75d7e6b9560bc8c
     method: SHA256SUM
 classification: UNDETERMINED+PRESENT
 overall_verdict: PASS

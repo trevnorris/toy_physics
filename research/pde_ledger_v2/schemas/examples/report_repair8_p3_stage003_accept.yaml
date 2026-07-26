@@ -1,0 +1,19 @@
+schema_version: dimension_survey_accept_fixture_v1
+base_document: report_rule_fixture_accept.yaml
+mutations:
+  - {op: replace, path: [identity, stage], value: "003"}
+  - {op: replace, path: [identity, script_path, value], value: scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py}
+  - {op: replace, path: [static_recovery_surface, items, 0, current_checker_visibility, loci], value: [scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py:87, research/pde_ledger_v2/manifests/composite_build.py:1]}
+  - op: replace
+    path: [basis, axis_evidence]
+    value:
+      items:
+        - {source_spelling: {value: M, loci: &basis003 [scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py:87]}, interpreted_axis_name: {value: M, loci: *basis003}, evidence: {value: STATED, loci: *basis003}, locus: scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py:87}
+        - {source_spelling: {value: L, loci: *basis003}, interpreted_axis_name: {value: L, loci: *basis003}, evidence: {value: STATED, loci: *basis003}, locus: scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py:87}
+        - {source_spelling: {value: T, loci: *basis003}, interpreted_axis_name: {value: T, loci: *basis003}, evidence: {value: STATED, loci: *basis003}, locus: scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py:87}
+  - {op: replace, path: [quantities, items, 0, dimension_value_status], value: {value: EXPLICIT_PY, loci: [scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py:866]}}
+  - {op: replace, path: [quantities, items, 0, dimension_source_loci], value: {items: [scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py:866]}}
+  - {op: replace, path: [quantities, items, 0, dim_source_text], value: {value: "(1, -1, -2)", loci: [scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py:866]}}
+  - {op: replace, path: [quantities, items, 0, dim_text_form], value: POSITIONAL}
+  - {op: add, path: [quantities, items, 0, basis_locus], value: scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py:87}
+  - {op: replace, path: [wl_evidence], value: {states_dimensions: {value: false, loci: [synthetic/rule_fixture.wl:1]}, pairs: {items: [], reason: No paired WL constructor evidence is used by this fixture.}}}

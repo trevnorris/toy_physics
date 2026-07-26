@@ -1,0 +1,24 @@
+schema_version: dimension_survey_accept_fixture_v1
+base_document: report_undetermined_absent_accept.yaml
+mutations:
+  - op: replace
+    path: [quantities, items, 0, dimension_value_status]
+    value:
+      value: CONSTRAINED_BUT_NOT_STATED
+      loci: [synthetic/undetermined_absent.py:25]
+  - op: replace
+    path: [quantities, items, 0, dimension_source_loci]
+    value:
+      items: [synthetic/undetermined_absent.py:25]
+  - op: replace
+    path: [quantities, items, 0, dim_source_text]
+    value:
+      value: "L"
+      loci: [synthetic/undetermined_absent.py:25]
+  - op: replace
+    path: [quantities, items, 0, register_evidence]
+    value:
+      status: TEXT_DIFFERS
+      register_locus: notes/parameter_register.md:136
+      register_cell_verbatim: >-
+        `[C_E]=M⁻¹L⁻⁴T²`, `[C_B]=M⁻¹L⁻²` (ratio `L²T⁻²`)

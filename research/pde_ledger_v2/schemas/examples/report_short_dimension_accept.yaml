@@ -1,0 +1,47 @@
+schema_version: dimension_survey_accept_fixture_v1
+base_document: report_real_absent_accept.yaml
+mutations:
+  - op: replace
+    path: [basis, axis_evidence, items]
+    value:
+      - source_spelling:
+          value: M
+          loci: [notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82]
+        interpreted_axis_name:
+          value: mass
+          loci: [notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82]
+        evidence:
+          value: STATED
+          loci: [notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82]
+        locus: notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82
+  - op: replace
+    path: [quantities, items, 0, name]
+    value:
+      value: M_AB
+      loci: [notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82]
+  - op: replace
+    path: [quantities, items, 0, binding_locus]
+    value: notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82
+  - op: replace
+    path: [quantities, items, 0, use_loci, items]
+    value: [notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82]
+  - op: replace
+    path: [quantities, items, 0, dimension_value_status]
+    value:
+      value: EXPLICIT_STAGE_NOTE
+      loci: [notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82]
+  - op: replace
+    path: [quantities, items, 0, dimension_source_loci, items]
+    value: [notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82]
+  - op: replace
+    path: [quantities, items, 0, dim_source_text]
+    value:
+      value: M
+      loci: [notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82]
+  - {op: replace, path: [quantities, items, 0, dim_text_form], value: NAMED_AXIS}
+  - op: replace
+    path: [quantities, items, 0, basis_locus]
+    value: notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:82
+  - op: replace
+    path: [quantities, items, 0, register_evidence]
+    value: {status: ABSENT_FROM_REGISTER}

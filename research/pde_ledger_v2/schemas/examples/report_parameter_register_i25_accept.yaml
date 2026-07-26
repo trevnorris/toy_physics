@@ -1,0 +1,22 @@
+schema_version: dimension_survey_accept_fixture_v1
+base_document: report_real_absent_accept.yaml
+mutations:
+  - op: replace
+    path: [quantities, items, 0, dimension_value_status, value]
+    value: EXPLICIT_PARAMETER_REGISTER
+  - op: replace
+    path: [quantities, items, 0, dimension_value_status, loci]
+    value: [notes/parameter_register.md:188]
+  - op: replace
+    path: [quantities, items, 0, dimension_source_loci, items]
+    value: [notes/parameter_register.md:188]
+  - op: replace
+    path: [quantities, items, 0, dim_source_text]
+    value:
+      value: >-
+        `L^(5/2)` (stage 024, dual-engine; enters
+        `g_base=√rho_eff·c_s²·I25·Ξ_Q/a^(7/2)`)
+      loci: [notes/parameter_register.md:188]
+  - op: replace
+    path: [quantities, items, 0, register_evidence, status]
+    value: TEXT_IDENTICAL

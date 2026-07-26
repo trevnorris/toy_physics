@@ -1,0 +1,9 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_present_accept.yaml
+mutations:
+  - op: replace
+    path: [quantities, items, 0, register_evidence]
+    value: {status: BOGUS}
+  - op: replace
+    path: [quantities, items, 1, register_evidence]
+    value: {status: NOT_CHECKED, reason: ""}

@@ -125,3 +125,6 @@ docs/_scratch/
 research/pde_ledger_v2/mathematica/out/_batch.log
 # stage-audit Mathematica outputs are committed dual-engine evidence (override the *.out rule above)
 !research/pde_ledger_v2/mathematica/out/*.out
+
+# local backups of gitignored _scratch trees (durable, never committed)
+_scratch_backups/

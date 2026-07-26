@@ -1,0 +1,11 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_none_accept.yaml
+mutations:
+  - op: replace
+    path: [basis, axis_evidence]
+    value:
+      items:
+        - source_spelling: {value: L, loci: [synthetic/none.py:1]}
+          interpreted_axis_name: {value: length, loci: [synthetic/none.py:1]}
+          evidence: {value: STATED, loci: [synthetic/none.py:1]}
+          locus: synthetic/none.py:1

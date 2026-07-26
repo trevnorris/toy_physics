@@ -1,0 +1,10 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_present_no_anchor_accept.yaml
+mutations:
+  - op: replace
+    path: [none_classification_recheck]
+    value:
+      applicability: APPLICABLE
+      result: PASS
+      detail: This mutation applies the NONE recheck to a PRESENT report.
+      source_loci: [synthetic/rule_fixture.py:1]

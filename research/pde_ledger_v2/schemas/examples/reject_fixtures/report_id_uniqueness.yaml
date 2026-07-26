@@ -1,0 +1,9 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_rule_fixture_accept.yaml
+mutations:
+  - {op: replace, path: [quantities, items, 0, item_id], value: fixture.binding.x}
+  - {op: replace, path: [wl_evidence, pairs, items, 0, quantity_ref], value: fixture.binding.x}
+  - {op: replace, path: [wl_evidence, pairs, items, 1, quantity_ref], value: fixture.binding.x}
+  - {op: replace, path: [wl_evidence, pairs, items, 2, quantity_ref], value: fixture.binding.x}
+  - {op: replace, path: [wl_evidence, pairs, items, 4, quantity_ref], value: fixture.binding.x}
+  - {op: replace, path: [wl_evidence, pairs, items, 5, quantity_ref], value: fixture.binding.x}

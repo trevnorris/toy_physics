@@ -1,0 +1,126 @@
+schema_version: dimension_survey_verification_v1
+identity:
+  stage: "021"
+  report_path:
+    value: research/pde_ledger_v2/schemas/examples/report_anchor_lexical_accept.yaml
+    method: FILESYSTEM
+  report_sha256:
+    value: 1844251630478999bf47aadcad8208bcc623e94eb8a8cd8af56c50904403f568
+    method: SHA256SUM
+classification: UNDETERMINED+PRESENT
+overall_verdict: PASS
+locus_integrity:
+  status: CHECKED
+  result: PASS
+  detail: All synthetic report and verification loci resolve without production line pins.
+  invalid_loci:
+    items: []
+    reason: The mechanical check found no invalid synthetic locus.
+  source_identity:
+    result: PASS
+    detail: The synthetic source identities reproduce.
+    failures:
+      items: []
+      reason: No synthetic source-identity discrepancy exists.
+categories:
+  dimension_bindings:
+    applicability: APPLICABLE
+    source_count: 5
+    report_count: 5
+    source_unmatched: {items: [], reason: All five synthetic bindings are matched.}
+    report_unmatched: {items: [], reason: All five reported bindings are matched.}
+  quantities:
+    applicability: APPLICABLE
+    source_count: 1
+    report_count: 1
+    source_unmatched: {items: [], reason: The synthetic quantity is matched.}
+    report_unmatched: {items: [], reason: The reported quantity is matched.}
+  contract_features_and_presentation_consumers:
+    applicability: APPLICABLE
+    source_count: 11
+    report_count: 11
+    source_unmatched: {items: [], reason: The synthetic contract inventory is matched.}
+    report_unmatched: {items: [], reason: The reported contract inventory is matched.}
+  pass_emitter_sites:
+    applicability: APPLICABLE
+    source_count: 0
+    report_count: 0
+    source_unmatched: {items: [], reason: No synthetic PASS emitter exists.}
+    report_unmatched: {items: [], reason: No reported PASS emitter exists.}
+  pass_call_sites:
+    applicability: APPLICABLE
+    source_count: 0
+    report_count: 0
+    source_unmatched: {items: [], reason: No synthetic PASS call exists.}
+    report_unmatched: {items: [], reason: No reported PASS call exists.}
+none_classification_recheck:
+  applicability: NOT_APPLICABLE
+  reason: This synthetic report is not NONE+ABSENT.
+ownership_rederivation:
+  applicability: APPLICABLE
+  coverage_case: i
+  applicable_ownership_anchors:
+    value: PRESENT
+    binding_refs:
+      items:
+        - fixture.binding.x
+        - anchor.binding.sourced_d0
+        - anchor.binding.raw
+        - anchor.binding.norm
+        - anchor.binding.p0
+  case_i_sample:
+    applicability: NOT_APPLICABLE
+    reason: The five lexical anchors exhaust the synthetic binding inventory.
+  coverage:
+    bindings_re_derived: 5
+    bindings_total: 5
+    escape:
+      invoked: false
+  selection_record: All five r13 stage021 lexical identities were selected.
+  items:
+    - binding_ref: fixture.binding.x
+      selection_kind: OWNERSHIP_ANCHOR
+      reported_ownership: MODULE_OWNED
+      rederived_ownership: MODULE_OWNED
+      comparison: MATCH
+      source_loci: [synthetic/rule_fixture.py:1]
+    - binding_ref: anchor.binding.sourced_d0
+      selection_kind: OWNERSHIP_ANCHOR
+      reported_ownership: MODULE_OWNED
+      rederived_ownership: MODULE_OWNED
+      comparison: MATCH
+      source_loci: [synthetic/rule_fixture.py:2]
+    - binding_ref: anchor.binding.raw
+      selection_kind: OWNERSHIP_ANCHOR
+      reported_ownership: SCRIPT_OWNED
+      rederived_ownership: SCRIPT_OWNED
+      comparison: MATCH
+      source_loci: [synthetic/rule_fixture.py:3]
+    - binding_ref: anchor.binding.norm
+      selection_kind: OWNERSHIP_ANCHOR
+      reported_ownership: SCRIPT_OWNED
+      rederived_ownership: SCRIPT_OWNED
+      comparison: MATCH
+      source_loci: [synthetic/rule_fixture.py:4]
+    - binding_ref: anchor.binding.p0
+      selection_kind: OWNERSHIP_ANCHOR
+      reported_ownership: SCRIPT_OWNED
+      rederived_ownership: SCRIPT_OWNED
+      comparison: MATCH
+      source_loci: [synthetic/rule_fixture.py:5]
+zero_declaration_check:
+  applicability: NOT_APPLICABLE
+  reason: This synthetic report is UNDETERMINED+PRESENT.
+negative_control_integrity:
+  applicability: APPLICABLE
+  result: PASS
+  detail: No synthetic binding is a negative control.
+  binding_refs:
+    items: []
+    reason: No negative-control binding requires a reference.
+  source_loci: [synthetic/rule_fixture.py:1]
+gap_credibility:
+  applicability: APPLICABLE
+  result: PASS
+  detail: The synthetic unresolved classification is recorded as a sourced gap.
+  source_loci: [synthetic/rule_fixture.py:1]

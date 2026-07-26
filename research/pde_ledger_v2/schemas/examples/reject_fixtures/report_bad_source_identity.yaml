@@ -1,0 +1,9 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_locus_fixture.yaml
+mutations:
+  - op: replace
+    path: [identity, script_path, value]
+    value: definitely/not/a/real/path.py
+  - op: replace
+    path: [identity, script_line_count, value]
+    value: 999999

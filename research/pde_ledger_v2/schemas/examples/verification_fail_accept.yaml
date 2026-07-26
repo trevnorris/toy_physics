@@ -1,0 +1,91 @@
+schema_version: dimension_survey_verification_v1
+identity:
+  stage: "043"
+  report_path:
+    value: research/pde_ledger_v2/schemas/examples/report_none_accept.yaml
+    method: FILESYSTEM
+  report_sha256:
+    value: 91f273df1da431ce36fccb380eddd93597164b9f106ff33421e222d12823662b
+    method: SHA256SUM
+classification: NONE+ABSENT
+overall_verdict: FAIL
+locus_integrity:
+  status: SYNTHETIC_EXEMPT
+  reason: Committed synthetic loci deliberately do not resolve to production files.
+categories:
+  dimension_bindings:
+    applicability: NOT_APPLICABLE
+    source_count: N/A
+    report_count: N/A
+    source_unmatched:
+      items: []
+      reason: Binding fidelity is inapplicable to ABSENT machinery.
+    report_unmatched:
+      items: []
+      reason: Binding fidelity is inapplicable to ABSENT machinery.
+    reason: ABSENT machinery has no binding category.
+  quantities:
+    applicability: NOT_APPLICABLE
+    source_count: N/A
+    report_count: N/A
+    source_unmatched:
+      items: []
+      reason: The positive NONE argument makes the quantity category inapplicable.
+    report_unmatched:
+      items: []
+      reason: The positive NONE argument makes the quantity category inapplicable.
+    reason: NONE uses N/A, never numeric zero, for quantities.
+  contract_features_and_presentation_consumers:
+    applicability: NOT_APPLICABLE
+    source_count: N/A
+    report_count: N/A
+    source_unmatched:
+      items: []
+      reason: Contract fidelity is inapplicable to ABSENT machinery.
+    report_unmatched:
+      items: []
+      reason: Contract fidelity is inapplicable to ABSENT machinery.
+    reason: ABSENT machinery has no representation contract.
+  pass_emitter_sites:
+    applicability: APPLICABLE
+    source_count: 1
+    report_count: 1
+    source_unmatched:
+      items: []
+      reason: The synthetic PASS emitter is matched.
+    report_unmatched:
+      items: []
+      reason: The reported PASS emitter is matched.
+  pass_call_sites:
+    applicability: APPLICABLE
+    source_count: 2
+    report_count: 1
+    source_unmatched:
+      items:
+        - item_id: source.unexplained.pass.call
+          explanation_status: UNEXPLAINED
+          explanation: null
+    report_unmatched:
+      items: []
+      reason: The reported PASS call site is matched.
+none_classification_recheck:
+  applicability: APPLICABLE
+  result: PASS
+  detail: >-
+    Re-reading the synthetic count assertion and homogeneity-not-applicable
+    statement confirms that no shared declaration is owed.
+  source_loci: [synthetic/stage043_none_shape.py:45, synthetic/stage043_none_shape.wl:30]
+ownership_rederivation:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no binding ownership to re-derive.
+zero_declaration_check:
+  applicability: NOT_APPLICABLE
+  reason: The zero-declaration floor applies only to REAL+PRESENT.
+negative_control_integrity:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no negative-control dimension binding.
+gap_credibility:
+  applicability: APPLICABLE
+  result: PASS
+  detail: The empty gap inventory has an explicit source-based credibility reason.
+  source_loci: [synthetic/stage043_none_shape.py:45, synthetic/stage043_none_shape.wl:30]

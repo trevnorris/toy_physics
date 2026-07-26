@@ -1,0 +1,134 @@
+schema_version: dimension_survey_verification_v1
+identity:
+  stage: "038"
+  report_path:
+    value: research/pde_ledger_v2/schemas/examples/report_present_accept.yaml
+    method: FILESYSTEM
+  report_sha256:
+    value: f90e502b13e94b50c059e804a2d3127b232bd3ff935039fb28616cb43a6d935d
+    method: SHA256SUM
+classification: REAL+PRESENT
+overall_verdict: PASS
+locus_integrity:
+  status: SYNTHETIC_EXEMPT
+  reason: Committed synthetic loci deliberately do not resolve to production files.
+categories:
+  dimension_bindings:
+    applicability: APPLICABLE
+    source_count: 3
+    report_count: 3
+    source_unmatched:
+      items: []
+      reason: Every synthetic source binding is matched.
+    report_unmatched:
+      items: []
+      reason: Every reported binding is matched.
+  quantities:
+    applicability: APPLICABLE
+    source_count: 3
+    report_count: 3
+    source_unmatched:
+      items: []
+      reason: Every synthetic source quantity is matched.
+    report_unmatched:
+      items: []
+      reason: Every reported quantity is matched.
+  contract_features_and_presentation_consumers:
+    applicability: APPLICABLE
+    source_count: 11
+    report_count: 11
+    source_unmatched:
+      items: []
+      reason: All synthetic contract features and presentation consumers are matched.
+    report_unmatched:
+      items: []
+      reason: All reported contract features and presentation consumers are matched.
+  pass_emitter_sites:
+    applicability: APPLICABLE
+    source_count: 1
+    report_count: 1
+    source_unmatched:
+      items: []
+      reason: The synthetic PASS emitter is matched.
+    report_unmatched:
+      items: []
+      reason: The reported PASS emitter is matched.
+  pass_call_sites:
+    applicability: APPLICABLE
+    source_count: 2
+    report_count: 2
+    source_unmatched:
+      items:
+        - item_id: source.pass.call.renamed
+          explanation_status: EXPLAINED
+          explanation: >-
+            The source-side synthetic AST identity was deliberately renamed in
+            this fixture to exercise an explained source unmatched entry.
+    report_unmatched:
+      items:
+        - item_id: pass.call.dynamic
+          explanation_status: EXPLAINED
+          explanation: >-
+            This reported synthetic call identity is the adjudicated counterpart
+            of source.pass.call.renamed.
+none_classification_recheck:
+  applicability: NOT_APPLICABLE
+  reason: This is a REAL+PRESENT verification.
+ownership_rederivation:
+  applicability: APPLICABLE
+  coverage_case: i
+  applicable_ownership_anchors:
+    value: PRESENT
+    binding_refs:
+      items: [binding.corrupt]
+  case_i_sample:
+    applicability: APPLICABLE
+    selection_rule: Select every remaining synthetic binding in ascending item_id order.
+    binding_refs:
+      items: [binding.b, binding.stiffness]
+  coverage:
+    bindings_re_derived: 3
+    bindings_total: 3
+    escape:
+      invoked: false
+  selection_record: >-
+    Synthetic anchor binding.corrupt plus deterministic sample indices 0 and 1
+    from the two-item remainder, ordered by item_id.
+  items:
+    - binding_ref: binding.corrupt
+      selection_kind: OWNERSHIP_ANCHOR
+      reported_ownership: CHECK_LOCAL
+      rederived_ownership: CHECK_LOCAL
+      comparison: MATCH
+      source_loci: [synthetic/stage038_shape.py:89, synthetic/stage038_shape.py:180]
+    - binding_ref: binding.b
+      selection_kind: CASE_I_SAMPLE
+      reported_ownership: MODULE_OWNED
+      rederived_ownership: MODULE_OWNED
+      comparison: MATCH
+      source_loci: [synthetic/stage038_shape.py:79, synthetic/stage038_shape.py:81]
+    - binding_ref: binding.stiffness
+      selection_kind: CASE_I_SAMPLE
+      reported_ownership: SCRIPT_OWNED
+      rederived_ownership: SCRIPT_OWNED
+      comparison: MATCH
+      source_loci: [synthetic/stage038_shape.py:60, synthetic/stage038_shape.py:81]
+zero_declaration_check:
+  applicability: APPLICABLE
+  declaration_required_yes_count: 1
+  source_cited_argument_present: false
+  result: PASS
+  detail: One MODULE_OWNED quantity yields one required declaration.
+  source_loci: [synthetic/stage038_shape.py:79, synthetic/stage038_shape.py:81]
+negative_control_integrity:
+  applicability: APPLICABLE
+  result: PASS
+  detail: The corrupt state is NEGATIVE_CONTROL and is CHECK_LOCAL, not MODULE_OWNED.
+  binding_refs:
+    items: [binding.corrupt]
+  source_loci: [synthetic/stage038_shape.py:89, synthetic/stage038_shape.py:90]
+gap_credibility:
+  applicability: APPLICABLE
+  result: PASS
+  detail: The unresolved generic-local identity is recorded as a gap with searched sources.
+  source_loci: [synthetic/stage038_shape.py:55-65]

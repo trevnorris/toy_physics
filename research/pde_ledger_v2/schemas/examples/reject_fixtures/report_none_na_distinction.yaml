@@ -1,0 +1,4 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_none_accept.yaml
+mutations:
+  - {op: replace, path: [basis, exponent_type, value], value: integer}

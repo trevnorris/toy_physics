@@ -1,0 +1,8 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_present_accept.yaml
+mutations:
+  - op: replace
+    path: [basis, orders, items, 0, same_as_order]
+    value:
+      kind: storage
+      axes: [mass, length, time, electric_charge]

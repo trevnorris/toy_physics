@@ -1,0 +1,6 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_present_accept.yaml
+mutations:
+  - op: replace
+    path: [representation_contract, applicability]
+    value: MAYBE

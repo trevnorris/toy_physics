@@ -1,0 +1,177 @@
+schema_version: dimension_survey_report_v1
+identity:
+  stage: "025"
+  script_path:
+    value: synthetic/undetermined_absent.py
+    method: FILESYSTEM
+  script_sha256:
+    value: "3333333333333333333333333333333333333333333333333333333333333333"
+    method: SHA256SUM
+  wl_path:
+    value: synthetic/undetermined_absent.wl
+    method: FILESYSTEM
+  wl_sha256:
+    value: "4444444444444444444444444444444444444444444444444444444444444444"
+    method: SHA256SUM
+  script_line_count:
+    value: 70
+    method: WC_L
+dimensional_content:
+  value: UNDETERMINED
+  loci: [synthetic/undetermined_absent.py:25, synthetic/undetermined_absent.wl:15]
+  reasoning:
+    - The permitted synthetic sources do not decide whether a declaration is owed.
+machinery:
+  value: ABSENT
+  loci: [synthetic/undetermined_absent.py:1-70]
+idiom:
+  items:
+    - value: NONE
+      loci: [synthetic/undetermined_absent.py:1-70]
+binding_name_pattern:
+  value: NONE_OBSERVED
+  loci: [synthetic/undetermined_absent.py:1-70]
+definition_locus:
+  value: NOT_APPLICABLE
+  reason: The synthetic script contains no executable dimension machinery.
+  sources_searched: [synthetic/undetermined_absent.py:1-70]
+static_recovery_surface:
+  items: []
+  reason: ABSENT machinery has no current dimension-valued binding.
+basis:
+  axis_evidence:
+    items: []
+    reason: No order-bearing representation was found.
+  orders:
+    items: []
+    reason: No order-bearing representation was found.
+  exponent_type:
+    value: UNDETERMINED
+    reason: No explicit exponent representation was found.
+    sources_searched: [synthetic/undetermined_absent.py:1-70]
+  fractional_exponents_present:
+    value: UNDETERMINED
+    reason: The permitted sources do not decide exponent values.
+    sources_searched: [synthetic/undetermined_absent.py:1-70]
+quantities:
+  items:
+    - item_id: undetermined_absent.quantity.x
+      name:
+        value: x
+        loci: [synthetic/undetermined_absent.py:25]
+      binding_locus: synthetic/undetermined_absent.py:25
+      use_loci:
+        items: [synthetic/undetermined_absent.py:25]
+      identity_status:
+        value: UNDETERMINED
+        reason: The source does not state a physical identity.
+        sources_searched: [synthetic/undetermined_absent.py:1-70]
+      quantity_identity:
+        value: UNDETERMINED
+        reason: A binding spelling alone cannot establish identity.
+        sources_searched: [synthetic/undetermined_absent.py:1-70]
+      identity_locus:
+        value: UNDETERMINED
+        reason: No identity statement was found.
+        sources_searched: [synthetic/undetermined_absent.py:1-70]
+      dimension_value_status:
+        value: UNDETERMINED
+        reason: Neither permitted synthetic source states a dimension value.
+        sources_searched:
+          - synthetic/undetermined_absent.py:1-70
+          - synthetic/undetermined_absent.wl:1-30
+      dimension_source_loci:
+        items: []
+        reason: No dimension source statement was found.
+      dim_source_text:
+        value: UNDETERMINED
+        reason: No verbatim dimension text exists in the searched sources.
+        sources_searched:
+          - synthetic/undetermined_absent.py:1-70
+          - synthetic/undetermined_absent.wl:1-30
+      ownership:
+        value: UNDETERMINED
+        reason: The source does not decide whether the future value is module-owned.
+        sources_searched: [synthetic/undetermined_absent.py:1-70]
+      binding_refs:
+        items: []
+        reason: ABSENT machinery has no current dimension binding.
+      register_evidence:
+        status: PENDING_IN_REGISTER
+        register_locus: notes/parameter_register.md:163
+        register_cell_verbatim: >-
+          pending (`L` expected; no audit verifies it — the stage checks only
+          the projection `[W]=L⁻¹`)
+      declaration_required: UNDETERMINED
+      candidate_reason:
+        value: NOT_APPLICABLE
+        reason: Candidacy is unresolved because dimensional content is unresolved.
+        sources_searched: [synthetic/undetermined_absent.py:1-70]
+  zero_declaration_argument:
+    value: NOT_APPLICABLE
+    reason: The per-report zero check applies only to REAL+PRESENT.
+    sources_searched: [synthetic/undetermined_absent.py:1-70]
+pass_lines:
+  emitter_sites:
+    items: []
+    reason: The synthetic script has no PASS emitter.
+  call_sites:
+    items: []
+    reason: The synthetic script has no PASS call site.
+  statically_resolved_markers:
+    items: []
+    reason: The synthetic script has no PASS marker.
+  unresolved_dynamic_markers:
+    items: []
+    reason: The synthetic script has no dynamic PASS marker.
+active_mutation:
+  read_at_module_scope:
+    value: false
+    loci: [synthetic/undetermined_absent.py:1-10]
+  locus:
+    items: [synthetic/undetermined_absent.py:1-10]
+  variable_names:
+    items: []
+    reason: No mutation variable is read.
+  gates:
+    items: []
+    reason: No mutation value gates the synthetic expression.
+wl_evidence:
+  states_dimensions:
+    value: false
+    loci: [mathematica/ledger_stage043_irreducible_count_range_mathematica_audit.wl:1]
+  pairs:
+    items: []
+    reason: The cited Mathematica audit states no dimension for this fixture.
+gaps:
+  items:
+    - field: dimensional_content
+      reason: The permitted sources do not decide whether declarations are owed.
+      sources_searched:
+        - synthetic/undetermined_absent.py:1-70
+        - synthetic/undetermined_absent.wl:1-30
+notes:
+  items: []
+  reason: No additional synthetic module constraint is known.
+representation_contract:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no representation contract.
+  sources_searched: [synthetic/undetermined_absent.py:1-70]
+dimension_bindings:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no dimension-valued binding inventory.
+  sources_searched: [synthetic/undetermined_absent.py:1-70]
+dimension_use_sites:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no consumed inline dimension value.
+  sources_searched: [synthetic/undetermined_absent.py:1-70]
+import_context:
+  existing_local_import_pattern:
+    value: NONE_OBSERVED
+    loci: [synthetic/undetermined_absent.py:1-10]
+  invocation_assumptions:
+    value: direct synthetic invocation
+    loci: [synthetic/undetermined_absent.py:60]
+  module_scope_side_effects:
+    value: NONE_OBSERVED
+    loci: [synthetic/undetermined_absent.py:1-10]

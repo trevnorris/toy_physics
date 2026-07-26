@@ -1,0 +1,367 @@
+schema_version: dimension_survey_report_v1
+identity:
+  stage: "026"
+  script_path:
+    value: synthetic/undetermined_present.py
+    method: FILESYSTEM
+  script_sha256:
+    value: "5555555555555555555555555555555555555555555555555555555555555555"
+    method: SHA256SUM
+  wl_path:
+    value: synthetic/undetermined_present.wl
+    method: FILESYSTEM
+  wl_sha256:
+    value: "6666666666666666666666666666666666666666666666666666666666666666"
+    method: SHA256SUM
+  script_line_count:
+    value: 100
+    method: WC_L
+dimensional_content:
+  value: UNDETERMINED
+  loci: [synthetic/undetermined_present.py:20, synthetic/undetermined_present.wl:20]
+  reasoning:
+    - Executable dimension values are consumed, but the permitted sources do not decide whether canonical declarations are owed.
+machinery:
+  value: PRESENT
+  loci: [synthetic/undetermined_present.py:20-60]
+idiom:
+  items:
+    - value: TYPE_ALIAS_TUPLE
+      loci: [synthetic/undetermined_present.py:20]
+    - value: BARE_TUPLE
+      loci: [synthetic/undetermined_present.py:30]
+    - value: UNDETERMINED
+      reason: A third executable representation may be a formatter, but the sources do not decide.
+      sources_searched: [synthetic/undetermined_present.py:20-60]
+binding_name_pattern:
+  value: "*_dim"
+  loci: [synthetic/undetermined_present.py:40]
+definition_locus:
+  value: synthetic/undetermined_present.py:20
+  loci: [synthetic/undetermined_present.py:20]
+static_recovery_surface:
+  items:
+    - item_id: undetermined_present.recovery.x
+      binding_ref: undetermined_present.binding.x
+      binding_name:
+        value: x_dim
+        loci: [synthetic/undetermined_present.py:40]
+      binding_scope:
+        value: UNDETERMINED
+        reason: The synthetic source window does not resolve the lexical scope.
+        sources_searched: [synthetic/undetermined_present.py:20-60]
+      literal_or_derived:
+        value: UNDETERMINED
+        reason: The source window does not decide whether the tuple is literal or derived.
+        sources_searched: [synthetic/undetermined_present.py:20-60]
+      expression_source_text:
+        value: "(1, 0)"
+        loci: [synthetic/undetermined_present.py:40]
+      stable_quantity_key_present:
+        value: false
+        loci: [synthetic/undetermined_present.py:40]
+      depends_on_active_mutation:
+        value: false
+        loci: [synthetic/undetermined_present.py:40]
+      depends_on_runtime_state:
+        value: false
+        loci: [synthetic/undetermined_present.py:40]
+      statically_locatable_without_import:
+        value: "YES"
+        loci: [synthetic/undetermined_present.py:40]
+      current_checker_visibility:
+        value: "NO"
+        loci:
+          - synthetic/undetermined_present.py:40
+          - research/pde_ledger_v2/manifests/composite_build.py:100
+basis:
+  axis_evidence:
+    items:
+      - source_spelling:
+          value: L
+          loci: [synthetic/undetermined_present.py:20]
+        interpreted_axis_name:
+          value: L
+          loci: [synthetic/undetermined_present.py:20]
+        evidence:
+          value: INFERRED_FROM_USAGE
+          loci: [synthetic/undetermined_present.py:20]
+        locus: synthetic/undetermined_present.py:20
+      - source_spelling:
+          value: T
+          loci: [synthetic/undetermined_present.py:20]
+        interpreted_axis_name:
+          value: T
+          loci: [synthetic/undetermined_present.py:20]
+        evidence:
+          value: INFERRED_FROM_USAGE
+          loci: [synthetic/undetermined_present.py:20]
+        locus: synthetic/undetermined_present.py:20
+  orders:
+    items:
+      - kind: storage
+        axes: [L, T]
+        evidence:
+          value: INFERRED_FROM_USAGE
+          loci: [synthetic/undetermined_present.py:20]
+        locus: synthetic/undetermined_present.py:20
+        value_representations:
+          items:
+            - value: tuple
+              loci: [synthetic/undetermined_present.py:20]
+        producers:
+          items:
+            - value: tuple literal
+              loci: [synthetic/undetermined_present.py:40]
+        same_as_order: null
+      - kind: constructor
+        axes: [L, T]
+        evidence:
+          value: INFERRED_FROM_USAGE
+          loci: [synthetic/undetermined_present.py:40]
+        locus: synthetic/undetermined_present.py:40
+        value_representations:
+          items:
+            - value: tuple literal
+              loci: [synthetic/undetermined_present.py:40]
+        producers:
+          items:
+            - value: tuple literal
+              loci: [synthetic/undetermined_present.py:40]
+        same_as_order:
+          kind: storage
+          axes: [L, T]
+  exponent_type:
+    value: UNDETERMINED
+    reason: The synthetic sources do not decide all component types.
+    sources_searched: [synthetic/undetermined_present.py:20-60]
+  fractional_exponents_present:
+    value: UNDETERMINED
+    reason: The unresolved component type prevents a definite fractional answer.
+    sources_searched: [synthetic/undetermined_present.py:20-60]
+quantities:
+  items:
+    - item_id: undetermined_present.quantity.x
+      name:
+        value: x_dim
+        loci: [synthetic/undetermined_present.py:40]
+      binding_locus: synthetic/undetermined_present.py:40
+      use_loci:
+        items: [synthetic/undetermined_present.py:60]
+      identity_status:
+        value: UNDETERMINED
+        reason: The binding spelling does not establish quantity identity.
+        sources_searched: [synthetic/undetermined_present.py:20-60]
+      quantity_identity:
+        value: UNDETERMINED
+        reason: No source-stated identity exists.
+        sources_searched: [synthetic/undetermined_present.py:20-60]
+      identity_locus:
+        value: UNDETERMINED
+        reason: No identity statement exists.
+        sources_searched: [synthetic/undetermined_present.py:20-60]
+      dimension_value_status:
+        value: EXPLICIT_PY
+        loci: [synthetic/undetermined_present.py:40]
+      dimension_source_loci:
+        items: [synthetic/undetermined_present.py:40]
+      dim_source_text:
+        value: "x_dim = (1, 0)  # L"
+        loci: [synthetic/undetermined_present.py:40]
+      dim_text_form: POSITIONAL
+      basis_locus: synthetic/undetermined_present.py:20
+      ownership:
+        value: CHECK_LOCAL
+        loci: [synthetic/undetermined_present.py:40-60]
+      binding_refs:
+        items: [undetermined_present.binding.x]
+      register_evidence:
+        status: ABSENT_FROM_REGISTER
+      declaration_required: "NO"
+      candidate_reason:
+        value: NOT_APPLICABLE
+        reason: Machinery is PRESENT, so this is not an ABSENT candidate.
+        sources_searched: [synthetic/undetermined_present.py:20-60]
+  zero_declaration_argument:
+    value: NOT_APPLICABLE
+    reason: The per-report zero check applies only to REAL+PRESENT.
+    sources_searched: [synthetic/undetermined_present.py:20-60]
+pass_lines:
+  emitter_sites:
+    items: []
+    reason: The synthetic script has no PASS emitter.
+  call_sites:
+    items:
+      - item_id: undetermined_present.pass.call
+        argument_kind:
+          value: UNDETERMINED
+          reason: The source window does not resolve whether the argument is a template or dynamic.
+          sources_searched: [synthetic/undetermined_present.py:80-90]
+        argument_source_text:
+          value: marker
+          loci: [synthetic/undetermined_present.py:85]
+        locus: synthetic/undetermined_present.py:85
+  statically_resolved_markers:
+    items: []
+    reason: The synthetic script has no PASS marker.
+  unresolved_dynamic_markers:
+    items: []
+    reason: The synthetic script has no dynamic PASS marker.
+active_mutation:
+  read_at_module_scope:
+    value: false
+    loci: [synthetic/undetermined_present.py:1-10]
+  locus:
+    items: [synthetic/undetermined_present.py:1-10]
+  variable_names:
+    items: []
+    reason: No mutation variable is read.
+  gates:
+    items: []
+    reason: No mutation value gates the dimension machinery.
+wl_evidence:
+  states_dimensions:
+    value: false
+    loci: [mathematica/ledger_stage043_irreducible_count_range_mathematica_audit.wl:1]
+  pairs:
+    items: []
+    reason: The cited Mathematica audit states no dimension for this fixture.
+gaps:
+  items:
+    - field: dimensional_content
+      reason: The permitted sources do not decide whether a canonical declaration is owed.
+      sources_searched:
+        - synthetic/undetermined_present.py:20-60
+        - synthetic/undetermined_present.wl:1-40
+notes:
+  items: []
+  reason: No additional synthetic module constraint is known.
+representation_contract:
+  applicability: APPLICABLE
+  value_type:
+    value: two-component tuple
+    loci: [synthetic/undetermined_present.py:20]
+  normalization_on_construction:
+    item_id: undetermined_present.contract.normalization
+    feature: CONSTRUCTION_NORMALIZATION
+    qualified_name:
+      value: tuple
+      loci: [synthetic/undetermined_present.py:40]
+    behavior:
+      value: Components are stored without normalization.
+      loci: [synthetic/undetermined_present.py:40]
+  equality_semantics:
+    item_id: undetermined_present.contract.equality
+    feature: EQUALITY_SEMANTICS
+    qualified_name:
+      value: tuple.__eq__
+      loci: [synthetic/undetermined_present.py:60]
+    behavior:
+      value: Tuple structural equality.
+      loci: [synthetic/undetermined_present.py:60]
+  hashability:
+    item_id: undetermined_present.contract.hashability
+    feature: HASHABILITY
+    qualified_name:
+      value: tuple.__hash__
+      loci: [synthetic/undetermined_present.py:20]
+    behavior:
+      value: The tuple is hashable when components are hashable.
+      loci: [synthetic/undetermined_present.py:20]
+  component_access:
+    item_id: undetermined_present.contract.component
+    feature: COMPONENT_ACCESS
+    qualified_name:
+      value: tuple.__getitem__
+      loci: [synthetic/undetermined_present.py:60]
+    behavior:
+      value: Integer indexing reads stored components.
+      loci: [synthetic/undetermined_present.py:60]
+  algebra:
+    items: []
+    reason: The synthetic script compares but does not compose dimension values.
+  expression_evaluator:
+    status:
+      value: UNDETERMINED
+      reason: The permitted window does not decide whether recursive evaluation is present.
+      sources_searched: [synthetic/undetermined_present.py:1-100]
+    supported_sympy_node_kinds:
+      items: []
+      reason: No recursive expression evaluator exists.
+    numeric_zero_policy:
+      applicability: NOT_APPLICABLE
+      reason: No expression evaluator exists.
+      sources_searched: [synthetic/undetermined_present.py:1-100]
+    missing_symbol_policy:
+      applicability: NOT_APPLICABLE
+      reason: No expression evaluator exists.
+      sources_searched: [synthetic/undetermined_present.py:1-100]
+    non_homogeneous_add_policy:
+      applicability: NOT_APPLICABLE
+      reason: No expression evaluator exists.
+      sources_searched: [synthetic/undetermined_present.py:1-100]
+  presentation:
+    items: []
+    reason: No dimension value is presented.
+dimension_bindings:
+  applicability: APPLICABLE
+  items:
+    - item_id: undetermined_present.binding.x
+      name:
+        value: x_dim
+        loci: [synthetic/undetermined_present.py:40]
+      qualified_scope:
+        value: make_dims.<comprehension>.x_dim
+        loci: [synthetic/undetermined_present.py:40]
+      scope:
+        value: UNDETERMINED
+        reason: The synthetic source window does not resolve the lexical scope.
+        sources_searched: [synthetic/undetermined_present.py:20-60]
+      binding_locus: synthetic/undetermined_present.py:40
+      branch_or_state_predicate:
+        value: unconditional comprehension iteration
+        loci: [synthetic/undetermined_present.py:40]
+      source_text:
+        value: "x_dim = (1, 0)"
+        loci: [synthetic/undetermined_present.py:40]
+      literal_or_derived:
+        value: UNDETERMINED
+        reason: The source window does not decide whether the tuple is literal or derived.
+        sources_searched: [synthetic/undetermined_present.py:20-60]
+      depends_on_active_mutation:
+        value: false
+        loci: [synthetic/undetermined_present.py:40]
+      depends_on_other_runtime_state:
+        value: false
+        loci: [synthetic/undetermined_present.py:40]
+      consumers:
+        items:
+          - consumer:
+              value: one equality check
+              loci: [synthetic/undetermined_present.py:60]
+            locus: synthetic/undetermined_present.py:60
+      ownership:
+        value: CHECK_LOCAL
+        loci: [synthetic/undetermined_present.py:40-60]
+      uses:
+        items:
+          - value: UNDETERMINED
+            reason: The source window does not decide which controlled use applies.
+            sources_searched: [synthetic/undetermined_present.py:40-60]
+      alias_of:
+        items: []
+        reason: The synthetic binding is a direct tuple literal.
+dimension_use_sites:
+  applicability: APPLICABLE
+  items: []
+  reason: The synthetic script has no bindingless inline dimension value.
+import_context:
+  existing_local_import_pattern:
+    value: NONE_OBSERVED
+    loci: [synthetic/undetermined_present.py:1-10]
+  invocation_assumptions:
+    value: direct synthetic invocation
+    loci: [synthetic/undetermined_present.py:90]
+  module_scope_side_effects:
+    value: NONE_OBSERVED
+    loci: [synthetic/undetermined_present.py:1-10]

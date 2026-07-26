@@ -1,0 +1,12 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_present_accept.yaml
+mutations:
+  - op: replace
+    path: [categories, pass_call_sites, source_count]
+    value: 3
+  - op: add
+    path: [categories, pass_call_sites, source_unmatched, items, 1]
+    value:
+      item_id: source.pass.call.renamed
+      explanation_status: EXPLAINED
+      explanation: The duplicate source-side item ID is the malformed report reference.

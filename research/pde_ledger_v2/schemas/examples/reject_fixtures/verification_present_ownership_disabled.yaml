@@ -1,0 +1,8 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_present_no_anchor_accept.yaml
+mutations:
+  - op: replace
+    path: [ownership_rederivation]
+    value:
+      applicability: NOT_APPLICABLE
+      reason: This mutation disables PRESENT ownership re-derivation.

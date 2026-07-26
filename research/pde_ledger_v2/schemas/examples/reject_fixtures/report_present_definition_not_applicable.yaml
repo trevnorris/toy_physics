@@ -1,0 +1,9 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_rule_fixture_accept.yaml
+mutations:
+  - op: replace
+    path: [definition_locus]
+    value:
+      value: NOT_APPLICABLE
+      reason: This mutation removes the required PRESENT definition locus.
+      sources_searched: [synthetic/rule_fixture.py:1]

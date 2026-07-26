@@ -1,0 +1,26 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_none_accept.yaml
+mutations:
+  - op: replace
+    path: [ownership_rederivation]
+    value:
+      applicability: APPLICABLE
+      coverage_case: ii
+      applicable_ownership_anchors:
+        value: NONE
+        reason: No anchor applies.
+      case_i_sample:
+        applicability: NOT_APPLICABLE
+        reason: Case ii has no sample.
+      coverage:
+        bindings_re_derived: 1
+        bindings_total: 1
+        escape: {invoked: false}
+      selection_record: Synthetic invalid ABSENT coverage.
+      items:
+        - binding_ref: invented.binding
+          selection_kind: CASE_II_FULL_COVERAGE
+          reported_ownership: CHECK_LOCAL
+          rederived_ownership: CHECK_LOCAL
+          comparison: MATCH
+          source_loci: [synthetic/stage043_none_shape.py:1]

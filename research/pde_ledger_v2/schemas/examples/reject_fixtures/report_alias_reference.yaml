@@ -1,0 +1,6 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_rule_fixture_accept.yaml
+mutations:
+  - op: replace
+    path: [dimension_bindings, items, 0, alias_of, items]
+    value: [missing.binding]

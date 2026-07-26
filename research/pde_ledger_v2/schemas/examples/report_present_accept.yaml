@@ -1,0 +1,724 @@
+schema_version: dimension_survey_report_v1
+identity:
+  stage: "038"
+  script_path:
+    value: synthetic/stage038_shape.py
+    method: FILESYSTEM
+  script_sha256:
+    value: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    method: SHA256SUM
+  wl_path:
+    value: synthetic/stage038_shape.wl
+    method: FILESYSTEM
+  wl_sha256:
+    value: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    method: SHA256SUM
+  script_line_count:
+    value: 240
+    method: WC_L
+dimensional_content:
+  value: REAL
+  loci: [synthetic/stage038_shape.py:10, synthetic/stage038_shape.wl:8]
+  reasoning:
+    - The synthetic audited expression consumes explicit four-axis dimensions.
+    - This fixture describes a corpus shape and makes no claim about production state.
+machinery:
+  value: PRESENT
+  loci: [synthetic/stage038_shape.py:20, synthetic/stage038_shape.py:80]
+idiom:
+  items:
+    - value: CLASS_VALUE_OBJECT
+      loci: [synthetic/stage038_shape.py:20]
+    - value: MAPPING
+      loci: [synthetic/stage038_shape.py:80]
+    - value: EVALUATOR
+      loci: [synthetic/stage038_shape.py:120]
+    - value: FORMATTER
+      loci: [synthetic/stage038_shape.py:150]
+binding_name_pattern:
+  value: "*_dim plus quantity keys in dims"
+  loci: [synthetic/stage038_shape.py:60, synthetic/stage038_shape.py:80]
+definition_locus:
+  value: synthetic/stage038_shape.py:20
+  loci: [synthetic/stage038_shape.py:20]
+static_recovery_surface:
+  items:
+    - item_id: recovery.stiffness
+      binding_ref: binding.stiffness
+      binding_name:
+        value: stiffness_dim
+        loci: [synthetic/stage038_shape.py:60]
+      binding_scope:
+        value: MODULE
+        loci: [synthetic/stage038_shape.py:60]
+      literal_or_derived:
+        value: LITERAL
+        loci: [synthetic/stage038_shape.py:60]
+      expression_source_text:
+        value: "Dim(1, -1, -2, sp.Rational(1, 2))"
+        loci: [synthetic/stage038_shape.py:60]
+      stable_quantity_key_present:
+        value: false
+        loci: [synthetic/stage038_shape.py:60]
+      depends_on_active_mutation:
+        value: false
+        loci: [synthetic/stage038_shape.py:60]
+      depends_on_runtime_state:
+        value: false
+        loci: [synthetic/stage038_shape.py:60]
+      statically_locatable_without_import:
+        value: "YES"
+        loci: [synthetic/stage038_shape.py:60]
+      current_checker_visibility:
+        value: "YES"
+        loci:
+          - synthetic/stage038_shape.py:60
+          - research/pde_ledger_v2/manifests/composite_build.py:100
+    - item_id: recovery.b
+      binding_ref: binding.b
+      binding_name:
+        value: B
+        loci: [synthetic/stage038_shape.py:81]
+      binding_scope:
+        value: MODULE
+        loci: [synthetic/stage038_shape.py:81]
+      literal_or_derived:
+        value: DERIVED
+        loci: [synthetic/stage038_shape.py:81]
+      expression_source_text:
+        value: "dims['B'] = stiffness_dim"
+        loci: [synthetic/stage038_shape.py:81]
+      stable_quantity_key_present:
+        value: true
+        loci: [synthetic/stage038_shape.py:81]
+      depends_on_active_mutation:
+        value: false
+        loci: [synthetic/stage038_shape.py:81]
+      depends_on_runtime_state:
+        value: false
+        loci: [synthetic/stage038_shape.py:81]
+      statically_locatable_without_import:
+        value: "YES"
+        loci: [synthetic/stage038_shape.py:81]
+      current_checker_visibility:
+        value: "YES"
+        loci:
+          - synthetic/stage038_shape.py:81
+          - research/pde_ledger_v2/manifests/composite_build.py:100
+    - item_id: recovery.corrupt
+      binding_ref: binding.corrupt
+      binding_name:
+        value: cE
+        loci: [synthetic/stage038_shape.py:90]
+      binding_scope:
+        value: FUNCTION
+        loci: [synthetic/stage038_shape.py:89]
+      literal_or_derived:
+        value: DERIVED
+        loci: [synthetic/stage038_shape.py:90]
+      expression_source_text:
+        value: "cE = B_dim * corrupt_factor"
+        loci: [synthetic/stage038_shape.py:90]
+      stable_quantity_key_present:
+        value: true
+        loci: [synthetic/stage038_shape.py:90]
+      depends_on_active_mutation:
+        value: true
+        loci: [synthetic/stage038_shape.py:89]
+      depends_on_runtime_state:
+        value: true
+        loci: [synthetic/stage038_shape.py:89]
+      statically_locatable_without_import:
+        value: "YES"
+        loci: [synthetic/stage038_shape.py:90]
+      current_checker_visibility:
+        value: "YES"
+        loci:
+          - synthetic/stage038_shape.py:90
+          - research/pde_ledger_v2/manifests/composite_build.py:100
+basis:
+  axis_evidence:
+    items:
+      - source_spelling:
+          value: M
+          loci: [synthetic/stage038_shape.py:22]
+        interpreted_axis_name:
+          value: mass
+          loci: [synthetic/stage038_shape.py:22]
+        evidence:
+          value: STATED
+          loci: [synthetic/stage038_shape.py:22]
+        locus: synthetic/stage038_shape.py:22
+      - source_spelling:
+          value: L
+          loci: [synthetic/stage038_shape.py:22]
+        interpreted_axis_name:
+          value: length
+          loci: [synthetic/stage038_shape.py:22]
+        evidence:
+          value: STATED
+          loci: [synthetic/stage038_shape.py:22]
+        locus: synthetic/stage038_shape.py:22
+      - source_spelling:
+          value: T
+          loci: [synthetic/stage038_shape.py:22]
+        interpreted_axis_name:
+          value: time
+          loci: [synthetic/stage038_shape.py:22]
+        evidence:
+          value: STATED
+          loci: [synthetic/stage038_shape.py:22]
+        locus: synthetic/stage038_shape.py:22
+      - source_spelling:
+          value: E-charge
+          loci: [synthetic/stage038_shape.py:22]
+        interpreted_axis_name:
+          value: electric_charge
+          loci: [synthetic/stage038_shape.py:22]
+        evidence:
+          value: STATED
+          loci: [synthetic/stage038_shape.py:22]
+        locus: synthetic/stage038_shape.py:22
+  orders:
+    items:
+      - kind: storage
+        axes: [mass, length, time, electric_charge]
+        evidence:
+          value: STATED
+          loci: [synthetic/stage038_shape.py:22]
+        locus: synthetic/stage038_shape.py:22
+        value_representations:
+          items:
+            - value: frozen dataclass fields
+              loci: [synthetic/stage038_shape.py:22]
+        producers:
+          items:
+            - value: Dim
+              loci: [synthetic/stage038_shape.py:20]
+        same_as_order: null
+      - kind: constructor
+        axes: [mass, length, time, electric_charge]
+        evidence:
+          value: STATED
+          loci: [synthetic/stage038_shape.py:30]
+        locus: synthetic/stage038_shape.py:30
+        value_representations:
+          items:
+            - value: four positional constructor arguments
+              loci: [synthetic/stage038_shape.py:30]
+        producers:
+          items:
+            - value: Dim.__init__
+              loci: [synthetic/stage038_shape.py:30]
+        same_as_order:
+          kind: storage
+          axes: [mass, length, time, electric_charge]
+      - kind: display
+        axes: [mass, length, time, electric_charge]
+        evidence:
+          value: INFERRED_FROM_USAGE
+          loci: [synthetic/stage038_shape.py:150]
+        locus: synthetic/stage038_shape.py:150
+        value_representations:
+          items:
+            - value: tuple diagnostic
+              loci: [synthetic/stage038_shape.py:150]
+            - value: named dict diagnostic
+              loci: [synthetic/stage038_shape.py:151]
+        producers:
+          items:
+            - value: format_dim
+              loci: [synthetic/stage038_shape.py:150]
+        same_as_order: null
+  exponent_type:
+    value: rational
+    loci: [synthetic/stage038_shape.py:60]
+  fractional_exponents_present:
+    value: true
+    loci: [synthetic/stage038_shape.py:60]
+quantities:
+  items:
+    - item_id: quantity.stiffness
+      name:
+        value: stiffness_dim
+        loci: [synthetic/stage038_shape.py:60]
+      binding_locus: synthetic/stage038_shape.py:60
+      use_loci:
+        items: [synthetic/stage038_shape.py:81]
+      identity_status:
+        value: UNDETERMINED
+        reason: The generic local is not assigned a source-stated physical identity.
+        sources_searched: [synthetic/stage038_shape.py:55-65, synthetic/stage038_shape.wl:20-30]
+      quantity_identity:
+        value: UNDETERMINED
+        reason: Binding spelling alone cannot establish physical identity.
+        sources_searched: [synthetic/stage038_shape.py:55-65, synthetic/stage038_shape.wl:20-30]
+      identity_locus:
+        value: UNDETERMINED
+        reason: No identity statement was present in the synthetic source window.
+        sources_searched: [synthetic/stage038_shape.py:55-65]
+      dimension_value_status:
+        value: EXPLICIT_PY
+        loci: [synthetic/stage038_shape.py:60]
+      dimension_source_loci:
+        items: [synthetic/stage038_shape.py:60]
+      dim_source_text:
+        value: mass
+        loci: [synthetic/stage038_shape.py:60]
+      dim_text_form: NAMED_AXIS
+      basis_locus: synthetic/stage038_shape.py:22
+      ownership:
+        value: SCRIPT_OWNED
+        loci: [synthetic/stage038_shape.py:60, synthetic/stage038_shape.py:81]
+      binding_refs:
+        items: [binding.stiffness]
+      register_evidence:
+        status: ABSENT_FROM_REGISTER
+      declaration_required: "NO"
+      candidate_reason:
+        value: NOT_APPLICABLE
+        reason: Machinery is PRESENT; this is a current quantity, not an ABSENT candidate.
+        sources_searched: [synthetic/stage038_shape.py:60]
+    - item_id: quantity.b
+      name:
+        value: B
+        loci: [synthetic/stage038_shape.py:81]
+      binding_locus: synthetic/stage038_shape.py:81
+      use_loci:
+        items: [synthetic/stage038_shape.py:135, synthetic/stage038_shape.py:180]
+      identity_status:
+        value: SOURCE_STATED
+        loci: [synthetic/stage038_shape.py:79]
+      quantity_identity:
+        value: synthetic stiffness coefficient B
+        loci: [synthetic/stage038_shape.py:79]
+      identity_locus:
+        value: synthetic/stage038_shape.py:79
+        loci: [synthetic/stage038_shape.py:79]
+      dimension_value_status:
+        value: EXPLICIT_PY
+        loci: [synthetic/stage038_shape.py:81]
+      dimension_source_loci:
+        items: [synthetic/stage038_shape.py:60, synthetic/stage038_shape.py:81]
+      dim_source_text:
+        value: mass
+        loci: [synthetic/stage038_shape.py:81]
+      dim_text_form: NAMED_AXIS
+      basis_locus: synthetic/stage038_shape.py:22
+      ownership:
+        value: MODULE_OWNED
+        loci: [synthetic/stage038_shape.py:79, synthetic/stage038_shape.py:81]
+      binding_refs:
+        items: [binding.b]
+      register_evidence:
+        status: ABSENT_FROM_REGISTER
+      declaration_required: "YES"
+      candidate_reason:
+        value: NOT_APPLICABLE
+        reason: Machinery is PRESENT; this is a current quantity, not an ABSENT candidate.
+        sources_searched: [synthetic/stage038_shape.py:79-81]
+    - item_id: quantity.corrupt
+      name:
+        value: cE
+        loci: [synthetic/stage038_shape.py:90]
+      binding_locus: synthetic/stage038_shape.py:90
+      use_loci:
+        items: [synthetic/stage038_shape.py:180]
+      identity_status:
+        value: SOURCE_STATED
+        loci: [synthetic/stage038_shape.py:89]
+      quantity_identity:
+        value: deliberately corrupted B state
+        loci: [synthetic/stage038_shape.py:89]
+      identity_locus:
+        value: synthetic/stage038_shape.py:89
+        loci: [synthetic/stage038_shape.py:89]
+      dimension_value_status:
+        value: EXPLICIT_PY
+        loci: [synthetic/stage038_shape.py:90]
+      dimension_source_loci:
+        items: [synthetic/stage038_shape.py:90]
+      dim_source_text:
+        value: mass
+        loci: [synthetic/stage038_shape.py:90]
+      dim_text_form: NAMED_AXIS
+      basis_locus: synthetic/stage038_shape.py:22
+      ownership:
+        value: CHECK_LOCAL
+        loci: [synthetic/stage038_shape.py:90, synthetic/stage038_shape.py:180]
+      binding_refs:
+        items: [binding.corrupt]
+      register_evidence:
+        status: TEXT_DIFFERS
+        register_locus: notes/parameter_register.md:170
+        register_cell_verbatim: >-
+          `M T⁻²` (stage 023, dual-engine, pathA_34 convention; scripts'
+          `(L,M,T)`-tuple `(0,1,−2)` — ⚠ the register header order is
+          `[L,T,M]`, in which it reads `(0,−2,1)`)
+      declaration_required: "NO"
+      candidate_reason:
+        value: NOT_APPLICABLE
+        reason: Machinery is PRESENT; this is a current negative-control quantity.
+        sources_searched: [synthetic/stage038_shape.py:89-90]
+  zero_declaration_argument:
+    value: NOT_APPLICABLE
+    reason: This report has one declaration_required YES quantity.
+    sources_searched: [synthetic/stage038_shape.py:79-81]
+pass_lines:
+  emitter_sites:
+    items:
+      - item_id: pass.emitter
+        source_template:
+          value: "print(f'PASS {name}')"
+          loci: [synthetic/stage038_shape.py:200]
+        locus: synthetic/stage038_shape.py:200
+  call_sites:
+    items:
+      - item_id: pass.call.literal
+        argument_kind:
+          value: LITERAL
+          loci: [synthetic/stage038_shape.py:205]
+        argument_source_text:
+          value: "'dimension guard'"
+          loci: [synthetic/stage038_shape.py:205]
+        locus: synthetic/stage038_shape.py:205
+      - item_id: pass.call.dynamic
+        argument_kind:
+          value: DYNAMIC
+          loci: [synthetic/stage038_shape.py:210]
+        argument_source_text:
+          value: marker_name
+          loci: [synthetic/stage038_shape.py:210]
+        locus: synthetic/stage038_shape.py:210
+  statically_resolved_markers:
+    items:
+      - value: dimension guard
+        loci: [synthetic/stage038_shape.py:205]
+  unresolved_dynamic_markers:
+    items:
+      - source_text:
+          value: marker_name
+          loci: [synthetic/stage038_shape.py:210]
+        reason: The argument is chosen from a caller-supplied value.
+        sources_searched: [synthetic/stage038_shape.py:195-215]
+active_mutation:
+  read_at_module_scope:
+    value: true
+    loci: [synthetic/stage038_shape.py:12]
+  locus:
+    items: [synthetic/stage038_shape.py:12, synthetic/stage038_shape.py:89]
+  variable_names:
+    items:
+      - value: ACTIVE_MUTATION
+        loci: [synthetic/stage038_shape.py:12]
+  gates:
+    items:
+      - value: selection of the deliberately corrupted cE state
+        loci: [synthetic/stage038_shape.py:89]
+wl_evidence:
+  states_dimensions:
+    value: false
+    loci: [mathematica/ledger_stage043_irreducible_count_range_mathematica_audit.wl:1]
+  pairs:
+    items: []
+    reason: The cited Mathematica audit states no dimension for this fixture.
+gaps:
+  items:
+    - field: quantities[quantity.stiffness].quantity_identity
+      reason: The source does not state the generic local's physical identity.
+      sources_searched: [synthetic/stage038_shape.py:55-65, synthetic/stage038_shape.wl:20-30]
+notes:
+  items:
+    - text: Synthetic fixture combines reviewed stage038/stage042 structural shapes.
+      loci: [synthetic/stage038_shape.py:20, synthetic/stage038_shape.py:80]
+representation_contract:
+  applicability: APPLICABLE
+  value_type:
+    value: frozen Dim value object with four SymPy Rational components
+    loci: [synthetic/stage038_shape.py:20]
+  normalization_on_construction:
+    item_id: contract.normalization
+    feature: CONSTRUCTION_NORMALIZATION
+    qualified_name:
+      value: Dim.__post_init__
+      loci: [synthetic/stage038_shape.py:30]
+    behavior:
+      value: Converts every component with sp.Rational without reordering.
+      loci: [synthetic/stage038_shape.py:30]
+  equality_semantics:
+    item_id: contract.equality
+    feature: EQUALITY_SEMANTICS
+    qualified_name:
+      value: Dim.__eq__
+      loci: [synthetic/stage038_shape.py:35]
+    behavior:
+      value: Structural equality across the four stored components.
+      loci: [synthetic/stage038_shape.py:35]
+  hashability:
+    item_id: contract.hashability
+    feature: HASHABILITY
+    qualified_name:
+      value: Dim.__hash__
+      loci: [synthetic/stage038_shape.py:36]
+    behavior:
+      value: Hashable because the synthetic dataclass is frozen.
+      loci: [synthetic/stage038_shape.py:36]
+  component_access:
+    item_id: contract.component_access
+    feature: COMPONENT_ACCESS
+    qualified_name:
+      value: Dim.components
+      loci: [synthetic/stage038_shape.py:40]
+    behavior:
+      value: Named attributes and an ordered components tuple are available.
+      loci: [synthetic/stage038_shape.py:40]
+  algebra:
+    items:
+      - item_id: contract.algebra.multiply
+        feature: ALGEBRA_OPERATION
+        qualified_name:
+          value: Dim.__mul__
+          loci: [synthetic/stage038_shape.py:45]
+        semantic_operation:
+          value: COMPOSE
+          loci: [synthetic/stage038_shape.py:45]
+        python_syntax_or_function:
+          value: "left * right"
+          loci: [synthetic/stage038_shape.py:45]
+        accepted_exponent_types:
+          items:
+            - value: n/a for multiplication
+              loci: [synthetic/stage038_shape.py:45]
+        accepted_scalar_types:
+          items:
+            - value: Dim only
+              loci: [synthetic/stage038_shape.py:45]
+        return_type:
+          value: Dim
+          loci: [synthetic/stage038_shape.py:46]
+        failure_behavior:
+          value: Returns NotImplemented for a non-Dim operand.
+          loci: [synthetic/stage038_shape.py:47]
+  expression_evaluator:
+    status:
+      value: PRESENT
+      loci: [synthetic/stage038_shape.py:120]
+    supported_sympy_node_kinds:
+      items:
+        - item_id: contract.evaluator.mul
+          feature: EVALUATOR_NODE_KIND
+          qualified_name:
+            value: dimension_of
+            loci: [synthetic/stage038_shape.py:120]
+          behavior:
+            value: Recursively multiplies dimensions for sympy Mul nodes.
+            loci: [synthetic/stage038_shape.py:125]
+          node_kind:
+            value: Mul
+            loci: [synthetic/stage038_shape.py:125]
+    numeric_zero_policy:
+      item_id: contract.evaluator.numeric
+      feature: NUMERIC_ZERO_POLICY
+      qualified_name:
+        value: dimension_of
+        loci: [synthetic/stage038_shape.py:120]
+      behavior:
+        value: Numeric constants including zero have the zero dimension.
+        loci: [synthetic/stage038_shape.py:123]
+    missing_symbol_policy:
+      item_id: contract.evaluator.missing
+      feature: MISSING_SYMBOL_POLICY
+      qualified_name:
+        value: dimension_of
+        loci: [synthetic/stage038_shape.py:120]
+      behavior:
+        value: Raises KeyError with the missing symbol spelling.
+        loci: [synthetic/stage038_shape.py:130]
+    non_homogeneous_add_policy:
+      item_id: contract.evaluator.add
+      feature: NON_HOMOGENEOUS_ADD_POLICY
+      qualified_name:
+        value: dimension_of
+        loci: [synthetic/stage038_shape.py:120]
+      behavior:
+        value: Raises ValueError when Add terms have unequal dimensions.
+        loci: [synthetic/stage038_shape.py:135]
+  presentation:
+    items:
+      - item_id: presentation.tuple.failure
+        producer_qualified_name:
+          value: format_dim
+          loci: [synthetic/stage038_shape.py:150]
+        form:
+          value: "(M, L, T, E-charge) tuple"
+          loci: [synthetic/stage038_shape.py:150]
+        consumer:
+          value: guard failure evidence
+          loci: [synthetic/stage038_shape.py:180]
+        consumer_locus: synthetic/stage038_shape.py:180
+      - item_id: presentation.dict.success
+        producer_qualified_name:
+          value: format_dim
+          loci: [synthetic/stage038_shape.py:151]
+        form:
+          value: named four-key mapping
+          loci: [synthetic/stage038_shape.py:151]
+        consumer:
+          value: unconditional synthetic success record
+          loci: [synthetic/stage038_shape.py:190]
+        consumer_locus: synthetic/stage038_shape.py:190
+dimension_bindings:
+  applicability: APPLICABLE
+  items:
+    - item_id: binding.stiffness
+      name:
+        value: stiffness_dim
+        loci: [synthetic/stage038_shape.py:60]
+      qualified_scope:
+        value: module.stiffness_dim
+        loci: [synthetic/stage038_shape.py:60]
+      scope:
+        value: MODULE
+        loci: [synthetic/stage038_shape.py:60]
+      binding_locus: synthetic/stage038_shape.py:60
+      branch_or_state_predicate:
+        value: unconditional baseline
+        loci: [synthetic/stage038_shape.py:60]
+      source_text:
+        value: "stiffness_dim = Dim(1, -1, -2, sp.Rational(1, 2))"
+        loci: [synthetic/stage038_shape.py:60]
+      literal_or_derived:
+        value: LITERAL
+        loci: [synthetic/stage038_shape.py:60]
+      depends_on_active_mutation:
+        value: false
+        loci: [synthetic/stage038_shape.py:60]
+      depends_on_other_runtime_state:
+        value: false
+        loci: [synthetic/stage038_shape.py:60]
+      consumers:
+        items:
+          - consumer:
+              value: dims mapping population
+              loci: [synthetic/stage038_shape.py:81]
+            locus: synthetic/stage038_shape.py:81
+      ownership:
+        value: SCRIPT_OWNED
+        loci: [synthetic/stage038_shape.py:60, synthetic/stage038_shape.py:81]
+      uses:
+        items:
+          - value: ALGEBRA_INTERMEDIATE
+            loci: [synthetic/stage038_shape.py:81]
+      alias_of:
+        items: []
+        reason: This is the source value for later aliases.
+    - item_id: binding.b
+      name:
+        value: B
+        loci: [synthetic/stage038_shape.py:81]
+      qualified_scope:
+        value: module.dims[B]
+        loci: [synthetic/stage038_shape.py:81]
+      scope:
+        value: MODULE
+        loci: [synthetic/stage038_shape.py:81]
+      binding_locus: synthetic/stage038_shape.py:81
+      branch_or_state_predicate:
+        value: unconditional baseline
+        loci: [synthetic/stage038_shape.py:81]
+      source_text:
+        value: "dims['B'] = stiffness_dim"
+        loci: [synthetic/stage038_shape.py:81]
+      literal_or_derived:
+        value: DERIVED
+        loci: [synthetic/stage038_shape.py:81]
+      depends_on_active_mutation:
+        value: false
+        loci: [synthetic/stage038_shape.py:81]
+      depends_on_other_runtime_state:
+        value: false
+        loci: [synthetic/stage038_shape.py:81]
+      consumers:
+        items:
+          - consumer:
+              value: homogeneity assertion
+              loci: [synthetic/stage038_shape.py:180]
+            locus: synthetic/stage038_shape.py:180
+      ownership:
+        value: MODULE_OWNED
+        loci: [synthetic/stage038_shape.py:79, synthetic/stage038_shape.py:81]
+      uses:
+        items:
+          - value: ASSERTED_TARGET
+            loci: [synthetic/stage038_shape.py:180]
+          - value: DISPLAY_ONLY
+            loci: [synthetic/stage038_shape.py:190]
+      alias_of:
+        items: [binding.stiffness]
+    - item_id: binding.corrupt
+      name:
+        value: cE
+        loci: [synthetic/stage038_shape.py:90]
+      qualified_scope:
+        value: dimension_guard.cE[corrupt]
+        loci: [synthetic/stage038_shape.py:90]
+      scope:
+        value: FUNCTION
+        loci: [synthetic/stage038_shape.py:89]
+      binding_locus: synthetic/stage038_shape.py:90
+      branch_or_state_predicate:
+        value: ACTIVE_MUTATION selects corrupt state
+        loci: [synthetic/stage038_shape.py:89]
+      source_text:
+        value: "cE = B_dim * corrupt_factor"
+        loci: [synthetic/stage038_shape.py:90]
+      literal_or_derived:
+        value: DERIVED
+        loci: [synthetic/stage038_shape.py:90]
+      depends_on_active_mutation:
+        value: true
+        loci: [synthetic/stage038_shape.py:89]
+      depends_on_other_runtime_state:
+        value: true
+        loci: [synthetic/stage038_shape.py:89]
+      consumers:
+        items:
+          - consumer:
+              value: one guard and its failure evidence
+              loci: [synthetic/stage038_shape.py:180]
+            locus: synthetic/stage038_shape.py:180
+      ownership:
+        value: CHECK_LOCAL
+        loci: [synthetic/stage038_shape.py:90, synthetic/stage038_shape.py:180]
+      uses:
+        items:
+          - value: NEGATIVE_CONTROL
+            loci: [synthetic/stage038_shape.py:89]
+          - value: ASSERTED_TARGET
+            loci: [synthetic/stage038_shape.py:180]
+      alias_of:
+        items: [binding.b]
+dimension_use_sites:
+  applicability: APPLICABLE
+  items:
+    - item_id: use.inline.target
+      source_text:
+        value: "Dim(0, 0, 0, sp.Rational(1, 2))"
+        loci: [synthetic/stage038_shape.py:181]
+      locus: synthetic/stage038_shape.py:181
+      uses:
+        items:
+          - value: ASSERTED_TARGET
+            loci: [synthetic/stage038_shape.py:181]
+      binding_refs:
+        items: [binding.b]
+import_context:
+  existing_local_import_pattern:
+    value: sibling imports occur inside direct-script path setup
+    loci: [synthetic/stage038_shape.py:3, synthetic/stage038_shape.py:7]
+  invocation_assumptions:
+    value: supports direct-script invocation after inserting the repository root
+    loci: [synthetic/stage038_shape.py:3, synthetic/stage038_shape.py:7]
+  module_scope_side_effects:
+    value: reads ACTIVE_MUTATION but performs no synthetic write before main
+    loci: [synthetic/stage038_shape.py:12, synthetic/stage038_shape.py:220]

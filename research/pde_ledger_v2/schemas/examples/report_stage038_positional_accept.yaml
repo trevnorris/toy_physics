@@ -1,0 +1,287 @@
+schema_version: dimension_survey_accept_fixture_v1
+base_document: report_rule_fixture_accept.yaml
+mutations:
+  - {op: replace, path: [identity, stage], value: "038"}
+  - op: replace
+    path: [identity, script_path, value]
+    value: research/pde_ledger_v2/scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py
+  - op: replace
+    path: [identity, script_sha256, value]
+    value: 80c6d8292d8eb9b78fe7a39b4fd5ce13d7d1cc5c87de91c5b6346acc27cbfbfe
+  - {op: replace, path: [identity, script_line_count, value], value: 1175}
+  - op: replace
+    path: [basis, axis_evidence, items]
+    value:
+      - source_spelling: {value: M, loci: &basis038 [scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692]}
+        interpreted_axis_name: {value: M, loci: *basis038}
+        evidence: {value: STATED, loci: *basis038}
+        locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+      - source_spelling: {value: L, loci: *basis038}
+        interpreted_axis_name: {value: L, loci: *basis038}
+        evidence: {value: STATED, loci: *basis038}
+        locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+      - source_spelling: {value: T, loci: *basis038}
+        interpreted_axis_name: {value: T, loci: *basis038}
+        evidence: {value: STATED, loci: *basis038}
+        locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+      - source_spelling: {value: E-charge, loci: *basis038}
+        interpreted_axis_name: {value: E-charge, loci: *basis038}
+        evidence: {value: STATED, loci: *basis038}
+        locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+  - op: replace
+    path: [basis, orders]
+    value:
+      items:
+        - kind: storage
+          axes: [M, L, T, E-charge]
+          evidence: {value: STATED, loci: *basis038}
+          locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+          value_representations:
+            items:
+              - {value: four-component tuple, loci: *basis038}
+          producers:
+            items:
+              - {value: tuple literal, loci: *basis038}
+          same_as_order: null
+  - op: replace
+    path: [basis, exponent_type]
+    value: {value: integer, loci: *basis038}
+  - op: replace
+    path: [basis, fractional_exponents_present]
+    value: {value: false, loci: *basis038}
+  - op: replace
+    path: [quantities, items]
+    value:
+      - item_id: repair7.stage038.dimensionless
+        name: {value: DIMENSIONLESS, loci: &line038_693 [scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:693]}
+        binding_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:693
+        use_loci: {items: *line038_693}
+        identity_status:
+          value: UNDETERMINED
+          reason: The fixture tests positional evidence, not physical quantity identity.
+          sources_searched: *line038_693
+        quantity_identity:
+          value: UNDETERMINED
+          reason: Binding spelling alone does not establish a physical quantity identity.
+          sources_searched: *line038_693
+        identity_locus:
+          value: UNDETERMINED
+          reason: No separate identity assertion is used by this evidence fixture.
+          sources_searched: *line038_693
+        dimension_value_status: {value: EXPLICIT_PY, loci: *line038_693}
+        dimension_source_loci: {items: *line038_693}
+        dim_source_text:
+          value: "DIMENSIONLESS: Dimension = (0, 0, 0, 0)"
+          loci: *line038_693
+        dim_text_form: POSITIONAL
+        basis_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+        ownership:
+          value: UNDETERMINED
+          reason: This evidence-shape fixture does not adjudicate ownership.
+          sources_searched: *line038_693
+        binding_refs: {items: [], reason: This evidence-shape fixture does not assert a binding relation.}
+        register_evidence: {status: ABSENT_FROM_REGISTER}
+        declaration_required: UNDETERMINED
+        candidate_reason:
+          value: NOT_APPLICABLE
+          reason: Machinery is PRESENT; this fixture does not assert candidacy.
+          sources_searched: *line038_693
+      - item_id: repair7.stage038.c_gamma2_corrupt
+        name: {value: c_gamma2_dim, loci: &line038_712 [scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:712]}
+        binding_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:712
+        use_loci: {items: *line038_712}
+        identity_status:
+          value: UNDETERMINED
+          reason: The fixture tests positional evidence, not physical quantity identity.
+          sources_searched: *line038_712
+        quantity_identity:
+          value: UNDETERMINED
+          reason: Binding spelling alone does not establish a physical quantity identity.
+          sources_searched: *line038_712
+        identity_locus:
+          value: UNDETERMINED
+          reason: No separate identity assertion is used by this evidence fixture.
+          sources_searched: *line038_712
+        dimension_value_status: {value: EXPLICIT_PY, loci: *line038_712}
+        dimension_source_loci: {items: *line038_712}
+        dim_source_text: {value: "c_gamma2_dim = (1, 1, -1, 0)", loci: *line038_712}
+        dim_text_form: POSITIONAL
+        basis_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+        ownership:
+          value: UNDETERMINED
+          reason: This evidence-shape fixture does not adjudicate ownership.
+          sources_searched: *line038_712
+        binding_refs: {items: [], reason: This evidence-shape fixture does not assert a binding relation.}
+        register_evidence: {status: ABSENT_FROM_REGISTER}
+        declaration_required: UNDETERMINED
+        candidate_reason:
+          value: NOT_APPLICABLE
+          reason: Machinery is PRESENT; this fixture does not assert candidacy.
+          sources_searched: *line038_712
+      - item_id: repair7.stage038.c_e2_corrupt
+        name: {value: c_E2_dim, loci: &line038_713 [scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:713]}
+        binding_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:713
+        use_loci: {items: *line038_713}
+        identity_status:
+          value: UNDETERMINED
+          reason: The fixture tests positional evidence, not physical quantity identity.
+          sources_searched: *line038_713
+        quantity_identity:
+          value: UNDETERMINED
+          reason: Binding spelling alone does not establish a physical quantity identity.
+          sources_searched: *line038_713
+        identity_locus:
+          value: UNDETERMINED
+          reason: No separate identity assertion is used by this evidence fixture.
+          sources_searched: *line038_713
+        dimension_value_status: {value: EXPLICIT_PY, loci: *line038_713}
+        dimension_source_loci: {items: *line038_713}
+        dim_source_text: {value: "c_E2_dim = (0, 3, -1, 1)", loci: *line038_713}
+        dim_text_form: POSITIONAL
+        basis_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+        ownership:
+          value: UNDETERMINED
+          reason: This evidence-shape fixture does not adjudicate ownership.
+          sources_searched: *line038_713
+        binding_refs: {items: [], reason: This evidence-shape fixture does not assert a binding relation.}
+        register_evidence: {status: ABSENT_FROM_REGISTER}
+        declaration_required: UNDETERMINED
+        candidate_reason:
+          value: NOT_APPLICABLE
+          reason: Machinery is PRESENT; this fixture does not assert candidacy.
+          sources_searched: *line038_713
+      - item_id: repair7.stage038.mu_r_corrupt
+        name: {value: mu_R_dim, loci: &line038_714 [scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:714]}
+        binding_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:714
+        use_loci: {items: *line038_714}
+        identity_status:
+          value: UNDETERMINED
+          reason: The fixture tests positional evidence, not physical quantity identity.
+          sources_searched: *line038_714
+        quantity_identity:
+          value: UNDETERMINED
+          reason: Binding spelling alone does not establish a physical quantity identity.
+          sources_searched: *line038_714
+        identity_locus:
+          value: UNDETERMINED
+          reason: No separate identity assertion is used by this evidence fixture.
+          sources_searched: *line038_714
+        dimension_value_status: {value: EXPLICIT_PY, loci: *line038_714}
+        dimension_source_loci: {items: *line038_714}
+        dim_source_text: {value: "mu_R_dim = (0, 0, 0, 0)", loci: *line038_714}
+        dim_text_form: POSITIONAL
+        basis_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+        ownership:
+          value: UNDETERMINED
+          reason: This evidence-shape fixture does not adjudicate ownership.
+          sources_searched: *line038_714
+        binding_refs: {items: [], reason: This evidence-shape fixture does not assert a binding relation.}
+        register_evidence: {status: ABSENT_FROM_REGISTER}
+        declaration_required: UNDETERMINED
+        candidate_reason:
+          value: NOT_APPLICABLE
+          reason: Machinery is PRESENT; this fixture does not assert candidacy.
+          sources_searched: *line038_714
+      - item_id: repair7.stage038.c_gamma2_real
+        name: {value: c_gamma2_dim, loci: &line038_718 [scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:718]}
+        binding_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:718
+        use_loci: {items: *line038_718}
+        identity_status:
+          value: UNDETERMINED
+          reason: The fixture tests positional evidence, not physical quantity identity.
+          sources_searched: *line038_718
+        quantity_identity:
+          value: UNDETERMINED
+          reason: Binding spelling alone does not establish a physical quantity identity.
+          sources_searched: *line038_718
+        identity_locus:
+          value: UNDETERMINED
+          reason: No separate identity assertion is used by this evidence fixture.
+          sources_searched: *line038_718
+        dimension_value_status: {value: EXPLICIT_PY, loci: *line038_718}
+        dimension_source_loci: {items: *line038_718}
+        dim_source_text: {value: "c_gamma2_dim = (0, 2, -2, 0)", loci: *line038_718}
+        dim_text_form: POSITIONAL
+        basis_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+        ownership:
+          value: UNDETERMINED
+          reason: This evidence-shape fixture does not adjudicate ownership.
+          sources_searched: *line038_718
+        binding_refs: {items: [], reason: This evidence-shape fixture does not assert a binding relation.}
+        register_evidence: {status: ABSENT_FROM_REGISTER}
+        declaration_required: UNDETERMINED
+        candidate_reason:
+          value: NOT_APPLICABLE
+          reason: Machinery is PRESENT; this fixture does not assert candidacy.
+          sources_searched: *line038_718
+      - item_id: repair7.stage038.c_e2_real
+        name: {value: c_E2_dim, loci: &line038_719 [scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:719]}
+        binding_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:719
+        use_loci: {items: *line038_719}
+        identity_status:
+          value: UNDETERMINED
+          reason: The fixture tests positional evidence, not physical quantity identity.
+          sources_searched: *line038_719
+        quantity_identity:
+          value: UNDETERMINED
+          reason: Binding spelling alone does not establish a physical quantity identity.
+          sources_searched: *line038_719
+        identity_locus:
+          value: UNDETERMINED
+          reason: No separate identity assertion is used by this evidence fixture.
+          sources_searched: *line038_719
+        dimension_value_status: {value: EXPLICIT_PY, loci: *line038_719}
+        dimension_source_loci: {items: *line038_719}
+        dim_source_text: {value: "c_E2_dim = (0, 2, -2, 0)", loci: *line038_719}
+        dim_text_form: POSITIONAL
+        basis_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+        ownership:
+          value: UNDETERMINED
+          reason: This evidence-shape fixture does not adjudicate ownership.
+          sources_searched: *line038_719
+        binding_refs: {items: [], reason: This evidence-shape fixture does not assert a binding relation.}
+        register_evidence: {status: ABSENT_FROM_REGISTER}
+        declaration_required: UNDETERMINED
+        candidate_reason:
+          value: NOT_APPLICABLE
+          reason: Machinery is PRESENT; this fixture does not assert candidacy.
+          sources_searched: *line038_719
+      - item_id: repair7.stage038.mu_r_real
+        name: {value: mu_R_dim, loci: &line038_720 [scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:720]}
+        binding_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:720
+        use_loci: {items: *line038_720}
+        identity_status:
+          value: UNDETERMINED
+          reason: The fixture tests positional evidence, not physical quantity identity.
+          sources_searched: *line038_720
+        quantity_identity:
+          value: UNDETERMINED
+          reason: Binding spelling alone does not establish a physical quantity identity.
+          sources_searched: *line038_720
+        identity_locus:
+          value: UNDETERMINED
+          reason: No separate identity assertion is used by this evidence fixture.
+          sources_searched: *line038_720
+        dimension_value_status: {value: EXPLICIT_PY, loci: *line038_720}
+        dimension_source_loci: {items: *line038_720}
+        dim_source_text: {value: "mu_R_dim = (2, 1, -4, -1)", loci: *line038_720}
+        dim_text_form: POSITIONAL
+        basis_locus: scripts/ledger_stage038_sealed_landing_electric_bc_r1_sympy_audit.py:692
+        ownership:
+          value: UNDETERMINED
+          reason: This evidence-shape fixture does not adjudicate ownership.
+          sources_searched: *line038_720
+        binding_refs: {items: [], reason: This evidence-shape fixture does not assert a binding relation.}
+        register_evidence: {status: ABSENT_FROM_REGISTER}
+        declaration_required: UNDETERMINED
+        candidate_reason:
+          value: NOT_APPLICABLE
+          reason: Machinery is PRESENT; this fixture does not assert candidacy.
+          sources_searched: *line038_720
+  - op: replace
+    path: [wl_evidence]
+    value:
+      states_dimensions: {value: false, loci: [synthetic/rule_fixture.wl:1]}
+      pairs:
+        items: []
+        reason: This fixture isolates Python positional evidence.

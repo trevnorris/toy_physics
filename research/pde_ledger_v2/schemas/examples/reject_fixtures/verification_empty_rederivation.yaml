@@ -1,0 +1,11 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_present_no_anchor_accept.yaml
+mutations:
+  - {op: replace, path: [ownership_rederivation, coverage, bindings_re_derived], value: 0}
+  - op: replace
+    path: [ownership_rederivation, coverage, escape]
+    value:
+      invoked: true
+      reason: The synthetic violation declares a full one-binding escape.
+      bindings_not_rederived: 1
+  - {op: replace, path: [ownership_rederivation, items], value: []}

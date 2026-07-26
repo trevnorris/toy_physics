@@ -1,0 +1,51 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_none_accept.yaml
+mutations:
+  - op: replace
+    path: [quantities]
+    value:
+      items:
+        - item_id: none.forbidden.quantity
+          name:
+            value: integer_count
+            loci: [synthetic/stage043_none_shape.py:45]
+          binding_locus: synthetic/stage043_none_shape.py:45
+          use_loci:
+            items: [synthetic/stage043_none_shape.py:45]
+          identity_status:
+            value: SOURCE_STATED
+            loci: [synthetic/stage043_none_shape.py:45]
+          quantity_identity:
+            value: audited integer count
+            loci: [synthetic/stage043_none_shape.py:45]
+          identity_locus:
+            value: synthetic/stage043_none_shape.py:45
+            loci: [synthetic/stage043_none_shape.py:45]
+          dimension_value_status:
+            value: UNDETERMINED
+            reason: A NONE report must not carry this otherwise well-shaped quantity.
+            sources_searched: [synthetic/stage043_none_shape.py:45]
+          dimension_source_loci:
+            items: []
+            reason: The integer count has no dimension source.
+          dim_source_text:
+            value: UNDETERMINED
+            reason: The integer count has no dimension text.
+            sources_searched: [synthetic/stage043_none_shape.py:45]
+          ownership:
+            value: CHECK_LOCAL
+            loci: [synthetic/stage043_none_shape.py:45]
+          binding_refs:
+            items: []
+            reason: ABSENT machinery has no dimension binding.
+          register_evidence:
+            status: ABSENT_FROM_REGISTER
+          declaration_required: "NO"
+          candidate_reason:
+            value: NOT_APPLICABLE
+            reason: This item exists only to violate the NONE quantity prohibition.
+            sources_searched: [synthetic/stage043_none_shape.py:45]
+      zero_declaration_argument:
+        value: NOT_APPLICABLE
+        reason: The ownership floor applies only to REAL+PRESENT.
+        sources_searched: [synthetic/stage043_none_shape.py:45]

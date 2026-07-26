@@ -1,0 +1,87 @@
+schema_version: dimension_survey_verification_v1
+identity:
+  stage: "043"
+  report_path:
+    value: research/pde_ledger_v2/schemas/examples/report_none_accept.yaml
+    method: FILESYSTEM
+  report_sha256:
+    value: 91f273df1da431ce36fccb380eddd93597164b9f106ff33421e222d12823662b
+    method: SHA256SUM
+classification: NONE+ABSENT
+overall_verdict: PASS
+locus_integrity:
+  status: SYNTHETIC_EXEMPT
+  reason: Committed synthetic loci deliberately do not resolve to production files.
+categories:
+  dimension_bindings:
+    applicability: NOT_APPLICABLE
+    source_count: N/A
+    report_count: N/A
+    source_unmatched:
+      items: []
+      reason: Binding fidelity is inapplicable.
+    report_unmatched:
+      items: []
+      reason: Binding fidelity is inapplicable.
+    reason: ABSENT machinery has no binding category.
+  quantities:
+    applicability: NOT_APPLICABLE
+    source_count: 0
+    report_count: 0
+    source_unmatched:
+      items: []
+      reason: This malformed fixture substitutes zero for N/A.
+    report_unmatched:
+      items: []
+      reason: This malformed fixture substitutes zero for N/A.
+    reason: This malformed fixture wrongly treats NONE as a zero-item search.
+  contract_features_and_presentation_consumers:
+    applicability: NOT_APPLICABLE
+    source_count: N/A
+    report_count: N/A
+    source_unmatched:
+      items: []
+      reason: Contract fidelity is inapplicable.
+    report_unmatched:
+      items: []
+      reason: Contract fidelity is inapplicable.
+    reason: ABSENT machinery has no representation contract.
+  pass_emitter_sites:
+    applicability: APPLICABLE
+    source_count: 1
+    report_count: 1
+    source_unmatched:
+      items: []
+      reason: The synthetic PASS emitter is matched.
+    report_unmatched:
+      items: []
+      reason: The reported PASS emitter is matched.
+  pass_call_sites:
+    applicability: APPLICABLE
+    source_count: 1
+    report_count: 1
+    source_unmatched:
+      items: []
+      reason: The synthetic PASS call is matched.
+    report_unmatched:
+      items: []
+      reason: The reported PASS call is matched.
+none_classification_recheck:
+  applicability: APPLICABLE
+  result: PASS
+  detail: The positive no-declaration argument is rechecked.
+  source_loci: [synthetic/stage043_none_shape.py:45]
+ownership_rederivation:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no ownership inventory.
+zero_declaration_check:
+  applicability: NOT_APPLICABLE
+  reason: The zero-declaration floor applies only to REAL+PRESENT.
+negative_control_integrity:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no negative-control binding.
+gap_credibility:
+  applicability: APPLICABLE
+  result: PASS
+  detail: The empty gap inventory has a credibility reason.
+  source_loci: [synthetic/stage043_none_shape.py:45]

@@ -1,0 +1,10 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_real_absent_accept.yaml
+mutations:
+  - op: replace
+    path: [quantities, items, 0, dimension_source_loci, items, 0]
+    value: synthetic/degenerate_note.md:6
+  - op: replace
+    path: [quantities, items, 0, dim_source_text, value]
+    value: TBD
+  - {op: replace, path: [quantities, items, 0, dim_text_form], value: POSITIONAL}

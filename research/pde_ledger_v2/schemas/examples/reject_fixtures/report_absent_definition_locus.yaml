@@ -1,0 +1,8 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_real_absent_accept.yaml
+mutations:
+  - op: replace
+    path: [definition_locus]
+    value:
+      value: synthetic/real_absent.py:30
+      loci: [synthetic/real_absent.py:30]

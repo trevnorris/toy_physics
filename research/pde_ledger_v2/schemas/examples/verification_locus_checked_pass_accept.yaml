@@ -1,0 +1,99 @@
+schema_version: dimension_survey_verification_v1
+identity:
+  stage: "043"
+  report_path:
+    value: research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml
+    method: FILESYSTEM
+  report_sha256:
+    value: 49b14d971f36a533b7d688710ac2b810bc26548a2d18cd9f178dd4da4bd3b252
+    method: SHA256SUM
+classification: NONE+ABSENT
+overall_verdict: PASS
+locus_integrity:
+  status: CHECKED
+  result: PASS
+  detail: Every self-cited synthetic locus resolves to an in-range committed line.
+  invalid_loci:
+    items: []
+    reason: The mechanical check found no invalid synthetic loci.
+  source_identity:
+    result: PASS
+    detail: Both source files, digests, and the script line count reproduce.
+    failures:
+      items: []
+      reason: The mechanical source-identity check found no discrepancy.
+categories:
+  dimension_bindings:
+    applicability: NOT_APPLICABLE
+    source_count: N/A
+    report_count: N/A
+    source_unmatched:
+      items: []
+      reason: Binding fidelity is inapplicable to ABSENT machinery.
+    report_unmatched:
+      items: []
+      reason: Binding fidelity is inapplicable to ABSENT machinery.
+    reason: ABSENT machinery has no binding category.
+  quantities:
+    applicability: NOT_APPLICABLE
+    source_count: N/A
+    report_count: N/A
+    source_unmatched:
+      items: []
+      reason: The positive NONE argument makes the quantity category inapplicable.
+    report_unmatched:
+      items: []
+      reason: The positive NONE argument makes the quantity category inapplicable.
+    reason: NONE uses N/A, never numeric zero, for quantities.
+  contract_features_and_presentation_consumers:
+    applicability: NOT_APPLICABLE
+    source_count: N/A
+    report_count: N/A
+    source_unmatched:
+      items: []
+      reason: Contract fidelity is inapplicable to ABSENT machinery.
+    report_unmatched:
+      items: []
+      reason: Contract fidelity is inapplicable to ABSENT machinery.
+    reason: ABSENT machinery has no representation contract.
+  pass_emitter_sites:
+    applicability: APPLICABLE
+    source_count: 1
+    report_count: 1
+    source_unmatched:
+      items: []
+      reason: The synthetic PASS emitter is matched.
+    report_unmatched:
+      items: []
+      reason: The reported PASS emitter is matched.
+  pass_call_sites:
+    applicability: APPLICABLE
+    source_count: 1
+    report_count: 1
+    source_unmatched:
+      items: []
+      reason: The synthetic PASS call site is matched.
+    report_unmatched:
+      items: []
+      reason: The reported PASS call site is matched.
+none_classification_recheck:
+  applicability: APPLICABLE
+  result: PASS
+  detail: >-
+    Re-reading the synthetic count assertion and homogeneity-not-applicable
+    statement confirms that no shared declaration is owed.
+  source_loci: [research/pde_ledger_v2/schemas/examples/verification_locus_checked_pass_accept.yaml:1, research/pde_ledger_v2/schemas/examples/verification_locus_checked_pass_accept.yaml:2]
+ownership_rederivation:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no binding ownership to re-derive.
+zero_declaration_check:
+  applicability: NOT_APPLICABLE
+  reason: The zero-declaration floor applies only to REAL+PRESENT.
+negative_control_integrity:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no negative-control dimension binding.
+gap_credibility:
+  applicability: APPLICABLE
+  result: PASS
+  detail: The empty gap inventory has an explicit source-based credibility reason.
+  source_loci: [research/pde_ledger_v2/schemas/examples/verification_locus_checked_pass_accept.yaml:1, research/pde_ledger_v2/schemas/examples/verification_locus_checked_pass_accept.yaml:2]

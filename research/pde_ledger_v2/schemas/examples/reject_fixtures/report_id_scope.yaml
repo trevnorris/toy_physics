@@ -1,0 +1,4 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_rule_fixture_accept.yaml
+mutations:
+  - {op: add, path: [basis, axis_evidence, items, 0, item_id], value: forbidden.axis.id}

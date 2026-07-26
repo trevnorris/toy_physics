@@ -1,0 +1,63 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_rule_fixture_accept.yaml
+mutations:
+  - {op: replace, path: [identity, stage], value: "042"}
+  - op: replace
+    path: [identity, script_path, value]
+    value: research/pde_ledger_v2/scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py
+  - op: replace
+    path: [identity, script_sha256, value]
+    value: 201578946a2424c096c34fef5f95d963dbc1a50fa71f07dee5e81fcc54390bd1
+  - {op: replace, path: [identity, script_line_count, value], value: 2048}
+  - op: replace
+    path: [basis, axis_evidence, items]
+    value:
+      - source_spelling: {value: stiffness, loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821]}
+        interpreted_axis_name: {value: stiffness, loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821]}
+        evidence: {value: INFERRED_FROM_USAGE, loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821]}
+        locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821
+      - source_spelling: {value: length, loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:823]}
+        interpreted_axis_name: {value: length, loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:823]}
+        evidence: {value: INFERRED_FROM_USAGE, loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:823]}
+        locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:823
+      - source_spelling: {value: frequency, loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:824]}
+        interpreted_axis_name: {value: time, loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:824]}
+        evidence: {value: INFERRED_FROM_USAGE, loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:824]}
+        locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:824
+  - op: replace
+    path: [basis, orders, items, 0, axes]
+    value: [stiffness, length, time]
+  - op: replace
+    path: [basis, orders, items, 0, evidence]
+    value:
+      value: INFERRED_FROM_USAGE
+      loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821-824]
+  - op: replace
+    path: [basis, orders, items, 0, locus]
+    value: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821-824
+  - op: replace
+    path: [quantities, items, 0, dimension_value_status, loci]
+    value: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821]
+  - op: replace
+    path: [quantities, items, 0, dimension_source_loci, items]
+    value: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821]
+  - op: replace
+    path: [quantities, items, 0, dim_source_text]
+    value:
+      value: "stiffness_dim: Dim = (Fraction(1), Fraction(0), Fraction(0))"
+      loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821]
+  - {op: replace, path: [quantities, items, 0, dim_text_form], value: POSITIONAL}
+  - op: replace
+    path: [quantities, items, 0, basis_locus]
+    value: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821-824
+  - op: replace
+    path: [wl_evidence, pairs]
+    value:
+      items:
+        - item_id: repair6.wl.bad_locus
+          quantity_ref: fixture.quantity.x
+          py_text_verbatim: "stiffness_dim: Dim = (Fraction(1), Fraction(0), Fraction(0))"
+          py_locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821
+          wl_locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821
+          status: NOT_COMPARABLE_BY_CONSTRUCTION
+          reason: This isolated mutation points the Wolfram locus at the Python source.

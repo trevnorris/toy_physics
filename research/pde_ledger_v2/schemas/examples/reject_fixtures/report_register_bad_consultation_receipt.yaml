@@ -1,0 +1,4 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_real_absent_accept.yaml
+mutations:
+  - {op: add, path: [quantities, items, 0, binding_refs, items, 0], value: fake.binding}

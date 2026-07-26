@@ -1,0 +1,9 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_present_accept.yaml
+mutations:
+  - op: replace
+    path: [categories, pass_emitter_sites, source_count]
+    value: 2
+  - op: replace
+    path: [categories, pass_emitter_sites, report_count]
+    value: 2

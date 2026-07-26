@@ -1,0 +1,12 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_none_accept.yaml
+mutations:
+  - op: replace
+    path: [zero_declaration_check]
+    value:
+      applicability: APPLICABLE
+      declaration_required_yes_count: 0
+      source_cited_argument_present: false
+      result: FAIL
+      detail: This mutation applies the zero check to NONE.
+      source_loci: [synthetic/stage043_none_shape.py:1]

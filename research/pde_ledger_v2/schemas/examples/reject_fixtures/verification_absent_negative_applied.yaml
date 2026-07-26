@@ -1,0 +1,13 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_none_accept.yaml
+mutations:
+  - op: replace
+    path: [negative_control_integrity]
+    value:
+      applicability: APPLICABLE
+      result: PASS
+      detail: This mutation applies negative-control checking to NONE.
+      binding_refs:
+        items: []
+        reason: NONE has no bindings.
+      source_loci: [synthetic/stage043_none_shape.py:1]

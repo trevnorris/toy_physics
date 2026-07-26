@@ -1,0 +1,6 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_rule_fixture_accept.yaml
+mutations:
+  - op: replace
+    path: [static_recovery_surface, items, 0, current_checker_visibility, loci]
+    value: [synthetic/rule_fixture.py:1, synthetic/rule_fixture.py:2]

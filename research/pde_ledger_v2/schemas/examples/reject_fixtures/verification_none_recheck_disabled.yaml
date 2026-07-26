@@ -1,0 +1,8 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_none_accept.yaml
+mutations:
+  - op: replace
+    path: [none_classification_recheck]
+    value:
+      applicability: NOT_APPLICABLE
+      reason: This mutation disables the required NONE recheck.

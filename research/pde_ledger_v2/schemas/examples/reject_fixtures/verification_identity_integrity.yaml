@@ -1,0 +1,9 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_locus_checked_pass_accept.yaml
+mutations:
+  - op: replace
+    path: [identity, report_path, value]
+    value: research/pde_ledger_v2/schemas/examples/reject_fixtures/report_bad_source_identity.yaml
+  - op: replace
+    path: [identity, report_sha256, value]
+    value: f8a76efc3ec07d5525922a9bab5dd373c66fb1c28742f3474a78df51fd226d4e

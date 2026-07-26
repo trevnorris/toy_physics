@@ -1,212 +1,209 @@
-# Integration-test thread — HANDOFF (written 2026-07-25, pre-compact)
+# Integration-test thread — HANDOFF (2026-07-25, Pass-1 apparatus session)
 
-⭐ **READ THIS FIRST**, then **`manifests/LEDGER_WIDE_PLAN.md`** (the PLAN OF RECORD — sequential
-stage-by-stage work preceded by a ledger-wide dimension-unification pass), then
-`docs/development_pipeline.md` (the process — substantially expanded this session).
+⭐ **READ ORDER:** this file → `manifests/LEDGER_WIDE_PLAN.md` (PLAN OF RECORD) →
+`docs/development_pipeline.md` (process).
+📋 **`manifests/RESTART_PROMPT.md`** — paste-ready session-restart prompt with the ordered next steps.
 ⛔ `manifests/FANOUT_PLAN.md` is SUPERSEDED — the parallel fanout is CANCELLED.
 Do NOT read vision docs; they re-confuse.
 
-**Operating model for the whole run: Claude is a THIN CONDUCTOR.** Agents return ≤10-line VERDICTS
-(full reports to disk, read only on a negative verdict); the orchestrator independently re-runs the
-acceptance commands and greps for the specific line. Detail is caught by a correctly-scoped
-reviewer, not by orchestrator attention — *you are your agents, as long as they are loaded up
-correctly*. Holding one long session keeps process continuity STRUCTURAL rather than dependent on
-docs surviving compaction. Details in `LEDGER_WIDE_PLAN.md` §1.
+**Operating model: Claude is a THIN CONDUCTOR.** Agents return ≤12-line checkable verdicts; full
+reports go to disk and are read only on a negative verdict; the orchestrator independently re-runs
+acceptance commands.
+⚠ **Violated early this session** — the orchestrator read three full review files and hand-folded
+them, and *every one of those folds introduced a defect*. The fix is
+`_scratch/pass1_dim_survey/FOLD_PROTOCOL.md`: a fork agent reads the review, verifies each finding
+against source, folds, self-checks, returns a receipt. **Use it.** It has since caught defects the
+orchestrator shipped, defects in its own drafts, and a circular justification between two directive
+sections.
 
-Branch `ledger-v2-rebuild`. All work below is COMMITTED unless stated.
+Branch `ledger-v2-rebuild`. `schemas/` is UNTRACKED; only `HANDOFF_NEXT_SESSION.md` is modified.
 
 ---
 ## 1. WHERE WE ARE
 
-**The physics ledger is essentially built** — 44 stage notes, 44 paper cards, 43 SymPy audits,
-43 Mathematica audits, 44 saved `.out`. Each stage has UNIT tests (dual-engine, able-to-fail
-teeth). Part VII is 2/7; paused threads at §7.
+**Pass 1 §2.1 (the dimension survey) has NOT RUN.** This session built the apparatus to run it
+safely, and hardened it through **eight adversarial verification passes (~1,000 break attempts)**.
 
-**The integration layer is 4 of 44 manifests** — 030, 031, 032, 043. Still the pilot. The fanout
-has NOT started.
-
-Checker `manifests/composite_build.py`, sha `85ad921b028212b0`, **104 self-test fixtures, all
-green**. Current composite build (4 stages):
-
-    FAIL: citations=18/21 claims=121/121 unresolved_producers=3 c7_edges=1/18
-          closure=stage030,stage031,stage032,stage043 mathematica_outputs_checked=4
-
-**⭐ The build is RED ON PURPOSE and that is a SUCCESS.** User's standing principle, set this
-session: *findings are the product; green is not the goal.* The single new FAIL-class finding is a
-REAL cross-stage inconsistency (§3). Baseline findings (3× `ABSENT_PRODUCER` into unextracted
-stage003, `REGISTER_COVERAGE_PARTIAL`, 2× `LIFECYCLE_PRODUCER_UNEXTRACTED`, `C7_EDGE_UNCOVERED`)
-are honest edges, not defects.
-
-Commits this session: `4f60c9c4` (process contract restored) · `2030e344` (Phase 1: honest scope +
-general basis) · `5ac5d8f1` (Phase 2: manifests reworked, drift fixtures) · `06b349fb` (pipeline
-doc) · plus stage043 (commit pending fidelity leg).
-
----
-## 2. ⛔ THE FANOUT IS BLOCKED — do not launch it before clearing these
-
-A Grok pre-freeze review (the gate `FANOUT_PLAN.md` reserves for exactly this) found the fanout
-would have failed. **Each needs a decision, most need work.**
-
-1. **Dimension recovery covers ~16 of 43 scripts** (13 with a `Dim` class, 3 registered bare-tuple).
-   ~18 have NO dimension machinery, yet the schema REQUIRES every symbol object to carry
-   `dim`/`dim_source`/`dim_source_order`/`dim_source_tuple`, and `UNSUPPORTED` forces exit 1.
-   Half the ledger cannot satisfy the schema honestly → extraction agents would invent loci.
-   *Partial relief found at stage043:* `symbols` may be EMPTY (schema has no `minItems`), so a stage
-   with no dimensional content can declare `symbols: []`. That does NOT help a stage that has real
-   quantities but no dimension machinery in its script.
-
-   ⭐ **USER DECISION (2026-07-25) — FIX THE CORPUS, NOT THE CHECK.** An earlier proposal here was an
-   escape-hatch status (`not_recoverable_from_source`). **REJECTED, correctly:** it weakens the check
-   because the corpus is inconvenient, when the corpus is what is actually wrong. Thirteen different
-   dimension idioms across 43 scripts IS drift; the checker was reporting it accurately.
-   **THE PLAN: a single shared dimension-declaration module, imported by every audit script.**
-   Had this existed from the start, the whole class would have been caught immediately.
-   What it buys beyond the bug fix:
-   - **Deletes fragile checker machinery** — `BARE_TUPLE_DIM_ORDER_BY_SHA256`, the AST bare-tuple
-     recovery, the live module-execution path, and the per-script order registry all exist ONLY to
-     reverse-engineer dims out of inconsistent idioms. One import ⇒ one recovery path.
-   - **May un-do the C4 compromise.** Dimensional certification was scoped to consistency-only
-     BECAUSE identity→dimension resolved 0/92 symbols — there was no per-quantity binding to look
-     up. A module keyed by quantity identity is precisely the missing structure. Re-evaluate the
-     scope decision AFTER the module exists (do not assume it restores full certification; do not
-     assume it cannot).
-   - **stage038 (4 axes: M,L,T,E-charge) and stage042 (stiffness,length,time with fractional
-     exponents) become DECLARED rather than discovered.**
-   Honest costs / risks, all manageable but none skippable:
-   - **Digest cascade:** every manifest pins its script's `source_digest`; touching 43 scripts
-     invalidates those pins in all 4 existing manifests → re-pin. (The Mathematica `.out` evidence
-     is unaffected — Python changes do not alter it.)
-   - **The refactor MUST be behaviour-preserving, and that is testable:** every audit still exits 0
-     with an IDENTICAL PASS count. A changed dimension VALUE is a regression, not a refactor.
-   - **`ACTIVE_MUTATION` coupling:** every script reads it at module scope and the C7/ablation
-     harnesses depend on that; the shared import must not disturb it.
-   - **Not every script needs dims.** stage043 legitimately has none (integer-count stage). The
-     survey must separate "no dimensional content" from "dimensional content, no machinery".
-   - **This is ON THE CRITICAL PATH** — it must precede the fanout, or 41 manifests get extracted
-     against the broken state and need redoing.
-   Sequence: survey all 43 → design the module (multiple bases, exact rationals) → refactor with
-   identical-PASS-count as the gate → re-pin digests → simplify the checker to the single recovery
-   path → re-evaluate the C4 scope → fanout.
-2. **`infer_closed_slice` can never close.** It requires a continuous `1..max` stage range, but
-   **stage029 has no audit script and will have no manifest**. So a full-ledger run stays
-   permanently open and silently downgrades every closed-ledger FAIL to PARTIAL. Options: a
-   symbol-free stage029 stub manifest; permit declared holes; or replace continuity inference with
-   an explicit expected-stage set. **NEEDS A DECISION.**
-3. **`BARE_TUPLE_DIM_ORDER_BY_SHA256` is a 3-digest allowlist frozen at freeze time.** Any other
-   bare-tuple stage needs a checker edit, which the freeze forbids. Pre-register all such digests
-   where order has independent evidence, or move the registry out of checker code.
-4. **~42 of ~89 issue codes still have no fixture** (4 drift-critical ones were planted this
-   session: `CITATION_DRIFT`, `EXPORT_DIGEST_MISMATCH`, `WRONG_FIRST_FAILURE`,
-   `RANGE_ENDPOINT_DRIFT`). Remaining notable gaps: `TOKEN_DRIFT`, `SET_DRIFT`,
-   `ADJUDICATION_DRIFT`, `WRONG_OWNER_REFERENCE`, `UNBACKED_SUBSTITUTION`,
-   `MULTIPLY_CLASSIFIED_ROW`, `UNKNOWN_EXPORT`, `GENESIS_MISSING`, `MISSING_SOURCE`.
-5. **Export-completeness is protocol-only, never enforced** — agents will under-export until a
-   downstream consumer fails, causing rework cascades.
-6. **`ABSENT_PRODUCER` is ambiguous** — "not extracted yet" vs "typo/wrong id" are
-   indistinguishable in open mode. Expensive misdiagnosis at 41 stages.
-7. **Vacuous `cas_equivalence`**: an ownership restatement (`S_gg = S_gg`) satisfies C2 while
-   detecting nothing. Agents will think they linked content when they linked ids.
-8. **Runtime**: ~23s for 3 stages; budget 1–5+ min at 44 (live dim recovery spawns one subprocess
-   per unique script and EXECUTES the audit module; C7 mutators are sequential, 30s timeout each).
+**Built and verified:**
+- ✅ **SymPy refactor baseline** — 43 scripts, all exit 0, **reproducible** (two runs identical).
+  `_scratch/pass1_dim_survey/baseline/` + `BASELINE_NOTE.md`.
+- ✅ **Mathematica `.out` determinism** — all 44 `.wl` re-run: 44/44 exit 0, **43/44 byte-identical,
+  44/44 after normalising Mathematica's `$NNNNN` symbol counter**, zero non-counter differences, 442
+  script-seconds total. `out_probe/PROBE_RESULT.md`.
+- ✅ **Survey directive at r17** — 5 Codex review rounds (9→6→5→4→1), a Grok gate, and 9 verification
+  folds. `_scratch/pass1_dim_survey/directive/SURVEY_DIRECTIVE.md`.
+- ✅ **Two schemas + validator + fixtures** (`schemas/`, untracked) — arbiter re-run after round 7:
+  **exit 0, 122 PASS / 0 FAIL**. Independently verified: **43/43 rules load-bearing under per-rule
+  ablation**, **105/105 rejects minimal violations**, 17/17 accepts, 82/91 call sites individually
+  protected, 91/124 exercised, 116/116 real register rows recordable.
+- ✅ **Pilot directive** — `_scratch/pass1_dim_survey/directive/PILOT_DIRECTIVE.md`.
+- ✅ **Rounds 5 (deletion) → 5b → 6 → 7 executed and independently verified.**
+  ⚠ **Round 5 printed its done-marker with its own suite RED** — the orchestrator's arbiter re-run
+  caught `exit=1, 45 FAIL`. **This is why the arbiter re-run is not ceremonial.** Round 7's verifier
+  returned `ACCEPT_WITH_FINDINGS` with 0 invented semantics and 0 undisclosed removals — the first
+  round clean on both.
 
 ---
-## 3. THE FIRST REAL CROSS-STAGE FINDING (do not "fix" casually)
+## 2. DECISIONS MADE (do not re-open)
 
-`RANGE_ENDPOINT_DRIFT — census (39,49,10) != stage043/count_range (40,49,9)`
-
-stage032 declares knob `Q_E` with `{low:0, high:1}`. stage043's audit counts `Q_E` at BOTH endpoints
-as route-ful debt. Exact-once classification gives census `[39,49]` spread 10; stage043's range
-claim says `[40,49]` spread 9. Codex's reading: **stage043 is likely right** ("pending debt stays
-counted"), so stage032's lifecycle is the probable defect — but this was NOT adjudicated.
-
-The schema has NO `reclassified`/`reconciled` lifecycle action (only introduced/inherited/retired/
-discharged), so there is no honest way to express a supersession. Fabricating a `{low:+1,high:0}`
-"introduced" event would go green and be a LIE — explicitly forbidden.
-
-**Per the user: catalogue findings now, fix them in a dedicated later phase.** Do not resolve this
-as a side-effect of making a build green.
-
----
-## 4. THE PROCESS (this is the part to protect)
-
-`docs/development_pipeline.md` grew 99 → 195 lines this session with four new sections. Read it.
-The gauntlet per stage, proven on stage043 and now the standard:
-
-> **draft directive → Codex DESIGN-REVIEW → fold → Codex CONFIRM-PASS → execute → checker + FRESH
-> fidelity agent.** Grok is a GATE before any freeze, not a per-manifest reviewer.
-
-**I skipped the design-review and confirm legs for most of this session and it cost real time.**
-When finally run on stage043, the design-review caught that my directive would have encoded the
-discrete count as a range component, producing `[51,60]` instead of `[40,49]` — an error that would
-have passed the checker (internally consistent, just describing the wrong object) and probably a
-fidelity audit too.
-
-Hard-won specifics now in the pipeline doc: denylist⇒wrong-architecture; "who supplies the value vs
-the alphabet"; specify the INVARIANT not the instance; measure empirical premises before building;
-"independent of whom?" before calling a check redundant; write scope bounds INTO the directive;
-green self-reports are not proof; verify what could BREAK not just what changed; fixtures must never
-couple to production state; agents must NEVER delete directories; waiter-reaping ≠ a dead job.
-
-Two defaults that emerged from stage043 and should apply to every fanout stage:
-- **Expected-claim inventory** — enumerate from the sources what the stage must carry BEFORE
-  writing, else omission passes silently (an executor could export one claim, attach all teeth to
-  it, and stay green).
-- **Negative control for path coverage** — a passing run emits no marker, so "the check ran" must be
-  proven by deliberately tripping it (stage043 did this for the range path).
+1. **Schema-first split (USER).** Directive owns **semantics**; committed schemas + validator own
+   **shape**. Prose cannot pin a structured record for 44 parallel agents.
+2. **TWO schema artifacts** — a record schema and a verification-output schema.
+3. **`ownership` and `uses` are orthogonal** (§3.11); `declaration_required` derives from `ownership`
+   ALONE. An earlier single `role` enum made `ASSERTED_TARGET` imply a declaration, which would have
+   minted 8 spurious canonical declarations from stage038's `EXPECTED_UNIT_STATE` alone.
+4. **§3.11 narrowed to dimension-VALUED bindings**; producers (`__mul__`, `dim_add`, `dim_of`…) belong
+   to §3.10 contract features. Makes the recovery↔bindings correspondence a *stated* 1:1.
+5. **`orders[].axes` carries INTERPRETED names**, not source spellings.
+6. **Anchor applicability is CONDITIONAL** — ~40 `PRESENT` stages have no §4.4 anchor and declare
+   `NONE` positively. CORPUS anchors and OWNERSHIP anchors are disjoint sets.
+7. **§4.8 case (ii) gets FULL ownership coverage, not a sample** — this also defeats *shrinking* the
+   registry, not just zeroing it.
+8. **Grok is the DEFAULT tertiary; GLM only for a further opinion** (USER).
+9. ⭐ **The shared dimension module is SymPy-ONLY (USER).** Mathematica stays an **independent
+   verification engine**. Consequence: `.py`-vs-`.wl` dimension comparison is a **permanent standing
+   cross-check**, not a one-time pre-unification sweep, and a genuine difference is a dual-engine
+   finding the unit audits missed.
+10. ⭐ **The parameter register is an evidence source (USER caught the omission).**
+    `notes/parameter_register.md` is the ledger's running cross-stage dimensional ledger, per-stage,
+    keyed by quantity identity, dual-engine-verified. It is DERIVED — scripts/`.wl` are SOURCE; on
+    disagreement the source wins and the disagreement is a FINDING.
+11. ⭐ **Semantic dimension adjudication is DESCOPED from the survey** (orchestrator, after two
+    REJECTs). Both channels now record verbatim evidence + a **string-decidable** status; §4.9 owns
+    monomial normalisation and adjudication later. See §4 below.
+12. **Pin `model: opus` on every agent dispatch** (USER). `fork` inherits by contract;
+    `general-purpose` does not.
 
 ---
-## 5. WHAT WAS PROVEN (don't re-litigate)
+## 3. IMMEDIATE NEXT STEPS
 
-- **C7 anti-rederivation has teeth on real stages.** With `C7_FACET` injected the honest mutator
-  emits `PASS_F0_MOUTH_VALUE_EVALUATED` (a real tooth in stage031's 50); `--decorative` emits `PASS`
-  and is caught as `DECORATIVE_DEPENDENCY`. Note: running the mutator WITHOUT the env var emits
-  `PASS` legitimately — that is not a failure, it is the unmutated baseline.
-- **`DIMENSIONAL_CONSISTENCY` (formerly C4) is deliberately scoped** to manifest-internal algebra.
-  Per-stage dimensional correctness belongs to the dual-engine unit audits. Locus shopping,
-  composing dimensions from real bindings, the GL(3,Z) re-gauge, and manifest-supplied anchor
-  digests are KNOWN AND ACCEPTED — they require a manifest misrepresenting its own source, and the
-  operative risk is DRIFT. **Four rounds were spent here; do not reopen it.** Rationale is in the
-  `2030e344` commit message.
-- **The general dimensional basis works**: stage038's 4 axes `[M,L,T,E-charge]` and stage042's
-  `charge=(1/2,3/2,-1)` over `[stiffness,length,time]` both express and check; cross-basis
-  comparison is blocked on both code paths.
-- **Codex is the coder** (`docs/development_pipeline.md` §Roles). A previous session's claim that
-  "the Codex CLI stalled twice" was VERIFIED FALSE (all 27 runs that day ended exit=0) and had been
-  used to justify promoting agents to coders. Agents review; they never write code.
+0. ✅ **ROUND 7 IS DONE AND VERIFIED — `ACCEPT_WITH_FINDINGS`, pilot READY.**
+   `_scratch/pass1_dim_survey/reviews/REPAIR7_VERIFY.md`. Suite green (122 PASS / 0 FAIL, exit 0).
+   **Lexical coincidence is dead:** renaming every axis to alien tokens with evidence untouched left
+   17/17 honest records accepting — under r16 that flipped to REJECT. 10/10 previously-false-rejected
+   lines accept, plus 14 more real lines the verifier drew itself. 43/43 rules load-bearing,
+   105/105 minimal violations, 17/17 accepts, **0 invented semantics, 0 undisclosed removals**.
 
----
-## 6. IMMEDIATE NEXT STEPS
+   ⚠ **TWO ITEMS MUST BE SETTLED BEFORE THE 44-WAY DISPATCH** (neither blocks the 4-script pilot —
+   021/038/042 use tuple literals, 024 is `REAL+ABSENT`). Both are PRE-EXISTING (r16 rejected them
+   too), not round-7 regressions:
+   - ⭐ **`DIMENSIONLESS = Dim()` has NO honest escape** — 13 lines including `stage004:143`, a line
+     §3.5 itself names. Zero components vs a declared 3-axis basis fails the arity test with no
+     honest way out. **This is a fabrication-forcing rule and must be fixed in the DIRECTIVE**, not
+     patched in the schema.
+   - **`LENGTH = Dim(1, 0, 0)` rejects across 72 lines in 13 of 43 scripts.** An honest narrow-span
+     escape (`(1, 0, 0)`) exists but is UNDOCUMENTED — document it or widen the rule.
+   - Minor: the schema requires `basis_locus` on `NAMED_AXIS` while r17 §3.0 says it arises only on
+     `POSITIONAL`; §3.5 reads the other way. The builder resolved the conflict silently instead of
+     reporting it. Non-fabricating, but settle the §3.0-vs-§3.5 wording.
 
-1. Commit stage043 once its fidelity leg reports (running at handoff time).
-2. ✅ **BOTH §2 DECISIONS ARE MADE (user, 2026-07-25) — execute them, do not re-open:**
-   - **§2.1 → build the shared dimension-declaration module and refactor all 43 audit scripts onto
-     it.** Do NOT add an escape-hatch status. Start with the SURVEY (which stages have real
-     dimensional content vs none), because it sizes everything downstream.
-   - **§2.2 → replace continuity inference with an explicit canonical stage inventory** in
-     `composite_config.json` (digest-pinned). This also resolves §2.6: a reference to a stage NOT in
-     the inventory becomes a hard FAIL (typo), while "in the inventory, not yet extracted" stays
-     PARTIAL. Give stage029 a real manifest too, but do not make closedness depend on it.
-   - Other agreed opinions: §2.3 move the bare-tuple registry OUT of checker code into a
-     digest-pinned data file (mostly moot once §2.1 lands); §2.4 fixture by USAGE — prioritise
-     `TOKEN_DRIFT`, `SET_DRIFT`, `ADJUDICATION_DRIFT`, `MULTIPLY_CLASSIFIED_ROW`, not all 42;
-     §2.5 ENFORCE export-completeness mechanically; §2.7 emit an ADVISORY (not FAIL) for tautological
-     `cas_equivalence` so the report shows how many citations are actually protective.
-3. Clear the remaining §2 items in ONE serialized pre-fanout checker round, then re-freeze + record sha.
-4. Optionally extract 006 (Codex's original slice-A recommendation) as a second no-C7 shakedown.
-5. **Then the 44-stage fanout** — user opt-in, Workflow tool, per `FANOUT_PLAN.md`, Codex as coder,
-   checker FROZEN, per-stage fidelity agent, export-all + `.out` citation + real loci + expected-
-   claim inventory as defaults. Expect it to be RED and full of findings; that is the deliverable.
-6. Then the ledger-wide integration report → catalogue every finding → a dedicated remediation phase.
+   The verifier's recommendation, adopted: **run the pilot and fold these two questions into the same
+   pass** — real records will show whether the escapes are adequate.
+
+1. **(historical, now closed) round-5 verdict** — `_scratch/pass1_dim_survey/reviews/REPAIR5_VERIFY.md`
+   (dispatched at end of session; may have completed after the handoff was written). The decisive
+   question it answers is **whether the suite was greened HONESTLY** — no relaxed error-code sets, no
+   deleted examples, no weakened over-firing rule, no less-specific assertions — and whether the
+   deletion round actually deleted rather than renaming the verdict machinery.
+   **If it returns REJECT, do NOT run the pilot; fix and re-verify first.**
+   ⭐ Always re-run the arbiter command yourself; do not trust a build report:
+   `python3 research/pde_ledger_v2/schemas/validate_dimension_survey.py --test-examples`
+2. **Then the 4-script pilot** — `PILOT_DIRECTIVE.md`: stage021, stage038, stage042, stage024.
+   ⭐ Includes the **planted-defect positive control**: mislabel one ownership value in a *copy* of an
+   accepted record and confirm a fresh verifier flags it. **If it does not fire, the verification leg
+   is decorative and the 44-way dispatch must NOT proceed.**
+4. **Capture the three decision numbers** (§5) → bring to the user with GO/NO-GO.
+5. Then the remaining 40, module design (extremes first: stage042 fractional non-LMT, stage038 four
+   axes), refactor, digest cascade.
 
 ---
-## 7. ⏸ PAUSED (do not lose)
+## 4. ⭐ WHY ADJUDICATION WAS DESCOPED (read before re-adding it)
 
+Four schema rounds tried to make an asserted `AGREE`/`DISAGREE` dimension verdict trustworthy and
+failed the same way each time: **the verdict was always computed from fields the artifact itself
+supplies.** Round 4's `MATCH` compared two verifier-authored fields; `named_axis_derivation: "x"`
+passed; false `AGREE` was wholly unguarded; a false `DISAGREE` landed between `L⁻¹M` and `M L⁻¹` —
+the same dimension the register spells two ways.
+
+**Root cause: a document-shape validator was being asked to do symbolic mathematics.** Monomial
+normalisation (superscripts, axis order `[L,T,M]` register vs `(L,M,T)` scripts, fractional exponents,
+29 multi-parameter/`[X]=`-prefixed cells) is real work and belongs in a computed pass.
+
+**What the survey does now:** records both dimensions verbatim with loci + a status decidable by
+string comparison alone, on BOTH channels (register and `.wl`), under ONE pinned whitespace
+convention. **§4.9** must later normalise monomials, bind each pair to its quantity via
+`quantity_ref`, and partition every text-difference into same-dimension-different-spelling /
+documented-non-transferable-identity / **genuine drift** — only the last being a finding.
+**Tracked as task #13. Deferred, not dropped.**
+
+---
+## 5. NUMBERS THE PILOT MUST PRODUCE (they decide whether Pass 1 stalls)
+1. `UNDETERMINED` leaf count per record.
+2. ⭐ **`CONSTRAINED_BUT_NOT_STATED` count among `REAL+ABSENT` quantities** — the **Pass-1 stall
+   signal**. If high, the notes/register do not carry the dimensions, §4.7 `REFACTOR READINESS`
+   blocks, and the module needs a derivation phase first. *(Early evidence is encouraging: stage024's
+   `I25` IS registered at `L^(5/2)`, dual-engine-verified.)*
+3. Wall-clock + token cost per record, survey and verification legs separately.
+
+---
+## 6. OPEN FINDINGS — catalogued, NOT fixed (standing user instruction)
+- **`RANGE_ENDPOINT_DRIFT`** — census `(39,49,10)` vs stage043's `(40,49,9)`; stage032 declares `Q_E`
+  `{low:0,high:1}` while stage043 counts it at both endpoints. stage043 probably right; **NOT
+  adjudicated.** The schema has no `reclassified`/`reconciled` lifecycle action.
+- **The refactor gate's MEASURE is undefined** — §2.3 says "identical PASS count" but **16 of 43
+  scripts emit no `PASS tally:` line** (001–003, 016–028). Options in `baseline/BASELINE_NOTE.md`;
+  strongest is the full ordered list of emitted `PASS` markers, since a bare count is satisfiable by a
+  script that stopped checking. **Pin it in the refactor directive.**
+- **Verification honesty is unprovable from artifacts** — nothing distinguishes a verifier that
+  re-derived every binding from one that asserted it; ~40 stages have no known-answer anchor. The
+  pilot's planted-defect control is the only mitigation.
+- **The §3.3↔§3.11 hard 1:1 is verified only against a sampled corpus** (~6 of 43).
+- **stage044** is the only script with a filesystem side effect (`_scratch/stage044/verdict_py.json`,
+  `:1343-1346`).
+
+---
+## 7. ⚠ THE ASYMMETRY (raised by the user, unresolved)
+**The feeder is now specified far more rigorously than the detector.** `composite_build.py` — which
+actually finds cross-stage desync — still has **C7 edges 1/18**, ~42 unfixtured issue codes, and the
+`infer_closed_slice` replacement unbuilt. Everything hardened this session feeds a checker that has
+not had the same treatment. **Give Pass 1b (task #7) the same adversarial break-attempt treatment
+BEFORE 44 manifests are written against it.** A "44 stages in sync" claim rests on the checker.
+
+---
+## 8. PROCESS LESSONS BANKED (memories written this session)
+- `feedback-no-fabrication-forcing-rules` — ⭐ a rule whose only honest outcome is an INVENTED value
+  is worse than no rule; ask "can this be satisfied honestly in every legitimate case?" not only "can
+  it fail?". Watch **vacuously-true conditions on mandated-empty collections**.
+- `feedback-parsers-need-real-input` — ⭐ fixtures synthetic ≠ INPUT synthetic. An evidence file a
+  parser READS must be exercised against the real committed file, and against rows the builder did
+  not pick. This produced the round-3 REJECT.
+- `feedback-gate-before-launch-argv-snapshot` — Codex snapshots its prompt into argv; editing the file
+  after launch does nothing. Gate must PRECEDE launch. `pgrep -f "codex exec"` self-matches your shell.
+- **Grok's empirical gate earns its keep** — asked to *construct a passing-but-useless survey*, it
+  succeeded; an all-`CHECK_LOCAL` record satisfied every criterion and would have handed the module
+  designer an empty registry. That produced §4.8.
+- **Disclosure of removals must be demanded explicitly** — an undisclosed `minItems: 1` removal cost a
+  guard. When demanded, the next round disclosed correctly and the removal was judged sound.
+- **Gate comparisons on a completion log, not on "the file exists"** — comparing mid-write produced a
+  false provenance alarm.
+- ⭐ **THE ARBITER RE-RUN IS NOT CEREMONIAL.** Round 5 printed `___CODEX_BUILD_DONE___` with 45 of 110
+  fixtures failing. Reading its report would have moved the project to the pilot on a broken
+  validator, where four records would have failed for reasons unrelated to the survey. **Re-run the
+  published acceptance command yourself, every time, and read its exit code — not the build report.**
+- **When ordering a red suite greened, name the forbidden fixes.** Relaxing an expected error set,
+  deleting the failing example, or weakening the over-firing rule all produce `exit=0` and destroy the
+  property that makes fixtures worth anything (every reject fails for its OWN named rule, and is a
+  minimal violation). Forbid each by name.
+- **A deletion round must be measured as one** — demand rule count and validator size before/after. A
+  deletion round that grows has usually re-implemented the removed machinery under a new name.
+
+---
+## 9. ⏸ PAUSED (do not lose)
 - **044-v2** — redo stage 044 with a dynamical-Σ sleeve (un-freeze `S_hold`);
-  `notes/stage044_v2_unfreeze_prep.md`. ⚠ its v1 reference manifest was in `_scratch/` and was
-  DESTROYED by an agent this session (gitignored, unrecoverable) — re-extract from sources.
+  `notes/stage044_v2_unfreeze_prep.md`. ⚠ its v1 reference manifest was destroyed by an agent in an
+  earlier session (gitignored, unrecoverable) — re-extract from sources.
 - **045** — VII-2b non-variational drain/return block; `notes/stage045_nonvariational_block_prep.md`.
-- **Long-term (user's goal):** generalize this whole apparatus into a portable pipeline and test it
-  on published arXiv papers to find gaps current review misses. Decided: generalize AFTER the ledger
-  is done — the ledger is the proving ground. When that starts, validate first against papers with
-  KNOWN errata as positive controls; a pipeline that cannot rediscover a known error cannot be
+- **Long-term (user's goal):** generalize this apparatus into a portable pipeline and test it on
+  published arXiv papers. Generalize AFTER the ledger is done. Validate first against papers with
+  KNOWN errata as positive controls — a pipeline that cannot rediscover a known error cannot be
   trusted to report a novel one.

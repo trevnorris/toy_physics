@@ -1,0 +1,6 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_present_accept.yaml
+mutations:
+  - op: replace
+    path: [ownership_rederivation, items, 0, rederived_ownership]
+    value: MODULE_OWNED

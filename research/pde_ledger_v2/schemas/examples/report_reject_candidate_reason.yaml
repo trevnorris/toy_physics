@@ -1,0 +1,172 @@
+schema_version: dimension_survey_report_v1
+identity:
+  stage: "024"
+  script_path:
+    value: synthetic/real_absent.py
+    method: FILESYSTEM
+  script_sha256:
+    value: "1111111111111111111111111111111111111111111111111111111111111111"
+    method: SHA256SUM
+  wl_path:
+    value: synthetic/real_absent.wl
+    method: FILESYSTEM
+  wl_sha256:
+    value: "2222222222222222222222222222222222222222222222222222222222222222"
+    method: SHA256SUM
+  script_line_count:
+    value: 90
+    method: WC_L
+dimensional_content:
+  value: REAL
+  loci: [synthetic/real_absent.py:30, synthetic/real_absent_note.md:12]
+  reasoning:
+    - The synthetic physical expression has a source-stated quantity dimension.
+    - No executable dimension representation exists in the script.
+machinery:
+  value: ABSENT
+  loci: [synthetic/real_absent.py:1-90]
+idiom:
+  items:
+    - value: NONE
+      loci: [synthetic/real_absent.py:1-90]
+binding_name_pattern:
+  value: NONE_OBSERVED
+  loci: [synthetic/real_absent.py:1-90]
+definition_locus:
+  value: NOT_APPLICABLE
+  reason: The synthetic script contains no executable dimension machinery.
+  sources_searched: [synthetic/real_absent.py:1-90]
+static_recovery_surface:
+  items: []
+  reason: ABSENT machinery has no current dimension-valued binding.
+basis:
+  axis_evidence:
+    items:
+      - source_spelling:
+          value: L
+          loci: [synthetic/real_absent_note.md:12]
+        interpreted_axis_name:
+          value: L
+          loci: [synthetic/real_absent_note.md:12]
+        evidence:
+          value: STATED
+          loci: [synthetic/real_absent_note.md:12]
+        locus: synthetic/real_absent_note.md:12
+  orders:
+    items: []
+    reason: The source-stated scalar dimension has no order-bearing representation.
+  exponent_type:
+    value: n/a
+    loci: [synthetic/real_absent_note.md:12]
+  fractional_exponents_present:
+    value: false
+    loci: [synthetic/real_absent_note.md:12]
+quantities:
+  items:
+    - item_id: real_absent.quantity.q
+      name:
+        value: q
+        loci: [synthetic/real_absent.py:30]
+      binding_locus: synthetic/real_absent.py:30
+      use_loci:
+        items: [synthetic/real_absent.py:30]
+      identity_status:
+        value: SOURCE_STATED
+        loci: [synthetic/real_absent_note.md:10]
+      quantity_identity:
+        value: synthetic source quantity
+        loci: [synthetic/real_absent_note.md:10]
+      identity_locus:
+        value: synthetic/real_absent_note.md:10
+        loci: [synthetic/real_absent_note.md:10]
+      dimension_value_status:
+        value: EXPLICIT_STAGE_NOTE
+        loci: [synthetic/real_absent_note.md:12]
+      dimension_source_loci:
+        items: [synthetic/real_absent_note.md:12]
+      dim_source_text:
+        value: "L^(5/2)"
+        loci: [synthetic/real_absent_note.md:12]
+      dim_text_form: NAMED_AXIS
+      basis_locus: synthetic/real_absent_note.md:12
+      ownership:
+        value: MODULE_OWNED
+        loci: [synthetic/real_absent_note.md:10-12]
+      binding_refs:
+        items: []
+        reason: REAL+ABSENT has no current dimension binding.
+      register_evidence:
+        status: TEXT_DIFFERS
+        register_locus: notes/parameter_register.md:188
+        register_cell_verbatim: >-
+          `L^(5/2)` (stage 024, dual-engine; enters
+          `g_base=√rho_eff·c_s²·I25·Ξ_Q/a^(7/2)`)
+      declaration_required: "YES"
+      candidate_reason:
+        value: NOT_APPLICABLE
+        reason: This malformed fixture incorrectly disables the required reason.
+        sources_searched: [synthetic/real_absent_note.md:10-12]
+  zero_declaration_argument:
+    value: NOT_APPLICABLE
+    reason: The per-report zero check applies only to REAL+PRESENT.
+    sources_searched: [synthetic/real_absent.py:1-90]
+pass_lines:
+  emitter_sites:
+    items: []
+    reason: The synthetic script has no PASS emitter.
+  call_sites:
+    items: []
+    reason: The synthetic script has no PASS call site.
+  statically_resolved_markers:
+    items: []
+    reason: The synthetic script has no PASS marker.
+  unresolved_dynamic_markers:
+    items: []
+    reason: The synthetic script has no dynamic PASS marker.
+active_mutation:
+  read_at_module_scope:
+    value: false
+    loci: [synthetic/real_absent.py:1-10]
+  locus:
+    items: [synthetic/real_absent.py:1-10]
+  variable_names:
+    items: []
+    reason: No mutation variable is read.
+  gates:
+    items: []
+    reason: No mutation value gates the synthetic expression.
+wl_evidence:
+  states_dimensions:
+    value: false
+    loci: [mathematica/ledger_stage043_irreducible_count_range_mathematica_audit.wl:1]
+  pairs:
+    items: []
+    reason: The cited Mathematica audit states no dimension for this fixture.
+gaps:
+  items: []
+  reason: The synthetic sources explicitly decide each applicable field.
+notes:
+  items: []
+  reason: No additional synthetic module constraint is needed.
+representation_contract:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no representation contract.
+  sources_searched: [synthetic/real_absent.py:1-90]
+dimension_bindings:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no dimension-valued binding inventory.
+  sources_searched: [synthetic/real_absent.py:1-90]
+dimension_use_sites:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no consumed inline dimension value.
+  sources_searched: [synthetic/real_absent.py:1-90]
+import_context:
+  existing_local_import_pattern:
+    value: NONE_OBSERVED
+    loci: [synthetic/real_absent.py:1-10]
+  invocation_assumptions:
+    value: direct synthetic invocation
+    loci: [synthetic/real_absent.py:80]
+  module_scope_side_effects:
+    value: NONE_OBSERVED
+    loci: [synthetic/real_absent.py:1-10]

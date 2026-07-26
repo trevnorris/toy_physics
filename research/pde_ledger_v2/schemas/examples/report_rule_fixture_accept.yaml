@@ -1,0 +1,273 @@
+schema_version: dimension_survey_report_v1
+identity:
+  stage: "027"
+  script_path:
+    value: scripts/ledger_stage027_port_checks_closure_sympy_audit.py
+    method: FILESYSTEM
+  script_sha256: {value: "7777777777777777777777777777777777777777777777777777777777777777", method: SHA256SUM}
+  wl_path:
+    value: mathematica/ledger_stage027_port_checks_closure_mathematica_audit.wl
+    method: FILESYSTEM
+  wl_sha256: {value: "8888888888888888888888888888888888888888888888888888888888888888", method: SHA256SUM}
+  script_line_count: {value: 100, method: WC_L}
+dimensional_content:
+  value: UNDETERMINED
+  loci: &locus_one [synthetic/rule_fixture.py:1]
+  reasoning: [The synthetic sources leave declaration obligation unresolved.]
+machinery: {value: PRESENT, loci: *locus_one}
+idiom:
+  items:
+    - {value: TYPE_ALIAS_TUPLE, loci: [synthetic/rule_fixture.py:2]}
+    - {value: BARE_TUPLE, loci: [synthetic/rule_fixture.py:3]}
+binding_name_pattern: {value: "*_dim", loci: *locus_one}
+definition_locus: {value: synthetic/rule_fixture.py:1, loci: *locus_one}
+static_recovery_surface:
+  items:
+    - item_id: fixture.recovery.x
+      binding_ref: fixture.binding.x
+      binding_name: {value: x_dim, loci: *locus_one}
+      binding_scope: {value: MODULE, loci: *locus_one}
+      literal_or_derived: {value: LITERAL, loci: *locus_one}
+      expression_source_text: {value: "(1, 0)", loci: *locus_one}
+      stable_quantity_key_present: {value: false, loci: *locus_one}
+      depends_on_active_mutation: {value: false, loci: *locus_one}
+      depends_on_runtime_state: {value: false, loci: *locus_one}
+      statically_locatable_without_import: {value: "YES", loci: *locus_one}
+      current_checker_visibility:
+        value: "NO"
+        loci: [synthetic/rule_fixture.py:1, composite_build.py:1]
+basis:
+  axis_evidence:
+    items:
+      - source_spelling: {value: L, loci: *locus_one}
+        interpreted_axis_name: {value: L, loci: *locus_one}
+        evidence: {value: STATED, loci: *locus_one}
+        locus: synthetic/rule_fixture.py:1
+  orders:
+    items:
+      - kind: storage
+        axes: [L]
+        evidence: {value: STATED, loci: *locus_one}
+        locus: synthetic/rule_fixture.py:1
+        value_representations:
+          items: [{value: tuple, loci: *locus_one}]
+        producers:
+          items: [{value: tuple literal, loci: *locus_one}]
+        same_as_order: null
+  exponent_type:
+    value: UNDETERMINED
+    reason: The synthetic component type is unresolved.
+    sources_searched: [synthetic/rule_fixture.py:1]
+  fractional_exponents_present:
+    value: UNDETERMINED
+    reason: The synthetic component type is unresolved.
+    sources_searched: [synthetic/rule_fixture.py:1]
+quantities:
+  items:
+    - item_id: fixture.quantity.x
+      name: {value: x_dim, loci: *locus_one}
+      binding_locus: synthetic/rule_fixture.py:1
+      use_loci: {items: [synthetic/rule_fixture.py:1]}
+      identity_status:
+        value: UNDETERMINED
+        reason: No source-stated identity exists.
+        sources_searched: [synthetic/rule_fixture.py:1]
+      quantity_identity:
+        value: UNDETERMINED
+        reason: A name alone does not establish identity.
+        sources_searched: [synthetic/rule_fixture.py:1]
+      identity_locus:
+        value: UNDETERMINED
+        reason: No identity statement exists.
+        sources_searched: [synthetic/rule_fixture.py:1]
+      dimension_value_status:
+        value: EXPLICIT_PY
+        loci: [scripts/ledger_stage027_port_checks_closure_sympy_audit.py:793]
+      dimension_source_loci:
+        items: [scripts/ledger_stage027_port_checks_closure_sympy_audit.py:793]
+      dim_source_text:
+        value: L
+        loci: [scripts/ledger_stage027_port_checks_closure_sympy_audit.py:793]
+      dim_text_form: NAMED_AXIS
+      basis_locus: synthetic/rule_fixture.py:1
+      ownership: {value: CHECK_LOCAL, loci: *locus_one}
+      binding_refs: {items: [fixture.binding.x]}
+      register_evidence:
+        status: NOT_CHECKED
+        reason: This synthetic shape fixture exercises the reasoned NOT_CHECKED state.
+      declaration_required: "NO"
+      candidate_reason:
+        value: NOT_APPLICABLE
+        reason: Machinery is PRESENT.
+        sources_searched: [synthetic/rule_fixture.py:1]
+  zero_declaration_argument:
+    value: NOT_APPLICABLE
+    reason: The per-report zero check applies only to REAL+PRESENT.
+    sources_searched: [synthetic/rule_fixture.py:1]
+pass_lines:
+  emitter_sites: {items: [], reason: No synthetic PASS emitter exists.}
+  call_sites: {items: [], reason: No synthetic PASS call exists.}
+  statically_resolved_markers: {items: [], reason: No synthetic PASS marker exists.}
+  unresolved_dynamic_markers: {items: [], reason: No dynamic PASS marker exists.}
+active_mutation:
+  read_at_module_scope: {value: false, loci: *locus_one}
+  locus: {items: [synthetic/rule_fixture.py:1]}
+  variable_names: {items: [], reason: No mutation variable is read.}
+  gates: {items: [], reason: No mutation value gates the fixture.}
+wl_evidence:
+  states_dimensions:
+    value: true
+    loci: [mathematica/ledger_stage027_port_checks_closure_mathematica_audit.wl:181-186]
+  pairs:
+    items:
+      - item_id: fixture.wl.identical
+        quantity_ref: fixture.quantity.x
+        py_text_verbatim: "dimension tuple convention: (L,M,T)"
+        py_locus: scripts/ledger_stage027_port_checks_closure_sympy_audit.py:793
+        wl_text_verbatim: "dimension tuple convention: (L,M,T)"
+        wl_locus: mathematica/ledger_stage027_port_checks_closure_mathematica_audit.wl:689
+        status: TEXT_IDENTICAL
+      - item_id: fixture.wl.differs
+        quantity_ref: fixture.quantity.x
+        py_text_verbatim: "I25: (sp.Rational(5, 2), 0, 0),"
+        py_locus: scripts/ledger_stage027_port_checks_closure_sympy_audit.py:208
+        wl_text_verbatim: "I25 -> {5/2, 0, 0}"
+        wl_locus: mathematica/ledger_stage027_port_checks_closure_mathematica_audit.wl:186
+        status: TEXT_DIFFERS
+      - item_id: fixture.wl.absent
+        quantity_ref: fixture.quantity.x
+        py_text_verbatim: "Dim = tuple[sp.Rational, sp.Rational, sp.Rational]"
+        py_locus: scripts/ledger_stage027_port_checks_closure_sympy_audit.py:199
+        status: ABSENT_FROM_WL
+      - item_id: fixture.wl.absent_py
+        quantity_ref: NO_SURVEYED_QUANTITY
+        wl_text_verbatim: "foreignSubject -> {-3, 1, 0}"
+        wl_locus: mathematica/ledger_stage027_port_checks_closure_mathematica_audit.wl:189
+        status: ABSENT_FROM_PY
+        reason: This fixture intentionally surveys no foreignSubject quantity.
+      - item_id: fixture.wl.not_comparable
+        quantity_ref: fixture.quantity.x
+        py_text_verbatim: "dimension tuple convention: (L,M,T)"
+        py_locus: scripts/ledger_stage027_port_checks_closure_sympy_audit.py:793
+        wl_locus: mathematica/ledger_stage027_port_checks_closure_mathematica_audit.wl:181-182
+        status: NOT_COMPARABLE_BY_CONSTRUCTION
+        reason: The cited Mathematica construction describes a monomial-rescaling route, not an extractable comparison text.
+      - item_id: fixture.wl.not_checked
+        quantity_ref: fixture.quantity.x
+        status: NOT_CHECKED
+        reason: This explicit fixture state records that no comparison was attempted.
+gaps:
+  items:
+    - field: dimensional_content
+      reason: The synthetic sources do not decide declaration obligation.
+      sources_searched: [synthetic/rule_fixture.py:1, synthetic/rule_fixture.wl:1]
+notes: {items: [], reason: No additional synthetic note is needed.}
+representation_contract:
+  applicability: APPLICABLE
+  value_type: {value: tuple, loci: *locus_one}
+  normalization_on_construction:
+    item_id: fixture.contract.normalization
+    feature: CONSTRUCTION_NORMALIZATION
+    qualified_name: {value: tuple, loci: *locus_one}
+    behavior: {value: Stores components unchanged., loci: *locus_one}
+  equality_semantics:
+    item_id: fixture.contract.equality
+    feature: EQUALITY_SEMANTICS
+    qualified_name: {value: tuple.__eq__, loci: *locus_one}
+    behavior: {value: Structural equality., loci: *locus_one}
+  hashability:
+    item_id: fixture.contract.hashability
+    feature: HASHABILITY
+    qualified_name: {value: tuple.__hash__, loci: *locus_one}
+    behavior: {value: Hashable components yield a hashable tuple., loci: *locus_one}
+  component_access:
+    item_id: fixture.contract.component
+    feature: COMPONENT_ACCESS
+    qualified_name: {value: tuple.__getitem__, loci: *locus_one}
+    behavior: {value: Integer indexing reads a component., loci: *locus_one}
+  algebra:
+    items:
+      - item_id: fixture.contract.compose
+        feature: ALGEBRA_OPERATION
+        qualified_name: {value: compose_dim, loci: *locus_one}
+        semantic_operation: {value: COMPOSE, loci: *locus_one}
+        python_syntax_or_function: {value: compose_dim, loci: *locus_one}
+        accepted_exponent_types: {items: [{value: integer, loci: *locus_one}]}
+        accepted_scalar_types: {items: [{value: tuple, loci: *locus_one}]}
+        return_type: {value: tuple, loci: *locus_one}
+        failure_behavior: {value: Raises TypeError on a non-tuple., loci: *locus_one}
+      - item_id: fixture.contract.unknown_operation
+        feature: ALGEBRA_OPERATION
+        qualified_name: {value: unresolved_helper, loci: *locus_one}
+        semantic_operation:
+          value: UNDETERMINED
+          reason: The source window does not decide which semantic operation applies.
+          sources_searched: [synthetic/rule_fixture.py:1]
+        python_syntax_or_function: {value: unresolved_helper, loci: *locus_one}
+        accepted_exponent_types: {items: [{value: unresolved, loci: *locus_one}]}
+        accepted_scalar_types: {items: [{value: tuple, loci: *locus_one}]}
+        return_type: {value: tuple, loci: *locus_one}
+        failure_behavior: {value: The failure behavior is source-dependent., loci: *locus_one}
+  expression_evaluator:
+    status: {value: PRESENT, loci: *locus_one}
+    supported_sympy_node_kinds:
+      items:
+        - item_id: fixture.contract.node.mul
+          feature: EVALUATOR_NODE_KIND
+          qualified_name: {value: dimension_of, loci: *locus_one}
+          behavior: {value: Recursively composes factor dimensions., loci: *locus_one}
+          node_kind: {value: Piecewise, loci: *locus_one}
+        - item_id: fixture.contract.node.unknown
+          feature: EVALUATOR_NODE_KIND
+          qualified_name: {value: unresolved_dimension_of, loci: *locus_one}
+          behavior: {value: The dispatch behavior is unresolved., loci: *locus_one}
+          node_kind:
+            value: UNDETERMINED
+            reason: The tested SymPy class cannot be resolved from the source window.
+            sources_searched: [synthetic/rule_fixture.py:1]
+    numeric_zero_policy:
+      item_id: fixture.contract.numeric
+      feature: NUMERIC_ZERO_POLICY
+      qualified_name: {value: dimension_of, loci: *locus_one}
+      behavior: {value: Numeric zero has zero dimension., loci: *locus_one}
+    missing_symbol_policy:
+      item_id: fixture.contract.missing
+      feature: MISSING_SYMBOL_POLICY
+      qualified_name: {value: dimension_of, loci: *locus_one}
+      behavior: {value: Raises KeyError for a missing symbol., loci: *locus_one}
+    non_homogeneous_add_policy:
+      item_id: fixture.contract.add
+      feature: NON_HOMOGENEOUS_ADD_POLICY
+      qualified_name: {value: dimension_of, loci: *locus_one}
+      behavior: {value: Raises ValueError for unequal term dimensions., loci: *locus_one}
+  presentation: {items: [], reason: No dimension value is presented.}
+dimension_bindings:
+  applicability: APPLICABLE
+  items:
+    - item_id: fixture.binding.x
+      name: {value: x_dim, loci: *locus_one}
+      qualified_scope: {value: module.x_dim, loci: *locus_one}
+      scope: {value: MODULE, loci: *locus_one}
+      binding_locus: synthetic/rule_fixture.py:1
+      branch_or_state_predicate: {value: unconditional, loci: *locus_one}
+      source_text: {value: "x_dim = (1, 0)", loci: *locus_one}
+      literal_or_derived: {value: LITERAL, loci: *locus_one}
+      depends_on_active_mutation: {value: false, loci: *locus_one}
+      depends_on_other_runtime_state: {value: false, loci: *locus_one}
+      consumers:
+        items:
+          - consumer: {value: one equality check, loci: *locus_one}
+            locus: synthetic/rule_fixture.py:1
+      ownership: {value: CHECK_LOCAL, loci: *locus_one}
+      uses:
+        items:
+          - {value: ASSERTED_TARGET, loci: [synthetic/rule_fixture.py:4]}
+      alias_of: {items: [], reason: The binding is a direct literal.}
+dimension_use_sites:
+  applicability: APPLICABLE
+  items: []
+  reason: No bindingless inline dimension value exists.
+import_context:
+  existing_local_import_pattern: {value: NONE_OBSERVED, loci: *locus_one}
+  invocation_assumptions: {value: direct synthetic invocation, loci: *locus_one}
+  module_scope_side_effects: {value: NONE_OBSERVED, loci: *locus_one}

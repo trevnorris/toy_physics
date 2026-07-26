@@ -1,0 +1,44 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_rule_fixture_accept.yaml
+mutations:
+  - op: replace
+    path: [identity, script_path, value]
+    value: research/pde_ledger_v2/schemas/examples/synthetic/axis_form.py
+  - op: replace
+    path: [identity, script_sha256, value]
+    value: e4c4f756398259e77d573020bf978317f9a4eb552fe421ebaec76fd3ed8d500d
+  - {op: replace, path: [identity, script_line_count, value], value: 2}
+  - op: replace
+    path: [basis, axis_evidence, items]
+    value:
+      - source_spelling: {value: time, loci: &axis_form_basis [synthetic/axis_form.py:1]}
+        interpreted_axis_name: {value: time, loci: *axis_form_basis}
+        evidence: {value: STATED, loci: *axis_form_basis}
+        locus: synthetic/axis_form.py:1
+  - op: replace
+    path: [basis, orders, items, 0, axes]
+    value: [time]
+  - op: replace
+    path: [basis, orders, items, 0, evidence]
+    value: {value: STATED, loci: *axis_form_basis}
+  - op: replace
+    path: [basis, orders, items, 0, locus]
+    value: synthetic/axis_form.py:1
+  - op: replace
+    path: [quantities, items, 0, dimension_value_status, loci]
+    value: [synthetic/axis_form.py:2]
+  - op: replace
+    path: [quantities, items, 0, dimension_source_loci, items]
+    value: [synthetic/axis_form.py:2]
+  - op: replace
+    path: [quantities, items, 0, dim_source_text]
+    value: {value: "run_time = 0.0", loci: [synthetic/axis_form.py:2]}
+  - {op: replace, path: [quantities, items, 0, dim_text_form], value: NAMED_AXIS}
+  - {op: replace, path: [quantities, items, 0, basis_locus], value: synthetic/axis_form.py:1}
+  - op: replace
+    path: [wl_evidence]
+    value:
+      states_dimensions: {value: false, loci: [synthetic/rule_fixture.wl:1]}
+      pairs:
+        items: []
+        reason: This fixture isolates named-axis recognition.

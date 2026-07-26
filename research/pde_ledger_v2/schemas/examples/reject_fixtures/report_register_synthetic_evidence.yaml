@@ -1,0 +1,9 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_rule_fixture_accept.yaml
+mutations:
+  - op: replace
+    path: [wl_evidence, pairs, items, 0, py_text_verbatim]
+    value: "I25: (sp.Rational(5, 2), 0, 0),"
+  - op: replace
+    path: [wl_evidence, pairs, items, 0, status]
+    value: TEXT_DIFFERS

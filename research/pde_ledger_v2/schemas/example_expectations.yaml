@@ -1,0 +1,595 @@
+schema_version: dimension_survey_example_expectations_v1
+cases:
+  - name: report PRESENT accept - real register TEXT_DIFFERS row 170 and bare ABSENT
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_present_accept.yaml
+    expect: ACCEPT
+  - name: report NONE+ABSENT accept
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_none_accept.yaml
+    expect: ACCEPT
+  - name: report PRESENT reject - NEGATIVE_CONTROL ownership
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_present_reject_negative_control.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_NEGATIVE_CONTROL_OWNERSHIP]
+  - name: report NONE reject - wholesale collection unknown
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_none_reject_wholesale_unknown.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_SMALLEST_LEAF_UNKNOWN]
+  - name: verification PRESENT accept
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_present_accept.yaml
+    expect: ACCEPT
+  - name: verification NONE+ABSENT accept
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_none_accept.yaml
+    expect: ACCEPT
+  - name: verification PRESENT reject - summed PASS categories
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_present_reject_summed_categories.yaml
+    expect: REJECT
+    expected_error_codes: [VER_CATEGORY_SET]
+  - name: verification NONE reject - zero substituted for N/A
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_none_reject_zero_for_na.yaml
+    expect: REJECT
+    expected_error_codes: [VER_CATEGORY_APPLICABILITY]
+  - name: report REAL+ABSENT accept - real register TEXT_IDENTICAL row 188
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_parameter_register_i25_accept.yaml
+    expect: ACCEPT
+  - name: report UNDETERMINED+PRESENT accept
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_undetermined_present_accept.yaml
+    expect: ACCEPT
+  - name: report UNDETERMINED+ABSENT accept - real register PENDING row 163
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_undetermined_absent_accept.yaml
+    expect: ACCEPT
+  - name: report compact rule fixture accept - reasoned NOT_CHECKED without receipt
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_rule_fixture_accept.yaml
+    expect: ACCEPT
+  - name: report honest one-axis dimension text accept
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_short_dimension_accept.yaml
+    expect: ACCEPT
+  - name: report stage038 real positional dimensions accept
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_stage038_positional_accept.yaml
+    expect: ACCEPT
+  - name: report stage042 real positional dimensions accept
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_stage042_positional_accept.yaml
+    expect: ACCEPT
+  - name: report multi-parameter prefixed register cell accept
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_register_readiness_disagree_accept.yaml
+    expect: ACCEPT
+  - name: report reject - tuple idiom loci overlap
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_reject_idiom_membership.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_IDIOM_MEMBERSHIP]
+  - name: report reject - duplicate idiom value
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_reject_idiom_value_uniqueness.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_IDIOM_VALUE_UNIQUENESS]
+  - name: report reject - duplicate uses value
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_reject_uses_value_uniqueness.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_USES_VALUE_UNIQUENESS]
+  - name: report reject - REAL+ABSENT candidate reason disabled
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_reject_candidate_reason.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_CANDIDATE_REASON]
+  - name: report reject - explicit value lacks verbatim text
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_reject_explicit_dim_source_text.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - recovery binding correspondence
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_reject_recovery_binding_correspondence.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_RECOVERY_BINDING_CORRESPONDENCE]
+  - name: report reject - order axis is not interpreted axis
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_reject_order_axis_reference.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_ORDER_AXIS_REFERENCE]
+  - name: report reject - algebra operation vocabulary
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_reject_algebra_operation_vocabulary.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_ALGEBRA_OPERATION_VOCABULARY]
+  - name: report reject - evaluator node class vocabulary
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_reject_evaluator_node_kind_vocabulary.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVALUATOR_NODE_KIND_VOCABULARY]
+  - name: verification overall FAIL accept
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_fail_accept.yaml
+    expect: ACCEPT
+  - name: verification checked loci PASS accept
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_locus_checked_pass_accept.yaml
+    expect: ACCEPT
+  - name: verification checked loci FAIL accept
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_locus_checked_fail_accept.yaml
+    expect: ACCEPT
+  - name: verification reject - zero ownership anchors
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_reject_anchor_coverage.yaml
+    expect: REJECT
+    expected_error_codes: [VER_OWNERSHIP_ANCHOR_COVERAGE]
+  - name: verification reject - mechanical locus escape
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_reject_locus_integrity.yaml
+    expect: REJECT
+    expected_error_codes: [VER_LOCUS_INTEGRITY]
+  - name: verification PRESENT case-ii no-anchor accept
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_present_no_anchor_accept.yaml
+    expect: ACCEPT
+  - name: verification checked case-i lexical anchors accept
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/verification_anchor_lexical_checked_accept.yaml
+    expect: ACCEPT
+  - name: report reject - applicability matrix
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_applicability_matrix.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_APPLICABILITY_MATRIX]
+  - name: report reject - NONE N/A distinction
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_none_na_distinction.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_NONE_NA_DISTINCTION]
+  - name: report reject - controlled enum unknown leaf shape
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_enum_unknown_leaf_shape.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_SMALLEST_LEAF_UNKNOWN]
+  - name: report reject - empty collection reason
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_empty_collection_reason.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EMPTY_COLLECTION_REASON]
+  - name: report reject - item ID uniqueness
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_id_uniqueness.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_ID_UNIQUENESS]
+  - name: report reject - item ID scope
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_id_scope.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_ID_SCOPE]
+  - name: report reject - source item identity
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_item_identity.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_ITEM_IDENTITY]
+  - name: report reject - binding reference
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_binding_reference.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_BINDING_REFERENCE]
+  - name: report reject - alias reference
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_alias_reference.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_ALIAS_REFERENCE]
+  - name: report reject - declaration from ownership
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_declaration_from_ownership.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DECLARATION_FROM_OWNERSHIP]
+  - name: report reject - quantity negative-control promotion
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_quantity_negative_control_promotion.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_QUANTITY_NEGATIVE_CONTROL_PROMOTION]
+  - name: report reject - order identity
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_order_identity.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_ORDER_IDENTITY]
+  - name: report reject - whole-file methods
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_whole_file_methods.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_WHOLE_FILE_METHODS]
+  - name: report reject - visibility evidence
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_visibility_evidence.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_VISIBILITY_EVIDENCE]
+  - name: report reject - explicit dimension placeholder
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_explicit_dim_source_placeholder.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - zero declaration argument
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_zero_declaration_argument.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_ZERO_DECLARATION_ARGUMENT]
+  - name: verification reject - report count
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_report_count.yaml
+    expect: REJECT
+    expected_error_codes: [VER_REPORT_COUNT]
+  - name: verification reject - cardinality reconciliation
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_cardinality_reconciliation.yaml
+    expect: REJECT
+    expected_error_codes: [VER_CARDINALITY_RECONCILIATION]
+  - name: verification reject - unexplained requires FAIL
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_unexplained_requires_fail.yaml
+    expect: REJECT
+    expected_error_codes: [VER_UNEXPLAINED_REQUIRES_FAIL]
+  - name: verification reject - report reference
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_report_reference.yaml
+    expect: REJECT
+    expected_error_codes: [VER_REPORT_REFERENCE]
+  - name: verification reject - no name matching
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_no_name_matching.yaml
+    expect: REJECT
+    expected_error_codes: [VER_NO_NAME_MATCHING]
+  - name: verification reject - NONE recheck
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_none_recheck.yaml
+    expect: REJECT
+    expected_error_codes: [VER_NONE_RECHECK]
+  - name: verification reject - classification mismatch
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_classification_match.yaml
+    expect: REJECT
+    expected_error_codes: [VER_CLASSIFICATION_MATCH]
+  - name: verification reject - ownership mismatch
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_ownership_match.yaml
+    expect: REJECT
+    expected_error_codes: [VER_OWNERSHIP_MATCH]
+  - name: verification reject - source identity integrity
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_identity_integrity.yaml
+    expect: REJECT
+    expected_error_codes: [VER_IDENTITY_INTEGRITY]
+  - name: verification reject - zero declaration check
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_zero_declaration.yaml
+    expect: REJECT
+    expected_error_codes: [VER_ZERO_DECLARATION]
+  - name: verification reject - negative-control check
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_negative_control.yaml
+    expect: REJECT
+    expected_error_codes: [VER_NEGATIVE_CONTROL]
+  - name: verification reject - gap credibility
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_gap_credibility.yaml
+    expect: REJECT
+    expected_error_codes: [VER_GAP_CREDIBILITY]
+  - name: verification reject - empty escaped re-derivation
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_empty_rederivation.yaml
+    expect: REJECT
+    expected_error_codes: [VER_OWNERSHIP_ANCHOR_COVERAGE]
+  - name: report reject - false register TEXT_IDENTICAL
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_positional_compare.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - wl locus resolves outside Mathematica identity
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_edge_row.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - uppercase route PENDING as pending dimension
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_pending_case.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - register evidence loses whole verbatim cell
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_disagree_verbatim.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - readiness blocker skips register
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_readiness.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - wl Python verbatim text absent at cited locus
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_synthetic_evidence.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - whole-table register locus
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_whole_table_locus.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - TEXT_IDENTICAL asserted for differing strings
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_identical_disagree.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - EXPLICIT_PY cites a note
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_explicit_py_wrong_source.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - EXPLICIT_WL cites Python
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_explicit_wl_wrong_source.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - register source claims absent
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_explicit_parameter_absent.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - degenerate dash match
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_degenerate_dash_text.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - degenerate N/A match
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_degenerate_na_text.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - degenerate lowercase n/a match
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_degenerate_lower_na_text.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - degenerate dot match
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_degenerate_dot_text.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - degenerate double dash match
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_degenerate_double_dash_text.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - degenerate TBD match
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_degenerate_tbd_text.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - degenerate question marks match
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_degenerate_questions_text.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - degenerate empty text
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_degenerate_empty_text.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - degenerate whitespace-only text
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_degenerate_whitespace_text.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - axis token occurs only inside binding name
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_axis_token_in_binding.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - positional value cites non-basis locus
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_positional_wrong_basis_locus.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - positional value arity differs from declared basis
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_positional_wrong_arity.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: verification reject - additional report-count call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_register_rederivation_mismatch.yaml
+    expect: REJECT
+    expected_error_codes: [VER_REPORT_COUNT]
+  - name: report reject - unknown wl evidence status call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_unknown_state.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - blank NOT_CHECKED reason call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_blank_not_checked_reason.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - wl evidence quantity ref call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_register_bad_consultation_receipt.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_BINDING_REFERENCE]
+  - name: report reject - explicit register value cites stage note
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_explicit_parameter_wrong_source.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EVIDENCE_RECORDS]
+  - name: report reject - stage note status cites register
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_stage_note_wrong_source_kind.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: report reject - ABSENT wrong idiom call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_absent_wrong_idiom.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_APPLICABILITY_MATRIX]
+  - name: report reject - ABSENT definition locus call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_absent_definition_locus.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_APPLICABILITY_MATRIX]
+  - name: report reject - PRESENT NONE idiom call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_present_none_idiom.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_APPLICABILITY_MATRIX]
+  - name: report reject - PRESENT definition disabled call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_present_definition_not_applicable.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_APPLICABILITY_MATRIX]
+  - name: report reject - REAL empty quantities call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_real_empty_quantities.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_APPLICABILITY_MATRIX]
+  - name: report reject - NONE carries a quantity call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_none_with_quantity.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_NONE_NA_DISTINCTION]
+  - name: report reject - NONE carries an axis call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_none_with_axis.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_APPLICABILITY_MATRIX]
+  - name: report reject - NONE fractional true call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_none_fractional_true.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_APPLICABILITY_MATRIX]
+  - name: report reject - PRESENT empty axes call sites
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_present_empty_axes.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_APPLICABILITY_MATRIX, REPORT_ORDER_AXIS_REFERENCE]
+  - name: report reject - PRESENT n/a exponent call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_present_na_exponent.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_APPLICABILITY_MATRIX]
+  - name: report reject - wl quantity ref is not a quantity item id
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_absent_binding_ref.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_BINDING_REFERENCE]
+  - name: report reject - duplicate recovery ref call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_duplicate_recovery_ref.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_RECOVERY_BINDING_CORRESPONDENCE]
+  - name: report reject - alias self-reference call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_alias_self_reference.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_ALIAS_REFERENCE]
+  - name: report reject - order self-reference call site
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_order_self_reference.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_ORDER_IDENTITY]
+  - name: verification reject - additional classification-match call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_register_missing_rederivation.yaml
+    expect: REJECT
+    expected_error_codes: [VER_CLASSIFICATION_MATCH]
+  - name: verification reject - additional bad binding ref call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_register_bad_quantity_ref.yaml
+    expect: REJECT
+    expected_error_codes: [VER_REPORT_REFERENCE]
+  - name: verification reject - additional reported ownership mismatch
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_register_rewrites_source.yaml
+    expect: REJECT
+    expected_error_codes: [VER_OWNERSHIP_MATCH]
+  - name: verification reject - additional ownership comparison mismatch
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_register_wrong_comparison.yaml
+    expect: REJECT
+    expected_error_codes: [VER_OWNERSHIP_MATCH]
+  - name: verification reject - stage reference mismatch call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_stage_reference_mismatch.yaml
+    expect: REJECT
+    expected_error_codes: [VER_REPORT_REFERENCE]
+  - name: verification reject - NONE recheck disabled call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_none_recheck_disabled.yaml
+    expect: REJECT
+    expected_error_codes: [VER_NONE_RECHECK]
+  - name: verification reject - PRESENT applies NONE recheck call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_present_none_recheck.yaml
+    expect: REJECT
+    expected_error_codes: [VER_NONE_RECHECK]
+  - name: verification reject - PRESENT ownership disabled call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_present_ownership_disabled.yaml
+    expect: REJECT
+    expected_error_codes: [VER_OWNERSHIP_MATCH]
+  - name: verification reject - reported ownership mismatch call sites
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_ownership_reported_mismatch.yaml
+    expect: REJECT
+    expected_error_codes: [VER_OWNERSHIP_MATCH]
+  - name: verification reject - ABSENT applies ownership call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_absent_ownership_applied.yaml
+    expect: REJECT
+    expected_error_codes: [VER_OWNERSHIP_MATCH]
+  - name: verification reject - PRESENT zero check disabled call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_present_zero_disabled.yaml
+    expect: REJECT
+    expected_error_codes: [VER_ZERO_DECLARATION]
+  - name: verification reject - zero count mismatch call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_zero_count_mismatch.yaml
+    expect: REJECT
+    expected_error_codes: [VER_ZERO_DECLARATION]
+  - name: verification reject - zero argument mismatch call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_zero_argument_mismatch.yaml
+    expect: REJECT
+    expected_error_codes: [VER_ZERO_DECLARATION]
+  - name: verification reject - ABSENT applies zero check call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_absent_zero_applied.yaml
+    expect: REJECT
+    expected_error_codes: [VER_ZERO_DECLARATION]
+  - name: verification reject - PRESENT negative check disabled call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_present_negative_disabled.yaml
+    expect: REJECT
+    expected_error_codes: [VER_NEGATIVE_CONTROL]
+  - name: verification reject - negative check bad ref call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_negative_bad_ref.yaml
+    expect: REJECT
+    expected_error_codes: [VER_REPORT_REFERENCE]
+  - name: verification reject - ABSENT applies negative check call site
+    schema: dimension_survey_verification_v1.yaml
+    document: examples/reject_fixtures/verification_absent_negative_applied.yaml
+    expect: REJECT
+    expected_error_codes: [VER_NEGATIVE_CONTROL]
+  - name: report reject - applicability enum typo diagnostic
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_applicability_enum_typo.yaml
+    expect: REJECT
+    expected_error_codes: [SCHEMA_STRUCTURE]

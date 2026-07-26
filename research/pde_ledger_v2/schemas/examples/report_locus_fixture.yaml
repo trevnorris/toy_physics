@@ -1,0 +1,135 @@
+schema_version: dimension_survey_report_v1
+identity:
+  stage: "043"
+  script_path:
+    value: research/pde_ledger_v2/schemas/examples/synthetic_identity_script.py
+    method: FILESYSTEM
+  script_sha256:
+    value: 5a0d1d33e700a965d079d437430d255be8d42b32c5a135cba0948c80efcb61d8
+    method: SHA256SUM
+  wl_path:
+    value: research/pde_ledger_v2/schemas/examples/synthetic_identity_pair.wl
+    method: FILESYSTEM
+  wl_sha256:
+    value: 6199eca2da3eba31fd7df7f726ab4038ff3f19cdd2f68211a8f0959130044a4d
+    method: SHA256SUM
+  script_line_count:
+    value: 3
+    method: WC_L
+dimensional_content:
+  value: NONE
+  loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1, research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:2]
+  reasoning:
+    - The synthetic audited result is explicitly an integer count.
+    - Its homogeneity criterion is explicitly not applicable.
+    - No shared-module quantity declaration is owed by this fixture.
+machinery:
+  value: ABSENT
+  loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+idiom:
+  items:
+    - value: NONE
+      loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+binding_name_pattern:
+  value: "'L':1"
+  loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+definition_locus:
+  value: NOT_APPLICABLE
+  reason: No executable dimension machinery exists in the synthetic source.
+  sources_searched: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+static_recovery_surface:
+  items: []
+  reason: ABSENT machinery has no current dimension bindings.
+basis:
+  axis_evidence:
+    items: []
+    reason: The count audit has no order-bearing dimension representation.
+  orders:
+    items: []
+    reason: The count audit has no order-bearing dimension representation.
+  exponent_type:
+    value: n/a
+    loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+  fractional_exponents_present:
+    value: false
+    loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+quantities:
+  items: []
+  reason: Positive source argument says the audited integer count owes no declaration.
+  zero_declaration_argument:
+    value: NOT_APPLICABLE
+    reason: The ownership floor applies only to REAL+PRESENT.
+    sources_searched: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+pass_lines:
+  emitter_sites:
+    items:
+      - item_id: none.pass.emitter
+        source_template:
+          value: "print('PASS irreducible count')"
+          loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+        locus: research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1
+  call_sites:
+    items:
+      - item_id: none.pass.call
+        argument_kind:
+          value: LITERAL
+          loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+        argument_source_text:
+          value: "'PASS irreducible count'"
+          loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+        locus: research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1
+  statically_resolved_markers:
+    items:
+      - value: irreducible count
+        loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+  unresolved_dynamic_markers:
+    items: []
+    reason: The only synthetic PASS marker is literal.
+active_mutation:
+  read_at_module_scope:
+    value: false
+    loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+  locus:
+    items: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+  variable_names:
+    items: []
+    reason: No active-mutation variable is read.
+  gates:
+    items: []
+    reason: No active mutation value gates the count audit.
+wl_evidence:
+  states_dimensions:
+    value: false
+    loci: [mathematica/ledger_stage043_irreducible_count_range_mathematica_audit.wl:1]
+  pairs:
+    items: []
+    reason: The cited Mathematica audit states no dimension for this fixture.
+gaps:
+  items: []
+  reason: The explicit count and homogeneity-not-applicable statements decide every applicable leaf.
+notes:
+  items:
+    - text: Physics-named symbols may occur; the classification concerns the audited count.
+      loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1, research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:2]
+representation_contract:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no representation contract.
+  sources_searched: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+dimension_bindings:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no dimension binding inventory.
+  sources_searched: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+dimension_use_sites:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no inline consumed dimension values.
+  sources_searched: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+import_context:
+  existing_local_import_pattern:
+    value: NONE_OBSERVED
+    loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+  invocation_assumptions:
+    value: direct-script execution enters a guarded main function
+    loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1]
+  module_scope_side_effects:
+    value: NONE_OBSERVED
+    loci: [research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:1, research/pde_ledger_v2/schemas/examples/report_locus_fixture.yaml:2]

@@ -1,0 +1,201 @@
+schema_version: dimension_survey_accept_fixture_v1
+base_document: report_rule_fixture_accept.yaml
+mutations:
+  - {op: replace, path: [identity, stage], value: "021"}
+  - op: replace
+    path: [identity, script_path, value]
+    value: research/pde_ledger_v2/schemas/examples/synthetic/rule_fixture.py
+  - op: replace
+    path: [identity, script_sha256, value]
+    value: 9bd8346f5a5c90ff8680ce3507c064a06cf5e9e34470e91d2f380f58938aabf1
+  - op: replace
+    path: [identity, wl_path, value]
+    value: research/pde_ledger_v2/schemas/examples/synthetic/rule_fixture.wl
+  - op: replace
+    path: [identity, wl_sha256, value]
+    value: ddff774402b0850cff68c19e97b4181d7f0bcb6ff29be309904cf262c679bb96
+  - op: replace
+    path: [wl_evidence]
+    value:
+      states_dimensions:
+        value: false
+        loci: [synthetic/rule_fixture.wl:1]
+      pairs:
+        items: []
+        reason: The synthetic anchor fixture records no Mathematica dimension pair.
+  - {op: replace, path: [identity, script_line_count, value], value: 10}
+  - op: replace
+    path: [quantities, items, 0, dimension_value_status, loci]
+    value: [synthetic/rule_fixture.py:1]
+  - op: replace
+    path: [quantities, items, 0, dimension_source_loci, items]
+    value: [synthetic/rule_fixture.py:1]
+  - op: replace
+    path: [quantities, items, 0, dim_source_text]
+    value:
+      value: L
+      loci: [synthetic/rule_fixture.py:1]
+  - op: replace
+    path: [static_recovery_surface, items, 0, binding_name, value]
+    value: SOURCED_N0_DIM
+  - op: add
+    path: [static_recovery_surface, items, 1]
+    value:
+      item_id: anchor.recovery.sourced_d0
+      binding_ref: anchor.binding.sourced_d0
+      binding_name: {value: SOURCED_D0_DIM, loci: [synthetic/rule_fixture.py:2]}
+      binding_scope: {value: MODULE, loci: [synthetic/rule_fixture.py:2]}
+      literal_or_derived: {value: LITERAL, loci: [synthetic/rule_fixture.py:2]}
+      expression_source_text: {value: "SOURCED_D0_DIM = synthetic_dim", loci: [synthetic/rule_fixture.py:2]}
+      stable_quantity_key_present: {value: true, loci: [synthetic/rule_fixture.py:2]}
+      depends_on_active_mutation: {value: false, loci: [synthetic/rule_fixture.py:2]}
+      depends_on_runtime_state: {value: false, loci: [synthetic/rule_fixture.py:2]}
+      statically_locatable_without_import: {value: "YES", loci: [synthetic/rule_fixture.py:2]}
+      current_checker_visibility:
+        value: "YES"
+        loci: [synthetic/rule_fixture.py:2, composite_build.py:1]
+  - op: add
+    path: [static_recovery_surface, items, 2]
+    value:
+      item_id: anchor.recovery.raw
+      binding_ref: anchor.binding.raw
+      binding_name: {value: raw_dim, loci: [synthetic/rule_fixture.py:3]}
+      binding_scope: {value: FUNCTION, loci: [synthetic/rule_fixture.py:3]}
+      literal_or_derived: {value: DERIVED, loci: [synthetic/rule_fixture.py:3]}
+      expression_source_text: {value: "raw_dim = synthetic_dim", loci: [synthetic/rule_fixture.py:3]}
+      stable_quantity_key_present: {value: false, loci: [synthetic/rule_fixture.py:3]}
+      depends_on_active_mutation: {value: false, loci: [synthetic/rule_fixture.py:3]}
+      depends_on_runtime_state: {value: false, loci: [synthetic/rule_fixture.py:3]}
+      statically_locatable_without_import: {value: "YES", loci: [synthetic/rule_fixture.py:3]}
+      current_checker_visibility:
+        value: "YES"
+        loci: [synthetic/rule_fixture.py:3, composite_build.py:1]
+  - op: add
+    path: [static_recovery_surface, items, 3]
+    value:
+      item_id: anchor.recovery.norm
+      binding_ref: anchor.binding.norm
+      binding_name: {value: norm_dim, loci: [synthetic/rule_fixture.py:4]}
+      binding_scope: {value: FUNCTION, loci: [synthetic/rule_fixture.py:4]}
+      literal_or_derived: {value: DERIVED, loci: [synthetic/rule_fixture.py:4]}
+      expression_source_text: {value: "norm_dim = synthetic_dim", loci: [synthetic/rule_fixture.py:4]}
+      stable_quantity_key_present: {value: false, loci: [synthetic/rule_fixture.py:4]}
+      depends_on_active_mutation: {value: false, loci: [synthetic/rule_fixture.py:4]}
+      depends_on_runtime_state: {value: false, loci: [synthetic/rule_fixture.py:4]}
+      statically_locatable_without_import: {value: "YES", loci: [synthetic/rule_fixture.py:4]}
+      current_checker_visibility:
+        value: "YES"
+        loci: [synthetic/rule_fixture.py:4, composite_build.py:1]
+  - op: add
+    path: [static_recovery_surface, items, 4]
+    value:
+      item_id: anchor.recovery.p0
+      binding_ref: anchor.binding.p0
+      binding_name: {value: p0_dim, loci: [synthetic/rule_fixture.py:5]}
+      binding_scope: {value: FUNCTION, loci: [synthetic/rule_fixture.py:5]}
+      literal_or_derived: {value: DERIVED, loci: [synthetic/rule_fixture.py:5]}
+      expression_source_text: {value: "p0_dim = synthetic_dim", loci: [synthetic/rule_fixture.py:5]}
+      stable_quantity_key_present: {value: false, loci: [synthetic/rule_fixture.py:5]}
+      depends_on_active_mutation: {value: false, loci: [synthetic/rule_fixture.py:5]}
+      depends_on_runtime_state: {value: false, loci: [synthetic/rule_fixture.py:5]}
+      statically_locatable_without_import: {value: "YES", loci: [synthetic/rule_fixture.py:5]}
+      current_checker_visibility:
+        value: "YES"
+        loci: [synthetic/rule_fixture.py:5, composite_build.py:1]
+  - op: replace
+    path: [dimension_bindings, items, 0, name, value]
+    value: SOURCED_N0_DIM
+  - op: replace
+    path: [dimension_bindings, items, 0, qualified_scope, value]
+    value: module.SOURCED_N0_DIM
+  - op: replace
+    path: [dimension_bindings, items, 0, ownership, value]
+    value: MODULE_OWNED
+  - op: add
+    path: [dimension_bindings, items, 1]
+    value:
+      item_id: anchor.binding.sourced_d0
+      name: {value: SOURCED_D0_DIM, loci: [synthetic/rule_fixture.py:2]}
+      qualified_scope: {value: module.SOURCED_D0_DIM, loci: [synthetic/rule_fixture.py:2]}
+      scope: {value: MODULE, loci: [synthetic/rule_fixture.py:2]}
+      binding_locus: synthetic/rule_fixture.py:2
+      branch_or_state_predicate: {value: unconditional, loci: [synthetic/rule_fixture.py:2]}
+      source_text: {value: "SOURCED_D0_DIM = synthetic_dim", loci: [synthetic/rule_fixture.py:2]}
+      literal_or_derived: {value: LITERAL, loci: [synthetic/rule_fixture.py:2]}
+      depends_on_active_mutation: {value: false, loci: [synthetic/rule_fixture.py:2]}
+      depends_on_other_runtime_state: {value: false, loci: [synthetic/rule_fixture.py:2]}
+      consumers:
+        items:
+          - consumer: {value: synthetic assertion, loci: [synthetic/rule_fixture.py:2]}
+            locus: synthetic/rule_fixture.py:2
+      ownership: {value: MODULE_OWNED, loci: [synthetic/rule_fixture.py:2]}
+      uses:
+        items:
+          - {value: ASSERTED_TARGET, loci: [synthetic/rule_fixture.py:2]}
+      alias_of: {items: [], reason: This synthetic anchor is independent.}
+  - op: add
+    path: [dimension_bindings, items, 2]
+    value:
+      item_id: anchor.binding.raw
+      name: {value: raw_dim, loci: [synthetic/rule_fixture.py:3]}
+      qualified_scope: {value: run_mu_free_gate.raw_dim, loci: [synthetic/rule_fixture.py:3]}
+      scope: {value: FUNCTION, loci: [synthetic/rule_fixture.py:3]}
+      binding_locus: synthetic/rule_fixture.py:3
+      branch_or_state_predicate: {value: unconditional, loci: [synthetic/rule_fixture.py:3]}
+      source_text: {value: "raw_dim = synthetic_dim", loci: [synthetic/rule_fixture.py:3]}
+      literal_or_derived: {value: DERIVED, loci: [synthetic/rule_fixture.py:3]}
+      depends_on_active_mutation: {value: false, loci: [synthetic/rule_fixture.py:3]}
+      depends_on_other_runtime_state: {value: false, loci: [synthetic/rule_fixture.py:3]}
+      consumers:
+        items:
+          - consumer: {value: unconditional synthetic render, loci: [synthetic/rule_fixture.py:3]}
+            locus: synthetic/rule_fixture.py:3
+      ownership: {value: SCRIPT_OWNED, loci: [synthetic/rule_fixture.py:3]}
+      uses:
+        items:
+          - {value: DISPLAY_ONLY, loci: [synthetic/rule_fixture.py:3]}
+      alias_of: {items: [], reason: This synthetic anchor is independent.}
+  - op: add
+    path: [dimension_bindings, items, 3]
+    value:
+      item_id: anchor.binding.norm
+      name: {value: norm_dim, loci: [synthetic/rule_fixture.py:4]}
+      qualified_scope: {value: run_mu_free_gate.norm_dim, loci: [synthetic/rule_fixture.py:4]}
+      scope: {value: FUNCTION, loci: [synthetic/rule_fixture.py:4]}
+      binding_locus: synthetic/rule_fixture.py:4
+      branch_or_state_predicate: {value: unconditional, loci: [synthetic/rule_fixture.py:4]}
+      source_text: {value: "norm_dim = synthetic_dim", loci: [synthetic/rule_fixture.py:4]}
+      literal_or_derived: {value: DERIVED, loci: [synthetic/rule_fixture.py:4]}
+      depends_on_active_mutation: {value: false, loci: [synthetic/rule_fixture.py:4]}
+      depends_on_other_runtime_state: {value: false, loci: [synthetic/rule_fixture.py:4]}
+      consumers:
+        items:
+          - consumer: {value: unconditional synthetic render, loci: [synthetic/rule_fixture.py:4]}
+            locus: synthetic/rule_fixture.py:4
+      ownership: {value: SCRIPT_OWNED, loci: [synthetic/rule_fixture.py:4]}
+      uses:
+        items:
+          - {value: DISPLAY_ONLY, loci: [synthetic/rule_fixture.py:4]}
+      alias_of: {items: [], reason: This synthetic anchor is independent.}
+  - op: add
+    path: [dimension_bindings, items, 4]
+    value:
+      item_id: anchor.binding.p0
+      name: {value: p0_dim, loci: [synthetic/rule_fixture.py:5]}
+      qualified_scope: {value: run_mu_free_gate.p0_dim, loci: [synthetic/rule_fixture.py:5]}
+      scope: {value: FUNCTION, loci: [synthetic/rule_fixture.py:5]}
+      binding_locus: synthetic/rule_fixture.py:5
+      branch_or_state_predicate: {value: unconditional, loci: [synthetic/rule_fixture.py:5]}
+      source_text: {value: "p0_dim = synthetic_dim", loci: [synthetic/rule_fixture.py:5]}
+      literal_or_derived: {value: DERIVED, loci: [synthetic/rule_fixture.py:5]}
+      depends_on_active_mutation: {value: false, loci: [synthetic/rule_fixture.py:5]}
+      depends_on_other_runtime_state: {value: false, loci: [synthetic/rule_fixture.py:5]}
+      consumers:
+        items:
+          - consumer: {value: unconditional synthetic render, loci: [synthetic/rule_fixture.py:5]}
+            locus: synthetic/rule_fixture.py:5
+      ownership: {value: SCRIPT_OWNED, loci: [synthetic/rule_fixture.py:5]}
+      uses:
+        items:
+          - {value: DISPLAY_ONLY, loci: [synthetic/rule_fixture.py:5]}
+      alias_of: {items: [], reason: This synthetic anchor is independent.}

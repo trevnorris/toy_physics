@@ -1,0 +1,86 @@
+schema_version: dimension_survey_verification_v1
+identity:
+  stage: "027"
+  report_path:
+    value: research/pde_ledger_v2/schemas/examples/report_rule_fixture_accept.yaml
+    method: FILESYSTEM
+  report_sha256:
+    value: 8985023a9ce0afb0e73cb431306de92fc67ad7b36ddd500504c03ee0a2aa2234
+    method: SHA256SUM
+classification: UNDETERMINED+PRESENT
+overall_verdict: PASS
+locus_integrity:
+  status: SYNTHETIC_EXEMPT
+  reason: Committed synthetic loci deliberately do not resolve to production files.
+categories:
+  dimension_bindings:
+    applicability: APPLICABLE
+    source_count: 1
+    report_count: 1
+    source_unmatched: {items: [], reason: The synthetic binding is matched.}
+    report_unmatched: {items: [], reason: The reported binding is matched.}
+  quantities:
+    applicability: APPLICABLE
+    source_count: 1
+    report_count: 1
+    source_unmatched: {items: [], reason: The synthetic quantity is matched.}
+    report_unmatched: {items: [], reason: The reported quantity is matched.}
+  contract_features_and_presentation_consumers:
+    applicability: APPLICABLE
+    source_count: 11
+    report_count: 11
+    source_unmatched: {items: [], reason: The synthetic contract inventory is matched.}
+    report_unmatched: {items: [], reason: The reported contract inventory is matched.}
+  pass_emitter_sites:
+    applicability: APPLICABLE
+    source_count: 0
+    report_count: 0
+    source_unmatched: {items: [], reason: No source PASS emitter exists.}
+    report_unmatched: {items: [], reason: No reported PASS emitter exists.}
+  pass_call_sites:
+    applicability: APPLICABLE
+    source_count: 0
+    report_count: 0
+    source_unmatched: {items: [], reason: No source PASS call exists.}
+    report_unmatched: {items: [], reason: No reported PASS call exists.}
+none_classification_recheck:
+  applicability: NOT_APPLICABLE
+  reason: This is not a NONE classification.
+ownership_rederivation:
+  applicability: APPLICABLE
+  coverage_case: ii
+  applicable_ownership_anchors:
+    value: NONE
+    reason: Section 4.4 names no ownership anchor for synthetic stage027.
+  case_i_sample:
+    applicability: NOT_APPLICABLE
+    reason: Case (ii) uses full coverage, not a sample.
+  coverage:
+    bindings_re_derived: 1
+    bindings_total: 1
+    escape:
+      invoked: false
+  selection_record: Every report binding was selected in ascending item_id order.
+  items:
+    - binding_ref: fixture.binding.x
+      selection_kind: CASE_II_FULL_COVERAGE
+      reported_ownership: CHECK_LOCAL
+      rederived_ownership: CHECK_LOCAL
+      comparison: MATCH
+      source_loci: [synthetic/rule_fixture.py:1]
+zero_declaration_check:
+  applicability: NOT_APPLICABLE
+  reason: The zero-declaration check applies only to REAL+PRESENT.
+negative_control_integrity:
+  applicability: APPLICABLE
+  result: PASS
+  detail: No NEGATIVE_CONTROL binding exists in the fixture.
+  binding_refs:
+    items: []
+    reason: No negative-control binding requires citation.
+  source_loci: [synthetic/rule_fixture.py:1]
+gap_credibility:
+  applicability: APPLICABLE
+  result: PASS
+  detail: The unresolved content classification is recorded as a sourced gap.
+  source_loci: [synthetic/rule_fixture.py:1]

@@ -1,0 +1,8 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_undetermined_absent_accept.yaml
+mutations:
+  - op: replace
+    path: [quantities, items, 0, register_evidence]
+    value:
+      status: NOT_CHECKED
+      reason: The synthetic violation deliberately skips the register.

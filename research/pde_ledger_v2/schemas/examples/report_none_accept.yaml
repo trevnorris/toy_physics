@@ -1,0 +1,135 @@
+schema_version: dimension_survey_report_v1
+identity:
+  stage: "043"
+  script_path:
+    value: synthetic/stage043_none_shape.py
+    method: FILESYSTEM
+  script_sha256:
+    value: cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+    method: SHA256SUM
+  wl_path:
+    value: synthetic/stage043_none_shape.wl
+    method: FILESYSTEM
+  wl_sha256:
+    value: dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+    method: SHA256SUM
+  script_line_count:
+    value: 120
+    method: WC_L
+dimensional_content:
+  value: NONE
+  loci: [synthetic/stage043_none_shape.py:45, synthetic/stage043_none_shape.wl:30]
+  reasoning:
+    - The synthetic audited result is explicitly an integer count.
+    - Its homogeneity criterion is explicitly not applicable.
+    - No shared-module quantity declaration is owed by this fixture.
+machinery:
+  value: ABSENT
+  loci: [synthetic/stage043_none_shape.py:1-120]
+idiom:
+  items:
+    - value: NONE
+      loci: [synthetic/stage043_none_shape.py:1-120]
+binding_name_pattern:
+  value: NONE_OBSERVED
+  loci: [synthetic/stage043_none_shape.py:1-120]
+definition_locus:
+  value: NOT_APPLICABLE
+  reason: No executable dimension machinery exists in the synthetic source.
+  sources_searched: [synthetic/stage043_none_shape.py:1-120]
+static_recovery_surface:
+  items: []
+  reason: ABSENT machinery has no current dimension bindings.
+basis:
+  axis_evidence:
+    items: []
+    reason: The count audit has no order-bearing dimension representation.
+  orders:
+    items: []
+    reason: The count audit has no order-bearing dimension representation.
+  exponent_type:
+    value: n/a
+    loci: [synthetic/stage043_none_shape.py:45]
+  fractional_exponents_present:
+    value: false
+    loci: [synthetic/stage043_none_shape.py:45]
+quantities:
+  items: []
+  reason: Positive source argument says the audited integer count owes no declaration.
+  zero_declaration_argument:
+    value: NOT_APPLICABLE
+    reason: The ownership floor applies only to REAL+PRESENT.
+    sources_searched: [synthetic/stage043_none_shape.py:45]
+pass_lines:
+  emitter_sites:
+    items:
+      - item_id: none.pass.emitter
+        source_template:
+          value: "print('PASS irreducible count')"
+          loci: [synthetic/stage043_none_shape.py:100]
+        locus: synthetic/stage043_none_shape.py:100
+  call_sites:
+    items:
+      - item_id: none.pass.call
+        argument_kind:
+          value: LITERAL
+          loci: [synthetic/stage043_none_shape.py:100]
+        argument_source_text:
+          value: "'PASS irreducible count'"
+          loci: [synthetic/stage043_none_shape.py:100]
+        locus: synthetic/stage043_none_shape.py:100
+  statically_resolved_markers:
+    items:
+      - value: irreducible count
+        loci: [synthetic/stage043_none_shape.py:100]
+  unresolved_dynamic_markers:
+    items: []
+    reason: The only synthetic PASS marker is literal.
+active_mutation:
+  read_at_module_scope:
+    value: false
+    loci: [synthetic/stage043_none_shape.py:1-15]
+  locus:
+    items: [synthetic/stage043_none_shape.py:1-15]
+  variable_names:
+    items: []
+    reason: No active-mutation variable is read.
+  gates:
+    items: []
+    reason: No active mutation value gates the count audit.
+wl_evidence:
+  states_dimensions:
+    value: false
+    loci: [mathematica/ledger_stage043_irreducible_count_range_mathematica_audit.wl:1]
+  pairs:
+    items: []
+    reason: The cited Mathematica audit states no dimension for this fixture.
+gaps:
+  items: []
+  reason: The explicit count and homogeneity-not-applicable statements decide every applicable leaf.
+notes:
+  items:
+    - text: Physics-named symbols may occur; the classification concerns the audited count.
+      loci: [synthetic/stage043_none_shape.py:40, synthetic/stage043_none_shape.py:45]
+representation_contract:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no representation contract.
+  sources_searched: [synthetic/stage043_none_shape.py:1-120]
+dimension_bindings:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no dimension binding inventory.
+  sources_searched: [synthetic/stage043_none_shape.py:1-120]
+dimension_use_sites:
+  applicability: NOT_APPLICABLE
+  reason: ABSENT machinery has no inline consumed dimension values.
+  sources_searched: [synthetic/stage043_none_shape.py:1-120]
+import_context:
+  existing_local_import_pattern:
+    value: NONE_OBSERVED
+    loci: [synthetic/stage043_none_shape.py:1-15]
+  invocation_assumptions:
+    value: direct-script execution enters a guarded main function
+    loci: [synthetic/stage043_none_shape.py:110]
+  module_scope_side_effects:
+    value: NONE_OBSERVED
+    loci: [synthetic/stage043_none_shape.py:1-15, synthetic/stage043_none_shape.py:110]

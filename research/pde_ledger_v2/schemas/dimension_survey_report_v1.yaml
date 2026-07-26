@@ -1,0 +1,1598 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://toy-physics.invalid/schemas/dimension_survey_report_v1.yaml"
+title: Dimension survey per-script report, version 1
+description: >-
+  Structural schema for SURVEY_DIRECTIVE.md r17 sections 3 and 4.0.  The
+  companion validator applies the cross-field rules named in x-directive-rules.
+type: object
+additionalProperties: false
+required:
+  - schema_version
+  - identity
+  - dimensional_content
+  - machinery
+  - idiom
+  - binding_name_pattern
+  - definition_locus
+  - static_recovery_surface
+  - basis
+  - quantities
+  - pass_lines
+  - active_mutation
+  - wl_evidence
+  - gaps
+  - notes
+  - representation_contract
+  - dimension_bindings
+  - dimension_use_sites
+  - import_context
+properties:
+  schema_version:
+    const: dimension_survey_report_v1
+  identity:
+    $ref: "#/$defs/identity"
+  dimensional_content:
+    $ref: "#/$defs/dimensionalContent"
+  machinery:
+    $ref: "#/$defs/machineryFact"
+  idiom:
+    $ref: "#/$defs/idiomCollection"
+  binding_name_pattern:
+    $ref: "#/$defs/stringFact"
+  definition_locus:
+    $ref: "#/$defs/locusFactOrNotApplicable"
+  static_recovery_surface:
+    $ref: "#/$defs/staticRecoveryCollection"
+  basis:
+    $ref: "#/$defs/basis"
+  quantities:
+    $ref: "#/$defs/quantityCollection"
+  pass_lines:
+    $ref: "#/$defs/passLines"
+  active_mutation:
+    $ref: "#/$defs/activeMutation"
+  wl_evidence:
+    $ref: "#/$defs/wlEvidence"
+  gaps:
+    $ref: "#/$defs/gapCollection"
+  notes:
+    $ref: "#/$defs/noteCollection"
+  representation_contract:
+    $ref: "#/$defs/representationContract"
+  dimension_bindings:
+    $ref: "#/$defs/dimensionBindingSection"
+  dimension_use_sites:
+    $ref: "#/$defs/dimensionUseSiteSection"
+  import_context:
+    $ref: "#/$defs/importContext"
+
+x-enums:
+  identity_method: [FILESYSTEM, SHA256SUM, WC_L]
+  dimensional_content: [REAL, NONE, UNDETERMINED]
+  machinery: [PRESENT, ABSENT]
+  idiom:
+    - CLASS_VALUE_OBJECT
+    - TYPE_ALIAS_TUPLE
+    - BARE_TUPLE
+    - MATRIX_VECTOR
+    - MAPPING
+    - EVALUATOR
+    - FORMATTER
+    - SYMBOLIC_UNITS
+    - NONE
+    - UNDETERMINED
+  recovery_binding_scope: [MODULE, FUNCTION, CLASS, COMPREHENSION, OTHER, UNDETERMINED]
+  binding_scope: [MODULE, FUNCTION, CLASS, COMPREHENSION, OTHER, UNDETERMINED]
+  literal_or_derived: [LITERAL, DERIVED, UNDETERMINED]
+  yes_no_undetermined: ["YES", "NO", UNDETERMINED]
+  order_evidence: [STATED, INFERRED_FROM_USAGE, UNDETERMINED]
+  order_kind: [storage, constructor, display, serialized]
+  exponent_type: [integer, rational, float, mixed, n/a, UNDETERMINED]
+  identity_status: [SOURCE_STATED, UNDETERMINED]
+  dimension_value_status:
+    - EXPLICIT_PY
+    - EXPLICIT_WL
+    - EXPLICIT_PARAMETER_REGISTER
+    - EXPLICIT_STAGE_NOTE
+    - CONSTRAINED_BUT_NOT_STATED
+    - UNDETERMINED
+  dim_text_form: [NAMED_AXIS, POSITIONAL]
+  register_evidence_status:
+    - TEXT_IDENTICAL
+    - TEXT_DIFFERS
+    - ABSENT_FROM_REGISTER
+    - PENDING_IN_REGISTER
+    - NOT_CHECKED
+  wl_evidence_status:
+    - TEXT_IDENTICAL
+    - TEXT_DIFFERS
+    - ABSENT_FROM_WL
+    - ABSENT_FROM_PY
+    - NOT_COMPARABLE_BY_CONSTRUCTION
+    - NOT_CHECKED
+  ownership: [MODULE_OWNED, SCRIPT_OWNED, CHECK_LOCAL, UNDETERMINED]
+  declaration_required: ["YES", "NO", UNDETERMINED]
+  evaluator_presence: [PRESENT, ABSENT, UNDETERMINED]
+  uses: [ASSERTED_TARGET, NEGATIVE_CONTROL, DISPLAY_ONLY, ALGEBRA_INTERMEDIATE, UNDETERMINED]
+  argument_kind: [LITERAL, TEMPLATE, DYNAMIC, UNDETERMINED]
+  section_applicability: [APPLICABLE, NOT_APPLICABLE]
+  contract_feature:
+    - CONSTRUCTION_NORMALIZATION
+    - EQUALITY_SEMANTICS
+    - HASHABILITY
+    - COMPONENT_ACCESS
+    - ALGEBRA_OPERATION
+    - EVALUATOR_NODE_KIND
+    - NUMERIC_ZERO_POLICY
+    - MISSING_SYMBOL_POLICY
+    - NON_HOMOGENEOUS_ADD_POLICY
+  algebra_semantic_operation:
+    - COMPOSE
+    - DECOMPOSE
+    - POWER
+    - EQUALITY
+    - CONSTRUCT
+    - NORMALIZE
+    - COMPONENT_ACCESS
+    - EVALUATE_EXPRESSION
+    - PROJECT
+    - RESIDUAL
+    - UNDETERMINED
+x-open-vocabularies:
+  sympy_node_kind: >-
+    Any unqualified Python identifier naming the SymPy class verbatim, plus a
+    smallest-leaf UNDETERMINED wrapper.
+x-directive-rules:
+  SCHEMA_STRUCTURE: >-
+    Structural failures select the applicable oneOf branch and identify the
+    failing leaf. An unrecognized section applicability value is reported at
+    that value, before dependent semantic inventories are inspected.
+  REPORT_APPLICABILITY_MATRIX: >-
+    Enforce all five §3.0 classifications. NONE+ABSENT is valid; absent
+    machinery uses [NONE], NOT_APPLICABLE contract/binding sections, and
+    reason-bearing empty recovery; PRESENT uses non-NONE idioms and applicable
+    contract/binding sections.
+  REPORT_NONE_NA_DISTINCTION: >-
+    NONE has reason-bearing empty quantities in a report. Verification
+    cardinality for the category is N/A, never numeric zero.
+  REPORT_SMALLEST_LEAF_UNKNOWN: >-
+    UNDETERMINED is legal only as a value in a fact wrapper with reason and
+    sources_searched; mappings and collections are never scalar unknowns.
+  REPORT_EMPTY_COLLECTION_REASON: Every empty items array has a non-empty reason.
+  REPORT_ID_UNIQUENESS: >-
+    item_id is globally unique across static recovery, quantities, contract
+    features, presentation consumers, dimension bindings, dimension use sites,
+    PASS emitters, PASS call sites, and wl_evidence pairs.
+  REPORT_ID_SCOPE: >-
+    No other inventory, enum list, axis, order, locus, gap, or note accepts an
+    item_id.
+  REPORT_ITEM_IDENTITY: >-
+    Enforce document-observable §4.0 deduplication keys for binding loci and
+    predicates, use-site loci, quantity declarations, contract features,
+    presentation consumers, and PASS AST sites.
+  REPORT_BINDING_REFERENCE: >-
+    static_recovery_surface.binding_ref names exactly one dimension binding;
+    quantities.binding_refs and dimension_use_sites.binding_refs contain only
+    dimension-binding item_ids; each wl_evidence quantity_ref names one
+    quantity item_id or uses the reasoned NO_SURVEYED_QUANTITY sentinel only
+    for ABSENT_FROM_PY.
+  REPORT_ALIAS_REFERENCE: >-
+    dimension_bindings.alias_of contains only other dimension-binding item_ids,
+    never the binding's own item_id.
+  REPORT_DECLARATION_FROM_OWNERSHIP: >-
+    MODULE_OWNED=>YES, SCRIPT_OWNED=>NO, CHECK_LOCAL=>NO, and
+    UNDETERMINED=>UNDETERMINED.
+  REPORT_NEGATIVE_CONTROL_OWNERSHIP: >-
+    A binding with uses containing NEGATIVE_CONTROL cannot be MODULE_OWNED.
+  REPORT_QUANTITY_NEGATIVE_CONTROL_PROMOTION: >-
+    When a quantity has one or more binding_refs and every referenced binding
+    is a NEGATIVE_CONTROL, the quantity cannot be MODULE_OWNED or require a
+    declaration.
+  REPORT_ORDER_IDENTITY: >-
+    orders are unique by (kind, axes); representations, producers, and loci do
+    not create additional order items.
+  REPORT_WHOLE_FILE_METHODS: >-
+    *_path uses FILESYSTEM, *_sha256 uses SHA256SUM, and *_line_count uses WC_L.
+  REPORT_VISIBILITY_EVIDENCE: >-
+    Every current_checker_visibility fact cites at least one script locus and
+    at least one composite_build.py locus, without constraining the citation's
+    directory prefix.
+  REPORT_IDIOM_MEMBERSHIP: >-
+    TYPE_ALIAS_TUPLE and BARE_TUPLE may coexist at report level only when their
+    supporting loci are disjoint; one representation locus cannot carry both
+    tags.
+  REPORT_IDIOM_VALUE_UNIQUENESS: >-
+    idiom is a set by tag value. All loci for one tag belong on one entry.
+  REPORT_USES_VALUE_UNIQUENESS: >-
+    Every binding and bindingless use-site uses list is a set by use value.
+    All loci for one use belong on one entry.
+  REPORT_CANDIDATE_REASON: >-
+    Every REAL+ABSENT quantity has a substantive candidate_reason;
+    NOT_APPLICABLE is forbidden for that classification.
+  REPORT_EXPLICIT_DIM_SOURCE_TEXT: >-
+    Every EXPLICIT_* status requires dim_source_text whose token sequence
+    occurs at one of dimension_source_loci, allowing differences only in
+    whitespace, indentation, and line wrapping. Every such entry declares its
+    dim_text_form and cites an axis_evidence/orders locus from this report.
+    NAMED_AXIS contains a standalone source or interpreted axis spelling, or
+    exactly 1 for dimensionless. POSITIONAL contains an ordered component
+    sequence whose arity equals this report's declared axis count. There is no
+    character-count floor. Source-kind status must match the cited Python, WL,
+    stage-note, or real parameter-register source.
+  REPORT_EVIDENCE_RECORDS: >-
+    register_evidence and wl_evidence preserve whole verbatim text and real
+    single-row loci. TEXT_IDENTICAL/TEXT_DIFFERS are decided only by comparing
+    characters modulo whitespace; no semantic-equivalence verdict is present.
+    Register cells are never parsed, including multi-parameter and [X]= cells.
+    ABSENT_FROM_REGISTER and ABSENT_FROM_WL are recordable bare or with a
+    reason and require no consultation receipt. NOT_CHECKED requires a reason.
+    Lowercase annotated pending remains distinct from a PENDING route flag. A
+    register-sourced dimension cannot claim ABSENT_FROM_REGISTER. Readiness
+    blockers require a status other than NOT_CHECKED. Every wl pair resolves
+    its quantity_ref, with the reasoned NO_SURVEYED_QUANTITY exception limited
+    to ABSENT_FROM_PY.
+  REPORT_RECOVERY_BINDING_CORRESPONDENCE: >-
+    For PRESENT machinery, static_recovery_surface and the dimension-valued
+    dimension_bindings inventory denote the same set: each binding is
+    referenced exactly once and neither list has an unmatched item.
+    Dimension-producing functions and operators are contract features, not
+    members of either inventory.
+  REPORT_ORDER_AXIS_REFERENCE: >-
+    Every orders[].axes value names an interpreted_axis_name present in
+    basis.axis_evidence.
+  REPORT_ALGEBRA_OPERATION_VOCABULARY: >-
+    algebra semantic_operation uses the r12 controlled vocabulary describing
+    what the operation does to dimensions.
+  REPORT_EVALUATOR_NODE_KIND_VOCABULARY: >-
+    evaluator node_kind is an open, unqualified verbatim SymPy class name, not
+    a closed observed-corpus enum or a qualified class path.
+  REPORT_ZERO_DECLARATION_ARGUMENT: >-
+    REAL+PRESENT with no declaration_required YES quantity requires an explicit
+    source-cited quantities.zero_declaration_argument.
+
+x-register-evidence:
+  dimension_representation: MONOMIAL_OVER_NAMED_AXES
+  survey_adjudication: FORBIDDEN
+  comparison_method: STRING_COMPARISON_MODULO_WHITESPACE
+  dimension_source_table: MASTER_PARAMETER_TABLE_ONLY
+  edge_rows_as_dimension_source: FORBIDDEN
+  pending_dimension_marker: pending
+  reduction_route_flag_not_dimension_marker: PENDING
+  evidence_path: notes/parameter_register.md
+  deferred_adjudication: SURVEY_DIRECTIVE_4_9
+
+x-rollup-obligations:
+  register_coverage:
+    - quantities_with_register_entry
+    - PENDING_IN_REGISTER
+    - ABSENT_FROM_REGISTER
+    - contributing_report_lists
+  register_text_differences:
+    - every_TEXT_DIFFERS_with_both_verbatim_texts_and_both_loci
+    - unadjudicated_queue_for_4_9
+  wl_text_differences:
+    - every_TEXT_DIFFERS_with_both_verbatim_texts_both_loci_and_quantity_ref
+    - every_ABSENT_FROM_PY_with_wl_text_locus_and_reason
+    - unadjudicated_queue_for_4_9
+  basis_question:
+    - stage038_and_stage042_register_presence
+    - representation_if_present
+    - evidence_without_adjudication
+
+$defs:
+  nonEmptyString:
+    type: string
+    minLength: 1
+  locus:
+    type: string
+    pattern: "^[^\\n]+:[1-9][0-9]*(?:-[1-9][0-9]*)?$"
+  loci:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/locus"
+  searched:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/nonEmptyString"
+  itemId:
+    type: string
+    pattern: "^[a-z][a-z0-9_.:-]*$"
+  knownFact:
+    type: object
+    additionalProperties: false
+    required: [value, loci]
+    properties:
+      value:
+        not:
+          const: UNDETERMINED
+      loci:
+        $ref: "#/$defs/loci"
+  unknownFact:
+    type: object
+    additionalProperties: false
+    required: [value, reason, sources_searched]
+    properties:
+      value:
+        const: UNDETERMINED
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+      sources_searched:
+        $ref: "#/$defs/searched"
+  knownLocusFact:
+    type: object
+    additionalProperties: false
+    required: [value, loci]
+    properties:
+      value:
+        $ref: "#/$defs/locus"
+      loci:
+        $ref: "#/$defs/loci"
+  locusFact:
+    oneOf:
+      - $ref: "#/$defs/knownLocusFact"
+      - $ref: "#/$defs/unknownFact"
+  sourceFact:
+    oneOf:
+      - $ref: "#/$defs/knownFact"
+      - $ref: "#/$defs/unknownFact"
+  stringFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            type: string
+  boolFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            oneOf:
+              - type: boolean
+              - const: UNDETERMINED
+  notApplicableFact:
+    type: object
+    additionalProperties: false
+    required: [value, reason, sources_searched]
+    properties:
+      value:
+        const: NOT_APPLICABLE
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+      sources_searched:
+        $ref: "#/$defs/searched"
+  factOrNotApplicable:
+    oneOf:
+      - $ref: "#/$defs/sourceFact"
+      - $ref: "#/$defs/notApplicableFact"
+  locusFactOrNotApplicable:
+    oneOf:
+      - $ref: "#/$defs/knownLocusFact"
+      - $ref: "#/$defs/unknownFact"
+      - $ref: "#/$defs/notApplicableFact"
+  collectionBase:
+    type: object
+    required: [items]
+    properties:
+      items:
+        type: array
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+    allOf:
+      - if:
+          properties:
+            items:
+              maxItems: 0
+        then:
+          required: [reason]
+  stringFactCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/stringFact"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  locusCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            uniqueItems: true
+            items:
+              $ref: "#/$defs/locus"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  refCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            uniqueItems: true
+            items:
+              $ref: "#/$defs/itemId"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  identityFact:
+    type: object
+    additionalProperties: false
+    required: [value, method]
+    properties:
+      value: {}
+      method:
+        enum: [FILESYSTEM, SHA256SUM, WC_L]
+  identity:
+    type: object
+    additionalProperties: false
+    required:
+      - stage
+      - script_path
+      - script_sha256
+      - wl_path
+      - wl_sha256
+      - script_line_count
+    properties:
+      stage:
+        type: string
+        pattern: "^(?:[0-9]{3}|midway)$"
+      script_path:
+        $ref: "#/$defs/identityFact"
+      script_sha256:
+        allOf:
+          - $ref: "#/$defs/identityFact"
+          - properties:
+              value:
+                type: string
+                pattern: "^[a-f0-9]{64}$"
+      wl_path:
+        $ref: "#/$defs/identityFact"
+      wl_sha256:
+        allOf:
+          - $ref: "#/$defs/identityFact"
+          - properties:
+              value:
+                type: string
+                pattern: "^[a-f0-9]{64}$"
+      script_line_count:
+        allOf:
+          - $ref: "#/$defs/identityFact"
+          - properties:
+              value:
+                type: integer
+                minimum: 1
+  dimensionalContent:
+    type: object
+    additionalProperties: false
+    required: [value, loci, reasoning]
+    properties:
+      value:
+        enum: [REAL, NONE, UNDETERMINED]
+      loci:
+        $ref: "#/$defs/loci"
+      reasoning:
+        type: array
+        minItems: 1
+        maxItems: 4
+        items:
+          $ref: "#/$defs/nonEmptyString"
+  machineryFact:
+    allOf:
+      - $ref: "#/$defs/knownFact"
+      - properties:
+          value:
+            enum: [PRESENT, ABSENT]
+  idiomFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum:
+              - CLASS_VALUE_OBJECT
+              - TYPE_ALIAS_TUPLE
+              - BARE_TUPLE
+              - MATRIX_VECTOR
+              - MAPPING
+              - EVALUATOR
+              - FORMATTER
+              - SYMBOLIC_UNITS
+              - NONE
+              - UNDETERMINED
+  idiomCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            minItems: 1
+            items:
+              $ref: "#/$defs/idiomFact"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  yesNoUndeterminedFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum: ["YES", "NO", UNDETERMINED]
+  literalDerivedFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum: [LITERAL, DERIVED, UNDETERMINED]
+  recoveryScopeFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum: [MODULE, FUNCTION, CLASS, COMPREHENSION, OTHER, UNDETERMINED]
+  staticRecoveryItem:
+    type: object
+    additionalProperties: false
+    required:
+      - item_id
+      - binding_ref
+      - binding_name
+      - binding_scope
+      - literal_or_derived
+      - expression_source_text
+      - stable_quantity_key_present
+      - depends_on_active_mutation
+      - depends_on_runtime_state
+      - statically_locatable_without_import
+      - current_checker_visibility
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      binding_ref:
+        $ref: "#/$defs/itemId"
+      binding_name:
+        $ref: "#/$defs/stringFact"
+      binding_scope:
+        $ref: "#/$defs/recoveryScopeFact"
+      literal_or_derived:
+        $ref: "#/$defs/literalDerivedFact"
+      expression_source_text:
+        $ref: "#/$defs/stringFact"
+      stable_quantity_key_present:
+        $ref: "#/$defs/boolFact"
+      depends_on_active_mutation:
+        $ref: "#/$defs/boolFact"
+      depends_on_runtime_state:
+        $ref: "#/$defs/boolFact"
+      statically_locatable_without_import:
+        $ref: "#/$defs/yesNoUndeterminedFact"
+      current_checker_visibility:
+        $ref: "#/$defs/yesNoUndeterminedFact"
+  staticRecoveryCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/staticRecoveryItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  axisEvidenceItem:
+    type: object
+    additionalProperties: false
+    required: [source_spelling, interpreted_axis_name, evidence, locus]
+    properties:
+      source_spelling:
+        $ref: "#/$defs/stringFact"
+      interpreted_axis_name:
+        $ref: "#/$defs/stringFact"
+      evidence:
+        allOf:
+          - $ref: "#/$defs/sourceFact"
+          - properties:
+              value:
+                enum: [STATED, INFERRED_FROM_USAGE, UNDETERMINED]
+      locus:
+        $ref: "#/$defs/locus"
+  axisEvidenceCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/axisEvidenceItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  orderItem:
+    type: object
+    additionalProperties: false
+    required:
+      - kind
+      - axes
+      - evidence
+      - locus
+      - value_representations
+      - producers
+      - same_as_order
+    properties:
+      kind:
+        enum: [storage, constructor, display, serialized]
+      axes:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/nonEmptyString"
+      evidence:
+        allOf:
+          - $ref: "#/$defs/sourceFact"
+          - properties:
+              value:
+                enum: [STATED, INFERRED_FROM_USAGE, UNDETERMINED]
+      locus:
+        $ref: "#/$defs/locus"
+      value_representations:
+        $ref: "#/$defs/stringFactCollection"
+      producers:
+        $ref: "#/$defs/stringFactCollection"
+      same_as_order:
+        oneOf:
+          - type: "null"
+          - type: object
+            additionalProperties: false
+            required: [kind, axes]
+            properties:
+              kind:
+                enum: [storage, constructor, display, serialized]
+              axes:
+                type: array
+                minItems: 1
+                items:
+                  $ref: "#/$defs/nonEmptyString"
+  orderCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/orderItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  exponentTypeFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum: [integer, rational, float, mixed, n/a, UNDETERMINED]
+  basis:
+    type: object
+    additionalProperties: false
+    required:
+      - axis_evidence
+      - orders
+      - exponent_type
+      - fractional_exponents_present
+    properties:
+      axis_evidence:
+        $ref: "#/$defs/axisEvidenceCollection"
+      orders:
+        $ref: "#/$defs/orderCollection"
+      exponent_type:
+        $ref: "#/$defs/exponentTypeFact"
+      fractional_exponents_present:
+        $ref: "#/$defs/boolFact"
+  identityStatusFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum: [SOURCE_STATED, UNDETERMINED]
+  dimensionValueStatusFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum:
+              - EXPLICIT_PY
+              - EXPLICIT_WL
+              - EXPLICIT_PARAMETER_REGISTER
+              - EXPLICIT_STAGE_NOTE
+              - CONSTRAINED_BUT_NOT_STATED
+              - UNDETERMINED
+  registerEvidenceTextIdentical:
+    type: object
+    additionalProperties: false
+    required:
+      - status
+      - register_locus
+      - register_cell_verbatim
+    properties:
+      status:
+        const: TEXT_IDENTICAL
+      register_locus:
+        $ref: "#/$defs/locus"
+      register_cell_verbatim:
+        $ref: "#/$defs/nonEmptyString"
+  registerEvidenceTextDiffers:
+    type: object
+    additionalProperties: false
+    required:
+      - status
+      - register_locus
+      - register_cell_verbatim
+    properties:
+      status:
+        const: TEXT_DIFFERS
+      register_locus:
+        $ref: "#/$defs/locus"
+      register_cell_verbatim:
+        $ref: "#/$defs/nonEmptyString"
+  registerEvidenceAbsent:
+    type: object
+    additionalProperties: false
+    required: [status]
+    properties:
+      status:
+        const: ABSENT_FROM_REGISTER
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  registerEvidencePending:
+    type: object
+    additionalProperties: false
+    required: [status, register_locus, register_cell_verbatim]
+    properties:
+      status:
+        const: PENDING_IN_REGISTER
+      register_locus:
+        $ref: "#/$defs/locus"
+      register_cell_verbatim:
+        $ref: "#/$defs/nonEmptyString"
+  registerEvidenceNotChecked:
+    type: object
+    additionalProperties: false
+    required: [status, reason]
+    properties:
+      status:
+        const: NOT_CHECKED
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  registerEvidence:
+    oneOf:
+      - $ref: "#/$defs/registerEvidenceTextIdentical"
+      - $ref: "#/$defs/registerEvidenceTextDiffers"
+      - $ref: "#/$defs/registerEvidenceAbsent"
+      - $ref: "#/$defs/registerEvidencePending"
+      - $ref: "#/$defs/registerEvidenceNotChecked"
+  ownershipFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum: [MODULE_OWNED, SCRIPT_OWNED, CHECK_LOCAL, UNDETERMINED]
+  quantityItem:
+    type: object
+    additionalProperties: false
+    required:
+      - item_id
+      - name
+      - binding_locus
+      - use_loci
+      - identity_status
+      - quantity_identity
+      - identity_locus
+      - dimension_value_status
+      - dimension_source_loci
+      - dim_source_text
+      - ownership
+      - binding_refs
+      - register_evidence
+      - declaration_required
+      - candidate_reason
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      name:
+        $ref: "#/$defs/stringFact"
+      binding_locus:
+        $ref: "#/$defs/locus"
+      use_loci:
+        $ref: "#/$defs/locusCollection"
+      identity_status:
+        $ref: "#/$defs/identityStatusFact"
+      quantity_identity:
+        $ref: "#/$defs/stringFact"
+      identity_locus:
+        $ref: "#/$defs/locusFact"
+      dimension_value_status:
+        $ref: "#/$defs/dimensionValueStatusFact"
+      dimension_source_loci:
+        $ref: "#/$defs/locusCollection"
+      dim_source_text:
+        $ref: "#/$defs/stringFact"
+      dim_text_form:
+        enum: [NAMED_AXIS, POSITIONAL]
+      basis_locus:
+        $ref: "#/$defs/locus"
+      ownership:
+        $ref: "#/$defs/ownershipFact"
+      binding_refs:
+        $ref: "#/$defs/refCollection"
+      register_evidence:
+        $ref: "#/$defs/registerEvidence"
+      declaration_required:
+        enum: ["YES", "NO", UNDETERMINED]
+      candidate_reason:
+        $ref: "#/$defs/factOrNotApplicable"
+    allOf:
+      - if:
+          required: [dimension_value_status]
+          properties:
+            dimension_value_status:
+              required: [value]
+              properties:
+                value:
+                  enum:
+                    - EXPLICIT_PY
+                    - EXPLICIT_WL
+                    - EXPLICIT_PARAMETER_REGISTER
+                    - EXPLICIT_STAGE_NOTE
+        then:
+          required: [dim_text_form, basis_locus]
+        else:
+          not:
+            anyOf:
+              - required: [dim_text_form]
+              - required: [basis_locus]
+  quantityCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        required: [zero_declaration_argument]
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/quantityItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+          zero_declaration_argument:
+            $ref: "#/$defs/factOrNotApplicable"
+  emitterItem:
+    type: object
+    additionalProperties: false
+    required: [item_id, source_template, locus]
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      source_template:
+        $ref: "#/$defs/stringFact"
+      locus:
+        $ref: "#/$defs/locus"
+  emitterCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/emitterItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  callSiteItem:
+    type: object
+    additionalProperties: false
+    required: [item_id, argument_kind, argument_source_text, locus]
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      argument_kind:
+        allOf:
+          - $ref: "#/$defs/sourceFact"
+          - properties:
+              value:
+                enum: [LITERAL, TEMPLATE, DYNAMIC, UNDETERMINED]
+      argument_source_text:
+        $ref: "#/$defs/stringFact"
+      locus:
+        $ref: "#/$defs/locus"
+  callSiteCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/callSiteItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  unresolvedMarkerItem:
+    type: object
+    additionalProperties: false
+    required: [source_text, reason, sources_searched]
+    properties:
+      source_text:
+        $ref: "#/$defs/stringFact"
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+      sources_searched:
+        $ref: "#/$defs/searched"
+  unresolvedMarkerCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/unresolvedMarkerItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  passLines:
+    type: object
+    additionalProperties: false
+    required:
+      - emitter_sites
+      - call_sites
+      - statically_resolved_markers
+      - unresolved_dynamic_markers
+    properties:
+      emitter_sites:
+        $ref: "#/$defs/emitterCollection"
+      call_sites:
+        $ref: "#/$defs/callSiteCollection"
+      statically_resolved_markers:
+        $ref: "#/$defs/stringFactCollection"
+      unresolved_dynamic_markers:
+        $ref: "#/$defs/unresolvedMarkerCollection"
+  activeMutation:
+    type: object
+    additionalProperties: false
+    required: [read_at_module_scope, locus, variable_names, gates]
+    properties:
+      read_at_module_scope:
+        $ref: "#/$defs/boolFact"
+      locus:
+        $ref: "#/$defs/locusCollection"
+      variable_names:
+        $ref: "#/$defs/stringFactCollection"
+      gates:
+        $ref: "#/$defs/stringFactCollection"
+  wlTextPair:
+    type: object
+    additionalProperties: false
+    required:
+      - item_id
+      - quantity_ref
+      - py_text_verbatim
+      - py_locus
+      - wl_text_verbatim
+      - wl_locus
+      - status
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      quantity_ref:
+        $ref: "#/$defs/itemId"
+      py_text_verbatim:
+        $ref: "#/$defs/nonEmptyString"
+      py_locus:
+        $ref: "#/$defs/locus"
+      wl_text_verbatim:
+        $ref: "#/$defs/nonEmptyString"
+      wl_locus:
+        $ref: "#/$defs/locus"
+      status:
+        enum: [TEXT_IDENTICAL, TEXT_DIFFERS]
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  wlAbsentFromWlPair:
+    type: object
+    additionalProperties: false
+    required: [item_id, quantity_ref, py_text_verbatim, py_locus, status]
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      quantity_ref:
+        $ref: "#/$defs/itemId"
+      py_text_verbatim:
+        $ref: "#/$defs/nonEmptyString"
+      py_locus:
+        $ref: "#/$defs/locus"
+      status:
+        const: ABSENT_FROM_WL
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  wlAbsentFromPyPair:
+    type: object
+    additionalProperties: false
+    required:
+      - item_id
+      - quantity_ref
+      - wl_text_verbatim
+      - wl_locus
+      - status
+      - reason
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      quantity_ref:
+        const: NO_SURVEYED_QUANTITY
+      wl_text_verbatim:
+        $ref: "#/$defs/nonEmptyString"
+      wl_locus:
+        $ref: "#/$defs/locus"
+      status:
+        const: ABSENT_FROM_PY
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  wlNotComparablePair:
+    type: object
+    additionalProperties: false
+    required:
+      - item_id
+      - quantity_ref
+      - py_text_verbatim
+      - py_locus
+      - wl_locus
+      - status
+      - reason
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      quantity_ref:
+        $ref: "#/$defs/itemId"
+      py_text_verbatim:
+        $ref: "#/$defs/nonEmptyString"
+      py_locus:
+        $ref: "#/$defs/locus"
+      wl_locus:
+        $ref: "#/$defs/locus"
+      status:
+        const: NOT_COMPARABLE_BY_CONSTRUCTION
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  wlNotCheckedPair:
+    type: object
+    additionalProperties: false
+    required: [item_id, quantity_ref, status, reason]
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      quantity_ref:
+        $ref: "#/$defs/itemId"
+      status:
+        const: NOT_CHECKED
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  wlEvidencePair:
+    oneOf:
+      - $ref: "#/$defs/wlTextPair"
+      - $ref: "#/$defs/wlAbsentFromWlPair"
+      - $ref: "#/$defs/wlAbsentFromPyPair"
+      - $ref: "#/$defs/wlNotComparablePair"
+      - $ref: "#/$defs/wlNotCheckedPair"
+  wlEvidencePairCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/wlEvidencePair"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  wlEvidence:
+    type: object
+    additionalProperties: false
+    required: [states_dimensions, pairs]
+    properties:
+      states_dimensions:
+        $ref: "#/$defs/boolFact"
+      pairs:
+        $ref: "#/$defs/wlEvidencePairCollection"
+  gapItem:
+    type: object
+    additionalProperties: false
+    required: [field, reason, sources_searched]
+    properties:
+      field:
+        $ref: "#/$defs/nonEmptyString"
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+      sources_searched:
+        $ref: "#/$defs/searched"
+  gapCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/gapItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  noteItem:
+    type: object
+    additionalProperties: false
+    required: [text, loci]
+    properties:
+      text:
+        $ref: "#/$defs/nonEmptyString"
+      loci:
+        $ref: "#/$defs/loci"
+  noteCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/noteItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  contractFeatureBase:
+    type: object
+    required: [item_id, feature, qualified_name, behavior]
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      feature:
+        enum:
+          - CONSTRUCTION_NORMALIZATION
+          - EQUALITY_SEMANTICS
+          - HASHABILITY
+          - COMPONENT_ACCESS
+          - EVALUATOR_NODE_KIND
+          - NUMERIC_ZERO_POLICY
+          - MISSING_SYMBOL_POLICY
+          - NON_HOMOGENEOUS_ADD_POLICY
+      qualified_name:
+        $ref: "#/$defs/stringFact"
+      behavior:
+        $ref: "#/$defs/stringFact"
+  contractFeature:
+    allOf:
+      - $ref: "#/$defs/contractFeatureBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          item_id:
+            $ref: "#/$defs/itemId"
+          feature:
+            enum:
+              - CONSTRUCTION_NORMALIZATION
+              - EQUALITY_SEMANTICS
+              - HASHABILITY
+              - COMPONENT_ACCESS
+              - EVALUATOR_NODE_KIND
+              - NUMERIC_ZERO_POLICY
+              - MISSING_SYMBOL_POLICY
+              - NON_HOMOGENEOUS_ADD_POLICY
+          qualified_name:
+            $ref: "#/$defs/stringFact"
+          behavior:
+            $ref: "#/$defs/stringFact"
+  notApplicableSection:
+    type: object
+    additionalProperties: false
+    required: [applicability, reason, sources_searched]
+    properties:
+      applicability:
+        const: NOT_APPLICABLE
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+      sources_searched:
+        $ref: "#/$defs/searched"
+  algebraOperationFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum:
+              - COMPOSE
+              - DECOMPOSE
+              - POWER
+              - EQUALITY
+              - CONSTRUCT
+              - NORMALIZE
+              - COMPONENT_ACCESS
+              - EVALUATE_EXPRESSION
+              - PROJECT
+              - RESIDUAL
+              - UNDETERMINED
+  sympyNodeKindFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            oneOf:
+              - type: string
+                pattern: "^[A-Za-z_][A-Za-z0-9_]*$"
+                not:
+                  const: UNDETERMINED
+              - const: UNDETERMINED
+  algebraItem:
+    type: object
+    additionalProperties: false
+    required:
+      - item_id
+      - feature
+      - qualified_name
+      - semantic_operation
+      - python_syntax_or_function
+      - accepted_exponent_types
+      - accepted_scalar_types
+      - return_type
+      - failure_behavior
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      feature:
+        const: ALGEBRA_OPERATION
+      qualified_name:
+        $ref: "#/$defs/stringFact"
+      semantic_operation:
+        $ref: "#/$defs/algebraOperationFact"
+      python_syntax_or_function:
+        $ref: "#/$defs/stringFact"
+      accepted_exponent_types:
+        $ref: "#/$defs/stringFactCollection"
+      accepted_scalar_types:
+        $ref: "#/$defs/stringFactCollection"
+      return_type:
+        $ref: "#/$defs/stringFact"
+      failure_behavior:
+        $ref: "#/$defs/stringFact"
+  algebraCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/algebraItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  policyOrNotApplicable:
+    oneOf:
+      - $ref: "#/$defs/contractFeature"
+      - $ref: "#/$defs/notApplicableSection"
+  evaluator:
+    type: object
+    additionalProperties: false
+    required:
+      - status
+      - supported_sympy_node_kinds
+      - numeric_zero_policy
+      - missing_symbol_policy
+      - non_homogeneous_add_policy
+    properties:
+      status:
+        allOf:
+          - $ref: "#/$defs/sourceFact"
+          - properties:
+              value:
+                enum: [PRESENT, ABSENT, UNDETERMINED]
+      supported_sympy_node_kinds:
+        allOf:
+          - $ref: "#/$defs/collectionBase"
+          - type: object
+            additionalProperties: false
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: "#/$defs/evaluatorNodeKindFeature"
+              reason:
+                $ref: "#/$defs/nonEmptyString"
+      numeric_zero_policy:
+        $ref: "#/$defs/policyOrNotApplicable"
+      missing_symbol_policy:
+        $ref: "#/$defs/policyOrNotApplicable"
+      non_homogeneous_add_policy:
+        $ref: "#/$defs/policyOrNotApplicable"
+  evaluatorNodeKindFeature:
+    allOf:
+      - $ref: "#/$defs/contractFeatureBase"
+      - type: object
+        additionalProperties: false
+        required: [node_kind]
+        properties:
+          item_id:
+            $ref: "#/$defs/itemId"
+          feature:
+            const: EVALUATOR_NODE_KIND
+          qualified_name:
+            $ref: "#/$defs/stringFact"
+          behavior:
+            $ref: "#/$defs/stringFact"
+          node_kind:
+            $ref: "#/$defs/sympyNodeKindFact"
+  presentationItem:
+    type: object
+    additionalProperties: false
+    required:
+      - item_id
+      - producer_qualified_name
+      - form
+      - consumer
+      - consumer_locus
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      producer_qualified_name:
+        $ref: "#/$defs/stringFact"
+      form:
+        $ref: "#/$defs/stringFact"
+      consumer:
+        $ref: "#/$defs/stringFact"
+      consumer_locus:
+        $ref: "#/$defs/locus"
+  presentationCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/presentationItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  applicableRepresentationContract:
+    type: object
+    additionalProperties: false
+    required:
+      - applicability
+      - value_type
+      - normalization_on_construction
+      - equality_semantics
+      - hashability
+      - component_access
+      - algebra
+      - expression_evaluator
+      - presentation
+    properties:
+      applicability:
+        const: APPLICABLE
+      value_type:
+        $ref: "#/$defs/stringFact"
+      normalization_on_construction:
+        $ref: "#/$defs/contractFeature"
+      equality_semantics:
+        $ref: "#/$defs/contractFeature"
+      hashability:
+        $ref: "#/$defs/contractFeature"
+      component_access:
+        $ref: "#/$defs/contractFeature"
+      algebra:
+        $ref: "#/$defs/algebraCollection"
+      expression_evaluator:
+        $ref: "#/$defs/evaluator"
+      presentation:
+        $ref: "#/$defs/presentationCollection"
+  representationContract:
+    oneOf:
+      - $ref: "#/$defs/applicableRepresentationContract"
+      - $ref: "#/$defs/notApplicableSection"
+  bindingScopeFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum: [MODULE, FUNCTION, CLASS, COMPREHENSION, OTHER, UNDETERMINED]
+  useFact:
+    allOf:
+      - $ref: "#/$defs/sourceFact"
+      - properties:
+          value:
+            enum:
+              - ASSERTED_TARGET
+              - NEGATIVE_CONTROL
+              - DISPLAY_ONLY
+              - ALGEBRA_INTERMEDIATE
+              - UNDETERMINED
+  useCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            uniqueItems: true
+            items:
+              $ref: "#/$defs/useFact"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  consumerItem:
+    type: object
+    additionalProperties: false
+    required: [consumer, locus]
+    properties:
+      consumer:
+        $ref: "#/$defs/stringFact"
+      locus:
+        $ref: "#/$defs/locus"
+  consumerCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/consumerItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  dimensionBindingItem:
+    type: object
+    additionalProperties: false
+    required:
+      - item_id
+      - name
+      - qualified_scope
+      - scope
+      - binding_locus
+      - branch_or_state_predicate
+      - source_text
+      - literal_or_derived
+      - depends_on_active_mutation
+      - depends_on_other_runtime_state
+      - consumers
+      - ownership
+      - uses
+      - alias_of
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      name:
+        $ref: "#/$defs/stringFact"
+      qualified_scope:
+        $ref: "#/$defs/stringFact"
+        description: >-
+          Qualified enclosing lexical/container scope. It may include the
+          binding as a terminal segment; anchor matching removes that terminal
+          binding and compares the enclosing scope separately from name.
+          For stage042 map-key anchors, dimension_guard.B,
+          dimension_guard.dims.B, and dimension_guard.dims["B"] normalize to
+          the same lexical scope dimension_guard; the dims container is not a
+          nested lexical scope. The same convention applies to C, K, and cE.
+      scope:
+        $ref: "#/$defs/bindingScopeFact"
+      binding_locus:
+        $ref: "#/$defs/locus"
+      branch_or_state_predicate:
+        $ref: "#/$defs/stringFact"
+        description: >-
+          Verbatim source predicate/state text with source loci, not
+          surveyor-authored branch prose. Anchor state is established from
+          structured dependency facts plus the row's required uses.
+      source_text:
+        $ref: "#/$defs/stringFact"
+      literal_or_derived:
+        $ref: "#/$defs/literalDerivedFact"
+      depends_on_active_mutation:
+        $ref: "#/$defs/boolFact"
+      depends_on_other_runtime_state:
+        $ref: "#/$defs/boolFact"
+      consumers:
+        $ref: "#/$defs/consumerCollection"
+      ownership:
+        $ref: "#/$defs/ownershipFact"
+      uses:
+        $ref: "#/$defs/useCollection"
+      alias_of:
+        $ref: "#/$defs/refCollection"
+  dimensionBindingSectionApplicable:
+    type: object
+    additionalProperties: false
+    required: [applicability, items]
+    properties:
+      applicability:
+        const: APPLICABLE
+      items:
+        type: array
+        items:
+          $ref: "#/$defs/dimensionBindingItem"
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+    allOf:
+      - if:
+          properties:
+            items:
+              maxItems: 0
+        then:
+          required: [reason]
+  dimensionBindingSection:
+    oneOf:
+      - $ref: "#/$defs/dimensionBindingSectionApplicable"
+      - $ref: "#/$defs/notApplicableSection"
+  dimensionUseSiteItem:
+    type: object
+    additionalProperties: false
+    required: [item_id, source_text, locus, uses, binding_refs]
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      source_text:
+        $ref: "#/$defs/stringFact"
+      locus:
+        $ref: "#/$defs/locus"
+      uses:
+        $ref: "#/$defs/useCollection"
+      binding_refs:
+        $ref: "#/$defs/refCollection"
+  dimensionUseSiteSectionApplicable:
+    type: object
+    additionalProperties: false
+    required: [applicability, items]
+    properties:
+      applicability:
+        const: APPLICABLE
+      items:
+        type: array
+        items:
+          $ref: "#/$defs/dimensionUseSiteItem"
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+    allOf:
+      - if:
+          properties:
+            items:
+              maxItems: 0
+        then:
+          required: [reason]
+  dimensionUseSiteSection:
+    oneOf:
+      - $ref: "#/$defs/dimensionUseSiteSectionApplicable"
+      - $ref: "#/$defs/notApplicableSection"
+  importContext:
+    type: object
+    additionalProperties: false
+    required:
+      - existing_local_import_pattern
+      - invocation_assumptions
+      - module_scope_side_effects
+    properties:
+      existing_local_import_pattern:
+        $ref: "#/$defs/stringFact"
+      invocation_assumptions:
+        $ref: "#/$defs/stringFact"
+      module_scope_side_effects:
+        $ref: "#/$defs/stringFact"

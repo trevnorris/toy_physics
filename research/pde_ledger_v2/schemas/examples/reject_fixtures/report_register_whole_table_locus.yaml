@@ -1,0 +1,21 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_present_accept.yaml
+mutations:
+  - op: replace
+    path: [quantities, items, 0, register_evidence]
+    value:
+      status: TEXT_DIFFERS
+      register_locus: notes/parameter_register.md:125-240
+      register_cell_verbatim: L
+  - op: replace
+    path: [quantities, items, 1, register_evidence]
+    value:
+      status: TEXT_DIFFERS
+      register_locus: notes/parameter_register.md:351
+      register_cell_verbatim: L
+  - op: replace
+    path: [quantities, items, 2, register_evidence]
+    value:
+      status: TEXT_DIFFERS
+      register_locus: synthetic/parameter_register.md:3
+      register_cell_verbatim: L

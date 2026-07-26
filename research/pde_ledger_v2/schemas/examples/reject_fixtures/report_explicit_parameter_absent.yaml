@@ -1,0 +1,13 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_real_absent_accept.yaml
+mutations:
+  - op: replace
+    path: [quantities, items, 0, dimension_value_status, value]
+    value: EXPLICIT_PARAMETER_REGISTER
+  - op: replace
+    path: [quantities, items, 0, dimension_source_loci, items, 0]
+    value: notes/parameter_register.md:188
+  - op: replace
+    path: [quantities, items, 0, register_evidence]
+    value:
+      status: ABSENT_FROM_REGISTER

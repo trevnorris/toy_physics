@@ -1,0 +1,668 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://toy-physics.invalid/schemas/dimension_survey_verification_v1.yaml"
+title: Dimension survey verification output, version 1
+description: >-
+  Structural schema for SURVEY_DIRECTIVE.md r17 sections 2.6(b), 4.0, 4.2, and
+  4.8. It governs verifier output and does not redefine source-item semantics.
+type: object
+additionalProperties: false
+required:
+  - schema_version
+  - identity
+  - classification
+  - overall_verdict
+  - locus_integrity
+  - categories
+  - none_classification_recheck
+  - ownership_rederivation
+  - zero_declaration_check
+  - negative_control_integrity
+  - gap_credibility
+properties:
+  schema_version:
+    const: dimension_survey_verification_v1
+  identity:
+    $ref: "#/$defs/identity"
+  classification:
+    enum:
+      - NONE+ABSENT
+      - REAL+ABSENT
+      - REAL+PRESENT
+      - UNDETERMINED+PRESENT
+      - UNDETERMINED+ABSENT
+  overall_verdict:
+    enum: [PASS, FAIL]
+  locus_integrity:
+    $ref: "#/$defs/mechanicalLocusIntegrity"
+  categories:
+    $ref: "#/$defs/categories"
+  none_classification_recheck:
+    $ref: "#/$defs/checkOrNotApplicable"
+  ownership_rederivation:
+    $ref: "#/$defs/ownershipRederivation"
+  zero_declaration_check:
+    $ref: "#/$defs/zeroDeclarationCheck"
+  negative_control_integrity:
+    $ref: "#/$defs/referenceCheckOrNotApplicable"
+  gap_credibility:
+    $ref: "#/$defs/check"
+
+x-enums:
+  classification:
+    - NONE+ABSENT
+    - REAL+ABSENT
+    - REAL+PRESENT
+    - UNDETERMINED+PRESENT
+    - UNDETERMINED+ABSENT
+  verdict: [PASS, FAIL]
+  category_applicability: [APPLICABLE, NOT_APPLICABLE]
+  inapplicable_cardinality: [N/A]
+  unmatched_status: [EXPLAINED, UNEXPLAINED]
+  ownership: [MODULE_OWNED, SCRIPT_OWNED, CHECK_LOCAL, UNDETERMINED]
+  ownership_coverage_case: [i, ii]
+  selection_kind: [OWNERSHIP_ANCHOR, CASE_I_SAMPLE, CASE_II_FULL_COVERAGE]
+  comparison: [MATCH, MISMATCH]
+  locus_check_status: [CHECKED, SYNTHETIC_EXEMPT]
+  locus_failure: [FILE_NOT_FOUND, LINE_OUT_OF_RANGE, NOT_A_FILE]
+  identity_failure:
+    - FILE_NOT_FOUND
+    - NOT_A_FILE
+    - SHA256_MISMATCH
+    - LINE_COUNT_MISMATCH
+
+x-directive-rules:
+  VER_CATEGORY_SET: >-
+    Exactly five named categories are present: dimension_bindings, quantities,
+    contract_features_and_presentation_consumers, pass_emitter_sites, and
+    pass_call_sites. Cardinalities are separate and are never summed.
+  VER_CATEGORY_APPLICABILITY: >-
+    Bindings and contract/presentation are numeric only for PRESENT;
+    quantities are numeric for REAL or UNDETERMINED and N/A for NONE; both PASS
+    categories are numeric for every classification. Inapplicable categories use
+    N/A, never numeric zero.
+  VER_REPORT_COUNT: >-
+    Each applicable report_count equals the corresponding item inventory in
+    the referenced report.
+  VER_CARDINALITY_RECONCILIATION: >-
+    Within each applicable category, source_count-report_count equals
+    source_unmatched length-report_unmatched length.
+  VER_UNEXPLAINED_REQUIRES_FAIL: >-
+    Any unmatched entry marked UNEXPLAINED forces overall_verdict FAIL.
+  VER_REPORT_REFERENCE: >-
+    Every report_unmatched item_id and every *_ref in verifier checks exists in
+    the report it verifies. A source_unmatched item_id identifies a discovered
+    source item missing from the report and therefore is not a report reference.
+  VER_NO_NAME_MATCHING: >-
+    Cross-references contain item_id-shaped values only; no binding-name
+    reference field is legal.
+  VER_NONE_RECHECK: >-
+    NONE+ABSENT requires an applicable positive no-declaration recheck while
+    PASS emitter and call categories remain counted.
+  VER_CLASSIFICATION_MATCH: The verification classification equals the report classification.
+  VER_OWNERSHIP_MATCH: >-
+    Reported ownership is read from the cited report binding. Any re-derived
+    mismatch forces FAIL; anchor/sample selection is explicitly recorded.
+  VER_OWNERSHIP_ANCHOR_COVERAGE: >-
+    PRESENT verification uses r17 case (i) exactly for stages with §4.4
+    ownership anchors and case (ii) otherwise. Case (i) includes every
+    applicable anchor plus a reproducibly selected sample of any remainder;
+    case (ii) positively declares that no anchor applies and re-derives every
+    binding absent a declared escape, and the re-derivation set is non-empty
+    even when an escape is declared. Ownership anchors are keyed by script,
+    enclosing scope, binding name, and branch state, never absolute line.
+    Anchor/sample/full-coverage labels must agree with the corresponding
+    reference inventories and cannot be relabelled.
+  VER_LOCUS_INTEGRITY: >-
+    In a real verifier output, every value at a schema-declared locus field in
+    the referenced report and verification resolves to an existing file and an
+    in-range line. Free-text values are never scanned by string shape. The
+    computed PASS/FAIL and invalid-locus inventory are recorded and a failure
+    forces overall FAIL. Committed synthetic examples use SYNTHETIC_EXEMPT.
+  VER_IDENTITY_INTEGRITY: >-
+    CHECKED verification resolves the report's script_path and wl_path,
+    recomputes both SHA-256 values and the script line count, records the
+    result, and forces overall FAIL on any discrepancy.
+  VER_ZERO_DECLARATION: >-
+    REAL+PRESENT applies the per-report zero-declaration justification check and
+    failure of that check forces overall FAIL.
+  VER_NEGATIVE_CONTROL: Failure of negative-control integrity forces overall FAIL.
+  VER_GAP_CREDIBILITY: Failure of the verifier's gap-credibility check forces overall FAIL.
+
+$defs:
+  nonEmptyString:
+    type: string
+    minLength: 1
+  locus:
+    type: string
+    pattern: "^[^\\n]+:[1-9][0-9]*(?:-[1-9][0-9]*)?$"
+  loci:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/locus"
+  itemId:
+    type: string
+    pattern: "^[a-z][a-z0-9_.:-]*$"
+  identityFact:
+    type: object
+    additionalProperties: false
+    required: [value, method]
+    properties:
+      value: {}
+      method:
+        enum: [FILESYSTEM, SHA256SUM]
+  identity:
+    type: object
+    additionalProperties: false
+    required: [stage, report_path, report_sha256]
+    properties:
+      stage:
+        type: string
+        pattern: "^(?:[0-9]{3}|midway)$"
+      report_path:
+        allOf:
+          - $ref: "#/$defs/identityFact"
+          - properties:
+              value:
+                type: string
+                minLength: 1
+              method:
+                const: FILESYSTEM
+      report_sha256:
+        allOf:
+          - $ref: "#/$defs/identityFact"
+          - properties:
+              value:
+                type: string
+                pattern: "^[a-f0-9]{64}$"
+              method:
+                const: SHA256SUM
+  collectionBase:
+    type: object
+    required: [items]
+    properties:
+      items:
+        type: array
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+    allOf:
+      - if:
+          properties:
+            items:
+              maxItems: 0
+        then:
+          required: [reason]
+  invalidLocusItem:
+    type: object
+    additionalProperties: false
+    required: [locus, failure]
+    properties:
+      locus:
+        $ref: "#/$defs/locus"
+      failure:
+        enum: [FILE_NOT_FOUND, LINE_OUT_OF_RANGE, NOT_A_FILE]
+  invalidLocusCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/invalidLocusItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  checkedLocusIntegrity:
+    type: object
+    additionalProperties: false
+    required: [status, result, detail, invalid_loci, source_identity]
+    properties:
+      status:
+        const: CHECKED
+      result:
+        enum: [PASS, FAIL]
+      detail:
+        $ref: "#/$defs/nonEmptyString"
+      invalid_loci:
+        $ref: "#/$defs/invalidLocusCollection"
+      source_identity:
+        $ref: "#/$defs/sourceIdentityIntegrity"
+    allOf:
+      - if:
+          properties:
+            result:
+              const: PASS
+          required: [result]
+        then:
+          properties:
+            invalid_loci:
+              properties:
+                items:
+                  maxItems: 0
+      - if:
+          properties:
+            result:
+              const: FAIL
+          required: [result]
+        then:
+          properties:
+            invalid_loci:
+              properties:
+                items:
+                  minItems: 1
+  identityFailureItem:
+    type: object
+    additionalProperties: false
+    required: [field, failure]
+    properties:
+      field:
+        enum: [script_path, script_sha256, wl_path, wl_sha256, script_line_count]
+      failure:
+        enum: [FILE_NOT_FOUND, NOT_A_FILE, SHA256_MISMATCH, LINE_COUNT_MISMATCH]
+  identityFailureCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/identityFailureItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  sourceIdentityIntegrity:
+    type: object
+    additionalProperties: false
+    required: [result, detail, failures]
+    properties:
+      result:
+        enum: [PASS, FAIL]
+      detail:
+        $ref: "#/$defs/nonEmptyString"
+      failures:
+        $ref: "#/$defs/identityFailureCollection"
+    allOf:
+      - if:
+          properties:
+            result:
+              const: PASS
+          required: [result]
+        then:
+          properties:
+            failures:
+              properties:
+                items:
+                  maxItems: 0
+      - if:
+          properties:
+            result:
+              const: FAIL
+          required: [result]
+        then:
+          properties:
+            failures:
+              properties:
+                items:
+                  minItems: 1
+  syntheticLocusExemption:
+    type: object
+    additionalProperties: false
+    required: [status, reason]
+    properties:
+      status:
+        const: SYNTHETIC_EXEMPT
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  mechanicalLocusIntegrity:
+    oneOf:
+      - $ref: "#/$defs/checkedLocusIntegrity"
+      - $ref: "#/$defs/syntheticLocusExemption"
+  unmatchedItem:
+    type: object
+    additionalProperties: false
+    required: [item_id, explanation_status, explanation]
+    properties:
+      item_id:
+        $ref: "#/$defs/itemId"
+      explanation_status:
+        enum: [EXPLAINED, UNEXPLAINED]
+      explanation:
+        oneOf:
+          - $ref: "#/$defs/nonEmptyString"
+          - type: "null"
+    allOf:
+      - if:
+          properties:
+            explanation_status:
+              const: EXPLAINED
+          required: [explanation_status]
+        then:
+          properties:
+            explanation:
+              $ref: "#/$defs/nonEmptyString"
+      - if:
+          properties:
+            explanation_status:
+              const: UNEXPLAINED
+          required: [explanation_status]
+        then:
+          properties:
+            explanation:
+              type: "null"
+  unmatchedCollection:
+    allOf:
+      - $ref: "#/$defs/collectionBase"
+      - type: object
+        additionalProperties: false
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/$defs/unmatchedItem"
+          reason:
+            $ref: "#/$defs/nonEmptyString"
+  applicableCategory:
+    type: object
+    additionalProperties: false
+    required:
+      - applicability
+      - source_count
+      - report_count
+      - source_unmatched
+      - report_unmatched
+    properties:
+      applicability:
+        const: APPLICABLE
+      source_count:
+        type: integer
+        minimum: 0
+      report_count:
+        type: integer
+        minimum: 0
+      source_unmatched:
+        $ref: "#/$defs/unmatchedCollection"
+      report_unmatched:
+        $ref: "#/$defs/unmatchedCollection"
+  inapplicableCategory:
+    type: object
+    additionalProperties: false
+    required:
+      - applicability
+      - source_count
+      - report_count
+      - source_unmatched
+      - report_unmatched
+      - reason
+    properties:
+      applicability:
+        const: NOT_APPLICABLE
+      source_count:
+        const: N/A
+      report_count:
+        const: N/A
+      source_unmatched:
+        $ref: "#/$defs/unmatchedCollection"
+      report_unmatched:
+        $ref: "#/$defs/unmatchedCollection"
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  category:
+    oneOf:
+      - $ref: "#/$defs/applicableCategory"
+      - $ref: "#/$defs/inapplicableCategory"
+  categories:
+    type: object
+    additionalProperties: false
+    required:
+      - dimension_bindings
+      - quantities
+      - contract_features_and_presentation_consumers
+      - pass_emitter_sites
+      - pass_call_sites
+    properties:
+      dimension_bindings:
+        $ref: "#/$defs/category"
+      quantities:
+        $ref: "#/$defs/category"
+      contract_features_and_presentation_consumers:
+        $ref: "#/$defs/category"
+      pass_emitter_sites:
+        $ref: "#/$defs/category"
+      pass_call_sites:
+        $ref: "#/$defs/category"
+  notApplicable:
+    type: object
+    additionalProperties: false
+    required: [applicability, reason]
+    properties:
+      applicability:
+        const: NOT_APPLICABLE
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  check:
+    type: object
+    additionalProperties: false
+    required: [applicability, result, detail, source_loci]
+    properties:
+      applicability:
+        const: APPLICABLE
+      result:
+        enum: [PASS, FAIL]
+      detail:
+        $ref: "#/$defs/nonEmptyString"
+      source_loci:
+        $ref: "#/$defs/loci"
+  checkOrNotApplicable:
+    oneOf:
+      - $ref: "#/$defs/check"
+      - $ref: "#/$defs/notApplicable"
+  referenceCheck:
+    type: object
+    additionalProperties: false
+    required: [applicability, result, detail, binding_refs, source_loci]
+    properties:
+      applicability:
+        const: APPLICABLE
+      result:
+        enum: [PASS, FAIL]
+      detail:
+        $ref: "#/$defs/nonEmptyString"
+      binding_refs:
+        allOf:
+          - $ref: "#/$defs/collectionBase"
+          - type: object
+            additionalProperties: false
+            properties:
+              items:
+                type: array
+                uniqueItems: true
+                items:
+                  $ref: "#/$defs/itemId"
+              reason:
+                $ref: "#/$defs/nonEmptyString"
+      source_loci:
+        $ref: "#/$defs/loci"
+  referenceCheckOrNotApplicable:
+    oneOf:
+      - $ref: "#/$defs/referenceCheck"
+      - $ref: "#/$defs/notApplicable"
+  ownershipCheckItem:
+    type: object
+    additionalProperties: false
+    required:
+      - binding_ref
+      - selection_kind
+      - reported_ownership
+      - rederived_ownership
+      - comparison
+      - source_loci
+    properties:
+      binding_ref:
+        $ref: "#/$defs/itemId"
+      selection_kind:
+        enum: [OWNERSHIP_ANCHOR, CASE_I_SAMPLE, CASE_II_FULL_COVERAGE]
+      reported_ownership:
+        enum: [MODULE_OWNED, SCRIPT_OWNED, CHECK_LOCAL, UNDETERMINED]
+      rederived_ownership:
+        enum: [MODULE_OWNED, SCRIPT_OWNED, CHECK_LOCAL, UNDETERMINED]
+      comparison:
+        enum: [MATCH, MISMATCH]
+      source_loci:
+        $ref: "#/$defs/loci"
+  ownershipAnchorPresent:
+    type: object
+    additionalProperties: false
+    required: [value, binding_refs]
+    properties:
+      value:
+        const: PRESENT
+      binding_refs:
+        allOf:
+          - $ref: "#/$defs/collectionBase"
+          - type: object
+            additionalProperties: false
+            properties:
+              items:
+                type: array
+                minItems: 1
+                uniqueItems: true
+                items:
+                  $ref: "#/$defs/itemId"
+  ownershipAnchorNone:
+    type: object
+    additionalProperties: false
+    required: [value, reason]
+    properties:
+      value:
+        const: NONE
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+  applicableOwnershipAnchors:
+    oneOf:
+      - $ref: "#/$defs/ownershipAnchorPresent"
+      - $ref: "#/$defs/ownershipAnchorNone"
+  caseISampleApplicable:
+    type: object
+    additionalProperties: false
+    required: [applicability, selection_rule, binding_refs]
+    properties:
+      applicability:
+        const: APPLICABLE
+      selection_rule:
+        $ref: "#/$defs/nonEmptyString"
+      binding_refs:
+        allOf:
+          - $ref: "#/$defs/collectionBase"
+          - type: object
+            additionalProperties: false
+            properties:
+              items:
+                type: array
+                minItems: 1
+                uniqueItems: true
+                items:
+                  $ref: "#/$defs/itemId"
+  caseISample:
+    oneOf:
+      - $ref: "#/$defs/caseISampleApplicable"
+      - $ref: "#/$defs/notApplicable"
+  coverageEscapeNo:
+    type: object
+    additionalProperties: false
+    required: [invoked]
+    properties:
+      invoked:
+        const: false
+  coverageEscapeYes:
+    type: object
+    additionalProperties: false
+    required: [invoked, reason, bindings_not_rederived]
+    properties:
+      invoked:
+        const: true
+      reason:
+        $ref: "#/$defs/nonEmptyString"
+      bindings_not_rederived:
+        type: integer
+        minimum: 1
+  coverageEscape:
+    oneOf:
+      - $ref: "#/$defs/coverageEscapeNo"
+      - $ref: "#/$defs/coverageEscapeYes"
+  ownershipCoverage:
+    type: object
+    additionalProperties: false
+    required: [bindings_re_derived, bindings_total, escape]
+    properties:
+      bindings_re_derived:
+        type: integer
+        minimum: 0
+      bindings_total:
+        type: integer
+        minimum: 0
+      escape:
+        $ref: "#/$defs/coverageEscape"
+  ownershipRederivationApplicable:
+    type: object
+    additionalProperties: false
+    required:
+      - applicability
+      - coverage_case
+      - applicable_ownership_anchors
+      - case_i_sample
+      - coverage
+      - selection_record
+      - items
+    properties:
+      applicability:
+        const: APPLICABLE
+      coverage_case:
+        enum: [i, ii]
+      applicable_ownership_anchors:
+        $ref: "#/$defs/applicableOwnershipAnchors"
+      case_i_sample:
+        $ref: "#/$defs/caseISample"
+      coverage:
+        $ref: "#/$defs/ownershipCoverage"
+      selection_record:
+        $ref: "#/$defs/nonEmptyString"
+      items:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/ownershipCheckItem"
+  ownershipRederivation:
+    oneOf:
+      - $ref: "#/$defs/ownershipRederivationApplicable"
+      - $ref: "#/$defs/notApplicable"
+  zeroDeclarationCheckApplicable:
+    type: object
+    additionalProperties: false
+    required:
+      - applicability
+      - declaration_required_yes_count
+      - source_cited_argument_present
+      - result
+      - detail
+      - source_loci
+    properties:
+      applicability:
+        const: APPLICABLE
+      declaration_required_yes_count:
+        type: integer
+        minimum: 0
+      source_cited_argument_present:
+        type: boolean
+      result:
+        enum: [PASS, FAIL]
+      detail:
+        $ref: "#/$defs/nonEmptyString"
+      source_loci:
+        $ref: "#/$defs/loci"
+  zeroDeclarationCheck:
+    oneOf:
+      - $ref: "#/$defs/zeroDeclarationCheckApplicable"
+      - $ref: "#/$defs/notApplicable"

@@ -1,0 +1,12 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_undetermined_absent_accept.yaml
+mutations:
+  - op: replace
+    path: [quantities, items, 0, register_evidence, register_locus]
+    value: notes/parameter_register.md:170
+  - op: replace
+    path: [quantities, items, 0, register_evidence, register_cell_verbatim]
+    value: >-
+      `M T⁻²` (stage 023, dual-engine, pathA_34 convention; scripts'
+      `(L,M,T)`-tuple `(0,1,−2)` — ⚠ the register header order is
+      `[L,T,M]`, in which it reads `(0,−2,1)`)

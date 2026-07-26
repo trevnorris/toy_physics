@@ -1,0 +1,4 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_present_accept.yaml
+mutations:
+  - {op: replace, path: [categories, dimension_bindings, source_count], value: 4}

@@ -1,0 +1,4 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_undetermined_present_accept.yaml
+mutations:
+  - {op: remove, path: [dimension_bindings, items, 0, scope, reason]}

@@ -1,0 +1,6 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_present_no_anchor_accept.yaml
+mutations:
+  - op: replace
+    path: [ownership_rederivation, items, 0, reported_ownership]
+    value: SCRIPT_OWNED

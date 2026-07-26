@@ -1,0 +1,161 @@
+schema_version: dimension_survey_accept_fixture_v1
+base_document: report_rule_fixture_accept.yaml
+mutations:
+  - {op: replace, path: [identity, stage], value: "042"}
+  - op: replace
+    path: [identity, script_path, value]
+    value: research/pde_ledger_v2/scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py
+  - op: replace
+    path: [identity, script_sha256, value]
+    value: 201578946a2424c096c34fef5f95d963dbc1a50fa71f07dee5e81fcc54390bd1
+  - {op: replace, path: [identity, script_line_count, value], value: 2048}
+  - op: replace
+    path: [basis, axis_evidence, items]
+    value:
+      - source_spelling: {value: stiffness, loci: &axis042_stiffness [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821]}
+        interpreted_axis_name: {value: stiffness, loci: *axis042_stiffness}
+        evidence: {value: INFERRED_FROM_USAGE, loci: *axis042_stiffness}
+        locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821
+      - source_spelling: {value: length, loci: &axis042_length [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:823]}
+        interpreted_axis_name: {value: length, loci: *axis042_length}
+        evidence: {value: INFERRED_FROM_USAGE, loci: *axis042_length}
+        locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:823
+      - source_spelling: {value: frequency, loci: &axis042_frequency [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:824]}
+        interpreted_axis_name: {value: time, loci: *axis042_frequency}
+        evidence: {value: INFERRED_FROM_USAGE, loci: *axis042_frequency}
+        locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:824
+  - op: replace
+    path: [basis, orders]
+    value:
+      items:
+        - kind: storage
+          axes: [stiffness, length, time]
+          evidence:
+            value: INFERRED_FROM_USAGE
+            loci: &basis042 [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:820-824]
+          locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:820-824
+          value_representations:
+            items:
+              - {value: three-component tuple, loci: *basis042}
+          producers:
+            items:
+              - {value: tuple literal, loci: *basis042}
+          same_as_order: null
+  - op: replace
+    path: [basis, exponent_type]
+    value: {value: rational, loci: *basis042}
+  - op: replace
+    path: [basis, fractional_exponents_present]
+    value: {value: false, loci: *basis042}
+  - op: replace
+    path: [quantities, items]
+    value:
+      - item_id: repair7.stage042.zero
+        name: {value: zero_dim, loci: &line042_820 [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:820]}
+        binding_locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:820
+        use_loci: {items: *line042_820}
+        identity_status:
+          value: UNDETERMINED
+          reason: The fixture tests positional evidence, not physical quantity identity.
+          sources_searched: *line042_820
+        quantity_identity:
+          value: UNDETERMINED
+          reason: Binding spelling alone does not establish a physical quantity identity.
+          sources_searched: *line042_820
+        identity_locus:
+          value: UNDETERMINED
+          reason: No separate identity assertion is used by this evidence fixture.
+          sources_searched: *line042_820
+        dimension_value_status: {value: EXPLICIT_PY, loci: *line042_820}
+        dimension_source_loci: {items: *line042_820}
+        dim_source_text:
+          value: "zero_dim: Dim = (Fraction(0), Fraction(0), Fraction(0))"
+          loci: *line042_820
+        dim_text_form: POSITIONAL
+        basis_locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:820-824
+        ownership:
+          value: UNDETERMINED
+          reason: This evidence-shape fixture does not adjudicate ownership.
+          sources_searched: *line042_820
+        binding_refs: {items: [], reason: This evidence-shape fixture does not assert a binding relation.}
+        register_evidence: {status: ABSENT_FROM_REGISTER}
+        declaration_required: UNDETERMINED
+        candidate_reason:
+          value: NOT_APPLICABLE
+          reason: Machinery is PRESENT; this fixture does not assert candidacy.
+          sources_searched: *line042_820
+      - item_id: repair7.stage042.speed
+        name: {value: speed_dim, loci: &line042_822 [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:822]}
+        binding_locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:822
+        use_loci: {items: *line042_822}
+        identity_status:
+          value: UNDETERMINED
+          reason: The fixture tests positional evidence, not physical quantity identity.
+          sources_searched: *line042_822
+        quantity_identity:
+          value: UNDETERMINED
+          reason: Binding spelling alone does not establish a physical quantity identity.
+          sources_searched: *line042_822
+        identity_locus:
+          value: UNDETERMINED
+          reason: No separate identity assertion is used by this evidence fixture.
+          sources_searched: *line042_822
+        dimension_value_status: {value: EXPLICIT_PY, loci: *line042_822}
+        dimension_source_loci: {items: *line042_822}
+        dim_source_text:
+          value: "speed_dim: Dim = (Fraction(0), Fraction(1), Fraction(-1))"
+          loci: *line042_822
+        dim_text_form: POSITIONAL
+        basis_locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:820-824
+        ownership:
+          value: UNDETERMINED
+          reason: This evidence-shape fixture does not adjudicate ownership.
+          sources_searched: *line042_822
+        binding_refs: {items: [], reason: This evidence-shape fixture does not assert a binding relation.}
+        register_evidence: {status: ABSENT_FROM_REGISTER}
+        declaration_required: UNDETERMINED
+        candidate_reason:
+          value: NOT_APPLICABLE
+          reason: Machinery is PRESENT; this fixture does not assert candidacy.
+          sources_searched: *line042_822
+      - item_id: repair7.stage042.frequency
+        name: {value: frequency_dim, loci: &line042_824 [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:824]}
+        binding_locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:824
+        use_loci: {items: *line042_824}
+        identity_status:
+          value: UNDETERMINED
+          reason: The fixture tests positional evidence, not physical quantity identity.
+          sources_searched: *line042_824
+        quantity_identity:
+          value: UNDETERMINED
+          reason: Binding spelling alone does not establish a physical quantity identity.
+          sources_searched: *line042_824
+        identity_locus:
+          value: UNDETERMINED
+          reason: No separate identity assertion is used by this evidence fixture.
+          sources_searched: *line042_824
+        dimension_value_status: {value: EXPLICIT_PY, loci: *line042_824}
+        dimension_source_loci: {items: *line042_824}
+        dim_source_text:
+          value: "frequency_dim: Dim = (Fraction(0), Fraction(0), Fraction(-1))"
+          loci: *line042_824
+        dim_text_form: POSITIONAL
+        basis_locus: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:820-824
+        ownership:
+          value: UNDETERMINED
+          reason: This evidence-shape fixture does not adjudicate ownership.
+          sources_searched: *line042_824
+        binding_refs: {items: [], reason: This evidence-shape fixture does not assert a binding relation.}
+        register_evidence: {status: ABSENT_FROM_REGISTER}
+        declaration_required: UNDETERMINED
+        candidate_reason:
+          value: NOT_APPLICABLE
+          reason: Machinery is PRESENT; this fixture does not assert candidacy.
+          sources_searched: *line042_824
+  - op: replace
+    path: [wl_evidence]
+    value:
+      states_dimensions: {value: false, loci: [synthetic/rule_fixture.wl:1]}
+      pairs:
+        items: []
+        reason: This fixture isolates Python positional evidence.

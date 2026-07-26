@@ -1,0 +1,12 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_present_accept.yaml
+mutations:
+  - op: replace
+    path: [categories, dimension_bindings, source_count]
+    value: 2
+  - op: add
+    path: [categories, dimension_bindings, report_unmatched, items, 0]
+    value:
+      item_id: missing.binding
+      explanation_status: EXPLAINED
+      explanation: The malformed report-side binding reference resolves to no report item.

@@ -1,0 +1,9 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../verification_present_accept.yaml
+mutations:
+  - {op: replace, path: [classification], value: UNDETERMINED+PRESENT}
+  - op: replace
+    path: [zero_declaration_check]
+    value:
+      applicability: NOT_APPLICABLE
+      reason: This mutated classification does not use the REAL+PRESENT zero check.

@@ -217,6 +217,27 @@ runTwoTierDictionary[d_] := (
   Print["  [c_s0] = ", dimString[d["cS0"]], "  from 5*K*rho0^4/m_GNLS"];
   Print["  [h0] = ", dimString[d["h0"]], "  from (5K/4)*rho0^4"];
   Print["  [xi_h] = ", dimString[d["xiH"]], "  from core balance"];
+  Print["DIMENSIONS|axes=L,T,M"];
+  Print["DIM|axes=L,T,M|name=zero|exponents=", ToString[InputForm[d["zero"]]]];
+  Print["DIM|axes=L,T,M|name=L|exponents=", ToString[InputForm[d["L"]]]];
+  Print["DIM|axes=L,T,M|name=T|exponents=", ToString[InputForm[d["T"]]]];
+  Print["DIM|axes=L,T,M|name=M|exponents=", ToString[InputForm[d["M"]]]];
+  Print["DIM|axes=L,T,M|name=action|exponents=", ToString[InputForm[d["action"]]]];
+  Print["DIM|axes=L,T,M|name=energy|exponents=", ToString[InputForm[d["energy"]]]];
+  Print["DIM|axes=L,T,M|name=force|exponents=", ToString[InputForm[d["force"]]]];
+  Print["DIM|axes=L,T,M|name=velocity|exponents=", ToString[InputForm[d["velocity"]]]];
+  Print["DIM|axes=L,T,M|name=rho3|exponents=", ToString[InputForm[d["rho3"]]]];
+  Print["DIM|axes=L,T,M|name=lagrangianDensity|exponents=", ToString[InputForm[d["lagrangianDensity"]]]];
+  Print["DIM|axes=L,T,M|name=qA0|exponents=", ToString[InputForm[d["qA0"]]]];
+  Print["DIM|axes=L,T,M|name=qAi|exponents=", ToString[InputForm[d["qAi"]]]];
+  Print["DIM|axes=L,T,M|name=electricField|exponents=", ToString[InputForm[d["electricField"]]]];
+  Print["DIM|axes=L,T,M|name=magneticField|exponents=", ToString[InputForm[d["magneticField"]]]];
+  Print["DIM|axes=L,T,M|name=maxwellCoeff|exponents=", ToString[InputForm[d["maxwellCoeff"]]]];
+  Print["DIM|axes=L,T,M|name=muWall|exponents=", ToString[InputForm[d["muWall"]]]];
+  Print["DIM|axes=L,T,M|name=Tw|exponents=", ToString[InputForm[d["Tw"]]]];
+  Print["DIM|axes=L,T,M|name=USigmaRR|exponents=", ToString[InputForm[d["USigmaRR"]]]];
+  Print["DIM|axes=L,T,M|name=G3|exponents=", ToString[InputForm[d["G3"]]]];
+  Print["DIM|axes=L,T,M|name=G4|exponents=", ToString[InputForm[d["G4"]]]];
 
   expectDim["primitive hbar used as action in kinetic density", d["hbar"], d["action"]];
   expectDim["primitive m_GNLS used in Madelung velocity hbar/(m*L)", d["hbar"] - d["mGNLS"] - d["L"], d["velocity"]];

@@ -47,7 +47,7 @@ mutations:
       value: "stiffness_dim: Dim = (Fraction(1), Fraction(0), Fraction(0))"
       loci: [scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821]
   - {op: replace, path: [quantities, items, 0, dim_text_form], value: POSITIONAL}
-  - op: replace
+  - op: add
     path: [quantities, items, 0, basis_locus]
     value: scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py:821-824
   - op: replace

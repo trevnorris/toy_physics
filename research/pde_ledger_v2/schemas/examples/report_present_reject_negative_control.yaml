@@ -129,7 +129,6 @@ quantities:
         value: mass
         loci: [synthetic/stage038_negative_control_bad.py:30]
       dim_text_form: NAMED_AXIS
-      basis_locus: synthetic/stage038_negative_control_bad.py:21
       ownership:
         value: MODULE_OWNED
         loci: [synthetic/stage038_negative_control_bad.py:29]

@@ -1,0 +1,18 @@
+schema_version: dimension_survey_reject_fixture_v1
+base_document: ../report_rule_fixture_accept.yaml
+mutations:
+  - {op: replace, path: [identity, stage], value: "005"}
+  - {op: replace, path: [identity, script_path, value], value: scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py}
+  - {op: replace, path: [static_recovery_surface, items, 0, current_checker_visibility, loci], value: [scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py:183, research/pde_ledger_v2/manifests/composite_build.py:1]}
+  - op: replace
+    path: [basis, axis_evidence]
+    value:
+      items:
+        - {source_spelling: {value: L, loci: &basis005 [scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py:184]}, interpreted_axis_name: {value: L, loci: *basis005}, evidence: {value: STATED, loci: *basis005}, locus: scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py:184}
+        - {source_spelling: {value: T, loci: *basis005}, interpreted_axis_name: {value: T, loci: *basis005}, evidence: {value: STATED, loci: *basis005}, locus: scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py:184}
+        - {source_spelling: {value: M, loci: *basis005}, interpreted_axis_name: {value: M, loci: *basis005}, evidence: {value: STATED, loci: *basis005}, locus: scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py:184}
+  - {op: replace, path: [quantities, items, 0, dimension_value_status], value: {value: EXPLICIT_PY, loci: [scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py:218]}}
+  - {op: replace, path: [quantities, items, 0, dimension_source_loci], value: {items: [scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py:218]}}
+  - {op: replace, path: [quantities, items, 0, dim_source_text], value: {value: "(1, 0, 0)", loci: [scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py:218]}}
+  - {op: replace, path: [quantities, items, 0, dim_text_form], value: POSITIONAL}
+  - {op: replace, path: [wl_evidence], value: {states_dimensions: {value: false, loci: [synthetic/rule_fixture.wl:1]}, pairs: {items: [], reason: No paired WL constructor evidence is used by this fixture.}}}

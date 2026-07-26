@@ -68,7 +68,6 @@ quantities:
       dimension_source_loci: {items: [synthetic/rule_fixture.py:1]}
       dim_source_text: {value: L, loci: *locus_one}
       dim_text_form: NAMED_AXIS
-      basis_locus: synthetic/rule_fixture.py:1
       ownership: {value: CHECK_LOCAL, loci: *locus_one}
       binding_refs: {items: [fixture.binding.x]}
       register_evidence:

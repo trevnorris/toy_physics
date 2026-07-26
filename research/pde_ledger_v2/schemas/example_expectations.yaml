@@ -593,3 +593,230 @@ cases:
     document: examples/reject_fixtures/report_applicability_enum_typo.yaml
     expect: REJECT
     expected_error_codes: [SCHEMA_STRUCTURE]
+  - name: repair8 P1 stage004 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage004_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage005 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage005_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage006 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage006_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage007 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage007_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage008 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage008_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage009 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage009_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage011 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage011_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage012 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage012_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage013 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage013_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage016 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage016_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage018 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage018_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage030 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage030_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage031 zero-arity constructor
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p1_stage031_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P1 stage004 alternate NAMED_AXIS rejects
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p1_stage004_named_axis.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: repair8 P1 stage004 alternate POSITIONAL rejects
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p1_stage004_positional.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: repair8 P2 genuine declared dimension class control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p2_dimension_class_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P2 helper call
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p2_helper_call.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P2 helper assignment
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p2_helper_assignment.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P2 list assignment
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p2_list_assignment.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P2 dict assignment
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p2_dict_assignment.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P2 empty parens span
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p2_empty_parens_span.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P2 empty list span
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p2_empty_list_span.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P2 empty dict span
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p2_empty_dict_span.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P2 spaced dict span
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p2_spaced_dict_span.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P2 bound non-dimension Cache class
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p2_cache_class.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P3 stage005 capital constructor narrow span
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p3_stage005_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P3 stage002 lowercase L-T-M factory narrow span
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p3_stage002_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P3 stage003 lowercase M-L-T factory narrow span
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p3_stage003_accept.yaml
+    expect: ACCEPT
+  - name: repair8 P6 NAMED_AXIS with basis_locus
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p6_named_with_basis.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: repair8 P6 POSITIONAL without basis_locus
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p6_positional_without_basis.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_EXPLICIT_DIM_SOURCE_TEXT]
+  - name: repair8 P7.1 rebound callee
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p7_01_rebound.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P7.1 repaired control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_01_positive.yaml
+    expect: ACCEPT
+  - name: repair8 P7.2 conditional rebind
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p7_02_conditional.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P7.2 repaired control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_02_positive.yaml
+    expect: ACCEPT
+  - name: repair8 P7.3 out-of-scope definition
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p7_03_out_of_scope.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P7.3 repaired control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_03_positive.yaml
+    expect: ACCEPT
+  - name: repair8 P7.4 definition after call
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p7_04_definition_after.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P7.4 repaired control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_04_positive.yaml
+    expect: ACCEPT
+  - name: repair8 P7.5 import-bound callee
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p7_05_import.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P7.5 repaired control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_05_positive.yaml
+    expect: ACCEPT
+  - name: repair8 P7.6 parameter-bound non-module callee
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p7_06_parameter.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P7.6 repaired control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_06_positive.yaml
+    expect: ACCEPT
+  - name: repair8 P7.7 qualified module and object callees
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p7_07_qualified.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P7.7 bare-name control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_07_positive.yaml
+    expect: ACCEPT
+  - name: repair8 P7.8 second ClassDef exploit
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p7_08_double_definition.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P7.8 repaired control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_08_positive.yaml
+    expect: ACCEPT
+  - name: repair8 P7.9 for-target rebind
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p7_09_for_target.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P7.9 repaired control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_09_positive.yaml
+    expect: ACCEPT
+  - name: repair8 P7.10 shared fail-closed NamedExpr canary
+    schema: dimension_survey_report_v1.yaml
+    document: examples/reject_fixtures/report_repair8_p7_10_fail_closed.yaml
+    expect: REJECT
+    expected_error_codes: [REPORT_DIMENSION_CONSTRUCTOR_BINDING]
+  - name: repair8 P7.10 repaired control
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_10_positive.yaml
+    expect: ACCEPT
+  - name: repair8 P7 comprehension target is non-binding
+    schema: dimension_survey_report_v1.yaml
+    document: examples/report_repair8_p7_comprehension_accept.yaml
+    expect: ACCEPT

@@ -10,8 +10,5 @@ mutations:
   - {op: replace, path: [quantities, items, 1, dimension_value_status, value], value: CONSTRAINED_BUT_NOT_STATED}
   - {op: replace, path: [quantities, items, 2, dimension_value_status, value], value: CONSTRAINED_BUT_NOT_STATED}
   - {op: remove, path: [quantities, items, 0, dim_text_form]}
-  - {op: remove, path: [quantities, items, 0, basis_locus]}
   - {op: remove, path: [quantities, items, 1, dim_text_form]}
-  - {op: remove, path: [quantities, items, 1, basis_locus]}
   - {op: remove, path: [quantities, items, 2, dim_text_form]}
-  - {op: remove, path: [quantities, items, 2, basis_locus]}

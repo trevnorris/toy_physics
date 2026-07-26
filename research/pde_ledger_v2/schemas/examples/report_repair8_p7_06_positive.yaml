@@ -1,0 +1,13 @@
+schema_version: dimension_survey_accept_fixture_v1
+base_document: report_rule_fixture_accept.yaml
+mutations:
+  - {op: replace, path: [identity, script_path, value], value: schemas/examples/synthetic/repair8_p7_parameter_positive.py}
+  - {op: replace, path: [machinery], value: {value: PRESENT, loci: [schemas/examples/synthetic/repair8_p7_parameter_positive.py:1]}}
+  - {op: replace, path: [idiom], value: {items: [{value: CLASS_VALUE_OBJECT, loci: [schemas/examples/synthetic/repair8_p7_parameter_positive.py:1]}]}}
+  - {op: replace, path: [definition_locus], value: {value: schemas/examples/synthetic/repair8_p7_parameter_positive.py:1, loci: [schemas/examples/synthetic/repair8_p7_parameter_positive.py:1]}}
+  - {op: replace, path: [static_recovery_surface, items, 0, current_checker_visibility, loci], value: [schemas/examples/synthetic/repair8_p7_parameter_positive.py:1, research/pde_ledger_v2/manifests/composite_build.py:1]}
+  - {op: replace, path: [quantities, items, 0, dimension_value_status], value: {value: EXPLICIT_PY, loci: [schemas/examples/synthetic/repair8_p7_parameter_positive.py:5]}}
+  - {op: replace, path: [quantities, items, 0, dimension_source_loci], value: {items: [schemas/examples/synthetic/repair8_p7_parameter_positive.py:5]}}
+  - {op: replace, path: [quantities, items, 0, dim_source_text], value: {value: "DimBad()", loci: [schemas/examples/synthetic/repair8_p7_parameter_positive.py:5]}}
+  - {op: replace, path: [quantities, items, 0, dim_text_form], value: DIMENSIONLESS_CONSTRUCTOR}
+  - {op: replace, path: [wl_evidence], value: {states_dimensions: {value: false, loci: [synthetic/rule_fixture.wl:1]}, pairs: {items: [], reason: No paired WL constructor evidence is used by this fixture.}}}

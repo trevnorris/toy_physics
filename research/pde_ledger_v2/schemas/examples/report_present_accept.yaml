@@ -266,7 +266,6 @@ quantities:
         value: mass
         loci: [synthetic/stage038_shape.py:60]
       dim_text_form: NAMED_AXIS
-      basis_locus: synthetic/stage038_shape.py:22
       ownership:
         value: SCRIPT_OWNED
         loci: [synthetic/stage038_shape.py:60, synthetic/stage038_shape.py:81]
@@ -304,7 +303,6 @@ quantities:
         value: mass
         loci: [synthetic/stage038_shape.py:81]
       dim_text_form: NAMED_AXIS
-      basis_locus: synthetic/stage038_shape.py:22
       ownership:
         value: MODULE_OWNED
         loci: [synthetic/stage038_shape.py:79, synthetic/stage038_shape.py:81]
@@ -342,7 +340,6 @@ quantities:
         value: mass
         loci: [synthetic/stage038_shape.py:90]
       dim_text_form: NAMED_AXIS
-      basis_locus: synthetic/stage038_shape.py:22
       ownership:
         value: CHECK_LOCAL
         loci: [synthetic/stage038_shape.py:90, synthetic/stage038_shape.py:180]

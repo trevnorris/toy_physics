@@ -34,7 +34,6 @@ mutations:
     path: [quantities, items, 0, dim_source_text]
     value: {value: "run_time = 0.0", loci: [synthetic/axis_form.py:2]}
   - {op: replace, path: [quantities, items, 0, dim_text_form], value: NAMED_AXIS}
-  - {op: replace, path: [quantities, items, 0, basis_locus], value: synthetic/axis_form.py:1}
   - op: replace
     path: [wl_evidence]
     value:

@@ -404,6 +404,9 @@ runDimensionalBlock[data_] := Module[{dim},
   dim = data["Dim"];
   subheading["Stage011 c_S^2 dimensional leg and corrupt-[K] probe"];
   Print["  dimension order: (L,M,T)"];
+  Print["DIMENSIONS|axes=L,M,T"];
+  Print["DIM|axes=L,M,T|name=LengthDim|exponents=", ToString[InputForm[dim["LengthDim"]]]];
+  Print["DIM|axes=L,M,T|name=ExpectedCsSquaredDim|exponents=", ToString[InputForm[dim["ExpectedCsSquaredDim"]]]];
   Print["  [energy] = ", dim["EnergyDim"], "; [four-volume] = ", dim["FourVolumeDim"], "; [P] = ", dim["PressureDim"]];
   Print["  [rho] = ", dim["RhoDim"], "; [K]=[P]-5[rho] = ", dim["KDim"]];
   Print["  [c_S^2=5*K*rho_star^4/m] = ", dim["CsSquaredDim"]];

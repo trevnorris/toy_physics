@@ -15,6 +15,8 @@ from typing import Any
 
 import sympy as sp
 
+from ledger_dimensions import Dimension, DimensionBasis, dim_residual
+
 
 PASS_COUNT = 0
 FAIL_COUNT = 0
@@ -53,8 +55,8 @@ def fmt(expr: Any) -> str:
 
 
 def assert_no_float(name: str, expr: Any) -> None:
-    if isinstance(expr, Dim):
-        for label, value in zip(("L", "M", "T"), expr.components()):
+    if isinstance(expr, Dimension):
+        for label, value in expr.exponents.items():
             assert_no_float(f"{name}.{label}", value)
         return
     if isinstance(expr, dict):
@@ -140,51 +142,12 @@ def verdict_residual(actual: str, expected: str) -> sp.Integer:
     return sp.Integer(0) if actual == expected else sp.Integer(1)
 
 
-def q(value: int | str | sp.Rational) -> sp.Rational:
-    return sp.Rational(value)
-
-
-@dataclass(frozen=True)
-class Dim:
-    """Exact exponent vector in {L, M, T} order."""
-
-    l: sp.Rational | int = 0
-    m: sp.Rational | int = 0
-    t: sp.Rational | int = 0
-
-    def __post_init__(self) -> None:
-        object.__setattr__(self, "l", q(self.l))
-        object.__setattr__(self, "m", q(self.m))
-        object.__setattr__(self, "t", q(self.t))
-
-    def __add__(self, other: "Dim") -> "Dim":
-        return Dim(self.l + other.l, self.m + other.m, self.t + other.t)
-
-    def __sub__(self, other: "Dim") -> "Dim":
-        return Dim(self.l - other.l, self.m - other.m, self.t - other.t)
-
-    def __mul__(self, scale: int | sp.Rational) -> "Dim":
-        p = q(scale)
-        return Dim(self.l * p, self.m * p, self.t * p)
-
-    def __rmul__(self, scale: int | sp.Rational) -> "Dim":
-        return self * scale
-
-    def components(self) -> tuple[sp.Rational, sp.Rational, sp.Rational]:
-        return (self.l, self.m, self.t)
-
-    def __str__(self) -> str:
-        return f"({fmt(self.l)},{fmt(self.m)},{fmt(self.t)})"
-
-
+DIMENSION_BASIS = DimensionBasis("L", "M", "T", render="tuple")
+Dim = DIMENSION_BASIS
 ZERO_DIM = Dim()
 
 
-def dim_residual(actual: Dim, expected: Dim) -> sp.Expr:
-    return sp.simplify(sum((have - want) ** 2 for have, want in zip(actual.components(), expected.components())))
-
-
-def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
+def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dimension]) -> Dimension:
     clean = sp.sympify(expr)
     if clean == 0 or clean.is_Number:
         return ZERO_DIM
@@ -195,13 +158,13 @@ def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
     if isinstance(clean, sp.Mul):
         total = ZERO_DIM
         for arg in clean.args:
-            total = total + dim_of(arg, dims)
+            total = total * dim_of(arg, dims)
         return total
     if isinstance(clean, sp.Pow):
         base, power = clean.args
         if not power.is_number:
             raise AuditFailure(f"non-numeric power in dimension expression {clean}")
-        return dim_of(base, dims) * sp.Rational(power)
+        return dim_of(base, dims) ** sp.Rational(power)
     if isinstance(clean, sp.Add):
         arg_dims = [dim_of(arg, dims) for arg in clean.args if sp.simplify(arg) != 0]
         if not arg_dims:
@@ -361,10 +324,10 @@ def build_reduction_case(
 def build_dimensional_block() -> dict[str, Any]:
     length_dim = Dim(1, 0, 0)
     energy_dim = Dim(2, 1, -2)
-    four_volume_dim = 4 * length_dim
-    pressure_dim = energy_dim - four_volume_dim
-    rho_dim = -4 * length_dim
-    K_dim = pressure_dim - 5 * rho_dim
+    four_volume_dim = length_dim**4
+    pressure_dim = energy_dim / four_volume_dim
+    rho_dim = length_dim**-4
+    K_dim = pressure_dim / (rho_dim**5)
     dim_rules = {
         L0: length_dim,
         omega: Dim(0, 0, -1),
@@ -377,7 +340,7 @@ def build_dimensional_block() -> dict[str, Any]:
     dimensional_ok = cs_squared_dim == expected_cs_squared_dim
 
     corrupt_rules = dict(dim_rules)
-    corrupt_rules[K] = corrupt_rules[K] + Dim(1, 0, 0)
+    corrupt_rules[K] = corrupt_rules[K] * Dim(1, 0, 0)
     corrupt_cs_squared_dim = dim_of(cS_squared_bulk, corrupt_rules)
     corrupt_ok = corrupt_cs_squared_dim == expected_cs_squared_dim
     probe_verdict = "NO_FAIL" if corrupt_ok else DN_UNITTEST_FAIL_DIMENSIONAL

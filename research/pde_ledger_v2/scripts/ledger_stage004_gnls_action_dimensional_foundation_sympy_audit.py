@@ -13,6 +13,8 @@ from typing import Any, Iterable
 
 import sympy as sp
 
+from ledger_dimensions import Dimension, DimensionBasis, dim_residual
+
 
 PASS_COUNT = 0
 FAIL_COUNT = 0
@@ -98,65 +100,19 @@ def expect_fail(name: str, residual: sp.Expr) -> None:
     raise AuditFailure(f"{name} unexpectedly had zero residual")
 
 
-def q(value: int | str | sp.Rational) -> sp.Rational:
-    return sp.Rational(value)
-
-
-@dataclass(frozen=True)
-class Dim:
-    """Exact exponent vector for base dimensions in {L, T, M} order."""
-
-    l: sp.Rational | int = 0
-    t: sp.Rational | int = 0
-    m: sp.Rational | int = 0
-
-    def __post_init__(self) -> None:
-        object.__setattr__(self, "l", q(self.l))
-        object.__setattr__(self, "t", q(self.t))
-        object.__setattr__(self, "m", q(self.m))
-
-    def __mul__(self, other: Dim) -> Dim:
-        return Dim(self.l + other.l, self.t + other.t, self.m + other.m)
-
-    def __truediv__(self, other: Dim) -> Dim:
-        return Dim(self.l - other.l, self.t - other.t, self.m - other.m)
-
-    def __pow__(self, power: int | sp.Rational) -> Dim:
-        p = q(power)
-        return Dim(self.l * p, self.t * p, self.m * p)
-
-    def components(self) -> tuple[sp.Rational, sp.Rational, sp.Rational]:
-        return (self.l, self.t, self.m)
-
-    def drop_m(self) -> Dim:
-        return Dim(self.l, self.t, 0)
-
-    def __str__(self) -> str:
-        pieces: list[str] = []
-        for label, exponent in (("L", self.l), ("T", self.t), ("M", self.m)):
-            if exponent == 0:
-                continue
-            pieces.append(label if exponent == 1 else f"{label}^{exponent}")
-        return "1" if not pieces else " ".join(pieces)
-
-
+DIMENSION_BASIS = DimensionBasis("L", "T", "M", render="symbolic")
+Dim = DIMENSION_BASIS
 DIMENSIONLESS = Dim()
 LENGTH = Dim(1, 0, 0)
 TIME = Dim(0, 1, 0)
 MASS = Dim(0, 0, 1)
 
 
-def dim_residual(actual: Dim, expected: Dim) -> sp.Expr:
-    return sp.simplify(
-        sum((have - want) ** 2 for have, want in zip(actual.components(), expected.components()))
-    )
-
-
-def expect_dim(name: str, actual: Dim, expected: Dim) -> None:
+def expect_dim(name: str, actual: Dimension, expected: Dimension) -> None:
     expect_zero(name, dim_residual(actual, expected))
 
 
-def homogeneity_residual(terms: dict[str, Dim]) -> sp.Expr:
+def homogeneity_residual(terms: dict[str, Dimension]) -> sp.Expr:
     if not terms:
         raise AuditFailure("homogeneity check requires at least one term")
     dims = list(terms.values())
@@ -164,15 +120,15 @@ def homogeneity_residual(terms: dict[str, Dim]) -> sp.Expr:
     return sp.simplify(sum(dim_residual(actual, reference) for actual in dims[1:]))
 
 
-def factor_to_reach(expected: Dim, actual: Dim) -> Dim:
+def factor_to_reach(expected: Dimension, actual: Dimension) -> Dimension:
     return expected / actual
 
 
-def matrix_from_dims(dims: Iterable[Dim]) -> sp.Matrix:
-    return sp.Matrix([[dim.l, dim.t, dim.m] for dim in dims]).T
+def matrix_from_dims(dims: Iterable[Dimension]) -> sp.Matrix:
+    return sp.Matrix([list(dim.components()) for dim in dims]).T
 
 
-def signed_primitive_dictionary() -> dict[str, Dim]:
+def signed_primitive_dictionary() -> dict[str, Dimension]:
     """Primitive input layer: posted, then checked through action usage."""
 
     return {
@@ -182,7 +138,9 @@ def signed_primitive_dictionary() -> dict[str, Dim]:
     }
 
 
-def derive_dictionary(primitives: dict[str, Dim] | None = None) -> dict[str, Dim]:
+def derive_dictionary(
+    primitives: dict[str, Dimension] | None = None,
+) -> dict[str, Dimension]:
     """Derive the action dictionary from primitives and composition laws."""
 
     p = primitives or signed_primitive_dictionary()
@@ -247,7 +205,7 @@ class PinAnalysis:
     rank: int
     nullity: int
     relation_vector: tuple[sp.Integer, sp.Integer, sp.Integer, sp.Integer]
-    relation_dim: Dim
+    relation_dim: Dimension
 
 
 def normalize_null_vector(vector: sp.Matrix) -> tuple[sp.Integer, ...]:
@@ -263,7 +221,7 @@ def normalize_null_vector(vector: sp.Matrix) -> tuple[sp.Integer, ...]:
     return tuple(entries)
 
 
-def derive_pin_analysis(pin_dims: list[Dim]) -> PinAnalysis:
+def derive_pin_analysis(pin_dims: list[Dimension]) -> PinAnalysis:
     matrix = matrix_from_dims(pin_dims)
     nullspace = matrix.nullspace()
     if len(nullspace) != 1:
@@ -285,7 +243,7 @@ def derive_pin_analysis(pin_dims: list[Dim]) -> PinAnalysis:
     )
 
 
-def run_two_tier_dictionary_checks(d: dict[str, Dim]) -> None:
+def run_two_tier_dictionary_checks(d: dict[str, Dimension]) -> None:
     subbanner("Two-tier dictionary derivation")
     print("Primitive inputs (posted):")
     print(f"  [hbar] = {d['hbar']}  PRIMITIVE INPUT")
@@ -326,7 +284,7 @@ def run_symbolic_core_relations() -> None:
     expect_zero("healing length xi_h=sqrt(2)*hbar/(m_GNLS*c_s0)", xi_from_core - sp.sqrt(2) * hbar / (m * c_s0))
 
 
-def run_pin_analysis(d: dict[str, Dim]) -> None:
+def run_pin_analysis(d: dict[str, Dimension]) -> None:
     subbanner("Pin null-relation")
     pins = [LENGTH, d["c_s0"], d["hbar"], d["m_GNLS"]]
     analysis = derive_pin_analysis(pins)
@@ -349,7 +307,7 @@ def run_pin_analysis(d: dict[str, Dim]) -> None:
 # Harness mapping: the following 14 names preserve _patha19_foundation_checks
 # load-bearing content, in order.  The 3 LT checks below preserve
 # _patha19_lt_representation_checks.
-def foundation_check_residuals(d: dict[str, Dim]) -> dict[str, sp.Expr]:
+def foundation_check_residuals(d: dict[str, Dimension]) -> dict[str, sp.Expr]:
     rho4 = d["rho0"]
     rho3 = d["rho3_reduced"]
     psi = d["psi"]
@@ -465,11 +423,11 @@ def lt_representation_residuals() -> dict[str, sp.Expr]:
 @dataclass(frozen=True)
 class FlaggedResidual:
     token: str
-    actual: Dim
-    required_factor: Dim
+    actual: Dimension
+    required_factor: Dimension
 
 
-def flagged_residuals(d: dict[str, Dim]) -> list[FlaggedResidual]:
+def flagged_residuals(d: dict[str, Dimension]) -> list[FlaggedResidual]:
     velocity = d["velocity"]
     formal_4d_target = d["G_4_spatial"] * (velocity**5) / ((LENGTH**5) * (velocity**5))
     observed_3d_target = d["G_3_spatial"] * (velocity**5) / ((LENGTH**5) * (velocity**5))
@@ -493,7 +451,7 @@ def flagged_residuals(d: dict[str, Dim]) -> list[FlaggedResidual]:
     ]
 
 
-def run_harness_mapped_checks(d: dict[str, Dim]) -> None:
+def run_harness_mapped_checks(d: dict[str, Dimension]) -> None:
     subbanner("Harness-mapped 17 dimensional checks")
     for name, residual in foundation_check_residuals(d).items():
         expect_zero(name, residual)
@@ -503,13 +461,13 @@ def run_harness_mapped_checks(d: dict[str, Dim]) -> None:
     print("  hbar*J/c_gamma^2 = M check above is dimensional-only, not a mass derivation.")
 
 
-def run_flagged_residual_gates(d: dict[str, Dim]) -> None:
+def run_flagged_residual_gates(d: dict[str, Dimension]) -> None:
     subbanner("Carried flagged residual gates")
     for flag in flagged_residuals(d):
         print(f"  {flag.token}: actual {flag.actual}; factor needed {flag.required_factor}")
         expect_nonzero(
             f"{flag.token} remains non-dimensionless after M drop",
-            dim_residual(flag.actual.drop_m(), DIMENSIONLESS),
+            dim_residual(flag.actual.without("M"), DIMENSIONLESS),
         )
         expect_dim(
             f"{flag.token} exact conversion factor",
@@ -518,28 +476,40 @@ def run_flagged_residual_gates(d: dict[str, Dim]) -> None:
         )
 
 
-def all_harness_checks_pass(d: dict[str, Dim]) -> bool:
+def all_harness_checks_pass(d: dict[str, Dimension]) -> bool:
     return all(sp.simplify(residual) == 0 for residual in foundation_check_residuals(d).values()) and all(
         sp.simplify(residual) == 0 for residual in lt_representation_residuals().values()
     )
 
 
-def lt_rejection_gate(d: dict[str, Dim], *, repair_residuals: bool = False) -> bool:
+def lt_rejection_gate(
+    d: dict[str, Dimension],
+    *,
+    repair_residuals: bool = False,
+) -> bool:
     flags = flagged_residuals(d)
     if repair_residuals:
         residual_gate_fails = False
     else:
-        residual_gate_fails = any(dim_residual(flag.actual.drop_m(), DIMENSIONLESS) != 0 for flag in flags)
+        residual_gate_fails = any(
+            dim_residual(flag.actual.without("M"), DIMENSIONLESS) != 0
+            for flag in flags
+        )
     local_lt_passes = all(sp.simplify(residual) == 0 for residual in lt_representation_residuals().values())
     return all_harness_checks_pass(d) and local_lt_passes and residual_gate_fails
 
 
-def verdict_from_predicate(d: dict[str, Dim], *, m_defect_derived_here: bool, repair_lt_residuals: bool = False) -> str:
+def verdict_from_predicate(
+    d: dict[str, Dimension],
+    *,
+    m_defect_derived_here: bool,
+    repair_lt_residuals: bool = False,
+) -> str:
     retain_ltm = lt_rejection_gate(d, repair_residuals=repair_lt_residuals) and (not m_defect_derived_here)
     return "RETAIN_L_T_M" if retain_ltm else "NOT_RETAIN_L_T_M"
 
 
-def run_verdict_and_provenance(d: dict[str, Dim]) -> str:
+def run_verdict_and_provenance(d: dict[str, Dimension]) -> str:
     subbanner("Mass fork and computed verdict")
     m_defect_derived_here = False
     print(f"  m_defect_derived_here={m_defect_derived_here}")
@@ -558,7 +528,7 @@ def run_verdict_and_provenance(d: dict[str, Dim]) -> str:
     return verdict
 
 
-def run_firewall_ablations(d: dict[str, Dim]) -> None:
+def run_firewall_ablations(d: dict[str, Dimension]) -> None:
     subbanner("Able-to-fail dimensional firewall")
     psi = d["psi"]
     action = d["action"]

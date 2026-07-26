@@ -1,4 +1,19 @@
-# Integration-test thread — HANDOFF (2026-07-25, Pass-1 apparatus session)
+# Integration-test thread — HANDOFF
+
+⛔⛔ **SUPERSEDED IN PART, 2026-07-26. READ `manifests/PIVOT_TO_REWRITE.md` FIRST.**
+The survey-first approach this document describes was **abandoned** after two measurements showed
+(a) `notes/parameter_register.md` covers only 46.5 % of the scripts' dimension-bearing quantities and
+cannot seed a module, and (b) there is no single idiom to consolidate — 6 basis conventions over 4 axis
+sets. **We now REWRITE each script's dimension handling onto a designed module** rather than surveying
+43 scripts to discover idioms to accommodate.
+
+**Still valid below:** the process lessons (§8), the checker asymmetry (§7), the paused threads (§9),
+and the decisions in §2 that concern the schema/validator (which are committed and parked, not deleted).
+**No longer the plan:** §1's "run the survey", §3's next steps, §5's pilot numbers.
+Repair round 8 (`35dc6aa0`) IS committed and did fix real defects — `Dim()` was unrecordable in 13
+scripts, `basis_locus` applicability contradicted itself, and two claims about Python scoping were false.
+
+---
 
 ⭐ **READ ORDER:** this file → `manifests/LEDGER_WIDE_PLAN.md` (PLAN OF RECORD) →
 `docs/development_pipeline.md` (process).

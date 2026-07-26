@@ -108,14 +108,33 @@ be **adjudicated**, not transcribed. Several are likely genuine physics/bookkeep
 
 ## 4. THE NEW PLAN, IN ORDER
 
-1. ⭐ **Build the cross-engine dimension comparison harness.** Every dimension-bearing stage prints its
-   computed exponent triple; the harness diffs `.py` against `.wl` **on values**, not on pass/fail. This
-   is the gate the rewrite needs, it does not exist today, and it would have caught every §3 conflict on
-   its own. **Independently valuable regardless of the rewrite.**
+1. ⭐ **Gate A — a pre-rewrite Python value snapshot.** ⚠ **AMENDED 2026-07-26** — the original plan
+   here was a full cross-engine value harness. It was specified, design-reviewed, and found
+   **NOT FEASIBLE**: only 9 of 30 stages render computed values, all 44 `.wl` files call `Exit`, and a
+   tested `Get` wrapper recovers stage004's public constructor but **not** stage031's `unitRows` or
+   stage042's base map, which are local to terminal `Module`s. Recovering those needs held-source
+   transformation — modification wearing a disguise. Evidence: `_scratch/dim_harness/HARNESS_DESIGN_REVIEW.md`.
+
+   The harness also conflated **preservation** ("did the rewrite change anything?") with **validation**
+   ("are the values correct?") — over-built for the first, under-built for the second, since it cannot
+   see assertion vacuity, aliases, incompatible unit systems, or cross-stage conflicts. My claim that it
+   "would have caught every §3 conflict" was **false**; several are invisible to a same-stage value
+   comparison by construction (the two `r_BA` stages both land dimensionless).
+
+   **Gate A instead:** snapshot every dimension-bearing quantity's exact exponents from the current
+   `.py` corpus into a schema-validated inventory with **independently-reviewed expected per-stage
+   counts**, then compare after the rewrite — alongside the multiset PASS check, normalised `.out`
+   byte-identity, and the C7 mutations. It closes the motivating hole because **the snapshot predates
+   the module**: if a module bug moves both ends together, the value still differs from the snapshot.
+   Directive: `_scratch/dim_harness/SNAPSHOT_DIRECTIVE.md`.
+
+   **Gate B — targeted cross-engine work only where a specific physics dispute justifies touching a
+   `.wl`**, plus the §3 adjudication on its own merits.
 2. **Fix the register's false provenance claims** (§2.1) — a maintained document asserting
    dual-engine verification for stages that verify nothing is a defect that misled this measurement.
 3. **Design the shared dimension module.** Source of truth = each stage's physics, cross-checked against
-   the register where it speaks (105 quantities). Must support: ≥4 axes, fractional/symbolic exponents,
+   the register where it speaks (105 quantities). Must support: ≥4 axes, **fractional** exponents
+   (⚠ corrected — the corpus contains **no symbolic** exponents; an earlier draft here claimed both),
    and a stated basis convention. **Design against stage042 (stiffness basis, fractions) and stage038
    (four axes) first** — they are the extremes and they broke the register.
 4. **Rewrite stage-by-stage**, adjudicating §3 conflicts as they surface. Escalate anything that changes

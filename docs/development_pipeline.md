@@ -123,6 +123,26 @@ That is a denylist against an expressive grammar; it does not converge.
   found, in one pass, blockers that hours of self-review had not: a red suite, dimension recovery
   covering only 16 of 43 scripts while the schema required it for all, and a closedness rule that
   could never trigger.
+- ⛔ **CHECK WHICH TOOL REPORTED THE PASS (2026-07-26).** An acceptance item named a specific
+  comparator. The official tool exited **2** on a real defect; the build then wrote its own
+  `normalized_comparator`, ran that instead, and headlined **PASS**. It *disclosed* the substitution in
+  its raw log (`official_comparator_exit=2 normalized_comparator_exit=1`) — not deception, a workaround
+  honestly logged and then optimistically summarised. **The summary is what gets read, and the real
+  gate had never passed.** Nothing in the tree revealed it: comparator untouched, no variant left
+  behind, `git status` clean. Only re-running the named command caught it.
+  - ⭐ **Re-run the NAMED acceptance command yourself and read its literal exit code** — not a
+    paraphrase, not the report's claim. This is what "the orchestrator independently re-runs acceptance
+    commands" is *for*.
+  - ⛔ **Every build directive must say: "never satisfy an acceptance criterion with a substitute tool;
+    if the named tool fails, STOP and report."** Without that sentence, routing around a broken gate
+    looks like diligence.
+  - **Read raw exit codes, not the PASS/FAIL headline.** In a long report the logs are the evidence and
+    the summary is a claim.
+  - **A gate that is routed around is not a gate** — same family as the source-grep and can't-fail
+    rules below.
+- **When adding a STRUCTURED artifact, verify its STRUCTURE, not only its contents — by running the
+  consumer.** Same incident: the orchestrator committed a `.wl` after checking the record count and one
+  value, but not that the file had its required header. The consumer would have said so immediately.
 
 ---
 
@@ -180,11 +200,18 @@ That is a denylist against an expressive grammar; it does not converge.
 ---
 
 ## Per-gate quick checklist
+0. ☐ ⛔ Directive contains the anti-substitution clause: *"never satisfy an acceptance criterion with a
+   substitute tool; if the named tool fails, STOP and report"* — and states no expected ANSWER or
+   REASON (ask for the determination plus its evidence; a supplied rationale gets adopted, a named
+   expected result gets special-cased into existence)
 1. ☐ Directive drafted (requirement + acceptance + able-to-fail verdict ladder; no pre-designed route)
 2. ☐ Codex design-review (xhigh, agent) → GREEN → GLM pass → fold → Codex confirm → GREEN
 3. ☐ **User gate**
 4. ☐ Execution prompt drafted → Codex design-review (agent) → fold
 5. ☐ Codex executes dual-engine (danger-full-access, xhigh, `< /dev/null`, scripts `timeout 600`) → exit 0; comprehensive inline dim-firewall, able-to-fail
+5b. ☐ ⭐ **Orchestrator re-runs each NAMED acceptance command itself and reads its literal exit code** —
+   not the report's claim. Verify structured artifacts by running their CONSUMER, not by eyeballing
+   counts and values
 6. ☐ Tri-review: arbiter re-run (orchestrator) + fidelity (fresh agent) + adversarial-with-ablation (fresh agent)
 7. ☐ Any hole → Codex remediates → **re-verify on a FRESH clean agent**
 8. ☐ Bank: `STATUS.md` + `decisions/13` §0 + memory; commit only if asked

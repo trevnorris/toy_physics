@@ -74,7 +74,15 @@ Stage011 c_S^2 dimensional leg and corrupt-[K] probe
   dimension order: (L,M,T)
 DIMENSIONS|axes=L,M,T
 DIM|axes=L,M,T|name=LengthDim|exponents={1, 0, 0}
+DIM|axes=L,M,T|name=EnergyDim|exponents={2, 1, -2}
+DIM|axes=L,M,T|name=FourVolumeDim|exponents={4, 0, 0}
+DIM|axes=L,M,T|name=PressureDim|exponents={-2, 1, -2}
+DIM|axes=L,M,T|name=RhoDim|exponents={-4, 0, 0}
+DIM|axes=L,M,T|name=KDim|exponents={18, 1, -2}
+DIM|axes=L,M,T|name=CsSquaredDim|exponents={2, 0, -2}
 DIM|axes=L,M,T|name=ExpectedCsSquaredDim|exponents={2, 0, -2}
+DIM|axes=L,M,T|name=CorruptKDim|exponents={19, 1, -2}
+DIM|axes=L,M,T|name=CorruptCsSquaredDim|exponents={3, 0, -2}
   [energy] = {2, 1, -2}; [four-volume] = {4, 0, 0}; [P] = {-2, 1, -2}
   [rho] = {-4, 0, 0}; [K]=[P]-5[rho] = {18, 1, -2}
   [c_S^2=5*K*rho_star^4/m] = {2, 0, -2}

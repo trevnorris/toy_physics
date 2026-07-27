@@ -406,7 +406,15 @@ runDimensionalBlock[data_] := Module[{dim},
   Print["  dimension order: (L,M,T)"];
   Print["DIMENSIONS|axes=L,M,T"];
   Print["DIM|axes=L,M,T|name=LengthDim|exponents=", ToString[InputForm[dim["LengthDim"]]]];
+  Print["DIM|axes=L,M,T|name=EnergyDim|exponents=", ToString[InputForm[dim["EnergyDim"]]]];
+  Print["DIM|axes=L,M,T|name=FourVolumeDim|exponents=", ToString[InputForm[dim["FourVolumeDim"]]]];
+  Print["DIM|axes=L,M,T|name=PressureDim|exponents=", ToString[InputForm[dim["PressureDim"]]]];
+  Print["DIM|axes=L,M,T|name=RhoDim|exponents=", ToString[InputForm[dim["RhoDim"]]]];
+  Print["DIM|axes=L,M,T|name=KDim|exponents=", ToString[InputForm[dim["KDim"]]]];
+  Print["DIM|axes=L,M,T|name=CsSquaredDim|exponents=", ToString[InputForm[dim["CsSquaredDim"]]]];
   Print["DIM|axes=L,M,T|name=ExpectedCsSquaredDim|exponents=", ToString[InputForm[dim["ExpectedCsSquaredDim"]]]];
+  Print["DIM|axes=L,M,T|name=CorruptKDim|exponents=", ToString[InputForm[dim["CorruptKDim"]]]];
+  Print["DIM|axes=L,M,T|name=CorruptCsSquaredDim|exponents=", ToString[InputForm[dim["CorruptCsSquaredDim"]]]];
   Print["  [energy] = ", dim["EnergyDim"], "; [four-volume] = ", dim["FourVolumeDim"], "; [P] = ", dim["PressureDim"]];
   Print["  [rho] = ", dim["RhoDim"], "; [K]=[P]-5[rho] = ", dim["KDim"]];
   Print["  [c_S^2=5*K*rho_star^4/m] = ", dim["CsSquaredDim"]];

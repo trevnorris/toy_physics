@@ -439,8 +439,9 @@ runEom[data_] := Module[{rows},
   expectBool["EOM RHS is symbolic placeholder only", data["RhsPlaceholders"] === {FaHF, FLHF}]
 ];
 
-runDimensionalBlock[data_] := Module[{dim},
+runDimensionalBlock[data_] := Module[{dim, kEtaDim},
   dim = data["Dim"];
+  kEtaDim = dimOf[data["KEta"], dim["DimRules"]];
   subheading["013 dimensional legs and corrupt-[Tw] probe"];
   Print["  dimension order: (L,M,T)"];
   Print["  sourced dims: L0=(1,0,0), beta=(-1,0,0), muEta=(-1,1,0), Tw=(1,1,-2), rAL=(0,0,0)"];
@@ -453,6 +454,7 @@ runDimensionalBlock[data_] := Module[{dim},
   Print["DIM|axes=L,M,T|name=symbol_dims.muEta|exponents=", ToString[InputForm[dim["DimRules"][muEta]]]];
   Print["DIM|axes=L,M,T|name=symbol_dims.Tw|exponents=", ToString[InputForm[dim["DimRules"][Tw]]]];
   Print["DIM|axes=L,M,T|name=symbol_dims.rAL|exponents=", ToString[InputForm[dim["DimRules"][rAL]]]];
+  Print["DIM|axes=L,M,T|name=K_eta|exponents=", ToString[InputForm[kEtaDim]]];
   Print["DIM|axes=L,M,T|name=m_dims.aa|exponents=", ToString[InputForm[dim["MDims"]["aa"]]]];
   Print["DIM|axes=L,M,T|name=m_dims.aL|exponents=", ToString[InputForm[dim["MDims"]["aL"]]]];
   Print["DIM|axes=L,M,T|name=m_dims.LL|exponents=", ToString[InputForm[dim["MDims"]["LL"]]]];

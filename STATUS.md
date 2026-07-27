@@ -13,6 +13,19 @@ so every converted stage compares every name it emits, with no exemptions.
 ⚠ That is a **coverage** statement, not a strength one — some compared records are primitive
 declarations in both engines, which catches transcription divergence but not wrong physics.
 
+⭐ **TRACK TWO COUNTERS, NOT ONE — they are different finish lines.**
+- **converted** — on the shared module, cross-engine gate green: **5 of 30**.
+- **physics-verified** — dimensions independently derived from `model_map.md`: **stage012, 013,
+  018, and the three 011/012 waiver records**. The other 25 stages have **never** had their
+  declared dimensions checked against the model.
+
+Cross-engine agreement is necessary and **not sufficient** — proven twice: it is blind to a
+same-dimension different-quantity merge, and to a shared wrong declaration. The physics leg is
+what establishes correctness, and **it does not depend on conversion** — it can run against any
+stage's existing declarations. If the goal that matters is Part VII's firewall being trustworthy
+rather than the manifests unblocking, that is the leg to sequence around. See `DIMENSION_REWRITE.md`
+§4-c1.
+
 Every SymPy audit script's dimension handling moves onto one shared module
 `research/pde_ledger_v2/scripts/ledger_dimensions.py`, **one stage at a time**, each verified by an
 independent `.py`-vs-`.wl` cross-check.

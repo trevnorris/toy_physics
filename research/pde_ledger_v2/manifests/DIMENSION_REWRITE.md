@@ -230,6 +230,32 @@ derive every proposed quantity's dimension from the **model** (`docs/model_map.m
 physics, `notes/parameter_register.md`), **and adjudicate every proposed NAME against D4.** This leg
 is a **gate on step (d)** — it authorizes nothing by itself; (d) alone owns the re-baseline and the
 reference commit.
+
+⭐⭐ **(c1) THE PHYSICS LEG MUST LEAVE A TRACKED VERDICT — it is the only blocking leg that used to
+leave none.** §4-a requires a tracked enumeration; this leg produced its verdicts into commit
+messages and nothing else, which is why *"how many quantities are actually physics-verified"* was
+not a number anyone could look up. Record in the stage note, alongside the (a) enumeration:
+1. **per quantity** — `CORRECT` / `WRONG` / `UNDETERMINED`, with the derivation route, not just the
+   verdict. A verdict without its route is an assertion.
+2. **the D4 name determination** — same-quantity or different-quantity, with the evidence, for every
+   name that could group with an existing one.
+3. ⭐ **what this leg does NOT cover** — count the records that are *declared literals in both
+   engines*, because for those the comparator catches transcription divergence and **nothing**
+   catches wrong upstream physics. stage037: 8 of 21. stage018: 6 of 10. Without this line a green
+   physics leg reads as full coverage.
+4. ⭐⭐ **anything STRUCTURALLY UNCHECKABLE, which is the most valuable thing this leg produces.**
+   Examples already found: stage018's 65 checks admit a **six-integer-parameter family** of
+   declarations, so they cannot pin `[a]` or `[c_s]` at all; stage011's `OmegaDim` is consumed by
+   nothing in stage011. **No amount of conversion fixes these** — they are a map of where the
+   ledger's dimensional checks are hollow, and Part VII's whole-system firewall needs exactly that
+   map. Treat it as a deliverable, not a complaint.
+
+⛔ **Why this matters more than the conversion.** Cross-engine agreement has now been shown twice
+to be necessary and **not sufficient** — it is blind to a same-dimension different-quantity merge
+(`c_s0` vs `c_S`, stage018) and to a shared wrong declaration. **"30 of 30 converted" and "the
+ledger's dimensions are demonstrably right" are different finish lines.** The conversion serves the
+checker's recovery path — an engineering need. This leg serves the correctness claim, and it does
+**not** depend on a stage being converted: it can be run against any stage's existing declarations.
 ⛔ **A naming decision is a PHYSICS decision. Never freeze one on dimensional evidence alone.**
 **The measured reason (stage018, 2026-07-27):** the `.wl` proposed emitting the sound speed under
 stage012's name, merging `c_s0` (bulk asymptotic `ρ0`) with `c_S` (wall `ρ*`). Both are `L T⁻¹`, so

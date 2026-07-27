@@ -25,8 +25,14 @@ HEADER_LINE_RE = re.compile(
 )
 
 # Per-stage, per-engine coverage waivers belong here.  Every waived quantity
-# must be named; there is deliberately no stage011 waiver.
-COVERAGE_WAIVERS: Mapping[str, Mapping[str, frozenset[str]]] = {}
+# must be named.  Stage011's Wolfram engine keeps the primitive omega and m
+# dimension literals local to buildDimensionalBlock[] and does not return
+# standalone OmegaDim or MassDim quantities to its once-only DIM print site.
+COVERAGE_WAIVERS: Mapping[str, Mapping[str, frozenset[str]]] = {
+    "stage011": {
+        "py_only": frozenset({"MassDim", "OmegaDim"}),
+    },
+}
 
 
 @dataclass(frozen=True)

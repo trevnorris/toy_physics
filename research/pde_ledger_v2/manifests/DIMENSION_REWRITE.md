@@ -32,6 +32,39 @@ Everything below follows from this. The `.wl` files never import the module, nev
 the `.py`, and are never "standardised" to agree with it. The comparison is infrastructure we keep,
 not scaffolding we discard once the corpus is unified.
 
+## 1b. ⭐ USER DECISIONS, 2026-07-26 — "correctness is king"
+
+> *"I don't care if the scripts are byte identical on the output or if we need to do more derivations.
+> Correctness is king. If we need to rename or whatever, let's make it happen. Just because something
+> will be hard to do doesn't mean we shouldn't do it."*
+
+**D1 — stdout byte-identity is a DIAGNOSTIC, not a blocking gate.** Report it when it holds (it is good
+evidence a refactor changed representation and not results), but **never let it constrain a correct
+change**. It only ever existed for stages 001–028 anyway (§4).
+
+**D2 — print-only on the `.wl` is RELAXED.** A `.wl` may gain genuine new computation in order to
+expose a value. ⇒ **The four "impossible" stages reopen** (037, 036, 035, 044 — they were blocked *only*
+by print-only), as does any `UNREACHABLE` waived because reaching it needed a data-flow change
+(stage011 `MassDim`/`OmegaDim`, stage012 `mass_dim`). Re-derive the "~26 well-gated + 4 that can't be"
+assessment; it was made under a constraint that no longer applies.
+
+**D3 — ⛔ ENGINE INDEPENDENCE IS *NOT* RELAXED.** This is not a difficulty constraint, so "correctness
+is king" does not loosen it — it *is* the correctness. A derivation added to a `.wl` must be **its own
+route**; deriving it by transliterating the `.py` makes agreement meaningless. See
+`research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md` and the §1 charter. Adding computation to a
+`.wl` therefore requires stating **how the route differs** from the `.py`'s.
+
+**D4 — RENAMING IS AUTHORIZED, in one direction only.**
+- ✅ Rename so **the same quantity shares one name** across stages (`EnergyDim` → `energy_dim`). This
+  *creates* cross-stage comparisons that currently go undetected — see §8's GROUPING LIMITATIONS.
+- ⛔ **Never** rename so that **different quantities share a name**, and never rename to make a
+  conflict disappear. That destroys the check and hides reduction debt (§7). These are opposite
+  operations; only the first is sanctioned.
+- Fold the standardisation into each stage's rewrite as it comes up.
+
+**D5 — cost and difficulty are not reasons to choose a weaker approach.** Where a correct route needs
+more Wolfram runs, more derivations, or more review legs, take it.
+
 ## 2. WHY THIS EXISTS (not refactoring hygiene)
 
 The 44-stage manifest fanout is **blocked**: dimension recovery covers only ~16 of 43 scripts while the
@@ -77,8 +110,9 @@ not disciplinary. **(c)** Write the prediction down in `notes/stage0NN_rewrite_p
 
 **Three gates, and each proves something different:**
 1. **PASS multiset identical** — the audit still reports what it reported.
-2. **stdout byte-identical** to `tail -n +7 scripts/output/<basename>.txt`, diff exactly 6 wrapper
-   lines — behaviour preservation. ⚠ **NOT a transposition detector** (§6).
+2. **stdout byte-identity** vs `tail -n +7 scripts/output/<basename>.txt` (diff exactly 6 wrapper
+   lines) — behaviour preservation. ⚠ **A DIAGNOSTIC, NOT A BLOCKING GATE** (D1, §1b): report it, never
+   let it prevent a correct change. Also **NOT a transposition detector** (§6).
    ⛔ **This gate only exists for stages 001–028.** `scripts/output/*.txt` covers 001–028 ONLY —
    **stages 030–044 have no committed Python transcript**, so gate 2 is unavailable there and gates 1
    and 3 carry the whole load. Plan for that before starting group B/C/D; do not discover it mid-stage.
@@ -92,7 +126,13 @@ unwaived `py_only`/`wl_only` fails. Waivers are per-stage, name every quantity, 
 
 ## 5. ⛔ THE FABRICATION GUARD (step a) — where this can silently destroy itself
 
-- **Print-only.** No new computation, symbol, assignment, or control flow.
+⚠ **Amended by D2/D3 (§1b).** New computation in a `.wl` is now ALLOWED where it is needed to expose a
+value — but it must be an **independent route**, and the directive must require Codex to state *how
+that route differs from the `.py`'s*. Everything below still stands; only the blanket "no new
+computation" clause is lifted.
+
+- **Prefer print-only** where a live binding already exists — it is cheaper and carries no
+  independence risk. Add computation only when the value is genuinely unreachable otherwise.
 - ⛔ **Never hardcode an exponent literal in a `Print`.** A constant compared to the `.py`'s constant is
   vacuous. This defect already exists at **stage013 `.wl:446-447`** and **stage018 `.wl:386`** — do not
   add a third. Use `ToString[InputForm[dim["KDim"]]]`.
@@ -170,7 +210,9 @@ trips the set check). They are ordered LAST for effort, not for risk.
 - **stage003's `.wl` is `(M,L,T)` and neither file says so.** Emitting `axes=L,T,M` corrupts every triple.
 - **stage042's `.wl:816` comment says "MLT" — a mislabel;** its axes are `(stiffness, L, T)`.
   ⚠ Its guard runs **once**, not twice (an earlier claim was wrong) — 042 is likely recoverable.
-- `.wl` print-only genuinely blocked at **037, 036, 035, 044**.
+- ⚠ **037, 036, 035, 044 were listed as `.wl`-emission-impossible — REOPENED by D2 (§1b).** They were
+  blocked *only* by the print-only rule, which is lifted. Re-assess each; they need genuine (and
+  independently-routed) computation, not a workaround.
 - `lru_cache` — **5 stages, 11 sites**: 018 (×1), 022 (×4), 023 (×1), 027 (×1), **040 (×4)**. 043 has
   **zero**; 040's four are verified argument-pure.
 - `grep -c '^PASS'` **over-counts by exactly 1** (the tally line self-matches).

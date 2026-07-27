@@ -88,6 +88,20 @@ PASS  EOM RHS is symbolic placeholder only
   [M_AB] entries = <|aa -> M, aL -> M, LL -> M|>
   [K_AB] entries = <|aa -> M T^-2, aL -> M T^-2, LL -> M T^-2|>
   [M_AB] shared = {0, 1, 0}; [K_AB] shared = {0, 1, -2}; [K/M] = {0, 0, -2}
+DIM|axes=L,M,T|name=symbol_dims.L0|exponents={1, 0, 0}
+DIM|axes=L,M,T|name=symbol_dims.beta|exponents={-1, 0, 0}
+DIM|axes=L,M,T|name=symbol_dims.muEta|exponents={-1, 1, 0}
+DIM|axes=L,M,T|name=symbol_dims.Tw|exponents={1, 1, -2}
+DIM|axes=L,M,T|name=symbol_dims.rAL|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=m_dims.aa|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=m_dims.aL|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=m_dims.LL|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=k_dims.aa|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=k_dims.aL|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=k_dims.LL|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=m_shared|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=k_shared|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=ratio_dim|exponents={0, 0, -2}
 PASS  M_AB shared dimension is M
 PASS  K_AB shared dimension is M*T^-2
 PASS  K/M ratio dimension is T^-2

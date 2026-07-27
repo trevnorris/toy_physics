@@ -32,8 +32,8 @@ this is freshness, not source coverage.
 | Stage | Axis order | Python quantities | Wolfram quantities | Quantity rows |
 |---|---:|---:|---:|---:|
 | stage004 | `(L,T,M)` | 20 | 20 | 20 |
-| stage011 | `(L,M,T)` | 12 | 10 | 12 |
-| stage012 | `(L,M,T)` | 19 | 18 | 19 |
+| stage011 | `(L,M,T)` | 12 | 12 | 12 |
+| stage012 | `(L,M,T)` | 19 | 19 | 19 |
 | stage013 | `(L,M,T)` | 15 | 15 | 15 |
 | stage018 | `(L,M,T)` | 6 | 6 | 6 |
 
@@ -69,8 +69,8 @@ this is freshness, not source coverage.
 | `(none)` | `FourVolumeDim` | `FourVolumeDim` | stage011 | `(L,M,T)` | `{4, 0, 0}` | L⁴ | AGREE |
 | `(none)` | `KDim` | `KDim` | stage011 | `(L,M,T)` | `{18, 1, -2}` | M L¹⁸ T⁻² | AGREE |
 | `(none)` | `LengthDim` | `LengthDim` | stage011 | `(L,M,T)` | `{1, 0, 0}` | L | AGREE |
-| `(none)` | `MassDim` | `MassDim` | stage011 | `(L,M,T)` | `{0, 1, 0}` | M | ONE_SIDED_PY (WAIVED) |
-| `(none)` | `OmegaDim` | `OmegaDim` | stage011 | `(L,M,T)` | `{0, 0, -1}` | T⁻¹ | ONE_SIDED_PY (WAIVED) |
+| `(none)` | `MassDim` | `MassDim` | stage011 | `(L,M,T)` | `{0, 1, 0}` | M | AGREE |
+| `(none)` | `OmegaDim` | `OmegaDim` | stage011 | `(L,M,T)` | `{0, 0, -1}` | T⁻¹ | AGREE |
 | `(none)` | `PressureDim` | `PressureDim` | stage011 | `(L,M,T)` | `{-2, 1, -2}` | M L⁻² T⁻² | AGREE |
 | `(none)` | `RhoDim` | `RhoDim` | stage011 | `(L,M,T)` | `{-4, 0, 0}` | L⁻⁴ | AGREE |
 | `(none)` | `K_dim` | `KDim` | stage012 | `(L,M,T)` | `{18, 1, -2}` | M L¹⁸ T⁻² | AGREE |
@@ -88,7 +88,7 @@ this is freshness, not source coverage.
 | `corrupt_walk` | `z00_prefactor_dim` | `z00PrefactorDim` | stage012 | `(L,M,T)` | `{-3/2, 0, 0}` | L⁻³⁄² | AGREE |
 | `(none)` | `energy_dim` | `energyDim` | stage012 | `(L,M,T)` | `{2, 1, -2}` | M L² T⁻² | AGREE |
 | `(none)` | `four_volume_dim` | `fourVolumeDim` | stage012 | `(L,M,T)` | `{4, 0, 0}` | L⁴ | AGREE |
-| `(none)` | `mass_dim` | `massDim` | stage012 | `(L,M,T)` | `{0, 1, 0}` | M | ONE_SIDED_PY (WAIVED) |
+| `(none)` | `mass_dim` | `massDim` | stage012 | `(L,M,T)` | `{0, 1, 0}` | M | AGREE |
 | `(none)` | `omega_dim` | `omegaDim` | stage012 | `(L,M,T)` | `{0, 0, -1}` | T⁻¹ | AGREE |
 | `(none)` | `pressure_dim` | `pressureDim` | stage012 | `(L,M,T)` | `{-2, 1, -2}` | M L⁻² T⁻² | AGREE |
 | `(none)` | `rho_dim` | `rhoDim` | stage012 | `(L,M,T)` | `{-4, 0, 0}` | L⁻⁴ | AGREE |

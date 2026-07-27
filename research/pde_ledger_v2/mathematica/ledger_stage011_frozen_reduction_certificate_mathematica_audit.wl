@@ -206,6 +206,9 @@ buildReductionCase[
 
 dimResidualVec[actual_, expected_] := FullSimplify[(actual - expected).(actual - expected)];
 
+dimensionAxes = AssociationThread[{"L", "M", "T"}, IdentityMatrix[3]];
+dimensionAxesLabel[] := StringRiffle[Keys[dimensionAxes], ","];
+
 dimOf[expr_, dims_] := Module[{clean, args, argDims, base, power},
   clean = FullSimplify[expr];
   Which[
@@ -236,23 +239,23 @@ buildDimensionalBlock[] := Module[
     corruptRules, corruptCsSquaredDim, corruptOk, probeVerdict,
     mutationFires, cleanVerdict, mutatedVerdict, failSuppressed
   },
-  lengthDim = {1, 0, 0};
-  energyDim = {2, 1, -2};
+  lengthDim = dimensionAxes["L"];
+  energyDim = 2 dimensionAxes["L"] + dimensionAxes["M"] - 2 dimensionAxes["T"];
   fourVolumeDim = 4 lengthDim;
   pressureDim = energyDim - fourVolumeDim;
   rhoDim = -4 lengthDim;
   kDim = pressureDim - 5 rhoDim;
   dimRules = <|
     L0 -> lengthDim,
-    omega -> {0, 0, -1},
+    omega -> -dimensionAxes["T"],
     K -> kDim,
     rhoStar -> rhoDim,
-    m -> {0, 1, 0}
+    m -> dimensionAxes["M"]
   |>;
-  expectedCsSquaredDim = {2, 0, -2};
+  expectedCsSquaredDim = 2 dimensionAxes["L"] - 2 dimensionAxes["T"];
   csSquaredDim = dimOf[cSSquaredBulk, dimRules];
   dimensionalOk = TrueQ[csSquaredDim == expectedCsSquaredDim];
-  corruptRules = Join[KeyDrop[dimRules, K], <|K -> dimRules[K] + {1, 0, 0}|>];
+  corruptRules = Join[KeyDrop[dimRules, K], <|K -> dimRules[K] + dimensionAxes["L"]|>];
   corruptCsSquaredDim = dimOf[cSSquaredBulk, corruptRules];
   corruptOk = TrueQ[corruptCsSquaredDim == expectedCsSquaredDim];
   probeVerdict = If[corruptOk, "NO_FAIL", DNUNITTESTFAILDIMENSIONAL];
@@ -271,6 +274,8 @@ buildDimensionalBlock[] := Module[
     "PressureDim" -> pressureDim,
     "RhoDim" -> rhoDim,
     "KDim" -> kDim,
+    "OmegaDim" -> dimRules[omega],
+    "MassDim" -> dimRules[m],
     "CsSquaredDim" -> csSquaredDim,
     "ExpectedCsSquaredDim" -> expectedCsSquaredDim,
     "DimensionalOk" -> dimensionalOk,
@@ -400,21 +405,24 @@ runConsumedR1[data_] := (
   expectZero["explicit frozen-export anchor consumed - 5*K*rho_star^4/m equals zero", data["Consumed"] - 5 K rhoStar^4/m]
 );
 
-runDimensionalBlock[data_] := Module[{dim},
+runDimensionalBlock[data_] := Module[{dim, axes},
   dim = data["Dim"];
+  axes = dimensionAxesLabel[];
   subheading["Stage011 c_S^2 dimensional leg and corrupt-[K] probe"];
   Print["  dimension order: (L,M,T)"];
-  Print["DIMENSIONS|axes=L,M,T"];
-  Print["DIM|axes=L,M,T|name=LengthDim|exponents=", ToString[InputForm[dim["LengthDim"]]]];
-  Print["DIM|axes=L,M,T|name=EnergyDim|exponents=", ToString[InputForm[dim["EnergyDim"]]]];
-  Print["DIM|axes=L,M,T|name=FourVolumeDim|exponents=", ToString[InputForm[dim["FourVolumeDim"]]]];
-  Print["DIM|axes=L,M,T|name=PressureDim|exponents=", ToString[InputForm[dim["PressureDim"]]]];
-  Print["DIM|axes=L,M,T|name=RhoDim|exponents=", ToString[InputForm[dim["RhoDim"]]]];
-  Print["DIM|axes=L,M,T|name=KDim|exponents=", ToString[InputForm[dim["KDim"]]]];
-  Print["DIM|axes=L,M,T|name=CsSquaredDim|exponents=", ToString[InputForm[dim["CsSquaredDim"]]]];
-  Print["DIM|axes=L,M,T|name=ExpectedCsSquaredDim|exponents=", ToString[InputForm[dim["ExpectedCsSquaredDim"]]]];
-  Print["DIM|axes=L,M,T|name=CorruptKDim|exponents=", ToString[InputForm[dim["CorruptKDim"]]]];
-  Print["DIM|axes=L,M,T|name=CorruptCsSquaredDim|exponents=", ToString[InputForm[dim["CorruptCsSquaredDim"]]]];
+  Print["DIMENSIONS|axes=", axes];
+  Print["DIM|axes=", axes, "|name=LengthDim|exponents=", ToString[InputForm[dim["LengthDim"]]]];
+  Print["DIM|axes=", axes, "|name=EnergyDim|exponents=", ToString[InputForm[dim["EnergyDim"]]]];
+  Print["DIM|axes=", axes, "|name=FourVolumeDim|exponents=", ToString[InputForm[dim["FourVolumeDim"]]]];
+  Print["DIM|axes=", axes, "|name=PressureDim|exponents=", ToString[InputForm[dim["PressureDim"]]]];
+  Print["DIM|axes=", axes, "|name=RhoDim|exponents=", ToString[InputForm[dim["RhoDim"]]]];
+  Print["DIM|axes=", axes, "|name=KDim|exponents=", ToString[InputForm[dim["KDim"]]]];
+  Print["DIM|axes=", axes, "|name=OmegaDim|exponents=", ToString[InputForm[dim["OmegaDim"]]]];
+  Print["DIM|axes=", axes, "|name=MassDim|exponents=", ToString[InputForm[dim["MassDim"]]]];
+  Print["DIM|axes=", axes, "|name=CsSquaredDim|exponents=", ToString[InputForm[dim["CsSquaredDim"]]]];
+  Print["DIM|axes=", axes, "|name=ExpectedCsSquaredDim|exponents=", ToString[InputForm[dim["ExpectedCsSquaredDim"]]]];
+  Print["DIM|axes=", axes, "|name=CorruptKDim|exponents=", ToString[InputForm[dim["CorruptKDim"]]]];
+  Print["DIM|axes=", axes, "|name=CorruptCsSquaredDim|exponents=", ToString[InputForm[dim["CorruptCsSquaredDim"]]]];
   Print["  [energy] = ", dim["EnergyDim"], "; [four-volume] = ", dim["FourVolumeDim"], "; [P] = ", dim["PressureDim"]];
   Print["  [rho] = ", dim["RhoDim"], "; [K]=[P]-5[rho] = ", dim["KDim"]];
   Print["  [c_S^2=5*K*rho_star^4/m] = ", dim["CsSquaredDim"]];

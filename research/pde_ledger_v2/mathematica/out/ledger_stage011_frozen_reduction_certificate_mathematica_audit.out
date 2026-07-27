@@ -79,6 +79,8 @@ DIM|axes=L,M,T|name=FourVolumeDim|exponents={4, 0, 0}
 DIM|axes=L,M,T|name=PressureDim|exponents={-2, 1, -2}
 DIM|axes=L,M,T|name=RhoDim|exponents={-4, 0, 0}
 DIM|axes=L,M,T|name=KDim|exponents={18, 1, -2}
+DIM|axes=L,M,T|name=OmegaDim|exponents={0, 0, -1}
+DIM|axes=L,M,T|name=MassDim|exponents={0, 1, 0}
 DIM|axes=L,M,T|name=CsSquaredDim|exponents={2, 0, -2}
 DIM|axes=L,M,T|name=ExpectedCsSquaredDim|exponents={2, 0, -2}
 DIM|axes=L,M,T|name=CorruptKDim|exponents={19, 1, -2}

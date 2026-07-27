@@ -31,7 +31,9 @@ $Assumptions =
   Element[n, Integers] && n >= 0 && Element[j, Integers] && j >= 1;
 
 k = omega/cS;
-zeroDim = {0, 0, 0};
+dimensionAxes = AssociationThread[{"L", "M", "T"}, IdentityMatrix[3]];
+dimensionAxesLabel[] := StringRiffle[Keys[dimensionAxes], ","];
+zeroDim = 0 dimensionAxes["L"];
 
 raise[msg_] := Throw[msg, "ledgerStage012Failure"];
 
@@ -247,17 +249,17 @@ buildDimensionalBlock[] := Module[
     corruptDimensionalOk, mutationFires, cleanVerdict, mutatedVerdict,
     failSuppressed, walk
   },
-  lengthDim = {1, 0, 0};
-  energyDim = {2, 1, -2};
+  lengthDim = dimensionAxes["L"];
+  energyDim = 2 dimensionAxes["L"] + dimensionAxes["M"] - 2 dimensionAxes["T"];
   fourVolumeDim = 4 lengthDim;
   pressureDim = energyDim - fourVolumeDim;
   rhoDim = -4 lengthDim;
   kDim = pressureDim - 5 rhoDim;
-  omegaDim = {0, 0, -1};
-  massDim = {0, 1, 0};
-  alphaDim = {-1, 0, 0};
+  omegaDim = -dimensionAxes["T"];
+  massDim = dimensionAxes["M"];
+  alphaDim = -dimensionAxes["L"];
   expectedTanDim = zeroDim;
-  expectedZ00Dim = {-1, 0, 0};
+  expectedZ00Dim = -dimensionAxes["L"];
   walk[KDimension_] := Module[{baseRules, csSquaredDim, csDim, dimRules, tanDim, prefDim, z00Dim},
     baseRules = <|L0 -> lengthDim, omega -> omegaDim, K -> KDimension, rhoStar -> rhoDim, m -> massDim, alpha -> alphaDim|>;
     csSquaredDim = dimOf[5 K rhoStar^4/m, baseRules];
@@ -281,7 +283,7 @@ buildDimensionalBlock[] := Module[
     TrueQ[cleanWalk["TanArgumentDim"] == expectedTanDim] &&
     TrueQ[cleanWalk["Z00PrefactorDim"] == expectedZ00Dim] &&
     TrueQ[cleanWalk["Z00Dim"] == expectedZ00Dim];
-  corruptKDim = kDim + {1, 0, 0};
+  corruptKDim = kDim + dimensionAxes["L"];
   corruptWalk = walk[corruptKDim];
   corruptDimensionalOk =
     TrueQ[corruptWalk["TanArgumentDim"] == expectedTanDim] &&
@@ -305,6 +307,7 @@ buildDimensionalBlock[] := Module[
     "RhoDim" -> rhoDim,
     "KDim" -> kDim,
     "OmegaDim" -> omegaDim,
+    "MassDim" -> massDim,
     "AlphaDim" -> alphaDim,
     "ExpectedTanDim" -> expectedTanDim,
     "ExpectedZ00Dim" -> expectedZ00Dim,
@@ -559,31 +562,33 @@ runRobinCounterfactual[data_] := Module[{robin, guard},
   expectBool["all(counterfactual_guard.values()) is true", guardAll[guard]]
 ];
 
-runDimensionalBlock[data_] := Module[{dim, clean, corrupt},
+runDimensionalBlock[data_] := Module[{dim, clean, corrupt, axes},
   dim = data["Dim"];
   clean = dim["CleanWalk"];
   corrupt = dim["CorruptWalk"];
+  axes = dimensionAxesLabel[];
   subheading["012 dimensional legs and corrupt-[K] probe"];
   Print["  dimension order: (L,M,T)"];
-  Print["DIMENSIONS|axes=L,M,T"];
-  Print["DIM|axes=L,M,T|name=energy_dim|exponents=", ToString[InputForm[dim["EnergyDim"]]]];
-  Print["DIM|axes=L,M,T|name=four_volume_dim|exponents=", ToString[InputForm[dim["FourVolumeDim"]]]];
-  Print["DIM|axes=L,M,T|name=pressure_dim|exponents=", ToString[InputForm[dim["PressureDim"]]]];
-  Print["DIM|axes=L,M,T|name=rho_dim|exponents=", ToString[InputForm[dim["RhoDim"]]]];
-  Print["DIM|axes=L,M,T|name=K_dim|exponents=", ToString[InputForm[dim["KDim"]]]];
-  Print["DIM|axes=L,M,T|name=omega_dim|exponents=", ToString[InputForm[dim["OmegaDim"]]]];
-  Print["DIM|axes=L,M,T|name=alpha_dim|exponents=", ToString[InputForm[dim["AlphaDim"]]]];
-  Print["DIM|axes=L,M,T|name=clean_walk.cs_squared_dim|exponents=", ToString[InputForm[clean["CsSquaredDim"]]]];
-  Print["DIM|axes=L,M,T|name=clean_walk.cs_dim|exponents=", ToString[InputForm[clean["CsDim"]]]];
-  Print["DIM|axes=L,M,T|name=clean_walk.k_dim|exponents=", ToString[InputForm[clean["KDimFromOmegaOverCs"]]]];
-  Print["DIM|axes=L,M,T|name=clean_walk.tan_argument_dim|exponents=", ToString[InputForm[clean["TanArgumentDim"]]]];
-  Print["DIM|axes=L,M,T|name=clean_walk.z00_prefactor_dim|exponents=", ToString[InputForm[clean["Z00PrefactorDim"]]]];
-  Print["DIM|axes=L,M,T|name=clean_walk.z00_dim|exponents=", ToString[InputForm[clean["Z00Dim"]]]];
-  Print["DIM|axes=L,M,T|name=corrupt_K_dim|exponents=", ToString[InputForm[dim["CorruptKDim"]]]];
-  Print["DIM|axes=L,M,T|name=corrupt_walk.cs_dim|exponents=", ToString[InputForm[corrupt["CsDim"]]]];
-  Print["DIM|axes=L,M,T|name=corrupt_walk.k_dim|exponents=", ToString[InputForm[corrupt["KDimFromOmegaOverCs"]]]];
-  Print["DIM|axes=L,M,T|name=corrupt_walk.tan_argument_dim|exponents=", ToString[InputForm[corrupt["TanArgumentDim"]]]];
-  Print["DIM|axes=L,M,T|name=corrupt_walk.z00_prefactor_dim|exponents=", ToString[InputForm[corrupt["Z00PrefactorDim"]]]];
+  Print["DIMENSIONS|axes=", axes];
+  Print["DIM|axes=", axes, "|name=energy_dim|exponents=", ToString[InputForm[dim["EnergyDim"]]]];
+  Print["DIM|axes=", axes, "|name=four_volume_dim|exponents=", ToString[InputForm[dim["FourVolumeDim"]]]];
+  Print["DIM|axes=", axes, "|name=pressure_dim|exponents=", ToString[InputForm[dim["PressureDim"]]]];
+  Print["DIM|axes=", axes, "|name=rho_dim|exponents=", ToString[InputForm[dim["RhoDim"]]]];
+  Print["DIM|axes=", axes, "|name=K_dim|exponents=", ToString[InputForm[dim["KDim"]]]];
+  Print["DIM|axes=", axes, "|name=omega_dim|exponents=", ToString[InputForm[dim["OmegaDim"]]]];
+  Print["DIM|axes=", axes, "|name=mass_dim|exponents=", ToString[InputForm[dim["MassDim"]]]];
+  Print["DIM|axes=", axes, "|name=alpha_dim|exponents=", ToString[InputForm[dim["AlphaDim"]]]];
+  Print["DIM|axes=", axes, "|name=clean_walk.cs_squared_dim|exponents=", ToString[InputForm[clean["CsSquaredDim"]]]];
+  Print["DIM|axes=", axes, "|name=clean_walk.cs_dim|exponents=", ToString[InputForm[clean["CsDim"]]]];
+  Print["DIM|axes=", axes, "|name=clean_walk.k_dim|exponents=", ToString[InputForm[clean["KDimFromOmegaOverCs"]]]];
+  Print["DIM|axes=", axes, "|name=clean_walk.tan_argument_dim|exponents=", ToString[InputForm[clean["TanArgumentDim"]]]];
+  Print["DIM|axes=", axes, "|name=clean_walk.z00_prefactor_dim|exponents=", ToString[InputForm[clean["Z00PrefactorDim"]]]];
+  Print["DIM|axes=", axes, "|name=clean_walk.z00_dim|exponents=", ToString[InputForm[clean["Z00Dim"]]]];
+  Print["DIM|axes=", axes, "|name=corrupt_K_dim|exponents=", ToString[InputForm[dim["CorruptKDim"]]]];
+  Print["DIM|axes=", axes, "|name=corrupt_walk.cs_dim|exponents=", ToString[InputForm[corrupt["CsDim"]]]];
+  Print["DIM|axes=", axes, "|name=corrupt_walk.k_dim|exponents=", ToString[InputForm[corrupt["KDimFromOmegaOverCs"]]]];
+  Print["DIM|axes=", axes, "|name=corrupt_walk.tan_argument_dim|exponents=", ToString[InputForm[corrupt["TanArgumentDim"]]]];
+  Print["DIM|axes=", axes, "|name=corrupt_walk.z00_prefactor_dim|exponents=", ToString[InputForm[corrupt["Z00PrefactorDim"]]]];
   Print["  [energy] = ", dim["EnergyDim"], "; [four-volume] = ", dim["FourVolumeDim"], "; [P] = ", dim["PressureDim"]];
   Print["  [rho] = ", dim["RhoDim"], "; [K]=[P]-5[rho] = ", dim["KDim"], "; [alpha] = ", dim["AlphaDim"]];
   Print["  propagated [c_S^2] = ", clean["CsSquaredDim"], " -> [c_S] = ", clean["CsDim"], " -> [k] = ", clean["KDimFromOmegaOverCs"]];

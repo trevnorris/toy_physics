@@ -46,6 +46,28 @@ PASS  wrong_eigenvalue self-ablation suppresses fail
 Angular dimensional gate and sourced-density corruption probes
 --------------------------------------------------------------
   dimension order = (L,M,T)
+DIMENSIONS|axes=L,M,T
+DIM|axes=L,M,T|name=dim_rules.a|exponents={1, 0, 0}
+DIM|axes=L,M,T|name=dim_rules.dw|exponents={1, 0, 0}
+DIM|axes=L,M,T|name=dim_rules.d_omega|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=dim_rules.beta2|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=dim_rules.beta2_prime|exponents={-1, 0, 0}
+DIM|axes=L,M,T|name=dim_rules.mu_eta|exponents={-3, 1, 0}
+DIM|axes=L,M,T|name=dim_rules.T_w|exponents={-1, 1, -2}
+DIM|axes=L,M,T|name=dim_rules.K_eta|exponents={-3, 1, -2}
+DIM|axes=L,M,T|name=dim_rules.T_Omega|exponents={-3, 1, -2}
+DIM|axes=L,M,T|name=dim_rules.M_tilde|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=dim_rules.K_tilde|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=dim_rules.T_Omega_tilde|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.measure|exponents={3, 0, 0}
+DIM|axes=L,M,T|name=baseline_dims.M2_integral|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=baseline_dims.T_w_beta_prime_sq|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.K_eta_beta_sq|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.lambda_T_Omega_beta_sq|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.K2_integral|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.actual_M2|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=baseline_dims.actual_K2|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.actual_K2_over_M2|exponents={0, 0, -2}
   sourced volume-density convention: dV=a_dim^2*dw*dOmega has dimension L^3; beta2 is dimensionless.
   walked K2 terms = <|T_w_beta_prime_sq -> aDim^2*beta2PrimeDim^2*dOmegaDim*dwDim*TwDensity, K_eta_beta_sq -> aDim^2*beta2Dim^2*dOmegaDim*dwDim*KetaDensity, lambda_T_Omega_beta_sq -> 6*aDim^2*beta2Dim^2*dOmegaDim*dwDim*TOmegaDensity|>
   computed dimensions = <|measure -> L^3, M2_integral -> M, T_w_beta_prime_sq -> M T^-2, K_eta_beta_sq -> M T^-2, lambda_T_Omega_beta_sq -> M T^-2, K2_integral -> M T^-2, actual_M2 -> M, actual_K2 -> M T^-2, actual_K2_over_M2 -> T^-2|>

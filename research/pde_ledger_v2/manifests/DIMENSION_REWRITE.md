@@ -386,6 +386,16 @@ strings in both engines. ⇒ every group-A stage needs `.wl` emission; with the 
 **fail** rather than pass quietly. The old ordering was a cost heuristic, never a correctness one.
 ⚠ 021 also has cross-engine name collisions (`[P₀_raw]`/`[P0_raw]`, unicode `N₀` vs ASCII `N0`).
 
+⛔⛔ **GAP IN THE RECORD, found 2026-07-27 — the four remaining group-A stages have NO `.wl`
+reachability survey.** `notes/rewrite_reference_table.md` §5.3 surveys 21 stages and covers
+**005 007 006 032 034 038 039 002 003 008 009 010 030 031 040 041 042 044 035 036 037** —
+it does **not** cover **016, 023, 027 or 021**. That is a fossil of the falsified *"group A is
+free"* premise: §5.3 only surveyed the stages then believed to need `.wl` work.
+⇒ **For 016/023/027/021, whether each `.wl` value is REACHABLE (top-level global) or
+`LOCAL_ONLY` (dies at a `Module` boundary) is UNKNOWN and must be determined first.** It is the
+first thing step (b) needs, and it decides whether the stage is a print-only repeat or a D2
+data-flow job. Do not assume; the §5.3 verdicts for the surveyed stages split roughly evenly.
+
 **Order:** ~~013, 018,~~ ✅ done → **the three reopened waivers as one batch**, then 016, 023, 027,
 then 021 (heaviest). Then `(L,T,M)`, `(M,L,T)`, then 008 (2-axis), 038 (4-axis), 042 (stiffness).
 ⚠ **The 037 spike ran out of order on purpose** (§3b) — that was a feasibility measurement, not a

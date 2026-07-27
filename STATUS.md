@@ -8,8 +8,10 @@ notes. History is in git. If this file starts growing narrative, cut it.
 ## ▶ YOU ARE HERE (2026-07-27)
 
 **Current front: the DIMENSION REWRITE — 5 of 30 scripts converted** (stage004, stage011, stage012,
-stage013, **stage018**). ⚠ *Converted* ≠ *finished*: 3 are waiver-free (004, 013, 018); **011 and 012
-retain three reopened coverage items** between them, and those are the next work.
+stage013, **stage018**) — and ⭐ **all five are now WAIVER-FREE**: `ARTIFACT_NAME_WAIVERS` is empty,
+so every converted stage compares every name it emits, with no exemptions.
+⚠ That is a **coverage** statement, not a strength one — some compared records are primitive
+declarations in both engines, which catches transcription divergence but not wrong physics.
 
 Every SymPy audit script's dimension handling moves onto one shared module
 `research/pde_ledger_v2/scripts/ledger_dimensions.py`, **one stage at a time**, each verified by an
@@ -18,9 +20,10 @@ independent `.py`-vs-`.wl` cross-check.
 > ⭐ **READ `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`** — the single canonical doc for
 > this workstream. And read `docs/model_map.md` **before touching any script**.
 
-**▶ NEXT: the three reopened waivers as one batch** (011 `MassDim`/`OmegaDim`, 012 `mass_dim` — the
-same small `.wl` data-flow change three times; `K_eta` at stage013 is the worked example), then 016,
-023, 027, 021.
+**▶ NEXT: stage016**, then 023, 027, 021 (021 is the heaviest file in the corpus).
+⛔ **Before converting 035/036/037, fix the canonical-table generator** — it *raises* on cross-engine
+axis-order disagreement, which is exactly the 037 pattern (`wl M,L,T` vs `py (L,T,M)`). Measured; it
+will crash the toolchain.
 
 Per stage: emit `DIM|` records into the `.wl` → ⭐ **run the PHYSICS leg BEFORE the commit** (it is
 blocking, and a NAMING decision is a physics decision) → **commit the `.wl` before touching the `.py`**

@@ -89,8 +89,8 @@ dimension machinery: 001, 014, 015, 017, 019, 020, 022, 024, 025, 026, 028, 033,
 | stage | compared | waived | detectors (L↔M / M↔T / L↔T) | note |
 |---|---|---|---|---|
 | **004** | 20 / 20 | none | 17 of 20 (L↔M) | `(L,T,M)`, `render="symbolic"` |
-| **011** | 10 / 12 | `MassDim`, `OmegaDim` | 10 of 10 | ⚠ **waivers REOPENED by D2** |
-| **012** | 18 / 19 | `mass_dim` | 16 / 8 / 16 of 18 | ⚠ **waiver REOPENED by D2** |
+| **011** | **12 / 12** | **none** | 11 / 9 / 10 of 12 (measured) | ✅ waivers CLOSED `8b006055`; first `.wl` emitting every named binding in its block |
+| **012** | **19 / 19** | **none** | 17 / 9 / 16 of 19 (measured) | ✅ waiver CLOSED `8b006055` |
 | **013** | **15 / 15** | **none** | 12 / 12 / 10 of 15 | first stage with zero waivers |
 | **018** | **6 / 6** | **none** | 3 / 5 / 6 of 6 (measured) | emits **6 of its 10** objects — the 4 omitted are enumerated in the stage note (§4-a) |
 
@@ -99,8 +99,11 @@ dimension machinery: 001, 014, 015, 017, 019, 020, 022, 024, 025, 026, 028, 033,
 M row is `0 == 0` six times and carries no information. Honest, and worth expecting again wherever a
 slice has no mass content.
 
-Canonical table (`research/pde_ledger_v2/CANONICAL_DIMENSIONS.md`, regenerated): **72** quantity rows, 2 candidate groups
-(`KDim`, `Tw` — both AGREE), 0 `NEEDS_ADJUDICATION`.
+Canonical table (`research/pde_ledger_v2/CANONICAL_DIMENSIONS.md`, regenerated): **72** quantity rows, 2 candidate
+groups (`KDim`, `Tw` — both AGREE), 0 `NEEDS_ADJUDICATION`, **0 `ONE_SIDED_PY`**.
+
+⭐⭐ **`ARTIFACT_NAME_WAIVERS` IS NOW EMPTY (`{}`).** Every converted stage compares every name it
+emits, with no exemptions. ⚠ **That is a coverage statement, not a strength statement** — see §3b.1.
 
 | commit | what |
 |---|---|
@@ -126,7 +129,13 @@ outside the comparison.
 These were correct under constraints the user has since lifted (§1b). **They will read as settled
 unless you check here first.** Do not inherit them.
 
-1. **stage011's `MassDim`/`OmegaDim` and stage012's `mass_dim` waivers.** Waived because reaching them
+1. ✅ **CLOSED `8b006055` — stage011's `MassDim`/`OmegaDim` and stage012's `mass_dim`.** All three are
+   now emitted by both engines; the registry is empty. ⚠ **Read the closure honestly:** stage011's
+   `OmegaDim` is consumed by *nothing* in stage011 (`dimOf` runs only on `5 K rhoStar^4/m`, which has
+   no `ω`) and groups with nothing cross-stage until the D4 rename — the waiver is closed, the
+   **quantity is not thereby checked**. All three are primitive declarations in both engines, so the
+   comparison catches transcription divergence, not wrong upstream physics. Historical detail below.
+   ~~**stage011's `MassDim`/`OmegaDim` and stage012's `mass_dim` waivers.**~~ Waived because reaching them
    needed a data-flow change in the `.wl` — which **D2 now permits**. `CANONICAL_DIMENSIONS.md` still
    shows them `ONE_SIDED_PY (WAIVED)`. stage013 proves the pattern: `K_eta` was waived-equivalent under
    print-only and is now derived by both engines. **Go back and close these.**

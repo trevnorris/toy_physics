@@ -81,19 +81,52 @@ Standing rule from the plan of record: **never adjust the process because the co
 
 ## 3. STATE
 
-**3 of 30 done** — stage004, stage011, stage012. (43 audit scripts; 13 have no dimension machinery:
-001, 014, 015, 017, 019, 020, 022, 024, 025, 026, 028, 033, 043.)
+**4 of 30 done** — stage004, stage011, stage012, stage013. (43 audit scripts; 13 have no dimension
+machinery: 001, 014, 015, 017, 019, 020, 022, 024, 025, 026, 028, 033, 043.)
+
+| stage | compared | waived | detectors (L↔M / M↔T / L↔T) | note |
+|---|---|---|---|---|
+| **004** | 20 / 20 | none | 17 of 20 (L↔M) | `(L,T,M)`, `render="symbolic"` |
+| **011** | 10 / 12 | `MassDim`, `OmegaDim` | 10 of 10 | ⚠ **waivers REOPENED by D2** |
+| **012** | 18 / 19 | `mass_dim` | 16 / 8 / 16 of 18 | ⚠ **waiver REOPENED by D2** |
+| **013** | **15 / 15** | **none** | 12 / 12 / 10 of 15 | first stage with zero waivers |
+
+Canonical table (`CANONICAL_DIMENSIONS.md`, regenerated): 66 quantity rows, 2 candidate groups
+(`KDim`, `Tw` — both AGREE), 0 `NEEDS_ADJUDICATION`.
 
 | commit | what |
 |---|---|
 | `adcfbdfd` | module v0 + stage004 + stage011 |
 | `60e7032c` | sidecar + comparator **with a non-empty floor** |
-| `d29055b6` | stage011 `.wl` emission — cross-check 2 → 10 quantities |
-| `57a9bf34` | stage012 `.wl` emission (17 records) |
-| `f5ff1843` | stage012 `.py` rewrite — 18/19 compared, dims verified against the model |
+| `d29055b6` | stage011 `.wl` emission — cross-check 2 → 10 |
+| `57a9bf34` / `f5ff1843` | stage012 `.wl` emission / `.py` rewrite |
+| `6ad649cc` / `cc7f785e` | doc consolidation — 9 dead docs deleted, STATUS.md 491 → 107 |
+| `ae7e4a7d` / `f01de097` | the generated canonical table (output-only) |
+| `50972622` | ⭐ **the D1–D5 user decisions** (§1b) |
+| `2a55a2bb` / `4391c69c` | stage013 `.wl` (incl. `K_eta`, first D2 case) / `.py` — 15/15, no waivers |
+| `535e8e4b` | ⭐ anti-substitution rule → `docs/development_pipeline.md` checklist |
+| `005c8f46` | ⭐ orchestrator `.out`-regeneration step (e2) + measured gate limits |
 
 ⚠ **Read a stage's `COVERAGE|` line before believing it is done.** "2 of 30" was once claimed while
 stage011's gate passed with its own able-to-fail teeth outside the comparison.
+
+## 3b. ⚠⚠ REOPENED BY D1/D2/D4 — conclusions that are NO LONGER TRUE
+
+These were correct under constraints the user has since lifted (§1b). **They will read as settled
+unless you check here first.** Do not inherit them.
+
+1. **stage011's `MassDim`/`OmegaDim` and stage012's `mass_dim` waivers.** Waived because reaching them
+   needed a data-flow change in the `.wl` — which **D2 now permits**. `CANONICAL_DIMENSIONS.md` still
+   shows them `ONE_SIDED_PY (WAIVED)`. stage013 proves the pattern: `K_eta` was waived-equivalent under
+   print-only and is now derived by both engines. **Go back and close these.**
+2. **"037, 036, 035, 044 are `.wl`-emission-impossible."** They were blocked *only* by print-only.
+   They need genuine, independently-routed computation — which is now allowed.
+3. **"~26 well-gated + 4 that can't be."** That estimate assumed (2). Re-derive it.
+4. **The 5 `GROUPING LIMITATIONS` in `CANONICAL_DIMENSIONS.md`** (`EnergyDim`/`energy_dim`,
+   `CsSquaredDim`/`cs_squared_dim`, `CorruptKDim`/`corrupt_K_dim`, `FourVolumeDim`/`four_volume_dim`,
+   `MassDim`/`mass_dim`) are closable by **D4** renaming — same quantity, one name. Currently only
+   `KDim` and `Tw` group; standardising would group all six stage011/012 shared quantities.
+5. **stdout byte-identity as a gate.** D1 makes it a diagnostic. Do not contort code to preserve it.
 
 ## 4. ⭐ THE PER-STAGE LOOP
 

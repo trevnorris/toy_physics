@@ -393,5 +393,5 @@ REPRODUCTION                        — first-match verdict + field binding
   `research/pde_ledger_v2/_scratch/stage044/stage044_synthesis_directive.md` (the build
   directive, rev 2 — Codex `ISSUES_FOUND(12)` folded) + `verdict_py.json` +
   `OUT_stage044_ablation.txt`; `notes/parameter_register.md` (R1–R92 + the new R93–R97
-  + the `Z_χ` master row); `notes/MATHEMATICA_MIRROR_POLICY.md`;
+  + the `Z_χ` master row); `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md`;
   `notes/ledger_v2_blueprint.md` §5 (standalone engine spec) + §6 (per-tooth ablation).

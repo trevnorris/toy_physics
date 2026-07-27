@@ -477,6 +477,6 @@ newly-added).
   ablation); `notes/part6_knit_atomic_split.md` (the RATIFIED 3-stage split, 040 =
   VI-1 = the cone-lock re-adjudication; build order 041→040→042; the § FRESH-READ
   FINDINGS reshape-REQUIREMENTS (040) block (i)–(v));
-  `notes/MATHEMATICA_MIRROR_POLICY.md`; `docs/model_map.md` §3.6 + §4 (the departure
+  `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md`; `docs/model_map.md` §3.6 + §4 (the departure
   ledger). Reshape directive + review trail:
   `research/pde_ledger_v2/_scratch/stage040_reshape_directive.md`.

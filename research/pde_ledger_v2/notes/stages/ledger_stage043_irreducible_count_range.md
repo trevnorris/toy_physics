@@ -421,6 +421,6 @@ touch the continuous headline):
   the § FRESH-READ FINDINGS §A/§B — the two decisions + the 043 refinements);
   `notes/midway_knob_audit.md` §2.5 / §2.6 / §3 (the `Δr` machinery + the disputed
   C1/C2 + the parked decisions); `notes/parameter_register.md` (R1–R84);
-  `notes/MATHEMATICA_MIRROR_POLICY.md`; `notes/ledger_v2_blueprint.md` §5 (standalone
+  `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md`; `notes/ledger_v2_blueprint.md` §5 (standalone
   engine spec) + §6 (per-tooth ablation). Directive + review trail:
   `research/pde_ledger_v2/_scratch/stage043_synthesis_directive.md`.

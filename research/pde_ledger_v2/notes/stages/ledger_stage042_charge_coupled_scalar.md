@@ -550,6 +550,6 @@ EXECUTABLE** stage teeth.
   ablation); `notes/part6_knit_atomic_split.md` (the RATIFIED 3-stage split, 042 =
   VI-3 = the FINAL Part-VI stage, the capstone carrying the Part VII handoff; the
   § FRESH-READ FINDINGS reshape-REQUIREMENTS (042) block (i)–(vii));
-  `notes/MATHEMATICA_MIRROR_POLICY.md`; `docs/model_map.md` §3.6 + §4 (the
+  `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md`; `docs/model_map.md` §3.6 + §4 (the
   departure ledger). Reshape directive + review trail:
   `research/pde_ledger_v2/_scratch/stage042_reshape_directive.md`.

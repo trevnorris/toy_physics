@@ -5,10 +5,10 @@ proven on stage004 + stage011"), working tree clean. Paths relative to `research
 **Corpus read-only**: nothing under `scripts/`, `mathematica/` or `manifests/` was modified. This file is
 the only artefact written.
 
-> ⚠ **State change during measurement.** The session opened at `89bcccdb` with stage004/011 mid-rewrite;
-> the build committed as `adcfbdfd` partway through. **stages 004 and 011 are DONE** — already on
-> `scripts/ledger_dimensions.py`. 28 stages remain, not 30. Their rows below are the *post*-rewrite state
-> and double as the worked example for every other stage.
+> ⚠ **State update after measurement.** The session opened at `89bcccdb` with stage004/011 mid-rewrite;
+> those two committed as `adcfbdfd`, and stage012 has since joined them. **Stages 004, 011, and 012 are
+> DONE** — already on `scripts/ledger_dimensions.py`. **27 stages remain, not 28.** Their rows below
+> preserve the measurement state and double as worked examples for the remaining stages.
 
 ---
 
@@ -20,7 +20,7 @@ the only artefact written.
 | total lines | **39,444** |
 | dimension machinery | **3,675 lines = 9.3 %** (code-only 3,534 = 9.0 %) |
 | scripts with dimension machinery | **30 of 43** — confirms the prior count |
-| already rewritten | **2** (004, 011) → **28 to go** |
+| already rewritten | **3** (004, 011, 012) → **27 to go** |
 | distinct bases | `(L,T,M)`×14 · `(L,M,T)`×8 · `(M,L,T)`×5 · `(L,T)` 2-axis ×1 (008) · `(M,L,T,E-charge)` ×1 (038) · `(stiffness,L,T)` ×1 (042) |
 | scripts with fractional exponents | **8** — confirms the prior count (004, 005, 006, 012, 021, 023, 027, 042) |
 | scripts with no `PASS tally:` line | **16** — exactly 001–003 and 016–028, confirms the prior count |
@@ -125,7 +125,7 @@ disagrees by anything other than 1.**
 - **Marker order instability: 1 stage** — 007. An *ordered* gate false-alarms; a multiset gate holds.
 - **Arity guards on the dimension check: 2 of 30** — 004 `:460` (`… - 17`; the pre-rewrite locus `:502` has moved) and 005 `:843-846` (four counts: 21/5/11/7). The other 28 keep their
   `PASS` if a check is made vacuous.
-- **SHA-256 of canonical manifest text: 6 stages** — 032, 033, 034, 035, 036, 037, 038. None hashes its own
+- **SHA-256 of canonical manifest text: 7 stages** — 032, 033, 034, 035, 036, 037, 038. None hashes its own
   source, but any of them could carry a dimension rendering into a frozen digest; check before changing
   `__str__`/`repr` output.
 
@@ -182,7 +182,8 @@ explicitly.
 
 ## 3. The nine cross-stage conflicts, mapped to stages
 
-From `manifests/PIVOT_TO_REWRITE.md` §3, with loci recovered from
+The conflict inventory is retained here; its corpus context is consolidated in
+`manifests/DIMENSION_REWRITE.md` §7, with loci recovered from
 `notes/measure_register_sufficiency.md:75-118`. **"First surfaces at"** is keyed to the rewrite order in §4.
 
 | # | conflict | stages spanned | first surfaces at |
@@ -192,13 +193,13 @@ From `manifests/PIVOT_TO_REWRITE.md` §3, with loci recovered from
 |3|**`K_eta` carries three different dimensions**: `M L⁻¹T⁻²` (`013:412`) · `M L⁻³T⁻²` (`016:362`) · `M T⁻²` (`023:466`). The register documents 013-vs-023 only.|013, 016, 023|⭐ **step A2 (013)** — the earliest adjudication in the whole plan. All three stages are in the first group, so it is fully in view by **step A5 (023)**|
 |4|**Two stages compute the same ratio `r_BA = q_T²c_γ²/(μ_R A_E)` in incompatible unit systems.** 037 uses `μ_R=M L⁻¹T⁻²`, `A_E=M L³T⁻²`; 038 uses `μ_R=M²L T⁻⁴E⁻¹`, `A_E=L·E`. **Both land dimensionless**, so nothing catches it.|037, 038 (036 shares 037's convention)|**step B12 (037)**, resolved at **step D3 (038)**|
 |5|**`ε0/ε1` vs `Z0_ret/Z1_ret`** — the register (`:169`) calls these the *same two dofs*, but `ε0/ε1` are dimensionless `1` at 009 and `Z0_ret/Z1_ret` are `M T⁻²` at 023 (`py:162`).|009, 023|**step A5 (023)** if you take 023 in group A; otherwise **step B3 (009)**. Either way both halves are visible before group C|
-|6|**Register locus mis-attribution.** Rows `:182-185` claim "stage 017, dual-engine verified" for `T_Ω`, `β₂`, `M̃/K̃/T̃_Ω`; 017 verifies nothing — the values are at `016:355-366`. Same shape at `:174` (`Vp0/ℓ_c`, attributed to 015, which no engine computes) and `:181` (`{κ,χ,σ_a,σ_L}`, "stage 015", no triple given).|017→016, 015 (nothing), 023 (`T_Omega`)|**step A3 (016)**. Not a physics dispute — a documentation repair, already queued as PIVOT §4 item 2|
+|6|**Register locus mis-attribution.** Rows `:182-185` claimed "stage 017, dual-engine verified" for `T_Ω`, `β₂`, `M̃/K̃/T̃_Ω`; 017 verifies nothing — the values are at `016:355-366`. Same shape at `:174` (`Vp0/ℓ_c`, attributed to 015, which no engine computes) and `:181` (`{κ,χ,σ_a,σ_L}`, "stage 015", no triple given).|017→016, 015 (nothing), 023 (`T_Omega`)|**step A3 (016)**. Not a physics dispute — the `T_Ω`/`β₂`/`M̃/K̃/T̃_Ω` provenance pointer is corrected in `parameter_register.md`; apply the same provenance-audit rule to the remaining cases|
 |7|**`A_E`**: `M L³T⁻²` at `036:289` and `037:614` vs `L·E` at `038:715`. **No register row exists at all.** `A_V` collides the same way (register `:227` for 032 = `M L³T⁻²` vs `036:395`/`037:680` = `L²T⁻²`).|036, 037, 038 (+032 for `A_V`)|**step B11 (036)**, forced at **step D3 (038)**|
 |8|**`μ_η` / `T_w` line-vs-volume convention clash**: `M L⁻¹`, `M L T⁻²` at `013:411-412` vs `M L⁻³`, `M L⁻¹T⁻²` at `016:360-361`. Register records only 013. Likely *legitimate* (line- vs volume-density) — needs a stated convention, not a fix.|013, 016|**step A2 (013)**, decided by **step A3 (016)**|
 |9|**`M0`**: `T⁻¹` at `009:467` and `010:556` vs `M T⁻¹` at `023:460`. No register row arbitrates.|009, 010, 023|**step A5 (023)** — but 009 is B3 and 010 is C2, so this one is *half-visible* when 023 lands. ⚠ **Read 009/010 before adjudicating 023.**|
 
 ⚠ **There are more than nine.** `notes/measure_register_sufficiency.md:78-85` lists four further same-name /
-different-dimension pairs that PIVOT §3 folds away: **`μ_R`** (`M L⁻¹T⁻²` at 003/007/037/040/044 vs
+different-dimension pairs omitted by the earlier summary: **`μ_R`** (`M L⁻¹T⁻²` at 003/007/037/040/044 vs
 `M²L T⁻⁴E⁻¹` at 038), **`A_V`** (032 vs 036/037), **`T_Omega`** (`M L⁻³T⁻²` at `016:363` vs `M T⁻²` at
 `023:467` — the register *does* carry both), and **`Q_E`** (register `:143` asserts *no* dimension;
 `042:845` assigns `charge_dim`). Counting those, it is **13**. Budget for 13 adjudications, not 9.
@@ -216,20 +217,20 @@ The requested order was `(L,M,T)` → `(L,T,M)` → `(M,L,T)` → awkward bases 
 supports the grouping but wants two changes**, both for the same reason: the completed pilots already
 de-risked *idiom families*, and the idiom families cut across the axis groups differently than expected.
 
-**Finding 1 — the two pilots between them cover the entire frozen-dataclass family.** Pre-rewrite,
+**Finding 1 — the completed rewrites cover the frozen-dataclass family.** Pre-rewrite,
 stage004 was `@dataclass class Dim` with fields `(l, t, m)` (`git show d9544a62:…:106-111`) and stage011
-was the same class with `(l, m, t)` (`git show 89bcccdb:…:148-153`). Eleven remaining stages use that
-identical class — 005, 006, 007, 009, 030, 031 in `(L,T,M)`; 012, 013, 016, 018 in `(L,M,T)`; 008 as a
-2-field variant. **Those eleven are near-mechanical repeats of work already done.** 012 and 013 are the
-closest of all: they share 011's `build_dimensional_block` / `arg_dims` / `dim_of` scaffolding
+was the same class with `(l, m, t)` (`git show 89bcccdb:…:148-153`). Ten remaining stages use that
+identical class — 005, 006, 007, 009, 030, 031 in `(L,T,M)`; 013, 016, 018 in `(L,M,T)`; 008 as a
+2-field variant. **Those ten are near-mechanical repeats of work already done.** Completed stage012
+and remaining stage013 are the closest of all: they share 011's
+`build_dimensional_block` / `arg_dims` / `dim_of` scaffolding
 (`grep -l "def build_dimensional_block"` → 011, 012, 013 and nothing else).
 
-**Finding 2 — the `(L,M,T)` group is *exactly* the group whose `.out` already renders values.** The nine
-stages whose `.out` renders a computed dimension are 004, 011, 012, 013, 016, 018, 021, 023, 027 — i.e.
-**all eight `(L,M,T)` stages plus 004**. Every `(L,T,M)` and `(M,L,T)` stage other than 004 needs a `.wl`
-edit, an `.out` re-baseline, and therefore a **Mathematica seat**. Doing `(L,M,T)` first buys seven stages
-with little or no `.wl` work. This is a stronger reason than convention-tidiness for the same ordering, so
-**keep `(L,M,T)` first**.
+**Finding 2 — SUPERSEDED.** This measurement originally argued that the `(L,M,T)` group needed little
+or no `.wl` work because its `.out` files already rendered values. The stage-by-stage cross-check proved
+that premise false: every group-A stage needs `.wl` emission; stage021's old gate detects no
+transposition, and stage027 compares only 1 of 17 quantities. Do not use the former "free group" premise
+for sequencing; see `manifests/DIMENSION_REWRITE.md` §8.
 
 **Change 1:** put **021 at the end of group A, not the end of everything.** It is `(L,M,T)`, its `.out`
 already renders values, and its two-order problem is *internal to one file* — it does not interact with any
@@ -244,17 +245,18 @@ ad-hoc, so it merges naturally into that tail.
 
 ### The order
 
-**Group A — `(L,M,T)`, 7 stages. `.out` already renders values; 011 is the worked example.**
+**Group A — `(L,M,T)`, 6 remaining stages.** The old `.out`-means-free premise
+is superseded (§8 of `manifests/DIMENSION_REWRITE.md`); 011 and 012 are the
+worked examples.
 
 | step | stage | one-line reason |
 |---|---|---|
 |A1|**018**|101 lines, same dataclass as 011, `.out` prints a symbolic dimension (`out:77`) — smallest true repeat, proves the loop|
 |A2|**013**|011's direct sibling (`build_dimensional_block`); `.out:86-87` already prints the sourced tuples; **forces the `K_eta` / `μ_η` / `T_w` adjudication first, while it is cheap**|
 |A3|**016**|the other side of that adjudication plus the register's false-provenance rows; heaviest of the four clones at 247 lines|
-|A4|**012**|202 lines, same scaffolding, adds the first fractional *power* op (`:580`); `.out:110` prints triples|
-|A5|**023**|leaves the dataclass family for the tuple alias; first **fractional literal** (`gU/gW`); brings `M0` and `Z0_ret/Z1_ret` into view — ⚠ read 009/010 first|
-|A6|**027**|tuple alias + `BASE_DIMS` dict + `I25 = 5/2`; the **strongest `.wl` in the corpus** (independent algorithm, `out:115` prints the computed triple) — the best available cross-engine check, so spend it on a fractional stage|
-|A7|**021**|351 lines / 45.5 %, two internal orders, three renderings, a genuine half-integer value. Hardest file in the corpus — do it while `(L,M,T)` is fresh|
+|A4|**023**|leaves the dataclass family for the tuple alias; first **fractional literal** (`gU/gW`); brings `M0` and `Z0_ret/Z1_ret` into view — ⚠ read 009/010 first|
+|A5|**027**|tuple alias + `BASE_DIMS` dict + `I25 = 5/2`; the **strongest `.wl` in the corpus** (independent algorithm, `out:115` prints the computed triple) — the best available cross-engine check, so spend it on a fractional stage|
+|A6|**021**|351 lines / 45.5 %, two internal orders, three renderings, a genuine half-integer value. Hardest file in the corpus — do it while `(L,M,T)` is fresh|
 
 **Group B — `(L,T,M)`, 12 stages. Every one needs a `.wl` print + `.out` re-baseline.**
 
@@ -297,11 +299,9 @@ rewritten **without a cross-engine check** — and record that fact rather than 
 |D3|**038**|4-axis `(M,L,T,E-charge)`. Module supports ≥4 axes structurally but the pilot **explicitly declined to claim four-axis semantics**. Projecting to `{L,M,T}` is forbidden without an explicit `E` conversion. ✅ **Good news**: its `.wl` `unitState` returns all 8 vectors as a live top-level `List` (`wl:709-718`), so the cross-check is a drop-in once the semantics are decided|
 |D4|**042**|stiffness basis + `fractions.Fraction` carrier + fractional literals + **no normalisation convention written anywhere** + the `.wl`'s own basis comment is **wrong** (`wl:816` "MLT"). Its 14 base vectors are unreachable and the guard runs twice under mutation, so there is **no safe print-only cross-check**. The single largest open design question; also the stage the register misses entirely|
 
-> **The pilot's own advice was to design against 042 and 038 *first*** (`PIVOT_TO_REWRITE.md:139`), because
-> they are the extremes and they broke the register. The module was then built without them
-> (`adcfbdfd`: "no claim yet for four-axis or stiffness-basis semantics"). **Resolve that tension before
-> group A, not at D3.** Deciding the ≥4-axis and stiffness semantics on paper up front costs one session;
-> discovering at D3 that the v0 `DimensionBasis` contract cannot express them costs a re-run of A–C.
+> **SUPERSEDED sequencing advice.** The earlier pilot proposed designing against 042 and 038 first because
+> they are the extremes and broke the register. The canonical sequence now comes from measured live
+> cross-check coverage, not that proposal; follow `manifests/DIMENSION_REWRITE.md` §8.
 
 ---
 

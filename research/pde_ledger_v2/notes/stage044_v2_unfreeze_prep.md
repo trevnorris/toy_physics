@@ -1,7 +1,8 @@
 # Stage 044-v2 — redo 044 with a DYNAMICAL-Σ sleeve (un-freeze S_hold): PREP / DECISION ANCHOR
 
 > **Status: PAUSED ledger thread; the decision was MADE this session (2026-07-24) but not yet built.** Paused
-> behind the integration-test framework detour (see `manifests/RE_PILOT_PLAN.md`). Resume after the integration
+> behind the dimension-rewrite/integration-test detour (see
+> `manifests/DIMENSION_REWRITE.md`). Resume after the integration
 > work reaches a milestone. This note is the durable record of the decision + the mechanically-confirmed locality.
 
 ## The decision (user, 2026-07-24)

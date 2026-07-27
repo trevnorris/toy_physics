@@ -153,14 +153,44 @@ to fire.
 - `UNDECLARED_DEPENDENCY(S,E)`: the consumer fires for a producer facet it did
   not declare.
 
+**C7 mutation-harness execution contract.** An edge is covered only when the
+producer export has
+`c7_binding{producing_primitive,mutation_env,mutation_command,exported_facet}`,
+the consumer consume has
+`c7_expect{injection_point,facet_used,expected_first_failure}`, and
+`facet_used == exported_facet`. The harness runs `mutation_command` as a
+subprocess with `env[mutation_env] = exported_facet`, then parses the **last**
+stdout line as JSON of the form
+`{"consumer_stage": "tooth_or_PASS"}`. The verdicts are:
+
+- consumer returns `"PASS"` → `DECORATIVE_DEPENDENCY` failure;
+- consumer returns a tooth other than `expected_first_failure` →
+  `WRONG_FIRST_FAILURE` failure;
+- consumer returns `expected_first_failure` → C7 pass; and
+- any other loaded stage fires → `UNDECLARED_DEPENDENCY` failure.
+
+`expected_first_failure` must name a predicate in the consumer's
+`verification.teeth`. The mutator must honestly perturb the exported facet and
+compute the downstream outcome; it must never hardcode the expected tooth. The
+real 030→031 proof reads the exported facet from `C7_FACET`, changes the
+zero-mode profile power from 2 to 1, computes
+`-diff(f0,w,2) + V_H*f0` in SymPy, and emits the stage031 tooth only when that
+residual is nonzero. Its `--decorative` variant ignores the facet and emits
+`PASS`, demonstrating the `DECORATIVE_DEPENDENCY` failure path.
+
+**What the pilot caught.** The 030→031→032 pilot exposed a spurious
+`stage030/kernel_determinant_star` citation: the real cited result is
+`stage030/kernel_stability`, with `D*=7/4`.
+
 C7 is the derivation-independence test; the prose/script comparison in the
 production workflow is not.
 
 C7 runs on a declared causal slice. A slice containing consume edges cannot
 report headline PASS until C7 has run on every such edge; without complete C7
 coverage its best outcome is PARTIAL. The v2.1 build acceptance uses synthetic
-decorative-dependency and undeclared-dependency fixtures. A real
-`030→031→032` vertical mutation follows after those pilots are re-extracted.
+decorative-dependency and undeclared-dependency fixtures. The real 030→031
+zero-mode mutation is also populated and passing; its deliberately decorative
+variant demonstrates the expected `DECORATIVE_DEPENDENCY` failure.
 
 **C8 — Genesis completeness.** POSTULATED, CONV, and CALIBRATED claims require
 `genesis`. `origin: independent` is a positive historical assertion and

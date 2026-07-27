@@ -23,6 +23,17 @@ Then read every source that exists for the stage:
 
 Do not infer a fact that the sources do not supply.
 
+## Runtime and tracked-evidence constraints
+
+- Manifest extraction executes no Mathematica. It cites the SymPy audit and a
+  digest-pinned Mathematica companion/output, so the ≤2-concurrent-Mathematica-
+  seat cap does **not** bind extraction itself. The cap applies only when
+  Mathematica audits are actually re-run.
+- Stage-audit `.out` evidence is intentionally tracked: a `.gitignore`
+  negation un-ignores `research/pde_ledger_v2/mathematica/out/*.out`. The
+  repository-wide `*.out` ignore rule targets LaTeX artifacts, not these saved
+  audit outputs.
+
 ## Extraction rules
 
 1. **Named dimensions and source order.** For every symbol, record the audit

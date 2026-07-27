@@ -1,7 +1,11 @@
 # Ledger-wide plan — dimension unification + sequential manifest extraction
 
-**Status: THE PLAN OF RECORD (user-decided 2026-07-25). Supersedes `FANOUT_PLAN.md` — the parallel
-fanout is CANCELLED.** Read this after `HANDOFF_NEXT_SESSION.md`, alongside
+> **Supersession notice (2026-07-26): §2.1–§2.2 are historical and superseded by
+> `manifests/DIMENSION_REWRITE.md`. Do not run the old survey-first/module-design
+> sequence; use that document's measured inventory and per-stage rewrite loop.**
+
+**Status: THE PLAN OF RECORD (user-decided 2026-07-25); the parallel fanout is
+CANCELLED.** Read this after `manifests/DIMENSION_REWRITE.md`, alongside
 `docs/development_pipeline.md`.
 
 ---
@@ -41,7 +45,8 @@ dispatch, not from orchestrator attention.
   rubber-stamping, and it is cheap.
 - **Verdicts must be checkable, not adjectival.** "FAITHFUL" alone is useless. "FAITHFUL, 0
   findings, build line X, 20/20 teeth verified against TOOTH_ORDER" is checkable.
-- **Per-stage detail lives in the progress ledger on disk** (§6), read as a `tail`. A stage whose
+- **Per-stage detail will live in the Pass-2 progress ledger** (§6), created when Pass 2 begins and
+  read as a `tail`. A stage whose
   row cannot show its fidelity leg is NOT done.
 - Target ≈30–60 lines of orchestrator context per stage.
 
@@ -84,7 +89,10 @@ is a regression, not a refactor — investigate it, never absorb it.
 Cheap relative to everything else, and it catches dual-engine disagreement while we are already
 inside each script.
 - ⚠ **≤2 concurrent `math -script`** (2-seat licence). Never SIGKILL a healthy kernel.
-- `_scratch/run_math_batch.sh` (the `xargs -P 2` runner) was DESTROYED — recreate it.
+- No live batch runner exists: the former scratch runner was destroyed. Follow
+  `manifests/DIMENSION_REWRITE.md` §4 for the current per-stage rerun and
+  reproducibility procedure; any future batch runner must still enforce the
+  two-seat cap.
 - New `.out` files ⇒ new digests, which every manifest's `mathematica_output` pins.
 
 ### 2.5 The digest cascade — settle it ONCE, before any manifest work
@@ -162,10 +170,13 @@ because stage032 declares knob `Q_E` as `{low:0,high:1}` while stage043 counts i
 as route-ful debt. stage043 is probably right; NOT adjudicated. The schema has no
 `reclassified`/`reconciled` lifecycle action, so supersession cannot yet be expressed honestly.
 
-**Progress ledger** (`manifests/PROGRESS.md`, appended by agents, read by the orchestrator as a
-`tail`): one row per stage — stage id, pass-1 dim status, pass-2 manifest status, checker verdict +
-headline, fidelity verdict + finding counts, commit sha, open findings. **A row that cannot show its
-fidelity leg means the stage is not done.**
+**Progress tracking:** Pass-1 progress lives in `manifests/DIMENSION_REWRITE.md`
+§3. The planned Pass-2 ledger has not been created because Pass 2 has not
+begun; create it when extraction starts, append one row per stage, and read it
+as a `tail`. Each row records stage id, Pass-1 dimension status, Pass-2
+manifest status, checker verdict and headline, fidelity verdict and finding
+counts, commit sha, and open findings. **A row that cannot show its fidelity
+leg means the stage is not done.**
 
 After all 44: the ledger-wide integration report → catalogue every finding → a dedicated remediation
 phase that adjudicates and fixes them (including `Q_E` and any schema gaps such as the missing
@@ -175,7 +186,8 @@ supersession action).
 ## 7. WHERE PARALLELISM IS STILL SAFE
 
 Read-only work only, and it is where the Workflow tool still earns its keep:
-- the §2.1 survey across 43 scripts;
+- evidence gathering for the single stage currently in the canonical
+  `DIMENSION_REWRITE.md` loop;
 - post-hoc fidelity audits of already-completed stages;
 - independent re-verification legs.
 **Never** parallelize anything that writes shared state — the module, the checker, the config, or
@@ -187,9 +199,12 @@ pass after hours of self-review had not. Run it before re-freezing in §3.
 ---
 ## 8. SEQUENCE SUMMARY
 
-1. Survey 43 scripts (parallel, read-only).
-2. Design the shared module against stage042 + stage038 first.
-3. Refactor all scripts onto it — gate: identical PASS counts.
+1. Use the already-measured inventory in `DIMENSION_REWRITE.md` §7; do not
+   re-run the superseded survey.
+2. Follow `DIMENSION_REWRITE.md` §4 one stage at a time; do not revive the
+   superseded extremes-first module-design pass.
+3. Complete the remaining per-stage rewrites, applying that document's three
+   distinct gates to every stage.
 4. Re-run all `.wl` (≤2 seats), regenerate `.out`.
 5. Re-pin digests in the 4 existing manifests; settle script/module/`.out` digests.
 6. Checker round: delete the reverse-engineering machinery, canonical stage inventory, enforce

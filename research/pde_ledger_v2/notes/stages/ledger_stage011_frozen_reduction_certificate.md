@@ -93,6 +93,41 @@ those facts from the reduction so each can fail. The result is banked forward to
   `[c_S²]` flips to `(3,0,-2) ≠ (2,0,-2)` → `DN_UNITTEST_FAIL_DIMENSIONAL` (`mutation_fires=True`), with a two-verdict
   self-ablation (with mutation → FAIL_DIMENSIONAL, without → `REDUCTION_CERTIFIED`, `fail_suppressed=True`).
 
+The Mathematica source has exactly **12 dimension-valued objects**, and emits **12 of 12**. `dimensionAxes` and the
+`dimRules`/`corruptRules` association containers are machinery rather than additional dimension values; their entries
+below are counted once at the underlying definition, even where the returned association supplies another handle.
+This is the source-coverage record required by `DIMENSION_REWRITE.md` §4-a; artifact name-set symmetry alone cannot
+establish it.
+
+| `.wl` object and definition locus | artifact status | coverage reason / read locus |
+|---|---|---|
+| `LengthDim` / `lengthDim` (`.wl:242`, returned at `.wl:271`) | emitted as `LengthDim` | Read directly at the `DIM` print site (`.wl:414`). |
+| `EnergyDim` / `energyDim` (`.wl:243`, returned at `.wl:272`) | emitted as `EnergyDim` | Read directly at the `DIM` print site (`.wl:415`). |
+| `FourVolumeDim` / `fourVolumeDim` (`.wl:244`, returned at `.wl:273`) | emitted as `FourVolumeDim` | Read directly at the `DIM` print site (`.wl:416`). |
+| `PressureDim` / `pressureDim` (`.wl:245`, returned at `.wl:274`) | emitted as `PressureDim` | Read directly at the `DIM` print site (`.wl:417`). |
+| `RhoDim` / `rhoDim` (`.wl:246`, returned at `.wl:275`) | emitted as `RhoDim` | Read directly at the `DIM` print site (`.wl:418`). |
+| `KDim` / `kDim` (`.wl:247`, returned at `.wl:276`) | emitted as `KDim` | Read directly at the `DIM` print site (`.wl:419`). |
+| `OmegaDim` / `dimRules[omega]` (`.wl:250`, returned at `.wl:277`) | emitted as `OmegaDim` | Read through the returned live rule value at the `DIM` print site (`.wl:420`). |
+| `MassDim` / `dimRules[m]` (`.wl:253`, returned at `.wl:278`) | emitted as `MassDim` | Read through the returned live rule value at the `DIM` print site (`.wl:421`). |
+| `CsSquaredDim` / `csSquaredDim` (`.wl:256`, returned at `.wl:279`) | emitted as `CsSquaredDim` | Computed by `dimOf[cSSquaredBulk, dimRules]`, printed directly (`.wl:422`), and compared with its expected target (`.wl:429`). |
+| `ExpectedCsSquaredDim` / `expectedCsSquaredDim` (`.wl:255`, returned at `.wl:280`) | emitted as `ExpectedCsSquaredDim` | Read directly at the `DIM` print site (`.wl:423`) and as the expected side of the clean and corrupt checks (`.wl:257,260,429,574`). |
+| `CorruptKDim` / `corruptRules[K]` (`.wl:258`, returned at `.wl:282`) | emitted as `CorruptKDim` | Read through the returned live corrupt-rule value at the `DIM` print site (`.wl:424`). |
+| `CorruptCsSquaredDim` / `corruptCsSquaredDim` (`.wl:259`, returned at `.wl:283`) | emitted as `CorruptCsSquaredDim` | Computed by `dimOf[cSSquaredBulk, corruptRules]`, printed directly (`.wl:425,432`), and asserted by the probe and tooth (`.wl:433,574`). |
+
+⚠ **TWO FURTHER DIMENSION LITERALS, added after an independent review found them missing from the
+table above.** They are not *named* bindings, which is why the twelve-object count stands as written —
+but §4-a asks for every dimension-valued object, and a reader checking coverage would want them:
+
+| `.wl` literal and locus | artifact status | coverage reason |
+|---|---|---|
+| `{3, 0, -2}` (`.wl:433`) | **not emitted by either engine** | The expected value of the corrupt-`c_S²` tooth, typed inline; mirrored by `…stage011_…py:512` `Dim(3,0,-2)`. **Symmetric ⇒ structurally invisible to the comparator.** Self-protecting (a shared wrong literal fails both engines' `expectZero`), but it is a §5 hardcoded-expected-value instance and the **only non-covariant expression left in this dimension block** — every sibling literal was converted to axis-map algebra. Its covariant form is `dim["ExpectedCsSquaredDim"] + dimensionAxes["L"]`. Recorded, deliberately not repaired here (task #33). |
+| `{0, 0, 0}` (`.wl:215`, `:227`) | **not emitted by either engine** | The `dimOf` dimensionless sentinel; symmetric with `…py:153` `ZERO_DIM`. Machinery, not a stage quantity — stage012 names its equivalent `zeroDim`, stage011 does not, which is a cosmetic inconsistency between the two files. |
+
+⭐ **Provenance note, because it matters for how much this table is worth:** two independent
+enumerations were produced for this stage and they **disagreed on exactly these two rows.** The
+enumeration is only as good as the read behind it — treat a single-source coverage table as a
+starting point, not a proof.
+
 - **The 011-scoped verdict.** Computed from the 011 rungs — `FAIL_DIMENSIONAL` → `FAIL_OPERATOR_INTRUSION`
   (unsuppressed) → `FAIL_OPERATOR_INTRUSION` (¬helmholtz) → `FAIL_WRONG_SPEED` → `FAIL_WRONG_DOMAIN` → else
   `REDUCTION_CERTIFIED`. The joint `DN_UNITTEST_BC_DEPENDENT` is printed as the composition with stage 012, NOT typed

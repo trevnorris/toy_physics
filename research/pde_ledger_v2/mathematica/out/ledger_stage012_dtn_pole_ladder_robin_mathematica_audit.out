@@ -114,6 +114,7 @@ DIM|axes=L,M,T|name=pressure_dim|exponents={-2, 1, -2}
 DIM|axes=L,M,T|name=rho_dim|exponents={-4, 0, 0}
 DIM|axes=L,M,T|name=K_dim|exponents={18, 1, -2}
 DIM|axes=L,M,T|name=omega_dim|exponents={0, 0, -1}
+DIM|axes=L,M,T|name=mass_dim|exponents={0, 1, 0}
 DIM|axes=L,M,T|name=alpha_dim|exponents={-1, 0, 0}
 DIM|axes=L,M,T|name=clean_walk.cs_squared_dim|exponents={2, 0, -2}
 DIM|axes=L,M,T|name=clean_walk.cs_dim|exponents={1, 0, -1}

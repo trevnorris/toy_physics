@@ -100,6 +100,42 @@ and the `.wl`'s transfer-matrix route), and keep the Robin falsifier + the hones
   sourced `[c_S]` independently and fired via the `cs_squared` leg): the reshape reroutes through `5Kρ*⁴/m` to keep the
   probe alive in 012 without re-deriving the 011 leg (directive §2h; clean-walk values match the report).
 
+The Mathematica source has exactly **27 dimension-valued objects**, and emits **19 of 27**. `dimensionAxes`, the
+`baseRules`/`dimRules` maps, and the returned `buildDimensionalBlock[]` association are containers rather than
+additional dimension values; aliases are counted once. The clean and corrupt `walk` results are counted separately
+because `.wl:281` and `.wl:287` evaluate the walker with different `K` dimensions. This is the source-coverage record
+required by `DIMENSION_REWRITE.md` §4-a.
+
+| `.wl` object and definition locus | artifact status | coverage reason / read locus |
+|---|---|---|
+| `zeroDim` (`.wl:36`) | not emitted | Private neutral element returned by `dimOf` for constants, empty sums, and dimensionless trig functions (`.wl:220,232,239`); also read by `expectedTanDim` and the `Z00` walk guard (`.wl:261,270`). |
+| `LengthDim` / `lengthDim` (`.wl:252`, returned at `.wl:303`) | not emitted | Primitive carrier used to define four-volume, density, `alpha`, and the expected `Z00` dimension, and bound to `L0` in each walk (`.wl:254,256,260,262,264`); no standalone artifact name is needed for those derived checks. |
+| `EnergyDim` / `energyDim` (`.wl:253`, returned at `.wl:304`) | emitted as `energy_dim` | Read directly at the `DIM` print site (`.wl:573`). |
+| `FourVolumeDim` / `fourVolumeDim` (`.wl:254`, returned at `.wl:305`) | emitted as `four_volume_dim` | Read directly at the `DIM` print site (`.wl:574`). |
+| `PressureDim` / `pressureDim` (`.wl:255`, returned at `.wl:306`) | emitted as `pressure_dim` | Read directly at the `DIM` print site (`.wl:575`). |
+| `RhoDim` / `rhoDim` (`.wl:256`, returned at `.wl:307`) | emitted as `rho_dim` | Read directly at the `DIM` print site (`.wl:576`). |
+| `KDim` / `kDim` (`.wl:257`, returned at `.wl:308`) | emitted as `K_dim` | Read directly at the `DIM` print site (`.wl:577`) and supplied to the clean walk (`.wl:281`). |
+| `OmegaDim` / `omegaDim` (`.wl:258`, returned at `.wl:309`) | emitted as `omega_dim` | Read directly at the `DIM` print site (`.wl:578`) and bound to `omega` in each walk (`.wl:264`). |
+| `MassDim` / `massDim` (`.wl:259`, returned at `.wl:310`) | emitted as `mass_dim` | Read directly at the `DIM` print site (`.wl:579`) and bound to `m` in each walk (`.wl:264`). |
+| `AlphaDim` / `alphaDim` (`.wl:260`, returned at `.wl:311`) | emitted as `alpha_dim` | Read directly at the `DIM` print site (`.wl:580`) and bound to `alpha` in each walk (`.wl:264`). |
+| `ExpectedTanDim` / `expectedTanDim` (`.wl:261`, returned at `.wl:312`) | not emitted | Expected-target helper, read by the clean/corrupt dimensional predicates (`.wl:283,289,294`) and their direct assertions (`.wl:596,603,725`). |
+| `ExpectedZ00Dim` / `expectedZ00Dim` (`.wl:262`, returned at `.wl:313`) | not emitted | Expected-target helper, read by the clean/corrupt dimensional predicates (`.wl:284-285,290-291,295`) and their direct assertions (`.wl:597-598,604,726`). |
+| `cleanWalk["CsSquaredDim"]` (`.wl:265,272`, instantiated at `.wl:281`) | emitted as `clean_walk.cs_squared_dim` | Computed by `dimOf[5 K rhoStar^4/m, baseRules]` and printed directly (`.wl:581,594`). |
+| `cleanWalk["CsDim"]` (`.wl:266,273`, instantiated at `.wl:281`) | emitted as `clean_walk.cs_dim` | Derived from the live `CsSquaredDim` and printed directly (`.wl:582,594`). |
+| `cleanWalk["KDimFromOmegaOverCs"]` (`.wl:274`, instantiated at `.wl:281`) | emitted as `clean_walk.k_dim` | Computed by `dimOf[omega/cS, dimRules]` and printed directly (`.wl:583,594`). |
+| `cleanWalk["TanArgumentDim"]` (`.wl:268,275`, instantiated at `.wl:281`) | emitted as `clean_walk.tan_argument_dim` | Computed by `dimOf[k L0, dimRules]`, printed (`.wl:584,595`), and asserted (`.wl:283,596`). |
+| `cleanWalk["Z00PrefactorDim"]` (`.wl:269,276`, instantiated at `.wl:281`) | emitted as `clean_walk.z00_prefactor_dim` | Computed by `dimOf[-k, dimRules]`, printed (`.wl:585,595`), and asserted (`.wl:284,597`). |
+| `cleanWalk["Z00Dim"]` (`.wl:270,277`, instantiated at `.wl:281`) | emitted as `clean_walk.z00_dim` | Computed by `dimOf[-k Tan[k L0], dimRules]`, printed (`.wl:586,595`), and asserted (`.wl:285,598`). |
+| `cleanWalk["AlphaCSDim"]` (`.wl:278`, instantiated at `.wl:281`) | not emitted | The walker computes and stores `[alpha cS]`, but the returned field has no read locus: no assertion, prose print, `DIM` print, or sidecar references it. This is a live-but-dead dimension value. |
+| `CorruptKDim` / `corruptKDim` (`.wl:286`, returned at `.wl:316`) | emitted as `corrupt_K_dim` | Supplied to the corrupt walk (`.wl:287`) and printed directly (`.wl:587,600`). |
+| `corruptWalk["CsSquaredDim"]` (`.wl:265,272`, instantiated at `.wl:287`) | not emitted | The live walker result is read internally to derive corrupt `CsDim` (`.wl:266`), but the returned field has no assertion, print, or sidecar read. This is a live-but-dead dimension value. |
+| `corruptWalk["CsDim"]` (`.wl:266,273`, instantiated at `.wl:287`) | emitted as `corrupt_walk.cs_dim` | Derived from the live corrupt `CsSquaredDim` and printed directly (`.wl:588,601`). |
+| `corruptWalk["KDimFromOmegaOverCs"]` (`.wl:274`, instantiated at `.wl:287`) | emitted as `corrupt_walk.k_dim` | Computed by `dimOf[omega/cS, dimRules]` and printed directly (`.wl:589,601`). |
+| `corruptWalk["TanArgumentDim"]` (`.wl:268,275`, instantiated at `.wl:287`) | emitted as `corrupt_walk.tan_argument_dim` | Computed by `dimOf[k L0, dimRules]`, printed (`.wl:590,602`), and asserted by the mutation gate and tooth (`.wl:289,294,603,725`). |
+| `corruptWalk["Z00PrefactorDim"]` (`.wl:269,276`, instantiated at `.wl:287`) | emitted as `corrupt_walk.z00_prefactor_dim` | Computed by `dimOf[-k, dimRules]`, printed (`.wl:591,602`), and asserted by the mutation gate and tooth (`.wl:290,295,604,726`). |
+| `corruptWalk["Z00Dim"]` (`.wl:270,277`, instantiated at `.wl:287`) | not emitted | Probe-only derived result, read by `corruptDimensionalOk` (`.wl:291`), which feeds the mutated verdict and asserted self-ablation (`.wl:297,606,727`). |
+| `corruptWalk["AlphaCSDim"]` (`.wl:278`, instantiated at `.wl:287`) | not emitted | The walker computes and stores `[alpha cS]`, but the returned field has no read locus: no assertion, prose print, `DIM` print, or sidecar references it. This is a live-but-dead dimension value. |
+
 - **The 012-scoped verdict.** Computed from the 012 rungs — `DN_UNITTEST_FAIL_DIMENSIONAL` → `FAIL_POLE_LADDER` (if not
   `dtn_matches_target and halfshift`) → `FAIL_COUNTERFACTUAL` (if not `all(counterfactual_guard.values())`) → else
   `bc_derivation_emitted` False → `DN_UNITTEST_BC_DEPENDENT` (the landing). The `DN_UNITTEST_PASS` branch exists but is

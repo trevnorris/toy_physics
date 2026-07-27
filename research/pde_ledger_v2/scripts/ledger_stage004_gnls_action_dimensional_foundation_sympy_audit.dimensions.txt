@@ -1,0 +1,21 @@
+DIMENSIONS|stage=ledger_stage004_gnls_action_dimensional_foundation_sympy_audit|axes=L,T,M
+DIM|axes=L,T,M|name=zero|exponents={0, 0, 0}
+DIM|axes=L,T,M|name=L|exponents={1, 0, 0}
+DIM|axes=L,T,M|name=T|exponents={0, 1, 0}
+DIM|axes=L,T,M|name=M|exponents={0, 0, 1}
+DIM|axes=L,T,M|name=action|exponents={2, -1, 1}
+DIM|axes=L,T,M|name=energy|exponents={2, -2, 1}
+DIM|axes=L,T,M|name=force|exponents={1, -2, 1}
+DIM|axes=L,T,M|name=velocity|exponents={1, -1, 0}
+DIM|axes=L,T,M|name=rho3|exponents={-3, 0, 0}
+DIM|axes=L,T,M|name=lagrangianDensity|exponents={-2, -2, 1}
+DIM|axes=L,T,M|name=qA0|exponents={2, -2, 1}
+DIM|axes=L,T,M|name=qAi|exponents={1, -1, 1}
+DIM|axes=L,T,M|name=electricField|exponents={1, -2, 1}
+DIM|axes=L,T,M|name=magneticField|exponents={0, -1, 1}
+DIM|axes=L,T,M|name=maxwellCoeff|exponents={-4, 2, -1}
+DIM|axes=L,T,M|name=muWall|exponents={-1, 0, 1}
+DIM|axes=L,T,M|name=Tw|exponents={1, -2, 1}
+DIM|axes=L,T,M|name=USigmaRR|exponents={-1, -2, 1}
+DIM|axes=L,T,M|name=G3|exponents={3, -2, -1}
+DIM|axes=L,T,M|name=G4|exponents={4, -2, -1}

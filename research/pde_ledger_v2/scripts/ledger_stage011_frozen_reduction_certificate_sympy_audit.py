@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Ledger stage011 SymPy audit: frozen-reduction certificate.
 
-Standalone, print-only, no arguments, no file I/O.  This builds the Part-II
-pathA_30 II-G1a slice only: the dimensionally-safe frozen longitudinal
-operator assembly, c_S^2 extraction, solved pinch-off domain, reduction
-certificate, c_S^2 dimensional leg, and able-to-fail teeth.  Stage 012 owns the
-D/N ladder, DtN, Robin counterfactual, pole ladder, and static series.
+Standalone, with audit results on stdout and labelled dimensions in a
+deterministic sidecar.  This builds the Part-II pathA_30 II-G1a slice only:
+the dimensionally-safe frozen longitudinal operator assembly, c_S^2
+extraction, solved pinch-off domain, reduction certificate, c_S^2 dimensional
+leg, and able-to-fail teeth.  Stage 012 owns the D/N ladder, DtN, Robin
+counterfactual, pole ladder, and static series.
 """
 
 from __future__ import annotations
@@ -15,7 +16,12 @@ from typing import Any
 
 import sympy as sp
 
-from ledger_dimensions import Dimension, DimensionBasis, dim_residual
+from ledger_dimensions import (
+    Dimension,
+    DimensionBasis,
+    dim_residual,
+    emit_dimension_sidecar,
+)
 
 
 PASS_COUNT = 0
@@ -328,12 +334,14 @@ def build_dimensional_block() -> dict[str, Any]:
     pressure_dim = energy_dim / four_volume_dim
     rho_dim = length_dim**-4
     K_dim = pressure_dim / (rho_dim**5)
+    omega_dim = Dim(0, 0, -1)
+    mass_dim = Dim(0, 1, 0)
     dim_rules = {
         L0: length_dim,
-        omega: Dim(0, 0, -1),
+        omega: omega_dim,
         K: K_dim,
         rho_star: rho_dim,
-        m: Dim(0, 1, 0),
+        m: mass_dim,
     }
     expected_cs_squared_dim = Dim(2, 0, -2)
     cs_squared_dim = dim_of(cS_squared_bulk, dim_rules)
@@ -373,6 +381,8 @@ def build_dimensional_block() -> dict[str, Any]:
         "pressure_dim": pressure_dim,
         "rho_dim": rho_dim,
         "K_dim": K_dim,
+        "omega_dim": omega_dim,
+        "mass_dim": mass_dim,
         "cs_squared_dim": cs_squared_dim,
         "expected_cs_squared_dim": expected_cs_squared_dim,
         "dimensional_ok": dimensional_ok,
@@ -690,6 +700,24 @@ def main() -> None:
     print_provenance()
     print_verdict_labels()
     run_able_to_fail_teeth(data)
+    dim = data["dim"]
+    emit_dimension_sidecar(
+        __file__,
+        {
+            "LengthDim": dim["length_dim"],
+            "EnergyDim": dim["energy_dim"],
+            "FourVolumeDim": dim["four_volume_dim"],
+            "PressureDim": dim["pressure_dim"],
+            "RhoDim": dim["rho_dim"],
+            "KDim": dim["K_dim"],
+            "OmegaDim": dim["omega_dim"],
+            "MassDim": dim["mass_dim"],
+            "CsSquaredDim": dim["cs_squared_dim"],
+            "ExpectedCsSquaredDim": dim["expected_cs_squared_dim"],
+            "CorruptKDim": dim["corrupt_K_dim"],
+            "CorruptCsSquaredDim": dim["corrupt_cs_squared_dim"],
+        },
+    )
     print("")
     print(f"PASS tally: {PASS_COUNT}; FAIL tally: {FAIL_COUNT}")
     print("OVERALL PASS: SymPy verified ledger_stage011 frozen reduction certificate exactly")

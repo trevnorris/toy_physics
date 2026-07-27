@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Ledger stage004 SymPy audit: GNLS action dimensional foundation.
 
-Print-only, standalone, no arguments, no file output.  This extracts the
-pathA_19 dimensional checks into ledger form without importing the stage1
-harness.
+Standalone, with audit results on stdout and labelled dimensions in a
+deterministic sidecar.  This extracts the pathA_19 dimensional checks into
+ledger form without importing the stage1 harness.
 """
 
 from __future__ import annotations
@@ -13,7 +13,12 @@ from typing import Any, Iterable
 
 import sympy as sp
 
-from ledger_dimensions import Dimension, DimensionBasis, dim_residual
+from ledger_dimensions import (
+    Dimension,
+    DimensionBasis,
+    dim_residual,
+    emit_dimension_sidecar,
+)
 
 
 PASS_COUNT = 0
@@ -625,6 +630,31 @@ def main() -> None:
     print_carried_gap_block()
     print_verdict_labels(verdict)
 
+    emit_dimension_sidecar(
+        __file__,
+        {
+            "zero": dictionary["1"],
+            "L": dictionary["L"],
+            "T": dictionary["T"],
+            "M": dictionary["M"],
+            "action": dictionary["action"],
+            "energy": dictionary["energy"],
+            "force": dictionary["force"],
+            "velocity": dictionary["velocity"],
+            "rho3": dictionary["rho3_reduced"],
+            "lagrangianDensity": dictionary["lagrangian_density"],
+            "qA0": dictionary["q_A0"],
+            "qAi": dictionary["q_Ai"],
+            "electricField": dictionary["electric_field"],
+            "magneticField": dictionary["magnetic_field"],
+            "maxwellCoeff": dictionary["maxwell_coeff"],
+            "muWall": dictionary["mu_wall_restored_as_tau_over_c_s2"],
+            "Tw": dictionary["T_w"],
+            "USigmaRR": dictionary["U_Sigma_RR"],
+            "G3": dictionary["G_3_spatial"],
+            "G4": dictionary["G_4_spatial"],
+        },
+    )
     print("")
     print(f"PASS tally: {PASS_COUNT}; FAIL tally: {FAIL_COUNT}")
     print("OVERALL PASS: SymPy derived ledger_stage004 GNLS dimensional foundation exactly")

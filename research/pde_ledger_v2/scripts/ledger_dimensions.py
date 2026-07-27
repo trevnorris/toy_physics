@@ -7,6 +7,7 @@ and 011.  A stage binds one ``DimensionBasis`` and constructs every
 
 from __future__ import annotations
 
+from pathlib import Path
 from types import MappingProxyType
 from typing import Mapping
 
@@ -177,3 +178,40 @@ def dim_residual(actual: Dimension, expected: Dimension) -> sp.Expr:
             for axis in actual.exponents
         )
     )
+
+
+def emit_dimension_sidecar(
+    stage_file: str,
+    dimensions: Mapping[str, Dimension],
+) -> Path:
+    """Write deterministic DIM records beside a stage."""
+
+    lines: list[str] = []
+    declared_axes: tuple[str, ...] | None = None
+    for name, dimension in dimensions.items():
+        if not name:
+            raise ValueError("dimension sidecar quantity names must be nonempty")
+        if not isinstance(dimension, Dimension):
+            raise TypeError(f"dimension sidecar value for {name!r} is not a Dimension")
+        axes = dimension.basis.axes
+        if declared_axes is None:
+            declared_axes = axes
+        elif axes != declared_axes:
+            raise ValueError("dimension sidecar records must use one declared axis order")
+        axis_text = ",".join(axes)
+        exponent_text = ", ".join(
+            sp.sstr(dimension.exponents[axis]) for axis in axes
+        )
+        lines.append(
+            f"DIM|axes={axis_text}|name={name}|exponents={{{exponent_text}}}"
+        )
+
+    if declared_axes is None:
+        raise ValueError("dimension sidecar needs at least one record")
+    source = Path(stage_file)
+    destination = source.with_suffix(".dimensions.txt")
+    header = (
+        f"DIMENSIONS|stage={source.stem}|axes={','.join(declared_axes)}"
+    )
+    destination.write_text("\n".join([header, *lines]) + "\n", encoding="utf-8")
+    return destination

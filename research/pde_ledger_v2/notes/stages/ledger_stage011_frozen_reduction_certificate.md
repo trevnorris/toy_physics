@@ -93,7 +93,7 @@ those facts from the reduction so each can fail. The result is banked forward to
   `[c_S²]` flips to `(3,0,-2) ≠ (2,0,-2)` → `DN_UNITTEST_FAIL_DIMENSIONAL` (`mutation_fires=True`), with a two-verdict
   self-ablation (with mutation → FAIL_DIMENSIONAL, without → `REDUCTION_CERTIFIED`, `fail_suppressed=True`).
 
-The Mathematica source has exactly **12 dimension-valued objects**, and emits **12 of 12**. `dimensionAxes` and the
+The Mathematica source has exactly **12 named dimension-valued bindings**, all emitted, plus the two inline dimension literals enumerated below. `dimensionAxes` and the
 `dimRules`/`corruptRules` association containers are machinery rather than additional dimension values; their entries
 below are counted once at the underlying definition, even where the returned association supplies another handle.
 This is the source-coverage record required by `DIMENSION_REWRITE.md` §4-a; artifact name-set symmetry alone cannot
@@ -120,7 +120,7 @@ but §4-a asks for every dimension-valued object, and a reader checking coverage
 
 | `.wl` literal and locus | artifact status | coverage reason |
 |---|---|---|
-| `{3, 0, -2}` (`.wl:433`) | **not emitted by either engine** | The expected value of the corrupt-`c_S²` tooth, typed inline; mirrored by `…stage011_…py:512` `Dim(3,0,-2)`. **Symmetric ⇒ structurally invisible to the comparator.** Self-protecting (a shared wrong literal fails both engines' `expectZero`), but it is a §5 hardcoded-expected-value instance and the **only non-covariant expression left in this dimension block** — every sibling literal was converted to axis-map algebra. Its covariant form is `dim["ExpectedCsSquaredDim"] + dimensionAxes["L"]`. Recorded, deliberately not repaired here (task #33). |
+| `{3, 0, -2}` (`.wl:433`) | **not emitted by either engine** | The expected value of the corrupt-`c_S²` tooth, typed inline; mirrored by `…stage011_…py:511` `Dim(3,0,-2)`. **Symmetric ⇒ structurally invisible to the comparator.** Self-protecting (a shared wrong literal fails both engines' `expectZero`), but it is a §5 hardcoded-expected-value instance and the **only non-covariant expression left in this dimension block** — every sibling literal was converted to axis-map algebra. Its covariant form is `dim["ExpectedCsSquaredDim"] + dimensionAxes["L"]`. Recorded, deliberately not repaired here (task #33). |
 | `{0, 0, 0}` (`.wl:215`, `:227`) | **not emitted by either engine** | The `dimOf` dimensionless sentinel; symmetric with `…py:153` `ZERO_DIM`. Machinery, not a stage quantity — stage012 names its equivalent `zeroDim`, stage011 does not, which is a cosmetic inconsistency between the two files. |
 
 ⭐ **Provenance note, because it matters for how much this table is worth:** two independent

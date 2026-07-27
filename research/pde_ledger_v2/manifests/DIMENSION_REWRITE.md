@@ -318,9 +318,18 @@ leg; do not skip it because the cross-engine numbers look clean.
 
 **Three gates, and each proves something different:**
 1. **PASS multiset identical** — the audit still reports what it reported.
-2. **stdout byte-identity** vs `tail -n +7 scripts/output/<basename>.txt` (diff exactly 6 wrapper
-   lines) — behaviour preservation. ⚠ **A DIAGNOSTIC, NOT A BLOCKING GATE** (D1, §1b): report it, never
-   let it prevent a correct change. Also **NOT a transposition detector** (§6).
+2. **stdout byte-identity** — behaviour preservation. ⚠ **A DIAGNOSTIC, NOT A BLOCKING GATE** (D1,
+   §1b): report it, never let it prevent a correct change. Also **NOT a transposition detector** (§6).
+   ⛔ **The recipe here was WRONG and is corrected — MEASURED 2026-07-27.** It read
+   ~~`tail -n +7 scripts/output/<basename>.txt` (diff exactly 6 wrapper lines)~~. The committed
+   transcripts actually carry an **8-line leading wrapper** (7 `#` lines **plus a blank**) and a
+   **2-line trailing wrapper** (blank + `EXIT_CODE:`). The correct form is:
+   ```bash
+   tail -n +9 scripts/output/<basename>.txt | head -n -2
+   ```
+   ⭐ Verified by execution against **all five** converted stages — 004, 011, 012, 013, 018 — where it
+   reproduces each live run **exactly**; the old form leaves a stray `#` and a blank line and so always
+   reports a spurious difference. 26 of the 28 committed transcripts share this wrapper shape.
    ⛔ **This gate only exists for stages 001–028.** `scripts/output/*.txt` covers 001–028 ONLY —
    **stages 030–044 have no committed Python transcript**, so gate 2 is unavailable there and gates 1
    and 3 carry the whole load. Plan for that before starting group B/C/D; do not discover it mid-stage.

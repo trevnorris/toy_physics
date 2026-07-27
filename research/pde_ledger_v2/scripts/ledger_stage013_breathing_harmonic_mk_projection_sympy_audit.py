@@ -1,19 +1,26 @@
 #!/usr/bin/env python3
 """Ledger stage013 SymPy audit: breathing harmonic profiles + M/K projection.
 
-Standalone, print-only, no arguments, no file I/O.  This is the Part-II
-pathA_31 II-G2a slice only: harmonic-lift profiles, M_AB/K_AB by real
-integral operator projection, the (a,L) EOM LHS, the M/K dimensional legs, and
-the 013-native guard teeth.  Stages 014 and 015 own truncation consistency and
-the Hellmann-Feynman RHS/legacy-structure checks.
+Standalone, with audit results on stdout and labelled dimensions in a
+deterministic sidecar.  This is the Part-II pathA_31 II-G2a slice only:
+harmonic-lift profiles, M_AB/K_AB by real integral operator projection, the
+(a,L) EOM LHS, the M/K dimensional legs, and the 013-native guard teeth.
+Stages 014 and 015 own truncation consistency and the Hellmann-Feynman
+RHS/legacy-structure checks.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Any
 
 import sympy as sp
+
+from ledger_dimensions import (
+    Dimension,
+    DimensionBasis,
+    dim_residual,
+    emit_dimension_sidecar,
+)
 
 
 PASS_COUNT = 0
@@ -67,7 +74,7 @@ def fmt(expr: Any) -> str:
         return "True" if expr else "False"
     if isinstance(expr, str):
         return expr
-    if isinstance(expr, Dim):
+    if isinstance(expr, Dimension):
         return str(expr)
     if isinstance(expr, sp.MatrixBase):
         return sp.sstr(compact_expr(expr))
@@ -80,8 +87,8 @@ def fmt(expr: Any) -> str:
 
 
 def assert_no_float(name: str, expr: Any) -> None:
-    if isinstance(expr, Dim):
-        for label, value in zip(("L", "M", "T"), expr.components()):
+    if isinstance(expr, Dimension):
+        for label, value in expr.exponents.items():
             assert_no_float(f"{name}.{label}", value)
         return
     if isinstance(expr, dict):
@@ -167,51 +174,12 @@ def verdict_residual(actual: str, expected: str) -> sp.Integer:
     return sp.Integer(0) if actual == expected else sp.Integer(1)
 
 
-def q(value: int | str | sp.Rational) -> sp.Rational:
-    return sp.Rational(value)
-
-
-@dataclass(frozen=True)
-class Dim:
-    """Exact exponent vector in (L, M, T) order."""
-
-    l: sp.Rational | int = 0
-    m: sp.Rational | int = 0
-    t: sp.Rational | int = 0
-
-    def __post_init__(self) -> None:
-        object.__setattr__(self, "l", q(self.l))
-        object.__setattr__(self, "m", q(self.m))
-        object.__setattr__(self, "t", q(self.t))
-
-    def __add__(self, other: "Dim") -> "Dim":
-        return Dim(self.l + other.l, self.m + other.m, self.t + other.t)
-
-    def __sub__(self, other: "Dim") -> "Dim":
-        return Dim(self.l - other.l, self.m - other.m, self.t - other.t)
-
-    def __mul__(self, scale: int | sp.Rational) -> "Dim":
-        p = q(scale)
-        return Dim(self.l * p, self.m * p, self.t * p)
-
-    def __rmul__(self, scale: int | sp.Rational) -> "Dim":
-        return self * scale
-
-    def components(self) -> tuple[sp.Rational, sp.Rational, sp.Rational]:
-        return (self.l, self.m, self.t)
-
-    def __str__(self) -> str:
-        return f"({fmt(self.l)},{fmt(self.m)},{fmt(self.t)})"
-
-
+DIMENSION_BASIS = DimensionBasis("L", "M", "T", render="tuple")
+Dim = DIMENSION_BASIS
 ZERO_DIM = Dim()
 
 
-def dim_residual(actual: Dim, expected: Dim) -> sp.Expr:
-    return sp.simplify(sum((have - want) ** 2 for have, want in zip(actual.components(), expected.components())))
-
-
-def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
+def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dimension]) -> Dimension:
     clean = sp.sympify(expr)
     if clean == 0 or clean.is_Number or clean.is_number:
         return ZERO_DIM
@@ -222,13 +190,13 @@ def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
     if isinstance(clean, sp.Mul):
         total = ZERO_DIM
         for arg in clean.args:
-            total = total + dim_of(arg, dims)
+            total = total * dim_of(arg, dims)
         return total
     if isinstance(clean, sp.Pow):
         base, power = clean.args
         if not power.is_number:
             raise AuditFailure(f"non-numeric power in dimension expression {clean}")
-        return dim_of(base, dims) * sp.Rational(power)
+        return dim_of(base, dims) ** sp.Rational(power)
     if isinstance(clean, sp.Add):
         arg_dims = [dim_of(arg, dims) for arg in clean.args if compact_expr(arg) != 0]
         if not arg_dims:
@@ -392,11 +360,16 @@ def symbol_name_flags(M_entries: dict[str, sp.Expr], K_entries: dict[str, sp.Exp
     }
 
 
-def matrix_entry_dims(entries: dict[str, sp.Expr], symbol_dims: dict[sp.Symbol, Dim]) -> dict[str, Dim]:
+def matrix_entry_dims(
+    entries: dict[str, sp.Expr],
+    symbol_dims: dict[sp.Symbol, Dimension],
+) -> dict[str, Dimension]:
     return {name: dim_of(expr, symbol_dims) for name, expr in entries.items()}
 
 
-def shared_dimension(entry_dims: dict[str, Dim]) -> Dim | None:
+def shared_dimension(
+    entry_dims: dict[str, Dimension],
+) -> Dimension | None:
     dims = list(entry_dims.values())
     if not dims:
         return None
@@ -404,7 +377,11 @@ def shared_dimension(entry_dims: dict[str, Dim]) -> Dim | None:
     return first if all(dim == first for dim in dims) else None
 
 
-def build_dimensional_block(M_entries: dict[str, sp.Expr], K_entries: dict[str, sp.Expr]) -> dict[str, Any]:
+def build_dimensional_block(
+    K_eta: sp.Expr,
+    M_entries: dict[str, sp.Expr],
+    K_entries: dict[str, sp.Expr],
+) -> dict[str, Any]:
     symbol_dims = {
         L0: Dim(1, 0, 0),
         beta: Dim(-1, 0, 0),
@@ -416,20 +393,21 @@ def build_dimensional_block(M_entries: dict[str, sp.Expr], K_entries: dict[str, 
     expected_k = Dim(0, 1, -2)
     expected_ratio = Dim(0, 0, -2)
 
+    K_eta_dim = dim_of(K_eta, symbol_dims)
     m_dims = matrix_entry_dims(M_entries, symbol_dims)
     k_dims = matrix_entry_dims(K_entries, symbol_dims)
     m_shared = shared_dimension(m_dims)
     k_shared = shared_dimension(k_dims)
-    ratio_dim = k_shared - m_shared if m_shared is not None and k_shared is not None else None
+    ratio_dim = k_shared / m_shared if m_shared is not None and k_shared is not None else None
     dimensional_ok = bool(m_shared == expected_m and k_shared == expected_k and ratio_dim == expected_ratio)
 
     corrupt_dims = dict(symbol_dims)
-    corrupt_dims[Tw] = symbol_dims[Tw] + Dim(1, 0, 0)
+    corrupt_dims[Tw] = symbol_dims[Tw] * Dim(1, 0, 0)
     corrupt_m_dims = matrix_entry_dims(M_entries, corrupt_dims)
     corrupt_k_dims = matrix_entry_dims(K_entries, corrupt_dims)
     corrupt_m_shared = shared_dimension(corrupt_m_dims)
     corrupt_k_shared = shared_dimension(corrupt_k_dims)
-    corrupt_ratio_dim = corrupt_k_shared - corrupt_m_shared if corrupt_m_shared is not None and corrupt_k_shared is not None else None
+    corrupt_ratio_dim = corrupt_k_shared / corrupt_m_shared if corrupt_m_shared is not None and corrupt_k_shared is not None else None
     corrupt_ok = bool(corrupt_m_shared == expected_m and corrupt_k_shared == expected_k and corrupt_ratio_dim == expected_ratio)
     clean_verdict = compute_013_verdict(dimensional_ok=dimensional_ok)
     mutated_verdict = compute_013_verdict(dimensional_ok=corrupt_ok)
@@ -439,6 +417,7 @@ def build_dimensional_block(M_entries: dict[str, sp.Expr], K_entries: dict[str, 
         "expected_m": expected_m,
         "expected_k": expected_k,
         "expected_ratio": expected_ratio,
+        "K_eta_dim": K_eta_dim,
         "m_dims": m_dims,
         "k_dims": k_dims,
         "m_shared": m_shared,
@@ -499,7 +478,7 @@ def build_baseline() -> dict[str, Any]:
     reintegrated = project_from_profiles(profiles["alpha_a"], profiles["alpha_L"], K_eta)
     closed_forms = report_closed_forms()
     flags = symbol_name_flags(projection["M_entries"], projection["K_entries"])
-    dim = build_dimensional_block(projection["M_entries"], projection["K_entries"])
+    dim = build_dimensional_block(K_eta, projection["M_entries"], projection["K_entries"])
     eom_rows = sp.Matrix(projection["M_matrix"]) * sp.Matrix([delta_a_ddot, delta_L_ddot]) + sp.Matrix(projection["K_matrix"]) * sp.Matrix([delta_a, delta_L])
     consumed_packet = {
         "L0_cited": sp.Rational(37, 20),
@@ -785,6 +764,27 @@ def main() -> None:
     print_provenance(data)
     print_verdict_labels()
     run_able_to_fail_teeth(data)
+    dim = data["dim"]
+    emit_dimension_sidecar(
+        __file__,
+        {
+            "symbol_dims.L0": dim["symbol_dims"][L0],
+            "symbol_dims.beta": dim["symbol_dims"][beta],
+            "symbol_dims.muEta": dim["symbol_dims"][muEta],
+            "symbol_dims.Tw": dim["symbol_dims"][Tw],
+            "symbol_dims.rAL": dim["symbol_dims"][rAL],
+            "K_eta": dim["K_eta_dim"],
+            "m_dims.aa": dim["m_dims"]["aa"],
+            "m_dims.aL": dim["m_dims"]["aL"],
+            "m_dims.LL": dim["m_dims"]["LL"],
+            "k_dims.aa": dim["k_dims"]["aa"],
+            "k_dims.aL": dim["k_dims"]["aL"],
+            "k_dims.LL": dim["k_dims"]["LL"],
+            "m_shared": dim["m_shared"],
+            "k_shared": dim["k_shared"],
+            "ratio_dim": dim["ratio_dim"],
+        },
+    )
     print("")
     print(f"PASS tally: {PASS_COUNT}; FAIL tally: {FAIL_COUNT}; TOTAL = {PASS_COUNT} + {FAIL_COUNT} = {PASS_COUNT + FAIL_COUNT}")
     print("OVERALL PASS: SymPy verified ledger_stage013 breathing harmonic profiles + M/K projection exactly")

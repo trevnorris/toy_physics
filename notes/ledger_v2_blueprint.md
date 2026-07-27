@@ -54,7 +54,10 @@ merge commit (`--no-ff`)** so master's history records the whole development lea
   (glob → invoke → write `output/{stem}.txt` → stamp `EXIT_CODE:`), plus the `output/` dirs. **⚠ B2 retargets the
   runner glob patterns + usage/help examples** from `moving_throat_pde_*` → the new stem (`scripts/run_all_audits.sh:44`,
   `mathematica/run_all_audits.sh:41`, `mathematica/run_one_audit.sh:30`).
-- **`notes/MATHEMATICA_MIRROR_POLICY.md`** — the independent-route rule (§5).
+- **`research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md`** — the independent-route rule (§5).
+  ⚠ Do NOT copy it into `research/pde_ledger_v2/notes/`: that duplicate was created, found
+  byte-identical (`70c297a4`) and describing the v1 253-stage ledger, and was deleted 2026-07-26.
+  Cite the v1 path above.
 - **LaTeX build chain** — `paper/pde_ledger.tex` (→ retitle, keep filename generic), `document_setup.tex`,
   `macros.tex` (`\stagefield`/`\claimstatus`/`\resultanchor`/`\StatusExact|Reduced|Open`/`\StageFile`),
   `main_parts.tex` skeleton, `frontmatter/00–05`, infra appendices (`reproducibility_map`, `source_file_index`,

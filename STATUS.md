@@ -83,6 +83,12 @@ dimensional firewall.
 | Numbered decisions (esp. **16**, the `P`-retirement) | `software/stage1_solver/decisions/` |
 | Retired approaches / the failures-paper backlog | `research/pde_ledger_v2/notes/ledger_exclusions_failures_paper_backlog.md` |
 | The calibrate-predict methodology | `software/stage1_solver/decisions/09_calibrate_predict_methodology.md` |
+| ⭐ **The EM-track record** — U1/U2 + Phase B/C, the `𝔅` boundary-operator verdict (144/144 UNRESOLVED). **Sole home of that narrative** | `docs/em_analog_next_phase_handoff.md` |
+| The EM physical picture + MacCullagh template + leak findings | `software/stage1_solver/decisions/15_em_medium_native_physical_picture.md` |
+| Full current state + resume-after-`/compact` pointer (**sync this file with it**) | `software/stage1_solver/decisions/13_emergent_constants_derivation.md` §0 |
+| The defect-regime + held-out-surplus roadmap | `docs/defect_interaction_map.md` |
+| The gravity moving-throat PDE gate checklist | `research/pde_ledger/notes/stages/moving_throat_pde_completion_ladder.md` |
+| The pre-registration (what was committed to in advance) | `docs/pathA_preregistration.md` |
 
 ⛔ **Do NOT read `docs/conceptual_foundation.md`** — vision/history, superseded by `docs/model_map.md`. It
 predates the EM reconsideration and the retired `P` field, and re-confuses.

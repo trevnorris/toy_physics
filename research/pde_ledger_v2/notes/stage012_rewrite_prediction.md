@@ -98,10 +98,25 @@ Exact rationals throughout — **no floats**.
 | K | `{18, 1, -2}` | `{18, 1, -2}` | AGREE |
 | c_S² | `{2, 0, -2}` | `{2, 0, -2}` | AGREE |
 
-Two stages, two scripts, independent routes, never compared before this. Both corroborate
-`docs/model_map.md` §2 (`[K] = M L¹⁸T⁻²`, `ρ0 = [L⁻⁴]`), which was written from a separate fan-out.
-**This is the first positive cross-stage consistency result of the rewrite** — the prior findings were
-all conflicts or gaps.
+⚠ **CORRECTED after external review (Grok, 2026-07-26). I over-claimed this twice — here and in
+commit `57a9bf34`.** The agreement is **STRUCTURAL, not independent**: stage011 and stage012 apply the
+*same recipe* — post `energy={2,1,-2}`, then `V₄ → P → K` (`stage012 .py:529-533` vs
+`stage011:331-336`). They share no stage-to-stage dimension import (only `ledger_dimensions` ops), so
+it is a genuine parallel transcription — but it is **not two independent derivations converging**, and
+must not be reported as one. What it actually buys: transcription fidelity between two stages
+implementing one recipe. A typo in either would surface. That is worth having and is all it is.
+
+⭐ **THE RESULT THAT IS INDEPENDENT — and it is stronger.** Grok derived all 14 emitted values from
+the *model* rather than the scripts (`docs/model_map.md` §2: 4D bulk, `[ρ]=L⁻⁴`, `P=Kρ⁵`,
+`c_s²=5Kρ⁴/m`) and found **14 CORRECT / 0 WRONG / 0 CANNOT-DETERMINE**. Key derivations:
+- `[K] = [P]/[ρ]⁵ = ML⁻²T⁻² / L⁻²⁰ = ML¹⁸T⁻²` ✓ reproduces the declared primitive
+- `[c_s²] = [K]+4[ρ]−[m] = {18,1,-2}+{−16,0,0}+{0,−1,0} = {2,0,-2}` ✓
+- `pressure = {-2,1,-2}` is correct **as a 4D pressure** (energy per 4-volume, `ML⁻²T⁻²`) — NOT the 3D
+  `ML⁻¹T⁻²`. Easy to misread as an error without the model in hand.
+- `[α] = L⁻¹` from the Robin condition `∂ₛψ − αψ = 0` ✓
+
+This — physical correctness against an independently-written model doc — is the real positive result,
+not the cross-stage echo.
 
 **One UNREACHABLE, and it is physically meaningful, not a gap.** `corrupt_walk.z00_dim`: the corrupt
 path assigns the sentinel `"dimensionful_tan_argument"` at `.wl:268` because the corrupted tangent

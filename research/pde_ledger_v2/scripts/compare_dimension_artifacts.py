@@ -28,9 +28,15 @@ HEADER_LINE_RE = re.compile(
 # must be named.  Stage011's Wolfram engine keeps the primitive omega and m
 # dimension literals local to buildDimensionalBlock[] and does not return
 # standalone OmegaDim or MassDim quantities to its once-only DIM print site.
+# Stage012 waives only mass_dim: massDim is not returned in the association at
+# the .wl:307 buildDimensionalBlock[] block, so the once-only DIM print site
+# cannot reach it without a forbidden data-flow change.
 COVERAGE_WAIVERS: Mapping[str, Mapping[str, frozenset[str]]] = {
     "stage011": {
         "py_only": frozenset({"MassDim", "OmegaDim"}),
+    },
+    "stage012": {
+        "py_only": frozenset({"mass_dim"}),
     },
 }
 

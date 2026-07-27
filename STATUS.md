@@ -7,7 +7,7 @@ notes. History is in git. If this file starts growing narrative, cut it.
 
 ## ▶ YOU ARE HERE (2026-07-26)
 
-**Current front: the DIMENSION REWRITE — 3 of 30 scripts done** (stage004, stage011, stage012).
+**Current front: the DIMENSION REWRITE — 4 of 30 scripts done** (stage004, stage011, stage012, stage013).
 
 Every SymPy audit script's dimension handling moves onto one shared module
 `research/pde_ledger_v2/scripts/ledger_dimensions.py`, **one stage at a time**, each verified by an
@@ -16,11 +16,16 @@ independent `.py`-vs-`.wl` cross-check.
 > ⭐ **READ `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`** — the single canonical doc for
 > this workstream. And read `docs/model_map.md` **before touching any script**.
 
-**▶ NEXT: stage013**, then 018, 016, 023, 027, 021. Per stage: emit print-only `DIM|` records into the
-`.wl` and **commit that before touching the `.py`** (freezing the reference first makes engine
-independence structural) → rewrite the `.py` onto the module → compare axis-labelled → verify
-(adversarial fresh agent + a Grok pass checking the dimensions against the *model*, not just against
-the other engine) → commit.
+**▶ NEXT: stage018**, then 016, 023, 027, 021. Per stage: emit `DIM|` records into the `.wl` and
+**commit that before touching the `.py`** (freezing the reference first makes engine independence
+structural) → rewrite the `.py` onto the module → compare axis-labelled → **orchestrator regenerates
+the `.out`** (verify agents cannot run Mathematica, so only you can confirm the reference is genuine)
+→ verify (adversarial fresh agent + a pass checking the dimensions against the *model*, not just
+against the other engine) → commit.
+
+⚠ **Before resuming, read `DIMENSION_REWRITE.md` §1b (the D1–D5 decisions) and §3b (what those
+decisions REOPENED).** Several recorded conclusions — three waivers, four "impossible" stages, a
+coverage estimate — were correct only under constraints since lifted, and will read as settled.
 
 **Why this is the front:** the 44-stage manifest fanout is blocked — dimension recovery covers only
 ~16 of 43 scripts. The decision (`b5527062`, `aae5d389`) was to **fix the corpus, not weaken the

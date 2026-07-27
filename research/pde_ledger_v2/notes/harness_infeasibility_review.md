@@ -132,12 +132,12 @@ mutation-sensitive work (`scripts/ledger_stage040_cone_lock_readjudication_sympy
 `:548`, `:593`).
 PASS multisets plus unchanged Wolfram output do not prove C7 teeth or stage044 side effects survived.
 
-**Acceptance §4.4 — nine conflicts.** The claim that this harness would catch all nine is false.
-`PIVOT_TO_REWRITE.md` actually lists eight numbered findings and then asserts nine unnamed pairs
-(`manifests/PIVOT_TO_REWRITE.md:90`, `:104`). Same-stage Python-vs-Wolfram values cannot diagnose:
+**Acceptance §4.4 — cross-stage conflicts.** The claim that this harness would catch them all is false.
+The surviving inventory in `notes/rewrite_reference_table.md` §3 catalogues the conflicts; the corpus
+context is in `manifests/DIMENSION_REWRITE.md` §7. Same-stage Python-vs-Wolfram values cannot diagnose:
 
 - stage031's self-comparison structure or stage017's hardcoded `True`;
-- `r_BA`, which is dimensionless in both incompatible systems (`manifests/PIVOT_TO_REWRITE.md:95`);
+- `r_BA`, which is dimensionless in both incompatible systems (`manifests/DIMENSION_REWRITE.md` §7);
 - `epsilon*` versus `Z*_ret`, which needs an external alias assertion (`:97`);
 - register locus mis-attribution, which is a register-provenance audit (`:99`);
 - `K_eta`, `mu_eta/T_w`, and `M0`, which are cross-**stage**, not cross-engine, disagreements;

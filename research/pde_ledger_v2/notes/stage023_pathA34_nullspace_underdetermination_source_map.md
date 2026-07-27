@@ -185,7 +185,8 @@ transfers/residuals/rank-audit/dimensional-checker/provenance/decoupling/verdict
 distillation recommended **keep-native**. **BUT** — ⚠ apply the stage022 lesson: **the 023 `.wl` region is STRUCTURALLY PARALLEL
 to the `.py`** (same `rankDofs` list + order L128, same `base_constraints = {P0port, K0c, Keta+2 TOmega}` L132, same
 `augRank − rank0` return-moving-nullity subtraction L136, same `gateVerdictFor` `Which`-ladder L168–177 mirroring
-`base_verdict`, same `dimOf` recursion mirroring `dim_of`). By the `MATHEMATICA_MIRROR_POLICY.md` transliteration screen —
+`base_verdict`, same `dimOf` recursion mirroring `dim_of`). By the
+`research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md` transliteration screen —
 which is NECESSARY-NOT-SUFFICIENT to lack `Import`/`Get` — **this is the SAME concern that forced stage022's `branchData`
 re-authoring.** ⭐ **The directive must RESOLVE this (route it through the Codex→Grok→Codex bookend), not rubber-stamp
 "keep-native":**

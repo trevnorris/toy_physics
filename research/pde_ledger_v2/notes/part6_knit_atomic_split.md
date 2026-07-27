@@ -27,7 +27,7 @@
 >
 > Governing: `notes/ledger_v2_blueprint.md` §156 (Part VI row) + §5 (reshape spec) + §6 (verification); `RESUME_ROADMAP.md`
 > §3.6 (the three gates) + §4 (build order) + §5 (cross-cutting cones/throat-solve facts); `docs/model_map.md` §3.6 + §4
-> (departure ledger); `notes/MATHEMATICA_MIRROR_POLICY.md`.
+> (departure ledger); `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md`.
 
 ---
 

@@ -5,8 +5,10 @@ conversion**. Nothing tracked was modified; stage037 remains unconverted.
 
 ⚠ **This note exists because the spike's working artifacts live in gitignored
 `_scratch/spike037/` and `_scratch/OUT_spike037.txt`.** Without it, a fresh clone or a
-context-compacted reader could not audit the word "prototyped". Everything load-bearing is reproduced
-here.
+context-compacted reader could not audit the word "prototyped". It records the **route, the
+measured numbers, and the honest limits** — but see *Reproducing this*: it is **not** a
+clone-runnable reproduction, and saying otherwise would repeat the overstatement this note was
+written to correct.
 
 ## Why it was run
 
@@ -56,7 +58,8 @@ scale monomial, then read the exponents off it. The `axes=` label is built from
 | stage PASS tally | **16/16 preserved** |
 | `.out` re-run | **required** — the committed `.out` currently goes straight from `PASS UNITS_RESTORED` to the next section |
 
-**Able-to-fail, demonstrated.** A seeded `.py`-only error was caught by the **real** comparator:
+**Able-to-fail, demonstrated — ⚠ AGAINST THE THEN-CURRENT COMPARATOR.** A seeded `.py`-only error
+was caught by the **real** comparator (loaded via `importlib`, not a reimplementation):
 
 ```
 COVERAGE|stage=stage037|py=21|wl=21|compared=21|py_only=0|wl_only=0
@@ -64,9 +67,11 @@ MISMATCH U_B: py={L=3, T=-2, M=1}; wl={M=1, L=2, T=-2}
 RESULT|stage=stage037|status=FAIL|mismatches=1
 ```
 
-The probe loaded the actual `scripts/compare_dimension_artifacts.py` via `importlib` — **not** a
-reimplementation. (That `COVERAGE|` spelling is the pre-rename output; the line is now
-`ARTIFACT_NAME_SET|`.)
+⛔ **Do not re-run that probe against the current comparator and expect this output.** It predates
+`35710cee`: the `COVERAGE|` spelling is pre-rename (now `ARTIFACT_NAME_SET|`), and — more
+importantly — the probe hand-built a sidecar, which **sidecar freshness now rejects before any
+mismatch comparison happens**. The result stands as a record of what was measured on the day; it is
+**not** a reproduction against today's tooling. Reproducing it now requires a hash-valid sidecar.
 
 **Fabrication guard fired correctly** — perturbing the emitted expression moved the record:
 `U_B -> R U_B` gave `{1, 3, -2}` against a clean `{1, 2, -2}`.
@@ -130,9 +135,16 @@ four. If a `.wl`'s internal axis order ever changed, a typed label would not fol
 ⇒ **Adopt the derived-label form from stage016 onward.** The five already converted are bounded,
 recorded debt — not worth retrofitting mid-flight.
 
-## Reproducing this
+## Reproducing this — ⚠ NOT YET CLONE-RUNNABLE, and that is a real gap
 
-The prototype is `_scratch/spike037/ledger_stage037_route_b_boost_structural_relation_spike.wl`
-(gitignored). The emission block is reproduced above in full; the rest of the file is a copy of the
-committed stage037 `.wl`. Companion probes: `compare_transcription_probe.py` (seeded-error test),
-`parse_wolfram_output.py`, `survey_integer_lists.wl`.
+⛔ **This note preserves the measured result and the route; it is NOT a complete reproduction.**
+The three helper definitions above are the mathematical core, but `emitDimensionRecords[]`, its call
+site, and the seeded-error probe exist **only** in gitignored
+`_scratch/spike037/` (`ledger_stage037_route_b_boost_structural_relation_spike.wl`,
+`compare_transcription_probe.py`, `parse_wolfram_output.py`, `survey_integer_lists.wl`). The rest of
+the prototype is a copy of the committed stage037 `.wl`.
+
+⇒ **Before citing this spike as reproducible**, track the complete emission block and an
+updated, hash-valid probe, and re-run both against the current comparator. Until then this note
+supports the claim *"a route was demonstrated on 2026-07-27"* and **not** *"anyone can rerun it
+today"*.

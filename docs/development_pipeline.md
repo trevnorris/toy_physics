@@ -219,4 +219,4 @@ That is a denylist against an expressive grammar; it does not converge.
 
 ---
 
-*Source of truth = the `feedback-*` memories cited above. Companion docs: `docs/development_plan.md` (what to build), `docs/model_map.md` (⛔ NOT `model_map.md` — superseded, it re-confuses) (the vision), `STATUS.md` (where we are).*
+*Source of truth = the `feedback-*` memories cited above. Companion docs: `docs/development_plan.md` (what to build), `docs/model_map.md` (the model — ⛔ NOT `docs/conceptual_foundation.md`, superseded and it re-confuses), `STATUS.md` (where we are).*

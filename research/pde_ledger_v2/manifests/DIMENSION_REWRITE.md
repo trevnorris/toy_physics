@@ -144,9 +144,8 @@ unless you check here first.** Do not inherit them.
    spike result at the end of this section, and mind the distinction. 044 untested (frozen pending
    044-v2).
 3. **"~26 well-gated + 4 that can't be."** That estimate assumed (2), which is now falsified.
-   ⭐ **stage018 is DONE (`1b645ed9`).** Next: the three reopened waivers
-   (011 `MassDim`/`OmegaDim`, 012 `mass_dim`) as one batch — the same small `.wl` data-flow
-   change three times, with `K_eta` at stage013 as the worked example — then 016, 023, 027, 021.
+   ⭐ **stage018 is DONE (`1b645ed9`); the three reopened waivers are CLOSED (`8b006055`).**
+   Next: **016** (surveyed, `REACHABLE` — §8), then 023, 027, 021.
 
 ⭐⭐ **THE 037 SPIKE, 2026-07-27 — `ROUTE_EXISTS` for stage037, demonstrated with a working
 prototype.** Run out of order, deliberately: the seven exceptional tail stages are **035, 036, 037,
@@ -413,18 +412,55 @@ strings in both engines. ⇒ every group-A stage needs `.wl` emission; with the 
 **fail** rather than pass quietly. The old ordering was a cost heuristic, never a correctness one.
 ⚠ 021 also has cross-engine name collisions (`[P₀_raw]`/`[P0_raw]`, unicode `N₀` vs ASCII `N0`).
 
-⛔⛔ **GAP IN THE RECORD, found 2026-07-27 — the four remaining group-A stages have NO `.wl`
-reachability survey.** `notes/rewrite_reference_table.md` §5.3 surveys 21 stages and covers
-**005 007 006 032 034 038 039 002 003 008 009 010 030 031 040 041 042 044 035 036 037** —
-it does **not** cover **016, 023, 027 or 021**. That is a fossil of the falsified *"group A is
-free"* premise: §5.3 only surveyed the stages then believed to need `.wl` work.
-⇒ **For 016/023/027/021, whether each `.wl` value is REACHABLE (top-level global) or
-`LOCAL_ONLY` (dies at a `Module` boundary) is UNKNOWN and must be determined first.** It is the
-first thing step (b) needs, and it decides whether the stage is a print-only repeat or a D2
-data-flow job. Do not assume; the §5.3 verdicts for the surveyed stages split roughly evenly.
+✅ **GAP CLOSED 2026-07-27 — the four remaining group-A stages are now surveyed.** They were the
+fossil of the falsified *"group A is free"* premise: `notes/rewrite_reference_table.md` §5.3 surveyed
+only the 21 stages then believed to need `.wl` work, so **016, 023, 027 and 021 had no reachability
+verdict at all**. Three independent read-only agents filled it; loci spot-checked by the orchestrator.
 
-**Order:** ~~013, 018,~~ ✅ done → **the three reopened waivers as one batch**, then 016, 023, 027,
-then 021 (heaviest). Then `(L,T,M)`, `(M,L,T)`, then 008 (2-axis), 038 (4-axis), 042 (stiffness).
+| stage | verdict | values reachable | axis order — and HOW it is established | re-invocation | the hazard that decides the build |
+|---|---|---|---|---|---|
+| **016** | `REACHABLE` | **21 of 21** — 12 declared rule-table entries (`wl:305`) + 9 computed (`wl:306`) | `(L,M,T)`, ⭐ **code-evidenced**: the slot→label binding `{{"L",d[[1]]},{"M",d[[2]]},{"T",d[[3]]}}` at `wl:123`. Every slot carries a non-zero value somewhere | `evalDimensional` **6×** — 1 clean, 4 corrupted, 1 arity-self-check re-run | the `.out` today renders **zero** exponent vectors — only `dimText` monomial strings and prose |
+| **023** | `REACHABLE` | **7 of 7** computed, via the top-level global `baselineDimAudit` (`wl:276`), + 22 declared `baseDims` + 7 declared `expectedDims` | `(L,M,T)`, prose only (`wl:608`) but evidenced by non-zero slots in `baseDims`. ⚠ of the **7 computed outputs** only `A1` has a non-zero L — the order is evidenced by the inputs, not the results | `dimensionAudit` **17×** — 3 top-level + 14 memoized `caseFor` modes | ⛔ a **literal substitutes for a computed value** when the expression is 0 (`wl:262`): inert at baseline, **load-bearing in `"perfect"` mode**, where 4 of 7 rows then self-match against `expectedDims` |
+| **027** | ⚠ **MIXED** — declared `REACHABLE`, computed **`LOCAL_ONLY`** | **0 of 1** computed vectors reach top level (it dies in `runAll`'s `Module`, `wl:742-751`); the 16 declared `baseDims` (`wl:183`) do | `(L,M,T)`, ⭐ **mechanically bound** through `uL/uM/uT` (`wl:200`, `:205`) — the **strongest axis evidence in the corpus**, code not prose | `evaluatePort` **19×**, 2 of them under a corrupted basis | ⛔ the `.wl`'s rescaling-ratio route **cannot produce per-symbol vectors at all** — 027 stays a **1-row** `DIM\|` stage unless new call sites are added (which D2 permits) |
+| **021** | `REACHABLE` | **27 of 27** top-level bindings — ⭐ **no top-level `Module` anywhere**; ~21 clean named + ~64 mutation-scoped ≈ 85 | storage `(L,M,T)`, **prose only** (`wl:342`, `:384`, `:528`) — there is **no machine-readable axis binding**, so a D2 emitter must hardcode the header | `gateData` **13×** (8 under a corrupted map), `backSolveMutant` **5×** (all corrupted) | ⛔⛔ an **undocumented index-permuting renderer** — `{{"L",d[[1]]},{"T",d[[3]]},{"M",d[[2]]}}` at `wl:125`/`:139` — so scraping its printed output and labelling it `axes=L,M,T` **silently swaps M and T**. The `.py` documents its permutation (`py:224`); the `.wl` does not |
+
+⛔⛔ **CORPUS-WIDE CORRECTION — "append the print at end-of-file" is DEAD CODE in all 43 `.wl`
+files.** §5.3 defines `REACHABLE` as *"a print appended at end-of-file **or at the call site**
+works"*. **Measured 2026-07-27: 43 of 43 `.wl` files terminate in `Exit[0]`/`Exit[1]`**, so the
+end-of-file half of that definition is false everywhere — a print after the terminal `Exit[]` never
+executes and emits nothing.
+⇒ **The verdicts are unaffected** (the *values* really are reachable, and no restructuring is
+needed); only the **insertion locus** changes: emit *before* the terminal `Exit[]` block, at or after
+the top-level binding. The working precedent is stage018, whose `DIM|` prints sit at `.wl:387-393`
+against its `Exit[]` at `.wl:499`/`:502`.
+⚠ Three of the four surveys flagged this independently, which is why it is recorded here rather than
+in a stage note: it applies to every stage still to be converted, including the 21 already surveyed.
+⭐ The acceptance criterion that catches it without anyone having to remember it: **the count of
+emitted `DIM|` records must equal the count of objects marked *emitted* in the §4-a enumeration** — a
+dead print yields 0 and fails.
+
+**Follow-on findings from the same surveys** (recorded, not acted on):
+- ⛔ **task #22 material, 021** — `py:557` compares `data["raw_symbol_dims"][N0]` against the constant
+  `SOURCED_N0_DIM`, which is **the same constant** (`py:145`, `py:381`): it cannot fail for any value.
+  The Mathematica twin `wl:342` retypes the literal and **is** a real transcription guard. The two
+  engines are not equally strong here, and the weaker side is the `.py`.
+- **Fractional stored values confirmed in all three of 023/027/021**, so the emitter must serialise
+  exact rationals, never floats: `gU`/`gW` `{-1/2, 1/2, -2}` (`023 wl:243`, and they cancel to
+  `{0,0,0}` in `P0Physical` — a port that drops them lands on the right answer for the wrong reason);
+  `I25` `{5/2,0,0}` and `CouplingAPower` `-7/2` (`027 wl:186`, `:154`); `muDim` `-1/2` (`021 wl:303`,
+  rendered `L⁻¹ T⁻¹ M⁻¹ᐟ²`).
+- **Name-pairing debt, measured.** 023: `.wl` `"P0Physical"` vs `.py` `"P0_physical"` — the other six
+  join. 027: the `.wl` names objects by variable only and has **no counterpart** to the `.py`'s nine
+  expression-embedded record names (`py:526-536`). 021: 3 of 10 symbol keys differ (`cs`/`c_s`,
+  `chiQsym`/`chi_Q`, `muHat0`/`mu_hat0`), every derived-object name differs, and the `.wl` is split
+  **against itself** — `[P₀_raw]` in a `Print` (`wl:335`) vs `[P0_raw]` in the assertion name
+  (`wl:344`). These are D4 join-key work, and ⛔ aligning a *name* never licenses aligning a *value*.
+- **021 dead weight:** `lhsRawDim` (`wl:308`) and `gamma5Dim` (`wl:310`) are computed and consumed by
+  **nothing** — yet the `.py` *does* export `Gamma5` (`py:534`). A real cross-engine asymmetry.
+  `dimText` (`wl:124`) is defined and never called.
+
+**Order:** ~~013, 018,~~ ✅ done → ~~the three reopened waivers as one batch~~ ✅ **CLOSED `8b006055`**
+→ **016** (in progress), then 023, 027, then 021 (heaviest). Then `(L,T,M)`, `(M,L,T)`, then 008 (2-axis), 038 (4-axis), 042 (stiffness).
 ⚠ **The 037 spike ran out of order on purpose** (§3b) — that was a feasibility measurement, not a
 conversion, and 037 stays in its group-B slot for the actual work.
 
@@ -436,6 +472,15 @@ Each capability is ablation-verified (`_exact`→`sp.Float` trips the exactness 
 trips the set check). They are ordered LAST for effort, not for risk.
 
 ## 9. ⛔ LANDMINES
+- ⛔ **A print appended at end-of-file NEVER RUNS — measured, 43 of 43 `.wl` files end in
+  `Exit[0]`/`Exit[1]`.** Emit *before* the terminal `Exit[]` block; stage018 (`.wl:387-393` vs its
+  `Exit[]` at `:499`) is the working precedent. This kills the "or at end-of-file" half of §5.3's
+  `REACHABLE` definition without changing any verdict — the values are still reachable. §8.
+- ⛔ **`REACHABLE` describes the VALUE, not the print site.** Three separate things must each be
+  checked before choosing an emission locus: (i) does the value survive to top level, (ii) does the
+  chosen line actually execute, (iii) how many times does the holder run, and under what corruption
+  flags. Measured re-invocation counts on the group-A tail: 016 **6×**, 021 **13×**, 023 **17×**,
+  027 **19×** — an in-body print emits duplicate *and* deliberately-corrupted records in every one.
 - **stage003's basis is `(M,L,T)`, NOT the more common `(L,T,M)`.** ⚠ The earlier claim that "neither
   file says so" was FALSE: `scripts/ledger_stage003_*.py:87` declares
   `def dim(m_power, l_power, t_power)`, stating the order explicitly. Read it; never assume.

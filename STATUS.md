@@ -5,9 +5,11 @@ notes. History is in git. If this file starts growing narrative, cut it.
 
 ---
 
-## ▶ YOU ARE HERE (2026-07-26)
+## ▶ YOU ARE HERE (2026-07-27)
 
-**Current front: the DIMENSION REWRITE — 4 of 30 scripts done** (stage004, stage011, stage012, stage013).
+**Current front: the DIMENSION REWRITE — 5 of 30 scripts converted** (stage004, stage011, stage012,
+stage013, **stage018**). ⚠ *Converted* ≠ *finished*: 3 are waiver-free (004, 013, 018); **011 and 012
+retain three reopened coverage items** between them, and those are the next work.
 
 Every SymPy audit script's dimension handling moves onto one shared module
 `research/pde_ledger_v2/scripts/ledger_dimensions.py`, **one stage at a time**, each verified by an
@@ -16,12 +18,28 @@ independent `.py`-vs-`.wl` cross-check.
 > ⭐ **READ `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`** — the single canonical doc for
 > this workstream. And read `docs/model_map.md` **before touching any script**.
 
-**▶ NEXT: stage018**, then 016, 023, 027, 021. Per stage: emit `DIM|` records into the `.wl` and
-**commit that before touching the `.py`** (freezing the reference first makes engine independence
-structural) → rewrite the `.py` onto the module → compare axis-labelled → **orchestrator regenerates
-the `.out`** (verify agents cannot run Mathematica, so only you can confirm the reference is genuine)
-→ verify (adversarial fresh agent + a pass checking the dimensions against the *model*, not just
-against the other engine) → commit.
+**▶ NEXT: the three reopened waivers as one batch** (011 `MassDim`/`OmegaDim`, 012 `mass_dim` — the
+same small `.wl` data-flow change three times; `K_eta` at stage013 is the worked example), then 016,
+023, 027, 021.
+
+Per stage: emit `DIM|` records into the `.wl` → ⭐ **run the PHYSICS leg BEFORE the commit** (it is
+blocking, and a NAMING decision is a physics decision) → **commit the `.wl` before touching the `.py`**
+(freezing the reference first makes engine independence structural) → rewrite the `.py` onto the
+module → **re-run the `.py`, then** compare axis-labelled → **orchestrator regenerates the `.out`**
+(verify agents cannot run Mathematica, so only you can confirm the reference is genuine) → fidelity +
+adversarial fresh agents → commit. Keep the prediction note **outside the repo** until the reviews land.
+
+⭐ **The hard tail is bounded.** A spike **prototyped** an independent `.wl` route for **stage037**
+(`ROUTE_EXISTS`, 21/21 quantities, a real comparator failure on a seeded error), so the old
+"genuinely impossible" verdict is **false for 037**. **035 and 036 have identified routes that are
+NOT yet prototyped** — source inspection only. ~0.5–1 engineer-day per stage is an **estimate**, not
+a measurement. See `DIMENSION_REWRITE.md` §3b.
+
+✅ **Python sidecars are source-hash bound.** `emit_dimension_sidecar` stamps the stage's `sha256`
+into the sidecar header and the comparator **recomputes it** and rejects a missing or mismatched
+digest — closing the measured transposed-but-not-re-run case, where the gate used to score `PASS`.
+⚠ The comparator still does **not** execute the stage and does **not** prove source coverage
+(`source_coverage=not_checked`). Re-run the `.py` before the gate anyway, and say that you did.
 
 ⚠ **Before resuming, read `DIMENSION_REWRITE.md` §1b (the D1–D5 decisions) and §3b (what those
 decisions REOPENED).** Several recorded conclusions — three waivers, four "impossible" stages, a

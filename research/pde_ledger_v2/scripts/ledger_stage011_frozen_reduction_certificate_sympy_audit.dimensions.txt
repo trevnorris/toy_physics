@@ -1,4 +1,4 @@
-DIMENSIONS|stage=ledger_stage011_frozen_reduction_certificate_sympy_audit|axes=L,M,T
+DIMENSIONS|stage=ledger_stage011_frozen_reduction_certificate_sympy_audit|axes=L,M,T|source_sha256=074a60f7afb0d2a62b75ccd091942e2db8079f9a66d93d7ce5e160229a0ae0ce|ledger_dimensions_sha256=7cb8b7c93d189320f3ff857a665162e3290d1628e4511b2b387dd9a4f08e5bea
 DIM|axes=L,M,T|name=LengthDim|exponents={1, 0, 0}
 DIM|axes=L,M,T|name=EnergyDim|exponents={2, 1, -2}
 DIM|axes=L,M,T|name=FourVolumeDim|exponents={4, 0, 0}

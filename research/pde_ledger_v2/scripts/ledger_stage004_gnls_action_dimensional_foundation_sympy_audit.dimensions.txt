@@ -1,4 +1,4 @@
-DIMENSIONS|stage=ledger_stage004_gnls_action_dimensional_foundation_sympy_audit|axes=L,T,M
+DIMENSIONS|stage=ledger_stage004_gnls_action_dimensional_foundation_sympy_audit|axes=L,T,M|source_sha256=94449d63e5cb04ddd3dc8517148c62f892e2ba7f076c47bc412b2b77150ea2b7|ledger_dimensions_sha256=7cb8b7c93d189320f3ff857a665162e3290d1628e4511b2b387dd9a4f08e5bea
 DIM|axes=L,T,M|name=zero|exponents={0, 0, 0}
 DIM|axes=L,T,M|name=L|exponents={1, 0, 0}
 DIM|axes=L,T,M|name=T|exponents={0, 1, 0}

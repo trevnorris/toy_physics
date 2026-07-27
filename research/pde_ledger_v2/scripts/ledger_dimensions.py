@@ -7,6 +7,7 @@ and 011.  A stage binds one ``DimensionBasis`` and constructs every
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 from types import MappingProxyType
 from typing import Mapping
@@ -184,7 +185,7 @@ def emit_dimension_sidecar(
     stage_file: str,
     dimensions: Mapping[str, Dimension],
 ) -> Path:
-    """Write deterministic DIM records beside a stage."""
+    """Write deterministic DIM records and source-digest assertions beside a stage."""
 
     lines: list[str] = []
     declared_axes: tuple[str, ...] | None = None
@@ -210,8 +211,12 @@ def emit_dimension_sidecar(
         raise ValueError("dimension sidecar needs at least one record")
     source = Path(stage_file)
     destination = source.with_suffix(".dimensions.txt")
+    source_sha256 = hashlib.sha256(source.read_bytes()).hexdigest()
+    ledger_dimensions_sha256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     header = (
         f"DIMENSIONS|stage={source.stem}|axes={','.join(declared_axes)}"
+        f"|source_sha256={source_sha256}"
+        f"|ledger_dimensions_sha256={ledger_dimensions_sha256}"
     )
     destination.write_text("\n".join([header, *lines]) + "\n", encoding="utf-8")
     return destination

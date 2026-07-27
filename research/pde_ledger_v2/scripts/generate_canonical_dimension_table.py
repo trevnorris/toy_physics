@@ -208,7 +208,7 @@ def classify_engine_status(
     python: comparator.LabelledDimension | None,
     wolfram: comparator.LabelledDimension | None,
 ) -> str:
-    """Use the comparator's labelled dimensions and coverage-waiver registry."""
+    """Use the comparator's dimensions and artifact-name waiver registry."""
     if python is not None and wolfram is not None:
         return (
             "AGREE"
@@ -216,7 +216,7 @@ def classify_engine_status(
             else "DISAGREE"
         )
 
-    stage_waivers = comparator.COVERAGE_WAIVERS.get(stage, {})
+    stage_waivers = comparator.ARTIFACT_NAME_WAIVERS.get(stage, {})
     if python is not None:
         waived = name in stage_waivers.get("py_only", frozenset())
         return "ONE_SIDED_PY (WAIVED)" if waived else "ONE_SIDED_PY (UNWAIVED)"
@@ -228,6 +228,7 @@ def classify_engine_status(
 
 def load_stage(stage: str) -> StageData:
     parsed_stage, sidecar, wolfram_out = comparator.parse_stage(stage)
+    comparator.require_fresh_python_sidecar(sidecar)
     python_dimensions = comparator.load_dimensions(sidecar)
     wolfram_dimensions = comparator.load_dimensions(wolfram_out)
     emitted_names = sorted(set(python_dimensions) | set(wolfram_dimensions))
@@ -369,7 +370,10 @@ def render_table(
         "groups below are review flags, never automatic merges. Axis tuples are shown in",
         "each stage's declared order, while canonical renderings are always labelled and",
         "ordered `M`, `L`, `T`. Per-stage status uses the parser, labelled-axis comparison,",
-        "and waiver registry in `scripts/compare_dimension_artifacts.py`.",
+        "and artifact-name waiver registry in `scripts/compare_dimension_artifacts.py`.",
+        "A Python sidecar is rejected unless its source-digest assertions match",
+        "independent hashes of the current stage source and `ledger_dimensions.py`;",
+        "this is freshness, not source coverage.",
         "",
         "## Stage coverage",
         "",

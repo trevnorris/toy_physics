@@ -1,4 +1,4 @@
-DIMENSIONS|stage=ledger_stage013_breathing_harmonic_mk_projection_sympy_audit|axes=L,M,T
+DIMENSIONS|stage=ledger_stage013_breathing_harmonic_mk_projection_sympy_audit|axes=L,M,T|source_sha256=4243dba30d40a08d3d8196305a66d377e402378ee5ccd1cf3067271582205e44|ledger_dimensions_sha256=7cb8b7c93d189320f3ff857a665162e3290d1628e4511b2b387dd9a4f08e5bea
 DIM|axes=L,M,T|name=symbol_dims.L0|exponents={1, 0, 0}
 DIM|axes=L,M,T|name=symbol_dims.beta|exponents={-1, 0, 0}
 DIM|axes=L,M,T|name=symbol_dims.muEta|exponents={-1, 1, 0}

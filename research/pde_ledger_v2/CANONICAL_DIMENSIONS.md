@@ -11,9 +11,9 @@ Never hand-edit this file; always regenerate it with
 > not a complete corpus view.
 
 - Dimension-bearing stage corpus: **30 stages**.
-- Converted and represented: **4 of 30** — stage004, stage011, stage012, stage013.
-- Not yet represented: stage002, stage003, stage005, stage006, stage007, stage008, stage009, stage010, stage016, stage018, stage021, stage023, stage027, stage030, stage031, stage032, stage034, stage035, stage036, stage037, stage038, stage039, stage040, stage041, stage042, stage044.
-- Total quantity rows: **66** (one per exact emitted name and stage).
+- Converted and represented: **5 of 30** — stage004, stage011, stage012, stage013, stage018.
+- Not yet represented: stage002, stage003, stage005, stage006, stage007, stage008, stage009, stage010, stage016, stage021, stage023, stage027, stage030, stage031, stage032, stage034, stage035, stage036, stage037, stage038, stage039, stage040, stage041, stage042, stage044.
+- Total quantity rows: **72** (one per exact emitted name and stage).
 - Candidate-same-quantity groups: **2**.
 - `NEEDS_ADJUDICATION` groups: **0**.
 
@@ -22,7 +22,10 @@ Values come only from committed `scripts/*.dimensions.txt` and
 groups below are review flags, never automatic merges. Axis tuples are shown in
 each stage's declared order, while canonical renderings are always labelled and
 ordered `M`, `L`, `T`. Per-stage status uses the parser, labelled-axis comparison,
-and waiver registry in `scripts/compare_dimension_artifacts.py`.
+and artifact-name waiver registry in `scripts/compare_dimension_artifacts.py`.
+A Python sidecar is rejected unless its source-digest assertions match
+independent hashes of the current stage source and `ledger_dimensions.py`;
+this is freshness, not source coverage.
 
 ## Stage coverage
 
@@ -32,6 +35,7 @@ and waiver registry in `scripts/compare_dimension_artifacts.py`.
 | stage011 | `(L,M,T)` | 12 | 10 | 12 |
 | stage012 | `(L,M,T)` | 19 | 18 | 19 |
 | stage013 | `(L,M,T)` | 15 | 15 | 15 |
+| stage018 | `(L,M,T)` | 6 | 6 | 6 |
 
 ## Quantities
 
@@ -103,6 +107,12 @@ and waiver registry in `scripts/compare_dimension_artifacts.py`.
 | `symbol_dims` | `beta` | `beta` | stage013 | `(L,M,T)` | `{-1, 0, 0}` | L⁻¹ | AGREE |
 | `symbol_dims` | `muEta` | `muEta` | stage013 | `(L,M,T)` | `{-1, 1, 0}` | M L⁻¹ | AGREE |
 | `symbol_dims` | `rAL` | `rAL` | stage013 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `(none)` | `a` | `a` | stage018 | `(L,M,T)` | `{1, 0, 0}` | L | AGREE |
+| `(none)` | `c_s0_dim` | `cS0Dim` | stage018 | `(L,M,T)` | `{1, 0, -1}` | L T⁻¹ | AGREE |
+| `(none)` | `corrupted_u2_dim` | `corruptedU2Dim` | stage018 | `(L,M,T)` | `{-1, 0, 3}` | L⁻¹ T³ | AGREE |
+| `(none)` | `u2` | `u2` | stage018 | `(L,M,T)` | `{0, 0, 2}` | T² | AGREE |
+| `(none)` | `u4` | `u4` | stage018 | `(L,M,T)` | `{0, 0, 4}` | T⁴ | AGREE |
+| `(none)` | `v5` | `v5` | stage018 | `(L,M,T)` | `{0, 0, 5}` | T⁵ | AGREE |
 
 ## Candidate-same-quantity groups
 

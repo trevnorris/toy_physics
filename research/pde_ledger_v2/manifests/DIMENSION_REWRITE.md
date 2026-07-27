@@ -35,14 +35,17 @@ the `.py`, and are never "standardised" to agree with it. The comparison is infr
 not scaffolding we discard once the corpus is unified.
 
 ⛔⛔ **WHAT "INDEPENDENT ENGINE" RESTS ON — verified 2026-07-27, and it is NOT provenance.** For
-stage016 both engine files were added in the **same commit** (`bfac580f`), and by construction that is
-true of essentially every dual-engine ledger stage. **Git therefore establishes no derivation order:
-it cannot show that one engine was not written from the other.** Independence rests entirely on
+stage016 both engine files were added in the **same commit** (`bfac580f`), and a history audit at
+`da75c58f` found **all 43 current dual-engine pairs were first added pairwise in one commit**
+(`SAME_FIRST_ADD=43`, `DIFFERENT_FIRST_ADD=0`). **Git therefore establishes no derivation order for
+any of them: it cannot show that one engine was not written from the other.** Independence rests entirely on
 **authoring discipline** — D3 below and `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md` — and
 on review legs that screen for transliteration. ⇒ State the claim precisely: a green comparator shows
 that **two implementations agree**, not that they were **reached by two independent routes**. Neither
 the digests, the comparator, nor any per-stage gate can upgrade that. Say "agreement", not
-"independent verification", unless a specific leg established the route.
+"independent verification", unless a specific leg established the route. ⚠ Precisely: neither the
+current digests, the comparator, nor any current per-stage value gate establishes independent
+authorship — a *future* gate is not ruled out, it just does not exist.
 
 ## 1b. ⭐ USER DECISIONS, 2026-07-26 — "correctness is king"
 
@@ -110,8 +113,9 @@ dimension machinery: 001, 014, 015, 017, 019, 020, 022, 024, 025, 026, 028, 033,
 M row is `0 == 0` six times and carries no information. Honest, and worth expecting again wherever a
 slice has no mass content.
 
-Canonical table (`research/pde_ledger_v2/CANONICAL_DIMENSIONS.md`, regenerated): **72** quantity rows, 2 candidate
-groups (`KDim`, `Tw` — both AGREE), 0 `NEEDS_ADJUDICATION`, **0 `ONE_SIDED_PY`**.
+Canonical table (`research/pde_ledger_v2/CANONICAL_DIMENSIONS.md`, regenerated): **93** quantity rows,
+**5** candidate groups, **2 `NEEDS_ADJUDICATION`** (`KEta`, `muEta` — the 013-vs-016 line-vs-volume
+reduction debt, surfaced correctly), **0 `ONE_SIDED_PY`**.
 
 ⭐⭐ **`ARTIFACT_NAME_WAIVERS` IS NOW EMPTY (`{}`).** Every converted stage compares every name it
 emits, with no exemptions. ⚠ **That is a coverage statement, not a strength statement** — see §3b.1.
@@ -130,6 +134,10 @@ emits, with no exemptions. ⚠ **That is a coverage statement, not a strength st
 | `005c8f46` | ⭐ orchestrator `.out`-regeneration step (now §4-g2) + measured gate limits |
 | `63dee5e4` | stage018 `.wl` — ⭐ the **false cross-stage merge** caught (`c_s0` vs `c_S`) |
 | `1b645ed9` | stage018 `.py` — **5 of 30**; the R3 file-I/O prose fix; the **stale-sidecar** hole found |
+| `9dd55c8a` | group-A reachability surveys + the corpus-wide terminal-`Exit[]` correction |
+| `5b29f400` | stage016 `.wl` — 21 records; the **axis-label/vector decoupling** caught and fixed |
+| `4dfadaa4` | ⭐ **MEASURED** fix to §4 gate 2's stdout recipe (`tail -n +9 \| head -n -2`) |
+| `8c4b25b0` | stage016 `.py` — **6 of 30**; first `NEEDS_ADJUDICATION`; sidecar-forgery + module self-attestation found |
 
 ⚠ **`ARTIFACT_NAME_SET|` reports emitted-artifact name symmetry, not source coverage.** A quantity
 omitted from both artifacts is invisible to it; stage011's gate once passed with able-to-fail teeth
@@ -234,7 +242,12 @@ the reason plus its read locus. Home = the stage note (`notes/stages/ledger_stag
 Three of those were specified and rejected (§10); they fail the same way, by letting the enumeration
 become artifact-supplied.
 
-**(b)** Add `DIM|` output to the stage's `.wl` — **prefer print-only**, but under **D2** new computation is allowed where a value is otherwise unreachable (state the independent route, D3). ⭐ Derive the `axes=` label from the live axis map rather than typing it (§3b).
+**(b)** Add `DIM|` output to the stage's `.wl` — **prefer print-only**, but under **D2** new computation is allowed where a value is otherwise unreachable (state the independent route, D3).
+⭐⭐ **Derive BOTH the `axes=` label AND the exponent vector from ONE label→slot structure.** Deriving
+only the label is **insufficient and was measured wrong**: stage016's first emitter used the mapped
+label but printed the raw storage order, so permuting the map would have relabelled **all 21 records
+while every standing gate stayed green**. Routing both through the same structure fixed it
+(`5b29f400`). ⛔ A second, parallel axis list used only by the records is a defect, not a fix.
 
 ⭐⭐ **(c) THE PHYSICS LEG RUNS HERE — BEFORE THE FREEZE — AND IT IS BLOCKING.** On a fresh agent,
 derive every proposed quantity's dimension from the **model** (`docs/model_map.md` §2, the stage's own
@@ -279,8 +292,9 @@ fix round to unfreeze the name; the leg is the same, only earlier.
 
 **(d)** Re-run; confirm exit 0, PASS
 tally unchanged, `.out` reproduces byte-identically after `sed -E 's/\$[0-9]+/$N/g'`; re-baseline.
-**Commit this — plus the (a) enumeration — before touching the `.py`.** Freezing the reference first
-makes independence structural, not disciplinary.
+**Commit this — plus the (a) enumeration — before touching the `.py`.** Freezing the reference first prevents both conversion sides from
+changing together — it strengthens reference custody; it does **not** establish that the original
+engine pair was independently authored (§1).
 **(e)** Seal the prediction — ⛔ **OUTSIDE the repo** (scratchpad) until the stage's build *and*
 its review legs have landed; copy it in and commit it at (i) as the record.
 ⚠ **Custody caveat, stated honestly:** committing it afterwards means **git cannot prove it predated
@@ -444,13 +458,16 @@ verdict at all**. Three independent read-only agents filled it; loci spot-checke
 | **027** | ⚠ **MIXED** — declared `REACHABLE`, computed **`LOCAL_ONLY`** | **0 of 1** computed vectors reach top level (it dies in `runAll`'s `Module`, `wl:742-751`); the 16 declared `baseDims` (`wl:183`) do | `(L,M,T)`, ⭐ **mechanically bound** through `uL/uM/uT` (`wl:200`, `:205`) — the **strongest axis evidence in the corpus**, code not prose | `evaluatePort` **19×**, 2 of them under a corrupted basis | ⛔ the `.wl`'s rescaling-ratio route **cannot produce per-symbol vectors at all** — 027 stays a **1-row** `DIM\|` stage unless new call sites are added (which D2 permits) |
 | **021** | `REACHABLE` | **27 of 27** top-level bindings — ⭐ **no top-level `Module` anywhere**; ~21 clean named + ~64 mutation-scoped ≈ 85 | storage `(L,M,T)`, **prose only** (`wl:342`, `:384`, `:528`) — there is **no machine-readable axis binding**, so a D2 emitter must hardcode the header | `gateData` **13×** (8 under a corrupted map), `backSolveMutant` **5×** (all corrupted) | ⛔⛔ an **undocumented index-permuting renderer** — `{{"L",d[[1]]},{"T",d[[3]]},{"M",d[[2]]}}` at `wl:125`/`:139` — so scraping its printed output and labelling it `axes=L,M,T` **silently swaps M and T**. The `.py` documents its permutation (`py:224`); the `.wl` does not |
 
-⛔⛔ **THESE SURVEY COUNTS ARE LOWER BOUNDS, NOT INVENTORIES — measured 2026-07-27.** The stage016
-survey above said 21 objects; the per-stage §4-a enumeration, attacked by two review legs, then found
-**two the survey had missed**: `lambdaRef`, a live factor in the walk that is dimensionless only via a
-`NumericQ` fall-through rather than any declaration, and a clean **6th** `evalDimensional` invocation
-whose result is discarded. Neither is exotic — both are invisible *because nothing consumes them*.
-⇒ Treat the 023 / 027 / 021 counts as a floor. The survey decides the **shape** of the work; only the
-tracked §4-a enumeration, written against the file and then adversarially reviewed, closes the set.
+⛔⛔ **SURVEY COUNTS ARE PROVISIONAL, NOT COMPLETENESS PROOFS — measured on stage016, 2026-07-27.**
+The stage016 survey correctly identified the **21 clean emitted quantities**; the per-stage §4-a work
+then found two additional **non-emitted** source/control-flow cases — `lambdaRef`, a live numeric
+factor whose dimension comes from the `NumericQ` fall-through, and a duplicate clean `evalDimensional`
+re-run whose `Dims` are discarded after its `Ok` is read. ⚠ **The emitted count did NOT go 21 → 23**,
+and ⚠ **neither case is unconsumed** (`lambdaRef` feeds `k2Ref = buildK2[lambdaRef]` at `.wl:229`, and
+the re-run's `Ok` is checked). What the miss shows is that the **survey method did not close the
+broader audit inventory**. ⇒ Treat the 023/027/021 counts as **provisional** pending each stage's
+tracked §4-a enumeration plus adversarial review — which is reviewed evidence, not a completeness
+proof (§4-a says so itself).
 
 ⛔⛔ **CORPUS-WIDE CORRECTION — "append the print at end-of-file" is DEAD CODE in all 43 `.wl`
 files.** §5.3 defines `REACHABLE` as *"a print appended at end-of-file **or at the call site**
@@ -594,17 +611,17 @@ relabelled basis.** Waiving it for a stage removes the only detector, which is w
 `ARTIFACT_NAME_WAIVERS` staying `{}` matters. The records it cannot see are exactly those whose
 exponents are equal on the swapped axes.
 
-⛔⛔ **AND HERE IS ITS CEILING — the dimensional block is a PARALLEL RECONSTRUCTION of the stage's
-physics.** The emitted records are dimensions **of walked terms**, never of the stage's own
-expressions, so any **dimension-preserving** rewrite of the walked expressions is invisible to
-everything. **Executed on stage016, each leaving 82 PASS / exit 0, byte-identical `DIM|` records and a
-green comparator:** dropping `lambda_m` — *the stage's entire subject* — from the angular term, and
-deleting the angular-stiffness term from `k2_integral` outright. The `.wl` still assembles the full
-sum, so the engines then disagree on the **expression** while agreeing on the **dimension**.
-⇒ This is the `c_s0`/`c_S` failure one level up: not *"same dimension, wrong name"* but **"same
-dimension, wrong expression"**. The comparator declares the gap itself — it prints
-`source_coverage=not_checked`. **Nothing in this workstream closes it**; it bounds what conversion can
-ever buy, and Part VII's firewall needs to know that.
+⛔⛔ **AND HERE IS ITS CEILING — a RECONSTRUCTION-TO-LIVE-EXPRESSION linkage gap.** Six of the nine
+computed records (`measure`, `m2_integral`, the three `k_*` terms, `k2_integral`) walk a **stage-local
+dimensional reconstruction** built at `sympy:335-340`; the other three (`actual_M2`, `actual_K2`, and
+their ratio) walk the **live** stage expressions `m2_expr` / `k2_expr` (`sympy:347-349`).
+⚠ **No gate binds the reconstruction to the live physics it mirrors.** Executed on stage016, two
+dimension-preserving edits *confined to that reconstruction* — dropping `lambda_m` from the angular
+term, and deleting the angular term from the reconstructed `k2_integral` — each left **82 PASS /
+exit 0, byte-identical `DIM|` records and a green comparator**. ⇒ The conversion and the comparator
+cannot detect a reconstruction-vs-source mismatch; the comparator says so itself with
+`source_coverage=not_checked`. **No current automated gate in this workstream closes that linkage
+gap.** ⛔ Do not overstate this as "records never walk the stage's own expressions" — three of them do.
 
 Engine-vs-engine agreement is necessary and **not sufficient** — both engines can be wrong together.
 The check that closes the gap is deriving the emitted dimensions from the *model* (`model_map.md` §2:
@@ -620,3 +637,19 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
 - The `r_BA` unit-system adjudication (§7) — a model question for the user.
 - 12 "registered under a different key, **or new**" quantities (§7) — quote-backed archaeology, then gauntlet.
 - `schemas/` + `schemas/validate_dimension_survey.py` are **parked** (survey-era, still committed).
+- ⛔ **TRACKED SPEC — the canonical-table generator's axis-order invariant must be REPLACED, not
+  deleted, before 035/036/037.** It currently *raises* on cross-engine axis-order divergence
+  (`generate_canonical_dimension_table.py:255-265`), which is exactly the 037 route (Wolfram `M,L,T`
+  vs Python `(L,T,M)` — `notes/stage037_dimension_emission_spike.md:79-85`), so it will crash the
+  toolchain. ⚠ Deleting the raise alone is **refuted**: it leaves a non-deterministic
+  `next(iter(axis_orders))` selection, and the raise doubles as the **zero-record floor**.
+  Acceptance: (1) keep per-file validation in `load_dimensions`; (2) store explicit `python_axes` +
+  `wolfram_axes`, engine-tagged; (3) keep an EXPLICIT non-empty check rather than relying on
+  `len(axis_orders)!=1`; (4) render stage coverage by the same rule as rows — one tuple when equal,
+  `py …; wl …` when different; (5) when orders differ, render **both** positional exponent tuples
+  (`row_exponents_text` currently collapses to Python's with no indication); (6) prose "each stage's
+  declared order" → "each **engine's** declared order"; (7) tests for divergent-but-label-equivalent,
+  divergent mismatch, empty artifact, deterministic coverage; (8) keep semantic validation at the
+  emitters + review layer — deriving `axes=` from the live basis is a materially better guard than
+  cross-engine equality. ⚠ The comparator pairs by axis **label** and never compares the two
+  artifacts' declared axis **order**, so a reordered-but-relabelled sidecar passes today.

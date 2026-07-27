@@ -1,7 +1,7 @@
 # SymPy Audit Output
 # Script: ledger_stage018_dtn_hankel_fingerprint_sympy_audit.py
-# Date: 2026-07-09T09:57:07-06:00
-# Elapsed: 20s
+# Date: 2026-07-27T01:37:15-06:00
+# Elapsed: 10s
 # Exit code: 0
 # Status: PASS
 #
@@ -11,7 +11,7 @@
 ledger_stage018_dtn_hankel_fingerprint_sympy_audit
 ==================================================
 Target stem confirmed: ledger_stage018_dtn_hankel_fingerprint
-Engine: SymPy exact symbolic spherical-Hankel series; no floats/tolerances; zero file I/O.
+Engine: SymPy exact symbolic spherical-Hankel series; no floats/tolerances; audit results on stdout and labelled dimensions in a deterministic sidecar.
 
 Outgoing DtN Hankel fingerprint derived from the branch
 -------------------------------------------------------
@@ -118,7 +118,7 @@ PASS  018 scoped verdict lands the earned partial component
   REMAINING: prefactor algebra = 019; normalization partition plus calibrated label = 020; dim closure = 021.
   CAVEATS: c_s is a units carrier, not a consumed value; branch scalar numerics remain sim-deferred; chi reconciliation is Part-VII.
   CONSUMES (PROVENANCE only): 017 l=2 port kernel + 009/010 bulk mode + stage005 R1 identity for the c_s units symbol.
-  EXPORTS: outgoing fingerprint and chi sign to 019/020 plus later non-regression and closure stages; no file artifact is written.
+  EXPORTS: outgoing fingerprint and chi sign to 019/020 plus later non-regression and closure stages; labelled dimensions in a deterministic sidecar.
   live symbolic names in this slice = ['a', 'c_s', 'z']
 PASS  only z, a, c_s are live symbols in the fingerprint slice
 PASS  frozen-wall speed symbol is not live

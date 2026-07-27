@@ -1,0 +1,7 @@
+DIMENSIONS|stage=ledger_stage018_dtn_hankel_fingerprint_sympy_audit|axes=L,M,T
+DIM|axes=L,M,T|name=a|exponents={1, 0, 0}
+DIM|axes=L,M,T|name=c_s0_dim|exponents={1, 0, -1}
+DIM|axes=L,M,T|name=u2|exponents={0, 0, 2}
+DIM|axes=L,M,T|name=u4|exponents={0, 0, 4}
+DIM|axes=L,M,T|name=v5|exponents={0, 0, 5}
+DIM|axes=L,M,T|name=corrupted_u2_dim|exponents={-1, 0, 3}

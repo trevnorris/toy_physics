@@ -444,6 +444,7 @@ runDimensionalBlock[data_] := Module[{dim, kEtaDim},
   kEtaDim = dimOf[data["KEta"], dim["DimRules"]];
   subheading["013 dimensional legs and corrupt-[Tw] probe"];
   Print["  dimension order: (L,M,T)"];
+  Print["DIMENSIONS|axes=L,M,T"];
   Print["  sourced dims: L0=(1,0,0), beta=(-1,0,0), muEta=(-1,1,0), Tw=(1,1,-2), rAL=(0,0,0)"];
   Print["  derived dim: K_eta=Tw*beta^2 = (-1,1,-2)"];
   Print["  [M_AB] entries = ", Association @ KeyValueMap[(#1 -> dimText[#2]) &, dim["MDims"]]];

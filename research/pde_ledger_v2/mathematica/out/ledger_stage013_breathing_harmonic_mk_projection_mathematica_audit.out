@@ -83,6 +83,7 @@ PASS  EOM RHS is symbolic placeholder only
 013 dimensional legs and corrupt-[Tw] probe
 -------------------------------------------
   dimension order: (L,M,T)
+DIMENSIONS|axes=L,M,T
   sourced dims: L0=(1,0,0), beta=(-1,0,0), muEta=(-1,1,0), Tw=(1,1,-2), rAL=(0,0,0)
   derived dim: K_eta=Tw*beta^2 = (-1,1,-2)
   [M_AB] entries = <|aa -> M, aL -> M, LL -> M|>

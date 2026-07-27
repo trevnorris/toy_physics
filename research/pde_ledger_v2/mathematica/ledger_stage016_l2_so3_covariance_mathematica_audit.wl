@@ -118,11 +118,21 @@ lapS2[expr_] := FullSimplify[
   $Assumptions
 ];
 
+dimensionAxisSlots = {{"L", 1}, {"M", 2}, {"T", 3}};
+dimensionAxesLabel[] := StringRiffle[dimensionAxisSlots[[All, 1]], ","];
+dimensionPairs[d_] := ({#[[1]], d[[#[[2]]]]} &) /@ dimensionAxisSlots;
+
 dimText[d_] := Module[{pairs, parts, emit},
   emit[label_, exp_] := If[TrueQ[exp == 1], label, label <> "^" <> ToString[InputForm[exp]]];
-  pairs = {{"L", d[[1]]}, {"M", d[[2]]}, {"T", d[[3]]}};
+  pairs = dimensionPairs[d];
   parts = (emit[#[[1]], #[[2]]] &) /@ Select[pairs, ! TrueQ[#[[2]] == 0] &];
   If[Length[parts] == 0, "1", StringRiffle[parts, " "]]
+];
+
+printDimRecord[name_, binding_] := Print[
+  "DIM|axes=", dimensionAxesLabel[],
+  "|name=", name,
+  "|exponents=", ToString[InputForm[dimensionPairs[binding][[All, 2]]]]
 ];
 
 dimOf[expr_, dims_] := Module[{args, ds, base, pow, argDims},
@@ -482,7 +492,29 @@ runDimensionalGate[] := Module[{dims, probe},
   subheading["Angular dimensional gate and sourced-density corruption probes"];
   dims = baselineDim["Dims"];
   probe = probes["dimensional_corrupt_T_Omega"];
-  Print["  dimension order = (L,M,T)"];
+  Print["  dimension order = (", dimensionAxesLabel[], ")"];
+  Print["DIMENSIONS|axes=", dimensionAxesLabel[]];
+  printDimRecord["dim_rules.a", dimRules[aDim]];
+  printDimRecord["dim_rules.dw", dimRules[dwDim]];
+  printDimRecord["dim_rules.d_omega", dimRules[dOmegaDim]];
+  printDimRecord["dim_rules.beta2", dimRules[beta2Dim]];
+  printDimRecord["dim_rules.beta2_prime", dimRules[beta2PrimeDim]];
+  printDimRecord["dim_rules.mu_eta", dimRules[muEtaDensity]];
+  printDimRecord["dim_rules.T_w", dimRules[TwDensity]];
+  printDimRecord["dim_rules.K_eta", dimRules[KetaDensity]];
+  printDimRecord["dim_rules.T_Omega", dimRules[TOmegaDensity]];
+  printDimRecord["dim_rules.M_tilde", dimRules[Mtilde]];
+  printDimRecord["dim_rules.K_tilde", dimRules[Ktilde]];
+  printDimRecord["dim_rules.T_Omega_tilde", dimRules[TomegaTilde]];
+  printDimRecord["baseline_dims.measure", dims["measure"]];
+  printDimRecord["baseline_dims.M2_integral", dims["M2_integral"]];
+  printDimRecord["baseline_dims.T_w_beta_prime_sq", dims["T_w_beta_prime_sq"]];
+  printDimRecord["baseline_dims.K_eta_beta_sq", dims["K_eta_beta_sq"]];
+  printDimRecord["baseline_dims.lambda_T_Omega_beta_sq", dims["lambda_T_Omega_beta_sq"]];
+  printDimRecord["baseline_dims.K2_integral", dims["K2_integral"]];
+  printDimRecord["baseline_dims.actual_M2", dims["actual_M2"]];
+  printDimRecord["baseline_dims.actual_K2", dims["actual_K2"]];
+  printDimRecord["baseline_dims.actual_K2_over_M2", dims["actual_K2_over_M2"]];
   Print["  sourced volume-density convention: dV=a_dim^2*dw*dOmega has dimension L^3; beta2 is dimensionless."];
   Print["  walked K2 terms = ", Association @ KeyValueMap[(#1 -> fmt[#2]) &, baselineDim["Terms"]]];
   Print["  computed dimensions = ", Association @ KeyValueMap[(#1 -> dimText[#2]) &, dims]];

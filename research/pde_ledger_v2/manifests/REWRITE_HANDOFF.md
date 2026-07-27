@@ -10,8 +10,14 @@ inventory + provenance map: **the 226-quantity / 401-pair inventory ALREADY EXIS
 "conflicts" are legitimate **reduction levels** (4D bulk → 3D brane → line → volume → reduced scalar),
 not drift. A session that skipped this began re-deriving recorded conclusions.
 
-**State: 2 of 30 stages done.** `adcfbdfd` = module v0 + stage004 + stage011, verified.
+**State: 2 of 30 stages done, and now genuinely so.** `adcfbdfd` (module v0 + 004 + 011) →
+`60e7032c` (sidecar + comparator with a non-empty floor) → `d29055b6` (stage011 `.wl` emission).
 **28 remain.** Branch `ledger-v2-rebuild`.
+
+⚠ **Earlier "2 of 30 done" was optimistic.** stage004 is complete (20/20 compared). stage011 was NOT —
+its `.wl` exposed 2 of 12 quantities and the comparator passed anyway, with both `Corrupt*` able-to-fail
+teeth uncompared. Fixed: 10/12 compared, 2 honestly waived, and a basis transposition now trips **10**
+mismatches instead of 1. **Read a stage's `COVERAGE|` line before believing it is done.**
 
 ---
 
@@ -39,11 +45,46 @@ rationalisation.
 Any *unpredicted* mismatch stops the stage.
 **(f)** Commit.
 
-⚠ **Step (e) has no `.py`-transcript side — including for the pilot.** stage004's `.py` emits **zero**
-exponent triples; the pilot's "29 matches" came from an **external in-process comparison script**, not a
-transcript diff. Either keep using an external comparator or decide to have the `.py` emit triples too —
-**this is unresolved and must be settled early**, because it decides whether the cross-check is
-reproducible from committed artifacts.
+✅ **SETTLED + PROVEN END-TO-END on stage011 (`60e7032c`, `d29055b6`). Group A follows this exactly.**
+
+**The artifacts.** The `.py` emits `scripts/<basename>.dimensions.txt`, a **sidecar** in the *same flat
+line format the `.wl` prints into its `.out`*: `DIM|axes=L,M,T|name=EnergyDim|exponents={2, 1, -2}`.
+One parser (`scripts/compare_dimension_artifacts.py`) serves both engines. ⛔ **NOT stdout** — stdout
+must stay byte-identical to the committed transcript (see below). ⛔ **NOT JSON** — these are read by
+humans and review agents.
+
+**Two independent gates, and you need both:**
+1. **stdout byte-identity** — live stdout vs `tail -n +7 scripts/output/<basename>.txt` must diff to
+   **exactly 6 lines** (wrapper only: `#`+blank at top, blank+`EXIT_CODE: 0` at bottom). This is a
+   *behaviour-preservation* gate: it proves the rewrite changed representation, not results. Holds on
+   004 and 011 across a 114-line rewrite. ⚠ It is **NOT** a transposition detector — see §3.
+2. **the axis-labelled cross-engine comparison** — the only universal transposition detector.
+
+**⛔ The comparator MUST have a non-empty floor, and it now does.** The first version reported
+`status=PASS` with `compared=0` — reachable via a header-only sidecar, names that all miss, or an
+`.out` stripped of `DIM` lines. It was **live**: stage011 passed at `py=12 wl=2` with 10 quantities
+uncompared *including both `Corrupt*` able-to-fail teeth*. Now `compared==0` fails, and any unwaived
+`py_only`/`wl_only` fails. Waivers are per-stage, name every waived quantity, and are **echoed in a
+`WAIVERS` line every run** so a partially-compared stage can never read as complete.
+⭐ **Always read the `COVERAGE|` line.** Cross-engine coverage varies wildly per stage — see §6.
+
+**⛔ THE FABRICATION GUARD for step (a) — this is where the process can silently destroy itself:**
+- **Print-only.** Print values the `.wl` *already computes*. No new computation, symbol, assignment or
+  control flow.
+- ⛔ **Never hardcode an exponent literal in the `Print`.** A constant compared to the `.py`'s constant
+  is vacuous. This defect already exists at **stage013 `.wl:446-447`** and **stage018 `.wl:386`** —
+  do not add a third. Every printed exponent must read a live computed expression
+  (stage011's pattern: `ToString[InputForm[dim["KDim"]]]`).
+- ⛔ **Never copy the value, name, or axis order from the `.py`.** Read the `.wl`'s axis order from the
+  `.wl` and cite the locus. Copying it turns the independent engine into a mirror and deletes the gate.
+- ⭐ **`UNREACHABLE` is a correct, expected answer.** If the `.wl` genuinely does not compute a
+  quantity, report it with a reason + locus and waive it. A short honest list beats fabricated records.
+  (stage011: `MassDim`/`OmegaDim` stay local to `buildDimensionalBlock[]`; exposing them would need a
+  non-print data-flow change, so they are waived.)
+
+**⛔ RESTORE RULE for the step-(e) ablation.** The files are often **uncommitted** mid-loop. Never use
+`git checkout` / `git restore` / `git stash` — they restore from HEAD and **destroy the uncommitted
+work** (this happened, 2026-07-26). Use `cp` backups and verify with `git hash-object` before/after.
 
 ## 3. ⭐ THE RULE THE PILOT ESTABLISHED
 Transposing stage011's basis `(L,M,T)`→`(L,T,M)` left the script **passing all 60 markers, exit 0**.
@@ -85,11 +126,34 @@ the axis check.
   argument-pure. **Previously missed: 018, 022 (×4), 023, 027** — 5 stages, 11 sites total.
 - **`ACTIVE_MUTATION` at import time in 15 stages**; 030 (`:107`) and 031 (`:94`) read it **late**.
 
-## 6. REWRITE ORDER (from the reference table, and the reason matters)
-⭐ **`(L,M,T)` group first — because the 9 stages whose `.out` already renders computed dimension values
-are exactly that group plus 004**: 004, 011, 012, 013, 016, 018, 021, 023, 027. Every `(L,T,M)` and
-`(M,L,T)` stage needs a `.wl` edit + `.out` re-baseline + a Mathematica seat; these do not.
-Also 012/013 share stage011's exact `build_dimensional_block` scaffolding — near-mechanical repeats.
+## 6. REWRITE ORDER — ⚠ THE "GROUP A IS FREE" PREMISE IS FALSE (measured 2026-07-26)
+The `(L,M,T)` stages *do* render some computed dimension values, so the ordering claimed they need no
+`.wl` edit. **They render far too few, and some render constants.** Measured real coverage:
+
+| stage | py dims | **real** compared | labelled? | blind to a transposition |
+|---|---|---|---|---|
+| 012 | 14 | 12/14 | **BARE** tuples | 8 of 12 |
+| 013 | 14 | **9**/14 (5 are literal-vs-literal) | mixed | 9 |
+| 018 | 5 | **3**/5 (2 are literal-vs-literal) | labelled | 4 |
+| 016 | 21 | 9/21 | labelled | 4 |
+| 023 | 29 | 7/29 | **BARE** (order only in a section heading) | 6 of 7, **5 dimensionless** |
+| 027 | 17 | **1**/17 | bare + hardcoded gloss | 0 |
+| 021 | 18 | 7/18 | labelled | **7 of 7 — verdict quantity dimensionless** |
+
+⛔ **stage021's cross-engine gate cannot detect a transposition at all** (every printed value is blind;
+the verdict-carrying `[P₀^phys]=1` is dimensionless). **027 is 1-of-17; 023 is effectively 1** real
+detector. **013/018 print hardcoded literal dimension strings in BOTH engines** (`.wl:446-447`,
+`.wl:386`) matched by identical `.py` literals — vacuous, and they inflate apparent coverage to 14/14
+and 5/5. See §10 and task #22.
+
+⇒ **Group A needs `.wl` `DIM|` emission too** (step (a)), a Mathematica seat and an `.out` re-baseline
+per stage. With the comparator's non-empty floor these stages now **fail** rather than pass quietly, so
+this is not optional. The old ordering was a *cost* heuristic, never a correctness one.
+⚠ **stage021 also has real cross-engine name collisions** — `[P₀_raw]`/`[P0_raw]`,
+`[P₀^phys]`/`[P0_physical]`/`P0Physical`/`p0Dim`, `mu_hat0`/`muHat0`, unicode `N₀` vs ASCII `N0` —
+which surface as one-sided quantities and need a name mapping.
+
+Still true: 012/013 share stage011's `build_dimensional_block` scaffolding — near-mechanical repeats.
 
 **Group A** `(L,M,T)`: 012, 013, 018, 016, 023, 027, then **021 at the end of A** (heaviest, three
 renderings). **Group B** `(L,T,M)`: 005 and the rest. **Group C** `(M,L,T)`: 003 (⛔ see landmine), 010,

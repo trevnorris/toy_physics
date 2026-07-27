@@ -11,10 +11,10 @@ Never hand-edit this file; always regenerate it with
 > not a complete corpus view.
 
 - Dimension-bearing stage corpus: **30 stages**.
-- Converted and represented: **3 of 30** — stage004, stage011, stage012.
-- Not yet represented: stage002, stage003, stage005, stage006, stage007, stage008, stage009, stage010, stage013, stage016, stage018, stage021, stage023, stage027, stage030, stage031, stage032, stage034, stage035, stage036, stage037, stage038, stage039, stage040, stage041, stage042, stage044.
-- Total quantity rows: **51** (one per exact emitted name and stage).
-- Candidate-same-quantity groups: **1**.
+- Converted and represented: **4 of 30** — stage004, stage011, stage012, stage013.
+- Not yet represented: stage002, stage003, stage005, stage006, stage007, stage008, stage009, stage010, stage016, stage018, stage021, stage023, stage027, stage030, stage031, stage032, stage034, stage035, stage036, stage037, stage038, stage039, stage040, stage041, stage042, stage044.
+- Total quantity rows: **66** (one per exact emitted name and stage).
+- Candidate-same-quantity groups: **2**.
 - `NEEDS_ADJUDICATION` groups: **0**.
 
 Values come only from committed `scripts/*.dimensions.txt` and
@@ -31,6 +31,7 @@ and waiver registry in `scripts/compare_dimension_artifacts.py`.
 | stage004 | `(L,T,M)` | 20 | 20 | 20 |
 | stage011 | `(L,M,T)` | 12 | 10 | 12 |
 | stage012 | `(L,M,T)` | 19 | 18 | 19 |
+| stage013 | `(L,M,T)` | 15 | 15 | 15 |
 
 ## Quantities
 
@@ -87,6 +88,21 @@ and waiver registry in `scripts/compare_dimension_artifacts.py`.
 | `(none)` | `omega_dim` | `omegaDim` | stage012 | `(L,M,T)` | `{0, 0, -1}` | T⁻¹ | AGREE |
 | `(none)` | `pressure_dim` | `pressureDim` | stage012 | `(L,M,T)` | `{-2, 1, -2}` | M L⁻² T⁻² | AGREE |
 | `(none)` | `rho_dim` | `rhoDim` | stage012 | `(L,M,T)` | `{-4, 0, 0}` | L⁻⁴ | AGREE |
+| `(none)` | `K_eta` | `KEta` | stage013 | `(L,M,T)` | `{-1, 1, -2}` | M L⁻¹ T⁻² | AGREE |
+| `k_dims` | `LL` | `LL` | stage013 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `k_dims` | `aL` | `aL` | stage013 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `k_dims` | `aa` | `aa` | stage013 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `(none)` | `k_shared` | `kShared` | stage013 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `m_dims` | `LL` | `LL` | stage013 | `(L,M,T)` | `{0, 1, 0}` | M | AGREE |
+| `m_dims` | `aL` | `aL` | stage013 | `(L,M,T)` | `{0, 1, 0}` | M | AGREE |
+| `m_dims` | `aa` | `aa` | stage013 | `(L,M,T)` | `{0, 1, 0}` | M | AGREE |
+| `(none)` | `m_shared` | `mShared` | stage013 | `(L,M,T)` | `{0, 1, 0}` | M | AGREE |
+| `(none)` | `ratio_dim` | `ratioDim` | stage013 | `(L,M,T)` | `{0, 0, -2}` | T⁻² | AGREE |
+| `symbol_dims` | `L0` | `L0` | stage013 | `(L,M,T)` | `{1, 0, 0}` | L | AGREE |
+| `symbol_dims` | `Tw` | `Tw` | stage013 | `(L,M,T)` | `{1, 1, -2}` | M L T⁻² | AGREE |
+| `symbol_dims` | `beta` | `beta` | stage013 | `(L,M,T)` | `{-1, 0, 0}` | L⁻¹ | AGREE |
+| `symbol_dims` | `muEta` | `muEta` | stage013 | `(L,M,T)` | `{-1, 1, 0}` | M L⁻¹ | AGREE |
+| `symbol_dims` | `rAL` | `rAL` | stage013 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
 
 ## Candidate-same-quantity groups
 
@@ -103,6 +119,7 @@ the generator never chooses a winner.
 | Case-sensitive candidate key | Members | Status |
 |---|---|---|
 | `KDim` | stage011 scope `(none)`, `KDim` [M L¹⁸ T⁻²; AGREE]<br>stage012 scope `(none)`, `K_dim` [M L¹⁸ T⁻²; AGREE] | AGREE |
+| `Tw` | stage004 scope `(none)`, `Tw` [M L T⁻²; AGREE]<br>stage013 scope `symbol_dims`, `Tw` [M L T⁻²; AGREE] | AGREE |
 
 ## GROUPING LIMITATIONS
 

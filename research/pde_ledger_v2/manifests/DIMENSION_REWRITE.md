@@ -104,6 +104,19 @@ not disciplinary. **(c)** Write the prediction down in `notes/stage0NN_rewrite_p
 **(d)** Rewrite the `.py` onto `scripts/ledger_dimensions.py`. **(e)** Compare, axis-labelled.
 **(f)** Review: adversarial fresh agent → Grok physical-correctness pass. **(g)** Commit.
 
+⭐ **(e2) THE ORCHESTRATOR MUST REGENERATE THE `.out` ITSELF, once per stage.** Verification agents are
+barred from Mathematica, so they **cannot** confirm the reference side is genuine — as one put it, *"a
+hand-edit and a real re-run are byte-identical, so its provenance rests on trust alone."* The `.out` is
+the reference half of the only universal gate; if it could be hand-written, the cross-check proves
+nothing. Run `math -script <the .wl>`, normalise with `sed -E 's/\$[0-9]+/$N/g'`, and confirm it
+reproduces the committed `.out` byte-for-byte. Done for stage013 (sha `42ee1ad7fbf8283a`, exit 0).
+
+⭐ **(f2) The physics leg is NOT optional, and here is the measured reason.** On stage013, **5 of the 15
+compared records** (`symbol_dims.*`) are declared as literals in *both* engines. Comparing them catches
+a transcription divergence between the two — but **a SHARED wrong declaration passes the comparator**.
+Only an independent read against the model catches that. stage013 scored 9 CORRECT / 0 WRONG on that
+leg; do not skip it because the cross-engine numbers look clean.
+
 **Artifacts.** `.py` → `scripts/<basename>.dimensions.txt`, same flat format the `.wl` prints:
 `DIM|axes=L,M,T|name=EnergyDim|exponents={2, 1, -2}`. One parser, both engines.
 ⛔ Not stdout · ⛔ not JSON (these are read by humans and review agents).
@@ -234,6 +247,11 @@ trips the set check). They are ordered LAST for effort, not for risk.
 - Do **not** repair tautologies during a refactor (stage031's 20-of-21 self-comparing rows, stage017's
   hardcoded `True`, stage004 `:302`/`:308`, stage013/018's literal prints, stage012's stale
   `source dict L522-L529` label). Catalogue them — task #22.
+  ⭐ **stage013's hardcoded prints are now DEMONSTRATED stale-capable, not merely suspected.** Under a
+  `Tw` ablation, `.py:588-589` / `.wl:446-447` printed `Tw=(1,1,-2)` and `K_eta=…=(-1,1,-2)` while the
+  live `k_shared` in the *same run* had moved to `(0,1,-5)` — the strings contradicted the run that
+  produced them and **nothing flagged it**. That is the strongest evidence yet for task #22, and it
+  generalises: any hardcoded rendering of a computed value can silently go stale.
 - Do **not** centralise the *values*. A single canonical table is wanted, but as **generated output,
   never an import** — if scripts read their values from it, agreement becomes tautological. The layers
   are: shared **machinery** (imported) · per-stage **declarations** (not shared) · a **generated**

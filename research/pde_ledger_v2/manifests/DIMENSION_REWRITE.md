@@ -79,6 +79,9 @@ not disciplinary. **(c)** Write the prediction down in `notes/stage0NN_rewrite_p
 1. **PASS multiset identical** — the audit still reports what it reported.
 2. **stdout byte-identical** to `tail -n +7 scripts/output/<basename>.txt`, diff exactly 6 wrapper
    lines — behaviour preservation. ⚠ **NOT a transposition detector** (§6).
+   ⛔ **This gate only exists for stages 001–028.** `scripts/output/*.txt` covers 001–028 ONLY —
+   **stages 030–044 have no committed Python transcript**, so gate 2 is unavailable there and gates 1
+   and 3 carry the whole load. Plan for that before starting group B/C/D; do not discover it mid-stage.
 3. **axis-labelled cross-engine comparison** — the only universal transposition detector.
 
 **⛔ The comparator must have a non-empty floor, and does.** The first version reported `PASS` with
@@ -156,12 +159,20 @@ strings in both engines. ⇒ every group-A stage needs `.wl` emission; with the 
 **Order:** 013, 018, 016, 023, 027, then 021 (heaviest). Then `(L,T,M)`, `(M,L,T)`, then 008 (2-axis),
 038 (4-axis), 042 (stiffness). 013 shares stage012's scaffolding.
 
+✅ **038 and 042 are already CLEARED as non-blocking — do not re-litigate this.** Proven by execution
+(`scripts/probe_ledger_dimensions_extremes.py`, committed): the module handles 038's 4 axes
+`(M,L,T,E)` with a heterogeneous `None`-sentinel slot, and 042's `(stiffness,L,T)` with
+`fractions.Fraction` exponents plus the `len(set(...))` homogeneity test that requires hashability.
+Each capability is ablation-verified (`_exact`→`sp.Float` trips the exactness check; `__hash__`→`id`
+trips the set check). They are ordered LAST for effort, not for risk.
+
 ## 9. ⛔ LANDMINES
 - **stage003's `.wl` is `(M,L,T)` and neither file says so.** Emitting `axes=L,T,M` corrupts every triple.
 - **stage042's `.wl:816` comment says "MLT" — a mislabel;** its axes are `(stiffness, L, T)`.
   ⚠ Its guard runs **once**, not twice (an earlier claim was wrong) — 042 is likely recoverable.
 - `.wl` print-only genuinely blocked at **037, 036, 035, 044**.
-- `lru_cache` in 018, 022 (×4), 023, 027 — 5 stages, 11 sites. 043 has **zero**; 040's four are pure.
+- `lru_cache` — **5 stages, 11 sites**: 018 (×1), 022 (×4), 023 (×1), 027 (×1), **040 (×4)**. 043 has
+  **zero**; 040's four are verified argument-pure.
 - `grep -c '^PASS'` **over-counts by exactly 1** (the tally line self-matches).
 - Codex needs `--sandbox danger-full-access` for Mathematica · **≤2 concurrent kernels**.
 - ⛔ **Never `git checkout`/`restore`/`stash` to undo an ablation** on uncommitted work — restores from

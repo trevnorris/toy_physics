@@ -2,6 +2,12 @@
 
 **What this is.** The single high-level map of the whole toy model: the conceptual picture, every earned derivation with a one-line note + pointer to the full doc/scripts, the honest ledger of what is *predicted* vs *calibrated* vs *unresolved (R1)* vs *departure*, and a glossary. Read this to hold the model in your head; read the cited sources to act on any specific number.
 
+> ⏸ **CURRENT FRONT (2026-07-26) — NOT stage 045.** The ledger build is PAUSED behind the **dimension
+> rewrite** (moving all 30 dimension-bearing SymPy audit scripts onto one shared module; 3 done).
+> Read `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`, and `STATUS.md` for the front.
+> Every "▶ NEXT = stage 045" below is the *ledger-build* next, correct in its own sequence but not the
+> current action. Also paused: **stage 044-v2** (the dynamical-Σ un-freeze), which precedes 045.
+>
 > **This is a synthesis map, not the source of truth.** Assembled 2026-07-21 from a six-agent sector fan-out over the committed repo. For any discrepancy the **cited source files are authoritative** — the sector reports under `software/stage1_solver/reports/` and `software/em_charge_attribute/`, the v2-ledger stages under `research/pde_ledger_v2/notes/stages/`, the blueprint `notes/ledger_v2_blueprint.md`, the trackers `research/pde_ledger_v2/notes/{parameter_register,midway_knob_audit}.md`, and the resume doc `research/pde_ledger_v2/notes/RESUME_ROADMAP.md`. Re-read those before trusting any claim here.
 >
 > **Framing.** This is a *toy analog*: the goal is ONE self-consistent structure (a calibrated PDE) that reproduces GR-like and EM-like far-field behavior — a working math **bridge**, not an ontology claim. A result that **breaks** the concept is welcome and first-class. Magnitudes are calibrated; only held-out **dimensionless** structure tests the model. A clean "it all works" is suspicious.

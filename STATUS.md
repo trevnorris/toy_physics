@@ -7,14 +7,25 @@ notes. History is in git. If this file starts growing narrative, cut it.
 
 ## ▶ YOU ARE HERE (2026-07-27)
 
-**Current front: the DIMENSION REWRITE — 5 of 30 scripts converted** (stage004, stage011, stage012,
-stage013, **stage018**) — and ⭐ **all five are now WAIVER-FREE**: `ARTIFACT_NAME_WAIVERS` is empty,
-so every converted stage compares every name it emits, with no exemptions.
-⚠ That is a **coverage** statement, not a strength one — some compared records are primitive
-declarations in both engines, which catches transcription divergence but not wrong physics.
+**Current front: the DIMENSION REWRITE — 6 of 30 scripts converted** (stage004, 011, 012, 013,
+**016**, 018) — and ⭐ **all six are WAIVER-FREE**: `ARTIFACT_NAME_WAIVERS` is empty, so every
+converted stage compares every name it emits, with no exemptions.
+⚠ That is a **coverage** statement, not a strength one.
+
+⭐⭐ **THE CROSS-CHECK IS EARNING ITS KEEP — measured on stage016.** Relabelling that stage's basis
+leaves its **own** 82 assertions completely blind (exit 0, 82 PASS, printing `measure: 'M^3'`), while
+the comparator catches **18 of 21**. The comparator is the *sole* instrument between a converted stage
+and a relabelled basis — which is why the empty waiver registry matters.
+
+⚠ **First-ever `NEEDS_ADJUDICATION` in the canonical table — 2 groups, and both are correct.**
+`K_eta` (013 line-density `M L⁻¹T⁻²` vs 016 volume-density `M L⁻³T⁻²`) and `mu_eta` (`M L⁻¹` vs
+`M L⁻³`). These are **REDUCTION LEVELS, not drift**, surfaced rather than hidden because the variants
+were not renamed apart (§7). ⭐ `a` now groups AGREE across 016/018 — the same throat radius, reached
+independently by two blind legs. ⚠ `T_w` does **not** group (016 `T_w` → `TW` vs 013 `Tw` → `Tw`), so
+that line-vs-volume debt stays invisible — a measured consequence of naming debt, not a theory.
 
 ⭐ **TRACK TWO COUNTERS, NOT ONE — they are different finish lines.**
-- **converted** — on the shared module, cross-engine gate green: **5 of 30**.
+- **converted** — on the shared module, cross-engine gate green: **6 of 30**.
 - **physics-verification evidence** — ⚠ **quantity-level; there is NO defensible stage count yet.**
   Recorded: stage012 **14 CORRECT / 0 WRONG**, stage013 **9 / 0**, all six emitted stage018
   records, and the three formerly-waived 011/012 records. Those pre-§4-c1 results were never
@@ -35,8 +46,11 @@ independent `.py`-vs-`.wl` cross-check.
 > ⭐ **READ `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`** — the single canonical doc for
 > this workstream. And read `docs/model_map.md` **before touching any script**.
 
-**▶ NEXT: stage016** (`REACHABLE`, build in progress), then 023, 027, 021.
-✅ The four group-A stages now have `.wl` reachability verdicts — that recorded GAP is **closed**;
+**▶ NEXT: stage023**, then 027, 021. ✅ **stage016 COMPLETE** — both engines, comparator
+`py=21|wl=21|shared=21|mismatches=0`.
+✅ The four group-A stages have `.wl` reachability verdicts — that recorded GAP is **closed**;
+⚠ but those survey counts are **LOWER BOUNDS, not inventories**: the 016 survey provably missed two
+objects (a numeric factor dimensionless by fall-through, and a discarded repeat invocation).
 027 is the awkward one (**MIXED**: its computed vector never reaches top level, and its `.wl` route
 cannot produce per-symbol vectors, so it stays a 1-row stage unless new call sites are added).
 ⛔ **Measured corpus-wide: all 43 `.wl` files end in `Exit[]`,** so a print appended at end-of-file is
@@ -58,11 +72,14 @@ adversarial fresh agents → commit. Keep the prediction note **outside the repo
 NOT yet prototyped** — source inspection only. ~0.5–1 engineer-day per stage is an **estimate**, not
 a measurement. See `DIMENSION_REWRITE.md` §3b.
 
-✅ **Python sidecars are source-hash bound.** `emit_dimension_sidecar` stamps the stage's `sha256`
-into the sidecar header and the comparator **recomputes it** and rejects a missing or mismatched
-digest — closing the measured transposed-but-not-re-run case, where the gate used to score `PASS`.
-⚠ The comparator still does **not** execute the stage and does **not** prove source coverage
-(`source_coverage=not_checked`). Re-run the `.py` before the gate anyway, and say that you did.
+⚠ **Python sidecars are source-hash bound — but that closes STALENESS, not TAMPERING.** The digest
+proves *"this sidecar names the `.py` on disk"*, never *"it was produced by running it"*, and the
+comparator never executes the stage. **Demonstrated 2026-07-27:** a hand-written sidecar carrying a
+mutated `.py`'s digest reaches `PASS`/exit 0 while that `.py` declares wrong values. ⛔ And the shared
+module is **self-attesting** — stubbing its `dim_residual` voids nine gates with every digest still
+agreeing, because no independent pin of `ledger_dimensions_sha256` exists anywhere.
+⭐ **Interim control: the orchestrator regenerates the sidecar itself before committing.**
+See `DIMENSION_REWRITE.md` §9.
 
 ⚠ **Before resuming, read `DIMENSION_REWRITE.md` §1b (the D1–D5 decisions) and §3b (what those
 decisions REOPENED).** Several recorded conclusions — three waivers, four "impossible" stages, a

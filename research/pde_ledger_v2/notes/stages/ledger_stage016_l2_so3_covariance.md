@@ -241,6 +241,32 @@ them as 2 of 21 compared. Read the census as **12 free / 9 derived**, not 21 ind
   `_scratch/stage016/liveness_probe.out`, which independently moved and restored all 21 exact
   association slots; that is a one-time probe artifact, **not a standing gate** rerun by acceptance.
 
+- ⭐⭐ **H8 — the dimensional block is a PARALLEL RECONSTRUCTION of the stage's physics, and corrupting
+  the reconstruction is invisible.** The 21 records are dimensions *of walked terms*, never of the terms
+  themselves, so any **dimension-preserving** rewrite of the walked expressions passes everything.
+  **Executed (adversarial leg, 2026-07-27), each leaving 82 PASS / exit 0, byte-identical `DIM|`
+  records, and comparator `PASS` exit 0:** dropping the wall-thickness leg from `measure`; dropping
+  `lambda_m` — *the stage's entire point* — from the angular term; dropping `beta2**2` from
+  `M2_integral`; and deleting the angular-stiffness term from `k2_integral` outright. The `.wl` still
+  assembles the three-term sum, so the engines then disagree on the **expression** while agreeing on
+  the **dimension**, and the comparator reads only exponents. ⇒ **Nothing in the dimensional gate
+  verifies that its own expressions match the stage's actual physics expressions.** This is the
+  `c_s0`/`c_S` failure one level up: not "same dimension, wrong name" but *"same dimension, wrong
+  expression"*. The comparator itself declares the gap — it prints `source_coverage=not_checked`.
+- ⭐ **H9 — H2's declaration family is CONFIRMED BY EXECUTION and is wider than derived.** The
+  adversarial leg ran two gauge shifts that each pass **82/82**: `β₂→L¹` with `μ_η/K_η/T_Ω→L⁻⁵`, and
+  `a→L²` with `dw→L⁻¹` (only the combination `2a+dw=3` is pinned, not `a` and `dw` separately). Two
+  independent parties — one deriving from the model, one mutating and running — found the same hole.
+  ⚠ **The comparator DOES catch both** (4 and 2 mismatches), because the frozen `.wl` carries the
+  honest values; so cross-engine comparison is what pins these declarations, and it pins them **only by
+  transcription-matching a hand-written literal table**. A *shared* wrong declaration still passes,
+  exactly as §4-c2 warns — and that warning applies to all 12 `dim_rules.*` here.
+- ⚠ **H10 — five able-to-fail teeth are silently disarmable**, each keeping 82 PASS / exit 0 / green
+  comparator (executed): deleting the `T̃_Ω` half of the `T_Ω` corruption; changing the corruption axis
+  to `Dim(0,0,1)`; **deleting `dim_of`'s Add-homogeneity guard entirely**; neutering the float screen;
+  and — the sharpest — stubbing the *shared module's* `dim_residual` to `0`, which makes **nine**
+  dimensional gates vacuous. See the corpus-wide consequence in `DIMENSION_REWRITE.md` §9.
+
 ⚠ Four doc-level claims did not survive this derivation and are held for independent verification
 before any doc is edited (tasks #36/#38), since overturning a recorded finding needs harder evidence
 than confirming one: the *"`K_η=T_wβ²` does not transfer"* catch, the *"same physical constant, two

@@ -1,7 +1,7 @@
 # SymPy Audit Output
 # Script: ledger_stage016_l2_so3_covariance_sympy_audit.py
-# Date: 2026-07-09T18:46:20-06:00
-# Elapsed: 20s
+# Date: 2026-07-27T13:57:37-06:00
+# Elapsed: 11s
 # Exit code: 0
 # Status: PASS
 #
@@ -11,7 +11,7 @@
 ledger_stage016_l2_so3_covariance_sympy_audit
 =============================================
 Target stem confirmed: ledger_stage016_l2_so3_covariance
-Engine: SymPy exact symbolic; no scipy/numpy/floats/tolerances; zero file I/O.
+Engine: SymPy exact symbolic; no scipy/numpy/floats/tolerances; audit results on stdout and labelled dimensions in a deterministic sidecar.
 
 Real l=2 harmonics, Gram=I5, and computed -Delta_S2 spectrum
 ------------------------------------------------------------
@@ -73,7 +73,7 @@ PASS  bare K2=Ktilde+lambda*TomegaTilde has dimension M*T^-2
 PASS  bare K2/M2 has dimension T^-2
 PASS  K2 density terms are homogeneous
 PASS  baseline dimensional_ok
-  T_Omega corruption error = dimension mismatch in sum K_eta_density*a_dim**2*beta2**2*dOmega*dw + 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw + T_w_density*a_dim**2*beta2_prime**2*dOmega*dw: [Dim(l=0, m=1, t=-2), Dim(l=0, m=1, t=-2), Dim(l=1, m=1, t=-2)]
+  T_Omega corruption error = dimension mismatch in sum K_eta_density*a_dim**2*beta2**2*dOmega*dw + 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw + T_w_density*a_dim**2*beta2_prime**2*dOmega*dw: [Dimension(L=0, M=1, T=-2), Dimension(L=0, M=1, T=-2), Dimension(L=1, M=1, T=-2)]
 PASS  sourced T_Omega probe verdict is FAIL_DIMENSIONAL
 PASS  sourced T_Omega mutation participates in verdict
 PASS  sourced T_Omega mutation fires

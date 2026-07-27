@@ -1,21 +1,27 @@
 #!/usr/bin/env python3
 """Ledger stage016 SymPy audit: l=2 SO(3) covariance theorem.
 
-Standalone, print-only, no arguments, no file I/O. This is the pathA_32
-II-G3a angular slice only: real l=2 harmonics, Gram=I5, computed
--Delta_S2 eigenvalues, the bare K2 angular stiffness with the live computed
-lambda, the angular dimensional gate, and the 016 covariance probe battery.
-Stage 017 owns grouped lanes, raw-D, normalized-u, response probes, calibration
-partition, and port-kernel export.
+Standalone, with audit results on stdout and labelled dimensions in a
+deterministic sidecar. This is the pathA_32 II-G3a angular slice only: real l=2
+harmonics, Gram=I5, computed -Delta_S2 eigenvalues, the bare K2 angular
+stiffness with the live computed lambda, the angular dimensional gate, and the
+016 covariance probe battery. Stage 017 owns grouped lanes, raw-D, normalized-u,
+response probes, calibration partition, and port-kernel export.
 """
 
 from __future__ import annotations
 
 import hashlib
-from dataclasses import dataclass
 from typing import Any
 
 import sympy as sp
+
+from ledger_dimensions import (
+    Dimension,
+    DimensionBasis,
+    dim_residual,
+    emit_dimension_sidecar,
+)
 
 
 PASS_COUNT = 0
@@ -64,7 +70,7 @@ def fmt(expr: Any) -> str:
         return "True" if expr else "False"
     if isinstance(expr, str):
         return expr
-    if isinstance(expr, Dim):
+    if isinstance(expr, Dimension):
         return str(expr)
     if isinstance(expr, sp.MatrixBase):
         return sp.sstr(compact(expr))
@@ -77,8 +83,8 @@ def fmt(expr: Any) -> str:
 
 
 def assert_no_float(name: str, expr: Any) -> None:
-    if isinstance(expr, Dim):
-        for label, value in zip(("L", "M", "T"), expr.components()):
+    if isinstance(expr, Dimension):
+        for label, value in expr.exponents.items():
             assert_no_float(f"{name}.{label}", value)
         return
     if isinstance(expr, dict):
@@ -149,43 +155,8 @@ def verdict_residual(actual: str, expected: str) -> sp.Integer:
     return sp.Integer(0) if actual == expected else sp.Integer(1)
 
 
-def q(value: int | str | sp.Rational) -> sp.Rational:
-    return sp.Rational(value)
-
-
-@dataclass(frozen=True)
-class Dim:
-    """Exact exponent vector in (L, M, T) order."""
-
-    l: sp.Rational | int = 0
-    m: sp.Rational | int = 0
-    t: sp.Rational | int = 0
-
-    def __post_init__(self) -> None:
-        object.__setattr__(self, "l", q(self.l))
-        object.__setattr__(self, "m", q(self.m))
-        object.__setattr__(self, "t", q(self.t))
-
-    def __add__(self, other: "Dim") -> "Dim":
-        return Dim(self.l + other.l, self.m + other.m, self.t + other.t)
-
-    def __sub__(self, other: "Dim") -> "Dim":
-        return Dim(self.l - other.l, self.m - other.m, self.t - other.t)
-
-    def __mul__(self, scale: int | sp.Rational) -> "Dim":
-        p = q(scale)
-        return Dim(self.l * p, self.m * p, self.t * p)
-
-    def __rmul__(self, scale: int | sp.Rational) -> "Dim":
-        return self * scale
-
-    def components(self) -> tuple[sp.Rational, sp.Rational, sp.Rational]:
-        return (self.l, self.m, self.t)
-
-    def __str__(self) -> str:
-        return f"({fmt(self.l)},{fmt(self.m)},{fmt(self.t)})"
-
-
+DIMENSION_BASIS = DimensionBasis("L", "M", "T", render="symbolic")
+Dim = DIMENSION_BASIS
 ZERO_DIM = Dim()
 EXPECTED_M = Dim(0, 1, 0)
 EXPECTED_K = Dim(0, 1, -2)
@@ -204,11 +175,7 @@ DIMENSIONLESS_FUNCTIONS = {
 }
 
 
-def dim_residual(actual: Dim, expected: Dim) -> sp.Expr:
-    return sp.simplify(sum((have - want) ** 2 for have, want in zip(actual.components(), expected.components())))
-
-
-def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
+def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dimension]) -> Dimension:
     clean = sp.sympify(expr)
     if clean == 0 or clean.is_number:
         return ZERO_DIM
@@ -219,13 +186,13 @@ def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
     if isinstance(clean, sp.Mul):
         total = ZERO_DIM
         for arg in clean.args:
-            total = total + dim_of(arg, dims)
+            total = total * dim_of(arg, dims)
         return total
     if isinstance(clean, sp.Pow):
         base, power = clean.args
         if not power.is_number:
             raise DimError(f"non-numeric power in dimension expression {clean}")
-        return dim_of(base, dims) * sp.Rational(power)
+        return dim_of(base, dims) ** sp.Rational(power)
     if isinstance(clean, sp.Add):
         arg_dims = [dim_of(arg, dims) for arg in clean.args if compact(arg) != 0]
         if not arg_dims:
@@ -242,18 +209,10 @@ def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
     raise DimError(f"unsupported dimension expression {clean}")
 
 
-def dim_text(dim: Dim | None) -> str:
+def dim_text(dim: Dimension | None) -> str:
     if dim is None:
         return "inhomogeneous"
-    parts: list[str] = []
-    for label, exponent in (("L", dim.l), ("M", dim.m), ("T", dim.t)):
-        if exponent == 0:
-            continue
-        if exponent == 1:
-            parts.append(label)
-        else:
-            parts.append(f"{label}^{fmt(exponent)}")
-    return "1" if not parts else " ".join(parts)
+    return str(dim)
 
 
 theta, phi = sp.symbols("theta phi", real=True)
@@ -350,7 +309,7 @@ def extract_k2_coeff(k2_expr: sp.Expr) -> sp.Expr:
     return compact(sp.diff(k2_expr, TomegaTilde))
 
 
-def make_dim_rules() -> dict[sp.Symbol, Dim]:
+def make_dim_rules() -> dict[sp.Symbol, Dimension]:
     return {
         a_dim: Dim(1, 0, 0),
         dw_dim: Dim(1, 0, 0),
@@ -367,7 +326,12 @@ def make_dim_rules() -> dict[sp.Symbol, Dim]:
     }
 
 
-def dimension_eval(lambda_m: sp.Expr, m2_expr: sp.Expr, k2_expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> dict[str, Any]:
+def dimension_eval(
+    lambda_m: sp.Expr,
+    m2_expr: sp.Expr,
+    k2_expr: sp.Expr,
+    dims: dict[sp.Symbol, Dimension],
+) -> dict[str, Any]:
     measure = a_dim**2 * dw_dim * dOmega_dim
     m2_integral = mu_eta_density * beta2_dim**2 * measure
     k_tw_term = T_w_density * beta2_prime_dim**2 * measure
@@ -383,7 +347,7 @@ def dimension_eval(lambda_m: sp.Expr, m2_expr: sp.Expr, k2_expr: sp.Expr, dims: 
         k2_integral_dim = dim_of(k2_integral, dims)
         actual_m2_dim = dim_of(m2_expr, dims)
         actual_k2_dim = dim_of(k2_expr, dims)
-        actual_ratio_dim = actual_k2_dim - actual_m2_dim
+        actual_ratio_dim = actual_k2_dim / actual_m2_dim
         term_homogeneous = k_tw_dim == k_eta_dim == k_omega_dim == k2_integral_dim
         ok = bool(
             measure_dim == Dim(3, 0, 0)
@@ -439,7 +403,10 @@ def dimension_eval(lambda_m: sp.Expr, m2_expr: sp.Expr, k2_expr: sp.Expr, dims: 
         }
 
 
-def corrupt_rules_for(label: str, base_rules: dict[sp.Symbol, Dim]) -> dict[sp.Symbol, Dim]:
+def corrupt_rules_for(
+    label: str,
+    base_rules: dict[sp.Symbol, Dimension],
+) -> dict[sp.Symbol, Dimension]:
     symbol_by_label = {
         "mu_eta_density": mu_eta_density,
         "T_w_density": T_w_density,
@@ -447,9 +414,11 @@ def corrupt_rules_for(label: str, base_rules: dict[sp.Symbol, Dim]) -> dict[sp.S
         "T_Omega_density": T_Omega_density,
     }
     corrupt = dict(base_rules)
-    corrupt[symbol_by_label[label]] = corrupt[symbol_by_label[label]] + Dim(1, 0, 0)
+    corrupt[symbol_by_label[label]] = (
+        corrupt[symbol_by_label[label]] * Dim(1, 0, 0)
+    )
     if label == "T_Omega_density":
-        corrupt[TomegaTilde] = corrupt[TomegaTilde] + Dim(1, 0, 0)
+        corrupt[TomegaTilde] = corrupt[TomegaTilde] * Dim(1, 0, 0)
     return corrupt
 
 
@@ -487,6 +456,36 @@ def build_dimensional_check(lambda_m: sp.Expr, m2_expr: sp.Expr, k2_expr: sp.Exp
                 "fail_suppressed": scoped_verdict(dimensional_ok=baseline["ok"]) != FAIL_DIMENSIONAL,
             },
         },
+    }
+
+
+def dimension_records(dimensional: dict[str, Any]) -> dict[str, Dimension]:
+    rules = dimensional["rules"]
+    dims = dimensional["baseline"]["dims"]
+    return {
+        "dim_rules.a": rules[a_dim],
+        "dim_rules.dw": rules[dw_dim],
+        "dim_rules.d_omega": rules[dOmega_dim],
+        "dim_rules.beta2": rules[beta2_dim],
+        "dim_rules.beta2_prime": rules[beta2_prime_dim],
+        "dim_rules.mu_eta": rules[mu_eta_density],
+        "dim_rules.T_w": rules[T_w_density],
+        "dim_rules.K_eta": rules[K_eta_density],
+        "dim_rules.T_Omega": rules[T_Omega_density],
+        "dim_rules.M_tilde": rules[Mtilde],
+        "dim_rules.K_tilde": rules[Ktilde],
+        "dim_rules.T_Omega_tilde": rules[TomegaTilde],
+        "baseline_dims.measure": dims["measure"],
+        "baseline_dims.M2_integral": dims["M2_integral"],
+        "baseline_dims.T_w_beta_prime_sq": dims["T_w_beta_prime_sq"],
+        "baseline_dims.K_eta_beta_sq": dims["K_eta_beta_sq"],
+        "baseline_dims.lambda_T_Omega_beta_sq": dims[
+            "lambda_T_Omega_beta_sq"
+        ],
+        "baseline_dims.K2_integral": dims["K2_integral"],
+        "baseline_dims.actual_M2": dims["actual_M2"],
+        "baseline_dims.actual_K2": dims["actual_K2"],
+        "baseline_dims.actual_K2_over_M2": dims["actual_K2_over_M2"],
     }
 
 
@@ -871,7 +870,7 @@ def print_verdict_labels() -> None:
 def main() -> int:
     banner("ledger_stage016_l2_so3_covariance_sympy_audit")
     print("Target stem confirmed: ledger_stage016_l2_so3_covariance")
-    print("Engine: SymPy exact symbolic; no scipy/numpy/floats/tolerances; zero file I/O.")
+    print("Engine: SymPy exact symbolic; no scipy/numpy/floats/tolerances; audit results on stdout and labelled dimensions in a deterministic sidecar.")
     data = build_baseline()
     run_angular_theorem(data)
     run_k2_stiffness(data)
@@ -882,6 +881,7 @@ def main() -> int:
     run_verdict_and_scope(data)
     run_provenance(data)
     print_verdict_labels()
+    emit_dimension_sidecar(__file__, dimension_records(data["dimensional"]))
     return 0
 
 

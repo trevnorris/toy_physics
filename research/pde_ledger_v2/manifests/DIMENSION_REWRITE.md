@@ -83,7 +83,7 @@ Standing rule from the plan of record: **never adjust the process because the co
 
 ## 3. STATE
 
-**5 of 30 converted** — stage004, stage011, stage012, stage013, stage018. ⚠ *Converted* is not *finished*: **3 are waiver-free** (004, 013, 018), while **011 and 012 retain three reopened coverage items** between them (§3b.1) — those are the next work, not a closed chapter. (43 audit scripts; 13 have no
+**6 of 30 converted** — stage004, stage011, stage012, stage013, stage016, stage018. ⚠ *Converted* is not *finished*: **all six are waiver-free** (011/012's three reopened items CLOSED `8b006055`), but see §11 for what a green comparator does and does not establish. (43 audit scripts; 13 have no
 dimension machinery: 001, 014, 015, 017, 019, 020, 022, 024, 025, 026, 028, 033, 043.)
 
 | stage | compared | waived | detectors (L↔M / M↔T / L↔T) | note |
@@ -92,6 +92,7 @@ dimension machinery: 001, 014, 015, 017, 019, 020, 022, 024, 025, 026, 028, 033,
 | **011** | **12 / 12** | **none** | 11 / 9 / 10 of 12 (measured) | ✅ waivers CLOSED `8b006055`; first `.wl` emitting every named binding in its block |
 | **012** | **19 / 19** | **none** | 17 / 9 / 16 of 19 (measured) | ✅ waiver CLOSED `8b006055` |
 | **013** | **15 / 15** | **none** | 12 / 12 / 10 of 15 | first stage with zero waivers |
+| **016** | **21 / 21** | **none** | 18 / 15 / 16 of 21 (measured, adversarial leg) | ⭐ largest record set yet; **12 of 21 are declared literals in BOTH engines** and 0 are computed from a physical input |
 | **018** | **6 / 6** | **none** | 3 / 5 / 6 of 6 (measured) | emits **6 of its 10** objects — the 4 omitted are enumerated in the stage note (§4-a) |
 
 ⚠ **018's L↔M rate of 3/6 is set by PHYSICS, not by an omission** — *every* stage018 exponent has
@@ -500,6 +501,25 @@ trips the set check). They are ordered LAST for effort, not for risk.
   §3b). `ROUTE_EXISTS`, prototyped, 21/21 on 037, ~0.5–1 engineer-day per stage. 044 untested and
   frozen pending 044-v2. ⛔ `notes/rewrite_reference_table.md` §5.6 still carries the old "genuinely
   impossible" framing for these three — **it is stale; this section wins.**
+- ⛔⛔ **THE SHARED MODULE IS SELF-ATTESTING — A SINGLE POINT OF FAILURE FOR EVERY CONVERTED STAGE.**
+  Measured 2026-07-27: stubbing `ledger_dimensions.dim_residual` to `return sp.Integer(0)` makes **nine**
+  of stage016's dimensional gates vacuous while the stage still reports 82 PASS / exit 0 and the
+  comparator still exits 0. The `ledger_dimensions_sha256` binding **cannot** detect it, because the
+  digest is recomputed from the *mutated* file on both sides. ⛔ `git grep` confirms **no independent
+  pin of that digest exists anywhere** — the only occurrences are the module (which computes it), the
+  comparator (which recomputes it) and the sidecars (which derive it from the same file).
+  ⇒ **The digest binding closes STALENESS, not TAMPERING.** Say it that way; the earlier framing
+  overstated it. A pinned expected digest, checked independently, is the missing control.
+- ⛔⛔ **THE SIDECAR IS FORGEABLE — the `.py` side has no (g2).** `emit_dimension_sidecar` digests the
+  **source bytes**, never the record content, and the comparator never executes the stage.
+  **Demonstrated by execution:** mutate the `.py` so it declares wrong values (runs green, 82 PASS),
+  then hand-write a `.wl`-matching sidecar carrying the *mutated* `.py`'s sha256 → the honest comparator
+  says `FAIL mismatches=2`, the forged one says `PASS mismatches=0`, exit 0, while the `.py` on disk
+  still declares `a_dim: Dim(2,0,0)`. The digest proves *"this sidecar names the `.py` on disk"*, never
+  *"this sidecar was produced by running it."* ⇒ §4-g's *"run the stage first anyway and say that you
+  did"* rests on an **unverifiable assertion** — exactly the trust problem (g2) fixes for the `.out`,
+  still open on the Python side. ⭐ **Interim control: the orchestrator regenerates the sidecar itself
+  before the (i) commit**, as done for stage016.
 - ✅ **A `.py`, the shared dimension module, and a sidecar are source-hash bound.**
   `emit_dimension_sidecar` asserts separate SHA-256 digests of the stage source and
   `scripts/ledger_dimensions.py`; the comparator computes both current hashes, and the
@@ -546,6 +566,16 @@ trips the set check). They are ordered LAST for effort, not for risk.
   converging (Grok, `f5ff1843`).
 
 ## 11. WHAT ACTUALLY VERIFIES A STAGE
+
+⭐⭐ **THE CROSS-CHECK EARNS ITS KEEP — measured on stage016, 2026-07-27.** Relabelling the stage's
+basis leaves its **own** assertions completely blind: under `("M","L","T")` it prints
+`{'measure': 'M^3', 'M2_integral': 'L', …}` and still reports **82 PASS / 0 FAIL / exit 0**. The
+comparator catches it — **18 of 21** mismatches under L↔M, 15/21 under L↔T, 16/21 under M↔T, 21/21 on
+an axis rename. ⇒ **The comparator is the SOLE instrument standing between a converted stage and a
+relabelled basis.** Waiving it for a stage removes the only detector, which is why
+`ARTIFACT_NAME_WAIVERS` staying `{}` matters. The records it cannot see are exactly those whose
+exponents are equal on the swapped axes.
+
 Engine-vs-engine agreement is necessary and **not sufficient** — both engines can be wrong together.
 The check that closes the gap is deriving the emitted dimensions from the *model* (`model_map.md` §2:
 4D bulk, `[ρ]=L⁻⁴`, `P=Kρ⁵`, `c_s²=5Kρ⁴/m`). On stage012 that returned **14 CORRECT / 0 WRONG**,

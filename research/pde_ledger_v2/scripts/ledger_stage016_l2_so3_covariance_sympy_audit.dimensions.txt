@@ -1,0 +1,22 @@
+DIMENSIONS|stage=ledger_stage016_l2_so3_covariance_sympy_audit|axes=L,M,T|source_sha256=c0baa2b1db5013aac4b8100560d275d38cefda56a93ea2a03826f328c1c9cb34|ledger_dimensions_sha256=7cb8b7c93d189320f3ff857a665162e3290d1628e4511b2b387dd9a4f08e5bea
+DIM|axes=L,M,T|name=dim_rules.a|exponents={1, 0, 0}
+DIM|axes=L,M,T|name=dim_rules.dw|exponents={1, 0, 0}
+DIM|axes=L,M,T|name=dim_rules.d_omega|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=dim_rules.beta2|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=dim_rules.beta2_prime|exponents={-1, 0, 0}
+DIM|axes=L,M,T|name=dim_rules.mu_eta|exponents={-3, 1, 0}
+DIM|axes=L,M,T|name=dim_rules.T_w|exponents={-1, 1, -2}
+DIM|axes=L,M,T|name=dim_rules.K_eta|exponents={-3, 1, -2}
+DIM|axes=L,M,T|name=dim_rules.T_Omega|exponents={-3, 1, -2}
+DIM|axes=L,M,T|name=dim_rules.M_tilde|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=dim_rules.K_tilde|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=dim_rules.T_Omega_tilde|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.measure|exponents={3, 0, 0}
+DIM|axes=L,M,T|name=baseline_dims.M2_integral|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=baseline_dims.T_w_beta_prime_sq|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.K_eta_beta_sq|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.lambda_T_Omega_beta_sq|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.K2_integral|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.actual_M2|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=baseline_dims.actual_K2|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=baseline_dims.actual_K2_over_M2|exponents={0, 0, -2}

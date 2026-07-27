@@ -11,11 +11,11 @@ Never hand-edit this file; always regenerate it with
 > not a complete corpus view.
 
 - Dimension-bearing stage corpus: **30 stages**.
-- Converted and represented: **5 of 30** — stage004, stage011, stage012, stage013, stage018.
-- Not yet represented: stage002, stage003, stage005, stage006, stage007, stage008, stage009, stage010, stage016, stage021, stage023, stage027, stage030, stage031, stage032, stage034, stage035, stage036, stage037, stage038, stage039, stage040, stage041, stage042, stage044.
-- Total quantity rows: **72** (one per exact emitted name and stage).
-- Candidate-same-quantity groups: **2**.
-- `NEEDS_ADJUDICATION` groups: **0**.
+- Converted and represented: **6 of 30** — stage004, stage011, stage012, stage013, stage016, stage018.
+- Not yet represented: stage002, stage003, stage005, stage006, stage007, stage008, stage009, stage010, stage021, stage023, stage027, stage030, stage031, stage032, stage034, stage035, stage036, stage037, stage038, stage039, stage040, stage041, stage042, stage044.
+- Total quantity rows: **93** (one per exact emitted name and stage).
+- Candidate-same-quantity groups: **5**.
+- `NEEDS_ADJUDICATION` groups: **2**.
 
 Values come only from committed `scripts/*.dimensions.txt` and
 `mathematica/out/*.out` artifacts. Exact emitted names are primary; candidate
@@ -35,6 +35,7 @@ this is freshness, not source coverage.
 | stage011 | `(L,M,T)` | 12 | 12 | 12 |
 | stage012 | `(L,M,T)` | 19 | 19 | 19 |
 | stage013 | `(L,M,T)` | 15 | 15 | 15 |
+| stage016 | `(L,M,T)` | 21 | 21 | 21 |
 | stage018 | `(L,M,T)` | 6 | 6 | 6 |
 
 ## Quantities
@@ -107,6 +108,27 @@ this is freshness, not source coverage.
 | `symbol_dims` | `beta` | `beta` | stage013 | `(L,M,T)` | `{-1, 0, 0}` | L⁻¹ | AGREE |
 | `symbol_dims` | `muEta` | `muEta` | stage013 | `(L,M,T)` | `{-1, 1, 0}` | M L⁻¹ | AGREE |
 | `symbol_dims` | `rAL` | `rAL` | stage013 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `baseline_dims` | `K2_integral` | `K2Integral` | stage016 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `baseline_dims` | `K_eta_beta_sq` | `KEtaBetaSq` | stage016 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `baseline_dims` | `M2_integral` | `M2Integral` | stage016 | `(L,M,T)` | `{0, 1, 0}` | M | AGREE |
+| `baseline_dims` | `T_w_beta_prime_sq` | `TWBetaPrimeSq` | stage016 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `baseline_dims` | `actual_K2` | `actualK2` | stage016 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `baseline_dims` | `actual_K2_over_M2` | `actualK2OverM2` | stage016 | `(L,M,T)` | `{0, 0, -2}` | T⁻² | AGREE |
+| `baseline_dims` | `actual_M2` | `actualM2` | stage016 | `(L,M,T)` | `{0, 1, 0}` | M | AGREE |
+| `baseline_dims` | `lambda_T_Omega_beta_sq` | `lambdaTOmegaBetaSq` | stage016 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `baseline_dims` | `measure` | `measure` | stage016 | `(L,M,T)` | `{3, 0, 0}` | L³ | AGREE |
+| `dim_rules` | `K_eta` | `KEta` | stage016 | `(L,M,T)` | `{-3, 1, -2}` | M L⁻³ T⁻² | AGREE |
+| `dim_rules` | `K_tilde` | `KTilde` | stage016 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `dim_rules` | `M_tilde` | `MTilde` | stage016 | `(L,M,T)` | `{0, 1, 0}` | M | AGREE |
+| `dim_rules` | `T_Omega` | `TOmega` | stage016 | `(L,M,T)` | `{-3, 1, -2}` | M L⁻³ T⁻² | AGREE |
+| `dim_rules` | `T_Omega_tilde` | `TOmegaTilde` | stage016 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `dim_rules` | `T_w` | `TW` | stage016 | `(L,M,T)` | `{-1, 1, -2}` | M L⁻¹ T⁻² | AGREE |
+| `dim_rules` | `a` | `a` | stage016 | `(L,M,T)` | `{1, 0, 0}` | L | AGREE |
+| `dim_rules` | `beta2` | `beta2` | stage016 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `dim_rules` | `beta2_prime` | `beta2Prime` | stage016 | `(L,M,T)` | `{-1, 0, 0}` | L⁻¹ | AGREE |
+| `dim_rules` | `d_omega` | `dOmega` | stage016 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `dim_rules` | `dw` | `dw` | stage016 | `(L,M,T)` | `{1, 0, 0}` | L | AGREE |
+| `dim_rules` | `mu_eta` | `muEta` | stage016 | `(L,M,T)` | `{-3, 1, 0}` | M L⁻³ | AGREE |
 | `(none)` | `a` | `a` | stage018 | `(L,M,T)` | `{1, 0, 0}` | L | AGREE |
 | `(none)` | `c_s0_dim` | `cS0Dim` | stage018 | `(L,M,T)` | `{1, 0, -1}` | L T⁻¹ | AGREE |
 | `(none)` | `corrupted_u2_dim` | `corruptedU2Dim` | stage018 | `(L,M,T)` | `{-1, 0, 3}` | L⁻¹ T³ | AGREE |
@@ -129,7 +151,10 @@ the generator never chooses a winner.
 | Case-sensitive candidate key | Members | Status |
 |---|---|---|
 | `KDim` | stage011 scope `(none)`, `KDim` [M L¹⁸ T⁻²; AGREE]<br>stage012 scope `(none)`, `K_dim` [M L¹⁸ T⁻²; AGREE] | AGREE |
+| `KEta` | stage013 scope `(none)`, `K_eta` [M L⁻¹ T⁻²; AGREE]<br>stage016 scope `dim_rules`, `K_eta` [M L⁻³ T⁻²; AGREE] | NEEDS_ADJUDICATION |
 | `Tw` | stage004 scope `(none)`, `Tw` [M L T⁻²; AGREE]<br>stage013 scope `symbol_dims`, `Tw` [M L T⁻²; AGREE] | AGREE |
+| `a` | stage016 scope `dim_rules`, `a` [L; AGREE]<br>stage018 scope `(none)`, `a` [L; AGREE] | AGREE |
+| `muEta` | stage013 scope `symbol_dims`, `muEta` [M L⁻¹; AGREE]<br>stage016 scope `dim_rules`, `mu_eta` [M L⁻³; AGREE] | NEEDS_ADJUDICATION |
 
 ## GROUPING LIMITATIONS
 

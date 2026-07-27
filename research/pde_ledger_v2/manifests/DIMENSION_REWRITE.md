@@ -6,7 +6,8 @@
 explain something this one already covers — that habit produced ten overlapping files for one
 workstream and is the reason this consolidation exists.
 
-Branch `ledger-v2-rebuild`. Baseline HEAD `1b645ed9`; working-tree documentation state dated 2026-07-27.
+Branch `ledger-v2-rebuild`. Documentation state committed 2026-07-27 (`35710cee`); the
+stage-conversion baseline before that fold was `1b645ed9`.
 
 ---
 
@@ -251,9 +252,17 @@ The sidecar is now **source-hash bound** — the comparator recomputes sha256 fo
 and `scripts/ledger_dimensions.py`, rejecting either missing or mismatched assertion — but run the
 stage first anyway and say that you did.
 **(h)** Review: transliteration-fidelity fresh agent + adversarial-with-ablation fresh agent.
-**(i)** Commit, including the sealed prediction note from (e).
+**(h2)** ⭐ **ONLY NOW, open the sealed prediction from (e) and adjudicate it** — record every
+prediction confirmed and every one **falsified**, with evidence. Doing this before (h) would leak
+the expected answers into the reviews; doing it never is how a pre-registration becomes decoration.
+At 018 this is what caught P9 (the false `c_s0`/`c_S` merge) as a *wrong prediction of mine*, not
+just a build defect.
+**(i)** Commit **only after (g), (g2), (h) and (h2) are clean**, including the adjudicated
+prediction note. ⚠ Any blocking finding at (h) stops the loop: remediate, then repeat every affected
+execution and review step until both legs are clean.
 
-*The two blocks below expand steps (g) and (c); they are detail, not extra steps at the end.*
+*The two blocks below expand steps (g) and (c). **(g2) runs inside step (g)** — after the comparator,
+before review; **(c2) runs inside step (c)**. Neither is an extra step after (i).*
 
 ⭐ **(g2) THE ORCHESTRATOR MUST REGENERATE THE `.out` ITSELF, once per stage.** Verification agents are
 barred from Mathematica, so they **cannot** confirm the reference side is genuine — as one put it, *"a

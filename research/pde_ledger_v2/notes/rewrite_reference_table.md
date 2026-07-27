@@ -7,8 +7,15 @@ the only artefact written.
 
 > ⚠ **State update after measurement.** The session opened at `89bcccdb` with stage004/011 mid-rewrite;
 > those two committed as `adcfbdfd`, and stage012 has since joined them. **Stages 004, 011, and 012 are
-> DONE** — already on `scripts/ledger_dimensions.py`. **27 stages remain, not 28.** Their rows below
+> DONE** — already on `scripts/ledger_dimensions.py`. Their rows below
 > preserve the measurement state and double as worked examples for the remaining stages.
+>
+> ⭐ **LATER STATE, 2026-07-27: 013 and 018 are also DONE — 5 of 30 CONVERTED; 25 remain unconverted,
+> plus the reopened 011/012 coverage closures (3 items) which are the immediate next work.** This file's rows are a
+> **measurement snapshot at `adcfbdfd`**, not live state; several loci have since moved (e.g. 018's
+> basis is now `.py:164`, its printed order `.py:543`) and §5.6's "impossible" verdict is **falsified**
+> for 035/036/037. ⛔ **For current state and standing rules read
+> `manifests/DIMENSION_REWRITE.md` §3/§3b/§4 — it wins over this file wherever they disagree.**
 
 ---
 
@@ -100,7 +107,7 @@ disagrees by anything other than 1.**
 |039|yes|`(M,L,T)` — `…stage039_…py:433` (`Dimension = tuple[int,int,int]  # M, L, T`)|18 / 2.0 %|type alias, 3-tuple of `int`|no|10|10|61 / `e58bf0595b97`|`ACTIVE_MUTATION` `:26`; asserts only the **equality** `[curl u_T] == [b_T]` — scaling both together passes|
 |040|yes|`(M,L,T)` — `…stage040_…py:799` + the `dims` map `:810-820` (`rho=(1,-3,0)`, `c_gamma=(0,1,-1)`)|59 / 3.5 %|type alias `Dim = tuple[int×3]` + `dadd`/`dscale` + a `dims` dict|no|28|28|61 / `3ed0aa076a53`|`ACTIVE_MUTATION` `:29`. **4× `@lru_cache`** — `sat_status` `:502`, `dimension_record` `:548`, `provenance` `:593`, `run_case` `:672`. ✅ **VERIFIED argument-pure**: none reads `ACTIVE_MUTATION`; the mutation is injected as the `mutate_c_e=` kwarg at `:1497` into the **uncached** `dimension_state()`. `dimension_record` is **Krull** dimension, not units. `[rho]`, `[m]`, `[mu_R]` cancel out of the homogeneity net|
 |041|yes|`(M,L,T)` — `…stage041_…py:1084-1088` (`dim_mass=Matrix([1,0,0])`, `dim_bulk_density=[0,-4,0]`, `dim_speed=[0,1,-1]`)|28 / 1.4 %|**bare `sp.Matrix` column vectors**, converted to `int` tuples on return|no|35|35|72 / `f0516b9ee719`|`ACTIVE_MUTATION` `:25`|
-|042|yes|⭐ **stiffness basis `(stiffness, L, T)`** — `…stage042_…py:808` + `:820-830` (`stiffness_dim=(1,0,0)`, `speed_dim=(0,1,-1)`, `length_dim=(0,1,0)`)|123 / 6.0 %|type alias `Dim = tuple[Fraction×3]` (**`fractions.Fraction`, not `sp.Rational`**) + `dadd`/`dscale`|**yes — literal** `charge_dim = (1/2, 3/2, -1)` (`:826-827`)|50|50|100 / `abbdef310e2f`|`ACTIVE_MUTATION` `:28`; **1 duplicate PASS marker**. Axis 1 is **not mass** — `B`,`C`,`K`,`M_h`,`d`,`r`,`Q_E` all carry different dimensions here than elsewhere. **No normalisation convention is stated anywhere**, including `manifests/DIM_ORDER_DECISION.md`. ⛔ **the `.wl` comment `:816` says "MLT" — a mislabel** for a basis carrying `{1/2,3/2,-1}`. `[omega]`/`[d]` cancel out of `ratio_dim`; guard runs twice with a mutation flag (§5.3)|
+|042|yes|⭐ **stiffness basis `(stiffness, L, T)`** — `…stage042_…py:808` + `:820-830` (`stiffness_dim=(1,0,0)`, `speed_dim=(0,1,-1)`, `length_dim=(0,1,0)`)|123 / 6.0 %|type alias `Dim = tuple[Fraction×3]` (**`fractions.Fraction`, not `sp.Rational`**) + `dadd`/`dscale`|**yes — literal** `charge_dim = (1/2, 3/2, -1)` (`:826-827`)|50|50|100 / `abbdef310e2f`|`ACTIVE_MUTATION` `:28`; **1 duplicate PASS marker**. Axis 1 is **not mass** — `B`,`C`,`K`,`M_h`,`d`,`r`,`Q_E` all carry different dimensions here than elsewhere. **No normalisation convention is stated anywhere**, including `manifests/DIM_ORDER_DECISION.md`. ⛔ **the `.wl` comment `:816` says "MLT" — a mislabel** for a basis carrying `{1/2,3/2,-1}`. `[omega]`/`[d]` cancel out of `ratio_dim`; ⚠ the *guard-runs-twice* claim is **contradicted** by `manifests/DIMENSION_REWRITE.md` §9 ("runs **once**, not twice") — that section wins; re-measure before relying on either|
 |043|no|n/a — prints `DIMENSIONAL_HOMOGENEITY=N/A_INTEGER_COUNT_STAGE` (`py:1193`, `wl:1224`)|0 / 0.0 %|n/a|no|20|20|55 / `18cf107d2a8c`|`ACTIVE_MUTATION` `:30`. ✅ **VERIFIED: zero `@lru_cache`** — the prior claim that 043 caches `sat_status`/`dimension_record`/`provenance` is **wrong**; those live only in 040|
 |044|yes|`(L,T,M)` — `…stage044_…py:416` (`# Dimension order is [L,T,M].`), also as dict keys `"[L,T,M]"` at `:1012`, `:1039`, `:1090`|120 / 8.8 %|**bare `int` 3-tuples** as locals inside `dimensional_tooth()` + `add_dim`/`scale_dim` (`:163`, `:167`) + `"[L,T,M]"`-keyed dict rows|no|20|20|47 / `2930e8ca06db`|⛔ **the only filesystem WRITER**: `:1343-1346` `Path(__file__).resolve().parents[3]` → `research/pde_ledger_v2/_scratch/stage044/verdict_py.json`, with `mkdir(parents=True)`. Relocating the script moves the write target. `ACTIVE_MUTATION` `:31`. `Z_chi` master row (`:1038-1039` / `wl:1102-1110`) is declaration-vs-itself. Also frozen/paused pending the **044-v2 un-freeze**|
 
@@ -273,7 +280,7 @@ worked examples.
 |B9|**032**|9 lines of bare inline tuples, `.wl` has no `Module` at all (all globals) — trivially small and trivially checkable; sits inside a 1,221-line file with three manifest digests|
 |B10|**035**|type alias + `add_dims`/`scale_dim`; ⚠ `.wl` yields **monomials, not vectors** — a print needs an `Exponent[…]` conversion|
 |B11|**036**|same alias family; opens the `A_E` / `A_V` conflict. ⛔ `.wl` stores **no computed exponent vector** — cross-check would re-transcribe literals|
-|B12|**037**|same family, 21-entry contract; **`BUILD_LOG` order-sensitivity** and the `r_BA` conflict. ⛔ `.wl` has **zero integer tuples** — no cross-check available without adding a derivation|
+|B12|**037**|same family, 21-entry contract; **`BUILD_LOG` order-sensitivity** and the `r_BA` conflict. ⚠ **SUPERSEDED** — `.wl` has **zero dimension exponent-vector objects** (its two integer lists `{3,1}` and `{-1,1}` are unrelated to units). A route was **prototyped 2026-07-27**: rescale under the native `unitRules`, cancel, `Exponent`. 21/21. See `manifests/DIMENSION_REWRITE.md` §3b|
 
 ⚠ **Group B tail re-ordered by `.wl` checkability, not by size.** The original 035→036→037→034→032 run put
 the three stages with **no usable `.wl` value surface** (035, 036, 037) before the two with a clean one
@@ -373,7 +380,7 @@ works — the stage004 pattern. **`LOCAL_ONLY`** = values die at a `Module` boun
 |044|**LOCAL_ONLY**|`dimensionalTooth[]` `wl:482`; 27-entry map `:493-506`; 24 `integrandDims` `:526+`; **returns `Null` `:587`**|**~95** — largest in the corpus|⭐ **explicitly declared** `{L, T, M}` (`:576`), corroborated `:1104`, `:1183`|⛔ **exactly 1 of ~96 vectors is protocol-reachable** — the `Z_chi` master row `"[L,T,M]" -> {-2,0,1}` `:1104`, which reaches the global `evidence` via `:1192`. Everything else is discarded|
 |035|**REACHABLE, but no exponent vectors exist**|`unitScalingObject[]` `wl:411-441` returns the whole map; global `restored` `:792`|9 keys / 20 entries|**none** — values are **scale monomials** in `lengthScale/timeScale/massScale`|⚠ emitting `exponents={a,b,c}` needs an inline `Exponent[#, …]` extraction — a **rendering conversion**, not a dump|
 |036|**NOTHING_TO_PRINT**|`unitRules[]` `wl:232-245`; `dimensionResiduals[]` `:252-296` returns **residuals only** (all zero)|12 inputs carry a dim; ~29 checks use inline literals|**none** — monomials only|⛔ derived-quantity dimensions (`I_ij`, `D_V`, `A_V`, `U_A`, `F_A2`) exist **only** as literal argument monomials `:253-296` and hardcoded prose `:660-662`. Printing them means **re-transcribing constants, not rendering a computed value**|
-|037|**NOTHING_TO_PRINT**|`unitContract` `wl:643-699` (top-level assoc)|21 named, **0 exponent vectors**|**none** — `massScale/lengthScale/timeScale` monomials (`:585-634`)|⛔ the file contains **zero integer-tuple objects**. `unitViolations` `:701` returns only `Keys`. A `DIM|` line requires an `Exponent[#, {massScale,lengthScale,timeScale}]&` extraction the file never performs — **that is a derivation, not a print**|
+|037|**NOTHING_TO_PRINT**|`unitContract` `wl:643-699` (top-level assoc)|21 named, **0 exponent vectors**|**none** — `massScale/lengthScale/timeScale` monomials (`:585-634`)|the file contains **zero dimension exponent-vector objects** (the two integer lists `{3,1}`/`{-1,1}` are not units). A `DIM|` line requires an `Exponent[…]` extraction the file never performs — **a derivation, not a print**. ✅ **D2 permits exactly that, and it was PROTOTYPED 2026-07-27** (21/21, independent route). See `manifests/DIMENSION_REWRITE.md` §3b|
 
 **Two cross-cutting corrections to the working assumption:**
 
@@ -392,6 +399,8 @@ works — the stage004 pattern. **`LOCAL_ONLY`** = values die at a `Module` boun
 ⛔ **Policy question the next session must settle before step (a):** does "print-only" permit in-`Module`
 insertion? If yes, 002/003/008/009/010/030/031/044 become mechanical. If no, only 005, 006 (top tier), 007,
 032, 034, 038, 039 qualify — and 035/036/037 never do.
+⛔ **SUPERSEDED 2026-07-27.** That last clause was true only under **print-only**, which **D2 lifted**.
+A route for 037 is **prototyped**; 035/036 have identified (not yet prototyped) routes. §3b.
 
 ### 5.4 Step (b) needs a Mathematica seat for ~21 stages
 
@@ -421,17 +430,38 @@ Even with both sides emitting values, these comparisons cannot detect a module b
   `scripts/ledger_dimensions.py:169-179` pairs by axis label and is safe, but every *stage-local* residual
   that zips positionally is not. A transposition is symmetric by construction.
 
-### 5.6 The five stages where step (a) is genuinely impossible, ranked
+### 5.6 ⛔ SUPERSEDED HEADING — "genuinely impossible" is MEASURED FALSE for 035/036/037
 
-Everything else is a cost question. These five are the ones to plan around:
+> ⛔⛔ **CORRECTION, 2026-07-27.** This section was written under the **print-only** rule. **D2 lifted
+> that rule**, and a spike then *demonstrated* an independent route on the hardest of them
+> (`ROUTE_EXISTS`, working prototype, **21 of 21 quantities on 037, zero waivers**). **035 transfers
+> directly and is cheaper; 036 transfers but costs more.** Cost ≈ **0.5–1 engineer-day per stage**
+> including review — expensive, **not impossible**.
+>
+> The route: rescale the *live* expressions under the file's own native `unitRules`, cancel to a scale
+> monomial (`Factor[Together[(expr /. unitRules[False])/expr]]`), then `Exponent`. Independence is
+> real — different algorithm from the `.py`'s tree-walker, Wolfram independently chose `M,L,T` against
+> Python's `(L,T,M)`, and a seeded `.py`-only error was caught by the real comparator.
+>
+> ⛔ **In particular the 036 row below — *"printing them re-transcribes constants … invisible by
+> construction"* — is avoidable**, not a law: 036 has native primitive scaling rules (`.wl:232`) and
+> live kernel/interaction/force expressions (`.wl:158`) to derive from.
+>
+> **044 remains untested** (and is frozen pending 044-v2); **042 is untouched by this correction.**
+> Canonical record: `manifests/DIMENSION_REWRITE.md` §3b. **That section wins over this one.**
+
+*The rows below are retained for per-file detail. ⚠ Two of them are **not** merely superseded but
+**factually wrong as written**: 037's "zero integer-tuple objects" (it has two, unrelated to units)
+and 042's "guard runs twice" (contradicted by `manifests/DIMENSION_REWRITE.md` §9). Both are
+annotated in place.*
 
 | stage | why | consequence |
 |---|---|---|
-|**037**|`.wl` contains **zero integer-tuple objects**. Its firewall is purely symbolic monomial substitution.|A `DIM|` line would be a **new derivation added to the `.wl`** — not print-only. Either accept that (and re-review the `.wl`), or accept that 037 has no cross-engine dimension check at all|
+|~~**037**~~ ✅ **SOLVED**|`.wl` has no exponent-vector objects; its firewall is symbolic monomial substitution.|A `DIM|` line is a **new derivation** — which **D2 now permits**. **PROTOTYPED 2026-07-27: 21/21, zero waivers, independent route, seeded-error caught by the real comparator.** §3b|
 |**036**|Derived dimensions exist only as **literal arguments** and hardcoded prose.|Printing them re-transcribes constants. A transcription bug would be invisible **by construction**|
 |**035**|Values are scale monomials, not vectors.|Needs an `Exponent[…]` conversion inside the print — a small derivation, reviewable, but not a dump|
 |**044**|**1 of ~96** vectors is reachable; `dimensionalTooth[]` returns `Null`.|The largest computed dimension set in the corpus is 99 % unobservable. Compounded by 044 being frozen pending **044-v2**|
-|**042**|14 base vectors local **and** the guard runs twice with a mutation flag.|In-body print emits corrupted duplicates. No safe print-only route exists|
+|**042**|14 base vectors local; ⚠ the *guard runs twice* claim is **contradicted** by `manifests/DIMENSION_REWRITE.md` §9 — re-measure first.|If it really runs twice, an in-body print emits corrupted duplicates. **Untested under D2**; 042 is NOT covered by the 037 spike|
 
 ---
 

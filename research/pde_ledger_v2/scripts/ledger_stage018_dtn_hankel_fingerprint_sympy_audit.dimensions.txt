@@ -1,4 +1,4 @@
-DIMENSIONS|stage=ledger_stage018_dtn_hankel_fingerprint_sympy_audit|axes=L,M,T
+DIMENSIONS|stage=ledger_stage018_dtn_hankel_fingerprint_sympy_audit|axes=L,M,T|source_sha256=0a1cf455ba849bdce71b99b350306ad729eb0369b7b447ed6a313c35d04282cf|ledger_dimensions_sha256=7cb8b7c93d189320f3ff857a665162e3290d1628e4511b2b387dd9a4f08e5bea
 DIM|axes=L,M,T|name=a|exponents={1, 0, 0}
 DIM|axes=L,M,T|name=c_s0_dim|exponents={1, 0, -1}
 DIM|axes=L,M,T|name=u2|exponents={0, 0, 2}

@@ -1,8 +1,9 @@
 # V2 Ledger — Resume Roadmap (authored 2026-07-21)
 
-> ⏸ **PAUSED (2026-07-26) — this doc's "▶ NEXT = stage 045" is NOT the current action.** The ledger
+> ⏸ **PAUSED (2026-07-27) — this doc's "▶ NEXT = stage 045" is NOT the current action.** The ledger
 > build is paused behind the **dimension rewrite** (30 SymPy audit scripts onto one shared module;
-> **4 done** — 004, 011, 012, 013; ▶ NEXT = stage018). Current front = `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`; program front door
+> **5 converted** — 004, 011, 012, 013, 018, of which 3 are waiver-free; ▶ NEXT = the reopened waiver
+> batch on 011/012, then 016/023/027/021). Current front = `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`; program front door
 > = `STATUS.md`. Everything below remains the correct *ledger-build* sequence — and **stage 044-v2**
 > (the dynamical-Σ un-freeze, `notes/stage044_v2_unfreeze_prep.md`) precedes 045 when it resumes.
 

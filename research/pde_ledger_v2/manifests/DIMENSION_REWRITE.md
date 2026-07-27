@@ -34,6 +34,16 @@ Everything below follows from this. The `.wl` files never import the module, nev
 the `.py`, and are never "standardised" to agree with it. The comparison is infrastructure we keep,
 not scaffolding we discard once the corpus is unified.
 
+⛔⛔ **WHAT "INDEPENDENT ENGINE" RESTS ON — verified 2026-07-27, and it is NOT provenance.** For
+stage016 both engine files were added in the **same commit** (`bfac580f`), and by construction that is
+true of essentially every dual-engine ledger stage. **Git therefore establishes no derivation order:
+it cannot show that one engine was not written from the other.** Independence rests entirely on
+**authoring discipline** — D3 below and `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md` — and
+on review legs that screen for transliteration. ⇒ State the claim precisely: a green comparator shows
+that **two implementations agree**, not that they were **reached by two independent routes**. Neither
+the digests, the comparator, nor any per-stage gate can upgrade that. Say "agreement", not
+"independent verification", unless a specific leg established the route.
+
 ## 1b. ⭐ USER DECISIONS, 2026-07-26 — "correctness is king"
 
 > *"I don't care if the scripts are byte identical on the output or if we need to do more derivations.
@@ -434,6 +444,14 @@ verdict at all**. Three independent read-only agents filled it; loci spot-checke
 | **027** | ⚠ **MIXED** — declared `REACHABLE`, computed **`LOCAL_ONLY`** | **0 of 1** computed vectors reach top level (it dies in `runAll`'s `Module`, `wl:742-751`); the 16 declared `baseDims` (`wl:183`) do | `(L,M,T)`, ⭐ **mechanically bound** through `uL/uM/uT` (`wl:200`, `:205`) — the **strongest axis evidence in the corpus**, code not prose | `evaluatePort` **19×**, 2 of them under a corrupted basis | ⛔ the `.wl`'s rescaling-ratio route **cannot produce per-symbol vectors at all** — 027 stays a **1-row** `DIM\|` stage unless new call sites are added (which D2 permits) |
 | **021** | `REACHABLE` | **27 of 27** top-level bindings — ⭐ **no top-level `Module` anywhere**; ~21 clean named + ~64 mutation-scoped ≈ 85 | storage `(L,M,T)`, **prose only** (`wl:342`, `:384`, `:528`) — there is **no machine-readable axis binding**, so a D2 emitter must hardcode the header | `gateData` **13×** (8 under a corrupted map), `backSolveMutant` **5×** (all corrupted) | ⛔⛔ an **undocumented index-permuting renderer** — `{{"L",d[[1]]},{"T",d[[3]]},{"M",d[[2]]}}` at `wl:125`/`:139` — so scraping its printed output and labelling it `axes=L,M,T` **silently swaps M and T**. The `.py` documents its permutation (`py:224`); the `.wl` does not |
 
+⛔⛔ **THESE SURVEY COUNTS ARE LOWER BOUNDS, NOT INVENTORIES — measured 2026-07-27.** The stage016
+survey above said 21 objects; the per-stage §4-a enumeration, attacked by two review legs, then found
+**two the survey had missed**: `lambdaRef`, a live factor in the walk that is dimensionless only via a
+`NumericQ` fall-through rather than any declaration, and a clean **6th** `evalDimensional` invocation
+whose result is discarded. Neither is exotic — both are invisible *because nothing consumes them*.
+⇒ Treat the 023 / 027 / 021 counts as a floor. The survey decides the **shape** of the work; only the
+tracked §4-a enumeration, written against the file and then adversarially reviewed, closes the set.
+
 ⛔⛔ **CORPUS-WIDE CORRECTION — "append the print at end-of-file" is DEAD CODE in all 43 `.wl`
 files.** §5.3 defines `REACHABLE` as *"a print appended at end-of-file **or at the call site**
 works"*. **Measured 2026-07-27: 43 of 43 `.wl` files terminate in `Exit[0]`/`Exit[1]`**, so the
@@ -575,6 +593,18 @@ an axis rename. ⇒ **The comparator is the SOLE instrument standing between a c
 relabelled basis.** Waiving it for a stage removes the only detector, which is why
 `ARTIFACT_NAME_WAIVERS` staying `{}` matters. The records it cannot see are exactly those whose
 exponents are equal on the swapped axes.
+
+⛔⛔ **AND HERE IS ITS CEILING — the dimensional block is a PARALLEL RECONSTRUCTION of the stage's
+physics.** The emitted records are dimensions **of walked terms**, never of the stage's own
+expressions, so any **dimension-preserving** rewrite of the walked expressions is invisible to
+everything. **Executed on stage016, each leaving 82 PASS / exit 0, byte-identical `DIM|` records and a
+green comparator:** dropping `lambda_m` — *the stage's entire subject* — from the angular term, and
+deleting the angular-stiffness term from `k2_integral` outright. The `.wl` still assembles the full
+sum, so the engines then disagree on the **expression** while agreeing on the **dimension**.
+⇒ This is the `c_s0`/`c_S` failure one level up: not *"same dimension, wrong name"* but **"same
+dimension, wrong expression"**. The comparator declares the gap itself — it prints
+`source_coverage=not_checked`. **Nothing in this workstream closes it**; it bounds what conversion can
+ever buy, and Part VII's firewall needs to know that.
 
 Engine-vs-engine agreement is necessary and **not sufficient** — both engines can be wrong together.
 The check that closes the gap is deriving the emitted dimensions from the *model* (`model_map.md` §2:

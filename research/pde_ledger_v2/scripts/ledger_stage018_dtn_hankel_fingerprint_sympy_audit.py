@@ -1,21 +1,28 @@
 #!/usr/bin/env python3
 """Ledger stage018 SymPy audit: DtN Hankel fingerprint + chi sign.
 
-Standalone, print-only, no arguments, no file I/O. This is the pathA_33
-II-G4a exterior-wave slice only: explicit l=2 spherical j/y functions,
-the outgoing DtN Hankel log-derivative, the derived rational fingerprint,
-the chi sign from outgoing versus incoming branches, passivity/not-inserted
-sink probes, and the units-restored coefficient dimensions. Sibling stages
-own the prefactor, normalization partition, and dimensional closure.
+Standalone, with audit results on stdout and labelled dimensions in a
+deterministic sidecar. This is the pathA_33 II-G4a exterior-wave slice only:
+explicit l=2 spherical j/y functions, the outgoing DtN Hankel log-derivative,
+the derived rational fingerprint, the chi sign from outgoing versus incoming
+branches, passivity/not-inserted sink probes, and the units-restored coefficient
+dimensions. Sibling stages own the prefactor, normalization partition, and
+dimensional closure.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from functools import lru_cache
 from typing import Any
 
 import sympy as sp
+
+from ledger_dimensions import (
+    Dimension,
+    DimensionBasis,
+    dim_residual,
+    emit_dimension_sidecar,
+)
 
 
 PASS_COUNT = 0
@@ -64,8 +71,8 @@ def fmt(expr: Any) -> str:
         return "True" if expr else "False"
     if isinstance(expr, str):
         return expr
-    if isinstance(expr, Dim):
-        return dim_text(expr)
+    if isinstance(expr, Dimension):
+        return str(expr)
     if isinstance(expr, sp.MatrixBase):
         return sp.sstr(compact(expr))
     if isinstance(expr, (dict, list, tuple)):
@@ -77,8 +84,8 @@ def fmt(expr: Any) -> str:
 
 
 def assert_no_float(name: str, expr: Any) -> None:
-    if isinstance(expr, Dim):
-        for label, value in zip(("L", "M", "T"), expr.components()):
+    if isinstance(expr, Dimension):
+        for label, value in expr.exponents.items():
             assert_no_float(f"{name}.{label}", value)
         return
     if isinstance(expr, dict):
@@ -154,40 +161,8 @@ def verdict_residual(actual: str, expected: str) -> sp.Integer:
     return sp.Integer(0) if actual == expected else sp.Integer(1)
 
 
-def q(value: int | str | sp.Rational) -> sp.Rational:
-    return sp.Rational(value)
-
-
-@dataclass(frozen=True)
-class Dim:
-    """Exact exponent vector in (L, M, T) order."""
-
-    l: sp.Rational | int = 0
-    m: sp.Rational | int = 0
-    t: sp.Rational | int = 0
-
-    def __post_init__(self) -> None:
-        object.__setattr__(self, "l", q(self.l))
-        object.__setattr__(self, "m", q(self.m))
-        object.__setattr__(self, "t", q(self.t))
-
-    def __add__(self, other: "Dim") -> "Dim":
-        return Dim(self.l + other.l, self.m + other.m, self.t + other.t)
-
-    def __sub__(self, other: "Dim") -> "Dim":
-        return Dim(self.l - other.l, self.m - other.m, self.t - other.t)
-
-    def __mul__(self, scale: int | sp.Rational) -> "Dim":
-        p = q(scale)
-        return Dim(self.l * p, self.m * p, self.t * p)
-
-    def __rmul__(self, scale: int | sp.Rational) -> "Dim":
-        return self * scale
-
-    def components(self) -> tuple[sp.Rational, sp.Rational, sp.Rational]:
-        return (self.l, self.m, self.t)
-
-
+DIMENSION_BASIS = DimensionBasis("L", "M", "T", render="symbolic")
+Dim = DIMENSION_BASIS
 ZERO_DIM = Dim()
 DIM_L = Dim(1, 0, 0)
 DIM_SPEED = Dim(1, 0, -1)
@@ -196,11 +171,7 @@ DIM_T4 = Dim(0, 0, 4)
 DIM_T5 = Dim(0, 0, 5)
 
 
-def dim_residual(actual: Dim, expected: Dim) -> sp.Expr:
-    return sp.simplify(sum((have - want) ** 2 for have, want in zip(actual.components(), expected.components())))
-
-
-def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
+def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dimension]) -> Dimension:
     clean = sp.sympify(expr)
     if clean == 0 or clean.is_number:
         return ZERO_DIM
@@ -211,13 +182,13 @@ def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
     if isinstance(clean, sp.Mul):
         total = ZERO_DIM
         for arg in clean.args:
-            total = total + dim_of(arg, dims)
+            total = total * dim_of(arg, dims)
         return total
     if isinstance(clean, sp.Pow):
         base, power = clean.args
         if not power.is_number:
             raise DimError(f"non-numeric power in dimension expression {clean}")
-        return dim_of(base, dims) * sp.Rational(power)
+        return dim_of(base, dims) ** sp.Rational(power)
     if isinstance(clean, sp.Add):
         arg_dims = [dim_of(arg, dims) for arg in clean.args if compact(arg) != 0]
         if not arg_dims:
@@ -227,18 +198,6 @@ def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
             raise DimError(f"dimension mismatch in sum {clean}: {arg_dims}")
         return first
     raise DimError(f"unsupported dimension expression {clean}")
-
-
-def dim_text(dim: Dim) -> str:
-    parts: list[str] = []
-    for label, exponent in (("L", dim.l), ("M", dim.m), ("T", dim.t)):
-        if exponent == 0:
-            continue
-        if exponent == 1:
-            parts.append(label)
-        else:
-            parts.append(f"{label}^{fmt(exponent)}")
-    return "1" if not parts else " ".join(parts)
 
 
 z = sp.Symbol("z", real=True)
@@ -582,12 +541,12 @@ def run_units_leg(data: dict[str, Any]) -> None:
     units = data["units"]
     subbanner("Units-restored physical coefficient dimensions only")
     print("  dimension order = (L,M,T); [a]=L, [c_s]=L*T^-1.")
-    print(f"  computed dimensions = { {key: dim_text(value) for key, value in units['dims'].items()} }")
+    print(f"  computed dimensions = { {key: str(value) for key, value in units['dims'].items()} }")
     expect_zero("physical u2 has dimension T^2", dim_residual(units["dims"]["u2"], DIM_T2))
     expect_zero("physical u4 has dimension T^4", dim_residual(units["dims"]["u4"], DIM_T4))
     expect_zero("physical v5 has dimension T^5", dim_residual(units["dims"]["v5"], DIM_T5))
     expect_bool("baseline coefficient dimensional leg passes", units["ok"])
-    print(f"  corrupted u2 expression = {fmt(units['corrupted_u2'])}; dimension = {dim_text(units['corrupted_u2_dim'])}")
+    print(f"  corrupted u2 expression = {fmt(units['corrupted_u2'])}; dimension = {units['corrupted_u2_dim']}")
     expect_fail("corrupting the c_s power in u2 breaks the T^2 dimension", dim_residual(units["corrupted_u2_dim"], DIM_T2))
     expect_zero("units corruption reaches FAIL_DIMENSIONAL", verdict_residual(units["corrupted_verdict"], FAIL_DIMENSIONAL))
     expect_zero("units dynamic self-ablation with mutation is FAIL_DIMENSIONAL", verdict_residual(units["self_ablation"]["with_mutation"], FAIL_DIMENSIONAL))
@@ -655,7 +614,7 @@ def run_scope_and_provenance(data: dict[str, Any]) -> None:
     print("  REMAINING: prefactor algebra = 019; normalization partition plus calibrated label = 020; dim closure = 021.")
     print("  CAVEATS: c_s is a units carrier, not a consumed value; branch scalar numerics remain sim-deferred; chi reconciliation is Part-VII.")
     print("  CONSUMES (PROVENANCE only): 017 l=2 port kernel + 009/010 bulk mode + stage005 R1 identity for the c_s units symbol.")
-    print("  EXPORTS: outgoing fingerprint and chi sign to 019/020 plus later non-regression and closure stages; no file artifact is written.")
+    print("  EXPORTS: outgoing fingerprint and chi sign to 019/020 plus later non-regression and closure stages; labelled dimensions in a deterministic sidecar.")
     names = live_symbol_names(data)
     print(f"  live symbolic names in this slice = {sorted(names)}")
     expect_bool("only z, a, c_s are live symbols in the fingerprint slice", names <= {"z", "a", "c_s"})
@@ -683,7 +642,7 @@ def print_verdict_labels() -> None:
 def main() -> int:
     banner("ledger_stage018_dtn_hankel_fingerprint_sympy_audit")
     print("Target stem confirmed: ledger_stage018_dtn_hankel_fingerprint")
-    print("Engine: SymPy exact symbolic spherical-Hankel series; no floats/tolerances; zero file I/O.")
+    print("Engine: SymPy exact symbolic spherical-Hankel series; no floats/tolerances; audit results on stdout and labelled dimensions in a deterministic sidecar.")
     data = build_baseline()
     run_fingerprint_derivation(data)
     run_chi_and_standing(data)
@@ -692,6 +651,18 @@ def main() -> int:
     run_per_tooth_ablations(data)
     run_scope_and_provenance(data)
     print_verdict_labels()
+    units = data["units"]
+    emit_dimension_sidecar(
+        __file__,
+        {
+            "a": DIM_L,
+            "c_s0_dim": DIM_SPEED,
+            "u2": units["dims"]["u2"],
+            "u4": units["dims"]["u4"],
+            "v5": units["dims"]["v5"],
+            "corrupted_u2_dim": units["corrupted_u2_dim"],
+        },
+    )
     return 0
 
 

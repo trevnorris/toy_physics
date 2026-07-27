@@ -1,7 +1,7 @@
 # Development Pipeline — how we do the work (canonical "how we work" front door)
 
 **Why this doc exists.** The *what* of the program lives in `docs/development_plan.md` (the sector-by-sector work breakdown) and
-`docs/conceptual_foundation.md` (the physical vision). This doc is the ***how*** — the process every compute gate runs through. It was
+`docs/model_map.md` (the physical vision — ⛔ NOT `conceptual_foundation.md`, superseded and it re-confuses). This doc is the ***how*** — the process every compute gate runs through. It was
 written **2026-06-26** after the rules — previously scattered across ~30 `feedback-*` memories + `STATUS.md` + each directive's
 §discipline/§review sections — let a shortcut slip through (the orchestrator self-verified a remediated script instead of using a fresh
 clean agent). Consolidating it here makes the pipeline impossible to miss.
@@ -34,7 +34,7 @@ wins (it's the live, dated record). Keep this doc synced when a process rule cha
 ## The phases
 
 ### Phase 0 — Grounding
-Read `docs/conceptual_foundation.md` + the relevant memories first. Don't re-derive what's already banked (e.g. the PN ladder, prior no-gos).
+Read `docs/model_map.md` (⛔ NOT `conceptual_foundation.md` — superseded, it re-confuses) + the relevant memories first. Don't re-derive what's already banked (e.g. the PN ladder, prior no-gos).
 
 ### Phase 1 — Directive → review gauntlet (before any compute)
 1. **Claude drafts the directive**: states *requirement + acceptance + the verdict ladder (incl. the no-gos)*; **never pre-designs the computational route** [`claude-reviews-codex-codes`].
@@ -219,4 +219,4 @@ That is a denylist against an expressive grammar; it does not converge.
 
 ---
 
-*Source of truth = the `feedback-*` memories cited above. Companion docs: `docs/development_plan.md` (what to build), `docs/conceptual_foundation.md` (the vision), `STATUS.md` (where we are).*
+*Source of truth = the `feedback-*` memories cited above. Companion docs: `docs/development_plan.md` (what to build), `docs/model_map.md` (⛔ NOT `model_map.md` — superseded, it re-confuses) (the vision), `STATUS.md` (where we are).*

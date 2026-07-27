@@ -1,11 +1,12 @@
 # DIMENSION REWRITE — the single canonical doc for this workstream
 
-**This file replaces `REWRITE_HANDOFF.md`, `PIVOT_TO_REWRITE.md`, `RESTART_PROMPT.md` and
-`notes/dimension_inventory_and_provenance.md`.** Fold new findings in HERE. Do not write a new doc to
+**This file replaced four earlier docs, all now DELETED (recoverable via git):
+`REWRITE_HANDOFF.md`, `PIVOT_TO_REWRITE.md`, `RESTART_PROMPT.md`,
+`notes/dimension_inventory_and_provenance.md`. Those names are history, not pointers.** Fold new findings in HERE. Do not write a new doc to
 explain something this one already covers — that habit produced ten overlapping files for one
 workstream and is the reason this consolidation exists.
 
-Branch `ledger-v2-rebuild`. Last updated at `f5ff1843`.
+Branch `ledger-v2-rebuild`. Last updated at `c80e18db`.
 
 ---
 
@@ -122,15 +123,24 @@ unless you check here first.** Do not inherit them.
 2. **"037, 036, 035, 044 are `.wl`-emission-impossible."** They were blocked *only* by print-only.
    They need genuine, independently-routed computation — which is now allowed.
 3. **"~26 well-gated + 4 that can't be."** That estimate assumed (2). Re-derive it.
-4. **The 5 `GROUPING LIMITATIONS` in `CANONICAL_DIMENSIONS.md`** (`EnergyDim`/`energy_dim`,
-   `CsSquaredDim`/`cs_squared_dim`, `CorruptKDim`/`corrupt_K_dim`, `FourVolumeDim`/`four_volume_dim`,
-   `MassDim`/`mass_dim`) are closable by **D4** renaming — same quantity, one name. Currently only
-   `KDim` and `Tw` group; standardising would group all six stage011/012 shared quantities.
+   ⭐ **PRIORITY, since STATUS says "NEXT stage018" and this says "go back":** finish **stage018 first**
+   (it is next in the group-A sequence and the loop is warm), then do the three reopened waivers
+   (011 `MassDim`/`OmegaDim`, 012 `mass_dim`) as one batch — they are the same small `.wl` data-flow
+   change three times, and `K_eta` at stage013 is the worked example. The four D2 stages
+   (037/036/035/044) are group-B/C work and stay in sequence.
+4. **The EIGHT `GROUPING LIMITATIONS` in `CANONICAL_DIMENSIONS.md`** are closable by **D4**
+   renaming — same quantity, one name. The pairs (stage011 CamelCase vs stage012 snake_case):
+   `CsSquaredDim`/`clean_walk.cs_squared_dim` · `CorruptKDim`/`corrupt_K_dim` ·
+   `EnergyDim`/`energy_dim` · `FourVolumeDim`/`four_volume_dim` · `MassDim`/`mass_dim` ·
+   `OmegaDim`/`omega_dim` · `PressureDim`/`pressure_dim` · `RhoDim`/`rho_dim`.
+   Only `KDim` and `Tw` group today; standardising takes stage011/012 to **9** grouped shared
+   quantities. ⭐ **Target spelling = snake_case** (stage012/013's convention, matching the `.py`
+   variable names) ⇒ **stage011 is the file to rename.**
 5. **stdout byte-identity as a gate.** D1 makes it a diagnostic. Do not contort code to preserve it.
 
 ## 4. ⭐ THE PER-STAGE LOOP
 
-**(a)** Add **print-only** `DIM|` output to the stage's `.wl`. **(b)** Re-run; confirm exit 0, PASS
+**(a)** Add `DIM|` output to the stage's `.wl` — **prefer print-only**, but under **D2** new computation is allowed where a value is otherwise unreachable (state the independent route, D3). **(b)** Re-run; confirm exit 0, PASS
 tally unchanged, `.out` reproduces byte-identically after `sed -E 's/\$[0-9]+/$N/g'`; re-baseline.
 **Commit this before touching the `.py`** — freezing the reference first makes independence structural,
 not disciplinary. **(c)** Write the prediction down in `notes/stage0NN_rewrite_prediction.md`.
@@ -180,7 +190,7 @@ computation" clause is lifted.
 - **Prefer print-only** where a live binding already exists — it is cheaper and carries no
   independence risk. Add computation only when the value is genuinely unreachable otherwise.
 - ⛔ **Never hardcode an exponent literal in a `Print`.** A constant compared to the `.py`'s constant is
-  vacuous. This defect already exists at **stage013 `.wl:446-447`** and **stage018 `.wl:386`** — do not
+  vacuous. This defect already exists at **stage013 `.wl:448-449`** and **stage018 `.wl:386`** — do not
   add a third. Use `ToString[InputForm[dim["KDim"]]]`.
 - ⛔ **Never copy a value or the axis order from the `.py`.** Read the `.wl`'s axis order from the `.wl`
   and cite the locus. *Names* are join keys and may be aligned; *values* may not.
@@ -222,7 +232,7 @@ R1, not a dimension declaration — *covered-by-edge ≠ own row*.
 
 **Provenance is archaeology, not opinion.** "Is `lambda_T` new or renamed?" cannot be answered from
 memory — Codex wrote the math. Ask it **quote-backed**, with `NONE_FOUND` a first-class answer, then
-verify. Sources: `notes/stages/`, `*_source_map.md`, `software/*/reports/`, `decisions/`, 517 commit
+verify. Sources: `notes/stages/`, `*_source_map.md`, `software/*/reports/`, `decisions/`, 533 commit
 messages, the `_scratch/` dirs, `research/` prior papers.
 
 ## 8. COVERAGE CENSUS — the "group A is free" premise was FALSE
@@ -230,7 +240,7 @@ messages, the `_scratch/` dirs, `research/` prior papers.
 | stage | py dims | **real** compared | labelled? | blind |
 |---|---|---|---|---|
 | 012 | 19 | **18** ✅ done | DIM records | L↔M 16, M↔T 8, L↔T 16 detect |
-| 013 | 14 | **9**/14 (5 literal-vs-literal) | mixed | 9 |
+| ~~013~~ | — | ✅ **DONE — 15/15, zero waivers** (`4391c69c`) | — | — |
 | 018 | 5 | **3**/5 (2 literal-vs-literal) | labelled | 4 |
 | 016 | 21 | 9/21 | labelled | 4 |
 | 023 | 29 | 7/29 | BARE | 6 of 7, **5 dimensionless** |
@@ -253,7 +263,10 @@ Each capability is ablation-verified (`_exact`→`sp.Float` trips the exactness 
 trips the set check). They are ordered LAST for effort, not for risk.
 
 ## 9. ⛔ LANDMINES
-- **stage003's `.wl` is `(M,L,T)` and neither file says so.** Emitting `axes=L,T,M` corrupts every triple.
+- **stage003's basis is `(M,L,T)`, NOT the more common `(L,T,M)`.** ⚠ The earlier claim that "neither
+  file says so" was FALSE: `scripts/ledger_stage003_*.py:87` declares
+  `def dim(m_power, l_power, t_power)`, stating the order explicitly. Read it; never assume.
+  Emitting `axes=L,T,M` there would corrupt every triple.
 - **stage042's `.wl:816` comment says "MLT" — a mislabel;** its axes are `(stiffness, L, T)`.
   ⚠ Its guard runs **once**, not twice (an earlier claim was wrong) — 042 is likely recoverable.
 - ⚠ **037, 036, 035, 044 were listed as `.wl`-emission-impossible — REOPENED by D2 (§1b).** They were
@@ -281,7 +294,7 @@ trips the set check). They are ordered LAST for effort, not for risk.
   hardcoded `True`, stage004 `:302`/`:308`, stage013/018's literal prints, stage012's stale
   `source dict L522-L529` label). Catalogue them — task #22.
   ⭐ **stage013's hardcoded prints are now DEMONSTRATED stale-capable, not merely suspected.** Under a
-  `Tw` ablation, `.py:588-589` / `.wl:446-447` printed `Tw=(1,1,-2)` and `K_eta=…=(-1,1,-2)` while the
+  `Tw` ablation, `.py:588-589` / `.wl:448-449` printed `Tw=(1,1,-2)` and `K_eta=…=(-1,1,-2)` while the
   live `k_shared` in the *same run* had moved to `(0,1,-5)` — the strings contradicted the run that
   produced them and **nothing flagged it**. That is the strongest evidence yet for task #22, and it
   generalises: any hardcoded rendering of a computed value can silently go stale.
@@ -307,4 +320,4 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
   the right home for it.
 - The `r_BA` unit-system adjudication (§7) — a model question for the user.
 - 12 "registered under a different key, **or new**" quantities (§7) — quote-backed archaeology, then gauntlet.
-- `schemas/` + `validate_dimension_survey.py` are **parked** (survey-era, still committed).
+- `schemas/` + `schemas/validate_dimension_survey.py` are **parked** (survey-era, still committed).

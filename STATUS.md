@@ -15,9 +15,11 @@ declarations in both engines, which catches transcription divergence but not wro
 
 ⭐ **TRACK TWO COUNTERS, NOT ONE — they are different finish lines.**
 - **converted** — on the shared module, cross-engine gate green: **5 of 30**.
-- **physics-verified** — dimensions independently derived from `model_map.md`: **stage012, 013,
-  018, and the three 011/012 waiver records**. The other 25 stages have **never** had their
-  declared dimensions checked against the model.
+- **physics-verification evidence** — ⚠ **quantity-level; there is NO defensible stage count yet.**
+  Recorded: stage012 **14 CORRECT / 0 WRONG**, stage013 **9 / 0**, all six emitted stage018
+  records, and the three formerly-waived 011/012 records. Those pre-§4-c1 results were never
+  normalised into per-stage tracked verdict tables, so **do not call whole stages verified and do
+  not infer a "25 remaining" complement.** §4-c1 exists so this becomes countable going forward.
 
 Cross-engine agreement is necessary and **not sufficient** — proven twice: it is blind to a
 same-dimension different-quantity merge, and to a shared wrong declaration. The physics leg is

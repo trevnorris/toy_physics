@@ -314,8 +314,10 @@ rewritten **without a cross-engine check** — and record that fact rather than 
 
 ## 5. ⛔ Where the per-stage loop will NOT work
 
-The loop is: **(a)** add print-only output to the `.wl` → **(b)** re-baseline `.out` → **(c)** rewrite the
-`.py` onto the module → **(d)** compare `.py` values against `.wl` printed values, axis-labelled.
+⛔ **HISTORICAL loop as of the `adcfbdfd` snapshot — SUPERSEDED.** Execute the current loop,
+`manifests/DIMENSION_REWRITE.md` §4 steps (a)–(i) plus (c1)/(c2)/(g2). Retained only so the analysis
+below reads in context: **(a)** add print-only output to the `.wl` → **(b)** re-baseline `.out` →
+**(c)** rewrite the `.py` onto the module → **(d)** compare axis-labelled.
 
 ### 5.1 Step (d) has no `.py` side — including for the completed pilot
 
@@ -408,7 +410,8 @@ Only 9 `.out` files render a computed dimension value today (004, 011, 012, 013,
 The other 21 COVERED stages reduce the whole dimensional firewall to `PASS <TOOTH>`, so each needs a `.wl`
 edit **and** a re-run. ⚠ The licence cap is **2 seats**, `mathematica/run_all_audits.sh` sleeps 10 s between
 scripts, and the `.wl` runner is far slower than the Python suite (~3–3.5 min sequential for all 43 `.py`,
-dominated by stage033 ≈ 82 s). **Batch the `.wl` work; do not interleave it one stage at a time.**
+dominated by stage033 ≈ 82 s). ~~**Batch the `.wl` work; do not interleave it one stage at a time.**~~ ⛔ **SUPERSEDED** — the
+canonical process is ONE STAGE AT A TIME (`manifests/DIMENSION_REWRITE.md` §4).
 
 ### 5.5 Step (d) is structurally incapable of failing for some stages
 

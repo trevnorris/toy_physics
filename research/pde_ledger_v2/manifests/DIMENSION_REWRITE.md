@@ -187,9 +187,10 @@ analysis*, not execution. Do not cite them as measured.
   mandatory.**
 - ⭐ **BONUS — the spike's emission pattern is better than the one in use.** It derives the `axes=`
   label from `Keys[dimensionAxes]` instead of typing it as a string literal. **By inspection, all five
-  converted `.wl` files hardcode their axes strings** (`004:220`, `011:407`, `012:568`, `013:447`,
-  `018:387-393`); the stage018 adversarial leg demonstrated the stale-label *risk* **for stage018
-  only** — it did not audit the other four. If a `.wl`'s internal order ever changed, a typed label
+  ⭐ **011 and 012 NOW USE the derived machine label** (`dimensionAxesLabel[]`, adopted during the
+  waiver closure `8b006055`); **004, 013 and 018 still hardcode theirs**. 011/012 also retain *typed
+  human prose* labels (`.wl:412`, `.wl:571`). The stage018 adversarial leg demonstrated the
+  stale-label *risk* **for stage018 only** — it did not audit the others. If a `.wl`'s internal order ever changed, a typed label
   would not follow. **Adopt the derived-label form from 016 onward**; the five already converted are
   bounded, recorded debt.
 
@@ -452,6 +453,10 @@ trips the set check). They are ordered LAST for effort, not for risk.
   This closes the measured transposed-but-not-re-run stage018 PASS and the shared-module edit hole.
   It does not execute the stage, measure source coverage, bind transitive dependencies, or replace
   the separate orchestrator control that regenerates each Mathematica `.out`.
+- ⛔ **stage013's `m_shared` / `m_dims.*` is the shared dimension of the `M_AB` matrix entries, NOT
+  the physical mass `m_GNLS`** (`.wl:452,465,468`, `.py:592-593`). Both render as `M`. ⛔ **Never
+  D4-rename it to a generic mass name** — that merges different quantities, and no dimensional
+  check could catch it. Same shape as the `c_s0`/`c_S` merge caught at stage018.
 - `lru_cache` — **5 stages, 11 sites**: 018 (×1), 022 (×4), 023 (×1), 027 (×1), **040 (×4)**. 043 has
   **zero**; 040's four are verified argument-pure.
 - `grep -c '^PASS'` **over-counts by exactly 1** (the tally line self-matches).

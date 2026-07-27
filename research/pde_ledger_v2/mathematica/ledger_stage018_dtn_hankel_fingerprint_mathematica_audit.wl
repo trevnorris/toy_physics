@@ -384,6 +384,13 @@ runPassivityAndProbes[] := (
 runUnitsLeg[] := (
   subheading["Units-restored physical coefficient dimensions only"];
   Print["  dimension order = (L,M,T); [a]=L, [c_s]=L*T^-1."];
+  Print["DIMENSIONS|axes=L,M,T"];
+  Print["DIM|axes=L,M,T|name=a|exponents=", ToString[InputForm[dimRules[a]]]];
+  Print["DIM|axes=L,M,T|name=c_s0_dim|exponents=", ToString[InputForm[dimRules[cs]]]];
+  Print["DIM|axes=L,M,T|name=u2|exponents=", ToString[InputForm[u2Dim]]];
+  Print["DIM|axes=L,M,T|name=u4|exponents=", ToString[InputForm[u4Dim]]];
+  Print["DIM|axes=L,M,T|name=v5|exponents=", ToString[InputForm[v5Dim]]];
+  Print["DIM|axes=L,M,T|name=corrupted_u2_dim|exponents=", ToString[InputForm[corruptedU2Dim]]];
   Print["  computed dimensions = ", <|"u2" -> dimText[u2Dim], "u4" -> dimText[u4Dim], "v5" -> dimText[v5Dim]|>];
   expectZero["physical u2 has dimension T^2", dimResidualVec[u2Dim, dimT2]];
   expectZero["physical u4 has dimension T^4", dimResidualVec[u4Dim, dimT4]];

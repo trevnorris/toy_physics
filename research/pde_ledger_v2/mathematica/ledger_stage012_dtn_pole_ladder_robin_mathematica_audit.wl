@@ -571,6 +571,7 @@ runDimensionalBlock[data_] := Module[{dim, clean, corrupt},
   Print["DIM|axes=L,M,T|name=pressure_dim|exponents=", ToString[InputForm[dim["PressureDim"]]]];
   Print["DIM|axes=L,M,T|name=rho_dim|exponents=", ToString[InputForm[dim["RhoDim"]]]];
   Print["DIM|axes=L,M,T|name=K_dim|exponents=", ToString[InputForm[dim["KDim"]]]];
+  Print["DIM|axes=L,M,T|name=omega_dim|exponents=", ToString[InputForm[dim["OmegaDim"]]]];
   Print["DIM|axes=L,M,T|name=alpha_dim|exponents=", ToString[InputForm[dim["AlphaDim"]]]];
   Print["DIM|axes=L,M,T|name=clean_walk.cs_squared_dim|exponents=", ToString[InputForm[clean["CsSquaredDim"]]]];
   Print["DIM|axes=L,M,T|name=clean_walk.cs_dim|exponents=", ToString[InputForm[clean["CsDim"]]]];

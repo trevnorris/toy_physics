@@ -1,19 +1,26 @@
 #!/usr/bin/env python3
 """Ledger stage012 SymPy audit: DtN pole ladder + Robin falsifier.
 
-Standalone, print-only, no arguments, no file I/O.  This is the Part-II
-pathA_30 II-G1b slice only: consume stage011's frozen Helmholtz L_s, open at
-the dsolve, derive the D/N DtN by a coefficient-matrix LUsolve, derive the
-half-shifted pole ladder, static small-omega series, round trip, Robin
-counterfactual guard, and the 012 tan_argument/Z00 dimensional legs.
+Standalone, with audit results on stdout and labelled dimensions in a
+deterministic sidecar.  This is the Part-II pathA_30 II-G1b slice only:
+consume stage011's frozen Helmholtz L_s, open at the dsolve, derive the D/N
+DtN by a coefficient-matrix LUsolve, derive the half-shifted pole ladder,
+static small-omega series, round trip, Robin counterfactual guard, and the
+012 tan_argument/Z00 dimensional legs.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Any
 
 import sympy as sp
+
+from ledger_dimensions import (
+    Dimension,
+    DimensionBasis,
+    dim_residual,
+    emit_dimension_sidecar,
+)
 
 
 PASS_COUNT = 0
@@ -67,7 +74,7 @@ def fmt(expr: Any) -> str:
         return "True" if expr else "False"
     if isinstance(expr, str):
         return expr
-    if isinstance(expr, Dim):
+    if isinstance(expr, Dimension):
         return str(expr)
     if isinstance(expr, sp.MatrixBase):
         return sp.sstr(compact_expr(expr))
@@ -80,8 +87,8 @@ def fmt(expr: Any) -> str:
 
 
 def assert_no_float(name: str, expr: Any) -> None:
-    if isinstance(expr, Dim):
-        for label, value in zip(("L", "M", "T"), expr.components()):
+    if isinstance(expr, Dimension):
+        for label, value in expr.exponents.items():
             assert_no_float(f"{name}.{label}", value)
         return
     if isinstance(expr, dict):
@@ -184,51 +191,15 @@ def verdict_residual(actual: str, expected: str) -> sp.Integer:
     return sp.Integer(0) if actual == expected else sp.Integer(1)
 
 
-def q(value: int | str | sp.Rational) -> sp.Rational:
-    return sp.Rational(value)
-
-
-@dataclass(frozen=True)
-class Dim:
-    """Exact exponent vector in (L, M, T) order."""
-
-    l: sp.Rational | int = 0
-    m: sp.Rational | int = 0
-    t: sp.Rational | int = 0
-
-    def __post_init__(self) -> None:
-        object.__setattr__(self, "l", q(self.l))
-        object.__setattr__(self, "m", q(self.m))
-        object.__setattr__(self, "t", q(self.t))
-
-    def __add__(self, other: "Dim") -> "Dim":
-        return Dim(self.l + other.l, self.m + other.m, self.t + other.t)
-
-    def __sub__(self, other: "Dim") -> "Dim":
-        return Dim(self.l - other.l, self.m - other.m, self.t - other.t)
-
-    def __mul__(self, scale: int | sp.Rational) -> "Dim":
-        p = q(scale)
-        return Dim(self.l * p, self.m * p, self.t * p)
-
-    def __rmul__(self, scale: int | sp.Rational) -> "Dim":
-        return self * scale
-
-    def components(self) -> tuple[sp.Rational, sp.Rational, sp.Rational]:
-        return (self.l, self.m, self.t)
-
-    def __str__(self) -> str:
-        return f"({fmt(self.l)},{fmt(self.m)},{fmt(self.t)})"
-
-
+DIMENSION_BASIS = DimensionBasis("L", "M", "T", render="tuple")
+Dim = DIMENSION_BASIS
 ZERO_DIM = Dim()
 
 
-def dim_residual(actual: Dim, expected: Dim) -> sp.Expr:
-    return sp.simplify(sum((have - want) ** 2 for have, want in zip(actual.components(), expected.components())))
-
-
-def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
+def dim_of(
+    expr: sp.Expr,
+    dims: dict[sp.Symbol, Dimension],
+) -> Dimension:
     clean = sp.sympify(expr)
     if clean == 0 or clean.is_Number:
         return ZERO_DIM
@@ -239,13 +210,13 @@ def dim_of(expr: sp.Expr, dims: dict[sp.Symbol, Dim]) -> Dim:
     if isinstance(clean, sp.Mul):
         total = ZERO_DIM
         for arg in clean.args:
-            total = total + dim_of(arg, dims)
+            total = total * dim_of(arg, dims)
         return total
     if isinstance(clean, sp.Pow):
         base, power = clean.args
         if not power.is_number:
             raise AuditFailure(f"non-numeric power in dimension expression {clean}")
-        return dim_of(base, dims) * sp.Rational(power)
+        return dim_of(base, dims) ** sp.Rational(power)
     if isinstance(clean, sp.Add):
         arg_dims = [dim_of(arg, dims) for arg in clean.args if compact_expr(arg) != 0]
         if not arg_dims:
@@ -556,10 +527,10 @@ def build_round_trip(pole_ladder: sp.Expr, *, r_D: sp.Expr = sp.Integer(-1), r_N
 def build_dimensional_block() -> dict[str, Any]:
     length_dim = Dim(1, 0, 0)
     energy_dim = Dim(2, 1, -2)
-    four_volume_dim = 4 * length_dim
-    pressure_dim = energy_dim - four_volume_dim
-    rho_dim = -4 * length_dim
-    K_dim = pressure_dim - 5 * rho_dim
+    four_volume_dim = length_dim**4
+    pressure_dim = energy_dim / four_volume_dim
+    rho_dim = length_dim**-4
+    K_dim = pressure_dim / (rho_dim**5)
     omega_dim = Dim(0, 0, -1)
     mass_dim = Dim(0, 1, 0)
     alpha_dim = Dim(-1, 0, 0)
@@ -567,7 +538,7 @@ def build_dimensional_block() -> dict[str, Any]:
     expected_z00_dim = Dim(-1, 0, 0)
     cs_squared_expr = 5 * K * rho_star**4 / m
 
-    def walk(K_dimension: Dim) -> dict[str, Dim]:
+    def walk(K_dimension: Dimension) -> dict[str, Dimension | None]:
         base_dims = {
             L0: length_dim,
             omega: omega_dim,
@@ -577,7 +548,7 @@ def build_dimensional_block() -> dict[str, Any]:
             alpha: alpha_dim,
         }
         cs_squared_dim = dim_of(cs_squared_expr, base_dims)
-        cs_dim = cs_squared_dim * sp.Rational(1, 2)
+        cs_dim = cs_squared_dim ** sp.Rational(1, 2)
         dims = dict(base_dims)
         dims[cS] = cs_dim
         k_dim = dim_of(omega / cS, dims)
@@ -601,7 +572,7 @@ def build_dimensional_block() -> dict[str, Any]:
         and clean_walk["z00_prefactor_dim"] == expected_z00_dim
         and clean_walk["z00_dim"] == expected_z00_dim
     )
-    corrupt_K_dim = K_dim + Dim(1, 0, 0)
+    corrupt_K_dim = K_dim * Dim(1, 0, 0)
     corrupt_walk = walk(corrupt_K_dim)
     corrupt_dimensional_ok = (
         corrupt_walk["tan_argument_dim"] == expected_tan_dim
@@ -640,6 +611,7 @@ def build_dimensional_block() -> dict[str, Any]:
         "rho_dim": rho_dim,
         "K_dim": K_dim,
         "omega_dim": omega_dim,
+        "mass_dim": mass_dim,
         "alpha_dim": alpha_dim,
         "expected_tan_dim": expected_tan_dim,
         "expected_z00_dim": expected_z00_dim,
@@ -1029,6 +1001,33 @@ def main() -> None:
     print_provenance()
     print_verdict_labels()
     run_able_to_fail_teeth(data)
+    dim = data["dim"]
+    clean = dim["clean_walk"]
+    corrupt = dim["corrupt_walk"]
+    emit_dimension_sidecar(
+        __file__,
+        {
+            "energy_dim": dim["energy_dim"],
+            "four_volume_dim": dim["four_volume_dim"],
+            "pressure_dim": dim["pressure_dim"],
+            "rho_dim": dim["rho_dim"],
+            "K_dim": dim["K_dim"],
+            "omega_dim": dim["omega_dim"],
+            "mass_dim": dim["mass_dim"],
+            "alpha_dim": dim["alpha_dim"],
+            "clean_walk.cs_squared_dim": clean["cs_squared_dim"],
+            "clean_walk.cs_dim": clean["cs_dim"],
+            "clean_walk.k_dim": clean["k_dim"],
+            "clean_walk.tan_argument_dim": clean["tan_argument_dim"],
+            "clean_walk.z00_prefactor_dim": clean["z00_prefactor_dim"],
+            "clean_walk.z00_dim": clean["z00_dim"],
+            "corrupt_K_dim": dim["corrupt_K_dim"],
+            "corrupt_walk.cs_dim": corrupt["cs_dim"],
+            "corrupt_walk.k_dim": corrupt["k_dim"],
+            "corrupt_walk.tan_argument_dim": corrupt["tan_argument_dim"],
+            "corrupt_walk.z00_prefactor_dim": corrupt["z00_prefactor_dim"],
+        },
+    )
     print("")
     print(f"PASS tally: {PASS_COUNT}; FAIL tally: {FAIL_COUNT}")
     print("OVERALL PASS: SymPy verified ledger_stage012 DtN pole ladder + Robin falsifier exactly")

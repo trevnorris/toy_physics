@@ -1,0 +1,20 @@
+DIMENSIONS|stage=ledger_stage012_dtn_pole_ladder_robin_sympy_audit|axes=L,M,T
+DIM|axes=L,M,T|name=energy_dim|exponents={2, 1, -2}
+DIM|axes=L,M,T|name=four_volume_dim|exponents={4, 0, 0}
+DIM|axes=L,M,T|name=pressure_dim|exponents={-2, 1, -2}
+DIM|axes=L,M,T|name=rho_dim|exponents={-4, 0, 0}
+DIM|axes=L,M,T|name=K_dim|exponents={18, 1, -2}
+DIM|axes=L,M,T|name=omega_dim|exponents={0, 0, -1}
+DIM|axes=L,M,T|name=mass_dim|exponents={0, 1, 0}
+DIM|axes=L,M,T|name=alpha_dim|exponents={-1, 0, 0}
+DIM|axes=L,M,T|name=clean_walk.cs_squared_dim|exponents={2, 0, -2}
+DIM|axes=L,M,T|name=clean_walk.cs_dim|exponents={1, 0, -1}
+DIM|axes=L,M,T|name=clean_walk.k_dim|exponents={-1, 0, 0}
+DIM|axes=L,M,T|name=clean_walk.tan_argument_dim|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=clean_walk.z00_prefactor_dim|exponents={-1, 0, 0}
+DIM|axes=L,M,T|name=clean_walk.z00_dim|exponents={-1, 0, 0}
+DIM|axes=L,M,T|name=corrupt_K_dim|exponents={19, 1, -2}
+DIM|axes=L,M,T|name=corrupt_walk.cs_dim|exponents={3/2, 0, -1}
+DIM|axes=L,M,T|name=corrupt_walk.k_dim|exponents={-3/2, 0, 0}
+DIM|axes=L,M,T|name=corrupt_walk.tan_argument_dim|exponents={-1/2, 0, 0}
+DIM|axes=L,M,T|name=corrupt_walk.z00_prefactor_dim|exponents={-3/2, 0, 0}

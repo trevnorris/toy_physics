@@ -35,7 +35,12 @@ independent `.py`-vs-`.wl` cross-check.
 > ⭐ **READ `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`** — the single canonical doc for
 > this workstream. And read `docs/model_map.md` **before touching any script**.
 
-**▶ NEXT: stage016**, then 023, 027, 021 (021 is the heaviest file in the corpus).
+**▶ NEXT: stage016** (`REACHABLE`, build in progress), then 023, 027, 021.
+✅ The four group-A stages now have `.wl` reachability verdicts — that recorded GAP is **closed**;
+027 is the awkward one (**MIXED**: its computed vector never reaches top level, and its `.wl` route
+cannot produce per-symbol vectors, so it stays a 1-row stage unless new call sites are added).
+⛔ **Measured corpus-wide: all 43 `.wl` files end in `Exit[]`,** so a print appended at end-of-file is
+dead code. Emit before the terminal `Exit[]`. See `DIMENSION_REWRITE.md` §8/§9.
 ⛔ **Before converting 035/036/037, fix the canonical-table generator** — it *raises* on cross-engine
 axis-order disagreement, which is exactly the 037 pattern (`wl M,L,T` vs `py (L,T,M)`). Measured; it
 will crash the toolchain.

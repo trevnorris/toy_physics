@@ -356,9 +356,20 @@ The 13 zero-machinery stages have nothing to rewrite in (c) and nothing to compa
 ### 5.3 ⭐ Step (a) — `.wl` value reachability, all 21 stages surveyed
 
 Three independent read-only `.wl` surveys (bands 002–009, 010–036, 037–044). **`REACHABLE`** = an existing
-named map or return value is live at a call site, so a print appended at end-of-file or at the call site
+named map or return value is live at a call site, so a print appended ~~at end-of-file or~~ at the call site
 works — the stage004 pattern. **`LOCAL_ONLY`** = values die at a `Module` boundary; a print must go
 **inside** the body. **`NOTHING_TO_PRINT`** = the file computes no exponent vector at all.
+
+> ⛔⛔ **CORRECTION 2026-07-27 — the struck words above were false for the whole corpus.** All **43 of
+> 43** `.wl` files terminate in `Exit[0]`/`Exit[1]`, so a print appended at end-of-file is **dead code**
+> and emits nothing. **No verdict in the table below changes** — the *values* are reachable exactly as
+> recorded; only the **insertion locus** does. Emit before the terminal `Exit[]`; stage018
+> (`.wl:387-393` against its `Exit[]` at `:499`) is the working precedent.
+>
+> ⭐ **This table covers 21 stages and does NOT cover 016, 023, 027 or 021** — a fossil of the falsified
+> "group A is free" premise. That gap was **closed 2026-07-27**; the four verdicts, their measured
+> re-invocation counts, and their per-stage hazards live in **`manifests/DIMENSION_REWRITE.md` §8**,
+> which wins over this file.
 
 | stage | verdict | locus | # values | `.wl` axis order | note |
 |---|---|---|---|---|---|

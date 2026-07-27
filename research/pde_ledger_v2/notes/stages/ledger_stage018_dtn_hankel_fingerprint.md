@@ -87,6 +87,23 @@ function runs on the REAL physical coefficients (not a typed tuple); corrupting 
 inhomogeneous → `FAIL_DIMENSIONAL`. ⚠ This is NOT the μ̂₀-free `[P₀^phys] = 1` gate (that is 021's — 018 does not touch
 `P₀`, `μ̂₀`, `N₀`, `D₀`; see §3).
 
+The Mathematica source has exactly ten dimension-valued objects. Its artifact coverage is explicit here because the
+cross-engine comparator can enforce artifact name-set symmetry but cannot discover source objects that neither artifact
+emits:
+
+| `.wl` object and definition locus | artifact status | coverage reason / read locus |
+|---|---|---|
+| `zeroDim` (`.wl:84`) | not emitted | Private neutral element returned by `dimOf` for constants and empty symbol sets (`.wl:104,116`), not a named physical quantity or an expression-walker result. |
+| `dimL` (`.wl:85`) | emitted as `a` | Read through the live `dimRules[a]` binding at the `DIM` print site (`.wl:388`). |
+| `dimSpeed` (`.wl:86`) | emitted as `c_s0_dim` | Read through live `dimRules[cs]` (`.wl:389`); this is the register's bulk-density `c_s0`, not stage012's frozen-wall `c_S`. |
+| `dimT2` (`.wl:87`) | not emitted | Declared expected-target literal, not a walker result; a divergent target fires `expectZero` against live `u2Dim` (`.wl:395`). |
+| `dimT4` (`.wl:88`) | not emitted | Declared expected-target literal, not a walker result; a divergent target fires `expectZero` against live `u4Dim` (`.wl:396`). |
+| `dimT5` (`.wl:89`) | not emitted | Declared expected-target literal, not a walker result; a divergent target fires `expectZero` against live `v5Dim` (`.wl:397`). |
+| `u2Dim` (`.wl:229`) | emitted as `u2` | Computed by `dimOf[out["u2"], dimRules]` and printed directly (`.wl:390`). |
+| `u4Dim` (`.wl:230`) | emitted as `u4` | Computed by `dimOf[out["u4"], dimRules]` and printed directly (`.wl:391`). |
+| `v5Dim` (`.wl:231`) | emitted as `v5` | Computed by `dimOf[out["v5"], dimRules]` and printed directly (`.wl:392`). |
+| `corruptedU2Dim` (`.wl:233`) | emitted as `corrupted_u2_dim` | Computed by the same walker from the live corruption expression and printed directly (`.wl:393`), so cross-engine comparison covers the ablation tooth's nonzero `L` channel. |
+
 ---
 
 ## 2. The able-to-fail battery (018-owned)

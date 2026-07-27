@@ -69,6 +69,13 @@ PASS  3b outgoing_ablation is a rerun, not a constant label
 Units-restored physical coefficient dimensions only
 ---------------------------------------------------
   dimension order = (L,M,T); [a]=L, [c_s]=L*T^-1.
+DIMENSIONS|axes=L,M,T
+DIM|axes=L,M,T|name=a|exponents={1, 0, 0}
+DIM|axes=L,M,T|name=c_s0_dim|exponents={1, 0, -1}
+DIM|axes=L,M,T|name=u2|exponents={0, 0, 2}
+DIM|axes=L,M,T|name=u4|exponents={0, 0, 4}
+DIM|axes=L,M,T|name=v5|exponents={0, 0, 5}
+DIM|axes=L,M,T|name=corrupted_u2_dim|exponents={-1, 0, 3}
   computed dimensions = <|u2 -> T^2, u4 -> T^4, v5 -> T^5|>
 PASS  physical u2 has dimension T^2
 PASS  physical u4 has dimension T^4

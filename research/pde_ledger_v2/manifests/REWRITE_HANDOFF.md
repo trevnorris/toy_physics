@@ -3,6 +3,13 @@
 ⭐ **READ THIS FIRST, then `notes/rewrite_reference_table.md` (463 lines, the per-stage data).**
 Background/why: `manifests/PIVOT_TO_REWRITE.md`. ⛔ Do NOT read the survey-era docs — that approach is dead.
 
+⭐⭐ **BEFORE touching any script, read `docs/model_map.md` + `STATUS.md` + the plan-of-record commits
+`aae5d389`/`b5527062`, then `notes/dimension_inventory_and_provenance.md`.** That last file is the
+inventory + provenance map: **the 226-quantity / 401-pair inventory ALREADY EXISTS** in
+`notes/measure_register_sufficiency.md` — do not re-run it — and §3 there explains why most
+"conflicts" are legitimate **reduction levels** (4D bulk → 3D brane → line → volume → reduced scalar),
+not drift. A session that skipped this began re-deriving recorded conclusions.
+
 **State: 2 of 30 stages done.** `adcfbdfd` = module v0 + stage004 + stage011, verified.
 **28 remain.** Branch `ledger-v2-rebuild`.
 
@@ -68,8 +75,12 @@ the axis check.
   - **036** — dimensions exist only as literal arguments; printing re-transcribes constants.
   - **035** — monomials needing `Exponent[]` conversion.
   - **044** — only **1 of ~96** vectors reachable.
-  - **042** — base map is local **and the guard runs twice under a mutation flag**, so an in-body print
-    emits **corrupted duplicates**.
+  - **042** — ⚠ **CORRECTED 2026-07-26, half of this claim was wrong.** The base map IS a
+    `Module`/function local (`.py:830`, `.wl:833`) — but the guard does **NOT** run twice. There is
+    exactly **one** call site per engine (`.py:1868`, `.wl:1845`), invoked once inside
+    `run_assertions`; the mutation flag only toggles `cE` *within* that single invocation. An in-body
+    print emits **one clean copy per process**, not corrupted duplicates. 042 is therefore likely
+    RECOVERABLE, not impossible. Re-verify before relying on it.
 - **`lru_cache` — the earlier note was half wrong.** 043 has **zero**. 040's four are verified
   argument-pure. **Previously missed: 018, 022 (×4), 023, 027** — 5 stages, 11 sites total.
 - **`ACTIVE_MUTATION` at import time in 15 stages**; 030 (`:107`) and 031 (`:94`) read it **late**.
@@ -97,10 +108,28 @@ group D costs a re-run of A–C.
 `out:31` omits `mu_R` only because a **hardcoded string** is printed instead of the computed value. It
 is easier than previously assessed.
 
-## 8. THE CONFLICTS — 13, not 9
-`PIVOT_TO_REWRITE.md` §3 lists nine; the register measurement adds **`μ_R`, `A_V`, `T_Omega`, `Q_E`**,
-folded away in that write-up. **Earliest adjudication lands at group A step 2: `K_eta`, which carries
-three different dimensions across 013 / 016 / 023.**
+## 8. THE CONFLICTS — ⚠ RE-FRAMED 2026-07-26, most are NOT conflicts
+`PIVOT_TO_REWRITE.md` §3 lists nine; the register measurement adds **`μ_R`, `A_V`, `T_Omega`, `Q_E`**.
+**But the flagship turned out not to be a conflict at all.**
+
+⭐ **`K_eta` across 013/016/023 is a REDUCTION LEVEL, not drift** — line-density (`dw`~L¹) vs
+volume-density (`a²dw dΩ`~L³) vs already-reduced scalar (L⁰); all three integrate to `M T⁻²`.
+Confirmed independently across **four** quantities (`K_eta`, `T_w`, `μ_η`, `T_Omega`), each differing
+by exactly the L-power its measure predicts, and already recorded at
+`measure_register_sufficiency.md` §6.5 and in-corpus at `…stage016…py:837`. The model spans a **4D
+bulk and a 3D brane**, so integrating out a coordinate legitimately shifts L-powers.
+⇒ **Expect most of the remaining "conflicts" to be the same shape. Resolve them per-stage as they
+arise; do NOT re-audit all 13 up front.** Full detail: `notes/dimension_inventory_and_provenance.md` §3.
+
+⛔ **Never resolve one by renaming the variants apart.** Three names for three reduction levels makes
+the conflict vanish *and destroys the consistency check* — worse, it hides reduction debt and silently
+shrinks stage043's irreducible count `[40,49]`. The differing dimension is the SYMPTOM; the
+unperformed reduction is the THING, and the register already counts it as debt (`:170`).
+
+⛔ **ONE genuine error, NOT a convention — adjudicate it separately:** stage038 computes
+`r_BA = q_T²c_γ²/(μ_R A_E)` with `μ_R = M²L T⁻⁴E⁻¹`, `A_E = L·E`, while 036/037/040/044/003/007 use
+`μ_R = M L⁻¹T⁻²`, `A_E = M L³T⁻²`. **Two incompatible unit systems, and both land dimensionless so
+nothing catches it.** See `dimension_inventory_and_provenance.md` §4.1.
 ⚠ When one surfaces: **stop and adjudicate**. It is a question about the model, not the code — bring the
 values and both loci to the user. **Do not "standardize" the `.wl` to agree with the `.py`** — that
 converts an independent engine into a mirror and destroys the only cross-check we have. The `.wl`

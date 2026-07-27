@@ -28,7 +28,8 @@ that line-vs-volume debt stays invisible — a measured consequence of naming de
 - **converted** — on the shared module, cross-engine gate green: **6 of 30**.
 - **physics-verification evidence** — ⚠ **quantity-level; there is NO defensible stage count yet.**
   Recorded: stage012 **14 CORRECT / 0 WRONG**, stage013 **9 / 0**, all six emitted stage018
-  records, and the three formerly-waived 011/012 records. Those pre-§4-c1 results were never
+  records, the three formerly-waived 011/012 records, and ⭐ **stage016's tracked 21 / 0 verdict**
+  (12 declared literals in both engines, **0** computed from any physical input). Those pre-§4-c1 results were never
   normalised into per-stage tracked verdict tables, so **do not call whole stages verified and do
   not infer a "25 remaining" complement.** §4-c1 exists so this becomes countable going forward.
 
@@ -46,11 +47,15 @@ independent `.py`-vs-`.wl` cross-check.
 > ⭐ **READ `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`** — the single canonical doc for
 > this workstream. And read `docs/model_map.md` **before touching any script**.
 
-**▶ NEXT: stage023**, then 027, 021. ✅ **stage016 COMPLETE** — both engines, comparator
+**▶ NEXT: (1) task #41 — independently pin `scripts/ledger_dimensions.py`'s expected digest and
+**ablate** that control, before converting anything else; then (2) stage023, (3) the stage027-shape
+decision, (4) 027, (5) 021.** ⚠ #41 is sequenced first because the module is **self-attesting** and is
+a single point of failure for all six converted stages *today*; every new stage inherits it. ✅ **stage016 COMPLETE** — both engines, comparator
 `py=21|wl=21|shared=21|mismatches=0`.
 ✅ The four group-A stages have `.wl` reachability verdicts — that recorded GAP is **closed**;
-⚠ but those survey counts are **LOWER BOUNDS, not inventories**: the 016 survey provably missed two
-objects (a numeric factor dimensionless by fall-through, and a discarded repeat invocation).
+⚠ but those counts are **PROVISIONAL, not completeness proofs**: 016's survey got its 21 emitted
+quantities right, yet missed two **non-emitted** source/control-flow cases — so the method does not
+close the broader inventory. Each stage's tracked §4-a enumeration + adversarial review is what does.
 027 is the awkward one (**MIXED**: its computed vector never reaches top level, and its `.wl` route
 cannot produce per-symbol vectors, so it stays a 1-row stage unless new call sites are added).
 ⛔ **Measured corpus-wide: all 43 `.wl` files end in `Exit[]`,** so a print appended at end-of-file is
@@ -61,7 +66,7 @@ will crash the toolchain.
 
 Per stage: emit `DIM|` records into the `.wl` → ⭐ **run the PHYSICS leg BEFORE the commit** (it is
 blocking, and a NAMING decision is a physics decision) → **commit the `.wl` before touching the `.py`**
-(freezing the reference first makes engine independence structural) → rewrite the `.py` onto the
+(freezing the reference first is reference custody — NOT proof of independent authorship) → rewrite the `.py` onto the
 module → **re-run the `.py`, then** compare axis-labelled → **orchestrator regenerates the `.out`**
 (verify agents cannot run Mathematica, so only you can confirm the reference is genuine) → fidelity +
 adversarial fresh agents → commit. Keep the prediction note **outside the repo** until the reviews land.

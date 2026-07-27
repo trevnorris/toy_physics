@@ -148,6 +148,18 @@ it can be read; walker-local aliases such as `measureDim` are listed by their re
 | `densityCorruptions["K_eta_density"]["Dims"]` (`.wl:318-321`) | not emitted | Mutation evaluation of the prior corrupt map; the inhomogeneity catch returns an empty `Dims` association (`.wl:296-297`), and only its `Ok`/error verdict data are consumed (`.wl:538-545`). |
 | `densityCorruptions["T_Omega_density"]["Dims"]` (`.wl:318-321`) | not emitted | Mutation evaluation of the prior corrupt map; the inhomogeneity catch returns an empty `Dims` association (`.wl:296-297`), with `Ok`/error fields feeding `dimProbe` (`.wl:323-340`). |
 
+### 1.5b Step-(f) refactor fidelity — the operator remap, verified by differential testing
+
+The `.py` conversion inverted **every** dimension operator: the local dataclass carried exponent
+**vectors** (`+`, `-`, `*k`) while the shared module carries **quantities** (`*`, `/`, `**k`). A
+faithful-looking but wrong operator here is exactly what a dimensional check cannot see.
+⭐ **Verified by a 4000-trial differential harness importing BOTH the old and new modules in one
+process — 0 divergences** across constructor, all operators, `dim_residual` and rendering (incl.
+`1/2`, `-3/4` exponents), plus all 12 rule entries, all 4 corruption maps, a 17-expression `dim_of`
+battery, and `dimension_eval` baseline + 4 corruptions. Exactly two stdout lines moved, both
+representation (the file-I/O prose, now true; and `Dim(l=…)` → `Dimension(L=…)` inside an error
+string, which also *labels* the axes). Cross-engine gate: `py=21|wl=21|shared=21|mismatches=0`.
+
 ### 1.6 Physics-leg verdict (step (c1)) — derived from the model, independently of the conversion
 
 Run on a fresh leg against the stage's existing declarations, deriving each dimension from
@@ -238,7 +250,10 @@ them as 2 of 21 compared. Read the census as **12 free / 9 derived**, not 21 ind
   `dim_rules.T_w` → `{-1,1,-2}`, `baseline_dims.measure` → `{3,0,0}`, and
   `baseline_dims.actual_K2_over_M2` → `{0,0,-2}`. AB1 directly demonstrated the
   `K_tilde`/`T_Omega_tilde` swap. Correct name→binding wiring is established instead by
-  `_scratch/stage016/liveness_probe.out`, which independently moved and restored all 21 exact
+A one-time Python liveness probe perturbed and restored each of the **21** exact
+name→association-slot bindings and verified the nine computed records' upstream dependencies, finishing
+with **zero failures**. ⚠ It is **one-time wiring evidence, not a standing gate** — and its raw
+transcript lived only in gitignored scratch, so the result is recorded here rather than pointed at.
   association slots; that is a one-time probe artifact, **not a standing gate** rerun by acceptance.
 
 - ⭐⭐ **H8 — the dimensional block is a PARALLEL RECONSTRUCTION of the stage's physics, and corrupting
@@ -325,7 +340,7 @@ a stamped literal.
 
 ## 5. Dual-engine and verification
 
-Both engines are standalone, print-only, assert-zero, ZERO file I/O. The `.wl` is a **genuinely independent native route**
+Both audits are standalone and assert-zero. The **Wolfram** engine remains print-only with zero file I/O; the **Python** engine prints its audit **and writes a deterministic, source-hash-bound dimension sidecar** (`emit_dimension_sidecar`). ⚠ The old "both engines: zero file I/O" claim was made false by the step-(f) conversion and is corrected here.
 (native `Integrate`/`FullSimplify` S² integrals, native `D[...]` Laplacian, native `Hash[...,"SHA256"]`, its own
 `dimOf`/`scopedVerdict`/`verdictFromGates`) — no `Get`/`Import`/`Export`/YAML, no mirroring of the `.py`; the source pair's
 scratch-YAML engine-agreement handoff is severed. Agreement is transcript-level: both engines emit `Gram=I₅`, `λ_m=6`, the

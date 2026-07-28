@@ -209,6 +209,16 @@ corruptOrderA1 = clean[I v1 (a omega/cs)^2 D1 (1 - T1dc)];
 zeroDim = {0, 0, 0};
 dimScale[vector_, factor_] := factor vector;
 
+dimensionAxisSlots = {{"L", 1}, {"M", 2}, {"T", 3}};
+dimensionAxesLabel[] := StringRiffle[dimensionAxisSlots[[All, 1]], ","];
+dimensionComponents[dimension_] := (dimension[[#[[2]]]] &) /@ dimensionAxisSlots;
+
+printDimRecord[name_String, binding_] := Print[
+  "DIM|axes=", dimensionAxesLabel[],
+  "|name=", name,
+  "|exponents=", ToString[InputForm[dimensionComponents[binding]]]
+];
+
 dimOf[expr_, dims_Association] := Module[{arguments, dimensions, base, power},
   Which[
     TrueQ[expr == 0] || NumericQ[expr], zeroDim,
@@ -284,6 +294,42 @@ corruptFreeDims = Join[KeyDrop[baseDims, {qfree}], <|qfree -> {7, 0, 0}|>];
 corruptFreeDimAudit = dimensionAudit[
   corruptFreeDims, A0lead, A1lead, T0dc, T1dc, eps0, eps1, baselinePort["P0Physical"]
 ];
+
+emitDimensionRecords[] := (
+  Print["DIMENSIONS|axes=", dimensionAxesLabel[]];
+  printDimRecord["sourced_dims.a", baseDims[a]];
+  printDimRecord["sourced_dims.c_s", baseDims[cs]];
+  printDimRecord["sourced_dims.omega", baseDims[omega]];
+  printDimRecord["sourced_dims.M0", baseDims[M0]];
+  printDimRecord["sourced_dims.D1", baseDims[D1]];
+  printDimRecord["sourced_dims.R0", baseDims[R0]];
+  printDimRecord["sourced_dims.R1", baseDims[R1]];
+  printDimRecord["sourced_dims.D0", baseDims[D0]];
+  printDimRecord["sourced_dims.K0c", baseDims[K0c]];
+  printDimRecord["sourced_dims.K_eta", baseDims[Keta]];
+  printDimRecord["sourced_dims.T_Omega", baseDims[TOmega]];
+  printDimRecord["sourced_dims.Z0_ret", baseDims[Z0ret]];
+  printDimRecord["sourced_dims.Z1_ret", baseDims[Z1ret]];
+  printDimRecord["sourced_dims.Omega_U", baseDims[OmegaU]];
+  printDimRecord["sourced_dims.Omega_W", baseDims[OmegaW]];
+  printDimRecord["sourced_dims.R_mix", baseDims[Rmix]];
+  printDimRecord["sourced_dims.g_U", baseDims[gU]];
+  printDimRecord["sourced_dims.g_W", baseDims[gW]];
+  printDimRecord["sourced_dims.eta_null", baseDims[etaNull]];
+  printDimRecord["sourced_dims.gain0", baseDims[gain0]];
+  printDimRecord["sourced_dims.gain1", baseDims[gain1]];
+  printDimRecord["sourced_dims.q_free", baseDims[qfree]];
+  printDimRecord["computed_dims.A0", baselineDimAudit["Computed"]["A0"]];
+  printDimRecord["computed_dims.A1", baselineDimAudit["Computed"]["A1"]];
+  printDimRecord["computed_dims.T0", baselineDimAudit["Computed"]["T0"]];
+  printDimRecord["computed_dims.T1", baselineDimAudit["Computed"]["T1"]];
+  printDimRecord["computed_dims.epsilon0", baselineDimAudit["Computed"]["epsilon0"]];
+  printDimRecord["computed_dims.epsilon1", baselineDimAudit["Computed"]["epsilon1"]];
+  printDimRecord[
+    "computed_dims.P0_physical",
+    baselineDimAudit["Computed"]["P0Physical"]
+  ]
+);
 
 makeItem[tags_List, computedClass_String] := <|
   "Tags" -> tags,
@@ -740,6 +786,7 @@ runAll[] := Module[{residualFlags, dimensionalFlags, firewallFlags, transferFlag
   heading["ledger_stage023_nullspace_underdetermination_mathematica_audit"];
   Print["Target stem confirmed: ledger_stage023_nullspace_underdetermination"];
   Print["Engine: re-authored constructive NullSpace basis + return-image rank; exact, float-free, standalone, zero file I/O."];
+  emitDimensionRecords[];
   runNativeRankAndSelector[];
   residualFlags = runResidualTeeth[];
   dimensionalFlags = runDimensionalGate[];

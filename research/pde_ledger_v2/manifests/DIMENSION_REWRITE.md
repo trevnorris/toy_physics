@@ -273,6 +273,20 @@ not a number anyone could look up. Record in the stage note, alongside the (a) e
    nothing in stage011. **No amount of conversion fixes these** — they are a map of where the
    ledger's dimensional checks are hollow, and Part VII's whole-system firewall needs exactly that
    map. Treat it as a deliverable, not a complaint.
+5. ⭐ **carry the scope inside every sharp scope claim.** Within a §4-(c1) tracked verdict, every
+   `only` / `no other` / `never` / `none` claim must say in the same sentence which corpus,
+   artifact, stage set, or engine set it covers. Four such claims in the stage023 note were true in
+   their authors' intended scopes and false as written, and the stage023-session checks found none
+   of the four; readers found them by opening the cited sources
+   (`_scratch/stage023_orch/ORCH_FINDINGS.md:48-69`, **F5 — unqualified scope claims**).
+   ⛔ Do not weaken a sharp claim into vagueness: its precision is the value; state the boundary
+   (`_scratch/stage023_orch/ORCH_FINDINGS.md:60-63`, **F5's mitigation and wrong fix**).
+6. ⭐ **make a same-note line reference recoverable by naming its target.** Within the growing stage
+   note written by §4-(c1), a `:NNN` reference to a stable named section, numbered item, or named row
+   must carry that name beside the number. Three same-note references decayed during the stage023
+   session as insertions moved their targets, and validators in this dimension-rewrite workstream
+   do not test whether a line number reaches the claimed sentence
+   (`_scratch/stage023_orch/ORCH_FINDINGS.md:25-43`, **F6 — intra-file line references decay**).
 
 ⛔ **Why this matters more than the conversion.** Cross-engine agreement has now been shown twice
 to be necessary and **not sufficient** — it is blind to a same-dimension different-quantity merge
@@ -793,6 +807,250 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
 - The `r_BA` unit-system adjudication (§7) — a model question for the user.
 - 12 "registered under a different key, **or new**" quantities (§7) — quote-backed archaeology, then gauntlet.
 - `schemas/` + `schemas/validate_dimension_survey.py` are **parked** (survey-era, still committed).
+- ⛔ **WORK-023-MOMENT-CONVENTION — adjudicate the pathA_28 source-moment identity and propagate it.**
+  ⚠⚠ **INSTRUMENT INSUFFICIENT — the dimensional instrument below does not decide the remaining identity.**
+  - **Dispute.** Stage006 records `CONVENTION P10` for projected `ρ_B=L⁻⁴` and
+    `S_leak=L⁻⁴T⁻¹`
+    (`scripts/ledger_stage006_two_phase_chiB_ontology_sympy_audit.py:391-397`), and stage008 records
+    the spatial measure by defining `M0=∫_brane S_leak d³x` and the corresponding `D1`
+    (`scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:311-317`).
+    Together those loci establish the number-density/`d³x` convention for the 006→008 route:
+    `[M0]=L⁻¹T⁻¹` follows before any downstream declaration. Stage008 separately says that its
+    dimensional block invents no `M0/D1/Q2` triples
+    (`scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:523-546`).
+    Stage009 nevertheless declares `MOMENT0=T⁻¹`
+    (`scripts/ledger_stage009_flat_slab_return_residual_sympy_audit.py:464-468`), stage010 declares
+    its own `dim_M0=T⁻¹`
+    (`scripts/ledger_stage010_slab_localization_p2_nogo_sympy_audit.py:553-562`), and stage023
+    declares `[M0]=MT⁻¹`, `[D1]=MLT⁻¹`
+    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`).
+    The stage023 note asserts “one intended object flowing 008 → 009/010 → 022/023”
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:505-511`, **§1.7(2), `M0`/`D1`**),
+    but no locus cited in this entry derives that alias chain. The carrier/measure convention is
+    therefore recorded upstream; the open item is whether those later names denote that same object.
+    ⭐ **This is more decidable than the former convention dispute:** the recorded 006→008 route
+    removes the carrier/measure choice, and a cross-stage provenance/dataflow derivation can test
+    the remaining identity. The hazard has the `c_s0`/`c_S` shape
+    (`notes/stages/ledger_stage016_l2_so3_covariance.md:187-191`, **(2) D4 name determinations,
+    sharpest silent-merge hazard**), which a dimensional or cross-engine equality cannot detect.
+  - **Loci on both sides.** Recorded number-density/`d³x` route:
+    `scripts/ledger_stage006_two_phase_chiB_ontology_sympy_audit.py:391-397` and
+    `scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:311-317,523-546`;
+    later declaration route:
+    `scripts/ledger_stage009_flat_slab_return_residual_sympy_audit.py:464-468`,
+    `scripts/ledger_stage010_slab_localization_p2_nogo_sympy_audit.py:553-562`, and
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`; asserted
+    cross-stage identity: `notes/stages/ledger_stage023_nullspace_underdetermination.md:505-511`
+    (**§1.7(2), `M0`/`D1`**).
+  - **What would settle it.** Trace the definitions and actual handoffs across the asserted
+    008→009/010→022/023 chain. If they are aliases, propagate the recorded 006→008 normalization
+    through `M0/D1`, `R0/R1`, and `A0/A1` and correct every incompatible declaration; if they are
+    distinct, record the separate definitions and remove the false identity. This replaces the
+    former request to choose a carrier or measure: those inputs are already recorded upstream.
+    The trace must include stage010's own declaration and the 022 handoff because the asserted chain
+    names both; a trace restricted to stages 006, 008, 009, and 023 would not cover the identity as
+    stated in the stage023 note.
+  - ⚠⚠ **Instrument — INSUFFICIENT for the remaining same-object identity.** The dimensional
+    instrument derives the consequences of stage006's recorded projected `S_leak` and stage008's
+    recorded `d³x` moment
+    (`scripts/ledger_stage006_two_phase_chiB_ontology_sympy_audit.py:391-397`;
+    `scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:311-317`).
+    **What it does compute:** the upstream `[M0]`/`[D1]` route and its propagated `R0/R1/A0/A1`
+    consequences, exposing which downstream declarations conflict if the asserted identity holds.
+    **Why it does NOT decide:** dimensional propagation cannot prove that equal-looking names in
+    stages 008, 009, 010, 022, and 023 are aliases; §4-(c1)'s naming rule requires physical
+    provenance rather than dimensional equality. **What would be required to decide:** a
+    cross-stage provenance/dataflow derivation showing the actual handoff or separate definitions.
+    Because the carrier and measure are already recorded, `INSTRUMENT INSUFFICIENT` remains correct
+    only for this dimensional instrument and the remaining identity; it is not a corpus-absence claim.
+    A separate provenance/dataflow instrument is therefore named and potentially decisive; the
+    insufficiency label does not classify the whole work item as undecidable from the repository.
+- ⛔ **WORK-023-STAGE009-MOMENT0 — replace stage009's same-literal assertion with an upstream-derived check.**
+  - **Dispute.** Stage009 declares `MOMENT0=T⁻¹`
+    (`scripts/ledger_stage009_flat_slab_return_residual_sympy_audit.py:464-468`) for the `M0`
+    supplied by stage008's moment definition
+    (`scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:311-317`), while stage023
+    declares `[M0]=MT⁻¹`
+    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`). In each
+    stage009 engine, the only `M0`-bearing dimensional assertion constructs `[Z]` from the same
+    `dimM0` literal and compares it back with that literal, so that assertion cannot reject any
+    replacement triple in the scope of those two implementations
+    (`scripts/ledger_stage009_flat_slab_return_residual_sympy_audit.py:467-496`;
+    `mathematica/ledger_stage009_flat_slab_return_residual_mathematica_audit.wl:440-458`).
+  - **Loci on both sides.** Stage009 declaration/check side:
+    `scripts/ledger_stage009_flat_slab_return_residual_sympy_audit.py:467-496` and
+    `mathematica/ledger_stage009_flat_slab_return_residual_mathematica_audit.wl:440-458`;
+    upstream/downstream same-object side:
+    `scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:311-317` and
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`.
+  - **What would settle it.** Derive stage009's expected `[M0]` from the pathA_28 source definition
+    without reading `MOMENT0`, then compare the declaration with that independently built result;
+    §1.7 records the present defect as W2 at
+    `notes/stages/ledger_stage023_nullspace_underdetermination.md:673-688`
+    (**§1.7(5), W2**).
+  - **Instrument.** A dual-engine stage009 computation whose expected branch consumes stage008's
+    named `S_leak·d³x` route and whose ablation changes the source carrier or measure without changing
+    the declaration (`scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:311-317`;
+    `scripts/ledger_stage009_flat_slab_return_residual_sympy_audit.py:474-496`).
+- ⛔ **WORK-023-D0-SEAM — derive the 017→019 denominator normalization or separate the objects.**
+  - **Dispute.** Stage017 defines and exports `D0=K₂−(B̃0+Z̃0)`
+    (`notes/stages/ledger_stage017_grouped_p2_lane_isotropy.md:27-34`,
+    **§1.1 grouped-lane assembly**;
+    `notes/stages/ledger_stage017_grouped_p2_lane_isotropy.md:113-115`,
+    **Exported — the ℓ=2 PORT KERNEL**), and the
+    register records that D-lane at `MT⁻²` (`notes/parameter_register.md:185`). Stages 021, 023,
+    and 027 declare the identified denominator `ML⁻¹T⁻²`
+    (`scripts/ledger_stage021_dimensional_closure_sympy_audit.py:138-146`;
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`;
+    `scripts/ledger_stage027_port_checks_closure_sympy_audit.py:199-208`); stage023's port formula
+    then makes the register reading incompatible with its dimensionless `P0_physical` target
+    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:211-222,482-489`).
+  - **Loci on both sides.** Stage017/register side:
+    `notes/stages/ledger_stage017_grouped_p2_lane_isotropy.md:27-34,113-115`
+    (**§1.1 grouped-lane assembly; Exported — the ℓ=2 PORT KERNEL**) and
+    `notes/parameter_register.md:185`; 021/023/027 closure side:
+    `scripts/ledger_stage021_dimensional_closure_sympy_audit.py:138-146`,
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`, and
+    `scripts/ledger_stage027_port_checks_closure_sympy_audit.py:199-208`.
+  - **What would settle it.** Derive an explicit 017→019 normalization carrying the missing `L⁻¹`,
+    derive that the two `D0` names denote distinct objects, or identify and correct the wrong member
+    of `[D0]`, `[N0_from_port]`, and `[P0_physical]`; these three settlement routes are recorded at
+    `notes/stages/ledger_stage023_nullspace_underdetermination.md:438-460`
+    (**§1.7(1), D0 — two readings**).
+  - **Instrument.** A cross-stage, dual-engine derivation that carries the denominator from named
+    upstream stages 017 and 019 into the 021/023/027 closure and checks the independently derived
+    `P0_physical` target (`notes/stages/ledger_stage017_grouped_p2_lane_isotropy.md:113-115`,
+    **Exported — the ℓ=2 PORT KERNEL**;
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:211-222,482-489`).
+- ⛔ **WORK-023-STIFFNESS-REDUCTION — execute the scalar reduction that W4's two loci describe differently.**
+  ⚠⚠ **INSTRUMENT INSUFFICIENT — the instrument named below reaches the ℓ=0 half only, not `K1`.**
+  - **Dispute.** The stage023 source map states the stage013/017→023 `K0c/K1` identification as
+    performed (`notes/stage023_pathA34_nullspace_underdetermination_source_map.md:250-253`), while
+    the register records the same reduction as `FREE-UNREDUCED`/`PENDING`
+    (`notes/parameter_register.md:170`); §1.7 classifies the source-map statement as stale pre-build
+    rather than a live result (`notes/stages/ledger_stage023_nullspace_underdetermination.md:682-686`,
+    **§1.7(5), W4**).
+  - **Loci on both sides.** Performed-identification side:
+    `notes/stage023_pathA34_nullspace_underdetermination_source_map.md:250-253`; pending-reduction
+    side: `notes/parameter_register.md:170`.
+  - **What would settle it.** Execute the profile-and-measure scalar reduction of stage013's
+    `K_AB` collective and stage017's harmonic sector to stage023's `K0c` and `K1`; the register
+    states that discharge route at `notes/parameter_register.md:170`.
+  - ⚠⚠ **Instrument — INSUFFICIENT for the `K1` half of this dispute.** The obvious instrument is a
+    dual-engine reduction cross-checked against stage013's projected `K_AB` definition
+    (`notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md:75-82`,
+    **M_AB / K_AB by real ∫dw operator projection**), stage016's measure-bearing stiffness assembly
+    (`notes/stages/ledger_stage016_l2_so3_covariance.md:74-81`, **1.4 Angular dimensional
+    consistency**), and stage017's exported grouped lane
+    (`notes/stages/ledger_stage017_grouped_p2_lane_isotropy.md:27-34`, **§1.1 grouped-lane
+    assembly**). **What it does compute** — worth having: stage013's genuine `∫dw` operator
+    projection of the collective `K_AB` at `M T⁻²`, which is the ℓ=0 route to `K0c` and IS in reach
+    of these named inputs; and stage016/017's reduced pair `K̃ + λ_m·T̃_Ω` at `λ_m = 6`, which is the
+    **ℓ=2** assembly. ⛔ **Why it does NOT decide `K1`:** stage023's `K1 = K_eta + 2·T_Omega` is that
+    same assembly at `λ_m = ℓ(ℓ+1) = 2`, i.e. **ℓ=1**, while the stage016/017 loci named here reduce
+    against the frozen **ℓ=2** profile `β₂`
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`, **§1.7(2), merge to
+    refuse**) — the ℓ=1 profile the `K1` reduction consumes is not among these inputs.
+    ⭐ **What would be required to decide it:** a derived ℓ=1 radial profile `β₁`, from the same wall
+    operator and boundary data that produced `β₂`. ⛔ **No derived or defined ℓ=1 radial profile
+    `β₁` is recorded in the four sources stage023's leg searched** —
+    `research/pde_ledger_v2/notes/` (incl. `stages/`), `research/pde_ledger_v2/paper/stages/`,
+    `research/pde_ledger_v2/manifests/`, and `docs/model_map.md`; within that scope, `β₁` occurrences
+    are meta-level open-question discussions or stage029's unrelated `β₁PN`, not a profile derivation
+    or definition (`notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`,
+    **§1.7(2), merge to refuse**). **So the `K1` half cannot be settled from those four sources as
+    they currently stand** — it is gated on **WORK-023-L1-L2-PROFILE-IDENTITY** first producing
+    `β₁`, and of the two halves only the ℓ=0 `K0c` route is executable from the loci named here.
+- ⛔ **WORK-023-L1-L2-PROFILE-IDENTITY — derive whether the reduced ℓ=1 and ℓ=2 stiffnesses coincide.**
+  - **Dispute.** Stage016's reduced scalars use the frozen `β₂` profile
+    (`notes/stages/ledger_stage016_l2_so3_covariance.md:74-81,130-131`), while stage023's `K1`
+    is the ℓ=1 assembly (`notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`,
+    **§1.7(2), merge to refuse**). §1.7 leaves the same-number question undetermined pending a
+    derivation of `β₁≡β₂` (`notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`,
+    **§1.7(2), merge to refuse**).
+  - **Loci on both sides.** ℓ=2 side:
+    `notes/stages/ledger_stage016_l2_so3_covariance.md:74-81,130-131`; ℓ=1 side:
+    `notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`
+    (**§1.7(2), merge to refuse**).
+  - **What would settle it.** Derive the ℓ=1 and ℓ=2 radial profiles from the same wall operator
+    and boundary data, then prove `β₁≡β₂` or exhibit the derived distinction
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`,
+    **§1.7(2), merge to refuse**).
+  - **Instrument.** A dual-engine radial eigenproblem with separately represented `β₁` and `β₂`,
+    solved from one specified wall operator, one set of boundary data and one normalization, which
+    then **evaluates and compares the reduced scalar integrals** `K̃ = ∫[T_w β'² + K_η β²]dV` and
+    `T̃_Ω = ∫T_Ω β² dV` at ℓ=1 against ℓ=2 — those reduced scalars, not the profiles, are what `K1`
+    and stage016's `K₂` consume, and comparing the profiles alone would not decide the dispute
+    because `β₁ ≠ β₂` does not by itself imply unequal reduced scalars
+    (`notes/stages/ledger_stage016_l2_so3_covariance.md:74-81`, **1.4 Angular dimensional
+    consistency**; `notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`,
+    **§1.7(2), merge to refuse**).
+- ⛔ **WORK-023-CS-EVALUATION — derive the state point of stage023's sound-speed carrier.**
+  ⚠⚠ **INSTRUMENT INSUFFICIENT — the instrument named below does not decide this dispute.**
+  - **Dispute.** Stage005 derives the state-dependent `c_s(ρ)` and names `c_s0` as its asymptote
+    (`notes/stages/ledger_stage005_sound_speed_light_ratio.md:74-104`,
+    **§1, EOS derivation; §2, velocity scales**); the register records that asymptotic carrier
+    (`notes/parameter_register.md:129`). Stage023 consumes `c_s` in `z=aω/c_s` while §1.7 finds
+    no evaluation point in the four sources it searched
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:497-504`,
+    **§1.7(2), c_s forward hazard**).
+  - **Loci on both sides.** Asymptotic `c_s0` side:
+    `notes/stages/ledger_stage005_sound_speed_light_ratio.md:74-104`
+    (**§1, EOS derivation; §2, velocity scales**) and `notes/parameter_register.md:129`;
+    stage023 carrier side:
+    `notes/stages/ledger_stage023_nullspace_underdetermination.md:497-504`
+    (**§1.7(2), c_s forward hazard**) and
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:211-222,333-338`.
+  - **What would settle it.** Derive the density state sampled by the stage023 outgoing-wave
+    carrier; evaluation at `ρ0` would establish the `c_s0` identification, while a different
+    derived state would establish distinct carriers
+    (`notes/stages/ledger_stage005_sound_speed_light_ratio.md:74-104`,
+    **§1, EOS derivation; §2, velocity scales**).
+  - ⚠⚠ **Instrument — INSUFFICIENT for this dispute.** The obvious instrument is a cross-check
+    against named upstream stage005 that carries an explicit state argument through a dual-engine
+    reconstruction of stage023's `z` and residual amplitudes
+    (`notes/stages/ledger_stage005_sound_speed_light_ratio.md:74-104`, **§1, EOS derivation; §2,
+    velocity scales**; `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:211-222,333-338`).
+    **What it does compute** — worth having: it re-expresses `z = aω/c_s` and the amplitudes
+    `A0 = i·v₀·z·M0·(1−T0)`, `A1 = i·v₁·z³·D1·(1−T1)` as explicit functions of `ρ` through stage005's
+    derived `c_s²(ρ) = 5Kρ⁴/m_GNLS` and its log-slope `d ln c_s/d ln ρ = 2`, making every stage023
+    consumer's sensitivity to a shift of state point computable rather than assumed.
+    ⛔ **Why it does NOT decide:** making the ρ-dependence explicit is not a selection of ρ —
+    stage005 derives the *function* `c_s(ρ)` and names `c_s0` only as its asymptote, so neither that
+    derivation nor the reconstruction states which `ρ` the stage023 outgoing carrier samples.
+    ⭐ **What would be required to decide it:** a background/boundary condition for the **outgoing**
+    wave — a stated far-field or matching condition fixing the density the radiated carrier
+    propagates through (`ρ0` would establish the `c_s0` identification; a derived wall-side state
+    would establish a distinct carrier). ⛔ **No such condition appears in the four sources §1.7
+    searched** — the stage023 note's §4, the two stage023 engines, `docs/model_map.md:62`, and the
+    register — and that set of four is the scope of this negative
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:497-504`, **§1.7(2), c_s forward
+    hazard**). **So this cannot be settled from those four sources as they currently stand:** it
+    needs the radiation background itself written down, as a derivation or as a recorded convention.
+- ⛔ **WORK-023-SOURCED-PROVENANCE — trace the declaration lineage before using “sourced.”**
+  - **Dispute.** The stage023 Mathematica artifact emits `sourced_dims.M0/D1`
+    (`mathematica/ledger_stage023_nullspace_underdetermination_mathematica_audit.wl:298-310`)
+    and the Python engine stores them in `SOURCED_DIMS`
+    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-479`), while named
+    upstream stage008 explicitly declines to assign dimensions to `M0/D1/Q2`
+    (`scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:523-546`). §1.7 records
+    that mismatch as W5 (`notes/stages/ledger_stage023_nullspace_underdetermination.md:686-688`,
+    **§1.7(5), W5**).
+  - **Loci on both sides.** “Sourced” side:
+    `mathematica/ledger_stage023_nullspace_underdetermination_mathematica_audit.wl:298-310` and
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-479`; no-upstream-
+    dimension side:
+    `scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:523-546`.
+  - **What would settle it.** Trace each stage023 declaration to a named upstream dimension
+    derivation and classify entries without such a derivation as stage-local declarations; the
+    present term means only “declared in this stage's own dict”
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:686-688`,
+    **§1.7(5), W5**).
+  - **Instrument.** A per-record provenance cross-check against named upstream stage008 plus both
+    stage023 declaration tables, with an able-to-fail fixture that removes or redirects an upstream
+    locus (`scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:523-546`;
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-479`;
+    `mathematica/ledger_stage023_nullspace_underdetermination_mathematica_audit.wl:298-310`).
 - ⛔ **TRACKED SPEC — exact-rational artifact syntax in
   `scripts/compare_dimension_artifacts.py`.** This is a validator change, not per-stage work, so it
   belongs here. Acceptance: (1) before `Fraction` normalization, accept only stripped signed integer

@@ -3,8 +3,8 @@
 **What this is.** The single high-level map of the whole toy model: the conceptual picture, every earned derivation with a one-line note + pointer to the full doc/scripts, the honest ledger of what is *predicted* vs *calibrated* vs *unresolved (R1)* vs *departure*, and a glossary. Read this to hold the model in your head; read the cited sources to act on any specific number.
 
 > ⏸ **CURRENT FRONT (2026-07-27) — NOT stage 045.** The ledger build is PAUSED behind the **dimension
-> rewrite** (all 30 dimension-bearing SymPy audit scripts onto one shared module; **5 done** — 004,
-> 011, 012, 013, 018; ▶ NEXT = the three reopened waivers, then 016/023/027/021).
+> rewrite** (all 30 dimension-bearing SymPy audit scripts onto one shared module; **6 done** — 004,
+> 011, 012, 013, 016, 018, all waiver-free; ▶ NEXT = stage023 `.py` (step f), then 027/021).
 > Read `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`, and `STATUS.md` for the front.
 > Every "▶ NEXT = stage 045" below is the *ledger-build* next, correct in its own sequence but not the
 > current action. Also paused: **stage 044-v2** (the dynamical-Σ un-freeze), which precedes 045.

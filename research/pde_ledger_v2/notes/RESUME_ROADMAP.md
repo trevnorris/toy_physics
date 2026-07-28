@@ -2,8 +2,8 @@
 
 > ⏸ **PAUSED (2026-07-27) — this doc's "▶ NEXT = stage 045" is NOT the current action.** The ledger
 > build is paused behind the **dimension rewrite** (30 SymPy audit scripts onto one shared module;
-> **5 converted** — 004, 011, 012, 013, 018, of which 3 are waiver-free; ▶ NEXT = the reopened waiver
-> batch on 011/012, then 016/023/027/021). Current front = `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`; program front door
+> **6 converted** — 004, 011, 012, 013, 016, 018, all waiver-free; ▶ NEXT = stage023 `.py` (step f),
+> then 027/021). Current front = `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`; program front door
 > = `STATUS.md`. Everything below remains the correct *ledger-build* sequence — and **stage 044-v2**
 > (the dynamical-Σ un-freeze, `notes/stage044_v2_unfreeze_prep.md`) precedes 045 when it resumes.
 

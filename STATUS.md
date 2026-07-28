@@ -47,11 +47,11 @@ independent `.py`-vs-`.wl` cross-check.
 > ⭐ **READ `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`** — the single canonical doc for
 > this workstream. And read `docs/model_map.md` **before touching any script**.
 
-**▶ NEXT: (1) task #41 — independently pin `scripts/ledger_dimensions.py`'s expected digest and
-**ablate** that control, before converting anything else; then (2) stage023, (3) the stage027-shape
-decision, (4) 027, (5) 021.** ⚠ #41 is sequenced first because the module is **self-attesting** and is
-a single point of failure for all six converted stages *today*; every new stage inherits it. ✅ **stage016 COMPLETE** — both engines, comparator
-`py=21|wl=21|shared=21|mismatches=0`.
+✅ **The module pin is DONE** (2026-07-27) — the self-attestation that blocked conversion is closed, and
+conversion is unblocked. ⚠ It earns **one narrow fact**, not a clean bill of health; see the pin block
+below for exactly what it does and does not cover.
+**▶ NEXT: (1) stage023, (2) the stage027-shape decision, (3) 027, (4) 021.**
+✅ **stage016 COMPLETE** — both engines, comparator `py=21|wl=21|shared=21|mismatches=0`.
 ✅ The four group-A stages have `.wl` reachability verdicts — that recorded GAP is **closed**;
 ⚠ but those counts are **PROVISIONAL, not completeness proofs**: 016's survey got its 21 emitted
 quantities right, yet missed two **non-emitted** source/control-flow cases — so the method does not
@@ -80,11 +80,54 @@ a measurement. See `DIMENSION_REWRITE.md` §3b.
 ⚠ **Python sidecars are source-hash bound — but that closes STALENESS, not TAMPERING.** The digest
 proves *"this sidecar names the `.py` on disk"*, never *"it was produced by running it"*, and the
 comparator never executes the stage. **Demonstrated 2026-07-27:** a hand-written sidecar carrying a
-mutated `.py`'s digest reaches `PASS`/exit 0 while that `.py` declares wrong values. ⛔ And the shared
-module is **self-attesting** — stubbing its `dim_residual` voids nine gates with every digest still
-agreeing, because no independent pin of `ledger_dimensions_sha256` exists anywhere.
+mutated `.py`'s digest reaches `PASS`/exit 0 while that `.py` declares wrong values. ⛔ **That hole is
+still OPEN.**
 ⭐ **Interim control: the orchestrator regenerates the sidecar itself before committing.**
 See `DIMENSION_REWRITE.md` §9.
+
+✅ **THE SHARED MODULE IS NO LONGER SELF-ATTESTING (2026-07-27).** `scripts/ledger_dimensions.py` is now
+pinned by `scripts/check_ledger_dimensions_pin.py` against `scripts/ledger_dimensions.accepted.sha256`
+— an authority **no producer writes**. ⚠ **State the independence with its mode qualifier:** in
+*validation* mode the expected digest never comes from the module; the explicit `--accept` operation
+*intentionally does* hash the module and rewrite the authority
+(`check_ledger_dimensions_pin.py:101-115`). ⭐ **The module itself is UNCHANGED**,
+so the pin lives entirely *outside* `ledger_dimensions.py` and cannot be removed by editing **that**
+file. Stubbing `dim_residual` now fails the control (1), the comparator (1) and the generator (2) with a
+`MODULE_PIN_MISMATCH` class distinct from sidecar staleness; ⭐ **and re-running every producer does not
+launder it** — the property the old arrangement failed. Re-baselining is the explicit `--accept`
+operation, documented in `DIMENSION_REWRITE.md` §4.
+
+⚠ **Scope it precisely: this earns ONE narrow fact** — the **SHA-256 of** the current source bytes of
+`scripts/ledger_dimensions.py` equals the deliberately accepted SHA-256. ⛔ No accepted *byte sequence*
+is retained anywhere; the authority holds a digest only, so "the bytes are equal" is not what is
+checked. It is **not** a guarantee that the dimensional gates ran honestly.
+
+⚠ **What the pin does NOT cover — do not overstate it (the second time this workstream has had to say
+so).** It pins the **source bytes of one file**. Not **bytecode** (`__pycache__` is gitignored;
+⭐ measured: CPython rejects timestamp bytecode if the stored mtime **or** the stored source size
+differs (`_bootstrap_external.py:637-643`), and it truncates mtime to a whole second (`:973`) — so
+**BOTH conditions are required**, and two ordinary *equal-size* writes inside one second satisfy them
+with no header construction. Equal-length edits — sign flips, `sum`→`min`, `+`→`-` — are exactly the
+dangerous ones in a dimensional audit, which is what makes the size condition routine here). Not its own **execution
+environment** (a `sitecustomize.py` spoofing `hashlib` for the module's bytes takes every validator
+green — inherent to any in-process check). Not stage sources, the `.wl`, the `.out`, or the forgeable
+sidecar. And the authority is a **bare trust root**: `--accept` moves the baseline with no reason field,
+signature, or second witness. ⛔ **And not the pin's own code**, which is unpinned source — but state the
+two cases separately, they are not equivalent:
+- **the shared trust root** — the decision function `check_ledger_dimensions_pin.py:75-98` plus the
+  authority file. Editing it compromises **every** consumer at once. ⇒ **that** is where the pin moves
+  the single point of failure rather than abolishing it.
+- **the four individual call sites** — `compare_dimension_artifacts.py:251`,
+  `generate_canonical_dimension_table.py:231` **and** `:461`, `run_all_audits.sh:20`. Deleting one
+  compromises **that path only**; the standalone control and the remaining validators still reject (the
+  generator holds two, so removing one leaves the other live).
+
+⭐ **A bare stage run is a PRODUCER, not a validator** (user decision, 2026-07-27) — its exit code and
+`PASS` tally are **not** validation evidence. The validators are the comparator, the generator, and the
+pin control. §11 had already measured why (a relabelled basis leaves stage016's own 82 assertions blind
+at exit 0); this states it as a rule, and it is what lets the pin sit outside the module.
+⚠ `run_all_audits.sh` tallies `Fail: N` but **exits 0** — it gates on the pin, not on audit failures,
+and it never invokes the comparator or generator.
 
 ⚠ **Before resuming, read `DIMENSION_REWRITE.md` §1b (the D1–D5 decisions) and §3b (what those
 decisions REOPENED).** Several recorded conclusions — three waivers, four "impossible" stages, a

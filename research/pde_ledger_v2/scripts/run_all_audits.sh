@@ -16,6 +16,10 @@ SCRIPTS_DIR="$SCRIPT_DIR"
 OUTPUT_DIR="$SCRIPTS_DIR/output"
 TIMEOUT_SEC=0  # 0 = no timeout
 
+echo "Ledger dimensions module pin"
+python3 "$SCRIPTS_DIR/check_ledger_dimensions_pin.py"
+echo ""
+
 mkdir -p "$OUTPUT_DIR"
 
 FORCE=0

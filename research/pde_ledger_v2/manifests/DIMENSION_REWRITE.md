@@ -307,10 +307,27 @@ untracked note and cited it as authority for a claim that was wrong. Withholding
 physics leg was told to **derive from the model**, not to *check a claim*. A leg pointed at first
 principles survives contamination; one pointed at "verify this" does not.
 **(f)** Rewrite the `.py` onto `scripts/ledger_dimensions.py`.
-**(g)** **Re-run the `.py`, then** compare axis-labelled: `python3 scripts/compare_dimension_artifacts.py <NNN>`.
-The sidecar is now **source-hash bound** — the comparator recomputes sha256 for both the stage `.py`
-and `scripts/ledger_dimensions.py`, rejecting either missing or mismatched assertion — but run the
-stage first anyway and say that you did.
+**(g)** **Re-run the `.py`, then** compare axis-labelled:
+`python3 scripts/compare_dimension_artifacts.py <NNN>`. The sidecar is now **source-hash bound** — the
+comparator recomputes sha256 for both the stage `.py` and `scripts/ledger_dimensions.py`, rejecting
+either missing or mismatched assertion — but run the stage first anyway and say that you did.
+
+⛔ **A bare stage run is a PRODUCER, not a validator.** It writes the dimension sidecar; its exit code
+and PASS tally do **not** certify that artifact. Validation evidence comes from the module-pin control,
+the axis-labelled comparator, and the canonical-table generator. After a legitimate, independently
+reviewed edit to `scripts/ledger_dimensions.py`, an expected red pin is re-baselined explicitly with
+the full, unabbreviated command:
+```bash
+python3 scripts/check_ledger_dimensions_pin.py --accept
+```
+Explicit acceptance intentionally hashes the current module bytes and replaces
+`scripts/ledger_dimensions.accepted.sha256` (`scripts/check_ledger_dimensions_pin.py:101-115`); it
+does not validate the change's correctness. By contrast, validation/check mode reads the expected
+digest from the authority and hashes the module only for the actual digest
+(`scripts/check_ledger_dimensions_pin.py:58-72`, `:75-98`): it never derives the expected digest
+from the module. Inspect that one-line authority change, then re-run the standalone control, the stage
+producer, the comparator, and `python3 scripts/generate_canonical_dimension_table.py`. The parser sets
+`allow_abbrev=False`: spell `--accept` in full; `--acce` is rejected.
 **(h)** Review: transliteration-fidelity fresh agent + adversarial-with-ablation fresh agent.
 **(h2)** ⭐ **ONLY NOW, open the sealed prediction from (e) and adjudicate it** — record every
 prediction confirmed and every one **falsified**, with evidence. Doing this before (h) would leak
@@ -536,15 +553,72 @@ trips the set check). They are ordered LAST for effort, not for risk.
   §3b). `ROUTE_EXISTS`, prototyped, 21/21 on 037, ~0.5–1 engineer-day per stage. 044 untested and
   frozen pending 044-v2. ⛔ `notes/rewrite_reference_table.md` §5.6 still carries the old "genuinely
   impossible" framing for these three — **it is stale; this section wins.**
-- ⛔⛔ **THE SHARED MODULE IS SELF-ATTESTING — A SINGLE POINT OF FAILURE FOR EVERY CONVERTED STAGE.**
-  Measured 2026-07-27: stubbing `ledger_dimensions.dim_residual` to `return sp.Integer(0)` makes **nine**
-  of stage016's dimensional gates vacuous while the stage still reports 82 PASS / exit 0 and the
-  comparator still exits 0. The `ledger_dimensions_sha256` binding **cannot** detect it, because the
-  digest is recomputed from the *mutated* file on both sides. ⛔ `git grep` confirms **no independent
-  pin of that digest exists anywhere** — the only occurrences are the module (which computes it), the
-  comparator (which recomputes it) and the sidecars (which derive it from the same file).
-  ⇒ **The digest binding closes STALENESS, not TAMPERING.** Say it that way; the earlier framing
-  overstated it. A pinned expected digest, checked independently, is the missing control.
+- ⛔⛔ **THE SHARED MODULE WAS SELF-ATTESTING — THE ORIGINAL SINGLE-POINT-OF-FAILURE RESULT REMAINS
+  LOAD-BEARING.** Measured 2026-07-27 before the external control existed: stubbing
+  `ledger_dimensions.dim_residual` to `return sp.Integer(0)` made **nine** of stage016's dimensional
+  gates vacuous while the stage still reported 82 PASS / exit 0 and the comparator exited 0. The
+  sidecar's `ledger_dimensions_sha256` binding could not detect it because both asserted and current
+  digests came from the same mutated file. ⇒ **That binding closes STALENESS, not TAMPERING.**
+
+  **The missing validation/check control now has an expected side outside the module it polices.**
+  In validation/check mode, `scripts/ledger_dimensions.accepted.sha256:1` supplies the expected
+  digest and the checker hashes the current module source bytes only for the actual digest
+  (`scripts/check_ledger_dimensions_pin.py:58-72`, `:75-98`); explicit acceptance intentionally
+  derives the digest from the current module and writes that authority
+  (`scripts/check_ledger_dimensions_pin.py:101-115`). The comparator invokes the check before
+  comparison (`scripts/compare_dimension_artifacts.py:249-258`), the generator invokes it before
+  loading stages and before writing the table (`scripts/generate_canonical_dimension_table.py:229-233`,
+  `:459-468`), and `scripts/run_all_audits.sh:20` invokes it under `set -euo pipefail`
+  (`scripts/run_all_audits.sh:12`). With the same `dim_residual` stub, the stage still produces 82 PASS
+  / exit 0, but an un-rebaselined control and comparator now fail `MODULE_PIN_MISMATCH`. This
+  establishes one narrow fact: the SHA-256 of the current `scripts/ledger_dimensions.py` source bytes
+  equals the deliberately accepted SHA-256 (`scripts/ledger_dimensions.accepted.sha256:1`;
+  `scripts/check_ledger_dimensions_pin.py:88-98`).
+
+  **Residual risk — do not upgrade that narrow fact into execution or correctness evidence:**
+  - **Bytecode is outside the pin** (`scripts/check_ledger_dimensions_pin.py:88-98);
+    `scripts/__pycache__/` is gitignored and unverified (`.gitignore:1`). CPython's
+    import path truncates source mtime to an integer
+    (`/usr/lib/python3.10/importlib/_bootstrap_external.py:973`) and supplies source size to timestamp
+    validation (`/usr/lib/python3.10/importlib/_bootstrap_external.py:1000-1005`), which rejects a
+    stored-mtime mismatch (`/usr/lib/python3.10/importlib/_bootstrap_external.py:637-640`) or a stored
+    source-size mismatch (`/usr/lib/python3.10/importlib/_bootstrap_external.py:641-643`). **Same
+    integer mtime and same source size are both required** for stale timestamp bytecode to remain
+    valid. The measured equal-size `sum`→`min` rewrite within one second still reused bytecode, so
+    deliberate header construction is not necessary
+    (`_scratch/modpin/REMEDIATION_REPORT.md:34-43`); equal-length audit edits such as sign flips,
+    `sum`→`min`, and `+`→`-` make the size condition routine and the hazard realistic here
+    (`_scratch/modpin/REMEDIATION_REPORT.md:41-43`).
+  - **The check does not cover its own execution environment.** In an isolated copy, a targeted
+    `sitecustomize.py` on `PYTHONPATH` spoofing `hashlib.sha256` only for the mutated module bytes made
+    the standalone control, all six converted-stage comparator CLIs, and the generator CLI exit 0.
+    This is inherent to an in-process check.
+  - **For the common trust root, the pin moves the single point of failure; it does not abolish it.**
+    The authority has one entry naming only `ledger_dimensions.py`
+    (`scripts/ledger_dimensions.accepted.sha256:1`), and every consumer delegates to the shared
+    decision function (`scripts/check_ledger_dimensions_pin.py:75-98`). Editing that shared decision
+    to return success compromises all consumers. There are **four** individual invocation sites:
+    `scripts/compare_dimension_artifacts.py:251`,
+    `scripts/generate_canonical_dimension_table.py:231` and `:461`, and
+    `scripts/run_all_audits.sh:20`. Deleting one generator invocation leaves the other active; deleting
+    the comparator or runner invocation compromises only that path, while the standalone control and
+    the other validators still reject through the shared decision
+    (`scripts/check_ledger_dimensions_pin.py:145-146`). This source-integrity hole is separate from the
+    execution-environment interposition above.
+  - **The module pin itself covers no stage `.py`, no `.wl`, no `mathematica/out/*.out`, and no
+    sidecar record content or production provenance.** The separate source/sidecar/comparator controls
+    still apply, and the forgeable-sidecar hole immediately below remains open: no validator executes
+    the stage.
+  - **The accepted digest is a bare trust root, not a correctness witness.** `--accept` moves the
+    baseline without a reason field, signature, or second witness. In the measured stub replay,
+    accepting the mutant made the comparator green again.
+
+  ⛔ **`run_all_audits.sh` is therefore not a general validation gate.** Its pin invocation does
+  propagate failure because line 20 is a bare command under `set -euo pipefail`, but the runner only
+  tallies stage failures at line 134, then reaches EOF after the line-140 summary write with no
+  `exit` or `return` derived from `$fail` (`scripts/run_all_audits.sh:134-140`), so it can report a
+  non-zero `Fail:` count and still exit 0. It invokes the comparator and generator **zero times**, so the
+  cross-engine validators still have no aggregate runner.
 - ⛔⛔ **THE SIDECAR IS FORGEABLE — the `.py` side has no (g2).** `emit_dimension_sidecar` digests the
   **source bytes**, never the record content, and the comparator never executes the stage.
   **Demonstrated by execution:** mutate the `.py` so it declares wrong values (runs green, 82 PASS),
@@ -559,19 +633,25 @@ trips the set check). They are ordered LAST for effort, not for risk.
   `emit_dimension_sidecar` asserts separate SHA-256 digests of the stage source and
   `scripts/ledger_dimensions.py`; the comparator computes both current hashes, and the
   canonical-table generator delegates to that same check. They reject absence or disagreement.
-  This closes the measured transposed-but-not-re-run stage018 PASS and the shared-module edit hole.
-  It does not execute the stage, measure source coverage, bind transitive dependencies, or replace
-  the separate orchestrator control that regenerates each Mathematica `.out`.
+  This closes the measured transposed-but-not-re-run stage018 PASS and detects a sidecar made stale by
+  a shared-module edit. It does not detect an accepted shared-module mutation, execute the stage,
+  measure source coverage, bind transitive dependencies, or replace the separate orchestrator control
+  that regenerates each Mathematica `.out`.
 - ⛔ **stage013's `m_shared` / `m_dims.*` is the shared dimension of the `M_AB` matrix entries, NOT
   the physical mass `m_GNLS`** (`.wl:452,465,468`, `.py:592-593`). Both render as `M`. ⛔ **Never
   D4-rename it to a generic mass name** — that merges different quantities, and no dimensional
   check could catch it. Same shape as the `c_s0`/`c_S` merge caught at stage018.
 - `lru_cache` — **5 stages, 11 sites**: 018 (×1), 022 (×4), 023 (×1), 027 (×1), **040 (×4)**. 043 has
   **zero**; 040's four are verified argument-pure.
-- `grep -c '^PASS'` **over-counts by exactly 1** (the tally line self-matches).
+- `grep -c '^PASS'` **over-counts by exactly 1 only for the 27 scripts that emit a `PASS tally:`
+  line**, because that tally self-matches. It does not over-count a `TALLY sympy:` stage: a fresh
+  stage016 run produced 82 `^PASS` lines and `TALLY sympy: 82 pass + 0 fail = 82 checks`.
 - Codex needs `--sandbox danger-full-access` for Mathematica · **≤2 concurrent kernels**.
 - ⛔ **Never `git checkout`/`restore`/`stash` to undo an ablation** on uncommitted work — restores from
   HEAD and destroys it. Use `cp` backups; verify with `git hash-object`.
+- ⛔ **After every ablation edit and its restore on a shared Python module, clear `scripts/__pycache__/`
+  before the next execution.** Equal-size edit/run/restore loops can otherwise reuse a
+  timestamp-valid stale `.pyc` from either side of the loop.
 - ⛔ **Never state the reason you expect in a directive** — it gets adopted instead of checked. The
   stage012 waiver wrongly covered `omega_dim` because the directive supplied stage011's rationale.
   Ask for the determination **plus its evidence**, and point the review leg at every escape hatch.
@@ -601,6 +681,12 @@ trips the set check). They are ordered LAST for effort, not for risk.
   converging (Grok, `f5ff1843`).
 
 ## 11. WHAT ACTUALLY VERIFIES A STAGE
+
+⛔ **PROCESS RULE: a bare `python3 scripts/ledger_stageNNN_..._sympy_audit.py` run is a PRODUCER, not a
+validator.** It writes a dimension sidecar; its exit code and PASS tally are **not validation
+evidence**. The validators are the comparator, the canonical-table generator, and the module-pin
+control. None of them upgrades the producer's own green tally into proof that the sidecar came from a
+real run; the forgeable-sidecar hole in §9 remains.
 
 ⭐⭐ **THE CROSS-CHECK EARNS ITS KEEP — measured on stage016, 2026-07-27.** Relabelling the stage's
 basis leaves its **own** assertions completely blind: under `("M","L","T")` it prints

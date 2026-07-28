@@ -61,6 +61,26 @@ independent engine (`DIMENSION_REWRITE.md` §1), which is exactly why the compar
 standing cross-check rather than scaffolding.
 Then: step (f) for 023, (2) the stage027-shape decision, (3) 027, (4) 021.
 Detail and the measured validator/harness hazards are in `DIMENSION_REWRITE.md` §8/§9.
+
+**▶ PRE-RESET DOCUMENT POSITION.** Stage023's tracked physics leg records 34 quantity routes and the
+two scoped tallies `24/0/10` on corpus identifications and `27/0/7` inside the stage-local closure
+(`research/pde_ledger_v2/notes/stages/ledger_stage023_nullspace_underdetermination.md:366-384`,
+**§1.7(1), per-quantity verdict**). Its seven unresolved derivation questions now have named work
+routes in `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`: `:810`
+(**WORK-023-MOMENT-CONVENTION**), `:868` (**WORK-023-STAGE009-MOMENT0**), `:895`
+(**WORK-023-D0-SEAM**), `:925` (**WORK-023-STIFFNESS-REDUCTION**), `:964`
+(**WORK-023-L1-L2-PROFILE-IDENTITY**), `:988` (**WORK-023-CS-EVALUATION**), and `:1030`
+(**WORK-023-SOURCED-PROVENANCE**), all in **§12**. W3 is outside that work list because its confirmed
+arithmetic correction is already folded at
+`research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md:524-541`
+(**§8, stage023 `gU/gW` correction**); `q_free` is outside it because §1.7 classifies that record as
+an unread control rather than a competing identification
+(`research/pde_ledger_v2/notes/stages/ledger_stage023_nullspace_underdetermination.md:412,426-436`,
+**§1.7(1), `q_free` verdict and tally explanation**). These §12 items are derivation work, not user
+gates; this documentation update leaves the converted counter at the **6 of 30** stated in
+`STATUS.md:27-34` (**TRACK TWO COUNTERS**) and leaves stage023 at the Mathematica-half position stated
+in `STATUS.md:53-63` (**CURRENT CONVERSION**).
+
 ✅ **stage016 COMPLETE** — both engines, comparator `py=21|wl=21|shared=21|mismatches=0`.
 ✅ The four group-A stages have `.wl` reachability verdicts — that recorded GAP is **closed**;
 ⚠ but those counts are **PROVISIONAL, not completeness proofs**: 016's survey got its 21 emitted

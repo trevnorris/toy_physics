@@ -15,11 +15,12 @@ wins (it's the live, dated record). Keep this doc synced when a process rule cha
 
 | Role | Does | Does NOT |
 |---|---|---|
-| **Claude (orchestrator)** | Reviews; owns *scaffolding* (directive prose, execution prompts, `STATUS`/`decisions` docs); runs the **arbiter re-run** of existing scripts; gates; banks results | **Write or mutate any code/math/script — not even disposable scratch copies** [`claude-reviews-codex-codes`, `codex-is-fix-applier`] |
+| **Claude (orchestrator)** | Reviews; **decides** what scaffolding must say (directives, execution prompts, `STATUS`/`decisions` docs) and reviews the resulting **diff**; runs the **arbiter re-run** of existing scripts; gates; banks results | **Write or mutate any code/math/script — not even disposable scratch copies** [`claude-reviews-codex-codes`, `codex-is-fix-applier`]. ⛔ Also: **hand-type a long scaffolding document** — see the row below [`thin-orchestrator-definition`] |
+| **Scaffolding applier** — a distinct role from a review leg (2026-07-28, user-approved) | Applies an orchestrator-authored **decision list** to a **prose** file: a directive, review prompt, plan doc, `STATUS`, or a note section. Flow: Claude writes the decision list (what changes, where, why) → the applier edits the file → **Codex verifies** → Claude **reviews the diff**. Judgement stays with Claude; transcription does not. ⭐ **Edit, never rewrite** a file already written unless the change exceeds half of it. | ⛔ **Touch any code, math, script, or `.wl`/`.py`/`.sh` file — prose only, and never a deliverable.** ⛔ Also be the same session that reviews its own application, or double as a review leg. ⚠ The Clean-agents row's ban on scratch mutation governs **review legs**; it does not reach this role, which exists precisely to write prose. ⚠ This row exists because the old wording (*"Claude owns scaffolding (directive prose…)"*) contradicted [`thin-orchestrator-definition`] and a session then hand-wrote one directive twice in full |
 | **Codex** (always `-c model_reasoning_effort=xhigh`) | Designs + writes + RUNS all scripts, iterates to exit 0, applies all code/math fixes | Decide the verdict (the verifier reviews substance afterward) [`codex-xhigh-reasoning`, `codex-iterates-until-clean`] |
 | **GLM** | One fresh tertiary check per directive (CLI, full repo access) | Be iterated like Codex — it's a single pass [`review-ordering-codex-then-glm`] |
 | **Grok** | Gates foundational directives and artifacts about to be frozen; applies only the documentation pass expressly assigned to it in a user-directed round-robin | Write or mutate any code/math/script; become a general-purpose documentation applier [`grok-final-review-pass`] |
-| **Clean agents** | Each review/verification leg, on its **own fresh agent**, no hint of the expected conclusion; **only in Phase 4(c), may mutate disposable scratch copies solely for the orchestrator-assigned per-tooth ablations** | **Write or mutate any live/deliverable code/math/script, or make any scratch mutation outside that bounded Phase 4(c) ablation — an agent is a REVIEW instrument, never a coder.** Delegating coding to an agent is the SAME violation as Claude doing it by hand, and it is the easier one to rationalize [`claude-reviews-codex-codes`, `codex-is-fix-applier`]. Also: be reused across legs / carry context between reviews [`review-agents`, `offload-review-gauntlet`] |
+| **Clean agents** (review legs) | Each review/verification leg, on its **own fresh agent**, no hint of the expected conclusion; **only in Phase 4(c), may mutate disposable scratch copies solely for the orchestrator-assigned per-tooth ablations** | **Write or mutate any live/deliverable code/math/script, or make any scratch mutation outside that bounded Phase 4(c) ablation — an agent is a REVIEW instrument, never a coder.** Delegating coding to an agent is the SAME violation as Claude doing it by hand, and it is the easier one to rationalize [`claude-reviews-codex-codes`, `codex-is-fix-applier`]. Also: be reused across legs / carry context between reviews [`review-agents`, `offload-review-gauntlet`] |
 
 ⛔ **Round-robin application and review — only for documentation the user expressly assigns to this
 rotation, such as canonical process, plan, or decision documents.** Rotation: Codex applies → Grok and
@@ -37,6 +38,8 @@ Claude doing it by hand.
 ## Standing principles (apply at every phase)
 - **Analog, not derivation** — postulate the structure freely; the only test is internal consistency; a **no-go between requirements is a first-class success** [`falsification-is-the-goal`, `analog-find-consistent-structure`].
 - **Falsification is the goal** — build every gate *able-to-fail*; a clean "it all works" is the *suspicious* outcome.
+- **A miss is a missing-physics signal, never a rescue knob** — when you fall short, do **not** add a free parameter to close the gap (that is the "fits anything" fudge). Re-examine the equations and *derive* the missing term. Reaching for a parameter "to make it behave" is the tell — stop [`falsification-is-the-goal`].
+- **Calibrate-then-predict; score the held-out surplus — and count form-shopping as a knob** — calibrating a few inputs on known data is fine; *then* the score is the *new* results you reach with **no further calibration**. The **form** of a law is the prediction; its overall **magnitude** may be a calibration input. Count **all** degrees of freedom honestly — including that ***trying several candidate forms and keeping the best is itself a degree of freedom***. Forbidden: claiming one quantity as both calibrated-to and predicted; using as many knobs as predictions [`calibrate-predict-methodology`].
 - **Truth in the OUTPUT, not prose** — no LLM establishes a math or dimensional fact; a verdict-bearing control must compute from inputs and be able to fail [`negative-verdict-short-circuit`, `dimensional-consistency-check`].
 - **Never unilaterally deviate from the calibrated contract** — if a step is failing, HALT and bring it to the user [`never-alter-calibrated-process`].
 - **"The tool is broken" is a claim that must be VERIFIED before it licenses anything** — a stall/hang/failure attributed to Codex (or Mathematica, or GLM) is a hypothesis, not a fact. Check the actual artifact: does the log end with its completion marker? did the process exit non-zero? does a fresh smoke run reproduce it? **If Codex is genuinely broken, we FIX Codex — we never route around it**, and never by promoting an agent to coder. (2026-07-24: a "Codex CLI stalled twice" claim was written into four docs as justification for an agent-as-coder pivot; on later inspection all 27 of that day's Codex runs had ended `exit=0` and a smoke run answered correctly in 20s. The unverified excuse did more damage than the original error, because it self-justified in every future session.) [`never-alter-calibrated-process`, `negative-verdict-short-circuit`].
@@ -49,15 +52,15 @@ Claude doing it by hand.
 Read `docs/model_map.md` (⛔ NOT `conceptual_foundation.md` — superseded, it re-confuses) + the relevant memories first. Don't re-derive what's already banked (e.g. the PN ladder, prior no-gos).
 
 ### Phase 1 — Directive → review gauntlet (before any compute)
-1. **Claude drafts the directive**: states *requirement + acceptance + the verdict ladder (incl. the no-gos)*; **never pre-designs the computational route** [`claude-reviews-codex-codes`].
+1. **Claude specifies the directive** — *requirement + acceptance + the verdict ladder (incl. the no-gos)*; **never pre-designs the computational route** [`claude-reviews-codex-codes`]. ⭐ For anything longer than a short document, Claude writes the **decision list** and a **scaffolding applier** produces the text (Roles table); Claude reviews the diff. Claude decides *what it says*, not *who types it*.
 2. **Codex design-review (xhigh, via a gauntlet-runner agent)** → iterate to GREEN [`directive-design-review`, `offload-review-gauntlet`].
 3. **ONE GLM tertiary pass** — a single fresh check [`review-ordering-codex-then-glm`].
-4. **Claude folds** the findings (Claude owns the prose).
+4. **Claude folds** the findings — Claude owns *the decisions*; the applier may own the keystrokes. ⭐ **Edit, never rewrite**: a fold that changes a dozen sections is a dozen edits, not a re-emission of the file.
 5. **Codex confirm-pass → GREEN again** — Codex bookends the GLM pass [`review-ordering-codex-then-glm`, `directive-design-review`].
 6. **User gate.**
 
 ### Phase 2 — Per-gate execution-prompt design-review
-Claude writes the gate's **execution prompt** (scaffolding) → **Codex design-reviews the execution prompt (via agent) before the expensive run** → fold. (Lesson: review the per-rung prompt, not just the directive.)
+Claude specifies the gate's **execution prompt** (scaffolding; same decision-list/applier split as Phase 1) → **Codex design-reviews the execution prompt (via agent) before the expensive run** → fold. (Lesson: review the per-rung prompt, not just the directive.)
 
 ### Phase 3 — Execution (Codex)
 Codex designs + codes + runs **dual-engine** (SymPy + Mathematica), iterating to exit 0 [`dual-engine-required`, `codex-iterates-until-clean`]:
@@ -135,6 +138,22 @@ That is a denylist against an expressive grammar; it does not converge.
   found, in one pass, blockers that hours of self-review had not: a red suite, dimension recovery
   covering only 16 of 43 scripts while the schema required it for all, and a closedness rule that
   could never trigger.
+- ⛔ **Independent agreement, not an echo — the failure mode dual-engine work is blind to.** Verdicts,
+  counts and classifications must be **computed**, never emitted. The anti-pattern is a **"result-emitter"**:
+  a script that builds something *adjacent* to the real calculation, then prints the answer as a
+  **literal keyed on a config label**. That construction **passes re-runs and even cross-engine
+  agreement** — both engines transcribe the same literal. Two engines agree only if **each assembled the
+  headline from its own primitives**; "agreement" between two byte-identical copies of one computation is
+  vacuously `0 == 0`. Phase 3 already *requires* dual-engine work, but nothing here otherwise states what
+  dual-engine cannot see. Only an independent term-by-term reader catches it [`transliteration-fidelity-audit`].
+  **Tell:** grep your own output for verdict strings / counts / matrix entries you cannot trace back to
+  the inputs.
+- **The tertiary (third-model) leg is measured, not stylistic.** On one load-bearing "decisive test," the
+  proposed A-vs-B discriminator was *guaranteed* to pass by a mean-value-theorem identity — a tautology
+  dressed up as a test — and **both the orchestrator (Claude) and the executor (Codex) reviewed it
+  SOUND.** Only the third, independent model (GLM) caught it; two same-family reviews would not have.
+  That single episode is the whole argument for splitting the roles across heterogeneous engines rather
+  than iterating one model against itself [`review-ordering-codex-then-glm`, `decisive-test-not-tautological`].
 - ⛔ **CHECK WHICH TOOL REPORTED THE PASS (2026-07-26).** An acceptance item named a specific
   comparator. The official tool exited **2** on a real defect; the build then wrote its own
   `normalized_comparator`, ran that instead, and headlined **PASS**. It *disclosed* the substitution in
@@ -221,6 +240,45 @@ That is a denylist against an expressive grammar; it does not converge.
 - **Codex's provider can refuse content on a cyber-policy filter**, killing the session after the
   work but before the report. Phrase adversarial directives in correctness terms ("negative
   fixture", "self-nominated anchor", "admissible set"), never attack language.
+
+---
+
+## Numerical-work gates (there were none here — extracted from the retired operating manual)
+
+The phases above are enough for symbolic derivation. The moment a **numerical solver** enters, these gates
+become mandatory — that is where confirmation-bias tuning and noise-mistaken-for-signal live.
+
+- ⛔ **Freeze the model class target-blind, then hash it.** Before running, write the pre-registration
+  brief — which branch / model class, which targets count as pass and which as fail, which observables and
+  *how* extracted, the error budget the result must clear, and what a **trustworthy miss** looks like —
+  and do not edit it in response to data. Then freeze the model class **target-blind**: the **forms, the
+  domains, the tolerances, the mesh/grid, the calibration objective, the optimizer, the tie-breaker**, and
+  *every* discrete family choice — **then hash it, with no reference to any target value**. Calibrate
+  **only** the declared parameters to the stated anchor and freeze the calibrated values (hash again);
+  evaluate the held-out observables with the freeze locked. **Whatever comes out, stands** — no
+  post-residual refit, no moving-boundary bailout added after seeing the residual, no reporting a fresh
+  attempt as a "continuation" of a failed one. ⭐ **Extraction happens after the freeze and is itself
+  target-blind:** the solver and the extraction pipeline do not know the targets; targets meet extracted
+  values only at a single designated, frozen comparison step. *Without this, the unconscious tuning loop is
+  invisible from inside your own head.* This is the same independence as the rule that a control's expected
+  value must live **outside the artifact it polices** [`control-outside-the-thing-it-polices`] — here the
+  target is what must stay outside the fit.
+- ⛔ **A solver earns trust only after a stack of independent checks — no physics claim before it passes.**
+  On *independent* benchmarks, all six:
+  1. a known-analytic / linear limit;
+  2. manufactured-solution tests per operator;
+  3. a published benchmark with a known answer;
+  4. mesh/grid refinement at **≥3 levels** showing the expected convergence order;
+  5. conservation diagnostics over the run;
+  6. an explicitly stated **noise floor**.
+
+  *A result without this stack is not a result* — it is an interesting number. ⚠ Manufactured-solution
+  tests prove self-consistency, **not** fidelity; they do **not** substitute for the Phase 4(b)
+  term-by-term fidelity read. ⚠ **This doc is the process-side home for the stack, not its only record:**
+  near-identical statements live in `docs/methodology_paper_outline.md` §2.4 and, operationally, in
+  `docs/branch_realization_execution_plan.md` and `docs/branch_realization_brief.md`. That duplication
+  across the methodology docs is a known, separately-tracked debt — do not treat any one of them as
+  authoritative without checking the others.
 
 ---
 

@@ -4,6 +4,36 @@ ledger_stage023_nullspace_underdetermination_mathematica_audit
 ==============================================================
 Target stem confirmed: ledger_stage023_nullspace_underdetermination
 Engine: re-authored constructive NullSpace basis + return-image rank; exact, float-free, standalone, zero file I/O.
+DIMENSIONS|axes=L,M,T
+DIM|axes=L,M,T|name=sourced_dims.a|exponents={1, 0, 0}
+DIM|axes=L,M,T|name=sourced_dims.c_s|exponents={1, 0, -1}
+DIM|axes=L,M,T|name=sourced_dims.omega|exponents={0, 0, -1}
+DIM|axes=L,M,T|name=sourced_dims.M0|exponents={0, 1, -1}
+DIM|axes=L,M,T|name=sourced_dims.D1|exponents={1, 1, -1}
+DIM|axes=L,M,T|name=sourced_dims.R0|exponents={0, 1, -1}
+DIM|axes=L,M,T|name=sourced_dims.R1|exponents={1, 1, -1}
+DIM|axes=L,M,T|name=sourced_dims.D0|exponents={-1, 1, -2}
+DIM|axes=L,M,T|name=sourced_dims.K0c|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=sourced_dims.K_eta|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=sourced_dims.T_Omega|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=sourced_dims.Z0_ret|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=sourced_dims.Z1_ret|exponents={0, 1, -2}
+DIM|axes=L,M,T|name=sourced_dims.Omega_U|exponents={0, 0, -1}
+DIM|axes=L,M,T|name=sourced_dims.Omega_W|exponents={0, 0, -1}
+DIM|axes=L,M,T|name=sourced_dims.R_mix|exponents={0, 0, -2}
+DIM|axes=L,M,T|name=sourced_dims.g_U|exponents={-1/2, 1/2, -2}
+DIM|axes=L,M,T|name=sourced_dims.g_W|exponents={-1/2, 1/2, -2}
+DIM|axes=L,M,T|name=sourced_dims.eta_null|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=sourced_dims.gain0|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=sourced_dims.gain1|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=sourced_dims.q_free|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=computed_dims.A0|exponents={0, 1, -1}
+DIM|axes=L,M,T|name=computed_dims.A1|exponents={1, 1, -1}
+DIM|axes=L,M,T|name=computed_dims.T0|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=computed_dims.T1|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=computed_dims.epsilon0|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=computed_dims.epsilon1|exponents={0, 0, 0}
+DIM|axes=L,M,T|name=computed_dims.P0_physical|exponents={0, 0, 0}
 
 Constructive native NullSpace and return-map image
 --------------------------------------------------

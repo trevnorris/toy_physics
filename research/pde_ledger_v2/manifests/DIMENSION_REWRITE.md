@@ -507,10 +507,24 @@ dead print yields 0 and fails.
   The Mathematica twin `wl:342` retypes the literal and **is** a real transcription guard. The two
   engines are not equally strong here, and the weaker side is the `.py`.
 - **Fractional stored values confirmed in all three of 023/027/021**, so the emitter must serialise
-  exact rationals, never floats: `gU`/`gW` `{-1/2, 1/2, -2}` (`023 wl:243`, and they cancel to
-  `{0,0,0}` in `P0Physical` — a port that drops them lands on the right answer for the wrong reason);
-  `I25` `{5/2,0,0}` and `CouplingAPower` `-7/2` (`027 wl:186`, `:154`); `muDim` `-1/2` (`021 wl:303`,
-  rendered `L⁻¹ T⁻¹ M⁻¹ᐟ²`).
+  exact rationals, never floats. ⚠ **Correction — stage023's `gU`/`gW` content does not cancel against
+  itself.** In `(L,M,T)`, the declarations are `[Ω_U]=[Ω_W]={0,0,-1}`,
+  `[R_mix]={0,0,-2}`, `[g_U]=[g_W]={-1/2,1/2,-2}`, `[D0]={-1,1,-2}`,
+  `[c_s]={1,0,-1}`, `[a]={1,0,0}` (`023 wl:238-244`), and the port is built at
+  `023 wl:105-117`. The full arithmetic is:
+  `[Ω_U²g_W]=2{0,0,-1}+{-1/2,1/2,-2}={-1/2,1/2,-4}` and
+  `[R_mix g_U]={0,0,-2}+{-1/2,1/2,-2}={-1/2,1/2,-4}`, so
+  `[pport]={-1/2,1/2,-4}`; `[dport]=[Ω_U²Ω_W²]=[R_mix²]={0,0,-4}`;
+  `[nport]=2[pport]-2[dport]={-1,1,-8}-{0,0,-8}={-1,1,0}`;
+  `[p0]=[nport]-[D0]={-1,1,0}-{-1,1,-2}={0,0,2}`; and
+  `[P0Physical]=2([c_s]-[a])+[p0]={0,0,-2}+{0,0,2}={0,0,0}`.
+  What actually cancels is the `{-1,1}` contribution from the squared `g` content in `nport`
+  against `D0`. If `gU` and `gW` are wrongly made dimensionless, then
+  `[pport]={0,0,-2}`, `[nport]={0,0,-4}-{0,0,-8}={0,0,4}`,
+  `[p0]={0,0,4}-{-1,1,-2}={1,-1,6}`, and
+  `[P0Physical]={1,-1,4}=L M⁻¹ T⁴`, not dimensionless. The other fractional cases remain
+  `I25` `{5/2,0,0}` and `CouplingAPower` `-7/2` (`027 wl:186`, `:154`), and `muDim`
+  `-1/2` (`021 wl:303`, rendered `L⁻¹ T⁻¹ M⁻¹ᐟ²`).
 - **Name-pairing debt, measured.** 023: `.wl` `"P0Physical"` vs `.py` `"P0_physical"` — the other six
   join. 027: the `.wl` names objects by variable only and has **no counterpart** to the `.py`'s nine
   expression-embedded record names (`py:526-536`). 021: 3 of 10 symbol keys differ (`cs`/`c_s`,
@@ -534,6 +548,62 @@ Each capability is ablation-verified (`_exact`→`sp.Float` trips the exactness 
 trips the set check). They are ordered LAST for effort, not for risk.
 
 ## 9. ⛔ LANDMINES
+- ⛔ **MEASURED — exact-rational SYNTAX is not validated.** The two-line input
+  `DIMENSIONS|axes=a,b,c,d,e` /
+  `DIM|axes=a,b,c,d,e|name=probe|exponents={0.5,1/2,-2,1.0e0,2.5}` was passed through
+  `compare_dimension_artifacts.load_dimensions`. Literal output:
+  `'0.5' -> Fraction(1, 2)`, `'1/2' -> Fraction(1, 2)`,
+  `'-2' -> Fraction(-2, 1)`, `'1.0e0' -> Fraction(1, 1)`,
+  `'2.5' -> Fraction(5, 2)`; exit **0**. The loader sends every stripped token straight to
+  `fractions.Fraction` (`scripts/compare_dimension_artifacts.py:87-95`, called from
+  `load_dimensions` at `:99-145`), and the canonical-table generator delegates to that same loader
+  (`scripts/generate_canonical_dimension_table.py:233-234`). **Status today:** *serialise exact
+  rationals, never floats* is an authoring rule only; no validator rejects decimal or scientific
+  syntax, and normalization can make a non-conforming artifact look exact downstream. §12 tracks
+  the validator fix; this is not checked today.
+- ⛔⛔ **MEASURED — an uncaught `Throw` can make `math -script` green with no trustworthy
+  transcript.** The direct probe run was `math -script throwtest.wl`, where the complete program was
+  `Print["before"]; Throw["boom", "sometag"]; Print["after"]; Exit[0];`. Stdout was literally
+  `before` plus a newline — no diagnostic or `after` — and the exit status was **0**. In the
+  stage023 perturbation, changing only `baseDims[K0c]` from `{0,1,-2}` to `{1,1,-2}` made the
+  `K0c + Z0ret` sum heterogeneous: `math -script probe_K0c.wl` produced **0 stdout lines**, **0
+  stderr lines**, exit **0**; the unmodified control, run the same way from the same directory,
+  produced **214 stdout lines**, exit **0**, ending
+  `TALLY mathematica: 117 pass + 0 fail = 117 checks` / `OVERALL PASS`.
+
+  **Two routes, two observables — do not collapse them.** **Route A (load time):** an immediate
+  top-level `Set` or bare expression reaches a throwing primitive before the top-level `Catch`
+  exists; in these files nothing has printed yet, so the transcript is **empty**, exit 0.
+  **Route B (tag mismatch):** a `Throw` tag is not named by the file's `Catch`; when it fires from
+  inside the guarded run, the already-started transcript is **truncated**, exit 0. The static survey
+  found **6 EXPOSED / 38 NOT EXPOSED / 0 UNDETERMINED = 44 `.wl` files**. Route A reaches 5 files
+  (018, 021, 023, 038, 039); Route B reaches 3 (018, 021, 033), with 018/021 in both:
+
+  | file | route and verified source loci | conversion position |
+  |---|---|---|
+  | `ledger_stage018_dtn_hankel_fingerprint_mathematica_audit.wl` | **A+B** — uncaught `"stage018DimError"` at `:100-120`; load-time `dimOf` calls at `:229-233`; top-level `Catch` names only `"ledgerStage018Failure"` at `:489-492` | **already converted** (§3) |
+  | `ledger_stage021_dimensional_closure_mathematica_audit.wl` | **A+B** — `dimOf` throws `"dimOfFailure"` at `:87-105`; immediate calls span `:265-326`; the unshielded in-run call is `:483`; top-level `Catch` names only `"ledgerStage021Failure"` at `:539-542` | **not yet** — after 023/027 (§8) |
+  | `ledger_stage023_nullspace_underdetermination_mathematica_audit.wl` | **A** — `fail` is `:38`; `dimOf` reaches it at `:212-233`; load-time audits are `:276-285`; top-level `Catch` is `:755-759` | **in conversion now, pre-emission** (§8; `STATUS.md`) |
+  | `ledger_stage033_native_p_no_emergent_gauss_mathematica_audit.wl` | **B** — four `"pipelineFailure"` throws at `:180`, `:192`, `:440`, `:450`; the sole top-level `Catch` at `:727-1095` names `"ledgerStage033Failure"` (`:1093`) | **not a conversion target** — §3 records no dimension machinery |
+  | `ledger_stage038_sealed_landing_electric_bc_r1_mathematica_audit.wl` | **A** — `manifestDisposition` fallthrough raises at `:819-833`; load-time `sourceManifest` is `:836-838`; top-level `Catch` is `:927-1185` | **not yet** — tail position (§8) |
+  | `ledger_stage039_b_t_time_reversal_even_departure_mathematica_audit.wl` | **A** — `sourceDisposition` fallthrough raises at `:515-531`; load-time `sourceManifest` is `:534-540`; top-level `Catch` is `:578-871` | **not yet** — later axis-group work (§8) |
+
+  ⭐⭐ **BOUND: this is a hole in exit-code gating, not in the calibrated conversion process.**
+  §4-(d)/(g2) regenerates the Mathematica transcript and byte-compares it with the committed
+  non-empty `.out`; an empty or truncated result differs at the first missing byte. Exit 0 alone is
+  not evidence, but the committed evidence is not thereby untrustworthy. The six source hazards
+  remain catalogued rather than corrected, and §12 tracks an executable transcript-liveness gate.
+
+  **Survey method and limits.** This was static source analysis: position-preserving comment/string
+  blanking and top-level statement splitting; under- and over-approximating name-based call graphs;
+  pre-`Catch` prefix inspection; and literal tag matching. Both call-graph passes returned the same
+  six files, bracket depth returned to zero in all 44, and none was left undetermined. ⚠
+  **Reachable does not mean the guard fires on committed inputs** — firing is runtime-contingent
+  (stage023 required a perturbation). Dynamic dispatch through constructed names could evade the
+  name-based graph (`Symbol`/`ToExpression` were not found here); computed `Catch` tags would evade
+  literal matching (none occurs here); and the survey does not analyze other termination mechanisms
+  (`CheckAbort`/`Abort`/`Quit` do not occur in these 44). `NOT EXPOSED` is only the stated structural
+  result: no immediate top-level path reached a throwing primitive under either pass.
 - ⛔ **A print appended at end-of-file NEVER RUNS — measured, 43 of 43 `.wl` files end in
   `Exit[0]`/`Exit[1]`.** Emit *before* the terminal `Exit[]` block; stage018 (`.wl:387-393` vs its
   `Exit[]` at `:499`) is the working precedent. This kills the "or at end-of-file" half of §5.3's
@@ -723,6 +793,27 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
 - The `r_BA` unit-system adjudication (§7) — a model question for the user.
 - 12 "registered under a different key, **or new**" quantities (§7) — quote-backed archaeology, then gauntlet.
 - `schemas/` + `schemas/validate_dimension_survey.py` are **parked** (survey-era, still committed).
+- ⛔ **TRACKED SPEC — exact-rational artifact syntax in
+  `scripts/compare_dimension_artifacts.py`.** This is a validator change, not per-stage work, so it
+  belongs here. Acceptance: (1) before `Fraction` normalization, accept only stripped signed integer
+  or signed `numerator/denominator` tokens and keep zero-denominator rejection; (2) reject decimal
+  points and scientific notation, including `0.5`, `1.0e0`, and `2.5`; (3) prove `-2`, `1/2`, and
+  `-7/2` still load; (4) make both the comparator CLI and canonical-table generation fail nonzero on
+  the bad-token fixture; (5) keep explicit non-empty record floors in both fixtures; (6) re-run every
+  converted-stage comparator and regenerate the canonical table. **Relation to the existing tracked
+  spec below:** both change the validator layer, but this one governs exponent-token lexical
+  exactness while the existing spec governs cross-engine axis-order metadata. They are orthogonal;
+  neither acceptance list subsumes or restates the other.
+- ⛔ **TRACKED SPEC — Mathematica transcript liveness in a new
+  `scripts/check_mathematica_transcript.py`.** This is likewise a harness/consumer change, not a
+  per-stage conversion. Acceptance: (1) take the generated transcript and committed reference as
+  explicit paths; (2) print byte and line counts for both and reject either artifact at zero bytes or
+  zero lines; (3) apply the existing kernel-ID normalization, then require byte identity; (4) return
+  nonzero on a missing, empty, truncated, or unequal generated transcript regardless of the producer's
+  exit status; (5) fixtures prove exact non-empty PASS, empty-generated FAIL at the first byte,
+  empty-reference FAIL, and truncated-prefix FAIL; (6) wire the named check into §4-(d)/(g2) without
+  weakening the existing manual control. This instruments the control that already catches the
+  hazard; it does not repair the six catalogued `Throw`/`Catch` source structures.
 - ⛔ **TRACKED SPEC — the canonical-table generator's axis-order invariant must be REPLACED, not
   deleted, before 035/036/037.** It currently *raises* on cross-engine axis-order divergence
   (`generate_canonical_dimension_table.py:255-265`), which is exactly the 037 route (Wolfram `M,L,T`

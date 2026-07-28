@@ -168,6 +168,16 @@ That is a denylist against an expressive grammar; it does not converge.
 - **A waiter must distinguish three outcomes**, not two: marker found / process gone WITHOUT a
   marker / still alive. Without the third branch, a reaped waiter looks exactly like a hang.
 - **Match the done-marker on `tail -1` only** — a tool can quote a prior marker mid-stream.
+  ⭐ **Use absolute paths in every launch and every check, and verify a launch by the existence of its
+  declared output file.** Two stage023 incidents make this one artifact rule, not path-style advice:
+  (1) a session launched with `-C /var/projects/toy_physics` against directive paths stated relative
+  to `research/pde_ledger_v2/` produced its evidence under the repo-root
+  `_scratch/stage023/enum/`, leaving two evidence trees and making the wrong one look real; (2) after
+  the shell drifted into `research/pde_ledger_v2/`, the relative launch
+  `bash research/pde_ledger_v2/_scratch/run_codex.sh …` never resolved, its `&&` chain skipped the
+  intended ablation, and the operator saw exactly four `PASS` lines — the same visible shape as the
+  successful ablation-free run. Absence of an error and pass-shaped downstream text do not establish
+  that the launch happened; the absolute output artifact does.
 - **Prefer a persistent monitor** for long jobs; it survives reaping and stays silent until there is
   something to say.
 - **Codex's provider can refuse content on a cyber-policy filter**, killing the session after the

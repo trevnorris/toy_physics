@@ -18,7 +18,19 @@ wins (it's the live, dated record). Keep this doc synced when a process rule cha
 | **Claude (orchestrator)** | Reviews; owns *scaffolding* (directive prose, execution prompts, `STATUS`/`decisions` docs); runs the **arbiter re-run** of existing scripts; gates; banks results | **Write or mutate any code/math/script — not even disposable scratch copies** [`claude-reviews-codex-codes`, `codex-is-fix-applier`] |
 | **Codex** (always `-c model_reasoning_effort=xhigh`) | Designs + writes + RUNS all scripts, iterates to exit 0, applies all code/math fixes | Decide the verdict (the verifier reviews substance afterward) [`codex-xhigh-reasoning`, `codex-iterates-until-clean`] |
 | **GLM** | One fresh tertiary check per directive (CLI, full repo access) | Be iterated like Codex — it's a single pass [`review-ordering-codex-then-glm`] |
-| **Clean agents** | Each review/verification leg, on its **own fresh agent**, no hint of the expected conclusion | **Write or mutate any code/math/script — an agent is a REVIEW instrument, never a coder.** Delegating coding to an agent is the SAME violation as Claude doing it by hand, and it is the easier one to rationalize [`claude-reviews-codex-codes`, `codex-is-fix-applier`]. Also: be reused across legs / carry context between reviews [`review-agents`, `offload-review-gauntlet`] |
+| **Grok** | Gates foundational directives and artifacts about to be frozen; applies only the documentation pass expressly assigned to it in a user-directed round-robin | Write or mutate any code/math/script; become a general-purpose documentation applier [`grok-final-review-pass`] |
+| **Clean agents** | Each review/verification leg, on its **own fresh agent**, no hint of the expected conclusion; **only in Phase 4(c), may mutate disposable scratch copies solely for the orchestrator-assigned per-tooth ablations** | **Write or mutate any live/deliverable code/math/script, or make any scratch mutation outside that bounded Phase 4(c) ablation — an agent is a REVIEW instrument, never a coder.** Delegating coding to an agent is the SAME violation as Claude doing it by hand, and it is the easier one to rationalize [`claude-reviews-codex-codes`, `codex-is-fix-applier`]. Also: be reused across legs / carry context between reviews [`review-agents`, `offload-review-gauntlet`] |
+
+⛔ **Round-robin application and review — only for documentation the user expressly assigns to this
+rotation, such as canonical process, plan, or decision documents.** Rotation: Codex applies → Grok and
+Claude review → Grok applies → Codex and Claude review → alternate; each application is reviewed by the
+other two parties before the next application. **Operating rationale:** rotating the applier is a
+precaution against context-dependent transcription drift, based on the 2026-07-22 stage-031 directive
+incident [`roundrobin-apply-review`]. This is not a standing gauntlet for routine note, status, or
+transcript edits. ⛔ **Software builds are always Codex's.** This rotation governs documentation only; it
+does **not** license an agent — or Grok — to write code. The Roles-table rule stands unchanged: *an agent
+is a REVIEW instrument, never a coder* — delegating coding to an agent remains the same violation as
+Claude doing it by hand.
 
 ---
 
@@ -58,7 +70,7 @@ Codex designs + codes + runs **dual-engine** (SymPy + Mathematica), iterating to
 ### Phase 4 — Tri-review (the backstop — each leg independent)
 - **(a) Arbiter re-run** — *orchestrator* independently re-runs the existing scripts unchanged (reliability gate; refreshes committed outputs) [`orchestrator-rerun-and-output`]. **This is the only execution leg the orchestrator performs.**
 - **(b) Transliteration-fidelity audit** — **fresh clean agent**, code-vs-equations term-by-term (catches a faithful-but-wrong operator that MMS/arbiter can't) [`transliteration-fidelity-audit`, `script-review-depth`].
-- **(c) Adversarial-with-ablation** — **fresh clean agent**, tries to break it: mutates scratch copies, confirms controls are able-to-fail, hunts pass-by-construction [`negative-verdict-short-circuit`].
+- **(c) Adversarial-with-ablation** — **fresh clean agent**, tries to break it: mutates scratch copies, confirms controls are able-to-fail, hunts pass-by-construction [`negative-verdict-short-circuit`]. ⛔ **The builder never selects the ablation target.** Ablation is per-tooth over every able-to-fail check or emitted record; the target list is owned by the **orchestrator**. Otherwise one correctly live record can carry an arbitrary number of hardcoded ones, and every stated observation still passes.
 - A negative / "can't-do" verdict gets **harder** verification than a positive [`negative-verdict-short-circuit`].
 
 ### Phase 5 — Remediation loop (if a hole is found)
@@ -143,6 +155,32 @@ That is a denylist against an expressive grammar; it does not converge.
 - **When adding a STRUCTURED artifact, verify its STRUCTURE, not only its contents — by running the
   consumer.** Same incident: the orchestrator committed a `.wl` after checking the record count and one
   value, but not that the file had its required header. The consumer would have said so immediately.
+- ⭐ **Specify the evasion before shipping a gate.** For every acceptance criterion in a directive, the
+  author must first identify, as a reasoning exercise, the cheapest wrong build that would still satisfy
+  it and record the analysis. If demonstrating the evasion requires an executable probe, the directive
+  assigns Codex to construct and run it during Phase 3; the author does not write or mutate code. A
+  criterion whose only failing input is one nobody would produce is decoration. *(Directive-review
+  finding, 2026-07-28: before any build existed, the surviving stage023 step-(f) A7/A8 already required
+  non-empty floors but named no fixed acceptance commands. The review found that a builder-authored A7
+  checker could inspect only one of three exponent tokens per record and a builder-authored A8 checker
+  could compare a derived count against itself. The directive was not executed, and no Python sidecar
+  was produced.)*
+- ⛔ **Acceptance tooling is a control, so it is authored outside the session it polices.** The same
+  independence that forbids an expected *value* living inside the artifact it checks extends to the
+  *checker*: a validator written by the build session that produces the artifact is the artifact grading
+  itself. **Ordinarily, a checker named in a directive must exist before the build starts, authored by a
+  different session. Only when the deliverable is itself that checker does pre-existence attach instead
+  to its conformance fixtures: a different session must author and freeze the positive and negative
+  fixtures, their expected outcomes, and required non-empty floors before the checker build starts; the
+  checker-building session may neither author nor weaken them.**
+- ⛔ **Never supply a premise to a verification prompt, including a NEGATIVE one.** The rule already
+  forbids stating the expected answer or reason. Extend it: also never assert that something does not
+  exist, has no prior record, or was never done — and never forbid a leg from reading the evidence that
+  would falsify your premise. State what to check; let the leg establish what is there. *(Measured,
+  2026-07-28: a verification prompt asserted that no prior verification verdict existed and instructed
+  the pass not to read any `OUT_*.txt`. A completed prior pass did exist in the same directory. The pass
+  adopted the supplied premise and escalated it into a blocking finding against a commit message that was
+  in fact accurate.)*
 
 ---
 
@@ -213,8 +251,16 @@ That is a denylist against an expressive grammar; it does not converge.
 0. ☐ ⛔ Directive contains the anti-substitution clause: *"never satisfy an acceptance criterion with a
    substitute tool; if the named tool fails, STOP and report"* — and states no expected ANSWER or
    REASON (ask for the determination plus its evidence; a supplied rationale gets adopted, a named
-   expected result gets special-cased into existence)
-1. ☐ Directive drafted (requirement + acceptance + able-to-fail verdict ladder; no pre-designed route)
+   expected result gets special-cased into existence). ⛔ **No premises either, including negative ones**
+   (never assert "no prior X exists" / "X was never done", and never forbid a leg from reading the
+   evidence that would falsify the premise — state what to check; let the leg establish what is there)
+1. ☐ Directive drafted (requirement + acceptance + able-to-fail verdict ladder; no pre-designed route);
+   ⭐ for every acceptance criterion, the author identified the cheapest wrong build as a reasoning
+   exercise and recorded the analysis; any required executable probe is assigned to Codex in Phase 3
+1b. ☐ ⛔ Every checker named in the directive **already existed before the build**, authored by a
+   **different session** than the one that produces the artifact; only when the checker is the deliverable
+   did independently authored, frozen positive/negative conformance fixtures and expected outcomes exist
+   before its build (acceptance tooling is a control)
 2. ☐ Codex design-review (xhigh, agent) → GREEN → GLM pass → fold → Codex confirm → GREEN
 3. ☐ **User gate**
 4. ☐ Execution prompt drafted → Codex design-review (agent) → fold
@@ -222,7 +268,9 @@ That is a denylist against an expressive grammar; it does not converge.
 5b. ☐ ⭐ **Orchestrator re-runs each NAMED acceptance command itself and reads its literal exit code** —
    not the report's claim. Verify structured artifacts by running their CONSUMER, not by eyeballing
    counts and values
-6. ☐ Tri-review: arbiter re-run (orchestrator) + fidelity (fresh agent) + adversarial-with-ablation (fresh agent)
+6. ☐ Tri-review: arbiter re-run (orchestrator) + fidelity (fresh agent) + adversarial-with-ablation
+   (fresh agent); ⛔ ablation target list owned by the **orchestrator** (per-tooth over every
+   able-to-fail check / emitted record — never chosen by the builder)
 7. ☐ Any hole → Codex remediates → **re-verify on a FRESH clean agent**
 8. ☐ Bank: `STATUS.md` + `decisions/13` §0 + memory; commit only if asked
 9. ☐ **User gate** before the next gate

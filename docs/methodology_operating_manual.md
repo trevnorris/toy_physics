@@ -82,10 +82,12 @@ That single episode is the whole argument for splitting the roles across heterog
 itself.
 
 **Instantiating with other setups:**
-- **You have one agent framework that can spawn subagents (e.g. Claude Code alone):** run the **executor** and each **verification
-  leg** as *separate fresh subagents* — a subagent has no memory of your reasoning, which is exactly the independence you need. Keep the
-  orchestrator (you) out of writing code: delegate the coding to a subagent and review its output. Spawn a *different* fresh subagent
-  for the fidelity read and *another* for the adversarial-with-ablation.
+- **You have one agent framework that can spawn subagents (e.g. Claude Code alone):** run each **verification
+  leg** as a *separate fresh subagent* — a subagent has no memory of your reasoning, which is exactly the independence you need. Keep the
+  orchestrator (you) out of writing code. ⛔ **Do not delegate coding to a subagent** — an agent is a REVIEW instrument, never a coder
+  (canonical rule: `docs/development_pipeline.md` Roles table). Coding stays with the **Executor** role (in this project: Codex). If the
+  only tools you have are review agents, **halt and get a human-gated executor path** rather than promoting a review agent to coder.
+  Spawn a *different* fresh subagent for the fidelity read and *another* for the adversarial-with-ablation.
 - **You have a second model available (a different LLM):** use it for the **tertiary review** of specs and for a genuinely independent
   re-derivation. Cross-model disagreement is the highest-signal check you have.
 - **You have two computation engines** (e.g. two CAS's, or a symbolic + a numeric route): run the headline both ways and require they

@@ -12,6 +12,8 @@ from fractions import Fraction
 from pathlib import Path
 from typing import Mapping
 
+import check_ledger_dimensions_pin as module_pin
+
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 LEDGER_DIR = SCRIPT_DIR.parent
@@ -228,6 +230,10 @@ def require_fresh_python_sidecar(sidecar: Path) -> None:
     require_fresh_ledger_dimensions_module(sidecar)
 
 
+def require_accepted_ledger_dimensions(sidecar: Path) -> str:
+    return module_pin.require_accepted_ledger_dimensions((sidecar,))
+
+
 def format_names(names: list[str]) -> str:
     return "(none)" if not names else ", ".join(names)
 
@@ -241,6 +247,14 @@ def format_dimension(dimension: LabelledDimension) -> str:
 
 
 def compare(stage: str, sidecar: Path, mathematica_out: Path) -> int:
+    try:
+        require_accepted_ledger_dimensions(sidecar)
+    except module_pin.ModulePinError as exc:
+        print(f"CONTROL_FAILURE: {exc}")
+        print("COMPARISON_SKIPPED: ledger-dimensions module pin failed")
+        print(f"RESULT|stage={stage}|status=FAIL|mismatches=not_checked")
+        return 1
+
     python_dimensions = load_dimensions(sidecar)
     mathematica_dimensions = load_dimensions(mathematica_out)
     freshness_failure: str | None = None

@@ -228,6 +228,7 @@ def classify_engine_status(
 
 def load_stage(stage: str) -> StageData:
     parsed_stage, sidecar, wolfram_out = comparator.parse_stage(stage)
+    comparator.require_accepted_ledger_dimensions(sidecar)
     comparator.require_fresh_python_sidecar(sidecar)
     python_dimensions = comparator.load_dimensions(sidecar)
     wolfram_dimensions = comparator.load_dimensions(wolfram_out)
@@ -457,6 +458,7 @@ def render_table(
 
 def main() -> int:
     try:
+        comparator.module_pin.require_accepted_ledger_dimensions()
         converted = converted_stages()
         stages = tuple(load_stage(stage) for stage in converted)
         unrepresented = tuple(

@@ -1,0 +1,1 @@
+DIM|axes=L,M,T|name=scope.record|exponents={1, 0, 0}

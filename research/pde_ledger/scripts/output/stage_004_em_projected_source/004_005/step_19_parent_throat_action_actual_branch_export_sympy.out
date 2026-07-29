@@ -1,0 +1,54 @@
+STEP 19 ACTUAL BRANCH EXPORT CHECKLIST AUDIT
+Checked symbolic packet tests plus one branch-derived wall export and one untuned port-derived packet.
+V2 branch-freeze metadata:
+  branch_id = v2_local_parent_background_galerkin_demo
+  branch_freeze_hash = fdf4aae0223c1faf
+  pre_target_freeze = true
+  target_blind = true
+  no_post_residual_refit = true
+  boundary_class = open_impedance_demo
+  geometry_status = reduced_parent_background_profile_demo
+Branch-derived wall export:
+  R0(w)   = exp(-w^2/2)
+  mu_eta  = (w**2/4 + 1)*exp(-w**2/2) + 1
+  T_w     = (w**2/6 + 1)*exp(-w**2/2) + 1
+  T_omega = (w**2/8 + 1)*exp(-w**2/2)/6 + 1/6
+  K_eta   = w**4*exp(-w**2/2)/12 + w**2 + w**2*exp(-w**2/2)/2 - 1
+  M_Sigma = 13*sqrt(6)*sqrt(pi)/36 + sqrt(pi)
+  K_Sigma = sqrt(pi) + 13*sqrt(6)*sqrt(pi)/24
+Parent-background Galerkin port export on basis n=(0,2,4):
+  det(M_parent) = (1475267*sqrt(6) + 3638214)/1889568
+  det(K_parent) = (3329998587 + 1455364309*sqrt(6))/34012224
+  source coeffs B = Matrix([[pi**(1/4), 0, 0]])
+  source coeffs Z = Matrix([[sqrt(6)*pi**(1/4)/3, -sqrt(3)*pi**(1/4)/9, pi**(1/4)/18]])
+  source coeffs N = Matrix([[5*pi**(1/4)/4, sqrt(2)*pi**(1/4)/4, 0]])
+  projection residuals = 0 sqrt(pi)*(-229 + 162*sqrt(2))/324 0
+  B0, B2, B4 = 0.7816221907762512 -0.6449280928722579 0.5321477935090640
+  Z0, Z2, Z4 = 0.5083075562298627 -0.4143228212361644 0.3408547831911427
+  N0, N2, N4 = 1.311583928278745 -1.062315116465984 0.8724932052126446
+  extended-basis mixed residual = sqrt(pi)*(-12371 + 8748*sqrt(2))/17496
+  4-mode B0, B2, B4 = 0.7816273402373896 -0.6449331985854891 0.5321531025367578
+  4-mode Z0, Z2, Z4 = 0.5083076399936368 -0.4143227047792866 0.3408544970748318
+  4-mode N0, N2, N4 = 1.311690146078847 -1.062371646707426 0.8725297055800806
+Operator-adapted generalized eigenvalues:
+  3-mode lambdas = [1.211928842993, 4.903138976811, 8.889028852429]
+  4-mode lambdas = [1.211926229, 4.896292471678, 8.854823697872, 12.868952366471]
+  5-mode lambdas = [1.211919555609, 4.896014419797, 8.839287758009, 12.846837390175, 16.848273681346]
+  5-mode mixed residual = sqrt(pi)*(-890747 + 629856*sqrt(2))/1259712
+  adapted 5-mode B0, B2, B4 = 0.7816325278051803 -0.6449410093680708 0.5321624788442048
+  adapted 5-mode Z0, Z2, Z4 = 0.5083084120357607 -0.4143247482933136 0.340857769373979
+  adapted 5-mode N0, N2, N4 = 1.3117016125078909 -1.0623879656363835 0.8725480934398114
+  4-mode isotropic residues = (-13.134593938872376, -10.33719584868593, 0.37009844569768474, 0.8889149882257381)
+  adapted 5-mode isotropic residues = (-13.134428427110006, -10.337190829817821, 0.37009832625683897, 0.8889265110475489)
+Untuned parent-background packet:
+  residual packet labels = (R_pole, R_norm, R_P2, R_P4)
+  R_pole = -13.13467188936131
+  R_norm = -10.33723418002391
+  R_P2   = 0.3700576386561055
+  R_P4   = 0.8888349036886998
+  one-pole residue = -13.13467188936131
+  static residue   = -10.33723418002391
+  P2 residue       = 0.3700576386561055
+  P4 residue       = 0.8888349036886998
+  weak dK, dM, N01 = 81 9 -2485266265623196078677/211650482171174224105 + 17013795823676643175017*sqrt(6)/846601928684696896420
+STATUS: PASS

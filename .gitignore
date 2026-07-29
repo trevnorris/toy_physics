@@ -16,7 +16,11 @@ __pycache__
 *.synctex(busy)
 *.toc
 *.vrb
-*.out
+# ⛔ NOT a blanket `*.out`. A blanket rule silently dropped Mathematica arbiter/audit transcripts, which
+# are committed dual-engine evidence (Phase 4(a)). LaTeX hyperref aux is the only .out we ignore, and
+# only where LaTeX runs. Adding a per-directory `!` negation for each evidence tree does not scale —
+# that is how 9 arbiter transcripts stayed invisible while one directory was protected.
+**/paper/*.out
 *.zip
 
 # Obsidian vault volatile state
@@ -123,8 +127,8 @@ research/**/_scratch/
 # session review scratch (prompts + codex/glm outputs) — never track
 docs/_scratch/
 research/pde_ledger_v2/mathematica/out/_batch.log
-# stage-audit Mathematica outputs are committed dual-engine evidence (override the *.out rule above)
-!research/pde_ledger_v2/mathematica/out/*.out
+# (The former `!research/pde_ledger_v2/mathematica/out/*.out` negation is gone — it is redundant now
+# that `.out` is no longer blanket-ignored, and it was the single-directory patch that hid the problem.)
 
 # local backups of gitignored _scratch trees (durable, never committed)
 _scratch_backups/

@@ -1,0 +1,149 @@
+
+================================================================================================
+1) Base isotropic full-bundle quantities
+================================================================================================
+The moving-throat grouped-bundle backbone uses
+D0 =
+  K - B0 - Z0
+D2 =
+  -(M + B2 + Z2)
+D4 =
+  -(B4 + Z4)
+P0 =
+  N0 / D0
+P2 =
+  (D0*N2 - 2*D2*N0)/D0**2
+P4 =
+  (D0**2*N4 - 2*D0*(D2*N2 + D4*N0) + 3*D2**2*N0)/D0**3
+We now perturb only the projected Maxwell / mixed moments,
+interpreting eps as the projection-first correction scale.
+For a mouth-anchored kernel, eps ~ ell. For a symmetric interior kernel, eps ~ sigma^2.
+
+================================================================================================
+2) Exact first-order bridge from projected-Maxwell moments to bundle quantities
+================================================================================================
+Projected Maxwell near-throat corrections:
+D0 ->
+  D0 - eps*z0
+D2 ->
+  D2 - eps*z2
+D4 ->
+  D4 - eps*z4
+N0 ->
+  N0 + eps*n0
+N2 ->
+  N2 + eps*n2
+N4 ->
+  N4 + eps*n4
+
+Induced normalized-response / prefactor shifts:
+delta u2 =
+  (D0*z2 - D2*z0)/D0**2
+delta u4 =
+  (D0**2*z4 - 2*D0*D2*z2 - D0*D4*z0 + 2*D2**2*z0)/D0**3
+delta P0 =
+  (D0*n0 + N0*z0)/D0**2
+delta P2 =
+  (D0**2*n2 - 2*D0*D2*n0 + 2*D0*N0*z2 + D0*N2*z0 - 4*D2*N0*z0)/D0**3
+delta P4 =
+  (D0**3*n4 - 2*D0**2*D2*n2 - 2*D0**2*D4*n0 + 2*D0**2*N0*z4 + 2*D0**2*N2*z2 + D0**2*N4*z0 + 3*D0*D2**2*n0 - 6*D0*D2*N0*z2 - 4*D0*D2*N2*z0 - 4*D0*D4*N0*z0 + 9*D2**2*N0*z0)/D0**4
+
+================================================================================================
+3) One-pole defect and isotropic compatibility surface
+================================================================================================
+One-pole defect:
+Pole =
+  D0*(B4 + Z4) - 3*(M + B2 + Z2)**2
+delta Pole =
+  -6*B2*z2 - B4*z0 + D0*z4 - 6*M*z2 - 6*Z2*z2 - Z4*z0
+So the projected-Maxwell conservative near-throat data enter the one-pole defect only through
+z0, z2, z4, with the exact linear combination above.
+
+Compatibility surface written in the sharp Stage-18 form:
+Compat =
+  N0/Ptarget - 3*S**2/T
+delta Compat =
+  3*S**2*z4/T**2 - 6*S*z2/T + n0/Ptarget
+Important structural result:
+  z0 drops out of delta Compat after exact elimination of K and D0.
+So a projected-Maxwell shift of the static conservative denominator D0 changes P0 directly,
+but does NOT move the isotropic compatibility equation between one-pole and normalization.
+The script explicitly checks this both for a fixed target and for the transported target.
+
+================================================================================================
+4) Constant-prefactor branch: exact linearized transport
+================================================================================================
+Impose P2 = 0 by setting N2 =
+  2*D2*N0/D0
+Then delta P2 becomes =
+  (D0**2*n2 - 2*D0*D2*n0 + 2*D0*N0*z2 - 2*D2*N0*z0)/D0**3
+Impose also P4 = 0 by setting N4 =
+  N0*(2*D0*D4 + D2**2)/D0**2
+Then delta P4 becomes =
+  (D0**3*n4 - 2*D0**2*D2*n2 - 2*D0**2*D4*n0 + 2*D0**2*N0*z4 + 3*D0*D2**2*n0 - 2*D0*D2*N0*z2 - 2*D0*D4*N0*z0 + 2*D2**2*N0*z0)/D0**4
+So on the constant-prefactor branch, the projected-Maxwell near-throat data that matter first are
+  z0, z2, z4, n0, n2, n4,
+with z0 entering delta P2 and delta P4 only through denominator transport.
+
+================================================================================================
+5) Weak-axisymmetric grouped signature
+================================================================================================
+Use the exact Y20 weak-axisymmetric grouped pattern
+(lambda20, lambda21, lambda22) =
+  (1, 1/2, -1)
+Weighted grouped trace xbar =
+  x0
+Grouped anomaly a_x =
+  ea*x1/4
+Grouped anomaly b_x =
+  3*ea*x1/4
+Thus any first weak-axisymmetric projected-Maxwell contribution obeys
+  xbar = x^(0),   a_x = eps*x^(1)/4,   b_x = 3*eps*x^(1)/4.
+So the isotropic grouped trace is unchanged at first order, while the anisotropy sits on the line b = 3 a.
+
+================================================================================================
+6) Direct projected-Maxwell contribution to Xi1 = P1/P0
+================================================================================================
+If only the STATIC projected-Maxwell bundle is anisotropic at first order,
+so that for lane A we have
+  D0_A = D0 - ea*lambda_A*za,
+  N0_A = N0 + ea*lambda_A*na,
+then the prefactor in each lane becomes
+P_A =
+  N0/D0 + ea*lam*na/D0 + N0*ea*lam*za/D0**2
+Xi1^(proj,static) =
+  na/N0 + za/D0
+Therefore the projected-Maxwell static near-throat slippage contributes to the weak-axisymmetric bottleneck by
+  Xi1^(proj,static) = na/N0 + za/D0.
+Equivalently,
+  P_A = P0 * (1 + ea*lambda_A*Xi1^(proj,static)).
+This is the direct projection-first bridge to the transported prefactor packet:
+  the grouped trace stays fixed at first order, but Xi1 is shifted linearly.
+
+================================================================================================
+7) Direct projected-Maxwell contribution to grouped u2 anisotropy
+================================================================================================
+If only Z0 and Z2 carry the weak-axisymmetric projected-Maxwell slope,
+then lanewise
+u2_A =
+  -D2/D0 + ea*lam*z2a/D0 - D2*ea*lam*za/D0**2
+u2 slope coefficient =
+  (D0*z2a - D2*za)/D0**2
+So the same projected-Maxwell weak-axisymmetric slippage also feeds the grouped conservative response anisotropy.
+
+================================================================================================
+8) Reading the result back into the near-throat Maxwell picture
+================================================================================================
+The near-throat projected Maxwell work found:
+  - symmetric interior kernels start at O(sigma^2),
+  - mouth-anchored kernels start at O(ell).
+So the bundle formulas above imply:
+  - interior projection-first corrections feed z_n, n_n only at even order,
+  - mouth-local projection-first corrections can feed the same bundle data already at first order.
+
+That makes the mouth the natural place where projection-first Maxwell can alter
+  Z2, Z4, N0, N2, N4  (isotropic calibration)
+and
+  Xi1 = P1/P0         (weak-axisymmetric prefactor transport).
+
+STATUS: PASS

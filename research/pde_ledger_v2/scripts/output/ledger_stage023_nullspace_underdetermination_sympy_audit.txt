@@ -11,7 +11,7 @@
 ledger_stage023_nullspace_underdetermination_sympy_audit
 ========================================================
 Target stem confirmed: ledger_stage023_nullspace_underdetermination
-Engine: genuine SymPy symbolic Jacobian Matrix.rank; exact, float-free, standalone, zero file I/O.
+Engine: genuine SymPy symbolic Jacobian Matrix.rank; exact, float-free, standalone; audit results on stdout and labelled dimensions in a deterministic sidecar.
 
 Genuine native symbolic Jacobian rank and return-moving nullspace
 -----------------------------------------------------------------
@@ -90,19 +90,19 @@ PASS  A1 order independently rerun neutralized mutation does not fire
 
 Exact (L,M,T) dimensional gate and free-carrier control
 -------------------------------------------------------
-  [A0]=(0, 1, -1) expected=(0, 1, -1)
+  [A0]=(0,1,-1) expected=(0,1,-1)
 PASS  [A0] matches its sourced expected dimension
-  [A1]=(1, 1, -1) expected=(1, 1, -1)
+  [A1]=(1,1,-1) expected=(1,1,-1)
 PASS  [A1] matches its sourced expected dimension
-  [T0]=(0, 0, 0) expected=(0, 0, 0)
+  [T0]=(0,0,0) expected=(0,0,0)
 PASS  [T0] matches its sourced expected dimension
-  [T1]=(0, 0, 0) expected=(0, 0, 0)
+  [T1]=(0,0,0) expected=(0,0,0)
 PASS  [T1] matches its sourced expected dimension
-  [epsilon0]=(0, 0, 0) expected=(0, 0, 0)
+  [epsilon0]=(0,0,0) expected=(0,0,0)
 PASS  [epsilon0] matches its sourced expected dimension
-  [epsilon1]=(0, 0, 0) expected=(0, 0, 0)
+  [epsilon1]=(0,0,0) expected=(0,0,0)
 PASS  [epsilon1] matches its sourced expected dimension
-  [P0_physical]=(0, 0, 0) expected=(0, 0, 0)
+  [P0_physical]=(0,0,0) expected=(0,0,0)
 PASS  [P0_physical] matches its sourced expected dimension
   dimensional_ok=True
   corrupt_sourced_verdict=FAIL_DIMENSIONAL
@@ -196,7 +196,7 @@ PASS  vestigial Delta and Sport symbols are dropped
   PROVENANCE: stage008 M0/D1 and R0=-M0/R1=-D1; stage017 grouped-P2 P0_raw port kernel.
   PROVENANCE CONTEXT: pathA_34-convention K0c/K1 effective stiffnesses; stage013/017 scalar reduction remains pending.
   PROVENANCE: c_s from R1 and a from CONV; stage022 Gate-4 result consumed as quad_regression=False, not rebuilt.
-  ZERO file I/O: standalone print-only audit; no scratch YAML, report, note, card, LaTeX, or registration write.
+  DIMENSION sidecar I/O: no scratch YAML, report, note, card, LaTeX, or registration write.
 
 Verdict labels:
 ---------------

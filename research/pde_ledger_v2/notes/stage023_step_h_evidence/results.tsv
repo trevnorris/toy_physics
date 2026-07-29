@@ -1,0 +1,52 @@
+axis	key	record	stage_exit	pass_count	fail_count	first_fail	sidecar_written	record_moved	emitted_value	cmp_exit	cmp_status	mismatch_names
+A1_DECLARATION	a	sourced_dims.a	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	c_s	sourced_dims.c_s	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	omega	sourced_dims.omega	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	M0	sourced_dims.M0	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	D1	sourced_dims.D1	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	R0	sourced_dims.R0	0	111	0		yes	yes	{13, -7, 5}	1	FAIL	sourced_dims.R0
+A1_DECLARATION	R1	sourced_dims.R1	0	111	0		yes	yes	{13, -7, 5}	1	FAIL	sourced_dims.R1
+A1_DECLARATION	D0	sourced_dims.D0	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	K0c	sourced_dims.K0c	1	23	1	FAIL  baseline reaches earned FAIL_UNDERDETERMINED_NOT_PREDICTIVE: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	Keta	sourced_dims.K_eta	1	23	1	FAIL  baseline reaches earned FAIL_UNDERDETERMINED_NOT_PREDICTIVE: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	TOmega	sourced_dims.T_Omega	1	23	1	FAIL  baseline reaches earned FAIL_UNDERDETERMINED_NOT_PREDICTIVE: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	Z0ret	sourced_dims.Z0_ret	1	23	1	FAIL  baseline reaches earned FAIL_UNDERDETERMINED_NOT_PREDICTIVE: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	Z1ret	sourced_dims.Z1_ret	1	23	1	FAIL  baseline reaches earned FAIL_UNDERDETERMINED_NOT_PREDICTIVE: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	OmegaU	sourced_dims.Omega_U	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	OmegaW	sourced_dims.Omega_W	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	Rmix	sourced_dims.R_mix	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	gU	sourced_dims.g_U	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	gW	sourced_dims.g_W	1	22	1	FAIL  selector control reaches CROSS_L_RESIDUAL_PREDICTION: residual = 1	no	no_sidecar		2	NO_RESULT_LINE	none
+A1_DECLARATION	eta_null	sourced_dims.eta_null	0	111	0		yes	yes	{13, -7, 5}	1	FAIL	sourced_dims.eta_null
+A1_DECLARATION	gain0	sourced_dims.gain0	0	111	0		yes	yes	{13, -7, 5}	1	FAIL	sourced_dims.gain0
+A1_DECLARATION	gain1	sourced_dims.gain1	0	111	0		yes	yes	{13, -7, 5}	1	FAIL	sourced_dims.gain1
+A1_DECLARATION	q_free	sourced_dims.q_free	0	111	0		yes	yes	{13, -7, 5}	1	FAIL	sourced_dims.q_free
+A2_BINDING	sourced_dims.a	sourced_dims.a	0	111	0		yes	yes	{1, 0, -1}	1	FAIL	sourced_dims.a
+A2_BINDING	sourced_dims.c_s	sourced_dims.c_s	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.c_s
+A2_BINDING	sourced_dims.omega	sourced_dims.omega	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.omega
+A2_BINDING	sourced_dims.M0	sourced_dims.M0	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.M0
+A2_BINDING	sourced_dims.D1	sourced_dims.D1	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.D1
+A2_BINDING	sourced_dims.R0	sourced_dims.R0	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.R0
+A2_BINDING	sourced_dims.R1	sourced_dims.R1	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.R1
+A2_BINDING	sourced_dims.D0	sourced_dims.D0	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.D0
+A2_BINDING	sourced_dims.K0c	sourced_dims.K0c	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.K0c
+A2_BINDING	sourced_dims.K_eta	sourced_dims.K_eta	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.K_eta
+A2_BINDING	sourced_dims.T_Omega	sourced_dims.T_Omega	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.T_Omega
+A2_BINDING	sourced_dims.Z0_ret	sourced_dims.Z0_ret	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.Z0_ret
+A2_BINDING	sourced_dims.Z1_ret	sourced_dims.Z1_ret	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.Z1_ret
+A2_BINDING	sourced_dims.Omega_U	sourced_dims.Omega_U	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.Omega_U
+A2_BINDING	sourced_dims.Omega_W	sourced_dims.Omega_W	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.Omega_W
+A2_BINDING	sourced_dims.R_mix	sourced_dims.R_mix	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.R_mix
+A2_BINDING	sourced_dims.g_U	sourced_dims.g_U	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.g_U
+A2_BINDING	sourced_dims.g_W	sourced_dims.g_W	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.g_W
+A2_BINDING	sourced_dims.eta_null	sourced_dims.eta_null	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.eta_null
+A2_BINDING	sourced_dims.gain0	sourced_dims.gain0	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.gain0
+A2_BINDING	sourced_dims.gain1	sourced_dims.gain1	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.gain1
+A2_BINDING	sourced_dims.q_free	sourced_dims.q_free	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	sourced_dims.q_free
+A2_BINDING	computed_dims.A0	computed_dims.A0	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	computed_dims.A0
+A2_BINDING	computed_dims.A1	computed_dims.A1	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	computed_dims.A1
+A2_BINDING	computed_dims.T0	computed_dims.T0	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	computed_dims.T0
+A2_BINDING	computed_dims.T1	computed_dims.T1	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	computed_dims.T1
+A2_BINDING	computed_dims.epsilon0	computed_dims.epsilon0	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	computed_dims.epsilon0
+A2_BINDING	computed_dims.epsilon1	computed_dims.epsilon1	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	computed_dims.epsilon1
+A2_BINDING	computed_dims.P0_physical	computed_dims.P0_physical	0	111	0		yes	yes	{1, 0, 0}	1	FAIL	computed_dims.P0_physical

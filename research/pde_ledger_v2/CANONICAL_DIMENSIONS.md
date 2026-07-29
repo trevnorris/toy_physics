@@ -11,11 +11,11 @@ Never hand-edit this file; always regenerate it with
 > not a complete corpus view.
 
 - Dimension-bearing stage corpus: **30 stages**.
-- Converted and represented: **6 of 30** — stage004, stage011, stage012, stage013, stage016, stage018.
-- Not yet represented: stage002, stage003, stage005, stage006, stage007, stage008, stage009, stage010, stage021, stage023, stage027, stage030, stage031, stage032, stage034, stage035, stage036, stage037, stage038, stage039, stage040, stage041, stage042, stage044.
-- Total quantity rows: **93** (one per exact emitted name and stage).
-- Candidate-same-quantity groups: **5**.
-- `NEEDS_ADJUDICATION` groups: **2**.
+- Converted and represented: **7 of 30** — stage004, stage011, stage012, stage013, stage016, stage018, stage023.
+- Not yet represented: stage002, stage003, stage005, stage006, stage007, stage008, stage009, stage010, stage021, stage027, stage030, stage031, stage032, stage034, stage035, stage036, stage037, stage038, stage039, stage040, stage041, stage042, stage044.
+- Total quantity rows: **122** (one per exact emitted name and stage).
+- Candidate-same-quantity groups: **6**.
+- `NEEDS_ADJUDICATION` groups: **3**.
 
 Values come only from committed `scripts/*.dimensions.txt` and
 `mathematica/out/*.out` artifacts. Exact emitted names are primary; candidate
@@ -37,6 +37,7 @@ this is freshness, not source coverage.
 | stage013 | `(L,M,T)` | 15 | 15 | 15 |
 | stage016 | `(L,M,T)` | 21 | 21 | 21 |
 | stage018 | `(L,M,T)` | 6 | 6 | 6 |
+| stage023 | `(L,M,T)` | 29 | 29 | 29 |
 
 ## Quantities
 
@@ -135,6 +136,35 @@ this is freshness, not source coverage.
 | `(none)` | `u2` | `u2` | stage018 | `(L,M,T)` | `{0, 0, 2}` | T² | AGREE |
 | `(none)` | `u4` | `u4` | stage018 | `(L,M,T)` | `{0, 0, 4}` | T⁴ | AGREE |
 | `(none)` | `v5` | `v5` | stage018 | `(L,M,T)` | `{0, 0, 5}` | T⁵ | AGREE |
+| `computed_dims` | `A0` | `A0` | stage023 | `(L,M,T)` | `{0, 1, -1}` | M T⁻¹ | AGREE |
+| `computed_dims` | `A1` | `A1` | stage023 | `(L,M,T)` | `{1, 1, -1}` | M L T⁻¹ | AGREE |
+| `computed_dims` | `P0_physical` | `P0Physical` | stage023 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `computed_dims` | `T0` | `T0` | stage023 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `computed_dims` | `T1` | `T1` | stage023 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `computed_dims` | `epsilon0` | `epsilon0` | stage023 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `computed_dims` | `epsilon1` | `epsilon1` | stage023 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `sourced_dims` | `D0` | `D0` | stage023 | `(L,M,T)` | `{-1, 1, -2}` | M L⁻¹ T⁻² | AGREE |
+| `sourced_dims` | `D1` | `D1` | stage023 | `(L,M,T)` | `{1, 1, -1}` | M L T⁻¹ | AGREE |
+| `sourced_dims` | `K0c` | `K0c` | stage023 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `sourced_dims` | `K_eta` | `KEta` | stage023 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `sourced_dims` | `M0` | `M0` | stage023 | `(L,M,T)` | `{0, 1, -1}` | M T⁻¹ | AGREE |
+| `sourced_dims` | `Omega_U` | `OmegaU` | stage023 | `(L,M,T)` | `{0, 0, -1}` | T⁻¹ | AGREE |
+| `sourced_dims` | `Omega_W` | `OmegaW` | stage023 | `(L,M,T)` | `{0, 0, -1}` | T⁻¹ | AGREE |
+| `sourced_dims` | `R0` | `R0` | stage023 | `(L,M,T)` | `{0, 1, -1}` | M T⁻¹ | AGREE |
+| `sourced_dims` | `R1` | `R1` | stage023 | `(L,M,T)` | `{1, 1, -1}` | M L T⁻¹ | AGREE |
+| `sourced_dims` | `R_mix` | `RMix` | stage023 | `(L,M,T)` | `{0, 0, -2}` | T⁻² | AGREE |
+| `sourced_dims` | `T_Omega` | `TOmega` | stage023 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `sourced_dims` | `Z0_ret` | `Z0Ret` | stage023 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `sourced_dims` | `Z1_ret` | `Z1Ret` | stage023 | `(L,M,T)` | `{0, 1, -2}` | M T⁻² | AGREE |
+| `sourced_dims` | `a` | `a` | stage023 | `(L,M,T)` | `{1, 0, 0}` | L | AGREE |
+| `sourced_dims` | `c_s` | `cS` | stage023 | `(L,M,T)` | `{1, 0, -1}` | L T⁻¹ | AGREE |
+| `sourced_dims` | `eta_null` | `etaNull` | stage023 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `sourced_dims` | `g_U` | `gU` | stage023 | `(L,M,T)` | `{-1/2, 1/2, -2}` | M¹⁄² L⁻¹⁄² T⁻² | AGREE |
+| `sourced_dims` | `g_W` | `gW` | stage023 | `(L,M,T)` | `{-1/2, 1/2, -2}` | M¹⁄² L⁻¹⁄² T⁻² | AGREE |
+| `sourced_dims` | `gain0` | `gain0` | stage023 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `sourced_dims` | `gain1` | `gain1` | stage023 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
+| `sourced_dims` | `omega` | `omega` | stage023 | `(L,M,T)` | `{0, 0, -1}` | T⁻¹ | AGREE |
+| `sourced_dims` | `q_free` | `qFree` | stage023 | `(L,M,T)` | `{0, 0, 0}` | 1 | AGREE |
 
 ## Candidate-same-quantity groups
 
@@ -151,9 +181,10 @@ the generator never chooses a winner.
 | Case-sensitive candidate key | Members | Status |
 |---|---|---|
 | `KDim` | stage011 scope `(none)`, `KDim` [M L¹⁸ T⁻²; AGREE]<br>stage012 scope `(none)`, `K_dim` [M L¹⁸ T⁻²; AGREE] | AGREE |
-| `KEta` | stage013 scope `(none)`, `K_eta` [M L⁻¹ T⁻²; AGREE]<br>stage016 scope `dim_rules`, `K_eta` [M L⁻³ T⁻²; AGREE] | NEEDS_ADJUDICATION |
+| `KEta` | stage013 scope `(none)`, `K_eta` [M L⁻¹ T⁻²; AGREE]<br>stage016 scope `dim_rules`, `K_eta` [M L⁻³ T⁻²; AGREE]<br>stage023 scope `sourced_dims`, `K_eta` [M T⁻²; AGREE] | NEEDS_ADJUDICATION |
+| `TOmega` | stage016 scope `dim_rules`, `T_Omega` [M L⁻³ T⁻²; AGREE]<br>stage023 scope `sourced_dims`, `T_Omega` [M T⁻²; AGREE] | NEEDS_ADJUDICATION |
 | `Tw` | stage004 scope `(none)`, `Tw` [M L T⁻²; AGREE]<br>stage013 scope `symbol_dims`, `Tw` [M L T⁻²; AGREE] | AGREE |
-| `a` | stage016 scope `dim_rules`, `a` [L; AGREE]<br>stage018 scope `(none)`, `a` [L; AGREE] | AGREE |
+| `a` | stage016 scope `dim_rules`, `a` [L; AGREE]<br>stage018 scope `(none)`, `a` [L; AGREE]<br>stage023 scope `sourced_dims`, `a` [L; AGREE] | AGREE |
 | `muEta` | stage013 scope `symbol_dims`, `muEta` [M L⁻¹; AGREE]<br>stage016 scope `dim_rules`, `mu_eta` [M L⁻³; AGREE] | NEEDS_ADJUDICATION |
 
 ## GROUPING LIMITATIONS

@@ -1,0 +1,2 @@
+left=A2_REPEATED
+right=A2_REPEATED

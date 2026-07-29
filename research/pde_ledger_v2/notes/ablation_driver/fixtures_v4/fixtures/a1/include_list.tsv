@@ -1,0 +1,3 @@
+axis	key	record	old_text	new_text
+RESET	first	unused	A1_BASE_FIRST	A1_MUTANT_EMIT
+RESET	second	unused	A1_BASE_SECOND	A1_MUTANT_SILENT

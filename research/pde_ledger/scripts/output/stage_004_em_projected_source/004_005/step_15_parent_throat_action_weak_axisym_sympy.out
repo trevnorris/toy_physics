@@ -1,0 +1,36 @@
+Weak-axisymmetric throat-action bridge
+Assume a weak axisymmetric Y20 perturbation of the promoted wall action:
+  mu_eta -> mu_eta + eps * delta_mu(w) Y20
+  T_w    -> T_w    + eps * delta_Tw(w) Y20
+  T_Omega-> T_Omega+ eps * delta_TO(w) Y20
+  K_eta  -> K_eta  + eps * delta_Keta(w) Y20.
+The exact grouped-lane signature from the Y20 triple overlap is
+  lambda_(20) = 1, lambda_(21) = 1/2, lambda_(22) = -1.
+
+So any wall-sector shift X_A has the form X_A = X^(0) + eps * lambda_A * X1.
+Grouped trace/anomaly of the wall inertia shift: Mbar=0, a_M=M1*eps/4, b_M=3*M1*eps/4
+Grouped trace/anomaly of the wall stiffness shift: Kbar=0, a_K=K1w*eps/4, b_K=3*K1w*eps/4
+Hence every first-order axisymmetric wall anisotropy obeys b = 3 a exactly.
+
+Wall-only contributions to the live weak-axisymmetric gates are
+  K1_(20,21,22)   = (eps*(K1w - 9*M1)/9, eps*(K1w - 9*M1)/18, eps*(-K1w + 9*M1)/9)
+  H_even_(20,21,22) = (eps*(-K1w + 18*M1)/27, eps*(-K1w + 18*M1)/54, eps*(K1w - 18*M1)/27)
+with generic lane formulas
+  K1_wall = -delta_M + delta_K/9
+  H_even,wall = 2 delta_M / 3 - delta_K / 27.
+Solving K1_wall = 0 and H_even,wall = 0 gives: [{dKsym: 0, dMsym: 0}]
+Therefore pure wall anisotropy closes the even gates only on the trivial branch delta_K = delta_M = 0.
+
+If the outgoing-transfer bundle stays isotropic at first order (N01 = 0), then
+  Xi_load^(A) = - D01^(A) / D0 = - eps * lambda_A * K1w / D0.
+Its grouped defects are Xibar=0, a_Xi=-K1w*eps/(4*D0), b_Xi=-3*K1w*eps/(4*D0)
+so Xi_load again obeys b = 3 a.
+
+The induced prefactor shift dP0^(A) = -N0 D01^(A) / D0^2 has grouped defects
+  Pbar=0, a_P=-K1w*N0*eps/(4*D0**2), b_P=-3*K1w*N0*eps/(4*D0**2)
+and again lies on the same weak-axisymmetric line b = 3 a.
+
+Conclusion: promoting S_Sigma gives a parent-level origin for the grouped signature (20,21,22) ~ (1,1/2,-1), but by itself it does not solve the full weak-axisymmetric 5PN gates. The Maxwell/mixed and support sectors still have to participate.
+
+STATUS: PASS
+

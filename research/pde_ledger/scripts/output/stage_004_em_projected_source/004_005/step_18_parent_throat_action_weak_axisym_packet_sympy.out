@@ -1,0 +1,22 @@
+PARENT THROAT ACTION — WEAK-AXISYMMETRIC PACKET AUDIT
+
+D01 = -B01 - Z01 + dKSigma
+D21 = -B21 - Z21 - dMSigma
+D41 = -B41 - Z41
+K1 = -B01/9 - B21 - Z01/9 - Z21 + dKSigma/9 - dMSigma
+H_even = B01/27 + 2*B21/3 - B41 + Z01/27 + 2*Z21/3 - Z41 - dKSigma/27 + 2*dMSigma/3
+Xi1 = B01/(-B0 + KSigma - Z0) + Z01/(-B0 + KSigma - Z0) - dKSigma/(-B0 + KSigma - Z0) + N01/N0
+
+dKSigma_from_even_gates = B01 + 27*B41 + Z01 + 27*Z41
+dMSigma_from_even_gates = -B21 + 3*B41 - Z21 + 3*Z41
+
+D01_on_compensated_branch = 27*B41 + 27*Z41
+D21_on_compensated_branch = -3*B41 - 3*Z41
+D41_on_compensated_branch = -B41 - Z41
+Check_D21_plus_D01_over_9 = 0
+Check_D41_minus_2D21_over_3_minus_D01_over_27 = 0
+Xi1_on_compensated_branch = (27*N0*(B41 + Z41) + N01*(B0 - KSigma + Z0))/(N0*(B0 - KSigma + Z0))
+
+STATUS: PASS
+The parent wall slopes are fixed uniquely by the even gates, and the residual first-order
+normalization defect collapses to one scalar Xi1.

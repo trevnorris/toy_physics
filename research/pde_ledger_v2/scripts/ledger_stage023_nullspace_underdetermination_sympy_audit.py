@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Ledger stage023 SymPy audit: native nullspace underdetermination.
 
-Standalone, print-only, exact, and zero-file-I/O.  This is the pathA_34
-II-G5b COMPLETING slice: it computes the genuine symbolic constraint rank,
-the return-moving directions, the forward scalar/dipole residuals, the
-dimensional and provenance firewalls, and the counterfactual selector
-control.  The earned physics verdict is a characterized FAIL while the
-audit process itself exits successfully when every tooth fires.
+Standalone and exact, with audit results on stdout and labelled dimensions
+in a deterministic sidecar.  This is the pathA_34 II-G5b COMPLETING slice:
+it computes the genuine symbolic constraint rank, the return-moving
+directions, the forward scalar/dipole residuals, the dimensional and
+provenance firewalls, and the counterfactual selector control.  The earned
+physics verdict is a characterized FAIL while the audit process itself exits
+successfully when every tooth fires.
 """
 
 from __future__ import annotations
@@ -16,6 +17,8 @@ from functools import lru_cache
 from typing import Any
 
 import sympy as sp
+
+from ledger_dimensions import Dimension, DimensionBasis, emit_dimension_sidecar
 
 
 PASS_COUNT = 0
@@ -68,6 +71,8 @@ def fmt(expr: Any) -> str:
         return "True" if expr else "False"
     if isinstance(expr, str):
         return expr
+    if isinstance(expr, Dimension):
+        return str(expr)
     try:
         return sp.sstr(compact(expr))
     except Exception:
@@ -75,6 +80,10 @@ def fmt(expr: Any) -> str:
 
 
 def assert_no_float(name: str, expr: Any) -> None:
+    if isinstance(expr, Dimension):
+        for label, value in expr.exponents.items():
+            assert_no_float(f"{name}.{label}", value)
+        return
     if isinstance(expr, dict):
         for key, value in expr.items():
             assert_no_float(f"{name}.{key}", value)
@@ -167,9 +176,9 @@ OmegaU, OmegaW, Rmix, gU, gW = sp.symbols(
     "Omega_U Omega_W R_mix g_U g_W", nonzero=True, real=True
 )
 
-Ldim, Mdim, Tdim = sp.symbols("L M T", positive=True)
-Dim = tuple[sp.Rational, sp.Rational, sp.Rational]
-ZERO_DIM: Dim = (sp.Rational(0), sp.Rational(0), sp.Rational(0))
+DIMENSION_BASIS = DimensionBasis("L", "M", "T", render="tuple")
+Dim = DIMENSION_BASIS
+ZERO_DIM = Dim()
 
 
 @dataclass(frozen=True)
@@ -417,15 +426,10 @@ def build_rank_audit(
     }
 
 
-def dim_add(left: Dim, right: Dim) -> Dim:
-    return tuple(sp.Rational(x + y) for x, y in zip(left, right))  # type: ignore[return-value]
-
-
-def dim_scale(dim: Dim, scale: sp.Rational) -> Dim:
-    return tuple(sp.Rational(scale * value) for value in dim)  # type: ignore[return-value]
-
-
-def dim_of(expr: sp.Expr, symbol_dims: dict[sp.Symbol, Dim]) -> Dim:
+def dim_of(
+    expr: sp.Expr,
+    symbol_dims: dict[sp.Symbol, Dimension],
+) -> Dimension:
     expr = sp.sympify(expr)
     if expr == 0 or expr.is_number:
         return ZERO_DIM
@@ -436,13 +440,13 @@ def dim_of(expr: sp.Expr, symbol_dims: dict[sp.Symbol, Dim]) -> Dim:
     if expr.is_Mul:
         result = ZERO_DIM
         for argument in expr.args:
-            result = dim_add(result, dim_of(argument, symbol_dims))
+            result = result * dim_of(argument, symbol_dims)
         return result
     if expr.is_Pow:
         base, exponent = expr.args
         if not exponent.is_number:
             raise DimError(f"non-numeric dimension exponent in {expr}")
-        return dim_scale(dim_of(base, symbol_dims), sp.Rational(exponent))
+        return dim_of(base, symbol_dims) ** sp.Rational(exponent)
     if expr.is_Add:
         dimensions = [dim_of(arg, symbol_dims) for arg in expr.args if arg != 0]
         if not dimensions:
@@ -453,25 +457,25 @@ def dim_of(expr: sp.Expr, symbol_dims: dict[sp.Symbol, Dim]) -> Dim:
     raise DimError(f"unsupported expression in dimension checker: {expr}")
 
 
-SOURCED_DIMS: dict[sp.Symbol, Dim] = {
-    a: (1, 0, 0),
-    c_s: (1, 0, -1),
-    omega: (0, 0, -1),
-    M0: (0, 1, -1),
-    D1: (1, 1, -1),
-    R0: (0, 1, -1),
-    R1: (1, 1, -1),
-    D0: (-1, 1, -2),
-    K0c: (0, 1, -2),
-    Keta: (0, 1, -2),
-    TOmega: (0, 1, -2),
-    Z0ret: (0, 1, -2),
-    Z1ret: (0, 1, -2),
-    OmegaU: (0, 0, -1),
-    OmegaW: (0, 0, -1),
-    Rmix: (0, 0, -2),
-    gU: (sp.Rational(-1, 2), sp.Rational(1, 2), -2),
-    gW: (sp.Rational(-1, 2), sp.Rational(1, 2), -2),
+SOURCED_DIMS: dict[sp.Symbol, Dimension] = {
+    a: Dim(1, 0, 0),
+    c_s: Dim(1, 0, -1),
+    omega: Dim(0, 0, -1),
+    M0: Dim(0, 1, -1),
+    D1: Dim(1, 1, -1),
+    R0: Dim(0, 1, -1),
+    R1: Dim(1, 1, -1),
+    D0: Dim(-1, 1, -2),
+    K0c: Dim(0, 1, -2),
+    Keta: Dim(0, 1, -2),
+    TOmega: Dim(0, 1, -2),
+    Z0ret: Dim(0, 1, -2),
+    Z1ret: Dim(0, 1, -2),
+    OmegaU: Dim(0, 0, -1),
+    OmegaW: Dim(0, 0, -1),
+    Rmix: Dim(0, 0, -2),
+    gU: Dim(sp.Rational(-1, 2), sp.Rational(1, 2), -2),
+    gW: Dim(sp.Rational(-1, 2), sp.Rational(1, 2), -2),
     eta_null: ZERO_DIM,
     gain0: ZERO_DIM,
     gain1: ZERO_DIM,
@@ -479,9 +483,9 @@ SOURCED_DIMS: dict[sp.Symbol, Dim] = {
 }
 
 
-EXPECTED_DIMS: dict[str, Dim] = {
-    "A0": (0, 1, -1),
-    "A1": (1, 1, -1),
+EXPECTED_DIMS: dict[str, Dimension] = {
+    "A0": Dim(0, 1, -1),
+    "A1": Dim(1, 1, -1),
     "T0": ZERO_DIM,
     "T1": ZERO_DIM,
     "epsilon0": ZERO_DIM,
@@ -500,9 +504,9 @@ def run_dimension_check(
 ) -> dict[str, Any]:
     dims = dict(SOURCED_DIMS)
     if corrupt_sourced:
-        dims[M0] = dim_add(dims[M0], (1, 0, 0))
+        dims[M0] = dims[M0] * Dim(1, 0, 0)
     if corrupt_free_carrier:
-        dims[q_free] = (7, 0, 0)
+        dims[q_free] = Dim(7, 0, 0)
     expressions = {
         "A0": residuals["A0"],
         "A1": residuals["A1"],
@@ -512,7 +516,7 @@ def run_dimension_check(
         "epsilon1": transfers["epsilon1"],
         "P0_physical": port["P0_physical"],
     }
-    computed: dict[str, Dim] = {}
+    computed: dict[str, Dimension] = {}
     errors: dict[str, str] = {}
     for name, expr in expressions.items():
         try:
@@ -529,6 +533,41 @@ def run_dimension_check(
         "dimensional_ok": ok,
         "verdict": NO_FAIL if ok else FAIL_DIMENSIONAL,
         "checked_expressions_mention_q_free": any(q_free in expr.free_symbols for expr in expressions.values()),
+    }
+
+
+def dimension_records(dimension: dict[str, Any]) -> dict[str, Dimension]:
+    computed = dimension["computed"]
+    return {
+        "sourced_dims.a": SOURCED_DIMS[a],
+        "sourced_dims.c_s": SOURCED_DIMS[c_s],
+        "sourced_dims.omega": SOURCED_DIMS[omega],
+        "sourced_dims.M0": SOURCED_DIMS[M0],
+        "sourced_dims.D1": SOURCED_DIMS[D1],
+        "sourced_dims.R0": SOURCED_DIMS[R0],
+        "sourced_dims.R1": SOURCED_DIMS[R1],
+        "sourced_dims.D0": SOURCED_DIMS[D0],
+        "sourced_dims.K0c": SOURCED_DIMS[K0c],
+        "sourced_dims.K_eta": SOURCED_DIMS[Keta],
+        "sourced_dims.T_Omega": SOURCED_DIMS[TOmega],
+        "sourced_dims.Z0_ret": SOURCED_DIMS[Z0ret],
+        "sourced_dims.Z1_ret": SOURCED_DIMS[Z1ret],
+        "sourced_dims.Omega_U": SOURCED_DIMS[OmegaU],
+        "sourced_dims.Omega_W": SOURCED_DIMS[OmegaW],
+        "sourced_dims.R_mix": SOURCED_DIMS[Rmix],
+        "sourced_dims.g_U": SOURCED_DIMS[gU],
+        "sourced_dims.g_W": SOURCED_DIMS[gW],
+        "sourced_dims.eta_null": SOURCED_DIMS[eta_null],
+        "sourced_dims.gain0": SOURCED_DIMS[gain0],
+        "sourced_dims.gain1": SOURCED_DIMS[gain1],
+        "sourced_dims.q_free": SOURCED_DIMS[q_free],
+        "computed_dims.A0": computed["A0"],
+        "computed_dims.A1": computed["A1"],
+        "computed_dims.T0": computed["T0"],
+        "computed_dims.T1": computed["T1"],
+        "computed_dims.epsilon0": computed["epsilon0"],
+        "computed_dims.epsilon1": computed["epsilon1"],
+        "computed_dims.P0_physical": computed["P0_physical"],
     }
 
 
@@ -1013,7 +1052,7 @@ def run_verdict_seam_and_scope(all_probe_flags: dict[str, bool]) -> None:
     print("  PROVENANCE: stage008 M0/D1 and R0=-M0/R1=-D1; stage017 grouped-P2 P0_raw port kernel.")
     print("  PROVENANCE CONTEXT: pathA_34-convention K0c/K1 effective stiffnesses; stage013/017 scalar reduction remains pending.")
     print("  PROVENANCE: c_s from R1 and a from CONV; stage022 Gate-4 result consumed as quad_regression=False, not rebuilt.")
-    print("  ZERO file I/O: standalone print-only audit; no scratch YAML, report, note, card, LaTeX, or registration write.")
+    print("  DIMENSION sidecar I/O: no scratch YAML, report, note, card, LaTeX, or registration write.")
 
 
 def print_verdict_labels() -> None:
@@ -1032,7 +1071,7 @@ def print_verdict_labels() -> None:
 def main() -> int:
     banner("ledger_stage023_nullspace_underdetermination_sympy_audit")
     print("Target stem confirmed: ledger_stage023_nullspace_underdetermination")
-    print("Engine: genuine SymPy symbolic Jacobian Matrix.rank; exact, float-free, standalone, zero file I/O.")
+    print("Engine: genuine SymPy symbolic Jacobian Matrix.rank; exact, float-free, standalone; audit results on stdout and labelled dimensions in a deterministic sidecar.")
     run_native_rank_and_selector()
     v1_flag, order_flag = run_residual_and_consumption_teeth()
     dimension_flag = run_dimensional_gate()
@@ -1046,6 +1085,10 @@ def main() -> int:
         **transfer_flags,
     }
     run_verdict_seam_and_scope(all_flags)
+    emit_dimension_sidecar(
+        __file__,
+        dimension_records(run_gate(Mutation())["dimension"]),
+    )
     print_verdict_labels()
     return 0
 

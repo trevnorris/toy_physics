@@ -96,7 +96,7 @@ Standing rule from the plan of record: **never adjust the process because the co
 
 ## 3. STATE
 
-**6 of 30 converted** — stage004, stage011, stage012, stage013, stage016, stage018. ⚠ *Converted* is not *finished*: **all six are waiver-free** (011/012's three reopened items CLOSED `8b006055`), but see §11 for what a green comparator does and does not establish. (43 audit scripts; 13 have no
+**7 of 30 converted** — stage004, stage011, stage012, stage013, stage016, stage018, stage023. ⚠ *Converted* is not *finished*: **all seven are waiver-free** (011/012's three reopened items CLOSED `8b006055`), but see §11 for what a green comparator does and does not establish. (43 audit scripts; 13 have no
 dimension machinery: 001, 014, 015, 017, 019, 020, 022, 024, 025, 026, 028, 033, 043.)
 
 | stage | compared | waived | detectors (L↔M / M↔T / L↔T) | note |
@@ -107,15 +107,22 @@ dimension machinery: 001, 014, 015, 017, 019, 020, 022, 024, 025, 026, 028, 033,
 | **013** | **15 / 15** | **none** | 12 / 12 / 10 of 15 | first stage with zero waivers |
 | **016** | **21 / 21** | **none** | 18 / 15 / 16 of 21 (measured, adversarial leg) | ⭐ largest record set yet; **12 of 21 are declared literals in BOTH engines** and 0 are computed from a physical input |
 | **018** | **6 / 6** | **none** | 3 / 5 / 6 of 6 (measured) | emits **6 of its 10** objects — the 4 omitted are enumerated in the stage note (§4-a) |
+| **023** | **29 / 29** | **none** | ⛔ **not measured** — the 023 ablations measure decoy-declaration and record-repoint detection, a *different* measurement from this column's transposition counts; the cell is left empty rather than filled with it | ⭐ **29 of 29 are hand-typed literals in BOTH engines** — 22 declarations + 7 targets typed on both sides; the 7 computed records *are* live `dimOf` walks, but over exactly those literals and no other dimensional input (stage note §1.7(3)) — the least independent dimension block of the four for which that count exists |
 
 ⚠ **018's L↔M rate of 3/6 is set by PHYSICS, not by an omission** — *every* stage018 exponent has
 `M = 0` (`[a]=L`, `[c_s]=L T⁻¹`, coefficients `T^n`). It declares a 3-axis basis and populates 2; the
 M row is `0 == 0` six times and carries no information. Honest, and worth expecting again wherever a
 slice has no mass content.
 
-Canonical table (`research/pde_ledger_v2/CANONICAL_DIMENSIONS.md`, regenerated): **93** quantity rows,
-**5** candidate groups, **2 `NEEDS_ADJUDICATION`** (`KEta`, `muEta` — the 013-vs-016 line-vs-volume
-reduction debt, surfaced correctly), **0 `ONE_SIDED_PY`**.
+Canonical table (`research/pde_ledger_v2/CANONICAL_DIMENSIONS.md`, regenerated): **122** quantity rows,
+**6** candidate groups, **3 `NEEDS_ADJUDICATION`** (`KEta`, `TOmega`, `muEta`), **0 `ONE_SIDED_PY`**
+(every one of the 122 rows is `AGREE`).
+⚠ **The adjudication count rose because stage023 landed, not because drift did.** `KEta` now carries
+three reduction levels (013 line `M L⁻¹T⁻²`, 016 volume `M L⁻³T⁻²`, 023 reduced scalar `M T⁻²`) and
+`TOmega` is the new group on exactly that pattern (016 volume `M L⁻³T⁻²` vs 023 reduced scalar
+`M T⁻²`) — the **correct** output of surfacing reduction levels that were never renamed apart (§7),
+adjudicated as such in the stage023 note §1.7(2b) (*"the names stand"*). `muEta` remains the
+013-vs-016 line-vs-volume debt.
 
 ⭐⭐ **`ARTIFACT_NAME_WAIVERS` IS NOW EMPTY (`{}`).** Every converted stage compares every name it
 emits, with no exemptions. ⚠ **That is a coverage statement, not a strength statement** — see §3b.1.
@@ -164,7 +171,8 @@ unless you check here first.** Do not inherit them.
    044-v2).
 3. **"~26 well-gated + 4 that can't be."** That estimate assumed (2), which is now falsified.
    ⭐ **stage018 is DONE (`1b645ed9`); the three reopened waivers are CLOSED (`8b006055`).**
-   Next: **016** (surveyed, `REACHABLE` — §8), then 023, 027, 021.
+   ⭐ **016 and 023 are DONE as well** (both engines, comparator green). Next conversion — which is not
+   the build queue (§12b(b)): **027**, then 021 (heaviest) — per §8's recorded conversion-order line.
 
 ⭐⭐ **THE 037 SPIKE, 2026-07-27 — `ROUTE_EXISTS` for stage037, demonstrated with a working
 prototype.** Run out of order, deliberately: the seven exceptional tail stages are **035, 036, 037,
@@ -287,6 +295,32 @@ not a number anyone could look up. Record in the stage note, alongside the (a) e
    session as insertions moved their targets, and validators in this dimension-rewrite workstream
    do not test whether a line number reaches the claimed sentence
    (`_scratch/stage023_orch/ORCH_FINDINGS.md:25-43`, **F6 — intra-file line references decay**).
+   ⭐ **The same rule holds ACROSS files.** A `path:NNN` citation — into another note, into an engine,
+   into the canonical table, into this manifest, or into the register — must name what it points at
+   beside the number: a heading, a row key, a defined term, or a quoted fragment. **The measurement
+   that motivates this:** four consecutive prose passes on stage023 were spent recomputing cross-file
+   references that the next edit then re-invalidated — the note's references into its two engines,
+   into the canonical table and into this manifest, and this manifest's and the register's references
+   back into the note. A named target is what makes the reference survive that: a reader who finds the
+   number stale can still reach the target, and the next editor can re-verify by content instead of by
+   offset.
+   ⛔ **This does not license dropping the line numbers.** They are still worth carrying — the number
+   is what makes a fresh reference cheap to check, and the name is the recoverable anchor added beside
+   it, never a replacement for it.
+   ⛔⛔ **THE LIMIT, MEASURED — an anchor makes a stale reference RECOVERABLE; it does not make it
+   CORRECT.** This clause can be satisfied while the pointer is false, so satisfying it is not evidence
+   the pointer resolves. **This changeset is the counterexample.** The stage023 `.py` rewrite moved
+   `SOURCED_DIMS`, and four §12 WORK citations that *already carried named targets* went on pointing at
+   the wrong lines afterwards: `WORK-023-D0-SEAM`'s window for the `D0` declaration had come to land on
+   `M0` instead, its two windows for the port formula and the dimensionless `P0_physical` target both
+   stopped short of the lines holding them, the `[M0]`/`[D1]` window shared by
+   `WORK-023-MOMENT-CONVENTION` and `WORK-023-STAGE009-MOMENT0` no longer reached `D1`, and
+   `WORK-023-SOURCED-PROVENANCE`'s "in `SOURCED_DIMS`" range ended before the block's last
+   declarations. ⇒ The number must be **re-verified by content whenever either file changes** — an edit
+   to the *cited* file obligates the *citing* file — and **a named anchor beside a wrong number is not
+   compliance**. The anchor buys the reader recovery; it buys the writer nothing.
+   ⚠ A line range into a **regenerated** artifact cannot be made to resolve at all; cite the revision
+   it was read at, plus what it showed, instead of live line numbers.
 
 ⛔ **Why this matters more than the conversion.** Cross-engine agreement has now been shown twice
 to be necessary and **not sufficient** — it is blind to a same-dimension different-quantity merge
@@ -485,7 +519,7 @@ verdict at all**. Three independent read-only agents filled it; loci spot-checke
 | stage | verdict | values reachable | axis order — and HOW it is established | re-invocation | the hazard that decides the build |
 |---|---|---|---|---|---|
 | **016** | `REACHABLE` | **21 of 21** — 12 declared rule-table entries (`wl:305`) + 9 computed (`wl:306`) | `(L,M,T)`, ⭐ **code-evidenced**: the slot→label binding `{{"L",d[[1]]},{"M",d[[2]]},{"T",d[[3]]}}` at `wl:123`. Every slot carries a non-zero value somewhere | `evalDimensional` **6×** — 1 clean, 4 corrupted, 1 arity-self-check re-run | the `.out` today renders **zero** exponent vectors — only `dimText` monomial strings and prose |
-| **023** | `REACHABLE` | **7 of 7** computed, via the top-level global `baselineDimAudit` (`wl:276`), + 22 declared `baseDims` + 7 declared `expectedDims` | `(L,M,T)`, prose only (`wl:608`) but evidenced by non-zero slots in `baseDims`. ⚠ of the **7 computed outputs** only `A1` has a non-zero L — the order is evidenced by the inputs, not the results | `dimensionAudit` **17×** — 3 top-level + 14 memoized `caseFor` modes | ⛔ a **literal substitutes for a computed value** when the expression is 0 (`wl:262`): inert at baseline, **load-bearing in `"perfect"` mode**, where 4 of 7 rows then self-match against `expectedDims` |
+| **023** | `REACHABLE` | **7 of 7** computed, via the top-level global `baselineDimAudit` (`wl:286-288`), + 22 declared `baseDims` + 7 declared `expectedDims` | `(L,M,T)`, ⭐ now **code-bound** in the committed `.wl`: the step-(d) emitter's `dimensionAxisSlots = {{"L",1},{"M",2},{"T",3}}` (`wl:212`) feeds both the `axes=` label and every exponent vector. ⚠ **The survey's observation was accurate for its referent** — the 769-line **pre-emission** `.wl`, where the order was *prose only* (then `wl:608`, now `wl:654`) and evidenced by non-zero slots in `baseDims`. ⚠ of the **7 computed outputs** only `A1` has a non-zero L — the order is evidenced by the inputs, not the results | `dimensionAudit` **17×** — 3 top-level + 14 memoized `caseFor` modes | ⛔ a **literal substitutes for a computed value** when the expression is 0 (`wl:272`): inert at baseline, **load-bearing in `"perfect"` mode**, where 4 of 7 rows then self-match against `expectedDims` |
 | **027** | ⚠ **MIXED** — declared `REACHABLE`, computed **`LOCAL_ONLY`** | **0 of 1** computed vectors reach top level (it dies in `runAll`'s `Module`, `wl:742-751`); the 16 declared `baseDims` (`wl:183`) do | `(L,M,T)`, ⭐ **mechanically bound** through `uL/uM/uT` (`wl:200`, `:205`) — the **strongest axis evidence in the corpus**, code not prose | `evaluatePort` **19×**, 2 of them under a corrupted basis | ⛔ the `.wl`'s rescaling-ratio route **cannot produce per-symbol vectors at all** — 027 stays a **1-row** `DIM\|` stage unless new call sites are added (which D2 permits) |
 | **021** | `REACHABLE` | **27 of 27** top-level bindings — ⭐ **no top-level `Module` anywhere**; ~21 clean named + ~64 mutation-scoped ≈ 85 | storage `(L,M,T)`, **prose only** (`wl:342`, `:384`, `:528`) — there is **no machine-readable axis binding**, so a D2 emitter must hardcode the header | `gateData` **13×** (8 under a corrupted map), `backSolveMutant` **5×** (all corrupted) | ⛔⛔ an **undocumented index-permuting renderer** — `{{"L",d[[1]]},{"T",d[[3]]},{"M",d[[2]]}}` at `wl:125`/`:139` — so scraping its printed output and labelling it `axes=L,M,T` **silently swaps M and T**. The `.py` documents its permutation (`py:224`); the `.wl` does not |
 
@@ -549,8 +583,11 @@ dead print yields 0 and fails.
   **nothing** — yet the `.py` *does* export `Gamma5` (`py:534`). A real cross-engine asymmetry.
   `dimText` (`wl:124`) is defined and never called.
 
-**Order:** ~~013, 018,~~ ✅ done → ~~the three reopened waivers as one batch~~ ✅ **CLOSED `8b006055`**
-→ **016** (in progress), then 023, 027, then 021 (heaviest). Then `(L,T,M)`, `(M,L,T)`, then 008 (2-axis), 038 (4-axis), 042 (stiffness).
+**Conversion order — which stage converts next:** ~~013, 018,~~ ✅ done → ~~the three reopened waivers as one batch~~ ✅ **CLOSED `8b006055`**
+→ ~~016~~ ✅ done → ~~023~~ ✅ done (both engines, comparator green) → **027 next**, then 021 (heaviest). Then `(L,T,M)`, `(M,L,T)`, then 008 (2-axis), 038 (4-axis), 042 (stiffness).
+⚠ **This is the conversion order only, and it is not the build queue.** Which *tooling* gets built next
+is a separate sequence, set by §12b(b): the ablation driver is built **before** the 027 conversion
+begins. Neither line overrides the other — they order different things.
 ⚠ **The 037 spike ran out of order on purpose** (§3b) — that was a feasibility measurement, not a
 conversion, and 037 stays in its group-B slot for the actual work.
 
@@ -575,6 +612,27 @@ trips the set check). They are ordered LAST for effort, not for risk.
   rationals, never floats* is an authoring rule only; no validator rejects decimal or scientific
   syntax, and normalization can make a non-conforming artifact look exact downstream. §12 tracks
   the validator fix; this is not checked today.
+  ⛔ **MEASURED, end-to-end — float exponents now survive the whole comparator, not just the loader.**
+  The earlier observation stopped at `load_dimensions`; a stage023 run with float exponents emitted into
+  **both** artifacts, and the ledger-dimensions module pin re-accepted afterwards, reaches
+  `compare_dimension_artifacts.py 023` reporting `status=PASS`, exit **0**. Same hole, one layer further
+  out: `Fraction` normalization equates the float and rational spellings before anything compares them, so
+  a green comparator is not evidence that either artifact serialised exact rationals. It does **not** imply
+  the values are wrong — normalization preserved them here; what it implies is that the authoring rule is
+  the only thing enforcing the syntax, end to end.
+- ⛔ **MEASURED — the comparator has no record-coverage floor above 1.** With **28 of the 29** stage023
+  records dropped from **both** artifacts, `python3 scripts/compare_dimension_artifacts.py 023` printed
+  `shared=1` and `RESULT|stage=023|status=PASS|mismatches=0`, exit **0**. The earlier zero floor is in
+  place and has fired — `compare_dimension_artifacts.py:313-314` appends `compared=0; no shared quantities
+  were compared` — but it is a floor at **zero**, so a `compared=1 of 29` state passes unremarked. What
+  this implies: a green comparator bounds only the records that reached it, never how many should have.
+  What it does **not** imply: that the record still compared was wrong — it matched. The drop was applied
+  to **both** artifacts at once, which is exactly the state no cross-engine comparison can see; the
+  observation is about the missing floor, not about either emitter.
+  ⚠ **A third validator-layer item, orthogonal to both §12 tracked
+  specs** — the exact-rational spec governs exponent-token lexical exactness, the axis-order spec governs
+  cross-engine axis-order metadata, and neither counts records. ⛔ Do not fold it into either acceptance
+  list; a per-stage expected-record-count floor is a separate change.
 - ⛔⛔ **MEASURED — an uncaught `Throw` can make `math -script` green with no trustworthy
   transcript.** The direct probe run was `math -script throwtest.wl`, where the complete program was
   `Print["before"]; Throw["boom", "sometag"]; Print["after"]; Exit[0];`. Stdout was literally
@@ -597,7 +655,7 @@ trips the set check). They are ordered LAST for effort, not for risk.
   |---|---|---|
   | `ledger_stage018_dtn_hankel_fingerprint_mathematica_audit.wl` | **A+B** — uncaught `"stage018DimError"` at `:100-120`; load-time `dimOf` calls at `:229-233`; top-level `Catch` names only `"ledgerStage018Failure"` at `:489-492` | **already converted** (§3) |
   | `ledger_stage021_dimensional_closure_mathematica_audit.wl` | **A+B** — `dimOf` throws `"dimOfFailure"` at `:87-105`; immediate calls span `:265-326`; the unshielded in-run call is `:483`; top-level `Catch` names only `"ledgerStage021Failure"` at `:539-542` | **not yet** — after 023/027 (§8) |
-  | `ledger_stage023_nullspace_underdetermination_mathematica_audit.wl` | **A** — `fail` is `:38`; `dimOf` reaches it at `:212-233`; load-time audits are `:276-285`; top-level `Catch` is `:755-759` | **in conversion now, pre-emission** (§8; `STATUS.md`) |
+  | `ledger_stage023_nullspace_underdetermination_mathematica_audit.wl` | **A** — `fail[msg_] := Throw[msg, "ledgerStage023Failure"]` is `:38`; `dimOf` reaches it at `:222-245` (its four `fail` calls: `:226`, `:231`, `:239`, `:243`); the load-time `dimensionAudit` assignments `baselineDimAudit`/`corruptSourcedDimAudit`/`corruptFreeDimAudit` are `:286-296`; top-level `Catch[runAll[], "ledgerStage023Failure", …]` is `:802-806` | **already converted** (§3) — the `.wl` gained `emitDimensionRecords[]` (defined `:298-332`, called from `runAll` at `:789`), which does **not** change the route: the emitter is inside `runAll`, while the exposure is the pre-`Catch` load-time block above it |
   | `ledger_stage033_native_p_no_emergent_gauss_mathematica_audit.wl` | **B** — four `"pipelineFailure"` throws at `:180`, `:192`, `:440`, `:450`; the sole top-level `Catch` at `:727-1095` names `"ledgerStage033Failure"` (`:1093`) | **not a conversion target** — §3 records no dimension machinery |
   | `ledger_stage038_sealed_landing_electric_bc_r1_mathematica_audit.wl` | **A** — `manifestDisposition` fallthrough raises at `:819-833`; load-time `sourceManifest` is `:836-838`; top-level `Catch` is `:927-1185` | **not yet** — tail position (§8) |
   | `ledger_stage039_b_t_time_reversal_even_departure_mathematica_audit.wl` | **A** — `sourceDisposition` fallthrough raises at `:515-531`; load-time `sourceManifest` is `:534-540`; top-level `Catch` is `:578-871` | **not yet** — later axis-group work (§8) |
@@ -742,6 +800,17 @@ trips the set check). They are ordered LAST for effort, not for risk.
 - ⚠ Process probes lie: `pgrep -f 'math -script'` matched Codex's own argv (the directive quoted the
   string); `[ -d /proc/$PID ]` with an empty PID tests `/proc/` and always says "alive". **Check the
   artifact, not the process.**
+- ✅ **NOT A HAZARD — `*.out` tracking is already covered, and the alarm was FALSE.** The 2026-07-28
+  provenance survey reported, as an incidental find, that a bare `*.out` rule would silently untrack a
+  *new* stage's Mathematica transcript. ⚠ **The mechanism has since changed and is re-established here
+  against the current file:** there is no bare `*.out` rule left to negate — `.gitignore:19-22` says so
+  in terms and `.gitignore:23` narrows the LaTeX ignore to `**/paper/*.out`, while `.gitignore:130-131`
+  records that the former `!research/pde_ledger_v2/mathematica/out/*.out` negation was deleted as
+  redundant. **Verified by execution, not by reading:** `git check-ignore -v` on the real path
+  `research/pde_ledger_v2/mathematica/out/ledger_stage023_…_mathematica_audit.out` prints nothing and
+  exits 1 — no rule matches it — and all 44 transcripts in that directory are tracked (44/44).
+  ⭐ **The instructive part is the failure mode, which is why this bullet stays:** a `.gitignore` verdict
+  is worthless without running `git check-ignore -v` on a real path; the last matching rule wins.
 
 ## 10. ⛔ WHAT NOT TO DO
 - Do **not** generalise the module beyond the stage in front of you. stage011's expression walker is
@@ -823,9 +892,10 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
     its own `dim_M0=T⁻¹`
     (`scripts/ledger_stage010_slab_localization_p2_nogo_sympy_audit.py:553-562`), and stage023
     declares `[M0]=MT⁻¹`, `[D1]=MLT⁻¹`
-    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`).
+    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:460-465`,
+    **the `SOURCED_DIMS` opening plus its `M0` and `D1` entries**).
     The stage023 note asserts “one intended object flowing 008 → 009/010 → 022/023”
-    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:505-511`, **§1.7(2), `M0`/`D1`**),
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:521-527`, **§1.7(2), `M0`/`D1`**),
     but no locus cited in this entry derives that alias chain. The carrier/measure convention is
     therefore recorded upstream; the open item is whether those later names denote that same object.
     ⭐ **This is more decidable than the former convention dispute:** the recorded 006→008 route
@@ -839,8 +909,9 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
     later declaration route:
     `scripts/ledger_stage009_flat_slab_return_residual_sympy_audit.py:464-468`,
     `scripts/ledger_stage010_slab_localization_p2_nogo_sympy_audit.py:553-562`, and
-    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`; asserted
-    cross-stage identity: `notes/stages/ledger_stage023_nullspace_underdetermination.md:505-511`
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:460-465`
+    (**the `SOURCED_DIMS` opening plus its `M0` and `D1` entries**); asserted
+    cross-stage identity: `notes/stages/ledger_stage023_nullspace_underdetermination.md:521-527`
     (**§1.7(2), `M0`/`D1`**).
   - **What would settle it.** Trace the definitions and actual handoffs across the asserted
     008→009/010→022/023 chain. If they are aliases, propagate the recorded 006→008 normalization
@@ -871,7 +942,8 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
     supplied by stage008's moment definition
     (`scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:311-317`), while stage023
     declares `[M0]=MT⁻¹`
-    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`). In each
+    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:460-464`,
+    **the `SOURCED_DIMS` opening plus its `M0` entry**). In each
     stage009 engine, the only `M0`-bearing dimensional assertion constructs `[Z]` from the same
     `dimM0` literal and compares it back with that literal, so that assertion cannot reject any
     replacement triple in the scope of those two implementations
@@ -882,12 +954,13 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
     `mathematica/ledger_stage009_flat_slab_return_residual_mathematica_audit.wl:440-458`;
     upstream/downstream same-object side:
     `scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:311-317` and
-    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`.
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:460-464`
+    (**the `SOURCED_DIMS` opening plus its `M0` entry**).
   - **What would settle it.** Derive stage009's expected `[M0]` from the pathA_28 source definition
     without reading `MOMENT0`, then compare the declaration with that independently built result;
     §1.7 records the present defect as W2 at
-    `notes/stages/ledger_stage023_nullspace_underdetermination.md:673-688`
-    (**§1.7(5), W2**).
+    `notes/stages/ledger_stage023_nullspace_underdetermination.md:716`
+    (**§1.7(5), the `W2` fragment, *"stage009 `MOMENT0 = T⁻¹` plus an assertion that cannot fail"***).
   - **Instrument.** A dual-engine stage009 computation whose expected branch consumes stage008's
     named `S_leak·d³x` route and whose ablation changes the source carrier or measure without changing
     the declaration (`scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:311-317`;
@@ -901,34 +974,38 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
     register records that D-lane at `MT⁻²` (`notes/parameter_register.md:185`). Stages 021, 023,
     and 027 declare the identified denominator `ML⁻¹T⁻²`
     (`scripts/ledger_stage021_dimensional_closure_sympy_audit.py:138-146`;
-    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`;
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:468`
+    (**`SOURCED_DIMS[D0]`**);
     `scripts/ledger_stage027_port_checks_closure_sympy_audit.py:199-208`); stage023's port formula
     then makes the register reading incompatible with its dimensionless `P0_physical` target
-    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:211-222,482-489`).
+    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:220-232,486-493`,
+    **`build_port_kernel` and `EXPECTED_DIMS["P0_physical"]`**).
   - **Loci on both sides.** Stage017/register side:
     `notes/stages/ledger_stage017_grouped_p2_lane_isotropy.md:27-34,113-115`
     (**§1.1 grouped-lane assembly; Exported — the ℓ=2 PORT KERNEL**) and
     `notes/parameter_register.md:185`; 021/023/027 closure side:
     `scripts/ledger_stage021_dimensional_closure_sympy_audit.py:138-146`,
-    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-464`, and
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:468`
+    (**`SOURCED_DIMS[D0]`**), and
     `scripts/ledger_stage027_port_checks_closure_sympy_audit.py:199-208`.
   - **What would settle it.** Derive an explicit 017→019 normalization carrying the missing `L⁻¹`,
     derive that the two `D0` names denote distinct objects, or identify and correct the wrong member
     of `[D0]`, `[N0_from_port]`, and `[P0_physical]`; these three settlement routes are recorded at
-    `notes/stages/ledger_stage023_nullspace_underdetermination.md:438-460`
-    (**§1.7(1), D0 — two readings**).
+    `notes/stages/ledger_stage023_nullspace_underdetermination.md:474-476`
+    (**§1.7(1), the `D0` two-readings note, *"Settled by:"* bullet**).
   - **Instrument.** A cross-stage, dual-engine derivation that carries the denominator from named
     upstream stages 017 and 019 into the 021/023/027 closure and checks the independently derived
     `P0_physical` target (`notes/stages/ledger_stage017_grouped_p2_lane_isotropy.md:113-115`,
     **Exported — the ℓ=2 PORT KERNEL**;
-    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:211-222,482-489`).
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:220-232,486-493`,
+    **`build_port_kernel` and `EXPECTED_DIMS["P0_physical"]`**).
 - ⛔ **WORK-023-STIFFNESS-REDUCTION — execute the scalar reduction that W4's two loci describe differently.**
   ⚠⚠ **INSTRUMENT INSUFFICIENT — the instrument named below reaches the ℓ=0 half only, not `K1`.**
   - **Dispute.** The stage023 source map states the stage013/017→023 `K0c/K1` identification as
     performed (`notes/stage023_pathA34_nullspace_underdetermination_source_map.md:250-253`), while
     the register records the same reduction as `FREE-UNREDUCED`/`PENDING`
     (`notes/parameter_register.md:170`); §1.7 classifies the source-map statement as stale pre-build
-    rather than a live result (`notes/stages/ledger_stage023_nullspace_underdetermination.md:682-686`,
+    rather than a live result (`notes/stages/ledger_stage023_nullspace_underdetermination.md:719-723`,
     **§1.7(5), W4**).
   - **Loci on both sides.** Performed-identification side:
     `notes/stage023_pathA34_nullspace_underdetermination_source_map.md:250-253`; pending-reduction
@@ -949,7 +1026,7 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
     **ℓ=2** assembly. ⛔ **Why it does NOT decide `K1`:** stage023's `K1 = K_eta + 2·T_Omega` is that
     same assembly at `λ_m = ℓ(ℓ+1) = 2`, i.e. **ℓ=1**, while the stage016/017 loci named here reduce
     against the frozen **ℓ=2** profile `β₂`
-    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`, **§1.7(2), merge to
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:496-512`, **§1.7(2), merge to
     refuse**) — the ℓ=1 profile the `K1` reduction consumes is not among these inputs.
     ⭐ **What would be required to decide it:** a derived ℓ=1 radial profile `β₁`, from the same wall
     operator and boundary data that produced `β₂`. ⛔ **No derived or defined ℓ=1 radial profile
@@ -957,24 +1034,24 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
     `research/pde_ledger_v2/notes/` (incl. `stages/`), `research/pde_ledger_v2/paper/stages/`,
     `research/pde_ledger_v2/manifests/`, and `docs/model_map.md`; within that scope, `β₁` occurrences
     are meta-level open-question discussions or stage029's unrelated `β₁PN`, not a profile derivation
-    or definition (`notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`,
+    or definition (`notes/stages/ledger_stage023_nullspace_underdetermination.md:496-512`,
     **§1.7(2), merge to refuse**). **So the `K1` half cannot be settled from those four sources as
     they currently stand** — it is gated on **WORK-023-L1-L2-PROFILE-IDENTITY** first producing
     `β₁`, and of the two halves only the ℓ=0 `K0c` route is executable from the loci named here.
 - ⛔ **WORK-023-L1-L2-PROFILE-IDENTITY — derive whether the reduced ℓ=1 and ℓ=2 stiffnesses coincide.**
   - **Dispute.** Stage016's reduced scalars use the frozen `β₂` profile
     (`notes/stages/ledger_stage016_l2_so3_covariance.md:74-81,130-131`), while stage023's `K1`
-    is the ℓ=1 assembly (`notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`,
+    is the ℓ=1 assembly (`notes/stages/ledger_stage023_nullspace_underdetermination.md:496-512`,
     **§1.7(2), merge to refuse**). §1.7 leaves the same-number question undetermined pending a
-    derivation of `β₁≡β₂` (`notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`,
+    derivation of `β₁≡β₂` (`notes/stages/ledger_stage023_nullspace_underdetermination.md:496-512`,
     **§1.7(2), merge to refuse**).
   - **Loci on both sides.** ℓ=2 side:
     `notes/stages/ledger_stage016_l2_so3_covariance.md:74-81,130-131`; ℓ=1 side:
-    `notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`
+    `notes/stages/ledger_stage023_nullspace_underdetermination.md:496-512`
     (**§1.7(2), merge to refuse**).
   - **What would settle it.** Derive the ℓ=1 and ℓ=2 radial profiles from the same wall operator
     and boundary data, then prove `β₁≡β₂` or exhibit the derived distinction
-    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`,
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:496-512`,
     **§1.7(2), merge to refuse**).
   - **Instrument.** A dual-engine radial eigenproblem with separately represented `β₁` and `β₂`,
     solved from one specified wall operator, one set of boundary data and one normalization, which
@@ -983,7 +1060,7 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
     and stage016's `K₂` consume, and comparing the profiles alone would not decide the dispute
     because `β₁ ≠ β₂` does not by itself imply unequal reduced scalars
     (`notes/stages/ledger_stage016_l2_so3_covariance.md:74-81`, **1.4 Angular dimensional
-    consistency**; `notes/stages/ledger_stage023_nullspace_underdetermination.md:480-496`,
+    consistency**; `notes/stages/ledger_stage023_nullspace_underdetermination.md:496-512`,
     **§1.7(2), merge to refuse**).
 - ⛔ **WORK-023-CS-EVALUATION — derive the state point of stage023's sound-speed carrier.**
   ⚠⚠ **INSTRUMENT INSUFFICIENT — the instrument named below does not decide this dispute.**
@@ -992,13 +1069,13 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
     **§1, EOS derivation; §2, velocity scales**); the register records that asymptotic carrier
     (`notes/parameter_register.md:129`). Stage023 consumes `c_s` in `z=aω/c_s` while §1.7 finds
     no evaluation point in the four sources it searched
-    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:497-504`,
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:513-520`,
     **§1.7(2), c_s forward hazard**).
   - **Loci on both sides.** Asymptotic `c_s0` side:
     `notes/stages/ledger_stage005_sound_speed_light_ratio.md:74-104`
     (**§1, EOS derivation; §2, velocity scales**) and `notes/parameter_register.md:129`;
     stage023 carrier side:
-    `notes/stages/ledger_stage023_nullspace_underdetermination.md:497-504`
+    `notes/stages/ledger_stage023_nullspace_underdetermination.md:513-520`
     (**§1.7(2), c_s forward hazard**) and
     `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:211-222,333-338`.
   - **What would settle it.** Derive the density state sampled by the stage023 outgoing-wave
@@ -1024,32 +1101,35 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
     would establish a distinct carrier). ⛔ **No such condition appears in the four sources §1.7
     searched** — the stage023 note's §4, the two stage023 engines, `docs/model_map.md:62`, and the
     register — and that set of four is the scope of this negative
-    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:497-504`, **§1.7(2), c_s forward
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:513-520`, **§1.7(2), c_s forward
     hazard**). **So this cannot be settled from those four sources as they currently stand:** it
     needs the radiation background itself written down, as a derivation or as a recorded convention.
 - ⛔ **WORK-023-SOURCED-PROVENANCE — trace the declaration lineage before using “sourced.”**
   - **Dispute.** The stage023 Mathematica artifact emits `sourced_dims.M0/D1`
     (`mathematica/ledger_stage023_nullspace_underdetermination_mathematica_audit.wl:298-310`)
     and the Python engine stores them in `SOURCED_DIMS`
-    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-479`), while named
+    (`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:460-483`,
+    **the whole `SOURCED_DIMS` block, all 22 entries**), while named
     upstream stage008 explicitly declines to assign dimensions to `M0/D1/Q2`
     (`scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:523-546`). §1.7 records
-    that mismatch as W5 (`notes/stages/ledger_stage023_nullspace_underdetermination.md:686-688`,
+    that mismatch as W5 (`notes/stages/ledger_stage023_nullspace_underdetermination.md:723-725`,
     **§1.7(5), W5**).
   - **Loci on both sides.** “Sourced” side:
     `mathematica/ledger_stage023_nullspace_underdetermination_mathematica_audit.wl:298-310` and
-    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-479`; no-upstream-
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:460-483`
+    (**the whole `SOURCED_DIMS` block, all 22 entries**); no-upstream-
     dimension side:
     `scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:523-546`.
   - **What would settle it.** Trace each stage023 declaration to a named upstream dimension
     derivation and classify entries without such a derivation as stage-local declarations; the
     present term means only “declared in this stage's own dict”
-    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:686-688`,
+    (`notes/stages/ledger_stage023_nullspace_underdetermination.md:723-725`,
     **§1.7(5), W5**).
   - **Instrument.** A per-record provenance cross-check against named upstream stage008 plus both
     stage023 declaration tables, with an able-to-fail fixture that removes or redirects an upstream
     locus (`scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py:523-546`;
-    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:456-479`;
+    `scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py:460-483`
+    (**the whole `SOURCED_DIMS` block, all 22 entries**);
     `mathematica/ledger_stage023_nullspace_underdetermination_mathematica_audit.wl:298-310`).
 - ⛔ **TRACKED SPEC — exact-rational artifact syntax in
   `scripts/compare_dimension_artifacts.py`.** This is a validator change, not per-stage work, so it
@@ -1088,3 +1168,227 @@ including `[K]=[P]/[ρ]⁵=ML¹⁸T⁻²` reproducing the declared primitive, an
   emitters + review layer — deriving `axes=` from the live basis is a materially better guard than
   cross-engine equality. ⚠ The comparator pairs by axis **label** and never compares the two
   artifacts' declared axis **order**, so a reordered-but-relabelled sidecar passes today.
+
+### 12b. ⭐ PRIOR-ART SURVEY, 2026-07-28 — three decisions, all "build the small thing"
+
+Three read-only surveys asked whether this workstream is reinventing solved problems: a Python
+dimensional-analysis library instead of `scripts/ledger_dimensions.py`; an off-the-shelf mutation-testing
+tool instead of the hand-rolled per-tooth ablation; and an attestation scheme for §9's forgeable-sidecar
+hole. ⭐ **All three returned "do not adopt" — each for a different and specific reason, and each leaves
+a concrete small deliverable in its place.** Nothing was installed and no corpus file was modified. The
+working notes lived in `_scratch/prior_art/`, which is gitignored and does not survive; what is
+load-bearing is recorded here.
+
+**(a) Dimension libraries — NO-GO, keep `ledger_dimensions.py`.**
+- ⭐ **`sympy.physics.units` discards the declared axis order.** `DimensionSystem` sorts its bases:
+  declared `('M','L','T')`, `('L','T','M')` and `('L','M','T')` all collapse to `(L, M, T)`, and
+  `dim_vector` is likewise sorted. stage004's committed sidecar declares `axes=L,T,M`, which the library
+  **cannot produce** — the order must be re-imposed by a wrapper the library does not supply. That is
+  decisive here and nowhere else: axis-labelled comparison is this workstream's **sole** transposition
+  detector (§11).
+- Four further measured regressions against the incumbent: **zero-exponent axes are dropped**
+  (`get_dimensional_dependencies(L)` → `{L: 1}`, not a full-length vector, while
+  `compare_dimension_artifacts.build_dimension` raises on a length mismatch); **no membership
+  validation** — `get_dimensional_dependencies(Dimension("typo_axis"))` → `{typo_axis: 1}` with no
+  error, where `basis.from_mapping` raises `missing=/extra=`, so a misspelled axis would silently pass
+  and silently change the answer; **Float exponents silently accepted** — `L**0.5` →
+  `{Dimension(L): 0.500000000000000}`, where `_exact` coerces to `sp.Rational` at construction so a
+  Float can never enter; and **the walker keys off `Quantity`, not `Symbol`** —
+  `SI._collect_factor_and_dimension(sp.Symbol('x'))` → `(x, Dimension(1))`, i.e. an **unmapped symbol is
+  silently DIMENSIONLESS**, where each stage's `dim_of` raises
+  `DimError("missing dimension for symbol …")`. (Also: `Dimension("L")` is a global singleton shared
+  across bases, and `Dimension("mass") == ` SymPy's SI mass is `True`.)
+- **`astropy.units` manufactures the exact defect this project treats as fatal, by design.**
+  `astropy/units/utils.py sanitize_power` converts any power whose denominator is a power of two to a
+  float: `elif (denom & (denom - 1)) == 0: p = float(p)`. Denominator 2 is a power of two, so `1/2` and
+  `3/2` become `0.5` and `1.5` — hitting `probe_stage042`'s
+  `charge = basis(Fraction(1,2), Fraction(3,2), Fraction(-1))` (which then asserts that no `sp.Float` is
+  present) and stage004's `sp.Rational(1, 2)` sound-speed/healing-length powers. The library's
+  normalisation *is* the defect, silently, below any wrapper.
+- **`unyt` cannot register a new base dimension.** `unyt/dimensions.py`'s `base_dimensions` is a
+  hardcoded module-level list of 9 SymPy Symbols; `define_unit`/`UnitRegistry.add` register *units* over
+  existing bases. Adding `stiffness` means patching a third-party global — strictly worse than 222 pinned
+  lines for a control that is supposed to be byte-reproducible.
+- **`numericalunits` is non-deterministic and incompatible with SHA-pinned artifacts.** There is no
+  dimension object at all (*"you cannot directly see what the units are. You are supposed to already know
+  what the units are"*); base units are randomly-chosen floats, so detection requires running the
+  calculation **twice in separate Python sessions** and comparing.
+- **`pint` is plausible but was NOT EXECUTED.** Non-physical and extra base dimensions are documented as
+  supported (*"primary dimensions don't need to be declared; they can be defined for the first time as
+  part of a unit definition"*), but the default `UnitRegistry(non_int_type=float)` turns an exponent of
+  `1/2` into float `0.5`, and the fix (`non_int_type=Fraction`) is **registry-wide** and drags quantity
+  magnitudes with it; no declared axis order, no zero-padding, no SymPy interop, and a new unpinned
+  dependency.
+- ⭐ **The reframing worth keeping: the incumbent's edge is axis-order preservation and STRICTNESS, not
+  expressiveness.** Both exotic bases *pass* on sympy — the 4-axis `(M,L,T,E)` with `E` genuinely
+  independent (`mu_r = M²·L·T⁻⁴·E⁻¹`) and the non-physical `(stiffness,L,T)` with
+  `charge = S^(1/2)·L^(3/2)·T⁻¹` both build, with exponent types `Rational`/`Half`/`NegativeOne` and zero
+  `Float` atoms. The gap is never "it cannot express our basis"; it is that it will not keep the declared
+  order and will not refuse bad input.
+- ⚠ **Scope of the verdicts.** Only `sympy` (1.14.0, on CPython 3.10.12) is installed and installation
+  was forbidden, so the `pint`/`unyt`/`astropy`/`numericalunits` verdicts rest on upstream source and
+  documentation (`pint/util.py`, `pint/registry.py`, `unyt/dimensions.py`, `astropy/units/utils.py`),
+  **not on execution**. Migration cost if this is ever reopened: 7 basis declarations, ≈214 dimension
+  call sites, 7 sidecar regenerations (each header embeds `ledger_dimensions_sha256`, so all invalidate
+  at once), a pin re-baseline, matching edits to the 7 hand-rolled `.wl` emitters — and a trust-root
+  change, because the SHA would then cover only the wrapper while the library version becomes an
+  **unpinned input the sidecar does not attest**.
+
+**(b) Mutation testing — do not adopt a tool; build a ~100-line ablation driver.**
+⭐⭐ **NO LONGER A CANDIDATE — USER DECISION, 2026-07-29; the decision and its constraints are the last
+four bullets of this subsection.**
+- **`mutmut` writes SCHEMATA — the decisive blocker, because it makes a control pass vacuously rather
+  than error.** Its `ARCHITECTURE.rst`: *"The mutated files contains the original code and the mutants.
+  With the `MUTANT_UNDER_TEST` environment variable, we can specify (among other things) which mutant
+  should be enabled."* Every mutant is therefore **byte-identical on disk**, so `emit_dimension_sidecar`'s
+  `source_sha256` is a constant across all mutants and the freshness pin `require_fresh_stage_source`
+  *"degenerates into 'the schemata file equals itself'"* — a control that silently stops being a control.
+  ⚠ Its sibling fails the other way, and the two must not be collapsed: if `ledger_dimensions.py` falls
+  inside `source_paths`, the schemata-rewritten bytes never equal `ledger_dimensions.accepted.sha256`, so
+  every mutant becomes a **uniform false kill** (`COMPARISON_SKIPPED: ledger-dimensions module pin
+  failed`) that tells you nothing. mutmut is additionally pytest-only since 3.0 with no runner key, and
+  copies the source into `mutants/`, breaking every `__file__`-derived path.
+- **`mutatest` mutates `__pycache__`, and CPython never caches the module run as `__main__` — so it is a
+  silent no-op here.** Verified locally: running `python3 pcachetest/s.py` produced **no** `__pycache__`;
+  a subsequent `import s` produced one. Every mutant would be reported "survived" while nothing was ever
+  mutated — a uniform false negative. (`MutPy` fails similarly for a different reason: in-memory AST
+  injection through the import machinery cannot reach a script run as a separate process, and it is
+  unmaintained since 2019-11.)
+- ⭐ **NO tool has a per-mutant hook to reset an emitted SIDE-EFFECT artifact.** cosmic-ray's
+  `use_mutation` puts *"the unmutated **code** back in place"* and nothing else; mutmut's `mutants/` tree
+  is per-run, not per-mutant, so mutant *n*'s artifact is visible to mutant *n+1*; only universalmutator
+  handles it, and by **convention in the test command** (its own README example already `rm`s a generated
+  artifact before each trial), not by a hook. This is the failure that actually bit: of the 22
+  `cmp_*.txt` banked from the real stage023 ablation, **16 are the 673-byte freshness-failure text**
+  (`COMPARISON_SKIPPED: Python dimension sidecar freshness failed`) and only 6 are a real `MISMATCH` —
+  i.e. for 16 of 22 mutants the comparator's verdict was produced by the residual `.dimensions.txt`, not
+  by a dimension comparison at all.
+- **Targeting is subtractive or random everywhere, with no include-list.** cosmic-ray's three shipped
+  filters (`cr-filter-operators`, `cr-filter-pragma`, `cr-filter-git`) all *skip* work items and there is
+  **no "mutate only these lines" input**; mutmut offers file globs, pragmas and function-name globs (and
+  `SOURCED_DIMS` is a module-level dict literal, so the function glob cannot reach it); MutPy's
+  `--percentage` and mutatest's `--nlocations` select **random** sites. ⚠ universalmutator's line
+  restriction is **unverified**. That collides head-on with `docs/development_pipeline.md:330-332` — the
+  ablation target list is the **orchestrator's**, and any tool whose `init` enumerates the sites has
+  taken that ownership. Scale: `cosmic-ray init` on the stage023 file would emit order-10³ work items
+  against the wanted 22 + 29 = 51, so a custom filter would have to delete ~95%.
+- **The bind ablation is not expressible by any shipped operator.** `bind.tsv`'s
+  `SOURCED_DIMS[Z1ret] → SOURCED_DIMS[a]` is an identifier-for-identifier swap; cosmic-ray's
+  `VariableReplacer` substitutes `Number(value=str(randint(-100, 100)))` — a **random integer**, and
+  non-deterministic across runs, so a banked TSV row could not be reproduced.
+- **cosmic-ray is the only serious candidate** (verdict PARTIAL; universalmutator is also PARTIAL, on the
+  weakest evidence base of the five). Adopting it still requires a custom include-filter over
+  `session.sqlite`, a *packaged* custom operator for the rebinding, a bespoke SQLite reader to rebuild the
+  five TSV columns, a `bash -c` wrapper (`test-command` is `shlex.split`, not shelled), and the sidecar
+  reset inside that wrapper — *"Items 2–5 are more code than the thing being replaced."*
+- ⭐ **The one non-negotiable design constraint it establishes: MUTATE ON DISK, AT THE REAL PATH.**
+  cosmic-ray does (*"applies a mutation to a file on disk, and after the with-block it put the unmutated
+  code back in place"*) and the survey calls that *"the single biggest compatibility fact"* — because
+  this project's controls hash the file's own bytes, `__file__`, the sidecar's destination path and the
+  `sha256` freshness pin only stay honest when the real file at the real path is what changes.
+- ⭐ **The three features the driver must have, which the hand-rolled loops lacked:** (1) per-mutant reset
+  of the source **and** of every emitted artifact, as a first-class step rather than something smuggled
+  into a wrapper; (2) per-mutant capture retained, never overwritten; (3) resume after interrupt, by
+  skipping rows already banked. Its input is an explicit **orchestrator-supplied include-list** of
+  `(name, line, old_text, new_text)` rows, which satisfies the process clause by construction. Restore
+  still proves itself by `cp` + `git hash-object` (§9), never `git checkout`.
+- ⭐⭐ **USER DECISION, 2026-07-29 — the ablation driver is the next item in the BUILD QUEUE (which
+  tooling gets built next), and it is not per-stage throwaway.** ⚠ **Two different sequences run here
+  and this decision sets only the second.** The **conversion order** (which stage converts next) is
+  §8's, and it is unchanged: **027** is still the next conversion. The **build queue** is this one, and
+  it now leads with the driver — so in time the driver is built **before** the 027 conversion begins.
+  The existing hand-rolled ablation harnesses are to be switched over to it, and it is to be **reused
+  for every subsequent stage rather than re-written per stage**. This is a commitment to build; the two
+  remaining survey outcomes are not (see the closing paragraph of §12b).
+- ⛔ **It is acceptance tooling, so it cannot grade itself.** Per `docs/development_pipeline.md:319-322`
+  (**checklist item 1b — "Every checker named in the directive already existed before the build"**),
+  when the deliverable *is* the checker, the positive and negative conformance fixtures and their
+  expected outcomes must be authored and **frozen by a different session** before the build starts; and
+  per this workstream's own floor rule (§4, `60e7032c` — *sidecar + comparator with a non-empty floor*),
+  their **non-empty floors** are frozen with them. The building session may neither author nor weaken
+  any of the three.
+- ⭐ **The retrofit has an able-to-fail acceptance test already available — a committed one, not one to
+  be written.** Re-running stage023's two ablation axes through the new driver must reproduce
+  the committed `notes/stage023_step_h_evidence/results.tsv` exactly: **22 `A1_DECLARATION` rows and 29
+  `A2_BINDING` rows, 51 data rows under one 13-column header**. A driver that cannot
+  reproduce those tables has not replaced the harness it claims to replace, and the failure is visible
+  without anyone deciding what the right answer was.
+- ⭐ **A fourth required feature the list above does not state, learned this stage: whatever the driver
+  emits must be written to be read from the COMMIT, not from the scratch directory it ran in.** Every
+  path, count and row reference in its output must resolve against the committed tree; run-local scratch
+  paths, and counts true only of the run, are not acceptable output. Four separate claims in this
+  stage's hand-written evidence summary (`notes/stage023_step_h_evidence/ABLATION_SUMMARY.md`) were true
+  of the run and false of the commit, and each had to be corrected under review — so this is a
+  requirement on the driver's output format, where that class of error is designed out, not a reviewer's
+  checklist item, where it is merely caught.
+
+**(c) Provenance — the missing control is `(g2)` for Python, not a tool.**
+- ⭐ **The structural finding, which decides the whole survey: no attestation scheme binds an artifact to
+  its producer *by attesting alone*.** ⚠ Scope this precisely — schemes in this family do define and
+  carry producer information (SLSA's provenance is verifiable information tracking an artifact to where
+  and how it was produced), so the claim is **not** that they say nothing about the producer. It is that
+  a digest, a signature, or a link-metadata record is computed **over bytes that already exist**, and
+  nothing in the act of hashing or signing can distinguish bytes a process wrote from bytes a hand
+  wrote — so the producer information is *asserted*, not established, by the attestation step itself. Every tool that closes the gap closes it by **re-executing the producer and comparing
+  bytes** — which is exactly what §4-(g2) already does for the `.wl`. ⇒ **the missing control is (g2) for
+  Python**, and unlike Mathematica it needs no licence seat, so it can be **mechanised** instead of left
+  to "the orchestrator regenerates the sidecar itself before the (i) commit" (§9).
+- **The citable negatives.** *in-toto*: the spec makes an `expected_command` mismatch a **warning** only,
+  because the field *"can easily be forged (e.g. by changing the PATH environment variable in a host) and
+  thus it should not be trusted for security checks"* — it hashes declared paths before and after the
+  wrapped command, so `in-toto-run --products sidecar.txt -- python3 stage.py` yields a link that
+  verifies even in a tree where the sidecar was hand-written and the stage never touches it. *DVC*:
+  `dvc commit` *"stores the current contents of files … in the cache"* explicitly **without re-executing**,
+  documented for *"after executing stage commands by hand"*. *Snakemake*: `--touch` exists *"to pretend
+  that the rules were executed, in order to fool future invocations of snakemake."* *SLSA*: L3 makes the
+  signature unforgeable **by the build steps** — a genuine by-construction property of the *signature*,
+  not of the artifact — while a workflow whose only step copies a committed file still gets perfectly
+  valid provenance, and producer-submitted bad code is explicitly out of scope. *sigstore/cosign* signs
+  whatever bytes it is handed, and `commit.gpgsign=true` is already configured here.
+- **Bazel and Nix DO close it for Python — and their closing act is still regenerate-and-diff.** Bazel's
+  sandbox plus `diff_test`/`write_source_files` *"ensures the source tree file … to be written to is up
+  to date"*; Nix's equivalent is `nix build && cmp`. The sandbox's contribution is only that the *freshly
+  built* side is guaranteed genuine. ⛔ Both are disproportionate for a directory of standalone scripts
+  run ad hoc, and **Mathematica's licence blocks hermeticity either way** (a floating licence server needs
+  exactly the network the sandbox is designed to remove). Observed-execution provenance (ReproZip /
+  Sciunit / noWorkflow) is the only family that binds without re-execution, but its trace is itself a
+  file, so it relocates the key-custody question instead of escaping it.
+- ⭐ **The cheap control, MEASURED — not a hypothetical.** Copy `scripts/` to a temp dir outside the repo;
+  **delete the target `.dimensions.txt` there**; clear `__pycache__`; run the stage; `cmp` the emission
+  against the committed bytes; exit 1 on any difference or on a missing emission, with a
+  `SIDECAR_REGEN_OK|…` marker in the `MODULE_PIN_OK` style. Run that way — different directory, different
+  time, committed sidecar absent — **6 of 6 then-converted stages regenerated BYTE-IDENTICAL, ≈123 s
+  total** (004 0.5 s · 011 2.0 s · 012 15.8 s · 013 **82.3 s** · 016 11.3 s · 018 10.6 s). ⚠ Those six
+  are the whole measured set: stage023 was not yet converted when this ran and is **not** covered by it
+  (§3 now counts seven). The emission is
+  deterministic by construction as well as by measurement: no set iteration, no float formatting, no
+  timestamps, no absolute paths. ⚠ stage013 alone is ≈82 s and 23 stages remain (§3), so this belongs as
+  a **per-stage** gate inside the §4 loop, never as an always-on whole-corpus gate.
+- ⭐ **Why deleting the committed copy in the run tree is load-bearing:** it defeats **self-echo** (a
+  script that reads its own committed sidecar and reprints it), because the committed bytes are never fed
+  to the run. That is precisely why the naive in-place `regenerate && git diff --exit-code` form is
+  **weaker** — in place, the committed file is present during the run.
+- ⛔ **This closes PRODUCTION PROVENANCE ONLY** — "the artifact is what running that source emits".
+  Correctness is a separate property and stays with the cross-engine comparator and the model read (§11).
+  Do not let anyone upgrade a green regeneration into a correctness claim; that is the same category
+  error §11 already warns about for a bare `python3 …` run.
+- ⚠ **What it still does not close** (unchanged from §9): environment interposition — a `sitecustomize.py`
+  on `PYTHONPATH` — is inherent to any in-process check, cheaply mitigated by running the regeneration
+  inside a pinned `python:3.10-slim` container (the docker daemon is reachable here); and **deleting the
+  check's own invocation** is fixed only by an executor outside the repo, the cheapest being a GitHub
+  Actions workflow (the repo is public, so minutes are free) whose workflow file is itself at the commit
+  under review. ⛔ Python-only — Mathematica cannot run on a hosted runner — but the Python side is
+  exactly the side that lacks (g2).
+
+⭐ **The common shape: all three point at a small project-owned deliverable, not an adoption** — a
+222-line module kept, a ~100-line ablation driver, a ~60-line regeneration check. ⛔ **What this does NOT
+license:** none of it changes the charter (§1), the per-stage loop (§4), or any existing verdict.
+
+⚠ **The three are NO LONGER in the same state — do not read this section as three candidates.**
+**(a) is CLOSED as NO-GO:** `ledger_dimensions.py` stands, no library is adopted, and the migration cost
+is recorded only against a future reopening. **(b) is a USER DECISION, 2026-07-29, and the next item in
+the BUILD QUEUE — which is not the conversion order (§8), where 027 is still next** — the ablation
+driver is to be built, the hand-rolled harnesses switched over to it, and it
+reused per stage thereafter, subject to the acceptance-tooling constraints in §12b(b). **(c) alone
+remains a candidate deliverable** — the Python sidecar-regeneration control is recorded so the survey
+need not be re-run, and is not a commitment to build.

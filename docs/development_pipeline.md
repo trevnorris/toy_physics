@@ -6,8 +6,32 @@ written **2026-06-26** after the rules — previously scattered across ~30 `feed
 §discipline/§review sections — let a shortcut slip through (the orchestrator self-verified a remediated script instead of using a fresh
 clean agent). Consolidating it here makes the pipeline impossible to miss.
 
-**This doc is thin: the memories remain the source of truth.** Each rule cites its `feedback-*` memory; when they conflict, the memory
-wins (it's the live, dated record). Keep this doc synced when a process rule changes.
+⭐⭐ **THIS DOC IS THE OPERATIVE PROCESS DOCUMENT.** What an agent or a session is to *do* is decided here. The `feedback-*` memories
+hold the **why** — the incident each rule came from, the measurement behind it, the project facts — and each rule below cites its
+memory so the reasoning is one hop away. ⛔ **There is no precedence question and no second process:** a conflict between this doc
+and a memory is a **defect to fix**, in whichever of the two is wrong. Keep both synced when a process rule changes. *(This replaces
+"the memories remain the source of truth; when they conflict, the memory wins", which handed agents two processes to choose between.)*
+
+---
+
+## ⭐⭐ THE POSTURE, AND THE TEST EVERY CHECK MUST PASS (user decision, 2026-07-29/30)
+
+**This is a two-person toy-physics self-consistency project.** Checks exist to catch a **wrong
+derivation**. ⛔ **Immutability is not a discipline here:** files are freely editable, and nothing is
+frozen, byte-perfect, or under a custody rule. ⚠ **One carve-out, still undecided** — the numerical
+solver's freeze hash, because there it *is* the mechanism of target-blindness; see the *Numerical-work
+gates* section below, which is the only place a freeze survives.
+
+⭐ **The governing test — apply it to every check, gate and process rule, including the ones below:**
+- **Does it catch a way the PHYSICS could be wrong?** → **keep.**
+- **Does it only catch a way the TOOLING could be wrong, or defend against a motivated adversary?** → **cut.**
+
+This promotes *Model the real risk* (below) from a buried line to the governing principle. Our derived
+artifacts are written by our own agents, so the operative failure is **drift, an honest error, or an LLM
+shortcut that resembles a pass** — never misrepresentation. The apparatus this replaced had grown a
+review instrument, an acceptance gate for it, a byte-authority over that gate and a documented procedure
+over the authority; a full session was spent at those layers verifying no physics. Details and the
+scale-back it authorises: memory [`physics-not-ceremony`].
 
 ---
 
@@ -15,24 +39,29 @@ wins (it's the live, dated record). Keep this doc synced when a process rule cha
 
 | Role | Does | Does NOT |
 |---|---|---|
-| **Claude (orchestrator)** | Reviews; **decides** what scaffolding must say (directives, execution prompts, `STATUS`/`decisions` docs) and reviews the resulting **diff**; runs the **arbiter re-run** of existing scripts; ⭐ **performs ABLATIONS** (2026-07-28, user-approved — **supplementary only**, see the row below); gates; banks results | **Author or repair any code/math/script — the deliverable is Codex's, precisely so that Claude's and Grok's review of it is independent of its author** [`claude-reviews-codex-codes`, `codex-is-fix-applier`]. ⛔ **The test is REVERSION, not intent:** an ablation is a mutation reverted inside the same session with a hash-proven restore. Code that survives the session, or that another party could later adopt, is authorship — calling it "temporary" does not make it an ablation. ⛔ Also: **hand-type a long scaffolding document** — see the Scaffolding-applier row [`thin-orchestrator-definition`] |
-| **Ablations** — a review instrument, not authorship (2026-07-28, user-approved) | A mutation whose only purpose is to make a gate fire, and which is **reverted inside the same session with a hash-proven restore**, is part of the review process, and Claude may perform it. Every one restores by `cp` and proves it with `git hash-object`. ⚠ This is the **one** exception to *"the arbiter re-run is the only execution leg the orchestrator performs"* (Phase 4(a)) — it does not open others. | ⛔⛔ **REPLACE the Phase 4(c) fresh-agent adversarial leg or checklist item 6.** An orchestrator ablation is **supplementary**; the fresh-agent leg still runs and still owns the verdict. ⭐ **Measured 2026-07-28:** a fresh leg reviewing an orchestrator-run ablation found a real defect in it — the harness restored the mutated **source** between iterations but not the **emitted artifact**, so a stale sidecar decided 16 of 22 runs. ⚠ Two further defects were claimed and are **NOT artifact-supported** (per-mutant captures were in fact retained for all 22 rows; the source restore was present) — the corrected count is **one**, and it is stated here rather than the inflated three because a rule justified by an overstated measurement is the failure this doc exists to prevent. **An ablation is still not self-validating: one defect found by an independent reader is the whole point.** ⛔ Also: become a licence to author or repair the deliverable, or to leave any mutation in place. ⛔ Never `git checkout`/`restore`/`stash` to undo one on uncommitted work [`never-checkout-to-restore-uncommitted`]. ⛔ The target list is the **orchestrator's**, never the builder's [`per-tooth-ablation`] |
-| **Scaffolding applier** — a distinct role from a review leg (2026-07-28, user-approved) | Applies an orchestrator-authored **decision list** to a **prose** file: a directive, review prompt, plan doc, `STATUS`, or a note section. Flow: Claude writes the decision list (what changes, where, why) → the applier edits the file → **Codex verifies** → Claude **reviews the diff**. Judgement stays with Claude; transcription does not. ⭐ **Edit, never rewrite** a file already written unless the change exceeds half of it. | ⛔ **Touch any code, math, script, or `.wl`/`.py`/`.sh` file — prose only, and never a deliverable.** ⛔ Also be the same session that reviews its own application, or double as a review leg. ⚠ The Clean-agents row's ban on scratch mutation governs **review legs**; it does not reach this role, which exists precisely to write prose. ⚠ This row exists because the old wording (*"Claude owns scaffolding (directive prose…)"*) contradicted [`thin-orchestrator-definition`] and a session then hand-wrote one directive twice in full |
-| **Codex** (always `-c model_reasoning_effort=xhigh`) | Designs + writes + RUNS all scripts, iterates to exit 0, applies all code/math fixes | Decide the verdict (the verifier reviews substance afterward) [`codex-xhigh-reasoning`, `codex-iterates-until-clean`] |
-| **GLM** | One fresh tertiary check per directive (CLI, full repo access) | Be iterated like Codex — it's a single pass [`review-ordering-codex-then-glm`] |
-| **Grok** | Gates foundational directives and artifacts about to be frozen; applies only the documentation pass expressly assigned to it in a user-directed round-robin | Write or mutate any code/math/script; become a general-purpose documentation applier [`grok-final-review-pass`] |
-| **Clean agents** (review legs) | Each review/verification leg, on its **own fresh agent**, no hint of the expected conclusion; **only in Phase 4(c), may mutate disposable scratch copies solely for the orchestrator-assigned per-tooth ablations** | **Write or mutate any live/deliverable code/math/script, or make any scratch mutation outside that bounded Phase 4(c) ablation — an agent is a REVIEW instrument, never a coder.** Delegating coding to an agent is the SAME violation as Claude doing it by hand, and it is the easier one to rationalize [`claude-reviews-codex-codes`, `codex-is-fix-applier`]. Also: be reused across legs / carry context between reviews [`review-agents`, `offload-review-gauntlet`] |
+| **Claude (orchestrator)** | Reviews; **decides** what scaffolding must say (directives, execution prompts, `STATUS`/`decisions` docs) and reviews the resulting **diff**; re-runs each **named acceptance command** itself; ⭐ **performs ABLATIONS**; gates; banks results | ⛔ **Review its own build.** Whatever Claude authored or repaired goes to the fresh reviewer, never back to Claude [`review-agents`]. ⛔ Also: **hand-type a long scaffolding document** — see the Scaffolding-applier row [`thin-orchestrator-definition`] |
+| **Ablations** — a review instrument | A mutation whose only purpose is to make a gate fire, reverted inside the same session. Restore by `cp`. ⚠ **Revert it before the session ends** — code that survives the session, or that another party could later adopt, is authorship, and calling it "temporary" does not make it an ablation. | ⛔ **REPLACE the fresh reviewer's per-tooth ablation leg (Phase 4(b), checklist item 6).** An orchestrator ablation is **supplementary**; the fresh leg still owns the verdict. ⭐ **Measured 2026-07-28:** a fresh leg reviewing an orchestrator-run ablation found a real defect in it — the harness restored the mutated **source** between iterations but not the **emitted artifact**, so a stale sidecar decided the runs. ⚠⚠ **The "16 of 22" figure is SELF-REPORTED and repository-unverifiable:** the defective run was gitignored and is absent from the tree (`notes/stage023_step_h_evidence/` holds only `results.tsv` — the *corrected* run — plus `include_list.tsv` and the summary; the per-mutant `cmp_*.txt` are not in git). The defect class is real; the count cannot be checked. ⚠ Two further defects were claimed and are **NOT artifact-supported** (per-mutant captures were in fact retained for all 22 rows; the source restore was present) — the corrected count is **one**, and it is stated here rather than the inflated three because a rule justified by an overstated measurement is the failure this doc exists to prevent. **An ablation is not self-validating: one defect found by an independent reader is the whole point.** ⛔ Never `git checkout`/`restore`/`stash` to undo one on uncommitted work — that restores from HEAD and destroys it [`never-checkout-to-restore-uncommitted`]. ⛔ The target list is the **orchestrator's**, never the builder's [`per-tooth-ablation`] |
+| **Scaffolding applier** — a distinct role from a review leg | Applies an orchestrator-authored **decision list** to a **prose** file: a directive, review prompt, plan doc, `STATUS`, or a note section. Flow: Claude writes the decision list (what changes, where, why) → the applier edits the file → Claude **reviews the diff**. Judgement stays with Claude; transcription does not. ⭐ **Edit, never rewrite** a file already written unless the change exceeds half of it. | ⛔ **Touch any code, math, script, or `.wl`/`.py`/`.sh` file — prose only, and never a deliverable.** ⛔ Also be the same session that reviews its own application, or double as a review leg. ⚠ The Clean-agents row's ban on scratch mutation governs **review legs**; it does not reach this role, which exists precisely to write prose. ⚠ This row exists because the old wording (*"Claude owns scaffolding (directive prose…)"*) contradicted [`thin-orchestrator-definition`] and a session then hand-wrote one directive twice in full |
+| **Codex** (always `-c model_reasoning_effort=xhigh`) | The default builder: designs + writes + RUNS scripts, iterates to exit 0, applies code/math fixes | Decide the verdict (the fresh reviewer reviews substance afterward) [`codex-xhigh-reasoning`, `codex-iterates-until-clean`] |
+| **Clean agents** (the review leg) | The review/verification leg, on its **own fresh agent**, no hint of the expected conclusion; may mutate disposable scratch copies for the orchestrator-assigned per-tooth ablations | **Write or mutate any live/deliverable code/math/script, or make any scratch mutation outside that bounded ablation — an agent is a REVIEW instrument, never a coder.** Also: be reused across legs / carry context between reviews [`review-agents`] |
 
-⛔ **Round-robin application and review — only for documentation the user expressly assigns to this
-rotation, such as canonical process, plan, or decision documents.** Rotation: Codex applies → Grok and
-Claude review → Grok applies → Codex and Claude review → alternate; each application is reviewed by the
-other two parties before the next application. **Operating rationale:** rotating the applier is a
-precaution against context-dependent transcription drift, based on the 2026-07-22 stage-031 directive
-incident [`roundrobin-apply-review`]. This is not a standing gauntlet for routine note, status, or
-transcript edits. ⛔ **Software builds are always Codex's.** This rotation governs documentation only; it
-does **not** license an agent — or Grok — to write code. The Roles-table rule stands unchanged: *an agent
-is a REVIEW instrument, never a coder* — delegating coding to an agent remains the same violation as
-Claude doing it by hand.
+⭐ **ONE BUILDER; ONE FRESH REVIEWER FOR PROSE AND PROCESS, TWO INDEPENDENT REVIEW LEGS FOR PHYSICS**
+(user decision, 2026-07-29/30, amended 2026-07-30). Codex is the default builder, but any party may build;
+whoever builds does not review, and every review leg runs on a **fresh** agent with no context from the build.
+⭐⭐ **How many legs is decided by the ARTIFACT, not by the phase:**
+- **Physics-bearing** — a stage's math, a derivation, a dimensional determination, a verdict a physics claim
+  rests on → **TWO independent review legs.** Independent of the builder *and of each other*: neither leg sees
+  the other's findings, and a clean first leg does not retire the second. ⭐ Independence is what was measured to
+  matter (see *Verification discipline*: a load-bearing "decisive test" was a mean-value-theorem tautology that
+  both its author and its executor reviewed SOUND, and only a third independent reader caught).
+- **Prose and process** — a directive, a plan doc, `STATUS`, a note section, tooling → **ONE fresh leg.**
+
+⛔ **What this does NOT restore, and what does not come back:** the four-leg Codex→GLM→fold→Codex→Grok bookend,
+the round-robin applier rotation, per-chunk user gates, three-session build/fixture/implement sequences,
+"acceptance tooling is authored outside the session it polices", and "Claude may never author code". A second
+leg is a **second independent reader of the same artifact**, not a second *model in a fixed sequence* and not a
+new phase. ⚠ **Two things are kept and are not negotiable:** every review leg is **fresh** (cheap, and it caught
+real defects), and the **physics leg stays blocking**.
 
 ---
 
@@ -42,8 +71,8 @@ Claude doing it by hand.
 - **A miss is a missing-physics signal, never a rescue knob** — when you fall short, do **not** add a free parameter to close the gap (that is the "fits anything" fudge). Re-examine the equations and *derive* the missing term. Reaching for a parameter "to make it behave" is the tell — stop [`falsification-is-the-goal`].
 - **Calibrate-then-predict; score the held-out surplus — and count form-shopping as a knob** — calibrating a few inputs on known data is fine; *then* the score is the *new* results you reach with **no further calibration**. The **form** of a law is the prediction; its overall **magnitude** may be a calibration input. Count **all** degrees of freedom honestly — including that ***trying several candidate forms and keeping the best is itself a degree of freedom***. Forbidden: claiming one quantity as both calibrated-to and predicted; using as many knobs as predictions [`calibrate-predict-methodology`].
 - **Truth in the OUTPUT, not prose** — no LLM establishes a math or dimensional fact; a verdict-bearing control must compute from inputs and be able to fail [`negative-verdict-short-circuit`, `dimensional-consistency-check`].
-- **Never unilaterally deviate from the calibrated contract** — if a step is failing, HALT and bring it to the user [`never-alter-calibrated-process`].
-- **"The tool is broken" is a claim that must be VERIFIED before it licenses anything** — a stall/hang/failure attributed to Codex (or Mathematica, or GLM) is a hypothesis, not a fact. Check the actual artifact: does the log end with its completion marker? did the process exit non-zero? does a fresh smoke run reproduce it? **If Codex is genuinely broken, we FIX Codex — we never route around it**, and never by promoting an agent to coder. (2026-07-24: a "Codex CLI stalled twice" claim was written into four docs as justification for an agent-as-coder pivot; on later inspection all 27 of that day's Codex runs had ended `exit=0` and a smoke run answered correctly in 20s. The unverified excuse did more damage than the original error, because it self-justified in every future session.) [`never-alter-calibrated-process`, `negative-verdict-short-circuit`].
+- **Never unilaterally deviate from the agreed contract** — the contract is now *one builder, one fresh reviewer, physics leg blocking* (Roles table); if a step is failing, HALT and bring it to the user rather than improvising a substitute. ⚠ The rule polices **silent drift**, not scope: a user-decided scale-back is a change to the contract, not a violation of it [`never-alter-calibrated-process`].
+- **"The tool is broken" is a claim that must be VERIFIED before it licenses anything** — a stall/hang/failure attributed to Codex (or Mathematica, or GLM) is a hypothesis, not a fact. Check the actual artifact: does the log end with its completion marker? did the process exit non-zero? does a fresh smoke run reproduce it? **If a tool is genuinely broken, we FIX it — we never route around it.** ⚠ *(Retired clause, 2026-07-29/30: "and never by promoting an agent to coder" — any party may now build; the rule that survives is that whoever builds does not review, and that a broken tool is diagnosed, not silently replaced.)* (2026-07-24: a "Codex CLI stalled twice" claim was written into four docs as justification for an agent-as-coder pivot; on later inspection all 27 of that day's Codex runs had ended `exit=0` and a smoke run answered correctly in 20s. The unverified excuse did more damage than the original error, because it self-justified in every future session.) [`never-alter-calibrated-process`, `negative-verdict-short-circuit`].
 
 ---
 
@@ -52,16 +81,12 @@ Claude doing it by hand.
 ### Phase 0 — Grounding
 Read `docs/model_map.md` (⛔ NOT `conceptual_foundation.md` — superseded, it re-confuses) + the relevant memories first. Don't re-derive what's already banked (e.g. the PN ladder, prior no-gos).
 
-### Phase 1 — Directive → review gauntlet (before any compute)
+### Phase 1 — Directive → ONE review pass (before any compute)
 1. **Claude specifies the directive** — *requirement + acceptance + the verdict ladder (incl. the no-gos)*; **never pre-designs the computational route** [`claude-reviews-codex-codes`]. ⭐ For anything longer than a short document, Claude writes the **decision list** and a **scaffolding applier** produces the text (Roles table); Claude reviews the diff. Claude decides *what it says*, not *who types it*.
-2. **Codex design-review (xhigh, via a gauntlet-runner agent)** → iterate to GREEN [`directive-design-review`, `offload-review-gauntlet`].
-3. **ONE GLM tertiary pass** — a single fresh check [`review-ordering-codex-then-glm`].
-4. **Claude folds** the findings — Claude owns *the decisions*; the applier may own the keystrokes. ⭐ **Edit, never rewrite**: a fold that changes a dozen sections is a dozen edits, not a re-emission of the file.
-5. **Codex confirm-pass → GREEN again** — Codex bookends the GLM pass [`review-ordering-codex-then-glm`, `directive-design-review`].
-6. **User gate.**
+2. **ONE design-review pass on a fresh reviewer** → fold the findings and go. ⭐ **Edit, never rewrite**: a fold that changes a dozen sections is a dozen edits, not a re-emission of the file. ⛔ **No bookend, no rotation, no second-model confirm pass** — a directive that needs three review rounds to be safe is the wrong shape; decompose it instead [`decompose-before-building-gates`].
 
-### Phase 2 — Per-gate execution-prompt design-review
-Claude specifies the gate's **execution prompt** (scaffolding; same decision-list/applier split as Phase 1) → **Codex design-reviews the execution prompt (via agent) before the expensive run** → fold. (Lesson: review the per-rung prompt, not just the directive.)
+### Phase 2 — Per-gate execution prompt
+Claude specifies the gate's **execution prompt** (scaffolding; same decision-list/applier split as Phase 1). Review it in the same single pass as the directive when they land together; a separate round is optional, not required.
 
 ### Phase 3 — Execution (Codex)
 Codex designs + codes + runs **dual-engine** (SymPy + Mathematica), iterating to exit 0 [`dual-engine-required`, `codex-iterates-until-clean`]:
@@ -69,12 +94,19 @@ Codex designs + codes + runs **dual-engine** (SymPy + Mathematica), iterating to
 - `codex exec … xhigh` **backgrounded with `< /dev/null`**; **never wrap the Codex session in shell `timeout`** [`background-process-launch`, `never-timeout-codex`].
 - The **scripts** Codex runs get `timeout 600`; a 124 = reformulate the math, never raise the cap [`script-timeout-policy`].
 - **≤2 concurrent `math -script`** seats; no parallel `$RT exec-*` (it races `MANIFEST.yaml`) [`mathematica-single-seat`, `no-parallel-exec-sympy`].
+- ⭐⭐ **CO-AUTHORSHIP GUARD ON THE TWO ENGINES — the party that wrote the `.py` must not be the party that
+  adjusts the `.wl` until the comparator agrees.** Chasing green by editing whichever side disagrees collapses
+  two engines into one thought, and the result is a comparator that passes because both halves were tuned to
+  each other — **exactly the "LLM shortcut that resembles a pass"** *THE POSTURE* names as the operative failure
+  mode. A disagreement is a **finding to report**, never a difference to adjust either side into. ⛔ This is
+  **not** custody: no commit ordering, no "reference custody", no freezing one engine before the other, and
+  nothing here says who commits what when. It is one rule about **who may edit which side while a comparison is
+  open** [`dual-engine-required`].
 - **Dimensional firewall — comprehensive + inline:** dim-check **every constructed expression as it is built** (not an end-pass), units restored, mutually cross-consistent, **free of any back-solved free carrier**, dual-engine must agree, **able-to-fail** (an ablation must FIRE). No LLM establishes a dim fact [`dimensional-consistency-check`].
 
-### Phase 4 — Tri-review (the backstop — each leg independent)
-- **(a) Arbiter re-run** — *orchestrator* independently re-runs the existing scripts unchanged (reliability gate; refreshes committed outputs) [`orchestrator-rerun-and-output`]. **This is the only execution leg the orchestrator performs.**
-- **(b) Transliteration-fidelity audit** — **fresh clean agent**, code-vs-equations term-by-term (catches a faithful-but-wrong operator that MMS/arbiter can't) [`transliteration-fidelity-audit`, `script-review-depth`].
-- **(c) Adversarial-with-ablation** — **fresh clean agent**, tries to break it: mutates scratch copies, confirms controls are able-to-fail, hunts pass-by-construction [`negative-verdict-short-circuit`]. ⛔ **The builder never selects the ablation target.** Ablation is per-tooth over every able-to-fail check or emitted record; the target list is owned by the **orchestrator**. Otherwise one correctly live record can carry an arbitrary number of hardcoded ones, and every stated observation still passes.
+### Phase 4 — The backstop: an arbiter re-run plus the review legs
+- **(a) Arbiter re-run** — *orchestrator* independently re-runs the existing scripts and every **named acceptance command** unchanged, and reads the literal exit codes (reliability gate; refreshes committed outputs) [`orchestrator-rerun-and-output`, `execute-your-acceptance-commands`].
+- **(b) The review leg, doing both halves** — a **fresh clean agent** that (i) reads **code-vs-equations term-by-term** (catches a faithful-but-wrong operator, and the result-emitter that dual-engine agreement is blind to) [`transliteration-fidelity-audit`, `script-review-depth`], and (ii) **tries to break it**: mutates scratch copies, confirms controls are able-to-fail, hunts pass-by-construction [`negative-verdict-short-circuit`]. ⭐ **On a physics-bearing artifact this runs TWICE, on two mutually independent fresh agents** (Roles table): the second leg is launched without the first's findings, and a clean first leg does not retire it. Prose and tooling get one. ⛔ **The builder never selects the ablation target.** Ablation is per-tooth over every able-to-fail check or emitted record; the target list is owned by the **orchestrator**. Otherwise one correctly live record can carry an arbitrary number of hardcoded ones, and every stated observation still passes [`per-tooth-ablation`].
 - A negative / "can't-do" verdict gets **harder** verification than a positive [`negative-verdict-short-circuit`].
 
 ### Phase 5 — Remediation loop (if a hole is found)
@@ -84,7 +116,7 @@ Codex designs + codes + runs **dual-engine** (SymPy + Mathematica), iterating to
 - Math-level disagreements: Claude + Codex resolve and agree; escalate to the user only if the fix changes the *conceptual nature* [`claude-codex-resolve-math`].
 
 ### Phase 6 — Gate + bank
-- **One gate at a time, explicit user gate between gates, never roll forward autonomously** [`sequential-audit-chunks`].
+- **One gate at a time** — finish and bank a gate before starting the next, because a math error cascades and finishing gate 1 can invalidate gate 2's premise. ⚠ **Not a per-chunk user gate** (removed 2026-07-29/30): stop for the user at a *decision*, a blocking finding, or a no-go — not at every chunk boundary [`sequential-audit-chunks`].
 - **Commit only when the user asks** (squash small follow-up fixes into the prior commit) [`squash-followup-fixes`].
 - Sync **`STATUS.md` + `software/stage1_solver/decisions/13` §0 at every milestone** [`status-md-front-door`]; update memory.
 
@@ -149,13 +181,22 @@ That is a denylist against an expressive grammar; it does not converge.
   dual-engine cannot see. Only an independent term-by-term reader catches it [`transliteration-fidelity-audit`].
   **Tell:** grep your own output for verdict strings / counts / matrix entries you cannot trace back to
   the inputs.
-- **The tertiary (third-model) leg is measured, not stylistic.** On one load-bearing "decisive test," the
-  proposed A-vs-B discriminator was *guaranteed* to pass by a mean-value-theorem identity — a tautology
-  dressed up as a test — and **both the orchestrator (Claude) and the executor (Codex) reviewed it
-  SOUND.** Only the third, independent model (GLM) caught it; two same-family reviews would not have.
-  That single episode is the whole argument for splitting the roles across heterogeneous engines rather
-  than iterating one model against itself [`review-ordering-codex-then-glm`, `decisive-test-not-tautological`].
-- ⛔ **CHECK WHICH TOOL REPORTED THE PASS (2026-07-26).** An acceptance item named a specific
+- ⭐ **INDEPENDENCE of the reviewer is what was measured — not the number of models.** On one
+  load-bearing "decisive test," the proposed A-vs-B discriminator was *guaranteed* to pass by a
+  mean-value-theorem identity — a tautology dressed up as a test — and **both the author (Claude) and the
+  executor (Codex) reviewed it SOUND.** A third, independent reader caught it; a review by either party
+  that had already reasoned about it would not have. ⇒ The lesson is that a review leg must be
+  **independent of whoever built the thing** — and, on a **physics-bearing** artifact, that **one such
+  reader is not enough**: this is the measurement the second independent leg rests on (Roles table).
+  ⛔ It is **not** an argument for a standing multi-model bookend, a fixed model order, or a confirm pass;
+  those were cut 2026-07-29/30 and stay cut. What is restored is a **second independent reader of the same
+  physics**, launched without the first's findings [`decisive-test-not-tautological`, `review-agents`].
+- ⛔⛔ **CHECK WHICH TOOL REPORTED THE PASS (2026-07-26) — ⭐ A KEEPER, and it passes the governing test
+  squarely.** This is not adversary-defence: it is **exactly the "LLM shortcut that resembles a pass"**
+  named in *THE POSTURE* as the operative failure mode. Nobody deceived anyone — a build hit a failing
+  gate, worked around it, logged the workaround honestly, and then summarised optimistically. That is an
+  honest error whose signature is a green headline over a gate that never passed, and it can hide a wrong
+  derivation indefinitely. An acceptance item named a specific
   comparator. The official tool exited **2** on a real defect; the build then wrote its own
   `normalized_comparator`, ran that instead, and headlined **PASS**. It *disclosed* the substitution in
   its raw log (`official_comparator_exit=2 normalized_comparator_exit=1`) — not deception, a workaround
@@ -171,28 +212,18 @@ That is a denylist against an expressive grammar; it does not converge.
   - **Read raw exit codes, not the PASS/FAIL headline.** In a long report the logs are the evidence and
     the summary is a claim.
   - **A gate that is routed around is not a gate** — same family as the source-grep and can't-fail
-    rules below.
+    rules below. ⚠ **This survives the 2026-07-29/30 scale-back deliberately:** it costs one command and
+    catches a class of green that means nothing.
 - **When adding a STRUCTURED artifact, verify its STRUCTURE, not only its contents — by running the
   consumer.** Same incident: the orchestrator committed a `.wl` after checking the record count and one
   value, but not that the file had its required header. The consumer would have said so immediately.
-- ⭐ **Specify the evasion before shipping a gate.** For every acceptance criterion in a directive, the
-  author must first identify, as a reasoning exercise, the cheapest wrong build that would still satisfy
-  it and record the analysis. If demonstrating the evasion requires an executable probe, the directive
-  assigns Codex to construct and run it during Phase 3; the author does not write or mutate code. A
-  criterion whose only failing input is one nobody would produce is decoration. *(Directive-review
-  finding, 2026-07-28: before any build existed, the surviving stage023 step-(f) A7/A8 already required
-  non-empty floors but named no fixed acceptance commands. The review found that a builder-authored A7
-  checker could inspect only one of three exponent tokens per record and a builder-authored A8 checker
-  could compare a derived count against itself. The directive was not executed, and no Python sidecar
-  was produced.)*
-- ⛔ **Acceptance tooling is a control, so it is authored outside the session it polices.** The same
-  independence that forbids an expected *value* living inside the artifact it checks extends to the
-  *checker*: a validator written by the build session that produces the artifact is the artifact grading
-  itself. **Ordinarily, a checker named in a directive must exist before the build starts, authored by a
-  different session. Only when the deliverable is itself that checker does pre-existence attach instead
-  to its conformance fixtures: a different session must author and freeze the positive and negative
-  fixtures, their expected outcomes, and required non-empty floors before the checker build starts; the
-  checker-building session may neither author nor weaken them.**
+- ⭐ **State what would make each acceptance criterion FIRE.** For every criterion, say — in one line, as
+  a reasoning exercise — what input it rejects. A criterion with no such input is decoration, and that is
+  the defect worth catching: **a check that cannot fail.** *(Directive-review finding, 2026-07-28: an A7
+  checker was specified that could inspect only one of three exponent tokens per record, and an A8 checker
+  that could compare a derived count against itself.)* ⛔ Do not turn this into an adversary exercise —
+  enumerating the cheapest wrong build a motivated builder could ship is the layer this process no longer
+  buys.
 - ⛔ **Never supply a premise to a verification prompt, including a NEGATIVE one.** The rule already
   forbids stating the expected answer or reason. Extend it: also never assert that something does not
   exist, has no prior record, or was never done — and never forbid a leg from reading the evidence that
@@ -249,21 +280,30 @@ That is a denylist against an expressive grammar; it does not converge.
 The phases above are enough for symbolic derivation. The moment a **numerical solver** enters, these gates
 become mandatory — that is where confirmation-bias tuning and noise-mistaken-for-signal live.
 
-- ⛔ **Freeze the model class target-blind, then hash it.** Before running, write the pre-registration
-  brief — which branch / model class, which targets count as pass and which as fail, which observables and
-  *how* extracted, the error budget the result must clear, and what a **trustworthy miss** looks like —
-  and do not edit it in response to data. Then freeze the model class **target-blind**: the **forms, the
-  domains, the tolerances, the mesh/grid, the calibration objective, the optimizer, the tie-breaker**, and
-  *every* discrete family choice — **then hash it, with no reference to any target value**. Calibrate
-  **only** the declared parameters to the stated anchor and freeze the calibrated values (hash again);
-  evaluate the held-out observables with the freeze locked. **Whatever comes out, stands** — no
+- ⛔ **Decide the model class TARGET-BLIND, and write it down before running.** The pre-registration brief
+  states which branch / model class, which targets count as pass and which as fail, which observables and
+  *how* extracted, the error budget the result must clear, and what a **trustworthy miss** looks like — and
+  it is not edited in response to data. Settle the **forms, domains, tolerances, mesh/grid, calibration
+  objective, optimizer, tie-breaker** and *every* discrete family choice **with no reference to any target
+  value**. Calibrate **only** the declared parameters to the stated anchor, record the calibrated values,
+  then evaluate the held-out observables without touching any of it. **Whatever comes out, stands** — no
   post-residual refit, no moving-boundary bailout added after seeing the residual, no reporting a fresh
-  attempt as a "continuation" of a failed one. ⭐ **Extraction happens after the freeze and is itself
-  target-blind:** the solver and the extraction pipeline do not know the targets; targets meet extracted
-  values only at a single designated, frozen comparison step. *Without this, the unconscious tuning loop is
-  invisible from inside your own head.* This is the same independence as the rule that a control's expected
-  value must live **outside the artifact it polices** [`control-outside-the-thing-it-polices`] — here the
-  target is what must stay outside the fit.
+  attempt as a "continuation" of a failed one. ⭐ **Extraction is itself target-blind:** the solver and the
+  extraction pipeline do not know the targets; targets meet extracted values at a single designated
+  comparison step. *Without this, the unconscious tuning loop is invisible from inside your own head.*
+  ⭐ **Target-blindness is the load-bearing property** — what must not happen is a choice made *because of*
+  a target [`never-supply-the-expected-reason`, `calibrate-predict-methodology`].
+  ⚠⚠ **UNRESOLVED, and deliberately not resolved here — the solver's FREEZE HASH.** The 2026-07-29/30
+  decision removes immutability mandates from the *process* layer, but on the numerical branch the freeze
+  hash is the stated *mechanism* of target-blindness and no-post-residual-refit, not decoration:
+  `docs/methodology_paper_outline.md` §2.2/§2.6 (*"the freeze-hash machinery … enforces it mechanically"*),
+  `docs/branch_realization_execution_plan.md` §7 and its §"prerequisites", and
+  `research/pde_audit/simulation/NONLINEAR_PROTOCOL_V2.md`'s `freeze.target_blind` /
+  `freeze.no_post_residual_refit` flags. It is also **already exercised**: the Stage-1 pre-registration
+  record was frozen with user sign-off (commit `3865ec9`). ⇒ **The scale-back is NOT applied to it. A user
+  decision is needed** on whether the numerical freeze hash stays as the enforcement mechanism (it plausibly
+  passes the governing test, since post-hoc refitting is a way the *physics* claim goes wrong) or is
+  replaced by discipline alone. Until then, follow the numerical docs as written.
 - ⛔ **A solver earns trust only after a stack of independent checks — no physics claim before it passes.**
   On *independent* benchmarks, all six:
   1. a known-analytic / linear limit;
@@ -290,9 +330,6 @@ become mandatory — that is where confirmation-bias tuning and noise-mistaken-f
 - **Offload to agents** (reviews, broad reads, distilled summaries) to preserve orchestrator context; read grep/tail summaries, not raw logs [`offload-to-agents`, `offload-review-gauntlet`].
 - **Never `pkill`/`killall` by pattern** (shared box; the user runs other Codex sessions) — kill only captured PIDs or via `TaskStop` [`background-process-launch`].
 - **Path discipline:** project root is `/var/projects/toy_physics` (NOT `toy_projects` — a transcription attractor) [`toy_physics-path-typo`].
-- **Grok is a GATE, not a garnish.** Reserve it for foundational directives and for any artifact about
-  to be FROZEN while many agents depend on it. Skipping it before a freeze is how a fanout launches
-  against a broken tool [`grok-final-review-pass`, `review-ordering-codex-then-glm`].
 - **The derived artifact is never a second source of truth.** Manifests/derived records are generated
   FROM the audited sources; when the two disagree the source wins, and the artifact is the thing to
   fix. Corollary: do not re-litigate a unit-level property at the integration layer — check what only
@@ -314,26 +351,24 @@ become mandatory — that is where confirmation-bias tuning and noise-mistaken-f
    (never assert "no prior X exists" / "X was never done", and never forbid a leg from reading the
    evidence that would falsify the premise — state what to check; let the leg establish what is there)
 1. ☐ Directive drafted (requirement + acceptance + able-to-fail verdict ladder; no pre-designed route);
-   ⭐ for every acceptance criterion, the author identified the cheapest wrong build as a reasoning
-   exercise and recorded the analysis; any required executable probe is assigned to Codex in Phase 3
-1b. ☐ ⛔ Every checker named in the directive **already existed before the build**, authored by a
-   **different session** than the one that produces the artifact; only when the checker is the deliverable
-   did independently authored, frozen positive/negative conformance fixtures and expected outcomes exist
-   before its build (acceptance tooling is a control)
-2. ☐ Codex design-review (xhigh, agent) → GREEN → GLM pass → fold → Codex confirm → GREEN
-3. ☐ **User gate**
-4. ☐ Execution prompt drafted → Codex design-review (agent) → fold
-5. ☐ Codex executes dual-engine (danger-full-access, xhigh, `< /dev/null`, scripts `timeout 600`) → exit 0; comprehensive inline dim-firewall, able-to-fail
-5b. ☐ ⭐ **Orchestrator re-runs each NAMED acceptance command itself and reads its literal exit code** —
+   ⭐ for every acceptance criterion, one line saying what input it REJECTS — a criterion with no such
+   input is decoration
+2. ☐ ONE design-review pass on a fresh reviewer → fold → go (⛔ no bookend, no rotation, no confirm pass)
+3. ☐ Builder executes dual-engine (danger-full-access, xhigh, `< /dev/null`, scripts `timeout 600`) → exit 0; comprehensive inline dim-firewall, able-to-fail
+4. ☐ ⭐ **Orchestrator re-runs each NAMED acceptance command itself and reads its literal exit code** —
    not the report's claim. Verify structured artifacts by running their CONSUMER, not by eyeballing
    counts and values
-6. ☐ Tri-review: arbiter re-run (orchestrator) + fidelity (fresh agent) + adversarial-with-ablation
-   (fresh agent); ⛔ ablation target list owned by the **orchestrator** (per-tooth over every
+5. ☐ ⭐ **The PHYSICS leg, on a fresh agent — BLOCKING, and it does not get cut.** Cross-engine agreement
+   is necessary and not sufficient; deriving the result from the model is the leg that establishes
+   correctness. Where a workstream defines its own form of this leg, that doc owns it — for the dimension
+   rewrite see `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md` §4-(c)/(c1)
+6. ☐ Fresh review leg: term-by-term fidelity **and** per-tooth ablation; ⭐ **TWO mutually independent fresh
+   legs if the artifact is physics-bearing** (a stage's math, a derivation, a dimensional determination) —
+   one for prose/process/tooling; ⛔ ablation target list owned by the **orchestrator** (per-tooth over every
    able-to-fail check / emitted record — never chosen by the builder)
-7. ☐ Any hole → Codex remediates → **re-verify on a FRESH clean agent**
+7. ☐ Any hole → the builder remediates → **re-verify on a FRESH clean agent**
 8. ☐ Bank: `STATUS.md` + `decisions/13` §0 + memory; commit only if asked
-9. ☐ **User gate** before the next gate
 
 ---
 
-*Source of truth = the `feedback-*` memories cited above. Companion docs: `docs/development_plan.md` (what to build), `docs/model_map.md` (the model — ⛔ NOT `docs/conceptual_foundation.md`, superseded and it re-confuses), `STATUS.md` (where we are).*
+*This doc is the operative process; the `feedback-*` memories cited above hold the why. Companion docs: `docs/development_plan.md` (what to build), `docs/model_map.md` (the model — ⛔ NOT `docs/conceptual_foundation.md`, superseded and it re-confuses), `STATUS.md` (where we are).*

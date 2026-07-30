@@ -1,5 +1,14 @@
 # Findings against ablation-driver requirements v3
 
+> ⛔ **SUPERSEDED — USER DECISION, 2026-07-29/30. Historical record only; nothing here is a live rule.**
+> The driver was re-scoped small (*mutate a declaration, confirm the declared assert fires, record it,
+> reviewed by one fresh agent*) — **no contract, no frozen fixtures, no three-session shape**. These
+> findings were raised against `CONTRACT.md`, which is itself superseded except §C-9's legacy mapping.
+> The live specification is `REQUIREMENTS.md` (v5); its live requirement set is **R1, R2, R3, R4, R6, R7**.
+> ⚠ Where a finding below cites "the three-session separation" as a standing mitigation, that separation
+> **no longer exists** — the fresh review leg is the mitigation now, and the motivated-builder threat it
+> was aimed at is explicitly out of scope (`docs/development_pipeline.md`, *THE POSTURE*).
+
 1. **§C-9 / A7 has a live normative contradiction.** The new fixed result schema cannot be byte-equal
    to the committed legacy 13-column schema. `DIMENSION_REWRITE.md` §12b(b)'s word “exactly” must be
    corrected to “exactly under CONTRACT.md §C-9's mapped projection.” The legacy file must remain

@@ -1,6 +1,6 @@
 ---
 name: redteam-audit
-description: Adversarial red-team audit of a research paper's SymPy and Mathematica scripts. Scripts-only — does NOT touch paper.tex or notes/. Audits one batch at a time, halts between batches for human review, invokes Codex (resuming a per-unit session across iterations) to apply fixes, and verifies. Reusable across papers via .redteam-config.yaml.
+description: Adversarial red-team audit of a research paper's SymPy and Mathematica scripts. Scripts-only — does NOT touch paper.tex or notes/. Audits one batch at a time (math errors cascade) and halts on any stop-cold or blocking finding, invokes Codex (resuming a per-unit session across iterations) to apply fixes, and verifies. Reusable across papers via .redteam-config.yaml.
 allowed-tools: Bash, Read, Edit, Write, Agent
 user_invocable: true
 ---
@@ -16,7 +16,7 @@ Operates from `.redteam-config.yaml` in the current working directory, so the sa
 ## Core principles
 
 1. **Scripts only.** The red-team reads and modifies only `.py` and `.wl` scripts (and their saved `.txt` outputs). It does NOT read paper.tex or notes/. Doc alignment is a manual step done by the user after the scripts are verified.
-2. **Sequential batches with human gate.** Audit one batch, halt, await user approval before next. Math errors cascade — finishing batch 1 may invalidate batch 2's premise. **Never roll forward across batches automatically.**
+2. **Sequential batches.** Audit one batch and finish it before starting the next: **math errors cascade — finishing batch 1 may invalidate batch 2's premise.** ⛔ **Never roll forward past a stop-cold verdict or an unresolved blocking finding.** ⚠ The standing *per-chunk user gate* was cut 2026-07-29/30 (`feedback_physics_not_ceremony`): halt for the user at a decision, a blocking finding or a no-go — not at every batch boundary.
 3. **Two-AI loop.** Claude (orchestrator + audit/verify agents) and Codex (fix application) communicate via structured markdown directives in `redteam/directives/`. No chat handoff required.
 4. **Per-unit codex session.** Each audit unit's fix loop uses a single codex session id, resumed across iterations so codex retains the context of what it's already attempted. The session is stored in the manifest and cleared automatically when upstream changes invalidate the unit's context.
 5. **Clean-context audit agents.** Each unit gets a fresh sub-agent for audit and a fresh sub-agent for verify. No cross-unit contamination on the auditor side. (Codex is the opposite — it benefits from resumed context.)
@@ -185,13 +185,13 @@ End-to-end audit → fix → verify with iteration up to `limits.max_iterations`
 3. For all units now in `directive_ready`: run `fix`. (Sequential.)
 4. For all units now in `codex_applied`: run `verify`. (Parallel where allowed.)
 5. For all units now in `needs_rework` AND `iteration_count < max_iterations`: loop back to step 3 (fix → verify).
-6. After the loop, **halt at the batch boundary**. Print:
+6. After the loop, **report at the batch boundary** (and halt there only on a stop-cold or unresolved blocking finding). Print:
    - per-unit verdict table
    - link to `redteam/batches/batch_<ID>.md` (if you wrote one)
    - the next-batch suggestion
-   - explicit instruction: "Review the diffs and verifier reports, then invoke `/redteam-audit run batch:<NEXT>` to proceed."
+   - if anything is blocked: "Review the diffs and verifier reports, then invoke `/redteam-audit run batch:<NEXT>` to proceed."
 
-**Never auto-advance to the next batch.** This is the human gate.
+**Never auto-advance past a stop-cold verdict or an unresolved blocking finding.** ⚠ A clean batch does not need user approval to proceed (per-chunk user gate cut 2026-07-29/30); report and continue.
 
 ### Iteration cap & halt conditions
 
@@ -199,7 +199,7 @@ The orchestrator halts and reports when ANY of these happen:
 - Auditor verdict is `UNFIXABLE` or `CRITICAL_DOWNSTREAM`
 - Verifier verdict is `blocked_unfixable`
 - A unit hits `needs_rework` at `iteration_count >= max_iterations` (set status to `blocked_unfixable`)
-- A batch is complete (every unit `verified` or `blocked_*`) — halt for human review before the next batch
+- A batch completes with any unit `blocked_*` — halt and report before the next batch (⚠ a batch in which every unit is `verified` does **not** halt; per-chunk user gate cut 2026-07-29/30)
 
 ### Output expectations to the user
 
@@ -311,7 +311,7 @@ When the user asks to bootstrap a new research paper, drive the workflow rather 
 - Audit agents must NOT run `python3 -c` commentary scripts (per user feedback). They read and reason. Real script execution happens only in the orchestrator's `verify` phase, against the actual `sympy_audit.py` / `mathematica_audit.wl` files.
 - Each unit audit and verify gets a clean agent (per user feedback). Codex is the exception — it keeps a resumable session per unit so it remembers what it just tried.
 - Scripts are checked specifically for hardcoded values, tautological assertions, and symbol assumption errors (per user feedback).
-- Batches are audited sequentially with a user gate between them; never roll forward (per user feedback).
+- Batches are audited sequentially because math errors cascade; never roll forward past a stop-cold verdict (per user feedback). ⚠ The per-chunk user gate between clean batches was cut 2026-07-29/30 (`feedback_physics_not_ceremony`).
 - All LLM-readable state is YAML or markdown; no JSON (per user feedback).
 - Script-correctness is the primary check; paper/notes alignment is out of scope here — done manually after the red-team verifies the math (per user feedback).
 

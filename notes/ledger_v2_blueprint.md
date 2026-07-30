@@ -3,6 +3,15 @@
 > **Status: APPROVED by user 2026-07-07** (design decisions A–D + completeness standards settled below).
 > Codex design-reviewed (NEEDS_REVISION → folded → confirm CLEAN); revised with the user's design steer.
 > This is the foundational directive for building the rebuilt PDE ledger.
+
+> ⚠⚠ **PROCESS SUPERSEDED IN PART — user decision 2026-07-29/30 ([[feedback-physics-not-ceremony]]).** The verification
+> process this document prescribes is **collapsed to: ONE design-review pass on a fresh reviewer → build → arbiter re-run →
+> TWO mutually independent fresh review legs (each fidelity + per-tooth ablation, target list owned by the orchestrator — a
+> stage's math is physics-bearing; amended 2026-07-30) → the BLOCKING physics leg.**
+> ⛔ Retired wherever it appears below: the Codex→Grok→Codex bookend, the GLM/Grok tertiary pass, the MANDATORY three-leg
+> tri-review, and the per-Part/per-stage user gates (stop for the user at a decision, a blocking finding or a no-go instead).
+> ⭐ Unchanged and still mandatory: **dual-engine**, the **fresh** and independent reviewer, per-tooth ablation, and the
+> physics leg. Canonical: `docs/development_pipeline.md` Roles table + Phase 4.
 > **Reads-first:** `notes/ledger_v2_rebuild_plan.md` (multi-phase plan + why-rebuild evidence), `STATUS.md`
 > ▶ RESUME HERE, `software/stage1_solver/decisions/13` §0. Memory: [[project-pde-ledger-fold-in-plan]],
 > [[project-brane-existence-defect-structure]].

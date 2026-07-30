@@ -9,6 +9,47 @@ The per-stage audits are unit tests; the composite build is the integration
 suite. The current ledger has 44 stages. Partial extraction coverage is normal,
 but unresolved material edges must remain visible.
 
+## ⭐⭐ SCOPE — THE SEMANTIC CORE (user decision, 2026-07-29/30; corrected 2026-07-30)
+
+The manifest system **continues**. The **semantic core** — required, extended, and allowed to block — is:
+
+1. **quantity identity** — `C1`
+2. **citation integrity** — `C2`
+3. **export and lifecycle enforcement** — `C3`
+4. **dimensional relations** — `DIMENSIONAL_CONSISTENCY`
+5. **the range-aware lifecycle census** — `C5`
+6. **the dependency graph and its cycles** — `C6`
+7. **mutation** — `C7`
+8. **genesis completeness** — `C8`
+9. **consumption completeness** — `IMPORT-COMPLETENESS`
+
+⭐⭐ **C2/C3/C5/C8 ARE NOT BOOKKEEPING — corrected 2026-07-30, after a round that trimmed them.** Each was
+verified to catch a way the *physics* could be wrong, which is the governing test
+(`docs/development_pipeline.md`, *THE POSTURE*):
+- **`C2` detects a CHANGED CONSUMED EQUATION** — it re-proves each `consumes.ref` against the producer's actual
+  exported relation, so a downstream stage that cites an upstream result it no longer matches fails closed.
+  That is a wrong derivation, not a wrong citation string.
+- **`C3` detects CONSUMPTION OF RETIRED PHYSICS** — a `RETIRED` claim, or one carrying `discharged_by`, is not
+  an operative export and cannot be newly consumed. Without it a stage can build on a result the ledger has
+  already withdrawn.
+- **`C5` catches a WRONG IRREDUCIBLE-COUNT RANGE** — it recomputes both convention branches from the register
+  and compares them to stage043's typed `record_range` and stage044's `[41,50]`. The irreducible count is a
+  headline claim of Part VII; a mis-partitioned or double-counted knob makes it wrong.
+- **`C8` catches CALIBRATED / TARGET-MATCHED GENESIS** — it is the fit-vs-derive detector: it refuses an
+  unsupported `origin: independent` and forces `coordinated` / `target_matched` to name what they were
+  coordinated with. ⚠ Its own honest limit still stands (below): `origin: independent` is an *asserted*
+  historical claim no `genesis` record can establish — the same concession `DIMENSION_REWRITE.md` §1 makes
+  about engine independence. It rejects unsupported independence; it does not prove independence.
+⇒ **These four are in scope, extend normally, and block normally.** ⛔ The earlier trim was wrong on the
+merits and is withdrawn; do not re-trim them without a measurement that they catch only bookkeeping.
+⛔ **Also retired as false:** the premise that dimension recovery covering "~16 of 43 scripts" is what
+blocks the 44-stage fanout. Measured 2026-07-29/30: recovery reaches **10 of 43** (7 `class Dim` +
+3 digest-pinned bare-tuple orders). ⚠ Converting a stage **lowers** that count only for the **seven** stages
+that carry an exact `class Dim` the AST walk reads (005, 006, 007, 008, 009, 030, 031); everywhere else it
+neither raises nor lowers it, because those scripts were never recoverable to begin with. Either way
+conversion does not *raise* recovery, since the shared module exports `Dimension`, not `Dim`. See
+`DIMENSION_REWRITE.md` §2.
+
 ## Composite build checks
 
 **C1 — Quantity identity, ownership, and symbol aliases.** The ledger-wide key is
@@ -38,7 +79,7 @@ machine-detectable; declared graph edges alone cannot reveal an omitted edge.
 Ownership is established before this walk, so an extractor cannot suppress an
 edge by co-declaring a false local definition.
 
-**C2 — Citation integrity, fail closed.** Resolve each `consumes.ref`, apply only
+**C2 — Citation integrity, fail closed.** ⭐ **IN THE SEMANTIC CORE — it detects a changed consumed equation; see §SCOPE.** Resolve each `consumes.ref`, apply only
 its structured `substitutions`, and dispatch by `check`:
 
 - `cas_equivalence`: relation to relation; prove the two normalized relations
@@ -72,7 +113,7 @@ In particular `cas_equivalence` on a non-relation producer is `UNSUPPORTED`.
 An ineligible producer payload kind, unsupported expression, or inconclusive
 proof is `UNSUPPORTED`, never a silent pass.
 
-**C3 — Export and lifecycle enforcement.** Every export `claim_id` must be one
+**C3 — Export and lifecycle enforcement.** ⭐ **IN THE SEMANTIC CORE — it detects consumption of retired physics; see §SCOPE.** Every export `claim_id` must be one
 of its manifest's own claim ids. A consume of a claim not exported by the
 producer fails. A `RETIRED` claim, or a claim carrying `discharged_by`, is not
 an operative export and cannot be newly consumed. The checker also verifies the
@@ -112,7 +153,7 @@ function rules are `UNSUPPORTED` and fail the build. The named map is
 authoritative for interchange, but it is still a manifest claim rather than an
 independent physical-correctness proof.
 
-**C5 — Range-aware lifecycle census.** The composite config pins
+**C5 — Range-aware lifecycle census.** ⭐ **IN THE SEMANTIC CORE — it catches a wrong irreducible-count range; see §SCOPE.** The composite config pins
 `notes/parameter_register.md` by path and SHA-256; a changed digest fails before
 the census. Treat each `knobs` item as a lifecycle
 event keyed by stable `knob_id` and `registry_row`. Partition the complete
@@ -192,7 +233,11 @@ decorative-dependency and undeclared-dependency fixtures. The real 030→031
 zero-mode mutation is also populated and passing; its deliberately decorative
 variant demonstrates the expected `DECORATIVE_DEPENDENCY` failure.
 
-**C8 — Genesis completeness.** POSTULATED, CONV, and CALIBRATED claims require
+**C8 — Genesis completeness.** ⭐ **IN THE SEMANTIC CORE — it catches calibrated / target-matched genesis, i.e. fit-vs-derive; see §SCOPE.**
+⚠ Its honest limit, which bounds the claim without dropping the check: `origin: independent` is an *asserted*
+historical claim that no `genesis` record can establish — the same thing §1 of `DIMENSION_REWRITE.md` concedes
+about engine independence. C8 **rejects an unsupported independence assertion**; it does not establish a
+supported one. POSTULATED, CONV, and CALIBRATED claims require
 `genesis`. `origin: independent` is a positive historical assertion and
 requires dated genesis evidence containing a path+commit record reference,
 record span, and the later claim it predates. `coordinated` and

@@ -1,8 +1,24 @@
 # Ablation driver public contract
 
+> ⛔⛔ **SUPERSEDED — USER DECISION, 2026-07-29/30. This contract is NOT a specification and NOT a gate.**
+> The driver was re-scoped to *mutate a declaration, confirm the declared assert fires, record it,
+> reviewed by one fresh agent* — **no contract, no frozen fixtures, no three-session shape.** The live
+> specification is `REQUIREMENTS.md` (v5), whose live requirement set is **R1, R2, R3, R4, R6, R7**.
+> ⛔ Do not implement to this document, and do not cite it as binding. Nothing here obliges a builder:
+> the five operations, the exit-code table, the JCS/TSV wire formats, the outcome truth table, the
+> banked-prefix resume semantics, the restoration-event proof and the evidence commit set were all cut.
+> ⭐ **ONE PART IS STILL WORTH READING — §C-9, the stage023 legacy→new field mapping table — as a REFERENCE,
+> not an authority.** ⛔ **Nothing here is authoritative, §C-9 included.** The live spec (`REQUIREMENTS.md`
+> A7) downgraded the retrofit from a blocking gate to a cross-check and explicitly **does not require**
+> field-by-field agreement via this table; it calls it "the useful reference for which legacy column
+> corresponds to which new observation". Read it that way: the *mapping* is informative, the *schema it maps
+> into* is gone, and a disagreement is a finding to report, never something either side is adjusted into.
+> ⚠ Retained as history because it is the concrete measure of what the tooling-defence tower cost:
+> ~600 lines of interface specification, none of which could catch a wrong derivation.
+
 **Contract version:** `ablation-driver-v1`
 
-**Applies to:** `REQUIREMENTS.md` v4, 2026-07-29
+**Applies to:** ~~`REQUIREMENTS.md` v4, 2026-07-29~~ — superseded by v5, 2026-07-29/30 (see banner)
 
 This document fixes only the driver's public invocation, accepted inputs, emitted evidence, and the
 meaning of that evidence. It does not prescribe the driver's implementation or internal file layout.

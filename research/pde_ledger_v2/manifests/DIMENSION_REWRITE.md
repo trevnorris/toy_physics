@@ -24,15 +24,27 @@ stage-conversion baseline before that fold was `1b645ed9`.
 conclusions the corpus already recorded. **A specific handoff prompt is exactly when re-reading feels
 skippable, and exactly when it bites.**
 
+⭐⭐ **THE POSTURE THIS DOC NOW OPERATES UNDER (user decision, 2026-07-29/30) — owned by
+`docs/development_pipeline.md`, *THE POSTURE*, not restated here.** In one line: **checks exist to catch a
+wrong derivation; nothing here is frozen, byte-perfect or under a custody rule; one builder, one fresh
+reviewer; the physics leg stays blocking.** ⛔ Several blocks below are marked **RETIRED** where they used to
+mandate a freeze, a custody step or a multi-session sequence — those markers are the record, not
+suggestions to reinstate.
+
 ## 1. ⭐ THE CHARTER — a USER decision, do not re-litigate
 
 > *"The shared dimension module is **SymPy-ONLY**. Mathematica stays an **independent verification
 > engine**. Consequence: the `.py`-vs-`.wl` dimension comparison is a **permanent standing
 > cross-check**, not a one-time pre-unification sweep."*
 
-Everything below follows from this. The `.wl` files never import the module, never receive values from
-the `.py`, and are never "standardised" to agree with it. The comparison is infrastructure we keep,
-not scaffolding we discard once the corpus is unified.
+⚠⚠ **READ "INDEPENDENT VERIFICATION ENGINE" AS THE POLICY IT IS, NOT AS AN ESTABLISHED PROPERTY — and the
+charter's own wording overstates it.** What the decision fixes is a **rule for authoring**: the `.wl` files
+never import the module, never receive values from the `.py`, and are never "standardised" to agree with it.
+What it does **not** establish is that any existing pair *was* reached by two routes — see the paragraph
+immediately below, which is this doc's own honest statement and which governs: **a green comparator shows
+that two implementations agree, not that they were reached independently.** ⇒ Wherever this charter is cited,
+cite it for the authoring rule and for why the comparison is permanent infrastructure — ⛔ never as evidence
+that the Mathematica side independently verifies anything.
 
 ⛔⛔ **WHAT "INDEPENDENT ENGINE" RESTS ON — verified 2026-07-27, and it is NOT provenance.** For
 stage016 both engine files were added in the **same commit** (`bfac580f`), and a history audit at
@@ -82,15 +94,41 @@ more Wolfram runs, more derivations, or more review legs, take it.
 
 ## 2. WHY THIS EXISTS (not refactoring hygiene)
 
-The 44-stage manifest fanout is **blocked**: dimension recovery covers only ~16 of 43 scripts while the
-schema requires all. The decision (`b5527062`, `aae5d389`) was to **fix the corpus, not weaken the
-check** — thirteen dimension idioms across 43 scripts *is* drift and the checker was reporting it
-correctly. One shared module lets the checker delete `BARE_TUPLE_DIM_ORDER_BY_SHA256`, the AST
-bare-tuple recovery, live module execution, and the per-script order registry: **one import, one
-recovery path.**
+⭐ **ONE SHARED IMPORT, so every script's dimensions are written in ONE REPRESENTATION and come from one
+place.** ⛔⛔ **Do not call that "consistent by construction" — it overstates, and the overstatement is the
+kind this doc exists to catch.** What one shared module buys is **representation unity**: one basis type, one
+exponent type, one recovery path, one place a convention is defined. It does **not** buy correct dimensions —
+**two stages can declare the same wrong exponents through one module just as easily as through thirteen
+idioms**, and the module cannot tell them apart. Correctness is established by the blocking physics leg
+(§4-(c)/(c1)) and bounded by the cross-engine comparator (§11); the import buys neither.
+Thirteen dimension idioms across 43 scripts *is* drift, and the decision (`b5527062`,
+`aae5d389`) was to **fix the corpus, not weaken the check**. One shared module lets the checker delete
+`BARE_TUPLE_DIM_ORDER_BY_SHA256`, the AST bare-tuple recovery, live module execution, and the per-script
+order registry: **one import, one recovery path.**
 
-Three consumers: the per-stage cross-check · the composite checker's recovery path · **Part VII's
-whole-system dimensional firewall**, a named ledger deliverable.
+Consumers: the per-stage cross-check · **Part VII's whole-system dimensional firewall**, a named ledger
+deliverable — ⚠ **which this doc CLAIMS will consume the module directly rather than the manifests; that is an
+assertion, not an established fact.** stage046 is unbuilt, and its row in
+`notes/part7_integration_atomic_split.md` (**046 — VII-3, calibration map + dimensional firewall**) names the
+whole-system units-restored homogeneity check **without naming its input source**. ⛔ Do not cite the direct-
+consumption route as settled, and do not re-justify the rewrite on it · and, in passing, the composite
+checker's recovery path. The manifests' semantic core continues in parallel, trimmed (§12b, and
+`MANIFEST_README.md`); it is **not** what this workstream is for.
+
+⛔⛔ **THE OLD JUSTIFICATION IS RETIRED AS FALSE — do not reinstate it.** This section used to read *"the
+44-stage manifest fanout is blocked: dimension recovery covers only ~16 of 43 scripts while the schema
+requires all."* **Verified 2026-07-29/30:** the composite checker recovers dimensions from **10 of 43**
+scripts — exactly **7** carry a `class Dim` its AST walk reads (005, 006, 007, 008, 009, 030, 031;
+`composite_build.py` `recover_dim_order_and_tuples`, the `child.name != "Dim"` test) plus **3** registered
+bare-tuple source digests (032, 038, 042; `BARE_TUPLE_DIM_ORDER_BY_SHA256`) — and **all seven converted
+stages carry none**, because the shared module exports `Dimension`, not `Dim`. ⇒ Converting a stage does
+not raise that count, so the fanout was never what conversion unblocks, and the rewrite must be argued on
+representation unity instead.
+⚠ **State the effect of conversion precisely — "conversion lowers recovery" is false as a general claim.**
+It lowers it **only for the seven stages that carry an exact `class Dim`** the AST walk reads (005, 006, 007,
+008, 009, 030, 031): converting one of those removes a script the checker could recover from. For every other
+script — including the three digest-pinned bare-tuple stages and the 33 with no recoverable declaration at
+all — conversion **merely fails to raise** recovery; there was nothing there to lose.
 
 Standing rule from the plan of record: **never adjust the process because the corpus is inconvenient.**
 
@@ -244,76 +282,18 @@ the emission block in full.
 
 ⛔ **THE STEPS ARE IN EXECUTION ORDER. Run them in this order; the numbering is not decorative.**
 
-⛔⛔ **BEFORE YOU START: NINE PATHS THIS LOOP TOUCHES ARE NOW UNDER A SECOND FREEZE AUTHORITY, AND IT IS
-NOT THIS WORKSTREAM'S.** As of 2026-07-29 the ablation driver's committed conformance suite
-(`notes/ablation_driver/fixtures_v4/`) is frozen against
-`notes/ablation_driver/fixtures_v4.accepted.sha256`, and that authority's 36 governed paths include nine
-live dimension-rewrite paths — `scripts/ledger_dimensions.py`, `scripts/ledger_dimensions.accepted.sha256`,
-`scripts/check_ledger_dimensions_pin.py`, `scripts/compare_dimension_artifacts.py`, stage023's audit `.py`
-with its `.dimensions.txt` sidecar and its Mathematica `.out`, and
-`notes/stage023_step_h_evidence/include_list.tsv` + `results.tsv` — because acceptance item A7 re-runs
-stage023's producer. ⇒ **Any conversion that changes one of them invalidates the fixture freeze**, and
-`fixtures_v4/run_conformance.py` then refuses to run at all until it is re-greened.
-- **Where this loop hits it, concretely:** step (g)'s `check_ledger_dimensions_pin.py --accept` rewrites
-  `ledger_dimensions.accepted.sha256`, which is itself governed; any edit to the shared module, the pin
-  script or the comparator changes a governed path; and stage023's sidecar is governed, so a re-run that
-  changes its bytes invalidates the freeze — a byte-identical regeneration does not, since the authority
-  compares digests. The ordinary case — converting a *different* stage's own `.py`/`.wl` — touches nothing
-  governed.
-- **What to do about it — `verify_freeze.py` has NO `--accept` mode, so the authority is regenerated by
-  hand and then committed.** The file is a plain digest manifest; the verifier rebuilds the whole
-  inventory each run, so re-greening means making the manifest match the new bytes exactly:
-  1. **Inventory** (`fixtures_v4/verify_freeze.py:54-61`) = every **file or symlink** under
-     `fixtures_v4/` (`SUITE.rglob("*")`; directories are excluded) **plus** the 11 hard-coded `GOVERNING`
-     paths (`:14-36`) — 36 entries today. A path added to or removed from either set must be added to or
-     removed from the manifest: the two name sets are compared for **equality** (`:124`), not containment.
-  2. **One line per entry:** the SHA-256 of the file's raw bytes (`:129`), then **exactly two spaces**
-     (`:111`, `partition("  ")`), then the path **relative to the project root, POSIX form** (`:39-40`).
-     The digest must be **64 lowercase hex** characters (`:114-115`), names must be unique (`:117`), and
-     the whole file must be **ASCII** (`:107-109`). `sha256sum` run from the project root already emits
-     exactly this two-space form.
-  3. ⛔ **SORT THE PATHNAME LIST *BEFORE* HASHING — byte-wise, `LC_ALL=C`** (`:61`,
-     `key=lambda path: relative(path).encode()`), and end the file with a single newline.
-     ⚠ **Sorting `sha256sum`'s output instead sorts on the leading DIGEST and is wrong**, and the mistake
-     is silent: the verifier parses the lines into a dict and **never checks their order** (`:110-120`), so
-     a digest-sorted manifest **passes verification** while differing bytewise from what a correct
-     regeneration produces. From the project root, this reproduced the committed authority byte-identically
-     (verified 2026-07-29):
-     ```bash
-     F=research/pde_ledger_v2/notes/ablation_driver/fixtures_v4
-     { find $F \( -type f -o -type l \) -print
-       printf '%s\n' <the 11 GOVERNING paths from verify_freeze.py:14-36>
-     } | LC_ALL=C sort | xargs -d '\n' sha256sum > $F.accepted.sha256
-     ```
-     Unless that `GOVERNING` tuple itself changed, those same 11 names are already the non-`fixtures_v4/`
-     lines of the current authority — read them off it rather than retyping them.
-  4. **Commit the governed byte change and the new authority as ONE self-consistent committed state.**
-     The verifier compares the authority's worktree bytes against `HEAD:` (`:86-91`) and requires a clean
-     worktree — but ⛔ **that cleanliness check is scoped to the suite and the authority only** (`:92-103`
-     passes exactly `relative(SUITE)` and `relative(AUTHORITY)` as pathspecs). The 11 governing paths are
-     **digest-compared against the worktree and never checked against git at all**, so the freeze can
-     verify green while the governed source bytes it attests exist in **no commit** — a green freeze over
-     an unreproducible tree. ⇒ Land the governed change and its re-accepted authority together (or the
-     governed change first, then the authority), never the authority alone. An uncommitted authority is
-     caught for you: it reports `PENDING-COMMIT` or *"freeze authority differs from HEAD"* however correct
-     its digests are. ⛔ Suite-local `__pycache__`/`*.pyc` fails before any of this (`:64-72`, `:81-83`),
-     and a **symlink** in the inventory is rejected outright (`:127-128`).
-  5. **Confirm, from the project root** — the path is the one in `fixtures_v4/README.md`; a suite-relative
-     or `notes/`-relative spelling exits **2** with no output:
-     ```bash
-     PYTHONDONTWRITEBYTECODE=1 python3 research/pde_ledger_v2/notes/ablation_driver/fixtures_v4/verify_freeze.py
-     ```
-     → `freeze verified: 36 files`, exit 0. That run is the acceptance test for your hand edit.
-- ⛔ **Re-acceptance is a deliberate REVIEW STEP, not a digest refresh.** The reviewer is expected to check
-  the **semantic** change before the baseline moves, and the reason is recorded in the **commit message**,
-  because the authority file carries no reason field. The two existing re-acceptances (`41b66dd5`,
-  `96a1a61b`) are written that way and are the template. Then consider whether **A7's expected projection
-  must be re-derived**: A7 joins the driver's output against those committed legacy tables, so a change
-  reaching them can move the expected answer rather than only its digest.
-- ⭐ This coupling is **accepted and deliberate** (user decision 2026-07-29), not a defect, and it is not
-  a licence to weaken the suite: per §12b(b) the building session may neither author nor weaken it, and
-  what the freeze does and does **not** protect is stated in `fixtures_v4/README.md` and
-  `fixtures_v4/FREEZE_LIMITS.md` — read it there rather than re-deriving it here.
+✅ **THE SECOND FREEZE AUTHORITY OVER THIS LOOP IS RETIRED — user decision, 2026-07-29/30.** From
+2026-07-29 the ablation driver's conformance suite (`notes/ablation_driver/fixtures_v4/`) was frozen
+against `notes/ablation_driver/fixtures_v4.accepted.sha256`, whose 36 governed paths included nine live
+dimension-rewrite paths (the shared module, its accepted-digest authority and pin script, the comparator,
+stage023's audit `.py` with its sidecar and `.out`, and the two `notes/stage023_step_h_evidence/` tables).
+Converting a stage could therefore invalidate a freeze belonging to another workstream, and re-greening it
+meant a hand-regenerated digest manifest plus a documented re-acceptance review.
+⇒ **All of that is gone.** There is no freeze authority over this loop, no governed-path list, no
+re-acceptance procedure, and no step of the loop that has to re-green anything. **Convert freely.**
+⚠ The suite files still exist on disk as history; they are not a gate. ⛔ Do not reintroduce a byte
+authority over this loop — that layer cost a full session and verified no physics
+(`docs/development_pipeline.md`, *THE POSTURE*).
 
 ⛔ **(a) ENUMERATE EVERY DIMENSION-VALUED OBJECT IN THE `.wl` FIRST — before deciding what to emit.**
 The comparator checks **artifact name-set symmetry between two files**. A **symmetric** omission — a
@@ -334,11 +314,11 @@ label but printed the raw storage order, so permuting the map would have relabel
 while every standing gate stayed green**. Routing both through the same structure fixed it
 (`5b29f400`). ⛔ A second, parallel axis list used only by the records is a defect, not a fix.
 
-⭐⭐ **(c) THE PHYSICS LEG RUNS HERE — BEFORE THE FREEZE — AND IT IS BLOCKING.** On a fresh agent,
+⭐⭐ **(c) THE PHYSICS LEG RUNS HERE — FIRST — AND IT IS BLOCKING.** On a fresh agent,
 derive every proposed quantity's dimension from the **model** (`docs/model_map.md` §2, the stage's own
 physics, `notes/parameter_register.md`), **and adjudicate every proposed NAME against D4.** This leg
-is a **gate on step (d)** — it authorizes nothing by itself; (d) alone owns the re-baseline and the
-reference commit.
+is a **gate on step (d)**. ⭐ It is the one leg the 2026-07-29/30 scale-back explicitly **keeps blocking**:
+it is what catches wrong physics, which no cross-engine or byte-level check can.
 
 ⭐⭐ **(c1) THE PHYSICS LEG MUST LEAVE A TRACKED VERDICT — it is the only blocking leg that used to
 leave none.** §4-a requires a tracked enumeration; this leg produced its verdicts into commit
@@ -366,38 +346,15 @@ not a number anyone could look up. Record in the stage note, alongside the (a) e
    (`_scratch/stage023_orch/ORCH_FINDINGS.md:48-69`, **F5 — unqualified scope claims**).
    ⛔ Do not weaken a sharp claim into vagueness: its precision is the value; state the boundary
    (`_scratch/stage023_orch/ORCH_FINDINGS.md:60-63`, **F5's mitigation and wrong fix**).
-6. ⭐ **make a same-note line reference recoverable by naming its target.** Within the growing stage
-   note written by §4-(c1), a `:NNN` reference to a stable named section, numbered item, or named row
-   must carry that name beside the number. Three same-note references decayed during the stage023
-   session as insertions moved their targets, and validators in this dimension-rewrite workstream
-   do not test whether a line number reaches the claimed sentence
-   (`_scratch/stage023_orch/ORCH_FINDINGS.md:25-43`, **F6 — intra-file line references decay**).
-   ⭐ **The same rule holds ACROSS files.** A `path:NNN` citation — into another note, into an engine,
-   into the canonical table, into this manifest, or into the register — must name what it points at
-   beside the number: a heading, a row key, a defined term, or a quoted fragment. **The measurement
-   that motivates this:** four consecutive prose passes on stage023 were spent recomputing cross-file
-   references that the next edit then re-invalidated — the note's references into its two engines,
-   into the canonical table and into this manifest, and this manifest's and the register's references
-   back into the note. A named target is what makes the reference survive that: a reader who finds the
-   number stale can still reach the target, and the next editor can re-verify by content instead of by
-   offset.
-   ⛔ **This does not license dropping the line numbers.** They are still worth carrying — the number
-   is what makes a fresh reference cheap to check, and the name is the recoverable anchor added beside
-   it, never a replacement for it.
-   ⛔⛔ **THE LIMIT, MEASURED — an anchor makes a stale reference RECOVERABLE; it does not make it
-   CORRECT.** This clause can be satisfied while the pointer is false, so satisfying it is not evidence
-   the pointer resolves. **This changeset is the counterexample.** The stage023 `.py` rewrite moved
-   `SOURCED_DIMS`, and four §12 WORK citations that *already carried named targets* went on pointing at
-   the wrong lines afterwards: `WORK-023-D0-SEAM`'s window for the `D0` declaration had come to land on
-   `M0` instead, its two windows for the port formula and the dimensionless `P0_physical` target both
-   stopped short of the lines holding them, the `[M0]`/`[D1]` window shared by
-   `WORK-023-MOMENT-CONVENTION` and `WORK-023-STAGE009-MOMENT0` no longer reached `D1`, and
-   `WORK-023-SOURCED-PROVENANCE`'s "in `SOURCED_DIMS`" range ended before the block's last
-   declarations. ⇒ The number must be **re-verified by content whenever either file changes** — an edit
-   to the *cited* file obligates the *citing* file — and **a named anchor beside a wrong number is not
-   compliance**. The anchor buys the reader recovery; it buys the writer nothing.
-   ⚠ A line range into a **regenerated** artifact cannot be made to resolve at all; cite the revision
-   it was read at, plus what it showed, instead of live line numbers.
+6. **name what a `:NNN` citation points at, beside the number** — a heading, row key, defined term or
+   quoted fragment — so a reader who finds the number stale can still reach the target. Line numbers
+   decay as edits move them, and nothing in this workstream validates that one still reaches the
+   claimed sentence. ⚠ A line range into a **regenerated** artifact cannot be made to resolve at all;
+   cite the revision it was read at and what it showed.
+   ⛔ **This is a readability convention, not a check, and it establishes nothing about correctness** —
+   an anchor beside a wrong number is still a wrong pointer. *(Cut back 2026-07-30: the paragraphs of
+   line-anchor procedure that used to sit here were pointer recoverability, not wrong math, and the
+   governing test does not buy that layer — `docs/development_pipeline.md`, THE POSTURE.)*
 
 ⛔ **Why this matters more than the conversion.** Cross-engine agreement has now been shown twice
 to be necessary and **not sufficient** — it is blind to a same-dimension different-quantity merge
@@ -417,16 +374,31 @@ fix round to unfreeze the name; the leg is the same, only earlier.
 
 **(d)** Re-run; confirm exit 0, PASS
 tally unchanged, `.out` reproduces byte-identically after `sed -E 's/\$[0-9]+/$N/g'`; re-baseline.
-**Commit this — plus the (a) enumeration — before touching the `.py`.** Freezing the reference first prevents both conversion sides from
-changing together — it strengthens reference custody; it does **not** establish that the original
-engine pair was independently authored (§1).
-**(e)** Seal the prediction — ⛔ **OUTSIDE the repo** (scratchpad) until the stage's build *and*
-its review legs have landed; copy it in and commit it at (i) as the record.
-⚠ **Custody caveat, stated honestly:** committing it afterwards means **git cannot prove it predated
-the build**. Its value is as a *working* pre-registration — it disciplines your own thinking and
-records falsified predictions — not as cryptographic evidence. If that ever needs to be stronger,
-record a hash of it outside the workspace before the build starts.
-⛔ **A pre-registration left in the working tree is a SUPPLIED ANSWER.** At 018 a review leg read the
+Bank this plus the (a) enumeration.
+⛔ **RETIRED 2026-07-29/30 — reference custody.** This step used to require committing the `.wl` *before*
+touching the `.py`, on the argument that freezing the reference first stops both conversion sides from
+changing together. It never established that the original engine pair was independently authored (§1), it
+is a custody rule of exactly the kind this project no longer keeps, and the ordering is now free. What
+still matters and is unchanged: **re-run each side and compare, rather than editing both and comparing the
+results of one thought.**
+⭐⭐ **WHAT SURVIVES THE CUT, AND IS NOT CEREMONY — THE CO-AUTHORSHIP GUARD.** *The party that wrote the `.py`
+must not be the party that adjusts the `.wl` until the comparator agrees.* Chasing green by editing whichever
+side disagreed collapses the two engines into **one thought**, and what then passes is a comparison of a
+result with itself — **the LLM-shortcut-that-resembles-a-pass** that `docs/development_pipeline.md`, *THE
+POSTURE*, names as the operative failure mode here. A comparator disagreement is a **finding to report and
+adjudicate**, never a difference to tune either side into. ⛔ This is **not** custody and must not be written
+back into one: no commit ordering, no "reference custody", no freezing either engine, no digest over either
+side. It constrains only **who may edit which engine while a comparison is open**.
+**(e)** Write the prediction down before the build, **in the session scratchpad** (outside the working tree),
+and fold it into the stage note **after** the reviews land.
+⭐ **Why there, in one line:** *before launching any agent, ask what is reachable from the working tree that
+states your expected answer — absence beats instruction* [`never-supply-the-expected-reason`]; a prediction in
+the tree is reachable, and a `⛔ do not read <path>` in the directive is not. ⛔ **That is the whole reason —
+not custody, not sealing, not ordering.** Nothing about it is frozen, hashed, or timestamped as evidence.
+⚠ **What it is for, unchanged:** a *working* pre-registration that disciplines your own thinking and
+records **falsified** predictions. It is not cryptographic evidence and never was.
+⛔ **A pre-registration a review leg is pointed AT becomes a SUPPLIED ANSWER — this is the part that
+survives, and it is target-blindness, not custody.** At 018 a review leg read the
 untracked note and cited it as authority for a claim that was wrong. Withholding it from the
 *directive* achieves nothing — agents `ls`, `grep` and `git status` their way in. ⭐ What saved it: the
 physics leg was told to **derive from the model**, not to *check a claim*. A leg pointed at first
@@ -438,23 +410,45 @@ comparator recomputes sha256 for both the stage `.py` and `scripts/ledger_dimens
 either missing or mismatched assertion — but run the stage first anyway and say that you did.
 
 ⛔ **A bare stage run is a PRODUCER, not a validator.** It writes the dimension sidecar; its exit code
-and PASS tally do **not** certify that artifact. Validation evidence comes from the module-pin control,
-the axis-labelled comparator, and the canonical-table generator. After a legitimate, independently
-reviewed edit to `scripts/ledger_dimensions.py`, an expected red pin is re-baselined explicitly with
-the full, unabbreviated command:
+and PASS tally do **not** certify that artifact. Validation evidence comes from the axis-labelled
+comparator and the canonical-table generator.
+
+⚠⚠ **THE MODULE DIGEST IS NOW A STALENESS PING, NOT AN AUTHORITY (user decision, 2026-07-29/30).**
+⭐ **State only what it does, which is one thing:** it compares the current bytes of
+`scripts/ledger_dimensions.py` against the digest recorded in `scripts/ledger_dimensions.accepted.sha256`
+and fails on any difference (`check_ledger_dimensions_pin.py`, `require_accepted_ledger_dimensions`).
+⛔⛔ **It CANNOT establish "you edited the module and did not re-run the stages."** It inspects no producer,
+no stage, no sidecar and no run: it compares two hashes, and `--accept` rewrites the recorded hash from the
+current module bytes without checking that anything was re-run (`accept_current_module`). ⇒ A red digest says
+**the module differs from the last accepted baseline** — which is *usually* because you edited it and have
+not refreshed downstream, and that is why it is worth its cost — but the red is not evidence the stages are
+stale, and a green one is not evidence they are fresh. ⭐ **The check that actually detects a stage not re-run
+after a module edit is the SIDECAR binding** (`emit_dimension_sidecar` stamps the module's digest into the
+stage's sidecar header and the comparator recomputes it); do not conflate the two.
+⛔ **Retired framing:** "an accepted-digest **authority** no producer writes", the pin as a **validator**
+whose green means anything about correctness, and **re-acceptance as a review ceremony**. When the digest
+goes red after a legitimate module edit, it is telling you to **re-run the producers**; refresh the
+baseline and re-run them:
 ```bash
 python3 scripts/check_ledger_dimensions_pin.py --accept
 ```
-Explicit acceptance intentionally hashes the current module bytes and replaces
-`scripts/ledger_dimensions.accepted.sha256` (`scripts/check_ledger_dimensions_pin.py:101-115`); it
-does not validate the change's correctness. By contrast, validation/check mode reads the expected
-digest from the authority and hashes the module only for the actual digest
-(`scripts/check_ledger_dimensions_pin.py:58-72`, `:75-98`): it never derives the expected digest
-from the module. Inspect that one-line authority change, then re-run the standalone control, the stage
-producer, the comparator, and `python3 scripts/generate_canonical_dimension_table.py`. The parser sets
-`allow_abbrev=False`: spell `--accept` in full; `--acce` is rejected.
-**(h)** Review: transliteration-fidelity fresh agent + adversarial-with-ablation fresh agent.
-**(h2)** ⭐ **ONLY NOW, open the sealed prediction from (e) and adjudicate it** — record every
+(⚠ mechanics, unchanged because the script is unchanged: `--accept` hashes the current module bytes and
+rewrites `scripts/ledger_dimensions.accepted.sha256`; the parser sets `allow_abbrev=False`, so spell it in
+full. Then re-run the stage producer, the comparator, and
+`python3 scripts/generate_canonical_dimension_table.py`.) ⛔ **A refresh needs no independent reviewer, no
+recorded reason and no second witness** — it is a staleness reset, and treating it as a trust event was the
+ceremony. ⚠ It never established tampering-resistance anyway: §9 records that a `sitecustomize.py` on
+`PYTHONPATH` takes every in-process check green, and that `--accept` moves the baseline with no reason
+field. **Read a green digest as "not stale", nothing more.**
+**(h)** Review: a **fresh agent doing both halves** — term-by-term transliteration fidelity, and
+per-tooth ablation over every able-to-fail check and emitted record (target list owned by the
+orchestrator, never the builder). ⭐⭐ **A stage conversion is a PHYSICS-BEARING artifact, so this runs on
+TWO mutually independent fresh agents** (`docs/development_pipeline.md`, Roles table + Phase 4(b), amended
+2026-07-30): the second is launched without the first's findings, and a clean first leg does not retire it.
+⛔ That is a second **independent reader of the same artifact** — not a model bookend, not a fixed sequence,
+not a confirm pass. Non-negotiable either way: every leg is **fresh**, and the ablation target list is the
+orchestrator's.
+**(h2)** ⭐ **ONLY NOW, open the prediction from (e) and adjudicate it** — record every
 prediction confirmed and every one **falsified**, with evidence. Doing this before (h) would leak
 the expected answers into the reviews; doing it never is how a pre-registration becomes decoration.
 At 018 this is what caught P9 (the false `c_s0`/`c_S` merge) as a *wrong prediction of mine*, not
@@ -466,26 +460,27 @@ execution and review step until both legs are clean.
 *The two blocks below expand steps (g) and (c). **(g2) runs inside step (g)** — after the comparator,
 before review; **(c2) runs inside step (c)**. Neither is an extra step after (i).*
 
-⭐ **(g2) THE ORCHESTRATOR MUST REGENERATE THE `.out` ITSELF, once per stage.** The `.out` is the
-reference half of the only universal gate; if it could be hand-written, the cross-check proves nothing —
-as one agent put it, *"a hand-edit and a real re-run are byte-identical, so its provenance rests on trust
-alone."* Run `math -script <the .wl>`, normalise with `sed -E 's/\$[0-9]+/$N/g'`, and confirm it
-reproduces the committed `.out` byte-for-byte. Done for stage013 (sha `42ee1ad7fbf8283a`, exit 0).
-⚠ **NEEDS RE-ADJUDICATION (2026-07-29) — the step's stated RATIONALE is refuted, not the step.** This
-step used to read *"verification agents are barred from Mathematica, so they **cannot** confirm the
-reference side is genuine."* That premise was measured false: a fresh review agent ran
-`timeout 600 math -script …` to exit 0 in this environment and byte-diffed the transcript itself
-(`research/pde_ledger_v2/_scratch/stage023_h/REPORT_ADVERSARIAL.md`, *"Positive control on the
-Mathematica side"*). ⚠ **Do not overstate the measurement:** one agent, one occasion. It refutes
-"cannot"; it establishes nothing about reliability or about licence contention — both remain
-undetermined from a single observed run. ⛔ **The control stands meanwhile**, but that is the *practice*
-continuing on a reason not yet re-established. ⚠ **A replacement rationale is PROPOSED, not
-established:** that the reference half of the only universal gate must be regenerated by a party
-independent of the build, since a build that produces both halves proves nothing by comparing them. It
-is plausible; it is **not** what the step was originally justified by; the user must **adjudicate it
-before it is cited as the reason**. ⚠ **Seat cap, now
-relevant:** if agents run Mathematica, they consume licence seats — **never more than 2 concurrent
-`math -script`**, counting every session running `math`, orchestrator included.
+⛔⛔ **(g2) IS CUT AS AN ORCHESTRATOR-ONLY DUTY — USER DECISION, 2026-07-29/30.** ~~The orchestrator must
+regenerate the `.out` itself, once per stage.~~ **Its own stated rationale is recorded here as REFUTED, and
+the replacement was never established:**
+- The original reason — *"verification agents are barred from Mathematica, so they **cannot** confirm the
+  reference side is genuine"* — was **measured false** (2026-07-29): a fresh review agent ran
+  `timeout 600 math -script …` to exit 0 in this environment and byte-diffed the transcript itself
+  (`_scratch/stage023_h/REPORT_ADVERSARIAL.md`, *"Positive control on the Mathematica side"*). ⚠ One agent,
+  one occasion — that refutes "cannot" and settles nothing about reliability or licence contention.
+- The proposed replacement — *"the reference half must be regenerated by a party independent of the build"* —
+  was **never adjudicated**, and it is a **provenance/tamper** argument (*could this `.out` have been
+  hand-written?*), not a drift one. Hand-forging a transcript is a motivated-adversary move, and this project
+  hardens against drift and honest error (`docs/development_pipeline.md`, *THE POSTURE*).
+⇒ **Whoever runs the stage regenerates the `.out` and byte-compares it; it no longer has to be the
+orchestrator, and it is not a separate custody step.**
+⭐⭐ **THE COMPARISON ITSELF STAYS, AND IS LOAD-BEARING — do not read this as cutting the check.** Run
+`math -script <the .wl>`, normalise with `sed -E 's/\$[0-9]+/$N/g'`, and confirm it reproduces the committed
+`.out` byte-for-byte. **Why it survives the governing test:** §9 measures that an uncaught `Throw` makes
+`math -script` exit **0** with an **empty or truncated** transcript, and the byte-compare is the only thing
+that catches it. That is a real, non-adversarial, measured failure mode.
+⚠ **Seat cap still applies:** if agents run Mathematica they consume licence seats — **never more than 2
+concurrent `math -script`**, counting every session running `math`, agents and orchestrator included.
 
 ⭐ **(c2) MORE EVIDENCE THAT STEP (c) IS NOT OPTIONAL.** On stage013, **5 of the 15
 compared records** (`symbol_dims.*`) are declared as literals in *both* engines. Comparing them catches
@@ -798,58 +793,22 @@ trips the set check). They are ordered LAST for effort, not for risk.
   sidecar's `ledger_dimensions_sha256` binding could not detect it because both asserted and current
   digests came from the same mutated file. ⇒ **That binding closes STALENESS, not TAMPERING.**
 
-  **The missing validation/check control now has an expected side outside the module it polices.**
-  In validation/check mode, `scripts/ledger_dimensions.accepted.sha256:1` supplies the expected
-  digest and the checker hashes the current module source bytes only for the actual digest
-  (`scripts/check_ledger_dimensions_pin.py:58-72`, `:75-98`); explicit acceptance intentionally
-  derives the digest from the current module and writes that authority
-  (`scripts/check_ledger_dimensions_pin.py:101-115`). The comparator invokes the check before
-  comparison (`scripts/compare_dimension_artifacts.py:249-258`), the generator invokes it before
-  loading stages and before writing the table (`scripts/generate_canonical_dimension_table.py:229-233`,
-  `:459-468`), and `scripts/run_all_audits.sh:20` invokes it under `set -euo pipefail`
-  (`scripts/run_all_audits.sh:12`). With the same `dim_residual` stub, the stage still produces 82 PASS
-  / exit 0, but an un-rebaselined control and comparator now fail `MODULE_PIN_MISMATCH`. This
-  establishes one narrow fact: the SHA-256 of the current `scripts/ledger_dimensions.py` source bytes
-  equals the deliberately accepted SHA-256 (`scripts/ledger_dimensions.accepted.sha256:1`;
-  `scripts/check_ledger_dimensions_pin.py:88-98`).
-
-  **Residual risk — do not upgrade that narrow fact into execution or correctness evidence:**
-  - **Bytecode is outside the pin** (`scripts/check_ledger_dimensions_pin.py:88-98);
-    `scripts/__pycache__/` is gitignored and unverified (`.gitignore:1`). CPython's
-    import path truncates source mtime to an integer
-    (`/usr/lib/python3.10/importlib/_bootstrap_external.py:973`) and supplies source size to timestamp
-    validation (`/usr/lib/python3.10/importlib/_bootstrap_external.py:1000-1005`), which rejects a
-    stored-mtime mismatch (`/usr/lib/python3.10/importlib/_bootstrap_external.py:637-640`) or a stored
-    source-size mismatch (`/usr/lib/python3.10/importlib/_bootstrap_external.py:641-643`). **Same
-    integer mtime and same source size are both required** for stale timestamp bytecode to remain
-    valid. The measured equal-size `sum`→`min` rewrite within one second still reused bytecode, so
-    deliberate header construction is not necessary
-    (`_scratch/modpin/REMEDIATION_REPORT.md:34-43`); equal-length audit edits such as sign flips,
-    `sum`→`min`, and `+`→`-` make the size condition routine and the hazard realistic here
-    (`_scratch/modpin/REMEDIATION_REPORT.md:41-43`).
-  - **The check does not cover its own execution environment.** In an isolated copy, a targeted
-    `sitecustomize.py` on `PYTHONPATH` spoofing `hashlib.sha256` only for the mutated module bytes made
-    the standalone control, all six converted-stage comparator CLIs, and the generator CLI exit 0.
-    This is inherent to an in-process check.
-  - **For the common trust root, the pin moves the single point of failure; it does not abolish it.**
-    The authority has one entry naming only `ledger_dimensions.py`
-    (`scripts/ledger_dimensions.accepted.sha256:1`), and every consumer delegates to the shared
-    decision function (`scripts/check_ledger_dimensions_pin.py:75-98`). Editing that shared decision
-    to return success compromises all consumers. There are **four** individual invocation sites:
-    `scripts/compare_dimension_artifacts.py:251`,
-    `scripts/generate_canonical_dimension_table.py:231` and `:461`, and
-    `scripts/run_all_audits.sh:20`. Deleting one generator invocation leaves the other active; deleting
-    the comparator or runner invocation compromises only that path, while the standalone control and
-    the other validators still reject through the shared decision
-    (`scripts/check_ledger_dimensions_pin.py:145-146`). This source-integrity hole is separate from the
-    execution-environment interposition above.
-  - **The module pin itself covers no stage `.py`, no `.wl`, no `mathematica/out/*.out`, and no
-    sidecar record content or production provenance.** The separate source/sidecar/comparator controls
-    still apply, and the forgeable-sidecar hole immediately below remains open: no validator executes
-    the stage.
-  - **The accepted digest is a bare trust root, not a correctness witness.** `--accept` moves the
-    baseline without a reason field, signature, or second witness. In the measured stub replay,
-    accepting the mutant made the comparator green again.
+  **The pin's expected side lives outside the module it polices, and that is all it buys.** In check
+  mode `scripts/ledger_dimensions.accepted.sha256:1` supplies the expected digest and the checker hashes
+  the current module source bytes for the actual one; `--accept` rewrites that file from the current
+  module. The comparator and the canonical-table generator both invoke the check before doing their work,
+  and `scripts/run_all_audits.sh:20` invokes it under `set -euo pipefail`. With the `dim_residual` stub
+  above the stage still produces 82 PASS / exit 0, but an un-rebaselined control and comparator fail
+  `MODULE_PIN_MISMATCH`. ⇒ **One narrow fact: the module's current bytes equal the last accepted digest.**
+  ⛔ Do not upgrade it into execution or correctness evidence — it covers no stage `.py`, no `.wl`, no
+  `mathematica/out/*.out`, no sidecar record content, and it never executes the stage. §4-(g) states the
+  same bound; read a green pin as **"not stale"**, nothing more.
+  *(⛔ Cut 2026-07-30 — the essay that used to follow: bytecode outside the pin, the `sitecustomize.py`
+  `PYTHONPATH` interposition, and the trust-root-vs-four-call-sites analysis. All three are
+  motivated-adversary routes around a check that is now only a staleness ping, and the governing test does
+  not buy that layer — `docs/development_pipeline.md`, THE POSTURE. ⭐ The one operationally live
+  consequence is kept, as its own rule below: clear `scripts/__pycache__/` after an ablation edit/restore
+  loop, because equal-size edits reuse timestamp-valid stale bytecode by accident, not by design.)*
 
   ⛔ **`run_all_audits.sh` is therefore not a general validation gate.** Its pin invocation does
   propagate failure because line 20 is a bare command under `set -euo pipefail`, but the runner only
@@ -857,16 +816,20 @@ trips the set check). They are ordered LAST for effort, not for risk.
   `exit` or `return` derived from `$fail` (`scripts/run_all_audits.sh:134-140`), so it can report a
   non-zero `Fail:` count and still exit 0. It invokes the comparator and generator **zero times**, so the
   cross-engine validators still have no aggregate runner.
-- ⛔⛔ **THE SIDECAR IS FORGEABLE — the `.py` side has no (g2).** `emit_dimension_sidecar` digests the
+- ⚠ **THE SIDECAR DIGEST IS A STALENESS CHECK, AND FORGEABILITY IS OUT OF SCOPE (2026-07-29/30).** ⭐ It
+  catches the real error — *the `.py` changed and the sidecar was not regenerated.* Forging one requires a
+  motivated author, which is not the risk model (`docs/development_pipeline.md`, *THE POSTURE*); what catches
+  a **wrong** sidecar is the comparator plus the blocking physics leg. ⛔ The
+  orchestrator-regenerates-the-sidecar interim control is **cut**. The measurement below stays on the record
+  because it correctly bounds what the digest means. `emit_dimension_sidecar` digests the
   **source bytes**, never the record content, and the comparator never executes the stage.
   **Demonstrated by execution:** mutate the `.py` so it declares wrong values (runs green, 82 PASS),
   then hand-write a `.wl`-matching sidecar carrying the *mutated* `.py`'s sha256 → the honest comparator
   says `FAIL mismatches=2`, the forged one says `PASS mismatches=0`, exit 0, while the `.py` on disk
   still declares `a_dim: Dim(2,0,0)`. The digest proves *"this sidecar names the `.py` on disk"*, never
   *"this sidecar was produced by running it."* ⇒ §4-g's *"run the stage first anyway and say that you
-  did"* rests on an **unverifiable assertion** — exactly the trust problem (g2) fixes for the `.out`,
-  still open on the Python side. ⭐ **Interim control: the orchestrator regenerates the sidecar itself
-  before the (i) commit**, as done for stage016.
+  did"* rests on an assertion the tooling cannot check — ⚠ **and that is accepted.** Read a green digest as
+  "not stale", nothing more.
 - ✅ **A `.py`, the shared dimension module, and a sidecar are source-hash bound.**
   `emit_dimension_sidecar` asserts separate SHA-256 digests of the stage source and
   `scripts/ledger_dimensions.py`; the comparator computes both current hashes, and the
@@ -1334,13 +1297,13 @@ not guaranteed to survive; what is load-bearing is recorded here.
   **unpinned input the sidecar does not attest**.
 
 **(b) Mutation testing — do not adopt a tool; build the ablation driver.**
-⭐⭐ **NO LONGER A CANDIDATE — USER DECISION, 2026-07-29; the decision and its constraints are the last
-four bullets of this subsection.**
+⭐⭐ **NO LONGER A CANDIDATE — USER DECISION, 2026-07-29, RE-SCOPED SMALL 2026-07-29/30; the decision and
+its surviving constraints are the last five bullets of this subsection, starting at "RE-SCOPED SMALL".**
 ⚠ **The "~100 lines" this survey recorded was an estimate of the hand-rolled loops being *replaced*, not
-a size budget for the deliverable.** The contract since authored against the accepted requirements is
-substantially larger, because exact resume, crash repair, an outcome truth table and a restore proof are
-all required behaviour. The estimate was low by a large factor — which is itself worth a reader knowing,
-and is why it is kept here rather than deleted.
+a size budget for the deliverable.** The 2026-07-29 round then grew a full interface contract (~600 lines), because exact
+resume, crash repair, an outcome truth table and a restore proof were all made required behaviour — and the
+2026-07-29/30 decision **cut all four back out**. ⭐ The survey's sizing is the right order of magnitude for
+the re-scoped driver; what blew it up was the tooling-defence tower, not the mutation loop.
 - **`mutmut` writes SCHEMATA — the decisive blocker, because it makes a control pass vacuously rather
   than error.** Its `ARCHITECTURE.rst`: *"The mutated files contains the original code and the mutants.
   With the `MUTANT_UNDER_TEST` environment variable, we can specify (among other things) which mutant
@@ -1362,17 +1325,21 @@ and is why it is kept here rather than deleted.
   `use_mutation` puts *"the unmutated **code** back in place"* and nothing else; mutmut's `mutants/` tree
   is per-run, not per-mutant, so mutant *n*'s artifact is visible to mutant *n+1*; only universalmutator
   handles it, and by **convention in the test command** (its own README example already `rm`s a generated
-  artifact before each trial), not by a hook. This is the failure that actually bit: of the 22
-  `cmp_*.txt` banked from the real stage023 ablation, **16 are the 673-byte freshness-failure text**
-  (`COMPARISON_SKIPPED: Python dimension sidecar freshness failed`) and only 6 are a real `MISMATCH` —
-  i.e. for 16 of 22 mutants the comparator's verdict was produced by the residual `.dimensions.txt`, not
-  by a dimension comparison at all.
+  artifact before each trial), not by a hook. This is the failure that actually bit: in the defective
+  stage023 run most comparator verdicts were the freshness-failure text
+  (`COMPARISON_SKIPPED: Python dimension sidecar freshness failed`) rather than a real `MISMATCH` — the
+  verdict was produced by the residual `.dimensions.txt`, not by a dimension comparison at all.
+  ⚠⚠ **The "16 of 22" split is SELF-REPORTED and repository-unverifiable.** That run was gitignored and is
+  absent from the tree: `notes/stage023_step_h_evidence/` holds only `results.tsv` (the **corrected** run),
+  `include_list.tsv` and `ABLATION_SUMMARY.md`, and the per-mutant `cmp_*.txt` were never committed. The
+  failure class is real and is why R3 exists; the count cannot be checked against anything.
 - **Targeting is subtractive or random everywhere, with no include-list.** cosmic-ray's three shipped
   filters (`cr-filter-operators`, `cr-filter-pragma`, `cr-filter-git`) all *skip* work items and there is
   **no "mutate only these lines" input**; mutmut offers file globs, pragmas and function-name globs (and
   `SOURCED_DIMS` is a module-level dict literal, so the function glob cannot reach it); MutPy's
   `--percentage` and mutatest's `--nlocations` select **random** sites. ⚠ universalmutator's line
-  restriction is **unverified**. That collides head-on with `docs/development_pipeline.md:330-332` — the
+  restriction is **unverified**. That collides head-on with `docs/development_pipeline.md`
+  (**per-gate checklist item 6**, *"ablation target list owned by the orchestrator"*) — the
   ablation target list is the **orchestrator's**, and any tool whose `init` enumerates the sites has
   taken that ownership. Scale: `cosmic-ray init` on the stage023 file would emit order-10³ work items
   against the wanted 22 + 29 = 51, so a custom filter would have to delete ~95%.
@@ -1390,15 +1357,15 @@ and is why it is kept here rather than deleted.
   code back in place"*) and the survey calls that *"the single biggest compatibility fact"* — because
   this project's controls hash the file's own bytes, `__file__`, the sidecar's destination path and the
   `sha256` freshness pin only stay honest when the real file at the real path is what changes.
-- ⭐ **The three features the survey found missing from the hand-rolled loops:** (1) per-mutant reset
+- ⭐ **The features the survey found missing from the hand-rolled loops:** (1) per-mutant reset
   of the source **and** of every emitted artifact, as a first-class step rather than something smuggled
-  into a wrapper; (2) per-mutant capture retained, never overwritten; (3) resume after interrupt, by
-  skipping rows already banked. Its input is an explicit **orchestrator-supplied include-list** of
-  `(name, line, old_text, new_text)` rows, which satisfies the process clause by construction. Restore
-  still proves itself by `cp` + `git hash-object` (§9), never `git checkout`. ⚠ **These three are a
-  floor, not the requirement set** — the requirements since accepted against this decision add exact
-  resume, crash repair, an outcome truth table and a restore proof (see the standing-position bullet
-  below), which is where the size estimate went.
+  into a wrapper; (2) per-mutant capture retained, never overwritten. Its input is an explicit
+  **orchestrator-supplied include-list** of `(name, line, old_text, new_text)` rows, which satisfies the
+  process clause by construction. Restore is by `cp`, ⛔ never `git checkout`/`restore`/`stash` (§9) — that
+  is data safety on uncommitted work, not ceremony. ⚠ **A third feature the survey listed — resume after
+  interrupt — was CUT by the 2026-07-29/30 decision**, along with crash repair, the outcome truth table and
+  the digest restore proof; those four are where the size estimate went, and none of them catches a wrong
+  derivation.
 - ⭐⭐ **USER DECISION, 2026-07-29 — the ablation driver LEADS the BUILD QUEUE (which tooling gets built
   next), ahead of the shared Mathematica `DIM|` emitter, and it is not per-stage throwaway.** ⚠ **Two
   different sequences run here and this decision sets only the second.** The **conversion order** (which
@@ -1408,87 +1375,65 @@ and is why it is kept here rather than deleted.
   The existing hand-rolled ablation harnesses are to be switched over to it, and it is to be **reused
   for every subsequent stage rather than re-written per stage**. This is a commitment to build; the two
   remaining survey outcomes are not (see the closing paragraph of §12b).
-- ⛔ **It is acceptance tooling, so it cannot grade itself.** Per `docs/development_pipeline.md:319-322`
-  (**checklist item 1b — "Every checker named in the directive already existed before the build"**),
-  when the deliverable *is* the checker, the positive and negative conformance fixtures and their
-  expected outcomes must be authored and **frozen by a different session** before the build starts; and
-  per this workstream's own floor rule (§4, `60e7032c` — *sidecar + comparator with a non-empty floor*),
-  their **non-empty floors** are frozen with them. The building session may neither author nor weaken
-  any of the three. ✅ **This rule has been SATISFIED for the driver, not merely stated** — see the
-  step-2-done bullet below; it remains a standing rule for the `DIM|` emitter and anything after it.
-- ⭐ **The retrofit's able-to-fail acceptance test has its ANSWER, and — since 2026-07-29 — its CHECKER
-  too.** ⚠ Say which of the two, because "already available" was read both ways: the **answer** is the
-  **committed oracle** (`notes/stage023_step_h_evidence/results.tsv`, in git) **and the legacy→new field
-  mapping**, frozen in the driver's contract (`notes/ablation_driver/CONTRACT.md` §C-9). The **executable
-  checker** no longer has to be written: it is item A7 of the frozen suite
-  (`notes/ablation_driver/fixtures_v4/run_conformance.py` with `fixture_oracle.py`), which performs the
-  live join against those committed legacy tables rather than trusting a precomputed digest — and, per the
-  bullet above, it was authored by a session that is not the building one. ⚠ The phrase's original point
-  still holds and is the durable one: **nobody gets to decide the right answer after the fact.** The
-  comparison being automated came later and does not replace that.
-  Re-running stage023's two ablation axes through the new driver must reproduce the
-  committed `notes/stage023_step_h_evidence/results.tsv` — **22 `A1_DECLARATION` rows and 29
-  `A2_BINDING` rows, 51 data rows under one 13-column header** — **exactly on every mapped field**.
-  ⚠ **Not byte equality, which was never achievable:** that table carries the old hand-rolled harness's
-  schema (`stage_exit`, `pass_count`/`fail_count`, `first_fail`, `sidecar_written`, and no outcome
-  column), so a successor with its own result schema cannot be byte-equal to it. The **mapping** from
-  legacy column to new field is part of the driver's **contract**, frozen with it rather than chosen at
-  comparison time. ⛔ This is not a relaxation to "broadly matches" — exactness on the mapped fields is
-  the point, and a disagreement on one is a **finding to report**, not a difference to reconcile. A
-  driver that cannot reproduce those tables under that mapping has not replaced the harness it claims to
-  replace, and the failure is visible without anyone deciding what the right answer was.
-- ⭐ **A fourth required feature the list above does not state, learned this stage: whatever the driver
-  emits must be written to be read from the COMMIT, not from the scratch directory it ran in.** Every
-  path, count and row reference in its output must resolve against the committed tree; run-local scratch
-  paths, and counts true only of the run, are not acceptable output. Four separate claims in this
-  stage's hand-written evidence summary (`notes/stage023_step_h_evidence/ABLATION_SUMMARY.md`) were true
-  of the run and false of the commit, and each had to be corrected under review — so this is a
-  requirement on the driver's output format, where that class of error is designed out, not a reviewer's
-  checklist item, where it is merely caught.
-- ⭐ **Where the driver stands as of 2026-07-29, so the next session need not re-derive it.** The
-  specifications are **committed** under `research/pde_ledger_v2/notes/ablation_driver/` — ⚠ **cite those
-  paths, not the gitignored `_scratch/` originals** (`.gitignore:96`, the `research/**/_scratch/` rule),
-  which will not survive the session.
-  The requirements are at **v4** in `notes/ablation_driver/REQUIREMENTS.md:1` (heading **"Ablation
-  driver — requirements and acceptance intent (v4)"**); **R8's original property** — that
-  committed evidence alone lets a reader re-run a row — was **withdrawn by user decision on scope**
-  (`notes/ablation_driver/REQUIREMENTS.md:8`, **"v4 — USER DECISION 2026-07-29: scope down, R8 is
-  dropped"**), and R8 now states the narrower prose rule **"the evidence claims exactly what it
-  supports"** (`notes/ablation_driver/REQUIREMENTS.md:108`, **R8**); and a **contract has been
-  authored against v4** (`notes/ablation_driver/CONTRACT.md:5`,
-  **"Applies to: `REQUIREMENTS.md` v4, 2026-07-29"**), alongside `CONTRACT_NOTES.md` /
-  `CONTRACT_NOTES_V4.md` and `FIXTURES_REPORT.md` (⛔ the last describes a **superseded v1 suite** — see
-  its status banner).
-- ⭐⭐ **STEP 2 OF THE THREE-SESSION SHAPE IS DONE, 2026-07-29 — the fixtures are FROZEN AND COMMITTED.**
-  The suite is `notes/ablation_driver/fixtures_v4/` and its byte authority is **outside** it, at
-  `notes/ablation_driver/fixtures_v4.accepted.sha256`; `fixtures_v4/verify_freeze.py` reports **36 governed
-  paths** and exits 0. **What is earned:** all nine acceptance items **A1–A9** pass a driver written from
-  `CONTRACT.md` alone, A7 over the complete real stage023 row set; every rejection was probed to fire on its
-  **named** property rather than on an incidental difference; and non-interference survives **SIGTERM and
-  SIGKILL** at mutation boundaries.
-  ⚠⚠ **THREE INDEPENDENT FULL-LADDER PASSES EXIST, BUT NOT ON ONE SET OF BYTES — say it this way, because
-  the aggregate count reads as stronger than the provenance is.** **Two** passes are recorded at the freeze
-  commit `abcb7f2b`: two independent reviewers each wrote a driver from `CONTRACT.md` alone and ran the real
-  ladder, all nine items passing with A7 over the complete real row set (~25 min each). `4c22872a` then
-  changed **two governed files** — `REQUIREMENTS.md` (+69 lines) and `run_conformance.py` (126 lines
-  touched) — so those two passes do **not** cover the suite as it now stands. **One** pass is recorded on
-  the bytes `41b66dd5` accepted: one independent party, a driver from `CONTRACT.md` alone, the full ladder
-  *on those exact bytes*, all nine items, **51/51 A7 rows**, zero spurious wait trips. `0803392f` then
-  changed `run_conformance.py` again (3 insertions, 2 deletions) and was verified only as far as **reaching
-  driver invocation from a clean clone**, on the argument that the change is inert when the scratch
-  directory already exists; `96a1a61b` re-accepted on that argument. ⇒ **Established: one full-ladder pass
-  at the `41b66dd5` byte-state, two at `abcb7f2b`. OUTSTANDING: any full-ladder pass on current `HEAD`
-  bytes.** That argument is recorded here, not adjudicated; a reader who wants the pass can run one.
-  ⛔ **Do not restate here what
-  the freeze does NOT cover** — the trust boundary and the deliberately accepted coverage gaps have a
-  canonical home in `fixtures_v4/FREEZE_LIMITS.md` and `fixtures_v4/README.md`; cite those.
-  ▶ **The remaining step is the BUILD, and it is HARD-GATED:** `fixtures_v4/run_conformance.py` runs the
-  freeze verifier first and refuses conformance at all while verification fails, and the building session
-  may neither author nor weaken the fixtures. ⚠ **It also couples to the per-stage loop:** nine of the 36
-  governed paths are live dimension-rewrite paths — see the standing block at the head of **§4**, which is
-  where a stage-converter meets it.
+- ⛔⛔ **RE-SCOPED SMALL — USER DECISION, 2026-07-29/30. This is now the whole specification.**
+  **Build it small: mutate a declaration, confirm the declared assert fires, record it. Reviewed by one
+  fresh agent.** ⛔ **No contract, no frozen fixtures, no three-session shape, no freeze tower.** The
+  three sub-bullets below record what the earlier, larger shape established and where its artefacts sit;
+  they are history, not requirements.
+  ⚠ **What still binds** is the trimmed requirement set in
+  `notes/ablation_driver/REQUIREMENTS.md` — the mutation is applied **at the real file's real path**, **no
+  state from a previous mutant is observable by the next**, **a mutation that does not apply exactly once
+  is a recorded outcome**, and the **real committed include-list validates with a floor an
+  accept-and-ignore parser fails**. Those four were measured to decide real verdicts and are the reason
+  the driver exists at all.
+- ⭐ **The retrofit still has its ANSWER — worth running, no longer a blocking gate (2026-07-29/30).**
+  ⚠ **Exact agreement on every mapped field of the 13-column legacy schema, via the 25-row mapping table in
+  the superseded `CONTRACT.md` §C-9, is NOT required** — that is tooling-replay fidelity, beyond the four
+  measured properties (R2/R3/R6/A6) the driver exists for. Run it, report every disagreement, adjust neither
+  side. ⇒ Re-run
+  stage023's two ablation axes through the driver and compare against the committed
+  `notes/stage023_step_h_evidence/results.tsv` (**22 `A1_DECLARATION` + 29 `A2_BINDING` rows**). ⚠ **Byte
+  equality was never achievable** — that table carries the old hand-rolled harness's schema (`stage_exit`,
+  `pass_count`/`fail_count`, `first_fail`, `sidecar_written`, and no outcome column), so a successor with its
+  own result schema cannot be byte-equal to it. `notes/ablation_driver/CONTRACT.md` §C-9 records which legacy
+  column corresponds to which new observation — ⚠ that file is otherwise **superseded**, but §C-9 is the
+  durable part and is the right reference for reading the comparison. ⭐ **The durable principle: nobody gets
+  to decide the right answer after the fact.** That is satisfied by the oracle being **already committed**,
+  not by anything being frozen and not by demanding field-by-field exactness.
+- ⚠ **A PROSE rule, and it is deliberately NOT a driver requirement:** whatever a run leaves behind must
+  claim only what the **committed** files support, not what was true of the scratch directory it ran in.
+  Four separate claims in this stage's hand-written evidence summary
+  (`notes/stage023_step_h_evidence/ABLATION_SUMMARY.md`) were true of the run and false of the commit, and
+  each was corrected under review. ⛔ **Do not turn it into an output-format requirement again** — that is
+  exactly the conversion that pulled in transitive read sets, replay capsules and platform prerequisites
+  and took the driver from ~100 lines to a full interface contract. **A prose defect gets a prose fix**
+  [`fix-defect-at-its-own-level`].
+- ⭐ **Where the driver stands, so the next session need not re-derive it.** The requirements live at
+  `research/pde_ledger_v2/notes/ablation_driver/REQUIREMENTS.md`, trimmed to the small shape by the
+  2026-07-29/30 decision — ⚠ **cite that path, not the gitignored `_scratch/` originals**
+  (`.gitignore:96`, the `research/**/_scratch/` rule), which will not survive the session.
+  ⛔ **SUPERSEDED, kept only as history:** the whole `CONTRACT.md` (except §C-9's legacy mapping table),
+  `CONTRACT_NOTES.md` / `CONTRACT_NOTES_V4.md`, `FIXTURES_REPORT.md`, and the whole `fixtures_v4/` suite
+  with its `fixtures_v4.accepted.sha256` byte authority. None of them gates anything now.
+- ⚠ **WHAT THE LARGER SHAPE ACTUALLY BOUGHT — recorded because the cost is the lesson.** Two sessions
+  produced a contract and a frozen 36-path conformance suite, and independent parties ran the full A1–A9
+  ladder against drivers written from `CONTRACT.md` alone (two passes at `abcb7f2b`, one at `41b66dd5`,
+  none on the final bytes). ⭐ **Two findings from it are worth keeping and are folded into the trimmed
+  requirements:** that residual state from a previous mutant decided stage023 verdicts by a stale artifact
+  rather than by comparison (⚠ the **16 of 22** split is **self-reported** — the defective run was
+  gitignored and is not in the tree; see (b) above), and that a mutation which does not apply exactly once
+  must be a *recorded* outcome rather than a silent one. ⛔ **Everything else in that tower was tooling defence** —
+  the freeze, the external byte authority, the hard gate, the re-acceptance review, the three-session
+  separation, `A2_COMPLETION_WAIT_SECONDS`, the wait-time allowance bound — and none of it could catch a
+  wrong derivation. **That is the concrete measurement behind the governing test in
+  `docs/development_pipeline.md`.**
 
-**(c) Provenance — the missing control is `(g2)` for Python, not a tool.**
+**(c) Provenance — CLOSED AS OUT OF SCOPE (user decision, 2026-07-29/30), not a candidate deliverable.**
+⛔ **This whole sub-survey answers a question the project no longer asks: "could this artifact have been
+hand-written rather than produced?"** That is production-provenance, i.e. **tamper**-resistance, and the
+operative failure here is **drift and honest error** (`docs/development_pipeline.md`, *THE POSTURE*). The
+sidecar digest is a **staleness** check and is asked to be nothing more. ⚠ Kept as a record because the
+survey's structural finding is genuinely instructive and would otherwise be re-run.
 - ⭐ **The structural finding, which decides the whole survey: no attestation scheme binds an artifact to
   its producer *by attesting alone*.** ⚠ Scope this precisely — schemes in this family do define and
   carry producer information (SLSA's provenance is verifiable information tracking an artifact to where
@@ -1496,9 +1441,11 @@ and is why it is kept here rather than deleted.
   a digest, a signature, or a link-metadata record is computed **over bytes that already exist**, and
   nothing in the act of hashing or signing can distinguish bytes a process wrote from bytes a hand
   wrote — so the producer information is *asserted*, not established, by the attestation step itself. Every tool that closes the gap closes it by **re-executing the producer and comparing
-  bytes** — which is exactly what §4-(g2) already does for the `.wl`. ⇒ **the missing control is (g2) for
-  Python**, and unlike Mathematica it needs no licence seat, so it can be **mechanised** instead of left
-  to "the orchestrator regenerates the sidecar itself before the (i) commit" (§9).
+  bytes**. ⚠ **That observation still stands and is the reason the `.out` byte-compare stays** (§4-(g2)) —
+  though note the `.out` compare earns its keep on the *uncaught-`Throw`* failure, not on provenance.
+  ⛔ **A "(g2) for Python" is NOT a missing control and is not to be built** (2026-07-29/30): it would buy
+  tamper-resistance, and the orchestrator-regenerates-the-sidecar step it was meant to mechanise is itself
+  cut (§9).
 - **The citable negatives.** *in-toto*: the spec makes an `expected_command` mismatch a **warning** only,
   because the field *"can easily be forged (e.g. by changing the PATH environment variable in a host) and
   thus it should not be trusted for security checks"* — it hashes declared paths before and after the
@@ -1534,7 +1481,8 @@ and is why it is kept here rather than deleted.
   script that reads its own committed sidecar and reprints it), because the committed bytes are never fed
   to the run. That is precisely why the naive in-place `regenerate && git diff --exit-code` form is
   **weaker** — in place, the committed file is present during the run.
-- ⛔ **This closes PRODUCTION PROVENANCE ONLY** — "the artifact is what running that source emits".
+- ⛔ **This closes PRODUCTION PROVENANCE ONLY** — "the artifact is what running that source emits" — ⚠ **which
+  is precisely why it is out of scope now.**
   Correctness is a separate property and stays with the cross-engine comparator and the model read (§11).
   Do not let anyone upgrade a green regeneration into a correctness claim; that is the same category
   error §11 already warns about for a bare `python3 …` run.
@@ -1548,20 +1496,19 @@ and is why it is kept here rather than deleted.
 
 ⭐ **The common shape: all three point at a project-owned deliverable, not an adoption** — a 222-line
 module kept, an ablation driver the survey sized at ~100 lines, a ~60-line regeneration check. ⚠ Those
-are the survey's sizings of the work each would displace, not budgets, and the driver's has not held:
-its accepted requirements and authored contract are substantially larger (see (b)). ⛔ **What this does NOT
-license:** none of it changes the charter (§1), the per-stage loop (§4), or any existing verdict.
+are the survey's sizings of the work each would displace, not budgets; the driver's briefly grew to a
+~600-line contract and was **cut back to the survey's order of magnitude** by the 2026-07-29/30 decision
+(see (b)). ⛔ **What this does NOT license:** none of it changes the charter (§1), the per-stage loop (§4),
+or any existing verdict.
 
 ⚠ **The three are NO LONGER in the same state — do not read this section as three candidates.**
 **(a) is CLOSED as NO-GO:** `ledger_dimensions.py` stands, no library is adopted, and the migration cost
-is recorded only against a future reopening. **(b) is a USER DECISION, 2026-07-29, and it LEADS
+is recorded only against a future reopening. **(b) is a USER DECISION, and it LEADS
 the BUILD QUEUE — which is not the conversion order (§8), where 027 is still next, and which now holds
 a second item behind it, the shared `DIM|` emitter (below)** — the ablation
-driver is to be built, the hand-rolled harnesses switched over to it, and it
-reused per stage thereafter, subject to the acceptance-tooling constraints in §12b(b). ⚠ **(b) is no
-longer only a decision:** as of 2026-07-29 its requirements are at v4, a contract has been authored
-against them, and **its conformance fixtures are frozen and committed** — only the **build** remains, and
-it is gated on that freeze verifying (see (b)'s standing-position bullet). **(c) alone
+driver is to be built **small** (2026-07-29/30), the hand-rolled harnesses switched over to it, and it
+reused per stage thereafter. ⚠ Only the **build** remains, and it is **not gated on anything**: the
+contract, the frozen fixtures and the three-session sequence were all cut. **(c) alone
 remains a candidate deliverable** — the Python sidecar-regeneration control is recorded so the survey
 need not be re-run, and is not a commitment to build.
 
@@ -1586,27 +1533,28 @@ regardless of where either build lands. The standing "correctness is king, regar
   **three times and CLEAN on the third**, which returned no blocking findings and recorded that no fourth
   specification round was warranted. ⚠ The review logs are in gitignored `_scratch/`
   (`codex_wl_emitter_review{,2,3}.log`) and will not survive; the requirements file is the durable record.
-- **The same three-session shape as the driver**, and for the same reason — acceptance tooling cannot
-  grade itself (`docs/development_pipeline.md` checklist 1b): **contract → fixtures frozen by a session
-  that will not build → build by a third session that may neither author nor weaken them.**
-- **Its retrofit oracle (A7).** Applying the emitter to **stage023's `.wl`** must reproduce that stage's
+- ⛔⛔ **JUST WRITE IT — USER DECISION, 2026-07-29/30.** ⛔ **No contract, no frozen fixtures, no
+  three-session shape.** One builder writes it; **one fresh agent reviews it**. The
+  earlier plan — *contract → fixtures frozen by a session that will not build → build by a third session
+  that may neither author nor weaken them* — is **withdrawn**, on the same measurement that cut the
+  driver's tower: none of that layer can catch a wrong `DIM|` record.
+- **Its retrofit oracle.** Applying the emitter to **stage023's `.wl`** must reproduce that stage's
   committed `.out` `DIM|` block — **29 records, `axes=L,M,T`** — **byte-identical** under the existing
   kernel-ID normalization. ⛔ A disagreement is a **finding to report**, never a difference to adjust
-  either side into. ⚠ A7 is not decidable until the contract names that extraction-and-normalization
-  operation exactly.
-- ⚠ **The open decision it carries — and the first thing its contract must settle: a loaded shared file,
-  or a per-stage block?** (`REQUIREMENTS.md` contract question 1.) If it is **loaded**, it becomes an
-  **unpinned trust root for every stage's reference half** — precisely the position
-  `ledger_dimensions.py` occupied before its pin existed (§9), and one edit then compromises every stage
-  that loads it. If instead it is a **copied block**, the exposure moves to **copy drift** between
-  stages. The contract settles it; what is recorded here is that the question is **live**, and why it
-  matters.
+  either side into. ⭐ This is the real gate, and it needs no contract: the oracle is **already committed**,
+  so nobody gets to decide the right answer afterwards. ⚠ State the extraction-and-normalization operation
+  you used when you report it.
+- ⚠ **The open decision it carries — the builder settles it and says which they chose: a loaded shared
+  file, or a per-stage block?** (`REQUIREMENTS.md` contract question 1.) A **loaded** file makes one edit
+  reach every stage's reference half; a **copied block** moves the exposure to **copy drift** between
+  stages. ⭐ Drift is the failure this project actually has, so state the choice and its consequence in the
+  build report. ⛔ Neither answer licenses a pin, a digest authority or a custody rule over it.
 - ⭐ **The measured fact R1 rests on.** Of the seven converted stages, **004/013/018** render a **literal**
   `axes=` label while **011/012/016/023** **compute** one; and under the property *one structure feeding
   both the label and every exponent vector*, the compliant set is **at least 011/012/016/023** — 011/012
   build the label from `Keys[dimensionAxes]` and every emitted vector from that same association, while
   016/023 re-project through an explicit `dimensionAxisSlots` table. ⚠ The narrower reading — *"only 016
   and 023"* — is **false** under that property as written. Whether the narrower serialization-time
-  re-projection is the property actually wanted is a contract question, not a settled one; and bringing
+  re-projection is the property actually wanted is still open; and bringing
   004/013/018 across is a **separate per-stage decision** with its own review (§3b records their literal
   labels as bounded debt).

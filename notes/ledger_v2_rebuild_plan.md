@@ -3,6 +3,15 @@
 > **⭐ READ THIS FIRST after `/compact`.** It is the complete plan + the evidence that led to it. Front door = `STATUS.md` ▶ RESUME
 > HERE (thin pointer to here). Memory = [[project-pde-ledger-fold-in-plan]] (same content, condensed) + [[project-brane-existence-defect-structure]].
 
+> ⚠⚠ **PROCESS SUPERSEDED IN PART — user decision 2026-07-29/30 ([[feedback-physics-not-ceremony]]).** The verification
+> process this document prescribes is **collapsed to: ONE design-review pass on a fresh reviewer → build → arbiter re-run →
+> TWO mutually independent fresh review legs (each fidelity + per-tooth ablation, target list owned by the orchestrator — a
+> stage's math is physics-bearing; amended 2026-07-30) → the BLOCKING physics leg.**
+> ⛔ Retired wherever it appears below: the Codex→Grok→Codex bookend, the GLM/Grok tertiary pass, the MANDATORY three-leg
+> tri-review, and the per-Part/per-stage user gates (stop for the user at a decision, a blocking finding or a no-go instead).
+> ⭐ Unchanged and still mandatory: **dual-engine**, the **fresh** and independent reviewer, per-tooth ablation, and the
+> physics leg. Canonical: `docs/development_pipeline.md` Roles table + Phase 4.
+
 > **⭐⭐ CURRENT STATE (2026-07-10) — Phase A COMPLETE; Phase B IN PROGRESS on branch `ledger-v2-rebuild`.** B1 blueprint (`26a06378`,
 > **`notes/ledger_v2_blueprint.md`** — the approved build directive: carry-over §3, reshape spec §5, two-tier verification §6, settled
 > decisions §9) + B2 machinery (`c4a209ac`) + the B3 two-stage pilot are all DONE; the reshape template is LOCKED and validated on all three
@@ -277,7 +286,7 @@ density/`c_s` mode (extending `pathA_29`'s ℓ=0/1 density-return machinery up t
   2. What is the density-lane analog of old-ledger stage 023's `U,W` 2-port that produces the numerator `N_0`?
   3. The able-to-fail condition: what output shows the density lane cannot host the ℓ=2 port cleanly (wrong sign/normalization/gauge-obstruction)?
   4. Confirm the reframe reproduces the SAME `54/5` / fingerprint / `χ_Q=1`.
-- Then the full gauntlet: directive → Codex design-review xhigh → GLM-5.2 tertiary → dual-engine → tri-review (adversarial-with-ablation) → user gate.
+- Then the process: directive → **ONE design-review pass on a fresh reviewer** → dual-engine → arbiter re-run → **TWO mutually independent fresh review legs** (each fidelity + adversarial-with-ablation) → the **blocking physics leg**. ⛔ ~~GLM-5.2 tertiary~~ / ~~tri-review~~ / ~~user gate~~ retired 2026-07-29/30 (see the banner at the top).
 
 **A2 — `pathA_21c` SymPy companion.** `pathA_21c` (`FORCE_ATTRACTIVE_DERIVED`, the drain→1/r² force) ships `.wl`-only
 (`pathA_21c_force_from_noether_stress_tensor_crosscheck.wl`) — no `_sympy.py`. Add the SymPy side for dual-engine compliance, OR fold the

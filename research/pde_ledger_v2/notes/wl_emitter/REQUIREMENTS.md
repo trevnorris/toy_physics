@@ -20,13 +20,20 @@ below. That is three over-corrections of the same shape in one night — the tel
 written to forbid a defect rather than to state the property that distinguishes it from the legitimate
 case next door.
 
+⛔⛔ **RE-SCOPED — USER DECISION, 2026-07-29/30: JUST WRITE IT.** ⛔ **No contract, no frozen fixtures, no
+three-session shape.** One builder writes the emitter; **one fresh agent reviews it**. The sequence this
+document used to mandate — *contract → fixtures frozen by a session that will not build → build by a third
+session that may neither author nor weaken them* — is **withdrawn**, together with the
+`docs/development_pipeline.md` checklist-1b clause it cited (that checklist item no longer exists). ⇒ None
+of that layer can catch a wrong `DIM|` record, which is the only thing this emitter can get wrong that
+matters (`docs/development_pipeline.md`, *THE POSTURE*; memory `physics-not-ceremony`).
+
 ⚠ **This document states properties and acceptance intent**, not an invocation signature or a deliverable
-layout — those are Codex's, settled by a **contract** authored before fixtures are frozen. ⚠ Stated
+layout — **those are the builder's to choose and to state in the build report.** ⚠ Stated
 honestly, it is not free of design consequence: R1's single-structure property and R2's before-exit
 property both constrain how an emitter can be built. They are kept because each is a *measured* defect
-class, not a preference. Sequence, per
-`docs/development_pipeline.md` checklist 1b: **contract → fixtures frozen by a session that will not
-build → build by a third session that may neither author nor weaken them.**
+class, not a preference — ⭐ and they are exactly the requirements that survive the re-scope, because each
+names a way a **dimension record** goes wrong.
 
 ## Why it exists
 
@@ -109,8 +116,8 @@ emission holder as the corpus's first D2 case, is the working precedent. ⚠ The
 **derivation versus transcription**, not when the code was added or why.
 ⚠ **Stated honestly: this is a reviewable property, not a
 mechanizable gate** — the manifest already concedes that no current mechanism establishes independent
-authorship (§1). What the contract must settle is therefore *what evidence a reviewer reads* to judge
-binding lineage, not a check that decides it.
+authorship (§1). ⇒ **The fresh review leg judges binding lineage; no check decides it.** The builder states
+what evidence it read.
 
 ## A — acceptance intent (each item able to fail)
 
@@ -132,17 +139,21 @@ order, fails (R6/R7).
 **A9** — **R10's attribution:** a fixture stage with no hand-written emitter emits its records through the
 template, and disabling the template removes them. ⛔ A no-op template fails this, which v1's ladder did
 not catch.
-**A10** — **R11's lineage, as far as it is testable:** a fixture in which the emitter's inputs are a table
-assembled solely for emission is distinguishable, in the evidence a reviewer reads, from one whose inputs
-are the stage's own live bindings. ⚠ If the fixture author concludes this cannot be made decidable
-without reading the implementation, that is a finding to report, not a gap to paper over.
+**A10** — **R11's lineage, as far as it is testable:** an emitter whose inputs are a table assembled solely
+for emission is distinguishable, in the evidence a reviewer reads, from one whose inputs are the stage's own
+live bindings. ⚠ If the answer is that this cannot be decided without reading the `.wl`, that is a **finding
+to report**, not a gap to paper over — and reading the `.wl` is exactly what the fresh review leg does.
 
-## What the CONTRACT must settle — questions, not answers
+## What the BUILDER must settle and STATE IN ITS BUILD REPORT — questions, not answers
 
-1. **Distribution.** Is this a file each stage loads, or a block each stage carries? ⚠ If it is a loaded
-   file it becomes shared machinery with the same trust problem the Python module had — say what pins it
-   and where that authority lives, because an unpinned shared emitter is a single point of failure for
-   every stage's reference half (§9, the module-pin history).
+⚠ **Formerly "what the CONTRACT must settle"; there is no contract (2026-07-29/30).** These are the places
+design review found two parties would otherwise invent different things — so the builder picks, and **writes
+down which it picked**, where a fresh reviewer will read it.
+
+1. **Distribution.** Is this a file each stage loads, or a block each stage carries? ⚠ A loaded file becomes
+   shared machinery, so one edit reaches every stage's reference half. ⛔ **Do not answer that with a pin or
+   digest authority** — see question 12, which owns this trade-off; §9's module-pin history is now the
+   *warning* against relocating a trust root, not a pattern to copy.
 2. **Invocation and inputs** — how a stage supplies its basis, axis order, names and bindings, given R6.
 3. **Rendering** — the exact record grammar it produces, and how it guarantees R5 across the axis sets
    in use, including the 4-axis and non-physical bases already cleared as non-blocking (§8).
@@ -151,39 +162,44 @@ without reading the implementation, that is a finding to report, not a gap to pa
 5. **Adoption** — what converting one stage looks like as a diff, and what the **seven** converted
    stages' position is (R9). ⚠ Seven, not six: 004, 011, 012, 013, 016, 018, 023 all emit `DIM|` records
    today, and stage023 is both a converted stage and the A7 oracle.
-6. **How A6 is checked**, and by which existing tool, if any — including **what authority holds the
-   §4-a emitted set** and how a stage note's prose table is consumed without becoming a second source of
+6. **How A6 is checked**, and by which existing tool, if any — including **where the §4-a emitted set is
+   read from** (⚠ *"what authority holds it"* rephrased 2026-07-29/30: it is the stage note, an ordinary
+   editable file, not an authority) and how that prose table is consumed without becoming a second source of
    truth (§10: the derived artifact is never a second source of truth).
 7. **Attribution (R10).** What makes the template demonstrably the cause of a stage's records, such that
-   disabling it removes them — and how a fixture exercises that without the implementation's cooperation.
+   disabling it removes them — and how that is exercised without the implementation's cooperation.
 8. **Binding lineage (R11).** What evidence a reviewer reads to distinguish a **derived** input — including
    a D2-authorized computation added to expose an unreachable value — from a **transcribed** one carried
    across from another engine. ⚠ If your conclusion is that no evidence short of reading the `.wl` settles it, say
-   so — that is a finding, and it belongs in the contract rather than in a reviewer's head.
+   so — that is a finding, and it belongs in the build report rather than in a reviewer's head.
 9. **Input validity.** Duplicate names, duplicate or out-of-range slots, vector arity mismatches, empty
    input, symbolic exponents, approximate numbers, zero denominators — what is rejected, and how.
 10. **Failure behaviour.** Whether an invalid record may leave earlier records already written: fail-closed
    or partial. ⚠ A partially written artifact that still parses is the shape this workstream has been
    bitten by before.
 11. **Artifact shape.** Destination, header, record ordering, line endings, and the exact extraction and
-   normalization operation A7 compares under — the `.out` comparison already depends on a kernel-ID
+   normalization operation the retrofit compares under — the `.out` comparison already depends on a kernel-ID
    normalization, and A7 is not decidable until that operation is named.
-12. **Trust closure.** If a shared file is loaded (question 1), what pins it, and what pins the A6 checker
-   and the A7 normalizer — ⛔ otherwise the trust root is not removed, only moved into the checking
-   machinery, which is the mistake §9 records for the Python module. If instead a block is copied per
-   stage, what detects **copy drift** between stages, and how a template version is recorded.
+12. **Loaded-or-copied, and its consequence.** If a shared file is loaded (question 1), one edit reaches
+   every stage's reference half; if a block is copied per stage, the exposure moves to **copy drift**
+   between stages, so say what would detect it and how a template version is recorded. ⛔ **Do NOT answer
+   this with a pin, digest authority or custody rule** — that layer is cut (2026-07-29/30), and §9's
+   Python-module record is now the *warning* against relocating a trust root, not a template to copy. ⭐
+   Drift is the failure this project actually has; state the choice and its drift consequence in the build
+   report.
 
-⚠ Questions 7–12 exist because design review found six of them missing from v1 and two of them
-load-bearing enough to make the whole ladder passable by a no-op.
+⚠ These questions are for the **builder to answer in its build report** — they are no longer a contract to
+be authored first. Design review found six of them missing from v1 and two load-bearing enough to make the
+whole ladder passable by a no-op, which is why they are still listed.
 
 ## Process constraints
 
-⛔ Acceptance tooling cannot grade itself — hence the three-session sequence above.
+⭐ **One builder, one fresh reviewer** (`docs/development_pipeline.md`, Roles table). Whoever writes the
+emitter does not review it. ⛔ There is no three-session sequence and no independently frozen fixture set.
 ⛔ No expected **scientific answer or rationale** stated in a directive — ask for the determination plus
 its evidence (`docs/development_pipeline.md`, checklist item 0). ⚠ **v1 broadened this to "any file a
-build session can read", which is unsatisfiable and was itself the over-correction pattern:** A7's oracle,
-the frozen fixtures' expected outcomes, and every stage's committed expected transcript are all builder-
-readable by design, and must be.
+build session can read", which is unsatisfiable and was itself the over-correction pattern:** A7's oracle
+and every stage's committed expected transcript are builder-readable by design, and must be.
 Scripts run under `timeout 600`; a 124 is a failure to report, never a reason to raise the cap.
 ⚠ **≤2 concurrent `math -script` seats**, and per this session's measurement the cap must count agents,
 not only Codex sessions.

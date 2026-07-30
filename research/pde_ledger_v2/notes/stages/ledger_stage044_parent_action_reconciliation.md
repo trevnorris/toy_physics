@@ -344,8 +344,9 @@ REPRODUCTION                        — first-match verdict + field binding
   C1/C2/D2/E1 ARE method-independent via DSolve/Integrate/Eigenvalues/Reduce;
   method-diversity is inherent-impossible for provenance manifests) — an accepted
   robustness limitation, disclosed not hidden.
-- **GLM-5.2 tertiary: NOT yet run** — HELD for the user's explicit confirm (standing
-  "confirm-first" instruction). This is the one deferred check.
+- ⛔ ~~**GLM-5.2 tertiary: NOT yet run** — HELD for the user's explicit confirm; the one deferred check.~~
+  **CLOSED, NOT OWED (user decision, 2026-07-29/30):** the tertiary pass is retired, so nothing is
+  outstanding on this stage. 044's fresh-agent fidelity + adversarial legs were run and were CLEAN.
 
 ## Ledger accounting — what 044 does NOT do
 

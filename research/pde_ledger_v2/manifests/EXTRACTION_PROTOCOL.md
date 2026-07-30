@@ -5,6 +5,16 @@ derivation-ledger stage. Project root: `/var/projects/toy_physics`.
 The manifest is a derived artifact, never a second source of truth. Every
 machine-readable fact must be traceable to an audit engine or dated record.
 
+⭐⭐ **SCOPE — THE SEMANTIC CORE (user decision, 2026-07-29/30; corrected 2026-07-30).** Extraction effort
+goes to: **quantity identity · citation integrity · export and lifecycle enforcement · dimensional
+relations · the lifecycle census · the dependency graph and its cycles · mutation · genesis · consumption
+completeness**. ⛔ **The earlier trim that put citation integrity, the census (step 8) and genesis (step 10)
+out of scope is WITHDRAWN** — each was verified to catch a way the *physics* could be wrong (a changed
+consumed equation · a wrong irreducible-count range · calibrated-or-target-matched genesis, i.e.
+fit-vs-derive), not merely a way the bookkeeping could be wrong. Populate them, and treat a gap as a finding.
+Rationale and the per-check statement: `MANIFEST_README.md` §SCOPE, and `docs/development_pipeline.md`,
+*THE POSTURE*.
+
 ## Read first
 
 - `research/pde_ledger_v2/manifests/stage_manifest_schema_v2.json`
@@ -119,7 +129,8 @@ Do not infer a fact that the sources do not supply.
    baseline, but that warning is advisory because a legitimately robust export
    can be facet-insensitive.
 
-8. **Lifecycle census.** Model each knob as an event with stable `knob_id`,
+8. **Lifecycle census.** ⭐ **IN SCOPE — it is what catches a wrong irreducible-count range (`MANIFEST_README.md` §SCOPE).**
+   Model each knob as an event with stable `knob_id`,
    register row, origin claim, effective stage, low/high count effect, category,
    pending state, and evidence. Pending debt remains counted. Retired lifecycle
    events use the register-grounded endpoint effects; departures are not knob
@@ -133,7 +144,8 @@ Do not infer a fact that the sources do not supply.
    SymPy/Mathematica. Recompute every evidence digest from `source_path` before
    writing. Persist the extraction report and source digests in `extraction`.
 
-10. **Genesis.** POSTULATED, CONV, and CALIBRATED claims require genesis.
+10. **Genesis.** ⭐ **IN SCOPE — it is the fit-vs-derive detector (`MANIFEST_README.md` §SCOPE): it is what
+    surfaces a calibrated or target-matched origin.** POSTULATED, CONV, and CALIBRATED claims require genesis.
     Set `origin: independent` only when a dated record proves it and include
     genesis evidence with path+commit, date, span, and the later claim it
     predates. `coordinated`/`target_matched` require refs. Otherwise use

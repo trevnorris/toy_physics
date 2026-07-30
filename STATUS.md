@@ -38,6 +38,16 @@ that line-vs-volume debt stays invisible — a measured consequence of naming de
   normalised into per-stage tracked verdict tables, so **do not call whole stages verified and do
   not infer a "25 remaining" complement.** §4-c1 exists so this becomes countable going forward.
 
+⛔⛔ **DUAL-ENGINE AGREEMENT IS VACUOUS WHERE BOTH SIDES ARE HAND-DECLARED LITERALS — recorded
+2026-07-30, and it is the most important thing on this page.** **stage023 is 29/29 literals on both
+sides** (22 declarations + 7 targets typed into *both* engines; the 7 "computed" records are live
+`dimOf` walks, but over exactly those literals and no other dimensional input). Beside the stage016
+measurement above — **12 declared literals in both engines, zero computed from a physical input** —
+that means the comparator on these stages catches a **transcription split between two typed copies of
+the same numbers, and nothing else**. ⇒ **Nothing remaining independently RE-DERIVES the physics
+outside one fresh agent.** ⛔ Do not soften this and ⛔ do not read a fix into it: it is stated here
+because it is the reason the **derived-vs-declared census is the next front**.
+
 Cross-engine agreement is necessary and **not sufficient** — proven twice: it is blind to a
 same-dimension different-quantity merge, and to a shared wrong declaration. The physics leg is
 what establishes correctness, and **it does not depend on conversion** — it can run against any
@@ -52,50 +62,47 @@ independent `.py`-vs-`.wl` cross-check.
 > ⭐ **READ `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`** — the single canonical doc for
 > this workstream. And read `docs/model_map.md` **before touching any script**.
 
-✅ **The module pin is DONE** (2026-07-27) — the self-attestation that blocked conversion is closed, and
-conversion is unblocked. ⚠ It earns **one narrow fact**, not a clean bill of health; see the pin block
-below for exactly what it does and does not cover.
+✅ **The shared module is no longer self-attesting** (2026-07-27) — conversion is unblocked. ⚠ What that
+digest earns is a **staleness** signal only (*the module changed and the stages were not re-run*); see the
+digest block below.
 ✅ **stage023 IS CONVERTED — both halves.** Its `.py` is on the shared module, the comparator is green
 (`py=29|wl=29|shared=29|py_only=0|wl_only=0|mismatches=0`, no waivers), the orchestrator regenerated
 both engines' artifacts itself, and the sealed prediction is adjudicated (**5 fully confirmed · 1
 falsified (P2) · 1 split** — P3's mechanism confirmed, its exclusivity falsified by U13).
 Evidence: stage note §1.6 (§4-a enumeration), §1.7 (§4-c1 physics verdict), §5.1 (steps g/g2/h/h2).
-⛔ The `.wl` never joins the module: the charter is **SymPy-only**, Mathematica stays an independent
-engine (`DIMENSION_REWRITE.md` §1), which is why the comparison is a permanent standing cross-check.
+⛔ The `.wl` never joins the module: the charter is **SymPy-only** and the Mathematica side is authored as
+its own route (`DIMENSION_REWRITE.md` §1), which is why the comparison is a permanent standing cross-check.
+⚠ Read that as the **authoring rule** it is — §1's own honest statement governs: a green comparator shows
+**two implementations agree, not that they were reached independently**, and git establishes no order.
 **▶ NEXT CONVERSION, per the recorded conversion order (`DIMENSION_REWRITE.md` §8):** (1) the
 stage027-shape decision, (2) 027, (3) 021 (heaviest). Detail and the measured validator/harness hazards
 are in `DIMENSION_REWRITE.md` §8/§9.
-⚠ **New coupling for whoever converts next:** nine live paths — the shared module, its pin script and
-accepted-digest authority, the comparator, and stage023's audit script plus its evidence tables — are now
-also governed by the ablation-fixture freeze authority, so **touching one invalidates that freeze**.
-Accepted and deliberate (user decision 2026-07-29); the procedure is in `DIMENSION_REWRITE.md` §4.
+✅ **The ablation-fixture FREEZE AUTHORITY IS RETIRED** (user decision, 2026-07-29/30) — with it, the
+coupling that made nine live dimension-rewrite paths untouchable. Convert freely; nothing here is frozen,
+byte-perfect or under a custody rule. See `DIMENSION_REWRITE.md` §4.
 **▶ NEXT BUILD — a different queue, not a competing answer. It has TWO items, in this order:**
-**(1) the ablation driver** (**USER DECISION, 2026-07-29**, `DIMENSION_REWRITE.md` §12b(b)) — its
-three-session shape stands at **2 of 3 done**: ✅ contract, ✅ **conformance fixtures FROZEN AND
-COMMITTED** at `research/pde_ledger_v2/notes/ablation_driver/fixtures_v4/` with its external byte
-authority `…/fixtures_v4.accepted.sha256` (`verify_freeze.py` → 36 governed paths, exit 0).
-**▶ The remaining step is the driver BUILD, and it is HARD-GATED:** `run_conformance.py` refuses to run
-at all unless the freeze verifies, and the building session may neither author nor weaken the fixtures.
-⚠ **What the freeze does and does not protect lives in `fixtures_v4/README.md` and
-`fixtures_v4/FREEZE_LIMITS.md`** — read them there; they are not restated here.
-⚠ The survey's "~100 lines" sized the hand-rolled loops it replaces, not the deliverable, and the
-accepted requirements and authored contract are substantially larger. **(2) the shared Mathematica `DIM|`
-emitter** (**USER DECISION, 2026-07-29**, `DIMENSION_REWRITE.md` §12b, closing block) — requirements at
-**v2** in `research/pde_ledger_v2/notes/wl_emitter/REQUIREMENTS.md`, reviewed CLEAN, contract not yet
-authored. Which stage converts next and which
+**(1) the ablation driver**, **RE-SCOPED SMALL** (user decision, 2026-07-29/30, `DIMENSION_REWRITE.md`
+§12b(b)): mutate a declaration, confirm the declared assert fires, record it — reviewed by one fresh
+agent. ⛔ No contract, no frozen fixtures, no three-session shape. Requirements (trimmed) at
+`research/pde_ledger_v2/notes/ablation_driver/REQUIREMENTS.md`; `CONTRACT.md` and the `fixtures_v4/` suite
+are superseded and stay only as history — ⭐ §C-9's legacy mapping table is worth reading as a **reference**
+for the retrofit, but ⛔ it is **not** authoritative and A7 does not require agreement with it.
+**(2) the shared Mathematica `DIM|` emitter** (`DIMENSION_REWRITE.md` §12b, closing block) — **just write
+it**, against `research/pde_ledger_v2/notes/wl_emitter/REQUIREMENTS.md` (v2, reviewed CLEAN). ⛔ No
+contract, no frozen fixtures, no three-session shape. Which stage converts next and which
 tooling gets built next are separate sequences; in time **both** builds land **before** 027 begins.
 
 **▶ WHAT STAGE023 LEFT OPEN.** Stage023's tracked physics leg records 34 quantity routes and the
 two scoped tallies `24/0/10` on corpus identifications and `27/0/7` inside the stage-local closure
 (`research/pde_ledger_v2/notes/stages/ledger_stage023_nullspace_underdetermination.md:379-440`,
 **§1.7(1), per-quantity verdict, tally, and the 34-row route table**). Its seven unresolved derivation questions now have named
-work routes in `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`: `:876`
-(**WORK-023-MOMENT-CONVENTION**), `:936` (**WORK-023-STAGE009-MOMENT0**), `:965`
-(**WORK-023-D0-SEAM**), `:999` (**WORK-023-STIFFNESS-REDUCTION**), `:1038`
-(**WORK-023-L1-L2-PROFILE-IDENTITY**), `:1062` (**WORK-023-CS-EVALUATION**), and `:1104`
+work routes in `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`: `:975`
+(**WORK-023-MOMENT-CONVENTION**), `:1035` (**WORK-023-STAGE009-MOMENT0**), `:1064`
+(**WORK-023-D0-SEAM**), `:1098` (**WORK-023-STIFFNESS-REDUCTION**), `:1137`
+(**WORK-023-L1-L2-PROFILE-IDENTITY**), `:1161` (**WORK-023-CS-EVALUATION**), and `:1203`
 (**WORK-023-SOURCED-PROVENANCE**), all in **§12**. W3 is outside that work list because its confirmed
 arithmetic correction is already folded at
-`research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md:557-575`
+`research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md:653-670`
 (**§8, stage023 `gU/gW` correction**); `q_free` is outside it because §1.7 classifies that record as
 an unread control rather than a competing identification
 (`research/pde_ledger_v2/notes/stages/ledger_stage023_nullspace_underdetermination.md:428,442-452`,
@@ -116,17 +123,24 @@ dead code. Emit before the terminal `Exit[]`. See `DIMENSION_REWRITE.md` §8/§9
 axis-order disagreement, which is exactly the 037 pattern (`wl M,L,T` vs `py (L,T,M)`). Measured; it
 will crash the toolchain.
 
-Per stage: emit `DIM|` records into the `.wl` → ⭐ **run the PHYSICS leg BEFORE the commit** (it is
-blocking, and a NAMING decision is a physics decision) → **commit the `.wl` before touching the `.py`**
-(freezing the reference first is reference custody — NOT proof of independent authorship) → rewrite the `.py` onto the
-module → **re-run the `.py`, then** compare axis-labelled → **orchestrator regenerates the `.out`**
-(the reference half of the only universal gate; ⚠ the
-old "verify agents cannot run Mathematica" reason for this is **refuted** — one agent, one occasion, so
-reliability and licence contention remain undetermined from that single observed run — and the
-replacement reason, that the reference half be regenerated by a party independent of the build, is
-**PROPOSED, not established, and under re-adjudication** —
-`DIMENSION_REWRITE.md` §4-(g2)) → fidelity +
-adversarial fresh agents → commit. Keep the prediction note **outside the repo** until the reviews land.
+Per stage: emit `DIM|` records into the `.wl` → ⭐ **run the PHYSICS leg FIRST** (it is
+blocking, and a NAMING decision is a physics decision) → rewrite the `.py` onto the
+module → **re-run the `.py`, then** compare axis-labelled → **regenerate the `.out` and byte-compare it**
+(⭐ load-bearing: an uncaught `Throw` exits 0 with an empty or truncated transcript and only the byte-compare
+catches it — `DIMENSION_REWRITE.md` §9. ⛔ **No longer an orchestrator-only duty** — whoever runs the stage
+does it; the old *"agents cannot run Mathematica"* reason was measured false and the
+independent-party replacement was never adjudicated, so it is cut as a custody step, `DIMENSION_REWRITE.md`
+§4-(g2)) → **two mutually independent fresh review legs** (each fidelity + per-tooth ablation; a stage's
+math is physics-bearing) → commit.
+⛔ **Retired 2026-07-29/30:** commit-the-`.wl`-before-the-`.py` reference custody. ⭐ **What replaces it and
+is NOT ceremony: the co-authorship guard — the party that wrote the `.py` must not be the party that adjusts
+the `.wl` until the comparator agrees** (`DIMENSION_REWRITE.md` §4-(d)); tuning whichever side disagrees is
+the LLM-shortcut-that-resembles-a-pass, not a fix.
+⭐ **The prediction goes in the SESSION SCRATCHPAD and is folded into the stage note after the reviews land**
+(restored 2026-07-30) — because *before launching any agent, ask what is reachable from the working tree that
+states your expected answer; absence beats instruction* [`never-supply-the-expected-reason`]. ⛔ That is the
+whole reason: no custody, no sealing, no ordering ritual. The physics leg is still told to **derive from the
+model**, never to *check a claim*.
 
 ⭐ **The hard tail is bounded.** A spike **prototyped** an independent `.wl` route for **stage037**
 (`ROUTE_EXISTS`, 21/21 quantities, a real comparator failure on a seeded error), so the old
@@ -134,54 +148,41 @@ adversarial fresh agents → commit. Keep the prediction note **outside the repo
 NOT yet prototyped** — source inspection only. ~0.5–1 engineer-day per stage is an **estimate**, not
 a measurement. See `DIMENSION_REWRITE.md` §3b.
 
-⚠ **Python sidecars are source-hash bound — but that closes STALENESS, not TAMPERING.** The digest
-proves *"this sidecar names the `.py` on disk"*, never *"it was produced by running it"*, and the
-comparator never executes the stage. **Demonstrated 2026-07-27:** a hand-written sidecar carrying a
-mutated `.py`'s digest reaches `PASS`/exit 0 while that `.py` declares wrong values. ⛔ **That hole is
-still OPEN.**
-⭐ **Interim control: the orchestrator regenerates the sidecar itself before committing.**
-See `DIMENSION_REWRITE.md` §9.
+⭐ **Python sidecars are source-hash bound, and that is exactly a STALENESS check — which is all it is
+asked to be.** It catches the real, common error: *the `.py` changed and the sidecar was not
+regenerated.* ⚠ It does **not** prove the sidecar came from a run — a hand-written one carrying the
+right digest reaches `PASS` (demonstrated 2026-07-27). ⛔ **Retired 2026-07-29/30: the orchestrator-
+regenerates-the-sidecar control, and calling this an open hole.** Forging a sidecar is a *motivated-
+adversary* move, and this project hardens against **drift and honest error**, not that
+(`docs/development_pipeline.md`, *THE POSTURE*). What catches a wrong sidecar is the comparator plus the
+blocking physics leg. See `DIMENSION_REWRITE.md` §9.
 
-✅ **THE SHARED MODULE IS NO LONGER SELF-ATTESTING (2026-07-27).** `scripts/ledger_dimensions.py` is now
-pinned by `scripts/check_ledger_dimensions_pin.py` against `scripts/ledger_dimensions.accepted.sha256`
-— an authority **no producer writes**. ⚠ **State the independence with its mode qualifier:** in
-*validation* mode the expected digest never comes from the module; the explicit `--accept` operation
-*intentionally does* hash the module and rewrite the authority
-(`check_ledger_dimensions_pin.py:101-115`). ⭐ **The module itself is UNCHANGED**,
-so the pin lives entirely *outside* `ledger_dimensions.py` and cannot be removed by editing **that**
-file. Stubbing `dim_residual` now fails the control (1), the comparator (1) and the generator (2) with a
-`MODULE_PIN_MISMATCH` class distinct from sidecar staleness; ⭐ **and re-running every producer does not
-launder it** — the property the old arrangement failed. Re-baselining is the explicit `--accept`
-operation, documented in `DIMENSION_REWRITE.md` §4.
-
-⚠ **Scope it precisely: this earns ONE narrow fact** — the **SHA-256 of** the current source bytes of
-`scripts/ledger_dimensions.py` equals the deliberately accepted SHA-256. ⛔ No accepted *byte sequence*
-is retained anywhere; the authority holds a digest only, so "the bytes are equal" is not what is
-checked. It is **not** a guarantee that the dimensional gates ran honestly.
-
-⚠ **What the pin does NOT cover — do not overstate it (the second time this workstream has had to say
-so).** It pins the **source bytes of one file**. Not **bytecode** (`__pycache__` is gitignored;
-⭐ measured: CPython rejects timestamp bytecode if the stored mtime **or** the stored source size
-differs (`_bootstrap_external.py:637-643`), and it truncates mtime to a whole second (`:973`) — so
-**BOTH conditions are required**, and two ordinary *equal-size* writes inside one second satisfy them
-with no header construction. Equal-length edits — sign flips, `sum`→`min`, `+`→`-` — are exactly the
-dangerous ones in a dimensional audit, which is what makes the size condition routine here). Not its own **execution
-environment** (a `sitecustomize.py` spoofing `hashlib` for the module's bytes takes every validator
-green — inherent to any in-process check). Not stage sources, the `.wl`, the `.out`, or the forgeable
-sidecar. And the authority is a **bare trust root**: `--accept` moves the baseline with no reason field,
-signature, or second witness. ⛔ **And not the pin's own code**, which is unpinned source — but state the
-two cases separately, they are not equivalent:
-- **the shared trust root** — the decision function `check_ledger_dimensions_pin.py:75-98` plus the
-  authority file. Editing it compromises **every** consumer at once. ⇒ **that** is where the pin moves
-  the single point of failure rather than abolishing it.
-- **the four individual call sites** — `compare_dimension_artifacts.py:251`,
-  `generate_canonical_dimension_table.py:231` **and** `:461`, `run_all_audits.sh:20`. Deleting one
-  compromises **that path only**; the standalone control and the remaining validators still reject (the
-  generator holds two, so removing one leaves the other live).
+⭐ **THE SHARED-MODULE DIGEST — A STALENESS PING (downgraded from an "authority" by user decision,
+2026-07-29/30).** `scripts/check_ledger_dimensions_pin.py` compares `scripts/ledger_dimensions.py`'s
+current source bytes against `scripts/ledger_dimensions.accepted.sha256`, and fails on any difference.
+⛔⛔ **State only that.** It **cannot** establish *"you edited the module and did not re-run the stages"*:
+it inspects no producer and no run — it compares two hashes, and `--accept` rewrites the recorded hash from
+the current module bytes without checking that anything was re-run. A red digest means **the module differs
+from the last accepted baseline**, which is usually a module edit whose downstream has not been refreshed —
+useful, cheap, and *not* evidence about the stages either way. ⭐ **The check that actually detects a stage
+not re-run after a module edit is the SIDECAR binding** (the module digest is stamped into each stage's
+sidecar header and the comparator recomputes it). Stubbing `dim_residual` does trip the pin in the standalone
+control, the comparator and the generator (class `MODULE_PIN_MISMATCH`, distinct from sidecar staleness).
+⛔ **RETIRED FRAMING — do not restore it:** "an authority **no producer writes**", the digest as a
+**validator** whose green says anything about correctness, and **re-acceptance as a review event with a
+recorded reason and a second witness**. A red digest after a legitimate module edit means **refresh and
+re-run the producers** (`--accept`, then stage → comparator → generator); that is a reset, not a trust
+decision. Procedure: `DIMENSION_REWRITE.md` §4.
+⚠ **Its bound:** it covers no stage source, no `.wl`, no `.out` and no sidecar content, and it never executes
+a stage. ⇒ **Read a green digest as "not stale", nothing more.** ⛔ **Clear `scripts/__pycache__/` after any
+ablation edit/restore loop** — equal-size edits (sign flips, `sum`→`min`) let CPython reuse timestamp-valid
+stale bytecode by accident; that one is live and practical. *(The bytecode / `sitecustomize` / trust-root
+analysis that used to sit here is cut 2026-07-30: those are motivated-adversary routes around a staleness
+ping, which the governing test does not buy.)* Detail: `DIMENSION_REWRITE.md` §9.
 
 ⭐ **A bare stage run is a PRODUCER, not a validator** (user decision, 2026-07-27) — its exit code and
-`PASS` tally are **not** validation evidence. The validators are the comparator, the generator, and the
-pin control. §11 had already measured why (a relabelled basis leaves stage016's own 82 assertions blind
+`PASS` tally are **not** validation evidence. The validators are the comparator and the generator (the
+module digest is a staleness check, not a validator). §11 had already measured why (a relabelled basis leaves stage016's own 82 assertions blind
 at exit 0); this states it as a rule, and it is what lets the pin sit outside the module.
 ⚠ `run_all_audits.sh` tallies `Fail: N` but **exits 0** — it gates on the pin, not on audit failures,
 and it never invokes the comparator or generator.
@@ -190,10 +191,25 @@ and it never invokes the comparator or generator.
 decisions REOPENED).** Several recorded conclusions — three waivers, four "impossible" stages, a
 coverage estimate — were correct only under constraints since lifted, and will read as settled.
 
-**Why this is the front:** the 44-stage manifest fanout is blocked — dimension recovery covers only
-~16 of 43 scripts. The decision (`b5527062`, `aae5d389`) was to **fix the corpus, not weaken the
-check**. One shared module gives the checker one recovery path and feeds Part VII's whole-system
-dimensional firewall.
+**Why this is the front:** ⭐ **one shared import, so every script's dimensions are written in ONE
+REPRESENTATION and come from one place.** ⛔ **Not "consistent by construction" — that overstates.** One
+shared module buys **representation unity** (one basis type, one exponent type, one recovery path); it does
+**not** buy correct dimensions, because **two stages can declare the same wrong exponents through one module**
+just as easily as through thirteen idioms. Correctness comes from the blocking physics leg.
+Thirteen dimension idioms across 43 scripts *is* drift; the decision
+(`b5527062`, `aae5d389`) was to **fix the corpus, not weaken the check**. Part VII's whole-system
+dimensional firewall is **claimed** to consume the module directly rather than the manifests — ⚠ **an
+assertion, not an established fact:** stage046 is unbuilt, and `notes/part7_integration_atomic_split.md`
+(the 046 row) names the firewall without naming its input source. Do not cite it as settled. The manifests' semantic
+core continues in parallel, trimmed (§ "PAUSED" below).
+⛔ **The old justification — "the 44-stage manifest fanout is blocked, dimension recovery covers only
+~16 of 43 scripts" — is RETIRED as false.** Verified 2026-07-29/30: the composite checker recovers
+dimensions from **10 of 43** scripts — exactly **7** carry a `class Dim` the recovery walks (005, 006,
+007, 008, 009, 030, 031) plus **3** registered bare-tuple digests (032, 038, 042) — and **all seven
+converted stages carry none**, because the shared module exports `Dimension`, not `Dim`. Conversion
+therefore does not raise that count, and the fanout was never what the rewrite unblocks.
+⚠ **Precisely:** conversion *lowers* recovery only for the **seven `class Dim` stages**; for every other
+script it merely fails to raise it, because there was nothing recoverable there to lose.
 
 ## ⏸ PAUSED (resume after the rewrite; user confirms sequencing)
 
@@ -202,9 +218,19 @@ dimensional firewall.
   Anchor: `research/pde_ledger_v2/notes/stage044_v2_unfreeze_prep.md`.
 - **stage 045** (VII-2b) — the non-variational drain/return block + BCs + force partition, where the
   drain-placement crux and the USER mini-gate land. Drain = the dynamical `Γ_B`; frozen-wall ruled out.
+  ⭐ **That mini-gate STANDS** — it is a modelling DECISION for the user, which the reduced process still stops
+  for; it is not a per-chunk gate.
   Anchor: `research/pde_ledger_v2/notes/stage045_nonvariational_block_prep.md`.
 - **Manifest / integration-test system** — built + committed (`e849e303`), 4 of 44 manifests extracted.
-  This is what the dimension rewrite unblocks. Docs: `research/pde_ledger_v2/manifests/MANIFEST_README.md` +
+  ⭐ **CONTINUES, ON ITS SEMANTIC CORE** (user decision, 2026-07-29/30; corrected 2026-07-30): quantity
+  identity, **citation integrity**, **export/lifecycle enforcement**, dimensional relations, **the
+  lifecycle census**, the dependency graph and its cycles, mutation, **genesis**, consumption completeness.
+  ⛔ **The trim that dropped citation-integrity / lifecycle / genesis is WITHDRAWN** — each catches a way the
+  *physics* could be wrong (a changed consumed equation · consumption of retired physics · a wrong
+  irreducible-count range · calibrated-or-target-matched genesis, i.e. fit-vs-derive), not bookkeeping.
+  ⚠ It is **not** what the dimension rewrite unblocks (see the front's justification above) — the two are
+  independent. Docs:
+  `research/pde_ledger_v2/manifests/MANIFEST_README.md` +
   `research/pde_ledger_v2/manifests/EXTRACTION_PROTOCOL.md`.
 
 ## LEDGER BUILD STATUS
@@ -222,14 +248,23 @@ dimensional firewall.
 
 ## STANDING RULES
 
+- ⭐⭐ **PHYSICS, NOT CEREMONY** (user decision, 2026-07-29/30). Two-person toy-physics self-consistency
+  project; checks exist to catch a **wrong derivation**. ⛔ **Immutability is not a discipline here** —
+  files are freely editable, and nothing is frozen, byte-perfect, or under a custody rule. **The test for
+  any check or process rule: does it catch a way the PHYSICS could be wrong? → keep. Only a way the
+  TOOLING could be wrong, or a motivated adversary? → cut.** Roles collapse to **one builder; one fresh
+  reviewer for prose and process, TWO mutually independent fresh review legs for physics-bearing artifacts**
+  (amended 2026-07-30), with the physics leg **blocking**. Owned by `docs/development_pipeline.md`.
 - **Findings are the product; green is not the goal.** A result that breaks the concept is welcome and
   first-class. A clean "it all works" is suspicious.
 - **The ledger shows the SURVIVING solution only.** Discarded approaches →
   `research/pde_ledger_v2/notes/ledger_exclusions_failures_paper_backlog.md`.
 - **Never adjust the process because the corpus is inconvenient.**
 - **Only held-out DIMENSIONLESS ratios test the model.** `G`, `c`, `ℏ`, `ℓ_P` are calibration.
-- **AI prose never establishes a math fact.** Codex codes and runs dual-engine; verification happens on
-  fresh agents; user gate per gate. See `docs/development_pipeline.md`.
+- **AI prose never establishes a math fact.** The builder codes and runs dual-engine; verification happens
+  on **fresh agents** — **two independent ones where the artifact is physics-bearing**, one for prose and
+  process. ⚠ Stop for the user at a decision, a blocking finding or a no-go — **not** at
+  every chunk boundary. See `docs/development_pipeline.md`.
 - **One canonical doc per workstream.** Fold new findings in — do not write a new doc re-explaining
   ground an existing one covers. Delete dead docs (git preserves them), but extract unique content first.
 

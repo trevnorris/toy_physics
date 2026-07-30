@@ -1,0 +1,234 @@
+# THE DERIVATION WALKTHROUGH — plan
+
+**Status: PROPOSED.** User decision 2026-07-30 to change method. ⛔ Not yet reviewed; not yet started.
+
+---
+
+## 0. Why the method changed
+
+The audit route worked **backward**: take 43 stages of finished artifacts and infer what was derived.
+It produced real findings but at a cost that made the physics unfollowable — and the physics has exactly
+one reviewer.
+
+⚠ **This is the second occurrence of the same failure.** `docs/development_pipeline.md` already records
+apparatus growing above the physics once, and the user stopping it. This time the shape was: census
+schema → two review legs → pilot → blocking review → fix → re-run → blocking review → registry. Eleven
+commits, and **no physics verified**. Every genuinely useful output was a finding about a *specific
+artifact*, obtained by opening a file.
+
+⭐ **The walkthrough works forward.** Start at the medium's defining properties, take one derivation step
+at a time, and record at each: **what it is · what it does · what's new.** The irreducible input count
+then falls out **by construction** — "what's new" accumulated down the chain — rather than being
+inferred backward from artifacts. It is also followable, which the audit route was not.
+
+⚠ Convergent evidence: Codex and Grok, reviewing the reduction design independently, both concluded the
+deliverable is a **residue partition plus a debt-discharge roadmap** — *which future execution moves
+which member into the earned set*. That is a forward-order work list. They reached the user's framing
+from the algebra side.
+
+---
+
+## 1. What each step records
+
+One step = one derivation move. Its record is short and fixed:
+
+| field | meaning |
+|---|---|
+| **what it is** | the statement, in one or two sentences |
+| **what it does** | what it buys — what becomes computable that was not |
+| ⭐ **what's new** | every quantity or assumption entering here that did not exist upstream. **This is the count.** |
+| **inputs** | each upstream quantity consumed, with the step that produced it |
+| **the equation(s)** | canonical form, in the registry (`prefix-v1`), evaluable |
+| **class per new item** | `derived` · `calibrated` · `postulated` · `debt` (a named-but-unexecuted route) |
+| **regime** | the assumptions under which it holds |
+| **departure** | where this differs from standard GR/EM, if it does |
+
+⭐ **"What's new" is the whole point.** A step that introduces nothing new is pure consequence. A step
+that introduces a postulate is tier-1 material, recorded where it enters rather than reconstructed later.
+
+### 1.1 ⭐⭐ The classification test (user decision, 2026-07-30)
+
+Apply in order. It is mechanical, which is why it is usable at every step:
+
+1. **Does it have a defining equation — an expression in terms of other model quantities?**
+   → **`derived`**. ⚠ This holds *even where the quantity reads as a convention*: `a = ħ/(m c_s0)` is
+   derived, because it is defined from other quantities.
+2. **Was it chosen because the calibration was necessary for the model to work?** (`n = 5`, `β = 3`)
+   → **`calibrated`**.
+3. **Is there a named route to a defining equation that nobody has executed?** → **`debt`**.
+4. **None of the above** → **`postulated`** — genuinely irreducible, tier-1 core.
+
+⛔ **`convention` is NOT a class here.** It survives only as the narrow case of an **assignment to a
+number** that carries no content — `c = 1`, `ℓ_P = 1` — which has no defining equation in terms of model
+quantities and so never reaches test 1. ⚠ That is what the earlier design got wrong: it imported a
+convention-vs-calibration split from external review and applied it to `a`, which **does** have a
+defining equation. The registry's `[40,49]`-adjacent offset against
+`scripts/midway_knob_audit_codimension_sympy.py` was caused by that error and dissolves under this rule —
+all four block cases then agree.
+
+⇒ The four classes map straight onto the tiers: `derived` → **tier 3** · `calibrated` → **tier 2** ·
+`postulated` and `debt` → **tier 1**, split as the user specified.
+
+---
+
+## 2. Checks per step
+
+⛔ **Governing test applies to every check below**: does it catch a way the **physics** could be wrong?
+If it only catches tooling or a motivated adversary, it is not here.
+
+### Mandatory — every step
+1. **Dimensional homogeneity.** Every equation checked from declared dimensions.
+   *Catches:* a dropped Jacobian, a wrong power, a volume-vs-line confusion.
+   **Built and working** (`reduction/dimensional_homogeneity_gate.py`, demonstrated able to fail).
+2. **What's-new accounting.** Each new quantity classified `derived`/`calibrated`/`postulated`/`debt`.
+   *Catches:* a fit entering disguised as a derivation.
+3. **Input provenance.** Each input cites the step that produced it, by **locus**, not by name.
+   *Catches:* the measured corpus-wide defect — **zero cross-artifact citations resolve to a locus**.
+4. **Step-to-step identity.** Inputs must be the same *quantity* as the prior step's output, adjudicated,
+   not name-matched. *Catches:* the same-name-different-quantity merge, and its converse.
+   ⚠ Real here: eight known-same cross-stage pairs that name-matching misses.
+
+### Conditional — only when the step has the feature
+5. **Dual-engine** — when the step contains real algebra. One canonical expression, both engines parse it.
+   ⛔ Never two hand-typed copies; that agreement is vacuous.
+6. **Able-to-fail** — when the step asserts something. Perturb an input, confirm the assertion fires.
+7. **Existence / uniqueness** — when a PDE or BVP appears. A profile is defined only with its domain,
+   boundary data, gauge fixing **and** a uniqueness result. ⭐ A nullspace coefficient or branch selector
+   is **another input** and must appear under "what's new".
+8. **Held-out vs calibration-consuming** — when a number meets data. Tag which. This is the surplus
+   ledger, kept forward instead of reconstructed.
+9. **Regime compatibility** — when an assumption is introduced: does it conflict with one already live?
+
+### Considered and rejected
+Byte-level artifact custody · freeze authorities · citation-integrity tooling beyond check 3 · a manifest
+per step. ⛔ All fail the governing test — they catch tooling or an adversary, not a wrong derivation.
+
+---
+
+## 3. Step order
+
+⚠ **Dependency order, not the ledger's part numbering** — the existing order is a build history.
+⛔ The physical sequence is the user's call; this is a proposal to correct.
+
+| phase | content | expected "what's new" |
+|---|---|---|
+| **0** | **Brane + bulk defining properties** — what the medium *is*, before any derivation | ⭐ almost everything; this is tier 1's expected core |
+| **1** | **Medium mechanics** — EoS, sound speed, length scales | few; mostly consequence |
+| **2** | **Excitations** — brane shear, signal speed (light) | the light-sector anchors |
+| **3** | **Defects** — the ±w puncture, its topology and conservation | the charge-sector postulates |
+| **4** | **Flow** — the drain, Newtonian limit, the PN ladder | calibration meets data here |
+| **5** | **Motion** — the moving throat (magnetism) | boost-consistency assumptions |
+| **6** | **Knit + integration** — cross-sector consistency, the surplus tally | should introduce **nothing** new |
+
+⭐ **Phase 6 introducing nothing new is a falsifiable prediction of the method.** If integration needs
+fresh inputs, the sectors were not actually one medium — and that is a finding about the model.
+
+---
+
+## 4. What carries forward from the audit work
+
+⛔ **Extract before archiving.** These are findings, not apparatus, and must survive:
+
+- **Zero cross-artifact citations resolve to a locus** — measured on both pilot stages, both engines.
+  The single highest-leverage mechanical fix available, and check 3 above enforces it going forward.
+- **A false provenance attribution** — stage016's engines assert `M̃`/`K̃`/`T̃_Ω` are
+  `CONSUMED-from-011/012/013`; those stages contain none of those symbols.
+- **A live contradiction between tracked documents** — `parameter_register.md:170` calls
+  `K0c`/`K_eta`/`T_Omega` `FREE-UNREDUCED`, PENDING, counted debt, *"NOT identified with the raw 013/017
+  densities"*; `stage023_pathA34_..._source_map.md:250-253` states that identification as performed and
+  calls them *"likely DERIVED manifestations"*. ⭐ A tier-1-vs-tier-3 disagreement, unresolved.
+- **A wrong locus in four tracked files** — stage016's dimension literals are at `:314-325`; `:355-366`
+  is cited in `parameter_register.md:182/:183/:184`, the stage016 note `:194`,
+  `rewrite_reference_table.md:205` and `measure_register_sufficiency.md:100` (en-dash spelling).
+- **An off-locus Jacobian understates rank** — the existing helper reports 4 where the exact
+  satisfying-witness rank is 5. A latent defect in machinery the reduction depends on.
+- **The easy algebraic reduction is already done** — `midway_knob_audit_codimension_sympy.py` composes
+  and certifies block dimensions. ⛔ The residue is *not* uncomposed inventory.
+
+**Kept as live infrastructure, not archived:**
+`reduction/` (registry, reader, homogeneity gate, able-to-fail harness) — it is the recording surface for
+§1 and already evaluable for the propagation check · `notes/reduction/DESIGN.md` · the dimension rewrite
+and its canonical doc.
+
+---
+
+## 5. Cleanup
+
+**Motivation:** a Zenodo packaging script bundles the tree; superseded apparatus should not ship.
+
+⛔ **Archive only what we will not use.** (User, 2026-07-30.) Both earlier `⚠ user call` items are
+**KEPT**, because the new plan's own checks consume them:
+- `notes/ablation_driver/REQUIREMENTS.md` — the spec for **check 6** (able-to-fail).
+- `notes/wl_emitter/` — the spec for **check 5** (dual-engine emission).
+
+**Move to `archive/` (preserved, ⛔ not deleted):**
+
+| path | why |
+|---|---|
+| `research/pde_ledger_v2/notes/census/` (7 files, 320K) | the audit route the walkthrough supersedes ⚠ extract §4 findings first |
+| `research/pde_ledger_v2/manifests/` **except** `DIMENSION_REWRITE.md` | the 44-manifest system, 4 of 44 built, superseded as a route |
+
+**Mechanics:** `git mv` (history preserved) · one commit, reversible.
+⚠ The Zenodo packaging script is **user-owned and user-edited**; no constraint on this plan from it.
+
+⛔ **Not archived:** anything in §4's carry-forward list, `docs/model_map.md`, the stage notes, the
+scripts, `parameter_register.md`.
+
+---
+
+## 5a. ⭐⭐ The two scripts — a standing deliverable, grown step by step
+
+⭐ **These remain the end product** (user, 2026-07-30), and they are ⛔ **not** built up front. They grow
+as the walkthrough proceeds, so kinks surface on real steps instead of being designed around in advance.
+
+1. **The one script every other SymPy script imports** — the key to all variables: each quantity, its
+   defining equation if it has one, and what it derives from. ⭐ This is what makes the leftovers
+   *readable* rather than reconstructed — the original reason the shared import was asked for.
+   Today: `research/pde_ledger_v2/reduction/` (`quantities.yaml`, `relations.yaml`, `registry_read.py`).
+2. **The dimensions-check script** — verifies every equation is dimensionally homogeneous from those
+   declared dimensions. Today: `reduction/dimensional_homogeneity_gate.py`, working and demonstrated
+   able to fail.
+
+**How they grow:** each walkthrough step adds its quantities and its equation to (1), and must pass (2)
+before the step is banked. ⇒ By the last step, (1) *is* the grand check and (2) has been exercised on
+every equation in it — rather than both being written against a corpus nobody walked.
+
+⚠ Both must end up readable by **SymPy and Mathematica**. The `prefix-v1` form already stores one
+canonical expression both engines parse; ⛔ never two hand-typed copies.
+
+---
+
+## 6. Working discipline
+
+- **One step at a time**, with a stop for the user at each. ⛔ No fan-out across steps.
+- ⛔ **No agent parallelism** unless a single step genuinely needs it. The pace problem was caused by
+  running three and four agents and delivering dense synthesis.
+- **The step record is the deliverable**, not a report about the step.
+- Commit per step. Commit before anything destructive.
+- ⭐ **If a step cannot be derived, that is the result.** Record it as `debt` or `postulated` with what is
+  missing, and move on. ⛔ Do not grind.
+
+---
+
+## 7. Acceptance
+
+The walkthrough is working if, at any point:
+1. the accumulated **"what's new"** list is the irreducible input count, with each member traceable to
+   the step that introduced it;
+2. every step passes its mandatory checks, with failures **recorded, not fixed by adjustment**;
+3. a reader can follow the chain from phase 0 to any step without consulting the audit apparatus;
+4. the registry can take calibrated values for the "what's new" set and **propagate them forward
+   numerically**, which is the naive end-to-end check the user wants before full sims.
+
+⭐ **(4) is the real test of the whole program** and it is falsifiable: if the numbers do not propagate
+intact, something in the chain is wrong, and the walkthrough says exactly which step to look at.
+
+---
+
+## 8. Open for the user
+
+1. **The phase order in §3** — proposed on dependency grounds; the physical picture is the user's.
+
+✅ **Resolved 2026-07-30:** the archive items (both kept, §5) · the `R2` `a`-pin (§1.1 — it has a
+defining equation, therefore `derived`; treatment (i) applies and the block fixture agrees on all four
+cases) · Zenodo (user-owned, no constraint).

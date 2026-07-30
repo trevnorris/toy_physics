@@ -96,13 +96,13 @@ tooling gets built next are separate sequences; in time **both** builds land **b
 two scoped tallies `24/0/10` on corpus identifications and `27/0/7` inside the stage-local closure
 (`research/pde_ledger_v2/notes/stages/ledger_stage023_nullspace_underdetermination.md:379-440`,
 **§1.7(1), per-quantity verdict, tally, and the 34-row route table**). Its seven unresolved derivation questions now have named
-work routes in `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`: `:975`
-(**WORK-023-MOMENT-CONVENTION**), `:1035` (**WORK-023-STAGE009-MOMENT0**), `:1064`
-(**WORK-023-D0-SEAM**), `:1098` (**WORK-023-STIFFNESS-REDUCTION**), `:1137`
-(**WORK-023-L1-L2-PROFILE-IDENTITY**), `:1161` (**WORK-023-CS-EVALUATION**), and `:1203`
+work routes in `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`: `:938`
+(**WORK-023-MOMENT-CONVENTION**), `:998` (**WORK-023-STAGE009-MOMENT0**), `:1027`
+(**WORK-023-D0-SEAM**), `:1061` (**WORK-023-STIFFNESS-REDUCTION**), `:1100`
+(**WORK-023-L1-L2-PROFILE-IDENTITY**), `:1124` (**WORK-023-CS-EVALUATION**), and `:1166`
 (**WORK-023-SOURCED-PROVENANCE**), all in **§12**. W3 is outside that work list because its confirmed
 arithmetic correction is already folded at
-`research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md:653-670`
+`research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md:648-663`
 (**§8, stage023 `gU/gW` correction**); `q_free` is outside it because §1.7 classifies that record as
 an unread control rather than a competing identification
 (`research/pde_ledger_v2/notes/stages/ledger_stage023_nullspace_underdetermination.md:428,442-452`,
@@ -115,13 +115,19 @@ is counted in the **7 of 30**.
 ⚠ but those counts are **PROVISIONAL, not completeness proofs**: 016's survey got its 21 emitted
 quantities right, yet missed two **non-emitted** source/control-flow cases — so the method does not
 close the broader inventory. Each stage's tracked §4-a enumeration + adversarial review is what does.
-027 is the awkward one (**MIXED**: its computed vector never reaches top level, and its `.wl` route
-cannot produce per-symbol vectors, so it stays a 1-row stage unless new call sites are added).
+027 is the awkward one (**MIXED**: its **computed** vector never reaches top level — it dies in `runAll`'s
+`Module`. ⚠ **Corrected 2026-07-30:** its **16 declared per-symbol `baseDims` vectors DO reach top level**,
+so 027 is **not** confined to a 1-row stage; only reaching the computed vector needs new call sites).
 ⛔ **Measured corpus-wide: all 43 `.wl` files end in `Exit[]`,** so a print appended at end-of-file is
 dead code. Emit before the terminal `Exit[]`. See `DIMENSION_REWRITE.md` §8/§9.
 ⛔ **Before converting 035/036/037, fix the canonical-table generator** — it *raises* on cross-engine
-axis-order disagreement, which is exactly the 037 pattern (`wl M,L,T` vs `py (L,T,M)`). Measured; it
-will crash the toolchain.
+axis-order disagreement. ⚠ **What was actually measured, stated precisely:** the committed stage037 `.wl`
+declares **no axis order at all** — it is a formal `massScale`/`lengthScale`/`timeScale` rescaling with no
+ordered vector and no `axes=` header — so the crash was **not** measured on the committed pair. The
+`M,L,T` order exists only in the **gitignored** `_scratch/spike037/` prototype (`dimensionAxes` keyed
+`M`,`L`,`T`), against the committed `.py`'s `(L,T,M)` (`ledger_stage037_route_b_boost_structural_relation_sympy_audit.py:604`).
+⇒ The disagreement is real and will appear the moment 037 emits, but it is a **spike-vs-`.py`**
+measurement, not a committed-pair one.
 
 Per stage: emit `DIM|` records into the `.wl` → ⭐ **run the PHYSICS leg FIRST** (it is
 blocking, and a NAMING decision is a physics decision) → rewrite the `.py` onto the

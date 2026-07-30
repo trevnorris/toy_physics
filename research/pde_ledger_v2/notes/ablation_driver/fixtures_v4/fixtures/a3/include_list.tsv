@@ -1,4 +1,0 @@
-axis	key	record	old_text	new_text
-RESUME	first	unused	A3_BASE_FIRST	A3_MUTANT_FIRST
-RESUME	boundary	unused	A3_BASE_BOUNDARY	A3_MUTANT_BOUNDARY
-RESUME	last	unused	A3_BASE_LAST	A3_MUTANT_LAST

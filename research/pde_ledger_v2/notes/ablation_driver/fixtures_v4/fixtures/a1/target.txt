@@ -1,2 +1,0 @@
-first=A1_BASE_FIRST
-second=A1_BASE_SECOND

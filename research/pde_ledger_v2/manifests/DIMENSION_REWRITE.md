@@ -283,17 +283,17 @@ the emission block in full.
 ⛔ **THE STEPS ARE IN EXECUTION ORDER. Run them in this order; the numbering is not decorative.**
 
 ✅ **THE SECOND FREEZE AUTHORITY OVER THIS LOOP IS RETIRED — user decision, 2026-07-29/30.** From
-2026-07-29 the ablation driver's conformance suite (`notes/ablation_driver/fixtures_v4/`) was frozen
-against `notes/ablation_driver/fixtures_v4.accepted.sha256`, whose 36 governed paths included nine live
-dimension-rewrite paths (the shared module, its accepted-digest authority and pin script, the comparator,
-stage023's audit `.py` with its sidecar and `.out`, and the two `notes/stage023_step_h_evidence/` tables).
-Converting a stage could therefore invalidate a freeze belonging to another workstream, and re-greening it
-meant a hand-regenerated digest manifest plus a documented re-acceptance review.
+2026-07-29 the ablation driver's conformance suite was frozen against an external digest authority whose
+36 governed paths included nine live dimension-rewrite paths (the shared module, its accepted-digest
+authority and pin script, the comparator, stage023's audit `.py` with its sidecar and `.out`, and the two
+`notes/stage023_step_h_evidence/` tables). Converting a stage could therefore invalidate a freeze belonging
+to another workstream, and re-greening it meant a hand-regenerated digest manifest plus a documented
+re-acceptance review.
 ⇒ **All of that is gone.** There is no freeze authority over this loop, no governed-path list, no
 re-acceptance procedure, and no step of the loop that has to re-green anything. **Convert freely.**
-⚠ The suite files still exist on disk as history; they are not a gate. ⛔ Do not reintroduce a byte
-authority over this loop — that layer cost a full session and verified no physics
-(`docs/development_pipeline.md`, *THE POSTURE*).
+⚠ The suite itself was **deleted 2026-07-30**; it gates nothing and is in git history if ever wanted.
+⛔ Do not reintroduce a byte authority over this loop — that layer cost a full session and verified no
+physics (`docs/development_pipeline.md`, *THE POSTURE*).
 
 ⛔ **(a) ENUMERATE EVERY DIMENSION-VALUED OBJECT IN THE `.wl` FIRST — before deciding what to emit.**
 The comparator checks **artifact name-set symmetry between two files**. A **symmetric** omission — a
@@ -1387,17 +1387,18 @@ the re-scoped driver; what blew it up was the tooling-defence tower, not the mut
   accept-and-ignore parser fails**. Those four were measured to decide real verdicts and are the reason
   the driver exists at all.
 - ⭐ **The retrofit still has its ANSWER — worth running, no longer a blocking gate (2026-07-29/30).**
-  ⚠ **Exact agreement on every mapped field of the 13-column legacy schema, via the 25-row mapping table in
-  the superseded `CONTRACT.md` §C-9, is NOT required** — that is tooling-replay fidelity, beyond the four
+  ⚠ **Exact agreement on every mapped field of the 13-column legacy schema is NOT required** — that is
+  tooling-replay fidelity, beyond the four
   measured properties (R2/R3/R6/A6) the driver exists for. Run it, report every disagreement, adjust neither
   side. ⇒ Re-run
   stage023's two ablation axes through the driver and compare against the committed
   `notes/stage023_step_h_evidence/results.tsv` (**22 `A1_DECLARATION` + 29 `A2_BINDING` rows**). ⚠ **Byte
   equality was never achievable** — that table carries the old hand-rolled harness's schema (`stage_exit`,
   `pass_count`/`fail_count`, `first_fail`, `sidecar_written`, and no outcome column), so a successor with its
-  own result schema cannot be byte-equal to it. `notes/ablation_driver/CONTRACT.md` §C-9 records which legacy
-  column corresponds to which new observation — ⚠ that file is otherwise **superseded**, but §C-9 is the
-  durable part and is the right reference for reading the comparison. ⭐ **The durable principle: nobody gets
+  own result schema cannot be byte-equal to it. `notes/ablation_driver/REQUIREMENTS.md` **Appendix A.1**
+  records which legacy column corresponds to which new observation, plus the committed table's measured
+  row distribution — that is the right reference for reading the comparison, and it binds nothing.
+  ⭐ **The durable principle: nobody gets
   to decide the right answer after the fact.** That is satisfied by the oracle being **already committed**,
   not by anything being frozen and not by demanding field-by-field exactness.
 - ⚠ **A PROSE rule, and it is deliberately NOT a driver requirement:** whatever a run leaves behind must
@@ -1412,12 +1413,13 @@ the re-scoped driver; what blew it up was the tooling-defence tower, not the mut
   `research/pde_ledger_v2/notes/ablation_driver/REQUIREMENTS.md`, trimmed to the small shape by the
   2026-07-29/30 decision — ⚠ **cite that path, not the gitignored `_scratch/` originals**
   (`.gitignore:96`, the `research/**/_scratch/` rule), which will not survive the session.
-  ⛔ **SUPERSEDED, kept only as history:** the whole `CONTRACT.md` (except §C-9's legacy mapping table),
-  `CONTRACT_NOTES.md` / `CONTRACT_NOTES_V4.md`, `FIXTURES_REPORT.md`, and the whole `fixtures_v4/` suite
-  with its `fixtures_v4.accepted.sha256` byte authority. None of them gates anything now.
+  ⛔ **DELETED 2026-07-30** (recoverable from git history, needed by nothing): the contract, its two notes
+  files, the fixtures report, and the whole frozen conformance suite with its external byte authority.
+  ⇒ What was worth keeping from them — the stage023 legacy mapping, the builder hazards, and the
+  able-to-fail shape — is the **Appendix** of `notes/ablation_driver/REQUIREMENTS.md`, and it gates nothing.
 - ⚠ **WHAT THE LARGER SHAPE ACTUALLY BOUGHT — recorded because the cost is the lesson.** Two sessions
   produced a contract and a frozen 36-path conformance suite, and independent parties ran the full A1–A9
-  ladder against drivers written from `CONTRACT.md` alone (two passes at `abcb7f2b`, one at `41b66dd5`,
+  ladder against drivers written from that contract alone (two passes at `abcb7f2b`, one at `41b66dd5`,
   none on the final bytes). ⭐ **Two findings from it are worth keeping and are folded into the trimmed
   requirements:** that residual state from a previous mutant decided stage023 verdicts by a stale artifact
   rather than by comparison (⚠ the **16 of 22** split is **self-reported** — the defective run was

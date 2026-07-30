@@ -12,11 +12,12 @@ cut, and why: exact **resume**, crash **repair**, the outcome **truth table**, t
 the evidence-prose infrastructure, and the whole acceptance-tooling separation. None of them can catch a
 wrong derivation — they catch ways the *tooling* could be wrong, and that is the layer this project stopped
 buying (`docs/development_pipeline.md`, *THE POSTURE*).
-⚠ **The prior artefacts still exist and are SUPERSEDED, not authoritative:** the whole `CONTRACT.md`
-(⭐ including **§C-9** — its legacy→new field mapping table is the durable part and is worth reading as a
-**reference** for A7, but ⛔ it is **not** authoritative and A7 does not require agreement with it),
-`CONTRACT_NOTES.md` / `CONTRACT_NOTES_V4.md`, `FIXTURES_REPORT.md`, and the whole `fixtures_v4/`
-suite with its `fixtures_v4.accepted.sha256`. ⛔ Do not treat any of them as a gate.
+⚠ **The prior artefacts are DELETED (2026-07-30), not superseded-in-place:** `CONTRACT.md`,
+`CONTRACT_NOTES.md`, `CONTRACT_NOTES_V4.md`, `FIXTURES_REPORT.md`, and the whole `fixtures_v4/` suite
+with its `fixtures_v4.accepted.sha256`. They are recoverable from git history and nothing needs them.
+⇒ **What was worth keeping out of them is in the Appendix at the foot of this file** — the stage023
+legacy mapping (was `CONTRACT.md` §C-9), the builder hazards, and the able-to-fail shape.
+⛔ Nothing in that appendix is a gate.
 
 ⚠ **What the earlier rounds correctly established, and how the surviving set is shaped.**
 v1 and v2 failed design review for trying to fix an **interface** — argv, wire format, sentinels, outcome
@@ -104,11 +105,11 @@ Re-run stage023's two ablation axes and compare against the committed
 worth having, and it is cheap:** the oracle is **already committed**, so nobody gets to decide the right
 answer afterwards, and a driver that reproduces the old verdicts has demonstrably replaced the harness.
 ⛔ **What is NO LONGER required:** exact agreement on every field of the 13-column legacy schema via the
-25-row mapping table in the superseded `CONTRACT.md` §C-9. That is **tooling-replay fidelity** — it cannot
-catch a wrong derivation, and it is beyond the four *measured* properties (R2, R3, R6, A6) this driver exists
-for. ⇒ Run the comparison, **report every disagreement**, and ⛔ never adjust either side to close one; a
-remaining disagreement is a finding, not a blocker. §C-9's mapping table is a **reference** for which legacy
-column corresponds to which new observation — ⛔ not an authority, and nothing in it is binding.
+old mapping table. That is **tooling-replay fidelity** — it cannot catch a wrong derivation, and it is
+beyond the four *measured* properties (R2, R3, R6, A6) this driver exists for. ⇒ Run the comparison,
+**report every disagreement**, and ⛔ never adjust either side to close one; a remaining disagreement is a
+finding, not a blocker. **Appendix A.1** keeps the mapping as a **reference** for which legacy column
+corresponds to which new observation — ⛔ not an authority, and nothing in it is binding.
 **A8** — ⛔ **CUT** (old R8's evidence audit; the prose rule replaces it).
 **A9** — ⛔ **CUT** (old R9's truth table).
 
@@ -158,3 +159,93 @@ for a two-person project.
 ⛔ **Scripts get `timeout 600`; a 124 is a failure to reformulate, never a raised cap**
 [`script-timeout-policy`]. ⚠ The bespoke suite-wide wait-allowance bound that used to live here is **cut**
 (2026-07-29/30) along with the suite it bounded.
+
+---
+
+# Appendix — EXTRACTED HISTORY
+
+⚠ **What this is.** The superseded contract, its two notes files, the fixtures report and the `fixtures_v4/`
+suite were **deleted 2026-07-30** (recoverable from git history). This appendix keeps only what would
+otherwise have been lost. ⛔ **None of it is a requirement, a gate, or an authority** — it is reference for
+whoever builds the driver. ⛔ The freeze, the external byte authority, the three-session separation and the
+outcome truth table are **deliberately not reproduced**; that layer is what was retired.
+
+## A.1 — the stage023 legacy oracle and the A7 mapping (was `CONTRACT.md` §C-9)
+
+**The two committed legacy tables**, both under `notes/stage023_step_h_evidence/`:
+- `include_list.tsv` — 5 columns `axis · key · record · old_text · new_text`, **51 data rows**,
+  **22 `A1_DECLARATION` + 29 `A2_BINDING`**.
+- `results.tsv` — 13 columns `axis · key · record · stage_exit · pass_count · fail_count · first_fail ·
+  sidecar_written · record_moved · emitted_value · cmp_exit · cmp_status · mismatch_names`, same 51 rows.
+
+Join the two on `(axis,key)`; keys are unique and `record` agrees across both.
+
+**Mapping — legacy column → the observation a new driver would make.** Right-hand side is stated as an
+observation, not as a field name, because the schema it used to map into is gone with the contract.
+
+| Legacy field / value | Corresponding new observation |
+|---|---|
+| `axis`, `key`, `record` | the same three, exact strings |
+| `stage_exit` | the producer's exit status |
+| `pass_count`, `fail_count` | the producer's PASS/FAIL tally |
+| blank `first_fail` | no failed assertion was named |
+| nonblank `first_fail` | the name of the first failed assertion, exact string |
+| `sidecar_written=yes` / `=no` | the `stage023_sidecar` artifact was / was not emitted |
+| `record_moved=yes` / `=no` | the record's value did / did not move |
+| `record_moved=no_sidecar` (with blank `emitted_value`) | no sidecar, so no moved-value observation exists |
+| nonblank `emitted_value` | the value after the move, exact string |
+| `cmp_exit` | the comparator checker's exit status |
+| `cmp_status` | that checker's verdict status, exact string |
+| `mismatch_names=none` | the empty mismatch list |
+| any other `mismatch_names` cell | a one-element mismatch list holding that exact cell |
+
+⚠ **Legacy sentinels, so they are not misread:** `yes`/`no` are booleans; `none` is the empty-list sentinel,
+not a missing value; a blank cell is meaningful only where the table above says so. `no_sidecar` together
+with a nonblank `emitted_value` is an inconsistent combination and would be a comparison error, not a row.
+
+**Measured distribution of the committed `results.tsv`** — derived from the file, re-verified 2026-07-30:
+**16** rows with `stage_exit != 0`; **35** with `stage_exit = 0` and `cmp_exit != 0`; **0** with both zero.
+The same file has **35** `sidecar_written=yes` / `record_moved=yes` and **16** `no` / `no_sidecar`.
+⇒ Useful as a shape check on any re-run before comparing row by row.
+
+⚠ **Why A7 is a mapped comparison and never reproduction.** The legacy table has **no field that
+establishes a mutation applied** (no match count) and **no outcome column**. Any successor with a richer
+schema is structurally incapable of byte equality with it, which is why the "exactly" in earlier drafts had
+to be read as *on mapped fields* — and why v5 dropped even that and asks only that disagreements be
+reported.
+
+## A.2 — hazards a builder needs (from the two notes files and the fixtures report)
+
+1. ⭐ **The real include-list has no target-file column.** R1 says the list is an input; it does **not**
+   mean each row names its own target — the committed 5-column list cannot. The target comes from
+   run-level configuration. If a per-row target is ever wanted, the list format changes and the stage023
+   oracle stops parsing.
+2. ⭐ **Fix who may write what, or attribution breaks.** If the producer may rewrite its own mutant, or a
+   checker may create the artifact, a row's evidence no longer attributes the output to the producer.
+   Observe the artifact **before** running any checker.
+3. ⭐ **R3 has a boundary — state it, do not claim hermeticity.** "No state from a previous mutant is
+   observable" is decidable only over state the run *declares*: the target, the artifact, reset paths, and
+   bytecode caches. An unconstrained child can read host state no driver can enumerate.
+4. ⭐ **R7 has a boundary, and cutting `repair` has a consequence.** Cleanup after a catchable signal is
+   executable; cleanup after `SIGKILL` or machine loss is not, because the terminated process cannot run
+   it. ⚠ **A hard-killed run therefore leaves the target MUTATED on disk**, and this workstream ablates
+   **uncommitted** work. Recovery is a manual `cp` back from the copy R7 requires — ⛔ **never**
+   `git checkout`/`restore`/`stash`, which restore from HEAD and destroy it
+   [`never-checkout-to-restore-uncommitted`].
+5. **R3 acceptance cannot prove internal ordering.** It can show reset happened before the producer ran; it
+   cannot distinguish two internal orders with identical observable bytes. Do not write an acceptance item
+   that claims to.
+6. **A6's concrete failure mode, measured:** a whitespace-tokenizing parser reads the real 51-row list into
+   rows of width 7/9/11/13 — `record`, `old_text` and `new_text` contain spaces. ⇒ The floor is **51
+   losslessly parsed rows each preserving all five TSV fields**, not a successful open and not a line count.
+   ⚠ A6 is **parse-only**; actually applying the 51 mutations needs a production target, producer and
+   checker, and that is A7's job, not A6's.
+
+## A.3 — the able-to-fail shape that worked (was `NEGATIVE_DEMONSTRATIONS.md`)
+
+⭐ **Three steps per acceptance item, in this order:** accept a good observation → **reject a twin deficient
+in exactly one property** → restore that one property and watch the same twin become acceptable. The third
+step is what separates a real discriminator from one that rejects everything put in front of it.
+⚠ Running that sweep found several harness predicates that were **entailed by their own harness** and so
+could not fail; they were deleted rather than kept as reassurance
+[`decisive-test-not-tautological`, `script-review-depth`].

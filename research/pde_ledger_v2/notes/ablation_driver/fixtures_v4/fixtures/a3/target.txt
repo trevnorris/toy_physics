@@ -1,3 +1,0 @@
-first=A3_BASE_FIRST
-boundary=A3_BASE_BOUNDARY
-last=A3_BASE_LAST

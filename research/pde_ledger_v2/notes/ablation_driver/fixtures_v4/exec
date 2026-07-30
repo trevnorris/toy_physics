@@ -1,8 +1,0 @@
-#!/usr/bin/env python3
-"""PATH-resolved fixture child whose command name is also a POSIX shell builtin."""
-
-from child import main
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())

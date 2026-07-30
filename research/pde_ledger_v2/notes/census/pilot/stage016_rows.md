@@ -1,866 +1,822 @@
 # Census rows — stage016 (ℓ=2 SO(3) covariance), both engines
 
-**Status:** PILOT census rows, built to `CENSUS_SCHEMA.md`. Two artifacts (§7.2):
+**Status:** builder output for ONE stage, per `CENSUS_SCHEMA.md`. ⛔ Nothing here is adjudicated
+identity (§8.3 reserves merges for the physics review leg); the QIDs below are *minted*, not merged.
+⛔ No dimensional-correctness verdict is reused as an oracle (§11): the stage's `21/0` and its
+"12 typed / 9 computed" split are a different axis and appear below only where a locus is quoted.
 
-- `research/pde_ledger_v2/scripts/ledger_stage016_l2_so3_covariance_sympy_audit.py` — below, **PY**
-- `research/pde_ledger_v2/mathematica/ledger_stage016_l2_so3_covariance_mathematica_audit.wl` — below, **WL**
+**Artifacts censused (§7.2 — two artifacts):**
 
-⛔ This file records provenance (§3's three axes). It does **not** rule on dimensional correctness (§11).
-The stage's own `21 of 21 CORRECT` verdict and its `12 typed / 9 computed` split are **dimensional**
-verdicts on a **different row universe** — 20 of those 21 records are out of this census's universe
-(§6 below). Nothing here was steered toward them.
+- `PY` := `/var/projects/toy_physics/research/pde_ledger_v2/scripts/ledger_stage016_l2_so3_covariance_sympy_audit.py`
+- `WL` := `/var/projects/toy_physics/research/pde_ledger_v2/mathematica/ledger_stage016_l2_so3_covariance_mathematica_audit.wl`
 
-**Method.** Every locus quoted below was opened and read in this pass (§9.1 rule 1). No attribution was
-taken from the stage note, the parameter register, or the schema without opening the file it points at —
-and doing so found two stale pointers (§5, D4).
+Every `PY:NNN` / `WL:NNN` below expands to the full path above; no locus is a bare `:NNN`.
+Other loci are written in full.
 
----
+**Result set used (§7.1.1 step 1, fixed before classification):**
+`/var/projects/toy_physics/research/pde_ledger_v2/notes/census/REPORTED_RESULTS.md` §1 —
+`RES:016:L2-IRREP` (`REPORTED_RESULTS.md:64-80`) and `RES:016:K2-FORM` (`REPORTED_RESULTS.md:82-106`).
+⛔ Not amended.
 
-## 1. The reported-result set for this stage (§5.8 output 17)
-
-Taken **unchanged** from `notes/census/REPORTED_RESULTS.md` §1, which is the fixed starting set (§7.1.1
-step 1). ⛔ Not amended by this pass.
-
-| id | claim (abbreviated) | loci |
-|---|---|---|
-| `RES:016:L2-IRREP` | the ℓ=2 sector is one 5-dim SO(3) irrep — all five real ℓ=2 channels share one `−Δ_S²` eigenvalue `λ_m = 6`, so the ℓ=2 response is m-degenerate | note `.../notes/stages/ledger_stage016_l2_so3_covariance.md:43-53`; PY `:287`, `:290`, `:299`, asserted `:679-682`; WL `:180-186`, `:187-193`, `:202`, asserted `:466-472` |
-| `RES:016:K2-FORM` | `K₂ = K̃ + λ_m·T̃_Ω`, `M₂ = M̃`, with the `T̃_Ω` coefficient being the computed eigenvalue rather than an independently chosen constant | note `:55-60`; PY `:304-305`, `:499`, `:500-504`, asserted `:693-697`; WL `:216`, `:219`, `:220-225`, asserted `:481-482` |
+**Every locus cited below was opened and read** (§9.1 rule 1), including the parameter-register and
+stage043 loci. Where a document's attribution did not check out it is recorded as an attribution
+defect, not as a pass.
 
 ---
 
-## 2. The universe, and the builder decisions taken to execute §7.1.1 / §7.2
+## 0. Builder decisions and selection rules (stated so coverage is checkable)
 
-The universe is the transitive input closure of those two results (§7.1.1). Walking them reaches
-**16 quantities** at **38 binding sites** across the two engines. Every row below carries its
-reachability witness.
-
-⭐ **Builder decisions (§13 `BUILDER-DECISION`), stated so they are contestable and applied uniformly:**
-
-- **B-D1 — alias stores are not separate occurrences.** A pure re-bind of an already-computed value
-  inside the same expression block (PY `:288-289` `neg_laps[name] = …` / `lambdas[name] = rayleigh`) is
-  folded into the computing binding site. Without this, PY's two-step store scores two occurrences where
-  WL's single `AssociationThread` (`:179-186`) scores one, inflating one engine by transliteration style
-  alone. A re-bind that is **separately consumed** downstream (PY `:506` `lambda_ref`, WL `:227`
-  `lambdaRef`) **is** counted, per §7.2's plain text.
-- **B-D2 — a loop that assigns one quantity across five channels at one line is one occurrence.** PY
-  `:286`/`:287` and WL `:179`/`:180` bind `(−Δ_S²)Y_m` and `λ_m` for all five m at a single site with
-  identical code; the reported result is precisely that the value is the **same** across m. The five
-  harmonics, by contrast, sit at five distinct literal lines and are five occurrences.
-- **B-D3 — a free-symbol declaration is a binding site.** PY `:219-221` and WL `:21` declare `M̃`, `K̃`,
-  `T̃_Ω` and assign them **no value**. §7.2 defines a binding site as where an artifact "assigns or
-  asserts a value", which does not cover this; but those quantities are in `RES:016:K2-FORM`'s closure,
-  and dropping them would let an in-universe quantity leave the count silently, which §5.3 forbids
-  outright. So they get rows. See §5 C2 for the axis-B consequence.
-- **B-D4 — scope is the two engines only.** The stage **note** is also an artifact under §7.2 (its
-  markdown table rows are binding sites), and it is **not censused here**. See §8.
+1. **Binding site = §7.2 as written**: the line of the assignment/assertion expression, head line for a
+   multi-line expression. So `PY:218` (`theta, phi = sp.symbols(...)`) is ONE binding site carrying TWO
+   quantities ⇒ two occurrences; `WL:21` (`$Assumptions`, a system global the artifact sets — §7.2
+   rule 4) is ONE binding site carrying FIVE quantities ⇒ five occurrences; `PY:269` / `WL:165` (the
+   harmonic dict/association heads) are ONE binding site each carrying FIVE quantities.
+2. **Channel-indexed collections produced by one uniform loop at one binding site are ONE quantity**
+   with `channels = 5` recorded (e.g. `lambdas` at `PY:289`). ⚠ The alternative reading — five
+   quantities per collection — multiplies six row-groups by five and would take the in-universe count
+   from **56 to 104**. Stated so the choice is visible; the tier *distribution* is unchanged by it.
+3. **Out-of-scope granularity**: counted as *listed objects*, not binding sites (a 12-entry dimension
+   table counts 12), so no exclusion hides inside a container. Groups carry exact counts and loci.
+4. **`print` / `Print` emissions bind no value** and are not occurrences — with one exception: a prose
+   statement of a *model premise* (route 2) is recorded as an occurrence, since route-2 propositions
+   characteristically have no other binding site. See gap **S5**.
+5. **Scope**: the two engines. The stage note is *not* censused as an artifact in this pass; its
+   in-universe binding sites are enumerated in §7 below (14 occurrences), not dropped.
 
 ---
 
-## 3. The rows
+## 1. The universe and its reachability witnesses (§7.1.1 step 2)
 
-Field order per row: quantity · binding site · reachability witness · axis A + §9 evidence · axis B +
-§9 evidence · axis C closure/leaves/`PHYSICS-FED`/`SELF-REFERENTIAL` · `CONVENTION-LADEN` + evidence ·
-`is_tier` · `should_be_tier` / `should_be_basis` / `delta` · LIVE|RETIRED.
+Both admission routes were applied.
 
-⚠ **Read every `is_tier` below together with §5 C1.** A schema conflict between §3.3+§5.7 and §5's
-framing decides `is_tier` for **22 of 38** rows; the primary reading is used throughout and the
-alternative is counted in §4.
+- **Route 1 (valued quantities)** reached: the harmonic literals, the channel set, the Gram matrix,
+  `−Δ_S²Y`, `λ_m`, the eigenfunction residual, the degeneracy boolean, the typed `6` target, `K₂`, the
+  extracted `T̃_Ω` coefficient, the K₂-coefficient residual, `M₂`, and the three free radial scalars
+  and two coordinates reached as closure **terminals**.
+- **Route 2 (constitutive propositions)**, admitted through the `premise-dependence` hop of §3.3.1(4):
+  the S² domain/measure, the `−Δ_S²` angular operator, the wall 3-volume measure `dV = a²·dw·dΩ`, the
+  `M₂` density integral, the `K₂` density integral, and the frozen-radial-calibration premise. Each was
+  checked against **both** of §7.1 route 2's bounds; the checks are recorded on the rows.
 
----
+**In-universe occurrences: 56** — **28 in `PY`, 28 in `WL`**. The two engines carry the *same* 28
+occurrences (both engines bind every one of the 27 QIDs, and `QID:lambda_m` twice: computed and as a
+typed assert target). ⚠ They differ in *how* two of them are bound — `WL:21` binds at one site what
+`PY` binds at four (`PY:218-221`), and `WL:164` **types** the channel set that `PY:279` **computes** —
+and the second of those is the stage's only cross-engine classification divergence (R11).
 
-### 3.1 `QID:Y20`
-
-#### `QID:Y20@scripts/ledger_stage016_l2_so3_covariance_sympy_audit.py#270`
-- **binding site** — `.../scripts/ledger_stage016_l2_so3_covariance_sympy_audit.py:270`, the literal
-  `sp.sqrt(sp.Rational(5,16)/sp.pi)*(3*sp.cos(theta)**2 - 1)` inside `harmonics_l2()` (`:268-275`).
-- **reachability witness** — `RES:016:L2-IRREP`, hop 1: `:270` → `y_expr` (`:285`) → `rayleigh` (`:287`),
-  the Rayleigh quotient the result's `λ_m` **is**. Also `RES:016:K2-FORM` at hop 2 via `λ_m` → `:499`.
-- **axis A** — `A-UNADJUDICATED`. No reduction is performed (typed literal at `:270`); **no route is
-  recorded** for the harmonics anywhere in the two engines or the note (note `:27-41` writes the five
-  expressions down and asserts orthonormality; it names no derivation of them); no benchmark; no
-  postulate is stated as a defining property of the medium; and no framework property is named as
-  foreclosing a route, so `A-IRREDUCIBLE-STRUCTURAL`'s §9 evidence is absent. §9.0: axis-A evidence
-  missing ⇒ `A-UNADJUDICATED`.
-- **axis B** — `B-DECLARED-LITERAL`. Code locus of the declaration `:270`.
-- **axis C** — closure `{C-SELF@:270}`. Walk terminates immediately at the occurrence's own literal.
-  `PHYSICS-FED = false`. `SELF-REFERENTIAL = false` (§3.3: immediate termination is a plain literal).
-- **CONVENTION-LADEN** — `UNADJUDICATED`. Clause (a) **is** met: a transformation group is documented
-  for this occurrence — SO(3) acting on the ℓ=2 irrep, which is the stage's own subject (note `:24-25`,
-  `:52-53`; PY `:825`). Clause (b) is **not demonstrated**: no admissible alternative basis (a rotated
-  orthonormal frame of the same irrep) is ever run. The only basis perturbations executed are the
-  **inadmissible** corruptions at `:774` and `:801`, which are controls, not invariance demonstrations.
-  ⇒ `convention-unadjudicated` bucket; buys no exclusion (§3.4).
-- **is_tier** — `no-tier:unadjudicated`.
-- **should_be_tier / should_be_basis / delta** — `no-tier:unadjudicated` / `none` / **no**.
-- **LIVE**.
-
-#### `QID:Y20@mathematica/ledger_stage016_l2_so3_covariance_mathematica_audit.wl#166`
-- **binding site** — `.../mathematica/ledger_stage016_l2_so3_covariance_mathematica_audit.wl:166`,
-  `"20" -> Sqrt[5/(16 Pi)] (3 Cos[theta]^2 - 1)` in the `harmonics` association (`:165-171`).
-- **reachability witness** — `RES:016:L2-IRREP`, hop 1: `:166` → `ys` (`:172`) → `localLambdas` (`:180-186`).
-- **axis A** — `A-UNADJUDICATED`, same evidence position as the PY twin: literal at `:166`, no route, no
-  benchmark, no stated postulate, no named foreclosing property.
-- **axis B** — `B-DECLARED-LITERAL`, locus `:166`.
-- **axis C** — closure `{C-SELF@:166}`; `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
-- **CONVENTION-LADEN** — `UNADJUDICATED` (clause (a) met per WL `:636`; clause (b) undemonstrated —
-  the only basis perturbations are the controls at `:582`, `:600`).
-- **is_tier** — `no-tier:unadjudicated`.
-- **should_be_tier / should_be_basis / delta** — `no-tier:unadjudicated` / `none` / **no**.
-- **LIVE**.
-
-### 3.2 `QID:Y21c` — `PY#271`, `WL#167`
-
-Both occurrences carry **exactly** the field values of §3.1 (same axis A with the same missing
-evidence, `B-DECLARED-LITERAL` at the cited line, closure `{C-SELF}` ⇒ `PHYSICS-FED = false`,
-`SELF-REFERENTIAL = false`, `CONVENTION-LADEN = UNADJUDICATED` on clause (b),
-`is_tier = should_be_tier = no-tier:unadjudicated`, basis `none`, delta **no**, **LIVE**), with these
-loci substituted:
-
-- `QID:Y21c@scripts/ledger_stage016_l2_so3_covariance_sympy_audit.py#271` — literal
-  `-sp.sqrt(sp.Rational(15,4)/sp.pi)*sp.sin(theta)*sp.cos(theta)*sp.cos(phi)`. Witness: `RES:016:L2-IRREP`
-  hop 1 via `:285`→`:287`.
-- `QID:Y21c@mathematica/ledger_stage016_l2_so3_covariance_mathematica_audit.wl#167` — literal
-  `-Sqrt[15/(4 Pi)] Sin[theta] Cos[theta] Cos[phi]`. Witness: hop 1 via `:172`→`:180-186`.
-
-⚠ The leading minus sign is the Condon–Shortley phase — a second documented convention on the same
-occurrence; it does not change the `UNADJUDICATED` flag, which is already blocked at clause (b).
-
-### 3.3 `QID:Y21s` — `PY#272`, `WL#168`
-
-All fields as §3.2, loci `:272` (`-sp.sqrt(sp.Rational(15,4)/sp.pi)*sp.sin(theta)*sp.cos(theta)*sp.sin(phi)`)
-and `:168` (`-Sqrt[15/(4 Pi)] Sin[theta] Cos[theta] Sin[phi]`).
-
-### 3.4 `QID:Y22c` — `PY#273`, `WL#169`
-
-All fields as §3.2, loci `:273` (`sp.sqrt(sp.Rational(15,16)/sp.pi)*sp.sin(theta)**2*sp.cos(2*phi)`)
-and `:169` (`Sqrt[15/(16 Pi)] Sin[theta]^2 Cos[2 phi]`). No Condon–Shortley sign on this pair.
-
-### 3.5 `QID:Y22s` — `PY#274`, `WL#170`
-
-All fields as §3.2, loci `:274` (`sp.sqrt(sp.Rational(15,16)/sp.pi)*sp.sin(theta)**2*sp.sin(2*phi)`)
-and `:170` (`Sqrt[15/(16 Pi)] Sin[theta]^2 Sin[2 phi]`).
+**Hop kinds used:** `claim-content` (the result's own value-bearing locus), `expression` (input
+closure), `premise-dependence` (§3.3.1(4)).
 
 ---
 
-### 3.6 `QID:S2-measure` — the S² integration measure
+## 2. IN-UNIVERSE ROWS
 
-#### `QID:S2-measure@scripts/…_sympy_audit.py#230`
-- **binding site** — `.../scripts/ledger_stage016_l2_so3_covariance_sympy_audit.py:230`, `integrate_s2`;
-  the measure itself is the literal `sp.sin(theta)` factor plus the limits `(phi, 0, 2*sp.pi)`,
-  `(theta, 0, sp.pi)` at `:233-235`.
-- **reachability witness** — `RES:016:L2-IRREP`, hop 1: the Rayleigh quotient at `:287` is a ratio of two
-  `integrate_s2` calls; `λ_m` has no value without this measure.
-- **axis A** — `A-UNADJUDICATED`. Typed at `:233-235`; no reduction; no route recorded; no benchmark. A
-  `A-IRREDUCIBLE-POSTULATE` reading ("the throat's angular section is a round S²") was tested against §9
-  and **fails**: no locus in either engine, the note, or `parameter_register.md` states that roundness as
-  a defining property of the medium. Note `:180` mentions "an isotropic wall" only inside an explicitly
-  `UNDETERMINED` remark about `T_Ω`.
-- **axis B** — `B-DECLARED-LITERAL`, locus `:233-235`. (`sp.integrate` executes here, but what it
-  produces is `λ_m`/`Gram`, not the measure.)
-- **axis C** — closure `{C-SELF@:233-235}`; `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
-  ⚠ See §5 C3: this leaf is simultaneously a same-artifact literal and a pure-mathematical object
-  (`C-MATH`); the tie is broken toward `C-SELF` by a stated rule and neither tag confers `PHYSICS-FED`.
-- **CONVENTION-LADEN** — `false` (**not a candidate convention**, §3.4 third option). No transformation
-  group is *documented* for the measure anywhere in this corpus; the note `:36` presents it as "the
-  genuine measure", i.e. as fact, not as a choice.
-- **is_tier** — `no-tier:unadjudicated`.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` /
-  **DELTA**. Basis, kept legible as a hunch: in the finished model the wall's angular section and its
-  measure follow from the throat geometry rather than being typed; ⛔ no route to it is named at any
-  locus, which is exactly why the basis is not `named-route`.
-- **LIVE**.
+Field order per block: quantity · occurrences (OID) · witness · axis A + §9 evidence · axis B + §9
+evidence · axis C (leaves → `PHYSICS-FED`, `SELF-REFERENTIAL`) · `CONVENTION-LADEN` + basis ·
+`is_tier` · `should_be_tier` · `should_be_basis` · `delta` · LIVE/RETIRED.
 
-#### `QID:S2-measure@mathematica/…_audit.wl#107`
-- **binding site** — `.../mathematica/ledger_stage016_l2_so3_covariance_mathematica_audit.wl:107`,
-  `intS2`; measure literal `Sin[theta]` and limits `{phi, 0, 2 Pi}`, `{theta, 0, Pi}` at `:109-111`.
-- **reachability witness** — `RES:016:L2-IRREP`, hop 1 via the Rayleigh ratio at `:183`.
-- **axis A** — `A-UNADJUDICATED` (same evidence position as the PY twin).
-- **axis B** — `B-DECLARED-LITERAL`, locus `:109-111`.
-- **axis C** — closure `{C-SELF@:109-111}`; `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
-- **CONVENTION-LADEN** — `false` (not a candidate convention).
-- **is_tier** — `no-tier:unadjudicated`.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` / **DELTA**.
-- **LIVE**.
+### R01 — θ (polar angle)
 
----
+- **Occurrences (2):** `QID:theta@PY#218`, `QID:theta@WL#21`.
+- **Witness:** `RES:016:L2-IRREP`, `expression` — `PY:289 → PY:287 → PY:233-235/PY:241-242`;
+  `WL:210 → WL:180-186 → WL:109-111/WL:116-118`.
+- **Axis A:** `A-INDEPENDENT-VARIABLE`. §9 evidence (loci where the ledger *uses* it as one):
+  integrated over at `PY:233-235` (`sp.integrate(..., (theta, 0, sp.pi))`) and `WL:109-111`;
+  differentiated with respect to at `PY:241-242` (`sp.diff(sp.sin(theta)*sp.diff(expr, theta), theta)`)
+  and `WL:116-118`.
+- **Axis B:** `B-DECLARED-UNASSIGNED`. Evidence: declaration `PY:218`; no assignment of `theta`
+  anywhere in `PY` (only the declaration and uses). `WL:21` declares `Element[{theta, phi}, Reals]`;
+  no `Set` of `theta` in `WL`.
+- **Axis C:** closure terminates immediately at the occurrence's own declaration; leaf `C-FREE` ⇒
+  `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined (§3.3). ⚠ See gap **S1** — the leaf table
+  has no tag for a coordinate.
+- **CONVENTION-LADEN:** `false` — *not a candidate*: no transformation group is claimed for this
+  occurrence anywhere in the corpus (a chart-change group would make it one; none is documented).
+- **is_tier:** `no-tier:independent-variable` (§5.7; the axis-C state does not move it, §3.3).
+- **should_be_tier:** `no-tier:independent-variable` · **basis:** `none` · **delta:** no.
+- **LIVE.**
 
-### 3.7 `QID:neg-Delta-S2` — the `−Δ_S²` Laplace–Beltrami operator
+### R02 — φ (azimuth)
 
-#### `QID:neg-Delta-S2@scripts/…_sympy_audit.py#239`
-- **binding site** — `:239`, `laplacian_s2`; the operator is typed at `:241-242` as
-  `(1/sin θ)∂_θ(sin θ ∂_θ·) + (1/sin²θ)∂_φ²·`.
-- **reachability witness** — `RES:016:L2-IRREP`, hop 1: `:239` → `neg_lap` (`:286`) → `rayleigh` (`:287`).
-  Also `RES:016:K2-FORM` hop 3 (via `λ_m` → `build_K2` at `:499`).
-- **axis A** — `A-UNADJUDICATED`. Typed at `:241-242`; no reduction performed; **no model-equation locus
-  is cited for it** anywhere in either engine (the PY docstring `:2-10` names `pathA_32` as the *source
-  script* it was reshaped from, and note `:16-18` states the derivation is "self-contained"; neither is a
-  citation of an equation the operator follows from). `A-IRREDUCIBLE-STRUCTURAL` was tested and fails
-  §9: no locus names the framework property that forecloses deriving the wall's angular operator (the
-  deferrals recorded at note `:311-316` are about the **radial** profile and the Gate-4/5/6 sim, not this
-  operator), so naming one here would be manufacturing evidence.
-- **axis B** — `B-DECLARED-LITERAL`, locus `:241-242`.
-- **axis C** — closure `{C-SELF@:241-242}`; `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
-  ⚠ This is the **decisive** axis-C call of the stage: by §3.3.1(1), a routine's operator is a
-  `C-FIELDEQ` leaf **only if the artifact cites the locus of the equation being solved**. It does not.
-  ⇒ no `C-FIELDEQ` leaf anywhere downstream of it. §3.3.1(1)'s own test-that-this-can-fail — "a solve
-  assembled entirely from the artifact's own constants, with no cited equation, is **not**
-  `PHYSICS-FED`" — is the case here.
-- **CONVENTION-LADEN** — `false` (not a candidate convention: no transformation group is claimed for the
-  operator).
-- **is_tier** — `no-tier:unadjudicated`.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` /
-  **DELTA**. Basis: the model's picture has the ℓ=2 angular operator as the angular part of the wall's
-  own equation of motion, which would make it (and everything below it) physics-fed. ⛔ Hunch — no route
-  is recorded.
-- **LIVE**.
+Identical to **R01** in every field. **Occurrences (2):** `QID:phi@PY#218`, `QID:phi@WL#21`.
+Evidence differs only in the loci: integrated over `(phi, 0, 2*sp.pi)` at `PY:233` / `WL:109`;
+differentiated at `PY:242` (`sp.diff(expr, phi, 2)`) / `WL:117`.
 
-#### `QID:neg-Delta-S2@mathematica/…_audit.wl#115`
-- **binding site** — `:115`, `lapS2`; operator typed at `:116-118`.
-- **reachability witness** — `RES:016:L2-IRREP`, hop 1 via `:179` → `:183`.
-- **axis A** — `A-UNADJUDICATED` (same evidence position; WL cites no equation locus either — see the
-  header comment `:1-8` and the print at `:460`, which names the operator but cites nothing).
-- **axis B** — `B-DECLARED-LITERAL`, locus `:116-118`.
-- **axis C** — closure `{C-SELF@:116-118}`; `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated`.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` / **DELTA**.
-- **LIVE**.
+### R03 — M̃ (ℓ=2 radial mass scalar)
 
----
-
-### 3.8 `QID:neg-Delta-S2-applied` — the value `(−Δ_S²)Y_m`
-
-#### `QID:neg-Delta-S2-applied@scripts/…_sympy_audit.py#286`
-- **binding site** — `:286`, `neg_lap = compact(-laplacian_s2(y_expr))` (loop over the five channels; one
-  site by B-D2).
-- **reachability witness** — `RES:016:L2-IRREP`, hop 1: feeds the Rayleigh numerator at `:287` and the
-  eigenfunction residual at `:290`, both listed as loci of the result.
-- **axis A** — `A-REDUCED`. §9 evidence: **the reduction is performed at `:286`**, and it reduces to
-  `Y_m` (`:270-274`) and the operator (`:239`, body `:241-242`) — both loci given.
-- **axis B** — `B-EXECUTED`. Code locus `:286` (calls `sp.diff` at `:241-242`); input leaves `:270-274`
-  and `:241-242`; consumed by the assert at `:680`.
-- **axis C** — closure `{C-SELF@:270-274, C-SELF@:241-242}`. `PHYSICS-FED = false` — the closure is fully
-  determined and contains no `C-FIELDEQ` and no `C-EXTERNAL` leaf (§3.7 above). `SELF-REFERENTIAL = false`.
-- **CONVENTION-LADEN** — `false` (not a candidate convention).
-- **is_tier** — `no-tier:unclassified-nonfed` (§5.1: `A-REDUCED ∧ ¬PHYSICS-FED`). Also §4 near-miss
-  bucket **executed-but-not-physics-fed**.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` /
-  **DELTA** (basis as in §3.7 — if the operator were physics-fed this row would be tier 3).
-- **LIVE**.
-
-#### `QID:neg-Delta-S2-applied@mathematica/…_audit.wl#179`
-- **binding site** — `:179`, `localNegLaps = AssociationThread[localOrder, clean[-lapS2[#]] & /@ localYs]`.
-- **reachability witness** — `RES:016:L2-IRREP`, hop 1: feeds `:183` and the residual at `:190`.
-- **axis A** — `A-REDUCED`; reduction performed at `:179`, reducing to `:166-170` and `:116-118`.
-- **axis B** — `B-EXECUTED`; code locus `:179` (native `D` at `:116-118`); leaves `:166-170`, `:116-118`;
-  asserted `:467`.
-- **axis C** — closure `{C-SELF@:166-170, C-SELF@:116-118}`; `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unclassified-nonfed`; §4 bucket **executed-but-not-physics-fed**.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` / **DELTA**.
-- **LIVE**.
-
----
-
-### 3.9 `QID:lambda-m` — the `−Δ_S²` eigenvalue (4 occurrences)
-
-#### `QID:lambda-m@scripts/…_sympy_audit.py#287`
-- **binding site** — `:287`,
-  `rayleigh = compact(integrate_s2(y_expr*neg_lap)/integrate_s2(y_expr**2))`.
-- **reachability witness** — `RES:016:L2-IRREP`, **hop 0**: this is the result's own quantity, asserted
-  `:679` and `:681`. Also `RES:016:K2-FORM` hop 1 (`build_K2(lambdas[name])`, `:499`).
-- **axis A** — `A-REDUCED`. §9 evidence: reduction performed at `:287`; reduces to `Y_m` (`:270-274`),
-  the operator (`:241-242`) via `neg_lap` (`:286`), and the measure (`:233-235`).
-- **axis B** — `B-EXECUTED`. Code locus `:287`; input leaves `:270-274`, `:241-242`, `:233-235`;
-  asserted `:679-682`.
-- **axis C** — closure `{C-SELF@:270-274, C-SELF@:241-242, C-SELF@:233-235}`. `PHYSICS-FED = false`
-  (determined; no `C-FIELDEQ`/`C-EXTERNAL` leaf — §3.7). `SELF-REFERENTIAL = false` (the walk never
-  returns to `:287`).
-- **CONVENTION-LADEN** — `false` (not a candidate convention: no transformation group is claimed for the
-  eigenvalue; the SO(3) group documented for the *basis* leaves this value invariant, which is the
-  result, not a convention claim about it).
-- **is_tier** — `no-tier:unclassified-nonfed`; §4 bucket **executed-but-not-physics-fed**.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` /
-  **DELTA**. ⚠ Counter-reading recorded, not adopted: if `−Δ_S²` is held to be pure mathematics
-  (`REPORTED_RESULTS.md:78-80` — "The number 6 is `ℓ(ℓ+1)` and is mathematics"), then no physical input
-  will ever feed it and `should_be_tier` collapses to `is_tier` with basis `none`. The adopted reading
-  follows the same file's test-(b) reasoning (`:44-47`): the eigenvalue **becomes a coefficient of the
-  medium's ℓ=2 equation of motion**, so the picture does expect it to be physics-fed.
-- **LIVE**.
-
-#### `QID:lambda-m@scripts/…_sympy_audit.py#506`
-- **binding site** — `:506`, `lambda_ref = lambdas["20"]`. Counted separately under B-D1 because it is
-  separately consumed (`:508`, `:509`).
-- **reachability witness** — `RES:016:K2-FORM`, hop 1: `:506` → `k2_ref = build_K2(lambda_ref)` (`:508`).
-- **axis A** — `A-REDUCED`; the reduction is performed at `:287` (cited), reducing to `:270-274`,
-  `:241-242`, `:233-235`.
-- **axis B** — `B-EXECUTED`; the value was produced by executed code at `:287`; leaves as above.
-- **axis C** — closure as `#287`; `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unclassified-nonfed`; §4 bucket **executed-but-not-physics-fed**.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` / **DELTA**.
-- **LIVE**.
-
-#### `QID:lambda-m@mathematica/…_audit.wl#180`
-- **binding site** — `:180-186`, `localLambdas = AssociationThread[…]`; the Rayleigh quotient itself at
-  `:183`.
-- **reachability witness** — `RES:016:L2-IRREP` hop 0 (asserted `:466`, `:471`); `RES:016:K2-FORM` hop 1
-  (`:219`).
-- **axis A** — `A-REDUCED`; reduction performed at `:183`; reduces to `:166-170`, `:116-118`, `:109-111`.
-- **axis B** — `B-EXECUTED`; code locus `:183`; leaves `:166-170`, `:116-118`, `:109-111`; asserted `:466-472`.
-- **axis C** — closure `{C-SELF@:166-170, C-SELF@:116-118, C-SELF@:109-111}`; `PHYSICS-FED = false`;
-  `SELF-REFERENTIAL = false`.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unclassified-nonfed`; §4 bucket **executed-but-not-physics-fed**.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` / **DELTA**.
-- **LIVE**.
-
-#### `QID:lambda-m@mathematica/…_audit.wl#227`
-- **binding site** — `:227`, `lambdaRef = lambdas["20"]`; separately consumed at `:229`, `:316`.
-- **reachability witness** — `RES:016:K2-FORM`, hop 1: `:227` → `k2Ref = buildK2[lambdaRef]` (`:229`).
-- **axis A** — `A-REDUCED`; reduction performed at `:183`; reduces to `:166-170`, `:116-118`, `:109-111`.
-- **axis B** — `B-EXECUTED`; produced by executed code at `:183`.
-- **axis C** — closure as `#180`; `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unclassified-nonfed`; §4 bucket **executed-but-not-physics-fed**.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` / **DELTA**.
-- **LIVE**.
-
----
-
-### 3.10 `QID:Gram-l2` — the 5×5 orthonormality matrix
-
-⚠ **Universe call, flagged (see §5 C4).** `REPORTED_RESULTS.md:111` demotes `Gram = I₅` from being a
-*result*. It is admitted here as an **input** to the "**5-dimensional** irrep" clause of
-`RES:016:L2-IRREP` — the linear independence of the five channels is what makes the shared eigenvalue a
-5-dim degeneracy rather than a coincidence among possibly-dependent functions. Being demoted as a result
-does not exclude a quantity from another result's closure.
-
-#### `QID:Gram-l2@scripts/…_sympy_audit.py#281`
-- **binding site** — `:281`, `gram = sp.Matrix([[integrate_s2(ys[i]*ys[j]) …]])`.
-- **reachability witness** — `RES:016:L2-IRREP`, hop 1 **via the claim's "5-dimensional" clause**;
-  asserted `:676-677`.
-- **axis A** — `A-REDUCED`. Reduction performed at `:281`; reduces to `Y_m` (`:270-274`) and the measure
-  (`:233-235`).
-- **axis B** — `B-EXECUTED`. Code locus `:281`; leaves `:270-274`, `:233-235`; asserted `:676-677`.
-- **axis C** — closure `{C-SELF@:270-274, C-SELF@:233-235}`; `PHYSICS-FED = false`;
-  `SELF-REFERENTIAL = false`.
-- **CONVENTION-LADEN** — `false`. No convention claim is made or implied about `Gram` itself: it is
-  asserted as a computed fact (`:676-677`). (The *normalisation* convention question sits on the harmonic
-  rows, §3.1-3.5, where it is recorded.)
-- **is_tier** — `no-tier:unclassified-nonfed`; §4 bucket **executed-but-not-physics-fed**.
-- **should_be_tier / should_be_basis / delta** — `no-tier:unclassified-nonfed` / `none` / **no**.
-  ⭐ The asymmetry against §3.9's `DELTA` is deliberate and follows `REPORTED_RESULTS.md:44-47`:
-  orthonormality on S² is a property of the sphere and of the written basis and does **not** enter the
-  medium's equation of motion, so no physical input is ever expected to feed it.
-- **LIVE**.
-
-#### `QID:Gram-l2@mathematica/…_audit.wl#178`
-- **binding site** — `:178`, `localGram = Table[intS2[localYs[[i]] localYs[[j]]], …]`.
-- **reachability witness** — `RES:016:L2-IRREP`, hop 1 via the "5-dimensional" clause; asserted `:462-463`.
-- **axis A** — `A-REDUCED`; reduction at `:178`; reduces to `:166-170`, `:109-111`.
-- **axis B** — `B-EXECUTED`; code locus `:178`; leaves `:166-170`, `:109-111`; asserted `:462-463`.
-- **axis C** — closure `{C-SELF@:166-170, C-SELF@:109-111}`; `PHYSICS-FED = false`;
-  `SELF-REFERENTIAL = false`.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unclassified-nonfed`; §4 bucket **executed-but-not-physics-fed**.
-- **should_be_tier / should_be_basis / delta** — `no-tier:unclassified-nonfed` / `none` / **no**.
-- **LIVE**.
-
----
-
-### 3.11 `QID:M-tilde` — `M̃`, the ℓ=2 reduced mass scalar
-
-#### `QID:M-tilde@scripts/…_sympy_audit.py#219`
-- **binding site** — `:219`, `Mtilde = sp.Symbol("Mtilde", positive=True, real=True)`. A declaration
-  that assigns **no value** (B-D3).
-- **reachability witness** — `RES:016:K2-FORM`, hop 1: `:219` → `m2_core = Mtilde` (`:507`), i.e. the
-  result's `M₂ = M̃`.
-- **axis A** — `A-REDUCIBLE-UNDERIVED`. §9 evidence — **the named route and where it is recorded**:
-  `M̃ = ∫μ_η β₂² dV`, recorded as edge **R35** at `notes/parameter_register.md:185` (the
-  `M̃, K̃, T̃_Ω` row) and `:302` (the R35 edge row), and stated in the stage note at `:212` (H1) and
-  `:76-80` (§1.4's display `M₂ = μ_η β₂² dV`). **Not executed**: H1 (note `:210-213`) states outright
-  that "Neither engine anywhere writes `M̃=∫μ_ηβ₂²dV`; it lives only in print strings", and
-  stage043's manifest records the same fact independently as `moment_integral_executed=False`
-  (`scripts/ledger_stage043_irreducible_count_range_sympy_audit.py:382-393`, `shorthand="R35"`).
-  ⛔ `A-CALIBRATED` was tested and **fails §9**: the note calls `M̃` a "frozen calibration input"
-  (`:311-314`) and stage043 carries `frozen_calibration_input=True` (`:390`), but **no benchmark is
-  named at any locus** — the register's own row classes it `DERIVED`, not `CALIB`. A calibration claim
-  without a benchmark is not `A-CALIBRATED`.
-- **axis B** — `B-UNADJUDICATED`. ⚠ §9.0 default, taken because **§3.2 has no value for this case** —
-  see §5 C2. Nothing computes `M̃` and nothing types a value for it; `B-DECLARED-LITERAL` would assert a
-  typed value that does not exist, and `B-DERIVED-IN-FORM-UNEXECUTED` would assert a symbolic derivation
-  that this artifact does not contain (H1).
-- **axis C** — closure `{C-FREE@:219}`: the artifact never assigns it, and no value it stands for is
-  fixed at a cited locus (note `:326` cites "011/012/013" as provenance, which is a stage list, not a
-  locus with a value, so `C-PEER`'s citation condition fails — §3.3). No leaf establishes
-  physics-feeding ⇒ `PHYSICS-FED = C-UNRESOLVED`. `SELF-REFERENTIAL` = **undefined** (§3.3).
-- **CONVENTION-LADEN** — `false` (not a candidate convention: no transformation group is claimed for `M̃`).
-- **is_tier** — `no-tier:unadjudicated` (§5.7, `PHYSICS-FED = C-UNRESOLVED` trigger). ⚠ **§5 C1
-  conflict:** under §5's "projection of axis A" framing this row is `tier1-debt`.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / **`named-route`** / **DELTA**. Route
-  recorded at `notes/parameter_register.md:185`, `:302` (R35).
-- **LIVE**.
-
-#### `QID:M-tilde@mathematica/…_audit.wl#21`
-- **binding site** — `:21`, `$Assumptions = … && Mtilde > 0 && …`. The only site at which WL declares the
-  symbol; it asserts positivity, not a value. Used at `:228`.
-- **reachability witness** — `RES:016:K2-FORM`, hop 1: `:21` → `m2Core = Mtilde` (`:228`).
-- **axis A** — `A-REDUCIBLE-UNDERIVED`, same route and same recording loci as the PY twin; not executed
-  in this engine either (H1 covers both engines).
-- **axis B** — `B-UNADJUDICATED` (§5 C2).
-- **axis C** — closure `{C-FREE@:21}`; `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated` (§5 C1 alternative: `tier1-debt`).
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `named-route` / **DELTA**.
-- **LIVE**.
-
-### 3.12 `QID:K-tilde` — `K̃`, the ℓ=2 radial stiffness scalar
-
-- `QID:K-tilde@scripts/…_sympy_audit.py#220` — `Ktilde = sp.Symbol("Ktilde", positive=True, real=True)`.
-- `QID:K-tilde@mathematica/…_audit.wl#21` — `$Assumptions … Ktilde > 0 …`; used at `:216`.
-
-Both occurrences carry the field values of §3.11 with one substitution: the named route is
-`K̃ = ∫[T_w β₂'² + K_η β₂²] dV`, recorded at `notes/parameter_register.md:185` and `:302` (R35), and
-obtainable by matching the note's two displays at `:57-58` (`K₂ = K̃ + λ_m·T̃_Ω`) and `:79`
-(`K₂ = (T_w β₂'² + K_η β₂² + λ·T_Ω β₂²) dV`) — the matching step is mine and is stated so it can be
-contested. Not executed (H1, note `:210-213`; stage043 `:390` `moment_integral_executed=False`).
-Reachability witness: `RES:016:K2-FORM` hop 1 via `build_K2` (PY `:305`, WL `:216`).
-⇒ axis A `A-REDUCIBLE-UNDERIVED`; axis B `B-UNADJUDICATED`; closure `{C-FREE}` ⇒
-`PHYSICS-FED = C-UNRESOLVED`, `SELF-REFERENTIAL` undefined; `CONVENTION-LADEN false`;
-`is_tier no-tier:unadjudicated` (alt. `tier1-debt`); `should_be_tier tier3-emergent` / `named-route` /
-**DELTA**; **LIVE**.
-
-### 3.13 `QID:T-Omega-tilde` — `T̃_Ω`, the ℓ=2 reduced angular-stiffness scalar
-
-- `QID:T-Omega-tilde@scripts/…_sympy_audit.py#221` — `TomegaTilde = sp.Symbol("TomegaTilde", positive=True, real=True)`.
-- `QID:T-Omega-tilde@mathematica/…_audit.wl#21` — `$Assumptions … TomegaTilde > 0`; used at `:216`.
-
-Fields as §3.12, with the named route `T̃_Ω = ∫T_Ω β₂² dV` (`notes/parameter_register.md:185`, `:302`).
-Not executed (H1). ⛔ `A-CALIBRATED` tested and **fails**: `parameter_register.md:182` classes the
-**density** `T_Ω` as `CALIB` — a **different quantity** from `T̃_Ω`, and in any case no benchmark number
-is named there either ("independent calibration input"). ⚠ Note `:180-182` records that `T_Ω`'s
-independence is **UNDETERMINED** (an isotropic wall would give `T_Ω = T_w/a²`); that is recorded, not
-resolved, and it does not supply a benchmark.
-⇒ axis A `A-REDUCIBLE-UNDERIVED`; axis B `B-UNADJUDICATED`; `PHYSICS-FED = C-UNRESOLVED`;
-`CONVENTION-LADEN false`; `is_tier no-tier:unadjudicated` (alt. `tier1-debt`);
-`should_be_tier tier3-emergent` / `named-route` / **DELTA**; **LIVE**.
-
-⚠ **Identity hazard carried, not resolved (§8.3 — the builder does not adjudicate merges):** note
-`:187-192` records that `T̃_Ω`(016) and stage023's `T_Ω` carry the same dimension and the same
-`ℓ(ℓ+1)`-shaped reduction one ℓ apart, and are "different quantity until R42 exists". This census keeps
-them as **two** QIDs and flags the merge as an open identity question for the physics review leg.
-
----
-
-### 3.14 `QID:K2` — the ℓ=2 angular stiffness (6 occurrences)
-
-#### `QID:K2@scripts/…_sympy_audit.py#305` — the FORM
-- **binding site** — `:305`, `return compact(Ktilde + coeff*TomegaTilde)` inside `build_K2` (`:304-305`).
-  This is the occurrence at which the artifact asserts the **form** the result claims.
-- **reachability witness** — `RES:016:K2-FORM`, **hop 0**.
-- **axis A** — `A-REDUCIBLE-UNDERIVED`. Named route: the ℓ=2 reduction of the wall energy integral
-  `K₂ = ∫[T_w β₂'² + (K_η + λ·T_Ω) β₂²] a²dw dΩ`, recorded at note `:76-80` and, in that exact form, at
-  `notes/parameter_register.md:182` (the `T_Ω` row). Not executed: the integrand is assembled at `:337-340`
-  **for the dimension walk only** and never evaluated, and note `:259-270` (H8) records that this
-  assembly is a *parallel reconstruction* whose terms can be dropped without failing anything.
-- **axis B** — `B-DECLARED-LITERAL`. The additive form is typed at `:305`.
-- **axis C** — closure `{C-FREE@:220 (Ktilde), C-FREE@:221 (TomegaTilde), C-FREE (the unbound `coeff`
-  parameter at the definition site)}`. No leaf establishes physics-feeding ⇒
+- **Occurrences (2):** `QID:M_tilde@PY#219`, `QID:M_tilde@WL#21`.
+- **Witness:** `RES:016:K2-FORM`, `expression` — `PY:507 (m2_core = Mtilde) → PY:219`;
+  `WL:228 → WL:21`.
+- **Axis A:** `A-REDUCIBLE-UNDERIVED`. §9 evidence — **named route**: R35, recorded at
+  `/var/projects/toy_physics/research/pde_ledger_v2/notes/parameter_register.md:302`
+  ("the grouped-lane scalars **= ∫ density·β₂² dV** — `M̃=∫μ_η β₂²` …") and at `:184`.
+  **Executable within this framework (§3.1.2):** the integrand is already assembled in-artifact at
+  `PY:336` / `WL:232`, and stage043 records the route as *un-run*, not *un-buildable* —
+  `/var/projects/toy_physics/research/pde_ledger_v2/scripts/ledger_stage043_irreducible_count_range_sympy_audit.py:390`
+  carries `moment_integral_executed=False` with `source_status="DERIVED-IN-FORM-UNEXECUTED"` (`:384`)
+  for `REG:C1:Mtilde` (`:371`).
+- **Axis B:** `B-DECLARED-UNASSIGNED`. Evidence: declaration `PY:219`
+  (`Mtilde = sp.Symbol("Mtilde", positive=True, real=True)`); the artifact contains **no assignment** of
+  it — every other `Mtilde` line in `PY` is a use (`:323`, `:475`, `:507`, `:722`, `:835`). In `WL` the
+  only binding is the positivity assertion at `WL:21`; no `Set`.
+- **Axis C:** leaf `C-FREE` (the artifact never assigns it, nothing it stands for is fixed here) ⇒
   `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined.
-- **CONVENTION-LADEN** — `false` (not a candidate convention).
-- **is_tier** — `no-tier:unadjudicated` (§5.7 C-UNRESOLVED trigger; §5 C1 alternative `tier1-debt`).
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `named-route` / **DELTA**
-  (route at note `:76-80`, `parameter_register.md:182`, R35 at `:302`).
-- **LIVE**.
+  ⛔ **No `C-PEER` leaf.** `PY:835` / `WL:646` claim "CONSUMED-from-011/012/013 … Mtilde/Ktilde/
+  TomegaTilde … cited as provenance" — that names *stages*, which §3.3 says is not a citation.
+- **⚠ Attribution defect (§9.1 rule 2), measured:** the attributed source does not carry the symbols at
+  all. `grep` over `notes/stages/ledger_stage011*.md`, `…012*.md`, `…013*.md` and their `scripts/`
+  counterparts returns **no** occurrence of `Mtilde|Ktilde|TomegaTilde|M̃|K̃|T̃`. Both loci recorded:
+  attributed `PY:835` / `WL:646`; computing locus — **none exists in the ledger** (see the value note
+  below).
+- **⚠ Second attribution defect:** `parameter_register.md:184` cites the dimension of `M̃, K̃, T̃_Ω` as
+  "computed in stage016's SymPy dimension rules, `scripts/ledger_stage016_l2_so3_covariance_sympy_audit.py:355-366`".
+  Opened: `PY:355-366` is the tail of `dimension_eval`'s `ok = bool(...)` conjunction and the head of
+  its return dict. The twelve rule literals are at **`PY:314-325`**. The stage note repeats the stale
+  range at `notes/stages/ledger_stage016_l2_so3_covariance.md:194` (`sympy:355-366`) and at `:210`
+  (`sympy:364`). Values agree; pointers do not.
+- **CONVENTION-LADEN:** `false` — not a candidate; no transformation group is claimed for the scalar.
+- **is_tier:** `tier1-debt` (§9.0: an unresolved closure does not touch an evidenced axis A).
+- **should_be_tier:** `tier3-emergent` · **basis:** `named-route` (R35, recorded at
+  `parameter_register.md:302`) · **delta:** YES.
+- **⚑ Conflict (§10.3, intra-occurrence)** — the substrate carries incompatible classes for this
+  quantity, recorded with both/all loci and ⛔ not resolved here:
+  `parameter_register.md:184` and `:302` class it **`DERIVED`**; `parameter_register.md:353` (R87) lists
+  it in `C1` as "frozen as `calibration_inputs` in the stage-017 build with the moment-integral never
+  evaluated to bind them"; `:357` (R91) as "written-as-DERIVED-form but un-executed"; this stage's own
+  note `:311-314` and `PY:828` / `WL:639` call the radial scalars "FROZEN calibration inputs". stage043
+  carries the same quantity under **two** IDs in two categories: `REG:derived:Mtilde_definition`
+  (`…stage043…py:298`, `CAT_DERIVED` = *derived-not-counted*) and `REG:C1:Mtilde` (`:371`, `CAT_OPEN` =
+  *extension-convention-open*). The stage note's H1 (`:210-213`) additionally records R35's
+  "dual-engine dim-verified" as **overstated**.
+- **Value note (not Route C):** the QID is *not* `unvalued-in-universe` — stage017 assigns it numerically
+  at `/var/projects/toy_physics/research/pde_ledger_v2/scripts/ledger_stage017_grouped_p2_lane_isotropy_sympy_audit.py:41`
+  (`"Mtilde": 3.0`) and `mathematica/ledger_stage017_grouped_p2_lane_isotropy_mathematica_audit.wl:273`.
+  Those are stage017 occurrences, out of this stage's scope.
+- **LIVE** (no retirement marker; contrast the marked retired rows `parameter_register.md:139`, `:159`).
 
-#### `QID:K2@scripts/…_sympy_audit.py#499` — assembled per channel
-- **binding site** — `:499`, `k2_core = {name: build_K2(lambdas[name]) for name in order}`.
-- **reachability witness** — `RES:016:K2-FORM`, hop 0 (this is the assembly the result's "uses the live
-  computed λ" clause is about; asserted via `:500-504`, `:693-697`).
-- **axis A** — `A-REDUCIBLE-UNDERIVED`, same route/recording loci as `#305`.
-- **axis B** — `B-EXECUTED`. Code locus `:499`; input leaves `:220`, `:221` and the live `lambdas`
-  computed at `:287` (whose own leaves are `:270-274`, `:241-242`, `:233-235`); asserted `:693-697`.
-- **axis C** — closure `{C-FREE@:220, C-FREE@:221, C-SELF@:270-274, C-SELF@:241-242, C-SELF@:233-235}`.
-  Contains a `C-FREE` leaf and **no** leaf establishing physics-feeding ⇒ `PHYSICS-FED = C-UNRESOLVED`
-  (§3.3, explicitly *not* `false`); `SELF-REFERENTIAL` undefined.
-  ⚠ Consequence per §3.3: this row is ⛔ **not** admitted to §4's `executed-but-not-physics-fed`, which
-  is a positive claim, despite being `B-EXECUTED`.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated` (alt. `tier1-debt`).
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `named-route` / **DELTA**.
-- **LIVE**.
+### R04 — K̃ (ℓ=2 radial stiffness scalar)
 
-#### `QID:K2@scripts/…_sympy_audit.py#508` — the reference assembly
-- **binding site** — `:508`, `k2_ref = build_K2(lambda_ref)`.
-- **reachability witness** — `RES:016:K2-FORM`, hop 0; a second binding site of the result's quantity
-  (§7.2). ⚠ Its downstream consumer (`:509`, the dimensional block) is out of universe; the row is in
-  universe because the **quantity** is (see §5 C5).
-- **axis A** — `A-REDUCIBLE-UNDERIVED`, same route.
-- **axis B** — `B-EXECUTED`; code locus `:508`; leaves `:220`, `:221`, `:506`→`:287`.
-- **axis C** — closure as `#499`; `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated` (alt. `tier1-debt`).
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `named-route` / **DELTA**.
-- **LIVE**.
+**Occurrences (2):** `QID:K_tilde@PY#220`, `QID:K_tilde@WL#21`. All fields as **R03**, with:
+witness `RES:016:K2-FORM`, `expression` — `PY:499 → PY:305 → PY:220`; `WL:219 → WL:216 → WL:21`.
+Route-R35 evidence line for `K̃`: `parameter_register.md:302` (`K̃=∫[T_w β₂'²+K_η β₂²]`);
+stage043 `REG:C1:Ktilde` (`…stage043…py:371`) and `REG:derived:Ktilde_definition` (`:299`).
+**is_tier** `tier1-debt` · **should_be** `tier3-emergent` / `named-route` · **delta** YES · **LIVE**.
 
-#### `QID:K2@mathematica/…_audit.wl#216` — the FORM
-- **binding site** — `:216`, `buildK2[coeff_] := clean[Ktilde + coeff TomegaTilde]`.
-- **reachability witness** — `RES:016:K2-FORM`, hop 0.
-- **axis A** — `A-REDUCIBLE-UNDERIVED`, route as PY `#305`; not executed in this engine (the integrand at
-  `:231-236` is dimension-walked only, `:259-264`).
-- **axis B** — `B-DECLARED-LITERAL` (form typed at `:216`).
-- **axis C** — closure `{C-FREE@:21 (Ktilde), C-FREE@:21 (TomegaTilde), C-FREE (unbound `coeff`)}`;
+### R05 — T̃_Ω (ℓ=2 reduced angular-stiffness scalar)
+
+**Occurrences (2):** `QID:T_Omega_tilde@PY#221`, `QID:T_Omega_tilde@WL#21`. All fields as **R03**, with:
+witness `RES:016:K2-FORM`, `expression` — `PY:499 → PY:305 → PY:221`; `WL:219 → WL:216 → WL:21`.
+Route-R35 evidence: `parameter_register.md:302` (`T̃_Ω=∫T_Ω β₂²`); stage043 `REG:C1:Ttilde_Omega`
+(`:371`) and `REG:derived:Ttilde_definition` (`:299`).
+⚠ Additionally carried, not adjudicated here: the stage note's identity hazard `T̃_Ω`(016) vs `T_Ω`(023)
+— "different quantity until R42 exists" (`notes/stages/ledger_stage016_l2_so3_covariance.md:187-192`).
+⛔ Left as two QIDs; §8.3 reserves the merge for the physics review leg.
+**is_tier** `tier1-debt` · **should_be** `tier3-emergent` / `named-route` · **delta** YES · **LIVE**.
+
+### R06–R10 — the five real ℓ=2 harmonics `Y20, Y21c, Y21s, Y22c, Y22s`
+
+- **Occurrences (10):** `QID:Y_20@PY#269` … `QID:Y_22s@PY#269` (five quantities, one binding site; value
+  loci `PY:270-274`) and `QID:Y_20@WL#165` … `QID:Y_22s@WL#165` (value loci `WL:166-170`).
+- **Witness:** `RES:016:L2-IRREP`, `expression` — `PY:289 → PY:287 → PY:286 → PY:269`;
+  `WL:210 → WL:180-186 → WL:165`. Also reached from `RES:016:K2-FORM` via `PY:501`/`WL:221`.
+- **Axis A:** `A-UNADJUDICATED` (§3.1.1 third branch). Recorded reason: **no route is recorded anywhere
+  in the ledger** for the basis (searched `notes/stages/ledger_stage011*|012*|013*`, `docs/model_map.md`,
+  `notes/parameter_register.md`; `parameter_register.md:301` (R34) *states* the harmonics form an
+  orthonormal SO(3) irrep and derives nothing), and it is **not stated as a postulate about the medium**
+  at any locus, so neither `A-REDUCIBLE-UNDERIVED` (§9: named route + where recorded) nor
+  `A-IRREDUCIBLE-POSTULATE` (§9: where posited) nor `A-IRREDUCIBLE-STRUCTURAL` (§9: the foreclosing
+  framework property — nothing forecloses writing the harmonics down) can be evidenced. ⚠ See gap **S2**.
+- **Axis B:** `B-DECLARED-LITERAL` — typed closed forms at `PY:270-274` / `WL:166-170`.
+- **Axis C:** leaf `C-SELF` ⇒ `PHYSICS-FED = false`; `SELF-REFERENTIAL = false` (plain literal, §3.3).
+  `C-SELF`-over-`C-MATH` per §3.3's test: the artifact *could* have declared a different orthonormal
+  ℓ=2 basis (any SO(3)-rotated one) and stayed internally consistent — `λ_m` and `Gram=I₅` both survive.
+- **CONVENTION-LADEN:** `UNADJUDICATED`. A normalisation claim **is** implied — the artifact's own
+  orthonormality gate (`PY:676-677`, `WL:462-463`) and `REPORTED_RESULTS.md:111` ("a property of the
+  sphere and of the basis this artifact writes down") — but §3.4 clause (a)'s transformation group is
+  documented **nowhere** for this occurrence, and clause (b)'s invariance is demonstrated nowhere. ⛔ Not
+  set `true` by intuition (§3.4). ⇒ counted in `convention-unadjudicated`; buys **no** exclusion.
+- **is_tier:** `no-tier:unadjudicated` (flag `UNADJUDICATED` ⇒ the axis-A projection runs, §5.7).
+- **should_be_tier:** `no-tier:convention` · **basis:** `convention-candidate` · **delta:** YES.
+  (⛔ Sets nothing and excludes nothing — §6.1's guard.)
+- **LIVE.**
+
+### R11 — the ℓ=2 channel set (the "5-dimensional" half of `RES:016:L2-IRREP`)
+
+- **Occurrences (2):** `QID:l2_channel_set@PY#279`, `QID:l2_channel_set@WL#164`.
+- **Witness:** `RES:016:L2-IRREP`, `claim-content` (the claim's "single 5-dimensional" clause) +
+  `expression` (`PY:279 = list(harmonics)`).
+- **⭐ The two engines differ, and this is the only such divergence in the stage.**
+  - `PY:279` `order = list(harmonics)` — **`B-EXECUTED`** (evidence: the computation `PY:279`; input
+    leaves `PY:269`/`:270-274`). **Axis A `A-REDUCED`** — §9: the reduction is performed at `PY:279`
+    and reduces to the basis declaration at `PY:269`. **Axis C:** leaves `{C-SELF ×5}` ⇒
+    `PHYSICS-FED = false`, `SELF-REFERENTIAL = false`. ⇒ **is_tier `no-tier:unclassified-nonfed`**
+    (§5.1) and §4 near-miss **executed-but-not-physics-fed**.
+  - `WL:164` `order = {"20","21c","21s","22c","22s"}` — **`B-DECLARED-LITERAL`** (typed).
+    **Axis A `A-UNADJUDICATED`** (no recorded route to `2ℓ+1`; same evidence as R06–R10).
+    **Axis C:** leaf `C-SELF` ⇒ `PHYSICS-FED = false`. ⇒ **is_tier `no-tier:unadjudicated`**.
+- **CONVENTION-LADEN:** `false` (not a candidate).
+- **should_be_tier:** `tier3-emergent` (both) · **basis:** `physical-picture-expectation` (the sector's
+  dimension ought to follow from the model's angular sector; no route is recorded) · **delta:** YES both.
+- **§10.2.2 rule 5:** the QID mixes `no-tier:unadjudicated` with `no-tier:unclassified-nonfed` ⇒
+  reported in **both** buckets, flagged `mixed-adjudication`, and ⛔ **not** entered in the conflict set.
+- **LIVE.**
+
+### R12 — the S² domain and measure `dΩ = sinθ dφ dθ`, `θ∈[0,π]`, `φ∈[0,2π]` (route 2)
+
+- **Occurrences (2):** `QID:S2_domain_measure@PY#230` (body `PY:233-235`),
+  `QID:S2_domain_measure@WL#107` (body `WL:109-111`).
+- **Witness:** `RES:016:L2-IRREP`, `premise-dependence` (§3.3.1(4)) — the Rayleigh quotient and the
+  eigenvalue are defined *with respect to* this measure (`PY:287`, `WL:183`).
+- **Route-2 bounds, both checked (§9):** (i) depended on by `RES:016:L2-IRREP` and `RES:016:K2-FORM`;
+  (ii) **not derived elsewhere in the ledger** — stages 011/012/013 carry no angular sector at all
+  (`notes/stages/ledger_stage011_frozen_reduction_certificate.md`,
+  `…stage012_dtn_pole_ladder_robin.md`, `…stage013_breathing_harmonic_mk_projection.md`: searched for
+  `S²|angular|Laplace|harmonic`; the hits are radial/ℓ=0 only), and `docs/model_map.md:94` merely
+  *restates* this stage's own `−Δ_S²Y_2m=6Y_2m`.
+- **Axis A:** `A-UNADJUDICATED` (§3.1.1 third branch). The `STRUCTURAL`/`POSTULATE` call **cannot be
+  decided from evidence**: no locus states the throat's spherical symmetry as a defining property of the
+  medium (`docs/model_map.md:23-31` describes the throat without asserting it), and no route to derive
+  the wall's angular geometry is recorded. ⛔ Not resolved by picking the better-reading branch.
+  ⚠ **Sensitivity, stated:** a `STRUCTURAL` reading is available with the extension named — the deferred
+  throat-interior solve (`parameter_register.md:49` "all siblings of the ONE deferred throat-interior
+  solve"; `notes/stages/ledger_stage016_l2_so3_covariance.md:315-316` "`G = GENUINE_BLOCKED`") plus a
+  wall action over the throat's angular geometry, which the ledger does not posit (`docs/model_map.md:70`
+  records the two existing wall actions as un-reconciled and neither is applied to this sector).
+  Adopting it would move **4 occurrences** (this row + R13) from the tier-1 upper span to its lower bound.
+- **Axis B:** `B-DECLARED-LITERAL` — the measure and both limits are typed at `PY:233-235` / `WL:109-111`.
+  (Route-2's `B-POSTULATED` reading changes no §4 bucket — see gap **S6**.)
+- **Axis C:** §3.3.1(4) — the closure terminates where the artifact itself declares it ⇒ leaf `C-SELF` ⇒
+  `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
+- **CONVENTION-LADEN:** `false` — no transformation group is claimed for the *S²* measure. (The **wall**
+  measure is a different occurrence and IS convention-claimed — see R18.)
+- **is_tier:** `no-tier:unadjudicated` · **should_be_tier:** `tier3-emergent` ·
+  **basis:** `physical-picture-expectation` · **delta:** YES · **LIVE.**
+
+### R13 — the angular operator `−Δ_S²` (route 2)
+
+- **Occurrences (2):** `QID:angular_operator_neg_Delta_S2@PY#239` (body `PY:241-242`),
+  `QID:angular_operator_neg_Delta_S2@WL#115` (body `WL:116-118`).
+- **Witness:** `RES:016:L2-IRREP`, `premise-dependence` — the reported spectrum is the spectrum *of this
+  operator* (`REPORTED_RESULTS.md:66-68`).
+- **Route-2 bounds:** as R12 — depended on by the result; not derived elsewhere in the ledger.
+- **⭐⭐ The stage's decisive axis-C determination, recorded here once and referenced by every row
+  downstream.** Under §3.3.1(1) the operator is a `C-FIELDEQ` leaf **iff the artifact cites the locus of
+  the equation being solved**. It does not: `PY:2-10` names "pathA_32 II-G3a" (a *source name*, which
+  §3.3 says is not a citation), `WL:1-8` the same; the stage note's provenance
+  (`notes/stages/ledger_stage016_l2_so3_covariance.md:16-18`) cites the predecessor **implementation**
+  files and a report, and states "the derivation below is **self-contained**". ⇒ **the operator
+  contributes no leaf**, and every closure it appears in is `{C-SELF, …}`. ⚠ This is what makes the
+  whole angular chain (R14–R17, R11-PY) `PHYSICS-FED = false` rather than `true`.
+- **Axis A:** `A-UNADJUDICATED`, same evidence and same stated sensitivity as R12.
+- **Axis B:** `B-DECLARED-LITERAL` — the operator is typed out in coordinates at `PY:241-242` /
+  `WL:116-118`.
+- **Axis C:** leaf `C-SELF` ⇒ `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
+- **CONVENTION-LADEN:** `false` (not a candidate).
+- **is_tier:** `no-tier:unadjudicated` · **should_be_tier:** `tier3-emergent` ·
+  **basis:** `physical-picture-expectation` · **delta:** YES · **LIVE.**
+
+### R14 — the Gram matrix (orthonormality of the five channels)
+
+- **Occurrences (2):** `QID:gram_l2@PY#281`, `QID:gram_l2@WL#208` (computed `WL:178`).
+- **Witness:** `RES:016:L2-IRREP`, `premise-dependence` — linear independence underwrites the
+  "5-dimensional" half of the claim. ⚠ **Contestable, flagged:** `REPORTED_RESULTS.md:111` demotes
+  `Gram = I₅` from the *result* set; this row admits it as a *premise* of a result, not as a result.
+  If a reviewer rejects the hop, 2 occurrences move to `reached-by-no-reported-result`.
+- **Axis A:** `A-REDUCED`. §9: the reduction is performed at `PY:281` /`WL:178` and reduces to the
+  harmonics (`PY:269`/`:270-274`; `WL:165`/`:166-170`) and the S² measure (`PY:233-235`; `WL:109-111`).
+- **Axis B:** `B-EXECUTED`. §9: computation `PY:281` (`integrate_s2(ys[i]*ys[j])`) / `WL:178`; input-leaf
+  loci as above. Genuine symbolic integration (`sp.integrate` / `Integrate`), not a lookup.
+- **Axis C:** leaves `{C-SELF (harmonics), C-SELF (measure)}` ⇒ `PHYSICS-FED = false`;
+  `SELF-REFERENTIAL = false`.
+- **CONVENTION-LADEN:** `false` — the convention question attaches to the basis (R06–R10), not to the
+  computed matrix.
+- **is_tier:** `no-tier:unclassified-nonfed` (§5.1) — §4 near-miss **executed-but-not-physics-fed**.
+- **should_be_tier:** `no-tier:unclassified-nonfed` · **basis:** `none` · **delta:** no.
+  (Orthonormality on S² is a fact about the sphere and the artifact's basis; the model's picture makes no
+  claim that it should reduce to the medium.)
+- **LIVE.**
+
+### R15 — `−Δ_S² Y_m` (per channel)
+
+- **Occurrences (2):** `QID:neg_laplacian_Y@PY#288` (computed `PY:286`), `QID:neg_laplacian_Y@WL#209`
+  (computed `WL:179`). `channels = 5`.
+- **Witness:** `RES:016:L2-IRREP`, `expression` (`PY:287 → PY:288`; `WL:183 → WL:209`).
+- **Axis A:** `A-REDUCED`. §9: reduction at `PY:286` / `WL:179`; reduces to the harmonics (`PY:269`;
+  `WL:165`) and the operator (`PY:239-243`; `WL:115-119`).
+- **Axis B:** `B-EXECUTED`. §9: computation `PY:286` (`compact(-laplacian_s2(y_expr))`, native
+  `sp.diff`) / `WL:179` (native `D`); input leaves as above.
+- **Axis C:** leaves `{C-SELF}` — the operator contributes **no** leaf (R13) ⇒ `PHYSICS-FED = false`;
+  `SELF-REFERENTIAL = false`.
+- **CONVENTION-LADEN:** `false`. **is_tier:** `no-tier:unclassified-nonfed` — near-miss 1.
+- **should_be_tier:** `tier3-emergent` · **basis:** `physical-picture-expectation` (it becomes
+  physics-fed exactly when the operator is a cited model equation — R13) · **delta:** YES · **LIVE.**
+
+### R16 — `λ_m` (the `−Δ_S²` eigenvalue), computed
+
+- **Occurrences (2 of this QID's 4):** `QID:lambda_m@PY#289` (computed `PY:287`),
+  `QID:lambda_m@WL#210` (computed `WL:180-186`). `channels = 5`.
+- **Witness:** `RES:016:L2-IRREP`, `claim-content` (`REPORTED_RESULTS.md:73` cites `PY:287`).
+- **Axis A:** `A-REDUCED`. §9: the reduction is the Rayleigh quotient performed at `PY:287`
+  (`integrate_s2(y_expr*neg_lap)/integrate_s2(y_expr**2)`) / `WL:183`; it reduces to `PY:288` (`−ΔY`),
+  the harmonics `PY:269` and the measure `PY:233-235` (`WL:209`, `WL:165`, `WL:109-111`).
+- **Axis B:** `B-EXECUTED`. §9: computation loci as above; input-leaf loci as above.
+- **Axis C:** leaves `{C-SELF (harmonics), C-SELF (measure)}` ⇒ `PHYSICS-FED = false`;
+  `SELF-REFERENTIAL = false` (the walk leaves the occurrence and terminates at the basis; it does not
+  return to `PY:289`).
+- **CONVENTION-LADEN:** `false` (not a candidate).
+- **is_tier:** `no-tier:unclassified-nonfed` — §4 near-miss **executed-but-not-physics-fed**. ⚠ Code
+  genuinely ran and can genuinely fail; what it ran over is the artifact's own declarations (§3.5).
+- **should_be_tier:** `tier3-emergent` · **basis:** `physical-picture-expectation` · **delta:** YES.
+- **Substrate note (not a conflict):** stage043 carries `REG:derived:lambda_m_SO3` in `CAT_DERIVED`
+  (`…stage043…py:301`, `:139`). ⛔ Not inherited (§2); recorded because the census's axis-C finding is
+  precisely what that label cannot express.
+- **LIVE.**
+
+### R17 — `λ_m` asserted against the typed literal `6`
+
+- **Occurrences (2 of this QID's 4):** `QID:lambda_m@PY#679`, `QID:lambda_m@WL#466`.
+- **Witness:** `RES:016:L2-IRREP`, `claim-content` (`REPORTED_RESULTS.md:73` cites the assert block
+  `PY:679-682`).
+- **Axis A:** `A-REDUCED` — the *quantity* is obtained, in this same artifact, at `PY:287` / `WL:183`
+  (§9 loci as R16). Axis A is about the quantity, not about this occurrence's execution (§3).
+- **Axis B:** `B-ASSERTED-TARGET` — `PY:679` `expect_zero(..., lambdas[name] - 6)` / `WL:466`
+  `expectZero[..., lambdas[name] - 6]`: the artifact checks *against* the typed `6`; it does not produce
+  it here.
+- **Axis C:** leaf `C-SELF` (the typed `6`) ⇒ `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
+  ⚠ `C-SELF` over `C-MATH` by §3.3's tie-break: neither engine anywhere writes `ℓ(ℓ+1)`; the identity is
+  stated only in prose (`notes/stages/ledger_stage016_l2_so3_covariance.md:52`,
+  `REPORTED_RESULTS.md:78`), so no cited-or-executed mathematical identity forces the literal.
+- **CONVENTION-LADEN:** `false`. **is_tier:** `no-tier:unclassified-nonfed`.
+  ⛔ In **no** §4 near-miss (near-miss 1 requires `B-EXECUTED`; near-miss 3 requires `PHYSICS-FED`).
+- **should_be_tier:** `tier3-emergent` · **basis:** `physical-picture-expectation` · **delta:** YES.
+- **LIVE.**
+
+### R18 — the m-degeneracy (`all five λ = 6`)
+
+- **Occurrences (2):** `QID:l2_m_degeneracy@PY#299`, `QID:l2_m_degeneracy@WL#213` (computed `WL:202`).
+- **Witness:** `RES:016:L2-IRREP`, `claim-content` (`REPORTED_RESULTS.md:73` cites `PY:299`
+  `lambda_all_six`). This boolean **is** the degeneracy that the result claims.
+- **Axis A:** `A-REDUCED`. §9: reduction at `PY:299` / `WL:202`; reduces to the computed λ set
+  (`PY:289`, `WL:210`).
+- **Axis B:** `B-EXECUTED` (the five comparisons run). ⚠ Recorded on the row: the comparison **target
+  `6` is typed at the same binding site** (`PY:299` `compact(value - 6)`; `WL:202` `clean[# - 6]`); per
+  §3.3 a sub-expression within one binding site is not a separate step, so no second occurrence.
+- **Axis C:** leaves `{C-SELF}` through R16 ⇒ `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
+- **CONVENTION-LADEN:** `false`. **is_tier:** `no-tier:unclassified-nonfed` — near-miss 1.
+- **should_be_tier:** `tier3-emergent` · **basis:** `physical-picture-expectation` · **delta:** YES.
+- **LIVE.**
+
+### R19 — the eigenfunction residual `(−Δ_S²)Y_m − λ_m Y_m`
+
+- **Occurrences (2):** `QID:eigenfunction_residual@PY#290`, `QID:eigenfunction_residual@WL#211`
+  (computed `WL:187-193`). `channels = 5`.
+- **Witness:** `RES:016:L2-IRREP`, `claim-content` (`REPORTED_RESULTS.md:73` cites `PY:290`).
+- **Axis A:** `A-REDUCED`. §9: reduction at `PY:290` / `WL:190`; reduces to `PY:288`, `PY:289`,
+  `PY:269` (`WL:209`, `WL:210`, `WL:165`).
+- **Axis B:** `B-EXECUTED`. §9: computation `PY:290` / `WL:190`; input leaves as above.
+- **Axis C:** leaves `{C-SELF}` ⇒ `PHYSICS-FED = false`; `SELF-REFERENTIAL = false`.
+- **CONVENTION-LADEN:** `false`. **is_tier:** `no-tier:unclassified-nonfed` — near-miss 1.
+- **should_be_tier:** `tier3-emergent` · **basis:** `physical-picture-expectation` · **delta:** YES.
+- **LIVE.**
+
+### R20 — the K₂ assembly form `K₂ = K̃ + coeff·T̃_Ω`
+
+- **Occurrences (2):** `QID:K2_assembly_form@PY#305`, `QID:K2_assembly_form@WL#216`.
+- **Witness:** `RES:016:K2-FORM`, `claim-content` (`REPORTED_RESULTS.md:91` cites `PY:304-305`).
+- **Axis A:** `A-REDUCIBLE-UNDERIVED`. §9 — **named route**: the density-integral decomposition of the
+  ℓ=2 stiffness, stated at `notes/stages/ledger_stage016_l2_so3_covariance.md:76-79` and carried as edge
+  R35 at `parameter_register.md:302`; the integrand is already assembled in-artifact at `PY:337-340` /
+  `WL:233-236`. **Executable within this framework:**
+  `…stage043…py:384`/`:390` record the moment integral as `DERIVED-IN-FORM-UNEXECUTED` /
+  `moment_integral_executed=False` — machinery present, run absent (§3.1.2's debt branch).
+- **Axis B:** `B-DECLARED-LITERAL` — the expression tree `Ktilde + coeff*TomegaTilde` is typed at
+  `PY:305` / `WL:216`. ⛔ **Not** `B-DERIVED-IN-FORM-UNEXECUTED`: no symbolic derivation of the form
+  exists in either engine — the stage's own H1 records "**Neither engine anywhere writes**
+  `M̃=∫μ_ηβ₂²dV`; it lives only in print strings" (`notes/stages/ledger_stage016_l2_so3_covariance.md:210-213`).
+- **Axis C:** leaves `{C-FREE (K̃), C-FREE (T̃_Ω)}`; no leaf establishes physics-feeding ⇒
+  `PHYSICS-FED = C-UNRESOLVED` (§3.3); `SELF-REFERENTIAL` undefined.
+- **CONVENTION-LADEN:** `false` (not a candidate).
+- **is_tier:** `tier1-debt` — §9.0: the unresolved closure gates tier 3 and `DERIVED`, and does **not**
+  touch the evidenced axis A.
+- **should_be_tier:** `tier3-emergent` · **basis:** `named-route` (R35, `parameter_register.md:302`) ·
+  **delta:** YES.
+- **⚠ Carried, not folded into any axis:** the stage's adversarial finding **H8**
+  (`…ledger_stage016_l2_so3_covariance.md:259-270`) — dimension-preserving rewrites of the walked
+  expressions, *including dropping `λ_m` from the angular term*, leave the audit green. That bears on how
+  well the artifact protects this row, not on its provenance.
+- **LIVE.**
+
+### R21 — `K₂` (assembled value, per channel)
+
+- **Occurrences (2):** `QID:K2_l2@PY#499`, `QID:K2_l2@WL#219`. `channels = 5`.
+- **Witness:** `RES:016:K2-FORM`, `claim-content` (`REPORTED_RESULTS.md:91` cites `PY:499`).
+- **Axis A:** `A-REDUCED`. §9: the reduction is performed at `PY:499`
+  (`build_K2(lambdas[name])`) / `WL:219`, and reduces to `PY:220` (K̃), `PY:221` (T̃_Ω) and `PY:289`
+  (the live computed λ) — `WL:21`, `WL:21`, `WL:210`.
+- **Axis B:** `B-EXECUTED`. §9: computation `PY:499` → `PY:305`; input leaves as above. The λ consumed
+  is the live computed one, not a literal (`PY:499` passes `lambdas[name]`).
+- **Axis C:** leaves `{C-FREE (K̃), C-FREE (T̃_Ω), C-SELF (the λ chain)}` ⇒
   `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated` (alt. `tier1-debt`).
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `named-route` / **DELTA**.
-- **LIVE**.
-
-#### `QID:K2@mathematica/…_audit.wl#219` — assembled per channel
-- **binding site** — `:219`, `k2Core = AssociationThread[order, buildK2[lambdas[#]] & /@ order]`.
-- **reachability witness** — `RES:016:K2-FORM`, hop 0; asserted `:481-482`.
-- **axis A** — `A-REDUCIBLE-UNDERIVED`, same route.
-- **axis B** — `B-EXECUTED`; code locus `:219`; leaves `:21`, `:21`, and live `lambdas` from `:183`
-  (own leaves `:166-170`, `:116-118`, `:109-111`); asserted `:481-482`.
-- **axis C** — closure `{C-FREE@:21, C-FREE@:21, C-SELF@:166-170, C-SELF@:116-118, C-SELF@:109-111}`;
-  `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined; not admitted to
+- **CONVENTION-LADEN:** `false`.
+- **is_tier:** `no-tier:unadjudicated` — §5.7's one case where an unresolved closure decides the line:
+  `A-REDUCED` projects only to tier 3, that tier's `PHYSICS-FED` conjunct fails, and there is no other
+  tier to fall to. ⛔ Not `no-tier:unclassified-nonfed` (that is a positive finding).
+  ⇒ contributes to the **tier-1 upper span**.
+- **should_be_tier:** `tier3-emergent` · **basis:** `named-route` (R35) · **delta:** YES.
+- ⛔ **Not** in near-miss 1: §3.3 forbids asserting a `C-UNRESOLVED` row into
   `executed-but-not-physics-fed`.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated` (alt. `tier1-debt`).
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `named-route` / **DELTA**.
-- **LIVE**.
+- **LIVE.**
 
-#### `QID:K2@mathematica/…_audit.wl#229` — the reference assembly
-- **binding site** — `:229`, `k2Ref = buildK2[lambdaRef]`.
-- **reachability witness** — `RES:016:K2-FORM`, hop 0 (second binding site; consumer `:316` is out of
-  universe — §5 C5).
-- **axis A** — `A-REDUCIBLE-UNDERIVED`, same route.
-- **axis B** — `B-EXECUTED`; code locus `:229`; leaves `:21`, `:21`, `:227`→`:183`.
-- **axis C** — closure as `#219`; `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated` (alt. `tier1-debt`).
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `named-route` / **DELTA**.
-- **LIVE**.
+### R22 — the extracted `T̃_Ω` coefficient of the assembled `K₂`
+
+- **Occurrences (2):** `QID:K2_TomegaTilde_coefficient@PY#500`, `QID:K2_TomegaTilde_coefficient@WL#220`.
+- **Witness:** `RES:016:K2-FORM`, `claim-content` (`REPORTED_RESULTS.md:91` cites `PY:500-504`).
+- **Axis A:** `A-REDUCED`. §9: reduction at `PY:500` → `PY:308-309` (`sp.diff(k2_expr, TomegaTilde)`) /
+  `WL:220` → `WL:217`; reduces to `PY:499` (`WL:219`).
+- **Axis B:** `B-EXECUTED`. §9: computation `PY:500`/`WL:220`; input leaf `PY:499`/`WL:219`.
+- **Axis C:** the producing expression consumes `k2_core`, whose closure carries `C-FREE` leaves ⇒
+  `PHYSICS-FED = C-UNRESOLVED`. ⚠ **Gap S3:** the differentiation *annihilates* K̃, so the C-FREE leaf is
+  in the input closure but contributes nothing to the value (which is exactly λ). The schema has no rule
+  for that; the letter of §3.3 ("walk back the expression that produced its value") was followed.
+- **CONVENTION-LADEN:** `false`. **is_tier:** `no-tier:unadjudicated` (as R21).
+- **should_be_tier:** `tier3-emergent` · **basis:** `physical-picture-expectation` · **delta:** YES.
+- **LIVE.**
+
+### R23 — the K₂-coefficient residual `(−Δ)Y − coeff·Y`
+
+- **Occurrences (2):** `QID:K2_coefficient_residual@PY#501` (expression `PY:501-503`),
+  `QID:K2_coefficient_residual@WL#221` (expression `WL:221-224`). `channels = 5`.
+- **Witness:** `RES:016:K2-FORM`, `claim-content` (`REPORTED_RESULTS.md:91` cites `PY:500-504`).
+- **Axis A:** `A-REDUCED`. §9: reduction at `PY:502` / `WL:223`; reduces to `PY:288`, `PY:500`,
+  `PY:269` (`WL:209`, `WL:220`, `WL:165`).
+- **Axis B:** `B-EXECUTED`. §9: computation `PY:502` / `WL:223`; input leaves as above.
+- **Axis C:** inherits the `C-FREE` leaf through `PY:500` ⇒ `PHYSICS-FED = C-UNRESOLVED`
+  (same gap **S3**); `SELF-REFERENTIAL` undefined.
+- **CONVENTION-LADEN:** `false`. **is_tier:** `no-tier:unadjudicated`.
+- **should_be_tier:** `tier3-emergent` · **basis:** `physical-picture-expectation` · **delta:** YES.
+- **LIVE.**
+
+### R24 — `M₂ = M̃`
+
+- **Occurrences (2):** `QID:M2_l2@PY#507`, `QID:M2_l2@WL#228`.
+- **Witness:** `RES:016:K2-FORM`, `claim-content` — the claim states `M₂ = M̃`
+  (`REPORTED_RESULTS.md:84-85`). ⚠ **Recorded seam (gap S9):** the result set's *script*-locus list
+  (`REPORTED_RESULTS.md:91`) does **not** cite `PY:507` / `WL:228`, although the claim contains the
+  relation. ⛔ The result set was not amended; the row is admitted on the claim's content.
+- **Axis A:** `A-REDUCED`. §9: the reduction `M₂ → M̃` is performed at `PY:507` / `WL:228` and is
+  recorded at `notes/stages/ledger_stage016_l2_so3_covariance.md:57-58`; it reduces to `PY:219` /
+  `WL:21`.
+- **Axis B:** `B-DECLARED-LITERAL` — `m2_core = Mtilde` is typed; no computation produces it.
+- **Axis C:** leaf `{C-FREE (M̃)}` ⇒ `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined.
+- **CONVENTION-LADEN:** `false`. **is_tier:** `no-tier:unadjudicated` (as R21).
+- **should_be_tier:** `tier3-emergent` · **basis:** `named-route` (R35's `M̃=∫μ_η β₂²`,
+  `parameter_register.md:302`) · **delta:** YES.
+- ⛔ **Not** near-miss 3: that requires `PHYSICS-FED = true`.
+- **LIVE.**
+
+### R25 — the wall 3-volume measure `dV = a²·dw·dΩ` (route 2)
+
+- **Occurrences (2):** `QID:wall_volume_measure@PY#335`, `QID:wall_volume_measure@WL#231`.
+- **Witness:** `RES:016:K2-FORM`, `premise-dependence` — the measure the ℓ=2 radial reduction integrates
+  over; without it `K₂ = K̃ + 6T̃_Ω` is algebra on two free symbols.
+- **Route-2 bounds:** (i) depended on by `RES:016:K2-FORM` (through R26/R27); (ii) not derived elsewhere
+  — the register carries it as pathA_32's *convention*, not as a derivation
+  (`notes/stages/ledger_stage016_l2_so3_covariance.md:74`, `:322-324`).
+- **Axis A:** `A-UNADJUDICATED`, same reasoning and same stated sensitivity as R12 (the wall's geometry
+  is contingent on the deferred throat-interior solve; nothing states it as a postulate).
+- **Axis B:** `B-DECLARED-LITERAL` — typed at `PY:335` (`a_dim**2 * dw_dim * dOmega_dim`) / `WL:231`.
+- **Axis C:** §3.3.1(4) terminal, artifact-declared ⇒ leaf `C-SELF` ⇒ `PHYSICS-FED = false`.
+- **CONVENTION-LADEN:** **`UNADJUDICATED`** — a convention claim **is** made: the stage calls it
+  "pathA_32's own convention — VOLUME densities on the wall measure `dV = a²·dw·dΩ`"
+  (`…ledger_stage016_l2_so3_covariance.md:74`) and contrasts it with stage013's LINE-density convention
+  at `:322-324`. §3.4 clause (a): no transformation group is documented — the same locus states the two
+  conventions are related by "an `∫a²dΩ ≈ L²` bridge, **not equal**". Clause (b): the corpus records
+  **non**-invariance ("the stage-013 relation `K_η = T_w β²` does **NOT** transfer"), so the invariance is
+  not merely undemonstrated. ⇒ `convention-unadjudicated` bucket; buys **no** exclusion; the row keeps
+  its axis-A tier (§3.4, §9.0).
+- **is_tier:** `no-tier:unadjudicated` · **should_be_tier:** `no-tier:convention` ·
+  **basis:** `convention-candidate` · **delta:** YES · **LIVE.**
+
+### R26 — the `M₂` density integral `M₂ = ∫ μ_η β₂² dV` (route 2)
+
+- **Occurrences (2):** `QID:M2_density_integral_premise@PY#336`,
+  `QID:M2_density_integral_premise@WL#232`.
+- **Witness:** `RES:016:K2-FORM`, `premise-dependence` (§3.3.1(4)) — this is what makes `M₂ = M̃` a claim
+  about the wall rather than a renaming. ⛔ The hop confers no `PHYSICS-FED` on anything it passes
+  through.
+- **Route-2 bounds:** (i) depended on by `RES:016:K2-FORM`; (ii) not derived elsewhere in the ledger —
+  no artifact derives the relation from an action; `parameter_register.md:302` *states* it as edge R35
+  and `…stage043…py:390` records it un-executed.
+- **Axis A:** `A-UNADJUDICATED` — the relation would follow from a wall action over the throat's angular
+  geometry; the ledger posits none (evidence as R12). ⛔ Not `A-REDUCED` on the strength of the
+  register's `DERIVED` label (§2: no row inherits a substrate class).
+- **Axis B:** `B-DECLARED-LITERAL` — the integrand is typed at `PY:336` / `WL:232` and is **walked only
+  for dimensions**; no code path integrates it (H1, `…ledger_stage016_l2_so3_covariance.md:210-213`).
+  ⛔ Not `B-DERIVED-IN-FORM-UNEXECUTED`: no symbolic derivation is present in either engine, only the
+  integrand product.
+- **Axis C:** §3.3.1(4) terminal, artifact-declared ⇒ leaf `C-SELF` ⇒ `PHYSICS-FED = false`.
+  ⚠ Gap **S8**: the terminal rule means the nine density/measure symbols named inside this expression
+  never become leaves.
+- **CONVENTION-LADEN:** `false` (the convention claim attaches to the measure — R25).
+- **is_tier:** `no-tier:unadjudicated` · **should_be_tier:** `tier3-emergent` ·
+  **basis:** `physical-picture-expectation` · **delta:** YES.
+- **⚑ Substrate conflict carried (same as R03's):** `parameter_register.md:302` labels R35 `DERIVED`;
+  `:357` labels it "DERIVED-in-form but un-executed". Cross-referenced to the R03/R04/R05 conflict
+  entries; ⛔ not counted twice in the conflict set.
+- **LIVE.**
+
+### R27 — the `K₂` density integral `K₂ = ∫ (T_w β₂'² + K_η β₂² + λ·T_Ω β₂²) dV` (route 2)
+
+- **Occurrences (2):** `QID:K2_density_integral_premise@PY#340` (terms `PY:337-339`),
+  `QID:K2_density_integral_premise@WL#236` (terms `WL:233-235`).
+- All fields as **R26**, witness `RES:016:K2-FORM`, `premise-dependence`.
+- ⭐ Recorded on the row: this expression is the **only** statement in either engine of *where the K₂
+  form comes from*, and it is consumed by nothing but the dimension walk — which is precisely the H8
+  finding (`…ledger_stage016_l2_so3_covariance.md:259-270`) that dropping `λ_m` from the angular term
+  leaves the audit green.
+- **is_tier:** `no-tier:unadjudicated` · **should_be_tier:** `tier3-emergent` ·
+  **basis:** `physical-picture-expectation` · **delta:** YES · **LIVE.**
+
+### R28 — the frozen-radial-calibration premise (route 2)
+
+- **Occurrences (2):** `QID:frozen_radial_calibration_premise@PY#828`,
+  `QID:frozen_radial_calibration_premise@WL#639`.
+  Statement: "angular structure is earned; **radial profile/scalars are frozen calibration inputs**, so
+  the joint is CALIBRATED not PASS."
+- **Witness:** both results, `premise-dependence` — it is the scope the result set carries with
+  `RES:016:K2-FORM` (`REPORTED_RESULTS.md:96-99`, quoting the stage's §3 at
+  `…ledger_stage016_l2_so3_covariance.md:311-314`).
+- **Route-2 bounds:** (i) depended on by `RES:016:K2-FORM`; (ii) not derived elsewhere — it is a status
+  premise, and the register records the *route out of it* as PENDING, not as executed.
+- **Axis A:** `A-REDUCIBLE-UNDERIVED`. §9 — **named route**: R36, recorded at
+  `parameter_register.md:303`: "a Gate-1 `R0`-support-equation derivation of the ℓ=2 frozen calibration
+  `{β₂(w), T_Ω}` from the straight-reference throat `R0(w)` … `PENDING`". **Executable within this
+  framework:** the same locus scopes R36 explicitly to "the ℓ=2 support-equation level (the frozen wall
+  profile + radial/support scalars, **not the nonlinear throat**)", and the Gate-1 `R0` machinery exists
+  and is cited as consumed by this stage (`…ledger_stage016_l2_so3_covariance.md:326`).
+- **Axis B:** `B-POSTULATED` — asserted as a premise; ⛔ no code locus is owed (§3.2). §9 evidence
+  (where the model posits it): `PY:828`, `WL:639`, `…ledger_stage016_l2_so3_covariance.md:311-314`.
+- **Axis C:** §3.3.1(4) — the artifact itself declares it ⇒ leaf `C-SELF` ⇒ `PHYSICS-FED = false`.
+- **CONVENTION-LADEN:** `false` (not a candidate).
+- **is_tier:** `tier1-debt` · **should_be_tier:** `tier3-emergent` · **basis:** `named-route`
+  (R36, `parameter_register.md:303`) · **delta:** YES.
+- ⛔ In **none** of the three §4 near-misses (§4: a premise is not a derivation that fell short).
+- ⚠ Gap **S5**: the binding site is a `print` / `Print`. §7.2 does not say whether a prose emission that
+  states a model premise is a binding site; it was recorded as one.
+- **LIVE.**
 
 ---
 
-### 3.15 `QID:M2` — the ℓ=2 reduced mass
+## 3. THE REQUIRED OUTPUT SET (§5.8) — stage016, both engines
 
-#### `QID:M2@scripts/…_sympy_audit.py#507`
-- **binding site** — `:507`, `m2_core = Mtilde`.
-- **reachability witness** — `RES:016:K2-FORM`, **hop 0** (the result's `M₂ = M̃` half).
-- **axis A** — `A-REDUCIBLE-UNDERIVED`. Named route: `M₂ = ∫μ_η β₂² dV` (note `:76-78`;
-  `parameter_register.md:185`, `:302` R35). Not executed (H1, note `:210-213`).
-- **axis B** — `B-DECLARED-LITERAL` (a typed identification with the free symbol `Mtilde`).
-- **axis C** — closure `{C-FREE@:219}`; `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated` (alt. `tier1-debt`).
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `named-route` / **DELTA**.
-- **LIVE**.
-
-#### `QID:M2@mathematica/…_audit.wl#228`
-- **binding site** — `:228`, `m2Core = Mtilde`.
-- **reachability witness** — `RES:016:K2-FORM`, hop 0.
-- **axis A** — `A-REDUCIBLE-UNDERIVED`, same route/recording loci.
-- **axis B** — `B-DECLARED-LITERAL`.
-- **axis C** — closure `{C-FREE@:21}`; `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated` (alt. `tier1-debt`).
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `named-route` / **DELTA**.
-- **LIVE**.
-
----
-
-### 3.16 `QID:K2-TOmegaTilde-coefficient` — the coefficient extracted back out of `K₂`
-
-#### `QID:K2-TOmegaTilde-coefficient@scripts/…_sympy_audit.py#500`
-- **binding site** — `:500`, `k2_coeff = {name: extract_k2_coeff(k2_core[name]) …}`; the extractor
-  `sp.diff(k2_expr, TomegaTilde)` is at `:309`.
-- **reachability witness** — `RES:016:K2-FORM`, hop 0: it is the object of the result's clause "the
-  `T̃_Ω` coefficient **being** the computed eigenvalue", asserted through the residual at `:502` and
-  `:693-697`.
-- **axis A** — `A-REDUCED`. Reduction performed at `:500` (extractor `:309`); reduces to `k2_core`
-  (`:499`) and through it to `λ_m` (`:287`), `Y_m` (`:270-274`), the operator (`:241-242`) and the
-  measure (`:233-235`).
-- **axis B** — `B-EXECUTED`. Code locus `:500`; leaves `:499`, `:220`, `:221`; asserted `:693-697`.
-- **axis C** — closure `{C-FREE@:220, C-FREE@:221, C-SELF@:270-274, C-SELF@:241-242, C-SELF@:233-235}`
-  under the **syntactic** walk (the expression differentiated at `:309` contains `Ktilde` even though the
-  derivative eliminates it — see §5 C6). ⇒ `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined.
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated`.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` /
-  **DELTA** (same basis as §3.9 — it is `λ_m` by construction).
-- **LIVE**. ⚠ See §5 C7: under the *purpose* reading of `SELF-REFERENTIAL` this row is
-  `SELF-REFERENTIAL = true` (the artifact hands `λ` in at `:499` and reads it back out at `:500`), which
-  §3.3 would then bar from `A-REDUCED`. Both readings leave the row outside every tier; the alternative
-  is counted in §4.
-
-#### `QID:K2-TOmegaTilde-coefficient@mathematica/…_audit.wl#220`
-- **binding site** — `:220`, `k2Coeff = AssociationThread[order, extractK2Coeff[k2Core[#]] & /@ order]`;
-  extractor `D[k2Expr, TomegaTilde]` at `:217`.
-- **reachability witness** — `RES:016:K2-FORM`, hop 0; asserted `:481-482`.
-- **axis A** — `A-REDUCED`; reduction at `:220` (extractor `:217`); reduces to `:219` → `:183` →
-  `:166-170`, `:116-118`, `:109-111`.
-- **axis B** — `B-EXECUTED`; code locus `:220`; leaves `:219`, `:21`, `:21`; asserted `:481-482`.
-- **axis C** — closure `{C-FREE@:21, C-FREE@:21, C-SELF@:166-170, C-SELF@:116-118, C-SELF@:109-111}`;
-  `PHYSICS-FED = C-UNRESOLVED`; `SELF-REFERENTIAL` undefined (alt. reading: `true`, §5 C7).
-- **CONVENTION-LADEN** — `false`.
-- **is_tier** — `no-tier:unadjudicated`.
-- **should_be_tier / should_be_basis / delta** — `tier3-emergent` / `physical-picture-expectation` / **DELTA**.
-- **LIVE**.
-
----
-
-## 4. The required output set (§5.8) — all 17, `is_tier` counts only (§6.1)
-
-**Denominators (§10.1):** 38 occurrences / 16 QIDs, after the §6 exclusions. ⛔ No bare fraction is
-quoted below; both levels are carried. The **rank** denominator (§10.1) is not computed here —
-`OPEN-METHOD`.
+⛔ These do not partition anything and ⛔ must not be summed (§5.8).
+⛔ Every count is an `is_tier` count (§6.1); `should_be_tier` appears in **no** numerator or denominator.
 
 | # | output | occurrence level | QID level |
 |---|---|---:|---:|
-| 1 | **TIER 1**, as a range (§5.6) | **[0, 30]** | **[0, 13]** |
-|   | ├ `tier1-debt` | 0 | 0 |
-|   | ├ `tier1-structural` | 0 | 0 |
-|   | └ `tier1-postulate` | 0 | 0 |
-| 2 | **TIER 2 / calibrated** (§10.2.1) | 0 | 0 |
-| 3 | **TIER 3** | 0 | 0 |
-|   | ├ split by axis B (§5.4): executed / unexecuted | 0 / 0 | — |
-|   | └ split by propagation (§5.5): `tier3-calibration-propagated` / `tier3-held-out` | 0 / 0 | — |
-| 4 | **`DERIVED`** (§4) | **0** | 0 |
-| 5 | near-miss **`executed-but-not-physics-fed`** | **8** | 3 |
+| 1 | **TIER 1, as a RANGE** (⛔ never a scalar) | **[10, 39]** | **[5, 20]** |
+| 1a | — `tier1-debt` | 10 | 5 |
+| 1b | — `tier1-structural` | 0 | 0 |
+| 1c | — `tier1-postulate` | 0 | 0 |
+| 2 | **TIER 2 — calibrated** (§10.2.1: counted regardless of any other reduction) | 0 | 0 |
+| 3 | **TIER 3**, split by axis B **and** by calibration-propagation | 0 | 0 |
+| 3a | — by axis B: `B-EXECUTED` / `B-DERIVED-IN-FORM-UNEXECUTED` | 0 / 0 | 0 / 0 |
+| 3b | — `tier3-calibration-propagated` / `tier3-held-out` | 0 / 0 | 0 / 0 |
+| 4 | **`DERIVED`** (`B-EXECUTED ∧ PHYSICS-FED ∧ A-REDUCED`) | **0** | **0** |
+| 5 | near-miss **`executed-but-not-physics-fed`** | 11 | 6 |
 | 6 | near-miss **`derived-in-form-but-unexecuted`** | 0 | 0 |
 | 7 | near-miss **`physics-fed-but-declared-literal`** | 0 | 0 |
-| 8 | **`unclassified-nonfed`** | **8** | 3 |
-| 9 | **convention** bucket | 0 | 0 |
-| 10 | **`unadjudicated`** | **30** | 13 |
-| 11 | **`convention-unadjudicated`** | **10** | 5 |
-| 12 | **`self-referential`** | **0** | 0 |
-| 13 | **conflict set** (§10.3) | — | **0** |
-| 14 | **stage043 delta**, both directions | see §7 | see §7 |
-| 15 | **out-of-scope list**, each row with its reason | see §6 | — |
-| 16 | **reached-by-no-reported-result** | see §6 | — |
-| 17 | **reported-result set** with loci | §1 (2 results) | — |
+| 8 | **`unclassified-nonfed`** | 13 | 6 |
+| 9 | **convention** bucket (flag `true`) | 0 | 0 |
+| 10 | **`unadjudicated`** | 29 | 15 |
+| 11 | **`convention-unadjudicated`** | 12 | 6 |
+| 12 | **`self-referential`** | 0 | 0 |
+| 13 | **conflict set** (all intra-occurrence) | 6 | 3 |
+| 14 | **stage043 delta** — see §5 | — | — |
+| 15 | **out-of-scope list** — see §4 | 197 objects | — |
+| 16 | **`reached-by-no-reported-result`** | 136 objects | — |
+| 17 | **reported-result set** — `REPORTED_RESULTS.md:64-106`, 2 results with loci | 2 | — |
+| 18 | **`unvalued-in-universe`** (Route C; QID-level only) | 0 by construction | 0 |
+| 19 | **`C-PEER` populations, reported SEPARATELY** — `peer-cited-in-artifact` / `peer-cited-in-stage-note` | **0 / 0** | 0 / 0 |
+| 20 | **`no-tier:independent-variable`** | 4 | 2 |
 
-⛔ Do not sum this table (§5.8): buckets 5-7 overlap the tiers, and 8/10 are disjoint here only by
-accident of this stage's distribution.
+**Occurrence totals check:** `tier1-debt` 10 + `unadjudicated` 29 + `unclassified-nonfed` 13 +
+`independent-variable` 4 = **56** ✓ (the four `is_tier` values are disjoint; buckets 5, 11, 13 overlap
+them by construction).
 
-**Tier-1 lower bound = 0.** Every in-universe row lands outside the tiers, so no tier-1 assignment is
-*established from evidence* and the whole tier-1 account sits in the upper bound. **The span is the
-entire denominator.**
+**Fractions (⛔ never bare — both denominators, §10.1):**
+`DERIVED` = **0 / 56 occurrences** and **0 / 27 QIDs**.
+⚠ The rank denominator of §10.1 is `OPEN-METHOD` and is not computed here.
 
-**Alternative counts, from the two flagged schema conflicts** (§5 C1, C7) — reported so neither is
-invisible, and ⛔ neither replaces the primary:
+**Why tier 3 and `DERIVED` are empty, stated as a mechanism not a verdict:** every closure in this stage
+terminates in `C-SELF` literals or `C-FREE` symbols. The one candidate physics leaf — the `−Δ_S²`
+operator — contributes none under §3.3.1(1) because no locus of a model equation is cited (R13).
 
-- **C1 alternative** (axis A governs the projection where axis A is evidenced; `C-UNRESOLVED` guards
-  tier 3 only): `tier1-debt` = **16** occurrences / **6** QIDs, `unadjudicated` = 14 / 7,
-  TIER 1 = [16, 30] occurrences / [6, 13] QIDs. Tier 3, tier 2 and `DERIVED` are **0** in both readings.
-- **C7 alternative** (`SELF-REFERENTIAL` read by purpose rather than by letter): `self-referential` = 2
-  occurrences / 1 QID; those two rows lose `A-REDUCED` and are already `no-tier:unadjudicated`, so no
-  tier count moves.
+**Tier-1 range, both levels, per §5.6:**
+- occurrence level: lower `10` = the evidenced `tier1-debt` rows — R03, R04, R05 (the three radial
+  scalars, 2 engines each = 6) + R20 (2) + R28 (2); upper `39` = `10 + 29 unadjudicated`.
+- QID level with §10.2.2 rule 4 applied: lower `5` = {M̃, K̃, T̃_Ω, K₂-assembly-form,
+  frozen-radial-premise}; upper `20` = `5 + 15` QIDs that have **no** tiered occurrence and ≥1
+  `no-tier:unadjudicated` occurrence. `QID:l2_channel_set` widens the span once (rule 4/5), not twice.
 
-**Per-QID aggregation (§10.2):** no QID has a tiered occurrence, so §10.2.2 rule 2 does not fire —
-`mixed-adjudication` = 0. All 16 QIDs are wholly tier-less; each QID's occurrences agree **in kind**
-across the two engines, so the conflict set is **empty**. ⭐ That agreement is itself a reading: the two
-engines are transliterations of one another, so cross-engine agreement carries no independent
-provenance information (the stage's own §1.5b/H9 says the same about its dimension records).
-
----
-
-## 5. Where the schema could not decide — blocked rows and missing rules
-
-⭐ Every item below was hit while classifying. None was resolved by picking the better-reading answer.
-
-**C1 — ⛔ BLOCKING for 22 of 38 rows: `C-UNRESOLVED` overrides an evidenced tier-1 axis-A value, and the
-schema says both that it does and that it does not.**
-- §3.3 ("`C-UNRESOLVED` rows go to `unadjudicated` (§5.3)") and §5.7 (`no-tier:unadjudicated` ←
-  "`PHYSICS-FED = C-UNRESOLVED`") say the tier is `no-tier:unadjudicated`.
-- §5's own framing says the tiers are "a projection of axis A (**with one stated axis-C guard on tier 3**,
-  §5.1)", and §5/§5.7 say `tier1-debt` ← `A-REDUCIBLE-UNDERIVED`. §9.0 adds that an axis-C failure
-  "does **NOT** touch axis A".
-- **Missing rule:** *precedence between an evidenced tier-1 axis-A value and a `C-UNRESOLVED` closure.*
-  The stakes are the whole tier-1 **lower** bound: 16 occurrences / 6 QIDs move between [0,·] and [16,·].
-- Rows affected: §3.11-§3.16 (all `M̃`/`K̃`/`T̃_Ω`/`K₂`/`M₂`/coefficient occurrences), 22 rows.
-- Primary reading taken: §3.3 + §5.7 (two explicit rules beat one framing sentence). Alternative counted
-  in §4.
-
-**C2 — axis B has no value for a declared free symbol that carries no value.** `M̃`, `K̃`, `T̃_Ω` are
-declared (PY `:219-221`, WL `:21`) and never assigned. `B-DECLARED-LITERAL` asserts a typed value that
-does not exist; `B-EXECUTED` and `B-DERIVED-IN-FORM-UNEXECUTED` assert a computation this artifact does
-not contain; `B-ASSERTED-TARGET` is wrong (nothing is checked against them here). Recorded
-`B-UNADJUDICATED` under §9.0 on 6 rows, which mislabels a **positively established absence** as a
-failure to establish. **Missing value:** something like `B-NO-VALUE-DECLARED`.
-
-**C3 — a leaf can be both `C-SELF` and `C-MATH`, and §3.3 gives no precedence.** The S² measure
-(PY `:233-235`) and the `−Δ_S²` operator (PY `:241-242`) are literals declared in the artifact **and**
-pure-mathematical objects. Rule adopted and applied uniformly: **tag `C-SELF` where the artifact declares
-it literally, and record the `C-MATH` reading.** ⚠ Not outcome-bearing here — neither tag confers
-`PHYSICS-FED` — but it would be if a census ever wanted to separate "the artifact made this up" from
-"this is mathematics".
-
-**C4 — §3.3's closure walk assumes an expression; a reported result stated as a prose claim has clauses,
-and the schema does not say which binding sites its clauses reach.** `RES:016:L2-IRREP` claims a
-"**5-dimensional** SO(3) irrep". `λ_m`'s value does not depend on `Gram`, but the 5-dimensionality
-clause does. Decision taken: `Gram` is **in** universe as an input to that clause (§3.10), flagged.
-Excluding it would remove 2 rows (both `no-tier:unclassified-nonfed`) and would not move any tier count.
-
-**C5 — §7.1.1 defines universe membership for *quantities*; §7.2 defines occurrences for *binding
-sites*; nothing says whether a binding site of an in-universe quantity that is itself in no closure is
-in universe.** PY `:508` / WL `:229` (`k2_ref`) bind `K₂` but feed only the out-of-universe dimensional
-block. Decision: **in** (a quantity's binding sites are its occurrences), which is the direction that
-keeps rows in the account. Affects 2 rows.
-
-**C6 — the closure walk has no rule for inputs the producing operation eliminates.** `∂(K̃ + λT̃_Ω)/∂T̃_Ω`
-(PY `:500`) syntactically consumes `K̃` — a `C-FREE` leaf — while the value depends only on `λ`. The
-syntactic walk gives `C-UNRESOLVED`; a value-dependence walk gives `PHYSICS-FED = false`. Primary
-reading: syntactic (§3.3 says "walk back **the expression** that produced its value"). Both leave the row
-outside every tier; under the value-dependence reading the 2 rows move from `unadjudicated` to
-`unclassified-nonfed`.
-
-**C7 — `SELF-REFERENTIAL` is defined as reaching *the occurrence's own declaration*, which misses a
-round trip through a different occurrence.** PY `:499` puts `λ` into `K₂`; PY `:500` differentiates it
-back out; the pair is asserted at `:502`. By the letter, `SELF-REFERENTIAL = false`; by §3.3's stated
-purpose ("the closure returned the value it was handed") it is `true`. The stage's own de-count note
-(`:68-71`) treats exactly this shape as vacuous when done one step more directly. Letter taken;
-alternative counted in §4.
-
-**C8 — one occurrence carrying two competing substrate claims has no adjudication rule.** For `M̃`/`K̃`/`T̃_Ω`
-the note says "frozen calibration inputs" (`:311-314`) and stage043 carries
-`frozen_calibration_input=True` (`:390`), while `parameter_register.md:185` classes the same quantities
-`DERIVED` with route R35. §10.3's conflict machinery is defined over a QID's **occurrences**, not over
-two claims about **one** occurrence. Resolved here by §9 evidence (no benchmark ⇒ `A-CALIBRATED` fails;
-route recorded ⇒ `A-REDUCIBLE-UNDERIVED` holds) rather than by a schema rule; recorded so it is visible.
-
-**⛔ Rows blocked outright: 0.** Every row carries a value on all three axes, the flag, both tiers and a
-basis. C1 and C7 are recorded as *contested* `is_tier` values with both counts reported, not as blanks.
-
-### Attribution defects found by opening the loci (§9.1 rule 2)
-
-**D4 — two documents point at the wrong lines of the PY engine, both by exactly 41 lines.**
-- `notes/parameter_register.md:182`, `:183`, `:185` each attribute the stage016 dimension declarations to
-  `scripts/ledger_stage016_l2_so3_covariance_sympy_audit.py:355-366`. **Opened:** `:355-366` is the
-  `ok = bool(…)` conjunction and the head of `dimension_eval`'s return dict. The declarations are in
-  `make_dim_rules` at `:312-326` (the twelve entries at `:314-325`) — exactly **41 lines earlier**.
-- The stage note repeats the same stale range at `:194` (`sympy:355-366` ↔ `.wl:239-250`) and at `:212`
-  (`sympy:364` for the `M̃`/`K̃`/`T̃_Ω` declarations; `:364` is `"k2_terms": {`, and `364 − 41 = 323` is
-  `Mtilde: EXPECTED_M`). The **`.wl` half of both citations is correct** (`makeDimRules` entries at
-  `.wl:239-250`), and the note's `sympy:723` is correct.
-- ⇒ The values agree; the pointers do not — the same defect shape §9.1 was written from, at a different
-  pair of files. ⛔ Not repaired here (this census does not edit substrate); recorded with both loci.
+**⚠ Reporting obligation discharged, not interpreted:** the span is wide at both levels (29 of 56
+occurrences; 15 of 27 QIDs). Its causes are itemised in §6.
 
 ---
 
-## 6. Out of scope (§7.3), with reasons and counts
+## 4. OUT-OF-SCOPE LIST (§7.3, §5.8 output 15) — 197 objects, each with its reason
 
-⛔ Nothing was silently dropped. Exclusions split into **individually enumerated** rows and
-**class-level** records; the second kind is marked as such rather than being presented as a row count.
+Counted as *listed objects* (§0 rule 3). ⛔ Nothing is silently dropped; every group carries its loci.
 
-### 6.1 Individually enumerated — reason `reached-by-no-reported-result` (§5.8 output 16)
+### 4.1 `PY` — 101 objects
 
-**64 binding sites.** Neither reported result's closure reaches any of them: the dimensional block
-**consumes** `K₂` and `M₂` (PY `:348-349`, WL `:265-266`) and produces nothing either result's value
-depends on.
+| loci | objects | reason |
+|---|---:|---|
+| `PY:27-28` (`PASS_COUNT`, `FAIL_COUNT`) | 2 | test scaffolding |
+| `PY:30-34` (five verdict-token strings) | 5 | display and formatting constants |
+| `PY:158-175` (`DIMENSION_BASIS`, `Dim`, `ZERO_DIM`, `EXPECTED_M/K/RATIO`, `DIMENSIONLESS_FUNCTIONS`) | 7 | `reached-by-no-reported-result` |
+| `PY:223-227` (`a_dim, dw_dim, dOmega_dim, beta2_dim, beta2_prime_dim, mu_eta_density, T_w_density, K_eta_density, T_Omega_density`) | 9 | `reached-by-no-reported-result` ⭐ see gap **S8** |
+| `PY:246` (`expr_hash`) | 1 | test scaffolding |
+| `PY:250` (`scoped_verdict`) | 1 | `reached-by-no-reported-result` (gate machinery) |
+| `PY:295`, `PY:300` (`gram_is_identity`, `residuals_zero`) | 2 | `reached-by-no-reported-result` (gate flags) ⚠ see gap **S9** |
+| `PY:308` (`extract_k2_coeff` rule) | 1 | `reached-by-no-reported-result` (its *result* is in-universe at `PY:500`) |
+| `PY:314-325` (the twelve `dim_rules.*` literals) | 12 | `reached-by-no-reported-result` (dimension exponent vectors, §7.1.1) |
+| `PY:342-350` (the nine walked dimensions) | 9 | `reached-by-no-reported-result` (dimension exponent vectors) |
+| `PY:352` (`ok`) | 1 | `reached-by-no-reported-result` (gate flag) |
+| `PY:406-422` (`corrupt_rules_for` + the four corrupt maps) | 1 | controls and deliberate negatives |
+| `PY:427`, `:431`, `:441` (baseline, `density_corruptions`, `FAIL_DIMENSIONAL_probe`) | 3 | controls and deliberate negatives |
+| `PY:466-488` (the 21 emitted `dimension_records`) | 21 | `reached-by-no-reported-result` (dimension exponent vectors) |
+| `PY:504` (`k2_coeff_residuals_zero`) | 1 | `reached-by-no-reported-result` (gate flag) |
+| `PY:506`, `PY:508` (`lambda_ref`, `k2_ref`) | 2 | `reached-by-no-reported-result` ⭐ see gap **S7** — second binding sites of in-universe QIDs, consumed only by the dimension block |
+| `PY:509` (`dimensional`) | 1 | `reached-by-no-reported-result` |
+| `PY:511-512` (`input_hashes`, `distinct_hashes`) | 2 | test scaffolding (tautology guard) |
+| `PY:513-514` (`self_overlaps`, `tautology_clear`) | 2 | `reached-by-no-reported-result` (duplicates the in-universe Gram diagonal; feeds only the gate) |
+| `PY:516-627` (probe builders, four probe instances, `probes`, the `able_to_fail` block) | 15 | controls and deliberate negatives |
+| `PY:628`, `:634`, `:640` (`covariant_ok`, `gates`, `verdict`) | 3 | `reached-by-no-reported-result` (gate flags) |
+| `PY:665-884` (the assertion + emission block) | 0 new value bindings | 82 recorded checks and ~60 prints; the only occurrence admitted from it is `PY:679` (R17). The rest assert out-of-universe quantities (dimension records, probe verdicts, gate flags) or re-assert already-counted values. |
 
-| set | PY loci | WL loci | count |
-|---|---|---|---:|
-| the 12 `dim_rules.*` exponent-triple declarations | `:314-325` | `:239-250` | 24 |
-| the 9 `baseline_dims.*` walked results | `:342-350` (emitted `:478-488`) | `:259-267` (emitted `:509-517`) | 18 |
-| dimension helper/target constants (`ZERO_DIM`, `EXPECTED_M`, `EXPECTED_K`, `EXPECTED_RATIO`, the inline `L³` target) | `:160-163`, `:353` | `:23-26`, `:270` | 10 |
-| the 6 dimension-walk integrand expressions (`measure`, `m2_integral`, the 3 `K₂` terms, `k2_integral`) | `:335-340` | `:231-236` | 12 |
+### 4.2 `WL` — 96 objects
 
-⭐ Those first two rows are **21 records per engine** — the row universe of the stage's `21 of 21 CORRECT`
-dimensional verdict. **20 of the 21 are out of this census's universe**; the one overlap is not a record
-at all but the quantities `M̃`/`K̃`/`T̃_Ω`/`K₂`/`M₂` that the records *describe*, which enter this census
-through `RES:016:K2-FORM` and not through the dimension machinery. ⇒ The two universes are near-disjoint
-by construction, which is why no resemblance between the two distributions should be expected (§11).
+| loci | objects | reason |
+|---|---:|---|
+| `WL:12-13` (`passCount`, `failCount`) | 2 | test scaffolding |
+| `WL:15-19` (five verdict tokens) | 5 | display and formatting constants |
+| `WL:23-26` (`zeroDim`, `expectedM/K/Ratio`) | 4 | `reached-by-no-reported-result` |
+| `WL:28` (`failureMessage`) | 1 | test scaffolding |
+| `WL:30-105` (raise/heading/clean/fmt/assert/expect*/residual/verdict helpers) | 16 | `reached-by-no-reported-result` (assert + verdict machinery) |
+| `WL:121-162` (`dimensionAxisSlots` … `dimOf`) | 6 | `reached-by-no-reported-result` (dimension machinery) |
+| `WL:172` (`ys`) | 1 | `reached-by-no-reported-result` (a re-listing of the already-counted harmonics) |
+| `WL:212`, `WL:214` (`gramIsIdentity`, `residualsZero`) | 2 | `reached-by-no-reported-result` (gate flags) |
+| `WL:217` (`extractK2Coeff`) | 1 | `reached-by-no-reported-result` |
+| `WL:225` (`k2CoeffResidualsZero`) | 1 | `reached-by-no-reported-result` (gate flag) |
+| `WL:227`, `WL:229` (`lambdaRef`, `k2Ref`) | 2 | `reached-by-no-reported-result` ⭐ gap **S7** |
+| `WL:238-251` (the twelve `makeDimRules` entries) | 12 | `reached-by-no-reported-result` (dimension exponent vectors) |
+| `WL:253-298` (nine walked dimensions + `Ok`) | 10 | `reached-by-no-reported-result` |
+| `WL:300` (`corruptRulesFor`) | 1 | controls and deliberate negatives |
+| `WL:315`, `:316`, `:322` (`dimRules`, `baselineDim`, `dimensionalOk`) | 3 | `reached-by-no-reported-result` |
+| `WL:318`, `:323` (`densityCorruptions`, `dimProbe`) | 2 | controls and deliberate negatives |
+| `WL:342`, `:343`, `:344`, `:346` (hash guard) | 4 | test scaffolding |
+| `WL:345` (`selfOverlaps`) | 1 | `reached-by-no-reported-result` |
+| `WL:348-439` (probe builders, instances, `probes`, expected-verdict maps, able-to-fail block) | 17 | controls and deliberate negatives |
+| `WL:441`, `:442`, `:448` (`covariantOk`, `gateBooleans`, `verdict`) | 3 | `reached-by-no-reported-result` (gate flags) |
+| `WL:450-451` (`matrixSquaredResidual`, `symbolNames`) | 2 | `reached-by-no-reported-result` |
+| `WL:455-702` (run-functions, arity self-check, tallies) | 0 new value bindings | 91 recorded checks and the print block; only `WL:466` (R17) is admitted. `WL:614-628`'s arity self-check is test scaffolding. |
 
-### 6.2 Recorded at class level, not per binding site
+### 4.3 Out-of-scope totals by reason
 
-Each class carries its §7.3 reason and its loci; ⛔ the individual binding sites inside them were **not**
-enumerated, and no count is asserted for them beyond "order 10² across the two engines".
+| reason | objects |
+|---|---:|
+| `reached-by-no-reported-result` | **136** |
+| controls and deliberate negatives | 39 |
+| test scaffolding | 12 |
+| display and formatting constants | 10 |
+| `retired-or-excluded` | 0 |
+| **`paused-or-pending` (provisional sub-count, re-checked every pass)** | **0** |
+| `derived-proposition-not-constitutive` | 0 |
+| **total** | **197** |
 
-| class | §7.3 reason | loci |
+⛔ **The 136 is a finding, not housekeeping** (§7.1.1): most of both engines — the entire dimension
+block, the whole probe battery, every gate flag — lies outside the closure of the stage's own two
+reported results.
+
+---
+
+## 5. §8.4 reconciliation with stage043 — partial, and declared partial
+
+⛔ Full reconciliation of all 152 `REG:` IDs is corpus-level and is **not** attempted here. What this
+stage can settle, with loci opened:
+
+| census QID | `REG:` ID(s) | note |
 |---|---|---|
-| the three able-to-fail probes, their self-ablations, the 4 corrupted rule maps and the aggregate battery | controls and deliberate negatives | PY `:406-422`, `:431-458`, `:516-627`; WL `:300-313`, `:318-340`, `:348-439` |
-| the per-tooth ablations on copies | controls and deliberate negatives | PY `:770-816`; WL `:576-612` |
-| assertion residuals and hash guards (`residuals`, `k2_coeff_residuals`, `self_overlaps`, `input_hashes`) | test scaffolding — outputs of checks, never inputs to a result | PY `:290`, `:502`, `:511`, `:513`; WL `:187-193`, `:221-224`, `:343`, `:345` |
-| gate booleans and verdict tokens (`gram_is_identity`, `lambda_all_six`, `residuals_zero`, `covariant_ok`, `gates`, `verdict`, `ISOTROPY_CALIBRATED`…) | gate pass/fail flags (§7.1.1 exclusion list) | PY `:30-34`, `:295-300`, `:504`, `:512-514`, `:628-640`; WL `:15-19`, `:198-203`, `:225`, `:344-346`, `:441-448` |
-| run tallies and print/label strings | display and formatting constants; row counts | PY `:27-28`, `:819-867`, `:894-906`; WL `:12-13`, `:630-669`, `:694-702` |
-| the WL arity self-check's transient re-run of `evalDimensional` | test scaffolding (and a duplicate of an already out-of-scope object) | WL `:614-628` |
+| `QID:M_tilde` | `REG:C1:Mtilde` (`…stage043…py:371`, `CAT_OPEN`) **and** `REG:derived:Mtilde_definition` (`:298`, `CAT_DERIVED`) | one quantity, **two** IDs in two categories → conflict entry C1 |
+| `QID:K_tilde` | `REG:C1:Ktilde` (`:371`) **and** `REG:derived:Ktilde_definition` (`:299`) | same shape → C2 |
+| `QID:T_Omega_tilde` | `REG:C1:Ttilde_Omega` (`:371`) **and** `REG:derived:Ttilde_definition` (`:299`) | same shape → C3 |
+| `QID:lambda_m` | `REG:derived:lambda_m_SO3` (`:301`, `CAT_DERIVED`) | substrate label recorded, ⛔ not inherited (§2) |
+| the other **23** census QIDs | none | **census extension** — §5.8 output 14, direction 1 |
 
-**RETIRED rows (§7.4): 0.** No occurrence in either engine is marked retired, and neither engine carries
-a retired-approach value. The stage's own de-counted construct — `k_coeff_equal` (note `:68-71`) —
-**has no binding in either engine**: verified by grep, the name survives only inside print strings
-(PY `:689`, `:816`, `:839`; WL `:478`, `:611`, `:650`), so it produces no row. ⇒ The note's claim that
-it "survives only as a documentation string, not a counted check" (`:71`) is **confirmed by
-measurement**, not inherited.
+Directions 2 and 3 of output 14 (`REG:` IDs reconciled out-of-scope; Route-C `unvalued-in-universe`)
+are **not** answerable from one stage and are left open; ⛔ recorded as owed, not as zero.
+For this stage's QIDs, Route C is empty: `M̃/K̃/T̃_Ω` are valued at
+`scripts/ledger_stage017_grouped_p2_lane_isotropy_sympy_audit.py:41-43` and
+`mathematica/ledger_stage017_grouped_p2_lane_isotropy_mathematica_audit.wl:273-275`.
 
 ---
 
-## 7. Reconciliation with stage043 (§8.4) — the stage016 slice only
+## 6. CONFLICT SET (§10.3) — 6 occurrences / 3 QIDs, all **intra-occurrence**
 
-⛔ The 152-ID manifest was **not** re-derived; it was read at
-`scripts/ledger_stage043_irreducible_count_range_sympy_audit.py`.
+| id | QID | occurrences | the two (or more) incompatible substrate claims, with loci |
+|---|---|---|---|
+| C1 | `QID:M_tilde` | `@PY#219`, `@WL#21` | **`DERIVED`** at `notes/parameter_register.md:184` and `:302` (R35) · **frozen calibration input / moment-integral never evaluated** at `notes/parameter_register.md:353` (R87), `:357` (R91), `scripts/ledger_stage043_irreducible_count_range_sympy_audit.py:384`,`:390`, and this stage's own `notes/stages/ledger_stage016_l2_so3_covariance.md:311-314` / `PY:828` / `WL:639` |
+| C2 | `QID:K_tilde` | `@PY#220`, `@WL#21` | as C1 |
+| C3 | `QID:T_Omega_tilde` | `@PY#221`, `@WL#21` | as C1 |
 
-**Direction 1 — `REG:` IDs mapping to ≥ 1 census occurrence: 7.**
+⛔ Not resolved by picking a claim (§10.3); ⛔ no axis was demoted on account of the substrate's
+disagreement. R26/R27 carry the same disagreement about the R35 *relation* and are cross-referenced,
+⛔ not counted again.
 
-| `REG:` ID | stage043 `ratified_category` (locus) | census QID |
-|---|---|---|
-| `REG:C1:Mtilde` | `extension-convention-open`, `source_status=DERIVED-IN-FORM-UNEXECUTED`, `moment_integral_executed=False` (`:382-393`) | `QID:M-tilde` |
-| `REG:C1:Ktilde` | same (`:382-393`) | `QID:K-tilde` |
-| `REG:C1:Ttilde_Omega` | same (`:382-393`) | `QID:T-Omega-tilde` |
-| `REG:derived:Mtilde_definition` | `structural-no-knob` (`:288-311`) | `QID:M-tilde` |
-| `REG:derived:Ktilde_definition` | `structural-no-knob` (`:288-311`) | `QID:K-tilde` |
-| `REG:derived:Ttilde_definition` | `structural-no-knob` (`:288-311`) | `QID:T-Omega-tilde` |
-| `REG:derived:lambda_m_SO3` | `structural-no-knob` (`:288-311`) | `QID:lambda-m` |
-
-⚠ **Two `REG:` IDs map to one census QID** in three cases (the C1 row and the definition row are the same
-quantity under two register roles). §8.4 does not say whether that is a defect; recorded, not resolved.
-⚠ `REG:derived:lambda_m_SO3` names edge **R34**, whose text (`parameter_register.md:301`) bundles
-`Gram=I₅`, `λ_m=6` **and** the `K₂` form under one ID. `QID:Gram-l2` and `QID:K2` are therefore
-**candidate** mappings to that same ID — ⛔ recorded as an **open identity question**, not as a merge
-(§8.3: the builder does not adjudicate merges).
-
-**Direction 2 — census QIDs mapping to no `REG:` ID: 12 of 16** — `QID:Y20`, `QID:Y21c`, `QID:Y21s`,
-`QID:Y22c`, `QID:Y22s`, `QID:S2-measure`, `QID:neg-Delta-S2`, `QID:neg-Delta-S2-applied`, `QID:K2`,
-`QID:M2`, `QID:K2-TOmegaTilde-coefficient`, `QID:Gram-l2`. This is the census's genuine extension for
-this stage: **the register has no entry for the basis, the measure, the operator, or the assembled
-`K₂`/`M₂` themselves.**
-
-**Not reconciled: 145 of 152 `REG:` IDs.** They belong to stages outside this pilot and were ⛔ **not**
-recorded as out-of-scope, because §8.4's option 2 requires a reason referred to §7.1.1 or §7.3, and that
-reason is not decidable from stage016 (§7.1.1: membership needs one corpus-wide pass). **This is an open
-obligation of the census, not a discharged one.**
+**Cross-occurrence conflicts: 0.** The only cross-engine divergence is `QID:l2_channel_set`
+(`no-tier:unclassified-nonfed` in `PY`, `no-tier:unadjudicated` in `WL`), which §10.2.2 rule 5
+explicitly rules **not** a conflict; it is reported in both buckets and flagged `mixed-adjudication`.
 
 ---
 
-## 8. Coverage statement
+## 7. WHERE THE SCHEMA COULD NOT DECIDE — 10 items, none of them silent
 
-**Covered in full, row by row:** the transitive input closure of both stage016 reported physical results,
-across both engines — **16 quantities, 38 occurrences**, every one carrying all three axes, the flag,
-the closure with leaf tags, `PHYSICS-FED`, `SELF-REFERENTIAL`, `is_tier`, `should_be_tier`,
-`should_be_basis`, `delta`, LIVE/RETIRED, IDs and §9 evidence. **No row was truncated and none is
-blocked.**
+⛔ **Zero rows are blocked**: all 56 carry all three axes, the flag, both tiers and their evidence. What
+follows are rules the schema does not supply; each records the reading adopted and its sensitivity.
 
-**Selection rule where I did not enumerate:** §6.2's six exclusion classes are recorded **as classes with
-their loci and reasons**, not as individual out-of-scope rows. The rule is: *a binding site excluded by a
-§7.3 class other than `reached-by-no-reported-result` is recorded at class level; every
-`reached-by-no-reported-result` exclusion is enumerated individually.* That is why §6.1 lists 64 exact
-loci and §6.2 asserts no count.
+- **S1 — no axis-C leaf tag for a coordinate / bound integration variable.** §3.1 gives axis A
+  `A-INDEPENDENT-VARIABLE`; §3.3's leaf table has no counterpart, and `C-FREE` ("nothing it stands for
+  has been fixed") is substantively wrong for θ, φ. **Adopted:** a bound integration/differentiation
+  variable is **not a leaf** of the closure it is quantified away in; the coordinate's own declaration
+  row takes `C-FREE`. **Sensitivity:** if coordinates were leaves everywhere they appear, all 13
+  `no-tier:unclassified-nonfed` rows become `C-UNRESOLVED` ⇒ `no-tier:unadjudicated`; occurrence
+  TIER 1 goes **[10, 39] → [10, 52]** and near-miss 1 goes **11 → 0**. This single missing rule moves
+  more of this stage's result than any other item here.
+- **S2 — no axis-A value for a quantity fixed by mathematics.** The five harmonics and the channel count
+  are mathematical objects typed in; no route is recorded, no framework property forecloses one, and
+  they are not postulates about the medium ⇒ they fall to `A-UNADJUDICATED` and inflate the tier-1
+  **upper span** with 11 occurrences carrying no physical input. Axis C has `C-MATH`; axis A has no
+  counterpart.
+- **S3 — no rule for an input the producing expression consumes but that does not survive into the
+  value.** `sp.diff(K̃ + λT̃_Ω, T̃_Ω)` annihilates the `C-FREE` leaf K̃. **Adopted:** the letter of §3.3
+  (input closure) ⇒ `C-UNRESOLVED`. **Sensitivity:** 4 occurrences (R22, R23) would move from
+  `no-tier:unadjudicated` to `no-tier:unclassified-nonfed`, narrowing occurrence TIER 1 to `[10, 35]`.
+- **S4 — route 1 says "a named quantity to which the ledger **assigns a value**", but §3.2's
+  `B-DECLARED-UNASSIGNED` and §3.3's `C-FREE` require rows for symbols with no value.** Admission was
+  taken from §7.1.1 (closure membership), which is stated to be the only test. 10 occurrences
+  (θ, φ, M̃, K̃, T̃_Ω across both engines) depend on this reading.
+- **S5 — §7.2 does not say whether a prose `print`/`Print` that states a model premise is a binding
+  site.** Route-2 propositions frequently have no other site. **Adopted:** it is one. 2 occurrences (R28).
+- **S6 — route 1 vs route 2 for a function definition that types an expression *form*** (`build_K2`,
+  `integrate_s2`, `laplacian_s2`): axis B differs (`B-DECLARED-LITERAL` vs `B-POSTULATED`). **Adopted:**
+  `B-DECLARED-LITERAL` where the artifact types an expression, `B-POSTULATED` where it states a premise
+  in prose. 6 occurrences; ⛔ **no §4 bucket changes either way**, since none is `PHYSICS-FED`.
+- **S7 — the universe is occurrence-level by closure, but aggregation (§10.2) is QID-level.** A second
+  binding site of an in-universe QID that the walk does not reach (`PY:506`, `PY:508`, `WL:227`,
+  `WL:229`) leaves the occurrence count with no rule saying so. **Adopted:** out-of-scope,
+  `reached-by-no-reported-result`, recorded. 4 objects.
+- **S8 — §3.3.1(4) terminates a proposition's closure at the positing locus**, so the nine
+  density/measure symbols named inside R26/R27's expressions never become leaves. **Adopted:**
+  terminate. **Sensitivity:** the alternative admits **18** more occurrences (9 per engine:
+  `μ_η, T_w, K_η, T_Ω, β₂, β₂', a, dw, dΩ`), each of which would land in tier 1 or its upper span.
+- **S9 — the fixed result set admits and excludes objects of the same kind asymmetrically.**
+  `REPORTED_RESULTS.md:73` cites `PY:299` (`lambda_all_six`) as a result locus but not its sibling
+  `PY:300` (`residuals_zero`); `:91` does not cite `PY:507` / `WL:228` although the claim states
+  `M₂ = M̃`. ⛔ The result set was **not** amended (§7.1.1). Effect: `PY:300`/`WL:214` are out-of-scope
+  while `PY:299`/`WL:213` are in; `M₂ = M̃` was admitted on the claim's content with the gap recorded.
+- **S10 — §3.4 clause (b) is arguably *satisfiable* for the harmonic normalisation while clause (a) is
+  undocumented.** `λ_m` is a model observable and is invariant under rescaling or SO(3)-rotating the
+  basis, so (b) has a real test; but no transformation group is documented for the occurrence, and §3.4
+  forbids convention-by-intuition ⇒ `UNADJUDICATED`. 10 occurrences whose flag turns on the absence of
+  documentation rather than on the physics. Had the flag been set `true`, those 10 would leave every
+  tier total for `no-tier:convention` — the flattering direction, which §1 forbids taking on an
+  undemonstrated claim.
 
-**Not covered, with counts:**
+---
 
-1. **The stage note as an artifact — 0 of its binding sites censused.** `notes/stages/ledger_stage016_l2_so3_covariance.md`
-   is an artifact under §7.2 and its markdown rows are binding sites; the two engines' rows above
-   therefore under-count every quantity the note also asserts. At minimum the note's `:57-58` (`K₂`/`M₂`),
-   `:76-80` (the density relations) and `:29-35` (the five harmonics) are uncensused binding sites of
-   in-universe quantities — **≥ 8 occurrences not emitted**. Scoped out by B-D4 (the assignment named the
-   two engines).
-2. **145 of 152 stage043 `REG:` IDs unreconciled** (§7) — an open §8.4 obligation.
-3. **`QID_REGISTRY.md` not written.** §8.3 requires one; this pilot mints the 16 QIDs above but does not
-   create the registry file, and no merge is adjudicated (§8.3 reserves that for the physics review leg).
-4. **The rank denominator (§10.1) not computed** — `OPEN-METHOD`, and out of a single stage's reach.
-5. **Cross-stage duplication not resolved.** `REPORTED_RESULTS.md:298-301` records that stage017 rides
-   this covariance; if 017 presents it as *its* result, some rows above may belong to a joint closure.
-   Nothing here presumes an answer.
+## 8. COVERAGE STATEMENT
+
+**Classified:** the **full** binding-site universe of both engines. Every value-binding site in
+`PY` (906 lines) and `WL` (702 lines) was enumerated and assigned exactly one disposition:
+**56 in-universe occurrences** (§2) + **197 out-of-scope objects** (§4) = **253 objects**.
+⛔ Nothing was truncated, and no group was summarised without a count.
+
+**Not covered, with its exact count — the stage note as an artifact.** §7.2 makes a stage note an
+artifact; this assignment scoped the census to the two engines. The note's in-universe binding sites are
+therefore **uncensused, and are enumerated here rather than dropped — 14 occurrences**, all in
+`/var/projects/toy_physics/research/pde_ledger_v2/notes/stages/ledger_stage016_l2_so3_covariance.md`:
+
+1–5. the five harmonics, `:29-35` · 6. the S² measure, `:36` · 7. `Gram = I₅`, `:38` ·
+8. the `−Δ_S²` operator, `:45-47` · 9. `λ_m = 6` (Rayleigh), `:49` · 10. the m-degeneracy, `:52-53` ·
+11. `K₂ = K̃ + λ_m·T̃_Ω`, `:58` · 12. `M₂ = M̃`, `:58` · 13. `M₂ = μ_η β₂² dV`, `:78` ·
+14. `K₂ = (T_w β₂'² + K_η β₂² + λ·T_Ω β₂²) dV`, `:79`.
+
+The note's remaining value-bearing rows are dimension exponent vectors and coverage/enumeration tables
+(`:73-83`, `:85-149`, `:175-207`) — out of universe by the same rule that excludes the engines'
+dimension blocks. ⚠ The note's own citations `sympy:355-366` (`:194`) and `sympy:364` (`:210`) are
+**stale** (the rules are at `PY:314-325`); recorded as an attribution defect on R03.
+
+**Other stages, and cross-stage identity:** out of scope for this pass. ⛔ No merge was adjudicated
+(§8.3) — in particular `T̃_Ω`(016) vs `T_Ω`(023) is left as **two** QIDs and flagged as an open identity
+question, per the stage's own hazard note (`…ledger_stage016_l2_so3_covariance.md:187-192`).

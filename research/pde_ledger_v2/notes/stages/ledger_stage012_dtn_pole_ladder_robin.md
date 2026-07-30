@@ -224,7 +224,7 @@ required by `DIMENSION_REWRITE.md` §4-a.
   `software/stage1_solver/reports/pathA_30_dn_unit_test.md` (`## DtN Derivation` :26–33, `## Pole Ladder` :35–39,
   `## Static Limit` :41–45, `## Round Trip` :47–49, `## Robin Counterfactual` :51–58, `## BC Provenance` :60–64,
   `## Dimensional Check` `tan_argument`/`Z00_prefactor` at :79).
-- Reshape directive + tri-review artifacts: `research/pde_ledger_v2/_scratch/ledger_stage012_*` + `_scratch/adv_stage012/`.
+- Reshape directive + tri-review artifacts — ⛔ **not retained** (they lived in gitignored `_scratch/`; no copy survives, so the names that follow record what existed rather than citing it): `research/pde_ledger_v2/_scratch/ledger_stage012_*` + `_scratch/adv_stage012/`.
   Running-start source map: `research/pde_ledger_v2/notes/stage012_pathA30_dtn_ladder_source_map.md`.
 - Split row: `research/pde_ledger_v2/notes/part2_gravity_atomic_split.md` (id 012). Completes the pathA_30 fold opened
   by stage 011 (the frozen-reduction certificate); together they carry the joint `DN_UNITTEST_BC_DEPENDENT`.

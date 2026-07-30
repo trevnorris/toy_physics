@@ -66,7 +66,8 @@ key off `symbol.name`: `dimension_records()` is a hand-typed dict literal in whi
 string constant written beside an independently written source expression
 (`"sourced_dims.K_eta": SOURCED_DIMS[Keta]`). Name and value are therefore two independent acts of typing,
 which is precisely what makes a silent mis-binding constructible — the class recorded as **U13**, where
-five same-class rebindings produced a byte-identical payload and a green comparator. The prediction's
+five same-class rebindings produced a byte-identical payload and a green comparator (artifact retained:
+`notes/stage023_step_h_evidence/u13_u14_rescued/`). The prediction's
 premise — that a name defect would be *loud* — is wrong for exactly the defect class that matters: had
 the emitter keyed off `symbol.name` as predicted, that class could not exist.
 

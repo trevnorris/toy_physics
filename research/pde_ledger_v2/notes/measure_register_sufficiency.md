@@ -137,8 +137,12 @@ awk 'NR>=123 && NR<=241 && /^\|/' notes/parameter_register.md     # master table
 grep -n 'pending' notes/parameter_register.md                     # 2 live pending dim rows
 for f in scripts/ledger_stage*.py; do grep -cEi '\bdim\b|dimension|Dim\(' "$f"; done  # machinery census
 grep -ni 'dim' mathematica/ledger_stage{015,017,024}_*.wl         # 015/024 = 0; 017 = cited boolean
-python3 _scratch/pass1_dim_survey/measure/{register_rows,coverage}.py    # the two counts
+python3 _scratch/pass1_dim_survey/measure/{register_rows,coverage}.py    # the two counts — ⛔ SCRIPTS NOT RETAINED
 ```
+
+⛔ **The two counting scripts are not retained** — they lived in gitignored
+`_scratch/pass1_dim_survey/measure/` and no copy survives, so that line is a record of what was run, not a
+re-runnable command. The other four commands above are re-runnable as written.
 Per-script inventories came from five read-only agents over the 43 `*_sympy_audit.py` files under the §1 criterion; their raw output
 backs §2–§4. The 226/401 counts are exact under that criterion; the *bucketing* of the 121 misses is a judgement call at the margins
 (±5 between "intermediate" and "renamed knob").

@@ -597,4 +597,4 @@ recomputes the partition-completeness object False and fires.
   teeth `TRUTH_TOTALITY`/`TRUTH_PRECEDENCE`/`LANDING_OWNERSHIP`/`ACTIVE_FLUX_CAVEAT`/`HOOK_LORENTZ` +
   build-global `TARGET_BLINDNESS`/`DUAL_ENGINE_TERMS`/`UNITS_RESTORED`); `docs/model_map.md` §3.5 + §4
   (the sealed landing + the magnetic sign/magnitude inherit the electric R1). Reshape directive + review
-  trail: `research/pde_ledger_v2/_scratch/stage038_reshape_directive.md`.
+  trail: `research/pde_ledger_v2/_scratch/stage038_reshape_directive.md`. ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.

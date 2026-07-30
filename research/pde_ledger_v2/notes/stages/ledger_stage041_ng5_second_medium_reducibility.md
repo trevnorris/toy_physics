@@ -443,4 +443,4 @@ is ASSERTED via `FULL_ORIGIN_LEDGER`/`FULL_ROUTE_EVALUATION_LEDGER`); and the so
   `ANTI_ABSORPTION_NAMES` guard + `POST_D16_DRIFT(7)`);
   `notes/stages/ledger_stage007_shear_surface_g0_freeze.md` (the trio "a Part-VI item, not
   absorbed here"); `docs/model_map.md` §3.6 + §4 (the departure ledger). Reshape directive +
-  review trail: `research/pde_ledger_v2/_scratch/stage041_reshape_directive.md`.
+  review trail: `research/pde_ledger_v2/_scratch/stage041_reshape_directive.md`. ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.

@@ -297,7 +297,9 @@ in the audits, the source is not silently rewritten.
 ## Verification
 
 - **⭐ Decision-16 amendment (2026-07-21):** the `α_aniso` retirement applied per
-  `_scratch/decision16_amendment_directive.md` (directive cleared the Codex→Grok→Codex bookend). Dual-engine after
+  `_scratch/decision16_amendment_directive.md` (directive cleared the Codex→Grok→Codex bookend — ⛔ **the
+  directive is not retained**: it lived in gitignored `_scratch/` and no copy survives, so the bookend is
+  recorded here, not auditable). Dual-engine after
   the amendment: **SymPy 121 PASS / Mathematica 119 PASS**, both exit 0; transcripts regenerated. ⏳ Fresh-agent
   tri-review of the amended scripts + docs is the next gate. The original-build record below is retained (tallies
   110/108 superseded).
@@ -331,4 +333,5 @@ structural argument), `software/stage1_solver/reports/pathA_36_c5_phase_potentia
 (the computed no-go: probe Lagrangian, constraint pair, bracket, tuned locus,
 controls — reshaped as `ledger_stage003`), and the frozen recovery targets
 `research/pde_ledger/paper/stages/stage_243.tex` + `stage_244.tex`. Directive +
-review + remediation artifacts: `_scratch/ledger_stage006_*`.
+review + remediation artifacts — ⛔ **not retained** (they lived in gitignored `_scratch/ledger_stage006_*`;
+no copy survives, so this records what existed rather than citing it).

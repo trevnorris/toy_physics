@@ -1,0 +1,49 @@
+--- research/pde_ledger_v2/scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py	2026-07-29 11:01:05.450501954 -0600
++++ research/pde_ledger_v2/_scratch/stage023_h/fid/expE/ledger_stage023_nullspace_underdetermination_sympy_audit.py	2026-07-28 19:25:36.760508175 -0600
+@@ -542,12 +542,12 @@
+         "sourced_dims.a": SOURCED_DIMS[a],
+         "sourced_dims.c_s": SOURCED_DIMS[c_s],
+         "sourced_dims.omega": SOURCED_DIMS[omega],
+-        "sourced_dims.M0": SOURCED_DIMS[M0],
++        "sourced_dims.M0": SOURCED_DIMS[R0],
+         "sourced_dims.D1": SOURCED_DIMS[D1],
+         "sourced_dims.R0": SOURCED_DIMS[R0],
+         "sourced_dims.R1": SOURCED_DIMS[R1],
+         "sourced_dims.D0": SOURCED_DIMS[D0],
+-        "sourced_dims.K0c": SOURCED_DIMS[K0c],
++        "sourced_dims.K0c": SOURCED_DIMS[Z1ret],
+         "sourced_dims.K_eta": SOURCED_DIMS[Keta],
+         "sourced_dims.T_Omega": SOURCED_DIMS[TOmega],
+         "sourced_dims.Z0_ret": SOURCED_DIMS[Z0ret],
+@@ -555,15 +555,15 @@
+         "sourced_dims.Omega_U": SOURCED_DIMS[OmegaU],
+         "sourced_dims.Omega_W": SOURCED_DIMS[OmegaW],
+         "sourced_dims.R_mix": SOURCED_DIMS[Rmix],
+-        "sourced_dims.g_U": SOURCED_DIMS[gU],
++        "sourced_dims.g_U": SOURCED_DIMS[gW],
+         "sourced_dims.g_W": SOURCED_DIMS[gW],
+-        "sourced_dims.eta_null": SOURCED_DIMS[eta_null],
++        "sourced_dims.eta_null": SOURCED_DIMS[q_free],
+         "sourced_dims.gain0": SOURCED_DIMS[gain0],
+         "sourced_dims.gain1": SOURCED_DIMS[gain1],
+         "sourced_dims.q_free": SOURCED_DIMS[q_free],
+         "computed_dims.A0": computed["A0"],
+         "computed_dims.A1": computed["A1"],
+-        "computed_dims.T0": computed["T0"],
++        "computed_dims.T0": computed["P0_physical"],
+         "computed_dims.T1": computed["T1"],
+         "computed_dims.epsilon0": computed["epsilon0"],
+         "computed_dims.epsilon1": computed["epsilon1"],
+@@ -1085,11 +1085,11 @@
+         **transfer_flags,
+     }
+     run_verdict_seam_and_scope(all_flags)
++    print_verdict_labels()
+     emit_dimension_sidecar(
+         __file__,
+         dimension_records(run_gate(Mutation())["dimension"]),
+     )
+-    print_verdict_labels()
+     return 0
+ 
+ 

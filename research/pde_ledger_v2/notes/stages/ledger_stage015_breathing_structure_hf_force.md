@@ -210,7 +210,7 @@ Stage 014's truncation certificate is a one-line narrative cite (no recomputatio
   `## Static-Dynamic Limit` :75–77; `## Counterfactual Guard` :79–82 shared). SIBLING (cited, not recomputed):
   `## Operator, BCs, Inner Product` / `## Profiles And Projection` / `## Dynamical EOM` / `## Dimensional Check` :3–36, :87–98
   = stage 013; `## Truncation Consistency` :37–58 = stage 014.
-- Reshape directive + review artifacts: `research/pde_ledger_v2/_scratch/ledger_stage015_*` (directive; Codex→Grok→Codex
+- Reshape directive + review artifacts — ⛔ **not retained** (they lived in gitignored `_scratch/`; no copy survives, so the names that follow record what existed rather than citing it): `research/pde_ledger_v2/_scratch/ledger_stage015_*` (directive; Codex→Grok→Codex
   design-review + confirm logs; execute/remediation/re-verify logs; fidelity + adversarial + re-verify prompts). The
   directive design-review used the Codex → Grok → Codex bookend (blueprint §6): the two BLOCKING folds were the det-blind
   off-diagonal sign hole (Codex) and the float-free positivity-certificate requirement (Grok, compute-verified).

@@ -174,7 +174,8 @@ Tool pair: `scripts/midway_knob_audit_codimension_sympy.py` (Gröbner-Krull dim 
 a positive-real-locus Jacobian-corank certificate) + `mathematica/midway_knob_audit_codimension_mathematica.wl`
 (CAD `RegionDimension` over the real semialgebraic region `eqs==0 ∧ vars>0`). Materially independent routes; both
 computed then **asserted** the payload (not typed), agreed on all 14 integers, and **re-ran to exit 0 from repo root
-AND `/tmp`** under `timeout 600` (orchestrator arbiter re-run). Directive: `_scratch/midway_knob_audit_codimension_directive.md`.
+AND `/tmp`** under `timeout 600` (orchestrator arbiter re-run). ⛔ The governing directive is **not retained** — it lived
+in gitignored `_scratch/midway_knob_audit_codimension_directive.md` and no copy survives.
 
 | Block | Case | dim_before | dim_after | Δ | what it certifies |
 |---|---|---:|---:|---:|---|
@@ -206,7 +207,8 @@ AND `/tmp`** under `timeout 600` (orchestrator arbiter re-run). Directive: `_scr
 Two independent read-only reviews (Codex `gpt-5.6-sol` xhigh + Grok-4.5, each SymPy-compute-verifying the DERIVED
 relations). **⭐ Highest-risk axis CLEAN:** R1, R2(×3), R3, R20 (incl. the wall-tension integral `σ_wall=√(2a_Bκ_B)/6`),
 R29, R24, and the stage-024 two-port inverse **all compute-verified to 0** — no genuine algebraic IMPOSED-dressed-as-DERIVED
-shrink. The catches are counting/classification, folded below. Reviews: `_scratch/midway_provenance_{codex,grok}.log`.
+shrink. The catches are counting/classification, folded below. ⛔ The two review logs are **not retained** — they lived
+in gitignored `_scratch/midway_provenance_{codex,grok}.log` and no copy survives; what the reviews found is folded below.
 
 ### Folded (uncontested — both engines, or register-backed)
 - **G0 structural-3 → (c)** [Grok BLOCKING; **−3 by Decision 16**]: `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` originally included

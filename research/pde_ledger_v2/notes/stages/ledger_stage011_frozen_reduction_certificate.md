@@ -191,7 +191,7 @@ starting point, not a proof.
 - Source gate: `software/stage1_solver/tools/pathA_30_dn_unit_test_{sympy.py,.wl}` (011 slice; sources unchanged);
   `software/stage1_solver/reports/pathA_30_dn_unit_test.md` (`## Reduced Operator` :3–15 + `## Reduction Certificate`
   :17–24; `## Dimensional Check` `cs_squared_from_EOS` leg :70–81).
-- Reshape directive + tri-review artifacts: `research/pde_ledger_v2/_scratch/ledger_stage011_*` +
+- Reshape directive + tri-review artifacts — ⛔ **not retained** (they lived in gitignored `_scratch/`; no copy survives, so the names that follow record what existed rather than citing it): `research/pde_ledger_v2/_scratch/ledger_stage011_*` +
   `_scratch/adv_stage011/` + `_scratch/reverify_stage011/`. Running-start source map:
   `research/pde_ledger_v2/notes/stage011_pathA30_frozen_reduction_source_map.md`.
 - Split row: `research/pde_ledger_v2/notes/part2_gravity_atomic_split.md` (id 011). Opens the pathA_30 fold; stage 012

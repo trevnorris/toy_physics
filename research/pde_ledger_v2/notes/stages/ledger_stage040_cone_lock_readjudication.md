@@ -479,4 +479,4 @@ newly-added).
   FINDINGS reshape-REQUIREMENTS (040) block (i)–(v));
   `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md`; `docs/model_map.md` §3.6 + §4 (the departure
   ledger). Reshape directive + review trail:
-  `research/pde_ledger_v2/_scratch/stage040_reshape_directive.md`.
+  `research/pde_ledger_v2/_scratch/stage040_reshape_directive.md`. ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.

@@ -189,7 +189,7 @@ profile, or a non-kernel profile) fails BOTH engines. `c_S` is NOT consumed (mat
   (`## Truncation Consistency` :37–58; `## Counterfactual Guard` :79–82 shared). SIBLING (cited, not recomputed):
   `## Operator, BCs, Inner Product` / `## Profiles And Projection` / `## Dynamical EOM` / `## Dimensional Check` :3–36,
   :87–98 = stage 013; `## Structure` / `## Hellmann-Feynman Force` / `## Static-Dynamic Limit` :60–77 = stage 015.
-- Reshape directive + review artifacts: `research/pde_ledger_v2/_scratch/ledger_stage014_*` (directive; Codex→Grok→Codex
+- Reshape directive + review artifacts — ⛔ **not retained** (they lived in gitignored `_scratch/`; no copy survives, so the names that follow record what existed rather than citing it): `research/pde_ledger_v2/_scratch/ledger_stage014_*` (directive; Codex→Grok→Codex
   design-review logs; execute/remediation/re-verify logs). The directive design-review used the **Codex → Grok → Codex**
   bookend (blueprint §6): Codex `DIRECTIVE_CLEAN` after 3 BLOCKING + 2 nits folded (site-B residual∧BC, the `min(ω²)>0`
   tooth, the N-convergence non-converging ablation, the identity-sub-Gram projection tooth, the native cited-closed-form

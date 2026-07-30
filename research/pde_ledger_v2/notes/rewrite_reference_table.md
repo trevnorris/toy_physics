@@ -39,8 +39,10 @@ the only artefact written.
 *(Verified by a tight triple/monomial regex over fresh transcripts; hardcoded prose like `PASS target
 [rho_br]=M L^-3` in 005/007/034/038/039 is a marker label, not a rendered value, and is excluded.)*
 
-**Criterion for "has dimension machinery"** (column 2): the committed AST classifier
-`_scratch/pass1_dim_survey/measure/classify_dim_lines.py`, re-run unmodified. A line counts if it is in a
+**Criterion for "has dimension machinery"** (column 2): an AST classifier, re-run unmodified. ⛔ **The classifier is
+not retained** — it lived in gitignored `_scratch/pass1_dim_survey/measure/classify_dim_lines.py` and no copy
+survives, so the criterion as spelled out below is the record and the counts are not currently reproducible without
+re-authoring it. A line counts if it is in a
 *dimension region*: the full span of any `class`/`def` in the file's dimension-identifier set **D**; any
 module-level binding referencing **D**; or any other line with a **D** token at a word boundary. **D** is
 AST-seeded from `/dim/i` names plus the un-named aliases `dadd`/`dscale`/`homogeneity_residual`, and
@@ -484,7 +486,7 @@ annotated in place.*
 ```
 git status --short ; git log --oneline ; git diff --stat
 git show HEAD:<path> ; git show d9544a62:<path> ; git show 89bcccdb:<path>   # pre-rewrite 004/011 idioms
-python3 _scratch/pass1_dim_survey/measure/classify_dim_lines.py              # unmodified, re-run
+python3 _scratch/pass1_dim_survey/measure/classify_dim_lines.py   # ⛔ SCRIPT NOT RETAINED — not re-runnable
 ls scripts/ledger_stage*.py | grep -vE 'stage004|stage011|stage044' \
   | xargs -P 6 -I{} python3 {}                                              # 40 scripts, all exit 0
 sha256sum mathematica/out/ledger_stage*.out ; wc -l mathematica/out/ledger_stage*.out

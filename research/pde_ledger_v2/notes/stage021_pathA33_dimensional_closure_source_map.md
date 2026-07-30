@@ -13,8 +13,10 @@
 > (fingerprint, DONE `4872e8b7`) is 1/4; 019 (prefactor algebra, DONE `f1c426f9`) is 2/4; 020 (`54/5=2·27/5` provenance
 > partition + CALIBRATED label, DONE `4b1247e4`) is 3/4. **021 COMPLETES the pathA_33 fold (018∧019∧020∧021).**
 
-> **⚠ CORRECTION BANNER (2026-07-09, post Codex directive design-review — the directive `_scratch/ledger_stage021_reshape_directive.md`
-> SUPERSEDES this map on these SIX points; folded there, pinned here per falsification-first):**
+> **⚠ CORRECTION BANNER (2026-07-09, post Codex directive design-review — the directive SUPERSEDED this map on these
+> SIX points; folded there, pinned here per falsification-first). ⛔ That directive is not retained: it lived in
+> gitignored `_scratch/ledger_stage021_reshape_directive.md` and no copy survives, so the six points below are the
+> record — there is nothing left to defer to:**
 > 1. **The anti-v1 discriminator logic below was WRONG.** A μ̂₀-BACK-SOLVED gate re-solves `[μ̂₀]=(rhs−p0)/2` after ANY
 >    corruption, so its `homogeneity_pass` stays True under {`[N₀]`,`[D₀]`,`[G]`,`[c_s]`} — it fires on NOTHING (a tautology).
 >    So corrupt-`[G]` does NOT "fire a back-solved gate". The REAL discriminator: the μ̂₀-free gate `[P₀^phys]==ZERO` FIRES on

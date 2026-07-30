@@ -33,7 +33,8 @@ reading the tables.** The committed stage script is
 (`git hash-object` `26995ae877f092ba447cac7edd8300bfbe776439`); step-(h) remediation moved it on after
 this run. Measured by `diff` of the run-time pristine copy (`PRISTINE.py`, likewise not retained)
 against the committed file, the **whole** difference is one statement-order change in `main()`: `emit_dimension_sidecar(...)` now precedes
-`print_verdict_labels()` instead of following it (`_scratch/stage023_h/REPORT_REMEDIATE_H.md` R2). No
+`print_verdict_labels()` instead of following it (`u13_u14_rescued/REPORT_REMEDIATE_H.md` R2 — rescued
+2026-07-30 out of gitignored `_scratch/stage023_h/`). No
 other byte differs — round-1 R1 also edited `fmt` and `dimension_records`, and round-2 R4 reverted both,
 so they cancel.
 
@@ -99,7 +100,10 @@ territory, not this instrument's, and it is why 29/29 here is a statement about 
 ## Files
 
 **Committed in this directory — the whole of what a reader can audit:** `ABLATION_SUMMARY.md` (this
-file) · `include_list.tsv` (51 rows) · `results.tsv` (header + 51 rows).
+file) · `include_list.tsv` (51 rows) · `results.tsv` (header + 51 rows) · `u13_u14_rescued/` (added
+2026-07-30 — the step-(h) **U13** same-class-rebinding and **U14** joint-perturbation artifacts, rescued
+out of `_scratch/stage023_h/`; see its `README.md`. These back the two findings named in the stage note's
+§1.7(4); they are not ablation-axis captures).
 
 ⚠ **NOT retained — told about, not auditable.** The run's working set lived in
 `research/pde_ledger_v2/_scratch/stage023_h/`, which `.gitignore:96` (`research/**/_scratch/`) excludes,

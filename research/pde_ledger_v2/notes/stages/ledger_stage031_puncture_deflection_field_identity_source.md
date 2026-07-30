@@ -375,4 +375,4 @@ scoped-out with a defensible reason. The two partitions are disjoint and exhaust
   `{B_eff, C_hu}` (cite, no re-count).
 - **Governing:** `notes/ledger_v2_blueprint.md` §5/§6; `notes/part4_charge_atomic_split.md` (IV-2 row +
   register preview); `docs/model_map.md` §3.4. Reshape directive + review trail:
-  `research/pde_ledger_v2/_scratch/stage031_reshape_directive.md`.
+  `research/pde_ledger_v2/_scratch/stage031_reshape_directive.md`. ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.

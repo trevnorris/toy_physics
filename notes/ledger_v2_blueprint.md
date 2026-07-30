@@ -227,7 +227,9 @@ rejects). Each fold requires:
    — dims match, provenance classes honest, and above all NO edge mislabeled (an `IMPOSED` calibration dressed as
    `DERIVED`/`CODIM-PROVEN` would falsely shrink the irreducible count); fold any findings.** The register is
    orchestrator-authored prose, so Codex reviews and the orchestrator folds (as with the directive design-review). The
-   verify prompt template is `research/pde_ledger_v2/_scratch/parameter_register_verify_prompt.md`.
+   verify prompt template is ⛔ **not retained** — it lived in gitignored
+   `research/pde_ledger_v2/_scratch/parameter_register_verify_prompt.md` and no copy survives, so the
+   prompt must be re-authored from this paragraph's requirements.
 
 **Dual-engine gaps to close during fold:** only the folded Part-I foundations **`pathA_19` and `pathA_20`** are
 `.wl`-only and owe a `_sympy.py`. Everything else carried is already dual-engine (incl. `pathA_28`). `pathA_20b/21/

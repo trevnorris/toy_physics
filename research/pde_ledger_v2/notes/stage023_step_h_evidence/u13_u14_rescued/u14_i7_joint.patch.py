@@ -1,0 +1,41 @@
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _p import edit
+T=os.environ['TARGET']
+old = """    a: Dim(1, 0, 0),
+    c_s: Dim(1, 0, -1),
+    omega: Dim(0, 0, -1),
+    M0: Dim(0, 1, -1),
+    D1: Dim(1, 1, -1),
+    R0: Dim(0, 1, -1),
+    R1: Dim(1, 1, -1),
+    D0: Dim(-1, 1, -2),
+    K0c: Dim(0, 1, -2),
+    Keta: Dim(0, 1, -2),
+    TOmega: Dim(0, 1, -2),
+    Z0ret: Dim(0, 1, -2),
+    Z1ret: Dim(0, 1, -2),
+    OmegaU: Dim(0, 0, -1),
+    OmegaW: Dim(0, 0, -1),
+    Rmix: Dim(0, 0, -2),
+    gU: Dim(sp.Rational(-1, 2), sp.Rational(1, 2), -2),
+    gW: Dim(sp.Rational(-1, 2), sp.Rational(1, 2), -2),"""
+new = """    a: Dim(2, 0, 0),
+    c_s: Dim(2, 0, -3),
+    omega: Dim(0, 0, -3),
+    M0: Dim(0, 1, -1),
+    D1: Dim(1, 1, -1),
+    R0: Dim(11, 11, 11),
+    R1: Dim(12, 12, 12),
+    D0: Dim(0, -4, -6),
+    K0c: Dim(3, 3, 3),
+    Keta: Dim(3, 3, 3),
+    TOmega: Dim(3, 3, 3),
+    Z0ret: Dim(3, 3, 3),
+    Z1ret: Dim(3, 3, 3),
+    OmegaU: Dim(0, 1, 0),
+    OmegaW: Dim(0, 1, 0),
+    Rmix: Dim(0, 2, 0),
+    gU: ZERO_DIM,
+    gW: ZERO_DIM,"""
+edit(T, [(old, new)])

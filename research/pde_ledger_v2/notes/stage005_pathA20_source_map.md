@@ -78,4 +78,5 @@ Author reshape directive → Codex xhigh design-review → fold to `DIRECTIVE_CL
 Codex build (`--sandbox danger-full-access`, background, `< /dev/null`, xhigh) → dual-engine both exit 0 → orchestrator arbiter re-run
 (via runners) → full tri-review on fresh agents (arbiter + fidelity + adversarial-scoped-to-reshape-integrity, with ablation) →
 remediate → bump counts 4→5 → note/card/LaTeX(Part I appendix already exists → just add `\input{stages/stage_005}`)/registration →
-rebuild PDF → commit + docs/memory sync. The I-1 exemplars (`_scratch/ledger_stage004_*`) are the directive/prompt templates.
+rebuild PDF → commit + docs/memory sync. ⛔ The I-1 exemplars that served as directive/prompt templates are **not retained** —
+they lived in gitignored `_scratch/ledger_stage004_*` and no copy survives.

@@ -596,4 +596,4 @@ fires the tooth; dropping any one of the 35 rows fires it).
   `notes/part5_magnetism_atomic_split.md` (V-4 = Route B (blind) + structural comparison + ratios; the
   tooth-allocation table); `docs/model_map.md` §3.5 (Q-DIRECT / Route-B + boost-consistency bullet).
   Reshape directive + review trail:
-  `research/pde_ledger_v2/_scratch/stage037_reshape_directive.md`.
+  `research/pde_ledger_v2/_scratch/stage037_reshape_directive.md`. ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.

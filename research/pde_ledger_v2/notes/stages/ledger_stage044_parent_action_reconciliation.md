@@ -391,8 +391,10 @@ REPRODUCTION                        — first-match verdict + field binding
   NAMED, not performed.
 - **Governing:** `notes/part7_integration_atomic_split.md` (the RATIFIED 7-stage split;
   the spine `044→044+045`); `notes/stage044_parent_action_prep.md` (the prep note);
-  `research/pde_ledger_v2/_scratch/stage044/stage044_synthesis_directive.md` (the build
-  directive, rev 2 — Codex `ISSUES_FOUND(12)` folded) + `verdict_py.json` +
-  `OUT_stage044_ablation.txt`; `notes/parameter_register.md` (R1–R92 + the new R93–R97
+  `_scratch/stage044/stage044_synthesis_directive.md` (the build directive, rev 2 — Codex
+  `ISSUES_FOUND(12)` folded) and `OUT_stage044_ablation.txt` — ⛔ **neither is retained**; both lived in
+  gitignored `_scratch/` and no copy survives, so these names record that the artifacts existed and are
+  not auditable citations. The verdict pair `verdict_py.json`/`verdict_wl.json` **was** rescued, to
+  `notes/stage044_evidence/`; `notes/parameter_register.md` (R1–R92 + the new R93–R97
   + the `Z_χ` master row); `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md`;
   `notes/ledger_v2_blueprint.md` §5 (standalone engine spec) + §6 (per-tooth ablation).

@@ -438,4 +438,4 @@ and fires.
   `UNITS_RESTORED`); `docs/model_map.md` §3.5 + §4 (the honest departure ledger — the magnetic twin
   of `NATIVE_P_NO_EMERGENT_GAUSS` and the sibling of `FAIL_CAUCHY_STRAY_LONGITUDINAL`). Reshape
   directive + review trail:
-  `research/pde_ledger_v2/_scratch/stage039_reshape_directive.md`.
+  `research/pde_ledger_v2/_scratch/stage039_reshape_directive.md`. ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.

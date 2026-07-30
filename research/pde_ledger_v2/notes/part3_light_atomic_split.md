@@ -35,7 +35,9 @@ second-class pair — a real feature of this model's light, recorded honestly, n
   `P` cannot source light's `μ_R`* (Decision 16), which makes it excellent **failures-paper** material and wrong for the
   surviving-solution ledger. Full pointers + preserved seeds: `ledger_exclusions_failures_paper_backlog.md` Exclusion 1
   (the source distillation is banked in `stage030_pathA35_gateL_source_map.md`; the physics-verified reshape directive
-  `_scratch/ledger_stage030_reshape_directive.md` cleared Codex→Grok→Codex — a ready write-up for the paper).
+  cleared Codex→Grok→Codex — a ready write-up for the paper, ⛔ **but the directive itself is not retained**: it
+  lived in gitignored `_scratch/ledger_stage030_reshape_directive.md` and no copy survives, so the write-up would
+  have to be rebuilt from the banked source distillation).
 - The 2026-07-21 directive bookend on stage030 (Codex r1 12-findings → r2 → Grok `GROK_COMPUTE_CLEAN` → Codex
   `DIRECTIVE_SOUND`) was NOT wasted: it produced a fully verified account of the no-go for the failures paper, and it
   validated the per-stage process.

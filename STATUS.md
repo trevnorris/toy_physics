@@ -125,7 +125,8 @@ dead code. Emit before the terminal `Exit[]`. See `DIMENSION_REWRITE.md` §8/§9
 axis-order disagreement. ⚠ **What was actually measured, stated precisely:** the committed stage037 `.wl`
 declares **no axis order at all** — it is a formal `massScale`/`lengthScale`/`timeScale` rescaling with no
 ordered vector and no `axes=` header — so the crash was **not** measured on the committed pair. The
-`M,L,T` order exists only in the **gitignored** `_scratch/spike037/` prototype (`dimensionAxes` keyed
+`M,L,T` order was observed only in the **gitignored** `_scratch/spike037/` prototype (⛔ since deleted and not
+retained; the order is recorded in `research/pde_ledger_v2/notes/stage037_dimension_emission_spike.md`) (`dimensionAxes` keyed
 `M`,`L`,`T`), against the committed `.py`'s `(L,T,M)` (`ledger_stage037_route_b_boost_structural_relation_sympy_audit.py:604`).
 ⇒ The disagreement is real and will appear the moment 037 emits, but it is a **spike-vs-`.py`**
 measurement, not a committed-pair one.

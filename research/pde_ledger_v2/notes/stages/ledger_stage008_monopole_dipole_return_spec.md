@@ -111,6 +111,6 @@ suppression-vs-unavoidable.* Declarations are printed provenance, **not counted 
 
 - Source gate: `software/stage1_solver/tools/pathA_28_monopole_{sympy.py,.wl}` (reshaped; sources unchanged);
   `software/stage1_solver/reports/pathA_28_monopole.md` + `_results.yaml` + `pathA_28_cancellation_condition.yaml`.
-- Reshape directive + tri-review artifacts: `research/pde_ledger_v2/_scratch/ledger_stage008_*` +
+- Reshape directive + tri-review artifacts — ⛔ **not retained** (they lived in gitignored `_scratch/`; no copy survives, so the names that follow record what existed rather than citing it): `research/pde_ledger_v2/_scratch/ledger_stage008_*` +
   `_scratch/adv_stage008/` + `_scratch/reverify_stage008/`.
 - Split row: `research/pde_ledger_v2/notes/part2_gravity_atomic_split.md` (id 008).

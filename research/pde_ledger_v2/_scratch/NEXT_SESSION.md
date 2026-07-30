@@ -325,7 +325,14 @@ re-open it as a question.
 One builder, one fresh reviewer; a **second** independent leg on physics-bearing artifacts only; the
 **physics leg stays blocking**. Decision list → applier agent → **you review the diff**. Edit, never
 rewrite. Agent reports ≤40 lines + a file path. Re-run every named acceptance command yourself and read
-its literal exit code. ⛔ Commit only when the user asks.
+its literal exit code.
+
+⭐ **COMMIT WHENEVER IT MAKES SENSE — commits are cheap** (user decision, 2026-07-30; supersedes the old
+"commit only when the user asks"). ⭐⭐ **ALWAYS commit BEFORE a destructive or hard-to-reverse change** —
+a trim, a deletion, a restructure. ⚠ Measured: a ~130-line trim ran against an **untracked** file on the
+premise "git preserves what you remove", which was **false** — nothing had ever been committed, so the
+only copy was session context. ⛔ Unchanged: **a builder/sub-agent still does not commit**; the
+orchestrator commits explicit paths after reviewing the diff.
 
 ⭐ **Three PER-STAGE steps the scale-back KEPT — `STATUS.md` still carries them and this handoff had
 dropped them. They are physics-catching, not ceremony:**

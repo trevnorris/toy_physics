@@ -117,7 +117,9 @@ this phase the **dimensional firewall** runs *inline* (§4).
 
 ### Phase 6 — Gate and bank
 - **One gate at a time; explicit human approval between gates; never roll forward autonomously.**
-- **Commit only when the human asks.**
+- **Commit whenever it makes sense — commits are cheap; always commit BEFORE a destructive or
+  hard-to-reverse change.** Do not wait to be asked. (A builder/sub-agent still does not commit; the
+  orchestrator commits explicit paths after reviewing the diff.)
 - Sync the **status/front-door doc and the decision log at every milestone**, and update long-term memory. The next session (or the
   next person) must be able to find "you are here" in one place.
 

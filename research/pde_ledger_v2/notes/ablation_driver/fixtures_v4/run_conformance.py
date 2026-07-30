@@ -40,8 +40,11 @@ STAGE_ARTIFACT_REL = pathlib.Path(
     "ledger_stage023_nullspace_underdetermination_sympy_audit.dimensions.txt"
 )
 ALL_ITEMS = [f"A{number}" for number in range(1, 10)]
+A2_COMPLETION_WAIT_SECONDS = 30.0
+A2_POLL_SECONDS = 0.002
 A7_PROGRESS_POLL_SECONDS = 0.2
 A7_PROGRESS_GRACE_SECONDS = 60
+KILL_FALLBACK_WAIT_SECONDS = 5.0
 AMBIENT_POISON_NAME = "FIXTURES_V4_UNDECLARED_AMBIENT"
 ARGV_PROBE = "fixture; exit 97"
 INVOCATION_PROBE_COMMAND = "exec"
@@ -245,21 +248,38 @@ def wait_for(predicate: Any, message: str, seconds: float = 20.0) -> None:
     raise oracle.FixtureFailure(message)
 
 
-def finish_process(process: subprocess.Popen[bytes], seconds: float = 30.0) -> subprocess.CompletedProcess[bytes]:
-    try:
-        stdout, stderr = process.communicate(timeout=seconds)
-    except subprocess.TimeoutExpired:
-        os.killpg(process.pid, signal.SIGKILL)
-        stdout, stderr = process.communicate()
-        raise oracle.FixtureFailure("fixture child process exceeded its bounded wait")
-    return subprocess.CompletedProcess(process.args, process.returncode, stdout, stderr)
-
-
 def kill_leftover_group(group: int) -> None:
     try:
         os.killpg(group, signal.SIGKILL)
     except ProcessLookupError:
         pass
+
+
+def close_process_pipes(process: subprocess.Popen[bytes]) -> None:
+    for stream in (process.stdout, process.stderr):
+        if stream is not None:
+            stream.close()
+
+
+def finish_process(
+    process: subprocess.Popen[bytes],
+    seconds: float = 30.0,
+) -> subprocess.CompletedProcess[bytes]:
+    try:
+        stdout, stderr = process.communicate(timeout=seconds)
+    except subprocess.TimeoutExpired as wait_failure:
+        kill_leftover_group(process.pid)
+        try:
+            stdout, stderr = process.communicate(timeout=KILL_FALLBACK_WAIT_SECONDS)
+        except subprocess.TimeoutExpired as kill_failure:
+            close_process_pipes(process)
+            raise oracle.FixtureFailure(
+                "fixture child process did not close after its bounded SIGKILL fallback"
+            ) from kill_failure
+        raise oracle.FixtureFailure(
+            "fixture child process exceeded its bounded wait"
+        ) from wait_failure
+    return subprocess.CompletedProcess(process.args, process.returncode, stdout, stderr)
 
 
 def capture_invocation(
@@ -392,9 +412,19 @@ def test_a2() -> None:
         process = start_run(config_path)
         artifact = run_dir / "artifact.txt"
         producer_seen = False
+        deadline = time.monotonic() + A2_COMPLETION_WAIT_SECONDS
         while process.poll() is None:
             producer_seen = producer_seen or artifact.exists()
-            time.sleep(0.002)
+            if time.monotonic() >= deadline:
+                try:
+                    stop_process_group(process, item="A2")
+                except Exception as shutdown_failure:
+                    print(
+                        "A2 shutdown FAIL "
+                        f"{type(shutdown_failure).__name__}: {shutdown_failure}"
+                    )
+                raise oracle.FixtureFailure("A2 run exceeded its bounded completion wait")
+            time.sleep(A2_POLL_SECONDS)
         finished = finish_process(process)
         producer_seen = producer_seen or artifact.exists()
         summary = parse_success(finished, "run")
@@ -956,24 +986,22 @@ def banked_row_count(
     if visible_count <= verified_count:
         return visible_count
     result_data = b"\n".join(complete_lines) + b"\n"
-    try:
-        rows = oracle.parse_and_audit_results(
-            project_root,
-            evidence,
-            config,
-            include_data,
-            entry_snapshot,
-            result_data=result_data,
-            require_complete=False,
-        )
-    except (OSError, ValueError, oracle.FixtureFailure):
-        return verified_count
+    rows = oracle.parse_and_audit_results(
+        project_root,
+        evidence,
+        config,
+        include_data,
+        entry_snapshot,
+        result_data=result_data,
+        require_complete=False,
+    )
     return len(rows)
 
 
 def stop_process_group(
     process: subprocess.Popen[bytes],
     *,
+    item: str,
     grace_seconds: float = 15,
 ) -> subprocess.CompletedProcess[bytes]:
     if process.poll() is None:
@@ -985,8 +1013,15 @@ def stop_process_group(
         stdout, stderr = process.communicate(timeout=grace_seconds)
     except subprocess.TimeoutExpired:
         kill_leftover_group(process.pid)
-        stdout, stderr = process.communicate()
-    kill_leftover_group(process.pid)
+        try:
+            stdout, stderr = process.communicate(timeout=KILL_FALLBACK_WAIT_SECONDS)
+        except subprocess.TimeoutExpired as kill_failure:
+            close_process_pipes(process)
+            raise oracle.FixtureFailure(
+                f"{item} process group did not close after its bounded SIGKILL fallback"
+            ) from kill_failure
+    finally:
+        kill_leftover_group(process.pid)
     return subprocess.CompletedProcess(process.args, process.returncode, stdout, stderr)
 
 
@@ -1013,6 +1048,7 @@ def run_a7_uninterrupted(
     last_count = 0
     last_progress = time.monotonic()
     run_failure: BaseException | None = None
+    shutdown_failure: BaseException | None = None
     finished: subprocess.CompletedProcess[bytes] | None = None
     try:
         while process.poll() is None:
@@ -1041,23 +1077,33 @@ def run_a7_uninterrupted(
     except BaseException as exc:
         run_failure = exc
     finally:
-        finished = stop_process_group(process)
-        final_count = banked_row_count(
-            project_root,
-            evidence,
-            config,
-            include_data,
-            entry_snapshot,
-            last_count,
-        )
-        if final_count > last_count:
-            for position in range(last_count + 1, final_count + 1):
-                if progress is None:
-                    print(f"A7 progress: banked row {position}", flush=True)
-                else:
-                    progress(position)
+        try:
+            finished = stop_process_group(process, item="A7")
+        except BaseException as exc:
+            shutdown_failure = exc
     if run_failure is not None:
+        if shutdown_failure is not None:
+            print(
+                "A7 shutdown FAIL "
+                f"{type(shutdown_failure).__name__}: {shutdown_failure}"
+            )
         raise run_failure
+    if shutdown_failure is not None:
+        raise shutdown_failure
+    final_count = banked_row_count(
+        project_root,
+        evidence,
+        config,
+        include_data,
+        entry_snapshot,
+        last_count,
+    )
+    if final_count > last_count:
+        for position in range(last_count + 1, final_count + 1):
+            if progress is None:
+                print(f"A7 progress: banked row {position}", flush=True)
+            else:
+                progress(position)
     return finished
 
 

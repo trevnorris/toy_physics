@@ -17,7 +17,7 @@ by the honest-scope rule below, and the retrofit (A7) remains the real gate.
 ⚠ **v3 was a division-of-labour correction, not a third attempt at the same document.** v1 and v2 both
 failed design review for one underlying reason: they tried to fix an **interface** — argv, wire format,
 sentinels, outcome predicates, column mappings — and that is design. Design of deliverable code is
-Codex's; `docs/development_pipeline.md` (Roles) says the orchestrator "never pre-designs the
+Codex's; `docs/development_pipeline.md` line 56 says the orchestrator "never pre-designs the
 computational route." Checklist item 1b pushed that way, because fixtures need something to bind to. The
 resolution is to **sequence**, not to design:
 
@@ -28,7 +28,7 @@ resolution is to **sequence**, not to design:
 
 Fixtures still precede the implementation and are still independently authored, which is what 1b
 protects. Prior findings: `codex_verify_persisted.log` (v1), `codex_review_v2.log` (v2),
-`FIXTURES_REPORT.md` §"specification findings".
+`FIXTURES_REPORT.md` line 129, §"Untestable or underspecified as written".
 
 **What it is.** A per-tooth ablation runner: it takes an orchestrator-supplied list of mutations, applies
 them one at a time to the real file at its real path, runs a producer and one or more checkers after
@@ -159,5 +159,66 @@ never as reproducible evidence:
 
 ⛔ **Acceptance tooling cannot grade itself** (`development_pipeline.md` checklist 1b) — hence the
 three-session sequence above.
-⛔ **No expected value or reason** in any directive or in any file a build session can read.
-Scripts run under `timeout 600`; a 124 is a failure to report, never a reason to raise the cap.
+⛔ **The build boundary is fixed acceptance authorship, not secrecy.** Expected values, reasons,
+item-specific inputs and discriminators may appear in the fixed acceptance material or other
+non-directive material a build session can read; the current A1–A9 oracles are public. They must not
+appear in a build-session directive as an expected answer, reason or premise: a directive states what
+to determine and requires the evidence for that determination. This permission is scoped only to this
+gate — the ablation driver and its acceptance suite. It does not narrow the project-wide rule
+elsewhere, especially for verification and review legs: an expected result or reason remains forbidden
+in a directive or any file reachable by the session.
+
+The process-protected material is `REQUIREMENTS.md`, `CONTRACT.md`,
+`research/pde_ledger_v2/notes/ablation_driver/fixtures_v4.accepted.sha256`, and every regular file under
+`fixtures_v4/`; their bytes and that regular-file inventory must not change, and any symlink there
+fails the gate. Exact identity is checked against the authority's committed `HEAD` bytes; independent
+authorship is the external three-session workflow, not a property inferred from bytes. This process
+rule therefore forbids builder control over the gate's decision criteria without pretending to verify
+who authored them.
+
+The authority also lists coupled governed inputs outside the protected set: the dimension definitions
+and pin/comparison tools, the fixed stage023 programs and data, and the legacy A7 tables. Those inputs
+may be edited as authorised dimension-rewrite deliverables; that coupling is accepted. Any governed
+change invalidates the freeze until the orchestrator independently reviews the complete governed diff,
+then updates and commits the authority. Grading uses that committed authority and keeps the protected
+set unchanged. Material outside the protected set can still affect or defeat execution through import
+and startup hooks, executable or Git configuration, and the caller-tree check; no broader claim that
+such material cannot define or affect the observed gate is made.
+
+⚠ **Recorded cost.** An implementer can inspect the available oracles and special-case every disclosed
+input and expected observation. Such an implementation can pass A1–A9 without establishing general
+behavior beyond the exercised cases. The frozen gate catches it only where the special case disagrees
+with an exercised discriminator; hardcoding that reproduces every accepted observation is outside this
+gate. The finite public gate is also self-identifying through its fixed markers and invocation
+environment, and A7's process remains filesystem-capable of reading the real legacy oracle outside its
+mirror. These limitations are accepted and unmitigated. Re-open them if the threat enters scope, using
+an opaque post-build conforming list or code review for the hardcoding threat, as `CONTRACT_NOTES.md`
+lines 98–102 records. The marker and filesystem exposures are separate; randomising marker names alone
+would not close either.
+
+⚠ **Known A2 limitation.** `A2_COMPLETION_WAIT_SECONDS` is a flat suite constant rather than a value
+derived from A2's configured allowances. This is harmless for the frozen A2 rows, which are both
+unusable and invoke no children, but it would become binding if that fixture gained a usable row.
+
+⛔ **Ablation-driver acceptance waits are supervised and terminate under the POSIX process semantics
+assumed here; A7 has no aggregate policy deadline.** This rule is scoped to the ablation driver and its
+acceptance suite and does not replace flat timeout rules for other repository scripts. Suite waits —
+child execution, polling, harness subprocess or termination fallback — have explicit finite allowances
+except for the post-`kill()` child-reaping wait inside `subprocess.run`; under the POSIX semantics
+assumed by `CONTRACT.md` line 449, that standard wait is practically terminating without bespoke
+machinery. Let \(R\) be the finite multiset of row attempts across the selected acceptance runs,
+\(P_r\) and \(C_{r,c}\) their configured producer and checker allowances (zero when that child is not
+invoked), \(G_r\) the bounded per-row progress grace (zero where none applies), \(H\) the finite sum of
+all other explicit harness subprocess, polling and wait allowances, and \(S\) the finite sum of all
+explicitly bounded termination and kill-fallback allowances. Provided signal delivery and child
+reaping behave under those POSIX assumptions, the configured wait-time component satisfies the
+practical allowance bound
+\[
+T_{\mathrm{suite,wait}} \leq
+\sum_{r\in R}\left(P_r+\sum_c C_{r,c}+G_r\right)+H+S.
+\]
+A7 must report only fully audited, durably captured rows as progress, preserve and report any audit
+exception as an audit failure, and enforce its per-row inactivity guard. A run that silently spins or
+exceeds any defined allowance without the required progress is a failure to stop and report; so is a
+wrapper exit 124. Subject to the explicit allowances and the POSIX child-reaping assumption, elapsed
+wall-clock time alone neither passes nor fails A7.

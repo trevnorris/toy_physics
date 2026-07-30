@@ -14,9 +14,14 @@ quantities:
     scope: [medium, I-1]
     regime: [medium-GNLS-positive-real]
     state: live
+    counting_axis: continuous-model
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [2, -1, 1]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 76, line_end: 83}
     aliases: ["ħ"]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 125, line_end: 125}
@@ -28,9 +33,14 @@ quantities:
     scope: [medium, I-1]
     regime: [medium-GNLS-positive-real]
     state: live
+    counting_axis: continuous-model
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [0, 0, 1]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 76, line_end: 83}
     aliases: [mass, m]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 126, line_end: 126}
@@ -42,9 +52,14 @@ quantities:
     scope: [medium, I-1, I-2]
     regime: [medium-GNLS-positive-real]
     state: live
+    counting_axis: continuous-model
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [18, -2, 1]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 85, line_end: 92}
     aliases: [K_EOS, k_eos]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 127, line_end: 127}
@@ -56,9 +71,14 @@ quantities:
     scope: [medium, I-1, I-2, asymptotic-state]
     regime: [medium-GNLS-positive-real]
     state: live
+    counting_axis: continuous-model
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [-4, 0, 0]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 76, line_end: 83}
     aliases: ["ρ0", rho_0]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 128, line_end: 128}
@@ -70,9 +90,14 @@ quantities:
     scope: [medium, I-1, I-2]
     regime: [medium-GNLS-positive-real]
     state: live
+    counting_axis: continuous-model
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [1, -1, 0]
+      provenance:
+        stage_id: stage005
+        stage_uses_shared_dimensions_module: false
+        source_locus: {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 73, line_end: 88}
     aliases: [cs0, c_s]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 129, line_end: 129}
@@ -84,9 +109,14 @@ quantities:
     scope: [medium, I-1]
     regime: [medium-GNLS-positive-real]
     state: live
+    counting_axis: continuous-model
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [1, 0, 0]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 102, line_end: 120}
     aliases: ["ξ_h", xi]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 130, line_end: 130}
@@ -98,9 +128,14 @@ quantities:
     scope: [medium, I-1]
     regime: [medium-GNLS-positive-real]
     state: live
+    counting_axis: continuous-model
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [2, -2, 1]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 102, line_end: 120}
     aliases: [h_0]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 131, line_end: 131}
@@ -112,9 +147,14 @@ quantities:
     scope: [medium, I-1, branch-pin]
     regime: [medium-GNLS-positive-real]
     state: live
+    counting_axis: convention-orbit
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [1, 0, 0]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 122, line_end: 137}
     aliases: [a_pin, scale_a]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 132, line_end: 132}
@@ -126,9 +166,14 @@ quantities:
     scope: [medium, I-2]
     regime: [medium-GNLS-positive-real]
     state: live
+    counting_axis: continuous-model
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [1, -1, 0]
+      provenance:
+        stage_id: stage005
+        stage_uses_shared_dimensions_module: false
+        source_locus: {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 68, line_end: 90}
     aliases: ["c_γ", "cγ"]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 134, line_end: 134}
@@ -140,9 +185,14 @@ quantities:
     scope: [medium, I-2]
     regime: [medium-GNLS-positive-real]
     state: live
+    counting_axis: continuous-model
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [0, 0, 0]
+      provenance:
+        stage_id: stage005
+        stage_uses_shared_dimensions_module: false
+        source_locus: {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 189, line_end: 203}
     aliases: ["λγ", "lambdaγ"]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 133, line_end: 133}

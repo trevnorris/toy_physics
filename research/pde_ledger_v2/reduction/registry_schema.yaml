@@ -36,7 +36,7 @@ $defs:
   dimension:
     type: object
     additionalProperties: false
-    required: [convention, exponents]
+    required: [convention, exponents, provenance]
     properties:
       convention:
         const: LTM-exponent-vector-v1
@@ -46,6 +46,18 @@ $defs:
         maxItems: 3
         items:
           type: integer
+      provenance:
+        type: object
+        additionalProperties: false
+        required: [stage_id, stage_uses_shared_dimensions_module, source_locus]
+        properties:
+          stage_id:
+            type: string
+            pattern: "^stage[0-9]{3}$"
+          stage_uses_shared_dimensions_module:
+            type: boolean
+          source_locus:
+            $ref: "#/$defs/locus"
 
   # Exact operator arities and QID resolution are semantic checks in both
   # readers.  The schema deliberately limits the transport types to nested
@@ -83,6 +95,7 @@ $defs:
       - scope
       - regime
       - state
+      - counting_axis
       - dimension
       - aliases
       - source_loci
@@ -109,6 +122,8 @@ $defs:
         $ref: "#/$defs/nonempty_strings"
       state:
         enum: [live, retired]
+      counting_axis:
+        enum: [continuous-model, convention-orbit]
       dimension:
         $ref: "#/$defs/dimension"
       aliases:

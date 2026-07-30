@@ -63,15 +63,20 @@ Every quantity record has exactly these required fields:
   `discrete-choice`, or `function-profile`;
 - `scope` and `regime`: nonempty string lists;
 - `state`: `live` or `retired`;
-- `dimension`: `{convention: LTM-exponent-vector-v1, exponents: [L,T,M]}`;
+- `counting_axis`: `continuous-model` or `convention-orbit`;
+- `dimension`: `{convention: LTM-exponent-vector-v1, exponents: [L,T,M],
+  provenance: {stage_id, stage_uses_shared_dimensions_module, source_locus}}`;
 - `aliases`: alternate input spellings; and
 - `source_loci`: one or more `{path,line_start,line_end}` mappings relative to
   `research/pde_ledger_v2/`.
 
 QID, symbol, and aliases form one global alias table.  Any collision or unknown
 reference is invalid.  The current counting contract is the document's
-`active_regime`; phase 1 includes every live quantity in that regime in the
-finite scalar ambient space.
+`active_regime`; phase 1 includes every live `continuous-model` quantity in
+that regime in the finite scalar ambient space.  Live `convention-orbit`
+coordinates are reported separately.  In particular, `Q.medium.a_pin` remains
+typed registry data for relation and mutation auditing but is quotiented from
+the physical ambient space; its `CONVENTIONAL` pin is not an earned constraint.
 
 ## Relation document
 
@@ -110,9 +115,26 @@ closure.  In this seed, scalar terminals are live `parameter`,
 must itself be the output of an admitted relation.
 
 The residue is every live active-regime QID that is not a designated output of
-an admitted relation.  Finite-block dimension is ambient QIDs minus generic
-symbolic Jacobian rank; zero residuals are removed and nonzero constant
-residuals denote an empty locus.
+an admitted relation on the `continuous-model` axis.  Finite-block dimension is
+ambient QIDs minus generic symbolic Jacobian rank; zero residuals are removed
+and nonzero constant residuals denote an empty locus.
+
+## Dimensional-homogeneity gate
+
+`dimensional_homogeneity_gate.py` audits every non-null residual directly from
+the transport documents.  It reports `HOMOGENEOUS`, `INHOMOGENEOUS`, and
+`UNDETERMINED` populations separately.  Additive terms must agree; multiplication
+and division add/subtract vectors; `Sqrt` halves a vector; and `Pow` accepts only
+a bare integer exponent.  Missing dimension data, a convention mismatch,
+unsupported syntax, or a non-integer exponent is `UNDETERMINED`, never a pass.
+
+An inhomogeneous relation is a finding, not an exception: the report names the
+relation source/execution loci and the dimension-declaration loci as the two
+candidate culprit classes.  The per-QID provenance output also records whether
+the dimension-owning stage uses `scripts/ledger_dimensions.py`; `false` records
+migration state, not an error.  The gate exits `0` only when every residual is
+homogeneous and every QID has complete dimension provenance; otherwise it exits
+`1`.
 
 ## Forward propagation
 
@@ -146,6 +168,7 @@ python registry_read.py
 python acceptance_check.py
 python able_to_fail.py
 python able_to_fail.py --case vacuous
+python dimensional_homogeneity_gate.py
 ```
 
 `acceptance_check.py` computes the registry payload first and compares last

@@ -189,7 +189,8 @@ Gate-L is the retired-`P` couple-stress no-go — NOT a ledger stage; it lives i
 
 - **⭐ Decision-16 amendment (2026-07-21):** the P-retirement layer applied per
   `_scratch/decision16_amendment_directive.md` (directive cleared the Codex→Grok→Codex bookend — Codex
-  `DIRECTIVE_SOUND`, Grok `GROK_COMPUTE_CLEAN`). Dual-engine after the amendment: **SymPy 142 PASS / Mathematica
+  `DIRECTIVE_SOUND`, Grok `GROK_COMPUTE_CLEAN`; ⛔ **the directive is not retained** — it lived in gitignored
+  `_scratch/` and no copy survives, so those verdicts are recorded here, not auditable). Dual-engine after the amendment: **SymPy 142 PASS / Mathematica
   140 PASS**, both exit 0, CWD-independent; the four tracked transcripts regenerated under `scripts/output/` +
   `mathematica/output/`. ⏳ Fresh-agent tri-review of the amended scripts + docs is the next gate. The original-build
   record below is retained.
@@ -216,9 +217,9 @@ Gate-L is the retired-`P` couple-stress no-go — NOT a ledger stage; it lives i
 - Frozen reports (hash-anchored at runtime): `software/stage1_solver/reports/pathA_35_G0_freeze.md` (incl. the
   2026-07-04 erratum) + `reports/pathA_35_G0_results.yaml`; `software/stage1_solver/reports/pathA_24_T0_freeze.md`.
 - Methodology: `software/stage1_solver/directives/pathA_35_shear_surface_brane_gates.md` (§1, G0.2, §7, §10).
-- Reshape directive + tri-review artifacts: `research/pde_ledger_v2/_scratch/ledger_stage007_*` +
+- Reshape directive + tri-review artifacts — ⛔ **not retained** (they lived in gitignored `_scratch/`; no copy survives, so the names that follow record what existed rather than citing it): `research/pde_ledger_v2/_scratch/ledger_stage007_*` +
   `_scratch/adv_stage007/`.
 - **Decision-16 amendment:** `software/stage1_solver/decisions/16_retire_brane_polar_field.md` (the decision) +
-  `research/pde_ledger_v2/_scratch/decision16_amendment_directive.md` (the amendment directive + Codex/Grok review
-  trail).
+  the amendment directive + Codex/Grok review trail — ⛔ **not retained** (they lived in gitignored
+  `research/pde_ledger_v2/_scratch/decision16_amendment_directive.md`; no copy survives).
 - Source map: `research/pde_ledger_v2/notes/stage007_pathA35_G0_source_map.md`.

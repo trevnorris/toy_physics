@@ -436,4 +436,4 @@ count / digest and fires the tooth; dropping any one of the 35 rows fires it).
 - **Governing:** `notes/ledger_v2_blueprint.md` §5 (reshape spec) + §6 (per-tooth ablation);
   `notes/part5_magnetism_atomic_split.md` (V-2 = the native source law + parity census; the
   tooth-allocation table); `docs/model_map.md` §3.5 (Q-CURRENT source-law bullet). Reshape directive +
-  review trail: `research/pde_ledger_v2/_scratch/stage035_reshape_directive.md`.
+  review trail: `research/pde_ledger_v2/_scratch/stage035_reshape_directive.md`. ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.

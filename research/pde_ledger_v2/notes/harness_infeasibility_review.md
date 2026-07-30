@@ -33,15 +33,15 @@ to the rewrite.
   and `mathematica/ledger_stage042_charge_coupled_scalar_mathematica_audit.wl:2017`.
 - I tested the strongest plausible wrapper. Temporarily localising `System\`Exit` lets `Get` return,
   and stage004's exposed `deriveDictionary[]` then yields exact vectors
-  (`_scratch/dim_harness/review_scratch/PROBE_RESULTS.txt:1`). This proves a wrapper works **where a public constructor
-  already returns the values**.
+  (probe output, ⛔ **not retained** — it lived in gitignored `_scratch/dim_harness/review_scratch/PROBE_RESULTS.txt`
+  and no copy survives, so this and the next probe result are recorded here, not auditable). This proves a wrapper
+  works **where a public constructor already returns the values**.
 - It does not generalise. Stage031's 21-row `unitRows` is local to the terminal `Module`
   (`mathematica/ledger_stage031_puncture_deflection_field_identity_source_mathematica_audit.wl:121`,
   `:444`); stage042's 14-entry base map is local to `dimensionGuard`
   (`mathematica/ledger_stage042_charge_coupled_scalar_mathematica_audit.wl:819`,
   `:833`) and the function returns only aggregates, not that map (`:898`). The probe accordingly
-  recovered aggregate dimensions but not `B,C,K,qL,...`
-  (`_scratch/dim_harness/review_scratch/PROBE_RESULTS.txt:8`).
+  recovered aggregate dimensions but not `B,C,K,qL,...` (same unretained probe output).
 - Recovering such locals requires transforming held source/DownValues, evaluator instrumentation, or
   30 stage-specific replicas. That is in-memory modification or reimplementation, not a passive
   `Get`; it perturbs execution, has no independent completeness oracle, and can silently read literals

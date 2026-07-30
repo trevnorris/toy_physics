@@ -419,4 +419,4 @@ the 35 rows fires it).
 - **Governing:** `notes/ledger_v2_blueprint.md` §5 (reshape spec) + §6 (per-tooth ablation);
   `notes/part5_magnetism_atomic_split.md` (V-3 = Route A the Maxwell–Darwin reference; the tooth-allocation
   table); `docs/model_map.md` §3.5 (Q-BOOST / Route-A reference bullet). Reshape directive + review trail:
-  `research/pde_ledger_v2/_scratch/stage036_reshape_directive.md`.
+  `research/pde_ledger_v2/_scratch/stage036_reshape_directive.md`. ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.

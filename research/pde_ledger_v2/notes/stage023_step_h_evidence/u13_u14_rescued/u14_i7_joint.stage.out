@@ -1,0 +1,207 @@
+
+========================================================
+ledger_stage023_nullspace_underdetermination_sympy_audit
+========================================================
+Target stem confirmed: ledger_stage023_nullspace_underdetermination
+Engine: genuine SymPy symbolic Jacobian Matrix.rank; exact, float-free, standalone; audit results on stdout and labelled dimensions in a deterministic sidecar.
+
+Genuine native symbolic Jacobian rank and return-moving nullspace
+-----------------------------------------------------------------
+  GENERATOR_DOFS=['Omega_U', 'Omega_W', 'R_mix', 'g_U', 'g_W', 'D0', 'K0c', 'K_eta', 'T_Omega', 'Z0_ret', 'Z1_ret']
+  symbolic constraint Jacobian shape=(3, 11)
+  rank0=3
+  native_nullspace_dimension=8
+  return_augmented_rank=5
+  return_moving_nullity=2
+  native_null_moves_return=True
+PASS  constraint Jacobian has exactly 3 genuine named rows (no padding)
+PASS  constraint Jacobian has 11 genuine generator columns
+PASS  genuine sp.Matrix(rows).rank() gives rank0=3
+PASS  computed native nullspace dimension is 11-rank0=8
+PASS  computed return-augmented rank is 5
+PASS  verdict-bearing return-moving nullity is 2
+PASS  native nullspace moves the return map
+  PROVENANCE (documentation; not counted): pathA_29 Z_is_premise=True, boundary_dof=none
+PASS  both Z-return unit-vector witnesses are constructed
+  witness Z0_ret: preserves_every_constraint=True, delta_T0=-K0c/(K0c + Z0_ret)**2, delta_T1=0
+PASS  Z0_ret appended unit vector preserves every computed Jacobian row
+PASS  Z0_ret unit direction moves T0/T1
+  witness Z1_ret: preserves_every_constraint=True, delta_T0=0, delta_T1=-(K_eta + 2*T_Omega)/(K_eta + 2*T_Omega + Z1_ret)**2
+PASS  Z1_ret appended unit vector preserves every computed Jacobian row
+PASS  Z1_ret unit direction moves T0/T1
+
+Isolated rank teeth and counterfactual selector control
+-------------------------------------------------------
+  isolated ranks: inject_null native=9; one-row return-moving=1; two-row native=6, return-moving=0
+  selector_rank0=5
+  selector_native_nullspace_dimension=6
+  selector_return_moving_nullity=0
+PASS  inject_null adds eta_null and changes native nullity 8->9
+PASS  one selector row raises genuine rank 3->4
+PASS  one selector row changes return-moving nullity 2->1
+PASS  one selector row leaves native_moves True
+PASS  two independent selector rows raise genuine rank 3->5
+PASS  two selector rows change native nullity 8->6
+PASS  two selector rows collapse return-moving nullity 2->0
+PASS  two selector rows flip native_moves True->False
+PASS  selector makes T0=1/2
+PASS  selector makes T1=1/2
+PASS  selector control reaches CROSS_L_RESIDUAL_PREDICTION
+PASS  baseline reaches earned FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+PASS  selector control changes the two computed verdicts
+PASS  neutered selector has no rank or verdict effect
+PASS  selector is counterfactual-control, not derived and not tautological
+
+Forward A0/A1 residuals versus independent pathA_29 form
+--------------------------------------------------------
+  cited stage022 coefficients: v0=1, v1=1/2
+  A0=I*M0*Z0_ret*a*omega/(c_s*(K0c + Z0_ret))
+  A1=I*D1*Z1_ret*a**3*omega**3/(2*c_s**3*(K_eta + 2*T_Omega + Z1_ret))
+  A0_residual_to_pathA29_form=0
+  A1_residual_to_pathA29_form=0
+  A0_order=omega^1; A1_order=omega^3
+PASS  forward A0 matches independently built pathA_29 form
+PASS  forward A1 matches independently built pathA_29 form
+PASS  A0 realized omega order is 1
+PASS  A1 realized omega order is 3
+SELF-CONSISTENCY OK (not earned; not counted)  T/epsilon identities are forward from Z/K
+PASS  stage022 v1 consumption tooth 1/2->1/3 fires A1 form produced required FAIL (residual = -I*D1*Z1_ret*a**3*omega**3/(6*c_s**3*(K_eta + 2*T_Omega + Z1_ret)))
+PASS  A1 order-realization corruption omega^3->omega^2 fires produced required FAIL (residual = -1)
+  v1 consumption: verdict_trace=('FAIL_EPSILON_MISMATCH', 'FAIL_UNDERDETERMINED_NOT_PREDICTIVE')
+PASS  v1 consumption dynamic rerun with mutation reaches FAIL_EPSILON_MISMATCH
+PASS  v1 consumption dynamic rerun without mutation returns earned native-nullspace FAIL
+PASS  v1 consumption two computed verdicts differ
+PASS  v1 consumption own expected token fires
+PASS  v1 consumption independently rerun neutralized mutation does not fire
+  A1 order: verdict_trace=('FAIL_EPSILON_MISMATCH', 'FAIL_UNDERDETERMINED_NOT_PREDICTIVE')
+PASS  A1 order dynamic rerun with mutation reaches FAIL_EPSILON_MISMATCH
+PASS  A1 order dynamic rerun without mutation returns earned native-nullspace FAIL
+PASS  A1 order two computed verdicts differ
+PASS  A1 order own expected token fires
+PASS  A1 order independently rerun neutralized mutation does not fire
+
+Exact (L,M,T) dimensional gate and free-carrier control
+-------------------------------------------------------
+  [A0]=(0,1,-1) expected=(0,1,-1)
+PASS  [A0] matches its sourced expected dimension
+  [A1]=(1,1,-1) expected=(1,1,-1)
+PASS  [A1] matches its sourced expected dimension
+  [T0]=(0,0,0) expected=(0,0,0)
+PASS  [T0] matches its sourced expected dimension
+  [T1]=(0,0,0) expected=(0,0,0)
+PASS  [T1] matches its sourced expected dimension
+  [epsilon0]=(0,0,0) expected=(0,0,0)
+PASS  [epsilon0] matches its sourced expected dimension
+  [epsilon1]=(0,0,0) expected=(0,0,0)
+PASS  [epsilon1] matches its sourced expected dimension
+  [P0_physical]=(0,0,0) expected=(0,0,0)
+PASS  [P0_physical] matches its sourced expected dimension
+  dimensional_ok=True
+  corrupt_sourced_verdict=FAIL_DIMENSIONAL
+  corrupt_free_carrier_verdict=NO_FAIL
+PASS  baseline dimensional_ok is True
+PASS  corrupt sourced [M0]+=L reaches FAIL_DIMENSIONAL
+PASS  corrupt free q_free dimension reaches NO_FAIL locally
+PASS  q_free appears in no checked expression
+  3f corrupt sourced dimension: verdict_trace=('FAIL_DIMENSIONAL', 'FAIL_UNDERDETERMINED_NOT_PREDICTIVE')
+PASS  3f corrupt sourced dimension dynamic rerun with mutation reaches FAIL_DIMENSIONAL
+PASS  3f corrupt sourced dimension dynamic rerun without mutation returns earned native-nullspace FAIL
+PASS  3f corrupt sourced dimension two computed verdicts differ
+PASS  3f corrupt sourced dimension own expected token fires
+PASS  3f corrupt sourced dimension independently rerun neutralized mutation does not fire
+
+Strengthened provenance firewall and anti-back-solve teeth
+----------------------------------------------------------
+PASS  baseline class_matches_computed holds for every item
+  PROVENANCE (documentation; not counted): stage022 {1,1/2} class=cited_earned_input
+  PROVENANCE (documentation; not counted): ell2_P0_map tags=['stage017_grouped_port_kernel']
+PASS  epsilon magnitude computed class is deferred_branch_data
+PASS  baseline structurally emits no concrete epsilon magnitude/value
+PASS  assert_not_derive is rewired to the genuinely-023-derived transfer map
+PASS  epsilon-emission mutation keeps computed deferred class but emits a concrete value
+PASS  asserted selector is separately marked tautological
+  3g assert_not_derive: verdict_trace=('FAIL_TAUTOLOGICAL', 'FAIL_UNDERDETERMINED_NOT_PREDICTIVE')
+PASS  3g assert_not_derive dynamic rerun with mutation reaches FAIL_TAUTOLOGICAL
+PASS  3g assert_not_derive dynamic rerun without mutation returns earned native-nullspace FAIL
+PASS  3g assert_not_derive two computed verdicts differ
+PASS  3g assert_not_derive own expected token fires
+PASS  3g assert_not_derive independently rerun neutralized mutation does not fire
+  3g asserted-selector: verdict_trace=('FAIL_TAUTOLOGICAL', 'FAIL_UNDERDETERMINED_NOT_PREDICTIVE')
+PASS  3g asserted-selector dynamic rerun with mutation reaches FAIL_TAUTOLOGICAL
+PASS  3g asserted-selector dynamic rerun without mutation returns earned native-nullspace FAIL
+PASS  3g asserted-selector two computed verdicts differ
+PASS  3g asserted-selector own expected token fires
+PASS  3g asserted-selector independently rerun neutralized mutation does not fire
+  3g emit_epsilon_magnitude_as_derived: verdict_trace=('FAIL_TAUTOLOGICAL', 'FAIL_UNDERDETERMINED_NOT_PREDICTIVE')
+PASS  3g emit_epsilon_magnitude_as_derived dynamic rerun with mutation reaches FAIL_TAUTOLOGICAL
+PASS  3g emit_epsilon_magnitude_as_derived dynamic rerun without mutation returns earned native-nullspace FAIL
+PASS  3g emit_epsilon_magnitude_as_derived two computed verdicts differ
+PASS  3g emit_epsilon_magnitude_as_derived own expected token fires
+PASS  3g emit_epsilon_magnitude_as_derived independently rerun neutralized mutation does not fire
+
+Dynamic transfer/return-family, decoupling, and R1 probes
+---------------------------------------------------------
+  3a decouple_knobs: verdict_trace=('FAIL_DECOUPLED', 'FAIL_UNDERDETERMINED_NOT_PREDICTIVE')
+PASS  3a decouple_knobs dynamic rerun with mutation reaches FAIL_DECOUPLED
+PASS  3a decouple_knobs dynamic rerun without mutation returns earned native-nullspace FAIL
+PASS  3a decouple_knobs two computed verdicts differ
+PASS  3a decouple_knobs own expected token fires
+PASS  3a decouple_knobs independently rerun neutralized mutation does not fire
+  3c wrong_sign_return: verdict_trace=('FAIL_EPSILON_MISMATCH', 'FAIL_UNDERDETERMINED_NOT_PREDICTIVE')
+PASS  3c wrong_sign_return dynamic rerun with mutation reaches FAIL_EPSILON_MISMATCH
+PASS  3c wrong_sign_return dynamic rerun without mutation returns earned native-nullspace FAIL
+PASS  3c wrong_sign_return two computed verdicts differ
+PASS  3c wrong_sign_return own expected token fires
+PASS  3c wrong_sign_return independently rerun neutralized mutation does not fire
+  3d perfect_return: verdict_trace=('FAIL_OVERCANCEL', 'FAIL_UNDERDETERMINED_NOT_PREDICTIVE')
+PASS  3d perfect_return dynamic rerun with mutation reaches FAIL_OVERCANCEL
+PASS  3d perfect_return dynamic rerun without mutation returns earned native-nullspace FAIL
+PASS  3d perfect_return two computed verdicts differ
+PASS  3d perfect_return own expected token fires
+PASS  3d perfect_return independently rerun neutralized mutation does not fire
+  3h no_consistent_return: verdict_trace=('FAIL_NO_CONSISTENT_RETURN', 'FAIL_UNDERDETERMINED_NOT_PREDICTIVE')
+PASS  3h no_consistent_return dynamic rerun with mutation reaches FAIL_NO_CONSISTENT_RETURN
+PASS  3h no_consistent_return dynamic rerun without mutation returns earned native-nullspace FAIL
+PASS  3h no_consistent_return two computed verdicts differ
+PASS  3h no_consistent_return own expected token fires
+PASS  3h no_consistent_return independently rerun neutralized mutation does not fire
+  R1 corrupt-port signals={'P0_changes': True, 'ell2_row_changes': True}; neutralized={'P0_changes': False, 'ell2_row_changes': False}
+PASS  R1 corrupt OmegaU->2*OmegaU changes P0_raw
+PASS  R1 corrupt OmegaU->2*OmegaU changes ell=2 rank row
+PASS  R1 neutralized port mutation changes neither object
+
+022/023 verdict seam, computed read-set, and PROVENANCE consumption
+-------------------------------------------------------------------
+  baseline conditions={'decoupled': False, 'tautological': False, 'dimensional': False, 'no_consistent_return': False, 'overcancel': False, 'epsilon_mismatch': False, 'underdetermined': True}
+  baseline verdict read-set=['decoupled', 'dimensional', 'epsilon_mismatch', 'no_consistent_return', 'overcancel', 'tautological', 'underdetermined']
+PASS  base verdict reads exactly the stage023 physics ladder
+PASS  quad_regression rung is absent (stage022 result is cited only)
+PASS  inert able_to_fail_bad rung is absent
+PASS  actual probe results non-recursively establish able-to-fail
+PASS  baseline physics verdict is earned underdetermination FAIL
+PASS  selector control physics verdict is residual prediction
+PASS  no 022 fingerprint/Gate-4 or 019 prefactor engine is rebuilt
+PASS  vestigial Delta and Sport symbols are dropped
+  CHECKABLE: stage022 cited {v0=1,v1=1/2} feeds the forward A0/A1 map; v1 corruption fires.
+  CHECKABLE: stage009/010 pathA_29 epsilon/(1+epsilon) residual form is built independently.
+  PROVENANCE: pathA_29 Z_is_premise=True, boundary_dof=none is the keystone return premise.
+  PROVENANCE: stage008 M0/D1 and R0=-M0/R1=-D1; stage017 grouped-P2 P0_raw port kernel.
+  PROVENANCE CONTEXT: pathA_34-convention K0c/K1 effective stiffnesses; stage013/017 scalar reduction remains pending.
+  PROVENANCE: c_s from R1 and a from CONV; stage022 Gate-4 result consumed as quad_regression=False, not rebuilt.
+  DIMENSION sidecar I/O: no scratch YAML, report, note, card, LaTeX, or registration write.
+
+Verdict labels:
+---------------
+  earned physics: the Gate-5 named constraints leave two return-moving directions.
+  able-to-fail control: two counterfactual return equations collapse return-moving nullity to zero.
+  honest export: Gate 6 must supply two independent return equations or an equivalent return law.
+baseline_verdict=FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+selector_control_verdict=CROSS_L_RESIDUAL_PREDICTION
+AUDIT_STATUS=PASS
+PHYSICS_VERDICT=FAIL_UNDERDETERMINED_NOT_PREDICTIVE (2/2, COMPLETING)
+
+=======
+Tallies
+=======
+TALLY sympy: 111 pass + 0 fail = 111 checks
+OVERALL PASS

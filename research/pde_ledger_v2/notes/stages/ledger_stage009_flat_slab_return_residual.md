@@ -94,7 +94,7 @@ targets printed: `R_ℓ(0) = −moment·α_ℓ → −moment` as `ε_ℓ→0`. `
 
 - Source gate: `software/stage1_solver/tools/pathA_29_brane_bulk_return_{sympy.py,.wl}` (Check-A slice; sources
   unchanged); `software/stage1_solver/reports/pathA_29_brane_bulk_return.md` + `pathA_29_results.yaml`.
-- Reshape directive + tri-review artifacts: `research/pde_ledger_v2/_scratch/ledger_stage009_*` +
+- Reshape directive + tri-review artifacts — ⛔ **not retained** (they lived in gitignored `_scratch/`; no copy survives, so the names that follow record what existed rather than citing it): `research/pde_ledger_v2/_scratch/ledger_stage009_*` +
   `_scratch/adv_stage009/` + `_scratch/reverify_stage009/`.
 - Split row: `research/pde_ledger_v2/notes/part2_gravity_atomic_split.md` (id 009; its fan-out slip
   `ε0=1−T0(0)` corrected to `1−T0(0)=ε0/(1+ε0)` — a fidelity-leg catch).

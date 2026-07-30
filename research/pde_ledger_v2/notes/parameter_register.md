@@ -852,8 +852,9 @@ dual-engine dim/able-to-fail checks (those stay in the stage scripts).
 **MANDATORY verification (blueprint §5 step 7):** after every update, run a Codex read-only verification of this doc
 against the stage's scripts/report (dims match, provenance classes honest, and — the highest-risk check — NO edge
 mislabeled: an `IMPOSED` calibration dressed as `DERIVED`/`CODIM-PROVEN` would falsely shrink the irreducible count) and
-fold the findings. The register is orchestrator-authored prose, so Codex reviews and the orchestrator folds. Template:
-`_scratch/parameter_register_verify_prompt.md`.
+fold the findings. The register is orchestrator-authored prose, so Codex reviews and the orchestrator folds. ⛔ **The
+reusable prompt template is not retained** — it lived in gitignored `_scratch/parameter_register_verify_prompt.md` and
+no copy survives, so re-author the prompt from the requirements stated in this paragraph.
 
 ---
 

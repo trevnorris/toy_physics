@@ -333,6 +333,6 @@ No IMPOSED/CALIB value is dressed as DERIVED; consumption ≠ derivation of the 
   undischarged cross-sector obligations of §Scope 3, not covered here.
 - **Ratified split (context):** `research/pde_ledger_v2/notes/part4_charge_atomic_split.md` (IV-1 row +
   register preview). Reshape directive + review trail:
-  `research/pde_ledger_v2/_scratch/stage030_reshape_directive.md` (v2, folds 7 Codex findings).
+  `research/pde_ledger_v2/_scratch/stage030_reshape_directive.md` (v2, folds 7 Codex findings). ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.
 - **Governing:** `notes/ledger_v2_blueprint.md` §5 (reshape) + §6 (verification protocol);
   `docs/model_map.md` §3.4 / §5.1.

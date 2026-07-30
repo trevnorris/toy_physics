@@ -12,8 +12,9 @@ passed by changing nothing); **R7's anti-mirroring half did not bind** (a stage-
 carrying Python's names, order and hand-copied vectors satisfies every literal clause); and a process
 constraint **broadened a narrow rule into an unsatisfiable one**, which is the same prose-to-infrastructure
 over-correction that cost the driver three spec versions. The other two — a converted-stage count
-contradiction and six under-specified contract questions — are fixed at R9 and questions 7–12. Reviews:
-`research/pde_ledger_v2/_scratch/codex_wl_emitter_review{,2}.log`.
+contradiction and six under-specified contract questions — are fixed at R9 and questions 7–12. ⛔ The two review logs
+are **not retained** — they lived in gitignored `research/pde_ledger_v2/_scratch/codex_wl_emitter_review{,2}.log` and
+no copy survives; what they found is summarised here.
 ⚠ **A confirm-pass on v2 then found the anti-shadow rule was itself an over-correction** (it forbade
 D2-authorized derivations) **and that v2's own "only 016 and 023" measurement was false.** Both are fixed
 below. That is three over-corrections of the same shape in one night — the tell each time was a rule

@@ -31,7 +31,9 @@
 > Proposed target stem: `ledger_stage026_continuity_lineage` (confirm slug at directive authoring).
 
 > **⚠⚠ ERRATA — SUPERSEDED IN PART BY THE DIRECTIVE v3 (the Codex→Grok→Codex bookend, 2026-07-10). The
-> `_scratch/ledger_stage026_reshape_directive.md` v3 is AUTHORITATIVE where they differ.** Five framings below were
+> directive v3 was AUTHORITATIVE where they differ — ⛔ but it is not retained: it lived in gitignored
+> `_scratch/ledger_stage026_reshape_directive.md` and no copy survives, so the five corrections below are the
+> record.** Five framings below were
 > corrected by the Codex xhigh design-review (5 BLOCKING, all folded): **(1)** the source's `contains_all` is raw SUBSTRING
 > membership — a token-STUFFED forgery (`NOT_M0`⊃`M0`, `FakeIntegral`⊃`Integral`, `S_leakage`⊃`S_leak`, `d3xyz`⊃`d3x`)
 > PASSES it → the reshape UPGRADES to EXACT LEXICAL-TOKEN semantics in BOTH engines + a REQUIRED token-stuffing negative

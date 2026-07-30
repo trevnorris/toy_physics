@@ -1,0 +1,21 @@
+ARTIFACT_NAME_SET|stage=stage023|py=29|wl=29|shared=29|py_only=0|wl_only=0|source_coverage=not_checked
+PY_ONLY: (none)
+WL_ONLY: (none)
+ARTIFACT_NAME_WAIVERS|stage=stage023|py_only=(none)|wl_only=(none)
+MISMATCH sourced_dims.D0: py={L=0, M=-4, T=-6}; wl={L=-1, M=1, T=-2}
+MISMATCH sourced_dims.K0c: py={L=3, M=3, T=3}; wl={L=0, M=1, T=-2}
+MISMATCH sourced_dims.K_eta: py={L=3, M=3, T=3}; wl={L=0, M=1, T=-2}
+MISMATCH sourced_dims.Omega_U: py={L=0, M=1, T=0}; wl={L=0, M=0, T=-1}
+MISMATCH sourced_dims.Omega_W: py={L=0, M=1, T=0}; wl={L=0, M=0, T=-1}
+MISMATCH sourced_dims.R0: py={L=11, M=11, T=11}; wl={L=0, M=1, T=-1}
+MISMATCH sourced_dims.R1: py={L=12, M=12, T=12}; wl={L=1, M=1, T=-1}
+MISMATCH sourced_dims.R_mix: py={L=0, M=2, T=0}; wl={L=0, M=0, T=-2}
+MISMATCH sourced_dims.T_Omega: py={L=3, M=3, T=3}; wl={L=0, M=1, T=-2}
+MISMATCH sourced_dims.Z0_ret: py={L=3, M=3, T=3}; wl={L=0, M=1, T=-2}
+MISMATCH sourced_dims.Z1_ret: py={L=3, M=3, T=3}; wl={L=0, M=1, T=-2}
+MISMATCH sourced_dims.a: py={L=2, M=0, T=0}; wl={L=1, M=0, T=0}
+MISMATCH sourced_dims.c_s: py={L=2, M=0, T=-3}; wl={L=1, M=0, T=-1}
+MISMATCH sourced_dims.g_U: py={L=0, M=0, T=0}; wl={L=-1/2, M=1/2, T=-2}
+MISMATCH sourced_dims.g_W: py={L=0, M=0, T=0}; wl={L=-1/2, M=1/2, T=-2}
+MISMATCH sourced_dims.omega: py={L=0, M=0, T=-3}; wl={L=0, M=0, T=-1}
+RESULT|stage=stage023|status=FAIL|mismatches=16

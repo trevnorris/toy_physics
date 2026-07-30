@@ -697,7 +697,12 @@ can close these:
   `eta_null←q_free` — obtaining stage exit 0, 111 pass, a **byte-identical** 29-record payload, and
   comparator `status=PASS|mismatches=0`. Scope of the negative: the three mechanisms this workstream owns —
   the stage's own gate, the cross-engine comparator, and a re-run. A source read *does* reach it, and one
-  verified all 29 live bindings correct.
+  verified all 29 live bindings correct. **Evidence retained** in
+  `notes/stage023_step_h_evidence/u13_u14_rescued/` (rescued 2026-07-30 out of gitignored
+  `_scratch/stage023_h/`): `u13_expE_same_class_rebinding.diff` — the five rebindings as a five-line diff
+  against the committed script — plus `u13_expE.stage.out` and the mutated/baseline `dimensions.txt` pair,
+  whose `DIM|` records reduce to one md5 (`61b45bda8972601fb19f8abe2820ea92`); only the header's
+  `source_sha256` differs.
 - **U14** — **under a joint perturbation the declaration freedom is larger than the one-at-a-time ablation
   shows.** A review leg mutated **16 declarations together** — `a, c_s, omega, D0, K0c, K_eta, T_Omega,
   Z0_ret, Z1_ret, Omega_U, Omega_W, R_mix, g_U, g_W, R0, R1` — and got stage exit 0, 111 pass, and all
@@ -706,6 +711,12 @@ can close these:
   the declared `EXPECTED_DIMS`. This is **U1** (8 of 16 live declarations determined, a 24-parameter
   family) measured from the other side, not a separate discovery: a one-at-a-time ablation classifies 14 of
   these 16 as "caught", because moving one breaks a relation while moving them together preserves it.
+  ⚠ **Scope — this bounds the Python, not the workstream.** The cross-engine comparator **does** catch the
+  joint mutation: `RESULT|stage=stage023|status=FAIL|mismatches=16`, naming all 16 records, because the
+  `.wl` carries an independent literal `baseDims` table. The undetected-by-everything case is **U13**, whose
+  payload is byte-identical; U14's is not. **Evidence retained** in
+  `notes/stage023_step_h_evidence/u13_u14_rescued/` — `u14_i7_joint.patch.py` (the mutation),
+  `u14_i7_joint.stage.out` (exit 0, 111 pass) and `u14_i7_joint.cmp.out` (the comparator `FAIL`).
 
 **(5) Claims this leg believes are wrong elsewhere in the repo** (recorded, not acted on here):
 **W1** register `:185` `[D0] = M T⁻²` vs three stages' `M L⁻¹T⁻²` (high that they differ, medium on which
@@ -879,10 +890,11 @@ this stage the pathA_34 fold is COMPLETE (022∧023) and the Gate-1–5 gravity 
   its decoys are always value-distinct, so it establishes **cross-class binding detection only**; the same-class case is **U13**.
   Evidence in-repo: `research/pde_ledger_v2/notes/stage023_step_h_evidence/` — the method-and-verdict summary
   (`ABLATION_SUMMARY.md`), the 51-row per-target results table (`results.tsv`, 22 axis-1 + 29 axis-2 rows) and the
-  orchestrator-owned include list (`include_list.tsv`, the same 51 targets with their old/new text). ⚠ **What did NOT survive:**
-  the 51 per-record `.cmp`/`.stdout` captures, the ablation driver, and the `179`-hit candidate ledger
-  (`research/pde_ledger_v2/_scratch/stage023/enum/candidate_ledger.md`) remain in gitignored scratch — so the committed evidence is
-  the summary and the two tables, **not** the raw captures those tables were read from.
+  orchestrator-owned include list (`include_list.tsv`, the same 51 targets with their old/new text), and — rescued 2026-07-30 out of
+  gitignored `_scratch/stage023_h/` — the step-(h) U13/U14 mutation artifacts under `u13_u14_rescued/`. The `179`-hit candidate
+  ledger was likewise rescued, to `research/pde_ledger_v2/notes/stage023_enum_evidence/candidate_ledger.md`.
+  ⚠ **What did NOT survive:** the 51 per-record `.cmp`/`.stdout` captures and the ablation driver — so for the two
+  ablation axes the committed evidence is the summary and the two tables, **not** the raw captures those tables were read from.
 - ⛔ **In none of axis 1's 16 caught rows did the dimensional gate's own assertion fire first.** `base_verdict` ranks
   `dimensional` **third** in the verdict ladder (`.py:674-682`, `dimensional` at `:677`, behind `decoupled` and `tautological`),
   so a corrupted declaration flips the gate verdict before `run_dimensional_gate()` (`.py:900`) is reached; what fires instead is

@@ -196,7 +196,7 @@ ACTION-geometry — not re-counted). `c_S` is NOT consumed (matter sector deferr
   Product` :3–10, `## Profiles And Projection` :11–30, `## Dynamical EOM` :31–36, `## Dimensional Check` :87–98,
   `## Reduction Certificate` :99–102). SIBLING (cited, not recomputed): `## Truncation Consistency` :37–58 = stage 014;
   `## Structure` / `## Hellmann-Feynman Force` / `## Static-Dynamic Limit` :60–77 = stage 015.
-- Reshape directive + review artifacts: `research/pde_ledger_v2/_scratch/ledger_stage013_*` (directive; Codex→Grok→Codex
+- Reshape directive + review artifacts — ⛔ **not retained** (they lived in gitignored `_scratch/`; no copy survives, so the names that follow record what existed rather than citing it): `research/pde_ledger_v2/_scratch/ledger_stage013_*` (directive; Codex→Grok→Codex
   design-review logs; execute/remediation logs). The directive design-review used the new **Codex → Grok → Codex**
   bookend (blueprint §6): Codex `DIRECTIVE_CLEAN`, a Grok-4.5 compute-verification pass (which caught the kernel-preserving
   residual-tooth defect folded into §4.1 + five hardening nits), then a Codex confirm-pass on the folds.

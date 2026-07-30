@@ -327,7 +327,8 @@ Part VII a clean irreducible-count + reduction-debt statement. **The 3-stage spl
 ## § REVIEW LOG — Codex→Grok→Codex design-review bookend on this plan (2026-07-23)
 
 The plan was validated against the ground-truth `pathA_4{0,1,2}` source files BEFORE building any stage (user-requested
-"make sure the preliminary plan is on solid ground"). Logs in `_scratch/OUT_part6_plan_*`.
+"make sure the preliminary plan is on solid ground"). ⛔ The validation logs are **not retained** — they lived in
+gitignored `_scratch/OUT_part6_plan_*` and no copy survives; the round-by-round summaries below are the record.
 
 - **Round 1 — Codex xhigh design-review** (`OUT_part6_plan_codex_review.txt`, `ISSUES_FOUND`): 14 clean PASS confirming the
   verdict tokens (verbatim), the 3-stage split, the build order, and the physics synthesis. Catches folded: `.wl` independence

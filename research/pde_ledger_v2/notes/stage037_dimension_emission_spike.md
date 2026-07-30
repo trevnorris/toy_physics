@@ -3,8 +3,9 @@
 **Verdict: `ROUTE_EXISTS` for stage037.** Run deliberately out of order as a **measurement, not a
 conversion**. Nothing tracked was modified; stage037 remains unconverted.
 
-⚠ **This note exists because the spike's working artifacts live in gitignored
-`_scratch/spike037/` and `_scratch/OUT_spike037.txt`.** Without it, a fresh clone or a
+⚠ **This note exists because the spike's working artifacts lived in gitignored
+`_scratch/spike037/` and `_scratch/OUT_spike037.txt` — ⛔ both since deleted and not retained, so this
+note is now the whole record.** Without it, a fresh clone or a
 context-compacted reader could not audit the word "prototyped". It records the **route, the
 measured numbers, and the honest limits** — but see *Reproducing this*: it is **not** a
 clone-runnable reproduction, and saying otherwise would repeat the overstatement this note was
@@ -139,10 +140,11 @@ recorded debt — not worth retrofitting mid-flight.
 
 ⛔ **This note preserves the measured result and the route; it is NOT a complete reproduction.**
 The three helper definitions above are the mathematical core, but `emitDimensionRecords[]`, its call
-site, and the seeded-error probe exist **only** in gitignored
+site, and the seeded-error probe existed **only** in gitignored
 `_scratch/spike037/` (`ledger_stage037_route_b_boost_structural_relation_spike.wl`,
-`compare_transcription_probe.py`, `parse_wolfram_output.py`, `survey_integer_lists.wl`). The rest of
-the prototype is a copy of the committed stage037 `.wl`.
+`compare_transcription_probe.py`, `parse_wolfram_output.py`, `survey_integer_lists.wl`) — ⛔ **that tree has
+since been deleted and is not retained**, so those four files no longer exist anywhere. The rest of
+the prototype was a copy of the committed stage037 `.wl`.
 
 ⇒ **Before citing this spike as reproducible**, track the complete emission block and an
 updated, hash-valid probe, and re-run both against the current comparator. Until then this note

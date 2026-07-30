@@ -129,7 +129,7 @@ BOTH engines.
 - Source gate: `software/stage1_solver/tools/pathA_29_brane_bulk_return_{sympy.py,.wl}` (Check-B slice; sources
   unchanged); `software/stage1_solver/reports/pathA_29_brane_bulk_return.md` (Check-B content :11–17,:24–25) +
   `pathA_29_results.yaml`.
-- Reshape directive + tri-review artifacts: `research/pde_ledger_v2/_scratch/ledger_stage010_*` +
+- Reshape directive + tri-review artifacts — ⛔ **not retained** (they lived in gitignored `_scratch/`; no copy survives, so the names that follow record what existed rather than citing it): `research/pde_ledger_v2/_scratch/ledger_stage010_*` +
   `_scratch/adv_stage010/` + `_scratch/reverify_stage010/`. Running-start source map:
   `research/pde_ledger_v2/notes/stage010_pathA29_checkB_source_map.md`.
 - Split row: `research/pde_ledger_v2/notes/part2_gravity_atomic_split.md` (id 010). Completes the pathA_29 fold

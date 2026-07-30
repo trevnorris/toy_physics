@@ -23,7 +23,9 @@
 > target stem: `ledger_stage025_vector_freedom_taint` (confirm slug at directive authoring).
 
 > **⚠⚠ ERRATA — SUPERSEDED IN PART BY THE DIRECTIVE v2 (the Codex→Grok→Codex bookend, 2026-07-10). The
-> `_scratch/ledger_stage025_reshape_directive.md` v2 is AUTHORITATIVE where they differ.** Four framings below were
+> directive v2 was AUTHORITATIVE where they differ — ⛔ but it is not retained: it lived in gitignored
+> `_scratch/ledger_stage025_reshape_directive.md` and no copy survives, so the four corrections below are the
+> record.** Four framings below were
 > corrected by the bookend (Codex 5 BLOCKING, Grok `DIRECTIVE_CLEAN`): **(1)** the expression-level ablation (§2 headline 2(iii),
 > §5) is LOGICALLY SUBSUMED by the taint-set gate → it is a RETAINED redundant WITNESS, NOT an independent/decisive proof leg;
 > the DECISIVE gate is the COMPUTED taint-set identity + `source_map_complete`; the relabel/hidden rigs are caught by the

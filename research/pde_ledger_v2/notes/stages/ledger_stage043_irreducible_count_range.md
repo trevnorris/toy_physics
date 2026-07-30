@@ -423,4 +423,4 @@ touch the continuous headline):
   C1/C2 + the parked decisions); `notes/parameter_register.md` (R1–R84);
   `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md`; `notes/ledger_v2_blueprint.md` §5 (standalone
   engine spec) + §6 (per-tooth ablation). Directive + review trail:
-  `research/pde_ledger_v2/_scratch/stage043_synthesis_directive.md`.
+  `research/pde_ledger_v2/_scratch/stage043_synthesis_directive.md`. ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.

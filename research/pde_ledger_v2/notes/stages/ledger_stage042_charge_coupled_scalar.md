@@ -552,4 +552,4 @@ EXECUTABLE** stage teeth.
   § FRESH-READ FINDINGS reshape-REQUIREMENTS (042) block (i)–(vii));
   `research/pde_ledger/notes/MATHEMATICA_MIRROR_POLICY.md`; `docs/model_map.md` §3.6 + §4 (the
   departure ledger). Reshape directive + review trail:
-  `research/pde_ledger_v2/_scratch/stage042_reshape_directive.md`.
+  `research/pde_ledger_v2/_scratch/stage042_reshape_directive.md`. ⛔ **Not retained** — it lived in gitignored `_scratch/` and no copy survives; this line records that a directive existed, it is not an auditable citation.

@@ -1,5 +1,13 @@
 # Findings and decisions for ablation-driver requirements v4
 
+> ⛔ **SUPERSEDED — USER DECISION, 2026-07-29/30. Historical record only; nothing here is a live rule.**
+> v5 re-scoped the driver small (*mutate a declaration, confirm the declared assert fires, record it,
+> reviewed by one fresh agent*) — **no contract, no frozen fixtures, no three-session shape**, and it cut
+> resume, repair, the outcome truth table and the digest restore proof. Read `REQUIREMENTS.md` (v5) for the
+> live set (**R1, R2, R3, R4, R6, R7**); `CONTRACT.md` is superseded except §C-9's legacy mapping.
+> ⚠ Item 18's "keeps the three-session fixture/implementation separation intact" no longer applies —
+> that separation was removed.
+
 ## What v4 removed from the contract
 
 1. **The public `verify` and `rerun` operations are gone.** The CLI now has only `validate`, `run`, and

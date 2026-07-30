@@ -8,6 +8,25 @@
 CANCELLED.** Read this after `manifests/DIMENSION_REWRITE.md`, alongside
 `docs/development_pipeline.md`.
 
+> ⚠⚠ **TWO SCOPE CORRECTIONS, user decision 2026-07-29/30 — read before following the sequence.**
+> **(1) The dimension rewrite is NOT a prerequisite for manifest work.** §2's framing — *"dimension
+> unification (all 44 stages) before any manifest work"* — rested on the premise that dimension recovery
+> covering "~16 of 43" scripts blocks the fanout. **Measured false:** recovery reaches **10 of 43** (7
+> `class Dim` + 3 digest-pinned bare-tuple orders) and converting a stage *lowers* it, because the shared
+> module exports `Dimension`. The rewrite's real reason is **one shared import so dimensions are consistent
+> by construction**. ⚠ The manifest further *claims* Part VII's firewall will consume the module directly
+> rather than the manifests (`DIMENSION_REWRITE.md` §2) — **an assertion, not an established fact**, since
+> stage046 is unbuilt and its row in `notes/part7_integration_atomic_split.md` does not name an input
+> source. ⇒ Do not lean on it either way when sequencing. ⇒ The two tracks are **independent**; sequence them by preference, not by
+> dependency.
+> **(2) Manifests continue on their SEMANTIC CORE** — quantity identity, **citation integrity**,
+> **export/lifecycle enforcement**, dimensional relations, **the lifecycle census**, the dependency graph and
+> its cycles, mutation, **genesis**, consumption completeness (`MANIFEST_README.md` §SCOPE).
+> ⛔ **Corrected 2026-07-30: the trim that put citation integrity, the census and genesis out of scope is
+> WITHDRAWN** — each catches a way the *physics* could be wrong, not bookkeeping. Steps below that harden
+> them are in scope.
+> ⛔ **Nothing in this plan is frozen** — no checker freeze, no recorded sha, no pre-freeze gate.
+
 ---
 ## 0. WHY NO FANOUT
 
@@ -18,7 +37,9 @@ CANCELLED.** Read this after `manifests/DIMENSION_REWRITE.md`, alongside
    already-extracted stage, so `ABSENT_PRODUCER` means "typo" *immediately*. The fanout's
    alternative was everything sitting PARTIAL until the end — the weakest possible error signal.
 3. A frozen checker is required for a fanout; sequentially the checker can keep improving as gaps
-   are found, which matters because ~42 issue codes are still unfixtured.
+   are found, which matters because ~42 issue codes are still unfixtured. ⚠ **The freeze is now moot
+   (2026-07-29/30): nothing here is frozen** — sequential extraction never needed one, which is why this
+   argument still lands. The reason to go sequentially is the causal-graph and race points above.
 
 **Cost is not the constraint. Correctness is.** (User, 2026-07-25.) The corresponding rule:
 **never adjust the process because the corpus is inconvenient** — an escape hatch for unrecoverable
@@ -103,7 +124,10 @@ the decisive reason for two passes: interleaving would have every module change 
 already-written manifest. Re-pin the 4 existing manifests (030/031/032/043) at the end of Pass 1.
 
 ---
-## 3. PASS 1b — CHECKER ROUND (serialized, then re-freeze)
+## 3. PASS 1b — CHECKER ROUND (serialized)
+
+⚠ **"then re-freeze" is RETIRED (2026-07-29/30)** — there is no checker freeze and no recorded-sha step;
+the checker is an ordinary editable file. ⭐ The deletions and fixes below stand on their own merits.
 
 With one uniform dimension source, **DELETE the machinery that existed only to reverse-engineer
 dimensions out of inconsistent idioms**: `BARE_TUPLE_DIM_ORDER_BY_SHA256`, the AST bare-tuple
@@ -124,7 +148,11 @@ Also in this round (all user-agreed):
 - **Fixture by USAGE, not exhaustively:** priority `TOKEN_DRIFT`, `SET_DRIFT`, `ADJUDICATION_DRIFT`,
   `MULTIPLY_CLASSIFIED_ROW`. (~42 codes are unfixtured; a cold-path gap is far cheaper than a
   hot-path one.)
-Then **re-freeze and record the sha**, with a Grok gate before the freeze (§7).
+⛔ **RETIRED (2026-07-29/30):** ~~re-freeze and record the sha, with a Grok gate before the freeze~~. No
+freeze, no required Grok gate — the changes get **one fresh review pass** like any other build
+(`docs/development_pipeline.md`, Roles table). ⚠ The citation-tautology advisory and export-completeness
+enforcement belong to `C2`/`C3`, which are **in** the semantic core (`MANIFEST_README.md` §SCOPE, corrected
+2026-07-30) — keep them.
 
 ---
 ## 4. PASS 2 — SEQUENTIAL MANIFEST EXTRACTION, 001 → 044
@@ -193,8 +221,10 @@ Read-only work only, and it is where the Workflow tool still earns its keep:
 **Never** parallelize anything that writes shared state — the module, the checker, the config, or
 the progress ledger.
 
-**Grok is a GATE before any freeze**, not a per-stage reviewer. It found the fanout blockers in one
-pass after hours of self-review had not. Run it before re-freezing in §3.
+⛔ **RETIRED (2026-07-29/30): "Grok is a GATE before any freeze."** There are no freezes, and no required
+multi-model gate. ⭐ **What the episode actually established, and it is kept:** an **independent** reviewer
+found in one pass what hours of self-review had not — so the review leg must be **fresh and independent of
+the builder**, which one pass satisfies. Any capable model may be that reviewer.
 
 ---
 ## 8. SEQUENCE SUMMARY
@@ -207,8 +237,10 @@ pass after hours of self-review had not. Run it before re-freezing in §3.
    distinct gates to every stage.
 4. Re-run all `.wl` (≤2 seats), regenerate `.out`.
 5. Re-pin digests in the 4 existing manifests; settle script/module/`.out` digests.
-6. Checker round: delete the reverse-engineering machinery, canonical stage inventory, enforce
-   export-completeness, tautology advisory, priority fixtures → **Grok gate** → re-freeze, record sha.
+6. Checker round: delete the reverse-engineering machinery, canonical stage inventory, priority fixtures
+   → **one fresh review pass** (checker work is tooling, not physics-bearing). ⛔ No Grok gate, no re-freeze,
+   no recorded sha (retired 2026-07-29/30); ⚠ export-completeness and the tautology advisory are **in** the
+   semantic core (`MANIFEST_README.md` §SCOPE, corrected 2026-07-30) — do not delete them.
 7. Gauntlet the per-stage template ONCE.
 8. Extract 001→044 sequentially: execute → checker → fidelity → ledger row → commit.
 9. Ledger-wide integration report → findings catalogue.

@@ -9,7 +9,7 @@ user_invocable: true
 
 This skill drives Step 2+ of the PDE ledger layer-2 audit. It is parallel to, and independent from, `.claude/skills/redteam-audit/`. Do not edit the redteam-audit skill while using this one.
 
-The per-pass adversarial directive is frozen at `docs/adversarial_audit_directive.md`. This skill consumes it by path or exact inclusion only.
+The per-pass adversarial directive is canonical at `docs/adversarial_audit_directive.md`. This skill consumes it by path or exact inclusion only — never paraphrased, because a paraphrase silently changes what the audit asks. ⚠ That is a fidelity rule, not an immutability one: the file is freely editable (`feedback_physics_not_ceremony`).
 
 ## State Machine
 

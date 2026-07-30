@@ -1,84 +1,44 @@
-# Ablation driver — requirements and acceptance intent (v4)
+# Ablation driver — requirements and acceptance intent (v5)
 
-**Status: USER DECISION, 2026-07-29** (`manifests/DIMENSION_REWRITE.md` §12b(b)). Leads the build queue;
-existing hand-rolled harnesses switch over to it; every subsequent stage reuses it. It is built before
-stage027 begins, and 027 is the first conversion to use it — that is the build queue, not the conversion
-order (§8).
+**Status: USER DECISION, 2026-07-29, RE-SCOPED SMALL 2026-07-29/30**
+(`manifests/DIMENSION_REWRITE.md` §12b(b)). Leads the build queue; existing hand-rolled harnesses switch
+over to it; every subsequent stage reuses it. It is built before stage027 begins, and 027 is the first
+conversion to use it — that is the build queue, not the conversion order (§8).
 
-⚠ **v4 — USER DECISION 2026-07-29: scope down, R8 is dropped.** The contract round showed the scope had
-outgrown the "~100-line driver" the manifest records: a 618-line contract with five operations, replay
-capsules and closed read sets. Tracing the cost, three of its twelve findings descended from **R8**
-("committed evidence alone lets a reader re-run a row"), which the requirements author had added in
-response to an evidence summary whose claims were true of its run directory and false of its commit.
-⭐ That was a **prose** defect with a **prose** fix; converting it into an infrastructure requirement is
-what pulled in transitive read sets, replay capsules and platform prerequisites. R8 is therefore replaced
-by the honest-scope rule below, and the retrofit (A7) remains the real gate.
+⛔⛔ **v5 — USER DECISION 2026-07-29/30: BUILD IT SMALL. This is the whole specification.**
+**Mutate a declaration, confirm the declared assert fires, record it. Reviewed by one fresh agent.**
+⛔ **No contract, no frozen fixtures, no three-session shape, no freeze tower, no byte authority.** What was
+cut, and why: exact **resume**, crash **repair**, the outcome **truth table**, the **digest restore proof**,
+the evidence-prose infrastructure, and the whole acceptance-tooling separation. None of them can catch a
+wrong derivation — they catch ways the *tooling* could be wrong, and that is the layer this project stopped
+buying (`docs/development_pipeline.md`, *THE POSTURE*).
+⚠ **The prior artefacts still exist and are SUPERSEDED, not authoritative:** the whole `CONTRACT.md`
+(⭐ including **§C-9** — its legacy→new field mapping table is the durable part and is worth reading as a
+**reference** for A7, but ⛔ it is **not** authoritative and A7 does not require agreement with it),
+`CONTRACT_NOTES.md` / `CONTRACT_NOTES_V4.md`, `FIXTURES_REPORT.md`, and the whole `fixtures_v4/`
+suite with its `fixtures_v4.accepted.sha256`. ⛔ Do not treat any of them as a gate.
 
-⚠ **v3 was a division-of-labour correction, not a third attempt at the same document.** v1 and v2 both
-failed design review for one underlying reason: they tried to fix an **interface** — argv, wire format,
-sentinels, outcome predicates, column mappings — and that is design. Design of deliverable code is
-Codex's; `docs/development_pipeline.md` line 56 says the orchestrator "never pre-designs the
-computational route." Checklist item 1b pushed that way, because fixtures need something to bind to. The
-resolution is to **sequence**, not to design:
-
-1. **Codex authors the CONTRACT** — everything in §C — as a standalone deliverable, with no
-   implementation.
-2. **A different session freezes the fixtures** against that contract.
-3. **A third session implements** the driver, and may neither author nor weaken those fixtures.
-
-Fixtures still precede the implementation and are still independently authored, which is what 1b
-protects. Prior findings: `codex_verify_persisted.log` (v1), `codex_review_v2.log` (v2),
-`FIXTURES_REPORT.md` line 129, §"Untestable or underspecified as written".
+⚠ **What the earlier rounds correctly established, and how the surviving set is shaped.**
+v1 and v2 failed design review for trying to fix an **interface** — argv, wire format, sentinels, outcome
+predicates, column mappings — which is design, and design of deliverable code belongs to the builder
+(`docs/development_pipeline.md`, Phase 1 step 1: the orchestrator *"never pre-designs the computational
+route"*). v3/v4 then answered that by **sequencing** the work across three sessions with frozen fixtures in
+the middle, which is what grew the tower. ⇒ **The interface is the builder's to choose and state.** What
+the orchestrator specifies is the property set below.
+⚠ **Two counts live here and must not be collapsed — an earlier draft said "the four surviving
+requirements", which contradicts the set it then enumerates:**
+- **SIX requirements survive** — **R1, R2, R3, R4, R6, R7** (stated at the foot of §R). That is the live set.
+- **FOUR of them were *measured* to decide real verdicts** — **R2, R3, R6** plus acceptance item **A6**.
+  Those four are the reason the driver exists at all; R1, R4 and R7 survive because they are what makes the
+  loop honest and its output readable, not because a measurement forced them.
 
 **What it is.** A per-tooth ablation runner: it takes an orchestrator-supplied list of mutations, applies
 them one at a time to the real file at its real path, runs a producer and one or more checkers after
-each, and banks one result row plus retained captures per mutation.
+each, and records one result row plus retained captures per mutation.
 
 **What it is not.** It never decides *what* to mutate. Tools whose `init` enumerates the sites were
 rejected partly for that: the target list belongs to the orchestrator (`development_pipeline.md`
-checklist item 6).
-
----
-
-## C — what the CONTRACT must settle
-
-⛔ This is a list of questions, not answers. The contract's content is Codex's to author; what is
-required here is only that each of these has **one** answer, written down, before fixtures are frozen —
-because each was found, by review, to be a place where two parties would otherwise invent different
-things and the fixtures would end up binding to the implementation they grade.
-
-1. **Operations and invocation.** What operations exist (at minimum: validating a list, running one, and
-   repairing a tree after an uncatchable kill), their exact argv, and their exit-code meanings.
-2. **Run configuration.** How the target, producer command, checker commands, declared artifacts, working
-   directory, result path and capture path are supplied; how repeated checkers are ordered and encoded;
-   shell-vs-argv execution and environment.
-3. **The include-list wire format.** Required and optional columns, uniqueness, where the target is named
-   when a list has no target column, what "unusable" means, and what happens to columns the driver does
-   not use.
-4. **The result wire format.** Header and column order, whether extra columns are allowed, boolean
-   spellings, the sentinel for inapplicable, and how multi-valued fields — several checkers, several
-   artifacts, several moved values — are serialized.
-5. **The outcome truth table.** Not a vocabulary: a **complete predicate per outcome**, over the row's own
-   fields, such that exactly one outcome is derivable from any row and an unsupported claim is a schema
-   violation rather than a judgement. ⚠ Do not assume every checker reads an emitted artifact; some
-   inspect the target, stdout, or another input.
-6. **What the committed evidence claims, and what it names as prerequisites.** Settle which files a run
-   is expected to leave behind for commit, and what a reader is told they additionally need in order to
-   reproduce a row (the repo at that commit, the toolchain, the run configuration). ⛔ The contract does
-   **not** have to make a row re-runnable from the commit alone — that requirement was withdrawn. It has
-   to make the evidence state its own limits, so no claim in it is true of the run directory and false of
-   the commit.
-7. **Digest evidence.** Where restore proof is emitted, its algorithm and format, and what it means when a
-   run has more than one target.
-8. **Row identity and equality.** What makes a row "banked", what makes two lists "the same list", and
-   what equality of two result files means.
-9. **The legacy mapping for A7.** The committed `notes/stage023_step_h_evidence/results.tsv` uses
-   `stage_exit`, `pass_count`/`fail_count`, `first_fail`, `sidecar_written` and has no outcome column. The
-   contract must state the mapping to the new schema, and how legacy blanks and `yes`/`no` spellings
-   normalize. ✅ **DONE, 2026-07-29:** the contract states it as a mapped comparison (§C-9), and
-   `manifests/DIMENSION_REWRITE.md` §12b(b) has been corrected to match — it now says the retrofit
-   reproduces that file **"exactly on every mapped field"**, explicitly **not** byte equality, with the
-   mapping frozen as part of the driver's contract.
+per-gate checklist item 6).
 
 ---
 
@@ -86,139 +46,115 @@ things and the fixtures would end up binding to the implementation they grade.
 
 **R1 — the list is an input.** The driver never scans for candidate sites and never adds a row.
 
-**R2 — the mutation is visible at the real file's real path while the producer runs.** This workstream's
-controls hash the file's own bytes and derive artifact paths from `__file__`; a mutant living anywhere
-else makes those controls pass vacuously or fail uniformly.
+**R2 — the mutation is visible at the real file's real path while the producer runs.** ⭐ **KEEP —
+load-bearing.** This workstream's controls hash the file's own bytes and derive artifact paths from
+`__file__`; a mutant living anywhere else makes those controls pass vacuously or fail uniformly.
 
 **R3 — no state from a previous mutant is observable by the next** — no artifact it emitted, no stale
-bytecode.
+bytecode. ⭐ **KEEP — load-bearing:** its absence let a residual artifact, rather than a comparison, decide
+stage023 verdicts. ⚠⚠ **The "16 of 22" figure is SELF-REPORTED and repository-unverifiable** — the defective
+run was gitignored and is not in the tree (see *Evidential note*); cite the failure class, not the count.
 
-**R4 — captures are per mutant and are never overwritten.**
+**R4 — captures are per mutant and are never overwritten.** (This is the "record it" half.)
 
-**R5 — resume re-runs no already-banked row, completes every unbanked row, and yields the same result
-file as an uninterrupted run.**
+**R5 — ⛔ CUT 2026-07-29/30.** ~~resume re-runs no already-banked row, completes every unbanked row, and
+yields the same result file as an uninterrupted run.~~ Exact resume is tooling robustness; re-run the list.
 
 **R6 — a mutation that does not apply exactly once is a recorded outcome**, distinguishing zero from
-multiple matches, never banked as a mutant that ran.
+multiple matches, never recorded as a mutant that ran. ⭐ **KEEP — load-bearing.**
 
-**R7 — restore on every path the driver can observe** (normal end, error, catchable signal), with digest
-proof; plus a separately invocable repair for the uncatchable class. ⛔ Never by `git checkout`,
-`restore` or `stash` — this workstream ablates uncommitted work and those commands destroy it.
+**R7 — restore the file after every mutation**, on normal end and on error. ⛔ Never by `git checkout`,
+`restore` or `stash` — this workstream ablates **uncommitted** work and those commands restore from HEAD and
+destroy it [`never-checkout-to-restore-uncommitted`]. Use `cp`. ⚠ **CUT 2026-07-29/30:** the **digest
+proof** of the restore, and the separately invocable **repair** operation for the uncatchable-kill class.
+The `cp` restore stays; it is data safety, not ceremony.
 
-**R8 — the evidence claims exactly what it supports.** Every claim in what the run leaves behind is true
-of the committed files, not merely of the run directory; anything a reader would additionally need in
-order to reproduce a row is named. ⚠ This replaces the withdrawn re-runnable-from-the-commit property:
-the defect it was written against was a claim that outlived its evidence, not an inability to replay.
+**R8 — ⛔ CUT 2026-07-29/30 as a requirement; it survives as a PROSE rule** (see Process constraints).
+~~the evidence claims exactly what it supports~~ — the defect it was written against was a claim that
+outlived its evidence, and that gets a prose fix, not an output-format property.
 
-**R9 — no row's outcome asserts more than its own fields support.**
+**R9 — ⛔ CUT 2026-07-29/30.** ~~no row's outcome asserts more than its own fields support~~ — this
+required the contract's outcome truth table to exist. Record what you observed; do not invent an outcome
+vocabulary that needs a schema to police it.
+
+⚠ **The numbering is deliberately UNCHANGED** so that every existing `R2`/`R3`/`R6` citation elsewhere in
+the corpus still resolves. **The live set is R1, R2, R3, R4, R6, R7.**
 
 ---
 
 ## A — acceptance intent
 
-Each item states **what must be demonstrated by execution**. The mechanics of each demonstration are
-settled by §C's contract, and each must be able to fail: for every item, the fixture author states which
-implementation deficiency it catches, and shows it catching it.
+Each item states **what must be demonstrated by execution**, and each must be able to fail: say which
+implementation deficiency it catches, and show it catching it. ⚠ The **mechanics** are the builder's to
+choose and to state in the build report — there is no contract for them to bind to.
 
 **A1** — R3 is load-bearing: a residual artifact that would otherwise change a mutant's outcome does not.
 **A2** — R6's zero-match and multi-match floors fire, distinguishably.
-**A3** — resume is exact under a named interruption boundary.
-**A4** — restore holds after a clean run, after that interruption, and after an uncatchable kill via R7's
-repair operation.
-**A5** — every mutant's captures survive the run and correspond to that mutant.
-**A6** — the real committed include-list validates, with a floor that an accept-and-ignore parser fails:
-all 51 rows, the two axis counts, and the exact mutation text of named rows reproduced.
-**A7** — the retrofit reproduces the committed stage023 tables under §C-9's mapping, exactly on every
-mapped field. ⛔ A disagreement is a finding to report, never a difference to adjust either side into.
-**A8** — R8 holds: every claim in the run's committed output is checkable against the committed files
-alone, and each stated prerequisite is named rather than assumed. A claim that requires a file the run
-does not leave behind fails this.
-**A9** — R9 holds: a row whose fields do not support its outcome is rejected by the contract's own truth
-table.
+**A3** — ⛔ **CUT** (resume, old R5).
+**A4** — restore holds after a clean run and after an error (R7). ⚠ The uncatchable-kill/repair leg is
+**cut**.
+**A5** — every mutant's captures survive the run and correspond to that mutant (R4).
+**A6** — ⭐ **KEEP — the real committed include-list validates, with a floor that an accept-and-ignore
+parser fails:** all 51 rows, the two axis counts, and the exact mutation text of named rows reproduced.
+⛔ **A parser must be tested against the REAL committed file, not a synthetic one**
+[`parsers-need-real-input`].
+**A7** — ⭐ **THE RETROFIT — a cross-check worth running, DOWNGRADED from a blocking gate (2026-07-29/30).**
+Re-run stage023's two ablation axes and compare against the committed
+`notes/stage023_step_h_evidence/results.tsv` (22 `A1_DECLARATION` + 29 `A2_BINDING` rows). ⭐ **The property
+worth having, and it is cheap:** the oracle is **already committed**, so nobody gets to decide the right
+answer afterwards, and a driver that reproduces the old verdicts has demonstrably replaced the harness.
+⛔ **What is NO LONGER required:** exact agreement on every field of the 13-column legacy schema via the
+25-row mapping table in the superseded `CONTRACT.md` §C-9. That is **tooling-replay fidelity** — it cannot
+catch a wrong derivation, and it is beyond the four *measured* properties (R2, R3, R6, A6) this driver exists
+for. ⇒ Run the comparison, **report every disagreement**, and ⛔ never adjust either side to close one; a
+remaining disagreement is a finding, not a blocker. §C-9's mapping table is a **reference** for which legacy
+column corresponds to which new observation — ⛔ not an authority, and nothing in it is binding.
+**A8** — ⛔ **CUT** (old R8's evidence audit; the prose rule replaces it).
+**A9** — ⛔ **CUT** (old R9's truth table).
 
-⚠ **Fixture-suite quality is graded separately and is not driver acceptance.** The requirement that every
-negative fixture be shown failing against a deficient variant grades the *suite*; a driver cannot fail
-it, and the fixture session correctly reported it satisfied before any driver existed. It stays a
-requirement on the fixture deliverable, stated there.
+⚠ **Numbering unchanged, for the same citation reason as R.** **The live set is A1, A2, A4, A5, A6, A7.**
+⛔ Also cut: the whole notion of a separately authored and separately graded fixture suite.
 
 ---
 
-## Evidential note — what motivates R3 and R8, and what survives
+## Evidential note — what motivates R3, and what survives
 
-⚠ Both motivations were measured in this session's gitignored scratch tree. State them as motivation,
-never as reproducible evidence:
+⚠ Measured in a gitignored scratch tree. State it as motivation, never as reproducible evidence:
 - **R3** — in the pre-fix run of stage023's declaration axis, most checker verdicts were freshness
   failures decided by a residual artifact rather than comparisons. The committed `results.tsv` is the
   **corrected** run; the defective one is not in git.
-- **R8** — several claims in this stage's hand-written evidence summary were true of the run directory
-  and false of the commit, and were corrected under review. Only the corrected text is committed.
 
 ---
 
 ## Process constraints
 
-⛔ **Acceptance tooling cannot grade itself** (`development_pipeline.md` checklist 1b) — hence the
-three-session sequence above.
-⛔ **The build boundary is fixed acceptance authorship, not secrecy.** Expected values, reasons,
-item-specific inputs and discriminators may appear in the fixed acceptance material or other
-non-directive material a build session can read; the current A1–A9 oracles are public. They must not
-appear in a build-session directive as an expected answer, reason or premise: a directive states what
-to determine and requires the evidence for that determination. This permission is scoped only to this
-gate — the ablation driver and its acceptance suite. It does not narrow the project-wide rule
-elsewhere, especially for verification and review legs: an expected result or reason remains forbidden
-in a directive or any file reachable by the session.
+⭐ **One builder, one fresh reviewer** (`docs/development_pipeline.md`, Roles table). Whoever writes the
+driver does not review it; the review runs on a **fresh** agent. ⛔ That is the whole separation — there is
+no three-session sequence, no independently frozen acceptance suite, and no "may neither author nor weaken"
+clause.
 
-The process-protected material is `REQUIREMENTS.md`, `CONTRACT.md`,
-`research/pde_ledger_v2/notes/ablation_driver/fixtures_v4.accepted.sha256`, and every regular file under
-`fixtures_v4/`; their bytes and that regular-file inventory must not change, and any symlink there
-fails the gate. Exact identity is checked against the authority's committed `HEAD` bytes; independent
-authorship is the external three-session workflow, not a property inferred from bytes. This process
-rule therefore forbids builder control over the gate's decision criteria without pretending to verify
-who authored them.
+⛔ **The orchestrator owns the mutation target list**, never the builder
+(`docs/development_pipeline.md` per-gate checklist item 6, [`per-tooth-ablation`]). This is the one
+ownership rule the driver's design must not quietly take over.
 
-The authority also lists coupled governed inputs outside the protected set: the dimension definitions
-and pin/comparison tools, the fixed stage023 programs and data, and the legacy A7 tables. Those inputs
-may be edited as authorised dimension-rewrite deliverables; that coupling is accepted. Any governed
-change invalidates the freeze until the orchestrator independently reviews the complete governed diff,
-then updates and commits the authority. Grading uses that committed authority and keeps the protected
-set unchanged. Material outside the protected set can still affect or defeat execution through import
-and startup hooks, executable or Git configuration, and the caller-tree check; no broader claim that
-such material cannot define or affect the observed gate is made.
+⛔ **A directive to the builder still states no expected answer, reason or premise** — it states what to
+determine and requires the evidence for that determination [`never-supply-the-expected-reason`]. ⚠ The
+acceptance oracles here are ordinary committed files and the builder may read them; what is forbidden is
+*supplying the conclusion* in the directive.
 
-⚠ **Recorded cost.** An implementer can inspect the available oracles and special-case every disclosed
-input and expected observation. Such an implementation can pass A1–A9 without establishing general
-behavior beyond the exercised cases. The frozen gate catches it only where the special case disagrees
-with an exercised discriminator; hardcoding that reproduces every accepted observation is outside this
-gate. The finite public gate is also self-identifying through its fixed markers and invocation
-environment, and A7's process remains filesystem-capable of reading the real legacy oracle outside its
-mirror. These limitations are accepted and unmitigated. Re-open them if the threat enters scope, using
-an opaque post-build conforming list or code review for the hardcoding threat, as `CONTRACT_NOTES.md`
-lines 98–102 records. The marker and filesystem exposures are separate; randomising marker names alone
-would not close either.
+⚠ **A PROSE rule, deliberately not an engineering requirement:** whatever a run leaves behind must claim
+only what the **committed** files support, not what was true of the scratch directory it ran in. Four claims
+in stage023's hand-written evidence summary were true of the run and false of the commit and were corrected
+under review. ⛔ **Do not convert this into an output-format requirement again** — that conversion is what
+pulled in transitive read sets, replay capsules and platform prerequisites and took a ~100-line tool to a
+full interface contract. **A prose defect gets a prose fix** [`fix-defect-at-its-own-level`].
 
-⚠ **Known A2 limitation.** `A2_COMPLETION_WAIT_SECONDS` is a flat suite constant rather than a value
-derived from A2's configured allowances. This is harmless for the frozen A2 rows, which are both
-unusable and invoke no children, but it would become binding if that fixture gained a usable row.
+⚠ **Recorded cost, kept because it is honest:** an implementer who reads the oracles can special-case every
+disclosed input and pass every item without establishing general behaviour. ⛔ **That is a motivated-builder
+threat, and this project does not harden against it** — the operative risk is drift and honest error
+(`docs/development_pipeline.md`, *THE POSTURE*). The fresh review leg is the mitigation, and it is enough
+for a two-person project.
 
-⛔ **Ablation-driver acceptance waits are supervised and terminate under the POSIX process semantics
-assumed here; A7 has no aggregate policy deadline.** This rule is scoped to the ablation driver and its
-acceptance suite and does not replace flat timeout rules for other repository scripts. Suite waits —
-child execution, polling, harness subprocess or termination fallback — have explicit finite allowances
-except for the post-`kill()` child-reaping wait inside `subprocess.run`; under the POSIX semantics
-assumed by `CONTRACT.md` line 449, that standard wait is practically terminating without bespoke
-machinery. Let \(R\) be the finite multiset of row attempts across the selected acceptance runs,
-\(P_r\) and \(C_{r,c}\) their configured producer and checker allowances (zero when that child is not
-invoked), \(G_r\) the bounded per-row progress grace (zero where none applies), \(H\) the finite sum of
-all other explicit harness subprocess, polling and wait allowances, and \(S\) the finite sum of all
-explicitly bounded termination and kill-fallback allowances. Provided signal delivery and child
-reaping behave under those POSIX assumptions, the configured wait-time component satisfies the
-practical allowance bound
-\[
-T_{\mathrm{suite,wait}} \leq
-\sum_{r\in R}\left(P_r+\sum_c C_{r,c}+G_r\right)+H+S.
-\]
-A7 must report only fully audited, durably captured rows as progress, preserve and report any audit
-exception as an audit failure, and enforce its per-row inactivity guard. A run that silently spins or
-exceeds any defined allowance without the required progress is a failure to stop and report; so is a
-wrapper exit 124. Subject to the explicit allowances and the POSIX child-reaping assumption, elapsed
-wall-clock time alone neither passes nor fails A7.
+⛔ **Scripts get `timeout 600`; a 124 is a failure to reformulate, never a raised cap**
+[`script-timeout-policy`]. ⚠ The bespoke suite-wide wait-allowance bound that used to live here is **cut**
+(2026-07-29/30) along with the suite it bounded.

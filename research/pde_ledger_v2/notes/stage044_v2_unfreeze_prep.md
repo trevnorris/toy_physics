@@ -46,7 +46,10 @@ Replace `S_hold` (frozen level-set pin) with a dynamical sleeve-surface action `
 ## Consequence + process
 - The 3 new knobs bump the parameter count → deferred committed re-count to **046** (alongside `Z_χ`); add register
   rows for `κ_bend`/`κ_anchor`/collar-tension.
-- Full new-derivation gauntlet (foundational) + GLM-5.2 tertiary. Author 044-v2 directive → Codex→Grok→Codex bookend
+- ⚠ **Process updated 2026-07-29/30** ([[feedback-physics-not-ceremony]]): ⛔ ~~full new-derivation gauntlet + GLM-5.2
+  tertiary + Codex→Grok→Codex bookend~~ ⇒ **ONE design-review pass on a fresh reviewer, TWO mutually
+  independent fresh review legs (each fidelity + per-tooth ablation — a stage's math is physics-bearing,
+  amended 2026-07-30), physics leg BLOCKING.** Author 044-v2 directive → one design-review pass
   → dual-engine build re-deriving the verdict with `S_Σ` → the existing 044 teeth (now certifying, as COMPUTED
   results, that the dedup/`Z_χ`/wave-speeds survive) + NEW teeth (`S_Σ` dim-homogeneity, the free-boundary EL law, the
   no-`h`-coupling firewall, bending-term properties) → deliverables → commit. 044's note/card: fixed-Σ MVP → dynamical

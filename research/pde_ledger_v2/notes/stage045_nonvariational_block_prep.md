@@ -10,8 +10,8 @@ Part VII is IN PROGRESS: **043 (VII-1, count-as-range) + 044 (VII-2a, conservati
 **VII-2b = the non-variational complement of 044's conservative action** — the SECOND half of the spine. 044 assembled the
 conservative `S_assembled` and PROVED it source-free (contains no drain); 045 builds the explicit **non-variational** drain /
 return / BC / force-partition machinery that sits *outside* the action. Class: SYNTHESIS, dual-engine (on the global closure
-identities + dimensional homogeneity) + prose (on the BC taxonomy). Foundational → FULL new-derivation gauntlet + **GLM-5.2
-tertiary**. ⚠ The G0 card is DRAFT-v0 → 045 assembles at the **structure / completeness-floor level only** (no committed closed
+identities + dimensional homogeneity) + prose (on the BC taxonomy). Foundational — ⚠ but see §Process: ~~FULL new-derivation gauntlet + **GLM-5.2
+tertiary**~~, retired 2026-07-29/30. ⚠ The G0 card is DRAFT-v0 → 045 assembles at the **structure / completeness-floor level only** (no committed closed
 action; the shared throat solve stays SIM-DEFERRED).
 
 ## ⭐ THE DRAIN-PLACEMENT — DECIDED by the user (2026-07-24): the drain is the DYNAMICAL wall, NOT a frozen wall
@@ -89,12 +89,15 @@ EM departs Maxwell).
 5. `research/pde_ledger_v2/notes/parameter_register.md` — the drain/return knobs already registered (`Γ_B` line 159; any
    `Γ_0`/`R_0`/controller rows); 045's new register rows start at **R98** (044 ended at R97).
 
-## Process (full new-derivation gauntlet + GLM tertiary — 045 is foundational)
-Author directive → **Codex→Grok→Codex bookend** → **drain-placement CONFIRM** (option (a) dynamical `Γ_B` is DECIDED — the
+## Process — ⚠ UPDATED by the user decision of 2026-07-29/30
+⛔ **Retired:** the Codex→Grok→Codex bookend, the GLM-5.2 tertiary, and the three-leg tri-review. ⇒ **ONE design-review pass on a
+fresh reviewer; TWO mutually independent fresh review legs (each fidelity + adversarial per-tooth + transliteration screen — a
+stage's math is physics-bearing, amended 2026-07-30); the physics leg BLOCKING.**
+Author directive → **one design-review pass** → **drain-placement CONFIRM** (option (a) dynamical `Γ_B` is DECIDED — the
 frozen-wall (b) is ruled out; briefly confirm the re-hosting scope + the `S_hold`-not-a-partial-freeze check with the user, NOT
 a full open mini-gate) → build (dual-engine, both exit 0,
-per-tooth ablation, independent `.wl`) → arbiter re-run → fresh-agent tri-review (fidelity + adversarial per-tooth +
-transliteration screen) → **GLM-5.2 tertiary** → deliverables (note + `\StatusOpen` card into the Part-VII appendix + register
+per-tooth ablation, independent `.wl`) → arbiter re-run → **TWO mutually independent fresh review legs** (each fidelity +
+adversarial per-tooth + transliteration screen; the second launched without the first's findings) → ⭐ **the BLOCKING physics leg** → deliverables (note + `\StatusOpen` card into the Part-VII appendix + register
 rows after R97) → deliverables fidelity-verify firewall → PDF rebuild → commit + tracker/memory sync.
 
 **Carry the 044 process wins (all validated to work):**
@@ -106,14 +109,14 @@ rows after R97) → deliverables fidelity-verify firewall → PDF rebuild → co
 - ⚠ **ARCHIVE all prior `OUT_*` logs before each fresh Codex confirm** + an ISOLATED prompt forbidding `OUT_*`/archive reads
   (prevents the stale-log contamination that hit 043).
 - **setsid-detached launches + the Monitor tool** (bounded poll for the done-marker; `run_in_background` waiters get reaped).
-- **Thin-orchestrator delegation**: directive-draft-review-distill / bookend / build-monitor / tri-review / deliverables /
+- **Thin-orchestrator delegation**: directive-draft-review-distill / design-review / build-monitor / review-leg / deliverables /
   tracker-sync all to sub-agents returning compact verdicts; distill every heavy `OUT_*`/build log via a fresh agent (keep
   transcripts out of context).
 - **Deliverables fidelity-verify firewall** (the last honesty gate — caught nothing to fix in 044 but is load-bearing).
 - **Mathematica ≤2 seats** (run `.wl` sequentially; the ablation runner invokes `.wl` per mutation — mind seat contention with
   an arbiter `.wl` run); **Grok may be usage-limited** → substitute a fresh independent compute agent.
-- **GLM-5.2 tertiary is HELD-for-user-confirm** (standing confirm-first) — surface it at the gate: run on 045 (and optionally
-  the still-owed 044 GLM) only on the user's OK.
+- ⛔ ~~**GLM-5.2 tertiary is HELD-for-user-confirm** — surface it at the gate; the still-owed 044 GLM.~~ **RETIRED
+  2026-07-29/30:** there is no tertiary pass and nothing is "still owed". One fresh reviewer per stage.
 - `/var/projects/toy_physics` NOT `toy_projects` (the attractor bit ~5× in the 044 run — stay vigilant; a `cd` traversing the
   wrong name FAILS, caught by `|| cd <correct>` fallbacks).
 

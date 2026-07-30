@@ -13,7 +13,7 @@
 > **⭐ KEY: Part VII is a genuinely NEW SYNTHESIS, not a reshape.** Parts III–VI each reshaped an existing `pathA_*` gate into
 > ledger stages. Part VII has (mostly) NO single `pathA` source to reshape — it ASSEMBLES Parts I–VI into the unified structure
 > and writes the permanent falsification record. So: (a) it needs I–VI fully assembled (they are — stages 001–042); (b) it gets
-> the **FULL new-derivation gauntlet + a GLM-5.2 tertiary + a per-Part gate AND per-stage gates** (RESUME §4/§6, richer than the
+> ~~the **FULL new-derivation gauntlet + a GLM-5.2 tertiary + a per-Part gate AND per-stage gates**~~ ⚠ **superseded 2026-07-29/30, see §Process** (RESUME §4/§6, richer than the
 > reshape process); (c) the dual-engine contract ADAPTS per stage — the unified-equation-set / dimensional-firewall / `χ_Q`
 > stages are computable (dual-engine), the registers / sim-handoff are documentary (doc-fidelity review, like stage029). Authored
 > under the **"ledger = surviving solution only"** rule.
@@ -73,8 +73,8 @@ irreducible codimension count. Uses the knob audit's `pathA_40` `Δr=2` codimens
 (044 the conservative action, 045 its non-variational complement + BCs — 045 references 044). 049 (χ_Q) is independent and MAY run
 early to bank a quick dual-engine win. 046/047/048 assemble from the spine.
 **Dual-engine vs documentary (ratified):** 043/044/045/046/049 are computable (dual-engine, per-tooth ablation, independent `.wl`);
-047 registers + 048 sim-handoff are **documentary** (doc-fidelity / citation-integrity review, NO per-tooth ablation, like stage029).
-**GLM-5.2 tertiary:** on the foundational stages 043 (the count/range) + 044 (the parent action) + 045 (the non-variational block).
+047 registers + 048 sim-handoff are **documentary** (doc-fidelity review, NO per-tooth ablation, like stage029) — ⚠ citation integrity is **in** the manifest semantic core (`manifests/MANIFEST_README.md` §SCOPE, corrected 2026-07-30).
+⛔ ~~**GLM-5.2 tertiary:** on the foundational stages 043 + 044 + 045.~~ **RETIRED 2026-07-29/30** — one fresh reviewer per stage; no tertiary pass, and none is owed on 043/044.
 
 ---
 
@@ -119,12 +119,18 @@ early to bank a quick dual-engine win. 046/047/048 assemble from the spine.
 
 ## Process (RESUME §4/§6 — RICHER than the reshape process)
 
-Part VII gets the **full new-derivation gauntlet** (not just the reshape bookend): per computable stage — Codex→Grok→Codex
-directive bookend → per-stage user gate → dual-engine build (both exit 0, independent `.wl`) → arbiter re-run → fresh-agent
-tri-review (fidelity + adversarial per-tooth ablation) → deliverables + fidelity-verify → commit + tracker sync — PLUS a
-**GLM-5.2 tertiary** review pass on the foundational stages, and the retained **per-Part + per-stage user gates**. Documentary
-stages (046 registers / 047 sim-handoff) get the adapted doc-fidelity review (citation-integrity, NO per-tooth ablation), like
-stage029. **Carry the Part-IV/V/VI process wins:** the ⛔ NO-CAN'T-FAIL-CONJUNCTS build-prompt ban; the emphatic anti-give-up
+⚠⚠ **PROCESS UPDATED — user decision 2026-07-29/30. This is what 045–049 run.** ~~the full new-derivation gauntlet:
+Codex→Grok→Codex directive bookend → per-stage user gate → … → PLUS a **GLM-5.2 tertiary** on the foundational stages and the
+retained per-Part + per-stage user gates.~~ ⇒ Per computable stage: **ONE design-review pass on a fresh reviewer** → dual-engine
+build (both exit 0, independent `.wl`, per-tooth ablation) → **arbiter re-run** → ⭐ **TWO mutually independent fresh review legs**
+(each doing fidelity + adversarial per-tooth, target list owned by the orchestrator; the second launched without the first's
+findings — a stage's math is **physics-bearing**, amended 2026-07-30, `docs/development_pipeline.md` Roles table + Phase 4(b)) →
+⭐⭐ **the BLOCKING physics leg** → deliverables +
+fidelity-verify → commit + tracker sync. ⛔ No bookend, no GLM/Grok tertiary, no automatic per-stage gate — stop for the user at
+a decision, a blocking finding or a no-go. Documentary
+stages (**047** registers / **048** sim-handoff — per the ratified table above; an earlier draft here said 046/047, which is the
+pre-split numbering) get the adapted doc-fidelity review (NO per-tooth ablation, ONE fresh leg), like
+stage029 — ⚠ citation integrity is **in** the manifest semantic core (`manifests/MANIFEST_README.md` §SCOPE, corrected 2026-07-30). **Carry the Part-IV/V/VI process wins:** the ⛔ NO-CAN'T-FAIL-CONJUNCTS build-prompt ban; the emphatic anti-give-up
 busy-poll rule on every bookend/verify gauntlet (sub-agents are one-shot — `feedback_subagent_marathon_infra`); the
 bounded-manifest acceptance ruling (stop the self-accounting-tooth churn); the deliverables fidelity-verify firewall (it caught
 the R14 + R7/R8 seeded over-claims in Part VI — Part VII's registers are exactly where seeded-vs-built reconciliation matters
@@ -149,7 +155,7 @@ most); Grok may be usage-limited → substitute a fresh independent compute agen
 3. **Per-stage dual-engine vs documentary** partition (043/044/045/048 computable; 046/047 documentary).
 4. **The 2 parked decisions** — resolve at 043 (VII-1), or as a pre-gate decision with the user? (They are the user's calls —
    surface both at the gate with the knob-audit context.)
-5. **GLM tertiary scope** — which foundational stages get the GLM-5.2 pass (likely 044 the unified equation set + 043 the count).
+5. ~~**GLM tertiary scope**~~ ⛔ **MOOT (2026-07-29/30): there is no tertiary pass.** One fresh reviewer per stage.
 
 ---
 

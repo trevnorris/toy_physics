@@ -1,5 +1,10 @@
 # Ablation-driver conformance fixtures report
 
+> ⛔⛔ **FULLY SUPERSEDED — USER DECISION, 2026-07-29/30.** The driver was re-scoped small and the whole
+> conformance-fixture apparatus was cut: **no contract, no frozen fixtures, no three-session shape, no byte
+> authority.** `fixtures_v4/` and `fixtures_v4.accepted.sha256` still exist on disk but gate nothing. Live
+> spec: `REQUIREMENTS.md` (v5), live set **R1, R2, R3, R4, R6, R7**. Read this file as history only.
+
 ## ⚠ STATUS BANNER (added 2026-07-29) — read before using any part of this report
 
 - **Written against requirements v1.** The accepted requirements are now **v4**

@@ -10,18 +10,27 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ## 0. STATUS / NEXT ACTION
 
-> **⭐⭐ LIVE STATE (2026-07-09) — ✅ Phase A COMPLETE; ▶ Phase B IN PROGRESS on branch `ledger-v2-rebuild`.** REBUILD the ledger FROM
-> SCRATCH at `research/pde_ledger_v2/` (NOT fold into old 253-stage). Front door = repo `STATUS.md` ▶ RESUME HERE (canonical per-stage
-> detail); plan = `notes/ledger_v2_rebuild_plan.md` (read FIRST) + `notes/ledger_v2_blueprint.md` (the APPROVED build directive);
-> conceptual = `docs/conceptual_foundation.md` ⭐ v8. **Phase B progress:** B1 blueprint + B2 machinery + B3 two-stage pilot DONE;
-> **✅ Part I (medium) COMPLETE (004–007); ▶ Part II (gravity) BUILD IN PROGRESS — registration at count 16** (008–016 built + tri-review
+> **⭐⭐ LIVE STATE — ⛔ THIS BLOCK IS NOT THE ROUTER. Read `STATUS.md` ▶ YOU ARE HERE for where the program actually is, and
+> `docs/development_pipeline.md` for the process.** Both are maintained; this block is not, and the paragraph below is a **2026-07-09
+> snapshot kept as history**. ⛔ **Three routes it used to hand a fresh session are stale and must not be followed:**
+> ~~NEXT = `ledger_stage017`~~ (Parts I–VI are COMPLETE and Part VII is 2 of 7; the current front is the **dimension rewrite**, `STATUS.md`);
+> ~~the per-stage `Codex→Grok→Codex` directive review → user gate → tri-review pipeline~~ (**retired 2026-07-29/30** — the live process is
+> **one builder, one fresh reviewer**, with a **second independent review leg on physics-bearing artifacts** and the **physics leg
+> blocking**; `docs/development_pipeline.md` owns it); and ~~`conceptual = docs/conceptual_foundation.md` ⭐ v8~~ (**superseded** — the
+> model lives in `docs/model_map.md`, and reading the retired doc re-confuses).
+>
+> **Snapshot, 2026-07-09 (history — ✅ Phase A COMPLETE; Phase B then IN PROGRESS on branch `ledger-v2-rebuild`).** REBUILD the ledger FROM
+> SCRATCH at `research/pde_ledger_v2/` (NOT fold into old 253-stage); plan = `notes/ledger_v2_rebuild_plan.md` +
+> `notes/ledger_v2_blueprint.md` (both at **repo-root** `notes/`, both carrying supersession banners on their process sections).
+> **Phase B progress as of that date:** B1 blueprint + B2 machinery + B3 two-stage pilot DONE;
+> **✅ Part I (medium) COMPLETE (004–007); Part II (gravity) BUILD IN PROGRESS — registration at count 16** (008–016 built + tri-review
 > CLEAN + committed; 013 = first Part-II CALIBRATED stage `{μ_η,T_w,β}`, 014 = first numeric stage, 015 = pathA_31 fold COMPLETE + 2nd
 > calibration-adding stage `Vp0/ℓ_c`, **016 = pathA_32 `ISOTROPY_CALIBRATED` 1/2 EARNED = the ℓ=2 SO(3) covariance theorem (Gram=I₅,
-> computed λ_m=6, K₂ angular stiffness), ZERO new knobs (edge R34), lands the joint as PARTIAL**). **▶ NEXT = `ledger_stage017`** (pathA_32
+> computed λ_m=6, K₂ angular stiffness), ZERO new knobs (edge R34), lands the joint as PARTIAL**); then `ledger_stage017` (pathA_32
 > `ISOTROPY_CALIBRATED` 2/2 — grouped-P2 lane isotropy: raw-D=0 PRIMARY + normalized-u + the calibration partition + exports the ℓ=2 port
-> kernel; CONSUMES 016) → finish Part II (018–029) → III–VII → Phase C (redteam) → overwrite old ledger via branch `--no-ff` merge. Per-stage
-> pipeline (Codex→Grok→Codex directive review → user gate → Codex builds → dual-engine → tri-review + per-tooth ablation → register) +
-> settled decisions in `STATUS.md` ▶ RESUME HERE and the blueprint.**
+> kernel; CONSUMES 016) → finish Part II (018–029) → III–VII → Phase C (redteam) → overwrite old ledger via branch `--no-ff` merge.
+> ⚠ Every "tri-review" / "Codex→Grok→Codex" / "GLM tertiary" record below is a **historical** description of how that stage was built,
+> not an instruction for the next one.**
 > - **⭐ Phase A1 EARNED (`pathA_43` = `DENSITY_PORT_HOSTED`, 2026-07-06).** The ℓ=2 quadrupole radiative-port numerator `N0` is
 >   DENSITY-NATIVE: `N0_den ∝ (η_φ ϖ_q2 + η_q λ_c)²/(λ_c² − ϖ_Φ2 ϖ_q2)²` — a genuine two-port over the physical `(q2` wall [pathA_32]`,
 >   Φ2` bulk-density [pathA_29]`)` modes, provably vector-free (computed taint `{continuity_interface, pathA_29_bulk, pathA_32_wall}`,

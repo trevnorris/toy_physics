@@ -131,8 +131,12 @@ generically). The drain-sector derivation is **PAUSED**.
 4. **Throat sector (§4)** — drain-sector + self-selection equations (can run in parallel with §2/§3; existence already supported).
 5. **Integration (§5)** — assemble + whole-system dim check + clear debt + write the sim hand-off spec.
 
-Each sector item runs through the **standard gauntlet** (directive → Codex design-review xhigh → GLM single pass → fold → Codex
-confirm → dual-engine execute → tri-review with adversarial-with-ablation → user gate), per `STATUS.md` process discipline.
+Each sector item runs through the **standard process** (directive → **ONE** design-review pass on a fresh reviewer → fold →
+dual-engine execute → arbiter re-run → **TWO mutually independent fresh review legs** doing fidelity + per-tooth ablation, because a
+sector item's math is **physics-bearing** → the **blocking physics leg**), per `docs/development_pipeline.md`. ⛔ **Retired
+2026-07-29/30:** the Codex→GLM→fold→Codex bookend, the fixed three-leg tri-review, and the per-gate user gate — stop for the user at
+a decision, a blocking finding or a no-go, not at every item. ⚠ The second leg (restored 2026-07-30) is a second **independent
+reader**, not a second model in a sequence; prose and tooling still get one.
 
 ---
 

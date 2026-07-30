@@ -117,7 +117,14 @@ Codex designs + codes + runs **dual-engine** (SymPy + Mathematica), iterating to
 
 ### Phase 6 — Gate + bank
 - **One gate at a time** — finish and bank a gate before starting the next, because a math error cascades and finishing gate 1 can invalidate gate 2's premise. ⚠ **Not a per-chunk user gate** (removed 2026-07-29/30): stop for the user at a *decision*, a blocking finding, or a no-go — not at every chunk boundary [`sequential-audit-chunks`].
-- **Commit only when the user asks** (squash small follow-up fixes into the prior commit) [`squash-followup-fixes`].
+- ⭐ **Commit whenever it makes sense — commits are cheap** (user decision, 2026-07-30). ⭐⭐ **ALWAYS commit
+  BEFORE a destructive or hard-to-reverse change**: a trim, a deletion, a restructure, a mass rewrite. The
+  orchestrator does not wait to be asked. ⚠ The failure this prevents is real and was measured: a ~130-line
+  trim was applied to an **untracked** file under the premise "git preserves what you remove" — which was
+  **false**, because nothing had ever been committed. Squash small follow-up fixes into the prior commit
+  [`squash-followup-fixes`].
+  ⛔ Unchanged: **a builder/sub-agent still does not commit** — the orchestrator commits explicit paths after
+  reviewing the diff. That rule keeps the diff reviewable and is a different rule from this one.
 - Sync **`STATUS.md` + `software/stage1_solver/decisions/13` §0 at every milestone** [`status-md-front-door`]; update memory.
 
 ---

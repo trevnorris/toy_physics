@@ -107,6 +107,41 @@ controls, assertions, or non-dimensional computed objects:**
 
 ---
 
+## ⭐ THE OUTPUT SHAPE THE CENSUS MUST PRODUCE (user framing, 2026-07-30)
+
+Build the census so its output **IS this list**, not a set of provenance codes someone then re-sorts:
+
+1. **IRREDUCIBLE** — cannot be derived even hypothetically. Expected to be the brane/bulk defining
+   properties plus a few.
+2. **CALIBRATED** — fixed against known physics. `G`, `c`, `ℏ`, `ℓ_P` are convention and calibration
+   per the standing rule; only held-out **dimensionless** ratios test the model.
+3. **EMERGENT** — everything that follows from tiers 1 and 2.
+
+⚠ **TIER 1 SPLITS THREE WAYS, and that split is the whole point:**
+- not derived **YET** — debt; a reduction someone could actually do
+- not derivable **WITHIN this framework** — structural
+- not derivable **IN PRINCIPLE** — a genuine postulate about the medium
+
+stage043 already gestures at this (`DERIVED-in-form` vs `PENDING-debt`). ⭐ That is a better tier-1
+taxonomy than the abstract six provenance states in P0-1 — reconcile them, and prefer this one where
+they disagree. A census returning "irreducible: 43" is nearly useless; one returning "of 43: N debt,
+M structural, K postulates" says exactly where to push.
+
+⭐ **THE GAP THAT MAKES THIS WORTH DOING.** stage043 bounds the irreducible count at roughly **40–49**
+across a **152-ID manifest**. The hypothesis expects single digits to low teens. So either most of
+those 40-odd are derivable-but-underived, or the medium needs far more specification than the physical
+picture suggests. ⛔ Do not assume which — **that gap IS the result.**
+
+⚠ **WHY IT MATTERS BEYOND BOOKKEEPING:** the calibrate-predict surplus (held-out matches minus tuned
+knobs) has **no denominator** until tier 1 is sized. "Does the model predict anything" is not
+answerable before this.
+
+⛔ **VERIFY FIRST:** the 40–49 range, the 152-ID manifest and the `DERIVED-in-form`/`PENDING-debt`
+split come from `STATUS.md` and a review summary, **not** from reading stage043's note. The session
+that wrote this was wrong about several confidently-held facts.
+
+---
+
 ## ▶ THE WORK
 
 ⭐⭐ **DECIDED (user, 2026-07-30): the CENSUS is the front; the conversions continue BEHIND it.** ⛔ The

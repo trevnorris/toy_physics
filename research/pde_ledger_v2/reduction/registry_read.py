@@ -51,6 +51,7 @@ class Quantity:
     scope: tuple[str, ...]
     regime: tuple[str, ...]
     state: str
+    counting_axis: str
     dimension: tuple[int, int, int]
     aliases: tuple[str, ...]
     raw: Mapping[str, Any]
@@ -152,6 +153,7 @@ class Registry:
             for qid, quantity in self.quantities.items()
             if quantity.state == "live"
             and self.active_regime in quantity.regime
+            and quantity.counting_axis == "continuous-model"
             and qid not in admitted_outputs
         )
 
@@ -193,6 +195,7 @@ class Registry:
                 scope=tuple(str(value) for value in row["scope"]),
                 regime=tuple(str(value) for value in row["regime"]),
                 state=str(row["state"]),
+                counting_axis=str(row["counting_axis"]),
                 dimension=dimension,  # type: ignore[arg-type]
                 aliases=tuple(str(value) for value in row["aliases"]),
                 raw=deepcopy(dict(row)),
@@ -353,6 +356,10 @@ class Registry:
         for quantity in self.quantities.values():
             for locus in quantity.raw["source_loci"]:
                 yield quantity.qid, locus
+            yield (
+                f"{quantity.qid}.dimension.provenance",
+                quantity.raw["dimension"]["provenance"]["source_locus"],
+            )
         for relation in self.relations.values():
             yield f"{relation.relation_id}.source_locus", relation.raw["source_locus"]
             yield f"{relation.relation_id}.execution_locus", relation.raw["execution_locus"]
@@ -508,10 +515,24 @@ class Registry:
 
     @property
     def active_variables(self) -> tuple[sp.Symbol, ...]:
+        """Live variables on the continuous-model axis, after quotienting conventions."""
         return tuple(
             self.symbols[qid]
             for qid, quantity in self.quantities.items()
-            if quantity.state == "live" and self.active_regime in quantity.regime
+            if quantity.state == "live"
+            and self.active_regime in quantity.regime
+            and quantity.counting_axis == "continuous-model"
+        )
+
+    @property
+    def convention_variables(self) -> tuple[sp.Symbol, ...]:
+        """Live coordinates reported on the separate convention-orbit axis."""
+        return tuple(
+            self.symbols[qid]
+            for qid, quantity in self.quantities.items()
+            if quantity.state == "live"
+            and self.active_regime in quantity.regime
+            and quantity.counting_axis == "convention-orbit"
         )
 
     def require_admitted(self, relation_id: str) -> Relation:
@@ -529,7 +550,7 @@ class Registry:
         variables: Sequence[sp.Symbol] | None = None,
     ) -> int:
         """Generic finite-scalar dimension = ambient count - symbolic Jacobian rank."""
-        selected_variables = tuple(variables or self.active_variables)
+        selected_variables = tuple(self.active_variables if variables is None else variables)
         selected_constraints = tuple(
             sp.simplify(expression)
             for expression in (
@@ -695,6 +716,10 @@ def main() -> int:
         if not decision.admitted:
             print(f"REFUSED: {relation_id}: {decision.reason}")
     print("RESIDUE:", ",".join(registry.residue))
+    print(
+        f"CONVENTION_ORBIT: dimension={len(registry.convention_variables)} "
+        f"coordinates={','.join(str(variable) for variable in registry.convention_variables)}"
+    )
     print(
         f"DIMENSION: ambient={len(registry.active_variables)} "
         f"after={registry.constraint_dimension()} "

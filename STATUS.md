@@ -5,9 +5,14 @@ notes. History is in git. If this file starts growing narrative, cut it.
 
 ---
 
-## ▶ YOU ARE HERE (2026-07-29)
+## ▶ YOU ARE HERE (2026-07-30)
 
-**Current front: the DIMENSION REWRITE — 7 of 30 scripts converted** (stage004, 011, 012, 013,
+**Current front: the DERIVED-vs-DECLARED CENSUS** (user decision, 2026-07-30) — how much of this ledger
+computes something rather than asserting it. ⛔ **Its method, the substrates it extends, and its
+spec → pilot → fan-out sequence have ONE canonical home — do not restate them here:**
+`research/pde_ledger_v2/_scratch/NEXT_SESSION.md`, ▶ THE WORK / **P0**.
+
+**Continuing BEHIND it: the DIMENSION REWRITE — 7 of 30 scripts converted** (stage004, 011, 012, 013,
 016, 018, **023**) — and ⭐ **all seven are WAIVER-FREE**: `ARTIFACT_NAME_WAIVERS` is empty, so every
 converted stage compares every name it emits, with no exemptions.
 ⚠ That is a **coverage** statement, not a strength one.
@@ -34,19 +39,25 @@ that line-vs-volume debt stays invisible — a measured consequence of naming de
 - **physics-verification evidence** — ⚠ **quantity-level; there is NO defensible stage count yet.**
   Recorded: stage012 **14 CORRECT / 0 WRONG**, stage013 **9 / 0**, all six emitted stage018
   records, the three formerly-waived 011/012 records, and ⭐ **stage016's tracked 21 / 0 verdict**
-  (12 declared literals in both engines, **0** computed from any physical input). Those pre-§4-c1 results were never
+  (**12** declared literals in both engines plus **9** computed, **0** of the 9 from any physical
+  input). Those pre-§4-c1 results were never
   normalised into per-stage tracked verdict tables, so **do not call whole stages verified and do
   not infer a "25 remaining" complement.** §4-c1 exists so this becomes countable going forward.
 
 ⛔⛔ **DUAL-ENGINE AGREEMENT IS VACUOUS WHERE BOTH SIDES ARE HAND-DECLARED LITERALS — recorded
-2026-07-30, and it is the most important thing on this page.** **stage023 is 29/29 literals on both
-sides** (22 declarations + 7 targets typed into *both* engines; the 7 "computed" records are live
-`dimOf` walks, but over exactly those literals and no other dimensional input). Beside the stage016
-measurement above — **12 declared literals in both engines, zero computed from a physical input** —
-that means the comparator on these stages catches a **transcription split between two typed copies of
-the same numbers, and nothing else**. ⇒ **Nothing remaining independently RE-DERIVES the physics
-outside one fresh agent.** ⛔ Do not soften this and ⛔ do not read a fix into it: it is stated here
-because it is the reason the **derived-vs-declared census is the next front**.
+2026-07-30, and it is the most important thing on this page.** ⚠ **State it at the width the
+measurement supports** (matching `_scratch/NEXT_SESSION.md`): **stage023 emits 29 records — 22 typed
+`SOURCED_DIMS` declarations plus 7 live `dim_of` walks**, and those walks run over exactly those 22
+literals and no other dimensional input. **stage016 emits 21 — 12 typed rule-table entries plus 9
+computed** by `dim_of` over real expression inputs, but again sourced only from its own declarations
+(and **3 of the 9 are self-referential**, walking a declaration back to the constant that defines it).
+⛔ It is **not** "29/29 literals" and **not** "zero computed" — both overstate. What holds is that **no
+dimensional input enters from outside the stage's own typed declarations**, so the comparator on these
+stages catches a **transcription split between two typed copies of the same numbers, and nothing
+else**. ⇒ **Nothing remaining independently RE-DERIVES the physics outside one fresh agent.** ⛔ Do not soften this and ⛔ do not read a fix into it: it is stated here
+because it is the reason the **derived-vs-declared census IS the front** (decided 2026-07-30).
+⚠ **Read it beside the cross-check measurement above, not instead of it** — the comparator is still the
+sole instrument against a relabelled basis, so this is ⛔ not licence to cut it.
 
 Cross-engine agreement is necessary and **not sufficient** — proven twice: it is blind to a
 same-dimension different-quantity merge, and to a shared wrong declaration. The physics leg is
@@ -74,13 +85,16 @@ Evidence: stage note §1.6 (§4-a enumeration), §1.7 (§4-c1 physics verdict), 
 its own route (`DIMENSION_REWRITE.md` §1), which is why the comparison is a permanent standing cross-check.
 ⚠ Read that as the **authoring rule** it is — §1's own honest statement governs: a green comparator shows
 **two implementations agree, not that they were reached independently**, and git establishes no order.
-**▶ NEXT CONVERSION, per the recorded conversion order (`DIMENSION_REWRITE.md` §8):** (1) the
+**▶ NEXT CONVERSION** — ⚠ next *within this workstream*, which now runs **behind** the census; the order
+and hazards below stand unchanged — **per the recorded conversion order (`DIMENSION_REWRITE.md` §8):** (1) the
 stage027-shape decision, (2) 027, (3) 021 (heaviest). Detail and the measured validator/harness hazards
 are in `DIMENSION_REWRITE.md` §8/§9.
 ✅ **The ablation-fixture FREEZE AUTHORITY IS RETIRED** (user decision, 2026-07-29/30) — with it, the
 coupling that made nine live dimension-rewrite paths untouchable. Convert freely; nothing here is frozen,
 byte-perfect or under a custody rule. See `DIMENSION_REWRITE.md` §4.
-**▶ NEXT BUILD — a different queue, not a competing answer. It has TWO items, in this order:**
+**▶ NEXT BUILD — ⚠ INSIDE THE DIMENSION-REWRITE WORKSTREAM, which runs BEHIND the census; this is not
+the front and not a competing answer to "what is next".** A different queue within that workstream,
+TWO items, in this order:
 **(1) the ablation driver**, **RE-SCOPED SMALL** (user decision, 2026-07-29/30, `DIMENSION_REWRITE.md`
 §12b(b)): mutate a declaration, confirm the declared assert fires, record it — reviewed by one fresh
 agent. ⛔ No contract, no frozen fixtures, no three-session shape. Requirements (trimmed) at
@@ -199,7 +213,19 @@ and it never invokes the comparator or generator.
 decisions REOPENED).** Several recorded conclusions — three waivers, four "impossible" stages, a
 coverage estimate — were correct only under constraints since lifted, and will read as settled.
 
-**Why this is the front:** ⭐ **one shared import, so every script's dimensions are written in ONE
+**Why the CENSUS is the front:** ⭐ **nothing that survives independently re-derives the physics** (the
+block above), so how much of the ledger *computes* rather than *asserts* is currently unknown — and
+⭐ **Part VII's stage046 needs a calibration map of this kind**: its row in
+`research/pde_ledger_v2/notes/part7_integration_atomic_split.md` requires *every constant
+DERIVED/INPUT/gap/benchmark*. ⇒ Not new work bolted on. ⚠ **An OVERLAP, not an equivalence — do not
+say 046 is blocked on exactly this map:** that same row also consumes **stage043's range** and the
+corrected R1 inventory, 046 **assembles from the 044→045 spine** (same file, *"Ordering (ratified)"*),
+and its requirement is over **constants** while the census is over **occurrences** and so is broader
+than what 046 requires. ⛔ **The method, the substrates it extends and the
+spec → pilot → fan-out sequence are NOT restated here** — one canonical home,
+`research/pde_ledger_v2/_scratch/NEXT_SESSION.md` (▶ THE WORK, **P0**).
+
+**Why the DIMENSION REWRITE continues behind it:** ⭐ **one shared import, so every script's dimensions are written in ONE
 REPRESENTATION and come from one place.** ⛔ **Not "consistent by construction" — that overstates.** One
 shared module buys **representation unity** (one basis type, one exponent type, one recovery path); it does
 **not** buy correct dimensions, because **two stages can declare the same wrong exponents through one module**
@@ -281,7 +307,8 @@ script it merely fails to raise it, because there was nothing recoverable there 
 | You want… | Look here |
 |---|---|
 | ⭐⭐ **The model** — throughline, per-sector derivation atlas, honest earned/calibrated/R1/departure ledger, glossary | `docs/model_map.md` |
-| ⭐ **The current front** — the dimension rewrite | `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md` |
+| ⭐⭐ **The current front** — the derived-vs-declared census (method, substrates, spec→pilot→fan-out) **and the read-first handoff** | `research/pde_ledger_v2/_scratch/NEXT_SESSION.md` |
+| ⭐ **The workstream continuing behind it** — the dimension rewrite | `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md` |
 | ⭐ **How we work** — pipeline, roles, the review gauntlet | `docs/development_pipeline.md` |
 | The ledger-build resume detail | `research/pde_ledger_v2/notes/RESUME_ROADMAP.md` |
 | What's left across ALL sectors → "simulation-ready" | `docs/development_plan.md` |

@@ -16,8 +16,8 @@ and will otherwise read as settled.
 
 ## STATE
 
-Branch `ledger-v2-rebuild`, HEAD **`968921dd`**, tree clean. Verify with `git status` rather than
-trusting this line. **Dimension rewrite: 7 of 30 converted** (004, 011, 012, 013, 016, 018, 023).
+Branch `ledger-v2-rebuild`. ⛔ Do not trust a hash written here — run `git log --oneline -5` and
+`git status` first. **Dimension rewrite: 7 of 30 converted** (004, 011, 012, 013, 016, 018, 023).
 
 ---
 
@@ -49,9 +49,9 @@ the measurement supports: **no dimensional input enters from outside the stage's
 stage023 emits **29 records — 22 typed `SOURCED_DIMS` plus 7 live `dim_of` walks**, and those walks run
 over exactly those 22 literals and nothing else. stage016 emits **21 — 12 typed rule-table entries plus 9
 computed** by `dim_of` over real expression inputs, again sourced only from its own declarations.
-⛔ It is **not** "29/29 literals" and **not** "zero computed" — both overstate; `STATUS.md` already carries
-the qualifying clause the earlier phrasing dropped. So the comparator on these stages catches a
-*transcription split between two typed copies of the same numbers*, and nothing else.
+⛔ It is **not** "29/29 literals" and **not** "zero computed" — both overstate; ✅ **`STATUS.md` was
+corrected 2026-07-30 to these same counts**, so the two files now agree. So the comparator on these
+stages catches a *transcription split between two typed copies of the same numbers*, and nothing else.
 
 ⚠⚠ **THE COUNTER-MEASUREMENT — read it WITH the finding, not after it.** Per `STATUS.md`, relabelling
 stage016's basis leaves **that stage's own 82 assertions blind at exit 0** (82 PASS, printing
@@ -63,31 +63,122 @@ under the governing test** — a relabelled basis is a way the PHYSICS goes wron
 gate shows two implementations agree, never that either is right — and git shows all 43 pairs were first
 added together, so even *independence of route* is discipline, not evidence.
 
-**Hence the candidate next front: a DERIVED-vs-DECLARED census** — how much of this ledger computes
-something rather than asserting it. Nobody can currently say.
+**Hence the front (user decision, 2026-07-30): a DERIVED-vs-DECLARED census** — how much of this ledger
+computes something rather than asserting it. Nobody can currently say.
 
-⚠ **It is NOT a binary and cannot be measured as one.** A value can be physically derived and still be
-*stored* as a literal. The real states are ~six (derived-in-form · executed derivation · branch-determined
-· input · gap · benchmark), and the method needs one stable ID per occurrence joined by **adjudicated**
-identity, not by candidate name. Substrates that already exist and extend:
-`software/stage1_solver/decisions/14_value_provenance_and_calibration_map.md`,
-`research/pde_ledger_v2/notes/parameter_register.md`, and the §4-c1 per-quantity route tables in the
-stage notes.
+⚠ **It is NOT a binary, cannot be measured as one, and must not be attempted as one.** A value can be
+physically derived and still be *stored* as a literal. The real states are ~six (derived-in-form ·
+executed derivation · branch-determined · input · gap · benchmark), and the method needs one stable ID
+**per occurrence**, joined across stages by **adjudicated** identity, not by candidate name. ⚠ **Name
+grouping is precisely what already fails:** `research/pde_ledger_v2/CANONICAL_DIMENSIONS.md` §"GROUPING
+LIMITATIONS" lists **eight known-same cross-stage pairs it does not group** (011 CamelCase vs 012
+snake_case: `CsSquaredDim`, `CorruptKDim`, `EnergyDim`, `FourVolumeDim`, `MassDim`, `OmegaDim`,
+`PressureDim`, `RhoDim`), and 016's `T_w` → candidate `TW` never meets 013's `Tw` → `Tw`, so it cannot
+see that pair at all.
+
+**Substrates that already exist — the census EXTENDS them, it does not start clean. ⚠ Each is stated
+WITH its limit, because extending them does NOT by itself enumerate documentary imports, verdicts,
+controls, assertions, or non-dimensional computed objects:**
+- `software/stage1_solver/decisions/14_value_provenance_and_calibration_map.md` — the semantic classes
+  (DERIVED / INPUT / gap / benchmark) already assigned per value. ⚠ **Limit: it covers a limited Path-A
+  constant set** (its own scope line: *"the whole Path-A constant set"*), not the ledger's objects.
+- `research/pde_ledger_v2/notes/parameter_register.md` — dependency and reduction edges per knob.
+  ⚠ **Limit: it aggregates PARAMETERS and REDUCTION EDGES, not occurrences** — one row per knob, and its
+  provenance classes are a **different seven-class** taxonomy (see P0-1).
+- ⭐ **`research/pde_ledger_v2/notes/stages/ledger_stage043_irreducible_count_range.md` §10 — the
+  `REGISTER_TO_COUNT_MANIFEST`, a BOUNDED ~152-ID manifest with its OWN identity and category system**
+  (mutually-disjoint categories, engine-qualified row/knob IDs, exact total stated and asserted in
+  `scripts/ledger_stage043_irreducible_count_range_sympy_audit.py`). ⛔ The census must **reconcile with
+  it, not reinvent it** — an ID scheme and a category partition at corpus scale already exist here.
+- the **§4-c1 per-quantity route tables** in the stage notes — per-quantity CORRECT/WRONG/UNDETERMINED
+  *with its route*, plus the count of records that are declared literals in both engines. ⭐ **stage023
+  already demonstrates the method** — **34** routed objects and two scoped tallies (**24/0/10** as
+  identifications against the corpus, **27/0/7** inside the stage-local closure); **stage016** carries a
+  tracked **21/0** verdict, **12** typed in both engines and **9** computed. ⚠ **Limit, twice over: these
+  cover DIMENSION-VALUED quantities only, and tracked tables exist for exactly TWO stages — 016 and
+  023.** ⛔ And their tallies are **dimensional-correctness verdicts, not provenance states** (see P0-2).
+- ⚠ **Part VII's stage046 firewall requires a calibration map of this kind** — *"every constant
+  DERIVED/INPUT/gap/benchmark"* (`research/pde_ledger_v2/notes/part7_integration_atomic_split.md`, the
+  046 row). ⇒ The census is not new work bolted on; it **overlaps** a Part VII obligation. ⛔ **State the
+  overlap, do not claim equivalence:** the same row also consumes **stage043's range** and the corrected
+  R1 inventory, 046 assembles from the **044→045 spine** (same file, the **"Ordering (ratified)"** block:
+  *"046/047/048 assemble from the spine"*), and its requirement is over
+  **constants**, whereas the proposed **occurrence** census is broader than what 046 needs.
 
 ---
 
 ## ▶ THE WORK
 
-⭐ **Ask the user first: census or conversions?** The conversions are the original minimal ask (one shared
-import so every script's dimensions come from one place). The census is what says whether the physics is
-derived at all. **They are independent** — the census does not depend on conversion. ⛔ Do not assume.
+⭐⭐ **DECIDED (user, 2026-07-30): the CENSUS is the front; the conversions continue BEHIND it.** ⛔ The
+question is closed — do not re-ask it. ⛔ Do not delete the reasoning that made it a choice, because it
+is why the choice was available: the conversions are the original minimal ask (one shared import so every
+script's dimensions come from one place), the census is what says whether the physics is derived at all,
+and **they are independent** — the census does **not** depend on conversion, so it can run against any
+stage's existing declarations.
+
+⭐⭐ **The finding that motivates the census, WITH its counter-measurement — read them together; either
+one alone produces the wrong conclusion.** ⇒ **Nothing that survives independently RE-DERIVES the
+physics:** the cross-engine gate shows two implementations agree, never that either is right, and git
+shows all 43 pairs were first added together. ⚠ **AND the comparator remains the sole instrument between
+a converted stage and a relabelled basis** — relabelling stage016's basis leaves that stage's own **82
+assertions blind at exit 0**, while the comparator catches **18 of 21**. The first half is why the census
+is the front; it is ⛔ **not** licence to cut the comparator.
+
+⛔⛔ **THE WAY THIS CENSUS FINISHES AND RETURNS A WRONG NUMBER — read it before writing the schema, not
+after the fan-out. Counting SYNTACTIC EXECUTION as PHYSICAL DERIVATION inflates the "computed"
+fraction.** Measured, not feared: of stage016's **nine computed records, three are self-referential** —
+`actual_M2`, `actual_K2`, `actual_K2_over_M2` walk a declaration back to the constant that defines it —
+and **none of the nine is computed from any physical input**
+(`research/pde_ledger_v2/notes/stages/ledger_stage016_l2_so3_covariance.md` §1.6(3); all nine are pure
+functions of the twelve `dim_rules.*` declarations). stage023's **seven `dim_of` walks run over
+`SOURCED_DIMS` and nothing else** — the stage's own 22 typed literals
+(`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py`, `run_dimension_check`). In both
+cases a code path really ran and **no physics entered**.
+⇒ **The EXTERNAL-INPUT CRITERION IS A REQUIRED FIELD OF THE SCHEMA, not a caveat in the prose:** every
+row must answer *does this value trace to a field equation, or to an input from outside the stage's own
+declarations?* ⛔ A row that cannot answer it is **not** counted as computed. Without that field the
+census returns a flattering number — and the number is what gets quoted.
+
+**P0 — THE CENSUS: spec → pilot → fan-out, in that order.**
+1. **Specify the schema.** ⛔ One builder, one fresh reviewer; the census is physics-bearing, so it gets
+   the **second independent review leg**. The spec must settle, at minimum:
+   - the **states**, the **per-occurrence ID**, the **join rule**, and **what evidence each row cites**;
+   - ⭐⭐ the **external-input criterion above, as a required field** — see the block immediately above;
+   - the **census universe** — which objects are in scope at all;
+   - what counts as **one occurrence**, and the **inclusion rules**;
+   - the **denominator** the fraction is reported against, and the **aggregation rule** across stages;
+   - an **ID registry** — where the IDs live and who mints them.
+   ⚠ **The states OVERLAP, and the spec must resolve that rather than inherit it:** BRANCH-DETERMINED
+   may *already* be computed, and `research/pde_ledger_v2/notes/parameter_register.md` classifies with a
+   **different seven-class** taxonomy (`ACTION` / `DERIVED` / `CONV` / `FREE-UNREDUCED` /
+   `CALIB`(`-ANCHOR`) / `CANDIDATE` / `GAP`). ⇒ give an explicit **precedence rule**, or split
+   **provenance** and **execution** into **two axes**.
+   ⚠ **The universe question is already consequential, not hypothetical:** stage023 carries **42** source
+   objects under its declared membership rule (§1.6, `ENUM_COUNT|row_count|42`), **29** emitted records,
+   and **34** physics-routed objects (§1.7(1)) — three different candidate universes inside one stage.
+2. **Pilot on THREE stages — 023, 016 and 043.** 023 and 016 are the two that already carry §4-c1 route
+   tables. ⭐ **043 is the third** because it exercises **DERIVED-in-form versus unexecuted debt**
+   directly (its §11 keeps `R35` labelled `DERIVED-in-form` rather than flipping it to `PENDING-debt`)
+   and it computes over a **corpus-scale bounded manifest** rather than one stage's records. Check the
+   schema survives contact with all three.
+   ⛔ **Do NOT require the pilot to reproduce 023's `24/0/10` and `27/0/7` or 016's `21/0`.** Those are
+   **dimensional CORRECT/WRONG/UNDETERMINED verdicts — a different axis from provenance**, so a
+   provenance schema has no reason to land on those distributions and reproducing them is not evidence
+   about the schema either way. What the pilot **may** reuse is those tables' **row universes** and their
+   **correctness fields**; the tallies are context, ⛔ not an oracle.
+3. **Then fan out.** ⚠ Do not fan out before the pilot; a schema defect multiplied across 43 stages is
+   the expensive failure here.
+
+⏸ **P1–P4 are the CONVERSION work. It continues BEHIND the census** — recorded order and hazards intact,
+⛔ but none of it is the next step any more.
 
 **P1 — Pass-1b, small.** `composite_build.py` recovers dimension order by finding an AST class named
 exactly `Dim`; the shared module exports `Dimension`, and the checker has **zero** references to
 `ledger_dimensions`. Every conversion therefore *removes* that stage's recovery. **Verified: recovery is
 10 of 43** — exactly 7 scripts carry an exact `class Dim` (005, 006, 007, 008, 009, 030, 031) plus 3
 registered bare-tuple digests (032, 038, 042) — and **all 7 converted stages carry none**. Teach the
-checker the module before converting more.
+checker the module before converting more. ⏸ **Still worth doing whenever conversions resume, for exactly
+that reason — but no longer urgent, and ⛔ not to be presented as the next step.**
 
 **P2 — two conversion accelerators, both small, no ceremony. ⭐ Order per `STATUS.md`: (1) the ablation
 driver, (2) the `DIM|` emitter — and both land BEFORE 027 begins.**
@@ -186,11 +277,13 @@ declare `M L⁻¹T⁻²`, and the propagation contradicts an asserted dimensionl
 
 ## ▶ OPEN DECISIONS for the user
 
-1. **Census or conversions first** (above).
-2. **The numerical solver's freeze hash** — deliberately untouched by the scale-back. There the freeze is
+⛔ **"Census or conversions first" is CLOSED** (user, 2026-07-30 — the census, see ▶ THE WORK). Do not
+re-open it as a question.
+
+1. **The numerical solver's freeze hash** — deliberately untouched by the scale-back. There the freeze is
    the *mechanism* of target-blindness, and post-hoc refitting is a way the **physics** goes wrong, so it
    plausibly passes the governing test. ⛔ Undecided; do not strip it by citing the scale-back.
-3. **Whether to commit the `_scratch` review records** — gitignored, will not survive.
+2. **Whether to commit the `_scratch` review records** — gitignored, will not survive.
 
 ## OPERATING MODEL
 

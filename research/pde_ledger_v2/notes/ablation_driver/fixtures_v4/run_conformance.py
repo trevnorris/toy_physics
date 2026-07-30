@@ -27,6 +27,7 @@ PROJECT_ROOT = SUITE.parents[4]
 CONTRACT = SUITE.parent / "CONTRACT.md"
 DRIVER_REL = pathlib.Path("research/pde_ledger_v2/scripts/ablation_driver.py")
 DRIVER = PROJECT_ROOT / DRIVER_REL
+SCRATCH = PROJECT_ROOT / "research/pde_ledger_v2/_scratch"
 CHILD_REL = pathlib.Path(
     "research/pde_ledger_v2/notes/ablation_driver/fixtures_v4/child.py"
 )
@@ -103,8 +104,7 @@ def committed_bytes(path: pathlib.Path) -> bytes:
 
 @contextlib.contextmanager
 def runtime(label: str) -> Iterator[pathlib.Path]:
-    scratch = PROJECT_ROOT / "research/pde_ledger_v2/_scratch"
-    path = pathlib.Path(tempfile.mkdtemp(prefix=f"fixtures-v4-{label}-", dir=scratch))
+    path = pathlib.Path(tempfile.mkdtemp(prefix=f"fixtures-v4-{label}-", dir=SCRATCH))
     try:
         yield path
     finally:
@@ -1373,6 +1373,7 @@ def main() -> int:
     if not DRIVER.is_file():
         print(f"driver missing at contract path: {DRIVER_REL}")
         return 2
+    SCRATCH.mkdir(parents=True, exist_ok=True)
     caller_entry = caller_tree_snapshot(PROJECT_ROOT)
     failures = 0
     for item in selected:

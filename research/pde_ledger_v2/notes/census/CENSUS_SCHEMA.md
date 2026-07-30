@@ -41,6 +41,34 @@ undemonstrated convention claim is `UNADJUDICATED` (§3.4), an out-of-scope row 
 for the denominator: it makes the irreducible set look smaller than the evidence supports. ⭐ The
 **tier-1 range** (§5) is the mechanism that closes this, and it is required, not optional.
 
+### 1.1 ⭐⭐ The asymmetry binds ASSERTIONS, not only defaults
+
+Everything above is written about **defaults** — what happens when the classifier stops. But a builder
+does not set defaults; a builder **asserts**, and an assertion in the flattering direction walks past a
+rule written about defaults without ever contradicting it. So the constraint is stated once, generally,
+and it governs every classification in this schema **including ones added to it later**:
+
+> ⛔⛔ **WHERE A CLASSIFICATION HAS AN OPTIMISTIC BRANCH AND A CONSERVATIVE ONE, THE OPTIMISTIC BRANCH
+> CARRIES THE EVIDENCE BURDEN, AND AN UNMET BURDEN FALLS TO THE CONSERVATIVE BRANCH — NEVER THE
+> REVERSE.**
+
+⭐ **Reading it for a branch this schema does not name.** The optimistic branch is whichever reading
+makes the ledger look **more reducible or more derived**: `A-REDUCED` over `A-UNADJUDICATED`,
+`tier1-debt` over `tier1-structural`, `PHYSICS-FED` over `C-UNRESOLVED`, and — since small is the
+flattering direction for a denominator (above) — **any disposition that removes a row from tier 1's
+account over one that keeps it in**. ⛔ It is never settled by which reading is more likely, more
+charitable to the ledger, or easier to write down; the burden sits on the optimistic side whether or
+not anyone contests it.
+
+⇒ **How to write a new evidence requirement.** Any requirement added to §9 later is written to this
+rule: **state what the optimistic branch must cite, and name the conservative branch the row falls to
+when it cannot.** A requirement that names only the first half is not a requirement — it is a
+preference, and §9.0's fallback has nothing to fire into.
+
+⚠ **This is why §9's requirements are not symmetric, and that is deliberate.** A rule that made both
+branches cost the same evidence would leave the classifier free to pick either when neither is
+evidenced, which is the state §1 exists to remove.
+
 ---
 
 ## 2. Why this is not a fourth taxonomy
@@ -60,6 +88,32 @@ axes** (§3) instead, and defines the user-facing tiers as a **projection** of t
 Every occurrence carries a value on **each** of the three axes. The axes are independent: **no value
 on one implies any value on another.** A schema user who finds themselves inferring axis B from axis A
 has re-created the fusion §2 exists to break.
+
+> ⛔⛔ **NO AXIS VALUE MAY BE INFERRED FROM ANOTHER AXIS'S VALUE.** Specifically: **`B-EXECUTED` is NOT
+> evidence for `A-REDUCED`.** That code ran is axis B's claim; that the quantity reduces to something
+> more fundamental is axis A's, and they are **established separately or not at all**.
+
+⛔ **This bars the blanket rule as well as the individual assertion.** *"The reduction is performed at
+the binding site itself"* is not an axis-A finding — it is axis B restated in axis-A words. Applied
+across a file it assigns `A-REDUCED` to every computed row at once, which makes `A-UNADJUDICATED`
+**unreachable for anything the artifact executes**, and an axis value no row can take reports an
+artifact of the rule rather than a measurement. ⚠ The prohibition runs in **every** pair and both
+directions, not only this one: axis A implies nothing about axis B or C, axis C implies nothing about
+axis A (§3.3, and §9.0 is written to match), and the `CONVENTION-LADEN` flag (§3.4) is inferred from
+none of them. §9.2(1) carries the evidence consequence.
+
+⚠ **The shape this is written against, recorded so a later reader sees the stakes.** ⛔ **Nothing here
+is a census verdict on these loci** — they are cited as evidence about the substrate, in the manner of
+§3.4.1 and §3.5. A `.py` artifact obtains an ordering by re-listing a dict's keys,
+`order = list(harmonics)`
+(`research/pde_ledger_v2/scripts/ledger_stage016_l2_so3_covariance_sympy_audit.py:279`, over the basis
+typed out at `:268-275`), while its `.wl` twin **types the identical ordering in** as a literal,
+`order = {"20", "21c", "21s", "22c", "22s"}`
+(`research/pde_ledger_v2/mathematica/ledger_stage016_l2_so3_covariance_mathematica_audit.wl:164`). The
+quantity is the same and its content — the 5-ness — comes from the same typed basis in both engines.
+⇒ Under the blanket rule the two engines land on **different axis-A values**, and the divergence is
+produced **by the rule, not by the artifacts**. ⚠ A re-listing of keys is exactly the case the rule
+flatters: real execution, no reduction.
 
 ### 3.1 Axis A — REDUCIBILITY
 
@@ -128,6 +182,43 @@ the asymmetry §9 exists to remove, where *"cannot be derived"* costs less than 
 
 ⚠ The test is about **machinery, not effort**. "Nobody has had time to run it" is debt. "The ledger
 does not model the sector the route runs through" is structural.
+
+##### ⭐⭐ The bar for "executable within this framework"
+
+Without one, the test above is answered by intuition, and `debt` becomes the cheap assertable claim on
+exactly the split §9 already made `structural` pay for.
+
+> ⛔ **A route is `executable within this framework` ONLY IF every quantity it consumes has a
+> FUNCTIONAL FORM present in the ledger, cited by locus.**
+
+⛔ **None of the following is a functional form**, and each has to be named because each *looks* like
+one at the citation:
+
+- a **name in a calibration or input list** — that is a label, and a label integrates nothing;
+- a **dimension rule** — an `(L,M,T)` exponent vector is a statement about units, not about a
+  function's shape (§3.5 is the whole reason this needs saying);
+- a **free symbol** the artifact declares and never assigns (`B-DECLARED-UNASSIGNED`, §3.2) — an
+  unfilled slot;
+- a **literal scalar** standing where a profile is needed — one number is not the function it samples;
+- an **expression assembled from any of the above** — a product of free symbols is a product of free
+  symbols, however much it is shaped like an integrand.
+
+⇒ **Where any factor's form is absent, the route is NOT executable-here.** The row goes to
+`A-IRREDUCIBLE-STRUCTURAL` **with the missing form named** — and that missing form **is** the framework
+extension §9 requires (§3.1.1, §9): "the ledger nowhere gives `f(·)` a functional form" is a property of
+the framework as currently written, stated concretely enough to be repaired. ⚠ Where even that cannot be
+established, the row is `A-UNADJUDICATED` (§3.1.1's third branch), which keeps it in the tier-1 upper
+bound.
+
+⛔ **And a record that nobody ran the route is not evidence that anybody could.** *Un-run*, *pending*,
+*deferred* and *owed* are statements about **execution**; `executable within this framework` is a
+statement about **machinery**. §9.2(2) states this generally, because it is not a rule about this
+section.
+
+⚠ **Why the bar sits on `debt` rather than on `structural`.** §9's requirements made *"cannot be
+derived"* cost evidence; nothing yet made *"not derived yet"* cost any, and `debt` is the **optimistic**
+branch — it says the reduction is available to whoever does the work. By §1.1 the optimistic branch is
+the one that carries the burden, so the burden moves here.
 
 ### 3.2 Axis B — EXECUTION
 
@@ -584,6 +675,12 @@ itself unestablished — including `A-REDUCED ∧ C-UNRESOLVED`, whose only tier
 therefore has no tier at all (§5.7). ⭐ The span narrows by rows being **established**, never by rows
 being assumed.
 
+⛔ **And nothing enters either bound by assertion.** A row the pass did **not classify** is in neither
+bound. A claim that such a row *"would land in tier 1"* is a classification claim without a
+classification (§7.3.1) and ⛔ does not place it — at either bound, or in the span between them. ⚠ The
+range moves only by rows the census actually adjudicated, and the count of rows it did not reach is
+reported separately (§5.8, outputs 15 and 16) rather than folded into the span as a guess.
+
 ⛔ **A bare tier-1 scalar may not be quoted** — not in the census, not in a summary, not in anything
 that cites the census.
 
@@ -775,14 +872,47 @@ acceptable state for the one sub-bucket the model's own picture expects to carry
 `A-IRREDUCIBLE-POSTULATE` exists for precisely these), so the rule is widened rather than the finding
 suppressed.
 
-**Route 2's two bounds, and they are not optional** (§7.2, §7.3). The proposition must be:
+**Route 2's three bounds, and they are not optional** (§7.2, §7.3). The proposition must be:
 
-1. **depended on by a reported result** (§7.1.1); and
-2. **not derived elsewhere in the ledger** — if something derives it, it is a conclusion, not a premise.
+1. **depended on by a reported result** (§7.1.1);
+2. **not derived elsewhere in the ledger** — if something derives it, it is a conclusion, not a premise;
+   and
+3. ⭐⭐ **not a restatement of a freedom the universe already carries via route 1.**
 
-⛔ An assertion failing either test is **out of scope**, recorded with its reason (§7.3). Without both
-bounds route 2 would admit every sentence in the corpus, and the universe would become a reading of
-prose rather than a closure.
+⛔ An assertion failing test 1 or test 2 is **out of scope**, recorded with its reason (§7.3). Without
+bounds 1 and 2 route 2 would admit every sentence in the corpus, and the universe would become a reading
+of prose rather than a closure. Bound 3 is different in kind and is stated in full below: a proposition
+failing it is not out of scope — it is **already in the universe**, under another row.
+
+#### ⭐⭐ Bound 3 — route 2 may not re-count a route-1 freedom
+
+> ⛔ **A proposition admitted by route 2 must not restate a freedom already counted via route 1.**
+
+**Before admitting, check** whether the proposition's **content** is already carried by a **valued
+quantity in the universe**. Where it is, the assertion is **that occurrence's evidence, not a new
+occurrence** — it is recorded on the route-1 row (⛔ never silently dropped) and route 2 admits nothing.
+
+⚠ **The check is on content, not on wording.** A proposition and a valued quantity restate **one**
+freedom whenever **fixing either fixes the other**. A premise that a degree of freedom exists, and the
+value the ledger assigns to that degree of freedom, are two statements of one thing; admitting both
+counts one input twice.
+
+⭐ **One source literal asserting several things is ONE occurrence** — ⛔ **unless each part is
+independently a freedom the model takes, and that independence is EVIDENCED, not assumed.** How many
+keys an author typed into one literal is a formatting decision; reading each as its own premise
+multiplies `tier1-postulate` by that decision. ⚠ Where independence cannot be shown, the parts are one
+occurrence and the surplus parts are that occurrence's **evidence**.
+
+⚠ **Reconciling bound 3 with §1, which is the objection to read first.** De-duplication **shrinks**
+tier 1, and §7.3 says in as many words that shrinking the denominator is exactly where a census goes
+wrong without anyone quoting a number. ⇒ **So the fold costs evidence too, in the same shape as
+everything else in §9:** a fold must **name the route-1 quantity** whose freedom the proposition
+restates, **at its locus**, and show that fixing either fixes the other. ⛔ **A fold on suspicion, on
+similarity of wording, or on "that sounds like the same thing" is not a fold** — the proposition stays
+admitted as its own occurrence. ⭐ What §1.1 forbids is an **unresolved** state falling toward the
+flattering answer; a **demonstrated** identity between two rows is not an unresolved state, and §10.1
+already states that two rows can encode one degree of freedom and that the rank, not the row count, is
+the answer.
 
 > ⛔⛔ **ROUTE 2 WIDENS THE UNIVERSE. IT RE-TAGS NO AXIS-C LEAF AND CONFERS NO `PHYSICS-FED`.**
 
@@ -935,11 +1065,19 @@ route 2).
   for.
 
 ⛔ **The proposition half is BOUNDED, and the bound is checked per occurrence, not per proposition.**
-An assertion is an occurrence only if it satisfies **both** of §7.1 route 2's tests: the proposition is
-**depended on by a reported result**, and it is **not derived elsewhere in the ledger**. ⚠ An assertion
-failing either is **out of scope under §7.3**, recorded with its reason — ⛔ never silently dropped and
-⛔ never admitted "because it sounded foundational". Without this bound the occurrence definition would
+An assertion is an occurrence only if it satisfies **all three** of §7.1 route 2's tests: the
+proposition is **depended on by a reported result**, it is **not derived elsewhere in the ledger**, and
+it **does not restate a freedom already counted via route 1**. ⚠ An assertion failing either of the
+first two is **out of scope under §7.3**, recorded with its reason — ⛔ never silently dropped and ⛔
+never admitted "because it sounded foundational". Without this bound the occurrence definition would
 swallow every assertion in the corpus, and §1's denominator would be set by prose volume.
+
+⚠ **Bound 3 narrows this triple-rule for propositions, and the narrowing is deliberate.** A single
+literal asserting several propositions would otherwise be as many occurrences as it has parts, by the
+same reading that makes one quantity at two binding sites two occurrences. §7.1's bound 3 makes it
+**one** occurrence unless each part's independence is evidenced — ⛔ and a proposition folded under
+bound 3 is not an out-of-scope exclusion: it is recorded as evidence on the route-1 occurrence that
+already carries the freedom.
 
 *Operational definitions (needed to execute; see §13 for their status):*
 
@@ -1005,6 +1143,25 @@ denominator can be shrunk without anyone quoting a number.** Every exclusion car
 auditable; ⚠ an exclusion reason that cannot be checked against the row is not a reason. ⭐ The
 provisional reason above is the sharpest case: it shrinks the denominator on the strength of a
 deferral, so it is the one exclusion that must be able to come back.
+
+#### 7.3.1 ⛔⛔ A claim about where an UNCLASSIFIED row would land is a classification claim
+
+> ⛔ **Saying of a suppressed, deferred or out-of-scope row that it *"would land in tier 1"* — or in any
+> other tier or bucket — asserts an axis-A value for a row the pass did not classify, and it costs the
+> same §9 evidence as making the classification.**
+
+⛔ **It may not be asserted** — not in a row file, not in a summary, not in a note about either, and not
+as a reassurance that an exclusion did not cost anything. ⚠ It is available in exactly **one** form:
+**classify the row**, with its evidence, under §9. Until then the honest statement is the **count** of
+rows the pass did not reach and the **reason** it did not reach them — which §7.3 and §5.8 (outputs 15
+and 16) already require.
+
+⭐ **Why this is not pedantry about phrasing.** Such a claim is read as a statement about the tier-1
+range while carrying **none of the range's evidence**: it moves §5.6's span in the reader's head without
+appearing in either bound, in whichever direction the writer already believes. ⚠ And nothing downstream
+would catch it being wrong, because it is attached to **no row** — there is no locus to open (§9.1), no
+axis to demote (§9.0) and no conflict to detect (§10.3). ⇒ It is an assertion in precisely the sense
+§1.1 governs, made where the schema's whole apparatus cannot reach it.
 
 ### 7.4 ⭐ Every row carries a LIVE / RETIRED flag
 
@@ -1129,20 +1286,20 @@ The census must be **auditable rather than an opinion table**. Per row, the foll
 | when the row asserts | it must cite |
 |---|---|
 | axis B `B-EXECUTED` | the **code locus of the computation**, and the loci of its **input leaves** |
-| axis C `PHYSICS-FED` | the locus of the **field equation or external anchor** actually reached; for a solver or fit, the locus of the **operator** (§3.3.1) |
+| axis C `PHYSICS-FED` | the locus of the **field equation or external anchor** actually reached; for a solver or fit, the locus of **the equation being solved or the form being fitted** (§3.3.1) — ⛔ **not the locus of the call that solves it**; a routine is not an operator (§3.3.1, §9.2(1)) |
 | axis C `C-PEER` leaf | the **source locus** the value was imported from, **and which of `peer-cited-in-artifact` / `peer-cited-in-stage-note` carries it** (§3.3) |
-| axis A `A-REDUCED` | ⭐ **the reduction — where it is performed — and the loci of the quantities it reduces TO** |
-| axis A `A-REDUCIBLE-UNDERIVED` | the **named route**, where that route is recorded, **and that it is executable within this framework** (§3.1.2) |
-| axis A `A-IRREDUCIBLE-STRUCTURAL` | ⭐ **which framework property forecloses the route** (§3.1.1) — **and where a route IS named, the framework EXTENSION it requires** (§3.1.2) |
+| axis A `A-REDUCED` | ⭐⭐ **a DEFINING RELATION expressing this quantity in terms of other NAMED quantities**, where that relation is recorded, **and the loci of those quantities** — ⛔ **pointing at the computation that produced the value does NOT satisfy this; that is axis B** (§3, §9.2(1)). Direction-checked per §9.2(3) |
+| axis A `A-REDUCIBLE-UNDERIVED` | the **named route**, where that route is recorded, **direction-checked** (§9.2(3)), **and that it is executable within this framework** — every quantity the route consumes carrying a **functional form present in the ledger, cited by locus** (§3.1.2). ⛔ A record that the route is un-run/pending/deferred is not evidence of this (§9.2(2)) |
+| axis A `A-IRREDUCIBLE-STRUCTURAL` | ⭐ **which framework property forecloses the route** (§3.1.1) — **and where a route IS named, the framework EXTENSION it requires** (§3.1.2), the route **direction-checked** (§9.2(3)). ⚠ A **missing functional form** named under §3.1.2 satisfies the extension requirement |
 | axis A `A-IRREDUCIBLE-POSTULATE` | where the postulate is **stated** as a defining property (§3.1.1) |
-| axis A `A-CALIBRATED` | the **benchmark** it is calibrated against |
-| axis A `A-INDEPENDENT-VARIABLE` | ⭐ the loci at which the ledger **uses** it as one — swept, integrated over, or differentiated with respect to (§3.1) |
+| axis A `A-CALIBRATED` | the **benchmark** it is calibrated against — the external value and **its** locus; ⛔ the fit or solve that consumed it is axis B (§9.2(1)) |
+| axis A `A-INDEPENDENT-VARIABLE` | ⭐ the loci at which the ledger **VARIES** it — a sweep over **more than one value**, an integration over it, or a differentiation with respect to it (§3.1). ⛔ **That an executed expression consumes the symbol is not this**; consumption is axis B, and every input of every computation is consumed (§9.2(1)) |
 | axis B `B-POSTULATED` | where the model **posits** the proposition (§7.1 route 2); ⛔ no code locus is owed — there is no computation |
 | axis B `B-DECLARED-UNASSIGNED` | the **declaration** locus, and that the artifact contains **no assignment** of it |
-| a route-2 row | ⭐ both of §7.1's bounds: **which reported result depends on it**, and that it is **not derived elsewhere** in the ledger |
+| a route-2 row | ⭐ **all three** of §7.1's bounds: **which reported result depends on it**, that it is **not derived elsewhere** in the ledger, and that it **does not restate a freedom already counted via route 1** (§7.1 bound 3). ⚠ A **fold** under bound 3 costs its own evidence — the route-1 quantity **named at its locus** |
 | `CONVENTION-LADEN = true` | the **transformation group** (§3.4 clause a) and where the **invariance** (clause b) is demonstrated over the model's stated observables |
 | every in-universe row | its **reachability witness** (§7.1.1) |
-| `should_be_tier ≠ is_tier` | the `should_be_basis` (§6), and for `named-route`, where the route is recorded |
+| `should_be_tier ≠ is_tier` | the `should_be_basis` (§6), and for `named-route`, where the route is recorded — **direction-checked** (§9.2(3)) |
 
 ⭐⭐ **Why `A-REDUCED` and `A-IRREDUCIBLE-STRUCTURAL` carry requirements.** Both were previously
 assertable bare, and both decide the deliverable:
@@ -1153,6 +1310,10 @@ assertable bare, and both decide the deliverable:
 - Calling a row `tier1-debt` cost a named route; calling it `tier1-structural` cost nothing. ⛔ That
   made **"cannot be derived" the CHEAPER claim than "not derived yet"** — on precisely the tier-1 split
   the census exists to produce. Both now cost evidence.
+- ⭐ **And an evidence requirement is only as strong as the object it names.** `A-REDUCED`'s requirement
+  was first written as *"the reduction — where it is performed"*, which any executed binding site
+  satisfies: the row could be evidenced by **pointing at the computation**, so the requirement demoted
+  nothing and axis A was decided by axis B. It now names the **relation**, not the run (§9.2(1)).
 
 ### 9.0 ⭐ The fallback is PER-AXIS
 
@@ -1219,6 +1380,60 @@ stale for three of the four rows.
    the register's, not a stage note's, and not this spec's.
 2. Where a row's own substrate attributes it to a stage that does not compute it, the census records
    **both** loci — the attributed one and the computing one — and **marks the attribution defect**.
+
+### 9.2 ⭐⭐ Three things that are NOT evidence
+
+Each of these has carried a classification past the table above, and each fails for a **different**
+reason. They are stated as **general rules over the whole table**, not as notes on the rows that
+exposed them: a rule attached to one row is walked around by the next row that needs it, and §1.1
+requires these to govern requirements added later as well.
+
+**(1) ⛔⛔ AN EXECUTION IS NOT AXIS-A EVIDENCE.** Restating §3 in the form the table has to be read
+against: **no axis value may be inferred from another axis's value**, and specifically **`B-EXECUTED`
+is not evidence for `A-REDUCED`**. That code ran is axis B's claim; that the quantity reduces to
+something more fundamental is axis A's.
+
+⇒ **What `A-REDUCED` must cite is a DEFINING RELATION** — one that expresses this quantity **in terms
+of other named quantities** — together with the loci of those quantities. ⛔ The locus of the
+computation that produced the value does **not** satisfy it, and this holds whether the pointer is made
+**per row** or asserted **once as a file-wide rule** ("the reduction is performed at the binding site
+itself"). ⚠ A file-wide version is the worse of the two: it decides every computed row at once, without
+any row's evidence ever being opened.
+
+⭐ **The general form, because `A-REDUCED` is not the only row it reaches.** Wherever an evidence row's
+locus could be satisfied by a **call** rather than the **object**, it is the object that is required:
+`PHYSICS-FED` wants the **equation being solved**, not the solve (§3.3.1 already says a routine is not
+an operator); `A-CALIBRATED` wants the **benchmark value**, not the fit that consumed it;
+`A-INDEPENDENT-VARIABLE` wants the ledger **varying** the quantity, not an executed expression
+consuming it. ⚠ That last one costs the most if it slips: it is the one axis-A value that drains the
+denominator without the convention flag (§3.1), and **every** input of **every** computation is
+consumed by something.
+
+**(2) ⭐⭐ ABSENCE OF A DENIAL IS NOT EVIDENCE.** A record that a route is **un-executed**, **pending**,
+**deferred**, **not yet attempted** or **owed** says nothing about whether it is **buildable**. ⛔ It
+may not be cited in support of `executable within this framework` (§3.1.2), nor of **any** positive
+evidence requirement in the table above.
+
+⚠ **The general form:** a source that is **silent** on a question is not a source that **answers** it —
+and under §1.1 an unanswered question falls to the conservative branch, so the silence cannot be read
+in the optimistic direction either. ⭐ The tell is a citation whose content is a negation or a status
+flag (`…_executed=False`, `PENDING`, `DEFERRED`, `TODO`): those are axis-B facts about what ran, and
+§9.2(1) already says what they cannot decide.
+
+**(3) ⭐ A CITED ROUTE MUST BE DIRECTION-CHECKED.** Every evidence row that accepts a **route** —
+`A-REDUCIBLE-UNDERIVED`, `A-IRREDUCIBLE-STRUCTURAL` where a route is named, `A-REDUCED`'s defining
+relation, and the `named-route` `should_be_basis` — requires that the relation **express the quantity IN
+TERMS OF other quantities**.
+
+> ⛔ **A relation that CONSUMES the quantity as an input does not reduce it**, and satisfies neither the
+> debt nor the structural evidence requirement.
+
+⇒ **The check, stated so it can actually be run:** **open the relation and confirm the quantity appears
+on the DEFINED side, not only among the inputs.** ⚠ A route *out of* a quantity and a route *to* it are
+indistinguishable from the citation alone — both look like "the route at `X:nnn` relates these symbols"
+— which is why the check is on the **relation** and never on the name of the route or the note that
+records it. ⭐ Where the direction fails, the citation is struck and the row is re-adjudicated on
+whatever evidence remains; ⛔ it is not repaired by re-describing the same relation.
 
 ---
 
@@ -1356,6 +1571,37 @@ once (§13 records `decisions/14` doing this). The rule:
 settles the axes, the row keeps them; where it does not, §9.0's per-axis fallback applies as usual — ⛔
 the substrate's confusion is not a separate demotion mechanism.
 
+⭐ **The intra-occurrence mark carries its KIND**, because two different disagreements now land in it
+and §10.3's count is only useful if they stay apart:
+
+- **`substrate`** — the shape immediately above: the artifact or a substrate taxonomy carries two
+  incompatible claims about one occurrence;
+- **`census-rows`** — the shape immediately below: the census's **own rows** disagree.
+
+#### ⭐ Intra-file consistency — where the census disagrees with itself
+
+The shapes above are disagreements the census **finds**. This one is a disagreement the census
+**makes**: two rows that cite the **same expression at the same locus** and read it incompatibly — one
+treating the machinery as present, another treating the same machinery as absent.
+
+> ⛔ **They must AGREE.** Both rows answer to one artifact, so at most one reading is right, and the
+> census is the party that adjudicates — the reading is settled from the evidence **before the rows
+> ship**.
+
+⚠ **This is not in tension with the "never resolved by picking one claim" rule above, and the
+difference is exactly whose claims they are.** The substrate case is two claims made by **others**,
+which the census records rather than arbitrates (§2 forbids inheriting a substrate class at all, so
+there is nothing to pick between). This case is two claims made by **the census**, on evidence the
+census gathered, and leaving them unresolved is not neutrality — it is shipping a finding the pass
+already had everything needed to settle.
+
+⛔ **Where it genuinely cannot be resolved**, it is recorded in the same conflict set, marked
+**intra-occurrence** with kind **`census-rows`**, carrying **both** rows and the **shared locus**. ⚠ It
+is then a finding **about the census**, not about the substrate, and it is a defect in the pass that
+produced it. ⭐ A pass that ships one has **established neither reading**, so by §1.1 both rows fall to
+their conservative branch until one of them is evidenced — ⛔ the optimistic reading is not the one that
+survives on the strength of having been written twice.
+
 The §10.2 max-rule and this rule are not in tension because the max is **reported alongside** the
 conflict set, never instead of it. A QID that appears in the conflict set is legible as such wherever
 its tier is quoted.
@@ -1404,6 +1650,14 @@ calibration map over **every constant**; this census is over **occurrences** (§
 | `BUILDER-DECISION` | an `UNADJUDICATED` convention claim buys no exclusion — the row keeps its axis-A tier and is reported in `convention-unadjudicated` | §3.4 |
 | `BUILDER-DECISION` | `C-SELF` is the tie-break where a leaf reads as both `C-SELF` and `C-MATH`; it is the conservative direction and it moves no headline | §3.3 |
 | `BUILDER-DECISION` | the two `C-PEER` populations (artifact-carried vs stage-note-carried loci) are reported **separately and never summed**, and a chain records its weakest hop | §3.3, §5.8 |
+| `BUILDER-DECISION` | ⭐⭐ the asymmetry binds **assertions**, not only defaults: the optimistic branch carries the evidence burden and an unmet burden falls to the conservative branch. Every later addition to §9 is written to this shape — what the optimistic branch cites, and the branch it falls to | §1.1, §9 |
+| `BUILDER-DECISION` | ⭐⭐ **no axis value is inferred from another axis's value**; `A-REDUCED` requires a **defining relation**, not the locus of the computation. Swept across §9: `PHYSICS-FED`, `A-CALIBRATED` and `A-INDEPENDENT-VARIABLE` were rewritten to name the **object** rather than the **call** | §3, §9, §9.2 |
+| `BUILDER-DECISION` | `executable within this framework` requires every consumed quantity to have a **functional form present in the ledger, cited by locus**; a name, a dimension rule, a free symbol and a literal scalar are not forms. Missing form ⇒ `A-IRREDUCIBLE-STRUCTURAL` with the form named, else `A-UNADJUDICATED` | §3.1.2, §9 |
+| `BUILDER-DECISION` | **absence of a denial is not evidence** — un-run / pending / deferred says nothing about buildable; stated generally over §9's whole table | §9.2, §3.1.2 |
+| `BUILDER-DECISION` | a cited route is **direction-checked**: the quantity must appear on the **defined** side, not only among the inputs | §9.2, §9 |
+| `BUILDER-DECISION` | route 2's **third bound** — no restatement of a route-1 freedom; one source literal is **one** occurrence unless each part's independence is evidenced. ⚠ The **fold** costs its own evidence (it shrinks tier 1), so a fold names the route-1 quantity at its locus | §7.1, §7.2, §9 |
+| `BUILDER-DECISION` | a *"would land in tier N"* claim about a row the pass did **not classify** is barred; only the count of unreached rows and the reason may be stated | §5.6, §7.3.1 |
+| `BUILDER-DECISION` | the conflict set's **intra-occurrence** mark carries a **kind**: `substrate` (the artifact disagrees with itself, recorded not arbitrated) vs `census-rows` (the census's own rows disagree about one expression at one locus — must be resolved, and if unresolvable both rows fall conservative) | §10.3 |
 | `NOT-YET-CREATED` | `QID_REGISTRY.md` — required by §8.3, not authored by this spec | §8.3 |
 
 ---

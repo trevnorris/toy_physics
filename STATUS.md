@@ -5,7 +5,7 @@ notes. History is in git. If this file starts growing narrative, cut it.
 
 ---
 
-## ▶ YOU ARE HERE (2026-07-27)
+## ▶ YOU ARE HERE (2026-07-29)
 
 **Current front: the DIMENSION REWRITE — 7 of 30 scripts converted** (stage004, 011, 012, 013,
 016, 018, **023**) — and ⭐ **all seven are WAIVER-FREE**: `ARTIFACT_NAME_WAIVERS` is empty, so every
@@ -65,10 +65,21 @@ engine (`DIMENSION_REWRITE.md` §1), which is why the comparison is a permanent 
 **▶ NEXT CONVERSION, per the recorded conversion order (`DIMENSION_REWRITE.md` §8):** (1) the
 stage027-shape decision, (2) 027, (3) 021 (heaviest). Detail and the measured validator/harness hazards
 are in `DIMENSION_REWRITE.md` §8/§9.
+⚠ **New coupling for whoever converts next:** nine live paths — the shared module, its pin script and
+accepted-digest authority, the comparator, and stage023's audit script plus its evidence tables — are now
+also governed by the ablation-fixture freeze authority, so **touching one invalidates that freeze**.
+Accepted and deliberate (user decision 2026-07-29); the procedure is in `DIMENSION_REWRITE.md` §4.
 **▶ NEXT BUILD — a different queue, not a competing answer. It has TWO items, in this order:**
-**(1) the ablation driver** (**USER DECISION, 2026-07-29**, `DIMENSION_REWRITE.md` §12b(b)) — ⚠ the
-survey's "~100 lines" sized the hand-rolled loops it replaces, not the deliverable, and the accepted
-requirements and authored contract are substantially larger. **(2) the shared Mathematica `DIM|`
+**(1) the ablation driver** (**USER DECISION, 2026-07-29**, `DIMENSION_REWRITE.md` §12b(b)) — its
+three-session shape stands at **2 of 3 done**: ✅ contract, ✅ **conformance fixtures FROZEN AND
+COMMITTED** at `research/pde_ledger_v2/notes/ablation_driver/fixtures_v4/` with its external byte
+authority `…/fixtures_v4.accepted.sha256` (`verify_freeze.py` → 36 governed paths, exit 0).
+**▶ The remaining step is the driver BUILD, and it is HARD-GATED:** `run_conformance.py` refuses to run
+at all unless the freeze verifies, and the building session may neither author nor weaken the fixtures.
+⚠ **What the freeze does and does not protect lives in `fixtures_v4/README.md` and
+`fixtures_v4/FREEZE_LIMITS.md`** — read them there; they are not restated here.
+⚠ The survey's "~100 lines" sized the hand-rolled loops it replaces, not the deliverable, and the
+accepted requirements and authored contract are substantially larger. **(2) the shared Mathematica `DIM|`
 emitter** (**USER DECISION, 2026-07-29**, `DIMENSION_REWRITE.md` §12b, closing block) — requirements at
 **v2** in `research/pde_ledger_v2/notes/wl_emitter/REQUIREMENTS.md`, reviewed CLEAN, contract not yet
 authored. Which stage converts next and which

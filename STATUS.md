@@ -84,9 +84,10 @@ byte-perfect or under a custody rule. See `DIMENSION_REWRITE.md` §4.
 **(1) the ablation driver**, **RE-SCOPED SMALL** (user decision, 2026-07-29/30, `DIMENSION_REWRITE.md`
 §12b(b)): mutate a declaration, confirm the declared assert fires, record it — reviewed by one fresh
 agent. ⛔ No contract, no frozen fixtures, no three-session shape. Requirements (trimmed) at
-`research/pde_ledger_v2/notes/ablation_driver/REQUIREMENTS.md`; `CONTRACT.md` and the `fixtures_v4/` suite
-are superseded and stay only as history — ⭐ §C-9's legacy mapping table is worth reading as a **reference**
-for the retrofit, but ⛔ it is **not** authoritative and A7 does not require agreement with it.
+`research/pde_ledger_v2/notes/ablation_driver/REQUIREMENTS.md`; the old contract and its frozen fixture
+suite were **deleted 2026-07-30** (in git history if ever wanted) — ⭐ what survived them is that file's
+**Appendix**, incl. the stage023 legacy mapping as a **reference** for the retrofit, but ⛔ it is **not**
+authoritative and A7 does not require agreement with it.
 **(2) the shared Mathematica `DIM|` emitter** (`DIMENSION_REWRITE.md` §12b, closing block) — **just write
 it**, against `research/pde_ledger_v2/notes/wl_emitter/REQUIREMENTS.md` (v2, reviewed CLEAN). ⛔ No
 contract, no frozen fixtures, no three-session shape. Which stage converts next and which

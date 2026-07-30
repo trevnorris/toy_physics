@@ -1,3 +1,0 @@
-axis	key	record	old_text	new_text
-APPLICATION	zero	unused	A2_ABSENT	A2_MUTANT_ZERO
-APPLICATION	multiple	unused	A2_REPEATED	A2_MUTANT_MULTIPLE

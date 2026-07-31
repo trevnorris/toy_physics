@@ -83,10 +83,12 @@ that no step names. Do the surgery **first**:
 - recompute acceptance (⛔ never preserve — same rule as step ①);
 - ⛔ **do not "resolve" it by leaving them where they are.** That is the back-fill S9 forbids.
 
-⚠ Also add a **substrate-action step before S2** (second review): S1 gives an EOS and definitions but
-**not** the GNLS action, quantum-gradient term, or Madelung balances — yet S4 invokes a "core balance"
-and S12 needs momentum/energy partners. Without it, *"derive forward from what previous steps banked"*
-is false at S4. ⛔ `U(ρ)` is **not** a third field or an independent free function.
+⛔⛔ **This is NOT a one-line scope edit — round 2 confirmed it will break code.** `active_variables`
+is computed from `counting_axis`, and `C-M1`, `able_to_fail.py` and `test_registry.py` are all built
+around `R3`. Removing `c_γ`/`λγ` from the medium contract therefore requires, in one pass: the
+counting-axis change · a replacement for the `R3`-dependent mutation case · the harness and tests
+updated · acceptance recomputed and **independently re-derived**, never preserved. ⇒ Treat S0.5 as a
+step in its own right with its own review legs, ⛔ not a preamble to S1.
 
 ---
 
@@ -104,6 +106,16 @@ medium (`χ_B = 1`), not a second object.
 ⚠ **Correct v2's stated reason.** `model_map.md:26` justifies the postulate by *"`U(ρ)` is single-well"*.
 That reasoning is **wrong** — the brane comes from `V_χ(r_B)`, a potential on a *different* field. The
 conclusion survives, the argument does not. → S5.
+
+### S1.5 · The substrate action and the Madelung balances ⭐ ADDED — was owed and unnumbered
+The GNLS action, the quantum-gradient term, and the Madelung mass/momentum/energy balances, with the
+pressure identity that fixes `U(ρ) = Kρ⁵/4`.
+⛔ **Without this step the chain is broken**: S4 invokes a "core balance" and S12 needs the
+momentum/energy partners, and neither exists in S1's output. *"Derive forward from what previous steps
+banked"* is false at S4 until this is in.
+⛔ `U(ρ)` is **not** a third field or an independent free function — it is fixed by the EOS.
+**Expected new:** nothing beyond S1's primitives, if the action is faithfully transcribed. ⚠ If it turns
+out to introduce something, that is a finding.
 
 ### S2 · The sound speed
 `c_s² = (1/m)dP/dρ = nKρ^(n-1)/m`. **Expected new: nothing** — pure consequence.
@@ -223,9 +235,11 @@ zero mode — ⛔ **not** from the throat.
 ## PHASE 4 — gravity and gravitomagnetism (6 steps)
 
 ### S15 · Two drains attract ⚠ RUN S16 FIRST, or fold it in as the premise
-⛔ **Order corrected by review: S16 licenses S15's form.** The corpus establishes the coherent-defect
-worldtube closure *first*, then the Newtonian particle law. Banking attraction before the theorem that
-permits treating a defect as a multipole teaches the slogan before the regime.
+⚠ **Corrected twice.** Round 1: run S16 first, since the corpus establishes the worldtube closure before
+the particle law. ⛔ **Round 2 corrects that correction: S16 does NOT license S15.** S16 is
+*response-side* (how a body moves in a field); S15 is *source-side* (what force two drains exert) and
+carries **its own** Noether / control-surface assumptions. ⇒ Run S16 first for regime context, but
+⛔ derive S15's premises independently — do not inherit them.
 
 Noether stress at infinity, drain strengths `Q_i` **given**: `F_12 = −(m N_∞,3 Q1Q2/4πr²) r̂`.
 
@@ -239,8 +253,10 @@ Noether stress at infinity, drain strengths `Q_i` **given**: `F_12 = −(m N_∞
 
 ### S16 · ⭐⭐ The worldtube reduction — the theorem the whole scope boundary rests on
 
-⛔ **The load-bearing step of this entire ledger.** It is what makes the scope boundary legitimate rather
-than convenient — and equally, the reason a clean v3-gravity is **not** evidence the model is sound.
+⛔ **The load-bearing step of this entire ledger** — but ⛔ **not** because it "legitimises the scope".
+Round 2: it does not establish interior-independence at all, so do not carry that framing forward. What
+it gives is a **conditional response-side approximation**, and the honest use of it is to enumerate what
+must be *supplied* for the far field to be computable without the interior.
 
 ⚠ **Read the actual statement, not the slogan** (`research/4d_2_5pn/paper/4d_2_5pn.tex:605-614`):
 
@@ -335,6 +351,10 @@ speed and the gravity-signal speed are forced equal**: `λγ = c_γ/c_s`.
 `conceptual_foundation.md:595` still lists **"Cone lock `λγ`"** as **open**; the corpus records
 `CONE_LOCK_CALIBRATED` with `λγ = 1` as a **calibration, not a derivation**; and `R3` already encodes the
 ratio in the registry seed.
+
+⛔ **Two different objects — round 2. Do not merge them:** the **ratio** `λγ = c_γ/c_s` is a *derived
+definition* (registry `R3`); the **equality `λγ = 1`** is a separate *calibrated / uncommitted* cone
+lock. Classifying the ratio says nothing about the lock.
 
 ⇒ Introduce `λγ` with provenance, **classify it** (`calibrated` / `derived` / `debt`), confront
 `CONE_LOCK_CALIBRATED`, and ⭐ **apply the kind-test**: is this a medium-wide ratio, or a relation between

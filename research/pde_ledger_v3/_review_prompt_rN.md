@@ -14,27 +14,25 @@ Repository root `/var/projects/toy_physics`, branch `ledger-v2-rebuild`.
 
 ## Fixes folded since the last round
 
-Round 6: both reviewers STILL BLOCKING, converging on the same first item. Folded:
+Round 7: both reviewers converged on the governing method doc again (§8 had been rewritten, §1.1 — the
+classification test applied at **every step** — had not). Rather than patch a seventh instance, the
+**whole documentary blast radius was enumerated** and closed:
 
-- ⭐ **The GOVERNING DOCS were stale and contradicted HEAD.** `docs/derivation_walkthrough_plan.md` and
-  `research/pde_ledger_v2/walkthrough/DECISIONS.md` both still said the `R2.a_pin` class is OPEN and
-  must not be resolved, while commit `407eed94` removed the relation. Both are now current; DECISIONS'
-  superseded consequences are marked history, not instruction.
-- **S16's remainder was dimensionally inhomogeneous** (force on the left, acceleration in the
-  remainder). Corrected, and the length relabelled `a_WT`.
-- **S15's force law had the profile normalization silently set to 1** while `I_F` was listed as debt in
-  the same plan. `I_F,12` is back in the equation.
-- **S1.5 rewritten whole** — no longer leads with a uniqueness claim it retracts, no longer asserts S1's
-  retracted three-field inventory; `Cρ` is a recorded choice, not an asserted consequence.
-- **S22's table replaced** (not annotated) — partitioned by locus; `J`, `m_defect` and the geon are
-  three separate rows with the missing bridges listed as debt.
-- **S12 reclassified** as a non-variational source plus separate boundary data.
-- **S20a's two classifications made non-optional**; A11 residuals folded.
+- ⭐ **The structural finding:** step ①'s quarantine rule ("fix what computes, quarantine what only
+  narrates") had a gap — **some v2 prose GOVERNS**. The method doc's §1.1 executes at every step, and
+  the walkthrough step records are re-banked by v3. Those were quarantined on a false premise.
+- **Governing docs brought current:** `docs/derivation_walkthrough_plan.md` §1.1 + the REOPENED
+  paragraph · `STATUS.md` · `walkthrough/01_sound_speed.md` (v3 re-banks it as S2) · `stage005` (S2's
+  source, which also carried older single-classification wording for `λγ`).
+- **Four superseded `_scratch` docs** carry `HISTORY — NOT INSTRUCTION` banners rather than rewrites.
+- **The D-01 clause is KEPT** (a relation from unit pins is not a defining equation) — it outlives the
+  case that produced it. Only the "open, do not resolve" instruction is removed.
+- **S12's closing "only a boundary condition" line replaced** with two separate inventories (source /
+  controller functions vs boundary / domain data). **S15's heading** no longer offers S16 as its premise.
 
-⭐⭐ **Hunt for the dominant defect class**: a correction *appended* while the original sentence,
-heading, table row, equation or summary still asserts the pre-correction claim. Three rounds running,
-that has been the main finding — including in documents OUTSIDE `research/pde_ledger_v3/` that the plan
-depends on.
+⭐⭐ **Hunt for**: (a) any remaining place where a correction was *appended* while the original sentence,
+heading, table row, equation or summary still asserts the pre-correction claim — **including outside
+`research/pde_ledger_v3/`**; and (b) any *governing* instruction that contradicts HEAD.
 
 ## Operating constraints
 - **READ ONLY.** Do not modify or commit. **One pass, no clarifying questions** (you will hang).

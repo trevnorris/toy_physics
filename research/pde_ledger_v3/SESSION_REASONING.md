@@ -72,7 +72,7 @@ also *fixes* `C = 80A⁵/(11⁵B⁴)`, which I had treated as free. Three review
 **Route C — the corpus's own answer.** With `B` kept: `a_* = 11B/(2A)`, `F_* = 36A²/(121B)`, hence
 `a ∝ m^{-1/2}` — heavier ⇒ **smaller**.
 
-## 5. ⭐⭐ But route C is dead, and that is the session's real result
+## 5. ⚠ Route C dies too — but NOT in the way I first wrote, and the correction is the real result
 
 The corpus's family route gives `a_j ∝ 1/(2j+1)` **and** `F_j ∝ (2j+1)²`. The second is
 **`1 : 9 : 25`** — and `lepton_mass_notes.md:424-473` says of it: *"decisively ruled out"* against

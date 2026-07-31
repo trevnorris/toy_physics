@@ -67,8 +67,9 @@ field is independent of the interior.
 ⛔⛔ **AMENDED 2026-07-31 — the boundary is weaker than stated above, and may not hold at all.**
 Reading the worldtube theorem's actual statement rather than its slogan
 (`research/4d_2_5pn/paper/4d_2_5pn.tex:605-614`), the independence is **leading-order only** and
-**conditional on the defect being compact (`a ≪ r`)**, with a first correction `O(a²/r²)` — controlled
-by the throat radius, which is undetermined.
+**conditional on the defect being compact (`a ≪ r`)**, with a first correction `O(a_WT²/r²)` — controlled by the
+**worldtube profile width**, which is a different object from the mouth radius (A11) and is itself
+undetermined.
 
 ⚠ And the Spin Problem (**C10**) concludes you *cannot* get frame dragging from a compact defect —
 *"you need the tail"*. ⇒ **If that is right, the compactness premise fails and the boundary this charter

@@ -328,14 +328,11 @@ project:
 ## 8. Open for the user
 
 1. **The phase order in §3** — proposed on dependency grounds; the physical picture is the user's.
-2. ⛔⛔ **REOPENED — the `R2` `a`-pin's registry class.** This section recorded it resolved on
-   2026-07-30 (*"it has a defining equation, therefore `derived`; treatment (i) applies and the block
-   fixture agrees on all four cases"*) and **D-01 overturned that the same day**
-   (`research/pde_ledger_v2/walkthrough/DECISIONS.md`): a relation arising from imposing unit pins is not
-   a defining equation. ⛔ **The class is OPEN pending a user decision — ⛔ do not pick one, here or
-   anywhere downstream.** ⚠ Blast radius: the registry still carries `R2.a_pin` as `DERIVED-EXECUTED`, so
-   the ambient count of **10** and `acceptance_check.py`'s `MATCH` both rest on the reading now reopened.
-   Whichever way the user decides, those numbers are **re-established deliberately**, ⛔ never preserved
-   by inertia and ⛔ never moved as a side effect.
+2. ✅ **CLOSED 2026-07-31 — the `R2` `a`-pin question no longer exists.** It was reopened by D-01, then
+   **resolved by removal**: the user retired the pin entirely (commit `407eed94`). `R2.a_pin` and
+   `Q.medium.a_pin` are **deleted** from the registry; `a` now denotes the **throat radius**, a
+   defect-sector quantity with no defining equation, absent from the medium block until a defect step
+   introduces it. ⛔ There is no open class to pick. ⇒ `research/pde_ledger_v3/` is the live workstream.
+
 
 ✅ **Resolved 2026-07-30:** the archive items (both kept, §5) · Zenodo (user-owned, no constraint).

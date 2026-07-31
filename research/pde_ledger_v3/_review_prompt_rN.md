@@ -12,21 +12,25 @@ Repository root `/var/projects/toy_physics`, branch `ledger-v2-rebuild`.
 3. `research/pde_ledger_v3/DEFECT_REGISTER.md`
 4. `research/pde_ledger_v3/SESSION_REASONING.md`
 
-## Fixes folded since the last round — verify each is REAL and ENFORCEABLE, not a warning
+## Fixes folded since the last round
 
-Round 4: one reviewer CLEAN (empty blockers), the other found three, all of the same shape — a finding
-recorded in one place while the operative step entries said the opposite. All three are folded:
+Round 5: one reviewer CLEAN (third consecutive, empty blockers); the other found four, all of one
+class — **an amendment appended below an original claim, leaving both voices readable**, so a step
+could bank the retracted version. All four are now fixed **by rewriting the original in place**:
 
-- **A13 is now a GATE attached to S1, S5 and S12.** S1 previously said "Register: none", so under the
-  plan's own done-rule it could bank without confronting the real-vs-complex `χ_B` contradiction.
-- **S8/S9 committed to one layout** — `{ρ_br, μ_R}` and the R10 debt both start at **S8**; S9 is pure
-  consequence. The earlier "pick one" left the ambiguity live.
-- **S14/S15/S20 are each marked `CONDITIONAL ON S14a`**, the charter's carry-forward list now lists the
-  `1/r²` law, the attractive sign and the stage009 falsifier as conditional rather than carried, and the
-  order is `S13 → S14a → S14`.
+- **S1's field count is 2, corrected in S1 itself** (`ψ` + the A13-selected order field). `U(ρ)` is an
+  EOS energy density, not a field.
+- **A11 is a gate on S16 and S22**, with distinct symbols `a_WT` (worldtube profile width) vs
+  `a_mouth`, and the missing bridge between them listed as debt.
+- **S22 is gated on A4, C4, C9**, partitioned by locus, and records `J` / `m_defect` / the geon as
+  three distinct unbridged objects.
+- **The charter's scope section is rewritten**, not amended: the justification is stated as conditional
+  and response-side, "will not touch" → "will not claim to discharge", and a clean close no longer
+  claims far-field independence.
 
-⭐ **Check specifically for the "warning vs rule" failure**: a finding stated in the register or in a
-note, while the step that must act on it says something else.
+⭐⭐ **Hunt specifically for this class**: any place where a correction was *appended* while the original
+sentence, heading, table row or summary still asserts the pre-correction claim. That has been the
+dominant defect for three rounds.
 
 ## Operating constraints
 - **READ ONLY.** Do not modify or commit. **One pass, no clarifying questions** (you will hang).

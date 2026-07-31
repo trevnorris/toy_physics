@@ -125,30 +125,28 @@ complex/inertial — propagate the choice into the field count, the action and t
 That reasoning is **wrong** — the brane comes from `V_χ(r_B)`, a potential on a *different* field. The
 conclusion survives, the argument does not. → S5.
 
-### S1.5 · The substrate action and the Madelung balances ⭐ ADDED — was owed and unnumbered
-The GNLS action, the quantum-gradient term, and the Madelung mass/momentum/energy balances, with the
-pressure identity that fixes `U(ρ) = Kρ⁵/4`.
-⛔ **Without this step the chain is broken**: S4 invokes a "core balance" and S12 needs the
-momentum/energy partners, and neither exists in S1's output. *"Derive forward from what previous steps
-banked"* is false at S4 until this is in.
-⛔ `U(ρ)` is **not** a third field or an independent free function — it is fixed by the EOS.
-**Expected new:** nothing beyond S1's primitives, if the action is faithfully transcribed. ⚠ If it turns
-out to introduce something, that is a finding.
+### S1.5 · The substrate action and the Madelung balances  ⚠ runs AFTER S1
+The GNLS action, the quantum-gradient term, and the Madelung mass/momentum/energy balances.
 
-⛔⛔ **Order: S1 THEN S1.5.** This step consumes S1's primitives, so it cannot precede it. ⚠ Earlier
-handoff text said `S0.5 → S1.5 → S1`; that was **wrong** — the correct order is
-`S0.5 → S1 → S1.5 → S2`.
+⛔ **The pressure identity does NOT determine `U(ρ)`.** `P = ρU′ − U = Kρ⁵` has general solution
+```
+U(ρ) = Kρ⁵/4 + Cρ
+```
+The linear term is unconstrained by the EOS. `C` is a **chemical-potential / energy-reference choice**
+and it enters the energy and source ledger. ⇒ **Choose it explicitly and classify the choice**; setting
+`C = 0` is a decision to be recorded, ⛔ not a consequence to be asserted.
 
-⛔ **`U(ρ)` is NOT uniquely fixed by the pressure identity.** `P = ρU′ − U = Kρ⁵` gives
-`U = Kρ⁵/4 + Cρ` — the linear term is unconstrained. `C` is a **chemical-potential / phase-reference
-choice**, and it matters to the energy and source ledger. ⇒ **State the reference that sets `C = 0`
-explicitly**; do not present `Kρ⁵/4` as forced.
+**Why this step exists:** S4 invokes a "core balance" and S12 needs momentum/energy partners, and
+neither has an antecedent in S1's output. Without this step *"derive forward from what previous steps
+banked"* is false at S4.
 
-⚠ Also **fix the field count**: S1 lists three fields including `U(ρ)`, while this step says `U` is not a
-field. Name the two actual fields and correct S1.
-⇒ Bank an explicit, consistent `Π_Q`, `ε_Q`, `j_ε^Q` improvement convention — the three form one package.
-⚠ This step supplies the **conservative left-hand sides only**; S12's non-variational source partners
+**Expected new:** the reference choice `C` (one decision), and an explicit `Π_Q` / `ε_Q` / `j_ε^Q`
+improvement convention — ⭐ **the three are one package**, and picking them separately is how a
+convention becomes an unnoticed input.
+⚠ This step supplies the **conservative left-hand sides only**. S12's non-variational source partners
 stay open.
+⚠ Confirm S1's **two-field** inventory (`ψ` + the A13-selected order field); `U` is not a field.
+
 
 ### S2 · The sound speed
 `c_s² = (1/m)dP/dρ = nKρ^(n-1)/m`. **Expected new: nothing** — pure consequence.
@@ -303,7 +301,7 @@ the particle law. ⛔ **Round 2 corrects that correction: S16 does NOT license S
 carries **its own** Noether / control-surface assumptions. ⇒ Run S16 first for regime context, but
 ⛔ derive S15's premises independently — do not inherit them.
 
-Noether stress at infinity, drain strengths `Q_i` **given**: `F_12 = −(m N_∞,3 Q1Q2/4πr²) r̂`.
+Noether stress at infinity, drain strengths `Q_i` **given**: `F_12 = −I_F,12 · (m N_∞,3 Q1Q2 / 4πr²) r̂`  ⛔ **`I_F,12` is not 1** — it is listed as debt in S22; ⛔ do not display the coefficient-one form.
 
 ⛔ **Two corrections to the original wording:**
 - **The source map is missing.** S13 introduces `J`; this step uses `Q_i` — the corpus relation
@@ -323,7 +321,7 @@ must be *supplied* for the far field to be computable without the interior.
 ⚠ **Read the actual statement, not the slogan** (`research/4d_2_5pn/paper/4d_2_5pn.tex:605-614`):
 
 > *"For a **compact defect of size `a ≪ r`** in a smooth external field, the center-of-mass reduction
-> gives the usual point-particle force law … `+ O(a²/r² · Φ_ext/r)` … so that the universal
+> gives the usual point-particle force law … `+ O(M_A·(a_WT²/r²)·Φ_ext/r)` … so that the universal
 > point-particle source **at leading order** is controlled by the worldline/worldtube multipoles rather
 > than by arbitrary internal details of the defect."*
 
@@ -426,7 +424,7 @@ ratio in the registry seed.
 definition* (registry `R3`); the **equality `λγ = 1`** is a separate *calibrated / uncommitted* cone
 lock. Classifying the ratio says nothing about the lock.
 
-⇒ Introduce `λγ` with provenance, **classify it** (`calibrated` / `derived` / `debt`), confront
+⇒ ⛔ **Both classifications are fixed, not open:** the **ratio** `λγ = c_γ/c_s` is **`derived`** (it is `R3`); the **equality `λγ = 1`** is **`calibrated`/uncommitted**. ⛔ Do not re-open the ratio's class. Introduce `λγ` with provenance, confront
 `CONE_LOCK_CALIBRATED`, and ⭐ **apply the kind-test**: is this a medium-wide ratio, or a relation between
 two sector speeds that happen to share dimensions? ⚠ That is exactly the shape of the ten identifications
 in register §A.

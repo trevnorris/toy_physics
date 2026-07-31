@@ -322,7 +322,10 @@ departure **GR forbids**. ⭐ The sector's one live able-to-fail prediction. Ban
 
 ---
 
-## PHASE 5 — the knit and the deliverable (3 steps)
+## PHASE 5 — the knit and the deliverable (4 steps)
+
+⚠ `S20a` is numbered from phase 4 but belongs here: the cone lock is a **knit** question, not a
+gravity-sector derivation.
 
 ### S20a · ⭐⭐ THE CONE LOCK — the actual cross-sector question, and it had no step
 **Found by review, and it is the load-bearing knit for *this* scope.** For a gravity + light ledger the
@@ -386,6 +389,7 @@ block rank · top-down reconciliation · the sim-input-vs-residual diff). The wa
 **S1–S4** are cheap re-banking; they exist to make v3 self-contained.
 **S5–S8** are the honest core — three of the four bank a *postulate* or a *gap*.
 **S9–S11, S15–S20** are where the earned results live.
+**S0.5 and the substrate-action step are prerequisites** — ⛔ nothing is banked before them.
 **S22 is the deliverable.**
 
 ⚠ **Expect roughly this shape:** ~6 steps introducing genuinely new inputs, ~8 pure-consequence steps,

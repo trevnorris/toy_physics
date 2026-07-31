@@ -164,10 +164,28 @@ model is sound.
 consistency, ⛔ **not** a first-principles derivation of `G`.
 **Register:** **E1** — v2's count claims here rest on tagging a physical `a` as `CONV`.
 
-### S19 · Gravitomagnetism
+### S19 · Gravitomagnetism ⛔ NOT a cite-and-record step — it has a known open problem
 The frame-dragging / velocity-dependent PN terms. ⛔ Not the EM sector's moving throat.
-⚠ **Establish first whether this needs new derivation or is already inside S17's ladder.** If the
-latter, it is a cite-and-record step, not a build step.
+
+⚠ **Checked 2026-07-31, and the plan's original assumption was wrong.** This is *not* already settled
+inside S17's ladder. `conceptual_foundation.md:589` still lists spin as *"**not yet placed in the
+picture**"*, while an **orphan** note (`research/4d_1pn_bridge/notes/tadpole.md`, referenced by nothing
+in the corpus) claims a *"Standard Model of the Defect"* that solves it.
+
+⭐⭐ **And the note identifies a structural tension inside the gravity sector itself:**
+- the **inertial** sector (1PN precession) forces a **compact, "stubby"** throat;
+- the **spin** sector needs a **dipole** gravitomagnetic falloff, and a compact source gives a
+  *"gravitomagnetic monopole"* — *"physically inadmissible"*;
+- verdict: *"You cannot get frame dragging from a compact 4D bubble; you **need** the tail."*
+
+⇒ **Inertia wants compact, spin wants extended.** If that holds, it is a conflict **within the sector
+v3 calls solid** — exactly the kind of thing this ledger exists to surface.
+
+⚠ The proposed fix (a composite "stubby head + infinite vortex-filament tail") re-introduces
+**quantized circulation**, which the charge sector explicitly disclaims. ⛔ Do not adopt it; **audit it**.
+
+**Register:** **C10**. ⭐ **Two independent legs, both blocking** — this is new physics, not bookkeeping.
+⚠ **Possible outcome: a NO-GO for the sector.** That is a first-class result, not a failure.
 
 ### S20 · The falsifier
 stage009 `RETURN_RESIDUAL_PREDICTION`: `1−T_ℓ(0) = ε_ℓ/(1+ε_ℓ)` at ℓ=0/1, orders `p_res = 1,3` — a

@@ -1,346 +1,175 @@
-# NEXT SESSION — handoff (authored 2026-07-30, after the DIRECTION CHANGE)
+# NEXT SESSION — handoff (rewritten 2026-07-30, after the METHOD CHANGE)
 
-## ⛔ READ BUDGET — the largest single cost of the last two sessions
+## ⛔ ORIENTATION BUDGET — read exactly two things
 
-Read **this file** and **`STATUS.md`**. That is your whole orientation budget. Delegate everything else:
-send an agent with a specific question and require **"≤20 lines + file:line loci"** back. ⛔ Do not open
-`docs/development_pipeline.md`, `manifests/DIMENSION_REWRITE.md` or the stage notes "to get oriented" —
-they are 300, 1500 and 1000+ lines. Re-read a *section* only when about to act on that exact section.
+1. **`docs/derivation_walkthrough_plan.md`** — the method. It is the canonical doc and this handoff does
+   ⛔ **not** restate it.
+2. **`research/pde_ledger_v2/walkthrough/`** — the two committed step records. They are the worked
+   precedent; read them to see what a step looks like, not for their content.
 
-⭐ **ONE NAMED EXCEPTION — read it before resuming, not "to get oriented":** `manifests/DIMENSION_REWRITE.md`
-**§1b (the D1–D5 decisions)** and **§3b (what those decisions REOPENED)**. Several recorded conclusions —
-three waivers, four "impossible" stages, a coverage estimate — held only under constraints since lifted,
-and will otherwise read as settled.
+That is the whole budget. ⛔ Do not open the census artifacts, the manifests, or `DIMENSION_REWRITE.md`
+"to get oriented". Delegate any other read with a specific question and require **"≤20 lines + file:line
+loci"** back.
 
----
-
-## STATE
-
-Branch `ledger-v2-rebuild`. ⛔ Do not trust a hash written here — run `git log --oneline -5` and
-`git status` first. **Dimension rewrite: 7 of 30 converted** (004, 011, 012, 013, 016, 018, 023).
+⚠ Run `git log --oneline -5` and `git status` first. ⛔ Do not trust a hash written in any doc.
 
 ---
 
-## ⭐⭐ THE DIRECTION CHANGED — read this before doing anything
+## ⭐⭐ THE METHOD CHANGED — this is the whole story
 
-The verification apparatus had grown four layers above the physics: a review instrument, an acceptance
-gate for it, a byte-authority over that gate, a documented procedure over the authority. A full session
-was spent at those layers verifying **no physics**. The user stopped it.
+The previous approach **audited the finished corpus backward** — a provenance census over occurrences,
+with a schema, review legs, a pilot and a registry. It produced real findings and made the physics
+unfollowable for the one person who can check it. After eleven commits, **no physics had been verified.**
 
-**The governing test — now the first thing `docs/development_pipeline.md` states:**
-- Catches a way the **PHYSICS** could be wrong? → **keep.**
-- Only a way the **TOOLING** could be wrong, or a motivated adversary? → **cut.**
+⚠ **This was the second occurrence of a failure `docs/development_pipeline.md` already records** —
+apparatus growing above the physics. The user stopped it, again.
 
-⛔ **Immutability is not a discipline here.** Files are freely editable; nothing is frozen, byte-perfect
-or under custody. ⛔ Role separation is **one builder, one fresh reviewer**, plus a **second independent
-review leg on physics-bearing artifacts only**. No three-session sequences, no round-robin, no four-model
-bookend, no per-chunk user gates.
+⭐ **The walkthrough runs FORWARD.** One derivation step at a time from the medium's defining properties,
+recording at each: **what it is · what it does · what's new.** The irreducible count accumulates *by
+construction* instead of being inferred backward — and it is followable, which is the point.
 
-⚠ **You will find committed artifacts that predate this** — a conformance fixture suite, a freeze
-authority, a re-acceptance procedure. They are inert and paused. ⛔ Do not build on them; do not spend a
-session deleting them either unless asked.
+⛔ **The single largest risk to this session is rebuilding apparatus.** The plan's §6 names it: if you
+build registry machinery as a *precondition* for banking a step, you fail the same test that killed the
+audit route. §7a is a **closing** step, not a gate to build first.
 
 ---
 
-## ⭐⭐ THE FINDING THAT MATTERS MOST — do not re-derive, do not soften
+## ▶ WHERE WE ARE
 
-**Dual-engine agreement is VACUOUS where both sides are hand-declared literals.** ⚠ State it at the width
-the measurement supports: **no dimensional input enters from outside the stage's own typed declarations.**
-stage023 emits **29 records — 22 typed `SOURCED_DIMS` plus 7 live `dim_of` walks**, and those walks run
-over exactly those 22 literals and nothing else. stage016 emits **21 — 12 typed rule-table entries plus 9
-computed** by `dim_of` over real expression inputs, again sourced only from its own declarations.
-⛔ It is **not** "29/29 literals" and **not** "zero computed" — both overstate; ✅ **`STATUS.md` was
-corrected 2026-07-30 to these same counts**, so the two files now agree. So the comparator on these
-stages catches a *transcription split between two typed copies of the same numbers*, and nothing else.
+**Phase 0 · step 1 — the medium and the brane** (`walkthrough/00_medium_and_brane.md`). One medium; the
+brane is its ordered state, ⛔ not a separate object. What's new: 4 scalars, 3 discrete choices, 3 fields,
+1 BC. ⭐ The two-phase split is **postulated, not derived** — `U(ρ)` is single-well, so the brane is put
+in by hand (`docs/model_map.md:26`). Largest tier-1 item so far.
 
-⚠⚠ **THE COUNTER-MEASUREMENT — read it WITH the finding, not after it.** Per `STATUS.md`, relabelling
-stage016's basis leaves **that stage's own 82 assertions blind at exit 0** (82 PASS, printing
-`measure: 'M^3'`) while the comparator catches **18 of 21**. ⇒ The comparator is the **sole instrument**
-between a converted stage and a relabelled basis. ⛔ **Do not read the finding above as licence to cut it
-under the governing test** — a relabelled basis is a way the PHYSICS goes wrong, not the tooling.
+**Phase 0 · step 2 — the sound speed** (`walkthrough/01_sound_speed.md`). `c_s² = nKρ^(n−1)/m`.
+⭐ **What's new: nothing** — pure consequence, which is what a derived step should look like.
+⭐⭐ **The finding: `[K] = M L^(4n−2) T⁻²`**, so the polytropic exponent and `K`'s dimension are **one
+structural choice**, not two inputs. `n` is discrete-structural, not a continuous knob.
 
-⇒ **Nothing that survives independently RE-DERIVES the physics** outside one fresh agent. The cross-engine
-gate shows two implementations agree, never that either is right — and git shows all 43 pairs were first
-added together, so even *independence of route* is discipline, not evidence.
-
-**Hence the front (user decision, 2026-07-30): a DERIVED-vs-DECLARED census** — how much of this ledger
-computes something rather than asserting it. Nobody can currently say.
-
-⚠ **It is NOT a binary, cannot be measured as one, and must not be attempted as one.** A value can be
-physically derived and still be *stored* as a literal. The real states are ~six (derived-in-form ·
-executed derivation · branch-determined · input · gap · benchmark), and the method needs one stable ID
-**per occurrence**, joined across stages by **adjudicated** identity, not by candidate name. ⚠ **Name
-grouping is precisely what already fails:** `research/pde_ledger_v2/CANONICAL_DIMENSIONS.md` §"GROUPING
-LIMITATIONS" lists **eight known-same cross-stage pairs it does not group** (011 CamelCase vs 012
-snake_case: `CsSquaredDim`, `CorruptKDim`, `EnergyDim`, `FourVolumeDim`, `MassDim`, `OmegaDim`,
-`PressureDim`, `RhoDim`), and 016's `T_w` → candidate `TW` never meets 013's `Tw` → `Tw`, so it cannot
-see that pair at all.
-
-**Substrates that already exist — the census EXTENDS them, it does not start clean. ⚠ Each is stated
-WITH its limit, because extending them does NOT by itself enumerate documentary imports, verdicts,
-controls, assertions, or non-dimensional computed objects:**
-- `software/stage1_solver/decisions/14_value_provenance_and_calibration_map.md` — the semantic classes
-  (DERIVED / INPUT / gap / benchmark) already assigned per value. ⚠ **Limit: it covers a limited Path-A
-  constant set** (its own scope line: *"the whole Path-A constant set"*), not the ledger's objects.
-- `research/pde_ledger_v2/notes/parameter_register.md` — dependency and reduction edges per knob.
-  ⚠ **Limit: it aggregates PARAMETERS and REDUCTION EDGES, not occurrences** — one row per knob, and its
-  provenance classes are a **different seven-class** taxonomy (see P0-1).
-- ⭐ **`research/pde_ledger_v2/notes/stages/ledger_stage043_irreducible_count_range.md` §10 — the
-  `REGISTER_TO_COUNT_MANIFEST`, a BOUNDED ~152-ID manifest with its OWN identity and category system**
-  (mutually-disjoint categories, engine-qualified row/knob IDs, exact total stated and asserted in
-  `scripts/ledger_stage043_irreducible_count_range_sympy_audit.py`). ⛔ The census must **reconcile with
-  it, not reinvent it** — an ID scheme and a category partition at corpus scale already exist here.
-- the **§4-c1 per-quantity route tables** in the stage notes — per-quantity CORRECT/WRONG/UNDETERMINED
-  *with its route*, plus the count of records that are declared literals in both engines. ⭐ **stage023
-  already demonstrates the method** — **34** routed objects and two scoped tallies (**24/0/10** as
-  identifications against the corpus, **27/0/7** inside the stage-local closure); **stage016** carries a
-  tracked **21/0** verdict, **12** typed in both engines and **9** computed. ⚠ **Limit, twice over: these
-  cover DIMENSION-VALUED quantities only, and tracked tables exist for exactly TWO stages — 016 and
-  023.** ⛔ And their tallies are **dimensional-correctness verdicts, not provenance states** (see P0-2).
-- ⚠ **Part VII's stage046 firewall requires a calibration map of this kind** — *"every constant
-  DERIVED/INPUT/gap/benchmark"* (`research/pde_ledger_v2/notes/part7_integration_atomic_split.md`, the
-  046 row). ⇒ The census is not new work bolted on; it **overlaps** a Part VII obligation. ⛔ **State the
-  overlap, do not claim equivalence:** the same row also consumes **stage043's range** and the corrected
-  R1 inventory, 046 assembles from the **044→045 spine** (same file, the **"Ordering (ratified)"** block:
-  *"046/047/048 assemble from the spine"*), and its requirement is over
-  **constants**, whereas the proposed **occurrence** census is broader than what 046 needs.
+**▶ NEXT STEP:** phase 0 continues. ⚠ The step order in the plan's §3 is **proposed on dependency
+grounds and is the user's call** — confirm before assuming it.
 
 ---
 
-## ⭐ THE OUTPUT SHAPE THE CENSUS MUST PRODUCE (user framing, 2026-07-30)
+## ⭐ THE OPERATING RULE — got wrong twice today, at real cost
 
-Build the census so its output **IS this list**, not a set of provenance codes someone then re-sorts:
+> **Codex writes ALL code. Two independent parties review. The orchestrator adjudicates and does not
+> type.**
 
-1. **IRREDUCIBLE** — cannot be derived even hypothetically. Expected to be the brane/bulk defining
-   properties plus a few.
-2. **CALIBRATED** — fixed against known physics. `G`, `c`, `ℏ`, `ℓ_P` are convention and calibration
-   per the standing rule; only held-out **dimensionless** ratios test the model.
-3. **EMERGENT** — everything that follows from tiers 1 and 2.
+⚠ Both violations were mine and both produced bad work: I hand-wrote `show_reduced.py` (an independent
+review found it *"wrong on every named risk"*) and I hand-applied registry edits, then reviewed my own
+work and **reported a false "MATCH"** that was two cancelling errors.
 
-⚠ **TIER 1 SPLITS THREE WAYS, and that split is the whole point:**
-- not derived **YET** — debt; a reduction someone could actually do
-- not derivable **WITHIN this framework** — structural
-- not derivable **IN PRINCIPLE** — a genuine postulate about the medium
+⭐ **Double review earns its keep, measured today:** on one round the agent and Grok independently found
+the *same* rank defect with *different* counterexamples — but only the agent found that a **crashed child
+was reporting as a caught mutation**, which would have turned every future `PASS` into noise. A single
+reviewer misses things.
 
-stage043 already gestures at this (`DERIVED-in-form` vs `PENDING-debt`). ⭐ That is a better tier-1
-taxonomy than the abstract six provenance states in P0-1 — reconcile them, and prefer this one where
-they disagree. A census returning "irreducible: 43" is nearly useless; one returning "of 43: N debt,
-M structural, K postulates" says exactly where to push.
-
-⭐ **THE GAP THAT MAKES THIS WORTH DOING.** stage043 bounds the irreducible count at roughly **40–49**
-across a **152-ID manifest**. The hypothesis expects single digits to low teens. So either most of
-those 40-odd are derivable-but-underived, or the medium needs far more specification than the physical
-picture suggests. ⛔ Do not assume which — **that gap IS the result.**
-
-⚠ **WHY IT MATTERS BEYOND BOOKKEEPING:** the calibrate-predict surplus (held-out matches minus tuned
-knobs) has **no denominator** until tier 1 is sized. "Does the model predict anything" is not
-answerable before this.
-
-⛔ **VERIFY FIRST:** the 40–49 range, the 152-ID manifest and the `DERIVED-in-form`/`PENDING-debt`
-split come from `STATUS.md` and a review summary, **not** from reading stage043's note. The session
-that wrote this was wrong about several confidently-held facts.
+Practical: Codex and Grok are **external CLI jobs**, not Claude Code agents — they never appear in the
+agents panel. Launch detached, anchor on `grep -q '^___CODEX_DONE___'`, ⛔ never wrap in shell `timeout`.
+⭐ Grok's exact invocation lives in the `reference-grok-cli-review` memory — **open it, do not guess.**
 
 ---
 
-## ▶ THE WORK
+## ⭐ THE TWO SCRIPTS — the standing deliverable, grown step by step
 
-⭐⭐ **DECIDED (user, 2026-07-30): the CENSUS is the front; the conversions continue BEHIND it.** ⛔ The
-question is closed — do not re-ask it. ⛔ Do not delete the reasoning that made it a choice, because it
-is why the choice was available: the conversions are the original minimal ask (one shared import so every
-script's dimensions come from one place), the census is what says whether the physics is derived at all,
-and **they are independent** — the census does **not** depend on conversion, so it can run against any
-stage's existing declarations.
+`research/pde_ledger_v2/reduction/`. ⛔ **Not** built up front; each step adds its quantities and its
+equation, and must pass the dimensions check before the step is banked.
 
-⭐⭐ **The finding that motivates the census, WITH its counter-measurement — read them together; either
-one alone produces the wrong conclusion.** ⇒ **Nothing that survives independently RE-DERIVES the
-physics:** the cross-engine gate shows two implementations agree, never that either is right, and git
-shows all 43 pairs were first added together. ⚠ **AND the comparator remains the sole instrument between
-a converted stage and a relabelled basis** — relabelling stage016's basis leaves that stage's own **82
-assertions blind at exit 0**, while the comparator catches **18 of 21**. The first half is why the census
-is the front; it is ⛔ **not** licence to cut the comparator.
+1. **The shared import** — `quantities.yaml`, `relations.yaml`, `registry_read.py`. Every quantity, its
+   defining equation if it has one, what it derives from. `show_reduced.py` renders it: which must be
+   supplied, and what the derived ones reduce to.
+2. **The dimensions check** — `dimensional_homogeneity_gate.py`. Working, demonstrated able-to-fail, and
+   it reports **dimension provenance per quantity** (which stages are on the shared module and which are
+   not) so fan-out can be gated per sector.
 
-⛔⛔ **THE WAY THIS CENSUS FINISHES AND RETURNS A WRONG NUMBER — read it before writing the schema, not
-after the fan-out. Counting SYNTACTIC EXECUTION as PHYSICAL DERIVATION inflates the "computed"
-fraction.** Measured, not feared: of stage016's **nine computed records, three are self-referential** —
-`actual_M2`, `actual_K2`, `actual_K2_over_M2` walk a declaration back to the constant that defines it —
-and **none of the nine is computed from any physical input**
-(`research/pde_ledger_v2/notes/stages/ledger_stage016_l2_so3_covariance.md` §1.6(3); all nine are pure
-functions of the twelve `dim_rules.*` declarations). stage023's **seven `dim_of` walks run over
-`SOURCED_DIMS` and nothing else** — the stage's own 22 typed literals
-(`scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py`, `run_dimension_check`). In both
-cases a code path really ran and **no physics entered**.
-⇒ **The EXTERNAL-INPUT CRITERION IS A REQUIRED FIELD OF THE SCHEMA, not a caveat in the prose:** every
-row must answer *does this value trace to a field equation, or to an input from outside the stage's own
-declarations?* ⛔ A row that cannot answer it is **not** counted as computed. Without that field the
-census returns a flattering number — and the number is what gets quoted.
+**Current medium block:** 6 must be supplied (`ħ, m_GNLS, K, ρ0, c_γ, n_eos`), 5 derived, and every
+derived one reduces onto exactly those 6.
 
-**P0 — THE CENSUS: spec → pilot → fan-out, in that order.**
-1. **Specify the schema.** ⛔ One builder, one fresh reviewer; the census is physics-bearing, so it gets
-   the **second independent review leg**. The spec must settle, at minimum:
-   - the **states**, the **per-occurrence ID**, the **join rule**, and **what evidence each row cites**;
-   - ⭐⭐ the **external-input criterion above, as a required field** — see the block immediately above;
-   - the **census universe** — which objects are in scope at all;
-   - what counts as **one occurrence**, and the **inclusion rules**;
-   - the **denominator** the fraction is reported against, and the **aggregation rule** across stages;
-   - an **ID registry** — where the IDs live and who mints them.
-   ⚠ **The states OVERLAP, and the spec must resolve that rather than inherit it:** BRANCH-DETERMINED
-   may *already* be computed, and `research/pde_ledger_v2/notes/parameter_register.md` classifies with a
-   **different seven-class** taxonomy (`ACTION` / `DERIVED` / `CONV` / `FREE-UNREDUCED` /
-   `CALIB`(`-ANCHOR`) / `CANDIDATE` / `GAP`). ⇒ give an explicit **precedence rule**, or split
-   **provenance** and **execution** into **two axes**.
-   ⚠ **The universe question is already consequential, not hypothetical:** stage023 carries **42** source
-   objects under its declared membership rule (§1.6, `ENUM_COUNT|row_count|42`), **29** emitted records,
-   and **34** physics-routed objects (§1.7(1)) — three different candidate universes inside one stage.
-2. **Pilot on THREE stages — 023, 016 and 043.** 023 and 016 are the two that already carry §4-c1 route
-   tables. ⭐ **043 is the third** because it exercises **DERIVED-in-form versus unexecuted debt**
-   directly (its §11 keeps `R35` labelled `DERIVED-in-form` rather than flipping it to `PENDING-debt`)
-   and it computes over a **corpus-scale bounded manifest** rather than one stage's records. Check the
-   schema survives contact with all three.
-   ⛔ **Do NOT require the pilot to reproduce 023's `24/0/10` and `27/0/7` or 016's `21/0`.** Those are
-   **dimensional CORRECT/WRONG/UNDETERMINED verdicts — a different axis from provenance**, so a
-   provenance schema has no reason to land on those distributions and reproducing them is not evidence
-   about the schema either way. What the pilot **may** reuse is those tables' **row universes** and their
-   **correctness fields**; the tallies are context, ⛔ not an oracle.
-3. **Then fan out.** ⚠ Do not fan out before the pilot; a schema defect multiplied across 43 stages is
-   the expensive failure here.
+⚠ Expression format is `prefix-v1` — **one canonical tree both engines parse.** ⛔ Never two hand-typed
+copies; that agreement is vacuous, and it is the finding that started this whole workstream.
+⏸ The Mathematica reader is **not built**. `README.md` is written to be sufficient for it.
 
-⏸ **P1–P4 are the CONVERSION work. It continues BEHIND the census** — recorded order and hazards intact,
-⛔ but none of it is the next step any more.
-
-**P1 — Pass-1b, small.** `composite_build.py` recovers dimension order by finding an AST class named
-exactly `Dim`; the shared module exports `Dimension`, and the checker has **zero** references to
-`ledger_dimensions`. Every conversion therefore *removes* that stage's recovery. **Verified: recovery is
-10 of 43** — exactly 7 scripts carry an exact `class Dim` (005, 006, 007, 008, 009, 030, 031) plus 3
-registered bare-tuple digests (032, 038, 042) — and **all 7 converted stages carry none**. Teach the
-checker the module before converting more. ⏸ **Still worth doing whenever conversions resume, for exactly
-that reason — but no longer urgent, and ⛔ not to be presented as the next step.**
-
-**P2 — two conversion accelerators, both small, no ceremony. ⭐ Order per `STATUS.md`: (1) the ablation
-driver, (2) the `DIM|` emitter — and both land BEFORE 027 begins.**
-- **(1) the ablation driver** — mutate a declaration, confirm the declared assert fires, record it;
-  reviewed by one fresh agent. Current trimmed spec:
-  `research/pde_ledger_v2/notes/ablation_driver/REQUIREMENTS.md`. ⛔ `CONTRACT.md` and the `fixtures_v4/`
-  suite in that same directory are **superseded history**, not authoritative.
-- **(2) the shared Mathematica `DIM|` emitter** —
-  `research/pde_ledger_v2/notes/wl_emitter/REQUIREMENTS.md` (v2, reviewed CLEAN). **One builder writes it,
-  one fresh agent reviews it.** No contract, no fixtures. It addresses five measured hazards each stage
-  currently re-derives: dead code after the terminal `Exit[]` (all 43 `.wl` files end in one), a derived
-  label beside raw storage order, duplicate/corrupt records from a holder invoked many times, hardcoded
-  exponent literals, fractions needing exact serialisation.
-
-**P3 — the conversions.** Order: the stage027-shape decision, then 027, then 021 (heaviest). ⚠ 027 is
-MIXED **in one respect only** — its single computed vector never reaches top level (it dies in `runAll`'s
-`Module`). ⛔ Its **16 declared per-symbol `baseDims` vectors ARE already top-level** (`027 wl:183-191`),
-so it is **not** forced to a 1-row `DIM|` stage and the `.wl` route does **not** fail to produce
-per-symbol vectors. ⚠ 021's renderer reorders **display** to `L,T,M` (`wl:125`/`:139`) with each label
-carrying its own exponent — **there is no M↔T value swap**, and the storage order `(L,M,T)` is stated
-in-file (`wl:342`/`:384`/`:528`). The only hazard is scraping that display and labelling the sequence
-`axes=L,M,T`. ⚠ 035/036 are unprototyped; **fix the canonical-table generator before 035/036/037** — it
-*raises* on cross-engine axis-order disagreement, the pattern the 037 **spike** exhibited (the committed
-037 `.wl` declares no axis order at all — see `STATUS.md`). ⭐ **Measure whether 027 comes in dramatically cheaper than 023.** If not, say so
-plainly rather than grinding through 22 more.
-
-**P4 — the manifests, trimmed.** 4 of 44 exist. Semantic core = quantity identity, dimensional relations,
-dependency graph and cycles, consumption completeness, mutation — **plus C2/C3/C5/C8**, which were
-wrongly cut once and restored: C2 detects changed consumed equations, C3 consumption of retired physics,
-C5 wrong irreducible-count ranges, C8 calibrated/target-matched genesis.
-
-**P5 — standing, none of it blocking.** The seven `WORK-023-*` adjudications, sharpest being the **`D0`
-seam** — real, but ⚠ **stage017 has no dimension machinery in either engine**, so it "implies" nothing on
-its own: the `M T⁻²` reading comes from `research/pde_ledger_v2/notes/parameter_register.md:185` (whose
-ℓ=2 radial scalars are computed in **stage016's** dimension rules, `EXPECTED_K`), while 021/023/027
-declare `M L⁻¹T⁻²`, and the propagation contradicts an asserted dimensionless target.
-`DIMENSION_REWRITE.md` §12 states this correctly — cite it rather than the compressed form.
-⛔ **Dimension libraries: CLOSED, NO-GO — do not reopen.**
+**Acceptance:** `acceptance_check.py` MATCHes the protected fixture on all four medium cases, and ⭐ **two
+independent reviewers derived those four numbers themselves** rather than reading them off. They are the
+first real reference in this workstream. ⛔ **A change that moves them is wrong.**
 
 ---
 
-## ⭐ ALREADY MEASURED — do not re-derive
+## ⛔ OPEN DEFECTS — recorded, not fixed
 
-- **Recovery is 10 of 43**, not the ~16 both front-door docs claimed until 2026-07-30.
-- **The module digest cannot establish "you edited the module and did not re-run the stages"** — it
-  compares hashes, and `--accept` resets without checking any producer.
-- **"Consistent by construction" is wrong**: one shared import gives *representation unity*, not correct
-  dimensions. Two stages can declare the same wrong exponents from one module.
-- **U13** — a mis-binding *inside* an exponent-degeneracy class is invisible to the stage gate, the
-  comparator and a re-run: 25 of 29 stage023 records share their triple, and five simultaneous same-class
-  rebindings gave exit 0, 111 PASS and a green comparator. ⚠ A **source read does** reach it.
-  ✅ **Evidenced — the artifact is retained** (rescued 2026-07-30 out of gitignored `_scratch/stage023_h/`
-  to `notes/stage023_step_h_evidence/u13_u14_rescued/`): `u13_expE_same_class_rebinding.diff` carries
-  exactly the five rebindings (`M0←R0`, `K0c←Z1ret`, `g_U←g_W`, `eta_null←q_free`, `T0←P0_physical`) as a
-  five-line diff against the committed script, with `u13_expE.stage.out` (exit 0, 111 PASS) and the two
-  `dimensions.txt` payloads, which reduce to the same md5 — only the header's `source_sha256` differs.
-- **U14** — jointly, **20 of 22 declarations are unpinned by anything in the Python**; only `M0` and `D1`
-  are constrained, and only against declared `EXPECTED_DIMS`. A one-at-a-time ablation shows 6, because
-  moving one breaks a relation that moving them together preserves. ⚠ **Scope — do not over-read this as
-  workstream-wide blindness.** The cross-engine comparator **does** catch the joint mutation:
-  `RESULT|stage=stage023|status=FAIL|mismatches=16` (`u13_u14_rescued/u14_i7_joint.cmp.out`), because the
-  `.wl` carries an independent literal `baseDims` table. U14 bounds the **Python** gate, not detection as a
-  whole. (The genuinely undetected case is **U13**, whose payload is byte-identical.)
-- **The dimensional gate is not what catches a corrupted declaration** — `base_verdict` ranks
-  `dimensional` third, so the selector control or the baseline earned-verdict check fires first, in all
-  16 caught rows.
-- ⛔ **Open, module-level:** `ledger_dimensions._exact` **coerces** an `sp.Float` instead of rejecting it,
-  so a float typo becomes an exact-but-wrong rational silently (`Dim(0.1,0,0)` ≠ `1/10`). Touches all
-  seven converted stages.
-- ⛔ **`run_all_audits.sh` prints `Fail: N` but EXITS 0.** It gates on the module pin only and never
-  invokes the comparator or the generator (zero references to either). ⇒ Trusting its exit code is a
-  **silent pass**; read the `Fail:` tally, not `$?`.
-- **An agent CAN run Mathematica here** — a review agent ran `timeout 600 math -script …` to exit 0 and
-  byte-diffed the transcript itself. ⚠ One agent, one occasion; the ≤2 concurrent seat cap must count
-  agents too.
+- ⭐ **The `n_eos` consistency assertion lives inside the artifact it polices.** Emptying
+  `literal_consistency: []` and setting the coefficient to 3 is accepted by every check, and `c_s0`
+  silently returns `√3`. ⚠ Motivated-adversary, so non-blocking — but it is the
+  `control-outside-the-thing-it-polices` rule, unsatisfied.
+- ⚠ **The registry cannot represent any `n ≠ 5`.** `n_eos` is a *pinned constant with a consistency
+  assertion*, ⛔ not a knob. Recorded plainly because it reads like a knob.
+- **`value` is a silent evaluation default** and is invisible to the dimensional gate. Inert today; a
+  foot-gun on reuse. *(May be fixed — check the last commit.)*
+- **A dimension-helper divergence from the fixture** on constraints carrying an outside symbol
+  (fail-closed, stricter, not a count defect).
 
-## ⛔ TRAPS — measured 2026-07-29/30
+## ⛔ OPEN CORPUS FINDINGS — physics-bearing, unfixed
 
-- ⭐ **A reviewer will read a prior verdict left in the working tree and echo it instead of re-deriving.**
-  Measured this session: a confirm-pass reproduced an earlier verdict verbatim, session footer included.
-  ⇒ Move prior verdicts **out of the project tree** before launching a review. Absence beats instruction.
-- ⭐ **Verify a reviewer's RATIONALE separately from its FINDING.** Three times this session a true finding
-  arrived with an unsupported reason attached, and twice that reason was relayed onward as fact.
-- **Ask an applier for a COUNT, and change the METHOD.** A keyword sweep reported 1 stale instance; the
-  same agent reading by tense found 3; an independent party found a 4th; widening to the *class* found 9.
-- **An unanchored `grep` for a completion marker** matches that marker quoted inside another log. Anchor
-  it: `grep -q '^___CODEX_DONE___'`.
-- **A reaped waiter is not a finished job, and a killed waiter is not a dead job.** Check the artifact.
-  Never `pgrep` by name — the waiter matches itself.
-- **A commit cannot cite its own hash.** Cite the path; hashes are for *other* commits.
-- **Line-number citations decay whenever a file grows** — the seven `WORK-023-*` loci are stale in **both**
-  citing files, uniformly *within* each file but by **different** amounts: `STATUS.md` cited **+37 too
-  high**, `parameter_register.md` **−62 too low**. ⛔ 99 was the *spread between the two files*, never one
-  offset. ⚠ Both sets were stale at HEAD `968921dd` and are corrected in the working tree (uncommitted).
-  Prefer a named anchor.
+- ⭐ **A live contradiction between tracked documents.** `notes/parameter_register.md:170` calls
+  `K0c`/`K_eta`/`T_Omega` `FREE-UNREDUCED`, PENDING, counted debt, *"NOT identified with the raw 013/017
+  densities"*, with a dimensional argument and an explicit *"do NOT assert DERIVED"*.
+  `notes/stage023_pathA34_nullspace_underdetermination_source_map.md:250-253` states that identification
+  as **performed** and calls them *"likely DERIVED manifestations"*. ⇒ **A tier-1-vs-tier-3 disagreement
+  about the same three symbols.**
+- **A false provenance attribution.** stage016's engines assert `M̃`/`K̃`/`T̃_Ω` are
+  `CONSUMED-from-011/012/013`; those stages contain **none** of those symbols. `mu_eta`/`T_w` appear only
+  in 013, not 011 or 012.
+- **A wrong locus in four tracked files.** stage016's dimension literals are at `:314-325`; `:355-366`
+  is cited in `parameter_register.md:182/:183/:184`, `notes/stages/ledger_stage016_…:194`,
+  `notes/rewrite_reference_table.md:205`, and `notes/measure_register_sufficiency.md:100` (en-dash — a
+  plain grep misses it). ⚠ The previous repair fixed the *stage* and left the *lines* wrong.
+- ⭐ **Zero cross-artifact citations resolve to a locus** — measured on both pilot stages, both engines,
+  artifact-carried and note-carried alike. The plan's check 3 enforces this going forward.
 
-## ▶ OPEN DECISIONS for the user
+---
 
-⛔ **"Census or conversions first" is CLOSED** (user, 2026-07-30 — the census, see ▶ THE WORK). Do not
-re-open it as a question.
+## ⭐ MEASURED — do not re-derive
 
-1. **The numerical solver's freeze hash** — deliberately untouched by the scale-back. There the freeze is
-   the *mechanism* of target-blindness, and post-hoc refitting is a way the **physics** goes wrong, so it
-   plausibly passes the governing test. ⛔ Undecided; do not strip it by citing the scale-back.
-2. **Whether to commit the `_scratch` review records** — gitignored, will not survive.
+- **The easy algebraic reduction is already done.** `scripts/midway_knob_audit_codimension_sympy.py`
+  composes and certifies block dimensions (grevlex Gröbner + positive real witness + Jacobian corank).
+  ⛔ stage043's `[40,49]` is **not** uncomposed inventory — its rule already subtracts
+  `DERIVED-and-EXECUTED`.
+- **The residue is roughly** ~4 medium primitives + ~15–21 route-ful debt + ~14–20 route-less postulates
+  + ~13 other sectors + ±9 open convention. ⇒ The user's "it can't be 40" intuition is right about the
+  **primitives** and the 40 is not primitives.
+- **Forward "what's new" is NOT the count.** It is the introduction inventory; the count needs the §7a
+  closing certification. ⚠ `R9` is the proof: two locks read as one story until codimension shows
+  `Δr = 2`. **Introduction accounting cannot discover independence.**
+- ⛔ **The reducer must not live in `ledger_dimensions.py`** — both external reviewers: a dimension
+  algebra is not a derivation graph, and making every stage import global relation truth risks circular
+  audits.
 
-## OPERATING MODEL
+## ⛔ TRAPS — measured today
 
-One builder, one fresh reviewer; a **second** independent leg on physics-bearing artifacts only; the
-**physics leg stays blocking**. Decision list → applier agent → **you review the diff**. Edit, never
-rewrite. Agent reports ≤40 lines + a file path. Re-run every named acceptance command yourself and read
-its literal exit code.
+- ⭐⭐ **A matching number is not evidence.** A "MATCH" was produced by two cancelling errors. **The Δ
+  column was the tell** — it moved `dim_before` and `dim_after` together and left every Δ untouched,
+  which is what a bookkeeping change looks like as opposed to a physics one.
+- ⭐ **External reviewers are reliable about CLASSES of error and unreliable about SPECIFIC FACTS.**
+  Measured three times: a convention split that produced a wrong result, an `ℏ` conflict that did not
+  exist, a "~400 lines of ceremony" that did not survive itemization. ⇒ Take the class, **open the file**
+  for the fact.
+- **Absence of a denial is not evidence.** A record that a route is *un-executed* says nothing about
+  whether it is *buildable*.
+- **`git preserves it` is a claim about a TRACKED file** — and a freshly authored artifact is both the
+  case where it is false and the case where a big trim feels safest.
+- **Commit before anything destructive.** Commits are cheap (user, 2026-07-30); this **supersedes**
+  "commit only when asked". ⛔ A builder/sub-agent still never commits.
 
-⭐ **COMMIT WHENEVER IT MAKES SENSE — commits are cheap** (user decision, 2026-07-30; supersedes the old
-"commit only when the user asks"). ⭐⭐ **ALWAYS commit BEFORE a destructive or hard-to-reverse change** —
-a trim, a deletion, a restructure. ⚠ Measured: a ~130-line trim ran against an **untracked** file on the
-premise "git preserves what you remove", which was **false** — nothing had ever been committed, so the
-only copy was session context. ⛔ Unchanged: **a builder/sub-agent still does not commit**; the
-orchestrator commits explicit paths after reviewing the diff.
+---
 
-⭐ **Three PER-STAGE steps the scale-back KEPT — `STATUS.md` still carries them and this handoff had
-dropped them. They are physics-catching, not ceremony:**
-- **The PHYSICS leg runs FIRST and is BLOCKING** — a NAMING decision is a physics decision, and it is
-  derived from the model, never checked against a claim.
-- **Regenerate the `.out` and BYTE-COMPARE it.** An uncaught `Throw` exits 0 with an empty or truncated
-  transcript, and **only** the byte-compare catches it. ⛔ No longer an orchestrator-only duty — whoever
-  runs the stage does it.
-- **The co-authorship guard** — the party that wrote the `.py` must **not** be the party that adjusts the
-  `.wl` until the comparator agrees. Tuning whichever side disagrees is the shortcut that resembles a
-  pass, not a fix.
+## ▶ OPEN FOR THE USER
+
+1. **The phase order** (plan §3) — proposed on dependency grounds; the physical picture is the user's.
+2. **`ħ`'s class** — no defining equation ⇒ not derived; `postulated` (a property of the medium) or
+   `calibrated` (an external constant we import)? It is in the sim-input set either way; the label moves
+   it between tier 1 and tier 2.
+3. **Archiving** — agreed in principle, not yet done. `notes/census/` and the manifest system.
+   ⚠ `manifests/` needs a **per-file split, not a directory move**: it holds live code
+   (`composite_build.py`, `mutators/`, `examples/`) beside `DIMENSION_REWRITE.md`, which is the active
+   conversion doc. The Zenodo packaging script is user-owned and imposes no constraint.

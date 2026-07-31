@@ -35,7 +35,7 @@ description; it is not a courtesy stop-for-review but a change in who does the d
 
 **Widened 2026-07-31 (user decision): the EM/charge sector is IN scope.** ⭐ The reason is not appetite —
 it is that these are not independent sectors that happen to share a deadline, they share the **same
-unsolved object**. `docs/model_map.md:188` records that **"One nonlinear throat solve is the shared R1 for
+unsolved object**. `docs/model_map.md#shared-r1-throat-solve` records that **"One nonlinear throat solve is the shared R1 for
 gravity `{μ_R, ρ_br}` ... electric `bc_selection`, and magnetism `q_T` — one interior solve collapses
 several knobs at once"**, and the register books charge's debts against that same solve: `Q_E` and
 `bc_selection` each discharge *"under the shared sim-deferred throat solve (sibling of R10/R30)"*
@@ -81,7 +81,7 @@ v3 **will not claim to discharge** — and must not appear to have settled:
 - brane existence (**B2**, **C7**, **C8**)
 
 ⛔ **A v3-gravity ledger that closes cleanly is not evidence the model is sound.** At most it shows the
-far field is computable *given supplied* mass, multipoles, compactness and a calibrated normalization —
+far field is computable *given supplied* mass, multipoles, compactness and a calibrated normalization — {#clean-close-not-validation}
 the conditional response-side conclusion S16 actually permits. ⛔ It does **not** establish that the far
 field is independent of the interior.
 
@@ -140,7 +140,7 @@ equation(s) · class per new item · regime · departure.*
   `Z_χ` draft knob, not the mechanism. What is open is labelled `R1_REQUIRED` — waiting on the
   throat solve — ⛔ **not** a model in flux.
 
-⛔ **CONDITIONAL — neither carried nor discarded, pending S14a:**
+⛔ **CONDITIONAL — neither carried nor discarded, pending S14a:** {#conditional-s14a}
 - the `1/r²` law, the attractive sign, and the stage009 `RETURN_RESIDUAL_PREDICTION` falsifier.
   Correcting the drain to the dynamical `Γ_B` law severed the chain to these — they were derived under a
   Gauss **number-flux** drain. ⛔ Do not cite them as earned until the S14a bridge succeeds.

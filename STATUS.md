@@ -10,7 +10,7 @@
 - ✅ **v3 opened, sector-scoped: gravity · light · gravitomagnetism · charge · magnetism.** Same
   walkthrough method, a sector boundary instead of a phase ordering. ⛔ Not a third method change.
   ⚠ **Widened 2026-07-31 (user decision, `c13f9329`)** — charge and magnetism share the **same
-  unsolved object** as gravity: one nonlinear throat solve (`docs/model_map.md:188`).
+  unsolved object** as gravity: one nonlinear throat solve (`docs/model_map.md#shared-r1-throat-solve`).
 - ⭐⭐ **Steps are now walked SIDE BY SIDE with the user** — participation in the derivation, not
   approval at the end. v2's delegation is why three structural findings went unnoticed.
 - ⚠ **The scope boundary is amended and may not hold.** The worldtube result is response-side,
@@ -37,7 +37,7 @@ backward from finished artifacts. ⛔ **Its method has ONE canonical home — do
 `docs/derivation_walkthrough_plan.md`. Step records: `research/pde_ledger_v2/walkthrough/`.
 Read-first handoff: `research/pde_ledger_v2/_scratch/NEXT_SESSION.md`.
 
-**▶ Position: phase 0, two steps done** — `walkthrough/00_medium_and_brane.md` (the medium, and the
+**▶ Position: phase 0, two steps done** — `walkthrough/00_medium_and_brane.md` (the medium, and the {#position}
 brane as its ordered state) and `walkthrough/01_sound_speed.md` (the sound speed).
 
 ⭐ **Why the method changed — recorded so it is not re-proposed:** the backward census produced real

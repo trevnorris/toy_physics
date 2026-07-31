@@ -121,7 +121,7 @@ fraction** (so `χ_B·n` is real) while S5 writes it **complex**. Choose the bra
 complex/inertial — propagate the choice into the field count, the action and the conversion balance, and
 **remove the unchosen inputs**. ⛔ S1 cannot bank on "Register: none".
 **Carry forward:** the two-phase split is `postulated` — the largest tier-1 item.
-⚠ **Correct v2's stated reason.** `model_map.md:26` justifies the postulate by *"`U(ρ)` is single-well"*.
+⚠ **Correct v2's stated reason.** `model_map.md#two-material-states` justifies the postulate by *"`U(ρ)` is single-well"*.
 That reasoning is **wrong** — the brane comes from `V_χ(r_B)`, a potential on a *different* field. The
 conclusion survives, the argument does not. → S5.
 
@@ -489,7 +489,7 @@ orientation-odd mouth source. Token: **`THROAT_H_SOURCE_1_OVER_R2`**.
 **Expected new:** the **source identity** and the **far-field FORM** — ⛔ **not a holder.**
 **Class:** the **`1/R²` falloff** and the **`s₁s₂` product** are **target-blind EARNED** (`stage031:25`) —
 ⭐ this is the **FORM** the phase preamble promises, and it is the part that does *not* wait on the
-interior. ⚠ EARNED ***within Q1's postulated G0 closure*** (`stage031:18`), ⛔ not from primitives.
+interior. ⚠ EARNED ***within Q1's postulated G0 closure*** (`stage031:18`), ⛔ not from primitives. {#q2-earned-within-g0}
 **Regime:** static, one puncture against another.
 
 **Open — ⛔ the core holder is carried as an R1 DEBT:**
@@ -547,7 +547,7 @@ tier-A"* (`parameter_register.md:143`, edge **R65** `:331`;
 `software/em_charge_attribute/puncture_deflection_electric_sign_result.md:51`).
 
 **What it waits on — ⛔ THREE DIFFERENT CLASSES, not one bucket.** ⛔ Give each item the method doc's
-class (`docs/derivation_walkthrough_plan.md:81`); ⛔ the shared `FREE-UNREDUCED` register label is **not**
+class (`docs/derivation_walkthrough_plan.md#classification-test`); ⛔ the shared `FREE-UNREDUCED` register label is **not**
 a class, and one of these is not an interior debt at all:
 - **`a`** (throat mouth radius) — **`postulated`**: `FREE-UNREDUCED`, ⛔ **no defining equation**, value
   undetermined, and ⛔ **no named reduction route** (`parameter_register.md:132`). ⚠ **Count `a` only** —
@@ -602,10 +602,10 @@ J_{T,i} = q_T s_i η_a V_i
    ⛔ **Route A never touches `J_T`** (`ledger_stage036_route_a_maxwell_darwin_reference.md:214`) — it is a
    reference object, ⛔ not the moving-throat result.
 3. **The direct moving-throat route (Route B)** — ⛔ **R1**: `R1_REQUIRED(direct_moving_throat)`, its
-   magnitude carried by `q_T` (`parameter_register.md:238`, R71 `:337`; `docs/model_map.md:132`).
+   magnitude carried by `q_T` (`parameter_register.md:238`, R71 `:337`; `docs/model_map.md#q-direct-route-b`).
 4. **The structural COMPARISON of the two routes** — `BOOST_STRUCTURAL_RELATION_HOLDS`, **EARNED
    target-blind**: tensor structure, `R⁻²` falloff and `O(V₁V₂)` order agree, with the prefactor-stripped
-   kernels symbolically equal (`parameter_register.md:238`; `docs/model_map.md:126`). ⛔ **Emergent Lorentz
+   kernels symbolically equal (`parameter_register.md:238`; `docs/model_map.md#magnetism-part-v`). ⛔ **Emergent Lorentz
    is NOT claimed** — that needs `δ_BA = 0` **and** `r_cone = 1` **and** a closed `O(v⁴/c_γ⁴)`.
 
 **Expected new:** the throat current **form**, the Route-A **reference** kernel, and the **structural**
@@ -619,7 +619,7 @@ different object.
 
 **Open:**
 - ⛔ **The magnetic sign inherits the electric R1** — it is ***"doubly-R1"***, with co-blockers
-  `direct_moving_throat` / `magnitude` / `consistency` (`model_map.md:133`, R72 `:338`).
+  `direct_moving_throat` / `magnitude` / `consistency` (`model_map.md#q-compare-crux`, R72 `:338`).
 - ⚠ `τ_d` is *"structural / postulated (**NOT** a reducible knob)"* (`:232`, R68 `:334`).
 
 **Defect register:** none.
@@ -700,7 +700,7 @@ predictive — absolute constants are convention here, and only dimensionless ra
 
 ### S21 · What light and gravity share
 Both ride the brane; both consume `{ρ_br, μ_R}`. ⛔ **Use the method doc's CORRECTED rule**
-(`docs/derivation_walkthrough_plan.md:190-197`), ⛔ **not** the earlier blanket ban on anything new:
+(`docs/derivation_walkthrough_plan.md#knit-rule`), ⛔ **not** the earlier blanket ban on anything new:
 
 > ⛔ the knit may not introduce a new **input** — action, constitutive, source or BC — **that revises what
 > an earlier sector already derived** (such an input falsifies **completeness of the proposed substrate**,
@@ -718,7 +718,7 @@ cannot bank without confronting them. ⚠ **C9 is a live source disagreement** (
 *"likely DERIVED"* for the same three symbols): preserve both readings as unresolved; ⛔ do not pick one
 silently.
 ⭐⭐ **The organizing spine is ONE nonlinear throat solve** — ⛔ not a per-sector debt list
-(`docs/model_map.md:188`):
+(`docs/model_map.md#shared-r1-throat-solve`):
 
 > *"One nonlinear throat solve is the shared R1 for gravity {μ_R, ρ_br} … electric `bc_selection`, and
 > magnetism `q_T` — one interior solve collapses several knobs at once"*
@@ -750,7 +750,7 @@ is undeclared (**C4**), `m_defect` has only a dimensional bridge (**C3**), and n
 
 **(i-b) Throat interior — charge-side** (PHASE 4b; siblings of R10/R30,
 `parameter_register.md:143`, `:329`). ⛔ **One heading is not one class.** The class column is the method
-doc's — `debt` · `postulated` · `calibrated` (`docs/derivation_walkthrough_plan.md:81`) — and ⛔ a
+doc's — `debt` · `postulated` · `calibrated` (`docs/derivation_walkthrough_plan.md#classification-test`) — and ⛔ a
 **blocked OUTPUT is not an input debt at all**:
 
 | quantity | class | what it blocks / why listed |
@@ -775,7 +775,7 @@ recorded as **siblings of the ONE deferred throat-interior solve**, via R30/R33/
 (`parameter_register.md:49`), which is why they re-appear sector-by-sector above.
 ⛔ **That sibling relation is WEAKER than a six-way collapse, and the map says so in as many words:**
 gravity's shared R1 is `{mu_R, rho_br}` via **R10 + R30 + R33 — *"not all six"***
-(`docs/model_map.md:188`). ⇒ Claim the siblinghood; ⛔ do **not** claim one solve is known to discharge
+(`docs/model_map.md#shared-r1-throat-solve`). ⇒ Claim the siblinghood; ⛔ do **not** claim one solve is known to discharge
 all six.
 
 **(ii) Brane constitutive** — would survive a throat solve untouched:

@@ -114,7 +114,7 @@ symbol-level change becomes a corpus-wide mess.
 | `notes/parameter_register.md:132` | the `a` (pin) row, `CONV`, "never free" |
 | `notes/stages/ledger_stage016_l2_so3_covariance.md:184` | ⛔ **(b)** asserts `a` *"is the same throat radius as stage018's — a physical-radius"* |
 | `notes/stages/ledger_stage023_nullspace_underdetermination.md:481` | ⛔ **(b)** *"throat/pin radius"* as one thing |
-| `STATUS.md:40` | ⛔ **(c)** logs the three-stage grouping as agreement |
+| `STATUS.md#position` | ⛔ **(c)** logs the three-stage grouping as agreement |
 | `notes/stages/ledger_stage005_…md` + `notes/stage005_pathA20_source_map.md` | carry the anti-tautology caveat — ⭐ these are *correct*, keep and cite |
 | `scripts/ledger_stage043_…_sympy_audit.py` + `.wl` | reference the pin in the count manifest |
 | `reduction/` (`quantities.yaml`, `relations.yaml`) | our own `a_pin` quantity + `R2.a_pin`; ambient count depends on its class |

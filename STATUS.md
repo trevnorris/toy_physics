@@ -118,7 +118,7 @@ byte-perfect or under a custody rule. See `DIMENSION_REWRITE.md` §4.
 **▶ QUEUED INSIDE THE DIMENSION-REWRITE WORKSTREAM — ⛔ this is NOT the project's next build.**
 ⛔ **Nor is the next build the walkthrough's next derivation step.** The order is fixed by user decision
 **D-01a** (`research/pde_ledger_v2/walkthrough/DECISIONS.md`):
-① **archive the old apparatus** → ② **repair the `a`-pin damage** → ③ **resume the walkthrough**
+✅ ~~archive the old apparatus~~ (**DONE** 2026-07-30, `archive/`) → ① **repair the `a`-pin damage** → ② **resume the walkthrough**
 (`docs/derivation_walkthrough_plan.md`). ⛔ Do not resume deriving before ② is done.
 ⭐ **Both items below are
 KEPT** — not because the rewrite needs them, but because the walkthrough's own checks consume them

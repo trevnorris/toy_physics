@@ -49,18 +49,14 @@ structural choice**, not two inputs. `n` is discrete-structural, not a continuou
 **⛔⛔ NEXT STEP IS NOT PHASE 0 STEP 3.** The order is fixed by user decision and recorded as **D-01a** in
 `research/pde_ledger_v2/walkthrough/DECISIONS.md`:
 
-> ① **archive the old apparatus** → ② **repair the `a`-pin damage** → ③ **resume the walkthrough**
+> ✅ ~~archive~~ **DONE 2026-07-30** → ① **repair the `a`-pin damage** → ② **resume the walkthrough**
 
-⛔ Do not resume deriving before ② is done. ⚠ Repair may require **revisiting already-banked steps**,
+⛔ Do not resume deriving before ① is done. ⚠ Repair may require **revisiting already-banked steps**,
 because anything that consumed the pin as a physical radius is suspect.
 
-**① in practice** — the mechanics are in `docs/derivation_walkthrough_plan.md` §5, and two of them bite:
-- the destination is **repo-top-level `archive/`**, which does not exist yet and is created by the move;
-- ⛔ `manifests/` is a **per-file split, not a directory move** — it holds live code (`composite_build.py`,
-  `mutators/`, `examples/`) beside `DIMENSION_REWRITE.md`, the active conversion doc. All four stay.
-  ⚠ The rest of the membership is undecided (`STATUS.md` §PAUSED still reads the manifest semantic core as
-  *"not yet withdrawn"*), and deciding it is part of executing ①.
-⚠ The Zenodo packaging script is user-owned and imposes no constraint.
+✅ **Archiving is DONE** (2026-07-30). `archive/census/` and `archive/manifests/` by `git mv`;
+`DIMENSION_REWRITE.md`, `DIM_ORDER_DECISION.md`, `notes/ablation_driver/` and `notes/wl_emitter/`
+deliberately kept in place. ⇒ `archive/README.md`.
 
 ### ⭐⭐ Why — read `DECISIONS.md` D-01 in full before touching anything
 

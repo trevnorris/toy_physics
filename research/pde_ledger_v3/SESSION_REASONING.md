@@ -169,7 +169,7 @@ trapped mode, *whether "gravity = drain" is even nonzero* is unbuilt.
 
 ## 9. The pattern under all of it
 
-**Ten pin-shaped identifications** found (register §A): two quantities sharing a dimension, silently
+**Thirteen pin-shaped identifications** found (register §A; ten at the time of writing, three more added by review — one of them created by me *while writing the register*): two quantities sharing a dimension, silently
 equated. `a`-pin · `ℓ = δ` · `L_W := L` · implicit `β·a = 1` · `c_w ≡ c_s` · the length chain ·
 `r_e` body-vs-mouth · `W_slab` vs `L/a` · and one of mine (sonic horizon ≡ mouth radius, retracted
 same session).

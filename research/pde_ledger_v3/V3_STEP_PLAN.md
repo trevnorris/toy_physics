@@ -172,6 +172,7 @@ it as a defining equation for a **defect** quantity.
 ## PHASE 1 — the brane (4 steps) ⚠ the honest core
 
 ### S5 · The order field and the wall potential
+⚠ **The equation below is a TEMPLATE, not a pre-decided branch** — S1's A13 gate chooses first, and this step rewrites to match.
 `χ_B = r_B e^{iθ_B}`, `r_B ∈ [0,1]`; `S_χ = ∫ ½Z_χ(∂_t r_B)² − ½κ_χ|∇₄r_B|² − (λ_χ/4)r_B²(1−r_B)²`.
 **Expected new:** the double-well **form** (a function, not a scalar) + `{Z_χ, κ_χ, λ_χ}` or the
 `{a_B, κ_B}` pair.
@@ -199,7 +200,7 @@ Transverse and longitudinal sectors; the reduced `h`/`u_L` operator.
 ⭐⭐ **The step that defines v3's ceiling.** State plainly: **quadratic = linear response about an
 assumed equilibrium.** Everything downstream in this ledger is small-oscillation physics on a brane
 that S5–S7 postulated. It is why gravity and light are tractable, and why the defect is not.
-**Register:** **C6** (no closed parent action — the coupling to sleeve/geon/drain does not exist).
+**Register:** **R10 starts here** (`{ρ_br, μ_R}`) · **C6** (no closed parent action — the coupling to sleeve/geon/drain does not exist).
 
 ---
 
@@ -265,13 +266,6 @@ bridge `α_J ħJ/c_γ²` exists, and pathA_21's verdict is `MASS_BRIDGE_FORM_NOT
 derivably connected to mass. Bank it as an unresolved step.
 **Register:** **C3**.
 
-### S14 · The far field
-⛔ **CONDITIONAL ON S14a.** Not a carried result until the dynamical-`Γ_B` bridge succeeds.
-`1/r²` on the brane, `1/R³` in the bulk. The exponent comes from the slab DC-sink completions and the
-zero mode — ⛔ **not** from the throat.
-
----
-
 ### S14a · ⭐ RUN AFTER S13, BEFORE S14 · ⛔⛔ THE DRAIN BRIDGE — BLOCKING, and created by fixing S12
 
 **Round 3 found that correcting S12 severed the chain to the imported gravity results.**
@@ -288,6 +282,11 @@ profile-dependent `J → Q` map · the controlled `ω → 0` return law.
 ⛔ **Until this succeeds, S14, S15 and S20 are CONDITIONAL, not carried results.** ⚠ Mark them so in
 their records. ⭐ This is a real physics obligation produced by removing a frozen-wall shortcut — exactly
 the kind of debt this ledger exists to surface, not a bookkeeping chore.
+
+### S14 · The far field
+⛔ **CONDITIONAL ON S14a.** Not a carried result until the dynamical-`Γ_B` bridge succeeds.
+`1/r²` on the brane, `1/R³` in the bulk. The exponent comes from the slab DC-sink completions and the
+zero mode — ⛔ **not** from the throat.
 
 ---
 
@@ -469,7 +468,7 @@ block rank · top-down reconciliation · the sim-input-vs-residual diff). The wa
 
 **S1–S4** are cheap re-banking; they exist to make v3 self-contained.
 **S5–S8** are the honest core — three of the four bank a *postulate* or a *gap*.
-**S9–S11, S15–S20** are where the earned results live — ⛔ **but S14, S15 and S20 are CONDITIONAL ON S14a**, not carried.
+**S9–S11, S16–S19** are where the earned results live. ⛔ **S14, S15 and S20 are CONDITIONAL ON S14a**, not earned.
 **S0.5 and the substrate-action step are prerequisites** — ⛔ nothing is banked before them.
 **S22 is the deliverable.**
 

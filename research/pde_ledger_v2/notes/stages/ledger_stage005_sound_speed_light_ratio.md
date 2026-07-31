@@ -1,10 +1,15 @@
 # ledger_stage005_sound_speed_light_ratio
 
-> ⚠⚠ **PARTIALLY SUPERSEDED 2026-07-31.** The pin relation `a = ħ/(m_GNLS c_s0)` cited in this stage is
-> **retired** (`407eed94`) — do not consume it. ⚠ Also: `λγ` is now classified three ways — `c_γ` is
-> free/debt until v3 **S9**, the **ratio** `λγ = c_γ/c_s` is **derived** (v3 **S20a**), and only
-> **`λγ = 1`** is calibrated/uncommitted. ⛔ Do not re-import this stage's older single-classification
-> wording.
+> ⛔⛔ **WHOLLY HISTORICAL — DO NOT CONSUME (2026-07-31).** This stage note carries two claims that HEAD has
+> retired, and they are woven through the body, not confined to a header:
+> 1. the pin relation `a = ħ/(m_GNLS c_s0)` — **deleted** (`407eed94`);
+> 2. `λγ` as a single underived calibration input — HEAD distinguishes **three** things: `c_γ` free/debt
+>    until v3 **S9**, the **ratio** `λγ = c_γ/c_s` **derived** at v3 **S20a**, and only **`λγ = 1`**
+>    calibrated/uncommitted.
+>
+> ⇒ **v3's S2 derives the sound speed FORWARD from S1/S1.5 — it does NOT re-bank this artifact.** That is
+> also what v3 acceptance criterion (3) requires: the chain must be followable without consulting v2.
+> ⛔ Cite this only for provenance of the historical result, never as a source of classification.
 
 ## Status
 

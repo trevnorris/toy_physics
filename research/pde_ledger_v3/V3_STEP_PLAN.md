@@ -149,6 +149,10 @@ stay open.
 
 
 ### S2 · The sound speed
+⛔ **Derive FORWARD from S1/S1.5. Do NOT re-bank v2's `stage005`** — it is wholly historical: it consumes
+the retired pin relation and classifies `λγ` as a single underived calibration input, which would undo
+S0.5 by reintroducing `λγ`. ⚠ Cite it for provenance only.
+
 `c_s² = (1/m)dP/dρ = nKρ^(n-1)/m`. **Expected new: nothing** — pure consequence.
 **Finding to re-bank:** `[K] = M L^(4n−2) T⁻²`, so `n` and `[K]` are one structural choice.
 **Register:** none. **Open:** O-02 (is `K`+`n` one entry or two — user call, still open).

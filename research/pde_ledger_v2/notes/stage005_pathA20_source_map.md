@@ -1,5 +1,16 @@
 # I-2 (ledger_stage005) source map — pathA_20 sound speed + light/sound ratio
 
+> ⛔⛔ **WHOLLY HISTORICAL — DO NOT CONSUME (2026-07-31).** This source map carries two claims that HEAD has
+> retired, and they are woven through the body, not confined to a header:
+> 1. the pin relation `a = ħ/(m_GNLS c_s0)` — **deleted** (`407eed94`);
+> 2. `λγ` as a single underived calibration input — HEAD distinguishes **three** things: `c_γ` free/debt
+>    until v3 **S9**, the **ratio** `λγ = c_γ/c_s` **derived** at v3 **S20a**, and only **`λγ = 1`**
+>    calibrated/uncommitted.
+>
+> ⇒ **v3's S2 derives the sound speed FORWARD from S1/S1.5 — it does NOT re-bank this artifact.** That is
+> also what v3 acceptance criterion (3) requires: the chain must be followable without consulting v2.
+> ⛔ Cite this only for provenance of the historical result, never as a source of classification.
+
 > Prep note for the NEXT stage (I-2), captured 2026-07-07 from the Part-I Explore fan-out so a fresh session can author the
 > reshape directive without re-running discovery. Verify against the source reports before finalizing the directive.
 > Companion: `part1_medium_atomic_split.md` (the finalized Part I split). Build-order id **005**, Part I.

@@ -1,5 +1,23 @@
 # STATUS — where the Path-A program is (single front door)
 
+## ⭐⭐ YOU ARE HERE — v3 ledger is open (2026-07-31)
+
+**Front door: `research/pde_ledger_v3/NEXT_SESSION.md`.** Read that, not this file, to resume.
+
+- ✅ **Step ① DONE** (`407eed94`) — the `a`-pin is retired from everything that computes. It was never a
+  wrong *number* (`ħ/(m c_s0)` **is** a healing length in a standard convention); it was a **category
+  error** — a medium-wide constant used as a per-defect quantity.
+- ✅ **v3 opened, sector-scoped: gravity + light + gravitomagnetism.** Same walkthrough method, a sector
+  boundary instead of a phase ordering. ⛔ Not a third method change.
+- ⭐⭐ **Steps are now walked SIDE BY SIDE with the user** — participation in the derivation, not
+  approval at the end. v2's delegation is why three structural findings went unnoticed.
+- ⚠ **The scope boundary is amended and may not hold.** The worldtube result is response-side,
+  conditional on compactness; the Spin Problem says a compact defect cannot give correct frame dragging.
+- ⛔ **Open and out of scope: what makes a muon a muon.**
+
+⇒ Known error surface: `research/pde_ledger_v3/DEFECT_REGISTER.md`.
+
+
 **A thin pointer, not a copy.** Per-stage detail belongs in the per-Part split docs and per-stage
 notes. History is in git. If this file starts growing narrative, cut it.
 

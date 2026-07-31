@@ -79,9 +79,26 @@ The corpus's family route gives `a_j ∝ 1/(2j+1)` **and** `F_j ∝ (2j+1)²`. T
 `206.77` and `3477.37`.
 
 ⇒ **The slope and the falsified masses are the same derivation.** You cannot keep one and discard the
-other.
+other — *for the support-only route*.
 
-⇒ ⛔ **There is no surviving mass–radius slope in this model.**
+⛔⛔ **CORRECTED 2026-07-31, and the correction matters more than the claim.** I then wrote *"there is no
+surviving mass–radius slope in this model."* **That is false**, and an external review caught it.
+
+`notes/lepton_mass_notes.md` is **3239 lines**. I had read about 135 of them. Section 6 says outright
+(`:863`): *"the old support-only `1:9:25` falsifier was **too simple**, because once throughput and
+geometry are allowed to respond dynamically, the family ladder changes."* Later sections develop
+alternative routes — `φ_j = R_j^{3/2}/√ν_j` (`:740`), the low-harmonic benchmark `Wν = R^{9/5}`
+(`:2199`).
+
+⇒ **The honest statement:** *no unique, target-blind, empirically successful mass–radius law survives;
+several mutually incompatible conditional slopes remain.* ⚠ And they are weak — `:857` concedes the
+turbine route bridges the gap only *"in a regime very close to the critical point `s = 3/4`"* and *"does
+not naturally produce"* the observed ratios.
+
+⛔⛔ **The lesson is the real finding.** This is **§9's own failure mode — "asserting absence from a
+partial search" — recurring in the same document that names it**, on the session's headline conclusion.
+I read 4% of a file and wrote "there is no…". ⇒ ⛔ **A universal negative requires having read the whole
+artifact, or it is not a finding — it is an impression.** `wc -l` before concluding absence.
 
 ## 6. And killing it removed the model's only family label
 

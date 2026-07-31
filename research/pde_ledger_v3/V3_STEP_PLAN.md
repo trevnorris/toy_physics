@@ -69,6 +69,27 @@ orchestrator adjudicates and does not type.
 
 ---
 
+## S0.5 · ⛔ PRE-S1 REGISTRY SURGERY — required, and the plan originally missed it
+
+**Found by review.** *"Reuse `reduction/`"* (charter) and *"`c_γ` enters at S9, never back-filled into the
+medium block"* (S9) **collide**, because the live seed **already** carries `Q.medium.c_gamma` and
+`Q.medium.lambda_gamma` as *medium* quantities with `R3: λγ = c_γ/c_s0` marked `DERIVED-EXECUTED`.
+
+⇒ Executing S1–S3 against the seed as-is either **accepts the O-01 universe hole** or requires surgery
+that no step names. Do the surgery **first**:
+
+- `c_γ` and `λγ` leave the medium counting contract until S9 / the cone-lock step introduces them with
+  provenance;
+- recompute acceptance (⛔ never preserve — same rule as step ①);
+- ⛔ **do not "resolve" it by leaving them where they are.** That is the back-fill S9 forbids.
+
+⚠ Also add a **substrate-action step before S2** (second review): S1 gives an EOS and definitions but
+**not** the GNLS action, quantum-gradient term, or Madelung balances — yet S4 invokes a "core balance"
+and S12 needs momentum/energy partners. Without it, *"derive forward from what previous steps banked"*
+is false at S4. ⛔ `U(ρ)` is **not** a third field or an independent free function.
+
+---
+
 ## PHASE 0 — the substrate (4 steps)
 
 Re-banked from v2, forward, with the corrections this session established. ⭐ Cheap — but it is what
@@ -157,7 +178,30 @@ Characterized, first-class. ⛔ Not a defect to fix — a recorded departure fro
 ## PHASE 3 — the drain (3 steps) ⚠ where the interior is deferred
 
 ### S12 · The throat as a boundary condition
-`∂_t ρ + ∇·(ρv) = S_drain + S_leakage`, and the momentum/energy partners.
+⛔⛔ **CORRECTED 2026-07-31 — this step originally wrote a drain law the user had already RULED OUT.**
+
+The committed non-variational drain is the **dynamical `Γ_B` order-conversion** law
+(`stage045_nonvariational_block_prep.md:23`):
+
+```
+∂_t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B ,    Γ_B = Γ_return − Γ_drain ,    [Γ_B] = T⁻¹
+```
+
+An **internal order-conversion at the throat** — the dynamical wall converting ordered↔disordered
+material. Phase-conversion, **not suction**.
+
+⛔ **RULED OUT** (`:19`, user, 2026-07-24): the G0-card `S_drain` **ρ-mass-sink + remote return**, i.e.
+`∂_t ρ + ∇·(ρv) = S_drain + S_leakage`. It is **frozen-wall-premised**, and the standing principle is
+*"the drain cannot be a frozen wall — several instances where we tried to freeze the wall and it screwed
+up all the calculations."* ⇒ If a static limit is ever wanted it must be **derived** as the `ω→0` limit
+of the dynamical law, ⛔ never posed as an independent frozen solve.
+
+⚠ The G0 card's *structure* is still reusable — return controllers, `f`/`w` balances, `𝔅`/mouth/collar/IR
+BCs, the `F_var+F_flux+F_𝔅+F_rad` partition — but it must be **re-hosted** on the dynamical law.
+
+⭐ **Note how this error happened**: I had the "never freeze the wall" rule in memory and wrote the frozen
+form anyway, because I transcribed the equation from a spec section rather than deriving it forward. That
+is precisely what §0's side-by-side rule exists to prevent.
 ⛔ **All six source terms are `[OPEN]`.** The throat enters this ledger **only** as a boundary condition
 of given strength — that is the whole content of the scope boundary.
 **Register:** **C6**; **C1** (⚠ the drain law is *parameterized, not derived* — and `g_phys` was never
@@ -178,9 +222,20 @@ zero mode — ⛔ **not** from the throat.
 
 ## PHASE 4 — gravity and gravitomagnetism (6 steps)
 
-### S15 · Two drains attract
+### S15 · Two drains attract ⚠ RUN S16 FIRST, or fold it in as the premise
+⛔ **Order corrected by review: S16 licenses S15's form.** The corpus establishes the coherent-defect
+worldtube closure *first*, then the Newtonian particle law. Banking attraction before the theorem that
+permits treating a defect as a multipole teaches the slogan before the regime.
+
 Noether stress at infinity, drain strengths `Q_i` **given**: `F_12 = −(m N_∞,3 Q1Q2/4πr²) r̂`.
-Form and sign **earned target-blind**; magnitude falls to the interior.
+
+⛔ **Two corrections to the original wording:**
+- **The source map is missing.** S13 introduces `J`; this step uses `Q_i` — the corpus relation
+  `Q_i = Θ_Qi J_i / N_∞,3` must be an explicit step, not an unremarked substitution. Add
+  `{J, Θ_Q, N_∞,3, Q}` to S22.
+- **The sign claim is overstated.** This is the **leading matter-stress** contribution only; the source
+  says the full sign retains quantum, confinement, Maxwell and profile residuals, and the normalization
+  is **calibrated**. ⇒ Bank it as *"leading matter-stress sign"*, ⛔ not *"the force sign, earned"*.
 
 ### S16 · ⭐⭐ The worldtube reduction — the theorem the whole scope boundary rests on
 
@@ -204,8 +259,19 @@ The Spin Problem's verdict is that *"you cannot get frame dragging from a compac
 the tail."* ⛔ **If the tail is real, S16's premise fails** — and with it the justification for scoping
 gravity apart from the interior at all.
 
+⛔⛔ **And it is weaker still — an external review found the theorem is on the wrong SIDE.** What the
+corpus establishes is a **response-side** result: how a compact body *moves in* a given external field
+(`M_A ẌA = −M_A∇Φ_ext`). It is **not** a source-side statement about what field a defect *produces*.
+`4d_1pn_full.tex:657,:673,:695,:734,:825` additionally assume compact support, smooth external fields,
+a vanishing dipole, a quasi-static conservative regime, **a calibrated potential `−Gm/r`**, and
+**supplied mass and multipole moments**, with boundary flux discarded by assumption.
+
+⇒ **Rewrite S16 as a conditional response-side monopole approximation** — ⛔ not a source-generation or
+interior-independence theorem — and list `M`, `a`, the multipoles, compactness, source normalization and
+boundary-flux suppression as **supplied inputs** that belong in S22's debt table.
+
 ⇒ **S16 must be run BEFORE S19 is trusted, and its result feeds back into the charter.** Two blocking
-legs. ⚠ Possible outcome: the scope boundary is narrower than the charter claims, in which case say so
+legs. ⚠ Likely outcome: **the scope boundary is materially narrower than the charter claims.** Say so
 rather than preserving the boundary.
 
 ### S17 · The PN ladder — cite-only
@@ -258,6 +324,20 @@ departure **GR forbids**. ⭐ The sector's one live able-to-fail prediction. Ban
 
 ## PHASE 5 — the knit and the deliverable (3 steps)
 
+### S20a · ⭐⭐ THE CONE LOCK — the actual cross-sector question, and it had no step
+**Found by review, and it is the load-bearing knit for *this* scope.** For a gravity + light ledger the
+cross-sector identification that matters is **not** "both ride `{μ_R, ρ_br}`" — it is **whether the light
+speed and the gravity-signal speed are forced equal**: `λγ = c_γ/c_s`.
+
+`conceptual_foundation.md:595` still lists **"Cone lock `λγ`"** as **open**; the corpus records
+`CONE_LOCK_CALIBRATED` with `λγ = 1` as a **calibration, not a derivation**; and `R3` already encodes the
+ratio in the registry seed.
+
+⇒ Introduce `λγ` with provenance, **classify it** (`calibrated` / `derived` / `debt`), confront
+`CONE_LOCK_CALIBRATED`, and ⭐ **apply the kind-test**: is this a medium-wide ratio, or a relation between
+two sector speeds that happen to share dimensions? ⚠ That is exactly the shape of the ten identifications
+in register §A.
+
 ### S21 · What light and gravity share
 Both ride the brane; both consume `{ρ_br, μ_R}`. ⛔ Per the method doc's retraction, integration may
 introduce no new action/constitutive/source/BC input **only** given a frozen complete parent action —
@@ -276,6 +356,20 @@ and what would discharge it:
 | `{T_Ω, β₂}` (R36) | ℓ=2 support | ℓ=2 support equations |
 | `m_defect` ↔ `J` (**C3**) | ⭐ **the source of gravity itself** | unbuilt — no named route |
 | density-port magnitudes | Gate-6 numbers | SIM-deferred |
+
+⛔ **The table above is INCOMPLETE — both reviews said so independently.** It was built from the v2
+R-number habit rather than from what phases 3–4 actually consume. ⇒ **Build it from the imported PN and
+worldtube input lists**, and add at minimum:
+
+| also owed | why |
+|---|---|
+| **`a`, the throat radius** | controls the first worldtube correction `O(a²/r²)`, and the finite-size/radiation channels |
+| `M` (worldtube mass) and the supplied multipoles | supplied inputs of the S16 reduction, not outputs |
+| `G` / `N_∞,3` normalization | the force magnitude is calibrated through it |
+| `Θ_Q` and the `J → Q` map | S15 silently substitutes one for the other |
+| `κ_add`, `κ_PV`, `κ_ρ`, optical `n = 5` | the PN response packet S17 imports |
+| the **cone lock** `λγ` | S20a |
+| `I_F`, `W_eff`, profile closure, source-vs-inertial mass, EP, Newton-`G` normalization | named in the force-derivation source |
 
 ⇒ **This is what v3-gravity is for.** Today it is scattered across six documents; here it is one page.
 

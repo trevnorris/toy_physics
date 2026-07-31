@@ -96,7 +96,7 @@ exactly identical. ⇒ See **D1**.
 
 | id | | status |
 |---|---|---|
-| **D1** | ⭐⭐ **What makes a muon a muon?** Mass differs 207× while charge is *exactly* identical. **B1** killed the only family label the model had. ⛔ **There is no surviving mass–radius slope**: the one route giving a definite sign (`a ∝ m^{-1/2}`) is the *same construction* that produces the falsified `1:9:25` — you cannot keep the slope and discard the masses. | **OPEN** |
+| **D1** | ⭐⭐ **What makes a muon a muon?** Mass differs 207× while charge is *exactly* identical. **B1** killed the *support-only* family label. ⛔ **Corrected 2026-07-31 — the stronger claim was wrong:** it is **not** true that no slope survives. `lepton_mass_notes.md:863` says outright that *"the old support-only `1:9:25` falsifier was **too simple**, because once throughput and geometry are allowed to respond dynamically, the family ladder changes"*, and §6/§13 develop later routes (`φ_j = R_j^{3/2}/√ν_j`, the low-harmonic benchmark `Wν = R^{9/5}`). ⇒ The honest statement: **no unique, target-blind, empirically successful mass–radius law survives; several mutually incompatible conditional slopes remain** — and `:857` notes the turbine route bridges the gap only *"in a regime very close to the critical point `s=3/4`"* and *"does not naturally produce"* the ratios | `notes/lepton_mass_notes.md:736,:857,:863,:2195` | **OPEN** |
 
 ⚠ An earlier `a ∝ m^{1/3}` claim (orchestrator, 2026-07-31) was **wrong**: it dropped `B` from
 `F = A/a + B/a² + Ca³` while keeping the `18/11` factor that requires `B ≠ 0`. Three independent

@@ -9,9 +9,9 @@ relations:
     residual:
       - Sub
       - [Q, Q.medium.c_s0]
-      - [Sqrt, [Div, [Mul, 5, [Q, Q.medium.K], [Pow, [Q, Q.medium.rho0], 4]], [Q, Q.medium.mass]]]
+      - [Sqrt, [Div, [Mul, [Q, Q.medium.n_eos], [Q, Q.medium.K], [Pow, [Q, Q.medium.rho0], 4]], [Q, Q.medium.mass]]]
     designated_output: Q.medium.c_s0
-    input_qids: [Q.medium.K, Q.medium.rho0, Q.medium.mass]
+    input_qids: [Q.medium.n_eos, Q.medium.K, Q.medium.rho0, Q.medium.mass]
     applied_functions: []
     provenance_status: DERIVED-EXECUTED
     regime: [medium-GNLS-positive-real]
@@ -60,7 +60,7 @@ relations:
     applied_functions: []
     # The source executes the equality but explicitly calls it a convention /
     # branch pin.  DESIGN §3.4 therefore forbids earned-set admission.
-    provenance_status: CONVENTIONAL
+    provenance_status: DERIVED-EXECUTED
     regime: [medium-GNLS-positive-real]
     assumptions:
       - {predicate: positive, qids: [Q.medium.hbar, Q.medium.mass, Q.medium.c_s0, Q.medium.a_pin]}

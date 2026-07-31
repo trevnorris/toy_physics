@@ -197,3 +197,21 @@ quantities:
     source_loci:
       - {path: notes/parameter_register.md, line_start: 133, line_end: 133}
       - {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 189, line_end: 203}
+
+  - qid: Q.medium.n_eos
+    symbol: n_eos
+    kind: parameter
+    scope: [medium, I-1]
+    regime: [medium-GNLS-positive-real]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [0, 0, 0]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 65, line_end: 65}
+    aliases: [polytropic_exponent, quintic_exponent]
+    source_loci:
+      - {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 65, line_end: 65}

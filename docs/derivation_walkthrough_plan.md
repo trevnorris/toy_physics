@@ -78,7 +78,7 @@ branch choices. ⛔ Never as one integer, because the kinds are not interchangea
 ⇒ ⛔ **The forward walkthrough does not by itself certify the count.** It produces the inventory and
 makes it followable. Certification needs the closing step in §7a.
 
-### 1.1 ⭐⭐ The classification test (user decision, 2026-07-30)
+### 1.1 ⭐⭐ The classification test (user decision, 2026-07-30) {#classification-test}
 
 Apply in order. It is mechanical, which is why it is usable at every step:
 
@@ -187,7 +187,7 @@ the other direction**: declare every future coupling in phase 0 and the test pas
 
 ⭐ **Replacement (corrected 2026-07-31 — the first replacement was still too strong):**
 
-> ⛔ **The knit may not introduce a new *input*** — action, constitutive, source or BC — **that revises what
+> ⛔ **The knit may not introduce a new *input*** — action, constitutive, source or BC — **that revises what {#knit-rule}
 > an earlier sector already derived.** Such an input falsifies **completeness of the proposed substrate**
 > — ⛔ not, by itself, the one-medium hypothesis.
 >
@@ -200,7 +200,7 @@ the other direction**: declare every future coupling in phase 0 and the test pas
 inertial-vs-dissipative wall branch, an omitted cross-sector coupling, or two historical descriptions
 that are not dynamically identical. ⛔ Do not collapse them to "different media". The corpus itself says
 the knit establishes **bookkeeping/labelling** closure, not a dynamical one-medium proof
-(`docs/model_map.md:138`, `:143`).
+(`docs/model_map.md#knit-part-vi`, `docs/model_map.md#knit-labelling-closure`).
 
 ⚠ **v3 deliberately diverges from this ordering: it runs gravity BEFORE charge.**
 `research/pde_ledger_v3/V3_STEP_PLAN.md` puts PHASE 4 (gravity) ahead of PHASE 4b (charge/magnetism,

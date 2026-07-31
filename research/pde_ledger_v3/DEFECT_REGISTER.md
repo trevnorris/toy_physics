@@ -78,13 +78,13 @@ mode. ⛔ It is deliberately not a numbered instance: nothing may cite it as one
 - **⛔ The shared shape is a QUESTION to be tested, not a stated shape:** *do the two sectors share one
   shape, or only one sentence?* ⛔ It may **not** be written as *"far-field FORM earned; SIGN and MAGNITUDE
   routed through the throat interior"* — that is **false on the gravity side**, whose magnitude also carries
-  an **external/calibrated** debt: `CHARTER.md:83-84` says a clean v3 close shows at most that the *"far
+  an **external/calibrated** debt: `CHARTER.md#clean-close-not-validation` says a clean v3 close shows at most that the *"far
   field is computable given supplied mass, multipoles, compactness and a calibrated normalization"*.
   ⇒ ⛔ Keep the two sectors' classes **as written above and separate** until the test is run: EM's SIGN and
   MAGNITUDE are `R1_REQUIRED` on the interior solve; gravity's `1/r²` and sign are CONDITIONAL on the S14a
   bridge **and** its normalization is calibrated. ⛔ **And there is no presently earned common form.** EM
   earns a candidate `1/R²` form only ***within Q1's postulated G0 closure*** — the plan's own words, ⛔
-  *"not from primitives"* (`V3_STEP_PLAN.md:487`) — while gravity's analogous `1/r²` form is the very
+  *"not from primitives"* (`V3_STEP_PLAN.md#q2-earned-within-g0`) — while gravity's analogous `1/r²` form is the very
   thing called CONDITIONAL two bullets up. ⇒ **The shared shape is itself unearned**, and that is precisely
   what the knit must test.
 
@@ -98,7 +98,7 @@ them into one shape would be a pin of exactly the type this section catalogues.
 look alike?"***
 
 **Evidence:** `notes/stages/ledger_stage031_puncture_deflection_field_identity_source.md:25`;
-`parameter_register.md:329`, `:143`; `pde_ledger_v3/CHARTER.md:143-146`.
+`parameter_register.md:329`, `:143`; `pde_ledger_v3/CHARTER.md#conditional-s14a`.
 
 **Status: OPEN — CANDIDATE, to be tested at the knit (PHASE 5).**
 
@@ -112,7 +112,7 @@ not look like progress. Import them first.
 | id | result | evidence | status |
 |---|---|---|---|
 | **B1** | **The lepton mass tower is falsified.** The support-mode family gives `F_j ∝ (2j+1)²` = `1:9:25`; observed is `206.77`, `3477.37`. *"decisively ruled out"* | `notes/lepton_mass_notes.md:424-473`; `conceptual_foundation.md:487-488` | **FALSIFIED** |
-| **B2** | **Gate L returned a no-go.** `FAIL_COUPLE_STRESS_NOGO` — the gate the medium survey had flagged as *"Highest risk; the most likely no-go"*. The GNLS polar-smectic program is *"SUPERSEDED at the brane-existence level"* | `notes/stage030_pathA35_gateL_source_map.md:16`; `conceptual_history.md:340`; `medium_requirements_and_prior_art.md:172-183` | **FALSIFIED** |
+| **B2** | **Gate L returned a no-go.** `FAIL_COUPLE_STRESS_NOGO` — the gate the medium survey had flagged as *"Highest risk; the most likely no-go"*. The GNLS polar-smectic program is *"SUPERSEDED at the brane-existence level"* | `notes/stage030_pathA35_gateL_source_map.md:16`; `conceptual_history.md:340`; `medium_requirements_and_prior_art.md:172-183` | **FALSIFIED** | {#B2}
 
 ⭐ **B1's consequence is the largest open question in the project.** The falsified picture — leptons as
 support-mode excitations `j` of *one* throat — was what made charge universality automatic. Killing it

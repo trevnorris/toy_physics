@@ -16,7 +16,7 @@ hash written in any doc, including this one.
 
 ⭐ **Why (1) was added (user decision, 2026-07-31):** this budget's omission of the master map is the
 measured reason the model's recorded throat-support mechanism (trapped standing-wave pressure) was
-invisible to v3 work, and the scope-widening argument itself came from `docs/model_map.md:188`.
+invisible to v3 work, and the scope-widening argument itself came from `docs/model_map.md#shared-r1-throat-solve`.
 
 ⚠ Still a **bounded** list — five documents, not licence to read the corpus.
 ⛔ **Do not open** the v2 census, manifests, `archive/`, or the 43 stage notes "to get oriented".
@@ -186,7 +186,7 @@ nonlinear action.
 2. ⛔ **Tautology.** If `μ_R` is supplied as an input, measuring `c_γ = √(μ_R/ρ_br)` returns the number
    that was put in. It becomes a real test **only if the brane's stiffness EMERGES** from the bulk medium
    rather than being imposed — and that is exactly where `pathA_35` returned `FAIL_COUPLE_STRESS_NOGO`
-   (register **B2**, `DEFECT_REGISTER.md:115`).
+   (register **B2**, `DEFECT_REGISTER.md#B2`).
 
 **Status:** recorded, ⛔ **not started**; ⚠ deliberately not begun before **S0.5**. ⇒ If it becomes real
 work it earns its own document then.

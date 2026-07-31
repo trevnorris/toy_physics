@@ -14,23 +14,27 @@ Repository root `/var/projects/toy_physics`, branch `ledger-v2-rebuild`.
 
 ## Fixes folded since the last round
 
-Round 5: one reviewer CLEAN (third consecutive, empty blockers); the other found four, all of one
-class — **an amendment appended below an original claim, leaving both voices readable**, so a step
-could bank the retracted version. All four are now fixed **by rewriting the original in place**:
+Round 6: both reviewers STILL BLOCKING, converging on the same first item. Folded:
 
-- **S1's field count is 2, corrected in S1 itself** (`ψ` + the A13-selected order field). `U(ρ)` is an
-  EOS energy density, not a field.
-- **A11 is a gate on S16 and S22**, with distinct symbols `a_WT` (worldtube profile width) vs
-  `a_mouth`, and the missing bridge between them listed as debt.
-- **S22 is gated on A4, C4, C9**, partitioned by locus, and records `J` / `m_defect` / the geon as
-  three distinct unbridged objects.
-- **The charter's scope section is rewritten**, not amended: the justification is stated as conditional
-  and response-side, "will not touch" → "will not claim to discharge", and a clean close no longer
-  claims far-field independence.
+- ⭐ **The GOVERNING DOCS were stale and contradicted HEAD.** `docs/derivation_walkthrough_plan.md` and
+  `research/pde_ledger_v2/walkthrough/DECISIONS.md` both still said the `R2.a_pin` class is OPEN and
+  must not be resolved, while commit `407eed94` removed the relation. Both are now current; DECISIONS'
+  superseded consequences are marked history, not instruction.
+- **S16's remainder was dimensionally inhomogeneous** (force on the left, acceleration in the
+  remainder). Corrected, and the length relabelled `a_WT`.
+- **S15's force law had the profile normalization silently set to 1** while `I_F` was listed as debt in
+  the same plan. `I_F,12` is back in the equation.
+- **S1.5 rewritten whole** — no longer leads with a uniqueness claim it retracts, no longer asserts S1's
+  retracted three-field inventory; `Cρ` is a recorded choice, not an asserted consequence.
+- **S22's table replaced** (not annotated) — partitioned by locus; `J`, `m_defect` and the geon are
+  three separate rows with the missing bridges listed as debt.
+- **S12 reclassified** as a non-variational source plus separate boundary data.
+- **S20a's two classifications made non-optional**; A11 residuals folded.
 
-⭐⭐ **Hunt specifically for this class**: any place where a correction was *appended* while the original
-sentence, heading, table row or summary still asserts the pre-correction claim. That has been the
-dominant defect for three rounds.
+⭐⭐ **Hunt for the dominant defect class**: a correction *appended* while the original sentence,
+heading, table row, equation or summary still asserts the pre-correction claim. Three rounds running,
+that has been the main finding — including in documents OUTSIDE `research/pde_ledger_v3/` that the plan
+depends on.
 
 ## Operating constraints
 - **READ ONLY.** Do not modify or commit. **One pass, no clarifying questions** (you will hang).

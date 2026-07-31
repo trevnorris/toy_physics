@@ -1,5 +1,10 @@
 # Phase 0 · Step 2 — the sound speed
 
+> ⚠⚠ **SUPERSEDED 2026-07-31 — read `research/pde_ledger_v3/` instead.** The `R2.a_pin` discussion below
+> is **closed by removal** (`407eed94`): the relation and the quantity are deleted, so "OPEN pending a
+> user decision" no longer describes anything. The **physics** of this step (`c_s² = nKρⁿ⁻¹/m`, and the
+> `[K] = M L^(4n−2) T⁻²` coupling) stands and is re-banked as v3 **S2**.
+
 **Upstream:** step 1 (the medium, the EOS closure `P = Kρⁿ`, the primitives).
 **Sources:** `docs/model_map.md:62`, `notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md:65`.
 

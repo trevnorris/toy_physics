@@ -1,5 +1,10 @@
 # REVIEW REQUEST — a build directive, before it is executed. Read-only, one pass.
 
+> ⛔⛔ **HISTORY — NOT INSTRUCTION.** This is a step-① review prompt, completed 2026-07-31 (`407eed94`). Its "OPEN
+> pending a user decision" language about `R2.a_pin` describes a question that **no longer exists** —
+> the relation was retired by removal. ⛔ Do not execute anything here.
+> ⇒ **Live workstream: `research/pde_ledger_v3/` (start at `NEXT_SESSION.md`).**
+
 You are reviewing a **directive** that is about to be handed to a builder agent. It has not been
 executed. Your job is to find what is wrong with it **before** it runs.
 

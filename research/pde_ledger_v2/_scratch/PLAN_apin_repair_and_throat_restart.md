@@ -1,5 +1,10 @@
 # PLAN — retire the `a`-pin, then restart on the throat interior
 
+> ⛔⛔ **HISTORY — NOT INSTRUCTION.** This is the step-① plan, completed 2026-07-31 (`407eed94`). Its "OPEN
+> pending a user decision" language about `R2.a_pin` describes a question that **no longer exists** —
+> the relation was retired by removal. ⛔ Do not execute anything here.
+> ⇒ **Live workstream: `research/pde_ledger_v3/` (start at `NEXT_SESSION.md`).**
+
 **Status: DRAFT FOR REVIEW. Nothing has been edited in the repository.**
 Author: orchestrating session, 2026-07-30/31. Branch `ledger-v2-rebuild` @ `978bf0a2`, tree clean.
 

@@ -62,8 +62,8 @@ which two different lengths do trivially. The **pin `a`** (the nullity-1 residue
 pins) and the **throat radius** (a physical size) are different quantities sharing one symbol — a
 same-name-different-quantity collision at the foundation of the model, filed as confirmation.
 ⚠ This entry is damage class **(c)** in `research/pde_ledger_v2/walkthrough/DECISIONS.md` **D-01a**;
-repairing it is step ② of the fixed order. ⛔ Separately, and ⛔ **not** decided here: `R2.a_pin`'s
-**registry class** is OPEN pending a user decision (D-01) — do not resolve it from this line.
+⚠ **SUPERSEDED 2026-07-31** — the `a`-pin was retired by removal (`407eed94`); there is no open class. repairing it is step ② of the fixed order. ⛔ Separately, and ⛔ **not** decided here: `R2.a_pin`'s
+⚠ **SUPERSEDED 2026-07-31** — the `a`-pin was retired by removal (`407eed94`); there is no open class. **registry class** is OPEN pending a user decision (D-01) — do not resolve it from this line.
 ⚠ The route caveat below still governs every other group: a green comparator is **agreement
 between implementations, not independence of route** — per `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`
 §1 (**THE CHARTER**, *"a green comparator shows that two implementations agree, not that they were

@@ -7,8 +7,10 @@
 - ✅ **Step ① DONE** (`407eed94`) — the `a`-pin is retired from everything that computes. It was never a
   wrong *number* (`ħ/(m c_s0)` **is** a healing length in a standard convention); it was a **category
   error** — a medium-wide constant used as a per-defect quantity.
-- ✅ **v3 opened, sector-scoped: gravity + light + gravitomagnetism.** Same walkthrough method, a sector
-  boundary instead of a phase ordering. ⛔ Not a third method change.
+- ✅ **v3 opened, sector-scoped: gravity · light · gravitomagnetism · charge · magnetism.** Same
+  walkthrough method, a sector boundary instead of a phase ordering. ⛔ Not a third method change.
+  ⚠ **Widened 2026-07-31 (user decision, `c13f9329`)** — charge and magnetism share the **same
+  unsolved object** as gravity: one nonlinear throat solve (`docs/model_map.md:178`).
 - ⭐⭐ **Steps are now walked SIDE BY SIDE with the user** — participation in the derivation, not
   approval at the end. v2's delegation is why three structural findings went unnoticed.
 - ⚠ **The scope boundary is amended and may not hold.** The worldtube result is response-side,

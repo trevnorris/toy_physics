@@ -26,7 +26,7 @@ any sector that has not been checked.
 | **A2** | `ℓ = √(2κ_χ/λ_χ) = √(κ_χ/2a_B) = δ` — closure-card length identified with the ledger's kink width | `ledger_stage044_parent_action_reconciliation.md:104` | **OPEN** |
 | **A3** | `L_W := L` — auxiliary mixed-tube length identified with the physical throat length; the spec itself calls it a *"Frozen identification"* and *"not independently confirmed"* | `two_throat_simulation_handoff_spec.md:464` | **OPEN** |
 | **A4** | implicit `β·a = 1` — `L0/a = 37/20` and `β·L0 = 37/20` together equate the wall-response inverse length with the inverse mouth radius, while the register says geometry does **not** derive `β` | `parameter_register.md:101-110,:178` vs `notes/stage013_pathA31_breathing_source_map.md:124-133` | **OPEN** |
-| **A5** | `c_w ≡ c_s` — the cavity-dispersion wave speed silently equated with the medium sound speed | `pathA_26_derrick.md:21` vs `notes/lepton_mass_notes.md:156-167` | **OPEN** |
+| **A5** | `c_w ≡ c_s` — the cavity-dispersion wave speed silently equated with the medium sound speed. ⭐ **Sharpened 2026-07-31 — the two sides are further apart than "two speeds":** the "cavity" **is the throat interior itself**, a cylinder of mouth radius `a` and `w`-extent `L` (*"a cylindrical cavity of radius $a$ and length $L$"*; *"the region $0 < w < L$ … is approximately a straight 4D cylinder"* whose interior *"is the domain in which the cavity modes of the electromagnetic sector live"*), so both sides carry **one and the same support mode**. But `pathA_26`'s wave is a **declared scalar surrogate** — *"Minimal wave field: scalar surrogate in 4D"*, neither the medium nor brane shear — whose `c_w` is **hardcoded `1.0`** in the engine, while the lepton notes write that same mode's frequency with the **medium** sound speed, `ω_supp = c_s χ_w/a`. ⇒ Not "two speeds equated" but **a surrogate field's speed and the medium's speed used for one support mode, with one side hardcoded** | `pathA_26_derrick.md:21` vs `notes/lepton_mass_notes.md:154-167`; cavity = throat interior: `research/em_fields/paper/em_fields.tex:333`, `research/brane_bulk_ontology/paper/brane_bulk_ontology.tex:643-646`; surrogate: `notes/inner_throat/inner_throat_hard_mode.md:459-475`; hardcode: `software/stage1_solver/tools/pathA_26_derrick_sympy.py:45` | **OPEN** |
 | **A6** | the length chain `a = 20ℓ`, `ℓ = δ` — collapses every particle-sector length onto one scale | `parameter_register.md:200` + A2 | **OPEN** |
 | **A7** | `ξ = ħ/(m c_s)` (stage011) vs `ξ_h = √2 ħ/(m c_s0)` (stage004) — two "healing lengths" a factor `√2` apart | `parameter_register.md:294` (R27), `:94`; `ledger_stage011_..._sympy_audit.py:430,:521,:658` | ✅ **NOT A DEFECT** — investigated 2026-07-31, see below |
 | **A8** | `r_e` called *"the throat-**body** size"* while the balance `ke²/a = m_e c²` is written with the **mouth** radius `a` | `conceptual_foundation.md:449-455` | **OPEN** |
@@ -75,8 +75,14 @@ mode. ⛔ It is deliberately not a numbered instance: nothing may cite it as one
   `{V,M,J,MIXED}`, and the **MAGNITUDE** `Q_E` is `R1_REQUIRED(magnitude)`.
 - **Gravity side:** the `1/r²` law **and** the attractive sign are ⛔ CONDITIONAL pending the S14a drain
   bridge.
-- **The apparent shared shape:** *far-field FORM earned; SIGN and MAGNITUDE routed through the throat
-  interior.*
+- **⛔ The shared shape is a QUESTION to be tested, not a stated shape:** *do the two sectors share one
+  shape, or only one sentence?* ⛔ It may **not** be written as *"far-field FORM earned; SIGN and MAGNITUDE
+  routed through the throat interior"* — that is **false on the gravity side**, whose magnitude also carries
+  an **external/calibrated** debt: `CHARTER.md:83-84` says a clean v3 close shows at most that the *"far
+  field is computable given supplied mass, multipoles, compactness and a calibrated normalization"*.
+  ⇒ ⛔ Keep the two sectors' classes **as written above and separate** until the test is run: EM's SIGN and
+  MAGNITUDE are `R1_REQUIRED` on the interior solve; gravity's `1/r²` and sign are CONDITIONAL on the S14a
+  bridge **and** its normalization is calibrated. Only *FORM earned* is common ground so far.
 
 ⛔ **What may make it wrong — and this carries at least the weight of the pattern itself:** gravity's
 `1/r²` is conditional because a **derivation chain was severed** (*"Correcting the drain to the dynamical
@@ -88,7 +94,7 @@ them into one shape would be a pin of exactly the type this section catalogues.
 look alike?"***
 
 **Evidence:** `notes/stages/ledger_stage031_puncture_deflection_field_identity_source.md:25`;
-`parameter_register.md:329`, `:143`; `pde_ledger_v3/CHARTER.md:140-143`.
+`parameter_register.md:329`, `:143`; `pde_ledger_v3/CHARTER.md:143-146`.
 
 **Status: OPEN — CANDIDATE, to be tested at the knit (PHASE 5).**
 

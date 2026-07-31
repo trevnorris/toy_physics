@@ -91,8 +91,11 @@ session ran out of context, and a half-fold is what caused three of the previous
    `c_gamma`, `lambda_gamma` all cite `stage005`. Re-point them as part of **S0.5**.
 3. **S16's quotation** — the source block is now restored to the paper's actual (dimensionally loose)
    text, with the typo recorded. ⚠ Verify the repaired form is cited *separately* and never as a quote.
-4. **The governing method doc** reportedly still states both retracted rules in operative text —
-   re-check `docs/derivation_walkthrough_plan.md` against HEAD.
+4. ✅ **DONE — and the residue was in TWO files, not one.** `docs/derivation_walkthrough_plan.md`'s
+   phase-6 table cell and its replacement rule carry **only** the corrected input-vs-consequence form
+   (`c13f9329`); **S21** in `V3_STEP_PLAN.md`, which still stated the **superseded first** replacement,
+   now quotes the corrected rule. ⭐ Fixing the governing doc alone would have left the step that
+   *executes* the knit still forbidding exactly what the corrected rule expects it to produce.
 5. **`model_map.md` / control plane** — pre-correction assertions may remain below the new front-pointer.
 6. **A13's branch choice does not propagate through S6** (the kink step) — it is gated at S1/S5/S12 only.
 

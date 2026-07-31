@@ -1,5 +1,10 @@
 # DIRECTIVE — step ①: retire the `a`-pin from live infrastructure
 
+> ⛔⛔ **HISTORY — NOT INSTRUCTION.** This is the step-① build directive, completed 2026-07-31 (`407eed94`). Its "OPEN
+> pending a user decision" language about `R2.a_pin` describes a question that **no longer exists** —
+> the relation was retired by removal. ⛔ Do not execute anything here.
+> ⇒ **Live workstream: `research/pde_ledger_v3/` (start at `NEXT_SESSION.md`).**
+
 **You are the builder.** Make the edits, run the acceptance commands, iterate to green, report.
 Working root: `/var/projects/toy_physics`. Branch `ledger-v2-rebuild`.
 

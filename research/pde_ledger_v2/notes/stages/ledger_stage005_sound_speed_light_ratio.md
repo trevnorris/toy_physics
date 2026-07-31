@@ -1,5 +1,11 @@
 # ledger_stage005_sound_speed_light_ratio
 
+> ⚠⚠ **PARTIALLY SUPERSEDED 2026-07-31.** The pin relation `a = ħ/(m_GNLS c_s0)` cited in this stage is
+> **retired** (`407eed94`) — do not consume it. ⚠ Also: `λγ` is now classified three ways — `c_γ` is
+> free/debt until v3 **S9**, the **ratio** `λγ = c_γ/c_s` is **derived** (v3 **S20a**), and only
+> **`λγ = 1`** is calibrated/uncommitted. ⛔ Do not re-import this stage's older single-classification
+> wording.
+
 ## Status
 
 EARNED (sound speed + wave-sector ceiling, within the imposed EOS closure) with a

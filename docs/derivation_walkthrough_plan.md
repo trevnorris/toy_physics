@@ -87,11 +87,11 @@ Apply in order. It is mechanical, which is why it is usable at every step:
    four natural-unit pins, yet `c_s² = nKρⁿ⁻¹/m` defines it from `K`, `ρ0`, `m` and the EOS exponent
    **independently of any unit choice** — so `c_s0` is `derived`, and being set to 1 in a pin does not
    change that.
-   ⛔ **Clause added by D-01 (`research/pde_ledger_v2/walkthrough/DECISIONS.md`):** *a relation arising
-   from imposing unit pins is not a defining equation*, however much it looks like one — the residue of a
-   units choice expresses the choice, not the model's content. ⚠ `a = ħ/(m c_s0)` is exactly the case
-   this clause is about; it used to be the worked example for test 1 and it is **no longer**, because its
-   class is **OPEN pending a user decision** (§8).
+   ⭐ **Clause (from D-01, and it OUTLIVES the case that produced it):** *a relation arising from
+   imposing unit pins is not a defining equation* — the residue of a units choice expresses the choice,
+   not the model's content. ✅ `a = ħ/(m c_s0)` was that case; it is **RESOLVED BY REMOVAL**
+   (`407eed94`) — the relation and the quantity are deleted, and `a` now means the throat radius. ⛔ There
+   is no open class. The clause stands for **future** pin-shaped relations (§8).
 2. **Was it chosen because the calibration was necessary for the model to work?** (`n = 5`, `β = 3`)
    → **`calibrated`**.
 3. **Is there a named route to a defining equation that nobody has executed?** → **`debt`**.
@@ -101,15 +101,12 @@ Apply in order. It is mechanical, which is why it is usable at every step:
 number** that carries no content — `c = 1`, `ℓ_P = 1` — which has no defining equation in terms of model
 quantities and so never reaches test 1.
 
-⛔⛔ **REOPENED 2026-07-30 — what follows is NOT settled.** This paragraph used to continue: *that is what
-the earlier design got wrong — it imported a convention-vs-calibration split from external review and
-applied it to `a`, which **does** have a defining equation; the registry's `[40,49]`-adjacent offset
-against `scripts/midway_knob_audit_codimension_sympy.py` was caused by that error and dissolves under
-this rule, and all four block cases then agree.* ⛔ **D-01 overturns the premise** — under the unit-pin
-clause above it is an open question whether `R2.a_pin` is a defining equation at all. ⇒ Both downstream
-claims (the offset dissolving, the four block cases agreeing) were stated *under* the reading now
-reopened; ⛔ do not cite either as established, and ⛔ do not resolve the class here — it is a **user
-decision** (§8).
+✅ **CLOSED 2026-07-31 by removal.** This paragraph once argued that `a` *"does have a defining
+equation"*, then D-01 reopened it. Both readings are moot: the user retired the pin, `R2.a_pin` and
+`Q.medium.a_pin` are **deleted**, and no class needs picking. ⛔ Do not re-open it. ⚠ The durable lesson
+is the **kind-test**, not the verdict: ask *"is this one number for the whole medium, or one per
+particle?"* — `ħ/(m c_s0)` **is** a healing length in a standard convention, so a value-check passes it
+and only a kind-check catches it.
 
 ⇒ The four classes map straight onto the tiers: `derived` → **tier 3** · `calibrated` → **tier 2** ·
 `postulated` and `debt` → **tier 1**, split as the user specified.

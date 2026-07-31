@@ -257,8 +257,13 @@ BCs, the `F_var+F_flux+F_𝔅+F_rad` partition — but it must be **re-hosted** 
 ⭐ **Note how this error happened**: I had the "never freeze the wall" rule in memory and wrote the frozen
 form anyway, because I transcribed the equation from a spec section rather than deriving it forward. That
 is precisely what §0's side-by-side rule exists to prevent.
-⛔ **All six source terms are `[OPEN]`.** The throat enters this ledger **only** as a boundary condition
-of given strength — that is the whole content of the scope boundary.
+⛔ **Two inventories, kept apart:**
+- **non-variational source / controller functions** — `Γ_return`, `Γ_drain`, `J_χ`, and the return
+  controllers. ⛔ All `[OPEN]` in form.
+- **boundary / domain data** — the mouth, collar and IR conditions, and the `𝔅` branch selection.
+
+⇒ The throat enters this ledger with its **source form open and its strength supplied**. ⛔ Not "only a
+boundary condition" — that framing hides which of the two is unresolved.
 **Register:** ⛔ **A13 (the conversion balance must use the branch chosen at S1)** · **C6**; **C1** (⚠ the drain law is *parameterized, not derived* — and `g_phys` was never
 mapped; carry the caveat, not the top line).
 
@@ -295,7 +300,7 @@ zero mode — ⛔ **not** from the throat.
 
 ## PHASE 4 — gravity and gravitomagnetism (6 steps)
 
-### S15 · Two drains attract ⚠ RUN S16 FIRST, or fold it in as the premise
+### S15 · Two drains attract ⚠ RUN S16 FIRST for regime context — ⛔ NOT as S15's premise
 ⛔ **CONDITIONAL ON S14a.** Not a carried result until the dynamical-`Γ_B` bridge succeeds.
 ⚠ **Corrected twice.** Round 1: run S16 first, since the corpus establishes the worldtube closure before
 the particle law. ⛔ **Round 2 corrects that correction: S16 does NOT license S15.** S16 is

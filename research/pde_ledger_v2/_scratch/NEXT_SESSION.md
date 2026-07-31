@@ -1,5 +1,10 @@
 # NEXT SESSION — handoff (rewritten 2026-07-30, after the METHOD CHANGE)
 
+> ⛔⛔ **HISTORY — NOT INSTRUCTION.** This is the v2 handoff, completed 2026-07-31 (`407eed94`). Its "OPEN
+> pending a user decision" language about `R2.a_pin` describes a question that **no longer exists** —
+> the relation was retired by removal. ⛔ Do not execute anything here.
+> ⇒ **Live workstream: `research/pde_ledger_v3/` (start at `NEXT_SESSION.md`).**
+
 ## ⛔ ORIENTATION BUDGET — read exactly two things
 
 1. **`docs/derivation_walkthrough_plan.md`** — the method. It is the canonical doc and this handoff does

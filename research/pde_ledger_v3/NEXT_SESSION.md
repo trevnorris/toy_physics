@@ -28,7 +28,7 @@ participates in the derivation.
 reasoning stated **before** the result. Stop at every substantive move, not just step boundaries.
 
 ⭐⭐ **Flag every identification BEFORE making it:** *"I am about to treat X and Y as the same quantity —
-here is why, and here is what would make that wrong."* Ten pin-shaped identifications are on record;
+here is why, and here is what would make that wrong."* **Thirteen** pin-shaped identifications are on record — one of which I created *while writing the register that warns about them*;
 that move is what creates them.
 
 **Why:** v2 was delegated heavily to go fast. That is the measured reason three structural findings —
@@ -48,9 +48,18 @@ derived the new acceptance numbers independently, by four different methods: bas
 `9/6/3`, C-M2 replaced with a real entailment, C-M3 `9/4/5`. ⭐ `dim_after` is 5 on both sides — the
 **Δ moving 5→4** is the signal.
 
-**✅ v3 is OPEN** — charter, defect register, step plan, reasoning, techniques. Two review rounds folded.
+**✅ v3 is OPEN** — charter, defect register, step plan, reasoning, techniques. Three review rounds folded (see below).
 
-**▶ NEXT: S0.5**, then S1, S2 — side by side.
+**▶ NEXT: S0.5 → S1 → S1.5 → S2** — side by side.
+
+⚠ **Round 3 status: Grok CLEAN (empty blockers); Codex REGRESSED with five.** All five are folded but
+**not re-reviewed**. ⛔ Treat S0.5–S2 as unverified and check as we go.
+
+⛔ **S14a is new and BLOCKING for phase 4.** Correcting S12 to the committed dynamical `Γ_B` law severed
+the chain to the imported gravity results: `Γ_B` conserves total material and converts only *order*,
+while the imported force derivation assumes a Gauss drain removing *number flux*. Until a bridge derives
+the projected order-loss source, `J`, the `J → Q` map and the `ω→0` return law, **S14, S15 and S20 are
+CONDITIONAL, not carried.**
 
 ### S0.5 is first and it is not optional
 

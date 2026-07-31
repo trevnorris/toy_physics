@@ -53,6 +53,18 @@ v3-gravity will not touch, and must not appear to have settled:
 ⚠ **A v3-gravity ledger that closes cleanly is not evidence the model is sound.** It is evidence that
 the far field does not depend on the interior — which was already known.
 
+⛔⛔ **AMENDED 2026-07-31 — the boundary is weaker than stated above, and may not hold at all.**
+Reading the worldtube theorem's actual statement rather than its slogan
+(`research/4d_2_5pn/paper/4d_2_5pn.tex:605-614`), the independence is **leading-order only** and
+**conditional on the defect being compact (`a ≪ r`)**, with a first correction `O(a²/r²)` — controlled
+by the throat radius, which is undetermined.
+
+⚠ And the Spin Problem (**C10**) concludes you *cannot* get frame dragging from a compact defect —
+*"you need the tail"*. ⇒ **If that is right, the compactness premise fails and the boundary this charter
+is built on does not exist as stated.** S16 and S19 must therefore be run **before** the charter's scope
+claim is treated as settled, and the charter amended to whatever they find. ⛔ Do not preserve the
+boundary against the result.
+
 ### 1.2 ⭐ Expected yield: a debt list, not a discovery
 
 Say this up front so it does not read as failure when it arrives. The deliverable is a **precise,

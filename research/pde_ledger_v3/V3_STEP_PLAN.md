@@ -148,15 +148,44 @@ zero mode — ⛔ **not** from the throat.
 Noether stress at infinity, drain strengths `Q_i` **given**: `F_12 = −(m N_∞,3 Q1Q2/4πr²) r̂`.
 Form and sign **earned target-blind**; magnitude falls to the interior.
 
-### S16 · ⭐⭐ The worldtube reduction — why gravity is interior-independent
-*"controlled by the worldline/worldtube multipoles rather than by arbitrary internal details of the
-defect"*.
-⛔ **The load-bearing step of this entire ledger.** It is the theorem that makes the scope boundary
-legitimate rather than convenient — and equally, the reason a clean v3-gravity is **not** evidence the
-model is sound.
+### S16 · ⭐⭐ The worldtube reduction — the theorem the whole scope boundary rests on
+
+⛔ **The load-bearing step of this entire ledger.** It is what makes the scope boundary legitimate rather
+than convenient — and equally, the reason a clean v3-gravity is **not** evidence the model is sound.
+
+⚠ **Read the actual statement, not the slogan** (`research/4d_2_5pn/paper/4d_2_5pn.tex:605-614`):
+
+> *"For a **compact defect of size `a ≪ r`** in a smooth external field, the center-of-mass reduction
+> gives the usual point-particle force law … `+ O(a²/r² · Φ_ext/r)` … so that the universal
+> point-particle source **at leading order** is controlled by the worldline/worldtube multipoles rather
+> than by arbitrary internal details of the defect."*
+
+⇒ **The independence is (i) leading-order only and (ii) conditional on compactness.** The first
+correction is `O(a²/r²)` — controlled by the throat radius `a`, which is **undetermined** (**C2**,
+**D1**). So "gravity does not depend on the interior" is precise only to leading order; beyond it,
+gravity depends on exactly the quantity this project cannot compute.
+
+⭐⭐ **And it collides with C10.** The worldtube reduction's premise is that the defect is **compact**.
+The Spin Problem's verdict is that *"you cannot get frame dragging from a compact 4D bubble; you need
+the tail."* ⛔ **If the tail is real, S16's premise fails** — and with it the justification for scoping
+gravity apart from the interior at all.
+
+⇒ **S16 must be run BEFORE S19 is trusted, and its result feeds back into the charter.** Two blocking
+legs. ⚠ Possible outcome: the scope boundary is narrower than the charter claims, in which case say so
+rather than preserving the boundary.
 
 ### S17 · The PN ladder — cite-only
-1PN→4PN, audited, dual-engine, DOI'd. ⛔ **Do not re-derive.** Record what it establishes and its inputs.
+Seven separately-published papers, Zenodo-DOI'd (`ledger_stage029_pn_corpus_doi_cite.md:32-40`).
+⛔ **Do not re-derive.** Record what each establishes and its inputs.
+
+⚠ **Two precisions the word "audited" hides — checked 2026-07-31:**
+- **`4d_2_5pn` and `4d_4pn` are *conditional* derivations** (their own titles say so). ⛔ Do not carry
+  them forward as unconditional; the condition is part of the imported result.
+- **The DOIs are README-authoritative, not source-cross-validated.** *"none of the seven papers declares
+  its own Zenodo DOI in source"* (`:51`). ⛔ Repeat that caveat rather than dressing them as
+  source-verified.
+- stage029 itself is **cite-only**: no scripts, no dual-engine, no re-audit. *"029 does NOT re-audit the
+  PN physics."* ⇒ The audit lives in the papers, not in the ledger.
 
 ### S18 · 2.5PN Burke–Thorne matchback
 ⚠ **Record honestly**: `INV2` is `a`-free — `K̄₀ = (54/5)Gc_s⁵/(a⁵c⁵)` times `a⁵/(27c_s⁵)` is

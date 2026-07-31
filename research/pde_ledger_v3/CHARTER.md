@@ -35,7 +35,7 @@ description; it is not a courtesy stop-for-review but a change in who does the d
 
 **Widened 2026-07-31 (user decision): the EM/charge sector is IN scope.** ⭐ The reason is not appetite —
 it is that these are not independent sectors that happen to share a deadline, they share the **same
-unsolved object**. `docs/model_map.md:178` records that **"One nonlinear throat solve is the shared R1 for
+unsolved object**. `docs/model_map.md:188` records that **"One nonlinear throat solve is the shared R1 for
 gravity `{μ_R, ρ_br}` ... electric `bc_selection`, and magnetism `q_T` — one interior solve collapses
 several knobs at once"**, and the register books charge's debts against that same solve: `Q_E` and
 `bc_selection` each discharge *"under the shared sim-deferred throat solve (sibling of R10/R30)"*
@@ -72,7 +72,7 @@ list; it ⛔ does **not** import a second insulated sector.
 
 Gravity looks clean **because it is insulated from the hard part** — to the extent it is insulated at
 all — not because the hard part is solved.
-v3-gravity **will not claim to discharge** — and must not appear to have settled:
+v3 **will not claim to discharge** — and must not appear to have settled:
 
 - the geon and the mass mechanism (**C4**)
 - the drain law and `g_phys` (**C1**)
@@ -173,6 +173,6 @@ specifies — the forward walkthrough produces an inventory, not a certified num
 explains why three leptons of wildly different mass carry *exactly* the same charge (**D1**).
 
 That question is **out of scope here by construction** — it lives in the throat interior. ⇒ It will still
-be open when v3-gravity closes, and closing v3-gravity will not have made progress on it.
+be open when v3 closes, and closing v3 will not have made progress on it.
 
 Recorded because a debt list is only honest if it says what it is *not* paying down.

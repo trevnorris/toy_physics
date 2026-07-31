@@ -10,7 +10,7 @@
 - ✅ **v3 opened, sector-scoped: gravity · light · gravitomagnetism · charge · magnetism.** Same
   walkthrough method, a sector boundary instead of a phase ordering. ⛔ Not a third method change.
   ⚠ **Widened 2026-07-31 (user decision, `c13f9329`)** — charge and magnetism share the **same
-  unsolved object** as gravity: one nonlinear throat solve (`docs/model_map.md:178`).
+  unsolved object** as gravity: one nonlinear throat solve (`docs/model_map.md:188`).
 - ⭐⭐ **Steps are now walked SIDE BY SIDE with the user** — participation in the derivation, not
   approval at the end. v2's delegation is why three structural findings went unnoticed.
 - ⚠ **The scope boundary is amended and may not hold.** The worldtube result is response-side,

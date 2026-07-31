@@ -5,13 +5,20 @@ hash written in any doc, including this one.
 
 ---
 
-## ⛔ ORIENTATION BUDGET — read these four, in order, and nothing else
+## ⛔ ORIENTATION BUDGET — read these five, in order, and nothing else
 
-1. `research/pde_ledger_v3/CHARTER.md` — what v3 is, and what its scope **excludes**
-2. `research/pde_ledger_v3/V3_STEP_PLAN.md` — ⭐ **§0 first**, then S0.5 → S2
-3. `research/pde_ledger_v3/DEFECT_REGISTER.md` — the known error surface
-4. `research/pde_ledger_v3/SESSION_REASONING.md` — how we got here
+1. ⭐ `docs/model_map.md` — **READ-FIRST master map**: the throughline, the per-sector atlas, and the
+   earned/calibrated/R1/departure ledger
+2. `research/pde_ledger_v3/CHARTER.md` — what v3 is, and what its scope **excludes**
+3. `research/pde_ledger_v3/V3_STEP_PLAN.md` — ⭐ **§0 first**, then S0.5 → S2
+4. `research/pde_ledger_v3/DEFECT_REGISTER.md` — the known error surface
+5. `research/pde_ledger_v3/SESSION_REASONING.md` — how we got here
 
+⭐ **Why (1) was added (user decision, 2026-07-31):** this budget's omission of the master map is the
+measured reason the model's recorded throat-support mechanism (trapped standing-wave pressure) was
+invisible to v3 work, and the scope-widening argument itself came from `docs/model_map.md:188`.
+
+⚠ Still a **bounded** list — five documents, not licence to read the corpus.
 ⛔ **Do not open** the v2 census, manifests, `archive/`, or the 43 stage notes "to get oriented".
 Delegate any other read as a **specific question**, and require **≤20 lines + `file:line` loci** back.
 
@@ -106,8 +113,8 @@ a correction that was *appended rather than applied*.
 
 ## ⛔ THE FOUR THINGS MOST LIKELY TO GO WRONG
 
-1. **Treating a clean v3-gravity close as validation of the model.** It is not. Gravity is clean
-   *because it is insulated from the interior*. See `CHARTER.md` §1.1 — and note the boundary is now
+1. **Treating a clean close of the gravity subledger as validation of the model.** It is not. Gravity is
+   clean *because it is insulated from the interior*. See `CHARTER.md` §1.1 — and note the boundary is now
    **amended**: the worldtube result is **response-side** (how a body *moves in* a field), conditional
    on compactness, leading-order only, with a correction `O(a²/r²)` governed by the undetermined `a`.
 2. **Rebuilding apparatus.** Two efforts died this way. The register is a **list**; `reduction/` already
@@ -134,6 +141,6 @@ a correction that was *appended rather than applied*.
 ## ⭐ THE QUESTION THAT IS NOT IN SCOPE, AND WILL STILL BE OPEN
 
 **What makes a muon a muon?** Mass differs 207× while charge is *exactly* identical. The falsified
-support-only tower was the only family label the model had, and killing it left none. ⛔ v3-gravity will
+support-only tower was the only family label the model had, and killing it left none. ⛔ v3 will
 not touch this, by construction — recorded so a debt list stays honest about what it is *not* paying
 down.

@@ -90,6 +90,17 @@ counting-axis change · a replacement for the `R3`-dependent mutation case · th
 updated · acceptance recomputed and **independently re-derived**, never preserved. ⇒ Treat S0.5 as a
 step in its own right with its own review legs, ⛔ not a preamble to S1.
 
+⛔ **"Change the counting axis" is NOT an executable prescription.** Moving `c_γ`/`λγ` to
+`convention-orbit` or `discrete-structural` **misclassifies** them, and changing `scope` alone does not
+affect `active_variables`. ⇒ Specify the lifecycle exactly: **retire the two quantities and deactivate
+/remove `R3`**, then re-introduce `c_γ` at S9 and `λγ`/`R3` at S20a.
+
+⛔ **Enumerate every touchpoint before starting** — at minimum `registry_read.py`'s runnable propagation
+smoke test (`:1014`) and `README.md`'s canonical example (`:174`), **both hardwired to `lambda_gamma`**,
+plus `acceptance_check.py`, `able_to_fail.py` and `test_registry.py`.
+⭐ A mutation case built on `R3` needs a replacement built on a surviving relation.
+⛔ Derive the new payload independently; ⛔ never preserve, and ⛔ never read it off a prior document.
+
 ---
 
 ## PHASE 0 — the substrate (4 steps)
@@ -116,6 +127,21 @@ banked"* is false at S4 until this is in.
 ⛔ `U(ρ)` is **not** a third field or an independent free function — it is fixed by the EOS.
 **Expected new:** nothing beyond S1's primitives, if the action is faithfully transcribed. ⚠ If it turns
 out to introduce something, that is a finding.
+
+⛔⛔ **Order: S1 THEN S1.5.** This step consumes S1's primitives, so it cannot precede it. ⚠ Earlier
+handoff text said `S0.5 → S1.5 → S1`; that was **wrong** — the correct order is
+`S0.5 → S1 → S1.5 → S2`.
+
+⛔ **`U(ρ)` is NOT uniquely fixed by the pressure identity.** `P = ρU′ − U = Kρ⁵` gives
+`U = Kρ⁵/4 + Cρ` — the linear term is unconstrained. `C` is a **chemical-potential / phase-reference
+choice**, and it matters to the energy and source ledger. ⇒ **State the reference that sets `C = 0`
+explicitly**; do not present `Kρ⁵/4` as forced.
+
+⚠ Also **fix the field count**: S1 lists three fields including `U(ρ)`, while this step says `U` is not a
+field. Name the two actual fields and correct S1.
+⇒ Bank an explicit, consistent `Π_Q`, `ε_Q`, `j_ε^Q` improvement convention — the three form one package.
+⚠ This step supplies the **conservative left-hand sides only**; S12's non-variational source partners
+stay open.
 
 ### S2 · The sound speed
 `c_s² = (1/m)dP/dρ = nKρ^(n-1)/m`. **Expected new: nothing** — pure consequence.
@@ -172,7 +198,12 @@ that S5–S7 postulated. It is why gravity and light are tractable, and why the 
 ## PHASE 2 — light (3 steps)
 
 ### S9 · The transverse shear speed
-`c_γ² = μ_R/ρ_br`. **Expected new:** `c_γ` — or rather `{μ_R, ρ_br}`.
+⛔ **Provenance order corrected (round 3): `{ρ_br, μ_R}` must be introduced and classified in S8, not
+here.** S8 cannot write the transverse quadratic brane Lagrangian without them, so introducing them
+afterwards violates forward provenance and puts the apparatus before its own coefficients.
+⇒ Either introduce `{ρ_br, μ_R}` at **S8**, or move the transverse action itself into S9. Pick one.
+
+`c_γ² = μ_R/ρ_br` is then the **pure consequence**. **Expected new:** nothing, if S8 carries the pair.
 ⭐⭐ **This closes O-01, the "universe hole."** v2's registry seed required `c_γ` as a supplied input
 while **no step ever introduced it**. It enters *here*, in the excitations phase, with provenance —
 ⛔ never back-filled into the medium block for bookkeeping convenience.
@@ -229,6 +260,25 @@ derivably connected to mass. Bank it as an unresolved step.
 ### S14 · The far field
 `1/r²` on the brane, `1/R³` in the bulk. The exponent comes from the slab DC-sink completions and the
 zero mode — ⛔ **not** from the throat.
+
+---
+
+### S14a · ⛔⛔ THE DRAIN BRIDGE — BLOCKING, and created by fixing S12
+
+**Round 3 found that correcting S12 severed the chain to the imported gravity results.**
+
+The committed dynamical `Γ_B` law **conserves total material and converts only order**
+(`ledger_stage006_two_phase_chiB_ontology.md:81`). But the imported force derivation assumes a **Gauss
+drain removing number flux** (`ledger_stage002_matter_stress_force_assembly.md:53,:111`), and S14/S20
+use frozen DC sink/return completions. `Q = Θ_Q J / N_∞,3` *labels* the far-field flux; it does **not**
+derive it from `Γ_B`.
+
+⇒ **Derive, from the dynamical system:** the projected order-loss source · the definition of `J` · the
+profile-dependent `J → Q` map · the controlled `ω → 0` return law.
+
+⛔ **Until this succeeds, S14, S15 and S20 are CONDITIONAL, not carried results.** ⚠ Mark them so in
+their records. ⭐ This is a real physics obligation produced by removing a frozen-wall shortcut — exactly
+the kind of debt this ledger exists to surface, not a bookkeeping chore.
 
 ---
 

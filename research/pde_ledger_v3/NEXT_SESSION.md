@@ -60,7 +60,7 @@ derived the new acceptance numbers independently, by four different methods: bas
 input. `c_γ`/`λγ` leave the medium counting contract until S9 / S20a; recompute acceptance; ⛔ never
 preserve the old numbers.
 
-⚠ A **substrate-action step** is also owed before S2 — S1 gives the EOS but not the GNLS action,
+⚠ **S1.5, the substrate-action step, runs AFTER S1 and before S2** (it consumes S1's primitives) — S1 gives the EOS but not the GNLS action,
 quantum-gradient term or Madelung balances, yet S4 invokes a "core balance" and S12 needs the
 momentum/energy partners.
 

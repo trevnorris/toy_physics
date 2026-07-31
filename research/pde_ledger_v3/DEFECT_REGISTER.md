@@ -26,10 +26,35 @@ any sector that has not been checked.
 | **A4** | implicit `β·a = 1` — `L0/a = 37/20` and `β·L0 = 37/20` together equate the wall-response inverse length with the inverse mouth radius, while the register says geometry does **not** derive `β` | `parameter_register.md:101-110,:178` vs `notes/stage013_pathA31_breathing_source_map.md:124-133` | **OPEN** |
 | **A5** | `c_w ≡ c_s` — the cavity-dispersion wave speed silently equated with the medium sound speed | `pathA_26_derrick.md:21` vs `notes/lepton_mass_notes.md:156-167` | **OPEN** |
 | **A6** | the length chain `a = 20ℓ`, `ℓ = δ` — collapses every particle-sector length onto one scale | `parameter_register.md:200` + A2 | **OPEN** |
-| **A7** | ⭐ **The register calls `ξ = ħ/(m c_s)` *"the R2-family healing length"* — but R2's `ξ_h` is `√2 ħ/(m c_s0)`, a factor `√2` away, and `ħ/(m c_s)` is *precisely* the expression retired in A1 as a units artifact.** So a quantity numerically identical to the dead pin is still carried under the name "healing length". ⚠ Note R27 itself is a **firewall** and is good practice — it correctly forbids substituting `ξ` for `ℓ_c`. The defect is the **value**, not the firewall | `parameter_register.md:294` (R27), `:94` | **OPEN** |
+| **A7** | `ξ = ħ/(m c_s)` (stage011) vs `ξ_h = √2 ħ/(m c_s0)` (stage004) — two "healing lengths" a factor `√2` apart | `parameter_register.md:294` (R27), `:94`; `ledger_stage011_..._sympy_audit.py:430,:521,:658` | ✅ **NOT A DEFECT** — investigated 2026-07-31, see below |
 | **A8** | `r_e` called *"the throat-**body** size"* while the balance `ke²/a = m_e c²` is written with the **mouth** radius `a` | `conceptual_foundation.md:449-455` | **OPEN** |
 | **A9** | `W_slab` (brane slab width) merged with the `L/a` (sleeve aspect ratio) self-selection debt, without an equation | `two_throat_simulation_handoff_spec.md:160`; `parameter_register.md:163,:286` | **OPEN** |
 | **A10** | sonic horizon `r ~ (J/ρc_s)^{1/3}` identified with the mouth radius | *(orchestrator error, 2026-07-31, retracted same session)* | ✅ **RETIRED** — listed so it does not return |
+
+### ⭐⭐ A7 investigated — it is not a defect, and it explains why A1 survived so long
+
+**Verdict: a legitimate second convention, correctly firewalled.** Both lengths are real and each is
+natural in its own context:
+
+- `ξ_h = √2 ħ/(m c_s0)` — from **core balance**, `√(ħ²/(2 m h0))` with `h0 = m c_s0²/4` (`stage004`).
+- `ξ = ħ/(m c_s)` — from the **BdG dispersion**. The deferred `k⁴` term's ratio is
+  `ħ²k²/(4m²c_S²) = (kξ/2)²`, and that identity *forces* `ξ = ħ/(m c_S)` with no `√2`. It is
+  load-bearing — it defines stage011's validity window `kξ ≪ 1` — not decorative.
+
+`parameter_register.md:294` already flags it (*"source's no-√2 convention"*) and R27 is a **firewall**
+doing its job (`ξ ≠ ℓ_c`, never substituted). ⇒ No action. Row kept so the question is not re-opened.
+
+⭐⭐ **But this is the origin story for A1, and it is worth more than the row.** The pin's value
+`ħ/(m c_s0)` was **never arbitrary — it *is* a healing length, in a standard convention.** That is
+precisely why identifying `a` with "the GNLS healing core" felt natural and survived eleven months.
+
+⇒ **The pin's defect was never that the number was wrong. It was a category error:** a **medium**
+length used as a **defect** radius. ⛔ A future check that asks *"is this value right?"* would have
+passed it. The question that catches it is ***"is this quantity the same KIND of thing?"*** — one number
+for the whole medium, or one per particle.
+
+⚠ **Apply this test to A2–A9.** Each is two lengths that agree numerically or dimensionally. The
+question is not whether the numbers match; it is whether both sides are indexed by the same thing.
 
 ---
 

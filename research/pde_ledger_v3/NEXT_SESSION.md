@@ -138,6 +138,61 @@ a correction that was *appended rather than applied*.
 
 ---
 
+## ▶ PHOTON-SIMULATION TRACK (user proposal, 2026-07-31) — ⛔ NOT a v3 walkthrough step
+
+⛔ **This is a parallel research track, not a step in the v3 walkthrough.** It sits in no phase and gates
+nothing.
+
+**Why it is attractive.** Light is the one sector that does **not** need a defect. The corpus's deferral
+language is specifically about the **throat interior / full 4+1D**, ⛔ **not** about the brane-shear
+sector (`docs/two_throat_simulation_handoff_spec.md:671`, `:696`):
+
+> *"The full object — a time-dependent, fully nonlinear, 4+1-dimensional solve of two moving throats
+> radiating into an open medium — is **presently blocked** …"*; *"The **full** nonlinear two-throat sim
+> stays deferred."*
+
+**What already exists.** A working **linear** transverse-wave integrator —
+`software/force_visualizer/physics/light.py:75-131` (explicit 2nd-order finite difference, 1D periodic
+domain, 300 points). ⭐ It **ran**: measured `ω` at `k = 1–4` matched `c_γ·k` to **0.04%**, and both
+transverse polarizations were recovered (`software/force_visualizer/output/verification_report.txt:42-48`).
+
+⛔ **What is missing, and it is the whole job.** There is **no nonlinear shear equation anywhere in the
+corpus**. Every form is quadratic, and
+`research/pde_ledger_v2/notes/stages/ledger_stage034_transverse_move_action_row.md:147` records what
+happens if you change that:
+
+> *"(Breaking well-formedness — making the coupling nonlinear in `u_T`, non-local, or non-variational —
+> fires the tooth.)"*
+
+⚠ **You cannot reach it by "un-linearizing":** the quadratic Lagrangian was written **directly**, not
+expanded from a nonlinear parent — which is **C6** (`docs/two_throat_simulation_handoff_spec.md:324`):
+
+> *"**Closure status — no closed parent action exists.**"*
+
+⭐ **The target is already a named open gate** (`atlas/nodes/open_gates/OPEN_NONLINEAR_S_SIGMA.md:63`):
+
+> *"Promote or derive nonlinear throat action whose quadratic limit is S_eta^(2)."*
+
+**Why it matters beyond the sim.** `docs/em_gravity_mined_verdicts.md:38` records that the trapped-shear
+geon is *"intrinsically NONLINEAR — a linear/quadratic action can't establish it"*. ⇒ The geon (**C4**,
+no equation) and the throat's holding-open mechanism are both downstream of this **same** missing
+nonlinear action.
+
+⛔ **Two traps, both already recorded:**
+
+1. **Scale.** The linear equation needs only the **ratio** `c_γ² = μ_R/ρ_br`. Nonlinearity introduces an
+   amplitude scale, so it needs `μ_R` and `ρ_br` **absolutely** — and both are calibrated/postulated
+   (`[POSTULATE: stiffness value]`, `docs/two_throat_simulation_handoff_spec.md:70`).
+2. ⛔ **Tautology.** If `μ_R` is supplied as an input, measuring `c_γ = √(μ_R/ρ_br)` returns the number
+   that was put in. It becomes a real test **only if the brane's stiffness EMERGES** from the bulk medium
+   rather than being imposed — and that is exactly where `pathA_35` returned `FAIL_COUPLE_STRESS_NOGO`
+   (register **B2**, `DEFECT_REGISTER.md:115`).
+
+**Status:** recorded, ⛔ **not started**; ⚠ deliberately not begun before **S0.5**. ⇒ If it becomes real
+work it earns its own document then.
+
+---
+
 ## ⭐ THE QUESTION THAT IS NOT IN SCOPE, AND WILL STILL BE OPEN
 
 **What makes a muon a muon?** Mass differs 207× while charge is *exactly* identical. The falsified

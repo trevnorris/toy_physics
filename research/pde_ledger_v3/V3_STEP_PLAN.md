@@ -664,6 +664,40 @@ lock. Classifying the ratio says nothing about the lock.
 two sector speeds that happen to share dimensions? ⚠ That is exactly the shape of the thirteen
 identifications in register §A.
 
+⭐⭐ **`λγ = 1` is not a free landing — observation already constrains it.** In this model `c_s` is the
+**gravity-change/phonon speed** and `c_γ` is the **light-cone speed**
+(`research/pde_ledger_v2/notes/stages/ledger_stage005_sound_speed_light_ratio.md:75-77`):
+
+> *"`c_s` is the phonon/gravity-change speed; `c_gamma` is the light-cone speed; `v_b` is the condensate
+> flow."*
+
+Gravitational-wave and electromagnetic arrival-time observations (**GW170817 / GRB 170817A**) constrain
+those two speeds to agree to roughly **1 part in 10¹⁵**. ⇒ **`λγ = 1` to that precision is an
+EXPERIMENTAL FACT the model must reproduce**, ⛔ **not** a convenient calibration choice.
+
+⭐ **Therefore `λγ` is a held-out dimensionless test, and S20a is a place the model can FAIL.** If S20a
+derives a value materially different from `1`, that is a **falsification**, ⛔ not a knob to retune.
+
+⚠ **The specific worry to check:** `c_s` is **longitudinal compression** of the bulk while `c_γ` is
+**transverse shear** of the brane. In an ordinary elastic solid those two differ by an O(1) factor
+(`c_T/c_L ≈ 0.5–0.6`). ⛔ **That is a generic-elasticity expectation, NOT a model calculation** — carry it
+as the risk to check, ⛔ never as a model prediction. If the model's shear modulus turns out to relate to
+the bulk EOS the ordinary way, it lands near `0.55` and is falsified.
+
+⚠ **And `stage005` already REJECTS inferring `c_γ = c_s` from shared dimensions**
+(`ledger_stage005_sound_speed_light_ratio.md:198`, `:204-205`):
+
+> *"That `[c_s] = [c_gamma] = L T^-1` is explicitly **NON-EVIDENTIARY for equality**."*
+>
+> *"The parent action does not pin it; `c_gamma = c_s` from shared dimensions or from legacy weak-field
+> prose is **REJECTED**."*
+
+⇒ Observation requiring `λγ ≈ 1` and the ledger forbidding a dimensional shortcut to it are **compatible,
+and both must hold**: the model has to **earn** the number that experiment already knows.
+
+⭐ **The SI anchor is calibration, not prediction.** Fixing model units by the measured `c` costs nothing
+predictive — absolute constants are convention here, and only dimensionless ratios test the model.
+
 ### S21 · What light and gravity share
 Both ride the brane; both consume `{ρ_br, μ_R}`. ⛔ **Use the method doc's CORRECTED rule**
 (`docs/derivation_walkthrough_plan.md:190-197`), ⛔ **not** the earlier blanket ban on anything new:

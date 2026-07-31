@@ -97,11 +97,11 @@ quantities:
       provenance:
         stage_id: stage005
         stage_uses_shared_dimensions_module: false
-        source_locus: {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 73, line_end: 88}
+        source_locus: {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 78, line_end: 93}
     aliases: [cs0, c_s]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 129, line_end: 129}
-      - {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 73, line_end: 88}
+      - {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 78, line_end: 93}
 
   - qid: Q.medium.xi_h
     symbol: xi_h
@@ -154,11 +154,11 @@ quantities:
       provenance:
         stage_id: stage005
         stage_uses_shared_dimensions_module: false
-        source_locus: {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 68, line_end: 90}
+        source_locus: {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 73, line_end: 95}
     aliases: ["c_γ", "cγ"]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 134, line_end: 134}
-      - {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 68, line_end: 90}
+      - {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 73, line_end: 95}
 
   - qid: Q.medium.lambda_gamma
     symbol: lambda_gamma
@@ -173,11 +173,11 @@ quantities:
       provenance:
         stage_id: stage005
         stage_uses_shared_dimensions_module: false
-        source_locus: {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 189, line_end: 203}
+        source_locus: {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 194, line_end: 208}
     aliases: ["λγ", "lambdaγ"]
     source_loci:
       - {path: notes/parameter_register.md, line_start: 133, line_end: 133}
-      - {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 189, line_end: 203}
+      - {path: notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 194, line_end: 208}
 
   - qid: Q.medium.n_eos
     symbol: n_eos

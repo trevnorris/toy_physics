@@ -5,19 +5,53 @@ step-by-step route. **Method**: `docs/derivation_walkthrough_plan.md` — ⛔ no
 
 ---
 
-## 0. How a step is run
+## 0. ⭐⭐ How a step is run — SIDE BY SIDE (user decision, 2026-07-31)
 
-**Per step, in order:**
+⛔⛔ **This supersedes the v2 working style, and the reason is measured.** On v2 the user delegated
+heavily to go fast. The cost: the `a`-pin sat at the foundation for eleven months, the lepton tower's
+falsification never reached the front-door docs, and the Spin Problem sat in an orphan note. ⇒ **Speed
+bought nothing and hid three structural findings.**
 
-1. **Derive it forward** from what previous steps banked. ⛔ Never from a v2 artifact's conclusion — v2
-   is a *source of loci*, not of authority.
-2. **Write the step record** — the eight fields the method doc specifies. The record is the deliverable,
+⭐ **The user works through every step with me. Not a gate at the end — a participant in the
+derivation.** The purpose is that *they understand everything that is going on*, because they are the
+only physics reviewer this project has.
+
+### What "side by side" means operationally
+
+1. ⛔ **Do NOT pre-derive a step and present conclusions.** Derive it in the open, one move at a time,
+   with the reasoning stated **before** the result so it can be caught in flight.
+2. **Open each step with the setup, not the answer:** what we are deriving · what we already have and
+   from which step · what is missing · where I expect trouble.
+3. **Stop at every substantive move**, not only at step boundaries. A step is not an atomic unit of
+   conversation; a *derivation move* is.
+4. ⭐⭐ **Flag every identification before making it.** *"I am about to treat X and Y as the same
+   quantity — here is why, and here is what would make that wrong."* Ten pin-shaped identifications are
+   already on record; this is the exact move that produces them, and it is the one place a second pair
+   of eyes in real time is worth more than any downstream review.
+5. **Ask rather than assume** on physical-picture calls. The maths is checkable; the picture is the
+   user's, and this session showed their instinct catching things the corpus had wrong.
+6. **Sub-agents are for LOOKUP, not judgement** — "find me this locus", "what does file X say about Y".
+   ⛔ Not "decide whether this is right".
+7. **Codex and the external reviewers come AFTER we have walked it** — to check our work, not to do it.
+8. **Size steps to fit one sitting.** ⛔ If a step below is too big to walk in one go, split it and say
+   so; the 23 steps are a route, not a contract.
+
+### Then, and only then, the mechanical part
+
+9. **Write the step record** — the eight fields the method doc specifies. The record is the deliverable,
    not a report about it.
-3. **Add quantities and equations to `reduction/`** and run the dimensional gate. It must pass before
-   the step is banked.
-4. **Confront the register rows this step touches.** Each step below names them. ⛔ A step that walks
-   past a row without resolving *or explicitly deferring* it is not done.
-5. **Stop for the user.** ⛔ No fan-out across steps.
+10. **Add quantities and equations to `reduction/`** and run the dimensional gate. Must pass before the
+    step is banked.
+11. **Confront the register rows this step touches.** Each step below names them. ⛔ A step that walks
+    past a row without resolving *or explicitly deferring* it is not done.
+12. **Then the review legs** (below), then commit.
+
+⚠ **This is slower, deliberately.** ⛔ Do not optimise it back. If a session covers two steps properly,
+that is the plan working. The failure mode this replaces is *twenty-three steps banked and nobody able
+to check them.*
+
+⚠ ⛔ **Do not read this as licence to build apparatus instead.** Slower means *more explanation per
+derivation*, not more machinery around it.
 
 **Review load, scaled to what the step is:**
 

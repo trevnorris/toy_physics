@@ -141,25 +141,6 @@ quantities:
       - {path: notes/parameter_register.md, line_start: 131, line_end: 131}
       - {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 102, line_end: 120}
 
-  - qid: Q.medium.a_pin
-    symbol: a
-    kind: control
-    scope: [medium, I-1, branch-pin]
-    regime: [medium-GNLS-positive-real]
-    state: live
-    counting_axis: continuous-model
-    dimension:
-      convention: LTM-exponent-vector-v1
-      exponents: [1, 0, 0]
-      provenance:
-        stage_id: stage004
-        stage_uses_shared_dimensions_module: true
-        source_locus: {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 122, line_end: 137}
-    aliases: [a_pin, scale_a]
-    source_loci:
-      - {path: notes/parameter_register.md, line_start: 132, line_end: 132}
-      - {path: notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 122, line_end: 137}
-
   - qid: Q.medium.c_gamma
     symbol: c_gamma
     kind: parameter

@@ -5,7 +5,7 @@
 EARNED (dimensional foundation) -- `RETAIN_L_T_M`, `PASS_WITH_NAMED_RESIDUALS`.
 
 The exact-symbolic claims of this stage (the 4D action dimensional dictionary,
-the derived sound-speed/healing-length anchors, the pin null-relation, the flux
+the derived sound-speed/healing-length anchors, the complete three-pin basis, the flux
 dimensions, and the base-system verdict) are closed. The honest landing carries
 **named residuals** -- a labeled non-derivation (`m_defect` is NOT emergent here)
 and three deferred `{L,T}`-conversion gaps -- which are first-class and are NOT
@@ -18,8 +18,8 @@ substrate every later sector reduces from.
 
 Establish the dimensional foundation of the medium: the field content and
 `{L, T, M}` dimensional dictionary of the GNLS parent action, the derived
-sound-speed and healing-length anchors, the pin null-relation
-`a = hbar/(m_GNLS c_s0)`, and the base-system verdict `RETAIN_L_T_M` -- the base
+sound-speed and healing-length anchors, the complete natural-unit basis
+`{c_s0, hbar, m_GNLS}`, and the base-system verdict `RETAIN_L_T_M` -- the base
 dimensional system is `{L, T, M}`; the `{L, T}` projection is a natural-unit
 *representation only*, not a base-system change. The honest carried gap: defect
 (gravitational) mass `m_defect` is not shown emergent at this gate.
@@ -40,9 +40,9 @@ independently by
 `mathematica/ledger_stage004_gnls_action_dimensional_foundation_mathematica_audit.wl`.
 The `.wl` is a genuinely independent route (native `UnitDimensions`/`NullSpace`
 construction), not a transliteration of the `.py`. Both scripts include
-able-to-fail mutation probes (dimensional-firewall ablations + a pin-corruption
-break) and derive -- do not hardcode -- the dictionary, the pin relation, the
-healing scale, and the verdict.
+able-to-fail mutation probes, but their pin checks still assert the retired
+throat-radius relation and are known-stale on that point. They remain current
+certificates only for the unaffected dictionary, healing scale, and verdict.
 
 ## 0. Why needed
 
@@ -119,22 +119,22 @@ xi_h = sqrt( hbar^2 / (2 m_GNLS h0) ) = sqrt(2) hbar / (m_GNLS c_s0),   [xi_h] =
 `xi_h` is DERIVED from `h0` (not hardcoded). Carried forward to pathA_20 as
 `EOS_FROM_GNLS_FACTOR`.
 
-## 4. The pin null-relation
+## 4. The complete natural-unit basis
 
-Impose the four natural pins `{a = 1, c_s0 = 1, hbar = 1, m_GNLS = 1}` on the
-three base dimensions `{L, T, M}`. The pin exponent matrix has **rank 3, nullity
-1**: exactly one dimensionless monomial survives. Its null vector gives
+Use the three independent natural-unit pins `{c_s0 = 1, hbar = 1,
+m_GNLS = 1}` for the three base dimensions `{L, T, M}`. With columns ordered
+`{c_s0, hbar, m_GNLS}`, their exponent matrix (rows `{L, T, M}`) is
 
 ```text
-a c_s0 m_GNLS / hbar = 1,     i.e.   a = hbar / (m_GNLS c_s0).
+[[1, 2, 0], [-1, -1, 0], [0, 1, 1]],   determinant = 1.
 ```
 
-Consequence: if `a` is identified with the GNLS healing core, then
-`a / xi_h = 1/sqrt(2)` (a convention/branch factor); the raw four pins correspond
-to `a = xi_h / sqrt(2)`. Because `a` is fixed by the pin choice (a mouth-radius
-collective moment), not by a base dimension, it is carried as
-`A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT`; the conserved rate `J` is the invariant
-label.
+Thus its rank is 3 and its nullity is 0: these pins form a complete unit system.
+`a` is instead a throat mouth radius, a defect-sector property absent from the
+medium. It has dimension `L`, but no defining equation or value is supplied here.
+
+Retirement (2026-07-31): the former four-pin construction was over-specified.
+Its dimensionless monomial exposed redundancy; it did not determine physical `a`.
 
 ## 5. Flux dimensions
 
@@ -186,15 +186,15 @@ on both: restoring `M` (or forcing the LT gates dimensionless) changes conjunct
   `formal_4D_R_norm_target_not_dimensionless_without_conversion`,
   `observed_3D_GR_target_not_dimensionless_without_conversion`: the conversions
   belong to pathA_21/22; not repaired here (pathA_18 behavior preserved).
-- `A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT`, `EOS_FROM_GNLS_FACTOR`,
-  `NO_NET_ACCRETION_BC_UNDERIVED`, `M_TO_G_UNIFICATION`, `SCALE_MAP_INPUTS`:
+- `EOS_FROM_GNLS_FACTOR`, `NO_NET_ACCRETION_BC_UNDERIVED`,
+  `M_TO_G_UNIFICATION`, `SCALE_MAP_INPUTS`:
   carried forward verbatim as provenance.
 
 ## What this achieves physically
 
 The medium's dimensional substrate is fixed: a `{L, T, M}` base system with
 `hbar`, `m_GNLS`, `K` as independent action constants and `rho0` a chosen state
-datum, from which `c_s0`, `xi_h`, and the pin geometry `a` follow. Mass is an
+datum, from which `c_s0`, `xi_h`, and `h0` follow. Mass is an
 explicit action parameter, not an emergent quantity -- the first, load-bearing
 scoping decision of the whole program. Every later Part inherits this dictionary.
 

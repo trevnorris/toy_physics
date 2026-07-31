@@ -5,21 +5,23 @@ from __future__ import annotations
 
 import json
 
+import sympy as sp
+
 from registry_read import Registry, load_registry
 
 
 # Copied verbatim only after the registry seed was loaded and its payload was
 # computed.  This script never imports the old audit or its equation objects.
 EXPECTED_MEDIUM_PAYLOAD = {
-    "baseline": {"dim_before": 10, "dim_after": 5, "Delta": 5},
-    "C-M1": {"dim_before": 10, "dim_after": 6, "Delta": 4},
-    "C-M2": {"dim_before": 10, "dim_after": 5, "Delta": 5},
-    "C-M3": {"dim_before": 10, "dim_after": 4, "Delta": 6},
+    "baseline": {"dim_before": 9, "dim_after": 5, "Delta": 4},
+    "C-M1": {"dim_before": 9, "dim_after": 6, "Delta": 3},
+    "C-M2": {"dim_before": 9, "dim_after": 5, "Delta": 4},
+    "C-M3": {"dim_before": 9, "dim_after": 4, "Delta": 5},
 }
 
 
 def medium_cases(registry: Registry) -> dict[str, tuple]:
-    """Recreate the old audit mutations on canonical registry expressions."""
+    """Build the acceptance mutations on canonical registry expressions."""
     symbols = registry.symbols
     baseline = tuple(registry.admitted_constraint_set)
     r3 = registry.require_admitted("R3").residual
@@ -27,13 +29,30 @@ def medium_cases(registry: Registry) -> dict[str, tuple]:
     without_r3 = tuple(expression for expression in baseline if expression != r3)
     lambda_gamma = symbols[registry.resolve_qid("lambda_gamma")]
     xi_h = symbols[registry.resolve_qid("xi_h")]
-    a_pin = symbols[registry.resolve_qid("a")]
+    h0 = symbols[registry.resolve_qid("h0")]
+    hbar = symbols[registry.resolve_qid("hbar")]
+    mass = symbols[registry.resolve_qid("mass")]
+    c_s0 = symbols[registry.resolve_qid("c_s0")]
     big_k = symbols[registry.resolve_qid("K")]
     rho0 = symbols[registry.resolve_qid("rho0")]
+    xi_residual = registry.require_admitted("R2.xi_h").residual
+    h0_residual = registry.require_admitted("R2.h0").residual
+    assert xi_residual is not None and h0_residual is not None
+    entailed = 2 * mass * h0 * xi_h**2 - hbar**2
+    ideal_combination = (
+        2 * mass * xi_h**2 * h0_residual
+        + mass
+        * c_s0
+        * (mass * c_s0 * xi_h + sp.sqrt(2) * hbar)
+        * xi_residual
+        / 2
+    )
+    assert sp.expand(entailed) != 0
+    assert sp.simplify(entailed - ideal_combination) == 0
     return {
         "baseline": baseline,
         "C-M1": without_r3 + (lambda_gamma - lambda_gamma,),
-        "C-M2": baseline + (xi_h**2 - 2 * a_pin**2,),
+        "C-M2": baseline + (entailed,),
         "C-M3": baseline + (big_k - rho0,),
     }
 

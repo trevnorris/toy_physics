@@ -65,8 +65,24 @@ def demonstrate_entailed() -> int:
     registry = load_registry()
     baseline, before = _baseline(registry)
     xi_h = registry.symbols[registry.resolve_qid("xi_h")]
-    a_pin = registry.symbols[registry.resolve_qid("a")]
-    entailed = xi_h**2 - 2 * a_pin**2
+    h0 = registry.symbols[registry.resolve_qid("h0")]
+    hbar = registry.symbols[registry.resolve_qid("hbar")]
+    mass = registry.symbols[registry.resolve_qid("mass")]
+    c_s0 = registry.symbols[registry.resolve_qid("c_s0")]
+    xi_residual = registry.require_admitted("R2.xi_h").residual
+    h0_residual = registry.require_admitted("R2.h0").residual
+    assert xi_residual is not None and h0_residual is not None
+    entailed = 2 * mass * h0 * xi_h**2 - hbar**2
+    ideal_combination = (
+        2 * mass * xi_h**2 * h0_residual
+        + mass
+        * c_s0
+        * (mass * c_s0 * xi_h + sp.sqrt(2) * hbar)
+        * xi_residual
+        / 2
+    )
+    assert sp.expand(entailed) != 0
+    assert sp.simplify(entailed - ideal_combination) == 0
     assert entailed not in baseline
     after = registry.constraint_dimension(baseline + (entailed,))
     forbidden = before - 1

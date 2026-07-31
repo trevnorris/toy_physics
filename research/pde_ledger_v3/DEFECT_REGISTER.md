@@ -31,10 +31,10 @@ any sector that has not been checked.
 | **A7** | `ξ = ħ/(m c_s)` (stage011) vs `ξ_h = √2 ħ/(m c_s0)` (stage004) — two "healing lengths" a factor `√2` apart | `parameter_register.md:294` (R27), `:94`; `ledger_stage011_..._sympy_audit.py:430,:521,:658` | ✅ **NOT A DEFECT** — investigated 2026-07-31, see below |
 | **A8** | `r_e` called *"the throat-**body** size"* while the balance `ke²/a = m_e c²` is written with the **mouth** radius `a` | `conceptual_foundation.md:449-455` | **OPEN** |
 | **A9** | `W_slab` (brane slab width) merged with the `L/a` (sleeve aspect ratio) self-selection debt, without an equation | `two_throat_simulation_handoff_spec.md:160`; `parameter_register.md:163,:286` | **OPEN** |
+| **A10** | sonic horizon `r ~ (J/ρc_s)^{1/3}` identified with the mouth radius | *(orchestrator error, 2026-07-31, retracted same session)* | ✅ **RETIRED** — listed so it does not return |
 | **A11** | ⭐⭐ **CREATED BY ME, 2026-07-31, while writing the document that warns about this.** S16/S22 treat the `a` in the worldtube expansion `O(a²/r²)` as **the throat mouth radius**. The 1PN source defines `a` only as a **profile width / characteristic support scale** and supplies **no bridge** to the mouth radius; the bridge report explicitly warns that model `a` *"is not an invariant reduction width"* | `4d_1pn_full.tex:734-765`; `pathA_21_emergent_G_mass_bridge.md:87` | **OPEN** |
 | **A12** | **A third healing-length convention.** The register claimed exactly two; the lepton notes use a third, `ξ_h = ħ/(√2 m c_s)` — differing by `√2` and `2` from the other two | `notes/lepton_mass_notes.md:1310-1317,:1501-1508` | **OPEN** |
 | **A13** | **`χ_B` ontology contradiction.** The plan (and the sim spec) make `χ_B = r_B e^{iθ_B}` **complex**; the staged ontology defines it as a **real** scalar in `[0,1]` with ordered density `n_B = χ_B n`. The complex form makes that density complex and silently adds a phase DOF | `ledger_stage006_two_phase_chiB_ontology.md:60-100` vs `two_throat_simulation_handoff_spec.md:46` | **OPEN** |
-| **A10** | sonic horizon `r ~ (J/ρc_s)^{1/3}` identified with the mouth radius | *(orchestrator error, 2026-07-31, retracted same session)* | ✅ **RETIRED** — listed so it does not return |
 
 ### ⭐⭐ A7 investigated — it is not a defect, and it explains why A1 survived so long
 
@@ -58,7 +58,7 @@ length used as a **defect** radius. ⛔ A future check that asks *"is this value
 passed it. The question that catches it is ***"is this quantity the same KIND of thing?"*** — one number
 for the whole medium, or one per particle.
 
-⚠ **Apply this test to A2–A9.** Each is two lengths that agree numerically or dimensionally. The
+⚠ **Apply this test to every open row A2–A13.** Each is two lengths that agree numerically or dimensionally. The
 question is not whether the numbers match; it is whether both sides are indexed by the same thing.
 
 ---

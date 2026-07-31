@@ -1,7 +1,7 @@
 # Reduction registry v1
 
 This directory is the phase-1 semantic input for reduction.  It contains only
-the ten-scalar medium block used by `scripts/midway_knob_audit_codimension_sympy.py`.
+the nine-scalar live block retained from `scripts/midway_knob_audit_codimension_sympy.py`.
 It is not a corpus census.  The versioned contract is
 `registry_schema.yaml`; `quantities.yaml` and `relations.yaml` are its two data
 documents.
@@ -76,16 +76,8 @@ reference is invalid.  The current counting contract is the document's
 `active_regime`; phase 1 includes every live `continuous-model` quantity in
 that regime in the finite scalar ambient space.  Live `convention-orbit`
 coordinates and `discrete-structural` choices are reported separately.
-`Q.medium.a_pin` is currently carried as a continuous-model output of an
-admitted explicit definition.  UNRESOLVED, PENDING A USER DECISION (2026-07-30):
-decision D-01 in `research/pde_ledger_v2/walkthrough/DECISIONS.md` rules that a
-relation arising from imposing unit pins is not a defining equation, which puts
-`R2.a_pin`'s `DERIVED-EXECUTED` status back in question.  The data documents are
-deliberately left as they stand until that decision is made; read the class
-above as the registry's present state, not as a settled classification.  The
-ambient count depends on it: with `R2.a_pin` admitted, `a_pin` is a designated
-output rather than residue, and reverting the status would move the ambient
-count and the `acceptance_check.py` comparison values together.
+The throat radius `a` is absent: it is a defect-sector quantity, not a
+medium-level input or output, and no defining relation for it is admitted here.
 `Q.medium.n_eos` records the discrete structural EOS choice and is
 not a continuous knob.  A quantity may also carry an exact `value` (integer or
 `[Rat,p,q]`); the seed declares `Q.medium.n_eos.value: 5`.  Declared values are
@@ -105,7 +97,7 @@ have the exact transport shape
 and `input_qids` must equal the alias-canonicalized QID leaves of `rhs`.  This is
 the dataflow check that prevents independently freezing an alleged output.
 Multi-output source rows are normalized into one scalar record per output; R2
-is consequently `R2.xi_h`, `R2.a_pin`, and `R2.h0`.
+is consequently `R2.xi_h` and `R2.h0`.
 
 `domain_measure_bcs` is explicit even for a finite scalar relation.  A reader
 must evaluate every `denominator_guards` expression and reject zero or

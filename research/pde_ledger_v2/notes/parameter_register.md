@@ -129,7 +129,7 @@ adds the parent-`H` / zero-mode / reduced-`(u_L,h)`-kernel rows + edges R50–R5
 | `c_s0` | `L T⁻¹` | I-1/I-2; **LIVE units carrier at II-G4a (018)** | `DERIVED` | `= √(5K ρ0⁴/m_GNLS)` | DERIVED from `{K, ρ0, m_GNLS}` (R1); ⚠ at 018 it is the units-restoring symbol in the fingerprint physical coeffs (`z=aω/c_s`) — cited PROVENANCE, NOT a consumed value (the earned rationals + χ_Q are `c_s`-free); distinct from the frozen-wall `c_S` (011–017). ⚠ **STAGE023 WORK POINTER — no adjudication:** `manifests/DIMENSION_REWRITE.md:1124` (**WORK-023-CS-EVALUATION**) tracks the unresolved stage023 evaluation point. |
 | `ξ_h` | `L` | I-1 (004) | `DERIVED` | `= √2 ħ/(m_GNLS c_s0)` | DERIVED (core balance) |
 | `h0` | `M L² T⁻²` | I-1 (004) | `DERIVED` | `= (m_GNLS c_s0²)/4` | DERIVED (`EOS_FROM_GNLS_FACTOR`) |
-| `a` (pin) | `L` | I-1 (004) | `CONV` | `= ħ/(m_GNLS c_s0)` | pin choice — never free (`A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT`) |
+| `a` (throat mouth radius) | `L` | defect sector (not a medium input) | `FREE-UNREDUCED` | — (no defining equation) | physical throat quantity; value undetermined |
 | `λγ = c_γ/c_s` | `1` | I-2 (005) | `DERIVED` | `= c_γ/c_s0` | **not independent** — a ratio of `c_γ` and `c_s0` (see edge R3) |
 | `c_γ` (gauge cone) | `L T⁻¹` | I-2 (005), III (003), VI | `FREE-UNREDUCED` | brane: `c_γ²=μ_R/ρ_br`; bulk: `c_γ²=C_B/C_E` | Route A `PENDING`; cone lock CALIBRATED/UNCOMMITTED (λγ=1 available, not imposed; R7/R78) |
 | `c_E` (throat Green / electric speed) | `L T⁻¹` `[1,-1,0]` (stage 030 = **FIRST dimensional/built entry**, dual-engine) | **IV-1 (030)**, VI (040/041) | `FREE-UNREDUCED` (input) | throat dynamic Green speed = the electric-sector speed (`K₄=M₄c_E²`) — **distinct from the Maxwell `C_E`**; at 030 **NO committed cone lock** (`c_s/c_E=2` chosen expressly to avoid one); star witness `c_E*=1` | cone relation to `c_γ`/`c_s` **re-adjudicated Part VI/pathA_40** (R7/R8 CALIBRATED/UNCOMMITTED; neither lock imposed; Route-A R10) — `PENDING` |
@@ -266,7 +266,7 @@ asserted in both engines).
 | # | Relation | Type | Source | Effect |
 |---|---|---|---|---|
 | R1 | `c_s0 = √(5K ρ0⁴/m_GNLS)` | `DERIVED` | I-1/I-2 (004/005) | collapses `c_s0` into `{K, ρ0, m_GNLS}` |
-| R2 | `ξ_h = √2 ħ/(m c_s0)`, `a = ħ/(m c_s0)`, `h0 = (m c_s0²)/4` | `DERIVED`/`CONV` | I-1 (004) | collapse `ξ_h, a, h0` into primitives |
+| R2 | `ξ_h = √2 ħ/(m c_s0)`, `h0 = (m c_s0²)/4` | `DERIVED` | I-1 (004) | collapses `ξ_h` and `h0` into primitives |
 | R3 | `λγ = c_γ/c_s0` | `DERIVED` | I-2 (005) | `λγ` is **not** an independent knob — the free thing is `c_γ` |
 | R4 | `c_γ² = μ_R/ρ_br` (brane cone) | `DERIVED` (within pathA_36) | III (003) | brane light-cone set by brane moduli |
 | R5 | `c_bulk² = C_B/C_E` (bulk gauge cone) | `DERIVED` (within pathA_20b) | I-2 (005) | bulk gauge cone set by the Maxwell metric ratio |

@@ -36,9 +36,18 @@ and a relabelled basis — which is why the empty waiver registry matters.
 (three levels: 013 line `M L⁻¹T⁻²` / 016 volume `M L⁻³T⁻²` / 023 reduced scalar `M T⁻²`), `T_Omega`
 (016 volume `M L⁻³T⁻²` vs 023 reduced scalar `M T⁻²`) and `mu_eta` (`M L⁻¹` vs `M L⁻³`). These are
 **REDUCTION LEVELS, not drift**, surfaced rather than hidden because the variants
-were not renamed apart (§7). ⭐ `a` now groups AGREE across 016/018/023 — three stages' `a`
-rows now meet in one candidate group and carry the same throat-radius `L`. ⚠ That is **agreement
-between implementations, not independence of route**: per `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`
+were not renamed apart (§7).
+⛔⛔ **CORRECTED 2026-07-30 — `a` across 016/018/023 is a DIMENSIONAL COINCIDENCE, not agreement.** This
+line used to read *"`a` now groups AGREE across 016/018/023 … the same throat-radius `L`"* and log it as
+evidence of consistency. ⛔ It is not evidence of anything: the three rows agree on being **lengths**,
+which two different lengths do trivially. The **pin `a`** (the nullity-1 residue of imposing four unit
+pins) and the **throat radius** (a physical size) are different quantities sharing one symbol — a
+same-name-different-quantity collision at the foundation of the model, filed as confirmation.
+⚠ This entry is damage class **(c)** in `research/pde_ledger_v2/walkthrough/DECISIONS.md` **D-01a**;
+repairing it is step ② of the fixed order. ⛔ Separately, and ⛔ **not** decided here: `R2.a_pin`'s
+**registry class** is OPEN pending a user decision (D-01) — do not resolve it from this line.
+⚠ The route caveat below still governs every other group: a green comparator is **agreement
+between implementations, not independence of route** — per `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`
 §1 (**THE CHARTER**, *"a green comparator shows that two implementations agree, not that they were
 reached by two independent routes"*), and git establishes no derivation order for any engine pair.
 ⚠ `T_w` does **not** group (016 `T_w` → `TW` vs 013 `Tw` → `Tw`), so
@@ -106,8 +115,12 @@ are in `DIMENSION_REWRITE.md` §8/§9.
 ✅ **The ablation-fixture FREEZE AUTHORITY IS RETIRED** (user decision, 2026-07-29/30) — with it, the
 coupling that made nine live dimension-rewrite paths untouchable. Convert freely; nothing here is frozen,
 byte-perfect or under a custody rule. See `DIMENSION_REWRITE.md` §4.
-**▶ QUEUED INSIDE THE DIMENSION-REWRITE WORKSTREAM — ⛔ this is NOT the project's next build.** The next
-build is the walkthrough's next step (`docs/derivation_walkthrough_plan.md`). ⭐ **Both items below are
+**▶ QUEUED INSIDE THE DIMENSION-REWRITE WORKSTREAM — ⛔ this is NOT the project's next build.**
+⛔ **Nor is the next build the walkthrough's next derivation step.** The order is fixed by user decision
+**D-01a** (`research/pde_ledger_v2/walkthrough/DECISIONS.md`):
+① **archive the old apparatus** → ② **repair the `a`-pin damage** → ③ **resume the walkthrough**
+(`docs/derivation_walkthrough_plan.md`). ⛔ Do not resume deriving before ② is done.
+⭐ **Both items below are
 KEPT** — not because the rewrite needs them, but because the walkthrough's own checks consume them
 (plan §5): the ablation driver is the spec for its **check 6** (able-to-fail with a plausible physics
 mutation), the `DIM|` emitter the spec for its **check 5** (dual-engine). A queue within that
@@ -128,11 +141,12 @@ tooling gets built next are separate sequences; in time **both** builds land **b
 two scoped tallies `24/0/10` on corpus identifications and `27/0/7` inside the stage-local closure
 (`research/pde_ledger_v2/notes/stages/ledger_stage023_nullspace_underdetermination.md:379-440`,
 **§1.7(1), per-quantity verdict, tally, and the 34-row route table**). Its seven unresolved derivation questions now have named
-work routes in `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`: `:938`
-(**WORK-023-MOMENT-CONVENTION**), `:998` (**WORK-023-STAGE009-MOMENT0**), `:1027`
-(**WORK-023-D0-SEAM**), `:1061` (**WORK-023-STIFFNESS-REDUCTION**), `:1100`
-(**WORK-023-L1-L2-PROFILE-IDENTITY**), `:1124` (**WORK-023-CS-EVALUATION**), and `:1166`
-(**WORK-023-SOURCED-PROVENANCE**), all in **§12**. W3 is outside that work list because its confirmed
+work routes in `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`, all under **§12 OPEN / DEFERRED**
+(`:931`). ⭐ **The `WORK-023-*` ID is the stable anchor; the line number is a convenience** — each is the
+first line of its own bullet: `:939` (**WORK-023-MOMENT-CONVENTION**), `:999`
+(**WORK-023-STAGE009-MOMENT0**), `:1028` (**WORK-023-D0-SEAM**), `:1062`
+(**WORK-023-STIFFNESS-REDUCTION**), `:1101` (**WORK-023-L1-L2-PROFILE-IDENTITY**), `:1125`
+(**WORK-023-CS-EVALUATION**), and `:1167` (**WORK-023-SOURCED-PROVENANCE**). W3 is outside that work list because its confirmed
 arithmetic correction is already folded at
 `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md:648-663`
 (**§8, stage023 `gU/gW` correction**); `q_free` is outside it because §1.7 classifies that record as
@@ -345,6 +359,7 @@ Unresolved; recorded so the range is not quoted from the note alone.
 | ⭐⭐ **The current front** — the derivation walkthrough: method, per-step record, checks, step order, the closing certification | `docs/derivation_walkthrough_plan.md` |
 | ⭐⭐ **The read-first handoff** — where we are, open defects, measured traps | `research/pde_ledger_v2/_scratch/NEXT_SESSION.md` |
 | ⭐ **The step records** — one file per derivation step | `research/pde_ledger_v2/walkthrough/` |
+| ⭐⭐ **The walkthrough DECISIONS** — user calls that shape what gets counted; ⛔ **can overturn a ruling in the plan, and D-01 already has** | `research/pde_ledger_v2/walkthrough/DECISIONS.md` |
 | ⭐ **The two scripts** — the shared import (every quantity, its defining equation, what it derives from) + the dimensions check | `research/pde_ledger_v2/reduction/` |
 | ⭐ **The workstream continuing behind it** — the dimension rewrite | `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md` |
 | ⭐ **How we work** — pipeline, roles, the review gauntlet | `docs/development_pipeline.md` |

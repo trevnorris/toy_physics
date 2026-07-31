@@ -54,7 +54,7 @@ kinds are not interchangeable.
 |---|---|---|---|
 | `ħ` | `M L² T⁻¹` | **postulated** (external constant) | no defining equation in the model |
 | `m_GNLS` | `M` | **postulated** | no defining equation |
-| `K` | `M L¹⁸ T⁻²` | **postulated** | EOS stiffness; no defining equation |
+| `K` | `M L¹⁸ T⁻²` | **postulated** | EOS stiffness; no defining equation. ⚠ **Coupled to the exponent below — see the note after the discrete table** |
 | `ρ0` | `L⁻⁴` | **postulated** | asymptotic density datum |
 
 `model_map.md:49` — *"Primitive constants of the medium (~4 declared universal)"*.
@@ -65,6 +65,15 @@ kinds are not interchangeable.
 | **bulk dimensionality `D = 4`** | **postulated** | the ambient is 4 spatial dimensions |
 | **EOS polytropic exponent `= 5`** | ⭐ **calibrated** | per §1.1: chosen because the calibration was necessary for the model to work |
 | **the two-phase split exists** (`U(ρ)` admits an ordered state) | **postulated** | `:26` — put in by hand, and the honest core of this step |
+
+⚠ **Amended 2026-07-30 by step 2 — `K` and the exponent are ONE structural choice, not two independent
+inputs.** `01_sound_speed.md` derives `[K] = M L^(4n−2) T⁻²`, so changing `n` changes the **dimension**
+of `K`; the `M L¹⁸ T⁻²` above is `n = 5`'s value and nothing else.
+⇒ ⭐ **The headline count is UNCHANGED — 4 scalars, 3 discrete** — because §1.0 counts *what must be
+supplied for a simulation to run*, and a run needs both a **numeric value for `K`** and a **selection of
+`n`**; supplying one does not supply the other. What step 2 removes is their **independence**, not a
+member. ⛔ Recorded as a coupling, ⛔ not merged into one entry, and the algebraic reading may disagree —
+per §1.0 that disagreement is the finding. **Open for the user: `DECISIONS.md` O-02.**
 
 ### Fields / profiles — 3
 | field | dimension | note |
@@ -101,7 +110,7 @@ Recording it here would import a derived quantity into the postulate set.
 | # | check | result |
 |---|---|---|
 | 1 | **dimensional homogeneity** | see below — `EOS` verified |
-| 2 | **what's-new classification** | done above; 4 scalars, 3 discrete, 3 fields, 1 BC |
+| 2 | **what's-new classification** | done above; 4 scalars, 3 discrete, 3 fields, 1 BC. ⚠ **Re-checked 2026-07-30 against step 2's `K`/exponent coupling — unchanged**, and why is recorded after the discrete table (`DECISIONS.md` O-02) |
 | 3 | **input provenance** | n/a — no upstream inputs; sources cited by locus |
 | 4 | **step-to-step identity** | n/a — first step |
 | 10–13 | fidelity · dynamical health · approximation validity · second physics leg | **not yet applicable** — no derivation performed, no dynamical block, no approximation, nothing derived to review |
@@ -122,3 +131,9 @@ In 4D, pressure = energy / 4-volume = `(M L² T⁻²)/L⁴ = M L⁻² T⁻²`. �
    on more than that one bit?
 3. ⭐ **The two-phase postulate is the single largest item here.** If a later step derives an ordered
    phase from `U(ρ)`, this becomes `debt` rather than `postulated` — and the tier-1 core shrinks.
+4. ⭐ **A universe hole, found at step 2 and pointing back here.** The registry seed's medium block
+   requires `c_γ` to be supplied, and ⛔ **no step introduces it** — not this one, and step 2 records
+   *"what's new: nothing"*. `λ_γ` and `h0` are in the same position. ⛔ **Do not back-fill `c_γ` into
+   this step** — it is the light cone (`model_map.md:63`) and belongs to the excitations phase; putting
+   it here for bookkeeping repeats the error this step avoided by refusing to record `c_s`.
+   **Open: `DECISIONS.md` O-01.**

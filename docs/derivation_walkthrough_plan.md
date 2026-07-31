@@ -4,6 +4,11 @@
 their findings are folded in (§1.0, §3's retraction, §7.4's cut-back claim, §7a, checks 10–13).
 **Phase 0 is running — two steps banked**, `research/pde_ledger_v2/walkthrough/`.
 
+⭐ **Read alongside this file: `research/pde_ledger_v2/walkthrough/DECISIONS.md`** — the user calls that
+shape what gets counted. ⛔ A decision recorded there can **overturn a ruling recorded here**, and one
+already has (**D-01**, the `a`-pin — see §1.1 and §8). Where the two disagree, `DECISIONS.md` is the later
+document and governs; this file is not self-sufficient on any question it touches.
+
 ---
 
 ## 0. Why the method changed
@@ -78,8 +83,15 @@ makes it followable. Certification needs the closing step in §7a.
 Apply in order. It is mechanical, which is why it is usable at every step:
 
 1. **Does it have a defining equation — an expression in terms of other model quantities?**
-   → **`derived`**. ⚠ This holds *even where the quantity reads as a convention*: `a = ħ/(m c_s0)` is
-   derived, because it is defined from other quantities.
+   → **`derived`**. ⚠ This holds *even where the quantity is later used as a unit*: `c_s0` is one of the
+   four natural-unit pins, yet `c_s² = nKρⁿ⁻¹/m` defines it from `K`, `ρ0`, `m` and the EOS exponent
+   **independently of any unit choice** — so `c_s0` is `derived`, and being set to 1 in a pin does not
+   change that.
+   ⛔ **Clause added by D-01 (`research/pde_ledger_v2/walkthrough/DECISIONS.md`):** *a relation arising
+   from imposing unit pins is not a defining equation*, however much it looks like one — the residue of a
+   units choice expresses the choice, not the model's content. ⚠ `a = ħ/(m c_s0)` is exactly the case
+   this clause is about; it used to be the worked example for test 1 and it is **no longer**, because its
+   class is **OPEN pending a user decision** (§8).
 2. **Was it chosen because the calibration was necessary for the model to work?** (`n = 5`, `β = 3`)
    → **`calibrated`**.
 3. **Is there a named route to a defining equation that nobody has executed?** → **`debt`**.
@@ -87,11 +99,17 @@ Apply in order. It is mechanical, which is why it is usable at every step:
 
 ⛔ **`convention` is NOT a class here.** It survives only as the narrow case of an **assignment to a
 number** that carries no content — `c = 1`, `ℓ_P = 1` — which has no defining equation in terms of model
-quantities and so never reaches test 1. ⚠ That is what the earlier design got wrong: it imported a
-convention-vs-calibration split from external review and applied it to `a`, which **does** have a
-defining equation. The registry's `[40,49]`-adjacent offset against
-`scripts/midway_knob_audit_codimension_sympy.py` was caused by that error and dissolves under this rule —
-all four block cases then agree.
+quantities and so never reaches test 1.
+
+⛔⛔ **REOPENED 2026-07-30 — what follows is NOT settled.** This paragraph used to continue: *that is what
+the earlier design got wrong — it imported a convention-vs-calibration split from external review and
+applied it to `a`, which **does** have a defining equation; the registry's `[40,49]`-adjacent offset
+against `scripts/midway_knob_audit_codimension_sympy.py` was caused by that error and dissolves under
+this rule, and all four block cases then agree.* ⛔ **D-01 overturns the premise** — under the unit-pin
+clause above it is an open question whether `R2.a_pin` is a defining equation at all. ⇒ Both downstream
+claims (the offset dissolving, the four block cases agreeing) were stated *under* the reading now
+reopened; ⛔ do not cite either as established, and ⛔ do not resolve the class here — it is a **user
+decision** (§8).
 
 ⇒ The four classes map straight onto the tiers: `derived` → **tier 3** · `calibrated` → **tier 2** ·
 `postulated` and `debt` → **tier 1**, split as the user specified.
@@ -199,8 +217,12 @@ the knit establishes **bookkeeping/labelling** closure, not a dynamical one-medi
 - **A wrong locus in four tracked files** — stage016's dimension literals are at `:314-325`; `:355-366`
   is cited in `parameter_register.md:182/:183/:184`, the stage016 note `:194`,
   `rewrite_reference_table.md:205` and `measure_register_sufficiency.md:100` (en-dash spelling).
-- **An off-locus Jacobian understates rank** — the existing helper reports 4 where the exact
-  satisfying-witness rank is 5. A latent defect in machinery the reduction depends on.
+- **An off-locus Jacobian understated rank** — the helper reported 4 where the exact satisfying-witness
+  rank is 5. ✅ **FIXED 2026-07-30 (`6e79e2ec`)** — rank is now evaluated at exact constraint-satisfying
+  witnesses, `acceptance_check.py` returns `MATCH` exit 0 on all four medium cases, and two independent
+  reviewers confirmed the four numbers. ⛔ **No longer a live latent defect.** ⭐ It stays on this list
+  because the *finding* carries forward: an off-locus Jacobian biases **flattering** — a too-low
+  `dim_after` makes the model look more determined than it is.
 - **The easy algebraic reduction is already done** — `midway_knob_audit_codimension_sympy.py` composes
   and certifies block dimensions. ⛔ The residue is *not* uncomposed inventory.
 
@@ -220,14 +242,27 @@ and its canonical doc.
 - `notes/ablation_driver/REQUIREMENTS.md` — the spec for **check 6** (able-to-fail).
 - `notes/wl_emitter/` — the spec for **check 5** (dual-engine emission).
 
-**Move to `archive/` (preserved, ⛔ not deleted):**
+**Move to `archive/` (preserved, ⛔ not deleted).** ⚠ **The destination is the repository top level —
+`/var/projects/toy_physics/archive/`** — and it **does not exist yet**; the move creates it. ⛔ It is not
+a directory inside `research/pde_ledger_v2/`.
 
 | path | why |
 |---|---|
-| `research/pde_ledger_v2/notes/census/` (7 files, 320K) | the audit route the walkthrough supersedes ⚠ extract §4 findings first |
-| `research/pde_ledger_v2/manifests/` **except** `DIMENSION_REWRITE.md` | the 44-manifest system, 4 of 44 built, superseded as a route |
+| `research/pde_ledger_v2/notes/census/` (7 files, 320K — ✅ both figures re-verified 2026-07-30) | the audit route the walkthrough supersedes ⚠ extract §4 findings first |
+| `research/pde_ledger_v2/manifests/` — ⛔ **PER-FILE, not the directory** (caveat below) | the 44-manifest system, 4 of 44 built, superseded as a route |
 
-**Mechanics:** `git mv` (history preserved) · one commit, reversible.
+⛔⛔ **`manifests/` is a PER-FILE SPLIT, not a whole-directory `git mv`.** The directory holds **live code
+and the active conversion doc** mixed in with the superseded manifest system. ⚠ Recorded independently in
+`STATUS.md` (§PAUSED) and `research/pde_ledger_v2/_scratch/NEXT_SESSION.md`. **Must stay in place:**
+`DIMENSION_REWRITE.md` (the dimension rewrite's canonical doc), `composite_build.py`, `mutators/`,
+`examples/`. ⇒ A directory move would archive live code, so the split is per-file.
+⚠ **The rest of the membership is not yet decided and this plan does not decide it** — `STATUS.md`
+§PAUSED records the manifest system's *semantic core* as **"not yet withdrawn"**, so which of
+`stages/`, `reports/`, the two schema files, `composite_config.json`, `MANIFEST_README.md`,
+`EXTRACTION_PROTOCOL.md`, `LEDGER_WIDE_PLAN.md` and `DIM_ORDER_DECISION.md` go is part of executing ①.
+
+**Mechanics:** `git mv` (history preserved) · one commit, reversible. ⛔ For `manifests/`, per-file `git
+mv` only.
 ⚠ The Zenodo packaging script is **user-owned and user-edited**; no constraint on this plan from it.
 
 ⛔ **Not archived:** anything in §4's carry-forward list, `docs/model_map.md`, the stage notes, the
@@ -321,7 +356,14 @@ project:
 ## 8. Open for the user
 
 1. **The phase order in §3** — proposed on dependency grounds; the physical picture is the user's.
+2. ⛔⛔ **REOPENED — the `R2` `a`-pin's registry class.** This section recorded it resolved on
+   2026-07-30 (*"it has a defining equation, therefore `derived`; treatment (i) applies and the block
+   fixture agrees on all four cases"*) and **D-01 overturned that the same day**
+   (`research/pde_ledger_v2/walkthrough/DECISIONS.md`): a relation arising from imposing unit pins is not
+   a defining equation. ⛔ **The class is OPEN pending a user decision — ⛔ do not pick one, here or
+   anywhere downstream.** ⚠ Blast radius: the registry still carries `R2.a_pin` as `DERIVED-EXECUTED`, so
+   the ambient count of **10** and `acceptance_check.py`'s `MATCH` both rest on the reading now reopened.
+   Whichever way the user decides, those numbers are **re-established deliberately**, ⛔ never preserved
+   by inertia and ⛔ never moved as a side effect.
 
-✅ **Resolved 2026-07-30:** the archive items (both kept, §5) · the `R2` `a`-pin (§1.1 — it has a
-defining equation, therefore `derived`; treatment (i) applies and the block fixture agrees on all four
-cases) · Zenodo (user-owned, no constraint).
+✅ **Resolved 2026-07-30:** the archive items (both kept, §5) · Zenodo (user-owned, no constraint).

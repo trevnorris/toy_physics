@@ -115,8 +115,9 @@ which is what is currently missing.
 have a home; that was the stated reason for opening v3.
 
 **Then the walkthrough**, forward, one step at a time, from the medium's defining properties into the
-gravity and light sectors. Each step records what the method doc specifies: *what it is · what it does ·
-what's new · inputs by locus · the equation(s) · class per new item · regime · departure.*
+in-scope sectors of §1 — gravity, light, gravitomagnetism, charge and magnetism. Each step records
+what the method doc specifies: *what it is · what it does · what's new · inputs by locus · the
+equation(s) · class per new item · regime · departure.*
 
 ⛔ **One step at a time, with a stop for the user at each.** No fan-out across steps.
 
@@ -134,8 +135,10 @@ what's new · inputs by locus · the equation(s) · class per new item · regime
 - ⭐ **the EM/charge cluster — its deferral is RETIRED (2026-07-31).** The stated reason ("that
   workstream's charge model changed recently") was checked against the record and is not supported: the
   charge mechanism changed **2026-07-21** (puncture-deflection, `520d4b1f`) and the sector's last build
-  commit is **2026-07-23** (`0961b27c`). Nothing has moved since, and what is open is labelled
-  `R1_REQUIRED` — waiting on the throat solve — ⛔ **not** a model in flux.
+  commit is **2026-07-23** (`0961b27c`). ⚠ **No later commit changed the puncture-deflection charge
+  mechanism** — `087565b0` (2026-07-24) altered the shared parent-action integration and added a
+  `Z_χ` draft knob, not the mechanism. What is open is labelled `R1_REQUIRED` — waiting on the
+  throat solve — ⛔ **not** a model in flux.
 
 ⛔ **CONDITIONAL — neither carried nor discarded, pending S14a:**
 - the `1/r²` law, the attractive sign, and the stage009 `RETURN_RESIDUAL_PREDICTION` falsifier.
@@ -156,7 +159,8 @@ v3 is working if, at any point:
 1. the accumulated "what's new" is traceable, each member to the step that introduced it;
 2. every step passes its mandatory checks, with failures **recorded, not fixed by adjustment**;
 3. a reader can follow the chain from the medium to any step **without consulting v2**;
-4. the interior debts gravity depends on are named in one place, with loci.
+4. the interior debts the far field depends on, across every in-scope sector, are named in one
+   place, with loci.
 
 ⛔ **(4) is the deliverable.** ⛔ A count is not quoted without the closing certification the method doc
 specifies — the forward walkthrough produces an inventory, not a certified number.

@@ -1,4 +1,4 @@
-# v3 STEP PLAN — gravity, light, gravitomagnetism
+# v3 STEP PLAN — gravity, light, gravitomagnetism, charge, magnetism
 
 **Read `CHARTER.md` first** (scope, what it excludes, the two hard constraints). This file is the
 step-by-step route. **Method**: `docs/derivation_walkthrough_plan.md` — ⛔ not restated here.
@@ -25,8 +25,8 @@ only physics reviewer this project has.
 3. **Stop at every substantive move**, not only at step boundaries. A step is not an atomic unit of
    conversation; a *derivation move* is.
 4. ⭐⭐ **Flag every identification before making it.** *"I am about to treat X and Y as the same
-   quantity — here is why, and here is what would make that wrong."* Ten pin-shaped identifications are
-   already on record; this is the exact move that produces them, and it is the one place a second pair
+   quantity — here is why, and here is what would make that wrong."* Thirteen pin-shaped identifications
+   are already on record; this is the exact move that produces them, and it is the one place a second pair
    of eyes in real time is worth more than any downstream review.
 5. **Ask rather than assume** on physical-picture calls. The maths is checkable; the picture is the
    user's, and this session showed their instinct catching things the corpus had wrong.
@@ -423,7 +423,22 @@ departure **GR forbids**. ⭐ The sector's one live able-to-fail prediction. Ban
 
 ## PHASE 4b — charge and magnetism (7 steps)
 
-⚠ **This phase depends on PHASE 3 (the drain)**, ⛔ **not on the PN ladder.**
+⚠ **Dependencies here are PER STEP**, ⛔ **not phase-wide** — it is **not** true that all of Q1–Q7 wait on
+PHASE 3's drain:
+
+- **Q1–Q5** do **not** require the drain bridge. Stage 030 folds **ONLY** the charge-new electric-scalar
+  subset and leaves the drain predicates (`PASS_DRAIN_KERNEL_NORMALIZATIONS`, the drain mass / momentum /
+  energy controllers) explicitly **out of scope**
+  (`ledger_stage030_electric_scalar_localized_h_closure.md:242`).
+- **Q6** needs two earlier things: PHASE 2's **transverse-vector row** (imported and cited, ⛔ not
+  re-earned — `parameter_register.md:233`) and PHASE 3's **active-drain time arrow `τ_d`**, which the
+  `O(V)` moving row requires — *"a passive T-even throat would not supply it"*
+  (`ledger_stage034_transverse_move_action_row.md:100`; `parameter_register.md:232`).
+- **Q7** checks coexistence against the **assembled** substrate's row list (gravity's scalar / drain /
+  return / wall rows among them, byte-for-byte unchanged — `parameter_register.md:234`), so it runs last
+  in the phase. ⚠ That is the row **inventory**, ⛔ not the S14a drain **bridge**.
+
+⛔ **The whole phase is independent of the PN ladder.**
 
 ⛔ **It does NOT sit next to light in PHASE 2.** Light is brane shear and is genuinely insulated from the
 interior; **charge is throat-coupled**. ⇒ Placing it beside light would import an insulation this sector
@@ -460,21 +475,50 @@ are earned *given* a postulated action, which is exactly the closure gap C6 name
 deferred**, not closed. → S22.
 **Parameter-register edges:** none.
 
-### Q2 · The puncture deflection and its source
-A **±w puncture geometrically bends the brane into ±w**, and the **signed deflection is HELD by the
-puncture**. Token: **`THROAT_H_SOURCE_1_OVER_R2`**.
+### Q2 · The puncture deflection and its source ⛔ the holder is a DEBT, not a result
+A **±w puncture geometrically bends the brane into ±w**: the field identity `ξ_w = ℓh` and the
+orientation-odd mouth source. Token: **`THROAT_H_SOURCE_1_OVER_R2`**.
 
-**Loci:** `ledger_stage031_puncture_deflection_field_identity_source.md:12`, `:25`.
+**Loci:** `ledger_stage031_puncture_deflection_field_identity_source.md:12`, `:18`, `:25`.
 
-**Expected new:** the source identity and its holder.
-**Class:** the **`1/R²` falloff** and the **`s₁s₂` product** are **target-blind EARNED** — ⭐ this is the
-**FORM** the phase preamble promises, and it is the part that does *not* wait on the interior.
+**Expected new:** the **source identity** and the **far-field FORM** — ⛔ **not a holder.**
+**Class:** the **`1/R²` falloff** and the **`s₁s₂` product** are **target-blind EARNED** (`stage031:25`) —
+⭐ this is the **FORM** the phase preamble promises, and it is the part that does *not* wait on the
+interior. ⚠ EARNED ***within Q1's postulated G0 closure*** (`stage031:18`), ⛔ not from primitives.
 **Regime:** static, one puncture against another.
 
-**Open:** ⛔ **`NONZERO_HA_REQUIRES_CORE_HOLDER`** — a nonzero signed `h_A` **is not stationary without a
-core term** (`parameter_register.md:327` R61; `stage031:173`).
+**Open — ⛔ the core holder is carried as an R1 DEBT:**
+⛔ **`NONZERO_HA_REQUIRES_CORE_HOLDER`** — a nonzero signed `h_A` **is not a stationary point of the
+core-less exterior energy**, and ⛔ **031 does NOT resolve it**: the guaranteed-nonzero amplitude needs the
+sim-deferred core holder / nonlinear throat solve (`stage031:170`, `:173`; `parameter_register.md:327`
+R61 — a sibling of R10/R30/R33).
+⛔ **`h_A` is a held mouth *datum*** (`parameter_register.md:204`), and ⛔ **a held boundary datum is not a
+physical holder** — ⛔ do not write "the deflection is held by the puncture" and count a holder as earned.
 ⚠ `z_g > 0` is **POSTULATED** (`stage031:249`).
-**Defect register:** none.
+
+**⭐ Candidate holder mechanisms — RECORDED, ⛔ NOT SETTLED.** ⛔ Do not pick a winner in this step; which
+agent holds the throat open is exactly what the deferred nonlinear throat solve is for.
+1. **Trapped standing-wave pressure.** The equilibrium throat radius `R*` is set by **outward**
+   trapped-wave pressure against **inward** brane TENSION plus ground-state superfluid BACKPRESSURE
+   (`docs/conceptual_foundation.md:483`); the trapped mode is a **brane-shear standing wave** with
+   Wheeler-**geon** ancestry
+   (`software/stage1_solver/decisions/15_em_medium_native_physical_picture.md:304-306`), whose *"only job
+   is **structural** — it holds the throat **open**"*
+   (`software/stage1_solver/directives/pathA_27_drain_sector.md:34`).
+2. ⚠ **CONTESTED — the drain-flow reading.** A later document says instead that *"what holds the throat
+   open is the drain-flow/amplitude balance — a sim question, nothing static"*
+   (`research/pde_ledger_v2/notes/stage044_v2_unfreeze_prep.md:27-28`), and the directive leaves the agent
+   **disjunctive and unsolved**: *"the **holding-open** agent (geon standing-wave pressure **and/or**
+   drain flow)"* (`software/stage1_solver/directives/pathA_24_brane_existence_defect_structure.md:307`).
+3. ⚠ **The one COMPUTED result does not settle it either.**
+   `FLUID_ONLY_COLLAPSE_NO_INTERIOR_STATIONARY` — no wave term ⇒ no stationary throat
+   (`software/stage1_solver/reports/pathA_26_derrick.md:49`) — was run with a **declared scalar
+   surrogate**, ⛔ **not** a brane-shear mode (`docs/conceptual_history.md:132`).
+
+**Defect register:** **C4** and **C1** — ⛔ both **explicitly DEFERRED**, ⛔ neither resolved. Candidate
+mechanism 1 invokes the **geon**, whose *"profile is a **declared OPEN input**"* (**C4**); mechanism 3
+rests on `pathA_26_derrick.md`, the same report **C1** records as `THROAT_DRAIN_DESTABILIZED`. ⇒ Q2
+**names** them; ⛔ it discharges neither. → S22.
 **Parameter-register edges:** **R61**.
 
 ### Q3 · The BC ensemble and the electric sign ⛔ the result is *"this is not determined"*
@@ -497,8 +541,17 @@ Bank it as such.
 tier-A"* (`parameter_register.md:143`, edge **R65** `:331`;
 `software/em_charge_attribute/puncture_deflection_electric_sign_result.md:51`).
 
-**Interior quantities it waits on:** the **mouth radius `a`** (`a = c_a r_e`), **`c_a`**, **`c_ξ`**, and
-the **deflection length `ℓ`**.
+**What it waits on — ⛔ FOUR DIFFERENT CLASSES, not one bucket.** ⛔ Give the class per item; lumping them
+hides that one of them is not an interior debt at all:
+- **`a`** (throat mouth radius) — **`FREE-UNREDUCED`**, ⛔ **no defining equation**, value undetermined
+  (`parameter_register.md:132`).
+- **`Q_E`** (charge magnitude) — **`FREE-UNREDUCED`, R1-deferred `magnitude`** (`:143`, edge **R65**).
+- **`c_a`, `c_ξ`** (core normalizations) — carried **inside** `Q_E`'s R1 magnitude, *"unbounded at
+  tier-A"* (`:143`); the mouth radius enters as `a = c_a r_e`.
+- **`ℓ`** (embedding / PT healing length) — ⛔ **`IMPOSED`/`CALIB`**, ⛔ **not R65** and ⛔ **not a
+  registered throat-solve output**: the RATIO `ℓ/a = 1/20` is a **frozen handoff scale — a tuning, not
+  derived** (`parameter_register.md:200`). ⇒ Treat it as a **calibrated input** to this step, and record
+  that **no reduction route for it is registered**.
 
 ⭐ **Entire result: *"this is not determined."*** ⛔ Do not close it with a normalization choice.
 **Defect register:** none.
@@ -520,13 +573,28 @@ The electric twin: **the same ±w throat, moving**.
 J_{T,i} = q_T s_i η_a V_i
 ```
 
-**DERIVED** from **defect continuity** (`parameter_register.md:235`, R69 `:335`). The
-**Maxwell–Darwin kernel** is **DERIVED** (`:237`, R70 `:336`), and the **boost structural relation** is
-**EARNED** (`docs/model_map.md:126`).
+⛔ **FOUR different objects on two different routes — do not merge them:**
+1. **The current FORM** `J_{T,i} = q_T s_i η_a V_i` — **DERIVED** from **defect continuity** (signed-dent
+   continuity fixes the unique isotropic flux coefficient `α = 1`; `parameter_register.md:235`, R69
+   `:335`). ⚠ Its **magnitude still rides the free `q_T`** ⇒ the compact-limit verdict is
+   `CONVECTION_LIKE_CONDITIONAL`, ⛔ not a value.
+2. **The Maxwell–Darwin kernel** `I_ij = (δ_ij + n_i n_j)/8πR` — a **Route-A REFERENCE**, `DERIVED` by
+   **boosting the electric interaction** and ⛔ **explicitly tier-A conditional**: its overall coefficient
+   rides the electric `A_E` (R63, `R1_REQUIRED(bc_selection)`) (`parameter_register.md:237`, R70 `:336`).
+   ⛔ **Route A never touches `J_T`** (`ledger_stage036_route_a_maxwell_darwin_reference.md:214`) — it is a
+   reference object, ⛔ not the moving-throat result.
+3. **The direct moving-throat route (Route B)** — ⛔ **R1**: `R1_REQUIRED(direct_moving_throat)`, its
+   magnitude carried by `q_T` (`parameter_register.md:238`, R71 `:337`; `docs/model_map.md:132`).
+4. **The structural COMPARISON of the two routes** — `BOOST_STRUCTURAL_RELATION_HOLDS`, **EARNED
+   target-blind**: tensor structure, `R⁻²` falloff and `O(V₁V₂)` order agree, with the prefactor-stripped
+   kernels symbolically equal (`parameter_register.md:238`; `docs/model_map.md:126`). ⛔ **Emergent Lorentz
+   is NOT claimed** — that needs `δ_BA = 0` **and** `r_cone = 1` **and** a closed `O(v⁴/c_γ⁴)`.
 
-**Expected new:** the throat current `J_{T,i}` and its kernel.
-**Class:** `J_{T,i}` and the kernel — `derived`; the boost relation — `earned`; `q_T` —
-**FREE-UNREDUCED**, `R1(throat)` (`:231`).
+**Expected new:** the throat current **form**, the Route-A **reference** kernel, and the **structural**
+route comparison. ⛔ **No magnitude and no sign.**
+**Class:** the `J_{T,i}` form — `derived`, magnitude conditional on `q_T`; the Route-A kernel — `derived`
+**tier-A conditional**; Route B — **`R1`**; the route comparison — `earned`; `q_T` — **FREE-UNREDUCED**,
+`R1(throat)` (`:231`).
 **Regime:** the **moving** throat. ⛔ Not gravitomagnetism — S19 is the PN frame-dragging step and is a
 different object.
 **Departure:** **`B_TIME_REVERSAL_EVEN`** — **DERIVED** (`:240`, R73 `:339`).
@@ -537,7 +605,7 @@ different object.
 - ⚠ `τ_d` is *"structural / postulated (**NOT** a reducible knob)"* (`:232`, R68 `:334`).
 
 **Defect register:** none.
-**Parameter-register edges:** **R68**, **R69**, **R70**, **R72**, **R73**. → S22.
+**Parameter-register edges:** **R68**, **R69**, **R70**, **R71**, **R72**, **R73**. → S22.
 
 ### Q7 · Coexistence, and the departure
 **Computed:** **`internal_inconsistency = none`** — gravity and charge **coexist in one action**
@@ -575,14 +643,22 @@ lock. Classifying the ratio says nothing about the lock.
 
 ⇒ ⛔ **Both classifications are fixed, not open:** the **ratio** `λγ = c_γ/c_s` is **`derived`** (it is `R3`); the **equality `λγ = 1`** is **`calibrated`/uncommitted**. ⛔ Do not re-open the ratio's class. Introduce `λγ` with provenance, confront
 `CONE_LOCK_CALIBRATED`, and ⭐ **apply the kind-test**: is this a medium-wide ratio, or a relation between
-two sector speeds that happen to share dimensions? ⚠ That is exactly the shape of the ten identifications
-in register §A.
+two sector speeds that happen to share dimensions? ⚠ That is exactly the shape of the thirteen
+identifications in register §A.
 
 ### S21 · What light and gravity share
-Both ride the brane; both consume `{ρ_br, μ_R}`. ⛔ Per the method doc's retraction, integration may
-introduce no new action/constitutive/source/BC input **only** given a frozen complete parent action —
-and **C6** says there isn't one. So this step's honest form is: *name what integration needs that phase
-0–1 did not supply.*
+Both ride the brane; both consume `{ρ_br, μ_R}`. ⛔ **Use the method doc's CORRECTED rule**
+(`docs/derivation_walkthrough_plan.md:190-197`), ⛔ **not** the earlier blanket ban on anything new:
+
+> ⛔ the knit may not introduce a new **input** — action, constitutive, source or BC — **that revises what
+> an earlier sector already derived** (such an input falsifies **completeness of the proposed substrate**,
+> ⛔ not the one-medium hypothesis by itself); ⭐ it **is expected to produce new *consequences***,
+> including constraints on the throat interior — that is the knit's **purpose**, not a violation.
+
+⚠ **C6 still bites:** there is **no frozen complete parent action** to test "revises an earlier sector"
+against. ⇒ This step's honest form is: *name what integration needs that phase 0–1 did not supply*, and
+⛔ sort each item into a **revising input** (a substrate-completeness failure) or a **new consequence**
+(the expected product) — ⛔ never bank an item unsorted.
 
 ### S22 · ⭐⭐ THE DELIVERABLE — the interior debt list
 ⛔ **GATED on A4, C4 and C9** — this step classifies exactly the quantities those rows dispute, so it
@@ -628,7 +704,7 @@ is undeclared (**C4**), `m_defect` has only a dimensional bridge (**C3**), and n
 | `bc_selection` (R63) | the electric SIGN. `outcome_not_invariant` across the four BC branches (Q3); the sign is NEITHER earned NOR calibrated |
 | `Q_E` (R65) | charge MAGNITUDE. `R1_REQUIRED(magnitude)` |
 | `c_a`, `c_xi` (R65) | core normalizations, "unbounded at tier-A"; the mouth radius enters as `a = c_a r_e` |
-| `ell` the deflection length | Q4's remaining interior input |
+| `ell` (embedding / PT healing length) | ⛔ NOT an interior debt and NOT a throat-solve output: `IMPOSED`/`CALIB`, the ratio `ell/a = 1/20` is a frozen handoff scale, a tuning (`parameter_register.md:200`). Listed only because Q4 waits on it; ⛔ NO reduction route is registered |
 | the `𝔅` / mouth boundary class | the branch selection S12 left open on the boundary-data side |
 
 **(i-c) Throat interior — magnetism-side:**
@@ -639,9 +715,13 @@ is undeclared (**C4**), `m_defect` has only a dimensional bridge (**C3**), and n
 | `tau_d` (R68) | "structural / postulated (NOT a reducible knob)" (`parameter_register.md:232`) |
 | the magnetic SIGN | inherits the electric R1 — "doubly-R1", co-blockers `direct_moving_throat` / `magnitude` / `consistency` (R72) |
 
-**(i-d) The shared throat packet** — `{mu_eta, T_w, beta, Vp0/ell_c, T_Omega, beta_2}`
-(`parameter_register.md:49`). ⭐ **These are one packet, not six errands**: they re-appear
-sector-by-sector above as R30/R33/R36, and one interior solve is what collapses them together.
+**(i-d) The shared throat packet** — `{mu_eta, T_w, beta, Vp0/ell_c, T_Omega, beta_2}`: all six are
+recorded as **siblings of the ONE deferred throat-interior solve**, via R30/R33/R36
+(`parameter_register.md:49`), which is why they re-appear sector-by-sector above.
+⛔ **That sibling relation is WEAKER than a six-way collapse, and the map says so in as many words:**
+gravity's shared R1 is `{mu_R, rho_br}` via **R10 + R30 + R33 — *"not all six"***
+(`docs/model_map.md:178`). ⇒ Claim the siblinghood; ⛔ do **not** claim one solve is known to discharge
+all six.
 
 **(ii) Brane constitutive** — would survive a throat solve untouched:
 
@@ -680,8 +760,9 @@ block rank · top-down reconciliation · the sim-input-vs-residual diff). The wa
 **S9–S11, S16–S19** are where the earned results live — and so are **Q2** (the `1/R²` falloff and the
 `s₁s₂` product, target-blind) and **Q6** (the boost structural relation).
 ⛔ **S14, S15 and S20 are CONDITIONAL ON S14a**, not earned.
-**Q1–Q7 (PHASE 4b)** run **after PHASE 3** — they depend on the drain, and are ⛔ **independent of the PN
-ladder**, so they are not gated on S17/S18 and do not wait on them.
+**Q1–Q7 (PHASE 4b)** carry ⛔ **per-step** dependencies, ⛔ **not a phase-wide one**: **Q1–Q5** do **not**
+need the drain bridge; **Q6** needs PHASE 2's transverse row and PHASE 3's active-drain arrow `τ_d`. All
+seven are ⛔ **independent of the PN ladder**, so they are not gated on S17/S18 and do not wait on them.
 **S0.5 and the substrate-action step are prerequisites** — ⛔ nothing is banked before them.
 **S22 is the deliverable.**
 

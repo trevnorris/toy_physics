@@ -200,7 +200,7 @@ the other direction**: declare every future coupling in phase 0 and the test pas
 inertial-vs-dissipative wall branch, an omitted cross-sector coupling, or two historical descriptions
 that are not dynamically identical. ⛔ Do not collapse them to "different media". The corpus itself says
 the knit establishes **bookkeeping/labelling** closure, not a dynamical one-medium proof
-(`docs/model_map.md:134`, `:139`).
+(`docs/model_map.md:138`, `:143`).
 
 ⚠ **v3 deliberately diverges from this ordering: it runs gravity BEFORE charge.**
 `research/pde_ledger_v3/V3_STEP_PLAN.md` puts PHASE 4 (gravity) ahead of PHASE 4b (charge/magnetism,

@@ -61,6 +61,37 @@ for the whole medium, or one per particle.
 ⚠ **Apply this test to every open row A2–A13.** Each is two lengths that agree numerically or dimensionally. The
 question is not whether the numbers match; it is whether both sides are indexed by the same thing.
 
+### ⭐⭐ **`A-CAND`** — a candidate pin, flagged BEFORE it is made (2026-07-31)
+
+⭐ **The register's first pin written down in advance rather than caught afterwards.** Every row above was
+found *after* the identification had already been made and had propagated. ⚠ This one is ⛔ **NOT a
+finding** and ⛔ **NOT yet an identification** — it is a cross-sector pattern that *looks* like one shape,
+recorded before it is made because making it prematurely is precisely this section's governing failure
+mode. ⛔ It is deliberately not a numbered instance: nothing may cite it as one.
+
+- **EM side:** the far-field **FORM** is target-blind EARNED — *"The `1/R²` falloff and the `s₁s₂` product
+  of the far-field shell are target-blind EARNED"* — while the **SIGN** is `R1_REQUIRED(bc_selection)`,
+  *"the sign is NEITHER earned NOR calibrated"*, `outcome_not_invariant` across the four BC classes
+  `{V,M,J,MIXED}`, and the **MAGNITUDE** `Q_E` is `R1_REQUIRED(magnitude)`.
+- **Gravity side:** the `1/r²` law **and** the attractive sign are ⛔ CONDITIONAL pending the S14a drain
+  bridge.
+- **The apparent shared shape:** *far-field FORM earned; SIGN and MAGNITUDE routed through the throat
+  interior.*
+
+⛔ **What may make it wrong — and this carries at least the weight of the pattern itself:** gravity's
+`1/r²` is conditional because a **derivation chain was severed** (*"Correcting the drain to the dynamical
+`Γ_B` law severed the chain to these"*), whereas EM's sign is open because a **boundary-condition class is
+unselected**. A severed chain and an unselected BC class may be different **KINDS** of open, and welding
+them into one shape would be a pin of exactly the type this section catalogues.
+
+⭐ **The test to apply at the knit is A7's — *"is this the same KIND of thing?"* (`:58`) — ⛔ not *"do these
+look alike?"***
+
+**Evidence:** `notes/stages/ledger_stage031_puncture_deflection_field_identity_source.md:25`;
+`parameter_register.md:329`, `:143`; `pde_ledger_v3/CHARTER.md:140-143`.
+
+**Status: OPEN — CANDIDATE, to be tested at the knit (PHASE 5).**
+
 ---
 
 ## B. Falsified — closed negative results

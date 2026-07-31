@@ -178,24 +178,35 @@ per step. ⛔ All fail the governing test — they catch tooling or an adversary
 | **3** | **Defects** — the ±w puncture, its topology and conservation | the charge-sector postulates |
 | **4** | **Flow** — the drain, Newtonian limit, the PN ladder | calibration meets data here |
 | **5** | **Motion** — the moving throat (magnetism) | boost-consistency assumptions |
-| **6** | **Knit + integration** — cross-sector consistency, the surplus tally | should introduce **nothing** new |
+| **6** | **Knit + integration** — cross-sector consistency, the surplus tally | ⭐ new cross-sector consequences EXPECTED; ⛔ no new input that revises an earlier sector — see the rule below |
 
 ⛔ **RETRACTED — "phase 6 introduces nothing new" was already false when written.** `stage044` states
 outright that it is **not** a "no new knob" stage and introduces `Z_χ`
 (`notes/stages/ledger_stage044_parent_action_reconciliation.md:30`, `:358`). ⚠ It is also **gameable in
 the other direction**: declare every future coupling in phase 0 and the test passes by construction.
 
-⭐ **Replacement, and it is the honest form:**
+⭐ **Replacement (corrected 2026-07-31 — the first replacement was still too strong):**
 
-> Given a **frozen, complete** parent action plus its non-variational source/BC law and a stated counting
-> contract, integration may introduce no new **action, constitutive, source or BC** input. Any such input
-> falsifies **completeness of the proposed substrate** — ⛔ not, by itself, the one-medium hypothesis.
+> ⛔ **The knit may not introduce a new *input*** — action, constitutive, source or BC — **that revises what
+> an earlier sector already derived.** Such an input falsifies **completeness of the proposed substrate**
+> — ⛔ not, by itself, the one-medium hypothesis.
+>
+> ⭐ **It is expected to produce new *consequences*.** Cross-sector combination yielding constraints that no
+> single sector gives — ⭐ including constraints on the throat interior — is the knit's **purpose**, not a
+> violation. **C10 is the worked example**: the inertial sector wants a compact throat, the spin sector
+> wants an extended one, and neither produces that tension alone.
 
 ⚠ New inputs at integration admit several readings — an incomplete phase-0 substrate, an unchosen
 inertial-vs-dissipative wall branch, an omitted cross-sector coupling, or two historical descriptions
 that are not dynamically identical. ⛔ Do not collapse them to "different media". The corpus itself says
 the knit establishes **bookkeeping/labelling** closure, not a dynamical one-medium proof
 (`docs/model_map.md:134`, `:139`).
+
+⚠ **v3 deliberately diverges from this ordering: it runs gravity BEFORE charge.**
+`research/pde_ledger_v3/V3_STEP_PLAN.md` puts PHASE 4 (gravity) ahead of PHASE 4b (charge/magnetism,
+`Q1`–`Q7`) — gravity is the more solid sector and the user prioritized it, which is the call ⛔ *"The
+physical sequence is the user's call; this is a proposal to correct"* (above) reserves. ⇒ ⭐ A **RECORDED**
+divergence, ⛔ not a contradiction.
 
 ---
 

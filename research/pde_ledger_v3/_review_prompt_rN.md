@@ -1,7 +1,7 @@
 # REVIEW — v3 ledger plan set. Read-only, one pass.
 
 This is an **iterative** review. Prior rounds returned blocking findings which have been folded.
-**HEAD is `0e279e23`.** Your job: decide whether this is now safe to execute, and find anything the
+**HEAD has advanced; run `git log --oneline -3` to see it.** Your job: decide whether this is now safe to execute, and find anything the
 folding broke or missed.
 
 Repository root `/var/projects/toy_physics`, branch `ledger-v2-rebuild`.
@@ -14,19 +14,19 @@ Repository root `/var/projects/toy_physics`, branch `ledger-v2-rebuild`.
 
 ## Fixes folded since the last round — verify each is REAL, not cosmetic
 
-- **S1.5 added and numbered** — the substrate action / Madelung balances, previously only a
-  parenthetical. Check it actually supplies what S4's "core balance" and S12's momentum/energy
-  partners need.
-- **S0.5 restated as a real step with its own review legs** — removing `c_γ`/`λγ` from the medium
-  contract breaks `C-M1`, `able_to_fail.py` and `test_registry.py`, which are built around `R3`.
-  Check the step now says enough to be executable.
-- **S16 no longer claims to legitimise the scope**; recast as a conditional response-side
-  approximation whose supplied inputs must be enumerated.
-- **S15's correction corrected** — S16 does NOT license S15; S15 carries its own Noether /
-  control-surface assumptions.
-- **S20a separates** the derived ratio `λγ = c_γ/c_s` from the calibrated equality `λγ = 1`.
-- **New register rows A11 (worldtube profile scale ≠ mouth radius), A12 (a third healing-length
-  convention), A13 (`χ_B` real vs complex)**.
+Round 3 returned a split verdict (one CLEAN, one REGRESSED with five blockers). All five are folded:
+
+- **S0.5** now specifies an executable lifecycle (retire the two quantities, remove `R3`) and
+  enumerates the touchpoints, including `registry_read.py`'s propagation smoke test and `README.md`'s
+  canonical example, both hardwired to `lambda_gamma`.
+- **S1.5 order corrected to S1 → S1.5** (it consumes S1's primitives), plus: `U(ρ)` is **not** uniquely
+  fixed by the pressure identity (`U = Kρ⁵/4 + Cρ`; the reference setting `C = 0` must be stated), and
+  the S1 field count is flagged for correction.
+- **S8/S9 provenance order** — `{ρ_br, μ_R}` must enter at S8, not after it.
+- **A13** upgraded from listed to must-resolve-before-S1/S5/S12.
+- ⭐ **S14a added and BLOCKING** — correcting S12 to the dynamical `Γ_B` law severed the chain to the
+  imported gravity results, so S14/S15/S20 are now marked CONDITIONAL until a bridge derives the
+  projected order-loss source, `J`, the `J → Q` map and the `ω→0` return law.
 
 ## Operating constraints
 - **READ ONLY.** Do not modify or commit. **One pass, no clarifying questions** (you will hang).

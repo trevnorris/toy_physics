@@ -97,9 +97,11 @@ what's new · inputs by locus · the equation(s) · class per new item · regime
 **Carried — do not re-derive:**
 - the bulk GPE/Madelung system (textbook, committed)
 - the PN ladder 1PN→4PN + 2.5PN, audited, GR-matched, dual-engine verified, **worldtube-reduced**
-- the target-blind sector results: `1/r²` + attractive sign, the ℓ=2 DtN fingerprint `{1/9, 4/81, 1/27}`,
-  `χ_Q = +1`, cross-ℓ `{1, 1/2, 1/27}`, SO(3) `λ_m = 6`
-- the live falsifier: stage009 `RETURN_RESIDUAL_PREDICTION` (ℓ=0/1 return, which GR forbids)
+- the ℓ=2 DtN fingerprint `{1/9, 4/81, 1/27}`, `χ_Q = +1`, cross-ℓ `{1, 1/2, 1/27}`, SO(3) `λ_m = 6`
+- ⛔ **CONDITIONAL, not carried — pending S14a:** the `1/r²` law, the attractive sign, and the stage009
+  `RETURN_RESIDUAL_PREDICTION` falsifier. Correcting the drain to the dynamical `Γ_B` law severed the
+  chain to these; they were derived under a Gauss number-flux drain. ⛔ Do not cite them as earned until
+  the S14a bridge succeeds.
 - the dimensional foundation, **minus the pin**
 - ⭐ **every row of `DEFECT_REGISTER.md`** — especially section B, which does not look like progress and
   is exactly what a clean start loses

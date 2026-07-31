@@ -50,7 +50,15 @@ as the aspiration it is, ⛔ **not** as a route, and ⛔ not as anything current
 exactly the load it was designed for: the count is honest today (a calibrated input), and the gap says
 where the whole program is pointed.
 
-### Consequences, not yet applied
+### ✅ Consequences — APPLIED 2026-07-31 (`407eed94`)
+
+⛔ **This section is HISTORY, not instruction.** The pin was retired by removal: `R2.a_pin` and
+`Q.medium.a_pin` deleted, `stage004` §4 rewritten to the complete three-pin basis, `parameter_register`
+`:132`/`:269` corrected. ⛔ **Item 3 below — "the registry class is OPEN, do not resolve it" — is
+SUPERSEDED**: there is no relation left to classify. Live workstream: `research/pde_ledger_v3/`.
+
+<details><summary>original text, retained for provenance</summary>
+
 
 1. ⛔ **The pin `a` and the throat radius must be separated** — different quantities, different symbols.
    ⚠ Touches `stage004`, `parameter_register.md:132`, and the `a` rows in 016/018/023.
@@ -73,6 +81,8 @@ where the whole program is pointed.
    `walkthrough/01_sound_speed.md` §A (its "both entries now say derived" flagged reopened) · here.
 4. ⭐ **The classification rule gains a clause:** *a relation arising from imposing unit pins is not a
    defining equation*, however much it looks like one.
+
+</details>
 
 ⚠ **`ħ` stays open, and this is why.** `ħ` and `a` are joined only by that pin identity, so **neither is
 derived from the other** — the relation is silent about which is fundamental. The hypothesis that `ħ` is a

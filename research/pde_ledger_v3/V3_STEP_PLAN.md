@@ -325,7 +325,7 @@ Round 2: it does not establish interior-independence at all, so do not carry tha
 it gives is a **conditional response-side approximation**, and the honest use of it is to enumerate what
 must be *supplied* for the far field to be computable without the interior.
 
-⚠ **Read the actual statement, not the slogan** (`research/4d_2_5pn/paper/4d_2_5pn.tex:605-614`):
+⚠ **Read the actual statement, not the slogan** — ⛔ and note the transcription caveat below (`research/4d_2_5pn/paper/4d_2_5pn.tex:605-614`):
 
 > *"For a **compact defect of size `a ≪ r`** in a smooth external field, the center-of-mass reduction
 > gives the usual point-particle force law … `+ O(M_A·(a_WT²/r²)·Φ_ext/r)` … so that the universal
@@ -333,8 +333,7 @@ must be *supplied* for the far field to be computable without the interior.
 > than by arbitrary internal details of the defect."*
 
 ⇒ **The independence is (i) leading-order only and (ii) conditional on compactness.** The first
-correction is `O(a²/r²)` — controlled by the throat radius `a`, which is **undetermined** (**C2**,
-**D1**). So "gravity does not depend on the interior" is precise only to leading order; beyond it,
+correction is `O(a²/r²)` — controlled by `a_WT`, ⛔ **not** the mouth radius (**A11**); `a_WT` is itself undetermined. So "gravity does not depend on the interior" is precise only to leading order; beyond it,
 gravity depends on exactly the quantity this project cannot compute.
 
 ⭐⭐ **And it collides with C10.** The worldtube reduction's premise is that the defect is **compact**.
@@ -348,6 +347,11 @@ corpus establishes is a **response-side** result: how a compact body *moves in* 
 `4d_1pn_full.tex:657,:673,:695,:734,:825` additionally assume compact support, smooth external fields,
 a vanishing dipole, a quasi-static conservative regime, **a calibrated potential `−Gm/r`**, and
 **supplied mass and multipole moments**, with boundary flux discarded by assumption.
+
+⛔ **QUOTATION INTEGRITY.** `4d_2_5pn.tex:605-614` writes the remainder **without** the mass factor,
+which makes it dimensionally inhomogeneous (force on the left, acceleration in the remainder). ⛔ **Do
+not present the repaired formula as a quotation.** Quote the source as written, record the missing-mass
+**typo**, and cite the dimensionally correct form from `4d_1pn_full.tex:886`.
 
 ⛔ **A11 GATE — this step must not substitute one length for another.** The source's `a` is a
 **Gaussian/profile support width** controlling `Q_ij = M a² δ_ij / 2`; the model's **mouth radius** is a

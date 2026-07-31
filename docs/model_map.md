@@ -1,5 +1,9 @@
 # The Model Map — one-medium analog, derivation atlas + conceptual throughline
 
+> ⚠ **CURRENT FRONT (2026-07-31): `research/pde_ledger_v3/`** — start at `NEXT_SESSION.md`.
+> ⛔ The dimension rewrite named below is **not** the current front.
+
+
 **What this is.** The single high-level map of the whole toy model: the conceptual picture, every earned derivation with a one-line note + pointer to the full doc/scripts, the honest ledger of what is *predicted* vs *calibrated* vs *unresolved (R1)* vs *departure*, and a glossary. Read this to hold the model in your head; read the cited sources to act on any specific number.
 
 > ⏸ **CURRENT FRONT (2026-07-27) — NOT stage 045.** The ledger build is PAUSED behind the **dimension

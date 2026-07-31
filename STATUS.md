@@ -23,7 +23,10 @@ notes. History is in git. If this file starts growing narrative, cut it.
 
 ---
 
-## ▶ YOU ARE HERE (2026-07-30)
+## ⚠ ▶ SUPERSEDED — v2 position, kept for provenance (2026-07-30)
+
+> ⛔ **HISTORY, NOT CURRENT.** The live position is the v3 block at the top of this file.
+> ⇒ `research/pde_ledger_v3/NEXT_SESSION.md`.
 
 **Current front: the DERIVATION WALKTHROUGH** (user decision, 2026-07-30) — one derivation step at a
 time, forward from the medium's defining properties, recording at each *what it is · what it does ·
@@ -62,8 +65,8 @@ which two different lengths do trivially. The **pin `a`** (the nullity-1 residue
 pins) and the **throat radius** (a physical size) are different quantities sharing one symbol — a
 same-name-different-quantity collision at the foundation of the model, filed as confirmation.
 ⚠ This entry is damage class **(c)** in `research/pde_ledger_v2/walkthrough/DECISIONS.md` **D-01a**;
-⚠ **SUPERSEDED 2026-07-31** — the `a`-pin was retired by removal (`407eed94`); there is no open class. repairing it is step ② of the fixed order. ⛔ Separately, and ⛔ **not** decided here: `R2.a_pin`'s
-⚠ **SUPERSEDED 2026-07-31** — the `a`-pin was retired by removal (`407eed94`); there is no open class. **registry class** is OPEN pending a user decision (D-01) — do not resolve it from this line.
+⚠ **RESOLVED 2026-07-31 by removal** (`407eed94`) — the pin relation and quantity are deleted; `a` now
+means the throat radius. ⛔ There is no open registry class to decide.
 ⚠ The route caveat below still governs every other group: a green comparator is **agreement
 between implementations, not independence of route** — per `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md`
 §1 (**THE CHARTER**, *"a green comparator shows that two implementations agree, not that they were

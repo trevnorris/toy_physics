@@ -43,14 +43,14 @@ One step = one derivation move. Its record is short and fixed:
 |---|---|
 | **what it is** | the statement, in one or two sentences |
 | **what it does** | what it buys — what becomes computable that was not |
-| ⭐ **what's new** | every quantity or assumption entering here that did not exist upstream. **This is the count.** |
+| ⭐ **what's new** | every quantity or assumption entering here that did not exist upstream. ⛔ **The introduction INVENTORY — not the count.** Only §7a certifies a count. |
 | **inputs** | each upstream quantity consumed, with the step that produced it |
 | **the equation(s)** | canonical form, in the registry (`prefix-v1`), evaluable |
 | **class per new item** | `derived` · `calibrated` · `postulated` · `debt` (a named-but-unexecuted route) |
 | **regime** | the assumptions under which it holds |
 | **departure** | where this differs from standard GR/EM, if it does |
 
-⭐ **"What's new" is the whole point.** A step that introduces nothing new is pure consequence. A step
+⭐ **"What's new" is the introduction inventory.** A step that introduces nothing new is pure consequence. A step
 that introduces a postulate is tier-1 material, recorded where it enters rather than reconstructed later.
 
 ⛔ **But "what's new" is NOT the count.** See §1.0 — it is the readable *introduction inventory*, and it

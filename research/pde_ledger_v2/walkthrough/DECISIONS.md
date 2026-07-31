@@ -159,10 +159,16 @@ no step ever named* — and it has surfaced at step 2, on a registry of eleven q
 properties would put a phase-2 input into the tier-1 core for bookkeeping convenience — the same error
 step 1 avoided by refusing to record `c_s` there.
 
+✅ **DECIDED 2026-07-31 — S0.5 PENDING EXECUTION.** The seed is **trimmed**: `c_γ` and `λγ` are retired
+from the medium contract and re-introduced with provenance at v3 **S9** / **S20a**. ⛔ The "trim or keep"
+question below is closed.
+
+<details><summary>original wording</summary>
 **What is open.** Whether the seed should be **trimmed back** to what the walkthrough has actually
 reached, or **kept ahead** of it as a scaffold with the gap declared. ⚠ Either way the gap must be
 visible, because `show_reduced.py`'s "5 simulation inputs" currently counts `c_γ` among them on no
 step's authority.
+</details>
 
 ### O-02 — steps 1 and 2 disagree on a count: is `K` + the exponent one entry or two?
 

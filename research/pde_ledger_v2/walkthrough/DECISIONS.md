@@ -58,10 +58,19 @@ where the whole program is pointed.
    own pin relation and appears in no `input_qids`. It is also `ξ_h/√2` (`stage004:133`), i.e. the healing
    scale up to a constant, and `ξ_h` is the one with a physical justification ("core balance") while `a` is
    explicitly a pin choice.
-3. ⚠ **`R2.a_pin`'s registry class is unresolved and the ambient count depends on it.** It was changed
-   `CONVENTIONAL → DERIVED-EXECUTED` on a too-literal reading of the classification rule; a units-pin
-   identity is ⛔ not "a defining equation in terms of other model quantities". If it reverts, the ambient
+3. ⛔⛔ **`R2.a_pin`'s registry class is OPEN PENDING A USER DECISION, and the ambient count depends on
+   it.** It was changed `CONVENTIONAL → DERIVED-EXECUTED` on a too-literal reading of the classification
+   rule; a units-pin identity is ⛔ not "a defining equation in terms of other model quantities". ⚠ Note
+   what this decision does and does not settle: it settles that **the throat radius** is calibrated, and
+   it adds clause 4 below — it does ⛔ **not** by itself decide the pin relation's registry class, which
+   is why that is listed here as a consequence *not yet applied*. ⛔ **Do not resolve it in passing.**
+   ⚠ The registry data documents still carry `DERIVED-EXECUTED`; that is their present state, not a
+   verdict, and they are deliberately left untouched until the call is made. If it reverts, the ambient
    count of 10 and the acceptance MATCH both need re-establishing.
+   ⇒ **Aligned 2026-07-30 across every document that states a class:**
+   `docs/derivation_walkthrough_plan.md` §1.1 + §8 (REOPENED) · `reduction/README.md` (UNRESOLVED, data
+   as-is) · `_scratch/NEXT_SESSION.md` (open, and item 3 of OPEN FOR THE USER) ·
+   `walkthrough/01_sound_speed.md` §A (its "both entries now say derived" flagged reopened) · here.
 4. ⭐ **The classification rule gains a clause:** *a relation arising from imposing unit pins is not a
    defining equation*, however much it looks like one.
 
@@ -113,3 +122,54 @@ heavily. ⛔ Scope unknown; do not touch without deciding whether that workstrea
 
 ⭐ **Start at the definition site (`stage004`) and work outward.** Fixing consumers first leaves the
 source of the error in place to re-infect them.
+
+---
+
+## OPEN ITEMS — recorded 2026-07-30, ⛔ not decided
+
+⚠ These are **findings awaiting a call**, not decisions. They live here because they change what gets
+counted, and a later session would otherwise re-litigate them from scratch.
+
+### O-01 — ⭐ a universe hole in the seed: `c_γ` was never introduced by a step
+
+**The finding.** `c_γ` is one of the six quantities the medium block says must be supplied
+(`_scratch/NEXT_SESSION.md`, THE TWO SCRIPTS) — but ⛔ **no walkthrough step introduces it.** Step 1
+(`00_medium_and_brane.md`) lists 4 scalars (`ħ`, `m_GNLS`, `K`, `ρ0`), 3 discrete choices, 3 fields and
+1 BC, and `c_γ` is in none of them. Step 2 (`01_sound_speed.md`) records *"what's new: nothing"* and
+merely *uses* `c_γ` in passing, in the ratio `λ_γ = c_γ/c_s`. The registry also already carries the
+derived `λ_γ` and `h0`, which likewise no step reached.
+
+⇒ **The seed carries quantities the walkthrough has not walked to.** ⭐ That is precisely the
+**"universe hole"** the plan's §7a check 4 (top-down reconciliation) exists to catch — *a parameter that
+no step ever named* — and it has surfaced at step 2, on a registry of eleven quantities.
+
+⛔ **Do not fix it by back-filling `c_γ` into step 1.** `c_γ² = μ_R/ρ_br` is the light-sector cone
+(`docs/model_map.md:63`) and belongs to the excitations phase; importing it into the medium's defining
+properties would put a phase-2 input into the tier-1 core for bookkeeping convenience — the same error
+step 1 avoided by refusing to record `c_s` there.
+
+**What is open.** Whether the seed should be **trimmed back** to what the walkthrough has actually
+reached, or **kept ahead** of it as a scaffold with the gap declared. ⚠ Either way the gap must be
+visible, because `show_reduced.py`'s "5 simulation inputs" currently counts `c_γ` among them on no
+step's authority.
+
+### O-02 — steps 1 and 2 disagree on a count: is `K` + the exponent one entry or two?
+
+**The finding.** Step 1 counts them as **two** separate "what's new" entries: `K` as a scalar primitive
+(`00_medium_and_brane.md`, Scalars table) and the **EOS polytropic exponent** as a discrete/structural
+choice (same file, Discrete table). Step 2 derives `[K] = M L^(4n−2) T⁻²` and concludes they are ⛔ **one
+structural choice, not two independent inputs** (`01_sound_speed.md`, "the finding") — changing `n`
+changes the *dimension* of `K`.
+
+**Did step 1's headline change?** ⇒ **No — the headline stands at 4 scalars, 3 discrete**, and the entry
+in `00_medium_and_brane.md` now says why. ⚠ **This is a judgement, made on §1.0's definition of the
+count** (*"how many variables must I define for the simulation to run"*): a simulation must be given a
+**numeric value for `K`** *and* a **selection of `n`** — supplying one does not supply the other, so both
+remain members of the sim-input set, in different partitions. What step 2 establishes is that they are
+⛔ **not independent** — the pair is constrained, not merged.
+
+⛔ **This is the case §1.0 warns about**, and the reason it forbids reporting one integer: under the
+*algebraic* residual-dimension reading the coupling plausibly removes a degree of freedom, while under
+the *sim-input* reading it removes nothing. ⭐ Per §1.0, **that disagreement is itself the finding** —
+⛔ do not reconcile it silently. **Open for the user:** whether the count should follow the sim-input
+reading (headline unchanged, as recorded) or mark the pair as one coupled entry.

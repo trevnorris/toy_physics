@@ -54,6 +54,14 @@ structural choice**, not two inputs. `n` is discrete-structural, not a continuou
 ⛔ Do not resume deriving before ② is done. ⚠ Repair may require **revisiting already-banked steps**,
 because anything that consumed the pin as a physical radius is suspect.
 
+**① in practice** — the mechanics are in `docs/derivation_walkthrough_plan.md` §5, and two of them bite:
+- the destination is **repo-top-level `archive/`**, which does not exist yet and is created by the move;
+- ⛔ `manifests/` is a **per-file split, not a directory move** — it holds live code (`composite_build.py`,
+  `mutators/`, `examples/`) beside `DIMENSION_REWRITE.md`, the active conversion doc. All four stay.
+  ⚠ The rest of the membership is undecided (`STATUS.md` §PAUSED still reads the manifest semantic core as
+  *"not yet withdrawn"*), and deciding it is part of executing ①.
+⚠ The Zenodo packaging script is user-owned and imposes no constraint.
+
 ### ⭐⭐ Why — read `DECISIONS.md` D-01 in full before touching anything
 
 `a = ħ/(m c_s0)` is **not physics**. It is the nullity-1 residue of imposing four unit pins on three base
@@ -70,9 +78,15 @@ foundation, filed as confirmation.
 in our bag"); if it were derivable the payoff is something like **the lepton ladder**. ⭐ Recorded as an
 aspiration, ⛔ **not** a route.
 
-⇒ Its row: `is_tier = TIER 2 calibrated` · `should_be_tier = TIER 3 emergent` ·
+⇒ **The THROAT RADIUS's** row: `is_tier = TIER 2 calibrated` · `should_be_tier = TIER 3 emergent` ·
 `should_be_basis = physical-picture-expectation` · **delta FLAGGED** — the largest single item on the
 revisit list.
+
+⛔⛔ **Keep these two apart — they are different questions and only one of them is decided.**
+- **The throat radius** — a physical quantity. **DECIDED** by the user: **TIER 2, calibrated**.
+- **`R2.a_pin`'s registry class** — a bookkeeping classification of the pin relation.
+  ⛔ **NOT decided; open pending the user** (below). ⛔ Do not read "tier-2 calibrated" as its answer;
+  that determination is about the radius, not about the pin.
 
 ⚠ **Triage before editing.** D-01a sorts the blast radius into four tiers and states the rule that decides
 the size of this job: **a mention is not damage.** Tier 1 (the live v2 ledger) is only ~8 files.
@@ -80,10 +94,15 @@ the size of this job: **a mention is not damage.** Tier 1 (the live v2 ledger) i
 anti-tautology caveat — so cite them, ⛔ do not "fix" them. Start at the definition site (`stage004`) and
 work outward; fixing consumers first leaves the source in place to re-infect them.
 
-⛔ **`R2.a_pin`'s registry class is unresolved and the ambient count of 10 depends on it.** It was moved
+⛔⛔ **`R2.a_pin`'s registry class is OPEN PENDING A USER DECISION, and the ambient count of 10 depends on
+it. ⛔ Do not resolve it — not in the registry, not in a doc, not by inference.** It was moved
 `CONVENTIONAL → DERIVED-EXECUTED` on a too-literal reading of the classification rule. ⭐ The rule now
-gains a clause: **a relation arising from imposing unit pins is not a defining equation.** If that reverts,
-the acceptance `MATCH` needs re-establishing — for the third time.
+gains a clause: **a relation arising from imposing unit pins is not a defining equation** — which reopens
+the move rather than settling it either way. ⚠ **State of the four documents, deliberately aligned
+2026-07-30:** `docs/derivation_walkthrough_plan.md` §1.1/§8 = REOPENED · `DECISIONS.md` D-01 =
+unresolved · `reduction/README.md` = unresolved, data left as-is · here = open. ⚠ The registry itself
+still carries `DERIVED-EXECUTED`; that is its **present state**, ⛔ not a verdict. If it reverts, the
+acceptance `MATCH` needs re-establishing — for the third time.
 
 ---
 
@@ -126,9 +145,16 @@ derived one reduces onto exactly those 6.
 copies; that agreement is vacuous, and it is the finding that started this whole workstream.
 ⏸ The Mathematica reader is **not built**. `README.md` is written to be sufficient for it.
 
-**Acceptance:** `acceptance_check.py` MATCHes the protected fixture on all four medium cases, and ⭐ **two
+**Acceptance:** `acceptance_check.py` MATCHes its fixture on all four medium cases, and ⭐ **two
 independent reviewers derived those four numbers themselves** rather than reading them off. They are the
-first real reference in this workstream. ⛔ **A change that moves them is wrong.**
+first real reference in this workstream.
+⚠ **"Protected fixture" overstates what is there.** The comparison values are a **literal dict inside the
+script** — `EXPECTED_MEDIUM_PAYLOAD` at `acceptance_check.py:13-18`. Nothing guards it except the
+ordering (the registry payload is computed before the dict is read) and the two independent derivations.
+⛔ **A change that moves those numbers as a SIDE EFFECT is wrong** — that is the scope of the rule.
+⚠ A **deliberate, reasoned reclassification legitimately moves them**: reverting `R2.a_pin` (D-01) drops
+an admitted constraint and all four numbers change. That is not a violation; it obliges you to
+**re-establish** the four numbers by independent derivation, ⛔ never to preserve them.
 
 ---
 
@@ -140,8 +166,11 @@ first real reference in this workstream. ⛔ **A change that moves them is wrong
   `control-outside-the-thing-it-polices` rule, unsatisfied.
 - ⚠ **The registry cannot represent any `n ≠ 5`.** `n_eos` is a *pinned constant with a consistency
   assertion*, ⛔ not a knob. Recorded plainly because it reads like a knob.
-- **`value` is a silent evaluation default** and is invisible to the dimensional gate. Inert today; a
-  foot-gun on reuse. *(May be fixed — check the last commit.)*
+- ✅ **CLOSED — `value` is no longer a silent evaluation default.** Fixed in `1a6992bc`: a declared
+  `value` is not an automatic numeric input; missing inputs stay errors, a caller opts in with
+  `allow_declared_defaults=True`, and every default consumed warns with its QID and value
+  (`reduction/README.md:90-96`, "Quantity document" — ⚠ the locus moved when the `a_pin` note was added
+  above it on 2026-07-30).
 - **A dimension-helper divergence from the fixture** on constraints carrying an outside symbol
   (fail-closed, stricter, not a count defect).
 
@@ -205,7 +234,9 @@ first real reference in this workstream. ⛔ **A change that moves them is wrong
 2. **`ħ`'s class** — no defining equation ⇒ not derived; `postulated` (a property of the medium) or
    `calibrated` (an external constant we import)? It is in the sim-input set either way; the label moves
    it between tier 1 and tier 2.
-3. **Archiving** — agreed in principle, not yet done. `notes/census/` and the manifest system.
-   ⚠ `manifests/` needs a **per-file split, not a directory move**: it holds live code
-   (`composite_build.py`, `mutators/`, `examples/`) beside `DIMENSION_REWRITE.md`, which is the active
-   conversion doc. The Zenodo packaging script is user-owned and imposes no constraint.
+3. ⛔⛔ **`R2.a_pin`'s registry class** — `DERIVED-EXECUTED` (current) vs reverting to `CONVENTIONAL`
+   under D-01's unit-pin clause. ⛔ **The one question this handoff most needs answered**, because the
+   ambient count of 10 and the acceptance numbers both hang on it. See "WHERE WE ARE" above.
+
+⛔ **Archiving is NO LONGER an open user question** — it was agreed in principle and **D-01a makes it
+step ①**, the next action. Its mechanics moved up into the ①→②→③ block above.

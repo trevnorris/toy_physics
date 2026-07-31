@@ -76,8 +76,17 @@ reference is invalid.  The current counting contract is the document's
 `active_regime`; phase 1 includes every live `continuous-model` quantity in
 that regime in the finite scalar ambient space.  Live `convention-orbit`
 coordinates and `discrete-structural` choices are reported separately.
-`Q.medium.a_pin` is a continuous-model output of an admitted explicit
-definition; `Q.medium.n_eos` records the discrete structural EOS choice and is
+`Q.medium.a_pin` is currently carried as a continuous-model output of an
+admitted explicit definition.  UNRESOLVED, PENDING A USER DECISION (2026-07-30):
+decision D-01 in `research/pde_ledger_v2/walkthrough/DECISIONS.md` rules that a
+relation arising from imposing unit pins is not a defining equation, which puts
+`R2.a_pin`'s `DERIVED-EXECUTED` status back in question.  The data documents are
+deliberately left as they stand until that decision is made; read the class
+above as the registry's present state, not as a settled classification.  The
+ambient count depends on it: with `R2.a_pin` admitted, `a_pin` is a designated
+output rather than residue, and reverting the status would move the ambient
+count and the `acceptance_check.py` comparison values together.
+`Q.medium.n_eos` records the discrete structural EOS choice and is
 not a continuous knob.  A quantity may also carry an exact `value` (integer or
 `[Rat,p,q]`); the seed declares `Q.medium.n_eos.value: 5`.  Declared values are
 not automatic numeric inputs.  A caller may opt into their use during forward

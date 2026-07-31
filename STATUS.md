@@ -245,7 +245,7 @@ decisions REOPENED).** Several recorded conclusions — three waivers, four "imp
 coverage estimate — were correct only under constraints since lifted, and will read as settled.
 
 ⛔ **THE DERIVED-vs-DECLARED CENSUS IS RETIRED AS THE FRONT** (2026-07-30), superseded by the
-walkthrough. Its artifacts are at `research/pde_ledger_v2/notes/census/` and are **pending archive**
+walkthrough. Its artifacts were **archived 2026-07-30** to `archive/census/`
 (agreed in principle, not yet executed). ⭐ **Its four surviving findings are carried forward in
 `research/pde_ledger_v2/_scratch/NEXT_SESSION.md`** (⛔ OPEN CORPUS FINDINGS: the
 `parameter_register`-vs-`stage023 source map` tier-1-vs-tier-3 contradiction · stage016's false
@@ -300,8 +300,9 @@ script it merely fails to raise it, because there was nothing recoverable there 
   irreducible-count range · calibrated-or-target-matched genesis, i.e. fit-vs-derive), not bookkeeping.
   ⚠ It is **not** what the dimension rewrite unblocks (see the front's justification above) — the two are
   independent. Docs:
-  `research/pde_ledger_v2/manifests/MANIFEST_README.md` +
-  `research/pde_ledger_v2/manifests/EXTRACTION_PROTOCOL.md`.
+  ⛔ **ARCHIVED 2026-07-30** → `archive/manifests/` (`MANIFEST_README.md`, `EXTRACTION_PROTOCOL.md`,
+  `composite_build.py`, the schemas, and the 4 extracted stage manifests). ⭐ `DIMENSION_REWRITE.md` and
+  `DIM_ORDER_DECISION.md` **stay** at `research/pde_ledger_v2/manifests/` — paths deliberately unchanged.
   ⛔ **UNRESOLVED against the new front:** `docs/derivation_walkthrough_plan.md` §5 marks `manifests/`
   (**except** `DIMENSION_REWRITE.md`) for **archive** as a superseded route. That is not yet executed and
   needs a **per-file split, not a directory move** — the directory holds live code beside the active

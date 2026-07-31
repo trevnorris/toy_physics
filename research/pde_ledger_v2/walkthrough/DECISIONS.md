@@ -118,7 +118,7 @@ pins"* — ⭐ correct, keep).
 heavily. ⛔ Scope unknown; do not touch without deciding whether that workstream is live.
 
 **Tier 4 — out of scope** — `research/pde_ledger/redteam_adversarial/*` (the *old* ledger, not v2), and
-`notes/census/pilot/*` (archived anyway).
+`archive/census/pilot/*` (✅ archived 2026-07-30).
 
 ⭐ **Start at the definition site (`stage004`) and work outward.** Fixing consumers first leaves the
 source of the error in place to re-infect them.

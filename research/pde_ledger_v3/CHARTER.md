@@ -31,13 +31,27 @@ description; it is not a courtesy stop-for-review but a change in who does the d
 
 ---
 
-## 1. Scope — gravity, light, gravitomagnetism
+## 1. Scope — gravity · light · gravitomagnetism · charge · magnetism
 
-⚠ **A working boundary, and its justification is CONDITIONAL — do not read it as established.** Both
-sectors are **linear response on the brane**, far from the defect, and the corpus offers a
-**response-side** reduction (how a compact body *moves in* a given field) that is leading-order only and
-premised on compactness. ⛔ It is **not** a source-side interior-independence theorem, and S16/S19 may
-show the premise fails (see §1.1). The quotations below are that conditional result, not a licence:
+**Widened 2026-07-31 (user decision): the EM/charge sector is IN scope.** ⭐ The reason is not appetite —
+it is that these are not independent sectors that happen to share a deadline, they share the **same
+unsolved object**. `docs/model_map.md:178` records that **"One nonlinear throat solve is the shared R1 for
+gravity `{μ_R, ρ_br}` ... electric `bc_selection`, and magnetism `q_T` — one interior solve collapses
+several knobs at once"**, and the register books charge's debts against that same solve: `Q_E` and
+`bc_selection` each discharge *"under the shared sim-deferred throat solve (sibling of R10/R30)"*
+(`research/pde_ledger_v2/notes/parameter_register.md:143`, `:228`; the `R63` edge row states it at `:329`
+as *"a sibling of R10/R30/R33"*) — `R10`/`R30` being gravity's interior debts.
+
+⇒ ⭐ **A debt list that names gravity's siblings of that solve while omitting charge's and magnetism's is
+an INCOMPLETE listing of one object — and it would read as complete.** That is §1.1's failure mode applied
+to the scope boundary itself.
+
+⚠ **A working boundary, and its justification is CONDITIONAL — do not read it as established.** The
+gravity and light sectors are **linear response on the brane**, far from the defect, and the corpus
+offers a **response-side** reduction (how a compact body *moves in* a given field) that is leading-order
+only and premised on compactness. ⛔ It is **not** a source-side interior-independence theorem, and
+S16/S19 may show the premise fails (see §1.1). The quotations below are that conditional result, not a
+licence:
 
 > *"controlled by the worldline/worldtube multipoles rather than by arbitrary internal details of the
 > defect"* — `research/4d_2_5pn/paper/4d_2_5pn.tex:613`
@@ -46,6 +60,13 @@ show the premise fails (see §1.1). The quotations below are that conditional re
 
 Gravitomagnetism belongs here: it is a PN-order effect inside the audited ladder, ⛔ **not** the EM
 sector's "magnetism = moving throat".
+
+⚠ **And charge is NOT insulated from the interior the way the brane-shear and linear-response sectors
+are.** Its far-field **FORM** is target-blind EARNED — *"The `1/R²` falloff and the `s₁s₂` product of the
+far-field shell are target-blind EARNED"*
+(`research/pde_ledger_v2/notes/stages/ledger_stage031_puncture_deflection_field_identity_source.md:25`) —
+but its **SIGN and MAGNITUDE route through the interior solve**. ⇒ Bringing charge in widens the debt
+list; it ⛔ does **not** import a second insulated sector.
 
 ### ⛔ 1.1 What this boundary EXCLUDES — state it or it will read as completeness
 
@@ -80,9 +101,11 @@ boundary against the result.
 ### 1.2 ⭐ Expected yield: a debt list, not a discovery
 
 Say this up front so it does not read as failure when it arrives. The deliverable is a **precise,
-followable statement of what gravity assumes from the interior**, which today is scattered across `R10`,
-`R30`, `R33`, `R36`, `m_defect`, `J` and `INFLOW_MASS_SOURCE_MISSING`. Collapsing that into one honest
-list is the win — it is a thing that fits in one head, which is what is currently missing.
+followable statement of what the far field assumes from the interior, across every sector that has one**,
+which today is scattered across `R10`, `R30`, `R33`, `R36`, `m_defect`, `J` and
+`INFLOW_MASS_SOURCE_MISSING` on the gravity side, and across `bc_selection`, `Q_E`, `q_T`, `c_a` and `c_ξ`
+on the EM side. Collapsing that into one honest list is the win — it is a thing that fits in one head,
+which is what is currently missing.
 
 ---
 
@@ -108,6 +131,11 @@ what's new · inputs by locus · the equation(s) · class per new item · regime
 - the dimensional foundation, **minus the pin**
 - ⭐ **every row of `DEFECT_REGISTER.md`** — especially section B, which does not look like progress and
   is exactly what a clean start loses
+- ⭐ **the EM/charge cluster — its deferral is RETIRED (2026-07-31).** The stated reason ("that
+  workstream's charge model changed recently") was checked against the record and is not supported: the
+  charge mechanism changed **2026-07-21** (puncture-deflection, `520d4b1f`) and the sector's last build
+  commit is **2026-07-23** (`0961b27c`). Nothing has moved since, and what is open is labelled
+  `R1_REQUIRED` — waiting on the throat solve — ⛔ **not** a model in flux.
 
 ⛔ **CONDITIONAL — neither carried nor discarded, pending S14a:**
 - the `1/r²` law, the attractive sign, and the stage009 `RETURN_RESIDUAL_PREDICTION` falsifier.
@@ -117,7 +145,6 @@ what's new · inputs by locus · the equation(s) · class per new item · regime
 **Not carried:**
 - v2's irreducible count and its headline knob claims (**E1** — understated, and v3 derives its own
   count forward rather than importing one)
-- the EM/charge cluster — deferred; that workstream's charge model changed recently
 - the census apparatus and manifests (already archived)
 
 ---

@@ -113,7 +113,11 @@ One GNLS condensate in a 4D bulk; `ρ = |ψ|²`; `P = Kρ⁵`; the brane is the 
 medium (`χ_B = 1`), not a second object.
 **Expected new:** 4 scalars `{ħ, m_GNLS, K, ρ0}` · 3 discrete `{D=4, n=5, the two-phase split}` · 3 fields
 · 1 BC.
-**Register:** none. **Carry forward:** the two-phase split is `postulated` — the largest tier-1 item.
+**Register:** ⛔ **A13 — GATE. Resolve before this step banks.** `χ_B` is used here as a **real material
+fraction** (so `χ_B·n` is real) while S5 writes it **complex**. Choose the branch — real/dissipative or
+complex/inertial — propagate the choice into the field count, the action and the conversion balance, and
+**remove the unchosen inputs**. ⛔ S1 cannot bank on "Register: none".
+**Carry forward:** the two-phase split is `postulated` — the largest tier-1 item.
 ⚠ **Correct v2's stated reason.** `model_map.md:26` justifies the postulate by *"`U(ρ)` is single-well"*.
 That reasoning is **wrong** — the brane comes from `V_χ(r_B)`, a potential on a *different* field. The
 conclusion survives, the argument does not. → S5.
@@ -171,7 +175,8 @@ it as a defining equation for a **defect** quantity.
 `χ_B = r_B e^{iθ_B}`, `r_B ∈ [0,1]`; `S_χ = ∫ ½Z_χ(∂_t r_B)² − ½κ_χ|∇₄r_B|² − (λ_χ/4)r_B²(1−r_B)²`.
 **Expected new:** the double-well **form** (a function, not a scalar) + `{Z_χ, κ_χ, λ_χ}` or the
 `{a_B, κ_B}` pair.
-**Register:** **C8** (the wall rests on two *postulated* constants — derived-from-postulates is not
+**Register:** ⛔ **A13 (gate — must already be resolved at S1; this step must use the chosen branch, and
+⛔ `{a_B, κ_B}` cannot parameterize an action containing `Z_χ`)** · **C8** (the wall rests on two *postulated* constants — derived-from-postulates is not
 derived-from-primitives). **B2** — ⛔ **state the no-go here**: the medium program that would have
 grounded this returned `FAIL_COUPLE_STRESS_NOGO` and is superseded.
 
@@ -186,8 +191,11 @@ is a finite slab.
 ⭐ **A step whose result is "this is not determined" is a real step.** Bank it as such.
 **Register:** **C7**, **A9** (`W_slab` merged with the `L/a` debt without an equation).
 
-### S8 · The quadratic brane Lagrangian
+### S8 · The quadratic brane Lagrangian ⭐ and `{ρ_br, μ_R}` enter HERE
 Transverse and longitudinal sectors; the reduced `h`/`u_L` operator.
+⛔ **Introduce and classify `{ρ_br, μ_R}` in this step** — the transverse action contains both *before*
+`c_γ² = μ_R/ρ_br` can be derived, so introducing them at S9 would invert provenance.
+⇒ **The R10 debt starts here**, not at S9.
 ⭐⭐ **The step that defines v3's ceiling.** State plainly: **quadratic = linear response about an
 assumed equilibrium.** Everything downstream in this ledger is small-oscillation physics on a brane
 that S5–S7 postulated. It is why gravity and light are tractable, and why the defect is not.
@@ -201,13 +209,13 @@ that S5–S7 postulated. It is why gravity and light are tractable, and why the 
 ⛔ **Provenance order corrected (round 3): `{ρ_br, μ_R}` must be introduced and classified in S8, not
 here.** S8 cannot write the transverse quadratic brane Lagrangian without them, so introducing them
 afterwards violates forward provenance and puts the apparatus before its own coefficients.
-⇒ Either introduce `{ρ_br, μ_R}` at **S8**, or move the transverse action itself into S9. Pick one.
-
-`c_γ² = μ_R/ρ_br` is then the **pure consequence**. **Expected new:** nothing, if S8 carries the pair.
+⛔ **COMMITTED LAYOUT (round 4 — the earlier "pick one" left the ambiguity live):**
+`{ρ_br, μ_R}` are **introduced and classified in S8**, and the **R10 debt starts in S8**.
+⇒ S9 is **pure consequence**: `c_γ² = μ_R/ρ_br`. **Expected new: nothing.**
 ⭐⭐ **This closes O-01, the "universe hole."** v2's registry seed required `c_γ` as a supplied input
 while **no step ever introduced it**. It enters *here*, in the excitations phase, with provenance —
 ⛔ never back-filled into the medium block for bookkeeping convenience.
-**Register:** the `{μ_R, ρ_br}` R10 debt begins here → S22.
+**Register:** none — R10 began at S8. → S22.
 
 ### S10 · Two transverse photons
 The earned target-blind result: brane shear gives exactly two transverse polarisations.
@@ -247,7 +255,7 @@ form anyway, because I transcribed the equation from a spec section rather than 
 is precisely what §0's side-by-side rule exists to prevent.
 ⛔ **All six source terms are `[OPEN]`.** The throat enters this ledger **only** as a boundary condition
 of given strength — that is the whole content of the scope boundary.
-**Register:** **C6**; **C1** (⚠ the drain law is *parameterized, not derived* — and `g_phys` was never
+**Register:** ⛔ **A13 (the conversion balance must use the branch chosen at S1)** · **C6**; **C1** (⚠ the drain law is *parameterized, not derived* — and `g_phys` was never
 mapped; carry the caveat, not the top line).
 
 ### S13 · The drain rate `J`, and what it is not
@@ -258,12 +266,13 @@ derivably connected to mass. Bank it as an unresolved step.
 **Register:** **C3**.
 
 ### S14 · The far field
+⛔ **CONDITIONAL ON S14a.** Not a carried result until the dynamical-`Γ_B` bridge succeeds.
 `1/r²` on the brane, `1/R³` in the bulk. The exponent comes from the slab DC-sink completions and the
 zero mode — ⛔ **not** from the throat.
 
 ---
 
-### S14a · ⛔⛔ THE DRAIN BRIDGE — BLOCKING, and created by fixing S12
+### S14a · ⭐ RUN AFTER S13, BEFORE S14 · ⛔⛔ THE DRAIN BRIDGE — BLOCKING, and created by fixing S12
 
 **Round 3 found that correcting S12 severed the chain to the imported gravity results.**
 
@@ -285,6 +294,7 @@ the kind of debt this ledger exists to surface, not a bookkeeping chore.
 ## PHASE 4 — gravity and gravitomagnetism (6 steps)
 
 ### S15 · Two drains attract ⚠ RUN S16 FIRST, or fold it in as the premise
+⛔ **CONDITIONAL ON S14a.** Not a carried result until the dynamical-`Γ_B` bridge succeeds.
 ⚠ **Corrected twice.** Round 1: run S16 first, since the corpus establishes the worldtube closure before
 the particle law. ⛔ **Round 2 corrects that correction: S16 does NOT license S15.** S16 is
 *response-side* (how a body moves in a field); S15 is *source-side* (what force two drains exert) and
@@ -383,6 +393,7 @@ v3 calls solid** — exactly the kind of thing this ledger exists to surface.
 ⚠ **Possible outcome: a NO-GO for the sector.** That is a first-class result, not a failure.
 
 ### S20 · The falsifier
+⛔ **CONDITIONAL ON S14a.** Not a carried result until the dynamical-`Γ_B` bridge succeeds.
 stage009 `RETURN_RESIDUAL_PREDICTION`: `1−T_ℓ(0) = ε_ℓ/(1+ε_ℓ)` at ℓ=0/1, orders `p_res = 1,3` — a
 departure **GR forbids**. ⭐ The sector's one live able-to-fail prediction. Bank it prominently.
 
@@ -458,7 +469,7 @@ block rank · top-down reconciliation · the sim-input-vs-residual diff). The wa
 
 **S1–S4** are cheap re-banking; they exist to make v3 self-contained.
 **S5–S8** are the honest core — three of the four bank a *postulate* or a *gap*.
-**S9–S11, S15–S20** are where the earned results live.
+**S9–S11, S15–S20** are where the earned results live — ⛔ **but S14, S15 and S20 are CONDITIONAL ON S14a**, not carried.
 **S0.5 and the substrate-action step are prerequisites** — ⛔ nothing is banked before them.
 **S22 is the deliverable.**
 

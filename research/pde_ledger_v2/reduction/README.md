@@ -63,7 +63,8 @@ Every quantity record has exactly these required fields:
   `discrete-choice`, or `function-profile`;
 - `scope` and `regime`: nonempty string lists;
 - `state`: `live` or `retired`;
-- `counting_axis`: `continuous-model` or `convention-orbit`;
+- `counting_axis`: `continuous-model`, `convention-orbit`, or
+  `discrete-structural`;
 - `dimension`: `{convention: LTM-exponent-vector-v1, exponents: [L,T,M],
   provenance: {stage_id, stage_uses_shared_dimensions_module, source_locus}}`;
 - `aliases`: alternate input spellings; and
@@ -74,9 +75,10 @@ QID, symbol, and aliases form one global alias table.  Any collision or unknown
 reference is invalid.  The current counting contract is the document's
 `active_regime`; phase 1 includes every live `continuous-model` quantity in
 that regime in the finite scalar ambient space.  Live `convention-orbit`
-coordinates are reported separately.  In particular, `Q.medium.a_pin` remains
-typed registry data for relation and mutation auditing but is quotiented from
-the physical ambient space; its `CONVENTIONAL` pin is not an earned constraint.
+coordinates and `discrete-structural` choices are reported separately.
+`Q.medium.a_pin` is a continuous-model output of an admitted explicit
+definition; `Q.medium.n_eos` records the discrete structural EOS choice and is
+not a continuous knob.
 
 ## Relation document
 
@@ -116,8 +118,10 @@ must itself be the output of an admitted relation.
 
 The residue is every live active-regime QID that is not a designated output of
 an admitted relation on the `continuous-model` axis.  Finite-block dimension is
-ambient QIDs minus generic symbolic Jacobian rank; zero residuals are removed
-and nonzero constant residuals denote an empty locus.
+ambient QIDs minus the largest Jacobian rank observed across exact positive
+constraint-satisfying solver branches and exact parameter witnesses.  The
+helper never evaluates rank off the constraint locus.  Zero residuals are
+removed and nonzero constant residuals denote an empty locus.
 
 ## Dimensional-homogeneity gate
 
@@ -169,11 +173,15 @@ python acceptance_check.py
 python able_to_fail.py
 python able_to_fail.py --case vacuous
 python dimensional_homogeneity_gate.py
+python show_reduced.py
 ```
 
 `acceptance_check.py` computes the registry payload first and compares last
 against the medium portion of the existing literal fixture; disagreement exits
-1 and is not reconciled.  `able_to_fail.py` runs four child mutations.  Each
-child deliberately presents a forbidden expectation and must exit 1; the
-parent prints each failing output/exit code and exits 0 only when all four
-failures are observed.
+1 and is not reconciled.  `able_to_fail.py` runs five child mutations, including
+separate syntactic-duplicate and semantic-entailment controls.  Each child
+deliberately presents a forbidden expectation and must exit 1; the parent
+prints each failing output/exit code and exits 0 only when all five failures
+are observed.  `show_reduced.py` traverses only admitted explicit definitions,
+detects cycles or stalled substitutions, and reports the actual terminal QIDs
+left in each fully reduced expression.

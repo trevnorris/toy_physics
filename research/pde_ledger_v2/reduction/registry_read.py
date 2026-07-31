@@ -535,6 +535,17 @@ class Registry:
             and quantity.counting_axis == "convention-orbit"
         )
 
+    @property
+    def discrete_structural_variables(self) -> tuple[sp.Symbol, ...]:
+        """Live choices reported on the separate discrete-structural axis."""
+        return tuple(
+            self.symbols[qid]
+            for qid, quantity in self.quantities.items()
+            if quantity.state == "live"
+            and self.active_regime in quantity.regime
+            and quantity.counting_axis == "discrete-structural"
+        )
+
     def require_admitted(self, relation_id: str) -> Relation:
         try:
             decision = self.admission_decisions[relation_id]
@@ -549,7 +560,7 @@ class Registry:
         constraints: Iterable[sp.Expr] | None = None,
         variables: Sequence[sp.Symbol] | None = None,
     ) -> int:
-        """Generic finite-scalar dimension = ambient count - symbolic Jacobian rank."""
+        """Finite-scalar dimension from Jacobian rank at an exact generic witness."""
         selected_variables = tuple(self.active_variables if variables is None else variables)
         selected_constraints = tuple(
             sp.simplify(expression)
@@ -563,8 +574,82 @@ class Registry:
         for expression in selected_constraints:
             if not expression.free_symbols and expression != 0:
                 return -1
+
+        try:
+            solution_branches = sp.solve(
+                selected_constraints,
+                selected_variables,
+                dict=True,
+                simplify=True,
+                check=True,
+            )
+        except (NotImplementedError, TypeError, ValueError) as exc:
+            raise EvaluationError(
+                "could not construct an exact constraint-satisfying witness"
+            ) from exc
+        if isinstance(solution_branches, dict):
+            solution_branches = [solution_branches]
+        if not solution_branches:
+            raise EvaluationError(
+                "no exact constraint-satisfying witness was found; "
+                "the locus may be empty or unsupported"
+            )
+
+        constraint_symbols = set().union(
+            *(expression.free_symbols for expression in selected_constraints)
+        )
         jacobian = sp.Matrix(selected_constraints).jacobian(selected_variables)
-        return len(selected_variables) - int(jacobian.rank())
+        best_rank: int | None = None
+
+        # Try every solver branch and several exact positive parameter points.
+        # Taking the largest witnessed rank avoids singular special points; a
+        # candidate is used only after every constraint vanishes exactly.
+        for branch in solution_branches:
+            branch_symbols = constraint_symbols | set().union(
+                *(expression.free_symbols for expression in branch.values()),
+                set(),
+            )
+            free_symbols = sorted(branch_symbols - set(branch), key=str)
+            for offset in range(5):
+                witness = {
+                    symbol: sp.Integer(sp.prime(index + offset + 1))
+                    for index, symbol in enumerate(free_symbols)
+                }
+                pending = dict(branch)
+                while pending:
+                    progress = False
+                    for symbol, expression in tuple(pending.items()):
+                        value = sp.simplify(expression.subs(witness))
+                        if value.free_symbols:
+                            continue
+                        witness[symbol] = value
+                        del pending[symbol]
+                        progress = True
+                    if not progress:
+                        break
+                if pending or not constraint_symbols <= set(witness):
+                    continue
+                if any(
+                    sp.simplify(witness[symbol]).is_positive is not True
+                    for symbol in constraint_symbols
+                ):
+                    continue
+                if any(
+                    sp.simplify(expression.subs(witness)) != 0
+                    for expression in selected_constraints
+                ):
+                    continue
+                exact_jacobian = jacobian.subs(witness)
+                if exact_jacobian.free_symbols:
+                    continue
+                rank = int(exact_jacobian.rank())
+                best_rank = rank if best_rank is None else max(best_rank, rank)
+
+        if best_rank is None:
+            raise EvaluationError(
+                "solver branches yielded no exact positive constraint-satisfying witness"
+            )
+        return len(selected_variables) - best_rank
 
     @staticmethod
     def _predicate_holds(predicate: str, value: sp.Expr) -> bool:
@@ -719,6 +804,10 @@ def main() -> int:
     print(
         f"CONVENTION_ORBIT: dimension={len(registry.convention_variables)} "
         f"coordinates={','.join(str(variable) for variable in registry.convention_variables)}"
+    )
+    print(
+        "DISCRETE_STRUCTURAL: choices="
+        + ",".join(str(variable) for variable in registry.discrete_structural_variables)
     )
     print(
         f"DIMENSION: ambient={len(registry.active_variables)} "

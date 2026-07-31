@@ -1,92 +1,142 @@
 #!/usr/bin/env python3
-"""Readable view of the registry: every quantity, its defining equation, and that
-equation fully reduced down to the things you must actually supply.
+"""Show admitted definitions reduced to the quantities that must be supplied."""
 
-Answers two questions directly:
-  1. which quantities must I define for a simulation to run?
-  2. for the ones I don't, what do they reduce to?
-"""
-import sys, pathlib, yaml, sympy as sp
+from __future__ import annotations
 
-HERE = pathlib.Path(__file__).parent
-OPS = {"Add": lambda *a: sp.Add(*a), "Sub": lambda a, b: a - b,
-       "Mul": lambda *a: sp.Mul(*a), "Div": lambda a, b: a / b,
-       "Pow": lambda a, b: a ** b, "Sqrt": lambda a: sp.sqrt(a),
-       "Neg": lambda a: -a}
+from typing import Mapping
+
+import sympy as sp
+
+from registry_read import EvaluationError, Registry, Relation, load_registry
 
 
-def build(node, sym):
-    """prefix-v1 -> sympy."""
-    if isinstance(node, (int, float)):
-        return sp.Integer(node) if isinstance(node, int) else sp.Float(node)
-    if isinstance(node, list):
-        head = node[0]
-        if head == "Q":
-            return sym.setdefault(node[1], sp.Symbol(node[1].split(".")[-1], positive=True))
-        if head in OPS:
-            return OPS[head](*[build(c, sym) for c in node[1:]])
-        raise ValueError(f"unknown operator {head!r}")
-    raise ValueError(f"unexpected node {node!r}")
+def admitted_definitions(registry: Registry) -> dict[str, Relation]:
+    """Return only admission-gated, explicit output definitions."""
+    return {
+        relation.designated_output: relation
+        for relation in registry.admitted_relations
+        if relation.designated_output is not None and relation.rhs is not None
+    }
 
 
-def main():
-    quantities = yaml.safe_load((HERE / "quantities.yaml").read_text())["quantities"]
-    relations = yaml.safe_load((HERE / "relations.yaml").read_text())["relations"]
-    sym, defs, status = {}, {}, {}
+def fully_reduced_outputs(
+    registry: Registry,
+    definitions: Mapping[str, Relation] | None = None,
+) -> dict[str, tuple[sp.Expr, frozenset[str]]]:
+    """Reduce admitted outputs by dependency traversal, with cycle/stall checks."""
+    selected = dict(admitted_definitions(registry) if definitions is None else definitions)
+    memo: dict[str, tuple[sp.Expr, frozenset[str]]] = {}
+    visiting: list[str] = []
 
-    for rel in relations:
-        out, res = rel.get("designated_output"), rel.get("residual")
-        if not out or not res:
+    def reduce_qid(qid: str) -> tuple[sp.Expr, frozenset[str]]:
+        if qid in memo:
+            return memo[qid]
+        relation = selected.get(qid)
+        if relation is None:
+            return registry.symbols[qid], frozenset({qid})
+        if qid in visiting:
+            raise EvaluationError(
+                f"definition cycle prevents full reduction: {visiting + [qid]}"
+            )
+        if relation.rhs is None:
+            raise EvaluationError(f"{relation.relation_id}: admitted definition has no RHS")
+
+        visiting.append(qid)
+        substitutions: dict[sp.Symbol, sp.Expr] = {}
+        for input_qid in relation.input_qids:
+            reduced_input, _ = reduce_qid(input_qid)
+            substitutions[registry.symbols[input_qid]] = reduced_input
+        visiting.pop()
+
+        reduced = sp.simplify(relation.rhs.xreplace(substitutions))
+        stalled = sorted(
+            output_qid
+            for output_qid in selected
+            if registry.symbols[output_qid] in reduced.free_symbols
+        )
+        if stalled:
+            raise EvaluationError(
+                f"{relation.relation_id}: substitution stalled on admitted outputs {stalled!r}"
+            )
+        symbol_to_qid = {symbol: symbol_qid for symbol_qid, symbol in registry.symbols.items()}
+        unknown_symbols = reduced.free_symbols - set(symbol_to_qid)
+        if unknown_symbols:
+            raise EvaluationError(
+                f"{relation.relation_id}: reduced expression has unknown symbols "
+                f"{sorted(map(str, unknown_symbols))!r}"
+            )
+        leaves = frozenset(symbol_to_qid[symbol] for symbol in reduced.free_symbols)
+        memo[qid] = reduced, leaves
+        return memo[qid]
+
+    for output_qid in selected:
+        reduce_qid(output_qid)
+    return memo
+
+
+def main() -> int:
+    registry = load_registry()
+    definitions = admitted_definitions(registry)
+    reduced = fully_reduced_outputs(registry, definitions)
+    candidate_outputs = {
+        relation.designated_output: relation
+        for relation in registry.relations.values()
+        if relation.designated_output is not None
+    }
+
+    print("=" * 78)
+    print("MUST BE SUPPLIED / SELECTED  (no admitted defining equation)")
+    print("=" * 78)
+    simulation_inputs = 0
+    structural_choices = 0
+    for quantity in registry.quantities.values():
+        if quantity.qid in definitions:
             continue
-        expr = build(res, sym)                      # residual == 0
-        target = sym.setdefault(out, sp.Symbol(out.split(".")[-1], positive=True))
-        sol = sp.solve(sp.Eq(expr, 0), target, dict=True)
-        if sol:
-            defs[out] = sp.simplify(sol[0][target])
-            status[out] = rel["provenance_status"]
-
-    def reduce_fully(expr, seen=None):
-        """Substitute defined quantities until only undefined ones remain."""
-        seen = seen or set()
-        for _ in range(40):
-            subs = {sym[q]: defs[q] for q in defs
-                    if q not in seen and sym.get(q) is not None and sym[q] in expr.free_symbols}
-            if not subs:
-                break
-            expr = sp.simplify(expr.subs(subs))
-        return expr
-
-    print("=" * 78)
-    print("MUST BE SUPPLIED  (no defining equation -> a simulation input)")
-    print("=" * 78)
-    supplied = []
-    for q in quantities:
-        if q["qid"] not in defs:
-            supplied.append(q)
-            print(f"  {q['symbol']:<14} dim={q['dimension']['exponents']}  [{q['kind']}]")
+        if quantity.counting_axis == "discrete-structural":
+            role = "structural selection"
+            structural_choices += 1
+        else:
+            role = "simulation input"
+            simulation_inputs += 1
+        detail = ""
+        candidate = candidate_outputs.get(quantity.qid)
+        if candidate is not None:
+            decision = registry.admission_decisions[candidate.relation_id]
+            detail = f"  [candidate refused: {decision.reason}]"
+        print(
+            f"  {quantity.symbol_name:<14} dim={list(quantity.dimension)}  "
+            f"[{quantity.kind}; {quantity.counting_axis}; {role}]{detail}"
+        )
 
     print()
     print("=" * 78)
-    print("DERIVED  (has a defining equation -> computed, not supplied)")
+    print("DERIVED  (admitted defining equation -> computed, not supplied)")
     print("=" * 78)
-    for q in quantities:
-        qid = q["qid"]
-        if qid in defs:
-            print(f"\n  {q['symbol']}   [{status[qid]}]")
-            print(f"      as written : {q['symbol']} = {defs[qid]}")
-            red = reduce_fully(defs[qid])
-            if red != defs[qid]:
-                print(f"      reduced    : {q['symbol']} = {red}")
-            leftovers = sorted(str(s) for s in red.free_symbols)
-            print(f"      rests on   : {', '.join(leftovers) if leftovers else '(pure number)'}")
+    for quantity in registry.quantities.values():
+        relation = definitions.get(quantity.qid)
+        if relation is None:
+            continue
+        reduced_expression, leaves = reduced[quantity.qid]
+        print(f"\n  {quantity.symbol_name}   [{relation.provenance_status}]")
+        print(f"      as written : {quantity.symbol_name} = {relation.rhs}")
+        if reduced_expression != relation.rhs:
+            print(f"      reduced    : {quantity.symbol_name} = {reduced_expression}")
+        rests_on = ", ".join(
+            registry.quantities[qid].symbol_name for qid in sorted(leaves)
+        )
+        print(f"      rests on   : {rests_on if rests_on else '(pure number)'}")
 
     print()
     print("=" * 78)
-    print(f"SUMMARY: {len(supplied)} must be supplied, {len(defs)} are derived, "
-          f"{len(quantities)} tracked total")
+    print(
+        f"SUMMARY: {simulation_inputs} simulation inputs, "
+        f"{structural_choices} structural "
+        f"{'selection' if structural_choices == 1 else 'selections'}, "
+        f"{len(definitions)} derived, {len(registry.quantities)} tracked total"
+    )
     print("=" * 78)
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

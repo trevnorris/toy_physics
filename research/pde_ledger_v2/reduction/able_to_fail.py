@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mutation demonstrations for four required able-to-fail controls."""
+"""Mutation demonstrations for the required able-to-fail controls."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from registry_read import AdmissionError, Registry, load_raw_documents, load_reg
 
 
 HERE = Path(__file__).resolve().parent
-CASES = ("vacuous", "duplicate", "independent", "provenance")
+CASES = ("vacuous", "duplicate", "entailed", "independent", "provenance")
 
 
 def _baseline(registry: Registry) -> tuple[tuple, int]:
@@ -50,6 +50,25 @@ def demonstrate_duplicate() -> int:
         return 0
     print(
         f"EXPECTED_FAILURE duplicate-counted: forbidden after={forbidden}; "
+        f"observed after={after} (unchanged={after == before})"
+    )
+    return 1
+
+
+def demonstrate_entailed() -> int:
+    registry = load_registry()
+    baseline, before = _baseline(registry)
+    xi_h = registry.symbols[registry.resolve_qid("xi_h")]
+    a_pin = registry.symbols[registry.resolve_qid("a")]
+    entailed = xi_h**2 - 2 * a_pin**2
+    assert entailed not in baseline
+    after = registry.constraint_dimension(baseline + (entailed,))
+    forbidden = before - 1
+    if after == forbidden:
+        print(f"UNEXPECTED_PASS semantic-entailment-counted: forbidden={forbidden} observed={after}")
+        return 0
+    print(
+        f"EXPECTED_FAILURE semantic-entailment-counted: forbidden after={forbidden}; "
         f"observed after={after} (unchanged={after == before})"
     )
     return 1
@@ -94,6 +113,7 @@ def run_one(case_name: str) -> int:
     return {
         "vacuous": demonstrate_vacuous,
         "duplicate": demonstrate_duplicate,
+        "entailed": demonstrate_entailed,
         "independent": demonstrate_independent,
         "provenance": demonstrate_provenance,
     }[case_name]()

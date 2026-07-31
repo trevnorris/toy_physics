@@ -200,7 +200,7 @@ quantities:
 
   - qid: Q.medium.n_eos
     symbol: n_eos
-    kind: parameter
+    kind: discrete-choice
     scope: [medium, I-1]
     regime: [medium-GNLS-positive-real]
     state: live

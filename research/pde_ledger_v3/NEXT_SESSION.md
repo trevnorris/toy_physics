@@ -75,6 +75,32 @@ momentum/energy partners.
 
 ---
 
+## ⛔⛔ FIRST TASK — six residuals, carried deliberately, NOT folded
+
+Nine review rounds were run (Codex + Grok, iterating). **Grok returned CLEAN five times**, empty blocker
+list. **Codex is still finding items** — these six. They are recorded rather than half-folded because the
+session ran out of context, and a half-fold is what caused three of the previous rounds' findings.
+
+1. ⭐⭐ **`stage005`'s registry loci are now SILENTLY WRONG — and this is a live demonstration of F4.**
+   The `WHOLLY HISTORICAL` banner I added shifted `stage005`'s line numbers, so
+   `reduction/quantities.yaml`'s loci (`:100, :104, :157, :161, :176 …`, ranges `73-88`, `68-90`,
+   `189-203`) now point at the wrong text. ⛔ **Every gate still passes** — `_validate_loci` only checks
+   the range *fits inside the file*. ⇒ Fix the loci, and treat this as the argument for fixing **F4**
+   itself.
+2. **S2's live registry provenance points into an artifact now marked do-not-consume.** `c_s0`,
+   `c_gamma`, `lambda_gamma` all cite `stage005`. Re-point them as part of **S0.5**.
+3. **S16's quotation** — the source block is now restored to the paper's actual (dimensionally loose)
+   text, with the typo recorded. ⚠ Verify the repaired form is cited *separately* and never as a quote.
+4. **The governing method doc** reportedly still states both retracted rules in operative text —
+   re-check `docs/derivation_walkthrough_plan.md` against HEAD.
+5. **`model_map.md` / control plane** — pre-correction assertions may remain below the new front-pointer.
+6. **A13's branch choice does not propagate through S6** (the kink step) — it is gated at S1/S5/S12 only.
+
+⇒ ⭐ **Do these first, side by side, before S0.5.** They are small, and every one of them is residue from
+a correction that was *appended rather than applied*.
+
+---
+
 ## ⛔ THE FOUR THINGS MOST LIKELY TO GO WRONG
 
 1. **Treating a clean v3-gravity close as validation of the model.** It is not. Gravity is clean

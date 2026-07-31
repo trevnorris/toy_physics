@@ -332,7 +332,7 @@ must be *supplied* for the far field to be computable without the interior.
 ⚠ **Read the actual statement, not the slogan** — ⛔ and note the transcription caveat below (`research/4d_2_5pn/paper/4d_2_5pn.tex:605-614`):
 
 > *"For a **compact defect of size `a ≪ r`** in a smooth external field, the center-of-mass reduction
-> gives the usual point-particle force law … `+ O(M_A·(a_WT²/r²)·Φ_ext/r)` … so that the universal
+> gives the usual point-particle force law … `+ O((a²/r²)·Φ_ext/r)` … so that the universal
 > point-particle source **at leading order** is controlled by the worldline/worldtube multipoles rather
 > than by arbitrary internal details of the defect."*
 
@@ -352,7 +352,7 @@ corpus establishes is a **response-side** result: how a compact body *moves in* 
 a vanishing dipole, a quasi-static conservative regime, **a calibrated potential `−Gm/r`**, and
 **supplied mass and multipole moments**, with boundary flux discarded by assumption.
 
-⛔ **QUOTATION INTEGRITY.** `4d_2_5pn.tex:605-614` writes the remainder **without** the mass factor,
+⛔ **QUOTATION INTEGRITY — the block above is the source AS WRITTEN.** `4d_2_5pn.tex:605-614` writes the remainder **without** the mass factor,
 which makes it dimensionally inhomogeneous (force on the left, acceleration in the remainder). ⛔ **Do
 not present the repaired formula as a quotation.** Quote the source as written, record the missing-mass
 **typo**, and cite the dimensionally correct form from `4d_1pn_full.tex:886`.

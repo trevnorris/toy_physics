@@ -69,3 +69,47 @@ where the whole program is pointed.
 derived from the other** — the relation is silent about which is fundamental. The hypothesis that `ħ` is a
 particle size in the medium needs something *outside* that relation to pin one of them, and nothing
 currently does. ⇒ Not a bookkeeping gap; a real gap in the model.
+
+---
+
+### D-01a — sequencing and blast radius (user, 2026-07-30)
+
+**Order is fixed:** ① archive the old apparatus → ② **repair the `a`-pin damage** → ③ resume the ledger
+walkthrough. ⛔ Do not resume step 3 of phase 0 before ② is done. ⚠ Repair may require **revisiting
+already-derived steps**, since anything that consumed the pin as a physical radius is suspect.
+
+⛔⛔ **TRIAGE FIRST — a mention is not damage.** Many files reference `a` legitimately as a symbol. The
+damage is only where one of these is true:
+- **(a)** the pin is presented as *determining a physical radius*;
+- **(b)** the pin and the throat radius are **conflated** as one quantity;
+- **(c)** their dimensional coincidence was recorded as *evidence of consistency*.
+
+⇒ Sort every hit into damaged / benign-mention **before** editing anything. Editing on a grep hit is how a
+symbol-level change becomes a corpus-wide mess.
+
+**Tier 1 — live v2 ledger, must be fixed**
+| file | why |
+|---|---|
+| `notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md` + its `.py`/`.wl` | ⭐ the pin's **definition site** (`:124-134`) — start here |
+| `notes/parameter_register.md:132` | the `a` (pin) row, `CONV`, "never free" |
+| `notes/stages/ledger_stage016_l2_so3_covariance.md:184` | ⛔ **(b)** asserts `a` *"is the same throat radius as stage018's — a physical-radius"* |
+| `notes/stages/ledger_stage023_nullspace_underdetermination.md:481` | ⛔ **(b)** *"throat/pin radius"* as one thing |
+| `STATUS.md:40` | ⛔ **(c)** logs the three-stage grouping as agreement |
+| `notes/stages/ledger_stage005_…md` + `notes/stage005_pathA20_source_map.md` | carry the anti-tautology caveat — ⭐ these are *correct*, keep and cite |
+| `scripts/ledger_stage043_…_sympy_audit.py` + `.wl` | reference the pin in the count manifest |
+| `reduction/` (`quantities.yaml`, `relations.yaml`) | our own `a_pin` quantity + `R2.a_pin`; ambient count depends on its class |
+
+**Tier 2 — Path-A / solver cluster; scope decision needed before touching**
+`software/stage1_solver/`: `decisions/13`, `decisions/14`, `reports/pathA_19`, `pathA_21`, `pathA_21b`,
+`directives/pathA_18/19/20/20b/21`, `src/stage1_solver/dimensional_check.py`; plus
+`docs/pathA_preregistration.md` (which already warns ⛔ *"do NOT rely on the `a=c_s=ħ=m=1` natural-unit
+pins"* — ⭐ correct, keep).
+
+**Tier 3 — EM-charge cluster, ~15 files** — `software/em_charge_attribute/u1_*`, `u2_*`. ⚠ Uses `a_pin`
+heavily. ⛔ Scope unknown; do not touch without deciding whether that workstream is live.
+
+**Tier 4 — out of scope** — `research/pde_ledger/redteam_adversarial/*` (the *old* ledger, not v2), and
+`notes/census/pilot/*` (archived anyway).
+
+⭐ **Start at the definition site (`stage004`) and work outward.** Fixing consumers first leaves the
+source of the error in place to re-infect them.

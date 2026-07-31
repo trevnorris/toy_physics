@@ -3,16 +3,19 @@
 
 from __future__ import annotations
 
+import warnings
 from collections import Counter
 from copy import deepcopy
 from dataclasses import dataclass
 from fractions import Fraction
+from itertools import combinations
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 import jsonschema
 import sympy as sp
 import yaml
+from sympy.solvers.solvers import unrad
 
 
 HERE = Path(__file__).resolve().parent
@@ -43,6 +46,10 @@ class EvaluationError(RegistryError):
     """Forward evaluation could not be completed without freezing a derived value."""
 
 
+class DeclaredValueDefaultWarning(UserWarning):
+    """Forward propagation consumed an explicitly enabled declared-value default."""
+
+
 @dataclass(frozen=True)
 class Quantity:
     qid: str
@@ -53,6 +60,7 @@ class Quantity:
     state: str
     counting_axis: str
     dimension: tuple[int, int, int]
+    value: sp.Rational | None
     aliases: tuple[str, ...]
     raw: Mapping[str, Any]
 
@@ -188,6 +196,16 @@ class Registry:
             if qid in result:
                 raise RegistryValidationError(f"duplicate qid: {qid}")
             dimension = tuple(int(value) for value in row["dimension"]["exponents"])
+            raw_value = row.get("value")
+            if raw_value is None:
+                value = None
+            elif isinstance(raw_value, bool):
+                raise RegistryValidationError(f"{qid}: boolean is not an exact value")
+            elif isinstance(raw_value, int):
+                value = sp.Rational(raw_value)
+            else:
+                numerator, denominator = raw_value[1:]
+                value = sp.Rational(numerator, denominator)
             result[qid] = Quantity(
                 qid=qid,
                 symbol_name=str(row["symbol"]),
@@ -197,6 +215,7 @@ class Registry:
                 state=str(row["state"]),
                 counting_axis=str(row["counting_axis"]),
                 dimension=dimension,  # type: ignore[arg-type]
+                value=value,
                 aliases=tuple(str(value) for value in row["aliases"]),
                 raw=deepcopy(dict(row)),
             )
@@ -339,6 +358,7 @@ class Registry:
                         f"{relation_id}: denominator guard uses a non-input QID"
                     )
                 self.parse_expression(guard)
+            self._validate_literal_consistency(relation_id, row)
 
             result[relation_id] = Relation(
                 relation_id=relation_id,
@@ -351,6 +371,59 @@ class Registry:
                 raw=deepcopy(dict(row)),
             )
         return result
+
+    @staticmethod
+    def _node_at_path(node: Any, path: Sequence[int], label: str) -> Any:
+        current = node
+        for depth, index in enumerate(path):
+            if (
+                isinstance(current, bool)
+                or not isinstance(current, list)
+                or index < 0
+                or index >= len(current)
+            ):
+                raise RegistryValidationError(
+                    f"{label}: literal_path is invalid at depth {depth}: {tuple(path)!r}"
+                )
+            current = current[index]
+        return current
+
+    def _validate_literal_consistency(
+        self,
+        relation_id: str,
+        row: Mapping[str, Any],
+    ) -> None:
+        """Check declared transport literals against valued registry quantities."""
+        seen_paths: set[tuple[int, ...]] = set()
+        for assertion in row["literal_consistency"]:
+            path = tuple(int(index) for index in assertion["literal_path"])
+            if path in seen_paths:
+                raise RegistryValidationError(
+                    f"{relation_id}: duplicate literal_consistency path: {path!r}"
+                )
+            seen_paths.add(path)
+            observed = self._node_at_path(
+                row["residual"],
+                path,
+                f"{relation_id}.literal_consistency",
+            )
+            if isinstance(observed, bool) or not isinstance(observed, int):
+                raise RegistryValidationError(
+                    f"{relation_id}: asserted node at {path!r} is not an integer literal: "
+                    f"{observed!r}"
+                )
+            qid = self.resolve_qid(str(assertion["quantity"]))
+            quantity_value = self.quantities[qid].value
+            if quantity_value is None:
+                raise RegistryValidationError(
+                    f"{relation_id}: literal_consistency requires a declared value for {qid}"
+                )
+            expected = quantity_value + int(assertion["offset"])
+            if sp.Integer(observed) != expected:
+                raise RegistryValidationError(
+                    f"{relation_id}: literal at {path!r} is {observed}, but "
+                    f"{qid}({quantity_value}) + {int(assertion['offset'])} = {expected}"
+                )
 
     def _all_loci(self) -> Iterable[tuple[str, Mapping[str, Any]]]:
         for quantity in self.quantities.values():
@@ -560,7 +633,7 @@ class Registry:
         constraints: Iterable[sp.Expr] | None = None,
         variables: Sequence[sp.Symbol] | None = None,
     ) -> int:
-        """Finite-scalar dimension from Jacobian rank at an exact generic witness."""
+        """Return algebraic dimension from a grevlex initial-monomial ideal."""
         selected_variables = tuple(self.active_variables if variables is None else variables)
         selected_constraints = tuple(
             sp.simplify(expression)
@@ -574,6 +647,104 @@ class Registry:
         for expression in selected_constraints:
             if not expression.free_symbols and expression != 0:
                 return -1
+
+        polynomials: list[sp.Expr] = []
+        for expression in selected_constraints:
+            if not expression.free_symbols <= set(selected_variables):
+                outside = sorted(map(str, expression.free_symbols - set(selected_variables)))
+                raise EvaluationError(
+                    f"constraint uses symbols outside the dimension variables: {outside!r}"
+                )
+            equation = sp.together(expression)
+            try:
+                radical_result = unrad(equation, *selected_variables)
+            except (NotImplementedError, TypeError, ValueError) as exc:
+                raise EvaluationError(
+                    f"could not polynomialize constraint: {expression}"
+                ) from exc
+            if radical_result is not None:
+                equation, covariance = radical_result
+                if covariance:
+                    raise EvaluationError(
+                        "constraint needs auxiliary radical-cover variables, which "
+                        "the finite-scalar dimension helper does not support"
+                    )
+            numerator = sp.expand(sp.together(equation).as_numer_denom()[0])
+            try:
+                polynomial = sp.Poly(
+                    numerator,
+                    *selected_variables,
+                    extension=True,
+                ).as_expr()
+            except (sp.PolynomialError, TypeError, ValueError) as exc:
+                raise EvaluationError(
+                    f"constraint is not polynomial after exact radical clearing: {expression}"
+                ) from exc
+            if polynomial != 0:
+                polynomials.append(polynomial)
+
+        if not polynomials:
+            return len(selected_variables)
+        try:
+            basis = sp.groebner(
+                tuple(polynomials),
+                *selected_variables,
+                order="grevlex",
+                extension=True,
+            )
+        except (sp.PolynomialError, TypeError, ValueError) as exc:
+            raise EvaluationError(
+                "could not construct the grevlex Groebner basis"
+            ) from exc
+
+        leading_supports: list[frozenset[int]] = []
+        for polynomial in basis.polys:
+            leading_monomial = tuple(polynomial.LM(order=basis.order))
+            support = frozenset(
+                index
+                for index, exponent in enumerate(leading_monomial)
+                if exponent
+            )
+            if not support:
+                return -1
+            leading_supports.append(support)
+
+        # A monomial quotient's dimension is the largest coordinate subset
+        # containing no leading-monomial generator support in full.
+        for size in range(len(selected_variables), -1, -1):
+            for candidate in combinations(range(len(selected_variables)), size):
+                candidate_set = frozenset(candidate)
+                if all(
+                    not support <= candidate_set
+                    for support in leading_supports
+                ):
+                    return size
+        raise AssertionError("initial-ideal dimension search failed")
+
+    def certify_positive_real_dimension(
+        self,
+        constraints: Iterable[sp.Expr] | None = None,
+        variables: Sequence[sp.Symbol] | None = None,
+        dimension: int | None = None,
+    ) -> None:
+        """Certify an exact positive smooth point of the algebraic dimension."""
+        selected_variables = tuple(self.active_variables if variables is None else variables)
+        selected_constraints = tuple(
+            sp.simplify(expression)
+            for expression in (
+                self.admitted_constraint_set if constraints is None else tuple(constraints)
+            )
+            if sp.simplify(expression) != 0
+        )
+        expected_dimension = (
+            self.constraint_dimension(selected_constraints, selected_variables)
+            if dimension is None
+            else dimension
+        )
+        if expected_dimension < 0:
+            raise EvaluationError("the algebraic constraint locus is empty")
+        if not selected_constraints:
+            return
 
         try:
             solution_branches = sp.solve(
@@ -595,17 +766,10 @@ class Registry:
                 "the locus may be empty or unsupported"
             )
 
-        constraint_symbols = set().union(
-            *(expression.free_symbols for expression in selected_constraints)
-        )
         jacobian = sp.Matrix(selected_constraints).jacobian(selected_variables)
-        best_rank: int | None = None
-
-        # Try every solver branch and several exact positive parameter points.
-        # Taking the largest witnessed rank avoids singular special points; a
-        # candidate is used only after every constraint vanishes exactly.
+        witnessed_dimensions: set[int] = set()
         for branch in solution_branches:
-            branch_symbols = constraint_symbols | set().union(
+            branch_symbols = set(selected_variables) | set().union(
                 *(expression.free_symbols for expression in branch.values()),
                 set(),
             )
@@ -627,11 +791,11 @@ class Registry:
                         progress = True
                     if not progress:
                         break
-                if pending or not constraint_symbols <= set(witness):
+                if pending or not set(selected_variables) <= set(witness):
                     continue
                 if any(
                     sp.simplify(witness[symbol]).is_positive is not True
-                    for symbol in constraint_symbols
+                    for symbol in selected_variables
                 ):
                     continue
                 if any(
@@ -643,13 +807,19 @@ class Registry:
                 if exact_jacobian.free_symbols:
                     continue
                 rank = int(exact_jacobian.rank())
-                best_rank = rank if best_rank is None else max(best_rank, rank)
+                local_dimension = len(selected_variables) - rank
+                witnessed_dimensions.add(local_dimension)
+                if local_dimension == expected_dimension:
+                    return
 
-        if best_rank is None:
+        if not witnessed_dimensions:
             raise EvaluationError(
                 "solver branches yielded no exact positive constraint-satisfying witness"
             )
-        return len(selected_variables) - best_rank
+        raise EvaluationError(
+            "exact positive witnesses did not attain the algebraic dimension: "
+            f"expected={expected_dimension}, witnessed={sorted(witnessed_dimensions)!r}"
+        )
 
     @staticmethod
     def _predicate_holds(predicate: str, value: sp.Expr) -> bool:
@@ -670,6 +840,8 @@ class Registry:
         self,
         output: str,
         numeric_inputs: Mapping[str, Any],
+        *,
+        allow_declared_defaults: bool = False,
     ) -> sp.Expr:
         """Recursively compute an admitted designated output from primitive inputs.
 
@@ -703,6 +875,7 @@ class Registry:
 
         memo: dict[str, sp.Expr] = {}
         used_inputs: set[str] = set()
+        defaulted_inputs: set[str] = set()
         visiting: list[str] = []
 
         def compute(qid: str) -> sp.Expr:
@@ -710,10 +883,23 @@ class Registry:
                 return memo[qid]
             relation = self._admitted_by_output.get(qid)
             if relation is None:
-                if qid not in provided:
-                    raise EvaluationError(f"missing primitive/residue numeric input: {qid}")
+                if qid in provided:
+                    used_inputs.add(qid)
+                    memo[qid] = provided[qid]
+                    return memo[qid]
+                declared_value = self.quantities[qid].value
+                if declared_value is None or not allow_declared_defaults:
+                    opt_in_hint = (
+                        "; declared value available with allow_declared_defaults=True"
+                        if declared_value is not None
+                        else ""
+                    )
+                    raise EvaluationError(
+                        f"missing primitive/residue numeric input: {qid}{opt_in_hint}"
+                    )
                 used_inputs.add(qid)
-                memo[qid] = provided[qid]
+                defaulted_inputs.add(qid)
+                memo[qid] = declared_value
                 return memo[qid]
             if qid in provided:
                 raise EvaluationError(
@@ -769,6 +955,15 @@ class Registry:
         unused = set(provided) - used_inputs
         if unused:
             raise EvaluationError(f"unused numeric inputs would mask dataflow mistakes: {sorted(unused)!r}")
+        if defaulted_inputs:
+            rendered_defaults = ", ".join(
+                f"{qid}={memo[qid]}" for qid in sorted(defaulted_inputs)
+            )
+            warnings.warn(
+                f"declared value defaults used: {rendered_defaults}",
+                DeclaredValueDefaultWarning,
+                stacklevel=2,
+            )
         return result
 
 
@@ -809,10 +1004,12 @@ def main() -> int:
         "DISCRETE_STRUCTURAL: choices="
         + ",".join(str(variable) for variable in registry.discrete_structural_variables)
     )
+    after = registry.constraint_dimension()
+    registry.certify_positive_real_dimension(dimension=after)
     print(
         f"DIMENSION: ambient={len(registry.active_variables)} "
-        f"after={registry.constraint_dimension()} "
-        f"rank={len(registry.active_variables) - registry.constraint_dimension()}"
+        f"after={after} "
+        f"rank={len(registry.active_variables) - after}"
     )
     propagated = registry.evaluate_output(
         "lambda_gamma",

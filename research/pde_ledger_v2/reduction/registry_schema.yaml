@@ -10,6 +10,19 @@ $defs:
     type: string
     pattern: "^Q\\.[A-Za-z0-9_.-]+$"
 
+  exact_value:
+    oneOf:
+      - type: integer
+      - type: array
+        minItems: 3
+        maxItems: 3
+        prefixItems:
+          - const: Rat
+          - type: integer
+          - type: integer
+            not: {const: 0}
+        items: false
+
   nonempty_strings:
     type: array
     minItems: 1
@@ -126,6 +139,8 @@ $defs:
         enum: [continuous-model, convention-orbit, discrete-structural]
       dimension:
         $ref: "#/$defs/dimension"
+      value:
+        $ref: "#/$defs/exact_value"
       aliases:
         type: array
         uniqueItems: true
@@ -152,6 +167,7 @@ $defs:
       - assumptions
       - domain_measure_bcs
       - denominator_guards
+      - literal_consistency
       - source_locus
       - execution_locus
       - benchmark_refs
@@ -219,6 +235,24 @@ $defs:
         type: array
         items:
           $ref: "#/$defs/expression"
+      literal_consistency:
+        type: array
+        uniqueItems: true
+        items:
+          type: object
+          additionalProperties: false
+          required: [literal_path, quantity, offset]
+          properties:
+            literal_path:
+              type: array
+              minItems: 1
+              items:
+                type: integer
+                minimum: 0
+            quantity:
+              $ref: "#/$defs/qid"
+            offset:
+              type: integer
       source_locus:
         $ref: "#/$defs/locus"
       execution_locus:

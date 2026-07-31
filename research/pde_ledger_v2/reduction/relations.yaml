@@ -23,6 +23,9 @@ relations:
       boundary_conditions: []
     denominator_guards:
       - [Q, Q.medium.mass]
+    literal_consistency:
+      - {literal_path: [2, 1, 1, 1], quantity: Q.medium.n_eos, offset: 0}
+      - {literal_path: [2, 1, 1, 3, 2], quantity: Q.medium.n_eos, offset: -1}
     source_locus: {path: notes/parameter_register.md, line_start: 268, line_end: 268}
     execution_locus: {path: scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py, line_start: 331, line_end: 361}
     benchmark_refs: []
@@ -46,6 +49,7 @@ relations:
     denominator_guards:
       - [Q, Q.medium.mass]
       - [Q, Q.medium.c_s0]
+    literal_consistency: []
     source_locus: {path: notes/parameter_register.md, line_start: 269, line_end: 269}
     execution_locus: {path: scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py, line_start: 277, line_end: 289}
     benchmark_refs: []
@@ -72,6 +76,7 @@ relations:
     denominator_guards:
       - [Q, Q.medium.mass]
       - [Q, Q.medium.c_s0]
+    literal_consistency: []
     source_locus: {path: notes/parameter_register.md, line_start: 269, line_end: 269}
     execution_locus: {path: scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py, line_start: 292, line_end: 309}
     benchmark_refs: []
@@ -93,6 +98,7 @@ relations:
       measure: null
       boundary_conditions: []
     denominator_guards: []
+    literal_consistency: []
     source_locus: {path: notes/parameter_register.md, line_start: 269, line_end: 269}
     execution_locus: {path: scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py, line_start: 277, line_end: 285}
     benchmark_refs: []
@@ -115,6 +121,7 @@ relations:
       boundary_conditions: []
     denominator_guards:
       - [Q, Q.medium.c_s0]
+    literal_consistency: []
     source_locus: {path: notes/parameter_register.md, line_start: 270, line_end: 270}
     execution_locus: {path: scripts/midway_knob_audit_codimension_sympy.py, line_start: 90, line_end: 113}
     benchmark_refs: []

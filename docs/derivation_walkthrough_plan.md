@@ -233,49 +233,14 @@ and its canonical doc.
 
 ---
 
-## 5. Cleanup — ✅ EXECUTED 2026-07-30
+## 5. Cleanup — ✅ DONE 2026-07-30
 
-> ✅ **Done.** `archive/census/` and `archive/manifests/` created by `git mv` (history preserved).
-> ⭐ The per-file split below was followed: `DIMENSION_REWRITE.md` and `DIM_ORDER_DECISION.md` remain at
-> `research/pde_ledger_v2/manifests/` with **paths unchanged**, because dozens of documents cite them.
-> ⛔ `notes/ablation_driver/` and `notes/wl_emitter/` were kept, per this section. See `archive/README.md`.
-> ⚠ What follows is the plan as written, retained as the record of what was decided and why.
+Archived by `git mv` (history preserved, nothing deleted): `archive/census/` and
+`archive/manifests/`. ⭐ `DIMENSION_REWRITE.md` and `DIM_ORDER_DECISION.md` deliberately **kept** at
+`research/pde_ledger_v2/manifests/` with unchanged paths; `notes/ablation_driver/` and
+`notes/wl_emitter/` kept as the specs for checks 6 and 5.
 
-
-**Motivation:** a Zenodo packaging script bundles the tree; superseded apparatus should not ship.
-
-⛔ **Archive only what we will not use.** (User, 2026-07-30.) Both earlier `⚠ user call` items are
-**KEPT**, because the new plan's own checks consume them:
-- `notes/ablation_driver/REQUIREMENTS.md` — the spec for **check 6** (able-to-fail).
-- `notes/wl_emitter/` — the spec for **check 5** (dual-engine emission).
-
-**Move to `archive/` (preserved, ⛔ not deleted).** ⚠ **The destination is the repository top level —
-`/var/projects/toy_physics/archive/`** — and it **does not exist yet**; the move creates it. ⛔ It is not
-a directory inside `research/pde_ledger_v2/`.
-
-| path | why |
-|---|---|
-| `research/pde_ledger_v2/notes/census/` (7 files, 320K — ✅ both figures re-verified 2026-07-30) | the audit route the walkthrough supersedes ⚠ extract §4 findings first |
-| `research/pde_ledger_v2/manifests/` — ⛔ **PER-FILE, not the directory** (caveat below) | the 44-manifest system, 4 of 44 built, superseded as a route |
-
-⛔⛔ **`manifests/` is a PER-FILE SPLIT, not a whole-directory `git mv`.** The directory holds **live code
-and the active conversion doc** mixed in with the superseded manifest system. ⚠ Recorded independently in
-`STATUS.md` (§PAUSED) and `research/pde_ledger_v2/_scratch/NEXT_SESSION.md`. **Must stay in place:**
-`DIMENSION_REWRITE.md` (the dimension rewrite's canonical doc), `composite_build.py`, `mutators/`,
-`examples/`. ⇒ A directory move would archive live code, so the split is per-file.
-⚠ **The rest of the membership is not yet decided and this plan does not decide it** — `STATUS.md`
-§PAUSED records the manifest system's *semantic core* as **"not yet withdrawn"**, so which of
-`stages/`, `reports/`, the two schema files, `composite_config.json`, `MANIFEST_README.md`,
-`EXTRACTION_PROTOCOL.md`, `LEDGER_WIDE_PLAN.md` and `DIM_ORDER_DECISION.md` go is part of executing ①.
-
-**Mechanics:** `git mv` (history preserved) · one commit, reversible. ⛔ For `manifests/`, per-file `git
-mv` only.
-⚠ The Zenodo packaging script is **user-owned and user-edited**; no constraint on this plan from it.
-
-⛔ **Not archived:** anything in §4's carry-forward list, `docs/model_map.md`, the stage notes, the
-scripts, `parameter_register.md`.
-
----
+⇒ **What was archived, why, and where the census's findings went: `archive/README.md`.**
 
 ## 5a. ⭐⭐ The two scripts — a standing deliverable, grown step by step
 

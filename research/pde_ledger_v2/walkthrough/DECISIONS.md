@@ -83,8 +83,9 @@ currently does. ⇒ Not a bookkeeping gap; a real gap in the model.
 
 ### D-01a — sequencing and blast radius (user, 2026-07-30)
 
-**Order is fixed:** ① archive the old apparatus → ② **repair the `a`-pin damage** → ③ resume the ledger
-walkthrough. ⛔ Do not resume step 3 of phase 0 before ② is done. ⚠ Repair may require **revisiting
+**Order is fixed:** ✅ ~~archive the old apparatus~~ (**DONE** 2026-07-30 — `archive/`, see
+`archive/README.md`) → ① **repair the `a`-pin damage** → ② resume the ledger walkthrough.
+⛔ Do not resume phase 0 before ① is done. ⚠ Repair may require **revisiting
 already-derived steps**, since anything that consumed the pin as a physical radius is suspect.
 
 ⛔⛔ **TRIAGE FIRST — a mention is not damage.** Many files reference `a` legitimately as a symbol. The

@@ -123,7 +123,7 @@ $defs:
       state:
         enum: [live, retired]
       counting_axis:
-        enum: [continuous-model, convention-orbit]
+        enum: [continuous-model, convention-orbit, discrete-structural]
       dimension:
         $ref: "#/$defs/dimension"
       aliases:

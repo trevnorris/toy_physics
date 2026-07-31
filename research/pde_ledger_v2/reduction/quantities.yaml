@@ -147,7 +147,7 @@ quantities:
     scope: [medium, I-1, branch-pin]
     regime: [medium-GNLS-positive-real]
     state: live
-    counting_axis: convention-orbit
+    counting_axis: continuous-model
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [1, 0, 0]
@@ -204,7 +204,7 @@ quantities:
     scope: [medium, I-1]
     regime: [medium-GNLS-positive-real]
     state: live
-    counting_axis: continuous-model
+    counting_axis: discrete-structural
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [0, 0, 0]

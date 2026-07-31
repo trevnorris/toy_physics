@@ -78,7 +78,13 @@ that regime in the finite scalar ambient space.  Live `convention-orbit`
 coordinates and `discrete-structural` choices are reported separately.
 `Q.medium.a_pin` is a continuous-model output of an admitted explicit
 definition; `Q.medium.n_eos` records the discrete structural EOS choice and is
-not a continuous knob.
+not a continuous knob.  A quantity may also carry an exact `value` (integer or
+`[Rat,p,q]`); the seed declares `Q.medium.n_eos.value: 5`.  Declared values are
+not automatic numeric inputs.  A caller may opt into their use during forward
+propagation with `allow_declared_defaults=True`; every default consumed is
+reported with `DeclaredValueDefaultWarning`.  The opt-in preserves the
+missing-input guard and prevents a newly declared value from silently changing
+an existing caller's dataflow.
 
 ## Relation document
 
@@ -95,7 +101,11 @@ is consequently `R2.xi_h`, `R2.a_pin`, and `R2.h0`.
 `domain_measure_bcs` is explicit even for a finite scalar relation.  A reader
 must evaluate every `denominator_guards` expression and reject zero or
 undetermined denominators before numeric evaluation.  `assumptions` are typed
-predicates over QIDs.  `source_locus` identifies the claim and
+predicates over QIDs.  `literal_consistency` assertions name an integer node in
+the transported residual by path and require it to equal a valued quantity plus
+an integer offset.  R1 uses these assertions to require its coefficient and
+power to be `n_eos` and `n_eos - 1`; this is a structural check, not a symbolic
+exponent in the residual.  `source_locus` identifies the claim and
 `execution_locus` identifies executable evidence.  Paths are ledger-root
 relative and line ranges must exist.  `benchmark_refs` is reserved for external
 anchors and is empty in this seed.
@@ -118,10 +128,19 @@ must itself be the output of an admitted relation.
 
 The residue is every live active-regime QID that is not a designated output of
 an admitted relation on the `continuous-model` axis.  Finite-block dimension is
-ambient QIDs minus the largest Jacobian rank observed across exact positive
-constraint-satisfying solver branches and exact parameter witnesses.  The
-helper never evaluates rank off the constraint locus.  Zero residuals are
-removed and nonzero constant residuals denote an empty locus.
+the Krull dimension of the exact polynomialized constraints, computed from the
+leading-monomial ideal of a grevlex Gröbner basis.  Zero residuals are removed
+and nonzero constant residuals denote an empty locus.  This algebraic dimension
+is the maximum component dimension; on a reducible locus it need not equal the
+dimension of the positive real locus.  A positive-real claim therefore has the
+explicit precondition that `certify_positive_real_dimension` finds an exact
+positive smooth witness whose local Jacobian dimension equals the algebraic
+dimension.  Witness ranks certify that precondition but never select the
+dimension.  Unlike the historical fixture helper, `constraint_dimension`
+rejects a constraint containing symbols outside its declared dimension
+variables instead of treating them as coefficient parameters (for example,
+`a*x - 1` over `(x,)`).  This fail-closed divergence prevents an accidentally
+omitted ambient variable from silently changing the dimension problem.
 
 ## Dimensional-homogeneity gate
 
@@ -147,6 +166,9 @@ recursively evaluates admitted explicit definitions from primitive/residue
 inputs.  It checks denominator guards, assumptions, and the final zero
 residual.  Supplying a derived QID on the dependency path is an error: the
 reader recomputes it instead of accepting an independently frozen value.
+Missing inputs remain errors even when a quantity declares a `value`; passing
+`allow_declared_defaults=True` opts into those defaults and visibly warns with
+the QID and value of each one used.
 
 Example:
 
@@ -172,16 +194,25 @@ python registry_read.py
 python acceptance_check.py
 python able_to_fail.py
 python able_to_fail.py --case vacuous
+python able_to_fail.py --demonstrate-crash
+python able_to_fail.py --demonstrate-empty
+python able_to_fail.py --demonstrate-spoof
 python dimensional_homogeneity_gate.py
 python show_reduced.py
+python -m unittest -v test_registry.py
 ```
 
 `acceptance_check.py` computes the registry payload first and compares last
 against the medium portion of the existing literal fixture; disagreement exits
 1 and is not reconciled.  `able_to_fail.py` runs five child mutations, including
-separate syntactic-duplicate and semantic-entailment controls.  Each child
-deliberately presents a forbidden expectation and must exit 1; the parent
-prints each failing output/exit code and exits 0 only when all five failures
-are observed.  `show_reduced.py` traverses only admitted explicit definitions,
-detects cycles or stalled substitutions, and reports the actual terminal QIDs
-left in each fully reduced expression.
+separate syntactic-duplicate and semantic-entailment controls.  A caught child
+must both exit 1 and print its case-specific `ABLE_TO_FAIL_CAUGHT` marker
+without stderr.  Exit 0 is an escaped mutation; any other outcome, including an
+exit-1 traceback without the marker, is an error.  `--demonstrate-crash`
+exercises that distinction and intentionally exits 1 with
+`ABLE_TO_FAIL_HARNESS: ERROR`.  The harness also refuses any case count other
+than the expected five.  Every echoed child line is framed by case and stream,
+and the parent-only verdict token is escaped in child text.  The empty and spoof
+demonstrations exercise these controls.  `show_reduced.py` traverses only
+admitted explicit definitions, detects cycles or stalled substitutions, and
+reports the actual terminal QIDs left in each fully reduced expression.

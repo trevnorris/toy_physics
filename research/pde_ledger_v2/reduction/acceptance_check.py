@@ -44,6 +44,7 @@ def compute_payload(registry: Registry) -> dict[str, dict[str, int]]:
     result: dict[str, dict[str, int]] = {}
     for case_name, constraints in medium_cases(registry).items():
         after = registry.constraint_dimension(constraints)
+        registry.certify_positive_real_dimension(constraints, dimension=after)
         result[case_name] = {
             "dim_before": ambient,
             "dim_after": after,

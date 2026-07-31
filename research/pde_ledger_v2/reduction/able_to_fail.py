@@ -8,11 +8,17 @@ import subprocess
 import sys
 from pathlib import Path
 
+import sympy as sp
+
 from registry_read import AdmissionError, Registry, load_raw_documents, load_registry
 
 
 HERE = Path(__file__).resolve().parent
 CASES = ("vacuous", "duplicate", "entailed", "independent", "provenance")
+ERROR_CASE = "no-witness-crash"
+SPOOF_CASE = "verdict-spoof"
+EXPECTED_FAILURE_EXIT = 1
+PARENT_VERDICT_TOKEN = "ABLE_TO_FAIL_HARNESS:"
 
 
 def _baseline(registry: Registry) -> tuple[tuple, int]:
@@ -109,19 +115,74 @@ def demonstrate_provenance() -> int:
     return 0
 
 
+def demonstrate_no_witness_crash() -> int:
+    """Exercise an unhandled live witness-certificate error in a child."""
+    variable = sp.Symbol("no_positive_solution", real=True)
+    registry = load_registry()
+    registry.certify_positive_real_dimension(
+        (variable + 1,),
+        (variable,),
+        dimension=0,
+    )
+    raise AssertionError("unreachable after missing positive witness")
+
+
+def demonstrate_verdict_spoof() -> int:
+    """Emit the reserved parent token to exercise child-output framing."""
+    print(f"{PARENT_VERDICT_TOKEN} PASS")
+    print("EXPECTED_FAILURE verdict-spoof: child output cannot forge the parent verdict")
+    return EXPECTED_FAILURE_EXIT
+
+
 def run_one(case_name: str) -> int:
-    return {
+    observed = {
         "vacuous": demonstrate_vacuous,
         "duplicate": demonstrate_duplicate,
         "entailed": demonstrate_entailed,
         "independent": demonstrate_independent,
         "provenance": demonstrate_provenance,
+        ERROR_CASE: demonstrate_no_witness_crash,
+        SPOOF_CASE: demonstrate_verdict_spoof,
     }[case_name]()
+    marker = "CAUGHT" if observed == EXPECTED_FAILURE_EXIT else "ESCAPED"
+    print(f"ABLE_TO_FAIL_{marker}: {case_name}")
+    return observed
 
 
-def run_harness() -> int:
-    all_caught = True
-    for case_name in CASES:
+def classify_child(
+    case_name: str,
+    completed: subprocess.CompletedProcess[str],
+) -> str:
+    """Distinguish a deliberate caught failure from an escape or child error."""
+    expected_marker = f"ABLE_TO_FAIL_CAUGHT: {case_name}"
+    stdout_lines = completed.stdout.splitlines()
+    if (
+        completed.returncode == EXPECTED_FAILURE_EXIT
+        and expected_marker in stdout_lines
+        and not completed.stderr.strip()
+    ):
+        return "CAUGHT"
+    if completed.returncode == 0:
+        return "ESCAPED"
+    return "ERROR"
+
+
+def echo_child_output(case_name: str, stream_name: str, output: str) -> None:
+    """Frame child lines and escape the token reserved for the parent verdict."""
+    for line in output.splitlines():
+        safe_line = line.replace(PARENT_VERDICT_TOKEN, "ABLE_TO_FAIL_CHILD_TEXT:")
+        print(f"CHILD {case_name} {stream_name}: {safe_line}")
+
+
+def run_harness(case_names: tuple[str, ...] = CASES) -> int:
+    statuses: list[str] = []
+    valid_case_count = len(case_names) == len(CASES)
+    if not valid_case_count:
+        print(
+            f"HARNESS_CASE_COUNT: ERROR expected={len(CASES)} "
+            f"observed={len(case_names)}"
+        )
+    for case_name in case_names:
         completed = subprocess.run(
             [sys.executable, str(Path(__file__).resolve()), "--case", case_name],
             check=False,
@@ -129,23 +190,54 @@ def run_harness() -> int:
             text=True,
             timeout=600,
         )
-        output = completed.stdout.strip()
-        if output:
-            print(output)
-        if completed.stderr.strip():
-            print(completed.stderr.strip())
-        print(f"DEMONSTRATION {case_name}: observed_exit={completed.returncode}")
-        if completed.returncode != 1:
-            all_caught = False
-    print(f"ABLE_TO_FAIL_HARNESS: {'PASS' if all_caught else 'FAIL'}")
-    return 0 if all_caught else 1
+        echo_child_output(case_name, "stdout", completed.stdout)
+        echo_child_output(case_name, "stderr", completed.stderr)
+        status = classify_child(case_name, completed)
+        statuses.append(status)
+        print(
+            f"DEMONSTRATION {case_name}: status={status} "
+            f"observed_exit={completed.returncode}"
+        )
+    if not valid_case_count:
+        result = "ERROR"
+    elif all(status == "CAUGHT" for status in statuses):
+        result = "PASS"
+    elif "ERROR" in statuses:
+        result = "ERROR"
+    else:
+        result = "FAIL"
+    print(f"{PARENT_VERDICT_TOKEN} {result}")
+    return 0 if result == "PASS" else 1
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--case", choices=CASES)
+    parser.add_argument("--case", choices=CASES + (ERROR_CASE, SPOOF_CASE))
+    parser.add_argument(
+        "--demonstrate-crash",
+        action="store_true",
+        help="run only the no-positive-witness child; success means harness exit 1/ERROR",
+    )
+    parser.add_argument(
+        "--demonstrate-empty",
+        action="store_true",
+        help="run zero children; success means harness exit 1/ERROR",
+    )
+    parser.add_argument(
+        "--demonstrate-spoof",
+        action="store_true",
+        help="run a child that emits the reserved parent verdict token",
+    )
     arguments = parser.parse_args()
-    return run_one(arguments.case) if arguments.case else run_harness()
+    if arguments.case:
+        return run_one(arguments.case)
+    if arguments.demonstrate_crash:
+        return run_harness((ERROR_CASE,))
+    if arguments.demonstrate_empty:
+        return run_harness(())
+    if arguments.demonstrate_spoof:
+        return run_harness((SPOOF_CASE,))
+    return run_harness()
 
 
 if __name__ == "__main__":

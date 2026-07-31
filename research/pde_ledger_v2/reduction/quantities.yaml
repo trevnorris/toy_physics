@@ -205,6 +205,7 @@ quantities:
     regime: [medium-GNLS-positive-real]
     state: live
     counting_axis: discrete-structural
+    value: 5
     dimension:
       convention: LTM-exponent-vector-v1
       exponents: [0, 0, 0]

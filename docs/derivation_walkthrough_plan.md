@@ -292,8 +292,9 @@ canonical expression both engines parse; ⛔ never two hand-typed copies.
 ## 7. Acceptance
 
 The walkthrough is working if, at any point:
-1. the accumulated **"what's new"** list is the irreducible input count, with each member traceable to
-   the step that introduced it;
+1. the accumulated **"what's new"** list is a **traceable introduction inventory** — every member
+   followable to the step that introduced it, with its class. ⛔ It is **not** the irreducible input
+   count, and no number is quoted off it: certification is **deferred to §7a** (see §1.0);
 2. every step passes its mandatory checks, with failures **recorded, not fixed by adjustment**;
 3. a reader can follow the chain from phase 0 to any step without consulting the audit apparatus;
 4. the registry can take values for the sim-input set and propagate them forward — the

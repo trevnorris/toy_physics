@@ -430,10 +430,15 @@ PHASE 3's drain:
   subset and leaves the drain predicates (`PASS_DRAIN_KERNEL_NORMALIZATIONS`, the drain mass / momentum /
   energy controllers) explicitly **out of scope**
   (`ledger_stage030_electric_scalar_localized_h_closure.md:242`).
-- **Q6** needs two earlier things: PHASE 2's **transverse-vector row** (imported and cited, ⛔ not
-  re-earned — `parameter_register.md:233`) and PHASE 3's **active-drain time arrow `τ_d`**, which the
-  `O(V)` moving row requires — *"a passive T-even throat would not supply it"*
-  (`ledger_stage034_transverse_move_action_row.md:100`; `parameter_register.md:232`).
+- **Q6** needs **one** earlier thing: PHASE 2's **transverse-vector row** (imported and cited, ⛔ not
+  re-earned — `parameter_register.md:233`).
+  ⛔ **`τ_d` is NOT a PHASE 3 inheritance.** The active-drain time arrow is **Q6/stage-034's own
+  POSTULATED input**: 034's magnetism-NEW content is *"exactly `{moving coupling, q_T, τ_d}`"*
+  (`ledger_stage034_transverse_move_action_row.md:38`, `:189`), and the register carries `τ_d` as
+  *"structural / postulated (**NOT** a reducible knob)"* with ⛔ **no reduction route**
+  (`parameter_register.md:232`, edge **R68**). ⚠ The `O(V)` moving row **requires** it — *"a passive
+  T-even throat would not supply it"* (`parameter_register.md:232`) — ⛔ but **requiring is not
+  deriving**, and PHASE 3 supplies no time arrow.
 - **Q7** checks coexistence against the **assembled** substrate's row list (gravity's scalar / drain /
   return / wall rows among them, byte-for-byte unchanged — `parameter_register.md:234`), so it runs last
   in the phase. ⚠ That is the row **inventory**, ⛔ not the S14a drain **bridge**.
@@ -541,20 +546,33 @@ Bank it as such.
 tier-A"* (`parameter_register.md:143`, edge **R65** `:331`;
 `software/em_charge_attribute/puncture_deflection_electric_sign_result.md:51`).
 
-**What it waits on — ⛔ FOUR DIFFERENT CLASSES, not one bucket.** ⛔ Give the class per item; lumping them
-hides that one of them is not an interior debt at all:
-- **`a`** (throat mouth radius) — **`FREE-UNREDUCED`**, ⛔ **no defining equation**, value undetermined
-  (`parameter_register.md:132`).
-- **`Q_E`** (charge magnitude) — **`FREE-UNREDUCED`, R1-deferred `magnitude`** (`:143`, edge **R65**).
-- **`c_a`, `c_ξ`** (core normalizations) — carried **inside** `Q_E`'s R1 magnitude, *"unbounded at
-  tier-A"* (`:143`); the mouth radius enters as `a = c_a r_e`.
-- **`ℓ`** (embedding / PT healing length) — ⛔ **`IMPOSED`/`CALIB`**, ⛔ **not R65** and ⛔ **not a
-  registered throat-solve output**: the RATIO `ℓ/a = 1/20` is a **frozen handoff scale — a tuning, not
-  derived** (`parameter_register.md:200`). ⇒ Treat it as a **calibrated input** to this step, and record
-  that **no reduction route for it is registered**.
+**What it waits on — ⛔ THREE DIFFERENT CLASSES, not one bucket.** ⛔ Give each item the method doc's
+class (`docs/derivation_walkthrough_plan.md:81`); ⛔ the shared `FREE-UNREDUCED` register label is **not**
+a class, and one of these is not an interior debt at all:
+- **`a`** (throat mouth radius) — **`postulated`**: `FREE-UNREDUCED`, ⛔ **no defining equation**, value
+  undetermined, and ⛔ **no named reduction route** (`parameter_register.md:132`). ⚠ **Count `a` only** —
+  `c_a` is then just `a/r_e`, ⛔ not a second independent supplied quantity.
+- **`Q_E`** (charge magnitude) — **`debt`**: the *same* `FREE-UNREDUCED` label as `a`, ⛔ **but a
+  different class** — `Q_E` *has* a named route, `R1_REQUIRED(magnitude)` under the deferred throat
+  solve (`:143`, edge **R65**). ⚠ `c_a`, `c_ξ` ride **inside** it, *"unbounded at tier-A"* (`:143`) —
+  ⛔ not a class of their own.
+- **`ℓ`** (embedding / PT healing length) — **`calibrated`**: ⛔ **`IMPOSED`/`CALIB`**, ⛔ **not R65** and
+  ⛔ **not a registered throat-solve output**: the RATIO `ℓ/a = 1/20` is a **frozen handoff scale — a
+  tuning, not derived** (`parameter_register.md:200`). ⇒ A **calibrated input** to this step, with
+  ⛔ **no reduction route registered**.
+
+⚠ **A LIVE TENSION on `a` — ⛔ state it, do not hide it.** `parameter_register.md:132` says `a` has **no
+defining equation**, while `software/em_charge_attribute/puncture_deflection_electric_sign_result.md:51`
+writes **`a = c_a r_e`**. ⇒ That is ⛔ **not** a defining equation under the method doc's test 1: `r_e =
+k_e e²/(m_e c²)` is an **external empirical** scale, ⛔ not a model quantity, and *"neither `c_a` nor
+`c_ξ` is fixed by the reduced action"*. ⇒ It **parameterizes** `a` against an outside length; `a` stays
+**postulated**. ⛔ Do not read `a = c_a r_e` as a reduction.
 
 ⭐ **Entire result: *"this is not determined."*** ⛔ Do not close it with a normalization choice.
-**Defect register:** none.
+**Defect register:** **A8** — ⛔ **explicitly DEFERRED**, and ⛔ the earlier *"none"* was **FALSE**. A8 is
+exactly this relation: `r_e` is called *"the throat-**body** size"*, from the balance `ke²/a = m_ec²`,
+while `a` is the **mouth** radius (`conceptual_foundation.md:449-455`; `DEFECT_REGISTER.md` A8, **OPEN**).
+⇒ Q4 **uses** the relation A8 flags and ⛔ resolves none of it. → S22.
 **Parameter-register edges:** **R65**. → S22.
 
 ### Q5 · Charge universality ⛔ the result is *"this is not determined"*
@@ -666,7 +684,7 @@ cannot bank without confronting them. ⚠ **C9 is a live source disagreement** (
 *"likely DERIVED"* for the same three symbols): preserve both readings as unresolved; ⛔ do not pick one
 silently.
 ⭐⭐ **The organizing spine is ONE nonlinear throat solve** — ⛔ not a per-sector debt list
-(`docs/model_map.md:178`):
+(`docs/model_map.md:188`):
 
 > *"One nonlinear throat solve is the shared R1 for gravity {μ_R, ρ_br} … electric `bc_selection`, and
 > magnetism `q_T` — one interior solve collapses several knobs at once"*
@@ -697,30 +715,33 @@ is undeclared (**C4**), `m_defect` has only a dimensional bridge (**C3**), and n
 | density-port magnitudes | Gate-6 numbers, SIM-deferred |
 
 **(i-b) Throat interior — charge-side** (PHASE 4b; siblings of R10/R30,
-`parameter_register.md:143`, `:329`):
+`parameter_register.md:143`, `:329`). ⛔ **One heading is not one class.** The class column is the method
+doc's — `debt` · `postulated` · `calibrated` (`docs/derivation_walkthrough_plan.md:81`) — and ⛔ a
+**blocked OUTPUT is not an input debt at all**:
 
-| debt | what it blocks |
-|---|---|
-| `bc_selection` (R63) | the electric SIGN. `outcome_not_invariant` across the four BC branches (Q3); the sign is NEITHER earned NOR calibrated |
-| `Q_E` (R65) | charge MAGNITUDE. `R1_REQUIRED(magnitude)` |
-| `c_a`, `c_xi` (R65) | core normalizations, "unbounded at tier-A"; the mouth radius enters as `a = c_a r_e` |
-| `ell` (embedding / PT healing length) | ⛔ NOT an interior debt and NOT a throat-solve output: `IMPOSED`/`CALIB`, the ratio `ell/a = 1/20` is a frozen handoff scale, a tuning (`parameter_register.md:200`). Listed only because Q4 waits on it; ⛔ NO reduction route is registered |
-| the `𝔅` / mouth boundary class | the branch selection S12 left open on the boundary-data side |
+| quantity | class | what it blocks / why listed |
+|---|---|---|
+| `bc_selection` (R63) | `debt` | the electric SIGN — and ⛔ that sign is a BLOCKED OUTPUT, not an input. `outcome_not_invariant` across the four BC branches (Q3); the sign is NEITHER earned NOR calibrated |
+| `Q_E` (R65) | `debt` | charge MAGNITUDE. `R1_REQUIRED(magnitude)` — a named route under the deferred throat solve |
+| `c_a`, `c_xi` (R65) | `debt`, ⛔ INSIDE `Q_E` | core normalizations, "unbounded at tier-A"; ⛔ not a separate debt — they ride `Q_E`'s magnitude |
+| **`a`** (throat mouth radius) | `postulated` | Q4's magnitude waits on it. `FREE-UNREDUCED`, no defining equation, ⛔ NO named route (`parameter_register.md:132`); `a = c_a r_e` parameterizes it against the EXTERNAL `r_e` and does not reduce it. GATED ON **A8** (mouth radius vs throat-body size) |
+| `ell` (embedding / PT healing length) | `calibrated` | ⛔ NOT an interior debt and NOT a throat-solve output: `IMPOSED`/`CALIB`, the ratio `ell/a = 1/20` is a frozen handoff scale, a tuning (`parameter_register.md:200`). Listed only because Q4 waits on it; ⛔ NO reduction route is registered |
+| the `𝔅` / mouth boundary class | `debt` | the branch selection S12 left open on the boundary-data side |
 
-**(i-c) Throat interior — magnetism-side:**
+**(i-c) Throat interior — magnetism-side** — ⛔ same class discipline as (i-b):
 
-| debt | what it blocks |
-|---|---|
-| `q_T` (R1(throat), `parameter_register.md:231`) | FREE-UNREDUCED; the moving-throat current strength |
-| `tau_d` (R68) | "structural / postulated (NOT a reducible knob)" (`parameter_register.md:232`) |
-| the magnetic SIGN | inherits the electric R1 — "doubly-R1", co-blockers `direct_moving_throat` / `magnitude` / `consistency` (R72) |
+| quantity | class | what it blocks / why listed |
+|---|---|---|
+| `q_T` (R1(throat), `parameter_register.md:231`) | `debt` | FREE-UNREDUCED; the moving-throat current strength |
+| `tau_d` (R68) | `postulated` | ⛔ NOT a debt and ⛔ NOT a Phase-3 inheritance: "structural / postulated (NOT a reducible knob)" with NO reduction route (`parameter_register.md:232`); Q6/stage-034 supplies it itself |
+| the magnetic SIGN | ⛔ BLOCKED OUTPUT, not an input | inherits the electric R1 — "doubly-R1", co-blockers `direct_moving_throat` / `magnitude` / `consistency` (R72) |
 
 **(i-d) The shared throat packet** — `{mu_eta, T_w, beta, Vp0/ell_c, T_Omega, beta_2}`: all six are
 recorded as **siblings of the ONE deferred throat-interior solve**, via R30/R33/R36
 (`parameter_register.md:49`), which is why they re-appear sector-by-sector above.
 ⛔ **That sibling relation is WEAKER than a six-way collapse, and the map says so in as many words:**
 gravity's shared R1 is `{mu_R, rho_br}` via **R10 + R30 + R33 — *"not all six"***
-(`docs/model_map.md:178`). ⇒ Claim the siblinghood; ⛔ do **not** claim one solve is known to discharge
+(`docs/model_map.md:188`). ⇒ Claim the siblinghood; ⛔ do **not** claim one solve is known to discharge
 all six.
 
 **(ii) Brane constitutive** — would survive a throat solve untouched:
@@ -761,8 +782,9 @@ block rank · top-down reconciliation · the sim-input-vs-residual diff). The wa
 `s₁s₂` product, target-blind) and **Q6** (the boost structural relation).
 ⛔ **S14, S15 and S20 are CONDITIONAL ON S14a**, not earned.
 **Q1–Q7 (PHASE 4b)** carry ⛔ **per-step** dependencies, ⛔ **not a phase-wide one**: **Q1–Q5** do **not**
-need the drain bridge; **Q6** needs PHASE 2's transverse row and PHASE 3's active-drain arrow `τ_d`. All
-seven are ⛔ **independent of the PN ladder**, so they are not gated on S17/S18 and do not wait on them.
+need the drain bridge; **Q6** needs PHASE 2's transverse row, and its active-drain arrow `τ_d` is ⛔ **its
+own POSTULATED input, not a PHASE 3 inheritance** (`parameter_register.md:232`). All seven are
+⛔ **independent of the PN ladder**, so they are not gated on S17/S18 and do not wait on them.
 **S0.5 and the substrate-action step are prerequisites** — ⛔ nothing is banked before them.
 **S22 is the deliverable.**
 

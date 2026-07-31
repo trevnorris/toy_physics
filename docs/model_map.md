@@ -160,9 +160,19 @@ The genuinely-new synthesis, needs I–VI assembled:
 ## 4. The honest ledger (surplus vs debt)
 
 **Held-out / falsifiable predictions (the earned surplus, ~6–7 structural + 1 departure):**
-- the gravity `1/r²` exponent + attractive sign;
+- ⛔ **CONDITIONAL pending the S14a drain bridge, NOT earned** — the gravity `1/r²` exponent + attractive
+  sign. Correcting the drain to the committed dynamical `Γ_B` law severed the chain to them: they were
+  derived under a Gauss **number-flux** drain. ⛔ Do not cite them as earned until the S14a bridge
+  succeeds — `research/pde_ledger_v3/CHARTER.md:143` (*"⛔ **CONDITIONAL — neither carried nor discarded,
+  pending S14a:** … the `1/r²` law, the attractive sign, and the stage009 `RETURN_RESIDUAL_PREDICTION`
+  falsifier"*).
 - the ℓ=2 DtN rational fingerprint `{1/9, 4/81, 1/27}`, `χ_Q=+1`, the cross-ℓ fingerprint `{1, 1/2, 1/27}`, SO(3) `λ_m=6`, and the squared-denominator signature (the `−2D₂N₀` term). (The `27` is earned separately as part of the DtN fingerprint; in `54/5=2·27/5` the `27` is earned but the `2/5` is external/calibrated — these are two distinct results, not one.)
-- **the bounded monopole/dipole `c_s`-radiation residual `ε_ℓ/(1+ε_ℓ)`** — the headline falsifier (GR/Birkhoff forbid ℓ=0/1).
+- ⛔ **CONDITIONAL pending the S14a drain bridge, NOT earned** — the bounded monopole/dipole
+  `c_s`-radiation residual `ε_ℓ/(1+ε_ℓ)`, the headline falsifier (GR/Birkhoff forbid ℓ=0/1). ⚠ This
+  bullet **is** the stage009 `RETURN_RESIDUAL_PREDICTION`, severed by the same drain correction. ⛔ Do
+  not cite it as earned until the S14a bridge succeeds — `research/pde_ledger_v3/CHARTER.md:143` (*"⛔
+  **CONDITIONAL — neither carried nor discarded, pending S14a:** … the stage009
+  `RETURN_RESIDUAL_PREDICTION` falsifier"*).
 - ⚠ `F_e/F_g` (the hierarchy capstone) is **NOT yet held-out** — it becomes the sharpest dimensionless test only once BOTH couplings come from one throat action; presently FIT/not-tested.
 
 **Characterized departures (first-class, never softened):**

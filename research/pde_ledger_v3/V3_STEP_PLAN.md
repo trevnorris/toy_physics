@@ -230,7 +230,9 @@ Characterized, first-class. ⛔ Not a defect to fix — a recorded departure fro
 
 ## PHASE 3 — the drain (3 steps) ⚠ where the interior is deferred
 
-### S12 · The throat as a boundary condition
+### S12 · The throat's non-variational SOURCE, plus its boundary data
+⛔ **Not merely a boundary condition.** `n*Gamma_B` is the RHS of a **local order-balance PDE** — a *source*. The return controllers and the mouth/collar/IR conditions are **separate** objects.
+⇒ Inventory the source functions and the boundary data **separately**; conflating them hides which of the two is open.
 ⛔⛔ **CORRECTED 2026-07-31 — this step originally wrote a drain law the user had already RULED OUT.**
 
 The committed non-variational drain is the **dynamical `Γ_B` order-conversion** law
@@ -445,32 +447,40 @@ PN inputs. A flat list hides which debts a throat solve would actually discharge
 ⛔ **`J`, `m_defect` and the geon are THREE distinct unbridged objects**, not one debt: the geon profile
 is undeclared (**C4**), `m_defect` has only a dimensional bridge (**C3**), and nothing links either to
 `J`.
-One table. Every quantity the gravity and light sectors **assume from the throat interior**, with locus
-and what would discharge it:
+**Partitioned by locus** — a flat list hides which debts a throat solve would actually discharge.
 
-| debt | what it blocks | discharge |
-|---|---|---|
-| `{μ_R, ρ_br}` (R10) | `c_γ` and every cone lock | the nonlinear throat solve |
-| `{μ_η, T_w, β}` (R30) | frozen-wall response | same solve |
-| `{Vp0/ℓ_c}` (R33) | breathing drive | same solve |
-| `{T_Ω, β₂}` (R36) | ℓ=2 support | ℓ=2 support equations |
-| `m_defect` ↔ `J` (**C3**) | ⭐ **the source of gravity itself** | unbuilt — no named route |
-| density-port magnitudes | Gate-6 numbers | SIM-deferred |
+**(i) Throat interior** — a nonlinear throat solve could discharge these:
 
-⛔ **The table above is INCOMPLETE — both reviews said so independently.** It was built from the v2
-R-number habit rather than from what phases 3–4 actually consume. ⇒ **Build it from the imported PN and
-worldtube input lists**, and add at minimum:
-
-| also owed | why |
+| debt | what it blocks |
 |---|---|
-| **`a_WT`** (worldtube profile width) | controls the first correction `O(a_WT²/r²)` and the finite-size/radiation channels |
-| ⛔ **the `a_WT ↔ a_mouth` bridge** | **does not exist** — A11. Do not close the gap by substitution |
-| `M` (worldtube mass) and the supplied multipoles | supplied inputs of the S16 reduction, not outputs |
-| `G` / `N_∞,3` normalization | the force magnitude is calibrated through it |
-| `Θ_Q` and the `J → Q` map | S15 silently substitutes one for the other |
-| `κ_add`, `κ_PV`, `κ_ρ`, optical `n = 5` | the PN response packet S17 imports |
-| the **cone lock** `λγ` | S20a |
-| `I_F`, `W_eff`, profile closure, source-vs-inertial mass, EP, Newton-`G` normalization | named in the force-derivation source |
+| `{mu_R, rho_br}` (R10, opened at S8) | `c_gamma` and every cone lock |
+| `{mu_eta, T_w, beta}` (R30) | frozen-wall response. GATED ON A4 (`beta*a = 1` is an unearned lock) |
+| `{Vp0/ell_c}` (R33) | breathing drive |
+| `{T_Omega, beta_2}` (R36) | l=2 support. C9 IS LIVE: the same symbols are `FREE-UNREDUCED` in one document and "likely DERIVED" in another. Preserve both readings; do not pick one silently |
+| **`J`** the drain rate | gravity's source term |
+| **`m_defect`** | a SEPARATE object: only a dimensional bridge `alpha_J hbar J/c_gamma^2` exists (C3) |
+| **the geon** | a THIRD separate object, profile UNDECLARED (C4) |
+| the `J` / `m_defect` / geon BRIDGES | none exist. Three unbridged objects, not one debt |
+| density-port magnitudes | Gate-6 numbers, SIM-deferred |
+
+**(ii) Brane constitutive** — would survive a throat solve untouched:
+
+| debt | note |
+|---|---|
+| `W_slab` | `FREE-UNREDUCED`; the double-well selects no width (C7) |
+| `{a_B, kappa_B}` | the wall's own postulated constants (C8) |
+| the cone lock `lambda_gamma = 1` | calibrated/uncommitted (S20a) |
+
+**(iii) External / calibrated PN inputs** — not interior debts at all:
+
+| debt | note |
+|---|---|
+| `a_WT` (worldtube profile width) | controls the `O(a_WT^2/r^2)` correction |
+| the `a_WT` / `a_mouth` BRIDGE | DOES NOT EXIST (A11). Never close it by substitution |
+| `M` and the supplied multipoles | inputs of the S16 reduction, not outputs |
+| `G` / `N_inf,3` normalization, `I_F,12` | the force magnitude is calibrated through them |
+| `Theta_Q` and the `J -> Q` map | S15 must not substitute silently |
+| `kappa_add`, `kappa_PV`, `kappa_rho`, optical `n = 5` | the PN response packet S17 imports |
 
 ⇒ **This is what v3-gravity is for.** Today it is scattered across six documents; here it is one page.
 

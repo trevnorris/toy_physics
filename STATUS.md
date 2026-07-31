@@ -7,10 +7,20 @@ notes. History is in git. If this file starts growing narrative, cut it.
 
 ## ▶ YOU ARE HERE (2026-07-30)
 
-**Current front: the DERIVED-vs-DECLARED CENSUS** (user decision, 2026-07-30) — how much of this ledger
-computes something rather than asserting it. ⛔ **Its method, the substrates it extends, and its
-spec → pilot → fan-out sequence have ONE canonical home — do not restate them here:**
-`research/pde_ledger_v2/_scratch/NEXT_SESSION.md`, ▶ THE WORK / **P0**.
+**Current front: the DERIVATION WALKTHROUGH** (user decision, 2026-07-30) — one derivation step at a
+time, forward from the medium's defining properties, recording at each *what it is · what it does ·
+what's new*. The irreducible input count accumulates **by construction** rather than being inferred
+backward from finished artifacts. ⛔ **Its method has ONE canonical home — do not restate it here:**
+`docs/derivation_walkthrough_plan.md`. Step records: `research/pde_ledger_v2/walkthrough/`.
+Read-first handoff: `research/pde_ledger_v2/_scratch/NEXT_SESSION.md`.
+
+**▶ Position: phase 0, two steps done** — `walkthrough/00_medium_and_brane.md` (the medium, and the
+brane as its ordered state) and `walkthrough/01_sound_speed.md` (the sound speed).
+
+⭐ **Why the method changed — recorded so it is not re-proposed:** the backward census produced real
+findings but made the physics unfollowable for its one reviewer, and after eleven commits no physics had
+been verified. ⚠ This was the **second** occurrence of a failure `docs/development_pipeline.md` already
+records (apparatus growing above the physics).
 
 **Continuing BEHIND it: the DIMENSION REWRITE — 7 of 30 scripts converted** (stage004, 011, 012, 013,
 016, 018, **023**) — and ⭐ **all seven are WAIVER-FREE**: `ARTIFACT_NAME_WAIVERS` is empty, so every
@@ -38,10 +48,13 @@ that line-vs-volume debt stays invisible — a measured consequence of naming de
 - **converted** — on the shared module, cross-engine gate green: **7 of 30**.
 - **physics-verification evidence** — ⚠ **quantity-level; there is NO defensible stage count yet.**
   Recorded: stage012 **14 CORRECT / 0 WRONG**, stage013 **9 / 0**, all six emitted stage018
-  records, the three formerly-waived 011/012 records, and ⭐ **stage016's tracked 21 / 0 verdict**
+  records, the three formerly-waived 011/012 records, and ⭐ **stage016's 21 / 0 verdict**
   (**12** declared literals in both engines plus **9** computed, **0** of the 9 from any physical
-  input). Those pre-§4-c1 results were never
-  normalised into per-stage tracked verdict tables, so **do not call whole stages verified and do
+  input). ⚠ **stage016's verdict is PROSE, not a per-quantity route table** —
+  `research/pde_ledger_v2/notes/stages/ledger_stage016_l2_so3_covariance.md:175` (**§1.6**, the step-(c1)
+  physics leg); its dimension-object enumeration is **§1.5**, not §1.6. The 011/012/013/018 results
+  predate §4-c1, and **none** of these were normalised into per-stage tracked verdict tables, so
+  **do not call whole stages verified and do
   not infer a "25 remaining" complement.** §4-c1 exists so this becomes countable going forward.
 
 ⛔⛔ **DUAL-ENGINE AGREEMENT IS VACUOUS WHERE BOTH SIDES ARE HAND-DECLARED LITERALS — recorded
@@ -55,7 +68,8 @@ computed** by `dim_of` over real expression inputs, but again sourced only from 
 dimensional input enters from outside the stage's own typed declarations**, so the comparator on these
 stages catches a **transcription split between two typed copies of the same numbers, and nothing
 else**. ⇒ **Nothing remaining independently RE-DERIVES the physics outside one fresh agent.** ⛔ Do not soften this and ⛔ do not read a fix into it: it is stated here
-because it is the reason the **derived-vs-declared census IS the front** (decided 2026-07-30).
+because it is what the **derivation walkthrough** exists to change — a forward step derives, where a
+converted stage only re-declares (front decided 2026-07-30).
 ⚠ **Read it beside the cross-check measurement above, not instead of it** — the comparator is still the
 sole instrument against a relabelled basis, so this is ⛔ not licence to cut it.
 
@@ -85,16 +99,19 @@ Evidence: stage note §1.6 (§4-a enumeration), §1.7 (§4-c1 physics verdict), 
 its own route (`DIMENSION_REWRITE.md` §1), which is why the comparison is a permanent standing cross-check.
 ⚠ Read that as the **authoring rule** it is — §1's own honest statement governs: a green comparator shows
 **two implementations agree, not that they were reached independently**, and git establishes no order.
-**▶ NEXT CONVERSION** — ⚠ next *within this workstream*, which now runs **behind** the census; the order
+**▶ NEXT CONVERSION** — ⚠ next *within this workstream*, which now runs **behind** the walkthrough; the order
 and hazards below stand unchanged — **per the recorded conversion order (`DIMENSION_REWRITE.md` §8):** (1) the
 stage027-shape decision, (2) 027, (3) 021 (heaviest). Detail and the measured validator/harness hazards
 are in `DIMENSION_REWRITE.md` §8/§9.
 ✅ **The ablation-fixture FREEZE AUTHORITY IS RETIRED** (user decision, 2026-07-29/30) — with it, the
 coupling that made nine live dimension-rewrite paths untouchable. Convert freely; nothing here is frozen,
 byte-perfect or under a custody rule. See `DIMENSION_REWRITE.md` §4.
-**▶ NEXT BUILD — ⚠ INSIDE THE DIMENSION-REWRITE WORKSTREAM, which runs BEHIND the census; this is not
-the front and not a competing answer to "what is next".** A different queue within that workstream,
-TWO items, in this order:
+**▶ QUEUED INSIDE THE DIMENSION-REWRITE WORKSTREAM — ⛔ this is NOT the project's next build.** The next
+build is the walkthrough's next step (`docs/derivation_walkthrough_plan.md`). ⭐ **Both items below are
+KEPT** — not because the rewrite needs them, but because the walkthrough's own checks consume them
+(plan §5): the ablation driver is the spec for its **check 6** (able-to-fail with a plausible physics
+mutation), the `DIM|` emitter the spec for its **check 5** (dual-engine). A queue within that
+workstream, TWO items, in this order:
 **(1) the ablation driver**, **RE-SCOPED SMALL** (user decision, 2026-07-29/30, `DIMENSION_REWRITE.md`
 §12b(b)): mutate a declaration, confirm the declared assert fires, record it — reviewed by one fresh
 agent. ⛔ No contract, no frozen fixtures, no three-session shape. Requirements (trimmed) at
@@ -213,20 +230,25 @@ and it never invokes the comparator or generator.
 decisions REOPENED).** Several recorded conclusions — three waivers, four "impossible" stages, a
 coverage estimate — were correct only under constraints since lifted, and will read as settled.
 
-**Why the CENSUS is the front:** ⭐ **nothing that survives independently re-derives the physics** (the
-block above), so how much of the ledger *computes* rather than *asserts* is currently unknown — and
-⭐ **Part VII's stage046 needs a calibration map of this kind**: its row in
-`research/pde_ledger_v2/notes/part7_integration_atomic_split.md` requires *every constant
-DERIVED/INPUT/gap/benchmark*. ⇒ Not new work bolted on. ⚠ **An OVERLAP, not an equivalence — do not
-say 046 is blocked on exactly this map:** that same row also consumes **stage043's range** and the
-corrected R1 inventory, 046 **assembles from the 044→045 spine** (same file, *"Ordering (ratified)"*),
-and its requirement is over **constants** while the census is over **occurrences** and so is broader
-than what 046 requires. ⛔ **The method, the substrates it extends and the
-spec → pilot → fan-out sequence are NOT restated here** — one canonical home,
-`research/pde_ledger_v2/_scratch/NEXT_SESSION.md` (▶ THE WORK, **P0**).
+⛔ **THE DERIVED-vs-DECLARED CENSUS IS RETIRED AS THE FRONT** (2026-07-30), superseded by the
+walkthrough. Its artifacts are at `research/pde_ledger_v2/notes/census/` and are **pending archive**
+(agreed in principle, not yet executed). ⭐ **Its four surviving findings are carried forward in
+`research/pde_ledger_v2/_scratch/NEXT_SESSION.md`** (⛔ OPEN CORPUS FINDINGS: the
+`parameter_register`-vs-`stage023 source map` tier-1-vs-tier-3 contradiction · stage016's false
+`CONSUMED-from-011/012/013` attribution · the wrong stage016 locus in four tracked files · zero
+cross-artifact citations resolving to a locus) — ⛔ **they must not be archived with the apparatus.**
+⚠ Still true independently of the census: **Part VII's stage046 row in
+`research/pde_ledger_v2/notes/part7_integration_atomic_split.md` requires every constant
+DERIVED/INPUT/gap/benchmark**, and that requirement is unmet.
 
-**Why the DIMENSION REWRITE continues behind it:** ⭐ **one shared import, so every script's dimensions are written in ONE
-REPRESENTATION and come from one place.** ⛔ **Not "consistent by construction" — that overstates.** One
+**Why the DIMENSION REWRITE continues behind it — ⭐ ITS JUSTIFICATION CHANGED (user, 2026-07-30).** The
+shared import's purpose is to be **the single place holding every input and what it derives from**, so
+the **leftovers are readable** — ⛔ not merely "one representation, from one place".
+⚠ **Therefore "7 of 30 converted" measures REPRESENTATION UNITY and does NOT measure progress toward
+that grand check:** `scripts/ledger_dimensions.py` currently carries **dimensions**, not **defining
+relations**. The relations live in `research/pde_ledger_v2/reduction/` and grow one walkthrough step at
+a time (`docs/derivation_walkthrough_plan.md` §5a). ⛔ **Nor is it "consistent by construction" — that
+overstates.** One
 shared module buys **representation unity** (one basis type, one exponent type, one recovery path); it does
 **not** buy correct dimensions, because **two stages can declare the same wrong exponents through one module**
 just as easily as through thirteen idioms. Correctness comes from the blocking physics leg.
@@ -245,7 +267,7 @@ therefore does not raise that count, and the fanout was never what the rewrite u
 ⚠ **Precisely:** conversion *lowers* recovery only for the **seven `class Dim` stages**; for every other
 script it merely fails to raise it, because there was nothing recoverable there to lose.
 
-## ⏸ PAUSED (resume after the rewrite; user confirms sequencing)
+## ⏸ PAUSED (⚠ now behind BOTH the walkthrough front and the rewrite; user confirms sequencing)
 
 - **stage 044-v2** — redo stage044 with a DYNAMICAL-Σ sleeve (un-freeze `S_hold`, commit the
   `κ_bend / κ_anchor / collar-tension` bending knobs). User-decided, 044-LOCAL.
@@ -266,6 +288,10 @@ script it merely fails to raise it, because there was nothing recoverable there 
   independent. Docs:
   `research/pde_ledger_v2/manifests/MANIFEST_README.md` +
   `research/pde_ledger_v2/manifests/EXTRACTION_PROTOCOL.md`.
+  ⛔ **UNRESOLVED against the new front:** `docs/derivation_walkthrough_plan.md` §5 marks `manifests/`
+  (**except** `DIMENSION_REWRITE.md`) for **archive** as a superseded route. That is not yet executed and
+  needs a **per-file split, not a directory move** — the directory holds live code beside the active
+  conversion doc. ⇒ Read "CONTINUES" as *not yet withdrawn*, not as *reaffirmed*.
 
 ## LEDGER BUILD STATUS
 
@@ -279,6 +305,15 @@ script it merely fails to raise it, because there was nothing recoverable there 
 | V | Magnetism | ✅ COMPLETE (034–039) |
 | VI | Knit | ✅ COMPLETE (040–042) |
 | VII | Integration | 🔄 **2 of 7** — 043 ✅, 044 ✅; 045–049 remain |
+
+⚠ **OPEN — stage043's note and its script disagree, and the SCRIPT is authoritative for counts.** The
+script asserts **exactly 152** manifest IDs
+(`research/pde_ledger_v2/scripts/ledger_stage043_irreducible_count_range_sympy_audit.py:436,442-443`) and
+implements `reduction-debt-counted-once` / `extension-convention-open` as **disjoint peer categories**
+(`:165-176` — `22 + 18 + 9 = 49`). The note says **"≈ 152"** and presents both as roll-up **sub-tags**
+of the `[40,49]` continuous total
+(`research/pde_ledger_v2/notes/stages/ledger_stage043_irreducible_count_range.md:265,272-273,281`).
+Unresolved; recorded so the range is not quoted from the note alone.
 
 ## STANDING RULES
 
@@ -307,7 +342,10 @@ script it merely fails to raise it, because there was nothing recoverable there 
 | You want… | Look here |
 |---|---|
 | ⭐⭐ **The model** — throughline, per-sector derivation atlas, honest earned/calibrated/R1/departure ledger, glossary | `docs/model_map.md` |
-| ⭐⭐ **The current front** — the derived-vs-declared census (method, substrates, spec→pilot→fan-out) **and the read-first handoff** | `research/pde_ledger_v2/_scratch/NEXT_SESSION.md` |
+| ⭐⭐ **The current front** — the derivation walkthrough: method, per-step record, checks, step order, the closing certification | `docs/derivation_walkthrough_plan.md` |
+| ⭐⭐ **The read-first handoff** — where we are, open defects, measured traps | `research/pde_ledger_v2/_scratch/NEXT_SESSION.md` |
+| ⭐ **The step records** — one file per derivation step | `research/pde_ledger_v2/walkthrough/` |
+| ⭐ **The two scripts** — the shared import (every quantity, its defining equation, what it derives from) + the dimensions check | `research/pde_ledger_v2/reduction/` |
 | ⭐ **The workstream continuing behind it** — the dimension rewrite | `research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md` |
 | ⭐ **How we work** — pipeline, roles, the review gauntlet | `docs/development_pipeline.md` |
 | The ledger-build resume detail | `research/pde_ledger_v2/notes/RESUME_ROADMAP.md` |

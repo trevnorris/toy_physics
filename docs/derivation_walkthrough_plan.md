@@ -233,7 +233,14 @@ and its canonical doc.
 
 ---
 
-## 5. Cleanup
+## 5. Cleanup — ✅ EXECUTED 2026-07-30
+
+> ✅ **Done.** `archive/census/` and `archive/manifests/` created by `git mv` (history preserved).
+> ⭐ The per-file split below was followed: `DIMENSION_REWRITE.md` and `DIM_ORDER_DECISION.md` remain at
+> `research/pde_ledger_v2/manifests/` with **paths unchanged**, because dozens of documents cite them.
+> ⛔ `notes/ablation_driver/` and `notes/wl_emitter/` were kept, per this section. See `archive/README.md`.
+> ⚠ What follows is the plan as written, retained as the record of what was decided and why.
+
 
 **Motivation:** a Zenodo packaging script bundles the tree; superseded apparatus should not ship.
 

@@ -1,6 +1,8 @@
 # THE DERIVATION WALKTHROUGH — plan
 
-**Status: PROPOSED.** User decision 2026-07-30 to change method. ⛔ Not yet reviewed; not yet started.
+**Status: IN USE.** User decision 2026-07-30 to change method. Reviewed independently by Codex and Grok;
+their findings are folded in (§1.0, §3's retraction, §7.4's cut-back claim, §7a, checks 10–13).
+**Phase 0 is running — two steps banked**, `research/pde_ledger_v2/walkthrough/`.
 
 ---
 

@@ -46,8 +46,44 @@ in by hand (`docs/model_map.md:26`). Largest tier-1 item so far.
 ⭐⭐ **The finding: `[K] = M L^(4n−2) T⁻²`**, so the polytropic exponent and `K`'s dimension are **one
 structural choice**, not two inputs. `n` is discrete-structural, not a continuous knob.
 
-**▶ NEXT STEP:** phase 0 continues. ⚠ The step order in the plan's §3 is **proposed on dependency
-grounds and is the user's call** — confirm before assuming it.
+**⛔⛔ NEXT STEP IS NOT PHASE 0 STEP 3.** The order is fixed by user decision and recorded as **D-01a** in
+`research/pde_ledger_v2/walkthrough/DECISIONS.md`:
+
+> ① **archive the old apparatus** → ② **repair the `a`-pin damage** → ③ **resume the walkthrough**
+
+⛔ Do not resume deriving before ② is done. ⚠ Repair may require **revisiting already-banked steps**,
+because anything that consumed the pin as a physical radius is suspect.
+
+### ⭐⭐ Why — read `DECISIONS.md` D-01 in full before touching anything
+
+`a = ħ/(m c_s0)` is **not physics**. It is the nullity-1 residue of imposing four unit pins on three base
+dimensions (`stage004:124-134`) — the register classes it `CONV`, "never free",
+`A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT`.
+
+⛔ **But downstream stages use `a` as a physical throat radius** (`stage016:184`, `stage023:481`), and
+`STATUS.md` logged the three-stage grouping as **agreement**. That agreement is **dimensional only** —
+two different lengths agreeing on being lengths. ⇒ A same-name-different-quantity collision at the
+foundation, filed as confirmation.
+
+**User decision:** the throat radius is **calibrated** — against a superfluid flow rate and a lepton mass
+— ⛔ never pinned. Deriving it is *the entire program* ("calculating the throat radius involves everything
+in our bag"); if it were derivable the payoff is something like **the lepton ladder**. ⭐ Recorded as an
+aspiration, ⛔ **not** a route.
+
+⇒ Its row: `is_tier = TIER 2 calibrated` · `should_be_tier = TIER 3 emergent` ·
+`should_be_basis = physical-picture-expectation` · **delta FLAGGED** — the largest single item on the
+revisit list.
+
+⚠ **Triage before editing.** D-01a sorts the blast radius into four tiers and states the rule that decides
+the size of this job: **a mention is not damage.** Tier 1 (the live v2 ledger) is only ~8 files.
+⭐ `stage005` and `docs/pathA_preregistration.md:273` are **already correct** — they carry the
+anti-tautology caveat — so cite them, ⛔ do not "fix" them. Start at the definition site (`stage004`) and
+work outward; fixing consumers first leaves the source in place to re-infect them.
+
+⛔ **`R2.a_pin`'s registry class is unresolved and the ambient count of 10 depends on it.** It was moved
+`CONVENTIONAL → DERIVED-EXECUTED` on a too-literal reading of the classification rule. ⭐ The rule now
+gains a clause: **a relation arising from imposing unit pins is not a defining equation.** If that reverts,
+the acceptance `MATCH` needs re-establishing — for the third time.
 
 ---
 

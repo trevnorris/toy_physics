@@ -12,21 +12,21 @@ Repository root `/var/projects/toy_physics`, branch `ledger-v2-rebuild`.
 3. `research/pde_ledger_v3/DEFECT_REGISTER.md`
 4. `research/pde_ledger_v3/SESSION_REASONING.md`
 
-## Fixes folded since the last round — verify each is REAL, not cosmetic
+## Fixes folded since the last round — verify each is REAL and ENFORCEABLE, not a warning
 
-Round 3 returned a split verdict (one CLEAN, one REGRESSED with five blockers). All five are folded:
+Round 4: one reviewer CLEAN (empty blockers), the other found three, all of the same shape — a finding
+recorded in one place while the operative step entries said the opposite. All three are folded:
 
-- **S0.5** now specifies an executable lifecycle (retire the two quantities, remove `R3`) and
-  enumerates the touchpoints, including `registry_read.py`'s propagation smoke test and `README.md`'s
-  canonical example, both hardwired to `lambda_gamma`.
-- **S1.5 order corrected to S1 → S1.5** (it consumes S1's primitives), plus: `U(ρ)` is **not** uniquely
-  fixed by the pressure identity (`U = Kρ⁵/4 + Cρ`; the reference setting `C = 0` must be stated), and
-  the S1 field count is flagged for correction.
-- **S8/S9 provenance order** — `{ρ_br, μ_R}` must enter at S8, not after it.
-- **A13** upgraded from listed to must-resolve-before-S1/S5/S12.
-- ⭐ **S14a added and BLOCKING** — correcting S12 to the dynamical `Γ_B` law severed the chain to the
-  imported gravity results, so S14/S15/S20 are now marked CONDITIONAL until a bridge derives the
-  projected order-loss source, `J`, the `J → Q` map and the `ω→0` return law.
+- **A13 is now a GATE attached to S1, S5 and S12.** S1 previously said "Register: none", so under the
+  plan's own done-rule it could bank without confronting the real-vs-complex `χ_B` contradiction.
+- **S8/S9 committed to one layout** — `{ρ_br, μ_R}` and the R10 debt both start at **S8**; S9 is pure
+  consequence. The earlier "pick one" left the ambiguity live.
+- **S14/S15/S20 are each marked `CONDITIONAL ON S14a`**, the charter's carry-forward list now lists the
+  `1/r²` law, the attractive sign and the stage009 falsifier as conditional rather than carried, and the
+  order is `S13 → S14a → S14`.
+
+⭐ **Check specifically for the "warning vs rule" failure**: a finding stated in the register or in a
+note, while the step that must act on it says something else.
 
 ## Operating constraints
 - **READ ONLY.** Do not modify or commit. **One pass, no clarifying questions** (you will hang).
@@ -51,7 +51,7 @@ Round 3 returned a split verdict (one CLEAN, one REGRESSED with five blockers). 
 ## NON-BLOCKING
 <things worth fixing that do not stop execution>
 
-## S0.5 → S1.5 → S1 → S2
+## S0.5 → S1 → S1.5 → S2
 These four will be executed side by side with the user next. What concretely goes wrong?
 
 ## MATH FLAGS

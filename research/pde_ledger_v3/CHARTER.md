@@ -33,8 +33,11 @@ description; it is not a courtesy stop-for-review but a change in who does the d
 
 ## 1. Scope — gravity, light, gravitomagnetism
 
-⭐ **This is a principled boundary, not a convenience.** Both sectors are **linear response on the
-brane**, far from the defect. That is *why* they are the solid ones:
+⚠ **A working boundary, and its justification is CONDITIONAL — do not read it as established.** Both
+sectors are **linear response on the brane**, far from the defect, and the corpus offers a
+**response-side** reduction (how a compact body *moves in* a given field) that is leading-order only and
+premised on compactness. ⛔ It is **not** a source-side interior-independence theorem, and S16/S19 may
+show the premise fails (see §1.1). The quotations below are that conditional result, not a licence:
 
 > *"controlled by the worldline/worldtube multipoles rather than by arbitrary internal details of the
 > defect"* — `research/4d_2_5pn/paper/4d_2_5pn.tex:613`
@@ -46,8 +49,9 @@ sector's "magnetism = moving throat".
 
 ### ⛔ 1.1 What this boundary EXCLUDES — state it or it will read as completeness
 
-Gravity is clean **because it is insulated from the hard part**, not because the hard part is solved.
-v3-gravity will not touch, and must not appear to have settled:
+Gravity looks clean **because it is insulated from the hard part** — to the extent it is insulated at
+all — not because the hard part is solved.
+v3-gravity **will not claim to discharge** — and must not appear to have settled:
 
 - the geon and the mass mechanism (**C4**)
 - the drain law and `g_phys` (**C1**)
@@ -55,8 +59,10 @@ v3-gravity will not touch, and must not appear to have settled:
 - what distinguishes the leptons (**D1**)
 - brane existence (**B2**, **C7**, **C8**)
 
-⚠ **A v3-gravity ledger that closes cleanly is not evidence the model is sound.** It is evidence that
-the far field does not depend on the interior — which was already known.
+⛔ **A v3-gravity ledger that closes cleanly is not evidence the model is sound.** At most it shows the
+far field is computable *given supplied* mass, multipoles, compactness and a calibrated normalization —
+the conditional response-side conclusion S16 actually permits. ⛔ It does **not** establish that the far
+field is independent of the interior.
 
 ⛔⛔ **AMENDED 2026-07-31 — the boundary is weaker than stated above, and may not hold at all.**
 Reading the worldtube theorem's actual statement rather than its slogan

@@ -111,8 +111,11 @@ makes v3 readable without v2, which is acceptance criterion (3).
 ### S1 · The medium, and the brane as its ordered state
 One GNLS condensate in a 4D bulk; `ρ = |ψ|²`; `P = Kρ⁵`; the brane is the **ordered state** of the same
 medium (`χ_B = 1`), not a second object.
-**Expected new:** 4 scalars `{ħ, m_GNLS, K, ρ0}` · 3 discrete `{D=4, n=5, the two-phase split}` · 3 fields
-· 1 BC.
+**Expected new:** 4 scalars `{ħ, m_GNLS, K, ρ0}` · 3 discrete `{D=4, n=5, the two-phase split}` ·
+**2 fields** · 1 BC.
+⛔ **Two, not three.** `ψ` plus the order field in whichever form S1's **A13 gate** selects — state the
+real-vs-complex degree count explicitly. `U(ρ)` is an **EOS energy density, not a field**
+(`stage004:56-69`); it was miscounted in v2.
 **Register:** ⛔ **A13 — GATE. Resolve before this step banks.** `χ_B` is used here as a **real material
 fraction** (so `χ_B·n` is real) while S5 writes it **complex**. Choose the branch — real/dissipative or
 complex/inertial — propagate the choice into the field count, the action and the conversion balance, and
@@ -341,6 +344,13 @@ corpus establishes is a **response-side** result: how a compact body *moves in* 
 a vanishing dipole, a quasi-static conservative regime, **a calibrated potential `−Gm/r`**, and
 **supplied mass and multipole moments**, with boundary flux discarded by assumption.
 
+⛔ **A11 GATE — this step must not substitute one length for another.** The source's `a` is a
+**Gaussian/profile support width** controlling `Q_ij = M a² δ_ij / 2`; the model's **mouth radius** is a
+different object, and the bridge report says outright it *"is not an invariant reduction width"*.
+⇒ **Use distinct symbols — `a_WT` (worldtube profile width) and `a_mouth`** — and list the **missing
+bridge between them** as debt in S22. ⛔ Never substitute one for the other. Same dimension is not same
+object.
+
 ⇒ **Rewrite S16 as a conditional response-side monopole approximation** — ⛔ not a source-generation or
 interior-independence theorem — and list `M`, `a`, the multipoles, compactness, source normalization and
 boundary-flux suppression as **supplied inputs** that belong in S22's debt table.
@@ -428,6 +438,15 @@ and **C6** says there isn't one. So this step's honest form is: *name what integ
 0–1 did not supply.*
 
 ### S22 · ⭐⭐ THE DELIVERABLE — the interior debt list
+⛔ **GATED on A4, C4 and C9** — this step classifies exactly the quantities those rows dispute, so it
+cannot bank without confronting them. ⚠ **C9 is a live source disagreement** (`FREE-UNREDUCED` vs
+*"likely DERIVED"* for the same three symbols): preserve both readings as unresolved; ⛔ do not pick one
+silently.
+⭐ **Partition the table by locus** — throat interior · brane constitutive inputs · external/calibrated
+PN inputs. A flat list hides which debts a throat solve would actually discharge.
+⛔ **`J`, `m_defect` and the geon are THREE distinct unbridged objects**, not one debt: the geon profile
+is undeclared (**C4**), `m_defect` has only a dimensional bridge (**C3**), and nothing links either to
+`J`.
 One table. Every quantity the gravity and light sectors **assume from the throat interior**, with locus
 and what would discharge it:
 
@@ -446,7 +465,8 @@ worldtube input lists**, and add at minimum:
 
 | also owed | why |
 |---|---|
-| **`a`, the throat radius** | controls the first worldtube correction `O(a²/r²)`, and the finite-size/radiation channels |
+| **`a_WT`** (worldtube profile width) | controls the first correction `O(a_WT²/r²)` and the finite-size/radiation channels |
+| ⛔ **the `a_WT ↔ a_mouth` bridge** | **does not exist** — A11. Do not close the gap by substitution |
 | `M` (worldtube mass) and the supplied multipoles | supplied inputs of the S16 reduction, not outputs |
 | `G` / `N_∞,3` normalization | the force magnitude is calibrated through it |
 | `Θ_Q` and the `J → Q` map | S15 silently substitutes one for the other |
@@ -481,8 +501,9 @@ that is the phase where the model is known to be weakest.
 
 1. **Re-deriving the PN ladder.** S17 is cite-only. It is audited and DOI'd; touching it is pure cost.
 2. **Letting S22 become a census.** It is one table with loci. It is not a provenance system.
-3. **Treating a clean close as validation.** See `CHARTER.md` §1.1. A tidy v3-gravity means the far field
-   does not depend on the interior — already known.
+3. **Treating a clean close as validation.** See `CHARTER.md` §1.1. ⛔ A tidy v3-gravity does **not**
+   mean the far field is independent of the interior — S16 does not establish that. It means the far
+   field is computable **given supplied** mass, multipoles, compactness and a calibrated normalization.
 4. **Back-filling `c_γ` into phase 0** to make the registry balance at S2. That is the exact error O-01
    recorded.
 5. **Building registry machinery as a precondition** for banking a step. Add one quantity and one

@@ -17,6 +17,11 @@
 supersede it. If you find yourself designing new apparatus, stop — that is the failure this project has
 already had twice.
 
+⭐⭐ **Third hard constraint, added 2026-07-31: every step is walked SIDE BY SIDE with the user.** v2 was
+delegated heavily to go fast, and that is why the `a`-pin, the falsified lepton tower and the Spin
+Problem all went unnoticed by the one person able to check them. ⇒ `V3_STEP_PLAN.md` §0 is the operative
+description; it is not a courtesy stop-for-review but a change in who does the deriving.
+
 **Two hard constraints, both from the decision that opened v3:**
 1. ⛔ **Reuse `research/pde_ledger_v2/reduction/`.** Registry, reader, dimensional gate, able-to-fail
    harness — they work, and they were built to grow one step at a time. That **is** the centralized

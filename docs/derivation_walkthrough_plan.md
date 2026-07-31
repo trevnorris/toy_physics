@@ -46,6 +46,31 @@ One step = one derivation move. Its record is short and fixed:
 ⭐ **"What's new" is the whole point.** A step that introduces nothing new is pure consequence. A step
 that introduces a postulate is tier-1 material, recorded where it enters rather than reconstructed later.
 
+⛔ **But "what's new" is NOT the count.** See §1.0 — it is the readable *introduction inventory*, and it
+requires a closing certification step before any number is quoted.
+
+### 1.0 ⭐⭐ What the count IS (user definition, 2026-07-30)
+
+> **How many variables must I define for the simulation to run?** That is the minimal set.
+
+⭐ This is concrete, checkable, and it absorbs the three cases the algebraic framing handles badly:
+- a **free function** (`β₂(w)`) ⇒ you must supply a *profile* — one entry, not one scalar;
+- a **boundary condition / ensemble class** ⇒ you must supply a *BC*;
+- a **nullspace coefficient or branch selector** ⇒ you must *pick one*.
+
+⇒ Report the set **partitioned by kind**: scalars · profiles/functions · BCs and domains · discrete
+branch choices. ⛔ Never as one integer, because the kinds are not interchangeable.
+
+**Its relationship to the algebraic residual dimension — they are a matched pair, not rivals:**
+- the **sim-input set** is what you must *supply*;
+- the **residual dimension after admitted constraints** is the algebraic *minimum*;
+- ⭐ **where they disagree, that is a finding.** Either something being supplied is actually derivable,
+  or a constraint is hidden. ⚠ Real template: `R9`, where two locks read as one story until codimension
+  shows `Δr = 2`. Introduction accounting alone cannot discover independence; only rank can.
+
+⇒ ⛔ **The forward walkthrough does not by itself certify the count.** It produces the inventory and
+makes it followable. Certification needs the closing step in §7a.
+
 ### 1.1 ⭐⭐ The classification test (user decision, 2026-07-30)
 
 Apply in order. It is mechanical, which is why it is usable at every step:
@@ -89,15 +114,33 @@ If it only catches tooling or a motivated adversary, it is not here.
    ⚠ Real here: eight known-same cross-stage pairs that name-matching misses.
 
 ### Conditional — only when the step has the feature
-5. **Dual-engine** — when the step contains real algebra. One canonical expression, both engines parse it.
-   ⛔ Never two hand-typed copies; that agreement is vacuous.
-6. **Able-to-fail** — when the step asserts something. Perturb an input, confirm the assertion fires.
+5. **Dual-engine, with teeth** — when the step contains real algebra. One canonical expression, ⛔ never
+   two hand-typed copies. ⚠ **But parsing the same tree twice only tests transport tooling.** Each engine
+   must **independently derive or evaluate the result from upstream primitives**; two result-emitters
+   agreeing on a literal is vacuous.
+6. **Able-to-fail with a PLAUSIBLE PHYSICS MUTATION** — when the step asserts something. ⚠ "Perturb
+   something and an assertion fires" proves liveness, not correctness. The mutation must be a real
+   physics error: a wrong-sign source, an omitted term, a wrong branch, a singular denominator, a bad
+   boundary condition. ⛔ Mutating a label or a report string does not count.
 7. **Existence / uniqueness** — when a PDE or BVP appears. A profile is defined only with its domain,
    boundary data, gauge fixing **and** a uniqueness result. ⭐ A nullspace coefficient or branch selector
    is **another input** and must appear under "what's new".
 8. **Held-out vs calibration-consuming** — when a number meets data. Tag which. This is the surplus
    ledger, kept forward instead of reconstructed.
 9. **Regime compatibility** — when an assumption is introduced: does it conflict with one already live?
+10. ⭐ **Term-by-term fidelity** — when a step derives from an action or a balance law. Derive the
+    Euler–Lagrange equation, its source, sign and coefficients from the upstream object **term by term**.
+    ⚠ Dimensions and two parsers ⛔ cannot catch a *faithful transcription of the wrong operator*.
+11. ⭐ **Dynamical health** — when a dynamical block appears: conservation/balance laws, physical DOF and
+    constraint count, stability/ghost check, characteristic/hyperbolic structure. ⚠ Measured relevance:
+    both current drain candidates are **dimensionally valid yet different physics** — dimensions alone
+    cannot separate them.
+12. **Approximation validity**, not merely regime compatibility — for any reduction or truncation, show
+    which discarded terms vanish or are controlled, and what error order remains. ⚠ "No assumption
+    conflicts" is strictly weaker than "the approximation is valid".
+13. ⭐ **A second independent physics review leg** on physics-bearing steps. ⛔ Do **not** cut this as
+    ceremony: `docs/development_pipeline.md` records a tautological "decisive test" that **only a third
+    independent reader caught**. Orchestrator + user alone re-opens that hole.
 
 ### Considered and rejected
 Byte-level artifact custody · freeze authorities · citation-integrity tooling beyond check 3 · a manifest
@@ -120,8 +163,22 @@ per step. ⛔ All fail the governing test — they catch tooling or an adversary
 | **5** | **Motion** — the moving throat (magnetism) | boost-consistency assumptions |
 | **6** | **Knit + integration** — cross-sector consistency, the surplus tally | should introduce **nothing** new |
 
-⭐ **Phase 6 introducing nothing new is a falsifiable prediction of the method.** If integration needs
-fresh inputs, the sectors were not actually one medium — and that is a finding about the model.
+⛔ **RETRACTED — "phase 6 introduces nothing new" was already false when written.** `stage044` states
+outright that it is **not** a "no new knob" stage and introduces `Z_χ`
+(`notes/stages/ledger_stage044_parent_action_reconciliation.md:30`, `:358`). ⚠ It is also **gameable in
+the other direction**: declare every future coupling in phase 0 and the test passes by construction.
+
+⭐ **Replacement, and it is the honest form:**
+
+> Given a **frozen, complete** parent action plus its non-variational source/BC law and a stated counting
+> contract, integration may introduce no new **action, constitutive, source or BC** input. Any such input
+> falsifies **completeness of the proposed substrate** — ⛔ not, by itself, the one-medium hypothesis.
+
+⚠ New inputs at integration admit several readings — an incomplete phase-0 substrate, an unchosen
+inertial-vs-dissipative wall branch, an omitted cross-sector coupling, or two historical descriptions
+that are not dynamically identical. ⛔ Do not collapse them to "different media". The corpus itself says
+the knit establishes **bookkeeping/labelling** closure, not a dynamical one-medium proof
+(`docs/model_map.md:134`, `:139`).
 
 ---
 
@@ -207,6 +264,11 @@ canonical expression both engines parse; ⛔ never two hand-typed copies.
 - Commit per step. Commit before anything destructive.
 - ⭐ **If a step cannot be derived, that is the result.** Record it as `debt` or `postulated` with what is
   missing, and move on. ⛔ Do not grind.
+- ⛔⛔ **THE TRAP THIS PLAN IS MOST LIKELY TO FALL INTO, named by review:** building the registry schema
+  and its CI as a *precondition* for banking a step, instead of adding one quantity and one residual when
+  a step needs them. ⚠ **If execution recreates census-grade apparatus before phase-1 physics, it fails
+  the same governing test that killed the audit route.** §7a is a **closing** step, ⛔ not a gate to build
+  first.
 
 ---
 
@@ -217,11 +279,40 @@ The walkthrough is working if, at any point:
    the step that introduced it;
 2. every step passes its mandatory checks, with failures **recorded, not fixed by adjustment**;
 3. a reader can follow the chain from phase 0 to any step without consulting the audit apparatus;
-4. the registry can take calibrated values for the "what's new" set and **propagate them forward
-   numerically**, which is the naive end-to-end check the user wants before full sims.
+4. the registry can take values for the sim-input set and propagate them forward — the
+   **explicit-scalar dataflow smoke test**.
 
-⭐ **(4) is the real test of the whole program** and it is falsifiable: if the numbers do not propagate
-intact, something in the chain is wrong, and the walkthrough says exactly which step to look at.
+⚠ **(4) renamed, and its claim cut back.** It is ⛔ **not** "the real test of the whole program". A green
+run proves, for the traversed explicit branch: every required scalar leaf was supplied or recursively
+computed · denominators and declared assumptions held · derived values were **recomputed rather than
+independently frozen** · the stored equations are internally evaluable. That is real and worth having.
+
+⛔ **It does not prove:** registry completeness · correctness of the stored physics · PDE/BVP existence
+or uniqueness · implicit or cyclic block solvability · conservation, stability or constraint consistency
+· correct calibration/held-out separation · agreement with data · **the irreducible count**.
+
+⚠ Report PDE solves and functional inputs **separately** — not every sim-input member has a numeric
+value, and law-form postulates, discrete choices and profiles do not fit that interface.
+
+---
+
+## 7a. ⭐⭐ The closing certification — required before any count is quoted
+
+The walkthrough produces the **inventory**. It does ⛔ not certify it. Before a number leaves this
+project:
+
+1. **Admission gate** — only a `derived` relation whose output is actually computed (⛔ not
+   independently frozen elsewhere) may reduce the count.
+2. **Transitive leaf closure** — enumerate every scalar, function, derivative, operator, measure, domain
+   and boundary datum on the RHS; each must terminate in a supplied input or a well-posed computed
+   solution. ⛔ Any unassigned leaf ⇒ the relation does not reduce the count. ⭐ This is the `R35` gate.
+3. **Block rank** — because introduction accounting cannot discover independence (`R9`, `Δr = 2`).
+4. **Top-down reconciliation** — map the assembled action, its non-variational sources, BCs, domains and
+   profiles back onto the forward steps. ⭐ This is the only check that catches a **universe hole**: a
+   parameter that no step ever named.
+5. **Sim-input vs residual-dimension diff** (§1.0) — report it; ⛔ do not reconcile it silently.
+
+⇒ Report as a **range with a residue partition**, never a scalar.
 
 ---
 

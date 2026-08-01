@@ -29,10 +29,14 @@ def _baseline(registry: Registry) -> tuple[tuple, int]:
 def demonstrate_vacuous() -> int:
     registry = load_registry()
     baseline, before = _baseline(registry)
-    r3 = registry.require_admitted("R3").residual
-    assert r3 is not None
-    output = registry.symbols[registry.resolve_qid("lambda_gamma")]
-    mutated = tuple(expression for expression in baseline if expression != r3) + (output - output,)
+    h0_residual = registry.require_admitted("R2.h0").residual
+    assert h0_residual is not None
+    output = registry.symbols[registry.resolve_qid("h0")]
+    literal_zero = output - output
+    assert literal_zero is sp.S.Zero
+    reduced = tuple(expression for expression in baseline if expression != h0_residual)
+    assert len(reduced) == len(baseline) - 1
+    mutated = reduced + (literal_zero,)
     after = registry.constraint_dimension(mutated)
     if after == before:
         print(f"UNEXPECTED_PASS vacuous-flat: before={before} after={after}")

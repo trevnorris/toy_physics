@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare registry-derived medium dimensions with the existing fixture."""
+"""Compare registry-derived medium dimensions with this module's literal fixture."""
 
 from __future__ import annotations
 
@@ -10,13 +10,15 @@ import sympy as sp
 from registry_read import Registry, load_registry
 
 
-# PRE-SURGERY FIXTURE: on any registry change RECOMPUTE and independently re-derive
-# it -- never copy it forward.  This script never imports the old audit's objects.
+# INDEPENDENT CONTROL FIXTURE: four parties who did not see one another's work
+# derived these values by different routes, including a triangular solve, Jacobian
+# rank at an exact on-variety positive rational point, and the grevlex initial-ideal
+# route used by this code.  On any registry change, RECOMPUTE and independently
+# re-derive the payload; never copy it forward.
 EXPECTED_MEDIUM_PAYLOAD = {
-    "baseline": {"dim_before": 9, "dim_after": 5, "Delta": 4},
-    "C-M1": {"dim_before": 9, "dim_after": 6, "Delta": 3},
-    "C-M2": {"dim_before": 9, "dim_after": 5, "Delta": 4},
-    "C-M3": {"dim_before": 9, "dim_after": 4, "Delta": 5},
+    "baseline": {"dim_before": 7, "dim_after": 4, "Delta": 3},
+    "C-M2": {"dim_before": 7, "dim_after": 4, "Delta": 3},
+    "C-M3": {"dim_before": 7, "dim_after": 3, "Delta": 4},
 }
 
 
@@ -24,10 +26,6 @@ def medium_cases(registry: Registry) -> dict[str, tuple]:
     """Build the acceptance mutations on canonical registry expressions."""
     symbols = registry.symbols
     baseline = tuple(registry.admitted_constraint_set)
-    r3 = registry.require_admitted("R3").residual
-    assert r3 is not None
-    without_r3 = tuple(expression for expression in baseline if expression != r3)
-    lambda_gamma = symbols[registry.resolve_qid("lambda_gamma")]
     xi_h = symbols[registry.resolve_qid("xi_h")]
     h0 = symbols[registry.resolve_qid("h0")]
     hbar = symbols[registry.resolve_qid("hbar")]
@@ -51,7 +49,6 @@ def medium_cases(registry: Registry) -> dict[str, tuple]:
     assert sp.simplify(entailed - ideal_combination) == 0
     return {
         "baseline": baseline,
-        "C-M1": without_r3 + (lambda_gamma - lambda_gamma,),
         "C-M2": baseline + (entailed,),
         "C-M3": baseline + (big_k - rho0,),
     }

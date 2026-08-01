@@ -1,7 +1,7 @@
 # Reduction registry v1
 
 This directory is the phase-1 semantic input for reduction.  It contains only
-the nine-scalar live block retained from `scripts/midway_knob_audit_codimension_sympy.py`.
+the seven-scalar live block retained from `scripts/midway_knob_audit_codimension_sympy.py`.
 It is not a corpus census.  The versioned contract is
 `registry_schema.yaml`; `quantities.yaml` and `relations.yaml` are its two data
 documents.
@@ -177,8 +177,8 @@ Example:
 from registry_read import load_registry
 r = load_registry()
 assert r.evaluate_output(
-    "lambda_gamma", {"K": 1, "rho0": 1, "mass": 5, "c_gamma": 1}
-) == 1
+    "h0", {"K": 3, "rho0": 2, "mass": 7}
+) == 60
 ```
 
 A Mathematica reader must use the same algorithm: build
@@ -204,7 +204,7 @@ python -m unittest -v test_registry.py
 ```
 
 `acceptance_check.py` computes the registry payload first and compares last
-against the medium portion of the existing literal fixture; disagreement exits
+against the medium portion of its in-module literal fixture; disagreement exits
 1 and is not reconciled.  `able_to_fail.py` runs five child mutations, including
 separate syntactic-duplicate and semantic-entailment controls.  A caught child
 must both exit 1 and print its case-specific `ABLE_TO_FAIL_CAUGHT` marker

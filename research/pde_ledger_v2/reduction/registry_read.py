@@ -1012,10 +1012,10 @@ def main() -> int:
         f"rank={len(registry.active_variables) - after}"
     )
     propagated = registry.evaluate_output(
-        "lambda_gamma",
-        {"K": 1, "rho0": 1, "mass": 5, "c_gamma": 1},
+        "h0",
+        {"K": 3, "rho0": 2, "mass": 7},
     )
-    print("EVALUATION: lambda_gamma=", propagated, sep="")
+    print("EVALUATION: h0=", propagated, sep="")
     return 0
 
 

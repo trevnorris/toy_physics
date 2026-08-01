@@ -48,6 +48,10 @@ class ReducibleDimensionRegressionTests(unittest.TestCase):
             dimension=observed,
         )
 
+    def test_zero_constraint_certifies_full_ambient_dimension(self) -> None:
+        x = sp.Symbol("x", real=True)
+        self.registry.certify_positive_real_dimension((0,), (x,), dimension=1)
+
 
 class AbleToFailProtocolRegressionTests(unittest.TestCase):
     def test_empty_harness_is_error(self) -> None:
@@ -122,22 +126,22 @@ class LiteralConsistencyRegressionTests(unittest.TestCase):
         )
         big_k["value"] = 1
         registry = Registry.from_documents(quantities, relations, schema)
-        inputs = {"rho0": 1, "mass": 5, "c_gamma": 1}
+        inputs = {"rho0": 1, "mass": 5}
         with self.assertRaisesRegex(
             EvaluationError,
             r"missing primitive/residue numeric input: Q\.medium\.K",
         ):
-            registry.evaluate_output("lambda_gamma", inputs)
+            registry.evaluate_output("h0", inputs)
         with self.assertWarnsRegex(
             DeclaredValueDefaultWarning,
             r"declared value defaults used: Q\.medium\.K=1",
         ):
             observed = registry.evaluate_output(
-                "lambda_gamma",
+                "h0",
                 inputs,
                 allow_declared_defaults=True,
             )
-        self.assertEqual(observed, 1)
+        self.assertEqual(observed, sp.Rational(5, 4))
 
     def test_r1_coefficient_must_equal_n_eos(self) -> None:
         quantities, relations, schema = self._documents()

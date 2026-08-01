@@ -75,26 +75,3 @@ relations:
     source_locus: {path: notes/parameter_register.md, line_start: 269, line_end: 269}
     execution_locus: {path: scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py, line_start: 277, line_end: 285}
     benchmark_refs: []
-
-  - relation_id: R3
-    residual:
-      - Sub
-      - [Q, Q.medium.lambda_gamma]
-      - [Div, [Q, Q.medium.c_gamma], [Q, Q.medium.c_s0]]
-    designated_output: Q.medium.lambda_gamma
-    input_qids: [Q.medium.c_gamma, Q.medium.c_s0]
-    applied_functions: []
-    provenance_status: DERIVED-EXECUTED
-    regime: [medium-GNLS-positive-real]
-    assumptions:
-      - {predicate: positive, qids: [Q.medium.c_gamma, Q.medium.c_s0, Q.medium.lambda_gamma]}
-    domain_measure_bcs:
-      domain: finite-scalar-positive-real
-      measure: null
-      boundary_conditions: []
-    denominator_guards:
-      - [Q, Q.medium.c_s0]
-    literal_consistency: []
-    source_locus: {path: notes/parameter_register.md, line_start: 270, line_end: 270}
-    execution_locus: {path: scripts/midway_knob_audit_codimension_sympy.py, line_start: 90, line_end: 113}
-    benchmark_refs: []

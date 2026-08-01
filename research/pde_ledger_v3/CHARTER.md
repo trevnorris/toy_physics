@@ -182,6 +182,12 @@ equation(s) · class per new item · regime · departure.*
   count forward rather than importing one)
 - the census apparatus and manifests (already archived)
 
+**And one distinction inside the v2 walkthrough directory:**
+- ⚠ **The v2 walkthrough step records** (`research/pde_ledger_v2/walkthrough/00_*`, `01_*`) are **prior
+  art, ⛔ not authority** — v3 derives S1/S2 forward. ⭐ **But `DECISIONS.md` in that directory is
+  different: its numbered decisions are USER CALLS and they bind**, and the method doc
+  (`docs/derivation_walkthrough_plan.md:7-10`) records that they **overturn** it where they disagree.
+
 ---
 
 ## 4. Acceptance

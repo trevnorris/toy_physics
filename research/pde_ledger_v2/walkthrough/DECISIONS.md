@@ -84,10 +84,16 @@ SUPERSEDED**: there is no relation left to classify. Live workstream: `research/
 
 </details>
 
-⚠ **`ħ` stays open, and this is why.** `ħ` and `a` are joined only by that pin identity, so **neither is
-derived from the other** — the relation is silent about which is fundamental. The hypothesis that `ħ` is a
-particle size in the medium needs something *outside* that relation to pin one of them, and nothing
-currently does. ⇒ Not a bookkeeping gap; a real gap in the model.
+⚠ **`ħ` stays open — and ⛔ the retired pin is no longer the reason (updated 2026-08-01).** ⛔ **State it
+precisely:** `ħ` is **not** unrelated to everything — `R2.xi_h` (`ξ_h = √2·ħ/(m_GNLS·c_s0)`) takes it as
+an input. What is true is narrower: **no relation designates `ħ` as its OUTPUT**, so nothing derives it.
+⚠⚠ **And note the shape:** `R2.xi_h` differs from the deleted pin only by a `√2` — **A7** records that
+this is precisely what made the pin plausible for eleven months, so ⛔ do not read `R2.xi_h` as pinning
+`ħ`; it designates `ξ_h`, and that direction is a **choice recorded in the registry
+(`designated_output`), ⛔ not a derivation**. The relation is silent about which of the two is
+fundamental. ⇒ The hypothesis that **`ħ` is a particle size in the medium** needs something *outside*
+that relation to pin one of them, and nothing currently does. ⇒ Still not a bookkeeping gap; a real gap
+in the model. What `ħ` does and does not touch: `research/pde_ledger_v3/DEFECT_REGISTER.md` row **C11**.
 
 ---
 

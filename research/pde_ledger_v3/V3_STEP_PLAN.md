@@ -131,6 +131,31 @@ plus `acceptance_check.py`, `able_to_fail.py` and `test_registry.py`.
   relation** — `R1` (the sound speed) or `R2.xi_h`/`R2.h0` — ⛔ not a relabelling and ⛔ not another
   inert term. ⭐ **Choosing which mutation is a user call**, not the builder's.
 
+  > ⚠ **Measured — and stated in the harness's own terms.** ⛔ **Do not restate this as coverage of the
+  > method doc's five named error classes:** that mapping was attempted twice and was wrong both times, in
+  > opposite directions. What was actually measured, on the post-S0.5 block:
+  > - The **count** (`constraint_dimension`) moves only when the number of **independent relations**
+  >   changes — dropping a whole relation gives `7 → 5`, adding a genuinely new one `7 → 3`.
+  > - ⛔ It does **not** move for a wrong **coefficient**, a wrong **sign**, a wrong **branch**, a term
+  >   **omitted from inside** a relation, or even a **changed symbol set** — every one leaves `7 → 4`.
+  > - ⭐ The **certifier** (`certify_positive_real_dimension`, `acceptance_check.py:66`, run on every case)
+  >   **raises** on a wrong **sign** and a wrong **branch** while the count sits at 4.
+  >
+  > ⇒ **The mutations reachable for `C-M1`:** drop a whole relation · flip a sign · take the wrong branch ·
+  > substitute a **circular** relation the survivors already imply. ⛔ **Do not assert that any error class
+  > is or is not covered without measuring it** — this passage was wrong twice for exactly that reason.
+
+⭐ **What the count currently means.** The medium block's free count is exactly the number of declared
+primitives — the three relations determine three intermediates and nothing else. ⛔ The counter has
+**nothing to say yet**; it starts earning its keep when a step introduces quantities with no route back
+to primitives (`{a_B, κ_B}` at S5/S6, `{ρ_br, μ_R}` at S8).
+⛔ **And it could not have caught the `a`-pin** — a quantity introduced with its own defining relation and
+consumed by nothing is **count-neutral**. → `DEFECT_REGISTER.md` row **F6**.
+
+⭐ **And this whole step is bookkeeping repair, ⛔ not physics.** Keep the `C-M1` replacement to the
+mechanical minimum: the mutation slot guards little today (the paragraph above) and is ⛔ not worth
+optimising.
+
 ⛔ Derive the new payload independently; ⛔ never preserve, and ⛔ never read it off a prior document.
 
 ---

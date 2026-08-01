@@ -10,8 +10,8 @@ import sympy as sp
 from registry_read import Registry, load_registry
 
 
-# Copied verbatim only after the registry seed was loaded and its payload was
-# computed.  This script never imports the old audit or its equation objects.
+# PRE-SURGERY FIXTURE: on any registry change RECOMPUTE and independently re-derive
+# it -- never copy it forward.  This script never imports the old audit's objects.
 EXPECTED_MEDIUM_PAYLOAD = {
     "baseline": {"dim_before": 9, "dim_after": 5, "Delta": 4},
     "C-M1": {"dim_before": 9, "dim_after": 6, "Delta": 3},

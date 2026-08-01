@@ -192,7 +192,7 @@ momentum/energy partners.
 
 ---
 
-## ⛔⛔ THE SIX RESIDUALS — re-checked against HEAD (3 ✅ · 1 deferral · 1 partial · 1 open)
+## ⛔⛔ THE SIX RESIDUALS — re-checked against HEAD 2026-07-31 (3 ✅ · 1 deferral · 1 narrowed to one bullet · 1 open)
 
 Nine review rounds were run (Codex + Grok, iterating). **Grok returned CLEAN five times**, empty blocker
 list. **Codex is still finding items** — these six. They were recorded rather than half-folded because the
@@ -222,20 +222,28 @@ session ran out of context, and a half-fold is what caused three of the previous
    stated the **superseded first** replacement, now quotes the corrected rule. ⭐ Fixing the governing doc
    alone would have left the step that *executes* the knit still forbidding exactly what the corrected rule
    expects it to produce.
-5. ⏸ **PARTLY DONE — the surplus list is marked, the ATLAS is not.** ✅ `docs/model_map.md`'s §4
-   earned-surplus list now carries both `⛔ CONDITIONAL pending the S14a drain bridge, NOT earned` bullets,
+5. ⏸ **NARROWED to ONE bullet — both loci this residual named are marked at HEAD.** ✅ `docs/model_map.md`'s
+   §4 earned-surplus list carries both `⛔ CONDITIONAL pending the S14a drain bridge, NOT earned` bullets,
    covering all **three** charter-conditional items (the `1/r²` exponent, the attractive sign, and the
-   stage009 `RETURN_RESIDUAL_PREDICTION`) — `7e4dc71d`. ⛔ **Still open:** the pre-correction assertion
-   survives **below the front-pointer** in the same file's derivation atlas, where `pathA_29` is still
-   headed *"**held-out FALSIFIABLE PREDICTION** (`RETURN_RESIDUAL_PREDICTION`)"* with no S14a marking, and
-   §2's sector table still states gravity's `1/r²` + attraction flat. ⇒ ⭐ **Sweep the whole file, not the
-   ledger section** — that split is exactly the append-vs-apply failure. ⚠ The **count** in that list is a
+   stage009 `RETURN_RESIDUAL_PREDICTION`) — `7e4dc71d`. ✅ **And the two loci recorded as still open were
+   marked by `949c2add`** — verified by opening them: §2's sector table now says gravity's `1/r²` + sign are
+   `CONDITIONAL pending the S14a drain bridge` (`:38`), and the `pathA_29` atlas entry (`:97`) now **leads**
+   with `⛔ **CONDITIONAL pending the S14a drain bridge, NOT earned**`, the *"held-out FALSIFIABLE
+   PREDICTION"* claim explicitly suspended. ⛔ **What is left is one bullet:** `pathA_21c`
+   (`docs/model_map.md#pathA-21c`) still **leads** with the status token **`EARNED (form+sign), CALIBRATED
+   magnitude.`** and carries the same conditional only as a rider at the *end* of a long bullet — so a
+   reader scanning bold status tokens reads `EARNED` for the very `r⁻²` + attraction that `pathA_29`
+   three lines below marks conditional. §3.2's preamble (`:93`) reads the same way (*"form/sign/fingerprint
+   earned target-blind"* first, rider second). ⇒ ⭐ **Rewrite the leading token**, ⛔ do not append a third
+   rider — appending is what left the residue. ⚠ Any fix must be **inline, zero line-count change**: about
+   40 v2 citations point into `docs/model_map.md` by line number. ⚠ The **count** in that list is a
    separate item and is ⛔ **not** an edit — see the pending queue.
 6. ⛔ **OPEN — unchanged.** **A13's branch choice does not propagate through S6** (the kink step): it is
    gated at **S1**, **S5** and **S12** only, and **S6**'s `Register:` line names **A2** alone — while S6
    solves the EL equation for `δ` and `σ_wall` out of the very constants the A13 branch selects.
 
-⇒ ⭐ **What is left here is #2's deferral, #5's atlas sweep and #6** — small, and both live ones are
+⇒ ⭐ **What is left here is #2's deferral, #5's single remaining atlas bullet
+(`docs/model_map.md#pathA-21c`) and #6** — small, and both live ones are
 residue from a correction that was *appended rather than applied*.
 
 ---

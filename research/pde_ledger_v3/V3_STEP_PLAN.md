@@ -117,7 +117,9 @@ A retired-but-present row is dead weight a reader must filter.
 no removed-but-present rows.
 
 ⛔ **Enumerate every touchpoint before starting** — at minimum `registry_read.py`'s runnable propagation
-smoke test (`:1014`) and `README.md`'s canonical example (`:174`), **both hardwired to `lambda_gamma`**,
+smoke test (`:1014-1018` — the `evaluate_output("lambda_gamma", …)` call plus its `EVALUATION:` print) and
+`README.md`'s canonical example (`:179-181` — the `assert … == 1` inside the block that opens at `:174`),
+**both hardwired to `lambda_gamma`** *and* to `c_gamma` in the input dict,
 plus `acceptance_check.py`, `able_to_fail.py` and `test_registry.py`.
 ⭐ A mutation case built on `R3` needs a replacement built on a surviving relation.
 

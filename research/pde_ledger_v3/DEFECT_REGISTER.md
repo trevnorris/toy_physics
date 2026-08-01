@@ -202,7 +202,7 @@ here is not permission to cite them.
 | **E2** | `stage004`/`stage005` engines still **assert** the retired pin relation via `expect_zero` | `..._stage004_sympy_audit.py:302,:306` | **QUARANTINED** — the stage note now records them as stale |
 | **E3** | `midway_knob_audit_codimension_sympy.py` still hardcodes **ten** scalars including `a`; the registry now carries **nine** ⇒ they disagree | `scripts/midway_knob_audit_codimension_sympy.py:91-97` | **OPEN** (created by `407eed94`) |
 | **E4** | pin conflations in the stage notes | `stage016:184`; `stage023:407,:481` | **QUARANTINED** |
-| **E5** | `acceptance_check.py`'s header still says the payload was *"copied verbatim"*; it was recomputed | `reduction/acceptance_check.py:11-12` | **OPEN** (cosmetic) |
+| **E5** | `acceptance_check.py`'s header said the payload was *"copied verbatim"*; it was recomputed. ⛔ **Filed cosmetic, and that was wrong** — S0.5 rewrites the registry and requires the acceptance payload to be **recomputed and independently re-derived**, so a header reading *"copied verbatim"* sits directly on S0.5's path as licence to preserve the old numbers. Now rewritten to state the governing rule: **pre-surgery fixture; on any registry change RECOMPUTE and independently re-derive, ⛔ never copy forward** | `reduction/acceptance_check.py:13-14` (⚠ the filed `:11-12` were the two blank lines above it) | **RESOLVED** — header only; ⛔ no code, no `EXPECTED_MEDIUM_PAYLOAD` value, no logic touched, and the file's line count is unchanged so `:29`/`:54` still resolve. Four gates re-run: `DIMENSIONAL_HOMOGENEITY_GATE: PASS` · `PHASE1_ACCEPTANCE: MATCH` · `ABLE_TO_FAIL_HARNESS: PASS` · `10 passed` |
 
 ---
 

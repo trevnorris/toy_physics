@@ -128,6 +128,17 @@ any real superfluid · failing to *derive* a legitimately postulated quantity (�
 ⭐ ⇒ **Postulating freely is not free — every postulate is a knob**, and the model is scored on surplus:
 the burden shifts from *"is this like a real superfluid"* to *"how many knobs did this cost"*.
 
+⭐⭐ **EXPECT EXTRA — ⛔ do not score it as failure** (user, 2026-07-31). **The comparison targets are
+themselves incomplete:** Maxwell puts **charge** in by hand, GR **matter** as a stress tensor — ⇒ neither
+*derives* what this model derives. ⇒ **Deriving what the reference assumes yields structure it has no slot
+for**, and a match-check reports that surplus a **defect**. ⛔ It is not one. ⭐ On record: the light sector
+gave two transverse modes **and** an irremovable extra scalar; that irremovability killed exact Maxwell as
+a target and forced the rethink that produced `±w` charge (**S11 · The stray-longitudinal departure**,
+`research/pde_ledger_v3/V3_STEP_PLAN.md`). ⇒ ⛔ A `FAIL_*` recording *"more than the reference has"* is a
+**characterized departure**, ⛔ not a falsification — ⚠ only the modes above falsify. ⚠ And the naming
+misleads: `FAIL_CAUCHY_STRAY_LONGITUDINAL` names a load-bearing departure — ⛔ never read a `FAIL_` prefix
+as a verdict without opening what it measured.
+
 ---
 
 ## 2. Order

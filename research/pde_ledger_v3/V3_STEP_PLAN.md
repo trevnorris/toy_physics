@@ -79,12 +79,12 @@ medium block"* (S9) **collide**, because the live seed **already** carries `Q.me
 `R3`, `R10`, `R60`–`R73`) are **parameter-register edges** (`parameter_register.md:268` —
 `| R1 | c_s0 = √(5K ρ0⁴/m_GNLS) | DERIVED |`); `R1`-the-**rung** is the **one nonlinear throat solve**
 (`parameter_register.md:329` — `R1_REQUIRED(bc_selection)`; `docs/model_map.md#shared-r1-throat-solve`).
-⛔ `R1_REQUIRED(x)` means **blocked on the throat solve**, ⛔ **not** on the sound-speed edge `R1`.
+⛔ `R1_REQUIRED(x)` means **blocked on the throat solve**, ⛔ **not** on the sound-speed edge `R1`. {#s05-r-namespace-hazard}
 
 ⇒ Executing S1–S3 against the seed as-is either **accepts the O-01 universe hole** or requires surgery
 that no step names. Do the surgery **first**:
 
-- `c_γ` and `λγ` leave the medium counting contract until S9 / the cone-lock step introduces them with
+- `c_γ` and `λγ` are **deleted** from the registry until S9 / the cone-lock step introduces them with
   provenance;
 - recompute acceptance (⛔ never preserve — same rule as step ①);
 - ⛔ **do not "resolve" it by leaving them where they are.** That is the back-fill S9 forbids.
@@ -98,13 +98,37 @@ step in its own right with its own review legs, ⛔ not a preamble to S1.
 
 ⛔ **"Change the counting axis" is NOT an executable prescription.** Moving `c_γ`/`λγ` to
 `convention-orbit` or `discrete-structural` **misclassifies** them, and changing `scope` alone does not
-affect `active_variables`. ⇒ Specify the lifecycle exactly: **retire the two quantities and deactivate
-/remove `R3`**, then re-introduce `c_γ` at S9 and `λγ`/`R3` at S20a.
+affect `active_variables`. ⇒ Specify the lifecycle exactly: **delete `Q.medium.c_gamma`,
+`Q.medium.lambda_gamma` and `R3` from the registry outright** (user decision, 2026-07-31), then
+introduce `c_γ` at **S9** and `λγ`/`R3` at **S20a**, each with its own provenance.
+
+⭐⭐ **The right word is not "retired" but PREMATURE.** `c_γ` is not dead — it was placed in the medium
+block **before the walkthrough reached the step that introduces it**. ⇒ It is removed so that **S9** can
+introduce it properly with its own provenance, and `λγ`/`R3` likewise at **S20a**. ⛔ "Retire" implies
+dead; this is **not yet born**.
+
+⭐ **Nothing dead goes into the registry, the scripts, or the eventual `.tex` that composes the ledger.**
+A retired-but-present row is dead weight a reader must filter.
+
+⭐ **The precedent is deletion.** Step ① deleted `Q.medium.a_pin` outright — *"`Q.medium.a_pin` are
+**deleted**, and no class needs picking"* (`docs/derivation_walkthrough_plan.md#classification-test`).
+
+⚠ This also **moots** any question about whether removed quantities keep their `source_loci` — there are
+no removed-but-present rows.
 
 ⛔ **Enumerate every touchpoint before starting** — at minimum `registry_read.py`'s runnable propagation
 smoke test (`:1014`) and `README.md`'s canonical example (`:174`), **both hardwired to `lambda_gamma`**,
 plus `acceptance_check.py`, `able_to_fail.py` and `test_registry.py`.
 ⭐ A mutation case built on `R3` needs a replacement built on a surviving relation.
+
+- ⭐⭐ **`C-M1` dies with `R3`** — discover this now, not mid-step. Its entire content is *"drop `R3`"*:
+  `acceptance_check.py:54` builds it as `without_r3 + (lambda_gamma - lambda_gamma,)`, where
+  `without_r3` (`:29`) is the baseline minus `R3`'s residual, and `constraint_dimension`
+  (`registry_read.py:638-644`) discards zero-valued constraints — `if sp.simplify(expression) != 0` — so
+  the appended term is **inert**. ⇒ Its replacement must be a **plausible physics error on a surviving
+  relation** — `R1` (the sound speed) or `R2.xi_h`/`R2.h0` — ⛔ not a relabelling and ⛔ not another
+  inert term. ⭐ **Choosing which mutation is a user call**, not the builder's.
+
 ⛔ Derive the new payload independently; ⛔ never preserve, and ⛔ never read it off a prior document.
 
 ---
@@ -215,10 +239,11 @@ Transverse and longitudinal sectors; the reduced `h`/`u_L` operator.
 ⭐⭐ **The step that defines v3's ceiling.** State plainly: **quadratic = linear response about an
 assumed equilibrium.** Everything downstream in this ledger is small-oscillation physics on a brane
 that S5–S7 postulated. It is why gravity and light are tractable, and why the defect is not.
-**Register:** **R10 starts here** (`{ρ_br, μ_R}`) · **C6** (no closed parent action — the coupling to sleeve/geon/drain does not exist) ·
+**Defect register:** **C6** (no closed parent action — the coupling to sleeve/geon/drain does not exist) ·
 **B2** (⛔ the *only* thing `FAIL_COUPLE_STRESS_NOGO` closes is deriving `μ_R` from a polar `P` — so
 `μ_R` enters here **postulated** and stays postulated; ⛔ that is a missing reduction, **not** a
 falsified foundation for light — `DEFECT_REGISTER.md#B2`).
+**Parameter-register edges:** **R10 starts here** (`{ρ_br, μ_R}`).
 
 ---
 
@@ -234,7 +259,8 @@ afterwards violates forward provenance and puts the apparatus before its own coe
 ⭐⭐ **This closes O-01, the "universe hole."** v2's registry seed required `c_γ` as a supplied input
 while **no step ever introduced it**. It enters *here*, in the excitations phase, with provenance —
 ⛔ never back-filled into the medium block for bookkeeping convenience.
-**Register:** none — R10 began at S8. → S22.
+**Defect register:** none.
+**Parameter-register edges:** none — R10 began at S8. → S22.
 
 ### S10 · Two transverse photons
 The earned target-blind result: brane shear gives exactly two transverse polarisations.
@@ -515,7 +541,7 @@ departure **GR forbids**. ⭐ The sector's one live able-to-fail prediction. Ban
 
 ---
 
-## PHASE 4b — charge and magnetism (7 steps)
+## PHASE 4b — charge and magnetism (7 steps) {#phase4b-split-register-fields}
 
 ⚠ **Dependencies here are PER STEP**, ⛔ **not phase-wide** — it is **not** true that all of Q1–Q7 wait on
 PHASE 3's drain:

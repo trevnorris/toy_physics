@@ -134,12 +134,37 @@ derived the new acceptance numbers independently, by four different methods: bas
 `9/6/3`, C-M2 replaced with a real entailment, C-M3 `9/4/5`. ⭐ `dim_after` is 5 on both sides — the
 **Δ moving 5→4** is the signal.
 
-**✅ v3 is OPEN** — charter, defect register, step plan, reasoning, techniques. Three review rounds folded (see below).
+**✅ v3 is OPEN** — charter, defect register, step plan, reasoning, techniques.
 
-**▶ NEXT: S0.5 → S1 → S1.5 → S2** — side by side.
+⭐⭐ **S0.5 was NOT reached.** The last session bought **corrections** instead — six commits, none of them
+a walkthrough step:
 
-⚠ **Round 3 status: Grok CLEAN (empty blockers); Codex REGRESSED with five.** All five are folded but
-**not re-reviewed**. ⛔ Treat S0.5–S2 as unverified and check as we go.
+- `c13f9329` — ⭐ **scope WIDENED to include charge and magnetism** (user decision). The charter's stated
+  reason for deferring them did not survive checking; the stronger argument is arithmetic — **one**
+  nonlinear throat solve is the shared `R1` for gravity `{μ_R, ρ_br}`, electric `bc_selection` **and**
+  magnetism `q_T`, so a deliverable naming some siblings and omitting others is **incomplete, not
+  scoped** (`docs/model_map.md#shared-r1-throat-solve`). **PHASE 4b (Q1–Q7)** is the new material.
+  ⭐ Same commit corrected the **phase-6 knit rule** to **input-vs-consequence**
+  (`docs/derivation_walkthrough_plan.md#knit-rule`).
+- `b78dba6e` — **round-1 review folded: 8 blocking.** ⛔ The governing failure is this project's recurring
+  one — the widening had been **APPENDED, not APPLIED**. Acceptance criterion ④ — the *definition of
+  done* — still read *"the interior debts gravity depends on"*, so an executor could satisfy it with a
+  gravity-only deliverable; and `STATUS.md`, the repository front door, still declared the old scope.
+- `7e4dc71d` — **round-2 review folded: 6 blocking.** ⚠⚠ **Three of the six were errors the round-1 fold
+  itself introduced** (an invented drain dependency, an over-sharpened A5, a false "four classes" in Q4).
+  ⇒ This is the measurement behind item **11** above: a fold is not self-certifying.
+- `3cfdc3c3` — the six stale `stage005` loci repaired (**residual #1**), the photon-sim track recorded,
+  and `λγ`'s observational constraint recorded — ⚠ **which `18d92331` then CORRECTED**: `λγ` is a
+  *calibration*, ⛔ not a test the model can fail (item **7** above).
+- `931943d5` — ⭐ **name-based citation tags** for the files we own, plus `scripts/check_citation_tags.py`,
+  **ablated per tooth** (renamed tag → `DANGLING CITATION`, duplicated tag → `DUPLICATE TAG`, bad path →
+  `UNRESOLVED PATH`), each restored by exact inverse `sed` rather than `git checkout`.
+- `18d92331` — the onboarding record above (the eleven-item list), ⭐ **CHARTER §1.3**
+  (`CHARTER.md#falsification-standard`) stating for the first time what would count as **FAILURE**, and
+  the correction of **a pin the orchestrator made**: the stray longitudinal is **CATALYTIC, ⛔ not
+  constitutive** (item **3** above).
+
+**▶ NEXT: S0.5 → S1 → S1.5 → S2** — side by side. ⛔ **None of it is started.**
 
 ⛔ **S14a is new and BLOCKING for phase 4.** Correcting S12 to the committed dynamical `Γ_B` law severed
 the chain to the imported gravity results: `Γ_B` conserves total material and converts only *order*,
@@ -152,8 +177,14 @@ CONDITIONAL, not carried.**
 ⛔ **Registry surgery before any step is banked.** The live seed already carries `Q.medium.c_gamma` and
 `Q.medium.lambda_gamma` as *medium* quantities with `R3` `DERIVED-EXECUTED`. So S1 executed as-is would
 **re-import the O-01 universe hole** — a quantity the walkthrough never introduced, counted as a medium
-input. `c_γ`/`λγ` leave the medium counting contract until S9 / S20a; recompute acceptance; ⛔ never
-preserve the old numbers.
+input.
+
+⛔⛔ **DELETED, not retired** (user decision, 2026-07-31): `Q.medium.c_gamma`, `Q.medium.lambda_gamma`
+**and `R3`** come out of the registry **outright**; `c_γ` is then introduced at **S9** and `λγ`/`R3` at
+**S20a**, each with its own provenance. ⭐ The right word is **PREMATURE, ⛔ not "retired"** — they were
+placed in the medium block *before the walkthrough reached the step that introduces them*. Recompute
+acceptance; ⛔ never preserve the old numbers. ⚠ **This breaks code, in one pass:** `active_variables`,
+`C-M1`, `able_to_fail.py` and `test_registry.py` all ride `R3` → **S0.5** in `V3_STEP_PLAN.md`.
 
 ⚠ **S1.5, the substrate-action step, runs AFTER S1 and before S2** (it consumes S1's primitives) — S1 gives the EOS but not the GNLS action,
 quantum-gradient term or Madelung balances, yet S4 invokes a "core balance" and S12 needs the
@@ -161,32 +192,94 @@ momentum/energy partners.
 
 ---
 
-## ⛔⛔ FIRST TASK — six residuals, carried deliberately, NOT folded
+## ⛔⛔ THE SIX RESIDUALS — re-checked against HEAD (3 ✅ · 1 deferral · 1 partial · 1 open)
 
 Nine review rounds were run (Codex + Grok, iterating). **Grok returned CLEAN five times**, empty blocker
-list. **Codex is still finding items** — these six. They are recorded rather than half-folded because the
+list. **Codex is still finding items** — these six. They were recorded rather than half-folded because the
 session ran out of context, and a half-fold is what caused three of the previous rounds' findings.
+⚠ **Status below is verified against HEAD**, ⛔ not carried from the previous handoff.
 
-1. ⭐⭐ **`stage005`'s registry loci are now SILENTLY WRONG — and this is a live demonstration of F4.**
-   The `WHOLLY HISTORICAL` banner I added shifted `stage005`'s line numbers, so
-   `reduction/quantities.yaml`'s loci (`:100, :104, :157, :161, :176 …`, ranges `73-88`, `68-90`,
-   `189-203`) now point at the wrong text. ⛔ **Every gate still passes** — `_validate_loci` only checks
-   the range *fits inside the file*. ⇒ Fix the loci, and treat this as the argument for fixing **F4**
-   itself.
-2. **S2's live registry provenance points into an artifact now marked do-not-consume.** `c_s0`,
-   `c_gamma`, `lambda_gamma` all cite `stage005`. Re-point them as part of **S0.5**.
-3. **S16's quotation** — the source block is now restored to the paper's actual (dimensionally loose)
-   text, with the typo recorded. ⚠ Verify the repaired form is cited *separately* and never as a quote.
+1. ✅ **DONE — `3cfdc3c3`.** The `WHOLLY HISTORICAL` banner on `stage005` shifted the file by **+5 lines**,
+   so six `reduction/quantities.yaml` loci pointed at the wrong text while **every gate stayed green** —
+   `_validate_loci` only checks that a range *fits inside the file* (**F4**). Corrected: `c_s0` `73-88 →
+   78-93`, `c_gamma` `68-90 → 73-95`, `lambda_gamma` `189-203 → 194-208`, each verified by opening the new
+   range. ⭐ **And the other 23 loci in `quantities.yaml` were swept** — nobody had checked them; all 16
+   unique citations resolve, so the six were the only stale ones. **F4 itself is still OPEN**
+   (`DEFECT_REGISTER.md` row F4) — see the pending queue below.
+2. ⏸ **SPLITS — part moot, part DEFERRED, ⛔ nothing to fix today.** `c_s0`, `c_gamma` and `lambda_gamma`
+   do all still cite `stage005`, which is now banner-marked do-not-consume. But `c_gamma`/`lambda_gamma`
+   are **deleted outright at S0.5**, so their provenance is moot for them. ⛔ **`c_s0` stays live**, and its
+   honest provenance is **S2's own record — which does not exist yet.** ⇒ Record this as an explicit
+   **deferral to S2**, ⛔ not as a fix: re-pointing `c_s0` at anything before S2 derives it forward would
+   invent a provenance.
+3. ✅ **DONE — verified at HEAD.** **S16** in `V3_STEP_PLAN.md` block-quotes `4d_2_5pn.tex:605-614` **as
+   written** (the remainder `O((a²/r²)·Φ_ext/r)` carries **no** mass factor, so force sits opposite
+   acceleration), records that as a **typo**, and cites the dimensionally correct form **separately** at
+   `4d_1pn_full.tex:886` — ⛔ never as a quotation. ⚠ The repaired form appears nowhere as a quote.
 4. ✅ **DONE — and the residue was in TWO files, not one.** `docs/derivation_walkthrough_plan.md`'s
    phase-6 table cell and its replacement rule carry **only** the corrected input-vs-consequence form
-   (`c13f9329`); **S21** in `V3_STEP_PLAN.md`, which still stated the **superseded first** replacement,
-   now quotes the corrected rule. ⭐ Fixing the governing doc alone would have left the step that
-   *executes* the knit still forbidding exactly what the corrected rule expects it to produce.
-5. **`model_map.md` / control plane** — pre-correction assertions may remain below the new front-pointer.
-6. **A13's branch choice does not propagate through S6** (the kink step) — it is gated at S1/S5/S12 only.
+   (`c13f9329`, `docs/derivation_walkthrough_plan.md#knit-rule`); **S21** in `V3_STEP_PLAN.md`, which still
+   stated the **superseded first** replacement, now quotes the corrected rule. ⭐ Fixing the governing doc
+   alone would have left the step that *executes* the knit still forbidding exactly what the corrected rule
+   expects it to produce.
+5. ⏸ **PARTLY DONE — the surplus list is marked, the ATLAS is not.** ✅ `docs/model_map.md`'s §4
+   earned-surplus list now carries both `⛔ CONDITIONAL pending the S14a drain bridge, NOT earned` bullets,
+   covering all **three** charter-conditional items (the `1/r²` exponent, the attractive sign, and the
+   stage009 `RETURN_RESIDUAL_PREDICTION`) — `7e4dc71d`. ⛔ **Still open:** the pre-correction assertion
+   survives **below the front-pointer** in the same file's derivation atlas, where `pathA_29` is still
+   headed *"**held-out FALSIFIABLE PREDICTION** (`RETURN_RESIDUAL_PREDICTION`)"* with no S14a marking, and
+   §2's sector table still states gravity's `1/r²` + attraction flat. ⇒ ⭐ **Sweep the whole file, not the
+   ledger section** — that split is exactly the append-vs-apply failure. ⚠ The **count** in that list is a
+   separate item and is ⛔ **not** an edit — see the pending queue.
+6. ⛔ **OPEN — unchanged.** **A13's branch choice does not propagate through S6** (the kink step): it is
+   gated at **S1**, **S5** and **S12** only, and **S6**'s `Register:` line names **A2** alone — while S6
+   solves the EL equation for `δ` and `σ_wall` out of the very constants the A13 branch selects.
 
-⇒ ⭐ **Do these first, side by side, before S0.5.** They are small, and every one of them is residue from
-a correction that was *appended rather than applied*.
+⇒ ⭐ **What is left here is #2's deferral, #5's atlas sweep and #6** — small, and both live ones are
+residue from a correction that was *appended rather than applied*.
+
+---
+
+## ▶ PENDING WORK — queued, with the reason and the blocker
+
+⭐ A **list**, ⛔ not machinery. Nothing here is started.
+
+1. **Registry `anchor:` extension to `_validate_loci`** (the structural fix for **F4**). ⏸ **Deferred
+   until AFTER S0.5, deliberately** — S0.5 deletes `Q.medium.c_gamma`, `Q.medium.lambda_gamma` and `R3`,
+   so anchoring loci that are about to change is wasted work. **Blocker: S0.5.**
+2. **The carried-results survey** — a **bounded** sweep for computed/earned results that `CHARTER.md` §3's
+   *"what carries forward from v2"* list does not name. ⚠ It was held pending a clean fold; **the fold is
+   now clean (`18d92331`), so it is UNBLOCKED.** ⭐ **Discipline: a list with loci, one pass.** ⛔ No
+   schema, ⛔ no checker, ⛔ no manifest — that is exactly how the retired v2 census started.
+3. ⭐ **The `FAIL_`-token audit** — ⚠ **a hypothesis from ONE confirmed instance, ⛔ NOT a finding.** Some
+   `FAIL_*` / `*_NOGO` tokens may name **characterized DEPARTURES** rather than internal inconsistencies.
+   ⭐ **The distinction that decides it** (`CHARTER.md#falsification-standard`): an **internal
+   impossibility** — ghost mode, energy unbounded below, lost hyperbolicity, constraint-count failure —
+   **versus producing MORE than an incomplete reference theory has a slot for**, which §1.3 says outright
+   is ⛔ not failure. **`FAIL_UNSPECIFIED_SUBSTRUCTURE` is a candidate:** its own report says the quantity
+   *"is therefore **not derived as zero and not derived as nonzero**"*
+   (`software/stage1_solver/reports/pathA_23_stage2_constitutive_form.md:11`) — that is an
+   **UNDETERMINED**, filed under `FAIL_`. ⛔ One instance is not a pattern; the audit is what would decide.
+4. **`scripts/check_citation_tags.py` owes a review leg.** ⛔ The orchestrator **authored** it
+   (`931943d5`), and **the builder is not the reviewer**. ⚠ It is per-tooth ablated but not
+   independently reviewed. **Blocker: a fresh reviewer.**
+5. ⚠ **`docs/model_map.md`'s earned-surplus COUNT.** The list is headed *"the earned surplus, **~6–7
+   structural + 1 departure**"* (`docs/model_map.md#earned-surplus`), and the same figure recurs in the
+   **Midway Knob Audit headline** further down the same section. **Three of its items are now
+   CONDITIONAL** pending S14a. ⛔ **The count was DELIBERATELY not adjusted, and that is the correct
+   state:** the bullets are ⛔ not one-to-one with counted items, and the method doc requires the **§7a
+   closing certification** before any count is quoted (`docs/derivation_walkthrough_plan.md` §7a) —
+   recomputing it here would be the exact move that rule forbids. ⇒ **It needs the certification, ⛔ not
+   an edit.**
+6. **The `R1` namespace collision** — three different objects share the name (item **8** above): the
+   parameter-register **edge** `R1` (`parameter_register.md:268`, the sound-speed derivation), **rung 1 of
+   the simulation ladder** in `R1_REQUIRED(...)` (`:329`), and *"the shared R1"* in the model map. ⚠ Two
+   of the three are in the same file, and the two namespaces are **nested** — `R10`/`R30`/`R33` are
+   *edges* that are themselves blocked on the *rung*. ⇒ **Its durable home is row `F5` in
+   `DEFECT_REGISTER.md`**; the note inside **S0.5** (`V3_STEP_PLAN.md#s05-r-namespace-hazard`) is
+   in-flight guidance only. ⛔ **Nothing has been fixed** — bare `R1` occurs **1295×** across **236**
+   tracked files, so this is corpus-wide vocabulary, ⛔ not a small edit. ⭐ **Cheap mitigation, available
+   now: never write bare `R1`** — write `R1_REQUIRED(...)` or "rung `R1`" in full at every use.
 
 ---
 
@@ -214,6 +307,13 @@ a correction that was *appended rather than applied*.
    import)? In the sim-input set either way; the label moves it between tier 1 and tier 2.
 3. **Scope confirmation** — the charter's boundary may not survive S16/S19 (the compactness premise vs
    the Spin Problem). If it doesn't, the honest move is to amend the charter, not preserve the boundary.
+4. ⭐ **The `C-M1` replacement mutation.** `C-M1` **dies with `R3`**: its entire content is *"drop `R3`"*
+   (`acceptance_check.py:54` builds it as `without_r3 + (lambda_gamma - lambda_gamma,)`, and
+   `constraint_dimension` discards zero-valued constraints, so the appended term is **inert**). S0.5
+   deletes `R3` ⇒ C-M1 has **nothing left to mutate**. Its replacement must be a **plausible physics
+   error on a surviving relation** — `R1` (the sound speed), or `R2.xi_h` / `R2.h0` — ⛔ not a
+   relabelling and ⛔ not another inert term. ⭐ **Which one is a USER call**, not the builder's.
+   → **S0.5** in `V3_STEP_PLAN.md`.
 
 ---
 

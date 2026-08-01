@@ -78,7 +78,10 @@ v3 **will not claim to discharge** — and must not appear to have settled:
 - the drain law and `g_phys` (**C1**)
 - `R*(E)`, the mass–radius relation, and the throat size (**C2**, **D1**)
 - what distinguishes the leptons (**D1**)
-- brane existence (**B2**, **C7**, **C8**)
+- brane existence (**B2**, **C7**, **C8**) — ⚠ **`B2`'s scope, so this line is not over-read:** the
+  *gate program* that would have grounded the brane is superseded **at the brane-existence level**; the
+  no-go itself closes only *deriving* `μ_R` from a polar `P`, and light still stands on the
+  **postulated** modulus (`DEFECT_REGISTER.md#B2`). ⛔ Not "light is foundationless."
 
 ⛔ **A v3-gravity ledger that closes cleanly is not evidence the model is sound.** At most it shows the
 far field is computable *given supplied* mass, multipoles, compactness and a calibrated normalization — {#clean-close-not-validation}
@@ -106,6 +109,24 @@ which today is scattered across `R10`, `R30`, `R33`, `R36`, `m_defect`, `J` and
 `INFLOW_MASS_SOURCE_MISSING` on the gravity side, and across `bc_selection`, `Q_E`, `q_T`, `c_a` and `c_ξ`
 on the EM side. Collapsing that into one honest list is the win — it is a thing that fits in one head,
 which is what is currently missing.
+
+### 1.3 ⭐ What would count as FAILURE {#falsification-standard}
+
+⭐ **The point of this model is to show that circumstances CAN EXIST to support the forces we observe — ⛔
+NOT to derive the universe from first principles** (user, 2026-07-31). ⇒ ⛔ **Fidelity to standard physics
+is the wrong test:** superfluid hydrodynamics describes media of atoms with EM interactions, and those
+equations carry that microphysics inside them; this model postulates a medium with whatever properties the
+forces require. ⇒ **Departing from real-superfluid behaviour is EXPECTED, ⛔ NOT a defect.**
+
+**What WOULD falsify:** an **internal impossibility** — ghost modes, energy unbounded below, lost
+hyperbolicity, a constraint-count failure, a causality violation · a **DERIVED** value contradicting data
+(⚠ a *calibrated* value cannot falsify, it was fitted; only a derived one can) · **running out of
+surplus**, more knobs spent than held-out matches earned. ⛔ **NOT failure:** differing from helium-4 or
+any real superfluid · failing to *derive* a legitimately postulated quantity (⚠ that leaves it postulated
+— a **cost against surplus** and a §1.2 debt row, not a failure).
+
+⭐ ⇒ **Postulating freely is not free — every postulate is a knob**, and the model is scored on surplus:
+the burden shifts from *"is this like a real superfluid"* to *"how many knobs did this cost"*.
 
 ---
 

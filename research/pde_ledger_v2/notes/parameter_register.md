@@ -274,7 +274,7 @@ asserted in both engines).
 | R7 | `λγ = 1` i.e. `μ_R/ρ_br = 5K ρ0⁴/m` | `CALIBRATED/UNCOMMITTED` (available cone-lock calibration; not in force) | VI (040) | an available calibration choice the committed model does **NOT** impose; not derived, does not reduce; independence proven by R9; re-adjudicated by R78 |
 | R8 | `c_E = c_γ` (the **throat Green speed** `c_E`, NOT the Maxwell coeff `C_E`) | `CALIBRATED/UNCOMMITTED` (available cone-lock calibration; not in force) | VI (040) | an available calibration choice the committed model does **NOT** impose; not derived, does not reduce; independent from R7 by R9; re-adjudicated by R78 |
 | R9 | R7 and R8 are **independent** calibrations, `Δr=2` | `CODIM-PROVEN` | VI (040) | Krull/`RegionDimension` count: real-locus dim 10→8. **Hidden multiplicity** — two locks, not one |
-| R10 | Route A: derive `λγ` from a nonlinear-throat `μ_R`-as-bulk-defect integral | `PENDING` | VI (040) | would discharge R7's debt (`λγ` derived, not calibrated); needs the deferred nonlinear throat |
+| R10 | Route A: derive `λγ` from a nonlinear-throat `μ_R`-as-bulk-defect integral | `PENDING` | VI (040) | would discharge R7's debt (`λγ` derived, not calibrated); needs the deferred nonlinear throat {#R10} |
 | R11 | Route B: derive `λγ` via `h≠u_T` / thin-plate over-import | `CLOSED-NEG` | VI (040) | proven **not** a route → `λγ` reducible only via Route A (or stays calibrated) |
 | R12 | NG5 route (i): compression-sector 4D→3D reduction | `PENDING` | VI (041) | would collapse `{ρ_B0, χ_c}` into bulk/brane primitives |
 | R13 | NG5 route (ii): embedding-overlap reduction | `PENDING` | VI (041) | would collapse `C_hu` |

@@ -159,6 +159,12 @@ real problems are subtler: those rest on two *postulated* constants `{a_B, κ_B}
 grounded the medium returned **`FAIL_COUPLE_STRESS_NOGO`**, marked *"SUPERSEDED at the brane-existence
 level"*.
 
+⚠ **Scope note appended 2026-07-31 — the sentence above stands as written, as the record of how this
+session reasoned; its *packaging* was narrowed later.** `FAIL_COUPLE_STRESS_NOGO` is a route-failure for
+*deriving* `μ_R` from a polar substructure `P`, and *"light stands on the bare postulated modulus"*; the
+*"SUPERSEDED at the brane-existence level"* line is about the GNLS-polar-smectic **gate program**, ⛔ not
+about light. → `DEFECT_REGISTER.md#B2`.
+
 ⚠ **Correction 2 — `THROAT_DRAIN_DESTABILIZED` does not say the particle is dead.** I cited
 `pathA_26_derrick.md:58-72` and missed `:101-123`, headed *"NOT a computed result; read before citing the
 top-line"*, which states outright: *"must NOT be read as 'the gravitating particle is killed.'"*

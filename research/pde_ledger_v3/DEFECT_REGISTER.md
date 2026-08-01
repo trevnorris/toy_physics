@@ -56,7 +56,7 @@ precisely why identifying `a` with "the GNLS healing core" felt natural and surv
 ⇒ **The pin's defect was never that the number was wrong. It was a category error:** a **medium**
 length used as a **defect** radius. ⛔ A future check that asks *"is this value right?"* would have
 passed it. The question that catches it is ***"is this quantity the same KIND of thing?"*** — one number
-for the whole medium, or one per particle.
+for the whole medium, or one per particle. {#a7-kind-test}
 
 ⚠ **Apply this test to every open row A2–A13.** Each is two lengths that agree numerically or dimensionally. The
 question is not whether the numbers match; it is whether both sides are indexed by the same thing.
@@ -102,6 +102,47 @@ look alike?"***
 
 **Status: OPEN — CANDIDATE, to be tested at the knit (PHASE 5).**
 
+### ⭐⭐ **`A-CAUGHT`** — a candidate pin flagged, CHECKED, and REFUTED in flight (2026-07-31)
+
+⭐ **The third kind of row in this section — and the only one where the rule ran end to end.** The thirteen
+numbered instances were all found *after* the identification had been made; `A-CAND` is one written down
+*before* being made. This one was flagged before being made, **checked, and killed.** ⛔ It is **NOT an
+instance** and ⛔ **NOT a defect** — no identification was ever made. It is recorded because the near-miss
+was one step from a *false falsification*.
+
+**What happened.** A report surfaced `r_cone = 9/2 ≠ 1`. Three surface features matched `λγ = c_γ/c_s` —
+"cone", "a ratio", "not equal to `1`" — and `λγ ≈ 1` is required observationally. ⛔ The orchestrator was
+one step from reporting the model **falsified against GW170817**. Flagging the identification *before*
+making it, and then checking it, showed the two are ⛔ **different objects entirely**:
+
+- `r_cone = c_E²/c_γ²` — **electric-throat Green speed² ÷ light speed²** — is **Lock B**:
+  *"`L_B = c_E²ρ_br − μ_R = μ_R(r_cone − 1)` with `r_cone = c_E²/c_γ² = c_E²ρ_br/μ_R`; at the witness,
+  `L_B = 7` and `r_cone = 9/2 ≠ 1`"* (`research/pde_ledger_v2/paper/stages/stage_040.tex:88-90`).
+- `λγ = c_γ/c_s` — **light speed ÷ sound speed** — is **Lock A**, recorded as *"an untouched separate
+  calibration (light ↔ gravity-phonon), NOT the Part-V one"* (`stage_040.tex:84-86`). Both locks are
+  stated together at `research/pde_ledger_v2/notes/parameter_register.md:344`.
+- ⭐ **And `9/2` is a per-branch WITNESS, not a result.** Its purpose is to demonstrate **non-entailment** —
+  a constructed point at which the lock is violated, proving the committed model does not *force* it. ⛔ A
+  witness value never decides entailment: *"A witness value of `0` does NOT establish entailment;
+  entailment is decided ONLY by the Groebner remainder-zero (`.py`) / universal `Resolve[ForAll]` (`.wl`)
+  route"* (`stage_040.tex:93-95`).
+
+⇒ ⭐ **The near-miss was caught by the KIND test, not by a value check.** Asking *"is `9/2` the right
+number?"* gets you nowhere — it is a witness, so there is no "right" value to check it against. Asking
+***"is this the same KIND of thing — a ratio of WHAT to WHAT?"*** settles it in one step: `c_E²/c_γ²` is
+throat-against-light, `c_γ/c_s` is light-against-medium. That is A7's test
+(`DEFECT_REGISTER.md#a7-kind-test`) applied successfully in real time — the first time this section's
+failure mode was stopped end to end instead of catalogued afterwards.
+
+⚠ **The contributing hazard: the locus that carried the number was WRONG.** `r_cone` and `9/2` do **not**
+appear in `software/stage1_solver/reports/pathA_40_cone_lock.md` at all — that report carries
+`CONE_LOCK_CALIBRATED`, `delta_r = 2`, and both locks `WITNESSED`, and neither symbol occurs in its 75
+lines. They live **downstream**, in the ledger-v2 re-adjudication (`stage_040.tex:88-90`;
+`parameter_register.md:344`, R78). ⇒ The number reached the orchestrator detached from the text that
+labels it a witness.
+
+**Status: ⛔ NOT AN INSTANCE — flagged, checked, REFUTED. Kept so the near-miss is not re-walked.**
+
 ---
 
 ## B. Falsified — closed negative results
@@ -112,7 +153,7 @@ not look like progress. Import them first.
 | id | result | evidence | status |
 |---|---|---|---|
 | **B1** | **The lepton mass tower is falsified.** The support-mode family gives `F_j ∝ (2j+1)²` = `1:9:25`; observed is `206.77`, `3477.37`. *"decisively ruled out"* | `notes/lepton_mass_notes.md:424-473`; `conceptual_foundation.md:487-488` | **FALSIFIED** |
-| **B2** | **Gate L returned a no-go.** `FAIL_COUPLE_STRESS_NOGO` — the gate the medium survey had flagged as *"Highest risk; the most likely no-go"*. The GNLS polar-smectic program is *"SUPERSEDED at the brane-existence level"* | `notes/stage030_pathA35_gateL_source_map.md:16`; `conceptual_history.md:340`; `medium_requirements_and_prior_art.md:172-183` | **FALSIFIED** | {#B2}
+| **B2** | **Gate L returned a no-go — and the no-go is of a NARROWER thing than this row used to claim.** `FAIL_COUPLE_STRESS_NOGO`, the gate the medium survey had flagged as *"Highest risk; the most likely no-go"*, is a **route-failure for *deriving* the shear modulus `μ_R` from a polar substructure `P`** — ⛔ **not** a finding that one medium cannot carry a longitudinal and a transverse mode. The source says so outright: *"The no-go rules out only *deriving* `μ_R` from `P`; light stands on the bare postulated modulus (`pathA_36`/stage003 gets photons `P`-free)"*. ⚠ Its provenance is `CONDITIONAL_ON(both)` — *"conditional on the imposed axis and the postulated MacCullagh package"* — and the gauntlet was ⛔ **not** hardwired to fail: an able-to-**PASS** fixture `FREE_LIGHT_OK_CONDITIONAL` exists, *"the able-to-**PASS** tooth, proving the verdict machinery is NOT hardwired to fail"*. ⭐ **Countervailing computed fact:** the `μ_br > 0` branch carries *"two transverse modes `μ_br k²` **but also** a longitudinal mode `(K_br+4μ_br/3)k²`"* — simultaneously and consistently ⇒ the obstruction is to **suppressing** the longitudinal one (`FAIL_CAUCHY_STRAY_LONGITUDINAL`), ⛔ **never** to carrying both. ⛔ **The no-go itself stands undiluted**, and the field `P` is retired on a confirmed structural instability (`INSTABILITY_CONFIRMED_STRUCTURAL`, Decision 16) — but as *"retired-but-NOT-foreclosed (re-entry needs a NEW T0 freeze)"*. ⚠ The *"SUPERSEDED at the brane-existence level"* line is about the **GNLS-polar-smectic gate program**, ⛔ not about light | `research/pde_ledger_v2/notes/stage030_pathA35_gateL_source_map.md:240-244`, `:158`, `:16`; `software/stage1_solver/reports/pathA_35_gateL_light.md:11-13`; `software/stage1_solver/decisions/15_em_medium_native_physical_picture.md:266-272`; `software/stage1_solver/decisions/16_retire_brane_polar_field.md:12`; `research/pde_ledger_v2/notes/parameter_register.md:362`; `docs/conceptual_history.md:362` (quote), `:340`; `docs/medium_requirements_and_prior_art.md:172-177` (gate definition) | **FALSIFIED** | {#B2}
 
 ⭐ **B1's consequence is the largest open question in the project.** The falsified picture — leptons as
 support-mode excitations `j` of *one* throat — was what made charge universality automatic. Killing it

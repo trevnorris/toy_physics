@@ -5,7 +5,7 @@ hash written in any doc, including this one.
 
 ---
 
-## ⛔ ORIENTATION BUDGET — read these five, in order, and nothing else
+## ⛔ ORIENTATION BUDGET — read these eight, in order, and nothing else
 
 1. ⭐ `docs/model_map.md` — **READ-FIRST master map**: the throughline, the per-sector atlas, and the
    earned/calibrated/R1/departure ledger
@@ -13,12 +13,18 @@ hash written in any doc, including this one.
 3. `research/pde_ledger_v3/V3_STEP_PLAN.md` — ⭐ **§0 first**, then S0.5 → S2
 4. `research/pde_ledger_v3/DEFECT_REGISTER.md` — the known error surface
 5. `research/pde_ledger_v3/SESSION_REASONING.md` — how we got here
+6. `docs/derivation_walkthrough_plan.md` — **the method**; the charter defers to it and does not
+   restate it. ⭐ **check 6** (`:138-141`) governs what a mutation may be.
+7. `research/pde_ledger_v2/walkthrough/DECISIONS.md` — ⛔ **overturns the method doc where they
+   disagree** (`derivation_walkthrough_plan.md:7-10`); holds O-01, O-02 and the `ħ` finding.
+8. `docs/development_pipeline.md` — the **operative process** doc: roles, phases, how many review
+   legs an artifact gets.
 
 ⭐ **Why (1) was added (user decision, 2026-07-31):** this budget's omission of the master map is the
 measured reason the model's recorded throat-support mechanism (trapped standing-wave pressure) was
 invisible to v3 work, and the scope-widening argument itself came from `docs/model_map.md#shared-r1-throat-solve`.
 
-⚠ Still a **bounded** list — five documents, not licence to read the corpus.
+⚠ Still a **bounded** list — eight documents, not licence to read the corpus.
 ⛔ **Do not open** the v2 census, manifests, `archive/`, or the 43 stage notes "to get oriented".
 Delegate any other read as a **specific question**, and require **≤20 lines + `file:line` loci** back.
 
@@ -106,9 +112,15 @@ orchestrator who had read the orientation budget.
    `docs/model_map.md#shared-r1-throat-solve`.
 
 9. ⛔ **Wrong: *"the orientation budget is sufficient."***
-   ⭐ Right: it omitted `docs/model_map.md`, the READ-FIRST master map — which is why item 1 was missed,
-   and where the scope-widening argument came from. ⚠ Now item 1 of the budget. → the budget section
-   above.
+   ⭐ Right: **the omission RECURRED.** The first one was `docs/model_map.md`, the READ-FIRST master map
+   — which is why item 1 was missed, and where the scope-widening argument came from. ⚠ **Adding it did
+   not make the list sufficient:** a later session read all five and was still missing **three**
+   documents that *govern* the work — `docs/derivation_walkthrough_plan.md` (**the method**, which
+   `CHARTER.md:16` defers to and ⛔ does not restate), `research/pde_ledger_v2/walkthrough/DECISIONS.md`
+   (⛔ **overturns the method doc where they disagree**) and `docs/development_pipeline.md` (the
+   **operative process** doc). ⇒ ⭐ **The durable form: a budget that omits a document the charter defers
+   to is incomplete by construction.** ⛔ Do not check the list against itself — check what the budgeted
+   documents **themselves point at as governing**. → the budget section above.
 
 10. ⛔ **Wrong: *"the launch prompt supersedes this handoff."***
     ⭐ Right: this session's launch prompt was a **lossy hand-compression** written after the handoff but
@@ -322,6 +334,20 @@ residue from a correction that was *appended rather than applied*.
    error on a surviving relation** — `R1` (the sound speed), or `R2.xi_h` / `R2.h0` — ⛔ not a
    relabelling and ⛔ not another inert term. ⭐ **Which one is a USER call**, not the builder's.
    → **S0.5** in `V3_STEP_PLAN.md`.
+
+   > ⚠ **Measured — and stated in the harness's own terms.** ⛔ **Do not restate this as coverage of the
+   > method doc's five named error classes:** that mapping was attempted twice and was wrong both times, in
+   > opposite directions. What was actually measured, on the post-S0.5 block:
+   > - The **count** (`constraint_dimension`) moves only when the number of **independent relations**
+   >   changes — dropping a whole relation gives `7 → 5`, adding a genuinely new one `7 → 3`.
+   > - ⛔ It does **not** move for a wrong **coefficient**, a wrong **sign**, a wrong **branch**, a term
+   >   **omitted from inside** a relation, or even a **changed symbol set** — every one leaves `7 → 4`.
+   > - ⭐ The **certifier** (`certify_positive_real_dimension`, `acceptance_check.py:66`, run on every case)
+   >   **raises** on a wrong **sign** and a wrong **branch** while the count sits at 4.
+   >
+   > ⇒ **The mutations reachable for `C-M1`:** drop a whole relation · flip a sign · take the wrong branch ·
+   > substitute a **circular** relation the survivors already imply. ⛔ **Do not assert that any error class
+   > is or is not covered without measuring it** — this passage was wrong twice for exactly that reason.
 
 ---
 

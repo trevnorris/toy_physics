@@ -14,7 +14,7 @@ because they tried to verify every claim in the corpus. ⭐ **This one has a sin
 ## How to run it
 
 1. Read `research/pde_ledger_v3/NEXT_SESSION.md` **first and in full** — it is the handoff.
-2. Read the four other documents its `ORIENTATION BUDGET` names, ⛔ and nothing else except what steps 3–5
+2. Read the eight documents its `ORIENTATION BUDGET` names, ⛔ and nothing else except what steps 3–5
    below require.
 3. **Try to execute `S0.5`** from `research/pde_ledger_v3/V3_STEP_PLAN.md` as written — ⛔ do NOT actually
    edit anything; walk it. Open the files and code it names. Report where you would be **blocked, guessing,

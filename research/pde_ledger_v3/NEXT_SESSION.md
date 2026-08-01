@@ -48,6 +48,85 @@ step — to check our work, not to do it.
 
 ---
 
+## ⛔⛔ WHAT A FRESH SESSION GETS WRONG — measured, 2026-07-31
+
+⛔ These are **not** hypothetical: each was actually believed and acted on during one session, by an
+orchestrator who had read the orientation budget.
+
+1. ⛔ **Wrong: *"the throat's support mechanism is an open question."***
+   ⭐ Right: the throat is held open by **outward trapped standing-wave pressure** against inward brane
+   tension plus superfluid backpressure, the trapped mode being a **brane-shear standing wave** with
+   Wheeler-**geon** ancestry. ⚠ Contested by a later drain-flow reading, and the one computed result used
+   a scalar surrogate. → `docs/conceptual_foundation.md` §4 (the 2026-06-24 sharpening);
+   `software/stage1_solver/decisions/15_em_medium_native_physical_picture.md` §16(B); and **PHASE 4b step
+   Q2** in `V3_STEP_PLAN.md`, which now carries all three readings.
+
+2. ⛔ **Wrong: *"the test is whether this matches real superfluid physics."***
+   ⭐ Right: this is an **ANALOG**. The medium's properties are postulated as needed; departing from
+   real-superfluid behaviour is expected and is ⛔ **not** a defect. Only an internal impossibility
+   falsifies. → `CHARTER.md#falsification-standard`.
+
+3. ⛔ **Wrong: *"`FAIL_CAUCHY_STRAY_LONGITUDINAL` is a defect"*** — and ⛔ equally wrong, *"the stray
+   longitudinal becomes the `±w` displacement, i.e. charge."*
+   ⭐ Right: the mode is **real and irremovable**, and its role was **CATALYTIC, ⛔ not constitutive**. Its
+   irremovability **falsified the exact-Maxwell target** — exact Maxwell takes charge as an **external
+   source put in by hand**, so matching it exactly would have inherited that gap — and thereby **forced
+   the rethink** that produced the `±w` brane-tug mechanism. ⛔ **Different objects:** `u_L` is in-plane
+   longitudinal brane displacement, `±w` is the throat's normal/orientation direction, and the charge the
+   rethink produced is the **`h`-branon**, recorded *"(distinct from `u_L`)"*. ⚠ The token's name is
+   misleading. → **S11** in `V3_STEP_PLAN.md` (the full history and the three distinctness loci).
+
+4. ⛔ **Wrong: *"`r_cone = 9/2` conflicts with `λγ ≈ 1`, so the model is falsified."***
+   ⭐ Right: **different objects.** `r_cone = c_E²/c_γ²` is **Lock B**; `λγ = c_γ/c_s` is **Lock A**. And
+   `9/2` is a **witness constructed to demonstrate non-entailment**, ⛔ not a result.
+   → row `A-CAUGHT` in `DEFECT_REGISTER.md`; `research/pde_ledger_v2/paper/stages/stage_040.tex:88-90`.
+
+5. ⛔ **Wrong: *"whether one medium can carry both a longitudinal and a transverse mode is an open risk."***
+   ⭐ Right: **computed, and it can** — the `μ_br > 0` branch carries two transverse modes and a
+   longitudinal mode simultaneously and consistently. The obstruction is to **suppressing** the
+   longitudinal one. → `software/stage1_solver/decisions/15_em_medium_native_physical_picture.md` §15
+   (the trilemma / pincer).
+
+6. ⛔ **Wrong: *"B2's `FAIL_COUPLE_STRESS_NOGO` means light rests on a falsified foundation."***
+   ⭐ Right: it rules out only **deriving** `μ_R` from the polar field `P`; light stands on the bare
+   postulated modulus. → `DEFECT_REGISTER.md#B2`;
+   `research/pde_ledger_v2/notes/stage030_pathA35_gateL_source_map.md:240-244`.
+
+7. ⛔ **Wrong: *"`λγ` is a held-out test the model can fail."***
+   ⭐ Right: it is currently a **calibration** — `CONE_LOCK_CALIBRATED`, Lock A untied. A calibrated value
+   cannot falsify; it was fitted. Only a **derived** value ≠ 1 would. ⚠ It is still a **knob spent**, and
+   `λγ³` enters the gravity normalization. → **S20a** in `V3_STEP_PLAN.md`;
+   `docs/medium_requirements_and_prior_art.md:181` (Gate K).
+
+8. ⛔ **Wrong: *"`R1` means one thing."***
+   ⭐ Right: **three.** An **edge** in the parameter register (`:268`, the sound-speed derivation); **rung
+   1 of the simulation ladder** (the one nonlinear throat solve) in `R1_REQUIRED(...)` (`:329`); and "the
+   shared R1" in the model map. ⚠ Two of the three are in the same file.
+   → `research/pde_ledger_v2/notes/parameter_register.md:268` and `:329`;
+   `docs/model_map.md#shared-r1-throat-solve`.
+
+9. ⛔ **Wrong: *"the orientation budget is sufficient."***
+   ⭐ Right: it omitted `docs/model_map.md`, the READ-FIRST master map — which is why item 1 was missed,
+   and where the scope-widening argument came from. ⚠ Now item 1 of the budget. → the budget section
+   above.
+
+10. ⛔ **Wrong: *"the launch prompt supersedes this handoff."***
+    ⭐ Right: this session's launch prompt was a **lossy hand-compression** written after the handoff but
+    from an earlier state — it reported round 2 when nine rounds had run, and omitted the carried
+    residuals entirely. ⇒ ⭐ **Where a prompt and this file disagree, reconstruct the reasoning; ⛔ do not
+    assume the later text is the more current one.**
+
+11. ⛔ **Wrong: *"a review round's findings can be folded without re-reviewing."***
+    ⭐ Right: measured twice this session — round 1's fold introduced **three** new physics errors that
+    round 2 caught, and round 2's fold introduced more. ⇒ **A fold is not self-certifying.**
+
+⭐ The common shape across items **2, 3, 6 and 7** is **importing a standard the project does not use**,
+and across **3 and 4** it is **a surface match between different objects** (item **3** is both: an
+imported exact-Maxwell target *and* a weld of `u_L` onto `±w`) ⇒ the questions that catch them are
+*"what test does this project actually apply?"* and *"is this the same KIND of thing?"*
+
+---
+
 ## ▶ WHERE WE ARE
 
 **✅ Step ① is DONE** (`407eed94`). The `a`-pin is retired from everything that computes. Four parties

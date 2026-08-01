@@ -75,6 +75,12 @@ orchestrator adjudicates and does not type.
 medium block"* (S9) **collide**, because the live seed **already** carries `Q.medium.c_gamma` and
 `Q.medium.lambda_gamma` as *medium* quantities with `R3: λγ = c_γ/c_s0` marked `DERIVED-EXECUTED`.
 
+⚠ **`R`-number namespace hazard — `R⟨n⟩` and `R1`-the-rung are DIFFERENT namespaces.** `R⟨n⟩` (`R1`,
+`R3`, `R10`, `R60`–`R73`) are **parameter-register edges** (`parameter_register.md:268` —
+`| R1 | c_s0 = √(5K ρ0⁴/m_GNLS) | DERIVED |`); `R1`-the-**rung** is the **one nonlinear throat solve**
+(`parameter_register.md:329` — `R1_REQUIRED(bc_selection)`; `docs/model_map.md#shared-r1-throat-solve`).
+⛔ `R1_REQUIRED(x)` means **blocked on the throat solve**, ⛔ **not** on the sound-speed edge `R1`.
+
 ⇒ Executing S1–S3 against the seed as-is either **accepts the O-01 universe hole** or requires surgery
 that no step names. Do the surgery **first**:
 
@@ -183,8 +189,12 @@ it as a defining equation for a **defect** quantity.
 `{a_B, κ_B}` pair.
 **Register:** ⛔ **A13 (gate — must already be resolved at S1; this step must use the chosen branch, and
 ⛔ `{a_B, κ_B}` cannot parameterize an action containing `Z_χ`)** · **C8** (the wall rests on two *postulated* constants — derived-from-postulates is not
-derived-from-primitives). **B2** — ⛔ **state the no-go here**: the medium program that would have
-grounded this returned `FAIL_COUPLE_STRESS_NOGO` and is superseded.
+derived-from-primitives). **B2** — ⛔ **state the no-go at its ACTUAL scope**: the GNLS-polar-smectic
+gate program that would have grounded this wall is *"SUPERSEDED at the brane-existence level"*, which is
+why the wall's constants stay **postulated** — ⛔ but `FAIL_COUPLE_STRESS_NOGO` itself is **narrower**
+than that packaging: it is a route-failure for *deriving* `μ_R` from a polar substructure `P`, and
+*"light stands on the bare postulated modulus"* (`DEFECT_REGISTER.md#B2`). ⇒ That half of **B2** is
+`μ_R` provenance and belongs at **S8**, ⛔ not on the wall step.
 
 ### S6 · The kink — wall thickness and surface tension
 Solve the EL equation: `δ = √(κ_B/(2a_B))`, `σ_wall = √(2a_Bκ_B)/6`. **Genuinely derived** — from S5's
@@ -205,7 +215,10 @@ Transverse and longitudinal sectors; the reduced `h`/`u_L` operator.
 ⭐⭐ **The step that defines v3's ceiling.** State plainly: **quadratic = linear response about an
 assumed equilibrium.** Everything downstream in this ledger is small-oscillation physics on a brane
 that S5–S7 postulated. It is why gravity and light are tractable, and why the defect is not.
-**Register:** **R10 starts here** (`{ρ_br, μ_R}`) · **C6** (no closed parent action — the coupling to sleeve/geon/drain does not exist).
+**Register:** **R10 starts here** (`{ρ_br, μ_R}`) · **C6** (no closed parent action — the coupling to sleeve/geon/drain does not exist) ·
+**B2** (⛔ the *only* thing `FAIL_COUPLE_STRESS_NOGO` closes is deriving `μ_R` from a polar `P` — so
+`μ_R` enters here **postulated** and stays postulated; ⛔ that is a missing reduction, **not** a
+falsified foundation for light — `DEFECT_REGISTER.md#B2`).
 
 ---
 
@@ -229,6 +242,87 @@ The earned target-blind result: brane shear gives exactly two transverse polaris
 
 ### S11 · The stray-longitudinal departure
 Characterized, first-class. ⛔ Not a defect to fix — a recorded departure from the reference theory.
+
+⛔⛔ **The token `FAIL_CAUCHY_STRAY_LONGITUDINAL` reads as a defect. It is not.** ⚠ Record the **naming
+defect** explicitly: the token is spelled `FAIL_…`, and that spelling already caused a reader this
+session to treat a **required feature** as a defect. ⛔ **Do not rename the token** — it is committed in
+engines and reports — ⭐ but flag at **every point of use** that the "failure" names a **characterized
+departure the ledger keeps as first-class** — ⛔ not a bug to erase. ⚠ ⛔ Do **not** upgrade that into
+*"the charge sector requires it"*: it does not (see the DIFFERENT OBJECTS block below).
+
+⭐ **The computed result: one medium carries both mode families consistently**
+(`software/stage1_solver/decisions/15_em_medium_native_physical_picture.md:266-272`):
+
+> *"Spectrum of the symmetric law is `(λ−μ_br k²)²(λ−(K_br+4μ_br/3)k²)` … **μ_br>0** (ordinary/Cauchy
+> symmetric shear …) → two transverse modes `μ_br k²` **but also** a longitudinal mode
+> `(K_br+4μ_br/3)k²` = a stray **"second photon"** → `FAIL_CAUCHY_STRAY_LONGITUDINAL` at Stage 4."*
+
+⇒ ⛔ **The obstruction is to SUPPRESSING the longitudinal mode** — i.e. to getting **transverse-only**
+Maxwell — ⛔ **never** to carrying both. Carrying two transverse modes **and** a longitudinal one
+simultaneously is exactly what the `μ_br > 0` branch *does*.
+
+⭐⭐ **The mode is REAL and IRREMOVABLE, and its role was CATALYTIC — ⛔ not constitutive** (user's own
+history, recalled 2026-07-31). ⛔⛔ **It is not charge; it does not become charge; it supplies no part of
+charge.** ⚠ An earlier version of this step said it "becomes the **±w** displacement" — ⛔ that was a
+false identification, corrected here. The history, in the order it happened:
+
+1. A **gauge field** had been used to obtain exact Maxwell, and had been in use for **months**. The user
+   pressed on **what it meant physically**, and there was no compelling answer.
+2. The then-current view of charge was a **4D interaction seen as a 3D shadow**. ⛔ Those calculations
+   gave **`1/r³`** — the wrong power (falsified-route box below).
+3. The calculations were redone **from the core concept of the model**, to see whether the two transverse
+   modes would come out. ⭐ **They did — but an extra scalar came with them, and could not be removed.**
+   ⇒ Exact Maxwell was **not going to happen**.
+4. ⭐⭐ **Because the scalar was irremovable, it became clear the charge picture itself was wrong.** The
+   replacement: charge as the **tugging of the brane into the bulk (`w`) direction** — which gives
+   **`1/r²`**, sits **on the brane**, and does **not disturb the physics already built**.
+5. ⇒ *"The fact that it popped out unlocked a view of the conceptual model that didn't exist before."*
+
+⇒ ⭐⭐ **What the mode did was falsify the TARGET.** Exact Maxwell gives two transverse photons **and
+nothing else**, with charge entering as an **external source put in by hand** — so matching it exactly
+would have **inherited that gap**. ⛔ The point is that **the target was wrong**, ⛔ *not* that the
+longitudinal mode is the thing that carries charge. Its irremovability **closed the exact-Maxwell route
+and forced the rethink**; the rethink produced the `±w` mechanism (PHASE 4b, `Q2`).
+
+⛔⛔ **DIFFERENT OBJECTS — ⛔ do not weld them, at any strength.** `u_L` is an **in-plane longitudinal
+brane displacement**; **`±w`** is the **throat's normal/orientation direction**, and the charge the
+rethink produced is carried by the **`h`-branon**. The committed sources keep them apart:
+
+- `research/pde_ledger_v2/notes/stages/ledger_stage031_puncture_deflection_field_identity_source.md#h-a-distinct-from-u-l`
+  — *"Define the held mouth datum `h_A = ξ_w|_A/ℓ = P₀H|_A`, `[h_A]=1` **(distinct from `u_L`)**"*.
+- `docs/em_analog_next_phase_handoff.md#u-l-clamp-not-the-charge-scalar` — of the `u_L`-clamp candidate:
+  *"It is NOT the committed charge scalar (that's the `h`-branon, `h≠u_L`; `h` remains the committed
+  mediator for the conditional `1/R²` falloff); `u_L` is a separate charge-odd density mode BC'd to
+  relax to 0."*
+- `docs/model_map.md#superseded-charge-routes` — the *"leftover-scalar `u_L`-clamp"* is listed among the
+  **superseded** charge routes.
+
+⇒ ⛔ **Never write that the stray longitudinal *is*, *becomes*, or *supplies* the `±w` displacement.**
+
+⚠⚠ **FALSIFIED ROUTE — the wrong-power signature** (user, recalling the history 2026-07-31).
+Charge-as-a-4D-interaction-seen-as-a-3D-shadow gives **`1/r³`**; the brane-tug (`±w` puncture) view gives
+**`1/r²`**. ⛔⛔ **This is RECALLED HISTORY, ⛔ not a located computation.** The *power-counting statement*
+is in the corpus — `docs/conceptual_foundation.md:236` (*"a source acting through the **4D bulk** naively
+gives the **wrong** falloff (4-space → `1/R²` potential → `1/R³` force)"*) and
+`docs/em_sector_reconsideration.md:62` (*"**CORRECTED (was backwards).** A finite bulk source gives
+`1/r³` at large `r`, not `1/r²`"*) — but the **calculation that landed `1/r³` for charge is
+`UNLOCATED IN CORPUS`**; ⛔ do not cite one, and ⛔ do not manufacture a locus for it.
+
+⭐⭐ **A SECOND DIAGNOSTIC QUESTION (register idiom).** A **mathematical device can survive for months
+without a physical referent** — the gauge field did, until it was asked what it *meant* physically
+(step 1 above). ⚠ This is a **different question** from A7's KIND test
+(`DEFECT_REGISTER.md#a7-kind-test`): the KIND test asks ***"is this the same KIND of thing?"*** and
+**presumes both are things**; this one asks ***"is this a thing at all, or only machinery?"***
+⇒ Ask it of every object a derivation leans on — ⛔ not only of the two being compared.
+
+⚠ **And the Maxwell locus IS reachable** — `pathA_36` emits `C5_RESOLVED_MAXWELL_BY_TUNING`
+(`research/pde_ledger_v2/paper/stages/stage_003.tex:25-28`):
+
+> *"the tuned Maxwell locus (`K_θ=C_J²/ρ_br`, `B_eff=0`, `m_θ²=0`) is reachable and emits
+> `C5_RESOLVED_MAXWELL_BY_TUNING` — so the FAIL is not hardcoded — but `BY_TUNING`, not
+> `WITH_PROVENANCE`."*
+
+⇒ The departure is a **choice the model makes**, ⛔ not an inability.
 
 ---
 
@@ -672,17 +766,43 @@ identifications in register §A.
 > flow."*
 
 Gravitational-wave and electromagnetic arrival-time observations (**GW170817 / GRB 170817A**) constrain
-those two speeds to agree to roughly **1 part in 10¹⁵**. ⇒ **`λγ = 1` to that precision is an
-EXPERIMENTAL FACT the model must reproduce**, ⛔ **not** a convenient calibration choice.
+those two speeds to agree to roughly **1 part in 10¹⁵**. ⚠ **The observational value IS known** — `λγ = 1`
+to that precision is not in doubt as a *target*.
 
-⭐ **Therefore `λγ` is a held-out dimensionless test, and S20a is a place the model can FAIL.** If S20a
-derives a value materially different from `1`, that is a **falsification**, ⛔ not a knob to retune.
+⛔⛔ **But `λγ` is currently a CALIBRATION, not a prediction.** `pathA_40` landed `CONE_LOCK_CALIBRATED`,
+and **Lock A** (`λγ = 1`) is recorded as *"an untouched separate calibration"*
+(`research/pde_ledger_v2/paper/stages/stage_040.tex:80-85`):
+
+> *"**Lock A** (`λ_γ=1 ⟺ L_A`) is `WITNESSED` … at the witness, `L_A = m μ_R − 5Kρ⁴ρ_br = 5` (COMPUTED,
+> asserted `==5`) — **an untouched separate calibration** (light ↔ gravity-phonon), NOT the Part-V one."*
+
+⇒ ⭐ **A calibrated value cannot falsify — it was fitted.** At S20a the model **spends a knob** here and
+**declines to predict** `λγ`. ⛔ Only a **DERIVED** value materially different from `1` would be a
+falsification; landing on `1` by calibration tests **nothing**.
+
+⚠ **That is the survey's standing verdict, not a new concession**
+(`docs/medium_requirements_and_prior_art.md:181-182`):
+
+> *"**Gate K — cone-lock `c_γ≈c_s` (B11).** In-plane rotational modulus vs bulk compressibility → two
+> speeds, **equal nowhere automatically** (survey). Almost certainly a **calibration gap**, not a
+> derivation — consistent with `λγ`'s current status. **Flag, don't bank**."*
 
 ⚠ **The specific worry to check:** `c_s` is **longitudinal compression** of the bulk while `c_γ` is
 **transverse shear** of the brane. In an ordinary elastic solid those two differ by an O(1) factor
 (`c_T/c_L ≈ 0.5–0.6`). ⛔ **That is a generic-elasticity expectation, NOT a model calculation** — carry it
 as the risk to check, ⛔ never as a model prediction. If the model's shear modulus turns out to relate to
-the bulk EOS the ordinary way, it lands near `0.55` and is falsified.
+the bulk EOS the ordinary way, it lands near `0.55` — ⛔ which today's calibration would **absorb**, not
+report as a failure.
+
+⭐ **And the knob is LOAD-BEARING, not cosmetic** — `λγ³` enters the gravity normalization
+(`ledger_stage005_sound_speed_light_ratio.md:80-82`):
+
+> *"`lambda_gamma` enters the gravity-sector normalization to the fifth power (`(c/c_s)^3 =
+> lambda_gamma^3`, and further factors downstream), so mis-stating it as `1` would silently smuggle a
+> calibration."*
+
+⇒ Spending the knob at `λγ = 1` propagates into the gravity-sector normalization. ⛔ Do not carry it as a
+cosmetic convention.
 
 ⚠ **And `stage005` already REJECTS inferring `c_γ = c_s` from shared dimensions**
 (`ledger_stage005_sound_speed_light_ratio.md:198`, `:204-205`):
@@ -693,7 +813,14 @@ the bulk EOS the ordinary way, it lands near `0.55` and is falsified.
 > prose is **REJECTED**."*
 
 ⇒ Observation requiring `λγ ≈ 1` and the ledger forbidding a dimensional shortcut to it are **compatible,
-and both must hold**: the model has to **earn** the number that experiment already knows.
+and both must hold** — ⛔ but **the timing is the whole point, so state it**: **today** `λγ` is a **spent
+knob**, and all S20a does is *record that spend*. **Earning** the number that experiment already knows is
+a **future route**, ⛔ not something S20a attempts or can be graded on. ⇒ That route is **Route A** —
+registry edge **R10**, *"derive `λγ` from a nonlinear-throat `μ_R`-as-bulk-defect integral"*, status
+`PENDING`, and it *"needs the deferred nonlinear throat"*
+(`research/pde_ledger_v2/notes/parameter_register.md#R10`; the alternative Route B is `CLOSED-NEG` at
+**R11**). ⛔ Nothing here licenses reading S20a as able to fail by landing off
+`1` — a spent knob absorbs whatever it lands on.
 
 ⭐ **The SI anchor is calibration, not prediction.** Fixing model units by the measured `c` costs nothing
 predictive — absolute constants are convention here, and only dimensionless ratios test the model.

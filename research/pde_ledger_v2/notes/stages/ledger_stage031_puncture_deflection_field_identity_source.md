@@ -156,7 +156,7 @@ obtained from the live functional-to-Euler wiring (including `k_m`), not a hand-
 
 ## 3. Exterior stationary solution + the named core-gap fact (EARNED)
 
-Define the held mouth datum `h_A = ξ_w|_A/ℓ = P₀H|_A`, `[h_A]=1` (distinct from `u_L`). The exterior
+Define the held mouth datum `h_A = ξ_w|_A/ℓ = P₀H|_A`, `[h_A]=1` (distinct from `u_L`). The exterior {#h-a-distinct-from-u-l}
 stationary field (3D radial Euler `d/dr(r² dh/dr)=0`, decaying branch, `h(a)=h_A`) is
 
 ```text

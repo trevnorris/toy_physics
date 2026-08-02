@@ -11,7 +11,7 @@ Branch `ledger-v2-rebuild`. Run `git log --oneline -5` and `git status` first �
 ⛔ do not trust any hash written in a doc, including this one.
 
 ▶ **READ FIRST, AND IN FULL: `research/pde_ledger_v3/SESSION_2026-08-01.md`.**
-⚠ It is the **2026-08-01** record and it governs **for what it covers**. ⛔ It is NOT the latest — the **2026-08-02** work (the two halves, `K`/`n_eos`, the drum-head charge picture, S10) lives in **this file**, `CHARTER.md`, `V3_STEP_PLAN.md` and the memories. It carries the direction change, the model's foundational
+⚠ It is the **2026-08-01** record and it governs **for what it covers**. ⛔⛔ **It is NOT the latest.** The **2026-08-02** work — the two halves · `K`/`n_eos` · `ħ` · the drum-head charge picture · **S9, S10 and S11** · the two process changes — lives in **this file**, `CHARTER.md`, `V3_STEP_PLAN.md`, `DEFECT_REGISTER.md`, `steps/` and the memories. ⭐ For the light sector specifically, `steps/S11_stray_longitudinal.md` and `docs/model_map.md` §3.3 are the current statements and supersede anything older. It carries the direction change, the model's foundational
 postulate, the five standing decisions, what was banked, the simulation track, the open physics, and
 §8 — how the previous session failed, by mechanism. ⛔ Do not start work before reading it.
 
@@ -67,10 +67,11 @@ claims are stale; the session record says which.
 
 ---
 
-## ▶ HOW A STEP ACTUALLY RUNS — the sequence that worked on S10, in order
+## ▶ HOW A STEP ACTUALLY RUNS — the sequence that worked on S10 and S11, in order
 
-⭐ **This is a proven recipe, not a proposal.** S10 ran exactly this and both engines plus both review
-legs came back clean. ⛔ The RULES above give principles; this gives the **order of operations**.
+⭐ **This is a proven recipe, not a proposal.** S10 and S11 both ran it end to end. ⚠ **S11 is the honest
+test of it**: the recipe's own steps 3 and 5 were SKIPPED and the user had to catch both — and each one,
+once run, found something no amount of reading would have. ⛔ The RULES above give principles; this gives the **order of operations**.
 
 1. **WALK IT with the user.** Setup first (what we are deriving · what we have · what is missing · where
    I expect trouble), then one move at a time, reasoning **before** the result. ⭐ **Flag every
@@ -150,12 +151,29 @@ blocker"* on the photon-simulation track, when that action **is** what half two 
 **Banked:** `83668b97` S0.5 · `361e8114` v3's own `reduction/` + **S9** · `f2f5d9af` S9 reviews folded +
 the Mathematica gate · `df57fc76` session record.
 
-✅ **S9 and S10 are BOTH CLOSED.** Light's linear sector, half one, is done.
+✅ **S9, S10 and S11 are CLOSED** (S11's TeX card was the last artifact in flight — check it landed).
 
 | step | artifacts | verification |
 |---|---|---|
 | **S9** | note · register entry · TeX card | cone `c_γ²=μ_R/ρ_br` confirmed **4 ways** |
 | **S10** | note · TeX card · blind `.wl` · SymPy audit · registry row · pre-registration | **2 engines + 2 review legs, all CLEAN** |
+| **S11** | note · card · blind `.wl` · SymPy audit · 2 registry rows + `R5` · pre-registration · **2 repairs** | **2 engines + EIGHT review legs** |
+
+⭐⭐ **S11's HEADLINE, and it is one sentence:** compressibility lifts S10's zero to a propagating
+longitudinal mode — and **the new mode's ENTIRE physical status (radiative, observable,
+Lorentz-breaking, or none of the above) reduces to ONE unbuilt object: the brane–bulk interface coupling
+law.** ⇒ `steps/S11_stray_longitudinal.md` · `V3_STEP_PLAN.md#s11b`.
+⛔ Read the step record before citing anything about the stray mode; three of its claims were corrected
+during the walk and the record says which.
+
+⚠ **Registry: 12 continuous + discrete `{n_eos, D_brane}`, residue 7** — `B_comp` is the new knob,
+**postulated with a NAMED retirement condition at S6** (`DEFECT_REGISTER.md#c12`).
+
+⭐ **What the review architecture bought on S11, so it is not cut as ceremony:** the directive review
+caught that the two engines were set **different task lists** (the one surprising result had no second
+engine); a script leg **demonstrated by ablation** that the `.wl`'s dimensional block passed on
+physically absurd premises; another **rewrote `R5` to `c_L = c_γ` — the exact claim the step exists to
+settle — and all five gates stayed green.** ⛔ None of those were findable by reading.
 
 ⭐⭐ **S10's result:** the mode count is **computed** — nullity of the dynamical matrix at each root, in
 both engines — and it is **`D_brane − 1`**, verified across `D = 2,3,4,5`. ⛔⛔ **The bulk NEVER ENTERS
@@ -172,12 +190,20 @@ discrete symbols, and the schema (`additionalProperties: false`) cannot express 
 dimension; S10's closed form shows why: `[μ_R] − [ρ_br] = (2−D) − (−D) = 2` in the length slot **for
 every `D`**. ⛔ Not a blind spot — an **identity**.
 
-**▶ NEXT: S11 — the stray longitudinal.** ⭐ The interesting one.
-⛔⛔ **Do NOT frame it as a defect to fix.** S10 leaves `ω² = 0`: **non-propagating, ⛔ NOT absent.**
-Compressibility lifts that zero. ⚠ **User, 2026-08-02: exact Maxwell would be the FAILURE** — it puts
-charge in by hand, so a model matching it exactly has **no way to physically anchor charge**. The extra
-mode **is** the anchor, and it is what made the drum-head charge picture click.
-⇒ `CHARTER.md#falsification-standard` · `V3_STEP_PLAN.md` § S11 · the charge memory.
+**▶ NEXT: S11b — the brane–bulk interface coupling law** (`V3_STEP_PLAN.md#s11b`), then **S5–S7**.
+⭐ **User decision, 2026-08-02: extend the light sector by two steps before declaring it closed.**
+
+⛔ **S11b is NOT scope creep, and the test is one line: it is LINEAR, so by this ledger's own definition
+it is HALF ONE** (`CHARTER.md#two-halves`). It was deferred by **choice**, not difficulty, and it decides
+all three of S11's open questions at once. ⚠ It also gates **three of the five near-term LINEAR
+simulations** — so the near-term sim programme is blocked by *this*, ⛔ **not** by the missing nonlinear
+action.
+
+⭐ **Then S5–S7 (the wall).** `OWED 2` said to leave the requirements-first reordering *"until a step
+trips on it."* ⛔ **S11 tripped on it** — it needs `σ_wall` (to retire `B_comp`) and the slab-width
+dynamics (to test move 5's flexural prediction). That deferral is now **due**, on the condition we set.
+
+⚠ **Then `S22`** — the nonlinear inventory, half two. ⛔ Nothing requiring a simulation is *done* here.
 
 ⚠ **Read the session record's §6 before S10** — it carries the `μ_br` ≠ `μ_R` hazard (Cauchy vs
 MacCullagh, near-identical names, different objects) and the three-step story of light's departure.
@@ -243,22 +269,47 @@ symbolic algebra where the 44 have their record. ⇒ ⭐ **A reader of shared mu
 class a standalone verifier structurally cannot have** (wrong file · stale file · silently-defaulted
 path). ⛔ The 44's track record does not transfer to one.
 
+## ⛔⛔ SETTLED — do NOT re-litigate any of these
+
+| decided | verdict |
+|---|---|
+| `ħ`'s class | **postulated**, a bare tier-1 primitive. `ħ_model` is ⛔ **not** identified with `ħ_physical` |
+| `K` / `n_eos` | **STAY** in the medium block |
+| `B_comp` | **postulated**, with a retirement condition **named at S6** — ⛔ do not quietly re-derive or re-postulate it elsewhere |
+| `μ_br` (Cauchy shear) | **= 0**, provisionally — ⭐ a *derivation* may reopen it; a preference may not |
+| quantum mechanics | ⛔ **out of scope**, after the ledger |
+
+## ⚠ OPEN PHYSICS you will be tempted to close by assertion — ⛔ don't
+
+- ⛔ **`B_comp = μ_R` is NOT excluded** (`DEFECT_REGISTER.md#c12`). It is *exactly* the degeneracy locus,
+  where the brane becomes an ordinary gradient-elastic medium with one speed — S10's FORM control. A
+  coincidence is unlikely (different physics in the numerators, and the density cancels in the ratio),
+  ⛔ but that is not a derivation forbidding it.
+- ⚠ **The lensing SIGN is unchecked** (`#c14`) — lensing needs `ρ_br` *higher* near a mass; a drain
+  naively *lowers* it. ⛔⛔ **Do not manufacture a reconciliation. Read the corpus first.**
+- ⚠ **No mechanistic account of a gravitational wave exists** (`#c13`), and ⛔ `c_L` is **not** one.
+- ⛔ **Nothing checks a registry relation's ALGEBRA except each step's own audit** (`#f-r5`). Every new
+  relation needs the derived-root-into-registry-residual assertion, or the same hole reopens.
+
+## ⭐ WHAT CHANGED IN HOW WE WORK (2026-08-02) — both from the user, both after I was caught
+
+1. ⭐⭐ **Review the build DIRECTIVES, before any build runs** (recipe step 3). The directive is the one
+   artifact **both** engines share, so an error in it lands in both, they agree, and dual-engine
+   certifies wrong physics.
+2. ⭐⭐ **Launch review legs ON SIGHT of an artifact, before reading its results** (step 5). ⚠ The
+   mechanism is not laziness: a self-administered check **discharges the felt need** for an independent
+   one, so the review feels *already done* rather than skipped. A **clean** result makes it worse.
+3. ⭐ **Skills now encode this** — `.claude/skills/`: `build` (which launches its own review legs, so
+   skipping requires actively not using it), `review-legs`, `step-run`.
+
 ## ▶ NEXT SESSION — in this order
 
-1. ⭐⭐ **S11 — the stray longitudinal.** The interesting one, and ⛔ **do NOT frame it as a defect.**
-   S10 leaves `ω² = 0`: **non-propagating, ⛔ NOT absent.** Compressibility lifts that zero.
-   ⚠ **Exact Maxwell would be the FAILURE** — it puts charge in by hand, so a model matching it exactly
-   has no way to physically anchor charge. ⇒ The extra mode **is** the anchor, and it is what made the
-   drum-head charge picture click. ⛔ Many `FAIL_*` tokens are simply misnamed.
-   ⚠ Read `V3_STEP_PLAN.md` § S11 in full first — it carries the history, the drum-head picture, and
-   ⛔⛔ the **DIFFERENT OBJECTS** warning (`u_L` is **not** `±w`; `h ≠ u_L`; never weld them).
-2. **S11a** — the packet + simulation specification. ⭐ The one with real thinking in it.
-3. ✅ **`ħ`'s class DECIDED 2026-08-02: `postulated`** — a bare tier-1 primitive, and ⛔ **not** to be
-   re-litigated. ⭐⭐ `ħ_model` is **NOT** identified with `ħ_physical` and nothing forces it; doing so
-   later is a **separate calibration**. It becomes a **half-two row**: derive it (needs the
-   substructure) or define it well enough for the **simulation** to run. ⛔ A de Broglie /
-   fluid-description-ends reading was proposed and returned **UNSUPPORTED** — full record and the
-   three unmet conditions at `DEFECT_REGISTER.md` **C11**.
+1. ⭐⭐ **S11b — the brane–bulk interface coupling law.** `V3_STEP_PLAN.md#s11b`. Linear, half one,
+   and it closes all three of S11's open questions at once.
+2. **S5–S7 — the wall.** Retires `B_comp` or says plainly that it cannot, and tests move 5's flexural
+   prediction. ⛔ If the dispersion stays a clean cone once the width is dynamical, **move 5 was wrong** —
+   record that, do not reconcile it.
+3. **S22** — the nonlinear inventory (half two).
 
 ⚠ **Deferred on purpose, ⛔ not forgotten:** S10's **source map** (a reader aid; it earns its keep at the
 end, not per-step), and the requirements-first **step ORDERING** in the plan (still lists the substrate

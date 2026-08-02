@@ -123,40 +123,14 @@ MacCullagh, near-identical names, different objects) and the three-step story of
 
 ## ⛔ OWED
 
-1. ⛔⛔ **CUT `registry_dimensional_gate.wl` — ⛔ do NOT fix it, and ⛔ do NOT trust its
-   `WL_REGISTRY_PASS`.** The full instruction and the standing blind-`.wl` rule are in **▶ NEXT SESSION
-   item 1** below; the defects are kept here only as the **evidence that the reader architecture was
-   wrong**, ⛔ not as a fix list.
-   ✅ **THE COVERAGE ENUMERATION IS DONE (2026-08-01) — the cut drops NOTHING.** ⭐ This was the
-   precondition: the review had enumerated the reader's **defects**, ⛔ never its **unique coverage**.
-   **Result: the reader `.wl` is a strict SUBSET of Python's checks.** All 13 of its checks are covered
-   — schema/kind/regime/convention by the JSON Schema (`registry_schema.yaml`), qid + relation-id
-   uniqueness at `registry_read.py:200`/`:316`, dimension homogeneity by the Python gate — and ⭐ Python
-   is **stricter** in five places the `.wl` has nothing for: the `kind` **enum**, the residual LHS tied
-   to `designated_output` (`:337`), denominator-guard QID membership (`:359`), **stale-locus** detection
-   (`:448`), and `literal_consistency`.
-   ⚠⚠ **AND NOTE HOW THIS WAS SETTLED, because reading the code got it WRONG.** The last candidate was
-   duplicate `designated_output`: `registry_read.py:156` builds `_admitted_by_output` with a **dict
-   comprehension**, which cannot raise on a duplicate key — so the code plainly *looked* like a gap.
-   ⭐ **The probe said otherwise:** a second relation claiming `Q.brane.c_gamma` with contradictory,
-   dimensionally-homogeneous content is **CAUGHT** — *"multiple active definitions for Q.brane.c_gamma:
-   R4, R4_DUP"*. ⇒ ⛔ **A code read is a hypothesis; the known-bad registry is the test.** Probe kept at
-   `_scratch/probe_wl_unique_coverage.py` (⚠ gitignored — re-run it, don't cite it).
-   Reviewed 2026-08-01; see `SESSION_2026-08-01.md` §7 item 3 for the full findings. In short:
-   **(1)** `--registry-dir` is dead and the orchestrator's "fix" **masked** it — the tracked script
-   pointed at a known-**inhomogeneous** registry prints `HOMOGENEOUS=4 … PASS`, exit 0;
-   **(2)** `qidsIn` misses a level-0 `Q` node, so a bare `[Q, x]` RHS — an alias/identification relation,
-   a shape this project makes constantly — is admitted with `input_qids: []` and its output leaves the
-   residue derived from nothing (⭐ Python does **not** have this hole; the engines genuinely disagree
-   and only the `.wl` is wrong);
-   **(3)** `kind` is never validated, so a one-character typo inflates the residue silently at exit 0.
-   ⚠ **Fix these before building any `.wl` ablation harness**, and ⛔ assert on the `WL_REGISTRY_FAIL`
-   **text**, not on exit ≠ 0 — a licence-contention run exits 40 with no gate output.
-   ⭐ **Grok's leg CONFIRMED (1) independently** — `BLOCKING FINDINGS`, and it adds the sharpest form of
-   the point: able-to-fail could only be demonstrated *"by hardcoding the registry path in a scratch
-   copy of the script."* ⇒ ⛔ **No honest ablation harness can be built on that flag until it works.**
-   ⚠ Grok did **not** find the level-0 `Q` hole; the fresh agent did. Different scopes, both needed.
-   Full logs: `_scratch/grok_wl_review.txt`, and the fresh leg's findings in `SESSION_2026-08-01.md` §7.
+1. ✅ **DONE — `registry_dimensional_gate.wl` is CUT** (2026-08-02). ⭐ The precondition was met first:
+   its unique coverage was enumerated and it proved a **strict SUBSET** of Python's checks, so the cut
+   dropped nothing. ⚠ Python is *stricter* in five places it had nothing for (the `kind` enum, the
+   residual LHS tied to `designated_output`, denominator-guard membership, stale-locus detection,
+   `literal_consistency`).
+   ⭐⭐ **The standing rule it leaves behind:** a `.wl` must **NOT** read the shared registry — only the
+   SymPy side imports it — and the `.wl` is written **BLIND**, so **the DISAGREEMENT is the test**.
+   `mathematica/` now holds only per-step blind audits, which is the shape it should keep.
 
 2b. ✅ **S9 IS CLOSED (2026-08-02, user).** Artifacts: note · register entry · TeX card · **blind
    Mathematica audit**. ⛔ **No v3 SymPy audit was written, deliberately** — the cone is two lines of
@@ -222,35 +196,19 @@ script, in either engine, as carrying that class; ⛔ the 44's track record does
 
 ## ▶ NEXT SESSION — in this order
 
-1. ⛔⛔ **CUT `registry_dimensional_gate.wl` — ⛔ do NOT fix it. It is the WRONG ARTIFACT.**
-   ⭐⭐ **Standing rule, user-confirmed 2026-08-01: a `.wl` must NOT read the shared registry. Only the
-   SymPy side imports it. The `.wl` is written BLIND and compared against it — the disagreement IS the
-   test.**
-   ⭐ **Why, and the evidence is from this session:** a reader `.wl` and the Python **share an input**, so
-   a wrong registry makes them **agree — vacuously**. A blind `.wl` shares only the *physics*, so a wrong
-   registry makes them **disagree**. ⇒ The fresh agent had to **manually corrupt a dimension exponent**
-   to prove the reader-gate could fire; under the blind design that corruption is caught automatically.
-   ⭐⭐ **And all three blocking defects VANISH under it:** a blind script takes no arguments (no dead
-   `--registry-dir`), parses no prefix-v1 (no level-0 `Q` hole), and reads no `kind` (nothing to leave
-   unvalidated). ⛔ They were artifacts of the reader design, ⛔ not Mathematica or builder failures.
-   ⚠ **v2's 44 scripts ARE already this design** — *"Print-only, standalone, no arguments, no exports"*.
-   The project had solved this; the reader gate re-derived the wrong architecture.
-   ⇒ **Replace with a blind per-step audit**, matching v2's naming:
-   `research/pde_ledger_v3/mathematica/S9_light_requires_shear_mathematica_audit.wl` — hardcode the
-   action, derive `c_γ² = μ_R/ρ_br` and the three `[L,T,M]` vectors from scratch, print them. ⭐ The
-   orchestrator compares against the registry; a mismatch is a **finding**.
-   ⚠ **Division of labour:** physics + dimensions → the blind `.wl`. Registry hygiene (schema, declared
-   inputs, cycles, well-formedness) → **Python only**; a second engine re-reading the same YAML to check
-   the same YAML adds nothing.
-2. ✅ **DONE (`8785ef6c`) — the skeleton is built and S0.5 + S9 are written in.** ⇒ **What remains on S9
-   is the SYMPY AUDIT and the SOURCE MAP** (plus item 1's blind `.wl`). ⛔ **Do not walk S10 until S9's
-   unit closes** — compounding the retrofit is the exact failure this method exists to avoid. See
-   **OWED 2b** for the artifact table and why the SymPy audit is the gap that matters.
-3. **S10** — two transverse photons. ⚠ The count comes from the brane being **3-dimensional** (a 3-vector
-   about `k` splits 1 longitudinal + 2 transverse), ⛔ **not** from codimension.
-4. **S11** — the stray longitudinal, framed as the **third of three failed attempts** at Maxwell's
-   no-longitudinal demand, ⛔ not a bonus mode.
-5. **S11a** — the packet + simulation specification. ⭐ The one with real thinking in it.
+1. ⭐⭐ **S11 — the stray longitudinal.** The interesting one, and ⛔ **do NOT frame it as a defect.**
+   S10 leaves `ω² = 0`: **non-propagating, ⛔ NOT absent.** Compressibility lifts that zero.
+   ⚠ **Exact Maxwell would be the FAILURE** — it puts charge in by hand, so a model matching it exactly
+   has no way to physically anchor charge. ⇒ The extra mode **is** the anchor, and it is what made the
+   drum-head charge picture click. ⛔ Many `FAIL_*` tokens are simply misnamed.
+   ⚠ Read `V3_STEP_PLAN.md` § S11 in full first — it carries the history, the drum-head picture, and
+   ⛔⛔ the **DIFFERENT OBJECTS** warning (`u_L` is **not** `±w`; `h ≠ u_L`; never weld them).
+2. **S11a** — the packet + simulation specification. ⭐ The one with real thinking in it.
+3. ⚠ **`ħ`'s class** — `postulated` or `calibrated`. **USER CALL, and the only decision genuinely owed.**
+
+⚠ **Deferred on purpose, ⛔ not forgotten:** S10's **source map** (a reader aid; it earns its keep at the
+end, not per-step), and the requirements-first **step ORDERING** in the plan (still lists the substrate
+first). ⭐ Leave the ordering until a step actually trips on it.
 
 ## ⭐ THE SIMULATION TRACK — the user wants this
 

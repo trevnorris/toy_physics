@@ -212,7 +212,42 @@ S0.5 by reintroducing `λγ`. ⚠ Cite it for provenance only.
 
 `c_s² = (1/m)dP/dρ = nKρ^(n-1)/m`. **Expected new: nothing** — pure consequence.
 **Finding to re-bank:** `[K] = M L^(4n−2) T⁻²`, so `n` and `[K]` are one structural choice.
-**Register:** none. **Open:** O-02 (is `K`+`n` one entry or two — user call, still open).
+**Register:** none.
+
+⭐⭐ **DECIDED 2026-08-01 — `K` and `n_eos` STAY in the medium block.** The question raised was whether
+they should leave the way `c_γ` did at **S0.5**. They should not, and the reasoning matters more than
+the verdict:
+
+- ⛔ **S0.5's criterion was TWO criteria, and only one applies here.** **(a) Category** — `c_γ² = μ_R/ρ_br`
+  is built from two **brane** properties, and the shear-free bulk cannot produce a shear modulus at all,
+  so it was in the wrong block. **(b) Prematurity** — it sat in the block before the walkthrough reached
+  the step that introduces it. ⭐ `c_γ` failed **both**; `K`/`n_eos` fail **only (b)**, and under
+  requirements-first (b) indicts **all eight** medium rows equally, so it cannot discriminate.
+- **Measured on the live registry** (⛔ not reasoned about): `K` appears in **exactly one** relation,
+  `R1: c_s0 = √(5Kρ0⁴/m)`, whose designated output is `c_s0` and nothing else. `R2.h0` and `R2.xi_h`
+  both reach it **through `c_s0`**. `R4` does not touch it. ⇒ **Every half-one consumer of `K` reaches it
+  through `c_s0`.** And `n_eos` is `counting_axis: discrete-structural` — ⛔ **not** in
+  `active_variables`, so dropping it moves **no number**; its only live job is `R1`'s
+  `literal_consistency` guard tying the literal `5` and exponent `4` to `n=5`, `n−1=4`.
+  ⇒ ⭐ **`K`, `n_eos` and `R1` stand or fall together.**
+- ⭐⭐ **The deciding argument is HALF TWO.** Half one is linear response about `ρ0`, which only ever sees
+  `dP/dρ` **at `ρ0`** — i.e. `c_s0` — never the **shape** of `P(ρ)`. ⛔ But half two needs a **parent
+  action**, and the parent action contains `U(ρ) = Kρ⁵/4`. ⇒ The EOS **is requested — by half two.**
+  ⚠ **Precision, so this is not overclaimed:** light's nonlinearity is a nonlinear **shear** term
+  (`μ_R`'s extension), ⛔ not the bulk EOS directly; they connect through **`R17`,
+  `μ_R = ∫ χ_B μ_R⁽⁴⁾ dw`** (`parameter_register.md:284`), which is **`PENDING`, "dim-consistency
+  asserted only."** ⇒ The request is real but **routes through an open debt** — say so.
+- ⚠ **The swap was NOT free, and the cost is S0.5-shaped:** `acceptance_check`'s **C-M3 mutation is
+  `K − ρ0`** and dies with `K`; `able_to_fail`'s **`provenance` tooth names `R1`**. Same shape as
+  *"C-M1 dies with `R3`"*. ⛔ The free **count** does not change either way (`{ħ,m,K,ρ0}` →
+  `{ħ,m,c_s0,ρ0}` is still four with one dimensionless combination) — ⇒ **this was never a count
+  question.**
+
+⭐ **What the record must now say:** the medium block is a **v2 inheritance carried provisionally**;
+the **knit** re-derives it. ⛔ No medium row reads as earned before then.
+
+**Open:** **O-02** — is `K` + the EOS exponent **one entry or two**? ⚠ **Still open, and it is a
+DIFFERENT question** from the one decided above; ⛔ do not read the decision as closing it.
 
 ### S3 · The dimensional foundation — three pins, not four
 `{c_s0, ħ, m_GNLS}` over `{L,T,M}`: `det = 1`, rank 3, **nullity 0**. A complete unit system.
@@ -263,9 +298,15 @@ Transverse and longitudinal sectors; the reduced `h`/`u_L` operator.
 ⛔ **Introduce and classify `{ρ_br, μ_R}` in this step** — the transverse action contains both *before*
 `c_γ² = μ_R/ρ_br` can be derived, so introducing them at S9 would invert provenance.
 ⇒ **The R10 debt starts here**, not at S9.
-⭐⭐ **The step that defines v3's ceiling.** State plainly: **quadratic = linear response about an
-assumed equilibrium.** Everything downstream in this ledger is small-oscillation physics on a brane
-that S5–S7 postulated. It is why gravity and light are tractable, and why the defect is not.
+⭐⭐ **The step that defines the LINEAR/NONLINEAR SEAM.** State plainly: **quadratic = linear response
+about an assumed equilibrium.** Everything in **half one** is small-oscillation physics on a brane that
+S5–S7 postulated. It is why gravity and light are tractable, and why the defect is not.
+
+⛔⛔ **A SEAM, ⛔ NOT A CEILING** (user, 2026-08-01 — `CHARTER.md#two-halves`). ⛔ Do **not** write that
+this ledger "stops" at linear response, and ⛔ do **not** record missing nonlinearity as a *blocker*.
+Linear is **half one's scope**; nonlinear is **half two's subject** — the simulation-setup half. ⚠ The
+wrong framing already cost a session: it recorded the absent nonlinear shear action as *"⛔ the blocker"*
+on the photon-simulation track, when that action **is** what half two exists to specify.
 **Defect register:** **C6** (no closed parent action — the coupling to sleeve/geon/drain does not exist) ·
 **B2** (⛔ the *only* thing `FAIL_COUPLE_STRESS_NOGO` closes is deriving `μ_R` from a polar `P` — so
 `μ_R` enters here **postulated** and stays postulated; ⛔ that is a missing reduction, **not** a
@@ -793,6 +834,15 @@ record's wording; a step that writes "Maxwell" unqualified has already lost the 
 ⚠ `S20a` is numbered from phase 4 but belongs here: the cone lock is a **knit** question, not a
 gravity-sector derivation.
 
+⭐⭐ **THIS PHASE CARRIES BOTH HALVES** (`CHARTER.md#two-halves`, user decision 2026-08-01):
+
+| | half | what it is | steps |
+|---|---|---|---|
+| **1** | ⭐ **one medium supports the LINEAR part of every force** — all far-field effects | a **VERDICT**, able to fail: a no-go between two sectors' requirements **IS** the falsification | **S20a**, **S21** |
+| **2** | ⭐ **what is left, that only a SIMULATION can settle** | an **INVENTORY** that sets up future work | **S22**, **S23** |
+
+⛔⛔ **Nothing requiring a simulation is DONE here.** Half two specifies the work; it does not attempt it.
+
 ### S20a · ⭐⭐ THE CONE LOCK — the actual cross-sector question, and it had no step
 **Found by review, and it is the load-bearing knit for *this* scope.** For a gravity + light ledger the
 cross-sector identification that matters is **not** "both ride `{μ_R, ρ_br}`" — it is **whether the light
@@ -892,7 +942,26 @@ against. ⇒ This step's honest form is: *name what integration needs that phase
 ⛔ sort each item into a **revising input** (a substrate-completeness failure) or a **new consequence**
 (the expected product) — ⛔ never bank an item unsorted.
 
-### S22 · ⭐⭐ THE DELIVERABLE — the interior debt list
+### S22 · ⭐⭐ HALF TWO — what only a simulation can settle
+
+⛔⛔ **BROADENED 2026-08-01 (user decision: broad, ⛔ not photon-specific).** This step was *"the interior
+debt list."* It is now **every nonlinear gap** — the throat interior, the geon, the drain law, the
+**nonlinear brane-shear action**, and the **packet/soliton**.
+
+⭐ **Why broad and not two separate parts:** S22's organising spine is already *"one nonlinear throat
+solve"*, and the **nonlinear shear is the SAME missing object as the geon** (**C6** — no closed parent
+action; `em_gravity_mined_verdicts.md:38` calls the trapped-shear geon *"intrinsically NONLINEAR"*).
+⇒ Splitting them would file **one** missing parent action in **two** places.
+
+⛔ **The light-sector rows this broadening ADDS** — ⛔ they were previously absent because the list was
+interior-only:
+
+| debt | what it blocks |
+|---|---|
+| the **nonlinear brane-shear action** (**C6**) | ⛔ every form in the corpus is **quadratic**, and the quadratic Lagrangian was written **directly**, ⛔ not expanded from a nonlinear parent ⇒ it ⛔ **cannot** be reached by un-linearising |
+| the **packet / soliton** | linear `ω² = c_γ²k²` is exactly non-dispersive, so any shape translates unchanged — ⛔ but with **no preferred size or amplitude**. A packet with a characteristic scale **requires** a nonlinear term |
+| **`R17`**, `μ_R = ∫ χ_B μ_R⁽⁴⁾ dw` (`parameter_register.md:284`) | the bulk→brane projection that would ground `μ_R` — **`PENDING`, "dim-consistency asserted only"** ⇒ the route by which the EOS reaches the brane sector |
+
 ⛔ **GATED on A4, C4 and C9** — this step classifies exactly the quantities those rows dispute, so it
 cannot bank without confronting them. ⚠ **C9 is a live source disagreement** (`FREE-UNREDUCED` vs
 *"likely DERIVED"* for the same three symbols): preserve both readings as unresolved; ⛔ do not pick one

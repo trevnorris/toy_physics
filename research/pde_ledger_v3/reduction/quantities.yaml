@@ -160,6 +160,26 @@ quantities:
     source_loci:
       - {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 65, line_end: 65}
 
+  - qid: Q.brane.D_brane
+    symbol: D_brane
+    kind: discrete-choice
+    scope: [brane, light, III]
+    regime: [medium-GNLS-positive-real, linear-unstrained-brane]
+    state: live
+    counting_axis: discrete-structural
+    value: 3
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [0, 0, 0]
+      provenance:
+        stage_id: stage003
+        stage_uses_shared_dimensions_module: false
+        source_locus: {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 68, line_end: 83}
+    aliases: [brane_spatial_dimension]
+    source_loci:
+      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 68, line_end: 83}
+      - {path: research/pde_ledger_v3/steps/S10_PREREGISTERED_PREDICTION.md, line_start: 5, line_end: 27}
+
   - qid: Q.brane.rho_br
     symbol: rho_br
     kind: parameter

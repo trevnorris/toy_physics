@@ -132,3 +132,6 @@ research/pde_ledger_v2/mathematica/out/_batch.log
 
 # local backups of gitignored _scratch trees (durable, never committed)
 _scratch_backups/
+
+# v3 paper: the built PDF is not tracked during construction (see research/pde_ledger_v3/paper/README.md).
+research/pde_ledger_v3/paper/*.pdf

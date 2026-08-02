@@ -1,0 +1,41 @@
+% Shared macros for the derivation ledger skeleton.
+\newcommand{\ProjectName}{Moving-Throat PDE Derivation Companion}
+\DeclareRobustCommand{\StageFile}[1]{\nolinkurl{#1}}
+\DeclareRobustCommand{\StatusText}[1]{{\normalfont\scshape #1}}
+\DeclareRobustCommand{\StatusExact}{\StatusText{Exact}}
+\DeclareRobustCommand{\StatusExactClosure}{\StatusText{Exact Within Closure}}
+\DeclareRobustCommand{\StatusReduced}{\StatusText{Reduced / Controlled Reduction}}
+\DeclareRobustCommand{\StatusEffective}{\StatusText{Effective Closure}}
+\DeclareRobustCommand{\StatusNumerical}{\StatusText{Numerically Located}}
+\DeclareRobustCommand{\StatusOpen}{\StatusText{Open}}
+\DeclareRobustCommand{\StatusTodo}{\StatusText{Status To Assign}}
+\newcommand{\todo}[1]{\par\noindent\textbf{TODO.} #1\par}
+\newcommand{\derivationfield}[2]{%
+  \paragraph{#1.} #2
+}
+\newif\ifshowstageverification
+\showstageverificationfalse
+\newcommand{\stagefield}[2]{%
+  \ifnum\pdfstrcmp{#1}{Verification}=0\relax
+    \ifshowstageverification
+      \paragraph{#1.} #2
+    \fi
+  \else
+    \paragraph{#1.} #2
+  \fi
+}
+\newcommand{\resultanchor}[1]{\textbf{#1}}
+\DeclareRobustCommand{\stageRange}[1]{\StatusText{Stages #1}}
+\newcommand{\claimstatus}[1]{\paragraph{Claim status.}\textbf{#1}}
+\DeclareRobustCommand{\sourcefile}[1]{\paragraph{Source file.}\nolinkurl{#1}}
+\newenvironment{readermap}{%
+  \begin{description}[style=multiline,leftmargin=3.2cm,labelwidth=2.5cm,labelsep=0.7em,font=\normalfont\bfseries,itemsep=0.35em]
+}{%
+  \end{description}
+}
+\newenvironment{verificationchecklist}{\begin{enumerate}[label=\(\square\),leftmargin=2.5em]}{\end{enumerate}}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}

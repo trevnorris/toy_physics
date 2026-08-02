@@ -1,0 +1,167 @@
+\section{S9: Light's Requirement on the Medium --- Shear on the Brane, None in
+the Bulk}\label{step:S9}
+
+\stagefield{Part / anchor}{Part I --- Light. Sector~1, step~1.}
+\claimstatus{\StatusOpen}
+\stagefield{Purpose}{State what light needs the medium to have. Light is a
+transverse wave and a GNLS superfluid cannot carry one, so light's first act is
+to name the structure the GNLS does not supply. The step introduces the two
+constants the whole sector rests on and fixes the light cone as their ratio.}
+
+\paragraph{Status.}
+\StatusOpen. First step banked under the requirements-first direction: light
+states what it needs, and the medium's structure is not assumed in advance. The
+result is a \emph{requirement with a live falsifier}, not a derivation --- both
+constants enter \textbf{postulated}, and whether one substructure can meet both
+halves of the requirement is a knit question this step does not settle.
+
+\paragraph{The argument, in three moves.}
+\resultanchor{1 --- What Maxwell demands.} Two transverse polarisations, one
+speed, no longitudinal mode.
+
+\resultanchor{2 --- What a GNLS has.} Linearising Madelung about a uniform
+\(\rho_0\) gives exactly \emph{one} mode,
+\[
+  \omega^2 = c_s^2k^2 + \frac{\hbar^2}{4m^2}k^4,
+  \qquad
+  c_s^2 = \frac{1}{m}\frac{dP}{d\rho} = \frac{5K\rho_0^4}{m},
+\]
+and it is \textbf{longitudinal}. The obstruction is not incidental but
+representation-theoretic: \(\Psi=\sqrt{\rho}\,e^{i\theta}\) is one complex
+scalar, its excitations \(\delta\rho\) and \(\delta\theta\) are both spin-0, and
+one broken \(U(1)\) gives one Goldstone phonon --- so a scalar's spectrum cannot
+contain a spin-1 photon, \emph{in any dimension}.
+
+\resultanchor{3 --- Therefore.} Light requires structure the GNLS does not
+contain. Brane elasticity is not a consequence of the GP/NLS mean field: a
+GP/NLS superfluid is a \emph{fluid}, with zero shear modulus. The brane's shear
+rigidity therefore requires the \textbf{substructure} beneath the mean field ---
+the standing postulate that the GNLS is the effective, coarse-grained
+description of a medium with constituents of its own.
+
+\paragraph{Provenance of moves 2 and 3 --- one source, not two.}
+Both quotations come from the same document,
+\StageFile{software/stage1\_solver/decisions/15\_em\_medium\_native\_physical\_picture.md}
+(lines 29--40 and 230--233). It is an external review, and \textbf{no script in
+this repository executes either argument}. A weaker in-repo form exists ---
+\(v=(\hbar/m)\nabla\theta \Rightarrow \nabla\times v\equiv 0\), so superfluid
+flow is curl-free --- but it is never wired into a no-shear proof. The claim
+that a GNLS cannot carry light therefore rests on a single external document
+with no executing script; it is stated here at that strength and no higher.
+
+\paragraph{The requirement --- and it is two-sided.}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+phase & requirement & what it buys \\
+\midrule
+ordered (\(\chi_B=1\))    & carries MacCullagh curl-only shear & photons \emph{exist} \\
+disordered (\(\chi_B=0\)) & carries \emph{no} shear            & photons stay \emph{confined} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+Both halves are light's own bill. The second is \emph{not} magnetism's: without
+it a photon has somewhere else to go, light leaks off our three-dimensional
+space, and that is an energy sink with no observational room. The requirement is
+stressed hardest at the throat, where the brane is bent into \(\pm w\).
+
+A \emph{third} consumer of the second half: the recorded throat-support
+mechanism is an outward trapped standing-wave pressure whose trapped mode is a
+brane-shear standing wave. If the bulk carried shear, that mode radiates away,
+the outward pressure vanishes, and the throat closes. Bulk shear-freeness is
+what makes the geon possible at all.
+
+\paragraph{The equations.}
+\[
+  L=\tfrac12\rho_{br}(\partial_t u)^2-\tfrac12\mu_R(\nabla\times u)^2,
+  \qquad
+  c_\gamma^2=\frac{\mu_R}{\rho_{br}} \quad (R4).
+\]
+
+\paragraph{Dimensions, derived from the action.}
+\(L\) is an energy density on the three-dimensional brane,
+\([L]=M\,L^{-1}T^{-2}\), and \([u]=L\); hence \([\partial_t u]=LT^{-1}\) and
+\([\nabla\times u]=1\), so
+\[
+  [\rho_{br}]=M\,L^{-3}=[-3,0,1],
+  \qquad
+  [\mu_R]=M\,L^{-1}T^{-2}=[-1,-2,1],
+\]
+and \(R4\) gives \([-1{-}({-}3),\,-2{-}0,\,1{-}1]=[2,-2,0]=2\times[1,-1,0]\), so
+\(c_\gamma=[1,-1,0]\). These were derived from the Lagrangian \emph{before}
+consulting the parameter register, which records the same two dimensions
+independently (\StageFile{notes/parameter\_register.md}, lines 137--138).
+
+\paragraph{What is new.}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+item & class & why \\
+\midrule
+\(\rho_{br}\) & \textbf{postulated} & a substructure property; not derivable from the GNLS \\
+\(\mu_R\)     & \textbf{postulated} & ditto; the polar-\(P\) route returned \texttt{FAIL\_COUPLE\_STRESS\_NOGO} (B2) \\
+\(c_\gamma\)  & \textbf{derived}    & \(R4\), from the two above \\
+curl-only form & \textbf{postulated} & forced by Maxwell's no-longitudinal demand \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The far field consumes only the ratio \(c_\gamma\). That must not be read as
+``the two are not separately owed'': a \emph{simulation} needs \(\mu_R\) and
+\(\rho_{br}\) absolutely.
+
+\paragraph{Inputs, by locus.}
+The standard GNLS (\(\psi\), \(\rho\), \(\theta\), Madelung,
+\(v=(\hbar/m)\nabla\theta\)) comes standard with the vocabulary; Maxwell's three
+demands come from the imported theory. \textbf{Nothing is taken from an earlier
+v3 step} --- S9 is sector~1, step~1.
+
+\paragraph{Regime.}
+Linear response about an unstrained brane; small oscillations. Everything here
+is quadratic.
+
+\paragraph{Departure.}
+None at this step. The departure enters at S11, when the medium's
+compressibility overrides the no-longitudinal demand.
+
+\paragraph{Falsifier, and its status.}
+\emph{Requirement:} the substructure carries shear in its ordered phase and none
+in its disordered phase. \emph{Falsifier:} a substructure supplying one and not
+the other --- in particular one carrying shear in the \emph{disordered} phase,
+which would unconfine light \emph{and} kill the trapped-mode geon.
+\emph{Status:} \textbf{live}, and it is a knit question. Three independent
+consumers (photon propagation, photon confinement, geon support), and nothing
+yet shows one substructure can do both. Bulk shear-freeness is currently
+\textbf{postulated}; the only machine check on it is dimensional.
+
+This is light's first open requirement conflict, and it is \emph{internal to
+light} --- not a light-versus-magnetism conflict. It is a question about the
+ordering transition: can one substructure be ordered-and-shear-bearing in one
+phase and unstructured-and-shear-free in the other?
+
+\paragraph{Registry additions executed at this step.}
+\(Q.brane.rho\_br\ [-3,0,1]\), \(Q.brane.mu\_R\ [-1,-2,1]\),
+\(Q.brane.c\_gamma\ [1,-1,0]\), and relation \(R4\):
+\(c_\gamma=\sqrt{\mu_R/\rho_{br}}\). \(R4\) is the corpus's existing name for
+this relation. Note that \(c_\gamma\) re-enters \emph{here}, with provenance,
+having been deleted from the \emph{medium} block at S0.5: that round trip is the
+mechanism working.
+
+% NOT \stagefield{Verification} -- that field is suppressed in the default
+% build, and this is a GAP DISCLOSURE, not a verification listing.  It must
+% remain visible.  Delete these two artifacts from the "owed" wording only when
+% they actually exist.
+\paragraph{Verification --- and what is missing.}
+Registry gates only, at time of writing: dimensional homogeneity
+\StatusText{pass}, acceptance \StatusText{match}, able-to-fail harness
+\StatusText{pass}. \textbf{A step-level SymPy audit and an independent
+Mathematica audit do not yet exist for v3.} \(R4\) is carried as a
+\emph{declared} relation whose execution locus points into v2
+(\StageFile{research/pde\_ledger\_v2/scripts/ledger\_stage003\_transverse\_photons\_stray\_longitudinal\_sympy\_audit.py},
+lines 516--601). The gates check that \(R4\) is dimensionally homogeneous and
+that its dataflow closes; \textbf{they do not derive
+\(\omega^2=(\mu_R/\rho_{br})k^2\) from the Lagrangian.} Both audits are owed
+before this step's six-artifact unit is complete.

@@ -1,0 +1,46 @@
+\documentclass[11pt,oneside]{book}
+
+\input{document_setup}
+
+\title{PDE Ledger v3\\[0.5em]\large
+  One Medium, the Linear Part of Every Force ---\\
+  and What Only a Simulation Can Settle}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+\hypersetup{pageanchor=false}
+\maketitle
+\hypersetup{pageanchor=true}
+
+\input{frontmatter/00_what_this_is}
+
+\tableofcontents
+
+\mainmatter
+
+% ---------------------------------------------------------------------------
+% HALF ONE -- the sectors state their requirements, then the knit tests them.
+% Parts are ordered REQUIREMENTS-FIRST: each force sector first, the substrate
+% LAST.  This ordering is the method, not a presentation choice -- see
+% CHARTER.md section 0.  Do not reorder to put the medium first.
+% ---------------------------------------------------------------------------
+\input{parts/part01_light}
+\input{parts/part02_gravity}
+\input{parts/part03_gravitomagnetism}
+\input{parts/part04_charge_magnetism}
+\input{parts/part05_the_knit}
+
+% ---------------------------------------------------------------------------
+% HALF TWO -- what only a simulation can settle.  Broad, not photon-specific.
+% ---------------------------------------------------------------------------
+\input{parts/part06_simulation_handoff}
+
+\appendix
+
+\input{appendices/registry_provenance}
+\input{appendices/source_map}
+
+\end{document}

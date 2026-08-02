@@ -1,0 +1,336 @@
+\section{S11: The Stray Longitudinal --- and Every Question It Raises Is One
+Question}\label{step:S11}
+
+\stagefield{Part / anchor}{Part I --- Light. Sector~1, step~3.}
+\claimstatus{\StatusText{Computed Spectrum / Open Physical Status}}
+\stagefield{Purpose}{Lift S10's longitudinal zero when the brane is allowed to
+resist compression, enter the brane compression modulus as a postulated knob
+with a named retirement condition, and state what the resulting spectrum does
+and does not establish.}
+
+\paragraph{Status.}
+The longitudinal zero is lifted and its cone is computed. Its physical status
+is not: whether the mode radiates, is observable, or constitutes a
+Lorentz-breaking cone remains open because the required brane--bulk interface
+coupling law has not been built.
+
+\paragraph{Departure --- one statement, not three.}
+\textbf{The second mode's entire physical status --- radiative, observable,
+Lorentz-breaking, or none of the above --- reduces to one unbuilt object: the
+brane--bulk interface coupling law that says whether and how matter couples to
+it.} The law is linear and was deferred by choice, not by difficulty; it is the
+work of S11b. The three questions carried by the walk are therefore one:
+\begin{center}
+\begin{tabular}{@{}L{0.60\textwidth}L{0.27\textwidth}@{}}
+\toprule
+question & reduces to \\
+\midrule
+does the longitudinal radiate into the bulk, or stay bound? & the coupling law \\
+is light's confinement unconditional, or does it rest on a
+polarisation-overlap argument? & the coupling law \\
+does a second characteristic speed break Lorentz invariance for us? & the coupling law \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{What S11 does not deliver.}
+S11 does \textbf{not} decide bound versus radiating; does not establish that
+light's confinement is unconditional; does not establish whether the
+longitudinal is observable or unobservable; and supplies no leakage rate.
+
+\paragraph{Why the extra mode is not a defect being repaired.}
+Exact Maxwell would be the \textbf{failure}: Maxwell puts charge in by hand, so
+a model matching it exactly would have no way to anchor charge physically. The
+extra mode is that anchor; it is what made the drum-head charge picture click
+(\StageFile{research/pde\_ledger\_v3/CHARTER.md\#falsification-standard}).
+The token \texttt{FAIL\_CAUCHY\_STRAY\_LONGITUDINAL} is misnamed; its prefix is
+not a verdict.
+
+\paragraph{Identification, flagged before use.}
+The field \(u\) is the material displacement of the stuff whose density is
+\(\rho_{\mathrm{br}}\). S9's kinetic term
+\(\tfrac12\rho_{\mathrm{br}}(\partial_tu)^2\) is kinetic energy only if
+\(\dot u\) is the velocity of the material carrying that inertia. Linearised
+continuity therefore applies,
+\[
+  \delta\rho_{\mathrm{br}}=-\rho_{\mathrm{br}}\nabla\!\cdot u,
+\]
+and the medium's equation of state makes compression cost energy. This is not
+a modelling choice. It would have been wrong if \(u\) were an
+orientation/director field: then \(\nabla\!\cdot u\) would be splay rather than
+a density change, and the channel would need a separate argument.
+
+\paragraph{Correction 1 --- the invariant count and the method.}
+The derivative \(\partial_i u_j\) decomposes into trace, symmetric-traceless,
+and antisymmetric parts. S10 did not forget a term: it retained one invariant
+of several. Curl-only
+stiffness charges twist and nothing else, so the pure-trace longitudinal wave
+was free rather than forbidden. But the walk's claim of ``exactly three
+coefficients for every \(D\geq2\)'' was \textbf{wrong} under proper rotations:
+\[
+  N_{SO}=\{D=2\mapsto4,\ D=3\mapsto3,\ D=4\mapsto4,\ D=5\mapsto3\},
+  \qquad N_O=3\quad\hbox{for every }D.
+\]
+The method, not its arithmetic, was the error. Decomposing into pieces that do
+not mix and counting them misses cross-pairings between isomorphic summands.
+At \(D=2\), the trace and \(\Lambda^2\) are both \(SO(2)\) scalars; at \(D=4\),
+\(\Lambda^2\) splits into self-dual and anti-self-dual pieces. The additional
+reflection-odd invariants are
+\[
+  (\operatorname{tr}G)\,\epsilon^{ij}G_{ij}\quad(D=2),
+  \qquad
+  \epsilon_{ijkl}G_{ij}G_{kl}\quad(D=4).
+\]
+Five independent derivations agree on the corrected counts. The \(D=2\)
+invariant is not a total derivative: its Euler--Lagrange operator is non-zero,
+so an \(SO(2)\)-invariant Lagrangian can mix longitudinal and transverse
+sectors. The \(D=4\) invariant is a total derivative and adds no operator
+structure. Thus sector separation is a \textbf{\(D=3\) fact}, not a structural
+one.
+
+% Every rendered occurrence carries the status label required by the record.
+% The underbrace is an annotation, not part of the symbol or an extra index.
+\newcommand{\SXIcomp}{\underbrace{B_{\mathrm{comp}}}_{\text{\scriptsize postulated}}}
+
+\paragraph{The spectrum.}
+With the brane compression modulus \(\SXIcomp\), postulated rather than
+derived, the trace term enters strictly as
+\[
+  \rho_{\mathrm{br}}\omega^2a
+  =\mu_R\bigl[k^2a-k(k\!\cdot\!a)\bigr]
+   +\SXIcomp\,k(k\!\cdot\!a).
+\]
+For \(k\!\cdot\!a=0\), the new term vanishes identically: compression cannot
+touch light, and S9/S10 are not reopened. For \(a\parallel k\), the
+\(\mu_R\) bracket vanishes and the old zero is replaced, not perturbed.
+
+The two independently written engines compute
+\[
+  M_{ij}=\mu_R(k\!\cdot\!k)\delta_{ij}
+         +(\SXIcomp-\mu_R)k_i k_j,
+\]
+and obtain:
+\begin{center}
+\begin{tabular}{@{}L{0.24\textwidth}L{0.65\textwidth}@{}}
+\toprule
+quantity & computed value \\
+\midrule
+transverse &
+\(\omega^2=(\mu_R/\rho_{\mathrm{br}})k^2\), nullity \(D-1\), kernel
+perpendicular to \(k\); unchanged from S9/S10 \\
+longitudinal &
+\(\omega^2=(\SXIcomp/\rho_{\mathrm{br}})k^2\), nullity \(1\), kernel
+parallel to \(k\) \\
+cross-sector &
+the perpendicular root is independent of \(\SXIcomp\); the parallel root is
+independent of \(\mu_R\); both computed residuals are zero \\
+degeneracy & exactly \(\SXIcomp=\mu_R\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The dimensions close in general \(D\) as
+\[
+  [\rho_{\mathrm{br}}]=(-D,0,1),
+  \qquad
+  [\mu_R]=[\SXIcomp]=(2-D,-2,1),
+  \qquad
+  [c_\gamma]=[c_L]=(1,-1,0).
+\]
+Thus the longitudinal speed is the derived quantity
+\[
+  c_L^2=\frac{\SXIcomp}{\rho_{\mathrm{br}}}.
+\]
+Every computed value agrees with the preregistration
+(\StageFile{research/pde\_ledger\_v3/steps/S11\_PREREGISTERED\_PREDICTION.md},
+commit \texttt{67d919bd}) except the move-2 invariant count: there the
+preregistration was wrong and the engines were right.
+
+\paragraph{Controls.}
+The form control replaces the trace invariant with the
+symmetric-traceless one and moves both roots:
+\[
+  \omega_\perp^2=\frac{\mu_R+\mu_{\mathrm{br}}}{\rho_{\mathrm{br}}}k^2,
+  \qquad
+  \omega_\parallel^2=\frac{4\mu_{\mathrm{br}}}{3\rho_{\mathrm{br}}}k^2.
+\]
+The transverse root thereby acquires \(\mu_{\mathrm{br}}\), showing that the
+trace invariant is the unique one that lifts the longitudinal while leaving
+light untouched. The coefficient control merely rescales \(\SXIcomp\) and
+moves only the parallel root, so it cannot test that shape claim. The form
+control's \(4/3\) independently reproduces the corpus's rejected-Cauchy-branch
+coefficient from an engine blind to that document.
+
+\paragraph{Correction to the compression mechanism.}
+The walk's first mechanism was \textbf{wrong}: it had brane material
+``squeezing out into the bulk,'' which smuggled in a phase transition because
+the bulk is the disordered phase. Compression does not make the brane
+unordered. The correct mechanism is that the brane \textbf{thickens}: in-plane
+compression raises areal density, accommodated either as higher four-dimensional
+density, charged by the equation of state, or as a wider wall, charged by the
+wall potential. The order parameter never changes; the sheet bulges into
+\(\pm w\). The two channels take additive shares of one strain, so they are
+springs in series, their compliances add, and the postulated \(\SXIcomp\) is
+softer than either channel alone.
+
+\paragraph{The flat direction and the named retirement condition.}
+S7 records that the double well selects no slab width. If that flatness
+survived, \(B_{\mathrm{wall}}=0\), hence the postulated \(\SXIcomp=0\), and
+S10's zero would not lift. Width gradients lift it: a wave modulates the width,
+tilts and stretches the interfaces, and costs
+\(\sigma_{\mathrm{wall}}|\nabla W|^2\). The mode is therefore flat at \(k=0\)
+and stiff as \(k^2\), predicting a flexural crossover with
+\(\omega\propto k^2\) at long wavelength.
+
+The cone above was computed with wall width \textbf{frozen}; unfreezing it
+should soften the mode. If it does not, move~5 was wrong and must not be
+reconciled away. The wall tension \(\sigma_{\mathrm{wall}}\) is S6-derived, so
+the named retirement condition is
+\texttt{DEFECT\_REGISTER\#c12}: the postulated \(\SXIcomp\) is to be retired
+visibly at S6 if that derivation supplies it rather than leaving an independent
+knob. The present knob count is an upper bound that can only improve.
+
+\paragraph{Correction 2 --- bulk matching was overstated in both directions.}
+Phase matching gives
+\[
+  k_w^2=k^2\left(\frac{c_L^2}{c_{s0}^2}-1\right).
+\]
+The walk read \(c_L>c_{s0}\) as ``radiates'' and \(c_L<c_{s0}\) as ``bound.''
+\textbf{Neither direction is established.} Phase matching is kinematic only:
+it determines whether a propagating bulk channel exists, not whether the mode
+uses it, and not whether an evanescent solution forms a bound eigenmode. Both
+claims require the absent interface coupling law. The omitted third case is
+\(k_w=0\), grazing.
+
+\paragraph{What is new.}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+item & class & why \\
+\midrule
+\(Q.\mathrm{brane}.\SXIcomp\) & \textbf{postulated} & retire under
+\texttt{DEFECT\_REGISTER\#c12}; knob count is an upper bound \\
+\(Q.\mathrm{brane}.c_L\) & \textbf{derived} & \(R5\), from the postulated
+\(\SXIcomp\) and \(\rho_{\mathrm{br}}\) \\
+the mode itself & \textbf{derived} & nullity of the dynamical matrix \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The postulated \(\SXIcomp\) is a \textbf{brane} compression modulus. It is not
+\(K_{\mathrm{br}}\), the rejected elastic branch's bulk modulus; not
+\(B_{\mathrm{eff}}=\rho_{B0}^2/\chi_c\); and not the bulk medium's modulus. It
+is registered with \texttt{aliases: []} and no borrowed loci. The registry
+changes are ambient \(10\mathbin{\to}12\) and residue \(6\mathbin{\to}7\), with
+residue
+\(\{\hbar,m,K,\rho_0,\rho_{\mathrm{br}},\mu_R,\SXIcomp\}\). The discrete
+payload \(\{n_{\mathrm{eos}}=5,D_{\mathrm{brane}}=3\}\) is unchanged and
+remains off the continuous axis.
+
+\paragraph{Inputs, by locus.}
+S9 supplies the material-displacement kinetic term and the postulated
+\(\rho_{\mathrm{br}}\) and \(\mu_R\); S10 supplies the longitudinal zero and
+the in-plane identification. The equation of state supplies the compression
+cost. S7 supplies the flat slab-width statement, and the S6-derived wall
+tension supplies the proposed retirement route. The interface law is not an
+input because it has not been built.
+
+\paragraph{Regime.}
+Linear response about the brane, with wall width frozen for the computed cone.
+The predicted long-wavelength softening belongs to the width-unfrozen problem
+and is not computed here.
+
+\paragraph{What this settles about the light sector as a whole.}
+First, \(c_L\) is \textbf{not} a gravitational wave. Gravity in this model is
+the flow between draining defects, carried by flow plus Bernoulli pressure and
+not by ripples or radiation
+(\StageFile{docs/conceptual\_foundation.md}, line~348). The longitudinal is an
+in-plane displacement of brane material. Separately, the corpus has no
+mechanistic account of what a gravitational wave is.
+
+Second, a second cone is a departure only if matter couples to it. The
+transverse wave equation is Lorentz-invariant with invariant speed
+\(c_\gamma\), and matter in this model is built from those modes: a throat is
+held open by a trapped brane-shear standing wave. This is not circular; the
+wave equation supplies the invariance, so a standing wave built from it must
+restructure under boost, with its cost diverging as \(v\to c_\gamma\). The
+walk's statement that a second cone by itself means observers see no single
+invariant speed was wrong.
+
+Third, uniform flow is unobservable while gradients are observable. If uniform
+flow were observable, absolute motion would be detected; if gradients were
+not, there would be no gravity. ``The bulk flow is invisible because we are
+made of it'' and ``density gradients bend light'' are statements about
+different derivatives.
+
+Fourth, light gravitates but does not dissipate, and the second fact follows
+from S9. Light carries stress-energy as a co-moving disturbance without loss,
+while photons from distant galaxies show that light must not leak. A photon
+can lose energy only into an available mode, and the bulk has no transverse
+mode. Photon stability over cosmological distance is therefore a consequence
+of bulk shear-freeness. The genuine loss channel is mode conversion where the
+medium is inhomogeneous, near matter and not in vacuum.
+
+% NOT \stagefield{Verification}: that macro suppresses Verification in the
+% default build.  The limitations and the meaning of PASS must stay visible.
+\paragraph{Verification.}
+Two independently written engines agree on every computed value. The blind
+Mathematica audit
+(\StageFile{research/pde\_ledger\_v3/mathematica/S11\_stray\_longitudinal\_mathematica\_audit.wl})
+was written first, imports nothing, and reads no registry. The SymPy audit
+(\StageFile{research/pde\_ledger\_v3/scripts/S11\_stray\_longitudinal\_sympy\_audit.py})
+was written while the Mathematica file was quarantined, then compared with its
+byte-identical committed blob \texttt{55620a7f}; the builder's git use was
+checked as \texttt{status} and \texttt{diff} only.
+
+The engines initially disagreed on one valuable point. Mathematica asserted a
+conclusion about transverse coupling while SymPy refused to conclude it; an
+independent review had already found the Mathematica line unconditional and
+unearned. Mathematica was repaired to stop making the claim, not steered to
+match SymPy. It then diagnosed its own circularity and named the missing input.
+There were eight review legs: two for build directives, two per engine, and two
+per repair.
+
+A demonstrated control hole was also closed. Replacing \(R5\) by
+\(c_L-\sqrt{\mu_R/\rho_{\mathrm{br}}}\), the exact wrong relation this step
+exists to distinguish, had left all five gates green. A new assertion now
+substitutes each derived root into the registry residual that records it; four
+distinct corruptions were ablation-checked, and \(R4\) is covered as well
+(\texttt{DEFECT\_REGISTER\#f-r5}).
+
+The reported gates are acceptance \StatusText{match}
+\((12\mathbin{\to}7,\ 12\mathbin{\to}7,\ 12\mathbin{\to}6)\);
+dimensional homogeneity \StatusText{pass}, including homogeneous \(R5\) with
+dimension \((1,-1,0)\) and zero undetermined; able-to-fail \StatusText{pass};
+and 11 tests. Both engines print \texttt{VERDICT: PASS}. \textbf{Those strings
+are verdicts only on the engines' internal checks; they are not verdicts on the
+physics, the absent interface coupling, or the mode's physical status.}
+
+\paragraph{Known limits --- recorded, not fixed.}
+\begin{enumerate}[leftmargin=2.2em]
+\item Two of the six dimensional checks in the Mathematica file are
+definitional identities, \((X-2Y)+2Y=X\), and cannot fail. Only the
+\(\rho_{\mathrm{br}}\) check obtained an independent route. The guard as a
+whole is able to fail and four independent ablations were caught, but those
+two entries are \textbf{not counted as coverage}.
+
+\item \texttt{ASSERTION\_12} in the SymPy file defines
+\(c:=\sqrt{X}\) and then asserts \(c^2-X=0\). It is identically zero by
+construction, cannot fail, and is \textbf{not counted as coverage}; the new
+registry control supersedes it in substance.
+
+\item The Mathematica file disclaims scope on the transverse tag but not the
+parallel tag, although both arise from the same substitution with the same
+absent operator. The scope limit applies to both channels.
+
+\item The SymPy script was repaired while untracked, so there is no committed
+pre-repair baseline. A reviewer's \texttt{/tmp} copy and a full hand
+re-derivation of every load-bearing value substituted for one. This violated
+the rule to commit before anything destructive.
+
+\item A review leg's search for \texttt{K\_br} incidentally returned two lines
+of \StageFile{research/pde\_ledger\_v3/V3\_STEP\_PLAN.md}, which was on its
+do-not-read list. The file was not opened, and all reported results had already
+been derived.
+\end{enumerate}

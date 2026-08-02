@@ -23,10 +23,22 @@ until every field, including a concrete do-not-read list, is filled.
 ## Do not read
 {{PREDICTIONS_SIBLING_IMPLEMENTATIONS_ANSWERS_PRIOR_REVIEWS}}
 ## Required method
-Derive independently. Ablate every load-bearing check and report its literal output; code-reading alone
-has repeatedly missed real defects. In a script, probe: a value verified using the predicate or
-definition that produced it (`c ≔ √(x)` then asserting `c² − x = 0`); a conclusion emitted as an
-unconditional literal; and a check whose expected value lives inside the artifact it checks.
+{{SCRIPT_BRANCH_OR_DOCUMENT_BRANCH — use the one that matches the artifact}}
+
+**If the artifact is a SCRIPT:** derive independently. Ablate every load-bearing check and report its
+literal output; code-reading alone has repeatedly missed real defects. Probe for: a value verified using
+the predicate or definition that produced it (`c ≔ √(x)` then asserting `c² − x = 0`); a conclusion
+emitted as an unconditional literal; and a check whose expected value lives inside the artifact it checks.
+
+**If the artifact is a DOCUMENT** (a `.tex` card, a step record, prose): read the **source of truth
+first**, form your own view of what it establishes and what it does not, and **only then** read the
+artifact. ⛔ Do not read them in the other order — reading the artifact first anchors you to its framing,
+which is the thing under test. ⭐ Blindness for a script comes from quarantine; for a document it comes
+from **reading order**, and it is just as load-bearing. Quote both sides for every finding.
+⚠ Put the **build directive on the do-not-read list**: an artifact can satisfy its directive and still
+misrepresent its source, and that case is exactly what this leg exists to catch.
+⚠ For a `.tex` card, check `paper/macros.tex` — some fields are **suppressed in the default build**, so
+reader-critical content placed in one is invisible in the PDF. This has happened.
 ## Physics filter
 "report a finding only if it catches a way the physics could be wrong; do not report 'the script would be wrong on a different input'."
 ## Quarantine rule

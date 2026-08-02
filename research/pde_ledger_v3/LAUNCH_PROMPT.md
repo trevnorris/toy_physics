@@ -128,8 +128,26 @@ script, in either engine, as carrying that class; ⛔ the 44's track record does
 
 ## ▶ NEXT SESSION — in this order
 
-1. ⛔ **Fix the `.wl`'s three defects** (Codex builds; then a fresh agent leg AND a Grok leg). ⚠ One of
-   the three is the orchestrator's, so the orchestrator ⛔ cannot judge the repair.
+1. ⛔⛔ **CUT `registry_dimensional_gate.wl` — ⛔ do NOT fix it. It is the WRONG ARTIFACT.**
+   ⭐⭐ **Standing rule, user-confirmed 2026-08-01: a `.wl` must NOT read the shared registry. Only the
+   SymPy side imports it. The `.wl` is written BLIND and compared against it — the disagreement IS the
+   test.**
+   ⭐ **Why, and the evidence is from this session:** a reader `.wl` and the Python **share an input**, so
+   a wrong registry makes them **agree — vacuously**. A blind `.wl` shares only the *physics*, so a wrong
+   registry makes them **disagree**. ⇒ The fresh agent had to **manually corrupt a dimension exponent**
+   to prove the reader-gate could fire; under the blind design that corruption is caught automatically.
+   ⭐⭐ **And all three blocking defects VANISH under it:** a blind script takes no arguments (no dead
+   `--registry-dir`), parses no prefix-v1 (no level-0 `Q` hole), and reads no `kind` (nothing to leave
+   unvalidated). ⛔ They were artifacts of the reader design, ⛔ not Mathematica or builder failures.
+   ⚠ **v2's 44 scripts ARE already this design** — *"Print-only, standalone, no arguments, no exports"*.
+   The project had solved this; the reader gate re-derived the wrong architecture.
+   ⇒ **Replace with a blind per-step audit**, matching v2's naming:
+   `research/pde_ledger_v3/mathematica/S9_light_requires_shear_mathematica_audit.wl` — hardcode the
+   action, derive `c_γ² = μ_R/ρ_br` and the three `[L,T,M]` vectors from scratch, print them. ⭐ The
+   orchestrator compares against the registry; a mismatch is a **finding**.
+   ⚠ **Division of labour:** physics + dimensions → the blind `.wl`. Registry hygiene (schema, declared
+   inputs, cycles, well-formedness) → **Python only**; a second engine re-reading the same YAML to check
+   the same YAML adds nothing.
 2. ⛔ **Decide v3's paper structure and backfill the TeX cards + source maps for S0.5 and S9** — two
    cards while it is still two. ⚠ **USER CALL:** does v3 get its own paper skeleton, or write into v2's?
    Given v3 is now self-contained, its own is the coherent answer.

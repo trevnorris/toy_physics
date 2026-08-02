@@ -261,7 +261,7 @@ printAuditLine["WL_S9_SPEED_SQUARED: ",
    ]];
 printAuditLine["WL_S9_DIM_RHOBR: ", dimRhoBr];
 printAuditLine["WL_S9_DIM_MUR: ", dimMuR];
-printAuditLine["WL_S9_DIM_SPEED: ", dimReportedSpeedSquared];
+printAuditLine["WL_S9_DIM_SPEED_SQUARED: ", dimReportedSpeedSquared];
 
 (* Control results are themselves derived values, never expected-value literals. *)
 printAuditLine["WL_S9_CONTROL_INERTIA_ACTION: ",

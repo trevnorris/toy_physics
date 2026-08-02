@@ -98,3 +98,26 @@ relations:
     source_locus: {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 271, line_end: 271}
     execution_locus: {path: research/pde_ledger_v2/scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py, line_start: 516, line_end: 601}
     benchmark_refs: []
+
+  - relation_id: R5
+    residual:
+      - Sub
+      - [Q, Q.brane.c_L]
+      - [Sqrt, [Div, [Q, Q.brane.B_comp], [Q, Q.brane.rho_br]]]
+    designated_output: Q.brane.c_L
+    input_qids: [Q.brane.B_comp, Q.brane.rho_br]
+    applied_functions: []
+    provenance_status: DERIVED-EXECUTED
+    regime: [medium-GNLS-positive-real, linear-unstrained-brane]
+    assumptions:
+      - {predicate: positive, qids: [Q.brane.rho_br, Q.brane.B_comp, Q.brane.c_L]}
+    domain_measure_bcs:
+      domain: finite-scalar-positive-real
+      measure: null
+      boundary_conditions: []
+    denominator_guards:
+      - [Q, Q.brane.rho_br]
+    literal_consistency: []
+    source_locus: {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 558, line_end: 570}
+    execution_locus: {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 522, line_end: 575}
+    benchmark_refs: []

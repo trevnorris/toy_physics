@@ -222,6 +222,24 @@ quantities:
       - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 91, line_end: 95}
       - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 109, line_end: 112}
 
+  - qid: Q.brane.B_comp
+    symbol: B_comp
+    kind: parameter
+    scope: [brane, light, III]
+    regime: [medium-GNLS-positive-real, linear-unstrained-brane]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [-1, -2, 1]
+      provenance:
+        stage_id: stage003
+        stage_uses_shared_dimensions_module: false
+        source_locus: {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 632, line_end: 664}
+    aliases: []
+    source_loci:
+      - {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 632, line_end: 664}
+
   - qid: Q.brane.c_gamma
     symbol: c_gamma
     kind: intermediate
@@ -242,3 +260,22 @@ quantities:
       - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 68, line_end: 83}
       - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 91, line_end: 95}
       - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 109, line_end: 112}
+
+  - qid: Q.brane.c_L
+    symbol: c_L
+    kind: intermediate
+    scope: [brane, light, III]
+    regime: [medium-GNLS-positive-real, linear-unstrained-brane]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [1, -1, 0]
+      provenance:
+        stage_id: stage003
+        stage_uses_shared_dimensions_module: false
+        source_locus: {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 632, line_end: 664}
+    aliases: []
+    source_loci:
+      - {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 558, line_end: 570}
+      - {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 632, line_end: 664}

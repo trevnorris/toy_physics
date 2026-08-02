@@ -210,6 +210,21 @@ the speed of **collective** phonon disturbances, ⛔ not the velocity of each co
 ⇒ *"Reduced de Broglie wavelength at the sound-speed momentum"* is a permissible **algebraic gloss**;
 *"the scale where the fluid ends"* is **unsupported**.
 
+⚠⚠ **HONEST LIMIT ON THE ABOVE — `postulated` is a classification BY ELIMINATION, ⛔ not a measured
+result.** It follows from applying the method doc's test and finding no route; ⛔ it does **not** rest on
+an exhaustive sweep. ⚠ An inversion sweep — *solve for `ħ` from every relation that uses it, then classify
+each right-hand side as INDEPENDENT / CIRCULAR / UNDETERMINED* — **was started on 2026-08-02 and KILLED
+before it produced a verdict.** ⛔ Do not cite it; there is no result.
+⭐ **What that sweep would settle, if anyone wants it later:** whether `ħ` is **over-determined** (≥2
+relations pinning it from independent quantities — they either agree, a real consistency claim, or
+disagree, a falsification), **determined once** (⇒ it is `derived` and misclassified), or
+**under-determined** (⇒ `postulated` becomes *measured* rather than *inferred*).
+⚠ **The registry hints at under-determined, which is NOT the same as showing it:** `ħ` is **never** a
+`designated_output`, its **only** registry consumer is `R2.xi_h`, and inverting that returns `ħ` in terms
+of `ξ_h` — ⛔ **the very quantity that relation defines.** Circular, no content. ⚠ But `ħ`'s other uses
+(mass bridge, geon `E₀=ħω₀`, BdG `k⁴`, Madelung `v=(ħ/m)∇θ`) are ⛔ **not in the registry**, so that fact
+covers **one relation out of several**.
+
 ⭐ **WHERE IT GOES NOW (user, 2026-08-02): a HALF-TWO row.** ⛔ Stop spending time deriving it. `ħ_model`
 is a quantity that must either be **derived** (needs the substructure) or **defined operationally well
 enough for the simulation to run** — the *simulation-ready* criterion, ⛔ not the derivation criterion.

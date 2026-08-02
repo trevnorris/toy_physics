@@ -372,6 +372,23 @@ false identification, corrected here. The history, in the order it happened:
    **`1/r²`**, sits **on the brane**, and does **not disturb the physics already built**.
 5. ⇒ *"The fact that it popped out unlocked a view of the conceptual model that didn't exist before."*
 
+⭐⭐⭐ **AND HERE IS THE VIEW IT UNLOCKED — the user's own words, 2026-08-02. ⛔ Record it at every point
+of use; it has had to be explained THREE times:**
+
+> **The brane is like a DRUM HEAD. The defect is like your FINGER pushing into it.** The two different
+> directions you can push are **the two charges**. Pushing creates an **energy potential** in that
+> direction. **Same charge → energy INCREASES → they push away. Opposite → brings them together.**
+
+⇒ ⭐ **Coulomb's SIGN is ENERGY GEOMETRY** — two same-`w` deflections superpose and raise the elastic
+energy, so the configuration relaxes by separating; opposite-`w` deflections cancel, so it relaxes by
+approaching. ⛔ **No gauge field anywhere in that account.**
+
+⚠⚠ **AND THE GAUGE FIELD IS THE POINT OF THE WHOLE STORY.** The model carried *"exact Maxwell"* for
+**months, across multiple papers**, obtained by **INSERTING a gauge field** — ⚠ uncaught at the time. The
+question that broke it open was ⭐ ***"what physically motivates this gauge field?"*** Answer: nothing. It
+was inserted **in order to get Maxwell**. ⇒ ⭐⭐ **Generalise the diagnostic: of any object a derivation
+leans on, ask whether it is a THING or MACHINERY placed there to reach a known answer.**
+
 ⇒ ⭐⭐ **What the mode did was falsify the TARGET.** Exact Maxwell gives two transverse photons **and
 nothing else**, with charge entering as an **external source put in by hand** — so matching it exactly
 would have **inherited that gap**. ⛔ The point is that **the target was wrong**, ⛔ *not* that the

@@ -103,6 +103,42 @@ MacCullagh, near-identical names, different objects) and the three-step story of
    surviving medium rows, since the substrate steps run last. `ħ`/`m` come standard and stay; `K` and the
    EOS exponent are explicitly *not* standard.
 
+## ⚠ WHY THE `.wl` GATE MISBEHAVED WHEN v2's 44 NEVER DO — measured
+
+⛔ **Do not read the `.wl` blockers as "Mathematica is flaky."** v2's 44 stage scripts declare it in their
+own headers — *"Print-only, standalone, **no arguments**, no exports"* — and across all 44:
+
+| | count |
+|---|---|
+| use command-line arguments | **0** |
+| import YAML | **0** |
+| read **any** external data file | **0** |
+
+⇒ They are **self-contained symbolic verifiers**: hardcode, compute, assert, print. Deterministic.
+
+⭐⭐ **The v3 registry gate is the FIRST `.wl` here that takes an argument, parses YAML, and reads mutable
+shared state.** All three are novel, which is why nobody had ever found that `$ScriptCommandLine` is empty
+under `math -script` in this environment — no script had ever needed an argument.
+
+⇒ ⭐ **All three blocking defects sit in that novel surface** (dead argument flag · parser hole on a data
+shape · unvalidated schema field). ⛔ **None** is in the symbolic-algebra surface where the 44 have their
+record. ⇒ **A reader of shared mutable state has a failure class a standalone verifier structurally
+cannot have** — wrong file, stale file, silently-defaulted path. ⚠ Treat every future registry-reading
+script, in either engine, as carrying that class; ⛔ the 44's track record does not transfer to it.
+
+## ▶ NEXT SESSION — in this order
+
+1. ⛔ **Fix the `.wl`'s three defects** (Codex builds; then a fresh agent leg AND a Grok leg). ⚠ One of
+   the three is the orchestrator's, so the orchestrator ⛔ cannot judge the repair.
+2. ⛔ **Decide v3's paper structure and backfill the TeX cards + source maps for S0.5 and S9** — two
+   cards while it is still two. ⚠ **USER CALL:** does v3 get its own paper skeleton, or write into v2's?
+   Given v3 is now self-contained, its own is the coherent answer.
+3. **S10** — two transverse photons. ⚠ The count comes from the brane being **3-dimensional** (a 3-vector
+   about `k` splits 1 longitudinal + 2 transverse), ⛔ **not** from codimension.
+4. **S11** — the stray longitudinal, framed as the **third of three failed attempts** at Maxwell's
+   no-longitudinal demand, ⛔ not a bonus mode.
+5. **S11a** — the packet + simulation specification. ⭐ The one with real thinking in it.
+
 ## ⭐ THE SIMULATION TRACK — the user wants this
 
 A superfluid sim with a photon in it, time stepped slowly, watching the medium move — and whether

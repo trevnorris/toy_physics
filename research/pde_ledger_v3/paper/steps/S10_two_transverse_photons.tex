@@ -1,0 +1,193 @@
+\section{S10: Two Transverse Photons --- and the Count Comes from the
+Brane's Own Dimension}\label{step:S10}
+
+\stagefield{Part / anchor}{Part I --- Light. Sector~1, step~2.}
+\claimstatus{\StatusText{Computed}}
+\stagefield{Purpose}{Count the independent waves carried by the brane's
+curl-only sector and identify why that count is two. The result is
+\(D_{\mathrm{brane}}-1\) transverse modes, obtained from the nullity of the
+dynamical matrix at each root. It is not inferred from a factorised
+determinant.}
+
+\paragraph{Status.}
+\StatusText{Computed}. S9 supplied the curl-only cone; this step computes its
+mode content. The count is banked, while the brane dimension that supplies the
+number is explicitly \textbf{postulated}: \(D_{\mathrm{brane}}=3\) is what
+light requires of the medium, not something derived here.
+
+\paragraph{Identification, flagged before use.}
+The field \(u\) is the \textbf{in-plane} displacement: a \(D\)-vector on the
+brane. It is not a \(D+1\)-vector that includes motion out of the brane into
+\(\pm w\). That out-of-plane motion is the separate \(h\)-branon that carries
+charge, and \(h\ne u_L\). This identification is load-bearing: if out-of-plane
+motion belonged to the same elastic sector, the transverse count at \(D=3\)
+would be \textbf{three}, not two.
+
+\paragraph{The argument, in three moves.}
+\resultanchor{1 --- Decompose about \(k\).} For
+\(u=a\exp[i(k\cdot x-\omega t)]\), the constant amplitude splits into one
+component along \(\widehat{k}\) and a perpendicular component in a
+\((D-1)\)-dimensional subspace:
+\[
+  D=1+(D-1).
+\]
+
+\resultanchor{2 --- The stiffness sees only the perpendicular part.} The
+antisymmetric derivative sends \(\nabla\times u\) to \(i k\times a\), in the
+three-dimensional notation, and in every \(D\) its quadratic form is
+\[
+  \frac12\sum_{i,j}(k_i a_j-k_j a_i)^2
+    = |k|^2|a|^2-(k\cdot a)^2.
+\]
+It therefore penalises only \(a_\perp\). A longitudinal amplitude has zero
+curl and zero energy cost. The longitudinal mode is \textbf{free, not
+forbidden}: there is no restoring force because the medium resists twisting
+and is indifferent to compression along the wave. An ordinary elastic solid,
+which resists both, also carries a longitudinal wave.
+
+\resultanchor{3 --- Solve per piece.} The equation of motion is
+\[
+  \rho_{\mathrm{br}}\omega^2 a
+    =\mu_R\bigl[k^2a-k(k\cdot a)\bigr].
+\]
+It gives
+\[
+  \omega^2=0 \quad\hbox{for }a\parallel k,
+  \qquad
+  \omega^2=\frac{\mu_R}{\rho_{\mathrm{br}}}k^2
+    \quad\hbox{for }a\perp k.
+\]
+The transverse modes are degenerate by \textbf{symmetry}, not coincidence:
+nothing in the equation distinguishes one perpendicular direction from
+another, so all carry the same frequency.
+
+\paragraph{The computed count.}
+The two audit engines evaluate the dynamical matrix at each root and compute
+its \textbf{nullity}. The count below is therefore not read off the
+multiplicity of a factor in a factorised determinant.
+\begin{center}
+\begin{tabular}{@{}cL{0.23\textwidth}L{0.39\textwidth}c@{}}
+\toprule
+\(D\) & \(\omega^2=0\) &
+\(\omega^2=(\mu_R/\rho_{\mathrm{br}})k^2\) & sum \\
+\midrule
+2 & nullity 1, \(\parallel k\) & nullity 1, \(\perp k\) & 2 \\
+\textbf{3} & nullity 1, \(\parallel k\) &
+  \textbf{nullity 2}, \(\perp k\) & 3 \\
+4 & nullity 1, \(\parallel k\) & nullity 3, \(\perp k\) & 4 \\
+5 & nullity 1, \(\parallel k\) & nullity 4, \(\perp k\) & 5 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+Thus the longitudinal nullity is one and the transverse nullity is \(D-1\).
+In particular, exactly two transverse polarisations require
+\(D_{\mathrm{brane}}=3\).
+
+\paragraph{Why this is not a codimension count.}
+The bulk never enters the computation. There is no codimension anywhere in
+the dynamical matrix or its nullities; only the brane's own dimension appears.
+Codimension is therefore not merely the wrong number, but an
+\textbf{absent quantity}. The \(D=2,3,4,5\) pattern above is the evidence.
+
+\paragraph{Equations and dimensions for general \(D\).}
+The Lagrangian is an energy density on a \(D\)-dimensional brane,
+\[
+  L=\frac12\rho_{\mathrm{br}}(\partial_tu)^2
+    -\frac12\mu_R(\operatorname{curl}u)^2,
+  \qquad
+  (\operatorname{curl}u)^2
+    \equiv\frac12\sum_{i,j}(\partial_i u_j-\partial_j u_i)^2.
+\]
+The latter is the antisymmetric derivative in every \(D\). At \(D=3\), its
+reduction to the ordinary \( |\nabla\times u|^2 \) is computed, with residual
+zero, rather than assumed. The constituent dimensions close as functions of
+\(D\):
+\[
+  [\rho_{\mathrm{br}}]=(-D,0,1),
+  \qquad
+  [\mu_R]=(2-D,-2,1).
+\]
+At \(D=3\) these become \((-3,0,1)\) and \((-1,-2,1)\), agreeing with the
+registry.
+
+These formulas explain an S9 loose end by identity. S9 found that changing the
+assumed brane dimension corrupted both constituent dimensions while the speed
+check stayed green. For every \(D\), however,
+\[
+  [\mu_R]-[\rho_{\mathrm{br}}]
+    =(2-D)-(-D)=2
+\]
+in the length slot. The speed's dimension \emph{cannot} see the brane
+dimension; the apparently weak check is a property of the physics, not an
+unexplained audit blind spot.
+
+\paragraph{What is new.}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+item & class & why \\
+\midrule
+\(D_{\mathrm{brane}}=3\) & \textbf{postulated} & what light requires; not derived \\
+mode count & \textbf{derived} & nullity: \(D_{\mathrm{brane}}-1\) transverse, one longitudinal \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The dimension closes a real hole: S9's dimensions depended on it, but it had
+not been declared. The derived \(n_{\mathrm{pol}}\) is deliberately not a
+separate registry row. The constraint machinery rejects relations whose
+residual contains discrete symbols, and the closed schema has no vocabulary
+for expressing that one discrete value derives from another. A bare row would
+make a derived count look like a free choice, which is less faithful than
+omitting it.
+
+\paragraph{Inputs, by locus.}
+The Lagrangian, \(\rho_{\mathrm{br}}\), \(\mu_R\), and the curl-only form come
+from S9. The identification of \(u\) as the in-plane displacement is made and
+flagged in this step. \textbf{Nothing comes from the bulk}; it does not enter.
+
+\paragraph{Regime.}
+Linear response about an unstrained brane; small oscillations.
+
+\paragraph{Departure.}
+None at this step. But \(\omega^2=0\) means the longitudinal slot is
+\textbf{non-propagating}, not absent. S10 therefore does not deliver Maxwell's
+no-longitudinal-photon demand; once the medium is allowed to be compressible,
+that zero lifts. This is not a defect awaiting repair. Exact Maxwell would be
+the failure: it puts charge in by hand, so a model matching it exactly would
+have no way to anchor charge physically. The extra slot is that anchor and is
+carried forward to S11. It must not be confused with the charge field itself:
+\(u_L\) is in-plane, whereas the charge-bearing \(h\)-branon is out of plane
+and \(h\ne u_L\).
+
+\paragraph{Verification.}
+Two independently written engines agree on every value. The blind Mathematica
+audit
+(\StageFile{research/pde\_ledger\_v3/mathematica/S10\_two\_transverse\_photons\_mathematica\_audit.wl})
+reads nothing and was built first. The SymPy audit
+(\StageFile{research/pde\_ledger\_v3/scripts/S10\_two\_transverse\_photons\_sympy\_audit.py})
+imports the shared registry and was built while the Mathematica file was
+quarantined out of the tree, so it could not transcribe from it. After
+restoration, that file was byte-identical to its committed blob.
+
+Every value matched predictions committed before either script ran
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_PREREGISTERED\_PREDICTION.md},
+commit \texttt{bc276485}), including the two flagged uncertainties: the
+antisymmetric form reduces to ordinary curl-squared at \(D=3\), and \(D=2\) is
+not degenerate in kind.
+
+The able-to-fail control changes the \emph{form}: replacing the
+antisymmetric-derivative stiffness by full gradient-squared stiffness
+collapses the two roots into one root of nullity \(D\), removes the
+\(\omega^2=0\) root, and makes the longitudinal mode propagate. A coefficient
+control cannot distinguish this step's claim: rescaling \(\mu_R\) moves the
+roots but leaves their nullities unchanged. A coefficient control tests the
+arithmetic; only the form control tests the physics of the count.
+
+Registry gates were all green with the payload unchanged: acceptance
+\StatusText{match} (\(10\mathbin{\to}6\), \(10\mathbin{\to}6\),
+\(10\mathbin{\to}5\)), dimensional homogeneity \StatusText{pass},
+able-to-fail \StatusText{pass}, and 11 tests.

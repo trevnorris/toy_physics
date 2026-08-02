@@ -110,26 +110,34 @@ MacCullagh, near-identical names, different objects) and the three-step story of
    ⚠ Grok did **not** find the level-0 `Q` hole; the fresh agent did. Different scopes, both needed.
    Full logs: `_scratch/grok_wl_review.txt`, and the fresh leg's findings in `SESSION_2026-08-01.md` §7.
 
-2b. ⛔⛔ **NO `.tex` EXISTS FOR v3 — the step unit is INCOMPLETE.** v2 carries **44** stage `.tex` cards
-   under `research/pde_ledger_v2/paper/stages/` plus a full paper (`parts/`, `appendices/`, `macros.tex`,
-   a built PDF). ⭐ The defined unit is **six artifacts** — *note · TeX card · SymPy audit · independent
-   Mathematica audit · source map · register entry* (`docs/model_map.md:269`). **S9 produced three:**
-   the note, the registry entry, and the Mathematica gate. ⛔ **Missing: the TeX card and the source
-   map** — and they are missing for S0.5 too. ⚠ Writing 20 cards retroactively is the retrofit this
-   method exists to avoid.
-   ✅ **DECIDED 2026-08-01 (user): v3 gets its OWN paper skeleton**, ⛔ not v2's — consistent with the
-   self-containment rule. Planned shape, ⭐ **parts ordered REQUIREMENTS-FIRST with the substrate LAST**:
-   ```
-   research/pde_ledger_v3/paper/
-     pde_ledger_v3.tex · document_setup.tex · macros.tex   (the latter two COPIED from v2)
-     parts/  part01_light · part02_gravity · part03_gravitomagnetism ·
-             part04_charge_magnetism · part05_the_knit      ← medium/brane/bulk LAST
-     steps/  S9_light_requires_shear.tex                    (v3 step IDs, ⛔ not v2's stage_NNN)
-     appendices/  registry_provenance.tex                   ← S0.5 lives HERE
-   ```
-   ⚠ **S0.5 gets no physics card** — the step plan calls it *"bookkeeping repair, ⛔ not physics"*, so a
-   card in a physics part would misrepresent it. The six-artifact unit is still met; it is filed as
-   provenance.
+2b. ⚠⚠ **S9 IS 2 OF 6 ARTIFACTS — ⛔ AND AN EARLIER VERSION OF THIS FILE SAID THREE.** The unit is
+   *note · TeX card · SymPy audit · independent Mathematica audit · source map · register entry*
+   (`docs/model_map.md:269`). ⛔ **The correction:** `registry_dimensional_gate.wl` does **not** count —
+   it is the **registry** gate, ⛔ not S9's *derivation* audit (v2's per-stage artifact is
+   `ledger_stageNNN_<topic>_mathematica_audit.wl`), and it is being cut anyway.
+
+   | artifact | S9 |
+   |---|---|
+   | note | ✅ `steps/S9_light_requires_shear.md` |
+   | register entry | ✅ `quantities.yaml` ×3 + `relations.yaml` R4 |
+   | **TeX card** | ✅ `paper/steps/S9_light_requires_shear.tex` (`8785ef6c`) |
+   | **SymPy audit** | ⛔ **owed** |
+   | **independent Mathematica audit** | ⛔ **owed** (blind — see NEXT SESSION 1) |
+   | **source map** | ⛔ owed |
+
+   ⛔⛔ **THE GAP THAT MATTERS IS THE SYMPY AUDIT, ⛔ not the card.** ⚠ **Nothing in v3 EXECUTES**
+   `L = ½ρ_br(∂_t u)² − ½μ_R(∇×u)² ⟹ ω² = (μ_R/ρ_br)k²`. `R4` is a **DECLARED** relation whose
+   `execution_locus` points into **v2** (`ledger_stage003_..._sympy_audit.py:516-601`). ⇒ The registry
+   gates check `R4` is dimensionally homogeneous and that its dataflow closes; ⛔ **they do not derive
+   it.** ⚠ Under the self-containment rule v3 owes its own executing script.
+   ⚠ **Both remaining artifacts are SCRIPTS** ⇒ Codex builds, **fresh agent leg AND Grok leg** (rule 3).
+
+   ✅ **The paper skeleton is BUILT** (`8785ef6c`) — `research/pde_ledger_v3/paper/`, ⭐ parts ordered
+   **requirements-first with the substrate LAST**, half two as its own part. `pdflatex` ×2 exit 0,
+   19 pages, zero undefined refs. ⚠ **S0.5 has no physics card** — it is *"bookkeeping repair, ⛔ not
+   physics"*, so it lives in `appendices/registry_provenance.tex`.
+   ⚠ **The built PDF is deliberately NOT tracked** (binary churn); v2 *does* track its own — a knowing
+   departure, recorded in `paper/README.md`.
 2. ⚠ **The requirements-first restructure is PARTIALLY applied — ⛔ and that is deliberate.** Attempted
    twice as a **whole-document** pass, failed review twice, rolled back twice. ⭐ **Do the minimum to
    walk the next sector, ⛔ not the whole document.**
@@ -200,8 +208,10 @@ script, in either engine, as carrying that class; ⛔ the 44's track record does
    ⚠ **Division of labour:** physics + dimensions → the blind `.wl`. Registry hygiene (schema, declared
    inputs, cycles, well-formedness) → **Python only**; a second engine re-reading the same YAML to check
    the same YAML adds nothing.
-2. ✅ **Paper structure DECIDED (user, 2026-08-01): v3 gets its OWN skeleton.** ⇒ **Build it and backfill
-   S0.5 + S9** — two cards while it is still two. Shape and the S0.5-as-appendix call: **OWED 2b**.
+2. ✅ **DONE (`8785ef6c`) — the skeleton is built and S0.5 + S9 are written in.** ⇒ **What remains on S9
+   is the SYMPY AUDIT and the SOURCE MAP** (plus item 1's blind `.wl`). ⛔ **Do not walk S10 until S9's
+   unit closes** — compounding the retrofit is the exact failure this method exists to avoid. See
+   **OWED 2b** for the artifact table and why the SymPy audit is the gap that matters.
 3. **S10** — two transverse photons. ⚠ The count comes from the brane being **3-dimensional** (a 3-vector
    about `k` splits 1 longitudinal + 2 transverse), ⛔ **not** from codimension.
 4. **S11** — the stray longitudinal, framed as the **third of three failed attempts** at Maxwell's

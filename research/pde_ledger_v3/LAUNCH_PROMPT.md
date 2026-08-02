@@ -67,6 +67,42 @@ claims are stale; the session record says which.
 
 ---
 
+## ▶ HOW A STEP ACTUALLY RUNS — the sequence that worked on S10, in order
+
+⭐ **This is a proven recipe, not a proposal.** S10 ran exactly this and both engines plus both review
+legs came back clean. ⛔ The RULES above give principles; this gives the **order of operations**.
+
+1. **WALK IT with the user.** Setup first (what we are deriving · what we have · what is missing · where
+   I expect trouble), then one move at a time, reasoning **before** the result. ⭐ **Flag every
+   identification BEFORE making it**, and say what would make it wrong. ⛔ Never pre-derive and present.
+2. ⭐ **PRE-REGISTER your predictions.** Write down what you expect the scripts to produce, **commit it
+   to a TRACKED path** (so the timestamp proves priority) — then ⛔ **MOVE IT OUT OF THE TREE** for the
+   duration, or the review legs can read your answers. ⚠ I got this half-right once and leaked.
+3. **BLIND `.wl` FIRST**, before any `.py` exists — so there is nothing to anchor on. Directive carries
+   the action and ⛔ **none of the results**. ⚠ **LEAK-GATE THE DIRECTIVE BEFORE LAUNCH** (grep it for the
+   answers) — Codex snapshots the prompt into argv, so a later fix does nothing.
+4. **ARBITER RE-RUN.** ⛔ Run it yourself; never take the builder's word. Compare against step 2.
+5. **QUARANTINE the `.wl`**, then have Codex build the **SymPy audit + any registry insertion**. Restore
+   after and ⭐ **verify byte-identical to the committed blob** — that is what proves the quarantine held.
+6. **ALL GATES** — acceptance, dim gate, able-to-fail, pytest. ⭐ A new **discrete** row must leave the
+   continuous payload **unchanged**.
+7. **YOU write the step record.** ⭐ It records the *walk*, and only you were there. ⛔ Codex cannot.
+8. **CODEX writes the TeX card** from that record (rule 3 — builder ≠ reviewer applies to `.tex` too).
+9. **REVIEW: one fresh agent + one Grok, and put the PHYSICS FILTER IN THE PROMPT** — *"report a finding
+   only if it catches a way the physics could be wrong; ⛔ do not report 'the script would be wrong on a
+   different input'."* ⭐ That single paragraph is the difference between one real finding and six.
+10. ⛔⛔ **FILTER BEFORE ACTING. A finding is not a mandate.** Most will not survive. *"Recorded, not
+    acted on"* is a complete disposition. ⛔ Do **not** reach for a rebuild.
+
+⚠ **Two launch failures already paid for, ⛔ do not repeat:**
+⛔ **Verify the DELIVERABLE, not the session** — `hook: Stop` + exit 0 fired on a run handed an **empty
+prompt** that did nothing (tell: **3k** tokens vs **37k+** for a real build).
+⛔ **ABSOLUTE paths for anything a background job reads** — the shell cwd persists between calls, so a
+relative write plus an absolute read is a **silent** empty string.
+
+⚠ **Controls: a COEFFICIENT control tests the arithmetic; only a FORM control tests the physics.**
+Scaling never leaves the family, so it cannot test a claim about a **count** or a **shape**.
+
 ## ⭐⭐ WHAT THIS LEDGER IS — TWO HALVES (user decision, 2026-08-01) {#two-halves}
 
 ⛔ **Read this before the step plan.** `CHARTER.md#two-halves` is the canonical statement.
@@ -171,28 +207,16 @@ MacCullagh, near-identical names, different objects) and the three-step story of
    set either way; the label moves it between tier 1 and tier 2.
    ⚠ **Still open, and a DIFFERENT question: O-02** — is `K` + the exponent one entry or two?
 
-## ⚠ WHY THE `.wl` GATE MISBEHAVED WHEN v2's 44 NEVER DO — measured
+## ⚠ WHY THE READER-`.wl` FAILED — kept short, the file is gone
 
-⛔ **Do not read the `.wl` blockers as "Mathematica is flaky."** v2's 44 stage scripts declare it in their
-own headers — *"Print-only, standalone, **no arguments**, no exports"* — and across all 44:
-
-| | count |
-|---|---|
-| use command-line arguments | **0** |
-| import YAML | **0** |
-| read **any** external data file | **0** |
-
-⇒ They are **self-contained symbolic verifiers**: hardcode, compute, assert, print. Deterministic.
-
-⭐⭐ **The v3 registry gate is the FIRST `.wl` here that takes an argument, parses YAML, and reads mutable
-shared state.** All three are novel, which is why nobody had ever found that `$ScriptCommandLine` is empty
-under `math -script` in this environment — no script had ever needed an argument.
-
-⇒ ⭐ **All three blocking defects sit in that novel surface** (dead argument flag · parser hole on a data
-shape · unvalidated schema field). ⛔ **None** is in the symbolic-algebra surface where the 44 have their
-record. ⇒ **A reader of shared mutable state has a failure class a standalone verifier structurally
-cannot have** — wrong file, stale file, silently-defaulted path. ⚠ Treat every future registry-reading
-script, in either engine, as carrying that class; ⛔ the 44's track record does not transfer to it.
+⛔ **Do not read its failure as "Mathematica is flaky."** Across v2's **44** stage scripts: **0** use
+command-line arguments, **0** import YAML, **0** read any external file — their own headers say
+*"Print-only, standalone, no arguments, no exports."* ⇒ They are self-contained symbolic verifiers.
+⭐ **The cut gate was the FIRST `.wl` here to take an argument, parse YAML, and read mutable shared
+state — and all three of its blocking defects sat in exactly that novel surface**, ⛔ none in the
+symbolic algebra where the 44 have their record. ⇒ ⭐ **A reader of shared mutable state has a failure
+class a standalone verifier structurally cannot have** (wrong file · stale file · silently-defaulted
+path). ⛔ The 44's track record does not transfer to one.
 
 ## ▶ NEXT SESSION — in this order
 

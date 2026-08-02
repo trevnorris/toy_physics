@@ -287,11 +287,47 @@ Solve the EL equation: `δ = √(κ_B/(2a_B))`, `σ_wall = √(2a_Bκ_B)/6`. **G
 postulates.
 **Register:** **A2** (`ℓ = δ` is an *identification*, not a derivation — confront it here or nowhere).
 
+⭐⭐ **INHERITED OBLIGATION FROM S11 — `B_comp` (`Q.brane.B_comp`) MUST BE RETIRED OR RE-AFFIRMED HERE.**
+{#s6-b-comp-callback}
+⚠ **Written at S6 on purpose. It was decided at S11, and a note living only in S11's record is a note
+nobody reads when they arrive here.**
+
+S11 entered the brane's **compression modulus `B_comp`** as a **postulated** knob, on the user's
+explicit call (2026-08-02): *"pose B as a postulate knob, then we can claim it fully derived once we
+reach that point in the program, and show it's no longer postulated. That way the ledger stays linear
+and clear in what it claims."* ⇒ The knob count is an **upper bound that can only improve**, and the
+retirement must be **visible** when it happens.
+
+⭐ **What S11 predicts this step should find** — and it is able to fail:
+in-plane compression is relieved through **two channels in series**, the medium's EOS and **widening of
+the wall**, so compliances add: `1/B_comp = 1/B_EOS + 1/B_wall`. ⇒ `B_comp` is **softer than either
+channel alone**, and its wall part is governed by **`σ_wall`, which THIS STEP derives**.
+⛔ **If `B_comp` comes out of `σ_wall` plus the medium EOS with no new constant, the knob RETIRES** —
+record the count moving, do not leave it postulated out of habit. ⛔ If it needs a genuinely new
+constant, say so plainly; that is a result too.
+
+⚠ **And S11's own cone is conditional on this step.** S11 computed `ω² = (B_comp/ρ_br)k²` with the wall
+width **FROZEN**. Move 5 predicts that unfreezing it **softens the longitudinal at long wavelength**
+(`ω ∝ k²`, flexural rather than acoustic, from the `σ_wall|∇W|²` cost of a modulated width).
+⛔ **If the dispersion stays a clean cone once the width is dynamical, S11's move 5 was WRONG** — say so
+rather than reconciling it. ⇒ `steps/S11_stray_longitudinal.md`.
+
 ### S7 · ⛔ The slab width is NOT selected
 `W_slab` is `FREE-UNREDUCED`; *"double-well selects NO width"*. The kink gives one interface; the brane
 is a finite slab.
 ⭐ **A step whose result is "this is not determined" is a real step.** Bank it as such.
 **Register:** **C7**, **A9** (`W_slab` merged with the `L/a` debt without an equation).
+
+⭐⭐ **S11 DEPENDS ON THIS STEP'S ANSWER, and reads it as a LIVE PHYSICAL QUESTION, ⛔ not bookkeeping.**
+{#s7-b-comp-callback}
+If the slab width is a genuine **flat direction**, then the wall offers **no resistance to thickening**,
+`B_wall = 0`, and by the series law `B_comp = 0` — ⇒ the longitudinal zero of **S10 is never lifted** and
+S11's propagating mode **does not exist**. ⚠ S11's answer is that the flatness is **lifted by
+gradients**: a wave modulates the width, tilting the interfaces and stretching them at a cost
+`∝ σ_wall|∇W|²`. ⇒ **flat at `k = 0`, stiff as `k²`.**
+⛔ **So "not selected" is not the end of it — this step must say whether the flat direction survives
+when the width is made position- and time-dependent.** A uniform-width statement does **not** answer
+S11's question. ⇒ `steps/S11_stray_longitudinal.md`, moves 4–5.
 
 ### S8 · The quadratic brane Lagrangian ⭐ and `{ρ_br, μ_R}` enter HERE
 Transverse and longitudinal sectors; the reduced `h`/`u_L` operator.

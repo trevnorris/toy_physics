@@ -176,7 +176,47 @@ exactly identical. ⇒ See **D1**.
 | **C8** | **The wall rests on two postulated constants.** `δ` and `σ_wall` are genuinely derived — but from `{a_B, κ_B}`, which are postulated, not medium primitives | `ledger_stage006_two_phase_chiB_ontology.md:136-141`; `parameter_register.md:156,:287` | **OPEN** |
 | **C10** | ⭐⭐ **The Spin Problem — a structural tension INSIDE the gravity sector, and it is in v3's scope.** The **inertial** sector (correct 1PN precession) constrains the throat to a **compact, "stubby"** geometry with a small aspect ratio. The **spin** sector needs the gravitomagnetic potential to fall off as a **dipole**, and a compact source gives the wrong scaling — a simple vortex yields a *"gravitomagnetic **monopole**"*, called *"physically inadmissible"*. Verdict in the note: *"You cannot get frame dragging from a compact 4D bubble; you **need** the tail."* ⇒ **Inertia wants compact; spin wants extended.** ⚠ The proposed fix — a composite *"Ion-Vortex Complex"* (stubby head + infinite vortex-filament tail) — is **uncited, unaudited, and referenced by nothing else in the corpus**; it also re-introduces **quantized circulation**, which the charge sector explicitly disclaims (*"not an additive winding"*). ⛔ Meanwhile `conceptual_foundation.md:589` still lists spin as *"**not yet placed in the picture**"* — so the corpus holds "unsolved" and "solved" simultaneously | `research/4d_1pn_bridge/notes/tadpole.md:1-19,:150-174`; `docs/conceptual_foundation.md:589` | **OPEN** |
 | **C9** | **Live contradiction between tracked documents** on `K0c`/`K_eta`/`T_Omega`: `FREE-UNREDUCED`, PENDING, *"do NOT assert DERIVED"* vs *"likely DERIVED manifestations"*. A tier-1-vs-tier-3 disagreement about the same three symbols | `parameter_register.md:170` vs `notes/stage023_pathA34_nullspace_underdetermination_source_map.md:250-253` | **OPEN** |
-| **C11** | ⭐ **`ħ` is a declared primitive that no v3 result can TEST — but it is ⛔ not inert.** It cancels out of the sound speed (`ħ` factors out of the phonon determinant), is absent from the light cone, and does **not occur at all** in the 2.5PN / 3PN / 4PN papers (zero matches across the whole directory trees — 15522 / 22338 / 24762 lines for `4d_2_5pn` / `4d_3pn` / `4d_4pn`). ⚠ **But it is load-bearing for the REGIME:** `ξ = ħ/(m c_s)` *"defines stage011's validity window `kξ ≪ 1`"* (**A7**, `:44-47`) — i.e. `ħ` sets the scale below which the medium stops being describable as a fluid, and therefore **bounds the regime v3's entire linear-response scope lives in**. Its other load-bearing uses are the mass bridge (**C3**), the defect rest energy `E_0 = ħω_0` (`4d_1pn_bridge.tex:1238` — the geon, **C4**) and conditional `G` — all three already gaps. ⇒ Calibratable **in principle** against a lepton mass or `G`, ⛔ neither reachable from far-field work. ⭐ **Not a defect — a scope statement:** no observable inside the sector boundary depends on it, so it is a knob spent that buys nothing *here*, while still fixing where "here" ends. | `stage005:184`, `:102`; `pathA_20b:41` (*"quantum pressure gives the usual k^4 Bogoliubov correction but not c_gamma"*), `:42` (the cone itself); `DEFECT_REGISTER.md:44-47` (A7); `parameter_register.md:125`; `pathA_21c:119`; `4d_1pn_bridge.tex:1238` | **OPEN — scope statement, not a defect** |
+| **C11** | ⭐ **`ħ` is a declared primitive that no v3 result can TEST — but it is ⛔ not inert.** It cancels out of the sound speed (`ħ` factors out of the phonon determinant), is absent from the light cone, and does **not occur at all** in the 2.5PN / 3PN / 4PN papers (zero matches across the whole directory trees — 15522 / 22338 / 24762 lines for `4d_2_5pn` / `4d_3pn` / `4d_4pn`). ⚠ **But it is load-bearing for the REGIME:** `ξ = ħ/(m c_s)` *"defines stage011's validity window `kξ ≪ 1`"* (**A7**, `:44-47`) — i.e. `ħ` sets the scale below which the medium stops being describable as a fluid, and therefore **bounds the regime v3's entire linear-response scope lives in**. Its other load-bearing uses are the mass bridge (**C3**), the defect rest energy `E_0 = ħω_0` (`4d_1pn_bridge.tex:1238` — the geon, **C4**) and conditional `G` — all three already gaps. ⇒ Calibratable **in principle** against a lepton mass or `G`, ⛔ neither reachable from far-field work. ⭐ **Not a defect — a scope statement:** no observable inside the sector boundary depends on it, so it is a knob spent that buys nothing *here*, while still fixing where "here" ends. | `stage005:184`, `:102`; `pathA_20b:41` (*"quantum pressure gives the usual k^4 Bogoliubov correction but not c_gamma"*), `:42` (the cone itself); `DEFECT_REGISTER.md:44-47` (A7); `parameter_register.md:125`; `pathA_21c:119`; `4d_1pn_bridge.tex:1238` | **CLASSIFIED `postulated` (2026-08-02, user) — OPEN as a half-two row, ⛔ not a defect** |
+
+**⭐ `ħ`'s DISPOSITION — decided 2026-08-02, ⛔ do not re-litigate.**
+**Class: `postulated`** — a bare tier-1 primitive. ⛔ Not `derived` (its only equation, `ħ = h/2π`, is a
+relation between **external** constants — the same shape as `a = c_a r_e`, which this project already
+ruled is ⛔ **not** a defining equation under test 1). ⛔ Not `calibrated` (it was inherited with the GNLS
+vocabulary, ⛔ not chosen to make anything fit). ⛔ Not `debt` — `HBAR_FREE_SUBSTRATE_RELATION_MISSING`
+names a **missing relation**, ⛔ not an executable route: it would need *"NEW substrate microphysics"*,
+and the substructure slot is **EMPTY**.
+
+⭐⭐ **`ħ_model` IS NOT IDENTIFIED WITH `ħ_physical`, and nothing forces it.** No numeric identification
+exists anywhere in the corpus. Every consumer either never touches data or carries a free factor that
+absorbs any rescaling — the regime bound `kξ≪1` is internal; `α_J` is free in the mass bridge; `ω₀` is
+undetermined in `E₀=ħω₀` (**C4**). ⇒ ⛔ **Asserting `ħ_model = ħ_physical` would be an UNFORCED
+IDENTIFICATION** — the same move that produced the `a`-pin and the inserted gauge field. ⚠ If it is ever
+made, it is a **separate calibration** and must be recorded as one.
+
+⛔⛔ **A REFUTED READING, kept so it is not re-proposed.** The orchestrator proposed that `ξ = ħ/(m c_s)`
+is *"the reduced de Broglie wavelength of a constituent at the sound speed"*, making `ħ` **the scale where
+the fluid description ends and substructure appears**. ⚠ Checked and returned **UNSUPPORTED**.
+✅ What survived: the algebra (`ξ/λ_dB = 1/2π`), and `m_GNLS` **is** a constituent mass (verdict (i)) — the
+dependency flagged as the kill condition **held**. The wording is even literature-attested
+(Larré–Pavloff–Kamchatnov, *PRB* **86**, 165304).
+⛔ What fell — and it is the part that mattered: **`kξ≪1` is the BdG-DEFERRAL scale.** When `kξ∼1` the
+Bogoliubov `k⁴` term must be retained and the **linear-phonon Helmholtz truncation** fails — ⭐ but *"full
+GP/BdG mean-field physics supplies the correction."* ⇒ **NOTHING ENDS AT `ξ`**; it is a crossover
+**inside the mean-field theory**, ⛔ not a boundary where deeper degrees of freedom appear.
+⚠ **Strongest objection:** the reading *"reifies a momentum scale as a constituent trajectory"* — `c_s` is
+the speed of **collective** phonon disturbances, ⛔ not the velocity of each constituent. And the `2π` is
+*"winding-bookkeeping only"*. ⚠ Also note **two healing lengths** exist (`ξ_h=√2ħ/(mc_s0)` core-balance,
+`ξ=ħ/(mc_s)` BdG); the clean `1/2π` holds only for the second. ⛔ Do not conflate them.
+⇒ *"Reduced de Broglie wavelength at the sound-speed momentum"* is a permissible **algebraic gloss**;
+*"the scale where the fluid ends"* is **unsupported**.
+
+⭐ **WHERE IT GOES NOW (user, 2026-08-02): a HALF-TWO row.** ⛔ Stop spending time deriving it. `ħ_model`
+is a quantity that must either be **derived** (needs the substructure) or **defined operationally well
+enough for the simulation to run** — the *simulation-ready* criterion, ⛔ not the derivation criterion.
+**Three conditions would settle the derivation, none currently met:** identify the deeper constituent
+explicitly with the GNLS one · derive `ħ` or its coupling to that microstructure · show a coarse-graining
+breakdown at `k∼1/ξ` producing **new substructure-sensitive observables**, ⛔ not merely the existing
+GP/BdG `k⁴` correction.
 
 ---
 

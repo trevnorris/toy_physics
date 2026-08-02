@@ -204,7 +204,12 @@ script, in either engine, as carrying that class; ⛔ the 44's track record does
    ⚠ Read `V3_STEP_PLAN.md` § S11 in full first — it carries the history, the drum-head picture, and
    ⛔⛔ the **DIFFERENT OBJECTS** warning (`u_L` is **not** `±w`; `h ≠ u_L`; never weld them).
 2. **S11a** — the packet + simulation specification. ⭐ The one with real thinking in it.
-3. ⚠ **`ħ`'s class** — `postulated` or `calibrated`. **USER CALL, and the only decision genuinely owed.**
+3. ✅ **`ħ`'s class DECIDED 2026-08-02: `postulated`** — a bare tier-1 primitive, and ⛔ **not** to be
+   re-litigated. ⭐⭐ `ħ_model` is **NOT** identified with `ħ_physical` and nothing forces it; doing so
+   later is a **separate calibration**. It becomes a **half-two row**: derive it (needs the
+   substructure) or define it well enough for the **simulation** to run. ⛔ A de Broglie /
+   fluid-description-ends reading was proposed and returned **UNSUPPORTED** — full record and the
+   three unmet conditions at `DEFECT_REGISTER.md` **C11**.
 
 ⚠ **Deferred on purpose, ⛔ not forgotten:** S10's **source map** (a reader aid; it earns its keep at the
 end, not per-step), and the requirements-first **step ORDERING** in the plan (still lists the substrate

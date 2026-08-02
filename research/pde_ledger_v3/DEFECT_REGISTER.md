@@ -233,6 +233,54 @@ explicitly with the GNLS one · derive `ħ` or its coupling to that microstructu
 breakdown at `k∼1/ξ` producing **new substructure-sensitive observables**, ⛔ not merely the existing
 GP/BdG `k⁴` correction.
 
+### ⭐⭐ **`C12`** — `B_comp` is postulated ON PURPOSE, with a NAMED retirement condition (2026-08-02) {#c12}
+
+**Not a defect. A deliberate, time-boxed debt with a step that must discharge it**, entered at **S11**.
+
+`Q.brane.B_comp`, the brane's **compression modulus**, enters the registry **postulated**. ⭐ User's call:
+*"pose B as a postulate knob, then we can claim it fully derived once we reach that point in the program,
+and show it's no longer postulated. That way the ledger stays linear and clear in what it claims."*
+⇒ The knob count is an **upper bound that can only improve**, and ⛔ the retirement must be **visible**.
+
+| | |
+|---|---|
+| **retires at** | ⭐ **S6** — `V3_STEP_PLAN.md#s6-b-comp-callback` · with **S7** — `#s7-b-comp-callback` |
+| **what would retire it** | `1/B_comp = 1/B_EOS + 1/B_wall` (channels in series), with `B_wall` from **`σ_wall`**, which **S6 derives**. If it closes with no new constant, ⭐ **the knob retires** |
+| **what would keep it** | a genuinely new constant is needed ⇒ say so plainly; ⛔ that is a result, not a failure |
+| **also conditional on it** | S11's cone was computed with the wall width **FROZEN**. If unfreezing it does **not** soften the longitudinal at long wavelength, ⛔ **S11's move 5 was wrong** — record that, do not reconcile |
+
+⛔⛔ **AND AN OPEN PHYSICS QUESTION THIS OPENED, ⛔ NOT RULED OUT** (user asked directly, 2026-08-02):
+**is `B_comp = μ_R` excluded?** ⭐ **No.** Both engines computed the degeneracy locus and it is *exactly*
+`B_comp = μ_R`; `B_comp` is a free knob and **nothing in the model forbids that value**. At it, `M`
+collapses to `μ_R k² δ_ij`, every mode shares one speed, and the Lagrangian becomes (up to a total
+derivative) plain `½μ_R|∇u|²` — ⚠ **precisely S10's FORM control**: the brane stops being
+curl-only-plus-compression and becomes an ordinary gradient-elastic medium.
+⇒ ⭐ `c_L = c_γ` is a **physically meaningful special point**, not an absurdity. Generic inequality is
+expected (`B_comp` comes from wall thickening in series with the EOS; `μ_R` is the rotational modulus —
+different physics), ⛔ but that is an argument that a coincidence is *unlikely*, **not a derivation
+forbidding it.** **OPEN.**
+
+⚠⚠ **Why that matters beyond the physics:** a fresh review leg ablated `R5` to `c_L − √(μ_R/ρ_br)` — i.e.
+set `c_L = c_γ` — and **all five gates passed** (acceptance `MATCH`, dim gate `PASS`, able-to-fail `PASS`,
+11 tests, `S11_VERDICT: PASS`). ⇒ Because that value is **not** impossible, the failure mode is not
+*"records an absurdity"* but ⛔ **"records a SPECIAL CASE as the general law"**, silently collapsing a
+two-parameter family to one. ⇒ See **`F-R5`**.
+
+### ⭐⭐ **`F-R5`** — nothing checks that a registry RELATION matches the derivation it cites {#f-r5}
+
+⛔ **Demonstrated, not hypothesised** (fresh agent, 2026-08-02). A relation's **algebraic content** is
+asserted in `relations.yaml` and **no executable check compares it against the script's derived result**.
+Three guards interlock and all three miss it: dimensional homogeneity cannot see it because
+`[μ_R] = [B_comp]`; the acceptance fixture cannot see it because the designated output stays a fresh
+variable so the constraint count is unchanged; and ⛔ the **Mathematica engine cannot close it BY
+DESIGN**, since it must not read the registry.
+
+⚠ **General, ⛔ not S11's.** `R4` (`c_γ`) has the identical shape — nothing checks it against S9.
+⇒ ~40 steps of exposure.
+⭐ **Fix at its own level:** one assertion per step's audit — substitute the script's derived result into
+the registry residual it just wrote and assert it vanishes. ⛔ Not a new framework; the per-step audit is
+already where *"what I derived"* and *"what I recorded"* both exist.
+
 ---
 
 ## D. The question with no row of its own

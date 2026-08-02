@@ -1,0 +1,318 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://toy-physics.invalid/schemas/reduction-registry-v1"
+title: PDE ledger reduction registry, phase 1
+oneOf:
+  - $ref: "#/$defs/quantities_document"
+  - $ref: "#/$defs/relations_document"
+
+$defs:
+  qid:
+    type: string
+    pattern: "^Q\\.[A-Za-z0-9_.-]+$"
+
+  exact_value:
+    oneOf:
+      - type: integer
+      - type: array
+        minItems: 3
+        maxItems: 3
+        prefixItems:
+          - const: Rat
+          - type: integer
+          - type: integer
+            not: {const: 0}
+        items: false
+
+  nonempty_strings:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      type: string
+      minLength: 1
+
+  locus:
+    type: object
+    additionalProperties: false
+    required: [path, line_start, line_end]
+    properties:
+      path:
+        type: string
+        minLength: 1
+      line_start:
+        type: integer
+        minimum: 1
+      line_end:
+        type: integer
+        minimum: 1
+
+  dimension:
+    type: object
+    additionalProperties: false
+    required: [convention, exponents, provenance]
+    properties:
+      convention:
+        const: LTM-exponent-vector-v1
+      exponents:
+        type: array
+        minItems: 3
+        maxItems: 3
+        items:
+          type: integer
+      provenance:
+        type: object
+        additionalProperties: false
+        required: [stage_id, stage_uses_shared_dimensions_module, source_locus]
+        properties:
+          stage_id:
+            type: string
+            pattern: "^stage[0-9]{3}$"
+          stage_uses_shared_dimensions_module:
+            type: boolean
+          source_locus:
+            $ref: "#/$defs/locus"
+
+  # Exact operator arities and QID resolution are semantic checks in both
+  # readers.  The schema deliberately limits the transport types to nested
+  # arrays, ASCII operator/QID strings, and exact integers: no engine syntax.
+  expression:
+    type: array
+    minItems: 2
+    items:
+      oneOf:
+        - type: integer
+        - type: string
+        - $ref: "#/$defs/expression"
+
+  assumption:
+    type: object
+    additionalProperties: false
+    required: [predicate, qids]
+    properties:
+      predicate:
+        enum: [positive, nonnegative, real, nonzero]
+      qids:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          $ref: "#/$defs/qid"
+
+  quantity:
+    type: object
+    additionalProperties: false
+    required:
+      - qid
+      - symbol
+      - kind
+      - scope
+      - regime
+      - state
+      - counting_axis
+      - dimension
+      - aliases
+      - source_loci
+    properties:
+      qid:
+        $ref: "#/$defs/qid"
+      symbol:
+        type: string
+        minLength: 1
+      kind:
+        enum:
+          - parameter
+          - field
+          - coordinate
+          - boundary-datum
+          - observable
+          - intermediate
+          - control
+          - discrete-choice
+          - function-profile
+      scope:
+        $ref: "#/$defs/nonempty_strings"
+      regime:
+        $ref: "#/$defs/nonempty_strings"
+      state:
+        enum: [live, retired]
+      counting_axis:
+        enum: [continuous-model, convention-orbit, discrete-structural]
+      dimension:
+        $ref: "#/$defs/dimension"
+      value:
+        $ref: "#/$defs/exact_value"
+      aliases:
+        type: array
+        uniqueItems: true
+        items:
+          type: string
+          minLength: 1
+      source_loci:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/locus"
+
+  relation:
+    type: object
+    additionalProperties: false
+    required:
+      - relation_id
+      - residual
+      - designated_output
+      - input_qids
+      - applied_functions
+      - provenance_status
+      - regime
+      - assumptions
+      - domain_measure_bcs
+      - denominator_guards
+      - literal_consistency
+      - source_locus
+      - execution_locus
+      - benchmark_refs
+    properties:
+      relation_id:
+        type: string
+        pattern: "^R[A-Za-z0-9_.-]+$"
+      residual:
+        oneOf:
+          - type: "null"
+          - $ref: "#/$defs/expression"
+      designated_output:
+        oneOf:
+          - type: "null"
+          - $ref: "#/$defs/qid"
+      input_qids:
+        type: array
+        uniqueItems: true
+        items:
+          $ref: "#/$defs/qid"
+      applied_functions:
+        type: array
+        uniqueItems: true
+        items:
+          type: string
+          minLength: 1
+      provenance_status:
+        enum:
+          - DERIVED-EXECUTED
+          - PENDING
+          - CALIBRATED
+          - CALIBRATED-UNCOMMITTED
+          - UNCOMMITTED
+          - CONVENTIONAL
+          - IMPOSED
+          - STRUCTURAL
+          - PROSE-ONLY
+          - CLOSED-NEGATIVE
+          - CONTROL-ONLY
+      regime:
+        $ref: "#/$defs/nonempty_strings"
+      assumptions:
+        type: array
+        items:
+          $ref: "#/$defs/assumption"
+      domain_measure_bcs:
+        type: object
+        additionalProperties: false
+        required: [domain, measure, boundary_conditions]
+        properties:
+          domain:
+            type: string
+            minLength: 1
+          measure:
+            oneOf:
+              - type: "null"
+              - type: string
+                minLength: 1
+          boundary_conditions:
+            type: array
+            items:
+              type: string
+              minLength: 1
+      denominator_guards:
+        type: array
+        items:
+          $ref: "#/$defs/expression"
+      literal_consistency:
+        type: array
+        uniqueItems: true
+        items:
+          type: object
+          additionalProperties: false
+          required: [literal_path, quantity, offset]
+          properties:
+            literal_path:
+              type: array
+              minItems: 1
+              items:
+                type: integer
+                minimum: 0
+            quantity:
+              $ref: "#/$defs/qid"
+            offset:
+              type: integer
+      source_locus:
+        $ref: "#/$defs/locus"
+      execution_locus:
+        $ref: "#/$defs/locus"
+      benchmark_refs:
+        type: array
+        uniqueItems: true
+        items:
+          type: string
+          minLength: 1
+
+  quantities_document:
+    type: object
+    additionalProperties: false
+    required:
+      - schema_version
+      - document_kind
+      - dimension_convention
+      - active_regime
+      - quantities
+    properties:
+      schema_version:
+        const: reduction-registry-v1
+      document_kind:
+        const: quantities
+      dimension_convention:
+        type: object
+        additionalProperties: false
+        required: [name, ordered_bases]
+        properties:
+          name:
+            const: LTM-exponent-vector-v1
+          ordered_bases:
+            const: [L, T, M]
+      active_regime:
+        type: string
+        minLength: 1
+      quantities:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/quantity"
+
+  relations_document:
+    type: object
+    additionalProperties: false
+    required:
+      - schema_version
+      - document_kind
+      - expression_language
+      - relations
+    properties:
+      schema_version:
+        const: reduction-registry-v1
+      document_kind:
+        const: relations
+      expression_language:
+        const: prefix-v1
+      relations:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/relation"

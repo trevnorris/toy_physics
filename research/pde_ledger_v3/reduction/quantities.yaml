@@ -1,0 +1,224 @@
+schema_version: reduction-registry-v1
+document_kind: quantities
+dimension_convention:
+  name: LTM-exponent-vector-v1
+  ordered_bases: [L, T, M]
+active_regime: medium-GNLS-positive-real
+
+# Phase 1 counting contract: the finite scalar medium block plus admitted
+# sector constants.  Fields, profiles, and the wall block are intentionally absent.
+quantities:
+  - qid: Q.medium.hbar
+    symbol: hbar
+    kind: parameter
+    scope: [medium, I-1]
+    regime: [medium-GNLS-positive-real]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [2, -1, 1]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 76, line_end: 83}
+    aliases: ["ħ"]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 125, line_end: 125}
+      - {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 76, line_end: 83}
+
+  - qid: Q.medium.mass
+    symbol: m_GNLS
+    kind: parameter
+    scope: [medium, I-1]
+    regime: [medium-GNLS-positive-real]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [0, 0, 1]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 76, line_end: 83}
+    aliases: [mass, m]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 126, line_end: 126}
+      - {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 76, line_end: 83}
+
+  - qid: Q.medium.K
+    symbol: K
+    kind: parameter
+    scope: [medium, I-1, I-2]
+    regime: [medium-GNLS-positive-real]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [18, -2, 1]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 85, line_end: 92}
+    aliases: [K_EOS, k_eos]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 127, line_end: 127}
+      - {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 85, line_end: 92}
+
+  - qid: Q.medium.rho0
+    symbol: rho0
+    kind: boundary-datum
+    scope: [medium, I-1, I-2, asymptotic-state]
+    regime: [medium-GNLS-positive-real]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [-4, 0, 0]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 76, line_end: 83}
+    aliases: ["ρ0", rho_0]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 128, line_end: 128}
+      - {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 76, line_end: 83}
+
+  - qid: Q.medium.c_s0
+    symbol: c_s0
+    kind: intermediate
+    scope: [medium, I-1, I-2]
+    regime: [medium-GNLS-positive-real]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [1, -1, 0]
+      provenance:
+        stage_id: stage005
+        stage_uses_shared_dimensions_module: false
+        source_locus: {path: research/pde_ledger_v2/notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 78, line_end: 93}
+    aliases: [cs0, c_s]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 129, line_end: 129}
+      - {path: research/pde_ledger_v2/notes/stages/ledger_stage005_sound_speed_light_ratio.md, line_start: 78, line_end: 93}
+
+  - qid: Q.medium.xi_h
+    symbol: xi_h
+    kind: intermediate
+    scope: [medium, I-1]
+    regime: [medium-GNLS-positive-real]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [1, 0, 0]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 102, line_end: 120}
+    aliases: ["ξ_h", xi]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 130, line_end: 130}
+      - {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 102, line_end: 120}
+
+  - qid: Q.medium.h0
+    symbol: h0
+    kind: intermediate
+    scope: [medium, I-1]
+    regime: [medium-GNLS-positive-real]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [2, -2, 1]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 102, line_end: 120}
+    aliases: [h_0]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 131, line_end: 131}
+      - {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 102, line_end: 120}
+
+  - qid: Q.medium.n_eos
+    symbol: n_eos
+    kind: discrete-choice
+    scope: [medium, I-1]
+    regime: [medium-GNLS-positive-real]
+    state: live
+    counting_axis: discrete-structural
+    value: 5
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [0, 0, 0]
+      provenance:
+        stage_id: stage004
+        stage_uses_shared_dimensions_module: true
+        source_locus: {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 65, line_end: 65}
+    aliases: [polytropic_exponent, quintic_exponent]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md, line_start: 65, line_end: 65}
+
+  - qid: Q.brane.rho_br
+    symbol: rho_br
+    kind: parameter
+    scope: [brane, light, III]
+    regime: [medium-GNLS-positive-real, linear-unstrained-brane]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [-3, 0, 1]
+      provenance:
+        stage_id: stage003
+        stage_uses_shared_dimensions_module: false
+        source_locus: {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 138, line_end: 138}
+    aliases: ["ρ_br", brane_inertia_density]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 138, line_end: 138}
+      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 68, line_end: 83}
+      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 91, line_end: 95}
+      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 109, line_end: 112}
+
+  - qid: Q.brane.mu_R
+    symbol: mu_R
+    kind: parameter
+    scope: [brane, light, III]
+    regime: [medium-GNLS-positive-real, linear-unstrained-brane]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [-1, -2, 1]
+      provenance:
+        stage_id: stage003
+        stage_uses_shared_dimensions_module: false
+        source_locus: {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 137, line_end: 137}
+    aliases: ["μ_R", brane_shear_modulus]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 137, line_end: 137}
+      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 68, line_end: 83}
+      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 91, line_end: 95}
+      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 109, line_end: 112}
+
+  - qid: Q.brane.c_gamma
+    symbol: c_gamma
+    kind: intermediate
+    scope: [brane, light, III]
+    regime: [medium-GNLS-positive-real, linear-unstrained-brane]
+    state: live
+    counting_axis: continuous-model
+    dimension:
+      convention: LTM-exponent-vector-v1
+      exponents: [1, -1, 0]
+      provenance:
+        stage_id: stage003
+        stage_uses_shared_dimensions_module: false
+        source_locus: {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 134, line_end: 134}
+    aliases: ["c_γ", photon_speed]
+    source_loci:
+      - {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 134, line_end: 134}
+      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 68, line_end: 83}
+      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 91, line_end: 95}
+      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, line_start: 109, line_end: 112}

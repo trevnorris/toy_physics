@@ -281,6 +281,38 @@ DESIGN**, since it must not read the registry.
 the registry residual it just wrote and assert it vanishes. ⛔ Not a new framework; the per-step audit is
 already where *"what I derived"* and *"what I recorded"* both exist.
 
+### ⚠ **`C13`** — the model has NO mechanistic account of a gravitational wave {#c13}
+
+⛔ **Found by search, 2026-08-02:** grepping the whole corpus for *gravitational wave* /
+*transverse-traceless* / *tensor mode* / *GW polarization* returns **nothing**.
+
+⚠ **What IS settled:** gravity is *"the **FLOW** between draining defects — carried by the flow +
+Bernoulli pressure, ⛔ **NOT** by ripples/radiation"* (`docs/conceptual_foundation.md:348`), and the PN
+ladder is GR-matched through the 2.5PN radiation-reaction term. ⇒ Gravitational **radiation** exists in
+the *matched* theory; ⛔ **what a gravitational wave IS in the medium is unaddressed.**
+
+⛔⛔ **AND A CANDIDATE IDENTIFICATION THAT MUST NOT BE MADE.** S11's longitudinal brane mode `c_L` is
+⛔ **not** a gravitational wave. It is an **in-plane displacement of brane material**; gravity here is a
+flow field, not a brane mode. ⚠ The user proposed the mapping and it was checked and rejected against
+the locus above. ⭐ Note also that GR's gravitational waves are **transverse with two polarizations** —
+and this brane's transverse sector is **already spoken for: it is light**. ⇒ Where a GW would live is
+genuinely open. **OPEN.**
+
+### ⚠ **`C14`** — the lensing SIGN is unchecked, and the naive reading points the wrong way {#c14}
+
+⭐ **Mechanism agreed with the user (2026-08-02):** light bends because a **density gradient** is a
+refractive-index gradient — direct from `c_γ = √(μ_R/ρ_br)`. ⚠ A photon has finite extent, so a
+gradient advances one side faster; that is the eikonal argument in its uncompressed form, ⛔ not a
+competing picture.
+
+⛔ **The sign is NOT checked.** Lensing bends light **toward** the mass ⇒ needs `c_γ` **smaller** there
+⇒ needs `ρ_br` **higher** there. But gravity here is a **drain** — a defect *removing* medium — which
+naively **lowers** the local density and would bend light the **wrong way**.
+
+⚠⚠ **Do NOT manufacture a reconciliation.** The PN ladder is GR-matched, so the corpus very likely
+resolves this, ⛔ but the orchestrator has **not located how** and must not invent a mechanism to close
+the gap. ⇒ **Read the corpus first.** **OPEN.**
+
 ---
 
 ## D. The question with no row of its own

@@ -40,9 +40,18 @@ never wired into a no-shear proof (`docs/model_map.md:57` states the flow form o
 
 **3 — Therefore.** ⭐ **Light requires structure the GNLS does not contain.**
 
-> *"**Brane elasticity is NOT a consequence of the GP/NLS mean-field.** A GP/NLS superfluid is a *fluid*
-> — zero shear modulus. The brane's shear rigidity therefore requires the **substructure** … which the
-> GP/NLS equation does not contain."* — `research/em_fields/paper/em_fields.tex:230`
+> *"**Brane elasticity is NOT a consequence of the GP/NLS mean-field (C1).** A GP/NLS superfluid is a
+> *fluid* — zero shear modulus. The brane's shear rigidity therefore requires the **substructure**
+> (constituents/cohesion *beneath* the mean-field), which the GP/NLS equation does not contain. Honest
+> framing: **"GP/NLS as the effective/coarse-grained medium + a deeper substructure that supplies the
+> brane elasticity."***
+> — `software/stage1_solver/decisions/15_em_medium_native_physical_picture.md:230-233`
+
+⚠⚠ **ONE SOURCE, NOT TWO — state it or the argument reads as stronger than it is.** Moves 2 and 3 both
+come from `decisions/15`. ⛔ A draft of this record cited move 3 to `research/em_fields/paper/em_fields.tex:230`,
+which is `\label{eq:B-vorticity}` — the phrase occurs **zero** times in that file (F4 class: right line
+number, wrong file). ⇒ The whole *"a GNLS cannot carry light"* argument rests on **a single external-review
+document with no executing script**, ⛔ not on two independent sources and ⛔ not on the model's own paper.
 
 ## ⭐⭐ The requirement, stated in full — and it is TWO-SIDED
 

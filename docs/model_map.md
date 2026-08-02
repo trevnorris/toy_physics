@@ -106,6 +106,26 @@ Status tokens: **EARNED** (target-blind, within stated postulates) · **CALIBRAT
 
 *Light = in-plane MacCullagh shear of the brane; two transverse photons. The shared transverse sector — it establishes the `u_T`/`c_γ` foundation magnetism reuses. Under the surviving-solution rule Part III is stage003 alone; the `pathA_35` couple-stress no-go (retired-`P` post-mortem) → failures-paper backlog.*
 
+⭐⭐ **v3 RE-DERIVED THIS SECTOR FORWARD (2026-08-02) — S9/S10/S11, and it says more than stage003 did.**
+⇒ `research/pde_ledger_v3/steps/` · ⛔ read `S11_stray_longitudinal.md` before citing the stray mode.
+- ⭐ **Two polarisations is a statement that our space is 3-dimensional.** The count is `D_brane − 1`,
+  **computed** as a nullity in both engines; ⛔⛔ the **bulk never enters**, so codimension is not the
+  wrong number, it is an **absent quantity**.
+- ⭐ **Sector separation is a `D=3` fact, ⛔ not a structural one** — at `D=2` a reflection-odd invariant
+  exists whose EL operator is non-zero, so compression and light *can* mix there.
+- ⭐⭐ **The stray mode's ENTIRE physical status — radiative, observable, Lorentz-breaking, or none —
+  reduces to ONE unbuilt object: the brane–bulk interface coupling law** (`V3_STEP_PLAN.md#s11b`). It is
+  **LINEAR**, so it is half-one work that was deferred by choice.
+- ⛔⛔ **`c_L` is NOT a gravitational wave** (`DEFECT_REGISTER.md#c13`) and ⛔ `u_L` is **not** `±w`.
+- ⭐ **A second cone is a departure only if matter COUPLES to it.** Matter here is built from the
+  transverse modes, whose wave equation is Lorentz-invariant with invariant speed `c_γ` automatically.
+- ⭐⭐ **Photon stability over cosmological distance is a CONSEQUENCE of bulk shear-freeness** — light can
+  only lose energy into a mode that exists to receive it, and the bulk has no transverse mode. ⇒ S9's
+  second requirement is an observational consequence, ⛔ not bookkeeping. ⚠ Light **gravitates** (a
+  co-moving disturbance) but does ⛔ **not dissipate**; the two were conflated once.
+- ⚠ **Lensing sign UNCHECKED** — the naive drain reading points the wrong way
+  (`DEFECT_REGISTER.md#c14`); ⛔ do not manufacture a reconciliation.
+
 - **pathA_35 gate L** — `μ_R` is a postulated modulus; a `P`-substructure derivation was tried and failed (`FAIL_COUPLE_STRESS_NOGO`, Decision 16) → failures-paper backlog (`research/pde_ledger_v2/notes/ledger_exclusions_failures_paper_backlog.md`). Feeds `c_γ²=μ_R/ρ_br` forward. → `software/stage1_solver/reports/pathA_35_gateL_light.md` (+ freeze `pathA_35_G0_freeze.md`).
 - **pathA_36** — C5 phase-potential derivation. **EARNED (2 transverse photons) + DEPARTURE.** Two massless photons at `c_γ²=μ_R/ρ_br` (`PASS_TRANSVERSE_UNDISTURBED`, able-to-fail); longitudinal half → **`FAIL_CAUCHY_STRAY_LONGITUDINAL`**: a Dirac–Bergmann **second-class** pair (one propagating stray longitudinal DOF), NOT Maxwell's first-class Gauss. Maxwell locus reachable `BY_TUNING` only. → `…/pathA_36_c5_phase_potential.md`.
 - **stage 003** — transverse photons + stray longitudinal (**the surviving light sector; DONE**, dual-engine + tri-reviewed). **CHARACTERIZED-DEPARTURE.** Re-derives pathA_36 in-ledger, closing its fidelity gap (the Josephson sign `C_J=−Jρ_B0` derived in-script, not hardcoded); `μ_R` a postulated modulus. → `research/pde_ledger_v2/notes/stages/ledger_stage003_transverse_photons_stray_longitudinal.md`.

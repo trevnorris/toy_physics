@@ -471,6 +471,46 @@ without a physical referent** — the gauge field did, until it was asked what i
 
 ⇒ The departure is a **choice the model makes**, ⛔ not an inability.
 
+### S11b · ⭐⭐ The brane–bulk interface coupling — LINEAR, and it closes S11 {#s11b}
+
+**Added 2026-08-02, after S11 walked. ⭐ It is not scope creep, and the test is one line: it is LINEAR,
+and by this ledger's own definition linear is HALF ONE** (`CHARTER.md#two-halves`). It was deferred by
+**choice**, ⛔ not by difficulty.
+
+⭐⭐ **Why it is worth its own step: S11 ends with three apparently separate open questions that are ONE
+question**, and this is that question:
+
+| S11 leaves open | reduces to |
+|---|---|
+| does the longitudinal radiate into the bulk, or stay bound? | **the coupling law** |
+| is light's confinement **unconditional**, or does it rest on a polarization-overlap argument? | **the coupling law** |
+| does a second characteristic speed break Lorentz invariance **for us**? | **the coupling law** |
+
+⇒ ⭐ **The second mode's entire physical status — radiative, observable, Lorentz-breaking, or none of
+the above — is decided here.**
+
+**What it needs:** interface conditions at the wall (continuity of displacement and of stress), the
+scalar bulk sound mode already in the registry, and the brane sector from S8–S11. ⛔ It does **not**
+require the wall solved — standard elastic/acoustic matching is enough for the conditions themselves.
+
+⛔ **What S11 established that this step must NOT re-assume:** phase matching is **kinematic only**. It
+settles whether a propagating bulk channel **exists**; it settles ⛔ **neither** that an existing channel
+is used, ⛔ **nor** that an evanescent solution forms a bound eigenmode. Both are this step's job.
+
+⚠ **Expect the transverse answer to be strong and the longitudinal answer to be weaker** — the bulk has
+no transverse mode to match at all, whereas the parallel pairing is like-for-like in polarization.
+⛔ But S11's own engines refused to conclude even the transverse case without this law; ⛔ do not import
+that refusal as an answer in either direction.
+
+⭐ **What it unlocks beyond the ledger** (→ **S22**): three of the five near-term *linear* simulations —
+longitudinal radiation, the width mode's inertia and stiffness, and the flexural crossover of move 5.
+⇒ `steps/S11_stray_longitudinal.md`.
+
+**Expected new:** interface/matching conditions; ⛔ no new medium constant is anticipated — if one is
+required, that is a result, record it.
+**Register:** **C13** is adjacent but ⛔ **not** this step's job (a gravitational wave is not a brane
+mode).
+
 ---
 
 ## PHASE 3 — the drain (3 steps) ⚠ where the interior is deferred

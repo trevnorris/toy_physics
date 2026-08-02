@@ -77,7 +77,19 @@ MacCullagh, near-identical names, different objects) and the three-step story of
    **(3)** `kind` is never validated, so a one-character typo inflates the residue silently at exit 0.
    ⚠ **Fix these before building any `.wl` ablation harness**, and ⛔ assert on the `WL_REGISTRY_FAIL`
    **text**, not on exit ≠ 0 — a licence-contention run exits 40 with no gate output.
-   ⚠ A Grok leg on the same script was still running at session end; ⛔ its findings are unfolded.
+   ⭐ **Grok's leg CONFIRMED (1) independently** — `BLOCKING FINDINGS`, and it adds the sharpest form of
+   the point: able-to-fail could only be demonstrated *"by hardcoding the registry path in a scratch
+   copy of the script."* ⇒ ⛔ **No honest ablation harness can be built on that flag until it works.**
+   ⚠ Grok did **not** find the level-0 `Q` hole; the fresh agent did. Different scopes, both needed.
+   Full logs: `_scratch/grok_wl_review.txt`, and the fresh leg's findings in `SESSION_2026-08-01.md` §7.
+
+2b. ⛔⛔ **NO `.tex` EXISTS FOR v3 — the step unit is INCOMPLETE.** v2 carries **44** stage `.tex` cards
+   under `research/pde_ledger_v2/paper/stages/` plus a full paper (`parts/`, `appendices/`, `macros.tex`,
+   a built PDF). ⭐ The defined unit is **six artifacts** — *note · TeX card · SymPy audit · independent
+   Mathematica audit · source map · register entry* (`docs/model_map.md:269`). **S9 produced three:**
+   the note, the registry entry, and the Mathematica gate. ⛔ **Missing: the TeX card and the source
+   map** — and they are missing for S0.5 too. ⚠ Do not walk S10 without deciding the v3 paper's
+   structure; writing 20 cards retroactively is the retrofit this method exists to avoid.
 2. **The restructure to requirements-first is NOT applied to the docs.** Attempted twice, failed review
    twice, rolled back twice. The charter still says *"this is not a third method change"*; the step plan
    still runs the substrate first. ⭐ **Do the minimum to walk the next sector, ⛔ not the whole document.**

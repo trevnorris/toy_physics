@@ -10,19 +10,23 @@ import sympy as sp
 from registry_read import Registry, load_registry
 
 
-# INDEPENDENT CONTROL FIXTURE.  These POST-S9 values (ambient 10) were derived by
-# THREE parties who did not see one another's work -- orchestrator, builder, and a
-# review leg -- by different routes: triangular elimination, Jacobian rank at an
-# exact on-variety positive rational point, and the grevlex initial-ideal route
-# used by this code.
-#   The earlier "four parties" wording described the PRE-S9 (ambient 7) payload and
-#   did not survive the change; a control fixture must not overstate its own
-#   provenance.
+# INDEPENDENT CONTROL FIXTURE.  Provenance of the POST-S11 values, stated at the
+# coverage each party actually earned -- an earlier wording credited all three
+# with the full triple and was corrected after a review leg checked it:
+#   (1) the orchestrator, PRE-REGISTERED and committed (67d919bd) before this
+#       script existed -- covers baseline and C-M2 only (predicted 12->7 for
+#       both, and EXPLICITLY DECLINED to predict C-M3);
+#   (2) a fresh review agent, full triple, from quantities.yaml and
+#       relations.yaml alone;
+#   (3) a second independent reviewer, full triple, same registry-only route.
+# So {12,7,5}/{12,7,5} has three independent derivations and {12,6,6} has two.
+# A control's own provenance claim is subject to overstatement like any other
+# measurement; state coverage, not a party count.
 # On any registry change, RECOMPUTE and independently re-derive; never copy forward.
 EXPECTED_MEDIUM_PAYLOAD = {
-    "baseline": {"dim_before": 10, "dim_after": 6, "Delta": 4},
-    "C-M2": {"dim_before": 10, "dim_after": 6, "Delta": 4},
-    "C-M3": {"dim_before": 10, "dim_after": 5, "Delta": 5},
+    "baseline": {"dim_before": 12, "dim_after": 7, "Delta": 5},
+    "C-M2": {"dim_before": 12, "dim_after": 7, "Delta": 5},
+    "C-M3": {"dim_before": 12, "dim_after": 6, "Delta": 6},
 }
 
 

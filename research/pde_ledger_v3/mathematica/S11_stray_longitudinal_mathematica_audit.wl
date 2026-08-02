@@ -202,11 +202,35 @@ dimLongitudinalSpeed = Simplify[(dimBcomp - dimRhoBr)/2];
 dimensionOutput[dimension_] :=
   {generalD -> dimension, atD3 -> (dimension /. D -> 3)};
 
+(* These are dimensional relations supplied by the physical meanings of the
+   variables, rather than inversions of the definitions above.  In particular,
+   u is a displacement in the deformation map x |-> x+u, and rhoBr is mass per
+   D-dimensional brane volume.  The three quadratic terms must then all have
+   the energy-density dimension. *)
+spatialCoordinateDimension = UnitVector[3, 1];
+timeCoordinateDimension = UnitVector[3, 2];
+massDimension = UnitVector[3, 3];
+braneMeasureDimension = D spatialCoordinateDimension;
+braneMassDensityDimension = massDimension - braneMeasureDimension;
+coordinateSpeedDimension =
+  spatialCoordinateDimension - timeCoordinateDimension;
+lagrangianTermDimensions = {
+  braneMassDensityDimension + 2 timeDerivativeDimension,
+  dimMuR + 2 spatialDerivativeDimension,
+  dimBcomp + 2 spatialDerivativeDimension
+};
 dimensionChecks = {
-  TrueQ[Simplify[dimRhoBr + 2 timeDerivativeDimension == energyDensityDimension]],
-  TrueQ[Simplify[dimMuR + 2 spatialDerivativeDimension == energyDensityDimension]],
-  TrueQ[Simplify[dimBcomp + 2 spatialDerivativeDimension == energyDensityDimension]],
-  TrueQ[Simplify[2 dimLongitudinalSpeed == dimBcomp - dimRhoBr]]
+  TrueQ[Simplify[
+    energyDimension == massDimension + 2 coordinateSpeedDimension
+  ]],
+  TrueQ[Simplify[
+    energyDensityDimension == energyDimension - braneMeasureDimension
+  ]],
+  TrueQ[Simplify[displacementDimension == spatialCoordinateDimension]],
+  TrueQ[Simplify[dimRhoBr == braneMassDensityDimension]],
+  And @@ (TrueQ[Simplify[# == energyDensityDimension]] & /@
+    lagrangianTermDimensions),
+  TrueQ[Simplify[dimLongitudinalSpeed == coordinateSpeedDimension]]
 };
 
 (* Bulk matching, first for the parallel brane mode. *)
@@ -251,8 +275,10 @@ transverseScalarCouplingResiduals = FullSimplify[
 ];
 transverseMatchingOutput = {
   formalDispersionKwSquared -> transverseFormalKwSquared,
-  scalarLongitudinalCouplingResiduals -> transverseScalarCouplingResiduals,
-  result -> noCoupledScalarChannel
+  selectedPerpendicularKernel -> transverseKernel,
+  alignedDirectionProjectionResiduals -> transverseScalarCouplingResiduals,
+  scope -> "The residuals only restate the perpendicularity used to select this brane eigenspace; the algebra does not determine whether a physical transverse bulk channel couples.",
+  absentPhysicalInput -> "No brane-bulk interaction operator or boundary condition specifying coupling to bulk polarizations was supplied."
 };
 
 (* FORM control: keep Curl2 and replace Bcomp Div[u]^2/2 by
@@ -372,8 +398,6 @@ namedChecks = {
   dimensionalClosure -> And @@ dimensionChecks,
   bulkDispersionResidual -> TrueQ[bulkResidual == 0],
   boundThresholdReduction -> TrueQ[boundCondition === boundConditionOutput],
-  transverseScalarProjection ->
-    zeroVectorQ[transverseScalarCouplingResiduals, positiveAssumptions],
   controlNullities -> controlNullityChecks,
   formParallelIndependence -> ! formParallelDependsOnMuR,
   coefficientPerpendicularUnmoved -> ! coefficientPerpendicularMoved,

@@ -111,10 +111,21 @@ MacCullagh, near-identical names, different objects) and the three-step story of
    `WL_REGISTRY_PASS`.** The full instruction and the standing blind-`.wl` rule are in **▶ NEXT SESSION
    item 1** below; the defects are kept here only as the **evidence that the reader architecture was
    wrong**, ⛔ not as a fix list.
-   ⚠⚠ **ONE THING NOBODY HAS DONE, and it must precede the cut:** the review enumerated the reader's
-   **defects**, ⛔ never its **unique coverage**. Cutting it silently drops whatever it alone checked.
-   ⇒ **Enumerate what it covered that Python does not**, then move those checks to Python or drop them
-   **consciously**. ⛔ Do not assume the overlap is total.
+   ✅ **THE COVERAGE ENUMERATION IS DONE (2026-08-01) — the cut drops NOTHING.** ⭐ This was the
+   precondition: the review had enumerated the reader's **defects**, ⛔ never its **unique coverage**.
+   **Result: the reader `.wl` is a strict SUBSET of Python's checks.** All 13 of its checks are covered
+   — schema/kind/regime/convention by the JSON Schema (`registry_schema.yaml`), qid + relation-id
+   uniqueness at `registry_read.py:200`/`:316`, dimension homogeneity by the Python gate — and ⭐ Python
+   is **stricter** in five places the `.wl` has nothing for: the `kind` **enum**, the residual LHS tied
+   to `designated_output` (`:337`), denominator-guard QID membership (`:359`), **stale-locus** detection
+   (`:448`), and `literal_consistency`.
+   ⚠⚠ **AND NOTE HOW THIS WAS SETTLED, because reading the code got it WRONG.** The last candidate was
+   duplicate `designated_output`: `registry_read.py:156` builds `_admitted_by_output` with a **dict
+   comprehension**, which cannot raise on a duplicate key — so the code plainly *looked* like a gap.
+   ⭐ **The probe said otherwise:** a second relation claiming `Q.brane.c_gamma` with contradictory,
+   dimensionally-homogeneous content is **CAUGHT** — *"multiple active definitions for Q.brane.c_gamma:
+   R4, R4_DUP"*. ⇒ ⛔ **A code read is a hypothesis; the known-bad registry is the test.** Probe kept at
+   `_scratch/probe_wl_unique_coverage.py` (⚠ gitignored — re-run it, don't cite it).
    Reviewed 2026-08-01; see `SESSION_2026-08-01.md` §7 item 3 for the full findings. In short:
    **(1)** `--registry-dir` is dead and the orchestrator's "fix" **masked** it — the tracked script
    pointed at a known-**inhomogeneous** registry prints `HOMOGENEOUS=4 … PASS`, exit 0;

@@ -978,6 +978,7 @@ interior-only:
 | the **nonlinear brane-shear action** (**C6**) | ⛔ every form in the corpus is **quadratic**, and the quadratic Lagrangian was written **directly**, ⛔ not expanded from a nonlinear parent ⇒ it ⛔ **cannot** be reached by un-linearising |
 | the **packet / soliton** | linear `ω² = c_γ²k²` is exactly non-dispersive, so any shape translates unchanged — ⛔ but with **no preferred size or amplitude**. A packet with a characteristic scale **requires** a nonlinear term |
 | **`R17`**, `μ_R = ∫ χ_B μ_R⁽⁴⁾ dw` (`parameter_register.md:284`) | the bulk→brane projection that would ground `μ_R` — **`PENDING`, "dim-consistency asserted only"** ⇒ the route by which the EOS reaches the brane sector |
+| **`ħ_model`** (`DEFECT_REGISTER.md#C11`) | ⭐ **`postulated`, and a half-two row by user decision (2026-08-02).** ⛔ Not identified with `ħ_physical` — nothing forces it, and doing so later is a **separate calibration**. Either **derive** it (needs the substructure, which is EMPTY) or **define it operationally well enough for the sim to run**. ⛔ Do not spend derivation time on it |
 
 ⛔ **GATED on A4, C4 and C9** — this step classifies exactly the quantities those rows dispute, so it
 cannot bank without confronting them. ⚠ **C9 is a live source disagreement** (`FREE-UNREDUCED` vs

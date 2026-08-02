@@ -142,34 +142,20 @@ MacCullagh, near-identical names, different objects) and the three-step story of
    ⚠ Grok did **not** find the level-0 `Q` hole; the fresh agent did. Different scopes, both needed.
    Full logs: `_scratch/grok_wl_review.txt`, and the fresh leg's findings in `SESSION_2026-08-01.md` §7.
 
-2b. ⚠⚠ **S9 IS 3 OF 6 ARTIFACTS — ⛔ AND AN EARLIER VERSION OF THIS FILE MISCOUNTED THE THIRD.** The unit is
-   *note · TeX card · SymPy audit · independent Mathematica audit · source map · register entry*
-   (`docs/model_map.md:269`). ⛔ **The correction:** `registry_dimensional_gate.wl` does **not** count —
-   it is the **registry** gate, ⛔ not S9's *derivation* audit (v2's per-stage artifact is
-   `ledger_stageNNN_<topic>_mathematica_audit.wl`), and it is being cut anyway.
+2b. ✅ **S9 IS CLOSED (2026-08-02, user).** Artifacts: note · register entry · TeX card · **blind
+   Mathematica audit**. ⛔ **No v3 SymPy audit was written, deliberately** — the cone is two lines of
+   algebra, already executed by the `.wl` and by v2's script (cited by locus). ⭐ **AMENDED UNIT RULE:
+   a second engine earns its place where the algebra is long enough that it could genuinely DISAGREE.**
+   ⛔ Do not write one per step as ceremony. Source map deferred — a reader aid, it earns its keep at
+   the end.
+   ⭐ **The cone is confirmed FOUR independent ways** — registry (walked with the user), the blind `.wl`,
+   Grok by hand, a fresh agent by hand + SymPy. All four: `c_γ²=μ_R/ρ_br`, `[-3,0,1]`, `[-1,-2,1]`.
+   ⚠ **Known limits of the `.wl`, recorded and ⛔ NOT acted on** (they are *"wrong on a different input"*,
+   ⛔ not ways this physics could be wrong): insensitive to a wrong overall prefactor, a flipped
+   potential sign, the assumed brane dimension, and curl-only-vs-general-gradient stiffness. ⇒ Its
+   `VERDICT: PASS` means *"my internal checks did not contradict each other"* — ⭐ **the external
+   comparison is the real verdict.**
 
-   | artifact | S9 |
-   |---|---|
-   | note | ✅ `steps/S9_light_requires_shear.md` |
-   | register entry | ✅ `quantities.yaml` ×3 + `relations.yaml` R4 |
-   | **TeX card** | ✅ `paper/steps/S9_light_requires_shear.tex` (`8785ef6c`) |
-   | **SymPy audit** | ⛔ **owed** |
-   | **independent Mathematica audit** | ⛔ **owed** (blind — see NEXT SESSION 1) |
-   | **source map** | ⛔ owed |
-
-   ⛔⛔ **THE GAP THAT MATTERS IS THE SYMPY AUDIT, ⛔ not the card.** ⚠ **Nothing in v3 EXECUTES**
-   `L = ½ρ_br(∂_t u)² − ½μ_R(∇×u)² ⟹ ω² = (μ_R/ρ_br)k²`. `R4` is a **DECLARED** relation whose
-   `execution_locus` points into **v2** (`ledger_stage003_..._sympy_audit.py:516-601`). ⇒ The registry
-   gates check `R4` is dimensionally homogeneous and that its dataflow closes; ⛔ **they do not derive
-   it.** ⚠ Under the self-containment rule v3 owes its own executing script.
-   ⚠ **Both remaining artifacts are SCRIPTS** ⇒ Codex builds, **fresh agent leg AND Grok leg** (rule 3).
-
-   ✅ **The paper skeleton is BUILT** (`8785ef6c`) — `research/pde_ledger_v3/paper/`, ⭐ parts ordered
-   **requirements-first with the substrate LAST**, half two as its own part. `pdflatex` ×2 exit 0,
-   19 pages, zero undefined refs. ⚠ **S0.5 has no physics card** — it is *"bookkeeping repair, ⛔ not
-   physics"*, so it lives in `appendices/registry_provenance.tex`.
-   ⚠ **The built PDF is deliberately NOT tracked** (binary churn); v2 *does* track its own — a knowing
-   departure, recorded in `paper/README.md`.
 2. ⚠ **The requirements-first restructure is PARTIALLY applied — ⛔ and that is deliberate.** Attempted
    twice as a **whole-document** pass, failed review twice, rolled back twice. ⭐ **Do the minimum to
    walk the next sector, ⛔ not the whole document.**

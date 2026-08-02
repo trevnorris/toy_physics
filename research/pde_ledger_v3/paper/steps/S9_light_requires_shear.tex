@@ -154,14 +154,33 @@ mechanism working.
 % build, and this is a GAP DISCLOSURE, not a verification listing.  It must
 % remain visible.  Delete these two artifacts from the "owed" wording only when
 % they actually exist.
-\paragraph{Verification --- and what is missing.}
-Registry gates only, at time of writing: dimensional homogeneity
-\StatusText{pass}, acceptance \StatusText{match}, able-to-fail harness
-\StatusText{pass}. \textbf{A step-level SymPy audit and an independent
-Mathematica audit do not yet exist for v3.} \(R4\) is carried as a
-\emph{declared} relation whose execution locus points into v2
+\paragraph{Verification.}
+The cone was derived independently \textbf{four} times and agrees each time:
+the registry entry (walked with the user), a \emph{blind} Mathematica audit
+(\StageFile{research/pde\_ledger\_v3/mathematica/S9\_light\_requires\_shear\_mathematica\_audit.wl}),
+and two independent reviewers deriving it by hand. All four give
+\(c_\gamma^2=\mu_R/\rho_{br}\), \([\rho_{br}]=\{-3,0,1\}\) and
+\([\mu_R]=\{-1,-2,1\}\).
+
+The Mathematica audit is blind by design: it takes no arguments, imports
+nothing, and does not read the registry --- so it shares no input with the
+thing it is compared against, and the agreement is not vacuous. It derives
+rather than asserts (varies the action, forms the dynamical matrix, solves
+\(\det=0\)); no dimension vector and no speed formula appears as a literal in
+its source. Registry gates: dimensional homogeneity \StatusText{pass},
+acceptance \StatusText{match}, able-to-fail \StatusText{pass}.
+
+\emph{Scope of that audit, stated so it is not over-read.} Its own
+\texttt{PASS} means its internal consistency checks did not contradict one
+another. It is insensitive to a wrong overall prefactor, a flipped potential
+sign, and the assumed brane dimension --- each of which changes what it prints
+while leaving its verdict green. Those are caught by the external comparison
+above, which is therefore load-bearing rather than a formality.
+
+\emph{No separate SymPy audit was written for this step, deliberately.} The
+derivation is two lines of algebra already executed by the Mathematica engine
+and by v2's script
 (\StageFile{research/pde\_ledger\_v2/scripts/ledger\_stage003\_transverse\_photons\_stray\_longitudinal\_sympy\_audit.py},
-lines 516--601). The gates check that \(R4\) is dimensionally homogeneous and
-that its dataflow closes; \textbf{they do not derive
-\(\omega^2=(\mu_R/\rho_{br})k^2\) from the Lagrangian.} Both audits are owed
-before this step's six-artifact unit is complete.
+lines 516--601), cited by locus. A second engine earns its place where the
+algebra is long enough that it could genuinely disagree; here it would be a
+third execution of the same two lines.

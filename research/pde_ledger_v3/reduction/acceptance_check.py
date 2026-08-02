@@ -10,11 +10,15 @@ import sympy as sp
 from registry_read import Registry, load_registry
 
 
-# INDEPENDENT CONTROL FIXTURE: four parties who did not see one another's work
-# derived these values by different routes, including a triangular solve, Jacobian
-# rank at an exact on-variety positive rational point, and the grevlex initial-ideal
-# route used by this code.  On any registry change, RECOMPUTE and independently
-# re-derive the payload; never copy it forward.
+# INDEPENDENT CONTROL FIXTURE.  These POST-S9 values (ambient 10) were derived by
+# THREE parties who did not see one another's work -- orchestrator, builder, and a
+# review leg -- by different routes: triangular elimination, Jacobian rank at an
+# exact on-variety positive rational point, and the grevlex initial-ideal route
+# used by this code.
+#   The earlier "four parties" wording described the PRE-S9 (ambient 7) payload and
+#   did not survive the change; a control fixture must not overstate its own
+#   provenance.
+# On any registry change, RECOMPUTE and independently re-derive; never copy forward.
 EXPECTED_MEDIUM_PAYLOAD = {
     "baseline": {"dim_before": 10, "dim_after": 6, "Delta": 4},
     "C-M2": {"dim_before": 10, "dim_after": 6, "Delta": 4},

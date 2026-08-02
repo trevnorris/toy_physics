@@ -1,5 +1,16 @@
 # NEXT SESSION — v3 handoff
 
+> ⛔⛔ **READ `research/pde_ledger_v3/SESSION_2026-08-01.md` FIRST AND IN FULL.** It is later than this
+> file and **governs where they disagree**. It carries: the **direction change to requirements-first**,
+> the model's **foundational substructure postulate**, the five standing decisions, what was banked
+> (`83668b97`, `361e8114`), the simulation track, and ⛔ **four things this file gets wrong** — the
+> orientation budget is short by three governing documents, S0.5 is **done**, S9 is **banked**, and the
+> substrate/brane steps are **no longer first**.
+>
+> ⚠ Much of what follows is still correct and load-bearing — the eleven-item *"what a fresh session gets
+> wrong"* list especially. ⛔ But read the session record before acting on any ordering or status claim
+> in this file.
+
 **Branch `ledger-v2-rebuild`.** ⚠ Run `git log --oneline -5` and `git status` first. ⛔ Do not trust a
 hash written in any doc, including this one.
 

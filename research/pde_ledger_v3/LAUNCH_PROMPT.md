@@ -11,7 +11,7 @@ Branch `ledger-v2-rebuild`. Run `git log --oneline -5` and `git status` first �
 ⛔ do not trust any hash written in a doc, including this one.
 
 ▶ **READ FIRST, AND IN FULL: `research/pde_ledger_v3/SESSION_2026-08-01.md`.**
-It is the latest record and it GOVERNS. It carries the direction change, the model's foundational
+⚠ It is the **2026-08-01** record and it governs **for what it covers**. ⛔ It is NOT the latest — the **2026-08-02** work (the two halves, `K`/`n_eos`, the drum-head charge picture, S10) lives in **this file**, `CHARTER.md`, `V3_STEP_PLAN.md` and the memories. It carries the direction change, the model's foundational
 postulate, the five standing decisions, what was banked, the simulation track, the open physics, and
 §8 — how the previous session failed, by mechanism. ⛔ Do not start work before reading it.
 

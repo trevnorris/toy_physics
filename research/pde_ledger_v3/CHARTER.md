@@ -4,14 +4,30 @@
 
 ---
 
-## 0. ⛔ What this is NOT
+## 0. ⛔ Method history — and v3 DID take a method change
 
-**This is not a third method change.** Read that sentence before anything else.
+⚠ **This section said *"this is not a third method change"* until 2026-08-01. That sentence is now
+FALSE and has been rewritten rather than annotated.** Two distinct events:
 
-- census → walkthrough (2026-07-30) **was** a method change. It cost eleven commits and verified no
-  physics.
-- v2 → v3 is a **scoping** change. Same forward walkthrough, same step record, same checks, same
-  registry. The only difference is a **sector boundary** in place of a phase ordering.
+- **v3 OPENED as a scoping change** (2026-07-31). Same forward walkthrough, same step record, same
+  checks, same registry — a **sector boundary** in place of a phase ordering. That much was true.
+- ⭐⭐ **v3 then TOOK a method change (2026-08-01, user decision): REQUIREMENTS-FIRST.** Each force
+  sector states what it needs to survive. **Brane and bulk are defined LAST, at the knit**, by asking
+  whether one medium can satisfy every requirement at once. **A no-go between requirements IS the
+  falsification.**
+
+**Why the change:** deriving forward from the medium is **circular** here. `A13` (is `χ_B` real or
+complex?) has no answer *in the medium* — it is settled by what the drain law needs — while the plan
+demanded it resolved before the steps that would settle it.
+
+⚠⚠ **Do NOT claim this is "a return to the project's original method."** The record is contested and
+BOTH sides are damaged: `docs/em_gravity_requirements_inversion.md` carries a ⛔ *"SUPERSEDED … Do NOT
+build on it"* banner, and `docs/em_medium_first_generative_plan.md` claims founding-method status for
+**medium-first** while calling requirements-inversion *"not generative"*. ⇒ The direction rests on the
+**user's decision** plus the circularity argument, ⛔ not on a historical claim.
+
+⚠ For contrast, the change this section originally warned about: census → walkthrough (2026-07-30) cost
+eleven commits and verified no physics.
 
 ⇒ The method is `docs/derivation_walkthrough_plan.md`. ⛔ This charter does not restate it and does not
 supersede it. If you find yourself designing new apparatus, stop — that is the failure this project has
@@ -23,9 +39,14 @@ Problem all went unnoticed by the one person able to check them. ⇒ `V3_STEP_PL
 description; it is not a courtesy stop-for-review but a change in who does the deriving.
 
 **Two hard constraints, both from the decision that opened v3:**
-1. ⛔ **Reuse `research/pde_ledger_v2/reduction/`.** Registry, reader, dimensional gate, able-to-fail
+1. ⛔ **Do not rebuild the registry machinery.** Registry, reader, dimensional gate, able-to-fail
    harness — they work, and they were built to grow one step at a time. That **is** the centralized
-   variable script. Do not rebuild it.
+   variable script.
+   ⚠ **AMENDED 2026-08-01 — v3 is SELF-CONTAINED (user decision).** The machinery was **copied** into
+   `research/pde_ledger_v3/reduction/` (`361e8114`), and loci are repo-root-relative so v3's citations
+   *into* v2 are explicit. ⛔ **Do not edit or import `research/pde_ledger_v2/reduction/`** — the
+   original instruction to "reuse" it predates the self-containment rule and would split the registry
+   across two trees.
 2. ⛔ **`DEFECT_REGISTER.md` is a list, not machinery.** The moment it acquires a schema, a checker, or a
    manifest, it has become the census.
 
@@ -101,14 +122,43 @@ is built on does not exist as stated.** S16 and S19 must therefore be run **befo
 claim is treated as settled, and the charter amended to whatever they find. ⛔ Do not preserve the
 boundary against the result.
 
-### 1.2 ⭐ Expected yield: a debt list, not a discovery
+### 1.2 ⭐⭐ THE DELIVERABLE HAS TWO HALVES (user decision, 2026-08-01) {#two-halves}
 
-Say this up front so it does not read as failure when it arrives. The deliverable is a **precise,
-followable statement of what the far field assumes from the interior, across every sector that has one**,
-which today is scattered across `R10`, `R30`, `R33`, `R36`, `m_defect`, `J` and
-`INFLOW_MASS_SOURCE_MISSING` on the gravity side, and across `bc_selection`, `Q_E`, `q_T`, `c_a` and `c_ξ`
-on the EM side. Collapsing that into one honest list is the win — it is a thing that fits in one head,
-which is what is currently missing.
+⛔ **This replaces the earlier framing *"a debt list, not a discovery."*** That framing was purely
+negative and it understated half one.
+
+**HALF ONE — the positive claim, and the user believes it is reachable:**
+
+> ⭐⭐ **ONE medium supports the LINEAR part of every force — all the far-field effects of all the
+> forces.**
+
+⭐ **This is the part that can be FULLY DERIVED**, which is why it is the ledger's body. Under
+requirements-first each sector states what it needs; the **knit** asks whether one medium supplies every
+requirement at once. ⛔ It is **able to fail**: a **no-go between two sectors' requirements IS the
+falsification** (§1.3), ⛔ not a snag to engineer around.
+
+**HALF TWO — the hand-off, and it is BROAD (user decision: broad, not photon-specific):**
+
+> ⭐ **What is left, that can only be done by SIMULATION** — stated precisely enough to start the work.
+
+⛔⛔ **Nothing requiring a simulation is DONE in this ledger.** Half two **sets up future work**; it does
+not attempt it. ⭐ It is **broad** — every nonlinear gap, not just light's: the throat interior, the geon,
+the drain law, the nonlinear brane-shear action, the packet/soliton. ⚠ **It therefore SUBSUMES the
+interior debt list** (**S22**), because S22's organising spine is already *"one nonlinear throat solve"*
+and the nonlinear shear is **the same missing object as the geon** (**C6** — no closed parent action).
+⇒ One closing part, ⛔ not two.
+
+⚠⚠ **THE LINEAR/NONLINEAR SEAM IS A SEAM, ⛔ NOT A CEILING.** Do not write that the ledger "stops" at
+linear response, and ⛔ do not record missing nonlinearity as a *blocker*. Linear is **half one's scope**;
+nonlinear is **half two's subject**. Same fact, and the wrong framing has already caused a session to
+treat the photon simulation as gated rather than as the deliverable.
+
+**What half two collapses.** Today the debts are scattered across `R10`, `R30`, `R33`, `R36`,
+`m_defect`, `J` and `INFLOW_MASS_SOURCE_MISSING` on the gravity side, and across `bc_selection`, `Q_E`,
+`q_T`, `c_a` and `c_ξ` on the EM side. Collapsing that into one honest list is the win — it is a thing
+that fits in one head, which is what is currently missing.
+
+⚠ **And it is still not a discovery.** Half two names debts; it pays none of them down (§5).
 
 ### 1.3 ⭐ What would count as FAILURE {#falsification-standard}
 
@@ -196,12 +246,18 @@ v3 is working if, at any point:
 
 1. the accumulated "what's new" is traceable, each member to the step that introduced it;
 2. every step passes its mandatory checks, with failures **recorded, not fixed by adjustment**;
-3. a reader can follow the chain from the medium to any step **without consulting v2**;
-4. the interior debts the far field depends on, across every in-scope sector, are named in one
-   place, with loci.
+3. a reader can follow the chain **without consulting v2** — ⚠ under requirements-first that chain runs
+   **from each sector's requirement to the knit**, ⛔ not from the medium outward;
+4. **HALF ONE** — the knit returns a verdict on whether **one medium supplies every sector's linear
+   requirement at once**, with each requirement stated, sourced and falsifiable;
+5. **HALF TWO** — everything that can only be settled by simulation is named in one place, with loci,
+   across every in-scope sector.
 
-⛔ **(4) is the deliverable.** ⛔ A count is not quoted without the closing certification the method doc
-specifies — the forward walkthrough produces an inventory, not a certified number.
+⛔ **(4) and (5) are the deliverable, and they are different objects.** (4) is a **verdict** — and
+⭐ **a no-go is a first-class result**, not a failed run. (5) is an **inventory**.
+
+⛔ A count is not quoted without the closing certification the method doc specifies — the forward
+walkthrough produces an inventory, not a certified number.
 
 ---
 

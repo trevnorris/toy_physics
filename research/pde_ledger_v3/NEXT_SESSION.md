@@ -333,18 +333,21 @@ residue from a correction that was *appended rather than applied*.
 ## ▶ DECISIONS OWED BY THE USER
 
 1. **O-02** — is `K` + the EOS exponent one entry or two? (v2 left it open; the sim-input reading says
-   two, the algebraic reading says one.)
+   two, the algebraic reading says one.) ⚠ **STILL OPEN**, but ⛔ **do not confuse it with the separate
+   question that was DECIDED 2026-08-01**: whether `K`/`n_eos` should leave the medium block the way
+   `c_γ` did. **They stay** — reasoning at `V3_STEP_PLAN.md` § S2.
 2. **`ħ`'s class** — `postulated` (a property of the medium) or `calibrated` (an external constant we
    import)? In the sim-input set either way; the label moves it between tier 1 and tier 2.
+   ⚠ **This is the one still genuinely owed.**
 3. **Scope confirmation** — the charter's boundary may not survive S16/S19 (the compactness premise vs
    the Spin Problem). If it doesn't, the honest move is to amend the charter, not preserve the boundary.
-4. ⭐ **The `C-M1` replacement mutation.** `C-M1` **dies with `R3`**: its entire content is *"drop `R3`"*
-   (`acceptance_check.py:54` builds it as `without_r3 + (lambda_gamma - lambda_gamma,)`, and
-   `constraint_dimension` discards zero-valued constraints, so the appended term is **inert**). S0.5
-   deletes `R3` ⇒ C-M1 has **nothing left to mutate**. Its replacement must be a **plausible physics
-   error on a surviving relation** — `R1` (the sound speed), or `R2.xi_h` / `R2.h0` — ⛔ not a
-   relabelling and ⛔ not another inert term. ⭐ **Which one is a USER call**, not the builder's.
-   → **S0.5** in `V3_STEP_PLAN.md`.
+4. ✅ **RESOLVED 2026-08-01 — there is no `C-M1` replacement to choose, and this item is DEAD.**
+   ⛔ **Do not re-open it.** S0.5 **deleted `C-M1` with no replacement** (`83668b97`). An independent
+   coverage determination established that a defect caught **only** by `C-M1` would need a counter doing
+   full ideal reasoning on a non-trivial polynomial **while failing on the zero polynomial** — and zero
+   is in every ideal, so ⛔ that is not constructible. The `vacuous` tooth in `able_to_fail.py` was
+   rebased onto `R2.h0` instead. ⚠ The measured note below is kept because it is **true and reusable**,
+   ⛔ not because a decision is owed.
 
    > ⚠ **Measured — and stated in the harness's own terms.** ⛔ **Do not restate this as coverage of the
    > method doc's five named error classes:** that mapping was attempted twice and was wrong both times, in

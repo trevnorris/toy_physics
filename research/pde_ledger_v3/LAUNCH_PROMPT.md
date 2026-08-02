@@ -38,7 +38,10 @@ claims are stale; the session record says which.
    builder-written code. A fresh agent of yours may review a file you made a minor fix to.
 4. ⭐ **Every step adds its quantities and relations to `research/pde_ledger_v3/reduction/` and the gate
    must pass before the step banks.** The registry IS the requirements list — ⛔ do not defer it.
-   ⚠ **Both engines:** Python gate *and* `research/pde_ledger_v3/mathematica/registry_dimensional_gate.wl`.
+   ⚠ **Both engines, but with a DIVISION OF LABOUR** (⛔ corrected 2026-08-01 — the old wording pointed
+   at `registry_dimensional_gate.wl`, which is **CUT**; see OWED 1):
+   **physics + dimensions → a BLIND `.wl` per step**, which ⛔ must **not** read the registry;
+   **registry hygiene** (schema, declared inputs, cycles, well-formedness) → **Python ONLY**.
 5. ⛔ **v3 is SELF-CONTAINED.** Copy files from v2; ⛔ never link to v2's tree.
 6. ⛔ **The input COUNT is not the objective — physical motivation is.** Never fudge physics to shorten
    the list.
@@ -48,6 +51,23 @@ claims are stale; the session record says which.
    session, one carrying an explicit *"Do NOT build on it"* banner.
 
 ---
+
+## ⭐⭐ WHAT THIS LEDGER IS — TWO HALVES (user decision, 2026-08-01) {#two-halves}
+
+⛔ **Read this before the step plan.** `CHARTER.md#two-halves` is the canonical statement.
+
+| | half | what it is | able to fail? |
+|---|---|---|---|
+| **1** | ⭐ **ONE medium supports the LINEAR part of every force** — all the far-field effects of all the forces | a **VERDICT**. The body of the ledger; **fully derivable**, which is why it is here | ⭐ **YES** — a **no-go between two sectors' requirements IS the falsification** |
+| **2** | ⭐ **what is left, that only a SIMULATION can settle** | an **INVENTORY** that sets up future work. **BROAD** — throat interior, geon, drain law, nonlinear brane-shear action, packet/soliton | no — it names debts |
+
+⛔⛔ **Nothing requiring a simulation is DONE in this ledger.** Half two **specifies** the work; it does
+not attempt it.
+
+⚠⚠ **THE LINEAR/NONLINEAR SEAM IS A SEAM, ⛔ NOT A CEILING.** ⛔ Never write that the ledger "stops" at
+linear response, and ⛔ never record missing nonlinearity as a **blocker** — that is half two's *subject*.
+⚠ Measured cost of the wrong framing: a session recorded the absent nonlinear shear action as *"⛔ the
+blocker"* on the photon-simulation track, when that action **is** what half two exists to specify.
 
 ## ▶ WHERE WE ARE
 
@@ -66,8 +86,15 @@ MacCullagh, near-identical names, different objects) and the three-step story of
 
 ## ⛔ OWED
 
-1. ⛔⛔ **THE `.wl` GATE HAS THREE BLOCKING DEFECTS — ⛔ DO NOT TRUST ITS `WL_REGISTRY_PASS`.** Reviewed
-   2026-08-01; see `SESSION_2026-08-01.md` §7 item 3 for the full findings and fixes. In short:
+1. ⛔⛔ **CUT `registry_dimensional_gate.wl` — ⛔ do NOT fix it, and ⛔ do NOT trust its
+   `WL_REGISTRY_PASS`.** The full instruction and the standing blind-`.wl` rule are in **▶ NEXT SESSION
+   item 1** below; the defects are kept here only as the **evidence that the reader architecture was
+   wrong**, ⛔ not as a fix list.
+   ⚠⚠ **ONE THING NOBODY HAS DONE, and it must precede the cut:** the review enumerated the reader's
+   **defects**, ⛔ never its **unique coverage**. Cutting it silently drops whatever it alone checked.
+   ⇒ **Enumerate what it covered that Python does not**, then move those checks to Python or drop them
+   **consciously**. ⛔ Do not assume the overlap is total.
+   Reviewed 2026-08-01; see `SESSION_2026-08-01.md` §7 item 3 for the full findings. In short:
    **(1)** `--registry-dir` is dead and the orchestrator's "fix" **masked** it — the tracked script
    pointed at a known-**inhomogeneous** registry prints `HOMOGENEOUS=4 … PASS`, exit 0;
    **(2)** `qidsIn` misses a level-0 `Q` node, so a bare `[Q, x]` RHS — an alias/identification relation,
@@ -88,20 +115,45 @@ MacCullagh, near-identical names, different objects) and the three-step story of
    a built PDF). ⭐ The defined unit is **six artifacts** — *note · TeX card · SymPy audit · independent
    Mathematica audit · source map · register entry* (`docs/model_map.md:269`). **S9 produced three:**
    the note, the registry entry, and the Mathematica gate. ⛔ **Missing: the TeX card and the source
-   map** — and they are missing for S0.5 too. ⚠ Do not walk S10 without deciding the v3 paper's
-   structure; writing 20 cards retroactively is the retrofit this method exists to avoid.
-2. **The restructure to requirements-first is NOT applied to the docs.** Attempted twice, failed review
-   twice, rolled back twice. The charter still says *"this is not a third method change"*; the step plan
-   still runs the substrate first. ⭐ **Do the minimum to walk the next sector, ⛔ not the whole document.**
+   map** — and they are missing for S0.5 too. ⚠ Writing 20 cards retroactively is the retrofit this
+   method exists to avoid.
+   ✅ **DECIDED 2026-08-01 (user): v3 gets its OWN paper skeleton**, ⛔ not v2's — consistent with the
+   self-containment rule. Planned shape, ⭐ **parts ordered REQUIREMENTS-FIRST with the substrate LAST**:
+   ```
+   research/pde_ledger_v3/paper/
+     pde_ledger_v3.tex · document_setup.tex · macros.tex   (the latter two COPIED from v2)
+     parts/  part01_light · part02_gravity · part03_gravitomagnetism ·
+             part04_charge_magnetism · part05_the_knit      ← medium/brane/bulk LAST
+     steps/  S9_light_requires_shear.tex                    (v3 step IDs, ⛔ not v2's stage_NNN)
+     appendices/  registry_provenance.tex                   ← S0.5 lives HERE
+   ```
+   ⚠ **S0.5 gets no physics card** — the step plan calls it *"bookkeeping repair, ⛔ not physics"*, so a
+   card in a physics part would misrepresent it. The six-artifact unit is still met; it is filed as
+   provenance.
+2. ⚠ **The requirements-first restructure is PARTIALLY applied — ⛔ and that is deliberate.** Attempted
+   twice as a **whole-document** pass, failed review twice, rolled back twice. ⭐ **Do the minimum to
+   walk the next sector, ⛔ not the whole document.**
+   ✅ **Applied 2026-08-01:** `CHARTER.md` §0 (the false *"not a third method change"*) · §1 constraint 1
+   (the stale *"reuse v2's `reduction/`"*) · **§1.2 the two halves** · §4 acceptance;
+   `V3_STEP_PLAN.md` **S2** (`K`/`n_eos` decided) · **S8** (ceiling → seam) · **PHASE 5** (both halves) ·
+   **S22** (broadened to all nonlinear gaps).
+   ⛔ **Still NOT applied — the step ORDERING.** The plan still runs `PHASE 0`/`PHASE 1` (substrate)
+   before the sectors, which is backwards under requirements-first. ⭐ Leave it until a step trips on it.
    Decision lists: `_scratch/RESTRUCTURE_V2.md`.
 3. **A13 has four mutually exclusive homes** in the step plan, and *"settled at S12"* is unsupported.
 4. **Two `able_to_fail.py` defects, filed unfixed** — `demonstrate_verdict_spoof` ⛔ cannot fail; the
    crash/spoof flags trip the case-count guard before their mechanism.
 5. **Two registry nits, recorded not fixed** — `linear-unstrained-brane` is an inert tag;
    `denominator_guards` are declarative only.
-6. ⚠ **A second S0.5-shaped question, undecided (USER CALL):** S0.5's own criterion now indicts all eight
-   surviving medium rows, since the substrate steps run last. `ħ`/`m` come standard and stay; `K` and the
-   EOS exponent are explicitly *not* standard.
+6. ✅ **DECIDED 2026-08-01 — `K` and `n_eos` STAY in the medium block.** ⛔ Do not re-open. S0.5 applied
+   **two** criteria (category · prematurity); `K`/`n_eos` fail **only prematurity**, which under
+   requirements-first indicts all eight rows equally and so discriminates nothing. ⭐ **The deciding
+   argument is half two:** linear response never sees the *shape* of `P(ρ)`, but a nonlinear **parent
+   action** contains `U(ρ) = Kρ⁵/4`. ⇒ Full reasoning + the registry measurement:
+   `V3_STEP_PLAN.md` § **S2**.
+   ⚠ **Still genuinely owed (USER CALL): `ħ`'s class** — `postulated` or `calibrated`. In the sim-input
+   set either way; the label moves it between tier 1 and tier 2.
+   ⚠ **Still open, and a DIFFERENT question: O-02** — is `K` + the exponent one entry or two?
 
 ## ⚠ WHY THE `.wl` GATE MISBEHAVED WHEN v2's 44 NEVER DO — measured
 
@@ -148,9 +200,8 @@ script, in either engine, as carrying that class; ⛔ the 44's track record does
    ⚠ **Division of labour:** physics + dimensions → the blind `.wl`. Registry hygiene (schema, declared
    inputs, cycles, well-formedness) → **Python only**; a second engine re-reading the same YAML to check
    the same YAML adds nothing.
-2. ⛔ **Decide v3's paper structure and backfill the TeX cards + source maps for S0.5 and S9** — two
-   cards while it is still two. ⚠ **USER CALL:** does v3 get its own paper skeleton, or write into v2's?
-   Given v3 is now self-contained, its own is the coherent answer.
+2. ✅ **Paper structure DECIDED (user, 2026-08-01): v3 gets its OWN skeleton.** ⇒ **Build it and backfill
+   S0.5 + S9** — two cards while it is still two. Shape and the S0.5-as-appendix call: **OWED 2b**.
 3. **S10** — two transverse photons. ⚠ The count comes from the brane being **3-dimensional** (a 3-vector
    about `k` splits 1 longitudinal + 2 transverse), ⛔ **not** from codimension.
 4. **S11** — the stray longitudinal, framed as the **third of three failed attempts** at Maxwell's
@@ -162,6 +213,10 @@ script, in either engine, as carrying that class; ⛔ the 44's track record does
 A superfluid sim with a photon in it, time stepped slowly, watching the medium move — and whether
 something stays **quantized in a packet**. ⚠ That is a soliton and it needs **nonlinearity**, which the
 corpus does not have (**C6**: no closed parent action; the same missing object as the geon).
+
+⛔⛔ **That absence is NOT a blocker on this ledger — it is HALF TWO's SUBJECT** (`#two-halves`). The sim
+itself is ⛔ **out of scope**; **specifying what it needs is the deliverable.** ⇒ File the missing
+nonlinear shear action as an **S22 row**, ⛔ never as a wall in front of half one.
 ⭐ **Cheaper first target: Test 5** (`notes/brane_bulk_handoff.md:880`) — *"check that setting `χ_B = 0`
 removes shear/light propagation"* — designed, **never run**, needs only the linear equation plus the
 gate, and tests a live requirement of light's.

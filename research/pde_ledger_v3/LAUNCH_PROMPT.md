@@ -74,11 +74,17 @@ blocker"* on the photon-simulation track, when that action **is** what half two 
 **Banked:** `83668b97` S0.5 · `361e8114` v3's own `reduction/` + **S9** · `f2f5d9af` S9 reviews folded +
 the Mathematica gate · `df57fc76` session record.
 
-**S9 is done** — light's requirement on the medium, the first sector step under requirements-first.
-Registry: 10 continuous quantities, 4 relations, residue = the four GNLS primitives + light's two
-postulated constants. Both engines agree on that residue.
+⚠⚠ **S9's DERIVATION is banked; S9's ARTIFACT UNIT is NOT — ⛔ these are different claims and an
+earlier version of this file conflated them.** The physics was walked side by side and the registry
+holds it: 10 continuous quantities, 4 relations, residue = the four GNLS primitives + light's two
+postulated constants. ⛔ **But the step is 3 of 6 artifacts** (note · register entry · TeX card), and
+the missing **SymPy audit** means ⛔ **nothing in v3 executes the transverse dispersion** — see OWED 2b.
 
-**▶ NEXT: S10 and S11** — the two transverse photons, then the stray-longitudinal departure. Then
+**▶ NEXT: FINISH S9** — the SymPy audit, the blind Mathematica audit, the source map.
+⛔⛔ **Do NOT walk S10 until S9's unit closes.** ⚠ Compounding the retrofit across 20 steps is the exact
+failure this method exists to prevent, and *"we're nearly done with S9"* is how it starts.
+
+**THEN: S10 and S11** — the two transverse photons, then the stray-longitudinal departure. Then
 **S11a**, the packet + simulation specification, which does not exist yet.
 
 ⚠ **Read the session record's §6 before S10** — it carries the `μ_br` ≠ `μ_R` hazard (Cauchy vs
@@ -110,7 +116,7 @@ MacCullagh, near-identical names, different objects) and the three-step story of
    ⚠ Grok did **not** find the level-0 `Q` hole; the fresh agent did. Different scopes, both needed.
    Full logs: `_scratch/grok_wl_review.txt`, and the fresh leg's findings in `SESSION_2026-08-01.md` §7.
 
-2b. ⚠⚠ **S9 IS 2 OF 6 ARTIFACTS — ⛔ AND AN EARLIER VERSION OF THIS FILE SAID THREE.** The unit is
+2b. ⚠⚠ **S9 IS 3 OF 6 ARTIFACTS — ⛔ AND AN EARLIER VERSION OF THIS FILE MISCOUNTED THE THIRD.** The unit is
    *note · TeX card · SymPy audit · independent Mathematica audit · source map · register entry*
    (`docs/model_map.md:269`). ⛔ **The correction:** `registry_dimensional_gate.wl` does **not** count —
    it is the **registry** gate, ⛔ not S9's *derivation* audit (v2's per-stage artifact is

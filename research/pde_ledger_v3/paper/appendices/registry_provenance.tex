@@ -1,0 +1,37 @@
+\chapter{Registry provenance}\label{app:registry-provenance}
+
+The reduction registry (\StageFile{research/pde\_ledger\_v3/reduction/}) is
+grown one step at a time: a step adds its quantities and relations, and the
+gates must pass before that step banks. This appendix records the registry's own
+history --- including changes that are bookkeeping repair rather than physics,
+which have no place in a derivation part.
+
+\section{S0.5 --- pre-S1 registry surgery}
+
+\claimstatus{Bookkeeping repair --- \StatusText{not physics}}
+
+\stagefield{What it did}{Deleted \(c_\gamma\), \(\lambda_\gamma\) and the
+relation \(R3:\lambda_\gamma=c_\gamma/c_s\) from the medium block.}
+
+\stagefield{Why}{\(c_\gamma^2=\mu_R/\rho_{br}\) is a shear modulus over a brane
+density. Both are properties of the \textbf{brane}. The bulk medium is
+shear-free by construction, so the medium block cannot produce a shear modulus
+at all: a brane property had been filed as a medium property. The same category
+error as the retired \(a\)-pin, and it fails the standing test --- \emph{what
+does this quantity physically relate to?}}
+
+\stagefield{Deleted, not retired}{\(c_\gamma\) is not dead; it was placed in the
+medium block \emph{before the walkthrough reached the step that introduces it}.
+It is reintroduced by the sector that needs it (Part~I), with its own
+provenance. Nothing dead is left in the registry for a reader to filter.}
+
+\stagefield{Effect on the count}{The medium block went from 9 quantities and 5
+declared primitives to 7 and 4. The four are exactly
+\(\{\hbar,\,m_{\mathrm{GNLS}},\,K,\,\rho_0\}\); the three surviving relations
+determine \(\{c_{s0},\,\xi_h,\,h_0\}\) and nothing else.}
+
+\stagefield{Acceptance}{Recomputed, never preserved. The mutation case
+\texttt{C-M1} died with \(R3\) --- its entire content was \emph{drop \(R3\)} ---
+and was deleted with no replacement, an independent coverage determination
+having established that a defect caught only by \texttt{C-M1} is not
+constructible.}

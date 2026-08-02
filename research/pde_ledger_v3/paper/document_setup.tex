@@ -1,0 +1,52 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[hmargin=0.85in,vmargin=1in]{geometry}
+\setlength{\headheight}{14pt}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{longtable,booktabs,array}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage[final]{microtype}
+\usepackage{xcolor}
+
+\input{macros}
+
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\setlength{\tabcolsep}{4pt}
+\setlength{\emergencystretch}{2em}
+\hbadness=10000
+\vbadness=10000
+\Urlmuskip=0mu plus 2mu\relax
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\makeatletter
+\renewcommand{\@pnumwidth}{3.4em}
+\renewcommand{\@tocrmarg}{5em}
+\renewcommand{\chaptermark}[1]{%
+  \if@mainmatter
+    \markboth{\@chapapp\ \thechapter}{}%
+  \else
+    \markboth{}{}%
+  \fi
+}
+\renewcommand{\sectionmark}[1]{}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\nouppercase{\leftmark}}%
+  \fancyhead[R]{\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\makeatother

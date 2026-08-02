@@ -66,8 +66,18 @@ MacCullagh, near-identical names, different objects) and the three-step story of
 
 ## ⛔ OWED
 
-1. **The `.wl` gate review** — a fresh agent leg and a Grok leg were running at session end. ⛔ Their
-   findings are unfolded. ⚠ The gate has never been demonstrated **able to fail**.
+1. ⛔⛔ **THE `.wl` GATE HAS THREE BLOCKING DEFECTS — ⛔ DO NOT TRUST ITS `WL_REGISTRY_PASS`.** Reviewed
+   2026-08-01; see `SESSION_2026-08-01.md` §7 item 3 for the full findings and fixes. In short:
+   **(1)** `--registry-dir` is dead and the orchestrator's "fix" **masked** it — the tracked script
+   pointed at a known-**inhomogeneous** registry prints `HOMOGENEOUS=4 … PASS`, exit 0;
+   **(2)** `qidsIn` misses a level-0 `Q` node, so a bare `[Q, x]` RHS — an alias/identification relation,
+   a shape this project makes constantly — is admitted with `input_qids: []` and its output leaves the
+   residue derived from nothing (⭐ Python does **not** have this hole; the engines genuinely disagree
+   and only the `.wl` is wrong);
+   **(3)** `kind` is never validated, so a one-character typo inflates the residue silently at exit 0.
+   ⚠ **Fix these before building any `.wl` ablation harness**, and ⛔ assert on the `WL_REGISTRY_FAIL`
+   **text**, not on exit ≠ 0 — a licence-contention run exits 40 with no gate output.
+   ⚠ A Grok leg on the same script was still running at session end; ⛔ its findings are unfolded.
 2. **The restructure to requirements-first is NOT applied to the docs.** Attempted twice, failed review
    twice, rolled back twice. The charter still says *"this is not a third method change"*; the step plan
    still runs the substrate first. ⭐ **Do the minimum to walk the next sector, ⛔ not the whole document.**

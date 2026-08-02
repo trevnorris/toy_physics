@@ -1,0 +1,100 @@
+schema_version: reduction-registry-v1
+document_kind: relations
+expression_language: prefix-v1
+
+# A residual is one prefix-v1 expression whose value is zero.  R2 is split into
+# scalar-output records so every record has one executable dataflow head.
+relations:
+  - relation_id: R1
+    residual:
+      - Sub
+      - [Q, Q.medium.c_s0]
+      - [Sqrt, [Div, [Mul, 5, [Q, Q.medium.K], [Pow, [Q, Q.medium.rho0], 4]], [Q, Q.medium.mass]]]
+    designated_output: Q.medium.c_s0
+    input_qids: [Q.medium.K, Q.medium.rho0, Q.medium.mass]
+    applied_functions: []
+    provenance_status: DERIVED-EXECUTED
+    regime: [medium-GNLS-positive-real]
+    assumptions:
+      - {predicate: positive, qids: [Q.medium.K, Q.medium.rho0, Q.medium.mass, Q.medium.c_s0]}
+    domain_measure_bcs:
+      domain: finite-scalar-positive-real
+      measure: null
+      boundary_conditions: []
+    denominator_guards:
+      - [Q, Q.medium.mass]
+    literal_consistency:
+      - {literal_path: [2, 1, 1, 1], quantity: Q.medium.n_eos, offset: 0}
+      - {literal_path: [2, 1, 1, 3, 2], quantity: Q.medium.n_eos, offset: -1}
+    source_locus: {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 268, line_end: 268}
+    execution_locus: {path: research/pde_ledger_v2/scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py, line_start: 331, line_end: 361}
+    benchmark_refs: []
+
+  - relation_id: R2.xi_h
+    residual:
+      - Sub
+      - [Q, Q.medium.xi_h]
+      - [Div, [Mul, [Sqrt, 2], [Q, Q.medium.hbar]], [Mul, [Q, Q.medium.mass], [Q, Q.medium.c_s0]]]
+    designated_output: Q.medium.xi_h
+    input_qids: [Q.medium.hbar, Q.medium.mass, Q.medium.c_s0]
+    applied_functions: []
+    provenance_status: DERIVED-EXECUTED
+    regime: [medium-GNLS-positive-real]
+    assumptions:
+      - {predicate: positive, qids: [Q.medium.hbar, Q.medium.mass, Q.medium.c_s0, Q.medium.xi_h]}
+    domain_measure_bcs:
+      domain: finite-scalar-positive-real
+      measure: null
+      boundary_conditions: []
+    denominator_guards:
+      - [Q, Q.medium.mass]
+      - [Q, Q.medium.c_s0]
+    literal_consistency: []
+    source_locus: {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 269, line_end: 269}
+    execution_locus: {path: research/pde_ledger_v2/scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py, line_start: 277, line_end: 289}
+    benchmark_refs: []
+
+  - relation_id: R2.h0
+    residual:
+      - Sub
+      - [Q, Q.medium.h0]
+      - [Div, [Mul, [Q, Q.medium.mass], [Pow, [Q, Q.medium.c_s0], 2]], 4]
+    designated_output: Q.medium.h0
+    input_qids: [Q.medium.mass, Q.medium.c_s0]
+    applied_functions: []
+    provenance_status: DERIVED-EXECUTED
+    regime: [medium-GNLS-positive-real]
+    assumptions:
+      - {predicate: positive, qids: [Q.medium.mass, Q.medium.c_s0, Q.medium.h0]}
+    domain_measure_bcs:
+      domain: finite-scalar-positive-real
+      measure: null
+      boundary_conditions: []
+    denominator_guards: []
+    literal_consistency: []
+    source_locus: {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 269, line_end: 269}
+    execution_locus: {path: research/pde_ledger_v2/scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py, line_start: 277, line_end: 285}
+    benchmark_refs: []
+
+  - relation_id: R4
+    residual:
+      - Sub
+      - [Q, Q.brane.c_gamma]
+      - [Sqrt, [Div, [Q, Q.brane.mu_R], [Q, Q.brane.rho_br]]]
+    designated_output: Q.brane.c_gamma
+    input_qids: [Q.brane.mu_R, Q.brane.rho_br]
+    applied_functions: []
+    provenance_status: DERIVED-EXECUTED
+    regime: [medium-GNLS-positive-real, linear-unstrained-brane]
+    assumptions:
+      - {predicate: positive, qids: [Q.brane.rho_br, Q.brane.mu_R, Q.brane.c_gamma]}
+    domain_measure_bcs:
+      domain: finite-scalar-positive-real
+      measure: null
+      boundary_conditions: []
+    denominator_guards:
+      - [Q, Q.brane.rho_br]
+    literal_consistency: []
+    source_locus: {path: research/pde_ledger_v2/notes/parameter_register.md, line_start: 271, line_end: 271}
+    execution_locus: {path: research/pde_ledger_v2/scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py, line_start: 516, line_end: 601}
+    benchmark_refs: []

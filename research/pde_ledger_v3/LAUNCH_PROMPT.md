@@ -33,9 +33,24 @@ claims are stale; the session record says which.
    result. ⛔ Never pre-derive and present. ⭐ Flag every identification BEFORE making it.
 2. ⭐ **Show the equations and the dimensions at every step** (user, 2026-08-01). Derive dimensions from
    the Lagrangian/action, ⛔ do not read them off the register and agree.
-3. ⛔⛔ **Scripts are the volatile surface. Anything Codex writes gets a FRESH AGENT leg AND a GROK leg.**
-   ⚠ The 2026-07-29/30 scale-back cut the *directive bookend*; it did NOT licence skipping review of
-   builder-written code. A fresh agent of yours may review a file you made a minor fix to.
+3. ⛔⛔ **CODEX BUILDS EVERY DELIVERABLE — scripts AND `.tex` cards. Each gets a FRESH AGENT leg AND a
+   GROK leg.** ⚠ **Extended 2026-08-01 (user):** *"Codex should build the tex files too and you and Grok
+   review those as well. Can't have a single point of failure."* ⛔ **The rule is NOT scripts-only** — a
+   card is what a reader actually reads, so an orchestrator-authored card is reviewed by its own author.
+   ⚠ Caught right after the orchestrator authored `paper/steps/S9_light_requires_shear.tex` itself.
+   ⭐ **The generalisation: *builder ≠ reviewer* is about the ARTIFACT A READER TRUSTS, ⛔ not the file
+   extension.** ⚠ The 2026-07-29/30 scale-back cut the *directive bookend*; it did NOT licence skipping
+   review of builder-written work.
+
+3b. ⛔⛔ **THE `.wl` IS BLIND — from the registry AND from the `.py`** (user, restated 2026-08-01):
+   *"the wl script doesn't import the values. It's written blind independent of the sympy scripts as a way
+   to double check and stress the AI for verification."*
+   ⚠⚠ **THE HAZARD ONE BUILDER CREATES:** if the same Codex writes both engines, the `.wl` can **anchor
+   on the `.py`** and the tension is gone — the two agree because they share an author, ⛔ not because
+   the physics checks out.
+   ⭐ **Cheapest fix is ORDERING, and it costs nothing: write the blind `.wl` FIRST, before the SymPy
+   audit exists.** ⇒ There is nothing to anchor to. ⛔ Do not rely on a *"do not read the `.py`"*
+   instruction — that does not survive a grep; the file must not exist yet (or must be out of the tree).
 4. ⭐ **Every step adds its quantities and relations to `research/pde_ledger_v3/reduction/` and the gate
    must pass before the step banks.** The registry IS the requirements list — ⛔ do not defer it.
    ⚠ **Both engines, but with a DIVISION OF LABOUR** (⛔ corrected 2026-08-01 — the old wording pointed

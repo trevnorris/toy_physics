@@ -89,18 +89,34 @@ blocker"* on the photon-simulation track, when that action **is** what half two 
 **Banked:** `83668b97` S0.5 · `361e8114` v3's own `reduction/` + **S9** · `f2f5d9af` S9 reviews folded +
 the Mathematica gate · `df57fc76` session record.
 
-⚠⚠ **S9's DERIVATION is banked; S9's ARTIFACT UNIT is NOT — ⛔ these are different claims and an
-earlier version of this file conflated them.** The physics was walked side by side and the registry
-holds it: 10 continuous quantities, 4 relations, residue = the four GNLS primitives + light's two
-postulated constants. ⛔ **But the step is 3 of 6 artifacts** (note · register entry · TeX card), and
-the missing **SymPy audit** means ⛔ **nothing in v3 executes the transverse dispersion** — see OWED 2b.
+✅ **S9 and S10 are BOTH CLOSED.** Light's linear sector, half one, is done.
 
-**▶ NEXT: FINISH S9** — the SymPy audit, the blind Mathematica audit, the source map.
-⛔⛔ **Do NOT walk S10 until S9's unit closes.** ⚠ Compounding the retrofit across 20 steps is the exact
-failure this method exists to prevent, and *"we're nearly done with S9"* is how it starts.
+| step | artifacts | verification |
+|---|---|---|
+| **S9** | note · register entry · TeX card | cone `c_γ²=μ_R/ρ_br` confirmed **4 ways** |
+| **S10** | note · TeX card · blind `.wl` · SymPy audit · registry row · pre-registration | **2 engines + 2 review legs, all CLEAN** |
 
-**THEN: S10 and S11** — the two transverse photons, then the stray-longitudinal departure. Then
-**S11a**, the packet + simulation specification, which does not exist yet.
+⭐⭐ **S10's result:** the mode count is **computed** — nullity of the dynamical matrix at each root, in
+both engines — and it is **`D_brane − 1`**, verified across `D = 2,3,4,5`. ⛔⛔ **The bulk NEVER ENTERS
+the computation**, so codimension is not the wrong number, it is an **ABSENT QUANTITY**. ⇒ ⭐ Light having
+two polarisations is a statement that our space is **three-dimensional**.
+
+⭐ **Registry gained one row: `Q.brane.D_brane = 3`**, discrete-structural, **postulated**. It closes a
+hole that was already open — S9's dimensions depend on it and it was declared nowhere.
+⛔ **No `n_pol` row, by TEST not preference:** `constraint_dimension` **raises** on a relation over
+discrete symbols, and the schema (`additionalProperties: false`) cannot express a derived discrete value
+⇒ a bare row would make a **derived** count look like a **free choice**.
+
+⚠ **An S9 loose end closed itself.** The S9 ablation showed its dimension check was blind to the brane
+dimension; S10's closed form shows why: `[μ_R] − [ρ_br] = (2−D) − (−D) = 2` in the length slot **for
+every `D`**. ⛔ Not a blind spot — an **identity**.
+
+**▶ NEXT: S11 — the stray longitudinal.** ⭐ The interesting one.
+⛔⛔ **Do NOT frame it as a defect to fix.** S10 leaves `ω² = 0`: **non-propagating, ⛔ NOT absent.**
+Compressibility lifts that zero. ⚠ **User, 2026-08-02: exact Maxwell would be the FAILURE** — it puts
+charge in by hand, so a model matching it exactly has **no way to physically anchor charge**. The extra
+mode **is** the anchor, and it is what made the drum-head charge picture click.
+⇒ `CHARTER.md#falsification-standard` · `V3_STEP_PLAN.md` § S11 · the charge memory.
 
 ⚠ **Read the session record's §6 before S10** — it carries the `μ_br` ≠ `μ_R` hazard (Cauchy vs
 MacCullagh, near-identical names, different objects) and the three-step story of light's departure.

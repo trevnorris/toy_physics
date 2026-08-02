@@ -178,6 +178,19 @@ any real superfluid · failing to *derive* a legitimately postulated quantity (�
 ⭐ ⇒ **Postulating freely is not free — every postulate is a knob**, and the model is scored on surplus:
 the burden shifts from *"is this like a real superfluid"* to *"how many knobs did this cost"*.
 
+⭐⭐⭐ **STRONGER THAN "EXPECT EXTRA" — AN EXACT MATCH WOULD BE THE FAILURE** (user, 2026-08-02):
+
+> We were never expecting exact Maxwell, and **we cannot get it, because we are IMPORTING Maxwell into
+> the model.** ⭐⭐ *"If it was exact Maxwell then it wouldn't have a way to physically anchor to the
+> model."*
+
+⇒ Maxwell puts **charge in by hand** as an external source. A model reproducing it **exactly** would
+**inherit that gap** — charge would have nothing in the model to attach to. ⇒ ⭐ **The extra structure IS
+the anchor point**, ⛔ not a blemish on an otherwise clean match. ⚠ On record: the extra longitudinal is
+what made the drum-head charge picture click (`V3_STEP_PLAN.md` § S11).
+⛔⛔ **Many `FAIL_*` tokens are simply MISNAMED** — `FAIL_CAUCHY_STRAY_LONGITUDINAL` above all. ⛔ Never
+read the prefix as a verdict.
+
 ⭐⭐ **EXPECT EXTRA — ⛔ do not score it as failure** (user, 2026-07-31). **The comparison targets are
 themselves incomplete:** Maxwell puts **charge** in by hand, GR **matter** as a stress tensor — ⇒ neither
 *derives* what this model derives. ⇒ **Deriving what the reference assumes yields structure it has no slot

@@ -78,21 +78,46 @@ legs came back clean. ⛔ The RULES above give principles; this gives the **orde
 2. ⭐ **PRE-REGISTER your predictions.** Write down what you expect the scripts to produce, **commit it
    to a TRACKED path** (so the timestamp proves priority) — then ⛔ **MOVE IT OUT OF THE TREE** for the
    duration, or the review legs can read your answers. ⚠ I got this half-right once and leaked.
-3. **BLIND `.wl` FIRST**, before any `.py` exists — so there is nothing to anchor on. Directive carries
+3. ⭐⭐ **REVIEW THE DIRECTIVE — fresh agent + Grok — BEFORE the build runs** (user, 2026-08-02).
+   ⛔⛔ **The directive is the ONE artifact both engines share**, so an error in it lands in **both**,
+   they agree, and dual-engine certifies wrong physics. Everything downstream is checked twice; the
+   directive is checked zero times. ⚠ **The check only this leg can do: DO THE TWO DIRECTIVES SPECIFY
+   THE SAME PHYSICS?** — only the author would ever compare them, and the author wrote both.
+   ⇒ [[feedback-directive-design-review]].
+4. **BLIND `.wl` FIRST**, before any `.py` exists — so there is nothing to anchor on. Directive carries
    the action and ⛔ **none of the results**. ⚠ **LEAK-GATE THE DIRECTIVE BEFORE LAUNCH** (grep it for the
    answers) — Codex snapshots the prompt into argv, so a later fix does nothing.
-4. **ARBITER RE-RUN.** ⛔ Run it yourself; never take the builder's word. Compare against step 2.
-5. **QUARANTINE the `.wl`**, then have Codex build the **SymPy audit + any registry insertion**. Restore
+5. ⭐⭐ **LAUNCH THE SCRIPT'S REVIEW LEGS THE MOMENT IT EXISTS — ⛔ BEFORE YOU LOOK AT ITS RESULTS.**
+   They run in background, so this costs nothing and saves wall-clock. ⛔⛔ **This ordering is the whole
+   defence, and it is not a preference** — see the FAILURE MODE box below.
+6. **ARBITER RE-RUN.** ⛔ Run it yourself; never take the builder's word. Compare against step 2.
+   ⚠ Reproducing proves **determinism**; matching your predictions proves it agrees with **you**.
+   ⛔ Neither is a review, and a shared wrong assumption passes both.
+7. **QUARANTINE the `.wl`**, then have Codex build the **SymPy audit + any registry insertion**. Restore
    after and ⭐ **verify byte-identical to the committed blob** — that is what proves the quarantine held.
-6. **ALL GATES** — acceptance, dim gate, able-to-fail, pytest. ⭐ A new **discrete** row must leave the
+   ⚠ Reviewers can still read a quarantined file from its **git blob** (`git show <sha>:<path>`) — that
+   keeps the builder blind while the review proceeds. ⛔ Tell them never to restore it into the tree.
+8. **ALL GATES** — acceptance, dim gate, able-to-fail, pytest. ⭐ A new **discrete** row must leave the
    continuous payload **unchanged**.
-7. **YOU write the step record.** ⭐ It records the *walk*, and only you were there. ⛔ Codex cannot.
-8. **CODEX writes the TeX card** from that record (rule 3 — builder ≠ reviewer applies to `.tex` too).
-9. **REVIEW: one fresh agent + one Grok, and put the PHYSICS FILTER IN THE PROMPT** — *"report a finding
-   only if it catches a way the physics could be wrong; ⛔ do not report 'the script would be wrong on a
-   different input'."* ⭐ That single paragraph is the difference between one real finding and six.
-10. ⛔⛔ **FILTER BEFORE ACTING. A finding is not a mandate.** Most will not survive. *"Recorded, not
+9. **YOU write the step record.** ⭐ It records the *walk*, and only you were there. ⛔ Codex cannot.
+10. **CODEX writes the TeX card** from that record (rule 3 — builder ≠ reviewer applies to `.tex` too),
+    and it gets its **own** two legs, launched the same way — on sight, not after you have read it.
+11. ⭐ **EVERY review prompt carries the PHYSICS FILTER** — *"report a finding only if it catches a way
+    the physics could be wrong; ⛔ do not report 'the script would be wrong on a different input'."*
+    ⭐ That single paragraph is the difference between one real finding and six.
+12. ⛔⛔ **FILTER BEFORE ACTING. A finding is not a mandate.** Most will not survive. *"Recorded, not
     acted on"* is a complete disposition. ⛔ Do **not** reach for a rebuild.
+
+⛔⛔ **THE FAILURE MODE THIS ORDERING EXISTS TO STOP — measured twice in one session (2026-08-02), both
+times caught by the USER, not by me:**
+⚠ **A self-administered check discharges the felt need for an independent one.** Before the directive
+review I had leak-gated the directives; before the `.wl` review I had done the arbiter re-run **and** the
+pre-registration comparison. Each time the artifact felt **verified**, so the review leg did not feel
+*skipped* — it felt **already done**. ⛔ The rule was written down, and I had read it that session.
+⚠⚠ **And a CLEAN result makes this worse, not better.** The `.wl` matched **12 of 13** pre-registered
+predictions, which read as *"fine, keep moving"* — when agreement with your own expectations is precisely
+the evidence that ⛔ **cannot** detect an assumption you and the script share.
+⇒ ⭐ **Do not rely on noticing. Launch on sight of the artifact, before forming a view of it.**
 
 ⚠ **Two launch failures already paid for, ⛔ do not repeat:**
 ⛔ **Verify the DELIVERABLE, not the session** — `hook: Stop` + exit 0 fired on a run handed an **empty

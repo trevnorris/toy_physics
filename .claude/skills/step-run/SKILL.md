@@ -80,6 +80,27 @@ Invoke as `/step-run <step-id>`. Follow this sequence exactly; do not substitute
 10. **Have Codex write the TeX card from the record.** Invoke `/build` for the card so its own fresh-agent
     and Grok legs launch on sight, before you read it. Builder and reviewer remain separate for `.tex`.
 
+## ⭐⭐ STANDING CHECK before any directive ships — static or instantaneous?
+
+Run this on every specification, and state the answer in the directive rather than leaving it implicit:
+
+> **What timescale or rate did I just send to `0` or `∞`, and what would it have governed?**
+
+⛔ **If the removed rate is close to what the step is trying to determine, the limit is illegitimate** —
+it answers the question by assumption, and ⚠ **a closed-form result looks equally healthy either way**, so
+no downstream gate will catch it.
+
+⚠ **It never looks like removing time.** It looks like a simple constitutive law or a standard matching
+condition. Observed disguises: a **memoryless** closure (removes a relaxation time); a **sharp interface**
+(removes the wall's width channel); **adiabatic elimination** (removes a DOF's inertia); **linearising
+about rest** when the background flows (removes convective terms); a **frozen wall**.
+
+⭐ **Prefer generalising to taking the limit when it is cheap** — carrying one relaxation time keeps the
+algebra rational and makes the instantaneous case a **reportable limit** instead of a premise.
+⚠ An honestly-recorded freeze still costs: a prior step recorded *"computed with the wall width FROZEN"*
+and undoing it is the entire reason its successor exists. ⇒ Recording a freeze is the minimum, ⛔ not the
+fix. ⇒ `[[feedback-static-or-instantaneous-check]]`.
+
 ## Finding Disposition
 
 Before every repair or rebuild, apply the physics filter. A finding is not a mandate. Act only when it

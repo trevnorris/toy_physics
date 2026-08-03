@@ -13,6 +13,44 @@ older about the interface.
 | **S11b-B** — the homogeneous assembly | ⛔ **directive at rev 4, REJECTED by both legs.** Rev 5 owed, ⛔ **BLOCKED on a user decision** (see below). ⛔ No build has run |
 | **S11b-C** — the non-uniform transverse coupling | **NEW, not started.** Split out of B, see below |
 
+## ⭐⭐ THE PHYSICAL READING — what the math has actually said so far
+
+⚠ **The user asked for a conceptual walkthrough once the scripts are built and the derivations settled.**
+⭐ **That is OWED at the end of S11b-B.** This section is the running material for it — ⛔ keep it in plain
+physical language and add to it as results land.
+
+**1 · The bulk pushes back on the faces in two different ways, and which one you get depends on frequency.**
+If a disturbance is fast enough that sound can run away into the bulk, the face feels **radiation
+resistance** — energy genuinely carried off, like a loudspeaker cone radiating into a room. If it is too
+slow for its wavelength, the bulk motion is **evanescent**: it sloshes locally, carries nothing away, and
+just makes the face feel **heavier** (added mass `ρ_m/α`). ⭐ The dividing line is the bulk's sound cone.
+
+**2 · The leak needs a finite conversion RATE to lose energy at all.** Material converting between brane and
+bulk in response to face *velocity* does **no net work if it responds instantly** — it stays exactly in
+quadrature, pushing while the face is moving one way and pulling equally as it moves back. ⭐ **Give the
+conversion a lag and the lag does the work.** ⇒ slow disturbances see the leak; fast ones do not — the
+channel **freezes out** at high `ωτ`. ⚠ This result exists only because the user rejected an instantaneous
+closure; under one the effect is identically zero.
+
+**3 · You cannot get these equations from an energy principle, and the reason is physical.** The interface
+moves material **irreversibly**. An action principle is time-symmetric — it would have the material flow
+back. ⇒ ⭐ that is why the derivation had to become **balance laws**: energy accounting alone cannot express
+a one-way process. ⚠ The mathematical symptom was an *advanced* kernel and a mode growing at `e^{t/τ}`.
+
+**4 · Whether the stray longitudinal mode is TRAPPED or LEAKY is the same question as which side of the
+bulk's sound cone you approach it from.** ⭐ Below the cone the disturbance cannot radiate — it is bound to
+the slab and dies in place. Above it, it can — it leaks into the bulk. ⚠ The branch ambiguity that cost
+three revisions is exactly this physical distinction wearing mathematical clothing: getting the
+continuation wrong swaps *"trapped and decaying"* for *"leaking and growing"*. ⛔ It is not bookkeeping.
+
+**5 · What actually drives material across the interface?** We had it driven by **bulk pressure alone**.
+⚠ But material moves because it is **cheaper to sit on the other side** — a difference in chemical
+potential. ⭐⭐ **Under the old closure, a brane that is internally compressed, sitting still, next to a calm
+bulk would have nothing driving conversion at all.** That cannot be right: a compressed brane *wants* to
+shed material. ⇒ that missing drive is the `Λ_μ μ_θ` term, and it is the closure finding below.
+⚠ **This is the same physical channel as the user's dark-energy idea** (bulk reordering onto the brane
+over time) ⇒ ⭐ worth revisiting there once B closes.
+
 ## ⛔⛔ THE CLOSURE FINDING — the most important thing on this page
 
 **Three independent parties, none of whom saw the others' work, reached the same conclusion:** the

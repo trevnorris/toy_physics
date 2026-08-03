@@ -511,6 +511,42 @@ required, that is a result, record it.
 **Register:** **C13** is adjacent but ⛔ **not** this step's job (a gravitational wave is not a brane
 mode).
 
+#### ⭐ `S_leak` EXISTS ALREADY, and it is an IDENTITY — ⛔ not an ansatz {#s11b-sleak}
+
+⚠ **Found by corpus search during the S11b walk, 2026-08-03**, and it is the mass-channel expression of
+this very step's coupling. Projecting 4D continuity onto the slab against a window `W(w)` leaves an
+integration-by-parts remainder — `research/pde_audit/scripts/stage_v2_06_07_poisson_newtonian_sympy_audit.py:53-62`.
+⭐ **Nobody set out to derive a leak; it is what is left over because the window has edges.**
+
+⛔⛔ **DO NOT IMPORT IT.** ⚠ **User, 2026-08-03:** *"We did a bunch of work on pde_audit. It was completed
+at the time, but I'm unsure how solid it is since this model is always evolving in minor ways."*
+⇒ It is a **lead, not an authority**. Re-derive it in **both** engines; it is cheap, and blind dual-engine
+is exactly what settles whether it still holds. ⭐ That also means S11b carries **no dependency** on that
+tree's solidity.
+
+⚠ **It is adjacent to a RULED-OUT object and the distinction is load-bearing.** S12's `S_drain` mass-sink
+was ruled out as **frozen-wall-premised**. `S_leak` is an *identity*, so the ruling does not obviously
+reach it — ⛔ but that has **not** been verified, and it must be, not assumed.
+
+#### ⭐⭐ THE USER'S DARK-ENERGY POSTULATE — banked 2026-08-03, ⛔ do not lose it {#dark-energy-postulate}
+
+> *"this mechanism I am postulating is the reason for dark energy. As the bulk reorders onto the brane,
+> the brane expands to accommodate. Causing expansion. But that's for later."*
+
+⇒ `S_leak` carries a **steady DC part**: the bulk continuously re-orders onto the brane, and the brane
+expands to accommodate it. ⭐ **Re-ordering, ⛔ not material moving between two substances** — brane and
+bulk are one medium in two phases, so the leak is the order parameter converting at the wall
+(user-confirmed 2026-08-03; likely the same physics as S12's `Γ_B`, ⚠ unverified).
+
+⚠ **It has an IMMEDIATE technical consequence for S11b, so it is not purely "for later":** the wave is a
+perturbation on a background that is **not static**. ⭐ Separable, and generously — a leak timescale of
+order the Hubble time (`~4×10¹⁷ s`) against an optical period (`~2×10⁻¹⁵ s`) is **~32 orders**. ⇒ hold the
+background fixed over a wave period and take `δS_leak` as the coupling, ⭐ **but record
+`wave period ≪ leak timescale` as a stated validity condition** rather than assuming it silently.
+
+⭐ **Why it is worth keeping past this step:** it ties the DC leak rate to an **observable** (the expansion
+rate), which is a future calibration hook — ⛔ not claimed, not derived, and out of scope here.
+
 ---
 
 ## PHASE 3 — the drain (3 steps) ⚠ where the interior is deferred

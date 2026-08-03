@@ -1037,6 +1037,40 @@ against. ⇒ This step's honest form is: *name what integration needs that phase
 
 ### S22 · ⭐⭐ HALF TWO — what only a simulation can settle
 
+#### ⭐⭐ THE NEAR-TERM LINEAR SIM INVENTORY — banked 2026-08-02, ⛔ do not re-derive it
+
+⚠ **These need NO nonlinearity.** They are blocked by **one LINEAR object** — the brane–bulk interface
+coupling law (**S11b**) — ⛔ **not** by the missing nonlinear shear action. ⇒ Much cheaper than the geon.
+
+| # | what it measures | needs | blocked by |
+|---|---|---|---|
+| 1 | ⭐⭐ **transverse → longitudinal conversion at a defect** — how much light converts to the stray mode passing a particle. ⚠ The families do **not** mix in a *homogeneous* brane (coupling `∝ k·a`); `∇μ_R ≠ 0` mixes them | a defect profile | **form** available now with a generic profile; **magnitude** needs the interior (`R1`) |
+| 2 | ⭐⭐ **does the longitudinal actually radiate into the bulk** | the interface law | **S11b** |
+| 3 | ⭐ **the flexural crossover** — `ω ∝ k²` at long wavelength once the wall width is dynamical. ⛔ **Able to fail:** a clean cone means move 5 was wrong | width mode inertia + stiffness | **S11b** + **S5–S7** |
+| 4 | **birefringence near a defect** — the two polarisations are degenerate *by symmetry* in a homogeneous brane; a defect splits them | a defect profile | as (1) |
+| 5 | **Test 5** — set `χ_B = 0`, confirm shear propagation dies (`notes/brane_bulk_handoff.md:880`) | nothing new | ⭐ **runnable now**, designed, never run |
+
+⛔⛔ **TAUTOLOGY GUARD:** a sim fed `μ_R` that reports `c_γ = √(μ_R/ρ_br)` has measured **nothing** — a
+linear integrator already does exactly that. ⇒ Postulated parameters are fine to *run* with; they bound
+what the run may **claim**. Conversion efficiency, mode structure, stability and confinement are genuine
+outputs; ⛔ **the speeds are not.**
+
+#### ⭐⭐ "STAYS QUANTIZED IN A PACKET" IS THREE DIFFERENT QUESTIONS — ⛔ do not merge them
+
+⚠ The user's ambition is *"a photon travelling through space, self-sustaining."* Three readings, **three
+different blockers**, and conflating them caused a false alarm that `ħ` was on the critical path:
+
+| reading | needs | status |
+|---|---|---|
+| **a bound state** — a localized mode with a **discrete** frequency spectrum, trapped by a defect | ⭐ a linear wave equation in a **varying** medium (Sturm–Liouville) | ⭐⭐ **reachable, LINEAR.** No `ħ`, no nonlinearity |
+| **a soliton** — one allowed lump, energy fixed by a size–amplitude relation | the nonlinear shear action | ⛔ **C6** — the real wall, and what the user actually wants |
+| **`ħω` quanta** — energy in discrete lumps | field quantization | ⛔ **not a classical PDE sim at all**, at any effort |
+
+⭐⭐ **⇒ Shelving `ħ_model` does NOT block the simulation.** A classical field has continuous energy no
+matter how good the code is; row three was never reachable this way. ⇒ `ħ_model` connects the model to
+quantum mechanics — a **separate project** from watching the brane move. ⛔ Do not re-open it here.
+
+
 ⛔⛔ **BROADENED 2026-08-01 (user decision: broad, ⛔ not photon-specific).** This step was *"the interior
 debt list."* It is now **every nonlinear gap** — the throat interior, the geon, the drain law, the
 **nonlinear brane-shear action**, and the **packet/soliton**.

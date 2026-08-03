@@ -117,6 +117,75 @@ outcome as confirmation of a derivation never performed.
 - ⛔ **A finding about a CHECK is not a finding about the PHYSICS**, and there is a **red-team phase** for
   hardening. ⭐ When tempted to harden one engine's internal checks, **build the other engine instead.**
 
+## ⛔⛔ B's REV-3 REVIEW — BOTH LEGS, FOLD THESE INTO REV 4
+
+⚠⚠ **READ THE DIAGNOSIS BEFORE THE LIST.** Rev 1 and rev 2 failed structurally. **Rev 3's new findings are
+all in the parts that were CHANGED to fix rev 2** — each revision was a substantial rewrite, and each
+rewrite introduced fresh defects of the same class. ⇒ ⭐⭐ **REV 4 MUST BE MINIMAL AND SURGICAL: fix the
+named findings and change nothing else.** ⛔ Do not rewrite the specification again.
+
+⭐ **The sharpest instance of why:** rev 2's branch rule was *vague but safe* ("state which sheet");
+rev 3 replaced it with a *precise and wrong* one (`Im q_out ≥ 0`), which is **not** the retarded
+continuation and would flip the sign of the deliverable. ⇒ ⭐⭐ **When fixing an ambiguity you are not sure
+of, a wrong precise answer is worse than the ambiguity — make the engines report and justify their choice
+instead of picking badly.**
+
+### ⭐⭐⭐ The finding that outlives the directive
+
+**The scope sentence "propagate freely, decay, or fail to exist" OMITS INSTABILITY.** The quadratic energy
+carries no boundedness conditions on its moduli or the cross term `C`, so an unbounded scalar sector could
+produce a **growing mode** — and both builders were steered to misclassify it rather than report it as
+⭐ **the charter-level falsifier it would be.** ⛔ A falsification channel was closed by accident, in a
+ledger whose entire purpose is being able to fail. **Fix this first.**
+
+### Convergent (both legs)
+
+- ⛔ **`Z_perm` and the Rayleigh function double-count the closure's dissipation.** `Z_perm` already folds
+  `Λ_p`, `Λ_V`, `τ` into the pressure–velocity law; a Rayleigh term built from the same `J_±` adds a second
+  dissipative force from the same object — and its form is left free, so engines can also *disagree*.
+  ⭐ **Suggested single non-redundant rule:** treat `J_±` as **determined** by the closure plus the bulk
+  solution rather than as an independent field. The constraint then stops being non-holonomic in effect,
+  substitution becomes legitimate, `Z_perm` carries all dissipation as one external face force, and ⛔ **no
+  Rayleigh function is needed.** ⚠ Verify that claim rather than assuming it.
+- ⛔ **The stored-energy list is not a closed symmetry basis.** Terms involving `∇·u` and mixed
+  scalar-gradient stiffnesses are allowed at the same order. ⇒ ask for the **closed basis**, ⛔ do not give
+  a list and say "report omissions" — `B8-B` can otherwise certify removal of gradient stiffness while an
+  omitted allowed term still changes the dispersion.
+
+### Grok only
+
+- ⛔⛔ **`U` has NO `u`↔compression coupling; the only path is `B1`'s constraint, and that is left VERBAL.**
+  ⇒ both engines could write the balance **without a `∇·u` term**, obtain a free longitudinal mode, and
+  agree. ⭐ **This is whole-interface rev 1's false null rebuilt inside `B1` — the third time this coupling
+  has been left implicit after being derived explicitly in the walk.** ⇒ **WRITE THE CONSTRAINT OUT.** It is
+  linearised mass conservation: kinematics, not a result.
+- §3b's variational steps never say where the integrated-out bulk enters, while `B2` still requires it.
+
+### Codex only
+
+- ⛔ **`Im q_out ≥ 0` is not the retarded continuation** — see the diagnosis above.
+- ⛔ **"Assume passivity" is not computable** from `J = Λ_pδp + Λ_V V`: it needs the brane–bulk
+  chemical-potential affinity and its reciprocal traction law, neither supplied. ⚠ A stationary face with an
+  internal density perturbation has `δp = V = J = 0` here, so **pressure-driven conversion is excluded by
+  construction.**
+- ⛔ **Calling `Λ⁰ → 0` "reversible" contradicts** the supplied fact that propagating `Re Z` survives as
+  radiation resistance with impermeable faces.
+- ⛔ **Control A does not isolate thickness:** holding `δW = 0` also zeroes the face velocity and so removes
+  pressure loading and permeability simultaneously.
+- ⛔⛔ **The note that B6's controls "could only re-encode a predetermined result" constrains the answer and
+  defeats blindness** — it instructs engines to discard ablation dependence rather than discover it. ⭐ Same
+  defect class the rule was written to prevent. **Delete it.**
+- ⛔ **Normalizations undefined** for the internal-DOF count, `B3`'s response, `B4`'s stress, `B6`'s
+  coefficient — engines can emit incomparable dimensions under identical tags.
+- ⛔ **`q_n` is never defined** (only `q_out` is), and `v₀|q_n|/ω` is not a real smallness measure for
+  complex `ω`.
+
+### Cleared by both legs — ⛔ do not re-open
+
+Scope boundary is explicit and not leaked · header physics symmetric and `reduction/` barred from both ·
+no pre-registration leak · `B8` controls B/C/D are genuine form cuts · the closed count is square **given a
+correct `B1`** · tractability and orphan check clean.
+
 ## ▶ Next actions, in order
 
 1. **Fold rev 3's review** (running at handoff time; outputs in the session scratchpad).

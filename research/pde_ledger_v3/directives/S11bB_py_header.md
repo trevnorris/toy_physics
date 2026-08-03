@@ -1,11 +1,13 @@
 # DIRECTIVE — S11b-B SymPy audit and registry insertion
 
-**Deliverables (absolute paths):**
-1. `/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11bB_interface_assembly_sympy_audit.py`
-2. any additions to `/var/projects/toy_physics/research/pde_ledger_v3/reduction/quantities.yaml` and
-   `relations.yaml`
+**Deliverable (absolute path):**
+`/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11bB_interface_assembly_sympy_audit.py`
 
-Run the script and the existing gates. Iterate until everything exits 0. Then stop and exit — ⛔ do not
+⛔ **One deliverable only.** ⚠ There is **no registry insertion and no gate run in this step** — both live
+under the barred `reduction/`, and an earlier revision listed them here while barring them below, which
+relocated the asymmetry instead of removing it.
+
+Run the script. Iterate until it exits 0. Then stop and exit — ⛔ do not
 write a report or a summary.
 
 ## ⛔⛔ ONE OF TWO INDEPENDENT ENGINES

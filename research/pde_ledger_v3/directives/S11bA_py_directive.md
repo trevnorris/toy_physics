@@ -205,25 +205,41 @@ case, where some may be singular. ⚠ Omitting that third case is a known prior 
   `S11BA_GRAZING_BEHAVIOUR`
 
 **A5 · Bulk response — permeable faces.**
-⭐ **Closure, fixed here so the family is finite.** Take the relative flux of §3 to obey a **MEMORYLESS**
-linear law at each face — its value at an instant depends only on the instantaneous values of the fields
-at that face, with ⛔ **no time derivative of `J` or of `δp`, and no memory kernel**:
+⭐ **Closure, fixed here so the family is finite.** Take the relative flux of §3 to obey a linear law at
+each face with **one relaxation time**, since the transfer is a conversion process occurring at a finite
+rate:
 
 ```
-J_±  =  Λ_p · δp|_face  +  Λ_V · V_±
+J_±  =  Λ_p(ω) · δp|_face  +  Λ_V(ω) · V_±
+
+Λ_p(ω) = Λ_p⁰ / (1 − iωτ)          Λ_V(ω) = Λ_V⁰ / (1 − iωτ)
 ```
+
+⛔⛔ **DO NOT set `τ = 0`, and do not treat an instantaneous law as the default.** ⚠ `τ → 0` is the
+**memoryless limit**, and it asserts that conversion across the interface is *instantaneous* — which is
+close to the quantity this programme exists to determine. Imposing it would answer a rate question by
+assumption, and a rational response looks equally healthy either way.
+⭐ **Report the `τ → 0` limit as a special case**, ⛔ not as the premise.
+
+⚠ **Report the behaviour across the whole range of `ωτ`** — small, order unity, and large — for every
+quantity whose value depends on it. ⛔ Do not report only one regime.
+
+⚠ **Scope limit to record:** a **single** `τ` shared by both coefficients. A more general law would admit
+separate relaxation times or a full memory kernel; that generalisation is ⛔ not attempted here.
 
 ⭐ **`V_±` is the OUTWARD face velocity of §1, ⛔ not the global `∂_t ζ_±`.** ⚠ `J_±` is face-odd by
 construction, so pairing it with a face-even quantity through a single scalar coefficient would give
 reflection-related faces opposite constitutive terms and spuriously mix `δW` into `ζ_c`.
 
-⭐ **`Λ_p` and `Λ_V` are free but REAL symbols.** ⛔ Do not carry them as generic complex quantities — a
-dissipation classification asks which terms are real and in phase with velocity, and that question is
-vacuous if the coefficients may themselves be complex.
+⭐ **`Λ_p⁰`, `Λ_V⁰` and `τ` are free but REAL symbols, with `τ ≥ 0`.** ⛔ Do not carry them as generic
+complex quantities — a dissipation classification asks which terms are real and in phase with velocity,
+and that question is vacuous if the underlying constants may themselves be complex. ⚠ The frequency
+dependence above is the **only** source of complexity in the closure.
 
 Report their dimensions. Recompute A4 under this condition and report the modified `Z` **as a function of
-`Λ_p` and `Λ_V`**. Then report, **for each of A4's three regimes and each parity combination**, whether a
-dissipative part (real, in phase with velocity) is present and **on which coefficient it depends**.
+`Λ_p⁰`, `Λ_V⁰` and `ωτ`**. Then report, **for each of A4's three regimes and each parity combination**,
+whether a dissipative part (real, in phase with velocity) is present, **on which coefficient it depends**,
+and **how it varies with `ωτ`** — including both limits.
 
 ⛔⛔ **REPORT THE DEGENERATE LOCI.** The closure is only *generically* solvable: there are coefficient
 values at which a face equation loses its dependence on the bulk amplitude, so a driven face has **no**
@@ -235,12 +251,12 @@ prints `PASS`. ⇒ solve for those loci explicitly and report them.
 memory, and that generalisation is not attempted here.
 ⇒ additional tag `S11BA_DEGENERATE_LOCI`
 ⇒ `S11BA_PERMEABLE_COEFF_DIMS`, `S11BA_Z_PERMEABLE`, `S11BA_DISSIPATIVE_BY_REGIME_AND_PARITY`,
-  `S11BA_CLOSURE_SCOPE_LIMIT`
+  `S11BA_DISSIPATION_VS_OMEGA_TAU`, `S11BA_TAU_ZERO_LIMIT`, `S11BA_CLOSURE_SCOPE_LIMIT`
 
 **A6 · Dimensions.**
 Derive, from the equations above and ⛔ **not** from any external table or registry, the `[L,T,M]`
-exponents of: `Z`, `m_add`, `ρ_m`, `c_s0`, `v₀`, `Λ_p`, `Λ_V`, and A1's source term. Show the route for
-each.
+exponents of: `Z`, `m_add`, `ρ_m`, `c_s0`, `v₀`, `Λ_p⁰`, `Λ_V⁰`, `τ`, and A1's source term. Show the route
+for each.
 ⚠ **A check reducing to an identity of the form `(X − 2Y) + 2Y == X` is worthless.** Label each route
 **independent** or **definitional**.
 ⇒ `S11BA_DIM_<name>` per entry, plus `S11BA_DIM_ROUTE_KIND` per entry

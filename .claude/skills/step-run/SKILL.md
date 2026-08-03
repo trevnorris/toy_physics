@@ -42,6 +42,13 @@ Invoke as `/step-run <step-id>`. Follow this sequence exactly; do not substitute
    shared wrong assumption passes both.
 6. **Establish a baseline before change.** Commit the generated artifact before any repair, destructive
    edit, or quarantine. A repair to an untracked file leaves no baseline and no reviewable blob.
+   ⛔⛔ **`_scratch/` IS GITIGNORED, so "commit first" silently does NOTHING there.** ⚠ Directives, review
+   prompts and fold notes all live under `research/**/_scratch/`, which `.gitignore:96` excludes. `git add`
+   refuses them, so the baseline step **fails open** — you believe you committed and nothing happened.
+   ⭐ **For anything under `_scratch/`, snapshot to `_scratch_backups/<name>_<sha>.tar.gz` instead**; that
+   convention already exists for exactly this. ⚠ **Measured twice:** a SymPy audit was repaired while
+   untracked with no baseline, and a directive revision overwrote its predecessor the same way — ⛔ both
+   times because the artifact sat where `commit` was a no-op rather than an error.
 7. **Quarantine, then build SymPy.** Move the `.wl` out of the working tree, build the SymPy audit and
    any registry insertion through `/build`, then restore the `.wl`. Verify it is byte-identical to its
    committed blob. Reviewers may read that blob with `git show <sha>:<path>` but must never restore it;

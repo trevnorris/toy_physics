@@ -92,7 +92,20 @@ alongside the quarantined engine.
 ⛔ Keep a denylist only for large live trees that cannot be moved, and then **symmetrically in both
 directives** — an entry in one and not the other silently makes one engine better-informed than the other.
 
-## Launch in Parallel
+## ⛔⛔ SERIALIZE WHEN BOTH LEGS ABLATE MATHEMATICA — the licence has TWO seats
+
+⚠ **Measured 2026-08-03:** two legs were launched in parallel to ablate the same `.wl`. Each builds its own
+ablation harness, each spawns kernels, and the second leg **died mid-run (exit 144)** having written only
+its preamble. ⛔ A dead leg is not a clean leg — the review simply did not happen.
+
+⭐ **Rule: if the artifact is a Mathematica script and both legs will ablate it, run them ONE AT A TIME.**
+Parallelism is a wall-clock optimisation; ⛔ it is not part of what makes the legs independent.
+**Independence comes from freshness and from neither leg seeing the other's output** — both survive
+serialization intact, so long as the second leg is given no hint of the first's findings.
+
+⚠ Parallel launch remains correct for **document** reviews and for anything that does not spawn kernels.
+
+## Launch in Parallel (non-Mathematica artifacts)
 
 1. Start Grok using the **Bash tool with `run_in_background: true`**, and ⛔ **no shell `timeout`**.
    ⛔ Do NOT use a shell `&` — this harness detaches the job and notifies you on exit; `&` inside a

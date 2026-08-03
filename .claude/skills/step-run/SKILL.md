@@ -105,3 +105,20 @@ fix. ⇒ `[[feedback-static-or-instantaneous-check]]`.
 
 Before every repair or rebuild, apply the physics filter. A finding is not a mandate. Act only when it
 catches a way the physics could be wrong; `Recorded, not acted on` is a complete disposition.
+
+⛔⛔ **A FINDING ABOUT A CHECK IS NOT A FINDING ABOUT THE PHYSICS.** ⭐ **There is a dedicated red-team
+phase for hardening each sector** (user, 2026-08-03) — so a weak or unfailable internal check is a
+**red-team item**, ⛔ never a step blocker, and hardening it per-step is **duplicated work**.
+
+⭐ **The question to ask when a review reports weak verification:** *do I already have better evidence for
+this value than the script's own opinion of it?* If two independent derivations agree with it, **yes** —
+⇒ record the limit and move on.
+
+⚠⚠ **Measured 2026-08-03:** legs found a blind `.wl` with **correct values everywhere** but most
+conclusions behind unfailable checks. The repair pass that followed added **183 lines carrying no
+physics**, four banned checks-verifying-checks, and left **19 of 23 tags still unfailable** — because the
+directive mandated a check reading *"the same expression that is emitted"*, which is `x === x`.
+
+⭐⭐ **When tempted to harden one engine's internal checks, BUILD THE OTHER ENGINE INSTEAD.** The
+architecture's answer to *"is this value right?"* is the blind second engine that can **disagree** — ⛔ not
+a longer `allChecks` list.

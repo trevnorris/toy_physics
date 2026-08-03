@@ -31,6 +31,8 @@ boundaryProduct[lo_, hi_] := om[lo] jw[lo] - om[hi] jw[hi];
 weightedNormalCurrent[lo_, hi_] := int[D[om[w], w] jw[w], {w, lo, hi}];
 sourceFinite = boundaryProduct[w1, w2] + weightedNormalCurrent[w1, w2];
 sourceInfinite = int[D[om[w], w] jw[w], {w, -Infinity, Infinity}];
+infiniteEndpointCondition = HoldForm[
+  Limit[om[w] jw[w], w -> -Infinity] == 0 && Limit[om[w] jw[w], w -> Infinity] == 0];
 projectionFinite = <|
   "projectedBalance" -> (dt[rho3] + divX[j3] == sourceFinite),
   "rho3" -> int[om[w] rho[w], {w, w1, w2}],
@@ -38,14 +40,18 @@ projectionFinite = <|
   "source" -> sourceFinite
 |>;
 projectionInfinite = <|
-  "endpointCondition" -> HoldForm[Limit[om[w] jw[w], w -> -Infinity] == 0 && Limit[om[w] jw[w], w -> Infinity] == 0],
+  "endpointCondition" -> infiniteEndpointCondition,
   "source" -> sourceInfinite
 |>;
 
 (* A2: exact parity reduction on the explicitly symmetric finite interval [-L,L]. *)
-sourceEvenSymmetric = 0;
+evenBoundaryReduced = clean[om[bigL] jEven[bigL] - om[bigL] jEven[bigL]];
+evenWeightedCurrentReduced = clean[
+  int[om'[u] jEven[u], {u, 0, bigL}] - int[om'[u] jEven[u], {u, 0, bigL}]];
+sourceEvenSymmetric = clean[evenBoundaryReduced + evenWeightedCurrentReduced];
 sourceOddSymmetric = -2 om[bigL] jOdd[bigL] + 2 int[om'[u] jOdd[u], {u, 0, bigL}];
-sourceEvenInfinite = 0;
+sourceEvenInfinite = clean[
+  int[om'[u] jEven[u], {u, 0, Infinity}] - int[om'[u] jEven[u], {u, 0, Infinity}]];
 sourceOddInfinite = 2 int[om'[u] jOdd[u], {u, 0, Infinity}];
 
 (* Polynomial witnesses verify the parity reductions without assigning either result. *)
@@ -88,11 +94,18 @@ dynamicExtraTime = int[(rhoDyn @@ dynamicArguments) D[omDyn @@ dynamicArguments,
 dynamicExtraTangential = int[
   Sum[jDyn[i, w, x1, x2, x3, t] D[omDyn @@ dynamicArguments, dynamicCoordinates[[i]]], {i, 1, 3}],
   {w, w1, w2}];
+dynamicTimeProductTerm = Expand[D[omTime[t] rhoTime[t], t] - omTime[t] D[rhoTime[t], t]];
+dynamicTangentialProductTerm = Expand[
+  D[omTangential[x1] jTangential[x1], x1] - omTangential[x1] D[jTangential[x1], x1]];
+dynamicExtraSigns = clean[{
+  dynamicTimeProductTerm/(rhoTime[t] omTime'[t]),
+  dynamicTangentialProductTerm/(jTangential[x1] omTangential'[x1])
+}];
 dynamicWindowExtras = <|
   "timeProductRuleTerm" -> dynamicExtraTime,
   "tangentialProductRuleTerm" -> dynamicExtraTangential,
   "numberOfTermsAbsentFromStaticA1" -> Length[{dynamicExtraTime, dynamicExtraTangential}],
-  "signsInProjectedBalance" -> {1, 1}
+  "signsInProjectedBalance" -> dynamicExtraSigns
 |>;
 
 (* A4: harmonic acoustic half-space solution and radiation/decay branch selection. *)
@@ -133,36 +146,84 @@ zEvanescent = clean[zImpermeable /. q -> I alpha];
 zPropParts = clean[ComplexExpand[{Re[zPropagating], Im[zPropagating]}]];
 zEvanParts = clean[ComplexExpand[{Re[zEvanescent], Im[zEvanescent]}]];
 
-(* Parity amplitudes use both face displacements measured in global +w. *)
+(* Radiation leaves one amplitude in each half-space; the two face conditions fix both. *)
 zetaThickness = {deltaW/2, -deltaW/2};
 zetaCenter = {zetaC, zetaC};
 outwardSigns = {1, -1};
 outwardVelocity[zetas_List] := clean[outwardSigns (-I omega zetas)];
 pressureFor[zetas_List, zLocal_] := clean[zLocal outwardVelocity[zetas]];
-ratioFor[zetas_List, zLocal_] := clean[pressureFor[zetas, zLocal]/outwardVelocity[zetas]];
-thicknessVelocity = outwardVelocity[zetaThickness];
-centerVelocity = outwardVelocity[zetaCenter];
-thicknessPressure = pressureFor[zetaThickness, zImpermeable];
-centerPressure = pressureFor[zetaCenter, zImpermeable];
-zByParity = <|
-  "deltaW" -> <|"outwardFaceVelocities" -> thicknessVelocity, "facePressures" -> thicknessPressure,
-    "ZPerFace" -> ratioFor[zetaThickness, zImpermeable]|>,
-  "zetaC" -> <|"outwardFaceVelocities" -> centerVelocity, "facePressures" -> centerPressure,
-    "ZPerFace" -> ratioFor[zetaCenter, zImpermeable]|>
+radiatingAmplitudes = {ampU, ampD};
+bulkPotentials = {upperPotential, lowerPotential};
+outwardBulkFaceVelocities = clean[{
+  D[upperPotential, w] /. w -> W0/2,
+  -D[lowerPotential, w] /. w -> -W0/2
+}];
+bulkFacePressures = clean[{
+  I rhoM omega upperPotential /. w -> W0/2,
+  I rhoM omega lowerPotential /. w -> -W0/2
+}];
+faceConditions[zetas_List] := Thread[outwardBulkFaceVelocities == outwardVelocity[zetas]];
+amplitudeSolution[zetas_List] := First[Solve[faceConditions[zetas], radiatingAmplitudes]];
+solvedFacePressures[zetas_List] := clean[bulkFacePressures /. amplitudeSolution[zetas]];
+solvedPerFaceResponse[zetas_List] := clean[
+  solvedFacePressures[zetas]/outwardVelocity[zetas]];
+solvedModeResponse[zetas_List] := <|
+  "motionGlobalW" -> zetas,
+  "outwardFaceVelocities" -> outwardVelocity[zetas],
+  "amplitudeSolution" -> amplitudeSolution[zetas],
+  "facePressures" -> solvedFacePressures[zetas],
+  "ZPerFace" -> solvedPerFaceResponse[zetas]
 |>;
+thicknessModeResponse = solvedModeResponse[zetaThickness];
+centerModeResponse = solvedModeResponse[zetaCenter];
+
+(* This probe is neither a pure thickness motion nor a pure centre shift. *)
+nonCombinationMotion = {zetaProbe, 2 zetaProbe};
+thicknessProbeMotion = {zetaProbe, -zetaProbe};
+centerProbeMotion = {zetaProbe, zetaProbe};
+nonCombinationModeResponse = solvedModeResponse[nonCombinationMotion];
+nonCombinationChangesSolvedQuantities = And[
+  amplitudeSolution[nonCombinationMotion] =!= amplitudeSolution[thicknessProbeMotion],
+  amplitudeSolution[nonCombinationMotion] =!= amplitudeSolution[centerProbeMotion],
+  solvedFacePressures[nonCombinationMotion] =!= solvedFacePressures[thicknessProbeMotion],
+  solvedFacePressures[nonCombinationMotion] =!= solvedFacePressures[centerProbeMotion]
+];
+perFaceResponseDependsOnCombination = Not[TrueQ[
+  clean[solvedPerFaceResponse[zetaThickness] - solvedPerFaceResponse[zetaCenter]] == {0, 0} &&
+  clean[solvedPerFaceResponse[zetaThickness] - solvedPerFaceResponse[nonCombinationMotion]] == {0, 0}
+]];
+radiationAmplitudeCount = Length[radiatingAmplitudes];
+faceConditionCount = Length[faceConditions[{zetaU, zetaD}]];
+allRadiatingAmplitudesFixed = TrueQ[
+  Sort[First /@ amplitudeSolution[{zetaU, zetaD}]] === Sort[radiatingAmplitudes]];
 
 (* Added mass is deliberately computed against global-w face acceleration, per face. *)
 globalFaceAcceleration[zetas_List] := clean[-omega^2 zetas];
 addedMassByFace = clean[pressureFor[{zetaU, zetaD}, zEvanescent]/globalFaceAcceleration[{zetaU, zetaD}]];
 addedMassExpected = {rhoM/alpha, -rhoM/alpha};
 addedMassCheck = TrueQ[clean[addedMassByFace - addedMassExpected] == {0, 0}];
+addedMassSigns = FullSimplify[Sign /@ addedMassByFace, assumptions];
+addedMassOutput = <|
+  "purelyImaginaryRegime" -> HoldForm[q^2 < 0],
+  "perFaceUpperLowerGlobalWDefinition" -> addedMassByFace,
+  "deltaWPerFace" -> addedMassByFace,
+  "zetaCPerFace" -> addedMassByFace,
+  "signsUpperLower" -> addedMassSigns,
+  "check" -> addedMassCheck
+|>;
 
 (* The prescribed pole test uses 1/expression == 0. *)
 grazingPoleTest = TrueQ[FullSimplify[(1/zImpermeable == 0) /. q -> 0, assumptions]];
 grazingAddedMassPoleTest = And @@ (TrueQ[FullSimplify[(1/# == 0) /. alpha -> 0, assumptions]] & /@ addedMassExpected);
-grazingDrivenStatus = If[grazingPoleTest && TrueQ[clean[(I q amp) /. q -> 0] == 0],
+grazingFaceResidual = clean[I q amp - faceVelocity];
+grazingDrivenSolutionSet = Reduce[
+  ((grazingFaceResidual /. q -> 0) == 0) && faceVelocity != 0, amp, Complexes];
+grazingUndrivenResidual = clean[grazingFaceResidual /. {q -> 0, faceVelocity -> 0}];
+grazingUndrivenAmplitudeCoefficient = clean[Coefficient[grazingUndrivenResidual, amp]];
+grazingDrivenStatus = If[grazingPoleTest && TrueQ[grazingDrivenSolutionSet === False],
   "NO_SOLUTION_WITH_FINITE_BULK_AMPLITUDE", "NOT_ESTABLISHED"];
-grazingUndrivenStatus = If[TrueQ[Reduce[0 == 0, amp, Complexes]],
+grazingUndrivenStatus = If[
+  TrueQ[grazingUndrivenAmplitudeCoefficient == 0 && (grazingUndrivenResidual /. amp -> 0) == 0],
   "CONSTANT_BULK_AMPLITUDE_FREE", "NOT_ESTABLISHED"];
 propagatingRePoleTest = TrueQ[FullSimplify[(1/zPropParts[[1]] == 0) /. qR -> 0, assumptions]];
 evanescentImPoleTest = TrueQ[FullSimplify[(1/zEvanParts[[2]] == 0) /. alpha -> 0, assumptions]];
@@ -172,10 +233,12 @@ grazingBehavior = <|
   "drivenNonzeroFaceVelocity" -> grazingDrivenStatus,
   "undrivenFace" -> grazingUndrivenStatus,
   "ZPoleByReciprocalTest" -> grazingPoleTest,
-  "propagatingApproach" -> <|"ReZPoleByReciprocalTest" -> propagatingRePoleTest, "ImZ" -> 0|>,
-  "evanescentApproach" -> <|"ReZ" -> 0, "ImZPoleByReciprocalTest" -> evanescentImPoleTest|>,
+  "propagatingApproach" -> <|"ReZPoleByReciprocalTest" -> propagatingRePoleTest,
+    "ImZ" -> zPropParts[[2]]|>,
+  "evanescentApproach" -> <|"ReZ" -> zEvanParts[[1]],
+    "ImZPoleByReciprocalTest" -> evanescentImPoleTest|>,
   "addedMassPerFaceReciprocalsAtGrazing" -> clean[(1/addedMassExpected) /. alpha -> 0],
-  "addedMassSignsUpperLower" -> {1, -1},
+  "addedMassSignsUpperLower" -> addedMassSigns,
   "addedMassPoleByReciprocalTest" -> grazingAddedMassPoleTest
 |>;
 
@@ -185,23 +248,52 @@ zByRegime = <|
   "qSquaredZero" -> grazingBehavior
 |>;
 zImpermeableOutput = <|"branches" -> radiationBranches, "genericZ" -> zImpermeable|>;
+genericSolvedPerFaceResponse = solvedPerFaceResponse[{zetaU, zetaD}];
+propagatingSolvedPerFaceResponse = clean[genericSolvedPerFaceResponse /. q -> qR];
+evanescentSolvedPerFaceResponse = clean[genericSolvedPerFaceResponse /. q -> I alpha];
+perFaceRealImaginaryParts[responses_List] :=
+  (clean[ComplexExpand[{Re[#], Im[#]}]] & /@ responses);
 parityRegimeResponse = <|
-  "qSquaredPositive" -> <|"ZPerFace" -> {zPropagating, zPropagating},
-    "ReImPerFace" -> {zPropParts, zPropParts}|>,
-  "qSquaredNegative" -> <|"ZPerFace" -> {zEvanescent, zEvanescent},
-    "ReImPerFace" -> {zEvanParts, zEvanParts}|>,
+  "qSquaredPositive" -> <|"ZPerFace" -> propagatingSolvedPerFaceResponse,
+    "ReImPerFace" -> perFaceRealImaginaryParts[propagatingSolvedPerFaceResponse]|>,
+  "qSquaredNegative" -> <|"ZPerFace" -> evanescentSolvedPerFaceResponse,
+    "ReImPerFace" -> perFaceRealImaginaryParts[evanescentSolvedPerFaceResponse]|>,
   "qSquaredZero" -> grazingBehavior
 |>;
-zByParity = Map[Append[#, "byRegime" -> parityRegimeResponse] &, zByParity];
+zByParity = <|
+  "amplitudesAfterRadiationCondition" -> radiatingAmplitudes,
+  "amplitudeCountAfterRadiationCondition" -> radiationAmplitudeCount,
+  "faceConditionCount" -> faceConditionCount,
+  "faceConditionsFixAllAmplitudes" -> allRadiatingAmplitudesFixed,
+  "deltaW" -> Append[thicknessModeResponse, "byRegime" -> parityRegimeResponse],
+  "zetaC" -> Append[centerModeResponse, "byRegime" -> parityRegimeResponse],
+  "perFaceResponseDependsOnCombination" -> perFaceResponseDependsOnCombination,
+  "nonCombinationAblation" -> <|
+    "motionGlobalW" -> nonCombinationMotion,
+    "solvedResponse" -> nonCombinationModeResponse,
+    "changesSolvedAmplitudesAndPressures" -> nonCombinationChangesSolvedQuantities
+  |>
+|>;
 
-(* Relative-flux channels; invert the linear transformation as a check. *)
-netAccretion = -(jPlus + jMinus);
-throughFlowLowerToUpper = (jPlus - jMinus)/2;
-fluxInverse = First[Solve[{acc == netAccretion, thru == throughFlowLowerToUpper}, {jPlus, jMinus}]];
-fluxChannelCheck = TrueQ[clean[({netAccretion, throughFlowLowerToUpper} /. fluxInverse) - {acc, thru}] == {0, 0}];
+(* Relative-flux channels follow from outward face orientation, not an invertible relabelling. *)
+faceFluxes = {jPlus, jMinus};
+netAccretion = clean[-Total[faceFluxes]];
+throughFlowLowerToUpper = clean[(outwardSigns . faceFluxes)/2];
+fluxChannelVector = {netAccretion, throughFlowLowerToUpper};
+fluxChannelMatrix = Table[Coefficient[fluxChannelVector[[i]], faceFluxes[[j]]],
+  {i, Length[fluxChannelVector]}, {j, Length[faceFluxes]}];
+fluxOrientationMatrix = {
+  -ConstantArray[1, Length[faceFluxes]],
+  outwardSigns/Length[faceFluxes]
+};
+fluxInverse = Thread[faceFluxes -> clean[Inverse[fluxChannelMatrix] . {acc, thru}]];
+jPlusDefinition = HoldForm[rhoM (vWUpper - zetaUDot)];
+jMinusDefinition = HoldForm[-rhoM (vWLower - zetaDDot)];
+fluxChannelCheck = TrueQ[fluxChannelMatrix === fluxOrientationMatrix &&
+  Det[fluxChannelMatrix] =!= 0];
 relativeFluxChannels = <|
-  "JplusDefinition" -> HoldForm[rhoM (vWUpper - zetaUDot)],
-  "JminusDefinition" -> HoldForm[-rhoM (vWLower - zetaDDot)],
+  "JplusDefinition" -> jPlusDefinition,
+  "JminusDefinition" -> jMinusDefinition,
   "netAccretionBySlab" -> netAccretion,
   "throughFlowOrientedLowerToUpper" -> throughFlowLowerToUpper,
   "inverse" -> fluxInverse
@@ -314,16 +406,33 @@ grazingDrivenNoSolution = Reduce[grazingDegenerate && rhoM > 0 && x >= 0 && Not[
   {lambdaP0, lambdaV0, x}, Reals];
 grazingDrivenFree = Reduce[grazingDegenerate && rhoM > 0 && x >= 0 && driveCoefficientZero,
   {lambdaP0, lambdaV0, x}, Reals];
+regularizedClosureResidual[coefficient_, drive_, prescribedVelocity_] :=
+  clean[coefficient pressure - drive prescribedVelocity];
+undrivenFreeAmplitudeStatus[regimeCoefficient_, locus_, regimeAssumptions_] := Module[
+  {undrivenResidual, coefficientVanishing, residualVanishing},
+  undrivenResidual = regularizedClosureResidual[regimeCoefficient, driveCoefficient, 0];
+  coefficientVanishing = TrueQ[FullSimplify[
+    Coefficient[undrivenResidual, pressure] == 0, regimeAssumptions && locus]];
+  residualVanishing = TrueQ[FullSimplify[
+    (undrivenResidual /. pressure -> 0) == 0, regimeAssumptions && locus]];
+  If[coefficientVanishing && residualVanishing, "FREE_AMPLITUDE", "NOT_ESTABLISHED"]
+];
+propUndrivenStatus = undrivenFreeAmplitudeStatus[
+  bulkAmplitudeCoefficient /. q -> omega r, propDegenerate,
+  Element[{r, lambdaP0, x}, Reals] && r > 0 && x >= 0];
+grazingUndrivenClosureStatus = undrivenFreeAmplitudeStatus[
+  bulkAmplitudeCoefficient /. q -> 0, grazingDegenerate,
+  Element[{lambdaP0, x}, Reals] && x >= 0];
 degenerateLoci = <|
   "qSquaredPositive" -> <|"locus" -> propDegenerate,
     "drivenNoSolutionLocus" -> propDrivenNoSolution,
     "drivenFreeAmplitudeLocus" -> propDrivenFree,
-    "undriven" -> "FREE_AMPLITUDE"|>,
+    "undriven" -> propUndrivenStatus|>,
   "qSquaredNegative" -> <|"locus" -> evanDegenerate|>,
   "qSquaredZero" -> <|"locus" -> grazingDegenerate,
     "drivenNoSolutionLocus" -> grazingDrivenNoSolution,
     "drivenFreeAmplitudeLocus" -> grazingDrivenFree,
-    "undriven" -> "FREE_AMPLITUDE"|>
+    "undriven" -> grazingUndrivenClosureStatus|>
 |>;
 
 closureScopeStructuralCheck = TrueQ[Together[lambdaP/lambdaP0 - lambdaV/lambdaV0] == 0];
@@ -372,18 +481,36 @@ dimensionValues = <|
   "tau" -> tauDim, "A1_source" -> sourceDim
 |>;
 dimensionRoutes = <|
-  "Z" -> HoldForm[dim[pressure/velocity]],
-  "m_add" -> HoldForm[dim[pressure/acceleration]],
-  "rho_m" -> HoldForm[dim[mass/(length^4)]],
+  "Z" -> HoldForm[dim[zImpedance] == dim[pressure/velocity]],
+  "m_add" -> HoldForm[dim[mAdd] == dim[pressure/acceleration]],
+  "rho_m" -> HoldForm[dim[rhoM] == dim[mass/(length^4)]],
   "c_s0" -> HoldForm[dim[dt^2 phi] == dim[cs0^2 laplacian phi]],
-  "v0" -> HoldForm[dim[length/time]],
-  "Lambda_p0" -> HoldForm[dim[massFlux/pressure]],
-  "Lambda_V0" -> HoldForm[dim[massFlux/velocity]],
-  "tau" -> HoldForm[dim[omega tau] == dim[1]],
-  "A1_source" -> HoldForm[dim[jw] == dim[dt Integrate[rho, w]]]
+  "v0" -> HoldForm[dim[v0] == dim[length/time]],
+  "Lambda_p0" -> HoldForm[dim[lambdaP0] == dim[massFlux/pressure]],
+  "Lambda_V0" -> HoldForm[dim[lambdaV0] == dim[massFlux/velocity]],
+  "tau" -> HoldForm[dim[tau] == dim[1/omega]],
+  "A1_source" -> HoldForm[dim[dt rho3 + divX[j3] - a1Source] == dim[0]]
 |>;
-independentRouteNames = {"c_s0", "Lambda_p0", "Lambda_V0", "A1_source"};
-routeKind[name_] := If[MemberQ[independentRouteNames, name], "INDEPENDENT", "DEFINITIONAL"];
+dimensionRouteTargets = <|
+  "Z" -> zImpedance, "m_add" -> mAdd, "rho_m" -> rhoM, "c_s0" -> cs0,
+  "v0" -> v0, "Lambda_p0" -> lambdaP0, "Lambda_V0" -> lambdaV0,
+  "tau" -> tau, "A1_source" -> a1Source
+|>;
+routeKindFromAssertion[route_, target_] := Module[
+  {heldRoute, equationSides, heldTarget},
+  heldRoute = route /. HoldForm[body_] :> HoldComplete[body];
+  equationSides = Cases[heldRoute,
+    HoldComplete[Equal[left_, right_]] :> {HoldComplete[left], HoldComplete[right]}, {0}];
+  heldTarget = HoldComplete[dim[routeTargetPlaceholder]] /. routeTargetPlaceholder -> target;
+  Which[
+    Length[equationSides] == 1 && MemberQ[First[equationSides], heldTarget], "DEFINITIONAL",
+    ! FreeQ[heldRoute, target], "INDEPENDENT",
+    True, "NOT_ESTABLISHED"
+  ]
+];
+routeKinds = AssociationMap[
+  routeKindFromAssertion[dimensionRoutes[#], dimensionRouteTargets[#]] &,
+  Keys[dimensionValues]];
 dimensionChecks = {
   TrueQ[2 csDim + phiDim + 2 gradDim == phiDim + 2 dtDim],
   TrueQ[jwDim == lambdaPDim + pressureDim],
@@ -409,15 +536,18 @@ windowWitnessSource[current_, bValue_] := NIntegrate[
 evenBChanged = Abs[windowWitnessSource[w^2, 1/2] - windowWitnessSource[w^2, 0]] > 10^-10;
 oddBChanged = Abs[windowWitnessSource[w, 1/2] - windowWitnessSource[w, 0]] > 10^-10;
 
+windowFamily = HoldForm[Sech[(w - b)/a]^2];
+windowControlInterval = {-bigL, bigL};
+windowBControlDomain = HoldForm[b != 0];
 windowParityControl = <|
-  "family" -> HoldForm[Sech[(w - b)/a]^2],
-  "interval" -> {-bigL, bigL},
+  "family" -> windowFamily,
+  "interval" -> windowControlInterval,
   "evenCurrentSourceAsFunctionOfB" -> windowControlEven,
   "oddCurrentSourceAsFunctionOfB" -> windowControlOdd,
   "evenCurrentIdenticallyIndependentOfB" -> Not[evenBChanged],
   "oddCurrentIdenticallyIndependentOfB" -> Not[oddBChanged],
   "b0EvenSource" -> clean[windowControlEven /. b -> 0],
-  "bControlDomain" -> HoldForm[b != 0]
+  "bControlDomain" -> windowBControlDomain
 |>;
 
 intervalControlEven = clean[omegaZero[bigL] jEven[bigL] - omegaZero[bigL + c] jEven[bigL + c]] +
@@ -429,16 +559,19 @@ evenCDerivativeWitness = clean[-omegaZero[bigL + c] 2 (bigL + c) /. c -> 0];
 oddCDerivativeWitness = clean[-omegaZero[bigL + c] /. c -> 0];
 evenCChanged = TrueQ[FullSimplify[evenCDerivativeWitness != 0, assumptions]];
 oddCChanged = TrueQ[FullSimplify[oddCDerivativeWitness != 0, assumptions]];
+intervalControlFamily = {-bigL, bigL + c};
+intervalControlWindow = HoldForm[Sech[w/a]^2];
+intervalControlDomain = HoldForm[c != 0 && c > -2 bigL];
 intervalSymmetryControl = <|
-  "family" -> {-bigL, bigL + c},
-  "window" -> HoldForm[Sech[w/a]^2],
+  "family" -> intervalControlFamily,
+  "window" -> intervalControlWindow,
   "evenCurrentSourceAsFunctionOfC" -> intervalControlEven,
   "oddCurrentSourceAsFunctionOfC" -> intervalControlOdd,
   "evenCurrentIdenticallyIndependentOfC" -> Not[evenCChanged],
   "oddCurrentIdenticallyIndependentOfC" -> Not[oddCChanged],
   "c0EvenSource" -> clean[intervalControlEven /. c -> 0],
   "c0OddSource" -> clean[intervalControlOdd /. c -> 0],
-  "controlDomain" -> HoldForm[c != 0 && c > -2 bigL]
+  "controlDomain" -> intervalControlDomain
 |>;
 
 (* A8: independent dimensionless small parameters and convective expansion. *)
@@ -466,18 +599,214 @@ validityFlowSpeed = <|
 |>;
 convectedOperator = Expand[(dtOp + v0 dwOp)^2];
 leadingConvectivePower = Exponent[convectedOperator - dtOp^2, v0, Min];
+leadingConvectiveTerm = clean[
+  Coefficient[convectedOperator - dtOp^2, v0, leadingConvectivePower] v0^leadingConvectivePower];
+spatialToTemporalScalingRule = dwOp -> dtOp/cs0;
+leadingRelativeCorrection = clean[
+  (leadingConvectiveTerm/dtOp^2) /. spatialToTemporalScalingRule];
+relativeOrderFromCorrection[relativeCorrection_] := If[
+  TrueQ[Exponent[Numerator[Together[relativeCorrection]], v0, Min] == 1] &&
+    TrueQ[clean[relativeCorrection/(v0/cs0)] =!= 0],
+  HoldForm[O[v0/cs0]], "NOT_ESTABLISHED"];
+discardedRelativeOrder = relativeOrderFromCorrection[leadingRelativeCorrection];
 discardedConvectiveOrder = <|
   "expandedConvectedTimeOperator" -> convectedOperator,
   "leadingPowerOfV0" -> leadingConvectivePower,
-  "relativeOrder" -> HoldForm[O[v0/cs0]],
+  "spatialToTemporalScaling" -> HoldForm[dwOp == dtOp/cs0],
+  "leadingRelativeCorrection" -> leadingRelativeCorrection,
+  "relativeOrder" -> discardedRelativeOrder,
   "alsoDiscardedInMassFlux" -> HoldForm[deltaRho v0]
 |>;
+
+(* Each conclusion-bearing emitted object is itself on the checked data path. *)
+projectionFiniteCheck = And[
+  TrueQ[projectionFinite["source"] === sourceFinite],
+  TrueQ[projectionFinite["rho3"] === int[om[w] rho[w], {w, w1, w2}]],
+  TrueQ[projectionFinite["j3"] === int[om[w] jX[w], {w, w1, w2}]],
+  TrueQ[projectionFinite["projectedBalance"] ===
+    (dt[rho3] + divX[j3] == projectionFinite["source"])],
+  TrueQ[productRuleResidual == 0]
+];
+projectionInfiniteCheck = And[
+  TrueQ[projectionInfinite["endpointCondition"] === infiniteEndpointCondition],
+  TrueQ[projectionInfinite["source"] === sourceInfinite]
+];
+parityEvenOutputCheck = And[
+  TrueQ[parityEven["finiteSymmetricSource"] === sourceEvenSymmetric],
+  TrueQ[parityEven["infiniteSymmetricSource"] === sourceEvenInfinite],
+  TrueQ[parityEven["exact"] === evenParityCheck],
+  TrueQ[clean[parityEven["finiteSymmetricSource"]] == 0],
+  TrueQ[clean[parityEven["infiniteSymmetricSource"]] == 0]
+];
+parityOddOutputCheck = And[
+  TrueQ[parityOdd["finiteSymmetricSource"] === sourceOddSymmetric],
+  TrueQ[parityOdd["infiniteSymmetricSource"] === sourceOddInfinite],
+  TrueQ[parityOdd["exact"] === oddParityCheck],
+  TrueQ[parityOdd["notForcedToVanish"] === TrueQ[oddParityReduced =!= 0]]
+];
+dynamicWindowExtrasCheck = And[
+  TrueQ[dynamicWindowExtras["timeProductRuleTerm"] === dynamicExtraTime],
+  TrueQ[dynamicWindowExtras["tangentialProductRuleTerm"] === dynamicExtraTangential],
+  TrueQ[dynamicWindowExtras["numberOfTermsAbsentFromStaticA1"] ===
+    Length[{dynamicWindowExtras["timeProductRuleTerm"],
+      dynamicWindowExtras["tangentialProductRuleTerm"]}]],
+  TrueQ[dynamicWindowExtras["signsInProjectedBalance"] === dynamicExtraSigns],
+  TrueQ[dynamicExtraSigns === {1, 1}]
+];
+zByRegimeCheck = And[
+  TrueQ[zByRegime["qSquaredPositive"]["q"] === qR],
+  TrueQ[clean[zByRegime["qSquaredPositive"]["Z"] -
+    (zImpermeable /. q -> zByRegime["qSquaredPositive"]["q"])] == 0],
+  TrueQ[zByRegime["qSquaredPositive"]["ReIm"] === clean[ComplexExpand[{
+    Re[zByRegime["qSquaredPositive"]["Z"]], Im[zByRegime["qSquaredPositive"]["Z"]]}]]],
+  TrueQ[zByRegime["qSquaredNegative"]["q"] === I alpha],
+  TrueQ[clean[zByRegime["qSquaredNegative"]["Z"] -
+    (zImpermeable /. q -> zByRegime["qSquaredNegative"]["q"])] == 0],
+  TrueQ[zByRegime["qSquaredNegative"]["ReIm"] === clean[ComplexExpand[{
+    Re[zByRegime["qSquaredNegative"]["Z"]], Im[zByRegime["qSquaredNegative"]["Z"]]}]]],
+  TrueQ[zByRegime["qSquaredZero"] === grazingBehavior]
+];
+zByParityCheck = And[
+  TrueQ[zByParity["amplitudesAfterRadiationCondition"] === radiatingAmplitudes],
+  TrueQ[zByParity["amplitudeCountAfterRadiationCondition"] ===
+    Length[zByParity["amplitudesAfterRadiationCondition"]]],
+  TrueQ[zByParity["faceConditionCount"] === faceConditionCount],
+  TrueQ[zByParity["faceConditionsFixAllAmplitudes"] === allRadiatingAmplitudesFixed],
+  TrueQ[zByParity["deltaW"]["motionGlobalW"] === zetaThickness],
+  TrueQ[zByParity["deltaW"]["outwardFaceVelocities"] === outwardVelocity[zetaThickness]],
+  TrueQ[zByParity["deltaW"]["amplitudeSolution"] === amplitudeSolution[zetaThickness]],
+  TrueQ[zByParity["deltaW"]["facePressures"] === solvedFacePressures[zetaThickness]],
+  TrueQ[zByParity["deltaW"]["ZPerFace"] === solvedPerFaceResponse[zetaThickness]],
+  TrueQ[zByParity["deltaW"]["byRegime"] === parityRegimeResponse],
+  TrueQ[zByParity["zetaC"]["motionGlobalW"] === zetaCenter],
+  TrueQ[zByParity["zetaC"]["outwardFaceVelocities"] === outwardVelocity[zetaCenter]],
+  TrueQ[zByParity["zetaC"]["amplitudeSolution"] === amplitudeSolution[zetaCenter]],
+  TrueQ[zByParity["zetaC"]["facePressures"] === solvedFacePressures[zetaCenter]],
+  TrueQ[zByParity["zetaC"]["ZPerFace"] === solvedPerFaceResponse[zetaCenter]],
+  TrueQ[zByParity["zetaC"]["byRegime"] === parityRegimeResponse],
+  TrueQ[zByParity["perFaceResponseDependsOnCombination"] ===
+    perFaceResponseDependsOnCombination],
+  TrueQ[zByParity["nonCombinationAblation"]["motionGlobalW"] === nonCombinationMotion],
+  TrueQ[zByParity["nonCombinationAblation"]["solvedResponse"] ===
+    nonCombinationModeResponse],
+  TrueQ[zByParity["nonCombinationAblation"]["changesSolvedAmplitudesAndPressures"] ===
+    nonCombinationChangesSolvedQuantities],
+  TrueQ[clean[nonCombinationMotion[[1]] - nonCombinationMotion[[2]]] =!= 0],
+  TrueQ[clean[nonCombinationMotion[[1]] + nonCombinationMotion[[2]]] =!= 0]
+];
+grazingBehaviorCheck = And[
+  TrueQ[grazingBehavior["q"] === 0],
+  TrueQ[grazingBehavior["finiteAmplitudeOutwardVelocity"] === clean[(I q amp) /. q -> 0]],
+  TrueQ[grazingBehavior["drivenNonzeroFaceVelocity"] === grazingDrivenStatus],
+  TrueQ[grazingBehavior["undrivenFace"] === grazingUndrivenStatus],
+  TrueQ[grazingBehavior["ZPoleByReciprocalTest"] === grazingPoleTest],
+  TrueQ[grazingBehavior["propagatingApproach"]["ReZPoleByReciprocalTest"] ===
+    propagatingRePoleTest],
+  TrueQ[grazingBehavior["propagatingApproach"]["ImZ"] === zPropParts[[2]]],
+  TrueQ[grazingBehavior["evanescentApproach"]["ReZ"] === zEvanParts[[1]]],
+  TrueQ[grazingBehavior["evanescentApproach"]["ImZPoleByReciprocalTest"] ===
+    evanescentImPoleTest],
+  TrueQ[grazingBehavior["addedMassPerFaceReciprocalsAtGrazing"] ===
+    clean[(1/addedMassExpected) /. alpha -> 0]],
+  TrueQ[grazingBehavior["addedMassSignsUpperLower"] === addedMassSigns],
+  TrueQ[grazingBehavior["addedMassPoleByReciprocalTest"] === grazingAddedMassPoleTest]
+];
+relativeFluxChannelsCheck = Module[{emittedChannels, emittedMatrix},
+  emittedChannels = {relativeFluxChannels["netAccretionBySlab"],
+    relativeFluxChannels["throughFlowOrientedLowerToUpper"]};
+  emittedMatrix = Table[Coefficient[emittedChannels[[i]], faceFluxes[[j]]],
+    {i, Length[emittedChannels]}, {j, Length[faceFluxes]}];
+  And[
+    TrueQ[relativeFluxChannels["JplusDefinition"] === jPlusDefinition],
+    TrueQ[relativeFluxChannels["JminusDefinition"] === jMinusDefinition],
+    TrueQ[emittedMatrix === fluxOrientationMatrix],
+    TrueQ[relativeFluxChannels["inverse"] ===
+      Thread[faceFluxes -> clean[Inverse[emittedMatrix] . {acc, thru}]]]
+  ]
+];
+windowParityControlCheck = And[
+  TrueQ[windowParityControl["family"] === windowFamily],
+  TrueQ[windowParityControl["interval"] === windowControlInterval],
+  TrueQ[windowParityControl["evenCurrentSourceAsFunctionOfB"] === windowControlEven],
+  TrueQ[windowParityControl["oddCurrentSourceAsFunctionOfB"] === windowControlOdd],
+  TrueQ[windowParityControl["evenCurrentIdenticallyIndependentOfB"] === Not[evenBChanged]],
+  TrueQ[windowParityControl["oddCurrentIdenticallyIndependentOfB"] === Not[oddBChanged]],
+  TrueQ[windowParityControl["b0EvenSource"] === clean[
+    windowParityControl["evenCurrentSourceAsFunctionOfB"] /. b -> 0]],
+  TrueQ[windowParityControl["bControlDomain"] === windowBControlDomain]
+];
+intervalSymmetryControlCheck = And[
+  TrueQ[intervalSymmetryControl["family"] === intervalControlFamily],
+  TrueQ[intervalSymmetryControl["window"] === intervalControlWindow],
+  TrueQ[intervalSymmetryControl["evenCurrentSourceAsFunctionOfC"] === intervalControlEven],
+  TrueQ[intervalSymmetryControl["oddCurrentSourceAsFunctionOfC"] === intervalControlOdd],
+  TrueQ[intervalSymmetryControl["evenCurrentIdenticallyIndependentOfC"] === Not[evenCChanged]],
+  TrueQ[intervalSymmetryControl["oddCurrentIdenticallyIndependentOfC"] === Not[oddCChanged]],
+  TrueQ[intervalSymmetryControl["c0EvenSource"] === clean[
+    intervalSymmetryControl["evenCurrentSourceAsFunctionOfC"] /. c -> 0]],
+  TrueQ[intervalSymmetryControl["c0OddSource"] === clean[
+    intervalSymmetryControl["oddCurrentSourceAsFunctionOfC"] /. c -> 0]],
+  TrueQ[intervalSymmetryControl["controlDomain"] === intervalControlDomain]
+];
+discardedConvectiveOrderCheck = Module[
+  {emittedOperator, emittedPower, emittedLeadingTerm, emittedRelativeCorrection},
+  emittedOperator = discardedConvectiveOrder["expandedConvectedTimeOperator"];
+  emittedPower = Exponent[emittedOperator - dtOp^2, v0, Min];
+  emittedLeadingTerm = clean[
+    Coefficient[emittedOperator - dtOp^2, v0, emittedPower] v0^emittedPower];
+  emittedRelativeCorrection = clean[
+    (emittedLeadingTerm/dtOp^2) /. spatialToTemporalScalingRule];
+  And[
+    TrueQ[discardedConvectiveOrder["leadingPowerOfV0"] === emittedPower],
+    TrueQ[discardedConvectiveOrder["spatialToTemporalScaling"] ===
+      HoldForm[dwOp == dtOp/cs0]],
+    TrueQ[discardedConvectiveOrder["leadingRelativeCorrection"] ===
+      emittedRelativeCorrection],
+    TrueQ[discardedConvectiveOrder["relativeOrder"] ===
+      relativeOrderFromCorrection[discardedConvectiveOrder["leadingRelativeCorrection"]]],
+    TrueQ[discardedConvectiveOrder["alsoDiscardedInMassFlux"] === HoldForm[deltaRho v0]]
+  ]
+];
+addedMassOutputCheck = And[
+  TrueQ[addedMassOutput["purelyImaginaryRegime"] === HoldForm[q^2 < 0]],
+  TrueQ[addedMassOutput["perFaceUpperLowerGlobalWDefinition"] === addedMassByFace],
+  TrueQ[addedMassOutput["deltaWPerFace"] ===
+    addedMassOutput["perFaceUpperLowerGlobalWDefinition"]],
+  TrueQ[addedMassOutput["zetaCPerFace"] ===
+    addedMassOutput["perFaceUpperLowerGlobalWDefinition"]],
+  TrueQ[addedMassOutput["signsUpperLower"] === FullSimplify[
+    Sign /@ addedMassOutput["perFaceUpperLowerGlobalWDefinition"], assumptions]],
+  TrueQ[addedMassOutput["check"] === TrueQ[clean[
+    addedMassOutput["perFaceUpperLowerGlobalWDefinition"] - addedMassExpected] == {0, 0}]]
+];
+degenerateLociCheck = And[
+  TrueQ[degenerateLoci["qSquaredPositive"]["locus"] === propDegenerate],
+  TrueQ[degenerateLoci["qSquaredPositive"]["drivenNoSolutionLocus"] ===
+    propDrivenNoSolution],
+  TrueQ[degenerateLoci["qSquaredPositive"]["drivenFreeAmplitudeLocus"] === propDrivenFree],
+  TrueQ[degenerateLoci["qSquaredPositive"]["undriven"] ===
+    undrivenFreeAmplitudeStatus[bulkAmplitudeCoefficient /. q -> omega r,
+      degenerateLoci["qSquaredPositive"]["locus"],
+      Element[{r, lambdaP0, x}, Reals] && r > 0 && x >= 0]],
+  TrueQ[degenerateLoci["qSquaredNegative"]["locus"] === evanDegenerate],
+  TrueQ[degenerateLoci["qSquaredZero"]["locus"] === grazingDegenerate],
+  TrueQ[degenerateLoci["qSquaredZero"]["drivenNoSolutionLocus"] ===
+    grazingDrivenNoSolution],
+  TrueQ[degenerateLoci["qSquaredZero"]["drivenFreeAmplitudeLocus"] === grazingDrivenFree],
+  TrueQ[degenerateLoci["qSquaredZero"]["undriven"] ===
+    undrivenFreeAmplitudeStatus[bulkAmplitudeCoefficient /. q -> 0,
+      degenerateLoci["qSquaredZero"]["locus"],
+      Element[{lambdaP0, x}, Reals] && x >= 0]]
+];
+dimensionRouteKindChecks = KeyValueMap[
+  TrueQ[#2 === routeKindFromAssertion[dimensionRoutes[#1], dimensionRouteTargets[#1]]] &,
+  routeKinds];
 
 (* Cross-check exact real/imaginary reconstructions and limiting relations. *)
 responseChecks = {
   TrueQ[clean[zImpermeable - rhoM omega/q] == 0],
-  TrueQ[ratioFor[zetaThickness, zImpermeable] == {zImpermeable, zImpermeable}],
-  TrueQ[ratioFor[zetaCenter, zImpermeable] == {zImpermeable, zImpermeable}],
+  TrueQ[solvedPerFaceResponse[zetaThickness] == {zImpermeable, zImpermeable}],
+  TrueQ[solvedPerFaceResponse[zetaCenter] == {zImpermeable, zImpermeable}],
   addedMassCheck,
   grazingPoleTest,
   zPermeableCheck,
@@ -492,11 +821,19 @@ controlChecks = {
   TrueQ[clean[windowControlEven /. b -> 0] == 0],
   evenBChanged, oddBChanged, evenCChanged, oddCChanged
 };
+gatedOutputChecks = {
+  projectionFiniteCheck, projectionInfiniteCheck, parityEvenOutputCheck,
+  parityOddOutputCheck, dynamicWindowExtrasCheck, zByRegimeCheck, zByParityCheck,
+  grazingBehaviorCheck, relativeFluxChannelsCheck, windowParityControlCheck,
+  intervalSymmetryControlCheck, discardedConvectiveOrderCheck,
+  addedMassOutputCheck, degenerateLociCheck
+};
 allChecks = Join[
   {TrueQ[productRuleResidual == 0], evenParityCheck, oddParityCheck,
     And @@ propagatingBranchCheck, And @@ evanescentBranchCheck, fluxChannelCheck,
     closureScopeStructuralCheck, timescaleDimensionCheck, flowSpeedDimensionCheck},
-  responseChecks, dimensionChecks, controlChecks
+  responseChecks, dimensionChecks, controlChecks, gatedOutputChecks,
+  dimensionRouteKindChecks
 ];
 internalConsistency = And @@ allChecks;
 
@@ -510,10 +847,7 @@ emit["S11BA_DYNAMIC_WINDOW_EXTRA_TERMS", dynamicWindowExtras];
 emit["S11BA_Z_IMPERMEABLE", zImpermeableOutput];
 emit["S11BA_Z_BY_REGIME", zByRegime];
 emit["S11BA_Z_BY_PARITY", zByParity];
-emit["S11BA_ADDED_MASS", <|"purelyImaginaryRegime" -> HoldForm[q^2 < 0],
-  "perFaceUpperLowerGlobalWDefinition" -> addedMassByFace,
-  "deltaWPerFace" -> addedMassByFace, "zetaCPerFace" -> addedMassByFace,
-  "check" -> addedMassCheck|>];
+emit["S11BA_ADDED_MASS", addedMassOutput];
 emit["S11BA_GRAZING_BEHAVIOUR", grazingBehavior];
 emit["S11BA_RELATIVE_FLUX_CHANNELS", relativeFluxChannels];
 emit["S11BA_PERMEABLE_COEFF_DIMS", <|"Lambda_p0" -> lambdaPDim, "Lambda_V0" -> lambdaVDim,
@@ -528,12 +862,28 @@ emit["S11BA_DEGENERATE_LOCI", degenerateLoci];
 
 KeyValueMap[(emit["S11BA_DIM_" <> #1, <|"exponentsLTM" -> #2, "route" -> dimensionRoutes[#1]|>]) &,
   dimensionValues];
-KeyValueMap[(emit["S11BA_DIM_ROUTE_KIND_" <> #1, routeKind[#1]]) &, dimensionValues];
+KeyValueMap[(emit["S11BA_DIM_ROUTE_KIND_" <> #1, routeKinds[#1]]) &, dimensionValues];
 
 emit["S11BA_CONTROL_WINDOW_PARITY", windowParityControl];
 emit["S11BA_CONTROL_INTERVAL_SYMMETRY", intervalSymmetryControl];
 emit["S11BA_VALIDITY_TIMESCALE", validityTimescale];
 emit["S11BA_VALIDITY_FLOW_SPEED", validityFlowSpeed];
 emit["S11BA_DISCARDED_CONVECTIVE_ORDER", discardedConvectiveOrder];
+
+ablationCoverageTags = {
+  "S11BA_PROJECTION_FINITE", "S11BA_PROJECTION_INFINITE",
+  "S11BA_PARITY_EVEN_JW", "S11BA_PARITY_ODD_JW",
+  "S11BA_DYNAMIC_WINDOW_EXTRA_TERMS", "S11BA_Z_BY_REGIME",
+  "S11BA_Z_BY_PARITY", "S11BA_GRAZING_BEHAVIOUR",
+  "S11BA_RELATIVE_FLUX_CHANNELS", "S11BA_CONTROL_WINDOW_PARITY",
+  "S11BA_CONTROL_INTERVAL_SYMMETRY", "S11BA_DISCARDED_CONVECTIVE_ORDER",
+  "S11BA_ADDED_MASS", "S11BA_DEGENERATE_LOCI",
+  "S11BA_DIM_ROUTE_KIND_Z", "S11BA_DIM_ROUTE_KIND_m_add",
+  "S11BA_DIM_ROUTE_KIND_rho_m", "S11BA_DIM_ROUTE_KIND_c_s0",
+  "S11BA_DIM_ROUTE_KIND_v0", "S11BA_DIM_ROUTE_KIND_Lambda_p0",
+  "S11BA_DIM_ROUTE_KIND_Lambda_V0", "S11BA_DIM_ROUTE_KIND_tau",
+  "S11BA_DIM_ROUTE_KIND_A1_source"
+};
+emit["S11BA_ABLATION_COVERAGE", ablationCoverageTags];
 
 Print["VERDICT: " <> If[TrueQ[internalConsistency], "PASS", "INTERNAL_CONTRADICTION"]];

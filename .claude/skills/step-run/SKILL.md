@@ -18,10 +18,22 @@ Invoke as `/step-run <step-id>`. Follow this sequence exactly; do not substitute
    the commit timestamp establishes priority, record the blob/commit, then move the predictions out of
    the tree. A do-not-read instruction does not survive a grep; the file must be absent.
 3. **Review the build directives before any build.** Run `.claude/skills/review-legs/SKILL.md` on the
-   directive packet with both directives visible as one review artifact. Require the unique comparison:
-   do the two directives specify the same physics? Keep predictions and answers on the do-not-read list.
-   The directive is shared by both engines, so one error there can make dual-engine agreement certify
-   wrong physics.
+   directive packet with both directives visible as one review artifact. ⭐ The directives are
+   **orchestrator-written**, so the two legs are **Codex + Grok** — ⛔ not a fresh Claude agent. Require
+   the unique comparison: do the two directives specify the same physics? The directive is shared by both
+   engines, so one error there can make dual-engine agreement certify wrong physics.
+
+   ⛔⛔ **THE DO-NOT-READ LIST MEANS EVERY FILE THAT CONTAINS AN ANSWER — ⛔ NOT EVERY FILE NAMED LIKE ONE.**
+   ⚠ **Measured 2026-08-03:** the list was built by *filename* (`*PREREGISTERED*`) and so omitted
+   `V3_STEP_PLAN.md` and `steps/`, which the **previous step's own directive had banned**. Four separate
+   loci in the plan stated expected results outright — a long-wavelength exponent, an expected
+   transverse-vs-longitudinal asymmetry, a projection identity's form **plus the exact file and lines
+   where it was computed**, and a validity condition verbatim. ⇒ both builders could grep, both read the
+   same paragraph, and dual-engine would certify **the plan's expectation rather than a derivation**.
+   ⭐ **Before writing the list, grep the live docs for the step's own tag names and expected objects, and
+   quarantine what hits.** ⚠ Two of those four loci were written **that same session, by the orchestrator,
+   while it was being careful about the directive** — the plan is reachable, and recording a result's
+   *shape and location* leaks it just as surely as recording its value.
 4. **Build the blind `.wl` first, before any `.py` exists.** Its directive carries the action and none of
    the results. Invoke `.claude/skills/build/SKILL.md`; it leak-gates before launch and starts both review
    legs itself before you inspect the artifact.
@@ -34,6 +46,11 @@ Invoke as `/step-run <step-id>`. Follow this sequence exactly; do not substitute
    any registry insertion through `/build`, then restore the `.wl`. Verify it is byte-identical to its
    committed blob. Reviewers may read that blob with `git show <sha>:<path>` but must never restore it;
    this keeps the SymPy builder blind while `.wl` review continues.
+   ⛔⛔ **QUARANTINE THE WHOLE ANSWER-BEARING SET, ⛔ not just the `.wl`** — the build directives, the
+   step's `_scratch/<step>_*` files, and any raw build transcript. ⚠ `_scratch/` accumulates Codex
+   transcripts holding a prior engine's **complete tag values verbatim**, and they are reachable by a
+   builder that obeys every stated instruction. ⇒ `.claude/skills/review-legs/SKILL.md`
+   § BLINDNESS IS ENFORCED BY ABSENCE.
 8. **Run all existing gates.** Run acceptance, dim, able-to-fail, and pytest gates. For a new
    discrete row, also verify that the continuous payload is unchanged.
    ⛔⛔ **Any NEW relation also needs its own algebra checked, because no gate does it.** Add an

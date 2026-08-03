@@ -511,6 +511,20 @@ required, that is a result, record it.
 **Register:** **C13** is adjacent but ⛔ **not** this step's job (a gravitational wave is not a brane
 mode).
 
+#### ⭐⭐ S11b IS SPLIT INTO THREE — A closed, B in review, C new {#s11b-split}
+
+⚠ **2026-08-03.** Two attempts to specify the whole interface in one pass were rejected before any build,
+and a third was rejected for mandating a non-uniform background while fixing plane waves. ⇒ three steps:
+
+| | scope | state |
+|---|---|---|
+| **S11b-A** | the bulk's response to moving faces + the projection identity | ✅ **CLOSED** — `steps/S11bA_interface_response.md` |
+| **S11b-B** | the **homogeneous** assembly ⇒ does the longitudinal radiate or stay bound | directive rev 3, in review |
+| **S11b-C** | the **non-uniform** transverse coupling ⇒ is light's confinement unconditional | **not started** |
+
+⭐ **The seam is real:** the longitudinal mode's fate needs no gradients; light's confinement needs them.
+⇒ Full state, traps, and C's requirements: **`steps/S11b_HANDOFF.md`**.
+
 #### ⭐ `S_leak` EXISTS ALREADY, and it is an IDENTITY — ⛔ not an ansatz {#s11b-sleak}
 
 ⚠ **Found by corpus search during the S11b walk, 2026-08-03**, and it is the mass-channel expression of

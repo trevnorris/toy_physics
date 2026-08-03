@@ -42,13 +42,21 @@ Invoke as `/step-run <step-id>`. Follow this sequence exactly; do not substitute
    shared wrong assumption passes both.
 6. **Establish a baseline before change.** Commit the generated artifact before any repair, destructive
    edit, or quarantine. A repair to an untracked file leaves no baseline and no reviewable blob.
-   ⛔⛔ **`_scratch/` IS GITIGNORED, so "commit first" silently does NOTHING there.** ⚠ Directives, review
-   prompts and fold notes all live under `research/**/_scratch/`, which `.gitignore:96` excludes. `git add`
-   refuses them, so the baseline step **fails open** — you believe you committed and nothing happened.
-   ⭐ **For anything under `_scratch/`, snapshot to `_scratch_backups/<name>_<sha>.tar.gz` instead**; that
-   convention already exists for exactly this. ⚠ **Measured twice:** a SymPy audit was repaired while
-   untracked with no baseline, and a directive revision overwrote its predecessor the same way — ⛔ both
-   times because the artifact sat where `commit` was a no-op rather than an error.
+   ⛔⛔ **`_scratch/` IS GITIGNORED (`.gitignore:96`), so "commit first" silently does NOTHING there.**
+   `git add` refuses the path, so the baseline step **fails open** — you believe you committed and nothing
+   happened. ⚠ **Measured twice:** a SymPy audit repaired with no baseline, and a directive revision that
+   overwrote its predecessor irrecoverably. ⛔ Neither was carelessness about the rule; both were the rule
+   being a **no-op rather than an error** in that location.
+   ⭐⭐ **THE FIX IS WHERE THINGS LIVE, ⛔ not a backup ritual** (user, 2026-08-03):
+   *"`_scratch` is for things we don't care about … If it's that important it shouldn't go into `_scratch`."*
+
+   | goes in `_scratch/` (disposable, ignored) | goes in a **TRACKED** directory |
+   |---|---|
+   | raw build/review transcripts, review prompts, fold notes | ⭐ **build directives** → `research/pde_ledger_v3/directives/` |
+
+   ⇒ ⛔ **Never author a build directive under `_scratch/`.** It is the one artifact both engines share and
+   the only one whose errors defeat dual-engine by construction — it belongs under version control, where
+   the baseline rule actually works.
 7. **Quarantine, then build SymPy.** Move the `.wl` out of the working tree, build the SymPy audit and
    any registry insertion through `/build`, then restore the `.wl`. Verify it is byte-identical to its
    committed blob. Reviewers may read that blob with `git show <sha>:<path>` but must never restore it;

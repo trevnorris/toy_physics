@@ -8,19 +8,11 @@ Then stop and exit — ⛔ do not write a report, a summary document, or a secon
 
 ## ⛔⛔ THIS SCRIPT IS BLIND. THAT IS ITS ENTIRE PURPOSE.
 
-It exists to be an **independent** check on a SymPy audit that does not yet exist. If it agrees with that
+It exists to be an **independent** check on a SymPy audit of the same physics. If it agrees with that
 audit because it copied from something, the check is worthless and the step is not verified.
 
-⛔ **DO NOT READ, open, grep, `cat`, `git show`, or otherwise inspect:**
-- `/var/projects/toy_physics/research/pde_ledger_v3/reduction/` — any file
-- any `.py` under `/var/projects/toy_physics/research/pde_ledger_v3/`
-- `/var/projects/toy_physics/research/pde_audit/` — any file. ⚠ It contains prior work on adjacent
-  physics whose current validity is **not established**; the other engine is barred from it too, and an
-  asymmetry here would make one engine a transcriber and the other a deriver.
-- any file whose name contains `PREREGISTERED`
-
-⭐ **You do not need any of them.** Every input is in the specification below. If you believe an input is
-missing, emit that tag as `NOT_ESTABLISHED` and name what is missing. ⛔ Do not go looking.
+⇒ **The read-bar list is §0b of the shared specification below**, and it is byte-identical to the one the
+other engine receives. ⛔ Follow it exactly.
 
 ## Script conventions
 

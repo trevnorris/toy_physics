@@ -8,19 +8,11 @@ Then stop and exit — ⛔ do not write a report, a summary document, or a secon
 
 ## ⛔⛔ THIS SCRIPT IS BLIND. THAT IS ITS ENTIRE PURPOSE.
 
-It exists to be an **independent** check on a SymPy audit that does not yet exist. If it agrees with that
+It exists to be an **independent** check on a SymPy audit of the same physics. If it agrees with that
 audit because it copied from something, the check is worthless and the step is not verified.
 
-⛔ **DO NOT READ, open, grep, `cat`, `git show`, or otherwise inspect:**
-- `/var/projects/toy_physics/research/pde_ledger_v3/reduction/` — any file
-- any `.py` under `/var/projects/toy_physics/research/pde_ledger_v3/`
-- `/var/projects/toy_physics/research/pde_audit/` — any file. ⚠ It contains prior work on adjacent
-  physics whose current validity is **not established**; the other engine is barred from it too, and an
-  asymmetry here would make one engine a transcriber and the other a deriver.
-- any file whose name contains `PREREGISTERED`
-
-⭐ **You do not need any of them.** Every input is in the specification below. If you believe an input is
-missing, emit that tag as `NOT_ESTABLISHED` and name what is missing. ⛔ Do not go looking.
+⇒ **The read-bar list is §0b of the shared specification below**, and it is byte-identical to the one the
+other engine receives. ⛔ Follow it exactly.
 
 ## Script conventions
 
@@ -60,6 +52,29 @@ mode's coupling; any statement about whether a mode radiates, is bound, is confi
 ⛔ **Do not consult any file for the answers.** Everything needed is below. If something needed is
 missing, emit the tag as `NOT_ESTABLISHED` and name what is missing.
 
+## ⛔⛔ 0b · WHAT NEITHER ENGINE MAY READ — identical for both, and that is the point
+
+⚠ **This list lives in the SHARED block deliberately.** A bar maintained separately in two headers drifts,
+and the engine with the shorter list becomes a transcriber while the other derives — their agreement then
+certifies a shared source rather than independent physics.
+
+⛔ **Neither engine may read, open, grep, `cat`, `git show`, or `git cat-file`:**
+
+- `research/pde_ledger_v3/scripts/` — **any** `.py`
+- `research/pde_ledger_v3/mathematica/` — **any** `.wl`
+- `research/pde_ledger_v3/reduction/` — any file, including the registry and the gates
+- `research/pde_ledger_v3/steps/` — any file
+- `research/pde_ledger_v3/V3_STEP_PLAN.md`
+- `research/pde_ledger_v3/directives/S11b_*` — the superseded whole-interface directives
+- `research/pde_audit/` — any file. ⚠ Prior work on adjacent physics whose current validity is **not
+  established**.
+- any file whose name contains `PREREGISTERED`
+- **the other engine's deliverable for this sub-step**, by any route including git
+
+⭐ **You do not need any of them.** Every input is in this specification. ⛔ If you believe an input is
+missing, emit that tag as `NOT_ESTABLISHED` and name what is missing — ⛔ do not go looking.
+⚠ `git status` and `git diff` are fine.
+
 ## 1 · Geometry, notation, and ⭐ CONVENTIONS
 
 Four spatial dimensions `(x¹,x²,x³,w)` and time `t`; `x = (x¹,x²,x³)`. A slab of thickness `W₀` centred on
@@ -72,10 +87,15 @@ parts are meaningless for comparison unless these are shared.
 |---|---|
 | harmonic dependence | every perturbation `∝ exp[i(k·x − ωt)]`, with `ω > 0` and `k` real |
 | face displacements | `ζ₊(x,t)`, `ζ₋(x,t)` = displacement of the **upper / lower** face, **both measured along global `+w`** |
-| parity combinations | **thickness** `δW ≡ ζ₊ − ζ₋` · **bodily shift** `h ≡ (ζ₊ + ζ₋)/2` |
+| parity combinations | **thickness** `δW ≡ ζ₊ − ζ₋` · **centre shift** `ζ_c ≡ (ζ₊ + ζ₋)/2` |
 | outward normals | upper face `n̂ = +ŵ` · lower face `n̂ = −ŵ` |
+| outward face velocity | `V_± ≡ (∂_t ζ_±)·(±1)` — ⭐ **face-odd**; use this, ⛔ not the global `∂_t ζ_±`, wherever a quantity is defined along the outward normal |
 | response ratio | `Z ≡ (pressure perturbation at a face) / (OUTWARD normal velocity of that face)` |
-| branch selection | energy or amplitude must not grow away from the slab; state the criterion you apply |
+| ⭐⭐ radiation condition | in each half-space retain **only** waves carrying energy **away** from the slab (real normal wavenumber) or **decaying** away from it (imaginary). ⛔ **There are NO incoming waves from infinity.** State explicitly the sign of the normal wavenumber selected in each half-space under the harmonic convention above. ⚠ Boundedness alone does **not** select a branch when the normal wavenumber is real — both progressive waves are bounded, and 4 amplitudes against 2 face conditions is under-determined. |
+
+⛔ **`ζ_c` is NOT the `h`-branon.** The ledger's `h` is a **dimensionless** field (`ξ_w = ℓh`); `ζ_c` here
+is a **length**. ⚠ They are different objects and must never be identified without the normalisation that
+relates them.
 
 ⛔ `x` is a position, ⛔ **never** a displacement. `Ω` (below) is a window, ⛔ never a thickness.
 
@@ -98,14 +118,18 @@ step **only** through the motion of its faces.
 four-dimensional equations onto a three-dimensional description. Unless a task says otherwise take `Ω(w)`
 **even** in `w`.
 
-`j^w` is the `w`-component of the four-dimensional mass (or number) current.
+`j^w` is the `w`-component of the four-dimensional **MASS** current. ⛔ Not a number current — fixed here,
+because the two differ by a conversion factor that would change A1's reported dimensions.
 
 ⭐ **Relative flux.** Where material crosses a **moving** face, the physically meaningful flux is measured
 **relative to that face and along its outward normal**:
 
 ```
-J_± ≡ ρ_m ( v_w ∓ ∂_t ζ_± ) · (±1)        evaluated at the upper (+) / lower (−) face
+J_± ≡ ρ_m ( v_w − ∂_t ζ_± ) · (±1)        evaluated at the upper (+) / lower (−) face
 ```
+
+⚠ **Note the plain minus.** The outward-normal sign appears **once**, in the trailing `(±1)`; applying it
+again to the face velocity would give a face co-moving with the bulk a nonzero relative flux.
 
 ⚠ Report explicitly which signed combination of `J₊` and `J₋` corresponds to **net accretion by the slab**
 and which to **through-flow**. ⛔ Do not use a sum of global-`w` fluxes in place of relative ones; the two
@@ -113,9 +137,21 @@ differ, and they carry different physics.
 
 ## 4 · Background state
 
-There is a steady background transfer of material across the interface. Treat the background as constant
-over one wave period and work with the perturbation about it. ⭐ **Derive** the condition under which that
-is valid, as an inequality between named timescales. ⛔ Do not assume it holds.
+There is a **steady background transfer** of material across the interface. Let `v₀` be the resulting
+steady normal flow speed in the bulk near a face (**symbolic**).
+
+⚠⚠ **§2's acoustics are linearised about REST, and that is an approximation, ⛔ not an identity.** A
+nonzero `v₀` adds convective terms and a first-order flux `δρ·v₀`. ⭐⭐ **TWO independent smallness
+conditions are involved and they are NOT the same:**
+
+1. the background must not change appreciably during a wave period — a **timescale** condition;
+2. the background flow must be slow compared with the bulk sound speed — a **speed** condition.
+
+⭐ **Derive BOTH**, state each as an inequality between named quantities, and **report the order in
+`v₀/c_s0` of the leading correction** that §2's rest-frame linearisation discards. ⛔ Do not assume either
+condition holds, and ⛔ do not treat condition 1 as implying condition 2.
+⚠ Solving the full convective problem is **out of scope**; naming the discarded order is the deliverable,
+and the rest-frame treatment is a **stated scope limit**.
 
 ---
 
@@ -150,9 +186,13 @@ Repeat A1 with `Ω = Ω(w; x, t)`. Enumerate **every** term present here and abs
 
 **A4 · Bulk response to moving faces — impermeable.**
 Solve §2 with both faces displaced as `ζ₊`, `ζ₋`, imposing that the bulk normal velocity at each face
-equals that face's normal velocity. Treat both half-spaces. Report `Z` (as defined in §1) and its real and
-imaginary parts, and any effective inertial loading per unit area, **separately for the `δW` and `h`
-combinations** of §1.
+equals that face's normal velocity. Treat both half-spaces, applying §1's radiation condition. Report `Z`
+(as defined in §1) and its real and imaginary parts, **separately for the `δW` and `ζ_c` combinations**
+of §1.
+⭐ **Inertial loading is defined here so both engines report the same object:** in a regime where `Z` is
+purely imaginary, `m_add` is the coefficient satisfying `δp|_face = m_add · ∂_t² ζ_±`, reported **PER
+FACE**. ⛔ Do not report a two-face sum, and ⛔ do not fold in any half-amplitude convention from `δW` —
+those combinations are assembly data and belong to a later step.
 ⭐⭐ **There are THREE regimes** — the bulk normal wavenumber squared may be positive, negative, **or
 zero**. Report all three, including the behaviour of every reported quantity **at** the zero (grazing)
 case, where some may be singular. ⚠ Omitting that third case is a known prior defect of this corpus.
@@ -160,40 +200,70 @@ case, where some may be singular. ⚠ Omitting that third case is a known prior 
   `S11BA_GRAZING_BEHAVIOUR`
 
 **A5 · Bulk response — permeable faces.**
-⭐ **Closure, fixed here so the family is finite:** take the relative flux of §3 to obey a **local,
-ALGEBRAIC** (⛔ no time derivatives) linear law at each face,
+⭐ **Closure, fixed here so the family is finite.** Take the relative flux of §3 to obey a **MEMORYLESS**
+linear law at each face — its value at an instant depends only on the instantaneous values of the fields
+at that face, with ⛔ **no time derivative of `J` or of `δp`, and no memory kernel**:
 
 ```
-J_±  =  Λ_p · δp|_face  +  Λ_ζ · ∂_t ζ_±
+J_±  =  Λ_p · δp|_face  +  Λ_V · V_±
 ```
 
-with `Λ_p`, `Λ_ζ` **free symbols**. Report their dimensions. Recompute A4 under this condition and report
-the modified `Z` **as a function of `Λ_p` and `Λ_ζ`**. Then report, **for each of A4's three regimes and
-each parity combination**, whether a dissipative part (real, in phase with velocity) is present and **on
-which coefficient it depends**.
+⭐ **`V_±` is the OUTWARD face velocity of §1, ⛔ not the global `∂_t ζ_±`.** ⚠ `J_±` is face-odd by
+construction, so pairing it with a face-even quantity through a single scalar coefficient would give
+reflection-related faces opposite constitutive terms and spuriously mix `δW` into `ζ_c`.
+
+⭐ **`Λ_p` and `Λ_V` are free but REAL symbols.** ⛔ Do not carry them as generic complex quantities — a
+dissipation classification asks which terms are real and in phase with velocity, and that question is
+vacuous if the coefficients may themselves be complex.
+
+Report their dimensions. Recompute A4 under this condition and report the modified `Z` **as a function of
+`Λ_p` and `Λ_V`**. Then report, **for each of A4's three regimes and each parity combination**, whether a
+dissipative part (real, in phase with velocity) is present and **on which coefficient it depends**.
+
+⛔⛔ **REPORT THE DEGENERATE LOCI.** The closure is only *generically* solvable: there are coefficient
+values at which a face equation loses its dependence on the bulk amplitude, so a driven face has **no**
+solution or an undriven one has a **free** amplitude. ⚠ A generic rational `Z` conceals both and still
+prints `PASS`. ⇒ solve for those loci explicitly and report them.
+
 ⛔ Do not select a value for either coefficient. ⛔ Do not report a single "the" permeable response.
-⚠ **Record the restriction to an algebraic law as a stated scope limit** — a more general law would admit
-time derivatives, and that generalisation is not attempted here.
+⚠ **Record the restriction to a memoryless law as a stated scope limit** — a more general law would admit
+memory, and that generalisation is not attempted here.
+⇒ additional tag `S11BA_DEGENERATE_LOCI`
 ⇒ `S11BA_PERMEABLE_COEFF_DIMS`, `S11BA_Z_PERMEABLE`, `S11BA_DISSIPATIVE_BY_REGIME_AND_PARITY`,
   `S11BA_CLOSURE_SCOPE_LIMIT`
 
 **A6 · Dimensions.**
 Derive, from the equations above and ⛔ **not** from any external table or registry, the `[L,T,M]`
-exponents of: `Z`, the A4 inertial loading, `ρ_m`, `c_s0`, `Λ_p`, `Λ_ζ`, and A1's source term. Show the
-route for each.
+exponents of: `Z`, `m_add`, `ρ_m`, `c_s0`, `v₀`, `Λ_p`, `Λ_V`, and A1's source term. Show the route for
+each.
 ⚠ **A check reducing to an identity of the form `(X − 2Y) + 2Y == X` is worthless.** Label each route
 **independent** or **definitional**.
 ⇒ `S11BA_DIM_<name>` per entry, plus `S11BA_DIM_ROUTE_KIND` per entry
 
 **A7 · Controls.** ⛔ FORM controls; ⛔ do not substitute a coefficient rescaling.
-- **A** — make `Ω(w)` **asymmetric** in `w`, keeping the interval symmetric; recompute A2.
-- **B** — keep `Ω(w)` **even** and make the **interval** asymmetric; recompute A2.
-⭐ Report which of the two moves A2's result, so that a parity selection rule is distinguished from a
+
+⭐⭐ **Use these CONTROLLED one-parameter families, ⛔ not an arbitrary member of a class.** A control
+that merely says "make it asymmetric" has no determinate effect — an asymmetric component can be chosen
+orthogonal to the tested current, or an asymmetric interval can lie outside the window's support, and the
+control then moves nothing for reasons that have nothing to do with the physics.
+
+```
+window     Ω_b(w) = sech²((w − b)/a)        b = 0 is even; b ≠ 0 is the control
+interval   [−L, L + c]                       c = 0 is symmetric; c ≠ 0 is the control
+```
+
+- **A** — `b ≠ 0`, `c = 0`; recompute A2.
+- **B** — `b = 0`, `c ≠ 0`; recompute A2.
+
+Report A2's result **as a function of `b` and of `c`**, and state for each whether it is identically
+independent of that parameter or not. ⭐ That is what distinguishes a parity selection rule from a
 domain-symmetry artifact. ⛔ Report what each control does, ⛔ not what it was expected to do.
 ⇒ `S11BA_CONTROL_WINDOW_PARITY`, `S11BA_CONTROL_INTERVAL_SYMMETRY`
 
-**A8 · Validity condition.** Emit §4's derived condition.
-⇒ `S11BA_BACKGROUND_VALIDITY_CONDITION`
+**A8 · Validity conditions.** Emit **both** of §4's derived conditions — the timescale one and the flow-speed
+one — as separate tags, plus the order in `v₀/c_s0` of the leading correction discarded by §2's rest-frame
+linearisation. ⛔ Do not emit one condition in place of two.
+⇒ `S11BA_VALIDITY_TIMESCALE`, `S11BA_VALIDITY_FLOW_SPEED`, `S11BA_DISCARDED_CONVECTIVE_ORDER`
 
 ---
 

@@ -20,8 +20,6 @@ because it copied from something, the check is worthless and the step is not ver
   `1/expr == 0`.
 - Keep total runtime under **10 minutes**. If a computation will not finish, reduce it symbolically rather
   than raising a limit.
-- ⚠ **On a non-uniform background do not silently assume plane waves are eigenmodes.** Where you must
-  restrict to a tractable form, ⛔ say so in the emitted value rather than in a comment.
 
 ---
 

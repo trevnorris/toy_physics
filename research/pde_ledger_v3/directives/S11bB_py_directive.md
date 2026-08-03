@@ -1,11 +1,13 @@
 # DIRECTIVE — S11b-B SymPy audit and registry insertion
 
-**Deliverables (absolute paths):**
-1. `/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11bB_interface_assembly_sympy_audit.py`
-2. any additions to `/var/projects/toy_physics/research/pde_ledger_v3/reduction/quantities.yaml` and
-   `relations.yaml`
+**Deliverable (absolute path):**
+`/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11bB_interface_assembly_sympy_audit.py`
 
-Run the script and the existing gates. Iterate until everything exits 0. Then stop and exit — ⛔ do not
+⛔ **One deliverable only.** ⚠ There is **no registry insertion and no gate run in this step** — both live
+under the barred `reduction/`, and an earlier revision listed them here while barring them below, which
+relocated the asymmetry instead of removing it.
+
+Run the script. Iterate until it exits 0. Then stop and exit — ⛔ do not
 write a report or a summary.
 
 ## ⛔⛔ ONE OF TWO INDEPENDENT ENGINES
@@ -33,7 +35,7 @@ apparent agreement non-independent.
 
 ---
 
-# S11b-B — SHARED PHYSICS SPECIFICATION (rev 2)
+# S11b-B — SHARED PHYSICS SPECIFICATION (rev 3)
 
 ⚠ **Inserted BYTE-IDENTICALLY into both engine directives.** It is the only part they share.
 
@@ -87,10 +89,18 @@ outward normals `+ŵ` upper, `−ŵ` lower; outward face velocity `V_± ≡ (∂
 `Z ≡ (pressure at a face)/(OUTWARD normal velocity of that face)`.
 
 ⭐⭐ **COMPLEX FREQUENCY — fixed here, because the deliverable is an imaginary part.**
-Treat `ω` as complex with the **retarded** prescription: all quantities are the analytic continuation from
-`Im ω > 0` of their real-`ω` values. Fix the branch of `q` by continuation from the real axis, where it is
-the outgoing (`q² > 0`) or decaying (`q² < 0`) root. ⛔ **State explicitly which sheet you are on**, and
-⛔ do not switch sheets mid-calculation.
+Treat `ω` as complex with the **retarded** prescription. ⭐ **The branch is fixed constructively, so that
+two engines cannot land on different roots:**
+
+```
+q_out ≡ the root of q² = ω²/c_s0² − k² satisfying  Im(q_out) ≥ 0 ,
+        and for real q_out, sign chosen so Re(q_out) > 0
+```
+
+⚠ This reduces on the real-`ω` axis to outgoing for `q² > 0` and decaying for `q² < 0`. Use it as the
+**definition** and ⛔ do not switch sheets mid-calculation. ⭐ If a root of B5 requires continuation onto a
+second sheet, ⛔ do not silently follow it — report that it leaves the physical sheet, and say whether the
+object found there is a normal mode or a resonance.
 
 ## 2 · Established input from S11b-A — ⛔ do NOT re-derive
 
@@ -101,8 +111,12 @@ q² < 0  q_out = iα    Z = −iωρ_m/α    inertial loading ρ_m/α per face
 q² = 0  Z singular
 ```
 
-**Permeable faces:** `J_± = Λ_p(ω)δp + Λ_V(ω)V_±`, `Λ(ω) = Λ⁰/(1 − iωτ)`, with `Λ_p⁰`, `Λ_V⁰`, `τ` real,
-free, and `τ ≥ 0`. ⭐ **Assume passivity**: the closure may dissipate but ⛔ may not inject energy; report
+**Permeable faces.** ⭐ **Signs fixed here, because two engines can otherwise obtain opposite damping:**
+`J_±` is the **mass flux per unit face area leaving the slab through that face**, measured along that
+face's **outward** normal (so `J_± > 0` removes material from the slab). `δp` is the **bulk** pressure
+perturbation evaluated at that face. Then
+
+`J_± = Λ_p(ω)δp + Λ_V(ω)V_±`, `Λ(ω) = Λ⁰/(1 − iωτ)`, with `Λ_p⁰`, `Λ_V⁰`, `τ` real, free, and `τ ≥ 0`. ⭐ **Assume passivity**: the closure may dissipate but ⛔ may not inject energy; report
 the inequality on the coefficients this requires, and whether your results respect it.
 
 ```
@@ -127,14 +141,39 @@ it is not small.
 Per unit `x`-3-volume, with `e_W ≡ δW/W₀`:
 
 ```
-U = ½ μ_R |∇×u|²  +  ½ B_ρ⁽³⁾ θ²  +  ½ k_W W₀² e_W²  +  ½ κ_W W₀² |∇(δW)|²
+U = ½ μ_R |∇×u|²  +  ½ B_ρ⁽³⁾ θ²  +  C W₀ θ e_W  +  ½ k_W W₀² e_W²  +  ½ κ_W W₀² |∇(δW)|²
 ```
 
 and kinetic energy `½ ρ_br⁰ |∂_t u|² + ½ μ_W (∂_t δW)²`.
 
+⭐⭐ **`C` is the symmetry-allowed CROSS term between densification and thickening, and it is included
+deliberately.** ⚠ A diagonal energy would already impose that the two channels are separable — which is
+part of what B4 is meant to determine, ⛔ not an input. **Report how every result depends on `C`, and what
+changes when `C = 0`.** ⛔ Do not set it to zero by default.
+⭐ If you find a further quadratic invariant of these fields that symmetry allows and this list omits,
+**report it** rather than assuming the list is complete.
+
 ⚠ **`κ_W` is included because "restoring stiffness" alone is ambiguous** — a thickness stiffness may act on
 `δW` or on `∇δW`, and the two give different `k`-dependence. ⭐ **Report how each result depends on `κ_W`,
 and what changes if it vanishes.** ⛔ Do not set it to zero by default.
+
+## ⭐⭐ 3b · HOW TO DERIVE THE EQUATIONS — fixed, because the constraint is NON-HOLONOMIC
+
+⚠ B1's constraint carries a **source** (face flux) and **memory** (`τ`). ⛔ It therefore may **not** simply
+be substituted into `U` to eliminate a field — doing so and using local stress plus continuity give
+**inequivalent** equations and different dispersions, and both would look like obeying "derive from §3".
+
+⭐ **Use this prescription and no other:**
+1. Form the Lagrangian `L = T − U` with `T` the kinetic energy above, treating `u`, `δW` and `θ` as
+   **independent** fields.
+2. Adjoin B1's constraint with a **Lagrange multiplier** field `λ(x,t)`. ⭐ Report what `λ` turns out to be
+   physically.
+3. Put the **irreversible** face transfer in a **Rayleigh dissipation function** built from `J_±`, ⛔ not in
+   `U`. State the dissipation function you use.
+4. Vary independently with respect to `u`, `δW`, `θ` and `λ`, and report **all four** resulting equations.
+
+⭐ **Report whether the reversible (`Λ⁰ → 0`) limit of this prescription agrees with direct substitution
+of the constraint into `U`.** ⛔ If it does not, that is a result, not an error to smooth over.
 
 ⛔ **No single in-plane compression modulus is supplied.** Compression is carried by `θ` and by `e_W`, and
 how they combine is task **B4**. ⚠ Where a modulus measured with the thickness held fixed would sit is an
@@ -160,13 +199,22 @@ independent internal degrees of freedom survive, and why.
 including the force the bulk exerts on **both** faces via §2. Report both operators.
 ⇒ `S11BB_INPLANE_EOM`, `S11BB_THICKNESS_EOM`, `S11BB_BULK_FORCE_ON_THICKNESS`
 
-**B3 · Thickness response.** Solve the thickness equation for its response to whatever drives it. Report
-the response function and the **effective inertia** in each regime of §2.
-⇒ `S11BB_THICKNESS_RESPONSE`, `S11BB_EFFECTIVE_INERTIA_BY_REGIME`
+**B3 · Thickness response.** Solve the thickness equation for its response. ⭐ **State explicitly what the
+response is a ratio of** (which output field to which driving quantity) and give its dimensions.
+Then report **the bulk's contribution to the thickness operator in each regime of §2**, decomposed into a
+part in phase with `∂_t²δW` and a part in phase with `∂_tδW`.
+⛔⛔ **Do NOT report it as an "effective inertia".** ⚠ In the propagating regime the bulk load is radiation
+**resistance**, which is velocity-like; calling it an inertia would smuggle damping into a mass and
+collapse the distinction §2 trap 2 exists to preserve. ⭐ Report which regimes, if any, admit a mass
+interpretation at all.
+⇒ `S11BB_THICKNESS_RESPONSE`, `S11BB_RESPONSE_NORMALIZATION`, `S11BB_BULK_OPERATOR_BY_REGIME`,
+  `S11BB_MASS_INTERPRETATION_VALID_WHERE`
 
 **B4 · The compressional response.** Eliminate the thickness degree of freedom and report the in-plane
-compressional stress response. ⭐ Report its behaviour in the limits `ω → 0` and `ω → ∞` **along a stated
-path in `(ω,k)`** — ⛔ the limits need not commute, so name the path and report whether another path gives
+compressional stress response. ⚠ **Check whether B1's constraint changes rank at exactly `ω = 0`** — if an
+integration constant survives there, say what fixes it, and report whether dividing by `ω` before or after
+taking the limit changes the answer. ⭐ Report its behaviour in the limits `ω → 0` and `ω → ∞` **along a
+stated path in `(ω,k)`** — ⛔ the limits need not commute, so name the path and report whether another path gives
 a different answer. Then report **where a modulus measured with the thickness held fixed would sit**, or
 that no consistent identification exists.
 ⇒ `S11BB_COMPRESSIONAL_RESPONSE`, `S11BB_LIMITS_AND_PATH`, `S11BB_FROZEN_THICKNESS_IDENTIFICATION`
@@ -187,18 +235,23 @@ non-uniform question and out of scope here. ⛔ Do not phrase it as if it does.
 ⇒ `S11BB_TRANSVERSE_COUPLING`, `S11BB_TRANSVERSE_DISPERSION`, `S11BB_TRANSVERSE_DISSIPATION`
 
 **B7 · Dimensions.** Derive from the equations above, ⛔ not from any table, the `[L,T,M]` exponents of
-`B_ρ`, `B_ρ⁽³⁾`, `μ_W`, `k_W`, `κ_W`, B3's response, B4's response, B6's coefficient. Show each route and
+`B_ρ`, `B_ρ⁽³⁾`, `μ_W`, `k_W`, `κ_W`, `C`, B3's response, B4's response, B6's coefficient. ⚠ Each of those three responses is a ratio; ⛔ state what of what before assigning a dimension, and if a coefficient vanishes identically say that its dimension is undetermined. Show each route and
 label it **independent** or **definitional** — a route whose asserted equation *defines* the symbol under
 test is definitional.
 ⇒ `S11BB_DIM_<name>`, `S11BB_DIM_ROUTE_KIND_<name>`
 
 **B8 · Controls.** ⛔ FORM controls; a coefficient rescaling tests none of them.
-- **A — remove the thickness channel** (hold `δW = 0`) and recompute B4, B5, B6.
-- **B — remove the gradient stiffness** (`κ_W = 0`) and recompute B3, B5.
-- **C — impermeable faces** (`Λ_p⁰ = Λ_V⁰ = 0`) and recompute B5, B6.
+- **A — remove the thickness channel** (hold `δW = 0`) and recompute B4 and B5.
+- **B — remove the gradient stiffness** (`κ_W = 0`) and recompute B3 and B5.
+- **C — impermeable faces** (`Λ_p⁰ = Λ_V⁰ = 0`) and recompute B5.
+- **D — remove the cross term** (`C = 0`) and recompute B4 and B5.
+⚠ ⛔ **None of these recomputes B6**, because on a uniform background that coupling is algebraically
+determined by B1 and §3 before any ablation is applied — such a control could only re-encode a
+predetermined result.
 ⭐ For each, report which reported quantities move and which do not. ⛔ Report what each control does,
 ⛔ not what it was expected to do.
-⇒ `S11BB_CONTROL_NO_THICKNESS`, `S11BB_CONTROL_NO_GRADIENT_STIFFNESS`, `S11BB_CONTROL_IMPERMEABLE`
+⇒ `S11BB_CONTROL_NO_THICKNESS`, `S11BB_CONTROL_NO_GRADIENT_STIFFNESS`, `S11BB_CONTROL_IMPERMEABLE`,
+  `S11BB_CONTROL_NO_CROSS_TERM`
 
 **B9 · Validity.** Report the conditions under which this step's linearisations hold, including §2's
 background-flow condition, and **where in `(ω,k)` any fail**.

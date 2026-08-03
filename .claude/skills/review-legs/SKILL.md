@@ -1,6 +1,6 @@
 ---
 name: review-legs
-description: Launch two independent PDE-ledger reviews of one artifact using one fresh agent and one Grok 4.5 process in parallel. Renders a blind review prompt with the artifact, physics checks, do-not-read list, required ablations, and physics-only finding filter; also reviews quarantined artifacts through committed git blobs without restoring them.
+description: Launch two independent PDE-ledger reviews of one artifact in parallel, choosing the two legs by WHO WROTE the artifact — Codex plus Grok for orchestrator-written plans, directives and prose; a fresh Claude agent plus Grok for Codex-written scripts and TeX. Renders a blind review prompt with the artifact, physics checks, do-not-read list, required ablations, and physics-only finding filter; enforces blindness by moving answer-bearing files out of the tree rather than by denylisting them.
 allowed-tools: Bash, Read, Edit, Write, Agent
 user_invocable: true
 ---
@@ -49,6 +49,49 @@ For a quarantined artifact, tell both reviewers to read it only with `git show <
 ablate a temporary copy. They must never restore it into the working tree; the blob keeps the parallel
 builder blind.
 
+## ⭐⭐ WHO REVIEWS — decided by WHO WROTE IT, ⛔ never by file type
+
+**The rule: whatever writes it does not review it** (user, 2026-08-03). That is the whole principle; the
+table is just it applied.
+
+| the artifact was written by | the two legs are |
+|---|---|
+| ⭐ **the orchestrator** — plans, build directives, step records, prose | **Codex** + **Grok** |
+| ⭐ **Codex** — scripts, `.tex` cards, any generated code | **a fresh Claude agent** + **Grok** |
+
+⛔⛔ **Do NOT send an orchestrator-written directive to a fresh Claude agent as one of its two legs.** It
+is the closest thing to self-review the architecture allows, and it displaces the engine that will have to
+*execute* the directive — the one with the strongest reason to catch an ambiguity in it.
+⚠ **Measured 2026-08-03:** the S11b directive review was run as fresh-Claude + Grok. Both legs found real
+defects, so the substitution did not announce itself — ⭐ a productive review is not evidence the
+composition was right.
+
+Launch a Codex review leg read-only, at xhigh, in the background, with the same rendered prompt:
+
+```bash
+codex exec -c model_reasoning_effort=xhigh "$(</absolute/review-prompt.md)" \
+  > /absolute/outside-the-repo/codex-review.txt 2>&1
+```
+
+## ⛔⛔ BLINDNESS IS ENFORCED BY ABSENCE, ⛔ NOT BY INSTRUCTION
+
+⚠ **A do-not-read list is a denylist, and a denylist means the architecture is wrong.** If each new step
+bans one more path and the next probe evades it, stop patching and move the artifact.
+
+⭐ **Anything carrying this step's answers must be OUT OF THE TREE while a blind build or review runs** —
+the pre-registration, the sibling engine's script, **the build directives**, and ⛔ **the raw build
+transcripts.**
+
+⚠⚠ **THE HOLE THIS CLOSES, measured 2026-08-03 and open for several steps:** `_scratch/` accumulates raw
+Codex transcripts that contain a prior engine's **complete tag values verbatim** — `codex_s10_wl_raw.txt`
+carried every `WL_S10_*` value. It is not a `.wl`, not under `mathematica/`, not named `PREREGISTERED`,
+and not reachable by `git show`. ⇒ a builder could defeat quarantine **while obeying every instruction.**
+⭐ **Fix: raw transcripts are written OUTSIDE the repository**, and `_scratch/<step>_*` is moved out
+alongside the quarantined engine.
+
+⛔ Keep a denylist only for large live trees that cannot be moved, and then **symmetrically in both
+directives** — an entry in one and not the other silently makes one engine better-informed than the other.
+
 ## Launch in Parallel
 
 1. Start Grok using the **Bash tool with `run_in_background: true`**, and ⛔ **no shell `timeout`**.
@@ -61,8 +104,9 @@ builder blind.
      --output-format plain > /absolute/grok-review.txt 2>&1
    ```
 
-2. In the **same message**, launch one fresh `general-purpose` Agent with the rendered prompt. ⛔ Use a
-   fresh agent, never a fork — a fork inherits the caller's context, including the results the reviewer
-   must not see. Give it no Grok output and no prior agent context.
+2. In the **same message**, launch the **second leg chosen by the authorship table above** — a Codex
+   review for orchestrator-written artifacts, a fresh `general-purpose` Agent for Codex-written ones.
+   ⛔ For the agent case use a **fresh** agent, never a fork — a fork inherits the caller's context,
+   including the results the reviewer must not see. Give either leg no Grok output and no prior context.
 3. Do not poll; the harness notifies you as each leg finishes. Preserve the fresh-agent and Grok reports
    **separately attributed**, and ⛔ do not turn either finding into an edit or rebuild — filter first.

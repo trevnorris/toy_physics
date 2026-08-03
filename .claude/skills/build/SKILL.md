@@ -25,8 +25,15 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
    foreground call leaves the build untracked and unreported.
 
    ```bash
-   codex exec -c model_reasoning_effort=xhigh "$(</absolute/directive.md)" > /absolute/codex-build.log 2>&1
+   codex exec -c model_reasoning_effort=xhigh "$(</absolute/directive.md)" \
+     > /absolute/path/OUTSIDE/the/repo/codex-build.log 2>&1
    ```
+
+   ⛔⛔ **THE RAW TRANSCRIPT MUST BE WRITTEN OUTSIDE THE REPOSITORY.** ⚠ A transcript contains the
+   engine's **complete tag values verbatim**, so one left in the tree is a blindness leak that no
+   do-not-read list catches — it is not a `.wl`, not under `mathematica/`, not named `PREREGISTERED`, and
+   not reachable by `git show`. ⚠ **Measured 2026-08-03: several such files were already sitting in
+   `_scratch/`.** ⇒ `.claude/skills/review-legs/SKILL.md` § BLINDNESS IS ENFORCED BY ABSENCE.
 
    Add `--sandbox danger-full-access` when the build must run Mathematica. ⛔ Never wrap the command in a
    shell `timeout` — SIGKILL has cost 300k+ tokens.
@@ -39,6 +46,8 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
    `.claude/skills/review-legs/SKILL.md` with the deliverable, `--check`, and `--do-not-read` arguments
    from this invocation. Launching the legs is the build skill's responsibility; do not tell the caller
    to invoke `/review-legs` later.
+   ⭐ The deliverable here is **Codex-written**, so its two legs are **a fresh Claude agent + Grok**.
+   ⛔ Codex does not review what Codex wrote — see that skill's authorship table.
 6. Return only after both independent review legs have completed. Keep their findings separately
    attributed so the caller can filter them before acting.
 

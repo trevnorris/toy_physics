@@ -291,6 +291,15 @@ path). ⛔ The 44's track record does not transfer to one.
 - ⛔ **Nothing checks a registry relation's ALGEBRA except each step's own audit** (`#f-r5`). Every new
   relation needs the derived-root-into-registry-residual assertion, or the same hole reopens.
 
+⚠⚠ **TWO BOOKKEEPING FACTS, so a future session neither panics nor over-credits:**
+- ⭐ **v3's `reduction/` registry IS this ledger's parameter register.** The standing *"update
+  `notes/parameter_register.md` every stage"* rule is satisfied **in v3's own form** — v3 is
+  self-contained and ⛔ must not edit v2's tree. ⛔ Do **not** build a parallel register doc.
+- ⛔ **`test_registry.py`'s "11 passed" is NOT coverage of newly added rows.** The 11 are regression
+  tests for the `constraint_dimension` algorithm, the able-to-fail protocol, and `n_eos`/`R1` literals
+  **specifically** — they sweep nothing. ⭐ New rows are covered by the **dim gate**, the **acceptance
+  fixture**, the **algebra control**, and **load-time validation**; quote those, ⛔ never the test count.
+
 ## ⭐ WHAT CHANGED IN HOW WE WORK (2026-08-02) — both from the user, both after I was caught
 
 1. ⭐⭐ **Review the build DIRECTIVES, before any build runs** (recipe step 3). The directive is the one

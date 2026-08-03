@@ -10,7 +10,7 @@ older about the interface.
 | | state |
 |---|---|
 | **S11b-A** — the bulk's response to moving faces | ✅ **CLOSED** — two blind engines, five independent derivations, zero disagreements |
-| **S11b-B** — the homogeneous assembly | **directive at rev 3, in review.** ⛔ No build has run |
+| **S11b-B** — the homogeneous assembly | ⛔ **directive at rev 3, REJECTED by both legs.** Rev 4 owed. ⛔ No build has run |
 | **S11b-C** — the non-uniform transverse coupling | **NEW, not started.** Split out of B, see below |
 
 ## ⭐⭐ What S11b-A established, in one place
@@ -77,16 +77,17 @@ Both reviewers named these; ⛔ none is optional:
 - ⭐ **No single in-plane compression modulus is supplied.** Compression is carried by `θ` and `e_W`, and
   where a frozen-thickness modulus sits is an **output**. ⇒ the double-count that killed an earlier revision
   is structurally impossible.
-- ⭐ **A derivation prescription is mandated** (Lagrangian + multiplier + Rayleigh dissipation), because the
-  constraint is **non-holonomic** — it has a source and memory — and substituting it into the energy gives
-  a *different answer* from local stress plus continuity.
+- ⚠ **A derivation prescription is mandated** (Lagrangian + multiplier + Rayleigh dissipation) because the
+  constraint is non-holonomic. ⛔ **REJECTED — the Rayleigh term double-counts `Z_perm`'s dissipation.** See
+  the rev-3 fold below for the suggested single non-redundant rule.
 - ⭐ **A symmetry-allowed cross term `C` is carried**, because a diagonal energy silently imposes
   separability, which is part of what the step must determine.
-- ⭐ **The branch is defined constructively** (`Im q_out ≥ 0`), because `Im ω` is the deliverable and two
-  sheets give opposite signs.
+- ⛔ **The branch rule `Im q_out ≥ 0` is WRONG** — it is not the retarded continuation and would flip the
+  sign of the deliverable. ⚠ Rev 4 must not simply pick another rule; make the engines report and justify.
 - ⭐ **The registry is barred from BOTH engines**; insertion is a separate later pass.
 
-**Pre-registration is committed and quarantined:** `a68245b4`. ⚠ It marks which predictions come from a
+**Pre-registration:** committed at `a68245b4` and **restored to the tree for the compact**.
+⛔⛔ **RE-QUARANTINE IT (move it out of the tree) BEFORE B's FIRST BUILD** — `steps/S11bB_PREREGISTERED_PREDICTION.md`. ⚠ It marks which predictions come from a
 solid derivation and which from a sketch, and states that the transverse coupling's exponent is
 **deliberately withheld** — with the note that the author privately expects `|g|²` and ⛔ must not read that
 outcome as confirmation of a derivation never performed.

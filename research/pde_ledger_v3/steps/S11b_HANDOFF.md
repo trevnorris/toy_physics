@@ -9,9 +9,39 @@ older about the interface.
 
 | | state |
 |---|---|
-| **S11b-A** — the bulk's response to moving faces | ✅ **CLOSED** — two blind engines, five independent derivations, zero disagreements |
-| **S11b-B** — the homogeneous assembly | ⛔ **directive at rev 3, REJECTED by both legs.** Rev 4 owed. ⛔ No build has run |
+| **S11b-A** — the bulk's response to moving faces | ✅ closed on its own terms, ⚠ but see **THE CLOSURE FINDING** below — its `Z_perm` is **conditional on a closure now believed thermodynamically incomplete** |
+| **S11b-B** — the homogeneous assembly | ⛔ **directive at rev 4, REJECTED by both legs.** Rev 5 owed, ⛔ **BLOCKED on a user decision** (see below). ⛔ No build has run |
 | **S11b-C** — the non-uniform transverse coupling | **NEW, not started.** Split out of B, see below |
+
+## ⛔⛔ THE CLOSURE FINDING — the most important thing on this page
+
+**Three independent parties, none of whom saw the others' work, reached the same conclusion:** the
+interface closure `J_± = Λ_p δp + Λ_V V_±` that S11b-A derived and handed to B is **not
+Onsager-admissible**. The conjugate force for interfacial mass transfer is the **chemical-potential jump
+across the face**, ⛔ not the bulk pressure alone. ⇒ the closure should read `J_± = Λ_p(δp − μ_θ) + Λ_V V_±`
+or equivalent, with `Λ_p`, `Λ_V` tied to **one positive-definite Onsager matrix**.
+
+| who | how they got there |
+|---|---|
+| Codex, rev-3 directive review | *"passivity is not computable from `J = Λ_pδp + Λ_V V`: it needs the brane–bulk chemical-potential affinity and its reciprocal traction law"* — plus: a face at rest with an internal density perturbation has `δp = V = J = 0`, so **pressure-driven conversion is excluded by construction** |
+| route agent A | route (c) still admits growth; `max Im ω = +0.00357` **verified at 30 digits**, 151/400 random draws |
+| route agent B | same, `max Im ω = +2.84` over its draws; identifies the sink `μ_θ𝒥` as **sign-indefinite** |
+
+⭐⭐ **The consequence that matters: the instability channel cannot be read until this is settled.** §0 of the
+directive now (correctly) makes a growing root a first-class falsifier — but with a non-Onsager closure a
+growing root is **unreadable**, because it could be the model failing *or* the closure being inadmissible.
+⛔ **Opening the falsification channel and leaving the closure unfixed makes the channel worthless.**
+
+⚠⚠ **NOT established, ⛔ do not assume it:** neither agent verified that the corrected closure actually
+**restores** passivity. Both asserted it would. ⇒ ⭐ **that must be COMPUTED by B, never assumed** — and
+note that "fix the closure until the instability goes away" would be exactly the rescue the charter forbids.
+⭐ The legitimate move is the reverse: impose Onsager because the **second law** requires it, then report
+whatever stability follows.
+
+⚠ **This does not make S11b-A *wrong*.** A's `Z_perm` is correct **given** its closure, and A's record
+already says `Λ_p⁰`, `Λ_V⁰`, `τ` are coefficients of a law B would assemble. But a closure whose flux
+depends on `μ_θ` couples the face response to a **brane** variable, so `Z_perm` would no longer be a pure
+bulk-response function. ⇒ **A's deliverable changes shape if the closure changes.**
 
 ## ⭐⭐ What S11b-A established, in one place
 
@@ -118,7 +148,7 @@ outcome as confirmation of a derivation never performed.
 - ⛔ **A finding about a CHECK is not a finding about the PHYSICS**, and there is a **red-team phase** for
   hardening. ⭐ When tempted to harden one engine's internal checks, **build the other engine instead.**
 
-## ⛔⛔ B's REV-3 REVIEW — BOTH LEGS, FOLD THESE INTO REV 4
+## B's REV-3 REVIEW — ✅ **ALL FOLDED INTO REV 4.** Kept for the diagnosis, ⛔ not as open work
 
 ⚠⚠ **READ THE DIAGNOSIS BEFORE THE LIST.** Rev 1 and rev 2 failed structurally. **Rev 3's new findings are
 all in the parts that were CHANGED to fix rev 2** — each revision was a substantial rewrite, and each
@@ -187,10 +217,138 @@ Scope boundary is explicit and not leaked · header physics symmetric and `reduc
 no pre-registration leak · `B8` controls B/C/D are genuine form cuts · the closed count is square **given a
 correct `B1`** · tractability and orphan check clean.
 
+## ⛔⛔ B's REV-4 REVIEW — REJECTED, and ⭐⭐ THE PATTERN IS THE POINT
+
+Rev 4 (`40086811`, shared block `sha256 54e53ade`) made surgical fixes to every rev-3 finding. **Both legs
+rejected it, and every single finding was NEW-IN-REV-4 — in material the fixes had changed.** ⛔ Codex:
+*"No PRE-EXISTING finding survived the physics filter."*
+
+⇒ ⭐⭐ **THREE CONSECUTIVE REVISIONS HAVE BRED NEW DEFECTS IN EXACTLY THE PARTS CHANGED TO FIX THE LAST
+ROUND.** ⚠ But the defects are **not** scattered — across rev 2, 3 and 4 the blockers cluster in **two
+subsystems only**: the **derivation route** and the **complex-frequency continuation**. The brane physics —
+`B1`, the energy, the tasks, the controls — has been converging and is now largely clean.
+⇒ ⭐ **That is a signal about WHERE the spec is weak, ⛔ not a reason to rewrite it again.** Both subsystems
+were therefore extracted and settled as **standalone physics questions** before rev 5 is written.
+
+### What rev 4 got wrong (fold into rev 5)
+
+**Codex — 2 BLOCKERs:**
+- ⛔ **Removing the branch rule left §1 UNDER-DETERMINED.** Requirements 1–3 fix the retarded germ in the
+  upper half-plane and its real-axis boundary, ⛔ **not** the continuation to B5's lower-half-plane poles;
+  the branch points sit **on** the real axis, so descent paths with different winding reach different
+  sheets. ⇒ **SETTLED — see below.**
+- ⛔ **The "`J_±` is determined" declaration broke the variational route.** One engine varies `J_±[δW,δp]`
+  inside the multiplier term and gets `λ δJ` interface forces; another treats it as an external source and
+  omits them. Both obey the directive; the dispersions differ. ⇒ **SETTLED — see below.**
+
+**Grok — 4, of which two are mine to own:**
+- ⛔ **The passivity block ASSERTS THE ANSWER.** I wrote *"passivity is not computable"* — but `Re Z_perm ≥ 0`
+  **is** an explicit inequality on the supplied symbols. ⚠ I collapsed two different questions (face-port
+  dissipativity vs thermodynamic admissibility of the closure) and answered both. ⭐ Same defect class as
+  the `B6` note I deleted one section earlier. ⇒ ask for **both**, assert **neither**.
+- ⛔⛔ **My "hypothesis to test" CANNOT FAIL.** I mandated the prescription, then had engines enumerate loss
+  channels *from the equations that prescription produces* and check power balance — an identity for any
+  system built that way. ⇒ **the `x === x` defect from A's repair pass, reproduced by me in a directive.**
+- ⛔ The cross-check says *"decay rate"*, which fights the growth channel opened two sections earlier.
+- ⛔ *"redundant modulo B1"* is ill-defined (also Codex): `B1` is sourced, memory-carrying, and changes rank
+  at `ω = 0`. ⇒ **judge independence as FIELD BILINEARS with no constraint applied**, carry every
+  independent invariant symbolically, and report separately which become redundant once the constraint is
+  applied — and whether that differs between the impermeable and flux-on cases.
+
+**Codex — also:** the §3 symmetry statement is incomplete (no translation invariance, no in-plane parity, no
+equivalence modulo total divergences) ⇒ a literal engine adds a **pinning term** `½K|u|²` and **gaps the
+modes**. ⇒ state the symmetry group completely.
+
+## ⭐⭐ RESOLVED SEPARATELY — two subsystems, four independent agents, SymPy/numerics
+
+### 1 · The branch — ⛔ Codex was right, Grok's clear was wrong
+
+**Both branch agents independently returned CLAIM B: under-determined**, with explicit numbers. Two paths
+from the same upper-half-plane start to the same lower-half-plane point give `q_out` differing by **exactly
+`−1`** — one a decaying **normal mode**, the other a growing **leaky resonance**, same `ω`. Fed to a toy
+radiative-loading secular equation the two sheets give `Im ω = −0.0745` vs `+0.0745`: ⭐ **the sign of the
+deliverable is set by the branch, not by the requirements.** Disagreement is **200 % of the deliverable at
+every damping strength**, and ⛔ **does not shrink as poles approach the real axis** — a straight-line root
+search can cross the cut and swap sheets **silently, with no numerical warning**.
+
+⭐ One agent reproduced Codex's **rev-3** finding without being told it existed: `Im q_out ≥ 0` for all
+complex `ω` is non-analytic and disagrees exactly where it matters.
+
+⭐⭐ **The prescription for rev 5** (both agents converged; second agent's clause 3 is load-bearing):
+1. Requirements 1–2 fix `q_out` **on the real axis only**. ⚠ Requirement 1 must be read as an **energy-flux**
+   condition, valid for **both signs of `ω`** — ⛔ not a phase-velocity condition, which breaks at `ω < 0`.
+2. At complex `ω`, `q_out` is **defined** as the continuation of the real-axis branch reached from
+   `ω + i0⁺` **downward along the ray of fixed `Re ω`** — equivalently, deform the inverse-Fourier-in-time
+   contour downward from above the real axis with the branch points `ω = ±c_s0|k|` fixed and their cuts
+   dragged **vertically down**.
+3. ⛔⛔ **Requirements 1–2 must NOT be re-imposed at complex `ω`.** Whatever `|w| → ∞` behaviour the
+   continuation produces is a **RESULT to report**, ⛔ never a criterion for re-selecting the root.
+   ⚠⚠ **An engine that re-applies "must decay" at a complex pole lands on the wrong sheet and converts a
+   damped resonance into an APPARENT INSTABILITY** — which, with §0 now declaring growth a first-class
+   finding, would manufacture a fake falsifier.
+4. Report the degenerate point `ω = ±c_s0|k|` (`q_out = 0`, the two bulk solutions coalesce, the second
+   going linear in `w`); ⛔ neither requirement selects anything there — continuity does.
+5. If a pole's trajectory crosses `Re ω = ±c_s0|k|` under parameter variation, **report that it has left
+   the sheet**, ⛔ do not re-select it onto one.
+
+⭐ **Why supplying a precise rule is right this time, having been wrong in rev 3:** rev 3 **asserted** a
+precise rule; rev 5's was **derived and numerically verified twice, independently.** ⇒ the lesson is
+**"be precise only where you have verified"**, ⛔ not "never be precise".
+
+### 2 · The derivation route — ⛔ the action principle was the wrong tool
+
+**Both route agents converged**, with SymPy determinants and root-locus numerics:
+
+- ⭐ **Route (c) — write the BALANCE LAWS directly**, using `U` only as the constitutive potential. It is
+  **identical** to the Lagrangian route restricted to **Lagrange–d'Alembert virtual work** — `J_±` and `δp`
+  held **fixed** as prescribed external sources, bulk load as external virtual work — ⛔ **not** stationary
+  action. One agent verified `det[(a)-fixed]/det[(c)]` is a bare monomial, i.e. the same dispersion.
+- ⛔⛔ **Varying `J_±` inside the multiplier is INCORRECT — not merely ambiguous.** Variation transposes the
+  retarded kernel into an **ADVANCED** one (`Λ⁰/(1−iωτ) → Λ⁰/(1+iωτ)`, pole `−i/τ → +i/τ`): an anti-causal,
+  **energy-generating** kernel. ⇒ a spurious growing root at `≈ +i/τ` (`+3.089i` at `τ=1/3`; `+1.517i` at
+  `τ=0.7` against `i/τ = 1.4286i`), ⚠ **whose growth rate tends to `1/τ` as `Λ⁰ → 0`** — a finite-rate
+  instability from infinitesimal coupling, which is what falsifies it.
+- ⛔ **Route (b), substituting the constraint into `U`, is wrong the same way** and **invents a mode**
+  (determinant degree **6** vs **5**). One agent finds `(b) ≡ (a)+δJ` identically; the other finds them
+  differing at `O(a)` vs `O(ā)`. ⚠ **Minor unresolved discrepancy between the agents — not load-bearing**,
+  since both agree `(c)`/`(a)`-fixed is correct and both others are wrong.
+- ⛔⛔ **The routes AGREE in the impermeable limit** ⇒ ⚠ **rev 4's `Λ⁰ → 0` consistency check would have
+  passed for all three wrong routes.** One agent adds that the split survives at `τ = 0`, so it is caused by
+  **dissipation**, ⛔ not by memory.
+- ⭐ **The trap inside route (c):** the normal-force balance must include the slab's own internal pressure
+  pushing the faces apart (`+μ_θ`, `μ_θ ≡ ∂U/∂θ`). One agent got this wrong first pass and the variational
+  routes caught it. ⛔ Omit it and (c) disagrees with everything.
+
+⭐⭐ **THE ACCEPTANCE CHECK TO ADOPT — mechanical, gradeable, and it does NOT foreclose instability:**
+**if `Y(−ω)`, `Λ(−ω)` or `Λ*(ω)` appears anywhere in the final equations, the derivation is wrong.**
+⛔⛔ **DO NOT adopt the other proposed gate — "every root must satisfy `Im ω ≤ 0`".** It would re-close the
+falsification channel §0 just opened. ⚠ Use the **specific** diagnostics instead: a root at `+i/τ` means
+someone varied `J`; an unattributable `a·μ_θ` term means someone substituted into `U`.
+
 ## ▶ Next actions, in order
 
-1. **Fold rev 3's review** (running at handoff time; outputs in the session scratchpad).
-2. **Build B's blind `.wl`**, then quarantine it and build the `.py`. ⛔ Reviews launch **on sight**.
-3. **Cross-engine comparison**, pre-registration scoring, step record.
-4. **Registry insertion as a separate pass**, once B's physics is banked.
-5. **Then S11b-C**, using the four requirements listed above.
+0. ⛔⛔ **USER DECISION REQUIRED on the closure** (top of this page) before §2 of rev 5 can be written.
+1. **Write rev 5** — fold the six rev-4 findings plus the two resolutions above. ⭐ Replace §3b's
+   variational mandate with balance laws; ⛔ delete the un-failable accounting check.
+2. **Review rev 5** — I author it ⇒ **Codex + Grok**. ⛔ Neither may be told the resolutions came from
+   agents; they must judge the spec as written.
+3. **Build B's blind `.wl`**, then quarantine it and build the `.py`. ⛔ Reviews launch **on sight**.
+   ⛔⛔ **BUILD OUTSIDE THE REPOSITORY** — see the blindness-sweep result below.
+4. **Cross-engine comparison**, pre-registration scoring, step record.
+5. **Registry insertion as a separate pass**, once B's physics is banked.
+6. **Then S11b-C**, using the four requirements listed above.
+
+## ⛔⛔ BLINDNESS SWEEP — the bar list is INSUFFICIENT
+
+An agent swept the tree for anything that could hand a builder S11b-B's answers. ⚠ **The two strongest
+leaks are OUTSIDE the barred tree entirely:** `docs/two_throat_simulation_handoff_spec.md` §2.2 (the
+constrained-field elimination, the renormalized inertia, the resulting longitudinal pole — B4 + B5's shape)
+and `software/stage1_solver/reports/pathA_36_c5_phase_potential.md` (its source, plus a control table
+spanning B1/B4/B5/B6/B8). Also unbarred: `_scratch/` (verbatim mirrors of **every** barred file **plus
+prior reviewers' own worked derivations**), the built **PDF** of the paper, and `DEFECT_REGISTER.md`.
+
+⇒ ⛔ **Do not answer this by extending the denylist.** The directive is self-contained by design, so
+**run the build in a directory OUTSIDE the repository** and move the deliverable in afterward.
+⚠ **Keep the empty output directory in place** — quarantining a whole `scripts/` dir once left a builder
+nowhere to write and it exited 0 with the file parked in `/tmp`.
+⛔ **Absence does not survive `git show`.** Bar history reads explicitly and audit the build log for them.

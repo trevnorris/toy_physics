@@ -1,4 +1,4 @@
-# Independent physics review — S11b-B BUILD DIRECTIVES, REVISION 5 (before any build runs)
+# Independent physics review — S11b-B BUILD DIRECTIVES, REVISION 6 (before any build runs)
 
 ## Artifact
 
@@ -6,7 +6,7 @@
 - `/var/projects/toy_physics/research/pde_ledger_v3/directives/S11bB_py_directive.md`
 
 Engine-specific header + a shared physics specification verified byte-identical in both
-(`sha256 b80b55680b5a7feac664d170047188bd176f1de8f1c4ec9b22759b7a4a2266ce`).
+(`sha256 18c3e9faafcc0c1b6036e8cc658743a0dd15914ba2108459290177e28b3b0f33`).
 
 ## Why this review exists
 
@@ -16,26 +16,27 @@ and dual-engine certifies wrong physics.
 
 ## ⛔⛔ THE PATTERN YOU ARE HERE TO BREAK
 
-**Four revisions have been rejected by independent review before any build ran.** ⚠⚠ **In each of the last
+**Five revisions have been rejected by independent review before any build ran.** ⚠⚠ **In each of the last
 three rounds, EVERY finding was located in the material that had just been CHANGED to fix the previous
 round.** The fixes keep breeding the next round's defects.
 
-⇒ ⭐⭐ **Weight your attention toward what rev 5 changed.** A fix that creates a fresh way for the physics to
+⇒ ⭐⭐ **Weight your attention toward what rev 6 changed.** A fix that creates a fresh way for the physics to
 be wrong is the outcome this review exists to prevent.
 
-### What changed in rev 5 — ⛔ the findings behind these are deliberately withheld
+### What changed in rev 6 — ⛔ the findings behind these are deliberately withheld
 
-- **§1b** — the complex-frequency section now **supplies** a branch prescription. Previous revisions either
-  asserted a different one or supplied none.
-- **§2b** — **new**. The interface closure gains a chemical-potential term; the face response is no longer
-  supplied but must be derived; an acceptance check against an externally derived `Z_perm` is added;
-  passivity is split into two computed questions.
-- **§3b** — the derivation route is **replaced**. An action principle with a Lagrange multiplier is gone;
-  balance laws replace it, three routes are forbidden, and the previous energy-accounting check is deleted
-  and replaced.
-- **§0 / B5** — a growing root now requires reported diagnostics.
-- **§3** — the symmetry group is stated in full; the independence test is restated.
-- **B8** — a new control **E**; control **C** widened.
+- **§1b** — two sentences removed; a supplied branch prescription otherwise unchanged from the previous
+  revision, which two independent legs verified by computation.
+- **§2b** — the closure is **re-parameterized**: the flux is now driven by an **affinity `𝒜` that the
+  engines must CONSTRUCT** rather than a supplied combination. The passivity requirement is rewritten as a
+  **two-port** question and both parts may now return `NOT_ESTABLISHED`.
+- **§3b** — **substantially rewritten.** A Lagrange multiplier is now permitted where the previous revision
+  banned it; a binding **virtual-displacement rule** is added; constitutive quantities become **variational**
+  derivatives; explicit geometry/sign conventions are supplied for the bulk load; an overclaim about
+  stationarity is narrowed and a doubled-variable cross-check is now permitted; **two convention
+  cross-checks** are added with an explicitly bounded scope.
+- **B7** — a units-restored homogeneity check on every final equation, plus a mandatory ablation of it.
+- **B6 / B8** — symbol updates following §2b's re-parameterization; control **E** re-scoped.
 
 ## What to check
 
@@ -58,16 +59,26 @@ stated signatures of the forbidden routes are real; and that the mandated balanc
 whether an engine following the prescription passes them by construction. ⚠ The check they replaced was
 un-failable, which is why it was removed; ⛔ do not let the replacement have the same defect.
 
-**3. ⭐⭐ IS §2b RIGHT?** New material, so judge it cold:
+**3. ⭐⭐ IS §2b RIGHT?** Re-parameterized, so judge it cold:
 (a) is the **interfacial mass balance** `v_bulk,± = V_± + J_±/ρ_m` correct, including signs?
-(b) is the modified closure `J_± = Λ_p δp − Λ_μ μ_θ + Λ_V V_±` thermodynamically sensible, and is `μ_θ` the
-    right conjugate variable?
-(c) ⭐ is the `Λ_μ⁰ = 0` **acceptance check** against the supplied `Z_perm` genuinely **able to fail**, or
-    could an engine satisfy it trivially?
-(d) are the two passivity questions actually computable from what is supplied?
+(b) ⭐⭐ **is the affinity `𝒜` well-posed as a task** — can an engine construct it uniquely from entropy
+    production given what is supplied, or could two engines build different affinities and both comply?
+    ⚠ Check the **normalization** point specifically: `U` is per in-plane 3-volume with `θ` fractional,
+    while the bulk pressure is a 4-volume quantity.
+(c) ⭐ is the reduction **acceptance check** genuinely **able to fail**, given the engines now also report
+    the parameter mapping used to reach it — or can that mapping be chosen to force a pass?
+(d) is the **two-port** passivity treatment correct, and is allowing `NOT_ESTABLISHED` for both parts right,
+    or does it let engines dodge a question that is actually answerable?
+
+**3b. ⭐⭐ IS §3b's VIRTUAL-DISPLACEMENT RULE CORRECT AND SUFFICIENT?** ⚠ **Verify it by computation.**
+It asserts that a virtual variation transfers no mass, hence `δΣ = 0` binds the variations, hence `U` must
+**not** be varied at fixed `θ`. Judge: is that right; does it leave the derivation **exactly one** outcome;
+and do the two supplied **convention cross-checks** actually discriminate the readings, ⛔ or can a wrong
+derivation pass them? ⚠ Also judge whether their **stated scope limitation** is correctly drawn — they must
+not be usable to reject a growing root of the full problem.
 
 **4. ⭐⭐ DOES THE SPECIFICATION PRESUPPOSE THE FORM OF ANY ANSWER?** Go task by task, including unchanged
-ones. ⚠ Rev 5 supplies more than its predecessors did — **judge whether anything now supplied is really a
+ones. ⚠ Rev 6 supplies more than its predecessors did — **judge whether anything now supplied is really a
 result being smuggled in as setup.**
 
 **5. ⭐ IS THE PHYSICS CLOSED UNDER THE NEW ROUTE?** The route changed, so **recount** equations against
@@ -102,8 +113,8 @@ which change did.
 - Any other reviewer's output, and `research/pde_ledger_v3/_scratch/`.
 - `research/pde_audit/`.
 - ⛔ The **git history** of the directive files, and ⛔ `research/pde_ledger_v3/steps/S11b_HANDOFF.md` —
-  both record the reasoning behind rev 5's changes, and this review is worth nothing if it reads that
-  reasoning instead of forming its own. **Judge rev 5 as it stands.**
+  both record the reasoning behind rev 6's changes, and this review is worth nothing if it reads that
+  reasoning instead of forming its own. **Judge rev 6 as it stands.**
 
 ⭐ You **may and should** read `research/pde_ledger_v3/steps/S11bA_interface_response.md`, `V3_STEP_PLAN.md`,
 and `reduction/` to judge completeness. Those are barred from the *builders*, not from you.
@@ -124,6 +135,6 @@ be defeated. ⛔ No style, no formatting, no check-strength auditing — hardeni
 ## Output
 
 Findings, most severe first: file and line, one sentence stating the defect, and a concrete scenario
-showing how it lets wrong physics through or defeats dual-engine. ⭐ **Mark each finding NEW-IN-REV-5 or
+showing how it lets wrong physics through or defeats dual-engine. ⭐ **Mark each finding NEW-IN-REV-6 or
 PRE-EXISTING.** ⭐ For checks 1, 2 and 3 state explicitly whether you **verified** the supplied material or
 only read it. If nothing survives the filter, say so plainly. Under 60 lines.

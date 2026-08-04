@@ -60,8 +60,10 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
 > expected output**, and it turns an informative value into a binary crash. Compute → emit → *then* assert.
 > **3. Interpretation belongs to the STEP RECORD.** ⛔ The script does not editorialise.
 
-⚠⚠ **Measured 2026-08-04, across three independently-built steps: only ~10–20% of emitted tags depended on
-any computation.** The rest were typed sentences. ⛔ Cross-engine agreement on such a tag is **vacuous** —
+⚠⚠ **Measured 2026-08-04: named tags at named lines in three independently-built steps are typed sentences
+with no CAS object behind them** (e.g. `S11bB:348-360`, and a whole transverse block whose symbol `mu_R`
+appears in **no expression in the file**). ⛔ **Do not quote a fraction of the corpus** — two review legs
+rejected that as unmeasurable. ⛔ Cross-engine agreement on such a tag is **vacuous** —
 both engines carry the same author's sentence — and **eight fidelity review legs did not catch it**, because
 *"does it say the right thing"* and *"does it depend on anything"* are different questions.
 ⇒ `research/pde_ledger_v3/REBUILD_HANDOFF.md` · `[[feedback-scripts-print-never-assert]]`.
@@ -91,11 +93,18 @@ most valuable output available — becomes silent confirmation.
 ⚠ **State IN the directive when an object is supplied** and therefore **unfalsifiable within the build**, so
 a passing build does not read as if it verified it.
 
-⚠ **Blindness is now a MINOR control, ⛔ not the architecture.** Clause 1 removes the slot a typed answer
-goes in, which is structural; blindness is behavioural and has failed here repeatedly, including through
-`git show`. ⭐ Keep only: **move** answer-bearing files out of the tree, and **audit the build log**
-afterwards. ⛔ Stop there — enumerating git internals and backup archives is anti-adversary, and the engines
-are not adversaries.
+⚠⚠ **THE QUARANTINE APPARATUS IS CUT (2026-08-04). Two mechanisms were being conflated:**
+
+| ⭐ **KEEP — independent CONSTRUCTION** | ⛔ **CUT — hiding ANSWERS from the builder** |
+|---|---|
+| `.wl` written first, barred from the registry, ⛔ never a transcription of the `.py` | moving answer-bearing files out of the tree |
+| two engines that can genuinely **DISAGREE** | quarantining directives, `_scratch` transcripts, the "answer-bearing set" |
+| ⭐ the disagreement **is** the test | byte-identical-restore checks, tripwires, do-not-read lists for answers |
+
+⇒ ⭐ Clause 1 removes the slot a typed answer goes in, which is **structural**; quarantine is
+**behavioural** and has failed here repeatedly, including through `git show`. ⚠ It also defended against
+**anchoring**, while the measured failure was **absence of computation** — a threat quarantine never
+touched. ⛔ Builds now run **in-repo**; transcripts still go outside the repo only to keep the tree clean.
 
 ⛔ **Verify a builder's compliance declaration against the DIFF, never against its report.**
 

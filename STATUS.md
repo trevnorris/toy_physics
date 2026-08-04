@@ -4,9 +4,9 @@
 
 ⛔⛔ **FRONT DOOR CHANGED 2026-08-04 — `research/pde_ledger_v3/REBUILD_HANDOFF.md`.** Read that first.
 **ALL NEW LEDGER PHYSICS IS STOPPED**, S11b-C included, until the script rebuild closes. ⚠ The engines were
-measured to emit physics conclusions as **typed sentences with no computation behind them** — only ~10–20%
-of tags depend on any computation, across three independently-built steps, and **eight review legs missed
-it.** ⛔ Do not build on a v3 script result without checking it there first.
+measured to emit physics conclusions as **typed sentences with no computation behind them**, at named lines
+in **three independently-built steps**, and **eight review legs missed it.** ⛔ Do not build on a v3 script
+result without checking it there first.
 
 Then `research/pde_ledger_v3/NEXT_SESSION.md` for everything else.
 

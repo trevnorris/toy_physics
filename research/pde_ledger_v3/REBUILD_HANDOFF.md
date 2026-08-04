@@ -13,15 +13,25 @@ such a tag is **vacuous** — both engines carry the same author's sentence.
 
 Measured with `reduction/derived_or_declared.py` (built 2026-08-04, ⚠ uncommitted at time of writing):
 
-| engine | tags | **genuinely derived** | notes |
+| engine | tags | gate says DERIVED | notes |
 |---|---|---|---|
 | `S10_two_transverse_photons_sympy_audit.py` | — | ⛔ **unmeasured** | gate cannot parse it: **duplicate emitted tag** `S10_D_TABLE_ROW` — itself a finding |
-| `S11_stray_longitudinal_sympy_audit.py` | 79 | 16 | ⚠ only **1 of 6** perturbations informative ⇒ number unreliable |
+| `S11_stray_longitudinal_sympy_audit.py` | 79 | 16 | ⚠ only **1 of 6** perturbations informative |
 | `S11bA_interface_response_sympy_audit.py` | 44 | 5 | 6/6 perturbations ran |
-| `S11bB_interface_assembly_sympy_audit.py` | 133 | **10** | 13 flagged, ⛔ **3 are symbol-name echo, not derivation** |
+| `S11bB_interface_assembly_sympy_audit.py` | 133 | 13 | ⛔ 3 are symbol-name echo, ⛔ and the CONSTANT side over-counts |
 
-⇒ ⭐ **Roughly 10–20% of emitted tags depend on any computation**, across three independently-built steps
-with different review histories. ⛔ **This is not one bad script.**
+⛔⛔ **DO NOT QUOTE A FRACTION. An earlier version of this file said "only ~10–20% of tags depend on any
+computation"; BOTH review legs rejected it and they were right.** ⚠ The `DERIVED` column is a **lower
+bound** and the `CONSTANT` column is **not a count of typed prose** — the gate cannot see dimension tables,
+cannot see through an `assert`, and uses only six collapse pairs.
+⚠ **Verified false negative:** `Zperm_difference` at `S11bB:136-139` is **genuinely computed** and emitted
+at `:342`, yet the gate calls it CONSTANT — because it is asserted zero, so it always prints `0`.
+
+⭐ **What IS established, by SOURCE READING and confirmed independently by two legs:** specific named tags
+at specific lines are typed prose with no CAS object — `S11BB_PORT_DISSIPATIVITY` through
+`S11BB_COEFFICIENT_ADMISSIBILITY` (`:348-360`), and the whole transverse block (`:467-471`, where the symbol
+`mu_R` appears in **no expression in the file**). ⇒ ⭐ **the defect is located, not quantified**, and it
+appears in **three independently-built steps** with different review histories. ⛔ Not one bad script.
 
 ⛔⛔ **THE MATHEMATICA ENGINES ARE COMPLETELY UNMEASURED.** The gate is Python-only. S11b-B's `.wl` is
 **known** to carry the identical defect (`hInt` at line 86, assigned and never referenced). ⇒ treat the
@@ -45,21 +55,31 @@ second catches this.
 > `emit()`'s payload must be a CAS object — an expression, a solved root, a boolean from a symbolic test.
 > ⛔ Never author prose describing a result.
 >
-> **2. PRINT the residual. Do NOT assert it.**
-> `assert residual == 0` **is the builder writing down the expected output**, and it converts an
-> informative value into a binary crash. ⭐ Compute → `emit` → *then* assert if you like. The emit must
-> come first so the number is on the record instead of in a traceback.
+> **2. EMIT BOTH OPERANDS AND THE RESIDUAL, then guard.**
+> ⛔ **A residual that is asserted zero always prints `0` and carries no information.** ⚠ **Measured:**
+> `Zperm_difference` (`S11bB:136-139`) is genuinely computed, asserted zero, and emitted at `:342` — its
+> printed `0` says nothing about whether the hand-typed `Zperm_given` it was compared against is right.
+> ⇒ ⭐ **Emit the INDEPENDENTLY DERIVED object itself**, alongside the candidate and their difference. The
+> derived operand carries the evidence; the residual only carries the agreement.
+> ⚠ A guard is still **correct** — a failed invariant must not let downstream emit garbage. ⭐ Emit first,
+> **then** hard-stop. ⛔ An earlier version of this file said *"do NOT assert"*; that was wrong, both legs
+> caught it, and it is **retracted**.
 >
 > **3. Interpretation belongs to the STEP RECORD, not the script.**
 > The orchestrator writes what a printed value *means*, citing it. ⛔ The script does not editorialise.
 
-⭐⭐ **This is a STRUCTURAL control, not a behavioural one.** Blindness is behavioural — quarantine the
-file, sandbox the builder, audit the log — and it has failed here repeatedly, including through `git show`.
-⇒ **Remove the slot where a typed answer can go and no blindness is required.**
+⭐⭐ **This is a STRUCTURAL control where blindness was a behavioural one.** Remove the slot a typed answer
+goes in and you no longer depend on hiding the answer.
+⛔⛔ **THIS DOES NOT ABOLISH THE BLIND `.wl`, AND AN EARLIER VERSION OF THIS FILE IMPLIED IT DID.** ⭐ Two
+engines exist so they can **DISAGREE**; that is about **independent construction**, ⛔ not about hiding a
+result. ⇒ **Keep: `.wl` written first, barred from the registry and from the `.py`.**
+⇒ **Drop: quarantining answers from the builder.** Those are different mechanisms and the old docs conflate
+them.
 
-⭐ **The good pattern already exists in our own code, used once in 133 tags** — `S11bB` lines 421–443: type
-a candidate `K0_slice`, compute the determinant **independently**, `emit` the symbolic difference, hard-stop
-if nonzero. ⇒ That is why `K₀` is the one solid result in the file. **Copy this shape.**
+⭐ **The good pattern already exists in our own code** — `S11bB:421-443`: type a candidate `K0_slice`,
+compute the determinant **independently**, `emit` **the derived polynomial itself** *and* the difference,
+hard-stop if nonzero. ⇒ ⭐ **That emitted derived object is exactly what `Zperm` lacks**, and it is why `K₀`
+is the file's one solid result. **Copy this shape, including the emitted operand.**
 
 ---
 
@@ -88,12 +108,25 @@ disagreement — **the most valuable output available** — becomes silent confi
 ⇒ ⭐ **The builder's job ENDS at compute-and-print. The diff happens on our side, afterwards**, where a
 mismatch is a **finding**, ⛔ not a build failure.
 
-⚠ Consequence: this can run **in-repo like any normal build.** ⛔ No quarantine, no sandbox, no
-outside-the-repo directory, no memory games. Those defended against the wrong threat.
+⛔⛔ **BE HONEST ABOUT WHAT THIS BOUNDARY IS: it is ANTI-TUNING, ⛔ NOT a seal.** Both legs made this point.
+A complete equation set **largely determines the answer**, and a builder can hard-code the resulting CAS
+expression with no prose and no computation. ⇒ ⭐ **withholding the acceptance criterion stops the
+fix-until-it-matches loop and nothing else.** ⛔ Do not treat it as blindness.
+
+⚠ Consequence: this runs **in-repo like any normal build** — ⛔ no quarantine of answers from the builder,
+no sandbox, no outside-the-repo directory. ⭐ **The blind `.wl` is retained** (see the standing rule):
+independent construction, ⛔ not answer-hiding.
 
 ---
 
 ## ▶ THE PLAN
+
+⭐ **Budget: under two days** (user, 2026-08-04). ⚠ A review leg estimated "multi-week"; ⛔ **that is wrong
+and the reason matters** — the original build's cost was **discovery**: figuring out the process, walking
+the physics side by side, eleven directive revisions on S11b-B, two rejected whole-interface designs.
+⭐ **All of that is already paid.** The rebuild turns existing equations into computations. ⚠ The only thing
+that can blow the estimate is a genuine **disagreement**, and each one is a **finding** — ⇒ the schedule
+slips only in proportion to how much is actually wrong, which is the outcome worth paying for.
 
 ### Order — ⛔ dependency order, not convenience
 
@@ -102,7 +135,12 @@ S9 (.wl only)  →  S10  →  S11  →  S11b-A  →  S11b-B
 ```
 
 ⚠ S11b builds on S11, which builds on **S10's mode count**. ⛔ If S10 is wrong the rest inherits it.
-⭐ Each step: **both engines**, blind `.wl` first (that rule still stands and is cheap).
+⭐ Each step: **both engines**, blind `.wl` first.
+
+⛔⛔ **THE CHAIN IS NOT CLOSED — these enter from outside it and a rebuild CANNOT falsify them.** List them
+as premises in each step record: **S9** consumes the charter and Maxwell (`S9:110`); **S11** adds the
+postulated `B_comp` (`S11:118`); **S11b-B** receives supplied affinity, branch prescription, mass balance,
+virtual-work rule and row structure (`S11bB record:136`).
 
 ### Per step
 
@@ -155,7 +193,10 @@ S9 (.wl only)  →  S10  →  S11  →  S11b-A  →  S11b-B
 - **L2** ⛔⛔ **The deep one.** Every check in these engines is `assert`ed *before* the first `emit`, so any
   perturbation strong enough to flip a check **kills the process** ⇒ `SKIPPED` ⇒ no information.
   ⭐ **Clause 2 of the standing rule fixes this at the source.**
-- **L3** `CONSTANT` conflates *typed prose* with *computed and provably zero*.
+- **L3** ⛔⛔ **`CONSTANT` conflates *typed prose* with *computed and provably zero* — a VERIFIED FALSE
+  NEGATIVE.** `Zperm_difference` (`S11bB:136-139`) is genuinely computed, then asserted zero, then emitted
+  at `:342`; it always prints `0`, so the gate calls it CONSTANT. ⇒ ⭐ **the CONSTANT column is NOT a count
+  of typed prose, and must never be quoted as one.**
 - **L4** `MAX_PERTURBATIONS=6`; its selection never reaches `Lambda_*`, `tau_*`, `K_L`, `D_*`, `A_*`.
   ⚠ One slot was spent on `mu_R`, a symbol used nowhere.
 - ⛔ **False DERIVED is real** — a tag that merely echoes an input symbol's *name* moves under collapse.
@@ -169,7 +210,14 @@ S9 (.wl only)  →  S10  →  S11  →  S11b-A  →  S11b-B
 
 - ⛔ **Do not build blindness apparatus.** Two rounds of it were designed and discarded in one session.
   The measured failure is **absence of computation**, ⛔ not anchoring on a known answer.
-- ⛔ **Do not audit 256 tags.** ⭐ Audit the **claims** the ledger actually makes — the cards, the registry,
+- ⚠⚠ **A DELIBERATE CHOICE, ⛔ not an oversight — and an earlier version of this file contradicted itself
+  here.** Rebuilding every engine and diffing every printed value **IS** a full-corpus check. ⭐ Both review
+  legs argued for narrowing to load-bearing claims only; ⛔ **the user overrode that, with data** — the
+  original build took days *including* discovery, so the fuller thing is affordable and buys certainty the
+  narrow version cannot. ⇒ **Do the full rebuild. Do NOT re-litigate the scope**, and ⛔ do not quietly
+  scale it down after reading the review transcripts.
+- ⛔ **What that does NOT license: auditing tags for their own sake.** ⭐ When triaging *existing* output,
+  go at the **claims** the ledger makes — the cards, the registry,
   `model_map.md`. Most tags are internal bookkeeping nobody cites. ⚠ v2 died from checks-on-checks.
 - ⛔ **A reviewer's finding is not a mandate — verify it yourself.** ⚠ Measured: a leg reported the `K₀`
   boundary as "typed and never computed." ⭐ It is verified; reading lines 421–443 settled it in one pass.

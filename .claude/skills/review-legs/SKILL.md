@@ -1,6 +1,6 @@
 ---
 name: review-legs
-description: Launch two independent PDE-ledger reviews of one artifact in parallel, choosing the two legs by WHO WROTE the artifact — Codex plus Grok for orchestrator-written plans, directives and prose; a fresh Claude agent plus Grok for Codex-written scripts and TeX. Renders a blind review prompt with the artifact, physics checks, do-not-read list, required ablations, and physics-only finding filter; enforces blindness by moving answer-bearing files out of the tree rather than by denylisting them.
+description: Launch two independent PDE-ledger reviews of one artifact in parallel, choosing the two legs by WHO WROTE the artifact — Codex plus Grok for orchestrator-written plans, directives and prose; a fresh Claude agent plus Grok for Codex-written scripts and TeX. Renders a blind review prompt with the artifact, physics checks, do-not-read list, required ablations, and physics-only finding filter; requires a FORM ablation on every script, since a tag can be typed prose that no computation produced.
 allowed-tools: Bash, Read, Edit, Write, Agent
 user_invocable: true
 ---
@@ -36,8 +36,9 @@ off-diagonal, collapse two independent symbols into one — then re-run and repo
 ⭐ A **COEFFICIENT** rescale tests arithmetic; only a **FORM** change tests physics, because scaling never
 leaves the family.
 ⚠⚠ **Measured 2026-08-04:** a script `emit`ted a physics conclusion as a **typed sentence** with no
-computation behind it; the ablation produced **byte-identical output**. Across three steps only ~10–20% of
-tags depended on any computation. ⛔ **Eight fidelity legs missed it**, because *"does it say the right
+computation behind it; the ablation produced **byte-identical output**. ⭐ Confirmed by source reading at
+named lines in **three independently-built steps**. ⛔ **Do not quote a FRACTION of the corpus — two review
+legs rejected that as unmeasurable.** ⛔ **Eight fidelity legs missed it**, because *"does it say the right
 thing"* and *"does it depend on anything"* are different questions — and a prose tag is **perfectly
 faithful** to a step record that quotes it.
 ⇒ ⭐ **Ask of every claim: WHICH LINE COMPUTED THIS?** and give the line number or report it as uncomputed.

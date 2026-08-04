@@ -519,7 +519,7 @@ and a third was rejected for mandating a non-uniform background while fixing pla
 | | scope | state |
 |---|---|---|
 | **S11b-A** | the bulk's response to moving faces + the projection identity | ✅ **CLOSED** — `steps/S11bA_interface_response.md` |
-| **S11b-B** | the **homogeneous** assembly ⇒ does the longitudinal radiate or stay bound | ✅ **CLOSED** — `steps/S11bB_interface_assembly.md`. ⛔ **Overturns A's headline: the velocity-coupled leak is thermodynamically FORBIDDEN** |
+| **S11b-B** | the **homogeneous** assembly ⇒ does the longitudinal radiate or stay bound | ✅ **CLOSED** — `steps/S11bB_interface_assembly.md`. ⚠ **A's velocity leak lies OUTSIDE the passive region ⇒ it costs a named reservoir; ⛔ it is NOT forbidden.** Passivity + Onsager are classifications, ⛔ not gates, and both assume an equilibrium reference state this model does not have (`v₀ ≠ 0`) |
 | **S11b-C** | the **non-uniform** transverse coupling ⇒ is light's confinement unconditional | ▶ **NEXT.** ⚠ B proved the uniform coupling is **identically zero**, so a uniform-limit control is now **known-vacuous** |
 
 ⭐ **The seam is real:** the longitudinal mode's fate needs no gradients; light's confinement needs them.

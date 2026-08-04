@@ -236,19 +236,53 @@ MacCullagh, near-identical names, different objects) and the three-step story of
    SymPy side imports it — and the `.wl` is written **BLIND**, so **the DISAGREEMENT is the test**.
    `mathematica/` now holds only per-step blind audits, which is the shape it should keep.
 
-2b. ✅ **S9 IS CLOSED (2026-08-02, user).** Artifacts: note · register entry · TeX card · **blind
-   Mathematica audit**. ⛔ **No v3 SymPy audit was written, deliberately** — the cone is two lines of
-   algebra, already executed by the `.wl` and by v2's script (cited by locus). ⭐ **AMENDED UNIT RULE:
-   a second engine earns its place where the algebra is long enough that it could genuinely DISAGREE.**
-   ⛔ Do not write one per step as ceremony. Source map deferred — a reader aid, it earns its keep at
-   the end.
+2b. ⚠⚠ **S9 IS RE-OPENED (2026-08-04) — AND THE REASON IS A PROCESS DEFECT, NOT PHYSICS.**
+
+   ⛔⛔⛔ **THIS ENTRY PREVIOUSLY READ *"S9 IS CLOSED (2026-08-02, user)"*. THE USER DID NOT WRITE IT,
+   AND — ESTABLISHED 2026-08-04 — THE USER HAS NEVER WRITTEN ANY LINE IN THIS REPOSITORY:**
+   > *"literally nothing in this repo was written by me. It's 100% from our communication and you
+   > writing it"* — user, 2026-08-04
+
+   ⇒ ⭐⭐⭐ **EVERY `(user, DATE)` STAMP IN EVERY DOC IS AN ORCHESTRATOR'S PARAPHRASE OF A CONVERSATION**,
+   ⛔ **not the user's authored words** — including the quoted-looking ones, and ⛔ **including this one.**
+   There are **39** such attributed-decision mentions across v3's docs and ⛔ **none is audited.**
+
+   ⚠⚠ **Why this is a hazard and not just a bookkeeping nit:** the stamp confers an authority the text
+   never earned. A line reading *"(user decision)"* does not get re-litigated — so **an orchestrator's
+   own inference, once stamped, becomes unchallengeable by later orchestrators.** ⚠ **Measured here:**
+   a 2026-08-04 session inherited *"S9 (.wl only)"* into `REBUILD_HANDOFF.md`'s plan and built the whole
+   step on it **without questioning it, precisely because it appeared to be the user's call.** The user
+   had not made it and had not noticed the line.
+
+   ⇒ ⭐ **How to read a `(user, …)` stamp:** it is **evidence that a conversation happened**, and a
+   reasonable prior about what was decided. ⛔ It is **not** a citation, ⛔ not a quotation, and ⛔ not a
+   trump card. ⭐ **When one blocks something you would otherwise do, SAY SO OUT LOUD rather than
+   deferring to it** — the user cannot correct a line they never saw.
+   ⛔ **And do not over-correct into paralysis:** most are probably faithful, the physics does not depend
+   on any of them, and ⛔ re-opening all 39 would be exactly the checks-on-checks spiral that killed v2.
+   ⇒ [[feedback-attributions-are-my-paraphrase]].
+
+   ⭐ **The exemption is REVERSED: S9 gets a SymPy engine.** Note the old rule was *conditional*, and its
+   condition expired without anyone noticing:
+   > *AMENDED UNIT RULE: a second engine earns its place where the algebra is long enough that it could
+   > genuinely DISAGREE.* ⛔ Do not write one per step as ceremony.
+
+   ⭐ **That rule is still right, and S9 now PASSES its test.** The claim *"the cone is two lines of
+   algebra"* described the 26-tag 2026-08-02 script. The rebuilt engine carries **316+ tags**: mode
+   counting by **matrix rank**, four polarisation tests, a `D`-symbolic dimension solve, seven distinct
+   actions, and two independent routes to the dynamical matrix. ⇒ It could genuinely disagree.
+   ⚠ **Measured evidence that it would have:** the `M·T = 0` existence test — carried by **both** the
+   2026-08-02 script and the first rebuild — returns a **false negative** under anisotropic inertia, and
+   what settled it was **two independent SymPy derivations** written by review legs and then thrown away.
+   ⇒ ⭐ **We were already paying for a second engine and discarding it.**
+
    ⭐ **The cone is confirmed FOUR independent ways** — registry (walked with the user), the blind `.wl`,
    Grok by hand, a fresh agent by hand + SymPy. All four: `c_γ²=μ_R/ρ_br`, `[-3,0,1]`, `[-1,-2,1]`.
-   ⚠ **Known limits of the `.wl`, recorded and ⛔ NOT acted on** (they are *"wrong on a different input"*,
-   ⛔ not ways this physics could be wrong): insensitive to a wrong overall prefactor, a flipped
-   potential sign, the assumed brane dimension, and curl-only-vs-general-gradient stiffness. ⇒ Its
-   `VERDICT: PASS` means *"my internal checks did not contradict each other"* — ⭐ **the external
-   comparison is the real verdict.**
+   ⚠ **Known limits of the 2026-08-02 `.wl`** — ⭐ **the rebuild ADDRESSES these**, so ⛔ do not quote them
+   as current: insensitive to a wrong overall prefactor, a flipped potential sign, the assumed brane
+   dimension, and curl-only-vs-general-gradient stiffness. ⇒ Its `VERDICT: PASS` meant *"my internal
+   checks did not contradict each other"* — ⭐ **and that tag no longer exists**, by the standing rule
+   that a script may not state a conclusion.
 
 2. ⚠ **The requirements-first restructure is PARTIALLY applied — ⛔ and that is deliberate.** Attempted
    twice as a **whole-document** pass, failed review twice, rolled back twice. ⭐ **Do the minimum to

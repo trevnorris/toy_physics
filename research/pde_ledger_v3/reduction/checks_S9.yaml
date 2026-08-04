@@ -3,8 +3,9 @@ default_engine: wl
 
 derived_dimensions:
   rhoBr: WL_S9_RHO_DIMENSION
-  rhoZ: WL_S9_RHO_DIMENSION
+  rhoZ: WL_S9_X6_RHO_Z_DIMENSION
   muR: WL_S9_MU_DIMENSION
+  muF: WL_S9_X7_MU_F_DIMENSION
 
 # Narrow allowed exception: these vectors are definitional conventions, not
 # results. Coordinates/displacements are lengths, wave numbers are inverse
@@ -21,6 +22,9 @@ primitive_dimensions:
   a1: [1, 0, 0]
   a2: [1, 0, 0]
   a3: [1, 0, 0]
+  b1: [1, 0, 0]
+  b2: [1, 0, 0]
+  b3: [1, 0, 0]
   kx: [-1, 0, 0]
   ky: [-1, 0, 0]
   kz: [-1, 0, 0]
@@ -33,7 +37,11 @@ dimensionless:
   - lambdaRho
   - lambdaMu
   - rhoExponent
+  - rhoZExponent
   - muExponent
+  - muFExponent
+  - Sign
+  - Im
 
 # S9 has no second engine output and emits no direct values for every QID in a
 # registry residual. The mechanisms remain active and are tested independently.

@@ -49,6 +49,21 @@ it, because *"does it say the right thing"* and *"does it depend on anything"* a
   `WL_S9_TRANSVERSE_ROOT` is fine. A name that appends the root's value, its ratio of coefficients, its
   sign, or a word for the shape of the dispersion is **forbidden** — the payload being a genuine CAS
   object does not rescue a name that already gave the answer away.
+- ⛔⛔⛔ **A HAND-TYPED CAS OBJECT IS STILL HAND-TYPED. THIS IS THE LOOPHOLE THAT MATTERS MOST.**
+  Emitting `FullSimplify[{0, muR k2/rhoBr}]` satisfies "the payload is a CAS object" while being a
+  **hand-authored answer** with no data dependency on `Det`, `Solve`, or any test — you could delete the
+  entire derivation and the output would not move. That is the original defect wearing algebra instead
+  of prose, and it is **just as dead**.
+  ⭐⭐ **THE STRUCTURAL RULE THAT CLOSES IT — obey it literally:**
+  > **The ONLY place the physical symbols `rhoBr`, `muR`, `kx`, `ky`, `kz`, `omega`, `rhoZ`,
+  > `lambdaRho`, `lambdaMu` may be combined by hand is in CONSTRUCTING THE ACTION (§3.2) and the
+  > plane-wave ansatz (§3.4). Every other expression involving them must be REACHED BY COMPUTATION from
+  > those.**
+
+  ⇒ ⛔ Do not type a root. ⛔ Do not type a dispersion. ⛔ Do not type a speed. ⛔ Do not type a matrix
+  that the variation should have produced. ⛔ Do not type a dimension vector that the solver should have
+  returned. Each must arrive via `Solve`, `Det`, `MatrixRank`, `Coefficient`, `D`, or the Euler–Lagrange
+  variation. ⭐ **Every control must re-enter the same chain at the ACTION**, ⛔ never at its result.
 - ⛔⛔ **NO RESIDUAL MAY BE TAUTOLOGICAL.** If you define `q := A/B` and then emit `A − q·B`, that
   residual is identically zero **by construction** and carries no information. Before emitting any
   difference, ask: *were these two operands produced by independent routes?* If they were not, ⛔ do not
@@ -157,14 +172,29 @@ T  =  |k|² · I  −  k kᵀ            (spans the TRANSVERSE subspace)
 Λ  =  k kᵀ                          (spans the LONGITUDINAL subspace)
 ```
 
-A root `ω²` is **transverse** exactly when `M(ω², k) · T = 0` as a matrix identity, and **longitudinal**
-exactly when `M(ω², k) · Λ = 0`. Test every root against **both**, and emit both product matrices for
-every root.
+⛔⛔ **`M·T = 0` IS NOT THE EXISTENCE TEST, AND AN EARLIER REVISION OF THIS DIRECTIVE WRONGLY SAID IT
+WAS.** `M·T = 0` demands that `M` annihilate the **entire** transverse subspace. A theory can carry a
+perfectly good transverse mode whose partner in that subspace sits at a *different* frequency — and then
+`M·T ≠ 0` at both, so the test reports **no transverse mode where one exists.** That is a false
+negative, and mode counting is the whole point.
 
-⚠ These two classes are **not** exclusive and **not** exhaustive, and you must not assume they are:
-- a root may satisfy **both** (that is what happens when `M` vanishes identically at that root),
-- a root may satisfy **neither** (that is what happens when no single `ω²` annihilates a whole subspace,
-  as can occur once the inertia is anisotropic).
+⭐ **Use these four tests. They answer four different questions and you must emit all four per root.**
+Assume `q ≡ k·k ≠ 0` throughout (state that assumption; at `k = 0` every test degenerates vacuously).
+
+| test | question it answers | how to compute it |
+|---|---|---|
+| **E1** transverse **existence** | is there a nonzero `a` with `M a = 0` **and** `k·a = 0`? | `MatrixRank[ArrayFlatten[{{M},{Transpose[{k}]\[Transpose]}}]] < Length[k]` — i.e. stack `M` on the row `kᵀ` and take the rank |
+| **E2** transverse **multiplicity** | how many independent transverse modes? | `Length[k] − MatrixRank[` that stacked matrix `]` |
+| **E3** longitudinal **existence** | is `k` itself a null vector of `M`? | `M · k == 0` as a vector identity |
+| **E4** whole-subspace degeneracy | does `M` annihilate **all** of the transverse subspace at one frequency? | `M · T == 0` as a matrix identity |
+
+⭐ **E2 is the mode count.** Emit it for every root, in the main derivation and in every control.
+⚠ **E4 is strictly stronger than E1** — keep it, but ⛔ never use it to decide existence.
+
+⚠ The classes are **not** exclusive and **not** exhaustive, and you must not assume they are:
+- a root may be **both** transverse and longitudinal (this happens when `M` vanishes identically there),
+- a root may be **neither**,
+- E1 may hold while E4 fails (that is the anisotropic case E4 gets wrong).
 
 ⛔ **Do not "fix" either case.** Emit the matrices and the resulting subsets exactly as computed,
 including an empty subset. An empty list is a legitimate computed result; ⛔ never substitute a word for
@@ -221,10 +251,12 @@ Emit each of the following as its own tag.
 7. `det M`, factored.
 8. The **complete** solution set for `ω²` — every root, not only the one you want.
 9. Both generators `T` and `Λ`.
-10. For **each** root: the matrix `M(ω²,k)·T`, the matrix `M(ω²,k)·Λ`, and the root itself.
-    ⭐ Emit the matrices, not a verdict on them.
-11. The subset of roots passing the transverse test, and the subset passing the longitudinal test —
-    each produced by `Select` with the programmed test. Emit an empty subset as an empty list.
+10. For **each** root: the root itself, the stacked matrix of **E1**, the vector `M·k` of **E3**, and the
+    matrix `M·T` of **E4**. ⭐ Emit the objects, not a verdict on them.
+11. For **each** root: **E1**, **E2**, **E3**, **E4** as computed. ⭐ **E2 — the transverse
+    multiplicity — is the mode count**; emit it as an integer the rank computation returned.
+    Then the subsets of roots passing E1, E3 and E4, each produced by `Select` with the programmed test.
+    ⛔ An empty subset is emitted as an empty list, never as a word.
 12. ⭐ **The complete root multiset with multiplicities**, taken from the factored determinant, **and the
     nullity of `M` at each root** (`Length[k] − MatrixRank[M]` evaluated at that root). ⭐ This is the
     object that stays well-posed when roots collapse or subsets come out empty, so emit it for the main
@@ -232,20 +264,25 @@ Emit each of the following as its own tag.
 
 ### 4.2 The transverse dispersion
 
-Work with a **scalar** wavenumber for these tags: introduce `kMag` with `kMag² = k·k`, and express
-`ω²` in terms of `kMag` so that differentiation with respect to a scalar is well defined.
+Work with the **scalar** `q ≡ k·k` for these tags, so differentiation is with respect to a scalar.
+⚠ Use **set/plural** language throughout: how many roots pass E1 is a computed result, ⛔ not something
+this directive tells you.
 
-13. `ω²` for the transverse root, in terms of `kMag`.
-14. The candidate propagation speed squared, obtained as `ω²/kMag²`.
-    ⛔ **Do NOT then emit `ω² − (that speed squared)·kMag²`.** That residual is identically zero **by
-    construction** — the speed was *defined* as that quotient — so it is a tautology, not a check, and
-    this rebuild exists to remove exactly that pattern. ⚠ At this step there is **no independent second
-    route** to the propagation speed: the script may not read the registry (§1), and there is only one
-    engine. ⭐ Say so in your report rather than manufacturing a second operand.
-15. The speed-squared expression's dependence on `kMag`, emitted **as expressions**:
-    `D[speedSquared, kMag]`, and `Exponent[Together[omegaSquared], kMag]` for numerator and denominator.
-    ⭐ **These carry the actual structural information** about the dispersion. ⛔ Never emit a word
-    describing its shape.
+13. For **every** root passing **E1**: that `ω²` expressed in terms of `q`.
+14. For each such root, the candidate propagation speed squared, obtained as `ω²/q`.
+    ⛔ **Do NOT emit `ω² − (that speed squared)·q`.** That residual is identically zero **by
+    construction** — the speed was *defined* as that quotient — so it vanishes for **any** dispersion,
+    including a dispersive one like `ω² = q + α q²`. It certifies nothing, and this rebuild exists to
+    remove exactly that pattern.
+15. ⭐⭐ **The non-circular structural object — emit this instead**, for each root passing E1:
+    ```
+    q · D[omegaSquared, q]  −  omegaSquared          (Euler homogeneity defect)
+    D[ omegaSquared / q , q ]                        (variation of the candidate speed)
+    ```
+    ⭐ These are **not** tautological: they vanish exactly when `ω²` is homogeneous of degree one in `q`,
+    and they are **nonzero** for a dispersive `ω²`, so they carry real structural information about the
+    dispersion. Also emit `Exponent[Numerator[Together[omegaSquared]], q]` and the same for the
+    denominator. ⛔ Never emit a word describing the shape of the dispersion.
 
 ### 4.3 Dimensions
 16. The energy-density dimension vector on a `D`-dimensional sheet, symbolic in `D`.
@@ -280,8 +317,9 @@ For **each** control below, emit exactly these five objects, and ⛔ nothing tha
 3. ⭐ **its complete root multiset with multiplicities, and the nullity of `M` at each root** — this is
    the primary comparison object, because it stays well defined when roots collapse into one, when a
    root disappears, and when a polarisation subset comes out empty;
-4. its transverse subset and its longitudinal subset, each from the programmed matrix tests of §3.5,
-   emitted as lists — ⛔ **an empty list is emitted as an empty list**;
+4. **E1, E2, E3 and E4 of §3.5 evaluated at every one of its roots** — ⭐ especially **E2, the transverse
+   multiplicity**, which is the object that stays meaningful when a subset is empty; and the resulting
+   subsets as lists, ⛔ **an empty list emitted as an empty list**;
 5. the difference between its root multiset and the main derivation's root multiset, as CAS objects.
 
 ⛔⛔ **Do NOT emit "the difference between the transverse root and the non-transverse root."** That
@@ -296,7 +334,7 @@ replacement and it discriminates every case.
 | **X2** | coefficient | `μ_R → λ_μ μ_R` with `λ_μ` a positive symbol |
 | **X3** | ⭐ **FORM** | replace the curl-only stiffness by a **divergence-only** stiffness: `−(1/2) μ_R (∇·u)²` |
 | **X4** | ⭐ **FORM** | replace the curl-only stiffness by **isotropic gradient elasticity**: `−(1/2) μ_R Σ_{i,j} (∂_i u_j)(∂_i u_j)` |
-| **X5** | ⭐ **FORM** | flip the sign of the curl-only stiffness term: `+(1/2) μ_R (∇×u)·(∇×u)` |
+| **X5** | **sign** | flip the sign of the curl-only stiffness term: `+(1/2) μ_R (∇×u)·(∇×u)`. ⚠ Classified honestly: this keeps the same differential operator and only flips a coefficient's sign, so it is ⛔ **not** a tensor/differential-form change — it leaves the admitted family only because that family requires `μ_R > 0` |
 | **X6** | ⭐ **FORM** | make the inertia anisotropic: replace `ρ_br (∂_t u)·(∂_t u)` by `(∂_t u)·diag(ρ_br, ρ_br, ρ_z)·(∂_t u)` with `ρ_z` an independent positive symbol |
 
 For **X4** additionally emit the difference between its transverse root and its **non**-transverse root,
@@ -327,6 +365,17 @@ having tested them. ⛔ Do not emit these as tags — they are prose, and prose 
 - **The moduli are frequency-independent** — `ρ_br` and `μ_R` carry no memory kernel. This is stronger
   than "no dissipation" and is a separate assumption.
 - **Amplitude → 0** (strict linearisation); every term is quadratic in `u`.
+- ⛔⛔ **THE ONE THAT MATTERS — THE LONGITUDINAL RESTORING RATE IS SENT TO ZERO BY THE CHOICE OF ACTION.**
+  A general stiffness would carry a compressional term `−(1/2) B_L (∇·u)²` alongside the curl-only term.
+  Premise **P5** sets `B_L = 0`, which sends the longitudinal restoring frequency to zero and its
+  timescale to **infinity**.
+  ⚠⚠ **That rate is precisely what determines whether a longitudinal wave propagates — which is one of
+  the things S9 is claiming.** ⇒ ⭐ **Any absence of a propagating longitudinal wave in this build is
+  ASSUMED THROUGH P5, ⛔ NOT ESTABLISHED BY IT**, and the step record must say so in those words.
+  ⛔ Do not treat a build that "finds no longitudinal wave" as having discovered anything.
+  ⚠ Note also what the action does **not** do: setting `B_L = 0` removes the longitudinal *restoring
+  force*, ⛔ it does **not** remove the longitudinal **degree of freedom** — which is why §3.5 asks for
+  the longitudinal tests **E3** at every root rather than assuming the sector is empty.
 
 ---
 

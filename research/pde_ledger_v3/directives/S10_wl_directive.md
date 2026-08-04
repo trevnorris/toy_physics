@@ -37,11 +37,15 @@ structural rule), §5 (three clauses, four corollaries, no verdict), and §8 (ta
 ## Mathematica-specific requirements
 
 - ⭐ Emit payloads with `ToString[expr, InputForm]` so every value is re-parseable.
-- ⭐ Carry the §3 assumptions into every `FullSimplify` / `Simplify` / `Refine` call. A rank or a sign
-  computed without them is a different quantity.
+- ⭐ Carry the §3 assumption set — **as one joint `And[...]`, exactly as written there** — into every
+  `FullSimplify` / `Simplify` / `Refine` / `Reduce` call. ⚠ A rank or a sign computed without it is a
+  different quantity, and engine 2 is required to carry the identical joint set. ⭐ Emit the joint
+  assumption expression itself as a tag.
 - ⚠ `Solve[... , omegaSquared]` may return `ConditionalExpression`. ⛔ Do not drop the condition — emit it
-  as its own tag. If a payload would print as a bare `ConditionalExpression[0, …]`, emit **both** the value
-  and the condition separately.
+  as its own tag, with the `_LOCAL_` infix per shared physics §8. If a payload would print as a bare
+  `ConditionalExpression[value, condition]`, emit **both** parts separately.
+- ⭐ Every locus solve uses `Reduce[… , {k1, …, kD}, Reals]` or `Solve[…, {k1,…,kD}, Reals]`. ⛔ An
+  unrestricted solve returns complex wavevectors, which §3 forbids.
 - ⚠ `MatrixRank` returns the **generic** rank — this is the subject of Q8, so compute the rank-drop locus
   explicitly rather than assuming genericity.
 - ⭐ For Q4 **N3**, build the stacked matrix explicitly, e.g. `Join[Mr, {kvec}]`, and take its

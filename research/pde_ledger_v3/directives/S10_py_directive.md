@@ -33,6 +33,25 @@ exists to remove, including a duplicated emitted tag name. ⭐ Write a new file 
 
 This is the one asymmetry between the engines, and it is deliberate.
 
+### ⛔⛔ AN ALLOWLIST, ⛔ NOT A BAN — because the registry ROUTES AROUND the ban above
+
+⚠ **`reduction/quantities.yaml` carries `source_locus` and provenance entries that are file paths WITH LINE
+NUMBERS pointing into `research/pde_ledger_v3/steps/`** — including into files that state this step's
+results. ⇒ ⛔ **A builder that reads the registry and follows its provenance lands on the answer while
+obeying every instruction above.** A "do not read `steps/`" rule cannot fix that, because the registry
+hands you the path.
+
+⭐ **So this is an allowlist. From every registry quantity you may use EXACTLY these fields:**
+
+| ✅ may use | ⛔ must not open, follow, or read |
+|---|---|
+| `symbol_name` | `source_locus` |
+| `dimension` | any provenance / citation path |
+| `value` | any `path:` field whatsoever |
+
+⛔ **Do not open any file a registry field names.** ⭐ If you believe a computation needs one, ⛔ stop and
+report that in your §10 answer instead — that is a finding about the specification, and it is wanted.
+
 ## The mandate
 
 Implement **Q1 through Q8** of the shared physics for **every package** in its §7 table, obeying §4 (the
@@ -57,9 +76,23 @@ difference and **exit 0**.
 
 - ⭐ Use `sympy.Matrix.rank()` for Q4; for **N3** build the stacked matrix explicitly, e.g.
   `Mr.col_join(sp.Matrix([[*kvec]]))`, and take **its** rank. ⛔ Do not infer `nu_T` from `nullspace()`.
-- ⚠ `Matrix.rank()` assumes generic symbols — this is exactly Q8. Compute the rank-drop locus explicitly.
-- ⭐ Declare symbols with their assumptions at creation (`sp.Symbol("rho_br", positive=True)` etc.) so
-  `simplify` and sign tests can use them. Emit the assumption set as a tag.
+  ⭐ For **N7**, `nu_basis` is `len(Mr.nullspace())` — a **different algorithm** from `rank()`, which is the
+  whole point of that check.
+- ⚠ `Matrix.rank()` assumes generic symbols — this is exactly Q8. Compute the rank-drop locus explicitly,
+  ⭐ and re-run Q3/Q4 on each allowed stratum per Q8b.
+- ⛔⛔ **PER-SYMBOL ASSUMPTIONS ARE NOT ENOUGH, AND THIS WILL CAUSE A FALSE CROSS-ENGINE DISAGREEMENT.**
+  `sp.Symbol("k1", real=True)` does **not** give SymPy `Σ k_m² > 0`, and a sign test that Wolfram answers
+  definitely will return `None` here. ⇒ ⭐ **Build the §3 assumption set as an explicit JOINT predicate**
+  (`sp.Q.positive(...) & …`) and pass it to `sp.refine` / `sp.ask` for **every** sign and simplification
+  test. ⭐ Emit the joint predicate itself as a tag.
+- ⭐ Use `M.det(method="berkowitz")`. ⚠ The default path does not finish on the larger `D` in this step's
+  budget. ⛔ If `factor()` on a determinant does not return promptly, emit the **unfactored** determinant
+  and a tag recording that — ⛔ never silently drop the tag.
+- ⭐ Every solve that finds a **locus** must name its variables and pass `domain=sp.S.Reals` (or use
+  `solveset`/`nonlinsolve` over the reals). ⛔ An unrestricted solve returns complex wavevectors, which §3
+  forbids.
+- ⭐ Registry-comparison tags and any SymPy-specific solver-condition tags carry the `_LOCAL_` infix per
+  shared physics §8.
 - ⭐ Use `sp.solve(..., omega_squared, dict=True)` and emit the raw solution list **before** de-duplication,
   then the de-duplicated list, then the count.
 - ⛔ **No `assert` before the value it guards.** Compute → emit → *then* guard. ⚠ An `assert` that precedes

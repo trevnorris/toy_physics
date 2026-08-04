@@ -113,6 +113,14 @@ produces a blocked row carrying both values. ⇒ `reduction/_generated/`.
 - ⛔ **Causality coverage is bounded**: the pole inventory catches uncancelled, undisplaced advanced poles
   only; cancelled and feedback-displaced poles are outside it, and zero-time or absent channels are
   indistinguishable from passes.
+- ⛔⛔ **THE BACKGROUND-FLOW CORRECTION IS NEGLECTED, AND IT IS LARGEST EXACTLY HERE.** S11b-A recorded that
+  the bulk's rest-frame linearisation discards a relative correction of order **`O(v₀|q_n|/ω)`** — ⛔ **not**
+  `O(v₀/c_s0)` — and that it **exceeds first order whenever `k c_s0 ≫ ω`**, which is the regime carrying the
+  added mass and the evanescent behaviour this step reports. ⚠ `v₀` is the steady background normal flow.
+  ⛔ **This step neither carried nor bounded it.**
+  ⚠⚠ **Recorded here because it was LOST:** A recorded it, this record's first draft dropped it, and the
+  ledger card faithfully inherited the omission. ⇒ ⭐ a limit recorded once and lost at the next hop, with
+  every artifact locally faithful to its source — the exact failure the ledger exists to prevent.
 - ⚠ **Radiated-energy direction is inherited** from the supplied continuation. If it were wrong, both
   engines are wrong together and every decay/growth classification flips.
 - ⚠ `relations.yaml` is still **empty**. The admissibility condition and the reciprocity relation belong

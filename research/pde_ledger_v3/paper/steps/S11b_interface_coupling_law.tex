@@ -1,0 +1,252 @@
+\section{S11b: The Linear Brane--Bulk Interface Coupling Law}
+\label{step:S11b}
+
+\stagefield{Part / anchor}{Part I --- Light. Sector~1, step~4.}
+\claimstatus{\StatusText{Computed Interface Law / Controlled Stability Slice}}
+\stagefield{Purpose}{Build the one object left open by S11: the linear law
+that couples the brane's in-plane and thickness degrees of freedom to the two
+bulk faces. The surviving result consists of the face response, the permeable
+closure, the assembled balance laws, the admissibility and reciprocity
+conditions, the uniform transverse null, and the breathing-mode stability
+boundary.}
+
+\paragraph{Status.}
+The interface law is assembled on a uniform background. Its transverse block
+is fixed there, and its breathing roots are fixed on the stated soluble slice.
+The general non-uniform problem and the general dispersion remain open.
+
+\paragraph{The object.}
+S11 reduced three open questions --- whether the longitudinal mode radiates or
+stays bound, whether light's confinement is unconditional, and whether the
+second cone is observable --- to one missing law. This step supplies that law
+by combining the bulk response to moving faces, interfacial transfer, the
+brane's quadratic energy, and the slab balance equations in one linear system.
+
+\paragraph{The bulk response to moving faces.}
+For a disturbance with in-plane wavenumber \(k\) and frequency \(\omega\),
+define
+\[
+  q^2=\frac{\omega^2}{c_{s0}^2}-k^2,
+  \qquad
+  Z=\frac{\omega\rho_m}{q_{\mathrm{out}}},
+\]
+where \(Z\) is pressure at a face divided by that face's outward normal
+velocity. The outgoing branch gives
+\begin{center}
+\begin{tabular}{@{}L{0.20\textwidth}L{0.18\textwidth}L{0.50\textwidth}@{}}
+\toprule
+regime & response & meaning \\
+\midrule
+\(q^2>0\) & \(q_{\mathrm{out}}=q\),
+  \(Z=\omega\rho_m/q\) & real radiation resistance \\
+\(q^2<0\) & \(q_{\mathrm{out}}=i\alpha\),
+  \(Z=-i\omega\rho_m/\alpha\) & reactive inertial loading \\
+\(q^2=0\) & \(q_{\mathrm{out}}=0\), \(Z\to\infty\) & grazing
+  singularity: a driven face has no solution, while an undriven face has a
+  free amplitude \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The two exterior half-spaces decouple, so the per-face response is the same
+for the thickness and centre-shift combinations. Although the evanescent face
+impedance carries the scale \(\rho_m/\alpha\), the assembled thickness
+coordinate receives
+\[
+  m_{\mathrm{add}}^{(W,\mathrm{face})}=\frac{\rho_m}{2\alpha}
+\]
+from each face.
+
+\paragraph{Permeable closure and its affinity.}
+A pressure--velocity parameterisation of the face flux is
+\[
+  J_\pm=\Lambda_p(\omega)\,\delta p
+       +\Lambda_V(\omega)\,V_\pm,
+  \qquad
+  \Lambda(\omega)=\frac{\Lambda^0}{1-i\omega\tau}.
+\]
+In the equal-relaxation-time face-response slice this gives
+\[
+  Z_{\mathrm{perm}}
+  =\frac{\rho_m r+\Lambda_V^0}{y r-\Lambda_p^0},
+  \qquad
+  r=1-i\omega\tau,
+  \qquad
+  y=\frac{q_{\mathrm{out}}}{\omega}.
+\]
+The thermodynamic driving variable in the assembled law is the affinity
+\[
+  \mathcal A=\mu_s-\frac{\delta p}{\rho_m}.
+\]
+Its pressure contribution is therefore normalised by \(\rho_m\); replacing
+\(\delta p/\rho_m\) by an unnormalised pressure is a different law.
+
+\paragraph{Assembly by virtual displacement and balance law.}
+The virtual-displacement rule fixes the face tractions, including their sign,
+factor, and face count. The slab rows then follow from the interfacial mass
+balance and from projecting four-dimensional continuity through a window
+\(\Omega(w)\):
+\[
+  \partial_t\!\int\!\Omega\rho\,dw
+  +\nabla_x\!\cdot\!\int\!\Omega j_x\,dw
+  =\Omega(w_1)j^w(w_1)-\Omega(w_2)j^w(w_2)
+   +\int j^w\Omega'\,dw.
+\]
+For an even window on the symmetric interval \([-L,L]\), even \(j^w\)
+gives zero source exactly, whereas odd \(j^w\) gives
+\(-2\Omega(L)j(L)+2\int_0^L j\Omega'\,du\), which need not vanish. With
+outward relative flux
+\(J_\pm=\rho_m(v_w-\partial_t\zeta_\pm)(\pm1)\), the symmetric combination is
+net accretion \(-\left(J_++J_-\right)\), and the antisymmetric combination is
+through-flow \((J_+-J_-)/2\). Two outgoing bulk amplitudes survive, and the
+two face conditions fix them.
+
+The resulting system couples the brane's in-plane displacement, its thickness
+degree of freedom, interfacial transfer, and both bulk face amplitudes. Closing
+its brane energy by symmetry yields \textbf{ten} independent quadratic
+invariants, not the five supplied to the construction. The five additional
+terms are
+\[
+  \frac{K_L}{2}(\nabla\!\cdot u)^2,
+  \qquad
+  \frac{A_\theta}{2}|\nabla\theta|^2,
+  \qquad
+  A_{\theta e}\,\nabla\theta\!\cdot\!\nabla e_W,
+  \qquad
+  D_\theta\theta(\nabla\!\cdot u),
+  \qquad
+  D_e e_W(\nabla\!\cdot u).
+\]
+Thus the five new coefficients are
+\(K_L,A_\theta,A_{\theta e},D_\theta,D_e\). They enter the assembly through
+\(m_\theta=B_\rho^{(3)}+A_\theta k^2\),
+\(m_{\mathrm{cross}}=CW_0+A_{\theta e}k^2\), and the corresponding \(\pi\)
+combinations.
+
+\paragraph{Admissibility and reciprocity.}
+Thermodynamic admissibility requires
+\[
+  \Lambda_A^0\geq0,
+  \qquad
+  \left[
+  \Lambda_V^0=\Lambda_X^0=0
+  \quad\hbox{or}\quad
+  \left(\Lambda_X^0=-\Lambda_V^0,\ \tau_V=\tau_X=0\right)
+  \right],
+\]
+while \(\tau_A\) is unrestricted. Onsager reciprocity fixes the full kernels,
+\[
+  \Lambda_X(\omega)=-\Lambda_V(\omega).
+\]
+The reciprocity relation was reached by two independent partial-inversion
+routes, and the routes agree. Consequently a nonzero admissible
+velocity/reciprocal pair is instantaneous.
+
+\paragraph{Uniform transverse null.}
+On a uniform background the transverse mode is exactly decoupled: in-plane
+parity admits no \(e_W\leftrightarrow u_T\) bilinear. Its dispersion and
+imaginary part are
+\[
+  \rho_{\mathrm{br}}^0\omega^2=\mu_R k^2,
+  \qquad
+  \operatorname{Im}\omega=0.
+\]
+The dimension of the vanishing coupling is undetermined because a coefficient
+that vanishes identically has no dimension. \textbf{This uniform transverse
+null does not settle whether confinement is unconditional;} that is a
+non-uniform question.
+
+\paragraph{Breathing-mode stability boundary.}
+On the soluble slice \(k=0\), with impermeable faces and no reciprocal
+coupling, the assembled determinant reduces to
+\[
+  \mu_W\omega^2+iR\omega-\frac{K_0}{W_0^2}=0,
+  \qquad
+  R=\frac{\rho_m c_{s0}}{2},
+  \qquad
+  K_0=B_\rho^{(3)}-2CW_0+k_WW_0^2.
+\]
+The mode is stable iff \(K_0>0\): \(K_0<0\) gives one growing and one decaying
+root, \(K_0=0\) gives a static root, and \(K_0>0\) gives decay only.
+Equivalently, growth occurs iff
+\[
+  C>\frac{B_\rho^{(3)}+k_WW_0^2}{2W_0}.
+\]
+The growing root is \textbf{not} an energy-conservation violation. The stored
+energy has no minimum in that constrained direction, so the slab lowers its
+energy by running away; the accounting closes, but the energy has no floor.
+For \(K_0>0\), every nonzero imaginary part on this slice comes from
+propagating bulk radiation resistance, which survives impermeability.
+
+\paragraph{Departures --- ruled out, not live conclusions.}
+The face-response algebra admits a formal finite-memory branch on which a
+velocity coupling has evanescent \(\operatorname{Re}Z\neq0\) iff
+\(\omega\tau\neq0\), while the channel approaches the impermeable response as
+\(\omega\tau\to\infty\). That algebra generated the claims that the coupling
+dissipates only at nonzero \(\omega\tau\) and that slow disturbances see a leak
+which fast disturbances do not. \textbf{The assembled law rules this entire
+physical branch out:} admissibility permits a nonzero velocity coupling only
+at \(\tau_V=\tau_X=0\), exactly where the face-response algebra gives no work.
+The algebraic statements remain recorded here solely as a forbidden
+departure; they are not predictions of the admissible model.
+
+Two further preregistered predictions were refuted. The scalar-sector count is
+two surviving internal degrees of freedom, not exactly one. The added inertia
+on the thickness coordinate is \(\rho_m/(2\alpha)\) per face, not the predicted
+\(\rho_m/\alpha\) per face.
+
+\paragraph{Inputs and regime.}
+The only source records for this card are
+\StageFile{research/pde\_ledger\_v3/steps/S11bA\_interface\_response.md} and
+\StageFile{research/pde\_ledger\_v3/steps/S11bB\_interface\_assembly.md}.
+The interface assembly and transverse result use a uniform background. The
+breathing root statement is confined to the \(k=0\), impermeable,
+no-reciprocal-coupling slice; it is not the general dispersion.
+
+% NOT \stagefield{Verification}: that field is suppressed in the default
+% build.  The scope of the checks and every limitation below must remain
+% visible.
+\paragraph{Verification scope.}
+The two engines agree on the recorded assembled values, but their
+\texttt{VERDICT: PASS} strings mean only that each engine's internal checks do
+not contradict one another. They are not verdicts on the physics or on the
+correctness of supplied objects.
+
+\paragraph{Known limits --- recorded, not fixed.}
+\begin{enumerate}[leftmargin=2.2em]
+\item \textbf{The supplied objects cannot be falsified by this build.} The
+affinity, branch prescription, mass balance, virtual-displacement rule, and row
+structure were supplied, so both engines transcribed them and an error would
+land identically in both. Their verification comes from independent reviewer
+derivations, \textbf{not} from the engines agreeing. This limitation is
+load-bearing.
+
+\item The breathing-root result is a \textbf{slice}, not the general
+dispersion. There is no closed-form \(\omega(k)\), and no parameter-independent
+root count exists.
+
+\item The two-port balance check is blind to the face response, the closure,
+and the affinity's \(\rho_m\) normalisation because they cancel between its two
+sides. It tests the traction's sign, factor, and face count, not its analytic
+structure; a transposed reciprocal kernel used identically on both sides
+passes.
+
+\item The \(Z_{\mathrm{perm}}\) acceptance value lies in the
+equal-relaxation-time slice. The general \(\tau_A\neq\tau_V\) face response has
+no independent standard.
+
+\item Causality coverage is bounded. The pole inventory catches only
+uncancelled, undisplaced advanced poles; cancelled and feedback-displaced poles
+lie outside it, and zero-time and absent channels are indistinguishable from
+passes.
+
+\item The radiated-energy direction is inherited from the supplied
+continuation. If that continuation is wrong, both engines are wrong together
+and every decay/growth classification flips.
+
+\item \StageFile{relations.yaml} remains empty. The admissibility condition and
+reciprocity relation are emitted as review candidates, not inserted
+automatically, because a text matcher does not verify that two notations are
+equivalent.
+\end{enumerate}

@@ -421,18 +421,33 @@ emit("S11BB_FROZEN_THICKNESS_IDENTIFICATION",
 K0_slice = Br3 - 2*C*W0 + kW*W0**2
 R_slice = rhom*cs/2
 S_slice = sp.sqrt(R_slice**2 - 4*muW*K0_slice/W0**2)
-R_solved, S_solved = sp.symbols("R_solved S_solved")
-slice_roots_solved = sp.solve(
-    sp.expand((2*muW*w + I*R_solved)**2 + S_solved**2), w
+slice_quadratic_reported = muW*w**2 + I*R_slice*w - K0_slice/W0**2
+slice_determinant = sp.cancel(DISP.subs({
+    k: 0, LA0: 0, LV0: 0, LX0: 0, q: w/cs,
+}))
+slice_factor_cancelled = -I*W0*rho**2*w**3
+slice_polynomial = sp.cancel(slice_determinant/slice_factor_cancelled)
+slice_difference = sp.cancel(slice_polynomial - slice_quadratic_reported)
+slice_comparison = (
+    "From the assembled determinant, substitution of k=0, Lambda_A0=Lambda_V0="
+    "Lambda_X0=0, and q_out=omega/c_s0 gives D_slice="
+    + zstr(slice_determinant) + ". The cancelled overall factor is "
+    + zstr(slice_factor_cancelled) + " (including the omega^3 rank-loss factor); "
+    "the surviving polynomial is " + zstr(slice_polynomial)
+    + ", the previously-solved quadratic is " + zstr(slice_quadratic_reported)
+    + ", and their symbolic difference is " + zstr(slice_difference) + "."
 )
-omega_minus_slice = slice_roots_solved[0].subs({R_solved: R_slice, S_solved: S_slice})
-omega_plus_slice = slice_roots_solved[1].subs({R_solved: R_slice, S_solved: S_slice})
+if not zero(slice_difference):
+    emit("S11BB_ROOTS", slice_comparison + " Nonzero difference; stopping before solving.")
+    raise SystemExit(1)
+slice_roots_derived = sp.solve(slice_polynomial, w)
 omega_opp_plus_slice = I*(R_slice + S_slice)/(2*muW)
 omega_opp_minus_slice = I*(R_slice - S_slice)/(2*muW)
 emit("S11BB_LONGITUDINAL_DISPERSION",
      "D(omega,k;q_out)=det(R_inplane,R_mass,R_thickness)=0 with unscaled rows R1=" + zstr(R1) + ", R2=" + zstr(R2) + ", R3=" + zstr(R3) + "; explicitly D=R11*(R22*R33-R23*R32)-R12*(R21*R33-R23*R31)+R13*(R21*R32-R22*R31)")
 emit("S11BB_ROOTS",
-     "EXPLICIT SOLVED SLICE ONLY (this is a slice, not the general dispersion): k=0, impermeable Lambda_A0=Lambda_V0=0, zero reciprocal coupling Lambda_X0=0, q_out=omega/c_s0, and mu_W,rho_m,c_s0,W0>0. With d=0 and theta=-e_W the reduced dispersion is mu_W*omega^2+i*R*omega-K0/W0^2=0, R=rho_m*c_s0/2, K0=B_rho3-2*C*W0+k_W*W0^2. Its concrete roots are omega_+=" + zstr(omega_plus_slice) + " and omega_-=" + zstr(omega_minus_slice) + ". The general dispersion remains the sheet-filtered determinant above and has no universal elementary closed form; exceptional multiplicities still satisfy D=partial_omega D=0")
+     slice_comparison + " Solving the surviving derived polynomial gives roots="
+     + zstr(slice_roots_derived) + ". The general dispersion remains the sheet-filtered determinant above and has no universal elementary closed form; exceptional multiplicities still satisfy D=partial_omega D=0")
 emit("S11BB_IMAGINARY_PART",
      "On the explicit slice let S=sqrt(R^2-4*mu_W*K0/W0^2). For nonnegative radicand, Im(omega_+)=(S-R)/(2*mu_W) and Im(omega_-)=-(R+S)/(2*mu_W): K0<0 gives signs (+,-), K0=0 gives (0,-), and 0<K0<=R^2*W0^2/(4*mu_W) gives (-,-). Above that threshold the roots are a damped oscillatory pair and both imaginary parts are -R/(2*mu_W)<0. On the opposite sheet the concrete roots are omega_opp,+=" + zstr(omega_opp_plus_slice) + " and omega_opp,-=" + zstr(omega_opp_minus_slice) + "; for nonnegative radicand their imaginary parts are (R+S)/(2*mu_W) and (R-S)/(2*mu_W), with signs (+,-) for K0<0, (+,0) for K0=0, and (+,+) for K0>0, and their ratios to omega_+,omega_- are (R+S)/(S-R) and (R-S)/(-R-S) where defined. For the underdamped pair both opposite-sheet imaginary parts are R/(2*mu_W)>0 and both ratios are -1")
 emit("S11BB_DISSIPATION_ORIGIN",

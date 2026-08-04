@@ -168,12 +168,25 @@ emit["ROOTS",
 k0 = b3 - 2 cc w0 + kW w0^2;
 radR = rhom cs/2;
 ss = Sqrt[radR^2 - 4 muW k0/w0^2];
-rootPlus = I (-radR + ss)/(2 muW);
-rootMinus = I (-radR - ss)/(2 muW);
+sliceQuadraticReported = muW om^2 + I radR om - k0/w0^2;
+sliceDeterminant = Cancel[disp /. {k -> 0, la0 -> 0, lv0 -> 0, lx0 -> 0, qout -> om/cs}];
+sliceFactorCancelled = -I w0^2 rhoBr^2 om^3;
+slicePolynomial = FullSimplify[Cancel[sliceDeterminant/sliceFactorCancelled]];
+sliceDifference = FullSimplify[Cancel[slicePolynomial - sliceQuadraticReported]];
+sliceComparison =
+ "From the assembled determinant, substitution of k=0, la0=lv0=lx0=0, and qout=om/cs gives D_slice=" <> fmt[sliceDeterminant] <>
+ ".  The cancelled overall factor is " <> fmt[sliceFactorCancelled] <> " (including the om^3 rank-loss factor); the surviving polynomial is " <> fmt[slicePolynomial] <>
+ ", the previously-reported quadratic is " <> fmt[sliceQuadraticReported] <> ", and their symbolic difference is " <> fmt[sliceDifference] <> ".";
+If[!zeroQ[sliceDifference],
+ emit["ROOT_STABILITY_CLASS", sliceComparison <> "  Nonzero difference; stopping before solving."];
+ Quit[1]];
+sliceRootsDerived = om /. Solve[slicePolynomial == 0, om];
+rootMinus = sliceRootsDerived[[1]];
+rootPlus = sliceRootsDerived[[2]];
 oppPlus = I (radR + ss)/(2 muW);
 oppMinus = I (radR - ss)/(2 muW);
 emit["ROOT_STABILITY_CLASS",
- "Soluble slice k=0, impermeable, lx0=0, qout=om/cs, muW>0,rhom>0,cs>0: om_+=i(-R+sqrt(R^2-4 muW K0/w0^2))/(2 muW), om_-=i(-R-sqrt(R^2-4 muW K0/w0^2))/(2 muW), R=rhom*cs/2, K0=b3-2 cc*w0+kW*w0^2.  K0<0 gives om_+ growing and om_- decaying; K0=0 gives one static and one decaying root; K0>0 gives two decaying roots (overdamped or a damped oscillatory pair)."];
+ sliceComparison <> "  Solving the surviving derived polynomial gives roots=" <> fmt[sliceRootsDerived] <> ".  K0<0 gives one growing and one decaying root; K0=0 gives one static and one decaying root; K0>0 gives two decaying roots (overdamped or a damped oscillatory pair)."];
 emit["STABILITY_CONDITION",
  "On the soluble radiating slice the exact modulus separator is K0=b3-2 cc*w0+kW*w0^2=0: K0<0 produces one growing and one decaying root, while K0>0 produces decay only.  With general permeation/reciprocal traction there is no condition on moduli and C alone: the sign also depends on {la0,lv0,lx0,tauA,tauV,tauX}, k, and the chosen sheet through the displayed determinant."];
 emit["IMAGINARY_PART",

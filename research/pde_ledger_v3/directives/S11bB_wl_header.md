@@ -14,7 +14,8 @@ because it copied from something, the check is worthless and the step is not ver
 
 ## Script conventions
 
-- **Standalone, print-only, no arguments, no exports, no external file reads.**
+- **Standalone, print-only, no arguments, no exports.**
+- **No external file reads.**
 - Prefix every output tag with `WL_`.
 - Strip `ConditionalExpression[0, …]` when checking that something vanishes; test poles with
   `1/expr == 0`.

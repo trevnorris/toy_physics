@@ -30,6 +30,8 @@ apparent agreement non-independent.
 
 ## Script conventions
 
+- **Standalone, print-only, no arguments, no exports.**
+- **No external file reads.**
 - One tag per line, `TAG: value`, no `WL_` prefix.
 - Keep total runtime under **10 minutes**; runners get `timeout 600`.
 

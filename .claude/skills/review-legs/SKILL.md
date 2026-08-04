@@ -73,6 +73,21 @@ codex exec -c model_reasoning_effort=xhigh "$(</absolute/review-prompt.md)" \
   > /absolute/outside-the-repo/codex-review.txt 2>&1
 ```
 
+## ⭐⭐ REVIEWERS CARRY THE INDEPENDENT-DERIVATION BURDEN — builders do not
+
+⭐⭐ **Give every review leg an explicit *"derive it yourself from first principles"* mandate.** The genuine
+physics confirmations come from a reviewer deriving from scratch, ⛔ never from a blind builder — see
+`[[feedback-supply-verified-blind-only-open]]`.
+
+⛔ **The reviewer must NOT verify a supplied object against the artifact's own identity** — that is circular.
+⭐ **Name the forbidden route explicitly in the prompt.**
+
+⚠ **A leg that returns "nothing survives the filter" is weak evidence on its own** ⇒
+`[[reference-grok-cli-review]]`.
+
+⭐ **When the prompt asks a leg to settle a specific contested question, DEMAND COMPUTATION and say so** —
+leg quality tracks that demand.
+
 ## ⛔⛔ BLINDNESS IS ENFORCED BY ABSENCE, ⛔ NOT BY INSTRUCTION
 
 ⚠ **A do-not-read list is a denylist, and a denylist means the architecture is wrong.** If each new step

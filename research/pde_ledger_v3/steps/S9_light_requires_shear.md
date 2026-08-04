@@ -95,6 +95,27 @@ R4 :  μ_R − ρ_br = [-1-(-3), -2-0, 1-1] = [2,-2,0] = 2×[1,-1,0]  ⇒  c_γ 
 ⭐ **Independent agreement:** these were derived from the Lagrangian *before* consulting the register,
 which records `μ_R` as `M L⁻¹ T⁻²` and `ρ_br` as `M L⁻³` (`notes/parameter_register.md:137`, `:138`).
 
+### ⭐⭐ Rebuilt 2026-08-04: the dimensions are now solved SYMBOLICALLY IN `D`, from the action
+
+Both engines now extract the **derivative multi-order of every field factor from the Lagrangian's
+expression tree** and solve the resulting linear system. ⛔ Nothing is read off a table and ⛔ no operator
+is special-cased by name.
+
+```
+[ρ_br] = (−D,   0, 1)          [μ_R] = (2−D, −2, 1)
+[μ_R] − [ρ_br] = (2, −2, 0)    ⭐ INDEPENDENT OF D
+at D = 3:  (−3, 0, 1)  and  (−1, −2, 1)   ✓ registry
+```
+
+⭐⭐ **This retires a recorded S9 "blind spot" by explaining it.** The old audit's dimension check was
+insensitive to the assumed brane dimension, filed as a weakness. It is not a weakness but an **identity**:
+the speed's dimension **cannot** see `D`, because the difference is `(2,−2,0)` for every `D`.
+
+⭐ **And the block is now able-to-fail, which it was not.** A control with a **different derivative count**
+(flexural, `(∇²u)²`) moves the stiffness dimension to `(4−D,−2,1)`; a control with an **undifferentiated
+field** (`−½ μ_G u·u`) yields `(−D,−2,1)`. ⚠ Before the rebuild the block emitted **byte-identical output
+under a change of the action's form**, because the derivative counts were hand-encoded.
+
 ## What's new — the introduction inventory
 
 | item | class | why |
@@ -102,7 +123,7 @@ which records `μ_R` as `M L⁻¹ T⁻²` and `ρ_br` as `M L⁻³` (`notes/para
 | `ρ_br` | **postulated** | a property of the substructure; ⛔ not derivable from the GNLS |
 | `μ_R` | **postulated** | ditto. ⚠ Deriving it from a polar substructure `P` returned `FAIL_COUPLE_STRESS_NOGO` (**B2**) — that route is closed, the postulate stands |
 | `c_γ` | **derived** | `R4`, from the two above |
-| MacCullagh curl-only **form** | **postulated** (structural) | forced by Maxwell's *no longitudinal mode*; see S10/S11 for whether it delivers |
+| MacCullagh curl-only **form** | **postulated** (structural) | forced by Maxwell's *no longitudinal mode* — ⭐ and **this is now COMPUTED, not merely asserted**; see the verification section |
 
 ⚠ **The far field consumes only the ratio `c_γ`.** ⛔ Do not let that become "the two are not separately
 owed" — a **simulation** needs `μ_R` and `ρ_br` absolutely (→ the packet step).
@@ -139,6 +160,99 @@ shear-freeness is currently **POSTULATED** — `two_throat_simulation_handoff_sp
 ⇒ ⭐ **This is light's first open requirement conflict**, and it is internal to light — ⛔ not a
 light-versus-magnetism conflict. It is a question about the **ordering transition**: can one substructure
 be ordered-and-shear-bearing in one phase and unstructured-and-shear-free in the other?
+
+## ⭐⭐ VERIFICATION — rebuilt 2026-08-04 under the script-rebuild programme
+
+⚠ **The physics did not change. The evidence did.** Every value the pre-rebuild engine computed is
+identical today; ⛔ no result was revised, no sign flipped, no number moved.
+
+### Two engines, independently constructed
+
+| | engine | tags | typed conclusions |
+|---|---|---|---|
+| Mathematica | `mathematica/S9_light_requires_shear_mathematica_audit.wl` | 1559 | **0** |
+| SymPy | `scripts/S9_light_requires_shear_sympy_audit.py` | 635 | **0** |
+
+⛔⛔ **The SymPy engine's existence reverses a recorded exemption, and the reversal is itself a finding.**
+`LAUNCH_PROMPT.md` OWED 2b claimed S9 needed no second engine because *"the cone is two lines of
+algebra"*, under the **conditional** rule *"a second engine earns its place where the algebra is long
+enough that it could genuinely DISAGREE."* ⚠ **The condition had expired** — 26 tags had become 1500+ —
+and the conclusion was inherited anyway. ⇒ ⭐ **A conditional rule needs its CONDITION re-checked, ⛔ not
+its conclusion quoted.** ⇒ [[feedback-attributions-are-my-paraphrase]].
+
+### ⭐⭐⭐ What each verification mechanism caught — ⛔ and NEITHER could have caught both
+
+| defect | found by | invisible to |
+|---|---|---|
+| ⛔ a **wrong dimension** — the implied speed dimension read only coefficient exponents, dropping an explicit wavevector factor | ⭐ **the second engine** | two review legs and a full ablation suite: the `.wl` computed it *consistently*, ablated *correctly*, and produced a number that **looked like a meaningful signal** |
+| ⛔ a **wrong homogeneity test** — a `q`-substitution that silently no-ops, giving a false *positive* on a gapped root and a false **negative** on a genuinely dispersive one | ⭐ **reviewers deriving from scratch** (both legs, independently) | **cross-engine comparison**: the defect came from the **shared directive**, so both engines computed it the same wrong way and **agreed** |
+
+⇒ ⭐⭐ **This is the argument for running both mechanisms, demonstrated rather than asserted.** ⛔ Neither
+alone was sufficient, and each was blind exactly where the other saw.
+
+### The checks that are now able-to-fail
+
+- **Mode count.** `E2` = corank of `M` stacked on `kᵀ` — ⛔ **not** the `M·T = 0` test, which returns a
+  **false negative** under anisotropic inertia (a transverse mode whose partner sits at a different
+  frequency). `E2 = 2` at the propagating root, `0` at `ω²=0`; it drops to **1** when the inertia is made
+  anisotropic. ⚠ Both the pre-rebuild engine and the first rebuild used the broken test.
+- **Non-dispersiveness** by **scaling** `k → λk`: `ω²(λk) − λ²ω²(k)`. Vanishes for the main action; is
+  **nonzero** for flexural and for a gapped root. ⛔ The superseded `q`-substitution family is **deleted**,
+  not flagged — a flagged wrong value gets quoted without its flag.
+- **The dynamical matrix has two independent routes** (position-space Euler–Lagrange vs. the quadratic
+  form of the ansatz-substituted Lagrangian), residual zero in all nine actions. ⭐ **Independence proven
+  by one-sided corruption:** breaking either route leaves the other byte-identical. ⚠ A reviewer also
+  showed the two disagree on a **gyroscopic** term — they are structurally different enough to detect a
+  real physical coupling.
+- **Sign of `ω²` emitted per root**, so the sign-flip control can fail through the polarisation tests.
+  ⚠ Without it, two **exponentially growing** modes carried the same E1/E2/E4 signature as two waves.
+- **Nine actions**: main + 2 coefficient controls + 5 form controls + 1 sign control.
+
+### ⭐⭐ A PHYSICS SHARPENING, and it comes from a control
+
+⛔⛔ **Transverse propagation does NOT require the curl-only form.** The gradient-elastic control
+`−½ μ_R Σ(∂_i u_j)²` — an ordinary elastic solid — carries **two transverse modes at the same
+`c² = μ_R/ρ_br`**. It simply *also* propagates the longitudinal.
+
+⇒ ⭐ **What curl-only uniquely buys is the ABSENCE of a propagating longitudinal mode** — Maxwell's third
+demand — ⛔ not the presence of the transverse ones. The record's `what's new` table already framed it
+that way; ⭐ it is now **computed** rather than asserted, and the divergence-only control shows the
+converse: the roles **swap**, the transverse pair drops to `ω² = 0` and the longitudinal propagates.
+
+⚠ ⇒ **The defensible statement of S9 is conditional on the stiffness form**, and any prose reading
+*"light requires shear"* as established by this computation is **stronger than the computation supports.**
+
+### Automated consumption
+
+`reduction/engine_output_checks.py --config reduction/checks_S9.yaml` over both engines:
+**cross-engine `agree=12, disagree=0`** · **dimensions 1219/1219 homogeneous** · 150 of 170 tags respond
+to some control · tag-set parity reported per package.
+⛔ Config maps **tag names only**; every comparison target is generated at compare time. ⚠ Its
+`INVARIANT` and `PARITY` outputs are **triage lists, ⛔ not failures**, and a `DISAGREE` needs adjudication
+too — one was a symbol-spelling false positive.
+
+## ⛔ WHAT THIS STEP STILL DOES NOT ESTABLISH
+
+- ⛔ **P2 — that a scalar superfluid carries no transverse mode.** Cited from one external review; ⛔ **no
+  script executes it**, and the rebuild did not add one. It remains a **supplied premise**.
+- ⛔ **The absence of a propagating longitudinal wave is ASSUMED, not derived.** The curl-only action sets
+  the longitudinal restoring stiffness to **zero by construction**, so `ω² = 0` there is the postulate
+  restated. ⛔ It removes the restoring *force*, ⛔ **not the degree of freedom** — which is why the
+  longitudinal test is emitted at every root.
+- ⛔ **Bulk shear-freeness** is postulated; the bulk is absent from the action, so nothing here tests it.
+- ⚠ **The assumption set is computationally INERT.** Removing it entirely leaves every computed value
+  byte-identical. ⭐ The physics is nonetheless correctly bounded — by generic rank **plus explicitly
+  emitted exceptional loci**, and a reviewer verified that enumeration is **complete** for the anisotropic
+  control (roots collide exactly where `ρ_z = ρ_br` or `k_x = k_y = 0`, and both are emitted).
+  ⇒ ⭐ **Read the polarisation values as generic-locus values with the exceptions listed.**
+- ⚠ **The `.py` was written AFTER the `.wl`**, so this is ⛔ not the blind-first ordering. Construction was
+  independent (different naming, granularity, idioms; a hand-rolled Euler–Lagrange where SymPy has a
+  built-in) and the builder was barred from reading the `.wl` — ⭐ but agreement here is **weaker evidence**
+  than at a step where both engines predate any comparison.
+- ⚠ One tag remains **unparsed** by the consumer: the anisotropic third root's sign is a `Piecewise`,
+  because the sign is conditional on the parameter domain and the assumptions are inert.
+- ⚠ Limits taken: sharp zero-width sheet · `v₀ → 0` · no dissipation · frequency-independent moduli ·
+  continuum limit · amplitude → 0.
 
 ## Registry additions (executed at this step)
 

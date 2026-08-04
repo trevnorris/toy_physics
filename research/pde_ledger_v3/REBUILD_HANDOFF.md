@@ -131,8 +131,15 @@ slips only in proportion to how much is actually wrong, which is the outcome wor
 ### Order — ⛔ dependency order, not convenience
 
 ```
-S9 (.wl only)  →  S10  →  S11  →  S11b-A  →  S11b-B
+S9 (BOTH engines)  →  S10  →  S11  →  S11b-A  →  S11b-B
 ```
+
+⚠⚠ **CORRECTED 2026-08-04 — this line read `S9 (.wl only)` and that was wrong.** It inherited
+`LAUNCH_PROMPT.md` OWED 2b, which stamped an orchestrator's decision with the user's name. ⛔ **The user
+never made it**, and has never written a line in this repo. ⇒ **S9 gets a SymPy engine like every other
+step.** The old exemption's rule was *conditional* — *"a second engine earns its place where the algebra
+is long enough that it could genuinely DISAGREE"* — and its condition **expired** when the 26-tag script
+became a 316-tag engine. ⇒ [[feedback-attributions-are-my-paraphrase]].
 
 ⚠ S11b builds on S11, which builds on **S10's mode count**. ⛔ If S10 is wrong the rest inherits it.
 ⭐ Each step: **both engines**, blind `.wl` first.

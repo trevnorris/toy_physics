@@ -1,8 +1,8 @@
-# S11b-B — SHARED PHYSICS SPECIFICATION (rev 10)
+# S11b-B — SHARED PHYSICS SPECIFICATION (rev 11)
 
 ⚠ **Inserted BYTE-IDENTICALLY into both engine directives.** It is the only part they share.
 
-⚠⚠ **Revision 10.** This step is the **homogeneous assembly** on a uniform background. A non-uniform
+⚠⚠ **Revision 11.** This step is the **homogeneous assembly** on a uniform background. A non-uniform
 background together with a global plane-wave ansatz would mix wavevectors, so a single global dispersion
 relation would not exist. ⇒ ⭐ **The non-uniform problem is a separate step (S11b-C).**
 
@@ -18,19 +18,21 @@ Assemble the brane's in-plane sector, the slab's thickness degree of freedom, an
 one linear system on a **uniform** background, and determine the **longitudinal mode's fate**: does it
 propagate freely, decay, **grow**, or fail to exist as a mode.
 
-⭐⭐ **GROWTH IS AN ADMISSIBLE OUTCOME AND MUST BE REPORTED AS ONE.** The moduli in §3 are free symbols and
+⭐⭐ **DECAY AND GROWTH ARE ADMISSIBLE OUTCOMES AND MUST EACH BE REPORTED AS SUCH.** The moduli in §3 are free symbols and
 ⛔ **no boundedness condition is imposed on them or on the cross term `C`**, so the quadratic form is not
 assumed positive-definite and a root with `Im ω > 0` is a possible result of this calculation.
-⛔ **If you find one, do not discard it, do not re-branch to remove it, and do not add a stability
-assumption.** Report it, and report the condition on the moduli that would exclude it. ⚠ **A growing mode
-is a first-class finding here, not an error to be cleaned up.**
+⛔ **If you find a growing or decaying root, do not discard it, do not re-branch to remove it, and do not
+add a stability assumption.** Report it, and report the condition on the moduli that separates the two
+outcomes. ⚠ **A growing mode is a first-class finding here, not an error to be cleaned up; a decaying mode
+bears the same reporting and diagnostic burden.**
 
-⚠⚠ **BUT A GROWING ROOT CAN ALSO BE MANUFACTURED BY A MISTAKE**, and two specific mistakes do it:
-a derivation-route error (§3b) and re-imposing the radiation condition at complex `ω` (§1). Each has a
-**named, mechanical diagnostic** given in its section. ⭐ **Run both diagnostics before reporting any
-growing root, and report their outcome alongside it.** ⛔ **This is not permission to discard growth** — it
-is the requirement to **distinguish a real growing mode from an artifact**, which is what makes the
-finding worth anything.
+⚠⚠ **A GROWING OR DECAYING ROOT CAN ALSO BE MANUFACTURED BY A MISTAKE.** A derivation-route error (§3b)
+can turn a sink into a source and manufacture growth; its mirror can turn a source into a sink and
+manufacture spurious decay. Re-selecting the sheet at complex `ω` (§1) can likewise manufacture apparent
+growth; the mirror wrong re-selection can manufacture apparent decay. Each mistake pair has a **named,
+mechanical diagnostic** given in its section. ⭐ **Run both diagnostics before reporting any root with
+`Im ω ≠ 0`, and report their outcomes alongside every growing or decaying root.** ⛔ **This is not permission
+to discard either outcome** — distinguish each reported non-real root from an artifact.
 
 ⛔ **OUT of scope.** Any statement about whether light's confinement is **unconditional** — that requires a
 non-uniform background and is **S11b-C's**. ⭐ **Task B6 computes the transverse coupling on this uniform background**; whatever it returns, ⛔ that
@@ -116,8 +118,9 @@ by themselves fix the continuation.**
 ⛔⛔ **REQUIREMENTS 1–2 MUST NOT BE RE-IMPOSED AT COMPLEX `ω`.** Whatever `|w| → ∞` behaviour the
 continuation produces there is a **RESULT to report**, ⛔ never a criterion for re-selecting the root.
 ⚠⚠ **THIS IS THE DIAGNOSTIC §0 REFERS TO:** an engine that re-applies "must decay" at a complex pole lands
-on the opposite sheet and turns a **damped resonance into an apparent instability**. ⇒ ⭐ **if you report a
-growing root, state explicitly that you did not re-impose 1–2 to obtain it.**
+on the opposite sheet and can turn a **damped resonance into an apparent instability**; the mirror wrong
+sheet re-selection can turn a growing object into apparent decay. ⇒ ⭐ **If you report a growing or
+decaying root, state explicitly that you did not re-impose 1–2 to obtain it.**
 
 ⭐ **Verify, and report:** that this definition reproduces requirements 1–2 on the real axis. ⛔ If it does
 not, report the disagreement rather than adjusting either side.
@@ -263,25 +266,53 @@ substitution in the displayed identity, with every other coefficient left symbol
    **not assumed** (§3).
    For the conditional Onsager–Casimir test, the definitions make `𝒜_±` and `f_X,±` even under time
    reversal and the rates `J_±` and `V_±` odd; this parity assignment does not assume that time reversal is
-   a symmetry. Compute and report the relation between `Λ_X` and `Λ_V` **if one is forced**, and distinguish
-   a conditional reciprocity relation from unconditional admissibility. Separately for admissibility and
-   for conditional reciprocity, report whether any relation among `τ_A`, `τ_V`, and `τ_X` is forced.
+   a symmetry. ⛔ Do not apply Onsager–Casimir by transposing the displayed mixed matrix. Use this binding
+   conversion rule. For a general mixed law
+
+   ```
+   ( J₁ )   ( a  b ) ( X₁ )
+   ( X₂ ) = ( c  d ) ( J₂ ) ,
+   ```
+
+   first take `d ≠ 0` and solve the second row for `J₂`, obtaining the all-flux law
+
+   ```
+   ( J₁ )   ( a − b d⁻¹c   b d⁻¹ ) ( X₁ )
+   ( J₂ ) = ( −d⁻¹c          d⁻¹ ) ( X₂ ) .
+   ```
+
+   Apply Onsager–Casimir to that all-flux matrix **at the same real `ω`**, using the parity of each
+   associated state variable (the opposite of the parity of its displayed rate); do not insert a complex
+   conjugation merely because the Hermitian power form uses one. For the displayed interfacial law, use a
+   formal scalar `d = ε ≠ 0` only for this conversion, clear all powers of `ε` from the resulting algebraic
+   relation, and then take `ε → 0`. Cross-check by instead solving the first row where `a ≠ 0`, applying the
+   corresponding all-force resistance form of Onsager–Casimir, clearing `a`, and extending the cleared
+   identity to `a = 0`. The two conversions must give the same relation; report a disagreement rather than
+   choosing between them. This supplied conversion makes the conditional test determinate; ⛔ do not emit
+   `NOT_ESTABLISHED` for it.
+   **Wrong derivation caught by the conversion cross-check:** directly transposing the mixed matrix fails
+   the cleared partial-inversion identity; mishandling the force/flux swap makes the two routes disagree.
+
+   Compute and report the relation between `Λ_X` and `Λ_V` **if one is forced**. Report the conditional
+   reciprocity region and the unconditional admissibility region separately, then determine their set
+   relation: equality, either strict nesting, or incomparability. Separately for admissibility and for
+   conditional reciprocity, report whether any relation among `τ_A`, `τ_V`, and `τ_X` is forced.
    Finally report the necessary-and-sufficient coefficient condition **in whatever form it takes**, both
    without and, if applicable, with reciprocity. The supplied laws determine the admissibility form; ⛔ do
    not emit `NOT_ESTABLISHED` for it. ⛔ Assert no outcome in advance, and ⛔ treat no coefficient as the
    expected one.
-   **Wrong derivation caught:** omitting the supplied second row, changing the displayed power pairing, or
-   identifying relaxation times before computing can give a false reciprocity relation or admissibility
-   condition.
+   **Wrong derivation caught:** omitting the supplied second row or changing the displayed power pairing
+   can give a wrong reciprocity relation or admissibility condition; specializing any relaxation times
+   before both conditions are computed prevents the required independent-time test.
 
-⛔⛔ **DO NOT IMPOSE EITHER CONDITION TO REMOVE A GROWING ROOT.** ⭐⭐ **Instead, report whether a growing root
-lies inside each region you computed, distinguishing unconditional admissibility from any smaller region
-that also imposes reciprocity.** Still report every root as a first-class outcome; admissibility is a
+⛔⛔ **DO NOT IMPOSE EITHER CONDITION TO REMOVE A GROWING OR DECAYING ROOT.** ⭐⭐ **Instead, report whether
+each growing or decaying root lies inside each region you computed, and report the set relation between
+the unconditional-admissibility and reciprocity-conditioned regions.** Still report every root as a first-class outcome; admissibility is a
 classification, ⛔ not an acceptance gate.
 ⇒ `S11BB_TWO_PORT_POWER_IDENTITY`, `S11BB_PORT_DISSIPATIVITY`, `S11BB_PORT_CONDITION_KIND`,
   `S11BB_ONSAGER_CONDITION`, `S11BB_ONSAGER_RECIPROCITY`, `S11BB_ONSAGER_DETERMINABLE`,
   `S11BB_RELAXATION_TIME_RELATIONS`, `S11BB_COEFFICIENT_ADMISSIBILITY`,
-  `S11BB_GROWTH_INSIDE_ADMISSIBLE`
+  `S11BB_GROWTH_INSIDE_ADMISSIBLE`, `S11BB_DECAY_INSIDE_ADMISSIBLE`
 
 ⛔⛔ **TWO TRAPS, both measured in S11b-A:**
 1. The per-face inertial loading is `+ρ_m/α` **against the outward acceleration on BOTH faces**. The signed
@@ -441,30 +472,66 @@ V_± ≡ (∂_tζ_±)(±1) = ½∂_t(δW) ,
 ⭐ Both faces therefore move outward under positive `δ_v(δW)`. ⛔ **Use the displayed virtual-work
 equation; do not guess a pressure force and do not append another flux-force term.**
 ⚠⚠ **Taking this sign the other way reverses the pressure-work term and can manufacture an instability.**
-The independent, explicitly bounded pressure-work check below is the diagnostic for that error.
+The mirror bookkeeping error, applying the reversal to a source-valued traction contribution and treating
+it as a sink, can manufacture spurious decay. The scoped pressure-work check below tests the former in its
+passive propagating cut; the full two-port balance check tests traction sign and factor without assuming
+the exchange's sign and therefore retains the mirror falsifier.
 
-### ⭐⭐ THE CAUSALITY DIAGNOSTIC — mechanical, gradeable, ⛔ and it does NOT foreclose instability
+### ⭐⭐ THE CAUSALITY DIAGNOSTIC — two bounded checks, ⛔ neither classifies a mode root
 
 In the **equations of motion, closure, face response and dispersion determinant**, every response kernel
-must retain the **retarded analytic structure** supplied here. Reduce algebraically equivalent forms far
-enough to cancel removable factors, then locate every finite pole inherited from a response kernel and
-report its position relative to the real `ω` axis. Such inherited poles must remain in the lower half-plane;
-an upper-half-plane inherited pole is an advanced response. ⛔ **Judge the analytic structure, not the
-literal appearance of `Λ_I(−ω)`, `Z(−ω)`, `Y(−ω)` or conjugated factors:** rationalizing a denominator may
-display such a factor without changing the object's poles. Conjugated kernels in the time-averaged and
-Hermitian power forms required by §2b are outside this diagnostic. Zeros of the dispersion determinant,
-including growing-mode roots, are not response-kernel poles and are also outside this pole test. ⭐ **Run
-this scoped check and report its outcome explicitly.**
-**Wrong derivation caught:** transposing or varying a retarded kernel leaves an uncancelled inherited
-response pole above the real axis in an in-scope dynamical object.
-⚠ **If this pole test finds an upper-half-plane inherited response pole, re-check step 6 and report both
-the pole and the outcome.** ⛔ Do not use this diagnostic to delete or reclassify a dispersion root.
-⇒ `S11BB_CAUSALITY_CHECK`, `S11BB_KERNEL_POLE_LOCATIONS`
+must retain the **retarded analytic orientation** supplied here. Run both checks below.
+
+1. **Kernel-orientation identity — decisive for every active memory channel.** Before eliminating any face
+   quantity, extract these algebraic coefficients from the equations actually used:
+
+   ```
+   K_A,s ≡ coeff_{𝒜_s}(J_s)|_{V_s=0} ,
+   K_V,s ≡ coeff_{V_s}(J_s)|_{𝒜_s=0} ,
+   K_X,s ≡ coeff_{𝒜_s}(−n̂_s·t_s − δp_s) .
+   ```
+
+   This is coefficient extraction, ⛔ not variation of a response. For each `I ∈ {A,V,X}`, put
+   `K_I,s(ω) − Λ_I(ω)` over a common denominator, cancel its polynomial gcd, and report whether its
+   numerator is identically zero as a rational function of symbolic `ω`, **before** specializing any
+   coefficient or relaxation time. Then carry independent inert placeholders `ℓ_A,ℓ_V,ℓ_X` from these
+   checked uneliminated coefficients through the face elimination and balance-law substitution, replace
+   them only at the end by `Λ_A(ω),Λ_V(ω),Λ_X(ω)`, and report the symbolic differences from the face
+   response and equations actually used. Recompute the dispersion determinant from those checked
+   equations and report its difference from the reported determinant under the same row normalization.
+   ⛔ Do not conjugate a placeholder or send `ω → −ω` during this algebraic propagation.
+
+   Judge rational-function identity, ⛔ not literal symbol appearance: a correct denominator rationalized
+   with its conjugate must simplify to zero. A check at the single point `ω = 0` is invalid. **Coverage
+   boundary:** for either sign of any nonzero `Λ_I⁰`, this detects a transposition whenever `τ_I > 0`.
+   When `τ_I = 0`, retarded and transposed kernels are the same function; when `Λ_I⁰ = 0`, that channel is
+   absent. No orientation test can distinguish those degenerate cases, so report them as indistinguishable,
+   ⛔ not as checked passes.
+   **Wrong derivation caught:** in any active `A`, `V` or `X` memory channel, using the frequency-transposed
+   kernel in the primitive coefficient or introducing it downstream leaves a nonzero identity or
+   propagation residual; the stated zero-time and absent-channel cases are not covered.
+
+2. **Reduced-object pole inventory — partial coverage only.** Cancel removable factors in each downstream
+   object, then track every finite bare-kernel pole and report whether it is retained, cancelled or
+   feedback-displaced, together with the location of every retained or displaced pole. A retained
+   bare-kernel pole above the real axis is an
+   advanced response. ⛔ A feedback-displaced pole is not an orientation verdict: with the declared free
+   coefficients, its half-plane is sign-indeterminate for either kernel orientation. Conjugated kernels in the
+   time-averaged and Hermitian power forms required by §2b, and all zeros of the dispersion determinant,
+   are outside this pole inventory.
+   **Wrong derivation caught:** an uncancelled, undisplaced advanced bare-kernel pole in an in-scope
+   dynamical object; it does not catch a transposition whose pole is cancelled or feedback-displaced.
+
+⚠ **If either check fails, re-check step 6 and report both outcomes.** ⛔ Do not use either diagnostic to
+delete, suppress or reclassify any growing or decaying dispersion root.
+⇒ `S11BB_CAUSALITY_CHECK`, `S11BB_KERNEL_ORIENTATION_IDENTITIES`,
+  `S11BB_KERNEL_PROPAGATION_RESIDUALS`, `S11BB_KERNEL_POLE_LOCATIONS`
 
 ### ⭐⭐ TWO MANDATORY CONVENTION CROSS-CHECKS — ⛔ run them, ⛔ they must be able to fail
 
 ⚠ These exist because the variational convention has **two candidate readings that give different
-dispersion relations**, and a wrong one manufactures growth. ⛔ Report both outcomes explicitly.
+dispersion relations**. One wrong force/stiffness reading can manufacture growth; its mirror can conceal
+growth or manufacture apparent decay. ⛔ Report both outcomes explicitly.
 
 **(a) The in-plane equation your variation produces must carry the restoring force `−∇(δU/δθ)`.**
 ⭐ This single check selects the convention uniquely. ⛔ If your in-plane equation does not have it, your
@@ -489,8 +556,8 @@ multiplier gives a conservative stiffness inconsistent with the independently re
 
 ⛔⛔ **SCOPE OF CHECK (b) — read this before applying it anywhere else.** It is confined to the case with
 **no bulk, no permeation, no reciprocal traction, and positive-definite `U`**, where the system is
-conservative and growth would therefore be a **derivation error**. ⛔ **It says NOTHING about the full
-problem** and ⛔ **must not be used to reject a growing root of B5**, where the bulk, the interface and
+conservative and growth or decay would therefore be a **derivation error**. ⛔ **It says NOTHING about the full
+problem** and ⛔ **must not be used to reject a growing or decaying root of B5**, where the bulk, the interface and
 possibly indefinite moduli are all in play. ⚠ Confusing the two would re-close the falsification channel
 of §0.
 ⇒ `S11BB_CONVENTION_CHECK_INPLANE`, `S11BB_CONVENTION_CHECK_CONSERVATIVE`,
@@ -518,8 +585,10 @@ independent discriminators:
    overline(d(T+U)/dt)|_pressure = −Σ_{s=±} overline(P_bulk,s) .
    ```
 
-   Compute the left side **off shell** by contracting the slab equations with their corresponding
-   velocities and substituting their pressure-force terms while leaving the harmonic amplitude free. Do
+   Compute the left side **off shell** by pairing the in-plane momentum equation with `(∂_t u)*`, the
+   thickness equation with `(∂_tδW)*` (⛔ not with the face velocity `V_s*`), and the unnormalized
+   linearized mass balance with `μ_s` in the displayed `½ Re(μ_s J_s*)` convention (equivalently, pair its
+   `ρ_br⁰`-normalized form with `μ_θ`). Substitute the pressure-force terms while leaving the harmonic amplitude free. Do
    not impose the homogeneous thickness equation or dispersion relation, and do not first replace the
    left side by the literal period average of an exact total derivative. Compute the right side from the
    outgoing bulk flux, then report their symbolic difference without changing either derivation.
@@ -528,11 +597,13 @@ independent discriminators:
 
 ⛔⛔ **SCOPE OF CHECK 2:** it checks only the pressure-work sign in the displayed real-frequency,
 propagating, impermeable, zero-reciprocal-traction sub-case. It does not classify any B5 root and must not
-be used to discard or re-branch a growing root of the full problem.
+be used to discard or re-branch a growing or decaying root of the full problem.
 
 3. ⭐⭐ **FULL TWO-PORT BALANCE CHECK.** At real `ω`, keep `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰` and all three `τ_I`
-   symbolic. This is an **off-shell coefficient check**: contract each slab equation with its corresponding
-   velocity, substitute the equation's force terms, and keep the harmonic amplitudes and the face
+   symbolic. This is an **off-shell coefficient check**: pair the in-plane momentum equation with
+   `(∂_t u)*`, the thickness equation with `(∂_tδW)*` (⛔ not `V_s*`), and the unnormalized linearized mass
+   balance with `μ_s` in the displayed `½ Re(μ_s J_s*)` convention (equivalently, pair its
+   `ρ_br⁰`-normalized form with `μ_θ`). Substitute each equation's force terms, and keep the harmonic amplitudes and the face
    quantities `δp_s`, `J_s` and `𝒜_s` algebraically free. ⛔ Do not impose the homogeneous equations,
    determinant or any on-shell amplitude relation, and do not replace the result by the literal period
    average of an exact total derivative. Decompose that slab power expression by order in `Λ_X⁰`, and at
@@ -547,8 +618,10 @@ be used to discard or re-branch a growing root of the full problem.
    makes no statement about the sign of any imaginary part.
    ⚠ **Verified blind spot:** because the face response, closure and the `δp/ρ_m` normalization inside the
    affinity enter both sides through the same opaque face quantities, they cancel from this comparison.
-   This check does not validate any of those three objects; it tests only the slab traction,
-   constraint/multiplier bookkeeping and the slab-side `μ_s` conjugate normalization.
+   This check does not validate any of those three objects. It tests the slab traction's **sign, factor and
+   face count**, constraint/multiplier bookkeeping and the slab-side `μ_s` conjugate normalization, ⛔ not
+   the traction's analytic structure. In particular, a transposed `Λ_X` kernel used identically on both
+   sides cancels and is invisible here.
    **Wrong derivation caught:** a traction sign or factor error, an omitted face, or an elimination against
    B1 that substitutes the wrong slab-side conjugate leaves a nonzero difference in at least one channel.
 ⇒ `S11BB_ENERGY_SINKS`, `S11BB_ENERGY_SOURCES`, `S11BB_UNATTRIBUTED_SINK_TERMS`,
@@ -649,26 +722,29 @@ closed-form `ω(k)`, whether roots are real, and for any complex root its imagin
 physical ingredient makes it nonzero** — ⛔ distinguishing the two mechanisms of §2 trap 2. ⭐ If a root
 fails to exist as a normal mode, report that.
 ⭐⭐ **Report the SIGN of every imaginary part and classify each root as decaying or GROWING**, and report
-the condition on the moduli and on `C` that separates the two. ⛔ **A growing root is a reportable result**
-(§0) — ⛔ do not suppress it, re-branch to remove it, or assume the quadratic form is positive-definite.
+the condition on the moduli and on `C` that separates the two. ⛔ **A growing root and a decaying root are
+both reportable results** (§0) — ⛔ do not suppress either, re-branch to remove it, or assume the quadratic
+form is positive-definite.
 
 ⭐ Carry `Λ_X` symbolically through the determinant and roots. Compare the result with the form cut
 `Λ_X⁰ = 0`, and report which roots, multiplicities, and classifications change. ⛔ Assert no outcome in
 advance.
 
-⭐⭐ **FOR ANY GROWING ROOT, REPORT ALL THREE OF THESE — it is what separates a finding from an artifact:**
-1. **The causality diagnostic of §3b** — after removable factors are cancelled, where is every finite pole
-   inherited from a response kernel relative to the real `ω` axis? Do not count the required conjugations
-   in time-averaged or Hermitian power forms, and do not count the dispersion root itself as a kernel pole.
+⭐⭐ **FOR EVERY GROWING OR DECAYING ROOT, REPORT ALL THREE OF THESE — the burden is identical for either sign:**
+1. **Both bounded causality checks of §3b** — report every kernel-orientation and propagation residual;
+   separately inventory every finite response-related pole after removable factors are cancelled and
+   classify it as bare, cancelled or feedback-displaced. Do not count the required conjugations in
+   time-averaged or Hermitian power forms, and do not count the dispersion root itself as a kernel pole.
 2. **The sheet the root sits on**, and confirmation that requirements 1–2 of §1 were ⛔ **not** re-imposed
    at complex `ω` to obtain it.
-3. ⭐⭐ **Whether it lies INSIDE each thermodynamically admissible region computed in §2b**, distinguishing
-   unconditional admissibility from any sub-region that additionally imposes reciprocity. ⛔ Do not use
+3. ⭐⭐ **Whether it lies INSIDE each thermodynamically admissible region computed in §2b**, reporting the
+   set relation between the unconditional-admissibility and reciprocity-conditioned regions. ⛔ Do not use
    either as a gate that removes, suppresses or re-branches any root.
    **Wrong derivation caught:** suppressing a root with an admissibility condition, or conflating the
    unconditional and reciprocity-conditioned regions.
 ⇒ `S11BB_LONGITUDINAL_DISPERSION`, `S11BB_ROOTS`, `S11BB_IMAGINARY_PART`, `S11BB_DISSIPATION_ORIGIN`,
   `S11BB_ROOT_STABILITY_CLASS`, `S11BB_STABILITY_CONDITION`, `S11BB_GROWTH_ARTIFACT_DIAGNOSTICS`,
+  `S11BB_DECAY_ARTIFACT_DIAGNOSTICS`,
   `S11BB_RECIPROCAL_TRACTION_ROOT_EFFECT`
 
 **B6 · The transverse mode, computed.** On this uniform background, compute the coupling between the

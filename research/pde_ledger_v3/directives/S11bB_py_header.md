@@ -1,4 +1,4 @@
-# DIRECTIVE — S11b-B SymPy audit and registry insertion
+# DIRECTIVE — S11b-B blind SymPy audit
 
 **Deliverable (absolute path):**
 `/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11bB_interface_assembly_sympy_audit.py`

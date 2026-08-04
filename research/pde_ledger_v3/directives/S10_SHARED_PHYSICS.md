@@ -56,16 +56,13 @@ period in `t`**:
 ⟨ F ⟩  ≡  (ω / 2π) · ∫_0^{2π/ω} F  dt
 ```
 
-⛔⛔ **DO NOT use `a_j exp(i(k·x − ωt))` with real `a`.** ⚠ It does **not** define a real
-`(∂_i u_j − ∂_j u_i)²`: substituting `∂ → i k` multiplies that square by `i² = −1` and **flips the sign of
-the entire stiffness term**. ⚠ A complex ansatz needs a conjugation or real-part rule, this specification
-does not supply one, and **the period-average of the real ansatz differs from the naive complex Hessian by
-an overall factor** — ⇒ two engines free to choose would produce matrices differing by a factor **and a
-sign**, and the disagreement would be a **convention artefact**, ⛔ not physics.
+⛔⛔ **DO NOT use `a_j exp(i(k·x − ωt))` with real `a`.** It does **not** define a real
+`(∂_i u_j − ∂_j u_i)²` — substituting `∂ → i k` multiplies that square by `i² = −1` and **flips the sign of
+the entire stiffness term**. ⇒ two engines free to choose the convention would differ by a sign and a
+factor, for no physical reason.
 
-⭐ Every overall positive constant factor common to the whole quadratic form is **irrelevant to every
-quantity requested in §6** (roots, ranks, coranks, null spaces, loci). ⭐ **Emit the factor you obtain**
-rather than normalising it away.
+⭐ An overall positive constant common to the whole quadratic form changes **nothing** requested in §6.
+⭐ Emit whatever factor you obtain rather than normalising it away.
 
 Write `ω²` as a **single symbol** (`omegaSquared`) throughout, ⛔ never as `ω` squared; solving for `ω`
 introduces sign branches that are not separate physical modes.
@@ -173,40 +170,15 @@ Emit the full system.
 
 ⭐ **Emit `M_A`, `M_B`, and `M_A − M_B`** — all three (clause 2).
 
-⛔⛔ **DO NOT CALL THESE TWO INDEPENDENT PHYSICS DERIVATIONS. THEY ARE NOT, AND AN EARLIER VERSION OF THIS
-FILE CLAIMED THEY WERE.** ⚠ For **any** quadratic Lagrangian, "vary then substitute the wave" and "take
-the Hessian of the averaged quadratic form" are the **same variational identity**, so `M_A − M_B` is
-structurally zero for **every** stiffness — including a wrong one. ⇒ ⭐ **This residual tests CODING
-CONSISTENCY ONLY** — it detects one route being built from a different action than the other, and nothing
-about whether the action is right. ⭐ **Emit it, and emit a tag stating that this is what it tests.**
+⛔⛔ **THESE ARE NOT TWO INDEPENDENT PHYSICS DERIVATIONS.** For **any** quadratic Lagrangian they are the
+same variational identity, so `M_A − M_B` is structurally zero for **every** stiffness, including a wrong
+one. ⇒ ⭐ **The residual tests CODING CONSISTENCY ONLY** — that both routes were built from the same
+action. ⭐ Emit it, and emit a tag saying that is what it tests. ⛔ Do not present it as verifying physics.
 
-⚠ If `M_A` and `M_B` differ by an overall nonzero scalar, ⛔ do not silently normalise one to the other.
-Emit both, emit the difference, and emit the ratio `M_A[[1,1]]/M_B[[1,1]]` as an object.
+⚠ If `M_A` and `M_B` differ by an overall scalar, ⛔ do not normalise one to the other — emit both, the
+difference, and the ratio `M_A[[1,1]]/M_B[[1,1]]`.
 
 ⭐ Use `M_B` for everything downstream, and emit a tag naming the route used.
-
-### Q2b · ⭐⭐ A GENUINELY INDEPENDENT ROUTE — numeric specialisation
-
-⭐ Because Q2 buys no physics, the independent check goes here instead, and it uses a **different branch of
-mathematics** from everything above: **exact rational arithmetic and numeric linear algebra**, ⛔ not
-symbolic solving.
-
-For each package and each `D`, choose **at least three** distinct specialisations assigning **exact
-rational** values to every free symbol (`ρ_br`, `μ_R`, every `k_m`, and any control parameter), subject to
-the §3 assumptions. ⛔ Do not choose values that make any `k_m` zero in every specialisation.
-
-For each specialisation emit:
-- the specialisation itself, as an explicit rule list;
-- the **numeric** matrix `M` with `omegaSquared` kept symbolic, its determinant, and the roots of that
-  determinant obtained by **exact polynomial root-finding over the rationals**;
-- the **symbolic** roots from Q3 evaluated at the same specialisation;
-- their **difference**;
-- for each root, the numeric `rank(M_r)`, the numeric `rank([M_r ; kᵀ])`, and the differences against the
-  symbolic ranks from Q4.
-
-⭐ **This can genuinely fail** where Q2 cannot: a mis-simplification, a wrong branch taken by a symbolic
-solver, or a generic-rank claim that does not hold at the sampled point all show up here as a nonzero
-difference. ⛔ If a difference is nonzero, **emit it and continue** — it is a finding, not a crash.
 
 ### Q3 · The spectrum
 
@@ -259,11 +231,9 @@ your concern**: compute `N3` everywhere, unconditionally.
 the headline. If you also emit a word like `parallel`/`perpendicular`/`neither`, it must be **derived from
 the emitted residuals in the same expression** and it must never replace them.
 
-⚠ **WHY N7 IS WHAT IT IS, and an earlier version of this file got it wrong.** It previously asked for
-`rank + nu − D`, with `nu` **defined** as `D − rank` — ⛔ **identically zero for any rank whatsoever**,
-including `−5`. That is a residual dressed as a check (corollary 3). ⭐ The version above differences the
-count returned by the **null-space routine** against the count implied by the **rank routine**: two
-different algorithms, so ⭐ **it can actually fail.**
+⚠ **N7 differences two DIFFERENT ALGORITHMS** — the null-space routine's basis count against the rank
+routine's implied count — which is what lets it fail. ⛔ Do not "simplify" it to `rank + nu − D`: with `nu`
+defined as `D − rank` that is identically zero for any rank at all.
 
 ### Q5 · Dispersion — by SCALING, ⛔ never by substitution
 
@@ -344,14 +314,14 @@ symbols. ⇒ ⛔⛔ **EVERY NUMBER Q4 PRODUCES IS A GENERIC NUMBER, AND SAYING S
 **intersects the allowed region**, choose an explicit point on it satisfying §3, and recompute and emit the
 **complete Q3 spectrum and Q4 `N1`–`N7` set** at that point, tagged as belonging to that stratum.
 
-⛔⛔ **THIS IS NOT BOOKKEEPING.** ⚠ **Measured on this specification before any build ran:** for a package
-with distinct per-component densities there exists an **allowed real wavevector** at which the determinant
-acquires a **repeated root** and the null space at that root has a **different dimension than the generic
-answer**. ⇒ ⭐ **The generic mode count is simply wrong there**, and a build that only *reported the locus*
-would have emitted the wrong count with every check green.
+⛔⛔ **THIS IS NOT BOOKKEEPING.** There exist actions in §7 with an **allowed real wavevector** at which the
+determinant gains a repeated root whose null space has a **different dimension than the generic answer**.
+⇒ the generic count is simply wrong there, and reporting the locus without recomputing on it emits that
+wrong count with every check green.
 
-⭐ If a package has **no** allowed stratum, ⭐ **emit a tag saying the allowed-stratum list is empty** —
-⛔ do not omit the tag (corollary 4).
+⭐ If a package has **no** allowed stratum, ⭐ **emit a tag saying the list is empty** — ⛔ do not omit the
+tag (corollary 4). ⚠ Most packages may well be in that case; ⭐ the tag is what distinguishes *checked and
+empty* from *never checked*.
 
 ⭐ The orchestrator checks the enumeration is complete; ⛔ the engine does not assert that it is.
 
@@ -375,19 +345,16 @@ repetition is a result, and deleting it destroys the evidence.
 | `XFORM_ANISO` | 3, 4 | kinetic term `→ (1/2) Σ_j ρ_j (∂_t u_j)²` with **`ρ_1 = s_ρ · ρ_br` and `ρ_2 = … = ρ_D = ρ_br`**; `s_ρ` positive, **dimensionless**, `s_ρ ≠ 1` |
 | `XCOEF_SCALE` | 3 | `μ_R → s · μ_R`; `s` positive and **dimensionless** |
 
-⚠ **`s_ρ` and `s` are declared DIMENSIONLESS here, and that declaration is a Q6 input** — the
-energy-density requirement alone fixes only the *sum* of a scale factor's dimension and its coefficient's,
-so without this the control's dimensions are underdetermined.
+⚠ **`s_ρ` and `s` are DIMENSIONLESS by declaration, and that is a Q6 input** — the energy-density
+requirement alone fixes only the *sum* of a scale factor's dimension and its coefficient's.
 
-⚠ **`XFORM_ANISO` breaks the isotropy on ONE axis only, and that is deliberate.** ⭐ Fully distinct
-densities are **solvable but not usable**: the roots come back as nested radicals and every downstream rank
-computation on them exceeds the time budget in **both** CASes. ⭐ One distinct axis breaks the same symmetry
-and stays tractable. ⛔ Do not "improve" it by making all the densities distinct.
+⚠ **`XFORM_ANISO` breaks isotropy on ONE axis only.** ⛔ Do not "improve" it by making all the densities
+distinct: that is solvable but **not usable** — the roots come back as nested radicals and every downstream
+rank exceeds the time budget in both CASes.
 
-⚠ **`MAIN` stops at `D = 5` for ENGINE SYMMETRY, ⛔ not because `D = 6` is uninteresting.** ⭐ Measured:
-Wolfram factors the `D = 6` determinant in well under a second, while the SymPy path does not finish. ⛔ A
-`D` present in one engine and absent from the other is **worse than absent from both** — it silently
-removes that point from every cross-engine comparison.
+⚠ **`MAIN` stops at `D = 5` for ENGINE SYMMETRY.** Wolfram factors the `D = 6` determinant in under a
+second; the SymPy path does not finish. ⛔ A `D` present in one engine only is worse than absent from
+both — it silently drops that point from every cross-engine comparison.
 
 ⭐ **`MAIN` swept over `D` is the primary result of the step, ⛔ not a control.**
 ⭐ **`XCOEF_SCALE` is a COEFFICIENT control and tests arithmetic only** — scaling never leaves the family.

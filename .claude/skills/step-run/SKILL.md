@@ -14,12 +14,20 @@ Invoke as `/step-run <step-id>`. Follow this sequence exactly; do not substitute
 1. **Walk the step with the user.** State what is being derived, what is available, what is missing, and
    where trouble is expected. Then take one move at a time with reasoning before results. Flag every
    identification before making it and state what would make it wrong; never pre-derive and present.
-2. **Pre-register predictions.** Write expected script outputs to a tracked path and commit it so the
-   timestamp establishes priority. ⚠ **AMENDED 2026-08-04 — ⛔ moving it out of the tree is NO LONGER
-   REQUIRED.** ⭐ Under the three clauses (build skill) a script cannot state a conclusion, so a builder
-   that reads a prediction still cannot type it. ⛔ Withhold only an **acceptance criterion referencing an
-   expected value**, which is what stops the fix-until-it-matches loop. Pre-registration now exists to test
-   **you**, ⛔ not to blind the builder.
+2. ⛔⛔ **DO NOT PRE-REGISTER EXPECTED VALUES — RETRACTED 2026-08-04, and the reason is the whole method.**
+   > ⭐⭐ **The entire point of writing the script is to GET the answer. Your job is to make sure the
+   > correct QUESTION is asked.** (user, 2026-08-04)
+
+   ⚠ **Measured:** a session wrote a hand-derived prediction table, had a review leg "independently
+   derive" and agree with it, and was one tool call from writing a third check to agree again — with
+   **zero scripts rebuilt** and most of a session gone. ⛔ **A committed table of expected values IS an
+   acceptance criterion referencing an expected value** — reachable in the tree by a builder that
+   iterates to exit 0, which converts a genuine disagreement into silent confirmation.
+   ⇒ ⭐ **Spend the effort on the QUESTION instead:** is every supplied relation an equation, is every
+   requested object computable from what is supplied, can each control genuinely fail, and is any
+   asked-for object **ill-posed** or **tautological**?
+   ⭐ **If working the setup exposes a defect, record THE DEFECT — ⛔ never the value that exposed it.**
+   ⇒ `[[feedback-question-quality-not-answer-confirmation]]`.
 3. **Review the build directives before any build.** Run `.claude/skills/review-legs/SKILL.md` on the
    directive packet with both directives visible as one review artifact. ⭐ The directives are
    **orchestrator-written**, so the two legs are **Codex + Grok** — ⛔ not a fresh Claude agent. Require
@@ -68,6 +76,44 @@ Invoke as `/step-run <step-id>`. Follow this sequence exactly; do not substitute
    answer-bearing set, and the byte-identical-restore check.** ⚠ Those defended against **anchoring**;
    the measured failure was **absence of computation**, which the three clauses kill structurally and
    quarantine never touched. ⇒ `research/pde_ledger_v3/REBUILD_HANDOFF.md`.
+7b. ⭐⭐ **BOTH ENGINES, EVERY STEP — and re-check a CONDITION before inheriting its conclusion.**
+   ⚠ **Measured 2026-08-04:** a doc said S9 needed no SymPy engine because *"the cone is two lines of
+   algebra"*, under a **conditional** rule — *"a second engine earns its place where the algebra is long
+   enough that it could genuinely DISAGREE."* The condition had **expired** (26 tags had become 316) and
+   the conclusion was inherited anyway. ⇒ ⭐ **A conditional rule needs its CONDITION re-checked, ⛔ not
+   its conclusion quoted.**
+   ⭐ **What the second engine bought, on the first try:** it caught a **wrong dimension** the `.wl` had
+   been reporting — a defect that had survived **two review legs and a full ablation suite**, because the
+   `.wl` computed it consistently, ablated correctly, and produced a number that *looked* like a
+   meaningful signal. ⛔ Neither review nor ablation can catch that class; only a second engine computing
+   the same quantity a different way.
+   ⚠ **The converse, and it bounds what cross-engine buys:** a defect **shared** by both engines is
+   invisible to comparison. ⇒ the reviewer deriving from scratch is still required.
+
+7c. ⭐⭐ **RUN THE HARNESS ON BOTH OUTPUTS** — `reduction/engine_output_checks.py --config checks_<STEP>.yaml`.
+   Four layers: **cross-engine agreement** (target generated at compare time from the other engine),
+   **dimensional homogeneity** of every emitted expression (dimensions taken from the engine's own derived
+   dimension tags), **control response** (does each tag move under some control), and **tag-set parity**
+   across packages.
+   ⛔⛔ **The config maps TAG NAMES, never values** — that is what keeps it leak-free, and it is not
+   optional.
+   ⛔ **A physics finding must EXIT 0**; only operational failure exits non-zero. Otherwise a builder
+   iterating to exit 0 can make a disagreement disappear.
+   ⛔ **Verify the harness by ABLATING THE HARNESS**, never by reading its self-report — a checker that
+   silently mis-parses two expressions into agreement is worse than no checker, because it manufactures
+   confidence.
+   ⚠ **Its limits, and ⛔ do not quote it as coverage:** `INVARIANT` and `PARITY` gaps are **triage
+   lists**, not failures — a quantity can be legitimately invariant or legitimately absent from a control.
+
+7d. ⭐ **DIMENSIONS — two rules that were both learned the hard way:**
+   ⭐ **Dimension the WHOLE expression by walking its tree.** ⛔ Reading the exponents of the coefficient
+   symbols silently drops every other dimensionful factor — a wavevector, for instance — and reports a
+   dimension short by it. ⚠ That produced a **wrong emitted value** that looked like a meaningful signal.
+   ⭐ **Count FIELD FACTORS, not derivative atoms.** ⚠ A per-term analysis that sums over `Derivative`
+   nodes gives **no contribution** for a bare underived field, so a gap or mass term is silently
+   mis-dimensioned — with a clean exit and every gate green.
+   ⚠ Homogeneity is **blind to a wrong dimensionless coefficient**. ⇒ it is a layer, ⛔ not the answer.
+
 8. **Run all existing gates.** Run acceptance, dim, able-to-fail, and pytest gates. For a new
    discrete row, also verify that the continuous payload is unchanged.
    ⛔⛔ **Any NEW relation also needs its own algebra checked, because no gate does it.** Add an

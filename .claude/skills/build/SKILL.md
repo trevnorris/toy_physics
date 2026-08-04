@@ -71,6 +71,41 @@ both engines carry the same author's sentence — and **eight fidelity review le
 ⭐ **Copy the one shape that worked** (`S11bB` lines 421–443): type a candidate, compute the object
 **independently**, `emit` the symbolic difference, hard-stop if nonzero.
 
+## ⭐⭐⭐ FOUR COROLLARIES — all measured 2026-08-04, all of them defeat the three clauses as written
+
+**1. ⛔⛔ A HAND-TYPED CAS OBJECT IS STILL HAND-TYPED.** Clause 1 bans a *prose* payload. It does **not**
+stop `emit(FullSimplify[{0, muR k2/rhoBr}])` — a genuine CAS object, hand-authored, with **no data
+dependency on the derivation**. Delete `Det` and `Solve` entirely and the output does not move. That is
+the original defect wearing algebra instead of prose, and it is just as dead.
+⭐⭐ **THE STRUCTURAL RULE THAT CLOSES IT — put it in every script directive verbatim:**
+> **The ONLY place the physical symbols may be combined by hand is in CONSTRUCTING THE ACTION and the
+> ANSATZ. Every other expression involving them must be REACHED BY COMPUTATION. Every control re-enters
+> the chain at the ACTION, ⛔ never at a result.**
+
+**2. ⛔ THE TAG NAME IS OUTPUT TOO.** A name may name **the object**, ⛔ never its value, ratio, sign, or
+the shape of the answer. A genuine CAS payload does not rescue a name that already gave the answer away.
+
+**3. ⛔ NO TAUTOLOGICAL RESIDUAL — clause 2 does not imply "emit a triple everywhere."** Before emitting a
+difference, ask: ⭐ **were these two operands produced by INDEPENDENT ROUTES?** If `q := A/B` and you emit
+`A − q·B`, it is zero **by construction** and vanishes for *any* input, including a wrong one.
+⚠ **Measured:** a directive written *against* tautologies contained one; and a builder obeying "emit
+operands and residual" produced `EQUATION_REFERENCE = {0,0,0}` and differenced the ansatz against its own
+substitution — **operand theatre**, the appearance of a check where there is none.
+⇒ ⭐ Where no second route exists, **emit the objects and say so**. An honest *"there is nothing to compare
+against here"* beats a zero dressed as a check.
+⭐⭐ **And where a second route is worth building, build it:** derive the same object two structurally
+different ways and difference them. ⚠ Verify independence by **one-sided corruption** — break route A
+only; if route B moves too, they were never independent.
+
+**4. ⛔⛔ EMISSION MUST NEVER BE CONDITIONAL ON A PAYLOAD'S VALUE.** Whether a tag appears may depend only
+on **which package and which quantity** it belongs to.
+⚠ **Measured, and it deleted evidence:** a builder told to remove duplicate payloads applied it *across*
+control packages, so quantities that were **correctly invariant** vanished from the output. ⛔ Nothing
+caught it — names stayed unique, no untagged output, exit 0.
+⭐ **Why it inverts the meaning:** a value **present and identical** = **INVARIANT**, a real result;
+a value **absent** = indistinguishable from *never computed*, which is the defect being hunted.
+⇒ Tag **names** must be unique; **payloads may legitimately repeat**, and that repetition is the finding.
+
 ⭐ **After every script build, run `reduction/derived_or_declared.py` on the deliverable.** A script still
 showing mostly CONSTANT has not been built. ⚠ It is a triage tool, ⛔ not a verdict — see its limits in the
 rebuild handoff.
@@ -108,8 +143,41 @@ touched. ⛔ Builds now run **in-repo**; transcripts still go outside the repo o
 
 ⛔ **Verify a builder's compliance declaration against the DIFF, never against its report.**
 
+## ⛔⛔ LAUNCH DISCIPLINE — two failures, both measured 2026-08-04, together ~25 minutes
+
+**1. ⛔ NEVER CHAIN ANYTHING IN FRONT OF `codex exec`.** A multi-line `git commit -m "…"` before the
+launch, in the same Bash call, makes the `"$(<file)"` substitution come back **empty**; Codex then sits on
+stdin **forever** and ⛔ **never sends a completion notification**. ⚠ Absolute paths did **not** prevent
+this — the second failure had one. ⇒ ⭐ **A launch goes in its own tool call, alone.**
+
+**2. ⭐ PROVE THE PROMPT, THEN PROVE THE PROCESS — both take seconds:**
+```bash
+test -s /abs/directive.md && echo "PROMPT OK ($(wc -c < /abs/directive.md) bytes)"   # BEFORE launch
+b=$(wc -c < /abs/log.txt); [ "$b" -lt 500 ] && echo DEAD || echo ALIVE               # AFTER launch
+```
+⚠ A hung Codex looks exactly like a busy one and will happily burn an hour. ⭐ **A real build is tens of
+thousands of tokens; a dead one is a few hundred bytes.**
+
+## ⛔⛔ COMMIT THE REVIEWED ARTIFACT BEFORE A REPAIR RUNS AGAINST IT
+
+⚠ **Measured 2026-08-04, caught with seconds to spare:** a repair build was launched against an engine
+that two review legs had just ablated and that was **still uncommitted**. ⛔ An uncommitted baseline is
+exactly the thing that gets destroyed. ⇒ ⭐ **The artifact a review leg reviewed must be committed before
+anything overwrites it** — otherwise the review has no fixed target and the finding cannot be reproduced.
+
+## ⚠ WRITING THE DIRECTIVE — a PROHIBITION leaks the answer as surely as an assertion
+
+⚠ **Measured three times in one session, twice inside sentences FORBIDDING the answer**, and one of those
+was introduced **by the repair for the first**:
+`Print["TAG: LINEAR_IN_K"] is forbidden` · `WL_S9_..._MU_OVER_RHO is forbidden` · *"if `[μ_F]` equals
+`[μ_R]` the repair has failed."*
+⇒ ⭐ **Write forbidden-pattern examples with PLACEHOLDER content, never the step's real content**, and
+⛔ never state the pass condition for a load-test — the builder iterates toward whatever it can see.
+
 ## Invariants
 
 - Use absolute paths for every file a background job reads or writes.
 - Never inspect results between deliverable verification and review-leg launch.
 - Never treat process success, an arbiter re-run, or agreement with predictions as independent review.
+- ⭐ Run `reduction/engine_output_checks.py` on the deliverable's output; ⛔ verify the harness's own
+  claims by **ablating the harness**, never by reading its self-report.

@@ -96,6 +96,36 @@ codex exec -c model_reasoning_effort=xhigh "$(</absolute/review-prompt.md)" \
 physics confirmations come from a reviewer deriving from scratch, ⛔ never from a blind builder — see
 `[[feedback-supply-verified-blind-only-open]]`.
 
+### ⛔⛔ A PROSE DERIVATION IS WORTH NOTHING — DEMAND A SCRIPT AND ITS LITERAL OUTPUT
+
+> *"trusting grok and codex and even yourself on how they 'rederive' is not trustworthy. Unless it's in
+> CAS and we can see the output from the inputs, it's not to be trusted."* — user, 2026-08-04
+
+⇒ ⭐ A leg reporting *"I derived it independently and got X"* in prose is **a typed sentence with no
+computation behind it** — ⛔ **the identical defect class this rebuild exists to remove, relocated from
+the engine into the review.**
+
+**Put this in every script-review prompt, and mean it:**
+> Write your own derivation script **before** opening the artifact, and save **both the script and its
+> literal stdout** to named absolute paths. ⛔ Without these, your derivation claims will be discarded.
+
+⚠ **Two hand derivations agreeing is [[feedback-matching-number-is-not-evidence]] at full strength** —
+two unverifiable claims that happen to coincide, which is how two cancelling errors survive.
+⚠ **Measured value of the demand:** two legs given it produced runnable scripts and disagreed on a
+load-bearing test; the disagreement was resolvable **only** because one showed the counterexample matrix
+element instead of asserting a conclusion.
+
+### ⭐⭐ ONE-SIDED CORRUPTION — the only way to test that two routes are INDEPENDENT
+
+When an artifact claims two independent routes to the same object and emits their residual, ⛔ **a zero
+residual proves nothing on its own** — it is worthless if the second route is derived from the first.
+
+⭐ **Corrupt ONE route at a time and report which objects moved.** If breaking route A also moves route
+B's object, they were never independent and the residual is decoration.
+⚠ **Measured 2026-08-04:** three one-sided corruptions — a sign, a form error, and a wrong derivative
+pairing — each moved **only** its own route and drove the residual nonzero. ⭐ That, and nothing weaker,
+is what establishes a two-route check.
+
 ⛔ **The reviewer must NOT verify a supplied object against the artifact's own identity** — that is circular.
 ⭐ **Name the forbidden route explicitly in the prompt.**
 

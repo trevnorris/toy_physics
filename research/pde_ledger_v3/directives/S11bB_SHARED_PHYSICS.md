@@ -1,8 +1,8 @@
-# S11b-B — SHARED PHYSICS SPECIFICATION (rev 8)
+# S11b-B — SHARED PHYSICS SPECIFICATION (rev 9)
 
 ⚠ **Inserted BYTE-IDENTICALLY into both engine directives.** It is the only part they share.
 
-⚠⚠ **Revision 8.** Seven revisions were rejected by independent review **before any build ran**. Rev 1
+⚠⚠ **Revision 9.** Eight revisions were rejected by independent review **before any build ran**. Rev 1
 mandated a **non-uniform** background while fixing every perturbation to a plane wave, and those cannot
 both hold — position-dependent coefficients mix wavevectors, so a global dispersion relation does not
 exist. ⇒ ⭐ **The non-uniform problem is now a separate step (S11b-C).** This step is the **homogeneous
@@ -43,8 +43,15 @@ result does **not** settle the unconditional question either way.
 
 ## ⛔⛔ 0b · WHAT NEITHER ENGINE MAY READ
 
-`research/pde_ledger_v3/scripts/` · `mathematica/` · `steps/` · `reduction/` · `V3_STEP_PLAN.md` ·
-`directives/S11b_*` and `S11bA_*` · `research/pde_audit/` · anything named `PREREGISTERED`/`PREREG` ·
+`/var/projects/toy_physics/research/pde_ledger_v3/scripts/` ·
+`/var/projects/toy_physics/research/pde_ledger_v3/mathematica/` ·
+`/var/projects/toy_physics/research/pde_ledger_v3/steps/` ·
+`/var/projects/toy_physics/research/pde_ledger_v3/reduction/` ·
+`/var/projects/toy_physics/research/pde_ledger_v3/V3_STEP_PLAN.md` ·
+**every other file in** `/var/projects/toy_physics/research/pde_ledger_v3/directives/` **except the one
+assembled directive supplied to that engine** · `/var/projects/toy_physics/research/pde_ledger_v3/_scratch/` ·
+`/var/projects/toy_physics/research/pde_ledger_v3/LAUNCH_PROMPT.md` ·
+`/var/projects/toy_physics/research/pde_audit/` · anything named `PREREGISTERED`/`PREREG` ·
 **the other engine's deliverable**.
 ⚠ `reduction/` is barred from **both** engines this step; registry insertion is a **separate later pass**,
 so neither engine can identify a symbol the other is treating as independent. ⛔ Do not go looking.
@@ -141,11 +148,12 @@ per unit face area leaving the slab through that face**, measured along that fac
 
 ```
 J_± = Λ_A(ω) 𝒜_±  +  Λ_V(ω) V_± ,
-Λ_I(ω) = Λ_I⁰/(1 − iωτ) ,                 I ∈ {A,V,X}
+Λ_I(ω) = Λ_I⁰/(1 − iωτ_I) ,               I ∈ {A,V,X}
 ```
 
-with `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰`, `τ` real and free, and `τ ≥ 0`. The affinity and its normalization are
-**SUPPLIED**:
+with `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰`, `τ_A`, `τ_V`, and `τ_X` real and free, and each `τ_I ≥ 0`. Keep the three
+relaxation times independent throughout; the specialization `τ_A = τ_V = τ_X ≡ τ` recovers revision 8's
+kernel specification exactly. The affinity and its normalization are **SUPPLIED**:
 
 ```
 𝒜_± ≡ μ_s − δp_±/ρ_m ,
@@ -171,7 +179,7 @@ Two relations close the face:
   the bulk's outward normal velocity exceeds the face's own by the volume flux of that material:
   `v_bulk,± = V_± + J_±/ρ_m`.
 
-⭐ **Solve these together with the closure** and report the face pressure `δp` as a function of `V_±` and
+⭐ **Solve these together with the closure**, keeping `τ_A` and `τ_V` independent, and report the face pressure `δp` as a function of `V_±` and
 `μ_θ`. ⚠ **Report it as what it is** — with a nonzero slab-side coupling the face response is ⛔ **not** a pure
 velocity-impedance, because it acquires a term driven by a **brane** variable. ⭐ Report both coefficients
 separately, and ⛔ do not force the result into the shape of a single impedance if it does not have it.
@@ -194,12 +202,15 @@ separate step:
 Z_perm = (ρ_m r + Λ_V⁰)/(y r − Λ_p⁰) ,    r = 1 − iωτ ,    y = q_out/ω
 ```
 
+Before this comparison, report the general response with `r_A ≡ 1 − iωτ_A` and
+`r_V ≡ 1 − iωτ_V` still distinct. For the comparison only, apply the explicit specialization
+`τ_A = τ_V = τ`, so `r_A = r_V = r`.
 ⭐ **Report the comparison explicitly.** ⛔ **If it does not reduce, report the disagreement — do not adjust
 your derivation to match.** ⚠ A disagreement here is a real finding about one of the two steps.
 ⚠ **Scope:** this reduction checks the algebra combining the bulk relation, interfacial mass balance and
 closure; it does **not** validate `g_p`, which is an input fixed by the supplied affinity.
-**Wrong derivation caught:** a sign or algebra error in the face solve after the coefficient mapping is
-fixed; the check is not passed by refitting that mapping.
+**Wrong derivation caught:** a sign or algebra error, or premature identification of the two relaxation
+factors, corrupts the general face solve or its explicitly specialized reduction.
 ⇒ `S11BB_ZPERM_REDUCTION_CHECK`
 
 ### Passivity — ⭐ TWO SEPARATE QUESTIONS. ⛔ Assert neither; compute both
@@ -212,13 +223,13 @@ complete two-port identity is
 overline(P_out,±)
   = ½ Re[ (δp_± + Λ_X 𝒜_±) V_±* + μ_s J_±* ]
   = ½ Re[ δp_± v_bulk,±* + 𝒜_± J_±* + Λ_X 𝒜_± V_±* ] ,
-v_bulk,± = V_± + J_±/ρ_m .
+v_bulk,± = V_± + J_±/ρ_m ,                 Λ_I(ω) = Λ_I⁰/(1 − iωτ_I) .
 ```
 
 The first line is the slab-side pairing; the second separates outgoing bulk transport from interfacial
 conversion. ⛔ The mixed expression `½ Re(δp_±V_±* + 𝒜_±J_±*)` is incomplete by
-`½ Re(δp_±J_±*/ρ_m + Λ_X𝒜_±V_±*)`. Setting `Λ_X⁰ = 0` recovers revision 7's traction, mechanics and
-two-port power identity exactly.
+`½ Re(δp_±J_±*/ρ_m + Λ_X𝒜_±V_±*)`. The `Λ_X⁰ = 0` comparison standard is obtained solely by making that
+substitution in the displayed identity, with every other coefficient left symbolic.
 
 1. **Port dissipativity.** On real `ω`, use the derived face response with the fixed independent input vector
 
@@ -242,18 +253,21 @@ two-port power identity exactly.
    ```
 
    On real `ω`, construct its Hermitian power form for arbitrary complex `(𝒜_±,V_±)`, and report the
-   necessary and sufficient condition on `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰`, and `τ` for nonnegative interfacial
+   necessary and sufficient condition on `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰`, `τ_A`, `τ_V`, and `τ_X` for nonnegative interfacial
    entropy production. ⚠ This is a mixed force/flux representation; do not infer an Onsager sign merely by
    symmetrizing the displayed coefficient array. Time-reversal invariance remains **not assumed** (§3).
    For the conditional Onsager–Casimir test, the definitions make `𝒜_±` and `f_X,±` even under time
    reversal and the rates `J_±` and `V_±` odd; this parity assignment does not assume that time reversal is
    a symmetry. Compute and report the relation between `Λ_X` and `Λ_V` **if one is forced**, and distinguish
-   a conditional reciprocity relation from unconditional admissibility.
-   Finally report whether admissibility still requires `Λ_V⁰ = 0` or permits it to be nonzero, both without
+   a conditional reciprocity relation from unconditional admissibility. Separately for admissibility and
+   for conditional reciprocity, report whether any relation among `τ_A`, `τ_V`, and `τ_X` is forced.
+   Finally report **which of `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰` admissibility requires to vanish, if any**, both without
    and, if applicable, with reciprocity. The supplied laws determine the admissibility form; ⛔ do not emit
-   `NOT_ESTABLISHED` for it. ⛔ Assert neither outcome in advance.
-   **Wrong derivation caught:** omitting the supplied second row, or treating this mixed array as an ordinary
-   force-to-flux matrix, can give a false reciprocity sign and a false condition on `Λ_V⁰`.
+   `NOT_ESTABLISHED` for it. ⛔ Assert no outcome in advance, and ⛔ treat no coefficient as the expected
+   one.
+   **Wrong derivation caught:** omitting the supplied second row, treating this mixed array as an ordinary
+   force-to-flux matrix, or identifying relaxation times before computing can give a false reciprocity
+   relation or admissibility condition.
 
 ⛔⛔ **DO NOT IMPOSE EITHER CONDITION TO REMOVE A GROWING ROOT.** ⭐⭐ **Instead, report whether a growing root
 lies inside each region you computed, distinguishing unconditional admissibility from any smaller region
@@ -261,7 +275,8 @@ that also imposes reciprocity.** Still report every root as a first-class outcom
 classification, ⛔ not an acceptance gate.
 ⇒ `S11BB_TWO_PORT_POWER_IDENTITY`, `S11BB_PORT_DISSIPATIVITY`, `S11BB_PORT_CONDITION_KIND`,
   `S11BB_ONSAGER_CONDITION`, `S11BB_ONSAGER_RECIPROCITY`, `S11BB_ONSAGER_DETERMINABLE`,
-  `S11BB_LAMBDA_V_ADMISSIBILITY`, `S11BB_GROWTH_INSIDE_ADMISSIBLE`
+  `S11BB_RELAXATION_TIME_RELATIONS`, `S11BB_COEFFICIENT_ADMISSIBILITY`,
+  `S11BB_GROWTH_INSIDE_ADMISSIBLE`
 
 ⛔⛔ **TWO TRAPS, both measured in S11b-A:**
 1. The per-face inertial loading is `+ρ_m/α` **against the outward acceleration on BOTH faces**. The signed
@@ -330,7 +345,7 @@ and what changes if it vanishes.** ⛔ Do not set it to zero by default.
 
 ⚠ **Under ORDINARY single-copy variation a retarded kernel cannot be varied.** In a bilinear
 `∫ λ 𝒴[∂_t δW] dt`, variation transposes the operator, whose symbol is `Y(−ω)` — the **advanced** kernel,
-pole moved from `ω = −i/τ` to `ω = +i/τ`. ⇒ **an irreversible flux may not be placed inside the varied
+moving any kernel pole from `ω = −i/τ_I` to `ω = +i/τ_I`. ⇒ **an irreversible flux may not be placed inside the varied
 functional.** ⚠⚠ **This is a statement about ORDINARY variation only** — ⛔ doubled-variable (in-in / Galley)
 constructions **do** yield genuinely retarded kernels, and ⭐ **using one as an INDEPENDENT CROSS-CHECK on
 the route below is allowed and encouraged.** ⛔ Do not treat the signatures below as universal laws; they
@@ -342,7 +357,7 @@ are signatures **under ordinary single-copy variation**.
   relation carries a history functional and may not enter a stored energy. ⚠ Typical signature: an extra
   root raising the dispersion determinant's **degree by one** — an invented mode.
 - **(ii) Varying `J_±` or `δp_±` inside the action.** Manufactures an anti-causal, **energy-generating**
-  kernel. ⚠ Typical signature: a root at `ω ≈ +i/τ`.
+  kernel. ⚠ Typical signature: a root at `ω ≈ +i/τ_I` for at least one kernel with `τ_I > 0`.
 - **(iii) Any route in which a response kernel is differentiated with respect to a field.**
 
 ### ⭐⭐ THE VIRTUAL-DISPLACEMENT RULE — binding, and it is where two engines would otherwise diverge
@@ -425,10 +440,14 @@ The independent, explicitly bounded pressure-work check below is the diagnostic 
 
 ### ⭐⭐ THE CAUSALITY DIAGNOSTIC — mechanical, gradeable, ⛔ and it does NOT foreclose instability
 
-Every response kernel in the final equations must be **retarded**: only `Λ_I(ω)`, `Z(ω)` and functions of
-them may appear. ⛔⛔ **If `Λ_I(−ω)`, `Z(−ω)`, `Y(−ω)` or `Λ_I*(ω)` appears anywhere in your final equations,
-the derivation is WRONG.** ⭐ **Run this check and report its outcome explicitly.**
-⚠ **If you find a root at or near `ω = +i/τ`, treat it as a signal to re-check step 6 before reporting it**
+In the **equations of motion, closure, face response and dispersion determinant**, every response kernel
+must be **retarded**: only `Λ_I(ω)`, `Z(ω)` and functions of them may appear. ⛔⛔ **If `Λ_I(−ω)`, `Z(−ω)`,
+`Y(−ω)` or `Λ_I*(ω)` appears in any of those objects, the derivation is WRONG.** Conjugated kernels in the
+time-averaged and Hermitian power forms required by §2b are outside this diagnostic. ⭐ **Run this scoped
+check and report its outcome explicitly.**
+**Wrong derivation caught:** an advanced response introduced into a dynamical object by transposing or
+varying a retarded kernel.
+⚠ **If you find a root at or near `ω = +i/τ_I` for any `I` with `τ_I > 0`, treat it as a signal to re-check step 6 before reporting it**
 — and then report **both** the root **and** the outcome of that re-check. ⛔ Do not simply delete it.
 ⇒ `S11BB_CAUSALITY_CHECK`, `S11BB_KERNEL_ARGUMENTS_PRESENT`
 
@@ -467,7 +486,7 @@ of §0.
 ⇒ `S11BB_CONVENTION_CHECK_INPLANE`, `S11BB_CONVENTION_CHECK_CONSERVATIVE`,
   `S11BB_CONSERVATIVE_POSITIVITY_INEQUALITY`
 
-### ⭐ ENERGY ACCOUNTING — two discriminators that can fail
+### ⭐ ENERGY ACCOUNTING — three discriminators that can fail
 
 ⚠ An earlier revision asked engines to enumerate loss channels **from the equations their own prescribed
 route produced**, and to check power balance against it. ⛔ That is an identity for any system built that
@@ -497,9 +516,23 @@ way — **it could not fail.** Replace it with this:
 ⛔⛔ **SCOPE OF CHECK 2:** it checks only the pressure-work sign in the displayed real-frequency,
 propagating, impermeable, zero-reciprocal-traction sub-case. It does not classify any B5 root and must not
 be used to discard or re-branch a growing root of the full problem.
+
+3. ⭐⭐ **FULL TWO-PORT BALANCE CHECK.** At real `ω`, keep `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰` and all three `τ_I`
+   symbolic. Decompose the time-averaged `d(T+U)/dt` obtained from your slab equations by order in
+   `Λ_X⁰`, and at every order compare it face by face and channel by channel with the independently
+   supplied slab-side exchange
+
+   ```
+   −½ Σ_{s=±} Re[ (δp_s + Λ_X(ω)𝒜_s) V_s* + μ_s J_s* ] .
+   ```
+
+   Report every symbolic difference without changing either derivation. This check classifies no root and
+   makes no statement about the sign of any imaginary part.
+   **Wrong derivation caught:** a traction sign or factor error, an omitted face, or an elimination against
+   B1 that substitutes the wrong slab-side conjugate leaves a nonzero difference in at least one channel.
 ⇒ `S11BB_ENERGY_SINKS`, `S11BB_ENERGY_SOURCES`, `S11BB_UNATTRIBUTED_SINK_TERMS`,
   `S11BB_UNATTRIBUTED_EXCHANGE_TERMS`,
-  `S11BB_PRESSURE_WORK_SIGN_CHECK`
+  `S11BB_PRESSURE_WORK_SIGN_CHECK`, `S11BB_FULL_TWO_PORT_BALANCE_CHECK`
 
 ⛔⛔ **DO NOT USE THE ZERO-INTERFACE-COEFFICIENT LIMIT AS A CHECK ON THE ROUTE.** All candidate routes
 **coincide** at `Λ_A⁰ = Λ_V⁰ = Λ_X⁰ = 0`, so that limit **cannot discriminate between a correct derivation
@@ -511,9 +544,12 @@ by `e_W`, and how they combine is task **B4**. ⚠ Where a modulus measured with
 would sit is an **output**, ⛔ not an input.
 
 ⚠⚠ **BUT THAT IS A PROPERTY OF THE LIST, ⛔ NOT AN ASSUMPTION YOU MAY IMPOSE.** If §3's basis construction
-yields an **independent** invariant built from `∇·u`, ⭐ **carry it with a free coefficient as §3 instructs**
-— ⛔ do **not** drop it to preserve the property above — and report how it changes B4's identification.
+yields **one or more independent invariants containing `∇·u`**, ⭐ **carry every one with its own free
+coefficient as §3 instructs** — ⛔ do **not** drop any to preserve the property above — and report how each
+changes B4's identification.
 ⚠ Both readings have been proposed; ⭐ **report which one your basis construction actually produces.**
+**Wrong derivation caught:** carrying only one divergence-containing invariant leaves an omission in the
+required full-basis comparison and changes downstream response calculations.
 
 ---
 
@@ -597,8 +633,9 @@ the condition on the moduli and on `C` that separates the two. ⛔ **A growing r
 advance.
 
 ⭐⭐ **FOR ANY GROWING ROOT, REPORT ALL THREE OF THESE — it is what separates a finding from an artifact:**
-1. **The causality diagnostic of §3b** — did `Λ_I(−ω)`, `Z(−ω)`, `Y(−ω)` or `Λ_I*(ω)` appear anywhere? Is
-   the root at or near `ω = +i/τ`?
+1. **The causality diagnostic of §3b** — did `Λ_I(−ω)`, `Z(−ω)`, `Y(−ω)` or `Λ_I*(ω)` appear in any of its
+   in-scope dynamical objects? Do not count the required conjugations in time-averaged or Hermitian power
+   forms. Is the root at or near `ω = +i/τ_I` for any `I` with `τ_I > 0`?
 2. **The sheet the root sits on**, and confirmation that requirements 1–2 of §1 were ⛔ **not** re-imposed
    at complex `ω` to obtain it.
 3. ⭐⭐ **Whether it lies INSIDE each thermodynamically admissible region computed in §2b**, distinguishing
@@ -616,7 +653,7 @@ transverse in-plane mode and the thickness degree of freedom **from B1's constra
 transverse dispersion. ⭐ **State explicitly what the coefficient couples to what**, and its normalization,
 ⛔ before assigning it a value or a dimension; ⚠ if it vanishes identically, say so and say that its
 normalization is then undetermined. ⭐ Report whether the transverse mode acquires an imaginary part, and
-its dependence on `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰`, `ωτ` and the slab-side part of `𝒜` across the full range.
+its dependence on `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰`, `ωτ_A`, `ωτ_V`, `ωτ_X` and the slab-side part of `𝒜` across the full range.
 ⚠ ⛔ **Whatever this returns, it does NOT settle whether confinement is unconditional** — that is a
 non-uniform question and out of scope here. ⛔ Do not phrase it as if it does.
 ⇒ `S11BB_TRANSVERSE_COUPLING`, `S11BB_TRANSVERSE_DISPERSION`, `S11BB_TRANSVERSE_DISSIPATION`
@@ -624,7 +661,7 @@ non-uniform question and out of scope here. ⛔ Do not phrase it as if it does.
 **B7 · Dimensions.** Derive from the equations above, ⛔ not from any table, the `[L,T,M]` exponents of
 `B_ρ`, `B_ρ⁽³⁾`, `μ_W`, `k_W`, `κ_W`, `C`, B3's response, B4's response, B6's coefficient, **and the
 coefficient of any additional independent invariant you carried under §3**, plus `Λ_A⁰`, `Λ_V⁰`,
-`Λ_X⁰`, `𝒜`, `μ_θ`, `μ_s` and §2b's face response. ⚠ Each of those responses is a ratio; ⛔ state what of what before assigning
+`Λ_X⁰`, `τ_A`, `τ_V`, `τ_X`, `𝒜`, `μ_θ`, `μ_s` and §2b's face response. ⚠ Each of those responses is a ratio; ⛔ state what of what before assigning
 a dimension, and if a coefficient vanishes identically say that its dimension is undetermined. Show each route and
 label it **independent** or **definitional** — a route whose asserted equation *defines* the symbol under
 test is definitional.
@@ -667,9 +704,11 @@ A check confined to the final determinant would not expose which normalization f
   ⛔ **not** the same cut as **C**, which removes the mass-flux closure row while leaving the reciprocal
   traction symbolic.
 - **F — remove the reciprocal traction** (`Λ_X⁰ = 0`, with `Λ_A⁰` and `Λ_V⁰` left symbolic) and recompute
-  B3–B5 and both passivity questions of §2b. This is a FORM cut and must reproduce revision 7's mechanics
-  and power identity exactly. **Wrong derivation caught:** dropping `Λ_X` from the full system as well as
-  the control makes F pass without testing the added traction channel.
+  B3–B5 and both passivity questions of §2b. This is a FORM cut: its recomputed mechanical operator must
+  equal the symbolic `Λ_X⁰ = 0` operator reported under B2, and its power identity must equal the §2b
+  identity after the same substitution; report both symbolic differences. **Wrong derivation caught:**
+  dropping `Λ_X` from the full system as well as the control makes F pass without testing the added
+  traction channel.
 ⭐⭐ **Recompute B6 under every one of A–D as well, and report what moves.** ⛔ Do not assume in advance
 that a control cannot affect B6, and ⛔ do not discard a dependence you find on the grounds that it "must
 be" algebraically predetermined. ⚠ If none of A–D changes B6's reported quantities, **state that as a
@@ -677,12 +716,16 @@ finding and say why** — that is a result about the structure of the coupling, 
 here, not assumed**.
 ⭐ For each, report which reported quantities move and which do not. ⛔ Report what each control does,
 ⛔ not what it was expected to do.
+⭐ In every control keep `τ_A`, `τ_V`, and `τ_X` independent wherever the corresponding coefficient remains,
+and report which, if any, becomes irrelevant because its entire channel was cut.
 ⇒ `S11BB_CONTROL_NO_THICKNESS`, `S11BB_CONTROL_A_ATTRIBUTION`, `S11BB_CONTROL_NO_GRADIENT_STIFFNESS`,
   `S11BB_CONTROL_IMPERMEABLE`, `S11BB_CONTROL_NO_CROSS_TERM`, `S11BB_CONTROL_NO_MU_COUPLING`,
   `S11BB_CONTROL_NO_RECIPROCAL_TRACTION`, `S11BB_CONTROLS_ON_TRANSVERSE`
 
 **B9 · Validity.** Report the conditions under which this step's linearisations hold, including §2's
-background-flow condition, and **where in `(ω,k)` any fail**.
+background-flow condition, and **where in `(ω,k)` any fail**. State separately any validity condition you
+use for each response kernel in terms of `ωτ_A`, `ωτ_V`, and `ωτ_X`; do not replace them by a common
+`ωτ` unless you explicitly impose the equal-time specialization.
 ⇒ `S11BB_VALIDITY_CONDITIONS`, `S11BB_VALIDITY_FAILURE_REGION`
 
 ---

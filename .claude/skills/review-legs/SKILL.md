@@ -167,6 +167,29 @@ serialization intact, so long as the second leg is given no hint of the first's 
 
 ⚠ Parallel launch remains correct for **document** reviews and for anything that does not spawn kernels.
 
+### ⛔⛔ OPERATIONAL CONSTRAINTS GO IN THE PROMPT FILE, ⛔ NOT IN ONE LEG'S LAUNCH WRAPPER
+
+⚠ **Measured 2026-08-04.** A fresh-agent leg was launched with `timeout 600`, "one kernel at a time", and
+"ablate a copy under `/tmp`" written into its **Agent prompt**; the Grok leg was handed only the **prompt
+file**, which carried none of it. ⇒ Grok ran an ablation through `wolframscript` with **no timeout**, held
+a licence seat at 101% CPU for **20+ minutes** against a baseline that runs in ~93 seconds, and wrote
+nothing to its log for 24 minutes.
+
+⛔ **Two legs given different instructions are not two legs.** ⭐ **Every constraint that shapes how a leg
+runs belongs in the rendered prompt**, which both legs receive byte-identical. A launch wrapper may carry
+credentials and paths; ⛔ it may not carry method.
+
+⭐ **Put these in the prompt file for any artifact that spawns a CAS kernel:**
+```
+⛔ Wrap EVERY kernel run in `timeout 600`. A 600s hit is a FAILED ablation — report it and move on.
+⛔ NEVER raise the timeout, and ⛔ never run more than one kernel at a time (the licence has TWO seats).
+⛔ Copy the artifact to /tmp and ablate the COPY. ⛔ Never modify the working tree.
+⭐ Save every ablation script AND its literal stdout to named absolute paths, and report those paths.
+```
+⚠ **A runaway kernel does not announce itself** — it looks identical to a busy one. ⭐ The tell is
+`etime ≈ cputime` on a single kernel process: continuous computation with no idle, which means one
+computation that is not converging, ⛔ not a long batch.
+
 ## Launch in Parallel (non-Mathematica artifacts)
 
 1. Start Grok using the **Bash tool with `run_in_background: true`**, and ⛔ **no shell `timeout`**.

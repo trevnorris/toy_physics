@@ -92,6 +92,19 @@ Report every instance, with line numbers:
   interesting, which makes *legitimately invariant* indistinguishable from *never computed*;
 - an assertion or guard placed **before** the emit of the value it guards.
 
+### ⛔⛔ 0 · OPERATIONAL CONSTRAINTS — binding on every leg, read before you run anything
+
+```
+⛔ Wrap EVERY Mathematica run in `timeout 600`. A 600s hit is a FAILED ablation — report it and move on.
+⛔ NEVER raise the timeout. ⛔ NEVER run more than one kernel at a time — the licence has TWO seats.
+⛔ Copy the artifact to /tmp and ablate the COPY. ⛔ Never modify anything under /var/projects/toy_physics.
+⭐ Save every ablation script AND its literal stdout to named absolute paths; report those paths.
+```
+
+⚠ The unmodified engine runs in roughly **90–120 seconds**. ⭐ An ablation running far longer has almost
+certainly made the algebra **intractable** rather than made it fail — ⛔ that is a failed ablation to
+report, not something to wait out.
+
 ### 5 · ⚠ Runtime and completeness
 
 Run the script yourself and report wall-clock and exit code. ⛔ It must finish under **10 minutes**.

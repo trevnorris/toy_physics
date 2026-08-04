@@ -161,7 +161,7 @@ emit["FROZEN_THICKNESS_IDENTIFICATION",
 
 (* B5 determinant, a soluble stability slice, and branch sensitivity. *)
 emit["LONGITUDINAL_DISPERSION",
- "On the prescribed qout sheet the dispersion is det(M)=0 for M={{R_d,R_theta,R_e},{B_d,B_theta,B_e},{T_d,T_theta,T_e}}, with rows printed in B2/B1 and det=R_d(B_theta T_e-B_e T_theta)-R_theta(B_d T_e-B_e T_d)+R_e(B_d T_theta-B_theta T_d).  The computed determinant expression is " <> fmt[-disp] <> "."];
+ "On the prescribed qout sheet the dispersion is det(M)=0 for M={{R_d,R_theta,R_e},{T_d,T_theta,T_e},{B_d,B_theta,B_e}}, with rows printed in B2/B1 and det=R_d(T_theta B_e-T_e B_theta)-R_theta(T_d B_e-T_e B_d)+R_e(T_d B_theta-T_theta B_d).  The computed determinant expression is " <> fmt[disp] <> "."];
 emit["ROOTS",
  "General roots are the sheet-filtered zeros {om_j(k): det(M(om,k,qout(om,k)))=0}.  Because qout has square-root monodromy and the determinant contains three independent Debye denominators plus feedback denominators, no parameter-independent radical closed form or fixed root count/multiplicity exists; collisions, cancellations and roots at infinity occur on coefficient subvarieties.  Explicit sign classification therefore requires a parameter region.  A fully symbolic soluble slice is reported next and demonstrates both admitted signs without imposing positivity."];
 

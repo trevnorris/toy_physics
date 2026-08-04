@@ -35,6 +35,8 @@ primitive_dimensions:
 
 dimensionless:
   - D
+  - lambdaScale        # pure scaling factor in the k -> lambda*k homogeneity test
+  - lambda_scale
   - lambdaRho
   - lambdaMu
   - rhoExponent
@@ -66,9 +68,13 @@ cross_engine:
     py: PY_S9_MAIN_SPEED_SQUARED_CANDIDATES
     wl_select: scalar
     py_select: list
-  - quantity: homogeneity_defect
-    wl: WL_S9_HOMOGENEITY_DEFECT1
-    py: PY_S9_MAIN_HOMOGENEITY_DEFECTS
+  # The flexural control emits ONE transverse root in both engines, so the
+  # scaling residual is shape-compatible there.  The main action's residual is
+  # per-root in the .wl and a per-root list in the .py; see the step record for
+  # why that pair is compared by hand rather than mapped.
+  - quantity: dispersion_scaling_residual_flexural
+    wl: WL_S9_X7_ROOT1_SCALING_RESIDUAL
+    py: PY_S9_X7_ROOT_SCALING_RESIDUAL
     wl_select: scalar
     py_select: list
   - quantity: inertia_coefficient_dimension

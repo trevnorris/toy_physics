@@ -573,6 +573,7 @@ _SYMBOL_ALIASES: dict[str, sp.Expr] = {
     "mu_G": sp.Symbol("muG"),
     "lambda_rho": sp.Symbol("lambdaRho"),
     "lambda_mu": sp.Symbol("lambdaMu"),
+    "lambda_scale": sp.Symbol("lambdaScale"),
     "omega2": sp.Symbol("omega") ** 2,
     "omegaSquared": sp.Symbol("omega") ** 2,
 }

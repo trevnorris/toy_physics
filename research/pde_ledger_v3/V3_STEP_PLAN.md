@@ -519,8 +519,8 @@ and a third was rejected for mandating a non-uniform background while fixing pla
 | | scope | state |
 |---|---|---|
 | **S11b-A** | the bulk's response to moving faces + the projection identity | ✅ **CLOSED** — `steps/S11bA_interface_response.md` |
-| **S11b-B** | the **homogeneous** assembly ⇒ does the longitudinal radiate or stay bound | directive rev 3, in review |
-| **S11b-C** | the **non-uniform** transverse coupling ⇒ is light's confinement unconditional | **not started** |
+| **S11b-B** | the **homogeneous** assembly ⇒ does the longitudinal radiate or stay bound | ✅ **CLOSED** — `steps/S11bB_interface_assembly.md`. ⛔ **Overturns A's headline: the velocity-coupled leak is thermodynamically FORBIDDEN** |
+| **S11b-C** | the **non-uniform** transverse coupling ⇒ is light's confinement unconditional | ▶ **NEXT.** ⚠ B proved the uniform coupling is **identically zero**, so a uniform-limit control is now **known-vacuous** |
 
 ⭐ **The seam is real:** the longitudinal mode's fate needs no gradients; light's confinement needs them.
 ⇒ Full state, traps, and C's requirements: **`steps/S11b_HANDOFF.md`**.

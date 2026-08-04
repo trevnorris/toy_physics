@@ -20,6 +20,7 @@ rho_br, mu_R, rho_z, mu_F, mu_G = sp.symbols("rho_br mu_R rho_z mu_F mu_G", posi
 lambda_rho, lambda_mu = sp.symbols("lambda_rho lambda_mu", positive=True)
 D = sp.symbols("D", integer=True, positive=True)
 q = sp.symbols("q", positive=True)
+lambda_scale = sp.symbols("lambda_scale", positive=True)
 
 
 def curl_of(field):
@@ -453,6 +454,26 @@ def derive(
     passing_e3 = [record[0] for record in records if record[6] == sp.S.true]
     passing_e4 = [record[0] for record in records if record[7] == sp.S.true]
     transverse_q_roots = [q_form(root) for root in passing_e1]
+    transverse_q_wavevector_occurrences = [
+        sp.Tuple(
+            *(sp.Tuple(symbol, sp.S.true if root.has(symbol) else sp.S.false) for symbol in k_input)
+        )
+        for root in transverse_q_roots
+    ]
+    scaled_roots = [
+        root.subs(
+            {component: lambda_scale * component for component in k_input},
+            simultaneous=True,
+        )
+        for root in roots
+    ]
+    quadratic_scaled_roots = [lambda_scale**2 * root for root in roots]
+    scaling_residuals = [
+        sp.simplify(scaled - quadratic_scaled)
+        for scaled, quadratic_scaled in zip(scaled_roots, quadratic_scaled_roots)
+    ]
+    root_sign_assumptions = sp.And(assumption_object, sp.Q.positive(wave_norm))
+    root_signs = [sp.refine(sp.sign(root), root_sign_assumptions) for root in roots]
     speed_candidates = [sp.factor(root / q) for root in transverse_q_roots]
     homogeneity_defects = [sp.factor(q * sp.diff(root, q) - root) for root in transverse_q_roots]
     speed_derivatives = [sp.factor(sp.diff(speed, q)) for speed in speed_candidates]
@@ -507,7 +528,12 @@ def derive(
         "ROOT_MULTISET": root_multiset,
         "ROOT_MULTIPLICITIES": [sp.Tuple(root, multiplicities[root]) for root in roots],
         "ROOT_NULLITIES": [sp.Tuple(record[0], record[8]) for record in records],
+        "ROOT_SCALING_SCALED": scaled_roots,
+        "ROOT_SCALING_QUADRATIC": quadratic_scaled_roots,
+        "ROOT_SCALING_RESIDUAL": scaling_residuals,
+        "ROOT_OMEGA2_SIGNS": [sp.Tuple(root, sign) for root, sign in zip(roots, root_signs)],
         "TRANSVERSE_ROOTS_Q": transverse_q_roots,
+        "TRANSVERSE_ROOTS_Q_WAVEVECTOR_OCCURRENCES": transverse_q_wavevector_occurrences,
         "SPEED_SQUARED_CANDIDATES": speed_candidates,
         "HOMOGENEITY_DEFECTS": homogeneity_defects,
         "SPEED_Q_DERIVATIVES": speed_derivatives,
@@ -536,31 +562,31 @@ def derive(
 
 all_outputs = {}
 all_guards = {}
-fatal_output = None
-fatal_control = None
+fatal_outputs = {}
 for control_name, action_specification in actions.items():
     assumption_object = assumptions_for(action_specification[1], action_specification[4])
     with sp.assuming(assumption_object):
         result, guards, failure = derive(*action_specification, assumption_object)
     if failure is not None:
-        fatal_control = control_name
-        fatal_output = failure
-        break
+        fatal_outputs[control_name] = failure
+        continue
     all_outputs[control_name] = result
     all_guards[control_name] = guards
 
-if fatal_output is None:
-    for control_name in ("MAIN", "X6"):
+for control_name in ("MAIN", "X6"):
+    if control_name in all_outputs:
         assumption_object = all_outputs[control_name]["ASSUMPTIONS"]
         with sp.assuming(assumption_object):
             all_outputs[control_name].update(direction_block(all_outputs[control_name]["_M_A"]))
 
+if "MAIN" in all_outputs:
     zero_wavevector_substitution = {component: 0 for component in k_input}
     zero_matrix = all_outputs["MAIN"]["_M_A"].subs(zero_wavevector_substitution).applyfunc(sp.factor)
     zero_wavevector = derived_wavevector.subs(zero_wavevector_substitution)
     zero_test_block = evaluated_root_test_block(zero_matrix, zero_wavevector)
     all_outputs["MAIN"].update({f"K_ZERO_{key}": value for key, value in zero_test_block.items()})
 
+if "X6" in all_outputs:
     anisotropic_assumption = all_outputs["X6"]["ASSUMPTIONS"]
     with sp.assuming(anisotropic_assumption):
         isotropic_parameter_matrix = all_outputs["X6"]["_M_A"].subs(rho_z, rho_br).applyfunc(sp.factor)
@@ -593,15 +619,13 @@ def emit(tag, value):
     print(f"{full_tag}: {rendered}")
 
 
-if fatal_output is not None:
-    for suffix, value in fatal_output.items():
-        emit(f"{fatal_control}_{suffix}", value)
-    raise SystemExit(1)
-
-
 for control_name in actions:
-    for suffix, value in all_outputs[control_name].items():
-        if not suffix.startswith("_"):
+    if control_name in all_outputs:
+        for suffix, value in all_outputs[control_name].items():
+            if not suffix.startswith("_"):
+                emit(f"{control_name}_{suffix}", value)
+    if control_name in fatal_outputs:
+        for suffix, value in fatal_outputs[control_name].items():
             emit(f"{control_name}_{suffix}", value)
 
 
@@ -611,3 +635,6 @@ for control_name, guards in all_guards.items():
     assert guards["root_degree"][0] == guards["root_degree"][1]
     assert guards["root_sets"][0] == guards["root_sets"][1]
     assert guards["dimension_solution"]
+
+if fatal_outputs:
+    raise SystemExit(1)

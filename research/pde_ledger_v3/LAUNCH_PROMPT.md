@@ -51,6 +51,21 @@ claims are stale; the session record says which.
    ⭐ **Cheapest fix is ORDERING, and it costs nothing: write the blind `.wl` FIRST, before the SymPy
    audit exists.** ⇒ There is nothing to anchor to. ⛔ Do not rely on a *"do not read the `.py`"*
    instruction — that does not survive a grep; the file must not exist yet (or must be out of the tree).
+3c. ⛔⛔ **A SCRIPT PRINTS COMPUTED OBJECTS; IT MAY NOT STATE CONCLUSIONS** (user decision, 2026-08-04).
+   Three clauses, on every script directive: **(1)** an `emit` payload is a **CAS object**, ⛔ never prose
+   describing a result; **(2)** **print the residual, do not only assert it** — `assert residual == 0` *is*
+   the builder writing down the expected output, and it converts an informative value into a crash;
+   **(3)** interpretation belongs to the **step record**.
+   ⚠⚠ **Measured across three independently-built steps: only ~10–20% of emitted tags depended on any
+   computation.** ⛔ Cross-engine agreement on a typed tag is **vacuous**, and **eight fidelity review legs
+   missed it.** ⇒ ⛔ **ALL NEW LEDGER PHYSICS IS STOPPED** until the rebuild closes:
+   `research/pde_ledger_v3/REBUILD_HANDOFF.md` is the **read-first** document.
+   ⭐ **Corollary that REPLACES most of rule 3b's apparatus:** ⛔ **do not blind the INPUTS** — supply every
+   equation, because under-specification has cost this ledger far more than contamination (`∇·u` fell out
+   **four times** as prose). ⭐ Withhold exactly one thing: **an acceptance criterion referencing an expected
+   value.** The builder's job **ends at compute-and-print**; the diff happens on the orchestrator's side,
+   where a mismatch is a **finding**, ⛔ not a build failure.
+
 4. ⭐ **Every step adds its quantities and relations to `research/pde_ledger_v3/reduction/` and the gate
    must pass before the step banks.** The registry IS the requirements list — ⛔ do not defer it.
    ⚠ **Both engines, but with a DIVISION OF LABOUR** (⛔ corrected 2026-08-01 — the old wording pointed

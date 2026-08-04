@@ -30,6 +30,22 @@ literal output; code-reading alone has repeatedly missed real defects. Probe for
 the predicate or definition that produced it (`c ≔ √(x)` then asserting `c² − x = 0`); a conclusion
 emitted as an unconditional literal; and a check whose expected value lives inside the artifact it checks.
 
+⛔⛔ **FOR A SCRIPT, A FORM ABLATION IS MANDATORY, ⛔ NOT OPTIONAL — AND IT IS THE ONLY THING THAT HAS EVER
+CAUGHT THE WORST DEFECT.** Change the **structure** of a load-bearing object — flip a sign *and* an
+off-diagonal, collapse two independent symbols into one — then re-run and report the **literal** diff.
+⭐ A **COEFFICIENT** rescale tests arithmetic; only a **FORM** change tests physics, because scaling never
+leaves the family.
+⚠⚠ **Measured 2026-08-04:** a script `emit`ted a physics conclusion as a **typed sentence** with no
+computation behind it; the ablation produced **byte-identical output**. Across three steps only ~10–20% of
+tags depended on any computation. ⛔ **Eight fidelity legs missed it**, because *"does it say the right
+thing"* and *"does it depend on anything"* are different questions — and a prose tag is **perfectly
+faithful** to a step record that quotes it.
+⇒ ⭐ **Ask of every claim: WHICH LINE COMPUTED THIS?** and give the line number or report it as uncomputed.
+⇒ ⭐ Cross-check with `reduction/derived_or_declared.py`; ⚠ its limits are in
+`research/pde_ledger_v3/REBUILD_HANDOFF.md` — ⛔ it is triage, not a verdict.
+⚠ **An `assert` before the emit hides this** — a perturbation strong enough to flip a check kills the
+process, so the leg sees only PASS-or-crash. ⭐ Report any `assert` that precedes the value it guards.
+
 **If the artifact is a DOCUMENT** (a `.tex` card, a step record, prose): read the **source of truth
 first**, form your own view of what it establishes and what it does not, and **only then** read the
 artifact. ⛔ Do not read them in the other order — reading the artifact first anchors you to its framing,

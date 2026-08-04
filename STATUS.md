@@ -2,7 +2,13 @@
 
 ## ⭐⭐ YOU ARE HERE — v3 ledger is open (2026-07-31)
 
-**Front door: `research/pde_ledger_v3/NEXT_SESSION.md`.** Read that, not this file, to resume.
+⛔⛔ **FRONT DOOR CHANGED 2026-08-04 — `research/pde_ledger_v3/REBUILD_HANDOFF.md`.** Read that first.
+**ALL NEW LEDGER PHYSICS IS STOPPED**, S11b-C included, until the script rebuild closes. ⚠ The engines were
+measured to emit physics conclusions as **typed sentences with no computation behind them** — only ~10–20%
+of tags depend on any computation, across three independently-built steps, and **eight review legs missed
+it.** ⛔ Do not build on a v3 script result without checking it there first.
+
+Then `research/pde_ledger_v3/NEXT_SESSION.md` for everything else.
 
 - ✅ **Step ① DONE** (`407eed94`) — the `a`-pin is retired from everything that computes. It was never a
   wrong *number* (`ħ/(m c_s0)` **is** a healing length in a standard convention); it was a **category

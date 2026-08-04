@@ -51,6 +51,26 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
 6. Return only after both independent review legs have completed. Keep their findings separately
    attributed so the caller can filter them before acting.
 
+## ⭐⭐ SUPPLY WHAT IS ALREADY VERIFIED — blind ONLY the genuinely open
+
+⭐⭐ **Supply every already-verified object to the builders.** Blindness is kept **ONLY for genuinely open
+questions**. Re-deriving known-good results with an LLM adds error risk and proves nothing.
+⇒ `[[feedback-supply-verified-blind-only-open]]`.
+
+⚠ **State IN the directive when an object is supplied** and therefore **unfalsifiable within the build**, so
+a passing build does not read as if it verified it.
+
+⭐ **Blindness controls, in order of value:**
+1. **MOVE** answer-bearing files out of the tree.
+2. **AUDIT the build log** for barred-path accesses afterward — post-hoc and definitive, and it sits
+   **outside the thing it polices**.
+3. A **TRIPWIRE** — a stale wrong value where a cribbing engine would find it.
+
+⛔ **Stop there.** Enumerating git internals, linked worktrees and backup archives is anti-adversary, and the
+engines are not adversaries.
+
+⛔ **Verify a builder's compliance declaration against the DIFF, never against its report.**
+
 ## Invariants
 
 - Use absolute paths for every file a background job reads or writes.

@@ -101,6 +101,20 @@ algebra rational and makes the instantaneous case a **reportable limit** instead
 and undoing it is the entire reason its successor exists. ⇒ Recording a freeze is the minimum, ⛔ not the
 fix. ⇒ `[[feedback-static-or-instantaneous-check]]`.
 
+## ⭐⭐ SPEC AUTHORING — equations, small surface, and changing the author
+
+⭐⭐ **Write every binding kinematic relation as an EQUATION, ⛔ never as prose.** ⚠ **Measured:** the same
+coupling term fell out of a specification **four times**, every time it was **described in a sentence**.
+
+⭐ **Keep the spec surface small.** A directive spanning many tasks and several distinct physics subsystems
+will yield a finding **every round, indefinitely**. ⇒ **Split until each piece can close.**
+
+⭐ **Prefer a re-runnable script as the derivation record** over prose an engine must interpret into algebra.
+
+⭐⭐ **If successive revisions keep breeding defects in the material just changed, CHANGE THE AUTHOR** rather
+than rewriting harder; composition still requires that **whatever writes does not review**.
+⇒ `[[feedback-spec-authoring-discipline]]`.
+
 ## Finding Disposition
 
 Before every repair or rebuild, apply the physics filter. A finding is not a mandate. Act only when it

@@ -186,9 +186,12 @@ credentials and paths; ⛔ it may not carry method.
 ⛔ Copy the artifact to /tmp and ablate the COPY. ⛔ Never modify the working tree.
 ⭐ Save every ablation script AND its literal stdout to named absolute paths, and report those paths.
 ```
-⚠ **A runaway kernel does not announce itself** — it looks identical to a busy one. ⭐ The tell is
-`etime ≈ cputime` on a single kernel process: continuous computation with no idle, which means one
-computation that is not converging, ⛔ not a long batch.
+⚠ **An over-budget kernel does not announce itself** — it looks identical to a busy one. ⭐ `etime ≈ cputime`
+on a single kernel process tells you it is **one continuous computation with no idle**, ⛔ not a batch of
+short ones. ⚠ **It does NOT tell you whether it will converge** — the measured case above ran **~23 minutes
+and then finished normally.** ⇒ ⭐ **Budget, ⛔ not convergence, is the thing to enforce**: a run past
+`timeout 600` is a failed ablation whether or not it would eventually return, because ⛔ you cannot tell
+which from outside, and waiting to find out is how a seat gets held for half an hour.
 
 ## Launch in Parallel (non-Mathematica artifacts)
 

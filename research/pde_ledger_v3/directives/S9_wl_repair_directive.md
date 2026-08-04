@@ -145,6 +145,26 @@ computed matrix rank against a structural dimension).
 
 ---
 
+## R7 — ⭐⭐ EVERY CONTROL MUST EMIT THE SAME TAG SET AS THE MAIN DERIVATION
+
+An automated consumer pairs each main tag with its counterpart under each control prefix and asks
+whether the value moved. **35 of the 72 main tags currently have no counterpart under any control**, so
+nothing can ask that question of them — including the **whole dimension block**, every speed and
+homogeneity tag, and the whole upstream chain (Euler–Lagrange residual, dynamical matrix, generators,
+the solution set).
+
+⭐ **Make the control package emit exactly the tag set the main derivation emits**, under the control's
+prefix — the upstream chain, the polarisation diagnostics, the dispersion and homogeneity tags, **and
+the dimension block**. Every main tag must have a counterpart under every control.
+
+⚠ This is what makes R1 checkable from outside: once each control carries its own dimension block, a
+consumer can see whether the dimensions moved when the action's derivative structure changed. Without
+it, R1 is only inspectable by reading the source.
+
+⛔ Do not fabricate a tag where a control genuinely cannot produce one. If a quantity is undefined for a
+control (a speed where no root passes E1, say), emit the **computed empty object** — an empty list —
+⛔ never a word, and ⛔ never a placeholder value.
+
 ## Report back — under 30 lines
 
 1. Exit status and runtime of your own run; total tag count and confirmation all tags are unique.

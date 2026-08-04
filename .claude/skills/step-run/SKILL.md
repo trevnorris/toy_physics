@@ -9,6 +9,39 @@ user_invocable: true
 
 Invoke as `/step-run <step-id>`. Follow this sequence exactly; do not substitute a check for a review.
 
+## ⭐⭐⭐ THE PROVEN ORDER — measured end-to-end on S9, 2026-08-04
+
+⚠ **S9 took 4 repair rounds on the `.wl` and 3 on the `.py`.** ⛔ Almost none of that was rework: each
+round surfaced a **new defect class** that the previous round's mechanisms structurally could not see.
+⭐ A later step inherits all of them at once and should converge in one or two rounds. ⚠ **If it does not,
+that is informative** — it means the step has a defect class S9 did not.
+
+| # | do this | the trap it exists for |
+|---|---|---|
+| 1 | **Author the build directive.** Supply every equation; withhold **only** an acceptance criterion referencing an expected value. | under-specification has cost more than contamination |
+| 2 | ⭐ **LEAK-GATE it.** `rg -F` every expected value, exponent, ratio, count, sign. | ⚠ **fired 4× on S9, 3× inside sentences FORBIDDING the answer**, one introduced *by the repair for another* |
+| 3 | ⭐⭐ **REVIEW THE DIRECTIVE — Codex + Grok — BEFORE any build.** | the ONE artifact both engines share; an error there makes dual-engine certify wrong physics |
+| 4 | **Fold, and ⛔ STOP a running build if the QUESTION is wrong.** | ⚠ S9: a build was killed mid-run over a false-negative test; the alternative was interpreting output from a bad setup |
+| 5 | **Build engine 1.** ⛔ Launch in its **own tool call**, nothing chained. Prove the prompt non-empty *before*, the log >500 bytes *after*. | ⚠ 2 hangs, ~25 min; a hung Codex looks busy and **never notifies** |
+| 6 | ⛔⛔ **COMMIT THE ARTIFACT** before anything repairs or ablates it. | an uncommitted baseline is what gets destroyed; a review needs a fixed target |
+| 7 | ⭐ **Launch review legs ON SIGHT**, before reading results. ⚠ Serialize if both ablate Mathematica (2 seats). | a self-check discharges the felt need for an independent one |
+| 8 | **Run the engine yourself and READ THE OUTPUT.** | the output is the result; ⛔ do not pre-register expected values |
+| 9 | **Build engine 2** from the *same question list*, ⛔ barred from engine 1 and the registry. | a transcription agrees vacuously |
+| 10 | **Run the harness over both.** ⛔ Verify it by **ablating the harness**. | a checker that mis-parses into agreement manufactures confidence |
+| 11 | **Fold findings; repair; re-verify each fix against your own computation.** | ⛔ never trust a builder's report |
+| 12 | **YOU write the step record.** Codex was not there for the walk. | — |
+| 13 | **Codex writes the TeX card**, with its own two legs. | ⚠ a card can assert the **absence of things that now exist** |
+
+⭐⭐ **THE RESULT THAT JUSTIFIES THE WHOLE APPARATUS, measured on S9 — ⛔ neither mechanism could catch
+both, and each was blind exactly where the other saw:**
+
+| defect | caught by | invisible to |
+|---|---|---|
+| a **wrong dimension** | ⭐ the **second engine** | two review legs **and** a full ablation suite — engine 1 computed it *consistently*, ablated *correctly*, and produced a number that **looked like a signal** |
+| a **wrong homogeneity test** | ⭐ reviewers **deriving from scratch** | ⛔ **cross-engine comparison** — the defect came from the **shared directive**, so both engines computed it the same wrong way and **agreed** |
+
+⇒ ⛔ **Never treat cross-engine agreement as sufficient**, and ⛔ never treat review as sufficient.
+
 ## Runbook
 
 1. **Walk the step with the user.** State what is being derived, what is available, what is missing, and

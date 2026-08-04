@@ -1,5 +1,71 @@
 # ▶▶ SCRIPT REBUILD — read this before anything else in v3
 
+---
+
+# ⭐⭐⭐ STATE, 2026-08-04 — **S9 IS DONE. S10 IS NEXT.**
+
+⭐ **The proven per-step order is `.claude/skills/step-run/SKILL.md` § THE PROVEN ORDER.** ⛔ Do not
+reconstruct it from this file; that table is the operative one and it is 13 numbered steps with the trap
+each exists for. ⭐ `build` and `review-legs` carry the rest.
+
+## What S9 produced
+
+| artifact | state |
+|---|---|
+| `mathematica/S9_light_requires_shear_mathematica_audit.wl` | **1559 tags, 0 typed conclusions**, 9 actions |
+| `scripts/S9_light_requires_shear_sympy_audit.py` (+ `.premises`) | **635 tags, 0 typed conclusions**, 9 actions |
+| `reduction/engine_output_checks.py` + `checks_S9.yaml` | 4-layer harness; **cross-engine `agree=12, disagree=0`**, dimensions **1219/1219 homogeneous** |
+| `steps/S9_light_requires_shear.md` | rewritten with a full verification section |
+| `paper/steps/S9_light_requires_shear.tex` | rebuilt from the record |
+
+⭐ **The physics did not change.** Every value the pre-rebuild engine computed is identical. ⛔ No result
+was revised, no sign flipped. **What changed is that each claim now survives something able to refute it.**
+
+## ⭐⭐ THE ONE PHYSICS RESULT THAT CHANGED WHAT S9 CLAIMS
+
+⛔⛔ **Transverse propagation does NOT require the curl-only form.** The gradient-elastic control — an
+ordinary elastic solid — carries **two transverse modes at the same `c² = μ_R/ρ_br`**; it merely *also*
+propagates the longitudinal. ⇒ ⭐ **curl-only uniquely buys the ABSENCE of a propagating longitudinal
+mode**, ⛔ not the presence of the transverse ones. ⚠ Prose reading *"light requires shear"* as established
+by this computation **overclaims** — the statement is conditional on the stiffness form.
+
+## ⛔⛔ CARRY THESE INTO S10 — each cost a repair round on S9
+
+1. ⛔⛔ **CHECK S10's MODE-COUNT METHOD FIRST, BEFORE ANYTHING ELSE.** `M·T = 0` is **not** a transverse
+   existence test — it demands `M` annihilate the *whole* transverse subspace and returns a **false
+   negative** when a mode's partner sits at a different frequency. ⭐ Use **corank of `M` stacked on `kᵀ`**.
+   ⚠ **S9's original engine AND its first rebuild both used the broken test**, and ⭐⭐ **S10's entire
+   result is a mode count.**
+2. ⛔ **Never test homogeneity by substituting a symbol** (`k² → q`). It silently no-ops when the root is
+   not a bare multiple of that sum, giving a false *positive* on a gapped root and a false **negative** on
+   a genuinely dispersive one. ⭐ Test by **scaling**: `ω²(λk) − λ²ω²(k)`.
+3. ⭐ **Dimension the WHOLE expression tree**, ⛔ never by reading coefficient exponents — that drops
+   explicit wavevector factors. And **count FIELD FACTORS**, ⛔ not `Derivative` atoms, or a bare
+   undifferentiated field loses its dimension silently.
+4. ⭐ **Emit the SIGN of `ω²` per root.** Without it, exponentially growing modes carry the same
+   polarisation signature as propagating waves.
+5. ⛔ **Emission must never be conditional on a payload's VALUE.** ⚠ A dedup applied across control
+   packages deleted correctly-invariant tags; *absent* is indistinguishable from *never computed*.
+6. ⭐ **Give the dynamical matrix two independent routes**, and prove independence by **one-sided
+   corruption** — break one, the other must not move.
+7. ⚠ **`MatrixRank` returns the GENERIC rank.** Emit the exceptional loci explicitly and check the
+   enumeration is complete.
+
+## ▶ S10 setup notes
+
+- ⭐ **S10 already has both engines** — ⛔ no exemption question arises. Rebuild both.
+- **Author `reduction/checks_S10.yaml`** — ⛔ tag **names** only, never values.
+- ⚠ **Move `_SYMBOL_ALIASES` out of `engine_output_checks.py` into the per-step config.** Symbol
+  spellings are step-specific; a hardcoded module dict needs a code edit per step. It maps names to
+  names, so moving it is leak-free. ⚠ It already caused S9's only **false-positive `DISAGREE`**
+  (`lambdaScale` vs `lambda_scale`) ⇒ ⭐ **a `DISAGREE` needs adjudication too**, exactly like `INVARIANT`.
+- ⚠ Known-open on S9, ⛔ not blockers: the assumption set is **computationally inert** (physics bounded
+  instead by generic rank + a verified-complete locus enumeration); one tag is `UNPARSED` (a `Piecewise`
+  sign); the `.py` was written **after** the `.wl`, so its agreement is weaker than blind-first ordering.
+  ⭐ At S10 both engines predate any comparison, so that caveat disappears.
+
+---
+
 **Opened 2026-08-04 by user decision.** ⛔ **All new ledger physics is STOPPED**, including S11b-C, until
 this closes. ⭐ This file is the plan; ⛔ it supersedes `steps/S11b_HANDOFF.md` as the read-first document.
 

@@ -412,7 +412,8 @@ deriveDimensionBlock[lagrangian_, candidateSpeedsSquared_] := Module[
    symbolDimensionMap, dimensionWalks, impliedDimensions,
    dimensionUnknownSymbols, dimensionSumMismatches,
    dimensionUnsupportedExpressions, velocitySquaredDimension,
-   dimensionDifferences},
+   dimensionDifferences, wavevectorNormDimensionData,
+   wavevectorNormDimension},
   terms = lagrangianTerms[lagrangian];
   derivativeOrders = termFieldOrders /@ terms;
   coefficients = termCoefficient /@ terms;
@@ -482,10 +483,12 @@ deriveDimensionBlock[lagrangian_, candidateSpeedsSquared_] := Module[
       presentCoefficients
     ],
     <|kx -> -lengthDimension, ky -> -lengthDimension,
-      kz -> -lengthDimension, q -> -2 lengthDimension,
-      omega -> -timeDimension, lambdaRho -> ConstantArray[0, 3],
+      kz -> -lengthDimension, omega -> -timeDimension,
+      lambdaRho -> ConstantArray[0, 3],
       lambdaMu -> ConstantArray[0, 3], D -> ConstantArray[0, 3]|>
   ];
+  wavevectorNormDimensionData = dimensionWalk[waveScalar, symbolDimensionMap];
+  wavevectorNormDimension = wavevectorNormDimensionData["Dimension"];
   dimensionWalks = dimensionWalk[#, symbolDimensionMap] & /@
     candidateSpeedsSquared;
   impliedDimensions = Lookup[dimensionWalks, "Dimension"];
@@ -510,6 +513,7 @@ deriveDimensionBlock[lagrangian_, candidateSpeedsSquared_] := Module[
     "MuRhoDifference" -> modulusDensityDifference,
     "ParameterPowers" -> parameterPowers,
     "SymbolDimensionMap" -> symbolDimensionMap,
+    "WavevectorNormDimension" -> wavevectorNormDimension,
     "ImpliedDimensions" -> impliedDimensions,
     "DimensionUnknownSymbols" -> dimensionUnknownSymbols,
     "DimensionSumMismatches" -> dimensionSumMismatches,
@@ -519,34 +523,11 @@ deriveDimensionBlock[lagrangian_, candidateSpeedsSquared_] := Module[
   |>
 ];
 
-toWaveScalar[expression_] := casSimplify[Factor[expression] /. waveScalar -> q,
-  assumptionSet /. waveScalar -> q];
-
 deriveSpeedBlock[data_] := Module[
-  {rootsInQ, wavevectorOccurrences, candidateSpeedsSquared,
-   homogeneityDefects, speedVariations, numeratorDegrees, denominatorDegrees},
-  rootsInQ = toWaveScalar /@ data["TransverseRoots"];
-  wavevectorOccurrences = Function[rootInQ,
-    Thread[waveCovector ->
-      (Function[component, !FreeQ[rootInQ, component]] /@ waveCovector)]
-  ] /@ rootsInQ;
-  candidateSpeedsSquared = casSimplify[#/q,
-      assumptionSet /. waveScalar -> q] & /@ rootsInQ;
-  homogeneityDefects = casSimplify[q D[#, q] - #,
-      assumptionSet /. waveScalar -> q] & /@ rootsInQ;
-  speedVariations = casSimplify[D[#, q],
-      assumptionSet /. waveScalar -> q] & /@ candidateSpeedsSquared;
-  numeratorDegrees = If[TrueQ[# == 0], emptyComputedObject[rootsInQ],
-      Exponent[Numerator[Together[#]], q]] & /@ rootsInQ;
-  denominatorDegrees = Exponent[Denominator[Together[#]], q] & /@ rootsInQ;
-  <|
-    "RootsInQ" -> rootsInQ, "WavevectorOccurrences" -> wavevectorOccurrences,
-    "CandidateSpeedsSquared" -> candidateSpeedsSquared,
-    "HomogeneityDefects" -> homogeneityDefects,
-    "SpeedVariations" -> speedVariations,
-    "NumeratorDegrees" -> numeratorDegrees,
-    "DenominatorDegrees" -> denominatorDegrees
-  |>
+  {candidateSpeedsSquared},
+  candidateSpeedsSquared = casSimplify[#/waveScalar, assumptionSet] & /@
+    data["TransverseRoots"];
+  <|"CandidateSpeedsSquared" -> candidateSpeedsSquared|>
 ];
 
 deriveScalingBlock[data_] := Module[
@@ -650,13 +631,14 @@ valueAtSlot[values_, index_] := Module[{slot},
 emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
   {prefix, speedData, scalingData, dimensionData, zeroMatrix, index,
    zeroWavevectorRules, zeroWavevectorAssumptions, equalDensityRules,
-   equalDensityAssumptions},
+   equalDensityAssumptions, guardOutcomes},
   prefix = If[identifier === "", "WL_S9_", "WL_S9_" <> identifier <> "_"];
   speedData = deriveSpeedBlock[data];
   scalingData = deriveScalingBlock[data];
   dimensionData = deriveDimensionBlock[
     data["Lagrangian"], speedData["CandidateSpeedsSquared"]];
   zeroMatrix = ConstantArray[0, Dimensions[data["MatrixResidual"]]];
+  guardOutcomes = {};
 
   emit[prefix <> "ASSUMPTIONS", assumptionSet];
   emit[prefix <> "LAGRANGIAN", data["Lagrangian"]];
@@ -670,13 +652,15 @@ emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
   emit[prefix <> "DYNAMICAL_MATRIX_A", data["MatrixA"]];
   emit[prefix <> "DYNAMICAL_MATRIX_B", data["MatrixB"]];
   emit[prefix <> "DYNAMICAL_MATRIX_RESIDUAL", data["MatrixResidual"]];
-  If[!SameQ[data["MatrixResidual"], zeroMatrix], Exit[92]];
+  AppendTo[guardOutcomes,
+    If[!SameQ[data["MatrixResidual"], zeroMatrix], 92, 0]];
 
   emit[prefix <> "DETERMINANT", data["Determinant"]];
   emit[prefix <> "DETERMINANT_DISCARDED_ODD_PART", data["DeterminantOddPart"]];
   emit[prefix <> "DYNAMICAL_MATRIX_DISCARDED_ODD_PART", data["MatrixOddPart"]];
-  If[!SameQ[data["DeterminantOddPart"], 0] ||
-      !SameQ[data["MatrixOddPart"], zeroMatrix], Exit[93]];
+  AppendTo[guardOutcomes,
+    If[!SameQ[data["DeterminantOddPart"], 0] ||
+      !SameQ[data["MatrixOddPart"], zeroMatrix], 93, 0]];
 
   emit[prefix <> "OMEGA_SQUARED_SOLUTIONS", data["RootRules"]];
   emit[prefix <> "TRANSVERSE_GENERATOR", transverseGenerator];
@@ -717,20 +701,8 @@ emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
   ];
 
   Do[
-    emit[prefix <> "E1_ROOT_Q" <> ToString[index],
-      valueAtSlot[speedData["RootsInQ"], index]];
-    emit[prefix <> "E1_ROOT_Q_WAVEVECTOR_OCCURRENCE" <> ToString[index],
-      valueAtSlot[speedData["WavevectorOccurrences"], index]];
     emit[prefix <> "CANDIDATE_SPEED_SQUARED" <> ToString[index],
-      valueAtSlot[speedData["CandidateSpeedsSquared"], index]];
-    emit[prefix <> "HOMOGENEITY_DEFECT" <> ToString[index],
-      valueAtSlot[speedData["HomogeneityDefects"], index]];
-    emit[prefix <> "SPEED_VARIATION" <> ToString[index],
-      valueAtSlot[speedData["SpeedVariations"], index]];
-    emit[prefix <> "NUMERATOR_Q_DEGREE" <> ToString[index],
-      valueAtSlot[speedData["NumeratorDegrees"], index]];
-    emit[prefix <> "DENOMINATOR_Q_DEGREE" <> ToString[index],
-      valueAtSlot[speedData["DenominatorDegrees"], index]],
+      valueAtSlot[speedData["CandidateSpeedsSquared"], index]],
     {index, speedSlotCount}
   ];
 
@@ -745,7 +717,8 @@ emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
   emit[prefix <> "DIMENSION_EQUATION_RESIDUAL", dimensionData["EquationResidual"]];
   emit[prefix <> "DIMENSION_EQUATIONS", dimensionData["Equations"]];
   emit[prefix <> "DIMENSION_SOLUTION", dimensionData["SolutionSet"]];
-  If[dimensionData["SolutionSet"] === {}, Exit[94]];
+  AppendTo[guardOutcomes,
+    If[dimensionData["SolutionSet"] === {}, 94, 0]];
   emit[prefix <> "RHO_DIMENSION", dimensionData["RhoDimension"]];
   emit[prefix <> "RHO_Z_DIMENSION", dimensionData["RhoZDimension"]];
   emit[prefix <> "MU_DIMENSION", dimensionData["MuDimension"]];
@@ -758,6 +731,8 @@ emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
     dimensionData["ParameterPowers"]];
   emit[prefix <> "SPEED_SQUARED_SYMBOL_DIMENSION_MAP",
     dimensionData["SymbolDimensionMap"]];
+  emit[prefix <> "WAVEVECTOR_NORM_DIMENSION",
+    dimensionData["WavevectorNormDimension"]];
   emit[prefix <> "SPEED_SQUARED_IMPLIED_DIMENSION",
     dimensionData["ImpliedDimensions"]];
   emit[prefix <> "VELOCITY_SQUARED_DIMENSION",
@@ -770,15 +745,15 @@ emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
     dimensionData["DimensionSumMismatches"]];
   emit[prefix <> "SPEED_SQUARED_DIMENSION_UNSUPPORTED_EXPRESSIONS",
     dimensionData["DimensionUnsupportedExpressions"]];
-  If[!AllTrue[dimensionData["DimensionUnknownSymbols"], # === {} &],
-    Exit[95]
-  ];
-  If[!AllTrue[dimensionData["DimensionSumMismatches"], # === {} &],
-    Exit[96]
-  ];
-  If[!AllTrue[dimensionData["DimensionUnsupportedExpressions"], # === {} &],
-    Exit[97]
-  ];
+  AppendTo[guardOutcomes,
+    If[!AllTrue[dimensionData["DimensionUnknownSymbols"], # === {} &],
+      95, 0]];
+  AppendTo[guardOutcomes,
+    If[!AllTrue[dimensionData["DimensionSumMismatches"], # === {} &],
+      96, 0]];
+  AppendTo[guardOutcomes,
+    If[!AllTrue[dimensionData["DimensionUnsupportedExpressions"], # === {} &],
+      97, 0]];
   emit[prefix <> "RHO_DIMENSION_D3", dimensionData["RhoDimension"] /. D -> 3];
   emit[prefix <> "RHO_Z_DIMENSION_D3", dimensionData["RhoZDimension"] /. D -> 3];
   emit[prefix <> "MU_DIMENSION_D3", dimensionData["MuDimension"] /. D -> 3];
@@ -786,6 +761,7 @@ emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
   emit[prefix <> "MU_G_DIMENSION_D3", dimensionData["MuGDimension"] /. D -> 3];
   emit[prefix <> "MU_RHO_DIMENSION_DIFFERENCE_D3",
     dimensionData["MuRhoDifference"] /. D -> 3];
+  guardOutcomes
 ];
 
 actionRecords = {
@@ -797,6 +773,10 @@ derivedRecords = {#[[1]], deriveFromAction[#[[2]]]} & /@ actionRecords;
 rootSlotCount = Max[Length[#[[2]]["Diagnostics"]] & /@ derivedRecords];
 speedSlotCount = Max[Length[#[[2]]["TransverseRoots"]] & /@ derivedRecords];
 
-emitPackage[#[[1]], #[[2]], rootSlotCount, speedSlotCount] & /@ derivedRecords;
+packageGuardOutcomes =
+  emitPackage[#[[1]], #[[2]], rootSlotCount, speedSlotCount] & /@ derivedRecords;
+fatalExitCodes = Select[Flatten[packageGuardOutcomes],
+  IntegerQ[#] && # != 0 &];
+If[fatalExitCodes =!= {}, Exit[First[fatalExitCodes]]];
 
 Exit[0];

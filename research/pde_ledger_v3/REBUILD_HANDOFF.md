@@ -25,8 +25,9 @@ was revised, no sign flipped. **What changed is that each claim now survives som
 
 ⛔⛔ **Transverse propagation does NOT require the curl-only form.** The gradient-elastic control — an
 ordinary elastic solid — carries **two transverse modes at the same `c² = μ_R/ρ_br`**; it merely *also*
-propagates the longitudinal. ⇒ ⭐ **curl-only uniquely buys the ABSENCE of a propagating longitudinal
-mode**, ⛔ not the presence of the transverse ones. ⚠ Prose reading *"light requires shear"* as established
+propagates the longitudinal. ⇒ ⭐ **curl-only buys the ABSENCE of a propagating longitudinal mode**,
+⛔ not the presence of the transverse ones. ⚠ **Say "buys", ⛔ not "uniquely buys"** — five stiffness
+forms were tested, which ⛔ does not establish uniqueness across all operators. ⚠ Prose reading *"light requires shear"* as established
 by this computation **overclaims** — the statement is conditional on the stiffness form.
 
 ## ⛔⛔ CARRY THESE INTO S10 — each cost a repair round on S9

@@ -32,15 +32,17 @@ that is informative** — it means the step has a defect class S9 did not.
 | 12 | **YOU write the step record.** Codex was not there for the walk. | — |
 | 13 | **Codex writes the TeX card**, with its own two legs. | ⚠ a card can assert the **absence of things that now exist** |
 
-⭐⭐ **THE RESULT THAT JUSTIFIES THE WHOLE APPARATUS, measured on S9 — ⛔ neither mechanism could catch
-both, and each was blind exactly where the other saw:**
+⭐⭐ **THE RESULT THAT JUSTIFIES THE WHOLE APPARATUS, measured on S9 — ⚠ and note the two rows are
+DIFFERENT KINDS of claim:**
 
-| defect | caught by | invisible to |
-|---|---|---|
-| a **wrong dimension** | ⭐ the **second engine** | two review legs **and** a full ablation suite — engine 1 computed it *consistently*, ablated *correctly*, and produced a number that **looked like a signal** |
-| a **wrong homogeneity test** | ⭐ reviewers **deriving from scratch** | ⛔ **cross-engine comparison** — the defect came from the **shared directive**, so both engines computed it the same wrong way and **agreed** |
+| defect | caught by | missed by | kind |
+|---|---|---|---|
+| a **wrong dimension** | ⭐ the **second engine** | two review legs **and** a full ablation suite — engine 1 computed it *consistently*, ablated *correctly*, and produced a number that **looked like a signal** | ⚠ **EMPIRICAL.** A leg that happened to dimension that expression by hand *would* have caught it. ⛔ Not a structural limit — an observed miss |
+| a **wrong homogeneity test** | ⭐ reviewers **deriving from scratch** | ⛔ **cross-engine comparison** | ⭐⭐ **STRUCTURAL.** The defect came from the **shared directive**, so both engines computed it the same wrong way and **agreed**. ⛔ Comparison *cannot* see this class |
 
-⇒ ⛔ **Never treat cross-engine agreement as sufficient**, and ⛔ never treat review as sufficient.
+⇒ ⛔ **Never treat cross-engine agreement as sufficient** — that one is provable.
+⇒ ⚠ **Do not treat review as sufficient either** — that one is a measured miss, not a theorem, ⛔ but a
+mechanism that missed a live defect twice is not something to lean on alone.
 
 ## Runbook
 

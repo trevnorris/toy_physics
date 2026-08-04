@@ -180,15 +180,16 @@ enough that it could genuinely DISAGREE."* ⚠ **The condition had expired** —
 and the conclusion was inherited anyway. ⇒ ⭐ **A conditional rule needs its CONDITION re-checked, ⛔ not
 its conclusion quoted.** ⇒ [[feedback-attributions-are-my-paraphrase]].
 
-### ⭐⭐⭐ What each verification mechanism caught — ⛔ and NEITHER could have caught both
+### ⭐⭐⭐ What each verification mechanism caught — ⚠ and the two rows are DIFFERENT KINDS of claim
 
-| defect | found by | invisible to |
-|---|---|---|
-| ⛔ a **wrong dimension** — the implied speed dimension read only coefficient exponents, dropping an explicit wavevector factor | ⭐ **the second engine** | two review legs and a full ablation suite: the `.wl` computed it *consistently*, ablated *correctly*, and produced a number that **looked like a meaningful signal** |
-| ⛔ a **wrong homogeneity test** — a `q`-substitution that silently no-ops, giving a false *positive* on a gapped root and a false **negative** on a genuinely dispersive one | ⭐ **reviewers deriving from scratch** (both legs, independently) | **cross-engine comparison**: the defect came from the **shared directive**, so both engines computed it the same wrong way and **agreed** |
+| defect | found by | missed by | kind of limit |
+|---|---|---|---|
+| ⛔ a **wrong dimension** — the implied speed dimension read only coefficient exponents, dropping an explicit wavevector factor | ⭐ **the second engine** | two review legs and a full ablation suite: the `.wl` computed it *consistently*, ablated *correctly*, and produced a number that **looked like a meaningful signal** | ⚠ **EMPIRICAL.** A leg that happened to dimension that expression by hand would have caught it. ⛔ Not a structural blindness — an **observed miss** |
+| ⛔ a **wrong homogeneity test** — a `q`-substitution that silently no-ops, giving a false *positive* on a gapped root and a false **negative** on a genuinely dispersive one | ⭐ **reviewers deriving from scratch** (both legs, independently) | **cross-engine comparison** | ⭐⭐ **STRUCTURAL.** The defect came from the **shared directive**, so both engines computed it the same wrong way and **agreed**. ⛔ Comparison *cannot* see this class |
 
-⇒ ⭐⭐ **This is the argument for running both mechanisms, demonstrated rather than asserted.** ⛔ Neither
-alone was sufficient, and each was blind exactly where the other saw.
+⇒ ⭐⭐ **This is the argument for running both mechanisms, demonstrated rather than asserted** — ⚠ but state
+it precisely: **cross-engine blindness to a shared-directive defect is provable; review's miss is
+measured, ⛔ not a theorem.** ⭐ A mechanism that missed a live defect is still not one to lean on alone.
 
 ### The checks that are now able-to-fail
 
@@ -214,7 +215,8 @@ alone was sufficient, and each was blind exactly where the other saw.
 `−½ μ_R Σ(∂_i u_j)²` — an ordinary elastic solid — carries **two transverse modes at the same
 `c² = μ_R/ρ_br`**. It simply *also* propagates the longitudinal.
 
-⇒ ⭐ **What curl-only uniquely buys is the ABSENCE of a propagating longitudinal mode** — Maxwell's third
+⇒ ⭐ **What curl-only buys, and the gradient-elastic form does not, is the ABSENCE of a propagating
+longitudinal mode** — Maxwell's third
 demand — ⛔ not the presence of the transverse ones. The record's `what's new` table already framed it
 that way; ⭐ it is now **computed** rather than asserted, and the divergence-only control shows the
 converse: the roles **swap**, the transverse pair drops to `ω² = 0` and the longitudinal propagates.

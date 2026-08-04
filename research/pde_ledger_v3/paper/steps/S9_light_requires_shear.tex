@@ -94,8 +94,9 @@ action give
 where the triples record powers of \((L,T,M)\). Thus the difference is
 \textbf{independent of \(D\)}, and \(R4\) gives \(c_\gamma=[1,-1,0]\) in every
 dimension. At \(D=3\), \([\rho_{br}]=[-3,0,1]\) and
-\([\mu_R]=[-1,-2,1]\), agreeing with the parameter register
-(\StageFile{notes/parameter\_register.md}, lines 137--138). This explains and
+\([\mu_R]=[-1,-2,1]\), agreeing with v2's parameter register
+(\StageFile{research/pde\_ledger\_v2/notes/parameter\_register.md}, lines
+137--138; \(R4\) at line 271). This explains and
 retires the old audit's supposed insensitivity to the assumed brane dimension:
 it is an identity, not a blind spot, because the speed's dimension cannot see
 \(D\).
@@ -115,6 +116,13 @@ curl-only form & \textbf{postulated} & forced by Maxwell's no-longitudinal deman
 \end{center}
 
 \noindent
+For the main curl-only action, the computation gives
+\(\det M=\omega^2\rho_{br}(\omega^2\rho_{br}-\mu_Rk^2)^2\), roots
+\(\{0,\mu_Rk^2/\rho_{br}\}\), two transverse and no longitudinal modes
+(\(E2=2\)) at \(\omega^2=\mu_Rk^2/\rho_{br}\), no transverse and one
+longitudinal mode (\(E2=0\)) at \(\omega^2=0\), and
+\(c^2=\mu_R/\rho_{br}\) independent of wavevector with scaling residual zero;
+making the inertia anisotropic drops \(E2\) to one.
 The far field consumes only the ratio \(c_\gamma\). That must not be read as
 ``the two are not separately owed'': a \emph{simulation} needs \(\mu_R\) and
 \(\rho_{br}\) absolutely. The curl-only row remains a structural postulate;
@@ -169,7 +177,12 @@ and SymPy
 together with two reviewers deriving from scratch. Neither engine emits a
 verdict or a typed conclusion: each emits evidence for automated comparison.
 The consumer reports \textbf{12 cross-engine quantities agreeing and 0
-disagreeing}, with all \textbf{1219/1219 dimensionful expressions homogeneous}.
+disagreeing}, with all \textbf{1219/1219 dimensionful expressions homogeneous};
+only \textbf{150 of 170} compared tags respond to some control, so \textbf{20
+respond to none}, and 16 legitimate tag-set parity gaps across 16 packages are
+reported; the run terminates non-zero (exit 2) on the unparsed
+\texttt{Piecewise} tag; and it is triage only and does not establish physical
+correctness, completeness, or derivation coverage.
 
 \emph{The two verification mechanisms were complementary, and neither could
 have caught what the other did.} The second engine found a \textbf{wrong
@@ -189,8 +202,10 @@ dynamical matrix \(M\) stacked with \(k^{\mathsf T}\), not the test
 Non-dispersiveness is tested by scaling \(k\mapsto\lambda k\) and checking
 \(\omega^2(\lambda k)-\lambda^2\omega^2(k)\). The dynamical matrix is obtained
 by two independent routes --- position-space Euler--Lagrange variation and the
-quadratic form of the ansatz-substituted Lagrangian --- and one-sided corruption
-proved their independence. Nine actions are exercised: the main action, two
+quadratic form of the ansatz-substituted Lagrangian. An independent review
+performed one-sided-corruption ablations on modified copies, not through the
+committed engine outputs, and found that the routes were independent. Nine
+actions are exercised: the main action, two
 coefficient controls, five form controls, and one sign control; the sign of
 each \(\omega^2\) root is emitted so the flipped-potential control can fail.
 

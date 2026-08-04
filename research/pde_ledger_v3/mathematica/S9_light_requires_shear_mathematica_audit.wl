@@ -35,6 +35,8 @@ x6Lagrangian = velocityVector.DiagonalMatrix[{rhoBr, rhoBr, rhoZ}].velocityVecto
   muR curlVector.curlVector/2;
 x7Lagrangian = rhoBr velocityVector.velocityVector/2 -
   muF laplacianVector.laplacianVector/2;
+x8Lagrangian = rhoBr velocityVector.velocityVector/2 -
+  muR curlVector.curlVector/2 - muG fieldVector.fieldVector/2;
 
 (* The only other hand construction involving wave symbols is the supplied ansatz. *)
 amplitudeVector = {a1, a2, a3};
@@ -61,16 +63,12 @@ transverseGenerator = Expand[
   waveScalar IdentityMatrix[Length[waveCovector]] - longitudinalGenerator];
 
 positiveAssumptionQuantities =
-  {rhoBr, muR, muF, rhoZ, lambdaRho, lambdaMu, waveScalar};
+  {rhoBr, muR, muF, muG, rhoZ, lambdaRho, lambdaMu, waveScalar};
 realWavevectorComponents = waveCovector;
 positiveAssumptions = Thread[positiveAssumptionQuantities > 0];
 realWavevectorAssumptions = Element[#, Reals] & /@ realWavevectorComponents;
 assumptionList = Join[positiveAssumptions, realWavevectorAssumptions];
 assumptionSet = And @@ assumptionList;
-assumptionObject = Join[
-  (Sign[#] -> 1) & /@ positiveAssumptionQuantities,
-  (Im[#] -> 0) & /@ realWavevectorComponents
-];
 
 casSimplify[expression_, assumptions_: assumptionSet] :=
   FullSimplify[expression, Assumptions -> assumptions];
@@ -289,12 +287,13 @@ energyDimension = forceDimension + lengthDimension;
 energyDensityDimension = energyDimension - D lengthDimension;
 displacementDimension = lengthDimension;
 
-physicalCoefficientSymbols = {rhoBr, rhoZ, muR, muF};
+physicalCoefficientSymbols = {rhoBr, rhoZ, muR, muF, muG};
 coefficientUnknownDimensions = <|
   rhoBr -> Array[rhoExponent, 3],
   rhoZ -> Array[rhoZExponent, 3],
   muR -> Array[muExponent, 3],
-  muF -> Array[muFExponent, 3]
+  muF -> Array[muFExponent, 3],
+  muG -> Array[muGExponent, 3]
 |>;
 
 parameterPower[expression_, parameter_] :=
@@ -305,28 +304,114 @@ lagrangianTerms[lagrangian_] := Module[{expanded = Expand[lagrangian]},
   If[Head[expanded] === Plus, List @@ expanded, {expanded}]
 ];
 
-termDerivativeOrders[term_] := Module[{atoms},
-  atoms = DeleteDuplicates[Cases[term, atom : derivativeAtomPattern :> atom, Infinity]];
+fieldAtomsForHead[expression_, fieldHead_] := Module[{bareField},
+  bareField = fieldHead[t, x, y, z];
+  Join[
+    If[FreeQ[expression, bareField], {}, {bareField}],
+    fieldDerivativeAtoms[expression, fieldHead]
+  ]
+];
+
+fieldAtoms[expression_] := DeleteDuplicates[Flatten[
+  fieldAtomsForHead[expression, #] & /@ fieldHeads
+]];
+
+fieldMultiOrder[atom_] := If[
+  MatchQ[atom, derivativeAtomPattern], derivativeOrder[atom],
+  ConstantArray[0, Length[coordinates]]
+];
+
+termFieldOrders[term_] := Module[{atoms},
+  atoms = fieldAtoms[term];
   Flatten[
-    ConstantArray[derivativeOrder[#], Exponent[term, #]] & /@ atoms,
+    ConstantArray[fieldMultiOrder[#], Exponent[term, #]] & /@ atoms,
     1
   ]
 ];
 
 termCoefficient[term_] := Module[{atoms},
-  atoms = DeleteDuplicates[Cases[term, atom : derivativeAtomPattern :> atom, Infinity]];
+  atoms = fieldAtoms[term];
   casSimplify[term/Times @@ (#^Exponent[term, #] & /@ atoms)]
+];
+
+dimensionWalk[expression_, symbolDimensionMap_] := Module[
+  {walk, result},
+  walk[node_] := Module[
+    {parts, dimensions, unknowns, mismatches, unsupported, reference,
+     differing},
+    Which[
+      NumberQ[node],
+        <|"Dimension" -> ConstantArray[0, 3], "UnknownSymbols" -> {},
+          "SumMismatches" -> {}, "Unsupported" -> {}|>,
+      Head[node] === Symbol,
+        If[KeyExistsQ[symbolDimensionMap, node],
+          <|"Dimension" -> symbolDimensionMap[node], "UnknownSymbols" -> {},
+            "SumMismatches" -> {}, "Unsupported" -> {}|>,
+          <|"Dimension" -> Missing["UnknownSymbol", node],
+            "UnknownSymbols" -> {node}, "SumMismatches" -> {},
+            "Unsupported" -> {}|>
+        ],
+      Head[node] === Plus,
+        parts = walk /@ (List @@ node);
+        dimensions = Lookup[parts, "Dimension"];
+        unknowns = DeleteDuplicates[Flatten[Lookup[parts, "UnknownSymbols"]]];
+        mismatches = Flatten[Lookup[parts, "SumMismatches"], 1];
+        unsupported = Flatten[Lookup[parts, "Unsupported"]];
+        If[unknowns === {} && unsupported === {} &&
+            FreeQ[dimensions, _Missing],
+          reference = First[dimensions];
+          differing = Select[Range[Length[dimensions]],
+            !SameQ[casSimplify[dimensions[[#]] - reference],
+              ConstantArray[0, 3]] &];
+          If[differing =!= {},
+            AppendTo[mismatches, <|"Summands" -> List @@ node,
+              "Dimensions" -> dimensions|>]
+          ]
+        ];
+        <|"Dimension" -> If[mismatches === {} && unknowns === {} &&
+              unsupported === {}, First[dimensions], Missing["DimensionFailure"]],
+          "UnknownSymbols" -> unknowns, "SumMismatches" -> mismatches,
+          "Unsupported" -> unsupported|>,
+      Head[node] === Times,
+        parts = walk /@ (List @@ node);
+        dimensions = Lookup[parts, "Dimension"];
+        unknowns = DeleteDuplicates[Flatten[Lookup[parts, "UnknownSymbols"]]];
+        mismatches = Flatten[Lookup[parts, "SumMismatches"], 1];
+        unsupported = Flatten[Lookup[parts, "Unsupported"]];
+        <|"Dimension" -> If[unknowns === {} && mismatches === {} &&
+              unsupported === {} && FreeQ[dimensions, _Missing],
+            casSimplify[Total[dimensions]], Missing["DimensionFailure"]],
+          "UnknownSymbols" -> unknowns, "SumMismatches" -> mismatches,
+          "Unsupported" -> unsupported|>,
+      Head[node] === Power && MatchQ[node[[2]], _Integer | _Rational],
+        result = walk[node[[1]]];
+        <|"Dimension" -> If[FreeQ[result["Dimension"], _Missing],
+              casSimplify[node[[2]] result["Dimension"]],
+              Missing["DimensionFailure"]],
+          "UnknownSymbols" -> result["UnknownSymbols"],
+          "SumMismatches" -> result["SumMismatches"],
+          "Unsupported" -> result["Unsupported"]|>,
+      True,
+        <|"Dimension" -> Missing["UnsupportedExpression", node],
+          "UnknownSymbols" -> DeleteDuplicates[Cases[node, _Symbol, Infinity]],
+          "SumMismatches" -> {}, "Unsupported" -> {node}|>
+    ]
+  ];
+  walk[expression]
 ];
 
 deriveDimensionBlock[lagrangian_, candidateSpeedsSquared_] := Module[
   {terms, derivativeOrders, coefficients, presentCoefficients,
    coefficientDimensions, termDimensions, equationLeft, equationRight,
-   equationResidual, equations, unknowns, solution, solvedDimension,
-   rhoDimension, rhoZDimension, muDimension, muFDimension,
-   modulusDensityDifference, parameterPowers, impliedDimensions,
-   velocitySquaredDimension, dimensionDifferences},
+   equationResidual, equations, unknowns, solutionSet, solution,
+   solvedDimension, rhoDimension, rhoZDimension, muDimension,
+   muFDimension, muGDimension, modulusDensityDifference, parameterPowers,
+   symbolDimensionMap, dimensionWalks, impliedDimensions,
+   dimensionUnknownSymbols, dimensionSumMismatches,
+   dimensionUnsupportedExpressions, velocitySquaredDimension,
+   dimensionDifferences},
   terms = lagrangianTerms[lagrangian];
-  derivativeOrders = termDerivativeOrders /@ terms;
+  derivativeOrders = termFieldOrders /@ terms;
   coefficients = termCoefficient /@ terms;
   presentCoefficients = Select[physicalCoefficientSymbols,
     Function[coefficientSymbol,
@@ -355,7 +440,18 @@ deriveDimensionBlock[lagrangian_, candidateSpeedsSquared_] := Module[
   equationResidual = casSimplify[equationLeft - equationRight];
   equations = Thread[equationLeft == equationRight];
   unknowns = Flatten[Values[coefficientDimensions]];
-  solution = First[Solve[equations, unknowns]];
+  solutionSet = Solve[equations, unknowns];
+  If[solutionSet === {},
+    Return[<|
+      "DerivativeOrders" -> derivativeOrders,
+      "TermDimensions" -> termDimensions,
+      "EnergyDensityDimension" -> energyDensityDimension,
+      "EquationLeft" -> equationLeft, "EquationRight" -> equationRight,
+      "EquationResidual" -> equationResidual, "Equations" -> equations,
+      "SolutionSet" -> solutionSet
+    |>]
+  ];
+  solution = First[solutionSet];
   solvedDimension[coefficientSymbol_] := If[
     MemberQ[presentCoefficients, coefficientSymbol],
     casSimplify[coefficientDimensions[coefficientSymbol] /. solution],
@@ -365,6 +461,7 @@ deriveDimensionBlock[lagrangian_, candidateSpeedsSquared_] := Module[
   rhoZDimension = solvedDimension[rhoZ];
   muDimension = solvedDimension[muR];
   muFDimension = solvedDimension[muF];
+  muGDimension = solvedDimension[muG];
   modulusDensityDifference = If[
     Length[rhoDimension] == 3 && Length[muDimension] == 3,
     casSimplify[muDimension - rhoDimension],
@@ -373,26 +470,25 @@ deriveDimensionBlock[lagrangian_, candidateSpeedsSquared_] := Module[
   parameterPowers = (If[TrueQ[# == 0],
       emptyComputedObject[physicalCoefficientSymbols],
       {parameterPower[#, rhoBr], parameterPower[#, rhoZ],
-        parameterPower[#, muR], parameterPower[#, muF]}
+        parameterPower[#, muR], parameterPower[#, muF],
+        parameterPower[#, muG]}
     ] &) /@ candidateSpeedsSquared;
-  impliedDimensions = Map[
-    Function[powers,
-      Module[{activePositions, dimensions},
-        If[powers === {},
-          emptyComputedObject[powers],
-          activePositions = Flatten[Position[
-            powers, power_ /; !TrueQ[power == 0], {1}, Heads -> False]];
-          dimensions = {rhoDimension, rhoZDimension, muDimension, muFDimension};
-          If[AllTrue[activePositions, Length[dimensions[[#]]] == 3 &],
-            casSimplify[Total[
-              (powers[[#]] dimensions[[#]]) & /@ activePositions]],
-            emptyComputedObject[activePositions]
-          ]
-        ]
-      ]
+  symbolDimensionMap = Join[
+    AssociationMap[
+      casSimplify[coefficientDimensions[#] /. solution] &,
+      presentCoefficients
     ],
-    parameterPowers
+    <|kx -> -lengthDimension, ky -> -lengthDimension,
+      kz -> -lengthDimension, q -> -2 lengthDimension,
+      omega -> -timeDimension, lambdaRho -> ConstantArray[0, 3],
+      lambdaMu -> ConstantArray[0, 3], D -> ConstantArray[0, 3]|>
   ];
+  dimensionWalks = dimensionWalk[#, symbolDimensionMap] & /@
+    candidateSpeedsSquared;
+  impliedDimensions = Lookup[dimensionWalks, "Dimension"];
+  dimensionUnknownSymbols = Lookup[dimensionWalks, "UnknownSymbols"];
+  dimensionSumMismatches = Lookup[dimensionWalks, "SumMismatches"];
+  dimensionUnsupportedExpressions = Lookup[dimensionWalks, "Unsupported"];
   velocitySquaredDimension = 2 (lengthDimension - timeDimension);
   dimensionDifferences = Map[
     If[Length[#] == 3, casSimplify[# - velocitySquaredDimension],
@@ -405,12 +501,16 @@ deriveDimensionBlock[lagrangian_, candidateSpeedsSquared_] := Module[
     "EnergyDensityDimension" -> energyDensityDimension,
     "EquationLeft" -> equationLeft, "EquationRight" -> equationRight,
     "EquationResidual" -> equationResidual, "Equations" -> equations,
-    "Solution" -> solution, "RhoDimension" -> rhoDimension,
+    "SolutionSet" -> solutionSet, "RhoDimension" -> rhoDimension,
     "RhoZDimension" -> rhoZDimension, "MuDimension" -> muDimension,
-    "MuFDimension" -> muFDimension,
+    "MuFDimension" -> muFDimension, "MuGDimension" -> muGDimension,
     "MuRhoDifference" -> modulusDensityDifference,
     "ParameterPowers" -> parameterPowers,
+    "SymbolDimensionMap" -> symbolDimensionMap,
     "ImpliedDimensions" -> impliedDimensions,
+    "DimensionUnknownSymbols" -> dimensionUnknownSymbols,
+    "DimensionSumMismatches" -> dimensionSumMismatches,
+    "DimensionUnsupportedExpressions" -> dimensionUnsupportedExpressions,
     "VelocitySquaredDimension" -> velocitySquaredDimension,
     "DimensionDifferences" -> dimensionDifferences
   |>
@@ -485,20 +585,52 @@ emitSpecialDirectionDiagnostics[prefix_, data_, slotCount_] := Module[
   ]
 ];
 
+locusDiagnostics[data_, rules_, locusAssumptions_] := Module[
+  {locusMatrix, locusWaveVector, locusGenerator},
+  locusMatrix = data["MatrixOmegaSquared"] /. rules;
+  locusWaveVector = waveCovector /. rules;
+  locusGenerator = transverseGenerator /. rules;
+  rootDiagnostic[locusMatrix, # /. rules, locusWaveVector,
+      locusGenerator, locusAssumptions] & /@ data["Roots"]
+];
+
+emitLocusDiagnostics[prefix_, data_, slotCount_, label_, rules_,
+    locusAssumptions_] := Module[
+  {diagnostics, index, slot, diagnostic, base},
+  diagnostics = locusDiagnostics[data, rules, locusAssumptions];
+  Do[
+    slot = Pick[diagnostics, Range[Length[diagnostics]], index];
+    base = prefix <> "ROOT" <> ToString[index] <> "_" <> label;
+    If[slot === {},
+      emit[base <> "_E1", emptyComputedObject[slot]];
+      emit[base <> "_E2", emptyComputedObject[slot]];
+      emit[base <> "_E3", emptyComputedObject[slot]];
+      emit[base <> "_E4", emptyComputedObject[slot]],
+      diagnostic = First[slot];
+      emit[base <> "_E1", diagnostic["E1Test"]];
+      emit[base <> "_E2", diagnostic["E2"]];
+      emit[base <> "_E3", diagnostic["E3Test"]];
+      emit[base <> "_E4", diagnostic["E4Test"]]
+    ],
+    {index, slotCount}
+  ]
+];
+
 valueAtSlot[values_, index_] := Module[{slot},
   slot = Pick[values, Range[Length[values]], index];
   If[slot === {}, emptyComputedObject[slot], First[slot]]
 ];
 
 emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
-  {prefix, speedData, dimensionData, zeroMatrix, index},
+  {prefix, speedData, dimensionData, zeroMatrix, index, zeroWavevectorRules,
+   zeroWavevectorAssumptions, equalDensityRules, equalDensityAssumptions},
   prefix = If[identifier === "", "WL_S9_", "WL_S9_" <> identifier <> "_"];
   speedData = deriveSpeedBlock[data];
   dimensionData = deriveDimensionBlock[
     data["Lagrangian"], speedData["CandidateSpeedsSquared"]];
   zeroMatrix = ConstantArray[0, Dimensions[data["MatrixResidual"]]];
 
-  emit[prefix <> "ASSUMPTIONS", assumptionObject];
+  emit[prefix <> "ASSUMPTIONS", assumptionSet];
   emit[prefix <> "LAGRANGIAN", data["Lagrangian"]];
   emit[prefix <> "EULER_LAGRANGE_RESIDUAL", data["EulerResidual"]];
   emit[prefix <> "EQUATIONS", data["Equations"]];
@@ -527,8 +659,22 @@ emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
   emit[prefix <> "E4_ROOT_SUBSET", data["TransverseSubspaceRoots"]];
   emit[prefix <> "ROOT_MULTISET", data["RootMultiset"]];
   emit[prefix <> "ROOT_NULLITIES", data["RootNullities"]];
-  emit[prefix <> "FULL_ROOT_MULTISET", data["RootMultiset"]];
   emitSpecialDirectionDiagnostics[prefix, data, rootSlotCount];
+  If[identifier === "",
+    zeroWavevectorRules = Thread[waveCovector -> ConstantArray[0,
+      Length[waveCovector]]];
+    zeroWavevectorAssumptions =
+      (assumptionSet /. (Last[positiveAssumptions] -> True)) /.
+        zeroWavevectorRules;
+    emitLocusDiagnostics[prefix, data, Length[data["Diagnostics"]],
+      "ZERO_ZERO_ZERO", zeroWavevectorRules, zeroWavevectorAssumptions]
+  ];
+  If[identifier === "X6",
+    equalDensityRules = {rhoZ -> rhoBr};
+    equalDensityAssumptions = assumptionSet /. equalDensityRules;
+    emitLocusDiagnostics[prefix, data, Length[data["Diagnostics"]],
+      "RHO_Z_RHO_BR", equalDensityRules, equalDensityAssumptions]
+  ];
 
   Do[
     emit[prefix <> "E1_ROOT_Q" <> ToString[index],
@@ -556,26 +702,46 @@ emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
   emit[prefix <> "DIMENSION_EQUATION_RIGHT", dimensionData["EquationRight"]];
   emit[prefix <> "DIMENSION_EQUATION_RESIDUAL", dimensionData["EquationResidual"]];
   emit[prefix <> "DIMENSION_EQUATIONS", dimensionData["Equations"]];
-  emit[prefix <> "DIMENSION_SOLUTION", dimensionData["Solution"]];
+  emit[prefix <> "DIMENSION_SOLUTION", dimensionData["SolutionSet"]];
+  If[dimensionData["SolutionSet"] === {}, Exit[94]];
   emit[prefix <> "RHO_DIMENSION", dimensionData["RhoDimension"]];
   emit[prefix <> "RHO_Z_DIMENSION", dimensionData["RhoZDimension"]];
   emit[prefix <> "MU_DIMENSION", dimensionData["MuDimension"]];
   emit[prefix <> "MU_F_DIMENSION", dimensionData["MuFDimension"]];
+  emit[prefix <> "MU_G_DIMENSION", dimensionData["MuGDimension"]];
   emit[prefix <> "MU_RHO_DIMENSION_DIFFERENCE",
     dimensionData["MuRhoDifference"]];
   emit[prefix <> "SPEED_SQUARED_PARAMETER_SYMBOLS", physicalCoefficientSymbols];
   emit[prefix <> "SPEED_SQUARED_PARAMETER_POWERS",
     dimensionData["ParameterPowers"]];
+  emit[prefix <> "SPEED_SQUARED_SYMBOL_DIMENSION_MAP",
+    dimensionData["SymbolDimensionMap"]];
   emit[prefix <> "SPEED_SQUARED_IMPLIED_DIMENSION",
     dimensionData["ImpliedDimensions"]];
   emit[prefix <> "VELOCITY_SQUARED_DIMENSION",
     dimensionData["VelocitySquaredDimension"]];
   emit[prefix <> "SPEED_SQUARED_DIMENSION_DIFFERENCE",
     dimensionData["DimensionDifferences"]];
+  emit[prefix <> "SPEED_SQUARED_DIMENSION_UNKNOWN_SYMBOLS",
+    dimensionData["DimensionUnknownSymbols"]];
+  emit[prefix <> "SPEED_SQUARED_DIMENSION_SUM_MISMATCHES",
+    dimensionData["DimensionSumMismatches"]];
+  emit[prefix <> "SPEED_SQUARED_DIMENSION_UNSUPPORTED_EXPRESSIONS",
+    dimensionData["DimensionUnsupportedExpressions"]];
+  If[!AllTrue[dimensionData["DimensionUnknownSymbols"], # === {} &],
+    Exit[95]
+  ];
+  If[!AllTrue[dimensionData["DimensionSumMismatches"], # === {} &],
+    Exit[96]
+  ];
+  If[!AllTrue[dimensionData["DimensionUnsupportedExpressions"], # === {} &],
+    Exit[97]
+  ];
   emit[prefix <> "RHO_DIMENSION_D3", dimensionData["RhoDimension"] /. D -> 3];
   emit[prefix <> "RHO_Z_DIMENSION_D3", dimensionData["RhoZDimension"] /. D -> 3];
   emit[prefix <> "MU_DIMENSION_D3", dimensionData["MuDimension"] /. D -> 3];
   emit[prefix <> "MU_F_DIMENSION_D3", dimensionData["MuFDimension"] /. D -> 3];
+  emit[prefix <> "MU_G_DIMENSION_D3", dimensionData["MuGDimension"] /. D -> 3];
   emit[prefix <> "MU_RHO_DIMENSION_DIFFERENCE_D3",
     dimensionData["MuRhoDifference"] /. D -> 3];
 ];
@@ -583,7 +749,7 @@ emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
 actionRecords = {
   {"", mainLagrangian}, {"X1", x1Lagrangian}, {"X2", x2Lagrangian},
   {"X3", x3Lagrangian}, {"X4", x4Lagrangian}, {"X5", x5Lagrangian},
-  {"X6", x6Lagrangian}, {"X7", x7Lagrangian}
+  {"X6", x6Lagrangian}, {"X7", x7Lagrangian}, {"X8", x8Lagrangian}
 };
 derivedRecords = {#[[1]], deriveFromAction[#[[2]]]} & /@ actionRecords;
 rootSlotCount = Max[Length[#[[2]]["Diagnostics"]] & /@ derivedRecords];

@@ -14,26 +14,60 @@ brane's in-plane sector, the slab's thickness degree of freedom, and the bulk's 
 linear system on a **uniform** background, to determine the longitudinal mode's fate.
 ⛔ **Non-uniform effects, and whether light's confinement is unconditional, are S11b-C's.**
 
-## ⭐⭐⭐ THE HEADLINE — the velocity-coupled leak is THERMODYNAMICALLY FORBIDDEN
+## ⭐⭐⭐ THE HEADLINE — the velocity-coupled leak costs an ENERGY RESERVOIR
 
-Both engines independently derived that interfacial admissibility requires
+Both engines independently derived that interfacial **passivity** — the requirement that the interfacial
+power form be non-negative, i.e. that the interface not be an energy *source* — requires
 
 ```
 Λ_A⁰ ≥ 0    and    [ Λ_V⁰ = Λ_X⁰ = 0    or    ( Λ_X⁰ = −Λ_V⁰ ,  τ_V = τ_X = 0 ) ]
 ```
 
-with **Onsager reciprocity forcing `Λ_X(ω) = −Λ_V(ω)`**, reached by two independent partial-inversion
-routes that agree. `τ_A` is unrestricted.
+with a **separate and conditional** Onsager–Casimir test giving `Λ_X(ω) = −Λ_V(ω)`, reached by two
+independent partial-inversion routes that agree. `τ_A` is unrestricted.
 
-⇒ ⭐⭐ **A nonzero velocity coupling is admissible ONLY at zero relaxation time.**
+⇒ ⭐⭐ **Inside the passive region, a nonzero velocity coupling is instantaneous.**
 
-⚠⚠ **S11b-A's headline was that the velocity coupling dissipates *if and only if* `ωτ ≠ 0`.** The second
-law permits that channel only where `τ = 0` — ⇒ **exactly where A showed it does no work.**
-⛔ **The frequency-dependent leak — "slow disturbances see it, fast ones do not" — describes a process this
-model forbids.** ⭐ A's *algebra* stands; its *physical claim* does not survive the admissibility analysis
-that A never performed.
+⚠⚠ **S11b-A's headline was that the velocity coupling dissipates *if and only if* `ωτ ≠ 0`.** That channel
+lies **outside** the passive region ⇒ it is available **only to an interface drawing on a reservoir.**
 
-⭐ **This was not predicted.** Nothing in the pre-registration anticipated it.
+⛔⛔ **THIS IS A PRICE, NOT A PROHIBITION — and an earlier version of this record got that wrong.** It read
+*"thermodynamically FORBIDDEN"* and *"a process this model forbids."* ⛔ The engines emitted no such verdict:
+they emitted a **region**, tagged `"membership is symbolic/parameter-dependent and is not used to remove the
+root"`, under a directive stating ⛔ *"admissibility is a classification, not an acceptance gate."*
+⇒ ⭐ **the overclaim was introduced in the writeup, against the spec both engines obeyed.**
+
+### ⚠⚠ Why the passive region does not bound this model — two limits, both load-bearing
+
+1. ⛔ **Onsager–Casimir is conditional on microscopic time-reversibility**, which this model **postulates
+   nowhere.** The medium is a *substructure*; whether its microdynamics is time-reversible is an open
+   question, ⛔ not an inherited fact. The directive knew this (*"time-reversal invariance remains not
+   assumed"*) and the engines labelled the region **conditional**.
+2. ⛔⛔ **Passivity and reciprocity are properties of fluctuations about an EQUILIBRIUM. This model's
+   reference state is not one.** It carries a steady background normal flow `v₀` — the dark-energy drain —
+   ⇒ a **driven steady state with a reservoir attached.** About a NESS, reciprocity generically breaks and
+   the fluctuation subsystem need not be passive, because it can draw on the drive.
+   ⚠⚠ **`v₀` is the SAME neglect this record files below as its top known limitation.** ⇒ the omission
+   recorded as *"uncarried and unbounded"* is precisely what would license the channel we called dead.
+
+⚠ Non-reciprocal, "odd" constitutive couplings of exactly the excluded form are realised in driven
+laboratory media (odd elasticity, odd viscosity, active and chiral fluids). ⛔ They are not unphysical.
+⭐ **They have a reservoir.**
+
+### ⭐⭐ THE STANDING RULE THIS REPLACES IT WITH
+
+⛔ *"Anything goes"* is not the correction — under it no mode is ever stable and the ledger predicts nothing.
+
+> ⭐⭐ **A non-passive coupling is admissible only with a NAMED reservoir and a STATED power budget.**
+> Unbounded growth fed by nothing is still a defect. Unbounded growth fed by `v₀` is **physics** — and it is
+> **quantitative**, because `v₀` is bounded by cosmology.
+
+⇒ ⭐ **the real gate is observational, ⛔ not thermodynamic.** The departure's frequency profile is a **Debye
+loss peak at `ωτ ~ 1`** (zero at both ends), so it is bounded by whatever measurement of anomalous
+mechanical dissipation covers that band. ⚠ A *numerical* bound needs the matter→brane-compression coupling,
+which is the gravity sector and is **not built** ⇒ today this is a **structural** test, not a number.
+
+⭐ **This was not predicted.** Nothing in the pre-registration anticipated the region.
 
 ## ⭐⭐ The other two results
 
@@ -150,14 +184,19 @@ flagged in advance** as the most likely error, with its reasoning stated so it c
 
 ## What S11b-B hands forward
 
-| object | value |
-|---|---|
-| admissibility | `Λ_A⁰ ≥ 0`; velocity/reciprocal pair only at `τ_V = τ_X = 0` |
-| reciprocity | `Λ_X(ω) = −Λ_V(ω)` |
-| transverse (uniform) | coupling **≡ 0**, `ρ_br⁰ω² = μ_R k²`, `Im = 0` |
-| breathing stability | `K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀² > 0` |
-| energy basis | **ten** invariants; five new coefficients |
+| object | value | status |
+|---|---|---|
+| passive region | `Λ_A⁰ ≥ 0`; velocity/reciprocal pair only at `τ_V = τ_X = 0` | ⚠ a **classification** — ⛔ not a gate |
+| reciprocity | `Λ_X(ω) = −Λ_V(ω)` | ⚠ **conditional** on microscopic time-reversibility, which the model does not postulate |
+| transverse (uniform) | coupling **≡ 0**, `ρ_br⁰ω² = μ_R k²`, `Im = 0` | ⭐ unconditional on a uniform background |
+| breathing stability | `K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀² > 0` | ⭐ `K₀ > 0` is an **empirical** constraint — the brane is here |
+| energy basis | **ten** invariants; five new coefficients | ⭐ new content |
 
-⛔⛔ **For S11b-C:** ⛔ do not inherit A's frequency-dependent leak — it is forbidden. ⛔ Do not read the
-zero transverse coupling as confinement being unconditional; it is the **uniform** limit, and the
-gradient-driven channel is exactly what C must compute.
+⛔⛔ **For S11b-C:**
+- ⚠ A's frequency-dependent leak is **outside the passive region, ⛔ NOT ruled out.** Inheriting it is
+  permitted **only** with a named reservoir and a power budget. ⛔ Do not re-describe it as forbidden.
+- ⛔ Do not read the zero transverse coupling as confinement being unconditional; it is the **uniform**
+  limit, and the gradient-driven channel is exactly what C must compute.
+- ⭐⭐ **C's coefficient is bounded by BENCH-TOP OPTICS.** If a slit edge converted an O(1) fraction of a
+  photon into the thickness channel, diffraction gratings would not work. ⇒ C is **immediately falsifiable
+  without cosmology**, which is the strongest reason to run it.

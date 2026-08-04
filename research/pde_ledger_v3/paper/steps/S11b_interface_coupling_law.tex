@@ -124,8 +124,9 @@ Thus the five new coefficients are
 \(m_{\mathrm{cross}}=CW_0+A_{\theta e}k^2\), and the corresponding \(\pi\)
 combinations.
 
-\paragraph{Admissibility and reciprocity.}
-Thermodynamic admissibility requires
+\paragraph{Admissibility and reciprocity --- a classified region, not a gate.}
+Requiring the interfacial power form to be non-negative, i.e.\ requiring the
+interface to be \emph{passive}, gives
 \[
   \Lambda_A^0\geq0,
   \qquad
@@ -135,13 +136,28 @@ Thermodynamic admissibility requires
   \left(\Lambda_X^0=-\Lambda_V^0,\ \tau_V=\tau_X=0\right)
   \right],
 \]
-while \(\tau_A\) is unrestricted. Onsager reciprocity fixes the full kernels,
+while \(\tau_A\) is unrestricted. A separate and \emph{conditional} test ---
+Onsager--Casimir reciprocity, which holds only if the underlying microdynamics
+is time-reversible --- fixes the full kernels,
 \[
-  \Lambda_X(\omega)=-\Lambda_V(\omega).
+  \Lambda_X(\omega)=-\Lambda_V(\omega),
 \]
-The reciprocity relation was reached by two independent partial-inversion
-routes, and the routes agree. Consequently a nonzero admissible
-velocity/reciprocal pair is instantaneous.
+reached by two independent partial-inversion routes that agree. Within the
+passive region a nonzero velocity/reciprocal pair is therefore instantaneous.
+
+\textbf{Both regions are classifications of parameter space, not acceptance
+criteria, and neither is imposed anywhere in this ledger.} Two limits are
+load-bearing. First, time-reversibility of the medium's microdynamics is
+\emph{postulated nowhere in this model}, so the reciprocity relation is
+conditional on an unstated assumption about a substructure the ledger does not
+specify. Second, passivity and Onsager reciprocity are both properties of
+fluctuations about a \emph{thermodynamic equilibrium}; this model's reference
+state carries a steady background normal flow \(v_0\), making it a driven
+steady state with a reservoir attached. About such a state neither property is
+guaranteed, and non-reciprocal couplings of exactly the excluded form are
+realised in driven laboratory media. Consequently the region boundary above
+separates \emph{passive} from \emph{active} constitutive behaviour; it does not
+separate possible from impossible.
 
 \paragraph{Uniform transverse null.}
 On a uniform background the transverse mode is exactly decoupled: in-plane
@@ -179,17 +195,25 @@ energy by running away; the accounting closes, but the energy has no floor.
 For \(K_0>0\), every nonzero imaginary part on this slice comes from
 propagating bulk radiation resistance, which survives impermeability.
 
-\paragraph{Departures --- ruled out, not live conclusions.}
-The face-response algebra admits a formal finite-memory branch on which a
-velocity coupling has evanescent \(\operatorname{Re}Z\neq0\) iff
-\(\omega\tau\neq0\), while the channel approaches the impermeable response as
-\(\omega\tau\to\infty\). That algebra generated the claims that the coupling
-dissipates only at nonzero \(\omega\tau\) and that slow disturbances see a leak
-which fast disturbances do not. \textbf{The assembled law rules this entire
-physical branch out:} admissibility permits a nonzero velocity coupling only
-at \(\tau_V=\tau_X=0\), exactly where the face-response algebra gives no work.
-The algebraic statements remain recorded here solely as a forbidden
-departure; they are not predictions of the admissible model.
+\paragraph{Departure --- the finite-memory velocity channel, and what it costs.}
+The face-response algebra admits a finite-memory branch on which a velocity
+coupling has evanescent \(\operatorname{Re}Z\neq0\) iff \(\omega\tau\neq0\),
+approaching the impermeable response as \(\omega\tau\to\infty\). Its frequency
+profile is a Debye loss peak at \(\omega\tau\sim1\), vanishing at both ends. On
+that branch the coupling dissipates only at nonzero \(\omega\tau\), so slow
+disturbances see a leak which fast disturbances do not.
+
+This branch lies \emph{outside} the passive region: it is available only if the
+interface draws on an energy reservoir. \textbf{That is a statement of price,
+not of impossibility.} The model supplies a candidate reservoir --- the steady
+background drain \(v_0\) --- so the branch is a live constitutive option whose
+admission requires naming that reservoir and stating its power budget. It is
+recorded here as a departure carrying that debt, and it is not asserted as a
+prediction. The test that decides it is observational: the loss peak sits at
+\(\omega\sim1/\tau\), and any \(\tau\) placing it in a band where anomalous
+mechanical dissipation is measured and bounded is excluded by that measurement.
+Converting this into a numerical bound requires the matter--brane coupling,
+which this sector does not carry.
 
 Two further preregistered predictions were refuted. The scalar-sector count is
 two surviving internal degrees of freedom, not exactly one. The added inertia

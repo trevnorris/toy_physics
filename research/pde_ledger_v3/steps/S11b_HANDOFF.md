@@ -15,16 +15,28 @@ execution history, ⛔ not ledger structure).
 ## ⭐⭐⭐ What S11b established, and what it killed
 
 ```
-admissibility:  Λ_A⁰ ≥ 0  and  [ Λ_V⁰ = Λ_X⁰ = 0   or   (Λ_X⁰ = −Λ_V⁰ , τ_V = τ_X = 0) ]
-reciprocity:    Λ_X(ω) = −Λ_V(ω)          (two independent routes, both engines)
+passive region: Λ_A⁰ ≥ 0  and  [ Λ_V⁰ = Λ_X⁰ = 0   or   (Λ_X⁰ = −Λ_V⁰ , τ_V = τ_X = 0) ]
+reciprocity:    Λ_X(ω) = −Λ_V(ω)   ⚠ CONDITIONAL on microscopic time-reversibility
 transverse:     coupling ≡ 0 on a UNIFORM background;  ρ_br⁰ω² = μ_R k² ;  Im ω = 0
 stability:      K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀² > 0
 ```
 
-⛔⛔ **S11b-A's headline is DEAD.** "The velocity coupling dissipates iff `ωτ ≠ 0`; slow disturbances see
-the leak, fast ones do not" — admissibility permits that channel **only at `τ = 0`**, exactly where it does
-no work. ⭐ A's algebra stands; the physical claim did not survive an admissibility analysis A never
-performed. ⛔ **Do not cite it as live anywhere.**
+⚠⚠ **S11b-A's headline is CONDITIONAL, ⛔ not dead — and an earlier version of this file said "DEAD."**
+"The velocity coupling dissipates iff `ωτ ≠ 0`" lies **outside the passive region** ⇒ it is available to an
+interface that **draws on a reservoir**, and this model supplies a candidate: the background drain `v₀`.
+⛔ **The engines never emitted a prohibition.** They emitted a region, tagged *"not used to remove the
+root,"* under a directive stating *"admissibility is a classification, not an acceptance gate."*
+
+⛔⛔ **TWO REASONS THE PASSIVE REGION DOES NOT BOUND THIS MODEL:**
+1. **Onsager–Casimir needs microscopic time-reversibility**, which this model ⛔ **postulates nowhere.**
+   The medium is a *substructure*; ⛔ thermodynamic laws emergent from particles made **of** it are not
+   inherited by it.
+2. **Passivity and reciprocity describe fluctuations about an EQUILIBRIUM; our reference state carries
+   `v₀ ≠ 0`** ⇒ a **driven steady state.** ⚠ `v₀` is the same neglect filed as the step's top known limit.
+
+⇒ ⭐⭐ **THE STANDING RULE:** a non-passive coupling is admissible **only with a NAMED reservoir and a
+STATED power budget.** ⛔ Unbounded growth fed by nothing is still a defect. ⭐ **The real gate is
+observational, ⛔ not thermodynamic.**
 
 ⚠ **The growing root at `K₀ < 0` is NOT an energy-conservation violation** — the stored energy has no
 minimum in that direction; the accounting closes exactly.
@@ -48,6 +60,10 @@ Requirements, all named by earlier reviews and ⛔ none optional:
   global dispersion relation — that error killed two directive revisions.
 - ⚠ **A uniform-limit control is EMPTY unless the coupling can have a gradient-independent part.** B proved
   it cannot: the uniform coupling is identically zero. ⇒ ⛔ that control is now known-vacuous; find another.
+- ⭐⭐ **C's coefficient is bounded by BENCH-TOP OPTICS.** If a slit edge converted an O(1) fraction of a
+  photon into the thickness channel, diffraction gratings would not work. ⇒ ⭐ **C is falsifiable against a
+  lab measurement with no cosmology and no gravity sector** — the strongest reason to run it, and the test
+  to state **before** the coefficient is computed.
 
 ⛔⛔ **Carry into C:** the background-flow correction **`O(v₀|q_n|/ω)`** is still **uncarried and
 unbounded**, and it exceeds first order where `k c_s0 ≫ ω` — the regime S11b works in. ⚠ `v₀` is the

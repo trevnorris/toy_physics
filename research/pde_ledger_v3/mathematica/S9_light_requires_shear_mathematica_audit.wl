@@ -101,9 +101,10 @@ rootMultisetFromPolynomial[polynomial_] := Module[
 
 rootDiagnostic[matrixInOmegaSquared_, root_, diagnosticWaveVector_,
     diagnosticTransverseGenerator_, diagnosticAssumptions_] := Module[
-  {matrixAtRoot, stackedMatrix, stackedRank, dimensionOperand,
+  {omegaSquaredSign, matrixAtRoot, stackedMatrix, stackedRank, dimensionOperand,
    e1Residual, e1Test, e2Count, e3Operand, e3Reference, e3Residual,
    e3Test, e4Operand, e4Reference, e4Residual, e4Test},
+  omegaSquaredSign = casSimplify[Sign[root], diagnosticAssumptions];
   matrixAtRoot = casSimplify[
     matrixInOmegaSquared /. omegaSquared -> root, diagnosticAssumptions];
   stackedMatrix = ArrayFlatten[{{matrixAtRoot},
@@ -128,7 +129,8 @@ rootDiagnostic[matrixInOmegaSquared_, root_, diagnosticWaveVector_,
   e4Residual = casSimplify[e4Operand - e4Reference, diagnosticAssumptions];
   e4Test = SameQ[e4Residual, e4Reference];
   <|
-    "Root" -> root, "Matrix" -> matrixAtRoot, "Stack" -> stackedMatrix,
+    "Root" -> root, "OmegaSquaredSign" -> omegaSquaredSign,
+    "Matrix" -> matrixAtRoot, "Stack" -> stackedMatrix,
     "E1Left" -> stackedRank, "E1Right" -> dimensionOperand,
     "E1Residual" -> e1Residual, "E1Test" -> e1Test, "E2" -> e2Count,
     "E3Left" -> e3Operand, "E3Right" -> e3Reference,
@@ -258,7 +260,8 @@ emptyComputedObject[objects_] := Select[objects, False &];
 emitRootDiagnostics[prefix_, diagnostics_, slotCount_] := Module[
   {index, diagnosticSlot, diagnostic, base, keys},
   keys = {
-    {"", "Root"}, {"_E1_STACK", "Stack"}, {"_E1_LEFT", "E1Left"},
+    {"", "Root"}, {"_OMEGA_SQUARED_SIGN", "OmegaSquaredSign"},
+    {"_E1_STACK", "Stack"}, {"_E1_LEFT", "E1Left"},
     {"_E1_RIGHT", "E1Right"}, {"_E1_RESIDUAL", "E1Residual"},
     {"_E1_TEST", "E1Test"}, {"_E2", "E2"},
     {"_E3_LEFT", "E3Left"}, {"_E3_RIGHT", "E3Right"},
@@ -520,9 +523,13 @@ toWaveScalar[expression_] := casSimplify[Factor[expression] /. waveScalar -> q,
   assumptionSet /. waveScalar -> q];
 
 deriveSpeedBlock[data_] := Module[
-  {rootsInQ, candidateSpeedsSquared, homogeneityDefects, speedVariations,
-   numeratorDegrees, denominatorDegrees},
+  {rootsInQ, wavevectorOccurrences, candidateSpeedsSquared,
+   homogeneityDefects, speedVariations, numeratorDegrees, denominatorDegrees},
   rootsInQ = toWaveScalar /@ data["TransverseRoots"];
+  wavevectorOccurrences = Function[rootInQ,
+    Thread[waveCovector ->
+      (Function[component, !FreeQ[rootInQ, component]] /@ waveCovector)]
+  ] /@ rootsInQ;
   candidateSpeedsSquared = casSimplify[#/q,
       assumptionSet /. waveScalar -> q] & /@ rootsInQ;
   homogeneityDefects = casSimplify[q D[#, q] - #,
@@ -533,11 +540,30 @@ deriveSpeedBlock[data_] := Module[
       Exponent[Numerator[Together[#]], q]] & /@ rootsInQ;
   denominatorDegrees = Exponent[Denominator[Together[#]], q] & /@ rootsInQ;
   <|
-    "RootsInQ" -> rootsInQ, "CandidateSpeedsSquared" -> candidateSpeedsSquared,
+    "RootsInQ" -> rootsInQ, "WavevectorOccurrences" -> wavevectorOccurrences,
+    "CandidateSpeedsSquared" -> candidateSpeedsSquared,
     "HomogeneityDefects" -> homogeneityDefects,
     "SpeedVariations" -> speedVariations,
     "NumeratorDegrees" -> numeratorDegrees,
     "DenominatorDegrees" -> denominatorDegrees
+  |>
+];
+
+deriveScalingBlock[data_] := Module[
+  {scalingRules, scalingAssumptions, scaledOmegaSquared,
+   lambdaSquaredOmegaSquared, scalingResiduals},
+  scalingRules = Thread[waveCovector -> lambdaScale waveCovector];
+  scalingAssumptions = assumptionSet && lambdaScale > 0;
+  scaledOmegaSquared = casSimplify[# /. scalingRules,
+      scalingAssumptions] & /@ data["Roots"];
+  lambdaSquaredOmegaSquared = casSimplify[lambdaScale^2 #,
+      scalingAssumptions] & /@ data["Roots"];
+  scalingResiduals = casSimplify[(# /. scalingRules) - lambdaScale^2 #,
+      scalingAssumptions] & /@ data["Roots"];
+  <|
+    "ScaledOmegaSquared" -> scaledOmegaSquared,
+    "LambdaSquaredOmegaSquared" -> lambdaSquaredOmegaSquared,
+    "ScalingResiduals" -> scalingResiduals
   |>
 ];
 
@@ -622,10 +648,12 @@ valueAtSlot[values_, index_] := Module[{slot},
 ];
 
 emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
-  {prefix, speedData, dimensionData, zeroMatrix, index, zeroWavevectorRules,
-   zeroWavevectorAssumptions, equalDensityRules, equalDensityAssumptions},
+  {prefix, speedData, scalingData, dimensionData, zeroMatrix, index,
+   zeroWavevectorRules, zeroWavevectorAssumptions, equalDensityRules,
+   equalDensityAssumptions},
   prefix = If[identifier === "", "WL_S9_", "WL_S9_" <> identifier <> "_"];
   speedData = deriveSpeedBlock[data];
+  scalingData = deriveScalingBlock[data];
   dimensionData = deriveDimensionBlock[
     data["Lagrangian"], speedData["CandidateSpeedsSquared"]];
   zeroMatrix = ConstantArray[0, Dimensions[data["MatrixResidual"]]];
@@ -677,8 +705,22 @@ emitPackage[identifier_, data_, rootSlotCount_, speedSlotCount_] := Module[
   ];
 
   Do[
+    emit[prefix <> "ROOT" <> ToString[index] <>
+      "_WAVEVECTOR_SCALED_OMEGA_SQUARED",
+      valueAtSlot[scalingData["ScaledOmegaSquared"], index]];
+    emit[prefix <> "ROOT" <> ToString[index] <>
+      "_LAMBDA_SCALE_SQUARED_OMEGA_SQUARED",
+      valueAtSlot[scalingData["LambdaSquaredOmegaSquared"], index]];
+    emit[prefix <> "ROOT" <> ToString[index] <> "_SCALING_RESIDUAL",
+      valueAtSlot[scalingData["ScalingResiduals"], index]],
+    {index, rootSlotCount}
+  ];
+
+  Do[
     emit[prefix <> "E1_ROOT_Q" <> ToString[index],
       valueAtSlot[speedData["RootsInQ"], index]];
+    emit[prefix <> "E1_ROOT_Q_WAVEVECTOR_OCCURRENCE" <> ToString[index],
+      valueAtSlot[speedData["WavevectorOccurrences"], index]];
     emit[prefix <> "CANDIDATE_SPEED_SQUARED" <> ToString[index],
       valueAtSlot[speedData["CandidateSpeedsSquared"], index]];
     emit[prefix <> "HOMOGENEITY_DEFECT" <> ToString[index],

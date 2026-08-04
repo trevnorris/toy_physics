@@ -818,6 +818,47 @@ quantities:
   - path: research/pde_ledger_v3/scripts/S11bB_interface_assembly_sympy_audit.py
     line_start: 515
     line_end: 515
+- qid: Q.brane.mu_theta
+  symbol: mu_theta
+  kind: intermediate
+  scope:
+  - brane
+  - light
+  - III
+  regime:
+  - medium-GNLS-positive-real
+  - linear-unstrained-brane
+  state: live
+  counting_axis: continuous-model
+  dimension:
+    convention: LTM-exponent-vector-v1
+    exponents:
+    - -1
+    - -2
+    - 1
+    provenance:
+      stage_id: stage003
+      stage_uses_shared_dimensions_module: false
+      source_locus:
+        path: research/pde_ledger_v3/mathematica/S11bB_interface_assembly_mathematica_audit.wl
+        line_start: 299
+        line_end: 299
+  aliases:
+  - muTheta
+  - MU_THETA
+  source_loci:
+  - path: research/pde_ledger_v3/mathematica/S11bB_interface_assembly_mathematica_audit.wl
+    line_start: 299
+    line_end: 299
+  - path: research/pde_ledger_v3/mathematica/S11bB_interface_assembly_mathematica_audit.wl
+    line_start: 319
+    line_end: 319
+  - path: research/pde_ledger_v3/scripts/S11bB_interface_assembly_sympy_audit.py
+    line_start: 268
+    line_end: 268
+  - path: research/pde_ledger_v3/scripts/S11bB_interface_assembly_sympy_audit.py
+    line_start: 516
+    line_end: 516
 - qid: Q.interface.mu_s
   symbol: mu_s
   kind: intermediate

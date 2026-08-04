@@ -513,7 +513,7 @@ dim_routes = {
     "tau_V": "independent: omega*tau_V dimensionless",
     "tau_X": "independent: omega*tau_X dimensionless",
     "affinity": "definitional supplied difference mu_s-delta_p/rho_m",
-    "mu_theta": "independent: functional derivative deltaU3/delta theta",
+    "mu_theta": "definitional: functional derivative deltaU3/delta theta, which is the supplied definition of mu_theta and therefore provides no independent check",
     "mu_s": "definitional: mu_theta/rho_br0",
     "face_V_coeff": "independent: delta_p/V coefficient from solved face equations",
     "face_mu_theta_coeff": "independent: delta_p/mu_theta coefficient from solved face equations",

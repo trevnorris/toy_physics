@@ -74,9 +74,15 @@ both engines carry the same author's sentence — and **eight fidelity review le
 ## ⭐⭐⭐ FOUR COROLLARIES — all measured 2026-08-04, all of them defeat the three clauses as written
 
 **1. ⛔⛔ A HAND-TYPED CAS OBJECT IS STILL HAND-TYPED.** Clause 1 bans a *prose* payload. It does **not**
-stop `emit(FullSimplify[{0, muR k2/rhoBr}])` — a genuine CAS object, hand-authored, with **no data
+stop `emit(FullSimplify[{0, alpha q2/beta}])` — a genuine CAS object, hand-authored, with **no data
 dependency on the derivation**. Delete `Det` and `Solve` entirely and the output does not move. That is
 the original defect wearing algebra instead of prose, and it is just as dead.
+
+⛔⛔ **AND NOTE THE SYMBOLS ABOVE ARE PLACEHOLDERS — THEY MUST STAY THAT WAY.** ⚠ **Measured 2026-08-04:**
+this example previously carried a **real step's real root**, so an author who copied the corollary verbatim
+into a directive **pasted that step's answer into it** — and the two steps shared an action, so it was the
+answer to the step being built. ⇒ ⭐ **Every anti-example in every skill and every directive uses
+placeholder symbols.** A warning is a sentence a builder reads as attentively as any other.
 ⭐⭐ **THE STRUCTURAL RULE THAT CLOSES IT — put it in every script directive verbatim:**
 > **The ONLY place the physical symbols may be combined by hand is in CONSTRUCTING THE ACTION and the
 > ANSATZ. Every other expression involving them must be REACHED BY COMPUTATION. Every control re-enters
@@ -173,6 +179,21 @@ was introduced **by the repair for the first**:
 `[μ_R]` the repair has failed."*
 ⇒ ⭐ **Write forbidden-pattern examples with PLACEHOLDER content, never the step's real content**, and
 ⛔ never state the pass condition for a load-test — the builder iterates toward whatever it can see.
+
+### ⛔⛔ THE GATE MUST PROBE SYMBOLS IN PROXIMITY, ⛔ NOT ASSEMBLED EXPRESSIONS
+
+⚠ **Measured 2026-08-04, and the gate reported CLEAN over 52 probes while the answer sat in the file.** The
+probe was the fixed string `muR/rhoBr`; the text read `muR k2/rhoBr`. ⛔ **A fixed-string probe for a
+composed ratio does not match that same ratio with a factor between its symbols** — and there are
+unboundedly many such factors, so ⛔ enumerating spellings is the wrong architecture.
+
+⭐ **Probe for the SYMBOLS, co-occurring, and read every hit yourself:**
+```bash
+rg -n "muR" $DIRECTIVES | rg "rhoBr"        # both symbols, same line — then READ the hits
+```
+⭐ A handful of legitimate hits you adjudicate beats a clean report you cannot trust. ⇒ ⚠ A leak gate that
+returns **zero hits** on a packet that names the step's own symbols is evidence the **probes** are wrong,
+⛔ not evidence the packet is clean.
 
 ## Invariants
 

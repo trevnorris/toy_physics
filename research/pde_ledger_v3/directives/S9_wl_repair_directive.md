@@ -165,6 +165,50 @@ it, R1 is only inspectable by reading the source.
 control (a speed where no root passes E1, say), emit the **computed empty object** — an empty list —
 ⛔ never a word, and ⛔ never a placeholder value.
 
+## R8 — ⭐⭐ GIVE THE DYNAMICAL MATRIX A GENUINELY INDEPENDENT SECOND ROUTE
+
+Right now the dynamical matrix `M` is produced by exactly **one** route — vary the Lagrangian in
+position space, then substitute the plane wave — and **nothing cross-checks it.** A sign error or a
+dropped term in that variation corrupts every root, every polarisation test and every dimension
+downstream, and no emitted object would move.
+
+⭐ **Build a second, structurally different route to `M` and difference the two.**
+
+- **Route A (already present):** Euler–Lagrange variation in position space → equation of motion →
+  substitute the plane wave → read `M` off the coefficients of the amplitude vector.
+- **Route B (new):** substitute the plane-wave ansatz **directly into the Lagrangian**, reduce it to a
+  quadratic form in the amplitude vector `a`, and obtain `M` from that quadratic form by differentiating
+  with respect to the amplitude components. ⛔ Do not reuse anything computed in Route A.
+
+Emit `M_A`, `M_B`, and the **residual `M_A − M_B`** as three separate tags — ⭐ these are two genuinely
+independent routes, so this residual is **not** tautological and is exactly the operand pattern clause 2
+asks for. Emit all three **before** any hard stop, then stop if the residual is nonzero.
+
+⭐ Do this for the **main action and every control**, so a form change exercises both routes.
+
+⚠ Route B needs care with the complex exponential and with which convention you use for a real field's
+quadratic form. Whatever convention you choose, ⛔ do not tune it until the residual vanishes — if the
+two routes disagree by an overall factor or a sign, **emit the residual and say so in your report.**
+A disagreement here is a finding, ⛔ not a build failure.
+
+## R9 — update the harness configuration for the tags you add
+
+`/var/projects/toy_physics/research/pde_ledger_v3/reduction/checks_S9.yaml` maps symbol names to the
+tags carrying their dimensions, plus definitional primitives. Your changes add symbols (`muF`) and many
+new tags.
+
+- Add `muF` to `derived_dimensions`, pointing at whatever tag X7's dimension block emits for it.
+- Add any new primitive symbol you introduce, with its **definitional** dimension only.
+- ⛔ **Do not add any expected physics value to that file.** It maps names to tags; it stores no values,
+  and that is what stops a builder from tuning toward a target.
+
+Then run the harness yourself and paste its report:
+```
+cd /var/projects/toy_physics/research/pde_ledger_v3/reduction
+python3 engine_output_checks.py --config checks_S9.yaml --output <your run's stdout file>
+```
+⚠ `UNPAIRED` should fall sharply once R7 lands. ⛔ Do not tune anything to move that number — report it.
+
 ## Report back — under 30 lines
 
 1. Exit status and runtime of your own run; total tag count and confirmation all tags are unique.

@@ -1,0 +1,41 @@
+# This file maps names to emitted tags; it contains no expected physics value.
+default_engine: wl
+
+derived_dimensions:
+  rhoBr: WL_S9_RHO_DIMENSION
+  rhoZ: WL_S9_RHO_DIMENSION
+  muR: WL_S9_MU_DIMENSION
+
+# Narrow allowed exception: these vectors are definitional conventions, not
+# results. Coordinates/displacements are lengths, wave numbers are inverse
+# lengths, angular frequencies are inverse times, and the squared symbols and
+# amplitudes inherit those definitions. Exponent convention: [L, T, M].
+primitive_dimensions:
+  t: [0, 1, 0]
+  x: [1, 0, 0]
+  y: [1, 0, 0]
+  z: [1, 0, 0]
+  u1: [1, 0, 0]
+  u2: [1, 0, 0]
+  u3: [1, 0, 0]
+  a1: [1, 0, 0]
+  a2: [1, 0, 0]
+  a3: [1, 0, 0]
+  kx: [-1, 0, 0]
+  ky: [-1, 0, 0]
+  kz: [-1, 0, 0]
+  q: [-2, 0, 0]
+  omega: [0, -1, 0]
+  omegaSquared: [0, -2, 0]
+
+dimensionless:
+  - D
+  - lambdaRho
+  - lambdaMu
+  - rhoExponent
+  - muExponent
+
+# S9 has no second engine output and emits no direct values for every QID in a
+# registry residual. The mechanisms remain active and are tested independently.
+cross_engine: []
+registry_residual: []

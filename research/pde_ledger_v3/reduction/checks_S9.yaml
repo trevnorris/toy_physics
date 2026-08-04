@@ -6,6 +6,7 @@ derived_dimensions:
   rhoZ: WL_S9_X6_RHO_Z_DIMENSION
   muR: WL_S9_MU_DIMENSION
   muF: WL_S9_X7_MU_F_DIMENSION
+  muG: WL_S9_X8_MU_G_DIMENSION
 
 # Narrow allowed exception: these vectors are definitional conventions, not
 # results. Coordinates/displacements are lengths, wave numbers are inverse
@@ -40,10 +41,63 @@ dimensionless:
   - rhoZExponent
   - muExponent
   - muFExponent
+  - muGExponent
   - Sign
   - Im
 
-# S9 has no second engine output and emits no direct values for every QID in a
-# registry residual. The mechanisms remain active and are tested independently.
-cross_engine: []
+# Selectors normalize emitted shape only; no selector names a result value.
+cross_engine:
+  - quantity: factored_determinant
+    wl: WL_S9_DETERMINANT
+    py: PY_S9_MAIN_DET_M_FACTORED
+    wl_select: scalar
+    py_select: scalar
+  - quantity: full_root_set
+    wl: WL_S9_ROOT_MULTISET
+    py: PY_S9_MAIN_ROOT_MULTISET
+    mode: multiset
+  - quantity: transverse_multiplicity
+    wl: WL_S9_ROOT2_E2
+    py: PY_S9_MAIN_ROOT_E2
+    wl_select: scalar
+    py_select: last_pair_second
+  - quantity: transverse_speed_squared
+    wl: WL_S9_CANDIDATE_SPEED_SQUARED1
+    py: PY_S9_MAIN_SPEED_SQUARED_CANDIDATES
+    wl_select: scalar
+    py_select: list
+  - quantity: homogeneity_defect
+    wl: WL_S9_HOMOGENEITY_DEFECT1
+    py: PY_S9_MAIN_HOMOGENEITY_DEFECTS
+    wl_select: scalar
+    py_select: list
+  - quantity: inertia_coefficient_dimension
+    wl: WL_S9_RHO_DIMENSION
+    py: PY_S9_MAIN_DIM_PRIMARY_INERTIA
+  - quantity: stiffness_coefficient_dimension
+    wl: WL_S9_MU_DIMENSION
+    py: PY_S9_MAIN_DIM_PRIMARY_STIFFNESS
+  - quantity: coefficient_dimension_difference
+    wl: WL_S9_MU_RHO_DIMENSION_DIFFERENCE
+    py: PY_S9_MAIN_DIM_STIFFNESS_MINUS_INERTIA
+  - quantity: implied_speed_dimension
+    wl: WL_S9_SPEED_SQUARED_IMPLIED_DIMENSION
+    py: PY_S9_MAIN_DIM_SPEED_FROM_EXPRESSION
+    wl_select: list
+    py_select: list_of_pairs_second
+  - quantity: speed_dimension_difference
+    wl: WL_S9_SPEED_SQUARED_DIMENSION_DIFFERENCE
+    py: PY_S9_MAIN_DIM_SPEED_DIFFERENCE
+    wl_select: list
+    py_select: list_of_pairs_second
+  - quantity: dynamical_matrix_route_residual
+    wl: WL_S9_DYNAMICAL_MATRIX_RESIDUAL
+    py: PY_S9_MAIN_ROUTE_OPERANDS_AND_RESIDUAL
+    py_select: sequence_third
+  - quantity: bare_field_coefficient_dimension
+    wl: WL_S9_X8_MU_G_DIMENSION
+    py: PY_S9_X8_DIM_COEFFICIENTS
+    py_select: last_pair_second
+
+# S9 still emits no direct values for every QID in a registry residual.
 registry_residual: []

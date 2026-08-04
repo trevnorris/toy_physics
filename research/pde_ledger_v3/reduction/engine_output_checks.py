@@ -12,6 +12,7 @@ import argparse
 import re
 import sys
 from dataclasses import dataclass
+from enum import Enum
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
@@ -27,8 +28,11 @@ except ImportError:  # Direct ``python engine_output_checks.py`` invocation.
 TAG_PATTERN = re.compile(r"^([A-Za-z][A-Za-z0-9_]*)[ \t]*(?::|->)[ \t]*(.*)$")
 CONTROL_TAG_PATTERN = re.compile(r"^(?P<base>.+)_X(?P<control>[1-9][0-9]*)_(?P<suffix>.+)$")
 TOKEN_PATTERN = re.compile(
-    r"(?P<WS>\s+)|(?P<ARROW>->)|(?P<EQUAL>==)|(?P<INT>[0-9]+)|"
-    r"(?P<IDENT>[A-Za-z][A-Za-z0-9_$]*)|(?P<PUNCT>[+\-*/^{}()[\],])"
+    r"(?P<WS>\s+)|(?P<ASSOC_OPEN><\|)|(?P<ASSOC_CLOSE>\|>)|"
+    r"(?P<AND>&&)|(?P<OR>\|\|)|(?P<ARROW>->)|(?P<GE>>=)|(?P<LE><=)|"
+    r"(?P<EQUAL>==)|(?P<NE>!=)|(?P<GT>>)|(?P<LT><)|(?P<NOT>!)|"
+    r"(?P<INT>[0-9]+)|(?P<IDENT>[A-Za-z][A-Za-z0-9_$]*)|"
+    r"(?P<PUNCT>[+\-*/^{}()[\],])"
 )
 ZERO_DIMENSION = (sp.Integer(0), sp.Integer(0), sp.Integer(0))
 
@@ -49,6 +53,48 @@ class DimensionError(ValueError):
 class Unparsed:
     raw: str
     error: str
+
+
+class ValueKind(str, Enum):
+    EXPRESSION = "expression"
+    MATRIX = "matrix"
+    LIST = "list"
+    MAPPING = "mapping"
+    BOOLEAN = "boolean"
+    RELATION = "relation"
+    INTEGER = "integer"
+
+
+DIMENSIONFUL_KINDS = frozenset(
+    {
+        ValueKind.EXPRESSION,
+        ValueKind.MATRIX,
+        ValueKind.LIST,
+        ValueKind.RELATION,
+        ValueKind.INTEGER,
+    }
+)
+
+
+@dataclass(frozen=True)
+class ParsedValue:
+    kind: ValueKind
+    value: object
+
+
+@dataclass(frozen=True)
+class CasRule:
+    left: object
+    right: object
+
+
+def _is_boolean_value(value: object) -> bool:
+    return (
+        isinstance(value, bool)
+        or getattr(value, "is_Boolean", False) is True
+        or isinstance(value, sp.assumptions.assume.AppliedPredicate)
+        or isinstance(value, (sp.core.relational.Relational, sp.Contains))
+    )
 
 
 class OpaqueDerivative(sp.Symbol):
@@ -88,6 +134,12 @@ class UnknownSymbol:
 
 
 @dataclass(frozen=True)
+class NonDimensional:
+    tag: str
+    kind: ValueKind
+
+
+@dataclass(frozen=True)
 class DimensionReport:
     total_tags: int
     checked_tags: int
@@ -96,6 +148,7 @@ class DimensionReport:
     unknown_symbols: tuple[UnknownSymbol, ...]
     errors: tuple[str, ...]
     unparsed: tuple[str, ...]
+    non_dimensional: tuple[NonDimensional, ...]
 
 
 @dataclass(frozen=True)
@@ -116,10 +169,25 @@ class ControlReport:
 
 
 @dataclass(frozen=True)
+class ParityRow:
+    engine: str
+    package: str
+    missing: tuple[str, ...]
+    extra: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class ParityReport:
+    rows: tuple[ParityRow, ...]
+
+
+@dataclass(frozen=True)
 class CrossEngineRow:
     quantity: str
     status: str
     tags: tuple[tuple[str, str], ...]
+    operands: tuple[tuple[str, str], ...] = ()
+    detail: str = ""
 
 
 @dataclass(frozen=True)
@@ -143,6 +211,7 @@ class RegistryResidualReport:
 @dataclass(frozen=True)
 class HarnessReport:
     controls: ControlReport
+    parity: ParityReport
     dimensions: DimensionReport
     cross_engine: CrossEngineReport
     registry: RegistryResidualReport
@@ -154,14 +223,15 @@ class HarnessReport:
         if self.unparsed:
             failures.append(f"{len(self.unparsed)} value(s) were UNPARSED")
         if self.dimensions.unknown_symbols:
-            failures.append(
-                f"{len(self.dimensions.unknown_symbols)} dimensional UNKNOWN_SYMBOL occurrence(s)"
+            failures.extend(
+                f"dimensional UNKNOWN_SYMBOL {issue.tag}:{issue.symbol}"
+                for issue in self.dimensions.unknown_symbols
             )
         failures.extend(self.dimensions.errors)
         failures.extend(
             f"cross-engine {row.quantity}: {row.status}"
             for row in self.cross_engine.rows
-            if row.status in {"MISSING", "UNPARSED"}
+            if row.status in {"MISSING", "UNPARSED", "SHAPE_MISMATCH"}
         )
         failures.extend(
             f"registry {row.relation_id}: {row.status}"
@@ -252,22 +322,60 @@ class _MathematicaParser:
             )
 
     def parse(self) -> object:
-        result = self.parse_relation()
+        result = self.parse_or()
         if self.token.kind != "EOF":
             raise CasParseError(
                 f"trailing token at offset {self.token.offset}: {self.token.text!r}"
             )
         return result
 
+    def parse_or(self) -> object:
+        result = self.parse_and()
+        while self.accept("||"):
+            result = sp.Or(
+                self._boolean(result, "|| left operand"),
+                self._boolean(self.parse_and(), "|| right operand"),
+                evaluate=False,
+            )
+        return result
+
+    def parse_and(self) -> object:
+        result = self.parse_not()
+        while self.accept("&&"):
+            result = sp.And(
+                self._boolean(result, "&& left operand"),
+                self._boolean(self.parse_not(), "&& right operand"),
+                evaluate=False,
+            )
+        return result
+
+    def parse_not(self) -> object:
+        if self.accept("!"):
+            return sp.Not(
+                self._boolean(self.parse_not(), "! operand"), evaluate=False
+            )
+        return self.parse_relation()
+
     def parse_relation(self) -> object:
         left = self.parse_add()
         if self.accept("->"):
-            return (left, self.parse_relation())
-        if self.accept("=="):
-            right = self.parse_relation()
-            return sp.Eq(
-                self._scalar(left, "equation left side"),
-                self._scalar(right, "equation right side"),
+            return CasRule(left, self.parse_or())
+        relations = {
+            "==": sp.Eq,
+            "!=": sp.Ne,
+            ">": sp.Gt,
+            ">=": sp.Ge,
+            "<": sp.Lt,
+            "<=": sp.Le,
+        }
+        relation = relations.get(self.token.text)
+        if relation is not None:
+            operator = self.token.text
+            self.position += 1
+            right = self.parse_add()
+            return relation(
+                self._scalar(left, f"{operator} left side"),
+                self._scalar(right, f"{operator} right side"),
                 evaluate=False,
             )
         return left
@@ -329,15 +437,34 @@ class _MathematicaParser:
                 value = self._function_call(value, arguments)
             return value
         if self.accept("("):
-            result = self.parse_relation()
+            result = self.parse_or()
             self.expect(")")
             return result
         if self.accept("{"):
             values: list[object] = []
             if not self.accept("}"):
                 while True:
-                    values.append(self.parse_relation())
+                    values.append(self.parse_or())
                     if self.accept("}"):
+                        break
+                    self.expect(",")
+            return values
+        if self.accept("<|"):
+            values: dict[object, object] = {}
+            if not self.accept("|>"):
+                while True:
+                    rule = self.parse_or()
+                    if not isinstance(rule, CasRule):
+                        raise CasParseError("association entries must have key -> value form")
+                    try:
+                        if rule.left in values:
+                            raise CasParseError(
+                                f"duplicate association key {rule.left!r}"
+                            )
+                        values[rule.left] = rule.right
+                    except TypeError as exc:
+                        raise CasParseError("association keys must be hashable") from exc
+                    if self.accept("|>"):
                         break
                     self.expect(",")
             return values
@@ -350,7 +477,7 @@ class _MathematicaParser:
         arguments: list[object] = []
         if not self.accept("]"):
             while True:
-                arguments.append(self.parse_relation())
+                arguments.append(self.parse_or())
                 if self.accept("]"):
                     break
                 self.expect(",")
@@ -386,6 +513,12 @@ class _MathematicaParser:
             raise CasParseError(f"{context} is not a scalar expression")
         return sp.Integer(value) if isinstance(value, int) else value
 
+    @staticmethod
+    def _boolean(value: object, context: str) -> object:
+        if _is_boolean_value(value):
+            return value
+        raise CasParseError(f"{context} is not a boolean expression")
+
     def _binary(self, operator: str, left: object, right: object) -> sp.Expr:
         lhs = self._scalar(left, f"{operator} left operand")
         rhs = self._scalar(right, f"{operator} right operand")
@@ -402,8 +535,17 @@ class _MathematicaParser:
     def _function_call(self, head: object, arguments: tuple[object, ...]) -> sp.Expr:
         if not isinstance(head, sp.Symbol):
             raise CasParseError(f"unsupported function head {head!r}")
-        scalars = tuple(self._scalar(value, f"argument of {head}") for value in arguments)
         name = str(head)
+        if name == "Element":
+            if (
+                len(arguments) != 2
+                or not isinstance(arguments[1], sp.Symbol)
+                or str(arguments[1]) != "Reals"
+            ):
+                raise CasParseError("Element currently supports Element[x, Reals]")
+            element = self._scalar(arguments[0], "Element first argument")
+            return sp.Contains(element, sp.S.Reals, evaluate=False)
+        scalars = tuple(self._scalar(value, f"argument of {head}") for value in arguments)
         if name == "Sqrt":
             if len(scalars) != 1:
                 raise CasParseError("Sqrt expects one argument")
@@ -423,45 +565,198 @@ class _MathematicaParser:
         return sp.Function(name)(*scalars)
 
 
-def normalize_mathematica(raw: str) -> object | Unparsed:
-    """Normalize one InputForm value, preserving failures as data."""
+_SYMBOL_ALIASES: dict[str, sp.Expr] = {
+    "mu_R": sp.Symbol("muR"),
+    "rho_br": sp.Symbol("rhoBr"),
+    "rho_z": sp.Symbol("rhoZ"),
+    "mu_F": sp.Symbol("muF"),
+    "mu_G": sp.Symbol("muG"),
+    "lambda_rho": sp.Symbol("lambdaRho"),
+    "lambda_mu": sp.Symbol("lambdaMu"),
+    "omega2": sp.Symbol("omega") ** 2,
+    "omegaSquared": sp.Symbol("omega") ** 2,
+}
+
+
+def _canonicalize(value: object) -> object:
+    """Canonicalize spelling differences without supplying a comparison value."""
+    if isinstance(value, sp.MatrixBase):
+        return value.applyfunc(_canonicalize)
+    if isinstance(value, Mapping):
+        return {_canonicalize(key): _canonicalize(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_canonicalize(item) for item in value]
+    if isinstance(value, tuple):
+        return tuple(_canonicalize(item) for item in value)
+    if isinstance(value, (set, frozenset)):
+        return [_canonicalize(item) for item in sorted(value, key=str)]
+    if isinstance(value, CasRule):
+        return CasRule(_canonicalize(value.left), _canonicalize(value.right))
+    if isinstance(value, sp.Basic):
+        replacements = {
+            symbol: _SYMBOL_ALIASES[str(symbol)]
+            for symbol in value.free_symbols
+            if str(symbol) in _SYMBOL_ALIASES
+        }
+        return value.xreplace(replacements)
+    return value
+
+
+def value_kind(value: object) -> ValueKind:
+    if isinstance(value, ParsedValue):
+        return value.kind
+    if isinstance(value, (CasRule, sp.core.relational.Relational, sp.Contains)):
+        return ValueKind.RELATION
+    if _is_boolean_value(value):
+        return ValueKind.BOOLEAN
+    if isinstance(value, Mapping):
+        return ValueKind.MAPPING
+    if isinstance(value, sp.MatrixBase):
+        return ValueKind.MATRIX
+    if isinstance(value, (list, tuple, set, frozenset)):
+        return ValueKind.LIST
+    if isinstance(value, int) or isinstance(value, sp.Integer):
+        return ValueKind.INTEGER
+    if isinstance(value, sp.Basic):
+        return ValueKind.EXPRESSION
+    raise CasParseError(f"unsupported normalized value {type(value).__name__}")
+
+
+def _parsed(value: object) -> ParsedValue:
+    canonical = _canonicalize(value)
+    return ParsedValue(value_kind(canonical), canonical)
+
+
+def normalize_mathematica(raw: str) -> ParsedValue | Unparsed:
+    """Normalize one Mathematica InputForm value, preserving failures as data."""
     try:
-        return _MathematicaParser(raw).parse()
+        return _parsed(_MathematicaParser(raw).parse())
     except (CasParseError, TypeError, ValueError) as exc:
         return Unparsed(raw=raw, error=str(exc))
 
 
-def normalize_tags(tags: Mapping[str, str]) -> dict[str, object | Unparsed]:
-    return {tag: normalize_mathematica(raw) for tag, raw in tags.items()}
+def normalize_sympy(raw: str) -> ParsedValue | Unparsed:
+    """Normalize one SymPy ``str`` emission, including its container forms."""
+    try:
+        value = sp.sympify(
+            raw,
+            locals={
+                "Matrix": sp.Matrix,
+                "Eq": sp.Eq,
+                "Derivative": sp.Derivative,
+                "Q": sp.Q,
+            },
+            evaluate=False,
+        )
+        return _parsed(value)
+    except Exception as exc:  # SymPy exposes several parser exception classes.
+        return Unparsed(raw=raw, error=str(exc))
+
+
+def _normalize_auto(raw: str) -> ParsedValue | Unparsed:
+    mathematica = normalize_mathematica(raw)
+    return normalize_sympy(raw) if isinstance(mathematica, Unparsed) else mathematica
+
+
+def normalize_tags(
+    tags: Mapping[str, str], syntax: str | None = None
+) -> dict[str, ParsedValue | Unparsed]:
+    if syntax not in {None, "wl", "py"}:
+        raise ValueError(f"unknown CAS syntax {syntax!r}")
+    normalized: dict[str, ParsedValue | Unparsed] = {}
+    for tag, raw in tags.items():
+        selected = syntax
+        if selected is None:
+            selected = "py" if tag.startswith("PY_") else "wl" if tag.startswith("WL_") else None
+        normalizer = (
+            normalize_sympy
+            if selected == "py"
+            else normalize_mathematica
+            if selected == "wl"
+            else _normalize_auto
+        )
+        normalized[tag] = normalizer(raw)
+    return normalized
+
+
+def _unwrap(value: object) -> object:
+    return value.value if isinstance(value, ParsedValue) else value
+
+
+def _sequence_form(value: object) -> list[object] | None:
+    value = _unwrap(value)
+    if isinstance(value, sp.MatrixBase):
+        if value.rows == 1 or value.cols == 1:
+            return list(value)
+        return [[value[row, column] for column in range(value.cols)] for row in range(value.rows)]
+    if isinstance(value, (list, tuple)):
+        return list(value)
+    return None
+
+
+def symbolic_shapes_compatible(left: object, right: object) -> bool:
+    left = _unwrap(left)
+    right = _unwrap(right)
+    left_sequence = _sequence_form(left)
+    right_sequence = _sequence_form(right)
+    if left_sequence is not None or right_sequence is not None:
+        return (
+            left_sequence is not None
+            and right_sequence is not None
+            and len(left_sequence) == len(right_sequence)
+            and all(
+                symbolic_shapes_compatible(a, b)
+                for a, b in zip(left_sequence, right_sequence)
+            )
+        )
+    if isinstance(left, Mapping) or isinstance(right, Mapping):
+        return isinstance(left, Mapping) and isinstance(right, Mapping) and len(left) == len(right)
+    if isinstance(left, CasRule) or isinstance(right, CasRule):
+        return isinstance(left, CasRule) and isinstance(right, CasRule)
+    left_boolean = _is_boolean_value(left)
+    right_boolean = _is_boolean_value(right)
+    return left_boolean == right_boolean
 
 
 def symbolic_equal(left: object, right: object) -> bool:
     """Compare normalized values symbolically; never compare their text."""
     if isinstance(left, Unparsed) or isinstance(right, Unparsed):
         raise ValueError("UNPARSED values cannot be compared")
-    if isinstance(left, bool) or isinstance(right, bool):
-        return isinstance(left, bool) and isinstance(right, bool) and left is right
-    if isinstance(left, list) or isinstance(right, list):
+    left = _unwrap(left)
+    right = _unwrap(right)
+    left_sequence = _sequence_form(left)
+    right_sequence = _sequence_form(right)
+    if left_sequence is not None or right_sequence is not None:
         return (
-            isinstance(left, list)
-            and isinstance(right, list)
-            and len(left) == len(right)
-            and all(symbolic_equal(a, b) for a, b in zip(left, right))
+            left_sequence is not None
+            and right_sequence is not None
+            and len(left_sequence) == len(right_sequence)
+            and all(symbolic_equal(a, b) for a, b in zip(left_sequence, right_sequence))
         )
-    if isinstance(left, tuple) or isinstance(right, tuple):
+    if isinstance(left, Mapping) or isinstance(right, Mapping):
+        if not isinstance(left, Mapping) or not isinstance(right, Mapping) or len(left) != len(right):
+            return False
+        unmatched = list(right.items())
+        for left_key, left_value in left.items():
+            for index, (right_key, right_value) in enumerate(unmatched):
+                if symbolic_equal(left_key, right_key) and symbolic_equal(left_value, right_value):
+                    del unmatched[index]
+                    break
+            else:
+                return False
+        return not unmatched
+    if isinstance(left, CasRule) or isinstance(right, CasRule):
         return (
-            isinstance(left, tuple)
-            and isinstance(right, tuple)
-            and len(left) == len(right)
-            and all(symbolic_equal(a, b) for a, b in zip(left, right))
+            isinstance(left, CasRule)
+            and isinstance(right, CasRule)
+            and symbolic_equal(left.left, right.left)
+            and symbolic_equal(left.right, right.right)
         )
-    if isinstance(left, sp.Equality) or isinstance(right, sp.Equality):
-        return (
-            isinstance(left, sp.Equality)
-            and isinstance(right, sp.Equality)
-            and symbolic_equal(left.lhs, right.lhs)
-            and symbolic_equal(left.rhs, right.rhs)
-        )
+    if _is_boolean_value(left) or _is_boolean_value(right):
+        try:
+            return sp.simplify(sp.Equivalent(left, right)) is sp.true
+        except (TypeError, ValueError):
+            return left == right
     if isinstance(left, (int, sp.Basic)) and isinstance(right, (int, sp.Basic)):
         lhs = sp.Integer(left) if isinstance(left, int) else left
         rhs = sp.Integer(right) if isinstance(right, int) else right
@@ -473,11 +768,17 @@ def symbolic_equal(left: object, right: object) -> bool:
 
 
 def symbolic_multiset_equal(left: object, right: object) -> bool:
-    """Order-insensitive symbolic comparison, used only for root multisets."""
-    if not isinstance(left, list) or not isinstance(right, list) or len(left) != len(right):
+    """Order-insensitive symbolic comparison, enabled explicitly by config."""
+    left_sequence = _sequence_form(left)
+    right_sequence = _sequence_form(right)
+    if (
+        left_sequence is None
+        or right_sequence is None
+        or len(left_sequence) != len(right_sequence)
+    ):
         return False
-    unmatched = list(right)
-    for item in left:
+    unmatched = list(right_sequence)
+    for item in left_sequence:
         for index, candidate in enumerate(unmatched):
             if symbolic_equal(item, candidate):
                 del unmatched[index]
@@ -497,30 +798,53 @@ def _compare_for_tag(tag: str, left: object, right: object) -> bool:
     return symbolic_equal(left, right)
 
 
-def check_control_response(values: Mapping[str, object | Unparsed]) -> ControlReport:
-    """Partition fully-counterparted main tags into RESPONSIVE and INVARIANT."""
-    controls_by_base: dict[str, set[str]] = {}
+def _package_layout(
+    values: Mapping[str, object],
+) -> tuple[tuple[str, str, dict[str, str], dict[str, dict[str, str]]], ...]:
+    """Return base, main package, main suffix tags, and control suffix tags."""
+    bases: set[str] = set()
     for tag in values:
         match = CONTROL_TAG_PATTERN.match(tag)
         if match:
-            controls_by_base.setdefault(match.group("base"), set()).add(match.group("control"))
+            bases.add(match.group("base"))
+    layouts: list[tuple[str, str, dict[str, str], dict[str, dict[str, str]]]] = []
+    for base in sorted(bases):
+        main_prefix = f"{base}_MAIN_" if any(
+            tag.startswith(f"{base}_MAIN_") for tag in values
+        ) else f"{base}_"
+        main_package = main_prefix[:-1]
+        main: dict[str, str] = {}
+        controls: dict[str, dict[str, str]] = {}
+        for tag in values:
+            match = CONTROL_TAG_PATTERN.match(tag)
+            if match and match.group("base") == base:
+                package = f"{base}_X{match.group('control')}"
+                controls.setdefault(package, {})[match.group("suffix")] = tag
+            elif tag.startswith(main_prefix):
+                main[tag[len(main_prefix) :]] = tag
+        layouts.append((base, main_package, main, controls))
+    return tuple(layouts)
 
+
+def check_control_response(
+    values: Mapping[str, ParsedValue | Unparsed]
+) -> ControlReport:
+    """Partition fully-counterparted main tags into RESPONSIVE and INVARIANT."""
     responsive: list[ControlRow] = []
     invariant: list[ControlRow] = []
     unparsed: list[ControlRow] = []
     unpaired: list[str] = []
     all_control_labels: list[str] = []
 
-    for base, control_ids_set in sorted(controls_by_base.items()):
-        control_ids = tuple(sorted(control_ids_set, key=int))
-        all_control_labels.extend(f"{base}_X{control}" for control in control_ids)
-        main_prefix = base + "_"
-        for main_tag in sorted(values):
-            if not main_tag.startswith(main_prefix) or CONTROL_TAG_PATTERN.match(main_tag):
-                continue
-            suffix = main_tag[len(main_prefix) :]
-            control_tags = tuple(f"{base}_X{control}_{suffix}" for control in control_ids)
-            if any(tag not in values for tag in control_tags):
+    for _base, _main_package, main, control_packages in _package_layout(values):
+        all_control_labels.extend(sorted(control_packages))
+        for suffix, main_tag in sorted(main.items()):
+            control_tags = tuple(
+                tags[suffix]
+                for _package, tags in sorted(control_packages.items())
+                if suffix in tags
+            )
+            if len(control_tags) != len(control_packages):
                 unpaired.append(main_tag)
                 continue
             row = ControlRow(main_tag, "", control_tags, ())
@@ -547,11 +871,34 @@ def check_control_response(values: Mapping[str, object | Unparsed]) -> ControlRe
     )
 
 
+def check_tag_parity(
+    outputs: Mapping[str, Mapping[str, ParsedValue | Unparsed]],
+) -> ParityReport:
+    """Compare each control package's suffix set with its engine's main package."""
+    rows: list[ParityRow] = []
+    for engine, values in sorted(outputs.items()):
+        for _base, _main_package, main, controls in _package_layout(values):
+            main_suffixes = set(main)
+            for package, package_tags in sorted(controls.items()):
+                package_suffixes = set(package_tags)
+                rows.append(
+                    ParityRow(
+                        engine=engine,
+                        package=package,
+                        missing=tuple(sorted(main_suffixes - package_suffixes)),
+                        extra=tuple(sorted(package_suffixes - main_suffixes)),
+                    )
+                )
+    return ParityReport(tuple(rows))
+
+
 def _as_dimension(value: object, label: str) -> tuple[sp.Expr, sp.Expr, sp.Expr]:
-    if not isinstance(value, list) or len(value) != 3:
+    value = _unwrap(value)
+    sequence = _sequence_form(value)
+    if sequence is None or len(sequence) != 3:
         raise HarnessError(f"{label} must carry a three-component dimension vector")
     result: list[sp.Expr] = []
-    for component in value:
+    for component in sequence:
         if isinstance(component, bool) or not isinstance(component, (int, sp.Expr)):
             raise HarnessError(f"{label} has a nonscalar dimension component: {component!r}")
         result.append(sp.Integer(component) if isinstance(component, int) else component)
@@ -590,29 +937,34 @@ class _DimensionWalker:
         self.unknown: set[str] = set()
 
     def walk_container(self, value: object) -> None:
-        if isinstance(value, bool):
+        value = _unwrap(value)
+        if isinstance(value, CasRule):
+            sides = (value.left, value.right)
+            dimensions = tuple(self.dimension(self._expression(side)) for side in sides)
+            if all(dimension is not None for dimension in dimensions) and not (
+                sides[0] == 0
+                or sides[1] == 0
+                or _dimension_equal(dimensions[0], dimensions[1])  # type: ignore[arg-type]
+            ):
+                self._record(f"{sides[0]} -> {sides[1]}", sides, dimensions)
             return
-        if isinstance(value, list):
+        if _is_boolean_value(value) and not isinstance(
+            value, sp.core.relational.Relational
+        ):
+            return
+        if isinstance(value, Mapping):
+            return
+        if isinstance(value, sp.MatrixBase):
             for item in value:
                 self.walk_container(item)
             return
-        if isinstance(value, tuple):
-            if len(value) != 2:
-                raise DimensionError("a normalized Rule must contain exactly two sides")
-            sides = tuple(
-                sp.Integer(side) if isinstance(side, int) and not isinstance(side, bool) else side
-                for side in value
-            )
-            if any(not isinstance(side, sp.Basic) for side in sides):
-                raise DimensionError("Rule sides must be scalar expressions")
-            left = self.dimension(sides[0])
-            right = self.dimension(sides[1])
-            if left is not None and right is not None and not (
-                sides[0] == 0 or sides[1] == 0 or _dimension_equal(left, right)
-            ):
-                self._record(f"{sides[0]} -> {sides[1]}", sides, (left, right))
+        if isinstance(value, (list, tuple)):
+            for item in value:
+                self.walk_container(item)
             return
-        if isinstance(value, sp.Equality):
+        if isinstance(value, sp.Contains):
+            return
+        if isinstance(value, sp.core.relational.Relational):
             left = self.dimension(value.lhs)
             right = self.dimension(value.rhs)
             if left is not None and right is not None and not (
@@ -624,6 +976,12 @@ class _DimensionWalker:
             self.dimension(sp.Integer(value) if isinstance(value, int) else value)
             return
         raise DimensionError(f"unsupported normalized value {type(value).__name__}")
+
+    @staticmethod
+    def _expression(value: object) -> sp.Expr:
+        if isinstance(value, bool) or not isinstance(value, (int, sp.Basic)):
+            raise DimensionError("Rule sides must be scalar expressions")
+        return sp.Integer(value) if isinstance(value, int) else value
 
     def dimension(self, expression: sp.Expr) -> tuple[sp.Expr, sp.Expr, sp.Expr] | None:
         if isinstance(expression, OpaqueDerivative):
@@ -710,7 +1068,7 @@ class _DimensionWalker:
 
 
 def _dimension_table(
-    config: Mapping[str, Any], values: Mapping[str, object | Unparsed]
+    config: Mapping[str, Any], values: Mapping[str, ParsedValue | Unparsed]
 ) -> dict[str, tuple[sp.Expr, sp.Expr, sp.Expr]]:
     table: dict[str, tuple[sp.Expr, sp.Expr, sp.Expr]] = {}
     primitives = config.get("primitive_dimensions", {})
@@ -740,17 +1098,22 @@ def _dimension_table(
     for symbol, tag in derived.items():
         if not isinstance(symbol, str) or not isinstance(tag, str):
             raise HarnessError("derived_dimensions entries must map names to tag names")
+        # A coefficient may only exist in one control package.  Its absence
+        # from the outputs supplied to this run is therefore not an error.
         if tag not in values:
-            raise HarnessError(f"derived dimension tag is missing: {tag}")
+            continue
         value = values[tag]
         if isinstance(value, Unparsed):
             raise HarnessError(f"derived dimension tag is UNPARSED: {tag}: {value.error}")
+        raw_value = _unwrap(value)
+        if isinstance(raw_value, (list, tuple)) and not raw_value:
+            continue
         table[symbol] = _as_dimension(value, tag)
     return table
 
 
 def check_dimensions(
-    values: Mapping[str, object | Unparsed], config: Mapping[str, Any]
+    values: Mapping[str, ParsedValue | Unparsed], config: Mapping[str, Any]
 ) -> DimensionReport:
     """Check every parsed emission using dimensions generated by this run."""
     dimensions = _dimension_table(config, values)
@@ -758,11 +1121,15 @@ def check_dimensions(
     unknown_symbols: list[UnknownSymbol] = []
     errors: list[str] = []
     unparsed: list[str] = []
+    non_dimensional: list[NonDimensional] = []
     checked = 0
     homogeneous = 0
     for tag, value in values.items():
         if isinstance(value, Unparsed):
             unparsed.append(tag)
+            continue
+        if value.kind not in DIMENSIONFUL_KINDS:
+            non_dimensional.append(NonDimensional(tag, value.kind))
             continue
         walker = _DimensionWalker(dimensions, tag)
         try:
@@ -783,41 +1150,130 @@ def check_dimensions(
         unknown_symbols=tuple(unknown_symbols),
         errors=tuple(errors),
         unparsed=tuple(unparsed),
+        non_dimensional=tuple(non_dimensional),
     )
 
 
 def check_cross_engine(
     rows: Sequence[Mapping[str, str]],
-    outputs: Mapping[str, Mapping[str, object | Unparsed]],
+    outputs: Mapping[str, Mapping[str, ParsedValue | Unparsed]],
 ) -> CrossEngineReport:
+    reserved = {"quantity", "mode"}
+
+    def select_shape(value: ParsedValue, selector: str | None) -> object:
+        selected = value.value
+        if selector is None:
+            return selected
+        if selector == "scalar":
+            if _sequence_form(selected) is not None or isinstance(selected, Mapping):
+                raise ValueError("expected scalar")
+            return selected
+        if selector == "list":
+            if not isinstance(selected, (list, tuple)) or len(selected) != 1:
+                raise ValueError("expected singleton list")
+            return selected[0]
+        if selector == "matrix":
+            if not isinstance(selected, sp.MatrixBase):
+                raise ValueError("expected matrix")
+            return selected
+        if selector in {"list_of_pairs_second", "last_pair_second"}:
+            if not isinstance(selected, (list, tuple)) or not selected:
+                raise ValueError("expected nonempty list of pairs")
+            pairs = [_sequence_form(item) for item in selected]
+            if any(pair is None or len(pair) != 2 for pair in pairs):
+                raise ValueError("expected list of pairs")
+            seconds = [pair[1] for pair in pairs if pair is not None]
+            if selector == "last_pair_second":
+                return seconds[-1]
+            return seconds[0] if len(seconds) == 1 else seconds
+        if selector == "sequence_third":
+            sequence = _sequence_form(selected)
+            if sequence is None or len(sequence) != 3:
+                raise ValueError("expected three-item sequence")
+            return sequence[2]
+        raise HarnessError(f"unknown cross-engine selector {selector!r}")
+
     results: list[CrossEngineRow] = []
     for row in rows:
         quantity = row.get("quantity")
         if not isinstance(quantity, str):
             raise HarnessError("each cross_engine row needs a quantity name")
-        tag_map = tuple((engine, tag) for engine, tag in row.items() if engine != "quantity")
+        tag_map = tuple(
+            (engine, tag)
+            for engine, tag in row.items()
+            if engine not in reserved and not engine.endswith("_select")
+        )
         if len(tag_map) < 2 or any(not isinstance(tag, str) for _, tag in tag_map):
             raise HarnessError(f"cross_engine {quantity} needs at least two engine tag names")
-        if any(engine not in outputs or tag not in outputs[engine] for engine, tag in tag_map):
+        missing = tuple(
+            f"{engine}:{tag}"
+            for engine, tag in tag_map
+            if engine not in outputs or tag not in outputs[engine]
+        )
+        operands: tuple[tuple[str, str], ...] = ()
+        detail = ""
+        if missing:
             status = "MISSING"
+            detail = ", ".join(missing)
         else:
             compared = tuple(outputs[engine][tag] for engine, tag in tag_map)
             if any(isinstance(value, Unparsed) for value in compared):
                 status = "UNPARSED"
+                operands = tuple(
+                    (
+                        engine,
+                        value.raw if isinstance(value, Unparsed) else str(value.value),
+                    )
+                    for (engine, _tag), value in zip(tag_map, compared)
+                )
             else:
-                first_tag = tag_map[0][1]
-                multiset = all(_is_root_multiset_tag(tag) for _, tag in tag_map)
-                comparator = symbolic_multiset_equal if multiset else symbolic_equal
-                status = "AGREE" if all(
-                    comparator(compared[0], value) for value in compared[1:]
-                ) else "DISAGREE"
-        results.append(CrossEngineRow(quantity, status, tag_map))
+                parsed_compared = tuple(
+                    value if isinstance(value, ParsedValue) else _parsed(value)
+                    for value in compared
+                )
+                try:
+                    selected = tuple(
+                        select_shape(value, row.get(f"{engine}_select"))
+                        for (engine, _tag), value in zip(tag_map, parsed_compared)
+                    )
+                except ValueError as exc:
+                    status = "SHAPE_MISMATCH"
+                    detail = str(exc)
+                    selected = tuple(
+                        value.value for value in parsed_compared
+                    )
+                operands = tuple(
+                    (engine, str(value))
+                    for (engine, _tag), value in zip(tag_map, selected)
+                )
+                if not detail:
+                    mode = row.get("mode", "symbolic")
+                    if mode not in {"symbolic", "multiset"}:
+                        raise HarnessError(
+                            f"cross_engine {quantity} has unknown mode {mode!r}"
+                        )
+                    shape_ok = all(
+                        symbolic_shapes_compatible(selected[0], value)
+                        for value in selected[1:]
+                    )
+                    if not shape_ok:
+                        status = "SHAPE_MISMATCH"
+                    else:
+                        comparator = (
+                            symbolic_multiset_equal if mode == "multiset" else symbolic_equal
+                        )
+                        status = (
+                            "AGREE"
+                            if all(comparator(selected[0], value) for value in selected[1:])
+                            else "DISAGREE"
+                        )
+        results.append(CrossEngineRow(quantity, status, tag_map, operands, detail))
     return CrossEngineReport(tuple(results))
 
 
 def check_registry_residuals(
     rows: Sequence[Mapping[str, Any]],
-    outputs: Mapping[str, Mapping[str, object | Unparsed]],
+    outputs: Mapping[str, Mapping[str, ParsedValue | Unparsed]],
     registry: Registry,
     default_engine: str,
 ) -> RegistryResidualReport:
@@ -859,9 +1315,14 @@ def check_registry_residuals(
         if any(isinstance(value, Unparsed) for value in values.values()):
             results.append(RegistryResidualRow(relation_id, "UNPARSED", None))
             continue
-        if any(isinstance(value, (bool, list, tuple, sp.Equality)) for value in values.values()):
+        raw_values = {qid: _unwrap(value) for qid, value in values.items()}
+        if any(
+            isinstance(value, (bool, list, tuple, Mapping, sp.MatrixBase, CasRule))
+            or _is_boolean_value(value)
+            for value in raw_values.values()
+        ):
             raise HarnessError(f"registry {relation_id} substitutions must be scalar expressions")
-        substitutions = {registry.symbols[qid]: value for qid, value in values.items()}
+        substitutions = {registry.symbols[qid]: value for qid, value in raw_values.items()}
         residual = sp.simplify(relation.residual.subs(substitutions))
         status = "ZERO" if residual == 0 else "NONZERO"
         results.append(RegistryResidualRow(relation_id, status, residual))
@@ -880,7 +1341,9 @@ def load_config(path: Path | str) -> dict[str, Any]:
     return config
 
 
-def load_output(path: Path | str) -> tuple[dict[str, str], dict[str, object | Unparsed]]:
+def load_output(
+    path: Path | str, syntax: str | None = None
+) -> tuple[dict[str, str], dict[str, ParsedValue | Unparsed]]:
     output_path = Path(path)
     try:
         text = output_path.read_text(encoding="utf-8")
@@ -890,12 +1353,12 @@ def load_output(path: Path | str) -> tuple[dict[str, str], dict[str, object | Un
         raw = parse_tagged_output(text)
     except ValueError as exc:
         raise HarnessError(f"cannot parse tagged output {output_path}: {exc}") from exc
-    return raw, normalize_tags(raw)
+    return raw, normalize_tags(raw, syntax=syntax)
 
 
 def run_checks(
     config: Mapping[str, Any],
-    outputs: Mapping[str, Mapping[str, object | Unparsed]],
+    outputs: Mapping[str, Mapping[str, ParsedValue | Unparsed]],
     *,
     registry_directory: Path | str | None = None,
 ) -> HarnessReport:
@@ -916,6 +1379,7 @@ def run_checks(
     )
     return HarnessReport(
         controls=check_control_response(default_values),
+        parity=check_tag_parity(outputs),
         dimensions=check_dimensions(default_values, config),
         cross_engine=check_cross_engine(cross_rows, outputs),
         registry=check_registry_residuals(
@@ -940,6 +1404,13 @@ def _format_dimension(dimension: tuple[sp.Expr, sp.Expr, sp.Expr] | None) -> str
 def format_report(report: HarnessReport) -> str:
     control = report.controls
     dimension = report.dimensions
+    parity_gaps = [row for row in report.parity.rows if row.missing or row.extra]
+    non_dimensional_counts: dict[str, int] = {}
+    for row in dimension.non_dimensional:
+        non_dimensional_counts[row.kind.value] = non_dimensional_counts.get(row.kind.value, 0) + 1
+    non_dimensional_detail = ",".join(
+        f"{name}={count}" for name, count in sorted(non_dimensional_counts.items())
+    ) or "none"
     lines = [
         (
             f"CONTROL_RESPONSE: compared={len(control.responsive) + len(control.invariant)} "
@@ -950,13 +1421,39 @@ def format_report(report: HarnessReport) -> str:
             f"DIMENSIONS: total={dimension.total_tags} checked={dimension.checked_tags} "
             f"homogeneous={dimension.homogeneous_tags} "
             f"non_homogeneous={len(dimension.non_homogeneous)} "
-            f"unknown_symbol={len(dimension.unknown_symbols)} unparsed={len(dimension.unparsed)}"
+            f"unknown_symbol={len(dimension.unknown_symbols)} "
+            f"unparsed={len(dimension.unparsed)}"
+        ),
+        (
+            f"NON_DIMENSIONAL: total={len(dimension.non_dimensional)} "
+            f"kinds=[{non_dimensional_detail}]"
         ),
         f"CROSS_ENGINE: {_status_counts(report.cross_engine.rows)}",
         f"REGISTRY_RESIDUAL: {_status_counts(report.registry.rows)}",
-        f"INVARIANT ({len(control.invariant)}):",
+        (
+            f"TAG_PARITY: packages={len(report.parity.rows)} "
+            f"gaps={len(parity_gaps)}"
+        ),
     ]
-    lines.extend(f"  {row.tag}" for row in control.invariant)
+    disagreements = [
+        row for row in report.cross_engine.rows if row.status == "DISAGREE"
+    ]
+    registry_disagreements = [
+        row for row in report.registry.rows if row.status == "NONZERO"
+    ]
+    lines.append(f"DISAGREE ({len(disagreements) + len(registry_disagreements)}):")
+    for row in disagreements:
+        operands = "; ".join(
+            f"{engine}[{dict(row.tags).get(engine)}]={operand}"
+            for engine, operand in row.operands
+        )
+        lines.append(f"  cross_engine:{row.quantity}: {operands}")
+    lines.extend(
+        f"  registry:{row.relation_id}: residual={row.residual}"
+        for row in registry_disagreements
+    )
+    invariant_names = ", ".join(row.tag for row in control.invariant)
+    lines.append(f"INVARIANT ({len(control.invariant)}): {invariant_names}")
     lines.append(f"NON_HOMOGENEOUS ({len(dimension.non_homogeneous)}):")
     for issue in dimension.non_homogeneous:
         rendered = "; ".join(
@@ -964,22 +1461,35 @@ def format_report(report: HarnessReport) -> str:
             for term in issue.summands
         )
         lines.append(f"  {issue.tag}: {rendered}")
+    lines.append(f"PARITY ({len(parity_gaps)}):")
+    lines.append(
+        "  why: present-and-identical is INVARIANT; absent is indistinguishable from never computed."
+    )
+    parity_groups: dict[
+        tuple[str, tuple[str, ...], tuple[str, ...]], list[str]
+    ] = {}
+    for row in parity_gaps:
+        parity_groups.setdefault(
+            (row.engine, row.missing, row.extra), []
+        ).append(row.package)
+    for (engine, missing_values, extra_values), packages in parity_groups.items():
+        missing = ",".join(missing_values) or "-"
+        extra = ",".join(extra_values) or "-"
+        lines.append(
+            f"  {engine}:packages=[{','.join(packages)}]: "
+            f"missing=[{missing}] extra=[{extra}]"
+        )
     lines.append(f"UNPARSED ({len(report.unparsed)}):")
     lines.extend(
         f"  {engine}:{tag}: {value.error}; raw={value.raw!r}"
         for engine, tag, value in report.unparsed
     )
-    disagreements = [
-        f"cross_engine:{row.quantity}"
-        for row in report.cross_engine.rows
-        if row.status == "DISAGREE"
-    ] + [
-        f"registry:{row.relation_id}: residual={row.residual}"
-        for row in report.registry.rows
-        if row.status == "NONZERO"
-    ]
-    lines.append(f"DISAGREE ({len(disagreements)}):")
-    lines.extend(f"  {value}" for value in disagreements)
+    lines.append(f"UNKNOWN_SYMBOL ({len(dimension.unknown_symbols)}):")
+    lines.extend(
+        f"  {issue.tag}: {issue.symbol}" for issue in dimension.unknown_symbols
+    )
+    lines.append(f"DIMENSION_ERROR ({len(dimension.errors)}):")
+    lines.extend(f"  {error}" for error in dimension.errors)
     lines.append(
         "LIMITATION: triage only; this run does not establish physical correctness, completeness, or derivation coverage."
     )

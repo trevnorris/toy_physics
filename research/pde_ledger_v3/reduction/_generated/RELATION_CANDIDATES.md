@@ -1,7 +1,7 @@
 # Relation candidates — review required
 **REQUIRES REVIEW BEFORE INSERTION.** These prose/algebra records were not auto-compared, and no relation YAML rows were generated.
 - Mathematica transcript: `/home/trevnorris/s11bB_build/wl_run5.txt`
-- SymPy transcript: `/home/trevnorris/s11bB_build/py_run3.txt`
+- SymPy transcript: `/home/trevnorris/s11bB_build/py_run4.txt`
 
 ## Candidate 1: `WL_ENERGY_BASIS` ↔ `S11BB_ENERGY_BASIS`
 **Status: REQUIRES REVIEW BEFORE INSERTION**

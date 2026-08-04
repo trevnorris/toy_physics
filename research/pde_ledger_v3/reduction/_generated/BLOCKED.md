@@ -1,8 +1,8 @@
 # Blocked quantity proposals
 
-Emitted: **23**
+Emitted: **24**
 
-Quantity block counts: DISAGREEMENT=**1**, WL_ONLY=**0**, PY_ONLY=**1**, UNMAPPED=**1**
+Quantity block counts: DISAGREEMENT=**0**, WL_ONLY=**0**, PY_ONLY=**1**, UNMAPPED=**1**
 
 ## Quantities not emitted
 
@@ -13,10 +13,6 @@ Quantity block counts: DISAGREEMENT=**1**, WL_ONLY=**0**, PY_ONLY=**1**, UNMAPPE
 - WL='UNDETERMINED_BECAUSE_IDENTICALLY_ZERO'
 
 - PY='UNDETERMINED because the defined coupling coefficient vanishes identically'
-
-### `mu_theta` — DISAGREEMENT
-
-- route kind: WL='definitional'; PY='independent'
 
 ### `face_response` — PY_ONLY
 

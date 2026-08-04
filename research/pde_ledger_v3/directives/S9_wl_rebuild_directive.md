@@ -43,8 +43,17 @@ it, because *"does it say the right thing"* and *"does it depend on anything"* a
   only when the two operands and their residual are *also* emitted on their own tags.
 - ⛔ **No tag whose value is a fixed string chosen by you.** The only strings permitted anywhere in
   output are the tag names themselves.
-- ⭐ Prefer emitting a raw expression over emitting a test of it. If the reader can see `ω²` and `c²k²`
-  they do not need you to tell them the difference vanished — but emit the difference too.
+- ⭐ Prefer emitting a raw expression over emitting a test of it.
+- ⛔⛔ **THE TAG NAME IS ALSO OUTPUT, AND IT MAY NOT STATE A CONCLUSION EITHER.** A tag name must name
+  **the object**, never its value, its ratio, its sign, or the shape of the answer.
+  `WL_S9_TRANSVERSE_ROOT` is fine. A name that appends the root's value, its ratio of coefficients, its
+  sign, or a word for the shape of the dispersion is **forbidden** — the payload being a genuine CAS
+  object does not rescue a name that already gave the answer away.
+- ⛔⛔ **NO RESIDUAL MAY BE TAUTOLOGICAL.** If you define `q := A/B` and then emit `A − q·B`, that
+  residual is identically zero **by construction** and carries no information. Before emitting any
+  difference, ask: *were these two operands produced by independent routes?* If they were not, ⛔ do not
+  emit the difference — emit the two objects and say in your report that no independent second route
+  exists. ⭐ An honest "there is no second operand here" beats a zero that looks like a check.
 
 ---
 
@@ -140,15 +149,27 @@ and divide out the common phase. The result is linear in `a`, so it defines a **
 
 Solve `det M = 0` for `ω²`, treating `ω²` as a single unknown. That gives a set of roots.
 
-**Selecting the transverse root — do this by computation, ⛔ never by inspection.** The transverse
-subspace is the image of the projector-like generator
+**Selecting roots by polarisation — do this by computation, ⛔ never by inspection.** Define **two**
+generators, and note that neither divides by `|k|²`:
 
 ```
-T  =  |k|² · I  −  k kᵀ
+T  =  |k|² · I  −  k kᵀ            (spans the TRANSVERSE subspace)
+Λ  =  k kᵀ                          (spans the LONGITUDINAL subspace)
 ```
 
-which spans the transverse subspace without dividing by `|k|²`. A root `ω²` is a **transverse** root
-exactly when `M(ω², k) · T = 0` as a matrix identity. Test each root that way and emit which roots pass.
+A root `ω²` is **transverse** exactly when `M(ω², k) · T = 0` as a matrix identity, and **longitudinal**
+exactly when `M(ω², k) · Λ = 0`. Test every root against **both**, and emit both product matrices for
+every root.
+
+⚠ These two classes are **not** exclusive and **not** exhaustive, and you must not assume they are:
+- a root may satisfy **both** (that is what happens when `M` vanishes identically at that root),
+- a root may satisfy **neither** (that is what happens when no single `ω²` annihilates a whole subspace,
+  as can occur once the inertia is anisotropic).
+
+⛔ **Do not "fix" either case.** Emit the matrices and the resulting subsets exactly as computed,
+including an empty subset. An empty list is a legitimate computed result; ⛔ never substitute a word for
+it and never emit a hand-picked list of roots. The subsets must be produced by `Select` over the full
+root list using the programmed matrix tests — ⛔ not by an `If` you wrote knowing the answer.
 
 ### 3.6 Dimensions
 
@@ -199,18 +220,32 @@ Emit each of the following as its own tag.
 6. The dynamical matrix `M`.
 7. `det M`, factored.
 8. The **complete** solution set for `ω²` — every root, not only the one you want.
-9. The transverse generator `T`.
-10. For **each** root: the matrix `M(ω²,k)·T` (the object whose vanishing decides transversality), and
-    the root itself. ⭐ Emit the matrix, not a verdict on it.
-11. The subset of roots that satisfy the transverse test.
+9. Both generators `T` and `Λ`.
+10. For **each** root: the matrix `M(ω²,k)·T`, the matrix `M(ω²,k)·Λ`, and the root itself.
+    ⭐ Emit the matrices, not a verdict on them.
+11. The subset of roots passing the transverse test, and the subset passing the longitudinal test —
+    each produced by `Select` with the programmed test. Emit an empty subset as an empty list.
+12. ⭐ **The complete root multiset with multiplicities**, taken from the factored determinant, **and the
+    nullity of `M` at each root** (`Length[k] − MatrixRank[M]` evaluated at that root). ⭐ This is the
+    object that stays well-posed when roots collapse or subsets come out empty, so emit it for the main
+    derivation **and for every control.**
 
 ### 4.2 The transverse dispersion
-12. `ω²` for the transverse root, written in terms of `k² = k·k`.
-13. The candidate propagation speed squared, obtained as `ω²/k²`.
-14. The **residual** `ω² − (that speed squared)·k²`. ⭐ Emit the residual itself, not a boolean about it.
-15. The speed-squared expression's dependence on `k`, emitted **as an expression** — e.g.
-    `D[speedSquared, k]` and `Exponent[Together[speedSquared], k]`. ⛔ Never as a word describing the
-    shape of the dispersion.
+
+Work with a **scalar** wavenumber for these tags: introduce `kMag` with `kMag² = k·k`, and express
+`ω²` in terms of `kMag` so that differentiation with respect to a scalar is well defined.
+
+13. `ω²` for the transverse root, in terms of `kMag`.
+14. The candidate propagation speed squared, obtained as `ω²/kMag²`.
+    ⛔ **Do NOT then emit `ω² − (that speed squared)·kMag²`.** That residual is identically zero **by
+    construction** — the speed was *defined* as that quotient — so it is a tautology, not a check, and
+    this rebuild exists to remove exactly that pattern. ⚠ At this step there is **no independent second
+    route** to the propagation speed: the script may not read the registry (§1), and there is only one
+    engine. ⭐ Say so in your report rather than manufacturing a second operand.
+15. The speed-squared expression's dependence on `kMag`, emitted **as expressions**:
+    `D[speedSquared, kMag]`, and `Exponent[Together[omegaSquared], kMag]` for numerator and denominator.
+    ⭐ **These carry the actual structural information** about the dispersion. ⛔ Never emit a word
+    describing its shape.
 
 ### 4.3 Dimensions
 16. The energy-density dimension vector on a `D`-dimensional sheet, symbolic in `D`.
@@ -238,10 +273,22 @@ Structure the derivation as a **function of the action** so a control is one cal
 Lagrangian, and the entire chain — variation, plane wave, determinant, roots, transverse selection —
 re-runs. ⛔ Do not hand-write a control's expected outcome.
 
-For **each** control below, emit: the control's Lagrangian, its complete root set, its transverse-root
-subset, and the **difference** between its transverse `ω²` (or a sentinel expression if the transverse
-set is empty — emit the empty set itself, ⛔ not the word "none") and the main derivation's transverse
-`ω²`.
+For **each** control below, emit exactly these five objects, and ⛔ nothing that interprets them:
+
+1. the control's Lagrangian as constructed;
+2. its factored determinant;
+3. ⭐ **its complete root multiset with multiplicities, and the nullity of `M` at each root** — this is
+   the primary comparison object, because it stays well defined when roots collapse into one, when a
+   root disappears, and when a polarisation subset comes out empty;
+4. its transverse subset and its longitudinal subset, each from the programmed matrix tests of §3.5,
+   emitted as lists — ⛔ **an empty list is emitted as an empty list**;
+5. the difference between its root multiset and the main derivation's root multiset, as CAS objects.
+
+⛔⛔ **Do NOT emit "the difference between the transverse root and the non-transverse root."** That
+phrasing is ill-posed and an earlier revision of this directive wrongly demanded it: under some controls
+the root set **collapses to a single root**, and under others a subset is **empty**, so there is no
+second operand and a builder would have to **invent** one. ⭐ The root multiset in (3) is the well-posed
+replacement and it discriminates every case.
 
 | id | kind | change |
 |---|---|---|
@@ -274,6 +321,12 @@ having tested them. ⛔ Do not emit these as tags — they are prose, and prose 
 - The background flow **v₀ → 0** and the background strain → 0. This removes all convective terms.
 - **No relaxation time and no dissipation** — the action is conservative by construction.
 - The bulk is **absent from the action entirely** (P4).
+- **Continuum / homogenisation**: the substructure's microscopic length over the wavelength → 0, so
+  `ρ_br` and `μ_R` are local constants. ⚠ This looks like an ordinary constitutive law, not like
+  removing a scale.
+- **The moduli are frequency-independent** — `ρ_br` and `μ_R` carry no memory kernel. This is stronger
+  than "no dissipation" and is a separate assumption.
+- **Amplitude → 0** (strict linearisation); every term is quadratic in `u`.
 
 ---
 

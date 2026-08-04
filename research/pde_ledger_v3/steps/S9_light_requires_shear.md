@@ -93,7 +93,7 @@ R4 :  μ_R − ρ_br = [-1-(-3), -2-0, 1-1] = [2,-2,0] = 2×[1,-1,0]  ⇒  c_γ 
 ```
 
 ⭐ **Independent agreement:** these were derived from the Lagrangian *before* consulting the register,
-which records `μ_R` as `M L⁻¹ T⁻²` and `ρ_br` as `M L⁻³` (`notes/parameter_register.md:137`, `:138`).
+which records `μ_R` as `M L⁻¹ T⁻²` and `ρ_br` as `M L⁻³` (`research/pde_ledger_v2/notes/parameter_register.md:137`, `:138` — ⚠ **v2's** register, cited by locus; v3 does not have a `notes/` tree).
 
 ### ⭐⭐ Rebuilt 2026-08-04: the dimensions are now solved SYMBOLICALLY IN `D`, from the action
 

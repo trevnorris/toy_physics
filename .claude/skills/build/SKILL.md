@@ -51,23 +51,51 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
 6. Return only after both independent review legs have completed. Keep their findings separately
    attributed so the caller can filter them before acting.
 
-## ⭐⭐ SUPPLY WHAT IS ALREADY VERIFIED — blind ONLY the genuinely open
+## ⭐⭐⭐ EVERY SCRIPT DIRECTIVE CARRIES THESE THREE CLAUSES — non-negotiable
 
-⭐⭐ **Supply every already-verified object to the builders.** Blindness is kept **ONLY for genuinely open
-questions**. Re-deriving known-good results with an LLM adds error risk and proves nothing.
-⇒ `[[feedback-supply-verified-blind-only-open]]`.
+> **1. The script may PRINT computed objects. It may NOT state conclusions.** An `emit`/`Print` payload
+> must be a CAS object — an expression, a solved root, a boolean from a symbolic test. ⛔ Never prose
+> describing a result.
+> **2. PRINT the residual; do NOT assert it.** `assert residual == 0` **is the builder writing down the
+> expected output**, and it turns an informative value into a binary crash. Compute → emit → *then* assert.
+> **3. Interpretation belongs to the STEP RECORD.** ⛔ The script does not editorialise.
+
+⚠⚠ **Measured 2026-08-04, across three independently-built steps: only ~10–20% of emitted tags depended on
+any computation.** The rest were typed sentences. ⛔ Cross-engine agreement on such a tag is **vacuous** —
+both engines carry the same author's sentence — and **eight fidelity review legs did not catch it**, because
+*"does it say the right thing"* and *"does it depend on anything"* are different questions.
+⇒ `research/pde_ledger_v3/REBUILD_HANDOFF.md` · `[[feedback-scripts-print-never-assert]]`.
+
+⭐ **Copy the one shape that worked** (`S11bB` lines 421–443): type a candidate, compute the object
+**independently**, `emit` the symbolic difference, hard-stop if nonzero.
+
+⭐ **After every script build, run `reduction/derived_or_declared.py` on the deliverable.** A script still
+showing mostly CONSTANT has not been built. ⚠ It is a triage tool, ⛔ not a verdict — see its limits in the
+rebuild handoff.
+
+## ⭐⭐ SUPPLY WHAT IS ALREADY VERIFIED — withhold only the ACCEPTANCE CRITERION
+
+⭐⭐ **Supply every already-verified object to the builders** — setup, field content, governing equations,
+supplied premises. ⛔⛔ **DO NOT BLIND THE INPUTS.** ⚠ **Under-specification has cost this ledger far more
+than contamination:** `∇·u` fell out of a spec **four times**, every time it was prose instead of an
+equation; and a spec describing a system with **no linear coupling at all** would have had both engines
+faithfully conclude *"it does not couple."* ⇒ `[[feedback-supply-verified-blind-only-open]]`.
+
+⛔ **Withhold exactly one thing: an acceptance criterion that references an expected value.** ⭐ The risk is
+**not** a faked computation — it is the **"fix until it matches" loop.** Codex iterates to exit 0, so if
+*"matches the recorded value"* is the exit condition it will get there, and a genuine disagreement — the
+most valuable output available — becomes silent confirmation.
+⇒ **The builder's job ENDS at compute-and-print. The diff happens on our side**, where a mismatch is a
+**finding**, ⛔ not a build failure.
 
 ⚠ **State IN the directive when an object is supplied** and therefore **unfalsifiable within the build**, so
 a passing build does not read as if it verified it.
 
-⭐ **Blindness controls, in order of value:**
-1. **MOVE** answer-bearing files out of the tree.
-2. **AUDIT the build log** for barred-path accesses afterward — post-hoc and definitive, and it sits
-   **outside the thing it polices**.
-3. A **TRIPWIRE** — a stale wrong value where a cribbing engine would find it.
-
-⛔ **Stop there.** Enumerating git internals, linked worktrees and backup archives is anti-adversary, and the
-engines are not adversaries.
+⚠ **Blindness is now a MINOR control, ⛔ not the architecture.** Clause 1 removes the slot a typed answer
+goes in, which is structural; blindness is behavioural and has failed here repeatedly, including through
+`git show`. ⭐ Keep only: **move** answer-bearing files out of the tree, and **audit the build log**
+afterwards. ⛔ Stop there — enumerating git internals and backup archives is anti-adversary, and the engines
+are not adversaries.
 
 ⛔ **Verify a builder's compliance declaration against the DIFF, never against its report.**
 

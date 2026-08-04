@@ -111,6 +111,16 @@ will yield a finding **every round, indefinitely**. ⇒ **Split until each piece
 
 ⭐ **Prefer a re-runnable script as the derivation record** over prose an engine must interpret into algebra.
 
+⛔⛔ **AND MAKE THE SCRIPT INCAPABLE OF STATING A CONCLUSION.** Every script directive carries the three
+clauses in `.claude/skills/build/SKILL.md`: **print computed objects, never prose · print the residual,
+never only assert it · interpretation belongs to the step record.** ⚠ Measured 2026-08-04 across three
+steps: **only ~10–20% of emitted tags depended on any computation.** ⇒ `REBUILD_HANDOFF.md`.
+
+⛔⛔ **DO NOT BLIND THE INPUTS — supply every equation.** ⭐ Withhold exactly one thing: an **acceptance
+criterion that references an expected value**, because Codex iterates to exit 0 and will otherwise fix the
+computation until it matches. ⇒ The builder's job **ends at compute-and-print**; the diff happens on the
+orchestrator's side, where a mismatch is a **finding**, ⛔ not a build failure.
+
 ⭐⭐ **If successive revisions keep breeding defects in the material just changed, CHANGE THE AUTHOR** rather
 than rewriting harder; composition still requires that **whatever writes does not review**.
 ⇒ `[[feedback-spec-authoring-discipline]]`.

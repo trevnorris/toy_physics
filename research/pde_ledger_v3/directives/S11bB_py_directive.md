@@ -35,18 +35,19 @@ apparent agreement non-independent.
 
 ---
 
-# S11b-B — SHARED PHYSICS SPECIFICATION (rev 7)
+# S11b-B — SHARED PHYSICS SPECIFICATION (rev 8)
 
 ⚠ **Inserted BYTE-IDENTICALLY into both engine directives.** It is the only part they share.
 
-⚠⚠ **Revision 7.** Six revisions were rejected by independent review **before any build ran**. Rev 1
+⚠⚠ **Revision 8.** Seven revisions were rejected by independent review **before any build ran**. Rev 1
 mandated a **non-uniform** background while fixing every perturbation to a plane wave, and those cannot
 both hold — position-dependent coefficients mix wavevectors, so a global dispersion relation does not
 exist. ⇒ ⭐ **The non-uniform problem is now a separate step (S11b-C).** This step is the **homogeneous
 assembly**, which is a clean Fourier problem and answers a question that needs no gradients at all.
 
-⭐ **The complex-frequency continuation (§1b) and the corrected balance-law route (§3b) are SUPPLIED rather
-than left to engine choice.** ⚠ Both were previously either asserted wrongly or left under-determined.
+⭐ **The complex-frequency continuation (§1b), affinity (§2b), and corrected balance-law route (§3b) are
+SUPPLIED rather than left to engine choice.** ⚠ These load-bearing inputs were previously either asserted
+wrongly or left under-determined.
 **This revision is awaiting independent review; it is not presented as final or fully reviewed.**
 
 ---
@@ -130,6 +131,10 @@ under-determined; a still earlier one asserted `Im q_out ≥ 0`, which is **non-
 > dragged **vertically downward**, so that `q_out` is single-valued on the lower half-plane cut along
 > `Re ω = ±c_s0|k|`.
 
+> For `Im ω > 0`, use the analytic continuation **upward from the same upper-rim values `ω + i0⁺`**. No
+> dragged cut enters the upper half-plane. This supplies `q_out` there without re-imposing either real-axis
+> requirement.
+
 ⛔⛔ **REQUIREMENTS 1–2 MUST NOT BE RE-IMPOSED AT COMPLEX `ω`.** Whatever `|w| → ∞` behaviour the
 continuation produces there is a **RESULT to report**, ⛔ never a criterion for re-selecting the root.
 ⚠⚠ **THIS IS THE DIAGNOSTIC §0 REFERS TO:** an engine that re-applies "must decay" at a complex pole lands
@@ -147,6 +152,8 @@ this sheet** — ⛔ do not re-select it onto one — and say whether the object
 report the ratio. ⛔ **No expectation is supplied for that ratio** — report whatever it is. The point is
 that the deliverable's dependence on the continuation must be **visible in the output** rather than buried
 in a convention.
+**Wrong derivations caught:** leaving the upper-half-plane sheet undefined, re-selecting it by spatial
+decay, mishandling the coalescence point, or hiding the result's dependence on the opposite sheet.
 ⇒ `S11BB_BRANCH_REALAXIS_CHECK`, `S11BB_BRANCH_DEGENERATE_POINT`, `S11BB_BRANCH_SENSITIVITY`,
   `S11BB_SHEET_OF_EACH_ROOT`
 
@@ -170,34 +177,26 @@ per unit face area leaving the slab through that face**, measured along that fac
 `J_± > 0` removes material from the slab). `δp` is the **bulk** pressure perturbation at that face.
 
 ```
-J_± = Λ_A(ω) 𝒜_±  +  Λ_V(ω) V_± ,        Λ(ω) = Λ⁰/(1 − iωτ)
+J_± = Λ_A(ω) 𝒜_±  +  Λ_V(ω) V_± ,
+Λ_I(ω) = Λ_I⁰/(1 − iωτ) ,                 I ∈ {A,V,X}
 ```
 
-with `Λ_A⁰`, `Λ_V⁰`, `τ` real, free, `τ ≥ 0`, and `𝒜_±` **the affinity — the thermodynamic force conjugate
-to `J_±`. ⛔ It is NOT supplied. Construct it.**
-
-⭐⭐ **CONSTRUCT `𝒜_±` from the entropy production for transfer across that face**, and report it explicitly
-**with its normalization**. ⚠⚠ **It carries contributions from BOTH sides — the bulk pressure and the
-slab's own internal chemical potential — and ⛔ THEY DO NOT ENTER WITH THE SAME NORMALIZATION**, because
-`U` is defined per unit in-plane **3**-volume with `θ` a **fractional** density perturbation, while the
-bulk pressure is a **4**-volume quantity. ⛔ **Do not assume the form; derive it, and state the dimensions
-of every term before combining them.**
-
-Define the slab-side chemical potential per transferred mass by the explicit normalization
+with `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰`, `τ` real and free, and `τ ≥ 0`. The affinity and its normalization are
+**SUPPLIED**:
 
 ```
+𝒜_± ≡ μ_s − δp_±/ρ_m ,
 μ_s ≡ μ_θ/ρ_br⁰ ,       μ_θ ≡ (δU/δθ)|_{u,e_W and all other fields fixed} .
 ```
 
-⛔ **`μ_θ` and `μ_s` are not interchangeable.** Construct `𝒜_±` first from entropy production; the
-independent power check below tests its bulk sign and both normalizations without fitting them.
-⇒ `S11BB_AFFINITY`, `S11BB_AFFINITY_NORMALIZATION`
+⛔ **Use this affinity exactly; do not derive, re-normalize, or re-select it. `μ_θ` and `μ_s` are not
+interchangeable.** Derive the dimensions of every term in B7 before combining them in an equation.
 
 ⚠⚠ **WHY THE SLAB-SIDE CONTRIBUTION IS HERE, and it matters for how you read B5.** The thermodynamic
 conjugate force for mass transfer across an interface is a **chemical-potential jump**, ⛔ not the bulk
 pressure alone. Under a `δp`-only closure a face at rest carrying an internal density perturbation would
 have `δp = V_± = J_± = 0` ⇒ **conversion driven by the slab's own state would be excluded by the form of
-the closure rather than by physics.** ⭐ The kinetic coefficients multiplying the constructed affinity are
+the closure rather than by physics.** ⭐ The kinetic coefficients multiplying the supplied affinity are
 carried **free**, and ⛔ **nothing here asserts their magnitude or sign.**
 
 ### ⭐ DERIVE the face response — ⛔ it is not supplied
@@ -217,14 +216,14 @@ separately, and ⛔ do not force the result into the shape of a single impedance
 
 ### ⭐⭐ ACCEPTANCE CHECK — an independently derived value your assembly must reproduce
 
-**With the slab-side contribution to `𝒜_±` set to zero**, first write the coefficient produced by your
-already-derived affinity and define the coefficient mapping **before** solving the face equations:
+**With the slab-side contribution to `𝒜_±` set to zero**, first write the coefficient fixed by the supplied
+affinity and define the coefficient mapping **before** solving the face equations:
 
 ```
 𝒜_±|_{μ_s=0} ≡ g_p δp_± ,          Λ_p⁰ ≡ g_p Λ_A⁰ .
 ```
 
-⛔ `g_p` is the sign and normalization already obtained from entropy production; do not fit or change it in
+⛔ `g_p` is the sign and normalization fixed by the supplied affinity; do not fit or change it in
 this reduction. With that fixed mapping, the face response **must** reduce to the following result from a
 separate step:
 
@@ -235,7 +234,7 @@ Z_perm = (ρ_m r + Λ_V⁰)/(y r − Λ_p⁰) ,    r = 1 − iωτ ,    y = q_ou
 ⭐ **Report the comparison explicitly.** ⛔ **If it does not reduce, report the disagreement — do not adjust
 your derivation to match.** ⚠ A disagreement here is a real finding about one of the two steps.
 ⚠ **Scope:** this reduction checks the algebra combining the bulk relation, interfacial mass balance and
-closure; it does **not** validate `g_p`. The independent power identity below validates `g_p`.
+closure; it does **not** validate `g_p`, which is an input fixed by the supplied affinity.
 **Wrong derivation caught:** a sign or algebra error in the face solve after the coefficient mapping is
 fixed; the check is not passed by refitting that mapping.
 ⇒ `S11BB_ZPERM_REDUCTION_CHECK`
@@ -248,21 +247,15 @@ complete two-port identity is
 
 ```
 overline(P_out,±)
-  = ½ Re[ δp_± V_±* + μ_s J_±* ]
-  = ½ Re[ δp_± v_bulk,±* + 𝒜_± J_±* ] ,
+  = ½ Re[ (δp_± + Λ_X 𝒜_±) V_±* + μ_s J_±* ]
+  = ½ Re[ δp_± v_bulk,±* + 𝒜_± J_±* + Λ_X 𝒜_± V_±* ] ,
 v_bulk,± = V_± + J_±/ρ_m .
 ```
 
-Thus the equivalent conjugate pairs are `(V_±, δp_±)` with `(J_±, μ_s)` on the slab side, or
-`(v_bulk,±, δp_±)` with `(J_±, 𝒜_±)` after separating bulk transport from interfacial conversion. ⛔ The
-mixed pairing `(V_±, δp_±)` with `(J_±, 𝒜_±)` is incomplete by
-`½ Re(δp_± J_±*/ρ_m)`.
-
-⭐ **AFFINITY POWER CHECK:** insert the `𝒜_±` constructed independently from entropy production into the two
-expressions above and simplify their difference for arbitrary complex `V_±`, `J_±`, `δp_±`, and `μ_s`.
-Report the symbolic residual; ⛔ do not redefine `𝒜_±` to make it vanish.
-**Wrong derivation caught:** a wrong bulk sign or normalization in `𝒜_±`, including use of `μ_θ` where
-`μ_s` is required.
+The first line is the slab-side pairing; the second separates outgoing bulk transport from interfacial
+conversion. ⛔ The mixed expression `½ Re(δp_±V_±* + 𝒜_±J_±*)` is incomplete by
+`½ Re(δp_±J_±*/ρ_m + Λ_X𝒜_±V_±*)`. Setting `Λ_X⁰ = 0` recovers revision 7's traction, mechanics and
+two-port power identity exactly.
 
 1. **Port dissipativity.** On real `ω`, use the derived face response with the fixed independent input vector
 
@@ -270,29 +263,42 @@ Report the symbolic residual; ⛔ do not redefine `𝒜_±` to make it vanish.
    a_± ≡ (V_±, μ_s)^T ,       overline(P_out,±) ≡ ½ a_±† H_±(ω,k) a_± ,       H_± = H_±† .
    ```
 
-   Construct `H_±` and compute the necessary and sufficient condition `H_± ⪰ 0` for every `a_±`, using
-   its eigenvalues or principal minors. Report whether that condition depends on parameters alone or also
-   on `(ω,k)` through `Z`. The supplied face and bulk laws determine this quadratic form; ⛔ do not emit
-   `NOT_ESTABLISHED` for this part.
-   **Wrong derivation caught:** a one-port test, or a two-port test missing the pressure work carried by
-   transferred mass, can give the wrong sign for the full Hermitian power form.
-2. **Thermodynamic admissibility of the closure.** Write the entropy production for interfacial transfer as
-   a sum of flux × conjugate-force products, and report the condition on `Λ_A⁰`, `Λ_V⁰`, `τ` for the
-   corresponding **Onsager matrix to be positive semi-definite**, ⚠ **including whatever conjugate force
-   pairs with `V_±` and whatever reciprocal traction law that requires** — ⛔ neither of which is supplied.
-   ⚠⚠ **Onsager reciprocity additionally requires a time-reversal property that §3 explicitly does NOT
-   assume.** ⭐ **Report whether the information given determines this**; if it does not, emit
-   `NOT_ESTABLISHED` and name exactly what is missing. **A refusal here is the correct answer if it is the
-   true one.**
-   **Wrong derivation caught:** asserting an Onsager-positive region from the supplied one-row flux law
-   without the missing reciprocal traction law and time-reversal data.
+   Construct `H_±`, including `Λ_X`, and compute the necessary and sufficient condition `H_± ⪰ 0` for every
+   `a_±`, using its eigenvalues or principal minors. Report whether that condition depends on parameters
+   alone or also on `(ω,k)` through `Z`. The supplied face and bulk laws determine this quadratic form;
+   ⛔ do not emit `NOT_ESTABLISHED` for this part.
+   **Wrong derivation caught:** a one-port test, or a two-port test missing either transferred-mass pressure
+   work or reciprocal-traction work, can give the wrong sign for the full Hermitian power form.
+2. **Thermodynamic admissibility and reciprocity.** The supplied reciprocal traction in §3b defines
+   `f_X,± ≡ Λ_X(ω)𝒜_±` and the interfacial part of the power is
+   `½ Re(𝒜_±J_±* + f_X,±V_±*)`. Thus the supplied mixed representation is
 
-⛔⛔ **DO NOT IMPOSE EITHER CONDITION TO REMOVE A GROWING ROOT.** ⭐⭐ **Instead, report the question that
-matters when that region is established: does a growing root lie inside it?** If closure admissibility is
-`NOT_ESTABLISHED`, report `NOT_ESTABLISHED` for membership as well and still report the root as a
-first-class outcome; ⛔ an unavailable admissibility classification is not an acceptance gate.
-⇒ `S11BB_AFFINITY_POWER_CHECK`, `S11BB_TWO_PORT_POWER_IDENTITY`, `S11BB_PORT_DISSIPATIVITY`, `S11BB_PORT_CONDITION_KIND`,
-  `S11BB_ONSAGER_CONDITION`, `S11BB_ONSAGER_DETERMINABLE`, `S11BB_GROWTH_INSIDE_ADMISSIBLE`
+   ```
+   ( J_±   )   ( Λ_A  Λ_V ) ( 𝒜_± )
+   ( f_X,± ) = ( Λ_X   0  ) ( V_± ) .
+   ```
+
+   On real `ω`, construct its Hermitian power form for arbitrary complex `(𝒜_±,V_±)`, and report the
+   necessary and sufficient condition on `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰`, and `τ` for nonnegative interfacial
+   entropy production. ⚠ This is a mixed force/flux representation; do not infer an Onsager sign merely by
+   symmetrizing the displayed coefficient array. Time-reversal invariance remains **not assumed** (§3).
+   For the conditional Onsager–Casimir test, the definitions make `𝒜_±` and `f_X,±` even under time
+   reversal and the rates `J_±` and `V_±` odd; this parity assignment does not assume that time reversal is
+   a symmetry. Compute and report the relation between `Λ_X` and `Λ_V` **if one is forced**, and distinguish
+   a conditional reciprocity relation from unconditional admissibility.
+   Finally report whether admissibility still requires `Λ_V⁰ = 0` or permits it to be nonzero, both without
+   and, if applicable, with reciprocity. The supplied laws determine the admissibility form; ⛔ do not emit
+   `NOT_ESTABLISHED` for it. ⛔ Assert neither outcome in advance.
+   **Wrong derivation caught:** omitting the supplied second row, or treating this mixed array as an ordinary
+   force-to-flux matrix, can give a false reciprocity sign and a false condition on `Λ_V⁰`.
+
+⛔⛔ **DO NOT IMPOSE EITHER CONDITION TO REMOVE A GROWING ROOT.** ⭐⭐ **Instead, report whether a growing root
+lies inside each region you computed, distinguishing unconditional admissibility from any smaller region
+that also imposes reciprocity.** Still report every root as a first-class outcome; admissibility is a
+classification, ⛔ not an acceptance gate.
+⇒ `S11BB_TWO_PORT_POWER_IDENTITY`, `S11BB_PORT_DISSIPATIVITY`, `S11BB_PORT_CONDITION_KIND`,
+  `S11BB_ONSAGER_CONDITION`, `S11BB_ONSAGER_RECIPROCITY`, `S11BB_ONSAGER_DETERMINABLE`,
+  `S11BB_LAMBDA_V_ADMISSIBILITY`, `S11BB_GROWTH_INSIDE_ADMISSIBLE`
 
 ⛔⛔ **TWO TRAPS, both measured in S11b-A:**
 1. The per-face inertial loading is `+ρ_m/α` **against the outward acceleration on BOTH faces**. The signed
@@ -368,7 +374,8 @@ the route below is allowed and encouraged.** ⛔ Do not treat the signatures bel
 are signatures **under ordinary single-copy variation**.
 
 ⛔⛔ **THREE FORBIDDEN ROUTES**, each wrong under ordinary variation, ⛔ not merely disfavoured:
-- **(i) Substituting the mass balance WITH ITS FLUX SOURCE into `U` and then varying.** With `Λ⁰ ≠ 0`, the
+- **(i) Substituting the mass balance WITH ITS FLUX SOURCE into `U` and then varying.** With
+  `(Λ_A⁰,Λ_V⁰) ≠ (0,0)`, the
   relation carries a history functional and may not enter a stored energy. ⚠ Typical signature: an extra
   root raising the dispersion determinant's **degree by one** — an invented mode.
 - **(ii) Varying `J_±` or `δp_±` inside the action.** Manufactures an anti-causal, **energy-generating**
@@ -423,16 +430,18 @@ force and the thickness term; ⛔ you may not keep one and drop the other.
    description of which forces "push the faces apart".
 5. **The mass balance WITH its `J_±` source is a separate EVOLUTION equation**, restored **after** the
    variation. ⛔ It is not the same object as `δ_vΣ_mat = 0`.
-6. **`δp_±` is a PRESCRIBED mechanical response** entering through the external virtual work displayed
-   below. **`J_±` enters the mechanics through the separate mass evolution and through its contribution to
-   the prescribed `δp_±`; it has no direct mechanical generalized-force term:**
+6. **`δp_±` and the affinity traction proportional to `Λ_X𝒜_±` are PRESCRIBED mechanical responses**
+   entering through the external virtual work displayed below. **`J_±` enters the mechanics through the
+   separate mass evolution and through its contribution to the prescribed `δp_±`; it has no direct
+   mechanical generalized-force term:**
 
    ```
    Q_J^direct = 0 .
    ```
 
    ⛔ Substitute the prescribed responses only after 3–5 are complete; ⛔ vary or differentiate them with
-   respect to nothing; ⛔ add no term proportional to `J_± δ_v(δW)` or `J_± ∇·δ_v u`.
+   respect to nothing; ⛔ add no term proportional to `J_± δ_v(δW)` or `J_± ∇·δ_v u`, and no mechanical
+   face term beyond the two terms supplied below.
 
 ### ⛔⛔ GEOMETRY AND SIGN CONVENTIONS — fixed here, because a sign error here is an ENERGY-SOURCE error
 
@@ -441,21 +450,21 @@ The face geometry, traction and complete pressure virtual work are
 ```
 ζ_± = ±δW/2 ,               n̂_± = ±ŵ ,
 V_± ≡ (∂_tζ_±)(±1) = ½∂_t(δW) ,
-δ_vx_± = n̂_± δ_v(δW)/2 ,   t_± = −δp_± n̂_± ,
+δ_vx_± = n̂_± δ_v(δW)/2 ,   t_± = −(δp_± + Λ_X(ω)𝒜_±) n̂_± ,
 δ_v𝒲_bulk ≡ Σ_{s=±} t_s·δ_vx_s
-            = −½(δp_+ + δp_−) δ_v(δW) .
+            = −½[δp_+ + δp_− + Λ_X(ω)(𝒜_+ + 𝒜_−)] δ_v(δW) .
 ```
 
 ⭐ Both faces therefore move outward under positive `δ_v(δW)`. ⛔ **Use the displayed virtual-work
-equation; do not guess a pressure force and do not append a flux-force term.**
+equation; do not guess a pressure force and do not append another flux-force term.**
 ⚠⚠ **Taking this sign the other way reverses the pressure-work term and can manufacture an instability.**
 The independent, explicitly bounded pressure-work check below is the diagnostic for that error.
 
 ### ⭐⭐ THE CAUSALITY DIAGNOSTIC — mechanical, gradeable, ⛔ and it does NOT foreclose instability
 
-Every response kernel in the final equations must be **retarded**: only `Λ(ω)`, `Z(ω)` and functions of them
-may appear. ⛔⛔ **If `Λ(−ω)`, `Z(−ω)`, `Y(−ω)` or `Λ*(ω)` appears anywhere in your final equations, the
-derivation is WRONG.** ⭐ **Run this check and report its outcome explicitly.**
+Every response kernel in the final equations must be **retarded**: only `Λ_I(ω)`, `Z(ω)` and functions of
+them may appear. ⛔⛔ **If `Λ_I(−ω)`, `Z(−ω)`, `Y(−ω)` or `Λ_I*(ω)` appears anywhere in your final equations,
+the derivation is WRONG.** ⭐ **Run this check and report its outcome explicitly.**
 ⚠ **If you find a root at or near `ω = +i/τ`, treat it as a signal to re-check step 6 before reporting it**
 — and then report **both** the root **and** the outcome of that re-check. ⛔ Do not simply delete it.
 ⇒ `S11BB_CAUSALITY_CHECK`, `S11BB_KERNEL_ARGUMENTS_PRESENT`
@@ -471,7 +480,7 @@ variational rule is wrong — ⛔ fix the rule, do not patch the equation.
 **Wrong derivation caught:** omitting `∇·δ_vu` from the VIRTUAL CONSTRAINT, or varying at fixed `θ`, removes
 this contribution from the in-plane balance.
 
-**(b) With NO bulk, IMPERMEABLE faces, `κ_W = 0` and `k = 0`:** report `ω²` for the thickness mode, and
+**(b) With NO bulk, `Λ_A⁰ = Λ_V⁰ = Λ_X⁰ = 0`, `κ_W = 0` and `k = 0`:** report `ω²` for the thickness mode, and
 report **the inequality on `B_ρ⁽³⁾`, `C`, `k_W` under which it is positive.** ⭐ It must be positive for
 **every** `U` that is positive-definite — ⛔ not merely on a convenient sub-region. ⭐ **State explicitly
 whether `B_ρ⁽³⁾` appears in that `ω²` at all.**
@@ -487,10 +496,11 @@ K_check ≡ d² U(θ = constant − e_W, e_W)/de_W² .
 multiplier gives a conservative stiffness inconsistent with the independently reduced stored energy.
 
 ⛔⛔ **SCOPE OF CHECK (b) — read this before applying it anywhere else.** It is confined to the case with
-**no bulk, no permeation, and positive-definite `U`**, where the system is conservative and growth would
-therefore be a **derivation error**. ⛔ **It says NOTHING about the full problem** and ⛔ **must not be used
-to reject a growing root of B5**, where the bulk, the interface and possibly indefinite moduli are all in
-play. ⚠ Confusing the two would re-close the falsification channel of §0.
+**no bulk, no permeation, no reciprocal traction, and positive-definite `U`**, where the system is
+conservative and growth would therefore be a **derivation error**. ⛔ **It says NOTHING about the full
+problem** and ⛔ **must not be used to reject a growing root of B5**, where the bulk, the interface and
+possibly indefinite moduli are all in play. ⚠ Confusing the two would re-close the falsification channel
+of §0.
 ⇒ `S11BB_CONVENTION_CHECK_INPLANE`, `S11BB_CONVENTION_CHECK_CONSERVATIVE`,
   `S11BB_CONSERVATIVE_POSITIVITY_INEQUALITY`
 
@@ -503,11 +513,12 @@ way — **it could not fail.** Replace it with this:
 1. ⭐ **Compute `d/dt(T + U)` from YOUR equations.** Report every signed external exchange term — sink or
    source — and name the transport process each term corresponds to. ⛔⛔ **If a term corresponds to no
    transport process, REPORT IT** as a defect in the derivation.
-   **Wrong derivation caught:** an extra response-kernel or flux-force term creates an energy exchange with
-   no bulk-transport or interfacial-conversion counterpart.
+   **Wrong derivation caught:** a response-kernel or flux-force term not among the supplied pressure,
+   reciprocal-traction and transfer terms creates an energy exchange with no transport counterpart.
 
 2. ⭐⭐ **INDEPENDENT PRESSURE-WORK SIGN CHECK.** Restrict only this diagnostic to real `ω`, propagating
-   `q² > 0`, and impermeable faces. Then the equations supplied independently by §2 give
+   `q² > 0`, impermeable faces, and the form cut `Λ_X⁰ = 0`. Then the equations supplied independently by
+   §2 give
 
    ```
    J_± = 0 ,                 v_bulk,± = V_± ,
@@ -521,16 +532,16 @@ way — **it could not fail.** Replace it with this:
    work into a source while the independently computed outgoing bulk power keeps its sign.
 
 ⛔⛔ **SCOPE OF CHECK 2:** it checks only the pressure-work sign in the displayed real-frequency,
-propagating, impermeable sub-case. It does not classify any B5 root and must not be used to discard or
-re-branch a growing root of the full problem.
+propagating, impermeable, zero-reciprocal-traction sub-case. It does not classify any B5 root and must not
+be used to discard or re-branch a growing root of the full problem.
 ⇒ `S11BB_ENERGY_SINKS`, `S11BB_ENERGY_SOURCES`, `S11BB_UNATTRIBUTED_SINK_TERMS`,
   `S11BB_UNATTRIBUTED_EXCHANGE_TERMS`,
   `S11BB_PRESSURE_WORK_SIGN_CHECK`
 
-⛔⛔ **DO NOT USE THE IMPERMEABLE LIMIT AS A CHECK ON THE ROUTE.** All candidate routes **coincide** at
-`Λ⁰ → 0`, so that limit **cannot discriminate between a correct derivation and any of the forbidden ones.**
-⚠ Note also it is **not** the lossless limit — §2 trap 2: radiation resistance survives it. ⛔ Do not
-describe `Λ⁰ → 0` as "reversible".
+⛔⛔ **DO NOT USE THE ZERO-INTERFACE-COEFFICIENT LIMIT AS A CHECK ON THE ROUTE.** All candidate routes
+**coincide** at `Λ_A⁰ = Λ_V⁰ = Λ_X⁰ = 0`, so that limit **cannot discriminate between a correct derivation
+and any of the forbidden ones.** ⚠ It is also **not** the lossless limit — §2 trap 2: radiation resistance
+survives it. ⛔ Do not describe this limit as "reversible".
 
 ⛔ **The §3 list supplies no single in-plane compression modulus.** In it, compression is carried by `θ` and
 by `e_W`, and how they combine is task **B4**. ⚠ Where a modulus measured with the thickness held fixed
@@ -545,12 +556,14 @@ yields an **independent** invariant built from `∇·u`, ⭐ **carry it with a f
 
 ## TASKS
 
-⛔⛔ **RULES.** (1) Every value must be computed, ⛔ not asserted. (2) If a task cannot be completed, emit
+⛔⛔ **RULES.** (1) Every value not explicitly supplied as a route or convention must be computed, ⛔ not
+asserted. (2) If a task cannot be completed, emit
 `NOT_ESTABLISHED` and name the missing input — **a refusal is valid and valuable**. (3) ⛔ Never silently
 choose a branch, closure, path, or expansion; introduce a free symbol and report the dependence.
-(4) ⛔⛔ **No task states the form of its answer.** If a requested object turns out not to be a scalar — if
-the response is operator-valued, or the polarizations split, or the effect is a spatial attenuation rather
-than a frequency shift — ⭐ **report that instead**, and say so explicitly.
+(4) Except for equations explicitly marked **SUPPLIED**/**GIVEN**, route or normalization disambiguations,
+and exact FORM-control cuts, ⛔⛔ **no task states the form of its answer.** If a requested object turns out
+not to be a scalar — if the response is operator-valued, or the polarizations split, or the effect is a
+spatial attenuation rather than a frequency shift — ⭐ **report that instead**, and say so explicitly.
 
 **B1 · The constraint.** ⛔⛔ **The exact balance is GIVEN — it is kinematics, not a result — and your job
 is to linearise it.** ⚠ It is written out because three previous revisions left it verbal, and a verbal
@@ -581,8 +594,10 @@ whether you are counting fields, amplitudes, or independent initial data.
 
 **B2 · The equations of motion.** Following the route of §3b, derive the in-plane equation and the
 thickness equation, including the force the bulk exerts on **both** faces via the face response you derived
-in §2b. Report both operators.
-⇒ `S11BB_INPLANE_EOM`, `S11BB_THICKNESS_EOM`, `S11BB_BULK_FORCE_ON_THICKNESS`
+in §2b and the reciprocal traction proportional to `Λ_X`. Report both operators, isolate the `Λ_X` term in
+the thickness operator, and report the symbolic difference from the `Λ_X⁰ = 0` operator.
+⇒ `S11BB_INPLANE_EOM`, `S11BB_THICKNESS_EOM`, `S11BB_BULK_FORCE_ON_THICKNESS`,
+  `S11BB_RECIPROCAL_TRACTION_THICKNESS_EFFECT`
 
 **B3 · Thickness response.** Solve the thickness equation for its response. ⭐ **State explicitly what the
 response is a ratio of** (which output field to which driving quantity) and give its dimensions.
@@ -614,18 +629,23 @@ fails to exist as a normal mode, report that.
 the condition on the moduli and on `C` that separates the two. ⛔ **A growing root is a reportable result**
 (§0) — ⛔ do not suppress it, re-branch to remove it, or assume the quadratic form is positive-definite.
 
+⭐ Carry `Λ_X` symbolically through the determinant and roots. Compare the result with the form cut
+`Λ_X⁰ = 0`, and report which roots, multiplicities, and classifications change. ⛔ Assert no outcome in
+advance.
+
 ⭐⭐ **FOR ANY GROWING ROOT, REPORT ALL THREE OF THESE — it is what separates a finding from an artifact:**
-1. **The causality diagnostic of §3b** — did `Λ(−ω)`, `Z(−ω)`, `Y(−ω)` or `Λ*(ω)` appear anywhere? Is the
-   root at or near `ω = +i/τ`?
+1. **The causality diagnostic of §3b** — did `Λ_I(−ω)`, `Z(−ω)`, `Y(−ω)` or `Λ_I*(ω)` appear anywhere? Is
+   the root at or near `ω = +i/τ`?
 2. **The sheet the root sits on**, and confirmation that requirements 1–2 of §1 were ⛔ **not** re-imposed
    at complex `ω` to obtain it.
-3. ⭐⭐ **Whether it lies INSIDE the thermodynamically admissible region of §2b, if that region was
-   established.** If it was not, emit `NOT_ESTABLISHED` for this classification and still report the root.
-   ⛔ Do not use admissibility as a gate that removes, suppresses or re-branches any root.
-   **Wrong derivation caught:** classifying or suppressing a root using an admissible region that the
-   supplied closure data did not establish.
+3. ⭐⭐ **Whether it lies INSIDE each thermodynamically admissible region computed in §2b**, distinguishing
+   unconditional admissibility from any sub-region that additionally imposes reciprocity. ⛔ Do not use
+   either as a gate that removes, suppresses or re-branches any root.
+   **Wrong derivation caught:** suppressing a root with an admissibility condition, or conflating the
+   unconditional and reciprocity-conditioned regions.
 ⇒ `S11BB_LONGITUDINAL_DISPERSION`, `S11BB_ROOTS`, `S11BB_IMAGINARY_PART`, `S11BB_DISSIPATION_ORIGIN`,
-  `S11BB_ROOT_STABILITY_CLASS`, `S11BB_STABILITY_CONDITION`, `S11BB_GROWTH_ARTIFACT_DIAGNOSTICS`
+  `S11BB_ROOT_STABILITY_CLASS`, `S11BB_STABILITY_CONDITION`, `S11BB_GROWTH_ARTIFACT_DIAGNOSTICS`,
+  `S11BB_RECIPROCAL_TRACTION_ROOT_EFFECT`
 
 **B6 · The transverse mode, computed.** On this uniform background, compute the coupling between the
 transverse in-plane mode and the thickness degree of freedom **from B1's constraint and §3's energy**,
@@ -633,15 +653,15 @@ transverse in-plane mode and the thickness degree of freedom **from B1's constra
 transverse dispersion. ⭐ **State explicitly what the coefficient couples to what**, and its normalization,
 ⛔ before assigning it a value or a dimension; ⚠ if it vanishes identically, say so and say that its
 normalization is then undetermined. ⭐ Report whether the transverse mode acquires an imaginary part, and
-its dependence on `Λ_A⁰`, `Λ_V⁰`, `ωτ` and the slab-side part of `𝒜` across the full range.
+its dependence on `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰`, `ωτ` and the slab-side part of `𝒜` across the full range.
 ⚠ ⛔ **Whatever this returns, it does NOT settle whether confinement is unconditional** — that is a
 non-uniform question and out of scope here. ⛔ Do not phrase it as if it does.
 ⇒ `S11BB_TRANSVERSE_COUPLING`, `S11BB_TRANSVERSE_DISPERSION`, `S11BB_TRANSVERSE_DISSIPATION`
 
 **B7 · Dimensions.** Derive from the equations above, ⛔ not from any table, the `[L,T,M]` exponents of
 `B_ρ`, `B_ρ⁽³⁾`, `μ_W`, `k_W`, `κ_W`, `C`, B3's response, B4's response, B6's coefficient, **and the
-coefficient of any additional independent invariant you carried under §3**, plus `Λ_A⁰`, `Λ_V⁰`, `𝒜`,
-`μ_θ`, `μ_s` and §2b's face response. ⚠ Each of those responses is a ratio; ⛔ state what of what before assigning
+coefficient of any additional independent invariant you carried under §3**, plus `Λ_A⁰`, `Λ_V⁰`,
+`Λ_X⁰`, `𝒜`, `μ_θ`, `μ_s` and §2b's face response. ⚠ Each of those responses is a ratio; ⛔ state what of what before assigning
 a dimension, and if a coefficient vanishes identically say that its dimension is undetermined. Show each route and
 label it **independent** or **definitional** — a route whose asserted equation *defines* the symbol under
 test is definitional.
@@ -653,8 +673,9 @@ dimensions**, and report the outcome per equation.
 ⛔⛔ **THE CHECK MUST BE ABLE TO FAIL.** ⭐ **Demonstrate that it is:** corrupt one term's dimensions
 deliberately, confirm the check reports a failure, and restore it. ⚠ Report that demonstration.
 **Wrong derivation caught:** combining `μ_θ` directly with a chemical potential per mass, or omitting a
-factor of `ρ_br⁰` or `ρ_m`, makes the affinity or two-port power identity dimensionally inhomogeneous; a
-check confined to the final determinant would not expose which normalization failed.
+factor of `ρ_br⁰` or `ρ_m`, makes the affinity or two-port power identity dimensionally inhomogeneous;
+assigning `Λ_X⁰` the dimensions of `Λ_A⁰` instead of deriving them makes the traction term inhomogeneous.
+A check confined to the final determinant would not expose which normalization failed.
 ⇒ `S11BB_DIM_<name>`, `S11BB_DIM_ROUTE_KIND_<name>`, `S11BB_HOMOGENEITY_<equation>`,
   `S11BB_HOMOGENEITY_ABLATION_DEMO`
 
@@ -663,23 +684,29 @@ check confined to the final determinant would not expose which normalization fai
   Its exact cuts are
 
   ```
-  δW = 0  ⇒  e_W = 0 ,  V_± = 0 ,  Λ_V(ω)V_± = 0 ,  δp_±V_± = 0 .
+  δW = 0  ⇒  e_W = 0 ,  V_± = 0 ,  Λ_V(ω)V_± = 0 ,
+              δp_±V_± = 0 ,  Λ_X(ω)𝒜_±V_± = 0 .
   ```
 
   ⚠⚠ **A IS CONFOUNDED AND YOU MUST REPORT IT AS SUCH.** It removes the thickness field, face-motion drive,
-  velocity-coupled permeability and mechanical pressure work together. ⛔ But with the slab-side affinity
-  active, `V_± = 0` does **not** imply `J_± = 0` or `δp_± = 0`; do not delete that remaining transfer
-  channel. ⇒ ⛔ **Do not attribute any change under A to the thickness degree of freedom alone.** ⭐ For each
-  quantity that moves, report **which of the simultaneously-removed channels it could be attributed to**,
-  and **say so plainly if the attribution cannot be separated** by this control.
+  velocity-coupled permeability, mechanical pressure work and reciprocal-traction work together. ⛔ But
+  with the slab-side affinity active, `V_± = 0` does **not** imply `J_± = 0` or `δp_± = 0`; do not delete
+  that remaining transfer channel. ⇒ ⛔ **Do not attribute any change under A to the thickness degree of
+  freedom alone.** ⭐ For each quantity that moves, report **which of the simultaneously-removed channels
+  it could be attributed to**, and **say so plainly if the attribution cannot be separated** by this control.
   **Wrong derivation caught:** setting `J_± = δp_± = 0` merely because `V_± = 0`, which silently removes
   the slab-state-driven transfer channel from control A.
 - **B — remove the gradient stiffness** (`κ_W = 0`) and recompute B3 and B5.
-- **C — impermeable faces** (`Λ_A⁰ = Λ_V⁰ = 0`) and recompute B5.
+- **C — impermeable faces** (`Λ_A⁰ = Λ_V⁰ = 0`, with `Λ_X⁰` left symbolic) and recompute B5.
 - **D — remove the cross term** (`C = 0`) and recompute B4 and B5.
 - **E — remove the SLAB-SIDE part of the affinity `𝒜`** (bulk-pressure and velocity couplings untouched) and recompute B5
   and the passivity results of §2b. ⭐ This is the control that isolates the **new** transfer channel; it is
-  ⛔ **not** the same cut as **C**, which removes all three couplings at once.
+  ⛔ **not** the same cut as **C**, which removes the mass-flux closure row while leaving the reciprocal
+  traction symbolic.
+- **F — remove the reciprocal traction** (`Λ_X⁰ = 0`, with `Λ_A⁰` and `Λ_V⁰` left symbolic) and recompute
+  B3–B5 and both passivity questions of §2b. This is a FORM cut and must reproduce revision 7's mechanics
+  and power identity exactly. **Wrong derivation caught:** dropping `Λ_X` from the full system as well as
+  the control makes F pass without testing the added traction channel.
 ⭐⭐ **Recompute B6 under every one of A–D as well, and report what moves.** ⛔ Do not assume in advance
 that a control cannot affect B6, and ⛔ do not discard a dependence you find on the grounds that it "must
 be" algebraically predetermined. ⚠ If none of A–D changes B6's reported quantities, **state that as a
@@ -689,7 +716,7 @@ here, not assumed**.
 ⛔ not what it was expected to do.
 ⇒ `S11BB_CONTROL_NO_THICKNESS`, `S11BB_CONTROL_A_ATTRIBUTION`, `S11BB_CONTROL_NO_GRADIENT_STIFFNESS`,
   `S11BB_CONTROL_IMPERMEABLE`, `S11BB_CONTROL_NO_CROSS_TERM`, `S11BB_CONTROL_NO_MU_COUPLING`,
-  `S11BB_CONTROLS_ON_TRANSVERSE`
+  `S11BB_CONTROL_NO_RECIPROCAL_TRACTION`, `S11BB_CONTROLS_ON_TRANSVERSE`
 
 **B9 · Validity.** Report the conditions under which this step's linearisations hold, including §2's
 background-flow condition, and **where in `(ω,k)` any fail**.

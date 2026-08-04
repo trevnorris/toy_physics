@@ -19,9 +19,7 @@ so an agreement reached through a shared source certifies nothing.
 ## ⛔⛔ NO REGISTRY WORK THIS STEP
 
 ⚠ Rev 1 promised registry access "after the physics". ⛔ **That ordering is not enforceable** — neither at
-read time nor at import time — and the registry contains a relation this step is asked to reinterpret. ⇒ a
-reviewer showed one engine could use it to choose an identification while the other stayed blind, making
-apparent agreement non-independent.
+read time nor at import time.
 
 ⭐ **`reduction/` is therefore barred from BOTH engines this step** (§0b), and registry insertion is a
 **separate pass after the physics is banked**. ⛔ Do not read, import, or modify it.

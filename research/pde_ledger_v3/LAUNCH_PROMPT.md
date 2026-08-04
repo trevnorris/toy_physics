@@ -56,8 +56,10 @@ claims are stale; the session record says which.
    describing a result; **(2)** **print the residual, do not only assert it** — `assert residual == 0` *is*
    the builder writing down the expected output, and it converts an informative value into a crash;
    **(3)** interpretation belongs to the **step record**.
-   ⚠⚠ **Measured across three independently-built steps: only ~10–20% of emitted tags depended on any
-   computation.** ⛔ Cross-engine agreement on a typed tag is **vacuous**, and **eight fidelity review legs
+   ⚠⚠ **Measured: named tags at named lines in three independently-built steps are typed prose with no CAS
+   object.** ⛔ Do not quote a fraction — two legs rejected that as unmeasurable, and the gate has a
+   **verified false negative** (`Zperm_difference`, computed but asserted zero, so it always prints `0`).
+   ⛔ Cross-engine agreement on a typed tag is **vacuous**, and **eight fidelity review legs
    missed it.** ⇒ ⛔ **ALL NEW LEDGER PHYSICS IS STOPPED** until the rebuild closes:
    `research/pde_ledger_v3/REBUILD_HANDOFF.md` is the **read-first** document.
    ⭐ **Corollary that REPLACES most of rule 3b's apparatus:** ⛔ **do not blind the INPUTS** — supply every

@@ -1,6 +1,6 @@
 ---
 name: step-run
-description: Execute one PDE-ledger derivation step in the proven order from pre-registration through directive review, blind Mathematica and SymPy builds, quarantine, gates, step record, TeX card, and independent review legs. Use when running a whole ledger step rather than only building or reviewing one artifact.
+description: Execute one PDE-ledger derivation step in the proven order from pre-registration through directive review, independently-constructed Mathematica and SymPy builds, gates, step record, TeX card, and independent review legs. Scripts must print computed objects and never state conclusions. Use when running a whole ledger step rather than only building or reviewing one artifact.
 allowed-tools: Bash, Read, Edit, Write, Agent
 user_invocable: true
 ---
@@ -14,9 +14,12 @@ Invoke as `/step-run <step-id>`. Follow this sequence exactly; do not substitute
 1. **Walk the step with the user.** State what is being derived, what is available, what is missing, and
    where trouble is expected. Then take one move at a time with reasoning before results. Flag every
    identification before making it and state what would make it wrong; never pre-derive and present.
-2. **Pre-register predictions.** Write expected script outputs to a tracked path, commit that path so
-   the commit timestamp establishes priority, record the blob/commit, then move the predictions out of
-   the tree. A do-not-read instruction does not survive a grep; the file must be absent.
+2. **Pre-register predictions.** Write expected script outputs to a tracked path and commit it so the
+   timestamp establishes priority. ⚠ **AMENDED 2026-08-04 — ⛔ moving it out of the tree is NO LONGER
+   REQUIRED.** ⭐ Under the three clauses (build skill) a script cannot state a conclusion, so a builder
+   that reads a prediction still cannot type it. ⛔ Withhold only an **acceptance criterion referencing an
+   expected value**, which is what stops the fix-until-it-matches loop. Pre-registration now exists to test
+   **you**, ⛔ not to blind the builder.
 3. **Review the build directives before any build.** Run `.claude/skills/review-legs/SKILL.md` on the
    directive packet with both directives visible as one review artifact. ⭐ The directives are
    **orchestrator-written**, so the two legs are **Codex + Grok** — ⛔ not a fresh Claude agent. Require
@@ -57,15 +60,14 @@ Invoke as `/step-run <step-id>`. Follow this sequence exactly; do not substitute
    ⇒ ⛔ **Never author a build directive under `_scratch/`.** It is the one artifact both engines share and
    the only one whose errors defeat dual-engine by construction — it belongs under version control, where
    the baseline rule actually works.
-7. **Quarantine, then build SymPy.** Move the `.wl` out of the working tree, build the SymPy audit and
-   any registry insertion through `/build`, then restore the `.wl`. Verify it is byte-identical to its
-   committed blob. Reviewers may read that blob with `git show <sha>:<path>` but must never restore it;
-   this keeps the SymPy builder blind while `.wl` review continues.
-   ⛔⛔ **QUARANTINE THE WHOLE ANSWER-BEARING SET, ⛔ not just the `.wl`** — the build directives, the
-   step's `_scratch/<step>_*` files, and any raw build transcript. ⚠ `_scratch/` accumulates Codex
-   transcripts holding a prior engine's **complete tag values verbatim**, and they are reachable by a
-   builder that obeys every stated instruction. ⇒ `.claude/skills/review-legs/SKILL.md`
-   § BLINDNESS IS ENFORCED BY ABSENCE.
+7. **Build SymPy independently of the `.wl`.** ⚠⚠ **REWRITTEN 2026-08-04 — the quarantine ritual is CUT.**
+   ⭐ **What survives, and it is the whole point: the two engines must be INDEPENDENTLY CONSTRUCTED so they
+   can DISAGREE.** Write the `.wl` first, bar it from the registry, and ⛔ do not let the SymPy build be a
+   transcription of it — ⭐ that is about **construction**, ⛔ not about hiding a result.
+   ⛔ **CUT: moving the `.wl` out of the tree, quarantining directives, `_scratch` transcripts and the
+   answer-bearing set, and the byte-identical-restore check.** ⚠ Those defended against **anchoring**;
+   the measured failure was **absence of computation**, which the three clauses kill structurally and
+   quarantine never touched. ⇒ `research/pde_ledger_v3/REBUILD_HANDOFF.md`.
 8. **Run all existing gates.** Run acceptance, dim, able-to-fail, and pytest gates. For a new
    discrete row, also verify that the continuous payload is unchanged.
    ⛔⛔ **Any NEW relation also needs its own algebra checked, because no gate does it.** Add an
@@ -113,8 +115,9 @@ will yield a finding **every round, indefinitely**. ⇒ **Split until each piece
 
 ⛔⛔ **AND MAKE THE SCRIPT INCAPABLE OF STATING A CONCLUSION.** Every script directive carries the three
 clauses in `.claude/skills/build/SKILL.md`: **print computed objects, never prose · print the residual,
-never only assert it · interpretation belongs to the step record.** ⚠ Measured 2026-08-04 across three
-steps: **only ~10–20% of emitted tags depended on any computation.** ⇒ `REBUILD_HANDOFF.md`.
+emit BOTH operands and the residual before guarding · interpretation belongs to the step record.**
+⚠ Measured 2026-08-04: named tags at named lines in **three independently-built steps** are typed prose
+with no CAS object. ⛔ Do not quote a fraction. ⇒ `REBUILD_HANDOFF.md`.
 
 ⛔⛔ **DO NOT BLIND THE INPUTS — supply every equation.** ⭐ Withhold exactly one thing: an **acceptance
 criterion that references an expected value**, because Codex iterates to exit 0 and will otherwise fix the

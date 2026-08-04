@@ -418,22 +418,33 @@ emit("S11BB_FROZEN_THICKNESS_IDENTIFICATION",
      "holding e_W=0 gives K_frozen=" + zstr(Kcomp_A) + " after the still-active mass/transfer row is solved. It is not a primitive single compression modulus; in the impermeable high-frequency reduction it becomes K_L-2D_theta+B_rho3+A_theta*k^2")
 
 # B5 determinant and roots.
+K0_slice = Br3 - 2*C*W0 + kW*W0**2
+R_slice = rhom*cs/2
+S_slice = sp.sqrt(R_slice**2 - 4*muW*K0_slice/W0**2)
+R_solved, S_solved = sp.symbols("R_solved S_solved")
+slice_roots_solved = sp.solve(
+    sp.expand((2*muW*w + I*R_solved)**2 + S_solved**2), w
+)
+omega_minus_slice = slice_roots_solved[0].subs({R_solved: R_slice, S_solved: S_slice})
+omega_plus_slice = slice_roots_solved[1].subs({R_solved: R_slice, S_solved: S_slice})
+omega_opp_plus_slice = I*(R_slice + S_slice)/(2*muW)
+omega_opp_minus_slice = I*(R_slice - S_slice)/(2*muW)
 emit("S11BB_LONGITUDINAL_DISPERSION",
      "D(omega,k;q_out)=det(R_inplane,R_mass,R_thickness)=0 with unscaled rows R1=" + zstr(R1) + ", R2=" + zstr(R2) + ", R3=" + zstr(R3) + "; explicitly D=R11*(R22*R33-R23*R32)-R12*(R21*R33-R23*R31)+R13*(R21*R32-R22*R31)")
 emit("S11BB_ROOTS",
-     "Omega_j(k)={omega on prescribed sheet | D(omega,k;q_out)=0}; because q_out has a square-root branch and three independent rational kernels, no universal elementary closed form exists. Multiplicity m_j is the common zero order of D and its omega derivatives; exceptional multiplicities satisfy D=partial_omega D=0")
+     "EXPLICIT SOLVED SLICE ONLY (this is a slice, not the general dispersion): k=0, impermeable Lambda_A0=Lambda_V0=0, zero reciprocal coupling Lambda_X0=0, q_out=omega/c_s0, and mu_W,rho_m,c_s0,W0>0. With d=0 and theta=-e_W the reduced dispersion is mu_W*omega^2+i*R*omega-K0/W0^2=0, R=rho_m*c_s0/2, K0=B_rho3-2*C*W0+k_W*W0^2. Its concrete roots are omega_+=" + zstr(omega_plus_slice) + " and omega_-=" + zstr(omega_minus_slice) + ". The general dispersion remains the sheet-filtered determinant above and has no universal elementary closed form; exceptional multiplicities still satisfy D=partial_omega D=0")
 emit("S11BB_IMAGINARY_PART",
-     "for every root report Im(Omega_j): >0 growing, <0 decaying, =0 real. With all moduli and interface coefficients free its sign is parameter-dependent. Opposite-sheet value is Im(Omega_j^(-)) from D(omega,k;-q_out)=0 and the ratio is Im(Omega_j^(-))/Im(Omega_j^(+)) when defined")
+     "On the explicit slice let S=sqrt(R^2-4*mu_W*K0/W0^2). For nonnegative radicand, Im(omega_+)=(S-R)/(2*mu_W) and Im(omega_-)=-(R+S)/(2*mu_W): K0<0 gives signs (+,-), K0=0 gives (0,-), and 0<K0<=R^2*W0^2/(4*mu_W) gives (-,-). Above that threshold the roots are a damped oscillatory pair and both imaginary parts are -R/(2*mu_W)<0. On the opposite sheet the concrete roots are omega_opp,+=" + zstr(omega_opp_plus_slice) + " and omega_opp,-=" + zstr(omega_opp_minus_slice) + "; for nonnegative radicand their imaginary parts are (R+S)/(2*mu_W) and (R-S)/(2*mu_W), with signs (+,-) for K0<0, (+,0) for K0=0, and (+,+) for K0>0, and their ratios to omega_+,omega_- are (R+S)/(S-R) and (R-S)/(-R-S) where defined. For the underdamped pair both opposite-sheet imaginary parts are R/(2*mu_W)>0 and both ratios are -1")
 emit("S11BB_DISSIPATION_ORIGIN",
-     "nonzero Im(Omega) can come from (i) propagating Re(Z), which is radiation resistance even when Lambda_A0=Lambda_V0=0, or (ii) interfacial transfer/reciprocal kernels, including evanescent Re of the permeable response; compare the impermeable and no-reciprocal form cuts to distinguish them")
+     "On the explicit slice all interface channels vanish. For K0>0 the negative imaginary parts come from propagating bulk radiation resistance Re(Z)=rho_m*c_s0; for K0<0 the growing/decaying pair is created by the indefinite constrained stiffness K0<0 and radiation shifts both toward decay. No slice root is made non-real by mass transfer or reciprocal traction. In the general determinant, interfacial transfer/reciprocal kernels can be a separate source or sink, distinguished by the impermeable and no-reciprocal form cuts")
 emit("S11BB_ROOT_STABILITY_CLASS",
-     "Root j is GROWING iff Im(Omega_j)>0, DECAYING iff Im(Omega_j)<0, freely propagating iff Im=0 with a normalizable/flux-compatible bulk field, and a resonance rather than a normal mode when the continued bulk factor grows at infinity. No root is discarded")
+     "On the explicit slice omega_- is DECAYING for every K0. omega_+ is GROWING for K0<0, static at K0=0, and DECAYING for K0>0; for K0>0 the two decays are overdamped or a damped oscillatory pair. The separator is K0=B_rho3-2*C*W0+k_W*W0^2=0, equivalently C=(B_rho3+k_W*W0^2)/(2*W0): above this C omega_+ grows, below it both roots decay. On q_out=omega/c_s0 the growing root is a normal mode and each decaying root is an outgoing resonance; none is discarded")
 emit("S11BB_STABILITY_CONDITION",
-     "the modulus-driven conservative boundary is lambda_min(H_scalar(k))=0, H_scalar=" + zstr(Hscalar) + "; positive-definite side (for the displayed ordering) requires K_L>0, K_L*(B_rho3+A_theta*k^2)-D_theta^2>0, det(H_scalar)>0, with C entering as C*W0+A_theta_e*k^2. The full free interface can itself source or sink energy, so the exact growth/decay boundary is D=0 with Im(omega)=0 (Re D=Im D=0); no condition on moduli and C alone separates all full-problem roots")
+     "The actual boundary on the explicit constrained slice is K0=B_rho3-2*C*W0+k_W*W0^2=0, because the k=0 in-plane row sets d=0 and mass balance sets theta=-e_W; for mu_W>0, K0<0 gives growth and K0>0 gives decay only. By contrast lambda_min(H_scalar(k))=0 for H_scalar=" + zstr(Hscalar) + " is the stronger unconstrained three-field Hessian boundary: its positive-definite side requires K_L>0, K_L*(B_rho3+A_theta*k^2)-D_theta^2>0, and det(H_scalar)>0. That is sufficient unconstrained positivity, not the slice stability boundary. The full free-interface boundary still depends on the interface coefficients and is D=0 with Im(omega)=0")
 emit("S11BB_GROWTH_ARTIFACT_DIAGNOSTICS",
-     "for every Im(Omega)>0 root: kernel orientation identities=0, placeholder propagation residuals=0, determinant residual=0; pole inventory is reported below; q_out is the prescribed upward continuation and real-axis requirements were not re-imposed")
+     "For the concrete omega_+ root when K0<0: Lambda_A0=Lambda_V0=Lambda_X0=0, so all memory channels are absent, orientation is indistinguishable, all kernel-propagation residuals are 0, and there are no finite response-kernel poles. It lies on q_out=omega/c_s0 reached by prescribed upward continuation; real-axis flux/decay requirements were not re-imposed, and its bulk field is spatially normalizable. The zero interface tuple lies inside both unconditional admissibility and conditional reciprocity (the former is a strict subset of the latter). Thus its growth is the indefinite K0<0 constrained direction, not a kernel-orientation or sheet-reselection artifact")
 emit("S11BB_DECAY_ARTIFACT_DIAGNOSTICS",
-     "for every Im(Omega)<0 root: the same zero residuals and pole inventory apply; q_out is continued downward on the prescribed dragged-cut sheet and spatial decay was not re-imposed")
+     "For the concrete omega_- root for every K0, and omega_+ when K0>0: all interface channels are absent, orientation is indistinguishable, every kernel-propagation residual is 0, and there are no finite response-kernel poles. Each lies on q_out=omega/c_s0 reached by prescribed downward continuation without re-imposing spatial decay and is an outgoing resonance. The zero interface tuple lies inside both admissibility regions. Radiation resistance supplies the decay shift; for K0<0 omega_- is also the decaying member of the indefinite conservative pair, not an artifact")
 emit("S11BB_RECIPROCAL_TRACTION_ROOT_EFFECT",
      "D-D_F=det(R1,R2,DeltaR3), DeltaR3=" + zstr(dR3) + "; Lambda_X generically shifts roots and can split/merge them, while unchanged roots satisfy this difference=0. Multiplicity changes only on D=partial_omega D=0; the F cut sets tau_X irrelevant")
 
@@ -516,7 +527,7 @@ emit("S11BB_HOMOGENEITY_ABLATION_DEMO",
 
 # Controls.
 emit("S11BB_CONTROL_NO_THICKNESS",
-     "e_W=V=0 gives K_eff=(K_L-D_theta)-(D_theta-b_theta)*R2_d/R2_theta and D_A=R1_d*R2_theta-R1_theta*R2_d; J=J_mu*mu_theta and delta_p=P_mu*mu_theta remain. Thickness response is removed; tau_X becomes mechanically irrelevant while tau_A and pressure-feedback tau_V remain where their channels survive")
+     "e_W=V=0 gives K_eff=(K_L-D_theta)-(D_theta-b_theta)*R2_d/R2_theta and D_A=R1_d*R2_theta-R1_theta*R2_d; J=J_mu*mu_theta and delta_p=P_mu*mu_theta remain. Thickness response is removed; tau_A remains in the slab-state-driven transfer, while tau_V is irrelevant because the entire V-driven channel vanishes, and tau_X becomes mechanically irrelevant")
 emit("S11BB_CONTROL_A_ATTRIBUTION",
      "CONFOUNDED: changes can arise jointly from removing the thickness field, face-motion drive, Lambda_V V, pressure work, and reciprocal-traction work; they cannot be attributed to thickness alone. The slab-state-driven transfer channel is retained")
 emit("S11BB_CONTROL_NO_GRADIENT_STIFFNESS",

@@ -55,7 +55,7 @@ faceSolveCheck = zeroQ[pSolved - (pv vface + pm mus)];
 emit["FACE_RESPONSE",
  "Solving p=Z(V+J/rhom), J=la(mu_s-p/rhom)+lv V gives p=P_V V+P_mu mu_s, with P_V=Z*rhom*(rhom+lv)/(rhom^2+Z*la), P_mu=Z*rhom*la/(rhom^2+Z*la), la=la0/(1-i*om*tauA), lv=lv0/(1-i*om*tauV).  This is a two-drive face response, not a pure impedance.  Direct symbolic solve check=" <> ToString[faceSolveCheck] <> "."];
 emit["FACE_RESPONSE_MU_COEFF",
- "As a function of muTheta, p=P_V V+P_muTheta muTheta where P_muTheta=Z*la/(rhom^2+Z*la); equivalently P_mu=P_muTheta*rhom=Z*rhom*la/(rhom^2+Z*la) multiplies mu_s=muTheta/rhom."];
+ "As a function of muTheta, p=P_V V+P_muTheta muTheta where P_muTheta=Z*rhom*la/(rhoBr*(rhom^2+Z*la)); equivalently P_mu=P_muTheta*rhoBr=Z*rhom*la/(rhom^2+Z*la) multiplies mu_s=muTheta/rhoBr."];
 
 gp = -1/rhom; lp0 = gp la0;
 zpermDerived = FullSimplify[pV[la0/rr, lv0/rr] /. qout -> om yy];
@@ -161,7 +161,7 @@ emit["FROZEN_THICKNESS_IDENTIFICATION",
 
 (* B5 determinant, a soluble stability slice, and branch sensitivity. *)
 emit["LONGITUDINAL_DISPERSION",
- "On the prescribed qout sheet the dispersion is det(M)=0 for M={{R_d,R_theta,R_e},{T_d,T_theta,T_e},{B_d,B_theta,B_e}}, with rows printed in B2/B1 and det=R_d(T_theta B_e-T_e B_theta)-R_theta(T_d B_e-T_e B_d)+R_e(T_d B_theta-T_theta B_d).  The computed determinant expression is " <> fmt[disp] <> "."];
+ "On the prescribed qout sheet the dispersion is det(M)=0 for M={{R_d,R_theta,R_e},{B_d,B_theta,B_e},{T_d,T_theta,T_e}}, with rows printed in B2/B1 and det=R_d(B_theta T_e-B_e T_theta)-R_theta(B_d T_e-B_e T_d)+R_e(B_d T_theta-B_theta T_d).  The computed determinant expression is " <> fmt[-disp] <> "."];
 emit["ROOTS",
  "General roots are the sheet-filtered zeros {om_j(k): det(M(om,k,qout(om,k)))=0}.  Because qout has square-root monodromy and the determinant contains three independent Debye denominators plus feedback denominators, no parameter-independent radical closed form or fixed root count/multiplicity exists; collisions, cancellations and roots at infinity occur on coefficient subvarieties.  Explicit sign classification therefore requires a parameter region.  A fully symbolic soluble slice is reported next and demonstrates both admitted signs without imposing positivity."];
 

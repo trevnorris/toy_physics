@@ -37,40 +37,61 @@ fixed general-`D` form — alongside the package's own density. ⛔ Those coinci
 and **differ** for the form controls, ⇒ **it is the very divergence this edit exists to remove.**
 ⭐ **Name exactly ONE compared pair, and state no outcome.**
 
-**⭐ The comparison, as equations — ⛔ there is exactly one compared pair here:**
+### ⭐⭐⭐ NAME THE OBJECT. ⛔ DO NOT SPECIFY HOW TO OBTAIN IT.
+
+⛔⛔ **THIS IS THE CORRECTION THAT MATTERS, and every earlier draft of this directive got it wrong.**
+⚠ Successive drafts specified a **recipe** — zero the velocities, divide by a weight, prove the weight
+nonzero, guard the division. ⇒ **Five rounds of review then argued about the RECIPE**: is the weight
+unique, is the quotient well-defined, is the residual a tautology. ⛔ **None of that is a question about
+the physics.** ⭐ **Every one of those questions was manufactured by specifying a derivation path the spec
+never needed to specify.**
+
+⭐⭐ **The object already exists in both engines.** Each action constructor **already returns the stiffness
+density it used**, as an object, alongside the Lagrangian. ⇒ ⛔ **nothing needs to be divided by anything**,
+and ⭐ **the weight never appears, so it never needs pinning.**
+
+**⭐ The comparison — ⛔ exactly one pair, ⭐ stated as OBJECTS:**
 ```
-g_ij   := INDEPENDENT symbols standing for ∂_i u_j        ⛔ never a k×a amplitude curl
-L₀     := THIS package's action with the velocities zeroed and the g_ij substituted in
-w      := THIS package's spatial weight, FIXED BY §7 for that package
-          ⇒ prove w ≠ 0 from the premises BEFORE dividing
-S_pkg  := L₀ / w                                          ⛔ never a re-typed curl density
-c_i    := Σ_{j,k} ε_ijk g_jk                              COMPUTED by the CAS
-emit:    S_pkg  ·  c·c  ·  (S_pkg − c·c)                  all three
+g_ij      := INDEPENDENT symbols standing for ∂_i u_j     ⛔ never a k×a amplitude curl
+S_pkg     := the stiffness density THIS package's action USES,
+             with the g_ij substituted in                 ⭐ the object the action was built from
+c_i       := Σ_{j,k} ε_ijk g_jk                           COMPUTED by the CAS
+emit:       S_pkg  ·  c·c  ·  (S_pkg − c·c)               all three
 ```
 
-⛔⛔ **`w` IS FIXED BY `§7` FOR THE PACKAGE — ⛔ it is NOT re-extracted from the mutated action.**
-⚠ **This is the subtle one:** dividing by a weight pulled back out of a mutated action ⛔ **cancels the very
-normalisation change `§Q7` exists to detect.** ⇒ ⭐ under the action-mutation test below, `w` is what stays
-**FIXED** while the action moves.
+⛔⛔ **DO NOT write an extraction procedure. ⛔ No quotient, ⛔ no weight, ⛔ no velocity-zeroing step.**
+⭐ **Ask for the object; ⛔ let the engine hand over what it built.**
 
 ⛔⛔ **`c·c` MUST BE REACHED BY COMPUTATION from the Levi-Civita definition. ⛔ Do NOT write out the
-expanded polynomial.** ⭐ That computed side is the **only** reason this check can fail on physics — the
-density side is typed, so a hand-expanded reference would compare a typed object against a typed object.
+expanded polynomial.** ⭐ That computed side is the **only** reason this comparison can fail on physics —
+the density side is whatever the engine used, so a hand-expanded reference would compare a typed object
+against a typed object.
 
-⭐ **`S_pkg` must come from the ACTION, so that mutating the action alone — with the package selector held
-FIXED — moves it.** ⚠ **Measured:** an implementation keyed on the **selector**, taking no action object at
-all, passes a *"change the form in one package and watch it move"* test. ⇒ ⛔ **re-deriving from the
-selector is not re-entering at the action**, and the words must make the two distinguishable.
+### ⭐⭐ AND LET THE ENGINES ANSWER — ⛔ do not pre-empt them in prose
+
+⭐⭐ **If the two engines emit DIFFERENT densities, that is a FINDING, ⛔ not a spec defect to be prevented
+by better wording.** ⚠ It is exactly what happened: one engine emits a fixed curl density for every
+package, the other emits the package's own. ⇒ ⭐ **a cross-engine comparison of this tag shows it.**
+⛔ **Do not try to make divergence impossible by writing more precise prose about how to derive the
+object.** ⭐ Name the object, emit it from both engines, and **compare afterwards** — ⇒ that is what the
+two engines are FOR.
+
+⭐ **The one requirement that stays, because it is about DATA DEPENDENCY and not about a recipe:**
+> Mutating **the action alone**, with the package selector held FIXED, must move the emitted `S_pkg`.
+
+⚠ **Measured:** an implementation keyed on the **selector**, taking no action object at all, passes a
+*"change the form in one package and watch it move"* test. ⇒ ⛔ **re-deriving from the selector is not
+re-entering at the action.** ⭐ This is what catches an engine reporting a density it did not use, and
+⛔ it needs no extraction algebra to state.
 
 ⛔ **DELETE from `§Q7`:** the sentence naming a fixed curl density as the compared object · the sentence
 stating what the residual is **expected** to be and for which packages · the sentence describing the
 **measured** failure shape under a corrupted action · the "curl vector of the **amplitude**" wording, which
 contradicts the derivative formula on the next line.
 
-⚠ ⭐ **Say plainly what this check does NOT do:** it compares a **typed** density against a **computed**
-reference. ⇒ it catches a wrong **form** and a wrong **normalisation**; ⛔ it does **not** establish that
-the density was assembled from the action rather than re-typed — ⭐ that is what the action-mutation
-requirement above is for.
+⚠ ⭐ **Say plainly what this comparison does NOT do:** it does ⛔ **not** by itself establish that the
+density was assembled from the action rather than re-typed — ⭐ the action-mutation requirement above is
+what does that.
 
 ## ⛔⛔ E2 — add the DISTINCTNESS premises. ⭐ Without them a control can police nothing.
 
@@ -145,13 +166,10 @@ package's row being **prose about a sign**. ⇒ a reader must reconstruct the ac
 ⭐ **Write each package's Lagrangian in full.** ⚠ It is six lines, and it is the object everything else is
 computed from.
 
-⛔⛔ **AND WRITE EACH ONE IN THE EXPLICIT FORM `L = T + w·S`, WITH `T`, `w` AND `S` EACH NAMED.**
-⚠ **This is what makes `§Q7`'s `w` real.** ⭐ Today `§7` names the density `S` per package and the weight
-can be **read off** the action — ⇒ `w` is **derivable**, ⛔ but it is **not declared**, and `§Q7` says it is
-"fixed by `§7`". ⚠ A leg called that claim **false as written** and it was right.
-⇒ ⭐ **Declare the weight. ⛔ Do not leave it to be inferred**, ⚠ because an inferred weight can be
-re-factorised — ⭐ and any freedom in splitting `L` into `w` and `S` reappears as a **different emitted
-residual**, with both engines free to invent the **same** wrong split and agree.
+⛔⛔ **AN EARLIER DRAFT ALSO ORDERED A DECLARED SPATIAL WEIGHT HERE. ⛔ THAT IS WITHDRAWN.**
+⚠ It existed **only** to serve an extraction recipe in `§Q7` that has now been removed. ⇒ ⛔ with no
+quotient there is **no weight to declare**, and the factorisation question disappears with it.
+⭐ **Write each action in full. ⛔ Nothing more is required of `§7` by `§Q7`.**
 
 ## ⛔ E6 — sweep the file for STATED RESULTS and delete them
 
@@ -200,10 +218,11 @@ comparison it was supposed to be in.
    failed.**
 2. ⭐⭐ **THE ACTION-MUTATION TEST — ⛔ this one was missing and a leg caught it.** Acceptance previously
    checked only prose. ⭐ **Take your rewritten `§Q7` and answer, in writing:** if the ACTION of one package
-   is mutated while its **spatial weight `w` and its package selector are held FIXED**, does your text
-   require `S_pkg` to move? ⭐ Quote the sentence that forces it. ⛔ If an implementation keyed on the
-   **selector**, or one that re-extracts `w` from the mutated action, could satisfy your text, ⛔ **the
-   rewrite has failed.**
+   is mutated while its **package selector is held FIXED**, does your text require the emitted `S_pkg` to
+   move? ⭐ Quote the sentence that forces it. ⛔ If an implementation keyed on the **selector**, taking no
+   action object at all, could satisfy your text, ⛔ **the rewrite has failed.**
+   ⚠ ⭐ **And check your own text for a RECIPE:** if it tells the engine *how* to obtain the density rather
+   than *which object* to emit, ⛔ **you have reintroduced the defect this edit removed.**
 3. ⭐ **Grep the whole file** for sentences beginning "an earlier version", and for `expected`, `measured`,
    `it turns out`, `structurally zero`, `will return`, `comes back`, `seconds`, and `gaps`.
    ⛔⛔ **A grep is a floor, ⛔ not the test** — ⚠ a leg found stated results carrying **none** of these

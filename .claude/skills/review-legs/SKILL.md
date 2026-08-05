@@ -186,6 +186,18 @@ credentials and paths; ⛔ it may not carry method.
 ⛔ Copy the artifact to /tmp and ablate the COPY. ⛔ Never modify the working tree.
 ⭐ Save every ablation script AND its literal stdout to named absolute paths, and report those paths.
 ```
+⛔⛔ **AND AN ORPHANED KERNEL LEAKS MEMORY, NOT JUST A SEAT — the symptom looks unrelated to Mathematica.**
+⚠ **Measured 2026-08-04:** a kernel left over from an over-budget leg reached **17.9 GB RSS at 100% CPU**;
+the machine went from **22 GB free to 500 MB**, and the OOM killer then took **four consecutive unrelated
+background jobs** — two `grok` legs and two `codex` builds — while earlier runs of the same jobs had
+completed. ⛔ None of them produced a Mathematica error, or any error of their own.
+⇒ ⭐⭐ **When a background job is killed with a healthy-looking log, check `free -h` BEFORE anything else.**
+⭐ `ps -eo pid,rss,pcpu,etime,comm --sort=-rss | head` finds the orphan in one command.
+⚠ ⭐ **Its parent will not be a `claude` process** — so "is another session competing?" is the wrong first
+question, and it cost an hour of misdiagnosis.
+⇒ ⭐ **This is why the budget is enforced ON SIGHT:** the kernel that orphaned was one observed running
+**13× over budget** and allowed to finish because it looked like it was converging.
+
 ⚠ **An over-budget kernel does not announce itself** — it looks identical to a busy one. ⭐ `etime ≈ cputime`
 on a single kernel process tells you it is **one continuous computation with no idle**, ⛔ not a batch of
 short ones. ⚠ **It does NOT tell you whether it will converge** — the measured case above ran **~23 minutes

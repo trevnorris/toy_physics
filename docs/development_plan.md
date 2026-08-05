@@ -131,12 +131,22 @@ generically). The drain-sector derivation is **PAUSED**.
 4. **Throat sector (§4)** — drain-sector + self-selection equations (can run in parallel with §2/§3; existence already supported).
 5. **Integration (§5)** — assemble + whole-system dim check + clear debt + write the sim hand-off spec.
 
-Each sector item runs through the **standard process** (directive → **ONE** design-review pass on a fresh reviewer → fold →
-dual-engine execute → arbiter re-run → **TWO mutually independent fresh review legs** doing fidelity + per-tooth ablation, because a
-sector item's math is **physics-bearing** → the **blocking physics leg**), per `docs/development_pipeline.md`. ⛔ **Retired
-2026-07-29/30:** the Codex→GLM→fold→Codex bookend, the fixed three-leg tri-review, and the per-gate user gate — stop for the user at
-a decision, a blocking finding or a no-go, not at every item. ⚠ The second leg (restored 2026-07-30) is a second **independent
-reader**, not a second model in a sequence; prose and tooling still get one.
+Each sector item runs through the **standard process** (directive → design-review legs → fold → dual-engine execute → arbiter
+re-run → **TWO mutually independent fresh review legs** doing fidelity + per-tooth ablation, because a sector item's math is
+**physics-bearing** → the **blocking physics leg**), per `docs/development_pipeline.md`. ⛔ **Retired 2026-07-29/30:** the
+Codex→GLM→fold→Codex bookend, the fixed three-leg tri-review, and the per-gate user gate — stop for the user at a decision, a
+blocking finding or a no-go, not at every item. ⚠ The second leg is a second **independent reader**, not a second model in a
+sequence.
+
+⚠⚠ **AMENDED 2026-08-05 by the script rebuild — ⭐ see `docs/development_pipeline.md` § THE METHOD, which overrides anything
+that conflicts with it, and `CLAUDE.md` for the short form.** Four changes bear on this section:
+- ⭐ **A build directive for an artifact BOTH ENGINES READ is physics-bearing ⇒ TWO legs**, ⛔ not the one that prose gets.
+  ⚠ An error there makes both engines compute the same wrong thing and **agree**.
+- ⭐⭐ **NAME THE OBJECT; ⛔ do not specify the recipe.** ⚠ Five review rounds were spent arguing about a derivation path a
+  specification never needed to state.
+- ⭐⭐ **The CAS answers.** ⛔ If a session is deciding in prose what the engines should compute, ⭐ **the instrument is broken
+  and that is what to fix.**
+- ⭐ **STOP when nothing outstanding changes what is computed or claimed** — ⛔ not when both legs are green.
 
 ---
 

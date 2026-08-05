@@ -35,6 +35,86 @@ scale-back it authorises: memory [`physics-not-ceremony`].
 
 ---
 
+## ⭐⭐⭐ THE METHOD — ⛔ THE CAS ANSWERS, ⛔ NOT THE ORCHESTRATOR (2026-08-03/05, the script rebuild)
+
+⚠⚠ **This section is newer than everything below it and it OVERRIDES anything below that conflicts.** It is
+the fold of the script rebuild, in which a session was lost to each of the failures named here.
+
+**1. ⭐⭐ TWO ENGINES EXIST SO THEY CAN DISAGREE.** Independent **construction** — the `.wl` written first,
+barred from the registry, ⛔ never a transcription of the `.py`. ⭐ **The disagreement IS the measurement.**
+⛔ That is about construction, ⛔ **not** about hiding answers.
+
+**2. ⭐⭐ A SCRIPT PRINTS COMPUTED OBJECTS; ⛔ IT NEVER STATES CONCLUSIONS.** An `emit`/`Print` payload must
+be a CAS object. ⭐ Emit **both operands and the residual**, *then* guard — ⛔ a residual asserted zero
+always prints `0` and carries no information. ⭐ Interpretation belongs to the **step record**.
+⚠ **Measured:** named tags at named lines in **three independently-built steps** were typed prose with no
+CAS object behind them, and **eight fidelity review legs missed it** — because *"does it say the right
+thing"* and *"does it depend on anything"* are different questions. ⛔ **Do not quote a fraction of the
+corpus**; two legs rejected that as unmeasurable.
+
+**3. ⭐⭐⭐ NAME THE OBJECT. ⛔ DO NOT SPECIFY THE RECIPE.**
+⚠ **Measured 2026-08-05, and it cost five review rounds.** A spec section specified *how* to obtain a
+compared quantity — zero the velocities, divide by a weight, prove the weight nonzero, guard the division.
+⇒ **Every subsequent round argued about the recipe**: is the weight unique, is the quotient well-defined,
+is the residual a tautology. ⛔ **None of that was a question about the physics.** ⭐ **Every one of those
+questions was manufactured by specifying a derivation path the spec never needed to specify** — and the
+object was already returned by both engines' constructors.
+⇒ ⭐ **Ask for the object. ⭐ Let the engine hand over what it built.**
+
+**4. ⭐⭐⭐ IF YOU ARE DECIDING IN PROSE WHAT THE ENGINES SHOULD COMPUTE, THE METHOD IS INVERTED.**
+⚠ **The tell:** many turns of reasoning toward an answer a script would settle in one.
+⚠ **The cause, and it is the useful part: the instrument was broken.** The output reader could not parse a
+few hundred payloads, so the cross-engine layer could not see the object under dispute; with no measurement
+available the orchestrator tried to reason the answer out inside the specification.
+⇒ ⭐⭐ **When the measurement is unavailable, FIX THE INSTRUMENT. ⛔ Do not reason around it** — ⭐ a broken
+instrument silently promotes prose over evidence.
+
+**5. ⭐ A DISAGREEMENT IS A FINDING, ⛔ not a defect to be prevented by better wording.** ⛔ Do not try to
+make divergence impossible in prose; ⭐ name the object, emit it from both engines, **compare afterwards.**
+
+**6. ⛔⛔ DO NOT BUILD BLINDNESS APPARATUS.** ⚠ Two rounds of it were designed and discarded in one session,
+and a third was built and had to be torn out. ⭐ The measured failure is **absence of computation**, ⛔ not
+anchoring on a known answer — ⇒ quarantine never touched it, and the three clauses kill it structurally.
+⛔ **A do-not-read list is a denylist, and a denylist means the architecture is wrong.**
+⚠ **Measured:** a denylist was written, and then a scratch-copy instruction materialised every denied path
+past it. ⭐ **Withhold exactly ONE thing: an acceptance criterion that references an expected value**,
+because a builder iterating to exit 0 converges on any target it can see.
+
+**7. ⭐ PRIOR ART IS AN ORACLE, ⛔ NEVER A PREMISE.** ⭐ Check a computed result against the literature where
+they should coincide — ⚠ that is a free external check, better than a review leg. ⛔ Never assume the
+literature's result **for our object**: our Lagrangian is not theirs, and ⚠ **their conditions may not be
+ours.** ⇒ re-check a **condition** before inheriting its **conclusion**.
+
+### ⛔⛔ AND THE GATES THAT GO WITH IT
+
+**8. ⛔⛔ NO COMMIT BEFORE BOTH LEGS REPORT.** ⭐ The commit is the **last** step. ⛔ Reviewing the
+**directive** does not pay the tax for the **build**. ⛔ **The orchestrator's own verification is not a
+leg** — ⚠ and it is **most** convincing when it finds things.
+⚠ **Measured 2026-08-05:** two builds were committed with zero legs, both were reverted, and a day was lost.
+
+**9. ⭐⭐ THE STOPPING RULE — ⛔ "both legs green" is NOT it.**
+> ⭐ **Ship when no outstanding finding changes what the engines COMPUTE, or what we are ENTITLED TO CLAIM.**
+> ⚠ Everything else is a **NOTE**: recorded, and shipped with.
+
+⛔ *"A leg that finds nothing is weak evidence"* is an **orchestrator's prior** — ⭐ keep it, ⛔ never treat
+a clean report as strong confirmation. ⛔ **It is NOT a leg's instruction**: in a prompt it is a quota, and
+a quota is filled. ⇒ ⭐ **put the BLOCKING/NOTE buckets in the prompt, ⛔ not the pressure**, and say that
+*"no blocking findings"* is a valid answer.
+
+**10. ⭐ A SHARED SPEC IS PHYSICS-BEARING ⇒ TWO LEGS.** ⚠ The *Roles* table's "prose and process gets one
+leg" ⛔ **does not** cover a build directive for an artifact both engines read: ⭐ an error there makes both
+engines compute the same wrong thing and **agree**, which is precisely the class cross-checking cannot
+catch. ⚠ **Measured:** on such a directive the two legs **disagreed** on the verdict four times, and the
+disagreement was the most valuable output each time.
+
+**11. ⭐ IF SUCCESSIVE REVISIONS KEEP BREEDING DEFECTS IN THE MATERIAL JUST CHANGED → CHANGE THE AUTHOR.**
+⛔ Do not fold a fourth time. ⚠ **Measured:** three folds each closed the reported defects and introduced
+new ones of the same severity; changing the author broke the cycle, and the **defect class** changed
+immediately. ⭐ The settled **physics** is not reopened by a new author — ⛔ it is the **drafting** that
+fails.
+
+---
+
 ## Roles — who does what (never blur these)
 
 | Role | Does | Does NOT |

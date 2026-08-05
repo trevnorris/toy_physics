@@ -511,7 +511,17 @@ required, that is a result, record it.
 **Register:** **C13** is adjacent but ⛔ **not** this step's job (a gravitational wave is not a brane
 mode).
 
-#### ⭐⭐ S11b IS SPLIT INTO THREE — A closed, B in review, C new {#s11b-split}
+#### ⭐⭐ S11b IS SPLIT INTO THREE — ⛔ AND S11b IS **NOT CLOSED** UNTIL C IS {#s11b-split}
+
+⛔⛔ **CORRECTED 2026-08-05 (user).** ⚠ Several docs — including a memory titled *"S11b CLOSED"* — read as
+though S11b were finished. ⛔ **It is not.** The split below was for **specification tractability**: three
+attempts to spec the whole interface in one pass were rejected. ⇒ ⭐ **A, B and C are ONE STEP**, and
+⛔ **S11b closes only when C closes.** ⚠ A ledger that calls a step closed when a third of it was never
+built overstates what the light sector establishes.
+⇒ ⭐ **C runs immediately after B's rebuild** — ⛔ it is a FIRST BUILD, not a rebuild, since C never existed.
+⭐ ⛔ **No renumbering:** C is genuinely part of S11b, ⛔ not a separate step.
+
+
 
 ⚠ **2026-08-03.** Two attempts to specify the whole interface in one pass were rejected before any build,
 and a third was rejected for mandating a non-uniform background while fixing plane waves. ⇒ three steps:

@@ -2,73 +2,84 @@
 
 ---
 
-# ⭐⭐⭐ STATE, 2026-08-04 — **S9 IS DONE. S10 IS NEXT.**
+# ⭐⭐⭐ STATE, 2026-08-05 — **S10's ENGINES ARE DONE. THE HARNESS IS BLOCKED ON PLUMBING.**
 
-⭐ **The proven per-step order is `.claude/skills/step-run/SKILL.md` § THE PROVEN ORDER.** ⛔ Do not
-reconstruct it from this file; that table is the operative one and it is 13 numbered steps with the trap
-each exists for. ⭐ `build` and `review-legs` carry the rest.
+## ⛔⛔ THREE BLOCKERS, ALL PLUMBING, ⛔ NONE OF THEM PHYSICS — fix these first
 
-## What S9 produced
+The harness cannot yet consume S10's output. ⭐ **Every blocker is an interface mismatch between the
+engines and a checker built for S9's simpler shape.** ⛔ No physics result is in question.
+
+1. ⛔ **Mathematica diagnostics reach stdout.** `Solve::svars` prints **10 raw lines** into engine 1's
+   output; the harness parses them as tags and dies with *"duplicate emitted tag Solve"*.
+   ⚠ **The engine is doing the right thing otherwise** — it already emits
+   `..._SOLVE_SVARS_MESSAGE` tags, which is what the repair asked for. ⭐ **Fix: `Quiet` the message at the
+   solve while keeping the captured flag and its tag.** ⛔ Do not re-suppress the *information*.
+2. ⛔ **`derived_dimensions` cannot take a symbolic-in-`D` payload.** ⭐ Already worked around in
+   `checks_S10.yaml` by pointing at the `_SPECIALIZED` tags.
+3. ⛔ **`derived_dimensions` cannot take a LIST of coefficient dimensions.** The engine emits one entry
+   per coefficient — ⭐ correct, because Q6 was amended so that *which* coefficients exist is
+   package-dependent — and the layer wants a single triple. ⇒ ⭐ **Either add a selector to that config
+   key, or have the engines also emit one tag per named coefficient.**
+
+⚠ **The last harness run used a FILTERED copy** of engine 1's output (blocker 1 removed by `grep`). ⛔ That
+is a diagnostic convenience, ⛔ **not** a result — the committed `out/` file still contains the 10 lines.
+
+## ✅ What IS done
 
 | artifact | state |
 |---|---|
-| `mathematica/S9_light_requires_shear_mathematica_audit.wl` | **1559 tags, 0 typed conclusions**, 9 actions |
-| `scripts/S9_light_requires_shear_sympy_audit.py` (+ `.premises`) | **635 tags, 0 typed conclusions**, 9 actions |
-| `reduction/engine_output_checks.py` + `checks_S9.yaml` | 4-layer harness; **cross-engine `agree=12, disagree=0`**, dimensions **1219/1219 homogeneous** |
-| `steps/S9_light_requires_shear.md` | rewritten with a full verification section |
-| `paper/steps/S9_light_requires_shear.tex` | rebuilt from the record |
+| `directives/S10_SHARED_PHYSICS.md` | reviewed (Codex+Grok) + **6 amendments**, all leak-gated |
+| `mathematica/S10_brane_mode_spectrum_mathematica_audit.wl` | **2983 tags**, 64 s, exit 0 — built blind, reviewed ×3, repaired ×3 |
+| `scripts/S10_brane_mode_spectrum_sympy_audit.py` | **4227 tags**, 150 s, exit 0, **byte-identical reruns** — reviewed ×2, repaired ×2 |
+| `mathematica/out/` + `scripts/out/` | ⭐ **engine output is now COMMITTED EVIDENCE** (v2's convention, adopted in v3 at last) |
+| `reduction/checks_S10.yaml` | 677 name pairs; `parity_exclude: _LOCAL_` |
+| `reduction/engine_output_checks.py` | `parity_exclude` added, parity layer only |
 
-⭐ **The physics did not change.** Every value the pre-rebuild engine computed is identical. ⛔ No result
-was revised, no sign flipped. **What changed is that each claim now survives something able to refute it.**
+⭐ **Both engines' computed chains are verified LIVE by form ablation on independent legs** — `N3` (stacked
+rank), `N7` (two different algorithms), both matrix routes under one-sided corruption **in both
+directions**, per-package re-entry at the action, the dimension tree walk, and Q7's two independent sides.
 
-## ⭐⭐ THE ONE PHYSICS RESULT THAT CHANGED WHAT S9 CLAIMS
+## ⛔ REMAINING, in order
 
-⛔⛔ **Transverse propagation does NOT require the curl-only form.** The gradient-elastic control — an
-ordinary elastic solid — carries **two transverse modes at the same `c² = μ_R/ρ_br`**; it merely *also*
-propagates the longitudinal. ⇒ ⭐ **curl-only buys the ABSENCE of a propagating longitudinal mode**,
-⛔ not the presence of the transverse ones. ⚠ **Say "buys", ⛔ not "uniquely buys"** — five stiffness
-forms were tested, which ⛔ does not establish uniqueness across all operators. ⚠ Prose reading *"light requires shear"* as established
-by this computation **overclaims** — the statement is conditional on the stiffness form.
+1. **The three blockers above**, then run the harness for real.
+2. ⛔ **Verify the harness by ABLATING THE HARNESS** — ⛔ never by reading its self-report.
+3. **Write the step record** (orchestrator's job) — ⛔ it should cite harness results, which is why it is
+   not written yet.
+4. **TeX card** — Codex, with its own two legs.
+5. ⚠ **S9 `out/` retro-fit** — S9's engines have no committed output either.
 
-## ⛔⛔ CARRY THESE INTO S10 — each cost a repair round on S9
+## ⚠ KNOWN LIMITS — ⛔ do not let these pass silently into the record
 
-1. ⛔⛔ **CHECK S10's MODE-COUNT METHOD FIRST, BEFORE ANYTHING ELSE.** `M·T = 0` is **not** a transverse
-   existence test — it demands `M` annihilate the *whole* transverse subspace and returns a **false
-   negative** when a mode's partner sits at a different frequency. ⭐ Use **corank of `M` stacked on `kᵀ`**.
-   ⚠ **S9's original engine AND its first rebuild both used the broken test**, and ⭐⭐ **S10's entire
-   result is a mode count.**
-2. ⛔ **Never test homogeneity by substituting a symbol** (`k² → q`). It silently no-ops when the root is
-   not a bare multiple of that sum, giving a false *positive* on a gapped root and a false **negative** on
-   a genuinely dispersive one. ⭐ Test by **scaling**: `ω²(λk) − λ²ω²(k)`.
-3. ⭐ **Dimension the WHOLE expression tree**, ⛔ never by reading coefficient exponents — that drops
-   explicit wavevector factors. And **count FIELD FACTORS**, ⛔ not `Derivative` atoms, or a bare
-   undifferentiated field loses its dimension silently.
-4. ⭐ **Emit the SIGN of `ω²` per root.** Without it, exponentially growing modes carry the same
-   polarisation signature as propagating waves.
-5. ⛔ **Emission must never be conditional on a payload's VALUE.** ⚠ A dedup applied across control
-   packages deleted correctly-invariant tags; *absent* is indistinguishable from *never computed*.
-6. ⭐ **Give the dynamical matrix two independent routes**, and prove independence by **one-sided
-   corruption** — break one, the other must not move.
-7. ⚠ **`MatrixRank` returns the GENERIC rank.** Emit the exceptional loci explicitly and check the
-   enumeration is complete.
+- ⛔ **Cross-engine coverage is a SUBSET: 677 pairs out of ~2900 candidates.** ⚠ **This is a SPEC gap of
+  mine, ⛔ not an engine defect** — §8 pinned the tag **prefix** grammar and never pinned the **quantity
+  names**, so both engines obeyed it and still diverged (`Q5_ORIGINAL_ROOT` vs `Q5_ROOT_ORIGINAL`; engine 2
+  suffixes dimension info onto object names where engine 1 emits separate families).
+  ⇒ ⭐ **Pin quantity names in the spec before S11.**
+- ⚠ **Several rounds rested on ONE review leg, not two** — grok was unavailable (per-user lock, and later a
+  machine-wide memory exhaustion). ⇒ [[feedback-grok-single-instance-per-user]].
+- ⚠ `parity_exclude` matches by **substring**; the builder flagged that as blunt and an anchored
+  engine-prefix convention would be safer. ⭐ Agreed, not yet done.
+- ⚠ **Runtime margin is thin.** Modest form ablations pushed both engines past 600 s, always in
+  `XFORM_ANISO`.
 
-## ▶ S10 setup notes
+## ⭐⭐ SIX SPEC AMENDMENTS — the durable output of this step, ⭐ and FOUR WERE MY OWN DEFECTS
 
-- ⭐ **S10 already has both engines** — ⛔ no exemption question arises. Rebuild both.
-- **Author `reduction/checks_S10.yaml`** — ⛔ tag **names** only, never values.
-- ⚠ **Move `_SYMBOL_ALIASES` out of `engine_output_checks.py` into the per-step config.** Symbol
-  spellings are step-specific; a hardcoded module dict needs a code edit per step. It maps names to
-  names, so moving it is leak-free. ⚠ It already caused S9's only **false-positive `DISAGREE`**
-  (`lambdaScale` vs `lambda_scale`) ⇒ ⭐ **a `DISAGREE` needs adjudication too**, exactly like `INVARIANT`.
-- ⚠ Known-open on S9, ⛔ not blockers: the assumption set is **computationally inert** (physics bounded
-  instead by generic rank + a verified-complete locus enumeration); one tag is `UNPARSED` (a `Piecewise`
-  sign); the `.py` was written **after** the `.wl`, so its agreement is weaker than blind-first ordering.
-  ⭐ At S10 both engines predate any comparison, so that caveat disappears.
+⚠ Three of the four were introduced **by repairs fixing something else**, and **every one was caught by a
+review leg reading the spec end-to-end**, ⛔ never by a build failing.
 
----
+1. **Phase average** — the period was written with `ω`-dependent `t` limits, which are a real period only
+   if `ω` is real and nonzero, **precisely the case Q3 exists to detect**.
+2. **`[u] = length`** — never stated; both engines invented it and happened to agree.
+3. **Q5 contradicted corollary 4** — it told the builder to emit some tags only when a value existed.
+4. **Q6d** — the homogeneity check is **structurally vacuous** and cannot be repaired by a cleverer check
+   (`[u]` cancels in every coefficient ratio); ⇒ emit the equation/unknown counts and **label** it.
+5. ⭐⭐ **Corollary 5 — A DECLARATION MUST BE WIRED TO WHAT IT DECLARES.** Both engines typed their premise
+   tags as second literals; one kept printing its old value while **281 dependent payloads moved**.
+   ⭐ **The test: perturb what the tag declares; it must move.**
+6. **The run record must be OBSERVED**, not declared before the sweep.
 
-**Opened 2026-08-04 by user decision.** ⛔ **All new ledger physics is STOPPED**, including S11b-C, until
-this closes. ⭐ This file is the plan; ⛔ it supersedes `steps/S11b_HANDOFF.md` as the read-first document.
+⇒ ⛔⛔ **THE SPEC IS NOW ~490 LINES AND HAS TWICE CONTRADICTED ITSELF FASTER THAN BUILDS SURFACED IT.**
+⭐ **Do a consistency pass over it as its own step before S11 inherits it.**
 
 ---
 

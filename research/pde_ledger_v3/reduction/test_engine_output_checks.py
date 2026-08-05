@@ -133,6 +133,98 @@ def test_deleting_real_control_tag_fires_parity_missing() -> None:
     assert suffix in row.missing
 
 
+def test_parity_exclusion_is_reported_and_confined_to_parity() -> None:
+    outputs = {
+        "wl": checks.normalize_tags(
+            {
+                "WL_COMMON": "1",
+                "WL_LOCAL_ONLY": "local_value",
+                "WL_X1_COMMON": "1",
+            }
+        ),
+        "py": checks.normalize_tags(
+            {
+                "PY_COMMON": "1",
+                "PY_LOCAL_ONLY": "local_value",
+                "PY_X1_COMMON": "1",
+            }
+        ),
+    }
+    config = {
+        "default_engine": "wl",
+        "parity_exclude": ["_LOCAL_"],
+        "cross_engine": [
+            {
+                "quantity": "engine_local_value",
+                "wl": "WL_LOCAL_ONLY",
+                "py": "PY_LOCAL_ONLY",
+            }
+        ],
+        "registry_residual": [],
+    }
+
+    report = checks.run_checks(config, outputs)
+    rendered = checks.format_report(report)
+
+    assert all(
+        "LOCAL_ONLY" not in row.missing and "LOCAL_ONLY" not in row.extra
+        for row in report.parity.rows
+    )
+    assert {row.engine: len(row.tags) for row in report.parity.exclusions} == {
+        "py": 1,
+        "wl": 1,
+    }
+    assert "WL_LOCAL_ONLY" in report.controls.unpaired
+    assert (
+        checks.UnknownSymbol("WL_LOCAL_ONLY", "local_value")
+        in report.dimensions.unknown_symbols
+    )
+    assert report.cross_engine.rows[0].status == "AGREE"
+    assert "PARITY_EXCLUDED (2):" in rendered
+    assert "py: excluded=1 by_pattern={'_LOCAL_':1}" in rendered
+    assert "wl: excluded=1 by_pattern={'_LOCAL_':1}" in rendered
+
+
+def test_absent_parity_exclude_preserves_report_bytes() -> None:
+    outputs = {
+        "wl": checks.normalize_tags(
+            {
+                "WL_VALUE": "1",
+                "WL_LOCAL_ONLY": "2",
+                "WL_X1_VALUE": "1",
+            }
+        )
+    }
+    config = {
+        "default_engine": "wl",
+        "cross_engine": [],
+        "registry_residual": [],
+    }
+
+    rendered = checks.format_report(checks.run_checks(config, outputs))
+
+    assert rendered == "\n".join(
+        [
+            "CONTROL_RESPONSE: compared=1 responsive=0 invariant=1 unparsed=0 unpaired=1",
+            "DIMENSIONS: total=3 checked=3 homogeneous=3 non_homogeneous=0 unknown_symbol=0 unparsed=0",
+            "NON_DIMENSIONAL: total=0 kinds=[none]",
+            "CROSS_ENGINE: configured=0",
+            "REGISTRY_RESIDUAL: configured=0",
+            "TAG_PARITY: packages=1 gaps=1",
+            "DISAGREE (0):",
+            "INVARIANT (1): WL_VALUE",
+            "NON_HOMOGENEOUS (0):",
+            "PARITY (1):",
+            "  why: present-and-identical is INVARIANT; absent is indistinguishable from never computed.",
+            "  wl:packages=[WL_X1]: missing=[LOCAL_ONLY] extra=[-]",
+            "UNPARSED (0):",
+            "UNKNOWN_SYMBOL (0):",
+            "DIMENSION_ERROR (0):",
+            "LIMITATION: triage only; this run does not establish physical correctness, completeness, or derivation coverage.",
+        ]
+    )
+
+
 def test_changing_real_mapped_operand_fires_disagree_with_both_operands() -> None:
     config = checks.load_config(CONFIG)
     row = config["cross_engine"][0]

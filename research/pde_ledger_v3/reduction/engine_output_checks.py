@@ -177,8 +177,16 @@ class ParityRow:
 
 
 @dataclass(frozen=True)
+class ParityExclusionRow:
+    engine: str
+    tags: tuple[str, ...]
+    by_pattern: tuple[tuple[str, int], ...]
+
+
+@dataclass(frozen=True)
 class ParityReport:
     rows: tuple[ParityRow, ...]
+    exclusions: tuple[ParityExclusionRow, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -874,14 +882,52 @@ def check_control_response(
 
 def check_tag_parity(
     outputs: Mapping[str, Mapping[str, ParsedValue | Unparsed]],
+    parity_exclude: Sequence[str] = (),
 ) -> ParityReport:
     """Compare each control package's suffix set with its engine's main package."""
+    if isinstance(parity_exclude, (str, bytes)):
+        raise HarnessError("parity_exclude must be a sequence of substrings")
+    configured_patterns = tuple(parity_exclude)
+    if any(
+        not isinstance(pattern, str) or not pattern
+        for pattern in configured_patterns
+    ):
+        raise HarnessError("parity_exclude must contain only non-empty strings")
+    patterns = tuple(dict.fromkeys(configured_patterns))
     rows: list[ParityRow] = []
+    exclusions: list[ParityExclusionRow] = []
     for engine, values in sorted(outputs.items()):
-        for _base, _main_package, main, controls in _package_layout(values):
-            main_suffixes = set(main)
+        layouts = _package_layout(values)
+        parity_tags = {
+            tag
+            for _base, _main_package, main, controls in layouts
+            for package_tags in (main, *controls.values())
+            for tag in package_tags.values()
+        }
+        excluded_tags = {
+            tag for tag in parity_tags if any(pattern in tag for pattern in patterns)
+        }
+        if patterns:
+            exclusions.append(
+                ParityExclusionRow(
+                    engine=engine,
+                    tags=tuple(sorted(excluded_tags)),
+                    by_pattern=tuple(
+                        (pattern, sum(pattern in tag for tag in excluded_tags))
+                        for pattern in patterns
+                    ),
+                )
+            )
+        for _base, _main_package, main, controls in layouts:
+            main_suffixes = {
+                suffix for suffix, tag in main.items() if tag not in excluded_tags
+            }
             for package, package_tags in sorted(controls.items()):
-                package_suffixes = set(package_tags)
+                package_suffixes = {
+                    suffix
+                    for suffix, tag in package_tags.items()
+                    if tag not in excluded_tags
+                }
                 rows.append(
                     ParityRow(
                         engine=engine,
@@ -890,7 +936,7 @@ def check_tag_parity(
                         extra=tuple(sorted(package_suffixes - main_suffixes)),
                     )
                 )
-    return ParityReport(tuple(rows))
+    return ParityReport(tuple(rows), tuple(exclusions))
 
 
 def _as_dimension(value: object, label: str) -> tuple[sp.Expr, sp.Expr, sp.Expr]:
@@ -1369,8 +1415,11 @@ def run_checks(
     default_values = outputs[default_engine]
     cross_rows = config.get("cross_engine", [])
     registry_rows = config.get("registry_residual", [])
+    parity_exclude = config.get("parity_exclude", [])
     if not isinstance(cross_rows, list) or not isinstance(registry_rows, list):
         raise HarnessError("cross_engine and registry_residual must be lists")
+    if not isinstance(parity_exclude, list):
+        raise HarnessError("parity_exclude must be a list")
     registry = load_registry(registry_directory or Path(__file__).resolve().parent)
     all_unparsed = tuple(
         (engine, tag, value)
@@ -1380,7 +1429,7 @@ def run_checks(
     )
     return HarnessReport(
         controls=check_control_response(default_values),
-        parity=check_tag_parity(outputs),
+        parity=check_tag_parity(outputs, parity_exclude),
         dimensions=check_dimensions(default_values, config),
         cross_engine=check_cross_engine(cross_rows, outputs),
         registry=check_registry_residuals(
@@ -1436,6 +1485,17 @@ def format_report(report: HarnessReport) -> str:
             f"gaps={len(parity_gaps)}"
         ),
     ]
+    if report.parity.exclusions:
+        excluded_total = sum(len(row.tags) for row in report.parity.exclusions)
+        lines.append(f"PARITY_EXCLUDED ({excluded_total}):")
+        for row in report.parity.exclusions:
+            by_pattern = ", ".join(
+                f"{pattern!r}:{count}" for pattern, count in row.by_pattern
+            )
+            lines.append(
+                f"  {row.engine}: excluded={len(row.tags)} "
+                f"by_pattern={{{by_pattern}}}"
+            )
     disagreements = [
         row for row in report.cross_engine.rows if row.status == "DISAGREE"
     ]

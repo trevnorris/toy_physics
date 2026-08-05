@@ -74,7 +74,8 @@ class Emitter:
         self.names.add(name)
         if name.startswith("PY_S10_LOCAL_"):
             self.local_names.append(name)
-        print(f"{name}: {payload}")
+        rendered = str(payload).replace("\r", " ").replace("\n", " ")
+        print(f"{name}: {rendered}")
 
 
 def assumed_simplify(expr: object, assumptions: sp.logic.boolalg.Boolean) -> object:
@@ -132,6 +133,8 @@ class DimensionWalker:
         self.assumptions = assumptions
 
     def dimension(self, expr: sp.Expr) -> tuple[sp.Expr, ...]:
+        if expr is sp.zoo or expr is sp.nan or expr in (sp.oo, -sp.oo):
+            return ZERO_DIM
         if expr == 0 or expr.is_Number:
             return ZERO_DIM
         if expr in self.fields:
@@ -172,7 +175,21 @@ class DimensionWalker:
             return ()
         return tuple(self.dimension(term) for term in sp.Add.make_args(expanded))
 
-    def report(self, obj: object) -> tuple[sp.Tuple, sp.Tuple, sp.logic.boolalg.Boolean]:
+    def nested_add_dimensions(self, expr: sp.Expr) -> tuple[sp.Tuple, ...]:
+        reports: list[sp.Tuple] = []
+        seen: set[sp.Add] = set()
+        for power in expr.atoms(sp.Pow):
+            for node in sp.preorder_traversal(power.base):
+                if not isinstance(node, sp.Add) or node in seen:
+                    continue
+                seen.add(node)
+                term_dimensions = tuple(self.dimension(term) for term in node.args if term != 0)
+                reports.append(
+                    sp.Tuple(node, sp.Tuple(*(dim_expr(value) for value in term_dimensions)))
+                )
+        return tuple(reports)
+
+    def report(self, obj: object) -> tuple[sp.Tuple, sp.Tuple, sp.Tuple, sp.logic.boolalg.Boolean]:
         if isinstance(obj, sp.MatrixBase):
             components = list(obj)
         elif isinstance(obj, (list, tuple, sp.Tuple)):
@@ -189,6 +206,7 @@ class DimensionWalker:
 
         all_term_dimensions: list[sp.Tuple] = []
         all_component_dimensions: list[sp.Tuple] = []
+        all_nested_add_dimensions: list[sp.Tuple] = []
         homogeneous = True
         for component in components:
             term_dimensions = self.component_term_dimensions(component)
@@ -204,9 +222,16 @@ class DimensionWalker:
             all_component_dimensions.append(sp.Tuple(*(dim_expr(value) for value in unique)))
             if len(unique) > 1:
                 homogeneous = False
+            nested_reports = self.nested_add_dimensions(component)
+            all_nested_add_dimensions.append(sp.Tuple(*nested_reports))
+            for report in nested_reports:
+                node_dimensions = report[1]
+                if len(set(node_dimensions)) > 1:
+                    homogeneous = False
         return (
             sp.Tuple(*all_term_dimensions),
             sp.Tuple(*all_component_dimensions),
+            sp.Tuple(*all_nested_add_dimensions),
             sp.true if homogeneous else sp.false,
         )
 
@@ -216,12 +241,14 @@ def emit_physical(
     walker: DimensionWalker,
     name: str,
     payload: object,
+    homogeneity_class: str = "UNSOLVED_EXPRESSION",
 ) -> None:
     emitter.emit(name, payload)
-    term_dimensions, dimensions, homogeneous = walker.report(payload)
+    term_dimensions, dimensions, nested_add_dimensions, homogeneous = walker.report(payload)
     emitter.emit(name + "_Q6_TERM_DIMENSIONS", term_dimensions)
     emitter.emit(name + "_Q6_DIMENSIONS", dimensions)
-    emitter.emit(name + "_Q6_HOMOGENEITY", homogeneous)
+    emitter.emit(name + "_Q6_NESTED_ADD_DIMENSIONS", nested_add_dimensions)
+    emitter.emit(name + f"_Q6_{homogeneity_class}_HOMOGENEITY", homogeneous)
 
 
 def stiffness_density(kind: str, gradient: Sequence[Sequence[sp.Expr]]) -> sp.Expr:
@@ -321,7 +348,16 @@ def derive_dimension_solution(
     t: sp.Symbol,
     xvec: Sequence[sp.Symbol],
     assumptions: sp.logic.boolalg.Boolean,
-) -> tuple[list[sp.Equality], list[dict[sp.Symbol, sp.Expr]], dict[sp.Symbol, tuple[sp.Expr, ...]]]:
+) -> tuple[
+    list[sp.Equality],
+    tuple[sp.Symbol, ...],
+    list[dict[sp.Symbol, sp.Expr]],
+    dict[sp.Symbol, tuple[sp.Expr, ...]],
+    int,
+    int,
+    sp.Symbol,
+    sp.logic.boolalg.Boolean,
+]:
     rho_unknown = sp.symbols("rho_br_dim_length rho_br_dim_time rho_br_dim_mass")
     mu_unknown = sp.symbols("mu_R_dim_length mu_R_dim_time mu_R_dim_mass")
     unknowns = (*rho_unknown, *mu_unknown)
@@ -343,6 +379,15 @@ def derive_dimension_solution(
         )
     equations = list(dict.fromkeys(equations))
     solution = sp.solve(equations, unknowns, dict=True)
+    coefficient_matrix, right_hand_side = sp.linear_eq_to_matrix(equations, unknowns)
+    coefficient_rank = int(coefficient_matrix.rank())
+    augmented_rank = int(coefficient_matrix.row_join(right_hand_side).rank())
+    independent_equation_count = augmented_rank
+    difference = independent_equation_count - len(unknowns)
+    determination = sp.Symbol(
+        "over_determined" if difference > 0 else "exactly_determined" if difference == 0 else "under_determined"
+    )
+    consistent = sp.true if coefficient_rank == augmented_rank else sp.false
     if solution:
         solved_map = {
             rho_br: tuple(solution[0].get(symbol, symbol) for symbol in rho_unknown),
@@ -352,7 +397,16 @@ def derive_dimension_solution(
         }
     else:
         solved_map = {rho_br: rho_unknown, mu_R: mu_unknown, s_rho: ZERO_DIM, s: ZERO_DIM}
-    return equations, solution, solved_map
+    return (
+        equations,
+        unknowns,
+        solution,
+        solved_map,
+        independent_equation_count,
+        difference,
+        determination,
+        consistent,
+    )
 
 
 def factor_with_timeout(expr: sp.Expr, seconds: int = 5) -> tuple[sp.Expr, sp.Symbol]:
@@ -371,16 +425,17 @@ def factor_with_timeout(expr: sp.Expr, seconds: int = 5) -> tuple[sp.Expr, sp.Sy
 
 
 def derived_sign(expr: sp.Expr, assumptions: sp.logic.boolalg.Boolean) -> sp.Expr:
-    positive = sp.ask(sp.Q.positive(expr), assumptions)
-    zero = sp.ask(sp.Q.zero(expr), assumptions)
-    negative = sp.ask(sp.Q.negative(expr), assumptions)
+    refined = sp.refine(sp.factor(expr), assumptions)
+    positive = sp.ask(sp.Q.positive(refined), assumptions)
+    zero = sp.ask(sp.Q.zero(refined), assumptions)
+    negative = sp.ask(sp.Q.negative(refined), assumptions)
     if positive is True:
         return sp.Integer(1)
     if zero is True:
         return sp.Integer(0)
     if negative is True:
         return sp.Integer(-1)
-    return sp.refine(sp.sign(expr), assumptions)
+    return sp.Symbol("undecided_under_joint_assumptions")
 
 
 def deduplicate_roots(
@@ -409,7 +464,7 @@ def solve_spectrum(
     matrix: sp.Matrix,
     assumptions: sp.logic.boolalg.Boolean,
 ) -> tuple[sp.Expr, sp.Expr, sp.Symbol, list[dict[sp.Symbol, sp.Expr]], list[sp.Expr]]:
-    determinant = matrix.det(method="berkowitz")
+    determinant = sp.cancel(matrix.det(method="domain-ge"))
     factored, factor_route = factor_with_timeout(determinant)
     raw_solutions = sp.solve(factored, omegaSquared, dict=True)
     roots = deduplicate_roots(raw_solutions, assumptions)
@@ -421,36 +476,78 @@ class RealLocus:
     equations: tuple[sp.Expr, ...]
     raw_solver_output: object
     branches: tuple[dict[sp.Symbol, sp.Expr], ...]
+    branch_conditions: tuple[tuple[sp.Expr, ...], ...]
+    reality_filter: sp.Tuple
     solver_route: sp.Symbol
+    fallback_expression: object = sp.EmptySet
+
+    def branch_expression(self, index: int) -> sp.Tuple:
+        branch = self.branches[index]
+        assignments = tuple(
+            sp.Eq(symbol, value, evaluate=False)
+            for symbol, value in sorted(branch.items(), key=lambda item: str(item[0]))
+        )
+        return sp.Tuple(*assignments, *self.branch_conditions[index])
 
     def expression(self) -> object:
-        if not self.branches:
-            return sp.EmptySet
-        return sp.Tuple(
-            *(
-                sp.Tuple(
-                    *(sp.Eq(symbol, value, evaluate=False) for symbol, value in sorted(branch.items(), key=lambda item: str(item[0])))
-                )
-                for branch in self.branches
-            )
-        )
+        if self.branches:
+            return sp.Tuple(*(self.branch_expression(index) for index in range(len(self.branches))))
+        return self.fallback_expression
 
 
-def _coordinate_zero_branches(
-    equations: Sequence[sp.Expr],
+def _zero_component_deductions(
+    expression: sp.Expr,
     variables: Sequence[sp.Symbol],
     assumptions: sp.logic.boolalg.Boolean,
-) -> tuple[dict[sp.Symbol, sp.Expr], ...]:
-    candidates: list[frozenset[sp.Symbol]] = []
-    for count in range(len(variables) + 1):
-        for selected in itertools.combinations(variables, count):
-            substitutions = {symbol: sp.Integer(0) for symbol in selected}
-            if all(algebraic_normalize(equation.subs(substitutions), assumptions) == 0 for equation in equations):
-                selected_set = frozenset(selected)
-                if not any(existing <= selected_set for existing in candidates):
-                    candidates.append(selected_set)
-    minimal = [candidate for candidate in candidates if not any(other < candidate for other in candidates)]
-    return tuple({symbol: sp.Integer(0) for symbol in variables if symbol in branch} for branch in minimal)
+) -> dict[sp.Symbol, sp.Expr]:
+    reduced = algebraic_normalize(expression, assumptions)
+    if isinstance(reduced, sp.Mul):
+        dependent_factors = [factor for factor in reduced.args if factor.has(*variables)]
+        independent_factor = sp.Mul(
+            *(factor for factor in reduced.args if not factor.has(*variables))
+        )
+        if (
+            len(dependent_factors) == 1
+            and sp.ask(sp.Q.nonzero(independent_factor), assumptions) is True
+        ):
+            reduced = dependent_factors[0]
+    if isinstance(reduced, sp.Pow) and reduced.exp.is_positive:
+        reduced = reduced.base
+    try:
+        polynomial = sp.Poly(reduced, *variables)
+    except sp.PolynomialError:
+        return {}
+    terms = polynomial.terms()
+    if not terms:
+        return {}
+    if len(terms) == 1:
+        monomial, coefficient = terms[0]
+        active_indices = [index for index, exponent in enumerate(monomial) if exponent != 0]
+        if (
+            len(active_indices) == 1
+            and sp.ask(sp.Q.nonzero(coefficient), assumptions) is True
+        ):
+            return {variables[active_indices[0]]: sp.Integer(0)}
+        return {}
+    active_variables: list[sp.Symbol] = []
+    coefficient_signs: list[int] = []
+    for monomial, coefficient in terms:
+        active_indices = [index for index, exponent in enumerate(monomial) if exponent != 0]
+        if len(active_indices) != 1:
+            return {}
+        active_index = active_indices[0]
+        if monomial[active_index] % 2 != 0:
+            return {}
+        if sp.ask(sp.Q.positive(coefficient), assumptions) is True:
+            coefficient_signs.append(1)
+        elif sp.ask(sp.Q.negative(coefficient), assumptions) is True:
+            coefficient_signs.append(-1)
+        else:
+            return {}
+        active_variables.append(variables[active_index])
+    if len(set(coefficient_signs)) != 1:
+        return {}
+    return {symbol: sp.Integer(0) for symbol in active_variables}
 
 
 def solve_real_locus(
@@ -466,21 +563,214 @@ def solve_real_locus(
         if isinstance(simplified, sp.Expr) and simplified != 0 and simplified not in normalized:
             normalized.append(simplified)
     if impossible:
-        return RealLocus(tuple(normalized), sp.EmptySet, (), sp.Symbol("rank_floor_empty_locus"))
+        return RealLocus(
+            tuple(normalized),
+            sp.EmptySet,
+            (),
+            (),
+            sp.Tuple(),
+            sp.Symbol("rank_floor_empty_locus"),
+        )
+
+    if not normalized:
+        real_domain = sp.ProductSet(*(sp.S.Reals for _ in variables))
+        return RealLocus(
+            (),
+            real_domain,
+            ({},),
+            ((),),
+            sp.Tuple(sp.Tuple(sp.Tuple(), sp.Tuple(), sp.Symbol("retained_real_branch"))),
+            sp.Symbol("universal_real_locus"),
+            real_domain,
+        )
 
     previous_handler = signal.signal(signal.SIGALRM, _timeout_handler)
     signal.alarm(5)
     try:
-        raw = sp.solve(normalized, list(variables), dict=True, domain=sp.S.Reals)
-        route = sp.Symbol("solve_reals_plus_coordinate_real_projection")
+        raw = sp.solve(normalized, list(variables), dict=True)
+        route = sp.Symbol("solve_then_explicit_real_filter")
+        fallback_expression: object = sp.EmptySet
     except OperationTimeout:
-        raw = sp.ConditionSet(sp.Tuple(*variables), sp.And(*(sp.Eq(eq, 0) for eq in normalized)), sp.ProductSet(*(sp.S.Reals for _ in variables)))
-        route = sp.Symbol("solve_reals_timeout_coordinate_real_projection")
+        raw = sp.ConditionSet(
+            sp.Tuple(*variables),
+            sp.And(*(sp.Eq(eq, 0) for eq in normalized)),
+            sp.ProductSet(*(sp.S.Reals for _ in variables)),
+        )
+        route = sp.Symbol("solve_timeout_explicit_real_conditionset")
+        fallback_expression = raw
     finally:
         signal.alarm(0)
         signal.signal(signal.SIGALRM, previous_handler)
-    branches = _coordinate_zero_branches(normalized, variables, assumptions)
-    return RealLocus(tuple(normalized), raw, branches, route)
+
+    raw_branches: list[dict[sp.Symbol, sp.Expr]] = []
+    if isinstance(raw, dict):
+        raw_branches = [raw]
+    elif isinstance(raw, list):
+        raw_branches = [branch for branch in raw if isinstance(branch, dict)]
+
+    branches: list[dict[sp.Symbol, sp.Expr]] = []
+    branch_conditions: list[tuple[sp.Expr, ...]] = []
+    filter_records: list[sp.Tuple] = []
+    seen: set[tuple[tuple[str, str], tuple[str, ...]]] = set()
+    for raw_branch in raw_branches:
+        raw_normalized_branch = {
+            symbol: algebraic_normalize(value, assumptions)
+            for symbol, value in raw_branch.items()
+        }
+        conditions: list[sp.Expr] = []
+        for value in raw_normalized_branch.values():
+            imaginary_part = sp.simplify(sp.im(value))
+            if imaginary_part != 0:
+                conditions.append(sp.Eq(imaginary_part, 0, evaluate=False))
+            denominator = sp.together(value).as_numer_denom()[1]
+            if denominator != 1:
+                conditions.append(sp.Ne(denominator, 0, evaluate=False))
+        for equation in normalized:
+            residual = algebraic_normalize(
+                equation.subs(raw_normalized_branch, simultaneous=True), assumptions
+            )
+            if residual != 0:
+                conditions.append(sp.Eq(residual, 0, evaluate=False))
+        conditions = list(dict.fromkeys(conditions))
+        raw_conditions = tuple(conditions)
+        raw_assignments = sp.Tuple(
+            *(
+                sp.Eq(symbol, value, evaluate=False)
+                for symbol, value in sorted(
+                    raw_normalized_branch.items(), key=lambda item: str(item[0])
+                )
+            )
+        )
+        if any(condition is sp.false for condition in conditions):
+            filter_records.append(
+                sp.Tuple(
+                    raw_assignments,
+                    sp.Tuple(*conditions),
+                    sp.Symbol("discarded_nonreal_branch"),
+                )
+            )
+            continue
+
+        deductions: dict[sp.Symbol, sp.Expr] = {}
+        for condition in conditions:
+            if isinstance(condition, sp.Equality):
+                deductions.update(
+                    _zero_component_deductions(
+                        condition.lhs - condition.rhs, variables, assumptions
+                    )
+                )
+        branch = dict(raw_normalized_branch)
+        branch.update(deductions)
+        for _ in range(len(variables) + 1):
+            branch = {
+                symbol: algebraic_normalize(value.subs(branch, simultaneous=True), assumptions)
+                for symbol, value in branch.items()
+            }
+            branch.update(deductions)
+        projected_conditions: list[sp.Expr] = []
+        for condition in conditions:
+            if isinstance(condition, (sp.Equality, sp.Unequality)):
+                residual = algebraic_normalize(
+                    (condition.lhs - condition.rhs).subs(branch), assumptions
+                )
+                if isinstance(condition, sp.Equality) and residual == 0:
+                    continue
+                if isinstance(condition, sp.Unequality) and residual != 0:
+                    continue
+            projected_conditions.append(condition.subs(branch))
+        conditions = list(dict.fromkeys(projected_conditions))
+        assignments = sp.Tuple(
+            *(
+                sp.Eq(symbol, value, evaluate=False)
+                for symbol, value in sorted(branch.items(), key=lambda item: str(item[0]))
+            )
+        )
+        key = (
+            tuple(sorted((str(symbol), str(value)) for symbol, value in branch.items())),
+            tuple(str(condition) for condition in conditions),
+        )
+        filter_records.append(
+            sp.Tuple(
+                raw_assignments,
+                sp.Tuple(*raw_conditions),
+                sp.Symbol("retained_real_branch"),
+                assignments,
+            )
+        )
+        if key not in seen:
+            seen.add(key)
+            branches.append(branch)
+            branch_conditions.append(tuple(conditions))
+    return RealLocus(
+        tuple(normalized),
+        raw,
+        tuple(branches),
+        tuple(branch_conditions),
+        sp.Tuple(*filter_records),
+        route,
+        fallback_expression,
+    )
+
+
+@dataclass
+class LocusAllowedData:
+    operands: sp.Tuple
+    allowed: sp.Expr
+    witnesses: sp.Tuple
+    branch_operands: sp.Tuple
+    branch_tests: sp.Tuple
+    branch_witnesses: sp.Tuple
+    branch_points: tuple[dict[sp.Symbol, sp.Expr] | None, ...]
+    branch_reasons: sp.Tuple
+
+
+def _materialize_branch_point(
+    branch: Mapping[sp.Symbol, sp.Expr],
+    variables: Sequence[sp.Symbol],
+    free_values: Mapping[sp.Symbol, sp.Expr],
+    assumptions: sp.logic.boolalg.Boolean,
+) -> dict[sp.Symbol, sp.Expr] | None:
+    point = dict(free_values)
+    for _ in range(len(variables) + 1):
+        for symbol, value in branch.items():
+            resolved = assumed_simplify(value.subs(point, simultaneous=True), assumptions)
+            if not isinstance(resolved, sp.Expr):
+                return None
+            point[symbol] = resolved
+    if any(component not in point for component in variables):
+        return None
+    if any(point[component].has(*variables) for component in variables):
+        return None
+    return point
+
+
+def _condition_at_point(
+    condition: sp.Expr,
+    point: Mapping[sp.Symbol, sp.Expr],
+    assumptions: sp.logic.boolalg.Boolean,
+) -> bool | None:
+    if isinstance(condition, sp.Equality):
+        residual = algebraic_normalize((condition.lhs - condition.rhs).subs(point), assumptions)
+        if residual == 0:
+            return True
+        if not residual.free_symbols:
+            return False
+        answer = sp.ask(sp.Q.zero(residual), assumptions)
+        return answer
+    if isinstance(condition, sp.Unequality):
+        residual = algebraic_normalize((condition.lhs - condition.rhs).subs(point), assumptions)
+        if residual == 0:
+            return False
+        if not residual.free_symbols:
+            return True
+        answer = sp.ask(sp.Q.nonzero(residual), assumptions)
+        return answer
+    refined = sp.refine(condition.subs(point), assumptions)
+    if refined is sp.true:
+        return True
+    if refined is sp.false:
+        return False
+    return None
 
 
 def locus_allowed_data(
@@ -488,23 +778,117 @@ def locus_allowed_data(
     kvec: Sequence[sp.Symbol],
     k_squared: sp.Expr,
     assumptions: sp.logic.boolalg.Boolean,
-) -> tuple[sp.Tuple, sp.logic.boolalg.Boolean, sp.Tuple]:
+) -> LocusAllowedData:
     operands = sp.Tuple(locus.expression(), sp.Gt(k_squared, 0, evaluate=False), assumptions)
+    branch_operands: list[sp.Tuple] = []
+    branch_tests: list[sp.Expr] = []
+    branch_witnesses: list[sp.Tuple] = []
+    branch_points: list[dict[sp.Symbol, sp.Expr] | None] = []
+    branch_reasons: list[sp.Symbol] = []
     witnesses: list[sp.Tuple] = []
-    for branch in locus.branches:
-        point = dict(branch)
-        free = [component for component in kvec if component not in point]
-        for component in free:
-            point[component] = sp.Integer(0)
-        if free:
-            point[free[0]] = sp.Integer(1)
-        equation_values = [algebraic_normalize(equation.subs(point), assumptions) for equation in locus.equations]
-        k_value = assumed_simplify(k_squared.subs(point), assumptions)
-        if all(value == 0 for value in equation_values) and sp.ask(sp.Q.positive(k_value), assumptions) is True:
-            witnesses.append(
-                sp.Tuple(*(sp.Eq(component, point[component], evaluate=False) for component in kvec))
+
+    norm_conflict = False
+    for equation in locus.equations:
+        zero_deductions = _zero_component_deductions(equation, kvec, assumptions)
+        if set(zero_deductions) == set(kvec):
+            norm_conflict = True
+            break
+        quotient = sp.cancel(equation / k_squared)
+        if quotient != 0 and not quotient.has(*kvec):
+            nonzero = sp.ask(sp.Q.nonzero(quotient), assumptions)
+            if nonzero is True:
+                norm_conflict = True
+                break
+
+    for branch_index, branch in enumerate(locus.branches):
+        branch_expression = locus.branch_expression(branch_index)
+        branch_operands.append(
+            sp.Tuple(branch_expression, sp.Gt(k_squared, 0, evaluate=False), assumptions)
+        )
+        if norm_conflict:
+            branch_tests.append(sp.false)
+            branch_witnesses.append(sp.Tuple())
+            branch_points.append(None)
+            branch_reasons.append(sp.Symbol("locus_conflicts_with_positive_wavevector_norm"))
+            continue
+        free = [component for component in kvec if component not in branch]
+        trial_values: list[dict[sp.Symbol, sp.Expr]] = []
+        zero_values = {component: sp.Integer(0) for component in free}
+        trial_values.append(zero_values)
+        for selected in free:
+            trial_values.append(
+                {
+                    component: sp.Integer(1) if component == selected else sp.Integer(0)
+                    for component in free
+                }
             )
-    return operands, sp.true if witnesses else sp.false, sp.Tuple(*witnesses)
+        if free:
+            trial_values.append({component: sp.Integer(1) for component in free})
+            trial_values.append({component: sp.Integer(2) for component in free})
+
+        witness_point: dict[sp.Symbol, sp.Expr] | None = None
+        for free_values in trial_values:
+            point = _materialize_branch_point(branch, kvec, free_values, assumptions)
+            if point is None:
+                continue
+            equation_values = [
+                algebraic_normalize(equation.subs(point), assumptions)
+                for equation in locus.equations
+            ]
+            condition_values = [
+                _condition_at_point(condition, point, assumptions)
+                for condition in locus.branch_conditions[branch_index]
+            ]
+            k_value = assumed_simplify(k_squared.subs(point), assumptions)
+            if (
+                all(value == 0 for value in equation_values)
+                and all(value is True for value in condition_values)
+                and sp.ask(sp.Q.positive(k_value), assumptions) is True
+            ):
+                witness_point = point
+                break
+
+        if witness_point is not None:
+            witness = sp.Tuple(
+                *(
+                    sp.Eq(component, witness_point[component], evaluate=False)
+                    for component in kvec
+                )
+            )
+            witnesses.append(witness)
+            branch_tests.append(sp.true)
+            branch_witnesses.append(witness)
+            branch_points.append(witness_point)
+            branch_reasons.append(sp.Symbol("allowed_witness_found"))
+        elif not free:
+            branch_tests.append(sp.false)
+            branch_witnesses.append(sp.Tuple())
+            branch_points.append(None)
+            branch_reasons.append(sp.Symbol("fully_fixed_branch_not_allowed"))
+        else:
+            branch_tests.append(sp.Symbol("undecided_no_explicit_real_witness"))
+            branch_witnesses.append(sp.Tuple())
+            branch_points.append(None)
+            branch_reasons.append(sp.Symbol("no_explicit_real_witness"))
+
+    if any(test is sp.true for test in branch_tests):
+        allowed: sp.Expr = sp.true
+    elif branch_tests and all(test is sp.false for test in branch_tests):
+        allowed = sp.false
+    elif locus.fallback_expression is not sp.EmptySet and not locus.branches:
+        allowed = sp.Symbol("undecided_solver_conditionset")
+    else:
+        allowed = sp.Symbol("undecided_no_explicit_real_witness") if branch_tests else sp.false
+    return LocusAllowedData(
+        operands,
+        allowed,
+        sp.Tuple(*witnesses),
+        sp.Tuple(*branch_operands),
+        sp.Tuple(*branch_tests),
+        sp.Tuple(*branch_witnesses),
+        tuple(branch_points),
+        sp.Tuple(*branch_reasons),
+    )
 
 
 def rank_drop_minors(matrix: sp.Matrix, generic_rank: int) -> list[sp.Expr]:
@@ -540,6 +924,7 @@ def q4_objects(
     transverse_nullity = sp.Integer(root_matrix.cols - stacked_rank)
     matrix_times_k = assumed_simplify(root_matrix * k_column, assumptions)
     basis = rank_input.nullspace(simplify=False, iszerofunc=polynomial_iszero)
+    direct_nullspace = sp.polys.matrices.DomainMatrix.from_Matrix(root_matrix).nullspace()
     dots: list[sp.Expr] = []
     residuals: list[sp.Matrix] = []
     for vector in basis:
@@ -549,7 +934,7 @@ def q4_objects(
             raise RuntimeError("null-space display computation returned an unsupported object")
         dots.append(dot)
         residuals.append(sp.Matrix(residual))
-    basis_count = sp.Integer(len(basis))
+    basis_count = sp.Integer(direct_nullspace.shape[0])
     return {
         "N1_MATRIX": root_matrix,
         "N2_RANK": sp.Integer(rank),
@@ -601,18 +986,22 @@ def root_scale_objects(
         raise RuntimeError("root scaling returned a non-expression")
     is_zero = sp.ask(sp.Q.zero(original), assumptions)
     if is_zero is True:
-        ratio = sp.nan
+        ratio = sp.Symbol("undefined_zero_root_ratio")
         ratio_defined = sp.false
-        exponent = sp.nan
+        exponent = sp.Symbol("undefined_zero_root_ratio")
     else:
         ratio_object = sp.Mul(scaled, sp.Pow(original, -1, evaluate=False), evaluate=False)
         ratio = assumed_simplify(ratio_object, assumptions)
         ratio_defined = sp.true
         try:
             polynomial = sp.Poly(ratio, lambdaScale)
-            exponent = sp.Integer(polynomial.degree()) if len(polynomial.terms()) == 1 else sp.nan
+            exponent = (
+                sp.Integer(polynomial.degree())
+                if len(polynomial.terms()) == 1
+                else sp.Symbol("not_a_pure_lambdaScale_power")
+            )
         except (sp.PolynomialError, TypeError, ValueError):
-            exponent = sp.nan
+            exponent = sp.Symbol("not_a_pure_lambdaScale_power")
     if not isinstance(ratio, sp.Expr):
         raise RuntimeError("root scaling ratio returned a non-expression")
     return scaled, original, ratio, ratio_defined, exponent
@@ -629,8 +1018,12 @@ def emit_premises(
     n: int,
 ) -> None:
     emitter.emit(prefix + "PREMISE_FIELD_SECTOR", sp.Eq(sp.Symbol("u_component_count"), n, evaluate=False))
+    emitter.emit(prefix + "PREMISE_U_DIMENSION", dim_expr(LENGTH_DIM))
     emitter.emit(prefix + "PREMISE_ANSATZ", sp.Tuple(*ansatz))
-    emitter.emit(prefix + "PREMISE_PERIOD_AVERAGE", sp.Tuple(sp.Integer(0), 2 * sp.pi / sp.sqrt(omegaSquared)))
+    emitter.emit(
+        prefix + "PREMISE_PERIOD_AVERAGE",
+        sp.Tuple(sp.Symbol("phase"), sp.Integer(0), 2 * sp.pi, sp.Rational(1, 2) / sp.pi),
+    )
     emitter.emit(prefix + "PREMISE_BACKGROUND_VELOCITY", sp.Eq(sp.Symbol("v_0"), 0, evaluate=False))
     emitter.emit(prefix + "PREMISE_TIME_ODD_KERNEL", sp.Eq(sp.Symbol("time_odd_kernel"), 0, evaluate=False))
     emitter.emit(prefix + "PREMISE_RESPONSE_DEGREE", sp.Eq(sp.Symbol("response_degree"), 2, evaluate=False))
@@ -667,7 +1060,17 @@ def emit_q3(
     emitter.emit(prefix + "Q3_ROOT_COUNT", sp.Integer(len(roots)))
     emitter.emit(prefix + "ROOT_ORDERING", sp.Tuple(*roots))
     if not roots:
-        raise RuntimeError(f"spectrum solve produced no roots for {prefix}")
+        emitter.emit(prefix + "Q3_SPECTRUM_SOLVE_CONDITION", sp.Symbol("no_roots_returned"))
+        emitter.emit(
+            prefix + "Q3_SPECTRUM_SOLVE_CONDITION_OPERANDS",
+            sp.Tuple(factored, sp.Symbol("omegaSquared")),
+        )
+    else:
+        emitter.emit(prefix + "Q3_SPECTRUM_SOLVE_CONDITION", sp.Symbol("roots_returned"))
+        emitter.emit(
+            prefix + "Q3_SPECTRUM_SOLVE_CONDITION_OPERANDS",
+            sp.Tuple(factored, sp.Symbol("omegaSquared")),
+        )
     return roots
 
 
@@ -676,15 +1079,15 @@ def q3_coincidence_data(
     kvec: Sequence[sp.Symbol],
     k_squared: sp.Expr,
     assumptions: sp.logic.boolalg.Boolean,
-) -> list[tuple[tuple[int, int], sp.Expr, RealLocus, sp.Tuple, sp.logic.boolalg.Boolean, sp.Tuple]]:
+) -> list[tuple[tuple[int, int], sp.Expr, RealLocus, LocusAllowedData]]:
     result = []
     for left, right in itertools.combinations(range(len(roots)), 2):
         equation = assumed_simplify(roots[left] - roots[right], assumptions)
         if not isinstance(equation, sp.Expr):
             raise RuntimeError("root-coincidence equation is not an expression")
         locus = solve_real_locus([equation], kvec, assumptions)
-        operands, allowed, witnesses = locus_allowed_data(locus, kvec, k_squared, assumptions)
-        result.append(((left + 1, right + 1), equation, locus, operands, allowed, witnesses))
+        allowed_data = locus_allowed_data(locus, kvec, k_squared, assumptions)
+        result.append(((left + 1, right + 1), equation, locus, allowed_data))
     return result
 
 
@@ -692,15 +1095,40 @@ def emit_coincidences(
     emitter: Emitter,
     walker: DimensionWalker,
     prefix: str,
-    data: Sequence[tuple[tuple[int, int], sp.Expr, RealLocus, sp.Tuple, sp.logic.boolalg.Boolean, sp.Tuple]],
+    data: Sequence[tuple[tuple[int, int], sp.Expr, RealLocus, LocusAllowedData]],
 ) -> None:
     emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_PAIR_INDICES", sp.Tuple(*(sp.Tuple(*pair) for pair, *_ in data)))
     equations = sp.Tuple(*(equation for _, equation, *_ in data))
     emit_physical(emitter, walker, prefix + "Q3_ROOT_COINCIDENCE_EQUATIONS", equations)
     emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_LOCI", sp.Tuple(*(locus.expression() for _, _, locus, *_ in data)))
-    emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_ALLOWED_OPERANDS", sp.Tuple(*(operands for *_, operands, _allowed, _witnesses in data)))
-    emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_ALLOWED_TESTS", sp.Tuple(*(allowed for *_, allowed, _witnesses in data)))
-    emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_ALLOWED_WITNESSES", sp.Tuple(*(witnesses for *_, witnesses in data)))
+    emitter.emit(
+        prefix + "Q3_ROOT_COINCIDENCE_REALITY_FILTERS",
+        sp.Tuple(*(locus.reality_filter for _, _, locus, _ in data)),
+    )
+    emitter.emit(
+        prefix + "Q3_ROOT_COINCIDENCE_ALLOWED_OPERANDS",
+        sp.Tuple(*(allowed_data.operands for *_, allowed_data in data)),
+    )
+    emitter.emit(
+        prefix + "Q3_ROOT_COINCIDENCE_ALLOWED_TESTS",
+        sp.Tuple(*(allowed_data.allowed for *_, allowed_data in data)),
+    )
+    emitter.emit(
+        prefix + "Q3_ROOT_COINCIDENCE_ALLOWED_WITNESSES",
+        sp.Tuple(*(allowed_data.witnesses for *_, allowed_data in data)),
+    )
+    emitter.emit(
+        prefix + "Q3_ROOT_COINCIDENCE_BRANCH_ALLOWED_OPERANDS",
+        sp.Tuple(*(allowed_data.branch_operands for *_, allowed_data in data)),
+    )
+    emitter.emit(
+        prefix + "Q3_ROOT_COINCIDENCE_BRANCH_ALLOWED_TESTS",
+        sp.Tuple(*(allowed_data.branch_tests for *_, allowed_data in data)),
+    )
+    emitter.emit(
+        prefix + "Q3_ROOT_COINCIDENCE_BRANCH_ALLOWED_WITNESSES",
+        sp.Tuple(*(allowed_data.branch_witnesses for *_, allowed_data in data)),
+    )
     local_prefix = "PY_S10_LOCAL_" + prefix.removeprefix("PY_S10_")
     emitter.emit(local_prefix + "Q3_ROOT_COINCIDENCE_SOLVER_OUTPUTS", sp.Tuple(*(sp.sympify(locus.raw_solver_output) for _, _, locus, *_ in data)))
     emitter.emit(local_prefix + "Q3_ROOT_COINCIDENCE_SOLVER_ROUTES", sp.Tuple(*(locus.solver_route for _, _, locus, *_ in data)))
@@ -729,13 +1157,8 @@ def emit_stratum_q3_q4(
         emitter.emit(root_prefix + "Q3_SIGN", derived_sign(root, point_assumptions))
         objects = q4_objects(point_matrix, root, point_k, point_k_squared, point_assumptions)
         emit_q4(emitter, walker, root_prefix, objects)
-    empty = sp.Tuple()
-    emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_PAIR_INDICES", empty)
-    emit_physical(emitter, walker, prefix + "Q3_ROOT_COINCIDENCE_EQUATIONS", empty)
-    emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_LOCI", empty)
-    emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_ALLOWED_OPERANDS", empty)
-    emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_ALLOWED_TESTS", empty)
-    emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_ALLOWED_WITNESSES", empty)
+    coincidence_data = q3_coincidence_data(roots, kvec, point_k_squared, point_assumptions)
+    emit_coincidences(emitter, walker, prefix, coincidence_data)
 
 
 def run_package_dimension(
@@ -756,9 +1179,16 @@ def run_package_dimension(
     assumptions = build_joint_assumptions(package, kvec, avec)
 
     fields, lagrangian, inertial_coefficients, stiffness_coefficients, _stiffness = build_action(package, n, t, xvec)
-    dimension_equations, dimension_solution, solved_coefficient_dims = derive_dimension_solution(
-        package, lagrangian, fields, t, xvec, assumptions
-    )
+    (
+        dimension_equations,
+        dimension_unknowns,
+        dimension_solution,
+        solved_coefficient_dims,
+        independent_dimension_equation_count,
+        dimension_count_difference,
+        dimension_determination,
+        dimension_consistent,
+    ) = derive_dimension_solution(package, lagrangian, fields, t, xvec, assumptions)
     symbol_dimensions = {
         **solved_coefficient_dims,
         omegaSquared: OMEGA_SQUARED_DIM,
@@ -777,17 +1207,27 @@ def run_package_dimension(
     )
 
     emit_premises(emitter, prefix, ansatz, kvec, avec, assumptions, package, n)
-    emit_physical(emitter, walker, prefix + "Q1_LAGRANGIAN_EXPANDED", lagrangian)
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q1_LAGRANGIAN_EXPANDED",
+        lagrangian,
+        homogeneity_class="SOLVED_ACTION",
+    )
     equations = euler_lagrange_system(lagrangian, fields, t, xvec)
     emit_physical(emitter, walker, prefix + "Q1_EULER_LAGRANGE_SYSTEM", equations)
 
     ansatz_equations = substitute_ansatz(equations, fields, ansatz)
     if not isinstance(ansatz_equations, sp.MatrixBase):
         raise RuntimeError("route-A ansatz equations are not a matrix")
+    expanded_ansatz_equations = [sp.expand(item) for item in ansatz_equations]
     amplitude_equations = sp.Matrix(
+        [assumed_simplify(item.coeff(sp.cos(theta)), assumptions) for item in expanded_ansatz_equations]
+    )
+    route_a_discarded_remainder = sp.Matrix(
         [
-            assumed_simplify(sp.expand(item).coeff(sp.cos(theta)), assumptions)
-            for item in ansatz_equations
+            assumed_simplify(item - coefficient * sp.cos(theta), assumptions)
+            for item, coefficient in zip(expanded_ansatz_equations, amplitude_equations)
         ]
     )
     matrix_a = sp.Matrix(amplitude_equations).jacobian(avec)
@@ -802,13 +1242,37 @@ def run_package_dimension(
         raise RuntimeError("period average is not an expression")
     matrix_b = sp.hessian(averaged_lagrangian, avec)
     matrix_residual = matrix_a - matrix_b
-    matrix_ratio = assumed_simplify(matrix_a[0, 0] / matrix_b[0, 0], assumptions)
+    matrix_ratio_numerator = assumed_simplify(matrix_a[0, 0], assumptions)
+    matrix_ratio_denominator = assumed_simplify(matrix_b[0, 0], assumptions)
+    denominator_is_zero = matrix_ratio_denominator == 0 or sp.ask(
+        sp.Q.zero(matrix_ratio_denominator), assumptions
+    ) is True
+    if denominator_is_zero:
+        matrix_ratio = sp.Symbol("undefined_zero_denominator")
+    else:
+        computed_ratio = assumed_simplify(
+            matrix_ratio_numerator / matrix_ratio_denominator, assumptions
+        )
+        if isinstance(computed_ratio, sp.Expr) and computed_ratio.has(sp.zoo, sp.nan):
+            matrix_ratio = sp.Symbol("undefined_nonfinite_ratio")
+        else:
+            matrix_ratio = computed_ratio
 
     emit_physical(emitter, walker, prefix + "Q2_PERIOD_AVERAGED_LAGRANGIAN", averaged_lagrangian)
     emit_physical(emitter, walker, prefix + "Q2_MATRIX_A", matrix_a)
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q2_ROUTE_A_DISCARDED_REMAINDER",
+        route_a_discarded_remainder,
+    )
     emit_physical(emitter, walker, prefix + "Q2_MATRIX_B", matrix_b)
     emit_physical(emitter, walker, prefix + "Q2_MATRIX_RESIDUAL", matrix_residual)
     emit_physical(emitter, walker, prefix + "Q2_MATRIX_ENTRY_RATIO", matrix_ratio)
+    emitter.emit(
+        prefix + "Q2_MATRIX_ENTRY_RATIO_OPERANDS",
+        sp.Tuple(matrix_ratio_numerator, matrix_ratio_denominator),
+    )
     emitter.emit(prefix + "Q2_RESIDUAL_TEST_SCOPE", sp.Symbol("same_action_variational_identity"))
     emitter.emit(prefix + "Q2_DOWNSTREAM_ROUTE", sp.Symbol("M_B"))
 
@@ -839,8 +1303,36 @@ def run_package_dimension(
     emitter.emit(prefix + "Q6_ENERGY_DENSITY_DIMENSION", dim_expr((2 - D, -2, 1)))
     emitter.emit(prefix + "Q6_DIMENSION_EQUATIONS", sp.Tuple(*dimension_equations))
     emitter.emit(prefix + "Q6_DIMENSION_SOLUTION", dimension_solution)
-    if not dimension_solution:
-        raise RuntimeError(f"dimension solve returned no solution for {prefix}")
+    emitter.emit(
+        prefix + "Q6_INDEPENDENT_DIMENSION_EQUATION_COUNT",
+        sp.Integer(independent_dimension_equation_count),
+    )
+    emitter.emit(
+        prefix + "Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT",
+        sp.Integer(len(dimension_unknowns)),
+    )
+    emitter.emit(prefix + "Q6_DIMENSION_COUNT_DIFFERENCE", sp.Integer(dimension_count_difference))
+    emitter.emit(prefix + "Q6_DIMENSION_DETERMINATION", dimension_determination)
+    emitter.emit(
+        prefix + "Q6_ACTION_HOMOGENEITY_VACUOUS",
+        sp.true if dimension_count_difference <= 0 else sp.false,
+    )
+    emitter.emit(
+        prefix + "Q6_ACTION_HOMOGENEITY_VACUOUS_OPERANDS",
+        sp.Tuple(
+            sp.Integer(independent_dimension_equation_count),
+            sp.Integer(len(dimension_unknowns)),
+            sp.Integer(dimension_count_difference),
+        ),
+    )
+    emitter.emit(
+        prefix + "Q6_DIMENSION_SOLVE_CONDITION",
+        sp.Symbol("solution_returned") if dimension_solution else sp.Symbol("no_solution_returned"),
+    )
+    emitter.emit(
+        prefix + "Q6_DIMENSION_SOLVE_CONDITION_OPERANDS",
+        sp.Tuple(sp.Tuple(*dimension_equations), sp.Tuple(*dimension_unknowns), dimension_consistent),
+    )
     emitter.emit(prefix + "Q6_INERTIAL_COEFFICIENTS", sp.Tuple(*inertial_coefficients))
     for index, coefficient in enumerate(inertial_coefficients, 1):
         emit_physical(emitter, walker, prefix + f"Q6_INERTIAL_COEFFICIENT{index}", coefficient)
@@ -868,13 +1360,29 @@ def run_package_dimension(
     else:
         emitter.emit(prefix + "Q7_OBJECTS", sp.Tuple())
 
-    allowed_strata: list[dict[sp.Symbol, sp.Expr]] = []
+    stratum_candidates: dict[str, tuple[sp.Tuple, sp.Expr, dict[sp.Symbol, sp.Expr] | None, sp.Symbol]] = {}
+
+    def enroll_locus(locus: RealLocus, allowed_data: LocusAllowedData) -> None:
+        for branch_index in range(len(locus.branches)):
+            branch_expression = locus.branch_expression(branch_index)
+            candidate = (
+                branch_expression,
+                allowed_data.branch_tests[branch_index],
+                allowed_data.branch_points[branch_index],
+                allowed_data.branch_reasons[branch_index],
+            )
+            key = str(branch_expression)
+            existing = stratum_candidates.get(key)
+            if existing is None or (
+                candidate[1] is sp.true and existing[1] is not sp.true
+            ):
+                stratum_candidates[key] = candidate
+
     coincidence_loci = sp.Tuple(*(item[2].expression() for item in coincidences))
-    coincidence_operands = sp.Tuple(*(item[3] for item in coincidences))
-    coincidence_tests = sp.Tuple(*(item[4] for item in coincidences))
+    coincidence_operands = sp.Tuple(*(item[3].operands for item in coincidences))
+    coincidence_tests = sp.Tuple(*(item[3].allowed for item in coincidences))
     for item in coincidences:
-        if item[4] == sp.true:
-            allowed_strata.extend(item[2].branches)
+        enroll_locus(item[2], item[3])
 
     for index, (root, objects) in enumerate(zip(roots, q4_by_root), 1):
         root_prefix = prefix + f"ROOT{index}_"
@@ -885,45 +1393,67 @@ def run_package_dimension(
         minors = rank_drop_minors(sp.Matrix(root_matrix), generic_rank)
         emit_physical(emitter, walker, root_prefix + "Q8_RANK_DROP_MINORS", sp.Tuple(*minors))
         rank_locus = solve_real_locus(minors, kvec, assumptions, impossible=(generic_rank == 0))
-        operands, allowed, witnesses = locus_allowed_data(rank_locus, kvec, k_squared, assumptions)
+        rank_allowed = locus_allowed_data(rank_locus, kvec, k_squared, assumptions)
         emitter.emit(root_prefix + "Q8_RANK_DROP_LOCUS", rank_locus.expression())
-        emitter.emit(root_prefix + "Q8_RANK_DROP_ALLOWED_OPERANDS", operands)
-        emitter.emit(root_prefix + "Q8_RANK_DROP_ALLOWED_TEST", allowed)
-        emitter.emit(root_prefix + "Q8_RANK_DROP_ALLOWED_WITNESSES", witnesses)
+        emitter.emit(root_prefix + "Q8_RANK_DROP_REALITY_FILTER", rank_locus.reality_filter)
+        emitter.emit(root_prefix + "Q8_RANK_DROP_ALLOWED_OPERANDS", rank_allowed.operands)
+        emitter.emit(root_prefix + "Q8_RANK_DROP_ALLOWED_TEST", rank_allowed.allowed)
+        emitter.emit(root_prefix + "Q8_RANK_DROP_ALLOWED_WITNESSES", rank_allowed.witnesses)
+        emitter.emit(
+            root_prefix + "Q8_RANK_DROP_BRANCH_ALLOWED_OPERANDS",
+            rank_allowed.branch_operands,
+        )
+        emitter.emit(
+            root_prefix + "Q8_RANK_DROP_BRANCH_ALLOWED_TESTS",
+            rank_allowed.branch_tests,
+        )
+        emitter.emit(
+            root_prefix + "Q8_RANK_DROP_BRANCH_ALLOWED_WITNESSES",
+            rank_allowed.branch_witnesses,
+        )
         emitter.emit(root_prefix + "Q8_ROOT_COINCIDENCE_LOCI", coincidence_loci)
         emitter.emit(root_prefix + "Q8_ROOT_COINCIDENCE_ALLOWED_OPERANDS", coincidence_operands)
         emitter.emit(root_prefix + "Q8_ROOT_COINCIDENCE_ALLOWED_TESTS", coincidence_tests)
         local_prefix = "PY_S10_LOCAL_" + root_prefix.removeprefix("PY_S10_")
         emitter.emit(local_prefix + "Q8_RANK_DROP_SOLVER_OUTPUT", rank_locus.raw_solver_output)
         emitter.emit(local_prefix + "Q8_RANK_DROP_SOLVER_ROUTE", rank_locus.solver_route)
-        if allowed == sp.true:
-            allowed_strata.extend(rank_locus.branches)
+        enroll_locus(rank_locus, rank_allowed)
 
-    unique_strata: list[dict[sp.Symbol, sp.Expr]] = []
-    keys: set[tuple[tuple[str, str], ...]] = set()
-    for branch in allowed_strata:
-        key = tuple(sorted((str(symbol), str(value)) for symbol, value in branch.items()))
-        if key not in keys:
-            keys.add(key)
-            unique_strata.append(branch)
+    allowed_strata = [
+        candidate
+        for candidate in stratum_candidates.values()
+        if candidate[1] is sp.true and candidate[2] is not None
+    ]
+    skipped_strata = [
+        candidate
+        for candidate in stratum_candidates.values()
+        if candidate[1] is not sp.true or candidate[2] is None
+    ]
     emitter.emit(
         prefix + "Q8_ALLOWED_STRATA",
+        sp.Tuple(*(candidate[0] for candidate in allowed_strata)),
+    )
+    emitter.emit(
+        prefix + "Q8_SKIPPED_STRATA",
         sp.Tuple(
             *(
-                sp.Tuple(*(sp.Eq(symbol, value, evaluate=False) for symbol, value in sorted(branch.items(), key=lambda item: str(item[0]))))
-                for branch in unique_strata
+                sp.Tuple(candidate[0], candidate[1], candidate[3])
+                for candidate in skipped_strata
             )
         ),
     )
-    for stratum_index, branch in enumerate(unique_strata, 1):
-        point = dict(branch)
-        free = [component for component in kvec if component not in point]
-        for component in free:
-            point[component] = sp.Integer(0)
-        if not free:
-            continue
-        point[free[0]] = sp.Integer(1)
+    for skipped_index, candidate in enumerate(skipped_strata, 1):
+        skipped_prefix = prefix + f"Q8_SKIPPED_STRATUM{skipped_index}_"
+        emitter.emit(skipped_prefix + "BRANCH", candidate[0])
+        emitter.emit(skipped_prefix + "ALLOWED_TEST", candidate[1])
+        emitter.emit(skipped_prefix + "REASON", candidate[3])
+
+    for stratum_index, candidate in enumerate(allowed_strata, 1):
+        point = candidate[2]
+        if point is None:
+            raise RuntimeError("allowed stratum has no explicit point")
         stratum_prefix = prefix + f"Q8_STRATUM{stratum_index}_"
+        emitter.emit(stratum_prefix + "SKIP_STATUS", sp.Symbol("not_skipped_allowed_branch"))
         emitter.emit(
             stratum_prefix + "POINT",
             sp.Tuple(*(sp.Eq(component, point[component], evaluate=False) for component in kvec)),

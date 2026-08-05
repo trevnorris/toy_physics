@@ -1,5 +1,6 @@
 The in-plane displacement uses the supplied real cosine ansatz with omegaSquared as the frequency-squared variable — unfalsifiable within this build.
-Every quadratic density uses the supplied one-period time average — unfalsifiable within this build.
+The in-plane displacement has supplied dimension (1, 0, 0) in the (length, time, mass) slots — unfalsifiable within this build.
+Every quadratic density uses the supplied phase average (1 / 2π) integral from phase 0 to 2π — unfalsifiable within this build.
 rho_br is real and strictly positive — unfalsifiable within this build.
 mu_R is real and strictly positive — unfalsifiable within this build.
 The squared wavevector norm is strictly positive — unfalsifiable within this build.

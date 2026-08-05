@@ -4,25 +4,35 @@
 
 # ⭐⭐⭐ STATE, 2026-08-05 — **S10's ENGINES ARE DONE. THE HARNESS IS BLOCKED ON PLUMBING.**
 
-## ⛔⛔ THREE BLOCKERS, ALL PLUMBING, ⛔ NONE OF THEM PHYSICS — fix these first
+## ⛔⛔ THE BLOCKERS WERE NOT ALL PLUMBING — ⚠ an earlier version of this file said they were
 
-The harness cannot yet consume S10's output. ⭐ **Every blocker is an interface mismatch between the
-engines and a checker built for S9's simpler shape.** ⛔ No physics result is in question.
+⭐ **Diagnosing them (2026-08-05) found more than the three listed, and two of the extras were not
+interface mismatches at all.** ⛔ **Do not repeat the claim that no physics result was in question.**
 
-1. ⛔ **Mathematica diagnostics reach stdout.** `Solve::svars` prints **10 raw lines** into engine 1's
-   output; the harness parses them as tags and dies with *"duplicate emitted tag Solve"*.
-   ⚠ **The engine is doing the right thing otherwise** — it already emits
-   `..._SOLVE_SVARS_MESSAGE` tags, which is what the repair asked for. ⭐ **Fix: `Quiet` the message at the
-   solve while keeping the captured flag and its tag.** ⛔ Do not re-suppress the *information*.
-2. ⛔ **`derived_dimensions` cannot take a symbolic-in-`D` payload.** ⭐ Already worked around in
-   `checks_S10.yaml` by pointing at the `_SPECIALIZED` tags.
-3. ⛔ **`derived_dimensions` cannot take a LIST of coefficient dimensions.** The engine emits one entry
-   per coefficient — ⭐ correct, because Q6 was amended so that *which* coefficients exist is
-   package-dependent — and the layer wants a single triple. ⇒ ⭐ **Either add a selector to that config
-   key, or have the engines also emit one tag per named coefficient.**
+⛔⛔ **THE ONE THAT MATTERED: the ablation layer had been comparing NOTHING.**
+`CONTROL_TAG_PATTERN` matches `_X<digits>_`, which is how **S9** named its control packages. §8 renamed
+S10's to words (`XFORM_FULLGRAD`, `XCOEF_SCALE`, …). ⚠ **Zero S10 tags match**, so `_package_layout`
+returns empty and both layers built on it report `compared=0 responsive=0 invariant=0` and
+`packages=0 gaps=0` — ⛔ **which reads as health.** ⭐ The same harness on S9 reports `compared=170
+responsive=150`, so the layer works; **a spec change was never traced into the instrument that parses
+it.** ⇒ that layer is the one thing distinguishing a computed output from a typed one.
 
-⚠ **The last harness run used a FILTERED copy** of engine 1's output (blocker 1 removed by `grep`). ⛔ That
-is a diagnostic convenience, ⛔ **not** a result — the committed `out/` file still contains the 10 lines.
+⛔ **AND: `check_control_response` and `check_dimensions` both receive only the DEFAULT engine.** ⇒ the
+SymPy engine has never been ablation-checked or dimension-checked at all.
+
+⛔⛔ **`homogeneous` is mostly not a measurement.** ⚠ Measured: **1699 of 2139** tags counted homogeneous
+had **zero** dimensional comparisons performed — the counter increments when no complaint was recorded,
+so a payload of `{}` or `2` scores as passing. ⚠ **S9's cited `1219/1219 homogeneous` is the terminal
+form of this.** ⭐ Treat it as disclosed, ⛔ not as verified.
+
+⚠ `TAG_PARITY` is **intra-engine** (each control against its own engine's main), never engine-vs-engine,
+though its name and the config header both say cross-engine.
+
+⭐ **The plumbing three were real too** and are specified in `directives/S10_harness_repair_directive.md`:
+Mathematica `Solve::svars` reaching stdout; `derived_dimensions` unable to take a symbolic-in-`D` payload;
+and unable to take a **list** of per-coefficient dimensions. ⚠ The dimension table is **single-`D`** while
+S10 sweeps `D=2..5`, so the `_SPECIALIZED` workaround silently applies one `D`'s dimensions to every
+package — ⭐ point it at the **symbolic** tags instead.
 
 ## ✅ What IS done
 
@@ -30,7 +40,7 @@ is a diagnostic convenience, ⛔ **not** a result — the committed `out/` file 
 |---|---|
 | `directives/S10_SHARED_PHYSICS.md` | reviewed (Codex+Grok) + **6 amendments**, all leak-gated |
 | `mathematica/S10_brane_mode_spectrum_mathematica_audit.wl` | **2983 tags**, 64 s, exit 0 — built blind, reviewed ×3, repaired ×3 |
-| `scripts/S10_brane_mode_spectrum_sympy_audit.py` | **4227 tags**, 150 s, exit 0, **byte-identical reruns** — reviewed ×2, repaired ×2 |
+| `scripts/S10_brane_mode_spectrum_sympy_audit.py` | **4279 tags**, 159 s, exit 0 — reviewed ×2, repaired ×3 |
 | `mathematica/out/` + `scripts/out/` | ⭐ **engine output is now COMMITTED EVIDENCE** (v2's convention, adopted in v3 at last) |
 | `reduction/checks_S10.yaml` | 677 name pairs; `parity_exclude: _LOCAL_` |
 | `reduction/engine_output_checks.py` | `parity_exclude` added, parity layer only |
@@ -39,14 +49,47 @@ is a diagnostic convenience, ⛔ **not** a result — the committed `out/` file 
 rank), `N7` (two different algorithms), both matrix routes under one-sided corruption **in both
 directions**, per-package re-entry at the action, the dimension tree walk, and Q7's two independent sides.
 
+## ⭐⭐ THE CROSS-ENGINE LAYER EARNED ITS KEEP — read this before doubting the two-engine cost
+
+⭐ Once the dimension blockers were prototyped away, **173 pairs disagreed**. An independent
+classification leg reconciled **163** as symbol-name, rendering, or unpinned-choice differences —
+⭐ each **demonstrated** by CAS, ⛔ not asserted. Of the ten that survived:
+
+- ⛔⛔ **Four were one real defect: `Q7`'s form control was DEAD in engine 2** — its stiffness payload was
+  **byte-identical across all six packages**, including the two whose only purpose is to change the
+  stiffness form, so its residual was `0` **by construction.**
+  ⚠ **The cause was a SPEC defect, ⛔ not an engine defect** ⇒ `S10_SPEC_CONSISTENCY_FINDINGS.md`.
+  ✅ **Repaired.** ⭐ **Verified: all 18 `Q7` objects at `D3` now match across engines** under the
+  `g<i>x<j> → g<i><j>` renaming; before the repair engine 2 gave the curl form in all six.
+- ⚠ **Six were a spec ambiguity** — whether a declared-dimensionless control factor enters the `Q6`
+  dimension solve as an unknown. One engine says 9 unknowns, the other 6. ⭐ **Both reach the same
+  determinacy verdict and the same coefficient dimensions**, so the physics is unaffected.
+
+⛔⛔ **AND THE COUNT DID NOT MOVE.** Before the repair: `agree=446 disagree=100`. After: **identical** —
+because the `Q7` rows shifted from *different objects* to *same object, different symbol spelling*.
+⇒ ⭐⭐ **The disagree count is NOT a quality metric.** ⛔ Never read it as one; the buckets are the result.
+
 ## ⛔ REMAINING, in order
 
-1. **The three blockers above**, then run the harness for real.
+1. **`directives/S10_harness_repair_directive.md`** (part A: the ablation layer), then a part B for the
+   Mathematica reader and the dimension table. ⚠ **220 payloads are UNPARSED**, and 58 of the unparsed
+   cross-engine rows include `Q1_LAGRANGIAN` — ⛔ until that lands the dimension and ablation layers never
+   see the action at all.
 2. ⛔ **Verify the harness by ABLATING THE HARNESS** — ⛔ never by reading its self-report.
-3. **Write the step record** (orchestrator's job) — ⛔ it should cite harness results, which is why it is
-   not written yet.
-4. **TeX card** — Codex, with its own two legs.
-5. ⚠ **S9 `out/` retro-fit** — S9's engines have no committed output either.
+   ⭐ An independent ablation script exists, written **before** the repair and deliberately kept **out of
+   the repo** so the build could not be coded to it. ⚠ It is in the session scratchpad; ⭐ commit it once
+   the build lands.
+3. **Write the step record** (orchestrator's job). ⛔⛔ **It must disclose that `Q7`'s VERDICT was
+   SUPPLIED** — §Q7 line 385 told both engines the residual is expected to be nonzero for non-curl
+   packages — ⚠ and that the `homogeneous` count is largely vacuous.
+4. **`directives/S10_spec_rewrite_directive.md`** — ⛔ launch only **after** the step record cites the
+   current text.
+5. **TeX card** — Codex, with its own two legs.
+6. ✅ **S9 `out/` retro-fit — DONE** (`3ce3d16c`). ⭐ Re-running the S9 harness over the freshly generated
+   pair reproduces the three numbers the S9 record cites exactly.
+   ⚠ **It also showed the unit suite is red**: `test_engine_output_checks.py` reads `/tmp/s9_wl.txt` and
+   `/tmp/s9_py.txt`, which are **1487 and 590** lines against the engines' actual **1559 and 635**.
+   ⇒ ⭐ point the tests at `out/`.
 
 ## ⚠ KNOWN LIMITS — ⛔ do not let these pass silently into the record
 

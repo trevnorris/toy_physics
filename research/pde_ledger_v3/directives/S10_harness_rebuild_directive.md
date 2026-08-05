@@ -69,16 +69,24 @@ a coverage fraction that read **better than the healthy run**.
 ⭐ **Fix:** ⛔ no guard may be conditional on the presence of an optional config field. ⭐ If a config does
 not declare what it expects, ⛔ **that is itself a failure**, ⛔ not a licence to skip the check.
 
-### ⛔⛔ D2 — the comparison kernel equates a boolean with any nonzero number
+### ⚠ D2 — the boolean/number false agreement: ⛔ THE FIX IS DEFERRED, ⭐ but add a TRIPWIRE
 
-`symbolic_equal` routes to `sp.Equivalent` when **either** side is boolean ⇒ `symbolic_equal(True, 999999)`
-returns `True`. ⚠ Verified by direct call; ⇒ **pre-existing**, and it reaches into an earlier step's banked
-numbers. ⇒ `DEFECT_REGISTER.md#f7`.
-⭐ **Fix:** require **both** sides boolean before `Equivalent`; otherwise unequal. ⛔ Do not widen this into
-a type system.
-⭐ **Also emit, for the whole run:** how many comparisons took the boolean path, and how many were mixed
-boolean/non-boolean. ⚠ ⛔ **That second number should be zero; if it is not, print it — ⛔ do not suppress
-it.**
+⛔⛔ **DO NOT FIX `symbolic_equal` HERE** (user decision, 2026-08-05: this is post-S10 work).
+⇒ `DEFECT_REGISTER.md#f7`.
+
+⭐ **Why deferring is safe, and it was MEASURED rather than assumed:** the comparison kernel routes to an
+equivalence test when **either** side is boolean, so a boolean compares equal to any nonzero number.
+⭐ **Both configured steps have ZERO cross-engine exposure** — not one configured pair on either step has a
+boolean on either side. ⇒ ⛔ **no agreement number is contaminated.** ⚠ The residual effect is confined to
+the ablation layer, where it can only turn RESPONSIVE into INVARIANT ⇒ it **hides** evidence of
+computation and ⛔ can never manufacture it.
+
+⛔⛔ **BUT THAT SAFETY IS A PROPERTY OF TODAY'S CONFIG, ⛔ NOT OF THE CODE.** ⚠ Adding one boolean-valued
+cross-engine pair later would silently start reporting false agreement, and ⛔ nothing would say so.
+⭐ **So add the TRIPWIRE, ⛔ not the fix:** ⭐ **count the cross-engine comparisons in which either side is
+boolean, and make a nonzero count an OPERATIONAL FAILURE naming the pairs.**
+⚠ Today that count is **zero**, so the tripwire is silent — ⭐ **that is the point.** ⇒ the deferral stays
+safe **by construction** instead of by one measurement that ages.
 
 ### ⛔⛔ D3 — one stray CAS message deletes the entire report
 

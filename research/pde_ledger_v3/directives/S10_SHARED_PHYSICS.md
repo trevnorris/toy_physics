@@ -264,9 +264,17 @@ scaled root against `lambdaScale` raised to a stated power** — naming a power 
 you compute it, and an earlier version of this file named one.
 
 ⭐ If the ratio is a pure power of `lambdaScale`, also emit that **exponent** as an object obtained by
-`Solve`/`solve` or by `Exponent`/`degree` — ⛔ never typed. ⚠ If the root is identically zero the ratio is
-undefined: ⭐ emit that fact **as its own tag** and emit `r(lambdaScale·k)` alone. ⛔ Do not skip the tag —
-a missing tag is indistinguishable from a quantity never computed (corollary 4).
+`Solve`/`solve` or by `Exponent`/`degree` — ⛔ never typed.
+
+⛔⛔ **EMIT THE ENTIRE Q5 TAG SET FOR EVERY ROOT, UNCONDITIONALLY — including when the ratio is
+undefined.** ⚠ **An earlier version of this section contradicted corollary 4** by telling you to emit some
+of these tags only in the defined case, and an engine followed it: the tags simply **vanished** for the
+roots where the ratio does not exist. ⛔ **A missing tag is indistinguishable from a quantity never
+computed**, which is the defect this whole specification exists to remove.
+
+⇒ ⭐ **The TAG SET is fixed; the PAYLOAD varies.** Where the ratio is undefined — an identically zero root,
+say — the payload is an **explicit marker object** saying so, ⛔ never an absence, and the remaining Q5
+tags for that root are still emitted with whatever they legitimately hold.
 
 ⛔⛔ **DO NOT test this by substituting a symbol for `Σ k_m²`.** That substitution **silently no-ops**
 whenever the root is not a bare multiple of that sum, which yields a false result in **both** directions.

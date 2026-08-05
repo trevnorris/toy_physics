@@ -157,17 +157,59 @@ weakening it. ⇒ [[feedback-framing-split]]
 
 ### ⛔⛔ AND THE CHECK THIS SURVEY ALREADY NAMED, WHICH THE LIGHT SECTOR NEVER RAN
 
-⚠⚠ **This document flagged it on 2026-06-23 (see item 4 above and "most actionable next build"):**
-MacCullagh light *"died of a negative-energy / angular-momentum-non-conservation instability — any import
-MUST prove the rotational stiffness is **bounded-below and inertially anchored** (the precise make-or-break
-check)."* ⇒ Kelvin-gyrostat instability, `arXiv:1907.04144`.
+⚠⚠ **This document flagged it on 2026-06-23 (see item 4 above and "most actionable next build").**
 
-⛔ **S9, S10 and S11 built the MacCullagh light sector and did not run it.** They correctly compute the
-**consequences** of curl-only stiffness; ⛔ nothing establishes that a medium **can have** curl-only
-stiffness **stably**. ⇒ ⭐ That is a **supplied premise**, and this survey already identified it as the one
-most likely to break. ⇒ [[feedback-whose-law-is-it]]
+### ⛔ FIRST, A CORRECTION TO THIS DOCUMENT (2026-08-04, verified against the literature)
 
-⭐ **It belongs in the step records as a stated limitation, and on the plan as a step.**
+⚠ Item 4 above says MacCullagh light *"died of a **negative-energy** / angular-momentum-non-conservation
+instability"* and asks for stiffness that is *"**bounded-below** and inertially anchored."*
+⛔ **The negative-energy half is WRONG. MacCullagh's energy is POSITIVE DEFINITE.** ⇒ "bounded below" is
+satisfied trivially and is ⛔ **not** the make-or-break check.
+
+⭐ **The actual failure, stated precisely:** the energy costs **ABSOLUTE rigid rotation** —
+`∇×(ω×r) = 2ω ≠ 0` — so rigid rotation of the whole medium **stores energy**. That breaks material `SO(3)`
+invariance ⇒ by Noether, **angular momentum is not conserved**. Equivalently the force-stress is
+**antisymmetric** and couple stresses appear with **no independent spin budget** to balance them.
+⭐ **Kelvin's gyrostats** (1889) supplied a restoring couple against tilt from a bar's *original*
+orientation — ⇒ they **hard-wire a preferred absolute frame** via stored gyroscopic angular momentum.
+
+### ⭐⭐ THE ORDERED MEDIUM FIXES THE NOETHER PROBLEM — ⛔ BUT DOES NOT YIELD OUR ACTION
+
+⭐ **Good half:** with stiffness measured against a **co-rotating** order parameter, uniform co-rotation of
+medium-plus-order is a **zero-energy Goldstone mode** ⇒ rotational invariance restored, angular momentum
+conserved. ⭐ Standard, with names: **Frank elasticity** (Frank 1958), **Ericksen–Leslie**,
+**Cosserat** (1909) / **micropolar** (Eringen). ⚠ Cost: independent rotational DOF, **intrinsic spin
+density**, **couple stresses**, asymmetric Cauchy stress. Passive Frank/Cosserat is **stable** under
+ordinary positivity.
+
+⛔⛔ **THE HALF THAT HITS S9 — material frame-indifference (Noll; Truesdell–Noll):**
+> **Objectivity FORBIDS an energy depending on the absolute `∇×u` of a SINGLE displacement field.** You
+> cannot recover true MacCullagh `∝|∇×u|²` from relative-order elasticity; ⇒ you get **Frank /
+> relative-microrotation** energies instead.
+
+⇒ ⛔⛔ **S9's action IS that forbidden object.** ⚠ Under the standing rule *"postulate freely, as long as it
+is physically possible"*, this says the light sector's **premise is not admissible as a material energy**.
+⇒ [[feedback-analog-find-consistent-structure]]
+
+⭐⭐ **THE ONE LIVE ESCAPE, and it is the model's own structural difference.** Objectivity forbids
+dependence on rotation relative to **absolute space**. ⚠ Our brane sits **in a bulk** — ⇒ if the stiffness
+is measured against the **bulk's local state**, both co-rotate under a global rotation and the energy **is**
+objective and admissible. ⛔ **But that is a DIFFERENT action from the one S9 uses, and nobody has checked
+whether it still yields the light sector.**
+
+⇒ ⭐⭐⭐ **THE CHECK, now a real question rather than a formality: what does the OBJECTIVE version of the
+brane action look like, and does it still give two transverse modes with no propagating longitudinal?**
+⭐ Computable, bounded, dual-engine-able, and a **genuine falsifier**.
+⚠ **Related history:** `pathA_35` Gate L already fired a four-way no-go on *MacCullagh + P–u + couple-stress
++ C5* ⇒ this ground has been walked once. ⛔ Check whether that no-go reaches the bulk-referenced form or
+only the polar-`P` one.
+
+⭐ **And the transverse-plus-longitudinal coexistence is standard, ⛔ not exotic:** viscoelastic Maxwell
+media (above `ωτ ~ 1`), nematic/smectic order, and superfluid ordered phases **all** carry shear waves
+**and** a longitudinal mode in the same medium.
+
+⇒ ⭐ Sources: Truesdell & Noll *Non-Linear Field Theories*; Frank (1958); Cosserat & Cosserat (1909);
+Eringen micropolar texts; Ericksen (1968); Kelvin gyrostat papers (1889–90); Whittaker Ch. V.
 
 ## ⭐⭐ THE 4D SPATIAL BULK — separately searched (2026-08-04)
 

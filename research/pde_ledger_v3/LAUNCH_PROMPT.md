@@ -7,7 +7,7 @@ document is right.**
 
 ---
 
-Branch `ledger-v2-rebuild`. Run `git log --oneline -5` and `git status` first —
+Branch `ledger-v3-rebuild`. Run `git log --oneline -5` and `git status` first —
 ⛔ do not trust any hash written in a doc, including this one.
 
 ▶ **READ FIRST, AND IN FULL: `research/pde_ledger_v3/SESSION_2026-08-01.md`.**

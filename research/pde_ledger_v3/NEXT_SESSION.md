@@ -11,7 +11,7 @@
 > wrong"* list especially. ⛔ But read the session record before acting on any ordering or status claim
 > in this file.
 
-**Branch `ledger-v2-rebuild`.** ⚠ Run `git log --oneline -5` and `git status` first. ⛔ Do not trust a
+**Branch `ledger-v3-rebuild`.** ⚠ Run `git log --oneline -5` and `git status` first. ⛔ Do not trust a
 hash written in any doc, including this one.
 
 ---

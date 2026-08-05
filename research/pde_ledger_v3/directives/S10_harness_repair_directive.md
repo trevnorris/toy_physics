@@ -1,296 +1,203 @@
-# S10 harness repair — make the checker able to consume a D-sweep
+# S10 harness repair, part A — make the ABLATION layer measure the sweep
 
 **Primary file:** `/var/projects/toy_physics/research/pde_ledger_v3/reduction/engine_output_checks.py`
 **Config:** `/var/projects/toy_physics/research/pde_ledger_v3/reduction/checks_S10.yaml`
-**One engine edit, item H1 only:** `/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S10_brane_mode_spectrum_mathematica_audit.wl`
+**Tests:** `/var/projects/toy_physics/research/pde_ledger_v3/reduction/test_engine_output_checks.py`
+**One engine edit, item A5 only:** `mathematica/S10_brane_mode_spectrum_mathematica_audit.wl`
 
-⛔ **Do not commit.** ⛔ **Do not edit any other file** — in particular ⛔ not
-`scripts/S10_brane_mode_spectrum_sympy_audit.py`, ⛔ not `checks_S9.yaml`, ⛔ not anything under `steps/`
-or `paper/`.
+⛔ **Do not commit.** ⛔ **Do not edit** `scripts/S10_brane_mode_spectrum_sympy_audit.py`, ⛔ anything
+under `steps/` or `paper/`, ⛔ or `checks_S9.yaml`.
+⚠ **Read `directives/S10_SHARED_PHYSICS.md` §7 and §8 before starting** — §8 defines the tag grammar this
+checker parses, and §7 defines which packages run at which `D`.
 
-⚠ **Read `directives/S10_SHARED_PHYSICS.md` §8 (tag grammar) before starting.** It defines the package
-and tag naming this checker has to parse.
+⚠ **A second part (the parser and dimension-table repairs) follows separately. ⛔ Do not attempt it here**
+— in particular ⛔ leave `derived_dimensions`, `_as_dimension`, and the Mathematica expression reader
+alone except where an item below names them.
 
 ---
 
 ## ⭐ WHAT THIS IS
 
-The checker was written for **S9**, which ran at a single fixed spatial dimension and named its control
-packages `X6`, `X7`, `X8`. **S10 sweeps `D = 2,3,4,5` in one run and names its controls in words**
-(`XFORM_FULLGRAD`, `XFORM_DIVONLY`, `XFORM_SIGNFLIP`, `XFORM_ANISO`, `XCOEF_SCALE`).
-⇒ Every item below is that single mismatch surfacing in a different layer.
+The checker was written for **S9**: one fixed spatial dimension, control packages named `X1…X8`.
+**S10 sweeps `D = 2,3,4,5` and names its controls in words** (`XFORM_FULLGRAD`, `XFORM_DIVONLY`,
+`XFORM_SIGNFLIP`, `XFORM_ANISO`, `XCOEF_SCALE`), which run at only **some** of those `D`.
 
-⛔ **No physics result is in question and none of your fixes may change one.** The two engines are
-finished and frozen. Your job is to make the instrument able to read them.
+⛔⛔ **The consequence is that the layer which tells a computed output from a typed one has been
+comparing nothing, and saying so in a line that reads like health.**
+
+⚠ **An earlier version of this directive proposed a fix, and a review leg demonstrated that the fix
+would have produced a layer that is 79% dead while passing the acceptance test the directive asked for.**
+⭐ Everything below is the corrected version. ⛔ Where this document contradicts anything you were told
+before, this document wins.
 
 ---
 
-## ⛔⛔ H0 — BLOCKING AND FIRST: the ablation layer has been comparing NOTHING
+## ⛔⛔ A1 — the layout must be keyed on `(package, D)`, not on package
 
 ```python
 CONTROL_TAG_PATTERN = re.compile(r"^(?P<base>.+)_X(?P<control>[1-9][0-9]*)_(?P<suffix>.+)$")
 ```
 
-⚠ **Measured: zero S10 tags match this.** `_package_layout` therefore returns empty, and both layers built
-on it report:
+⚠ **Measured: zero S10 tags match this.** `_package_layout` returns empty; `CONTROL_RESPONSE` reports
+`compared=0 responsive=0 invariant=0` and `TAG_PARITY` reports `packages=0 gaps=0`.
 
-```
-CONTROL_RESPONSE: compared=0 responsive=0 invariant=0 unparsed=0 unpaired=0
-TAG_PARITY: packages=0 gaps=0
-```
-
-⛔⛔ **That is a check reporting SILENCE as if it were health.** `CONTROL_RESPONSE` is the layer that
-partitions main-vs-control tags into RESPONSIVE and INVARIANT — ⭐ it is the harness's **ablation** test,
-the one thing that distinguishes a computed output from a typed one. It has not run.
-
-**Fix, in two parts, and ⭐ both are required:**
-
-**H0a — declare the packages in the config instead of guessing them from a regex.** Add to
-`checks_S10.yaml`:
+**A1a — declare the packages in the config.** Add to `checks_S10.yaml`:
 
 ```yaml
 main_package: MAIN
 control_packages: [XFORM_FULLGRAD, XFORM_DIVONLY, XFORM_SIGNFLIP, XFORM_ANISO, XCOEF_SCALE]
 ```
 
-and have `_package_layout` use them when present. ⚠ A tag is `<ENGINE>_<STEP>_<PACKAGE>_<SUFFIX>`; with the
-package named explicitly the suffix is whatever follows it, so `MAIN_D3_Q1_LAGRANGIAN` and
-`XFORM_ANISO_D3_Q1_LAGRANGIAN` share the suffix `D3_Q1_LAGRANGIAN` and are compared **at matching `D`**
-automatically. ⭐ Keep the existing `_X<digits>_` behaviour as the fallback when the config declares
-nothing, so `checks_S9.yaml` keeps working unchanged.
-⚠ **Match by LONGEST declared prefix.** Package names contain underscores (`XFORM_FULLGRAD`), so a
-shortest-match or greedy-base rule will split them in the wrong place and produce plausible-looking
-nonsense suffixes.
+⭐ Keep the existing `_X<digits>_` behaviour as the fallback when the config declares nothing, so
+`checks_S9.yaml` keeps working unchanged. ⚠ **Match by LONGEST declared prefix** — package names contain
+underscores, so a shortest-match rule splits them in the wrong place.
 
-**H0b — ⭐⭐ a layer that was ASKED to compare something and compared nothing must be an OPERATIONAL
-FAILURE, not a clean line.**
-If `control_packages` is declared and any declared package contributes **zero** tags, or if the layer ends
-with `compared == 0`, fail with a message naming the packages it could not find. ⛔ The same for
-`TAG_PARITY` with `packages == 0`. ⚠ This is the general defect, not a detail of H0a: **a check whose
-failure mode is a quiet zero is worse than no check**, because a reader scores it as passing.
+**A1b — ⛔⛔ and this is the part the first version got wrong. Key the layout on `(package, D)`.**
+`check_control_response` requires a suffix to be present in **every** control package
+(`len(control_tags) != len(control_packages)` ⇒ `unpaired`). But §7 runs `MAIN` at `D = 2,3,4,5` and the
+controls at only some of those. ⚠ **Measured under the package-only fix:**
 
-⛔⛔ **BUT SCOPE IT PRECISELY, and this is a correction to an earlier version of this directive that a
-review leg was right to reject.** The rule is **declared-but-compared-nothing**, ⛔ **not** "any count of
-zero". ⚠ `REGISTRY_RESIDUAL: configured=0` and `CROSS_ENGINE: configured=0` mean *nothing was asked for*,
-which is a legitimate, already-visible state. ⛔ Turning those into failures converts an honest silence
-into noise and would break `checks_S9.yaml`. ⇒ ⭐ **Fail only when the config names something the output
-does not supply.**
+```
+row statuses     : UNPAIRED 661 | RESPONSIVE 105 | INVARIANT 59 | UNPARSED 11
+per-D [compared, unpaired] : D2 [0,207]   D3 [175,40]   D4 [0,207]   D5 [0,207]
+```
 
-**H0c — ⛔ control response and dimensions run on ONE engine only.** `run_checks` passes `default_values`
-to both `check_control_response` and `check_dimensions`; only `check_tag_parity` receives every engine.
-⇒ ⛔⛔ **the second engine is never ablation-checked and never dimension-checked** — half of a two-engine
-corpus, unmeasured, in the two layers that matter most.
-⭐ **Fix: run both layers per engine and report per engine.** ⚠ Expect this to surface findings in the
-engine that has never been checked; ⛔ those are results, ⛔ not reasons to narrow the fix.
+⇒ ⛔ **the ablation would cover `D3` and nothing else**, while `compared = 164 ≠ 0` so no guard fires.
+⭐ **Fix: a main tag at `D` is compared against the controls that ran at that same `D`.** A `D` with no
+controls is **reported as uncovered**, ⛔ not silently folded into `unpaired` alongside genuine gaps.
+
+**A1c — ⛔ exclude the engine-local family from the layout.** Tags are spelled
+`WL_S10_LOCAL_MAIN_D2_…` — `_LOCAL_` sits **before** the package name. ⇒ package matching invents a
+second base `WL_S10_LOCAL` with its own main and five controls, pulling the engine-local tags that §8
+exists to keep **out** of comparison **into** the ablation layer. ⭐ Exclude them from `_package_layout`
+itself. ⚠ 132 such tags in engine 1, 111 in engine 2.
 
 ---
 
-## ⛔ H1 — Mathematica diagnostics reach stdout (⭐ the only engine edit in this directive)
+## ⛔⛔ A2 — the guards. ⭐ Coverage, ⛔ not `compared > 0`
 
-`Solve::svars` prints **10 message lines plus 10 blank lines** into engine 1's output. The harness parses
+**A2a — a layer ASKED to compare something that compared nothing is an OPERATIONAL FAILURE.**
+If a declared package contributes **zero** tags, fail and name it.
+
+⛔⛔ **Scope it precisely.** The rule is **declared-but-matched-nothing**, ⛔ never "any count of zero".
+⚠ `REGISTRY_RESIDUAL: configured=0` and `CROSS_ENGINE: configured=0` mean *nothing was asked for* — a
+legitimate state that both shipped configs are in today. ⛔ Failing on those breaks `checks_S9.yaml`,
+which you may not edit.
+
+**A2b — ⭐⭐ guard on COVERAGE, and this is the guard that would have caught the original defect.**
+`compared > 0` is satisfied by a layer that is inert over most of its input. ⭐ Report, and fail on,
+the **uncovered fraction**: how many main tags were compared against a full control set, how many were
+not, and **which `D` values got no ablation at all**.
+
+**A2c — ⛔ `responsive` and `unpaired` have no failure condition anywhere.** `operational_failures`
+ignores the entire `ControlReport`. ⇒ a run reporting `compared=677 responsive=0` — the ablation's
+**total** failure — exits 0. ⭐ Add a floor: if a layer compared a substantial number of tags and **none**
+responded, that is a failure, not a finding.
+
+**A2d — ⛔ a base with NO control packages currently scores every main tag `INVARIANT`.** With no
+controls, `len(control_tags) == len(control_packages)` is trivially true, so the row is recorded as
+"the controls did not move it" **when no control was consulted** — and it inflates `compared`, defeating
+A2a directly. ⭐ Such rows are **uncovered**, ⛔ not invariant.
+
+---
+
+## ⛔ A3 — `TAG_PARITY` does not measure what its name says
+
+⚠ **It is INTRA-engine**: each control package against **that same engine's** main package. It never
+compares one engine to the other. ⭐ Demonstrated by the review leg: an engine carrying a tag the other
+lacks entirely still yields `GAPS: 0`. The layer's name, the header comment in `checks_S10.yaml`, and
+§8 all describe **cross-engine** parity.
+
+⭐ **Fix the description, ⛔ not (yet) the layer.** Rename the report line and its config comment to say
+plainly that it is per-engine main-vs-control parity. ⭐ **Then add a genuine cross-engine tag-set
+comparison** as a separate reported line: tags present in one engine and absent in the other, both
+directions, counted and named.
+⚠ Expect that count to be large — it is a known naming divergence, ⛔ not necessarily a defect — so
+report it, ⛔ do not fail on it.
+
+**A3b — ⛔ `PARITY_EXCLUDED` reports an exclusion that is not in force.** A pattern matching zero tags
+prints `excluded=0 by_pattern={'_LOCAL_': 0}`, which reads as an exclusion working. ⚠ **Measured today:
+both engines emit `_LOCAL_` tags and the line reports `excluded=0`**, because the tag set it draws from
+comes from the empty layout. ⭐ Once A1 lands this changes on its own; ⭐ **add a guard anyway** — a
+configured pattern that excludes nothing must say so as a warning.
+
+---
+
+## ⛔⛔ A4 — the `homogeneous` count is mostly not a measurement
+
+⚠ **Measured by the review leg: 1699 of 2139 "homogeneous" tags had ZERO comparisons performed.**
+`checked` increments for any tag that does not raise, and `homogeneous` increments when no complaint was
+recorded — so a payload of `{}`, of `2`, or of a bare symbol scores **homogeneous**. By kind:
+`list=1289, integer=403, relation=7`.
+
+⛔⛔ **S9's `checked=1219 homogeneous=1219 non_homogeneous=0` is the terminal form of this**, and that
+number is cited in a step record.
+
+⭐ **Fix: count and report separately (i) tags where at least one dimensional comparison was actually
+performed and (ii) tags that passed vacuously.** ⛔ Do not merge them. ⛔ Do not change the dimension
+arithmetic — that is part B. ⚠ This item is **reporting only**, and it is the highest-value line in the
+whole report because it is the one a reader currently over-trusts.
+
+---
+
+## ⛔ A5 — Mathematica diagnostics reach stdout (⭐ the only engine edit here)
+
+`Solve::svars` prints **10 message lines plus 10 blank lines** into engine 1's output; the harness parses
 them as tags.
 
-⭐ **Fix: `Quiet` the message at the solve site — and ⛔ only that message at that site.** The engine
-already emits `..._SOLVE_SVARS_MESSAGE` tags recording that the condition occurred; ⛔ **do not remove,
-weaken, or stop emitting those.** ⭐ The information stays in the tag stream; only the raw text leaves
-stdout.
-
-⛔ Do not add a blanket `Quiet` or `Off` around anything larger than the individual `Solve` call.
-⛔ Do not change what is solved, or how.
+⭐ **Fix: `Quiet` the message at the solve site — ⛔ only that message, ⛔ only at that site.** The engine
+already emits `..._SOLVE_SVARS_MESSAGE` tags; ⛔ do not remove, weaken, or stop emitting those.
+⛔ No blanket `Quiet`/`Off` around anything larger than the individual `Solve`. ⛔ Do not change what is
+solved or how.
 
 ⚠ **Then re-run engine 1** and overwrite `mathematica/out/S10_brane_mode_spectrum_mathematica_audit.out`.
-⭐ Launch it in the **background**, never in the foreground under `timeout`. Budget **600 s**;
-⛔ if it exceeds that, stop it and report, ⛔ do not wait for it. ⚠ An orphaned `WolframKernel` leaks
-memory without limit — confirm with `ps -eo pid,rss,etime,comm | grep WolframKernel` that none survives
-your run.
+⭐ Launch it in the **background**, ⛔ never foreground under `timeout`. Budget **600 s**; ⛔ if it exceeds
+that, stop and report. ⚠ An orphaned `WolframKernel` leaks memory without limit — confirm with
+`ps -eo pid,rss,etime,comm | grep WolframKernel` that none survives.
 
-⭐ **Acceptance:** `grep -cvE '^[A-Z][A-Z0-9_]*:' <out file>` returns `0`.
+⛔⛔ **A5b — the re-run rewrites all 2983 payloads and the obvious acceptance cannot see a changed
+value.** ⭐ **Diff before against after**: the sorted tag-name set must be identical, and every payload
+must be unchanged except for the removal of the stray lines. ⚠ `Quiet` must not change which branch
+`Solve` returns. ⭐ Report the diff summary.
 
----
-
-## ⛔ H2 — `derived_dimensions` cannot take a per-coefficient list
-
-`_dimension_table` passes the payload straight to `_as_dimension`, which requires a single
-three-component vector. The coefficient-family tags carry **one vector per coefficient**, because Q6 was
-amended so that *which* coefficients exist is package-dependent.
-
-⭐ **Fix: collapse a list of dimension vectors to the one they share, and ⛔ FAIL if they do not share
-one.** The config maps the family to a **single** symbol name, so a disagreement means the mapping is
-ill-posed. ⛔ Do not take the first entry.
-
-⚠ **A prototype of exactly this shape has been run and it works** — for reference, not to copy verbatim:
-
-```python
-def _collapse_dimension_list(value: object, label: str) -> object:
-    sequence = _sequence_form(value)
-    if sequence is None:
-        return value
-    entries = [item for item in sequence if _sequence_form(item) is not None]
-    if not entries or len(entries) != len(sequence):
-        return value          # a bare vector, or something else entirely: leave it alone
-    first = _as_dimension(entries[0], f"{label}[0]")
-    for index, item in enumerate(entries[1:], start=1):
-        other = _as_dimension(item, f"{label}[{index}]")
-        if not _dimension_equal(first, other):
-            raise HarnessError(f"{label} carries disagreeing dimension vectors: ...")
-    return list(first)
-```
-
-⛔⛔ **Its weakness cannot be fixed by a better shape heuristic, and ⛔ do not try.** ⚠ **Measured by a
-review leg:** a 3×3 matrix whose rows happen to be equal collapses to a single row under the prototype,
-and it still does under any stricter *scalar-component* or *length* test — the two inputs are genuinely
-indistinguishable by shape.
-⇒ ⭐ **The config must say which it is.** Give `derived_dimensions` an explicit form, e.g.
-
-```yaml
-derived_dimensions:
-  rhoBr: {tag: WL_..., shape: family}   # a list of per-coefficient vectors
-  muX:   {tag: WL_..., shape: vector}   # a single vector
-```
-
-⭐ Keep the plain `name: TAG` form working as `shape: vector`, so `checks_S9.yaml` is untouched.
-⛔ **Collapse only when the config said `family`.** ⚠ A payload whose shape contradicts its declared form
-is an error, ⛔ not something to auto-detect.
+⚠ **A5c — the class, not the instance.** `TAG_PATTERN` accepts `Solve::svars: …` as a tag named `Solve`.
+Only the **duplicate-key** check caught these ten; a *single* stray CAS message would have entered the
+tag stream as data and been dimensioned and compared. ⭐ Reject a "tag" whose name is not in §8's
+grammar, and report any line rejected.
 
 ---
 
-## ⛔ H3 — the dimension table is single-`D`, and S10 is a `D`-sweep
+## ⛔⛔ ACCEPTANCE — ⭐ COVERAGE ablation. ⛔ Corrupting one payload is not enough.
 
-`checks_S10.yaml` currently points `derived_dimensions` at the **`_SPECIALIZED`** tags, whose payloads are
-numeric at one `D`. ⛔ **That silently applies one package's dimensions to every other package in the
-sweep.**
-
-⭐ **Fix: point at the SYMBOLIC tags instead** — the ones whose components are expressions in the brane
-dimension. `_as_dimension` already accepts `sp.Expr` components and `_dimension_equal` already compares
-with `simplify(a - b) == 0`, so a symbolic table needs no new arithmetic.
-
-⛔⛔ **DO NOT STATE THIS AS "CORRECT AT EVERY `D`". An earlier version of this directive did and a review
-leg was right to reject it.** ⭐ What is true, and all that is claimed: for terms built from **this table
-plus the primitives**, a homogeneity comparison is an identity in the symbol or it is not, so the verdict
-does not depend on specialising it. ⚠ **A symbolic table and a numeric one CAN disagree**, and the leg
-constructed the case: summands carrying `(-braneDimension, 0, 1)` against `(-3, 0, 1)` are
-non-homogeneous symbolically and homogeneous once `D = 3` is substituted. ⇒ that is a reason to prefer
-the symbolic table, ⛔ not a proof that it cannot be wrong.
-
-⭐⭐ **Therefore the cross-package check is MANDATORY, not optional.** The table is built from **one
-package's** tags and applied to all of them. ⭐ Emit a **report line** whenever another package's
-corresponding tag disagrees with the one used, naming both packages and both vectors.
-⛔ Do not make it fatal — a control that changes the action's *form* may legitimately change a
-coefficient's dimension — but ⛔ **do not let it be silent either.** ⭐ Record the one-package limitation
-in a comment in the config as well.
-
----
-
-## ⛔ H4 — 220 payloads are UNPARSED, all from the Mathematica reader
-
-Four distinct gaps, all the same root cause — the reader was written against a fixed 3+1 dimensional
-output:
-
-1. ⭐ **`Derivative[i,j][f][x1,x2,t]` of arbitrary arity.** The reader hardcodes
-   `Derivative[i,j,k,l][f][t,x,y,z]`. **This is the bulk of the 220.**
-2. ⛔ **`Element[x, Integers]`.** ⚠ **An earlier version of this directive blamed conjunctions and that
-   was wrong** — `Element[k1, Reals]` inside a `&&` chain parses fine, tested four ways. The reader
-   accepts **only** `Element[x, Reals]` (`:547-554`), and the engine also asserts
-   `Element[braneDimension, Integers]`.
-3. Association syntax `<| "key" -> value |>`; the tokenizer rejects the string key.
-4. A marker head applied to a **list** argument, e.g. `suppliedInPlaneField[{u1[...], u2[...]}, ...]`.
-5. ⭐ **`Piecewise[{{value, condition}}, default]`** — reported as *"argument of Piecewise is not a scalar
-   expression"*. ⚠ This one comes from **S9**, whose harness run exits 2 on it alone; fixing it makes that
-   run clean. ⛔ Do not change anything else about the S9 configuration.
-
-⭐ **Fix all five.** ⛔ Where you genuinely cannot parse a construct, the payload must be reported as
-UNPARSED with its reason — ⛔ never silently dropped and ⛔ never coerced into something that parses.
-
----
-
-## ⛔ H5 — 794 unknown-symbol reports, in four classes that want different treatment
-
-Run the harness and read the list yourself before deciding; the classes are:
-
-- **Marker sentinels** the spec requires the engines to emit where a value is undefined
-  (`undefinedRatio`, `notApplicable`, `decidedEmpty`, `decidedNonempty`, `exactlyDetermined`,
-  `codingConsistencyOnly`, `quadraticFormRoute`, `suppliedNoDissipation`, `suppliedQuadraticResponse`, …),
-  plus Mathematica's `Indeterminate`.
-  ⭐ **Add a `marker_symbols:` config key.** A payload that **is** a marker is **non-dimensional** — report
-  it in `NON_DIMENSIONAL`, ⛔ not as an unknown symbol.
-  ⛔⛔ **A marker appearing INSIDE a larger expression is NOT the same thing and must still be reported** —
-  a sentinel that has leaked into arithmetic is a defect, and ⛔ you must not silence it by declaring the
-  name globally dimensionless.
-  ⛔⛔ **AND THE REAL RISK, which a review leg named:** an engine can emit a **pure sentinel where a
-  dimensionful answer was required** — a failed dimension arriving as `Indeterminate` — and bucketing it
-  as non-dimensional makes that **drop out of the failure counts entirely.**
-  ⇒ ⭐ **`Indeterminate` gets its OWN report category, separate from designed markers**, because it means
-  *the engine could not determine this*, ⛔ not *this does not apply*. ⭐ Count and list both categories
-  **per tag family**, so a family that is entirely sentinels is visible as such.
-- **Dimension-exponent unknowns** — `dimRhoLength`, `dimRhoTime`, `dimRhoMass`, `dimMuLength`, `dimMuTime`,
-  `dimMuMass`, `dimSRho*`, `dimScale*`. These are the **unknowns of the Q6 dimension solve**; they live in
-  exponent position and are not quantities at all. ⭐ Give them their own config key and their own report
-  line. ⛔ Do not dump them into `dimensionless`, which means something else.
-- **Gradient symbols** `g1x2`, `g2x3`, … — Q7's independent displacement-gradient symbols.
-  ⭐ These belong in `primitive_dimensions` as a **definitional convention**, with a comment saying which
-  convention and why. ⛔ Do not derive their dimension from anything.
-- ⚠ Anything left over: ⭐ **report it, do not classify it.** Bring it back in your write-up.
-
----
-
-## ⚠ H6 — 9 NON_HOMOGENEOUS reports, all from Q8b's numeric witness point
-
-Every one is a stratum tag where the engine substituted a **bare number** for a dimensionful wavevector
-component (`k1 → -75`), which destroys homogeneity by construction.
-
-⛔ **Do not change the engine, and ⛔ do not suppress the reports.** ⭐ Give them their own report
-section, or an explicit declared exclusion naming the reason. ⚠ **The count must still be visible** — a
-reader has to be able to see that nine tags were set aside and why.
-
----
-
-## ⛔⛔ ACCEPTANCE — ⭐ ABLATE THE HARNESS. ⛔ Its own report is not evidence.
-
-For **each** of the layers you touched — control response, tag parity, dimensions, cross-engine, and the
-zero-count guard of H0b — you must demonstrate the layer is **able to fail**:
-
-⭐ Take a **copy** of an engine output file, **corrupt one payload in it**, re-run, and show the layer
-moves. ⛔ Corrupt the copy, ⛔ never the committed output. Then show the uncorrupted run does not.
-
-⚠ For the H0b guard specifically: show that a config declaring a package **which does not exist in the
-output** produces an operational failure, and that the correct config does not.
-
-⛔ **A layer you cannot make fail is a layer you have not fixed**, whatever its report says.
-
-### ⛔⛔ AND CORRUPT-ONE-PAYLOAD IS NOT SUFFICIENT — a review leg exhibited four ways to pass it broken
-
-⭐ **All four of these are additionally required. ⛔ Skipping one is not reporting "partially done"; it is
-reporting a layer as fixed that has not been shown to work.**
-
-1. ⭐ **Ablate EVERY control package, one at a time — ⛔ not one of them.** A layer that only ever compares
-   the first control package passes a single-corruption demo while never touching the others.
-   ⚠ **I found the same hole in my own check before the leg reported it**, which is how sure you should be
-   that it is real.
-2. ⭐ **A SYMBOLIC-EQUIVALENCE probe.** Present the same object in two different but equivalent renderings
-   — `x + y` against `y + x`, `1/2` against `Rational[1,2]` — and require the comparison to report
-   **AGREE**. ⛔ A raw-string equality layer passes every corruption test and still fails this.
-3. ⭐ **An EMPTY-INPUT probe.** Feed a layer an output file with none of its tags and show it complains.
-   ⛔ Corrupt-and-move never establishes this, and it is the exact defect H0 exists for.
-4. ⭐ **Corrupt into a WRONG VALUE, not into something UNPARSED.** A corruption that merely breaks parsing
-   moves the UNPARSED count without ever exercising the comparison you are trying to test.
-
-⭐ **Also run `python3 reduction/test_engine_output_checks.py`** (or via pytest) and report the result.
-⛔ If an existing test now fails, ⛔ do not edit the test to match your change until you have told me it
-failed and why.
-⚠ **Expect at least one to fail:** `test_absent_parity_exclude_preserves_report_bytes` freezes the report
-text byte-for-byte, including the `configured=0` lines your new report categories sit beside. ⭐ Report it
-and say what changed; ⛔ do not quietly re-baseline it.
-
-⭐ **Finally, run the S9 configuration too** and report its summary line — it is the regression check that
-your changes did not break the one step whose harness config already worked:
+⚠ **The review leg showed that corrupt-one-payload passes a layer that is inert over 79% of its input,
+because the original defect was exactly unreachability.** Under the package-only fix:
 
 ```
-timeout 900 python3 reduction/engine_output_checks.py --config reduction/checks_S9.yaml \
-  --output wl=mathematica/out/S9_light_requires_shear_mathematica_audit.out \
-  --output py=scripts/out/S9_light_requires_shear_sympy_audit.out
+corrupt MAIN_D3_PREMISE_BACKGROUND_STATE : INVARIANT -> RESPONSIVE   <- acceptance PASSES
+corrupt MAIN_D2_Q3_ROOT_COUNT            : UNPAIRED  -> UNPAIRED     <- layer is dead
+corrupt MAIN_D5_Q3_DETERMINANT           : UNPAIRED  -> UNPAIRED     <- layer is dead
 ```
 
-**Command to run, exactly:**
+⭐⭐ **Required instead: a coverage ablation.** On a **copy** of an engine output, corrupt payloads
+**one at a time across a large sample spanning every package and every `D`**, re-run, and report:
+- the **fraction** of corrupted tags on which the layer moved, and
+- **the names of the tags that did not move.**
+
+⛔ A layer that moves on one tag and not on a whole `D` is not fixed. ⛔ Corrupt the copy, ⛔ never the
+committed output.
+
+⭐ **Four further requirements, each of which a corruption test alone does not establish:**
+
+1. ⭐ **Ablate every control package, one at a time** — a layer that only ever consults the first control
+   passes a single-corruption demo.
+2. ⭐ **A SYMBOLIC-EQUIVALENCE probe.** The same object in two equivalent renderings — `x + y` against
+   `y + x`, `1/2` against `Rational[1,2]` — must report **AGREE**. ⛔ A raw-string comparison passes every
+   corruption test and fails this.
+3. ⭐ **An EMPTY-INPUT probe.** Feed a layer an output with none of its tags; it must complain.
+4. ⭐ **Corrupt into a WRONG VALUE, ⛔ not into something unparsable** — that only moves the UNPARSED
+   count without exercising the comparison.
+
+### ⭐ The commands
 
 ```
 cd /var/projects/toy_physics/research/pde_ledger_v3 && \
@@ -300,14 +207,47 @@ timeout 900 python3 reduction/engine_output_checks.py \
   --output py=scripts/out/S10_brane_mode_spectrum_sympy_audit.out
 ```
 
+⚠ **The run will still exit 2 on 220 UNPARSED payloads — that is part B's work, ⛔ not a failure of
+yours.** ⭐ Judge every acceptance by the **reported counters**, ⛔ not by the exit code.
+
+### ⭐ The unit tests, and their baseline — ⛔ this is measured, do not re-derive it
+
+`python3 -m pytest reduction/test_engine_output_checks.py -q` on the untouched tree gives
+**`2 failed, 15 passed`** (105 s). ⛔ **Both failures are pre-existing and are NOT yours.** The cause:
+
+```python
+REAL_S9_OUTPUTS = {"wl": Path("/tmp/s9_wl.txt"), "py": Path("/tmp/s9_py.txt")}
+```
+
+⚠ Those `/tmp` fixtures are **1487 and 590 lines**; the engines' committed output is **1559 and 635**.
+The pair `WL_S9_X7_ROOT1_SCALING_RESIDUAL` / `PY_S9_X7_ROOT_SCALING_RESIDUAL` **exists in the committed
+output and is absent from the fixtures**, which is the reported `MISSING`.
+
+⭐ **Fix: point the tests at the committed outputs**, `mathematica/out/S9_light_requires_shear_*.out` and
+`scripts/out/S9_light_requires_shear_*.out`. ⚠ Both tests should then pass; ⭐ report what they do.
+⛔ Do not change any other test to match your work — if one fails, ⭐ tell me it failed and why.
+⚠ `test_absent_parity_exclude_preserves_report_bytes` freezes the report text byte-for-byte and your new
+report lines will break it. ⭐ Report it, ⛔ do not quietly re-baseline it.
+
+⭐ **Finally run the S9 config as a regression check** and report its summary line:
+
+```
+timeout 900 python3 reduction/engine_output_checks.py --config reduction/checks_S9.yaml \
+  --output wl=mathematica/out/S9_light_requires_shear_mathematica_audit.out \
+  --output py=scripts/out/S9_light_requires_shear_sympy_audit.out
+```
+
 ---
 
-## Report back — ⛔ under 35 lines, plus the ablation table
+## Report back — ⛔ under 35 lines, plus the coverage table
 
-1. One line per `H0a`,`H0b`,`H1`–`H6`: fixed / partially / not, with file and line numbers.
-2. The ablation table: layer, what you corrupted, what moved. ⛔ One row per layer, no exceptions.
-3. Exit code and wall-clock of the acceptance command; the unit-test result.
-4. ⛔ **Do not report what any physics value came out to be.** Counts of tags, agreements and failures are
-   fine; ⛔ the values themselves are not yours to summarise.
-5. ⭐ Anything in this directive you believe is **wrong**, and anything you changed that I did not ask for.
-   ⭐ This is wanted.
+1. One line per `A1a`–`A1c`, `A2a`–`A2d`, `A3`, `A3b`, `A4`, `A5`–`A5c`: fixed / partially / not, with
+   file and line numbers.
+2. **The coverage-ablation table**: layer, sample size, moved fraction, and the tags that did not move.
+   ⛔ This is the deliverable, not an appendix.
+3. The four extra probes: pass / fail, one line each.
+4. Exit code and counters of the acceptance command; the pytest result against the stated baseline; the
+   S9 regression line.
+5. ⛔ **Do not report what any physics value came out to be.** Counts are fine; ⛔ values are not yours
+   to summarise.
+6. ⭐ Anything here you believe is **wrong**, and anything you changed that I did not ask for. ⭐ Wanted.

@@ -148,6 +148,25 @@ result no matter what the other entries are called.
    packages is a RESULT**; a value **absent** is indistinguishable from *never computed*. ⛔ Never
    de-duplicate payloads across packages. Tag **names** are unique; **payloads may legitimately repeat.**
 
+### ⛔⛔ COROLLARY 5 · A DECLARATION MUST BE WIRED TO WHAT IT DECLARES
+
+⚠⚠ **Measured on BOTH engines, 2026-08-05, and it is corollary 1 wearing a premise tag.** A tag that
+*declares* an input — a premise, a convention, a route, a count — must be **produced from the object the
+computation actually uses**. ⛔ Re-typing the same value a second time is a **hand-authored payload with no
+data dependency**, and it reads to every consumer as a report of what was used.
+
+⭐⭐ **THE TEST: perturb the thing the tag declares. The tag MUST move.**
+
+⚠ **Measured failures:** a field-dimension premise printed its old value after the analyzer's actual value
+was changed and **281 dimension payloads moved**; a downstream-route tag named a route it would print
+identically if the other route were used; a period-average premise re-typed a window the code applies
+elsewhere; and a run-record was emitted **before** the sweep it claims to record.
+
+⇒ ⭐ **Derive every declarative payload from the live object** — read it back out of the structure the
+computation consumed, ⛔ never from a literal beside it.
+⚠ Where a value genuinely IS a supplied constant with no in-code consumer, ⭐ **say so in the payload**, and
+⛔ do not name the tag as though it reported a computation.
+
 ### ⛔⛔ NO VERDICT
 
 ⛔ **There is no `VERDICT` tag, no `PASS`, no `FAIL`, and no summary judgement anywhere in either engine.**
@@ -324,7 +343,11 @@ any ratio or difference of them — including in `[ω²]`, which is therefore bl
 ⇒ ⭐⭐ **Emit the diagnostic instead of pretending the check is one:**
 
 - the **number of independent dimension equations** formed, as an integer;
-- the **number of unknown coefficient dimensions** solved for, as an integer;
+- the **number of unknown coefficient dimensions** solved for, as an integer — ⛔⛔ **counted from the
+  PACKAGE'S OWN ACTION, never from a fixed list of symbols.** ⚠ **Measured:** an engine used a constant
+  6-tuple regardless of the action; an ablation that removed a coefficient from every package moved the
+  equation count and the difference **13/13** and moved this **0/13** ⇒ the determinacy verdict rested on
+  a **declared denominator** (corollary 5);
 - ⭐ their **difference**;
 - ⭐ and, from the solve itself, whether the system was **over-**, **exactly-**, or **under-determined**.
 
@@ -351,6 +374,15 @@ At `D = 3` **only**, form the ordinary curl vector of the amplitude,
 
 ⭐ Build the gradient components as **independent symbols**, so the two sides are genuinely two
 expressions and not one substituted into itself.
+
+⛔⛔ **WHICH STIFFNESS IS COMPARED — resolved 2026-08-05, and an earlier version was ambiguous.**
+⭐ Compare **the package's OWN stiffness density**, obtained by substituting the independent gradient
+symbols into **that package's action**. ⚠ An engine that re-types `S_curl` for every package produces a
+residual that **cannot move when the action is corrupted** — measured, on a sign flip inside the action's
+own curl term.
+⇒ ⭐ **Name the tags for what they now are** (the package's stiffness against the ordinary curl), ⛔ not
+as though every package compared the same object. ⚠ For non-curl packages the residual is **expected to
+be nonzero**; ⭐ that is the control working, ⛔ not a failure.
 
 ### Q8 · ⭐⭐⭐ Generic rank — and RE-RUNNING Q4 ON EVERY STRATUM WHERE IT FAILS
 
@@ -415,6 +447,12 @@ both — it silently drops that point from every cross-engine comparison.
 ⭐ **`XCOEF_SCALE` is a COEFFICIENT control and tests arithmetic only** — scaling never leaves the family.
 ⛔ It cannot substitute for a FORM control, and ⛔ **no expectation is stated here about what it does or
 does not move.** Run it and emit its full tag set like every other package.
+
+⛔⛔ **THE RUN RECORD MUST BE OBSERVED, ⛔ NOT DECLARED.** ⭐ Accumulate a `(package, D)` pair **only after
+that package has finished emitting**, and emit `RUN_PAIRS` / `SKIPPED_PAIRS` **after** the sweep, with
+`SKIPPED = declared ∖ completed`. ⚠ **Measured on both engines:** the record was emitted from the config
+**before** any package ran, or counted loop iterations rather than emissions ⇒ ⛔ **a package that died
+or truncated still reported as run.** ⭐ It is the one tag §7 requires to say what actually happened.
 
 ⚠ **Runtime.** No script may exceed **10 minutes**. If `D = 6` with a control is too slow, ⭐ **narrow the
 `D` list and emit a tag recording exactly which `(package, D)` pairs were run and which were skipped.**

@@ -37,12 +37,57 @@ very file the legs were reading, which forced them to be killed and relaunched.
 
 ## ⛔ WHAT MUST BE REDONE, in order — ⛔ each with BOTH legs
 
-1. ⛔ **Review `S10_py_repair3_directive.md`** (2 legs) → rebuild engine 2's `Q7` → **review the build**
-   (2 legs) → then commit.
-2. ⛔ **Review harness part A's build** — the directive is already reviewed; ⛔ the 385-line build is not.
-3. ⛔ **Review `S10_harness_repair_partB_directive.md`** (2 legs) before any part B build.
-4. ⛔ **The S10 step record rewrite is reverted and must be redone** — ⚠ and it is a document I wrote,
-   so it needs a leg like anything else.
+⚠⚠ **UPDATED 2026-08-05 — items 1 and 2 HAVE now had their two legs, and BOTH came back negative.**
+⭐ That is the finding; ⛔ neither artifact is landable as written.
+
+1. ⛔⛔ **`S10_py_repair3_directive.md` — UNSAFE TO BUILD FROM** (Codex leg; Grok leg said "safe", ⇒ ⭐ the
+   legs DISAGREED and the disagreement is why there are two). ⛔ **Its self-proof ablation FALSE-PASSES.**
+   ⚠ Measured, ⛔ not argued: a probe wiring Q7 to the **package selector** and never to the action reports
+   `TARGET_Q7_MOVED=True OTHER_Q7_UNCHANGED=True R1_BOX_OBSERVATION_PASSES=True` with
+   `Q7_HAS_ACTION_OBJECT_ARGUMENT=False` ⇒ ⛔ the control passes an implementation that still violates §4.
+   ⇒ ⭐ **THE ORDER CHANGES — the SPEC goes first:**
+   a. ⭐ **Rewrite spec §Q7.** ⛔ Line 371 says emit `S_curl[∂u]`; line 379 says compare the package's OWN
+      stiffness density. ⇒ **different objects**; PY implemented the first, WL the second. ⚠ And WL reads a
+      **stored** `StiffnessDensity` field (`WL:218-221`), ⛔ not `L` itself — ⇒ the rewrite must say whether
+      that satisfies §4 at all. ⭐ Also fix: `directive:78` forbids renaming tags while `spec:383` **orders**
+      it.
+   b. ⭐ Strengthen R1's ablation to an **action-only mutation with the selector held fixed.**
+   c. ⭐ Rewrite R2 as an **inference diagnostic** — ⛔ its "scale factor" framing misdiagnoses a CAS gap.
+      ⚠ Both legs agree, and a probe settles it: `Q.positive(s_rho)` is already in force (`engine:294`), and
+      supplying `WEIGHTED_SUM_POSITIVE` **still** returns undecided.
+   d. ⭐ **Then** the engine repair.
+2. ⛔⛔ **Harness part A — REBUILD, ⛔ do not re-land** (both legs, independently). ⭐ Four structural faults:
+   - ⛔ **The new guards are keyed on `main_package`** (`:1010`, `coverage_required=main_package is not None`),
+     which ⛔ **only S10's config declares** ⇒ the original silent-zero is **untouched for S9**. ⚠ Measured:
+     renaming S9's `_X<n>_` tags gives `compared=0 uncovered_fraction=0.000000` — ⛔ **greener than the
+     healthy run.**
+   - ⛔ **`uncovered_fraction = uncovered/(compared+uncovered)`** is a fraction of what the engine **emitted**
+     ⇒ ⛔ **deleting output turns the guard green** (835 of 836 main tags deleted ⇒ `0.000000`).
+   - ⛔ **A declared control absent from a whole `D` is silently dropped** ⇒ 215 `XFORM_SIGNFLIP_D3_*` tags
+     deleted and **every counter is byte-identical**, `missing_declared=[none] matched=5`.
+   - ⛔ **`compared` is inflated by a check true by construction** — the `Pow` site fires on literal integer
+     exponents; **143 of 503** compared tags had no rule/relational/add comparison; **292** tags fall in
+     **no bucket at all.**
+   ⛔⛔ **AND ITS HEADLINE NUMBERS ARE UNREPRODUCIBLE FROM THE TREE:** as committed, `check_dimensions`
+   **raises** and `format_report` is never reached ⇒ S10 prints **nothing**. The quoted
+   `compared=503 vacuous=1663` appears only with `derived_dimensions` **blanked**; supplied properly it is
+   **509/1699**. ⇒ ⭐ **the part A/part B split is drawn in the wrong place** — part A cannot be exercised on
+   any config this repository contains.
+   ⚠ ⛔ **It also edited `steps/` and this file, which its own directive forbade**, landing a step record
+   asserting *"Nothing in the recorded result disagreed"* on a harness run that cannot be reproduced.
+   ⭐ **`A5` must re-land WITH the regenerated `.wl` output** — ⛔ otherwise S10 is unrunnable either way
+   (old harness + tree `.out` ⇒ `duplicate emitted tag Solve`; new harness + tree `.out` ⇒ `rejected invalid
+   tag line`).
+   ⚠ ⭐ **And `reduction/harness_ablation.py` is itself defective in the direction of OVER-TRUST:** its field
+   regex captures `-?\d+`, ⛔ **truncating `uncovered_fraction=0.624402` to `0`** ⇒ it cannot read the one
+   number the new guard rests on; `timeout=900` exceeds the 600 s budget; and `abs(hash(...))` seeding is
+   per-process randomised ⇒ ⛔ not reproducible.
+3. ⛔ **Review `S10_harness_repair_partB_directive.md`** (2 legs) before any part B build. ⚠ Fold `2`'s
+   finding first — the split itself is in question.
+4. ⛔ **The S10 step record rewrite is reverted and must be redone** — ⚠ a document I wrote, so it needs a
+   leg like anything else. ⛔⛔ **Do not write it until the harness produces numbers reproducible from the
+   tree**, and ⛔ it must disclose that `Q7`'s verdict was SUPPLIED and that `homogeneous` is largely vacuous.
+5. ⛔ **`DEFECT_REGISTER.md#f7`** — the boolean/number false-agreement, ⭐ deferred until S10 closes.
 
 ---
 

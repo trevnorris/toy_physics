@@ -1,0 +1,13 @@
+The in-plane displacement uses the supplied real cosine ansatz with omegaSquared as the frequency-squared variable — unfalsifiable within this build.
+Every quadratic density uses the supplied one-period time average — unfalsifiable within this build.
+rho_br is real and strictly positive — unfalsifiable within this build.
+mu_R is real and strictly positive — unfalsifiable within this build.
+The squared wavevector norm is strictly positive — unfalsifiable within this build.
+Every wavevector component is real — unfalsifiable within this build.
+Every amplitude component is real — unfalsifiable within this build.
+D is a positive integer — unfalsifiable within this build.
+The background brane is unstrained and at rest with v_0 = 0, so convective terms and k dot v_0 are absent — unfalsifiable within this build.
+The Lagrangian has no term odd in a time derivative, relaxation time, or memory kernel — unfalsifiable within this build.
+The response is linear and the Lagrangian is exactly quadratic in u — unfalsifiable within this build.
+The curl-only stiffness form is supplied from S9 — unfalsifiable within this build.
+u is an in-plane D-vector with exactly D components, while the h-branon is a separate out-of-plane field — unfalsifiable within this build.

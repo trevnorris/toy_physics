@@ -115,6 +115,116 @@ signal); (iii) routability for us. Per-candidate detail in the session transcrip
 - **Closest spiritual ancestor:** Volovik. We differ (and can earn surplus) precisely by being a *polar-constituent + brane-shear*
   continuum rather than a *chiral-`l̂`* fermionic liquid.
 
+---
+
+## ⭐⭐ ATTRIBUTION PASS — the S9→S11b light sector, named piece by piece (2026-08-04)
+
+⭐ **Purpose: paper attribution, and a second source of checks.** An independent literature search was run
+against the S9–S11b step records. ⭐ It **re-confirmed** this survey's own identifications from an entirely
+separate route (MacCullagh, Volovik, Rubakov–Shaposhnikov all came back), ⭐ and added names this survey
+did not have.
+
+⛔⛔ **THE HEADLINE, AND IT IS UNCOMFORTABLE: the S9/S10/S11 light algebra is NOT new.** Curl-only stiffness
+⇒ `D−1` transverse modes at `c² = μ_R/ρ_br` + a zero-restoring-force longitudinal slot, and lifting only
+the longitudinal with a compression modulus, is **standard 19th-century continuum mechanics.**
+⇒ ⭐ **Whittaker, _A History of the Theories of Aether and Electricity_, Ch. V** is the reference; a reader
+of the step records would currently take the mode structure as earned here, and it is not.
+⚠ **This does not invalidate the rebuild** — we still had to derive it, and standard ground is *solid*
+ground. ⭐ **But S9, S10 and S11 must cite it.** Citing it strengthens the toy-analog framing rather than
+weakening it. ⇒ [[feedback-framing-split]]
+
+| our piece | status | attribution |
+|---|---|---|
+| S9/S10 curl-only ⇒ transverse count, `c² = μ_R/ρ_br` | **STANDARD** | MacCullagh 1839; Whittaker Ch. V |
+| S11 longitudinal lifted by a compression modulus | **STANDARD** | Cauchy–Navier elasticity |
+| **S11b-A interface law** | **STANDARD** | ⭐⭐ **structural acoustics** — fluid-loaded plate, radiation impedance, added mass |
+| S11b-B passivity / Onsager–Casimir, "odd" couplings need a drive | **KNOWN** | Fruchart, Scheibner, Vitelli, *Annu. Rev. Condens. Matter Phys.* **14** 471 (2023) |
+| the `h`-branon as the brane's own transverse fluctuation | **KNOWN** | Cembranos, Dobado, Maroto, PRL **90** 241301 (2003) |
+| defects ⇒ long-range fields with ⛔ no gauge field | **KNOWN** | Eshelby, *Solid State Phys.* **3** (1956) |
+| MacCullagh **+ topological defects ⇒ EM including charge** | **KNOWN** | ⭐⭐ **Unzicker**, `arXiv:gr-qc/0011064`, *ZAMM* **102** (2022) — ⚠ **our charge mechanism, already published** |
+| `Z₂` sign = ± orientation of a puncture | **ADJACENT** | domain walls, spin-ice monopoles, signed vortices — the exact construction not found under a name |
+
+### ⛔ NOT FOUND — ⚠ a search-failure statement, ⛔ NOT a proof of originality
+
+- MacCullagh stiffness restricted to an **ordered thin phase with a strictly shear-free bulk**, so light is
+  **confined** and cannot leave — every piece is known; this **confinement architecture** was not found.
+- The **stray longitudinal as the deliberate physical anchor for charge** — the interface mathematics is
+  standard; this **role** for the mode was not found.
+- **Gravity as drain-flow between throats while light is MacCullagh on the same sheet** — Volovik and
+  Unzicker are adjacent, ⛔ not this.
+
+⇒ ⭐ **The novel-looking residual, if any, is the ARCHITECTURE — ⛔ not any individual derivation.**
+
+### ⛔⛔ AND THE CHECK THIS SURVEY ALREADY NAMED, WHICH THE LIGHT SECTOR NEVER RAN
+
+⚠⚠ **This document flagged it on 2026-06-23 (see item 4 above and "most actionable next build"):**
+MacCullagh light *"died of a negative-energy / angular-momentum-non-conservation instability — any import
+MUST prove the rotational stiffness is **bounded-below and inertially anchored** (the precise make-or-break
+check)."* ⇒ Kelvin-gyrostat instability, `arXiv:1907.04144`.
+
+⛔ **S9, S10 and S11 built the MacCullagh light sector and did not run it.** They correctly compute the
+**consequences** of curl-only stiffness; ⛔ nothing establishes that a medium **can have** curl-only
+stiffness **stably**. ⇒ ⭐ That is a **supplied premise**, and this survey already identified it as the one
+most likely to break. ⇒ [[feedback-whose-law-is-it]]
+
+⭐ **It belongs in the step records as a stated limitation, and on the plan as a step.**
+
+## ⭐⭐ THE 4D SPATIAL BULK — separately searched (2026-08-04)
+
+⭐ **Asked narrowly: has anyone hypothesised the 4-dimensional SPATIAL structure, ⛔ not the light sector?**
+
+⭐ **Yes — the geometry, since 1982–83. ⛔ Not the combination, and ⛔ not the charge mechanism.**
+
+| ingredient | label | attribution |
+|---|---|---|
+| 3-sheet embedded in a bulk with an open extra dimension | **ADJACENT** | ⭐⭐ **Rubakov–Shaposhnikov (1983)**, *Phys. Lett. B* **125** 136, *"Do we live inside a domain wall?"*; **Akama (1982)**; RS2; DGP (2000) |
+| bulk is a **material medium** with density and flow | **KNOWN** separately | superfluid-vacuum theory — Volovik, Sbitnev, Consoli, Huang, Fedi |
+| matter = **topological puncture THROUGH** the sheet | **ADJACENT** | domain-wall localization traps matter **ON** the wall (potential / zero modes) — ⛔ the opposite construction |
+| **charge sign = puncture orientation ±`w`** (`Z₂`) | ⭐⭐ **NOT FOUND** | searched charge/orientation/puncture/throat/membrane + `Z₂`, R7-branes, topological `Z₂` |
+| gravity = **medium flowing into** the defect | **KNOWN** separately | Cahill (2003); ⭐ Hamilton–Lisle *river model*, *Am. J. Phys.* **76** 519 (2008); Sbitnev; Unruh acoustic sinks — ⛔ all **3D**, no off-sheet bulk |
+| **shear on the sheet, none in the bulk** ⇒ light confined | **ADJACENT** | ⛔ no "shear only on a 3-sheet, fluid bulk, traps light" package found |
+
+### ⭐⭐ THE DIFFERENCES — this is the paper's positioning section
+
+| | prior work | ⭐ ours |
+|---|---|---|
+| the extra dimension | one more spatial leg of **relativistic spacetime**; **metric** bulk | a **material 4-space** with density and flow |
+| the sheet | a field-theoretic **domain wall** | a **shear-stiff sheet** in a **non-shear** bulk |
+| matter | **trapped ON** the wall by a potential / zero modes | a **hole THROUGH** the sheet into `±w` |
+| charge | a **U(1) / SM quantum number** | **puncture orientation** |
+| gravity | **5D Einstein / induced Einstein–Hilbert** | the medium **draining off** the sheet |
+
+⇒ ⭐ **Not found assembled.** Braneworlds stop at an empty metric bulk with potential-trapped matter;
+superfluid-inflow models stop in 3D with no extra spatial direction and no punctures. ⚠ What stopped each:
+**GR-as-geometry** on the braneworld side, **no extra spatial direction** on the superfluid side.
+
+### ⚠ Two cautions before any of this reaches a paper
+
+- ⛔ **Cahill's inflow work is regarded as fringe.** Citing it as precedent cuts both ways. ⭐ Prefer
+  **Hamilton–Lisle**, who make the same flow point **inside standard GR**.
+- ⭐⭐ **The strongest available claim is NOT "this is novel."** This survey already records that
+  **light-localization is the braneworld field's famous open problem** (see the per-candidate grades,
+  Braneworlds/solitons row). ⇒ ⭐ **our shear-on-sheet / no-shear-in-bulk mechanism is a DIFFERENT ANSWER
+  TO A KNOWN OPEN PROBLEM** — a far stronger and more checkable claim than novelty in general.
+
+⇒ ⭐ Add to the reading list: **Rubakov–Shaposhnikov (1983)**, **Akama (1982)**, **DGP (2000)**,
+**Hamilton–Lisle (2008)**, **Maartens** braneworld *Living Reviews* as the baseline to contrast against.
+
+### ⭐ Reading list from the attribution pass, most useful first
+
+1. **Whittaker**, *A History of the Theories of Aether and Electricity*, Ch. V — MacCullagh, Green, Kelvin.
+2. **Unzicker**, `arXiv:gr-qc/0011064` and *ZAMM* **102** (2022) — closest living "MacCullagh + defects = EM";
+   ⭐ read before further charge-sector work.
+3. **Volovik**, *The Universe in a Helium Droplet* — closest living "one medium ⇒ gravity + EM".
+4. **Barceló, Liberati, Visser**, "Analogue Gravity," *Living Rev. Relativ.*
+5. **Cembranos, Dobado, Maroto**, PRL **90** 241301 (2003) — branons.
+6. **Fruchart, Scheibner, Vitelli**, *Annu. Rev. CMP* **14** 471 (2023) — odd elasticity, passivity (S11b-B).
+7. Any **structural acoustics** text on fluid-loaded plates — ⭐⭐ S11b-A *is* this subject, so the
+   literature holds an **external cross-check** on our interface law, stronger than any review leg.
+8. **Eshelby**, *Solid State Phys.* **3** (1956) — defects ⇒ long-range elastic fields, no gauge field.
+
+---
+
 ### Sources
 Volovik *cond-mat/9806010*, *0709.1258*, *The Universe in a Helium Droplet*; Barceló–Liberati–Visser *Analogue Gravity* (Living
 Reviews) + *gr-qc/0106002*; Levin–Wen *cond-mat/0407140* (RMP 77, 871), Gu–Wen *hep-th/0507118*, Levin–Wen *cond-mat/0404617*;

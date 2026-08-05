@@ -116,12 +116,14 @@ jointAssumptionExpression[
     {
       rhoBr > 0,
       muR > 0,
+      lambdaScale > 0,
       Total[wavevector^2] > 0
     },
     Element[#, Reals] & /@ wavevector,
     Element[#, Reals] & /@ amplitudes,
     {
       Element[braneDimension, Integers],
+      Element[lambdaScale, Reals],
       braneDimension > 0,
       packageControlAssumptions[package]
     }
@@ -246,7 +248,8 @@ eulerLagrangeSystem[data_Association] := Module[
 ansatzRules[data_Association] := Module[
   {
     dimension, dummyArguments, dummyCoordinates, dummyTime,
-    amplitudes, wavevector
+    amplitudes, wavevector, frequencyBranch, phaseExpression,
+    phaseFunction, rules
   },
   dimension = Length[data["Fields"]];
   dummyArguments = Table[Unique["ansatzArgument"], {dimension + 1}];
@@ -254,34 +257,53 @@ ansatzRules[data_Association] := Module[
   dummyTime = Last[dummyArguments];
   amplitudes = data["Amplitudes"];
   wavevector = data["Wavevector"];
-  MapThread[
+  frequencyBranch = Sqrt[omegaSquared];
+  phaseExpression = Total[wavevector dummyCoordinates] -
+    frequencyBranch dummyTime;
+  phaseFunction = Function[
+    Evaluate[dummyArguments],
+    Evaluate[phaseExpression]
+  ];
+  rules = MapThread[
     Rule[
       #1,
       Function[
         Evaluate[dummyArguments],
-        Evaluate[#2 Cos[
-          Total[wavevector dummyCoordinates] -
-            Sqrt[omegaSquared] dummyTime
-        ]]
+        Evaluate[#2 Cos[phaseExpression]]
       ]
     ] &,
     {data["FieldHeads"], amplitudes}
-  ]
+  ];
+  <|
+    "Rules" -> rules,
+    "FrequencyBranch" -> frequencyBranch,
+    "PhaseFunction" -> phaseFunction
+  |>
 ];
 
 periodAverage[expression_, phase_, assumptions_] := Module[
-  {phaseExpression, integral, averagedExpression, conditions, value},
+  {
+    averageWindow, normalization, phaseAverageSpecification,
+    phaseExpression, integral, averagedExpression, conditions, value
+  },
+  averageWindow = {0, 2 Pi};
+  normalization = 1/(averageWindow[[2]] - averageWindow[[1]]);
+  phaseAverageSpecification = suppliedPhaseAverage[
+    phaseVariable,
+    averageWindow,
+    normalization
+  ];
   phaseExpression = expression /. {
     -phase -> -phaseVariable,
     phase -> phaseVariable
   };
   integral = Integrate[
     phaseExpression,
-    {phaseVariable, 0, 2 Pi},
+    Prepend[averageWindow, phaseVariable],
     Assumptions -> assumptions
   ];
   averagedExpression = fullSimplifyWith[
-    integral/(2 Pi),
+    normalization integral,
     assumptions
   ];
   conditions = DeleteDuplicates@Cases[
@@ -294,23 +316,27 @@ periodAverage[expression_, phase_, assumptions_] := Module[
     "Integral" -> integral,
     "Expression" -> averagedExpression,
     "Conditions" -> conditions,
-    "Value" -> value
+    "Value" -> value,
+    "Specification" -> phaseAverageSpecification
   |>
 ];
 
 deriveMatrices[data_Association, eom_List, assumptions_] := Module[
   {
-    rules, coordinates, amplitudes, wavevector, phase, commonFactor,
+    ansatzData, rules, coordinates, amplitudes, wavevector, phase, commonFactor,
     eomOnAnsatz, strippedEquations, matrixA, lagrangianOnAnsatz,
     averageData, averagedLagrangian, matrixB, dimension
   },
-  rules = ansatzRules[data];
+  ansatzData = ansatzRules[data];
+  rules = ansatzData["Rules"];
   coordinates = data["Coordinates"];
   amplitudes = data["Amplitudes"];
   wavevector = data["Wavevector"];
   dimension = Length[amplitudes];
-  phase = Total[wavevector coordinates] -
-    Sqrt[omegaSquared] timeCoordinate;
+  phase = Apply[
+    ansatzData["PhaseFunction"],
+    Join[coordinates, {timeCoordinate}]
+  ];
   commonFactor = Cos[phase];
   eomOnAnsatz = Expand[eom /. rules];
   strippedEquations =
@@ -339,15 +365,19 @@ deriveMatrices[data_Association, eom_List, assumptions_] := Module[
 
   <|
     "AnsatzRules" -> rules,
+    "AnsatzFrequencyBranch" -> ansatzData["FrequencyBranch"],
     "EOMOnAnsatz" -> eomOnAnsatz,
     "StrippedEquations" -> strippedEquations,
     "MatrixA" -> matrixA,
+    "MatrixARoute" -> matrixRoute[equationsOfMotionRoute, matrixA],
     "LagrangianOnAnsatz" -> lagrangianOnAnsatz,
     "PeriodAverageIntegral" -> averageData["Integral"],
     "PeriodAverageExpression" -> averageData["Expression"],
     "PeriodAverageConditions" -> averageData["Conditions"],
+    "PeriodAverageSpecification" -> averageData["Specification"],
     "AveragedLagrangian" -> averagedLagrangian,
-    "MatrixB" -> matrixB
+    "MatrixB" -> matrixB,
+    "MatrixBRoute" -> matrixRoute[quadraticFormRoute, matrixB]
   |>
 ];
 
@@ -408,17 +438,20 @@ conditionsForRoot[root_, records_List, assumptions_] := DeleteCases[
 
 runSpectrum[
   prefix_String,
-  matrix_List,
+  matrixRouteObject_matrixRoute,
   wavevector_List,
   assumptions_
 ] := Module[
   {
+    matrix,
     determinant, solutions, solutionRecords, rootsFromSolutions, filteredRoots,
     discardedRoots, roots, pairs,
     coincidenceRecords, coincidencePayload, pair, pairPrefix, equation,
     locusData, locus, allowed,
     outcome, intersects
   },
+  matrix = matrixRouteObject[[2]];
+  emit[prefix <> "_Q2_DOWNSTREAM_ROUTE", matrixRouteObject[[1]]];
   determinant = Factor[Det[matrix]];
   emit[prefix <> "_Q3_DETERMINANT", determinant];
   solutions = Solve[determinant == 0, omegaSquared];
@@ -947,6 +980,13 @@ runDimensions[
     data["FieldHeads"],
     coefficientDimensionMap
   ];
+  emit[
+    prefix <> "_PREMISE_FIELD_DIMENSION",
+    suppliedFieldDimension[
+      u,
+      analyzer[First[data["Fields"]]]["Dimension"]
+    ]
+  ];
 
   concreteDimension = Length[data["Wavevector"]];
   braneDimensionRelation = braneDimension == concreteDimension;
@@ -1278,9 +1318,12 @@ runCurlComparison[prefix_String, data_Association] := Module[
       gradientSymbols[[1, 2]] - gradientSymbols[[2, 1]]
     };
     curlNorm = Expand[curlVector . curlVector];
-    emit[prefix <> "_Q7_STIFFNESS", actionStiffness];
-    emit[prefix <> "_Q7_CURL_NORM", curlNorm];
-    emit[prefix <> "_Q7_RESIDUAL", Expand[actionStiffness - curlNorm]];
+    emit[prefix <> "_Q7_PACKAGE_STIFFNESS_DENSITY", actionStiffness];
+    emit[prefix <> "_Q7_ORDINARY_CURL_NORM", curlNorm];
+    emit[
+      prefix <> "_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL",
+      Expand[actionStiffness - curlNorm]
+    ];
     comparisonExpressions = {
       actionStiffness,
       curlNorm,
@@ -1421,7 +1464,8 @@ runRankStrata[
     coincidenceRecords, gatheredRecords, uniqueRecords, record,
     sameStratumRegionQ,
     pointVariables, pointFormula, pointInstances, point, pointLocated,
-    pointSearchRecord, parameterSpecializations,
+    pointSearchRecord, spectrumParameterVariables,
+    parameterSpecializationRules, parameterSpecializations,
     pointAssumptions, pointMatrix, pointWavevector,
     pointProjectionVariables, pointProjectionFormula, stratumPrefix,
     controlVariables, allMinors
@@ -1535,6 +1579,7 @@ runRankStrata[
     {sRho, coefficientScale},
     Not[FreeQ[assumptions, #]] &
   ];
+  spectrumParameterVariables = Join[{rhoBr, muR}, controlVariables];
   pointVariables = wavevector;
   Do[
     record = uniqueRecords[[stratumIndex]];
@@ -1545,7 +1590,7 @@ runRankStrata[
     ];
     pointProjectionVariables = Join[
       data["Amplitudes"],
-      {rhoBr, muR, braneDimension},
+      {rhoBr, muR, braneDimension, lambdaScale},
       controlVariables
     ];
     pointProjectionFormula = Reduce[
@@ -1563,9 +1608,14 @@ runRankStrata[
       First[pointInstances],
       pointUnavailable[pointInstances]
     ];
-    parameterSpecializations = Cases[
+    parameterSpecializationRules = Cases[
       Flatten[{point}],
-      Rule[symbol_, value_] /; MemberQ[pointProjectionVariables, symbol]
+      Rule[symbol_, value_] /; MemberQ[spectrumParameterVariables, symbol]
+    ];
+    parameterSpecializations = If[
+      Length[parameterSpecializationRules] == 0,
+      noParametersSpecialized[spectrumParameterVariables],
+      parameterSpecializationRules
     ];
     pointSearchRecord = <|
       "AllowedRegion" -> record["Allowed"],
@@ -1597,7 +1647,7 @@ runRankStrata[
         stratumPrefix,
         pointMatrix,
         pointWavevector,
-        Join[{rhoBr, muR}, controlVariables],
+        spectrumParameterVariables,
         pointAssumptions
       ]
     ],
@@ -1609,8 +1659,9 @@ runRankStrata[
 runPackage[package_String, dimension_Integer] := Module[
   {
     prefix, data, assumptions, expandedLagrangian, eom, matrixData,
-    matrixA, matrixB, matrixResidual, matrixEntryRatio, spectrumData,
-    modeData, scalingData, curlData, rankData
+    matrixA, matrixB, matrixResidual, matrixEntryRatio,
+    downstreamMatrixRoute, downstreamMatrix, spectrumData, modeData,
+    scalingData, curlData, rankData
   },
   prefix = packagePrefix[package, dimension];
   data = buildPackage[package, dimension];
@@ -1624,10 +1675,6 @@ runPackage[package_String, dimension_Integer] := Module[
   emit[prefix <> "_PREMISE_FIELD_CONTENT", suppliedInPlaneField[
     data["Fields"], braneDimension, separateSector[h]
   ]];
-  emit[
-    prefix <> "_PREMISE_FIELD_DIMENSION",
-    suppliedFieldDimension[u, {1, 0, 0}]
-  ];
   emit[prefix <> "_PREMISE_BACKGROUND_STATE", suppliedBackground[v0 == 0]];
   emit[prefix <> "_PREMISE_DISSIPATION", suppliedNoDissipation[
     data["Lagrangian"]
@@ -1635,16 +1682,8 @@ runPackage[package_String, dimension_Integer] := Module[
   emit[prefix <> "_PREMISE_RESPONSE", suppliedQuadraticResponse[
     data["Lagrangian"]
   ]];
-  emit[
-    prefix <> "_PREMISE_PERIOD_AVERAGE",
-    suppliedPhaseAverage[phaseVariable, {0, 2 Pi}, 1/(2 Pi)]
-  ];
   emit[prefix <> "_PREMISE_BASELINE_STIFFNESS", data["CurlStiffness"]];
   emit[prefix <> "_JOINT_ASSUMPTIONS", assumptions];
-  emitLocal[
-    localizeTag[prefix <> "_ANSATZ_FREQUENCY_BRANCH"],
-    Sqrt[omegaSquared]
-  ];
   emit[prefix <> "_ACTION_CONTROL", data["ControlData"]];
 
   emit[prefix <> "_Q1_LAGRANGIAN", expandedLagrangian];
@@ -1652,8 +1691,18 @@ runPackage[package_String, dimension_Integer] := Module[
   emit[prefix <> "_Q1_EULER_LAGRANGE_SYSTEM", Thread[eom == 0]];
 
   matrixData = deriveMatrices[data, eom, assumptions];
+  emit[
+    prefix <> "_PREMISE_PERIOD_AVERAGE",
+    matrixData["PeriodAverageSpecification"]
+  ];
+  emitLocal[
+    localizeTag[prefix <> "_ANSATZ_FREQUENCY_BRANCH"],
+    matrixData["AnsatzFrequencyBranch"]
+  ];
   matrixA = matrixData["MatrixA"];
   matrixB = matrixData["MatrixB"];
+  downstreamMatrixRoute = matrixData["MatrixBRoute"];
+  downstreamMatrix = downstreamMatrixRoute[[2]];
   matrixResidual = Map[
     fullSimplifyWith[#, assumptions] &,
     matrixA - matrixB,
@@ -1672,17 +1721,16 @@ runPackage[package_String, dimension_Integer] := Module[
   emit[prefix <> "_Q2_MATRIX_RESIDUAL", matrixResidual];
   emit[prefix <> "_Q2_MATRIX_ENTRY_RATIO", matrixEntryRatio];
   emit[prefix <> "_Q2_ROUTE_RESIDUAL_SCOPE", codingConsistencyOnly];
-  emit[prefix <> "_Q2_DOWNSTREAM_ROUTE", quadraticFormRoute];
 
   spectrumData = runSpectrum[
     prefix,
-    matrixB,
+    downstreamMatrixRoute,
     data["Wavevector"],
     assumptions
   ];
   modeData = runModeSet[
     prefix,
-    matrixB,
+    downstreamMatrix,
     data["Wavevector"],
     spectrumData["Roots"],
     assumptions
@@ -1697,7 +1745,7 @@ runPackage[package_String, dimension_Integer] := Module[
   rankData = runRankStrata[
     prefix,
     data,
-    matrixB,
+    downstreamMatrix,
     spectrumData,
     modeData,
     assumptions
@@ -1714,6 +1762,7 @@ runPackage[package_String, dimension_Integer] := Module[
     rankData,
     assumptions
   ];
+  actualRunPairs = Append[actualRunPairs, {package, dimension}];
 ];
 
 packageRuns = {
@@ -1742,10 +1791,6 @@ totalRuntime = First@AbsoluteTiming[
     runPackage[
       packageRuns[[packageIndex, 1]],
       dimension
-    ];
-    actualRunPairs = Append[
-      actualRunPairs,
-      {packageRuns[[packageIndex, 1]], dimension}
     ],
     {packageIndex, Length[packageRuns]},
     {dimension, packageRuns[[packageIndex, 2]]}

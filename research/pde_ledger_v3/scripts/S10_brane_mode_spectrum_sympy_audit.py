@@ -33,6 +33,7 @@ LENGTH_DIM = (sp.Integer(1), sp.Integer(0), sp.Integer(0))
 TIME_DIM = (sp.Integer(0), sp.Integer(1), sp.Integer(0))
 WAVENUMBER_DIM = (sp.Integer(-1), sp.Integer(0), sp.Integer(0))
 OMEGA_SQUARED_DIM = (sp.Integer(0), sp.Integer(-2), sp.Integer(0))
+OPERATION_TIMEOUT_SECONDS = 60
 
 
 @dataclass(frozen=True)
@@ -132,6 +133,12 @@ class DimensionWalker:
         self.coordinate_dimensions = dict(coordinate_dimensions)
         self.assumptions = assumptions
 
+    @staticmethod
+    def indeterminate_dimension(expr: sp.Expr) -> tuple[sp.Expr, ...]:
+        failed_head = sp.Symbol(getattr(expr.func, "__name__", type(expr).__name__))
+        marker = sp.Function("indeterminate_dimension")(failed_head)
+        return (marker, marker, marker)
+
     def dimension(self, expr: sp.Expr) -> tuple[sp.Expr, ...]:
         if expr is sp.zoo or expr is sp.nan or expr in (sp.oo, -sp.oo):
             return ZERO_DIM
@@ -166,8 +173,8 @@ class DimensionWalker:
         if expr.func in (sp.sin, sp.cos, sp.tan, sp.exp, sp.log, sp.sign):
             return ZERO_DIM
         if expr.is_Function:
-            return ZERO_DIM
-        raise RuntimeError(f"no dimension-tree rule for {type(expr).__name__}: {expr}")
+            return self.indeterminate_dimension(expr)
+        return self.indeterminate_dimension(expr)
 
     def component_term_dimensions(self, expr: sp.Expr) -> tuple[tuple[sp.Expr, ...], ...]:
         expanded = sp.expand(expr)
@@ -178,15 +185,14 @@ class DimensionWalker:
     def nested_add_dimensions(self, expr: sp.Expr) -> tuple[sp.Tuple, ...]:
         reports: list[sp.Tuple] = []
         seen: set[sp.Add] = set()
-        for power in expr.atoms(sp.Pow):
-            for node in sp.preorder_traversal(power.base):
-                if not isinstance(node, sp.Add) or node in seen:
-                    continue
-                seen.add(node)
-                term_dimensions = tuple(self.dimension(term) for term in node.args if term != 0)
-                reports.append(
-                    sp.Tuple(node, sp.Tuple(*(dim_expr(value) for value in term_dimensions)))
-                )
+        for node in sorted(expr.atoms(sp.Add), key=sp.default_sort_key):
+            if node in seen:
+                continue
+            seen.add(node)
+            term_dimensions = tuple(self.dimension(term) for term in node.args if term != 0)
+            reports.append(
+                sp.Tuple(node, sp.Tuple(*(dim_expr(value) for value in term_dimensions)))
+            )
         return tuple(reports)
 
     def report(self, obj: object) -> tuple[sp.Tuple, sp.Tuple, sp.Tuple, sp.logic.boolalg.Boolean]:
@@ -242,9 +248,14 @@ def emit_physical(
     name: str,
     payload: object,
     homogeneity_class: str = "UNSOLVED_EXPRESSION",
+    *,
+    dimension_payload: object | None = None,
 ) -> None:
     emitter.emit(name, payload)
-    term_dimensions, dimensions, nested_add_dimensions, homogeneous = walker.report(payload)
+    dimension_source = payload if dimension_payload is None else dimension_payload
+    term_dimensions, dimensions, nested_add_dimensions, homogeneous = walker.report(
+        dimension_source
+    )
     emitter.emit(name + "_Q6_TERM_DIMENSIONS", term_dimensions)
     emitter.emit(name + "_Q6_DIMENSIONS", dimensions)
     emitter.emit(name + "_Q6_NESTED_ADD_DIMENSIONS", nested_add_dimensions)
@@ -358,12 +369,25 @@ def derive_dimension_solution(
     sp.Symbol,
     sp.logic.boolalg.Boolean,
 ]:
-    rho_unknown = sp.symbols("rho_br_dim_length rho_br_dim_time rho_br_dim_mass")
-    mu_unknown = sp.symbols("mu_R_dim_length mu_R_dim_time mu_R_dim_mass")
-    unknowns = (*rho_unknown, *mu_unknown)
+    dimensionful_coefficient_symbols = tuple(
+        sorted(
+            lagrangian.free_symbols.difference({t, *xvec, D, s_rho, s}),
+            key=sp.default_sort_key,
+        )
+    )
+    coefficient_unknowns = {
+        coefficient: sp.symbols(
+            f"{coefficient}_dim_length {coefficient}_dim_time {coefficient}_dim_mass"
+        )
+        for coefficient in dimensionful_coefficient_symbols
+    }
+    unknowns = tuple(
+        component
+        for coefficient in dimensionful_coefficient_symbols
+        for component in coefficient_unknowns[coefficient]
+    )
     unknown_map = {
-        rho_br: rho_unknown,
-        mu_R: mu_unknown,
+        **coefficient_unknowns,
         s_rho: ZERO_DIM,
         s: ZERO_DIM,
     }
@@ -390,13 +414,22 @@ def derive_dimension_solution(
     consistent = sp.true if coefficient_rank == augmented_rank else sp.false
     if solution:
         solved_map = {
-            rho_br: tuple(solution[0].get(symbol, symbol) for symbol in rho_unknown),
-            mu_R: tuple(solution[0].get(symbol, symbol) for symbol in mu_unknown),
+            coefficient: tuple(
+                solution[0].get(symbol, symbol)
+                for symbol in coefficient_unknowns[coefficient]
+            )
+            for coefficient in dimensionful_coefficient_symbols
+        }
+        solved_map.update({
+            s_rho: ZERO_DIM,
+            s: ZERO_DIM,
+        })
+    else:
+        solved_map = {
+            **coefficient_unknowns,
             s_rho: ZERO_DIM,
             s: ZERO_DIM,
         }
-    else:
-        solved_map = {rho_br: rho_unknown, mu_R: mu_unknown, s_rho: ZERO_DIM, s: ZERO_DIM}
     return (
         equations,
         unknowns,
@@ -409,7 +442,9 @@ def derive_dimension_solution(
     )
 
 
-def factor_with_timeout(expr: sp.Expr, seconds: int = 5) -> tuple[sp.Expr, sp.Symbol]:
+def factor_with_timeout(
+    expr: sp.Expr, seconds: int = OPERATION_TIMEOUT_SECONDS
+) -> tuple[sp.Expr, sp.Symbol]:
     previous_handler = signal.signal(signal.SIGALRM, _timeout_handler)
     signal.alarm(seconds)
     try:
@@ -463,12 +498,11 @@ def deduplicate_roots(
 def solve_spectrum(
     matrix: sp.Matrix,
     assumptions: sp.logic.boolalg.Boolean,
-) -> tuple[sp.Expr, sp.Expr, sp.Symbol, list[dict[sp.Symbol, sp.Expr]], list[sp.Expr]]:
-    determinant = sp.cancel(matrix.det(method="domain-ge"))
+) -> tuple[sp.Expr, sp.Expr, sp.Symbol, list[dict[sp.Symbol, sp.Expr]]]:
+    determinant = sp.cancel(matrix.det(method="berkowitz"))
     factored, factor_route = factor_with_timeout(determinant)
     raw_solutions = sp.solve(factored, omegaSquared, dict=True)
-    roots = deduplicate_roots(raw_solutions, assumptions)
-    return determinant, factored, factor_route, raw_solutions, roots
+    return determinant, factored, factor_route, raw_solutions
 
 
 @dataclass
@@ -585,7 +619,7 @@ def solve_real_locus(
         )
 
     previous_handler = signal.signal(signal.SIGALRM, _timeout_handler)
-    signal.alarm(5)
+    signal.alarm(OPERATION_TIMEOUT_SECONDS)
     try:
         raw = sp.solve(normalized, list(variables), dict=True)
         route = sp.Symbol("solve_then_explicit_real_filter")
@@ -861,10 +895,10 @@ def locus_allowed_data(
             branch_points.append(witness_point)
             branch_reasons.append(sp.Symbol("allowed_witness_found"))
         elif not free:
-            branch_tests.append(sp.false)
+            branch_tests.append(sp.Symbol("undecided_no_explicit_real_witness"))
             branch_witnesses.append(sp.Tuple())
             branch_points.append(None)
-            branch_reasons.append(sp.Symbol("fully_fixed_branch_not_allowed"))
+            branch_reasons.append(sp.Symbol("fully_fixed_branch_not_materialized"))
         else:
             branch_tests.append(sp.Symbol("undecided_no_explicit_real_witness"))
             branch_witnesses.append(sp.Tuple())
@@ -957,6 +991,7 @@ def emit_q4(
     walker: DimensionWalker,
     root_prefix: str,
     objects: Mapping[str, object],
+    dimension_objects: Mapping[str, object] | None = None,
 ) -> None:
     physical = {
         "N1_MATRIX",
@@ -969,7 +1004,17 @@ def emit_q4(
     for suffix, payload in objects.items():
         name = root_prefix + suffix
         if suffix in physical:
-            emit_physical(emitter, walker, name, payload)
+            emit_physical(
+                emitter,
+                walker,
+                name,
+                payload,
+                dimension_payload=(
+                    dimension_objects[suffix]
+                    if dimension_objects is not None
+                    else None
+                ),
+            )
         else:
             emitter.emit(name, payload)
 
@@ -1048,14 +1093,39 @@ def emit_q3(
     walker: DimensionWalker,
     prefix: str,
     matrix: sp.Matrix,
-    roots_data: tuple[sp.Expr, sp.Expr, sp.Symbol, list[dict[sp.Symbol, sp.Expr]], list[sp.Expr]],
+    roots_data: tuple[sp.Expr, sp.Expr, sp.Symbol, list[dict[sp.Symbol, sp.Expr]]],
     assumptions: sp.logic.boolalg.Boolean,
+    dimension_roots_data: tuple[
+        sp.Expr, sp.Expr, sp.Symbol, list[dict[sp.Symbol, sp.Expr]]
+    ]
+    | None = None,
 ) -> list[sp.Expr]:
-    determinant, factored, factor_route, raw_solutions, roots = roots_data
-    emit_physical(emitter, walker, prefix + "Q3_DETERMINANT", determinant)
-    emit_physical(emitter, walker, prefix + "Q3_DETERMINANT_FACTORED", factored)
+    determinant, factored, factor_route, raw_solutions = roots_data
+    dimension_determinant = (
+        dimension_roots_data[0] if dimension_roots_data is not None else None
+    )
+    dimension_factored = (
+        dimension_roots_data[1] if dimension_roots_data is not None else None
+    )
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q3_DETERMINANT",
+        determinant,
+        homogeneity_class="SOLVED",
+        dimension_payload=dimension_determinant,
+    )
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q3_DETERMINANT_FACTORED",
+        factored,
+        homogeneity_class="SOLVED",
+        dimension_payload=dimension_factored,
+    )
     emitter.emit("PY_S10_LOCAL_" + prefix.removeprefix("PY_S10_") + "Q3_DETERMINANT_FACTOR_ROUTE", factor_route)
     emitter.emit(prefix + "Q3_ROOT_SOLUTIONS_RAW", raw_solutions)
+    roots = deduplicate_roots(raw_solutions, assumptions)
     emitter.emit(prefix + "Q3_ROOTS_DISTINCT", sp.Tuple(*roots))
     emitter.emit(prefix + "Q3_ROOT_COUNT", sp.Integer(len(roots)))
     emitter.emit(prefix + "ROOT_ORDERING", sp.Tuple(*roots))
@@ -1096,10 +1166,21 @@ def emit_coincidences(
     walker: DimensionWalker,
     prefix: str,
     data: Sequence[tuple[tuple[int, int], sp.Expr, RealLocus, LocusAllowedData]],
+    dimension_equations: Sequence[sp.Expr] | None = None,
 ) -> None:
     emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_PAIR_INDICES", sp.Tuple(*(sp.Tuple(*pair) for pair, *_ in data)))
     equations = sp.Tuple(*(equation for _, equation, *_ in data))
-    emit_physical(emitter, walker, prefix + "Q3_ROOT_COINCIDENCE_EQUATIONS", equations)
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q3_ROOT_COINCIDENCE_EQUATIONS",
+        equations,
+        dimension_payload=(
+            sp.Tuple(*dimension_equations)
+            if dimension_equations is not None
+            else None
+        ),
+    )
     emitter.emit(prefix + "Q3_ROOT_COINCIDENCE_LOCI", sp.Tuple(*(locus.expression() for _, _, locus, *_ in data)))
     emitter.emit(
         prefix + "Q3_ROOT_COINCIDENCE_REALITY_FILTERS",
@@ -1147,18 +1228,81 @@ def emit_stratum_q3_q4(
     point_k = sp.Matrix([component.subs(point) for component in kvec])
     point_k_squared = assumed_simplify((point_k.T * point_k)[0], assumptions)
     point_assumptions = sp.refine(assumptions.subs(point), assumptions)
+    wave_number_scale = sp.Symbol(
+        prefix.removeprefix("PY_S10_") + "WAVE_NUMBER_SCALE",
+        positive=True,
+        real=True,
+    )
+    dimension_point = {
+        component: point[component] * wave_number_scale for component in kvec
+    }
+    dimension_matrix = sp.Matrix(matrix.subs(dimension_point))
+    dimension_k = sp.Matrix(
+        [component.subs(dimension_point) for component in kvec]
+    )
+    dimension_k_squared = assumed_simplify(
+        (dimension_k.T * dimension_k)[0], assumptions
+    )
+    dimension_walker = DimensionWalker(
+        {**walker.symbol_dimensions, wave_number_scale: WAVENUMBER_DIM},
+        tuple(walker.fields),
+        walker.coordinate_dimensions,
+        assumptions,
+    )
     if not isinstance(point_k_squared, sp.Expr):
         raise RuntimeError("stratum wavevector norm is not an expression")
+    if not isinstance(dimension_k_squared, sp.Expr):
+        raise RuntimeError("dimension-preserving stratum wavevector norm is not an expression")
     spectrum = solve_spectrum(point_matrix, point_assumptions)
-    roots = emit_q3(emitter, walker, prefix, point_matrix, spectrum, point_assumptions)
+    dimension_spectrum = solve_spectrum(dimension_matrix, assumptions)
+    roots = emit_q3(
+        emitter,
+        dimension_walker,
+        prefix,
+        point_matrix,
+        spectrum,
+        point_assumptions,
+        dimension_roots_data=dimension_spectrum,
+    )
+    dimension_roots = deduplicate_roots(dimension_spectrum[3], assumptions)
     for index, root in enumerate(roots, 1):
         root_prefix = prefix + f"ROOT{index}_"
-        emit_physical(emitter, walker, root_prefix + "Q3_ROOT", root)
+        dimension_root = dimension_roots[index - 1]
+        emit_physical(
+            emitter,
+            dimension_walker,
+            root_prefix + "Q3_ROOT",
+            root,
+            dimension_payload=dimension_root,
+        )
         emitter.emit(root_prefix + "Q3_SIGN", derived_sign(root, point_assumptions))
         objects = q4_objects(point_matrix, root, point_k, point_k_squared, point_assumptions)
-        emit_q4(emitter, walker, root_prefix, objects)
+        dimension_objects = q4_objects(
+            dimension_matrix,
+            dimension_root,
+            dimension_k,
+            dimension_k_squared,
+            assumptions,
+        )
+        emit_q4(
+            emitter,
+            dimension_walker,
+            root_prefix,
+            objects,
+            dimension_objects,
+        )
     coincidence_data = q3_coincidence_data(roots, kvec, point_k_squared, point_assumptions)
-    emit_coincidences(emitter, walker, prefix, coincidence_data)
+    dimension_coincidence_equations = [
+        assumed_simplify(left - right, assumptions)
+        for left, right in itertools.combinations(dimension_roots, 2)
+    ]
+    emit_coincidences(
+        emitter,
+        dimension_walker,
+        prefix,
+        coincidence_data,
+        dimension_coincidence_equations,
+    )
 
 
 def run_package_dimension(
@@ -1212,10 +1356,16 @@ def run_package_dimension(
         walker,
         prefix + "Q1_LAGRANGIAN_EXPANDED",
         lagrangian,
-        homogeneity_class="SOLVED_ACTION",
+        homogeneity_class="SOLVED",
     )
     equations = euler_lagrange_system(lagrangian, fields, t, xvec)
-    emit_physical(emitter, walker, prefix + "Q1_EULER_LAGRANGE_SYSTEM", equations)
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q1_EULER_LAGRANGE_SYSTEM",
+        equations,
+        homogeneity_class="SOLVED",
+    )
 
     ansatz_equations = substitute_ansatz(equations, fields, ansatz)
     if not isinstance(ansatz_equations, sp.MatrixBase):
@@ -1258,17 +1408,48 @@ def run_package_dimension(
         else:
             matrix_ratio = computed_ratio
 
-    emit_physical(emitter, walker, prefix + "Q2_PERIOD_AVERAGED_LAGRANGIAN", averaged_lagrangian)
-    emit_physical(emitter, walker, prefix + "Q2_MATRIX_A", matrix_a)
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q2_PERIOD_AVERAGED_LAGRANGIAN",
+        averaged_lagrangian,
+        homogeneity_class="SOLVED",
+    )
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q2_MATRIX_A",
+        matrix_a,
+        homogeneity_class="SOLVED",
+    )
     emit_physical(
         emitter,
         walker,
         prefix + "Q2_ROUTE_A_DISCARDED_REMAINDER",
         route_a_discarded_remainder,
+        homogeneity_class="SOLVED",
     )
-    emit_physical(emitter, walker, prefix + "Q2_MATRIX_B", matrix_b)
-    emit_physical(emitter, walker, prefix + "Q2_MATRIX_RESIDUAL", matrix_residual)
-    emit_physical(emitter, walker, prefix + "Q2_MATRIX_ENTRY_RATIO", matrix_ratio)
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q2_MATRIX_B",
+        matrix_b,
+        homogeneity_class="SOLVED",
+    )
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q2_MATRIX_RESIDUAL",
+        matrix_residual,
+        homogeneity_class="SOLVED",
+    )
+    emit_physical(
+        emitter,
+        walker,
+        prefix + "Q2_MATRIX_ENTRY_RATIO",
+        matrix_ratio,
+        homogeneity_class="SOLVED",
+    )
     emitter.emit(
         prefix + "Q2_MATRIX_ENTRY_RATIO_OPERANDS",
         sp.Tuple(matrix_ratio_numerator, matrix_ratio_denominator),
@@ -1314,11 +1495,11 @@ def run_package_dimension(
     emitter.emit(prefix + "Q6_DIMENSION_COUNT_DIFFERENCE", sp.Integer(dimension_count_difference))
     emitter.emit(prefix + "Q6_DIMENSION_DETERMINATION", dimension_determination)
     emitter.emit(
-        prefix + "Q6_ACTION_HOMOGENEITY_VACUOUS",
+        prefix + "Q6_SOLVED_HOMOGENEITY_VACUOUS",
         sp.true if dimension_count_difference <= 0 else sp.false,
     )
     emitter.emit(
-        prefix + "Q6_ACTION_HOMOGENEITY_VACUOUS_OPERANDS",
+        prefix + "Q6_SOLVED_HOMOGENEITY_VACUOUS_OPERANDS",
         sp.Tuple(
             sp.Integer(independent_dimension_equation_count),
             sp.Integer(len(dimension_unknowns)),
@@ -1335,10 +1516,22 @@ def run_package_dimension(
     )
     emitter.emit(prefix + "Q6_INERTIAL_COEFFICIENTS", sp.Tuple(*inertial_coefficients))
     for index, coefficient in enumerate(inertial_coefficients, 1):
-        emit_physical(emitter, walker, prefix + f"Q6_INERTIAL_COEFFICIENT{index}", coefficient)
+        emit_physical(
+            emitter,
+            walker,
+            prefix + f"Q6_INERTIAL_COEFFICIENT{index}",
+            coefficient,
+            homogeneity_class="SOLVED",
+        )
     emitter.emit(prefix + "Q6_STIFFNESS_COEFFICIENTS", sp.Tuple(*stiffness_coefficients))
     for index, coefficient in enumerate(stiffness_coefficients, 1):
-        emit_physical(emitter, walker, prefix + f"Q6_STIFFNESS_COEFFICIENT{index}", coefficient)
+        emit_physical(
+            emitter,
+            walker,
+            prefix + f"Q6_STIFFNESS_COEFFICIENT{index}",
+            coefficient,
+            homogeneity_class="SOLVED",
+        )
 
     gradient_symbols = [[sp.Symbol(f"g{i + 1}{j + 1}", real=True) for j in range(3)] for i in range(3)]
     if n == 3:
@@ -1506,17 +1699,29 @@ def emit_registry_comparison(
 
 def main() -> int:
     emitter = Emitter()
-    run_pairs = [sp.Symbol(f"{package.name}_D{n}") for package in PACKAGES for n in package.dimensions]
-    emitter.emit("PY_S10_RUN_PAIRS", sp.Tuple(*run_pairs))
-    emitter.emit("PY_S10_SKIPPED_PAIRS", sp.Tuple())
+    declared_pairs = [
+        (package.name, n) for package in PACKAGES for n in package.dimensions
+    ]
+    completed_pairs: list[tuple[str, int]] = []
     derived_dimensions: dict[sp.Symbol, tuple[sp.Expr, ...]] | None = None
     for package in PACKAGES:
         for n in package.dimensions:
             current = run_package_dimension(emitter, package, n)
+            completed_pairs.append((package.name, n))
             if derived_dimensions is None:
                 derived_dimensions = current
     if derived_dimensions is None:
         raise RuntimeError("no package/dimension pairs were run")
+    completed_set = set(completed_pairs)
+    skipped_pairs = [pair for pair in declared_pairs if pair not in completed_set]
+    emitter.emit(
+        "PY_S10_RUN_PAIRS",
+        sp.Tuple(*(sp.Symbol(f"{name}_D{n}") for name, n in completed_pairs)),
+    )
+    emitter.emit(
+        "PY_S10_SKIPPED_PAIRS",
+        sp.Tuple(*(sp.Symbol(f"{name}_D{n}") for name, n in skipped_pairs)),
+    )
     emit_registry_comparison(emitter, derived_dimensions)
     local_list_tag = "PY_S10_LOCAL_TAG_NAMES"
     local_names = [*emitter.local_names, local_list_tag]

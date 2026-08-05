@@ -55,6 +55,19 @@ reduceAllowed[formula_, variables_List, assumptions_] :=
 realLocusSolve[formula_, variables_List] :=
   Quiet[Solve[formula, variables, Reals], Solve::svars];
 
+classifyReduceOutcome[result_] := Which[
+  SameQ[result, False], decidedEmpty,
+  Not[FreeQ[HoldComplete[result], _Reduce | $Failed | $Aborted]], undecided,
+  True, decidedNonempty
+];
+
+intersectionValue[outcome_] := Switch[
+  outcome,
+  decidedEmpty, False,
+  decidedNonempty, True,
+  _, Indeterminate
+];
+
 braneDimension = Symbol["braneDimension"];
 rhoBr = Symbol["rhoBr"];
 muR = Symbol["muR"];
@@ -243,24 +256,36 @@ ansatzRules[data_Association] := Module[
   ]
 ];
 
-periodAverage[expression_, assumptions_] := Module[{integral},
+periodAverage[expression_, assumptions_] := Module[
+  {integral, averagedExpression, conditions, value},
   integral = Integrate[
     expression,
     {timeCoordinate, 0, 2 Pi/Sqrt[omegaSquared]},
-    Assumptions -> And[assumptions, omegaSquared > 0],
-    GenerateConditions -> False
+    Assumptions -> assumptions
   ];
-  fullSimplifyWith[
+  averagedExpression = fullSimplifyWith[
     (Sqrt[omegaSquared]/(2 Pi)) integral,
     assumptions
-  ]
+  ];
+  conditions = DeleteDuplicates@Cases[
+    averagedExpression,
+    ConditionalExpression[_, condition_] :> condition,
+    Infinity
+  ];
+  value = removeConditionalWrappers[averagedExpression];
+  <|
+    "Integral" -> integral,
+    "Expression" -> averagedExpression,
+    "Conditions" -> conditions,
+    "Value" -> value
+  |>
 ];
 
 deriveMatrices[data_Association, eom_List, assumptions_] := Module[
   {
     rules, coordinates, amplitudes, wavevector, phase, commonFactor,
     eomOnAnsatz, strippedEquations, matrixA, lagrangianOnAnsatz,
-    averagedLagrangian, matrixB, dimension
+    averageData, averagedLagrangian, matrixB, dimension
   },
   rules = ansatzRules[data];
   coordinates = data["Coordinates"];
@@ -284,7 +309,8 @@ deriveMatrices[data_Association, eom_List, assumptions_] := Module[
   ];
 
   lagrangianOnAnsatz = Expand[data["Lagrangian"] /. rules];
-  averagedLagrangian = periodAverage[lagrangianOnAnsatz, assumptions];
+  averageData = periodAverage[lagrangianOnAnsatz, assumptions];
+  averagedLagrangian = averageData["Value"];
   matrixB = Table[
     fullSimplifyWith[
       D[averagedLagrangian, amplitudes[[row]], amplitudes[[column]]],
@@ -300,6 +326,9 @@ deriveMatrices[data_Association, eom_List, assumptions_] := Module[
     "StrippedEquations" -> strippedEquations,
     "MatrixA" -> matrixA,
     "LagrangianOnAnsatz" -> lagrangianOnAnsatz,
+    "PeriodAverageIntegral" -> averageData["Integral"],
+    "PeriodAverageExpression" -> averageData["Expression"],
+    "PeriodAverageConditions" -> averageData["Conditions"],
     "AveragedLagrangian" -> averagedLagrangian,
     "MatrixB" -> matrixB
   |>
@@ -314,6 +343,52 @@ distinctUnderAssumptions[expressions_List, assumptions_] :=
 removeConditionalWrappers[expression_] :=
   expression /. ConditionalExpression[value_, condition_] :> value;
 
+solutionRootRecords[expression_] := Module[{walk},
+  walk[current_, inheritedCondition_] := Which[
+    Head[current] === ConditionalExpression,
+      walk[
+        current[[1]],
+        And[inheritedCondition, current[[2]]]
+      ],
+    MatchQ[current, HoldPattern[Rule[omegaSquared, _]]],
+      Module[{rightHandSide, localConditions},
+        rightHandSide = current[[2]];
+        localConditions = Cases[
+          rightHandSide,
+          ConditionalExpression[_, condition_] :> condition,
+          Infinity
+        ];
+        {
+          <|
+            "Root" -> removeConditionalWrappers[rightHandSide],
+            "Condition" -> And[
+              inheritedCondition,
+              And @@ localConditions
+            ]
+          |>
+        }
+      ],
+    ListQ[current],
+      Flatten[walk[#, inheritedCondition] & /@ current],
+    True,
+      {}
+  ];
+  walk[expression, True]
+];
+
+conditionsForRoot[root_, records_List, assumptions_] := DeleteCases[
+  DeleteDuplicates@Lookup[
+    Select[
+      records,
+      TrueQ[
+        fullSimplifyWith[#1["Root"] == root, assumptions]
+      ] &
+    ],
+    "Condition"
+  ],
+  True
+];
+
 runSpectrum[
   prefix_String,
   matrix_List,
@@ -321,27 +396,62 @@ runSpectrum[
   assumptions_
 ] := Module[
   {
-    determinant, solutions, rootsFromSolutions, roots, pairs,
+    determinant, solutions, solutionRecords, rootsFromSolutions, filteredRoots,
+    discardedRoots, roots, pairs,
     coincidenceRecords, pair, pairPrefix, equation, locus, allowed,
-    intersects
+    outcome, intersects
   },
   determinant = Factor[Det[matrix]];
   emit[prefix <> "_Q3_DETERMINANT", determinant];
   solutions = Solve[determinant == 0, omegaSquared];
   solutions = fullSimplifyWith[solutions, assumptions];
   emitSolverObject[prefix <> "_Q3_SOLUTIONS", solutions];
-  rootsFromSolutions = Flatten[{
-    omegaSquared /. removeConditionalWrappers[solutions]
-  }];
-  rootsFromSolutions = Select[
+  solutionRecords = solutionRootRecords[solutions];
+  rootsFromSolutions = Lookup[solutionRecords, "Root"];
+  filteredRoots = Select[
     rootsFromSolutions,
     FreeQ[#, omegaSquared] &
   ];
-  roots = distinctUnderAssumptions[rootsFromSolutions, assumptions];
+  discardedRoots = Select[
+    rootsFromSolutions,
+    Not[FreeQ[#, omegaSquared]] &
+  ];
+  emit[
+    prefix <> "_Q3_ROOT_CANDIDATE_COUNT_BEFORE_FILTER",
+    Length[rootsFromSolutions]
+  ];
+  emit[prefix <> "_Q3_ROOTS_DISCARDED_BY_FILTER", discardedRoots];
+  emit[
+    prefix <> "_Q3_ROOT_CANDIDATE_COUNT_AFTER_FILTER",
+    Length[filteredRoots]
+  ];
+  roots = distinctUnderAssumptions[filteredRoots, assumptions];
   emit[prefix <> "_Q3_DISTINCT_ROOTS", roots];
+  emit[
+    prefix <> "_Q3_ROOT_LIST_STATUS",
+    If[Length[roots] == 0, emptyRootList, populatedRootList]
+  ];
   emit[prefix <> "_Q3_ROOT_COUNT", Length[roots]];
   emit[prefix <> "_ROOT_ORDERING", roots];
   Do[
+    Module[{rootConditions},
+      rootConditions = conditionsForRoot[
+        roots[[rootIndex]],
+        solutionRecords,
+        assumptions
+      ];
+      emit[
+        rootPrefix[prefix, rootIndex] <> "_Q3_SOLVER_CONDITION_USAGE",
+        <|
+          "Conditions" -> rootConditions,
+          "Disposition" -> If[
+            Length[rootConditions] == 0,
+            noConditionDropped,
+            notReimposed
+          ]
+        |>
+      ];
+    ];
     emit[
       rootPrefix[prefix, rootIndex] <> "_Q3_SIGN",
       refineWith[Sign[roots[[rootIndex]]], assumptions]
@@ -360,10 +470,12 @@ runSpectrum[
     ] == 0;
     locus = realLocusSolve[equation, wavevector];
     allowed = reduceAllowed[equation, wavevector, assumptions];
-    intersects = Not[SameQ[allowed, False]];
+    outcome = classifyReduceOutcome[allowed];
+    intersects = intersectionValue[outcome];
     emit[pairPrefix <> "_OPERANDS", {equation, assumptions}];
     emitSolverObject[pairPrefix <> "_LOCUS", locus];
     emit[pairPrefix <> "_ALLOWED_INTERSECTION", allowed];
+    emit[pairPrefix <> "_INTERSECTION_OUTCOME", outcome];
     emit[pairPrefix <> "_INTERSECTION_TEST", intersects];
     coincidenceRecords = Append[
       coincidenceRecords,
@@ -372,6 +484,7 @@ runSpectrum[
         "Equation" -> equation,
         "Locus" -> locus,
         "Allowed" -> allowed,
+        "IntersectionOutcome" -> outcome,
         "Intersects" -> intersects
       |>
     ],
@@ -454,7 +567,10 @@ computeModeData[
     "StackedMatrix" -> stackedMatrix,
     "StackedRank" -> stackedRank,
     "TransverseNullity" -> transverseNullity,
-    "Basis" -> basis
+    "WavevectorProduct" -> wavevectorProduct,
+    "Basis" -> basis,
+    "BasisDots" -> basisDots,
+    "BasisResiduals" -> basisResiduals
   |>
 ];
 
@@ -526,8 +642,9 @@ runScaling[
       emit[currentPrefix <> "_Q5_SCALING_RATIO", ratio];
       emit[currentPrefix <> "_Q5_PURE_POWER_TEST", purePowerTest];
       emit[currentPrefix <> "_Q5_SCALING_EXPONENT_CANDIDATE", exponentCandidate];
-      If[purePowerTest,
-        emit[currentPrefix <> "_Q5_SCALING_EXPONENT", exponentCandidate]
+      emit[
+        currentPrefix <> "_Q5_SCALING_EXPONENT",
+        If[purePowerTest, exponentCandidate, notAPurePower]
       ];
       ratios = Append[ratios, ratio];
       ratioRecords = Append[
@@ -545,7 +662,8 @@ runScaling[
           "RootIndex" -> rootIndex,
           "RatioDomain" -> Not[zeroTest]
         |>
-      ]
+      ];
+      emit[currentPrefix <> "_Q5_SCALING_EXPONENT", undefinedRatio]
     ],
     {rootIndex, Length[roots]}
   ];
@@ -574,19 +692,22 @@ makeDimensionAnalyzer[
             <|
               "Dimension" -> zeroDimension,
               "AddendDimensions" -> {},
-              "Constraints" -> {}
+              "Constraints" -> {},
+              "UnhandledHeads" -> {}
             |>,
           KeyExistsQ[symbolDimensions, current],
             <|
               "Dimension" -> symbolDimensions[current],
               "AddendDimensions" -> {},
-              "Constraints" -> {}
+              "Constraints" -> {},
+              "UnhandledHeads" -> {}
             |>,
           MemberQ[fieldHeads, Head[current]],
             <|
               "Dimension" -> fieldDimension,
               "AddendDimensions" -> {},
-              "Constraints" -> {}
+              "Constraints" -> {},
+              "UnhandledHeads" -> {}
             |>,
           Head[Head[Head[current]]] === Derivative &&
               MemberQ[fieldHeads, First[List @@ Head[current]]],
@@ -597,7 +718,8 @@ makeDimensionAnalyzer[
                 fieldDimension +
                   {-Total[Most[orders]], -Last[orders], 0},
               "AddendDimensions" -> {},
-              "Constraints" -> {}
+              "Constraints" -> {},
+              "UnhandledHeads" -> {}
             |>,
           Head[current] === Plus,
             children = walk /@ (List @@ current);
@@ -614,7 +736,11 @@ makeDimensionAnalyzer[
             <|
               "Dimension" -> firstDimension,
               "AddendDimensions" -> groups,
-              "Constraints" -> constraints
+              "Constraints" -> constraints,
+              "UnhandledHeads" -> DeleteDuplicates@Flatten[
+                Lookup[children, "UnhandledHeads"],
+                1
+              ]
             |>,
           Head[current] === Times,
             children = walk /@ (List @@ current);
@@ -623,14 +749,19 @@ makeDimensionAnalyzer[
               "AddendDimensions" ->
                 Flatten[Lookup[children, "AddendDimensions"], 1],
               "Constraints" ->
-                Flatten[Lookup[children, "Constraints"], 1]
+                Flatten[Lookup[children, "Constraints"], 1],
+              "UnhandledHeads" -> DeleteDuplicates@Flatten[
+                Lookup[children, "UnhandledHeads"],
+                1
+              ]
             |>,
           Head[current] === Power,
             children = walk[First[current]];
             <|
               "Dimension" -> Last[current] children["Dimension"],
               "AddendDimensions" -> children["AddendDimensions"],
-              "Constraints" -> children["Constraints"]
+              "Constraints" -> children["Constraints"],
+              "UnhandledHeads" -> children["UnhandledHeads"]
             |>,
           Head[current] === Abs,
             walk[First[current]],
@@ -638,9 +769,12 @@ makeDimensionAnalyzer[
             walk[First[current]],
           True,
             <|
-              "Dimension" -> zeroDimension,
+              "Dimension" -> dimensionIndeterminate[
+                HoldForm[Head[current]]
+              ],
               "AddendDimensions" -> {},
-              "Constraints" -> {}
+              "Constraints" -> {},
+              "UnhandledHeads" -> {HoldForm[Head[current]]}
             |>
         ]
       ];
@@ -650,20 +784,40 @@ makeDimensionAnalyzer[
 ];
 
 resolveDimensionAnalysis[analysis_Association, rules_List, assumptions_] := Module[
-  {dimension, termDimensions, constraints, homogeneity},
+  {
+    dimension, termDimensions, pairwiseDifferences, homogeneity,
+    unhandledHeads
+  },
   dimension = fullSimplifyWith[analysis["Dimension"] /. rules, assumptions];
   termDimensions = fullSimplifyWith[
     analysis["AddendDimensions"] /. rules,
     assumptions
   ];
-  constraints = analysis["Constraints"];
-  homogeneity = And @@ (
-    TrueQ[fullSimplifyWith[# /. rules, assumptions]] & /@ constraints
-  );
+  unhandledHeads = analysis["UnhandledHeads"];
+  pairwiseDifferences = Function[group,
+      fullSimplifyWith[#[[1]] - #[[2]], assumptions] & /@
+        Subsets[group, {2}]
+    ] /@ termDimensions;
+  homogeneity = If[
+    Length[unhandledHeads] > 0,
+    False,
+    And @@ Flatten[
+      Function[group,
+        TrueQ[
+          fullSimplifyWith[
+            # == ConstantArray[0, Length[#]],
+            assumptions
+          ]
+        ] & /@ group
+      ] /@ pairwiseDifferences
+    ]
+  ];
   <|
     "Dimension" -> dimension,
     "AddendDimensions" -> termDimensions,
-    "Homogeneity" -> homogeneity
+    "PairwiseDifferences" -> pairwiseDifferences,
+    "Homogeneity" -> homogeneity,
+    "UnhandledHeads" -> unhandledHeads
   |>
 ];
 
@@ -678,7 +832,9 @@ resolvedExpressionDimension[
     <|
       "Dimension" -> Indeterminate,
       "AddendDimensions" -> {},
-      "Homogeneity" -> True
+      "PairwiseDifferences" -> {},
+      "Homogeneity" -> True,
+      "UnhandledHeads" -> {}
     |>,
     analysis = analyzer[expression];
     resolveDimensionAnalysis[analysis, rules, assumptions]
@@ -692,6 +848,9 @@ runDimensions[
   matrixData_Association,
   spectrumData_Association,
   scalingData_Association,
+  modeData_List,
+  curlData_Association,
+  rankData_Association,
   assumptions_
 ] := Module[
   {
@@ -700,7 +859,9 @@ runDimensions[
     controlSymbols, unknowns, controlEquations, energyDensityDimension,
     expandedLagrangian, actionTerms, analyzer, actionTermAnalyses,
     actionTermDimensions, dimensionEquations, dimensionSolutions,
-    dimensionRules, inertialAnalyses, stiffnessAnalyses,
+    concreteDimension, braneDimensionRelation,
+    dimensionSolutionsSpecialized, dimensionRules, inertialAnalyses,
+    stiffnessAnalyses,
     inertialResolved, stiffnessResolved, squaredWavevector,
     rateCoefficientExpressions, rateResolved, auditGroups, groupNames,
     groupExpressions, groupResolved
@@ -728,11 +889,21 @@ runDimensions[
     ],
     {index, Length[data["Amplitudes"]]}
   ];
+  Do[
+    AssociateTo[
+      coefficientDimensionMap,
+      curlData["GradientSymbols"][[row, column]] -> {0, 0, 0}
+    ],
+    {row, Length[curlData["GradientSymbols"]]},
+    {column, Length[curlData["GradientSymbols"]]}
+  ];
   analyzer = makeDimensionAnalyzer[
     data["FieldHeads"],
     coefficientDimensionMap
   ];
 
+  concreteDimension = Length[data["Wavevector"]];
+  braneDimensionRelation = braneDimension == concreteDimension;
   energyDensityDimension = {2 - braneDimension, -2, 1};
   expandedLagrangian = Expand[data["Lagrangian"]];
   actionTerms = If[
@@ -764,10 +935,34 @@ runDimensions[
     controlEquations
   ];
   dimensionSolutions = Solve[dimensionEquations, unknowns];
+  dimensionSolutionsSpecialized = fullSimplifyWith[
+    dimensionSolutions /. braneDimension -> concreteDimension,
+    assumptions
+  ];
+  emit[
+    prefix <> "_Q6_BRANE_DIMENSION_RELATION",
+    braneDimensionRelation
+  ];
   emit[prefix <> "_Q6_ENERGY_DENSITY_DIMENSION", energyDensityDimension];
   emit[prefix <> "_Q6_DIMENSION_PREMISES", data["DimensionPremises"]];
+  emit[
+    prefix <> "_Q6_ACTION_TERM_DIMENSIONS_SYMBOLIC",
+    actionTermDimensions
+  ];
+  emit[
+    prefix <> "_Q6_ACTION_TERM_PAIRWISE_DIFFERENCES_SYMBOLIC",
+    (#[[1]] - #[[2]]) & /@ Subsets[actionTermDimensions, {2}]
+  ];
+  emit[
+    prefix <> "_Q6_ACTION_TERM_UNHANDLED_HEADS",
+    Lookup[actionTermAnalyses, "UnhandledHeads"]
+  ];
   emit[prefix <> "_Q6_DIMENSION_EQUATIONS", dimensionEquations];
   emitSolverObject[prefix <> "_Q6_DIMENSION_SOLUTIONS", dimensionSolutions];
+  emitSolverObject[
+    prefix <> "_Q6_DIMENSION_SOLUTIONS_SPECIALIZED",
+    dimensionSolutionsSpecialized
+  ];
   dimensionRules = If[Length[dimensionSolutions] > 0, First[dimensionSolutions], {}];
 
   inertialAnalyses = analyzer /@ data["InertialCoefficients"];
@@ -784,12 +979,21 @@ runDimensions[
     Lookup[inertialResolved, "Dimension"]
   ];
   emit[
+    prefix <> "_Q6_INERTIAL_COEFFICIENT_DIMENSIONS_SPECIALIZED",
+    Lookup[inertialResolved, "Dimension"] /.
+      braneDimension -> concreteDimension
+  ];
+  emit[
     prefix <> "_Q6_INERTIAL_COEFFICIENT_TERM_DIMENSIONS",
     Lookup[inertialResolved, "AddendDimensions"]
   ];
   emit[
-    prefix <> "_Q6_INERTIAL_COEFFICIENT_HOMOGENEITY",
-    Lookup[inertialResolved, "Homogeneity"]
+    prefix <> "_Q6_INERTIAL_COEFFICIENT_PAIRWISE_DIFFERENCES",
+    Lookup[inertialResolved, "PairwiseDifferences"]
+  ];
+  emit[
+    prefix <> "_Q6_INERTIAL_COEFFICIENT_UNHANDLED_HEADS",
+    Lookup[inertialResolved, "UnhandledHeads"]
   ];
   emit[prefix <> "_Q6_STIFFNESS_COEFFICIENTS", data["StiffnessCoefficients"]];
   emit[
@@ -797,12 +1001,21 @@ runDimensions[
     Lookup[stiffnessResolved, "Dimension"]
   ];
   emit[
+    prefix <> "_Q6_STIFFNESS_COEFFICIENT_DIMENSIONS_SPECIALIZED",
+    Lookup[stiffnessResolved, "Dimension"] /.
+      braneDimension -> concreteDimension
+  ];
+  emit[
     prefix <> "_Q6_STIFFNESS_COEFFICIENT_TERM_DIMENSIONS",
     Lookup[stiffnessResolved, "AddendDimensions"]
   ];
   emit[
-    prefix <> "_Q6_STIFFNESS_COEFFICIENT_HOMOGENEITY",
-    Lookup[stiffnessResolved, "Homogeneity"]
+    prefix <> "_Q6_STIFFNESS_COEFFICIENT_PAIRWISE_DIFFERENCES",
+    Lookup[stiffnessResolved, "PairwiseDifferences"]
+  ];
+  emit[
+    prefix <> "_Q6_STIFFNESS_COEFFICIENT_UNHANDLED_HEADS",
+    Lookup[stiffnessResolved, "UnhandledHeads"]
   ];
 
   squaredWavevector = Total[data["Wavevector"]^2];
@@ -829,8 +1042,17 @@ runDimensions[
       rateResolved[[rootIndex, "AddendDimensions"]]
     ];
     emit[
+      rootPrefix[prefix, rootIndex] <>
+        "_Q6_RATE_COEFFICIENT_PAIRWISE_DIFFERENCES",
+      rateResolved[[rootIndex, "PairwiseDifferences"]]
+    ];
+    emit[
       rootPrefix[prefix, rootIndex] <> "_Q6_RATE_COEFFICIENT_HOMOGENEITY",
       rateResolved[[rootIndex, "Homogeneity"]]
+    ];
+    emit[
+      rootPrefix[prefix, rootIndex] <> "_Q6_RATE_COEFFICIENT_UNHANDLED_HEADS",
+      rateResolved[[rootIndex, "UnhandledHeads"]]
     ],
     {rootIndex, Length[rateCoefficientExpressions]}
   ];
@@ -844,8 +1066,23 @@ runDimensions[
     "DETERMINANT" -> {spectrumData["Determinant"]},
     "ROOTS" -> spectrumData["Roots"],
     "SCALED_ROOTS" -> scalingData["ScaledRoots"],
-    "SCALING_RATIOS" -> scalingData["Ratios"]
+    "SCALING_RATIOS" -> scalingData["Ratios"],
+    "N1_MATRIX_ENTRIES" -> Flatten[
+      Lookup[modeData, "RootMatrix", {}]
+    ],
+    "N5_WAVEVECTOR_PRODUCT_ENTRIES" -> Flatten[
+      Lookup[modeData, "WavevectorProduct", {}]
+    ],
+    "N6_BASIS_ENTRIES" -> Flatten[Lookup[modeData, "Basis", {}]],
+    "N6_BASIS_DOTS" -> Flatten[Lookup[modeData, "BasisDots", {}]],
+    "N6_BASIS_RESIDUAL_ENTRIES" -> Flatten[
+      Lookup[modeData, "BasisResiduals", {}]
+    ],
+    "Q8_MINOR_EXPRESSIONS" -> Flatten[rankData["Minors"]]
   |>;
+  If[Length[curlData["Expressions"]] > 0,
+    AssociateTo[auditGroups, "Q7_EXPRESSIONS" -> curlData["Expressions"]]
+  ];
   groupNames = Keys[auditGroups];
   Do[
     groupExpressions = auditGroups[groupNames[[groupIndex]]];
@@ -864,8 +1101,17 @@ runDimensions[
       Lookup[groupResolved, "AddendDimensions"]
     ];
     emit[
+      prefix <> "_Q6_" <> groupNames[[groupIndex]] <>
+        "_PAIRWISE_DIFFERENCES",
+      Lookup[groupResolved, "PairwiseDifferences"]
+    ];
+    emit[
       prefix <> "_Q6_" <> groupNames[[groupIndex]] <> "_HOMOGENEITY",
       Lookup[groupResolved, "Homogeneity"]
+    ];
+    emit[
+      prefix <> "_Q6_" <> groupNames[[groupIndex]] <> "_UNHANDLED_HEADS",
+      Lookup[groupResolved, "UnhandledHeads"]
     ],
     {groupIndex, Length[groupNames]}
   ];
@@ -877,7 +1123,12 @@ runDimensions[
 ];
 
 runCurlComparison[prefix_String, dimension_Integer] := Module[
-  {gradientSymbols, curlStiffness, curlVector, curlNorm},
+  {
+    gradientSymbols, curlStiffness, curlVector, curlNorm,
+    comparisonExpressions
+  },
+  gradientSymbols = {};
+  comparisonExpressions = {};
   If[dimension == 3,
     gradientSymbols = Table[
       Symbol["g" <> ToString[row] <> "x" <> ToString[column]],
@@ -899,7 +1150,16 @@ runCurlComparison[prefix_String, dimension_Integer] := Module[
     emit[prefix <> "_Q7_STIFFNESS", Expand[curlStiffness]];
     emit[prefix <> "_Q7_CURL_NORM", curlNorm];
     emit[prefix <> "_Q7_RESIDUAL", Expand[curlStiffness - curlNorm]];
+    comparisonExpressions = {
+      Expand[curlStiffness],
+      curlNorm,
+      Expand[curlStiffness - curlNorm]
+    };
   ];
+  <|
+    "GradientSymbols" -> gradientSymbols,
+    "Expressions" -> comparisonExpressions
+  |>
 ];
 
 pointSpectrum[
@@ -908,7 +1168,12 @@ pointSpectrum[
   wavevector_List,
   assumptions_
 ] := Module[
-  {determinant, solutions, rootValues, roots, pairs, coincidenceTests},
+  {
+    determinant, solutions, solutionRecords, rootValues, filteredRoots,
+    discardedRoots,
+    roots, pairs, coincidenceTests, pair, pairPrefix, equation, locus,
+    allowed, outcome, intersects
+  },
   determinant = Factor[Det[matrix]];
   emit[prefix <> "_Q3_DETERMINANT", determinant];
   solutions = fullSimplifyWith[
@@ -916,15 +1181,46 @@ pointSpectrum[
     assumptions
   ];
   emitSolverObject[prefix <> "_Q3_SOLUTIONS", solutions];
-  rootValues = Flatten[{
-    omegaSquared /. removeConditionalWrappers[solutions]
-  }];
-  rootValues = Select[rootValues, FreeQ[#, omegaSquared] &];
-  roots = distinctUnderAssumptions[rootValues, assumptions];
+  solutionRecords = solutionRootRecords[solutions];
+  rootValues = Lookup[solutionRecords, "Root"];
+  filteredRoots = Select[rootValues, FreeQ[#, omegaSquared] &];
+  discardedRoots = Select[rootValues, Not[FreeQ[#, omegaSquared]] &];
+  emit[
+    prefix <> "_Q3_ROOT_CANDIDATE_COUNT_BEFORE_FILTER",
+    Length[rootValues]
+  ];
+  emit[prefix <> "_Q3_ROOTS_DISCARDED_BY_FILTER", discardedRoots];
+  emit[
+    prefix <> "_Q3_ROOT_CANDIDATE_COUNT_AFTER_FILTER",
+    Length[filteredRoots]
+  ];
+  roots = distinctUnderAssumptions[filteredRoots, assumptions];
   emit[prefix <> "_Q3_DISTINCT_ROOTS", roots];
+  emit[
+    prefix <> "_Q3_ROOT_LIST_STATUS",
+    If[Length[roots] == 0, emptyRootList, populatedRootList]
+  ];
   emit[prefix <> "_Q3_ROOT_COUNT", Length[roots]];
   emit[prefix <> "_ROOT_ORDERING", roots];
   Do[
+    Module[{rootConditions},
+      rootConditions = conditionsForRoot[
+        roots[[rootIndex]],
+        solutionRecords,
+        assumptions
+      ];
+      emit[
+        rootPrefix[prefix, rootIndex] <> "_Q3_SOLVER_CONDITION_USAGE",
+        <|
+          "Conditions" -> rootConditions,
+          "Disposition" -> If[
+            Length[rootConditions] == 0,
+            noConditionDropped,
+            notReimposed
+          ]
+        |>
+      ];
+    ];
     emit[
       rootPrefix[prefix, rootIndex] <> "_Q3_SIGN",
       refineWith[Sign[roots[[rootIndex]]], assumptions]
@@ -932,17 +1228,40 @@ pointSpectrum[
     {rootIndex, Length[roots]}
   ];
   pairs = Subsets[Range[Length[roots]], {2}];
-  coincidenceTests = Table[
-    {
-      pair,
-      fullSimplifyWith[
-        roots[[pair[[1]]]] == roots[[pair[[2]]]],
-        assumptions
-      ]
-    },
-    {pair, pairs}
+  coincidenceTests = {};
+  Do[
+    pair = pairs[[pairIndex]];
+    pairPrefix = prefix <> "_ROOT" <> ToString[pair[[1]]] <>
+      "_ROOT" <> ToString[pair[[2]]] <> "_Q3_COINCIDENCE";
+    equation = Together[
+      roots[[pair[[1]]]] - roots[[pair[[2]]]]
+    ] == 0;
+    locus = realLocusSolve[equation, {}];
+    allowed = reduceAllowed[equation, {}, assumptions];
+    outcome = classifyReduceOutcome[allowed];
+    intersects = intersectionValue[outcome];
+    emit[pairPrefix <> "_OPERANDS", {equation, assumptions}];
+    emitSolverObject[pairPrefix <> "_LOCUS", locus];
+    emit[pairPrefix <> "_ALLOWED_INTERSECTION", allowed];
+    emit[pairPrefix <> "_INTERSECTION_OUTCOME", outcome];
+    emit[pairPrefix <> "_INTERSECTION_TEST", intersects];
+    coincidenceTests = Append[
+      coincidenceTests,
+      <|
+        "Pair" -> pair,
+        "Equation" -> equation,
+        "Locus" -> locus,
+        "Allowed" -> allowed,
+        "IntersectionOutcome" -> outcome,
+        "Intersects" -> intersects
+      |>
+    ],
+    {pairIndex, Length[pairs]}
   ];
-  emit[prefix <> "_Q3_ROOT_COINCIDENCE_LOCI", coincidenceTests];
+  emit[
+    prefix <> "_Q3_STRATUM_ROOT_COINCIDENCE_RECORDS",
+    coincidenceTests
+  ];
   runModeSet[prefix, matrix, wavevector, roots, assumptions];
   <|"Roots" -> roots, "CoincidenceTests" -> coincidenceTests|>
 ];
@@ -958,11 +1277,11 @@ runRankStrata[
   {
     dimension, wavevector, amplitudes, allIndices, stratumRecords,
     rootMatrix, genericRank, rowSelections, columnSelections, minors,
-    equations, locus, allowed, intersects, currentPrefix,
+    equations, locus, allowed, outcome, intersects, currentPrefix,
     coincidenceRecords, gatheredRecords, uniqueRecords, record,
-    pointVariables, pointFormula, pointInstances, point,
+    pointVariables, pointFormula, pointCall, pointInstances, point,
     pointEqualities, pointAssumptions, pointMatrix, pointWavevector,
-    stratumPrefix, controlVariables
+    stratumPrefix, controlVariables, allMinors
   },
   dimension = Length[data["Wavevector"]];
   wavevector = data["Wavevector"];
@@ -970,6 +1289,7 @@ runRankStrata[
   allIndices = Range[dimension];
   coincidenceRecords = spectrumData["CoincidenceRecords"];
   stratumRecords = {};
+  allMinors = {};
 
   Do[
     rootMatrix = modeData[[rootIndex, "RootMatrix"]];
@@ -988,26 +1308,30 @@ runRankStrata[
       ]
     ];
     equations = (# == 0) & /@ minors;
+    allMinors = Join[allMinors, minors];
     locus = realLocusSolve[equations, wavevector];
     allowed = reduceAllowed[And @@ equations, wavevector, assumptions];
-    intersects = Not[SameQ[allowed, False]];
+    outcome = classifyReduceOutcome[allowed];
+    intersects = intersectionValue[outcome];
     currentPrefix = rootPrefix[prefix, rootIndex] <> "_Q8_RANK_DROP";
     emit[currentPrefix <> "_MINORS", minors];
     emit[currentPrefix <> "_OPERANDS", {equations, assumptions}];
     emitSolverObject[currentPrefix <> "_LOCUS", locus];
     emit[currentPrefix <> "_ALLOWED_INTERSECTION", allowed];
+    emit[currentPrefix <> "_INTERSECTION_OUTCOME", outcome];
     emit[currentPrefix <> "_INTERSECTION_TEST", intersects];
     emit[
       rootPrefix[prefix, rootIndex] <> "_Q8_ROOT_COINCIDENCE_LOCI",
       coincidenceRecords
     ];
-    If[intersects,
+    If[TrueQ[intersects],
       stratumRecords = Append[
         stratumRecords,
         <|
           "Source" -> {rankDrop, rootIndex},
           "Equations" -> equations,
-          "Allowed" -> allowed
+          "Allowed" -> allowed,
+          "IntersectionOutcome" -> outcome
         |>
       ]
     ],
@@ -1031,9 +1355,14 @@ runRankStrata[
     {recordIndex, Length[coincidenceRecords]}
   ];
 
-  gatheredRecords = GatherBy[
+  gatheredRecords = Gather[
     stratumRecords,
-    ToString[#1["Allowed"], InputForm, PageWidth -> Infinity] &
+    Function[{left, right},
+      SameQ[
+        {left["Allowed"], left["Equations"]},
+        {right["Allowed"], right["Equations"]}
+      ]
+    ]
   ];
   uniqueRecords = Map[
     Function[group,
@@ -1064,40 +1393,48 @@ runRankStrata[
       assumptions,
       braneDimension == dimension
     ];
-    pointInstances = FindInstance[
-      pointFormula,
-      pointVariables,
-      Reals,
-      1
-    ];
-    If[Length[pointInstances] == 0, Quit[2]];
-    point = First[pointInstances];
     stratumPrefix = prefix <> "_STRATUM" <> ToString[stratumIndex];
-    emit[stratumPrefix <> "_Q8_SOURCE", record["Sources"]];
-    emit[stratumPrefix <> "_Q8_POINT", point];
-    pointEqualities = And @@ (point /. Rule[left_, right_] :> left == right);
-    pointAssumptions = And[assumptions, pointEqualities];
-    pointMatrix = Map[
-      fullSimplifyWith[#, pointAssumptions] &,
-      matrix /. point,
-      {2}
+    pointCall = HoldForm[
+      FindInstance[pointFormula, pointVariables, Reals, 1]
     ];
-    pointWavevector = wavevector /. point;
-    pointSpectrum[
-      stratumPrefix,
-      pointMatrix,
-      pointWavevector,
-      pointAssumptions
+    pointInstances = Quiet[Check[ReleaseHold[pointCall], $Failed]];
+    If[Not[ListQ[pointInstances]] || Length[pointInstances] == 0,
+      emit[
+        stratumPrefix <> "_Q8_POINT_SEARCH_UNLOCATED",
+        <|
+          "ReduceOutput" -> record["Allowed"],
+          "FindInstanceCall" -> pointCall,
+          "FindInstanceOutput" -> pointInstances
+        |>
+      ],
+      point = First[pointInstances];
+      emit[stratumPrefix <> "_Q8_SOURCE", record["Sources"]];
+      emit[stratumPrefix <> "_Q8_POINT", point];
+      pointEqualities = And @@ (point /. Rule[left_, right_] :> left == right);
+      pointAssumptions = And[assumptions, pointEqualities];
+      pointMatrix = Map[
+        fullSimplifyWith[#, pointAssumptions] &,
+        matrix /. point,
+        {2}
+      ];
+      pointWavevector = wavevector /. point;
+      pointSpectrum[
+        stratumPrefix,
+        pointMatrix,
+        pointWavevector,
+        pointAssumptions
+      ]
     ],
     {stratumIndex, Length[uniqueRecords]}
   ];
+  <|"Minors" -> allMinors|>
 ];
 
 runPackage[package_String, dimension_Integer] := Module[
   {
     prefix, data, assumptions, expandedLagrangian, eom, matrixData,
     matrixA, matrixB, matrixResidual, matrixEntryRatio, spectrumData,
-    modeData, scalingData
+    modeData, scalingData, curlData, rankData
   },
   prefix = packagePrefix[package, dimension];
   data = buildPackage[package, dimension];
@@ -1120,10 +1457,8 @@ runPackage[package_String, dimension_Integer] := Module[
   ]];
   emit[prefix <> "_PREMISE_BASELINE_STIFFNESS", data["CurlStiffness"]];
   emit[prefix <> "_JOINT_ASSUMPTIONS", assumptions];
+  emit[prefix <> "_ANSATZ_FREQUENCY_BRANCH", Sqrt[omegaSquared]];
   emit[prefix <> "_ACTION_CONTROL", data["ControlData"]];
-  emit[prefix <> "_SYMBOLIC_SIMPLIFIERS", {
-    Together, Cancel, Factor, FullSimplify
-  }];
 
   emit[prefix <> "_Q1_LAGRANGIAN", expandedLagrangian];
   eom = eulerLagrangeSystem[data];
@@ -1142,6 +1477,10 @@ runPackage[package_String, dimension_Integer] := Module[
     assumptions
   ];
   emit[prefix <> "_Q2_MATRIX_A", matrixA];
+  emit[
+    prefix <> "_Q2_PERIOD_AVERAGE_CONDITIONS",
+    matrixData["PeriodAverageConditions"]
+  ];
   emit[prefix <> "_Q2_MATRIX_B", matrixB];
   emit[prefix <> "_Q2_MATRIX_RESIDUAL", matrixResidual];
   emit[prefix <> "_Q2_MATRIX_ENTRY_RATIO", matrixEntryRatio];
@@ -1167,6 +1506,15 @@ runPackage[package_String, dimension_Integer] := Module[
     data["Wavevector"],
     assumptions
   ];
+  curlData = runCurlComparison[prefix, dimension];
+  rankData = runRankStrata[
+    prefix,
+    data,
+    matrixB,
+    spectrumData,
+    modeData,
+    assumptions
+  ];
   runDimensions[
     prefix,
     data,
@@ -1174,15 +1522,9 @@ runPackage[package_String, dimension_Integer] := Module[
     matrixData,
     spectrumData,
     scalingData,
-    assumptions
-  ];
-  runCurlComparison[prefix, dimension];
-  runRankStrata[
-    prefix,
-    data,
-    matrixB,
-    spectrumData,
     modeData,
+    curlData,
+    rankData,
     assumptions
   ];
 ];
@@ -1206,23 +1548,26 @@ declaredRunPairs = Flatten[
   ],
   1
 ];
-actualRunPairs = declaredRunPairs;
-skippedRunPairs = Complement[declaredRunPairs, actualRunPairs];
-
-emit["WL_S10_RUN_PAIRS", actualRunPairs];
-emit["WL_S10_SKIPPED_PAIRS", skippedRunPairs];
+actualRunPairs = {};
 
 totalRuntime = First@AbsoluteTiming[
   Do[
     runPackage[
       packageRuns[[packageIndex, 1]],
       dimension
+    ];
+    actualRunPairs = Append[
+      actualRunPairs,
+      {packageRuns[[packageIndex, 1]], dimension}
     ],
     {packageIndex, Length[packageRuns]},
     {dimension, packageRuns[[packageIndex, 2]]}
   ]
 ];
 
+skippedRunPairs = Complement[declaredRunPairs, actualRunPairs];
+emit["WL_S10_RUN_PAIRS", actualRunPairs];
+emit["WL_S10_SKIPPED_PAIRS", skippedRunPairs];
 emit["WL_S10_RUNTIME_SECONDS", totalRuntime];
 localListingTag = "WL_S10_LOCAL_TAG_NAMES";
 localTagNames = Append[DeleteDuplicates[localTagNames], localListingTag];

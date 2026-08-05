@@ -81,17 +81,36 @@ two engines are FOR.
 
 ⚠ **Measured:** an implementation keyed on the **selector**, taking no action object at all, passes a
 *"change the form in one package and watch it move"* test. ⇒ ⛔ **re-deriving from the selector is not
-re-entering at the action.** ⭐ This is what catches an engine reporting a density it did not use, and
-⛔ it needs no extraction algebra to state.
+re-entering at the action**, and ⭐ it needs no extraction algebra to state.
+
+⛔⛔ **AND SCOPE IT HONESTLY — ⚠ an earlier draft claimed this requirement "catches an engine reporting a
+density it did not use". ⛔ IT DOES NOT, and a leg proved it.** ⭐ Mutation sensitivity establishes **some**
+dependence on the action, ⛔ **not identity with the density the action used.** ⚠ **The counterexample,
+computed:** an engine whose action uses a density while its reporter emits a **rescaled** multiple of it
+passes the reference residual **and** moves under mutation — ⇒ ⛔ **both surviving checks pass while the
+reported object is the wrong one**, and the rescaling is exactly the normalisation error `§Q7` exists to
+catch.
+⇒ ⭐ **State in the spec what actually polices this: the SECOND ENGINE.** An engine that uses one object
+and reports another is **internally inconsistent**, and ⭐ the cross-engine comparison of this tag is what
+surfaces it. ⛔ A within-engine algebraic identity cannot — ⚠ a leg verified the removed one was
+**identically zero on every conforming build**, so it fired only on non-conforming ones, and ⛔ it never
+caught a **shared** wrong formula either.
+⭐ **Require the emitted object to BE the one the action was assembled from** — ⛔ not an equal-valued
+rebuild — and ⭐ **say plainly that provenance rests on cross-engine comparison, ⛔ not on this residual.**
+
+⛔⛔ **THE "Measured:" RATIONALE ABOVE IS FOR YOU, ⛔ NOT FOR THE SPEC.** ⭐ It explains why the
+requirement is worded as it is; ⛔ **do not copy it into `S10_SHARED_PHYSICS.md`** — ⚠ a measured
+failure shape steers an implementer, and `E6` forbids exactly that shape in the target file.
 
 ⛔ **DELETE from `§Q7`:** the sentence naming a fixed curl density as the compared object · the sentence
 stating what the residual is **expected** to be and for which packages · the sentence describing the
 **measured** failure shape under a corrupted action · the "curl vector of the **amplitude**" wording, which
 contradicts the derivative formula on the next line.
 
-⚠ ⭐ **Say plainly what this comparison does NOT do:** it does ⛔ **not** by itself establish that the
-density was assembled from the action rather than re-typed — ⭐ the action-mutation requirement above is
-what does that.
+⚠ ⭐ **Say plainly in the spec what this comparison does NOT do:** it does ⛔ **not** establish that the
+emitted density is the one the action was assembled from. ⭐ **Nothing inside a single engine does.**
+⇒ the action-mutation requirement establishes **dependence**, and ⭐ **cross-engine comparison of this tag
+is what establishes provenance.**
 
 ## ⛔⛔ E2 — add the DISTINCTNESS premises. ⭐ Without them a control can police nothing.
 

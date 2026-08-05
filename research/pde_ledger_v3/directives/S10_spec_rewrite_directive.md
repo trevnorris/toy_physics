@@ -64,18 +64,20 @@ correctly said a BUILDER must not be handed this choice.** ⭐ **Write them; ⛔
 > carries the wave speed. ⛔ It is **not** evidence for the mode count, which is computed in every `D` and
 > does not depend on it.
 
-**⭐ The objects, as equations:**
+**⭐ The objects, as equations — ⛔ transcribe this block into the spec VERBATIM:**
 ```
-L₀     := L |_{∂ₜu → 0,  ∂ᵢuⱼ → g_ij}      the action's static part, g_ij INDEPENDENT symbols
-w      := the coefficient the ACTION CONSTRUCTOR actually placed in front of the density
+L      =  K + w·S            the DEFINING decomposition: K contains only ∂ₜ, S only ∂ᵢ
+                             ⇒ w is the COMPLETE prefactor of S, sign and rational factor included
+L₀     := L |_{∂ₜu → 0,  ∂ᵢuⱼ → g_ij}      the static part; g_ij INDEPENDENT symbols
+S_ret  := the density object the action constructor RETURNS alongside L
 S_ext  := L₀ / w                            valid only once w ≠ 0 is PROVED
 c_i    := Σ_{j,k} ε_ijk g_jk                COMPUTED from Levi-Civita, ⛔ never typed out
 ```
 
-⛔⛔ **`w` IS READ FROM THE ACTION. ⛔ It is NEVER a retyped `sign · coefficient / 2`.** ⚠ **This is the
-subtle one and it was caught by computation, not by reading:** a package may **scale** the coefficient, and
-a retyped weight leaves that factor undivided ⇒ ⛔ **a COEFFICIENT control then emits a spurious FORM
-residual**, which looks exactly like a finding. ⇒ ⭐ [[feedback-per-tooth-ablation]].
+⛔⛔ **`w` IS DEFINED BY THE DECOMPOSITION `L = K + w·S`, ⛔ NOT described in words.** ⚠ An earlier wording
+said "the coefficient in front of the density", which ⛔ **admits reading `w` as the bare modulus with the
+sign and the rational factor dropped** — a review leg ablated that and it breaks the residual. ⇒ ⭐ Take
+`w` from the decomposition and nothing else.
 
 ⛔⛔ **PROVE `w ≠ 0` BEFORE ANY SIMPLIFICATION, and emit the status.** ⚠ **Measured:** a CAS cancels
 `w·S / w → S` symbolically, so a degenerate weight yields a **finite, wrong, silent** answer ⛔ — it does
@@ -86,13 +88,23 @@ residual.**
 
 | check | emit | what it catches |
 |---|---|---|
-| **1 · extraction** | `L₀`, `w`, the `w ≠ 0` status, `S_ext`, and the reconstruction certificate `L₀ − w·S_ext` | coefficient/sign degeneracy and provenance failure |
+| **1 · extraction** | `L₀`, `w`, the `w ≠ 0` status, `S_ext`, `S_ret`, and **`S_ext − S_ret`** | a constructor that ASSEMBLES a different density than it REPORTS, and a wrong weight |
 | **2 · reference identity** | `S_ext`, `c·c`, and `S_ext − c·c` | the form-and-normalisation bridge itself |
 
-⭐ **Why the split is required:** a sign or coefficient control moves **`w`**, ⛔ not the form residual.
-⇒ Compressed into one number, those controls either vanish or masquerade as form failures. ⚠ ⛔ **An
-overall sign therefore CANNOT be policed by the density residual** — if it is to be policed, it needs its
-own weight diagnostic, and the section must say so.
+⛔⛔ **DO NOT EMIT `L₀ − w·S_ext`. ⚠ An earlier version of this directive did, calling it a reconstruction
+certificate — ⛔ it is IDENTICALLY ZERO by construction**, since `S_ext` is *defined* as `L₀/w`.
+⚠ **Both legs caught it and one proved it decisively:** substituting a deliberately wrong weight `7w` gave
+an extracted density of `S/7` and the "certificate" **still read zero.**
+⇒ ⛔ It is the exact pattern the shared spec's own corollary forbids — `q := A/B`, then emit `A − q·B`.
+⭐ **`S_ext − S_ret` replaces it and is genuinely two routes:** one divides back out of the assembled
+Lagrangian, the other reads the component the constructor reports. ⭐ Under that same wrong-weight test it
+is **nonzero**, which is what a certificate has to be able to do.
+
+⭐ **Why the split is required:** the weight and the form live in **different** emitted objects, so a
+control that acts on one is visible as such instead of contaminating the other. ⇒ Compressed into a single
+residual, a control either vanishes or masquerades as a form failure. ⚠ ⛔ **An overall sign therefore
+CANNOT be policed by the density residual** — if it is to be policed it needs its own weight diagnostic,
+and the section must say so.
 
 ⭐ **`c·c` is a SUPPLIED DIAGNOSTIC REFERENCE — say so in the text.** ⚠ Otherwise §4's "only the action and
 the ansatz may be combined by hand" reads as forbidding the very object §Q7 compares against. ⭐ The
@@ -125,12 +137,28 @@ state the config change as a REQUIRED companion edit** and list the exact rows. 
 conditions), classify each sign call by solving `P_eff ∧ sign_condition_σ(root)` over the reals for
 `σ ∈ {positive, zero, negative}`:
 
-| verdict | condition | emit |
+⛔⛔ **IT MUST BE STAGED, ⛔ NOT A FOUR-ROW TABLE.** ⚠ **An earlier version of this directive was a flat
+table and a review leg showed it was not total:** with per-region statuses drawn from
+`{SAT, EMPTY, UNKNOWN}` there are combinations **no row matches**, and ⛔ a satisfiable premise set whose
+root is **non-real** empties all three real regions and would have been mislabelled *inconsistent
+premises*. ⇒ ⭐ **premise consistency and root realness are SEPARATE PRIOR QUESTIONS.**
+
+```
+STAGE 0   is P_eff satisfiable?            no / unknown  ⇒ INCONSISTENT_PREMISES | CAS_UNDECIDED(premises)
+STAGE 1   is the root REAL and DEFINED
+          everywhere P_eff allows?         no / unknown  ⇒ ROOT_NOT_REAL | ROOT_UNDEFINED | CAS_UNDECIDED(root)
+STAGE 2   status of each region σ ∈ {positive, zero, negative}
+```
+
+⭐ **Stage 2, and it must cover every combination:**
+
+| region statuses | verdict | emit |
 |---|---|---|
-| `DETERMINED(σ)` | exactly one region satisfiable, the other two **proved empty** | the region |
-| `PREMISES_INSUFFICIENT` | **two or more** regions satisfiable | ⭐ the **witness models**, explicitly |
-| `CAS_UNDECIDED` | the solver establishes neither | the unsettled sub-expression |
-| `INCONSISTENT_PREMISES` | all three empty | the premise set |
+| ≥ 2 `SAT` | `PREMISES_INSUFFICIENT` | ⭐ the **witness models**, explicitly |
+| exactly 1 `SAT`, other two `EMPTY` | `DETERMINED(σ)` | the region |
+| exactly 1 `SAT`, any `UNKNOWN` | `CAS_UNDECIDED` | ⛔ the others could **not be excluded** — say which |
+| 0 `SAT`, any `UNKNOWN` | `CAS_UNDECIDED` | the unsettled sub-expression |
+| all three `EMPTY` | ⛔⛔ **`CLASSIFIER_ERROR`** | ⚠ stages 0–1 passed, so **some** sign must hold ⇒ this is a **bug**, ⛔ not a physics verdict |
 
 ⚠ **Two opposite-sign witnesses are sufficient but ⛔ NOT necessary** — a zero/positive or zero/negative
 pair equally proves the three-way sign is not determined.
@@ -140,7 +168,7 @@ same way. ⭐ Say which tags carry the diagnostic and whether it covers **every*
 
 ### ⛔⛔ 2. §8 — pin the whole tag name
 
-⚠ **Measured: both engines matched all 13 `(package, D)` prefixes exactly, and then diverged on
+⚠ **Measured: both engines matched every `(package, D)` prefix exactly, and then diverged on
 everything to the right of `D<n>_`.** §8 pinned about 4% of the name.
 
 ⛔⛔ **THERE IS NO EXISTING REGISTRY. ⛔ DO NOT GO LOOKING FOR ONE — ⚠ an earlier version of this directive
@@ -260,17 +288,22 @@ corollaries, the structural rule that every control re-enters at the action.
    ⚠ **Strengthened 2026-08-05: both legs found the earlier version SELF-GRADED and passable by writing
    text narrow enough to describe one engine.** ⇒ it is now a **per-decision** table, ⛔ not a verdict.
 
-   ⭐ Build a row for **each** settled decision above — the static-part extraction, the weight read from
-   the constructor, the `w ≠ 0` proof, the reconstruction certificate, the reference identity, the
-   computed Levi-Civita reference, residual orientation, and the non-`D=3` payload. For **each row × each
-   engine**, record `satisfies / violates / cannot tell`, ⭐ **quoting the sentence of YOURS that decides
-   it and the engine line that settles it.**
+   **5a — ⭐⭐ MECHANICAL, ⛔ not a judgement.** ⭐ **Diff the equation block you wrote into `§Q7` against
+   the block in this directive** and paste the diff. ⛔ It must be empty apart from formatting. ⚠ **This
+   is why the block is transcribed rather than paraphrased:** ⛔ a paraphrase is exactly what the previous
+   version let an author self-grade. ⭐ The equations are fixed; ⭐ only the prose around them is yours.
+
+   **5b — the per-decision table, which now tests THE PROSE.** ⭐ Build a row for **each** settled decision
+   — the defining decomposition, the static-part extraction, the `w ≠ 0` proof, the two-route extraction
+   residual, the reference identity, the computed Levi-Civita reference, residual orientation, and the
+   non-`D=3` payload. For **each row × each engine**, record `satisfies / violates / cannot tell`,
+   ⭐ **quoting the sentence of YOURS that decides it and the engine line that settles it.**
 
    ⛔⛔ **A single "cannot tell" anywhere in the table means the rewrite has FAILED — keep going.**
    ⚠ ⛔ **Do not change either engine.** ⭐ You are testing your text against them, ⛔ not them against it.
-   ⭐ **Your text ruling BOTH engines out is a legitimate and expected outcome** — the decisions above were
-   fixed **independently of** what either engine does. ⛔ A row that "violates" is a finding to report,
-   ⛔ never a reason to soften the sentence that produced it.
+   ⭐ **Your text ruling BOTH engines out is a legitimate outcome, ⛔ not a signal to soften anything** —
+   the equations were fixed **independently of** what either engine does. ⛔ A `violates` row is a finding
+   to report, ⛔ never a reason to weaken the sentence that produced it.
 6. ⭐ **Tag-name coherence:** grep whatever Q7 name you make canonical against
    `reduction/checks_S10.yaml`, and report every spelling that file currently maps. ⚠ A rename the config
    does not follow **silently drops the comparison**, which is indistinguishable from agreement.

@@ -355,3 +355,51 @@ here is not permission to cite them.
 
 ⭐ **F4 is the one to fix if any.** It is the mechanism by which F1–F3 became possible, and it is the only
 hygiene row that is a *live* hazard rather than a historical error.
+
+### ⛔⛔ **`F7`** — the comparison kernel equates a BOOLEAN with any nonzero number {#f7}
+
+⛔ **Measured 2026-08-05, ⛔ not hypothesised.** `symbolic_equal` routes to `sp.Equivalent` when **either**
+side is boolean (`reduction/engine_output_checks.py:764-768`), so a boolean is sympified against a number
+and compared for truthiness. ⭐ **Verified by direct call on the working-tree version** — ⇒ it is
+**pre-existing**, ⛔ not introduced by the reverted harness part A:
+
+```
+symbolic_equal(True, 999999) = True     symbolic_equal(1, True)  = True
+symbolic_equal(True,      2) = True     symbolic_equal(False, 0) = True
+symbolic_equal(True,  False) = False    ← both-boolean is CORRECT
+```
+
+⇒ ⭐ **This is the "checker that mis-parses two expressions into agreement" case the harness exists to
+avoid**, and it lives in the one function that decides whether two engines agree.
+
+⭐⭐ **THE DIRECTION OF THE ERROR, and it is the benign one — ⛔ state it whenever this row is cited.**
+A false equal can only move a tag from **RESPONSIVE** to **INVARIANT**. ⇒ it **hides** evidence that a tag
+depends on a computation; ⛔ it can **never** certify an uncomputed tag as computed.
+⇒ ⭐ every tag credited **responsive** is still genuinely responsive; ⭐ the **INVARIANT triage list is
+the suspect part**; ⚠ and the layer's **able-to-fail** property is broken for boolean tags.
+
+**Measured exposure in S9** (committed `out/`, probe printed in-session):
+
+| population | count | exposed? |
+|---|---|---|
+| `CROSS_ENGINE` configured pairs | 12 | ⭐ **0 route through the boolean branch** — ⇒ S9's cross-engine agreement is **NOT** contaminated |
+| boolean-valued `wl` tags | 330 | 172 of them compare equal to `999999` |
+| control comparisons (`_package_layout`) | 1368 | 54 mixed boolean/non-boolean (**unsound**); 260 both-boolean (**sound**) |
+
+⛔⛔ **WHAT IS NOT MEASURED — ⛔ do not let this row be read as closing S9.** The probe walks
+`_package_layout` and finds **1368** control comparisons, while ⚠ **S9's step record cites
+`compared=170 responsive=150 invariant=20`.** Those are **different populations** — the recorded run pairs
+via the `_X<digits>_` regex, the probe via the layout function. ⇒ ⭐ **the MECHANISM and its SCALE in the
+S9 corpus are established; the OVERLAP with the recorded 170 is NOT.**
+⇒ ⭐ **The owed measurement: re-run S9's recorded configuration with the boolean branch instrumented, and
+report how many of the recorded 170 took it.** ⛔ Do this **before S9's numbers are cited again**.
+
+⭐ **Fix at its own level:** require **both** sides boolean before using `Equivalent`; otherwise unequal.
+⛔ Do not widen it into a type system.
+
+⚠ **Companion dent in the same record:** S9's cited `1219/1219 homogeneous` is the **vacuous** counter
+(1699 of 2139 counted-homogeneous tags had **zero** comparisons performed). ⇒ two known dents in S9's
+instrument numbers, ⛔ neither of which touches S9's **derivation** — that rests on two independently
+built engines, ⛔ not on these counters.
+
+**Status: OPEN — deferred until S10 closes** (user decision, 2026-08-05).

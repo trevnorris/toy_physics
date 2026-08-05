@@ -403,6 +403,16 @@ virtual-work rule and row structure (`S11bB record:136`).
 
 ## ⛔ ALSO OPEN, ⛔ not forgotten
 
+- ⛔⛔ **`DEFECT_REGISTER.md#f7` — the comparison kernel equates a BOOLEAN with any nonzero number.**
+  `symbolic_equal` uses `sp.Equivalent` when **either** side is boolean
+  (`reduction/engine_output_checks.py:764-768`) ⇒ `symbolic_equal(True, 999999) = True`. ⭐ **Verified on
+  the working tree ⇒ PRE-EXISTING**, ⛔ not from the reverted part A. ⭐ **Direction is benign**: it can
+  only move a tag RESPONSIVE → INVARIANT, so it **hides** evidence of computation and ⛔ never certifies an
+  uncomputed tag. ⭐ **S9's cross-engine agreement is NOT exposed** — 0 of its 12 configured pairs take the
+  branch. ⚠ **OWED, and ⛔ do this before S9's numbers are cited again:** re-run S9's *recorded*
+  configuration with the branch instrumented and report how many of the recorded **170** took it — the
+  probe measured a **different population** (1368 comparisons via `_package_layout`).
+  ⇒ **DEFERRED UNTIL S10 CLOSES** (user, 2026-08-05).
 - **The S11b retraction is committed** (`3e41b463`) and is **correct on its own terms**: the passive region
   is a classification, ⛔ not a verdict, and A's velocity leak costs a **named reservoir** rather than being
   forbidden. ⚠ Two review findings on it are **folded but unapplied**: (a) `Λ_A⁰ ≥ 0` has a

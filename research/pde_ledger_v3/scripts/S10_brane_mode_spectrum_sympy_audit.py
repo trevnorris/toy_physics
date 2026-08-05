@@ -303,7 +303,7 @@ def build_action(
     n: int,
     t: sp.Symbol,
     xvec: Sequence[sp.Symbol],
-) -> tuple[list[sp.Expr], sp.Expr, list[sp.Expr], list[sp.Expr], sp.Expr]:
+) -> tuple[list[sp.Expr], sp.Expr, list[sp.Expr], list[sp.Expr]]:
     fields = [sp.Function(f"u{index + 1}")(t, *xvec) for index in range(n)]
     time_derivatives = [sp.diff(field, t) for field in fields]
     gradient = [[sp.diff(fields[j], xvec[i]) for j in range(n)] for i in range(n)]
@@ -319,7 +319,29 @@ def build_action(
     )
     stiffness = stiffness_density(package.stiffness, gradient)
     lagrangian = kinetic + sp.Integer(package.stiffness_sign) * sp.Rational(1, 2) * stiffness_coefficient * stiffness
-    return fields, sp.expand(lagrangian), inertial_coefficients, [stiffness_coefficient], stiffness
+    return fields, sp.expand(lagrangian), inertial_coefficients, [stiffness_coefficient]
+
+
+def action_stiffness_density(
+    lagrangian: sp.Expr,
+    fields: Sequence[sp.Expr],
+    t: sp.Symbol,
+    xvec: Sequence[sp.Symbol],
+    gradient_symbols: Sequence[Sequence[sp.Symbol]],
+    stiffness_coefficient: sp.Expr,
+    stiffness_sign: int,
+) -> sp.Expr:
+    substitutions = {
+        **{sp.diff(field, t): sp.Integer(0) for field in fields},
+        **{
+            sp.diff(fields[j], xvec[i]): gradient_symbols[i][j]
+            for i in range(len(xvec))
+            for j in range(len(fields))
+        },
+    }
+    stiffness_action_term = sp.expand(lagrangian.xreplace(substitutions))
+    action_prefactor = sp.Integer(stiffness_sign) * sp.Rational(1, 2) * stiffness_coefficient
+    return sp.expand(sp.cancel(stiffness_action_term / action_prefactor))
 
 
 def euler_lagrange_system(
@@ -471,6 +493,30 @@ def derived_sign(expr: sp.Expr, assumptions: sp.logic.boolalg.Boolean) -> sp.Exp
     if negative is True:
         return sp.Integer(-1)
     return sp.Symbol("undecided_under_joint_assumptions")
+
+
+def undecided_sign_subexpression(
+    expr: sp.Expr,
+    assumptions: sp.logic.boolalg.Boolean,
+    sign_result: sp.Expr,
+) -> sp.Expr:
+    if sign_result != sp.Symbol("undecided_under_joint_assumptions"):
+        return sp.Symbol("none_sign_decided")
+    refined = sp.refine(sp.factor(expr), assumptions)
+    unsettled = []
+    for factor in sp.Mul.make_args(refined):
+        answers = (
+            sp.ask(sp.Q.positive(factor), assumptions),
+            sp.ask(sp.Q.zero(factor), assumptions),
+            sp.ask(sp.Q.negative(factor), assumptions),
+        )
+        if all(answer is None for answer in answers):
+            unsettled.append(factor)
+    if len(unsettled) == 1:
+        return unsettled[0]
+    if unsettled:
+        return sp.Tuple(*unsettled)
+    return refined
 
 
 def deduplicate_roots(
@@ -1322,7 +1368,7 @@ def run_package_dimension(
     k_squared = sp.Add(*(component**2 for component in kvec))
     assumptions = build_joint_assumptions(package, kvec, avec)
 
-    fields, lagrangian, inertial_coefficients, stiffness_coefficients, _stiffness = build_action(package, n, t, xvec)
+    fields, lagrangian, inertial_coefficients, stiffness_coefficients = build_action(package, n, t, xvec)
     (
         dimension_equations,
         dimension_unknowns,
@@ -1466,7 +1512,14 @@ def run_package_dimension(
     for index, root in enumerate(roots, 1):
         root_prefix = prefix + f"ROOT{index}_"
         emit_physical(emitter, walker, root_prefix + "Q3_ROOT", root)
-        emitter.emit(root_prefix + "Q3_SIGN", derived_sign(root, assumptions))
+        sign_result = derived_sign(root, assumptions)
+        emitter.emit(root_prefix + "Q3_SIGN", sign_result)
+        local_root_prefix = root_prefix.replace("PY_S10_", "PY_S10_LOCAL_", 1)
+        emitter.emit(local_root_prefix + "Q3_SIGN_JOINT_ASSUMPTIONS", assumptions)
+        emitter.emit(
+            local_root_prefix + "Q3_SIGN_UNDECIDED_SUBEXPRESSION",
+            undecided_sign_subexpression(root, assumptions, sign_result),
+        )
         objects = q4_objects(matrix_b, root, k_column, k_squared, assumptions)
         q4_by_root.append(objects)
         emit_q4(emitter, walker, root_prefix, objects)
@@ -1533,9 +1586,20 @@ def run_package_dimension(
             homogeneity_class="SOLVED",
         )
 
-    gradient_symbols = [[sp.Symbol(f"g{i + 1}{j + 1}", real=True) for j in range(3)] for i in range(3)]
     if n == 3:
-        curl_stiffness = sp.expand(stiffness_density("curl", gradient_symbols))
+        gradient_symbols = [
+            [sp.Symbol(f"g{i + 1}{j + 1}", real=True) for j in range(n)]
+            for i in range(n)
+        ]
+        package_stiffness = action_stiffness_density(
+            lagrangian,
+            fields,
+            t,
+            xvec,
+            gradient_symbols,
+            stiffness_coefficients[0],
+            package.stiffness_sign,
+        )
         curl_vector = sp.Matrix(
             [
                 gradient_symbols[1][2] - gradient_symbols[2][1],
@@ -1544,10 +1608,10 @@ def run_package_dimension(
             ]
         )
         curl_dot = sp.expand((curl_vector.T * curl_vector)[0])
-        curl_difference = sp.expand(curl_stiffness - curl_dot)
+        curl_difference = sp.expand(package_stiffness - curl_dot)
         gradient_dim_map = {symbol: ZERO_DIM for row in gradient_symbols for symbol in row}
         q7_walker = DimensionWalker(gradient_dim_map, (), {}, assumptions)
-        emit_physical(emitter, q7_walker, prefix + "Q7_STIFFNESS", curl_stiffness)
+        emit_physical(emitter, q7_walker, prefix + "Q7_STIFFNESS", package_stiffness)
         emit_physical(emitter, q7_walker, prefix + "Q7_CURL_DOT", curl_dot)
         emit_physical(emitter, q7_walker, prefix + "Q7_DIFFERENCE", curl_difference)
     else:

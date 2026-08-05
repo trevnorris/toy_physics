@@ -1,3 +1,12 @@
+> ⛔⛔ **DEFERRED 2026-08-05 — ⛔ DO NOT BUILD FROM THIS FOR S10.** ⭐ It is sound work and it is **kept**.
+> ⚠ **Scope decision (user, 2026-08-05): keep S10 to S10.** This directive rewrites the shared spec into a
+> **closed data contract** with a schema, frozen oracles, and a registry of **thousands** of legacy tag
+> names. ⭐ That buys **future cross-engine comparability**, ⛔ **not** S10's correctness.
+> ⇒ ⭐ **Revisit before S11**, together with `S10_contract_DEFERRED_findings.md`, which carries the two
+> review legs' findings on it — ⚠ including **two attacks that got through** and an unconstructible oracle
+> node. ⛔ Neither has been applied.
+> ⭐ **What S10 actually does instead:** `S10_spec_Q7_repair_directive.md`.
+
 # Authoring contract for the next S10 shared specification
 
 ## Assignment boundary

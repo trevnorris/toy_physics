@@ -2,7 +2,51 @@
 
 ---
 
-# ⭐⭐⭐ STATE, 2026-08-05 — **S10's ENGINES ARE DONE. THE HARNESS IS BLOCKED ON PLUMBING.**
+# ⛔⛔⛔ STATE, 2026-08-05 (end) — **TWO BUILDS WERE REVERTED. THEY WERE NEVER REVIEWED.**
+
+⛔⛔ **Read this box before anything else in this file, because parts of what follows describe work that
+has been REVERTED.**
+
+On 2026-08-05 two Codex builds landed and were committed **without a fresh-agent leg and without a Grok
+leg** — the engine 2 `Q7` repair (`bd5819cc`) and harness part A (`92461853`, which also carried a rewrite
+of the S10 step record and an ablation script). ⛔ **Both are reverted** by `ab77f25d`.
+
+⚠ **Nothing is lost.** The tag **`wip-2026-08-05-unreviewed`** points at `92461853`; both builds are
+reachable and can be re-landed **once reviewed**.
+
+⛔⛔ **THE FAILURE, so it is not repeated:** I reviewed the *directive*, got a good result, and treated the
+tax as paid for the *workstream*. Then I substituted my own verification for the build reviews — re-ran
+the engine, confirmed a control varied per package, matched 18 objects across engines, ran an ablation
+script written in advance. ⚠ **All real work; all mine.** ⭐⭐ **The tell: my checks kept FINDING things,
+which made them feel like they were doing the review's job.**
+⇒ [[feedback-no-commit-before-legs-report]], [[feedback-correctness-is-king-cost-irrelevant]].
+
+⭐ **THE GATE, now:** ⛔ no build is committed until **both** legs report; ⭐ legs launch in the same
+message the build is verified; ⛔ **one writer on the tree at a time** — a second Codex was editing the
+very file the legs were reading, which forced them to be killed and relaunched.
+
+## ⭐ WHAT SURVIVES, and why each is not my unreviewed work
+
+| kept | why |
+|---|---|
+| `directives/S10_harness_repair_directive.md` | ⭐ **two legs**, which found my first version would have produced a layer **79% dead** |
+| `directives/S10_SPEC_CONSISTENCY_FINDINGS.md` | an **independent** pass, ⛔ not mine |
+| `directives/S10_py_repair3_directive.md`, `..._partB_directive.md`, `..._spec_rewrite_directive.md` | ⚠ **UNREVIEWED — each needs two legs before its build** |
+| S9 `out/` (`3ce3d16c`) | mechanical engine output; reproduces the three numbers its record cites |
+| this file's account of the cross-engine finding | produced by an independent classification leg |
+
+## ⛔ WHAT MUST BE REDONE, in order — ⛔ each with BOTH legs
+
+1. ⛔ **Review `S10_py_repair3_directive.md`** (2 legs) → rebuild engine 2's `Q7` → **review the build**
+   (2 legs) → then commit.
+2. ⛔ **Review harness part A's build** — the directive is already reviewed; ⛔ the 385-line build is not.
+3. ⛔ **Review `S10_harness_repair_partB_directive.md`** (2 legs) before any part B build.
+4. ⛔ **The S10 step record rewrite is reverted and must be redone** — ⚠ and it is a document I wrote,
+   so it needs a leg like anything else.
+
+---
+
+# ⚠ BELOW THIS LINE: STATE AS OF MID-2026-08-05 — ⛔ some of it describes reverted work
 
 ## ⛔⛔ THE BLOCKERS WERE NOT ALL PLUMBING — ⚠ an earlier version of this file said they were
 
@@ -40,7 +84,7 @@ package — ⭐ point it at the **symbolic** tags instead.
 |---|---|
 | `directives/S10_SHARED_PHYSICS.md` | reviewed (Codex+Grok) + **6 amendments**, all leak-gated |
 | `mathematica/S10_brane_mode_spectrum_mathematica_audit.wl` | **2983 tags**, 64 s, exit 0 — built blind, reviewed ×3, repaired ×3 |
-| `scripts/S10_brane_mode_spectrum_sympy_audit.py` | **4279 tags**, 159 s, exit 0 — reviewed ×2, repaired ×3 |
+| `scripts/S10_brane_mode_spectrum_sympy_audit.py` | **4227 tags**, 150 s, exit 0 — reviewed ×2, repaired ×2. ⛔ The Q7 repair is REVERTED |
 | `mathematica/out/` + `scripts/out/` | ⭐ **engine output is now COMMITTED EVIDENCE** (v2's convention, adopted in v3 at last) |
 | `reduction/checks_S10.yaml` | 677 name pairs; `parity_exclude: _LOCAL_` |
 | `reduction/engine_output_checks.py` | `parity_exclude` added, parity layer only |
@@ -59,8 +103,9 @@ classification leg reconciled **163** as symbol-name, rendering, or unpinned-cho
   **byte-identical across all six packages**, including the two whose only purpose is to change the
   stiffness form, so its residual was `0` **by construction.**
   ⚠ **The cause was a SPEC defect, ⛔ not an engine defect** ⇒ `S10_SPEC_CONSISTENCY_FINDINGS.md`.
-  ✅ **Repaired.** ⭐ **Verified: all 18 `Q7` objects at `D3` now match across engines** under the
-  `g<i>x<j> → g<i><j>` renaming; before the repair engine 2 gave the curl form in all six.
+  ⛔⛔ **The repair was built and then REVERTED for lack of review — ⛔ the defect STANDS in the tree.**
+  ⚠ The build is reachable at `wip-2026-08-05-unreviewed`; ⭐ redo it through the legs, ⛔ do not
+  cherry-pick it back unreviewed.
 - ⚠ **Six were a spec ambiguity** — whether a declared-dimensionless control factor enters the `Q6`
   dimension solve as an unknown. One engine says 9 unknowns, the other 6. ⭐ **Both reach the same
   determinacy verdict and the same coefficient dimensions**, so the physics is unaffected.

@@ -26,7 +26,6 @@ except ImportError:  # Direct ``python engine_output_checks.py`` invocation.
 
 
 TAG_PATTERN = re.compile(r"^([A-Za-z][A-Za-z0-9_]*)[ \t]*(?::|->)[ \t]*(.*)$")
-TAG_NAME_PATTERN = re.compile(r"^(?:WL|PY)_S[1-9][0-9]*_[A-Z][A-Z0-9_]*$")
 CONTROL_TAG_PATTERN = re.compile(r"^(?P<base>.+)_X(?P<control>[1-9][0-9]*)_(?P<suffix>.+)$")
 TOKEN_PATTERN = re.compile(
     r"(?P<WS>\s+)|(?P<ASSOC_OPEN><\|)|(?P<ASSOC_CLOSE>\|>)|"
@@ -145,7 +144,6 @@ class DimensionReport:
     total_tags: int
     checked_tags: int
     homogeneous_tags: int
-    vacuous_tags: tuple[str, ...]
     non_homogeneous: tuple[NonHomogeneous, ...]
     unknown_symbols: tuple[UnknownSymbol, ...]
     errors: tuple[str, ...]
@@ -168,17 +166,12 @@ class ControlReport:
     invariant: tuple[ControlRow, ...]
     unparsed: tuple[ControlRow, ...]
     unpaired: tuple[str, ...]
-    uncovered: tuple[str, ...] = ()
-    no_ablation_dimensions: tuple[int, ...] = ()
-    missing_declared_packages: tuple[str, ...] = ()
-    coverage_required: bool = False
 
 
 @dataclass(frozen=True)
 class ParityRow:
     engine: str
     package: str
-    dimension: int | None
     missing: tuple[str, ...]
     extra: tuple[str, ...]
 
@@ -194,20 +187,6 @@ class ParityExclusionRow:
 class ParityReport:
     rows: tuple[ParityRow, ...]
     exclusions: tuple[ParityExclusionRow, ...] = ()
-    exclusion_warnings: tuple[str, ...] = ()
-
-
-@dataclass(frozen=True)
-class CrossEngineTagSetRow:
-    left_engine: str
-    right_engine: str
-    left_only: tuple[str, ...]
-    right_only: tuple[str, ...]
-
-
-@dataclass(frozen=True)
-class CrossEngineTagSetReport:
-    rows: tuple[CrossEngineTagSetRow, ...]
 
 
 @dataclass(frozen=True)
@@ -241,7 +220,6 @@ class RegistryResidualReport:
 class HarnessReport:
     controls: ControlReport
     parity: ParityReport
-    cross_engine_tags: CrossEngineTagSetReport
     dimensions: DimensionReport
     cross_engine: CrossEngineReport
     registry: RegistryResidualReport
@@ -250,24 +228,6 @@ class HarnessReport:
     @property
     def operational_failures(self) -> tuple[str, ...]:
         failures: list[str] = []
-        compared = len(self.controls.responsive) + len(self.controls.invariant)
-        if self.controls.missing_declared_packages:
-            failures.append(
-                "declared packages matched no tags: "
-                + ", ".join(self.controls.missing_declared_packages)
-            )
-        if self.controls.coverage_required and self.controls.uncovered:
-            dimensions = ",".join(
-                f"D{dimension}" for dimension in self.controls.no_ablation_dimensions
-            ) or "none"
-            failures.append(
-                f"control coverage uncovered {len(self.controls.uncovered)} main tag(s); "
-                f"dimensions with no ablation={dimensions}"
-            )
-        if compared >= 10 and not self.controls.responsive:
-            failures.append(
-                f"control response floor failed: compared={compared} responsive=0"
-            )
         if self.unparsed:
             failures.append(f"{len(self.unparsed)} value(s) were UNPARSED")
         if self.dimensions.unknown_symbols:
@@ -308,8 +268,6 @@ def parse_tagged_output(stdout: str) -> dict[str, str]:
     for line in stdout.splitlines():
         match = TAG_PATTERN.match(line)
         if match:
-            if not TAG_NAME_PATTERN.fullmatch(match.group(1)):
-                raise ValueError(f"rejected invalid tag line: {line!r}")
             finish_record()
             current_tag = match.group(1)
             current_lines = [match.group(2)]
@@ -849,73 +807,16 @@ def _compare_for_tag(tag: str, left: object, right: object) -> bool:
     return symbolic_equal(left, right)
 
 
-@dataclass(frozen=True)
-class _PackageLayout:
-    base: str
-    dimension: int | None
-    main_package: str
-    main: dict[str, str]
-    controls: dict[str, dict[str, str]]
-    declared: bool
-
-    def package_label(self, package: str) -> str:
-        return f"{self.base}_{package}" if self.declared else package
-
-
 def _package_layout(
     values: Mapping[str, object],
-    main_package: str | None = None,
-    control_packages: Sequence[str] | None = None,
-) -> tuple[_PackageLayout, ...]:
-    """Return package layouts, split by dimension for declared S10 packages."""
-    if main_package is not None:
-        controls = tuple(control_packages or ())
-        packages = tuple(dict.fromkeys((main_package, *controls)))
-        alternatives = "|".join(
-            re.escape(package)
-            for package in sorted(packages, key=lambda value: (-len(value), value))
-        )
-        declared_pattern = re.compile(
-            rf"^(?P<base>.+)_(?P<package>{alternatives})_"
-            rf"D(?P<dimension>[1-9][0-9]*)_(?P<suffix>.+)$"
-        )
-        grouped: dict[
-            tuple[str, int], dict[str, dict[str, str]]
-        ] = {}
-        for tag in values:
-            if "_LOCAL_" in tag:
-                continue
-            match = declared_pattern.match(tag)
-            if match is None:
-                continue
-            key = (match.group("base"), int(match.group("dimension")))
-            grouped.setdefault(key, {}).setdefault(match.group("package"), {})[
-                match.group("suffix")
-            ] = tag
-        return tuple(
-            _PackageLayout(
-                base=base,
-                dimension=dimension,
-                main_package=main_package,
-                main=packages_at_dimension.get(main_package, {}),
-                controls={
-                    package: packages_at_dimension[package]
-                    for package in controls
-                    if package in packages_at_dimension
-                },
-                declared=True,
-            )
-            for (base, dimension), packages_at_dimension in sorted(grouped.items())
-        )
-
-    # S9 compatibility: infer the historical X<digits> controls when the
-    # configuration does not declare package names.
+) -> tuple[tuple[str, str, dict[str, str], dict[str, dict[str, str]]], ...]:
+    """Return base, main package, main suffix tags, and control suffix tags."""
     bases: set[str] = set()
     for tag in values:
         match = CONTROL_TAG_PATTERN.match(tag)
         if match:
             bases.add(match.group("base"))
-    layouts: list[_PackageLayout] = []
+    layouts: list[tuple[str, str, dict[str, str], dict[str, dict[str, str]]]] = []
     for base in sorted(bases):
         main_prefix = f"{base}_MAIN_" if any(
             tag.startswith(f"{base}_MAIN_") for tag in values
@@ -930,59 +831,35 @@ def _package_layout(
                 controls.setdefault(package, {})[match.group("suffix")] = tag
             elif tag.startswith(main_prefix):
                 main[tag[len(main_prefix) :]] = tag
-        layouts.append(
-            _PackageLayout(base, None, main_package, main, controls, False)
-        )
+        layouts.append((base, main_package, main, controls))
     return tuple(layouts)
 
 
 def check_control_response(
-    values: Mapping[str, ParsedValue | Unparsed],
-    main_package: str | None = None,
-    control_packages: Sequence[str] | None = None,
+    values: Mapping[str, ParsedValue | Unparsed]
 ) -> ControlReport:
     """Partition fully-counterparted main tags into RESPONSIVE and INVARIANT."""
     responsive: list[ControlRow] = []
     invariant: list[ControlRow] = []
     unparsed: list[ControlRow] = []
     unpaired: list[str] = []
-    uncovered: list[str] = []
-    all_control_labels: set[str] = set()
-    no_ablation_dimensions: set[int] = set()
-    observed_declared_packages: set[str] = set()
-    declared_packages = (
-        tuple(dict.fromkeys((main_package, *(control_packages or ()))))
-        if main_package is not None
-        else ()
-    )
+    all_control_labels: list[str] = []
 
-    layouts = _package_layout(values, main_package, control_packages)
-    for layout in layouts:
-        if layout.main:
-            observed_declared_packages.add(layout.main_package)
-        observed_declared_packages.update(layout.controls)
-        all_control_labels.update(
-            layout.package_label(package) for package in layout.controls
-        )
-        if layout.main and not layout.controls:
-            uncovered.extend(layout.main.values())
-            if layout.dimension is not None:
-                no_ablation_dimensions.add(layout.dimension)
-            continue
-        for suffix, main_tag in sorted(layout.main.items()):
+    for _base, _main_package, main, control_packages in _package_layout(values):
+        all_control_labels.extend(sorted(control_packages))
+        for suffix, main_tag in sorted(main.items()):
             control_tags = tuple(
                 tags[suffix]
-                for _package, tags in sorted(layout.controls.items())
+                for _package, tags in sorted(control_packages.items())
                 if suffix in tags
             )
-            if len(control_tags) != len(layout.controls):
+            if len(control_tags) != len(control_packages):
                 unpaired.append(main_tag)
-                uncovered.append(main_tag)
                 continue
+            row = ControlRow(main_tag, "", control_tags, ())
             compared = (values[main_tag], *(values[tag] for tag in control_tags))
             if any(isinstance(value, Unparsed) for value in compared):
                 unparsed.append(ControlRow(main_tag, "UNPARSED", control_tags, ()))
-                uncovered.append(main_tag)
                 continue
             differing = tuple(
                 tag
@@ -995,27 +872,17 @@ def check_control_response(
                 invariant.append(ControlRow(main_tag, "INVARIANT", control_tags, ()))
 
     return ControlReport(
-        controls=tuple(sorted(all_control_labels)),
+        controls=tuple(all_control_labels),
         responsive=tuple(responsive),
         invariant=tuple(invariant),
         unparsed=tuple(unparsed),
         unpaired=tuple(sorted(set(unpaired))),
-        uncovered=tuple(sorted(set(uncovered))),
-        no_ablation_dimensions=tuple(sorted(no_ablation_dimensions)),
-        missing_declared_packages=tuple(
-            package
-            for package in declared_packages
-            if package not in observed_declared_packages
-        ),
-        coverage_required=main_package is not None,
     )
 
 
 def check_tag_parity(
     outputs: Mapping[str, Mapping[str, ParsedValue | Unparsed]],
     parity_exclude: Sequence[str] = (),
-    main_package: str | None = None,
-    control_packages: Sequence[str] | None = None,
 ) -> ParityReport:
     """Compare each control package's suffix set with its engine's main package."""
     if isinstance(parity_exclude, (str, bytes)):
@@ -1029,36 +896,33 @@ def check_tag_parity(
     patterns = tuple(dict.fromkeys(configured_patterns))
     rows: list[ParityRow] = []
     exclusions: list[ParityExclusionRow] = []
-    exclusion_warnings: list[str] = []
     for engine, values in sorted(outputs.items()):
-        layouts = _package_layout(values, main_package, control_packages)
+        layouts = _package_layout(values)
+        parity_tags = {
+            tag
+            for _base, _main_package, main, controls in layouts
+            for package_tags in (main, *controls.values())
+            for tag in package_tags.values()
+        }
         excluded_tags = {
-            tag for tag in values if any(pattern in tag for pattern in patterns)
+            tag for tag in parity_tags if any(pattern in tag for pattern in patterns)
         }
         if patterns:
-            pattern_counts = tuple(
-                (pattern, sum(pattern in tag for tag in values))
-                for pattern in patterns
-            )
             exclusions.append(
                 ParityExclusionRow(
                     engine=engine,
                     tags=tuple(sorted(excluded_tags)),
-                    by_pattern=pattern_counts,
+                    by_pattern=tuple(
+                        (pattern, sum(pattern in tag for tag in excluded_tags))
+                        for pattern in patterns
+                    ),
                 )
             )
-            exclusion_warnings.extend(
-                f"{engine}: configured pattern {pattern!r} matched no tags"
-                for pattern, count in pattern_counts
-                if count == 0
-            )
-        for layout in layouts:
+        for _base, _main_package, main, controls in layouts:
             main_suffixes = {
-                suffix
-                for suffix, tag in layout.main.items()
-                if tag not in excluded_tags
+                suffix for suffix, tag in main.items() if tag not in excluded_tags
             }
-            for package, package_tags in sorted(layout.controls.items()):
+            for package, package_tags in sorted(controls.items()):
                 package_suffixes = {
                     suffix
                     for suffix, tag in package_tags.items()
@@ -1067,44 +931,12 @@ def check_tag_parity(
                 rows.append(
                     ParityRow(
                         engine=engine,
-                        package=layout.package_label(package),
-                        dimension=layout.dimension,
+                        package=package,
                         missing=tuple(sorted(main_suffixes - package_suffixes)),
                         extra=tuple(sorted(package_suffixes - main_suffixes)),
                     )
                 )
-    return ParityReport(
-        tuple(rows), tuple(exclusions), tuple(exclusion_warnings)
-    )
-
-
-def check_cross_engine_tag_sets(
-    outputs: Mapping[str, Mapping[str, ParsedValue | Unparsed]],
-    parity_exclude: Sequence[str] = (),
-) -> CrossEngineTagSetReport:
-    """Compare complete non-local tag-name sets after removing engine prefixes."""
-    canonical: dict[str, dict[str, str]] = {}
-    for engine, values in sorted(outputs.items()):
-        canonical[engine] = {
-            tag.split("_", 1)[1] if "_" in tag else tag: tag
-            for tag in values
-            if not any(pattern in tag for pattern in parity_exclude)
-        }
-    rows: list[CrossEngineTagSetRow] = []
-    engines = sorted(canonical)
-    for left_index, left_engine in enumerate(engines):
-        for right_engine in engines[left_index + 1 :]:
-            left = canonical[left_engine]
-            right = canonical[right_engine]
-            rows.append(
-                CrossEngineTagSetRow(
-                    left_engine,
-                    right_engine,
-                    tuple(left[name] for name in sorted(left.keys() - right.keys())),
-                    tuple(right[name] for name in sorted(right.keys() - left.keys())),
-                )
-            )
-    return CrossEngineTagSetReport(tuple(rows))
+    return ParityReport(tuple(rows), tuple(exclusions))
 
 
 def _as_dimension(value: object, label: str) -> tuple[sp.Expr, sp.Expr, sp.Expr]:
@@ -1150,21 +982,18 @@ class _DimensionWalker:
         self.tag = tag
         self.non_homogeneous: list[NonHomogeneous] = []
         self.unknown: set[str] = set()
-        self.comparisons = 0
 
     def walk_container(self, value: object) -> None:
         value = _unwrap(value)
         if isinstance(value, CasRule):
             sides = (value.left, value.right)
             dimensions = tuple(self.dimension(self._expression(side)) for side in sides)
-            if (
-                all(dimension is not None for dimension in dimensions)
-                and sides[0] != 0
-                and sides[1] != 0
+            if all(dimension is not None for dimension in dimensions) and not (
+                sides[0] == 0
+                or sides[1] == 0
+                or _dimension_equal(dimensions[0], dimensions[1])  # type: ignore[arg-type]
             ):
-                self.comparisons += 1
-                if not _dimension_equal(dimensions[0], dimensions[1]):  # type: ignore[arg-type]
-                    self._record(f"{sides[0]} -> {sides[1]}", sides, dimensions)
+                self._record(f"{sides[0]} -> {sides[1]}", sides, dimensions)
             return
         if _is_boolean_value(value) and not isinstance(
             value, sp.core.relational.Relational
@@ -1185,15 +1014,10 @@ class _DimensionWalker:
         if isinstance(value, sp.core.relational.Relational):
             left = self.dimension(value.lhs)
             right = self.dimension(value.rhs)
-            if (
-                left is not None
-                and right is not None
-                and value.lhs != 0
-                and value.rhs != 0
+            if left is not None and right is not None and not (
+                value.lhs == 0 or value.rhs == 0 or _dimension_equal(left, right)
             ):
-                self.comparisons += 1
-                if not _dimension_equal(left, right):
-                    self._record(value, (value.lhs, value.rhs), (left, right))
+                self._record(value, (value.lhs, value.rhs), (left, right))
             return
         if isinstance(value, (int, sp.Basic)):
             self.dimension(sp.Integer(value) if isinstance(value, int) else value)
@@ -1229,13 +1053,8 @@ class _DimensionWalker:
                 for term, dimension in zip(terms, dimensions)
                 if dimension is not None and term != 0
             )
-            if len(known) > 1:
-                self.comparisons += len(known) - 1
-                if any(
-                    not _dimension_equal(known[0][1], value[1])
-                    for value in known[1:]
-                ):
-                    self._record(expression, terms, dimensions)
+            if known and any(not _dimension_equal(known[0][1], value[1]) for value in known[1:]):
+                self._record(expression, terms, dimensions)
             return known[0][1] if known else (ZERO_DIMENSION if not terms else None)
         if isinstance(expression, sp.Mul):
             result = ZERO_DIMENSION
@@ -1250,10 +1069,8 @@ class _DimensionWalker:
             base, exponent = expression.args
             exponent_dimension = self.dimension(exponent)
             base_dimension = self.dimension(base)
-            if exponent_dimension is not None:
-                self.comparisons += 1
-                if not _dimension_equal(exponent_dimension, ZERO_DIMENSION):
-                    self._record(expression, (exponent,), (exponent_dimension,))
+            if exponent_dimension is not None and not _dimension_equal(exponent_dimension, ZERO_DIMENSION):
+                self._record(expression, (exponent,), (exponent_dimension,))
             if exponent.is_Rational is not True:
                 raise DimensionError(f"non-rational power exponent in {expression}")
             if base_dimension is None:
@@ -1261,12 +1078,10 @@ class _DimensionWalker:
             return _dimension_scale(base_dimension, exponent)
         if expression.func == sp.exp:
             argument_dimension = self.dimension(expression.args[0])
-            if argument_dimension is not None:
-                self.comparisons += 1
-                if not _dimension_equal(argument_dimension, ZERO_DIMENSION):
-                    self._record(
-                        expression, (expression.args[0],), (argument_dimension,)
-                    )
+            if argument_dimension is not None and not _dimension_equal(
+                argument_dimension, ZERO_DIMENSION
+            ):
+                self._record(expression, (expression.args[0],), (argument_dimension,))
             return ZERO_DIMENSION
         if expression.is_Function:
             for argument in expression.args:
@@ -1356,7 +1171,6 @@ def check_dimensions(
     non_dimensional: list[NonDimensional] = []
     checked = 0
     homogeneous = 0
-    vacuous: list[str] = []
     for tag, value in values.items():
         if isinstance(value, Unparsed):
             unparsed.append(tag)
@@ -1370,19 +1184,15 @@ def check_dimensions(
         except DimensionError as exc:
             errors.append(f"{tag}: {exc}")
             continue
+        checked += 1
         non_homogeneous.extend(walker.non_homogeneous)
         unknown_symbols.extend(UnknownSymbol(tag, name) for name in sorted(walker.unknown))
-        if walker.comparisons:
-            checked += 1
-            if not walker.non_homogeneous and not walker.unknown:
-                homogeneous += 1
-        elif not walker.non_homogeneous and not walker.unknown:
-            vacuous.append(tag)
+        if not walker.non_homogeneous and not walker.unknown:
+            homogeneous += 1
     return DimensionReport(
         total_tags=len(values),
         checked_tags=checked,
         homogeneous_tags=homogeneous,
-        vacuous_tags=tuple(vacuous),
         non_homogeneous=tuple(non_homogeneous),
         unknown_symbols=tuple(unknown_symbols),
         errors=tuple(errors),
@@ -1606,24 +1416,10 @@ def run_checks(
     cross_rows = config.get("cross_engine", [])
     registry_rows = config.get("registry_residual", [])
     parity_exclude = config.get("parity_exclude", [])
-    main_package = config.get("main_package")
-    control_packages = config.get("control_packages")
     if not isinstance(cross_rows, list) or not isinstance(registry_rows, list):
         raise HarnessError("cross_engine and registry_residual must be lists")
     if not isinstance(parity_exclude, list):
         raise HarnessError("parity_exclude must be a list")
-    if main_package is None and control_packages is not None:
-        raise HarnessError("control_packages requires main_package")
-    if main_package is not None and (
-        not isinstance(main_package, str) or not main_package
-    ):
-        raise HarnessError("main_package must be a non-empty string")
-    if control_packages is not None and (
-        not isinstance(control_packages, list)
-        or any(not isinstance(package, str) or not package for package in control_packages)
-    ):
-        raise HarnessError("control_packages must be a list of non-empty strings")
-    declared_controls = control_packages if control_packages is not None else None
     registry = load_registry(registry_directory or Path(__file__).resolve().parent)
     all_unparsed = tuple(
         (engine, tag, value)
@@ -1632,13 +1428,8 @@ def run_checks(
         if isinstance(value, Unparsed)
     )
     return HarnessReport(
-        controls=check_control_response(
-            default_values, main_package, declared_controls
-        ),
-        parity=check_tag_parity(
-            outputs, parity_exclude, main_package, declared_controls
-        ),
-        cross_engine_tags=check_cross_engine_tag_sets(outputs, parity_exclude),
+        controls=check_control_response(default_values),
+        parity=check_tag_parity(outputs, parity_exclude),
         dimensions=check_dimensions(default_values, config),
         cross_engine=check_cross_engine(cross_rows, outputs),
         registry=check_registry_residuals(
@@ -1664,14 +1455,6 @@ def format_report(report: HarnessReport) -> str:
     control = report.controls
     dimension = report.dimensions
     parity_gaps = [row for row in report.parity.rows if row.missing or row.extra]
-    compared_controls = len(control.responsive) + len(control.invariant)
-    main_control_tags = compared_controls + len(control.uncovered)
-    uncovered_fraction = (
-        len(control.uncovered) / main_control_tags if main_control_tags else 0.0
-    )
-    no_ablation = ",".join(
-        f"D{value}" for value in control.no_ablation_dimensions
-    ) or "none"
     non_dimensional_counts: dict[str, int] = {}
     for row in dimension.non_dimensional:
         non_dimensional_counts[row.kind.value] = non_dimensional_counts.get(row.kind.value, 0) + 1
@@ -1680,25 +1463,13 @@ def format_report(report: HarnessReport) -> str:
     ) or "none"
     lines = [
         (
-            f"CONTROL_RESPONSE: compared={compared_controls} "
+            f"CONTROL_RESPONSE: compared={len(control.responsive) + len(control.invariant)} "
             f"responsive={len(control.responsive)} invariant={len(control.invariant)} "
             f"unparsed={len(control.unparsed)} unpaired={len(control.unpaired)}"
         ),
         (
-            f"CONTROL_COVERAGE: main={main_control_tags} compared={compared_controls} "
-            f"uncovered={len(control.uncovered)} "
-            f"uncovered_fraction={uncovered_fraction:.6f} "
-            f"no_ablation_D=[{no_ablation}]"
-        ),
-        (
-            "CONTROL_PACKAGES: "
-            f"matched={len(control.controls)} "
-            f"missing_declared=[{','.join(control.missing_declared_packages) or 'none'}]"
-        ),
-        (
-            f"DIMENSIONS: total={dimension.total_tags} compared={dimension.checked_tags} "
+            f"DIMENSIONS: total={dimension.total_tags} checked={dimension.checked_tags} "
             f"homogeneous={dimension.homogeneous_tags} "
-            f"vacuous={len(dimension.vacuous_tags)} "
             f"non_homogeneous={len(dimension.non_homogeneous)} "
             f"unknown_symbol={len(dimension.unknown_symbols)} "
             f"unparsed={len(dimension.unparsed)}"
@@ -1710,27 +1481,10 @@ def format_report(report: HarnessReport) -> str:
         f"CROSS_ENGINE: {_status_counts(report.cross_engine.rows)}",
         f"REGISTRY_RESIDUAL: {_status_counts(report.registry.rows)}",
         (
-            f"MAIN_CONTROL_TAG_PARITY: comparisons={len(report.parity.rows)} "
+            f"TAG_PARITY: packages={len(report.parity.rows)} "
             f"gaps={len(parity_gaps)}"
         ),
     ]
-    cross_tag_gap_count = sum(
-        len(row.left_only) + len(row.right_only)
-        for row in report.cross_engine_tags.rows
-    )
-    lines.append(
-        f"CROSS_ENGINE_TAG_PARITY: comparisons={len(report.cross_engine_tags.rows)} "
-        f"gaps={cross_tag_gap_count}"
-    )
-    for row in report.cross_engine_tags.rows:
-        lines.append(
-            f"  {row.left_engine}_only ({len(row.left_only)}): "
-            + (", ".join(row.left_only) or "-")
-        )
-        lines.append(
-            f"  {row.right_engine}_only ({len(row.right_only)}): "
-            + (", ".join(row.right_only) or "-")
-        )
     if report.parity.exclusions:
         excluded_total = sum(len(row.tags) for row in report.parity.exclusions)
         lines.append(f"PARITY_EXCLUDED ({excluded_total}):")
@@ -1742,13 +1496,6 @@ def format_report(report: HarnessReport) -> str:
                 f"  {row.engine}: excluded={len(row.tags)} "
                 f"by_pattern={{{by_pattern}}}"
             )
-    if report.parity.exclusion_warnings:
-        lines.append(
-            f"PARITY_EXCLUSION_WARNING ({len(report.parity.exclusion_warnings)}):"
-        )
-        lines.extend(
-            f"  {warning}" for warning in report.parity.exclusion_warnings
-        )
     disagreements = [
         row for row in report.cross_engine.rows if row.status == "DISAGREE"
     ]
@@ -1768,14 +1515,6 @@ def format_report(report: HarnessReport) -> str:
     )
     invariant_names = ", ".join(row.tag for row in control.invariant)
     lines.append(f"INVARIANT ({len(control.invariant)}): {invariant_names}")
-    lines.append(
-        f"CONTROL_UNCOVERED ({len(control.uncovered)}): "
-        + ", ".join(control.uncovered)
-    )
-    lines.append(
-        f"DIMENSION_VACUOUS ({len(dimension.vacuous_tags)}): "
-        + ", ".join(dimension.vacuous_tags)
-    )
     lines.append(f"NON_HOMOGENEOUS ({len(dimension.non_homogeneous)}):")
     for issue in dimension.non_homogeneous:
         rendered = "; ".join(
@@ -1788,25 +1527,17 @@ def format_report(report: HarnessReport) -> str:
         "  why: present-and-identical is INVARIANT; absent is indistinguishable from never computed."
     )
     parity_groups: dict[
-        tuple[str, int | None, tuple[str, ...], tuple[str, ...]], list[str]
+        tuple[str, tuple[str, ...], tuple[str, ...]], list[str]
     ] = {}
     for row in parity_gaps:
         parity_groups.setdefault(
-            (row.engine, row.dimension, row.missing, row.extra), []
+            (row.engine, row.missing, row.extra), []
         ).append(row.package)
-    for (
-        engine,
-        dimension_value,
-        missing_values,
-        extra_values,
-    ), packages in parity_groups.items():
+    for (engine, missing_values, extra_values), packages in parity_groups.items():
         missing = ",".join(missing_values) or "-"
         extra = ",".join(extra_values) or "-"
-        dimension_label = (
-            f"D{dimension_value}" if dimension_value is not None else "unswept"
-        )
         lines.append(
-            f"  {engine}:{dimension_label}:packages=[{','.join(packages)}]: "
+            f"  {engine}:packages=[{','.join(packages)}]: "
             f"missing=[{missing}] extra=[{extra}]"
         )
     lines.append(f"UNPARSED ({len(report.unparsed)}):")

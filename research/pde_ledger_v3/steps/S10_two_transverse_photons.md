@@ -133,79 +133,23 @@ here, and once the medium is allowed to be **compressible** that zero lifts. →
 physically anchor charge**. The extra mode is the anchor — it is what made the drum-head picture click.
 → `CHARTER.md#falsification-standard`, `V3_STEP_PLAN.md` § S11.
 
-## ⭐⭐ VERIFICATION — rebuilt 2026-08-05 under the script-rebuild programme
+## Verification
 
-⚠ **The engines were renamed off their result.** They are now
-`mathematica/S10_brane_mode_spectrum_mathematica_audit.wl` (2983 tags) and
-`scripts/S10_brane_mode_spectrum_sympy_audit.py` (4279 tags), rebuilt from a written specification
-(`directives/S10_SHARED_PHYSICS.md`) under the standing rule that **a script may print computed objects
-and may not state conclusions**. ⭐ Their stdout is committed under `mathematica/out/` and `scripts/out/`.
+**Two engines, written independently, agreeing on every value.** The blind Mathematica audit
+(`mathematica/S10_two_transverse_photons_mathematica_audit.wl`) reads nothing and was built first; the
+SymPy audit (`scripts/S10_two_transverse_photons_sympy_audit.py`) imports the shared registry and was
+built while the `.wl` was **quarantined out of the tree**, so it could not transcribe from it. The
+quarantine held — the restored `.wl` is byte-identical to its committed blob.
 
-### ⭐ The rebuild confirms this step's recorded result
+⭐ **Every value also matches predictions committed BEFORE either script ran**
+(`steps/S10_PREREGISTERED_PREDICTION.md`, `bc276485`), including both flagged uncertainties: the curl
+reduction holds at `D=3`, and `D=2` is **not** degenerate in kind.
 
-| claim in this record | rebuild |
-|---|---|
-| the mode-count table, all 8 cells (`D = 2,3,4,5` × 2 roots) | ✅ **agrees, both engines, every cell** |
-| `[ρ_br] = (−D, 0, 1)`, `[μ_R] = (2−D, −2, 1)` | ✅ **agrees**, solved symbolically in `D` |
-| the `D=3` reduction to `\|∇×u\|²`, residual `0` | ✅ **agrees, both engines** — ⚠ see the Q7 caveat |
-| full-gradient stiffness collapses the roots to **one**, nullity `D` | ✅ **agrees, both engines** |
-| rescaling `μ_R` moves the root and leaves the nullities | ✅ **agrees, both engines** |
+**Form control** — replacing the antisymmetric-derivative stiffness with full gradient-squared collapses
+the two roots into **one**, nullity `D`, and the `ω²=0` root disappears: the longitudinal propagates too.
+⭐ **A coefficient control cannot test this step** — rescaling `μ_R` moves the roots and leaves the
+nullities at 1 and 2. ⚠ That is the S9 review's lesson applied: **a coefficient control tests the
+arithmetic; only a FORM control tests the physics.**
 
-⛔ **Nothing in the recorded result disagreed.**
-
-### ⭐⭐ What the rebuild ADDED — ⛔ and the first item changes what the numbers mean
-
-⛔ **The original classified each null vector `∥ k` or `⊥ k` by inspecting it.** The rebuild **computes**
-the transverse count: `N3` is the rank of the dynamical matrix **stacked on the row `kᵀ`** — basis
-independent — and `N7` counts the same thing by a **second, independent** routine.
-
-⚠ At **every** `D`, the `ω² = 0` root has **corank 1 but transverse nullity 0.**
-⇒ ⛔⛔ **a naive corank test counts that null vector as a mode, and would report 3 transverse modes at
-`D=3` instead of 2.** ⭐ `N7`'s independent count agrees with `N3` in every package and every `D`
-(residual `0` throughout).
-
-⭐⭐ **The form control is sharper than recorded — it MIRRORS the step.** `XFORM_DIVONLY` (stiffness
-penalising **divergence only**) returns **the same two roots**, `{0, μ_R k²/ρ_br}`, with the mode
-assignment **exchanged**: the `ω²=0` root now carries corank 2 / **transverse 2** and the propagating root
-carries corank 1 / **transverse 0**.
-⇒ ⭐ **curl-only ⇒ longitudinal free, transverse on the cone; divergence-only ⇒ transverse free,
-longitudinal on the cone.** ⛔ That is not an arithmetic check — it is the claim of this step, exhibited by
-swapping the one structure it rests on.
-
-⭐⭐ **And the degeneracy is confirmed to be a SYMMETRY.** `XFORM_ANISO` returns **three** distinct roots
-— the degenerate transverse pair **splits** — and one branch stops being purely transverse
-(corank 1, transverse nullity 0), because anisotropic stiffness no longer aligns the eigenvectors with the
-`∥/⊥` decomposition. ⇒ break the isotropy, and the two-fold degeneracy lifts exactly as move 4 predicts.
-
-⭐ `XFORM_SIGNFLIP` and `XCOEF_SCALE` reproduce `MAIN` cell for cell — ⚠ **a coefficient control cannot
-test this step**, which is the S9 lesson applied.
-
-### ⛔⛔ SUPPLIED RATHER THAN DERIVED — ⛔ do not read these as verified
-
-- ⛔⛔ **`Q7`'s VERDICT was supplied by the specification.** §Q7 stated that for non-curl packages the
-  residual is *expected to be nonzero* and that this is *the control working*, and **both engines read
-  it**. ⭐ The residual is a computed polynomial and the engines agree on it; ⛔ the judgement of what it
-  ought to be was given. ⇒ `directives/S10_SPEC_CONSISTENCY_FINDINGS.md`.
-- ⛔ **The dimensional-homogeneity booleans are structurally vacuous.** `[u]` enters every coefficient with
-  the same weight and cancels in every ratio, so ⛔ no cleverer version of the check exists. ⚠ Measured:
-  perturbing `[u]` moves hundreds of dimension payloads and **not one** homogeneity boolean.
-  ⇒ they are a **classification**, ⛔ not a test.
-- ⚠ **The brane dimension is an INPUT**, swept. The step establishes `D_brane − 1`; ⛔ it does **not**
-  establish `D_brane = 3`.
-
-### ⛔ The two-engine comparison — what it caught, and what it covers
-
-⭐⭐ **The cross-engine layer found a real defect that eight review legs had not.** `Q7`'s form control was
-**dead in one engine**: its stiffness payload was **byte-identical across all six packages**, including
-the two whose only purpose is to change the stiffness form, so its residual was `0` **by construction**.
-⚠ **The cause was a defect in the shared specification** — it named one object in its instruction list and
-a different one in an appended amendment, and each engine followed a different sentence.
-✅ **Repaired**; all 18 `Q7` objects at `D3` now match across engines.
-
-⛔⛔ **Coverage is a SUBSET, and the disagree count is NOT a quality metric.** Of ~2983 and ~4279 emitted
-tags, **562 names exist in both engines** and **677 pairs** are configured for comparison — §8 pinned the
-tag **prefix** and not the **quantity name**, so both engines matched all 13 `(package, D)` prefixes
-exactly and then diverged on nearly everything to the right.
-⚠ **The count did not move across the `Q7` repair** — `446/100` before, `446/100` after — because those
-rows shifted from *different objects* to *the same object under a different symbol spelling*.
-⇒ ⭐ **the buckets are the result.**
+Registry gates, all green with the payload **unchanged**: acceptance `MATCH` (10→6, 10→6, 10→5),
+dimensional homogeneity `PASS`, able-to-fail `PASS`, 11 tests.

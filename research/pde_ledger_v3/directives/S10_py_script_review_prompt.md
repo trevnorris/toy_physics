@@ -106,6 +106,10 @@ Report every instance, with line numbers:
 ⛔ Wrap EVERY Python run in `timeout 600`. A 600s hit is a FAILED ablation — report it and move on.
 ⛔ NEVER raise the timeout. ⛔ NEVER run more than one kernel at a time — the licence has TWO seats.
 ⛔ Copy the artifact to /tmp and ablate the COPY. ⛔ Never modify anything under /var/projects/toy_physics.
+⚠ **This engine READS THE REGISTRY, so a bare copy under /tmp will fail to find it.** ⭐ Pin the reduction
+directory on every copy (the script resolves it relative to its own location) **before** running any
+ablation — ⛔ otherwise the baseline and the ablations fail for a path reason and you will read that as a
+result. ⭐ Confirm the baseline runs clean from /tmp **before** ablating anything.
 ⭐ Save every ablation script AND its literal stdout to named absolute paths; report those paths.
 ```
 

@@ -210,6 +210,76 @@ superfluid-inflow models stop in 3D with no extra spatial direction and no punct
 ⇒ ⭐ Add to the reading list: **Rubakov–Shaposhnikov (1983)**, **Akama (1982)**, **DGP (2000)**,
 **Hamilton–Lisle (2008)**, **Maartens** braneworld *Living Reviews* as the baseline to contrast against.
 
+## ⭐⭐⭐ THE DRUM-HEAD CHARGE MECHANISM — searched against its CURRENT formulation (2026-08-04)
+
+⚠ **An earlier pass searched the OLD wording ("charge = `Z₂` puncture orientation") and got NOT FOUND.**
+⭐ The current mechanism — **Coulomb from the elastic energy of superposed membrane deflections** — is a
+**heavily studied** soft-matter problem. ⇒ [[project-puncture-deflection-charge-mechanism]]
+
+⭐ **Its name:** *membrane-mediated* (or *curvature-mediated*) interactions between inclusions; *capillary
+interactions* / the **Cheerios effect**. **STANDARD/KNOWN.** ⛔ Never cast as electric charge.
+
+### ⭐⭐ THE SIGN IS NOT UNIVERSAL — IT IS SET BY THE BOUNDARY-CONDITION CLASS
+
+| regime | inclusion type | like-direction | unlike |
+|---|---|---|---|
+| tension + gravity (Cheerios) | capillary **monopole** (net vertical force) | ⛔ **ATTRACT** | repel |
+| tension-dominated, **force-free** | same force-pattern | ⭐ **REPEL** | attract |
+| **bending only** (`σ=0`) | rigid **cones** (slope `α`) | **REPEL always** — ⚠ but energy `∝ α₁²+α₂²`, so **ORIENTATION-BLIND at leading order** | same |
+| **bending + tension** | cones, **equal** orientation | ⭐ **REPEL at all `R`** (Weikl–Kozlov–Helfrich 1998) | — |
+| bending + tension | cones, **opposite** orientation | — | ⚠ repel **near**, attract **far** |
+
+### ⭐⭐⭐ THE BC ANSWER — this RESOLVES `R1_REQUIRED(bc_selection)` FROM OUTSIDE THE PROJECT
+
+⚠ Our build stalled because the exterior **relaxes to zero deflection** unless something pins it, and
+nothing selected the pinning class. ⭐ **Membrane physics has settled it:**
+
+> **For a particle that PIERCES the sheet, the physically preferred BC is contact-line + prescribed contact
+> angle, with the sheet free to set its height so that net force and torque vanish — i.e. a cone-like SLOPE
+> BC, ⛔ not a free force monopole.**
+> ⛔ *Fixed height* applies only if the puncture is **clamped to an external scaffold**; ⛔ *fixed force*
+> only if something **external loads** the particle. ⚠ **Neither describes our puncture.**
+
+⇒ ⭐⭐ **The physically-correct BC for a piercing particle is exactly the class that gives LIKE-REPELS.**
+⇒ ⭐ Map onto our REPLACE/ADD variants before using this — the correspondence is **not yet checked**.
+
+### ⛔⛔ TWO PROBLEMS THIS LEAVES, both sharp
+
+1. ⛔ **Pure bending is ORIENTATION-BLIND at leading order** (`∝ α₁²+α₂²`) ⇒ `+w` and `−w` interact
+   identically ⇒ **no charge sign at all** without tension. ⚠ And with tension, **opposite** orientation
+   **repels near and attracts far** — ⛔ not Coulomb's behaviour.
+2. ⛔⛔ **THE POWER LAW IS WRONG IN 2D.** ⚠ **No standard 2D-sheet-in-3D interaction gives force `∝ 1/R²`:**
+   bending cones `U∼a⁴/R⁴` (`F∼1/R⁵`), anisotropic `U∼a⁴/R²` (`F∼1/R³`), tension+cones `U∼K₀(R/λ)`
+   (**exponential**), Cheerios `∼K₀(R/L_c)` (exponential). ⇒ ⭐ **The sign wants the CONE BC; Coulomb's
+   `1/R²` wants a MONOPOLE. In 2D you cannot have both.**
+
+### ⭐⭐⭐ WHERE THE 4D SETTING DOES REAL WORK — AND THE CALCULATION TO RUN
+
+> **"3-sheet in 4-space: NOT FOUND … Green functions of `∇²` on a 3-manifold are mathematically different
+> (`G ∼ 1/R` for tension Poisson), so powers would change, but this case is UNSTUDIED. ⛔ Do not assume
+> 2D-in-3D signs/powers carry over without re-derivation."**
+
+⚠ A 3-dimensional sheet has a `1/R` Green's function where a 2D sheet has `log R` ⇒ **every power in that
+table changes.** ⛔ **Which way is NOT established and ⛔ must not be assumed** — ⚠ the temptation to
+hand-wave "so it becomes `1/R²`" is exactly the kind of step this project bans.
+
+⇒ ⭐⭐ **THE CALCULATION:** redo the membrane-inclusion interaction for a **3-sheet in 4-space**, for **both
+BC classes** (slope/cone and monopole), and obtain **the sign and the power law**.
+⭐ It is bounded, well-posed, dual-engine-able, and has a **known 2D answer to calibrate against** — the
+best-conditioned calculation available to the charge sector. ⭐ And it is **observational**: Coulomb's
+`1/R²` is measured, so this either reproduces it or contradicts an experiment.
+⇒ [[feedback-analog-find-consistent-structure]]
+
+### ⭐ Reading list — the charge mechanism
+
+1. **Bitbol, Constantin, Fournier**, *Membrane-mediated interactions*, `arXiv:1903.05712` — ⭐ power-law
+   table + BC survey; read first.
+2. **Weikl, Kozlov, Helfrich**, *Phys. Rev. E* **57** 6988 (1998) — ⭐⭐ **sign versus orientation and tension.**
+3. **Goulian, Bruinsma, Pincus**, *Europhys. Lett.* **22** 145 (1993) — `1/R⁴` cones at zero tension.
+4. **Vella & Mahadevan**, *Am. J. Phys.* **73** 817 (2005) — Cheerios; ⚠ like menisci **attract**.
+5. **Evans, Turner, Sens**, `cond-mat/0301144` — force distributions, tension, `K₀` repulsion.
+6. **Dommersnes & Fournier**; **Kim–Neu–Oster** — multipoles, anisotropy.
+
 ### ⭐ Reading list from the attribution pass, most useful first
 
 1. **Whittaker**, *A History of the Theories of Aether and Electricity*, Ch. V — MacCullagh, Green, Kelvin.

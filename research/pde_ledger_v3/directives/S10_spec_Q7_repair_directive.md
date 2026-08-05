@@ -86,11 +86,21 @@ requirement above is for.
 picked it up); ⛔ **the coefficient-scale condition is genuinely MISSING everywhere.**
 ⭐ **Add both to the joint premise set, as package-domain premises.**
 
-⛔ **And state the consequence precisely — ⚠ an earlier draft overstated it.** ⛔ The controls are **not**
-"dead": as free symbols their actions differ. ⭐ **What is true: each admitted domain CONTAINS A COLLAPSE
-LOCUS at unit scale, where that package's action equals the baseline package's.** ⇒ an implementation may
-choose the unit value, satisfy **every** stated premise, and emit the baseline — ⛔ a control that polices
-nothing.
+⛔⛔ **STATE THE CONSEQUENCE FOR THE COEFFICIENT-SCALE PACKAGE ONLY. ⚠ Two earlier drafts got this wrong in
+OPPOSITE directions** — the first said both controls were "dead"; the second said **each** admitted domain
+contains its collapse locus. ⛔ **Both false.**
+
+⭐ **What is true, and it is asymmetric:**
+- **Anisotropy scale:** its distinctness condition is **already in its `§7` row** and **both engines
+  enforce it** ⇒ ⛔ **its collapse point is NOT admitted, and its control is sound.** ⭐ Moving the
+  condition into the joint premise set is **centralisation**, ⛔ not a repair.
+- **Coefficient scale:** its distinctness condition is **nowhere** ⇒ ⭐ **its unit-scale collapse point IS
+  admitted.** ⇒ an implementation may sit on it, satisfy **every** stated premise, and emit the baseline —
+  ⛔ a control that polices nothing. ⭐ **This is the actual defect.**
+
+⛔ **Do not write into the spec that every control's domain admits a collapse point.** ⚠ It is false for the
+anisotropy package, and a builder made to write it would either state a falsehood or **weaken that
+package's premise** — ⛔ which would break a control that currently works.
 ⚠ ⭐ **Also: there are six packages but FIVE controls** — the baseline is explicitly not a control.
 ⚠ ⭐ **And say why they are legitimate**, because the existing instruction *"do not add a premise to force a
 solver to decide"* is being read as licence to omit them: ⭐ **a premise that keeps a CONTROL DISTINCT is
@@ -135,6 +145,14 @@ package's row being **prose about a sign**. ⇒ a reader must reconstruct the ac
 ⭐ **Write each package's Lagrangian in full.** ⚠ It is six lines, and it is the object everything else is
 computed from.
 
+⛔⛔ **AND WRITE EACH ONE IN THE EXPLICIT FORM `L = T + w·S`, WITH `T`, `w` AND `S` EACH NAMED.**
+⚠ **This is what makes `§Q7`'s `w` real.** ⭐ Today `§7` names the density `S` per package and the weight
+can be **read off** the action — ⇒ `w` is **derivable**, ⛔ but it is **not declared**, and `§Q7` says it is
+"fixed by `§7`". ⚠ A leg called that claim **false as written** and it was right.
+⇒ ⭐ **Declare the weight. ⛔ Do not leave it to be inferred**, ⚠ because an inferred weight can be
+re-factorised — ⭐ and any freedom in splitting `L` into `w` and `S` reappears as a **different emitted
+residual**, with both engines free to invent the **same** wrong split and agree.
+
 ## ⛔ E6 — sweep the file for STATED RESULTS and delete them
 
 ⛔⛔ **DEFINITION — ⚠ an earlier draft said "what something EQUALS goes", which literally deletes the
@@ -171,8 +189,9 @@ grammar, and say where it sits relative to the other scope tokens. ⛔ **Do NOT*
 registry, the payload serialiser, or any other part of `§8`.
 ⭐ **If you judge even that too wide, the acceptable alternative is a DISCLOSURE** — state in the file that
 stratum tag names are not aligned across engines and that their comparison is manual. ⛔ What is **not**
-acceptable is leaving it unstated, ⚠ because an unaligned name reads to the harness as an **absent** tag,
-and an absent tag is indistinguishable from agreement.
+acceptable is leaving it unstated, ⚠ because an unaligned name is **never compared at all** — ⭐ the
+harness records it as missing rather than as a disagreement, ⇒ ⛔ the pair silently drops out of the
+comparison it was supposed to be in.
 
 ## ⭐ ACCEPTANCE — ⛔ run these and paste literal output
 

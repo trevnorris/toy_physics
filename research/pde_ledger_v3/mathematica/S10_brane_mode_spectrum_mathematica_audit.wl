@@ -53,17 +53,27 @@ reduceAllowed[formula_, variables_List, assumptions_] :=
   Reduce[And[formula, assumptions], variables, Reals];
 
 realLocusSolve[formula_, variables_List] := Module[
-  {result, messages},
+  {result, messages, solveSvarsMessageFired = False},
   Block[{$MessageList = {}},
-    result = Solve[formula, variables, Reals];
+    Quiet[
+      Check[
+        result = Solve[formula, variables, Reals],
+        solveSvarsMessageFired = True,
+        Solve::svars
+      ],
+      Solve::svars
+    ];
     messages = $MessageList;
   ];
   <|
     "Result" -> result,
-    "SolveSvarsMessageFired" -> Not[FreeQ[
-      messages,
-      HoldPattern[MessageName[Solve, "svars"]]
-    ]]
+    "SolveSvarsMessageFired" -> Or[
+      solveSvarsMessageFired,
+      Not[FreeQ[
+        messages,
+        HoldPattern[MessageName[Solve, "svars"]]
+      ]]
+    ]
   |>
 ];
 

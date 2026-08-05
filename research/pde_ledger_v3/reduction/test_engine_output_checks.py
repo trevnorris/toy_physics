@@ -24,8 +24,8 @@ HERE = Path(__file__).resolve().parent
 PROJECT = HERE.parents[2]
 LEDGER = HERE.parent
 REAL_S9_OUTPUTS = {
-    "wl": Path("/tmp/s9_wl.txt"),
-    "py": Path("/tmp/s9_py.txt"),
+    "wl": LEDGER / "mathematica/out/S9_light_requires_shear_mathematica_audit.out",
+    "py": LEDGER / "scripts/out/S9_light_requires_shear_sympy_audit.out",
 }
 CONFIG = HERE / "checks_S9.yaml"
 MODULE = HERE / "engine_output_checks.py"

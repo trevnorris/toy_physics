@@ -11,6 +11,8 @@
 # ⇒ the pairs below are a SUBSET of what could be compared. ⛔ Do not read the
 # cross-engine agree count as covering every emitted quantity.
 default_engine: wl
+main_package: MAIN
+control_packages: [XFORM_FULLGRAD, XFORM_DIVONLY, XFORM_SIGNFLIP, XFORM_ANISO, XCOEF_SCALE]
 
 derived_dimensions:
   rhoBr: WL_S10_MAIN_D3_Q6_INERTIAL_COEFFICIENT_DIMENSIONS_SPECIALIZED
@@ -60,7 +62,8 @@ dimensionless:
 
 # ⭐ Engine-local BY DECLARATION -- cannot exist in both engines (one reads a
 # registry the other is barred from; each CAS emits its own solver-route tags).
-# ⛔ Excluded from PARITY ONLY; still checked by every other layer.
+# ⛔ Excluded from per-engine main-vs-control parity and cross-engine tag-set
+# parity only; still checked by every other applicable layer.
 parity_exclude:
   - _LOCAL_
 

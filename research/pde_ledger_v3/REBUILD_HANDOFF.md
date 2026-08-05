@@ -136,7 +136,7 @@ Measured with `reduction/derived_or_declared.py` (built 2026-08-04, ⚠ uncommit
 
 | engine | tags | gate says DERIVED | notes |
 |---|---|---|---|
-| `S10_two_transverse_photons_sympy_audit.py` | — | ⛔ **unmeasured** | gate cannot parse it: **duplicate emitted tag** `S10_D_TABLE_ROW` — itself a finding |
+| `S10_two_transverse_photons_sympy_audit.py` ⚠ **superseded** | — | ⛔ **unmeasured** | gate cannot parse it: **duplicate emitted tag** `S10_D_TABLE_ROW` — itself a finding |
 | `S11_stray_longitudinal_sympy_audit.py` | 79 | 16 | ⚠ only **1 of 6** perturbations informative |
 | `S11bA_interface_response_sympy_audit.py` | 44 | 5 | 6/6 perturbations ran |
 | `S11bB_interface_assembly_sympy_audit.py` | 133 | 13 | ⛔ 3 are symbol-name echo, ⛔ and the CONSTANT side over-counts |

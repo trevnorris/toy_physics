@@ -1,476 +1,102 @@
-# ▶▶ SCRIPT REBUILD — read this before anything else in v3
+# Script rebuild — state and what's next
+
+Read `CLAUDE.md` first (how we work), then this (where we are).
+Process detail: `docs/development_pipeline.md`. Defects: `DEFECT_REGISTER.md`.
+
+Last updated 2026-08-05, end of session.
 
 ---
 
-# ⛔⛔⛔ STATE, 2026-08-05 (end) — **TWO BUILDS WERE REVERTED. THEY WERE NEVER REVIEWED.**
+## Where S10 stands
 
-⛔⛔ **Read this box before anything else in this file, because parts of what follows describe work that
-has been REVERTED.**
-
-On 2026-08-05 two Codex builds landed and were committed **without a fresh-agent leg and without a Grok
-leg** — the engine 2 `Q7` repair (`bd5819cc`) and harness part A (`92461853`, which also carried a rewrite
-of the S10 step record and an ablation script). ⛔ **Both are reverted** by `ab77f25d`.
-
-⚠ **Nothing is lost.** The tag **`wip-2026-08-05-unreviewed`** points at `92461853`; both builds are
-reachable and can be re-landed **once reviewed**.
-
-⛔⛔ **THE FAILURE, so it is not repeated:** I reviewed the *directive*, got a good result, and treated the
-tax as paid for the *workstream*. Then I substituted my own verification for the build reviews — re-ran
-the engine, confirmed a control varied per package, matched 18 objects across engines, ran an ablation
-script written in advance. ⚠ **All real work; all mine.** ⭐⭐ **The tell: my checks kept FINDING things,
-which made them feel like they were doing the review's job.**
-⇒ [[feedback-no-commit-before-legs-report]], [[feedback-correctness-is-king-cost-irrelevant]].
-
-⭐ **THE GATE, now:** ⛔ no build is committed until **both** legs report; ⭐ legs launch in the same
-message the build is verified; ⛔ **one writer on the tree at a time** — a second Codex was editing the
-very file the legs were reading, which forced them to be killed and relaunched.
-
-## ⭐ WHAT SURVIVES, and why each is not my unreviewed work
-
-| kept | why |
+| | state |
 |---|---|
-| `directives/S10_harness_repair_directive.md` | ⭐ **two legs**, which found my first version would have produced a layer **79% dead** |
-| `directives/S10_SPEC_CONSISTENCY_FINDINGS.md` | an **independent** pass, ⛔ not mine |
-| `directives/S10_py_repair3_directive.md`, `..._partB_directive.md`, `..._spec_rewrite_directive.md` | ⚠ **UNREVIEWED — each needs two legs before its build** |
-| S9 `out/` (`3ce3d16c`) | mechanical engine output; reproduces the three numbers its record cites |
-| this file's account of the cross-engine finding | produced by an independent classification leg |
+| **The mode count** — `ν_T = D − rank([M_r; kᵀ])`, `D−1` transverse | **Established.** Both engines compute the stacked rank independently; a leg confirmed all 26 generic `N3` tags present in both with no payload mismatch. Not re-verified this session. |
+| **Q7** — the `D=3` form-and-normalisation comparison | **Broken.** SymPy hardcodes a fixed curl density and ignores the package (`…sympy_audit.py:1538`); Mathematica uses the package's own (`…wl:1312`). The spec instructs *both*, which is why. Repair directive ready. |
+| **Cross-engine comparison** | **Does not run.** The harness reader rejects 220 of the Mathematica engine's 2983 payloads, including the Lagrangian and the Euler–Lagrange system, so the dimension and ablation layers never see the action. |
+| **The step record** | **Reverted.** Must be rewritten with the disclosures below. |
 
-## ⛔ WHAT MUST BE REDONE, in order — ⛔ each with BOTH legs
-
-⚠⚠ **UPDATED 2026-08-05 — items 1 and 2 HAVE now had their two legs, and BOTH came back negative.**
-⭐ That is the finding; ⛔ neither artifact is landable as written.
-
-1. ⛔⛔ **`S10_py_repair3_directive.md` — UNSAFE TO BUILD FROM** (Codex leg; Grok leg said "safe", ⇒ ⭐ the
-   legs DISAGREED and the disagreement is why there are two). ⛔ **Its self-proof ablation FALSE-PASSES.**
-   ⚠ Measured, ⛔ not argued: a probe wiring Q7 to the **package selector** and never to the action reports
-   `TARGET_Q7_MOVED=True OTHER_Q7_UNCHANGED=True R1_BOX_OBSERVATION_PASSES=True` with
-   `Q7_HAS_ACTION_OBJECT_ARGUMENT=False` ⇒ ⛔ the control passes an implementation that still violates §4.
-   ⇒ ⭐ **THE ORDER CHANGES — the SPEC goes first:**
-   a. ⭐ **Rewrite spec §Q7.** ⛔ Line 371 says emit `S_curl[∂u]`; line 379 says compare the package's OWN
-      stiffness density. ⇒ **different objects**; PY implemented the first, WL the second. ⚠ And WL reads a
-      **stored** `StiffnessDensity` field (`WL:218-221`), ⛔ not `L` itself — ⇒ the rewrite must say whether
-      that satisfies §4 at all. ⭐ Also fix: `directive:78` forbids renaming tags while `spec:383` **orders**
-      it.
-   b. ⭐ Strengthen R1's ablation to an **action-only mutation with the selector held fixed.**
-   c. ⭐ Rewrite R2 as an **inference diagnostic** — ⛔ its "scale factor" framing misdiagnoses a CAS gap.
-      ⚠ Both legs agree, and a probe settles it: `Q.positive(s_rho)` is already in force (`engine:294`), and
-      supplying `WEIGHTED_SUM_POSITIVE` **still** returns undecided.
-   d. ⭐ **Then** the engine repair.
-2. ⛔⛔ **Harness part A — REBUILD, ⛔ do not re-land** (both legs, independently). ⭐ Four structural faults:
-   - ⛔ **The new guards are keyed on `main_package`** (`:1010`, `coverage_required=main_package is not None`),
-     which ⛔ **only S10's config declares** ⇒ the original silent-zero is **untouched for S9**. ⚠ Measured:
-     renaming S9's `_X<n>_` tags gives `compared=0 uncovered_fraction=0.000000` — ⛔ **greener than the
-     healthy run.**
-   - ⛔ **`uncovered_fraction = uncovered/(compared+uncovered)`** is a fraction of what the engine **emitted**
-     ⇒ ⛔ **deleting output turns the guard green** (835 of 836 main tags deleted ⇒ `0.000000`).
-   - ⛔ **A declared control absent from a whole `D` is silently dropped** ⇒ 215 `XFORM_SIGNFLIP_D3_*` tags
-     deleted and **every counter is byte-identical**, `missing_declared=[none] matched=5`.
-   - ⛔ **`compared` is inflated by a check true by construction** — the `Pow` site fires on literal integer
-     exponents; **143 of 503** compared tags had no rule/relational/add comparison; **292** tags fall in
-     **no bucket at all.**
-   ⛔⛔ **AND ITS HEADLINE NUMBERS ARE UNREPRODUCIBLE FROM THE TREE:** as committed, `check_dimensions`
-   **raises** and `format_report` is never reached ⇒ S10 prints **nothing**. The quoted
-   `compared=503 vacuous=1663` appears only with `derived_dimensions` **blanked**; supplied properly it is
-   **509/1699**. ⇒ ⭐ **the part A/part B split is drawn in the wrong place** — part A cannot be exercised on
-   any config this repository contains.
-   ⚠ ⛔ **It also edited `steps/` and this file, which its own directive forbade**, landing a step record
-   asserting *"Nothing in the recorded result disagreed"* on a harness run that cannot be reproduced.
-   ⭐ **`A5` must re-land WITH the regenerated `.wl` output** — ⛔ otherwise S10 is unrunnable either way
-   (old harness + tree `.out` ⇒ `duplicate emitted tag Solve`; new harness + tree `.out` ⇒ `rejected invalid
-   tag line`).
-   ⚠ ⭐ **And `reduction/harness_ablation.py` is itself defective in the direction of OVER-TRUST:** its field
-   regex captures `-?\d+`, ⛔ **truncating `uncovered_fraction=0.624402` to `0`** ⇒ it cannot read the one
-   number the new guard rests on; `timeout=900` exceeds the 600 s budget; and `abs(hash(...))` seeding is
-   per-process randomised ⇒ ⛔ not reproducible.
-3. ⛔ **Review `S10_harness_repair_partB_directive.md`** (2 legs) before any part B build. ⚠ Fold `2`'s
-   finding first — the split itself is in question.
-4. ⛔ **The S10 step record rewrite is reverted and must be redone** — ⚠ a document I wrote, so it needs a
-   leg like anything else. ⛔⛔ **Do not write it until the harness produces numbers reproducible from the
-   tree**, and ⛔ it must disclose that `Q7`'s verdict was SUPPLIED and that `homogeneous` is largely vacuous.
-5. ⛔ **`DEFECT_REGISTER.md#f7`** — the boolean/number false-agreement, ⭐ deferred until S10 closes.
+**The critical path is the harness, not the spec.** Everything else is downstream of being able to compare
+the two engines at all — and the Q7 directive now explicitly says provenance rests on cross-engine
+comparison, so that claim is load-bearing.
 
 ---
 
-# ⚠ BELOW THIS LINE: STATE AS OF MID-2026-08-05 — ⛔ some of it describes reverted work
+## What's next, in order
 
-## ⛔⛔ THE BLOCKERS WERE NOT ALL PLUMBING — ⚠ an earlier version of this file said they were
-
-⭐ **Diagnosing them (2026-08-05) found more than the three listed, and two of the extras were not
-interface mismatches at all.** ⛔ **Do not repeat the claim that no physics result was in question.**
-
-⛔⛔ **THE ONE THAT MATTERED: the ablation layer had been comparing NOTHING.**
-`CONTROL_TAG_PATTERN` matches `_X<digits>_`, which is how **S9** named its control packages. §8 renamed
-S10's to words (`XFORM_FULLGRAD`, `XCOEF_SCALE`, …). ⚠ **Zero S10 tags match**, so `_package_layout`
-returns empty and both layers built on it report `compared=0 responsive=0 invariant=0` and
-`packages=0 gaps=0` — ⛔ **which reads as health.** ⭐ The same harness on S9 reports `compared=170
-responsive=150`, so the layer works; **a spec change was never traced into the instrument that parses
-it.** ⇒ that layer is the one thing distinguishing a computed output from a typed one.
-
-⛔ **AND: `check_control_response` and `check_dimensions` both receive only the DEFAULT engine.** ⇒ the
-SymPy engine has never been ablation-checked or dimension-checked at all.
-
-⛔⛔ **`homogeneous` is mostly not a measurement.** ⚠ Measured: **1699 of 2139** tags counted homogeneous
-had **zero** dimensional comparisons performed — the counter increments when no complaint was recorded,
-so a payload of `{}` or `2` scores as passing. ⚠ **S9's cited `1219/1219 homogeneous` is the terminal
-form of this.** ⭐ Treat it as disclosed, ⛔ not as verified.
-
-⚠ `TAG_PARITY` is **intra-engine** (each control against its own engine's main), never engine-vs-engine,
-though its name and the config header both say cross-engine.
-
-⭐ **The plumbing three were real too** and are specified in `directives/S10_harness_repair_directive.md`:
-Mathematica `Solve::svars` reaching stdout; `derived_dimensions` unable to take a symbolic-in-`D` payload;
-and unable to take a **list** of per-coefficient dimensions. ⚠ The dimension table is **single-`D`** while
-S10 sweeps `D=2..5`, so the `_SPECIALIZED` workaround silently applies one `D`'s dimensions to every
-package — ⭐ point it at the **symbolic** tags instead.
-
-## ✅ What IS done
-
-| artifact | state |
-|---|---|
-| `directives/S10_SHARED_PHYSICS.md` | reviewed (Codex+Grok) + **6 amendments**, all leak-gated |
-| `mathematica/S10_brane_mode_spectrum_mathematica_audit.wl` | **2983 tags**, 64 s, exit 0 — built blind, reviewed ×3, repaired ×3 |
-| `scripts/S10_brane_mode_spectrum_sympy_audit.py` | **4227 tags**, 150 s, exit 0 — reviewed ×2, repaired ×2. ⛔ The Q7 repair is REVERTED |
-| `mathematica/out/` + `scripts/out/` | ⭐ **engine output is now COMMITTED EVIDENCE** (v2's convention, adopted in v3 at last) |
-| `reduction/checks_S10.yaml` | 677 name pairs; `parity_exclude: _LOCAL_` |
-| `reduction/engine_output_checks.py` | `parity_exclude` added, parity layer only |
-
-⭐ **Both engines' computed chains are verified LIVE by form ablation on independent legs** — `N3` (stacked
-rank), `N7` (two different algorithms), both matrix routes under one-sided corruption **in both
-directions**, per-package re-entry at the action, the dimension tree walk, and Q7's two independent sides.
-
-## ⭐⭐ THE CROSS-ENGINE LAYER EARNED ITS KEEP — read this before doubting the two-engine cost
-
-⭐ Once the dimension blockers were prototyped away, **173 pairs disagreed**. An independent
-classification leg reconciled **163** as symbol-name, rendering, or unpinned-choice differences —
-⭐ each **demonstrated** by CAS, ⛔ not asserted. Of the ten that survived:
-
-- ⛔⛔ **Four were one real defect: `Q7`'s form control was DEAD in engine 2** — its stiffness payload was
-  **byte-identical across all six packages**, including the two whose only purpose is to change the
-  stiffness form, so its residual was `0` **by construction.**
-  ⚠ **The cause was a SPEC defect, ⛔ not an engine defect** ⇒ `S10_SPEC_CONSISTENCY_FINDINGS.md`.
-  ⛔⛔ **The repair was built and then REVERTED for lack of review — ⛔ the defect STANDS in the tree.**
-  ⚠ The build is reachable at `wip-2026-08-05-unreviewed`; ⭐ redo it through the legs, ⛔ do not
-  cherry-pick it back unreviewed.
-- ⚠ **Six were a spec ambiguity** — whether a declared-dimensionless control factor enters the `Q6`
-  dimension solve as an unknown. One engine says 9 unknowns, the other 6. ⭐ **Both reach the same
-  determinacy verdict and the same coefficient dimensions**, so the physics is unaffected.
-
-⛔⛔ **AND THE COUNT DID NOT MOVE.** Before the repair: `agree=446 disagree=100`. After: **identical** —
-because the `Q7` rows shifted from *different objects* to *same object, different symbol spelling*.
-⇒ ⭐⭐ **The disagree count is NOT a quality metric.** ⛔ Never read it as one; the buckets are the result.
-
-## ⛔ REMAINING, in order
-
-1. **`directives/S10_harness_repair_directive.md`** (part A: the ablation layer), then a part B for the
-   Mathematica reader and the dimension table. ⚠ **220 payloads are UNPARSED**, and 58 of the unparsed
-   cross-engine rows include `Q1_LAGRANGIAN` — ⛔ until that lands the dimension and ablation layers never
-   see the action at all.
-2. ⛔ **Verify the harness by ABLATING THE HARNESS** — ⛔ never by reading its self-report.
-   ⭐ An independent ablation script exists, written **before** the repair and deliberately kept **out of
-   the repo** so the build could not be coded to it. ⚠ It is in the session scratchpad; ⭐ commit it once
-   the build lands.
-3. **Write the step record** (orchestrator's job). ⛔⛔ **It must disclose that `Q7`'s VERDICT was
-   SUPPLIED** — §Q7 line 385 told both engines the residual is expected to be nonzero for non-curl
-   packages — ⚠ and that the `homogeneous` count is largely vacuous.
-4. **`directives/S10_spec_rewrite_directive.md`** — ⛔ launch only **after** the step record cites the
-   current text.
+1. **Harness rebuild** — `directives/S10_harness_rebuild_directive.md` (commit `bed199a8`).
+   Needs two legs (orchestrator-written → Codex + Grok), then build, then two legs on the build.
+   `D8` is the item that matters: the reader hardcodes a derivative shape from S9, which swept one
+   dimension, while S10 sweeps four.
+2. **Q7 spec repair** — `directives/S10_spec_Q7_repair_directive.md` (commit `fcda865a`).
+   Three review rounds done; the finding class has moved from "this check cannot fail" to "this sentence
+   claims too much", which is convergence. Build, then two legs.
+3. **Rebuild SymPy's Q7** so it emits the density its action used.
+4. **Write the step record.** Orchestrator's job. Must carry every disclosure below.
 5. **TeX card** — Codex, with its own two legs.
-6. ✅ **S9 `out/` retro-fit — DONE** (`3ce3d16c`). ⭐ Re-running the S9 harness over the freshly generated
-   pair reproduces the three numbers the S9 record cites exactly.
-   ⚠ **It also showed the unit suite is red**: `test_engine_output_checks.py` reads `/tmp/s9_wl.txt` and
-   `/tmp/s9_py.txt`, which are **1487 and 590** lines against the engines' actual **1559 and 635**.
-   ⇒ ⭐ point the tests at `out/`.
-
-## ⚠ KNOWN LIMITS — ⛔ do not let these pass silently into the record
-
-- ⛔ **Cross-engine coverage is a SUBSET: 677 pairs out of ~2900 candidates.** ⚠ **This is a SPEC gap of
-  mine, ⛔ not an engine defect** — §8 pinned the tag **prefix** grammar and never pinned the **quantity
-  names**, so both engines obeyed it and still diverged (`Q5_ORIGINAL_ROOT` vs `Q5_ROOT_ORIGINAL`; engine 2
-  suffixes dimension info onto object names where engine 1 emits separate families).
-  ⇒ ⭐ **Pin quantity names in the spec before S11.**
-- ⚠ **Several rounds rested on ONE review leg, not two** — grok was unavailable (per-user lock, and later a
-  machine-wide memory exhaustion). ⇒ [[feedback-grok-single-instance-per-user]].
-- ⚠ `parity_exclude` matches by **substring**; the builder flagged that as blunt and an anchored
-  engine-prefix convention would be safer. ⭐ Agreed, not yet done.
-- ⚠ **Runtime margin is thin.** Modest form ablations pushed both engines past 600 s, always in
-  `XFORM_ANISO`.
-
-## ⭐⭐ SIX SPEC AMENDMENTS — the durable output of this step, ⭐ and FOUR WERE MY OWN DEFECTS
-
-⚠ Three of the four were introduced **by repairs fixing something else**, and **every one was caught by a
-review leg reading the spec end-to-end**, ⛔ never by a build failing.
-
-1. **Phase average** — the period was written with `ω`-dependent `t` limits, which are a real period only
-   if `ω` is real and nonzero, **precisely the case Q3 exists to detect**.
-2. **`[u] = length`** — never stated; both engines invented it and happened to agree.
-3. **Q5 contradicted corollary 4** — it told the builder to emit some tags only when a value existed.
-4. **Q6d** — the homogeneity check is **structurally vacuous** and cannot be repaired by a cleverer check
-   (`[u]` cancels in every coefficient ratio); ⇒ emit the equation/unknown counts and **label** it.
-5. ⭐⭐ **Corollary 5 — A DECLARATION MUST BE WIRED TO WHAT IT DECLARES.** Both engines typed their premise
-   tags as second literals; one kept printing its old value while **281 dependent payloads moved**.
-   ⭐ **The test: perturb what the tag declares; it must move.**
-6. **The run record must be OBSERVED**, not declared before the sweep.
-
-⇒ ⛔⛔ **THE SPEC IS NOW ~490 LINES AND HAS TWICE CONTRADICTED ITSELF FASTER THAN BUILDS SURFACED IT.**
-⭐ **Do a consistency pass over it as its own step before S11 inherits it.**
 
 ---
 
-## ⭐⭐⭐ WHAT WAS FOUND
+## Deferred deliberately — kept, not lost
 
-An engine script can write `emit("TAG", "prose stating a conclusion")` where **no computation in the script
-produced that conclusion**. The tag looks like output. It is a typed sentence. ⚠ Cross-engine agreement on
-such a tag is **vacuous** — both engines carry the same author's sentence.
+Scope decision (user, 2026-08-05): **keep S10 to S10.** These buy future comparability, not S10's
+correctness.
 
-Measured with `reduction/derived_or_declared.py` (built 2026-08-04, ⚠ uncommitted at time of writing):
-
-| engine | tags | gate says DERIVED | notes |
-|---|---|---|---|
-| `S10_two_transverse_photons_sympy_audit.py` | — | ⛔ **unmeasured** | gate cannot parse it: **duplicate emitted tag** `S10_D_TABLE_ROW` — itself a finding |
-| `S11_stray_longitudinal_sympy_audit.py` | 79 | 16 | ⚠ only **1 of 6** perturbations informative |
-| `S11bA_interface_response_sympy_audit.py` | 44 | 5 | 6/6 perturbations ran |
-| `S11bB_interface_assembly_sympy_audit.py` | 133 | 13 | ⛔ 3 are symbol-name echo, ⛔ and the CONSTANT side over-counts |
-
-⛔⛔ **DO NOT QUOTE A FRACTION. An earlier version of this file said "only ~10–20% of tags depend on any
-computation"; BOTH review legs rejected it and they were right.** ⚠ The `DERIVED` column is a **lower
-bound** and the `CONSTANT` column is **not a count of typed prose** — the gate cannot see dimension tables,
-cannot see through an `assert`, and uses only six collapse pairs.
-⚠ **Verified false negative:** `Zperm_difference` at `S11bB:136-139` is **genuinely computed** and emitted
-at `:342`, yet the gate calls it CONSTANT — because it is asserted zero, so it always prints `0`.
-
-⭐ **What IS established, by SOURCE READING and confirmed independently by two legs:** specific named tags
-at specific lines are typed prose with no CAS object — `S11BB_PORT_DISSIPATIVITY` through
-`S11BB_COEFFICIENT_ADMISSIBILITY` (`:348-360`), and the whole transverse block (`:467-471`, where the symbol
-`mu_R` appears in **no expression in the file**). ⇒ ⭐ **the defect is located, not quantified**, and it
-appears in **three independently-built steps** with different review histories. ⛔ Not one bad script.
-
-⛔⛔ **THE MATHEMATICA ENGINES ARE COMPLETELY UNMEASURED.** The gate is Python-only. S11b-B's `.wl` is
-**known** to carry the identical defect (`hInt` at line 86, assigned and never referenced). ⇒ treat the
-`.wl` corpus as **unmeasured, not clean.**
-
-### ⚠ How it evaded eight review legs
-
-Every review was a **fidelity** review — *does the artifact match its source?* Under that question a prose
-tag is **perfectly faithful**: the card says what the step record says, which says what the engine printed.
-⭐ **Every hop is locally correct and the chain certifies nothing.**
-
-⇒ The only leg that found it was one instructed to **ablate** — break something and check the output moved.
-⭐ *"Does it say the right thing"* and *"does it depend on anything"* are different questions, and only the
-second catches this.
+- **The contract rewrite** — `directives/S10_spec_rewrite_directive_v2.md` plus
+  `directives/S10_contract_DEFERRED_findings.md`, which holds two legs' findings on it including two
+  attacks that got through and an unconstructible oracle node. Neither applied. Revisit before S11.
+- **`DEFECT_REGISTER.md#f7`** — the comparison kernel equates a boolean with any nonzero number.
+  Pre-existing. Measured exposure: **zero** cross-engine pairs on either S9 or S10 put a boolean on either
+  side, so no agreement number is contaminated. The harness directive asks for a **tripwire** rather than
+  the fix, so the deferral stays safe by construction rather than by a measurement that ages.
+- **§8's quantity registry, the payload serialiser, the sign classifier, the Q6d unknown count.** All
+  known-defective, all recorded. One narrow exception is *in* scope: `§8` has no stratum scope token, so
+  the two engines emit different raw names for the Q8 stratum mode counts (`E7` in the repair directive).
 
 ---
 
-## ⭐⭐⭐ THE STANDING RULE — the whole fix in three clauses
+## Disclosures the step record must carry
 
-> **1. A script may PRINT computed objects. It may NOT state conclusions.**
-> `emit()`'s payload must be a CAS object — an expression, a solved root, a boolean from a symbolic test.
-> ⛔ Never author prose describing a result.
->
-> **2. EMIT BOTH OPERANDS AND THE RESIDUAL, then guard.**
-> ⛔ **A residual that is asserted zero always prints `0` and carries no information.** ⚠ **Measured:**
-> `Zperm_difference` (`S11bB:136-139`) is genuinely computed, asserted zero, and emitted at `:342` — its
-> printed `0` says nothing about whether the hand-typed `Zperm_given` it was compared against is right.
-> ⇒ ⭐ **Emit the INDEPENDENTLY DERIVED object itself**, alongside the candidate and their difference. The
-> derived operand carries the evidence; the residual only carries the agreement.
-> ⚠ A guard is still **correct** — a failed invariant must not let downstream emit garbage. ⭐ Emit first,
-> **then** hard-stop. ⛔ An earlier version of this file said *"do NOT assert"*; that was wrong, both legs
-> caught it, and it is **retracted**.
->
-> **3. Interpretation belongs to the STEP RECORD, not the script.**
-> The orchestrator writes what a printed value *means*, citing it. ⛔ The script does not editorialise.
-
-⭐⭐ **This is a STRUCTURAL control where blindness was a behavioural one.** Remove the slot a typed answer
-goes in and you no longer depend on hiding the answer.
-⛔⛔ **THIS DOES NOT ABOLISH THE BLIND `.wl`, AND AN EARLIER VERSION OF THIS FILE IMPLIED IT DID.** ⭐ Two
-engines exist so they can **DISAGREE**; that is about **independent construction**, ⛔ not about hiding a
-result. ⇒ **Keep: `.wl` written first, barred from the registry and from the `.py`.**
-⇒ **Drop: quarantining answers from the builder.** Those are different mechanisms and the old docs conflate
-them.
-
-⭐ **The good pattern already exists in our own code** — `S11bB:421-443`: type a candidate `K0_slice`,
-compute the determinant **independently**, `emit` **the derived polynomial itself** *and* the difference,
-hard-stop if nonzero. ⇒ ⭐ **That emitted derived object is exactly what `Zperm` lacks**, and it is why `K₀`
-is the file's one solid result. **Copy this shape, including the emitted operand.**
+- **Q7's verdict was supplied.** `S10_SHARED_PHYSICS.md:384-385` tells both engines the residual is
+  expected to be nonzero for non-curl packages, and `:380-382` states the measured failure shape. The
+  residual is a computed polynomial; the judgement of what it should be was given.
+- **The `homogeneous` counter is largely vacuous** — 1699 of 2139 counted-homogeneous tags had zero
+  comparisons performed. S9's cited `1219/1219` is that same counter: disclosed, not verified.
+- **Cross-engine coverage is a subset** — 677 configured pairs against ~2900 candidates. §8 pinned the tag
+  prefix and never the quantity names, so both engines obeyed it and still diverged.
+- **Provenance rests on cross-engine comparison**, not on Q7's residual. Nothing inside a single engine
+  establishes that the emitted density is the one its action used — a leg proved the mutation test
+  establishes dependence, not identity.
+- **Prior art.** The light-sector algebra is MacCullagh's rotational aether (1839); curl-only stiffness
+  giving `D−1` transverse modes plus a zero-restoring-force longitudinal is textbook continuum mechanics
+  (Whittaker Ch. V). The record must **cite** it — it currently reads as though the mode structure were
+  earned from our own postulates. Prior art is an **oracle, never a premise**.
+- **S10 linearises about an unstrained brane** (`v₀ = 0`), which *is* MacCullagh's regime. So S10's
+  agreement with him is not evidence our medium differs from a 19th-century aether — the divergence
+  (compressibility, the background flow, the out-of-plane channel) is scheduled, not demonstrated.
+- **What is genuinely ours** and should go in the Departure field: the `D`-sweep and the statement that the
+  bulk never enters (he had no bulk); the in-plane/out-of-plane split; the longitudinal kept deliberately
+  as the charge anchor. And for each of the three things that killed the elastic-aether programme —
+  longitudinal modes, preferred frames, matter–aether coupling — what this model does instead, and whether
+  it escapes or just relocates the problem.
 
 ---
 
-## ⭐⭐ WHAT TO SUPPLY, AND THE ONE THING TO WITHHOLD
+## Pinned
 
-⛔⛔ **DO NOT BLIND THE INPUTS. THIS WAS MY ERROR AND THE USER CORRECTED IT** (2026-08-04):
-> *"I feel like it's unreasonable to say, here is only plain english do some complex calculations from it.
-> … AI sucks at doing math, even in CAS. It needs some proper hand holding."*
-
-⭐ **Under-specification has cost this ledger far more than contamination ever has.** Measured: `∇·u` fell
-out of a spec **four times**, every time it was prose instead of an equation; and S11b-A's first
-whole-interface spec described a system with **no linear coupling at all**, which both engines would have
-faithfully turned into *"the longitudinal does not couple."*
-
-| ⭐ **SUPPLY, in full, as EQUATIONS** | ⛔ **WITHHOLD** |
-|---|---|
-| the physical setup, field content, governing equations | ⛔⛔ **any acceptance criterion that references an expected value** |
-| supplied premises, explicitly flagged as unfalsifiable-by-this-build | |
-| the list of quantities to compute (⭐ a **question list** — leak-free by construction) | |
-| the standing rule above | |
-
-⭐⭐ **The risk is NOT a faked computation. It is the "fix until it matches" loop.** Codex iterates to
-exit 0; if *"matches the recorded value"* is the exit condition, it will get there, and a genuine
-disagreement — **the most valuable output available** — becomes silent confirmation.
-
-⇒ ⭐ **The builder's job ENDS at compute-and-print. The diff happens on our side, afterwards**, where a
-mismatch is a **finding**, ⛔ not a build failure.
-
-⛔⛔ **BE HONEST ABOUT WHAT THIS BOUNDARY IS: it is ANTI-TUNING, ⛔ NOT a seal.** Both legs made this point.
-A complete equation set **largely determines the answer**, and a builder can hard-code the resulting CAS
-expression with no prose and no computation. ⇒ ⭐ **withholding the acceptance criterion stops the
-fix-until-it-matches loop and nothing else.** ⛔ Do not treat it as blindness.
-
-⚠ Consequence: this runs **in-repo like any normal build** — ⛔ no quarantine of answers from the builder,
-no sandbox, no outside-the-repo directory. ⭐ **The blind `.wl` is retained** (see the standing rule):
-independent construction, ⛔ not answer-hiding.
+- **`s10-as-built`** (`9309da70`) — the spec, both engines and both outputs as they actually ran. The step
+  record cites these blobs, not any rewritten spec.
+- **`wip-2026-08-05-unreviewed`** (`92461853`) — two builds that were committed without review and
+  reverted. Reachable, not lost. Do not cherry-pick unreviewed.
 
 ---
 
-## ▶ THE PLAN
+## Known limits of the instrument
 
-⭐ **Budget: under two days** (user, 2026-08-04). ⚠ A review leg estimated "multi-week"; ⛔ **that is wrong
-and the reason matters** — the original build's cost was **discovery**: figuring out the process, walking
-the physics side by side, eleven directive revisions on S11b-B, two rejected whole-interface designs.
-⭐ **All of that is already paid.** The rebuild turns existing equations into computations. ⚠ The only thing
-that can blow the estimate is a genuine **disagreement**, and each one is a **finding** — ⇒ the schedule
-slips only in proportion to how much is actually wrong, which is the outcome worth paying for.
-
-### Order — ⛔ dependency order, not convenience
-
-```
-S9 (BOTH engines)  →  S10  →  S11  →  S11b-A  →  S11b-B
-```
-
-⚠⚠ **CORRECTED 2026-08-04 — this line read `S9 (.wl only)` and that was wrong.** It inherited
-`LAUNCH_PROMPT.md` OWED 2b, which stamped an orchestrator's decision with the user's name. ⛔ **The user
-never made it**, and has never written a line in this repo. ⇒ **S9 gets a SymPy engine like every other
-step.** The old exemption's rule was *conditional* — *"a second engine earns its place where the algebra
-is long enough that it could genuinely DISAGREE"* — and its condition **expired** when the 26-tag script
-became a 316-tag engine. ⇒ [[feedback-attributions-are-my-paraphrase]].
-
-⚠ S11b builds on S11, which builds on **S10's mode count**. ⛔ If S10 is wrong the rest inherits it.
-⭐ Each step: **both engines**, blind `.wl` first.
-
-⛔⛔ **THE CHAIN IS NOT CLOSED — these enter from outside it and a rebuild CANNOT falsify them.** List them
-as premises in each step record: **S9** consumes the charter and Maxwell (`S9:110`); **S11** adds the
-postulated `B_comp` (`S11:118`); **S11b-B** receives supplied affinity, branch prescription, mass balance,
-virtual-work rule and row structure (`S11bB record:136`).
-
-### Per step
-
-1. **Leak-gate the existing spec** — `directives/*_SHARED_PHYSICS.md`. ⭐ Strip stated **conclusions**;
-   ⛔ keep **every equation**. ⚠ S11b-B's spec went through **eleven revisions**, several written *after*
-   engine results existed, so it does contain conclusions. This is a strip, ⛔ not a rewrite.
-2. **Build the question list** — what to compute, ⛔ never what it equals.
-3. **Build under the standing rule.** Objects printed, residuals emitted before assertion.
-4. **Run `reduction/derived_or_declared.py` on the result.** ⛔ It must not be the *only* check — see its
-   limits below — but a script that still shows mostly CONSTANT has not been fixed.
-5. **Reviewer runs the script and reads the printed outputs.** ⭐ This is now possible because there is
-   real output to read. ⛔ Mandate a **FORM ablation** in every review prompt — it is the only thing that
-   caught this.
-6. **Diff the printed values against the recorded step record, ourselves.** Three buckets:
-   - **agrees** ⇒ genuinely verified, for the first time
-   - **disagrees** ⇒ ⭐ a real physics finding — ⛔ do NOT reconcile it, record it
-   - **not computable** ⇒ the claim was always a supplied premise ⇒ **declare it as one**
-
-### ⚠ Expect the third bucket to be large, and that is an honest outcome
-
-⛔ **Do not try to make all 256 tags derived.** Many are definitions, conventions, or supplied premises.
-⭐ The deliverable is a corpus where **what is derived is derived, and what is supplied says so.**
-
----
-
-## ⚠ WHAT ALREADY SURVIVES — ⛔ do not redo this
-
-- ✅ **`K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀² > 0`, and the slice roots.** Genuinely derived: candidate typed,
-  determinant computed independently, symbolic difference printed, hard stop if nonzero. ⭐ Verified by
-  direct source reading 2026-08-04.
-- ✅ **Onsager route agreement in the `.wl`** (`onsagerRoutesAgree = zeroQ[...]`, line 94) — computed and
-  folded into the verdict. ⚠ The SymPy side only describes it in comments.
-- ⚠ **The passive/admissibility region is CORRECT but NOT machine-derived.** ⭐ Three independent **hand**
-  derivations agree (orchestrator + both review legs, 2026-08-04). For a Hermitian `[[a,b],[b*,0]]`,
-  `det = −|b|² ≥ 0` forces `b = 0`, giving the region in three lines. ⇒ ⭐ **a rebuild should be able to
-  reproduce this; if it cannot, that is a finding.**
-- ⚠ **The transverse null's ARGUMENT is correct** — every scalar invariant contains `∇·u`, and transverse
-  projection annihilates `∇·u`. ⛔ But **no engine ran it**, and `mu_R` appears in **no expression** in the
-  SymPy engine at all.
-
----
-
-## ⚠ THE GATE'S OWN LIMITS — established by review, ⛔ do not over-trust it
-
-`reduction/derived_or_declared.py` classifies tags DERIVED/CONSTANT by symbol-collapse perturbation.
-
-- **L1** ⛔ It **cannot** test dimension tags (`S11BB_DIM_*`) — their text comes from a Python int-tuple
-  table containing no symbols. Nor `PASS`/`FAIL` homogeneity tags. ⇒ ~61 of S11b-B's 120 are in this class:
-  **not evidence either way.**
-- **L2** ⛔⛔ **The deep one.** Every check in these engines is `assert`ed *before* the first `emit`, so any
-  perturbation strong enough to flip a check **kills the process** ⇒ `SKIPPED` ⇒ no information.
-  ⭐ **Clause 2 of the standing rule fixes this at the source.**
-- **L3** ⛔⛔ **`CONSTANT` conflates *typed prose* with *computed and provably zero* — a VERIFIED FALSE
-  NEGATIVE.** `Zperm_difference` (`S11bB:136-139`) is genuinely computed, then asserted zero, then emitted
-  at `:342`; it always prints `0`, so the gate calls it CONSTANT. ⇒ ⭐ **the CONSTANT column is NOT a count
-  of typed prose, and must never be quoted as one.**
-- **L4** `MAX_PERTURBATIONS=6`; its selection never reaches `Lambda_*`, `tau_*`, `K_L`, `D_*`, `A_*`.
-  ⚠ One slot was spent on `mu_R`, a symbol used nowhere.
-- ⛔ **False DERIVED is real** — a tag that merely echoes an input symbol's *name* moves under collapse.
-  3 of S11b-B's 13 are this.
-
-⇒ ⭐ **The gate is a triage tool, ⛔ not a verdict.** Its CONSTANT list is **for adjudication.**
-
----
-
-## ⛔⛔ PROCESS TRAPS — all measured 2026-08-04, ⛔ do not repeat
-
-- ⛔ **Do not build blindness apparatus.** Two rounds of it were designed and discarded in one session.
-  The measured failure is **absence of computation**, ⛔ not anchoring on a known answer.
-- ⚠⚠ **A DELIBERATE CHOICE, ⛔ not an oversight — and an earlier version of this file contradicted itself
-  here.** Rebuilding every engine and diffing every printed value **IS** a full-corpus check. ⭐ Both review
-  legs argued for narrowing to load-bearing claims only; ⛔ **the user overrode that, with data** — the
-  original build took days *including* discovery, so the fuller thing is affordable and buys certainty the
-  narrow version cannot. ⇒ **Do the full rebuild. Do NOT re-litigate the scope**, and ⛔ do not quietly
-  scale it down after reading the review transcripts.
-- ⛔ **What that does NOT license: auditing tags for their own sake.** ⭐ When triaging *existing* output,
-  go at the **claims** the ledger makes — the cards, the registry,
-  `model_map.md`. Most tags are internal bookkeeping nobody cites. ⚠ v2 died from checks-on-checks.
-- ⛔ **A reviewer's finding is not a mandate — verify it yourself.** ⚠ Measured: a leg reported the `K₀`
-  boundary as "typed and never computed." ⭐ It is verified; reading lines 421–443 settled it in one pass.
-- ⛔ **Launch background jobs with `run_in_background: true`, never a shell `&`** — a `&` inside a
-  foreground call leaves the job untracked and no completion notification fires.
-- ⛔ **Pick acceptance tags that are genuinely derived.** ⚠ My own gate directive named
-  `S11BB_STABILITY_CONDITION` as a must-be-DERIVED acceptance tag; it passes only by echoing a typed matrix.
-
----
-
-## ⛔ ALSO OPEN, ⛔ not forgotten
-
-- ⛔⛔ **`DEFECT_REGISTER.md#f7` — the comparison kernel equates a BOOLEAN with any nonzero number.**
-  `symbolic_equal` uses `sp.Equivalent` when **either** side is boolean
-  (`reduction/engine_output_checks.py:764-768`) ⇒ `symbolic_equal(True, 999999) = True`. ⭐ **Verified on
-  the working tree ⇒ PRE-EXISTING**, ⛔ not from the reverted part A. ⭐ **Direction is benign**: it can
-  only move a tag RESPONSIVE → INVARIANT, so it **hides** evidence of computation and ⛔ never certifies an
-  uncomputed tag. ⭐ **S9's cross-engine agreement is NOT exposed** — 0 of its 12 configured pairs take the
-  branch. ⚠ **OWED, and ⛔ do this before S9's numbers are cited again:** re-run S9's *recorded*
-  configuration with the branch instrumented and report how many of the recorded **170** took it — the
-  probe measured a **different population** (1368 comparisons via `_package_layout`).
-  ⇒ **DEFERRED UNTIL S10 CLOSES** (user, 2026-08-05).
-- **The S11b retraction is committed** (`3e41b463`) and is **correct on its own terms**: the passive region
-  is a classification, ⛔ not a verdict, and A's velocity leak costs a **named reservoir** rather than being
-  forbidden. ⚠ Two review findings on it are **folded but unapplied**: (a) `Λ_A⁰ ≥ 0` has a
-  **thermodynamics-free** grounding (a pole crosses into the upper half-plane for `Λ_A⁰ < 0`) and was
-  over-demoted; (b) the `v₀` caveat is applied **selectively** — it must apply to everything in the
-  evanescent regime, including the Debye peak the same card sells.
-- **Per-step observational field** (user decision, 2026-08-04): every step states **what measurement bounds
-  this, and does it pass.** ⛔ Not yet implemented anywhere.
-- **S11b-C** — the non-uniform transverse coupling. ⚠ Its requirements are in `steps/S11b_HANDOFF.md`.
-  ⭐ Its pre-registered observational falsifier: *if a slit edge converted an O(1) fraction of a photon into
-  the thickness channel, diffraction gratings would not work.*
-- **The charge experiments** (user's, 2026-08-04) belong to the **charge sector**, ⛔ not C.
-  ⭐ Step zero is pure symmetry: under `w → −w`, `ζ` is odd, `e_W` is **even**, and charge is **odd**
-  ⇒ the thickness response to charge is **even in charge sign**. ⚠ `v₀` breaks that reflection, so the
-  charge-odd part is suppressed by the drain.
-- ⚠ `relations.yaml` is still **empty**.
+- The harness's ablation layer keyed on an S9 naming convention and matched **zero** S10 tags, reporting
+  `compared=0 responsive=0 invariant=0` — which reads as health. That is what the rebuild fixes.
+- Its coverage guard is scored against **what the engine emitted**, so deleting output improves it.
+- A declared control absent from an entire dimension is silently dropped from every counter.
+- `reduction/harness_ablation.py` reads counters with an integer-only regex, so it truncates a fractional
+  coverage value to `0` — it cannot read the number the coverage guard rests on.
+- Runtime margin is thin: modest form ablations pushed both engines past 600 s, always in the same package.

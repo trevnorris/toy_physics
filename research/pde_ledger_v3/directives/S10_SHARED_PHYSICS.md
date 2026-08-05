@@ -17,6 +17,11 @@ A **brane** is a `D`-dimensional elastic sheet. `D` is a free integer symbol thr
 The field is `u`, the **in-plane displacement**: a `D`-component vector field on the brane,
 `u_j(x_1, …, x_D, t)`, `j = 1…D`.
 
+⭐ **`u` is a DISPLACEMENT, so `[u] = length = (1, 0, 0)` in the `(length, time, mass)` slots.** ⛔ This is
+a **supplied premise**, ⛔ not something to infer — §6's dimension solve is under-determined without it, and
+two engines left to choose independently can pick differently and disagree for no physical reason.
+⭐ Emit it as a premise tag.
+
 ⚠ **SUPPLIED PREMISE — unfalsifiable within this build. State it in the output as a premise tag.**
 `u` is **in-plane only**. Motion *out of* the brane is a **different field** (the `h`-branon) belonging to
 a different sector, and it is **not** part of `u`. ⇒ `u` has exactly `D` components, ⛔ not `D+1`.
@@ -50,11 +55,20 @@ u_j(x, t)  =  a_j · cos( Σ_m k_m x_m  −  ω t )
 ```
 
 with `a` and `k` real `D`-component symbolic vectors, and **every quadratic density averaged over one
-period in `t`**:
+period of the PHASE**. ⛔⛔ **Average over the phase variable, ⛔ NEVER over `t` with limits containing `ω`:**
 
 ```
-⟨ F ⟩  ≡  (ω / 2π) · ∫_0^{2π/ω} F  dt
+φ  ≡  Σ_m k_m x_m  −  ω t                 the phase
+⟨ F ⟩  ≡  (1 / 2π) · ∫_0^{2π} F  dφ
 ```
+
+⛔⛔ **DO NOT WRITE THIS AS `(ω/2π) ∫_0^{2π/ω} dt`.** ⚠ Those limits are a real period **only if `ω` is
+real and nonzero**, and §6 Q3 exists partly to find roots where `ω²` is **zero or negative** — ⇒ that form
+integrates over a non-period **precisely in the case being hunted**, and would force a sign assumption on
+`ω²` into the matrix that the sign test later examines. ⭐ The phase average above has **no such
+dependence**: it is well defined whatever `ω²` turns out to be.
+
+⛔ Do **not** add any assumption about the sign of `ω²` anywhere in the construction of `M`.
 
 ⛔⛔ **DO NOT use `a_j exp(i(k·x − ωt))` with real `a`.** It does **not** define a real
 `(∂_i u_j − ∂_j u_i)²` — substituting `∂ → i k` multiplies that square by `i² = −1` and **flips the sign of

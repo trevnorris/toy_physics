@@ -9,15 +9,16 @@ this review, ⛔ not during it.
 
 `/var/projects/toy_physics/research/pde_ledger_v3/scripts/S10_brane_mode_spectrum_sympy_audit.py`
 
-Committed at `0ba72387`. It is **engine 1 of two**, written **blind**: barred from the registry, from the
-sibling SymPy engine (which does not exist yet), and from `steps/`.
+Committed at `0ba72387`.
 
+⭐ It is **engine 2 of two**, built from the shared physics alone. ⭐ **It IS required to read the registry
+under `research/pde_ledger_v3/reduction/`** — that is the one deliberate asymmetry between the engines, and
+⛔ **it is NOT a violation.** ⚠ But its directive restricts it to an **allowlist of registry FIELDS**
+(`symbol_name`, `dimension`, `value`) and ⛔ forbids following any **path-valued** field such as
+`source_locus`, because those point into `steps/`. ⭐ Check whether it honours that, and report **how**.
 
-⭐ It is **engine 2 of two**, built from the shared physics alone and **barred from the sibling Mathematica
-engine**, which it must not read. ⛔ **You must not read that sibling either** — it has been reviewed
-separately, and knowing its choices would make you check agreement instead of correctness.
-
-⚠ **A defect the reviewer of the sibling engine should NOT be told:** none. ⭐ Review this on its own terms.
+⛔ **It is barred from the sibling Mathematica engine, and so are you** — that sibling has been reviewed
+separately, and knowing its choices would make you check **agreement** instead of **correctness**.
 
 ## Its specification — ⭐ read this FIRST, in full, before opening the artifact
 

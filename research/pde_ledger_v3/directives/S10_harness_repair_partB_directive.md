@@ -1,3 +1,9 @@
+> ⛔⛔ **SUPERSEDED 2026-08-05 by `S10_harness_rebuild_directive.md`. ⛔ DO NOT BUILD FROM THIS FILE.**
+> ⚠ It was never reviewed. ⭐ Its `B1` (the reader) and `B2` (the dimension table) are folded into the
+> rebuild directive as `D8` and `D6` — ⭐ **`B1` is the item that blocks the action**, and deferring it to a
+> "part B" is what made part A unexercisable. `B3` (markers/strata, reporting only) is ⛔ **not** carried:
+> it is reporting polish, ⛔ not a way the physics could be wrong.
+
 # S10 harness repair, part B — make the reader see the ACTION
 
 **Primary file:** `/var/projects/toy_physics/research/pde_ledger_v3/reduction/engine_output_checks.py`

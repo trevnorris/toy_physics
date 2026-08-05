@@ -1,3 +1,8 @@
+> ⛔⛔ **SUPERSEDED 2026-08-05 by `S10_harness_rebuild_directive.md`. ⛔ DO NOT BUILD FROM THIS FILE.**
+> ⚠ Its build was reviewed by two independent legs and found **not re-landable**; ⚠ and both legs found the
+> part A / part B **split itself wrong** — the instrument cannot be exercised without part B's items.
+> ⭐ Everything still live has been folded into the rebuild directive. ⭐ Kept for its own review history.
+
 # S10 harness repair, part A — make the ABLATION layer measure the sweep
 
 **Primary file:** `/var/projects/toy_physics/research/pde_ledger_v3/reduction/engine_output_checks.py`

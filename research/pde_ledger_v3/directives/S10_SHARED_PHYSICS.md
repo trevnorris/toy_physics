@@ -300,7 +300,40 @@ Compute and emit:
 - The dimension of **every** emitted dimensionful expression, and its **homogeneity** — a boolean per
   expression, with the per-term dimension vectors emitted alongside so a failure is readable.
 
-⚠ Homogeneity is **blind to a wrong dimensionless coefficient.** ⇒ it is a layer, ⛔ not the answer.
+### ⛔⛔ Q6d · MAKE THE HOMOGENEITY CHECK'S OWN VACUITY VISIBLE — measured, ⛔ not hypothetical
+
+⚠⚠ **Measured on both engines, independently:** perturbing the supplied `[u]` moved **hundreds** of
+dimension payloads and moved **NOT ONE** homogeneity boolean — `0` of `552` in one engine. ⛔ **Those
+booleans cannot discriminate a wrong supplied field dimension**, and a reader seeing them all green will
+believe otherwise.
+
+⭐ **Why, and it is structural, ⛔ not a coding bug:** the coefficient dimensions are **solved for** by
+requiring each action term to equal the energy density. Homogeneity is then evaluated **under that same
+solution** ⇒ true by construction. ⚠ **And it cannot be repaired by adding a cleverer check built from the
+coefficients:** `[u]` enters **every** coefficient with the same weight, so it **cancels identically** in
+any ratio or difference of them — including in `[ω²]`, which is therefore blind to `[u]` as well.
+
+⇒ ⭐⭐ **Emit the diagnostic instead of pretending the check is one:**
+
+- the **number of independent dimension equations** formed, as an integer;
+- the **number of unknown coefficient dimensions** solved for, as an integer;
+- ⭐ their **difference**;
+- ⭐ and, from the solve itself, whether the system was **over-**, **exactly-**, or **under-determined**.
+
+⭐⭐ **When the difference is `≤ 0` the homogeneity booleans for the action are VACUOUS** — there were never
+more constraints than unknowns. ⭐ Emit that fact as its own tag so it appears in the output next to the
+booleans it qualifies. ⛔ Do **not** suppress the booleans; ⭐ label them.
+
+⚠ **Homogeneity retains its value elsewhere** — on expressions the solve never touched (roots, null-space
+objects, minors, the Q7 comparison), an inhomogeneity **is** a real finding. ⇒ ⭐ Emit homogeneity for the
+**solved** action terms and for **everything else** under **distinguishable tag names**, so a consumer can
+tell which class it is reading.
+
+⚠ Homogeneity is also **blind to a wrong dimensionless coefficient.** ⇒ it is a layer, ⛔ not the answer.
+
+⭐ **`[u]` is a PREMISE and is UNFALSIFIABLE WITHIN THIS BUILD.** ⛔ Emit it as a premise tag, and ⛔ do not
+let any tag name suggest it was verified. ⚠ The **one** place it can genuinely fail is the comparison of
+**derived** against **registry-declared** coefficient dimensions — ⭐ which only engine 2 can perform.
 
 ### Q7 · The `D = 3` comparison against the ordinary curl
 

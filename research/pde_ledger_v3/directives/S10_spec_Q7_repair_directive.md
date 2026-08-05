@@ -1,4 +1,4 @@
-# Repair `S10_SHARED_PHYSICS.md` — ⭐ SIX targeted edits, ⛔ NOT a rewrite
+# Repair `S10_SHARED_PHYSICS.md` — ⭐ SEVEN targeted edits, ⛔ NOT a rewrite
 
 **File:** `/var/projects/toy_physics/research/pde_ledger_v3/directives/S10_SHARED_PHYSICS.md`
 ⛔ **Edit in place. ⛔ Do not commit. ⛔ Do not modify any other file.**
@@ -23,20 +23,35 @@ not fix it.**
 later amendment says to use the package's **own** stiffness density. ⇒ ⛔ **the two engines each followed a
 different sentence and both exited clean.** ⭐ **Delete, ⛔ do not annotate.**
 
-**⭐ What Q7 IS — state this in the section:**
-> The stiffness must be written in general `D`, because the 3-vector cross product exists only at `D = 3`.
-> `§Q7` checks that the general-`D` antisymmetric-derivative form **becomes** the ordinary curl-squared at
-> `D = 3`. ⭐ It is a **form-and-normalisation** check on the coefficient that carries the wave speed.
-> ⛔ It is **not** evidence for the mode count, which is computed in every `D` and does not depend on it.
+**⭐ What Q7 IS — state this in the section, ⛔ and note what it does NOT say:**
+> The stiffness is written in general `D`, because the 3-vector cross product exists only at `D = 3`.
+> `§Q7` **COMPARES this package's stiffness density against the ordinary curl-squared at `D = 3`**, and
+> emits both operands and their difference. ⭐ It is a form-and-normalisation comparison bearing on the
+> coefficient that carries the wave speed. ⛔ It is **not** evidence for the mode count, which is computed
+> in every `D` and does not depend on it.
 
-**⭐ The comparison, as equations:**
+⛔⛔ **DO NOT WRITE THAT THE GENERAL-`D` FORM "BECOMES" THE CURL-SQUARED. ⚠ An earlier draft of this
+directive did, and BOTH legs caught it — twice over.** ⭐ It states Q7's **outcome**, in a section whose
+entire content is *whether* that holds; ⇒ ⛔ **a leak.** ⚠ **And it names a SECOND compared object** — the
+fixed general-`D` form — alongside the package's own density. ⛔ Those coincide for the baseline package
+and **differ** for the form controls, ⇒ **it is the very divergence this edit exists to remove.**
+⭐ **Name exactly ONE compared pair, and state no outcome.**
+
+**⭐ The comparison, as equations — ⛔ there is exactly one compared pair here:**
 ```
 g_ij   := INDEPENDENT symbols standing for ∂_i u_j        ⛔ never a k×a amplitude curl
-S_pkg  := THIS package's stiffness density, obtained from THIS package's action
-          with the g_ij substituted in                    ⛔ never a re-typed curl density
+L₀     := THIS package's action with the velocities zeroed and the g_ij substituted in
+w      := THIS package's spatial weight, FIXED BY §7 for that package
+          ⇒ prove w ≠ 0 from the premises BEFORE dividing
+S_pkg  := L₀ / w                                          ⛔ never a re-typed curl density
 c_i    := Σ_{j,k} ε_ijk g_jk                              COMPUTED by the CAS
 emit:    S_pkg  ·  c·c  ·  (S_pkg − c·c)                  all three
 ```
+
+⛔⛔ **`w` IS FIXED BY `§7` FOR THE PACKAGE — ⛔ it is NOT re-extracted from the mutated action.**
+⚠ **This is the subtle one:** dividing by a weight pulled back out of a mutated action ⛔ **cancels the very
+normalisation change `§Q7` exists to detect.** ⇒ ⭐ under the action-mutation test below, `w` is what stays
+**FIXED** while the action moves.
 
 ⛔⛔ **`c·c` MUST BE REACHED BY COMPUTATION from the Levi-Civita definition. ⛔ Do NOT write out the
 expanded polynomial.** ⭐ That computed side is the **only** reason this check can fail on physics — the
@@ -57,30 +72,61 @@ reference. ⇒ it catches a wrong **form** and a wrong **normalisation**; ⛔ it
 the density was assembled from the action rather than re-typed — ⭐ that is what the action-mutation
 requirement above is for.
 
-## ⛔⛔ E2 — add the DISTINCTNESS premises. ⭐ Two controls are dead without them.
+## ⛔⛔ E2 — add the DISTINCTNESS premises. ⭐ Without them a control can police nothing.
 
-⚠ **Measured:** the premise set omits the distinctness conditions for the **anisotropy scale** and the
-**coefficient scale**. ⛔ With the degenerate value admitted, the anisotropic package's action is
-**identical to the main package's**, and the coefficient-scale package collapses the same way.
-⇒ ⛔ **two of the six controls are dead.**
-⭐ **Add both distinctness premises to the supplied set.**
+⚠⚠ **CORRECTED — an earlier draft of this directive got the facts wrong and both legs caught it.**
+⭐ **What is actually true, verified in both engines:**
+
+| condition | in `§7`'s package row? | in the joint premise set? | in the engines? |
+|---|---|---|---|
+| anisotropy-scale distinctness | ⭐ **yes, already** | ⛔ no | ⭐ **yes, both** |
+| coefficient-scale distinctness | ⛔ **no** | ⛔ no | ⛔ **neither** |
+
+⇒ ⭐ **The anisotropy condition is being CENTRALISED** (it exists, in the package row, and both engines
+picked it up); ⛔ **the coefficient-scale condition is genuinely MISSING everywhere.**
+⭐ **Add both to the joint premise set, as package-domain premises.**
+
+⛔ **And state the consequence precisely — ⚠ an earlier draft overstated it.** ⛔ The controls are **not**
+"dead": as free symbols their actions differ. ⭐ **What is true: each admitted domain CONTAINS A COLLAPSE
+LOCUS at unit scale, where that package's action equals the baseline package's.** ⇒ an implementation may
+choose the unit value, satisfy **every** stated premise, and emit the baseline — ⛔ a control that polices
+nothing.
+⚠ ⭐ **Also: there are six packages but FIVE controls** — the baseline is explicitly not a control.
 ⚠ ⭐ **And say why they are legitimate**, because the existing instruction *"do not add a premise to force a
 solver to decide"* is being read as licence to omit them: ⭐ **a premise that keeps a CONTROL DISTINCT is
 not a premise that forces a decision.** ⛔ Do not conflate them.
 
 ## ⛔ E3 — `§Q2`: delete the stated claim about the two matrix routes
 
-It asserts a result about the difference between the two routes; ⚠ **both engines refute it**, and it
+It asserts a **value** for the difference between the two routes; ⚠ **both engines refute it**, and it
 contradicts the two lines below it in its own section.
-⛔ **Delete it. ⛔ Do not replace it with any other claim about that difference.** ⭐ The section says what
-to COMPUTE and stops.
+⛔ **Delete the VALUE CLAIM only.**
+
+⛔⛔ **DO NOT delete the neighbouring LIMITATION** — ⚠ an earlier draft's blanket "compute and stop" would
+have taken it out with the rest, and a leg caught that. ⭐ **The true and load-bearing statement is that the
+two routes come from the SAME action, so their agreement is a coding-consistency check and ⛔ NOT
+independent physical evidence.** ⇒ ⭐ **that is a disclosure, ⛔ not a stated result — it stays.**
 
 ## ⛔ E4 — `§Q6`: write the FOUR unwritten equations
 
 The coefficient dimensions are said to follow from *"requiring `L` to be an energy density on a
 `D`-dimensional brane"* — ⛔ **and nothing else is written.** ⇒ both engines had to **assume** the dimension
 of energy, the volume element, and the two derivative operators. ⚠ They happened to assume the same four.
-⭐ **Write all four as equations.** ⛔ Nothing else in `§Q6` changes.
+
+⛔⛔ **AN EARLIER DRAFT SAID "write all four as equations" AND DID NOT WRITE THEM.** ⚠ Both legs flagged it:
+⇒ a builder would either invent them or raid a deferred document. ⭐ **They are supplied PREMISES, ⛔ not
+results, so here they are — write them into `§Q6` verbatim, in the file's own `(length, time, mass)`
+convention:**
+
+```
+[energy] = ( 2, −2,  1)
+[L]      = [energy] · length^(−D)  = ( 2−D, −2, 1)      an energy DENSITY on a D-dimensional brane
+[∂_i]    = (−1,  0,  0)
+[∂_t]    = ( 0, −1,  0)
+```
+
+⚠ `[u]` is **already** supplied and stays as it is. ⛔ Nothing else in `§Q6` changes — ⚠ **except** that
+`E6` still applies to any stated **result** inside it.
 
 ## ⛔ E5 — `§7`: write all six actions IN FULL
 
@@ -91,30 +137,67 @@ computed from.
 
 ## ⛔ E6 — sweep the file for STATED RESULTS and delete them
 
-⭐ Read every sentence against the file's own opening promise that it supplies no results.
-⭐ **A statement of what to COMPUTE stays.** ⛔ A statement of what something **equals**, what is
-**expected**, what "the control working" looks like, or what was **measured**, **goes**.
-⛔ **Delete them; ⛔ do NOT relocate them.** ⚠ Several sit in sections that are otherwise out of scope —
-⭐ **deleting a stated result is always in scope.**
+⛔⛔ **DEFINITION — ⚠ an earlier draft said "what something EQUALS goes", which literally deletes the
+supplied equations and the six actions this very directive ORDERS ADDED. Both legs caught the collision.**
+
+⭐ **A STATED RESULT is an asserted OUTCOME of a computation the spec asks for** — what a residual, root,
+rank, count, sign, locus, or comparison **came out to**, what is **expected**, what "the control working"
+looks like, what was **measured**, or a runtime. ⛔ **Those go.**
+
+⭐ **EXEMPT, ⛔ and these STAY:** supplied premises and definitions · the dimension equations · the six
+package actions · instructions for **how** to compute · and ⭐ **disclosures that a check is weak or
+vacuous by construction** — ⚠ a disclosure is the opposite of a stated result and ⛔ deleting one makes the
+file *less* honest.
+
+⭐ **`E6` OVERRIDES every other edit's "nothing else changes"** — ⭐ deleting a stated result is in scope in
+**any** section, including ones otherwise out of scope. ⛔ Deleting anything else there is not.
+⛔ **Delete them; ⛔ do NOT relocate them.**
+
+⚠ **Known loci to check, ⛔ and this list is NOT exhaustive** — ⭐ read the whole file: the two-route matrix
+claim; a root/sign shape early in the file; an identically-zero-root example; an exceptional-stratum answer
+shape; a CAS timing figure; and a prior step's tag-parity count.
 
 ---
+
+## ⛔ E7 — the ONE piece of `§8` that S10 actually needs. ⭐ A minimal exception, ⛔ not the rewrite.
+
+⚠⚠ **My out-of-scope list wrongly excluded this, and a leg caught it.** `§8`'s tag grammar has **no scope
+token for a stratum**, while `Q8` requires the mode count **recomputed on each allowed stratum**. ⇒ the two
+engines emit **different raw names** for those tags and they match only after ad-hoc canonicalisation.
+⇒ ⛔ **S10 cannot claim automatic cross-engine parity on the stratum mode counts.**
+
+⭐ **Do the minimum that removes the ambiguity, and nothing more:** add a **stratum scope token** to the
+grammar, and say where it sits relative to the other scope tokens. ⛔ **Do NOT** touch the quantity
+registry, the payload serialiser, or any other part of `§8`.
+⭐ **If you judge even that too wide, the acceptable alternative is a DISCLOSURE** — state in the file that
+stratum tag names are not aligned across engines and that their comparison is manual. ⛔ What is **not**
+acceptable is leaving it unstated, ⚠ because an unaligned name reads to the harness as an **absent** tag,
+and an absent tag is indistinguishable from agreement.
 
 ## ⭐ ACCEPTANCE — ⛔ run these and paste literal output
 
 1. ⭐ **The two-reader test on `§Q7`:** read your rewritten section as an implementer and list **every**
    object it could tell you to compare. ⛔ If the list has more than one entry, ⛔ **the rewrite has
    failed.**
-2. ⭐ **Grep the whole file** for sentences beginning "an earlier version", and for the words `expected`,
-   `measured`, `it turns out`. ⭐ Paste every hit with its line number and say why each survivor is not a
-   stated result.
-3. ⭐ **Confirm the six package actions** are each written as a complete Lagrangian, and that the
+2. ⭐⭐ **THE ACTION-MUTATION TEST — ⛔ this one was missing and a leg caught it.** Acceptance previously
+   checked only prose. ⭐ **Take your rewritten `§Q7` and answer, in writing:** if the ACTION of one package
+   is mutated while its **spatial weight `w` and its package selector are held FIXED**, does your text
+   require `S_pkg` to move? ⭐ Quote the sentence that forces it. ⛔ If an implementation keyed on the
+   **selector**, or one that re-extracts `w` from the mutated action, could satisfy your text, ⛔ **the
+   rewrite has failed.**
+3. ⭐ **Grep the whole file** for sentences beginning "an earlier version", and for `expected`, `measured`,
+   `it turns out`, `structurally zero`, `will return`, `comes back`, `seconds`, and `gaps`.
+   ⛔⛔ **A grep is a floor, ⛔ not the test** — ⚠ a leg found stated results carrying **none** of these
+   cues. ⭐ **Also read every section end to end** and paste the line number of every stated result you
+   deleted, cued or not.
+4. ⭐ **Confirm the six package actions** are each written as a complete Lagrangian, and that the
    distinctness premises appear in the supplied premise set.
-4. ⭐ **Old and new line counts**, and a list of every section you touched. ⛔ Any section outside `E1`–`E6`
+5. ⭐ **Old and new line counts**, and a list of every section you touched. ⛔ Any section outside `E1`–`E7`
    appearing in that list is a scope violation — ⭐ report it.
 
 ## Report back — ⛔ under 25 lines
 
-1. One line per `E1`–`E6`: done / partially / not.
+1. One line per `E1`–`E7`: done / partially / not.
 2. The acceptance output.
 3. ⭐ Anything you saw that is wrong and that you did **not** fix because it was out of scope. ⭐ **This is
    wanted** — it is how the deferred list stays honest.

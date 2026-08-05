@@ -1,0 +1,2099 @@
+# S10 harness config. ⛔ This file maps NAMES to emitted tags.
+# ⛔ No expected physics value appears here: no root, no count, no derived
+# dimension, no sign. primitive_dimensions is the one narrow exception and holds
+# only DEFINITIONAL conventions -- a displacement is a length, a wavevector an
+# inverse length -- ⛔ never a derived result.
+#
+# ⚠ COVERAGE LIMIT, and it is a SPEC gap not an engine defect: §8 pinned the tag
+# PREFIX grammar and never pinned the QUANTITY names, so both engines obeyed it
+# and still diverged (Q5_ORIGINAL_ROOT vs Q5_ROOT_ORIGINAL; engine 2 suffixes
+# dimension info onto object names where engine 1 emits separate families).
+# ⇒ the pairs below are a SUBSET of what could be compared. ⛔ Do not read the
+# cross-engine agree count as covering every emitted quantity.
+default_engine: wl
+
+derived_dimensions:
+  rhoBr: WL_S10_MAIN_D3_Q6_INERTIAL_COEFFICIENT_DIMENSIONS
+  muR: WL_S10_MAIN_D3_Q6_STIFFNESS_COEFFICIENT_DIMENSIONS
+
+primitive_dimensions:
+  t: [0, 1, 0]
+  omegaSquared: [0, -2, 0]
+  omega: [0, -1, 0]
+  phase: [0, 0, 0]
+  x1: [1, 0, 0]
+  u1: [1, 0, 0]
+  a1: [1, 0, 0]
+  k1: [-1, 0, 0]
+  x2: [1, 0, 0]
+  u2: [1, 0, 0]
+  a2: [1, 0, 0]
+  k2: [-1, 0, 0]
+  x3: [1, 0, 0]
+  u3: [1, 0, 0]
+  a3: [1, 0, 0]
+  k3: [-1, 0, 0]
+  x4: [1, 0, 0]
+  u4: [1, 0, 0]
+  a4: [1, 0, 0]
+  k4: [-1, 0, 0]
+  x5: [1, 0, 0]
+  u5: [1, 0, 0]
+  a5: [1, 0, 0]
+  k5: [-1, 0, 0]
+  x6: [1, 0, 0]
+  u6: [1, 0, 0]
+  a6: [1, 0, 0]
+  k6: [-1, 0, 0]
+
+dimensionless:
+  - D
+  - braneDimension
+  - lambdaScale
+  - lambda_scale
+  - sRho
+  - s_rho
+  - coefficientScale
+  - s
+  - Sign
+  - Im
+
+# ⭐ Engine-local BY DECLARATION -- cannot exist in both engines (one reads a
+# registry the other is barred from; each CAS emits its own solver-route tags).
+# ⛔ Excluded from PARITY ONLY; still checked by every other layer.
+parity_exclude:
+  - _LOCAL_
+
+# 561 name-matched + 116 renamed = 677 pairs.
+cross_engine:
+  - quantity: main_d2_premise_period_average
+    wl: WL_S10_MAIN_D2_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_MAIN_D2_PREMISE_PERIOD_AVERAGE
+  - quantity: main_d2_q1_euler_lagrange_system
+    wl: WL_S10_MAIN_D2_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_MAIN_D2_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: main_d2_q2_downstream_route
+    wl: WL_S10_MAIN_D2_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_MAIN_D2_Q2_DOWNSTREAM_ROUTE
+  - quantity: main_d2_q2_matrix_a
+    wl: WL_S10_MAIN_D2_Q2_MATRIX_A
+    py: PY_S10_MAIN_D2_Q2_MATRIX_A
+  - quantity: main_d2_q2_matrix_b
+    wl: WL_S10_MAIN_D2_Q2_MATRIX_B
+    py: PY_S10_MAIN_D2_Q2_MATRIX_B
+  - quantity: main_d2_q2_matrix_entry_ratio
+    wl: WL_S10_MAIN_D2_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_MAIN_D2_Q2_MATRIX_ENTRY_RATIO
+  - quantity: main_d2_q2_matrix_residual
+    wl: WL_S10_MAIN_D2_Q2_MATRIX_RESIDUAL
+    py: PY_S10_MAIN_D2_Q2_MATRIX_RESIDUAL
+  - quantity: main_d2_q3_determinant
+    wl: WL_S10_MAIN_D2_Q3_DETERMINANT
+    py: PY_S10_MAIN_D2_Q3_DETERMINANT
+  - quantity: main_d2_q3_root_coincidence_loci
+    wl: WL_S10_MAIN_D2_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D2_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d2_q3_root_count
+    wl: WL_S10_MAIN_D2_Q3_ROOT_COUNT
+    py: PY_S10_MAIN_D2_Q3_ROOT_COUNT
+  - quantity: main_d2_q6_dimension_equations
+    wl: WL_S10_MAIN_D2_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_MAIN_D2_Q6_DIMENSION_EQUATIONS
+  - quantity: main_d2_q6_energy_density_dimension
+    wl: WL_S10_MAIN_D2_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_MAIN_D2_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: main_d2_q6_inertial_coefficients
+    wl: WL_S10_MAIN_D2_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_MAIN_D2_Q6_INERTIAL_COEFFICIENTS
+  - quantity: main_d2_q6_stiffness_coefficients
+    wl: WL_S10_MAIN_D2_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_MAIN_D2_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: main_d2_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_MAIN_D2_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_MAIN_D2_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: main_d2_q8_allowed_strata
+    wl: WL_S10_MAIN_D2_Q8_ALLOWED_STRATA
+    py: PY_S10_MAIN_D2_Q8_ALLOWED_STRATA
+  - quantity: main_d2_root1_n1_matrix
+    wl: WL_S10_MAIN_D2_ROOT1_N1_MATRIX
+    py: PY_S10_MAIN_D2_ROOT1_N1_MATRIX
+  - quantity: main_d2_root1_n2_nullity
+    wl: WL_S10_MAIN_D2_ROOT1_N2_NULLITY
+    py: PY_S10_MAIN_D2_ROOT1_N2_NULLITY
+  - quantity: main_d2_root1_n2_rank
+    wl: WL_S10_MAIN_D2_ROOT1_N2_RANK
+    py: PY_S10_MAIN_D2_ROOT1_N2_RANK
+  - quantity: main_d2_root1_n3_stacked_matrix
+    wl: WL_S10_MAIN_D2_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_MAIN_D2_ROOT1_N3_STACKED_MATRIX
+  - quantity: main_d2_root1_n3_stacked_rank
+    wl: WL_S10_MAIN_D2_ROOT1_N3_STACKED_RANK
+    py: PY_S10_MAIN_D2_ROOT1_N3_STACKED_RANK
+  - quantity: main_d2_root1_n3_transverse_nullity
+    wl: WL_S10_MAIN_D2_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_MAIN_D2_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: main_d2_root1_n4_nullity_difference
+    wl: WL_S10_MAIN_D2_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_MAIN_D2_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: main_d2_root1_n6_nullspace_basis
+    wl: WL_S10_MAIN_D2_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_MAIN_D2_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: main_d2_root1_n7_basis_count
+    wl: WL_S10_MAIN_D2_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_MAIN_D2_ROOT1_N7_BASIS_COUNT
+  - quantity: main_d2_root1_q3_sign
+    wl: WL_S10_MAIN_D2_ROOT1_Q3_SIGN
+    py: PY_S10_MAIN_D2_ROOT1_Q3_SIGN
+  - quantity: main_d2_root1_q8_rank_drop_locus
+    wl: WL_S10_MAIN_D2_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_MAIN_D2_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: main_d2_root1_q8_rank_drop_minors
+    wl: WL_S10_MAIN_D2_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_MAIN_D2_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: main_d2_root1_q8_root_coincidence_loci
+    wl: WL_S10_MAIN_D2_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D2_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d2_root2_n1_matrix
+    wl: WL_S10_MAIN_D2_ROOT2_N1_MATRIX
+    py: PY_S10_MAIN_D2_ROOT2_N1_MATRIX
+  - quantity: main_d2_root2_n2_nullity
+    wl: WL_S10_MAIN_D2_ROOT2_N2_NULLITY
+    py: PY_S10_MAIN_D2_ROOT2_N2_NULLITY
+  - quantity: main_d2_root2_n2_rank
+    wl: WL_S10_MAIN_D2_ROOT2_N2_RANK
+    py: PY_S10_MAIN_D2_ROOT2_N2_RANK
+  - quantity: main_d2_root2_n3_stacked_matrix
+    wl: WL_S10_MAIN_D2_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_MAIN_D2_ROOT2_N3_STACKED_MATRIX
+  - quantity: main_d2_root2_n3_stacked_rank
+    wl: WL_S10_MAIN_D2_ROOT2_N3_STACKED_RANK
+    py: PY_S10_MAIN_D2_ROOT2_N3_STACKED_RANK
+  - quantity: main_d2_root2_n3_transverse_nullity
+    wl: WL_S10_MAIN_D2_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_MAIN_D2_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: main_d2_root2_n4_nullity_difference
+    wl: WL_S10_MAIN_D2_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_MAIN_D2_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: main_d2_root2_n6_nullspace_basis
+    wl: WL_S10_MAIN_D2_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_MAIN_D2_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: main_d2_root2_n7_basis_count
+    wl: WL_S10_MAIN_D2_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_MAIN_D2_ROOT2_N7_BASIS_COUNT
+  - quantity: main_d2_root2_q3_sign
+    wl: WL_S10_MAIN_D2_ROOT2_Q3_SIGN
+    py: PY_S10_MAIN_D2_ROOT2_Q3_SIGN
+  - quantity: main_d2_root2_q8_rank_drop_locus
+    wl: WL_S10_MAIN_D2_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_MAIN_D2_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: main_d2_root2_q8_rank_drop_minors
+    wl: WL_S10_MAIN_D2_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_MAIN_D2_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: main_d2_root2_q8_root_coincidence_loci
+    wl: WL_S10_MAIN_D2_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D2_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d2_root_ordering
+    wl: WL_S10_MAIN_D2_ROOT_ORDERING
+    py: PY_S10_MAIN_D2_ROOT_ORDERING
+  - quantity: main_d3_premise_period_average
+    wl: WL_S10_MAIN_D3_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_MAIN_D3_PREMISE_PERIOD_AVERAGE
+  - quantity: main_d3_q1_euler_lagrange_system
+    wl: WL_S10_MAIN_D3_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_MAIN_D3_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: main_d3_q2_downstream_route
+    wl: WL_S10_MAIN_D3_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_MAIN_D3_Q2_DOWNSTREAM_ROUTE
+  - quantity: main_d3_q2_matrix_a
+    wl: WL_S10_MAIN_D3_Q2_MATRIX_A
+    py: PY_S10_MAIN_D3_Q2_MATRIX_A
+  - quantity: main_d3_q2_matrix_b
+    wl: WL_S10_MAIN_D3_Q2_MATRIX_B
+    py: PY_S10_MAIN_D3_Q2_MATRIX_B
+  - quantity: main_d3_q2_matrix_entry_ratio
+    wl: WL_S10_MAIN_D3_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_MAIN_D3_Q2_MATRIX_ENTRY_RATIO
+  - quantity: main_d3_q2_matrix_residual
+    wl: WL_S10_MAIN_D3_Q2_MATRIX_RESIDUAL
+    py: PY_S10_MAIN_D3_Q2_MATRIX_RESIDUAL
+  - quantity: main_d3_q3_determinant
+    wl: WL_S10_MAIN_D3_Q3_DETERMINANT
+    py: PY_S10_MAIN_D3_Q3_DETERMINANT
+  - quantity: main_d3_q3_root_coincidence_loci
+    wl: WL_S10_MAIN_D3_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D3_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d3_q3_root_count
+    wl: WL_S10_MAIN_D3_Q3_ROOT_COUNT
+    py: PY_S10_MAIN_D3_Q3_ROOT_COUNT
+  - quantity: main_d3_q6_dimension_equations
+    wl: WL_S10_MAIN_D3_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_MAIN_D3_Q6_DIMENSION_EQUATIONS
+  - quantity: main_d3_q6_energy_density_dimension
+    wl: WL_S10_MAIN_D3_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_MAIN_D3_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: main_d3_q6_inertial_coefficients
+    wl: WL_S10_MAIN_D3_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_MAIN_D3_Q6_INERTIAL_COEFFICIENTS
+  - quantity: main_d3_q6_stiffness_coefficients
+    wl: WL_S10_MAIN_D3_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_MAIN_D3_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: main_d3_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_MAIN_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_MAIN_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: main_d3_q8_allowed_strata
+    wl: WL_S10_MAIN_D3_Q8_ALLOWED_STRATA
+    py: PY_S10_MAIN_D3_Q8_ALLOWED_STRATA
+  - quantity: main_d3_root1_n1_matrix
+    wl: WL_S10_MAIN_D3_ROOT1_N1_MATRIX
+    py: PY_S10_MAIN_D3_ROOT1_N1_MATRIX
+  - quantity: main_d3_root1_n2_nullity
+    wl: WL_S10_MAIN_D3_ROOT1_N2_NULLITY
+    py: PY_S10_MAIN_D3_ROOT1_N2_NULLITY
+  - quantity: main_d3_root1_n2_rank
+    wl: WL_S10_MAIN_D3_ROOT1_N2_RANK
+    py: PY_S10_MAIN_D3_ROOT1_N2_RANK
+  - quantity: main_d3_root1_n3_stacked_matrix
+    wl: WL_S10_MAIN_D3_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_MAIN_D3_ROOT1_N3_STACKED_MATRIX
+  - quantity: main_d3_root1_n3_stacked_rank
+    wl: WL_S10_MAIN_D3_ROOT1_N3_STACKED_RANK
+    py: PY_S10_MAIN_D3_ROOT1_N3_STACKED_RANK
+  - quantity: main_d3_root1_n3_transverse_nullity
+    wl: WL_S10_MAIN_D3_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_MAIN_D3_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: main_d3_root1_n4_nullity_difference
+    wl: WL_S10_MAIN_D3_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_MAIN_D3_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: main_d3_root1_n6_nullspace_basis
+    wl: WL_S10_MAIN_D3_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_MAIN_D3_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: main_d3_root1_n7_basis_count
+    wl: WL_S10_MAIN_D3_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_MAIN_D3_ROOT1_N7_BASIS_COUNT
+  - quantity: main_d3_root1_q3_sign
+    wl: WL_S10_MAIN_D3_ROOT1_Q3_SIGN
+    py: PY_S10_MAIN_D3_ROOT1_Q3_SIGN
+  - quantity: main_d3_root1_q8_rank_drop_locus
+    wl: WL_S10_MAIN_D3_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_MAIN_D3_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: main_d3_root1_q8_rank_drop_minors
+    wl: WL_S10_MAIN_D3_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_MAIN_D3_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: main_d3_root1_q8_root_coincidence_loci
+    wl: WL_S10_MAIN_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d3_root2_n1_matrix
+    wl: WL_S10_MAIN_D3_ROOT2_N1_MATRIX
+    py: PY_S10_MAIN_D3_ROOT2_N1_MATRIX
+  - quantity: main_d3_root2_n2_nullity
+    wl: WL_S10_MAIN_D3_ROOT2_N2_NULLITY
+    py: PY_S10_MAIN_D3_ROOT2_N2_NULLITY
+  - quantity: main_d3_root2_n2_rank
+    wl: WL_S10_MAIN_D3_ROOT2_N2_RANK
+    py: PY_S10_MAIN_D3_ROOT2_N2_RANK
+  - quantity: main_d3_root2_n3_stacked_matrix
+    wl: WL_S10_MAIN_D3_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_MAIN_D3_ROOT2_N3_STACKED_MATRIX
+  - quantity: main_d3_root2_n3_stacked_rank
+    wl: WL_S10_MAIN_D3_ROOT2_N3_STACKED_RANK
+    py: PY_S10_MAIN_D3_ROOT2_N3_STACKED_RANK
+  - quantity: main_d3_root2_n3_transverse_nullity
+    wl: WL_S10_MAIN_D3_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_MAIN_D3_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: main_d3_root2_n4_nullity_difference
+    wl: WL_S10_MAIN_D3_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_MAIN_D3_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: main_d3_root2_n6_nullspace_basis
+    wl: WL_S10_MAIN_D3_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_MAIN_D3_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: main_d3_root2_n7_basis_count
+    wl: WL_S10_MAIN_D3_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_MAIN_D3_ROOT2_N7_BASIS_COUNT
+  - quantity: main_d3_root2_q3_sign
+    wl: WL_S10_MAIN_D3_ROOT2_Q3_SIGN
+    py: PY_S10_MAIN_D3_ROOT2_Q3_SIGN
+  - quantity: main_d3_root2_q8_rank_drop_locus
+    wl: WL_S10_MAIN_D3_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_MAIN_D3_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: main_d3_root2_q8_rank_drop_minors
+    wl: WL_S10_MAIN_D3_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_MAIN_D3_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: main_d3_root2_q8_root_coincidence_loci
+    wl: WL_S10_MAIN_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d3_root_ordering
+    wl: WL_S10_MAIN_D3_ROOT_ORDERING
+    py: PY_S10_MAIN_D3_ROOT_ORDERING
+  - quantity: main_d4_premise_period_average
+    wl: WL_S10_MAIN_D4_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_MAIN_D4_PREMISE_PERIOD_AVERAGE
+  - quantity: main_d4_q1_euler_lagrange_system
+    wl: WL_S10_MAIN_D4_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_MAIN_D4_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: main_d4_q2_downstream_route
+    wl: WL_S10_MAIN_D4_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_MAIN_D4_Q2_DOWNSTREAM_ROUTE
+  - quantity: main_d4_q2_matrix_a
+    wl: WL_S10_MAIN_D4_Q2_MATRIX_A
+    py: PY_S10_MAIN_D4_Q2_MATRIX_A
+  - quantity: main_d4_q2_matrix_b
+    wl: WL_S10_MAIN_D4_Q2_MATRIX_B
+    py: PY_S10_MAIN_D4_Q2_MATRIX_B
+  - quantity: main_d4_q2_matrix_entry_ratio
+    wl: WL_S10_MAIN_D4_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_MAIN_D4_Q2_MATRIX_ENTRY_RATIO
+  - quantity: main_d4_q2_matrix_residual
+    wl: WL_S10_MAIN_D4_Q2_MATRIX_RESIDUAL
+    py: PY_S10_MAIN_D4_Q2_MATRIX_RESIDUAL
+  - quantity: main_d4_q3_determinant
+    wl: WL_S10_MAIN_D4_Q3_DETERMINANT
+    py: PY_S10_MAIN_D4_Q3_DETERMINANT
+  - quantity: main_d4_q3_root_coincidence_loci
+    wl: WL_S10_MAIN_D4_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D4_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d4_q3_root_count
+    wl: WL_S10_MAIN_D4_Q3_ROOT_COUNT
+    py: PY_S10_MAIN_D4_Q3_ROOT_COUNT
+  - quantity: main_d4_q6_dimension_equations
+    wl: WL_S10_MAIN_D4_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_MAIN_D4_Q6_DIMENSION_EQUATIONS
+  - quantity: main_d4_q6_energy_density_dimension
+    wl: WL_S10_MAIN_D4_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_MAIN_D4_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: main_d4_q6_inertial_coefficients
+    wl: WL_S10_MAIN_D4_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_MAIN_D4_Q6_INERTIAL_COEFFICIENTS
+  - quantity: main_d4_q6_stiffness_coefficients
+    wl: WL_S10_MAIN_D4_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_MAIN_D4_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: main_d4_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_MAIN_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_MAIN_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: main_d4_q8_allowed_strata
+    wl: WL_S10_MAIN_D4_Q8_ALLOWED_STRATA
+    py: PY_S10_MAIN_D4_Q8_ALLOWED_STRATA
+  - quantity: main_d4_root1_n1_matrix
+    wl: WL_S10_MAIN_D4_ROOT1_N1_MATRIX
+    py: PY_S10_MAIN_D4_ROOT1_N1_MATRIX
+  - quantity: main_d4_root1_n2_nullity
+    wl: WL_S10_MAIN_D4_ROOT1_N2_NULLITY
+    py: PY_S10_MAIN_D4_ROOT1_N2_NULLITY
+  - quantity: main_d4_root1_n2_rank
+    wl: WL_S10_MAIN_D4_ROOT1_N2_RANK
+    py: PY_S10_MAIN_D4_ROOT1_N2_RANK
+  - quantity: main_d4_root1_n3_stacked_matrix
+    wl: WL_S10_MAIN_D4_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_MAIN_D4_ROOT1_N3_STACKED_MATRIX
+  - quantity: main_d4_root1_n3_stacked_rank
+    wl: WL_S10_MAIN_D4_ROOT1_N3_STACKED_RANK
+    py: PY_S10_MAIN_D4_ROOT1_N3_STACKED_RANK
+  - quantity: main_d4_root1_n3_transverse_nullity
+    wl: WL_S10_MAIN_D4_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_MAIN_D4_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: main_d4_root1_n4_nullity_difference
+    wl: WL_S10_MAIN_D4_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_MAIN_D4_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: main_d4_root1_n6_nullspace_basis
+    wl: WL_S10_MAIN_D4_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_MAIN_D4_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: main_d4_root1_n7_basis_count
+    wl: WL_S10_MAIN_D4_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_MAIN_D4_ROOT1_N7_BASIS_COUNT
+  - quantity: main_d4_root1_q3_sign
+    wl: WL_S10_MAIN_D4_ROOT1_Q3_SIGN
+    py: PY_S10_MAIN_D4_ROOT1_Q3_SIGN
+  - quantity: main_d4_root1_q8_rank_drop_locus
+    wl: WL_S10_MAIN_D4_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_MAIN_D4_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: main_d4_root1_q8_rank_drop_minors
+    wl: WL_S10_MAIN_D4_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_MAIN_D4_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: main_d4_root1_q8_root_coincidence_loci
+    wl: WL_S10_MAIN_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d4_root2_n1_matrix
+    wl: WL_S10_MAIN_D4_ROOT2_N1_MATRIX
+    py: PY_S10_MAIN_D4_ROOT2_N1_MATRIX
+  - quantity: main_d4_root2_n2_nullity
+    wl: WL_S10_MAIN_D4_ROOT2_N2_NULLITY
+    py: PY_S10_MAIN_D4_ROOT2_N2_NULLITY
+  - quantity: main_d4_root2_n2_rank
+    wl: WL_S10_MAIN_D4_ROOT2_N2_RANK
+    py: PY_S10_MAIN_D4_ROOT2_N2_RANK
+  - quantity: main_d4_root2_n3_stacked_matrix
+    wl: WL_S10_MAIN_D4_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_MAIN_D4_ROOT2_N3_STACKED_MATRIX
+  - quantity: main_d4_root2_n3_stacked_rank
+    wl: WL_S10_MAIN_D4_ROOT2_N3_STACKED_RANK
+    py: PY_S10_MAIN_D4_ROOT2_N3_STACKED_RANK
+  - quantity: main_d4_root2_n3_transverse_nullity
+    wl: WL_S10_MAIN_D4_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_MAIN_D4_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: main_d4_root2_n4_nullity_difference
+    wl: WL_S10_MAIN_D4_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_MAIN_D4_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: main_d4_root2_n6_nullspace_basis
+    wl: WL_S10_MAIN_D4_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_MAIN_D4_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: main_d4_root2_n7_basis_count
+    wl: WL_S10_MAIN_D4_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_MAIN_D4_ROOT2_N7_BASIS_COUNT
+  - quantity: main_d4_root2_q3_sign
+    wl: WL_S10_MAIN_D4_ROOT2_Q3_SIGN
+    py: PY_S10_MAIN_D4_ROOT2_Q3_SIGN
+  - quantity: main_d4_root2_q8_rank_drop_locus
+    wl: WL_S10_MAIN_D4_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_MAIN_D4_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: main_d4_root2_q8_rank_drop_minors
+    wl: WL_S10_MAIN_D4_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_MAIN_D4_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: main_d4_root2_q8_root_coincidence_loci
+    wl: WL_S10_MAIN_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d4_root_ordering
+    wl: WL_S10_MAIN_D4_ROOT_ORDERING
+    py: PY_S10_MAIN_D4_ROOT_ORDERING
+  - quantity: main_d5_premise_period_average
+    wl: WL_S10_MAIN_D5_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_MAIN_D5_PREMISE_PERIOD_AVERAGE
+  - quantity: main_d5_q1_euler_lagrange_system
+    wl: WL_S10_MAIN_D5_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_MAIN_D5_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: main_d5_q2_downstream_route
+    wl: WL_S10_MAIN_D5_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_MAIN_D5_Q2_DOWNSTREAM_ROUTE
+  - quantity: main_d5_q2_matrix_a
+    wl: WL_S10_MAIN_D5_Q2_MATRIX_A
+    py: PY_S10_MAIN_D5_Q2_MATRIX_A
+  - quantity: main_d5_q2_matrix_b
+    wl: WL_S10_MAIN_D5_Q2_MATRIX_B
+    py: PY_S10_MAIN_D5_Q2_MATRIX_B
+  - quantity: main_d5_q2_matrix_entry_ratio
+    wl: WL_S10_MAIN_D5_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_MAIN_D5_Q2_MATRIX_ENTRY_RATIO
+  - quantity: main_d5_q2_matrix_residual
+    wl: WL_S10_MAIN_D5_Q2_MATRIX_RESIDUAL
+    py: PY_S10_MAIN_D5_Q2_MATRIX_RESIDUAL
+  - quantity: main_d5_q3_determinant
+    wl: WL_S10_MAIN_D5_Q3_DETERMINANT
+    py: PY_S10_MAIN_D5_Q3_DETERMINANT
+  - quantity: main_d5_q3_root_coincidence_loci
+    wl: WL_S10_MAIN_D5_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D5_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d5_q3_root_count
+    wl: WL_S10_MAIN_D5_Q3_ROOT_COUNT
+    py: PY_S10_MAIN_D5_Q3_ROOT_COUNT
+  - quantity: main_d5_q6_dimension_equations
+    wl: WL_S10_MAIN_D5_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_MAIN_D5_Q6_DIMENSION_EQUATIONS
+  - quantity: main_d5_q6_energy_density_dimension
+    wl: WL_S10_MAIN_D5_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_MAIN_D5_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: main_d5_q6_inertial_coefficients
+    wl: WL_S10_MAIN_D5_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_MAIN_D5_Q6_INERTIAL_COEFFICIENTS
+  - quantity: main_d5_q6_stiffness_coefficients
+    wl: WL_S10_MAIN_D5_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_MAIN_D5_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: main_d5_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_MAIN_D5_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_MAIN_D5_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: main_d5_q8_allowed_strata
+    wl: WL_S10_MAIN_D5_Q8_ALLOWED_STRATA
+    py: PY_S10_MAIN_D5_Q8_ALLOWED_STRATA
+  - quantity: main_d5_root1_n1_matrix
+    wl: WL_S10_MAIN_D5_ROOT1_N1_MATRIX
+    py: PY_S10_MAIN_D5_ROOT1_N1_MATRIX
+  - quantity: main_d5_root1_n2_nullity
+    wl: WL_S10_MAIN_D5_ROOT1_N2_NULLITY
+    py: PY_S10_MAIN_D5_ROOT1_N2_NULLITY
+  - quantity: main_d5_root1_n2_rank
+    wl: WL_S10_MAIN_D5_ROOT1_N2_RANK
+    py: PY_S10_MAIN_D5_ROOT1_N2_RANK
+  - quantity: main_d5_root1_n3_stacked_matrix
+    wl: WL_S10_MAIN_D5_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_MAIN_D5_ROOT1_N3_STACKED_MATRIX
+  - quantity: main_d5_root1_n3_stacked_rank
+    wl: WL_S10_MAIN_D5_ROOT1_N3_STACKED_RANK
+    py: PY_S10_MAIN_D5_ROOT1_N3_STACKED_RANK
+  - quantity: main_d5_root1_n3_transverse_nullity
+    wl: WL_S10_MAIN_D5_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_MAIN_D5_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: main_d5_root1_n4_nullity_difference
+    wl: WL_S10_MAIN_D5_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_MAIN_D5_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: main_d5_root1_n6_nullspace_basis
+    wl: WL_S10_MAIN_D5_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_MAIN_D5_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: main_d5_root1_n7_basis_count
+    wl: WL_S10_MAIN_D5_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_MAIN_D5_ROOT1_N7_BASIS_COUNT
+  - quantity: main_d5_root1_q3_sign
+    wl: WL_S10_MAIN_D5_ROOT1_Q3_SIGN
+    py: PY_S10_MAIN_D5_ROOT1_Q3_SIGN
+  - quantity: main_d5_root1_q8_rank_drop_locus
+    wl: WL_S10_MAIN_D5_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_MAIN_D5_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: main_d5_root1_q8_rank_drop_minors
+    wl: WL_S10_MAIN_D5_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_MAIN_D5_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: main_d5_root1_q8_root_coincidence_loci
+    wl: WL_S10_MAIN_D5_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D5_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d5_root2_n1_matrix
+    wl: WL_S10_MAIN_D5_ROOT2_N1_MATRIX
+    py: PY_S10_MAIN_D5_ROOT2_N1_MATRIX
+  - quantity: main_d5_root2_n2_nullity
+    wl: WL_S10_MAIN_D5_ROOT2_N2_NULLITY
+    py: PY_S10_MAIN_D5_ROOT2_N2_NULLITY
+  - quantity: main_d5_root2_n2_rank
+    wl: WL_S10_MAIN_D5_ROOT2_N2_RANK
+    py: PY_S10_MAIN_D5_ROOT2_N2_RANK
+  - quantity: main_d5_root2_n3_stacked_matrix
+    wl: WL_S10_MAIN_D5_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_MAIN_D5_ROOT2_N3_STACKED_MATRIX
+  - quantity: main_d5_root2_n3_stacked_rank
+    wl: WL_S10_MAIN_D5_ROOT2_N3_STACKED_RANK
+    py: PY_S10_MAIN_D5_ROOT2_N3_STACKED_RANK
+  - quantity: main_d5_root2_n3_transverse_nullity
+    wl: WL_S10_MAIN_D5_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_MAIN_D5_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: main_d5_root2_n4_nullity_difference
+    wl: WL_S10_MAIN_D5_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_MAIN_D5_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: main_d5_root2_n6_nullspace_basis
+    wl: WL_S10_MAIN_D5_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_MAIN_D5_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: main_d5_root2_n7_basis_count
+    wl: WL_S10_MAIN_D5_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_MAIN_D5_ROOT2_N7_BASIS_COUNT
+  - quantity: main_d5_root2_q3_sign
+    wl: WL_S10_MAIN_D5_ROOT2_Q3_SIGN
+    py: PY_S10_MAIN_D5_ROOT2_Q3_SIGN
+  - quantity: main_d5_root2_q8_rank_drop_locus
+    wl: WL_S10_MAIN_D5_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_MAIN_D5_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: main_d5_root2_q8_rank_drop_minors
+    wl: WL_S10_MAIN_D5_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_MAIN_D5_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: main_d5_root2_q8_root_coincidence_loci
+    wl: WL_S10_MAIN_D5_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_MAIN_D5_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: main_d5_root_ordering
+    wl: WL_S10_MAIN_D5_ROOT_ORDERING
+    py: PY_S10_MAIN_D5_ROOT_ORDERING
+  - quantity: run_pairs
+    wl: WL_S10_RUN_PAIRS
+    py: PY_S10_RUN_PAIRS
+  - quantity: skipped_pairs
+    wl: WL_S10_SKIPPED_PAIRS
+    py: PY_S10_SKIPPED_PAIRS
+  - quantity: xcoef_scale_d3_premise_period_average
+    wl: WL_S10_XCOEF_SCALE_D3_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_XCOEF_SCALE_D3_PREMISE_PERIOD_AVERAGE
+  - quantity: xcoef_scale_d3_q1_euler_lagrange_system
+    wl: WL_S10_XCOEF_SCALE_D3_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_XCOEF_SCALE_D3_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: xcoef_scale_d3_q2_downstream_route
+    wl: WL_S10_XCOEF_SCALE_D3_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_XCOEF_SCALE_D3_Q2_DOWNSTREAM_ROUTE
+  - quantity: xcoef_scale_d3_q2_matrix_a
+    wl: WL_S10_XCOEF_SCALE_D3_Q2_MATRIX_A
+    py: PY_S10_XCOEF_SCALE_D3_Q2_MATRIX_A
+  - quantity: xcoef_scale_d3_q2_matrix_b
+    wl: WL_S10_XCOEF_SCALE_D3_Q2_MATRIX_B
+    py: PY_S10_XCOEF_SCALE_D3_Q2_MATRIX_B
+  - quantity: xcoef_scale_d3_q2_matrix_entry_ratio
+    wl: WL_S10_XCOEF_SCALE_D3_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_XCOEF_SCALE_D3_Q2_MATRIX_ENTRY_RATIO
+  - quantity: xcoef_scale_d3_q2_matrix_residual
+    wl: WL_S10_XCOEF_SCALE_D3_Q2_MATRIX_RESIDUAL
+    py: PY_S10_XCOEF_SCALE_D3_Q2_MATRIX_RESIDUAL
+  - quantity: xcoef_scale_d3_q3_determinant
+    wl: WL_S10_XCOEF_SCALE_D3_Q3_DETERMINANT
+    py: PY_S10_XCOEF_SCALE_D3_Q3_DETERMINANT
+  - quantity: xcoef_scale_d3_q3_root_coincidence_loci
+    wl: WL_S10_XCOEF_SCALE_D3_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XCOEF_SCALE_D3_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: xcoef_scale_d3_q3_root_count
+    wl: WL_S10_XCOEF_SCALE_D3_Q3_ROOT_COUNT
+    py: PY_S10_XCOEF_SCALE_D3_Q3_ROOT_COUNT
+  - quantity: xcoef_scale_d3_q6_dimension_equations
+    wl: WL_S10_XCOEF_SCALE_D3_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_XCOEF_SCALE_D3_Q6_DIMENSION_EQUATIONS
+  - quantity: xcoef_scale_d3_q6_energy_density_dimension
+    wl: WL_S10_XCOEF_SCALE_D3_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_XCOEF_SCALE_D3_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: xcoef_scale_d3_q6_inertial_coefficients
+    wl: WL_S10_XCOEF_SCALE_D3_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_XCOEF_SCALE_D3_Q6_INERTIAL_COEFFICIENTS
+  - quantity: xcoef_scale_d3_q6_stiffness_coefficients
+    wl: WL_S10_XCOEF_SCALE_D3_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_XCOEF_SCALE_D3_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: xcoef_scale_d3_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_XCOEF_SCALE_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_XCOEF_SCALE_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: xcoef_scale_d3_q8_allowed_strata
+    wl: WL_S10_XCOEF_SCALE_D3_Q8_ALLOWED_STRATA
+    py: PY_S10_XCOEF_SCALE_D3_Q8_ALLOWED_STRATA
+  - quantity: xcoef_scale_d3_root1_n1_matrix
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N1_MATRIX
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_N1_MATRIX
+  - quantity: xcoef_scale_d3_root1_n2_nullity
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N2_NULLITY
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_N2_NULLITY
+  - quantity: xcoef_scale_d3_root1_n2_rank
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N2_RANK
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_N2_RANK
+  - quantity: xcoef_scale_d3_root1_n3_stacked_matrix
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_N3_STACKED_MATRIX
+  - quantity: xcoef_scale_d3_root1_n3_stacked_rank
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N3_STACKED_RANK
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_N3_STACKED_RANK
+  - quantity: xcoef_scale_d3_root1_n3_transverse_nullity
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: xcoef_scale_d3_root1_n4_nullity_difference
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: xcoef_scale_d3_root1_n6_nullspace_basis
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: xcoef_scale_d3_root1_n7_basis_count
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_N7_BASIS_COUNT
+  - quantity: xcoef_scale_d3_root1_q3_sign
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q3_SIGN
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q3_SIGN
+  - quantity: xcoef_scale_d3_root1_q8_rank_drop_locus
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: xcoef_scale_d3_root1_q8_rank_drop_minors
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: xcoef_scale_d3_root1_q8_root_coincidence_loci
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xcoef_scale_d3_root2_n1_matrix
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N1_MATRIX
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_N1_MATRIX
+  - quantity: xcoef_scale_d3_root2_n2_nullity
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N2_NULLITY
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_N2_NULLITY
+  - quantity: xcoef_scale_d3_root2_n2_rank
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N2_RANK
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_N2_RANK
+  - quantity: xcoef_scale_d3_root2_n3_stacked_matrix
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_N3_STACKED_MATRIX
+  - quantity: xcoef_scale_d3_root2_n3_stacked_rank
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N3_STACKED_RANK
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_N3_STACKED_RANK
+  - quantity: xcoef_scale_d3_root2_n3_transverse_nullity
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: xcoef_scale_d3_root2_n4_nullity_difference
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: xcoef_scale_d3_root2_n6_nullspace_basis
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: xcoef_scale_d3_root2_n7_basis_count
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_N7_BASIS_COUNT
+  - quantity: xcoef_scale_d3_root2_q3_sign
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q3_SIGN
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q3_SIGN
+  - quantity: xcoef_scale_d3_root2_q8_rank_drop_locus
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: xcoef_scale_d3_root2_q8_rank_drop_minors
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: xcoef_scale_d3_root2_q8_root_coincidence_loci
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xcoef_scale_d3_root_ordering
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT_ORDERING
+    py: PY_S10_XCOEF_SCALE_D3_ROOT_ORDERING
+  - quantity: xform_aniso_d3_premise_period_average
+    wl: WL_S10_XFORM_ANISO_D3_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_XFORM_ANISO_D3_PREMISE_PERIOD_AVERAGE
+  - quantity: xform_aniso_d3_q1_euler_lagrange_system
+    wl: WL_S10_XFORM_ANISO_D3_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_XFORM_ANISO_D3_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: xform_aniso_d3_q2_downstream_route
+    wl: WL_S10_XFORM_ANISO_D3_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_XFORM_ANISO_D3_Q2_DOWNSTREAM_ROUTE
+  - quantity: xform_aniso_d3_q2_matrix_a
+    wl: WL_S10_XFORM_ANISO_D3_Q2_MATRIX_A
+    py: PY_S10_XFORM_ANISO_D3_Q2_MATRIX_A
+  - quantity: xform_aniso_d3_q2_matrix_b
+    wl: WL_S10_XFORM_ANISO_D3_Q2_MATRIX_B
+    py: PY_S10_XFORM_ANISO_D3_Q2_MATRIX_B
+  - quantity: xform_aniso_d3_q2_matrix_entry_ratio
+    wl: WL_S10_XFORM_ANISO_D3_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_XFORM_ANISO_D3_Q2_MATRIX_ENTRY_RATIO
+  - quantity: xform_aniso_d3_q2_matrix_residual
+    wl: WL_S10_XFORM_ANISO_D3_Q2_MATRIX_RESIDUAL
+    py: PY_S10_XFORM_ANISO_D3_Q2_MATRIX_RESIDUAL
+  - quantity: xform_aniso_d3_q3_determinant
+    wl: WL_S10_XFORM_ANISO_D3_Q3_DETERMINANT
+    py: PY_S10_XFORM_ANISO_D3_Q3_DETERMINANT
+  - quantity: xform_aniso_d3_q3_root_coincidence_loci
+    wl: WL_S10_XFORM_ANISO_D3_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_ANISO_D3_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_aniso_d3_q3_root_count
+    wl: WL_S10_XFORM_ANISO_D3_Q3_ROOT_COUNT
+    py: PY_S10_XFORM_ANISO_D3_Q3_ROOT_COUNT
+  - quantity: xform_aniso_d3_q6_dimension_equations
+    wl: WL_S10_XFORM_ANISO_D3_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_XFORM_ANISO_D3_Q6_DIMENSION_EQUATIONS
+  - quantity: xform_aniso_d3_q6_energy_density_dimension
+    wl: WL_S10_XFORM_ANISO_D3_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_XFORM_ANISO_D3_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: xform_aniso_d3_q6_inertial_coefficients
+    wl: WL_S10_XFORM_ANISO_D3_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_XFORM_ANISO_D3_Q6_INERTIAL_COEFFICIENTS
+  - quantity: xform_aniso_d3_q6_stiffness_coefficients
+    wl: WL_S10_XFORM_ANISO_D3_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_XFORM_ANISO_D3_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: xform_aniso_d3_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_XFORM_ANISO_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_XFORM_ANISO_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: xform_aniso_d3_q8_allowed_strata
+    wl: WL_S10_XFORM_ANISO_D3_Q8_ALLOWED_STRATA
+    py: PY_S10_XFORM_ANISO_D3_Q8_ALLOWED_STRATA
+  - quantity: xform_aniso_d3_root1_n1_matrix
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_N1_MATRIX
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_N1_MATRIX
+  - quantity: xform_aniso_d3_root1_n2_nullity
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_N2_NULLITY
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_N2_NULLITY
+  - quantity: xform_aniso_d3_root1_n2_rank
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_N2_RANK
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_N2_RANK
+  - quantity: xform_aniso_d3_root1_n3_stacked_matrix
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_N3_STACKED_MATRIX
+  - quantity: xform_aniso_d3_root1_n3_stacked_rank
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_N3_STACKED_RANK
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_N3_STACKED_RANK
+  - quantity: xform_aniso_d3_root1_n3_transverse_nullity
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: xform_aniso_d3_root1_n4_nullity_difference
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: xform_aniso_d3_root1_n6_nullspace_basis
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: xform_aniso_d3_root1_n7_basis_count
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_N7_BASIS_COUNT
+  - quantity: xform_aniso_d3_root1_q3_sign
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q3_SIGN
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_Q3_SIGN
+  - quantity: xform_aniso_d3_root1_q8_rank_drop_locus
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: xform_aniso_d3_root1_q8_rank_drop_minors
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: xform_aniso_d3_root1_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_aniso_d3_root2_n1_matrix
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_N1_MATRIX
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_N1_MATRIX
+  - quantity: xform_aniso_d3_root2_n2_nullity
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_N2_NULLITY
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_N2_NULLITY
+  - quantity: xform_aniso_d3_root2_n2_rank
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_N2_RANK
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_N2_RANK
+  - quantity: xform_aniso_d3_root2_n3_stacked_matrix
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_N3_STACKED_MATRIX
+  - quantity: xform_aniso_d3_root2_n3_stacked_rank
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_N3_STACKED_RANK
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_N3_STACKED_RANK
+  - quantity: xform_aniso_d3_root2_n3_transverse_nullity
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: xform_aniso_d3_root2_n4_nullity_difference
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: xform_aniso_d3_root2_n6_nullspace_basis
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: xform_aniso_d3_root2_n7_basis_count
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_N7_BASIS_COUNT
+  - quantity: xform_aniso_d3_root2_q3_sign
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q3_SIGN
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_Q3_SIGN
+  - quantity: xform_aniso_d3_root2_q8_rank_drop_locus
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: xform_aniso_d3_root2_q8_rank_drop_minors
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: xform_aniso_d3_root2_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_aniso_d3_root3_n1_matrix
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_N1_MATRIX
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_N1_MATRIX
+  - quantity: xform_aniso_d3_root3_n2_nullity
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_N2_NULLITY
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_N2_NULLITY
+  - quantity: xform_aniso_d3_root3_n2_rank
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_N2_RANK
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_N2_RANK
+  - quantity: xform_aniso_d3_root3_n3_stacked_matrix
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_N3_STACKED_MATRIX
+  - quantity: xform_aniso_d3_root3_n3_stacked_rank
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_N3_STACKED_RANK
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_N3_STACKED_RANK
+  - quantity: xform_aniso_d3_root3_n3_transverse_nullity
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_N3_TRANSVERSE_NULLITY
+  - quantity: xform_aniso_d3_root3_n4_nullity_difference
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_N4_NULLITY_DIFFERENCE
+  - quantity: xform_aniso_d3_root3_n6_nullspace_basis
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_N6_NULLSPACE_BASIS
+  - quantity: xform_aniso_d3_root3_n7_basis_count
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_N7_BASIS_COUNT
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_N7_BASIS_COUNT
+  - quantity: xform_aniso_d3_root3_q3_sign
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q3_SIGN
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_Q3_SIGN
+  - quantity: xform_aniso_d3_root3_q8_rank_drop_locus
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_Q8_RANK_DROP_LOCUS
+  - quantity: xform_aniso_d3_root3_q8_rank_drop_minors
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_Q8_RANK_DROP_MINORS
+  - quantity: xform_aniso_d3_root3_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_aniso_d3_root_ordering
+    wl: WL_S10_XFORM_ANISO_D3_ROOT_ORDERING
+    py: PY_S10_XFORM_ANISO_D3_ROOT_ORDERING
+  - quantity: xform_aniso_d4_premise_period_average
+    wl: WL_S10_XFORM_ANISO_D4_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_XFORM_ANISO_D4_PREMISE_PERIOD_AVERAGE
+  - quantity: xform_aniso_d4_q1_euler_lagrange_system
+    wl: WL_S10_XFORM_ANISO_D4_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_XFORM_ANISO_D4_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: xform_aniso_d4_q2_downstream_route
+    wl: WL_S10_XFORM_ANISO_D4_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_XFORM_ANISO_D4_Q2_DOWNSTREAM_ROUTE
+  - quantity: xform_aniso_d4_q2_matrix_a
+    wl: WL_S10_XFORM_ANISO_D4_Q2_MATRIX_A
+    py: PY_S10_XFORM_ANISO_D4_Q2_MATRIX_A
+  - quantity: xform_aniso_d4_q2_matrix_b
+    wl: WL_S10_XFORM_ANISO_D4_Q2_MATRIX_B
+    py: PY_S10_XFORM_ANISO_D4_Q2_MATRIX_B
+  - quantity: xform_aniso_d4_q2_matrix_entry_ratio
+    wl: WL_S10_XFORM_ANISO_D4_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_XFORM_ANISO_D4_Q2_MATRIX_ENTRY_RATIO
+  - quantity: xform_aniso_d4_q2_matrix_residual
+    wl: WL_S10_XFORM_ANISO_D4_Q2_MATRIX_RESIDUAL
+    py: PY_S10_XFORM_ANISO_D4_Q2_MATRIX_RESIDUAL
+  - quantity: xform_aniso_d4_q3_determinant
+    wl: WL_S10_XFORM_ANISO_D4_Q3_DETERMINANT
+    py: PY_S10_XFORM_ANISO_D4_Q3_DETERMINANT
+  - quantity: xform_aniso_d4_q3_root_coincidence_loci
+    wl: WL_S10_XFORM_ANISO_D4_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_ANISO_D4_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_aniso_d4_q3_root_count
+    wl: WL_S10_XFORM_ANISO_D4_Q3_ROOT_COUNT
+    py: PY_S10_XFORM_ANISO_D4_Q3_ROOT_COUNT
+  - quantity: xform_aniso_d4_q6_dimension_equations
+    wl: WL_S10_XFORM_ANISO_D4_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_XFORM_ANISO_D4_Q6_DIMENSION_EQUATIONS
+  - quantity: xform_aniso_d4_q6_energy_density_dimension
+    wl: WL_S10_XFORM_ANISO_D4_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_XFORM_ANISO_D4_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: xform_aniso_d4_q6_inertial_coefficients
+    wl: WL_S10_XFORM_ANISO_D4_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_XFORM_ANISO_D4_Q6_INERTIAL_COEFFICIENTS
+  - quantity: xform_aniso_d4_q6_stiffness_coefficients
+    wl: WL_S10_XFORM_ANISO_D4_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_XFORM_ANISO_D4_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: xform_aniso_d4_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_XFORM_ANISO_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_XFORM_ANISO_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: xform_aniso_d4_q8_allowed_strata
+    wl: WL_S10_XFORM_ANISO_D4_Q8_ALLOWED_STRATA
+    py: PY_S10_XFORM_ANISO_D4_Q8_ALLOWED_STRATA
+  - quantity: xform_aniso_d4_root1_n1_matrix
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_N1_MATRIX
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_N1_MATRIX
+  - quantity: xform_aniso_d4_root1_n2_nullity
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_N2_NULLITY
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_N2_NULLITY
+  - quantity: xform_aniso_d4_root1_n2_rank
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_N2_RANK
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_N2_RANK
+  - quantity: xform_aniso_d4_root1_n3_stacked_matrix
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_N3_STACKED_MATRIX
+  - quantity: xform_aniso_d4_root1_n3_stacked_rank
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_N3_STACKED_RANK
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_N3_STACKED_RANK
+  - quantity: xform_aniso_d4_root1_n3_transverse_nullity
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: xform_aniso_d4_root1_n4_nullity_difference
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: xform_aniso_d4_root1_n6_nullspace_basis
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: xform_aniso_d4_root1_n7_basis_count
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_N7_BASIS_COUNT
+  - quantity: xform_aniso_d4_root1_q3_sign
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q3_SIGN
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_Q3_SIGN
+  - quantity: xform_aniso_d4_root1_q8_rank_drop_locus
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: xform_aniso_d4_root1_q8_rank_drop_minors
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: xform_aniso_d4_root1_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_aniso_d4_root2_n1_matrix
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_N1_MATRIX
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_N1_MATRIX
+  - quantity: xform_aniso_d4_root2_n2_nullity
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_N2_NULLITY
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_N2_NULLITY
+  - quantity: xform_aniso_d4_root2_n2_rank
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_N2_RANK
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_N2_RANK
+  - quantity: xform_aniso_d4_root2_n3_stacked_matrix
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_N3_STACKED_MATRIX
+  - quantity: xform_aniso_d4_root2_n3_stacked_rank
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_N3_STACKED_RANK
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_N3_STACKED_RANK
+  - quantity: xform_aniso_d4_root2_n3_transverse_nullity
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: xform_aniso_d4_root2_n4_nullity_difference
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: xform_aniso_d4_root2_n6_nullspace_basis
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: xform_aniso_d4_root2_n7_basis_count
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_N7_BASIS_COUNT
+  - quantity: xform_aniso_d4_root2_q3_sign
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q3_SIGN
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_Q3_SIGN
+  - quantity: xform_aniso_d4_root2_q8_rank_drop_locus
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: xform_aniso_d4_root2_q8_rank_drop_minors
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: xform_aniso_d4_root2_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_aniso_d4_root3_n1_matrix
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_N1_MATRIX
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_N1_MATRIX
+  - quantity: xform_aniso_d4_root3_n2_nullity
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_N2_NULLITY
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_N2_NULLITY
+  - quantity: xform_aniso_d4_root3_n2_rank
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_N2_RANK
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_N2_RANK
+  - quantity: xform_aniso_d4_root3_n3_stacked_matrix
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_N3_STACKED_MATRIX
+  - quantity: xform_aniso_d4_root3_n3_stacked_rank
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_N3_STACKED_RANK
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_N3_STACKED_RANK
+  - quantity: xform_aniso_d4_root3_n3_transverse_nullity
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_N3_TRANSVERSE_NULLITY
+  - quantity: xform_aniso_d4_root3_n4_nullity_difference
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_N4_NULLITY_DIFFERENCE
+  - quantity: xform_aniso_d4_root3_n6_nullspace_basis
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_N6_NULLSPACE_BASIS
+  - quantity: xform_aniso_d4_root3_n7_basis_count
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_N7_BASIS_COUNT
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_N7_BASIS_COUNT
+  - quantity: xform_aniso_d4_root3_q3_sign
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q3_SIGN
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_Q3_SIGN
+  - quantity: xform_aniso_d4_root3_q8_rank_drop_locus
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_Q8_RANK_DROP_LOCUS
+  - quantity: xform_aniso_d4_root3_q8_rank_drop_minors
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_Q8_RANK_DROP_MINORS
+  - quantity: xform_aniso_d4_root3_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_aniso_d4_root_ordering
+    wl: WL_S10_XFORM_ANISO_D4_ROOT_ORDERING
+    py: PY_S10_XFORM_ANISO_D4_ROOT_ORDERING
+  - quantity: xform_divonly_d3_premise_period_average
+    wl: WL_S10_XFORM_DIVONLY_D3_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_XFORM_DIVONLY_D3_PREMISE_PERIOD_AVERAGE
+  - quantity: xform_divonly_d3_q1_euler_lagrange_system
+    wl: WL_S10_XFORM_DIVONLY_D3_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_XFORM_DIVONLY_D3_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: xform_divonly_d3_q2_downstream_route
+    wl: WL_S10_XFORM_DIVONLY_D3_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_XFORM_DIVONLY_D3_Q2_DOWNSTREAM_ROUTE
+  - quantity: xform_divonly_d3_q2_matrix_a
+    wl: WL_S10_XFORM_DIVONLY_D3_Q2_MATRIX_A
+    py: PY_S10_XFORM_DIVONLY_D3_Q2_MATRIX_A
+  - quantity: xform_divonly_d3_q2_matrix_b
+    wl: WL_S10_XFORM_DIVONLY_D3_Q2_MATRIX_B
+    py: PY_S10_XFORM_DIVONLY_D3_Q2_MATRIX_B
+  - quantity: xform_divonly_d3_q2_matrix_entry_ratio
+    wl: WL_S10_XFORM_DIVONLY_D3_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_XFORM_DIVONLY_D3_Q2_MATRIX_ENTRY_RATIO
+  - quantity: xform_divonly_d3_q2_matrix_residual
+    wl: WL_S10_XFORM_DIVONLY_D3_Q2_MATRIX_RESIDUAL
+    py: PY_S10_XFORM_DIVONLY_D3_Q2_MATRIX_RESIDUAL
+  - quantity: xform_divonly_d3_q3_determinant
+    wl: WL_S10_XFORM_DIVONLY_D3_Q3_DETERMINANT
+    py: PY_S10_XFORM_DIVONLY_D3_Q3_DETERMINANT
+  - quantity: xform_divonly_d3_q3_root_coincidence_loci
+    wl: WL_S10_XFORM_DIVONLY_D3_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_DIVONLY_D3_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_divonly_d3_q3_root_count
+    wl: WL_S10_XFORM_DIVONLY_D3_Q3_ROOT_COUNT
+    py: PY_S10_XFORM_DIVONLY_D3_Q3_ROOT_COUNT
+  - quantity: xform_divonly_d3_q6_dimension_equations
+    wl: WL_S10_XFORM_DIVONLY_D3_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_XFORM_DIVONLY_D3_Q6_DIMENSION_EQUATIONS
+  - quantity: xform_divonly_d3_q6_energy_density_dimension
+    wl: WL_S10_XFORM_DIVONLY_D3_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_XFORM_DIVONLY_D3_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: xform_divonly_d3_q6_inertial_coefficients
+    wl: WL_S10_XFORM_DIVONLY_D3_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_XFORM_DIVONLY_D3_Q6_INERTIAL_COEFFICIENTS
+  - quantity: xform_divonly_d3_q6_stiffness_coefficients
+    wl: WL_S10_XFORM_DIVONLY_D3_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_XFORM_DIVONLY_D3_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: xform_divonly_d3_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_XFORM_DIVONLY_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_XFORM_DIVONLY_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: xform_divonly_d3_q8_allowed_strata
+    wl: WL_S10_XFORM_DIVONLY_D3_Q8_ALLOWED_STRATA
+    py: PY_S10_XFORM_DIVONLY_D3_Q8_ALLOWED_STRATA
+  - quantity: xform_divonly_d3_root1_n1_matrix
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N1_MATRIX
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N1_MATRIX
+  - quantity: xform_divonly_d3_root1_n2_nullity
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N2_NULLITY
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N2_NULLITY
+  - quantity: xform_divonly_d3_root1_n2_rank
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N2_RANK
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N2_RANK
+  - quantity: xform_divonly_d3_root1_n3_stacked_matrix
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N3_STACKED_MATRIX
+  - quantity: xform_divonly_d3_root1_n3_stacked_rank
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N3_STACKED_RANK
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N3_STACKED_RANK
+  - quantity: xform_divonly_d3_root1_n3_transverse_nullity
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: xform_divonly_d3_root1_n4_nullity_difference
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: xform_divonly_d3_root1_n6_nullspace_basis
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: xform_divonly_d3_root1_n7_basis_count
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N7_BASIS_COUNT
+  - quantity: xform_divonly_d3_root1_q3_sign
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q3_SIGN
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q3_SIGN
+  - quantity: xform_divonly_d3_root1_q8_rank_drop_locus
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: xform_divonly_d3_root1_q8_rank_drop_minors
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: xform_divonly_d3_root1_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_divonly_d3_root2_n1_matrix
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N1_MATRIX
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N1_MATRIX
+  - quantity: xform_divonly_d3_root2_n2_nullity
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N2_NULLITY
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N2_NULLITY
+  - quantity: xform_divonly_d3_root2_n2_rank
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N2_RANK
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N2_RANK
+  - quantity: xform_divonly_d3_root2_n3_stacked_matrix
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N3_STACKED_MATRIX
+  - quantity: xform_divonly_d3_root2_n3_stacked_rank
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N3_STACKED_RANK
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N3_STACKED_RANK
+  - quantity: xform_divonly_d3_root2_n3_transverse_nullity
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: xform_divonly_d3_root2_n4_nullity_difference
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: xform_divonly_d3_root2_n6_nullspace_basis
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: xform_divonly_d3_root2_n7_basis_count
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N7_BASIS_COUNT
+  - quantity: xform_divonly_d3_root2_q3_sign
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q3_SIGN
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q3_SIGN
+  - quantity: xform_divonly_d3_root2_q8_rank_drop_locus
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: xform_divonly_d3_root2_q8_rank_drop_minors
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: xform_divonly_d3_root2_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_divonly_d3_root_ordering
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT_ORDERING
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT_ORDERING
+  - quantity: xform_divonly_d4_premise_period_average
+    wl: WL_S10_XFORM_DIVONLY_D4_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_XFORM_DIVONLY_D4_PREMISE_PERIOD_AVERAGE
+  - quantity: xform_divonly_d4_q1_euler_lagrange_system
+    wl: WL_S10_XFORM_DIVONLY_D4_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_XFORM_DIVONLY_D4_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: xform_divonly_d4_q2_downstream_route
+    wl: WL_S10_XFORM_DIVONLY_D4_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_XFORM_DIVONLY_D4_Q2_DOWNSTREAM_ROUTE
+  - quantity: xform_divonly_d4_q2_matrix_a
+    wl: WL_S10_XFORM_DIVONLY_D4_Q2_MATRIX_A
+    py: PY_S10_XFORM_DIVONLY_D4_Q2_MATRIX_A
+  - quantity: xform_divonly_d4_q2_matrix_b
+    wl: WL_S10_XFORM_DIVONLY_D4_Q2_MATRIX_B
+    py: PY_S10_XFORM_DIVONLY_D4_Q2_MATRIX_B
+  - quantity: xform_divonly_d4_q2_matrix_entry_ratio
+    wl: WL_S10_XFORM_DIVONLY_D4_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_XFORM_DIVONLY_D4_Q2_MATRIX_ENTRY_RATIO
+  - quantity: xform_divonly_d4_q2_matrix_residual
+    wl: WL_S10_XFORM_DIVONLY_D4_Q2_MATRIX_RESIDUAL
+    py: PY_S10_XFORM_DIVONLY_D4_Q2_MATRIX_RESIDUAL
+  - quantity: xform_divonly_d4_q3_determinant
+    wl: WL_S10_XFORM_DIVONLY_D4_Q3_DETERMINANT
+    py: PY_S10_XFORM_DIVONLY_D4_Q3_DETERMINANT
+  - quantity: xform_divonly_d4_q3_root_coincidence_loci
+    wl: WL_S10_XFORM_DIVONLY_D4_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_DIVONLY_D4_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_divonly_d4_q3_root_count
+    wl: WL_S10_XFORM_DIVONLY_D4_Q3_ROOT_COUNT
+    py: PY_S10_XFORM_DIVONLY_D4_Q3_ROOT_COUNT
+  - quantity: xform_divonly_d4_q6_dimension_equations
+    wl: WL_S10_XFORM_DIVONLY_D4_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_XFORM_DIVONLY_D4_Q6_DIMENSION_EQUATIONS
+  - quantity: xform_divonly_d4_q6_energy_density_dimension
+    wl: WL_S10_XFORM_DIVONLY_D4_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_XFORM_DIVONLY_D4_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: xform_divonly_d4_q6_inertial_coefficients
+    wl: WL_S10_XFORM_DIVONLY_D4_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_XFORM_DIVONLY_D4_Q6_INERTIAL_COEFFICIENTS
+  - quantity: xform_divonly_d4_q6_stiffness_coefficients
+    wl: WL_S10_XFORM_DIVONLY_D4_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_XFORM_DIVONLY_D4_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: xform_divonly_d4_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_XFORM_DIVONLY_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_XFORM_DIVONLY_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: xform_divonly_d4_q8_allowed_strata
+    wl: WL_S10_XFORM_DIVONLY_D4_Q8_ALLOWED_STRATA
+    py: PY_S10_XFORM_DIVONLY_D4_Q8_ALLOWED_STRATA
+  - quantity: xform_divonly_d4_root1_n1_matrix
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N1_MATRIX
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N1_MATRIX
+  - quantity: xform_divonly_d4_root1_n2_nullity
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N2_NULLITY
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N2_NULLITY
+  - quantity: xform_divonly_d4_root1_n2_rank
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N2_RANK
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N2_RANK
+  - quantity: xform_divonly_d4_root1_n3_stacked_matrix
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N3_STACKED_MATRIX
+  - quantity: xform_divonly_d4_root1_n3_stacked_rank
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N3_STACKED_RANK
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N3_STACKED_RANK
+  - quantity: xform_divonly_d4_root1_n3_transverse_nullity
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: xform_divonly_d4_root1_n4_nullity_difference
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: xform_divonly_d4_root1_n6_nullspace_basis
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: xform_divonly_d4_root1_n7_basis_count
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N7_BASIS_COUNT
+  - quantity: xform_divonly_d4_root1_q3_sign
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q3_SIGN
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q3_SIGN
+  - quantity: xform_divonly_d4_root1_q8_rank_drop_locus
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: xform_divonly_d4_root1_q8_rank_drop_minors
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: xform_divonly_d4_root1_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_divonly_d4_root2_n1_matrix
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N1_MATRIX
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N1_MATRIX
+  - quantity: xform_divonly_d4_root2_n2_nullity
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N2_NULLITY
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N2_NULLITY
+  - quantity: xform_divonly_d4_root2_n2_rank
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N2_RANK
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N2_RANK
+  - quantity: xform_divonly_d4_root2_n3_stacked_matrix
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N3_STACKED_MATRIX
+  - quantity: xform_divonly_d4_root2_n3_stacked_rank
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N3_STACKED_RANK
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N3_STACKED_RANK
+  - quantity: xform_divonly_d4_root2_n3_transverse_nullity
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: xform_divonly_d4_root2_n4_nullity_difference
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: xform_divonly_d4_root2_n6_nullspace_basis
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: xform_divonly_d4_root2_n7_basis_count
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N7_BASIS_COUNT
+  - quantity: xform_divonly_d4_root2_q3_sign
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q3_SIGN
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q3_SIGN
+  - quantity: xform_divonly_d4_root2_q8_rank_drop_locus
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: xform_divonly_d4_root2_q8_rank_drop_minors
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: xform_divonly_d4_root2_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_divonly_d4_root_ordering
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT_ORDERING
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT_ORDERING
+  - quantity: xform_fullgrad_d3_premise_period_average
+    wl: WL_S10_XFORM_FULLGRAD_D3_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_XFORM_FULLGRAD_D3_PREMISE_PERIOD_AVERAGE
+  - quantity: xform_fullgrad_d3_q1_euler_lagrange_system
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_XFORM_FULLGRAD_D3_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: xform_fullgrad_d3_q2_downstream_route
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_XFORM_FULLGRAD_D3_Q2_DOWNSTREAM_ROUTE
+  - quantity: xform_fullgrad_d3_q2_matrix_a
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_A
+    py: PY_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_A
+  - quantity: xform_fullgrad_d3_q2_matrix_b
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_B
+    py: PY_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_B
+  - quantity: xform_fullgrad_d3_q2_matrix_entry_ratio
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_ENTRY_RATIO
+  - quantity: xform_fullgrad_d3_q2_matrix_residual
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_RESIDUAL
+    py: PY_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_RESIDUAL
+  - quantity: xform_fullgrad_d3_q3_determinant
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q3_DETERMINANT
+    py: PY_S10_XFORM_FULLGRAD_D3_Q3_DETERMINANT
+  - quantity: xform_fullgrad_d3_q3_root_coincidence_loci
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_FULLGRAD_D3_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_fullgrad_d3_q3_root_count
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q3_ROOT_COUNT
+    py: PY_S10_XFORM_FULLGRAD_D3_Q3_ROOT_COUNT
+  - quantity: xform_fullgrad_d3_q6_dimension_equations
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_XFORM_FULLGRAD_D3_Q6_DIMENSION_EQUATIONS
+  - quantity: xform_fullgrad_d3_q6_energy_density_dimension
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_XFORM_FULLGRAD_D3_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: xform_fullgrad_d3_q6_inertial_coefficients
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_XFORM_FULLGRAD_D3_Q6_INERTIAL_COEFFICIENTS
+  - quantity: xform_fullgrad_d3_q6_stiffness_coefficients
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_XFORM_FULLGRAD_D3_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: xform_fullgrad_d3_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_XFORM_FULLGRAD_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: xform_fullgrad_d3_q8_allowed_strata
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q8_ALLOWED_STRATA
+    py: PY_S10_XFORM_FULLGRAD_D3_Q8_ALLOWED_STRATA
+  - quantity: xform_fullgrad_d3_root1_n1_matrix
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N1_MATRIX
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N1_MATRIX
+  - quantity: xform_fullgrad_d3_root1_n2_nullity
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N2_NULLITY
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N2_NULLITY
+  - quantity: xform_fullgrad_d3_root1_n2_rank
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N2_RANK
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N2_RANK
+  - quantity: xform_fullgrad_d3_root1_n3_stacked_matrix
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N3_STACKED_MATRIX
+  - quantity: xform_fullgrad_d3_root1_n3_stacked_rank
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N3_STACKED_RANK
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N3_STACKED_RANK
+  - quantity: xform_fullgrad_d3_root1_n3_transverse_nullity
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: xform_fullgrad_d3_root1_n4_nullity_difference
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: xform_fullgrad_d3_root1_n6_nullspace_basis
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: xform_fullgrad_d3_root1_n7_basis_count
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N7_BASIS_COUNT
+  - quantity: xform_fullgrad_d3_root1_q3_sign
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q3_SIGN
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q3_SIGN
+  - quantity: xform_fullgrad_d3_root1_q8_rank_drop_locus
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: xform_fullgrad_d3_root1_q8_rank_drop_minors
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: xform_fullgrad_d3_root1_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_fullgrad_d3_root_ordering
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT_ORDERING
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT_ORDERING
+  - quantity: xform_fullgrad_d4_premise_period_average
+    wl: WL_S10_XFORM_FULLGRAD_D4_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_XFORM_FULLGRAD_D4_PREMISE_PERIOD_AVERAGE
+  - quantity: xform_fullgrad_d4_q1_euler_lagrange_system
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_XFORM_FULLGRAD_D4_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: xform_fullgrad_d4_q2_downstream_route
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_XFORM_FULLGRAD_D4_Q2_DOWNSTREAM_ROUTE
+  - quantity: xform_fullgrad_d4_q2_matrix_a
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_A
+    py: PY_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_A
+  - quantity: xform_fullgrad_d4_q2_matrix_b
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_B
+    py: PY_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_B
+  - quantity: xform_fullgrad_d4_q2_matrix_entry_ratio
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_ENTRY_RATIO
+  - quantity: xform_fullgrad_d4_q2_matrix_residual
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_RESIDUAL
+    py: PY_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_RESIDUAL
+  - quantity: xform_fullgrad_d4_q3_determinant
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q3_DETERMINANT
+    py: PY_S10_XFORM_FULLGRAD_D4_Q3_DETERMINANT
+  - quantity: xform_fullgrad_d4_q3_root_coincidence_loci
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_FULLGRAD_D4_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_fullgrad_d4_q3_root_count
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q3_ROOT_COUNT
+    py: PY_S10_XFORM_FULLGRAD_D4_Q3_ROOT_COUNT
+  - quantity: xform_fullgrad_d4_q6_dimension_equations
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_XFORM_FULLGRAD_D4_Q6_DIMENSION_EQUATIONS
+  - quantity: xform_fullgrad_d4_q6_energy_density_dimension
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_XFORM_FULLGRAD_D4_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: xform_fullgrad_d4_q6_inertial_coefficients
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_XFORM_FULLGRAD_D4_Q6_INERTIAL_COEFFICIENTS
+  - quantity: xform_fullgrad_d4_q6_stiffness_coefficients
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_XFORM_FULLGRAD_D4_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: xform_fullgrad_d4_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_XFORM_FULLGRAD_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: xform_fullgrad_d4_q8_allowed_strata
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q8_ALLOWED_STRATA
+    py: PY_S10_XFORM_FULLGRAD_D4_Q8_ALLOWED_STRATA
+  - quantity: xform_fullgrad_d4_root1_n1_matrix
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N1_MATRIX
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N1_MATRIX
+  - quantity: xform_fullgrad_d4_root1_n2_nullity
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N2_NULLITY
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N2_NULLITY
+  - quantity: xform_fullgrad_d4_root1_n2_rank
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N2_RANK
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N2_RANK
+  - quantity: xform_fullgrad_d4_root1_n3_stacked_matrix
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N3_STACKED_MATRIX
+  - quantity: xform_fullgrad_d4_root1_n3_stacked_rank
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N3_STACKED_RANK
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N3_STACKED_RANK
+  - quantity: xform_fullgrad_d4_root1_n3_transverse_nullity
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: xform_fullgrad_d4_root1_n4_nullity_difference
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: xform_fullgrad_d4_root1_n6_nullspace_basis
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: xform_fullgrad_d4_root1_n7_basis_count
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N7_BASIS_COUNT
+  - quantity: xform_fullgrad_d4_root1_q3_sign
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q3_SIGN
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q3_SIGN
+  - quantity: xform_fullgrad_d4_root1_q8_rank_drop_locus
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: xform_fullgrad_d4_root1_q8_rank_drop_minors
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: xform_fullgrad_d4_root1_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_fullgrad_d4_root_ordering
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT_ORDERING
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT_ORDERING
+  - quantity: xform_signflip_d3_premise_period_average
+    wl: WL_S10_XFORM_SIGNFLIP_D3_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_XFORM_SIGNFLIP_D3_PREMISE_PERIOD_AVERAGE
+  - quantity: xform_signflip_d3_q1_euler_lagrange_system
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: xform_signflip_d3_q2_downstream_route
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q2_DOWNSTREAM_ROUTE
+  - quantity: xform_signflip_d3_q2_matrix_a
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_A
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_A
+  - quantity: xform_signflip_d3_q2_matrix_b
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_B
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_B
+  - quantity: xform_signflip_d3_q2_matrix_entry_ratio
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_ENTRY_RATIO
+  - quantity: xform_signflip_d3_q2_matrix_residual
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_RESIDUAL
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_RESIDUAL
+  - quantity: xform_signflip_d3_q3_determinant
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q3_DETERMINANT
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q3_DETERMINANT
+  - quantity: xform_signflip_d3_q3_root_coincidence_loci
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_signflip_d3_q3_root_count
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q3_ROOT_COUNT
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q3_ROOT_COUNT
+  - quantity: xform_signflip_d3_q6_dimension_equations
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q6_DIMENSION_EQUATIONS
+  - quantity: xform_signflip_d3_q6_energy_density_dimension
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: xform_signflip_d3_q6_inertial_coefficients
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q6_INERTIAL_COEFFICIENTS
+  - quantity: xform_signflip_d3_q6_stiffness_coefficients
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: xform_signflip_d3_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: xform_signflip_d3_q8_allowed_strata
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q8_ALLOWED_STRATA
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q8_ALLOWED_STRATA
+  - quantity: xform_signflip_d3_root1_n1_matrix
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N1_MATRIX
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N1_MATRIX
+  - quantity: xform_signflip_d3_root1_n2_nullity
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N2_NULLITY
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N2_NULLITY
+  - quantity: xform_signflip_d3_root1_n2_rank
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N2_RANK
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N2_RANK
+  - quantity: xform_signflip_d3_root1_n3_stacked_matrix
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_STACKED_MATRIX
+  - quantity: xform_signflip_d3_root1_n3_stacked_rank
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_STACKED_RANK
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_STACKED_RANK
+  - quantity: xform_signflip_d3_root1_n3_transverse_nullity
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: xform_signflip_d3_root1_n4_nullity_difference
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: xform_signflip_d3_root1_n6_nullspace_basis
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: xform_signflip_d3_root1_n7_basis_count
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N7_BASIS_COUNT
+  - quantity: xform_signflip_d3_root1_q3_sign
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q3_SIGN
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q3_SIGN
+  - quantity: xform_signflip_d3_root1_q8_rank_drop_locus
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: xform_signflip_d3_root1_q8_rank_drop_minors
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: xform_signflip_d3_root1_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_signflip_d3_root2_n1_matrix
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N1_MATRIX
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N1_MATRIX
+  - quantity: xform_signflip_d3_root2_n2_nullity
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N2_NULLITY
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N2_NULLITY
+  - quantity: xform_signflip_d3_root2_n2_rank
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N2_RANK
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N2_RANK
+  - quantity: xform_signflip_d3_root2_n3_stacked_matrix
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_STACKED_MATRIX
+  - quantity: xform_signflip_d3_root2_n3_stacked_rank
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_STACKED_RANK
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_STACKED_RANK
+  - quantity: xform_signflip_d3_root2_n3_transverse_nullity
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: xform_signflip_d3_root2_n4_nullity_difference
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: xform_signflip_d3_root2_n6_nullspace_basis
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: xform_signflip_d3_root2_n7_basis_count
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N7_BASIS_COUNT
+  - quantity: xform_signflip_d3_root2_q3_sign
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q3_SIGN
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q3_SIGN
+  - quantity: xform_signflip_d3_root2_q8_rank_drop_locus
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: xform_signflip_d3_root2_q8_rank_drop_minors
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: xform_signflip_d3_root2_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_signflip_d3_root_ordering
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT_ORDERING
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT_ORDERING
+  - quantity: xform_signflip_d4_premise_period_average
+    wl: WL_S10_XFORM_SIGNFLIP_D4_PREMISE_PERIOD_AVERAGE
+    py: PY_S10_XFORM_SIGNFLIP_D4_PREMISE_PERIOD_AVERAGE
+  - quantity: xform_signflip_d4_q1_euler_lagrange_system
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q1_EULER_LAGRANGE_SYSTEM
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q1_EULER_LAGRANGE_SYSTEM
+  - quantity: xform_signflip_d4_q2_downstream_route
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q2_DOWNSTREAM_ROUTE
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q2_DOWNSTREAM_ROUTE
+  - quantity: xform_signflip_d4_q2_matrix_a
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_A
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_A
+  - quantity: xform_signflip_d4_q2_matrix_b
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_B
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_B
+  - quantity: xform_signflip_d4_q2_matrix_entry_ratio
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_ENTRY_RATIO
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_ENTRY_RATIO
+  - quantity: xform_signflip_d4_q2_matrix_residual
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_RESIDUAL
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_RESIDUAL
+  - quantity: xform_signflip_d4_q3_determinant
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q3_DETERMINANT
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q3_DETERMINANT
+  - quantity: xform_signflip_d4_q3_root_coincidence_loci
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q3_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q3_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_signflip_d4_q3_root_count
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q3_ROOT_COUNT
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q3_ROOT_COUNT
+  - quantity: xform_signflip_d4_q6_dimension_equations
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q6_DIMENSION_EQUATIONS
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q6_DIMENSION_EQUATIONS
+  - quantity: xform_signflip_d4_q6_energy_density_dimension
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q6_ENERGY_DENSITY_DIMENSION
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q6_ENERGY_DENSITY_DIMENSION
+  - quantity: xform_signflip_d4_q6_inertial_coefficients
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q6_INERTIAL_COEFFICIENTS
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q6_INERTIAL_COEFFICIENTS
+  - quantity: xform_signflip_d4_q6_stiffness_coefficients
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q6_STIFFNESS_COEFFICIENTS
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q6_STIFFNESS_COEFFICIENTS
+  - quantity: xform_signflip_d4_q6_unknown_coefficient_dimension_count
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
+  - quantity: xform_signflip_d4_q8_allowed_strata
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q8_ALLOWED_STRATA
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q8_ALLOWED_STRATA
+  - quantity: xform_signflip_d4_root1_n1_matrix
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N1_MATRIX
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N1_MATRIX
+  - quantity: xform_signflip_d4_root1_n2_nullity
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N2_NULLITY
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N2_NULLITY
+  - quantity: xform_signflip_d4_root1_n2_rank
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N2_RANK
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N2_RANK
+  - quantity: xform_signflip_d4_root1_n3_stacked_matrix
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_STACKED_MATRIX
+  - quantity: xform_signflip_d4_root1_n3_stacked_rank
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_STACKED_RANK
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_STACKED_RANK
+  - quantity: xform_signflip_d4_root1_n3_transverse_nullity
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_TRANSVERSE_NULLITY
+  - quantity: xform_signflip_d4_root1_n4_nullity_difference
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N4_NULLITY_DIFFERENCE
+  - quantity: xform_signflip_d4_root1_n6_nullspace_basis
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N6_NULLSPACE_BASIS
+  - quantity: xform_signflip_d4_root1_n7_basis_count
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N7_BASIS_COUNT
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N7_BASIS_COUNT
+  - quantity: xform_signflip_d4_root1_q3_sign
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q3_SIGN
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q3_SIGN
+  - quantity: xform_signflip_d4_root1_q8_rank_drop_locus
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_RANK_DROP_LOCUS
+  - quantity: xform_signflip_d4_root1_q8_rank_drop_minors
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_RANK_DROP_MINORS
+  - quantity: xform_signflip_d4_root1_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_signflip_d4_root2_n1_matrix
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N1_MATRIX
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N1_MATRIX
+  - quantity: xform_signflip_d4_root2_n2_nullity
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N2_NULLITY
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N2_NULLITY
+  - quantity: xform_signflip_d4_root2_n2_rank
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N2_RANK
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N2_RANK
+  - quantity: xform_signflip_d4_root2_n3_stacked_matrix
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_STACKED_MATRIX
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_STACKED_MATRIX
+  - quantity: xform_signflip_d4_root2_n3_stacked_rank
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_STACKED_RANK
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_STACKED_RANK
+  - quantity: xform_signflip_d4_root2_n3_transverse_nullity
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_TRANSVERSE_NULLITY
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_TRANSVERSE_NULLITY
+  - quantity: xform_signflip_d4_root2_n4_nullity_difference
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N4_NULLITY_DIFFERENCE
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N4_NULLITY_DIFFERENCE
+  - quantity: xform_signflip_d4_root2_n6_nullspace_basis
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N6_NULLSPACE_BASIS
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N6_NULLSPACE_BASIS
+  - quantity: xform_signflip_d4_root2_n7_basis_count
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N7_BASIS_COUNT
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N7_BASIS_COUNT
+  - quantity: xform_signflip_d4_root2_q3_sign
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q3_SIGN
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q3_SIGN
+  - quantity: xform_signflip_d4_root2_q8_rank_drop_locus
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_RANK_DROP_LOCUS
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_RANK_DROP_LOCUS
+  - quantity: xform_signflip_d4_root2_q8_rank_drop_minors
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_RANK_DROP_MINORS
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_RANK_DROP_MINORS
+  - quantity: xform_signflip_d4_root2_q8_root_coincidence_loci
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
+  - quantity: xform_signflip_d4_root_ordering
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT_ORDERING
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT_ORDERING
+  - quantity: main_d2_root1_n7_basis_count_residual
+    wl: WL_S10_MAIN_D2_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_MAIN_D2_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: main_d2_root1_q5_root_original
+    wl: WL_S10_MAIN_D2_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_MAIN_D2_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: main_d2_root1_q5_root_scaled
+    wl: WL_S10_MAIN_D2_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_MAIN_D2_ROOT1_Q5_ROOT_SCALED
+  - quantity: main_d2_root1_q5_scale_ratio
+    wl: WL_S10_MAIN_D2_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_MAIN_D2_ROOT1_Q5_SCALE_RATIO
+  - quantity: main_d2_root2_n7_basis_count_residual
+    wl: WL_S10_MAIN_D2_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_MAIN_D2_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: main_d2_root2_q5_root_original
+    wl: WL_S10_MAIN_D2_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_MAIN_D2_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: main_d2_root2_q5_root_scaled
+    wl: WL_S10_MAIN_D2_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_MAIN_D2_ROOT2_Q5_ROOT_SCALED
+  - quantity: main_d2_root2_q5_scale_ratio
+    wl: WL_S10_MAIN_D2_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_MAIN_D2_ROOT2_Q5_SCALE_RATIO
+  - quantity: main_d3_q7_stiffness
+    wl: WL_S10_MAIN_D3_Q7_PACKAGE_STIFFNESS_DENSITY
+    py: PY_S10_MAIN_D3_Q7_STIFFNESS
+  - quantity: main_d3_q7_difference
+    wl: WL_S10_MAIN_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
+    py: PY_S10_MAIN_D3_Q7_DIFFERENCE
+  - quantity: main_d3_root1_n7_basis_count_residual
+    wl: WL_S10_MAIN_D3_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_MAIN_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: main_d3_root1_q5_root_original
+    wl: WL_S10_MAIN_D3_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_MAIN_D3_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: main_d3_root1_q5_root_scaled
+    wl: WL_S10_MAIN_D3_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_MAIN_D3_ROOT1_Q5_ROOT_SCALED
+  - quantity: main_d3_root1_q5_scale_ratio
+    wl: WL_S10_MAIN_D3_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_MAIN_D3_ROOT1_Q5_SCALE_RATIO
+  - quantity: main_d3_root2_n7_basis_count_residual
+    wl: WL_S10_MAIN_D3_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_MAIN_D3_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: main_d3_root2_q5_root_original
+    wl: WL_S10_MAIN_D3_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_MAIN_D3_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: main_d3_root2_q5_root_scaled
+    wl: WL_S10_MAIN_D3_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_MAIN_D3_ROOT2_Q5_ROOT_SCALED
+  - quantity: main_d3_root2_q5_scale_ratio
+    wl: WL_S10_MAIN_D3_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_MAIN_D3_ROOT2_Q5_SCALE_RATIO
+  - quantity: main_d4_root1_n7_basis_count_residual
+    wl: WL_S10_MAIN_D4_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_MAIN_D4_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: main_d4_root1_q5_root_original
+    wl: WL_S10_MAIN_D4_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_MAIN_D4_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: main_d4_root1_q5_root_scaled
+    wl: WL_S10_MAIN_D4_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_MAIN_D4_ROOT1_Q5_ROOT_SCALED
+  - quantity: main_d4_root1_q5_scale_ratio
+    wl: WL_S10_MAIN_D4_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_MAIN_D4_ROOT1_Q5_SCALE_RATIO
+  - quantity: main_d4_root2_n7_basis_count_residual
+    wl: WL_S10_MAIN_D4_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_MAIN_D4_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: main_d4_root2_q5_root_original
+    wl: WL_S10_MAIN_D4_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_MAIN_D4_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: main_d4_root2_q5_root_scaled
+    wl: WL_S10_MAIN_D4_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_MAIN_D4_ROOT2_Q5_ROOT_SCALED
+  - quantity: main_d4_root2_q5_scale_ratio
+    wl: WL_S10_MAIN_D4_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_MAIN_D4_ROOT2_Q5_SCALE_RATIO
+  - quantity: main_d5_root1_n7_basis_count_residual
+    wl: WL_S10_MAIN_D5_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_MAIN_D5_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: main_d5_root1_q5_root_original
+    wl: WL_S10_MAIN_D5_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_MAIN_D5_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: main_d5_root1_q5_root_scaled
+    wl: WL_S10_MAIN_D5_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_MAIN_D5_ROOT1_Q5_ROOT_SCALED
+  - quantity: main_d5_root1_q5_scale_ratio
+    wl: WL_S10_MAIN_D5_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_MAIN_D5_ROOT1_Q5_SCALE_RATIO
+  - quantity: main_d5_root2_n7_basis_count_residual
+    wl: WL_S10_MAIN_D5_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_MAIN_D5_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: main_d5_root2_q5_root_original
+    wl: WL_S10_MAIN_D5_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_MAIN_D5_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: main_d5_root2_q5_root_scaled
+    wl: WL_S10_MAIN_D5_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_MAIN_D5_ROOT2_Q5_ROOT_SCALED
+  - quantity: main_d5_root2_q5_scale_ratio
+    wl: WL_S10_MAIN_D5_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_MAIN_D5_ROOT2_Q5_SCALE_RATIO
+  - quantity: xcoef_scale_d3_q7_stiffness
+    wl: WL_S10_XCOEF_SCALE_D3_Q7_PACKAGE_STIFFNESS_DENSITY
+    py: PY_S10_XCOEF_SCALE_D3_Q7_STIFFNESS
+  - quantity: xcoef_scale_d3_q7_difference
+    wl: WL_S10_XCOEF_SCALE_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
+    py: PY_S10_XCOEF_SCALE_D3_Q7_DIFFERENCE
+  - quantity: xcoef_scale_d3_root1_n7_basis_count_residual
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xcoef_scale_d3_root1_q5_root_original
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: xcoef_scale_d3_root1_q5_root_scaled
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q5_ROOT_SCALED
+  - quantity: xcoef_scale_d3_root1_q5_scale_ratio
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q5_SCALE_RATIO
+  - quantity: xcoef_scale_d3_root2_n7_basis_count_residual
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xcoef_scale_d3_root2_q5_root_original
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: xcoef_scale_d3_root2_q5_root_scaled
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q5_ROOT_SCALED
+  - quantity: xcoef_scale_d3_root2_q5_scale_ratio
+    wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q5_SCALE_RATIO
+  - quantity: xform_aniso_d3_q7_stiffness
+    wl: WL_S10_XFORM_ANISO_D3_Q7_PACKAGE_STIFFNESS_DENSITY
+    py: PY_S10_XFORM_ANISO_D3_Q7_STIFFNESS
+  - quantity: xform_aniso_d3_q7_difference
+    wl: WL_S10_XFORM_ANISO_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
+    py: PY_S10_XFORM_ANISO_D3_Q7_DIFFERENCE
+  - quantity: xform_aniso_d3_root1_n7_basis_count_residual
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_aniso_d3_root1_q5_root_original
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: xform_aniso_d3_root1_q5_root_scaled
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_Q5_ROOT_SCALED
+  - quantity: xform_aniso_d3_root1_q5_scale_ratio
+    wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_ANISO_D3_ROOT1_Q5_SCALE_RATIO
+  - quantity: xform_aniso_d3_root2_n7_basis_count_residual
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_aniso_d3_root2_q5_root_original
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: xform_aniso_d3_root2_q5_root_scaled
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_Q5_ROOT_SCALED
+  - quantity: xform_aniso_d3_root2_q5_scale_ratio
+    wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_ANISO_D3_ROOT2_Q5_SCALE_RATIO
+  - quantity: xform_aniso_d3_root3_n7_basis_count_residual
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_aniso_d3_root3_q5_root_original
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_Q5_ROOT_ORIGINAL
+  - quantity: xform_aniso_d3_root3_q5_root_scaled
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_Q5_ROOT_SCALED
+  - quantity: xform_aniso_d3_root3_q5_scale_ratio
+    wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_ANISO_D3_ROOT3_Q5_SCALE_RATIO
+  - quantity: xform_aniso_d4_root1_n7_basis_count_residual
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_aniso_d4_root1_q5_root_original
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: xform_aniso_d4_root1_q5_root_scaled
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_Q5_ROOT_SCALED
+  - quantity: xform_aniso_d4_root1_q5_scale_ratio
+    wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_ANISO_D4_ROOT1_Q5_SCALE_RATIO
+  - quantity: xform_aniso_d4_root2_n7_basis_count_residual
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_aniso_d4_root2_q5_root_original
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: xform_aniso_d4_root2_q5_root_scaled
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_Q5_ROOT_SCALED
+  - quantity: xform_aniso_d4_root2_q5_scale_ratio
+    wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_ANISO_D4_ROOT2_Q5_SCALE_RATIO
+  - quantity: xform_aniso_d4_root3_n7_basis_count_residual
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_aniso_d4_root3_q5_root_original
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_Q5_ROOT_ORIGINAL
+  - quantity: xform_aniso_d4_root3_q5_root_scaled
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_Q5_ROOT_SCALED
+  - quantity: xform_aniso_d4_root3_q5_scale_ratio
+    wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_ANISO_D4_ROOT3_Q5_SCALE_RATIO
+  - quantity: xform_divonly_d3_q7_stiffness
+    wl: WL_S10_XFORM_DIVONLY_D3_Q7_PACKAGE_STIFFNESS_DENSITY
+    py: PY_S10_XFORM_DIVONLY_D3_Q7_STIFFNESS
+  - quantity: xform_divonly_d3_q7_difference
+    wl: WL_S10_XFORM_DIVONLY_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
+    py: PY_S10_XFORM_DIVONLY_D3_Q7_DIFFERENCE
+  - quantity: xform_divonly_d3_root1_n7_basis_count_residual
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_divonly_d3_root1_q5_root_original
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: xform_divonly_d3_root1_q5_root_scaled
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q5_ROOT_SCALED
+  - quantity: xform_divonly_d3_root1_q5_scale_ratio
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q5_SCALE_RATIO
+  - quantity: xform_divonly_d3_root2_n7_basis_count_residual
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_divonly_d3_root2_q5_root_original
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: xform_divonly_d3_root2_q5_root_scaled
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q5_ROOT_SCALED
+  - quantity: xform_divonly_d3_root2_q5_scale_ratio
+    wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q5_SCALE_RATIO
+  - quantity: xform_divonly_d4_root1_n7_basis_count_residual
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_divonly_d4_root1_q5_root_original
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: xform_divonly_d4_root1_q5_root_scaled
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q5_ROOT_SCALED
+  - quantity: xform_divonly_d4_root1_q5_scale_ratio
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q5_SCALE_RATIO
+  - quantity: xform_divonly_d4_root2_n7_basis_count_residual
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_divonly_d4_root2_q5_root_original
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: xform_divonly_d4_root2_q5_root_scaled
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q5_ROOT_SCALED
+  - quantity: xform_divonly_d4_root2_q5_scale_ratio
+    wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q5_SCALE_RATIO
+  - quantity: xform_fullgrad_d3_q7_stiffness
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q7_PACKAGE_STIFFNESS_DENSITY
+    py: PY_S10_XFORM_FULLGRAD_D3_Q7_STIFFNESS
+  - quantity: xform_fullgrad_d3_q7_difference
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
+    py: PY_S10_XFORM_FULLGRAD_D3_Q7_DIFFERENCE
+  - quantity: xform_fullgrad_d3_root1_n7_basis_count_residual
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_fullgrad_d3_root1_q5_root_original
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: xform_fullgrad_d3_root1_q5_root_scaled
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_ROOT_SCALED
+  - quantity: xform_fullgrad_d3_root1_q5_scale_ratio
+    wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_SCALE_RATIO
+  - quantity: xform_fullgrad_d4_root1_n7_basis_count_residual
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_fullgrad_d4_root1_q5_root_original
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: xform_fullgrad_d4_root1_q5_root_scaled
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_ROOT_SCALED
+  - quantity: xform_fullgrad_d4_root1_q5_scale_ratio
+    wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_SCALE_RATIO
+  - quantity: xform_signflip_d3_q7_stiffness
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q7_PACKAGE_STIFFNESS_DENSITY
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q7_STIFFNESS
+  - quantity: xform_signflip_d3_q7_difference
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q7_DIFFERENCE
+  - quantity: xform_signflip_d3_root1_n7_basis_count_residual
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_signflip_d3_root1_q5_root_original
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: xform_signflip_d3_root1_q5_root_scaled
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_ROOT_SCALED
+  - quantity: xform_signflip_d3_root1_q5_scale_ratio
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_SCALE_RATIO
+  - quantity: xform_signflip_d3_root2_n7_basis_count_residual
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_signflip_d3_root2_q5_root_original
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: xform_signflip_d3_root2_q5_root_scaled
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_ROOT_SCALED
+  - quantity: xform_signflip_d3_root2_q5_scale_ratio
+    wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_SCALE_RATIO
+  - quantity: xform_signflip_d4_root1_n7_basis_count_residual
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_signflip_d4_root1_q5_root_original
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_ROOT_ORIGINAL
+  - quantity: xform_signflip_d4_root1_q5_root_scaled
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_ROOT_SCALED
+  - quantity: xform_signflip_d4_root1_q5_scale_ratio
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_SCALE_RATIO
+  - quantity: xform_signflip_d4_root2_n7_basis_count_residual
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N7_COUNT_RESIDUAL
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N7_BASIS_COUNT_RESIDUAL
+  - quantity: xform_signflip_d4_root2_q5_root_original
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_ORIGINAL_ROOT
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_ROOT_ORIGINAL
+  - quantity: xform_signflip_d4_root2_q5_root_scaled
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_SCALED_ROOT
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_ROOT_SCALED
+  - quantity: xform_signflip_d4_root2_q5_scale_ratio
+    wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_SCALING_RATIO
+    py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_SCALE_RATIO

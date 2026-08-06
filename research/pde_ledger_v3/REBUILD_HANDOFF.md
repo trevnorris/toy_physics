@@ -22,6 +22,19 @@ comparison, so that claim is load-bearing.
 
 ---
 
+## Scheduled after the rebuild — the substrate requirements register
+
+`SUBSTRATE_REQUIREMENTS.md` (seeded 2026-08-05, two entries). The light sector is built on **S1–S8, none
+of which have been run**. That is the requirements-first design, and it pays only if what each sector
+needs from the substrate is written down. Measured: two obligations are recorded, both found by accident;
+the rest is implicit prose across four step records.
+
+**Pass 1 — S9 and S10** (user decision, 2026-08-05): they were rebuilt carefully, so they calibrate the
+entry shape. **Pass 2 — S11, S11b, then each sector as it closes.** At Phase 5 the file becomes the
+checklist the substrate is tested against.
+
+---
+
 ## What's next, in order
 
 1. **Harness rebuild** — `directives/S10_harness_rebuild_directive.md` (commit `bed199a8`).

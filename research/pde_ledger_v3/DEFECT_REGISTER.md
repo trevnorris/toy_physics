@@ -316,6 +316,45 @@ the gap. ⇒ **Read the corpus first.** **OPEN.**
 
 ---
 
+### ⛔ **`C15`** — a symbol declared dimensionless: is it still an unknown? The spec never says {#c15}
+
+**Found:** by cross-engine comparison, S10, 2026-08-06.
+
+`§Q6` asks each engine for the count of unknown coefficient dimensions. Measured over all thirteen
+package-and-dimension pairs of the pinned build:
+
+| engine | what it emits |
+|---|---|
+| SymPy | **`6` for every one of the thirteen** — a constant; ⛔ it does not respond to the action |
+| Mathematica | `6` for the four packages with no scale factor, **`9`** for the three that carry one |
+
+⭐ **Both are internally consistent.** SymPy removes a symbol declared dimensionless from the unknown set;
+Mathematica keeps it and folds the declaration in as an equation. ⇒ **both conform to
+`S10_SHARED_PHYSICS.md` as it stood**, because the file never said which.
+
+⚠⚠ **This is the defect class cross-engine comparison is supposed to be blind to** — an error in the one
+artifact both engines read makes them agree on the same wrong thing. It surfaced here **only because the
+two engines resolved the ambiguity differently**, which is luck, not method.
+
+⭐ **And a review leg computed the sharper form:** with no dimensionless declaration made, the
+coefficient-dimension system has **nullity 0** for `XFORM_ANISO` — so `[s_ρ] = (0,0,0)` is **derivable
+from the action** — and **nullity 3** for `XCOEF_SCALE`, so `[s] = (0,0,0)` genuinely is a premise. ⇒ the
+spec supplied as an **unfalsifiable premise** a fact the action determines, and `§7`'s stated reason for
+the declaration is true of one of the two symbols and false of the other.
+
+**Status: the SPEC is repaired.** It now states the counting rule in **both** directions — a symbol
+**declared** dimensionless is ⛔ not a `Q6` unknown; one whose dimension the action **determines** ⭐ is.
+⇒ `s` excluded (`XCOEF_SCALE` = 6) and `s_ρ` included (`XFORM_ANISO` = 9); **each engine is
+non-conforming on exactly one of the two.**
+
+⚠⚠ **The first repair attempt was itself defective, twice over, and a leg measured both:** it wrote the
+solved tuple `[s_ρ] = (0,0,0)` into the spec — ⛔ a stated result in the file whose own opening forbids
+them — and it left `XFORM_ANISO` decidable **both ways**, so the very disagreement `C15` exists to settle
+stayed open. ⇒ ⭐ **a repair to a shared spec needs the same two legs as a build**; this one got them.
+
+⛔ **The pinned engines predate all of it** and still disagree; the three rows remain `DISAGREE` in S10's
+committed comparison and close only when the engines are rebuilt.
+
 ## D. The question with no row of its own
 
 | id | | status |
@@ -404,3 +443,71 @@ instrument numbers, ⛔ neither of which touches S9's **derivation** — that re
 built engines, ⛔ not on these counters.
 
 **Status: OPEN — deferred until S10 closes** (user decision, 2026-08-05).
+
+---
+
+### ⛔⛔ **`F8`** — a declared RELATIONAL premise is never required to be discharged {#f8}
+
+**Found:** S10, 2026-08-06, adjudicating three `q3_sign` cross-engine disagreements.
+
+`§3` declares `Σ_m k_m² > 0` as a premise. It is a **relation among symbols**, not a property of one, so
+it cannot be carried in SymPy's assumption system at all — `ask(Q.positive(root))` returns **`None`** on
+roots that are manifestly positive-weighted sums of squares over positive denominators.
+
+⇒ ⛔ **whether an engine reports a sign, or declines to, is a function of what its simplifier happened to
+reach** — not of the premise set. Measured on the pinned build:
+
+| row | Mathematica | SymPy |
+|---|---|---|
+| `main_d5_root2` | declined (`Sign[...]`) | discharged (`1`) |
+| `xform_aniso_d3_root3` | discharged (`1`) | declined |
+| `xform_aniso_d4_root3` | declined | declined |
+
+⭐ Mathematica discharges **24 of its 26** sign rows and leaves exactly the **two largest expressions**
+symbolic — a simplifier-depth artefact. ⚠ **In no row do the two engines assert opposite signs**, so the
+three `DISAGREE`s are not a physics conflict; but ⛔ **nothing distinguishes "declined" from "decided" in
+the comparison**, so a genuine failure to establish positivity would read exactly the same.
+
+⭐ **It generalises past `q3_sign`** to every emitted decision resting on a relational premise.
+
+**Fix at its own level:** require the engine to emit, beside any decision that depends on a relational
+premise, **the discharge it performed** — the operands and the residual, per clause 2 — so that *declined*
+and *decided* are distinguishable objects rather than two spellings in one slot.
+⛔ Do not "fix" it by making one engine's simplifier try harder.
+
+**Status: OPEN.** The spec asks for the decision and not for the discharge.
+
+---
+
+### ⛔ **`F9`** — the two-route tag is a check that CANNOT FAIL {#f9}
+
+**Found:** S10, 2026-08-06. Same family as the `§Q7` defect the rebuild removed.
+
+Thirteen cross-engine rows compare a bare route token — Mathematica's `quadraticFormRoute` against
+SymPy's `M_B`. Both payloads are **single symbols**, and the comparator's bijection search reconciles any
+single symbol with any other. Substituting the SymPy side and re-running the real comparator
+(`reduction/measurements/route_row_information_content.py`):
+
+| SymPy payload | status |
+|---|---|
+| `M_B` (as committed) | `NAMING_MISMATCH` |
+| `quadraticFormRoute` (identical to WL) | `AGREE` |
+| `positionSpaceEulerLagrangeRoute` (**the other route**) | `NAMING_MISMATCH` |
+| `banana` (no route at all) | `NAMING_MISMATCH` |
+| `routesDisagreed` | `NAMING_MISMATCH` |
+| `FAILED` | `NAMING_MISMATCH` |
+
+⇒ ⛔ **the row distinguishes literal equality from everything else and nothing more.** An engine reporting
+that it took the wrong route, or that the step failed, produces the identical verdict to the committed
+payload — and the harness does not count `NAMING_MISMATCH` as a verdict at all, so the row never even
+enters the coverage numerator.
+
+⚠ **What it is NOT:** this is not evidence that the two routes disagree. `§Q2`'s own disclosure already
+says the two-route residual tests **coding consistency only**, because both routes are built from the same
+action. `F9` is about the *tag that names the route*, ⛔ not about the residual.
+
+**Fix at its own level:** either pin the route names in `§8`'s grammar so the tokens are comparable, or
+delete the row. ⛔ A row that reports the same verdict for `banana` and for the truth is worse than no row,
+because it occupies a line in the report.
+
+**Status: OPEN.** Carried in S10's record as a named non-check.

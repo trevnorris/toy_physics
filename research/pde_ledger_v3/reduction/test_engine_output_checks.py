@@ -437,7 +437,7 @@ def test_bijection_detector_does_not_hide_coefficient_changes() -> None:
     assert observed.undeclared_spellings == ()
 
 
-def test_s10_declares_only_verified_dimension_and_scale_spellings() -> None:
+def test_s10_declares_only_verified_dimension_scale_and_gradient_spellings() -> None:
     config = checks.load_config(S10_CONFIG)
     names = {
         "main_d3_q6_energy_density_dimension",
@@ -445,6 +445,7 @@ def test_s10_declares_only_verified_dimension_and_scale_spellings() -> None:
         "main_d3_q2_downstream_route",
         "main_d3_q7_stiffness",
         "main_d3_root2_q5_scale_ratio",
+        "xform_fullgrad_d3_q7_stiffness",
     }
     rows = [row for row in config["cross_engine"] if row["quantity"] in names]
     outputs = {"wl": real_values("S10", "wl"), "py": real_values("S10", "py")}
@@ -463,7 +464,29 @@ def test_s10_declares_only_verified_dimension_and_scale_spellings() -> None:
     assert by_name["main_d3_q2_downstream_route"].undeclared_spellings == (
         "M_B<->quadraticFormRoute",
     )
-    assert by_name["main_d3_q7_stiffness"].status == "NAMING_MISMATCH"
+    assert by_name["main_d3_q7_stiffness"].status == "AGREE"
+    assert set(by_name["main_d3_q7_stiffness"].naming_applied) == {
+        "wl:g1x2->g12",
+        "wl:g1x3->g13",
+        "wl:g2x1->g21",
+        "wl:g2x3->g23",
+        "wl:g3x1->g31",
+        "wl:g3x2->g32",
+    }
+    assert by_name["main_d3_q7_stiffness"].undeclared_spellings == ()
+    assert by_name["xform_fullgrad_d3_q7_stiffness"].status == "AGREE"
+    assert set(by_name["xform_fullgrad_d3_q7_stiffness"].naming_applied) == {
+        "wl:g1x1->g11",
+        "wl:g1x2->g12",
+        "wl:g1x3->g13",
+        "wl:g2x1->g21",
+        "wl:g2x2->g22",
+        "wl:g2x3->g23",
+        "wl:g3x1->g31",
+        "wl:g3x2->g32",
+        "wl:g3x3->g33",
+    }
+    assert by_name["xform_fullgrad_d3_q7_stiffness"].undeclared_spellings == ()
 
 
 def test_partial_control_pair_is_named_and_reduces_control_coverage() -> None:

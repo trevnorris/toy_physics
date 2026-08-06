@@ -63,10 +63,8 @@ period of the PHASE**. ⛔⛔ **Average over the phase variable, ⛔ NEVER over 
 ```
 
 ⛔⛔ **DO NOT WRITE THIS AS `(ω/2π) ∫_0^{2π/ω} dt`.** ⚠ Those limits are a real period **only if `ω` is
-real and nonzero**, and §6 Q3 exists partly to find roots where `ω²` is **zero or negative** — ⇒ that form
-integrates over a non-period **precisely in the case being hunted**, and would force a sign assumption on
-`ω²` into the matrix that the sign test later examines. ⭐ The phase average above has **no such
-dependence**: it is well defined whatever `ω²` turns out to be.
+real and nonzero**, assumptions not supplied here; using them would force a sign assumption on `ω²` into
+the matrix that the sign test later examines. ⭐ The phase average above has **no such dependence**.
 
 ⛔ Do **not** add any assumption about the sign of `ω²` anywhere in the construction of `M`.
 
@@ -86,12 +84,15 @@ JOINT assumption, not merely as per-symbol declarations:**
 
 ```
 ρ_br > 0 ,  μ_R > 0 ,  Σ_m k_m² > 0 ,  every k_m real ,  every a_j real ,  D a positive integer
+
+package-domain premises, joined to the common set when that package is selected:
+XFORM_ANISO:    s_ρ > 0 ,  s_ρ ≠ 1
+XCOEF_SCALE:    s > 0   ,  [s]   = (0, 0, 0) ,  s ≠ 1
 ```
 
 ⚠ Declaring each symbol real/positive **individually is not equivalent** to asserting `Σ_m k_m² > 0`, and a
-sign test that returns "cannot determine" under the weaker set will return a definite answer under the
-joint one. ⇒ ⛔ An engine that carries only per-symbol assumptions will disagree with one that carries the
-joint set, **for no physical reason.**
+sign test performed under a different premise set is not the requested computation. ⇒ ⛔ Both engines
+must carry the joint set.
 
 ⚠ **SUPPLIED PREMISES — unfalsifiable within this build. Emit each as a premise tag:**
 - the background brane is **unstrained and at rest**: `v₀ = 0`, so there are **no convective terms** and no
@@ -150,17 +151,11 @@ result no matter what the other entries are called.
 
 ### ⛔⛔ COROLLARY 5 · A DECLARATION MUST BE WIRED TO WHAT IT DECLARES
 
-⚠⚠ **Measured on BOTH engines, 2026-08-05, and it is corollary 1 wearing a premise tag.** A tag that
-*declares* an input — a premise, a convention, a route, a count — must be **produced from the object the
-computation actually uses**. ⛔ Re-typing the same value a second time is a **hand-authored payload with no
-data dependency**, and it reads to every consumer as a report of what was used.
+A tag that *declares* an input — a premise, a convention, a route, a count — must be **produced from the
+object the computation actually uses**. ⛔ Re-typing the same value a second time is a **hand-authored
+payload with no data dependency**, and it reads to every consumer as a report of what was used.
 
 ⭐⭐ **THE TEST: perturb the thing the tag declares. The tag MUST move.**
-
-⚠ **Measured failures:** a field-dimension premise printed its old value after the analyzer's actual value
-was changed and **281 dimension payloads moved**; a downstream-route tag named a route it would print
-identically if the other route were used; a period-average premise re-typed a window the code applies
-elsewhere; and a run-record was emitted **before** the sweep it claims to record.
 
 ⇒ ⭐ **Derive every declarative payload from the live object** — read it back out of the structure the
 computation consumed, ⛔ never from a literal beside it.
@@ -203,10 +198,9 @@ Emit the full system.
 
 ⭐ **Emit `M_A`, `M_B`, and `M_A − M_B`** — all three (clause 2).
 
-⛔⛔ **THESE ARE NOT TWO INDEPENDENT PHYSICS DERIVATIONS.** For **any** quadratic Lagrangian they are the
-same variational identity, so `M_A − M_B` is structurally zero for **every** stiffness, including a wrong
-one. ⇒ ⭐ **The residual tests CODING CONSISTENCY ONLY** — that both routes were built from the same
-action. ⭐ Emit it, and emit a tag saying that is what it tests. ⛔ Do not present it as verifying physics.
+⛔⛔ **THESE ARE NOT TWO INDEPENDENT PHYSICS DERIVATIONS.** Both routes are built from the same action.
+⇒ ⭐ **The residual tests CODING CONSISTENCY ONLY** — that both routes were built from that action.
+⭐ Emit it, and emit a tag saying that is what it tests. ⛔ Do not present it as verifying physics.
 
 ⚠ If `M_A` and `M_B` differ by an overall scalar, ⛔ do not normalise one to the other — emit both, the
 difference, and the ratio `M_A[[1,1]]/M_B[[1,1]]`.
@@ -227,10 +221,8 @@ difference, and the ratio `M_A[[1,1]]/M_B[[1,1]]`.
 
 ⛔⛔ **EVERY "SOLVE THE LOCUS" INSTRUCTION IN THIS FILE NAMES ITS SOLVE VARIABLES AND ITS DOMAIN, AND THE
 DOMAIN IS ALWAYS THE REALS.** ⚠ A solve with no variable named returns solutions in whatever symbol the
-CAS picks, and an unrestricted domain returns **complex** wavevectors — which §3 forbids. ⚠ **Measured on
-this specification:** the same locus returns a nonempty complex solution set and an **empty** real one. ⇒
-⛔ Two engines differing only in that default would report entirely different loci and the harness would
-call it a physics disagreement.
+CAS picks, and an unrestricted domain permits **complex** wavevectors — which §3 forbids. ⛔ Two engines
+must not use different solve variables or domains for this computation.
 
 ⭐ Emit the locus **as found over the reals**, ⭐ and separately emit whether it intersects the region
 allowed by the §3 assumptions.
@@ -280,20 +272,18 @@ r( lambdaScale · k ) / r( k )        ⭐ fully simplified — THE OBJECT THAT A
 
 ⭐⭐ **Emit the RATIO and let whatever power of `lambdaScale` appears, appear.** ⛔ **Do not difference the
 scaled root against `lambdaScale` raised to a stated power** — naming a power tells you the answer before
-you compute it, and an earlier version of this file named one.
+you compute it.
 
 ⭐ If the ratio is a pure power of `lambdaScale`, also emit that **exponent** as an object obtained by
 `Solve`/`solve` or by `Exponent`/`degree` — ⛔ never typed.
 
 ⛔⛔ **EMIT THE ENTIRE Q5 TAG SET FOR EVERY ROOT, UNCONDITIONALLY — including when the ratio is
-undefined.** ⚠ **An earlier version of this section contradicted corollary 4** by telling you to emit some
-of these tags only in the defined case, and an engine followed it: the tags simply **vanished** for the
-roots where the ratio does not exist. ⛔ **A missing tag is indistinguishable from a quantity never
-computed**, which is the defect this whole specification exists to remove.
+undefined.** ⛔ **A missing tag is indistinguishable from a quantity never computed**, which is the defect
+this whole specification exists to remove.
 
-⇒ ⭐ **The TAG SET is fixed; the PAYLOAD varies.** Where the ratio is undefined — an identically zero root,
-say — the payload is an **explicit marker object** saying so, ⛔ never an absence, and the remaining Q5
-tags for that root are still emitted with whatever they legitimately hold.
+⇒ ⭐ **The TAG SET is fixed; the PAYLOAD varies.** Where the ratio is undefined, the payload is an
+**explicit marker object** saying so, ⛔ never an absence, and the remaining Q5 tags for that root are
+still emitted with whatever they legitimately hold.
 
 ⛔⛔ **DO NOT test this by substituting a symbol for `Σ k_m²`.** That substitution **silently no-ops**
 whenever the root is not a bare multiple of that sum, which yields a false result in **both** directions.
@@ -303,10 +293,16 @@ whenever the root is not a bare multiple of that sum, which yields a false resul
 
 Work in a three-slot dimension vector `(length, time, mass)`. `D` stays **symbolic**.
 
+```
+[energy] = ( 2, −2,  1)
+[L]      = [energy] · length^(−D)  = ( 2−D, −2, 1)      an energy DENSITY on a D-dimensional brane
+[∂_i]    = (−1,  0,  0)
+[∂_t]    = ( 0, −1,  0)
+```
+
 - ⭐⭐ **Dimension the WHOLE expression by walking its expression tree.** ⛔ **Never** obtain a dimension by
   reading the exponents of the coefficient symbols — that silently drops every other dimensionful factor,
-  a wavevector for instance, and reports a dimension short by it. ⚠ That has produced a **wrong emitted
-  value that looked like a meaningful signal.**
+  a wavevector for instance, and reports a dimension short by it.
 - ⭐⭐ **Count FIELD FACTORS, not `Derivative` atoms.** ⚠ A per-term analysis that sums over derivative
   nodes contributes **nothing** for a bare undifferentiated field, so any gap or mass term is silently
   mis-dimensioned — with a clean exit and every check green.
@@ -327,12 +323,7 @@ Compute and emit:
 - The dimension of **every** emitted dimensionful expression, and its **homogeneity** — a boolean per
   expression, with the per-term dimension vectors emitted alongside so a failure is readable.
 
-### ⛔⛔ Q6d · MAKE THE HOMOGENEITY CHECK'S OWN VACUITY VISIBLE — measured, ⛔ not hypothetical
-
-⚠⚠ **Measured on both engines, independently:** perturbing the supplied `[u]` moved **hundreds** of
-dimension payloads and moved **NOT ONE** homogeneity boolean — `0` of `552` in one engine. ⛔ **Those
-booleans cannot discriminate a wrong supplied field dimension**, and a reader seeing them all green will
-believe otherwise.
+### ⛔⛔ Q6d · MAKE THE HOMOGENEITY CHECK'S OWN VACUITY VISIBLE
 
 ⭐ **Why, and it is structural, ⛔ not a coding bug:** the coefficient dimensions are **solved for** by
 requiring each action term to equal the energy density. Homogeneity is then evaluated **under that same
@@ -344,10 +335,7 @@ any ratio or difference of them — including in `[ω²]`, which is therefore bl
 
 - the **number of independent dimension equations** formed, as an integer;
 - the **number of unknown coefficient dimensions** solved for, as an integer — ⛔⛔ **counted from the
-  PACKAGE'S OWN ACTION, never from a fixed list of symbols.** ⚠ **Measured:** an engine used a constant
-  6-tuple regardless of the action; an ablation that removed a coefficient from every package moved the
-  equation count and the difference **13/13** and moved this **0/13** ⇒ the determinacy verdict rested on
-  a **declared denominator** (corollary 5);
+  PACKAGE'S OWN ACTION, never from a fixed list of symbols.**
 - ⭐ their **difference**;
 - ⭐ and, from the solve itself, whether the system was **over-**, **exactly-**, or **under-determined**.
 
@@ -368,21 +356,31 @@ let any tag name suggest it was verified. ⚠ The **one** place it can genuinely
 
 ### Q7 · The `D = 3` comparison against the ordinary curl
 
-At `D = 3` **only**, form the ordinary curl vector of the amplitude,
-`c = (∂_2u_3 − ∂_3u_2, ∂_3u_1 − ∂_1u_3, ∂_1u_2 − ∂_2u_1)`, and emit:
-`S_curl[∂u]` at `D=3`, `c · c`, and their **difference** — all three (clause 2).
+The stiffness is written in general `D`, because the three-vector cross product exists only at `D = 3`.
+At `D = 3`, Q7 compares exactly one pair: this package's stiffness density against the ordinary
+curl-squared. Emit both operands and their difference. This is a form-and-normalisation comparison.
+⛔ It is not evidence for the mode count, which is computed
+in every `D` and does not depend on this comparison.
 
-⭐ Build the gradient components as **independent symbols**, so the two sides are genuinely two
-expressions and not one substituted into itself.
+Use these objects:
 
-⛔⛔ **WHICH STIFFNESS IS COMPARED — resolved 2026-08-05, and an earlier version was ambiguous.**
-⭐ Compare **the package's OWN stiffness density**, obtained by substituting the independent gradient
-symbols into **that package's action**. ⚠ An engine that re-types `S_curl` for every package produces a
-residual that **cannot move when the action is corrupted** — measured, on a sign flip inside the action's
-own curl term.
-⇒ ⭐ **Name the tags for what they now are** (the package's stiffness against the ordinary curl), ⛔ not
-as though every package compared the same object. ⚠ For non-curl packages the residual is **expected to
-be nonzero**; ⭐ that is the control working, ⛔ not a failure.
+```
+g_ij   := independent symbols standing for ∂_i u_j
+S_pkg  := the stiffness-density object this package's action uses, with the g_ij substituted in
+c_i    := Σ_{j,k} ε_ijk g_jk
+emit:     S_pkg  ·  c·c  ·  (S_pkg − c·c)                 all three
+```
+
+The CAS must compute `c_i` from the Levi-Civita definition and compute `c·c` from that result. ⛔ Do not
+write out its expanded polynomial.
+
+The emitted `S_pkg` must be the stiffness-density object from which that package's action was assembled,
+⛔ not an equal-valued rebuild. Mutating **the stiffness density in the action**, with the package selector
+held **fixed**, must move the emitted `S_pkg`.
+
+That mutation requirement establishes dependence on the action; it does ⛔ **not** establish that the
+emitted density is the one from which the action was assembled. Nothing inside a single engine does.
+Provenance rests on the cross-engine comparison of this emitted tag, ⛔ not on the within-engine residual.
 
 ### Q8 · ⭐⭐⭐ Generic rank — and RE-RUNNING Q4 ON EVERY STRATUM WHERE IT FAILS
 
@@ -401,14 +399,11 @@ symbols. ⇒ ⛔⛔ **EVERY NUMBER Q4 PRODUCES IS A GENERIC NUMBER, AND SAYING S
 **intersects the allowed region**, choose an explicit point on it satisfying §3, and recompute and emit the
 **complete Q3 spectrum and Q4 `N1`–`N7` set** at that point, tagged as belonging to that stratum.
 
-⛔⛔ **THIS IS NOT BOOKKEEPING.** There exist actions in §7 with an **allowed real wavevector** at which the
-determinant gains a repeated root whose null space has a **different dimension than the generic answer**.
-⇒ the generic count is simply wrong there, and reporting the locus without recomputing on it emits that
-wrong count with every check green.
+⛔⛔ **THIS IS NOT BOOKKEEPING.** A generic rank does not determine the rank on an exceptional stratum.
+Reporting a locus without recomputing on it leaves the spectrum and mode count there untested.
 
 ⭐ If a package has **no** allowed stratum, ⭐ **emit a tag saying the list is empty** — ⛔ do not omit the
-tag (corollary 4). ⚠ Most packages may well be in that case; ⭐ the tag is what distinguishes *checked and
-empty* from *never checked*.
+tag (corollary 4). ⭐ The tag is what distinguishes *checked and empty* from *never checked*.
 
 ⭐ The orchestrator checks the enumeration is complete; ⛔ the engine does not assert that it is.
 
@@ -423,36 +418,62 @@ everything downstream is recomputed from it by the identical code path.
 (corollary 4). ⚠ A quantity that is **identical** across packages **must still be emitted in each** — that
 repetition is a result, and deleting it destroys the evidence.
 
-| package | `D` | what changes, at the ACTION |
-|---|---|---|
-| `MAIN` | 2, 3, 4, 5 | nothing — `S_curl`, isotropic `ρ_br` |
-| `XFORM_FULLGRAD` | 3, 4 | `S → Σ_{i,j} (∂_i u_j)²` |
-| `XFORM_DIVONLY` | 3, 4 | `S → ( Σ_i ∂_i u_i )²` |
-| `XFORM_SIGNFLIP` | 3, 4 | the stiffness term enters with `+ (μ_R/2) S_curl` |
-| `XFORM_ANISO` | 3, 4 | kinetic term `→ (1/2) Σ_j ρ_j (∂_t u_j)²` with **`ρ_1 = s_ρ · ρ_br` and `ρ_2 = … = ρ_D = ρ_br`**; `s_ρ` positive, **dimensionless**, `s_ρ ≠ 1` |
-| `XCOEF_SCALE` | 3 | `μ_R → s · μ_R`; `s` positive and **dimensionless** |
+There are six packages: `MAIN` is the baseline, and the other five are controls. Their complete actions
+are:
 
-⚠ **`s_ρ` and `s` are DIMENSIONLESS by declaration, and that is a Q6 input** — the energy-density
-requirement alone fixes only the *sum* of a scale factor's dimension and its coefficient's.
+```
+L_MAIN           = (ρ_br / 2) · Σ_j (∂_t u_j)² − (μ_R / 2) · S_curl[∂u]
+L_XFORM_FULLGRAD = (ρ_br / 2) · Σ_j (∂_t u_j)² − (μ_R / 2) · Σ_{i,j} (∂_i u_j)²
+L_XFORM_DIVONLY  = (ρ_br / 2) · Σ_j (∂_t u_j)² − (μ_R / 2) · (Σ_i ∂_i u_i)²
+L_XFORM_SIGNFLIP = (ρ_br / 2) · Σ_j (∂_t u_j)² + (μ_R / 2) · S_curl[∂u]
+L_XFORM_ANISO    = (ρ_br / 2) · [s_ρ (∂_t u_1)² + Σ_{j=2..D} (∂_t u_j)²] − (μ_R / 2) · S_curl[∂u]
+L_XCOEF_SCALE    = (ρ_br / 2) · Σ_j (∂_t u_j)² − (s · μ_R / 2) · S_curl[∂u]
+```
+
+| package | `D` |
+|---|---|
+| `MAIN` | 2, 3, 4, 5 |
+| `XFORM_FULLGRAD` | 3, 4 |
+| `XFORM_DIVONLY` | 3, 4 |
+| `XFORM_SIGNFLIP` | 3, 4 |
+| `XFORM_ANISO` | 3, 4 |
+| `XCOEF_SCALE` | 3 |
+
+⚠ **`s` is DIMENSIONLESS by declaration, and that is a Q6 input** — for `XCOEF_SCALE` the energy-density
+requirement alone fixes only the *sum* of a scale factor's dimension and its coefficient's. ⛔ **That
+reason does not hold for `s_ρ`**, so `s_ρ` gets **no** dimensionless declaration.
+
+⭐ **The counting rule, and it must be stated because two engines read it oppositely otherwise:** a symbol
+**declared** dimensionless is ⛔ **not** a `Q6` unknown; a symbol whose dimension the action **determines**
+⭐ **is** one, and stays one. ⇒ `s` is excluded from the unknown count for `XCOEF_SCALE`; `s_ρ` is
+**included** for `XFORM_ANISO`.
+
+⭐ **And `[s_ρ]` is then a SOLVED value like any other coefficient dimension** — emit it as `Q6` emits the
+rest. ⛔ **This file states no value for it.** ⚠ If you want a second operand to difference it against,
+take it from the **registry**, ⛔ never from this file — `§Q6d` already says the registry is the one place
+that comparison can genuinely fail.
+
+Their positive and distinctness conditions are package-domain premises in the joint set in §3.
+
+For `XCOEF_SCALE` specifically, `s ≠ 1` excludes the unit-scale collapse into `MAIN`. Without that
+premise, an implementation could satisfy every stated premise while reproducing the baseline, leaving the
+coefficient control unable to police arithmetic. A premise that keeps a control distinct is ⛔ not a
+premise that forces a solver to decide.
 
 ⚠ **`XFORM_ANISO` breaks isotropy on ONE axis only.** ⛔ Do not "improve" it by making all the densities
-distinct: that is solvable but **not usable** — the roots come back as nested radicals and every downstream
-rank exceeds the time budget in both CASes.
+distinct; that would define a different control.
 
-⚠ **`MAIN` stops at `D = 5` for ENGINE SYMMETRY.** Wolfram factors the `D = 6` determinant in under a
-second; the SymPy path does not finish. ⛔ A `D` present in one engine only is worse than absent from
-both — it silently drops that point from every cross-engine comparison.
+⚠ **`MAIN` stops at `D = 5` for ENGINE SYMMETRY.** ⛔ A `D` present in one engine only is worse than absent
+from both — it silently drops that point from every cross-engine comparison.
 
 ⭐ **`MAIN` swept over `D` is the primary result of the step, ⛔ not a control.**
-⭐ **`XCOEF_SCALE` is a COEFFICIENT control and tests arithmetic only** — scaling never leaves the family.
+⭐ **`XCOEF_SCALE` is a COEFFICIENT control**: it varies a coefficient under an unchanged stiffness form.
 ⛔ It cannot substitute for a FORM control, and ⛔ **no expectation is stated here about what it does or
 does not move.** Run it and emit its full tag set like every other package.
 
 ⛔⛔ **THE RUN RECORD MUST BE OBSERVED, ⛔ NOT DECLARED.** ⭐ Accumulate a `(package, D)` pair **only after
 that package has finished emitting**, and emit `RUN_PAIRS` / `SKIPPED_PAIRS` **after** the sweep, with
-`SKIPPED = declared ∖ completed`. ⚠ **Measured on both engines:** the record was emitted from the config
-**before** any package ran, or counted loop iterations rather than emissions ⇒ ⛔ **a package that died
-or truncated still reported as run.** ⭐ It is the one tag §7 requires to say what actually happened.
+`SKIPPED = declared ∖ completed`. ⭐ It is the one tag §7 requires to say what actually happened.
 
 ⚠ **Runtime.** No script may exceed **10 minutes**. If `D = 6` with a control is too slow, ⭐ **narrow the
 `D` list and emit a tag recording exactly which `(package, D)` pairs were run and which were skipped.**
@@ -465,20 +486,25 @@ or truncated still reported as run.** ⭐ It is the one tag §7 requires to say 
 ```
 <ENGINE>_S10_<PACKAGE>_D<n>_<QUANTITY>
 <ENGINE>_S10_<PACKAGE>_D<n>_ROOT<r>_<QUANTITY>
+<ENGINE>_S10_<PACKAGE>_D<n>_STRATUM<s>_<QUANTITY>
+<ENGINE>_S10_<PACKAGE>_D<n>_STRATUM<s>_ROOT<r>_<QUANTITY>
 ```
 
 - `<ENGINE>` is `WL` or `PY`.
 - `<PACKAGE>` is exactly one of the §7 names.
 - `<n>` is the integer brane dimension of that run.
+- `<s>` indexes the allowed Q8 strata in the engine's emitted stratum ordering, `1`-based.
 - `<r>` indexes the **distinct** roots, ordered by the engine's own de-duplicated list, `1`-based.
 - `<QUANTITY>` names **the object**, ⛔ never its value.
+
+`STRATUM<s>` sits immediately after `D<n>` and before `ROOT<r>` when both scopes apply. Emit, once per
+package-and-dimension, a tag listing the stratum ordering used so the orchestrator can align the indices.
+The as-built engines' stratum tag names are not aligned, and their comparison is manual.
 
 ⭐ Emit one line per tag: `TAG: <payload>`, payload in a fully re-parseable form
 (`InputForm` in Wolfram; `sympy.srepr`-safe string or `str()` of the expression in SymPy).
 ⭐ Also emit, once per package-and-dimension, a tag listing the **root ordering** used, so the two engines'
 `ROOT<r>` indices can be aligned by the orchestrator rather than assumed to match.
-
-⚠ **S9 finished with 16 tag-parity gaps between engines.** ⭐ This grammar is why; follow it exactly.
 
 ### ⭐ Engine-local tags — declare them, so parity is meaningful
 

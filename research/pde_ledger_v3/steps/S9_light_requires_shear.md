@@ -224,11 +224,39 @@ converse: the roles **swap**, the transverse pair drops to `ω² = 0` and the lo
 ⚠ ⇒ **The defensible statement of S9 is conditional on the stiffness form**, and any prose reading
 *"light requires shear"* as established by this computation is **stronger than the computation supports.**
 
-### Automated consumption
+### Automated consumption — ⚠ re-measured 2026-08-06, and the earlier figure was ~4× too strong
 
 `reduction/engine_output_checks.py --config reduction/checks_S9.yaml` over both engines:
-**cross-engine `agree=12, disagree=0`** · **dimensions 1219/1219 homogeneous** · 150 of 170 tags respond
-to some control · tag-set parity reported per package.
+
+```
+CROSS_ENGINE: agree=12 disagree=0            CROSS_ENGINE_COVERAGE: 12/12
+NAMING_EFFECT: legacy_before_agree=8  declared_after_agree=12
+CONTROL_RESPONSE[wl]: compared=3 responsive=3 invariant=0    CONTROL_RESPONSE[py]: 3/3 responsive
+DIMENSIONS[wl]: total_tags=1559  compared=312  homogeneous=312  no_comparison=1228  unassessable=18
+DIMENSIONS[py]: total_tags=635   compared=329  homogeneous=329  no_comparison=269   unassessable=37
+REGISTRY_RESIDUAL: nonzero=1   (R4 — it compares a squared speed against a speed)
+```
+
+⛔⛔ **This record previously cited "dimensions 1219/1219 homogeneous".** Under the rebuilt harness that
+figure is **312** actual comparisons on the Mathematica side and **329** on the SymPy side. ⇒ the cited
+number counted **tags reached**, ⛔ not **comparisons made**, and overstated the check by roughly a factor
+of four. ⭐ The check still passes everything it examines; ⛔ it examines about a quarter of what this
+record claimed. ⚠ `DEFECT_REGISTER.md#f7` already recorded the same dent from the other direction.
+
+⚠ **And four of the twelve agreements rest on declared spellings**, not on the engines independently
+producing the same text: `legacy_before_agree=8` against `declared_after_agree=12`. Removing one
+declaration at a time (`reduction/measurements/declaration_load_ablation.py`) shows exactly three are
+load-bearing here, each on one row — `mu_F` (`AGREE → DISAGREE`), `lambda_scale`
+(`AGREE → NAMING_MISMATCH`), and the `omega2 = omega**2` **algebraic identity** on `factored_determinant`
+(`AGREE → DISAGREE`). The other four naming exceptions move nothing on this step. ⭐ Each declaration is
+printed on its verdict line with a reason; ⚠ the `omega2` one is an **identity, not a spelling**, and is
+declared separately for that reason.
+
+⚠ **The control figure changed population, not value.** This record previously cited *"150 of 170 tags
+respond to some control"*. The rebuilt harness scores **declared control rows** — `3` per engine, all
+`RESPONSIVE` — rather than counting responsive tags. ⛔ The two numbers are not comparable and the smaller
+one is **not** a regression.
+
 ⛔ Config maps **tag names only**; every comparison target is generated at compare time. ⚠ Its
 `INVARIANT` and `PARITY` outputs are **triage lists, ⛔ not failures**, and a `DISAGREE` needs adjudication
 too — one was a symbol-spelling false positive.

@@ -177,12 +177,23 @@ and SymPy
 together with two reviewers deriving from scratch. Neither engine emits a
 verdict or a typed conclusion: each emits evidence for automated comparison.
 The consumer reports \textbf{12 cross-engine quantities agreeing and 0
-disagreeing}, with all \textbf{1219/1219 dimensionful expressions homogeneous};
-only \textbf{150 of 170} compared tags respond to some control, so \textbf{20
-respond to none}, and 16 legitimate tag-set parity gaps across 16 packages are
-reported; the run terminates non-zero (exit 2) on the unparsed
-\texttt{Piecewise} tag; and it is triage only and does not establish physical
-correctness, completeness, or derivation coverage.
+disagreeing}. Four of those twelve reach agreement only after a declared
+spelling is applied: without any declaration the count is \textbf{8}, and three
+declarations are load-bearing, one of them an algebraic identity rather than a
+spelling.
+
+Re-measured under the rebuilt harness, the dimension figure is \textbf{312}
+comparisons on the Mathematica side and \textbf{329} on the SymPy side. An
+earlier version of this card cited \textbf{1219/1219 homogeneous}: that number
+counted tags \emph{reached}, not comparisons \emph{made}, and overstated the
+check by roughly a factor of four. The check still passes everything it
+examines; it examines about a quarter of what was claimed. The control figure
+changed population rather than value --- the rebuilt harness scores declared
+control rows, \textbf{3 per engine, all responsive}, where the earlier card
+counted responsive tags and reported \textbf{150 of 170}; the two numbers are
+not comparable and the smaller is not a regression. The run terminates non-zero
+(exit 2) on the unparsed \texttt{Piecewise} tag; and it is triage only and does
+not establish physical correctness, completeness, or derivation coverage.
 
 \emph{The two verification mechanisms were complementary, and neither could
 have caught what the other did.} The second engine found a \textbf{wrong

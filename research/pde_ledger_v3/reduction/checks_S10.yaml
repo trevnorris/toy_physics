@@ -77,6 +77,91 @@ symbol_naming:
     - canonical: coefficientScale
       spellings: {wl: coefficientScale, py: s}
       reason: both XCOEF_SCALE emissions bind this symbol as the dimensionless multiplier of mu_R
+    # ---- the nine D=3 gradient symbols ----------------------------------
+    # Before the §Q7 comparison each engine replaces every first derivative of
+    # a field by a coordinate with an independent symbol, and both index that
+    # symbol (coordinate, field) in that order:
+    #
+    #   .wl:148-152   gradient[[coordinateIndex, fieldIndex]]
+    #                   = D[fields[[fieldIndex]], coordinates[[coordinateIndex]]]
+    #   .wl:216       "Gradient" -> gradient
+    #   .wl:1304-1308 gradientSymbols[[row, column]] = g{row}x{column}
+    #   .wl:1309-1311 Thread[Flatten[data["Gradient"]] -> Flatten[gradientSymbols]]
+    #                   -- Flatten is row-major on both operands, so
+    #                   g{r}x{c} stands for D[u_c, x_r].
+    #   .py:309       gradient[i][j] = sp.diff(fields[j], xvec[i])
+    #   .py:1536      gradient_symbols[i][j] = g{i+1}{j+1}
+    #   .py:1538-1542 {sp.diff(fields[j], xvec[i]): gradient_symbols[i][j]}
+    #                   -- so g{r}{c} stands for d(u_c)/d(x_r).
+    #
+    # ⛔ THIS MAP IS SOURCED FROM THOSE DEFINITIONS, NEVER FROM THE PAYLOADS.
+    # ⚠ Across all 9! bijections of the nine gradient symbols, exactly 288 leave
+    # every emitted §Q7 density invariant. Their structure is S3 on the three
+    # diagonal symbols x S3 on the three off-diagonal pairs x 2^3 within-pair
+    # swaps = 288: the payloads fix only which symbols are diagonal and how the
+    # off-diagonal symbols pair
+    # (`reduction/measurements/q7_payload_invariance_group.py`). Of the 18
+    # emitted D=3 pairs, four are 0 on both sides; on the 14 informative pairs,
+    # both the declared map and its transpose give residual 0
+    # (`reduction/measurements/q7_index_map_discrimination.py`).
+    # ⇒ neither the payloads nor this harness's own per-row bijection search can
+    # select the declared map from that 288-element invariance group.
+    #
+    # ⭐ What the declaration buys is therefore NOT that these rows agree --
+    # the per-row search already reconciled EIGHT of the twelve and
+    # reported NAMING_MISMATCH; the other four were already AGREE because
+    # their payload is literally 0 on both sides.
+    # ⚠ "per-row bijection" reconciles only symbols present on ONE side
+    # (engine_output_checks.py:1128-1136); with no symbol left over there is
+    # no bijection and the row reaches DISAGREE instead. It is that ONE map, fixed from the engine definitions,
+    # is applied to EVERY row, so a relabelling wrong in one row alone is no
+    # longer absorbed by a rename no other row uses.
+    #
+    # ⛔⛔ A single-row derangement is governed by stabilisers, not by a status
+    # attached to that row. A derangement drawn from the 288-element joint
+    # stabiliser produces no signal on any row. Outside it, a nonzero payload
+    # moves unless the permutation lies in that payload's own stabiliser:
+    # when it moves, the row reaches DISAGREE if the corrupted payload cannot
+    # be re-reconciled by a per-row bijection, and NAMING_MISMATCH if it can.
+    #
+    # ⚠ Five of the twelve rows are invisible to every single-row
+    # derangement, in two distinct ways. Exactly one payload-bearing row,
+    # xform_fullgrad_d3_q7_stiffness, has stabiliser 9!: its nonzero Σ g_ij²
+    # payload is invariant under every relabelling. The other four are
+    # _q7_difference rows whose payload is literally 0, hence vacuously
+    # 9!-invariant. ⇒ No payload check can police
+    # xform_fullgrad_d3_q7_stiffness, which is why the unit test pins its nine
+    # renames by hand.
+    #
+    # ⚠⚠ This paragraph was wrong three times because each draft generalised
+    # one status from a single measured branch.
+    - canonical: g11
+      spellings: {wl: g1x1, py: g11}
+      reason: the independent §Q7 symbol standing for the derivative of field u1 by coordinate x1; the engines differ only by the x separating the index pair
+    - canonical: g12
+      spellings: {wl: g1x2, py: g12}
+      reason: the independent §Q7 symbol standing for the derivative of field u2 by coordinate x1; the engines differ only by the x separating the index pair
+    - canonical: g13
+      spellings: {wl: g1x3, py: g13}
+      reason: the independent §Q7 symbol standing for the derivative of field u3 by coordinate x1; the engines differ only by the x separating the index pair
+    - canonical: g21
+      spellings: {wl: g2x1, py: g21}
+      reason: the independent §Q7 symbol standing for the derivative of field u1 by coordinate x2; the engines differ only by the x separating the index pair
+    - canonical: g22
+      spellings: {wl: g2x2, py: g22}
+      reason: the independent §Q7 symbol standing for the derivative of field u2 by coordinate x2; the engines differ only by the x separating the index pair
+    - canonical: g23
+      spellings: {wl: g2x3, py: g23}
+      reason: the independent §Q7 symbol standing for the derivative of field u3 by coordinate x2; the engines differ only by the x separating the index pair
+    - canonical: g31
+      spellings: {wl: g3x1, py: g31}
+      reason: the independent §Q7 symbol standing for the derivative of field u1 by coordinate x3; the engines differ only by the x separating the index pair
+    - canonical: g32
+      spellings: {wl: g3x2, py: g32}
+      reason: the independent §Q7 symbol standing for the derivative of field u2 by coordinate x3; the engines differ only by the x separating the index pair
+    - canonical: g33
+      spellings: {wl: g3x3, py: g33}
+      reason: the independent §Q7 symbol standing for the derivative of field u3 by coordinate x3; the engines differ only by the x separating the index pair
 
 # Each declaration produces one symbolic table for exactly one engine/package.
 # PY's live coefficient source has shape (((L,T,M),),), hence nested_family.

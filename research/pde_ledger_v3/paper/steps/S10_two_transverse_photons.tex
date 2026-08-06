@@ -36,7 +36,7 @@ component along \(\widehat{k}\) and a perpendicular component in a
 antisymmetric derivative sends \(\nabla\times u\) to \(i k\times a\), in the
 three-dimensional notation, and in every \(D\) its quadratic form is
 \[
-  \frac12\sum_{i,j}(k_i a_j-k_j a_i)^2
+  \frac{1}{2}\sum_{i,j}(k_i a_j-k_j a_i)^2
     = |k|^2|a|^2-(k\cdot a)^2.
 \]
 It therefore penalises only \(a_\perp\). A longitudinal amplitude has zero
@@ -63,19 +63,22 @@ another, so all carry the same frequency.
 
 \paragraph{The computed count.}
 The two audit engines evaluate the dynamical matrix at each root and compute
-its \textbf{nullity}. The count below is therefore not read off the
-multiplicity of a factor in a factorised determinant.
+its \textbf{nullity}. They separately compute the \textbf{transverse nullity},
+the corank of the dynamical matrix stacked on \(k^{\mathsf T}\), so that a
+null vector parallel to \(k\) is not miscounted as transverse. The count below
+is therefore not read off the multiplicity of a factor in a factorised
+determinant.
 \begin{center}
-\begin{tabular}{@{}cL{0.23\textwidth}L{0.39\textwidth}c@{}}
+\begin{tabular}{@{}cllc@{}}
 \toprule
 \(D\) & \(\omega^2=0\) &
 \(\omega^2=(\mu_R/\rho_{\mathrm{br}})k^2\) & sum \\
 \midrule
-2 & nullity 1, \(\parallel k\) & nullity 1, \(\perp k\) & 2 \\
-\textbf{3} & nullity 1, \(\parallel k\) &
-  \textbf{nullity 2}, \(\perp k\) & 3 \\
-4 & nullity 1, \(\parallel k\) & nullity 3, \(\perp k\) & 4 \\
-5 & nullity 1, \(\parallel k\) & nullity 4, \(\perp k\) & 5 \\
+2 & nullity 1; transverse 0 & nullity 1; transverse 1 & 2 \\
+\textbf{3} & nullity 1; transverse 0 &
+  \textbf{nullity 2; transverse 2} & 3 \\
+4 & nullity 1; transverse 0 & nullity 3; transverse 3 & 4 \\
+5 & nullity 1; transverse 0 & nullity 4; transverse 4 & 5 \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -84,6 +87,24 @@ multiplicity of a factor in a factorised determinant.
 Thus the longitudinal nullity is one and the transverse nullity is \(D-1\).
 In particular, exactly two transverse polarisations require
 \(D_{\mathrm{brane}}=3\).
+
+\paragraph{Exceptional strata.}
+The \(\S Q8\) calculation finds no allowed rank-drop stratum for \texttt{MAIN}
+in any swept dimension, nor for \texttt{XFORM\_FULLGRAD},
+\texttt{XFORM\_DIVONLY}, \texttt{XFORM\_SIGNFLIP}, or
+\texttt{XCOEF\_SCALE}. Thus the \(D-1\) count for the main package is not only
+generic: it has nowhere in the allowed region to fail. Only
+\texttt{XFORM\_ANISO} has an allowed stratum,
+\(k_2=k_3=0\) at \(D=3\) and \(k_2=k_3=k_4=0\) at \(D=4\). Generically its
+anisotropy splits the pair into two nonzero roots, whose transverse nullities
+are one and zero at \(D=3\), and two and zero at \(D=4\). On the stratum,
+with \(k\) along the anisotropy axis, the
+degeneracy returns: two roots, with transverse nullity two at \(D=3\) and three
+at \(D=4\). This stratum result is an orchestrator pairing by hand,
+\textbf{not a harness comparison}; the as-built tag grammar pinned at
+\texttt{s10-as-built} supplies no stratum scope token, while the repaired
+specification adds \texttt{STRATUM<s>}. The harness declares no cross-engine
+stratum pairs.
 
 \paragraph{Why this is not a codimension count.}
 The bulk never enters the computation. There is no codimension anywhere in
@@ -94,16 +115,15 @@ Codimension is therefore not merely the wrong number, but an
 \paragraph{Equations and dimensions for general \(D\).}
 The Lagrangian is an energy density on a \(D\)-dimensional brane,
 \[
-  L=\frac12\rho_{\mathrm{br}}(\partial_tu)^2
-    -\frac12\mu_R(\operatorname{curl}u)^2,
+  L=\frac{1}{2}\rho_{\mathrm{br}}(\partial_tu)^2
+    -\frac{1}{2}\mu_R(\operatorname{curl}u)^2,
   \qquad
   (\operatorname{curl}u)^2
-    \equiv\frac12\sum_{i,j}(\partial_i u_j-\partial_j u_i)^2.
+    \equiv\frac{1}{2}\sum_{i,j}(\partial_i u_j-\partial_j u_i)^2.
 \]
 The latter is the antisymmetric derivative in every \(D\). At \(D=3\), its
-reduction to the ordinary \( |\nabla\times u|^2 \) is computed, with residual
-zero, rather than assumed. The constituent dimensions close as functions of
-\(D\):
+relation to the ordinary \( |\nabla\times u|^2 \) is addressed under
+Verification below. The constituent dimensions close as functions of \(D\):
 \[
   [\rho_{\mathrm{br}}]=(-D,0,1),
   \qquad
@@ -163,31 +183,117 @@ carried forward to S11. It must not be confused with the charge field itself:
 \(u_L\) is in-plane, whereas the charge-bearing \(h\)-branon is out of plane
 and \(h\ne u_L\).
 
+\paragraph{Prior art --- and the over-claim to refuse.}
+This sector's algebra is MacCullagh's rotational aether of 1839: stored energy
+depending only on the rotation of displacement gives \(D-1\) transverse waves
+at one speed and a longitudinal mode with zero restoring force. Prior art is an
+oracle here, not a premise; the result was computed independently and then
+checked against it. But S10 linearises about \(v_0=0\), which is MacCullagh's
+own regime. Agreement with him is therefore agreement inside his domain of
+validity and is \textbf{not evidence that this medium differs from a
+nineteenth-century elastic aether}.
+
+What is genuinely ours here is narrower: the fact that the bulk never enters,
+so codimension cannot be the count. The in-plane/out-of-plane split is the
+standard brane-world decomposition, with the \(h\)-branon filed as KNOWN prior
+art in \texttt{docs/medium\_requirements\_and\_prior\_art.md:142}; the
+\(D=2,3,4,5\) sweep is an evidence exercise over the standard \(D-1\)
+identity, not a result; and retaining the longitudinal zero as a charge anchor
+is recorded only as NOT-FOUND, which is not originality. The historical
+objections concerning a longitudinal mode, a preferred frame, and
+matter--aether coupling are not answered at S10.
+
+% NOT \stagefield{Verification}: that macro suppresses Verification in the
+% default build. The limitations and the meaning of the counters must stay visible.
 \paragraph{Verification.}
-Two independently written engines agree on every value. The blind Mathematica
-audit
-(\StageFile{research/pde\_ledger\_v3/mathematica/S10\_two\_transverse\_photons\_mathematica\_audit.wl})
-reads nothing and was built first. The SymPy audit
-(\StageFile{research/pde\_ledger\_v3/scripts/S10\_two\_transverse\_photons\_sympy\_audit.py})
-imports the shared registry and was built while the Mathematica file was
-quarantined out of the tree, so it could not transcribe from it. After
-restoration, that file was byte-identical to its committed blob.
+The rebuilt evidence uses two independently constructed engines, Mathematica
+(\StageFile{research/pde\_ledger\_v3/mathematica/S10\_brane\_mode\_spectrum\_mathematica\_audit.wl})
+and SymPy
+(\StageFile{research/pde\_ledger\_v3/scripts/S10\_brane\_mode\_spectrum\_sympy\_audit.py}).
+The rebuilt harness reports, over both committed outputs:
 
-Every value matched predictions committed before either script ran
-(\StageFile{research/pde\_ledger\_v3/steps/S10\_PREREGISTERED\_PREDICTION.md},
-commit \texttt{bc276485}), including the two flagged uncertainties: the
-antisymmetric form reduces to ordinary curl-squared at \(D=3\), and \(D=2\) is
-not degenerate in kind.
+\begingroup\tiny
+\begin{verbatim}
+CROSS_ENGINE: agree=517 cardinality_invalid=55 disagree=28 empty=18 naming_mismatch=13 shape_mismatch=59
+CROSS_ENGINE_COVERAGE: 545/690
+CONTROL_RESPONSE[wl]: compared=6 responsive=6 invariant=0    CONTROL_RESPONSE[py]: 6/6 responsive
+TAG_PARITY[wl]: cells=13 gaps=0                              TAG_PARITY[py]: cells=13 gaps=0
+DIMENSIONS[wl]: total=2983 compared=430  homogeneous=428  unwalked=3
+DIMENSIONS[py]: total=4227 compared=822  homogeneous=802  unwalked=0
+LAGRANGIAN_ACTION_COVERAGE 13/13        EULER_LAGRANGE_ACTION_COVERAGE 13/13
+\end{verbatim}
+\endgroup
 
-The able-to-fail control changes the \emph{form}: replacing the
-antisymmetric-derivative stiffness by full gradient-squared stiffness
-collapses the two roots into one root of nullity \(D\), removes the
-\(\omega^2=0\) root, and makes the longitudinal mode propagate. A coefficient
-control cannot distinguish this step's claim: rescaling \(\mu_R\) moves the
-roots but leaves their nullities unchanged. A coefficient control tests the
-arithmetic; only the form control tests the physics of the count.
+The denominator is load-bearing: only 545 of 690 declared rows reach a verdict;
+145 do not. The 28 disagreements are all accounted for as sentinel spelling,
+non-canonical basis representation, undischarged sign premises, or a shared-spec
+convention gap. In no row that reaches a verdict do the engines compute
+different physics.
 
-Registry gates were all green with the payload unchanged: acceptance
-\StatusText{match} (\(10\mathbin{\to}6\), \(10\mathbin{\to}6\),
-\(10\mathbin{\to}5\)), dimensional homogeneity \StatusText{pass},
-able-to-fail \StatusText{pass}, and 11 tests.
+The action is now compared for the first time. All 13 Lagrangian and 13
+Euler--Lagrange rows agree. Single-difference controls on derivative order,
+variable, function, argument membership, coefficient, and stiffness form reach
+\texttt{DISAGREE}; argument order still agrees because it is an emission
+convention rather than content.
+
+The \(\S Q7\) history reverses the old card's claim. Before repair, the SymPy
+check computed curl minus curl for every package, so its residual was zero by
+construction and the check could not fail; only one engine genuinely tested
+that prediction while the record said two. After repair, both engines at
+\(D=3\) return residual zero for the four curl-form packages and nonzero for
+\texttt{XFORM\_FULLGRAD} and \texttt{XFORM\_DIVONLY}. Even now \(\S Q7\) drops
+the stiffness sign and coefficient: \texttt{XFORM\_SIGNFLIP}'s payload is
+identical to \texttt{MAIN}'s despite the opposite sign in its action.
+\textbf{A zero \(\S Q7\) residual is a claim about the form, never about the
+term.} Moreover, the reference-side curl components are typed rather than
+computed from the Levi--Civita definition in both as-built engines.
+
+\paragraph{Limitations --- recorded, not fixed.}
+\begin{itemize}
+\item The \(D=3\) count of two rests on an in-plane/out-of-plane decoupling
+that \textbf{nobody has computed}. The identification of \(u\) as in-plane is
+load-bearing: including out-of-plane motion in the same elastic sector would
+give three rather than two.
+
+\item \(D_{\mathrm{brane}}=3\) is postulated. Because the bulk never enters,
+nothing here can derive it.
+
+\item The absence of a propagating longitudinal wave is assumed, not derived:
+the curl-only action sets its restoring stiffness to zero by construction. It
+removes the restoring force, not the degree of freedom.
+
+\item Nullspace bases are never compared for span; eleven disagreement rows
+compare representation alone. The thirteen downstream-route rows are a named
+non-check that cannot fail: bare route symbols can be reconciled by the
+comparator without testing their meaning.
+
+\item The exceptional-stratum re-run is not machine-compared; its agreement is
+the hand pairing reported above.
+
+\item Cross-engine agreement \textbf{did not improve} when \(\S Q7\) was
+repaired. Across that repair, \texttt{DISAGREE} moved \(32\mathbin{\to}28\),
+\texttt{NAMING\_MISMATCH} moved \(17\mathbin{\to}21\), and the coverage
+numerator moved \(541\mathbin{\to}537\): four rows moved from compared-and-wrong
+to not compared. A later naming declaration moved rows in the other direction;
+it must not be credited to the repair.
+
+\item Declared spellings carry a large share of agreement: 218 of the 517
+agreements require a declaration, while the engines left to their own
+orthography agree on 299. Those declarations are reasoned and disclosed, but
+they are part of the evidence.
+
+\item \texttt{XFORM\_SIGNFLIP} and \texttt{XFORM\_ANISO} are coefficient
+controls despite their prefix; only \texttt{FULLGRAD} and \texttt{DIVONLY}
+change the stiffness functional. Twenty SymPy and two Mathematica dimension
+payloads on the anisotropic stratum are non-homogeneous after numeric
+wavevector substitution, and three Mathematica payloads are unwalked.
+
+\item The comparator's bijection-verification line remains untested, and an
+LRU-cache-dependent derivative-symbol mutation hazard is real though it fired
+zero times in the recorded run. The shared specification was repaired after
+the pinned engines were built, so its current text is not their as-built input.
+
+\item The physical scope remains linearisation about \(v_0=0\), a sharp
+zero-width sheet, no dissipation, frequency-independent moduli, the continuum
+limit, and vanishing amplitude.
+\end{itemize}

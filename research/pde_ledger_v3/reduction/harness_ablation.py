@@ -504,6 +504,71 @@ def run_battery(h, config: dict[str, Any], outputs: dict[str, Mapping[str, objec
         + " ".join(form_results + coefficient_results)
     )
 
+    # 19. The declared D=3 gradient map is load-bearing across the §Q7 rows.
+    q7_rows = [row for row in config["cross_engine"] if "_q7_" in row["quantity"]]
+    gradient_names = {f"g{row}{column}" for row in range(1, 4) for column in range(1, 4)}
+    variants = {}
+    variant_rows = {}
+    for variant in ("AS_DECLARED", "TRANSPOSE", "DERANGED", "ABSENT"):
+        variant_config = copy.deepcopy(config)
+        exceptions = variant_config["symbol_naming"]["exceptions"]
+        if variant == "ABSENT":
+            exceptions[:] = [
+                item for item in exceptions if item["canonical"] not in gradient_names
+            ]
+        elif variant != "AS_DECLARED":
+            for item in exceptions:
+                canonical = item["canonical"]
+                if canonical not in gradient_names:
+                    continue
+                row, column = int(canonical[1]), int(canonical[2])
+                if variant == "TRANSPOSE":
+                    item["spellings"]["wl"] = f"g{column}x{row}"
+                else:
+                    item["spellings"]["wl"] = f"g{row}x{column % 3 + 1}"
+        report = h.check_cross_engine(
+            q7_rows, outputs, config=variant_config, registry=registry
+        )
+        variants[variant] = tuple(
+            sorted(
+                (status, sum(row.status == status for row in report.rows))
+                for status in {row.status for row in report.rows}
+            )
+        )
+        variant_rows[variant] = {row.quantity: row.status for row in report.rows}
+    # Every declared §Q7 row must reach AGREE under the committed declaration.
+    # NAMING_MISMATCH means a gradient symbol went undeclared; DISAGREE means a
+    # declared spelling carried one engine's payload onto a different object.
+    # Forbidding only the first lets a map that is wrong across off-diagonal
+    # pairs through, because it produces DISAGREE rather than NAMING_MISMATCH.
+    as_declared_not_agree = sorted(
+        f"{quantity}={status}"
+        for quantity, status in variant_rows["AS_DECLARED"].items()
+        if status != "AGREE"
+    )
+    require(
+        not as_declared_not_agree,
+        "AS_DECLARED has non-AGREE §Q7 rows: " + ", ".join(as_declared_not_agree),
+    )
+    require(variants["DERANGED"] != variants["AS_DECLARED"], "deranged gradient map did not change the §Q7 status tally")
+    require(variants["ABSENT"] != variants["AS_DECLARED"], "absent gradient map did not change the §Q7 status tally")
+    lines.append(
+        "ACCEPTANCE 19 PASS "
+        + " ".join(
+            variant
+            + "=["
+            + ",".join(f"{status}={count}" for status, count in variants[variant])
+            + "] moved=["
+            + ",".join(
+                quantity
+                for quantity, status in sorted(variant_rows[variant].items())
+                if variant_rows["AS_DECLARED"][quantity] != status
+            )
+            + "]"
+            for variant in ("AS_DECLARED", "TRANSPOSE", "DERANGED", "ABSENT")
+        )
+    )
+
     return lines
 
 

@@ -1,12 +1,75 @@
 # This file maps names to emitted tags; it contains no expected physics value.
 default_engine: wl
 
-derived_dimensions:
-  rhoBr: WL_S9_RHO_DIMENSION
-  rhoZ: WL_S9_X6_RHO_Z_DIMENSION
-  muR: WL_S9_MU_DIMENSION
-  muF: WL_S9_X7_MU_F_DIMENSION
-  muG: WL_S9_X8_MU_G_DIMENSION
+cells:
+  - {package: MAIN, role: main}
+  - {package: X1, role: control}
+  - {package: X2, role: control}
+  - {package: X3, role: control}
+  - {package: X4, role: control}
+  - {package: X5, role: control}
+  - {package: X6, role: control}
+  - {package: X7, role: control}
+  - {package: X8, role: control}
+
+control:
+  required_suffixes:
+    wl: [LAGRANGIAN, EULER_LAGRANGE_RESIDUAL, DETERMINANT]
+    py: [LAGRANGIAN, EL_RESIDUAL, DET_M_FACTORED]
+  tag_templates:
+    wl:
+      main: WL_S9_{suffix}
+      control: WL_S9_{package}_{suffix}
+    py:
+      main: PY_S9_MAIN_{suffix}
+      control: PY_S9_{package}_{suffix}
+
+symbol_naming:
+  rule: registry_snake_case_to_lower_camel
+  engine_styles: {wl: lower_camel, py: canonical}
+  exceptions:
+    - {canonical: rho_z, spellings: {wl: rhoZ, py: rho_z}, reason: anisotropic control coefficient is not declared in the registry}
+    - {canonical: mu_F, spellings: {wl: muF, py: mu_F}, reason: flexural control coefficient is not declared in the registry}
+    - {canonical: mu_G, spellings: {wl: muG, py: mu_G}, reason: bare-field control coefficient is not declared in the registry}
+    - {canonical: lambda_rho, spellings: {wl: lambdaRho, py: lambda_rho}, reason: inertial ablation scale is engine-local control metadata}
+    - {canonical: lambda_mu, spellings: {wl: lambdaMu, py: lambda_mu}, reason: stiffness ablation scale is engine-local control metadata}
+    - {canonical: lambda_scale, spellings: {wl: lambdaScale, py: lambda_scale}, reason: homogeneity probe scale is engine-local control metadata}
+
+symbol_identities:
+  - engine: py
+    symbol: omega2
+    expression: omega**2
+    reason: the S9 spectrum is solved as a polynomial in the squared frequency and this engine carries it as one variable
+
+dimension_sources:
+  - {engine: wl, package: MAIN, symbols: {rhoBr: WL_S9_RHO_DIMENSION, muR: WL_S9_MU_DIMENSION}}
+  - {engine: wl, package: X1, symbols: {rhoBr: WL_S9_X1_RHO_DIMENSION, muR: WL_S9_X1_MU_DIMENSION}}
+  - {engine: wl, package: X2, symbols: {rhoBr: WL_S9_X2_RHO_DIMENSION, muR: WL_S9_X2_MU_DIMENSION}}
+  - {engine: wl, package: X3, symbols: {rhoBr: WL_S9_X3_RHO_DIMENSION, muR: WL_S9_X3_MU_DIMENSION}}
+  - {engine: wl, package: X4, symbols: {rhoBr: WL_S9_X4_RHO_DIMENSION, muR: WL_S9_X4_MU_DIMENSION}}
+  - {engine: wl, package: X5, symbols: {rhoBr: WL_S9_X5_RHO_DIMENSION, muR: WL_S9_X5_MU_DIMENSION}}
+  - {engine: wl, package: X6, symbols: {rhoBr: WL_S9_X6_RHO_DIMENSION, rhoZ: WL_S9_X6_RHO_Z_DIMENSION, muR: WL_S9_X6_MU_DIMENSION}}
+  - {engine: wl, package: X7, symbols: {rhoBr: WL_S9_X7_RHO_DIMENSION, muF: WL_S9_X7_MU_F_DIMENSION}}
+  - {engine: wl, package: X8, symbols: {rhoBr: WL_S9_X8_RHO_DIMENSION, muR: WL_S9_X8_MU_DIMENSION, muG: WL_S9_X8_MU_G_DIMENSION}}
+  - {engine: py, package: MAIN, symbols: {rho_br: PY_S9_MAIN_DIM_PRIMARY_INERTIA, mu_R: PY_S9_MAIN_DIM_PRIMARY_STIFFNESS}}
+  - {engine: py, package: X1, symbols: {rho_br: PY_S9_X1_DIM_PRIMARY_INERTIA, mu_R: PY_S9_X1_DIM_PRIMARY_STIFFNESS}}
+  - {engine: py, package: X2, symbols: {rho_br: PY_S9_X2_DIM_PRIMARY_INERTIA, mu_R: PY_S9_X2_DIM_PRIMARY_STIFFNESS}}
+  - {engine: py, package: X3, symbols: {rho_br: PY_S9_X3_DIM_PRIMARY_INERTIA, mu_R: PY_S9_X3_DIM_PRIMARY_STIFFNESS}}
+  - {engine: py, package: X4, symbols: {rho_br: PY_S9_X4_DIM_PRIMARY_INERTIA, mu_R: PY_S9_X4_DIM_PRIMARY_STIFFNESS}}
+  - {engine: py, package: X5, symbols: {rho_br: PY_S9_X5_DIM_PRIMARY_INERTIA, mu_R: PY_S9_X5_DIM_PRIMARY_STIFFNESS}}
+  - engine: py
+    package: X6
+    symbols:
+      rho_br: PY_S9_X6_DIM_PRIMARY_INERTIA
+      rho_z: {tag: PY_S9_X6_DIM_COEFFICIENTS, select: 'pair_value:rho_z', shape: vector}
+      mu_R: PY_S9_X6_DIM_PRIMARY_STIFFNESS
+  - {engine: py, package: X7, symbols: {rho_br: PY_S9_X7_DIM_PRIMARY_INERTIA, mu_F: PY_S9_X7_DIM_PRIMARY_STIFFNESS}}
+  - engine: py
+    package: X8
+    symbols:
+      rho_br: PY_S9_X8_DIM_PRIMARY_INERTIA
+      mu_R: PY_S9_X8_DIM_PRIMARY_STIFFNESS
+      mu_G: {tag: PY_S9_X8_DIM_COEFFICIENTS, select: 'pair_value:mu_G', shape: vector}
 
 # Narrow allowed exception: these vectors are definitional conventions, not
 # results. Coordinates/displacements are lengths, wave numbers are inverse
@@ -31,6 +94,7 @@ primitive_dimensions:
   kz: [-1, 0, 0]
   q: [-2, 0, 0]
   omega: [0, -1, 0]
+  omega2: [0, -2, 0]
   omegaSquared: [0, -2, 0]
 
 dimensionless:
@@ -39,6 +103,8 @@ dimensionless:
   - lambda_scale
   - lambdaRho
   - lambdaMu
+  - lambda_rho
+  - lambda_mu
   - rhoExponent
   - rhoZExponent
   - muExponent
@@ -50,20 +116,24 @@ dimensionless:
 # Selectors normalize emitted shape only; no selector names a result value.
 cross_engine:
   - quantity: factored_determinant
+    cardinality: {kind: scalar}
     wl: WL_S9_DETERMINANT
     py: PY_S9_MAIN_DET_M_FACTORED
     wl_select: scalar
     py_select: scalar
   - quantity: full_root_set
+    cardinality: {kind: multiset, count: 3}
     wl: WL_S9_ROOT_MULTISET
     py: PY_S9_MAIN_ROOT_MULTISET
     mode: multiset
   - quantity: transverse_multiplicity
+    cardinality: {kind: scalar}
     wl: WL_S9_ROOT2_E2
     py: PY_S9_MAIN_ROOT_E2
     wl_select: scalar
     py_select: last_pair_second
   - quantity: transverse_speed_squared
+    cardinality: {kind: scalar}
     wl: WL_S9_CANDIDATE_SPEED_SQUARED1
     py: PY_S9_MAIN_SPEED_SQUARED_CANDIDATES
     wl_select: scalar
@@ -73,37 +143,52 @@ cross_engine:
   # per-root in the .wl and a per-root list in the .py; see the step record for
   # why that pair is compared by hand rather than mapped.
   - quantity: dispersion_scaling_residual_flexural
+    cardinality: {kind: scalar}
     wl: WL_S9_X7_ROOT1_SCALING_RESIDUAL
     py: PY_S9_X7_ROOT_SCALING_RESIDUAL
     wl_select: scalar
     py_select: list
   - quantity: inertia_coefficient_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S9_RHO_DIMENSION
     py: PY_S9_MAIN_DIM_PRIMARY_INERTIA
   - quantity: stiffness_coefficient_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S9_MU_DIMENSION
     py: PY_S9_MAIN_DIM_PRIMARY_STIFFNESS
   - quantity: coefficient_dimension_difference
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S9_MU_RHO_DIMENSION_DIFFERENCE
     py: PY_S9_MAIN_DIM_STIFFNESS_MINUS_INERTIA
   - quantity: implied_speed_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S9_SPEED_SQUARED_IMPLIED_DIMENSION
     py: PY_S9_MAIN_DIM_SPEED_FROM_EXPRESSION
     wl_select: list
     py_select: list_of_pairs_second
   - quantity: speed_dimension_difference
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S9_SPEED_SQUARED_DIMENSION_DIFFERENCE
     py: PY_S9_MAIN_DIM_SPEED_DIFFERENCE
     wl_select: list
     py_select: list_of_pairs_second
   - quantity: dynamical_matrix_route_residual
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S9_DYNAMICAL_MATRIX_RESIDUAL
     py: PY_S9_MAIN_ROUTE_OPERANDS_AND_RESIDUAL
     py_select: sequence_third
   - quantity: bare_field_coefficient_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S9_X8_MU_G_DIMENSION
     py: PY_S9_X8_DIM_COEFFICIENTS
     py_select: last_pair_second
 
-# S9 still emits no direct values for every QID in a registry residual.
-registry_residual: []
+# The coefficient symbols and the squared-speed expression are selected from
+# one live emitted expression.  NONZERO is a verdict, not an operational error.
+registry_residual:
+  - relation_id: R4
+    engine: wl
+    qids:
+      Q.brane.rho_br: {tag: WL_S9_CANDIDATE_SPEED_SQUARED1, select: 'free_symbol:rhoBr'}
+      Q.brane.mu_R: {tag: WL_S9_CANDIDATE_SPEED_SQUARED1, select: 'free_symbol:muR'}
+      Q.brane.c_gamma: {tag: WL_S9_CANDIDATE_SPEED_SQUARED1}

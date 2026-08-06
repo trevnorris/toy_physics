@@ -1322,7 +1322,7 @@ def run_package_dimension(
     k_squared = sp.Add(*(component**2 for component in kvec))
     assumptions = build_joint_assumptions(package, kvec, avec)
 
-    fields, lagrangian, inertial_coefficients, stiffness_coefficients, _stiffness = build_action(package, n, t, xvec)
+    fields, lagrangian, inertial_coefficients, stiffness_coefficients, stiffness = build_action(package, n, t, xvec)
     (
         dimension_equations,
         dimension_unknowns,
@@ -1535,7 +1535,12 @@ def run_package_dimension(
 
     gradient_symbols = [[sp.Symbol(f"g{i + 1}{j + 1}", real=True) for j in range(3)] for i in range(3)]
     if n == 3:
-        curl_stiffness = sp.expand(stiffness_density("curl", gradient_symbols))
+        gradient_substitution = {
+            sp.diff(fields[j], xvec[i]): gradient_symbols[i][j]
+            for i in range(3)
+            for j in range(3)
+        }
+        package_stiffness = sp.expand(stiffness.xreplace(gradient_substitution))
         curl_vector = sp.Matrix(
             [
                 gradient_symbols[1][2] - gradient_symbols[2][1],
@@ -1544,10 +1549,10 @@ def run_package_dimension(
             ]
         )
         curl_dot = sp.expand((curl_vector.T * curl_vector)[0])
-        curl_difference = sp.expand(curl_stiffness - curl_dot)
+        curl_difference = sp.expand(package_stiffness - curl_dot)
         gradient_dim_map = {symbol: ZERO_DIM for row in gradient_symbols for symbol in row}
         q7_walker = DimensionWalker(gradient_dim_map, (), {}, assumptions)
-        emit_physical(emitter, q7_walker, prefix + "Q7_STIFFNESS", curl_stiffness)
+        emit_physical(emitter, q7_walker, prefix + "Q7_STIFFNESS", package_stiffness)
         emit_physical(emitter, q7_walker, prefix + "Q7_CURL_DOT", curl_dot)
         emit_physical(emitter, q7_walker, prefix + "Q7_DIFFERENCE", curl_difference)
     else:

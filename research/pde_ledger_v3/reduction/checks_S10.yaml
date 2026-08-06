@@ -12,9 +12,135 @@
 # cross-engine agree count as covering every emitted quantity.
 default_engine: wl
 
-derived_dimensions:
-  rhoBr: WL_S10_MAIN_D3_Q6_INERTIAL_COEFFICIENT_DIMENSIONS_SPECIALIZED
-  muR: WL_S10_MAIN_D3_Q6_STIFFNESS_COEFFICIENT_DIMENSIONS_SPECIALIZED
+cells:
+  - {package: MAIN, dimension: 2, role: main, stiffness_form: curl}
+  - {package: MAIN, dimension: 3, role: main, stiffness_form: curl}
+  - {package: MAIN, dimension: 4, role: main, stiffness_form: curl}
+  - {package: MAIN, dimension: 5, role: main, stiffness_form: curl}
+  - {package: XFORM_FULLGRAD, dimension: 3, role: control, stiffness_form: fullgrad}
+  - {package: XFORM_FULLGRAD, dimension: 4, role: control, stiffness_form: fullgrad}
+  - {package: XFORM_DIVONLY, dimension: 3, role: control, stiffness_form: divonly}
+  - {package: XFORM_DIVONLY, dimension: 4, role: control, stiffness_form: divonly}
+  - {package: XFORM_SIGNFLIP, dimension: 3, role: control, stiffness_form: curl}
+  - {package: XFORM_SIGNFLIP, dimension: 4, role: control, stiffness_form: curl}
+  - {package: XFORM_ANISO, dimension: 3, role: control, stiffness_form: curl}
+  - {package: XFORM_ANISO, dimension: 4, role: control, stiffness_form: curl}
+  - {package: XCOEF_SCALE, dimension: 3, role: control, stiffness_form: curl}
+
+control:
+  required_suffixes:
+    wl: [Q1_LAGRANGIAN, Q1_EULER_LAGRANGE_SYSTEM, Q3_DETERMINANT]
+    py: [Q1_LAGRANGIAN_EXPANDED, Q1_EULER_LAGRANGE_SYSTEM, Q3_DETERMINANT]
+  tag_templates:
+    wl:
+      main: WL_S10_{package}_D{dimension}_{suffix}
+      control: WL_S10_{package}_D{dimension}_{suffix}
+    py:
+      main: PY_S10_{package}_D{dimension}_{suffix}
+      control: PY_S10_{package}_D{dimension}_{suffix}
+
+action_families:
+  lagrangian: {wl: Q1_LAGRANGIAN, py: Q1_LAGRANGIAN_EXPANDED}
+  euler_lagrange: {wl: Q1_EULER_LAGRANGE_SYSTEM, py: Q1_EULER_LAGRANGE_SYSTEM}
+
+# Registry names are canonical.  WL cannot emit underscores, so its spelling
+# is obtained mechanically; PY uses the canonical spelling.  The exceptions
+# are engine-local S9/S10 audit variables, not registry quantities.
+symbol_naming:
+  rule: registry_snake_case_to_lower_camel
+  engine_styles: {wl: lower_camel, py: canonical}
+  exceptions:
+    - canonical: rho_z
+      spellings: {wl: rhoZ, py: rho_z}
+      reason: anisotropic control coefficient is not declared in the registry
+    - canonical: mu_F
+      spellings: {wl: muF, py: mu_F}
+      reason: flexural control coefficient is not declared in the registry
+    - canonical: mu_G
+      spellings: {wl: muG, py: mu_G}
+      reason: bare-field control coefficient is not declared in the registry
+    - canonical: lambda_rho
+      spellings: {wl: lambdaRho, py: lambda_rho}
+      reason: inertial ablation scale is engine-local control metadata
+    - canonical: lambda_mu
+      spellings: {wl: lambdaMu, py: lambda_mu}
+      reason: stiffness ablation scale is engine-local control metadata
+    - canonical: lambda_scale
+      spellings: {wl: lambdaScale, py: lambdaScale}
+      reason: homogeneity probe scale is engine-local control metadata
+    - canonical: s_rho
+      spellings: {wl: sRho, py: s_rho}
+      reason: anisotropic inertial scale is engine-local control metadata
+    - canonical: D
+      spellings: {wl: braneDimension, py: D}
+      reason: both engines bind this symbol as the positive integer brane dimension in their emitted premise
+    - canonical: coefficientScale
+      spellings: {wl: coefficientScale, py: s}
+      reason: both XCOEF_SCALE emissions bind this symbol as the dimensionless multiplier of mu_R
+
+# Each declaration produces one symbolic table for exactly one engine/package.
+# PY's live coefficient source has shape (((L,T,M),),), hence nested_family.
+dimension_sources:
+  - engine: wl
+    package: MAIN
+    symbols:
+      rhoBr: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT_DIMENSIONS', dimensions: [2, 3, 4, 5], shape: family}
+      muR: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT_DIMENSIONS', dimensions: [2, 3, 4, 5], shape: family}
+  - engine: wl
+    package: XFORM_FULLGRAD
+    symbols:
+      rhoBr: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT_DIMENSIONS', dimensions: [3, 4], shape: family}
+      muR: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT_DIMENSIONS', dimensions: [3, 4], shape: family}
+  - engine: wl
+    package: XFORM_DIVONLY
+    symbols:
+      rhoBr: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT_DIMENSIONS', dimensions: [3, 4], shape: family}
+      muR: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT_DIMENSIONS', dimensions: [3, 4], shape: family}
+  - engine: wl
+    package: XFORM_SIGNFLIP
+    symbols:
+      rhoBr: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT_DIMENSIONS', dimensions: [3, 4], shape: family}
+      muR: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT_DIMENSIONS', dimensions: [3, 4], shape: family}
+  - engine: wl
+    package: XFORM_ANISO
+    symbols:
+      rhoBr: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT_DIMENSIONS', dimensions: [3, 4], shape: family}
+      muR: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT_DIMENSIONS', dimensions: [3, 4], shape: family}
+  - engine: wl
+    package: XCOEF_SCALE
+    symbols:
+      rhoBr: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT_DIMENSIONS', dimensions: [3], shape: family}
+      muR: {tag_template: 'WL_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT_DIMENSIONS', dimensions: [3], shape: family}
+  - engine: py
+    package: MAIN
+    symbols:
+      rho_br: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [2, 3, 4, 5], shape: nested_family}
+      mu_R: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [2, 3, 4, 5], shape: nested_family}
+  - engine: py
+    package: XFORM_FULLGRAD
+    symbols:
+      rho_br: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [3, 4], shape: nested_family}
+      mu_R: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [3, 4], shape: nested_family}
+  - engine: py
+    package: XFORM_DIVONLY
+    symbols:
+      rho_br: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [3, 4], shape: nested_family}
+      mu_R: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [3, 4], shape: nested_family}
+  - engine: py
+    package: XFORM_SIGNFLIP
+    symbols:
+      rho_br: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [3, 4], shape: nested_family}
+      mu_R: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [3, 4], shape: nested_family}
+  - engine: py
+    package: XFORM_ANISO
+    symbols:
+      rho_br: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [3, 4], shape: nested_family}
+      mu_R: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [3, 4], shape: nested_family}
+  - engine: py
+    package: XCOEF_SCALE
+    symbols:
+      rho_br: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_INERTIAL_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [3], shape: nested_family}
+      mu_R: {tag_template: 'PY_S10_{package}_D{dimension}_Q6_STIFFNESS_COEFFICIENT1_Q6_DIMENSIONS', dimensions: [3], shape: nested_family}
 
 primitive_dimensions:
   t: [0, 1, 0]
@@ -58,2042 +184,2853 @@ dimensionless:
   - Sign
   - Im
 
-# ⭐ Engine-local BY DECLARATION -- cannot exist in both engines (one reads a
-# registry the other is barred from; each CAS emits its own solver-route tags).
-# ⛔ Excluded from PARITY ONLY; still checked by every other layer.
-parity_exclude:
-  - _LOCAL_
-
-# 561 name-matched + 116 renamed = 677 pairs.
+# 690 declaration rows: the 677 pre-rebuild pairs plus 13 scalar action pairs.
 cross_engine:
   - quantity: main_d2_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_PREMISE_PERIOD_AVERAGE
     py: PY_S10_MAIN_D2_PREMISE_PERIOD_AVERAGE
   - quantity: main_d2_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: MAIN
+    dimension: 2
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D2_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_MAIN_D2_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: main_d2_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_MAIN_D2_Q2_DOWNSTREAM_ROUTE
   - quantity: main_d2_q2_matrix_a
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D2_Q2_MATRIX_A
     py: PY_S10_MAIN_D2_Q2_MATRIX_A
   - quantity: main_d2_q2_matrix_b
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D2_Q2_MATRIX_B
     py: PY_S10_MAIN_D2_Q2_MATRIX_B
   - quantity: main_d2_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_MAIN_D2_Q2_MATRIX_ENTRY_RATIO
   - quantity: main_d2_q2_matrix_residual
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D2_Q2_MATRIX_RESIDUAL
     py: PY_S10_MAIN_D2_Q2_MATRIX_RESIDUAL
   - quantity: main_d2_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_Q3_DETERMINANT
     py: PY_S10_MAIN_D2_Q3_DETERMINANT
   - quantity: main_d2_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D2_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D2_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: main_d2_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_Q3_ROOT_COUNT
     py: PY_S10_MAIN_D2_Q3_ROOT_COUNT
   - quantity: main_d2_q6_dimension_equations
+    cardinality: {kind: sequence, count: 15}
     wl: WL_S10_MAIN_D2_Q6_DIMENSION_EQUATIONS
     py: PY_S10_MAIN_D2_Q6_DIMENSION_EQUATIONS
   - quantity: main_d2_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D2_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_MAIN_D2_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: main_d2_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D2_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_MAIN_D2_Q6_INERTIAL_COEFFICIENTS
   - quantity: main_d2_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D2_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_MAIN_D2_Q6_STIFFNESS_COEFFICIENTS
   - quantity: main_d2_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_MAIN_D2_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: main_d2_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D2_Q8_ALLOWED_STRATA
     py: PY_S10_MAIN_D2_Q8_ALLOWED_STRATA
   - quantity: main_d2_root1_n1_matrix
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D2_ROOT1_N1_MATRIX
     py: PY_S10_MAIN_D2_ROOT1_N1_MATRIX
   - quantity: main_d2_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_N2_NULLITY
     py: PY_S10_MAIN_D2_ROOT1_N2_NULLITY
   - quantity: main_d2_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_N2_RANK
     py: PY_S10_MAIN_D2_ROOT1_N2_RANK
   - quantity: main_d2_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D2_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_MAIN_D2_ROOT1_N3_STACKED_MATRIX
   - quantity: main_d2_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_N3_STACKED_RANK
     py: PY_S10_MAIN_D2_ROOT1_N3_STACKED_RANK
   - quantity: main_d2_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_MAIN_D2_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: main_d2_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_MAIN_D2_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: main_d2_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D2_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_MAIN_D2_ROOT1_N6_NULLSPACE_BASIS
   - quantity: main_d2_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_N7_BASIS_COUNT
     py: PY_S10_MAIN_D2_ROOT1_N7_BASIS_COUNT
   - quantity: main_d2_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_Q3_SIGN
     py: PY_S10_MAIN_D2_ROOT1_Q3_SIGN
   - quantity: main_d2_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D2_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_MAIN_D2_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: main_d2_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D2_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_MAIN_D2_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: main_d2_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D2_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D2_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: main_d2_root2_n1_matrix
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D2_ROOT2_N1_MATRIX
     py: PY_S10_MAIN_D2_ROOT2_N1_MATRIX
   - quantity: main_d2_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_N2_NULLITY
     py: PY_S10_MAIN_D2_ROOT2_N2_NULLITY
   - quantity: main_d2_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_N2_RANK
     py: PY_S10_MAIN_D2_ROOT2_N2_RANK
   - quantity: main_d2_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D2_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_MAIN_D2_ROOT2_N3_STACKED_MATRIX
   - quantity: main_d2_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_N3_STACKED_RANK
     py: PY_S10_MAIN_D2_ROOT2_N3_STACKED_RANK
   - quantity: main_d2_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_MAIN_D2_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: main_d2_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_MAIN_D2_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: main_d2_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D2_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_MAIN_D2_ROOT2_N6_NULLSPACE_BASIS
   - quantity: main_d2_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_N7_BASIS_COUNT
     py: PY_S10_MAIN_D2_ROOT2_N7_BASIS_COUNT
   - quantity: main_d2_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_Q3_SIGN
     py: PY_S10_MAIN_D2_ROOT2_Q3_SIGN
   - quantity: main_d2_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D2_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_MAIN_D2_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: main_d2_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D2_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_MAIN_D2_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: main_d2_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D2_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D2_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: main_d2_root_ordering
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D2_ROOT_ORDERING
     py: PY_S10_MAIN_D2_ROOT_ORDERING
   - quantity: main_d3_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_PREMISE_PERIOD_AVERAGE
     py: PY_S10_MAIN_D3_PREMISE_PERIOD_AVERAGE
   - quantity: main_d3_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: MAIN
+    dimension: 3
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D3_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_MAIN_D3_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: main_d3_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_MAIN_D3_Q2_DOWNSTREAM_ROUTE
   - quantity: main_d3_q2_matrix_a
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D3_Q2_MATRIX_A
     py: PY_S10_MAIN_D3_Q2_MATRIX_A
   - quantity: main_d3_q2_matrix_b
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D3_Q2_MATRIX_B
     py: PY_S10_MAIN_D3_Q2_MATRIX_B
   - quantity: main_d3_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_MAIN_D3_Q2_MATRIX_ENTRY_RATIO
   - quantity: main_d3_q2_matrix_residual
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D3_Q2_MATRIX_RESIDUAL
     py: PY_S10_MAIN_D3_Q2_MATRIX_RESIDUAL
   - quantity: main_d3_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_Q3_DETERMINANT
     py: PY_S10_MAIN_D3_Q3_DETERMINANT
   - quantity: main_d3_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D3_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D3_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: main_d3_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_Q3_ROOT_COUNT
     py: PY_S10_MAIN_D3_Q3_ROOT_COUNT
   - quantity: main_d3_q6_dimension_equations
+    cardinality: {kind: sequence, count: 36}
     wl: WL_S10_MAIN_D3_Q6_DIMENSION_EQUATIONS
     py: PY_S10_MAIN_D3_Q6_DIMENSION_EQUATIONS
   - quantity: main_d3_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D3_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_MAIN_D3_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: main_d3_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D3_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_MAIN_D3_Q6_INERTIAL_COEFFICIENTS
   - quantity: main_d3_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D3_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_MAIN_D3_Q6_STIFFNESS_COEFFICIENTS
   - quantity: main_d3_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_MAIN_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: main_d3_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D3_Q8_ALLOWED_STRATA
     py: PY_S10_MAIN_D3_Q8_ALLOWED_STRATA
   - quantity: main_d3_root1_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D3_ROOT1_N1_MATRIX
     py: PY_S10_MAIN_D3_ROOT1_N1_MATRIX
   - quantity: main_d3_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_N2_NULLITY
     py: PY_S10_MAIN_D3_ROOT1_N2_NULLITY
   - quantity: main_d3_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_N2_RANK
     py: PY_S10_MAIN_D3_ROOT1_N2_RANK
   - quantity: main_d3_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D3_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_MAIN_D3_ROOT1_N3_STACKED_MATRIX
   - quantity: main_d3_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_N3_STACKED_RANK
     py: PY_S10_MAIN_D3_ROOT1_N3_STACKED_RANK
   - quantity: main_d3_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_MAIN_D3_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: main_d3_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_MAIN_D3_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: main_d3_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D3_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_MAIN_D3_ROOT1_N6_NULLSPACE_BASIS
   - quantity: main_d3_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_N7_BASIS_COUNT
     py: PY_S10_MAIN_D3_ROOT1_N7_BASIS_COUNT
   - quantity: main_d3_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_Q3_SIGN
     py: PY_S10_MAIN_D3_ROOT1_Q3_SIGN
   - quantity: main_d3_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D3_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_MAIN_D3_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: main_d3_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_MAIN_D3_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_MAIN_D3_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: main_d3_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: main_d3_root2_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D3_ROOT2_N1_MATRIX
     py: PY_S10_MAIN_D3_ROOT2_N1_MATRIX
   - quantity: main_d3_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_N2_NULLITY
     py: PY_S10_MAIN_D3_ROOT2_N2_NULLITY
   - quantity: main_d3_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_N2_RANK
     py: PY_S10_MAIN_D3_ROOT2_N2_RANK
   - quantity: main_d3_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D3_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_MAIN_D3_ROOT2_N3_STACKED_MATRIX
   - quantity: main_d3_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_N3_STACKED_RANK
     py: PY_S10_MAIN_D3_ROOT2_N3_STACKED_RANK
   - quantity: main_d3_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_MAIN_D3_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: main_d3_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_MAIN_D3_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: main_d3_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D3_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_MAIN_D3_ROOT2_N6_NULLSPACE_BASIS
   - quantity: main_d3_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_N7_BASIS_COUNT
     py: PY_S10_MAIN_D3_ROOT2_N7_BASIS_COUNT
   - quantity: main_d3_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_Q3_SIGN
     py: PY_S10_MAIN_D3_ROOT2_Q3_SIGN
   - quantity: main_d3_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D3_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_MAIN_D3_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: main_d3_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_MAIN_D3_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_MAIN_D3_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: main_d3_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: main_d3_root_ordering
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D3_ROOT_ORDERING
     py: PY_S10_MAIN_D3_ROOT_ORDERING
   - quantity: main_d4_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_PREMISE_PERIOD_AVERAGE
     py: PY_S10_MAIN_D4_PREMISE_PERIOD_AVERAGE
   - quantity: main_d4_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: MAIN
+    dimension: 4
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D4_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_MAIN_D4_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: main_d4_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_MAIN_D4_Q2_DOWNSTREAM_ROUTE
   - quantity: main_d4_q2_matrix_a
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D4_Q2_MATRIX_A
     py: PY_S10_MAIN_D4_Q2_MATRIX_A
   - quantity: main_d4_q2_matrix_b
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D4_Q2_MATRIX_B
     py: PY_S10_MAIN_D4_Q2_MATRIX_B
   - quantity: main_d4_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_MAIN_D4_Q2_MATRIX_ENTRY_RATIO
   - quantity: main_d4_q2_matrix_residual
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D4_Q2_MATRIX_RESIDUAL
     py: PY_S10_MAIN_D4_Q2_MATRIX_RESIDUAL
   - quantity: main_d4_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_Q3_DETERMINANT
     py: PY_S10_MAIN_D4_Q3_DETERMINANT
   - quantity: main_d4_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D4_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D4_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: main_d4_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_Q3_ROOT_COUNT
     py: PY_S10_MAIN_D4_Q3_ROOT_COUNT
   - quantity: main_d4_q6_dimension_equations
+    cardinality: {kind: sequence, count: 66}
     wl: WL_S10_MAIN_D4_Q6_DIMENSION_EQUATIONS
     py: PY_S10_MAIN_D4_Q6_DIMENSION_EQUATIONS
   - quantity: main_d4_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D4_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_MAIN_D4_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: main_d4_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D4_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_MAIN_D4_Q6_INERTIAL_COEFFICIENTS
   - quantity: main_d4_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D4_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_MAIN_D4_Q6_STIFFNESS_COEFFICIENTS
   - quantity: main_d4_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_MAIN_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: main_d4_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D4_Q8_ALLOWED_STRATA
     py: PY_S10_MAIN_D4_Q8_ALLOWED_STRATA
   - quantity: main_d4_root1_n1_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D4_ROOT1_N1_MATRIX
     py: PY_S10_MAIN_D4_ROOT1_N1_MATRIX
   - quantity: main_d4_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_N2_NULLITY
     py: PY_S10_MAIN_D4_ROOT1_N2_NULLITY
   - quantity: main_d4_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_N2_RANK
     py: PY_S10_MAIN_D4_ROOT1_N2_RANK
   - quantity: main_d4_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_MAIN_D4_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_MAIN_D4_ROOT1_N3_STACKED_MATRIX
   - quantity: main_d4_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_N3_STACKED_RANK
     py: PY_S10_MAIN_D4_ROOT1_N3_STACKED_RANK
   - quantity: main_d4_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_MAIN_D4_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: main_d4_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_MAIN_D4_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: main_d4_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D4_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_MAIN_D4_ROOT1_N6_NULLSPACE_BASIS
   - quantity: main_d4_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_N7_BASIS_COUNT
     py: PY_S10_MAIN_D4_ROOT1_N7_BASIS_COUNT
   - quantity: main_d4_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_Q3_SIGN
     py: PY_S10_MAIN_D4_ROOT1_Q3_SIGN
   - quantity: main_d4_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D4_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_MAIN_D4_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: main_d4_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 16}
     wl: WL_S10_MAIN_D4_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_MAIN_D4_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: main_d4_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: main_d4_root2_n1_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D4_ROOT2_N1_MATRIX
     py: PY_S10_MAIN_D4_ROOT2_N1_MATRIX
   - quantity: main_d4_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_N2_NULLITY
     py: PY_S10_MAIN_D4_ROOT2_N2_NULLITY
   - quantity: main_d4_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_N2_RANK
     py: PY_S10_MAIN_D4_ROOT2_N2_RANK
   - quantity: main_d4_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_MAIN_D4_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_MAIN_D4_ROOT2_N3_STACKED_MATRIX
   - quantity: main_d4_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_N3_STACKED_RANK
     py: PY_S10_MAIN_D4_ROOT2_N3_STACKED_RANK
   - quantity: main_d4_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_MAIN_D4_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: main_d4_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_MAIN_D4_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: main_d4_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D4_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_MAIN_D4_ROOT2_N6_NULLSPACE_BASIS
   - quantity: main_d4_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_N7_BASIS_COUNT
     py: PY_S10_MAIN_D4_ROOT2_N7_BASIS_COUNT
   - quantity: main_d4_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_Q3_SIGN
     py: PY_S10_MAIN_D4_ROOT2_Q3_SIGN
   - quantity: main_d4_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D4_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_MAIN_D4_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: main_d4_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 16}
     wl: WL_S10_MAIN_D4_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_MAIN_D4_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: main_d4_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: main_d4_root_ordering
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D4_ROOT_ORDERING
     py: PY_S10_MAIN_D4_ROOT_ORDERING
   - quantity: main_d5_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_PREMISE_PERIOD_AVERAGE
     py: PY_S10_MAIN_D5_PREMISE_PERIOD_AVERAGE
   - quantity: main_d5_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: MAIN
+    dimension: 5
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_MAIN_D5_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_MAIN_D5_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: main_d5_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_MAIN_D5_Q2_DOWNSTREAM_ROUTE
   - quantity: main_d5_q2_matrix_a
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_MAIN_D5_Q2_MATRIX_A
     py: PY_S10_MAIN_D5_Q2_MATRIX_A
   - quantity: main_d5_q2_matrix_b
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_MAIN_D5_Q2_MATRIX_B
     py: PY_S10_MAIN_D5_Q2_MATRIX_B
   - quantity: main_d5_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_MAIN_D5_Q2_MATRIX_ENTRY_RATIO
   - quantity: main_d5_q2_matrix_residual
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_MAIN_D5_Q2_MATRIX_RESIDUAL
     py: PY_S10_MAIN_D5_Q2_MATRIX_RESIDUAL
   - quantity: main_d5_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_Q3_DETERMINANT
     py: PY_S10_MAIN_D5_Q3_DETERMINANT
   - quantity: main_d5_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D5_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D5_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: main_d5_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_Q3_ROOT_COUNT
     py: PY_S10_MAIN_D5_Q3_ROOT_COUNT
   - quantity: main_d5_q6_dimension_equations
+    cardinality: {kind: sequence, count: 105}
     wl: WL_S10_MAIN_D5_Q6_DIMENSION_EQUATIONS
     py: PY_S10_MAIN_D5_Q6_DIMENSION_EQUATIONS
   - quantity: main_d5_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_MAIN_D5_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_MAIN_D5_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: main_d5_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_MAIN_D5_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_MAIN_D5_Q6_INERTIAL_COEFFICIENTS
   - quantity: main_d5_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D5_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_MAIN_D5_Q6_STIFFNESS_COEFFICIENTS
   - quantity: main_d5_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_MAIN_D5_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: main_d5_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D5_Q8_ALLOWED_STRATA
     py: PY_S10_MAIN_D5_Q8_ALLOWED_STRATA
   - quantity: main_d5_root1_n1_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_MAIN_D5_ROOT1_N1_MATRIX
     py: PY_S10_MAIN_D5_ROOT1_N1_MATRIX
   - quantity: main_d5_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_N2_NULLITY
     py: PY_S10_MAIN_D5_ROOT1_N2_NULLITY
   - quantity: main_d5_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_N2_RANK
     py: PY_S10_MAIN_D5_ROOT1_N2_RANK
   - quantity: main_d5_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 6}
     wl: WL_S10_MAIN_D5_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_MAIN_D5_ROOT1_N3_STACKED_MATRIX
   - quantity: main_d5_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_N3_STACKED_RANK
     py: PY_S10_MAIN_D5_ROOT1_N3_STACKED_RANK
   - quantity: main_d5_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_MAIN_D5_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: main_d5_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_MAIN_D5_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: main_d5_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D5_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_MAIN_D5_ROOT1_N6_NULLSPACE_BASIS
   - quantity: main_d5_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_N7_BASIS_COUNT
     py: PY_S10_MAIN_D5_ROOT1_N7_BASIS_COUNT
   - quantity: main_d5_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_Q3_SIGN
     py: PY_S10_MAIN_D5_ROOT1_Q3_SIGN
   - quantity: main_d5_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D5_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_MAIN_D5_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: main_d5_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 25}
     wl: WL_S10_MAIN_D5_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_MAIN_D5_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: main_d5_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D5_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D5_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: main_d5_root2_n1_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_MAIN_D5_ROOT2_N1_MATRIX
     py: PY_S10_MAIN_D5_ROOT2_N1_MATRIX
   - quantity: main_d5_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_N2_NULLITY
     py: PY_S10_MAIN_D5_ROOT2_N2_NULLITY
   - quantity: main_d5_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_N2_RANK
     py: PY_S10_MAIN_D5_ROOT2_N2_RANK
   - quantity: main_d5_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 6}
     wl: WL_S10_MAIN_D5_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_MAIN_D5_ROOT2_N3_STACKED_MATRIX
   - quantity: main_d5_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_N3_STACKED_RANK
     py: PY_S10_MAIN_D5_ROOT2_N3_STACKED_RANK
   - quantity: main_d5_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_MAIN_D5_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: main_d5_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_MAIN_D5_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: main_d5_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_MAIN_D5_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_MAIN_D5_ROOT2_N6_NULLSPACE_BASIS
   - quantity: main_d5_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_N7_BASIS_COUNT
     py: PY_S10_MAIN_D5_ROOT2_N7_BASIS_COUNT
   - quantity: main_d5_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_Q3_SIGN
     py: PY_S10_MAIN_D5_ROOT2_Q3_SIGN
   - quantity: main_d5_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D5_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_MAIN_D5_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: main_d5_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 25}
     wl: WL_S10_MAIN_D5_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_MAIN_D5_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: main_d5_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_MAIN_D5_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_MAIN_D5_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: main_d5_root_ordering
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_MAIN_D5_ROOT_ORDERING
     py: PY_S10_MAIN_D5_ROOT_ORDERING
   - quantity: run_pairs
+    cardinality: {kind: sequence, count: 13}
     wl: WL_S10_RUN_PAIRS
     py: PY_S10_RUN_PAIRS
   - quantity: skipped_pairs
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_SKIPPED_PAIRS
     py: PY_S10_SKIPPED_PAIRS
   - quantity: xcoef_scale_d3_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_PREMISE_PERIOD_AVERAGE
     py: PY_S10_XCOEF_SCALE_D3_PREMISE_PERIOD_AVERAGE
   - quantity: xcoef_scale_d3_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: XCOEF_SCALE
+    dimension: 3
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XCOEF_SCALE_D3_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_XCOEF_SCALE_D3_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: xcoef_scale_d3_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_XCOEF_SCALE_D3_Q2_DOWNSTREAM_ROUTE
   - quantity: xcoef_scale_d3_q2_matrix_a
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XCOEF_SCALE_D3_Q2_MATRIX_A
     py: PY_S10_XCOEF_SCALE_D3_Q2_MATRIX_A
   - quantity: xcoef_scale_d3_q2_matrix_b
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XCOEF_SCALE_D3_Q2_MATRIX_B
     py: PY_S10_XCOEF_SCALE_D3_Q2_MATRIX_B
   - quantity: xcoef_scale_d3_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_XCOEF_SCALE_D3_Q2_MATRIX_ENTRY_RATIO
   - quantity: xcoef_scale_d3_q2_matrix_residual
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XCOEF_SCALE_D3_Q2_MATRIX_RESIDUAL
     py: PY_S10_XCOEF_SCALE_D3_Q2_MATRIX_RESIDUAL
   - quantity: xcoef_scale_d3_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_Q3_DETERMINANT
     py: PY_S10_XCOEF_SCALE_D3_Q3_DETERMINANT
   - quantity: xcoef_scale_d3_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XCOEF_SCALE_D3_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XCOEF_SCALE_D3_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: xcoef_scale_d3_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_Q3_ROOT_COUNT
     py: PY_S10_XCOEF_SCALE_D3_Q3_ROOT_COUNT
   - quantity: xcoef_scale_d3_q6_dimension_equations
+    cardinality: {kind: sequence, count: 39}
     wl: WL_S10_XCOEF_SCALE_D3_Q6_DIMENSION_EQUATIONS
     py: PY_S10_XCOEF_SCALE_D3_Q6_DIMENSION_EQUATIONS
   - quantity: xcoef_scale_d3_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XCOEF_SCALE_D3_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_XCOEF_SCALE_D3_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: xcoef_scale_d3_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XCOEF_SCALE_D3_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_XCOEF_SCALE_D3_Q6_INERTIAL_COEFFICIENTS
   - quantity: xcoef_scale_d3_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XCOEF_SCALE_D3_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_XCOEF_SCALE_D3_Q6_STIFFNESS_COEFFICIENTS
   - quantity: xcoef_scale_d3_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_XCOEF_SCALE_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: xcoef_scale_d3_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XCOEF_SCALE_D3_Q8_ALLOWED_STRATA
     py: PY_S10_XCOEF_SCALE_D3_Q8_ALLOWED_STRATA
   - quantity: xcoef_scale_d3_root1_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N1_MATRIX
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_N1_MATRIX
   - quantity: xcoef_scale_d3_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N2_NULLITY
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_N2_NULLITY
   - quantity: xcoef_scale_d3_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N2_RANK
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_N2_RANK
   - quantity: xcoef_scale_d3_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_N3_STACKED_MATRIX
   - quantity: xcoef_scale_d3_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N3_STACKED_RANK
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_N3_STACKED_RANK
   - quantity: xcoef_scale_d3_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: xcoef_scale_d3_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: xcoef_scale_d3_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_N6_NULLSPACE_BASIS
   - quantity: xcoef_scale_d3_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N7_BASIS_COUNT
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_N7_BASIS_COUNT
   - quantity: xcoef_scale_d3_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q3_SIGN
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q3_SIGN
   - quantity: xcoef_scale_d3_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: xcoef_scale_d3_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: xcoef_scale_d3_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xcoef_scale_d3_root2_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N1_MATRIX
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_N1_MATRIX
   - quantity: xcoef_scale_d3_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N2_NULLITY
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_N2_NULLITY
   - quantity: xcoef_scale_d3_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N2_RANK
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_N2_RANK
   - quantity: xcoef_scale_d3_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_N3_STACKED_MATRIX
   - quantity: xcoef_scale_d3_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N3_STACKED_RANK
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_N3_STACKED_RANK
   - quantity: xcoef_scale_d3_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: xcoef_scale_d3_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: xcoef_scale_d3_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_N6_NULLSPACE_BASIS
   - quantity: xcoef_scale_d3_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N7_BASIS_COUNT
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_N7_BASIS_COUNT
   - quantity: xcoef_scale_d3_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q3_SIGN
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q3_SIGN
   - quantity: xcoef_scale_d3_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: xcoef_scale_d3_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: xcoef_scale_d3_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xcoef_scale_d3_root_ordering
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT_ORDERING
     py: PY_S10_XCOEF_SCALE_D3_ROOT_ORDERING
   - quantity: xform_aniso_d3_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_PREMISE_PERIOD_AVERAGE
     py: PY_S10_XFORM_ANISO_D3_PREMISE_PERIOD_AVERAGE
   - quantity: xform_aniso_d3_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: XFORM_ANISO
+    dimension: 3
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_XFORM_ANISO_D3_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: xform_aniso_d3_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_XFORM_ANISO_D3_Q2_DOWNSTREAM_ROUTE
   - quantity: xform_aniso_d3_q2_matrix_a
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_Q2_MATRIX_A
     py: PY_S10_XFORM_ANISO_D3_Q2_MATRIX_A
   - quantity: xform_aniso_d3_q2_matrix_b
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_Q2_MATRIX_B
     py: PY_S10_XFORM_ANISO_D3_Q2_MATRIX_B
   - quantity: xform_aniso_d3_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_XFORM_ANISO_D3_Q2_MATRIX_ENTRY_RATIO
   - quantity: xform_aniso_d3_q2_matrix_residual
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_Q2_MATRIX_RESIDUAL
     py: PY_S10_XFORM_ANISO_D3_Q2_MATRIX_RESIDUAL
   - quantity: xform_aniso_d3_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_Q3_DETERMINANT
     py: PY_S10_XFORM_ANISO_D3_Q3_DETERMINANT
   - quantity: xform_aniso_d3_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_ANISO_D3_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: xform_aniso_d3_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_Q3_ROOT_COUNT
     py: PY_S10_XFORM_ANISO_D3_Q3_ROOT_COUNT
   - quantity: xform_aniso_d3_q6_dimension_equations
+    cardinality: {kind: sequence, count: 39}
     wl: WL_S10_XFORM_ANISO_D3_Q6_DIMENSION_EQUATIONS
     py: PY_S10_XFORM_ANISO_D3_Q6_DIMENSION_EQUATIONS
   - quantity: xform_aniso_d3_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_XFORM_ANISO_D3_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: xform_aniso_d3_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_XFORM_ANISO_D3_Q6_INERTIAL_COEFFICIENTS
   - quantity: xform_aniso_d3_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D3_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_XFORM_ANISO_D3_Q6_STIFFNESS_COEFFICIENTS
   - quantity: xform_aniso_d3_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_XFORM_ANISO_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: xform_aniso_d3_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D3_Q8_ALLOWED_STRATA
     py: PY_S10_XFORM_ANISO_D3_Q8_ALLOWED_STRATA
   - quantity: xform_aniso_d3_root1_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_N1_MATRIX
     py: PY_S10_XFORM_ANISO_D3_ROOT1_N1_MATRIX
   - quantity: xform_aniso_d3_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_N2_NULLITY
     py: PY_S10_XFORM_ANISO_D3_ROOT1_N2_NULLITY
   - quantity: xform_aniso_d3_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_N2_RANK
     py: PY_S10_XFORM_ANISO_D3_ROOT1_N2_RANK
   - quantity: xform_aniso_d3_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_XFORM_ANISO_D3_ROOT1_N3_STACKED_MATRIX
   - quantity: xform_aniso_d3_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_N3_STACKED_RANK
     py: PY_S10_XFORM_ANISO_D3_ROOT1_N3_STACKED_RANK
   - quantity: xform_aniso_d3_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_ANISO_D3_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: xform_aniso_d3_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_ANISO_D3_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: xform_aniso_d3_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_ANISO_D3_ROOT1_N6_NULLSPACE_BASIS
   - quantity: xform_aniso_d3_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_N7_BASIS_COUNT
     py: PY_S10_XFORM_ANISO_D3_ROOT1_N7_BASIS_COUNT
   - quantity: xform_aniso_d3_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q3_SIGN
     py: PY_S10_XFORM_ANISO_D3_ROOT1_Q3_SIGN
   - quantity: xform_aniso_d3_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_ANISO_D3_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: xform_aniso_d3_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_ANISO_D3_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: xform_aniso_d3_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_ANISO_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_aniso_d3_root2_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_N1_MATRIX
     py: PY_S10_XFORM_ANISO_D3_ROOT2_N1_MATRIX
   - quantity: xform_aniso_d3_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_N2_NULLITY
     py: PY_S10_XFORM_ANISO_D3_ROOT2_N2_NULLITY
   - quantity: xform_aniso_d3_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_N2_RANK
     py: PY_S10_XFORM_ANISO_D3_ROOT2_N2_RANK
   - quantity: xform_aniso_d3_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_XFORM_ANISO_D3_ROOT2_N3_STACKED_MATRIX
   - quantity: xform_aniso_d3_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_N3_STACKED_RANK
     py: PY_S10_XFORM_ANISO_D3_ROOT2_N3_STACKED_RANK
   - quantity: xform_aniso_d3_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_ANISO_D3_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: xform_aniso_d3_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_ANISO_D3_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: xform_aniso_d3_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_ANISO_D3_ROOT2_N6_NULLSPACE_BASIS
   - quantity: xform_aniso_d3_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_N7_BASIS_COUNT
     py: PY_S10_XFORM_ANISO_D3_ROOT2_N7_BASIS_COUNT
   - quantity: xform_aniso_d3_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q3_SIGN
     py: PY_S10_XFORM_ANISO_D3_ROOT2_Q3_SIGN
   - quantity: xform_aniso_d3_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_ANISO_D3_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: xform_aniso_d3_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_ANISO_D3_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: xform_aniso_d3_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_ANISO_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_aniso_d3_root3_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_N1_MATRIX
     py: PY_S10_XFORM_ANISO_D3_ROOT3_N1_MATRIX
   - quantity: xform_aniso_d3_root3_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_N2_NULLITY
     py: PY_S10_XFORM_ANISO_D3_ROOT3_N2_NULLITY
   - quantity: xform_aniso_d3_root3_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_N2_RANK
     py: PY_S10_XFORM_ANISO_D3_ROOT3_N2_RANK
   - quantity: xform_aniso_d3_root3_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_N3_STACKED_MATRIX
     py: PY_S10_XFORM_ANISO_D3_ROOT3_N3_STACKED_MATRIX
   - quantity: xform_aniso_d3_root3_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_N3_STACKED_RANK
     py: PY_S10_XFORM_ANISO_D3_ROOT3_N3_STACKED_RANK
   - quantity: xform_aniso_d3_root3_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_ANISO_D3_ROOT3_N3_TRANSVERSE_NULLITY
   - quantity: xform_aniso_d3_root3_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_ANISO_D3_ROOT3_N4_NULLITY_DIFFERENCE
   - quantity: xform_aniso_d3_root3_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_ANISO_D3_ROOT3_N6_NULLSPACE_BASIS
   - quantity: xform_aniso_d3_root3_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_N7_BASIS_COUNT
     py: PY_S10_XFORM_ANISO_D3_ROOT3_N7_BASIS_COUNT
   - quantity: xform_aniso_d3_root3_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q3_SIGN
     py: PY_S10_XFORM_ANISO_D3_ROOT3_Q3_SIGN
   - quantity: xform_aniso_d3_root3_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_ANISO_D3_ROOT3_Q8_RANK_DROP_LOCUS
   - quantity: xform_aniso_d3_root3_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_ANISO_D3_ROOT3_Q8_RANK_DROP_MINORS
   - quantity: xform_aniso_d3_root3_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_ANISO_D3_ROOT3_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_aniso_d3_root_ordering
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D3_ROOT_ORDERING
     py: PY_S10_XFORM_ANISO_D3_ROOT_ORDERING
   - quantity: xform_aniso_d4_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_PREMISE_PERIOD_AVERAGE
     py: PY_S10_XFORM_ANISO_D4_PREMISE_PERIOD_AVERAGE
   - quantity: xform_aniso_d4_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: XFORM_ANISO
+    dimension: 4
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D4_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_XFORM_ANISO_D4_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: xform_aniso_d4_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_XFORM_ANISO_D4_Q2_DOWNSTREAM_ROUTE
   - quantity: xform_aniso_d4_q2_matrix_a
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D4_Q2_MATRIX_A
     py: PY_S10_XFORM_ANISO_D4_Q2_MATRIX_A
   - quantity: xform_aniso_d4_q2_matrix_b
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D4_Q2_MATRIX_B
     py: PY_S10_XFORM_ANISO_D4_Q2_MATRIX_B
   - quantity: xform_aniso_d4_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_XFORM_ANISO_D4_Q2_MATRIX_ENTRY_RATIO
   - quantity: xform_aniso_d4_q2_matrix_residual
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D4_Q2_MATRIX_RESIDUAL
     py: PY_S10_XFORM_ANISO_D4_Q2_MATRIX_RESIDUAL
   - quantity: xform_aniso_d4_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_Q3_DETERMINANT
     py: PY_S10_XFORM_ANISO_D4_Q3_DETERMINANT
   - quantity: xform_aniso_d4_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D4_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_ANISO_D4_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: xform_aniso_d4_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_Q3_ROOT_COUNT
     py: PY_S10_XFORM_ANISO_D4_Q3_ROOT_COUNT
   - quantity: xform_aniso_d4_q6_dimension_equations
+    cardinality: {kind: sequence, count: 69}
     wl: WL_S10_XFORM_ANISO_D4_Q6_DIMENSION_EQUATIONS
     py: PY_S10_XFORM_ANISO_D4_Q6_DIMENSION_EQUATIONS
   - quantity: xform_aniso_d4_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D4_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_XFORM_ANISO_D4_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: xform_aniso_d4_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D4_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_XFORM_ANISO_D4_Q6_INERTIAL_COEFFICIENTS
   - quantity: xform_aniso_d4_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D4_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_XFORM_ANISO_D4_Q6_STIFFNESS_COEFFICIENTS
   - quantity: xform_aniso_d4_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_XFORM_ANISO_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: xform_aniso_d4_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D4_Q8_ALLOWED_STRATA
     py: PY_S10_XFORM_ANISO_D4_Q8_ALLOWED_STRATA
   - quantity: xform_aniso_d4_root1_n1_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_N1_MATRIX
     py: PY_S10_XFORM_ANISO_D4_ROOT1_N1_MATRIX
   - quantity: xform_aniso_d4_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_N2_NULLITY
     py: PY_S10_XFORM_ANISO_D4_ROOT1_N2_NULLITY
   - quantity: xform_aniso_d4_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_N2_RANK
     py: PY_S10_XFORM_ANISO_D4_ROOT1_N2_RANK
   - quantity: xform_aniso_d4_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_XFORM_ANISO_D4_ROOT1_N3_STACKED_MATRIX
   - quantity: xform_aniso_d4_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_N3_STACKED_RANK
     py: PY_S10_XFORM_ANISO_D4_ROOT1_N3_STACKED_RANK
   - quantity: xform_aniso_d4_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_ANISO_D4_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: xform_aniso_d4_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_ANISO_D4_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: xform_aniso_d4_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_ANISO_D4_ROOT1_N6_NULLSPACE_BASIS
   - quantity: xform_aniso_d4_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_N7_BASIS_COUNT
     py: PY_S10_XFORM_ANISO_D4_ROOT1_N7_BASIS_COUNT
   - quantity: xform_aniso_d4_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q3_SIGN
     py: PY_S10_XFORM_ANISO_D4_ROOT1_Q3_SIGN
   - quantity: xform_aniso_d4_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_ANISO_D4_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: xform_aniso_d4_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 16}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_ANISO_D4_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: xform_aniso_d4_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_ANISO_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_aniso_d4_root2_n1_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_N1_MATRIX
     py: PY_S10_XFORM_ANISO_D4_ROOT2_N1_MATRIX
   - quantity: xform_aniso_d4_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_N2_NULLITY
     py: PY_S10_XFORM_ANISO_D4_ROOT2_N2_NULLITY
   - quantity: xform_aniso_d4_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_N2_RANK
     py: PY_S10_XFORM_ANISO_D4_ROOT2_N2_RANK
   - quantity: xform_aniso_d4_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_XFORM_ANISO_D4_ROOT2_N3_STACKED_MATRIX
   - quantity: xform_aniso_d4_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_N3_STACKED_RANK
     py: PY_S10_XFORM_ANISO_D4_ROOT2_N3_STACKED_RANK
   - quantity: xform_aniso_d4_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_ANISO_D4_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: xform_aniso_d4_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_ANISO_D4_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: xform_aniso_d4_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_ANISO_D4_ROOT2_N6_NULLSPACE_BASIS
   - quantity: xform_aniso_d4_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_N7_BASIS_COUNT
     py: PY_S10_XFORM_ANISO_D4_ROOT2_N7_BASIS_COUNT
   - quantity: xform_aniso_d4_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q3_SIGN
     py: PY_S10_XFORM_ANISO_D4_ROOT2_Q3_SIGN
   - quantity: xform_aniso_d4_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_ANISO_D4_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: xform_aniso_d4_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 36}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_ANISO_D4_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: xform_aniso_d4_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_ANISO_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_aniso_d4_root3_n1_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_N1_MATRIX
     py: PY_S10_XFORM_ANISO_D4_ROOT3_N1_MATRIX
   - quantity: xform_aniso_d4_root3_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_N2_NULLITY
     py: PY_S10_XFORM_ANISO_D4_ROOT3_N2_NULLITY
   - quantity: xform_aniso_d4_root3_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_N2_RANK
     py: PY_S10_XFORM_ANISO_D4_ROOT3_N2_RANK
   - quantity: xform_aniso_d4_root3_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_N3_STACKED_MATRIX
     py: PY_S10_XFORM_ANISO_D4_ROOT3_N3_STACKED_MATRIX
   - quantity: xform_aniso_d4_root3_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_N3_STACKED_RANK
     py: PY_S10_XFORM_ANISO_D4_ROOT3_N3_STACKED_RANK
   - quantity: xform_aniso_d4_root3_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_ANISO_D4_ROOT3_N3_TRANSVERSE_NULLITY
   - quantity: xform_aniso_d4_root3_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_ANISO_D4_ROOT3_N4_NULLITY_DIFFERENCE
   - quantity: xform_aniso_d4_root3_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_ANISO_D4_ROOT3_N6_NULLSPACE_BASIS
   - quantity: xform_aniso_d4_root3_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_N7_BASIS_COUNT
     py: PY_S10_XFORM_ANISO_D4_ROOT3_N7_BASIS_COUNT
   - quantity: xform_aniso_d4_root3_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q3_SIGN
     py: PY_S10_XFORM_ANISO_D4_ROOT3_Q3_SIGN
   - quantity: xform_aniso_d4_root3_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_ANISO_D4_ROOT3_Q8_RANK_DROP_LOCUS
   - quantity: xform_aniso_d4_root3_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 16}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_ANISO_D4_ROOT3_Q8_RANK_DROP_MINORS
   - quantity: xform_aniso_d4_root3_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_ANISO_D4_ROOT3_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_aniso_d4_root_ordering
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_ANISO_D4_ROOT_ORDERING
     py: PY_S10_XFORM_ANISO_D4_ROOT_ORDERING
   - quantity: xform_divonly_d3_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_PREMISE_PERIOD_AVERAGE
     py: PY_S10_XFORM_DIVONLY_D3_PREMISE_PERIOD_AVERAGE
   - quantity: xform_divonly_d3_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: XFORM_DIVONLY
+    dimension: 3
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_DIVONLY_D3_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_XFORM_DIVONLY_D3_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: xform_divonly_d3_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_XFORM_DIVONLY_D3_Q2_DOWNSTREAM_ROUTE
   - quantity: xform_divonly_d3_q2_matrix_a
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_DIVONLY_D3_Q2_MATRIX_A
     py: PY_S10_XFORM_DIVONLY_D3_Q2_MATRIX_A
   - quantity: xform_divonly_d3_q2_matrix_b
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_DIVONLY_D3_Q2_MATRIX_B
     py: PY_S10_XFORM_DIVONLY_D3_Q2_MATRIX_B
   - quantity: xform_divonly_d3_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_XFORM_DIVONLY_D3_Q2_MATRIX_ENTRY_RATIO
   - quantity: xform_divonly_d3_q2_matrix_residual
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_DIVONLY_D3_Q2_MATRIX_RESIDUAL
     py: PY_S10_XFORM_DIVONLY_D3_Q2_MATRIX_RESIDUAL
   - quantity: xform_divonly_d3_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_Q3_DETERMINANT
     py: PY_S10_XFORM_DIVONLY_D3_Q3_DETERMINANT
   - quantity: xform_divonly_d3_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D3_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_DIVONLY_D3_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: xform_divonly_d3_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_Q3_ROOT_COUNT
     py: PY_S10_XFORM_DIVONLY_D3_Q3_ROOT_COUNT
   - quantity: xform_divonly_d3_q6_dimension_equations
+    cardinality: {kind: sequence, count: 27}
     wl: WL_S10_XFORM_DIVONLY_D3_Q6_DIMENSION_EQUATIONS
     py: PY_S10_XFORM_DIVONLY_D3_Q6_DIMENSION_EQUATIONS
   - quantity: xform_divonly_d3_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_DIVONLY_D3_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_XFORM_DIVONLY_D3_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: xform_divonly_d3_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_DIVONLY_D3_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_XFORM_DIVONLY_D3_Q6_INERTIAL_COEFFICIENTS
   - quantity: xform_divonly_d3_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D3_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_XFORM_DIVONLY_D3_Q6_STIFFNESS_COEFFICIENTS
   - quantity: xform_divonly_d3_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_XFORM_DIVONLY_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: xform_divonly_d3_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D3_Q8_ALLOWED_STRATA
     py: PY_S10_XFORM_DIVONLY_D3_Q8_ALLOWED_STRATA
   - quantity: xform_divonly_d3_root1_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N1_MATRIX
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N1_MATRIX
   - quantity: xform_divonly_d3_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N2_NULLITY
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N2_NULLITY
   - quantity: xform_divonly_d3_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N2_RANK
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N2_RANK
   - quantity: xform_divonly_d3_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N3_STACKED_MATRIX
   - quantity: xform_divonly_d3_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N3_STACKED_RANK
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N3_STACKED_RANK
   - quantity: xform_divonly_d3_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: xform_divonly_d3_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: xform_divonly_d3_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N6_NULLSPACE_BASIS
   - quantity: xform_divonly_d3_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N7_BASIS_COUNT
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N7_BASIS_COUNT
   - quantity: xform_divonly_d3_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q3_SIGN
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q3_SIGN
   - quantity: xform_divonly_d3_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: xform_divonly_d3_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: xform_divonly_d3_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_divonly_d3_root2_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N1_MATRIX
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N1_MATRIX
   - quantity: xform_divonly_d3_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N2_NULLITY
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N2_NULLITY
   - quantity: xform_divonly_d3_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N2_RANK
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N2_RANK
   - quantity: xform_divonly_d3_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N3_STACKED_MATRIX
   - quantity: xform_divonly_d3_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N3_STACKED_RANK
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N3_STACKED_RANK
   - quantity: xform_divonly_d3_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: xform_divonly_d3_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: xform_divonly_d3_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N6_NULLSPACE_BASIS
   - quantity: xform_divonly_d3_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N7_BASIS_COUNT
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N7_BASIS_COUNT
   - quantity: xform_divonly_d3_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q3_SIGN
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q3_SIGN
   - quantity: xform_divonly_d3_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: xform_divonly_d3_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: xform_divonly_d3_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_divonly_d3_root_ordering
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT_ORDERING
     py: PY_S10_XFORM_DIVONLY_D3_ROOT_ORDERING
   - quantity: xform_divonly_d4_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_PREMISE_PERIOD_AVERAGE
     py: PY_S10_XFORM_DIVONLY_D4_PREMISE_PERIOD_AVERAGE
   - quantity: xform_divonly_d4_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: XFORM_DIVONLY
+    dimension: 4
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_DIVONLY_D4_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_XFORM_DIVONLY_D4_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: xform_divonly_d4_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_XFORM_DIVONLY_D4_Q2_DOWNSTREAM_ROUTE
   - quantity: xform_divonly_d4_q2_matrix_a
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_DIVONLY_D4_Q2_MATRIX_A
     py: PY_S10_XFORM_DIVONLY_D4_Q2_MATRIX_A
   - quantity: xform_divonly_d4_q2_matrix_b
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_DIVONLY_D4_Q2_MATRIX_B
     py: PY_S10_XFORM_DIVONLY_D4_Q2_MATRIX_B
   - quantity: xform_divonly_d4_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_XFORM_DIVONLY_D4_Q2_MATRIX_ENTRY_RATIO
   - quantity: xform_divonly_d4_q2_matrix_residual
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_DIVONLY_D4_Q2_MATRIX_RESIDUAL
     py: PY_S10_XFORM_DIVONLY_D4_Q2_MATRIX_RESIDUAL
   - quantity: xform_divonly_d4_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_Q3_DETERMINANT
     py: PY_S10_XFORM_DIVONLY_D4_Q3_DETERMINANT
   - quantity: xform_divonly_d4_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D4_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_DIVONLY_D4_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: xform_divonly_d4_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_Q3_ROOT_COUNT
     py: PY_S10_XFORM_DIVONLY_D4_Q3_ROOT_COUNT
   - quantity: xform_divonly_d4_q6_dimension_equations
+    cardinality: {kind: sequence, count: 42}
     wl: WL_S10_XFORM_DIVONLY_D4_Q6_DIMENSION_EQUATIONS
     py: PY_S10_XFORM_DIVONLY_D4_Q6_DIMENSION_EQUATIONS
   - quantity: xform_divonly_d4_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_DIVONLY_D4_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_XFORM_DIVONLY_D4_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: xform_divonly_d4_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_DIVONLY_D4_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_XFORM_DIVONLY_D4_Q6_INERTIAL_COEFFICIENTS
   - quantity: xform_divonly_d4_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D4_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_XFORM_DIVONLY_D4_Q6_STIFFNESS_COEFFICIENTS
   - quantity: xform_divonly_d4_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_XFORM_DIVONLY_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: xform_divonly_d4_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D4_Q8_ALLOWED_STRATA
     py: PY_S10_XFORM_DIVONLY_D4_Q8_ALLOWED_STRATA
   - quantity: xform_divonly_d4_root1_n1_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N1_MATRIX
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N1_MATRIX
   - quantity: xform_divonly_d4_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N2_NULLITY
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N2_NULLITY
   - quantity: xform_divonly_d4_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N2_RANK
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N2_RANK
   - quantity: xform_divonly_d4_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N3_STACKED_MATRIX
   - quantity: xform_divonly_d4_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N3_STACKED_RANK
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N3_STACKED_RANK
   - quantity: xform_divonly_d4_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: xform_divonly_d4_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: xform_divonly_d4_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N6_NULLSPACE_BASIS
   - quantity: xform_divonly_d4_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N7_BASIS_COUNT
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N7_BASIS_COUNT
   - quantity: xform_divonly_d4_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q3_SIGN
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q3_SIGN
   - quantity: xform_divonly_d4_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: xform_divonly_d4_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 16}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: xform_divonly_d4_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_divonly_d4_root2_n1_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N1_MATRIX
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N1_MATRIX
   - quantity: xform_divonly_d4_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N2_NULLITY
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N2_NULLITY
   - quantity: xform_divonly_d4_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N2_RANK
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N2_RANK
   - quantity: xform_divonly_d4_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N3_STACKED_MATRIX
   - quantity: xform_divonly_d4_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N3_STACKED_RANK
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N3_STACKED_RANK
   - quantity: xform_divonly_d4_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: xform_divonly_d4_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: xform_divonly_d4_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N6_NULLSPACE_BASIS
   - quantity: xform_divonly_d4_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N7_BASIS_COUNT
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N7_BASIS_COUNT
   - quantity: xform_divonly_d4_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q3_SIGN
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q3_SIGN
   - quantity: xform_divonly_d4_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: xform_divonly_d4_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 16}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: xform_divonly_d4_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_divonly_d4_root_ordering
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT_ORDERING
     py: PY_S10_XFORM_DIVONLY_D4_ROOT_ORDERING
   - quantity: xform_fullgrad_d3_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_PREMISE_PERIOD_AVERAGE
     py: PY_S10_XFORM_FULLGRAD_D3_PREMISE_PERIOD_AVERAGE
   - quantity: xform_fullgrad_d3_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: XFORM_FULLGRAD
+    dimension: 3
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_XFORM_FULLGRAD_D3_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: xform_fullgrad_d3_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_XFORM_FULLGRAD_D3_Q2_DOWNSTREAM_ROUTE
   - quantity: xform_fullgrad_d3_q2_matrix_a
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_A
     py: PY_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_A
   - quantity: xform_fullgrad_d3_q2_matrix_b
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_B
     py: PY_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_B
   - quantity: xform_fullgrad_d3_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_ENTRY_RATIO
   - quantity: xform_fullgrad_d3_q2_matrix_residual
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_RESIDUAL
     py: PY_S10_XFORM_FULLGRAD_D3_Q2_MATRIX_RESIDUAL
   - quantity: xform_fullgrad_d3_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q3_DETERMINANT
     py: PY_S10_XFORM_FULLGRAD_D3_Q3_DETERMINANT
   - quantity: xform_fullgrad_d3_q3_root_coincidence_loci
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_FULLGRAD_D3_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: xform_fullgrad_d3_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q3_ROOT_COUNT
     py: PY_S10_XFORM_FULLGRAD_D3_Q3_ROOT_COUNT
   - quantity: xform_fullgrad_d3_q6_dimension_equations
+    cardinality: {kind: sequence, count: 36}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q6_DIMENSION_EQUATIONS
     py: PY_S10_XFORM_FULLGRAD_D3_Q6_DIMENSION_EQUATIONS
   - quantity: xform_fullgrad_d3_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_XFORM_FULLGRAD_D3_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: xform_fullgrad_d3_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_XFORM_FULLGRAD_D3_Q6_INERTIAL_COEFFICIENTS
   - quantity: xform_fullgrad_d3_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_XFORM_FULLGRAD_D3_Q6_STIFFNESS_COEFFICIENTS
   - quantity: xform_fullgrad_d3_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_XFORM_FULLGRAD_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: xform_fullgrad_d3_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q8_ALLOWED_STRATA
     py: PY_S10_XFORM_FULLGRAD_D3_Q8_ALLOWED_STRATA
   - quantity: xform_fullgrad_d3_root1_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N1_MATRIX
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N1_MATRIX
   - quantity: xform_fullgrad_d3_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N2_NULLITY
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N2_NULLITY
   - quantity: xform_fullgrad_d3_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N2_RANK
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N2_RANK
   - quantity: xform_fullgrad_d3_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N3_STACKED_MATRIX
   - quantity: xform_fullgrad_d3_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N3_STACKED_RANK
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N3_STACKED_RANK
   - quantity: xform_fullgrad_d3_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: xform_fullgrad_d3_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: xform_fullgrad_d3_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N6_NULLSPACE_BASIS
   - quantity: xform_fullgrad_d3_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N7_BASIS_COUNT
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N7_BASIS_COUNT
   - quantity: xform_fullgrad_d3_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q3_SIGN
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q3_SIGN
   - quantity: xform_fullgrad_d3_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: xform_fullgrad_d3_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: xform_fullgrad_d3_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_fullgrad_d3_root_ordering
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT_ORDERING
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT_ORDERING
   - quantity: xform_fullgrad_d4_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_PREMISE_PERIOD_AVERAGE
     py: PY_S10_XFORM_FULLGRAD_D4_PREMISE_PERIOD_AVERAGE
   - quantity: xform_fullgrad_d4_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: XFORM_FULLGRAD
+    dimension: 4
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_XFORM_FULLGRAD_D4_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: xform_fullgrad_d4_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_XFORM_FULLGRAD_D4_Q2_DOWNSTREAM_ROUTE
   - quantity: xform_fullgrad_d4_q2_matrix_a
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_A
     py: PY_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_A
   - quantity: xform_fullgrad_d4_q2_matrix_b
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_B
     py: PY_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_B
   - quantity: xform_fullgrad_d4_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_ENTRY_RATIO
   - quantity: xform_fullgrad_d4_q2_matrix_residual
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_RESIDUAL
     py: PY_S10_XFORM_FULLGRAD_D4_Q2_MATRIX_RESIDUAL
   - quantity: xform_fullgrad_d4_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q3_DETERMINANT
     py: PY_S10_XFORM_FULLGRAD_D4_Q3_DETERMINANT
   - quantity: xform_fullgrad_d4_q3_root_coincidence_loci
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_FULLGRAD_D4_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: xform_fullgrad_d4_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q3_ROOT_COUNT
     py: PY_S10_XFORM_FULLGRAD_D4_Q3_ROOT_COUNT
   - quantity: xform_fullgrad_d4_q6_dimension_equations
+    cardinality: {kind: sequence, count: 60}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q6_DIMENSION_EQUATIONS
     py: PY_S10_XFORM_FULLGRAD_D4_Q6_DIMENSION_EQUATIONS
   - quantity: xform_fullgrad_d4_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_XFORM_FULLGRAD_D4_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: xform_fullgrad_d4_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_XFORM_FULLGRAD_D4_Q6_INERTIAL_COEFFICIENTS
   - quantity: xform_fullgrad_d4_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_XFORM_FULLGRAD_D4_Q6_STIFFNESS_COEFFICIENTS
   - quantity: xform_fullgrad_d4_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_XFORM_FULLGRAD_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: xform_fullgrad_d4_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D4_Q8_ALLOWED_STRATA
     py: PY_S10_XFORM_FULLGRAD_D4_Q8_ALLOWED_STRATA
   - quantity: xform_fullgrad_d4_root1_n1_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N1_MATRIX
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N1_MATRIX
   - quantity: xform_fullgrad_d4_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N2_NULLITY
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N2_NULLITY
   - quantity: xform_fullgrad_d4_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N2_RANK
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N2_RANK
   - quantity: xform_fullgrad_d4_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N3_STACKED_MATRIX
   - quantity: xform_fullgrad_d4_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N3_STACKED_RANK
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N3_STACKED_RANK
   - quantity: xform_fullgrad_d4_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: xform_fullgrad_d4_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: xform_fullgrad_d4_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N6_NULLSPACE_BASIS
   - quantity: xform_fullgrad_d4_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N7_BASIS_COUNT
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N7_BASIS_COUNT
   - quantity: xform_fullgrad_d4_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q3_SIGN
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q3_SIGN
   - quantity: xform_fullgrad_d4_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: xform_fullgrad_d4_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: xform_fullgrad_d4_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_fullgrad_d4_root_ordering
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT_ORDERING
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT_ORDERING
   - quantity: xform_signflip_d3_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_PREMISE_PERIOD_AVERAGE
     py: PY_S10_XFORM_SIGNFLIP_D3_PREMISE_PERIOD_AVERAGE
   - quantity: xform_signflip_d3_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: XFORM_SIGNFLIP
+    dimension: 3
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_XFORM_SIGNFLIP_D3_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: xform_signflip_d3_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_XFORM_SIGNFLIP_D3_Q2_DOWNSTREAM_ROUTE
   - quantity: xform_signflip_d3_q2_matrix_a
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_A
     py: PY_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_A
   - quantity: xform_signflip_d3_q2_matrix_b
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_B
     py: PY_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_B
   - quantity: xform_signflip_d3_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_ENTRY_RATIO
   - quantity: xform_signflip_d3_q2_matrix_residual
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_RESIDUAL
     py: PY_S10_XFORM_SIGNFLIP_D3_Q2_MATRIX_RESIDUAL
   - quantity: xform_signflip_d3_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q3_DETERMINANT
     py: PY_S10_XFORM_SIGNFLIP_D3_Q3_DETERMINANT
   - quantity: xform_signflip_d3_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_SIGNFLIP_D3_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: xform_signflip_d3_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q3_ROOT_COUNT
     py: PY_S10_XFORM_SIGNFLIP_D3_Q3_ROOT_COUNT
   - quantity: xform_signflip_d3_q6_dimension_equations
+    cardinality: {kind: sequence, count: 36}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q6_DIMENSION_EQUATIONS
     py: PY_S10_XFORM_SIGNFLIP_D3_Q6_DIMENSION_EQUATIONS
   - quantity: xform_signflip_d3_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_XFORM_SIGNFLIP_D3_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: xform_signflip_d3_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_XFORM_SIGNFLIP_D3_Q6_INERTIAL_COEFFICIENTS
   - quantity: xform_signflip_d3_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_XFORM_SIGNFLIP_D3_Q6_STIFFNESS_COEFFICIENTS
   - quantity: xform_signflip_d3_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_XFORM_SIGNFLIP_D3_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: xform_signflip_d3_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q8_ALLOWED_STRATA
     py: PY_S10_XFORM_SIGNFLIP_D3_Q8_ALLOWED_STRATA
   - quantity: xform_signflip_d3_root1_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N1_MATRIX
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N1_MATRIX
   - quantity: xform_signflip_d3_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N2_NULLITY
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N2_NULLITY
   - quantity: xform_signflip_d3_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N2_RANK
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N2_RANK
   - quantity: xform_signflip_d3_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_STACKED_MATRIX
   - quantity: xform_signflip_d3_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_STACKED_RANK
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_STACKED_RANK
   - quantity: xform_signflip_d3_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: xform_signflip_d3_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: xform_signflip_d3_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N6_NULLSPACE_BASIS
   - quantity: xform_signflip_d3_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N7_BASIS_COUNT
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N7_BASIS_COUNT
   - quantity: xform_signflip_d3_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q3_SIGN
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q3_SIGN
   - quantity: xform_signflip_d3_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: xform_signflip_d3_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: xform_signflip_d3_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_signflip_d3_root2_n1_matrix
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N1_MATRIX
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N1_MATRIX
   - quantity: xform_signflip_d3_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N2_NULLITY
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N2_NULLITY
   - quantity: xform_signflip_d3_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N2_RANK
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N2_RANK
   - quantity: xform_signflip_d3_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_STACKED_MATRIX
   - quantity: xform_signflip_d3_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_STACKED_RANK
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_STACKED_RANK
   - quantity: xform_signflip_d3_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: xform_signflip_d3_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: xform_signflip_d3_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N6_NULLSPACE_BASIS
   - quantity: xform_signflip_d3_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N7_BASIS_COUNT
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N7_BASIS_COUNT
   - quantity: xform_signflip_d3_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q3_SIGN
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q3_SIGN
   - quantity: xform_signflip_d3_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: xform_signflip_d3_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 9}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: xform_signflip_d3_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_signflip_d3_root_ordering
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT_ORDERING
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT_ORDERING
   - quantity: xform_signflip_d4_premise_period_average
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_PREMISE_PERIOD_AVERAGE
     py: PY_S10_XFORM_SIGNFLIP_D4_PREMISE_PERIOD_AVERAGE
   - quantity: xform_signflip_d4_q1_euler_lagrange_system
+    family: euler_lagrange
+    package: XFORM_SIGNFLIP
+    dimension: 4
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q1_EULER_LAGRANGE_SYSTEM
     py: PY_S10_XFORM_SIGNFLIP_D4_Q1_EULER_LAGRANGE_SYSTEM
   - quantity: xform_signflip_d4_q2_downstream_route
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q2_DOWNSTREAM_ROUTE
     py: PY_S10_XFORM_SIGNFLIP_D4_Q2_DOWNSTREAM_ROUTE
   - quantity: xform_signflip_d4_q2_matrix_a
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_A
     py: PY_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_A
   - quantity: xform_signflip_d4_q2_matrix_b
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_B
     py: PY_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_B
   - quantity: xform_signflip_d4_q2_matrix_entry_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_ENTRY_RATIO
     py: PY_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_ENTRY_RATIO
   - quantity: xform_signflip_d4_q2_matrix_residual
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_RESIDUAL
     py: PY_S10_XFORM_SIGNFLIP_D4_Q2_MATRIX_RESIDUAL
   - quantity: xform_signflip_d4_q3_determinant
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q3_DETERMINANT
     py: PY_S10_XFORM_SIGNFLIP_D4_Q3_DETERMINANT
   - quantity: xform_signflip_d4_q3_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q3_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_SIGNFLIP_D4_Q3_ROOT_COINCIDENCE_LOCI
   - quantity: xform_signflip_d4_q3_root_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q3_ROOT_COUNT
     py: PY_S10_XFORM_SIGNFLIP_D4_Q3_ROOT_COUNT
   - quantity: xform_signflip_d4_q6_dimension_equations
+    cardinality: {kind: sequence, count: 66}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q6_DIMENSION_EQUATIONS
     py: PY_S10_XFORM_SIGNFLIP_D4_Q6_DIMENSION_EQUATIONS
   - quantity: xform_signflip_d4_q6_energy_density_dimension
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q6_ENERGY_DENSITY_DIMENSION
     py: PY_S10_XFORM_SIGNFLIP_D4_Q6_ENERGY_DENSITY_DIMENSION
   - quantity: xform_signflip_d4_q6_inertial_coefficients
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q6_INERTIAL_COEFFICIENTS
     py: PY_S10_XFORM_SIGNFLIP_D4_Q6_INERTIAL_COEFFICIENTS
   - quantity: xform_signflip_d4_q6_stiffness_coefficients
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q6_STIFFNESS_COEFFICIENTS
     py: PY_S10_XFORM_SIGNFLIP_D4_Q6_STIFFNESS_COEFFICIENTS
   - quantity: xform_signflip_d4_q6_unknown_coefficient_dimension_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
     py: PY_S10_XFORM_SIGNFLIP_D4_Q6_UNKNOWN_COEFFICIENT_DIMENSION_COUNT
   - quantity: xform_signflip_d4_q8_allowed_strata
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D4_Q8_ALLOWED_STRATA
     py: PY_S10_XFORM_SIGNFLIP_D4_Q8_ALLOWED_STRATA
   - quantity: xform_signflip_d4_root1_n1_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N1_MATRIX
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N1_MATRIX
   - quantity: xform_signflip_d4_root1_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N2_NULLITY
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N2_NULLITY
   - quantity: xform_signflip_d4_root1_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N2_RANK
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N2_RANK
   - quantity: xform_signflip_d4_root1_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_STACKED_MATRIX
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_STACKED_MATRIX
   - quantity: xform_signflip_d4_root1_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_STACKED_RANK
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_STACKED_RANK
   - quantity: xform_signflip_d4_root1_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N3_TRANSVERSE_NULLITY
   - quantity: xform_signflip_d4_root1_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N4_NULLITY_DIFFERENCE
   - quantity: xform_signflip_d4_root1_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N6_NULLSPACE_BASIS
   - quantity: xform_signflip_d4_root1_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N7_BASIS_COUNT
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N7_BASIS_COUNT
   - quantity: xform_signflip_d4_root1_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q3_SIGN
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q3_SIGN
   - quantity: xform_signflip_d4_root1_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_RANK_DROP_LOCUS
   - quantity: xform_signflip_d4_root1_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 16}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_RANK_DROP_MINORS
   - quantity: xform_signflip_d4_root1_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_signflip_d4_root2_n1_matrix
+    cardinality: {kind: sequence, count: 4}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N1_MATRIX
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N1_MATRIX
   - quantity: xform_signflip_d4_root2_n2_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N2_NULLITY
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N2_NULLITY
   - quantity: xform_signflip_d4_root2_n2_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N2_RANK
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N2_RANK
   - quantity: xform_signflip_d4_root2_n3_stacked_matrix
+    cardinality: {kind: sequence, count: 5}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_STACKED_MATRIX
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_STACKED_MATRIX
   - quantity: xform_signflip_d4_root2_n3_stacked_rank
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_STACKED_RANK
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_STACKED_RANK
   - quantity: xform_signflip_d4_root2_n3_transverse_nullity
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_TRANSVERSE_NULLITY
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N3_TRANSVERSE_NULLITY
   - quantity: xform_signflip_d4_root2_n4_nullity_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N4_NULLITY_DIFFERENCE
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N4_NULLITY_DIFFERENCE
   - quantity: xform_signflip_d4_root2_n6_nullspace_basis
+    cardinality: {kind: sequence, count: 3}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N6_NULLSPACE_BASIS
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N6_NULLSPACE_BASIS
   - quantity: xform_signflip_d4_root2_n7_basis_count
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N7_BASIS_COUNT
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N7_BASIS_COUNT
   - quantity: xform_signflip_d4_root2_q3_sign
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q3_SIGN
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q3_SIGN
   - quantity: xform_signflip_d4_root2_q8_rank_drop_locus
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_RANK_DROP_LOCUS
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_RANK_DROP_LOCUS
   - quantity: xform_signflip_d4_root2_q8_rank_drop_minors
+    cardinality: {kind: sequence, count: 16}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_RANK_DROP_MINORS
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_RANK_DROP_MINORS
   - quantity: xform_signflip_d4_root2_q8_root_coincidence_loci
+    cardinality: {kind: sequence, count: 1}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q8_ROOT_COINCIDENCE_LOCI
   - quantity: xform_signflip_d4_root_ordering
+    cardinality: {kind: sequence, count: 2}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT_ORDERING
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT_ORDERING
   - quantity: main_d2_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_MAIN_D2_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: main_d2_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_MAIN_D2_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: main_d2_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_MAIN_D2_ROOT1_Q5_ROOT_SCALED
   - quantity: main_d2_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_MAIN_D2_ROOT1_Q5_SCALE_RATIO
   - quantity: main_d2_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_MAIN_D2_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: main_d2_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_MAIN_D2_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: main_d2_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_MAIN_D2_ROOT2_Q5_ROOT_SCALED
   - quantity: main_d2_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D2_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_MAIN_D2_ROOT2_Q5_SCALE_RATIO
   - quantity: main_d3_q7_stiffness
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_Q7_PACKAGE_STIFFNESS_DENSITY
     py: PY_S10_MAIN_D3_Q7_STIFFNESS
   - quantity: main_d3_q7_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
     py: PY_S10_MAIN_D3_Q7_DIFFERENCE
   - quantity: main_d3_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_MAIN_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: main_d3_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_MAIN_D3_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: main_d3_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_MAIN_D3_ROOT1_Q5_ROOT_SCALED
   - quantity: main_d3_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_MAIN_D3_ROOT1_Q5_SCALE_RATIO
   - quantity: main_d3_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_MAIN_D3_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: main_d3_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_MAIN_D3_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: main_d3_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_MAIN_D3_ROOT2_Q5_ROOT_SCALED
   - quantity: main_d3_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D3_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_MAIN_D3_ROOT2_Q5_SCALE_RATIO
   - quantity: main_d4_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_MAIN_D4_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: main_d4_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_MAIN_D4_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: main_d4_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_MAIN_D4_ROOT1_Q5_ROOT_SCALED
   - quantity: main_d4_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_MAIN_D4_ROOT1_Q5_SCALE_RATIO
   - quantity: main_d4_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_MAIN_D4_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: main_d4_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_MAIN_D4_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: main_d4_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_MAIN_D4_ROOT2_Q5_ROOT_SCALED
   - quantity: main_d4_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D4_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_MAIN_D4_ROOT2_Q5_SCALE_RATIO
   - quantity: main_d5_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_MAIN_D5_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: main_d5_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_MAIN_D5_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: main_d5_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_MAIN_D5_ROOT1_Q5_ROOT_SCALED
   - quantity: main_d5_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_MAIN_D5_ROOT1_Q5_SCALE_RATIO
   - quantity: main_d5_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_MAIN_D5_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: main_d5_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_MAIN_D5_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: main_d5_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_MAIN_D5_ROOT2_Q5_ROOT_SCALED
   - quantity: main_d5_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_MAIN_D5_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_MAIN_D5_ROOT2_Q5_SCALE_RATIO
   - quantity: xcoef_scale_d3_q7_stiffness
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_Q7_PACKAGE_STIFFNESS_DENSITY
     py: PY_S10_XCOEF_SCALE_D3_Q7_STIFFNESS
   - quantity: xcoef_scale_d3_q7_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
     py: PY_S10_XCOEF_SCALE_D3_Q7_DIFFERENCE
   - quantity: xcoef_scale_d3_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: xcoef_scale_d3_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: xcoef_scale_d3_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q5_ROOT_SCALED
   - quantity: xcoef_scale_d3_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_XCOEF_SCALE_D3_ROOT1_Q5_SCALE_RATIO
   - quantity: xcoef_scale_d3_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: xcoef_scale_d3_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: xcoef_scale_d3_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q5_ROOT_SCALED
   - quantity: xcoef_scale_d3_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XCOEF_SCALE_D3_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_XCOEF_SCALE_D3_ROOT2_Q5_SCALE_RATIO
   - quantity: xform_aniso_d3_q7_stiffness
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_Q7_PACKAGE_STIFFNESS_DENSITY
     py: PY_S10_XFORM_ANISO_D3_Q7_STIFFNESS
   - quantity: xform_aniso_d3_q7_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
     py: PY_S10_XFORM_ANISO_D3_Q7_DIFFERENCE
   - quantity: xform_aniso_d3_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_ANISO_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_aniso_d3_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_ANISO_D3_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: xform_aniso_d3_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_XFORM_ANISO_D3_ROOT1_Q5_ROOT_SCALED
   - quantity: xform_aniso_d3_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_XFORM_ANISO_D3_ROOT1_Q5_SCALE_RATIO
   - quantity: xform_aniso_d3_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_ANISO_D3_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_aniso_d3_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_ANISO_D3_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: xform_aniso_d3_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_XFORM_ANISO_D3_ROOT2_Q5_ROOT_SCALED
   - quantity: xform_aniso_d3_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_XFORM_ANISO_D3_ROOT2_Q5_SCALE_RATIO
   - quantity: xform_aniso_d3_root3_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_ANISO_D3_ROOT3_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_aniso_d3_root3_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_ANISO_D3_ROOT3_Q5_ROOT_ORIGINAL
   - quantity: xform_aniso_d3_root3_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q5_SCALED_ROOT
     py: PY_S10_XFORM_ANISO_D3_ROOT3_Q5_ROOT_SCALED
   - quantity: xform_aniso_d3_root3_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D3_ROOT3_Q5_SCALING_RATIO
     py: PY_S10_XFORM_ANISO_D3_ROOT3_Q5_SCALE_RATIO
   - quantity: xform_aniso_d4_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_ANISO_D4_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_aniso_d4_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_ANISO_D4_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: xform_aniso_d4_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_XFORM_ANISO_D4_ROOT1_Q5_ROOT_SCALED
   - quantity: xform_aniso_d4_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_XFORM_ANISO_D4_ROOT1_Q5_SCALE_RATIO
   - quantity: xform_aniso_d4_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_ANISO_D4_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_aniso_d4_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_ANISO_D4_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: xform_aniso_d4_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_XFORM_ANISO_D4_ROOT2_Q5_ROOT_SCALED
   - quantity: xform_aniso_d4_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_XFORM_ANISO_D4_ROOT2_Q5_SCALE_RATIO
   - quantity: xform_aniso_d4_root3_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_ANISO_D4_ROOT3_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_aniso_d4_root3_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_ANISO_D4_ROOT3_Q5_ROOT_ORIGINAL
   - quantity: xform_aniso_d4_root3_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q5_SCALED_ROOT
     py: PY_S10_XFORM_ANISO_D4_ROOT3_Q5_ROOT_SCALED
   - quantity: xform_aniso_d4_root3_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_ANISO_D4_ROOT3_Q5_SCALING_RATIO
     py: PY_S10_XFORM_ANISO_D4_ROOT3_Q5_SCALE_RATIO
   - quantity: xform_divonly_d3_q7_stiffness
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_Q7_PACKAGE_STIFFNESS_DENSITY
     py: PY_S10_XFORM_DIVONLY_D3_Q7_STIFFNESS
   - quantity: xform_divonly_d3_q7_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
     py: PY_S10_XFORM_DIVONLY_D3_Q7_DIFFERENCE
   - quantity: xform_divonly_d3_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_divonly_d3_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: xform_divonly_d3_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q5_ROOT_SCALED
   - quantity: xform_divonly_d3_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_XFORM_DIVONLY_D3_ROOT1_Q5_SCALE_RATIO
   - quantity: xform_divonly_d3_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_divonly_d3_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: xform_divonly_d3_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q5_ROOT_SCALED
   - quantity: xform_divonly_d3_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D3_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_XFORM_DIVONLY_D3_ROOT2_Q5_SCALE_RATIO
   - quantity: xform_divonly_d4_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_divonly_d4_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: xform_divonly_d4_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q5_ROOT_SCALED
   - quantity: xform_divonly_d4_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_XFORM_DIVONLY_D4_ROOT1_Q5_SCALE_RATIO
   - quantity: xform_divonly_d4_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_divonly_d4_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: xform_divonly_d4_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q5_ROOT_SCALED
   - quantity: xform_divonly_d4_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_DIVONLY_D4_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_XFORM_DIVONLY_D4_ROOT2_Q5_SCALE_RATIO
   - quantity: xform_fullgrad_d3_q7_stiffness
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q7_PACKAGE_STIFFNESS_DENSITY
     py: PY_S10_XFORM_FULLGRAD_D3_Q7_STIFFNESS
   - quantity: xform_fullgrad_d3_q7_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
     py: PY_S10_XFORM_FULLGRAD_D3_Q7_DIFFERENCE
   - quantity: xform_fullgrad_d3_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_fullgrad_d3_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: xform_fullgrad_d3_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_ROOT_SCALED
   - quantity: xform_fullgrad_d3_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_XFORM_FULLGRAD_D3_ROOT1_Q5_SCALE_RATIO
   - quantity: xform_fullgrad_d4_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_fullgrad_d4_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: xform_fullgrad_d4_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_ROOT_SCALED
   - quantity: xform_fullgrad_d4_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_XFORM_FULLGRAD_D4_ROOT1_Q5_SCALE_RATIO
   - quantity: xform_signflip_d3_q7_stiffness
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q7_PACKAGE_STIFFNESS_DENSITY
     py: PY_S10_XFORM_SIGNFLIP_D3_Q7_STIFFNESS
   - quantity: xform_signflip_d3_q7_difference
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_Q7_PACKAGE_STIFFNESS_VS_ORDINARY_CURL_RESIDUAL
     py: PY_S10_XFORM_SIGNFLIP_D3_Q7_DIFFERENCE
   - quantity: xform_signflip_d3_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_signflip_d3_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: xform_signflip_d3_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_ROOT_SCALED
   - quantity: xform_signflip_d3_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT1_Q5_SCALE_RATIO
   - quantity: xform_signflip_d3_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_signflip_d3_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: xform_signflip_d3_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_ROOT_SCALED
   - quantity: xform_signflip_d3_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_XFORM_SIGNFLIP_D3_ROOT2_Q5_SCALE_RATIO
   - quantity: xform_signflip_d4_root1_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_signflip_d4_root1_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_ROOT_ORIGINAL
   - quantity: xform_signflip_d4_root1_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_SCALED_ROOT
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_ROOT_SCALED
   - quantity: xform_signflip_d4_root1_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_SCALING_RATIO
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT1_Q5_SCALE_RATIO
   - quantity: xform_signflip_d4_root2_n7_basis_count_residual
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_N7_COUNT_RESIDUAL
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_N7_BASIS_COUNT_RESIDUAL
   - quantity: xform_signflip_d4_root2_q5_root_original
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_ORIGINAL_ROOT
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_ROOT_ORIGINAL
   - quantity: xform_signflip_d4_root2_q5_root_scaled
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_SCALED_ROOT
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_ROOT_SCALED
   - quantity: xform_signflip_d4_root2_q5_scale_ratio
+    cardinality: {kind: scalar}
     wl: WL_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_SCALING_RATIO
     py: PY_S10_XFORM_SIGNFLIP_D4_ROOT2_Q5_SCALE_RATIO
+
+  # The action family is exact and separate from Q6 dimensional metadata.
+  - quantity: main_d2_q1_lagrangian_action
+    family: lagrangian
+    package: MAIN
+    dimension: 2
+    cardinality: {kind: scalar}
+    wl: WL_S10_MAIN_D2_Q1_LAGRANGIAN
+    py: PY_S10_MAIN_D2_Q1_LAGRANGIAN_EXPANDED
+  - quantity: main_d3_q1_lagrangian_action
+    family: lagrangian
+    package: MAIN
+    dimension: 3
+    cardinality: {kind: scalar}
+    wl: WL_S10_MAIN_D3_Q1_LAGRANGIAN
+    py: PY_S10_MAIN_D3_Q1_LAGRANGIAN_EXPANDED
+  - quantity: main_d4_q1_lagrangian_action
+    family: lagrangian
+    package: MAIN
+    dimension: 4
+    cardinality: {kind: scalar}
+    wl: WL_S10_MAIN_D4_Q1_LAGRANGIAN
+    py: PY_S10_MAIN_D4_Q1_LAGRANGIAN_EXPANDED
+  - quantity: main_d5_q1_lagrangian_action
+    family: lagrangian
+    package: MAIN
+    dimension: 5
+    cardinality: {kind: scalar}
+    wl: WL_S10_MAIN_D5_Q1_LAGRANGIAN
+    py: PY_S10_MAIN_D5_Q1_LAGRANGIAN_EXPANDED
+  - quantity: xform_fullgrad_d3_q1_lagrangian_action
+    family: lagrangian
+    package: XFORM_FULLGRAD
+    dimension: 3
+    cardinality: {kind: scalar}
+    wl: WL_S10_XFORM_FULLGRAD_D3_Q1_LAGRANGIAN
+    py: PY_S10_XFORM_FULLGRAD_D3_Q1_LAGRANGIAN_EXPANDED
+  - quantity: xform_fullgrad_d4_q1_lagrangian_action
+    family: lagrangian
+    package: XFORM_FULLGRAD
+    dimension: 4
+    cardinality: {kind: scalar}
+    wl: WL_S10_XFORM_FULLGRAD_D4_Q1_LAGRANGIAN
+    py: PY_S10_XFORM_FULLGRAD_D4_Q1_LAGRANGIAN_EXPANDED
+  - quantity: xform_divonly_d3_q1_lagrangian_action
+    family: lagrangian
+    package: XFORM_DIVONLY
+    dimension: 3
+    cardinality: {kind: scalar}
+    wl: WL_S10_XFORM_DIVONLY_D3_Q1_LAGRANGIAN
+    py: PY_S10_XFORM_DIVONLY_D3_Q1_LAGRANGIAN_EXPANDED
+  - quantity: xform_divonly_d4_q1_lagrangian_action
+    family: lagrangian
+    package: XFORM_DIVONLY
+    dimension: 4
+    cardinality: {kind: scalar}
+    wl: WL_S10_XFORM_DIVONLY_D4_Q1_LAGRANGIAN
+    py: PY_S10_XFORM_DIVONLY_D4_Q1_LAGRANGIAN_EXPANDED
+  - quantity: xform_signflip_d3_q1_lagrangian_action
+    family: lagrangian
+    package: XFORM_SIGNFLIP
+    dimension: 3
+    cardinality: {kind: scalar}
+    wl: WL_S10_XFORM_SIGNFLIP_D3_Q1_LAGRANGIAN
+    py: PY_S10_XFORM_SIGNFLIP_D3_Q1_LAGRANGIAN_EXPANDED
+  - quantity: xform_signflip_d4_q1_lagrangian_action
+    family: lagrangian
+    package: XFORM_SIGNFLIP
+    dimension: 4
+    cardinality: {kind: scalar}
+    wl: WL_S10_XFORM_SIGNFLIP_D4_Q1_LAGRANGIAN
+    py: PY_S10_XFORM_SIGNFLIP_D4_Q1_LAGRANGIAN_EXPANDED
+  - quantity: xform_aniso_d3_q1_lagrangian_action
+    family: lagrangian
+    package: XFORM_ANISO
+    dimension: 3
+    cardinality: {kind: scalar}
+    wl: WL_S10_XFORM_ANISO_D3_Q1_LAGRANGIAN
+    py: PY_S10_XFORM_ANISO_D3_Q1_LAGRANGIAN_EXPANDED
+  - quantity: xform_aniso_d4_q1_lagrangian_action
+    family: lagrangian
+    package: XFORM_ANISO
+    dimension: 4
+    cardinality: {kind: scalar}
+    wl: WL_S10_XFORM_ANISO_D4_Q1_LAGRANGIAN
+    py: PY_S10_XFORM_ANISO_D4_Q1_LAGRANGIAN_EXPANDED
+  - quantity: xcoef_scale_d3_q1_lagrangian_action
+    family: lagrangian
+    package: XCOEF_SCALE
+    dimension: 3
+    cardinality: {kind: scalar}
+    wl: WL_S10_XCOEF_SCALE_D3_Q1_LAGRANGIAN
+    py: PY_S10_XCOEF_SCALE_D3_Q1_LAGRANGIAN_EXPANDED
+
+registry_residual:
+  - relation_id: R4
+    engine: wl
+    qids:
+      Q.brane.rho_br: {tag: WL_S10_MAIN_D3_Q6_INERTIAL_COEFFICIENTS, select: sequence_first}
+      Q.brane.mu_R: {tag: WL_S10_MAIN_D3_Q6_STIFFNESS_COEFFICIENTS, select: list}
+      Q.brane.c_gamma: {tag: WL_S10_MAIN_D3_Q3_DISTINCT_ROOTS, select: sequence_second}

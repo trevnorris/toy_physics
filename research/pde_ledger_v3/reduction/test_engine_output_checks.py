@@ -11,6 +11,7 @@ import copy
 import subprocess
 import sys
 from functools import lru_cache
+from itertools import product
 from pathlib import Path
 
 import pytest
@@ -256,6 +257,201 @@ def test_derivative_argument_order_is_identity() -> None:
     left = checks.normalize_mathematica("Derivative[1,0][u][x,t]")
     right = checks.normalize_mathematica("Derivative[1,0][u][t,x]")
     assert not checks.symbolic_equal(left, right)
+
+
+def test_opaque_derivative_instances_keep_and_compare_their_full_identity() -> None:
+    rendered = "Derivative[1, 0][u][x, t]"
+    original_identity = ((1, 0), "u", ("x", "t"))
+    original = checks.OpaqueDerivative(rendered, *original_identity)
+    different_orders = checks.OpaqueDerivative(rendered, (0, 1), "u", ("x", "t"))
+    different_function = checks.OpaqueDerivative(rendered, (1, 0), "v", ("x", "t"))
+    different_variables = checks.OpaqueDerivative(rendered, (1, 0), "u", ("r", "s"))
+    matching = checks.OpaqueDerivative(rendered, *original_identity)
+    mapped, _ = checks._map_tree(original, {"u": "renamed_u", "x": "renamed_x"})
+
+    assert (original.orders, original.function_name, original.variables) == original_identity
+    assert mapped is not original
+    assert str(mapped) == rendered
+    assert (mapped.orders, mapped.function_name, mapped.variables) == (
+        (1, 0),
+        "renamed_u",
+        ("renamed_x", "t"),
+    )
+    assert matching == original
+    assert hash(matching) == hash(original)
+    assert different_orders != original
+    assert different_function != original
+    assert different_variables != original
+
+
+@pytest.mark.parametrize(
+    ("original_identity", "conflicting_identity"),
+    [
+        (("f", ("x", "y"), (("x", 1),)), ("f", ("x,y",), (("x", 1),))),
+        (("f", ("\\", "x"), (("x", 1),)), ("f", (",x",), (("x", 1),))),
+        (("f", (), (("x", 1),)), ("f", ("",), (("x", 1),))),
+    ],
+)
+def test_canonical_derivative_historical_encoding_regressions(
+    original_identity: tuple[object, ...], conflicting_identity: tuple[object, ...]
+) -> None:
+    original = checks.CanonicalDerivative(*original_identity)
+    conflicting = checks.CanonicalDerivative(*conflicting_identity)
+
+    assert (original.function_name, original.function_arguments, original.differentiated) == original_identity
+    assert (conflicting.function_name, conflicting.function_arguments, conflicting.differentiated) == conflicting_identity
+    assert str(original) != str(conflicting)
+    assert original != conflicting
+    assert not checks.symbolic_equal(original, conflicting)
+
+
+def test_canonical_derivative_rendered_name_has_left_inverse_on_finite_envelope() -> None:
+    """Verify a left inverse over a finite 64,416-tuple envelope.
+
+    The sweep uses alphabet ``\\,^();[]0a A1``; every field slot ranges over
+    strings of length 0 through 2, argument and differentiated arities are 0
+    through 3, and orders are decimal integers 1 through 12 plus adversarial
+    renderings ``\\,^();[]0a``.  A green run does not establish injectivity on
+    the declared domain, and no finite test can, because that domain is
+    infinite.  Domain-wide injectivity rests on the alphabet argument beside
+    the encoder, not on this test.  This envelope is strong against any
+    encoding that weakens the escaping logic; it is known to kill 21
+    independently constructed weaker encodings.
+    """
+    class AdversariallyRenderedInt(int):
+        """An int whose text makes order-field escaping observable."""
+
+        def __new__(cls, value: int, rendered: str) -> "AdversariallyRenderedInt":
+            instance = int.__new__(cls, value)
+            instance.rendered = rendered
+            return instance
+
+        def __str__(self) -> str:
+            return self.rendered
+
+        def __format__(self, format_spec: str) -> str:
+            return self.rendered if not format_spec else int.__format__(self, format_spec)
+
+        def as_integer_ratio(self) -> tuple[int, int]:
+            return self, 1
+
+    alphabet = tuple(r"\,^();[]0a A1")
+    fields = (
+        "",
+        *(
+            "".join(characters)
+            for length in range(1, 3)
+            for characters in product(alphabet, repeat=length)
+        ),
+    )
+    adversarial_renderings = tuple(r"\,^();[]0a")
+    orders = (*range(1, 13), *(
+        AdversariallyRenderedInt(101 + index, rendered)
+        for index, rendered in enumerate(adversarial_renderings)
+    ))
+    order_by_rendering = {str(order): int(order) for order in orders}
+
+    identities = (
+        (
+            function_name,
+            tuple(
+                fields[(function_index + order_index + position) % len(fields)]
+                for position in range(argument_arity)
+            ),
+            tuple(
+                (
+                    fields[(function_index + order_index + position) % len(fields)],
+                    orders[(order_index + position) % len(orders)],
+                )
+                for position in range(differentiated_arity)
+            ),
+        )
+        for function_index, function_name in enumerate(fields)
+        for argument_arity in range(4)
+        for differentiated_arity in range(4)
+        for order_index in range(len(orders))
+    )
+
+    def decode(rendered_name: str) -> tuple[str, tuple[str, ...], tuple[tuple[str, int], ...]]:
+        prefix = "DerivativeIdentity["
+        assert rendered_name.startswith(prefix)
+        cursor = len(prefix)
+
+        def field_before(delimiters: str) -> tuple[str, str]:
+            nonlocal cursor
+            decoded = ""
+            while cursor < len(rendered_name):
+                character = rendered_name[cursor]
+                if character in delimiters:
+                    cursor += 1
+                    return decoded, character
+                if character == "\\":
+                    cursor += 1
+                    assert cursor < len(rendered_name)
+                    escaped = rendered_name[cursor]
+                    if escaped == "0":
+                        assert not decoded
+                        cursor += 1
+                        assert rendered_name[cursor] in delimiters
+                        continue
+                    assert escaped in "\\,^();[]"
+                    character = escaped
+                decoded += character
+                cursor += 1
+            raise AssertionError("unterminated encoded field")
+
+        function_name, delimiter = field_before("(")
+        assert delimiter == "("
+        arguments: list[str] = []
+        if rendered_name[cursor] == ")":
+            cursor += 1
+        else:
+            while True:
+                argument, delimiter = field_before(",)")
+                arguments.append(argument)
+                if delimiter == ")":
+                    break
+        assert rendered_name[cursor] == ";"
+        cursor += 1
+        differentiated: list[tuple[str, int]] = []
+        if rendered_name[cursor] == "]":
+            cursor += 1
+        else:
+            while True:
+                variable, delimiter = field_before("^")
+                assert delimiter == "^"
+                order_rendering, delimiter = field_before(",]")
+                assert order_rendering in order_by_rendering
+                differentiated.append((variable, order_by_rendering[order_rendering]))
+                if delimiter == "]":
+                    break
+        assert cursor == len(rendered_name)
+        return function_name, tuple(arguments), tuple(differentiated)
+
+    for identity in identities:
+        rendered_name = str(checks.CanonicalDerivative(*identity))
+        assert decode(rendered_name) == identity
+
+
+def test_canonical_derivative_instances_keep_and_compare_their_full_identity(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    uncached = sp.Symbol.__xnew__
+    monkeypatch.setattr(sp.Symbol, "__xnew__", lambda cls, name: uncached(cls, "same rendered name"))
+    original_identity = ("f", ("x", "y"), (("x", 1),))
+    original = checks.CanonicalDerivative(*original_identity)
+    different_function = checks.CanonicalDerivative("g", ("x", "y"), (("x", 1),))
+    different_arguments = checks.CanonicalDerivative("f", ("x",), (("x", 1),))
+    different_pairs = checks.CanonicalDerivative("f", ("x", "y"), (("y", 1),))
+    matching = checks.CanonicalDerivative(*original_identity)
+
+    assert (original.function_name, original.function_arguments, original.differentiated) == original_identity
+    assert matching is not original
+    assert matching == original
+    assert hash(matching) == hash(original)
+    assert different_function != original
+    assert different_arguments != original
+    assert different_pairs != original
 
 
 @pytest.mark.parametrize(

@@ -21,6 +21,11 @@ from typing import Any, Iterable, Mapping, MutableMapping, Sequence
 import sympy as sp
 import yaml
 
+if not hasattr(sp.Symbol, "__xnew__") or sp.Symbol.__xnew__(
+    sp.Symbol, "_engine_output_checks_uncached_probe"
+) is sp.Symbol.__xnew__(sp.Symbol, "_engine_output_checks_uncached_probe"):
+    raise RuntimeError("derivative atoms require uncached SymPy Symbol.__xnew__")
+
 try:
     from .registry_read import Registry, load_registry
 except ImportError:  # Direct script invocation.
@@ -164,11 +169,18 @@ class OpaqueDerivative(sp.Symbol):
         function_name: str,
         variables: tuple[str, ...],
     ) -> "OpaqueDerivative":
-        obj = sp.Symbol.__new__(cls, rendered)
+        obj = sp.Symbol.__xnew__(cls, rendered)
         obj.orders = orders
         obj.function_name = function_name
         obj.variables = variables
         return obj
+
+    def _hashable_content(self) -> tuple[object, ...]:
+        return sp.Symbol._hashable_content(self) + (
+            self.orders,
+            self.function_name,
+            self.variables,
+        )
 
 
 class CanonicalDerivative(sp.Symbol):
@@ -180,15 +192,38 @@ class CanonicalDerivative(sp.Symbol):
         function_arguments: tuple[str, ...],
         differentiated: tuple[tuple[str, int], ...],
     ) -> "CanonicalDerivative":
-        arguments = ",".join(function_arguments)
-        pairs = ",".join(f"{variable}^{order}" for variable, order in differentiated)
-        obj = sp.Symbol.__new__(
-            cls, f"DerivativeIdentity[{function_name}({arguments});{pairs}]"
+        # Alphabet argument: the escape set is ``\\,^();[]``, including the
+        # escape character itself.  Every separator in a field is therefore
+        # escaped, so no field can emit an unescaped separator.  The empty marker
+        # ``\\0`` is outside the image of nonempty fields: a source ``\\`` becomes
+        # ``\\\\`` while ``0`` remains literal.  Field boundaries are therefore
+        # unique and admit a left inverse.
+        def encode(field: str) -> str:
+            escaped = "".join(
+                f"\\{character}" if character in "\\,^();[]" else character
+                for character in field
+            )
+            return escaped or r"\0"
+
+        arguments = ",".join(map(encode, function_arguments))
+        pairs = ",".join(
+            f"{encode(variable)}^{encode('/'.join(map(str, order.as_integer_ratio())).removesuffix('/1') if hasattr(order, 'as_integer_ratio') else repr(order))}"
+            for variable, order in differentiated
+        )
+        obj = sp.Symbol.__xnew__(
+            cls, f"DerivativeIdentity[{encode(function_name)}({arguments});{pairs}]"
         )
         obj.function_name = function_name
         obj.function_arguments = function_arguments
         obj.differentiated = differentiated
         return obj
+
+    def _hashable_content(self) -> tuple[object, ...]:
+        return sp.Symbol._hashable_content(self) + (
+            self.function_name,
+            self.function_arguments,
+            self.differentiated,
+        )
 
 
 def _is_boolean_value(value: object) -> bool:

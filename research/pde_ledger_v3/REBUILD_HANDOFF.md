@@ -75,6 +75,37 @@ what it does not establish. ⛔ Do not re-derive those figures from this file; r
 - `DEFECT_REGISTER.md#f7`'s owed measurement is still owed, and it says "before S9's numbers are cited
   again". They were re-cited this session, from a rebuilt population. Re-scope it or discharge it.
 
+## What's next — S11, and a survey of it already found four surprises
+
+⚠ **S11 is NOT shaped like S10, and each difference changes the plan.** Measured 2026-08-06, before any
+rebuild work:
+
+| | S10 (closed) | **S11 (to rebuild)** |
+|---|---|---|
+| shared physics spec | `directives/S10_SHARED_PHYSICS.md`, committed | ⛔ **none.** Two *separate* engine directives, and both live in **gitignored `_scratch/`** |
+| committed outputs | both engines, under `out/` | ⛔ **neither.** The harness has never seen S11 |
+| `reduction/checks_S<n>.yaml` | present | ⛔ **absent** |
+| tag namespace | `WL_S10_*` / `PY_S10_*` | ⚠ **misaligned**: WL emits `WL_S11_*`, PY emits `S11_*` with **no engine prefix** |
+
+⇒ ⭐ **The first S11 task is not a rebuild, it is a RECONSTRUCTION.** There is no single artifact both
+engines read, so the shared-spec defect class cannot be *repaired* — it has to be **created**, and the
+two existing engines checked against it rather than the other way round.
+
+⛔⛔ **And the instructions those engines were built from are not in the repository.**
+`_scratch/S11_wl_directive.md` and `_scratch/S11_sympy_directive.md` are gitignored — the same
+evaporating-evidence problem `reduction/measurements/` was created to solve, one level up. ⭐ **Promote
+them before touching either engine**, or the rebuild has no baseline to diff against.
+
+⚠ One emission defect already visible: `mathematica/S11_stray_longitudinal_mathematica_audit.wl:9` prints
+a boolean as the **typed word** `TRUE`/`FALSE`, discarding the CAS object — rule 2 applies directly.
+
+⭐ **The order that follows:** promote the two directives → write the shared spec and check both engines
+against it → align the tag namespaces → run both engines into committed outputs → write
+`reduction/checks_S11.yaml` → **only then** can the harness say anything at all.
+
+⚠ **Then S11b-A, S11b-B to the same four-point pattern, and S11b-C, which has never been built and is the
+differentiator from MacCullagh.**
+
 ## Disclosures — DISCHARGED
 
 ⭐ All of them are in `steps/S10_two_transverse_photons.md` and in `e5a2c695`'s message, with the

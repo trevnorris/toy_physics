@@ -8,9 +8,16 @@ measured to emit physics conclusions as **typed sentences with no computation be
 in **three independently-built steps**, and **eight review legs missed it.** ⛔ Do not build on a v3 script
 result without checking it there first.
 
-⇒ **Rebuild progress:** S9 ✅ · S10 ✅ **CLOSED** `e5a2c695` · **S11 ▶ in progress** — shared spec closed
-`f49a1684`, as-built engines pinned at tag `s11-as-built`, engines not yet rebuilt · S11b-A, S11b-B to
-rebuild · S11b-C never built. ⛔ Detail belongs in `REBUILD_HANDOFF.md`, not here.
+⇒ **Rebuild progress:** S9 ✅ · S10 ✅ **CLOSED** `e5a2c695` · **S11 ⏸ HELD** — spec repaired and closed,
+both engines rebuilt and running, but the **comparison method is changing** · S11b-A, S11b-B to rebuild ·
+S11b-C never built. ⛔ Detail belongs in `REBUILD_HANDOFF.md`, not here.
+
+⚠⚠ **METHOD CHANGE IN FLIGHT, 2026-08-07 — a parallel session is piloting it on S9.** ⭐ Comparison moves
+from **nominal** (join on tag names, then `simplify`) to **SEMANTIC** (evaluate both engines at shared
+**exact** points, join on a **fingerprint**). ⚠ Our failure has a name — the **consistent comparison
+problem**, 1986 — and ⛔ no amount of spec care closes it. ⇒ `docs/method_prior_art_findings.md`.
+⛔ **A fingerprint replaces tag MATCHING, never tag INVENTORY**: it does not catch fabrication, and only
+mutation does.
 
 Then `research/pde_ledger_v3/NEXT_SESSION.md` for everything else.
 

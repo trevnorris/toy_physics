@@ -118,6 +118,6 @@ relations:
     denominator_guards:
       - [Q, Q.brane.rho_br]
     literal_consistency: []
-    source_locus: {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 558, line_end: 570}
-    execution_locus: {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 522, line_end: 575}
+    source_locus: {path: research/pde_ledger_v3/_asbuilt/S11_stray_longitudinal_sympy_audit.py, line_start: 558, line_end: 570}
+    execution_locus: {path: research/pde_ledger_v3/_asbuilt/S11_stray_longitudinal_sympy_audit.py, line_start: 522, line_end: 575}
     benchmark_refs: []

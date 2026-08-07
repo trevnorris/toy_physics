@@ -46,11 +46,99 @@ S10 is the worked example of all four; its record is the template.
 | **Shared physics spec** | `directives/S11_SHARED_PHYSICS.md`, committed **`f49a1684`**. Three review rounds, four legs. |
 | **As-built baseline** | tag **`s11-as-built`** (annotated, at `e7658d3a`) — both old engines and the two directives they were built from. |
 
-### ▶ In flight
+### ▶ In flight — 2026-08-06, uncommitted
 
-**The comparator's derivative atoms.** `OpaqueDerivative` and `CanonicalDerivative` both carried a
-process-global identity defect. Uncommitted in the working tree; four fix rounds, six review legs.
-⛔ **This must land before `checks_S11.yaml` declares any rename.**
+| | |
+|---|---|
+| **Comparator derivative atoms** | ⭐ **CLOSED `681925bb`** — five fix rounds, eight legs. |
+| **Engine directives** | `S11_wl_rebuild_directive.md`, `S11_py_rebuild_directive.md`. Two review rounds, four legs, **seven** blocking defects. |
+| **Registry repoint** | ⭐ Done, two legs ⇒ `_asbuilt/README.md`. |
+| **Engine 1 (WL)** | ⭐ Rebuilt and **settled** · **3750 tags, 351 `_LOCAL_` (351 listed), 84 s, exit 0, all 18 cells, 0 skipped**. **3 review rounds / 6 legs · 3 fix rounds · 9 defects.** ⚠ Fix round 3 (`F1`) is **UNREVIEWED** — fold it into the spec-repair review round. |
+| **Engine 2 (PY)** | ▶ Building (~3 h; output growing, cells landing in sweep order). |
+
+### ⛔⛔ ENGINE 1's NINE DEFECTS WERE ALL ONE CLASS — ⭐ carry this to every remaining engine
+
+⚠ **Every one was §5 corollary 5 or corollary 3: a tag that DECLARES what the run used, assembled from a
+literal beside the computation instead of read out of it** — the stripped factor, the simplifier, the sort
+key, the bulk premises, `[s]`'s dimension, the supplied action premises, and finally `LOCAL_TAG_NAMES`
+itself, the tag whose only job is to inventory the others.
+
+⭐⭐ **NONE was visible by reading. EVERY one was visible by mutation.** ⇒ rule 14, measured: a leg that
+ablates finds these; a leg that reasons does not. ⚠ Across three rounds the ablating leg found **8 of 9**.
+
+⇒ ⭐ **For S11b-A / S11b-B / S11b-C: audit every `PREMISE_*` and every declaration tag by mutation before
+the first review round**, ⛔ not after. ⚠ And a premise stating an ABSENCE (`v₀ = 0`, no dissipation,
+frozen wall width) cannot drive a construction ⇒ corollary 5's second branch is the honest outcome — ⭐ mark
+it explicitly, ⛔ do not manufacture a consumer for it.
+
+### ⛔⛔ S11 IS HELD — 2026-08-07
+
+⚠ **A parallel session is reworking S9 as a PILOT of a new comparison method.** ⛔ Do not resume S11's
+harness work until that pilot reports: `checks_S11.yaml` was never written, and under the new method it
+would be a different artifact entirely.
+
+⭐ **The method decision, taken by the user 2026-08-07** ⇒ `docs/method_prior_art_findings.md`,
+[[project-method-prior-art-verdict]]:
+
+- ⭐ **Comparison becomes SEMANTIC, not nominal.** Evaluate both engines' headline objects at shared
+  **exact** points (rationals / finite field, ⛔ **never floats** — that is the 1989 caution) and **join on
+  a fingerprint, ⛔ not on a tag name.**
+- ⭐ The per-step file collapses to **three things**: the symbol→exact-value map, the probe point set, and
+  the list of headline objects. ⚠ Tens of lines, against `checks_S10.yaml`'s **3,121**.
+- ⛔⛔ **IT DOES NOT FIX FABRICATION.** A typed literal fingerprint-matches another typed literal. ⇒ the
+  fingerprint replaces tag **MATCHING**, ⛔ **never** tag **INVENTORY**, and the mutation/ablation controls
+  stay exactly as they are. ⚠ Measured: **8 of engine 1's 9 defects were visible ONLY by mutation.**
+- ⛔ OpenMath is a paper standard with no working SymPy/Wolfram bridge — ⛔ do not adopt.
+
+⚠ **Our failure has a name**: the **consistent comparison problem** (1986) — an N-version system cannot
+reach consensus **when no version has failed**. ⇒ ⛔ **no amount of spec care closes it**, which is why
+four spec repair rounds could not.
+
+### ⭐ WHAT S11 STILL OWES, when it resumes
+
+⛔ Both engines were built against the **pre-repair** spec. Each needs **one** aligned round:
+1. Replace per-premise tags with the single engine-local `PREMISE_INVENTORY`.
+2. Join `c_s0` into `KW_SIGN` and the `KW_ZERO_LOCUS` admissibility tests.
+3. Adopt `Q10`'s unconditional pinned failure object — ⭐ WL already emits it; ⛔ PY does not.
+4. ⛔ PY still emits **10** `POINT_RESIDUAL` tags; the spec now deletes that object.
+5. Emit **fingerprints** for the headline objects at the shared probe points.
+
+⚠ **The two deferred engine defects DISSOLVED** — WL's missing §9 density premises and PY's 8 disconnected
+premise cells both vanish once premises are one engine-local inventory tag. ⛔ Do not fix them.
+
+### ⚠ The probe set is the next artifact, and it is the one that can go quietly wrong
+
+⛔ A probe point where a headline object degenerates makes the comparison **vacuous while reporting green**.
+⭐ Requirements: several **distinct exact rational** points; values satisfying §3's positivity premises so
+the point is admissible; per-`D` tables for `D ∈ {2,3,4,5}`; and a comparator check that **flags any
+headline object evaluating to zero at every probe point.**
+
+---
+
+### ⛔ SPEC DEFECTS — ⭐ ALL REPAIRED, spec CLOSED at 914 lines (4 rounds, 8 legs)
+
+⚠ **`S11_SHARED_PHYSICS.md` is closed at `f49a1684` and contradicts itself.** ⛔ Both engines read it, so
+this is rule 7's failure class exactly.
+
+1. ⛔ **§Q8b line 550 requires `STRATUM<s>_POINT_RESIDUAL`; §5 corollary 3 forbids it.** The point is
+   solved **from** the defining equations by `FindInstance`, so the residual is structurally zero —
+   measured: changing the action moved the stratum **and** the point, and the residual stayed `{0,0}`.
+   ⇒ a check that **cannot fail**.
+2. ⛔ **§Q10 does not define differentiation along a stratum** — no tangent coordinates, no off-stratum
+   extension. Both legs agree.
+
+⭐ **Authorised (user, 2026-08-06): repair BOTH in one spec pass, then align the engines.** ⇒ remove the
+residual from §Q8b; make §Q10 either define the construction or sanction a failure object as the expected
+emission. ⚠ Spec repair is physics-bearing ⇒ **two legs before either engine is touched.**
+
+### ⛔ AN ASYMMETRY THE ORCHESTRATOR INTRODUCED — ⚠ the lesson, not just the bug
+
+⛔ **The WL fix directive told engine 1 to drop `POINT_RESIDUAL` on corollary-3 grounds without noticing
+§Q8b names it.** ⇒ WL emits **0**, PY emits **5**. ⭐ The finding was right; ⛔ applying it to **one**
+engine by directive manufactured a cross-engine disagreement that is a **specification artifact, not
+physics**.
+⇒ ⭐⭐ **A defect found in one engine is a SPEC question first.** ⛔ Never repair one engine's reading of a
+shared clause without asking what the other engine will do with the same clause.
 
 ### ⛔ THE SURVEY CORRECTED THIS FILE'S OWN PREVIOUS CLAIMS — verify, do not inherit
 
@@ -106,9 +194,20 @@ reporting `DISAGREE` on representation alone. The spec already says `N6` is disp
 - ⛔ **`V7_RESIDUAL = 0` does not validate `V1`.** A leg's own flawed route returned `V1_DIM` 2 against 4,
   and `V2`, `V6` and `V7` were all self-consistent on the wrong `V1`. `V7` tests `V2` against `V6`
   **within** `V1`; only the cross-engine `V1_BASIS` comparison tests `V1` itself.
-- ⛔ **`Q.brane.B_comp` and `Q.brane.c_L` carry `source_locus` pointing at the engine being replaced**
-  (`scripts/S11_stray_longitudinal_sympy_audit.py:632-664`), and `R5` came from that build. ⇒ the registry
-  is **not an independent operand** for those two rows — only for `ρ_br` and `μ_R`.
+- ⛔ **`Q.brane.B_comp` and `Q.brane.c_L` still carry provenance into the engine being replaced**, and `R5`
+  came from that build. ⇒ the registry is **not an independent operand** for those two rows — only for
+  `ρ_br` and `μ_R`. ⚠ **Repointed 2026-08-06**: the artifact is frozen byte-identical at
+  `_asbuilt/S11_stray_longitudinal_sympy_audit.py` and all seven loci now address it, so the provenance
+  survives the rebuild ⇒ `_asbuilt/README.md`. ⛔ **Freezing it did not make it independent** — a zero
+  `Q6r` residual against these two rows still means *the new engine reproduces its predecessor*.
+- ⛔ **The dimension provenance for those two rows was MIS-POINTED, and it predates the rebuild.** It named
+  `632-664` — the tail of the `A2` check and the start of `A3` — which derives **no dimension**. The
+  derivation is `A4`, `676-715`. Corrected in the same pass. ⚠ Two legs computed `A4` independently and
+  agreed.
+- ⚠⚠ **`B_comp`'s declared dimension is a `D = 3` SPECIALISATION.** `A4` gives
+  `modulus_dimension = (2−D, −2, 1)`; the declared `(−1, −2, 1)` matches **only at `D = 3`** (general-`D`
+  difference `(3−D, 0, 0)`). `c_L`'s `(1, −1, 0)` matches at **every** `D`. ⇒ ⛔ a `Q6r` residual against
+  `B_comp` is a `D = 3` statement and the record must say so. ⭐ Found by one leg, missed by the other.
 - ⛔ **The old build's `N_O = 3 for every D` is a SINGLE-ENGINE claim**: the `.wl` has zero reflection /
   `O(D)` content, inside a record section headed *"two engines… agreeing on every computed value"*.
 - ⚠ **The S11 pre-registration was wrong on the invariant count and the engines were right.** Not a clean

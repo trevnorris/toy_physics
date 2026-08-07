@@ -235,10 +235,10 @@ quantities:
       provenance:
         stage_id: stage003
         stage_uses_shared_dimensions_module: false
-        source_locus: {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 632, line_end: 664}
+        source_locus: {path: research/pde_ledger_v3/_asbuilt/S11_stray_longitudinal_sympy_audit.py, line_start: 676, line_end: 715}
     aliases: []
     source_loci:
-      - {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 632, line_end: 664}
+      - {path: research/pde_ledger_v3/_asbuilt/S11_stray_longitudinal_sympy_audit.py, line_start: 632, line_end: 664}
 
   - qid: Q.brane.c_gamma
     symbol: c_gamma
@@ -274,8 +274,8 @@ quantities:
       provenance:
         stage_id: stage003
         stage_uses_shared_dimensions_module: false
-        source_locus: {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 632, line_end: 664}
+        source_locus: {path: research/pde_ledger_v3/_asbuilt/S11_stray_longitudinal_sympy_audit.py, line_start: 676, line_end: 715}
     aliases: []
     source_loci:
-      - {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 558, line_end: 570}
-      - {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, line_start: 632, line_end: 664}
+      - {path: research/pde_ledger_v3/_asbuilt/S11_stray_longitudinal_sympy_audit.py, line_start: 558, line_end: 570}
+      - {path: research/pde_ledger_v3/_asbuilt/S11_stray_longitudinal_sympy_audit.py, line_start: 632, line_end: 664}

@@ -26,9 +26,8 @@ The field is `u`, the **in-plane displacement**: a `D`-component vector field on
 ⭐ **`u` is a DISPLACEMENT, so `[u] = length = (1, 0, 0)` in the `(length, time, mass)` slots.** ⛔ This is
 a **supplied premise**, ⛔ not something to infer — §6's dimension solve is under-determined without it, and
 two engines left to choose independently can pick differently and disagree for no physical reason.
-⭐ Emit it as a premise tag.
 
-⚠ **SUPPLIED PREMISE — unfalsifiable within this build. State it in the output as a premise tag.**
+⚠ **SUPPLIED PREMISE — unfalsifiable within this build.**
 `u` is **in-plane only**. Motion *out of* the brane is a **different field** (the `h`-branon) belonging to
 a different sector, and it is **not** part of `u`. ⇒ `u` has exactly `D` components, ⛔ not `D+1`.
 ⭐ Nothing in this build tests that split; it is inherited.
@@ -126,7 +125,7 @@ must carry the joint set.
 other. ⭐ Where the coefficients may take special values is a **computed object** — §Q8 asks for it. A
 genericity premise would delete that locus before it could be found.
 
-⚠ **SUPPLIED PREMISES — unfalsifiable within this build. Emit each as a premise tag:**
+⚠ **SUPPLIED PREMISES — unfalsifiable within this build:**
 - the background brane is **unstrained and at rest**: `v₀ = 0`, so there are **no convective terms** and no
   advective rate `k·v₀`;
 - **no dissipation**: `L` contains **no term odd in `∂_t`** — no first time derivative, no relaxation time,
@@ -187,16 +186,9 @@ result no matter what the other entries are called.
 
 ### ⛔⛔ COROLLARY 5 · A DECLARATION MUST BE WIRED TO WHAT IT DECLARES
 
-A tag that *declares* an input — a premise, a convention, a route, a count — must be **produced from the
-object the computation actually uses**. ⛔ Re-typing the same value a second time is a **hand-authored
-payload with no data dependency**, and it reads to every consumer as a report of what was used.
-
-⭐⭐ **THE TEST: perturb the thing the tag declares. The tag MUST move.**
-
-⇒ ⭐ **Derive every declarative payload from the live object** — read it back out of the structure the
-computation consumed, ⛔ never from a literal beside it.
-⚠ Where a value genuinely IS a supplied constant with no in-code consumer, ⭐ **say so in the payload**, and
-⛔ do not name the tag as though it reported a computation.
+A declaration must be read out of the live object the computation consumes, ⛔ never reconstructed from a
+literal beside it. ⛔ A consumer must never be manufactured merely to make a declaration appear wired.
+⚠ A control that passes by construction is worth nothing.
 
 ### ⛔⛔ NO VERDICT
 
@@ -274,11 +266,13 @@ Emit the full system.
 conditional on the two matrices agreeing.
 
 ⛔⛔ **THESE ARE NOT TWO INDEPENDENT PHYSICS DERIVATIONS.** Both routes are built from the same action.
-⇒ ⭐ **The residual tests CODING CONSISTENCY ONLY.** ⭐ Emit it, and emit a tag saying that is what it
-tests. ⛔ Do not present it as verifying physics.
+⇒ ⭐ **The residual tests CODING CONSISTENCY ONLY.** ⭐ Emit it, and emit
+`M_ROUTE_RESIDUAL_SCOPE` with the single token `CODING_CONSISTENCY_ONLY`. ⛔ Do not present it as
+verifying physics.
 
-⭐ Use `M_B` for everything downstream, and emit `M_ROUTE_USED` naming the route, derived from the object
-actually consumed (corollary 5).
+⭐ Use `M_B` for everything downstream, and emit `M_ROUTE_USED` naming the route. Its payload is exactly
+the route token `M_B`, read from the same route-selection object that supplies the matrix actually
+consumed downstream (corollary 5), ⛔ not from a second literal beside it.
 
 ⭐ Also emit `M_COEFFICIENT_JACOBIAN`: for each coefficient in the package's emitted `COEFFICIENT_ORDERING`,
 the matrix `∂M/∂c`, as a list in that order. ⛔ Do not describe the pattern; emit the matrices.
@@ -296,6 +290,15 @@ the matrix `∂M/∂c`, as a list in that order. ⛔ Do not describe the pattern
   emitted **together with** the operand expression the test was applied to. ⚠ Without a pinned token set
   the two engines emit different spellings of the same determination and the comparison reports a
   disagreement that is not one.
+
+  ⭐⭐ **THE SIGN PAYLOAD FORM IS PINNED.** It is this ordered field sequence:
+
+  ```
+  SIGN_TOKEN: <one of the four tokens above>
+  OPERAND:    <the live operand expression>
+  ```
+
+  Only the field names and their order are pinned here; the operand's content is ⛔ not pinned.
 - ⭐ The **root-coincidence locus in the WAVEVECTOR**, `ROOT_COINCIDENCE_K_*`: for every pair of distinct
   roots, the system `r_p − r_q = 0` with solve variables `k_1 … k_D`. Emit the **full five-object locus
   protocol** from §5.
@@ -406,6 +409,12 @@ the union of those symbol sets over all terms, together with the inertial coeffi
 engine's own stated rule and emitted as its own tag. ⚠ ⇒ a term whose factor is a product contributes
 **every** symbol in that product, ⛔ not the product as one unknown.
 
+⭐ Build this inventory from the package's **DECLARED additive terms** as §7 gives them, before simplifying
+or evaluating any density. A declared term whose density evaluates to the zero form still contributes the
+free symbols of its factor. ⛔ Reading the inventory from the expanded action instead would let
+simplification change the declared unknown set; the inventory records the coefficients supplied by the
+package, including the inertial coefficient, whether or not a density survives evaluation.
+
 Emit:
 - `COEFFICIENT_ORDERING`, and `DIM_COEFFICIENTS` — the dimension of every coefficient in it, as **closed
   functions of `D`**, obtained by requiring `L` to be an energy density on a `D`-dimensional brane;
@@ -413,8 +422,7 @@ Emit:
 - ⚠ **The energy-density requirement alone does not fix every coefficient separately** — where a term
   carries a product of undetermined coefficients it fixes only their **sum of dimensions**. ⭐ Emit the
   underdetermined solution **as returned**, with its free parameters visible, ⛔ never by silently choosing
-  one. Where §7 declares a control parameter **dimensionless**, use that as a stated input and emit it as a
-  premise tag.
+  one. Where §7 declares a control parameter **dimensionless**, use that as a stated input.
 - `ROOT<r>_DIM_OVER_KSQ` — for **each root**, the dimension of `r / (Σ_m k_m²)`, computed **from the
   emitted expression for `r` by walking its tree** — ⛔ not by differencing coefficient dimensions.
 
@@ -460,8 +468,7 @@ DIM_DETERMINACY         from the solve itself: OVER_DETERMINED | EXACTLY_DETERMI
 
 ⚠ Homogeneity is also **blind to a wrong dimensionless coefficient.** ⇒ it is a layer, ⛔ not the answer.
 
-⭐ **`[u]` is a PREMISE and is UNFALSIFIABLE WITHIN THIS BUILD.** ⛔ Emit it as a premise tag, and ⛔ do not
-let any tag name suggest it was verified.
+⭐ **`[u]` is a PREMISE and is UNFALSIFIABLE WITHIN THIS BUILD.**
 
 #### ⛔⛔ Q6r · THE REGISTRY COMPARISON — and ITS PROVENANCE IS PART OF THE PAYLOAD
 
@@ -547,8 +554,11 @@ point, plus their ordering:
 STRATUM_ORDERING              the list of components, in the order the STRATUM<s> index refers to
 STRATUM<s>_DEFINING_EQUATIONS the equations cutting out that component
 STRATUM<s>_POINT              ⭐ an explicit point on it satisfying every §3 assumption
-STRATUM<s>_POINT_RESIDUAL     that point substituted back into STRATUM<s>_DEFINING_EQUATIONS
 ```
+
+⭐ The point is obtained from those same defining equations, so no independent route exists. Per §5
+corollary 3, emit `STRATUM<s>_DEFINING_EQUATIONS` and `STRATUM<s>_POINT` and ⛔ emit no residual between
+them.
 
 ⭐ Then **recompute and emit the complete `Q3` and `Q4` tag sets at `STRATUM<s>_POINT`**, under that
 stratum's tag scope.
@@ -638,13 +648,29 @@ particular root depends on a particular coefficient, and ⛔ do not name any tag
 
 ```
 STRATUM<s>_ROOT_COEFFICIENT_JACOBIAN_RESTRICTED   the GENERIC Jacobian above, evaluated at STRATUM<s>_POINT
-STRATUM<s>_ROOT_COEFFICIENT_JACOBIAN_RECOMPUTED   the Jacobian of the roots RECOMPUTED on that stratum,
-                                                  differentiated there
+STRATUM<s>_ROOT_COEFFICIENT_JACOBIAN_RECOMPUTED   the pinned failure object below; no shared derivative of
+                                                  the roots recomputed on that stratum is specified
 ```
 
-⛔ These are different objects and ⛔ neither is "the" answer. ⚠ Where root branches coalesce on a stratum
-an individual branch may not be differentiable; ⭐ emit whatever the CAS returns, including a failure
-object, ⛔ never an absence.
+⚠⚠ **This specification supplies neither tangent coordinates on a stratum nor an off-stratum extension.**
+Therefore no shared construction exists: `STRATUM<s>_ROOT_COEFFICIENT_JACOBIAN_RECOMPUTED` is **always**
+the explicit structured failure object below. An engine must ⛔ not substitute a construction of its own,
+differentiate eliminated constants, emit a zero matrix or omit the tag. This missing construction is a
+stated limitation of the specification, ⛔ not an engine defect.
+
+⭐⭐ **THE FAILURE PAYLOAD FORM IS PINNED.** It is the following ordered field sequence, with the field
+names and single condition token exactly as written:
+
+```
+FAILURE_TOKEN:        MISSING_TANGENT_COORDINATES_AND_OFF_STRATUM_EXTENSION
+RECOMPUTED_ROOTS:     <the stratum's live recomputed ROOT_DISTINCT object>
+COEFFICIENT_ORDERING: <the live coefficient ordering>
+DEFINING_EQUATIONS:   <the stratum's live defining equations>
+EVALUATION_POINT:     <the stratum's live evaluation point>
+```
+
+Only the field names, their order and the token spelling are pinned; the four dependency contents are
+⛔ not pinned.
 
 ### Q11 · Brane–bulk phase matching
 
@@ -667,11 +693,15 @@ For **each** distinct root `r`, emit:
 ```
 ROOT<r>_KW_EQUATION      the dispersion relation as a CAS relation, with omegaSquared -> r substituted
 ROOT<r>_KW_SQUARED       k_w² solved from it
-ROOT<r>_KW_SIGN          the four-way symbolic test on k_w² under the §3 assumptions, token set as in Q3,
-                         emitted with its operand
+ROOT<r>_KW_SIGN          the four-way symbolic test on k_w² under the governing assumption set stated
+                         immediately below, using Q3's pinned token set and payload form
 ROOT<r>_KW_ZERO_LOCUS_*  the full five-object locus protocol for k_w² = 0, solve variables
                          COEFFICIENT_ORDERING together with c_s0
 ```
+
+⭐ The governing assumption set for `ROOT<r>_KW_SIGN` and every `_REAL_ADMISSIBLE` test in
+`ROOT<r>_KW_ZERO_LOCUS_*` is the §3 joint set joined with §Q11's supplied bulk premises that `A` is real
+and `c_s0` is real and positive.
 
 ⛔⛔ **DO NOT emit a residual from substituting `ROOT<r>_KW_SQUARED` back into `ROOT<r>_KW_EQUATION`.**
 ⚠ Measured: that residual **stays zero when the source equation is mutated and re-solved**, and moves only
@@ -687,14 +717,11 @@ second route to `k_w²` here, so per corollary 3 emit the two objects and **no r
 | `C3_RANK` | the rank of `C1_EQUATIONS`' coefficient matrix with respect to `C2_UNKNOWNS` |
 | `C4_DIFFERENCE` | `C2_COUNT − C3_RANK` |
 
-⛔ **Do not describe `C4_DIFFERENCE` in words, do not name any tag after what it comes out to, and do not
-state in advance what `C1_EQUATIONS` will contain.**
+⭐⭐ **These four objects measure the deficiency of the content supplied by §1–§3 and §Q11, ⛔ not a
+property of the physical brane–bulk interface.** The step record must classify all four on that basis, so
+`C4_DIFFERENCE` cannot be read as a discovered interface result.
 
-⚠⚠ **COROLLARY 3 APPLIES SHARPLY HERE and one of the engines being replaced tripped on it.** If you emit
-any projection of a brane kernel vector onto a bulk polarization direction, ⭐ **emit alongside it
-`<tag>_PREMISES`, the list of premise-tag names that projection was computed under**, obtained from the
-premises the computation actually consumed (corollary 5). ⛔ A projection whose value follows from the
-supplied premises alone computes nothing, and emitting it without them reads as a physical result.
+⛔ **Do not describe `C4_DIFFERENCE` in words or name any tag after what it comes out to.**
 
 ---
 
@@ -739,7 +766,7 @@ W_XCOEF_BSIGN      =  (μ_R/2)·S_curl  −  (B_comp/2)·S_div
 > still swept, and still emits its complete tag set.
 
 ⛔⛔ **DO NOT TYPE `P_D` FOR ANY `D`.** ⭐ It must be read out of the `V6` object the engine computed, so
-that corrupting the census moves the package's action — corollary 5's test, applied to the one place in
+that corrupting the census moves the package's action — corollary 5's wiring requirement, applied to the one place in
 this file where a package's action is not fully written out.
 
 ⚠ **The rule names `V6`, ⛔ not "the `V1` elements outside `V2`", and the difference is not cosmetic.** A
@@ -857,11 +884,21 @@ disagreements, and a parity checker that reports them as gaps trains its reader 
 | `ρ_br > 0`, `μ_R > 0`, `B_comp > 0`, `Σ k_m² > 0` | |
 | the bulk supports a scalar sound mode **only**, with §Q11's field, ansatz and dispersion | |
 
-⚠ **Emit each supplied premise as its own tag** so a reader cannot mistake a passing build for having
-verified one.
+### ⭐⭐ Premise inventory — one named object
 
-⚠⚠ **The frozen wall width is a supplied premise with a known consequence elsewhere**, and it is listed
-here so that no tag in either engine can be read as having tested it.
+Each engine emits **one** engine-local tag per `(package, D)`:
+`<ENGINE>_S11_LOCAL_<PACKAGE>_D<n>_PREMISE_INVENTORY`. It is engine-local and is ⛔ not a cross-engine
+comparison row. Each engine lists the supplied premises its run carried, in whatever form it holds them.
+
+`PREMISE_INVENTORY` is **one named object**, so emitting it as one tag is not the bundling §8 forbids. Its
+entries are declarations, ⛔ not computed objects, and the previous per-premise decomposition is what
+diverged.
+
+This lets a reader see every premise the build did not test.
+
+⚠ **Corollary 5's live-read requirement does NOT apply to this tag.** ⭐ Several supplied premises are
+qualitative or assert an **absence** — there is no live CAS object to read them from, and ⛔ one must not be
+manufactured. ⇒ ⭐ list them in whatever form the engine holds them.
 
 ---
 

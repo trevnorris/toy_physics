@@ -1,0 +1,17 @@
+u is a displacement with dimension (1,0,0); unfalsifiable within this build.
+u is an in-plane D-component field and the out-of-plane h-branon is separate; unfalsifiable within this build.
+The real cosine ansatz with real a and k and a phase-variable period average is supplied; unfalsifiable within this build.
+The curl density's form is supplied from an earlier step; unfalsifiable within this build.
+That the brane resists compression at all through the supplied S_div density is supplied; unfalsifiable within this build.
+rho_br>0, mu_R>0, and B_comp>0 are supplied; unfalsifiable within this build.
+sum(k_m^2)>0, every k_m real, and every a_j real are supplied; unfalsifiable within this build.
+D is a positive integer while expressions permitting general D retain it symbolically; unfalsifiable within this build.
+For XFORM_TRACELESS, mu_br>0 is supplied; unfalsifiable within this build.
+For XFORM_EXTRA, beta is real with no sign or nonzero premise; unfalsifiable within this build.
+For XCOEF_BSCALE, s>0, s is dimensionless, and s!=1 are supplied; unfalsifiable within this build.
+The background brane is unstrained and at rest with v0=0 and no convective terms; unfalsifiable within this build.
+There is no dissipation and no term odd in a time derivative; unfalsifiable within this build.
+Linear response makes the Lagrangian exactly quadratic in u; unfalsifiable within this build.
+The brane wall width is frozen and no width field or width gradient occurs; unfalsifiable within this build.
+The bulk supports only the supplied scalar sound mode with real A, c_s0>0, and its stated ansatz and dispersion; unfalsifiable within this build.
+No interface boundary condition, brane-bulk interaction operator, or continuity condition is supplied; unfalsifiable within this build.

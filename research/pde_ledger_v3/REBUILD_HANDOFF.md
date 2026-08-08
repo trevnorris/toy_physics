@@ -44,7 +44,32 @@ design is abandoned. ⛔ Do not build it for any step.
 
 ---
 
-## ⭐⭐ S9 — CLOSED `5d6b56d3` (engine `890a359d`, record `5d6b56d3`). ⭐ NEXT IS S10
+## ⭐⭐ S9 — CLOSED `5d6b56d3`, RE-KEYED `83eace28`. ⭐ NEXT IS S10
+
+### ⭐⭐ THE D-KEY — decided by the user 2026-08-08, and it is a STANDING convention
+
+⭐ **A ledger key records the component count of the CONSTRUCTION that produced the object.** Built from
+the fixed-component action ⇒ carries the count (`transverse_speed_squared_d3`). Built from unit algebra or
+from the dimension solve's symbolic output ⇒ carries none (`dim_solution`, `field_dimension`).
+⭐ Now **130 suffixed · 11 unsuffixed**; 126 keys moved, **0** payload fields did.
+
+⛔⛔ **The key does NOT record whether the value depends on `D`, and ⛔ you cannot make it.** ⚠ Measured:
+`transverse_multiplicity` is the bare value `2` and is `D−1`; `lagrangian` has no `D` and is D=3 by its
+`t,x,y,z` coordinates. ⇒ **free-symbol inspection is wrong in BOTH directions** (a leg measured 8 of 141
+misclassified). Deciding D-dependence needs a run at a **second component count**, which S9 does not have.
+⭐ Four equal D-slots at S10 are the measurement instead.
+
+⚠ **Two limits the step record must carry:**
+1. ⛔ **Nothing inside the artifact distinguishes the live count readout from a literal** — the engine runs
+   at one count, so `f"_d{n}"` and `"_d3"` produce byte-identical output. ⭐ Only a **cross-count ablation**
+   separates them, and it lives in the review, ⛔ not in the artifact.
+2. ⛔ **The `.out` record name for the four D-specialisations is still a hand-typed literal** (`DIM_SOLUTION_D3`
+   …), **36 lines at HEAD and 36 now** ⇒ ⚠ **pre-existing, ⛔ not introduced by the re-key.** Under mutation
+   the ledger key follows the computation and the **emitted tag name does not** ⇒ this is a **D11 naming**
+   question ⇒ [[feedback-name-binding-is-unpoliced]].
+
+⭐ `EXPORT_D_PARTITION` is **printed once and guards nothing** — deliberately ⇒
+[[feedback-a-check-cannot-audit-its-own-input]].
 
 ⭐ Cleanup `67dd3ce2` + `fb29bba2`; build `753ae7b1`; **seven** fix rounds through `890a359d`.
 ⭐ Each round: Codex built, **two independent legs** reviewed (fresh agent + Grok), commit after both.

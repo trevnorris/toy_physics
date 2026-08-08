@@ -53,15 +53,15 @@ design is abandoned. ⛔ Do not build it for any step.
 | **Shared physics spec** | `directives/S11_SHARED_PHYSICS.md`, committed **`f49a1684`**. Three review rounds, four legs. |
 | **As-built baseline** | tag **`s11-as-built`** (annotated, at `e7658d3a`) — both old engines and the two directives they were built from. |
 
-### ▶ In flight — 2026-08-06, uncommitted
+### ⚠ Where the 2026-08-06 S11 push actually stopped — ⛔ all of it PREDATES the pattern change
 
 | | |
 |---|---|
-| **Comparator derivative atoms** | ⭐ **CLOSED `681925bb`** — five fix rounds, eight legs. |
-| **Engine directives** | `S11_wl_rebuild_directive.md`, `S11_py_rebuild_directive.md`. Two review rounds, four legs, **seven** blocking defects. |
-| **Registry repoint** | ⭐ Done, two legs ⇒ `_asbuilt/README.md`. |
-| **Engine 1 (WL)** | ⭐ Rebuilt and **settled** · **3750 tags, 351 `_LOCAL_` (351 listed), 84 s, exit 0, all 18 cells, 0 skipped**. **3 review rounds / 6 legs · 3 fix rounds · 9 defects.** ⚠ Fix round 3 (`F1`) is **UNREVIEWED** — fold it into the spec-repair review round. |
-| **Engine 2 (PY)** | ▶ Building (~3 h; output growing, cells landing in sweep order). |
+| **Comparator derivative atoms** | ⭐ **CLOSED `681925bb`** — five fix rounds, eight legs. ⚠ The comparator itself lived in `reduction/` and is **deleted**; ⭐ the *finding* is banked below. |
+| **Engine directives** | `S11_wl_rebuild_directive.md`, `S11_py_rebuild_directive.md`. Two review rounds, four legs, **seven** blocking defects. ⚠ Both predate `S9_REWRITE_PLAN.md` and ⛔ neither carries the export/annotation pattern. |
+| **Registry repoint** | ⚠ **Moot** — the registry is deleted. `_asbuilt/README.md` survives as provenance. |
+| **Engine 1 (WL)** | Rebuilt · **3750 tags, 351 `_LOCAL_`, 84 s, exit 0, all 18 cells, 0 skipped**. **3 review rounds / 6 legs · 3 fix rounds · 9 defects.** ⚠ Fix round 3 (`F1`) is **UNREVIEWED**. |
+| **Engine 2 (PY)** | Built; output committed (1.15 MB). ⚠ It **imports `registry_read`**, which no longer exists ⇒ ⛔ it will not re-run as written. ⭐ That is expected and is not a defect to fix — it is one of the engines being rebuilt. |
 
 ### ⛔⛔ ENGINE 1's NINE DEFECTS WERE ALL ONE CLASS — ⭐ carry this to every remaining engine
 
@@ -85,14 +85,16 @@ pilot (`HARNESS_S9_PILOT_PLAN.md`) was reviewed by four legs across two rounds a
 not build from it** — its central move and its own acceptance criterion were measured mutually
 unsatisfiable, and the criterion was passed by a comparator that never compares.
 
-⭐ **S11 is ready to resume and does NOT depend on the instrument track below:**
-- ✅ Both engines have run. `mathematica/out/S11_stray_longitudinal_mathematica_audit.out` (972 KB) and
-  `scripts/out/S11_stray_longitudinal_sympy_audit.out` (1.15 MB) are on disk.
-- ⛔ **`reduction/checks_S11.yaml` was never written.** That is the gap.
-- ⭐ Write it **S9-shaped** — 194 lines, 12 declared pairs — ⛔ **not S10-shaped at 3,121 lines**, of which
-  91% is a hand-written name→name pair list. S10 is where the apparatus outgrew the physics.
-- ⭐ Apply **pattern item 5** (above): S11 already emits `rho_br`, `mu_R` and `B_comp` dimension **laws**
-  symbolically, so it is better positioned than S9 or S10 were.
+⭐ **S11's engines have both run and their outputs are committed:**
+`mathematica/out/S11_stray_longitudinal_mathematica_audit.out` (972 KB) and
+`scripts/out/S11_stray_longitudinal_sympy_audit.out` (1.15 MB).
+
+⛔⛔ **S11 does NOT get a `checks_S11.yaml`.** ⚠ Earlier versions of this file said write one, S9-shaped.
+⛔ That instruction is dead with the design that produced it — ⭐ S11 is rebuilt under
+`S9_REWRITE_PLAN.md`'s pattern like every other step, and it comes **after** S9 and S10 have been rebuilt,
+because it imports their `LEDGER`.
+⭐ S11 already emits `rho_br`, `mu_R` and `B_comp` dimensions symbolically, so it starts closer to the new
+pattern than S9 or S10 did.
 
 ⚠ **The fingerprint/semantic-comparison decision recorded below was CORRECTED by review.** ⛔ A fingerprint
 is an equality oracle for **already-paired** objects — ⛔ it is **not** a join key and cannot discover
@@ -104,10 +106,10 @@ identical payloads. ⭐ **Declared pairing stays; what dies is the symbol-spelli
 
 ### ⛔⛔ THE INSTRUMENT TRACK IS ABANDONED — 2026-08-08, user decision
 
-⛔⛔ **Everything in the table below is SUPERSEDED. ⛔ Do not build on it, ⛔ do not resume it, ⛔ do not
-"finish" W0/W1/W2.** It is kept only to explain what the files in `reduction/` are.
+⛔⛔ **`reduction/` is DELETED — 63 files, commit below.** ⛔ Do not resume it, ⛔ do not "finish"
+W0/W1/W2, ⛔ do not restore any of it. ⭐ Git has every byte if it is ever wanted.
 
-⭐⭐ **The replacement is `S9_REWRITE_PLAN.md`.** Read that, ⛔ not this.
+⭐⭐ **The replacement is `S9_REWRITE_PLAN.md`.** Read that.
 
 **Why it was abandoned.** The registry reconciles a derivation against a **hand-copied restatement of
 itself**. ⛔ No quantity has two independent sources, so every defect this track fought — a declaration
@@ -134,83 +136,44 @@ hand-written name→name pair list**, existing for one reason — the engines na
 differently. ⇒ ⭐ a full day of 2026-08-07/08 went into cross-checking names rather than physics.
 ⇒ ⛔ **Never hand-author a cross-engine pair table again.** ⭐ Fix the names instead.
 
-### ⛔⛔ FIRST TASK NEXT SESSION — CLEANUP, ⛔ before any building
+### ⭐ CLEANUP — ⭐ DONE 2026-08-08, ⛔ nothing to resume
 
-⚠ **`reduction/` accumulated 20 files in one commit** (`b8ade918`) and it is scaffolding for the abandoned
-track. ⚠ 131 files in `directives/`. ⚠ Six stray `_review_prompt*.md` at the ledger root.
+⭐ **63 tracked files deleted in one commit**: all of `reduction/` (52), the seven root-level
+`_review_prompt*.md`, `HARNESS_S9_PILOT_PLAN.md`, `CROSS_STEP_DIMENSION_SCOPE.md`, `INTEGRATION_TODO.md`,
+`EXPORT_CHAIN_ARCHITECTURE.md`. ⭐ W0/W1/W2/W3/W4 went with them and ⛔ none of it is owed.
 
-⭐ **Delete what served only the registry-reconciliation design.** Candidates, ⭐ verify each before removing:
+⭐ **Nothing outside `reduction/` imported it at runtime** — measured: every remaining reference is prose in
+`directives/` or `docs/`. The `.wl` engines carry **zero** registry references and are untouched.
 
-`dimension_laws.py` · `dimension_law_check.py` · `dimension_law_able_to_fail.py` ·
-`engine_dimension_pin.py` · `registry_dimension_witness*.py|yaml` · `registry_import_fence.py` ·
-`w3_acceptance_ablations.py` · `w3_duplicate_pin_ablation.py` · `w3_runner_check.py` ·
-`w3_weaker_fix_mutations.py` · `w4_pin_completeness_runs.py` · `w4_shifted_registry_printer.py` ·
-`w4_weaker_implementation_runs.py` · `test_dimension_laws.py` · `test_registry_dimension_witness.py` ·
-`test_registry_import_fence.py` · `test_runner_contract.py` · `W3_REGISTRY_D_LAWS_REPORT.md`
+⭐ **The `out/` files all survive.** ⚠ The plan's sentence *"`scripts/out/` and `mathematica/out/` hold
+outputs from the abandoned design"* is **wrong about these two directories** — measured, they hold exactly
+six files and all six are engine transcripts (S9/S10/S11 × py/wl). ⛔ Deleting the three SymPy ones would
+have destroyed the SymPy side of comparisons whose Wolfram side the same table keeps.
 
-⚠ **Keep** the two engines' own machinery and anything S9/S10/S11 import at runtime. ⭐ Check with
-`grep -rl <name> scripts/ mathematica/` before deleting.
-⭐ Root-level: `_review_prompt*.md` ×6, `HARNESS_S9_PILOT_PLAN.md` (four legs said do not build it),
-`CROSS_STEP_DIMENSION_SCOPE.md` and `INTEGRATION_TODO.md` (both scope the abandoned track),
-`EXPORT_CHAIN_ARCHITECTURE.md` (superseded by `S9_REWRITE_PLAN.md`).
-⛔ **Commit the deletion on its own**, ⛔ not folded into the S9 build.
+#### ⭐ Retrieving the pair lists after the deletion — **D11 needs them, git has them**
 
-⚠ **The one result worth carrying forward** before `engine_dimension_pin.py` goes: five independently-built
-engines derive the same symbolic dimensions for `rho_br`, `mu_R` and `B_comp`, and three of them never read
-the registry. ⭐ That is a physics corroboration; ⭐ record it in the S9/S10 step records, ⛔ do not keep the
-script to preserve it.
+```
+git show 67dd3ce2:research/pde_ledger_v3/reduction/checks_S9.yaml    #  12 cross_engine pairs
+git show 67dd3ce2:research/pde_ledger_v3/reduction/checks_S10.yaml   # 690 cross_engine pairs
+```
+
+⭐⭐ **Read them for ONE thing: the `quantity:` field is already the standard name of the object**
+(`factored_determinant`, `transverse_speed_squared`, `inertia_coefficient_dimension`, …). ⇒ **D11's naming
+decision is largely already written down** — under the new pattern both engines emit that name directly and
+the pair list ceases to exist. ⛔ Do not restore the files; ⛔ do not rebuild a pair table from them.
+
+⚠ Also there: `symbol_naming.rule: registry_snake_case_to_lower_camel` plus six exceptions. ⭐ That is the
+**payload** symbol correspondence (`muR` ↔ `mu_R`), which **D12 leaves in place** — WL keeps its internal
+spellings and only the emitted tag becomes standard. ⭐ Keep it as a *rule* if a comparator ever needs it;
+⛔ never as a hardcoded list.
 
 ---
 
-### ⚠ SUPERSEDED — the instrument track, kept for provenance only
+### ⭐ What the abandoned track measured about the physics — ⭐ KEEP, ⛔ this part is not superseded
 
-⭐ Front door for the abandoned integration debt: `INTEGRATION_TODO.md`. Scope:
-`CROSS_STEP_DIMENSION_SCOPE.md`.
-
-| id | what | state | owed |
-|---|---|---|---|
-| **W3** | registry declares a dimension as a **law** bound to `Q.brane.D_brane` (`dimension_laws.py`, three brane quantities) | ⭐ **closed with W4:** the typed test duplicate is gone and committed engine operands police a single-sided registry change | production homogeneity still does not anchor the absolute coefficient; shared/common-mode re-derivation remains outside this pin |
-| **W2** | registry-dimension witness — compares **emitted** vs **declared** dimension vectors | ⛔ **BROKEN for S10**: a planted engine defect leaves `STATUS_COUNTS` byte-identical; the branch check short-circuits residual adjudication so the 4 S10 rows have **zero discriminating power** | ⛔ **fix round 2** — see below |
-| **W4** | rebuild the witness against W3's law-aware registry | ⭐ **closed:** five S9/S10/S11 engine transcripts are parsed; every engine operand, registry-law operand, and residual is printed before its guard | S11-Python's standing `3-D` local residual is a `D=3` specialisation artefact, not a physics disagreement |
-| **W1** | dimension type-check on registry substitutions | not started | — |
-| **W0** | engines emit `c_γ` itself (**route A**, user-decided) — ⚠ neither engine emits a non-squared speed, so R4 is red at **both** S9 and S10 | not started | one engine at a time, legs each |
-
-The production dimensional-homogeneity gate resolves the declared binding and
-checks relation homogeneity; it does not independently determine the absolute
-`D` coefficient.  Reduction tests now catch a registry-only coefficient change
-by comparing it with fixed committed symbolic engine output.  A synchronized
-registry/output change still requires independent re-derivation, and the
-medium-sector law/grammar work remains deferred.  The rerun fence is computed
-by `python reduction/registry_import_fence.py --list`, not by step number.
-
-#### ⛔ W2 fix round 2 — the owed list, from two legs with executed counterexamples
-
-1. ⛔⛔ **Row grain.** One row per `(artifact, quantity, branch_dimension)`. ⛔ The branch check must **not**
-   precede residual adjudication. ⚠ Today all four D-cells fold into one row and any off-registry branch
-   forces the whole row, hiding a real D=3 disagreement.
-2. ⚠ `BRANCH_DIMENSION_MISMATCH` is decided by **manifest selection alone** — a tautology that fires
-   unconditionally. ⛔ It must not be guarded while that is true. ⚠ The committed manifest ships the
-   calibration's **perturbed** condition (`dimensions: [2,3,4,5]`) as its baseline.
-3. ⛔ **Coverage invariant does not bind** — shrink the manifest to `S9-py` alone and everything is green,
-   exit 0, `8 passed` unchanged. Pin the required artifact scope **outside** the manifest.
-4. ⛔ `NOT_EMITTED` means *not selected*, ⛔ not *not emitted*. **`Q.brane.B_comp` has zero rows anywhere**
-   though both S11 engines emit it, and **S11-py is absent from the manifest** ⇒ **S11 has no dual-engine
-   comparison at all.**
-5. ⚠ **Multiplier** is correct everywhere but a *coordinated* wrong declaration greens the row where no
-   axis cross-check exists (exhibited on S11-wl `c_L`). ⭐ Require a second independent source or an axis
-   measurement on any multiplier-bearing source.
-6. ⚠ `python -m unittest test_registry_dimension_witness` → **`Ran 0 tests`** (free functions, not
-   `TestCase`). ⭐ Also: **there is no runner** — `INTEGRATION_TODO.md` item 1.
-
-⭐⭐ **The engine emits ONE law per quantity, identical in all four D-cells.** The four-value spread is the
-**witness's own arithmetic**. ⛔ Do not read it as engine output.
-
-#### ⭐ What is measured about the physics, at its real width
-
-⛔ **No physics defect was found.** Three independent parties derived the same verdict on the D question:
-engines correct per branch, registry correct at its declared `D_brane: 3`, and the gap was that nothing
-said so — now closed by W3.
-⛔⛔ **Two blindnesses are MEASURED, not hypothetical, and W3 does not touch either:**
+⛔ **No physics defect was ever found by it.** Three independent parties derived the same verdict on the
+`D` question: the engines are correct per branch and the declared `D_brane: 3` matched them.
+⛔⛔ **Two blindnesses are MEASURED, not hypothetical, and ⛔ nothing in the new design touches either:**
 - **Common-mode:** shifting the length exponent of **all three** brane constituents together leaves **all
   five relations `HOMOGENEOUS`**. ⇒ the gate anchors **differences**, ⛔ never absolute brane dimensions.
 - **Shared-spec:** a defect introduced identically into both engines is caught by **no layer**. Both legs
@@ -324,18 +287,23 @@ The earlier version of this handoff was wrong on three of four points. Measured 
 ⇒ ⭐ **S11 is a RECONSTRUCTION, not a repair.** Emission volume, for scale: S11's engines emit **23** and
 **79** payloads; S10's emit **2983** and **4227** against a 690-row declaration.
 
-### ⭐ The remaining order — do not reorder
+### ⭐ The remaining order — ⚠ REWRITTEN 2026-08-08, ⛔ the old order's last five items are deleted machinery
 
-1. Land the comparator fix (two legs, then commit).
-2. **Build both engines**, independently, each from the spec plus a short engine-specific directive.
-   Two legs per engine.
-3. Run both into committed outputs under `mathematica/out/` and `scripts/out/`.
-4. Write **`reduction/checks_S11.yaml`**. Two legs.
-5. **Extend `harness_ablation.py` to cover it.** ⛔ A checks config with no battery is an unpoliced
-   declaration — S10's battery is `ACCEPTANCE 1–19` and it is what let a leg find two gate holes.
-6. Run the harness. Only now can it say anything about S11.
-7. Step record · paper card · requirements-register pass 2 · defect-register entries.
-8. **Repoint the registry provenance** for `B_comp`, `c_L` and `R5`.
+⭐ **S11 comes after S9 and S10**, because under the new pattern its SymPy engine **imports their
+`LEDGER`.** ⛔ It cannot be built first any more.
+
+1. **S9 rebuilt** under `S9_REWRITE_PLAN.md` ⇒ `scripts/S9_exports.py`. Two legs.
+2. **S10 rebuilt**, importing `S9_exports` ⇒ `scripts/S10_exports.py`. Two legs.
+3. **Build both S11 engines**, each from `S11_SHARED_PHYSICS.md` plus a short engine-specific directive —
+   ⭐ SymPy imports `S10_exports`, ⛔ Wolfram imports nothing. Two legs per engine.
+4. Run both into committed outputs under `mathematica/out/` and `scripts/out/`, and commit
+   `scripts/S11_exports.py` alongside them.
+5. ⭐ **Compare py against wl by tag lookup** — ⛔ no pair table, ⛔ no checks config, ⛔ no harness.
+   ⚠ Under **D11** both engines emit the standard name, so the comparison is a join on the tag.
+6. Step record · paper card · requirements-register pass 2 · defect-register entries.
+
+⛔ **Items 4–8 of the previous order are gone with `reduction/`**: no `checks_S11.yaml`, no
+`harness_ablation.py` battery, no registry provenance to repoint.
 
 ### ⚠ What the next session must NOT be told, and must run itself
 
@@ -347,10 +315,13 @@ computed by four independently built engines**, which the ledger has never had.
 pointing a builder at committed S10 rows is a target it can converge on. ⭐ **The comparison is the
 orchestrator's to run after both engines exist.**
 
-### ⚠ One trap for `checks_S11.yaml`
+### ⚠ One trap that OUTLIVES the config it was written for
 
-⛔ **Do not declare `N6_BASIS` as a cross-engine row.** A nullspace basis is not canonical; S10 has 11 rows
-reporting `DISAGREE` on representation alone. The spec already says `N6` is display-only.
+⛔ **Do not compare `N6_BASIS` across engines.** A nullspace basis is not canonical; S10 produced **11 rows
+reporting `DISAGREE` on representation alone.** The spec already says `N6` is display-only.
+⇒ ⚠ **This is now a naming decision, not a config one:** under **D11** anything both engines emit under the
+same standard name reads as a claim that they should match. ⭐ A non-canonical object must therefore be
+emitted under a name that says so, or not paired at all.
 
 ---
 
@@ -394,24 +365,25 @@ reporting `DISAGREE` on representation alone. The spec already says `N6` is disp
 
 ## ⚠ What is still open on S10, deliberately
 
-- **`declaration_load_ablation.py` runs ~19 minutes on the S10 config.** ⚠ Under the clarified rule this is
-  **acceptable if it prints incrementally** — the bar is observable progress, not elapsed time
-  ⇒ `feedback_script_timeout_policy`. Check that it flushes; ⛔ do not narrow it.
-- **Three sentences corrected after the last leg reported** — the eight-of-twelve verdict count and its two
-  companions. They have not been through a leg.
+- **Three sentences in the S10 record were corrected after the last leg reported** — the eight-of-twelve
+  verdict count and its two companions. ⛔ They have not been through a leg.
 - `DEFECT_REGISTER.md#f7`'s owed measurement. Re-scope it or discharge it.
-- ⚠ **A second registry provenance dent**: `D_brane`'s `source_locus` (`reduction/quantities.yaml:177`)
-  points at S9 for a quantity S10 introduces. Fix with the `B_comp`/`c_L` pass.
 
-## Known limits of the instrument
+⛔ **Two entries that stood here are DISCHARGED BY DELETION, ⛔ not by fixing:**
+`declaration_load_ablation.py`'s 19-minute run, and `D_brane`'s mis-pointed `source_locus` in
+`quantities.yaml`. ⭐ Both files are gone; ⛔ neither is owed.
 
-- The canonical derivative key uses `sorted(set(arguments))`, so a repeated coordinate in a dependence list
-  is not distinguished. Multiplicity is not physical; recorded rather than open.
-- A stiffness form the gradient substitution cannot cover has no completeness guard.
-- Exit code carries no signal on either config; both exit 2 in the healthy state. **Judge by counters.**
-- `_free_symbol_names` has **no call site anywhere in the repository** — pre-existing dead code.
-- ⚠ The comparator requires `--config` **and** one `--output ENGINE=PATH` per engine. It resolves the
-  registry root from the config path, so a bare copy of `reduction/` fails with `RegistryValidationError`.
+## ⚠ Known limits of the OLD instrument — ⛔ provenance only, the instrument is deleted
+
+⭐ **Kept for one reason: the first two are properties of the PHYSICS OBJECTS, not of the tooling**, so a
+rebuild can reintroduce them.
+
+- ⭐ The canonical derivative key used `sorted(set(arguments))`, so a repeated coordinate in a dependence
+  list was not distinguished. Multiplicity is not physical; recorded rather than open.
+- ⭐ A stiffness form the gradient substitution cannot cover had **no completeness guard**. ⚠ Still true of
+  anything that substitutes on a form rather than deriving it.
+- ⚠ The rest — exit codes carrying no signal, `_free_symbol_names` dead code, the comparator's
+  `--config`/`--output` contract — described `reduction/` and ⛔ died with it.
 
 ## Pinned
 

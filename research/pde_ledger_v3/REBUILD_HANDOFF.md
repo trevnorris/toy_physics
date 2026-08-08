@@ -44,6 +44,58 @@ design is abandoned. ⛔ Do not build it for any step.
 
 ---
 
+## ⛔⛔ OPEN DECISION FOR THE USER — F-2, and the S9 build is blocked on it
+
+⚠ **Measured 2026-08-08 by a review leg, on the committed build `753ae7b1`.** ⭐ Everything else from that
+build's review is being fixed; ⛔ **this one was deliberately left alone because the plan is CLOSED and the
+honest fix needs a new file.**
+
+### What was measured
+
+⭐ **D11's promise is that comparison becomes a lookup.** ⛔ **Nothing in the repository performs the
+lookup.** Each engine binds a standard name to an object through its own name→object table, and a leg
+re-pointed one entry:
+
+```
+transverse_speed_squared = unique_item(main_outputs["ROOTS_PASSING_E1"])   # was SPEED_SQUARED_CANDIDATES
+⇒ PY_S9_TRANSVERSE_SPEED_SQUARED: mu_R*(kx**2 + ky**2 + kz**2)/rho_br      # was mu_R/rho_br
+```
+
+⛔ The light cone becomes an **ω², not a speed squared** — wrong by `k²`, ⚠ **the same defect class already
+on this step's record** — and: engine **exit 0**, roundtrip residual **0**, mapped diff **exit 0**, export
+regenerates with the same entry count. ⛔ **Every check in the repository passes.** ⚠ The Wolfram side has
+the identical hole.
+
+⭐ The only thing that catches it is a **cross-engine residual**, and that ran **once**, in an ephemeral
+script inside a build transcript. ⛔ It is not an artifact and cannot be re-run.
+⇒ ⚠ **the twelve objects the entire naming pivot exists for are the twelve least policed objects in the
+step.**
+
+### ⭐ Why this is not the machinery we just deleted
+
+⚠ **The distinction is the whole point and it is worth stating precisely.** The abandoned comparator needed
+`checks_S10.yaml` — **3,121 lines, 91% a hand-written name→name pair table** — because the two engines
+named the same objects differently. ⭐ **Under D11 they do not.** The join is *strip the `PY_`/`WL_` prefix
+and match the string.* ⇒ ⭐ **the configuration that made the old design unmaintainable is exactly what D11
+removed**, and what remains is a reader with no config at all.
+
+### The options
+
+| | | cost |
+|---|---|---|
+| **A** ⭐ **Commit the comparison as one small script** — reads both `.out` files, joins on the standard name, applies the two stated correspondences (`omega2 ≡ omega²`, `List ≡ 3×1 Matrix`), prints **both operands and the residual** per shared name, then guards | ⭐ D11's payoff made real; ⭐ the only thing that polices the binding; ⭐ zero configuration | ⚠ one new file, and the standing risk that it grows back into a harness |
+| **B** Leave it ad-hoc — the orchestrator runs a comparison by hand each time and quotes it in the step record | no new file | ⛔ not reproducible; ⛔ unpoliced between runs; ⚠ measured history: ad-hoc checks stop being run |
+| **C** Accept the hole, and say so in the step record | nothing to build | ⛔ the naming pivot's central claim goes unbacked |
+
+⭐ **My recommendation is A, with a hard fence written into the plan**: one file · reads exactly two `.out`
+files · ⛔ no config file, ⛔ no YAML, ⛔ no per-step file, ⛔ no manifest, ⛔ no runner · and it must be
+**demonstrated able to fail** by re-pointing a standard name and showing the residual move.
+
+⚠ ⭐ **This is the user's call because it changes the closed plan**, ⛔ not because the measurement is in
+doubt.
+
+---
+
 ## S11 — where it actually is
 
 ### ⭐ Done

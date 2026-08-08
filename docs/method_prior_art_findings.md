@@ -21,10 +21,25 @@ concedes a subset.
 unreliable path: a nominal join key, and symbolic simplification as the equality test.** Everything below
 follows from that.
 
-**② The granularity is unprecedented.** S11 engine 1 emits **3,750 tags** (`REBUILD_HANDOFF.md`). ⭐ **No
-community found in this survey compares two CAS at the level of intermediate tagged emissions.** Every
-corpus compares a *small number of final objects* against a reference. This is the single biggest
-divergence between us and everyone else, and it is a cost driver nobody else pays.
+**② The granularity is high — ⛔ but "unprecedented" was FALSE, and the correction matters.**
+S11 engine 1 emits **3,750 tags** (`REBUILD_HANDOFF.md`).
+
+⛔⛔ **RETRACTED 2026-08-06 by both review legs, confirmed against the primary source.** This block used to
+read *"No community found in this survey compares two CAS at the level of intermediate tagged emissions;
+every corpus compares a small number of final objects."* ⛔ **That is false, and the counterexample is the
+canonical N-version experiment itself.** Knight & Leveson's versions produced **241 results**, of which
+*"The launch condition is the only true output… **The other results are really intermediate**"*, failure
+was declared on *"any discrepancy between the 241 results"*, and the reason is stated: *"The intermediate
+results were compared because, **in a practical multi-version system, votes would be taken on intermediate
+results**."*
+
+⭐ **The real difference is not granularity — it is that they had a GOLD PROGRAM.** Each of their 241
+intermediates was compared against a **reference**, so comparison cost nothing per quantity. ⛔ We have no
+reference, so every one of our intermediates is a **peer negotiation** between two engines. ⇒ that, and
+⛔ not the count, is what makes our comparison expensive.
+
+⚠ ⇒ **Any reduction in what we compare must be justified by MEASUREMENT — which intermediate contracts
+catch which defect classes, established by mutation — ⛔ never by an appeal to what others do.**
 
 ---
 
@@ -42,13 +57,24 @@ programming (Avizienis) / differential testing (McKeeman).
 - **Hatton 1997** ⓢ argued the opposite economics (N ordinary versions beat 1 excellent one); later work
   refutes/qualifies it. ⇒ The literature is **divided on cost-effectiveness** and **unanimous on the
   mechanism**. ⛔ Do not read "recognised practice" as "settled good idea."
-- ⭐⭐ **The mitigation literature does NOT recommend more careful specifications.** It recommends moving
-  the oracle out of the specification — see **metamorphic testing** (§F/§4).
+- ⛔⛔ **CORRECTED 2026-08-06.** This bullet used to read *"the mitigation literature does NOT recommend
+  more careful specifications."* ⛔ **The opposite is closer to true.** The 2026 agent study explicitly
+  proposes using correlated failures to *"detect and refine ambiguous specifications"* — i.e. **a
+  correlated failure is a SIGNAL FOR SPEC REPAIR**, which reframes our three S11 repair rounds as the
+  mechanism working rather than failing. ⚠ And Knight & Leveson do **not** attribute every correlated
+  fault to the spec: two analysed faults *"cannot be attributed to the specifications"* — they were
+  numerical-analysis and geometry mistakes. ⭐ The honest reading: the shared spec **is** a correlation
+  channel, correlated failure **is** a useful repair signal, and metamorphic relations (§F) are an
+  **additional** oracle outside the spec, ⛔ not a replacement for writing the spec well.
 - ⭐⭐ **Brilliant, Knight & Leveson, *The Consistent Comparison Problem in N-Version Software*
-  (1986/IEEE TSE 1989)** ⓢ — the closest published thing to our failure, and it is **forty years old**:
-  *an N-version system may be unable to reach consensus even when none of its versions has failed.*
-  ⇒ **The literature predicts our failure at the COMPARATOR, not at the physics.** Our 11 nullspace-basis
-  DISAGREE rows are this paper's phenomenon exactly.
+  (1986/IEEE TSE 1989)** ⓢ — **forty years old**: *an N-version system may be unable to reach consensus
+  even when none of its versions has failed.* ⇒ **The literature locates a failure class at the
+  COMPARATOR, not at the physics.**
+  ⛔⛔ **But this is NOT our 11 nullspace rows, and the earlier text saying "this paper's phenomenon
+  exactly" is RETRACTED** (both legs, 2026-08-06). CCP's condition is **finite-precision** comparison
+  driving control-flow divergence; a non-canonical nullspace basis differs under **exact** arithmetic
+  because bases are not unique. ⭐ Same surface, different mechanism ⇒ rule 16 violation, by me.
+  ⭐ What CCP **does** support is the separate warning below: ⛔ never probe in floating point.
 - **2026, and directly on us — "N-Version Programming with Coding Agents"** ⓕ (arXiv 2606.20158):
   48 agent-generated implementations, 1M inputs. **Substantial common-mode failure**, and the co-occurring
   failures **trace to where the specification is hard or ambiguous**. Still worth doing: single version
@@ -100,9 +126,21 @@ tried symbolic-first published that it was not enough.**
   numeric stage only.
 - ⚠ **And their failure mode, which is ours to inherit:** 892 cases (~51.1%) landed above threshold, many
   classified **false positives** caused by missing constraint semantics and **branch-cut** differences —
-  not by real errors. ⇒ Numeric probing is weakest exactly where special functions and branch cuts live.
-  ⭐ **S9–S11 objects are Lagrangians, matrices, determinants and polynomial dispersion relations — the
-  rational/algebraic good case where Schwartz–Zippel actually applies.**
+  not by real errors. ⚠ **Correction:** the 51.1% denominator is the **1,745 symbolically unverified**
+  cases, ⛔ not all 2,405; and the paper lists **four** causes without quantifying how many came from
+  constraints or branches. ⇒ Numeric probing is weakest exactly where special functions and branch cuts
+  live.
+- ⛔⛔ **RETRACTED 2026-08-06 — the "good case" claim was scoped to STEPS, and it must be scoped to OBJECT
+  KINDS.** This used to read *"S9–S11 objects are … the rational/algebraic good case where
+  Schwartz–Zippel actually applies."* ⛔ Schwartz–Zippel is stated for a **low-degree multivariate
+  polynomial over a field**, and the artifacts already leave that class: `S11bA_…_sympy_audit.py:37`
+  builds unevaluated `sp.Integral`; `:336/:344/:377` use `sech²`, `tanh`, `Abs`; `:46-51` emit
+  **natural-language strings**, not parseable expressions; `S11bB_…_sympy_audit.py:29-31` **deliberately
+  avoids** principal-square-root simplification because it would destroy the prescribed analytic
+  continuation; and `S11bB_…_mathematica_audit.wl:165-207` carries square-root **monodromy**, sheet
+  filtering and a ban on branch reselection. ⚠ Finite fields have no order, no conjugation, no decay
+  condition and no Riemann sheet. ⭐ **Headline algebraic objects (action, system matrix, determinant,
+  polynomial-in-`ω²` pieces) are the good case; the full tag inventory is not.**
 - ⭐⭐ **The most demanding symbolic-physics community already abandoned expression comparison.** Multiloop
   amplitude reduction (**FiniteFlow**, finite-field reconstruction, arXiv 1608.01902 / 1905.08019) ⓢ does
   *all* the algebra by **evaluating at random rational points over a finite field**, precisely to sidestep
@@ -123,9 +161,21 @@ tried symbolic-first published that it was not enough.**
 canonical form for a subspace; or check each engine's basis vectors lie in the other's kernel and that the
 ranks match. This class of disagreement disappears. **TOOLING** — those were two correct answers.
 
-**On naming:** fingerprint every emitted object in both engines and **join on the fingerprint, not the
-tag**. Content-addressed matching. Names become a human label, not a join key. **TOOLING**, and it is the
-single change with the largest measured cost saving available.
+**On naming — ⛔⛔ CORRECTED 2026-08-06, and this was the document's worst error.** This used to say
+*"join on the fingerprint, not the tag; names become a human label, not a join key."* ⛔ **A fingerprint
+is an EQUALITY ORACLE for objects that are ALREADY PAIRED. It is not an identity, and it cannot discover
+which object corresponds to which.**
+
+⚠ The counterexample is in our own tree and it is **deterministic, not a rare hash collision**:
+`S11bB_interface_assembly_sympy_audit.py:539` emits `emit("S11BB_HOMOGENEITY_" + eqname, "PASS" if ok
+else "FAIL")` ⇒ **every passing row has the identical fingerprint.** Repeated zero residuals, repeated
+dimension vectors, repeated booleans and repeated premises are all legitimate and all collide. ⇒ a
+fingerprint cannot tell you **which** quantity matched, whether one was **omitted**, or whether
+multiplicity and provenance are right.
+
+⭐ **Correct form: keep a stable shared `quantity_id` as the join key; use the exact evaluation vector as a
+typed equality oracle after pairing** (and, at most, as a candidate index followed by typed verification).
+⭐ What this deletes is the **symbol-spelling negotiation layer**, ⛔ not the inventory. **TOOLING.**
 
 ⚠ **Honest limits.** Probing is one-sided (it *proves different*; it can only *fail to disprove same*); it
 requires agreement on **inputs** (a symbol→value map), which is a far smaller and more checkable agreement
@@ -222,9 +272,12 @@ physics.** That is a strong external confirmation that we are not doing somethin
 it is also a warning that no amount of spec care will close it.
 
 **Q2 · Is there a standard way to compare two CAS results without agreeing on names?**
-⭐⭐ **Yes. Evaluate both sides at a shared set of random EXACT points (rationals or a finite field) and
-compare values** — Schwartz–Zippel identity testing, operationalised as *fingerprint and join*: hash each
-engine's evaluation vector, match on the hash, and let each engine name things however it likes.
+⭐ **Partly — and the honest answer is narrower than this document first claimed.** For **already-paired**
+polynomial/rational objects, yes: evaluate both sides at shared **exact** points (rationals or a finite
+field) and compare values — Schwartz–Zippel identity testing. ⛔ **But it does not remove the need for a
+shared identity**, and it does not apply to transcendental, integral, relational, branch-sensitive or
+textual emissions (see §D's retraction). ⇒ **the pairing stays declared; what goes away is the
+symbol-spelling negotiation.**
 **What it takes to adopt:** (i) agree a **symbol→value map** per step — this is the only agreement left, and
 it is small, mechanical, and checkable, unlike agreement on output names; (ii) each engine emits a
 numerically evaluable form (both already emit parseable expressions); (iii) compare subspaces as subspaces
@@ -275,8 +328,12 @@ condition is the one thing we would change anyway.
    fix, zero negotiation.
 2. **Pinning tag spellings in prose.** A **join-key problem being solved in natural language** — three
    rounds, two of which reintroduced divergence while closing it. Content-address it and the class is gone.
-3. **Comparing 3,750 intermediate emissions.** No community in this survey compares at that granularity.
-   The physics content of a step lives in a handful of objects; the rest is the engine narrating itself.
+3. ⛔⛔ **RETRACTED — "comparing 3,750 intermediate emissions is unprecedented" was FALSE.** Knight &
+   Leveson compared **241 results** of which only one was a true output, *deliberately*, because *"in a
+   practical multi-version system, votes would be taken on intermediate results."* ⇒ ⛔ **granularity is
+   not a reason to cut.** ⭐ **What replaces this item: run a MUTATION COVERAGE STUDY** — which intermediate
+   contracts detect which defect classes — and keep the **minimal hitting set** plus every provenance and
+   inventory check. ⚠ That measurement has **not been made**; until it is, ⛔ no reduction is justified.
 
 ⛔⛔ **THE COUNTERWEIGHT, AND IT IS THE MOST IMPORTANT PARAGRAPH HERE — do not adopt §4 without it.**
 The 3,750 tags exist because of a *measured* defect: engines emitting physics conclusions as **typed

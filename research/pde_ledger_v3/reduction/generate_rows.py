@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Generate cross-engine-gated quantity-row proposals.
+"""Retired cross-engine quantity-row proposal generator.
 
-This is a post-audit text consumer.  It never imports either audit program, and
-the audit programs must never import it.  Tag correspondence and registry QIDs
-are literal data below: no tag, symbol, or QID is inferred from spelling.
+The historical implementation below is retained for auditability, but its
+numeric-only row builder cannot represent required bound dimension laws under
+the v2 registry convention.  Every command path fails closed before reading or
+writing artifacts.
 """
 
 from __future__ import annotations
@@ -48,6 +49,11 @@ DEFAULT_PY_SOURCE = (
 # dimensions, and source loci are not copied from it.
 ROW_CONTEXT_QID = "Q.brane.B_comp"
 STAGE_USES_SHARED_DIMENSIONS_MODULE = False
+RETIRED_REASON = (
+    "generate_rows.py is retired: its engine transcripts contain only numeric "
+    "dimension triples, so it cannot emit v2 bound-law rows without recreating "
+    "a bare D=3 brane declaration"
+)
 
 TAG_START = re.compile(r"^(WL_[A-Za-z0-9_]+|S11BB_[A-Za-z0-9_]+):(?:\s?(.*))?$")
 DIMENSION_TRIPLE = re.compile(
@@ -819,6 +825,9 @@ def refuse_protected_outputs(outputs: Sequence[Path], protected: Sequence[Path])
 
 
 def run(args: argparse.Namespace) -> int:
+    raise GeneratorError(RETIRED_REASON)
+
+    # Historical unreachable implementation retained as an audit record.
     protected_paths = unique_paths(
         (
             args.wl_output,

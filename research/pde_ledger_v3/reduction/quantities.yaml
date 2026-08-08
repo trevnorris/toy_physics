@@ -1,7 +1,7 @@
-schema_version: reduction-registry-v1
+schema_version: reduction-registry-v2
 document_kind: quantities
 dimension_convention:
-  name: LTM-exponent-vector-v1
+  name: LTM-exponent-vector-or-bound-law-v2
   ordered_bases: [L, T, M]
 active_regime: medium-GNLS-positive-real
 
@@ -16,7 +16,7 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [2, -1, 1]
       provenance:
         stage_id: stage004
@@ -35,7 +35,7 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [0, 0, 1]
       provenance:
         stage_id: stage004
@@ -54,7 +54,7 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [18, -2, 1]
       provenance:
         stage_id: stage004
@@ -73,7 +73,7 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [-4, 0, 0]
       provenance:
         stage_id: stage004
@@ -92,7 +92,7 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [1, -1, 0]
       provenance:
         stage_id: stage005
@@ -111,7 +111,7 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [1, 0, 0]
       provenance:
         stage_id: stage004
@@ -130,7 +130,7 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [2, -2, 1]
       provenance:
         stage_id: stage004
@@ -150,7 +150,7 @@ quantities:
     counting_axis: discrete-structural
     value: 5
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [0, 0, 0]
       provenance:
         stage_id: stage004
@@ -169,7 +169,7 @@ quantities:
     counting_axis: discrete-structural
     value: 3
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [0, 0, 0]
       provenance:
         stage_id: stage003
@@ -188,8 +188,13 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [-3, 0, 1]
+      law:
+        expression_language: dimension-prefix-v1
+        bindings: {D: Q.brane.D_brane}
+        components: [[Neg, [Ref, D]], 0, 1]
+        reference_values: {D: 3}
       provenance:
         stage_id: stage003
         stage_uses_shared_dimensions_module: false
@@ -209,8 +214,13 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [-1, -2, 1]
+      law:
+        expression_language: dimension-prefix-v1
+        bindings: {D: Q.brane.D_brane}
+        components: [[Sub, 2, [Ref, D]], -2, 1]
+        reference_values: {D: 3}
       provenance:
         stage_id: stage003
         stage_uses_shared_dimensions_module: false
@@ -230,8 +240,13 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [-1, -2, 1]
+      law:
+        expression_language: dimension-prefix-v1
+        bindings: {D: Q.brane.D_brane}
+        components: [[Sub, 2, [Ref, D]], -2, 1]
+        reference_values: {D: 3}
       provenance:
         stage_id: stage003
         stage_uses_shared_dimensions_module: false
@@ -248,7 +263,7 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [1, -1, 0]
       provenance:
         stage_id: stage003
@@ -269,7 +284,7 @@ quantities:
     state: live
     counting_axis: continuous-model
     dimension:
-      convention: LTM-exponent-vector-v1
+      convention: LTM-exponent-vector-or-bound-law-v2
       exponents: [1, -1, 0]
       provenance:
         stage_id: stage003

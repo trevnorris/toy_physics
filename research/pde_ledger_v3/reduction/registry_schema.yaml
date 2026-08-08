@@ -1,6 +1,6 @@
 $schema: "https://json-schema.org/draft/2020-12/schema"
-$id: "https://toy-physics.invalid/schemas/reduction-registry-v1"
-title: PDE ledger reduction registry, phase 1
+$id: "https://toy-physics.invalid/schemas/reduction-registry-v2"
+title: PDE ledger reduction registry, phase 1, dimension-law contract
 oneOf:
   - $ref: "#/$defs/quantities_document"
   - $ref: "#/$defs/relations_document"
@@ -52,13 +52,15 @@ $defs:
     required: [convention, exponents, provenance]
     properties:
       convention:
-        const: LTM-exponent-vector-v1
+        const: LTM-exponent-vector-or-bound-law-v2
       exponents:
         type: array
         minItems: 3
         maxItems: 3
         items:
           type: integer
+      law:
+        $ref: "#/$defs/dimension_law"
       provenance:
         type: object
         additionalProperties: false
@@ -71,6 +73,44 @@ $defs:
             type: boolean
           source_locus:
             $ref: "#/$defs/locus"
+
+  dimension_expression:
+    oneOf:
+      - type: integer
+      - type: array
+        minItems: 2
+        items:
+          oneOf:
+            - type: string
+            - $ref: "#/$defs/dimension_expression"
+
+  dimension_law:
+    type: object
+    additionalProperties: false
+    required: [expression_language, bindings, components, reference_values]
+    properties:
+      expression_language:
+        const: dimension-prefix-v1
+      bindings:
+        type: object
+        minProperties: 1
+        propertyNames:
+          pattern: "^[A-Za-z][A-Za-z0-9_]*$"
+        additionalProperties:
+          $ref: "#/$defs/qid"
+      components:
+        type: array
+        minItems: 3
+        maxItems: 3
+        items:
+          $ref: "#/$defs/dimension_expression"
+      reference_values:
+        type: object
+        minProperties: 1
+        propertyNames:
+          pattern: "^[A-Za-z][A-Za-z0-9_]*$"
+        additionalProperties:
+          type: integer
 
   # Exact operator arities and QID resolution are semantic checks in both
   # readers.  The schema deliberately limits the transport types to nested
@@ -275,7 +315,7 @@ $defs:
       - quantities
     properties:
       schema_version:
-        const: reduction-registry-v1
+        const: reduction-registry-v2
       document_kind:
         const: quantities
       dimension_convention:
@@ -284,7 +324,7 @@ $defs:
         required: [name, ordered_bases]
         properties:
           name:
-            const: LTM-exponent-vector-v1
+            const: LTM-exponent-vector-or-bound-law-v2
           ordered_bases:
             const: [L, T, M]
       active_regime:
@@ -306,7 +346,7 @@ $defs:
       - relations
     properties:
       schema_version:
-        const: reduction-registry-v1
+        const: reduction-registry-v2
       document_kind:
         const: relations
       expression_language:

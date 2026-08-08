@@ -7,7 +7,6 @@ import warnings
 from collections import Counter
 from copy import deepcopy
 from dataclasses import dataclass
-from fractions import Fraction
 from itertools import combinations
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
@@ -16,6 +15,16 @@ import jsonschema
 import sympy as sp
 import yaml
 from sympy.solvers.solvers import unrad
+
+from dimension_laws import (
+    BoundDimensionLaw,
+    DimensionLawError,
+    DimensionVector,
+    SymbolicDimension,
+    as_symbolic_dimension,
+    dimensions_equal,
+    parse_dimension_declaration,
+)
 
 
 HERE = Path(__file__).resolve().parent
@@ -62,7 +71,12 @@ class Quantity:
     regime: tuple[str, ...]
     state: str
     counting_axis: str
-    dimension: tuple[int, int, int]
+    # Compatibility view for consumers written before bound laws existed.
+    # This is the fully checked reference evaluation, while
+    # ``dimension_declaration`` retains the unspecialised registry object.
+    dimension: DimensionVector
+    dimension_declaration: DimensionVector | BoundDimensionLaw
+    dimension_reference: DimensionVector
     value: sp.Rational | None
     aliases: tuple[str, ...]
     raw: Mapping[str, Any]
@@ -136,8 +150,12 @@ class Registry:
         self.active_regime = active_regime or str(quantities_document["active_regime"])
         self._validate_transport_headers()
 
+        convention = quantities_document["dimension_convention"]
+        self.dimension_bases = tuple(str(value) for value in convention["ordered_bases"])
+
         self.quantities = self._build_quantities(quantities_document["quantities"])
         self.alias_to_qid = self._build_alias_map()
+        self._validate_dimension_declarations()
         self.symbols = {
             qid: sp.Symbol(quantity.symbol_name, real=True)
             for qid, quantity in self.quantities.items()
@@ -198,7 +216,12 @@ class Registry:
             qid = str(row["qid"])
             if qid in result:
                 raise RegistryValidationError(f"duplicate qid: {qid}")
-            dimension = tuple(int(value) for value in row["dimension"]["exponents"])
+            try:
+                parsed_dimension = parse_dimension_declaration(
+                    row["dimension"], len(self.dimension_bases)
+                )
+            except DimensionLawError as exc:
+                raise RegistryValidationError(f"{qid}: {exc}") from exc
             raw_value = row.get("value")
             if raw_value is None:
                 value = None
@@ -217,12 +240,50 @@ class Registry:
                 regime=tuple(str(value) for value in row["regime"]),
                 state=str(row["state"]),
                 counting_axis=str(row["counting_axis"]),
-                dimension=dimension,  # type: ignore[arg-type]
+                dimension=parsed_dimension.reference_vector,
+                dimension_declaration=parsed_dimension.declaration,
+                dimension_reference=parsed_dimension.reference_vector,
                 value=value,
                 aliases=tuple(str(value) for value in row["aliases"]),
                 raw=deepcopy(dict(row)),
             )
         return result
+
+    def _validate_dimension_declarations(self) -> None:
+        for quantity in self.quantities.values():
+            law = quantity.dimension_declaration
+            if not isinstance(law, BoundDimensionLaw):
+                continue
+            for parameter, binding_qid in law.bindings:
+                target = self.quantities.get(binding_qid)
+                if target is None:
+                    raise RegistryValidationError(
+                        f"{quantity.qid}: dimension-law binding {parameter!r} "
+                        f"is unresolvable: {binding_qid}"
+                    )
+                if (
+                    target.kind != "discrete-choice"
+                    or target.counting_axis != "discrete-structural"
+                ):
+                    raise RegistryValidationError(
+                        f"{quantity.qid}: dimension-law binding {parameter!r} targets "
+                        f"non-structural quantity {binding_qid}"
+                    )
+                if target.value is None or target.value.is_Integer is not True:
+                    observed = "<missing>" if target.value is None else str(target.value)
+                    raise RegistryValidationError(
+                        f"{quantity.qid}: dimension-law binding {parameter!r} cannot "
+                        f"resolve to an integer from {binding_qid}: observed={observed}"
+                    )
+                reference = dict(law.reference_values)[parameter]
+                declared = int(target.value)
+                reference_residual = declared - reference
+                if reference_residual != 0:
+                    raise RegistryValidationError(
+                        f"{quantity.qid}: dimension-law reference differs from bound "
+                        f"quantity {binding_qid}: reference={reference} "
+                        f"declared={declared} residual={reference_residual}"
+                    )
 
     def _build_alias_map(self) -> dict[str, str]:
         aliases: dict[str, str] = {}
@@ -242,6 +303,53 @@ class Registry:
             return self.alias_to_qid[name]
         except KeyError as exc:
             raise RegistryValidationError(f"unknown QID/symbol/alias: {name!r}") from exc
+
+    def dimension_declaration(
+        self, name: str
+    ) -> DimensionVector | BoundDimensionLaw:
+        """Return the constant vector or bound law without specialising it."""
+        return self.quantities[self.resolve_qid(name)].dimension_declaration
+
+    def dimension_law(self, name: str) -> BoundDimensionLaw | None:
+        """Return a bound law, or ``None`` when the declaration is constant."""
+        declaration = self.dimension_declaration(name)
+        return declaration if isinstance(declaration, BoundDimensionLaw) else None
+
+    def dimension_at(
+        self,
+        name: str,
+        structural_values: Mapping[str, int],
+    ) -> DimensionVector:
+        """Evaluate a dimension at explicitly supplied structural values."""
+        normalized: dict[str, int] = {}
+        for supplied_name, value in structural_values.items():
+            qid = self.resolve_qid(str(supplied_name))
+            target = self.quantities[qid]
+            if (
+                target.kind != "discrete-choice"
+                or target.counting_axis != "discrete-structural"
+            ):
+                raise EvaluationError(
+                    f"dimension evaluation value is not structural: {qid}"
+                )
+            if isinstance(value, bool) or not isinstance(value, int):
+                raise EvaluationError(
+                    f"dimension evaluation value for {qid} must be an integer"
+                )
+            previous = normalized.get(qid)
+            if previous is not None and previous != value:
+                raise EvaluationError(
+                    f"conflicting dimension evaluation values for {qid}"
+                )
+            normalized[qid] = value
+
+        declaration = self.dimension_declaration(name)
+        if not isinstance(declaration, BoundDimensionLaw):
+            return declaration
+        try:
+            return declaration.evaluate_bindings(normalized)
+        except DimensionLawError as exc:
+            raise EvaluationError(f"{self.resolve_qid(name)}: {exc}") from exc
 
     def _quantity_occurrences(self, node: Any) -> tuple[str, ...]:
         if isinstance(node, bool):
@@ -457,8 +565,8 @@ class Registry:
                     f"{label}: locus ends at {end}, but {path} has {line_counts[path]} lines"
                 )
 
-    def _dimension_of(self, node: Any) -> tuple[Fraction, Fraction, Fraction]:
-        zero = (Fraction(0), Fraction(0), Fraction(0))
+    def _dimension_of(self, node: Any) -> SymbolicDimension:
+        zero = tuple(sp.Integer(0) for _ in self.dimension_bases)
         if isinstance(node, bool):
             raise RegistryValidationError("booleans are not dimensionless integers")
         if isinstance(node, int):
@@ -468,30 +576,40 @@ class Registry:
         operator, arguments = node[0], node[1:]
         if operator == "Q":
             qid = self.resolve_qid(str(arguments[0]))
-            return tuple(Fraction(value) for value in self.quantities[qid].dimension)  # type: ignore[return-value]
+            return as_symbolic_dimension(
+                self.quantities[qid].dimension_declaration
+            )
         if operator == "Rat":
             return zero
         dimensions = tuple(self._dimension_of(argument) for argument in arguments)
         if operator in {"Add", "Sub"}:
-            if not dimensions or any(value != dimensions[0] for value in dimensions[1:]):
+            if not dimensions or any(
+                not dimensions_equal(value, dimensions[0])
+                for value in dimensions[1:]
+            ):
                 raise RegistryValidationError(f"dimension mismatch within {operator}: {node!r}")
             return dimensions[0]
         if operator == "Mul":
-            return tuple(sum(values, Fraction(0)) for values in zip(*dimensions))  # type: ignore[return-value]
+            return tuple(
+                sp.simplify(sum(values, sp.Integer(0))) for values in zip(*dimensions)
+            )
         if operator == "Div":
-            return tuple(left - right for left, right in zip(*dimensions))  # type: ignore[return-value]
+            return tuple(
+                sp.simplify(left - right)
+                for left, right in zip(*dimensions)
+            )
         if operator == "Neg":
             return dimensions[0]
         if operator == "Sqrt":
-            return tuple(value / 2 for value in dimensions[0])  # type: ignore[return-value]
+            return tuple(sp.simplify(value / 2) for value in dimensions[0])
         if operator == "Pow":
             exponent = self.parse_expression(arguments[1])
             if exponent.free_symbols or exponent.is_Rational is not True:
                 raise RegistryValidationError(f"Pow exponent must be an exact rational: {node!r}")
-            if dimensions[1] != zero:
+            if not dimensions_equal(dimensions[1], zero):
                 raise RegistryValidationError(f"Pow exponent must be dimensionless: {node!r}")
-            factor = Fraction(int(exponent.p), int(exponent.q))
-            return tuple(value * factor for value in dimensions[0])  # type: ignore[return-value]
+            factor = sp.Rational(int(exponent.p), int(exponent.q))
+            return tuple(sp.simplify(value * factor) for value in dimensions[0])
         raise RegistryValidationError(f"dimension rule missing for operator {operator!r}")
 
     def _validate_dimensions(self) -> None:

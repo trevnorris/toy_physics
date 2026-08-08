@@ -1,4 +1,4 @@
-schema_version: reduction-registry-v1
+schema_version: reduction-registry-v2
 document_kind: relations
 expression_language: prefix-v1
 

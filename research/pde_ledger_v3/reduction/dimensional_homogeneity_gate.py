@@ -9,11 +9,20 @@ in UNDETERMINED instead of being hidden behind an earlier schema exception.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from fractions import Fraction
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
+import sympy as sp
 import yaml
+
+from dimension_laws import (
+    BoundDimensionLaw,
+    DimensionLawError,
+    SymbolicDimension,
+    as_symbolic_dimension,
+    dimensions_equal,
+    parse_dimension_declaration,
+)
 
 
 HERE = Path(__file__).resolve().parent
@@ -24,7 +33,7 @@ HOMOGENEOUS = "HOMOGENEOUS"
 INHOMOGENEOUS = "INHOMOGENEOUS"
 UNDETERMINED = "UNDETERMINED"
 
-Dimension = tuple[Fraction, ...]
+Dimension = SymbolicDimension
 
 
 class DimensionFinding(ValueError):
@@ -69,8 +78,11 @@ def _format_dimension(dimension: Dimension | None) -> str:
     if dimension is None:
         return "<unknown>"
 
-    def render(value: Fraction) -> str:
-        return str(value.numerator) if value.denominator == 1 else str(value)
+    def render(value: sp.Expr) -> str:
+        simplified = sp.simplify(value)
+        if simplified.is_Rational is True:
+            return str(int(simplified)) if simplified.q == 1 else str(simplified)
+        return sp.sstr(simplified)
 
     return "[" + ",".join(render(value) for value in dimension) + "]"
 
@@ -109,7 +121,7 @@ class DimensionAudit:
 
     def _dimension_metadata(
         self, qid: str
-    ) -> tuple[Dimension, str, bool, Mapping[str, Any]]:
+    ) -> tuple[Dimension, Dimension, str, bool, Mapping[str, Any]]:
         row = self.quantity_rows.get(qid)
         if row is None:
             raise UndeterminedFinding(f"{qid}: QID has no quantity record")
@@ -121,15 +133,52 @@ class DimensionAudit:
                 f"{qid}: dimension convention {declaration.get('convention')!r} "
                 f"does not match declared {self.convention_name!r}"
             )
-        exponents = declaration.get("exponents")
-        if (
-            not isinstance(exponents, list)
-            or len(exponents) != len(self.bases)
-            or any(isinstance(value, bool) or not isinstance(value, int) for value in exponents)
-        ):
-            raise UndeterminedFinding(
-                f"{qid}: dimension exponents must be {len(self.bases)} integers"
-            )
+        try:
+            parsed = parse_dimension_declaration(declaration, len(self.bases))
+        except DimensionLawError as exc:
+            raise UndeterminedFinding(f"{qid}: {exc}") from exc
+        symbolic = as_symbolic_dimension(parsed.declaration)
+        displayed = symbolic
+        if isinstance(parsed.declaration, BoundDimensionLaw):
+            binding_values: dict[str, int] = {}
+            reference_values = dict(parsed.declaration.reference_values)
+            for parameter, binding_qid in parsed.declaration.bindings:
+                target = self.quantity_rows.get(binding_qid)
+                if target is None:
+                    raise UndeterminedFinding(
+                        f"{qid}: dimension-law binding {parameter!r} is unresolvable: "
+                        f"{binding_qid}"
+                    )
+                if (
+                    target.get("kind") != "discrete-choice"
+                    or target.get("counting_axis") != "discrete-structural"
+                ):
+                    raise UndeterminedFinding(
+                        f"{qid}: dimension-law binding {parameter!r} targets "
+                        f"non-structural quantity {binding_qid}"
+                    )
+                value = target.get("value", "<missing>")
+                if isinstance(value, bool) or not isinstance(value, int):
+                    raise UndeterminedFinding(
+                        f"{qid}: dimension-law binding {parameter!r} cannot resolve "
+                        f"to an integer from {binding_qid}: observed={value!r}"
+                    )
+                reference = reference_values[parameter]
+                reference_residual = value - reference
+                if reference_residual != 0:
+                    raise UndeterminedFinding(
+                        f"{qid}: dimension-law reference differs from bound quantity "
+                        f"{binding_qid}: reference={reference} declared={value} "
+                        f"residual={reference_residual}"
+                    )
+                binding_values[binding_qid] = value
+            try:
+                displayed = tuple(
+                    sp.Integer(value)
+                    for value in parsed.declaration.evaluate_bindings(binding_values)
+                )
+            except DimensionLawError as exc:
+                raise UndeterminedFinding(f"{qid}: {exc}") from exc
         provenance = declaration.get("provenance")
         if not isinstance(provenance, Mapping):
             raise UndeterminedFinding(f"{qid}: missing dimension provenance")
@@ -143,7 +192,8 @@ class DimensionAudit:
         ):
             raise UndeterminedFinding(f"{qid}: incomplete dimension provenance")
         return (
-            tuple(Fraction(value) for value in exponents),
+            symbolic,
+            displayed,
             stage_id,
             on_shared,
             locus,
@@ -162,7 +212,7 @@ class DimensionAudit:
             )
 
     def dimension_of(self, node: Any) -> Dimension:
-        zero = tuple(Fraction(0) for _ in self.bases)
+        zero = tuple(sp.Integer(0) for _ in self.bases)
         if isinstance(node, bool):
             raise UndeterminedFinding("boolean is not a numeric literal")
         if isinstance(node, int):
@@ -176,7 +226,7 @@ class DimensionAudit:
             self._require_arity(operator, arguments, 1)
             if not isinstance(arguments[0], str):
                 raise UndeterminedFinding(f"Q leaf is not a QID string: {node!r}")
-            dimension, _, _, _ = self._dimension_metadata(arguments[0])
+            dimension, _, _, _, _ = self._dimension_metadata(arguments[0])
             return dimension
         if operator == "Rat":
             self._require_arity(operator, arguments, 2)
@@ -202,24 +252,32 @@ class DimensionAudit:
                     f"Pow exponent must be a bare integer, observed {exponent!r}"
                 )
             base_dimension = self.dimension_of(arguments[0])
-            return tuple(value * exponent for value in base_dimension)
+            return tuple(sp.simplify(value * exponent) for value in base_dimension)
 
         dimensions = tuple(self.dimension_of(argument) for argument in arguments)
         if operator in {"Add", "Sub"}:
-            if any(value != dimensions[0] for value in dimensions[1:]):
+            if any(
+                not dimensions_equal(value, dimensions[0])
+                for value in dimensions[1:]
+            ):
                 rendered = ", ".join(_format_dimension(value) for value in dimensions)
                 raise InhomogeneousFinding(
                     f"{operator} additive term dimensions differ: {rendered}"
                 )
             return dimensions[0]
         if operator == "Mul":
-            return tuple(sum(values, Fraction(0)) for values in zip(*dimensions))
+            return tuple(
+                sp.simplify(sum(values, sp.Integer(0))) for values in zip(*dimensions)
+            )
         if operator == "Div":
-            return tuple(left - right for left, right in zip(*dimensions))
+            return tuple(
+                sp.simplify(left - right)
+                for left, right in zip(*dimensions)
+            )
         if operator == "Neg":
             return dimensions[0]
         if operator == "Sqrt":
-            return tuple(value / 2 for value in dimensions[0])
+            return tuple(sp.simplify(value / 2) for value in dimensions[0])
         raise AssertionError(f"unhandled supported operator {operator}")
 
     @staticmethod
@@ -272,7 +330,7 @@ class DimensionAudit:
         failures = 0
         for qid in self.quantity_rows:
             try:
-                dimension, stage_id, on_shared, locus = self._dimension_metadata(qid)
+                _, dimension, stage_id, on_shared, locus = self._dimension_metadata(qid)
             except UndeterminedFinding as finding:
                 failures += 1
                 print(f"DIMENSION_PROVENANCE {qid}: UNDETERMINED {finding}")

@@ -76,6 +76,13 @@ def fully_reduced_outputs(
 
 def main() -> int:
     registry = load_registry()
+    structural_values = {
+        quantity.qid: int(quantity.value)
+        for quantity in registry.quantities.values()
+        if quantity.counting_axis == "discrete-structural"
+        and quantity.value is not None
+        and quantity.value.is_Integer is True
+    }
     definitions = admitted_definitions(registry)
     reduced = fully_reduced_outputs(registry, definitions)
     candidate_outputs = {
@@ -104,7 +111,8 @@ def main() -> int:
             decision = registry.admission_decisions[candidate.relation_id]
             detail = f"  [candidate refused: {decision.reason}]"
         print(
-            f"  {quantity.symbol_name:<14} dim={list(quantity.dimension)}  "
+            f"  {quantity.symbol_name:<14} "
+            f"dim={list(registry.dimension_at(quantity.qid, structural_values))}  "
             f"[{quantity.kind}; {quantity.counting_axis}; {role}]{detail}"
         )
 

@@ -32,8 +32,23 @@ pattern the first time. This tax is paid once.
    per engine and package, and action families. This is the mechanical tie-in to the harness.
 3. The harness runs and the **step record cites what it measured**, not what the author concluded.
 4. **Requirements-register entries** fall out of the same read ⇒ `SUBSTRATE_REQUIREMENTS.md`.
+5. ⭐⭐ **NEW 2026-08-07 — state which registry quantities this step PRODUCES and which it CONSUMES; emit
+   each in the form the registry declares it; mark each emission DERIVED or DECLARED.**
+   ⚠ **This is the cheapest item on the list and skipping it has already cost twice:** S9 and S10 emit the
+   photon speed only as a **square**, so `Q.brane.c_gamma` is bound to a squared-speed tag and **R4's
+   cross-step residual has been NONZERO at BOTH steps since they closed** — carried as a note at S9 and
+   unmentioned at S10. ⇒ ⛔ Free to state before an engine is written; costs an engine rebuild afterwards.
 
-S10 is the worked example of all four; its record is the template.
+S10 is the worked example of items 1–4; ⛔ **it does not satisfy item 5.**
+
+⇒ ⭐⭐ **OPEN INTEGRATION DEBT — `INTEGRATION_TODO.md`.** ⚠ New `reduction/` checks exist that **nothing
+runs and no step record cites**: there is **no runner**, and S9's and S10's records cite exactly one check
+each (`engine_output_checks.py`). A registry-dimension witness now compares emitted dimension vectors
+against `quantities.yaml` — the first oracle outside a step's own specification — and **its measurement of
+S9/S10 is recorded nowhere.** ⛔ Read `INTEGRATION_TODO.md` before starting new step work.
+⚠ The witness is **under review and not settled**; ⛔ do not cite its numbers until both legs report.
+⛔ **Also open: `quantities.yaml` cannot express a D-dependent dimension** — every `Q.brane.*` entry is
+silently a D=3 specialisation while S10 varies D = 2…5. ⚠ Nobody is measurably wrong; ⛔ nothing says so.
 
 ---
 
@@ -71,11 +86,87 @@ the first review round**, ⛔ not after. ⚠ And a premise stating an ABSENCE (`
 frozen wall width) cannot drive a construction ⇒ corollary 5's second branch is the honest outcome — ⭐ mark
 it explicitly, ⛔ do not manufacture a consumer for it.
 
-### ⛔⛔ S11 IS HELD — 2026-08-07
+### ⭐⭐ S11 IS UNHELD — 2026-08-07 (supersedes the hold below)
 
-⚠ **A parallel session is reworking S9 as a PILOT of a new comparison method.** ⛔ Do not resume S11's
-harness work until that pilot reports: `checks_S11.yaml` was never written, and under the new method it
-would be a different artifact entirely.
+⛔⛔ **THE PILOT IS DEAD. S11 was held on something that no longer exists.** The S9 comparison-method
+pilot (`HARNESS_S9_PILOT_PLAN.md`) was reviewed by four legs across two rounds and the verdict was **do
+not build from it** — its central move and its own acceptance criterion were measured mutually
+unsatisfiable, and the criterion was passed by a comparator that never compares.
+
+⭐ **S11 is ready to resume and does NOT depend on the instrument track below:**
+- ✅ Both engines have run. `mathematica/out/S11_stray_longitudinal_mathematica_audit.out` (972 KB) and
+  `scripts/out/S11_stray_longitudinal_sympy_audit.out` (1.15 MB) are on disk.
+- ⛔ **`reduction/checks_S11.yaml` was never written.** That is the gap.
+- ⭐ Write it **S9-shaped** — 194 lines, 12 declared pairs — ⛔ **not S10-shaped at 3,121 lines**, of which
+  91% is a hand-written name→name pair list. S10 is where the apparatus outgrew the physics.
+- ⭐ Apply **pattern item 5** (above): S11 already emits `rho_br`, `mu_R` and `B_comp` dimension **laws**
+  symbolically, so it is better positioned than S9 or S10 were.
+
+⚠ **The fingerprint/semantic-comparison decision recorded below was CORRECTED by review.** ⛔ A fingerprint
+is an equality oracle for **already-paired** objects — ⛔ it is **not** a join key and cannot discover
+which object corresponds to which. Equal content is not identity: this tree emits many rows with
+identical payloads. ⭐ **Declared pairing stays; what dies is the symbol-spelling negotiation.**
+⇒ `docs/method_prior_art_findings.md` carries the retractions.
+
+---
+
+### ⚠ INSTRUMENT TRACK — ⛔ NOTHING IS CLOSED, 2026-08-07
+
+⭐ Runs **parallel to S11**, ⛔ blocks nothing. Front door for the integration debt:
+`INTEGRATION_TODO.md`. Scope: `CROSS_STEP_DIMENSION_SCOPE.md`.
+
+| id | what | state | owed |
+|---|---|---|---|
+| **W3** | registry declares a dimension as a **law** bound to `Q.brane.D_brane` (`dimension_laws.py`, three brane quantities) | ⭐ **closed with W4:** the typed test duplicate is gone and committed engine operands police a single-sided registry change | production homogeneity still does not anchor the absolute coefficient; shared/common-mode re-derivation remains outside this pin |
+| **W2** | registry-dimension witness — compares **emitted** vs **declared** dimension vectors | ⛔ **BROKEN for S10**: a planted engine defect leaves `STATUS_COUNTS` byte-identical; the branch check short-circuits residual adjudication so the 4 S10 rows have **zero discriminating power** | ⛔ **fix round 2** — see below |
+| **W4** | rebuild the witness against W3's law-aware registry | ⭐ **closed:** five S9/S10/S11 engine transcripts are parsed; every engine operand, registry-law operand, and residual is printed before its guard | S11-Python's standing `3-D` local residual is a `D=3` specialisation artefact, not a physics disagreement |
+| **W1** | dimension type-check on registry substitutions | not started | — |
+| **W0** | engines emit `c_γ` itself (**route A**, user-decided) — ⚠ neither engine emits a non-squared speed, so R4 is red at **both** S9 and S10 | not started | one engine at a time, legs each |
+
+The production dimensional-homogeneity gate resolves the declared binding and
+checks relation homogeneity; it does not independently determine the absolute
+`D` coefficient.  Reduction tests now catch a registry-only coefficient change
+by comparing it with fixed committed symbolic engine output.  A synchronized
+registry/output change still requires independent re-derivation, and the
+medium-sector law/grammar work remains deferred.  The rerun fence is computed
+by `python reduction/registry_import_fence.py --list`, not by step number.
+
+#### ⛔ W2 fix round 2 — the owed list, from two legs with executed counterexamples
+
+1. ⛔⛔ **Row grain.** One row per `(artifact, quantity, branch_dimension)`. ⛔ The branch check must **not**
+   precede residual adjudication. ⚠ Today all four D-cells fold into one row and any off-registry branch
+   forces the whole row, hiding a real D=3 disagreement.
+2. ⚠ `BRANCH_DIMENSION_MISMATCH` is decided by **manifest selection alone** — a tautology that fires
+   unconditionally. ⛔ It must not be guarded while that is true. ⚠ The committed manifest ships the
+   calibration's **perturbed** condition (`dimensions: [2,3,4,5]`) as its baseline.
+3. ⛔ **Coverage invariant does not bind** — shrink the manifest to `S9-py` alone and everything is green,
+   exit 0, `8 passed` unchanged. Pin the required artifact scope **outside** the manifest.
+4. ⛔ `NOT_EMITTED` means *not selected*, ⛔ not *not emitted*. **`Q.brane.B_comp` has zero rows anywhere**
+   though both S11 engines emit it, and **S11-py is absent from the manifest** ⇒ **S11 has no dual-engine
+   comparison at all.**
+5. ⚠ **Multiplier** is correct everywhere but a *coordinated* wrong declaration greens the row where no
+   axis cross-check exists (exhibited on S11-wl `c_L`). ⭐ Require a second independent source or an axis
+   measurement on any multiplier-bearing source.
+6. ⚠ `python -m unittest test_registry_dimension_witness` → **`Ran 0 tests`** (free functions, not
+   `TestCase`). ⭐ Also: **there is no runner** — `INTEGRATION_TODO.md` item 1.
+
+⭐⭐ **The engine emits ONE law per quantity, identical in all four D-cells.** The four-value spread is the
+**witness's own arithmetic**. ⛔ Do not read it as engine output.
+
+#### ⭐ What is measured about the physics, at its real width
+
+⛔ **No physics defect was found.** Three independent parties derived the same verdict on the D question:
+engines correct per branch, registry correct at its declared `D_brane: 3`, and the gap was that nothing
+said so — now closed by W3.
+⛔⛔ **Two blindnesses are MEASURED, not hypothetical, and W3 does not touch either:**
+- **Common-mode:** shifting the length exponent of **all three** brane constituents together leaves **all
+  five relations `HOMOGENEOUS`**. ⇒ the gate anchors **differences**, ⛔ never absolute brane dimensions.
+- **Shared-spec:** a defect introduced identically into both engines is caught by **no layer**. Both legs
+  walked the stack. ⇒ independent re-derivation stays mandatory.
+
+---
+
+### ⚠ SUPERSEDED — the hold, kept for provenance
 
 ⭐ **The method decision, taken by the user 2026-08-07** ⇒ `docs/method_prior_art_findings.md`,
 [[project-method-prior-art-verdict]]:
@@ -94,14 +185,36 @@ would be a different artifact entirely.
 reach consensus **when no version has failed**. ⇒ ⛔ **no amount of spec care closes it**, which is why
 four spec repair rounds could not.
 
-### ⭐ WHAT S11 STILL OWES, when it resumes
+### ⭐ WHAT S11 STILL OWES — ⚠ REMEASURED 2026-08-07, ⛔ the previous version of this list was WRONG
 
-⛔ Both engines were built against the **pre-repair** spec. Each needs **one** aligned round:
-1. Replace per-premise tags with the single engine-local `PREMISE_INVENTORY`.
-2. Join `c_s0` into `KW_SIGN` and the `KW_ZERO_LOCUS` admissibility tests.
-3. Adopt `Q10`'s unconditional pinned failure object — ⭐ WL already emits it; ⛔ PY does not.
-4. ⛔ PY still emits **10** `POINT_RESIDUAL` tags; the spec now deletes that object.
-5. Emit **fingerprints** for the headline objects at the shared probe points.
+⛔⛔ **The earlier list said the engines were built against the pre-repair spec. They were not.** Both
+engines were **rebuilt and the spec repaired in the same commit** — `fc920079`, which supersedes
+`f49a1684`. ⇒ ⭐ **check this list against the spec before using it**; ⛔ a Codex build correctly refused a
+directive derived from the old version.
+
+⭐ Measured from the committed outputs and `S11_SHARED_PHYSICS.md`:
+
+| owed | state |
+|---|---|
+| `PREMISE_INVENTORY` — **one** tag per `(package, D)` | ⛔ absent in **both**. WL carries 17 distinct `PREMISE_*` suffixes, PY carries **23**. |
+| the pinned failure object (spec `:647`) | ⛔ **neither** engine emits it — WL has 11 non-pinned `Failure` payloads, PY has 10 zero matrices. |
+| `STRATUM1_POINT_RESIDUAL` — spec **forbids** it at `:549` | ⛔ PY emits **10**; WL emits **0**. ⚠ A specification artifact, ⛔ not a physics disagreement. |
+| `c_s0` in both admissibility sets (spec `:691-704`) | ⚠ in the spec; engine state **unconfirmed**. |
+
+⛔⛔ **NOT owed — ⛔ do not reinstate it:** *"emit fingerprints at shared probe points"* appears in **neither
+the spec nor either output**. ⚠ The fingerprint decision was **corrected by review** — a fingerprint is an
+equality oracle for **already-paired** objects, ⛔ never a join key.
+
+### ⛔⛔ `PREMISE_INVENTORY` is EXEMPT from corollary 5 — ⚠ the spec says so at `:887-901`
+
+> *"Corollary 5's live-read requirement does NOT apply to this tag. Several supplied premises are
+> qualitative or assert an **absence** — there is no live CAS object to read them from, and one must not be
+> manufactured."*
+
+⛔⛔ **Do not require it to be live-read.** ⚠ **Measured 2026-08-07:** the orchestrator wrote a decision list
+demanding exactly that, one paragraph after warning that a one-engine fix is a spec question first. ⇒ its
+only satisfiable outcome was an **invented** value ⇒ [[feedback-no-fabrication-forcing-rules]].
+⭐ Its entries are **declarations**, listed in whatever form the engine holds them.
 
 ⚠ **The two deferred engine defects DISSOLVED** — WL's missing §9 density premises and PY's 8 disconnected
 premise cells both vanish once premises are one engine-local inventory tag. ⛔ Do not fix them.

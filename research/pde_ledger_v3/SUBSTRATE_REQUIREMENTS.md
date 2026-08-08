@@ -1,6 +1,8 @@
 # Substrate requirements — what the force sectors oblige the unbuilt steps to deliver
 
-**Status: pass 1 complete (S9, S10).** Nine entries. The remaining passes are scheduled below.
+**Status: pass 1 complete (S9, S10).** Eleven entries. The remaining passes are scheduled below.
+⚠ The last two were added **2026-08-07 from a prior-art reading**, ⛔ not from a step record — see the note
+under `R-S8-05`. That route is not in the pass method below and probably should be.
 
 ## Why this exists
 
@@ -66,8 +68,13 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10 |
 | **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10 |
 | **S8** | `R-S8-03` | the **sign** of the brane's stiffness coefficient | S9, S10 |
+| **S8** | `R-S8-04` | what carries the brane's **internal angular momentum** | S9, S10, S11 |
+| **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11 |
 
-⚠ Entries below are in the order they were found, ⛔ not in step order. All **nine** are **OPEN**.
+⚠ Entries below are in the order they were found, ⛔ not in step order. All **eleven** are **OPEN**.
+⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
+**mechanical admissibility**, and its **reference frame**. ⛔ Delivering the form does not deliver the
+other three.
 ⚠ `R-S1-01`'s id encodes its original target; the id is stable and the **target** field governs.
 
 ### R-S6-01 — `B_comp` must be retired or re-affirmed
@@ -220,6 +227,53 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
   delivers the stiffness functional delivers its sign with it, so the retirement condition is exactly
   as live as `R-S8-01`'s.
 
+### R-S8-04 — what carries the brane's internal angular momentum
+
+- **source** S9, S10, S11 · **target** S8 · **status** OPEN
+- **requirement** — the object in the substructure that carries **internal angular momentum** on the brane,
+  or the couple-stress it supports. ⛔ Not a mechanism, ⛔ not a model: the object, or a statement that there
+  is none.
+- **on failure** — ⛔⛔ **the curl-only stiffness functional is not an admissible continuum mechanics.** An
+  energy in `(∇×u)²` alone has an **antisymmetric** Cauchy stress, and balance of angular momentum forces
+  the Cauchy stress to be **symmetric** unless the medium carries distributed couples or internal spin. If
+  the substructure supplies neither, the light sector's central form is inadmissible **regardless of its
+  mode content** — S9's and S10's mode counts, dimensions and speeds would all be computed from a
+  functional no medium can have.
+- **note** — ⚠ **This is the objection that sank MacCullagh's aether**, and it is the one part of that
+  theory the 19th century never answered: Stokes pressed it, and Kelvin's gyrostatic models were attempts to
+  supply exactly this object. ⇒ ⭐ **prior art is the oracle here** — it tells us the obligation is real and
+  that answers exist, ⛔ it tells us nothing about whether **ours** delivers one ⇒ `CLAUDE.md` rule 16.
+  ⭐ Known families a delivered answer might fall into, ⛔ **none assumed and none prescribed**: continua
+  with an independent microrotation degree of freedom (Cosserat/micropolar), and media with stored internal
+  angular momentum.
+  ⛔ **One family is the wrong one and should not be reached for:** modern *odd elasticity* buys an
+  antisymmetric modulus tensor by making the solid **active and non-conservative**. MacCullagh's medium is
+  **conservative** — it has a genuine energy functional — so a non-conservative realisation would be
+  answering a different question.
+  ⚠ `R-S8-01` asks for the **form** and is silent on admissibility; a substructure could deliver the
+  curl-only form and still owe this.
+
+### R-S8-05 — the frame the brane's rotational stiffness is measured against
+
+- **source** S9, S10, S11 · **target** S8 · **status** OPEN
+- **requirement** — the frame with respect to which the brane's rotational stiffness is defined: **what
+  `∇×u` is measured against.**
+- **on failure** — for an infinitesimal rigid rotation `u = ω × r` the curl is `2ω ≠ 0`, so a curl-only
+  energy is **nonzero when the whole medium is turned**. ⇒ if the reference is external, the medium knows
+  an absolute orientation, and every result in the sector inherits a preferred-orientation signature that
+  something later must hide. ⛔ That is a falsifiable consequence, ⛔ not a philosophical discomfort.
+- **note** — ⭐ **A brane may escape this where a bulk aether cannot**, and the difference is the whole
+  point of the entry. For a bulk medium *"rotation relative to what"* has no local answer — the 1839
+  objection. For a **domain wall**, the wall supplies its own local frame (its normal, its induced
+  geometry), rotation relative to the wall is meaningful and local, and rotating everything rotates the wall
+  too ⇒ the stiffness would be **relative**, and the objection would not arise.
+  ⚠⚠ **That is a HYPOTHESIS, ⛔ not a result.** Nothing in the corpus computes it. The slab-in-bulk
+  calculation is where it is settled ⇒ **S11b-A** (interface response) is the existing partial artifact,
+  built under the old pattern and on the rebuild list.
+  ⚠ **A flowing medium does NOT answer this.** Flow bears on the **velocity** frame — whether a background
+  drift is detectable — and the analog-gravity route hides it in an effective metric. ⛔ Orientation is a
+  **separate** objection: being carried is not being turned. ⇒ ⭐ do not let one argument discharge both.
+
 ---
 
 ## Population passes
@@ -255,6 +309,19 @@ Two things to watch for, both seen already:
   law, which is a sibling step, not a substrate one.
 - The same object can be required by several sectors. Charge and magnetism ride the same brane–bulk
   coupling as light, so an entry may gain sources rather than being duplicated.
+
+⭐⭐ **A SECOND ROUTE, added 2026-08-07 — ⛔ the method above would never have found `R-S8-04` or `R-S8-05`.**
+Both came from asking, of a **known prior result our sector reproduces**, *why was it rejected in its own
+time, and has that objection been answered here?* ⛔ Neither is anywhere in S9's or S10's records, because
+the records only capture what their authors thought to doubt — and the sector reproduces MacCullagh's
+algebra so cleanly that the objection to it never came up.
+
+⇒ ⭐ **Run this route for every sector with identified prior art**, ⛔ not only the light sector.
+⚠ It is the sharpest use of `CLAUDE.md` rule 16 available: the prior work's **failure modes** transfer as
+obligations even where its **results** transfer as corroboration — and a result that matches prior art
+tells you nothing about whether you inherited its problems.
+⚠⚠ **The tell that this was overdue:** the closer a sector's agreement with prior art, the *less* anyone
+thinks to ask what that prior art could not do. ⇒ ⛔ a clean reproduction is exactly when to run it.
 
 **Honest sizing, now measured rather than guessed.** Pass 1 read two records and produced **seven**
 entries, bringing the file from two entries to **nine total**, from a third of the sector. ⚠ That rate

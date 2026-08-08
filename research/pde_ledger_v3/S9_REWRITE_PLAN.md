@@ -133,3 +133,49 @@ removed until the replacement runs on S9 → S10.
 4. Import into S10 and make S10 run against it.
 5. Write the knob extractor.
 6. Run the verification list.
+
+---
+
+## ⭐⭐ Decisions — ⛔ a builder does not choose these
+
+⚠ A comprehension check found **eleven** places where two reasonable implementations were possible. ⭐ Each
+is settled here. ⛔ Where it says *builder's choice*, it means the choice genuinely does not matter and the
+builder should not ask.
+
+**D1 · What counts as an end derivation.** ⭐ Export **every object S9's `MAIN` package emits.** The control
+packages (`X1`–`X8`) are ablation **evidence**, ⛔ not exports. ⚠ S9 has **no** `LOCAL_` convention — that is
+an S11 innovation and is not available here — so package membership is the boundary. ⭐ Mechanical, ⛔ no
+per-object judgement, and it errs toward exporting more.
+
+**D2 · The named collection's form.** ⭐ Builder's choice.
+
+**D3 · Reconstruction format.** ⭐ Use a form SymPy reconstructs **exactly**, and ⭐ **verify the round trip
+in the run** — reconstruct what was written and compare against the live object. ⭐ Carry a human-readable
+rendering alongside it, since hand-checking is an intended use.
+
+**D4 · Dimension representation.** ⭐ Write it in whatever shape the engine's own dimension solve produces.
+⛔ Do not reformat, normalise, or re-type it.
+
+**D5 · Export API shape.** ⭐ Builder's choice, ⭐ provided an object, its dimension and its class are
+associable **by name**.
+
+**D6 · Extractor scan scope.** ⭐ An explicit list of files, passed in. ⭐ For this change that list is S9's
+and S10's SymPy engines. ⛔ Do not discover engines by globbing.
+
+**D7 · Knob inventory versus overwrite.** ⭐ A knob is undetermined **as of a step**. ⇒ the per-step
+inventory is what that step consumed and did not derive. ⭐ The **frontier** is the union across steps minus
+anything a later step derives — and the overwrite is what marks that. ⛔ There is no global "is this a knob"
+flag.
+
+**D8 · Annotation grammar.** ⭐ `# TAG · English description`, on the declaration line, one tag per
+declaration, `TAG` from the closed set. ⛔ Nothing else on that line.
+
+**D9 · The baseline for "same values as before".** ⭐ Run S9 **as it is today** and capture its emissions
+keyed by tag name **before any edit**. That snapshot is the baseline and is committed first.
+⛔ Do not reconstruct a baseline afterwards from memory or from the report.
+
+**D10 · How "same value" is decided.** ⭐ Emit **both operands and the residual**, then guard on the
+residual. ⛔ Not a boolean comparison with the answer typed beside it.
+
+**D11 · Cross-engine object matching.** ⭐ Use the pairs already declared in `checks_S9.yaml`'s cross-engine
+section. ⛔ Do not invent a new correspondence mechanism in this change.

@@ -242,13 +242,13 @@ def q_form(expression):
 length_dimension = sp.Matrix([1, 0, 0])  # STRUCTURAL · length unit-basis marker
 time_dimension = sp.Matrix([0, 1, 0])  # STRUCTURAL · time unit-basis marker
 mass_dimension = sp.Matrix([0, 0, 1])  # STRUCTURAL · mass unit-basis marker
-acceleration_dimension = length_dimension - 2 * time_dimension  # DERIVED · acceleration unit relation
-force_dimension = mass_dimension + acceleration_dimension  # DERIVED · force unit relation
-energy_dimension = force_dimension + length_dimension  # DERIVED · energy unit relation
-energy_density_dimension = energy_dimension - D * length_dimension  # PREMISE · action-density reference supplied to the solver
-field_dimension = length_dimension  # PREMISE · displacement-field unit reference
-q_dimension = -2 * length_dimension  # PREMISE · wave-norm placeholder unit reference
-squared_velocity_dimension = 2 * (length_dimension - time_dimension)  # PREMISE · velocity-squared reference supplied for comparison
+acceleration_dimension = length_dimension - 2 * time_dimension  # DERIVED · computed on the way to a supplied reference
+force_dimension = mass_dimension + acceleration_dimension  # DERIVED · computed on the way to a supplied reference
+energy_dimension = force_dimension + length_dimension  # DERIVED · computed on the way to a supplied reference
+energy_density_dimension = energy_dimension - D * length_dimension  # PREMISE · supplied reference used as the dimension-solve target
+field_dimension = length_dimension  # PREMISE · supplied reference used by the dimension walk
+q_dimension = -2 * length_dimension  # PREMISE · supplied reference used by the dimension walk
+squared_velocity_dimension = 2 * (length_dimension - time_dimension)  # PREMISE · supplied reference used for the speed-dimension residual
 
 
 class DimensionWalkError(Exception):
@@ -475,7 +475,7 @@ def derive(
         )
         for root in roots
     ]
-    quadratic_scaled_roots = [lambda_scale**2 * root for root in roots]
+    quadratic_scaled_roots = [lambda_scale**2 * root for root in roots]  # PREMISE · supplied quadratic scaling reference
     scaling_residuals = [
         sp.simplify(scaled - quadratic_scaled)
         for scaled, quadratic_scaled in zip(scaled_roots, quadratic_scaled_roots)
@@ -807,7 +807,7 @@ def write_exports():
         if suffix.startswith("_"):
             continue
         name = suffix.lower()
-        class_tag = output_class_for(value)
+        class_tag = "PREMISE" if suffix == "ROOT_SCALING_QUADRATIC" else output_class_for(value)
         dimension = computed_dimension_for(value)
         live_records.append((name, value, class_tag, dimension))
         source_lines.extend(generated_record_lines(name, value, class_tag, dimension))

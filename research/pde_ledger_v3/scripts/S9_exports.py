@@ -174,7 +174,7 @@ LEDGER = {
     'root_scaling_quadratic': {
         'value': _restore("[Integer(0), Mul(Pow(Symbol('lambda_scale', positive=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
         'display': '[0, lambda_scale**2*mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
-        'class': 'DERIVED',
+        'class': 'PREMISE',
         'step': 'S9',
     },
     'root_scaling_residual': {

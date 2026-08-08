@@ -128,6 +128,20 @@ consistent, and every undetermined value tracked. ⭐ The new answer is **datafl
 each step's SymPy engine writes a flat `LEDGER` the next step imports; each Wolfram engine stays siloed and
 re-derives, which is where contention lives.
 
+### ⭐⭐ STANDING CONVENTION — emitted names are the STANDARD NAME OF THE OBJECT
+
+⭐⭐ **Every engine emits the name the mathematics uses** — `rho_br`, `mu_R`, `B_comp`, `c_gamma` — ⛔ not a
+per-engine spelling. ⭐ A name belongs to the **object**, ⛔ not to the engine that computed it, and ⛔ neither
+engine is the authority.
+
+⚠ **Mathematica cannot use underscores in variable names — ⭐ irrelevant.** ⭐ Internal variables stay
+whatever WL needs (`rhoBr`); ⭐ only the **string in the emit call** carries the standard name.
+
+⚠ **What the alternative cost, measured:** `checks_S10.yaml` is **3,121 lines**, ~690 rows, **91% a
+hand-written name→name pair list**, existing for one reason — the engines named the same objects
+differently. ⇒ ⭐ a full day of 2026-08-07/08 went into cross-checking names rather than physics.
+⇒ ⛔ **Never hand-author a cross-engine pair table again.** ⭐ Fix the names instead.
+
 ### ⛔⛔ FIRST TASK NEXT SESSION — CLEANUP, ⛔ before any building
 
 ⚠ **`reduction/` accumulated 20 files in one commit** (`b8ade918`) and it is scaffolding for the abandoned

@@ -265,22 +265,29 @@ keyed by tag name **before any edit**. That snapshot is the baseline and is comm
 **D10 · How "same value" is decided.** ⭐ Emit **both operands and the residual**, then guard on the
 residual. ⛔ Not a boolean comparison with the answer typed beside it.
 
-**D11 · Cross-engine object matching — ⭐ BY NAME. ⛔ Superseded the pair list.**
+**D11 · Names are the STANDARD NAME OF THE MATHEMATICAL OBJECT — ⛔ neither engine is the authority.**
 
-⭐ **The Wolfram engine names a computed object exactly as the SymPy export names it.** ⇒ post-run
-comparison is a lookup by name, ⛔ not a hand-written pair table.
+⭐⭐ **A name belongs to the object, ⛔ not to the engine that computed it.** Both engines emit `rho_br`,
+`mu_R`, `B_comp`, `c_gamma` — ⭐ the names the physics uses. ⇒ comparison is a **lookup**, ⛔ never a
+hand-written pair table.
 
-⚠ Today the two diverge completely — `WL_S9_RHO_DIMENSION` against `PY_S9_MAIN_DIM_PRIMARY_INERTIA` — and
-that divergence is the *only* reason `checks_S9.yaml`'s pair list exists. ⇒ ⭐ once the names agree, the
-pair list has no content and dies with the rest of `reduction/`.
+⚠ **STANDING CONVENTION for every step, ⛔ not an S9 detail.**
 
-⭐ Where only one engine derives an object (WL's solver-condition tags, py-only bookkeeping), ⭐ it simply
-has no counterpart. ⛔ That is not a defect and ⛔ nothing should be invented to pair it.
+⚠ **What the alternative has cost, measured:** `checks_S10.yaml` is **3,121 lines**, ~690 rows, **91% a
+hand-written name→name pair list** — an artifact existing for **one reason**: the two engines named the same
+objects differently. ⇒ ⭐ a full day of this session went into cross-checking names instead of physics.
+
+⭐ Where only one engine derives an object, ⭐ it simply has no counterpart. ⛔ Not a defect; ⛔ invent
+nothing to pair it.
 
 **D12 · What may change in a `.wl` engine.**
-⭐ **Emitted names only.** ⛔ No change to the derivation, the action, the ansatz, the premises, or any
-computed value.
-⭐ The rename must be shown to be a rename: **same values, new names**, against the committed output.
-⚠ ⭐ A name is not a value ⇒ ⛔ this does not leak anything and ⛔ does not weaken the silo. ⭐ The Wolfram
-engine still imports nothing and still re-derives the action independently — ⭐ that, and only that, is what
-makes it a check.
+⭐ **The emitted name string only.** ⛔ No change to the derivation, the action, the ansatz, the premises, or
+any computed value.
+
+⚠ **Mathematica cannot use underscores in variable names — ⭐ irrelevant here.** ⭐ Internal variables stay
+whatever WL needs (`rhoBr`, `muR`); ⭐ only the **string in the emit call** carries the standard name:
+`emit["rho_br_dimension", rhoBrDimension]`.
+
+⭐ Show the rename **is** a rename: same values, new names, against the committed output.
+⚠ ⭐ A name is not a value ⇒ ⛔ nothing leaks, ⛔ the silo is untouched. ⭐ The Wolfram engine still imports
+nothing and still re-derives the action independently — ⭐ that, and only that, makes it a check.

@@ -3,7 +3,7 @@
 Read `CLAUDE.md` first (how we work), then this (where we are).
 Process detail: `docs/development_pipeline.md`. Defects: `DEFECT_REGISTER.md`.
 
-Last updated 2026-08-06, after S11's shared spec closed.
+Last updated 2026-08-08. ⛔ The registry design is ABANDONED — read `S9_REWRITE_PLAN.md` before anything else.
 
 ---
 
@@ -24,31 +24,23 @@ typed sentences with no CAS object behind them, missed by eight review legs.
 S12 onward does not exist yet, so every remaining step in every remaining sector gets built under the new
 pattern the first time. This tax is paid once.
 
-### The pattern each rebuilt step must follow
+### ⛔⛔ THE PATTERN CHANGED 2026-08-08 — ⭐ read `S9_REWRITE_PLAN.md`
 
-1. Both engines emit **CAS objects** as tagged payloads. No typed conclusions; a residual asserted zero
-   always prints `0` and carries no information — emit both operands and the residual, then guard.
-2. A **`reduction/checks_S<n>.yaml`** declaring cross-engine pairs, the control matrix, dimension sources
-   per engine and package, and action families. This is the mechanical tie-in to the harness.
-3. The harness runs and the **step record cites what it measured**, not what the author concluded.
-4. **Requirements-register entries** fall out of the same read ⇒ `SUBSTRATE_REQUIREMENTS.md`.
-5. ⭐⭐ **NEW 2026-08-07 — state which registry quantities this step PRODUCES and which it CONSUMES; emit
-   each in the form the registry declares it; mark each emission DERIVED or DECLARED.**
-   ⚠ **This is the cheapest item on the list and skipping it has already cost twice:** S9 and S10 emit the
-   photon speed only as a **square**, so `Q.brane.c_gamma` is bound to a squared-speed tag and **R4's
-   cross-step residual has been NONZERO at BOTH steps since they closed** — carried as a note at S9 and
-   unmentioned at S10. ⇒ ⛔ Free to state before an engine is written; costs an engine rebuild afterwards.
+⛔ **The old pattern told you to write a `reduction/checks_S<n>.yaml` and register quantities.** ⛔ That
+design is abandoned. ⛔ Do not build it for any step.
 
-S10 is the worked example of items 1–4; ⛔ **it does not satisfy item 5.**
+⭐ **The pattern now:**
 
-⇒ ⭐⭐ **OPEN INTEGRATION DEBT — `INTEGRATION_TODO.md`.** ⚠ New `reduction/` checks exist that **nothing
-runs and no step record cites**: there is **no runner**, and S9's and S10's records cite exactly one check
-each (`engine_output_checks.py`). A registry-dimension witness now compares emitted dimension vectors
-against `quantities.yaml` — the first oracle outside a step's own specification — and **its measurement of
-S9/S10 is recorded nowhere.** ⛔ Read `INTEGRATION_TODO.md` before starting new step work.
-⚠ The witness is **under review and not settled**; ⛔ do not cite its numbers until both legs report.
-⛔ **Also open: `quantities.yaml` cannot express a D-dependent dimension** — every `Q.brane.*` entry is
-silently a D=3 specialisation while S10 varies D = 2…5. ⚠ Nobody is measurably wrong; ⛔ nothing says so.
+1. Both engines emit **CAS objects**. ⛔ No typed conclusions; a residual asserted zero always prints `0`
+   and carries no information — ⭐ emit both operands and the residual, then guard.
+2. ⭐ **Both engines emit the STANDARD NAME of each object** (below). ⇒ comparison is a lookup.
+3. ⭐ The **SymPy** engine writes a flat `LEDGER` the next step imports; ⭐ the **Wolfram** engine imports
+   nothing and re-derives independently. ⇒ consistency by dataflow, contention py-vs-wl within a step.
+4. ⭐ Every declared symbol carries a **class tag and an English description** —
+   `KNOB · STRUCTURAL · COORDINATE · CONTROL · PREMISE · DERIVED`.
+   ⛔⛔ **NEVER annotate what the computation will produce** — no value, dimension, count or sign.
+5. ⭐ The step record **cites what it measured**, ⛔ not what the author concluded.
+6. ⭐ Requirements-register entries fall out of the same read ⇒ `SUBSTRATE_REQUIREMENTS.md`.
 
 ---
 

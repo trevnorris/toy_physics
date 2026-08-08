@@ -27,7 +27,7 @@ LEDGER = {
         'class': 'PREMISE',
         'step': 'S9',
     },
-    'q_dimension': {
+    'wavevector_norm_dimension': {
         'display': 'Matrix([\n[-2],\n[ 0],\n[ 0]])',
         'value': _restore('MutableDenseMatrix([[Integer(-2)], [Integer(0)], [Integer(0)]])'),
         'class': 'PREMISE',

@@ -766,7 +766,6 @@ def generated_record_lines(name, value, class_tag, dimension=None):
 def write_exports():
     main_outputs = all_outputs["MAIN"]
     assert set(posited_output_classes) <= set(main_outputs)
-    assert set(posited_output_classes.values()) <= set(CLASS_TAGS)
     classes = declaration_classes(Path(__file__))
     exported_inputs = [
         (name, globals()[name], class_tag)
@@ -775,7 +774,7 @@ def write_exports():
     ]
     exported_inputs.extend([
         ("field_dimension", field_dimension, "PREMISE"),
-        ("q_dimension", q_dimension, "PREMISE"),
+        ("wavevector_norm_dimension", q_dimension, "PREMISE"),
     ])
     computed_dimensions = [
         *main_outputs["DIM_COEFFICIENTS"],
@@ -823,12 +822,15 @@ def write_exports():
     reconstructed_ledger = reconstructed_namespace["LEDGER"]
     live_count = len(live_records)
     residuals = []
-    for name, value, _, dimension in live_records:
+    for name, value, class_tag, dimension in live_records:
         record = reconstructed_ledger[name]
         residuals.append(sp.Integer(not exact_reconstruction_match(value, record["value"])))
         if dimension is not None:
             residuals.append(sp.Integer(not exact_reconstruction_match(dimension, record["dim"])))
+        residuals.append(sp.Integer(class_tag != record["class"]))
+        residuals.append(sp.Integer("S9" != record["step"]))
     roundtrip_residual = sum(residuals, sp.Integer(0))
+    roundtrip_count_residual = sp.Integer(live_count - len(reconstructed_ledger))
     computed_dimension_count = sum("dim" in record for record in reconstructed_ledger.values())
     absent_dimension_count = len(reconstructed_ledger) - computed_dimension_count
     class_tally = sp.Tuple(*(
@@ -838,13 +840,21 @@ def write_exports():
         )
         for class_tag in CLASS_TAGS
     ))
+    class_tally_residual = sp.Integer(len(reconstructed_ledger)) - sum(
+        (count for _, count in class_tally),
+        sp.Integer(0),
+    )
     emit("EXPORT_ROUNDTRIP_LIVE_COUNT", sp.Integer(live_count))
     emit("EXPORT_ROUNDTRIP_RECONSTRUCTED_COUNT", sp.Integer(len(reconstructed_ledger)))
+    emit("EXPORT_ROUNDTRIP_COUNT_RESIDUAL", roundtrip_count_residual)
     emit("EXPORT_ROUNDTRIP_RESIDUAL", roundtrip_residual)
     emit("EXPORT_COMPUTED_DIMENSION_COUNT", sp.Integer(computed_dimension_count))
     emit("EXPORT_ABSENT_DIMENSION_COUNT", sp.Integer(absent_dimension_count))
     emit("EXPORT_CLASS_TALLY", class_tally)
+    emit("EXPORT_CLASS_TALLY_RESIDUAL", class_tally_residual)
+    assert roundtrip_count_residual == 0
     assert roundtrip_residual == 0
+    assert class_tally_residual == 0
 
 
 write_exports()

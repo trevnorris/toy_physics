@@ -1,6 +1,21 @@
 $HistoryLength = 0;
 ClearAll["Global`*"];
 
+standardEmissionNames = <|
+  "WL_S9_DETERMINANT" -> "WL_S9_FACTORED_DETERMINANT",
+  "WL_S9_ROOT_MULTISET" -> "WL_S9_FULL_ROOT_MULTISET",
+  "WL_S9_ROOT2_E2" -> "WL_S9_TRANSVERSE_MULTIPLICITY",
+  "WL_S9_CANDIDATE_SPEED_SQUARED1" -> "WL_S9_TRANSVERSE_SPEED_SQUARED",
+  "WL_S9_X7_ROOT1_SCALING_RESIDUAL" -> "WL_S9_DISPERSION_SCALING_RESIDUAL_FLEXURAL",
+  "WL_S9_RHO_DIMENSION" -> "WL_S9_INERTIA_COEFFICIENT_DIMENSION",
+  "WL_S9_MU_DIMENSION" -> "WL_S9_STIFFNESS_COEFFICIENT_DIMENSION",
+  "WL_S9_MU_RHO_DIMENSION_DIFFERENCE" -> "WL_S9_COEFFICIENT_DIMENSION_DIFFERENCE",
+  "WL_S9_SPEED_SQUARED_IMPLIED_DIMENSION" -> "WL_S9_IMPLIED_SPEED_DIMENSION",
+  "WL_S9_SPEED_SQUARED_DIMENSION_DIFFERENCE" -> "WL_S9_SPEED_DIMENSION_DIFFERENCE",
+  "WL_S9_DYNAMICAL_MATRIX_RESIDUAL" -> "WL_S9_DYNAMICAL_MATRIX_ROUTE_RESIDUAL",
+  "WL_S9_X8_MU_G_DIMENSION" -> "WL_S9_BARE_FIELD_COEFFICIENT_DIMENSION"
+|>;
+
 (* Supplied premise P1: the medium has GNLS-superfluid substructure. *)
 (* Supplied premise P2: a scalar one-component superfluid has no spin-1 transverse excitation. *)
 (* Supplied premise P3: the brane is a symbolic D-dimensional sheet in a higher-dimensional bulk. *)
@@ -8,10 +23,10 @@ ClearAll["Global`*"];
 (* Supplied premise P5: the brane stiffness has the MacCullagh curl-only form. *)
 (* Supplied premise P6: response is linear about an unstrained brane at rest, without dissipation. *)
 emittedTags = {};
-emit[tag_, value_] := Module[{},
-  If[MemberQ[emittedTags, tag], Exit[91]];
-  AppendTo[emittedTags, tag];
-  Print[tag <> ": " <> ToString[value, InputForm]]
+emit[tag_, value_] := Module[{emittedTag = Lookup[standardEmissionNames, tag, tag]},
+  If[MemberQ[emittedTags, emittedTag], Exit[91]];
+  AppendTo[emittedTags, emittedTag];
+  Print[emittedTag <> ": " <> ToString[value, InputForm]]
 ];
 
 fieldHeads = {u1, u2, u3};

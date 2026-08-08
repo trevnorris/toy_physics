@@ -2,25 +2,30 @@
 """Independent SymPy audit for ledger step S9."""
 
 import re
+from pathlib import Path
 
 import sympy as sp
 
 
 # Field, coordinate, amplitude, and material symbols.
-t, x, y, z = sp.symbols("t x y z", real=True)
+t, x, y, z = sp.symbols("t x y z", real=True)  # COORDINATE · spacetime coordinates
 coordinates = (t, x, y, z)
 spatial_coordinates = (x, y, z)
-u_functions = tuple(sp.Function(name)(t, x, y, z) for name in ("u1", "u2", "u3"))
-a_symbols = sp.symbols("a1 a2 a3", real=True)
-b_symbols = sp.symbols("b1 b2 b3", real=True)
-omega = sp.symbols("omega", real=True)
-omega2 = sp.symbols("omega2", real=True)
-k_input = sp.symbols("kx ky kz", real=True)
-rho_br, mu_R, rho_z, mu_F, mu_G = sp.symbols("rho_br mu_R rho_z mu_F mu_G", positive=True)
-lambda_rho, lambda_mu = sp.symbols("lambda_rho lambda_mu", positive=True)
-D = sp.symbols("D", integer=True, positive=True)
-q = sp.symbols("q", positive=True)
-lambda_scale = sp.symbols("lambda_scale", positive=True)
+u_functions = tuple(sp.Function(name)(t, x, y, z) for name in ("u1", "u2", "u3"))  # PREMISE · brane displacement field heads
+a_symbols = sp.symbols("a1 a2 a3", real=True)  # PREMISE · plane-wave amplitudes
+b_symbols = sp.symbols("b1 b2 b3", real=True)  # PREMISE · paired plane-wave amplitudes
+omega = sp.symbols("omega", real=True)  # COORDINATE · spectral-frequency variable
+omega2 = sp.symbols("omega2", real=True)  # COORDINATE · squared-frequency polynomial variable
+k_input = sp.symbols("kx ky kz", real=True)  # COORDINATE · wavevector components
+rho_br = sp.Symbol("rho_br", positive=True)  # KNOB · brane inertia density not derived here
+mu_R = sp.Symbol("mu_R", positive=True)  # KNOB · brane shear modulus not derived here
+rho_z = sp.Symbol("rho_z", positive=True)  # CONTROL · anisotropic inertia coefficient
+mu_F = sp.Symbol("mu_F", positive=True)  # CONTROL · flexural ablation coefficient
+mu_G = sp.Symbol("mu_G", positive=True)  # CONTROL · bare-field ablation coefficient
+lambda_rho, lambda_mu = sp.symbols("lambda_rho lambda_mu", positive=True)  # CONTROL · coefficient ablation scales
+D = sp.symbols("D", integer=True, positive=True)  # STRUCTURAL · brane spatial dimension
+q = sp.symbols("q", positive=True)  # COORDINATE · wave-norm placeholder
+lambda_scale = sp.symbols("lambda_scale", positive=True)  # CONTROL · wavevector homogeneity scale
 
 
 def curl_of(field):
@@ -329,7 +334,7 @@ def expression_dimension(expression, dimension_lookup, dimensionless_symbols):
 def dimension_block(action, dimensional_coefficients, primary_inertia, primary_stiffness, dimensionless_symbols):
     dimension_variables = {
         coefficient: sp.Matrix(
-            [sp.Symbol(f"dim_{coefficient}_{axis}") for axis in ("L", "T", "M")]
+            [sp.Symbol(f"dim_{coefficient}_{axis}") for axis in ("L", "T", "M")]  # DERIVED · coefficient-axis solver unknowns
         )
         for coefficient in dimensional_coefficients
     }
@@ -596,6 +601,84 @@ if "X6" in all_outputs:
     )
 
 
+def unique_item(items):
+    materialised = list(items)
+    assert len(materialised) == 1
+    return materialised[0]
+
+
+main_name_changes = {
+    "DET_M_FACTORED": "FACTORED_DETERMINANT",
+    "ROOT_MULTISET": "FULL_ROOT_MULTISET",
+    "DIM_PRIMARY_INERTIA": "INERTIA_COEFFICIENT_DIMENSION",
+    "DIM_PRIMARY_STIFFNESS": "STIFFNESS_COEFFICIENT_DIMENSION",
+    "DIM_STIFFNESS_MINUS_INERTIA": "COEFFICIENT_DIMENSION_DIFFERENCE",
+}
+standard_emission_names = frozenset({
+    "FACTORED_DETERMINANT",
+    "FULL_ROOT_MULTISET",
+    "TRANSVERSE_MULTIPLICITY",
+    "TRANSVERSE_SPEED_SQUARED",
+    "DISPERSION_SCALING_RESIDUAL_FLEXURAL",
+    "INERTIA_COEFFICIENT_DIMENSION",
+    "STIFFNESS_COEFFICIENT_DIMENSION",
+    "COEFFICIENT_DIMENSION_DIFFERENCE",
+    "IMPLIED_SPEED_DIMENSION",
+    "SPEED_DIMENSION_DIFFERENCE",
+    "DYNAMICAL_MATRIX_ROUTE_RESIDUAL",
+    "BARE_FIELD_COEFFICIENT_DIMENSION",
+})
+main_computed_dimension_names = set()
+
+if "MAIN" in all_outputs:
+    main_outputs = all_outputs["MAIN"]
+    main_computed_dimension_names = {
+        main_name_changes.get(name, name)
+        for name in main_outputs
+        if not name.startswith("_") and name.startswith("DIM_")
+    }
+    main_outputs = {
+        main_name_changes.get(name, name): value
+        for name, value in main_outputs.items()
+    }
+    all_outputs["MAIN"] = main_outputs
+
+    transverse_roots = set(main_outputs["ROOTS_PASSING_E1"])
+    transverse_multiplicity = unique_item(
+        multiplicity
+        for root, multiplicity in main_outputs["ROOT_E2"]
+        if root in transverse_roots
+    )
+    transverse_speed_squared = unique_item(main_outputs["SPEED_SQUARED_CANDIDATES"])
+    route_operand_a, route_operand_b, route_residual = main_outputs["ROUTE_OPERANDS_AND_RESIDUAL"]
+    del route_operand_a, route_operand_b
+    implied_speed_dimensions = [dimension for _, dimension in main_outputs["DIM_SPEED_FROM_EXPRESSION"]]
+    speed_dimension_differences = [dimension for _, dimension in main_outputs["DIM_SPEED_DIFFERENCE"]]
+    main_outputs.update({
+        "TRANSVERSE_MULTIPLICITY": transverse_multiplicity,
+        "TRANSVERSE_SPEED_SQUARED": transverse_speed_squared,
+        "DYNAMICAL_MATRIX_ROUTE_RESIDUAL": route_residual,
+        "IMPLIED_SPEED_DIMENSION": implied_speed_dimensions,
+        "SPEED_DIMENSION_DIFFERENCE": speed_dimension_differences,
+    })
+    main_computed_dimension_names.update({
+        "IMPLIED_SPEED_DIMENSION",
+        "SPEED_DIMENSION_DIFFERENCE",
+    })
+
+if "X7" in all_outputs:
+    all_outputs["X7"]["DISPERSION_SCALING_RESIDUAL_FLEXURAL"] = unique_item(
+        all_outputs["X7"]["ROOT_SCALING_RESIDUAL"]
+    )
+
+if "X8" in all_outputs:
+    all_outputs["X8"]["BARE_FIELD_COEFFICIENT_DIMENSION"] = unique_item(
+        dimension
+        for coefficient, dimension in all_outputs["X8"]["DIM_COEFFICIENTS"]
+        if coefficient == mu_G
+    )
+
+
 emitted_tags = set()
 
 
@@ -623,7 +706,8 @@ for control_name in actions:
     if control_name in all_outputs:
         for suffix, value in all_outputs[control_name].items():
             if not suffix.startswith("_"):
-                emit(f"{control_name}_{suffix}", value)
+                emitted_name = suffix if suffix in standard_emission_names else f"{control_name}_{suffix}"
+                emit(emitted_name, value)
     if control_name in fatal_outputs:
         for suffix, value in fatal_outputs[control_name].items():
             emit(f"{control_name}_{suffix}", value)
@@ -638,3 +722,97 @@ for control_name, guards in all_guards.items():
 
 if fatal_outputs:
     raise SystemExit(1)
+
+
+def reconstruction_expression(value):
+    return sp.srepr(value)
+
+
+def exact_reconstruction_match(live_value, reconstructed_value):
+    return type(live_value) is type(reconstructed_value) and sp.srepr(live_value) == sp.srepr(reconstructed_value)
+
+
+def generated_record_lines(name, value, class_tag, dimension_marker=False, dimension=None):
+    lines = [
+        f"    {name!r}: {{",
+        f"        'value': _restore({reconstruction_expression(value)!r}),",
+        f"        'display': {sp.sstr(value)!r},",
+    ]
+    if dimension_marker:
+        lines.append(f"        'dim': _restore({reconstruction_expression(dimension)!r}),")
+    lines.extend([
+        f"        'class': {class_tag!r},",
+        "        'step': 'S9',",
+        "    },",
+    ])
+    return lines
+
+
+def write_exports():
+    main_outputs = all_outputs["MAIN"]
+    coefficient_dimensions = dict(main_outputs["DIM_COEFFICIENTS"])
+    knobs = (
+        ("rho_br", rho_br, coefficient_dimensions[rho_br]),
+        ("mu_R", mu_R, coefficient_dimensions[mu_R]),
+    )
+    source_lines = [
+        "# S9_exports.py — GENERATED by S9_light_requires_shear_sympy_audit.py. Do not edit.",
+        "import sympy as sp",
+        "",
+        "",
+        "def _restore(source):",
+        "    return eval(source, {'__builtins__': {}, **vars(sp)})",
+        "",
+        "",
+        "LEDGER = {",
+    ]
+    for name, value, dimension in knobs:
+        source_lines.extend(generated_record_lines(name, value, "KNOB", True, dimension))
+    for suffix, value in main_outputs.items():
+        if suffix.startswith("_"):
+            continue
+        source_lines.extend(
+            generated_record_lines(
+                suffix.lower(),
+                value,
+                "DERIVED",
+                suffix in main_computed_dimension_names,
+                value,
+            )
+        )
+    source_lines.append("}")
+    source_lines.append("")
+    export_source = "\n".join(source_lines)
+    export_path = Path(__file__).with_name("S9_exports.py")
+    export_path.write_text(export_source, encoding="utf-8")
+
+    reconstructed_namespace = {}
+    exec(compile(export_path.read_text(encoding="utf-8"), str(export_path), "exec"), reconstructed_namespace)
+    reconstructed_ledger = reconstructed_namespace["LEDGER"]
+    live_count = len(knobs) + sum(1 for name in main_outputs if not name.startswith("_"))
+    residuals = []
+    for name, value, dimension in knobs:
+        record = reconstructed_ledger[name]
+        residuals.extend([
+            sp.Integer(not exact_reconstruction_match(value, record["value"])),
+            sp.Integer(not exact_reconstruction_match(dimension, record["dim"])),
+        ])
+    for suffix, value in main_outputs.items():
+        if suffix.startswith("_"):
+            continue
+        record = reconstructed_ledger[suffix.lower()]
+        residuals.append(sp.Integer(not exact_reconstruction_match(value, record["value"])))
+        if suffix in main_computed_dimension_names:
+            residuals.append(sp.Integer(not exact_reconstruction_match(value, record["dim"])))
+    roundtrip_residual = sum(residuals, sp.Integer(0))
+    computed_dimension_count = sum("dim" in record for record in reconstructed_ledger.values())
+    absent_dimension_count = len(reconstructed_ledger) - computed_dimension_count
+    emit("EXPORT_ROUNDTRIP_LIVE_COUNT", sp.Integer(live_count))
+    emit("EXPORT_ROUNDTRIP_RECONSTRUCTED_COUNT", sp.Integer(len(reconstructed_ledger)))
+    emit("EXPORT_ROUNDTRIP_RESIDUAL", roundtrip_residual)
+    emit("EXPORT_COMPUTED_DIMENSION_COUNT", sp.Integer(computed_dimension_count))
+    emit("EXPORT_ABSENT_DIMENSION_COUNT", sp.Integer(absent_dimension_count))
+    assert roundtrip_residual == 0
+
+
+write_exports()

@@ -152,7 +152,7 @@ it has no cross-engine corroboration whatever. ⛔ Do not report it alongside th
 | `ρ_br` | **postulated** | a property of the substructure; ⛔ not derivable from the GNLS |
 | `μ_R` | **postulated** | ditto. ⚠ Deriving it from a polar substructure `P` returned `FAIL_COUPLE_STRESS_NOGO` (**B2**) — that route is closed, the postulate stands |
 | `c_γ` | **derived** | `R4`, from the two above |
-| MacCullagh curl-only **form** | **postulated** (structural) | forced by Maxwell's *no longitudinal mode* — ⭐ and **this is now COMPUTED, not merely asserted**; see the verification section |
+| MacCullagh curl-only **form** | **postulated** (structural) | posited to encode Maxwell's *no longitudinal mode*; the computation checks the consequences of that posit, ⛔ it does not derive the form |
 
 ⚠ **The far field consumes only the ratio `c_γ`.** ⛔ Do not let that become "the two are not separately
 owed" — a **simulation** needs `μ_R` and `ρ_br` absolutely (→ the packet step).
@@ -246,49 +246,85 @@ measured, ⛔ not a theorem.** ⭐ A mechanism that missed a live defect is stil
 
 ⇒ ⭐ **What curl-only buys, and the gradient-elastic form does not, is the ABSENCE of a propagating
 longitudinal mode** — Maxwell's third
-demand — ⛔ not the presence of the transverse ones. The record's `what's new` table already framed it
-that way; ⭐ it is now **computed** rather than asserted, and the divergence-only control shows the
-converse: the roles **swap**, the transverse pair drops to `ω² = 0` and the longitudinal propagates.
+demand — ⛔ not the presence of the transverse ones. The curl-only MacCullagh form remains a **posit**, with
+the gradient-elastic form as its live falsifier; the computation establishes the consequences of the
+posit, ⛔ not the form itself. The divergence-only control shows the converse: the roles **swap**, the
+transverse pair drops to `ω² = 0` and the longitudinal propagates.
 
 ⚠ ⇒ **The defensible statement of S9 is conditional on the stiffness form**, and any prose reading
 *"light requires shear"* as established by this computation is **stronger than the computation supports.**
 
-### Automated consumption — ⚠ re-measured 2026-08-06, and the earlier figure was ~4× too strong
+### ⭐⭐ Export-chain rebuild — what was built, and the evidence's actual width
 
-`reduction/engine_output_checks.py --config reduction/checks_S9.yaml` over both engines:
+⚠ **The derivation did not change.** Of the SymPy engine's 55 changed lines, 51 are the same code with a
+`# TAG · description` annotation appended; the remainder are a split declaration, the emit loop, and a
+reformatted action line. The Wolfram engine changed only its emitted name strings and re-runs
+byte-identical.
 
-```
-CROSS_ENGINE: agree=12 disagree=0            CROSS_ENGINE_COVERAGE: 12/12
-NAMING_EFFECT: legacy_before_agree=8  declared_after_agree=12
-CONTROL_RESPONSE[wl]: compared=3 responsive=3 invariant=0    CONTROL_RESPONSE[py]: 3/3 responsive
-DIMENSIONS[wl]: total_tags=1559  compared=312  homogeneous=312  no_comparison=1228  unassessable=18
-DIMENSIONS[py]: total_tags=635   compared=329  homogeneous=329  no_comparison=269   unassessable=37
-REGISTRY_RESIDUAL: nonzero=1   (R4 — it compares a squared speed against a speed)
-```
+Every declaration is now annotated. Both engines emit twelve objects under one standard name, and the
+SymPy engine generates `scripts/S9_exports.py`: a flat 141-entry `LEDGER` for the next step to import,
+whose records are ordered
+`display, value, dim?, class, step`. A knob extractor reads the annotations. The export contains **KNOB 2 ·
+PREMISE 7 · DERIVED 132**, and three entries carry a computed `dim`.
 
-⛔⛔ **This record previously cited "dimensions 1219/1219 homogeneous".** Under the rebuilt harness that
-figure is **312** actual comparisons on the Mathematica side and **329** on the SymPy side. ⇒ the cited
-number counted **tags reached**, ⛔ not **comparisons made**, and overstated the check by roughly a factor
-of four. ⭐ The check still passes everything it examines; ⛔ it examines about a quarter of what this
-record claimed. ⚠ `DEFECT_REGISTER.md#f7` already recorded the same dent from the other direction.
+⭐⭐ **Seven independent review legs each wrote their own CAS derivation before opening the artifact, and all
+seven reproduce every S9 value.** A **FORM** ablation from the posited curl-only MacCullagh action to the
+gradient-elastic action moves **86** exported values. ⚠ That count is form-dependent: the divergence-only
+form moves **102**. These controls test the consequences and discriminating power of the curl-only posit;
+⛔ they do not derive it.
 
-⚠ **And four of the twelve agreements rest on declared spellings**, not on the engines independently
-producing the same text: `legacy_before_agree=8` against `declared_after_agree=12`. Removing one
-declaration at a time (`reduction/measurements/declaration_load_ablation.py`) shows exactly three are
-load-bearing here, each on one row — `mu_F` (`AGREE → DISAGREE`), `lambda_scale`
-(`AGREE → NAMING_MISMATCH`), and the `omega2 = omega**2` **algebraic identity** on `factored_determinant`
-(`AGREE → DISAGREE`). The other four naming exceptions move nothing on this step. ⭐ Each declaration is
-printed on its verdict line with a reason; ⚠ the `omega2` one is an **identity, not a spelling**, and is
-declared separately for that reason.
+⭐⭐⭐ **The cross-engine table is smaller than twelve: 11 rows are counted and one is excluded.** The
+excluded `DYNAMICAL_MATRIX_ROUTE_RESIDUAL` is guarded by exact equality against the zero matrix, so a
+disagreement becomes a build failure rather than a committed comparison. Eleven rows therefore mean
+eleven comparisons, ⛔ at most **nine independent computations**. `COEFFICIENT_DIMENSION_DIFFERENCE` buys
+only that both engines typed `mu − rho`, rather than `rho − mu`; `SPEED_DIMENSION_DIFFERENCE` buys only
+that both posited the same velocity-squared reference.
 
-⚠ **The control figure changed population, not value.** This record previously cited *"150 of 170 tags
-respond to some control"*. The rebuilt harness scores **declared control rows** — `3` per engine, all
-`RESPONSIVE` — rather than counting responsive tags. ⛔ The two numbers are not comparable and the smaller
-one is **not** a regression.
+⚠ Under the gradient-elastic form control, **10 of the 12 standard-name rows are byte-identical**; only
+`FACTORED_DETERMINANT` and `FULL_ROOT_MULTISET` move. ⇒ The table's discriminating power against the
+ordinary-elastic alternative is **two rows**.
 
-⛔ Config maps **tag names only**; every comparison target is generated at compare time. ⚠ Its
-`INVARIANT` and `PARITY` outputs are **triage lists, ⛔ not failures**, and a `DISAGREE` needs adjudication
-too — one was a symbol-spelling false positive.
+⚠ **The arithmetic here was wrong in the source this record was written from** — a review leg reported
+*"9 of the 10 exported standard rows"*, which with two movers accounts for eleven rows out of ten. The
+builder flagged the inconsistency rather than silently picking a number, and it was **re-measured**: of the
+twelve standard names, **two move and ten do not**. (Separately, ten of the twelve reach the export; the
+flexural and bare-field rows belong to control packages `X7`/`X8`. Conflating those two tens produced the
+error.) ⭐ The two-row conclusion is unaffected.
+
+⭐⭐ **There is a measured common-mode blindness behind three dimension rows.** Both engines independently
+type `[u] = L`, and neither emits it into the standard-name comparison. Doubling it in a scratch copy of
+each engine moves `INERTIA_COEFFICIENT_DIMENSION`, `STIFFNESS_COEFFICIENT_DIMENSION`, and
+`BARE_FIELD_COEFFICIENT_DIMENSION` to the same wrong values; both engines exit 0 and still agree. Those
+three rows buy the derivative-multiorder extraction and the solve, ⛔ **not the dimension**.
+
+This blindness is an identity, not an empirical miss. If the field dimension is left symbolic,
+`[mu_R] − [rho_br]` is independent of it in all three axes. ⇒ ⛔ No computation inside S9, in either
+engine, can ever detect a wrong `[u]`. The error becomes detectable only when a consumer imports the entry
+instead of re-declaring it, and S10 currently re-declares it.
+
+⚠ **The rebuild also introduced three open defects:**
+
+- `wavevector_norm_dimension` names the wrong object. The name denotes `dim(|k|) = [-1,0,0]`, while the
+  exported value `[-2,0,0]` is `dim(k·k)`. The value is right and the name is wrong in both engines and in
+  the name-keyed file.
+- The placeholder-naming class contains **eight** entries, not one. In addition to that key, five keys
+  still carry the SymPy-only `q`, while `dim_energy_density` and `dim_squared_velocity` have exact
+  Wolfram counterparts under different names.
+- `q_dimension` is unpinned inside SymPy: typing it to anything lets the engine exit 0 with a wrong ledger
+  value. Two residuals detect the change but are unguarded; the guard needs scoping because the `X3`
+  residual is legitimately nonzero under a form control. ⇒ This remains a spec question.
+
+⚠ **The export has no provenance field.** `wavevector_norm_dimension` therefore reaches a consumer as a
+SymPy `PREMISE` with no indication that the Wolfram engine derives it. The flat record cannot express that
+asymmetry.
+
+⛔⛔ **Nothing in the repository performs the cross-engine standard-name lookup.** The naming convention
+makes comparison a join, but no artifact executes that join, so the export is ⛔ **not checked against the
+Wolfram engine**. Re-pointing one line in an engine's name→object table turns the light cone into an
+`omega^2`, wrong by `k²`, while the determinant, root multiset, and speed-dimension residual remain
+unmoved and the engine exits 0. The dimension check cannot catch the substitution because `q_dimension`
+is typed at exactly `−2L`; the Wolfram engine has no `q` and does not move. ⇒ The cross-engine comparison
+on that row is the only instrument that would see the error, and it does not exist.
 
 ## ⛔ WHAT THIS STEP STILL DOES NOT ESTABLISH
 

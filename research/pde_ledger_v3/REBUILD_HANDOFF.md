@@ -44,10 +44,29 @@ design is abandoned. ⛔ Do not build it for any step.
 
 ---
 
-## ⭐ S9 — REBUILT, and where the fix loop was STOPPED
+## ⭐⭐ S9 — CLOSED `890a359d`. ⭐ NEXT IS S10, and S10 is the real test
 
-⭐ **Cleanup `67dd3ce2` + `fb29bba2`; S9 build `753ae7b1`; fix rounds 1–5 through `71f33901`.**
+⭐ Cleanup `67dd3ce2` + `fb29bba2`; build `753ae7b1`; **seven** fix rounds through `890a359d`.
 ⭐ Each round: Codex built, **two independent legs** reviewed (fresh agent + Grok), commit after both.
+⭐ Deliverable: `scripts/S9_exports.py` — flat **141** entries, `{display, value, dim?, class, step}`,
+**KNOB 2 · PREMISE 7 · DERIVED 132**, 3 with a computed `dim`.
+
+### ⛔⛔ READ THIS BEFORE OPENING ANOTHER FIX ROUND ON ANYTHING
+
+⚠ **Rounds 1–5 repaired the ARTIFACT. Rounds 6–7 repaired MY OWN EDITS.** Round 6 was opened in answer to
+*"any smaller changes?"*, bundled a **schema change**, and introduced two defects; round 7 repaired those
+and introduced one; the close-out was **one deleted line**. ⇒ ⭐ **after a round that removes code and leaves
+output byte-identical, STOP** ⇒ [[feedback-fix-rounds-converging-on-my-own-edits]].
+⚠ Across all seven rounds the **derivation never moved** and every leg reproduced every value.
+
+### ⛔ S10 is the next step, and it is what makes the ledger REAL
+
+⛔ **S10 cannot currently run** — it still imports the deleted `registry_read`. ⚠ And where it shares a
+premise with S9 it **re-declares** rather than imports (`PREMISE_U_DIMENSION`).
+⇒ ⭐⭐ **every class and naming finding on S9 is "wrong when the consumer arrives", ⛔ not "wrong now"** — the
+S10 rewrite is what turns them into things that can **fail**.
+⭐ Pattern: import `S9_exports.LEDGER`, add entries, **overwrite** what it derives, export the merged dict as
+`S10_exports.py`. ⭐ Chain integrity is then free: any entry S10 did not touch must be **identical**.
 
 ⭐ **What holds.** ⭐ **Seven legs wrote their own CAS derivation before opening the artifact and all seven
 reproduce every S9 value.** ⭐ FORM ablation confirms the twelve standard-name emissions are **live

@@ -116,6 +116,35 @@ the speed's dimension **cannot** see `D`, because the difference is `(2,−2,0)`
 field** (`−½ μ_G u·u`) yields `(−D,−2,1)`. ⚠ Before the rebuild the block emitted **byte-identical output
 under a change of the action's form**, because the derivative counts were hand-encoded.
 
+### ⭐⭐ FIVE independently-built engines derive these two dimensions, and three of them read no register
+
+⚠ Measured 2026-08-08, and recorded here because the script that measured it was deleted the same day —
+it belonged to an abandoned track, and its one physics result is this paragraph.
+
+Five engines across three steps emit a symbolic dimension for `ρ_br` and `μ_R`, and every one emits the
+**same** symbolic vector:
+
+| engine | `[ρ_br]` | `[μ_R]` | registry references in the source |
+|---|---|---|---|
+| S9-py  | `(−D, 0, 1)` | `(2−D, −2, 1)` | **0** |
+| S9-wl  | `(−D, 0, 1)` | `(2−D, −2, 1)` | **0** |
+| S10-wl | `(−D, 0, 1)` | `(2−D, −2, 1)` | **0** |
+| S10-py | `(−D, 0, 1)` | `(2−D, −2, 1)` | 14 |
+| S11-py | `(−D, 0, 1)` | `(2−D, −2, 1)` | 18 |
+
+⇒ ⭐ **three of the five could not have copied the answer**, because the register is not reachable from
+their source at all. The reference count is `grep -c "registry\|reduction"` on each engine file.
+
+⛔ **What this does NOT establish.** ⚠ The three register-free engines are not three independent
+derivations of a *different* kind — S9-py and S9-wl solve the same linear system from the same posited
+action, and S10-wl re-derives it in general `D`. ⇒ this corroborates the **solve**, ⛔ not the action.
+A stiffness form authored identically into all five is caught by none of them ⇒ the common-mode limit
+recorded under **VERIFICATION** below still stands at full width.
+
+⚠ **`B_comp` is NOT part of this.** Only **one** engine (S11-py) emits a comparable dimension for it, so
+it has no cross-engine corroboration whatever. ⛔ Do not report it alongside the two above. Its declared
+`D = 3` specialisation is recorded in `REBUILD_HANDOFF.md`.
+
 ## What's new — the introduction inventory
 
 | item | class | why |

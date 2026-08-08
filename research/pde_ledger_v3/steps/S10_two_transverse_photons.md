@@ -142,6 +142,25 @@ blind spot in the audit. It is not a blind spot but an **identity**:
 ⇒ The speed's dimension **cannot** see the brane dimension. A weak-looking check is a property of the
 physics.
 
+### ⭐⭐ Both S10 engines agree with S9's and S11's on these two vectors
+
+⚠ Measured 2026-08-08. Recorded here because the script that measured it served an abandoned track and
+was deleted the same day; this paragraph is what survives it.
+
+Five engines across S9, S10 and S11 emit a symbolic dimension for `ρ_br` and `μ_R` — S9-py, S9-wl,
+S10-py, S10-wl, S11-py — and all five emit `(−D, 0, 1)` and `(2−D, −2, 1)`. ⭐ **Three carry zero
+registry references in their source** (S9-py, S9-wl, **S10-wl**), so they cannot have read the declared
+value: `grep -c "registry\|reduction"` returns `0`, `0`, `0` against `14` for S10-py and `18` for S11-py.
+
+⇒ S10's own two engines are on **opposite sides** of that line — `S10-wl` derives it register-free,
+`S10-py` does not. ⭐ That is the sharpest form the corroboration takes at this step.
+
+⛔ **Scope.** ⚠ This corroborates the dimension **solve** — the derivative-multi-order extraction and the
+linear system — ⛔ not the action it is applied to. The curl-only stiffness is authored identically into
+every engine, so a defect in it moves all five together and is caught by none ⇒ the common-mode limit
+under **WHAT THIS STEP STILL DOES NOT ESTABLISH** is untouched by this.
+⚠ `B_comp` has **one** emitting engine and therefore no corroboration; ⛔ do not group it with these two.
+
 ## What's new — the introduction inventory
 
 | item | class | why |

@@ -239,6 +239,32 @@ def q_form(expression):
     return sp.factor(sp.factor(expression).subs(wave_norm, q))
 
 
+dkey_computation_dimensions = "_DKEY_COMPUTATION_DIMENSIONS"  # STRUCTURAL · per-output production-dimension metadata key
+
+
+def produced_outputs(entries, computation_dimension):
+    output = dict(entries)
+    output[dkey_computation_dimensions] = {
+        name: computation_dimension
+        for name in entries
+        if not name.startswith("_")
+    }
+    return output
+
+
+def extend_produced_outputs(target, source):
+    target.update({
+        name: value
+        for name, value in source.items()
+        if name != dkey_computation_dimensions
+    })
+    target[dkey_computation_dimensions].update(source[dkey_computation_dimensions])
+
+
+def add_produced_outputs(target, entries, computation_dimension):
+    extend_produced_outputs(target, produced_outputs(entries, computation_dimension))
+
+
 length_dimension = sp.Matrix([1, 0, 0])  # STRUCTURAL · length unit-basis marker
 time_dimension = sp.Matrix([0, 1, 0])  # STRUCTURAL · time unit-basis marker
 mass_dimension = sp.Matrix([0, 0, 1])  # STRUCTURAL · mass unit-basis marker
@@ -355,17 +381,25 @@ def dimension_block(action, dimensional_coefficients, primary_inertia, primary_s
     ]
     unknowns = [entry for coefficient in dimensional_coefficients for entry in dimension_variables[coefficient]]
     solutions = sp.solve(equations, unknowns, dict=True)
-    common_output = {
-        "DIM_ENERGY_DENSITY": energy_density_dimension,
+    solve_inputs = produced_outputs({
         "DIM_TERMS": terms,
         "DIM_FIELD_MULTIORDERS": orders_by_term,
         "DIM_TERM_EXPRESSIONS": term_dimensions,
         "DIM_LINEAR_SYSTEM": equations,
+    }, sp.Integer(len(spatial_coordinates)))
+    solve_outputs = produced_outputs({
+        "DIM_ENERGY_DENSITY": energy_density_dimension,
+        "FIELD_DIMENSION": field_dimension,
+        "WAVEVECTOR_NORM_DIMENSION": q_dimension,
+        "DIM_SQUARED_VELOCITY": squared_velocity_dimension,
+    }, D)
+    add_produced_outputs(solve_outputs, {
         "DIM_SOLUTION": solutions,
-    }
+    }, D)
+    extend_produced_outputs(solve_inputs, solve_outputs)
     if not solutions:
-        common_output["_DIMENSION_SOLVE_FAILED"] = sp.S.true
-        return common_output
+        solve_inputs["_DIMENSION_SOLVE_FAILED"] = sp.S.true
+        return solve_inputs
     solution = solutions[0]
     coefficient_dimensions = [
         sp.Tuple(coefficient, sp.Matrix([solution[entry] for entry in dimension_variables[coefficient]]))
@@ -373,21 +407,29 @@ def dimension_block(action, dimensional_coefficients, primary_inertia, primary_s
     ]
     inertia_dimension = sp.Matrix([solution[entry] for entry in dimension_variables[primary_inertia]])
     stiffness_dimension = sp.Matrix([solution[entry] for entry in dimension_variables[primary_stiffness]])
-    common_output.update({
+    add_produced_outputs(solve_inputs, {
         "DIM_COEFFICIENTS": coefficient_dimensions,
         "DIM_PRIMARY_INERTIA": inertia_dimension,
         "DIM_PRIMARY_STIFFNESS": stiffness_dimension,
         "DIM_STIFFNESS_MINUS_INERTIA": sp.simplify(stiffness_dimension - inertia_dimension),
-        "DIM_SOLUTION_D3": [{key: value.subs(D, 3) for key, value in item.items()} for item in solutions],
-        "DIM_PRIMARY_INERTIA_D3": inertia_dimension.subs(D, 3),
-        "DIM_PRIMARY_STIFFNESS_D3": stiffness_dimension.subs(D, 3),
-        "DIM_STIFFNESS_MINUS_INERTIA_D3": (stiffness_dimension - inertia_dimension).subs(D, 3),
-        "_DIMENSION_LOOKUP": {
-            coefficient: sp.Matrix([solution[entry] for entry in dimension_variables[coefficient]])
-            for coefficient in dimensional_coefficients
-        },
-    })
-    return common_output
+    }, D)
+    fixed_component_count = sp.Integer(len(spatial_coordinates))
+    add_produced_outputs(solve_inputs, {
+        "DIM_SOLUTION_D3": [
+            {key: value.subs(D, fixed_component_count) for key, value in item.items()}
+            for item in solutions
+        ],
+        "DIM_PRIMARY_INERTIA_D3": inertia_dimension.subs(D, fixed_component_count),
+        "DIM_PRIMARY_STIFFNESS_D3": stiffness_dimension.subs(D, fixed_component_count),
+        "DIM_STIFFNESS_MINUS_INERTIA_D3": (
+            stiffness_dimension - inertia_dimension
+        ).subs(D, fixed_component_count),
+    }, fixed_component_count)
+    solve_inputs["_DIMENSION_LOOKUP"] = {
+        coefficient: sp.Matrix([solution[entry] for entry in dimension_variables[coefficient]])
+        for coefficient in dimensional_coefficients
+    }
+    return solve_inputs
 
 
 def assumptions_for(dimensional_coefficients, dimensionless_symbols):
@@ -427,7 +469,7 @@ def direction_block(matrix):
             output[f"{name}_ROOTS_PASSING_{test_name}"] = [record[0] for record in records if record[offset] == sp.S.true]
         output[f"{name}_ROOTS_PASSING_E2"] = [record[0] for record in records if record[5] > 0]
         output[f"{name}_ROOT_NULLITIES"] = [sp.Tuple(record[0], record[8]) for record in records]
-    return output
+    return produced_outputs(output, sp.Integer(len(spatial_coordinates)))
 
 
 def dimension_walk_failure_output(error):
@@ -511,7 +553,7 @@ def derive(
         ]
     except DimensionWalkError as error:
         return {}, {}, dimension_walk_failure_output(error)
-    output = {
+    output = produced_outputs({
         "LAGRANGIAN": action,
         "EL_RESIDUAL": el_residual,
         "EQUATION_OF_MOTION": sp.Tuple(*(sp.Eq(entry, 0) for entry in el_residual)),
@@ -550,15 +592,14 @@ def derive(
         "DIM_SPEED_FROM_EXPRESSION": [
             sp.Tuple(speed, dimension) for speed, dimension in zip(speed_candidates, speed_dimensions)
         ],
-        "DIM_SQUARED_VELOCITY": squared_velocity_dimension,
         "DIM_SPEED_DIFFERENCE": [
             sp.Tuple(speed, sp.simplify(dimension - squared_velocity_dimension))
             for speed, dimension in zip(speed_candidates, speed_dimensions)
         ],
         "ASSUMPTIONS": assumption_object,
         "_M_A": matrix_a,
-    }
-    output.update({key: value for key, value in dimensions.items() if not key.startswith("_")})
+    }, sp.Integer(len(spatial_coordinates)))
+    extend_produced_outputs(output, dimensions)
     guards = {
         "matrix_residual": matrix_residual,
         "root_degree": (len(root_multiset), sp.Poly(determinant, omega2).degree()),
@@ -590,22 +631,31 @@ for control_name in ("MAIN", "X6"):
     if control_name in all_outputs:
         assumption_object = all_outputs[control_name]["ASSUMPTIONS"]  # PREMISE · package assumption set
         with sp.assuming(assumption_object):
-            all_outputs[control_name].update(direction_block(all_outputs[control_name]["_M_A"]))
+            extend_produced_outputs(
+                all_outputs[control_name],
+                direction_block(all_outputs[control_name]["_M_A"]),
+            )
 
 if "MAIN" in all_outputs:
     zero_wavevector_substitution = {component: 0 for component in k_input}  # CONTROL · selected wavevector locus
     zero_matrix = all_outputs["MAIN"]["_M_A"].subs(zero_wavevector_substitution).applyfunc(sp.factor)  # DERIVED · specialised dynamical matrix
     zero_wavevector = derived_wavevector.subs(zero_wavevector_substitution)  # DERIVED · specialised wavevector
     zero_test_block = evaluated_root_test_block(zero_matrix, zero_wavevector)  # DERIVED · specialised root tests
-    all_outputs["MAIN"].update({f"K_ZERO_{key}": value for key, value in zero_test_block.items()})
+    add_produced_outputs(
+        all_outputs["MAIN"],
+        {f"K_ZERO_{key}": value for key, value in zero_test_block.items()},
+        sp.Integer(len(spatial_coordinates)),
+    )
 
 if "X6" in all_outputs:
     anisotropic_assumption = all_outputs["X6"]["ASSUMPTIONS"]  # PREMISE · anisotropic-package assumption set
     with sp.assuming(anisotropic_assumption):
         isotropic_parameter_matrix = all_outputs["X6"]["_M_A"].subs(rho_z, rho_br).applyfunc(sp.factor)  # CONTROL · isotropic-parameter specialisation
         isotropic_parameter_test_block = evaluated_root_test_block(isotropic_parameter_matrix, derived_wavevector)  # DERIVED · specialised root tests
-    all_outputs["X6"].update(
-        {f"RHO_Z_TO_RHO_BR_{key}": value for key, value in isotropic_parameter_test_block.items()}
+    add_produced_outputs(
+        all_outputs["X6"],
+        {f"RHO_Z_TO_RHO_BR_{key}": value for key, value in isotropic_parameter_test_block.items()},
+        sp.Integer(len(spatial_coordinates)),
     )
 
 
@@ -665,13 +715,21 @@ posited_output_classes = {  # STRUCTURAL · posited output class assignments
     "PLANE_WAVE_ANSATZ": "PREMISE",
     "ASSUMPTIONS": "PREMISE",
     "DIM_ENERGY_DENSITY": "PREMISE",
+    "FIELD_DIMENSION": "PREMISE",
+    "WAVEVECTOR_NORM_DIMENSION": "PREMISE",
     "DIM_SQUARED_VELOCITY": "PREMISE",
 }
 if "MAIN" in all_outputs:
     main_outputs = all_outputs["MAIN"]  # DERIVED · main-package output collection
+    main_output_computation_dimensions = main_outputs[dkey_computation_dimensions]  # DERIVED · main-package production-dimension collection
     main_outputs = {  # DERIVED · standard-named main-package output collection
         main_name_changes.get(name, name): value
         for name, value in main_outputs.items()
+        if name != dkey_computation_dimensions
+    }
+    main_outputs[dkey_computation_dimensions] = {  # DERIVED · standard-named production-dimension collection
+        main_name_changes.get(name, name): computation_dimension
+        for name, computation_dimension in main_output_computation_dimensions.items()
     }
     all_outputs["MAIN"] = main_outputs  # DERIVED · standard-named main-package output collection
 
@@ -692,13 +750,13 @@ if "MAIN" in all_outputs:
     del route_operand_a, route_operand_b
     implied_speed_dimensions = [dimension for _, dimension in main_outputs["DIM_SPEED_FROM_EXPRESSION"]]  # DERIVED · per-candidate unit results
     speed_dimension_differences = [dimension for _, dimension in main_outputs["DIM_SPEED_DIFFERENCE"]]  # DERIVED · per-candidate unit residuals
-    main_outputs.update({
+    add_produced_outputs(main_outputs, {
         "TRANSVERSE_MULTIPLICITY": transverse_multiplicity,
         "TRANSVERSE_SPEED_SQUARED": transverse_speed_squared,
         "DYNAMICAL_MATRIX_ROUTE_RESIDUAL": route_residual,
         "IMPLIED_SPEED_DIMENSION": implied_speed_dimensions,
         "SPEED_DIMENSION_DIFFERENCE": speed_dimension_differences,
-    })
+    }, sp.Integer(len(spatial_coordinates)))
 
 if "X7" in all_outputs:
     all_outputs["X7"]["DISPERSION_SCALING_RESIDUAL_FLEXURAL"] = unique_item(  # DERIVED · flexural scaling residual
@@ -763,8 +821,32 @@ def generated_record_lines(name, value, class_tag, dimension=None):
     return lines
 
 
+def generated_ledger_key(name, computation_dimension):
+    base_name = re.sub(r"_d[0-9]+$", "", name)
+    if computation_dimension == D:
+        return base_name
+    return f"{base_name}_d{computation_dimension}"
+
+
+def d_partition(records):
+    grouped = {}
+    for name, computation_dimension in records:
+        grouped.setdefault(computation_dimension, []).append(sp.Symbol(name))  # DERIVED · D-partition member collection
+    return sp.Tuple(*(
+        sp.Tuple(
+            computation_dimension,
+            sp.Tuple(*sorted(names, key=sp.default_sort_key)),
+        )
+        for computation_dimension, names in sorted(
+            grouped.items(),
+            key=lambda item: sp.default_sort_key(item[0]),
+        )
+    ))
+
+
 def write_exports():
     main_outputs = all_outputs["MAIN"]
+    main_output_computation_dimensions = main_outputs[dkey_computation_dimensions]
     assert set(posited_output_classes) <= set(main_outputs)
     classes = declaration_classes(Path(__file__))
     exported_inputs = [
@@ -772,10 +854,6 @@ def write_exports():
         for name, class_tag in classes.items()
         if class_tag == "KNOB"
     ]
-    exported_inputs.extend([
-        ("field_dimension", field_dimension, "PREMISE"),
-        ("wavevector_norm_dimension", q_dimension, "PREMISE"),
-    ])
     computed_dimensions = [
         *main_outputs["DIM_COEFFICIENTS"],
         *main_outputs["DIM_SPEED_FROM_EXPRESSION"],
@@ -799,6 +877,7 @@ def write_exports():
         "LEDGER = {",
     ]
     live_records = []
+    main_production_records = []
     for name, value, class_tag in exported_inputs:
         dimension = computed_dimension_for(value)
         live_records.append((name, value, class_tag, dimension))
@@ -806,10 +885,15 @@ def write_exports():
     for suffix, value in main_outputs.items():
         if suffix.startswith("_"):
             continue
-        name = suffix.lower()
+        base_name = suffix.lower()
+        if suffix not in main_output_computation_dimensions:
+            raise RuntimeError(f"unclassified export production path: {base_name}")
+        computation_dimension = main_output_computation_dimensions[suffix]
+        name = generated_ledger_key(base_name, computation_dimension)
         class_tag = posited_output_classes.get(suffix, "DERIVED")
         dimension = computed_dimension_for(value)
         live_records.append((name, value, class_tag, dimension))
+        main_production_records.append((name, computation_dimension))
         source_lines.extend(generated_record_lines(name, value, class_tag, dimension))
     source_lines.append("}")
     source_lines.append("")
@@ -844,6 +928,7 @@ def write_exports():
         (count for _, count in class_tally),
         sp.Integer(0),
     )
+    production_d_partition = d_partition(main_production_records)
     emit("EXPORT_ROUNDTRIP_LIVE_COUNT", sp.Integer(live_count))
     emit("EXPORT_ROUNDTRIP_RECONSTRUCTED_COUNT", sp.Integer(len(reconstructed_ledger)))
     emit("EXPORT_ROUNDTRIP_COUNT_RESIDUAL", roundtrip_count_residual)
@@ -852,6 +937,7 @@ def write_exports():
     emit("EXPORT_ABSENT_DIMENSION_COUNT", sp.Integer(absent_dimension_count))
     emit("EXPORT_CLASS_TALLY", class_tally)
     emit("EXPORT_CLASS_TALLY_RESIDUAL", class_tally_residual)
+    emit("EXPORT_D_PARTITION", production_d_partition)
     assert roundtrip_count_residual == 0
     assert roundtrip_residual == 0
     assert class_tally_residual == 0

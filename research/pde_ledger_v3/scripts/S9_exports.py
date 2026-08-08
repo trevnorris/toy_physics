@@ -21,6 +21,264 @@ LEDGER = {
         'class': 'KNOB',
         'step': 'S9',
     },
+    'lagrangian_d3': {
+        'display': '-mu_R*Derivative(u1(t, x, y, z), y)**2/2 + mu_R*Derivative(u1(t, x, y, z), y)*Derivative(u2(t, x, y, z), x) - mu_R*Derivative(u1(t, x, y, z), z)**2/2 + mu_R*Derivative(u1(t, x, y, z), z)*Derivative(u3(t, x, y, z), x) - mu_R*Derivative(u2(t, x, y, z), x)**2/2 - mu_R*Derivative(u2(t, x, y, z), z)**2/2 + mu_R*Derivative(u2(t, x, y, z), z)*Derivative(u3(t, x, y, z), y) - mu_R*Derivative(u3(t, x, y, z), x)**2/2 - mu_R*Derivative(u3(t, x, y, z), y)**2/2 + rho_br*Derivative(u1(t, x, y, z), t)**2/2 + rho_br*Derivative(u2(t, x, y, z), t)**2/2 + rho_br*Derivative(u3(t, x, y, z), t)**2/2',
+        'value': _restore("Add(Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))))"),
+        'class': 'PREMISE',
+        'step': 'S9',
+    },
+    'el_residual_d3': {
+        'display': 'Matrix([\n[mu_R*Derivative(u1(t, x, y, z), (y, 2)) + mu_R*Derivative(u1(t, x, y, z), (z, 2)) - mu_R*Derivative(u2(t, x, y, z), x, y) - mu_R*Derivative(u3(t, x, y, z), x, z) - rho_br*Derivative(u1(t, x, y, z), (t, 2))],\n[mu_R*Derivative(u2(t, x, y, z), (x, 2)) + mu_R*Derivative(u2(t, x, y, z), (z, 2)) - mu_R*Derivative(u1(t, x, y, z), x, y) - mu_R*Derivative(u3(t, x, y, z), y, z) - rho_br*Derivative(u2(t, x, y, z), (t, 2))],\n[mu_R*Derivative(u3(t, x, y, z), (x, 2)) + mu_R*Derivative(u3(t, x, y, z), (y, 2)) - mu_R*Derivative(u1(t, x, y, z), x, z) - mu_R*Derivative(u2(t, x, y, z), y, z) - rho_br*Derivative(u3(t, x, y, z), (t, 2))]])',
+        'value': _restore("MutableDenseMatrix([[Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2)))))], [Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2)))))], [Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2)))))]])"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'equation_of_motion_d3': {
+        'display': '(Eq(mu_R*Derivative(u1(t, x, y, z), (y, 2)) + mu_R*Derivative(u1(t, x, y, z), (z, 2)) - mu_R*Derivative(u2(t, x, y, z), x, y) - mu_R*Derivative(u3(t, x, y, z), x, z) - rho_br*Derivative(u1(t, x, y, z), (t, 2)), 0), Eq(mu_R*Derivative(u2(t, x, y, z), (x, 2)) + mu_R*Derivative(u2(t, x, y, z), (z, 2)) - mu_R*Derivative(u1(t, x, y, z), x, y) - mu_R*Derivative(u3(t, x, y, z), y, z) - rho_br*Derivative(u2(t, x, y, z), (t, 2)), 0), Eq(mu_R*Derivative(u3(t, x, y, z), (x, 2)) + mu_R*Derivative(u3(t, x, y, z), (y, 2)) - mu_R*Derivative(u1(t, x, y, z), x, z) - mu_R*Derivative(u2(t, x, y, z), y, z) - rho_br*Derivative(u3(t, x, y, z), (t, 2)), 0))',
+        'value': _restore("Tuple(Equality(Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2))))), Integer(0)), Equality(Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2))))), Integer(0)), Equality(Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2))))), Integer(0)))"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'plane_wave_ansatz_d3': {
+        'display': 'Matrix([\n[a1*exp(I*(kx*x + ky*y + kz*z - omega*t))],\n[a2*exp(I*(kx*x + ky*y + kz*z - omega*t))],\n[a3*exp(I*(kx*x + ky*y + kz*z - omega*t))]])',
+        'value': _restore("MutableDenseMatrix([[Mul(Symbol('a1', real=True), exp(Mul(I, Add(Mul(Symbol('kx', real=True), Symbol('x', real=True)), Mul(Symbol('ky', real=True), Symbol('y', real=True)), Mul(Symbol('kz', real=True), Symbol('z', real=True)), Mul(Integer(-1), Symbol('omega', real=True), Symbol('t', real=True))))))], [Mul(Symbol('a2', real=True), exp(Mul(I, Add(Mul(Symbol('kx', real=True), Symbol('x', real=True)), Mul(Symbol('ky', real=True), Symbol('y', real=True)), Mul(Symbol('kz', real=True), Symbol('z', real=True)), Mul(Integer(-1), Symbol('omega', real=True), Symbol('t', real=True))))))], [Mul(Symbol('a3', real=True), exp(Mul(I, Add(Mul(Symbol('kx', real=True), Symbol('x', real=True)), Mul(Symbol('ky', real=True), Symbol('y', real=True)), Mul(Symbol('kz', real=True), Symbol('z', real=True)), Mul(Integer(-1), Symbol('omega', real=True), Symbol('t', real=True))))))]])"),
+        'class': 'PREMISE',
+        'step': 'S9',
+    },
+    'plane_wave_residual_d3': {
+        'display': 'Matrix([\n[-a1*ky**2*mu_R - a1*kz**2*mu_R + a1*omega2*rho_br + a2*kx*ky*mu_R + a3*kx*kz*mu_R],\n[ a1*kx*ky*mu_R - a2*kx**2*mu_R - a2*kz**2*mu_R + a2*omega2*rho_br + a3*ky*kz*mu_R],\n[ a1*kx*kz*mu_R + a2*ky*kz*mu_R - a3*kx**2*mu_R - a3*ky**2*mu_R + a3*omega2*rho_br]])',
+        'value': _restore("MutableDenseMatrix([[Add(Mul(Integer(-1), Symbol('a1', real=True), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('a1', real=True), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('a1', real=True), Symbol('omega2', real=True), Symbol('rho_br', positive=True)), Mul(Symbol('a2', real=True), Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('a3', real=True), Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)))], [Add(Mul(Symbol('a1', real=True), Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('a2', real=True), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('a2', real=True), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('a2', real=True), Symbol('omega2', real=True), Symbol('rho_br', positive=True)), Mul(Symbol('a3', real=True), Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)))], [Add(Mul(Symbol('a1', real=True), Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('a2', real=True), Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('a3', real=True), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('a3', real=True), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('a3', real=True), Symbol('omega2', real=True), Symbol('rho_br', positive=True)))]])"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'route_operands_and_residual_d3': {
+        'display': '(Matrix([\n[-ky**2*mu_R - kz**2*mu_R + omega2*rho_br,                               kx*ky*mu_R,                               kx*kz*mu_R],\n[                              kx*ky*mu_R, -kx**2*mu_R - kz**2*mu_R + omega2*rho_br,                               ky*kz*mu_R],\n[                              kx*kz*mu_R,                               ky*kz*mu_R, -kx**2*mu_R - ky**2*mu_R + omega2*rho_br]]), Matrix([\n[-ky**2*mu_R - kz**2*mu_R + omega2*rho_br,                               kx*ky*mu_R,                               kx*kz*mu_R],\n[                              kx*ky*mu_R, -kx**2*mu_R - kz**2*mu_R + omega2*rho_br,                               ky*kz*mu_R],\n[                              kx*kz*mu_R,                               ky*kz*mu_R, -kx**2*mu_R - ky**2*mu_R + omega2*rho_br]]), Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]))',
+        'value': _restore("Tuple(ImmutableDenseMatrix([[Add(Mul(Integer(-1), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Add(Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Add(Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True)))]]), ImmutableDenseMatrix([[Add(Mul(Integer(-1), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Add(Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Add(Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True)))]]), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]))"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'factored_determinant_d3': {
+        'display': 'omega2*rho_br*(kx**2*mu_R + ky**2*mu_R + kz**2*mu_R - omega2*rho_br)**2',
+        'value': _restore("Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True), Pow(Add(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('omega2', real=True), Symbol('rho_br', positive=True))), Integer(2)))"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'omega2_solutions_d3': {
+        'display': '{0, mu_R*(kx**2 + ky**2 + kz**2)/rho_br}',
+        'value': _restore("FiniteSet(Integer(0), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))))"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    't_generator_d3': {
+        'display': 'Matrix([\n[ky**2 + kz**2,        -kx*ky,        -kx*kz],\n[       -kx*ky, kx**2 + kz**2,        -ky*kz],\n[       -kx*kz,        -ky*kz, kx**2 + ky**2]])',
+        'value': _restore("ImmutableDenseMatrix([[Add(Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))), Mul(Integer(-1), Symbol('kx', real=True), Symbol('ky', real=True)), Mul(Integer(-1), Symbol('kx', real=True), Symbol('kz', real=True))], [Mul(Integer(-1), Symbol('kx', real=True), Symbol('ky', real=True)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))), Mul(Integer(-1), Symbol('ky', real=True), Symbol('kz', real=True))], [Mul(Integer(-1), Symbol('kx', real=True), Symbol('kz', real=True)), Mul(Integer(-1), Symbol('ky', real=True), Symbol('kz', real=True)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))]])"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'lambda_generator_d3': {
+        'display': 'Matrix([\n[kx**2, kx*ky, kx*kz],\n[kx*ky, ky**2, ky*kz],\n[kx*kz, ky*kz, kz**2]])',
+        'value': _restore("ImmutableDenseMatrix([[Pow(Symbol('kx', real=True), Integer(2)), Mul(Symbol('kx', real=True), Symbol('ky', real=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True)), Pow(Symbol('ky', real=True), Integer(2)), Mul(Symbol('ky', real=True), Symbol('kz', real=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True)), Pow(Symbol('kz', real=True), Integer(2))]])"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_stacked_d3': {
+        'display': '[(0, Matrix([\n[-mu_R*(ky**2 + kz**2),            kx*ky*mu_R,            kx*kz*mu_R],\n[           kx*ky*mu_R, -mu_R*(kx**2 + kz**2),            ky*kz*mu_R],\n[           kx*kz*mu_R,            ky*kz*mu_R, -mu_R*(kx**2 + ky**2)],\n[                   kx,                    ky,                    kz]])), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, Matrix([\n[kx**2*mu_R, kx*ky*mu_R, kx*kz*mu_R],\n[kx*ky*mu_R, ky**2*mu_R, ky*kz*mu_R],\n[kx*kz*mu_R, ky*kz*mu_R, kz**2*mu_R],\n[        kx,         ky,         kz]]))]',
+        'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))], [Symbol('kx', real=True), Symbol('ky', real=True), Symbol('kz', real=True)]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), ImmutableDenseMatrix([[Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Symbol('kx', real=True), Symbol('ky', real=True), Symbol('kz', real=True)]]))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_mk_d3': {
+        'display': '[(0, Matrix([\n[0],\n[0],\n[0]])), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, Matrix([\n[kx*mu_R*(kx**2 + ky**2 + kz**2)],\n[ky*mu_R*(kx**2 + ky**2 + kz**2)],\n[kz*mu_R*(kx**2 + ky**2 + kz**2)]]))]',
+        'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), ImmutableDenseMatrix([[Mul(Symbol('kx', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]]))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_mt_d3': {
+        'display': '[(0, Matrix([\n[-mu_R*(ky**2 + kz**2)*(kx**2 + ky**2 + kz**2),            kx*ky*mu_R*(kx**2 + ky**2 + kz**2),            kx*kz*mu_R*(kx**2 + ky**2 + kz**2)],\n[           kx*ky*mu_R*(kx**2 + ky**2 + kz**2), -mu_R*(kx**2 + kz**2)*(kx**2 + ky**2 + kz**2),            ky*kz*mu_R*(kx**2 + ky**2 + kz**2)],\n[           kx*kz*mu_R*(kx**2 + ky**2 + kz**2),            ky*kz*mu_R*(kx**2 + ky**2 + kz**2), -mu_R*(kx**2 + ky**2)*(kx**2 + ky**2 + kz**2)]])), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]))]',
+        'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_e1_d3': {
+        'display': '[(0, False), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, True)]',
+        'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), true)]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_e2_d3': {
+        'display': '[(0, 0), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 2)]',
+        'value': _restore("[Tuple(Integer(0), Integer(0)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(2))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_e3_d3': {
+        'display': '[(0, True), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, False)]',
+        'value': _restore("[Tuple(Integer(0), true), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), false)]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_e4_d3': {
+        'display': '[(0, False), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, True)]',
+        'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), true)]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'roots_passing_e1_d3': {
+        'display': '[mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
+        'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'roots_passing_e2_d3': {
+        'display': '[mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
+        'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'roots_passing_e3_d3': {
+        'display': '[0]',
+        'value': _restore('[Integer(0)]'),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'roots_passing_e4_d3': {
+        'display': '[mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
+        'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'full_root_multiset_d3': {
+        'display': '[0, mu_R*(kx**2 + ky**2 + kz**2)/rho_br, mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
+        'value': _restore("[Integer(0), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_multiplicities_d3': {
+        'display': '[(0, 1), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 2)]',
+        'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(2))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_nullities_d3': {
+        'display': '[(0, 1), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 2)]',
+        'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(2))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_scaling_scaled_d3': {
+        'display': '[0, mu_R*(kx**2*lambda_scale**2 + ky**2*lambda_scale**2 + kz**2*lambda_scale**2)/rho_br]',
+        'value': _restore("[Integer(0), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Mul(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('lambda_scale', positive=True), Integer(2))), Mul(Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('lambda_scale', positive=True), Integer(2))), Mul(Pow(Symbol('kz', real=True), Integer(2)), Pow(Symbol('lambda_scale', positive=True), Integer(2)))))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_scaling_quadratic_d3': {
+        'display': '[0, lambda_scale**2*mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
+        'value': _restore("[Integer(0), Mul(Pow(Symbol('lambda_scale', positive=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_scaling_residual_d3': {
+        'display': '[0, 0]',
+        'value': _restore('[Integer(0), Integer(0)]'),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_omega2_signs_d3': {
+        'display': '[(0, 0), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 1)]',
+        'value': _restore("[Tuple(Integer(0), Integer(0)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(1))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'transverse_roots_q_d3': {
+        'display': '[mu_R*q/rho_br]',
+        'value': _restore("[Mul(Symbol('mu_R', positive=True), Symbol('q', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'transverse_roots_q_wavevector_occurrences_d3': {
+        'display': '[((kx, False), (ky, False), (kz, False))]',
+        'value': _restore("[Tuple(Tuple(Symbol('kx', real=True), false), Tuple(Symbol('ky', real=True), false), Tuple(Symbol('kz', real=True), false))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'speed_squared_candidates_d3': {
+        'display': '[mu_R/rho_br]',
+        'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'homogeneity_defects_d3': {
+        'display': '[0]',
+        'value': _restore('[Integer(0)]'),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'speed_q_derivatives_d3': {
+        'display': '[0]',
+        'value': _restore('[Integer(0)]'),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_q_numerator_degrees_d3': {
+        'display': '[1]',
+        'value': _restore('[1]'),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'root_q_denominator_degrees_d3': {
+        'display': '[0]',
+        'value': _restore('[0]'),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'dim_speed_from_expression_d3': {
+        'display': '[(mu_R/rho_br, Matrix([\n[ 2],\n[-2],\n[ 0]]))]',
+        'value': _restore("[Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Integer(2)], [Integer(-2)], [Integer(0)]]))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'dim_speed_difference_d3': {
+        'display': '[(mu_R/rho_br, Matrix([\n[0],\n[0],\n[0]]))]',
+        'value': _restore("[Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]]))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'assumptions_d3': {
+        'display': 'Q.integer(D) & Q.positive(D) & Q.positive(mu_R) & Q.positive(q) & Q.positive(rho_br) & Q.real(a1) & Q.real(a2) & Q.real(a3) & Q.real(kx) & Q.real(ky) & Q.real(kz) & Q.real(omega2) & Q.nonzero(kx**2 + ky**2 + kz**2)',
+        'value': _restore("And(AppliedPredicate(Q.integer, Symbol('D', integer=True, positive=True)), AppliedPredicate(Q.positive, Symbol('D', integer=True, positive=True)), AppliedPredicate(Q.positive, Symbol('mu_R', positive=True)), AppliedPredicate(Q.positive, Symbol('q', positive=True)), AppliedPredicate(Q.positive, Symbol('rho_br', positive=True)), AppliedPredicate(Q.real, Symbol('a1', real=True)), AppliedPredicate(Q.real, Symbol('a2', real=True)), AppliedPredicate(Q.real, Symbol('a3', real=True)), AppliedPredicate(Q.real, Symbol('kx', real=True)), AppliedPredicate(Q.real, Symbol('ky', real=True)), AppliedPredicate(Q.real, Symbol('kz', real=True)), AppliedPredicate(Q.real, Symbol('omega2', real=True)), AppliedPredicate(Q.nonzero, Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))))"),
+        'class': 'PREMISE',
+        'step': 'S9',
+    },
+    'dim_terms_d3': {
+        'display': '[-mu_R*Derivative(u1(t, x, y, z), y)**2/2, -mu_R*Derivative(u1(t, x, y, z), z)**2/2, -mu_R*Derivative(u2(t, x, y, z), x)**2/2, -mu_R*Derivative(u2(t, x, y, z), z)**2/2, -mu_R*Derivative(u3(t, x, y, z), x)**2/2, -mu_R*Derivative(u3(t, x, y, z), y)**2/2, rho_br*Derivative(u1(t, x, y, z), t)**2/2, rho_br*Derivative(u2(t, x, y, z), t)**2/2, rho_br*Derivative(u3(t, x, y, z), t)**2/2, mu_R*Derivative(u1(t, x, y, z), y)*Derivative(u2(t, x, y, z), x), mu_R*Derivative(u1(t, x, y, z), z)*Derivative(u3(t, x, y, z), x), mu_R*Derivative(u2(t, x, y, z), z)*Derivative(u3(t, x, y, z), y)]',
+        'value': _restore("[Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'dim_field_multiorders_d3': {
+        'display': '[((0, 0, 1, 0), (0, 0, 1, 0)), ((0, 0, 0, 1), (0, 0, 0, 1)), ((0, 1, 0, 0), (0, 1, 0, 0)), ((0, 0, 0, 1), (0, 0, 0, 1)), ((0, 1, 0, 0), (0, 1, 0, 0)), ((0, 0, 1, 0), (0, 0, 1, 0)), ((1, 0, 0, 0), (1, 0, 0, 0)), ((1, 0, 0, 0), (1, 0, 0, 0)), ((1, 0, 0, 0), (1, 0, 0, 0)), ((0, 0, 1, 0), (0, 1, 0, 0)), ((0, 0, 0, 1), (0, 1, 0, 0)), ((0, 0, 0, 1), (0, 0, 1, 0))]',
+        'value': _restore('[Tuple(Tuple(Integer(0), Integer(0), Integer(1), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(0), Integer(0), Integer(1))), Tuple(Tuple(Integer(0), Integer(1), Integer(0), Integer(0)), Tuple(Integer(0), Integer(1), Integer(0), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(0), Integer(0), Integer(1))), Tuple(Tuple(Integer(0), Integer(1), Integer(0), Integer(0)), Tuple(Integer(0), Integer(1), Integer(0), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(1), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1), Integer(0))), Tuple(Tuple(Integer(1), Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0), Integer(0))), Tuple(Tuple(Integer(1), Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0), Integer(0))), Tuple(Tuple(Integer(1), Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(1), Integer(0)), Tuple(Integer(0), Integer(1), Integer(0), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(1), Integer(0), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(0), Integer(1), Integer(0)))]'),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'dim_term_expressions_d3': {
+        'display': '[Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_rho_br_L + 2],\n[dim_rho_br_T - 2],\n[    dim_rho_br_M]]), Matrix([\n[dim_rho_br_L + 2],\n[dim_rho_br_T - 2],\n[    dim_rho_br_M]]), Matrix([\n[dim_rho_br_L + 2],\n[dim_rho_br_T - 2],\n[    dim_rho_br_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]])]',
+        'value': _restore("[ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Add(Symbol('dim_rho_br_L'), Integer(2))], [Add(Symbol('dim_rho_br_T'), Integer(-2))], [Symbol('dim_rho_br_M')]]), ImmutableDenseMatrix([[Add(Symbol('dim_rho_br_L'), Integer(2))], [Add(Symbol('dim_rho_br_T'), Integer(-2))], [Symbol('dim_rho_br_M')]]), ImmutableDenseMatrix([[Add(Symbol('dim_rho_br_L'), Integer(2))], [Add(Symbol('dim_rho_br_T'), Integer(-2))], [Symbol('dim_rho_br_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]])]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'dim_linear_system_d3': {
+        'display': '[Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_rho_br_L + 2, 2 - D), Eq(dim_rho_br_T - 2, -2), Eq(dim_rho_br_M, 1), Eq(dim_rho_br_L + 2, 2 - D), Eq(dim_rho_br_T - 2, -2), Eq(dim_rho_br_M, 1), Eq(dim_rho_br_L + 2, 2 - D), Eq(dim_rho_br_T - 2, -2), Eq(dim_rho_br_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1)]',
+        'value': _restore("[Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Add(Symbol('dim_rho_br_L'), Integer(2)), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Add(Symbol('dim_rho_br_T'), Integer(-2)), Integer(-2)), Equality(Symbol('dim_rho_br_M'), Integer(1)), Equality(Add(Symbol('dim_rho_br_L'), Integer(2)), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Add(Symbol('dim_rho_br_T'), Integer(-2)), Integer(-2)), Equality(Symbol('dim_rho_br_M'), Integer(1)), Equality(Add(Symbol('dim_rho_br_L'), Integer(2)), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Add(Symbol('dim_rho_br_T'), Integer(-2)), Integer(-2)), Equality(Symbol('dim_rho_br_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1))]"),
+        'class': 'DERIVED',
+        'step': 'S9',
+    },
+    'dim_energy_density': {
+        'display': 'Matrix([\n[2 - D],\n[   -2],\n[    1]])',
+        'value': _restore("MutableDenseMatrix([[Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))], [Integer(-2)], [Integer(1)]])"),
+        'class': 'PREMISE',
+        'step': 'S9',
+    },
     'field_dimension': {
         'display': 'Matrix([\n[1],\n[0],\n[0]])',
         'value': _restore('MutableDenseMatrix([[Integer(1)], [Integer(0)], [Integer(0)]])'),
@@ -33,268 +291,10 @@ LEDGER = {
         'class': 'PREMISE',
         'step': 'S9',
     },
-    'lagrangian': {
-        'display': '-mu_R*Derivative(u1(t, x, y, z), y)**2/2 + mu_R*Derivative(u1(t, x, y, z), y)*Derivative(u2(t, x, y, z), x) - mu_R*Derivative(u1(t, x, y, z), z)**2/2 + mu_R*Derivative(u1(t, x, y, z), z)*Derivative(u3(t, x, y, z), x) - mu_R*Derivative(u2(t, x, y, z), x)**2/2 - mu_R*Derivative(u2(t, x, y, z), z)**2/2 + mu_R*Derivative(u2(t, x, y, z), z)*Derivative(u3(t, x, y, z), y) - mu_R*Derivative(u3(t, x, y, z), x)**2/2 - mu_R*Derivative(u3(t, x, y, z), y)**2/2 + rho_br*Derivative(u1(t, x, y, z), t)**2/2 + rho_br*Derivative(u2(t, x, y, z), t)**2/2 + rho_br*Derivative(u3(t, x, y, z), t)**2/2',
-        'value': _restore("Add(Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))))"),
-        'class': 'PREMISE',
-        'step': 'S9',
-    },
-    'el_residual': {
-        'display': 'Matrix([\n[mu_R*Derivative(u1(t, x, y, z), (y, 2)) + mu_R*Derivative(u1(t, x, y, z), (z, 2)) - mu_R*Derivative(u2(t, x, y, z), x, y) - mu_R*Derivative(u3(t, x, y, z), x, z) - rho_br*Derivative(u1(t, x, y, z), (t, 2))],\n[mu_R*Derivative(u2(t, x, y, z), (x, 2)) + mu_R*Derivative(u2(t, x, y, z), (z, 2)) - mu_R*Derivative(u1(t, x, y, z), x, y) - mu_R*Derivative(u3(t, x, y, z), y, z) - rho_br*Derivative(u2(t, x, y, z), (t, 2))],\n[mu_R*Derivative(u3(t, x, y, z), (x, 2)) + mu_R*Derivative(u3(t, x, y, z), (y, 2)) - mu_R*Derivative(u1(t, x, y, z), x, z) - mu_R*Derivative(u2(t, x, y, z), y, z) - rho_br*Derivative(u3(t, x, y, z), (t, 2))]])',
-        'value': _restore("MutableDenseMatrix([[Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2)))))], [Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2)))))], [Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2)))))]])"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'equation_of_motion': {
-        'display': '(Eq(mu_R*Derivative(u1(t, x, y, z), (y, 2)) + mu_R*Derivative(u1(t, x, y, z), (z, 2)) - mu_R*Derivative(u2(t, x, y, z), x, y) - mu_R*Derivative(u3(t, x, y, z), x, z) - rho_br*Derivative(u1(t, x, y, z), (t, 2)), 0), Eq(mu_R*Derivative(u2(t, x, y, z), (x, 2)) + mu_R*Derivative(u2(t, x, y, z), (z, 2)) - mu_R*Derivative(u1(t, x, y, z), x, y) - mu_R*Derivative(u3(t, x, y, z), y, z) - rho_br*Derivative(u2(t, x, y, z), (t, 2)), 0), Eq(mu_R*Derivative(u3(t, x, y, z), (x, 2)) + mu_R*Derivative(u3(t, x, y, z), (y, 2)) - mu_R*Derivative(u1(t, x, y, z), x, z) - mu_R*Derivative(u2(t, x, y, z), y, z) - rho_br*Derivative(u3(t, x, y, z), (t, 2)), 0))',
-        'value': _restore("Tuple(Equality(Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2))))), Integer(0)), Equality(Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2))))), Integer(0)), Equality(Add(Mul(Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)), Tuple(Symbol('z', real=True), Integer(1)))), Mul(Integer(-1), Symbol('rho_br', positive=True), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(2))))), Integer(0)))"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'plane_wave_ansatz': {
-        'display': 'Matrix([\n[a1*exp(I*(kx*x + ky*y + kz*z - omega*t))],\n[a2*exp(I*(kx*x + ky*y + kz*z - omega*t))],\n[a3*exp(I*(kx*x + ky*y + kz*z - omega*t))]])',
-        'value': _restore("MutableDenseMatrix([[Mul(Symbol('a1', real=True), exp(Mul(I, Add(Mul(Symbol('kx', real=True), Symbol('x', real=True)), Mul(Symbol('ky', real=True), Symbol('y', real=True)), Mul(Symbol('kz', real=True), Symbol('z', real=True)), Mul(Integer(-1), Symbol('omega', real=True), Symbol('t', real=True))))))], [Mul(Symbol('a2', real=True), exp(Mul(I, Add(Mul(Symbol('kx', real=True), Symbol('x', real=True)), Mul(Symbol('ky', real=True), Symbol('y', real=True)), Mul(Symbol('kz', real=True), Symbol('z', real=True)), Mul(Integer(-1), Symbol('omega', real=True), Symbol('t', real=True))))))], [Mul(Symbol('a3', real=True), exp(Mul(I, Add(Mul(Symbol('kx', real=True), Symbol('x', real=True)), Mul(Symbol('ky', real=True), Symbol('y', real=True)), Mul(Symbol('kz', real=True), Symbol('z', real=True)), Mul(Integer(-1), Symbol('omega', real=True), Symbol('t', real=True))))))]])"),
-        'class': 'PREMISE',
-        'step': 'S9',
-    },
-    'plane_wave_residual': {
-        'display': 'Matrix([\n[-a1*ky**2*mu_R - a1*kz**2*mu_R + a1*omega2*rho_br + a2*kx*ky*mu_R + a3*kx*kz*mu_R],\n[ a1*kx*ky*mu_R - a2*kx**2*mu_R - a2*kz**2*mu_R + a2*omega2*rho_br + a3*ky*kz*mu_R],\n[ a1*kx*kz*mu_R + a2*ky*kz*mu_R - a3*kx**2*mu_R - a3*ky**2*mu_R + a3*omega2*rho_br]])',
-        'value': _restore("MutableDenseMatrix([[Add(Mul(Integer(-1), Symbol('a1', real=True), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('a1', real=True), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('a1', real=True), Symbol('omega2', real=True), Symbol('rho_br', positive=True)), Mul(Symbol('a2', real=True), Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('a3', real=True), Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)))], [Add(Mul(Symbol('a1', real=True), Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('a2', real=True), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('a2', real=True), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('a2', real=True), Symbol('omega2', real=True), Symbol('rho_br', positive=True)), Mul(Symbol('a3', real=True), Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)))], [Add(Mul(Symbol('a1', real=True), Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('a2', real=True), Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('a3', real=True), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('a3', real=True), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('a3', real=True), Symbol('omega2', real=True), Symbol('rho_br', positive=True)))]])"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'route_operands_and_residual': {
-        'display': '(Matrix([\n[-ky**2*mu_R - kz**2*mu_R + omega2*rho_br,                               kx*ky*mu_R,                               kx*kz*mu_R],\n[                              kx*ky*mu_R, -kx**2*mu_R - kz**2*mu_R + omega2*rho_br,                               ky*kz*mu_R],\n[                              kx*kz*mu_R,                               ky*kz*mu_R, -kx**2*mu_R - ky**2*mu_R + omega2*rho_br]]), Matrix([\n[-ky**2*mu_R - kz**2*mu_R + omega2*rho_br,                               kx*ky*mu_R,                               kx*kz*mu_R],\n[                              kx*ky*mu_R, -kx**2*mu_R - kz**2*mu_R + omega2*rho_br,                               ky*kz*mu_R],\n[                              kx*kz*mu_R,                               ky*kz*mu_R, -kx**2*mu_R - ky**2*mu_R + omega2*rho_br]]), Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]))',
-        'value': _restore("Tuple(ImmutableDenseMatrix([[Add(Mul(Integer(-1), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Add(Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Add(Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True)))]]), ImmutableDenseMatrix([[Add(Mul(Integer(-1), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Add(Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Add(Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True)))]]), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]))"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'factored_determinant': {
-        'display': 'omega2*rho_br*(kx**2*mu_R + ky**2*mu_R + kz**2*mu_R - omega2*rho_br)**2',
-        'value': _restore("Mul(Symbol('omega2', real=True), Symbol('rho_br', positive=True), Pow(Add(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('omega2', real=True), Symbol('rho_br', positive=True))), Integer(2)))"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'omega2_solutions': {
-        'display': '{0, mu_R*(kx**2 + ky**2 + kz**2)/rho_br}',
-        'value': _restore("FiniteSet(Integer(0), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))))"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    't_generator': {
-        'display': 'Matrix([\n[ky**2 + kz**2,        -kx*ky,        -kx*kz],\n[       -kx*ky, kx**2 + kz**2,        -ky*kz],\n[       -kx*kz,        -ky*kz, kx**2 + ky**2]])',
-        'value': _restore("ImmutableDenseMatrix([[Add(Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))), Mul(Integer(-1), Symbol('kx', real=True), Symbol('ky', real=True)), Mul(Integer(-1), Symbol('kx', real=True), Symbol('kz', real=True))], [Mul(Integer(-1), Symbol('kx', real=True), Symbol('ky', real=True)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))), Mul(Integer(-1), Symbol('ky', real=True), Symbol('kz', real=True))], [Mul(Integer(-1), Symbol('kx', real=True), Symbol('kz', real=True)), Mul(Integer(-1), Symbol('ky', real=True), Symbol('kz', real=True)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))]])"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'lambda_generator': {
-        'display': 'Matrix([\n[kx**2, kx*ky, kx*kz],\n[kx*ky, ky**2, ky*kz],\n[kx*kz, ky*kz, kz**2]])',
-        'value': _restore("ImmutableDenseMatrix([[Pow(Symbol('kx', real=True), Integer(2)), Mul(Symbol('kx', real=True), Symbol('ky', real=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True)), Pow(Symbol('ky', real=True), Integer(2)), Mul(Symbol('ky', real=True), Symbol('kz', real=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True)), Pow(Symbol('kz', real=True), Integer(2))]])"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_stacked': {
-        'display': '[(0, Matrix([\n[-mu_R*(ky**2 + kz**2),            kx*ky*mu_R,            kx*kz*mu_R],\n[           kx*ky*mu_R, -mu_R*(kx**2 + kz**2),            ky*kz*mu_R],\n[           kx*kz*mu_R,            ky*kz*mu_R, -mu_R*(kx**2 + ky**2)],\n[                   kx,                    ky,                    kz]])), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, Matrix([\n[kx**2*mu_R, kx*ky*mu_R, kx*kz*mu_R],\n[kx*ky*mu_R, ky**2*mu_R, ky*kz*mu_R],\n[kx*kz*mu_R, ky*kz*mu_R, kz**2*mu_R],\n[        kx,         ky,         kz]]))]',
-        'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))], [Symbol('kx', real=True), Symbol('ky', real=True), Symbol('kz', real=True)]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), ImmutableDenseMatrix([[Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Symbol('kx', real=True), Symbol('ky', real=True), Symbol('kz', real=True)]]))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_mk': {
-        'display': '[(0, Matrix([\n[0],\n[0],\n[0]])), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, Matrix([\n[kx*mu_R*(kx**2 + ky**2 + kz**2)],\n[ky*mu_R*(kx**2 + ky**2 + kz**2)],\n[kz*mu_R*(kx**2 + ky**2 + kz**2)]]))]',
-        'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), ImmutableDenseMatrix([[Mul(Symbol('kx', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]]))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_mt': {
-        'display': '[(0, Matrix([\n[-mu_R*(ky**2 + kz**2)*(kx**2 + ky**2 + kz**2),            kx*ky*mu_R*(kx**2 + ky**2 + kz**2),            kx*kz*mu_R*(kx**2 + ky**2 + kz**2)],\n[           kx*ky*mu_R*(kx**2 + ky**2 + kz**2), -mu_R*(kx**2 + kz**2)*(kx**2 + ky**2 + kz**2),            ky*kz*mu_R*(kx**2 + ky**2 + kz**2)],\n[           kx*kz*mu_R*(kx**2 + ky**2 + kz**2),            ky*kz*mu_R*(kx**2 + ky**2 + kz**2), -mu_R*(kx**2 + ky**2)*(kx**2 + ky**2 + kz**2)]])), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]))]',
-        'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_e1': {
-        'display': '[(0, False), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, True)]',
-        'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), true)]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_e2': {
-        'display': '[(0, 0), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 2)]',
-        'value': _restore("[Tuple(Integer(0), Integer(0)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(2))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_e3': {
-        'display': '[(0, True), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, False)]',
-        'value': _restore("[Tuple(Integer(0), true), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), false)]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_e4': {
-        'display': '[(0, False), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, True)]',
-        'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), true)]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'roots_passing_e1': {
-        'display': '[mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
-        'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'roots_passing_e2': {
-        'display': '[mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
-        'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'roots_passing_e3': {
-        'display': '[0]',
-        'value': _restore('[Integer(0)]'),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'roots_passing_e4': {
-        'display': '[mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
-        'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'full_root_multiset': {
-        'display': '[0, mu_R*(kx**2 + ky**2 + kz**2)/rho_br, mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
-        'value': _restore("[Integer(0), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_multiplicities': {
-        'display': '[(0, 1), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 2)]',
-        'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(2))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_nullities': {
-        'display': '[(0, 1), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 2)]',
-        'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(2))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_scaling_scaled': {
-        'display': '[0, mu_R*(kx**2*lambda_scale**2 + ky**2*lambda_scale**2 + kz**2*lambda_scale**2)/rho_br]',
-        'value': _restore("[Integer(0), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Mul(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('lambda_scale', positive=True), Integer(2))), Mul(Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('lambda_scale', positive=True), Integer(2))), Mul(Pow(Symbol('kz', real=True), Integer(2)), Pow(Symbol('lambda_scale', positive=True), Integer(2)))))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_scaling_quadratic': {
-        'display': '[0, lambda_scale**2*mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
-        'value': _restore("[Integer(0), Mul(Pow(Symbol('lambda_scale', positive=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_scaling_residual': {
-        'display': '[0, 0]',
-        'value': _restore('[Integer(0), Integer(0)]'),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_omega2_signs': {
-        'display': '[(0, 0), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 1)]',
-        'value': _restore("[Tuple(Integer(0), Integer(0)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(1))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'transverse_roots_q': {
-        'display': '[mu_R*q/rho_br]',
-        'value': _restore("[Mul(Symbol('mu_R', positive=True), Symbol('q', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'transverse_roots_q_wavevector_occurrences': {
-        'display': '[((kx, False), (ky, False), (kz, False))]',
-        'value': _restore("[Tuple(Tuple(Symbol('kx', real=True), false), Tuple(Symbol('ky', real=True), false), Tuple(Symbol('kz', real=True), false))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'speed_squared_candidates': {
-        'display': '[mu_R/rho_br]',
-        'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'homogeneity_defects': {
-        'display': '[0]',
-        'value': _restore('[Integer(0)]'),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'speed_q_derivatives': {
-        'display': '[0]',
-        'value': _restore('[Integer(0)]'),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_q_numerator_degrees': {
-        'display': '[1]',
-        'value': _restore('[1]'),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'root_q_denominator_degrees': {
-        'display': '[0]',
-        'value': _restore('[0]'),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'dim_speed_from_expression': {
-        'display': '[(mu_R/rho_br, Matrix([\n[ 2],\n[-2],\n[ 0]]))]',
-        'value': _restore("[Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Integer(2)], [Integer(-2)], [Integer(0)]]))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
     'dim_squared_velocity': {
         'display': 'Matrix([\n[ 2],\n[-2],\n[ 0]])',
         'value': _restore('MutableDenseMatrix([[Integer(2)], [Integer(-2)], [Integer(0)]])'),
         'class': 'PREMISE',
-        'step': 'S9',
-    },
-    'dim_speed_difference': {
-        'display': '[(mu_R/rho_br, Matrix([\n[0],\n[0],\n[0]]))]',
-        'value': _restore("[Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]]))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'assumptions': {
-        'display': 'Q.integer(D) & Q.positive(D) & Q.positive(mu_R) & Q.positive(q) & Q.positive(rho_br) & Q.real(a1) & Q.real(a2) & Q.real(a3) & Q.real(kx) & Q.real(ky) & Q.real(kz) & Q.real(omega2) & Q.nonzero(kx**2 + ky**2 + kz**2)',
-        'value': _restore("And(AppliedPredicate(Q.integer, Symbol('D', integer=True, positive=True)), AppliedPredicate(Q.positive, Symbol('D', integer=True, positive=True)), AppliedPredicate(Q.positive, Symbol('mu_R', positive=True)), AppliedPredicate(Q.positive, Symbol('q', positive=True)), AppliedPredicate(Q.positive, Symbol('rho_br', positive=True)), AppliedPredicate(Q.real, Symbol('a1', real=True)), AppliedPredicate(Q.real, Symbol('a2', real=True)), AppliedPredicate(Q.real, Symbol('a3', real=True)), AppliedPredicate(Q.real, Symbol('kx', real=True)), AppliedPredicate(Q.real, Symbol('ky', real=True)), AppliedPredicate(Q.real, Symbol('kz', real=True)), AppliedPredicate(Q.real, Symbol('omega2', real=True)), AppliedPredicate(Q.nonzero, Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))))"),
-        'class': 'PREMISE',
-        'step': 'S9',
-    },
-    'dim_energy_density': {
-        'display': 'Matrix([\n[2 - D],\n[   -2],\n[    1]])',
-        'value': _restore("MutableDenseMatrix([[Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))], [Integer(-2)], [Integer(1)]])"),
-        'class': 'PREMISE',
-        'step': 'S9',
-    },
-    'dim_terms': {
-        'display': '[-mu_R*Derivative(u1(t, x, y, z), y)**2/2, -mu_R*Derivative(u1(t, x, y, z), z)**2/2, -mu_R*Derivative(u2(t, x, y, z), x)**2/2, -mu_R*Derivative(u2(t, x, y, z), z)**2/2, -mu_R*Derivative(u3(t, x, y, z), x)**2/2, -mu_R*Derivative(u3(t, x, y, z), y)**2/2, rho_br*Derivative(u1(t, x, y, z), t)**2/2, rho_br*Derivative(u2(t, x, y, z), t)**2/2, rho_br*Derivative(u3(t, x, y, z), t)**2/2, mu_R*Derivative(u1(t, x, y, z), y)*Derivative(u2(t, x, y, z), x), mu_R*Derivative(u1(t, x, y, z), z)*Derivative(u3(t, x, y, z), x), mu_R*Derivative(u2(t, x, y, z), z)*Derivative(u3(t, x, y, z), y)]',
-        'value': _restore("[Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))))]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'dim_field_multiorders': {
-        'display': '[((0, 0, 1, 0), (0, 0, 1, 0)), ((0, 0, 0, 1), (0, 0, 0, 1)), ((0, 1, 0, 0), (0, 1, 0, 0)), ((0, 0, 0, 1), (0, 0, 0, 1)), ((0, 1, 0, 0), (0, 1, 0, 0)), ((0, 0, 1, 0), (0, 0, 1, 0)), ((1, 0, 0, 0), (1, 0, 0, 0)), ((1, 0, 0, 0), (1, 0, 0, 0)), ((1, 0, 0, 0), (1, 0, 0, 0)), ((0, 0, 1, 0), (0, 1, 0, 0)), ((0, 0, 0, 1), (0, 1, 0, 0)), ((0, 0, 0, 1), (0, 0, 1, 0))]',
-        'value': _restore('[Tuple(Tuple(Integer(0), Integer(0), Integer(1), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(0), Integer(0), Integer(1))), Tuple(Tuple(Integer(0), Integer(1), Integer(0), Integer(0)), Tuple(Integer(0), Integer(1), Integer(0), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(0), Integer(0), Integer(1))), Tuple(Tuple(Integer(0), Integer(1), Integer(0), Integer(0)), Tuple(Integer(0), Integer(1), Integer(0), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(1), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1), Integer(0))), Tuple(Tuple(Integer(1), Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0), Integer(0))), Tuple(Tuple(Integer(1), Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0), Integer(0))), Tuple(Tuple(Integer(1), Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(1), Integer(0)), Tuple(Integer(0), Integer(1), Integer(0), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(1), Integer(0), Integer(0))), Tuple(Tuple(Integer(0), Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(0), Integer(1), Integer(0)))]'),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'dim_term_expressions': {
-        'display': '[Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_rho_br_L + 2],\n[dim_rho_br_T - 2],\n[    dim_rho_br_M]]), Matrix([\n[dim_rho_br_L + 2],\n[dim_rho_br_T - 2],\n[    dim_rho_br_M]]), Matrix([\n[dim_rho_br_L + 2],\n[dim_rho_br_T - 2],\n[    dim_rho_br_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]]), Matrix([\n[dim_mu_R_L],\n[dim_mu_R_T],\n[dim_mu_R_M]])]',
-        'value': _restore("[ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Add(Symbol('dim_rho_br_L'), Integer(2))], [Add(Symbol('dim_rho_br_T'), Integer(-2))], [Symbol('dim_rho_br_M')]]), ImmutableDenseMatrix([[Add(Symbol('dim_rho_br_L'), Integer(2))], [Add(Symbol('dim_rho_br_T'), Integer(-2))], [Symbol('dim_rho_br_M')]]), ImmutableDenseMatrix([[Add(Symbol('dim_rho_br_L'), Integer(2))], [Add(Symbol('dim_rho_br_T'), Integer(-2))], [Symbol('dim_rho_br_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]]), ImmutableDenseMatrix([[Symbol('dim_mu_R_L')], [Symbol('dim_mu_R_T')], [Symbol('dim_mu_R_M')]])]"),
-        'class': 'DERIVED',
-        'step': 'S9',
-    },
-    'dim_linear_system': {
-        'display': '[Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_rho_br_L + 2, 2 - D), Eq(dim_rho_br_T - 2, -2), Eq(dim_rho_br_M, 1), Eq(dim_rho_br_L + 2, 2 - D), Eq(dim_rho_br_T - 2, -2), Eq(dim_rho_br_M, 1), Eq(dim_rho_br_L + 2, 2 - D), Eq(dim_rho_br_T - 2, -2), Eq(dim_rho_br_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1), Eq(dim_mu_R_L, 2 - D), Eq(dim_mu_R_T, -2), Eq(dim_mu_R_M, 1)]',
-        'value': _restore("[Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Add(Symbol('dim_rho_br_L'), Integer(2)), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Add(Symbol('dim_rho_br_T'), Integer(-2)), Integer(-2)), Equality(Symbol('dim_rho_br_M'), Integer(1)), Equality(Add(Symbol('dim_rho_br_L'), Integer(2)), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Add(Symbol('dim_rho_br_T'), Integer(-2)), Integer(-2)), Equality(Symbol('dim_rho_br_M'), Integer(1)), Equality(Add(Symbol('dim_rho_br_L'), Integer(2)), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Add(Symbol('dim_rho_br_T'), Integer(-2)), Integer(-2)), Equality(Symbol('dim_rho_br_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1)), Equality(Symbol('dim_mu_R_L'), Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))), Equality(Symbol('dim_mu_R_T'), Integer(-2)), Equality(Symbol('dim_mu_R_M'), Integer(1))]"),
-        'class': 'DERIVED',
         'step': 'S9',
     },
     'dim_solution': {
@@ -351,506 +351,506 @@ LEDGER = {
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_roots': {
+    'dir_generic_roots_d3': {
         'display': '[0, mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
         'value': _restore("[Integer(0), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_root_multiset': {
+    'dir_generic_root_multiset_d3': {
         'display': '[0, mu_R*(kx**2 + ky**2 + kz**2)/rho_br, mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
         'value': _restore("[Integer(0), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_root_multiplicities': {
+    'dir_generic_root_multiplicities_d3': {
         'display': '[(0, 1), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_stacked': {
+    'dir_generic_stacked_d3': {
         'display': '[(0, Matrix([\n[-mu_R*(ky**2 + kz**2),            kx*ky*mu_R,            kx*kz*mu_R],\n[           kx*ky*mu_R, -mu_R*(kx**2 + kz**2),            ky*kz*mu_R],\n[           kx*kz*mu_R,            ky*kz*mu_R, -mu_R*(kx**2 + ky**2)],\n[                   kx,                    ky,                    kz]])), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, Matrix([\n[kx**2*mu_R, kx*ky*mu_R, kx*kz*mu_R],\n[kx*ky*mu_R, ky**2*mu_R, ky*kz*mu_R],\n[kx*kz*mu_R, ky*kz*mu_R, kz**2*mu_R],\n[        kx,         ky,         kz]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))], [Symbol('kx', real=True), Symbol('ky', real=True), Symbol('kz', real=True)]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), ImmutableDenseMatrix([[Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Symbol('kx', real=True), Symbol('ky', real=True), Symbol('kz', real=True)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_mk': {
+    'dir_generic_mk_d3': {
         'display': '[(0, Matrix([\n[0],\n[0],\n[0]])), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, Matrix([\n[kx*mu_R*(kx**2 + ky**2 + kz**2)],\n[ky*mu_R*(kx**2 + ky**2 + kz**2)],\n[kz*mu_R*(kx**2 + ky**2 + kz**2)]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), ImmutableDenseMatrix([[Mul(Symbol('kx', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_mt': {
+    'dir_generic_mt_d3': {
         'display': '[(0, Matrix([\n[-mu_R*(ky**2 + kz**2)*(kx**2 + ky**2 + kz**2),            kx*ky*mu_R*(kx**2 + ky**2 + kz**2),            kx*kz*mu_R*(kx**2 + ky**2 + kz**2)],\n[           kx*ky*mu_R*(kx**2 + ky**2 + kz**2), -mu_R*(kx**2 + kz**2)*(kx**2 + ky**2 + kz**2),            ky*kz*mu_R*(kx**2 + ky**2 + kz**2)],\n[           kx*kz*mu_R*(kx**2 + ky**2 + kz**2),            ky*kz*mu_R*(kx**2 + ky**2 + kz**2), -mu_R*(kx**2 + ky**2)*(kx**2 + ky**2 + kz**2)]])), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))], [Mul(Symbol('kx', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Symbol('ky', real=True), Symbol('kz', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_e1': {
+    'dir_generic_e1_d3': {
         'display': '[(0, False), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, True)]',
         'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), true)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_e2': {
+    'dir_generic_e2_d3': {
         'display': '[(0, 0), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(0)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_e3': {
+    'dir_generic_e3_d3': {
         'display': '[(0, True), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, False)]',
         'value': _restore("[Tuple(Integer(0), true), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), false)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_e4': {
+    'dir_generic_e4_d3': {
         'display': '[(0, False), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, True)]',
         'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), true)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_roots_passing_e1': {
+    'dir_generic_roots_passing_e1_d3': {
         'display': '[mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
         'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_roots_passing_e3': {
+    'dir_generic_roots_passing_e3_d3': {
         'display': '[0]',
         'value': _restore('[Integer(0)]'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_roots_passing_e4': {
+    'dir_generic_roots_passing_e4_d3': {
         'display': '[mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
         'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_roots_passing_e2': {
+    'dir_generic_roots_passing_e2_d3': {
         'display': '[mu_R*(kx**2 + ky**2 + kz**2)/rho_br]',
         'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2))))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_generic_root_nullities': {
+    'dir_generic_root_nullities_d3': {
         'display': '[(0, 1), (mu_R*(kx**2 + ky**2 + kz**2)/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)), Pow(Symbol('kz', real=True), Integer(2)))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_roots': {
+    'dir_xy_roots_d3': {
         'display': '[0, mu_R*(kx**2 + ky**2)/rho_br]',
         'value': _restore("[Integer(0), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_root_multiset': {
+    'dir_xy_root_multiset_d3': {
         'display': '[0, mu_R*(kx**2 + ky**2)/rho_br, mu_R*(kx**2 + ky**2)/rho_br]',
         'value': _restore("[Integer(0), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_root_multiplicities': {
+    'dir_xy_root_multiplicities_d3': {
         'display': '[(0, 1), (mu_R*(kx**2 + ky**2)/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_stacked': {
+    'dir_xy_stacked_d3': {
         'display': '[(0, Matrix([\n[-ky**2*mu_R,  kx*ky*mu_R,                     0],\n[ kx*ky*mu_R, -kx**2*mu_R,                     0],\n[          0,           0, -mu_R*(kx**2 + ky**2)],\n[         kx,          ky,                     0]])), (mu_R*(kx**2 + ky**2)/rho_br, Matrix([\n[kx**2*mu_R, kx*ky*mu_R, 0],\n[kx*ky*mu_R, ky**2*mu_R, 0],\n[         0,          0, 0],\n[        kx,         ky, 0]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Integer(0)], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Integer(0)], [Integer(0), Integer(0), Mul(Integer(-1), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))], [Symbol('kx', real=True), Symbol('ky', real=True), Integer(0)]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), ImmutableDenseMatrix([[Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Integer(0)], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True)), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Symbol('kx', real=True), Symbol('ky', real=True), Integer(0)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_mk': {
+    'dir_xy_mk_d3': {
         'display': '[(0, Matrix([\n[0],\n[0],\n[0]])), (mu_R*(kx**2 + ky**2)/rho_br, Matrix([\n[kx*mu_R*(kx**2 + ky**2)],\n[ky*mu_R*(kx**2 + ky**2)],\n[                      0]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), ImmutableDenseMatrix([[Mul(Symbol('kx', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))], [Mul(Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))], [Integer(0)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_mt': {
+    'dir_xy_mt_d3': {
         'display': '[(0, Matrix([\n[-ky**2*mu_R*(kx**2 + ky**2),  kx*ky*mu_R*(kx**2 + ky**2),                        0],\n[ kx*ky*mu_R*(kx**2 + ky**2), -kx**2*mu_R*(kx**2 + ky**2),                        0],\n[                          0,                           0, -mu_R*(kx**2 + ky**2)**2]])), (mu_R*(kx**2 + ky**2)/rho_br, Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Pow(Symbol('ky', real=True), Integer(2)), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), Integer(0)], [Mul(Symbol('kx', real=True), Symbol('ky', real=True), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), Integer(0)], [Integer(0), Integer(0), Mul(Integer(-1), Symbol('mu_R', positive=True), Pow(Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))), Integer(2)))]])), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_e1': {
+    'dir_xy_e1_d3': {
         'display': '[(0, False), (mu_R*(kx**2 + ky**2)/rho_br, True)]',
         'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), true)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_e2': {
+    'dir_xy_e2_d3': {
         'display': '[(0, 0), (mu_R*(kx**2 + ky**2)/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(0)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_e3': {
+    'dir_xy_e3_d3': {
         'display': '[(0, True), (mu_R*(kx**2 + ky**2)/rho_br, False)]',
         'value': _restore("[Tuple(Integer(0), true), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), false)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_e4': {
+    'dir_xy_e4_d3': {
         'display': '[(0, False), (mu_R*(kx**2 + ky**2)/rho_br, True)]',
         'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), true)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_roots_passing_e1': {
+    'dir_xy_roots_passing_e1_d3': {
         'display': '[mu_R*(kx**2 + ky**2)/rho_br]',
         'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_roots_passing_e3': {
+    'dir_xy_roots_passing_e3_d3': {
         'display': '[0]',
         'value': _restore('[Integer(0)]'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_roots_passing_e4': {
+    'dir_xy_roots_passing_e4_d3': {
         'display': '[mu_R*(kx**2 + ky**2)/rho_br]',
         'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_roots_passing_e2': {
+    'dir_xy_roots_passing_e2_d3': {
         'display': '[mu_R*(kx**2 + ky**2)/rho_br]',
         'value': _restore("[Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2))))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_xy_root_nullities': {
+    'dir_xy_root_nullities_d3': {
         'display': '[(0, 1), (mu_R*(kx**2 + ky**2)/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)), Add(Pow(Symbol('kx', real=True), Integer(2)), Pow(Symbol('ky', real=True), Integer(2)))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_roots': {
+    'dir_z_roots_d3': {
         'display': '[0, kz**2*mu_R/rho_br]',
         'value': _restore("[Integer(0), Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_root_multiset': {
+    'dir_z_root_multiset_d3': {
         'display': '[0, kz**2*mu_R/rho_br, kz**2*mu_R/rho_br]',
         'value': _restore("[Integer(0), Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_root_multiplicities': {
+    'dir_z_root_multiplicities_d3': {
         'display': '[(0, 1), (kz**2*mu_R/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_stacked': {
+    'dir_z_stacked_d3': {
         'display': '[(0, Matrix([\n[-kz**2*mu_R,           0,  0],\n[          0, -kz**2*mu_R,  0],\n[          0,           0,  0],\n[          0,           0, kz]])), (kz**2*mu_R/rho_br, Matrix([\n[0, 0,          0],\n[0, 0,          0],\n[0, 0, kz**2*mu_R],\n[0, 0,         kz]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Integer(0), Integer(0)], [Integer(0), Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True)), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Symbol('kz', real=True)]])), Tuple(Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Integer(0), Integer(0), Symbol('kz', real=True)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_mk': {
+    'dir_z_mk_d3': {
         'display': '[(0, Matrix([\n[0],\n[0],\n[0]])), (kz**2*mu_R/rho_br, Matrix([\n[         0],\n[         0],\n[kz**3*mu_R]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])), Tuple(Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Mul(Pow(Symbol('kz', real=True), Integer(3)), Symbol('mu_R', positive=True))]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_mt': {
+    'dir_z_mt_d3': {
         'display': '[(0, Matrix([\n[-kz**4*mu_R,           0, 0],\n[          0, -kz**4*mu_R, 0],\n[          0,           0, 0]])), (kz**2*mu_R/rho_br, Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(4)), Symbol('mu_R', positive=True)), Integer(0), Integer(0)], [Integer(0), Mul(Integer(-1), Pow(Symbol('kz', real=True), Integer(4)), Symbol('mu_R', positive=True)), Integer(0)], [Integer(0), Integer(0), Integer(0)]])), Tuple(Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_e1': {
+    'dir_z_e1_d3': {
         'display': '[(0, False), (kz**2*mu_R/rho_br, True)]',
         'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), true)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_e2': {
+    'dir_z_e2_d3': {
         'display': '[(0, 0), (kz**2*mu_R/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(0)), Tuple(Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_e3': {
+    'dir_z_e3_d3': {
         'display': '[(0, True), (kz**2*mu_R/rho_br, False)]',
         'value': _restore("[Tuple(Integer(0), true), Tuple(Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), false)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_e4': {
+    'dir_z_e4_d3': {
         'display': '[(0, False), (kz**2*mu_R/rho_br, True)]',
         'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), true)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_roots_passing_e1': {
+    'dir_z_roots_passing_e1_d3': {
         'display': '[kz**2*mu_R/rho_br]',
         'value': _restore("[Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_roots_passing_e3': {
+    'dir_z_roots_passing_e3_d3': {
         'display': '[0]',
         'value': _restore('[Integer(0)]'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_roots_passing_e4': {
+    'dir_z_roots_passing_e4_d3': {
         'display': '[kz**2*mu_R/rho_br]',
         'value': _restore("[Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_roots_passing_e2': {
+    'dir_z_roots_passing_e2_d3': {
         'display': '[kz**2*mu_R/rho_br]',
         'value': _restore("[Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_z_root_nullities': {
+    'dir_z_root_nullities_d3': {
         'display': '[(0, 1), (kz**2*mu_R/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Pow(Symbol('kz', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_roots': {
+    'dir_x_roots_d3': {
         'display': '[0, kx**2*mu_R/rho_br]',
         'value': _restore("[Integer(0), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_root_multiset': {
+    'dir_x_root_multiset_d3': {
         'display': '[0, kx**2*mu_R/rho_br, kx**2*mu_R/rho_br]',
         'value': _restore("[Integer(0), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_root_multiplicities': {
+    'dir_x_root_multiplicities_d3': {
         'display': '[(0, 1), (kx**2*mu_R/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_stacked': {
+    'dir_x_stacked_d3': {
         'display': '[(0, Matrix([\n[ 0,           0,           0],\n[ 0, -kx**2*mu_R,           0],\n[ 0,           0, -kx**2*mu_R],\n[kx,           0,           0]])), (kx**2*mu_R/rho_br, Matrix([\n[kx**2*mu_R, 0, 0],\n[         0, 0, 0],\n[         0, 0, 0],\n[        kx, 0, 0]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Integer(0)], [Integer(0), Integer(0), Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Symbol('kx', real=True), Integer(0), Integer(0)]])), Tuple(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Symbol('kx', real=True), Integer(0), Integer(0)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_mk': {
+    'dir_x_mk_d3': {
         'display': '[(0, Matrix([\n[0],\n[0],\n[0]])), (kx**2*mu_R/rho_br, Matrix([\n[kx**3*mu_R],\n[         0],\n[         0]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])), Tuple(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Mul(Pow(Symbol('kx', real=True), Integer(3)), Symbol('mu_R', positive=True))], [Integer(0)], [Integer(0)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_mt': {
+    'dir_x_mt_d3': {
         'display': '[(0, Matrix([\n[0,           0,           0],\n[0, -kx**4*mu_R,           0],\n[0,           0, -kx**4*mu_R]])), (kx**2*mu_R/rho_br, Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True)), Integer(0)], [Integer(0), Integer(0), Mul(Integer(-1), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True))]])), Tuple(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_e1': {
+    'dir_x_e1_d3': {
         'display': '[(0, False), (kx**2*mu_R/rho_br, True)]',
         'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), true)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_e2': {
+    'dir_x_e2_d3': {
         'display': '[(0, 0), (kx**2*mu_R/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(0)), Tuple(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_e3': {
+    'dir_x_e3_d3': {
         'display': '[(0, True), (kx**2*mu_R/rho_br, False)]',
         'value': _restore("[Tuple(Integer(0), true), Tuple(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), false)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_e4': {
+    'dir_x_e4_d3': {
         'display': '[(0, False), (kx**2*mu_R/rho_br, True)]',
         'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), true)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_roots_passing_e1': {
+    'dir_x_roots_passing_e1_d3': {
         'display': '[kx**2*mu_R/rho_br]',
         'value': _restore("[Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_roots_passing_e3': {
+    'dir_x_roots_passing_e3_d3': {
         'display': '[0]',
         'value': _restore('[Integer(0)]'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_roots_passing_e4': {
+    'dir_x_roots_passing_e4_d3': {
         'display': '[kx**2*mu_R/rho_br]',
         'value': _restore("[Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_roots_passing_e2': {
+    'dir_x_roots_passing_e2_d3': {
         'display': '[kx**2*mu_R/rho_br]',
         'value': _restore("[Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_x_root_nullities': {
+    'dir_x_root_nullities_d3': {
         'display': '[(0, 1), (kx**2*mu_R/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_roots': {
+    'dir_diagonal_roots_d3': {
         'display': '[0, 3*kx**2*mu_R/rho_br]',
         'value': _restore("[Integer(0), Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_root_multiset': {
+    'dir_diagonal_root_multiset_d3': {
         'display': '[0, 3*kx**2*mu_R/rho_br, 3*kx**2*mu_R/rho_br]',
         'value': _restore("[Integer(0), Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_root_multiplicities': {
+    'dir_diagonal_root_multiplicities_d3': {
         'display': '[(0, 1), (3*kx**2*mu_R/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_stacked': {
+    'dir_diagonal_stacked_d3': {
         'display': '[(0, Matrix([\n[-2*kx**2*mu_R,    kx**2*mu_R,    kx**2*mu_R],\n[   kx**2*mu_R, -2*kx**2*mu_R,    kx**2*mu_R],\n[   kx**2*mu_R,    kx**2*mu_R, -2*kx**2*mu_R],\n[           kx,            kx,            kx]])), (3*kx**2*mu_R/rho_br, Matrix([\n[kx**2*mu_R, kx**2*mu_R, kx**2*mu_R],\n[kx**2*mu_R, kx**2*mu_R, kx**2*mu_R],\n[kx**2*mu_R, kx**2*mu_R, kx**2*mu_R],\n[        kx,         kx,         kx]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Integer(2), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Integer(2), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Integer(2), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Symbol('kx', real=True), Symbol('kx', real=True), Symbol('kx', real=True)]])), Tuple(Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True)), Mul(Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True))], [Symbol('kx', real=True), Symbol('kx', real=True), Symbol('kx', real=True)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_mk': {
+    'dir_diagonal_mk_d3': {
         'display': '[(0, Matrix([\n[0],\n[0],\n[0]])), (3*kx**2*mu_R/rho_br, Matrix([\n[3*kx**3*mu_R],\n[3*kx**3*mu_R],\n[3*kx**3*mu_R]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])), Tuple(Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(3)), Symbol('mu_R', positive=True))], [Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(3)), Symbol('mu_R', positive=True))], [Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(3)), Symbol('mu_R', positive=True))]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_mt': {
+    'dir_diagonal_mt_d3': {
         'display': '[(0, Matrix([\n[-6*kx**4*mu_R,  3*kx**4*mu_R,  3*kx**4*mu_R],\n[ 3*kx**4*mu_R, -6*kx**4*mu_R,  3*kx**4*mu_R],\n[ 3*kx**4*mu_R,  3*kx**4*mu_R, -6*kx**4*mu_R]])), (3*kx**2*mu_R/rho_br, Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]))]',
         'value': _restore("[Tuple(Integer(0), ImmutableDenseMatrix([[Mul(Integer(-1), Integer(6), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True)), Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True)), Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True))], [Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Integer(6), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True)), Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True))], [Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True)), Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True)), Mul(Integer(-1), Integer(6), Pow(Symbol('kx', real=True), Integer(4)), Symbol('mu_R', positive=True))]])), Tuple(Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_e1': {
+    'dir_diagonal_e1_d3': {
         'display': '[(0, False), (3*kx**2*mu_R/rho_br, True)]',
         'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), true)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_e2': {
+    'dir_diagonal_e2_d3': {
         'display': '[(0, 0), (3*kx**2*mu_R/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(0)), Tuple(Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_e3': {
+    'dir_diagonal_e3_d3': {
         'display': '[(0, True), (3*kx**2*mu_R/rho_br, False)]',
         'value': _restore("[Tuple(Integer(0), true), Tuple(Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), false)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_e4': {
+    'dir_diagonal_e4_d3': {
         'display': '[(0, False), (3*kx**2*mu_R/rho_br, True)]',
         'value': _restore("[Tuple(Integer(0), false), Tuple(Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), true)]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_roots_passing_e1': {
+    'dir_diagonal_roots_passing_e1_d3': {
         'display': '[3*kx**2*mu_R/rho_br]',
         'value': _restore("[Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_roots_passing_e3': {
+    'dir_diagonal_roots_passing_e3_d3': {
         'display': '[0]',
         'value': _restore('[Integer(0)]'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_roots_passing_e4': {
+    'dir_diagonal_roots_passing_e4_d3': {
         'display': '[3*kx**2*mu_R/rho_br]',
         'value': _restore("[Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_roots_passing_e2': {
+    'dir_diagonal_roots_passing_e2_d3': {
         'display': '[3*kx**2*mu_R/rho_br]',
         'value': _restore("[Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dir_diagonal_root_nullities': {
+    'dir_diagonal_root_nullities_d3': {
         'display': '[(0, 1), (3*kx**2*mu_R/rho_br, 2)]',
         'value': _restore("[Tuple(Integer(0), Integer(1)), Tuple(Mul(Integer(3), Pow(Symbol('kx', real=True), Integer(2)), Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1))), Integer(2))]"),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'k_zero_e1': {
+    'k_zero_e1_d3': {
         'display': '[(0, Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]), True)]',
         'value': _restore('[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]), true)]'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'k_zero_e2': {
+    'k_zero_e2_d3': {
         'display': '[(0, 0, 3)]',
         'value': _restore('[Tuple(Integer(0), Integer(0), Integer(3))]'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'k_zero_e3': {
+    'k_zero_e3_d3': {
         'display': '[(0, Matrix([\n[0],\n[0],\n[0]]), Matrix([\n[0],\n[0],\n[0]]), True)]',
         'value': _restore('[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]]), ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]]), true)]'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'k_zero_e4': {
+    'k_zero_e4_d3': {
         'display': '[(0, Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]), Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]), True)]',
         'value': _restore('[Tuple(Integer(0), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]), true)]'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'transverse_multiplicity': {
+    'transverse_multiplicity_d3': {
         'display': '2',
         'value': _restore('Integer(2)'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'transverse_speed_squared': {
+    'transverse_speed_squared_d3': {
         'display': 'mu_R/rho_br',
         'value': _restore("Mul(Symbol('mu_R', positive=True), Pow(Symbol('rho_br', positive=True), Integer(-1)))"),
         'dim': _restore('ImmutableDenseMatrix([[Integer(2)], [Integer(-2)], [Integer(0)]])'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'dynamical_matrix_route_residual': {
+    'dynamical_matrix_route_residual_d3': {
         'display': 'Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]])',
         'value': _restore('ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]])'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'implied_speed_dimension': {
+    'implied_speed_dimension_d3': {
         'display': '[Matrix([\n[ 2],\n[-2],\n[ 0]])]',
         'value': _restore('[ImmutableDenseMatrix([[Integer(2)], [Integer(-2)], [Integer(0)]])]'),
         'class': 'DERIVED',
         'step': 'S9',
     },
-    'speed_dimension_difference': {
+    'speed_dimension_difference_d3': {
         'display': '[Matrix([\n[0],\n[0],\n[0]])]',
         'value': _restore('[ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])]'),
         'class': 'DERIVED',

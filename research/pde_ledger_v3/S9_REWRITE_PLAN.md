@@ -168,42 +168,37 @@ else in this design is a blindness control, and ⛔ nothing should be built pret
 
 ---
 
-## ⛔⛔ Deletion — ⭐ TWO WAVES, ⛔ not one
+## ⛔⛔ Deletion — ⭐ ONE PASS, ⛔ committed on its own, ⛔ before any building
 
-⚠ **Measured 2026-08-08:** `engine_output_checks.py` — the cross-engine comparator, which **survives** —
-imports `registry_read` and calls `load_registry()`. So do `S10-py` and `S11-py`. ⇒ ⛔ **deleting the
-registry now breaks working engines.**
+⭐ **Delete `reduction/` and everything that served the reconciliation design.**
 
-### ⭐ Wave 1 — before any building, ⛔ committed on its own
+⚠ Some Python engines import `registry_read`. ⭐ **That does not matter** — ⛔ those engines are being
+rewritten and ⛔ nothing will run them in their current form again. ⭐ The `.wl` engines import nothing from
+`reduction/` (measured: **0** registry references), so they are unaffected.
 
-⭐ Everything that serves only reconciliation and that nothing imports at runtime:
+### ⭐ What must survive
 
-`dimension_laws.py` · `dimension_law_check.py` · `dimension_law_able_to_fail.py` ·
-`engine_dimension_pin.py` · `registry_dimension_witness*.{py,yaml}` · `registry_import_fence.py` ·
-`w3_acceptance_ablations.py` · `w3_duplicate_pin_ablation.py` · `w3_runner_check.py` ·
-`w3_weaker_fix_mutations.py` · `w4_pin_completeness_runs.py` · `w4_shifted_registry_printer.py` ·
-`w4_weaker_implementation_runs.py` · `dimensional_homogeneity_gate.py` · `relations.yaml` ·
-the matching `test_*.py` · `W3_REGISTRY_D_LAWS_REPORT.md`
+| keep | why |
+|---|---|
+| all `.wl` engines | untouched, siloed, and they import nothing from `reduction/` |
+| `mathematica/out/*.out` | the Wolfram side of every comparison |
+| **S9's current `scripts/out/*.out`** | ⭐ the **D9 baseline** — ⛔ captured and committed **first** |
+| the `cross_engine` pair lists from `checks_S9.yaml` / `checks_S10.yaml` | ⭐ **D11** uses them ⇒ extract the pairs, ⛔ do not keep the files for it |
+
+### ⭐ Also clean `out/`
+
+⭐ `scripts/out/` and `mathematica/out/` hold outputs from the abandoned design. ⭐ Keep what the table
+above names; ⛔ delete the rest.
+
+⛔ **Everything else in `reduction/` goes**, including `quantities.yaml`, `relations.yaml`,
+`registry_read.py`, `registry_schema.yaml`, `dimensional_homogeneity_gate.py`, `engine_output_checks.py`,
+the witness, the pin, the `w3_*`/`w4_*` runners and every `test_*.py`.
 
 ⭐ Root-level: `_review_prompt*.md` ×6 · `HARNESS_S9_PILOT_PLAN.md` · `CROSS_STEP_DIMENSION_SCOPE.md` ·
 `INTEGRATION_TODO.md` · `EXPORT_CHAIN_ARCHITECTURE.md`
 
-⛔ **Verify each with `grep -rl <name> scripts/ mathematica/ reduction/` before removing.**
-
-### ⚠ Wave 2 — ⛔ only after S10 AND S11 are rewritten
-
-`quantities.yaml` · `registry_read.py` · `registry_schema.yaml` · `acceptance_check.py` ·
-`able_to_fail.py` · `show_reduced.py`, and the registry dependency inside `engine_output_checks.py`.
-
-⇒ ⭐ **Until then the registry stays on disk, unused by the new path.** ⛔ Do not half-delete it; ⛔ do not
-add a shim to pretend it is gone.
-
-### ⭐ Surgery, ⛔ not deletion
-
-- `engine_output_checks.py` — ⭐ the **cross-engine comparison survives**; only its registry-residual role
-  dies. ⛔ Wave 2.
-- `checks_S9.yaml` / `checks_S10.yaml` — ⭐ the `cross_engine` section **survives** and is what **D11** uses;
-  ⛔ only `registry_residual` dies. ⛔ Wave 2.
+⛔ **Do not keep anything "in case".** ⚠ Two architectures on disk is how the next session picks the wrong
+one. ⭐ Git has it all if it is ever wanted.
 
 ---
 

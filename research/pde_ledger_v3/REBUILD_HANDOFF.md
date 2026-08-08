@@ -110,10 +110,56 @@ identical payloads. ⭐ **Declared pairing stays; what dies is the symbol-spelli
 
 ---
 
-### ⚠ INSTRUMENT TRACK — ⛔ NOTHING IS CLOSED, 2026-08-07
+### ⛔⛔ THE INSTRUMENT TRACK IS ABANDONED — 2026-08-08, user decision
 
-⭐ Runs **parallel to S11**, ⛔ blocks nothing. Front door for the integration debt:
-`INTEGRATION_TODO.md`. Scope: `CROSS_STEP_DIMENSION_SCOPE.md`.
+⛔⛔ **Everything in the table below is SUPERSEDED. ⛔ Do not build on it, ⛔ do not resume it, ⛔ do not
+"finish" W0/W1/W2.** It is kept only to explain what the files in `reduction/` are.
+
+⭐⭐ **The replacement is `S9_REWRITE_PLAN.md`.** Read that, ⛔ not this.
+
+**Why it was abandoned.** The registry reconciles a derivation against a **hand-copied restatement of
+itself**. ⛔ No quantity has two independent sources, so every defect this track fought — a declaration
+drifting from a derivation, a wrong `D` coefficient the gate cannot see, a witness needing a witness — was
+**created by keeping the second copy.** ⚠ Measured: five build rounds, ten review legs, four recurrences of
+the same defect one level up, and **no physics.**
+
+⭐ **The requirement is unchanged**: each step consistent with every other, each internally dimensionally
+consistent, and every undetermined value tracked. ⭐ The new answer is **dataflow, not reconciliation** —
+each step's SymPy engine writes a flat `LEDGER` the next step imports; each Wolfram engine stays siloed and
+re-derives, which is where contention lives.
+
+### ⛔⛔ FIRST TASK NEXT SESSION — CLEANUP, ⛔ before any building
+
+⚠ **`reduction/` accumulated 20 files in one commit** (`b8ade918`) and it is scaffolding for the abandoned
+track. ⚠ 131 files in `directives/`. ⚠ Six stray `_review_prompt*.md` at the ledger root.
+
+⭐ **Delete what served only the registry-reconciliation design.** Candidates, ⭐ verify each before removing:
+
+`dimension_laws.py` · `dimension_law_check.py` · `dimension_law_able_to_fail.py` ·
+`engine_dimension_pin.py` · `registry_dimension_witness*.py|yaml` · `registry_import_fence.py` ·
+`w3_acceptance_ablations.py` · `w3_duplicate_pin_ablation.py` · `w3_runner_check.py` ·
+`w3_weaker_fix_mutations.py` · `w4_pin_completeness_runs.py` · `w4_shifted_registry_printer.py` ·
+`w4_weaker_implementation_runs.py` · `test_dimension_laws.py` · `test_registry_dimension_witness.py` ·
+`test_registry_import_fence.py` · `test_runner_contract.py` · `W3_REGISTRY_D_LAWS_REPORT.md`
+
+⚠ **Keep** the two engines' own machinery and anything S9/S10/S11 import at runtime. ⭐ Check with
+`grep -rl <name> scripts/ mathematica/` before deleting.
+⭐ Root-level: `_review_prompt*.md` ×6, `HARNESS_S9_PILOT_PLAN.md` (four legs said do not build it),
+`CROSS_STEP_DIMENSION_SCOPE.md` and `INTEGRATION_TODO.md` (both scope the abandoned track),
+`EXPORT_CHAIN_ARCHITECTURE.md` (superseded by `S9_REWRITE_PLAN.md`).
+⛔ **Commit the deletion on its own**, ⛔ not folded into the S9 build.
+
+⚠ **The one result worth carrying forward** before `engine_dimension_pin.py` goes: five independently-built
+engines derive the same symbolic dimensions for `rho_br`, `mu_R` and `B_comp`, and three of them never read
+the registry. ⭐ That is a physics corroboration; ⭐ record it in the S9/S10 step records, ⛔ do not keep the
+script to preserve it.
+
+---
+
+### ⚠ SUPERSEDED — the instrument track, kept for provenance only
+
+⭐ Front door for the abandoned integration debt: `INTEGRATION_TODO.md`. Scope:
+`CROSS_STEP_DIMENSION_SCOPE.md`.
 
 | id | what | state | owed |
 |---|---|---|---|

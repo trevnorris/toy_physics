@@ -156,8 +156,31 @@ rendering alongside it, since hand-checking is an intended use.
 **D4 · Dimension representation.** ⭐ Write it in whatever shape the engine's own dimension solve produces.
 ⛔ Do not reformat, normalise, or re-type it.
 
-**D5 · Export API shape.** ⭐ Builder's choice, ⭐ provided an object, its dimension and its class are
-associable **by name**.
+**D5 · Export shape — ⛔ FLAT, ⛔ not nested by step.**
+
+```python
+# S10_exports.py — GENERATED
+LEDGER = {
+    "rho_br":                   {"value": ..., "dim": ..., "class": "KNOB",    "step": "S9"},
+    "transverse_speed_squared": {"value": ..., "dim": ..., "class": "DERIVED", "step": "S9"},
+    "polarization_count":       {"value": ..., "dim": ..., "class": "DERIVED", "step": "S10"},
+}
+```
+
+⭐ Each step **imports the previous step's `LEDGER`, adds its own entries, overwrites what it derives, and
+exports the merged flat dict.** ⇒ the final step's file is the whole picture, and `LEDGER["x"]` is the
+current value of `x` — ⛔ no walking sections to find it.
+
+⭐ **The `step` field records who last set the entry**, so the flat structure stays self-describing without
+nesting.
+
+⭐⭐ **Each step's export is COMMITTED.** ⇒ knob history and cross-step comparison are a **diff between two
+committed files**, ⛔ not a structure to navigate. An overwrite shows up as a changed entry in the next
+step's file, with `class` moving `KNOB → DERIVED` and `step` moving to the step that retired it.
+
+⇒ ⭐ **Chain integrity is then checkable for free**: every entry the next step did not touch must be
+**identical** to the previous step's. A difference means a generated file was hand-edited or a downstream
+run is stale against a re-derived upstream.
 
 **D6 · Extractor scan scope.** ⭐ An explicit list of files, passed in. ⭐ For this change that list is S9's
 and S10's SymPy engines. ⛔ Do not discover engines by globbing.

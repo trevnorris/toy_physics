@@ -44,7 +44,7 @@ design is abandoned. ⛔ Do not build it for any step.
 
 ---
 
-## ⭐⭐ S9 — CLOSED `890a359d`. ⭐ NEXT IS S10, and S10 is the real test
+## ⭐⭐ S9 — CLOSED `5d6b56d3` (engine `890a359d`, record `5d6b56d3`). ⭐ NEXT IS S10
 
 ⭐ Cleanup `67dd3ce2` + `fb29bba2`; build `753ae7b1`; **seven** fix rounds through `890a359d`.
 ⭐ Each round: Codex built, **two independent legs** reviewed (fresh agent + Grok), commit after both.

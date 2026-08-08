@@ -96,6 +96,10 @@ research/**/runs/
 research/**/_scratch/
 # Repo-root scratch (diagnostic runners, regenerable data, __pycache__) — same convention
 /_scratch/
+# Review-leg scratch trees, wherever a leg drops them. A scratch directory is ignored by
+# definition; anything that needs tracking goes to a non-scratch location instead.
+_review_scratch*/
+**/_scratch/
 
 # Large numerical / serialized-data formats, wherever they land
 *.h5

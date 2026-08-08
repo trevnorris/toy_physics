@@ -666,7 +666,6 @@ posited_output_classes = {  # STRUCTURAL · posited output class assignments
     "ASSUMPTIONS": "PREMISE",
     "DIM_ENERGY_DENSITY": "PREMISE",
     "DIM_SQUARED_VELOCITY": "PREMISE",
-    "ROOT_SCALING_QUADRATIC": "PREMISE",
 }
 if "MAIN" in all_outputs:
     main_outputs = all_outputs["MAIN"]  # DERIVED · main-package output collection
@@ -751,8 +750,8 @@ def exact_reconstruction_match(live_value, reconstructed_value):
 def generated_record_lines(name, value, class_tag, dimension=None):
     lines = [
         f"    {name!r}: {{",
-        f"        'value': _restore({reconstruction_expression(value)!r}),",
         f"        'display': {sp.sstr(value)!r},",
+        f"        'value': _restore({reconstruction_expression(value)!r}),",
     ]
     if dimension is not None:
         lines.append(f"        'dim': _restore({reconstruction_expression(dimension)!r}),")
@@ -767,12 +766,17 @@ def generated_record_lines(name, value, class_tag, dimension=None):
 def write_exports():
     main_outputs = all_outputs["MAIN"]
     assert set(posited_output_classes) <= set(main_outputs)
+    assert set(posited_output_classes.values()) <= set(CLASS_TAGS)
     classes = declaration_classes(Path(__file__))
-    knobs = [
+    exported_inputs = [
         (name, globals()[name], class_tag)
         for name, class_tag in classes.items()
         if class_tag == "KNOB"
     ]
+    exported_inputs.extend([
+        ("field_dimension", field_dimension, "PREMISE"),
+        ("q_dimension", q_dimension, "PREMISE"),
+    ])
     computed_dimensions = [
         *main_outputs["DIM_COEFFICIENTS"],
         *main_outputs["DIM_SPEED_FROM_EXPRESSION"],
@@ -796,7 +800,7 @@ def write_exports():
         "LEDGER = {",
     ]
     live_records = []
-    for name, value, class_tag in knobs:
+    for name, value, class_tag in exported_inputs:
         dimension = computed_dimension_for(value)
         live_records.append((name, value, class_tag, dimension))
         source_lines.extend(generated_record_lines(name, value, class_tag, dimension))

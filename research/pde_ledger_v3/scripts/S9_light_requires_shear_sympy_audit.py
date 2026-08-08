@@ -475,7 +475,7 @@ def derive(
         )
         for root in roots
     ]
-    quadratic_scaled_roots = [lambda_scale**2 * root for root in roots]  # PREMISE · supplied quadratic scaling reference
+    quadratic_scaled_roots = [lambda_scale**2 * root for root in roots]
     scaling_residuals = [
         sp.simplify(scaled - quadratic_scaled)
         for scaled, quadratic_scaled in zip(scaled_roots, quadratic_scaled_roots)
@@ -660,6 +660,7 @@ standard_emission_names = frozenset({  # STRUCTURAL · standard emission-name co
     "DYNAMICAL_MATRIX_ROUTE_RESIDUAL",
     "BARE_FIELD_COEFFICIENT_DIMENSION",
 })
+posited_output_classes = {"ROOT_SCALING_QUADRATIC": "PREMISE"}  # STRUCTURAL · posited output class assignments
 if "MAIN" in all_outputs:
     main_outputs = all_outputs["MAIN"]  # DERIVED · main-package output collection
     main_outputs = {  # DERIVED · standard-named main-package output collection
@@ -758,6 +759,7 @@ def generated_record_lines(name, value, class_tag, dimension=None):
 
 def write_exports():
     main_outputs = all_outputs["MAIN"]
+    assert set(posited_output_classes) <= set(main_outputs)
     classes = declaration_classes(Path(__file__))
     knobs = [
         (name, globals()[name], class_tag)
@@ -807,7 +809,7 @@ def write_exports():
         if suffix.startswith("_"):
             continue
         name = suffix.lower()
-        class_tag = "PREMISE" if suffix == "ROOT_SCALING_QUADRATIC" else output_class_for(value)
+        class_tag = posited_output_classes.get(suffix) or output_class_for(value)
         dimension = computed_dimension_for(value)
         live_records.append((name, value, class_tag, dimension))
         source_lines.extend(generated_record_lines(name, value, class_tag, dimension))

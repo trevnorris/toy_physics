@@ -114,15 +114,14 @@ a byte bar would forbid the thing being built.
 2. ⭐ **S10 imports `S9_exports` and runs.**
 3. ⭐ **Every declared symbol carries a class tag**, and the inventory extracts.
 4. ⭐ **Dimensions are computed**, and py's agree with wl's where both derive the same object.
-5. ⭐ **S9's Wolfram engine is unchanged and still runs**, and its results still agree with py's where both
-   derive the same object.
+5. ⭐ **S9's Wolfram engine still runs and its DERIVATION is unchanged** — ⭐ only emitted names moved
+   (**D12**) — and its results still agree with py's where both derive the same object.
 
 ## Scope
 
-⛔ **Do not modify any `.wl` engine.** ⚠ Its independence is the contention, and it is load-bearing.
+⛔ **Do not change any `.wl` engine's derivation** — its independence is the contention and is
+load-bearing. ⭐ **Emitted names may change, and must**, per **D12**.
 ⛔ **Do not add a YAML file, a registry, or a declared dimension.**
-⛔ **Do not delete the existing `reduction/` machinery in this change** — it is superseded, ⭐ but nothing is
-removed until the replacement runs on S9 → S10.
 ⛔ **Do not write an expected value or dimension anywhere a builder can read it.**
 
 ## Order
@@ -151,7 +150,7 @@ scope. ⛔ Do not build a guard for a guard.
 |---|---|
 | `scripts/S9_exports.py` (generated) | `scripts/S9_light_requires_shear_sympy_audit.py` |
 | one knob-extractor script | `scripts/S10_brane_mode_spectrum_sympy_audit.py` |
-| one baseline snapshot (committed first) | |
+| one baseline snapshot (committed first) | `mathematica/S9_light_requires_shear_mathematica_audit.wl` — ⛔ **emitted names ONLY**, per **D12** |
 
 ⛔ **No other file.** ⛔ No new YAML. ⛔ No new directory. ⛔ No new test framework.
 
@@ -266,5 +265,22 @@ keyed by tag name **before any edit**. That snapshot is the baseline and is comm
 **D10 · How "same value" is decided.** ⭐ Emit **both operands and the residual**, then guard on the
 residual. ⛔ Not a boolean comparison with the answer typed beside it.
 
-**D11 · Cross-engine object matching.** ⭐ Use the pairs already declared in `checks_S9.yaml`'s cross-engine
-section. ⛔ Do not invent a new correspondence mechanism in this change.
+**D11 · Cross-engine object matching — ⭐ BY NAME. ⛔ Superseded the pair list.**
+
+⭐ **The Wolfram engine names a computed object exactly as the SymPy export names it.** ⇒ post-run
+comparison is a lookup by name, ⛔ not a hand-written pair table.
+
+⚠ Today the two diverge completely — `WL_S9_RHO_DIMENSION` against `PY_S9_MAIN_DIM_PRIMARY_INERTIA` — and
+that divergence is the *only* reason `checks_S9.yaml`'s pair list exists. ⇒ ⭐ once the names agree, the
+pair list has no content and dies with the rest of `reduction/`.
+
+⭐ Where only one engine derives an object (WL's solver-condition tags, py-only bookkeeping), ⭐ it simply
+has no counterpart. ⛔ That is not a defect and ⛔ nothing should be invented to pair it.
+
+**D12 · What may change in a `.wl` engine.**
+⭐ **Emitted names only.** ⛔ No change to the derivation, the action, the ansatz, the premises, or any
+computed value.
+⭐ The rename must be shown to be a rename: **same values, new names**, against the committed output.
+⚠ ⭐ A name is not a value ⇒ ⛔ this does not leak anything and ⛔ does not weaken the silo. ⭐ The Wolfram
+engine still imports nothing and still re-derives the action independently — ⭐ that, and only that, is what
+makes it a check.

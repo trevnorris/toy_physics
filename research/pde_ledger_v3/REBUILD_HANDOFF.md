@@ -44,6 +44,46 @@ design is abandoned. ⛔ Do not build it for any step.
 
 ---
 
+## ⭐ S9 — REBUILT, and where the fix loop was STOPPED
+
+⭐ **Cleanup `67dd3ce2` + `fb29bba2`; S9 build `753ae7b1`; fix rounds 1–5 through `71f33901`.**
+⭐ Each round: Codex built, **two independent legs** reviewed (fresh agent + Grok), commit after both.
+
+⭐ **What holds.** ⭐ **Seven legs wrote their own CAS derivation before opening the artifact and all seven
+reproduce every S9 value.** ⭐ FORM ablation confirms the twelve standard-name emissions are **live
+readout**. ⭐ The Wolfram engine is a genuine D12 rename — re-run byte-identical, derivation untouched.
+⭐ `scripts/S9_exports.py` = flat 139-entry `LEDGER` (2 KNOB · 6 PREMISE · 131 DERIVED · 3 dimensions).
+
+⛔⛔ **THE LOOP WAS STOPPED DELIBERATELY, ⛔ not because it went green.** ⭐ Round 5 was **output-neutral
+and DELETED code**; what remains are **decisions and claim-wording**, ⛔ not defects ⇒ they belong in the
+**step record**, which is unwritten and is the next deliverable.
+
+### ⚠ THREE SMALL OPEN ITEMS — ⛔ do not "just fix" them, they are decisions
+
+| | |
+|---|---|
+| **T-3** | The class guard fails closed on **1 of 4** ways to get a class wrong (measured). ⭐ **One line** closes two more: `assert set(posited_output_classes.values()) <= set(CLASS_TAGS)`. ⛔ Nothing short of an independent class oracle closes the other two — ⭐ and that oracle is the machinery round 5 correctly deleted. |
+| **root_scaling_quadratic** | ⚠ **The legs disagree and both are right.** Its exponent is **typed** (⇒ PREMISE); its value is `λ² × a DERIVED root` and **moves under a FORM ablation** — the only premise-classed record that does (⇒ DERIVED). ⇒ ⭐ **the class vocabulary has no term for a hypothesis applied to a derived object.** That is a finding about the **vocabulary**, ⛔ not the object. |
+| **`.premises` justification** | ⭐ Deletion was right (no reader, no consumer). ⛔ My stated reason was wrong: 15 declaration sites vs 6 exported PREMISE records vs 2 declared premises in neither output — ⭐ **three pairwise-different sets.** |
+
+### ⛔⛔ TWO MEASUREMENTS THE STEP RECORD MUST CARRY — ⭐ they bound what S9 may claim
+
+1. ⛔⛔ **Three of the eleven rows are pinned by a premise NEITHER ENGINE EMITS.** Both engines type
+   `[u] = L` independently (`py:249`, `wl:306`). A leg **doubled it in a scratch copy of each engine**:
+   both move `INERTIA_`, `STIFFNESS_` and `BARE_FIELD_COEFFICIENT_DIMENSION` to the **same wrong values**,
+   both **exit 0**, and **they still agree.** ⇒ ⭐ what those rows buy is the **derivative-multiorder
+   extraction and the solve**, ⛔ **not the dimension.** ⚠ Measured common-mode blindness.
+2. ⛔ **The table's discriminating power is TWO ROWS.** Under the gradient-elastic form control **9 of the
+   10** exported standard rows are **byte-identical**; only `FACTORED_DETERMINANT` and
+   `FULL_ROOT_MULTISET` move. ⇒ ⭐ eleven rows = **eleven comparisons**, ≤ **nine** independent
+   computations, and **two** that separate this action from the ordinary-elastic alternative.
+   ⛔ `COEFFICIENT_DIMENSION_DIFFERENCE` and `SPEED_DIMENSION_DIFFERENCE` buy **zero independent physics**.
+
+⭐ **Scoping note that bounds every class finding:** ⛔ **nothing imports `S9_exports` yet** ⇒ they are
+*"wrong when the consumer arrives"*, ⛔ not *"wrong now."*
+
+---
+
 ## ⛔⛔ OPEN DECISION FOR THE USER — F-2, and the S9 build is blocked on it
 
 ⚠ **Measured 2026-08-08 by a review leg, on the committed build `753ae7b1`.** ⭐ Everything else from that
@@ -93,6 +133,21 @@ files · ⛔ no config file, ⛔ no YAML, ⛔ no per-step file, ⛔ no manifest,
 
 ⚠ ⭐ **This is the user's call because it changes the closed plan**, ⛔ not because the measurement is in
 doubt.
+
+### ⛔⛔ F-2 HARDENED — ⚠ three legs raised it independently, and there is now a CONCRETE wrong answer
+
+⚠ **Measured on the S9 build:** make the `q`-substitution a silent no-op. ⇒ the determinant is **unmoved**,
+the root multiset is **unmoved**, `SPEED_DIMENSION_DIFFERENCE` is **unmoved** — ⛔ a false pass — the engine
+**exits 0**, and the light cone becomes `mu_R*k²/(q*rho_br)` instead of `mu_R/rho_br`.
+
+⛔ **The dimension check cannot catch it by construction** — `q_dimension` is typed at exactly `−2L`, so the
+walk returns the same vector either way. ⛔ The Wolfram engine has **no `q` placeholder**, so it would not
+move. ⇒ ⭐⭐ **the cross-engine comparison on that one row is the only instrument that sees it.**
+
+⚠ **And the comparison SEMANTICS are undefined in code.** The two engines write the same row as
+`mu_R*(kx**2 + ky**2 + kz**2)/rho_br` and `(kx^2*muR + ky^2*muR + kz^2*muR)/rhoBr` ⇒ any comparator must
+already normalise **algebraic form**, and ⛔ nothing states whether it normalises **list order** — which is
+exactly what `FULL_ROOT_MULTISET`'s classification turns on.
 
 ---
 

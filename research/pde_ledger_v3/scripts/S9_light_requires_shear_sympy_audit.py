@@ -6,6 +6,8 @@ from pathlib import Path
 
 import sympy as sp
 
+from extract_knob_inventory import declaration_classes
+
 
 # Field, coordinate, amplitude, and material symbols.
 t, x, y, z = sp.symbols("t x y z", real=True)  # COORDINATE · spacetime coordinates
@@ -91,8 +93,9 @@ def construct_bare_field_action():
 
 # Every physical modification below enters through an action constructor.
 identity3 = sp.eye(3)
+main_action = construct_curl_action(rho_br * identity3, mu_R)  # PREMISE · curl-only MacCullagh action
 actions = {
-    "MAIN": (construct_curl_action(rho_br * identity3, mu_R), (rho_br, mu_R), rho_br, mu_R, ()),
+    "MAIN": (main_action, (rho_br, mu_R), rho_br, mu_R, ()),
     "X1": (
         construct_curl_action(lambda_rho * rho_br * identity3, mu_R),
         (rho_br, mu_R),
@@ -127,7 +130,7 @@ position = sp.Matrix(spatial_coordinates)
 input_wavevector = sp.Matrix(k_input)
 phase_exponent = sp.I * ((input_wavevector.T * position)[0] - omega * t)
 phase = sp.exp(phase_exponent)
-plane_wave = sp.Matrix([amplitude * phase for amplitude in a_symbols])
+plane_wave = sp.Matrix([amplitude * phase for amplitude in a_symbols])  # PREMISE · prescribed plane-wave ansatz
 
 # Recover wave data by differentiating the constructed phase rather than retyping its combinations.
 derived_wavevector = sp.Matrix([-sp.I * sp.diff(phase, coordinate) / phase for coordinate in spatial_coordinates])
@@ -565,11 +568,16 @@ def derive(
     return output, guards, None
 
 
-all_outputs = {}
+all_outputs = {}  # DERIVED · end derivation package collection
 all_guards = {}
 fatal_outputs = {}
+main_assumptions = assumptions_for(actions["MAIN"][1], actions["MAIN"][4])  # PREMISE · stated assumption set
 for control_name, action_specification in actions.items():
-    assumption_object = assumptions_for(action_specification[1], action_specification[4])
+    assumption_object = (
+        main_assumptions
+        if control_name == "MAIN"
+        else assumptions_for(action_specification[1], action_specification[4])
+    )
     with sp.assuming(assumption_object):
         result, guards, failure = derive(*action_specification, assumption_object)
     if failure is not None:
@@ -601,8 +609,32 @@ if "X6" in all_outputs:
     )
 
 
-def unique_item(items):
+emitted_tags = set()
+
+
+def contains_authored_text(value):
+    if isinstance(value, str):
+        return True
+    if isinstance(value, dict):
+        return any(contains_authored_text(item) for pair in value.items() for item in pair)
+    if isinstance(value, (list, tuple, set)):
+        return any(contains_authored_text(item) for item in value)
+    return False
+
+
+def emit(tag, value):
+    full_tag = f"PY_S9_{tag}"
+    assert re.fullmatch(r"[A-Za-z][A-Za-z0-9_]*", full_tag)
+    assert full_tag not in emitted_tags
+    assert not contains_authored_text(value)
+    rendered = sp.sstr(value).replace("\n", "")
+    emitted_tags.add(full_tag)
+    print(f"{full_tag}: {rendered}")
+
+
+def unique_item(tag, items):
     materialised = list(items)
+    emit(f"{tag}_CANDIDATES_FOUND", materialised)
     assert len(materialised) == 1
     return materialised[0]
 
@@ -628,15 +660,8 @@ standard_emission_names = frozenset({
     "DYNAMICAL_MATRIX_ROUTE_RESIDUAL",
     "BARE_FIELD_COEFFICIENT_DIMENSION",
 })
-main_computed_dimension_names = set()
-
 if "MAIN" in all_outputs:
     main_outputs = all_outputs["MAIN"]
-    main_computed_dimension_names = {
-        main_name_changes.get(name, name)
-        for name in main_outputs
-        if not name.startswith("_") and name.startswith("DIM_")
-    }
     main_outputs = {
         main_name_changes.get(name, name): value
         for name, value in main_outputs.items()
@@ -645,11 +670,17 @@ if "MAIN" in all_outputs:
 
     transverse_roots = set(main_outputs["ROOTS_PASSING_E1"])
     transverse_multiplicity = unique_item(
-        multiplicity
-        for root, multiplicity in main_outputs["ROOT_E2"]
-        if root in transverse_roots
+        "TRANSVERSE_MULTIPLICITY",
+        [
+            multiplicity
+            for root, multiplicity in main_outputs["ROOT_E2"]
+            if root in transverse_roots
+        ],
     )
-    transverse_speed_squared = unique_item(main_outputs["SPEED_SQUARED_CANDIDATES"])
+    transverse_speed_squared = unique_item(
+        "TRANSVERSE_SPEED_SQUARED",
+        main_outputs["SPEED_SQUARED_CANDIDATES"],
+    )
     route_operand_a, route_operand_b, route_residual = main_outputs["ROUTE_OPERANDS_AND_RESIDUAL"]
     del route_operand_a, route_operand_b
     implied_speed_dimensions = [dimension for _, dimension in main_outputs["DIM_SPEED_FROM_EXPRESSION"]]
@@ -661,45 +692,22 @@ if "MAIN" in all_outputs:
         "IMPLIED_SPEED_DIMENSION": implied_speed_dimensions,
         "SPEED_DIMENSION_DIFFERENCE": speed_dimension_differences,
     })
-    main_computed_dimension_names.update({
-        "IMPLIED_SPEED_DIMENSION",
-        "SPEED_DIMENSION_DIFFERENCE",
-    })
 
 if "X7" in all_outputs:
     all_outputs["X7"]["DISPERSION_SCALING_RESIDUAL_FLEXURAL"] = unique_item(
+        "DISPERSION_SCALING_RESIDUAL_FLEXURAL",
         all_outputs["X7"]["ROOT_SCALING_RESIDUAL"]
     )
 
 if "X8" in all_outputs:
     all_outputs["X8"]["BARE_FIELD_COEFFICIENT_DIMENSION"] = unique_item(
-        dimension
-        for coefficient, dimension in all_outputs["X8"]["DIM_COEFFICIENTS"]
-        if coefficient == mu_G
+        "BARE_FIELD_COEFFICIENT_DIMENSION",
+        [
+            dimension
+            for coefficient, dimension in all_outputs["X8"]["DIM_COEFFICIENTS"]
+            if coefficient == mu_G
+        ],
     )
-
-
-emitted_tags = set()
-
-
-def contains_authored_text(value):
-    if isinstance(value, str):
-        return True
-    if isinstance(value, dict):
-        return any(contains_authored_text(item) for pair in value.items() for item in pair)
-    if isinstance(value, (list, tuple, set)):
-        return any(contains_authored_text(item) for item in value)
-    return False
-
-
-def emit(tag, value):
-    full_tag = f"PY_S9_{tag}"
-    assert re.fullmatch(r"[A-Za-z][A-Za-z0-9_]*", full_tag)
-    assert full_tag not in emitted_tags
-    assert not contains_authored_text(value)
-    rendered = sp.sstr(value).replace("\n", "")
-    emitted_tags.add(full_tag)
-    print(f"{full_tag}: {rendered}")
 
 
 for control_name in actions:
@@ -732,13 +740,13 @@ def exact_reconstruction_match(live_value, reconstructed_value):
     return type(live_value) is type(reconstructed_value) and sp.srepr(live_value) == sp.srepr(reconstructed_value)
 
 
-def generated_record_lines(name, value, class_tag, dimension_marker=False, dimension=None):
+def generated_record_lines(name, value, class_tag, dimension=None):
     lines = [
         f"    {name!r}: {{",
         f"        'value': _restore({reconstruction_expression(value)!r}),",
         f"        'display': {sp.sstr(value)!r},",
     ]
-    if dimension_marker:
+    if dimension is not None:
         lines.append(f"        'dim': _restore({reconstruction_expression(dimension)!r}),")
     lines.extend([
         f"        'class': {class_tag!r},",
@@ -750,11 +758,35 @@ def generated_record_lines(name, value, class_tag, dimension_marker=False, dimen
 
 def write_exports():
     main_outputs = all_outputs["MAIN"]
-    coefficient_dimensions = dict(main_outputs["DIM_COEFFICIENTS"])
-    knobs = (
-        ("rho_br", rho_br, coefficient_dimensions[rho_br]),
-        ("mu_R", mu_R, coefficient_dimensions[mu_R]),
-    )
+    classes = declaration_classes(Path(__file__))
+    knobs = [
+        (name, globals()[name], class_tag)
+        for name, class_tag in classes.items()
+        if class_tag == "KNOB"
+    ]
+    computed_dimensions = [
+        *main_outputs["DIM_COEFFICIENTS"],
+        *main_outputs["DIM_SPEED_FROM_EXPRESSION"],
+    ]
+    annotated_premises = [
+        (globals()[name], class_tag)
+        for name, class_tag in classes.items()
+        if class_tag == "PREMISE" and name in globals()
+    ]
+    default_output_class = classes["all_outputs"]
+
+    def computed_dimension_for(value):
+        for dimensioned_object, dimension in computed_dimensions:
+            if exact_reconstruction_match(value, dimensioned_object):
+                return dimension
+        return None
+
+    def output_class_for(value):
+        for declared_object, class_tag in annotated_premises:
+            if exact_reconstruction_match(value, declared_object):
+                return class_tag
+        return default_output_class
+
     source_lines = [
         "# S9_exports.py — GENERATED by S9_light_requires_shear_sympy_audit.py. Do not edit.",
         "import sympy as sp",
@@ -766,20 +798,19 @@ def write_exports():
         "",
         "LEDGER = {",
     ]
-    for name, value, dimension in knobs:
-        source_lines.extend(generated_record_lines(name, value, "KNOB", True, dimension))
+    live_records = []
+    for name, value, class_tag in knobs:
+        dimension = computed_dimension_for(value)
+        live_records.append((name, value, class_tag, dimension))
+        source_lines.extend(generated_record_lines(name, value, class_tag, dimension))
     for suffix, value in main_outputs.items():
         if suffix.startswith("_"):
             continue
-        source_lines.extend(
-            generated_record_lines(
-                suffix.lower(),
-                value,
-                "DERIVED",
-                suffix in main_computed_dimension_names,
-                value,
-            )
-        )
+        name = suffix.lower()
+        class_tag = output_class_for(value)
+        dimension = computed_dimension_for(value)
+        live_records.append((name, value, class_tag, dimension))
+        source_lines.extend(generated_record_lines(name, value, class_tag, dimension))
     source_lines.append("}")
     source_lines.append("")
     export_source = "\n".join(source_lines)
@@ -789,21 +820,13 @@ def write_exports():
     reconstructed_namespace = {}
     exec(compile(export_path.read_text(encoding="utf-8"), str(export_path), "exec"), reconstructed_namespace)
     reconstructed_ledger = reconstructed_namespace["LEDGER"]
-    live_count = len(knobs) + sum(1 for name in main_outputs if not name.startswith("_"))
+    live_count = len(live_records)
     residuals = []
-    for name, value, dimension in knobs:
+    for name, value, _, dimension in live_records:
         record = reconstructed_ledger[name]
-        residuals.extend([
-            sp.Integer(not exact_reconstruction_match(value, record["value"])),
-            sp.Integer(not exact_reconstruction_match(dimension, record["dim"])),
-        ])
-    for suffix, value in main_outputs.items():
-        if suffix.startswith("_"):
-            continue
-        record = reconstructed_ledger[suffix.lower()]
         residuals.append(sp.Integer(not exact_reconstruction_match(value, record["value"])))
-        if suffix in main_computed_dimension_names:
-            residuals.append(sp.Integer(not exact_reconstruction_match(value, record["dim"])))
+        if dimension is not None:
+            residuals.append(sp.Integer(not exact_reconstruction_match(dimension, record["dim"])))
     roundtrip_residual = sum(residuals, sp.Integer(0))
     computed_dimension_count = sum("dim" in record for record in reconstructed_ledger.values())
     absent_dimension_count = len(reconstructed_ledger) - computed_dimension_count

@@ -16,7 +16,32 @@ CONSTRUCTORS = {"Symbol", "symbols", "Function"}
 
 class DeclarationVisitor(ast.NodeVisitor):
     def __init__(self):
-        self.lines = set()
+        self.constructor_lines = set()
+        self.assignment_names = {}
+
+    @staticmethod
+    def _target_names(target):
+        if isinstance(target, ast.Name):
+            return [target.id]
+        if isinstance(target, (ast.Tuple, ast.List)):
+            return [
+                name
+                for element in target.elts
+                for name in DeclarationVisitor._target_names(element)
+            ]
+        return []
+
+    def visit_Assign(self, node):
+        self.assignment_names[node.lineno] = [
+            name
+            for target in node.targets
+            for name in self._target_names(target)
+        ]
+        self.generic_visit(node)
+
+    def visit_AnnAssign(self, node):
+        self.assignment_names[node.lineno] = self._target_names(node.target)
+        self.generic_visit(node)
 
     def visit_Call(self, node):
         function = node.func
@@ -26,7 +51,7 @@ class DeclarationVisitor(ast.NodeVisitor):
             and function.value.id == "sp"
             and function.attr in CONSTRUCTORS
         ):
-            self.lines.add(node.lineno)
+            self.constructor_lines.add(node.lineno)
         self.generic_visit(node)
 
 
@@ -38,15 +63,42 @@ def scan(path):
     visitor.visit(tree)
     records = []
     findings = []
-    for line_number in sorted(visitor.lines):
+    annotated_assignment_lines = {
+        line_number
+        for line_number in visitor.assignment_names
+        if ANNOTATION.search(source_lines[line_number - 1])
+    }
+    declaration_lines = visitor.constructor_lines | annotated_assignment_lines
+    for line_number in sorted(declaration_lines):
         line = source_lines[line_number - 1]
         match = ANNOTATION.search(line)
         declaration = line.split("#", 1)[0].strip()
         if match is None:
             findings.append(f"{path}:{line_number}: declaration has no valid class tag: {declaration}")
             continue
-        records.append((match.group(1), line_number, declaration, match.group(2)))
+        records.append(
+            (
+                match.group(1),
+                line_number,
+                declaration,
+                match.group(2),
+                tuple(visitor.assignment_names.get(line_number, ())),
+            )
+        )
     return records, findings
+
+
+def declaration_classes(path):
+    records, findings = scan(path)
+    if findings:
+        raise ValueError("\n".join(findings))
+    classes = {}
+    for class_tag, line_number, _, _, names in records:
+        for name in names:
+            if name in classes and classes[name] != class_tag:
+                raise ValueError(f"{path}:{line_number}: conflicting class tags for {name}")
+            classes[name] = class_tag
+    return classes
 
 
 def main():
@@ -69,7 +121,7 @@ def main():
         for class_tag in CLASS_TAGS:
             entries = [
                 f"line {line_number}: {declaration} -- {description}"
-                for record_class, line_number, declaration, description in records
+                for record_class, line_number, declaration, description, _ in records
                 if record_class == class_tag
             ]
             print(f"{class_tag}: {'; '.join(entries) if entries else '(none)'}")

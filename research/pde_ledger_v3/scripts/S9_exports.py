@@ -240,7 +240,7 @@ LEDGER = {
     'dim_squared_velocity': {
         'value': _restore('MutableDenseMatrix([[Integer(2)], [Integer(-2)], [Integer(0)]])'),
         'display': 'Matrix([\n[ 2],\n[-2],\n[ 0]])',
-        'class': 'DERIVED',
+        'class': 'PREMISE',
         'step': 'S9',
     },
     'dim_speed_difference': {
@@ -258,7 +258,7 @@ LEDGER = {
     'dim_energy_density': {
         'value': _restore("MutableDenseMatrix([[Add(Integer(2), Mul(Integer(-1), Symbol('D', integer=True, positive=True)))], [Integer(-2)], [Integer(1)]])"),
         'display': 'Matrix([\n[2 - D],\n[   -2],\n[    1]])',
-        'class': 'DERIVED',
+        'class': 'PREMISE',
         'step': 'S9',
     },
     'dim_terms': {

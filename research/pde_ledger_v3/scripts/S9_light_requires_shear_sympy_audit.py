@@ -6,13 +6,13 @@ from pathlib import Path
 
 import sympy as sp
 
-from extract_knob_inventory import declaration_classes
+from extract_knob_inventory import CLASS_TAGS, declaration_classes
 
 
 # Field, coordinate, amplitude, and material symbols.
 t, x, y, z = sp.symbols("t x y z", real=True)  # COORDINATE · spacetime coordinates
-coordinates = (t, x, y, z)
-spatial_coordinates = (x, y, z)
+coordinates = (t, x, y, z)  # COORDINATE · spacetime coordinate collection
+spatial_coordinates = (x, y, z)  # COORDINATE · spatial coordinate collection
 u_functions = tuple(sp.Function(name)(t, x, y, z) for name in ("u1", "u2", "u3"))  # PREMISE · brane displacement field heads
 a_symbols = sp.symbols("a1 a2 a3", real=True)  # PREMISE · plane-wave amplitudes
 b_symbols = sp.symbols("b1 b2 b3", real=True)  # PREMISE · paired plane-wave amplitudes
@@ -92,9 +92,9 @@ def construct_bare_field_action():
 
 
 # Every physical modification below enters through an action constructor.
-identity3 = sp.eye(3)
+identity3 = sp.eye(3)  # STRUCTURAL · spatial identity tensor
 main_action = construct_curl_action(rho_br * identity3, mu_R)  # PREMISE · curl-only MacCullagh action
-actions = {
+actions = {  # STRUCTURAL · action package specifications
     "MAIN": (main_action, (rho_br, mu_R), rho_br, mu_R, ()),
     "X1": (
         construct_curl_action(lambda_rho * rho_br * identity3, mu_R),
@@ -126,17 +126,17 @@ actions = {
 
 
 # The prescribed plane wave is the second and final hand-constructed physical expression.
-position = sp.Matrix(spatial_coordinates)
-input_wavevector = sp.Matrix(k_input)
-phase_exponent = sp.I * ((input_wavevector.T * position)[0] - omega * t)
-phase = sp.exp(phase_exponent)
+position = sp.Matrix(spatial_coordinates)  # COORDINATE · spatial position vector
+input_wavevector = sp.Matrix(k_input)  # COORDINATE · wavevector component collection
+phase_exponent = sp.I * ((input_wavevector.T * position)[0] - omega * t)  # PREMISE · plane-wave phase prescription
+phase = sp.exp(phase_exponent)  # PREMISE · plane-wave phase factor
 plane_wave = sp.Matrix([amplitude * phase for amplitude in a_symbols])  # PREMISE · prescribed plane-wave ansatz
 
 # Recover wave data by differentiating the constructed phase rather than retyping its combinations.
-derived_wavevector = sp.Matrix([-sp.I * sp.diff(phase, coordinate) / phase for coordinate in spatial_coordinates])
-wave_norm = sp.factor((derived_wavevector.T * derived_wavevector)[0])
-transverse_generator = sp.simplify(wave_norm * identity3 - derived_wavevector * derived_wavevector.T)
-longitudinal_generator = sp.simplify(derived_wavevector * derived_wavevector.T)
+derived_wavevector = sp.Matrix([-sp.I * sp.diff(phase, coordinate) / phase for coordinate in spatial_coordinates])  # DERIVED · phase-gradient wavevector
+wave_norm = sp.factor((derived_wavevector.T * derived_wavevector)[0])  # DERIVED · wavevector norm form
+transverse_generator = sp.simplify(wave_norm * identity3 - derived_wavevector * derived_wavevector.T)  # DERIVED · transverse generator
+longitudinal_generator = sp.simplify(derived_wavevector * derived_wavevector.T)  # DERIVED · longitudinal generator
 
 
 def euler_lagrange_residual(action):
@@ -239,16 +239,16 @@ def q_form(expression):
     return sp.factor(sp.factor(expression).subs(wave_norm, q))
 
 
-length_dimension = sp.Matrix([1, 0, 0])
-time_dimension = sp.Matrix([0, 1, 0])
-mass_dimension = sp.Matrix([0, 0, 1])
-acceleration_dimension = length_dimension - 2 * time_dimension
-force_dimension = mass_dimension + acceleration_dimension
-energy_dimension = force_dimension + length_dimension
-energy_density_dimension = energy_dimension - D * length_dimension
-field_dimension = length_dimension
-q_dimension = -2 * length_dimension
-squared_velocity_dimension = 2 * (length_dimension - time_dimension)
+length_dimension = sp.Matrix([1, 0, 0])  # STRUCTURAL · length unit-basis marker
+time_dimension = sp.Matrix([0, 1, 0])  # STRUCTURAL · time unit-basis marker
+mass_dimension = sp.Matrix([0, 0, 1])  # STRUCTURAL · mass unit-basis marker
+acceleration_dimension = length_dimension - 2 * time_dimension  # DERIVED · acceleration unit relation
+force_dimension = mass_dimension + acceleration_dimension  # DERIVED · force unit relation
+energy_dimension = force_dimension + length_dimension  # DERIVED · energy unit relation
+energy_density_dimension = energy_dimension - D * length_dimension  # PREMISE · action-density reference supplied to the solver
+field_dimension = length_dimension  # PREMISE · displacement-field unit reference
+q_dimension = -2 * length_dimension  # PREMISE · wave-norm placeholder unit reference
+squared_velocity_dimension = 2 * (length_dimension - time_dimension)  # PREMISE · velocity-squared reference supplied for comparison
 
 
 class DimensionWalkError(Exception):
@@ -569,47 +569,47 @@ def derive(
 
 
 all_outputs = {}  # DERIVED · end derivation package collection
-all_guards = {}
-fatal_outputs = {}
+all_guards = {}  # DERIVED · derivation guard collection
+fatal_outputs = {}  # DERIVED · failed derivation output collection
 main_assumptions = assumptions_for(actions["MAIN"][1], actions["MAIN"][4])  # PREMISE · stated assumption set
 for control_name, action_specification in actions.items():
-    assumption_object = (
+    assumption_object = (  # PREMISE · package assumption set
         main_assumptions
         if control_name == "MAIN"
         else assumptions_for(action_specification[1], action_specification[4])
     )
     with sp.assuming(assumption_object):
-        result, guards, failure = derive(*action_specification, assumption_object)
+        result, guards, failure = derive(*action_specification, assumption_object)  # DERIVED · package derivation products
     if failure is not None:
-        fatal_outputs[control_name] = failure
+        fatal_outputs[control_name] = failure  # DERIVED · failed package output
         continue
-    all_outputs[control_name] = result
-    all_guards[control_name] = guards
+    all_outputs[control_name] = result  # DERIVED · completed package output
+    all_guards[control_name] = guards  # DERIVED · completed package guards
 
 for control_name in ("MAIN", "X6"):
     if control_name in all_outputs:
-        assumption_object = all_outputs[control_name]["ASSUMPTIONS"]
+        assumption_object = all_outputs[control_name]["ASSUMPTIONS"]  # PREMISE · package assumption set
         with sp.assuming(assumption_object):
             all_outputs[control_name].update(direction_block(all_outputs[control_name]["_M_A"]))
 
 if "MAIN" in all_outputs:
-    zero_wavevector_substitution = {component: 0 for component in k_input}
-    zero_matrix = all_outputs["MAIN"]["_M_A"].subs(zero_wavevector_substitution).applyfunc(sp.factor)
-    zero_wavevector = derived_wavevector.subs(zero_wavevector_substitution)
-    zero_test_block = evaluated_root_test_block(zero_matrix, zero_wavevector)
+    zero_wavevector_substitution = {component: 0 for component in k_input}  # CONTROL · selected wavevector locus
+    zero_matrix = all_outputs["MAIN"]["_M_A"].subs(zero_wavevector_substitution).applyfunc(sp.factor)  # DERIVED · specialised dynamical matrix
+    zero_wavevector = derived_wavevector.subs(zero_wavevector_substitution)  # DERIVED · specialised wavevector
+    zero_test_block = evaluated_root_test_block(zero_matrix, zero_wavevector)  # DERIVED · specialised root tests
     all_outputs["MAIN"].update({f"K_ZERO_{key}": value for key, value in zero_test_block.items()})
 
 if "X6" in all_outputs:
-    anisotropic_assumption = all_outputs["X6"]["ASSUMPTIONS"]
+    anisotropic_assumption = all_outputs["X6"]["ASSUMPTIONS"]  # PREMISE · anisotropic-package assumption set
     with sp.assuming(anisotropic_assumption):
-        isotropic_parameter_matrix = all_outputs["X6"]["_M_A"].subs(rho_z, rho_br).applyfunc(sp.factor)
-        isotropic_parameter_test_block = evaluated_root_test_block(isotropic_parameter_matrix, derived_wavevector)
+        isotropic_parameter_matrix = all_outputs["X6"]["_M_A"].subs(rho_z, rho_br).applyfunc(sp.factor)  # CONTROL · isotropic-parameter specialisation
+        isotropic_parameter_test_block = evaluated_root_test_block(isotropic_parameter_matrix, derived_wavevector)  # DERIVED · specialised root tests
     all_outputs["X6"].update(
         {f"RHO_Z_TO_RHO_BR_{key}": value for key, value in isotropic_parameter_test_block.items()}
     )
 
 
-emitted_tags = set()
+emitted_tags = set()  # STRUCTURAL · emitted-name uniqueness state
 
 
 def contains_authored_text(value):
@@ -639,14 +639,14 @@ def unique_item(tag, items):
     return materialised[0]
 
 
-main_name_changes = {
+main_name_changes = {  # STRUCTURAL · standard emission-name substitutions
     "DET_M_FACTORED": "FACTORED_DETERMINANT",
     "ROOT_MULTISET": "FULL_ROOT_MULTISET",
     "DIM_PRIMARY_INERTIA": "INERTIA_COEFFICIENT_DIMENSION",
     "DIM_PRIMARY_STIFFNESS": "STIFFNESS_COEFFICIENT_DIMENSION",
     "DIM_STIFFNESS_MINUS_INERTIA": "COEFFICIENT_DIMENSION_DIFFERENCE",
 }
-standard_emission_names = frozenset({
+standard_emission_names = frozenset({  # STRUCTURAL · standard emission-name collection
     "FACTORED_DETERMINANT",
     "FULL_ROOT_MULTISET",
     "TRANSVERSE_MULTIPLICITY",
@@ -661,15 +661,15 @@ standard_emission_names = frozenset({
     "BARE_FIELD_COEFFICIENT_DIMENSION",
 })
 if "MAIN" in all_outputs:
-    main_outputs = all_outputs["MAIN"]
-    main_outputs = {
+    main_outputs = all_outputs["MAIN"]  # DERIVED · main-package output collection
+    main_outputs = {  # DERIVED · standard-named main-package output collection
         main_name_changes.get(name, name): value
         for name, value in main_outputs.items()
     }
-    all_outputs["MAIN"] = main_outputs
+    all_outputs["MAIN"] = main_outputs  # DERIVED · standard-named main-package output collection
 
-    transverse_roots = set(main_outputs["ROOTS_PASSING_E1"])
-    transverse_multiplicity = unique_item(
+    transverse_roots = set(main_outputs["ROOTS_PASSING_E1"])  # DERIVED · transverse-root collection
+    transverse_multiplicity = unique_item(  # DERIVED · transverse-root multiplicity
         "TRANSVERSE_MULTIPLICITY",
         [
             multiplicity
@@ -677,14 +677,14 @@ if "MAIN" in all_outputs:
             if root in transverse_roots
         ],
     )
-    transverse_speed_squared = unique_item(
+    transverse_speed_squared = unique_item(  # DERIVED · transverse speed candidate
         "TRANSVERSE_SPEED_SQUARED",
         main_outputs["SPEED_SQUARED_CANDIDATES"],
     )
-    route_operand_a, route_operand_b, route_residual = main_outputs["ROUTE_OPERANDS_AND_RESIDUAL"]
+    route_operand_a, route_operand_b, route_residual = main_outputs["ROUTE_OPERANDS_AND_RESIDUAL"]  # DERIVED · dynamical-matrix route comparison
     del route_operand_a, route_operand_b
-    implied_speed_dimensions = [dimension for _, dimension in main_outputs["DIM_SPEED_FROM_EXPRESSION"]]
-    speed_dimension_differences = [dimension for _, dimension in main_outputs["DIM_SPEED_DIFFERENCE"]]
+    implied_speed_dimensions = [dimension for _, dimension in main_outputs["DIM_SPEED_FROM_EXPRESSION"]]  # DERIVED · per-candidate unit results
+    speed_dimension_differences = [dimension for _, dimension in main_outputs["DIM_SPEED_DIFFERENCE"]]  # DERIVED · per-candidate unit residuals
     main_outputs.update({
         "TRANSVERSE_MULTIPLICITY": transverse_multiplicity,
         "TRANSVERSE_SPEED_SQUARED": transverse_speed_squared,
@@ -694,13 +694,13 @@ if "MAIN" in all_outputs:
     })
 
 if "X7" in all_outputs:
-    all_outputs["X7"]["DISPERSION_SCALING_RESIDUAL_FLEXURAL"] = unique_item(
+    all_outputs["X7"]["DISPERSION_SCALING_RESIDUAL_FLEXURAL"] = unique_item(  # DERIVED · flexural scaling residual
         "DISPERSION_SCALING_RESIDUAL_FLEXURAL",
         all_outputs["X7"]["ROOT_SCALING_RESIDUAL"]
     )
 
 if "X8" in all_outputs:
-    all_outputs["X8"]["BARE_FIELD_COEFFICIENT_DIMENSION"] = unique_item(
+    all_outputs["X8"]["BARE_FIELD_COEFFICIENT_DIMENSION"] = unique_item(  # DERIVED · bare-field coefficient unit result
         "BARE_FIELD_COEFFICIENT_DIMENSION",
         [
             dimension
@@ -714,7 +714,7 @@ for control_name in actions:
     if control_name in all_outputs:
         for suffix, value in all_outputs[control_name].items():
             if not suffix.startswith("_"):
-                emitted_name = suffix if suffix in standard_emission_names else f"{control_name}_{suffix}"
+                emitted_name = suffix if suffix in standard_emission_names else f"{control_name}_{suffix}"  # STRUCTURAL · emitted object name
                 emit(emitted_name, value)
     if control_name in fatal_outputs:
         for suffix, value in fatal_outputs[control_name].items():
@@ -768,12 +768,12 @@ def write_exports():
         *main_outputs["DIM_COEFFICIENTS"],
         *main_outputs["DIM_SPEED_FROM_EXPRESSION"],
     ]
-    annotated_premises = [
+    annotated_objects = [
         (globals()[name], class_tag)
         for name, class_tag in classes.items()
-        if class_tag == "PREMISE" and name in globals()
+        if name in globals()
     ]
-    default_output_class = classes["all_outputs"]
+    output_without_declaration_site_class = "DERIVED"
 
     def computed_dimension_for(value):
         for dimensioned_object, dimension in computed_dimensions:
@@ -782,10 +782,10 @@ def write_exports():
         return None
 
     def output_class_for(value):
-        for declared_object, class_tag in annotated_premises:
-            if exact_reconstruction_match(value, declared_object):
+        for declared_object, class_tag in annotated_objects:
+            if value is declared_object:
                 return class_tag
-        return default_output_class
+        return output_without_declaration_site_class
 
     source_lines = [
         "# S9_exports.py — GENERATED by S9_light_requires_shear_sympy_audit.py. Do not edit.",
@@ -830,11 +830,19 @@ def write_exports():
     roundtrip_residual = sum(residuals, sp.Integer(0))
     computed_dimension_count = sum("dim" in record for record in reconstructed_ledger.values())
     absent_dimension_count = len(reconstructed_ledger) - computed_dimension_count
+    class_tally = sp.Tuple(*(
+        sp.Tuple(
+            sp.Symbol(class_tag),  # STRUCTURAL · exported class label
+            sp.Integer(sum(record["class"] == class_tag for record in reconstructed_ledger.values())),
+        )
+        for class_tag in CLASS_TAGS
+    ))
     emit("EXPORT_ROUNDTRIP_LIVE_COUNT", sp.Integer(live_count))
     emit("EXPORT_ROUNDTRIP_RECONSTRUCTED_COUNT", sp.Integer(len(reconstructed_ledger)))
     emit("EXPORT_ROUNDTRIP_RESIDUAL", roundtrip_residual)
     emit("EXPORT_COMPUTED_DIMENSION_COUNT", sp.Integer(computed_dimension_count))
     emit("EXPORT_ABSENT_DIMENSION_COUNT", sp.Integer(absent_dimension_count))
+    emit("EXPORT_CLASS_TALLY", class_tally)
     assert roundtrip_residual == 0
 
 

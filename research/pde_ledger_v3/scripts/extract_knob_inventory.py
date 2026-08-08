@@ -9,7 +9,7 @@ from pathlib import Path
 
 CLASS_TAGS = ("KNOB", "STRUCTURAL", "COORDINATE", "CONTROL", "PREMISE", "DERIVED")
 ANNOTATION = re.compile(
-    rf"# ({'|'.join(CLASS_TAGS)}) · ([^#\n]+)$"
+    rf"# ({'|'.join(CLASS_TAGS)}) · (\S(?:[^#\n]*\S)?)$"
 )
 CONSTRUCTORS = {"Symbol", "symbols", "Function"}
 
@@ -18,6 +18,7 @@ class DeclarationVisitor(ast.NodeVisitor):
     def __init__(self):
         self.constructor_lines = set()
         self.assignment_names = {}
+        self.module_scope = True
 
     @staticmethod
     def _target_names(target):
@@ -32,16 +33,34 @@ class DeclarationVisitor(ast.NodeVisitor):
         return []
 
     def visit_Assign(self, node):
-        self.assignment_names[node.lineno] = [
-            name
-            for target in node.targets
-            for name in self._target_names(target)
-        ]
+        if self.module_scope:
+            self.assignment_names[node.lineno] = [
+                name
+                for target in node.targets
+                for name in self._target_names(target)
+            ]
         self.generic_visit(node)
 
     def visit_AnnAssign(self, node):
-        self.assignment_names[node.lineno] = self._target_names(node.target)
+        if self.module_scope:
+            self.assignment_names[node.lineno] = self._target_names(node.target)
         self.generic_visit(node)
+
+    def visit_AugAssign(self, node):
+        if self.module_scope:
+            self.assignment_names[node.lineno] = self._target_names(node.target)
+        self.generic_visit(node)
+
+    def _visit_nested_scope(self, node):
+        was_module_scope = self.module_scope
+        self.module_scope = False
+        self.generic_visit(node)
+        self.module_scope = was_module_scope
+
+    visit_FunctionDef = _visit_nested_scope
+    visit_AsyncFunctionDef = _visit_nested_scope
+    visit_ClassDef = _visit_nested_scope
+    visit_Lambda = _visit_nested_scope
 
     def visit_Call(self, node):
         function = node.func
@@ -63,12 +82,7 @@ def scan(path):
     visitor.visit(tree)
     records = []
     findings = []
-    annotated_assignment_lines = {
-        line_number
-        for line_number in visitor.assignment_names
-        if ANNOTATION.search(source_lines[line_number - 1])
-    }
-    declaration_lines = visitor.constructor_lines | annotated_assignment_lines
+    declaration_lines = visitor.constructor_lines | set(visitor.assignment_names)
     for line_number in sorted(declaration_lines):
         line = source_lines[line_number - 1]
         match = ANNOTATION.search(line)

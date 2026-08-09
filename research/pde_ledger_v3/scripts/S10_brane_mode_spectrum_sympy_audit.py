@@ -4,36 +4,40 @@
 from __future__ import annotations
 
 import itertools
+import re
 import signal
-import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Mapping, Sequence
 
 import sympy as sp
 
-
-SCRIPT_PATH = Path(__file__).resolve()
-LEDGER_DIR = SCRIPT_PATH.parent.parent
-REDUCTION_DIR = LEDGER_DIR / "reduction"
-sys.path.insert(0, str(REDUCTION_DIR))
-import registry_read  # noqa: E402
+from extract_knob_inventory import CLASS_TAGS, declaration_classes
+from S9_exports import LEDGER as S9_LEDGER
 
 
-D = sp.Symbol("D")
-rho_br = sp.Symbol("rho_br", real=True)
-mu_R = sp.Symbol("mu_R", real=True)
-s_rho = sp.Symbol("s_rho", real=True)
-s = sp.Symbol("s", real=True)
-omegaSquared = sp.Symbol("omegaSquared", real=True)
-lambdaScale = sp.Symbol("lambdaScale", real=True)
+D = S9_LEDGER["D"]["value"]  # STRUCTURAL · imported brane spatial-dimension symbol
+rho_br = S9_LEDGER["rho_br"]["value"]  # KNOB · imported brane inertia-density symbol
+mu_R = S9_LEDGER["mu_R"]["value"]  # KNOB · imported brane shear-modulus symbol
+length_dimension = S9_LEDGER["length_dimension"]["value"]  # STRUCTURAL · imported length unit-basis marker
+time_dimension = S9_LEDGER["time_dimension"]["value"]  # STRUCTURAL · imported time unit-basis marker
+field_dimension = S9_LEDGER["field_dimension"]["value"]  # PREMISE · imported displacement-field unit premise
+energy_density_dimension = S9_LEDGER["dim_energy_density"]["value"]  # PREMISE · imported action-density unit premise
+wavevector_norm_dimension = S9_LEDGER["wavevector_norm_dimension"]["value"]  # PREMISE · imported wave-norm unit premise
+squared_velocity_dimension = S9_LEDGER["dim_squared_velocity"]["value"]  # PREMISE · imported squared-speed unit premise
+s_rho = sp.Symbol("s_rho", real=True)  # CONTROL · anisotropic-inertia ablation coefficient
+s = sp.Symbol("s", real=True)  # CONTROL · stiffness-coefficient ablation scale
+omegaSquared = sp.Symbol("omegaSquared", real=True)  # COORDINATE · squared-frequency spectral variable
+lambdaScale = sp.Symbol("lambdaScale", real=True)  # CONTROL · wavevector homogeneity scale
 
-ZERO_DIM = (sp.Integer(0), sp.Integer(0), sp.Integer(0))
-LENGTH_DIM = (sp.Integer(1), sp.Integer(0), sp.Integer(0))
-TIME_DIM = (sp.Integer(0), sp.Integer(1), sp.Integer(0))
-WAVENUMBER_DIM = (sp.Integer(-1), sp.Integer(0), sp.Integer(0))
-OMEGA_SQUARED_DIM = (sp.Integer(0), sp.Integer(-2), sp.Integer(0))
-OPERATION_TIMEOUT_SECONDS = 60
+ZERO_DIM = tuple(length_dimension - length_dimension)  # DERIVED · neutral unit vector built from the imported basis
+LENGTH_DIM = tuple(length_dimension)  # DERIVED · sequence view of the imported length marker
+TIME_DIM = tuple(time_dimension)  # DERIVED · sequence view of the imported time marker
+FIELD_DIM = tuple(field_dimension)  # DERIVED · sequence view of the imported field-unit premise
+ENERGY_DENSITY_DIM = tuple(energy_density_dimension)  # DERIVED · sequence view of the imported action-density premise
+WAVENUMBER_DIM = tuple(wavevector_norm_dimension / 2)  # DERIVED · component wave-number units built from the imported norm premise
+OMEGA_SQUARED_DIM = tuple(squared_velocity_dimension + wavevector_norm_dimension)  # DERIVED · spectral units built from imported unit objects
+OPERATION_TIMEOUT_SECONDS = 60  # CONTROL · symbolic-operation timeout
 
 
 @dataclass(frozen=True)
@@ -46,7 +50,7 @@ class Package:
     coefficient_scale: bool = False
 
 
-PACKAGES = (
+PACKAGES = (  # CONTROL · action-package and construction-sweep specifications
     Package("MAIN", (2, 3, 4, 5), "curl"),
     Package("XFORM_FULLGRAD", (3, 4), "fullgrad"),
     Package("XFORM_DIVONLY", (3, 4), "divonly"),
@@ -54,6 +58,34 @@ PACKAGES = (
     Package("XFORM_ANISO", (3, 4), "curl", anisotropic_kinetic=True),
     Package("XCOEF_SCALE", (3,), "curl", coefficient_scale=True),
 )
+
+INDEXED_EXPORT_TOKEN = re.compile(r"(?P<label>ROOT|STRATUM|COEFFICIENT)(?P<index>[0-9]+)")  # CONTROL · indexed-emission grouping grammar
+SYMBOLIC_D_EXPORT_SUFFIXES = (  # CONTROL · ordered symbolic dimension-path export names
+    "PREMISE_U_DIMENSION",
+    "Q6_ENERGY_DENSITY_DIMENSION",
+    "Q6_DIMENSION_SOLUTION",
+)
+POSITED_OUTPUT_CLASSES = {  # CONTROL · posited output class assignments
+    "PREMISE_FIELD_SECTOR": "PREMISE",
+    "PREMISE_U_DIMENSION": "PREMISE",
+    "PREMISE_ANSATZ": "PREMISE",
+    "PREMISE_PERIOD_AVERAGE": "PREMISE",
+    "PREMISE_BACKGROUND_VELOCITY": "PREMISE",
+    "PREMISE_TIME_ODD_KERNEL": "PREMISE",
+    "PREMISE_RESPONSE_DEGREE": "PREMISE",
+    "PREMISE_STIFFNESS_INPUT": "PREMISE",
+    "PREMISE_RHO_DOMAIN": "PREMISE",
+    "PREMISE_MU_DOMAIN": "PREMISE",
+    "PREMISE_WAVEVECTOR_NORM_DOMAIN": "PREMISE",
+    "PREMISE_WAVEVECTOR_REAL_DOMAIN": "PREMISE",
+    "PREMISE_AMPLITUDE_REAL_DOMAIN": "PREMISE",
+    "PREMISE_BRANE_DIMENSION_DOMAIN": "PREMISE",
+    "ASSUMPTION_JOINT_PREDICATE": "PREMISE",
+    "Q6_CONTROL_DIMENSION_PREMISES": "PREMISE",
+    "Q6_ENERGY_DENSITY_DIMENSION": "PREMISE",
+    "Q2_RESIDUAL_TEST_SCOPE": "CONTROL",
+    "Q2_DOWNSTREAM_ROUTE": "CONTROL",
+}
 
 
 class OperationTimeout(RuntimeError):
@@ -68,11 +100,16 @@ class Emitter:
     def __init__(self) -> None:
         self.names: set[str] = set()
         self.local_names: list[str] = []
+        self.values: dict[str, object] = {}
+        self.dimensions: dict[str, object] = {}
 
-    def emit(self, name: str, payload: object) -> None:
+    def emit(self, name: str, payload: object, *, dimension: object | None = None) -> None:
         if name in self.names:
             raise RuntimeError(f"duplicate emitted tag: {name}")
         self.names.add(name)
+        self.values[name] = payload
+        if dimension is not None:
+            self.dimensions[name] = dimension
         if name.startswith("PY_S10_LOCAL_"):
             self.local_names.append(name)
         rendered = str(payload).replace("\r", " ").replace("\n", " ")
@@ -135,8 +172,8 @@ class DimensionWalker:
 
     @staticmethod
     def indeterminate_dimension(expr: sp.Expr) -> tuple[sp.Expr, ...]:
-        failed_head = sp.Symbol(getattr(expr.func, "__name__", type(expr).__name__))
-        marker = sp.Function("indeterminate_dimension")(failed_head)
+        failed_head = sp.Symbol(getattr(expr.func, "__name__", type(expr).__name__))  # DERIVED · unsupported expression-head marker
+        marker = sp.Function("indeterminate_dimension")(failed_head)  # DERIVED · unresolved unit-walk record
         return (marker, marker, marker)
 
     def dimension(self, expr: sp.Expr) -> tuple[sp.Expr, ...]:
@@ -145,7 +182,7 @@ class DimensionWalker:
         if expr == 0 or expr.is_Number:
             return ZERO_DIM
         if expr in self.fields:
-            return LENGTH_DIM
+            return FIELD_DIM
         if isinstance(expr, sp.Derivative):
             result = self.dimension(expr.expr)
             for variable, count in expr.variable_count:
@@ -251,11 +288,11 @@ def emit_physical(
     *,
     dimension_payload: object | None = None,
 ) -> None:
-    emitter.emit(name, payload)
     dimension_source = payload if dimension_payload is None else dimension_payload
     term_dimensions, dimensions, nested_add_dimensions, homogeneous = walker.report(
         dimension_source
     )
+    emitter.emit(name, payload, dimension=dimensions)
     emitter.emit(name + "_Q6_TERM_DIMENSIONS", term_dimensions)
     emitter.emit(name + "_Q6_DIMENSIONS", dimensions)
     emitter.emit(name + "_Q6_NESTED_ADD_DIMENSIONS", nested_add_dimensions)
@@ -304,7 +341,7 @@ def build_action(
     t: sp.Symbol,
     xvec: Sequence[sp.Symbol],
 ) -> tuple[list[sp.Expr], sp.Expr, list[sp.Expr], list[sp.Expr], sp.Expr]:
-    fields = [sp.Function(f"u{index + 1}")(t, *xvec) for index in range(n)]
+    fields = [sp.Function(f"u{index + 1}")(t, *xvec) for index in range(n)]  # PREMISE · brane displacement field heads
     time_derivatives = [sp.diff(field, t) for field in fields]
     gradient = [[sp.diff(fields[j], xvec[i]) for j in range(n)] for i in range(n)]
     inertial_coefficients = [rho_br for _ in range(n)]
@@ -376,7 +413,7 @@ def derive_dimension_solution(
         )
     )
     coefficient_unknowns = {
-        coefficient: sp.symbols(
+        coefficient: sp.symbols(  # DERIVED · coefficient-axis solver unknowns
             f"{coefficient}_dim_length {coefficient}_dim_time {coefficient}_dim_mass"
         )
         for coefficient in dimensionful_coefficient_symbols
@@ -393,7 +430,7 @@ def derive_dimension_solution(
     }
     coordinates = {t: TIME_DIM, **{coordinate: LENGTH_DIM for coordinate in xvec}}
     walker = DimensionWalker(unknown_map, fields, coordinates, assumptions)
-    target = (sp.Integer(2) - D, sp.Integer(-2), sp.Integer(1))
+    target = ENERGY_DENSITY_DIM
     equations: list[sp.Equality] = []
     for term in sp.Add.make_args(sp.expand(lagrangian)):
         term_dimension = walker.dimension(term)
@@ -408,7 +445,7 @@ def derive_dimension_solution(
     augmented_rank = int(coefficient_matrix.row_join(right_hand_side).rank())
     independent_equation_count = augmented_rank
     difference = independent_equation_count - len(unknowns)
-    determination = sp.Symbol(
+    determination = sp.Symbol(  # DERIVED · constraint-system classification marker
         "over_determined" if difference > 0 else "exactly_determined" if difference == 0 else "under_determined"
     )
     consistent = sp.true if coefficient_rank == augmented_rank else sp.false
@@ -449,10 +486,10 @@ def factor_with_timeout(
     signal.alarm(seconds)
     try:
         result = sp.factor(expr)
-        route = sp.Symbol("factor_returned")
+        route = sp.Symbol("factor_returned")  # DERIVED · determinant-factorization route record
     except OperationTimeout:
         result = expr
-        route = sp.Symbol("factor_timeout_unfactored")
+        route = sp.Symbol("factor_timeout_unfactored")  # DERIVED · determinant-factorization route record
     finally:
         signal.alarm(0)
         signal.signal(signal.SIGALRM, previous_handler)
@@ -470,7 +507,7 @@ def derived_sign(expr: sp.Expr, assumptions: sp.logic.boolalg.Boolean) -> sp.Exp
         return sp.Integer(0)
     if negative is True:
         return sp.Integer(-1)
-    return sp.Symbol("undecided_under_joint_assumptions")
+    return sp.Symbol("undecided_under_joint_assumptions")  # DERIVED · sign-query status marker
 
 
 def deduplicate_roots(
@@ -603,7 +640,7 @@ def solve_real_locus(
             (),
             (),
             sp.Tuple(),
-            sp.Symbol("rank_floor_empty_locus"),
+            sp.Symbol("rank_floor_empty_locus"),  # DERIVED · real-locus solver route marker
         )
 
     if not normalized:
@@ -613,8 +650,8 @@ def solve_real_locus(
             real_domain,
             ({},),
             ((),),
-            sp.Tuple(sp.Tuple(sp.Tuple(), sp.Tuple(), sp.Symbol("retained_real_branch"))),
-            sp.Symbol("universal_real_locus"),
+            sp.Tuple(sp.Tuple(sp.Tuple(), sp.Tuple(), sp.Symbol("retained_real_branch"))),  # DERIVED · real-branch filter record
+            sp.Symbol("universal_real_locus"),  # DERIVED · real-locus solver route marker
             real_domain,
         )
 
@@ -622,7 +659,7 @@ def solve_real_locus(
     signal.alarm(OPERATION_TIMEOUT_SECONDS)
     try:
         raw = sp.solve(normalized, list(variables), dict=True)
-        route = sp.Symbol("solve_then_explicit_real_filter")
+        route = sp.Symbol("solve_then_explicit_real_filter")  # DERIVED · real-locus solver route record
         fallback_expression: object = sp.EmptySet
     except OperationTimeout:
         raw = sp.ConditionSet(
@@ -630,7 +667,7 @@ def solve_real_locus(
             sp.And(*(sp.Eq(eq, 0) for eq in normalized)),
             sp.ProductSet(*(sp.S.Reals for _ in variables)),
         )
-        route = sp.Symbol("solve_timeout_explicit_real_conditionset")
+        route = sp.Symbol("solve_timeout_explicit_real_conditionset")  # DERIVED · real-locus solver route record
         fallback_expression = raw
     finally:
         signal.alarm(0)
@@ -680,7 +717,7 @@ def solve_real_locus(
                 sp.Tuple(
                     raw_assignments,
                     sp.Tuple(*conditions),
-                    sp.Symbol("discarded_nonreal_branch"),
+                    sp.Symbol("discarded_nonreal_branch"),  # DERIVED · real-branch filter status
                 )
             )
             continue
@@ -727,7 +764,7 @@ def solve_real_locus(
             sp.Tuple(
                 raw_assignments,
                 sp.Tuple(*raw_conditions),
-                sp.Symbol("retained_real_branch"),
+                sp.Symbol("retained_real_branch"),  # DERIVED · real-branch filter status
                 assignments,
             )
         )
@@ -843,7 +880,7 @@ def locus_allowed_data(
             branch_tests.append(sp.false)
             branch_witnesses.append(sp.Tuple())
             branch_points.append(None)
-            branch_reasons.append(sp.Symbol("locus_conflicts_with_positive_wavevector_norm"))
+            branch_reasons.append(sp.Symbol("locus_conflicts_with_positive_wavevector_norm"))  # DERIVED · locus-admissibility status
             continue
         free = [component for component in kvec if component not in branch]
         trial_values: list[dict[sp.Symbol, sp.Expr]] = []
@@ -893,26 +930,26 @@ def locus_allowed_data(
             branch_tests.append(sp.true)
             branch_witnesses.append(witness)
             branch_points.append(witness_point)
-            branch_reasons.append(sp.Symbol("allowed_witness_found"))
+            branch_reasons.append(sp.Symbol("allowed_witness_found"))  # DERIVED · locus-admissibility status
         elif not free:
-            branch_tests.append(sp.Symbol("undecided_no_explicit_real_witness"))
+            branch_tests.append(sp.Symbol("undecided_no_explicit_real_witness"))  # DERIVED · locus-admissibility status
             branch_witnesses.append(sp.Tuple())
             branch_points.append(None)
-            branch_reasons.append(sp.Symbol("fully_fixed_branch_not_materialized"))
+            branch_reasons.append(sp.Symbol("fully_fixed_branch_not_materialized"))  # DERIVED · locus-admissibility status
         else:
-            branch_tests.append(sp.Symbol("undecided_no_explicit_real_witness"))
+            branch_tests.append(sp.Symbol("undecided_no_explicit_real_witness"))  # DERIVED · locus-admissibility status
             branch_witnesses.append(sp.Tuple())
             branch_points.append(None)
-            branch_reasons.append(sp.Symbol("no_explicit_real_witness"))
+            branch_reasons.append(sp.Symbol("no_explicit_real_witness"))  # DERIVED · locus-admissibility status
 
     if any(test is sp.true for test in branch_tests):
         allowed: sp.Expr = sp.true
     elif branch_tests and all(test is sp.false for test in branch_tests):
         allowed = sp.false
     elif locus.fallback_expression is not sp.EmptySet and not locus.branches:
-        allowed = sp.Symbol("undecided_solver_conditionset")
+        allowed = sp.Symbol("undecided_solver_conditionset")  # DERIVED · locus-admissibility status
     else:
-        allowed = sp.Symbol("undecided_no_explicit_real_witness") if branch_tests else sp.false
+        allowed = sp.Symbol("undecided_no_explicit_real_witness") if branch_tests else sp.false  # DERIVED · locus-admissibility status
     return LocusAllowedData(
         operands,
         allowed,
@@ -1031,9 +1068,9 @@ def root_scale_objects(
         raise RuntimeError("root scaling returned a non-expression")
     is_zero = sp.ask(sp.Q.zero(original), assumptions)
     if is_zero is True:
-        ratio = sp.Symbol("undefined_zero_root_ratio")
+        ratio = sp.Symbol("undefined_zero_root_ratio")  # DERIVED · root-scaling domain status
         ratio_defined = sp.false
-        exponent = sp.Symbol("undefined_zero_root_ratio")
+        exponent = sp.Symbol("undefined_zero_root_ratio")  # DERIVED · root-scaling classification status
     else:
         ratio_object = sp.Mul(scaled, sp.Pow(original, -1, evaluate=False), evaluate=False)
         ratio = assumed_simplify(ratio_object, assumptions)
@@ -1043,10 +1080,10 @@ def root_scale_objects(
             exponent = (
                 sp.Integer(polynomial.degree())
                 if len(polynomial.terms()) == 1
-                else sp.Symbol("not_a_pure_lambdaScale_power")
+                else sp.Symbol("not_a_pure_lambdaScale_power")  # DERIVED · root-scaling classification status
             )
         except (sp.PolynomialError, TypeError, ValueError):
-            exponent = sp.Symbol("not_a_pure_lambdaScale_power")
+            exponent = sp.Symbol("not_a_pure_lambdaScale_power")  # DERIVED · root-scaling classification status
     if not isinstance(ratio, sp.Expr):
         raise RuntimeError("root scaling ratio returned a non-expression")
     return scaled, original, ratio, ratio_defined, exponent
@@ -1062,17 +1099,17 @@ def emit_premises(
     package: Package,
     n: int,
 ) -> None:
-    emitter.emit(prefix + "PREMISE_FIELD_SECTOR", sp.Eq(sp.Symbol("u_component_count"), n, evaluate=False))
-    emitter.emit(prefix + "PREMISE_U_DIMENSION", dim_expr(LENGTH_DIM))
+    emitter.emit(prefix + "PREMISE_FIELD_SECTOR", sp.Eq(sp.Symbol("u_component_count"), n, evaluate=False))  # PREMISE · supplied field-sector declaration
+    emitter.emit(prefix + "PREMISE_U_DIMENSION", dim_expr(FIELD_DIM))
     emitter.emit(prefix + "PREMISE_ANSATZ", sp.Tuple(*ansatz))
     emitter.emit(
         prefix + "PREMISE_PERIOD_AVERAGE",
-        sp.Tuple(sp.Symbol("phase"), sp.Integer(0), 2 * sp.pi, sp.Rational(1, 2) / sp.pi),
+        sp.Tuple(sp.Symbol("phase"), sp.Integer(0), 2 * sp.pi, sp.Rational(1, 2) / sp.pi),  # PREMISE · supplied phase-average prescription
     )
-    emitter.emit(prefix + "PREMISE_BACKGROUND_VELOCITY", sp.Eq(sp.Symbol("v_0"), 0, evaluate=False))
-    emitter.emit(prefix + "PREMISE_TIME_ODD_KERNEL", sp.Eq(sp.Symbol("time_odd_kernel"), 0, evaluate=False))
-    emitter.emit(prefix + "PREMISE_RESPONSE_DEGREE", sp.Eq(sp.Symbol("response_degree"), 2, evaluate=False))
-    emitter.emit(prefix + "PREMISE_STIFFNESS_INPUT", sp.Symbol("S_curl_supplied"))
+    emitter.emit(prefix + "PREMISE_BACKGROUND_VELOCITY", sp.Eq(sp.Symbol("v_0"), 0, evaluate=False))  # PREMISE · supplied background-velocity condition
+    emitter.emit(prefix + "PREMISE_TIME_ODD_KERNEL", sp.Eq(sp.Symbol("time_odd_kernel"), 0, evaluate=False))  # PREMISE · supplied time-parity condition
+    emitter.emit(prefix + "PREMISE_RESPONSE_DEGREE", sp.Eq(sp.Symbol("response_degree"), 2, evaluate=False))  # PREMISE · supplied response-order condition
+    emitter.emit(prefix + "PREMISE_STIFFNESS_INPUT", sp.Symbol("S_curl_supplied"))  # PREMISE · supplied stiffness-form label
     emitter.emit(prefix + "PREMISE_RHO_DOMAIN", sp.Q.positive(rho_br))
     emitter.emit(prefix + "PREMISE_MU_DOMAIN", sp.Q.positive(mu_R))
     emitter.emit(prefix + "PREMISE_WAVEVECTOR_NORM_DOMAIN", sp.Q.positive(sp.Add(*(item**2 for item in kvec))))
@@ -1082,9 +1119,9 @@ def emit_premises(
     emitter.emit(prefix + "ASSUMPTION_JOINT_PREDICATE", assumptions)
     controls: list[sp.Expr] = []
     if package.anisotropic_kinetic:
-        controls.append(sp.Eq(sp.Symbol("dimension_s_rho"), sp.Symbol("dimensionless"), evaluate=False))
+        controls.append(sp.Eq(sp.Symbol("dimension_s_rho"), sp.Symbol("dimensionless"), evaluate=False))  # PREMISE · supplied anisotropy-control unit condition
     if package.coefficient_scale:
-        controls.append(sp.Eq(sp.Symbol("dimension_s"), sp.Symbol("dimensionless"), evaluate=False))
+        controls.append(sp.Eq(sp.Symbol("dimension_s"), sp.Symbol("dimensionless"), evaluate=False))  # PREMISE · supplied scaling-control unit condition
     emitter.emit(prefix + "Q6_CONTROL_DIMENSION_PREMISES", sp.Tuple(*controls))
 
 
@@ -1130,16 +1167,16 @@ def emit_q3(
     emitter.emit(prefix + "Q3_ROOT_COUNT", sp.Integer(len(roots)))
     emitter.emit(prefix + "ROOT_ORDERING", sp.Tuple(*roots))
     if not roots:
-        emitter.emit(prefix + "Q3_SPECTRUM_SOLVE_CONDITION", sp.Symbol("no_roots_returned"))
+        emitter.emit(prefix + "Q3_SPECTRUM_SOLVE_CONDITION", sp.Symbol("no_roots_returned"))  # DERIVED · spectrum-solver status
         emitter.emit(
             prefix + "Q3_SPECTRUM_SOLVE_CONDITION_OPERANDS",
-            sp.Tuple(factored, sp.Symbol("omegaSquared")),
+            sp.Tuple(factored, omegaSquared),
         )
     else:
-        emitter.emit(prefix + "Q3_SPECTRUM_SOLVE_CONDITION", sp.Symbol("roots_returned"))
+        emitter.emit(prefix + "Q3_SPECTRUM_SOLVE_CONDITION", sp.Symbol("roots_returned"))  # DERIVED · spectrum-solver status
         emitter.emit(
             prefix + "Q3_SPECTRUM_SOLVE_CONDITION_OPERANDS",
-            sp.Tuple(factored, sp.Symbol("omegaSquared")),
+            sp.Tuple(factored, omegaSquared),
         )
     return roots
 
@@ -1228,7 +1265,7 @@ def emit_stratum_q3_q4(
     point_k = sp.Matrix([component.subs(point) for component in kvec])
     point_k_squared = assumed_simplify((point_k.T * point_k)[0], assumptions)
     point_assumptions = sp.refine(assumptions.subs(point), assumptions)
-    wave_number_scale = sp.Symbol(
+    wave_number_scale = sp.Symbol(  # COORDINATE · stratum wave-number scaling coordinate
         prefix.removeprefix("PY_S10_") + "WAVE_NUMBER_SCALE",
         positive=True,
         real=True,
@@ -1311,11 +1348,11 @@ def run_package_dimension(
     n: int,
 ) -> dict[sp.Symbol, tuple[sp.Expr, ...]]:
     prefix = f"PY_S10_{package.name}_D{n}_"
-    t = sp.Symbol("t", real=True)
-    xvec = sp.symbols(f"x1:{n + 1}", real=True)
-    kvec = sp.symbols(f"k1:{n + 1}", real=True)
-    avec = sp.symbols(f"a1:{n + 1}", real=True)
-    phase = sp.Symbol("phase", real=True)
+    t = sp.Symbol("t", real=True)  # COORDINATE · time coordinate
+    xvec = sp.symbols(f"x1:{n + 1}", real=True)  # COORDINATE · spatial coordinate collection
+    kvec = sp.symbols(f"k1:{n + 1}", real=True)  # COORDINATE · wavevector component collection
+    avec = sp.symbols(f"a1:{n + 1}", real=True)  # PREMISE · plane-wave amplitude collection
+    phase = sp.Symbol("phase", real=True)  # COORDINATE · period-average phase coordinate
     theta = sp.Add(*(kvec[index] * xvec[index] for index in range(n))) - sp.sqrt(omegaSquared) * t
     ansatz = [avec[index] * sp.cos(theta) for index in range(n)]
     k_column = sp.Matrix(kvec)
@@ -1398,13 +1435,13 @@ def run_package_dimension(
         sp.Q.zero(matrix_ratio_denominator), assumptions
     ) is True
     if denominator_is_zero:
-        matrix_ratio = sp.Symbol("undefined_zero_denominator")
+        matrix_ratio = sp.Symbol("undefined_zero_denominator")  # DERIVED · route-ratio domain status
     else:
         computed_ratio = assumed_simplify(
             matrix_ratio_numerator / matrix_ratio_denominator, assumptions
         )
         if isinstance(computed_ratio, sp.Expr) and computed_ratio.has(sp.zoo, sp.nan):
-            matrix_ratio = sp.Symbol("undefined_nonfinite_ratio")
+            matrix_ratio = sp.Symbol("undefined_nonfinite_ratio")  # DERIVED · route-ratio domain status
         else:
             matrix_ratio = computed_ratio
 
@@ -1454,8 +1491,8 @@ def run_package_dimension(
         prefix + "Q2_MATRIX_ENTRY_RATIO_OPERANDS",
         sp.Tuple(matrix_ratio_numerator, matrix_ratio_denominator),
     )
-    emitter.emit(prefix + "Q2_RESIDUAL_TEST_SCOPE", sp.Symbol("same_action_variational_identity"))
-    emitter.emit(prefix + "Q2_DOWNSTREAM_ROUTE", sp.Symbol("M_B"))
+    emitter.emit(prefix + "Q2_RESIDUAL_TEST_SCOPE", sp.Symbol("same_action_variational_identity"))  # CONTROL · route-comparison scope label
+    emitter.emit(prefix + "Q2_DOWNSTREAM_ROUTE", sp.Symbol("M_B"))  # CONTROL · downstream matrix-route selector
 
     spectrum = solve_spectrum(matrix_b, assumptions)
     roots = emit_q3(emitter, walker, prefix, matrix_b, spectrum, assumptions)
@@ -1481,7 +1518,7 @@ def run_package_dimension(
         quotient = assumed_simplify(root / k_squared, assumptions)
         emit_physical(emitter, walker, root_prefix + "Q6_ROOT_OVER_WAVENUMBER_NORM", quotient)
 
-    emitter.emit(prefix + "Q6_ENERGY_DENSITY_DIMENSION", dim_expr((2 - D, -2, 1)))
+    emitter.emit(prefix + "Q6_ENERGY_DENSITY_DIMENSION", dim_expr(ENERGY_DENSITY_DIM))
     emitter.emit(prefix + "Q6_DIMENSION_EQUATIONS", sp.Tuple(*dimension_equations))
     emitter.emit(prefix + "Q6_DIMENSION_SOLUTION", dimension_solution)
     emitter.emit(
@@ -1508,7 +1545,7 @@ def run_package_dimension(
     )
     emitter.emit(
         prefix + "Q6_DIMENSION_SOLVE_CONDITION",
-        sp.Symbol("solution_returned") if dimension_solution else sp.Symbol("no_solution_returned"),
+        sp.Symbol("solution_returned") if dimension_solution else sp.Symbol("no_solution_returned"),  # DERIVED · dimension-solver status
     )
     emitter.emit(
         prefix + "Q6_DIMENSION_SOLVE_CONDITION_OPERANDS",
@@ -1533,7 +1570,7 @@ def run_package_dimension(
             homogeneity_class="SOLVED",
         )
 
-    gradient_symbols = [[sp.Symbol(f"g{i + 1}{j + 1}", real=True) for j in range(3)] for i in range(3)]
+    gradient_symbols = [[sp.Symbol(f"g{i + 1}{j + 1}", real=True) for j in range(3)] for i in range(3)]  # COORDINATE · auxiliary gradient-component coordinates
     if n == 3:
         gradient_substitution = {
             sp.diff(fields[j], xvec[i]): gradient_symbols[i][j]
@@ -1651,7 +1688,7 @@ def run_package_dimension(
         if point is None:
             raise RuntimeError("allowed stratum has no explicit point")
         stratum_prefix = prefix + f"Q8_STRATUM{stratum_index}_"
-        emitter.emit(stratum_prefix + "SKIP_STATUS", sp.Symbol("not_skipped_allowed_branch"))
+        emitter.emit(stratum_prefix + "SKIP_STATUS", sp.Symbol("not_skipped_allowed_branch"))  # DERIVED · stratum-processing status
         emitter.emit(
             stratum_prefix + "POINT",
             sp.Tuple(*(sp.Eq(component, point[component], evaluate=False) for component in kvec)),
@@ -1661,48 +1698,332 @@ def run_package_dimension(
     return solved_coefficient_dims
 
 
-def load_allowed_registry_fields() -> dict[str, tuple[str, tuple[int, int, int], sp.Expr | None]]:
-    original_validate_loci = registry_read.Registry._validate_loci
-    registry_read.Registry._validate_loci = lambda self: None
-    try:
-        registry = registry_read.load_registry(REDUCTION_DIR)
-    finally:
-        registry_read.Registry._validate_loci = original_validate_loci
-    selected = {}
-    for qid in ("Q.brane.rho_br", "Q.brane.mu_R", "Q.brane.D_brane"):
-        quantity = registry.quantities[qid]
-        selected[qid] = (quantity.symbol_name, quantity.dimension, quantity.value)
-    return selected
+@dataclass(frozen=True)
+class ExportRecord:
+    name: str
+    value: object
+    class_tag: str
+    computation_dimension: sp.Expr
+    dimension: object | None = None
 
 
-def emit_registry_comparison(
+def output_class(suffix: str) -> str:
+    return POSITED_OUTPUT_CLASSES.get(suffix, "DERIVED")
+
+
+def stable_indexed_suffix(suffix: str) -> tuple[str, tuple[sp.Integer, ...]]:
+    indices: list[sp.Integer] = []
+
+    def replace(match: re.Match[str]) -> str:
+        indices.append(sp.Integer(match.group("index")))
+        return match.group("label") + "S"
+
+    return INDEXED_EXPORT_TOKEN.sub(replace, suffix), tuple(indices)
+
+
+def collect_main_export_records(
     emitter: Emitter,
+    component_counts: Sequence[int],
     derived_dimensions: Mapping[sp.Symbol, Sequence[sp.Expr]],
-) -> None:
-    registry = load_allowed_registry_fields()
-    d_symbol_name, d_declared_dimension, d_value = registry["Q.brane.D_brane"]
-    if d_value is None:
-        raise RuntimeError("registry D_brane has no declared value")
-    emitter.emit("PY_S10_LOCAL_REGISTRY_D_BRANE_SYMBOL_NAME", sp.Symbol(d_symbol_name))
-    emitter.emit("PY_S10_LOCAL_REGISTRY_D_BRANE_VALUE", d_value)
-    emitter.emit("PY_S10_LOCAL_REGISTRY_D_BRANE_DIMENSION", dim_expr(d_declared_dimension))
-    for qid, symbol, label in (
-        ("Q.brane.rho_br", rho_br, "RHO_BR"),
-        ("Q.brane.mu_R", mu_R, "MU_R"),
-    ):
-        symbol_name, declared_dimension, _value = registry[qid]
-        symbolic = tuple(derived_dimensions[symbol])
-        specialised = tuple(component.subs(D, d_value) for component in symbolic)
-        declared = tuple(sp.Integer(component) for component in declared_dimension)
-        residual = tuple(left - right for left, right in zip(specialised, declared))
-        emitter.emit(f"PY_S10_LOCAL_REGISTRY_{label}_SYMBOL_NAME", sp.Symbol(symbol_name))
-        emitter.emit(f"PY_S10_LOCAL_REGISTRY_{label}_DERIVED_DIMENSION_SYMBOLIC", dim_expr(symbolic))
-        emitter.emit(f"PY_S10_LOCAL_REGISTRY_{label}_DERIVED_DIMENSION_SPECIALISED", dim_expr(specialised))
-        emitter.emit(f"PY_S10_LOCAL_REGISTRY_{label}_DECLARED_DIMENSION", dim_expr(declared))
-        emitter.emit(f"PY_S10_LOCAL_REGISTRY_{label}_DIMENSION_RESIDUAL", dim_expr(residual))
+) -> list[ExportRecord]:
+    records = [
+        ExportRecord(
+            "inertia_coefficient_dimension",
+            sp.Matrix(derived_dimensions[rho_br]),
+            "DERIVED",
+            D,
+        ),
+        ExportRecord(
+            "stiffness_coefficient_dimension",
+            sp.Matrix(derived_dimensions[mu_R]),
+            "DERIVED",
+            D,
+        ),
+        ExportRecord(
+            "coefficient_dimension_difference",
+            sp.simplify(
+                sp.Matrix(derived_dimensions[mu_R])
+                - sp.Matrix(derived_dimensions[rho_br])
+            ),
+            "DERIVED",
+            D,
+        ),
+    ]
+    symbolic_slots: dict[str, list[sp.Tuple]] = {
+        suffix: [] for suffix in SYMBOLIC_D_EXPORT_SUFFIXES
+    }
+    for component_count in component_counts:
+        prefix = f"PY_S10_MAIN_D{component_count}_"
+        indexed_rows: list[sp.Tuple] = []
+        for tag, payload in emitter.values.items():
+            if not tag.startswith(prefix):
+                continue
+            suffix = tag.removeprefix(prefix)
+            stable_suffix, indices = stable_indexed_suffix(suffix)
+            dimension = emitter.dimensions.get(tag)
+            if indices:
+                row_parts: list[object] = [
+                    sp.Symbol(stable_suffix.lower()),  # DERIVED · authored indexed-object field name
+                    sp.Tuple(*indices),
+                    payload,
+                ]
+                if dimension is not None:
+                    row_parts.append(dimension)
+                indexed_rows.append(sp.Tuple(*row_parts))
+                continue
+            if suffix in SYMBOLIC_D_EXPORT_SUFFIXES:
+                slot_parts: list[object] = [sp.Integer(component_count), payload]
+                if dimension is not None:
+                    slot_parts.append(dimension)
+                symbolic_slots[suffix].append(sp.Tuple(*slot_parts))
+                continue
+            records.append(
+                ExportRecord(
+                    suffix.lower(),
+                    payload,
+                    output_class(suffix),
+                    sp.Integer(component_count),
+                    dimension,
+                )
+            )
+        records.append(
+            ExportRecord(
+                "indexed_derivations",
+                sp.Tuple(*indexed_rows),
+                "DERIVED",
+                sp.Integer(component_count),
+            )
+        )
+    records.extend(
+        ExportRecord(
+            suffix.lower(),
+            sp.Tuple(*slots),
+            output_class(suffix),
+            D,
+        )
+        for suffix, slots in symbolic_slots.items()
+    )
+    return records
+
+
+def reconstruction_expression(value: object) -> str:
+    return sp.srepr(value)
+
+
+def exact_reconstruction_match(live_value: object, reconstructed_value: object) -> bool:
+    return (
+        type(live_value) is type(reconstructed_value)
+        and sp.srepr(live_value) == sp.srepr(reconstructed_value)
+    )
+
+
+def exact_value_residual(left: object, right: object) -> sp.Integer:
+    return sp.Integer(not exact_reconstruction_match(left, right))
+
+
+def generated_record_lines(
+    name: str,
+    value: object,
+    class_tag: str,
+    step: str,
+    dimension: object | None = None,
+    display: str | None = None,
+) -> list[str]:
+    lines = [
+        f"    {name!r}: {{",
+        f"        'display': {(sp.sstr(value) if display is None else display)!r},",
+        f"        'value': _restore({reconstruction_expression(value)!r}),",
+    ]
+    if dimension is not None:
+        lines.append(
+            f"        'dim': _restore({reconstruction_expression(dimension)!r}),"
+        )
+    lines.extend([
+        f"        'class': {class_tag!r},",
+        f"        'step': {step!r},",
+        "    },",
+    ])
+    return lines
+
+
+def generated_ledger_key(name: str, computation_dimension: sp.Expr) -> str:
+    base_name = re.sub(r"_d[0-9]+$", "", name)
+    if computation_dimension == D:
+        return base_name
+    return f"{base_name}_d{computation_dimension}"
+
+
+def d_partition(records: Sequence[tuple[str, sp.Expr]]) -> sp.Tuple:
+    grouped: dict[sp.Expr, list[sp.Symbol]] = {}
+    for name, computation_dimension in records:
+        grouped.setdefault(computation_dimension, []).append(sp.Symbol(name))  # DERIVED · production-partition member name
+    return sp.Tuple(*(
+        sp.Tuple(
+            computation_dimension,
+            sp.Tuple(*sorted(names, key=sp.default_sort_key)),
+        )
+        for computation_dimension, names in sorted(
+            grouped.items(), key=lambda item: sp.default_sort_key(item[0])
+        )
+    ))
+
+
+def write_exports(emitter: Emitter, own_records: Sequence[ExportRecord]) -> None:
+    classes = declaration_classes(Path(__file__))
+    del classes
+    keyed_own_records: list[tuple[str, ExportRecord]] = []
+    seen_own_keys: set[str] = set()
+    for record in own_records:
+        name = generated_ledger_key(record.name, record.computation_dimension)
+        if name in seen_own_keys:
+            raise RuntimeError(f"duplicate S10 export key: {name}")
+        seen_own_keys.add(name)
+        keyed_own_records.append((name, record))
+
+    overwrite_rows: list[sp.Tuple] = []
+    overwrite_residuals: list[sp.Integer] = []
+    for name, record in keyed_own_records:
+        if name not in S9_LEDGER:
+            continue
+        upstream_value = S9_LEDGER[name]["value"]
+        residual = exact_value_residual(upstream_value, record.value)
+        overwrite_rows.append(
+            sp.Tuple(
+                sp.Symbol(name),  # DERIVED · authored overwritten-object name
+                upstream_value,
+                record.value,
+                residual,
+            )
+        )
+        overwrite_residuals.append(residual)
+    emitter.emit(
+        "PY_S10_EXPORT_OVERWRITE_OPERANDS_AND_RESIDUALS",
+        sp.Tuple(*overwrite_rows),
+    )
+    assert all(residual == 0 for residual in overwrite_residuals)
+
+    merged: dict[str, dict[str, object]] = {
+        name: dict(record) for name, record in S9_LEDGER.items()
+    }
+    for name, record in keyed_own_records:
+        generated = {
+            "display": sp.sstr(record.value),
+            "value": record.value,
+            "class": record.class_tag,
+            "step": "S10",
+        }
+        if record.dimension is not None:
+            generated["dim"] = record.dimension
+        merged[name] = generated
+
+    source_lines = [
+        "# S10_exports.py — GENERATED by S10_brane_mode_spectrum_sympy_audit.py. Do not edit.",
+        "import sympy as sp",
+        "",
+        "",
+        "_RELATIONALS = {",
+        "    'Equality': lambda left, right: sp.Eq(left, right, evaluate=False),",
+        "    'Unequality': lambda left, right: sp.Ne(left, right, evaluate=False),",
+        "    'StrictGreaterThan': lambda left, right: sp.Gt(left, right, evaluate=False),",
+        "    'StrictLessThan': lambda left, right: sp.Lt(left, right, evaluate=False),",
+        "    'GreaterThan': lambda left, right: sp.Ge(left, right, evaluate=False),",
+        "    'LessThan': lambda left, right: sp.Le(left, right, evaluate=False),",
+        "}",
+        "",
+        "",
+        "def _restore(source):",
+        "    return eval(source, {'__builtins__': {}, **vars(sp), **_RELATIONALS})",
+        "",
+        "",
+        "LEDGER = {",
+    ]
+    for name, record in merged.items():
+        source_lines.extend(
+            generated_record_lines(
+                name,
+                record["value"],
+                str(record["class"]),
+                str(record["step"]),
+                record.get("dim"),
+                str(record["display"]),
+            )
+        )
+    source_lines.extend(("}", ""))
+    export_source = "\n".join(source_lines)
+    export_path = Path(__file__).with_name("S10_exports.py")
+
+    reconstructed_namespace: dict[str, object] = {}
+    exec(
+        compile(export_source, str(export_path), "exec"),
+        reconstructed_namespace,
+    )
+    reconstructed_ledger = reconstructed_namespace["LEDGER"]
+    if not isinstance(reconstructed_ledger, dict):
+        raise RuntimeError("generated S10 ledger did not reconstruct as a mapping")
+    live_count = len(merged)
+    residuals: list[sp.Integer] = []
+    for name, record in merged.items():
+        reconstructed_record = reconstructed_ledger[name]
+        residuals.append(
+            exact_value_residual(record["value"], reconstructed_record["value"])
+        )
+        if "dim" in record:
+            residuals.append(
+                exact_value_residual(record["dim"], reconstructed_record["dim"])
+            )
+        residuals.append(sp.Integer(record["class"] != reconstructed_record["class"]))
+        residuals.append(sp.Integer(record["step"] != reconstructed_record["step"]))
+    roundtrip_residual = sum(residuals, sp.Integer(0))
+    roundtrip_count_residual = sp.Integer(live_count - len(reconstructed_ledger))
+    computed_dimension_count = sum(
+        "dim" in record for record in reconstructed_ledger.values()
+    )
+    absent_dimension_count = len(reconstructed_ledger) - computed_dimension_count
+    class_tally = sp.Tuple(*(
+        sp.Tuple(
+            sp.Symbol(class_tag),  # STRUCTURAL · exported class label
+            sp.Integer(
+                sum(
+                    record["class"] == class_tag
+                    for record in reconstructed_ledger.values()
+                )
+            ),
+        )
+        for class_tag in CLASS_TAGS
+    ))
+    class_tally_residual = sp.Integer(len(reconstructed_ledger)) - sum(
+        (count for _, count in class_tally), sp.Integer(0)
+    )
+    production_d_partition = d_partition([
+        (name, record.computation_dimension) for name, record in keyed_own_records
+    ])
+    emitter.emit("PY_S10_EXPORT_ROUNDTRIP_LIVE_COUNT", sp.Integer(live_count))
+    emitter.emit(
+        "PY_S10_EXPORT_ROUNDTRIP_RECONSTRUCTED_COUNT",
+        sp.Integer(len(reconstructed_ledger)),
+    )
+    emitter.emit(
+        "PY_S10_EXPORT_ROUNDTRIP_COUNT_RESIDUAL", roundtrip_count_residual
+    )
+    emitter.emit("PY_S10_EXPORT_ROUNDTRIP_RESIDUAL", roundtrip_residual)
+    emitter.emit(
+        "PY_S10_EXPORT_COMPUTED_DIMENSION_COUNT",
+        sp.Integer(computed_dimension_count),
+    )
+    emitter.emit(
+        "PY_S10_EXPORT_ABSENT_DIMENSION_COUNT", sp.Integer(absent_dimension_count)
+    )
+    emitter.emit("PY_S10_EXPORT_CLASS_TALLY", class_tally)
+    emitter.emit("PY_S10_EXPORT_CLASS_TALLY_RESIDUAL", class_tally_residual)
+    emitter.emit("PY_S10_EXPORT_D_PARTITION", production_d_partition)
+    assert roundtrip_count_residual == 0
+    assert roundtrip_residual == 0
+    assert class_tally_residual == 0
+    export_path.write_text(export_source, encoding="utf-8")
 
 
 def main() -> int:
+    Path(__file__).with_name("S10_exports.py").unlink(missing_ok=True)
     emitter = Emitter()
     declared_pairs = [
         (package.name, n) for package in PACKAGES for n in package.dimensions
@@ -1721,16 +2042,22 @@ def main() -> int:
     skipped_pairs = [pair for pair in declared_pairs if pair not in completed_set]
     emitter.emit(
         "PY_S10_RUN_PAIRS",
-        sp.Tuple(*(sp.Symbol(f"{name}_D{n}") for name, n in completed_pairs)),
+        sp.Tuple(*(sp.Symbol(f"{name}_D{n}") for name, n in completed_pairs)),  # DERIVED · completed construction-pair collection
     )
     emitter.emit(
         "PY_S10_SKIPPED_PAIRS",
-        sp.Tuple(*(sp.Symbol(f"{name}_D{n}") for name, n in skipped_pairs)),
+        sp.Tuple(*(sp.Symbol(f"{name}_D{n}") for name, n in skipped_pairs)),  # DERIVED · skipped construction-pair collection
     )
-    emit_registry_comparison(emitter, derived_dimensions)
     local_list_tag = "PY_S10_LOCAL_TAG_NAMES"
     local_names = [*emitter.local_names, local_list_tag]
-    emitter.emit(local_list_tag, sp.Tuple(*(sp.Symbol(name) for name in local_names)))
+    emitter.emit(local_list_tag, sp.Tuple(*(sp.Symbol(name) for name in local_names)))  # DERIVED · local emission-name inventory
+    main_component_counts = next(
+        package.dimensions for package in PACKAGES if package.name == "MAIN"
+    )
+    own_records = collect_main_export_records(
+        emitter, main_component_counts, derived_dimensions
+    )
+    write_exports(emitter, own_records)
     return 0
 
 

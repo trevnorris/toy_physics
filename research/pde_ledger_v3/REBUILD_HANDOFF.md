@@ -15,7 +15,7 @@ typed sentences with no CAS object behind them, missed by eight review legs.
 | step | state |
 |---|---|
 | S9 | rebuilt |
-| S10 | **CLOSED** `e5a2c695` — harness, record, register pass 1, spec repair, card |
+| S10 | ▶ **py engine ON THE CHAIN** — build + 1 fix round, 4 legs. ⚠ **3 open defects, NOT committed-clean** (below). `.wl` untouched, record stale, comparator absent |
 | S11 `stray_longitudinal` | ▶ **IN PROGRESS** — spec done `f49a1684`; engines not yet rebuilt |
 | S11b-A `interface_response` | built under the old pattern → **rebuild** |
 | S11b-B `interface_assembly` | built under the old pattern → **rebuild** |
@@ -118,7 +118,69 @@ and introduced one; the close-out was **one deleted line**. ⇒ ⭐ **after a ro
 output byte-identical, STOP** ⇒ [[feedback-fix-rounds-converging-on-my-own-edits]].
 ⚠ Across all seven rounds the **derivation never moved** and every leg reproduced every value.
 
-### ⛔ S10 is the next step, and it is what makes the ledger REAL
+## ⭐⭐ S10 — THE CHAIN IS REAL. ⚠ Three open defects; ⛔ do NOT treat S10 as closed.
+
+⭐⭐ **`scripts/S10_exports.py` exists: 574 entries** — KNOB 2 · STRUCTURAL 4 · PREMISE 69 · DERIVED 491 ·
+CONTROL 8; **142 carried from S9, 432 added by S10.**
+⭐ **145 of 145 S9 keys present · 3 overwritten and AGREEING · ZERO drift in anything untouched.**
+
+⭐⭐ **What this bought — the first cross-step corroboration the ledger has ever had.** S10 re-derives
+`inertia_coefficient_dimension`, `stiffness_coefficient_dimension` and `coefficient_dimension_difference`
+from its own general-`D` action and lands on S9's keys with **matching values**: two independently built
+engines, at different component counts, writing the same slot.
+
+⭐⭐ **The physics is INDEPENDENTLY CONFIRMED.** A review leg wrote its own derivation from
+`S11_SHARED_PHYSICS`-style first principles **before opening the artifact** and reproduced **26 of 26**
+committed tags — root count, ordering, stacked ranks, scale exponent, sign-flip control, Q7.
+⇒ **every finding below is the export chain, ⛔ not the derivation.**
+
+⭐⭐ **The key-naming problem is SETTLED BY MEASUREMENT.** Under a FORM control that moved the root count
+`2 → 3` and produced a stratum where there was none, the **exported key set came back IDENTICAL** (empty
+symmetric difference both ways). Runtime root/stratum/coefficient indices are payload **inside** fixed
+`indexed_derivations` collections ⇒ ⛔ no key is minted by the solver's answer.
+
+⭐ **Assumption inheritance did what the user predicted.** Binding S9's `positive`/`integer` objects moved
+exactly two control readouts — `XFORM_ANISO_D{3,4}_Q8_STRATUM1_ROOT2_Q3_SIGN`:
+`undecided_under_joint_assumptions → 1`. ⚠ Not a changed answer — a **newly decidable** one. A leg derived
+`+1` independently.
+
+### ⛔⛔ THREE OPEN DEFECTS — ⭐ this is the fix list, ⛔ S10 is not closed
+
+1. ⛔⛔ **The exported `class` is HAND-TYPED with a fail-open `DERIVED` default, and the computed
+   classification is DISCARDED one line after it is computed** (`classes = declaration_classes(...)` then
+   `del classes`). ⚠ Proof it is not read: the tally reports `(COORDINATE, 0)` while the engine annotates
+   many `# COORDINATE ·` declarations. ⚠ Measured: a correctly-annotated `PREMISE` emission **exports as
+   `DERIVED`**. ⇒ this is the input-driven rule violated — **the answer is computed and thrown away.**
+2. ⛔⛔ **The overwrite residual compares VALUES only**, so a same-value key collision **silently re-labels
+   an upstream `PREMISE` as an S10 `DERIVED`** with residual 0 and every guard green. ⚠ Measured on
+   `field_dimension`: `PREMISE/S9 → DERIVED/S10`, same value. ⇒ **provenance can be corrupted silently.**
+3. ⛔ **47 of the 50 records carrying a `dim` also export that identical object as a separate
+   `_q6_dimensions` record.** ⇒ a downstream step differencing them gets **zero by construction** —
+   the recurring defect, **pre-seeded into S11's inputs.**
+
+4. ⚠ **No in-run merged-ledger symbol-identity scan.** The module is **clean under an independent scan**
+   (measured: 158 names, **0** bound to >1 object), ⛔ but dual-symbol pollution would not be rejected.
+   ⭐⭐ **This is the ONE in-run check to sanction** — walking the output and asserting each symbol name maps
+   to one `srepr` is a property **of the artifact, checkable from the artifact**, ⛔ not another
+   operands-share-a-source guard ⇒ [[feedback-a-check-cannot-audit-its-own-input]].
+
+⚠ **Recorded, ⛔ not a defect:** the relational round-trip repair is **correct but inert** — `MAIN` produces
+no allowed stratum at any count, so nothing on the export path exercises it. ⛔ Its acceptance cannot be met
+on the export set; the only allowed stratum in the run is in a **control** package.
+
+### ⚠ WHAT S10 STILL OWES
+
+| owed | note |
+|---|---|
+| the three defects above | ⭐ **start here** |
+| `.wl` **D12 rename** + re-run | ⭐ engine EXISTS (1807 lines, 660 KB committed output) and is correct — ⛔ **do NOT rebuild it**, ⛔ do not touch its derivation. Emitted **name strings only** |
+| ⛔ **the granularity decision** | ⚠ **gates the `.wl` rename.** py emits **per-root stdout tags**; wl emits **lists**. ⭐ Three of four engines already bundle ⇒ **bundling is the standard**, but py's *stdout* is the outlier and changing it touches a twice-reviewed engine |
+| **the comparator (F-2)** | ⛔ **still absent.** ⭐ Put it BEFORE S11 — every step added without it deepens a chain never checked against its independent engine |
+| **step record** `steps/S10_two_transverse_photons.md` | ⛔ **STALE — 664 lines, 23 citations to deleted machinery** (`checks_S10.yaml`, `reduction/measurements/…`, "✓ registry") |
+| paper card `paper/steps/S10_two_transverse_photons.tex` | ⭐ **targeted edit, ⛔ NOT a rewrite** — 2 stale refs in 299 lines; **the physics is verified unchanged** |
+| requirements + defect registers | not started |
+
+### ⛔ (superseded) S10 was the next step, and it is what makes the ledger REAL
 
 ⛔ **S10 cannot currently run** — it still imports the deleted `registry_read`. ⚠ And where it shares a
 premise with S9 it **re-declares** rather than imports (`PREMISE_U_DIMENSION`).

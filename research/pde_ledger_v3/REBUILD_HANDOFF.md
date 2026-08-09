@@ -120,9 +120,17 @@ output byte-identical, STOP** ⇒ [[feedback-fix-rounds-converging-on-my-own-edi
 
 ## ⭐⭐ S10 — THE CHAIN IS REAL. ⚠ Three open defects; ⛔ do NOT treat S10 as closed.
 
-⭐⭐ **`scripts/S10_exports.py` exists: 574 entries** — KNOB 2 · STRUCTURAL 4 · PREMISE 69 · DERIVED 491 ·
-CONTROL 8; **142 carried from S9, 432 added by S10.**
-⭐ **145 of 145 S9 keys present · 3 overwritten and AGREEING · ZERO drift in anything untouched.**
+⭐⭐ **`scripts/S10_exports.py`: 617 entries** — KNOB 2 · STRUCTURAL 4 · COORDINATE 27 · CONTROL 9 ·
+PREMISE 78 · DERIVED 497; **162 carried from S9, 452 added by S10** (S9's own ledger is **165**).
+⚠ **Re-measured 2026-08-09 from the modules; the previous figures here (574/145/142) were STALE** — a
+review leg caught them ⇒ ⭐ **numbers in this file are a convenience, ⛔ the artifact is the authority.**
+⭐ **3 keys overwritten and AGREEING · ZERO drift in anything untouched.**
+
+⛔⛔ **AND THE THREE OVERWRITES ARE TWO INDEPENDENT VALUES.** `coefficient_dimension_difference` is
+built as `stiffness − inertia` at `S10:1790-1795` ⇒ ⛔ it **cannot** disagree once the other two agree.
+⛔⛔ **All three are DIMENSION VECTORS ⇒ the guard is blind to any DIMENSIONLESS mutation BY
+CONSTRUCTION** — measured: a ×7 rescale moves the speed to `7μ_R/ρ_br` and S10 **exits 0 and publishes**,
+while a FORM change makes it refuse. ⚠ Reproduced independently by a review leg from scratch.
 
 ⭐⭐ **What this bought — the first cross-step corroboration the ledger has ever had.** S10 re-derives
 `inertia_coefficient_dimension`, `stiffness_coefficient_dimension` and `coefficient_dimension_difference`
@@ -209,12 +217,55 @@ no allowed stratum at any count, so nothing on the export path exercises it.
 |---|---|
 | ~~round 5~~ | ⭐ **DONE `c84263ed`** — removal round, author changed per rule 15. **Both legs CLEAR.** ⭐ The cross-step residual was re-established on the committed bytes by **three parties using two different FORM changes**, with a ×7 coefficient control that correctly moves nothing |
 | ~~the comparator (F-2)~~ | ⭐⭐ **DONE `82443c95`** — 4 rounds, 8 legs. ⭐ See the F-2 section below for what it measures, the **deflations the step record must carry**, and the injectivity check D12 must run |
-| ⭐⭐ **the S10 STEP RECORD** | ⛔ **DO THIS NEXT.** ⚠ **Its decision list gets two legs BEFORE the builder launches** — `CLAUDE.md` rule 7 trigger, added 2026-08-09 |
+| ~~the S10 STEP RECORD~~ | ⭐⭐ **DONE** — 664 → 828 lines. **4 builds, 14 legs**; every number and locus verified by **three** independent passes, ⛔ none wrong. ⭐ The trigger fired on all four decision lists and **blocked every one** ⇒ see below |
 | **the D12 naming pass** | ⭐⭐ **DRIVEN BY THE COMPARATOR'S OUTPUT, ⛔ not by hand.** User decision 2026-08-09: **adjudicate BOTH engines**, ⛔ not wl-only — the py tag suffix **IS the ledger key**, so py-as-default-authority is the unpoliced binding the light-cone re-point exploited |
 | `.wl` rename | ⭐ engine EXISTS (1807 lines, 660 KB output) and is correct — ⛔ **do NOT rebuild it**. Emitted **name strings only** |
 | **step record** `steps/S10_two_transverse_photons.md` | ⛔ **STALE — 664 lines, 23 citations to deleted machinery** |
 | paper card `paper/steps/S10_two_transverse_photons.tex` | ⭐ **targeted edit, ⛔ NOT a rewrite** — 2 stale refs in 299 lines; physics verified unchanged |
 | requirements + defect registers | not started |
+
+### ⭐⭐⭐ WHAT THE S10 RECORD ROUNDS MEASURED — ⚠ physics, ⛔ not bookkeeping
+
+⭐⭐ **`D − 1` rests on TWO independent structural premises, and the sector's controls only ever probed ONE.**
+
+1. ⭐ **The stiffness functional** — and it buys **less** than the sector's slogan claimed. `FULLGRAD` (full
+   gradient) returns the **same root expression AND the same transverse count** as curl-only at `D = 3`
+   and `D = 4`. ⇒ ⛔ *"curl-only gives the two transverse modes"* is **refuted by its own control**;
+   ⭐ what curl-only determines is that the **longitudinal does not propagate**.
+2. ⭐⭐ **ISOTROPIC INERTIA — and nothing in the headline mentioned it.** Breaking it on one axis
+   (`ANISO`) splits the degenerate pair into two speeds and one branch becomes **generically OBLIQUE**:
+
+   | | per-root `N2` (**modes**) | per-root `N3` (**exactly transverse**) | propagating totals |
+   |---|---|---|---|
+   | `MAIN` D3 | 1, **2** | 0, **2** | 2 / 2 |
+   | `ANISO` D3 generic | 1, **1, 1** | 0, **1**, 0 | **2 / 1** |
+   | `ANISO` D3 on stratum | 1, **2** | 0, **2** | 2 / 2 |
+
+   ⛔⛔ **THE PROPAGATING COUNT NEVER MOVES.** ⛔ No mode is removed; ⭐ one is **tilted**.
+   ⇒ ⭐⭐ **isotropic inertia is what makes the transverse modes EXACTLY transverse, ⛔ not what makes them
+   exist.** ⚠ Both engines agree on every cell; **20 generic `N2`/`N3` comparator rows, 20 PASS.**
+
+⇒ ⭐ **Scope the ablation maxim:** *"only a form change moves physics"* is **overbroad** — `XCOEF_SCALE`
+moves the **root value**, `SIGNFLIP` turns two waves into two **growing modes**. ⭐ What a coefficient
+rescale cannot move is a **COUNT** or a **MODE STRUCTURE** ⇒ [[feedback-per-tooth-ablation]].
+
+### ⛔⛔ TWO OPEN FINDINGS FROM THE FINAL LEG — ⭐ recorded, ⛔ NOT folded into the record
+
+1. ⛔⛔ **`Q8a`'s STRATUM ENUMERATION IS STRUCTURALLY BLIND TO THE LOCUS WHERE TRANSVERSALITY CHANGES.**
+   ⚠ It searches **minors of `M_r`** and **root-coincidence loci** (`S10_SHARED_PHYSICS.md:390-396`);
+   ⛔ **neither looks at the STACKED matrix `[M_r; kᵀ]`**, which is what governs `nu_T`. ⇒ a locus where the
+   **transverse count alone** moves **cannot be found by construction.**
+   ⭐ **One exists and was exhibited** by a leg that re-derived the `ANISO` matrix from the spec: at
+   `k₁ = 0` (`k` ⊥ the anisotropy axis) the exactly-transverse total returns to `D − 1`, with the **root
+   count unchanged** and **every `rank(M_r)` unchanged**. ⛔ Neither engine enumerates it.
+   ⚠ **This falsifies nothing in the record** (which says *"generically"* and disclaims completeness);
+   ⭐ it is a **SPEC-LEVEL** defect — the engines implement `Q8a` faithfully. ⇒ **red-team / S11 spec item.**
+   ⭐ `MAIN` is **not** exposed: a 748-wavevector sweep found **0** deviations.
+2. ⚠ **A correct `MAIN` limit was DOWNGRADED relative to HEAD** — *"there is nowhere in the allowed region
+   for `D−1` to fail"* is still **decided by both engines** (`Q8_ALLOWED_STRATA` empty at every `D`, by two
+   independent routes: PY `locus_conflicts_with_positive_wavevector_norm`, WL `decidedEmpty`).
+   ⭐ The new record keeps it only as a comparator-table row. ⛔ **Under-claiming, not overstatement** — so
+   it was not worth a fourth round; ⚠ fix it if the record is opened again.
 
 ### ⛔⛔ THE "GRANULARITY DECISION" DOES NOT EXIST — ⚠ it was inherited from the S11 survey
 
@@ -289,6 +340,15 @@ different descriptions ⇒ [[feedback-name-binding-is-unpoliced]].
 engines' assumption strengths differ — one decides what the other calls undecidable. ⇒ ⭐ that is real
 evidence, ⛔ not another self-comparison, and it is the seed of the check that could close the export
 chain's open assumption limit.
+
+⭐⭐ **AND IT PUTS S9'S BIGGEST OPEN LIMIT WITHIN REACH — ⚠ measured 2026-08-09, ⛔ not yet acted on.**
+S9's record closes with *"nothing in the repository performs the cross-engine standard-name lookup"*, and
+that is the limit the **light-cone re-point** exploited: one re-pointed name turned the cone into an `ω²`
+and **every check in the repository passed**. ⚠ **That sentence is still literally TRUE** — the only
+comparator is S10's, and ⛔ nothing reads `mathematica/out/S9_light_requires_shear_mathematica_audit.out`.
+⇒ ⭐ **But the instrument now exists and BOTH S9 transcripts are already committed**, so the join S9 says
+cannot be done needs **no new instrument** — only a second pair of inputs. ⭐ **This is the cheapest open
+item in the rebuild and the one that closes the largest hole.** ⛔ Not on the S10 queue; do not fold it in.
 
 ## S11 — where it actually is
 
@@ -608,6 +668,21 @@ emitted under a name that says so, or not paired at all.
   occurs in any identity field. ⛔ Never report "the baseline did not move" as evidence of correctness.
 
 ---
+
+## ⛔ OWED ON S9's SIGNED-OFF RECORD — ⚠ found 2026-08-09, ⛔ do NOT fold into S10
+
+⛔⛔ **`steps/S9_light_requires_shear.md:244` calls the full-gradient control *"an ordinary elastic
+solid"*.** ⚠ **That imports a substance claim the computation does not make** — and specifically grants
+the medium a **shear modulus**.
+⛔ **This model's bulk is a SUPERFLUID: zero shear modulus by definition.** ⭐ S9's own record says so
+**twelve lines earlier** (`:41-43`): *"A GP/NLS superfluid is a fluid — zero shear modulus. The brane's
+shear rigidity therefore requires the substructure."* ⇒ the record contradicts itself across 200 lines.
+⚠ **And the brane's shear rigidity is `R-S1-02`, status OPEN**, resting on **one** external document with
+⛔ **no executing script**.
+⭐ **The control is a STIFFNESS FUNCTIONAL** — `Σ(∂_i u_j)²` against curl-only — ⛔ not a medium; and it is
+a **single-modulus** functional, so it is not general isotropic elasticity either (⚠ which has two).
+⇒ ⭐ **STANDING: name a control by its FUNCTIONAL, ⛔ never by a substance.** ⚠ The same phrase was in
+S10's record and its removal there was correct.
 
 ## ⚠ What is still open on S10, deliberately
 

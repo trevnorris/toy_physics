@@ -15,7 +15,7 @@ typed sentences with no CAS object behind them, missed by eight review legs.
 | step | state |
 |---|---|
 | S9 | rebuilt |
-| S10 | ▶ **py engine ON THE CHAIN, rounds 2–4 committed `e644876c`** — 8 legs, ⛔ no physics moved. ⚠ Round 5 (removal) in flight. ⭐ **NEXT: the comparator, then D12 driven by its output.** `.wl` untouched, record stale |
+| S10 | ▶ **py engine ON THE CHAIN — rounds 2–5 committed `e644876c` + `c84263ed`** — 12 legs, ⛔ no physics moved, ⭐ both legs CLEAR on round 5. ⭐ **NEXT: the comparator, then D12 driven by its output.** `.wl` untouched, record stale |
 | S11 `stray_longitudinal` | ▶ **IN PROGRESS** — spec done `f49a1684`; engines not yet rebuilt |
 | S11b-A `interface_response` | built under the old pattern → **rebuild** |
 | S11b-B `interface_assembly` | built under the old pattern → **rebuild** |
@@ -207,7 +207,7 @@ no allowed stratum at any count, so nothing on the export path exercises it.
 
 | owed | note |
 |---|---|
-| **round 5** (in flight) | ⭐ **a REMOVAL round** — delete the two inert residuals, fix the import regression, record the limits. ⛔ It adds nothing. ⚠ **Author changed** per rule 15 |
+| ~~round 5~~ | ⭐ **DONE `c84263ed`** — removal round, author changed per rule 15. **Both legs CLEAR.** ⭐ The cross-step residual was re-established on the committed bytes by **three parties using two different FORM changes**, with a ×7 coefficient control that correctly moves nothing |
 | ⛔⛔ **the comparator (F-2)** | ⭐⭐ **DO THIS FIRST.** Decision list written: `directives/S10_comparator_decisions.md`, deliberately **numberless** so a builder cannot converge on a tally |
 | **the D12 naming pass** | ⭐⭐ **DRIVEN BY THE COMPARATOR'S OUTPUT, ⛔ not by hand.** User decision 2026-08-09: **adjudicate BOTH engines**, ⛔ not wl-only — the py tag suffix **IS the ledger key**, so py-as-default-authority is the unpoliced binding the light-cone re-point exploited |
 | `.wl` rename | ⭐ engine EXISTS (1807 lines, 660 KB output) and is correct — ⛔ **do NOT rebuild it**. Emitted **name strings only** |

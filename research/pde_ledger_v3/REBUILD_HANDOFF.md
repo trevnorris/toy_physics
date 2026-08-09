@@ -44,7 +44,41 @@ design is abandoned. ⛔ Do not build it for any step.
 
 ---
 
-## ⭐⭐ S9 — CLOSED `5d6b56d3`, RE-KEYED `83eace28`. ⭐ NEXT IS S10
+## ⭐⭐ S9 — CLOSED `5d6b56d3`, RE-KEYED `83eace28`, STRUCTURALS EXPORTED `b23c5334`. ⭐ NEXT IS S10
+
+### ⭐ The ledger is **145** entries — KNOB 2 · STRUCTURAL 4 · PREMISE 7 · DERIVED 132
+
+⭐ **`D`, `length_dimension`, `time_dimension`, `mass_dimension` now cross directly** ⇒ a consumer **binds**
+them instead of declaring look-alikes. ⚠ `Symbol("D")` ≠ `Symbol("D", integer=True, positive=True)`; their
+difference **prints as something that looks like zero and is not** ⇒
+[[project-ledger-symbol-identity-is-the-point]].
+
+⛔⛔ **FOUR MEASURED LIMITS — ⭐ they bound what S9 may claim, and ⛔ none is fixable inside the export:**
+
+1. ⛔⛔ **The assumptions the export exists to carry are INVISIBLE in the record.** The assumption set
+   **hand-types** `Q.integer(D)` beside the declaration instead of reading it, and both spellings print
+   identically ⇒ dropping `integer=True` at the declaration leaves stdout **byte-identical** while **10**
+   ledger records change. ⭐ **S10 binding `D` is the test** — ⛔ not another in-run check.
+2. ⛔ **The export boundary is a hand-typed comment.** Restoring one pre-round tag ships the
+   **ablation-package table as a structural input at exit 0**; the round-trip rejects it only when the
+   value is not a SymPy object.
+3. ⚠ **The unit-basis convention is unpoliced inside S9** — every dimension is built *from* the markers, so
+   permuting L↔T moves **no** residual. ⭐ The `.wl` declares the same basis independently and constrains
+   the derived vectors, ⛔ but **neither engine emits the markers**, so the four new records have **no
+   cross-engine row**.
+4. ⚠ `field_dimension` is an **alias** of `length_dimension` and both are now keys. ⚠ `sp.eye(3)` is still
+   typed at `:89`; `:95`'s read resolves a **typed triple**.
+
+### ⛔⛔ THREE IN-RUN CHECKS ON THE EXPORT HAVE NOW BEEN BUILT AND DELETED. ⭐ STOP BUILDING THEM.
+
+⚠ Measured across three rounds: **every** guard added inside the export writer compared two operands
+descending from one source, and each was proven unable to fail — one of them by **reverting the change it
+policed** and still exiting 0. ⇒ ⭐⭐ **The export writer cannot verify itself: the classification is its own
+input.** ⭐ What establishes the export is a **diff against the committed baseline**, from outside the run
+⇒ [[feedback-a-check-cannot-audit-its-own-input]].
+
+⭐ **CONTROL now carries two meanings** — an ablation coefficient **and** engine machinery (user decision,
+2026-08-08) ⇒ ⚠ the knob inventory mixes them, and **the tag decides what the next step imports.**
 
 ### ⭐⭐ THE D-KEY — decided by the user 2026-08-08, and it is a STANDING convention
 

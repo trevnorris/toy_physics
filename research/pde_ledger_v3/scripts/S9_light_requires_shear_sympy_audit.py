@@ -92,9 +92,9 @@ def construct_bare_field_action():
 
 
 # Every physical modification below enters through an action constructor.
-identity3 = sp.eye(3)  # STRUCTURAL · spatial identity tensor
+identity3 = sp.eye(len(spatial_coordinates))  # DERIVED · spatial identity tensor
 main_action = construct_curl_action(rho_br * identity3, mu_R)  # PREMISE · curl-only MacCullagh action
-actions = {  # STRUCTURAL · action package specifications
+actions = {  # CONTROL · action package control specifications
     "MAIN": (main_action, (rho_br, mu_R), rho_br, mu_R, ()),
     "X1": (
         construct_curl_action(lambda_rho * rho_br * identity3, mu_R),
@@ -239,7 +239,7 @@ def q_form(expression):
     return sp.factor(sp.factor(expression).subs(wave_norm, q))
 
 
-dkey_computation_dimensions = "_DKEY_COMPUTATION_DIMENSIONS"  # STRUCTURAL · per-output production-dimension metadata key
+dkey_computation_dimensions = "_DKEY_COMPUTATION_DIMENSIONS"  # CONTROL · per-output production-dimension metadata key
 
 
 def produced_outputs(entries, computation_dimension):
@@ -659,7 +659,7 @@ if "X6" in all_outputs:
     )
 
 
-emitted_tags = set()  # STRUCTURAL · emitted-name uniqueness state
+emitted_tags = set()  # CONTROL · emitted-name uniqueness state
 
 
 def contains_authored_text(value):
@@ -689,14 +689,14 @@ def unique_item(tag, items):
     return materialised[0]
 
 
-main_name_changes = {  # STRUCTURAL · standard emission-name substitutions
+main_name_changes = {  # CONTROL · standard emission-name substitutions
     "DET_M_FACTORED": "FACTORED_DETERMINANT",
     "ROOT_MULTISET": "FULL_ROOT_MULTISET",
     "DIM_PRIMARY_INERTIA": "INERTIA_COEFFICIENT_DIMENSION",
     "DIM_PRIMARY_STIFFNESS": "STIFFNESS_COEFFICIENT_DIMENSION",
     "DIM_STIFFNESS_MINUS_INERTIA": "COEFFICIENT_DIMENSION_DIFFERENCE",
 }
-standard_emission_names = frozenset({  # STRUCTURAL · standard emission-name collection
+standard_emission_names = frozenset({  # CONTROL · standard emission-name collection
     "FACTORED_DETERMINANT",
     "FULL_ROOT_MULTISET",
     "TRANSVERSE_MULTIPLICITY",
@@ -710,7 +710,7 @@ standard_emission_names = frozenset({  # STRUCTURAL · standard emission-name co
     "DYNAMICAL_MATRIX_ROUTE_RESIDUAL",
     "BARE_FIELD_COEFFICIENT_DIMENSION",
 })
-posited_output_classes = {  # STRUCTURAL · posited output class assignments
+posited_output_classes = {  # CONTROL · posited output class assignments
     "LAGRANGIAN": "PREMISE",
     "PLANE_WAVE_ANSATZ": "PREMISE",
     "ASSUMPTIONS": "PREMISE",
@@ -779,7 +779,7 @@ for control_name in actions:
     if control_name in all_outputs:
         for suffix, value in all_outputs[control_name].items():
             if not suffix.startswith("_"):
-                emitted_name = suffix if suffix in standard_emission_names else f"{control_name}_{suffix}"  # STRUCTURAL · emitted object name
+                emitted_name = suffix if suffix in standard_emission_names else f"{control_name}_{suffix}"  # CONTROL · emitted object name
                 emit(emitted_name, value)
     if control_name in fatal_outputs:
         for suffix, value in fatal_outputs[control_name].items():
@@ -852,7 +852,7 @@ def write_exports():
     exported_inputs = [
         (name, globals()[name], class_tag)
         for name, class_tag in classes.items()
-        if class_tag == "KNOB"
+        if class_tag in ("KNOB", "STRUCTURAL")
     ]
     computed_dimensions = [
         *main_outputs["DIM_COEFFICIENTS"],

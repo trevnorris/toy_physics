@@ -21,6 +21,30 @@ LEDGER = {
         'class': 'KNOB',
         'step': 'S9',
     },
+    'D': {
+        'display': 'D',
+        'value': _restore("Symbol('D', integer=True, positive=True)"),
+        'class': 'STRUCTURAL',
+        'step': 'S9',
+    },
+    'length_dimension': {
+        'display': 'Matrix([\n[1],\n[0],\n[0]])',
+        'value': _restore('MutableDenseMatrix([[Integer(1)], [Integer(0)], [Integer(0)]])'),
+        'class': 'STRUCTURAL',
+        'step': 'S9',
+    },
+    'time_dimension': {
+        'display': 'Matrix([\n[0],\n[1],\n[0]])',
+        'value': _restore('MutableDenseMatrix([[Integer(0)], [Integer(1)], [Integer(0)]])'),
+        'class': 'STRUCTURAL',
+        'step': 'S9',
+    },
+    'mass_dimension': {
+        'display': 'Matrix([\n[0],\n[0],\n[1]])',
+        'value': _restore('MutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(1)]])'),
+        'class': 'STRUCTURAL',
+        'step': 'S9',
+    },
     'lagrangian_d3': {
         'display': '-mu_R*Derivative(u1(t, x, y, z), y)**2/2 + mu_R*Derivative(u1(t, x, y, z), y)*Derivative(u2(t, x, y, z), x) - mu_R*Derivative(u1(t, x, y, z), z)**2/2 + mu_R*Derivative(u1(t, x, y, z), z)*Derivative(u3(t, x, y, z), x) - mu_R*Derivative(u2(t, x, y, z), x)**2/2 - mu_R*Derivative(u2(t, x, y, z), z)**2/2 + mu_R*Derivative(u2(t, x, y, z), z)*Derivative(u3(t, x, y, z), y) - mu_R*Derivative(u3(t, x, y, z), x)**2/2 - mu_R*Derivative(u3(t, x, y, z), y)**2/2 + rho_br*Derivative(u1(t, x, y, z), t)**2/2 + rho_br*Derivative(u2(t, x, y, z), t)**2/2 + rho_br*Derivative(u3(t, x, y, z), t)**2/2',
         'value': _restore("Add(Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Integer(2))), Mul(Symbol('mu_R', positive=True), Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1))), Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Symbol('mu_R', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u1')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u2')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))), Mul(Rational(1, 2), Symbol('rho_br', positive=True), Pow(Derivative(Function('u3')(Symbol('t', real=True), Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('t', real=True), Integer(1))), Integer(2))))"),

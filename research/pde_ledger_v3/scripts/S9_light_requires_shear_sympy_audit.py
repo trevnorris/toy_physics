@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """Independent SymPy audit for ledger step S9."""
 
+import os
 import re
 from pathlib import Path
 
 import sympy as sp
+from sympy.core.symbol import Str
 
 from extract_knob_inventory import CLASS_TAGS, declaration_classes
+
+
+EXPORT_PATH = Path(__file__).with_name("S9_exports.py")  # CONTROL · generated-module publication path
+EXPORT_PATH.unlink(missing_ok=True)
 
 
 # Field, coordinate, amplitude, and material symbols.
@@ -17,7 +23,7 @@ u_functions = tuple(sp.Function(name)(t, x, y, z) for name in ("u1", "u2", "u3")
 a_symbols = sp.symbols("a1 a2 a3", real=True)  # PREMISE · plane-wave amplitudes
 b_symbols = sp.symbols("b1 b2 b3", real=True)  # PREMISE · paired plane-wave amplitudes
 omega = sp.symbols("omega", real=True)  # COORDINATE · spectral-frequency variable
-omega2 = sp.symbols("omega2", real=True)  # COORDINATE · squared-frequency polynomial variable
+omegaSquared = sp.symbols("omegaSquared", real=True)  # COORDINATE · squared-frequency polynomial variable
 k_input = sp.symbols("kx ky kz", real=True)  # COORDINATE · wavevector components
 rho_br = sp.Symbol("rho_br", positive=True)  # KNOB · brane inertia density not derived here
 mu_R = sp.Symbol("mu_R", positive=True)  # KNOB · brane shear modulus not derived here
@@ -27,7 +33,7 @@ mu_G = sp.Symbol("mu_G", positive=True)  # CONTROL · bare-field ablation coeffi
 lambda_rho, lambda_mu = sp.symbols("lambda_rho lambda_mu", positive=True)  # CONTROL · coefficient ablation scales
 D = sp.symbols("D", integer=True, positive=True)  # STRUCTURAL · brane spatial dimension
 q = sp.symbols("q", positive=True)  # COORDINATE · wave-norm placeholder
-lambda_scale = sp.symbols("lambda_scale", positive=True)  # CONTROL · wavevector homogeneity scale
+lambdaScale = sp.symbols("lambdaScale", positive=True)  # CONTROL · wavevector homogeneity scale
 
 
 def curl_of(field):
@@ -160,7 +166,7 @@ def route_a(action):
     residual = euler_lagrange_residual(action)
     substitution = dict(zip(u_functions, plane_wave))
     substituted = residual.subs(substitution).doit()
-    reduced = sp.Matrix([sp.simplify(entry / phase).subs(omega**2, omega2) for entry in substituted])
+    reduced = sp.Matrix([sp.simplify(entry / phase).subs(omega**2, omegaSquared) for entry in substituted])
     matrix = sp.simplify(reduced.jacobian(sp.Matrix(a_symbols)))
     return residual, reduced, matrix
 
@@ -175,18 +181,18 @@ def route_b(action):
         3,
         3,
         lambda row, column: sp.simplify(
-            sp.diff(substituted_action, b_symbols[row], a_symbols[column]).subs(omega**2, omega2)
+            sp.diff(substituted_action, b_symbols[row], a_symbols[column]).subs(omega**2, omegaSquared)
         ),
     )
     return mixed_hessian
 
 
 def roots_from_factorization(factored_determinant):
-    factor_coefficient, factors = sp.factor_list(factored_determinant, omega2)
+    factor_coefficient, factors = sp.factor_list(factored_determinant, omegaSquared)
     del factor_coefficient
     multiplicities = {}
     for factor, factor_multiplicity in factors:
-        factor_roots = sp.roots(factor, omega2)
+        factor_roots = sp.roots(factor, omegaSquared)
         for root, root_multiplicity in factor_roots.items():
             multiplicities[sp.factor(root)] = factor_multiplicity * root_multiplicity
     ordered = sorted(multiplicities, key=sp.default_sort_key)
@@ -206,7 +212,7 @@ def root_tests(matrix, roots, specialised_wavevector):
     specialised_transverse = sp.simplify(specialised_norm * identity3 - specialised_wavevector * row)
     records = []
     for root in roots:
-        root_matrix = matrix.subs(omega2, root).applyfunc(sp.factor)
+        root_matrix = matrix.subs(omegaSquared, root).applyfunc(sp.factor)
         stacked = root_matrix.col_join(row)
         stacked_rank = stacked.rank()
         e1 = sp.S.true if stacked_rank < 3 else sp.S.false
@@ -275,6 +281,26 @@ energy_density_dimension = energy_dimension - D * length_dimension  # PREMISE ·
 field_dimension = length_dimension  # PREMISE · supplied reference used by the dimension walk
 q_dimension = -2 * length_dimension  # PREMISE · supplied reference used by the dimension walk
 squared_velocity_dimension = 2 * (length_dimension - time_dimension)  # PREMISE · supplied reference used for the speed-dimension residual
+declaration_class_map = declaration_classes(Path(__file__))  # CONTROL · source-derived declaration class lookup
+declared_symbol_classes = {}  # CONTROL · source-derived classes for symbols reaching the export boundary
+
+
+def directly_declared_symbols(value):
+    if isinstance(value, sp.Symbol):
+        return (value,)
+    if isinstance(value, (list, tuple)):
+        nested = [directly_declared_symbols(item) for item in value]
+        if all(items for items in nested):
+            return tuple(symbol for items in nested for symbol in items)
+    return ()
+
+
+def register_declared_symbols(namespace):
+    for variable_name, class_tag in declaration_class_map.items():
+        if variable_name not in namespace:
+            continue
+        for symbol in directly_declared_symbols(namespace[variable_name]):
+            declared_symbol_classes.setdefault(symbol.name, class_tag)
 
 
 class DimensionWalkError(Exception):
@@ -315,7 +341,7 @@ def expression_dimension(expression, dimension_lookup, dimensionless_symbols):
         y: length_dimension,
         z: length_dimension,
         omega: -time_dimension,
-        omega2: -2 * time_dimension,
+        omegaSquared: -2 * time_dimension,
         q: q_dimension,
         D: zero_dimension,
     }
@@ -379,8 +405,16 @@ def dimension_block(action, dimensional_coefficients, primary_inertia, primary_s
         for term_dimension in term_dimensions
         for index in range(3)
     ]
-    unknowns = [entry for coefficient in dimensional_coefficients for entry in dimension_variables[coefficient]]
-    solutions = sp.solve(equations, unknowns, dict=True)
+    unknowns = [  # DERIVED · coefficient-axis solver unknown collection
+        entry
+        for coefficient in dimensional_coefficients
+        for entry in dimension_variables[coefficient]
+    ]
+    register_declared_symbols(locals())
+    solutions = sp.Tuple(*(
+        sp.Dict(solution)
+        for solution in sp.solve(equations, unknowns, dict=True)
+    ))
     solve_inputs = produced_outputs({
         "DIM_TERMS": terms,
         "DIM_FIELD_MULTIORDERS": orders_by_term,
@@ -415,10 +449,10 @@ def dimension_block(action, dimensional_coefficients, primary_inertia, primary_s
     }, D)
     fixed_component_count = sp.Integer(len(spatial_coordinates))
     add_produced_outputs(solve_inputs, {
-        "DIM_SOLUTION_D3": [
-            {key: value.subs(D, fixed_component_count) for key, value in item.items()}
+        "DIM_SOLUTION_D3": sp.Tuple(*(
+            sp.Dict({key: value.subs(D, fixed_component_count) for key, value in item.items()})
             for item in solutions
-        ],
+        )),
         "DIM_PRIMARY_INERTIA_D3": inertia_dimension.subs(D, fixed_component_count),
         "DIM_PRIMARY_STIFFNESS_D3": stiffness_dimension.subs(D, fixed_component_count),
         "DIM_STIFFNESS_MINUS_INERTIA_D3": (
@@ -434,7 +468,7 @@ def dimension_block(action, dimensional_coefficients, primary_inertia, primary_s
 
 def assumptions_for(dimensional_coefficients, dimensionless_symbols):
     predicates = [
-        sp.Q.real(symbol) for symbol in (*a_symbols, *k_input, omega2)
+        sp.Q.real(symbol) for symbol in (*a_symbols, *k_input, omegaSquared)
     ]
     predicates.extend(sp.Q.positive(symbol) for symbol in dimensional_coefficients)
     predicates.extend(sp.Q.positive(symbol) for symbol in dimensionless_symbols)
@@ -496,7 +530,7 @@ def derive(
     matrix_b = route_b(action)
     matrix_residual = sp.simplify(matrix_a - matrix_b)
     determinant = sp.factor(matrix_a.det())
-    solved_roots = sorted((sp.factor(root) for root in sp.solve(determinant, omega2)), key=sp.default_sort_key)
+    solved_roots = sorted((sp.factor(root) for root in sp.solve(determinant, omegaSquared)), key=sp.default_sort_key)
     roots, multiplicities, root_multiset = roots_from_factorization(determinant)
     records = root_tests(matrix_a, roots, derived_wavevector)
     passing_e1 = [record[0] for record in records if record[4] == sp.S.true]
@@ -512,12 +546,12 @@ def derive(
     ]
     scaled_roots = [
         root.subs(
-            {component: lambda_scale * component for component in k_input},
+            {component: lambdaScale * component for component in k_input},
             simultaneous=True,
         )
         for root in roots
     ]
-    quadratic_scaled_roots = [lambda_scale**2 * root for root in roots]
+    quadratic_scaled_roots = [lambdaScale**2 * root for root in roots]
     scaling_residuals = [
         sp.simplify(scaled - quadratic_scaled)
         for scaled, quadratic_scaled in zip(scaled_roots, quadratic_scaled_roots)
@@ -602,7 +636,7 @@ def derive(
     extend_produced_outputs(output, dimensions)
     guards = {
         "matrix_residual": matrix_residual,
-        "root_degree": (len(root_multiset), sp.Poly(determinant, omega2).degree()),
+        "root_degree": (len(root_multiset), sp.Poly(determinant, omegaSquared).degree()),
         "root_sets": (sp.FiniteSet(*roots), sp.FiniteSet(*solved_roots)),
         "dimension_solution": dimensions["DIM_SOLUTION"],
     }
@@ -801,18 +835,63 @@ def reconstruction_expression(value):
     return sp.srepr(value)
 
 
+def validate_export_tree(value):
+    if isinstance(value, sp.MutableMatrix):
+        raise TypeError("export tree contains a mutable matrix")
+    if isinstance(value, sp.MatrixBase):
+        for item in value:
+            validate_export_tree(item)
+        return
+    if isinstance(value, sp.Basic):
+        for argument in value.args:
+            if not isinstance(argument, (sp.Basic, sp.MatrixBase)):
+                raise TypeError("SymPy export object contains a raw Python argument")
+            validate_export_tree(argument)
+        return
+    raise TypeError("export tree contains a non-SymPy object")
+
+
+def traversable_export_value(value):
+    if isinstance(value, sp.MatrixBase):
+        normalized = sp.ImmutableMatrix(
+            value.rows,
+            value.cols,
+            [traversable_export_value(item) for item in value],
+        )
+        validate_export_tree(normalized)
+        return normalized
+    if isinstance(value, sp.Basic):
+        validate_export_tree(value)
+        return value
+    if isinstance(value, dict):
+        normalized = sp.Dict({
+            traversable_export_value(key): traversable_export_value(item)
+            for key, item in value.items()
+        })
+    elif isinstance(value, (list, tuple)):
+        normalized = sp.Tuple(*(traversable_export_value(item) for item in value))
+    elif isinstance(value, (set, frozenset)):
+        normalized = sp.FiniteSet(*(traversable_export_value(item) for item in value))
+    elif isinstance(value, str):
+        normalized = Str(value)
+    else:
+        normalized = sp.sympify(value)
+    validate_export_tree(normalized)
+    return normalized
+
+
 def exact_reconstruction_match(live_value, reconstructed_value):
     return type(live_value) is type(reconstructed_value) and sp.srepr(live_value) == sp.srepr(reconstructed_value)
 
 
-def generated_record_lines(name, value, class_tag, dimension=None):
+def generated_record_lines(name, value, class_tag, dimension_key=None):
     lines = [
         f"    {name!r}: {{",
         f"        'display': {sp.sstr(value)!r},",
         f"        'value': _restore({reconstruction_expression(value)!r}),",
     ]
-    if dimension is not None:
-        lines.append(f"        'dim': _restore({reconstruction_expression(dimension)!r}),")
+    if dimension_key is not None:
+        lines.append(f"        'dimension_key': {dimension_key!r},")
     lines.extend([
         f"        'class': {class_tag!r},",
         "        'step': 'S9',",
@@ -831,7 +910,7 @@ def generated_ledger_key(name, computation_dimension):
 def d_partition(records):
     grouped = {}
     for name, computation_dimension in records:
-        grouped.setdefault(computation_dimension, []).append(sp.Symbol(name))  # DERIVED · D-partition member collection
+        grouped.setdefault(computation_dimension, []).append(Str(name))  # DERIVED · D-partition member collection
     return sp.Tuple(*(
         sp.Tuple(
             computation_dimension,
@@ -844,16 +923,87 @@ def d_partition(records):
     ))
 
 
+def add_symbol_records(records):
+    occurrence_classes = {}
+    occurrence_objects = {}
+    for _, value, class_tag, _ in records:
+        for symbol in value.atoms(sp.Symbol):
+            occurrence_classes.setdefault(symbol.name, set()).add(class_tag)
+            occurrence_objects.setdefault(symbol.name, {})[sp.srepr(symbol)] = symbol
+    existing_keys = {name for name, _, _, _ in records}
+    for symbol_name in sorted(occurrence_objects):
+        if symbol_name in existing_keys:
+            continue
+        classes = occurrence_classes[symbol_name]
+        class_tag = declared_symbol_classes.get(
+            symbol_name,
+            next(iter(classes)) if len(classes) == 1 else "DERIVED",
+        )
+        symbol = occurrence_objects[symbol_name][sorted(occurrence_objects[symbol_name])[0]]
+        records.append((symbol_name, symbol, class_tag, None))
+
+
+def dimension_record_key(owner_name, dimension, records):
+    normalized_dimension = traversable_export_value(dimension)
+    candidates = [
+        name
+        for name, value, _, _ in records
+        if exact_reconstruction_match(normalized_dimension, value)
+    ]
+    if not candidates:
+        raise RuntimeError("export dimension has no ledger record")
+    dimension_named = [
+        name for name in candidates
+        if name.startswith("dim_") or "dimension" in name
+    ]
+    if dimension_named:
+        candidates = dimension_named
+
+    def rank(name):
+        common_prefix_length = len(os.path.commonprefix((owner_name, name)))
+        return (
+            -common_prefix_length,
+            0 if name.endswith("_coefficient_dimension") else
+            1 if name.startswith("dim_") else
+            2 if "_dimension" in name else
+            3,
+            name,
+        )
+
+    return min(candidates, key=rank)
+
+
+def symbol_binding_operands_and_residual(ledger):
+    symbols_by_name = {}
+    for record in ledger.values():
+        for symbol in record["value"].atoms(sp.Symbol):
+            symbols_by_name.setdefault(symbol.name, {})[sp.srepr(symbol)] = symbol
+    rows = []
+    residual = sp.Integer(0)
+    for symbol_name in sorted(symbols_by_name):
+        variants = symbols_by_name[symbol_name]
+        binding = ledger.get(symbol_name, {}).get("value", Str("missing_ledger_binding"))
+        rows.append(
+            sp.Tuple(
+                Str(symbol_name),
+                binding,
+                sp.Tuple(*(variants[source] for source in sorted(variants))),
+            )
+        )
+        residual += sp.Integer(max(len(variants) - 1, 0))
+        residual += sp.Integer(
+            not isinstance(binding, sp.Symbol)
+            or binding.name != symbol_name
+            or sp.srepr(binding) not in variants
+        )
+    return sp.Tuple(*rows), residual
+
+
 def write_exports():
     main_outputs = all_outputs["MAIN"]
     main_output_computation_dimensions = main_outputs[dkey_computation_dimensions]
     assert set(posited_output_classes) <= set(main_outputs)
-    classes = declaration_classes(Path(__file__))
-    exported_inputs = [
-        (name, globals()[name], class_tag)
-        for name, class_tag in classes.items()
-        if class_tag in ("KNOB", "STRUCTURAL")
-    ]
+    register_declared_symbols(globals())
     computed_dimensions = [
         *main_outputs["DIM_COEFFICIENTS"],
         *main_outputs["DIM_SPEED_FROM_EXPRESSION"],
@@ -865,23 +1015,20 @@ def write_exports():
                 return dimension
         return None
 
-    source_lines = [
-        "# S9_exports.py — GENERATED by S9_light_requires_shear_sympy_audit.py. Do not edit.",
-        "import sympy as sp",
-        "",
-        "",
-        "def _restore(source):",
-        "    return eval(source, {'__builtins__': {}, **vars(sp)})",
-        "",
-        "",
-        "LEDGER = {",
+    exported_inputs = [
+        (name, globals()[name], class_tag)
+        for name, class_tag in declaration_class_map.items()
+        if class_tag in ("KNOB", "STRUCTURAL")
     ]
     live_records = []
     main_production_records = []
     for name, value, class_tag in exported_inputs:
-        dimension = computed_dimension_for(value)
-        live_records.append((name, value, class_tag, dimension))
-        source_lines.extend(generated_record_lines(name, value, class_tag, dimension))
+        live_records.append((
+            name,
+            traversable_export_value(value),
+            class_tag,
+            computed_dimension_for(value),
+        ))
     for suffix, value in main_outputs.items():
         if suffix.startswith("_"):
             continue
@@ -891,35 +1038,59 @@ def write_exports():
         computation_dimension = main_output_computation_dimensions[suffix]
         name = generated_ledger_key(base_name, computation_dimension)
         class_tag = posited_output_classes.get(suffix, "DERIVED")
-        dimension = computed_dimension_for(value)
-        live_records.append((name, value, class_tag, dimension))
+        live_records.append((
+            name,
+            traversable_export_value(value),
+            class_tag,
+            computed_dimension_for(value),
+        ))
         main_production_records.append((name, computation_dimension))
-        source_lines.extend(generated_record_lines(name, value, class_tag, dimension))
+    add_symbol_records(live_records)
+    dimension_keys = {
+        name: dimension_record_key(name, dimension, live_records)
+        for name, _, _, dimension in live_records
+        if dimension is not None
+    }
+    source_lines = [
+        "# S9_exports.py — GENERATED by S9_light_requires_shear_sympy_audit.py. Do not edit.",
+        "import sympy as sp",
+        "from sympy.core.symbol import Str",
+        "",
+        "",
+        "def _restore(source):",
+        "    return eval(source, {'__builtins__': {}, 'Str': Str, **vars(sp)})",
+        "",
+        "",
+        "LEDGER = {",
+    ]
+    for name, value, class_tag, _ in live_records:
+        source_lines.extend(generated_record_lines(
+            name,
+            value,
+            class_tag,
+            dimension_keys.get(name),
+        ))
     source_lines.append("}")
     source_lines.append("")
     export_source = "\n".join(source_lines)
-    export_path = Path(__file__).with_name("S9_exports.py")
-    export_path.write_text(export_source, encoding="utf-8")
+    export_path = EXPORT_PATH
 
     reconstructed_namespace = {}
-    exec(compile(export_path.read_text(encoding="utf-8"), str(export_path), "exec"), reconstructed_namespace)
+    exec(compile(export_source, str(export_path), "exec"), reconstructed_namespace)
     reconstructed_ledger = reconstructed_namespace["LEDGER"]
     live_count = len(live_records)
     residuals = []
-    for name, value, class_tag, dimension in live_records:
+    for name, value, class_tag, _ in live_records:
         record = reconstructed_ledger[name]
         residuals.append(sp.Integer(not exact_reconstruction_match(value, record["value"])))
-        if dimension is not None:
-            residuals.append(sp.Integer(not exact_reconstruction_match(dimension, record["dim"])))
+        residuals.append(sp.Integer(record.get("dimension_key") != dimension_keys.get(name)))
         residuals.append(sp.Integer(class_tag != record["class"]))
         residuals.append(sp.Integer("S9" != record["step"]))
     roundtrip_residual = sum(residuals, sp.Integer(0))
     roundtrip_count_residual = sp.Integer(live_count - len(reconstructed_ledger))
-    computed_dimension_count = sum("dim" in record for record in reconstructed_ledger.values())
-    absent_dimension_count = len(reconstructed_ledger) - computed_dimension_count
     class_tally = sp.Tuple(*(
         sp.Tuple(
-            sp.Symbol(class_tag),  # STRUCTURAL · exported class label
+            Str(class_tag),  # STRUCTURAL · exported class label
             sp.Integer(sum(record["class"] == class_tag for record in reconstructed_ledger.values())),
         )
         for class_tag in CLASS_TAGS
@@ -929,18 +1100,23 @@ def write_exports():
         sp.Integer(0),
     )
     production_d_partition = d_partition(main_production_records)
+    symbol_binding_operands, symbol_binding_residual = symbol_binding_operands_and_residual(
+        reconstructed_ledger
+    )
     emit("EXPORT_ROUNDTRIP_LIVE_COUNT", sp.Integer(live_count))
     emit("EXPORT_ROUNDTRIP_RECONSTRUCTED_COUNT", sp.Integer(len(reconstructed_ledger)))
     emit("EXPORT_ROUNDTRIP_COUNT_RESIDUAL", roundtrip_count_residual)
     emit("EXPORT_ROUNDTRIP_RESIDUAL", roundtrip_residual)
-    emit("EXPORT_COMPUTED_DIMENSION_COUNT", sp.Integer(computed_dimension_count))
-    emit("EXPORT_ABSENT_DIMENSION_COUNT", sp.Integer(absent_dimension_count))
     emit("EXPORT_CLASS_TALLY", class_tally)
     emit("EXPORT_CLASS_TALLY_RESIDUAL", class_tally_residual)
     emit("EXPORT_D_PARTITION", production_d_partition)
+    emit("EXPORT_SYMBOL_BINDING_OPERANDS", symbol_binding_operands)
+    emit("EXPORT_SYMBOL_BINDING_RESIDUAL", symbol_binding_residual)
     assert roundtrip_count_residual == 0
     assert roundtrip_residual == 0
     assert class_tally_residual == 0
+    assert symbol_binding_residual == 0
+    export_path.write_text(export_source, encoding="utf-8")
 
 
 write_exports()

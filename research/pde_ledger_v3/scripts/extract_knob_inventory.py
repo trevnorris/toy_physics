@@ -18,6 +18,7 @@ class DeclarationVisitor(ast.NodeVisitor):
     def __init__(self):
         self.constructor_lines = set()
         self.assignment_names = {}
+        self.all_assignment_names = {}
         self.module_scope = True
 
     @staticmethod
@@ -33,22 +34,28 @@ class DeclarationVisitor(ast.NodeVisitor):
         return []
 
     def visit_Assign(self, node):
+        names = [
+            name
+            for target in node.targets
+            for name in self._target_names(target)
+        ]
+        self.all_assignment_names[node.lineno] = names
         if self.module_scope:
-            self.assignment_names[node.lineno] = [
-                name
-                for target in node.targets
-                for name in self._target_names(target)
-            ]
+            self.assignment_names[node.lineno] = names
         self.generic_visit(node)
 
     def visit_AnnAssign(self, node):
+        names = self._target_names(node.target)
+        self.all_assignment_names[node.lineno] = names
         if self.module_scope:
-            self.assignment_names[node.lineno] = self._target_names(node.target)
+            self.assignment_names[node.lineno] = names
         self.generic_visit(node)
 
     def visit_AugAssign(self, node):
+        names = self._target_names(node.target)
+        self.all_assignment_names[node.lineno] = names
         if self.module_scope:
-            self.assignment_names[node.lineno] = self._target_names(node.target)
+            self.assignment_names[node.lineno] = names
         self.generic_visit(node)
 
     def _visit_nested_scope(self, node):
@@ -103,11 +110,21 @@ def scan(path):
 
 
 def declaration_classes(path):
-    records, findings = scan(path)
+    _, findings = scan(path)
     if findings:
         raise ValueError("\n".join(findings))
+    source = path.read_text(encoding="utf-8")
+    source_lines = source.splitlines()
+    tree = ast.parse(source, filename=str(path))
+    visitor = DeclarationVisitor()
+    visitor.visit(tree)
     classes = {}
-    for class_tag, line_number, _, _, names in records:
+    annotated_assignments = [
+        (match.group(1), line_number, names)
+        for line_number, names in visitor.all_assignment_names.items()
+        if (match := ANNOTATION.search(source_lines[line_number - 1])) is not None
+    ]
+    for class_tag, line_number, names in annotated_assignments:
         for name in names:
             if name in classes and classes[name] != class_tag:
                 raise ValueError(f"{path}:{line_number}: conflicting class tags for {name}")
@@ -125,7 +142,7 @@ def main():
     print("INVENTORY_UNIT: annotated declaration site; a class-uniform grouped declaration is one site")
     print(
         "SOURCE_LIMIT: runtime symbols built from dynamic expressions cannot be enumerated from source; "
-        "the annotated sp.Symbol(f\"dim_{coefficient}_{axis}\") declaration site is reported"
+        "the annotated coefficient-dimension Symbol declaration site is reported"
     )
     all_findings = []
     for path in arguments.engines:

@@ -3,8 +3,13 @@
 
 import argparse
 import ast
+import hashlib
 import re
 from pathlib import Path
+
+import sympy as sp
+from sympy.assumptions.assume import AppliedPredicate
+from sympy.core.symbol import Str
 
 
 CLASS_TAGS = ("KNOB", "STRUCTURAL", "COORDINATE", "CONTROL", "PREMISE", "DERIVED")
@@ -12,6 +17,53 @@ ANNOTATION = re.compile(
     rf"# ({'|'.join(CLASS_TAGS)}) · (\S(?:[^#\n]*\S)?)$"
 )
 CONSTRUCTORS = {"Symbol", "symbols", "Function"}
+
+
+def file_sha256(path):
+    """Return the digest of one generator input exactly as read from disk."""
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def assumption_channel_operands_and_residual(ledger, assumption_objects):
+    """Compare exported Symbol assumptions with unary Q predicates used by an engine."""
+    predicates = {}
+    for assumption_object in assumption_objects:
+        for predicate in assumption_object.atoms(AppliedPredicate):
+            if len(predicate.arguments) != 1:
+                continue
+            symbol = predicate.arguments[0]
+            if not isinstance(symbol, sp.Symbol):
+                continue
+            predicates[(symbol.name, sp.srepr(predicate))] = predicate
+
+    rows = []
+    residual = sp.Integer(0)
+    for (symbol_name, _), predicate in sorted(predicates.items()):
+        binding = ledger.get(symbol_name, {}).get("value")
+        if isinstance(binding, sp.Symbol):
+            inherited_predicate = predicate.function(binding)
+            inherited_result = sp.ask(inherited_predicate)
+        else:
+            inherited_predicate = Str("missing_symbol_binding")
+            inherited_result = None
+        result_object = (
+            sp.true if inherited_result is True
+            else sp.false if inherited_result is False
+            else Str("unknown")
+        )
+        row_residual = sp.Integer(inherited_result is not True)
+        rows.append(
+            sp.Tuple(
+                Str(symbol_name),
+                Str(sp.srepr(binding)),
+                predicate,
+                inherited_predicate,
+                result_object,
+                row_residual,
+            )
+        )
+        residual += row_residual
+    return sp.Tuple(*rows), residual
 
 
 class DeclarationVisitor(ast.NodeVisitor):

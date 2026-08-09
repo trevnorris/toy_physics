@@ -28,6 +28,13 @@ Where we are: `STATUS.md`.
 7. **Whatever writes does not review.** Two legs on anything physics-bearing — and a spec both engines read
    is physics-bearing, because an error there makes both engines agree on the same wrong thing.
    Orchestrator-written → Codex + Grok. Codex-written → fresh Claude agent + Grok.
+   **TRIGGER — no builder launches until its decision list has had two legs.** The list is
+   orchestrator-written and is the one artifact the *builder* trusts: everything downstream is checked
+   twice, the list is checked zero times. One pass, then fold and go — never iterated to green.
+   Measured 2026-08-09: six spec defects, each costing a build round *plus* two legs, when two legs before
+   the build would have caught them — three "level-above" misses, one exception named instead of the
+   property (which bred a regression), measured counts stated four lines above "do not state the counts",
+   and **an acceptance test that would have passed with the defect still in place.**
 8. **Launch legs on sight, before I look at the result.** A self-check discharges the felt need for an
    independent one, and it is most convincing when it finds things.
 9. **No commit before both legs report.** The commit is the last step. Reviewing the directive does not pay

@@ -15,7 +15,7 @@ typed sentences with no CAS object behind them, missed by eight review legs.
 | step | state |
 |---|---|
 | S9 | rebuilt |
-| S10 | ▶ **py engine ON THE CHAIN — rounds 2–5 committed `e644876c` + `c84263ed`** — 12 legs, ⛔ no physics moved, ⭐ both legs CLEAR on round 5. ⭐ **NEXT: the comparator, then D12 driven by its output.** `.wl` untouched, record stale |
+| S10 | ▶ **CHAIN + COMPARATOR BOTH DONE** — export `e644876c`+`c84263ed`, comparator `82443c95`. **20 legs, ⛔ no physics moved.** ⭐⭐ **NEXT: the STEP RECORD** (stale: 664 lines, 23 dead citations), then card → D12 → registers. `.wl` untouched |
 | S11 `stray_longitudinal` | ▶ **IN PROGRESS** — spec done `f49a1684`; engines not yet rebuilt |
 | S11b-A `interface_response` | built under the old pattern → **rebuild** |
 | S11b-B `interface_assembly` | built under the old pattern → **rebuild** |
@@ -208,7 +208,8 @@ no allowed stratum at any count, so nothing on the export path exercises it.
 | owed | note |
 |---|---|
 | ~~round 5~~ | ⭐ **DONE `c84263ed`** — removal round, author changed per rule 15. **Both legs CLEAR.** ⭐ The cross-step residual was re-established on the committed bytes by **three parties using two different FORM changes**, with a ×7 coefficient control that correctly moves nothing |
-| ⛔⛔ **the comparator (F-2)** | ⭐⭐ **DO THIS FIRST.** Decision list written: `directives/S10_comparator_decisions.md`, deliberately **numberless** so a builder cannot converge on a tally |
+| ~~the comparator (F-2)~~ | ⭐⭐ **DONE `82443c95`** — 4 rounds, 8 legs. ⭐ See the F-2 section below for what it measures, the **deflations the step record must carry**, and the injectivity check D12 must run |
+| ⭐⭐ **the S10 STEP RECORD** | ⛔ **DO THIS NEXT.** ⚠ **Its decision list gets two legs BEFORE the builder launches** — `CLAUDE.md` rule 7 trigger, added 2026-08-09 |
 | **the D12 naming pass** | ⭐⭐ **DRIVEN BY THE COMPARATOR'S OUTPUT, ⛔ not by hand.** User decision 2026-08-09: **adjudicate BOTH engines**, ⛔ not wl-only — the py tag suffix **IS the ledger key**, so py-as-default-authority is the unpoliced binding the light-cone re-point exploited |
 | `.wl` rename | ⭐ engine EXISTS (1807 lines, 660 KB output) and is correct — ⛔ **do NOT rebuild it**. Emitted **name strings only** |
 | **step record** `steps/S10_two_transverse_photons.md` | ⛔ **STALE — 664 lines, 23 citations to deleted machinery** |
@@ -222,135 +223,72 @@ no allowed stratum at any count, so nothing on the export path exercises it.
 including `Q3_DETERMINANT`, `Q2_MATRIX_A`/`_B`, `ROOT#_N1_MATRIX`, `Q3_ROOT_COUNT`. ⇒ the difference is
 **vocabulary**, which is exactly what D12 is for.
 
-### ⭐⭐ THE COMPARATOR ALREADY PAID, AND IT SCOPES D12 RATHER THAN DEPENDING ON IT
+### ⭐ (superseded) the orchestrator prototype
 
-⚠ **Measured by an orchestrator prototype 2026-08-09** (⛔ not yet through legs; the committed one is being
-built independently with the prototype **withheld**, so a differing tally is a finding):
-
-⭐⭐ **`Q3_DETERMINANT` AGREES at `D = 2,3,4,5` AND under all four FORM controls** — `py` **expanded**,
-`wl` **factored**, so `simplify(py − wl)` does real work. ⭐ Also agreeing: `Q2_MATRIX_A`/`_B`,
-`ROOT_ORDERING`, `Q3_ROOT_COUNT`, `N1_MATRIX`, `N2_NULLITY`, `N3_STACKED_MATRIX`.
-⭐ **Demonstrated able to fail:** a one-sided FORM ablation on the `wl` `D3` determinant (`^2 → ^3`) drove
-that row to a nonzero residual and moved the tally by **exactly one**.
-⛔ **What it does NOT establish:** the action is authored identically into both engines ⇒ **common-mode is
-untouched.** ⭐ What is corroborated is the route *from* the action *to* the determinant.
-
-⇒ ⭐⭐ **Run the join FIRST and it reports which name differences actually BLOCK a comparison** — measured, a
-handful of symbol pairs, ⛔ not the ~778 names I was about to adjudicate by hand:
-`D ↔ braneDimension` · `s ↔ coefficientScale` · `M_B ↔ quadraticFormRoute` ·
-`phase/phi ↔ suppliedPhaseAverage` · `dim_rho_br_length ↔ dimRhoLength`.
-⚠ **Every headline disagreement traced to ONE of these** — the only ones were `XCOEF_SCALE_D3`.
-
-### ⛔ (superseded) S10 was the next step, and it is what makes the ledger REAL
-
-⛔ **S10 cannot currently run** — it still imports the deleted `registry_read`. ⚠ And where it shares a
-premise with S9 it **re-declares** rather than imports (`PREMISE_U_DIMENSION`).
-⇒ ⭐⭐ **every class and naming finding on S9 is "wrong when the consumer arrives", ⛔ not "wrong now"** — the
-S10 rewrite is what turns them into things that can **fail**.
-⭐ Pattern: import `S9_exports.LEDGER`, add entries, **overwrite** what it derives, export the merged dict as
-`S10_exports.py`. ⭐ Chain integrity is then free: any entry S10 did not touch must be **identical**.
-
-⭐ **What holds.** ⭐ **Seven legs wrote their own CAS derivation before opening the artifact and all seven
-reproduce every S9 value.** ⭐ FORM ablation confirms the twelve standard-name emissions are **live
-readout**. ⭐ The Wolfram engine is a genuine D12 rename — re-run byte-identical, derivation untouched.
-⭐ `scripts/S9_exports.py` = flat 139-entry `LEDGER` (2 KNOB · 6 PREMISE · 131 DERIVED · 3 dimensions).
-
-⛔⛔ **THE LOOP WAS STOPPED DELIBERATELY, ⛔ not because it went green.** ⭐ Round 5 was **output-neutral
-and DELETED code**; what remains are **decisions and claim-wording**, ⛔ not defects ⇒ they belong in the
-**step record**, which is unwritten and is the next deliverable.
-
-### ⚠ THREE SMALL OPEN ITEMS — ⛔ do not "just fix" them, they are decisions
-
-| | |
-|---|---|
-| **T-3** | The class guard fails closed on **1 of 4** ways to get a class wrong (measured). ⭐ **One line** closes two more: `assert set(posited_output_classes.values()) <= set(CLASS_TAGS)`. ⛔ Nothing short of an independent class oracle closes the other two — ⭐ and that oracle is the machinery round 5 correctly deleted. |
-| **root_scaling_quadratic** | ⚠ **The legs disagree and both are right.** Its exponent is **typed** (⇒ PREMISE); its value is `λ² × a DERIVED root` and **moves under a FORM ablation** — the only premise-classed record that does (⇒ DERIVED). ⇒ ⭐ **the class vocabulary has no term for a hypothesis applied to a derived object.** That is a finding about the **vocabulary**, ⛔ not the object. |
-| **`.premises` justification** | ⭐ Deletion was right (no reader, no consumer). ⛔ My stated reason was wrong: 15 declaration sites vs 6 exported PREMISE records vs 2 declared premises in neither output — ⭐ **three pairwise-different sets.** |
-
-### ⛔⛔ TWO MEASUREMENTS THE STEP RECORD MUST CARRY — ⭐ they bound what S9 may claim
-
-1. ⛔⛔ **Three of the eleven rows are pinned by a premise NEITHER ENGINE EMITS.** Both engines type
-   `[u] = L` independently (`py:249`, `wl:306`). A leg **doubled it in a scratch copy of each engine**:
-   both move `INERTIA_`, `STIFFNESS_` and `BARE_FIELD_COEFFICIENT_DIMENSION` to the **same wrong values**,
-   both **exit 0**, and **they still agree.** ⇒ ⭐ what those rows buy is the **derivative-multiorder
-   extraction and the solve**, ⛔ **not the dimension.** ⚠ Measured common-mode blindness.
-2. ⛔ **The table's discriminating power is TWO ROWS.** Under the gradient-elastic form control **9 of the
-   10** exported standard rows are **byte-identical**; only `FACTORED_DETERMINANT` and
-   `FULL_ROOT_MULTISET` move. ⇒ ⭐ eleven rows = **eleven comparisons**, ≤ **nine** independent
-   computations, and **two** that separate this action from the ordinary-elastic alternative.
-   ⛔ `COEFFICIENT_DIMENSION_DIFFERENCE` and `SPEED_DIMENSION_DIFFERENCE` buy **zero independent physics**.
-
-⭐ **Scoping note that bounds every class finding:** ⛔ **nothing imports `S9_exports` yet** ⇒ they are
-*"wrong when the consumer arrives"*, ⛔ not *"wrong now."*
+⛔ **Its numbers are SUPERSEDED by the committed comparator** — see the F-2 section below. ⚠ The prototype
+read `348` agreements where the committed instrument reads `388`; ⭐ the difference is categorisation
+(non-canonical and unparsed rows), ⛔ not a disagreement about any value.
+⭐ **What the prototype was for, and it worked:** it was withheld from the builder so a differing tally
+would be a finding. ⭐ The join agreed exactly — `562` shared names on both — which is the corroboration
+that mattered.
 
 ---
 
-## ⛔⛔ OPEN DECISION FOR THE USER — F-2, and the S9 build is blocked on it
+## ⭐⭐ F-2 IS BUILT AND COMMITTED `82443c95` — the cross-engine join EXISTS
 
-⚠ **Measured 2026-08-08 by a review leg, on the committed build `753ae7b1`.** ⭐ Everything else from that
-build's review is being fixed; ⛔ **this one was deliberately left alone because the plan is CLOSED and the
-honest fix needs a new file.**
+⭐ `scripts/S10_cross_engine_comparator.py` + committed `scripts/out/S10_cross_engine_comparator.out`.
+⭐ **4 rounds, 8 independent legs.** ⛔ No config, ⛔ no YAML, ⛔ no pair table — it reads exactly two `.out`
+files and joins on the standard name.
 
-### What was measured
+⭐ **Why it was needed, and it is not hypothetical:** a leg re-pointed ONE standard name so the light cone
+became an `ω²` instead of a speed squared, and **every check in the repository passed.**
 
-⭐ **D11's promise is that comparison becomes a lookup.** ⛔ **Nothing in the repository performs the
-lookup.** Each engine binds a standard name to an object through its own name→object table, and a leg
-re-pointed one entry:
+### ⭐⭐ WHAT IT MEASURES — ⚠ use THESE numbers, ⛔ not the headline ones
 
-```
-transverse_speed_squared = unique_item(main_outputs["ROOTS_PASSING_E1"])   # was SPEED_SQUARED_CANDIDATES
-⇒ PY_S9_TRANSVERSE_SPEED_SQUARED: mu_R*(kx**2 + ky**2 + kz**2)/rho_br      # was mu_R/rho_br
-```
+⭐ `4233` py names · `2983` wl names · `562` shared. ⭐⭐ **Every shared name carries exactly ONE verdict** —
+⛔ nothing falls out of the join uncounted, which is the property that matters most, because a row the
+comparator could not parse **reads exactly like a row that agreed.**
 
-⛔ The light cone becomes an **ω², not a speed squared** — wrong by `k²`, ⚠ **the same defect class already
-on this step's record** — and: engine **exit 0**, roundtrip residual **0**, mapped diff **exit 0**, export
-regenerates with the same entry count. ⛔ **Every check in the repository passes.** ⚠ The Wolfram side has
-the identical hole.
+⭐⭐ **`Q3_DETERMINANT` AGREES at `D = 2,3,4,5` AND under all four FORM controls** — py **expanded**, wl
+**factored**, so `simplify` does real work. ⭐ Also `Q2_MATRIX_A`/`_B`, `ROOT_ORDERING`, `Q3_ROOT_COUNT`,
+`N1_MATRIX`, `N2_NULLITY`, `N3_STACKED_MATRIX`.
+⭐ **Three independent implementations agree row for row**; ⛔ no leg found a row where the artifact reports
+agreement and an independent route disputes it.
 
-⭐ The only thing that catches it is a **cross-engine residual**, and that ran **once**, in an ephemeral
-script inside a build transcript. ⛔ It is not an artifact and cannot be re-run.
-⇒ ⚠ **the twelve objects the entire naming pivot exists for are the twelve least policed objects in the
-step.**
+⛔⛔ **THE DEFLATIONS — the step record MUST carry these:**
+- ⭐ Of **388** agreements: **215 bare integers**, **14 empty containers**, only **159** symbolic/structured.
+- ⭐ Of **164** disagreements: 23 naming-only · 13 representational · 128 content — and of those 128, only
+  **SIX** carry a genuine numeric/algebraic residual, **five of the six in CONTROL packages, ⛔ not MAIN.**
+  ⭐ The one `MAIN` row is a sign one engine evaluates under a premise **both engines declare**, and it is
+  **zero under that premise**.
+- ⚠ **109 shape/type mismatches** ⇒ only **~390 of 562** shared names are value-comparable at all.
+- ⛔⛔ **COMMON-MODE IS UNTOUCHED** — the action is authored identically into both engines from the shared
+  spec. ⭐ What is corroborated is the route **from** the action **to** the spectrum.
 
-### ⭐ Why this is not the machinery we just deleted
+### ⛔ OPEN ON THE COMPARATOR — ⭐ recorded, ⛔ deliberately NOT fixed
 
-⚠ **The distinction is the whole point and it is worth stating precisely.** The abandoned comparator needed
-`checks_S10.yaml` — **3,121 lines, 91% a hand-written name→name pair table** — because the two engines
-named the same objects differently. ⭐ **Under D11 they do not.** The join is *strip the `PY_`/`WL_` prefix
-and match the string.* ⇒ ⭐ **the configuration that made the old design unmaintainable is exactly what D11
-removed**, and what remains is a reader with no config at all.
+1. ⛔⛔ **A repointed symbol still classifies NAMING_ONLY when the substituted spelling is emitted by only
+   ONE engine.** ⚠ The transcripts DO refute it — as a **non-injective worklist**: two distinct py symbols
+   claiming one wl name, both marked unrefuted. ⇒ ⭐⭐ **THE D12 PASS MUST CHECK INJECTIVITY ACROSS THE
+   WORKLIST BEFORE CONSUMING ANY PAIR.** ⚠ The row still FAILS its guard; ⛔ nothing is silently accepted.
+2. ⛔ The constant/shadow rule is applied to **one** engine's payload parser; the other fails **loudly**
+   (not-computed) rather than agreeing falsely.
+3. ⛔ Two sub-population selectors test the emitted **name suffix**, ⛔ not the residual. ⭐ Clean on this input.
+4. ⛔ The process guard **already fails at baseline** ⇒ the exit code carries **no** ablation signal; ⭐ only
+   per-row residuals do.
 
-### The options
+### ⭐⭐ WHAT THE COMPARATOR CHANGED ABOUT THE PLAN
 
-| | | cost |
-|---|---|---|
-| **A** ⭐ **Commit the comparison as one small script** — reads both `.out` files, joins on the standard name, applies the two stated correspondences (`omega2 ≡ omega²`, `List ≡ 3×1 Matrix`), prints **both operands and the residual** per shared name, then guards | ⭐ D11's payoff made real; ⭐ the only thing that polices the binding; ⭐ zero configuration | ⚠ one new file, and the standing risk that it grows back into a harness |
-| **B** Leave it ad-hoc — the orchestrator runs a comparison by hand each time and quotes it in the step record | no new file | ⛔ not reproducible; ⛔ unpoliced between runs; ⚠ measured history: ad-hoc checks stop being run |
-| **C** Accept the hole, and say so in the step record | nothing to build | ⛔ the naming pivot's central claim goes unbacked |
+⭐⭐ **It SCOPES D12 rather than depending on it.** ⛔ I was about to adjudicate ~778 names by hand; the join
+reports which differences actually **block** a comparison — **two** verified symbol pairs
+(`D ↔ braneDimension`, `s ↔ coefficientScale`) — and it **caught a third that was MIS-TYPED**:
+`M_B ↔ quadraticFormRoute` is a **route-tag** divergence, and consuming it as a rename would have bound two
+different descriptions ⇒ [[feedback-name-binding-is-unpoliced]].
 
-⭐ **My recommendation is A, with a hard fence written into the plan**: one file · reads exactly two `.out`
-files · ⛔ no config file, ⛔ no YAML, ⛔ no per-step file, ⛔ no manifest, ⛔ no runner · and it must be
-**demonstrated able to fail** by re-pointing a standard name and showing the residual move.
-
-⚠ ⭐ **This is the user's call because it changes the closed plan**, ⛔ not because the measurement is in
-doubt.
-
-### ⛔⛔ F-2 HARDENED — ⚠ three legs raised it independently, and there is now a CONCRETE wrong answer
-
-⚠ **Measured on the S9 build:** make the `q`-substitution a silent no-op. ⇒ the determinant is **unmoved**,
-the root multiset is **unmoved**, `SPEED_DIMENSION_DIFFERENCE` is **unmoved** — ⛔ a false pass — the engine
-**exits 0**, and the light cone becomes `mu_R*k²/(q*rho_br)` instead of `mu_R/rho_br`.
-
-⛔ **The dimension check cannot catch it by construction** — `q_dimension` is typed at exactly `−2L`, so the
-walk returns the same vector either way. ⛔ The Wolfram engine has **no `q` placeholder**, so it would not
-move. ⇒ ⭐⭐ **the cross-engine comparison on that one row is the only instrument that sees it.**
-
-⚠ **And the comparison SEMANTICS are undefined in code.** The two engines write the same row as
-`mu_R*(kx**2 + ky**2 + kz**2)/rho_br` and `(kx^2*muR + ky^2*muR + kz^2*muR)/rhoBr` ⇒ any comparator must
-already normalise **algebraic form**, and ⛔ nothing states whether it normalises **list order** — which is
-exactly what `FULL_ROOT_MULTISET`'s classification turns on.
-
----
+⭐ **It is also the OUTSIDE ORACLE for the assumption channel.** The `Q3_SIGN` rows are exactly where the two
+engines' assumption strengths differ — one decides what the other calls undecidable. ⇒ ⭐ that is real
+evidence, ⛔ not another self-comparison, and it is the seed of the check that could close the export
+chain's open assumption limit.
 
 ## S11 — where it actually is
 

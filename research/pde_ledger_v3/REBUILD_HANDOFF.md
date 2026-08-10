@@ -429,7 +429,7 @@ only for history.**
 
 | artifact | state |
 |---|---|
-| `directives/S11_SHARED_PHYSICS.md` | **914 lines**, committed `f49a1684`, 4 rounds / 8 legs. ⛔ **CLOSED ≠ CORRECT — see the two defects below** |
+| `directives/S11_SHARED_PHYSICS.md` | **914 lines** = ⭐⭐ **`fc920079`**, which is HEAD. ⛔⛔ **NOT `f49a1684` — that is the 877-line PREDECESSOR.** ⚠ An earlier draft of this block named it and a leg caught it: **repairing `f49a1684` resurrects the tautological point residual, the undefined stratum Jacobian, and the old per-premise emission scheme** that `fc920079` deleted. ⭐ **Pin `fc920079` or HEAD as the repair base.** ⛔ **CLOSED ≠ CORRECT — five defects below** |
 | `mathematica/S11_stray_longitudinal_mathematica_audit.wl` | 44,804 B. ⭐ Runs: 3750 tags, 84 s, exit 0. ⚠ **Fix round 3 (`F1`) is UNREVIEWED** |
 | `scripts/S11_stray_longitudinal_sympy_audit.py` | 68,039 B. ⛔⛔ **WILL NOT RUN** — `from registry_read import …` at **`:21`**, and `reduction/` is deleted |
 | `mathematica/out/S11_…out` · `scripts/out/S11_…out` | 972 KB · 1.15 MB, both committed |
@@ -440,7 +440,11 @@ only for history.**
 ⛔ **The PY engine does NOT import `S10_exports`** — measured, zero references. ⇒ the dataflow pattern that
 defines this rebuild is **absent from S11 entirely.**
 
-### ⛔⛔⛔ TWO SPEC DEFECTS, FOUND BY S10's REBUILD — ⭐ REPAIR THE SPEC BEFORE EITHER ENGINE IS TOUCHED
+### ⛔⛔⛔ FIVE SPEC DEFECTS — ⭐ REPAIR THE SPEC BEFORE EITHER ENGINE IS TOUCHED
+
+⚠ **This list was TWO items until two review legs ran on it (2026-08-09). ⭐ Both confirmed the two;
+⛔ between them they added three more and showed both original repairs were UNDER-SPECIFIED.** ⚠ One leg
+built a **SymPy witness** for defect 2 rather than arguing it.
 
 ⚠ **A spec both engines read is physics-bearing: an error there makes both engines agree on the same wrong
 thing** (`CLAUDE.md` rule 7). ⚠ ⛔ **A CLOSED spec is not a CORRECT spec** ⇒
@@ -458,6 +462,19 @@ S11 result about mode structure inherits an unprobed premise **with no instrumen
 ⇒ ⭐ **The object to add is a control that breaks inertial isotropy on one axis while holding `W` fixed.**
 ⛔ Do not specify its expected effect ⇒ [[project-s10-record-closed]], [[feedback-per-tooth-ablation]].
 
+⛔⛔ **AND THAT SENTENCE IS NOT ENOUGH TO BUILD FROM — a leg showed why.** *"Hold `W` fixed"* leaves
+**seven** choices, and holding `W_XFORM_CURLONLY` merely reconstructs S10's ANISO system ⇒ ⛔ it would
+**not probe the inertia dependence of S11's own primary `MAIN` claim** (spec `:807`). ⭐ **The repair
+decision list must name, as INPUTS:** which `W` is held (⭐ `W_MAIN` if it is meant to police the primary
+result); the scale **symbol** and its **domain**; the package's **`D` sweep**; whether the scale is
+declared dimensionless or is a **`Q6` unknown**; how it enters **`COEFFICIENT_ORDERING`**; and whether the
+coefficient-space and `Q11` loci solve over it.
+⭐⭐ **These are ACTION and DOMAIN definitions, ⛔ not expected effects — supplying them leaks nothing.**
+⚠ S10 supplied exactly this set (`s_ρ > 0`, `s_ρ ≠ 1`, and `s_ρ` as a `Q6` unknown rather than declared
+dimensionless).
+⚠ **Watch `:406`, which says "the inertial coefficient" SINGULAR** ⇒ ⛔ a partial repair leaves the new
+scale out of `Q6`, `Q10`, the coefficient loci and `Q11`.
+
 **2. ⛔ `C16` APPLIES TO S11 VERBATIM — ⭐ and S11 is where it was always going to matter.**
 ⭐ S11 **does** specify the right object: `ROOT<r>_N3_STACKED_RANK` / `_N3_TRANSVERSE_NULLITY` at spec
 `:321-340`, with an explicit warning against the two-way parallel/perpendicular classification.
@@ -465,6 +482,50 @@ S11 result about mode structure inherits an unprobed premise **with no instrumen
 `:549`) — ⛔ **never from the stacked matrix `[M_r; kᵀ]`, which is what governs `nu_T`.** ⇒ **a locus where
 the transverse count ALONE moves cannot be found by construction.** ⚠ Identical to `C16`; ⭐ both S10
 engines implemented it faithfully, so ⛔ this is **not** an engine defect and cannot be fixed in one.
+
+⭐⭐ **A leg BUILT THE WITNESS rather than arguing it** — `M(t) = [[t²,−t],[−t,1]]`, `kᵀ = (0,1)`:
+generic `(nu, nu_T) = (1, 0)`; at `t = 0`, `(1, 1)`. ⛔ **`rank(M)` never drops**, so `M`'s minors
+`[t², −t, −t, 1]` cannot find it; the **stacked** minors `[0, t², −t]` can.
+
+⚠ **SCOPE IT HONESTLY:** `C16`'s exhibited witness was under **ANISO**, and `MAIN` was **not** exposed by a
+748-wavevector sweep. ⇒ ⛔ this is **not** evidence that S11's current stiffness-only packages already hide
+a `nu_T`-only locus. ⭐ It becomes live **as a COUPLING with defect 1** — once an inertia control exists.
+
+⛔⛔ **AND "ADD THE STACKED MINORS" IS NOT THE REPAIR — a leg measured why.** §Q8b says *"emit the
+components your CAS returns"* (`:549`), and **that wording has ALREADY produced a physics-bearing
+divergence**: at `XFORM_EXTRA, D = 2`, Wolfram emits `STRATUM_ORDERING: {{beta == 0, muR == bComp}}`
+(`mathematica/out/…:561`) while SymPy emits `()` (`scripts/out/…:524`) — ⚠ and the Wolfram point satisfies
+the stated domain and reruns `Q3`/`Q4`. ⇒ ⭐ **the repair must define the admissible UNION of root-matrix
+and stacked-matrix degeneracy components, their deduplication, and either REQUIRE completeness or
+explicitly BOUND the claim.** ⛔ *"Whatever the CAS returns"* cannot support a complete exceptional-mode
+statement.
+⚠ **`DEFECT_REGISTER.md#C16` allows two legitimate fixes** — add the stacked source, **or** declare `Q8`
+silent on pure transversality. ⭐ **The decision list must PICK ONE**, ⛔ or a builder invents a third.
+
+**3. ⛔⛔ §Q6r REQUIRES A DIRECTORY THAT NO LONGER EXISTS — ⭐ found by BOTH legs, and it is the most
+concrete of the five.** Spec `:473` still reads: *"The registry is the YAML quantity register under
+`research/pde_ledger_v3/reduction/`; read it with that directory's own reader."*
+⛔ `reduction/` was **deleted (63 files)**, and `S9_REWRITE_PLAN.md:6` says *"There is no YAML in this
+design. No registry."* ⚠ A leg **ran the engine**: `ModuleNotFoundError: No module named 'registry_read'`.
+⇒ ⛔ a faithful builder must **restore prohibited machinery, omit required `Q6r` output, or build another
+engine that cannot run.** ⭐ **Retire or replace `Q6r` for the export chain. This is a SPEC repair, ⛔ not
+an engine task.**
+
+**4. ⛔ §Q3's MULTIPLICITY REQUIREMENT IS SELF-CONTRADICTORY.** `:283` asks for *"the solution set as
+returned, retaining multiplicity"* — ⚠ **a solution set does not retain multiplicity.** ⭐ A leg
+demonstrated it: for `(x−1)²(x+2)`, `solve` → `[-2, 1]`, `solveset` → `{-2, 1}`, `roots` → `{-2:1, 1:2}`.
+⇒ ⛔ the two engines **already invented different constructions** (PY `sp.roots` at `:691-700`; WL factors
+and repeats at `:351-361`), so **`ROOT_COUNT_ALL` can differ while both builders follow the words.**
+⭐ The spec must name **two separate objects**: a polynomial-root/multiplicity object, **and** the distinct
+solution set.
+
+**5. ⚠ TWO MORE FIXED-METADATA TOKENS ARE FABRICATION-FORCING**, in the same class as
+`PREMISE_INVENTORY`: `M_ROUTE_RESIDUAL_SCOPE = CODING_CONSISTENCY_ONLY` (`:268`) and `FAILURE_TOKEN:
+MISSING_TANGENT_COORDINATES_AND_OFF_STRATUM_EXTENSION` (`:661`). ⛔ **Neither can be read out of a CAS
+expression** — the first is an epistemic classification, the second names a *missing* construction.
+⇒ ⛔ a literal implementation violates the live-read rule, and manufacturing a holder object to read the
+token back violates corollary 5's second sentence. ⭐ **Extend the `:899-901` exemption to cover fixed
+metadata explicitly** ⇒ [[feedback-no-fabrication-forcing-rules]].
 
 ### ⭐⭐ THE BUILD ORDER — ⛔ each arrow is a gate, ⛔ not a suggestion
 
@@ -476,9 +537,21 @@ engines implemented it faithfully, so ⛔ this is **not** an engine defect and c
    its objects, writes `scripts/S11_exports.py`. ⛔ Codex-written ⇒ **fresh Claude agent + Grok.**
 3. **WL engine rebuilt** — ⭐ imports **nothing**, re-derives independently. ⛔ Same two legs.
 4. Run both into committed `out/`; commit `S11_exports.py`.
-5. **Cross-engine comparator** — ⭐ join on the standard name, exactly as `S10_cross_engine_comparator.py`
-   does. ⛔ No pair table, ⛔ no YAML, ⛔ no harness.
+5. **Cross-engine comparator** — ⭐ join on the standard name, as `S10_cross_engine_comparator.py` does.
+   ⛔ No pair table, ⛔ no YAML, ⛔ no harness.
+   ⛔⛔ **BUT A SAME-NAME JOIN IS NOT BY ITSELF A COMPARISON POLICY — ⭐ FREEZE AND REVIEW THE CONTRACT
+   BEFORE THE COMPARATOR SEES EITHER OUTPUT.** ⚠ Otherwise it gets **fitted to the disagreements it
+   finds** ⇒ [[feedback-control-outside-the-thing-it-polices]]. The contract must settle: `N6_BASIS`
+   (⛔ the spec says at `:342` it is **not cross-engine comparable**) · arbitrary `R0_MATRIX` (⚠ the two
+   engines may pick different `R₀`, `:620`) · how **independently chosen stratum points** and their
+   point-evaluated reruns are compared (⚠ `:569` — a single point does not characterise a
+   positive-dimensional component) · representation normalisation · unparsed-row treatment · the
+   shared-vs-`_LOCAL_` tag inventory.
 6. Step record → paper card → registers.
+   ⛔⛔ **EACH OF THESE GETS ITS OWN TWO LEGS — ⚠ a leg caught that the plan gated the spec and the engines
+   and then left this a bare ungated tail.** ⭐ The comparator, the generated `S11_exports.py`, the step
+   record, the card and the register edits are **each physics-bearing** and each can propagate a wrong
+   interpretation ⇒ rule 7.
 
 ⚠ **`W_XFORM_CURLONLY` IS LITERALLY S10's `MAIN` ACTION** — same density, ansatz, phase average, `D` sweep.
 ⇒ ⭐⭐ **the same physical system computed by FOUR independently built engines**, which the ledger has never
@@ -527,18 +600,30 @@ memory is **wrong** for what comes next.
   the review ⇒ [[feedback-review-agents]].
 - ⛔ **Serialize the legs if both ablate the `.wl`** — the licence has **two** seats and a leg has already
   died mid-run (exit 144) from contention. ⛔ Wrap every kernel run in `timeout 600`.
-- ⛔ Blindness is by **ABSENCE**: move the sibling engine, the directives and the raw transcripts **out of
-  the tree** while a blind build or review runs ⇒ [[feedback-denylist-means-wrong-architecture]].
+- ⛔⛔ **DO NOT move engines, directives or transcripts out of the tree to manufacture blindness.** ⚠ An
+  earlier draft of this block said to, and **both a review leg and the user rejected it**: it contradicts
+  `CLAUDE.md` rule 12 (*"Don't build blindness apparatus… Quarantine is cut"*), and ⛔ it **cannot** work
+  anyway, since the PY engine is **required** to import `S10_exports.py` ⇒ [[project-export-chain-pivot]].
+  ⭐ **Withhold the explicit target sentence from builder-visible inputs; ⛔ do not CLAIM target blindness
+  for the PY engine, and ⛔ do not build machinery to enforce it.** ⚠ The four-engine comparison is still
+  valuable — ⭐ as a cross-step consistency check, ⛔ not as four blinded predictions.
+- ⚠ **Keep the *rationale* out of builder-visible inputs too** — a leg noted that *"do not state its
+  expected effect"* itself signals that an effect is anticipated.
 
 ### ⚠ S11's OWN OPEN ITEMS, carried forward
 
+⚠ **Line cites CORRECTED by both legs; ⭐ two rows added; ⭐ one row was wrong.**
+
 | owed | state |
 |---|---|
-| `PREMISE_INVENTORY` — one tag per `(package, D)` | ⛔ absent in both; WL has 17 `PREMISE_*` suffixes, PY has 23. ⛔⛔ **EXEMPT from corollary 5's live-read** (spec `:887-901`) ⇒ [[feedback-no-fabrication-forcing-rules]] |
-| the pinned failure object (spec `:647`) | ⛔ neither engine emits it |
-| `STRATUM1_POINT_RESIDUAL` — spec **forbids** it at `:549` | ⛔ PY emits 10, WL emits 0. ⚠ A **specification artifact**, ⛔ not a physics disagreement |
-| `c_s0` in both admissibility sets (spec `:691-704`) | ⚠ engine state unconfirmed |
-| WL fix round 3 (`F1`) | ⛔ **UNREVIEWED** |
+| `PREMISE_INVENTORY` — one tag per `(package, D)` | ⛔ absent in both; WL has **17** `PREMISE_*` suffixes, PY **23**. ⛔⛔ **EXEMPT from corollary 5's live-read at `:899-901`** (⚠ the section opens at `:888`; the earlier cite `:887-901` was loose) |
+| the pinned failure object | ⛔ neither emits it. ⚠ **The pinned form is at `:661-669`, ⛔ not `:647`** (`:647` is an ambiguity warning). ⭐ Both emit wrong-shaped stand-ins: WL 11 `Failure[…]` objects, PY 10 zero matrices |
+| `STRATUM1_POINT_RESIDUAL` | ⛔ PY emits **10**, WL **0**. ⚠ **The prohibition is at `:559-561`, ⛔ not `:549`.** A **specification artifact**, ⛔ not a physics disagreement |
+| ~~`c_s0` unconfirmed~~ | ⭐ **CONFIRMED PRESENT, ⛔ the old row was wrong** — PY at source `:423`, passed to KW sign and zero-locus admissibility at `:1271-1275`; WL builds `bulkAssumptions` at `:709`, used at `:861-866` |
+| ⭐ **`M_ROUTE_RESIDUAL_SCOPE`** | ⛔ **ZERO tags in BOTH outputs**, despite the requirement at `:268-271`. ⚠ New row |
+| ⭐ **sign payload ORDER** | ⛔ both emit `(operand, token)`; the current spec pins **`SIGN_TOKEN` then `OPERAND`** at `:294-301`. ⚠ New row |
+| WL fix round 3 (`F1`) | ⛔ **UNREVIEWED.** ⚠ Recorded in a commit message only; ⛔ absence of review cannot be proven from the tree |
+| ⚠ WL *"3750 tags, 84 s, exit 0"* | ⭐ **3750 tags CONFIRMED** in the committed transcript, all 18 cells, none skipped. ⛔ **The 84 s / exit 0 are NOT independently reproduced** — a leg's rerun exited 255 before stdout. ⚠ Treat the runtime as provenance, ⛔ not measurement |
 
 ## S11 — where it actually is (⚠ PROVENANCE, superseded by the block above)
 

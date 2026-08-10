@@ -546,3 +546,64 @@ the enumeration is PROVABLY incomplete for `N3` by a nameable mechanism.**
 **Fix at its own level:** the spec adds the stacked matrix's degeneracy locus to `Q8a`'s sources, or states
 that `Q8a` bounds rank drops and coincidences only and is silent on transversality. ⛔ Do not repair an
 engine for this.
+
+---
+
+### ⛔⛔ **`C17`** — a stratum's `Q3`/`Q4` rerun is a property of the POINT, ⛔ not of the component {#c17}
+
+**Locus:** `directives/S11_SHARED_PHYSICS.md:556` (`STRATUM<s>_POINT`), `:563` (the rerun), `:569` (the
+concession). **Status: OPEN.** ⚠ **A SPEC defect — ⛔ both engines implement it faithfully.**
+⚠ **Pre-existing. ⛔ Not created by the `C16` repair** — but the stacked source that repair adds **widens
+exposure to it**, which is why it is registered now.
+
+`Q8b` asks for *"an explicit point on it satisfying every §3 assumption"* and then for the **complete
+`Q3`/`Q4` tag sets recomputed at that point**. `:569` already concedes that *"a single point does not
+characterise a positive-dimensional component"* — but the recomputed tags are still emitted under the
+stratum's scope, where a comparator joining on defining equations will read them as the component's
+spectrum.
+
+⭐⭐ **A review leg computed the divergence rather than arguing it** (`D = 3`, the `k₁ = 0` component):
+
+| allowed point on the SAME component | `ROOT_DISTINCT` count |
+|---|---|
+| `B_comp = μ_R` | **2** |
+| `B_comp = 3 μ_R` | **3** |
+
+⇒ ⛔ **two builders can each choose a valid point on one component and emit different physics**, with every
+stated premise satisfied and no disagreement visible in the defining equations.
+
+⚠ **Related, same leg:** the axis component is produced by **five** sources at once (both root branches'
+`M_r` rank drops, both stacked drops, and root coincidence). ⛔ That is redundancy, not wrong physics — the
+point-dependence above is the defect.
+
+**Fix at its own level — ⛔ and NOT by requiring canonicalisation.** A leg proposed collapsing each
+physical component to one stratum and stratifying recursively until `Q3`/`Q4` are locally constant; ⛔ that
+is cylindrical-decomposition-grade work **no two independently built engines implement identically**, and
+specifying it manufactures the well-definedness argument rule 3 warns about. ⭐ The live options are: pin
+the point **construction** from the defining equations so both engines choose the same one; or scope the
+stratum reruns as **point-local** and make the comparator compare them **only where the emitted points
+agree** (`§8`, and the frozen comparator contract). ⛔ Do not repair an engine for this.
+
+### ⚠ **`C18`** — the locus protocol pins five OBJECTS but no CONSTRUCTION {#c18}
+
+**Locus:** `directives/S11_SHARED_PHYSICS.md:213-221`. **Status: OPEN.** ⚠ **A SPEC defect.**
+
+`§5`'s protocol fixes five suffixes and their meanings, but `_SOLUTION` is *"the solution set exactly as
+your CAS returns it"* (`:218`) and `_REAL_ADMISSIBLE` is a test *"for each branch in `_SOLUTION`"*
+(`:221`). ⛔ **No branch normal form, no existential-admissibility algorithm, no undecided policy and no
+component ordering is specified** ⇒ one engine may omit an allowed, physics-changing component the other
+retains, and both are faithful to the words.
+
+⭐⭐ **Already measured in the committed outputs, ⛔ not hypothetical.** At `XFORM_EXTRA, D = 2`:
+
+| engine | `STRATUM_ORDERING` |
+|---|---|
+| Wolfram (`mathematica/out/…:561`) | `{{beta == 0, muR == bComp}}` |
+| SymPy (`scripts/out/…:524`) | `()` |
+
+⚠ The Wolfram point (`:563`) satisfies **every** `§3` premise — all coefficients positive, `Σk² > 0`, and
+`β` carries no `≠ 0` premise. ⇒ ⛔ this is a **construction** divergence, not a domain disagreement.
+
+**Fix at its own level:** the spec pins the branch/admissibility construction, **or** `§9` bounds what
+`STRATUM_ORDERING` may be read as. ⚠ The `C16` repair's completeness disclaimer bounds the **claim**;
+⛔ it does not make the two lists **comparable**.

@@ -1,6 +1,20 @@
 # Plan — naming, the chain, and the order S11 gets built in
 
-**Status: PROPOSED, 2026-08-10. ⛔ Nothing here is applied.** Written for review before execution.
+## ⛔⛔⛔ SUPERSEDED, 2026-08-10 — ⭐ `directives/S11_export_chain_decisions_v2.md` (`4d81e9de`) IS THE ROUTE
+
+⛔ **Items 1, 2 and 4 below are REFUTED BY MEASUREMENT.** ⭐ The refutations, each with its command, are in
+`S11_export_chain_decisions.md` (`36589024`), which two legs then blocked for a further reason:
+
+- ⛔ **item 4** — *"S11 binds to S10's export keys"*: it binds to **two S9-origin knob rows** and a stored
+  pointer; ⛔ it spells **zero** of S10's 455 keys.
+- ⛔ **item 2** — *"the overwrite violates rule 2"*: the engine emits **both operands and the residual**
+  (`S10…sympy_audit.py:2089-2111`, payload at `out/…:4215`) and the predecessor is committed.
+- ⛔⛔ **item 1 — option E** — producer-scoping: ⚠ **refuted by the party that proposed it.** It makes
+  cross-step collisions impossible by construction, ⛔ and the collision **is** the measurement.
+
+⭐ Items **3**, **5** and **6** survive, as `F5` and the ordering of v2.
+
+**Status: SUPERSEDED. ⛔ Nothing here was applied.**
 
 Three defects surfaced while trying to launch S11's PY engine. They interact, and the order in which they
 are fixed changes what has to be rebuilt. ⭐ This proposes one route and states three alternatives.

@@ -432,50 +432,41 @@ item in the rebuild and the one that closes the largest hole.** ⛔ Not on the S
 | **naming + chain PLAN**, revised after 2 legs | ⭐ **`e60419bc`** | 2 legs · adjudicated by measurement |
 | S11 PY decision list — ⛔ **BLOCKED, ⛔ not a directive** | `11bf8e05` | 2 legs; **5 findings, 2 critical** |
 
-### ⛔⛔⛔ THE ROUTE — ⭐ `directives/S11_naming_and_chain_plan.md`, and it REVERSED mid-review
+### ⛔⛔⛔ THE ROUTE — ⭐ `directives/S11_export_chain_decisions_v2.md` (`4d81e9de`)
 
-⛔ **S10's RETROFIT COMES FIRST. ⛔ The S11 engines do NOT start next.**
+⛔⛔ **`S11_naming_and_chain_plan.md` IS SUPERSEDED — ⛔ do not follow it.** ⚠ Its retrofit-first ordering,
+its rule-2 charge and its producer-scoping were **all three refuted** (`36589024`, then blocked by 2 legs).
+⭐ **There is NO S10 retrofit. ⭐ S10 is REGENERATED, ⛔ not re-keyed, and its tag names do not move.**
 
-1. ⭐ **Producer-scope every newly computed `LEDGER` result**; imported rows this step does not touch stay
-   unchanged ⇒ ⭐⭐ **collisions become impossible by construction.**
-2. ⛔⛔ **A re-derivation is NOT an overwrite — emit `(previous, current, residual)`.**
-   ⚠⚠ **`S9_REWRITE_PLAN.md#4` instructs the DEFECT:** *"overwrite what it derives"* destroys operand A and
-   leaves agreement **asserted** ⇒ a direct violation of `CLAUDE.md` **rule 2**, inside the chain's own
-   carry-forward mechanism. ⭐ **That document must be edited by the retrofit.**
-3. ⭐ **The spec's name is the emitted name, in BOTH engines.** ⚠ `D12`'s mechanism stands (emitted strings
-   only; internal `rhoBr`/`muR` untouched) but ⛔ **`D12`'s DIRECTION is WRONG** — the `.wl` is not deviant.
-   ⛔ **Injectivity across the worklist FIRST.**
-4. ⭐⭐ **Why retrofit first — DEPENDENCY, ⛔ not collisions:** S11's PY engine **binds to S10's export keys**;
-   renaming them later invalidates every binding and forces an S11 rebuild.
-5. Then S11 PY → WL → comparator → record → card → registers. ⛔ Every stage two legs.
+1. ⭐ **Storage keys stay FLAT; `D5` is unchanged.** A later step re-deriving an object writes **the same
+   key** ⇒ ⭐⭐ **two steps deriving one object must be able to MEET. ⛔ The collision IS the measurement.**
+2. ⭐ **Before writing an imported key, compare the OBJECT** (`DEFECT_REGISTER.md:675`, which already said
+   so). Same object ⇒ re-derivation: both operands + residual, then guard. Different object ⇒ ⛔ **fails
+   loudly.** ⚠ The *"same object"* predicate belongs to the S11 PY list.
+3. ⭐ **A re-derived row carries its evidence IN THE ROW.** ⛔ `corroborated_steps` alone is a claim with no
+   operands, and `S11:527-529` specifies `Q6r` to **propagate** it.
+4. ⭐ **S10's export is REGENERATED under 3** — ⚠ every value byte-identical apart from the new fields, ⛔ or
+   it was not a regeneration.
+5. ⭐ `C19` is a **REAL deviation** (`S10:197` orders *"Emit `M_A`, `M_B`"*; engines emit `Q2_MATRIX_A/B`).
+   ⛔ The record must **disclose** it; ⭐ the rename is its **own gate**, and ⛔ S11's build does **not**
+   depend on it — S11's spec fixes its own quantity names.
+6. Then S11 PY → WL → comparator → record → card → registers. ⛔ Every stage two legs.
 
-### ⛔⛔⛔ THE PLAN ITSELF HAS NOT BEEN REVIEWED — ⭐ USER DECISION, 2026-08-10
+### ⭐⭐ WHY THE PLAN DIED — ⛔ and it is the same lesson three times
 
-⚠⚠ **Two legs reviewed plan v1, whose recommendation was to DEFER the retrofit. ⛔ v2 REVERSES it, and
-v2 has had NO independent scrutiny.** ⭐ Three pieces of it are unchecked:
+⚠⚠ **The user's decision to put the unreviewed plan IN SCOPE in the next review prompt is what caught it.**
+⭐ All three unreviewed pieces failed:
 
-| unreviewed piece | whose it is |
-|---|---|
-| **option E** — producer-scoping + the `(previous, current, residual)` triple | ⚠ **Codex's own PROPOSAL**, written inside its review ⇒ ⛔ seen by exactly one party, who authored it |
-| **the retrofit-first ORDERING** — *"S11 binds to S10's export keys"* | ⛔ **mine**, invented during the fold; ⚠ neither leg stated it |
-| **the 1-vs-8 adjudication** | ⛔ **mine**, and ⚠ **I OVERRULED A LEG to reach it.** ⛔ Codex has never seen the rebuttal, and its second argument is **undisposed**: the full post-retrofit count is *undecidable* without the rename map (`S11:940-942` lets an engine name any object the spec does not) |
+| piece | whose | outcome |
+|---|---|---|
+| **option E** — producer-scoping | ⚠ Codex's own proposal, written inside a review | ⛔ **refuted by Codex**, in the review that put it in scope |
+| **retrofit-first ordering** | ⛔ mine, invented during a fold | ⛔ refuted by measurement **before** the legs ran |
+| **the 1-vs-8 adjudication** | ⛔ mine, and I overruled a leg | ⭐ **8 reproduces** under a stated proxy — ⛔ but `E2` made the count irrelevant, and that was the wrong way to make it irrelevant |
 
-⭐⭐ **THE FIX THE USER CHOSE — ⛔ do NOT re-leg the plan (that is a third round on one document, rule 7).**
-⇒ ⭐ **The S10 retrofit decision list gets two legs anyway. PUT THE THREE ROWS ABOVE EXPLICITLY IN SCOPE IN
-THAT REVIEW PROMPT** — ⛔ never as settled background.
-
-⛔⛔ **The failure mode being guarded against, and it has already happened TODAY:** a review prompt that asks
-*"is this list buildable?"* while treating the upstream artifact as given. ⚠ That is exactly how `§2`'s
-stale sentence survived the spec's own decision-list legs and had to be caught one gate later.
-
-⭐ **The prompt must therefore ask, in these words or better:**
-- ⛔ *Is retrofit-first justified at all?* ⚠ The dependency argument is unreviewed — ⭐ **test whether S11
-  actually binds to S10's export KEYS**, or only to a subset that a rename would not move.
-- ⛔ *Is producer-scoping the right shape,* or does it destroy the cross-step contention the chain exists
-  for? ⚠ It was proposed by a reviewer, ⛔ never reviewed.
-- ⛔ *Is the `(previous, current, residual)` triple constructible* for the rows that actually re-derive?
-  ⭐ **Measure S10's 3 overwritten-and-agreeing rows first.**
-- ⛔ *Was the 1-vs-8 adjudication right,* and ⭐ **does the undecidability objection survive it?**
+⛔⛔ **Producer-scoping fails for the reason rule 6 names:** it *"tries to make divergence impossible"*.
+⭐ Under `D5` the three overwritten rows meet on one key and are compared; scope them by producer and they
+write different keys, **nothing compares them**, and the detector never fires because there is no longer a
+collision to catch.
 
 ### ⛔ THE FIVE FINDINGS THAT BLOCKED THE S11 PY LIST — ⭐ the rewrite must answer all five
 

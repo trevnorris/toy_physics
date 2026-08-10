@@ -141,7 +141,27 @@ weakening it. ⇒ [[feedback-framing-split]]
 | S11b-B passivity / Onsager–Casimir, "odd" couplings need a drive | **KNOWN** | Fruchart, Scheibner, Vitelli, *Annu. Rev. Condens. Matter Phys.* **14** 471 (2023) |
 | the `h`-branon as the brane's own transverse fluctuation | **KNOWN** | Cembranos, Dobado, Maroto, PRL **90** 241301 (2003) |
 | defects ⇒ long-range fields with ⛔ no gauge field | **KNOWN** | Eshelby, *Solid State Phys.* **3** (1956) |
-| MacCullagh **+ topological defects ⇒ EM including charge** | **KNOWN** | ⭐⭐ **Unzicker**, `arXiv:gr-qc/0011064`, *ZAMM* **102** (2022) — ⚠ **our charge mechanism, already published** |
+| MacCullagh **+ topological defects ⇒ EM including charge** | **KNOWN** | ⭐⭐ **Unzicker**, *"Nonlinear continuum mechanics with defects resembles electrodynamics — A comeback of the aether?"*, *ZAMM*, DOI `10.1002/zamm.202100280` (online 2022-07-31; 2023 volume) — ⚠ **our charge mechanism, already published**. ⛔ **NOT the same paper as `arXiv:gr-qc/0011064`**, which is *"What can Physics learn from Continuum Mechanics?"* (2000); an earlier version of this row conflated them. ⚠ ZAMM paper is **paywalled** — the notes below are **abstract-level, ⛔ the paper has not been read** |
+
+⭐⭐ **CHECKED 2026-08-09, and it settles a question that kept being asked: ⛔ UNZICKER HAS NO BULK.**
+⭐ His medium is *"an incompressible, isotropic elastic continuum"* — MacCullagh's **3D** solid. ⛔ No brane,
+⛔ no embedding, ⛔ no codimension. ⇒ ⭐ **the confinement architecture is genuinely not his**; ⛔ only the
+charge-from-topological-defect move is.
+
+⚠⚠ **THE OVERLAP IS NARROWER AND THE WARNING IS SHARPER THAN "already published":**
+1. ⚠ **His charge is a TWIST DISCLINATION in the bulk of a 3D solid.** Ours is a **puncture/throat in a
+   codimension-1 brane** with `±w` orientation ⇒ different defect, different space. ⛔ Whether they reduce
+   to one mechanism is **unknown** — it needs the paper ⇒ [[project-puncture-deflection-charge-mechanism]].
+2. ⛔⛔ **HIS STATED REASON FOR GOING NONLINEAR:** *"MacCullagh's theory based on linear elasticity cannot
+   describe charges."* ⚠ **Our S11b-A/B interface law is LINEAR**, and that is where our charge story runs
+   ⇒ [[project-s11b-interface-law-result]]. ⭐ **Oracle, ⛔ NOT a premise** — his conditions may not be ours
+   ⇒ `CLAUDE.md` rule 16. ⚠ But it is the sharpest external hit on a live assumption of ours.
+3. ⭐⭐ **Many defects ⇒ a COSSERAT continuum microstructure** — and `R-S8-04` names Cosserat/micropolar as
+   a family a delivered internal-angular-momentum answer might fall into. ⇒ **the objection that sank
+   MacCullagh and a candidate answer sit in the SAME programme.** ⛔ Still an oracle; ⛔ do not adopt.
+
+⭐ Also relevant to S9/S10's own citation: **"James MacCullagh's ether: An optical route to Maxwell's
+equations?"**, *Eur. Phys. J. H*, `10.1140/epjh/e2010-00009-3`.
 | `Z₂` sign = ± orientation of a puncture | **ADJACENT** | domain walls, spin-ice monopoles, signed vortices — the exact construction not found under a name |
 
 ### ⛔ NOT FOUND — ⚠ a search-failure statement, ⛔ NOT a proof of originality

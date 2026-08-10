@@ -37,15 +37,24 @@ a quadratic form in `G`.
 
 ## 2 · The action — supplied in full, as equations
 
+Each package is an ordered pair `(T_pkg, W_pkg)`, whose two named members are its **kinetic density** and
+its **stiffness functional**. Its action density is
+
 ```
-L_pkg  =  (ρ_br / 2) · Σ_j (∂_t u_j)²   −   W_pkg[G]
+L_pkg  =  T_pkg   −   W_pkg[G]
 ```
 
-`W_pkg` is the package's **stiffness functional**, given in full for each package in §7. `ρ_br > 0` is a
-real constant.
+The kinetic density carried by the seven existing packages is named
+
+```
+T_ISO  =  (ρ_br/2)·Σ_{j=1..D} (∂_t u_j)²
+```
+
+The complete ordered pairs are given in §7. `ρ_br > 0` is a real constant.
 
 ⚠ **`W` is a FUNCTIONAL, not a fixed coefficient times a fixed density.** ⛔ Do not assume which
-coefficients a given package's `W` contains, or how many. §6 says to read them off that package's own `W`.
+coefficients a given package's `W` contains, or how many. §6 builds `COEFFICIENT_ORDERING` from the
+declared additive terms of `L_pkg`, together with every inertial coefficient the kinetic density carries.
 
 The stiffness densities `W` is built from, each defined in every `D`:
 
@@ -114,7 +123,10 @@ package-domain premises, joined to the common set when that package is selected:
 XFORM_TRACELESS:  μ_br > 0
 XFORM_EXTRA:      β real                      ⛔ no sign premise, ⛔ no premise that β ≠ 0
 XCOEF_BSCALE:     s > 0 ,  [s] = (0, 0, 0) ,  s ≠ 1
+XKIN_ANISO:       s_ρ > 0 ,  s_ρ ≠ 1
 ```
+
+⛔ `s_ρ` is not declared dimensionless and no dimension is supplied for it; it is a `Q6` unknown.
 
 ⚠ Declaring each symbol real/positive **individually is not equivalent** to asserting `Σ_m k_m² > 0`, and a
 sign test performed under a different premise set is not the requested computation. ⇒ ⛔ Both engines
@@ -190,6 +202,20 @@ A declaration must be read out of the live object the computation consumes, ⛔ 
 literal beside it. ⛔ A consumer must never be manufactured merely to make a declaration appear wired.
 ⚠ A control that passes by construction is worth nothing.
 
+⭐ **The live-read exemptions are closed and are exactly these four entries:**
+
+| exempt object | exemption scope |
+|---|---|
+| `PREMISE_INVENTORY` | the whole tag |
+| `M_ROUTE_RESIDUAL_SCOPE` | the whole tag; its payload is one fixed token |
+| `STRATUM<s>_ROOT_COEFFICIENT_JACOBIAN_RECOMPUTED.FAILURE_TOKEN` | the `.FAILURE_TOKEN` field only |
+| `Q6R_RESIDUAL_SCOPE` | the whole tag; its payload is one fixed token |
+
+⛔ No holder object may be manufactured to make an exempt token appear wired, and there is no general
+exemption for metadata. The `RECOMPUTED_ROOTS`, `COEFFICIENT_ORDERING`, `DEFINING_EQUATIONS` and
+`EVALUATION_POINT` fields of `STRATUM<s>_ROOT_COEFFICIENT_JACOBIAN_RECOMPUTED` remain live-read
+obligations.
+
 ### ⛔⛔ NO VERDICT
 
 ⛔ **There is no `VERDICT` tag, no `PASS`, no `FAIL`, and no summary judgement anywhere in either engine.**
@@ -238,9 +264,10 @@ first for each `D`**, before assembling any action at that `D`.
 
 ### Q1 · The Lagrangian and the equations of motion
 
-Build `L` in coordinate space from §2. Emit `L` expanded, and emit **each additive term of `W_pkg`
-separately**, as the list `STIFFNESS_TERMS`, so a consumer can see which densities that package carries and
-with which coefficients.
+Build `L` in coordinate space from §2. Emit `L` expanded. Also emit the package's **declared additive
+terms of `T_pkg`**, in the list `KINETIC_TERMS`, and **each additive term of `W_pkg`**, in the list
+`STIFFNESS_TERMS`. The two tags have the same list shape, with one entry per declared term, so a consumer
+can see which densities that package carries and with which coefficients.
 Take the **Euler–Lagrange** variation with respect to each `u_j`:
 
 ```
@@ -281,9 +308,16 @@ the matrix `∂M/∂c`, as a list in that order. ⛔ Do not describe the pattern
 
 - Emit `DET_M`, **factored**.
 - Solve `DET_M = 0` for `omegaSquared`. Emit:
-  - `ROOT_SOLUTION_SET` — the solution set **as returned, retaining multiplicity**;
-  - `ROOT_DISTINCT` — the list after de-duplication under the §3 assumptions;
-  - `ROOT_COUNT_ALL` and `ROOT_COUNT_DISTINCT` — each an integer produced by **counting its own list**;
+  - `ROOT_MULTIPLICITY_PAIRS` — an **ordered list of `(root, multiplicity)` pairs**, with each multiplicity
+    a positive integer, obtained from `DET_M` as a univariate polynomial in `omegaSquared`;
+  - `ROOT_SOLUTION_SET` — the solution set as the solver returns it, carrying ⛔ **no** multiplicity claim;
+  - `ROOT_COUNT_ALL` — the sum of the second fields of `ROOT_MULTIPLICITY_PAIRS`;
+  - `DET_M_DEGREE` — the degree of `DET_M` in `omegaSquared`, computed from the polynomial, ⛔ not from
+    the root list;
+  - `ROOT_DEGREE_RESIDUAL` — `DET_M_DEGREE − ROOT_COUNT_ALL`, emitted unconditionally;
+  - `ROOT_DISTINCT` — the de-duplication of the first fields of `ROOT_MULTIPLICITY_PAIRS` under the §3
+    assumptions;
+  - `ROOT_COUNT_DISTINCT` — the integer produced by counting `ROOT_DISTINCT`;
   - `ROOT_ORDERING` — the ordering of `ROOT_DISTINCT` that the `ROOT<r>` index refers to.
 - ⭐ For each distinct root, `ROOT<r>_VALUE` and `ROOT<r>_SIGN`. ⛔ `ROOT<r>_SIGN` is a **four-way
   symbolic test** whose payload is exactly one of the tokens `POSITIVE`, `NEGATIVE`, `ZERO`, `UNDECIDED`,
@@ -335,9 +369,10 @@ the count is **unrecoverable** from the classification — while `N3` returns th
 ⚠ Whether that arises in any particular package is **not stated here and is not your concern**: compute
 `N3` everywhere, unconditionally.
 
-⚠⚠ **§7 contains a package whose stiffness functional is not built from `S_curl` and `S_div` alone, and
-nothing in this file says how its null directions lie relative to `k`.** ⛔ Any code path that assumes a
-two-way parallel/perpendicular split will report a wrong count without failing.
+⚠⚠ **Whether a package action preserves a two-way parallel/perpendicular split is a question about the
+complete action, regardless of whether the relevant structure is carried by its kinetic density or its
+stiffness functional; nothing in this file says how any package's null directions lie relative to `k`.** ⛔
+Any code path that assumes a two-way parallel/perpendicular split will report a wrong count without failing.
 
 ⇒ ⭐ **`N6` is retained for display only.** Emit the **residual objects**, ⛔ not a classification token as
 the headline. ⚠ `N6_BASIS` is **not** cross-engine comparable — a null-space basis is not canonical — and
@@ -405,15 +440,17 @@ Work in a three-slot dimension vector `(length, time, mass)`. `D` stays **symbol
 
 ⭐⭐ **THE COEFFICIENT INVENTORY, defined so both engines build the same list.** For each additive term of
 `L_pkg`, take the factor multiplying the density, and take its **free symbols**. `COEFFICIENT_ORDERING` is
-the union of those symbol sets over all terms, together with the inertial coefficient, sorted by the
-engine's own stated rule and emitted as its own tag. ⚠ ⇒ a term whose factor is a product contributes
+the union of those symbol sets over all terms, together with every inertial coefficient the package's
+kinetic density carries, sorted by the engine's own stated rule and emitted as its own tag. ⚠ ⇒ a term
+whose factor is a product contributes
 **every** symbol in that product, ⛔ not the product as one unknown.
 
 ⭐ Build this inventory from the package's **DECLARED additive terms** as §7 gives them, before simplifying
 or evaluating any density. A declared term whose density evaluates to the zero form still contributes the
 free symbols of its factor. ⛔ Reading the inventory from the expanded action instead would let
 simplification change the declared unknown set; the inventory records the coefficients supplied by the
-package, including the inertial coefficient, whether or not a density survives evaluation.
+package, including every inertial coefficient its kinetic density carries, whether or not a density
+survives evaluation.
 
 Emit:
 - `COEFFICIENT_ORDERING`, and `DIM_COEFFICIENTS` — the dimension of every coefficient in it, as **closed
@@ -470,23 +507,33 @@ DIM_DETERMINACY         from the solve itself: OVER_DETERMINED | EXACTLY_DETERMI
 
 ⭐ **`[u]` is a PREMISE and is UNFALSIFIABLE WITHIN THIS BUILD.**
 
-#### ⛔⛔ Q6r · THE REGISTRY COMPARISON — and ITS PROVENANCE IS PART OF THE PAYLOAD
+#### ⛔⛔ Q6r · THE PREVIOUS-STEP EXPORT-CHAIN COMPARISON — and ITS PROVENANCE IS PART OF THE PAYLOAD
 
-⚠ **Engine-local: only the engine that loads the registry emits this**, under the `_LOCAL_` infix of §8.
-The registry is the YAML quantity register under `research/pde_ledger_v3/reduction/`; read it with that
-directory's own reader rather than parsing it by hand.
+⚠ **Engine-local: only the engine that imports the previous step's `LEDGER` emits this**, under the
+`_LOCAL_` infix of §8. Import `LEDGER` from `research/pde_ledger_v3/scripts/S10_exports.py`.
 
-For **each** coefficient in `COEFFICIENT_ORDERING` that the registry also declares, emit: the **derived**
-vector, the **declared** vector, their **difference**, and ⭐⭐ the declared row's **`source_locus` read out
-of the registry itself**.
+⭐⭐ **The coefficient name map is explicit and closed:**
 
-⛔⛔ **The `source_locus` is not decoration.** A declared dimension whose locus points at an artifact this
-build replaces is **not an independent operand**, and a zero residual against it means only that the new
-engine reproduces its predecessor. ⭐ Emitting the locus is what lets the step record tell the two cases
-apart. ⛔ Do not filter, judge or omit any row on the basis of what its locus says — emit every row and let
-the record classify.
+```
+ρ_br → rho_br        μ_R → mu_R        B_comp → B_comp       μ_br → mu_br
+β    → beta          s   → s           s_ρ  → s_rho          c_s0 → c_s0
+```
 
-⛔ If a derived and a declared vector disagree, **emit the disagreement and continue**. ⛔ Do not adjust the
+For each coefficient in `COEFFICIENT_ORDERING`, map its name as above and perform the live
+`LEDGER[name]['dimension_key']`, then `LEDGER[that key]['value']` lookup. Once per `(package, D)`, emit
+`Q6R_RESOLVED_COEFFICIENTS` with the coefficients whose lookup resolved to a dimension row, and
+`Q6R_UNRESOLVED_COEFFICIENTS` with those whose lookup did not; derive both objects from those live lookups.
+
+For each resolved coefficient, emit the **derived** vector, the **imported** vector, their **difference**,
+and provenance from both rows, named apart: `class` and `step` of the coefficient row; and `class`, `step`
+and `corroborated_steps` of the resolved dimension row.
+⛔ Do not manufacture a placeholder vector for an unresolved coefficient.
+
+⭐ The imported vector is the predecessor's by construction. Emit `Q6R_RESIDUAL_SCOPE` with the single
+token `CROSS_STEP_CONSISTENCY_ONLY`; the residual tests cross-step consistency only and is not an
+independent operand.
+
+⛔ If a derived and an imported vector disagree, **emit the disagreement and continue**. ⛔ Do not adjust the
 derivation to match, and ⛔ do not exit non-zero.
 
 ### Q7 · The `D = 3` comparison against the ordinary curl
@@ -541,17 +588,34 @@ ROOT<r>_RANK_DROP_COEFF_*     solve variables: COEFFICIENT_ORDERING
 ROOT<r>_RANK_DROP_JOINT_*     solve variables: both, jointly
 ```
 
-⚠ **If the returned rank `ρ` is `0`** there are no `ρ × ρ` minors and the matrix is identically zero.
-⭐ Emit `ROOT<r>_RANK_DROP_MINORS` as the **empty list** and the locus `_EQUATIONS` as the empty list; the protocol's
+For the `(D+1)×D` matrix formed by stacking `M_r` on top of `kᵀ`, take `σ` to be the stacked rank the
+engine's own `ROOT<r>_N3_STACKED_RANK` returned. Form **all** `σ × σ` minors and emit them as
+`ROOT<r>_STACKED_DROP_MINORS`, plus the **full five-object locus protocol** for the same three
+solve-variable sets, under the suffixes:
+
+```
+ROOT<r>_STACKED_DROP_K_*       solve variables: k_1 … k_D
+ROOT<r>_STACKED_DROP_COEFF_*   solve variables: COEFFICIENT_ORDERING
+ROOT<r>_STACKED_DROP_JOINT_*   solve variables: both, jointly
+```
+
+⚠ **If the returned source rank — `ρ` or `σ` — is `0`** there are no corresponding square minors and
+the source matrix is identically zero. ⭐ Emit the corresponding `ROOT<r>_RANK_DROP_MINORS` or
+`ROOT<r>_STACKED_DROP_MINORS` as the **empty list** and the locus `_EQUATIONS` as the empty list; the protocol's
 `_IDENTICALLY_SATISFIED` then carries the meaning. ⛔ Do not emit a `0×0` determinant, which some CAS report
 as `1`.
 
-**Q8b — ⭐⭐ STRATA, defined.** A **stratum** is a component of a rank-drop locus that **intersects the
-region allowed by §3**. Emit the components your CAS returns, each with its defining equations and chosen
-point, plus their ordering:
+**Q8b — ⭐⭐ STRATA, defined.** All three `ROOT<r>_RANK_DROP_K_*`,
+`ROOT<r>_RANK_DROP_COEFF_*`, `ROOT<r>_RANK_DROP_JOINT_*` solve-variable sets, all three
+`ROOT<r>_STACKED_DROP_K_*`, `ROOT<r>_STACKED_DROP_COEFF_*`, `ROOT<r>_STACKED_DROP_JOINT_*`
+solve-variable sets, and both Q3 families, `ROOT_COINCIDENCE_K_*` and `ROOT_COINCIDENCE_COEFF_*`, feed the
+candidate pool. A **stratum** is a candidate component that **intersects the region allowed by §3**. Emit
+the components your CAS returns, each with its sources, defining equations and chosen point, plus their ordering:
 
 ```
 STRATUM_ORDERING              the list of components, in the order the STRATUM<s> index refers to
+STRATUM<s>_SOURCES             the tokens for that component, drawn from exactly `RANK_DROP` ·
+                               `STACKED_DROP` · `ROOT_COINCIDENCE`, in that order, each appearing at most once
 STRATUM<s>_DEFINING_EQUATIONS the equations cutting out that component
 STRATUM<s>_POINT              ⭐ an explicit point on it satisfying every §3 assumption
 ```
@@ -734,7 +798,17 @@ everything downstream is recomputed from it by the identical code path.
 (corollary 4). ⚠ A quantity **identical** across packages **must still be emitted in each** — that
 repetition is a result, and deleting it destroys the evidence.
 
-There are seven packages. Their complete stiffness functionals are:
+There are eight packages. The eighth kinetic density is
+
+```
+T_ANISO  =  (ρ_br/2)·Σ_{j=2..D} (∂_t u_j)²   +   (s_ρ·ρ_br/2)·(∂_t u_1)²
+```
+
+Its distinguished axis is `j = 1`; no relation between that axis and `k` is supplied, and `k` stays
+symbolic. `T_ANISO` has exactly two declared additive terms: the `j = 2..D` sum is one term and the `j = 1`
+term is the other. ⛔ Neither is expanded before the §Q6 coefficient inventory is built.
+
+The complete stiffness functionals are:
 
 ```
 W_MAIN             =  (μ_R/2)·S_curl  +  (B_comp/2)·S_div
@@ -746,6 +820,19 @@ W_XCOEF_BSCALE     =  (μ_R/2)·S_curl  +  (s·B_comp/2)·S_div
 W_XCOEF_BSIGN      =  (μ_R/2)·S_curl  −  (B_comp/2)·S_div
 ```
 
+The complete package pairs, in `(kinetic density, stiffness functional)` order, are:
+
+```
+MAIN             =  (T_ISO,   W_MAIN)
+XFORM_CURLONLY   =  (T_ISO,   W_XFORM_CURLONLY)
+XFORM_DIVONLY    =  (T_ISO,   W_XFORM_DIVONLY)
+XFORM_TRACELESS  =  (T_ISO,   W_XFORM_TRACELESS)
+XFORM_EXTRA      =  (T_ISO,   W_XFORM_EXTRA)
+XCOEF_BSCALE     =  (T_ISO,   W_XCOEF_BSCALE)
+XCOEF_BSIGN      =  (T_ISO,   W_XCOEF_BSIGN)
+XKIN_ANISO       =  (T_ANISO, W_MAIN)
+```
+
 | package | `D` |
 |---|---|
 | `MAIN` | 2, 3, 4, 5 |
@@ -755,6 +842,7 @@ W_XCOEF_BSIGN      =  (μ_R/2)·S_curl  −  (B_comp/2)·S_div
 | `XFORM_TRACELESS` | 3, 4 |
 | `XCOEF_BSCALE` | 3 |
 | `XCOEF_BSIGN` | 3 |
+| `XKIN_ANISO` | 2, 3, 4, 5 |
 
 ### ⭐⭐ `P_D` — the one term this file does not write down
 
@@ -779,11 +867,11 @@ rescale it toward any target.
 ⚠ **`β` carries no sign premise and no `β ≠ 0` premise**, deliberately. ⛔ A premise forcing `β ≠ 0` would
 make the zero-form case an error rather than a result.
 
-⛔⛔ **`W_XFORM_EXTRA` MAY NOT BE ASSUMED TO PRESERVE ANY SPLIT OF THE AMPLITUDE.** ⚠ §Q4's warning about a
-two-way parallel/perpendicular classification is aimed at this package. ⛔ Compute `N3`; do not classify
-basis vectors.
+⛔⛔ **NO PACKAGE ACTION MAY BE ASSUMED TO PRESERVE ANY SPLIT OF THE AMPLITUDE.** ⚠ §Q4's warning applies
+to the complete action, regardless of whether the relevant structure is carried by its kinetic density or
+stiffness functional. ⛔ Compute `N3`; do not classify basis vectors.
 
-### On the other six
+### On the other seven
 
 ⚠ **`XCOEF_BSCALE`'s `s` is DIMENSIONLESS by declaration, and that is a Q6 input** — the energy-density
 requirement alone fixes only the *sum* of a scale factor's dimension and its coefficient's. ⛔ That reason
@@ -800,7 +888,7 @@ sign is part of `W`. ⛔ **No expectation is stated here about what it moves.**
 
 ⛔⛔ **THIS FILE DOES NOT CLASSIFY ANY PACKAGE AS A "FORM" OR A "COEFFICIENT" CONTROL, AND NEITHER ENGINE
 MAY.** ⚠ At S10 four packages carried an `XFORM_` prefix and only two changed the stiffness functional.
-⇒ ⭐ The classification is made downstream, from the emitted stiffness functional, ⛔ never from a tag
+⇒ ⭐ The classification is made downstream, from the emitted action, ⛔ never from a tag
 prefix. ⛔ **No expectation is stated here about what any package does or does not move.** Run each and emit
 its full tag set.
 
@@ -864,9 +952,10 @@ There is no tag namespace to preserve and no reason to echo either old vocabular
 
 ### ⭐ Engine-local tags — declare them, so parity is meaningful
 
-Some tags **cannot** exist in both engines: §Q6r's registry comparison has no counterpart in the engine
-that does not load the registry, and each CAS emits its own solver-condition tags. ⛔ Those are **not**
-disagreements, and a parity checker that reports them as gaps trains its reader to ignore it.
+Some tags **cannot** exist in both engines: §Q6r's previous-step export-chain comparison has no counterpart
+in the engine that does not import that chain's `LEDGER`, and each CAS emits its own solver-condition tags.
+⛔ Those are **not** disagreements, and a parity checker that reports them as gaps trains its reader to
+ignore it.
 
 ⭐ Give every such tag the infix `_LOCAL_` immediately after the engine prefix — `WL_S11_LOCAL_…`,
 `PY_S11_LOCAL_…` — and ⭐ emit one tag per engine listing every `_LOCAL_` name it produced.
@@ -882,7 +971,9 @@ disagreements, and a parity checker that reports them as gaps trains its reader 
 | `u` is the in-plane `D`-vector; the `h`-branon is a separate field | |
 | `v₀ = 0`, no dissipation, exactly-quadratic `L`, frozen wall width | |
 | `ρ_br > 0`, `μ_R > 0`, `B_comp > 0`, `Σ k_m² > 0` | |
+| the isotropy of the kinetic form | |
 | the bulk supports a scalar sound mode **only**, with §Q11's field, ansatz and dispersion | |
+| the completeness of the stratum enumeration is not established by this build | |
 
 ### ⭐⭐ Premise inventory — one named object
 
@@ -896,9 +987,9 @@ diverged.
 
 This lets a reader see every premise the build did not test.
 
-⚠ **Corollary 5's live-read requirement does NOT apply to this tag.** ⭐ Several supplied premises are
-qualitative or assert an **absence** — there is no live CAS object to read them from, and ⛔ one must not be
-manufactured. ⇒ ⭐ list them in whatever form the engine holds them.
+⚠ **Corollary 5's closed list exempts this whole tag from the live-read requirement.** ⭐ Several supplied
+premises are qualitative or assert an **absence** — there is no live CAS object to read them from, and ⛔ one
+must not be manufactured. ⇒ ⭐ list them in whatever form the engine holds them.
 
 ---
 

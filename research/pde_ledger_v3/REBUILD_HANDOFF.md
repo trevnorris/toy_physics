@@ -449,6 +449,34 @@ item in the rebuild and the one that closes the largest hole.** ⛔ Not on the S
    renaming them later invalidates every binding and forces an S11 rebuild.
 5. Then S11 PY → WL → comparator → record → card → registers. ⛔ Every stage two legs.
 
+### ⛔⛔⛔ THE PLAN ITSELF HAS NOT BEEN REVIEWED — ⭐ USER DECISION, 2026-08-10
+
+⚠⚠ **Two legs reviewed plan v1, whose recommendation was to DEFER the retrofit. ⛔ v2 REVERSES it, and
+v2 has had NO independent scrutiny.** ⭐ Three pieces of it are unchecked:
+
+| unreviewed piece | whose it is |
+|---|---|
+| **option E** — producer-scoping + the `(previous, current, residual)` triple | ⚠ **Codex's own PROPOSAL**, written inside its review ⇒ ⛔ seen by exactly one party, who authored it |
+| **the retrofit-first ORDERING** — *"S11 binds to S10's export keys"* | ⛔ **mine**, invented during the fold; ⚠ neither leg stated it |
+| **the 1-vs-8 adjudication** | ⛔ **mine**, and ⚠ **I OVERRULED A LEG to reach it.** ⛔ Codex has never seen the rebuttal, and its second argument is **undisposed**: the full post-retrofit count is *undecidable* without the rename map (`S11:940-942` lets an engine name any object the spec does not) |
+
+⭐⭐ **THE FIX THE USER CHOSE — ⛔ do NOT re-leg the plan (that is a third round on one document, rule 7).**
+⇒ ⭐ **The S10 retrofit decision list gets two legs anyway. PUT THE THREE ROWS ABOVE EXPLICITLY IN SCOPE IN
+THAT REVIEW PROMPT** — ⛔ never as settled background.
+
+⛔⛔ **The failure mode being guarded against, and it has already happened TODAY:** a review prompt that asks
+*"is this list buildable?"* while treating the upstream artifact as given. ⚠ That is exactly how `§2`'s
+stale sentence survived the spec's own decision-list legs and had to be caught one gate later.
+
+⭐ **The prompt must therefore ask, in these words or better:**
+- ⛔ *Is retrofit-first justified at all?* ⚠ The dependency argument is unreviewed — ⭐ **test whether S11
+  actually binds to S10's export KEYS**, or only to a subset that a rename would not move.
+- ⛔ *Is producer-scoping the right shape,* or does it destroy the cross-step contention the chain exists
+  for? ⚠ It was proposed by a reviewer, ⛔ never reviewed.
+- ⛔ *Is the `(previous, current, residual)` triple constructible* for the rows that actually re-derive?
+  ⭐ **Measure S10's 3 overwritten-and-agreeing rows first.**
+- ⛔ *Was the 1-vs-8 adjudication right,* and ⭐ **does the undecidability objection survive it?**
+
 ### ⛔ THE FIVE FINDINGS THAT BLOCKED THE S11 PY LIST — ⭐ the rewrite must answer all five
 
 1. ⛔⛔ **naming rule corrupted the chain 3 ways** — `root_ordering_d3` collision; S10's spec never defines

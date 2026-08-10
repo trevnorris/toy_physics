@@ -796,6 +796,45 @@ solve.** Hold those two apart in every step below; they have different classes a
 ⚠ **The `Q` namespace is deliberate.** `S14a` already runs *before* `S14`, and `S20a` sits in a
 *different phase* from `S20`; more `S`-suffixes would compound a confusing convention.
 
+### ⛔⛔ READ BEFORE STARTING THIS PHASE — ⚠ prior art says LINEAR CANNOT CARRY CHARGE
+
+⚠ **Raised 2026-08-09. ⛔ Not a blocker, ⛔ not a verdict — an OPEN QUESTION this phase must answer early,
+because the answer decides whether the charter's linear scope survives contact with charge.**
+
+⭐ **Unzicker**, *"Nonlinear continuum mechanics with defects resembles electrodynamics — A comeback of the
+aether?"*, *ZAMM* `10.1002/zamm.202100280`. ⇒ detail and citation corrections in
+`docs/medium_requirements_and_prior_art.md`.
+
+⛔⛔ **HIS STATED REASON FOR LEAVING LINEAR ELASTICITY:** *"MacCullagh's theory based on linear elasticity
+**cannot describe charges**"* — so he goes to a **twist disclination**, a topological defect *"causing
+large deformations requiring nonlinear description."*
+
+⚠ **Why this reaches us specifically:**
+- ⭐ **Our charge is a throat / puncture — a LARGE deformation of the brane**, ⛔ not a small oscillation
+  about a flat state ⇒ [[project-puncture-deflection-charge-mechanism]].
+- ⛔ **And our brane–bulk interface law (S11b-A/B) is LINEAR**, and it is what the charge story runs on.
+- ⇒ ⭐ the **object** is plausibly nonlinear while the **instrument** we built for it is linear.
+
+⭐⭐ **THE DECISIVE TEST IS CHEAP AND ALREADY NAMED: ⛔ S11b-C, non-uniform coupling, WAS NEVER BUILT** —
+and it is the **MacCullagh differentiator**. ⇒ ⭐ **Run it before committing this phase to anything.**
+- ⭐ If S11b-C anchors charge linearly, we have what he did not, and half one's linear scope holds.
+- ⛔ If it cannot, that is **independent convergence on his conclusion**, and **C6** (the absent nonlinear
+  brane-shear action) moves onto the critical path **with a measured reason**, ⛔ not an assumption.
+
+⛔⛔ **AND "GO NONLINEAR" IS NOT A MATTER OF KEEPING MORE TERMS.** ⚠ **C6**: every form in the corpus is
+quadratic and the quadratic Lagrangian was written **directly**, ⛔ not expanded from a nonlinear parent
+⇒ it ⛔ **cannot be reached by un-linearising.** Authoring a nonlinear parent is a **modelling decision**,
+⛔ not a derivation ⇒ see the half-two section below.
+
+⛔ **TWO THINGS THIS NOTE DOES NOT SAY:**
+1. ⛔⛔ **Prior art is an ORACLE, ⛔ NEVER a premise** (`CLAUDE.md` rule 16). ⚠ His conditions are **not**
+   ours: ⭐ **his medium is a 3D incompressible elastic continuum with ⛔ NO bulk, ⛔ no brane, ⛔ no
+   codimension.** ⇒ the confinement architecture is genuinely not his; ⛔ only the charge-from-defect move
+   is. ⚠ **The paper is PAYWALLED and has NOT been read** — this is abstract-level.
+2. ⛔⛔ **Nonlinearity does NOT discharge `R-S8-04`.** ⚠ The couple-stress / internal-angular-momentum
+   objection is a **separate axis**: Cosserat buys **microrotation**, ⛔ not amplitude. ⇒ a fully nonlinear
+   theory can still be inadmissible for the same 19th-century reason ⇒ `SUBSTRATE_REQUIREMENTS.md`.
+
 ### Q1 · The electric-scalar substrate
 The **static electric scalar**, closed by a **localized-`H` / PT** construction. ⚠ This is the phase's
 entry point onto PHASE 3's throat, ⛔ not onto PHASE 2's brane-shear apparatus.

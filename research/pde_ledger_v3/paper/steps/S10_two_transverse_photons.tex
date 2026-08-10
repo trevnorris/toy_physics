@@ -1,299 +1,434 @@
-\section{S10: Two Transverse Photons --- and the Count Comes from the
-Brane's Own Dimension}\label{step:S10}
+\section{S10: Conditional transverse mode count for the supplied in-plane
+action}\label{step:S10}
 
-\stagefield{Part / anchor}{Part I --- Light. Sector~1, step~2.}
-\claimstatus{\StatusText{Computed}}
-\stagefield{Purpose}{Count the independent waves carried by the brane's
-curl-only sector and identify why that count is two. The result is
-\(D_{\mathrm{brane}}-1\) transverse modes, obtained from the nullity of the
-dynamical matrix at each root. It is not inferred from a factorised
-determinant.}
+% S01
+\stagefield{Part / anchor}{The step plan places S10 in Phase~2 --- light
+(\StageFile{research/pde\_ledger\_v3/V3\_STEP\_PLAN.md}:354--380).}
+% S02
+\claimstatus{The mode count is \StatusText{Computed and Conditional}; its
+physical interpretation as light is \StatusText{Open}.}
+% S03
+\stagefield{Purpose}{This section reports the spectrum and basis-independent
+transverse nullities computed from the supplied action, together with the
+conditions and open obligations that bound those results.}
 
-\paragraph{Status.}
-\StatusText{Computed}. S9 supplied the curl-only cone; this step computes its
-mode content. The count is banked, while the brane dimension that supplies the
-number is explicitly \textbf{postulated}: \(D_{\mathrm{brane}}=3\) is what
-light requires of the medium, not something derived here.
+\paragraph{Status and boundary.}
+% S04
+For the supplied \(D\)-component in-plane field with its inherited, untested
+separation from out-of-plane fields, the real cosine ansatz, positive inertia
+and stiffness coefficients, the curl-only quadratic action, an unstrained rest
+background, no dissipation, linear response, nonzero real wavevector, and away
+from allowed exceptional strata, the nonzero root has \(D-1\) transverse null
+directions in every measured MAIN case \(D=2,3,4,5\), so the \(D=3\) member has
+two transverse directions; because both engines consume the same action and
+assumptions, their agreement protects against independent implementation errors
+but is not independent physical evidence for those premises
+(\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:13--47,
+:82--107;
+\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:73--177,
+:365--469, :676--780, :978--1082;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:26--59,
+:239--273, :461--496, :676--712;
+\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_cross\_engine\_comparator.out}:344--369,
+:417--442, :582--607, :655--680).
+% S05
+S10 keeps \(D\) symbolic for dimensions and measures the indexed sweep above,
+but it does not select the physical value \(D=3\) or establish which dimension
+nature selects (\StageFile{research/pde\_ledger\_v3/scripts/S10\_exports.py}:1911,
+:2744, :3476, :4208).
 
-\paragraph{Identification, flagged before use.}
-The field \(u\) is the \textbf{in-plane} displacement: a \(D\)-vector on the
-brane. It is not a \(D+1\)-vector that includes motion out of the brane into
-\(\pm w\). That out-of-plane motion is the separate \(h\)-branon that carries
-charge, and \(h\ne u_L\). This identification is load-bearing: if out-of-plane
-motion belonged to the same elastic sector, the transverse count at \(D=3\)
-would be \textbf{three}, not two.
-
-\paragraph{The argument, in three moves.}
-\resultanchor{1 --- Decompose about \(k\).} For
-\(u=a\exp[i(k\cdot x-\omega t)]\), the constant amplitude splits into one
-component along \(\widehat{k}\) and a perpendicular component in a
-\((D-1)\)-dimensional subspace:
+\paragraph{Supplied model and field identification.}
+% S06
+The shared specification supplies \(u\) as a \(D\)-component in-plane
+displacement and supplies its separation from every out-of-plane field, rather
+than deriving or dynamically testing that split
+(\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:13--28).
+% S07
+It also supplies a real cosine plane-wave ansatz, positive inertia and stiffness
+coefficients, a nonzero real wavevector, an unstrained rest background, no
+dissipation, linear response, and the quadratic truncation
+(\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:30--47,
+:82--107).
+% S08
+The supplied stiffness density and action are
 \[
-  D=1+(D-1).
+ S_{\mathrm{curl}}
+ =\frac12\sum_{i,j=1}^{D}(\partial_i u_j-\partial_j u_i)^2,
+ \qquad
+ L=\frac{\rho_{\mathrm{br}}}{2}\sum_{j=1}^{D}(\partial_tu_j)^2
+   -\frac{\mu_R}{2}S_{\mathrm{curl}}.
 \]
+% S09
+This action is an input to the mode count, not a result or an explanation of why
+other allowed elastic terms are absent.
 
-\resultanchor{2 --- The stiffness sees only the perpendicular part.} The
-antisymmetric derivative sends \(\nabla\times u\) to \(i k\times a\), in the
-three-dimensional notation, and in every \(D\) its quadratic form is
+\paragraph{Algebra of the supplied action.}
+% S10
+For a plane-wave amplitude \(a\), the antisymmetric spatial quadratic form is
 \[
-  \frac{1}{2}\sum_{i,j}(k_i a_j-k_j a_i)^2
-    = |k|^2|a|^2-(k\cdot a)^2.
+ \frac12\sum_{i,j=1}^{D}(k_i a_j-k_j a_i)^2
+   =|k|^2|a|^2-(k\mathbin{\cdot}a)^2.
 \]
-It therefore penalises only \(a_\perp\). A longitudinal amplitude has zero
-curl and zero energy cost. The longitudinal mode is \textbf{free, not
-forbidden}: there is no restoring force because the medium resists twisting
-and is indifferent to compression along the wave. An ordinary elastic solid,
-which resists both, also carries a longitudinal wave.
-
-\resultanchor{3 --- Solve per piece.} The equation of motion is
+% S11
+This form vanishes on the one-dimensional subspace \(a\parallel k\) and equals
+\(|k|^2|a|^2\) on the \((D-1)\)-dimensional subspace \(a\perp k\).
+% S12
+The corresponding amplitude equation and its two algebraic roots are
 \[
-  \rho_{\mathrm{br}}\omega^2 a
-    =\mu_R\bigl[k^2a-k(k\cdot a)\bigr].
+ \rho_{\mathrm{br}}\omega^2a
+ =\mu_R\bigl[|k|^2a-k(k\mathbin{\cdot}a)\bigr],
+ \qquad
+ \omega^2=0,
+ \quad
+ \omega^2=\frac{\mu_R|k|^2}{\rho_{\mathrm{br}}}.
 \]
-It gives
-\[
-  \omega^2=0 \quad\hbox{for }a\parallel k,
-  \qquad
-  \omega^2=\frac{\mu_R}{\rho_{\mathrm{br}}}k^2
-    \quad\hbox{for }a\perp k.
-\]
-The transverse modes are degenerate by \textbf{symmetry}, not coincidence:
-nothing in the equation distinguishes one perpendicular direction from
-another, so all carry the same frequency.
+% S13
+Within this supplied isotropic action, every direction in \(k^\perp\) has the
+same eigenvalue because the operator acts there as a scalar multiple of the
+identity.
+% S14
+That algebra must not be promoted into an attribution of the measured
+\(D-1\) count to curl-only stiffness, because the full-gradient stiffness
+control has the same nonzero root and the same transverse nullity at both
+shared dimensions (\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:366,
+:469, :677, :780, :1286, :1324, :1511, :1549;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:240,
+:273, :462, :496, :893, :902, :1070, :1079).
 
-\paragraph{The computed count.}
-The two audit engines evaluate the dynamical matrix at each root and compute
-its \textbf{nullity}. They separately compute the \textbf{transverse nullity},
-the corank of the dynamical matrix stacked on \(k^{\mathsf T}\), so that a
-null vector parallel to \(k\) is not miscounted as transverse. The count below
-is therefore not read off the multiplicity of a factor in a factorised
-determinant.
-\begin{center}
-\begin{tabular}{@{}cllc@{}}
-\toprule
-\(D\) & \(\omega^2=0\) &
-\(\omega^2=(\mu_R/\rho_{\mathrm{br}})k^2\) & sum \\
-\midrule
-2 & nullity 1; transverse 0 & nullity 1; transverse 1 & 2 \\
-\textbf{3} & nullity 1; transverse 0 &
-  \textbf{nullity 2; transverse 2} & 3 \\
-4 & nullity 1; transverse 0 & nullity 3; transverse 3 & 4 \\
-5 & nullity 1; transverse 0 & nullity 4; transverse 4 & 5 \\
-\bottomrule
-\end{tabular}
-\end{center}
+\paragraph{What the engines measure.}
+% S15
+Each engine constructs the Euler--Lagrange equations, obtains a dynamical matrix
+by an equation-of-motion route and a quadratic-form route, uses the
+quadratic-form matrix downstream, and solves its determinant for
+\(\omega^2\) (\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:190--208).
+% S16
+At each root, \(N2\) is the root-matrix nullity and \(N3\) is the
+basis-independent dimension of
+\(\ker M\cap k^\perp\), obtained from the rank after stacking the wavevector row
+(\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:230--257).
+% S17
+The two matrix routes test coding consistency rather than independent physics,
+and the displayed \(N6\) basis is not used to infer any transverse count
+(\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:190--208,
+:230--261).
 
-\noindent
-Thus the longitudinal nullity is one and the transverse nullity is \(D-1\).
-In particular, exactly two transverse polarisations require
-\(D_{\mathrm{brane}}=3\).
+\paragraph{Measured MAIN spectrum and per-root counts.}
+% S18
+Every reading in this list is generic-rank evidence for that supplied field
+split, ansatz, positive-coefficient, rest-background, dissipation-free, linear,
+quadratic, nonzero-wavevector regime and away from allowed exceptional strata,
+with entries written as \(N2/N3\).
+\begin{itemize}
+% S19
+\item At \(D=2\), the zero root has \(1/0\) and the nonzero root has \(1/1\)
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:73--74,
+:105, :112, :170, :177;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:26--27,
+:43, :46, :56, :59).
+% S20
+\item At \(D=3\), the zero root has \(1/0\) and the nonzero root has \(2/2\)
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:365--366,
+:397, :404, :462, :469;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:239--240,
+:257, :260, :270, :273).
+% S21
+\item At \(D=4\), the zero root has \(1/0\) and the nonzero root has \(3/3\)
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:676--677,
+:708, :715, :773, :780;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:461--462,
+:480, :483, :493, :496).
+% S22
+\item At \(D=5\), the zero root has \(1/0\) and the nonzero root has \(4/4\)
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:978--979,
+:1010, :1017, :1075, :1082;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:676--677,
+:696, :699, :709, :712).
+\end{itemize}
+% S23
+The raw nonzero-root formula is \(\mu_R|k|^2/\rho_{\mathrm{br}}\), which is
+positive under the supplied coefficient and wavevector premises, but its
+\(D=5\) sign is not cross-engine established because that joined sign row has a
+numeric or algebraic residual
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_cross\_engine\_comparator.out}:938--943).
+% S24
+The zero root retains one longitudinal degree of freedom rather than removing
+it, so the per-root nullities sum as \(1+(D-1)=D\) in every measured MAIN
+dimension
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:177--184).
+% S25
+The MAIN empty allowed-strata rows pass the live comparator, but no live
+artifact supplies a completeness verdict, so the headline remains generic and
+away from allowed exceptional strata
+(\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:385--408;
+\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:668--675).
 
-\paragraph{Exceptional strata.}
-The \(\S Q8\) calculation finds no allowed rank-drop stratum for \texttt{MAIN}
-in any swept dimension, nor for \texttt{XFORM\_FULLGRAD},
-\texttt{XFORM\_DIVONLY}, \texttt{XFORM\_SIGNFLIP}, or
-\texttt{XCOEF\_SCALE}. Thus the \(D-1\) count for the main package is not only
-generic: it has nowhere in the allowed region to fail. Only
-\texttt{XFORM\_ANISO} has an allowed stratum,
-\(k_2=k_3=0\) at \(D=3\) and \(k_2=k_3=k_4=0\) at \(D=4\). Generically its
-anisotropy splits the pair into two nonzero roots, whose transverse nullities
-are one and zero at \(D=3\), and two and zero at \(D=4\). On the stratum,
-with \(k\) along the anisotropy axis, the
-degeneracy returns: two roots, with transverse nullity two at \(D=3\) and three
-at \(D=4\). This stratum result is an orchestrator pairing by hand,
-\textbf{not a harness comparison}; the as-built tag grammar pinned at
-\texttt{s10-as-built} supplies no stratum scope token, while the repaired
-specification adds \texttt{STRATUM<s>}. The harness declares no cross-engine
-stratum pairs.
+\paragraph{Controls that change the stiffness form.}
+% S26
+At \(D=3\), the main curl-only sweep and the full-gradient stiffness control
+both have nonzero root \(\mu_R|k|^2/\rho_{\mathrm{br}}\) with transverse
+nullity \(2\), while the divergence-only stiffness control has that nonzero
+root with transverse nullity \(0\)
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:366,
+:469, :1286, :1324, :1727, :1830;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:240,
+:273, :893, :902, :1239, :1272).
+% S27
+At \(D=4\), the corresponding transverse nullities at the same nonzero root
+are \(3\), \(3\), and \(0\)
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:677,
+:780, :1511, :1549, :2038, :2141;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:462,
+:496, :1070, :1079, :1461, :1495).
+% S28
+The full-gradient stiffness control puts total nullity \(D\) on its sole root,
+whereas curl-only leaves the one longitudinal direction at the zero root and
+puts \(D-1\) directions on the nonzero root, so curl-only determines the
+longitudinal disposition here rather than uniquely producing the transverse
+count
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:260--269).
+% S29
+The divergence-only stiffness control reverses the longitudinal and transverse
+sectors, confirming that the stiffness form can change the count even though
+curl-only is not its unique source.
 
-\paragraph{Why this is not a codimension count.}
-The bulk never enters the computation. There is no codimension anywhere in
-the dynamical matrix or its nullities; only the brane's own dimension appears.
-Codimension is therefore not merely the wrong number, but an
-\textbf{absent quantity}. The \(D=2,3,4,5\) pattern above is the evidence.
+\paragraph{Control that changes the inertia form.}
+% S30
+The anisotropic-inertia control keeps \(S_{\mathrm{curl}}\) but replaces the
+kinetic quadratic form by
+\(s_\rho(\partial_tu_1)^2+\sum_{j=2}^{D}(\partial_tu_j)^2\), with
+\(s_\rho>0\) and \(s_\rho\ne1\), so it does not admit isotropic inertia
+(\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:421--472).
+% S31
+Generically at both shared dimensions \(D=3,4\), that inertia change leaves
+total \(N2\) over the nonzero roots at \(D-1\) but reduces total exactly
+transverse \(N3\) from \(D-1\) to \(D-2\), placing \(D-2\) on one nonzero
+branch and \(0\) on the additional branch
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:2953--3121,
+:3468--3636;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:2113--2186,
+:2453--2544).
+% S32
+Positivity of the additional anisotropic branch is a premise-backed inference,
+not a joined sign verdict, because the \(D=3\) and \(D=4\) third-root sign rows
+remain unresolved
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_cross\_engine\_comparator.out}:1498--1503,
+:1782--1787).
+% S33
+On the allowed stratum \(k_2=\cdots=k_D=0\) with \(k_1\ne0\), the raw reruns
+restore total \(N2/N3\) to \(2/2\) at \(D=3\) and \(3/3\) at \(D=4\), while
+\(s_\rho=1\) remains excluded
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:3269,
+:3289--3355, :3775, :3795--3861;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:2246,
+:2258--2292, :2601, :2613--2647).
+% S34
+Those generic \(N2\) and \(N3\) rows have joined PASS verdicts, but the stratum
+loci and reruns are paired raw readings only because their tag names do not
+join, and neither engine supplies completeness
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_cross\_engine\_comparator.out}:1319--1344,
+:1386--1411, :1453--1478, :1603--1628, :1670--1695, :1737--1762,
+:4698--4749, :5136--5187, :8009--8033, :8254--8278;
+\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:385--408).
 
-\paragraph{Equations and dimensions for general \(D\).}
-The Lagrangian is an energy density on a \(D\)-dimensional brane,
-\[
-  L=\frac{1}{2}\rho_{\mathrm{br}}(\partial_tu)^2
-    -\frac{1}{2}\mu_R(\operatorname{curl}u)^2,
-  \qquad
-  (\operatorname{curl}u)^2
-    \equiv\frac{1}{2}\sum_{i,j}(\partial_i u_j-\partial_j u_i)^2.
-\]
-The latter is the antisymmetric derivative in every \(D\). At \(D=3\), its
-relation to the ordinary \( |\nabla\times u|^2 \) is addressed under
-Verification below. The constituent dimensions close as functions of \(D\):
-\[
-  [\rho_{\mathrm{br}}]=(-D,0,1),
-  \qquad
-  [\mu_R]=(2-D,-2,1).
-\]
-At \(D=3\) these become \((-3,0,1)\) and \((-1,-2,1)\), agreeing with the
-registry.
-
-These formulas explain an S9 loose end by identity. S9 found that changing the
-assumed brane dimension corrupted both constituent dimensions while the speed
-check stayed green. For every \(D\), however,
-\[
-  [\mu_R]-[\rho_{\mathrm{br}}]
-    =(2-D)-(-D)=2
-\]
-in the length slot. The speed's dimension \emph{cannot} see the brane
-dimension; the apparently weak check is a property of the physics, not an
-unexplained audit blind spot.
-
-\paragraph{What is new.}
-\begin{center}
-\begin{tabular}{@{}lll@{}}
-\toprule
-item & class & why \\
-\midrule
-\(D_{\mathrm{brane}}=3\) & \textbf{postulated} & what light requires; not derived \\
-mode count & \textbf{derived} & nullity: \(D_{\mathrm{brane}}-1\) transverse, one longitudinal \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\noindent
-The dimension closes a real hole: S9's dimensions depended on it, but it had
-not been declared. The derived \(n_{\mathrm{pol}}\) is deliberately not a
-separate registry row. The constraint machinery rejects relations whose
-residual contains discrete symbols, and the closed schema has no vocabulary
-for expressing that one discrete value derives from another. A bare row would
-make a derived count look like a free choice, which is less faithful than
-omitting it.
-
-\paragraph{Inputs, by locus.}
-The Lagrangian, \(\rho_{\mathrm{br}}\), \(\mu_R\), and the curl-only form come
-from S9. The identification of \(u\) as the in-plane displacement is made and
-flagged in this step. \textbf{Nothing comes from the bulk}; it does not enter.
-
-\paragraph{Regime.}
-Linear response about an unstrained brane; small oscillations.
-
-\paragraph{Departure.}
-None at this step. But \(\omega^2=0\) means the longitudinal slot is
-\textbf{non-propagating}, not absent. S10 therefore does not deliver Maxwell's
-no-longitudinal-photon demand; once the medium is allowed to be compressible,
-that zero lifts. This is not a defect awaiting repair. Exact Maxwell would be
-the failure: it puts charge in by hand, so a model matching it exactly would
-have no way to anchor charge physically. The extra slot is that anchor and is
-carried forward to S11. It must not be confused with the charge field itself:
-\(u_L\) is in-plane, whereas the charge-bearing \(h\)-branon is out of plane
-and \(h\ne u_L\).
-
-\paragraph{Prior art --- and the over-claim to refuse.}
-This sector's algebra is MacCullagh's rotational aether of 1839: stored energy
-depending only on the rotation of displacement gives \(D-1\) transverse waves
-at one speed and a longitudinal mode with zero restoring force. Prior art is an
-oracle here, not a premise; the result was computed independently and then
-checked against it. But S10 linearises about \(v_0=0\), which is MacCullagh's
-own regime. Agreement with him is therefore agreement inside his domain of
-validity and is \textbf{not evidence that this medium differs from a
-nineteenth-century elastic aether}.
-
-What is genuinely ours here is narrower: the fact that the bulk never enters,
-so codimension cannot be the count. The in-plane/out-of-plane split is the
-standard brane-world decomposition, with the \(h\)-branon filed as KNOWN prior
-art in \texttt{docs/medium\_requirements\_and\_prior\_art.md:142}; the
-\(D=2,3,4,5\) sweep is an evidence exercise over the standard \(D-1\)
-identity, not a result; and retaining the longitudinal zero as a charge anchor
-is recorded only as NOT-FOUND, which is not originality. The historical
-objections concerning a longitudinal mode, a preferred frame, and
-matter--aether coupling are not answered at S10.
+\paragraph{Controls that change a stiffness coefficient.}
+% S35
+At \(D=3\), multiplying the curl stiffness by a positive dimensionless scalar
+\(s\) changes the nonzero root to \(s\mu_R|k|^2/\rho_{\mathrm{br}}\) while
+leaving the per-root \(N2/N3\) readings \(1/0\) and \(2/2\)
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:3972--4077;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:2800--2836).
+% S36
+At \(D=3\), reversing the sign of the curl stiffness changes the nonzero root
+to \(-\mu_R|k|^2/\rho_{\mathrm{br}}\) and makes it unstable while leaving the
+per-root \(N2/N3\) readings \(1/0\) and \(2/2\)
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:2339--2443,
+:2573;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:1675--1709,
+:1750).
+% S37
+Their unchanged \(N3\) values are control-specific, not a rule that only a
+stiffness-form change can move exact transversality, because the
+anisotropic-inertia control does move it.
+% S38
+No control in this sweep changes the in-plane field content, the rest-background
+premise, dissipation, or the quadratic truncation, so those remain supplied
+conditions.
 
 % NOT \stagefield{Verification}: that macro suppresses Verification in the
-% default build. The limitations and the meaning of the counters must stay visible.
-\paragraph{Verification.}
-The rebuilt evidence uses two independently constructed engines, Mathematica
-(\StageFile{research/pde\_ledger\_v3/mathematica/S10\_brane\_mode\_spectrum\_mathematica\_audit.wl})
-and SymPy
-(\StageFile{research/pde\_ledger\_v3/scripts/S10\_brane\_mode\_spectrum\_sympy\_audit.py}).
-The rebuilt harness reports, over both committed outputs:
+% default build, so the comparator state and limitations below stay visible.
+\paragraph{Live comparator disposition.}
+% S39
+Across the \(26\) shared generic root cases, each of the \(N2\) rank, \(N2\)
+nullity, \(N3\) stacked rank, \(N3\) transverse nullity, \(N4\) nullity
+difference, and \(N7\) basis-count families has \(26\) PASS and \(0\) FAIL
+rows, and these are bare-integer rather than empty-container comparisons
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_cross\_engine\_comparator.out}:344--369,
+:417--442, :582--607, :655--680, :1319--1344, :1386--1411,
+:1453--1478, :1603--1628, :1670--1695, :1737--1762).
+% S40
+The \(Q3\) root-count family has \(13\) PASS and \(0\) FAIL rows, while the
+three premise-sensitive sign rows for MAIN at \(D=5\) and anisotropic inertia
+at \(D=3,4\) remain unresolved and may not be quoted as comparator-established
+signs
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_cross\_engine\_comparator.out}:938--943,
+:1498--1503, :1782--1787).
+% S41
+On its full live surface the comparator reports \(388\) agreements, \(164\)
+disagreements, \(10\) unparsed shared rows, and \(10\) format issues, and its
+\texttt{FINAL\_GUARD} is \texttt{FAIL}
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_cross\_engine\_comparator.out}:9288--9313).
+% S42
+That failure means the joined surface is not clean; it is not itself a
+refutation of the MAIN mode count.
+% S43
+The action payloads have no shared name, and the \(13\) shared Euler--Lagrange
+names fail representationally because one engine emits expressions and the
+other equalities, so this card claims no joined action or Euler--Lagrange
+agreement
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:655--658).
+% S44
+The \(13\) route-account rows fail as route-token content, and the comparator
+does not compare the underlying route constructions, so the second matrix route
+remains only an internal consistency test
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_cross\_engine\_comparator.out}:9288--9313;
+\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:190--208).
+% S45
+Even the passing generic families remain common-mode with respect to the shared
+action definitions and assumptions.
 
-\begingroup\tiny
-\begin{verbatim}
-CROSS_ENGINE: agree=517 cardinality_invalid=55 disagree=28 empty=18 naming_mismatch=13 shape_mismatch=59
-CROSS_ENGINE_COVERAGE: 545/690
-CONTROL_RESPONSE[wl]: compared=6 responsive=6 invariant=0    CONTROL_RESPONSE[py]: 6/6 responsive
-TAG_PARITY[wl]: cells=13 gaps=0                              TAG_PARITY[py]: cells=13 gaps=0
-DIMENSIONS[wl]: total=2983 compared=430  homogeneous=428  unwalked=3
-DIMENSIONS[py]: total=4227 compared=822  homogeneous=802  unwalked=0
-LAGRANGIAN_ACTION_COVERAGE 13/13        EULER_LAGRANGE_ACTION_COVERAGE 13/13
-\end{verbatim}
-\endgroup
+\paragraph{Dimensional result and its boundary.}
+% S46
+With the supplied \([u]=(1,0,0)\) in length--time--mass powers, both raw
+transcripts emit
+\[
+ [\rho_{\mathrm{br}}]=(-D,0,1),\qquad
+ [\mu_R]=(2-D,-2,1),\qquad
+ [\mu_R]-[\rho_{\mathrm{br}}]=(2,-2,0)
+\]
+for every MAIN dimension
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:223--225,
+:515--517, :826--828, :1128--1130;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:100--127,
+:317--344, :537--564, :753--780).
+% S47
+This is a homogeneity result under the supplied action and supplied field
+dimension, not an independent measurement or a joined three-object dimension
+family, and matching raw values remain common-mode at those inputs.
+% S48
+The field-dimension premise \([u]=(1,0,0)\) has lost its only live falsifier
+because the tree contains no S10 registry-dimension comparison, although the
+emitted dimension solve and other non-vacuous dimensional objects retain their
+stated evidential status
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:503--512).
+% S49
+No bulk quantity, ambient dimension, embedding dimension, or codimension occurs
+in either S10 engine or raw transcript, so the \(D-1\) here is an in-plane
+corank rather than a computed codimension
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:396--405).
+% S50
+That absence says nothing about whether \(D_{\mathrm{brane}}\) can be derived as
+a codimension elsewhere, and S10 neither supplies nor excludes such a later
+derivation
+(\StageFile{research/pde\_ledger\_v3/SUBSTRATE\_REQUIREMENTS.md}:103--119).
 
-The denominator is load-bearing: only 545 of 690 declared rows reach a verdict;
-145 do not. The 28 disagreements are all accounted for as sentinel spelling,
-non-canonical basis representation, undischarged sign premises, or a shared-spec
-convention gap. In no row that reaches a verdict do the engines compute
-different physics.
+\paragraph{Export-chain guard and measured reach.}
+% S51
+The live S9-to-S10 export guard compares exactly three SymPy records ---
+\([\rho_{\mathrm{br}}]\), \([\mu_R]\), and their difference --- and reports
+exact equality with zero residuals, but the records are not mutually independent
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:4215;
+\StageFile{research/pde\_ledger\_v3/scripts/S10\_exports.py}:405--427;
+\StageFile{research/pde\_ledger\_v3/scripts/S9\_exports.py}:395--414).
+% S52
+In the scratch form ablation, the S9 stiffness dimension moved to
+\((4-D,-2,1)\), S10 emitted residuals \(0,1,1\), exited with status \(1\), and
+wrote no S10 export
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:537--548).
+% S53
+In the scratch coefficient ablation, multiplying the S9 curl stiffness by
+\(7\) moved the speed display to \(7\mu_R/\rho_{\mathrm{br}}\) while leaving
+the three compared dimensions unchanged, after which S10 emitted three zero
+residuals, reported \(617\) live records, exited with status \(0\), and wrote
+an export
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:550--556).
+% S54
+These ablations show that the guard caught the measured form mutation because
+it moved compared dimensions but missed the measured dimensionless coefficient
+mutation even though the spectrum moved.
+% S55
+The guard is a three-value cross-step SymPy comparison rather than a second
+cross-engine check, and it is blind to dimension-preserving mutations and to
+common-mode premise mutations that move upstream and downstream records
+consistently
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:558--578).
 
-The action is now compared for the first time. All 13 Lagrangian and 13
-Euler--Lagrange rows agree. Single-difference controls on derivative order,
-variable, function, argument membership, coefficient, and stiffness form reach
-\texttt{DISAGREE}; argument order still agrees because it is an emission
-convention rather than content.
+\paragraph{What the conditional count does not settle.}
+% S56
+Within the light sector, the surviving zero-frequency longitudinal direction
+has no Maxwell counterpart; its onward disposition belongs to S11, and S10
+assigns it no further interpretation
+(\StageFile{research/pde\_ledger\_v3/V3\_STEP\_PLAN.md}:354--380).
+% S57
+The result assumes an unstrained medium at rest, no convective or dissipative
+terms, and a quadratic action, and it does not establish the count for moving,
+strained, dissipative, or nonlinear backgrounds.
+% S58
+Finite thickness, microscopic discreteness, and frequency-dependent moduli are
+absent from the model rather than idealisations that S10 tested
+(\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:30--43;
+\StageFile{research/pde\_ledger\_v3/scripts/S10\_brane\_mode\_spectrum\_sympy\_audit.py}:378--400;
+\StageFile{research/pde\_ledger\_v3/mathematica/S10\_brane\_mode\_spectrum\_mathematica\_audit.wl}:150--190).
+% S59
+Accordingly, S10 was not asked to establish what happens with finite-thickness
+structure, a discrete medium, or dispersive moduli.
 
-The \(\S Q7\) history reverses the old card's claim. Before repair, the SymPy
-check computed curl minus curl for every package, so its residual was zero by
-construction and the check could not fail; only one engine genuinely tested
-that prediction while the record said two. After repair, both engines at
-\(D=3\) return residual zero for the four curl-form packages and nonzero for
-\texttt{XFORM\_FULLGRAD} and \texttt{XFORM\_DIVONLY}. Even now \(\S Q7\) drops
-the stiffness sign and coefficient: \texttt{XFORM\_SIGNFLIP}'s payload is
-identical to \texttt{MAIN}'s despite the opposite sign in its action.
-\textbf{A zero \(\S Q7\) residual is a claim about the form, never about the
-term.} Moreover, the reference-side curl components are typed rather than
-computed from the Levi--Civita definition in both as-built engines.
-
-\paragraph{Limitations --- recorded, not fixed.}
+\paragraph{Open substrate obligations for interpreting the count as light.}
+% S60
+The substrate register has seven OPEN entries sourced to S10, none tested by
+the supplied action, and their failure scopes mark the physical interpretation
+boundary
+(\StageFile{research/pde\_ledger\_v3/SUBSTRATE\_REQUIREMENTS.md}:103--119,
+:151--163, :165--183, :185--210, :212--228, :230--254, :256--275).
 \begin{itemize}
-\item The \(D=3\) count of two rests on an in-plane/out-of-plane decoupling
-that \textbf{nobody has computed}. The identification of \(u\) as in-plane is
-load-bearing: including out-of-plane motion in the same elastic sector would
-give three rather than two.
-
-\item \(D_{\mathrm{brane}}=3\) is postulated. Because the bulk never enters,
-nothing here can derive it.
-
-\item The absence of a propagating longitudinal wave is assumed, not derived:
-the curl-only action sets its restoring stiffness to zero by construction. It
-removes the restoring force, not the degree of freedom.
-
-\item Nullspace bases are never compared for span; eleven disagreement rows
-compare representation alone. The thirteen downstream-route rows are a named
-non-check that cannot fail: bare route symbols can be reconciled by the
-comparator without testing their meaning.
-
-\item The exceptional-stratum re-run is not machine-compared; its agreement is
-the hand pairing reported above.
-
-\item Cross-engine agreement \textbf{did not improve} when \(\S Q7\) was
-repaired. Across that repair, \texttt{DISAGREE} moved \(32\mathbin{\to}28\),
-\texttt{NAMING\_MISMATCH} moved \(17\mathbin{\to}21\), and the coverage
-numerator moved \(541\mathbin{\to}537\): four rows moved from compared-and-wrong
-to not compared. A later naming declaration moved rows in the other direction;
-it must not be credited to the repair.
-
-\item Declared spellings carry a large share of agreement: 218 of the 517
-agreements require a declaration, while the engines left to their own
-orthography agree on 299. Those declarations are reasoned and disclosed, but
-they are part of the evidence.
-
-\item \texttt{XFORM\_SIGNFLIP} and \texttt{XFORM\_ANISO} are coefficient
-controls despite their prefix; only \texttt{FULLGRAD} and \texttt{DIVONLY}
-change the stiffness functional. Twenty SymPy and two Mathematica dimension
-payloads on the anisotropic stratum are non-homogeneous after numeric
-wavevector substitution, and three Mathematica payloads are unwalked.
-
-\item The comparator's bijection-verification line remains untested, and an
-LRU-cache-dependent derivative-symbol mutation hazard is real though it fired
-zero times in the recorded run. The shared specification was repaired after
-the pinned engines were built, so its current text is not their as-built input.
-
-\item The physical scope remains linearisation about \(v_0=0\), a sharp
-zero-width sheet, no dissipation, frequency-independent moduli, the continuum
-limit, and vanishing amplitude.
+% S61
+\item \texttt{R-S1-01} still requires delivery of
+\(D_{\mathrm{brane}}\); without it, selecting \(D=3\) is an assumption restated
+rather than a result
+(\StageFile{research/pde\_ledger\_v3/SUBSTRATE\_REQUIREMENTS.md}:103--119).
+% S62
+\item \texttt{R-S6-02} still requires the unstrained rest reference state to
+be an equilibrium of the substrate action; failure is inherited by the root,
+the count, and the dimensions
+(\StageFile{research/pde\_ledger\_v3/SUBSTRATE\_REQUIREMENTS.md}:151--163).
+% S63
+\item \texttt{R-S8-01} still requires the substrate to deliver the curl-only
+stiffness functional; another form may preserve the transverse result while
+destroying the no-longitudinal claim
+(\StageFile{research/pde\_ledger\_v3/SUBSTRATE\_REQUIREMENTS.md}:165--183).
+% S64
+\item \texttt{R-S8-02} still requires the joint quadratic operator on in-plane
+\(u\) and out-of-plane \(h\), including whether \(h\) is degenerate with the
+transverse pair; failure changes the headline count, while block mixing alone is
+not the register's named mechanism
+(\StageFile{research/pde\_ledger\_v3/SUBSTRATE\_REQUIREMENTS.md}:185--210).
+% S65
+\item \texttt{R-S8-03} still requires the positive stiffness sign; failure
+turns the \(D=3\) transverse pair into two exponentially growing modes rather
+than waves without changing the mode count
+(\StageFile{research/pde\_ledger\_v3/SUBSTRATE\_REQUIREMENTS.md}:212--228).
+% S66
+\item \texttt{R-S8-04} still requires internal angular momentum or couple
+stress; without it, the register says the curl-only functional is not an
+admissible continuum mechanics and its counts come from a functional no medium
+can have
+(\StageFile{research/pde\_ledger\_v3/SUBSTRATE\_REQUIREMENTS.md}:230--254).
+% S67
+\item \texttt{R-S8-05} still requires an admissible frame for rotational
+stiffness; an external reference gives every sector result a
+preferred-orientation signature
+(\StageFile{research/pde\_ledger\_v3/SUBSTRATE\_REQUIREMENTS.md}:256--275).
 \end{itemize}
+% S68
+Until those obligations are discharged, the permanent S10 result is only a
+conditional mode count for the supplied quadratic action, not an established
+viable physical light sector.

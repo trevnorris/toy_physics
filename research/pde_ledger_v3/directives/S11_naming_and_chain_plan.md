@@ -17,8 +17,9 @@ are fixed changes what has to be rebuilt. ⭐ This proposes one route and states
 | what **both** S10 engines emit | ⛔ `Q2_MATRIX_A`, `Q2_MATRIX_B` |
 | `Q2_MATRIX` in `S10_py_directive.md` / `S10_wl_directive.md` | ⛔ **0** and **0** — handed to neither builder |
 | S10 py tag suffixes · wl · shared | 4233 · 2983 · ⛔ **562** |
-| S10 `MAIN` `D3` quantities · S11 spec quantities · shared strings | 304 · 80 · ⛔ **1** |
-| that one shared string | `ROOT_ORDERING` — ⚠ and the two steps mean **different objects** by it |
+| S10 `MAIN` `D3` quantities · **S11 spec** quantities · shared strings | 304 · 80 · **1** ⚠ **this row misled — see below** |
+| S10 `MAIN` `D3` · **S11 ENGINE emissions** · shared quantity strings · shared keys | 304 · 211 · **14** · ⛔ **8** |
+| the colliding families | `ROOT_ORDERING`, `PREMISE_U_DIMENSION`, and six `roots_n*` count families — ⚠ the two steps mean **different objects** by them |
 | `S10_exports.LEDGER['root_ordering_d3']` | `class DERIVED`, `(0, mu_R*(k1²+k2²+k3²)/rho_br)` — S10's root spectrum |
 | `ROOT_ORDERING` in `S10_SHARED_PHYSICS.md` | ⛔ **absent** — S10's engine coined the key |
 | entries in `S10_exports.LEDGER` carrying a `dim` field | ⛔ **0** (`S9_REWRITE_PLAN#D5`'s sketch was never built) |
@@ -28,25 +29,24 @@ key collision).
 
 ---
 
-## ⭐⭐ The thing that decides the plan
+## ⭐⭐ The two namespaces — ⚠ and the argument that turned out NOT to decide this
 
-⚠⚠ **Unifying the vocabulary across steps would turn one collision into many.**
+⛔⛔ **This section originally argued that unifying the vocabulary would turn one collision into many, and
+built the plan on it. ⭐ It is superseded: under the route's item 1 the collision count is MOOT.**
 
-S11's `MAIN` is a **different action** from S10's `MAIN` — `(μ_R/2)S_curl + (B_comp/2)S_div` against
-curl-only. Both steps run a similar question list, so both compute a `DET_M`, a `ROOT_ORDERING`, a
-`COEFFICIENT_ORDERING`. ⇒ ⭐ **the two vocabularies are currently disjoint by accident, and that accident is
-the only thing preventing widespread key collisions.** Make both engines emit the spec's names and the
-collisions arrive at scale.
+⚠ **It was also measured against the wrong thing.** *"304 · 80 · 1"* compared S10's emissions to **S11's
+spec backticks**, ⛔ not to what an S11 engine emits. Against the engine the intersection is **14** quantity
+strings and **8** keys — ⇒ ⭐ collisions are **systematic**, ⛔ not the single accident the first draft
+reported, because both steps run a similar question list over **different actions**.
 
-⇒ ⭐⭐ **These are two different namespaces and must be decided separately:**
+⭐ **What survives, and it is the part that matters:** these are **two namespaces**, and conflating them is
+what produced the S11 PY decision list's critical defect — a rule making the export key a lowercased tag
+name, which is correct **within** a step and collides **across** steps.
 
 | namespace | scope | what it is for |
 |---|---|---|
 | **emitted tag name** | py ↔ wl, **within** one step | the cross-engine comparator's join key |
-| **`LEDGER` export key** | **across** steps | the chain's carry-forward and overwrite key |
-
-⛔ Conflating them is what produced the S11 PY decision list's critical defect: a rule that made the export
-key a lowercased tag name, which is correct **within** a step and collides **across** steps.
+| **`LEDGER` export key** | **across** steps | the chain's carry-forward key |
 
 ---
 

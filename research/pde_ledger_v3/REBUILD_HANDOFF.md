@@ -531,11 +531,30 @@ metadata explicitly** ⇒ [[feedback-no-fabrication-forcing-rules]].
 
 ⛔ **Rule 7's TRIGGER fires on EVERY decision list below, including the spec-repair list.**
 
-1. ⭐⭐ **SPEC REPAIR FIRST** — the two defects above. ⛔ Orchestrator-written ⇒ decision list gets
+1. ⭐⭐ **SPEC REPAIR FIRST** — the five defects above. ⛔ Orchestrator-written ⇒ decision list gets
    **Codex + Grok** ⇒ repair ⇒ **two legs on the repaired spec.** ⛔ No engine is touched until this closes.
+   ⭐⭐ **DECISION LIST DONE AND FOLDED — `dfd95dcb`**, `directives/S11_spec_repair_decisions_v2.md`.
+   ⚠ Two legs returned **ten** findings, incl. an **answer leak** (the list stated the *reason* `s_ρ` is a
+   `Q6` unknown, and the reason is derivable into the answer) and an item that **would have opened the hole
+   it was meant to close** (`FAILURE_TOKEN` is a **field** of a five-field object whose other four are live
+   operands; a tag-level exemption licenses typing all five). ⭐ **The fold came out SHORTER.**
+   ⚠ ⭐ **The legs DISAGREED twice, and that was the most informative output** — one blocked item 2c with a
+   computation the other had cleared. ⇒ `C17`/`C18` registered `f87132ef` rather than absorbed.
 2. **PY engine rebuilt** under `S9_REWRITE_PLAN.md`'s pattern — ⭐ imports `scripts/S10_exports.py`, binds
    its objects, writes `scripts/S11_exports.py`. ⛔ Codex-written ⇒ **fresh Claude agent + Grok.**
 3. **WL engine rebuilt** — ⭐ imports **nothing**, re-derives independently. ⛔ Same two legs.
+
+⛔⛔⛔ **BOTH ENGINES ARE A REWRITE FROM THE REPAIRED SPEC, ⛔ NOT A REPAIR OF WHAT IS THERE.**
+⚠ **User, 2026-08-09:** *"we'll need to rewrite the sympy and wl scripts for S11. It's probably too big for
+a simple repair job."*
+⭐ **The spec already forces it**: `§5`'s NO VERDICT section says *"Both as-built S11 engines end in a
+`VERDICT` tag, and one renders a symbolic boolean as the typed word `TRUE`/`FALSE` with the residual
+discarded. ⛔ Neither survives here."* ⇒ **the ending both engines were built toward is deleted.**
+⚠⚠ **THE WL ENGINE IS THE TRAP: it RUNS — 3750 tags, 84 s, exit 0 — and that is exactly what will tempt a
+patch.** ⛔ Running is not the bar; **being built from the repaired spec is.** ⭐ It also predates
+`§8`'s one-tag-per-named-object rule, and the two as-built engines share **exactly one** tag suffix
+(`VERDICT`) ⇒ ⛔ **there is no tag namespace worth preserving in either.**
+⚠ The PY engine will not even start (`registry_read`, `:21`), so only the WL side invites this mistake.
 4. Run both into committed `out/`; commit `S11_exports.py`.
 5. **Cross-engine comparator** — ⭐ join on the standard name, as `S10_cross_engine_comparator.py` does.
    ⛔ No pair table, ⛔ no YAML, ⛔ no harness.

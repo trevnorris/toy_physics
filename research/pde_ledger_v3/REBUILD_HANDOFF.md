@@ -15,7 +15,7 @@ typed sentences with no CAS object behind them, missed by eight review legs.
 | step | state |
 |---|---|
 | S9 | rebuilt |
-| S10 | ▶ **CHAIN + COMPARATOR BOTH DONE** — export `e644876c`+`c84263ed`, comparator `82443c95`. **20 legs, ⛔ no physics moved.** ⭐⭐ **NEXT: the STEP RECORD** (stale: 664 lines, 23 dead citations), then card → D12 → registers. `.wl` untouched |
+| S10 | ▶ **CHAIN + COMPARATOR + STEP RECORD ALL DONE** — export `e644876c`+`c84263ed`, comparator `82443c95`, **record `e167b07f`** (664 → 828 lines, 4 builds / **14 legs**; ⛔ no number in it was ever found wrong). ⭐⭐ **NEXT: the PAPER CARD**, then D12 → registers. `.wl` untouched |
 | S11 `stray_longitudinal` | ▶ **IN PROGRESS** — spec done `f49a1684`; engines not yet rebuilt |
 | S11b-A `interface_response` | built under the old pattern → **rebuild** |
 | S11b-B `interface_assembly` | built under the old pattern → **rebuild** |
@@ -221,8 +221,10 @@ no allowed stratum at any count, so nothing on the export path exercises it.
 | **the D12 naming pass** | ⭐⭐ **DRIVEN BY THE COMPARATOR'S OUTPUT, ⛔ not by hand.** User decision 2026-08-09: **adjudicate BOTH engines**, ⛔ not wl-only — the py tag suffix **IS the ledger key**, so py-as-default-authority is the unpoliced binding the light-cone re-point exploited |
 | `.wl` rename | ⭐ engine EXISTS (1807 lines, 660 KB output) and is correct — ⛔ **do NOT rebuild it**. Emitted **name strings only** |
 | **step record** `steps/S10_two_transverse_photons.md` | ⛔ **STALE — 664 lines, 23 citations to deleted machinery** |
-| paper card `paper/steps/S10_two_transverse_photons.tex` | ⭐ **targeted edit, ⛔ NOT a rewrite** — 2 stale refs in 299 lines; physics verified unchanged |
-| requirements + defect registers | not started |
+| ⭐⭐ **paper card** `paper/steps/S10_two_transverse_photons.tex` | ⛔⛔ **DO THIS NEXT. ⚠ The old "2 stale refs" estimate is WRONG — re-measured 2026-08-09.** 299 lines carrying **FIVE** defect classes the record just spent 14 legs removing: `charge` ×7 + `anchor` ×6 (⛔ the retracted *"the extra mode is the anchor"*), `codimension` ×4 (needs the `R-S1-01` bound), `three-dimensional` + `polarisation` (⛔ the **excluded** over-claim, verbatim), `elastic solid` ×1 (⛔ substance language), `harness` ×3 (deleted machinery), `curl-only` ×4 (needs the `FULLGRAD` qualification). ⭐ **The record is now the authority ⇒ the decision list is ONE property: the card may not claim anything the record refuses.** |
+| **D12 naming pass** | 2 verified pairs; ⛔ **injectivity across the worklist FIRST**. Touches **both** engines ⇒ physics-bearing ⇒ full gate |
+| **defect register** | ⭐ `C16` added `e167b07f`+ — `Q8a`'s stratum enumeration. ⚠ Remaining: sweep the S10 record's 15 dispositions for anything not yet carrying a row |
+| requirements register | ⭐ already populated — **11 entries, 7 naming S10**. ⚠ Check only that the record's new limits are reflected |
 
 ### ⭐⭐⭐ WHAT THE S10 RECORD ROUNDS MEASURED — ⚠ physics, ⛔ not bookkeeping
 

@@ -8,16 +8,21 @@ measured to emit physics conclusions as **typed sentences with no computation be
 in **three independently-built steps**, and **eight review legs missed it.** ⛔ Do not build on a v3 script
 result without checking it there first.
 
-⇒ **Rebuild progress:** S9 ✅ · S10 ✅ **CLOSED** `e5a2c695` · **S11 ⏸ HELD** — spec repaired and closed,
-both engines rebuilt and running, but the **comparison method is changing** · S11b-A, S11b-B to rebuild ·
-S11b-C never built. ⛔ Detail belongs in `REBUILD_HANDOFF.md`, not here.
+⇒ **Rebuild progress:** S9 ✅ · **S10 ▶ record DONE `e167b07f`** — chain `e644876c`+`c84263ed`, comparator
+`82443c95`, step record rebuilt over 4 builds / 14 legs. ⚠ **S10 still owes: the paper card, the D12
+naming pass, the registers.** · **S11 ⏸ HELD** · S11b-A, S11b-B to rebuild · S11b-C never built.
+⛔ Detail belongs in `REBUILD_HANDOFF.md`, not here.
 
-⚠⚠ **METHOD CHANGE IN FLIGHT, 2026-08-07 — a parallel session is piloting it on S9.** ⭐ Comparison moves
-from **nominal** (join on tag names, then `simplify`) to **SEMANTIC** (evaluate both engines at shared
-**exact** points, join on a **fingerprint**). ⚠ Our failure has a name — the **consistent comparison
-problem**, 1986 — and ⛔ no amount of spec care closes it. ⇒ `docs/method_prior_art_findings.md`.
-⛔ **A fingerprint replaces tag MATCHING, never tag INVENTORY**: it does not catch fabrication, and only
-mutation does.
+⚠⚠ **OUR FAILURE HAS A NAME — the *consistent comparison problem*, 1986** ⇒ `docs/method_prior_art_findings.md`.
+⛔ No amount of spec care closes it.
+⛔⛔ **CORRECTED 2026-08-06 — ⛔ do NOT join on a fingerprint.** ⚠ An earlier version of this line said
+comparison would move to joining on a **fingerprint**; that was **retracted**, and the counterexample is
+in our own tree (`S11bB…:539` — every passing row emits an identical payload, so repeated zeros, dimension
+vectors and booleans all collide **deterministically**). ⭐ **A fingerprint is an EQUALITY ORACLE for
+objects ALREADY PAIRED; it cannot discover which object corresponds to which.**
+⭐ **Correct form:** a stable shared `quantity_id` as the **join key**, with the exact evaluation vector as
+a **typed equality oracle after pairing**. ⇒ what that deletes is the symbol-spelling negotiation layer,
+⛔ never the tag inventory.
 
 Then `research/pde_ledger_v3/NEXT_SESSION.md` for everything else.
 

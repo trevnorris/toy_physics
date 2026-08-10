@@ -511,3 +511,38 @@ delete the row. ⛔ A row that reports the same verdict for `banana` and for the
 because it occupies a line in the report.
 
 **Status: OPEN.** Carried in S10's record as a named non-check.
+
+---
+
+### ⛔⛔ **`C16`** — `Q8a`'s stratum enumeration CANNOT SEE the locus where transversality alone changes {#c16}
+
+**Locus:** `directives/S10_SHARED_PHYSICS.md:390-396` (the `Q8a` construction). **Status: OPEN.**
+⚠ **A SPEC defect — ⛔ both engines implement it faithfully.**
+
+⭐ `Q8a` builds candidate strata from exactly two sources: loci where **`rank(M_r)` drops** (minors *of
+`M_r`*) and **root-coincidence** loci. ⛔⛔ **Neither looks at the STACKED matrix `[M_r; kᵀ]`** — and the
+stacked rank is precisely what determines `N3`, the basis-independent transverse count.
+
+⇒ ⛔ **A locus where the TRANSVERSE count alone moves — no rank drop, no root coincidence — cannot be
+found by construction.**
+
+⭐⭐ **It is not hypothetical. A review leg re-derived the `ANISO` matrix from the spec and exhibited one**
+at `k₁ = 0` (`k` **orthogonal** to the distinguished inertia axis), well inside the declared domain:
+
+| `D = 3`, `s_ρ = 2` | roots | exactly-transverse total |
+|---|---|---|
+| generic `k = (1,1,1)` | `0, 2, 3` | **1** |
+| witness `k = (0,1,1)` | `0, 1, 2` | **2** |
+
+⚠ Root **count unchanged** (3), every `rank(M_r)` **unchanged**, `Σk² > 0` satisfied. ⛔ Neither engine
+enumerates it — the only emitted stratum is `k₂ = k₃ = 0`. Same at `D = 4` (2 → 3).
+
+⭐ **`MAIN` is NOT exposed** — a 748-wavevector sweep found **0** deviations from `[(1,0), (D−1,D−1)]`.
+
+⚠ **What this does NOT do:** it falsifies nothing in S10's record, which says *"generically"* and
+disclaims completeness. ⇒ ⭐ **the record's openness is attributed to name-joining; the real cause is that
+the enumeration is PROVABLY incomplete for `N3` by a nameable mechanism.**
+
+**Fix at its own level:** the spec adds the stacked matrix's degeneracy locus to `Q8a`'s sources, or states
+that `Q8a` bounds rank drops and coincidences only and is silent on transversality. ⛔ Do not repair an
+engine for this.

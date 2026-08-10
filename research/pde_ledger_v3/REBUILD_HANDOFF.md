@@ -485,6 +485,32 @@ engines implemented it faithfully, so ⛔ this is **not** an engine defect and c
 had. ⛔ **Do NOT tell either builder this** — it is a target they could converge on. ⭐ The comparison is
 the orchestrator's to run **after** both engines exist.
 
+### ⭐⭐⭐ THE TWO ENGINES HAVE DIFFERENT JOBS — ⚠ user decision, restated 2026-08-09
+
+> ⭐ **"PY should import, the wl scripts derive from scratch. That's the tension that allows us to double
+> check that each step is in sync with the others along with verifying one blind build."**
+
+| engine | job | what it establishes |
+|---|---|---|
+| **SymPy** | ⭐ **imports** the previous step's `LEDGER`, binds, overwrites what it re-derives | ⭐⭐ **CROSS-STEP SYNC** — that this step is consistent with the last one |
+| **Wolfram** | ⭐ imports **NOTHING**, re-derives from the spec alone | ⭐⭐ **INDEPENDENCE** — ⛔ this is the **only** blind build |
+
+⭐⭐ **S11's PY ENGINE SEEING S10 IS FINE, AND IT IS THE POINT.** ⛔ Do NOT scope, fence, or filter the
+import; ⛔ do not build any apparatus to keep S11 from seeing S10.
+
+⚠ **A review leg proposed fencing it** (2026-08-09), because `S10_exports.py` carries
+`transverse_speed_squared_d3` and friends. ⛔ **Rejected — fencing breaks the cross-step check the import
+exists for** ⇒ rule 13.
+
+⛔⛔⛔ **AND THE CONTAMINATION WORRY BEHIND IT IS RULE 12, WHICH THIS REPO HAS ALREADY PAID FOR IN DAYS.**
+
+> **"Don't build blindness apparatus. The measured failure is absence of computation, not anchoring."**
+
+⚠ **Measured cost, user 2026-08-09:** *"we've lost days with you doing crazy crap like making full copies
+of the repo so there's no contamination."* ⇒ ⭐ **A script that does not compute is caught by §4's
+structural rule and by rule 14's ablation — ⛔ both already exist and ⛔ neither needs a new control.**
+⛔ Do not invent an acceptance criterion to police a contamination that is not the measured failure mode.
+
 ### ⛔⛔⛔ MODE SWITCH — ⚠ S10's card was a DOCUMENT round; ⭐ S11 IS A SCRIPT ROUND
 
 ⚠ **The last four gate cycles reviewed prose, where blindness comes from READING ORDER.** ⛔ That muscle

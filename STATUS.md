@@ -6,20 +6,28 @@
 stacked-matrix stratum source, `Q6r` repointed off the deleted `reduction/`, `Q3`'s multiplicity object
 split, and a closed live-read exemption. ⚠ Two legs on its decision list, two more on the repaired file.
 
-⛔⛔ **BUT THE S11 ENGINES DO NOT START NEXT.** Trying to launch the PY rewrite surfaced four defects in the
-export chain itself, now registered as `C17`–`C20`:
-- ⛔ the emitted names are the **engines'**, not the spec's — S10's spec says `M_A`/`M_B`, both engines emit
-  `Q2_MATRIX_A`/`Q2_MATRIX_B`, and that string is in **neither** build directive (`C19`);
-- ⛔ **the chain OVERWRITES what a later step re-derives**, destroying one operand and leaving the agreement
-  asserted ⇒ a violation of rule 2 inside the carry-forward mechanism itself;
-- ⛔ **8** export keys collide between S10 and S11 under the flat scheme (`C20`).
+⚠ **Trying to launch the PY rewrite surfaced four defects in the export chain itself** (`C17`–`C20`), and
+the first two routes proposed for them were **both wrong**.
 
-⭐ **The route** — `research/pde_ledger_v3/directives/S11_naming_and_chain_plan.md`, revised after two legs
-that **contradicted each other**: producer-scope new `LEDGER` results · re-derivation emits
-`(previous, current, residual)` · the spec's name is the emitted name in both engines · **S10's retrofit
-FIRST**, because S11 **binds to S10's export keys**. Then S11 PY → WL → comparator → record → card.
+⭐⭐ **THE ROUTE — `directives/S11_export_chain_decisions_v2.md` (`4d81e9de`).**
+⛔⛔ **`S11_naming_and_chain_plan.md` is SUPERSEDED. ⛔ There is NO S10 retrofit.**
+- ⭐ **Keys stay FLAT; `D5` is unchanged.** Before writing a key that exists in the imported `LEDGER`,
+  **compare the OBJECT** — same object ⇒ re-derivation (both operands + residual, then guard); different
+  object ⇒ ⛔ **fails loudly.** ⚠ `DEFECT_REGISTER.md:675` had already prescribed exactly this.
+- ⭐ A re-derived row carries its **evidence in the row**; S10's export is **REGENERATED**, ⛔ not re-keyed,
+  and its tag names do not move.
+- ⭐ `C19` is a **real deviation** (`S10:197` orders *"Emit `M_A`, `M_B`"*) — the record **discloses** it and
+  the rename is its **own gate**; ⛔ S11's build does not depend on it.
 
-⚠ **Next concrete step:** the S10 retrofit decision list, and it gets two legs before any builder moves.
+⛔⛔ **WHY THE FIRST TWO ROUTES FAILED, and it is the most useful thing on this page.** *"Retrofit S10 first,
+S11 binds to its keys"* — ⛔ measured false: S11 spells **two** S9-origin knob rows and a pointer. *"The
+overwrite violates rule 2"* — ⛔ measured false: the engine emits both operands and the residual at
+`S10…sympy_audit.py:2089-2111`. *"Producer-scope the keys so collisions are impossible by construction"* —
+⛔⛔ **that IS the defect**: under `D5` two steps deriving one object meet on **one key** so they can be
+compared; scope them and **nothing compares them** ⇒ ⭐ rule 6, *don't make divergence impossible*.
+
+⚠ **Next concrete step:** the **S11 PY decision list**, rewritten against `F1`–`F7` and its own five blocked
+findings — ⛔ two legs before any builder moves.
 
 ## ⭐⭐ YOU ARE HERE — v3 ledger is open (2026-07-31)
 

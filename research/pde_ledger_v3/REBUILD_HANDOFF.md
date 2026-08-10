@@ -420,6 +420,85 @@ comparator is S10's, and ⛔ nothing reads `mathematica/out/S9_light_requires_sh
 cannot be done needs **no new instrument** — only a second pair of inputs. ⭐ **This is the cheapest open
 item in the rebuild and the one that closes the largest hole.** ⛔ Not on the S10 queue; do not fold it in.
 
+## ⭐⭐⭐ CURRENT STATE — 2026-08-10. ⛔ READ THIS BLOCK FIRST; everything after it is earlier.
+
+### ⭐⭐ DONE, and gated
+
+| what | commit | gate paid |
+|---|---|---|
+| **S11 spec REPAIRED** — `directives/S11_SHARED_PHYSICS.md`, **914 → 1005** lines | ⭐ **`ab8cb50e`** | decision list 2 legs · repaired artifact 2 legs · fold verified at source |
+| `C17` · `C18` registered | `f87132ef` | — |
+| `C19` · `C20` registered, `C19` amended | `62c12f36` · `20f57adf` | — |
+| **naming + chain PLAN**, revised after 2 legs | ⭐ **`e60419bc`** | 2 legs · adjudicated by measurement |
+| S11 PY decision list — ⛔ **BLOCKED, ⛔ not a directive** | `11bf8e05` | 2 legs; **5 findings, 2 critical** |
+
+### ⛔⛔⛔ THE ROUTE — ⭐ `directives/S11_naming_and_chain_plan.md`, and it REVERSED mid-review
+
+⛔ **S10's RETROFIT COMES FIRST. ⛔ The S11 engines do NOT start next.**
+
+1. ⭐ **Producer-scope every newly computed `LEDGER` result**; imported rows this step does not touch stay
+   unchanged ⇒ ⭐⭐ **collisions become impossible by construction.**
+2. ⛔⛔ **A re-derivation is NOT an overwrite — emit `(previous, current, residual)`.**
+   ⚠⚠ **`S9_REWRITE_PLAN.md#4` instructs the DEFECT:** *"overwrite what it derives"* destroys operand A and
+   leaves agreement **asserted** ⇒ a direct violation of `CLAUDE.md` **rule 2**, inside the chain's own
+   carry-forward mechanism. ⭐ **That document must be edited by the retrofit.**
+3. ⭐ **The spec's name is the emitted name, in BOTH engines.** ⚠ `D12`'s mechanism stands (emitted strings
+   only; internal `rhoBr`/`muR` untouched) but ⛔ **`D12`'s DIRECTION is WRONG** — the `.wl` is not deviant.
+   ⛔ **Injectivity across the worklist FIRST.**
+4. ⭐⭐ **Why retrofit first — DEPENDENCY, ⛔ not collisions:** S11's PY engine **binds to S10's export keys**;
+   renaming them later invalidates every binding and forces an S11 rebuild.
+5. Then S11 PY → WL → comparator → record → card → registers. ⛔ Every stage two legs.
+
+### ⛔ THE FIVE FINDINGS THAT BLOCKED THE S11 PY LIST — ⭐ the rewrite must answer all five
+
+1. ⛔⛔ **naming rule corrupted the chain 3 ways** — `root_ordering_d3` collision; S10's spec never defines
+   `ROOT_ORDERING` (its engine coined it); and **lowercasing contradicts `Q6r:518`**, which pins the map
+   case-sensitively (`mu_R`, `B_comp`).
+2. ⛔⛔ **schema fork** — the list cited `S9_REWRITE_PLAN#D5`'s sketch `{value, dim, class, step}`.
+   ⭐ Measured: **ZERO** entries carry `dim`; real schema is `{class, display, step, value, value_kind}`
+   + `dimension_key` (50) + `corroborated_steps` (3).
+3. ⛔ `_LOCAL_` split named only `Q6r` — `PREMISE_INVENTORY`, the local name-list tag and solver-condition
+   tags fall in **neither** bucket.
+4. ⛔ **partial-run semantics undecided** — a skipped `MAIN` cell can leave predecessor rows in a ledger
+   that looks valid.
+5. ⛔ **the chain-integrity guard is TAUTOLOGICAL** — it compares against the engine's own record of what it
+   touched, so an unintended write is classified as touched and passes.
+
+### ⭐⭐ MEASURED, and ⛔ do not re-derive these
+
+| measurement | result |
+|---|---|
+| `S10_SHARED_PHYSICS.md:195-199` names the route matrices | `M_A`, `M_B` |
+| what **both** S10 engines emit | ⛔ `Q2_MATRIX_A` / `Q2_MATRIX_B` — ⭐ and `Q2_MATRIX` is in **neither** build directive |
+| S10 spec mentions of the `N2`/`N3` families | ⛔ **0** — engines coined those too |
+| S10 py · wl tag suffixes · shared | 4233 · 2983 · **562** |
+| S10 `MAIN` `D3` · **S11 engine** emissions · shared keys | 304 · 211 · ⛔ **8** |
+| S10 py · wl `emit` CALL SITES | **106** · **137** ⚠ ⭐ *this* is the rename work, ⛔ not 4233+2983 |
+| S10 record `:658` claims PASS rows for `M_A`/`M_B`; comparator rows ending `_M_A`/`_M_B` | ⛔ **0** ⇒ a **traceability** gap |
+
+### ⛔ OPEN, ⛔ repaired by nothing above
+
+`C17` (stratum reruns point-dependent) · `C18` (locus protocol pins no construction) ·
+S10 registers · the `C20` collision detector (⭐ still needed even under producer-scoping).
+
+### ⚠⚠ PROCESS — what cost the most this round
+
+- ⛔⛔ **THE LEAK TEST IS DERIVABILITY, ⛔ NOT LITERAL PRESENCE.** A decision list stated the *reason* a
+  control scale was a `Q6` unknown; subtracting two dimension equations from that reason **fixes the
+  answer**. ⚠ One leg asked *"does it print the value?"* → cleared it. The other asked *"can a builder
+  derive it?"* → blocked it. ⇒ ⭐ **justification belongs in the REVIEW PROMPT; the decision list states the
+  DECISION.** The builder never reads the prompt.
+- ⛔⛔ **I CITED DOCUMENTS OVER ARTIFACTS I HAD ALREADY MEASURED** — twice, both critical (the `dim` field;
+  the `1` collision). ⇒ ⭐ **every claim in the next list carries the command that produced it.**
+- ⛔⛔ **MY ALTERNATIVE COSTINGS WERE BIASED TOWARD MY OWN PROPOSAL** — both errors inflated the options I
+  did not choose. ⇒ ⭐ when a plan compares routes, **cost each one with a measurement**, ⛔ not an estimate.
+- ⭐⭐ **THE LEGS DISAGREED TWICE AND BOTH TIMES THE DISAGREEMENT WAS THE FINDING.** ⛔ Do not treat either
+  verdict as authority — ⭐ adjudicate by running the measurement yourself.
+- ⚠ **A fold leaves stale prose ABOVE the fix.** It happened in the spec (`§2`) and then in my own plan,
+  one document later ⇒ ⭐ **after folding, re-read the artifact's OPENING sections.**
+
+---
+
 ## ⭐⭐⭐ S11 — THE CURRENT STATE, MEASURED 2026-08-09. ⛔ Everything below this block is PROVENANCE.
 
 ⚠ **Read this block. ⛔ The older S11 prose further down predates BOTH the S9 and S10 rebuilds and is kept

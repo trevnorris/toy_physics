@@ -1,5 +1,26 @@
 # STATUS — where the Path-A program is (single front door)
 
+## ⭐⭐ WHERE WE ARE — 2026-08-10
+
+⭐ **S11's shared spec is REPAIRED and gated** (`ab8cb50e`, 914 → 1005 lines): an inertia control, `C16`'s
+stacked-matrix stratum source, `Q6r` repointed off the deleted `reduction/`, `Q3`'s multiplicity object
+split, and a closed live-read exemption. ⚠ Two legs on its decision list, two more on the repaired file.
+
+⛔⛔ **BUT THE S11 ENGINES DO NOT START NEXT.** Trying to launch the PY rewrite surfaced four defects in the
+export chain itself, now registered as `C17`–`C20`:
+- ⛔ the emitted names are the **engines'**, not the spec's — S10's spec says `M_A`/`M_B`, both engines emit
+  `Q2_MATRIX_A`/`Q2_MATRIX_B`, and that string is in **neither** build directive (`C19`);
+- ⛔ **the chain OVERWRITES what a later step re-derives**, destroying one operand and leaving the agreement
+  asserted ⇒ a violation of rule 2 inside the carry-forward mechanism itself;
+- ⛔ **8** export keys collide between S10 and S11 under the flat scheme (`C20`).
+
+⭐ **The route** — `research/pde_ledger_v3/directives/S11_naming_and_chain_plan.md`, revised after two legs
+that **contradicted each other**: producer-scope new `LEDGER` results · re-derivation emits
+`(previous, current, residual)` · the spec's name is the emitted name in both engines · **S10's retrofit
+FIRST**, because S11 **binds to S10's export keys**. Then S11 PY → WL → comparator → record → card.
+
+⚠ **Next concrete step:** the S10 retrofit decision list, and it gets two legs before any builder moves.
+
 ## ⭐⭐ YOU ARE HERE — v3 ledger is open (2026-07-31)
 
 ⛔⛔ **FRONT DOOR CHANGED 2026-08-04 — `research/pde_ledger_v3/REBUILD_HANDOFF.md`.** Read that first.

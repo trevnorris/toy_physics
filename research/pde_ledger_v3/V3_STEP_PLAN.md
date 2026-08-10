@@ -367,8 +367,27 @@ while **no step ever introduced it**. It enters *here*, in the excitations phase
 **Parameter-register edges:** none — R10 began at S8. → S22.
 
 ### S10 · Two transverse photons
-The earned target-blind result: brane shear gives exactly two transverse polarisations.
-**Expected new: nothing.** ⭐ A genuinely earned step — say so.
+⛔⛔ **REWRITTEN 2026-08-09 — ⚠ the previous two lines here asserted what the closed record REFUTES**, and
+they were still live while the paper card cited this very range. ⇒ ⭐ `steps/S10_two_transverse_photons.md`
+is the authority; ⛔ this entry may not outrun it.
+
+⭐ **What S10 measured:** the conditional map `D ↦ D − 1` transverse null directions **for the cases it
+swept** (`D = 2,3,4,5`), so the `D = 3` member has two — ⛔ **conditional on the supplied action, the
+supplied `[u]`, and BOTH structural premises.**
+
+⛔ **What this entry used to claim, and why each is wrong:**
+1. ⛔ *"brane shear gives exactly two transverse polarisations."* ⚠ **The form control refutes the
+   attribution**: `FULLGRAD` returns the **same root and the same `D − 1` count**. ⭐ What curl-only
+   determines is that the **longitudinal does not propagate** — a different claim about a different root.
+   ⚠ And the count needs a **second** premise the slogan never mentions: **isotropic inertia**. `ANISO`
+   keeps `S_curl`, satisfies every other condition, and drops the **exactly-transverse** count to `D − 2`.
+2. ⛔ *"A genuinely earned step — say so."* ⚠ The record says of itself that it does **NOT** establish a
+   viable physical light sector — only a conditional mode count — with **seven OPEN substrate obligations**
+   ⇒ `SUBSTRATE_REQUIREMENTS.md`. ⚠ And the algebra is **standard**: MacCullagh 1839
+   ⇒ `docs/medium_requirements_and_prior_art.md`. ⛔ **Expected new: nothing** was right; ⛔ *"earned"* was
+   the wrong word for why.
+
+⚠ **`D = 3` is NOT selected here** ⇒ `R-S1-01`, target **S6**, status OPEN.
 
 ### S11 · The stray-longitudinal departure
 Characterized, first-class. ⛔ Not a defect to fix — a recorded departure from the reference theory.

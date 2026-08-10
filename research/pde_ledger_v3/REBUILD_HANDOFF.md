@@ -15,7 +15,7 @@ typed sentences with no CAS object behind them, missed by eight review legs.
 | step | state |
 |---|---|
 | S9 | rebuilt |
-| S10 | ▶ **CHAIN + COMPARATOR + STEP RECORD ALL DONE** — export `e644876c`+`c84263ed`, comparator `82443c95`, **record `e167b07f`** (664 → 828 lines, 4 builds / **14 legs**; ⛔ no number in it was ever found wrong). ⭐⭐ **NEXT: the PAPER CARD**, then D12 → registers. `.wl` untouched |
+| S10 | ▶ **CHAIN + COMPARATOR + RECORD + PAPER CARD ALL DONE** — export `e644876c`+`c84263ed`, comparator `82443c95`, **record `e167b07f`** (664 → 828 lines, 4 builds / **14 legs**), **card rebuilt `2998029f`+ fix round 1** (299 → 477 lines, 2 builds / **8 legs**). ⛔ **No number in either was ever found wrong.** ⭐⭐ **NEXT: D12 → registers.** `.wl` untouched |
 | S11 `stray_longitudinal` | ▶ **IN PROGRESS** — spec done `f49a1684`; engines not yet rebuilt |
 | S11b-A `interface_response` | built under the old pattern → **rebuild** |
 | S11b-B `interface_assembly` | built under the old pattern → **rebuild** |
@@ -221,7 +221,7 @@ no allowed stratum at any count, so nothing on the export path exercises it.
 | **the D12 naming pass** | ⭐⭐ **DRIVEN BY THE COMPARATOR'S OUTPUT, ⛔ not by hand.** User decision 2026-08-09: **adjudicate BOTH engines**, ⛔ not wl-only — the py tag suffix **IS the ledger key**, so py-as-default-authority is the unpoliced binding the light-cone re-point exploited |
 | `.wl` rename | ⭐ engine EXISTS (1807 lines, 660 KB output) and is correct — ⛔ **do NOT rebuild it**. Emitted **name strings only** |
 | **step record** `steps/S10_two_transverse_photons.md` | ⛔ **STALE — 664 lines, 23 citations to deleted machinery** |
-| ⭐⭐ **paper card** `paper/steps/S10_two_transverse_photons.tex` | ⛔⛔ **DO THIS NEXT. ⚠ The old "2 stale refs" estimate is WRONG — re-measured 2026-08-09.** 299 lines carrying **FIVE** defect classes the record just spent 14 legs removing: `charge` ×7 + `anchor` ×6 (⛔ the retracted *"the extra mode is the anchor"*), `codimension` ×4 (needs the `R-S1-01` bound), `three-dimensional` + `polarisation` (⛔ the **excluded** over-claim, verbatim), `elastic solid` ×1 (⛔ substance language), `harness` ×3 (deleted machinery), `curl-only` ×4 (needs the `FULLGRAD` qualification). ⭐ **The record is now the authority ⇒ the decision list is ONE property: the card may not claim anything the record refuses.** |
+| ~~paper card~~ | ⭐⭐ **DONE — 299 → 477 lines, 2 builds / 8 legs.** ⛔ The old *"2 stale refs"* estimate was wrong by an order of magnitude: it carried **six** defect classes, including an entire verbatim block quoting the **deleted harness** (⛔ no live artifact emits `CROSS_ENGINE_COVERAGE` / `CONTROL_RESPONSE` / `TAG_PARITY`) and a claim the record **contradicts** (*"nullspace bases are never compared for span"* vs **26 PASS / 0 FAIL**). ⭐ See the card section below for what the round measured |
 | **D12 naming pass** | 2 verified pairs; ⛔ **injectivity across the worklist FIRST**. Touches **both** engines ⇒ physics-bearing ⇒ full gate |
 | **defect register** | ⭐ `C16` added `e167b07f`+ — `Q8a`'s stratum enumeration. ⚠ Remaining: sweep the S10 record's 15 dispositions for anything not yet carrying a row |
 | requirements register | ⭐ already populated — **11 entries, 7 naming S10**. ⚠ Check only that the record's new limits are reflected |
@@ -268,6 +268,74 @@ rescale cannot move is a **COUNT** or a **MODE STRUCTURE** ⇒ [[feedback-per-to
    independent routes: PY `locus_conflicts_with_positive_wavevector_norm`, WL `decidedEmpty`).
    ⭐ The new record keeps it only as a comparator-table row. ⛔ **Under-claiming, not overstatement** — so
    it was not worth a fourth round; ⚠ fix it if the record is opened again.
+
+### ⭐⭐ THE PAPER CARD ROUND — ⚠ what it measured, and ⛔ the queue it leaves
+
+⭐ **`2998029f` (rebuild) + fix round 1. 2 builds, 8 legs, 4 gate cycles.** ⛔ Both legs re-parsed the
+comparator and re-read every cited engine locus; ⛔ **no number was found wrong in either build.** ⭐ Every
+defect was a **claim, a strength, or an evidence trail.**
+
+⭐⭐⭐ **THE PHYSICS DEFECT, and it is the whole reason the round was worth running.** The rebuilt card's
+headline listed **nine** conditions — and **`XFORM_ANISO` satisfied every one of them** (positive
+coefficients, cosine ansatz, unstrained rest, no dissipation, linear, nonzero `k`, generic, **and
+`S_curl` stiffness**, since `L_XFORM_ANISO` keeps `S_curl` exactly) **while measuring `D − 2`**
+exactly-transverse. ⇒ ⛔⛔ **the second premise S10's record was reopened to establish was missing from the
+one sentence a reader quotes.** ⚠ Only the words *"MAIN case"* excluded it, ⭐ and a reader reads those as
+naming the sweep, ⛔ not as a physics premise. ⚠ **The builder's own claim ledger missed it too.**
+⭐ **Closed at the headline sentence itself**, and re-verified case-by-case: ⛔ no measured package now
+satisfies every listed condition and returns a different count.
+
+⭐ **Also removed:** the analytic passage stated at **unrestricted general `D`** where the record licenses
+*"for the cases measured"* (⚠ and `S10_SHARED_PHYSICS.md:44-47` says *"typing its reduced form is the
+defect this whole rebuild removes"* — ⛔ the card was reintroducing it); a load-bearing citation pointing
+at `V3_STEP_PLAN.md:354-380`, which **asserted what the record refutes**; two of the export guard's five
+hard limits; and the absent prior-art attribution.
+
+⛔⛔ **AND THE GATE CAUGHT ME COMMISSIONING DAMAGE, ⛔ not just missing things.** ⚠ One fix item would have
+required the dimensional paragraph to carry the engines' action-term vacuity markers. ⭐ **That was not a
+defect** — the card never quotes those booleans, and the record scopes the vacuity to *"the solved
+action-term homogeneity booleans only"*, expressly **not** downgrading the dimension solution.
+⇒ [[feedback-decision-list-length-is-the-defect-rate]]. ⚠ **Two more of my items were narrowed** — one
+would have attributed the supplied split (the record attributes only the out-of-plane **object**), one
+named one citation site when there were two.
+
+### ⚠ BANKED FROM THE CARD'S FINAL LEGS — ⛔ recorded, ⛔ NOT fixed
+
+⚠ **One leg reported these; the other returned nothing surviving its filter. ⛔ Neither changes what may be
+claimed** ⇒ stopped per rule 10, ⛔ not iterated to green.
+
+1. ⚠ **`"non-vacuous"` is a term of art the card inherits without its defining paragraph.** ⭐ Both the
+   card's *"This is a homogeneity result…"* (record `:390`) and *"…other non-vacuous dimensional objects
+   retain their stated evidential status"* (record `:511`) are **verbatim from the record**, so ⛔ there is
+   no over-claim — ⚠ but a **card-only reader cannot tell what partition the qualifier excludes.**
+   ⛔ Deleting the qualifier would be worse: it would assert that **all** dimensional objects retain status.
+2. ⚠ Record item 10 (**whole-layer dimensional agreement open**) and the three `−3` Q6 unknown-count
+   residuals have **no card counterpart**. ⭐ The card makes no whole-layer claim, so this is omission,
+   ⛔ not over-claim.
+
+### ⛔⛔ THE RECORD-REOPENING QUEUE — ⭐ THREE items, ⛔ do NOT open a round for any one alone
+
+⚠ **`steps/S10_two_transverse_photons.md` is closed at `e167b07f`.** ⭐ If it is **ever** reopened, fix all
+three in one pass:
+
+1. ⚠ **A correct `MAIN` limit was DOWNGRADED** — *"nowhere in the allowed region for `D−1` to fail"* is
+   still decided by both engines. ⭐ Under-claiming, ⛔ not overstatement.
+2. ⛔⛔ **`:127-128` cites the cosine ansatz to `:13-28, :30-47, :82-107`. ⚠ The ansatz is at `:49-56` — in
+   NONE of them.** ⭐ Found 2026-08-09 by a card leg; ⛔ the card fixed **its** copy at both sites.
+3. ⛔ **`:386-389` cites the dimension DIFFERENCE `(2,−2,0)` to loci that do not contain it** (it is at
+   `:4215`).
+
+⇒ ⭐⭐ **2 and 3 falsify a sentence this handoff carried:** *"every number AND every cited locus verified by
+three independent passes, none wrong."* ⚠ **True of the NUMBERS. ⛔ FALSE of the loci** — three passes
+checked values and did not open every range ⇒ [[feedback-a-check-cannot-audit-its-own-input]].
+
+### ⚠ S9's CARD HAS THE SAME DISEASE — ⛔ out of scope, ⛔ do not fold in
+
+⚠ `paper/steps/S9_light_requires_shear.tex` quotes the **deleted harness**: *"312 comparisons"* / *"329"*,
+*"3 per engine"*, *"exit 2 on the unparsed `Piecewise` tag"*, *"12 cross-engine quantities agreeing"*.
+⛔ **No live artifact produces any of them**, and the card predates S9's own rebuild.
+⚠ `paper/steps/S11_stray_longitudinal.tex` carries **4** references to the deleted registry; ⭐ that one
+travels with S11's rebuild.
 
 ### ⛔⛔ THE "GRANULARITY DECISION" DOES NOT EXIST — ⚠ it was inherited from the S11 survey
 

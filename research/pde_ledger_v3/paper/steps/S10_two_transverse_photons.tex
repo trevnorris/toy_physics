@@ -16,15 +16,19 @@ conditions and open obligations that bound those results.}
 % S04
 For the supplied \(D\)-component in-plane field with its inherited, untested
 separation from out-of-plane fields, the real cosine ansatz, positive inertia
-and stiffness coefficients, the curl-only quadratic action, an unstrained rest
-background, no dissipation, linear response, nonzero real wavevector, and away
-from allowed exceptional strata, the nonzero root has \(D-1\) transverse null
-directions in every measured MAIN case \(D=2,3,4,5\), so the \(D=3\) member has
-two transverse directions; because both engines consume the same action and
+and stiffness coefficients, the isotropic inertia quadratic form, the curl-only
+quadratic action, an unstrained rest background, no dissipation, linear
+response, nonzero real wavevector, and away from allowed exceptional strata,
+the nonzero root has
+\(D-1\) transverse null directions in every measured MAIN case \(D=2,3,4,5\),
+so the \(D=3\) member has two transverse directions; the form controls prohibit
+attributing that count to curl-only stiffness even though they show that the
+stiffness form can change it; because both engines consume the same action and
 assumptions, their agreement protects against independent implementation errors
 but is not independent physical evidence for those premises
 (\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:13--47,
-:82--107;
+:49--80, :82--107;
+\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:18--52;
 \StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:73--177,
 :365--469, :676--780, :978--1082;
 \StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:26--59,
@@ -48,7 +52,7 @@ It also supplies a real cosine plane-wave ansatz, positive inertia and stiffness
 coefficients, a nonzero real wavevector, an unstrained rest background, no
 dissipation, linear response, and the quadratic truncation
 (\StageFile{research/pde\_ledger\_v3/directives/S10\_SHARED\_PHYSICS.md}:30--47,
-:82--107).
+:49--80, :82--107).
 % S08
 The supplied stiffness density and action are
 \[
@@ -64,28 +68,45 @@ other allowed elastic terms are absent.
 
 \paragraph{Algebra of the supplied action.}
 % S10
-For a plane-wave amplitude \(a\), the antisymmetric spatial quadratic form is
+For the measured MAIN cases \(D=2,3,4,5\), a compact summary of the supplied
+antisymmetric spatial quadratic form is
 \[
  \frac12\sum_{i,j=1}^{D}(k_i a_j-k_j a_i)^2
    =|k|^2|a|^2-(k\mathbin{\cdot}a)^2.
 \]
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:32,
+:324, :635, :937;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:12,
+:225, :447, :662).
 % S11
-This form vanishes on the one-dimensional subspace \(a\parallel k\) and equals
-\(|k|^2|a|^2\) on the \((D-1)\)-dimensional subspace \(a\perp k\).
+In this measured-case summary, the form vanishes on the one-dimensional
+subspace \(a\parallel k\) and equals \(|k|^2|a|^2\) on the
+\((D-1)\)-dimensional subspace \(a\perp k\).
 % S12
-The corresponding amplitude equation and its two algebraic roots are
+For those same measured cases, the corresponding amplitude equation may be
+written
 \[
  \rho_{\mathrm{br}}\omega^2a
- =\mu_R\bigl[|k|^2a-k(k\mathbin{\cdot}a)\bigr],
- \qquad
+ =\mu_R\bigl[|k|^2a-k(k\mathbin{\cdot}a)\bigr].
+\]
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:32,
+:324, :635, :937;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:12,
+:225, :447, :662).
+% S12R
+The emitted root orderings in those cases contain the two roots
+\[
  \omega^2=0,
  \quad
  \omega^2=\frac{\mu_R|k|^2}{\rho_{\mathrm{br}}}.
 \]
+(\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_mode\_spectrum\_sympy\_audit.out}:74,
+:366, :677, :979;
+\StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:27,
+:240, :462, :677).
 % S13
-Within this supplied isotropic action, every direction in \(k^\perp\) has the
-same eigenvalue because the operator acts there as a scalar multiple of the
-identity.
+For these measured MAIN matrices, every direction in \(k^\perp\) has the same
+eigenvalue because the operator acts there as a scalar multiple of the identity.
 % S14
 That algebra must not be promoted into an attribution of the measured
 \(D-1\) count to curl-only stiffness, because the full-gradient stiffness
@@ -94,6 +115,27 @@ shared dimensions (\StageFile{research/pde\_ledger\_v3/scripts/out/S10\_brane\_m
 :469, :677, :780, :1286, :1324, :1511, :1549;
 \StageFile{research/pde\_ledger\_v3/mathematica/out/S10\_brane\_mode\_spectrum\_mathematica\_audit.out}:240,
 :273, :462, :496, :893, :902, :1070, :1079).
+
+\paragraph{Prior-art disposition.}
+% S69
+The prior-art note classifies the MacCullagh curl-energy construction and its
+transverse count as standard; its search did not find the thin-phase confinement
+architecture, but that search failure is not an originality proof
+(\StageFile{docs/medium\_requirements\_and\_prior\_art.md}:127--156).
+% S70
+Agreement with the ordinary \(D=3\) curl is therefore an oracle check inside the
+standard MacCullagh regime, not a novel result or a premise for the \(D\) sweep,
+and sweeping \(D\) and recovering \(D-1\) is evidence for this implementation,
+not a novelty claim
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:800--805).
+% S71
+The same register attributes the out-of-plane \(h\)-branon object to Cembranos,
+Dobado, and Maroto, but that attribution does not establish the supplied
+\(u\)/\(h\) split, its quadratic operator, any degeneracy with the in-plane
+modes, or the \(D-1\) count; prior art is an attribution oracle, never a premise
+for those uncomputed properties
+(\StageFile{docs/medium\_requirements\_and\_prior\_art.md}:136--143;
+\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:790--798).
 
 \paragraph{What the engines measure.}
 % S15
@@ -359,7 +401,8 @@ mutation even though the spectrum moved.
 The guard is a three-value cross-step SymPy comparison rather than a second
 cross-engine check, and it is blind to dimension-preserving mutations and to
 common-mode premise mutations that move upstream and downstream records
-consistently
+consistently; its assertion can be stripped by optimized Python, and the author
+flag does not prove fresh derivation
 (\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:558--578).
 
 \paragraph{What the conditional count does not settle.}
@@ -367,7 +410,7 @@ consistently
 Within the light sector, the surviving zero-frequency longitudinal direction
 has no Maxwell counterpart; its onward disposition belongs to S11, and S10
 assigns it no further interpretation
-(\StageFile{research/pde\_ledger\_v3/V3\_STEP\_PLAN.md}:354--380).
+(\StageFile{research/pde\_ledger\_v3/steps/S10\_two\_transverse\_photons.md}:177--184).
 % S57
 The result assumes an unstrained medium at rest, no convective or dissipative
 terms, and a quadratic action, and it does not establish the count for moving,

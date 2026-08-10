@@ -8,10 +8,15 @@ measured to emit physics conclusions as **typed sentences with no computation be
 in **three independently-built steps**, and **eight review legs missed it.** ⛔ Do not build on a v3 script
 result without checking it there first.
 
-⇒ **Rebuild progress:** S9 ✅ · **S10 ▶ record DONE `e167b07f`** — chain `e644876c`+`c84263ed`, comparator
-`82443c95`, step record rebuilt over 4 builds / 14 legs. ⚠ **S10 still owes: the paper card, the D12
-naming pass, the registers.** · **S11 ⏸ HELD** · S11b-A, S11b-B to rebuild · S11b-C never built.
-⛔ Detail belongs in `REBUILD_HANDOFF.md`, not here.
+⇒ **Rebuild progress:** S9 ✅ · **S10 ▶ record `e167b07f` + PAPER CARD DONE** — chain
+`e644876c`+`c84263ed`, comparator `82443c95`, record over 4 builds / 14 legs, card over 2 builds / 8 legs.
+⚠ **S10 still owes: the D12 naming pass, the registers.** · **S11 ⏸ HELD** · S11b-A, S11b-B to rebuild ·
+S11b-C never built. ⛔ Detail belongs in `REBUILD_HANDOFF.md`, not here.
+
+⛔⛔ **THE LIGHT SECTOR'S REMAINING QUEUE IS PAPERWORK. ⭐ The physics that moves anything is `S11b-C` and
+`S8`** — ⚠ `S11b-C` is the **MacCullagh differentiator** and was **never built**; ⛔ `R-S8-04` decides
+whether the curl-only functional is an **admissible continuum mechanics at all**, and **S8 has never been
+run** ⇒ `SUBSTRATE_REQUIREMENTS.md`, `V3_STEP_PLAN.md` PHASE 4b.
 
 ⚠⚠ **OUR FAILURE HAS A NAME — the *consistent comparison problem*, 1986** ⇒ `docs/method_prior_art_findings.md`.
 ⛔ No amount of spec care closes it.

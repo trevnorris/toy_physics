@@ -67,3 +67,19 @@ This list is about claims, not prose that was merely shortened or rearranged.  A
 32. **“the comparator's bijection-verification line remains untested” and an “LRU-cache-dependent derivative-symbol mutation hazard is real though it fired zero times.”**  Dropped because nothing in the record licenses either claim; the record's current D12 disposition is instead a two-pair unrefuted worklist with injectivity open.
 
 33. **The regime as limits “taken”: a sharp zero-width sheet, frequency-independent moduli, and the continuum limit.**  Dropped at that strength.  The record says finite thickness, microscopic discreteness, and frequency-dependent moduli are measured absences, “not physical idealisations that S10 took,” and that S10 was never asked to establish those extensions.
+
+## Fix round 1 — deleted-sentence audit
+
+These six pre-fix reader-visible sentences were deleted only by replacement.  No measured object they carried was dropped from the repaired card.
+
+1. **“For the supplied \(D\)-component in-plane field with its inherited, untested separation from out-of-plane fields, the real cosine ansatz, positive inertia and stiffness coefficients, the curl-only quadratic action, an unstrained rest background, no dissipation, linear response, nonzero real wavevector, and away from allowed exceptional strata, the nonzero root has \(D-1\) transverse null directions in every measured MAIN case \(D=2,3,4,5\), so the \(D=3\) member has two transverse directions; because both engines consume the same action and assumptions, their agreement protects against independent implementation errors but is not independent physical evidence for those premises.”**  Replaced because the condition list omitted isotropic inertia and the sentence lacked the record's same-breath form-control bound.
+
+2. **“For a plane-wave amplitude \(a\), the antisymmetric spatial quadratic form is \(\frac12\sum_{i,j=1}^{D}(k_i a_j-k_j a_i)^2=|k|^2|a|^2-(k\mathbin{\cdot}a)^2\).”**  Replaced to limit the retained compact algebra to the measured MAIN cases and attach citations to the emitted matrix operands.
+
+3. **“This form vanishes on the one-dimensional subspace \(a\parallel k\) and equals \(|k|^2|a|^2\) on the \((D-1)\)-dimensional subspace \(a\perp k\).”**  Replaced to confine the amplitude-space split to the measured-case summary rather than unrestricted general \(D\).
+
+4. **“The corresponding amplitude equation and its two algebraic roots are \(\rho_{\mathrm{br}}\omega^2a=\mu_R[|k|^2a-k(k\mathbin{\cdot}a)]\), \(\omega^2=0\), and \(\omega^2=\mu_R|k|^2/\rho_{\mathrm{br}}\).”**  Replaced to separate the expository amplitude equation from the measured root object, limit both to measured cases, cite their emitted operands, and classify the root sentence as a `CLAIM`.
+
+5. **“Within this supplied isotropic action, every direction in \(k^\perp\) has the same eigenvalue because the operator acts there as a scalar multiple of the identity.”**  Replaced to limit the degeneracy statement to the measured MAIN matrices.
+
+6. **“The guard is a three-value cross-step SymPy comparison rather than a second cross-engine check, and it is blind to dimension-preserving mutations and to common-mode premise mutations that move upstream and downstream records consistently.”**  Replaced so the guard paragraph also carries the two omitted hard limits: optimized Python can strip the assertion, and the author flag does not prove fresh derivation.

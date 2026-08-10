@@ -607,3 +607,66 @@ retains, and both are faithful to the words.
 **Fix at its own level:** the spec pins the branch/admissibility construction, **or** `§9` bounds what
 `STRATUM_ORDERING` may be read as. ⚠ The `C16` repair's completeness disclaimer bounds the **claim**;
 ⛔ it does not make the two lists **comparable**.
+
+### ⛔⛔ **`C19`** — the emitted names are the ENGINES' convention, ⛔ not the SPEC's, and the chain pays for it {#c19}
+
+**Status: OPEN.** ⚠ **A defect in BOTH S10 engines, ⛔ not in either spec.** ⭐ Measured 2026-08-10, from the
+committed outputs — ⛔ not inferred.
+
+`S10_SHARED_PHYSICS.md:195-199` names the two route matrices **`M_A`** and **`M_B`** and says *"Emit `M_A`,
+`M_B`, and `M_A − M_B`"*. ⛔ **Neither engine emits those names.** Both emit `Q2_MATRIX_A` / `Q2_MATRIX_B`:
+
+```
+WL_S10_MAIN_D3_Q2_MATRIX_A      PY_S10_MAIN_D3_Q2_MATRIX_A
+WL_S10_MAIN_D3_Q2_MATRIX_B      PY_S10_MAIN_D3_Q2_MATRIX_B
+```
+
+⇒ ⭐⭐ **the two engines AGREE WITH EACH OTHER and BOTH DEPART FROM THE SPEC.** ⚠ The cross-engine
+comparator therefore reports a clean join on a name **the spec never authorised** — ⛔ agreement on a
+convention the engines invented between them is not agreement on the object the spec named.
+
+⛔⛔ **AND IT BREAKS THE CHAIN AT THE STEP BOUNDARY.** `S11_SHARED_PHYSICS.md:12` states *"`Q1`–`Q8` name
+the same objects there and here"*, and S11's spec uses the spec-side names (`M_A`, `M_B`, `DET_M`).
+⇒ the **same object** is `Q2_MATRIX_A` at S10 and `M_A` at S11.
+
+⭐ Measured overlap between the two steps' quantity vocabularies:
+
+| set | count |
+|---|---|
+| S10 `MAIN` `D3` emitted quantities | **304** |
+| S11 spec quantity names | **80** |
+| **shared strings** | ⛔ **1** (`ROOT_ORDERING`, and it is an ACCIDENT — the two steps mean different objects by it) |
+
+⇒ ⛔ **cross-step corroboration through shared keys is very nearly EMPTY between S10 and S11**, and the one
+string they do share is the one place the chain would silently overwrite (⇒ `C20`).
+
+⚠ **What this does NOT say:** ⛔ no computed value is wrong, and ⛔ the S10 cross-engine agreement is not
+void — the objects joined are the right objects. ⭐ What is defective is that **the name is the engines',
+so nothing outside the engines polices it** ⇒ [[feedback-name-binding-is-unpoliced]].
+
+**Fix at its own level:** the **spec's** name is the emitted name, in **both** engines, at every step.
+⚠ ⭐ `D12`'s mechanism still applies (⛔ emitted strings only; internal `rhoBr`/`muR` spellings stay), but
+⛔ **`D12`'s stated DIRECTION — "what may change in a `.wl` engine" — is wrong for this class**, because the
+`.wl` is not the deviant one. ⛔ Do not rename one engine to match the other.
+⚠ ⭐ **Injectivity across the worklist must still be checked FIRST** (`REBUILD_HANDOFF.md:391-394`).
+
+### ⛔ **`C20`** — one accidental cross-step key collision, and the chain guard cannot see it {#c20}
+
+**Status: OPEN.** ⭐ Measured; ⚠ found independently by **both** legs on the S11 PY decision list.
+
+`S10_exports.LEDGER['root_ordering_d3']` is `class DERIVED`, value
+`(0, mu_R*(k1**2 + k2**2 + k3**2)/rho_br)` — S10's root spectrum. ⛔ `S10_SHARED_PHYSICS.md` **never defines
+`ROOT_ORDERING`**; S10's engine coined that export key. `S11_SHARED_PHYSICS.md:321` **does** define it, as
+*"the ordering of `ROOT_DISTINCT` that the `ROOT<r>` index refers to"*, and S11's `MAIN` is a **different
+action**.
+
+⇒ ⛔ an S11 export under the same key **overwrites a different physical system's object**, and ⛔ **chain
+integrity cannot catch it** — the write is intentional, not drift.
+
+⭐ It is **exactly one key** — ⚠ an earlier reading of this as a namespace-wide problem was **not supported
+by measurement** (304 × 80 vocabularies, intersection 1).
+
+**Fix at its own level — ⛔ NOT a naming authority.** ⭐ The consuming engine must **detect** the case: an
+imported key it is about to write must be compared as an **object**, and a write over a differing object is
+a **finding that fails loudly**, ⛔ never a silent overwrite. ⚠ That rule is needed whether or not `C19` is
+fixed, because a future accidental collision is not preventable by naming discipline alone.

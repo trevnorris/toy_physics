@@ -10,8 +10,16 @@ result without checking it there first.
 
 ⇒ **Rebuild progress:** S9 ✅ · **S10 ▶ record `e167b07f` + PAPER CARD DONE** — chain
 `e644876c`+`c84263ed`, comparator `82443c95`, record over 4 builds / 14 legs, card over 2 builds / 8 legs.
-⚠ **S10 still owes: the D12 naming pass, the registers.** · **S11 ⏸ HELD** · S11b-A, S11b-B to rebuild ·
-S11b-C never built. ⛔ Detail belongs in `REBUILD_HANDOFF.md`, not here.
+⚠ **S10 still owes: the D12 naming pass, the registers.** · ⭐⭐ **S11 ▶ NEXT — full rewrite, same pattern
+as S9/S10** · S11b-A, S11b-B to rebuild · S11b-C never built.
+⛔ Detail belongs in `REBUILD_HANDOFF.md`, not here.
+
+⛔⛔ **S11 STARTS WITH A SPEC REPAIR, ⛔ NOT AN ENGINE.** ⚠ Its 914-line spec is **closed and incorrect** in
+two ways S10's rebuild measured: it carries **no inertia control** (all 7 packages vary `W` only, so the
+second structural premise S10 needed is unprobed and **uninstrumented**), and its stratum enumeration
+reproduces **`C16`** — strata come from minors of `M_r`, ⛔ never the stacked `[M_r; kᵀ]` that governs the
+transverse count. ⚠ **A closed spec is not a correct spec**, and a shared spec is physics-bearing.
+⛔ Also: the PY engine **will not run** — `from registry_read` at `:21`, and `reduction/` is deleted.
 
 ⛔⛔ **THE LIGHT SECTOR'S REMAINING QUEUE IS PAPERWORK. ⭐ The physics that moves anything is `S11b-C` and
 `S8`** — ⚠ `S11b-C` is the **MacCullagh differentiator** and was **never built**; ⛔ `R-S8-04` decides

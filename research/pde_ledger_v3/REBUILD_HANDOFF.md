@@ -420,7 +420,101 @@ comparator is S10's, and ⛔ nothing reads `mathematica/out/S9_light_requires_sh
 cannot be done needs **no new instrument** — only a second pair of inputs. ⭐ **This is the cheapest open
 item in the rebuild and the one that closes the largest hole.** ⛔ Not on the S10 queue; do not fold it in.
 
-## S11 — where it actually is
+## ⭐⭐⭐ S11 — THE CURRENT STATE, MEASURED 2026-08-09. ⛔ Everything below this block is PROVENANCE.
+
+⚠ **Read this block. ⛔ The older S11 prose further down predates BOTH the S9 and S10 rebuilds and is kept
+only for history.**
+
+### ⭐ What EXISTS on disk, with sizes
+
+| artifact | state |
+|---|---|
+| `directives/S11_SHARED_PHYSICS.md` | **914 lines**, committed `f49a1684`, 4 rounds / 8 legs. ⛔ **CLOSED ≠ CORRECT — see the two defects below** |
+| `mathematica/S11_stray_longitudinal_mathematica_audit.wl` | 44,804 B. ⭐ Runs: 3750 tags, 84 s, exit 0. ⚠ **Fix round 3 (`F1`) is UNREVIEWED** |
+| `scripts/S11_stray_longitudinal_sympy_audit.py` | 68,039 B. ⛔⛔ **WILL NOT RUN** — `from registry_read import …` at **`:21`**, and `reduction/` is deleted |
+| `mathematica/out/S11_…out` · `scripts/out/S11_…out` | 972 KB · 1.15 MB, both committed |
+| `_asbuilt/S11_stray_longitudinal_sympy_audit.py` + `README.md` | frozen provenance for two `Q6r` rows |
+| `scripts/S11_stray_longitudinal_sympy_audit.premises` | committed |
+| S11b-A / S11b-B engines (`.py` + `.wl`) | exist, **old pattern**, rebuilt after S11 |
+
+⛔ **The PY engine does NOT import `S10_exports`** — measured, zero references. ⇒ the dataflow pattern that
+defines this rebuild is **absent from S11 entirely.**
+
+### ⛔⛔⛔ TWO SPEC DEFECTS, FOUND BY S10's REBUILD — ⭐ REPAIR THE SPEC BEFORE EITHER ENGINE IS TOUCHED
+
+⚠ **A spec both engines read is physics-bearing: an error there makes both engines agree on the same wrong
+thing** (`CLAUDE.md` rule 7). ⚠ ⛔ **A CLOSED spec is not a CORRECT spec** ⇒
+[[feedback-one-engine-fix-is-a-spec-question]].
+
+**1. ⛔⛔ S11 HAS NO INERTIA CONTROL — and this is precisely the hole S10 fell into.**
+⭐ Measured: all **seven** packages (`MAIN`, `XFORM_CURLONLY`, `XFORM_DIVONLY`, `XFORM_TRACELESS`,
+`XFORM_EXTRA`, `XCOEF_BSCALE`, `XCOEF_BSIGN`) vary **`W`, the stiffness functional, and nothing else**.
+The kinetic term `(ρ_br/2)·Σ_j(∂_t u_j)²` is **byte-identical across every package** (spec §2, §7).
+⚠ Exact-token search of all 914 lines: **zero** occurrences of `aniso`, `isotropic inertia`, `s_rho`, or a
+kinetic-form control.
+⇒ ⛔⛔ **S10's headline needed TWO structural premises and its stiffness controls probed ONE.** ⭐ S10 only
+found the second because it happened to carry `XFORM_ANISO`. **S11 does not carry its analogue**, so any
+S11 result about mode structure inherits an unprobed premise **with no instrument that could reveal it.**
+⇒ ⭐ **The object to add is a control that breaks inertial isotropy on one axis while holding `W` fixed.**
+⛔ Do not specify its expected effect ⇒ [[project-s10-record-closed]], [[feedback-per-tooth-ablation]].
+
+**2. ⛔ `C16` APPLIES TO S11 VERBATIM — ⭐ and S11 is where it was always going to matter.**
+⭐ S11 **does** specify the right object: `ROOT<r>_N3_STACKED_RANK` / `_N3_TRANSVERSE_NULLITY` at spec
+`:321-340`, with an explicit warning against the two-way parallel/perpendicular classification.
+⛔⛔ **But §Q8a/§Q8b enumerate strata from the minors of `M_r` and from rank-drop loci of `M_r`** (`:534`,
+`:549`) — ⛔ **never from the stacked matrix `[M_r; kᵀ]`, which is what governs `nu_T`.** ⇒ **a locus where
+the transverse count ALONE moves cannot be found by construction.** ⚠ Identical to `C16`; ⭐ both S10
+engines implemented it faithfully, so ⛔ this is **not** an engine defect and cannot be fixed in one.
+
+### ⭐⭐ THE BUILD ORDER — ⛔ each arrow is a gate, ⛔ not a suggestion
+
+⛔ **Rule 7's TRIGGER fires on EVERY decision list below, including the spec-repair list.**
+
+1. ⭐⭐ **SPEC REPAIR FIRST** — the two defects above. ⛔ Orchestrator-written ⇒ decision list gets
+   **Codex + Grok** ⇒ repair ⇒ **two legs on the repaired spec.** ⛔ No engine is touched until this closes.
+2. **PY engine rebuilt** under `S9_REWRITE_PLAN.md`'s pattern — ⭐ imports `scripts/S10_exports.py`, binds
+   its objects, writes `scripts/S11_exports.py`. ⛔ Codex-written ⇒ **fresh Claude agent + Grok.**
+3. **WL engine rebuilt** — ⭐ imports **nothing**, re-derives independently. ⛔ Same two legs.
+4. Run both into committed `out/`; commit `S11_exports.py`.
+5. **Cross-engine comparator** — ⭐ join on the standard name, exactly as `S10_cross_engine_comparator.py`
+   does. ⛔ No pair table, ⛔ no YAML, ⛔ no harness.
+6. Step record → paper card → registers.
+
+⚠ **`W_XFORM_CURLONLY` IS LITERALLY S10's `MAIN` ACTION** — same density, ansatz, phase average, `D` sweep.
+⇒ ⭐⭐ **the same physical system computed by FOUR independently built engines**, which the ledger has never
+had. ⛔ **Do NOT tell either builder this** — it is a target they could converge on. ⭐ The comparison is
+the orchestrator's to run **after** both engines exist.
+
+### ⛔⛔⛔ MODE SWITCH — ⚠ S10's card was a DOCUMENT round; ⭐ S11 IS A SCRIPT ROUND
+
+⚠ **The last four gate cycles reviewed prose, where blindness comes from READING ORDER.** ⛔ That muscle
+memory is **wrong** for what comes next.
+
+⇒ ⭐⭐⭐ **FOR A SCRIPT, A FORM ABLATION IS MANDATORY IN EVERY REVIEW LEG** (`CLAUDE.md` rule 14;
+`.claude/skills/review-legs`). ⛔ Not optional, ⛔ not "if time permits."
+- ⭐ **Change the STRUCTURE of a load-bearing object** and report the **literal** diff. ⛔ A **coefficient**
+  rescale tests arithmetic; only a **FORM** change tests physics.
+- ⚠ **Measured on S11's OWN engine 1: all nine defects were one class — a tag DECLARING what the run used,
+  assembled from a literal beside the computation. ⛔ NONE was visible by reading. The ablating leg found
+  8 of 9** ⇒ [[feedback-wl-reader-vs-verifier]].
+- ⭐ **Demand a script and its literal stdout.** ⛔ A prose re-derivation is the same defect relocated into
+  the review ⇒ [[feedback-review-agents]].
+- ⛔ **Serialize the legs if both ablate the `.wl`** — the licence has **two** seats and a leg has already
+  died mid-run (exit 144) from contention. ⛔ Wrap every kernel run in `timeout 600`.
+- ⛔ Blindness is by **ABSENCE**: move the sibling engine, the directives and the raw transcripts **out of
+  the tree** while a blind build or review runs ⇒ [[feedback-denylist-means-wrong-architecture]].
+
+### ⚠ S11's OWN OPEN ITEMS, carried forward
+
+| owed | state |
+|---|---|
+| `PREMISE_INVENTORY` — one tag per `(package, D)` | ⛔ absent in both; WL has 17 `PREMISE_*` suffixes, PY has 23. ⛔⛔ **EXEMPT from corollary 5's live-read** (spec `:887-901`) ⇒ [[feedback-no-fabrication-forcing-rules]] |
+| the pinned failure object (spec `:647`) | ⛔ neither engine emits it |
+| `STRATUM1_POINT_RESIDUAL` — spec **forbids** it at `:549` | ⛔ PY emits 10, WL emits 0. ⚠ A **specification artifact**, ⛔ not a physics disagreement |
+| `c_s0` in both admissibility sets (spec `:691-704`) | ⚠ engine state unconfirmed |
+| WL fix round 3 (`F1`) | ⛔ **UNREVIEWED** |
+
+## S11 — where it actually is (⚠ PROVENANCE, superseded by the block above)
 
 ### ⭐ Done
 

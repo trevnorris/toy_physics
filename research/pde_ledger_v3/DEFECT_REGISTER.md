@@ -621,6 +621,12 @@ WL_S10_MAIN_D3_Q2_MATRIX_A      PY_S10_MAIN_D3_Q2_MATRIX_A
 WL_S10_MAIN_D3_Q2_MATRIX_B      PY_S10_MAIN_D3_Q2_MATRIX_B
 ```
 
+⭐ **Provenance, measured:** `Q2_MATRIX` occurs **zero** times in `directives/S10_py_directive.md` and
+**zero** times in `directives/S10_wl_directive.md` — ⛔ the scheme was **not** handed to either builder.
+⇒ ⚠ both engines independently tagged by **question number + descriptive word** (`§6`'s section is
+*"Q2 · The dynamical matrix"*) instead of using the spec's explicit `M_A`. ⭐ Convergence on a natural
+scheme, ⛔ not collusion — but the consequence is identical.
+
 ⇒ ⭐⭐ **the two engines AGREE WITH EACH OTHER and BOTH DEPART FROM THE SPEC.** ⚠ The cross-engine
 comparator therefore reports a clean join on a name **the spec never authorised** — ⛔ agreement on a
 convention the engines invented between them is not agreement on the object the spec named.

@@ -468,6 +468,25 @@ its rule-2 charge and its producer-scoping were **all three refuted** (`36589024
 write different keys, **nothing compares them**, and the detector never fires because there is no longer a
 collision to catch.
 
+### ⭐⭐ WHAT S10 STILL OWES — ⛔ and the PHYSICS filter applied to each (user directive, 2026-08-10)
+
+> ⭐ *"make sure all changes we pursue are physics related and not process related"*
+
+⇒ ⭐⭐ **Keep an item only if it catches a way the PHYSICS could be wrong or a CLAIM could be unsupported.**
+⛔ Nothing below blocks S11's build. ⚠ **Documented so it is not silently dropped** — ⛔ not scheduled.
+
+| owed | verdict | why |
+|---|---|---|
+| **3 sentences corrected in the S10 record after the last leg reported** (the eight-of-twelve verdict count + 2 companions) | ⭐⭐ **KEEP — CLAIM** | ⛔ A number in a signed record that **no leg has seen**. ⚠ This is the only owed item that could make S10 *say something false*. |
+| **`C19` — the emitted names are the engines'** (`S10:197` orders *"Emit `M_A`, `M_B`"*; engines emit `Q2_MATRIX_A/B`) | ⚠ **SPLIT** | ⭐ The **forward** discipline is PHYSICS — a name is a binding, and a mis-pointed one made the light cone an `ω²` with every repo check green. ⛔ But S11's spec fixes its own quantity names, so ⭐ **S11 is covered without touching S10.** ⇒ the S10 **rename** and its **record disclosure** are ⛔ **CEREMONY**. |
+| **`F3`/`F4` — regenerate S10's export so re-derived rows carry their operands** | ⛔ **CEREMONY** | ⭐ The residual is already computed, emitted and committed (`out/…:4215`), and `Q6r` emits **its own** derived/imported/difference triple (`S11:527-529`). ⇒ nothing physics-bearing changes. |
+| **`F6` — no export published from a partial `MAIN` sweep** | ⛔ **CEREMONY, for now** | ⭐ `RUN_PAIRS`/`SKIPPED_PAIRS` already make the run record **observed** (`S11:895`), and ⛔ **no S12 consumer exists.** ⚠ Revisit when one does. |
+| **S10's requirements registers** (`SUBSTRATE_REQUIREMENTS.md`) | ⚠ **OWED CONTENT, ⛔ not a defect** | ⭐ It captures what the sector obliges; ⛔ no claim is wrong without it. |
+| **`DEFECT_REGISTER#F7`** — the old kernel equated a boolean with any nonzero number | ⭐ **DISCHARGED — ⛔ by deletion AND by measurement** | ⭐ `reduction/` is gone. ⚠ **And the NEW comparator does not reproduce it**: `residual_is_zero` is plain `== 0`, and measured `sp.true == 0` → `False`, `sp.false == 0` → `False` ⇒ a boolean residual reads as a **mismatch**, ⛔ never an agreement. ⚠ One narrow path left for a leg: a payload yielding a **Python** `bool`, since `False == 0` is `True`. |
+| **`C20` detector** | ⭐ **KEEP — moves to S11's PY list as `F2`** | ⛔ Not S10 work. |
+
+⇒ ⭐⭐ **NET: exactly one owed S10 item survives the filter** — the three unlegged record sentences.
+
 ### ⛔ THE FIVE FINDINGS THAT BLOCKED THE S11 PY LIST — ⭐ the rewrite must answer all five
 
 1. ⛔⛔ **naming rule corrupted the chain 3 ways** — `root_ordering_d3` collision; S10's spec never defines
@@ -1078,9 +1097,12 @@ S10's record and its removal there was correct.
 
 ## ⚠ What is still open on S10, deliberately
 
-- **Three sentences in the S10 record were corrected after the last leg reported** — the eight-of-twelve
-  verdict count and its two companions. ⛔ They have not been through a leg.
-- `DEFECT_REGISTER.md#f7`'s owed measurement. Re-scope it or discharge it.
+⇒ ⭐⭐ **SUPERSEDED — the full owed-items ledger, with a PHYSICS verdict on each, is in the `CURRENT STATE`
+block above** (*"WHAT S10 STILL OWES"*). ⭐ Exactly one item survives the filter: the **three record
+sentences corrected after the last leg reported** (the eight-of-twelve verdict count and its two
+companions) — ⛔ they have not been through a leg.
+⭐ `DEFECT_REGISTER.md#F7` is **DISCHARGED**: `reduction/` is deleted, and the new comparator was measured
+and does **not** reproduce it.
 
 ⛔ **Two entries that stood here are DISCHARGED BY DELETION, ⛔ not by fixing:**
 `declaration_load_ablation.py`'s 19-minute run, and `D_brane`'s mis-pointed `source_locus` in

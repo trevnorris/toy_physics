@@ -551,8 +551,10 @@ engine for this.
 
 ### ⛔⛔ **`C17`** — a stratum's `Q3`/`Q4` rerun is a property of the POINT, ⛔ not of the component {#c17}
 
-**Locus:** `directives/S11_SHARED_PHYSICS.md:556` (`STRATUM<s>_POINT`), `:563` (the rerun), `:569` (the
+**Locus:** `directives/S11_SHARED_PHYSICS.md:620` (`STRATUM<s>_POINT`), `:627` (the rerun), `:633` (the
 concession). **Status: OPEN.** ⚠ **A SPEC defect — ⛔ both engines implement it faithfully.**
+⚠ ⭐ **Loci re-pinned 2026-08-10** — the `ab8cb50e` repair moved every line this entry cited (`:556`/`:563`/
+`:569` were the 914-line file). ⛔ Do not trust a line number in this register without opening it.
 ⚠ **Pre-existing. ⛔ Not created by the `C16` repair** — but the stacked source that repair adds **widens
 exposure to it**, which is why it is registered now.
 
@@ -586,11 +588,13 @@ agree** (`§8`, and the frozen comparator contract). ⛔ Do not repair an engine
 
 ### ⚠ **`C18`** — the locus protocol pins five OBJECTS but no CONSTRUCTION {#c18}
 
-**Locus:** `directives/S11_SHARED_PHYSICS.md:213-221`. **Status: OPEN.** ⚠ **A SPEC defect.**
+**Locus:** `directives/S11_SHARED_PHYSICS.md:230-251`. **Status: OPEN.** ⚠ **A SPEC defect.**
+⚠ ⭐ **Locus re-pinned 2026-08-10** — `ab8cb50e` moved it; `:213-221` now points at the live-read exemption
+table, ⛔ a different section entirely.
 
 `§5`'s protocol fixes five suffixes and their meanings, but `_SOLUTION` is *"the solution set exactly as
-your CAS returns it"* (`:218`) and `_REAL_ADMISSIBLE` is a test *"for each branch in `_SOLUTION`"*
-(`:221`). ⛔ **No branch normal form, no existential-admissibility algorithm, no undecided policy and no
+your CAS returns it"* (`:244`) and `_REAL_ADMISSIBLE` is a test *"for each branch in `_SOLUTION`"*
+(`:247`). ⛔ **No branch normal form, no existential-admissibility algorithm, no undecided policy and no
 component ordering is specified** ⇒ one engine may omit an allowed, physics-changing component the other
 retains, and both are faithful to the words.
 

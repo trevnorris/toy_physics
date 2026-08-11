@@ -1,0 +1,293 @@
+I'll review the S11 SymPy build directive as an independent physics leg: load CLAUDE.md and the binding shared physics first, then the S10 import and nearest precedent, and only then the directive.Reading the shared physics in sections so I can form an independent view of the obligations before opening the directive.Shared physics is loaded. Next: S10 export surface and the nearest SymPy audit precedent.Running the live Q6r lookup and sampling the S10 SymPy audit structure.Foundation is solid. Opening the directive and saving ablation scripts under `/tmp`.Saving the ablation scripts to absolute paths and checking one more parity detail.# Independent physics review — `S11_sympy_no_ledger_build_directive.md`
+
+**Artifact:** Codex-authored, 66 lines. Binding physics: `cf4a21a4:S11_SHARED_PHYSICS.md` (1149 lines). No ledger; only `S10_exports.LEDGER` for Q6r.
+
+**Evidence dir:** `/tmp/s11_sympy_directive_review/`  
+Scripts + stdout: `A1`–`A11` (absolute paths below each finding).
+
+---
+
+## Verdict
+
+**Two blocking findings**, both on **cross-engine shared vocabulary** that this directive alone cannot close. Physics coverage is largely deferred to the shared spec (acceptable *if* the builder treats shared as binding); Rule 2 / Rule 5 / Q6r resolve-rule / `RUN_PAIRS` are in good shape relative to the measured defect class.
+
+This directive **cannot by itself** reproduce the prior catastrophe of “exactly one shared tag” *if both engines obey shared spellings* — but it **can** open a four-tag vocabulary hole that the comparator cannot tell from missing physics.
+
+---
+
+## BLOCKING
+
+### B1 — Four **shared** suffixes are fixed only in this directive; the Wolfram builder never sees them
+
+**What is wrong**  
+Shared leaves four Q1/Q2 emit targets **unnamed** as tag suffixes:
+
+| Object the shared requires | Shared spelling | This directive pins |
+|---|---|---|
+| Expanded `L` | prose only (“Emit `L` expanded”) | `LAGRANGIAN` |
+| Full EL system | prose only | `EULER_LAGRANGE_SYSTEM` |
+| `M_A − M_B` | prose only | `M_RESIDUAL` |
+| `M_A[[1,1]]/M_B[[1,1]]` | prose only | `M_RATIO` |
+
+Shared **does** name `M_A`, `M_B`, `KINETIC_TERMS`, `STIFFNESS_TERMS`, route tags, etc. These four are the residual unnamed shared objects.
+
+They are **shared** tags (not `_LOCAL_`). §8 parity obliges identical suffixes after stripping `PY_`/`WL_`. This file is the only place those four spellings appear.
+
+**Mechanism by which a wrong result survives**  
+Wolfram is built from a **different** directive and never reads this one. If it chooses any other spelling (from shared prose alone), the comparator reports **eight missing-tag rows** for four identical physics objects. There is no paired residual on those rows, so a reader cannot tell **vocabulary gap** from **absent computation** — the expensive failure mode.
+
+**Literal output**
+
+```
+# /tmp/s11_sympy_directive_review/A1_unnamed_suffixes_stdout.txt
+LAGRANGIAN: in_backticks=False bare_word=False
+EULER_LAGRANGE_SYSTEM: in_backticks=False bare_word=False
+M_RESIDUAL: in_backticks=False bare_word=False
+M_RATIO: in_backticks=False bare_word=False
+  `M_A` in shared: True
+  `M_B` in shared: True
+  ...
+CONCLUSION: four shared suffixes fixed only in SymPy directive; shared supplies no spelling.
+```
+
+```
+# /tmp/s11_sympy_directive_review/A10_comparator_vocabulary_stdout.txt
+only_PY=...LAGRANGIAN, EULER_LAGRANGE_SYSTEM, M_RESIDUAL, M_RATIO
+only_WL=...L_EXPANDED, EL_SYSTEM, M_A_MINUS_M_B, M_ENTRY_RATIO
+Reader sees 8 "missing tag" rows for objects that are the SAME four physics quantities.
+Cannot distinguish from a builder that never computed L or M residual at all.
+```
+
+**Precedent**  
+Shared itself records the prior pair shared **one** tag suffix because two directives **decomposed** differently. This directive **blocks re-bundling** (“one unique line”, “no additional shared tags”, use shared spellings) — so total one-tag collapse is unlikely **if both engines obey shared**. The **partial** vocabulary failure on exactly these four **is** still open.
+
+**What must become true**  
+Either:
+
+1. **Shared spec** names these four suffixes (preferred — both engines read one source), or  
+2. **Both** engine directives pin the **identical** four spellings,
+
+and the pin is **not** left only in the SymPy directive.
+
+**Fix level:** shared specification (primary), or coordinated SymPy **and** Wolfram directives. ⛔ Not fixable by editing only this file’s intent while leaving Wolfram free.
+
+---
+
+### B2 — “Emit no additional shared tags” is **stricter than** shared §8:1084
+
+**What is wrong**  
+Shared §8:1084: if you emit an object with no supplied tag name, **choose one and list it in §10**.  
+Directive: pin the four above, then **“Emit no additional shared tags.”**
+
+That freezes shared vocabulary to  
+`(shared-named) ∪ {LAGRANGIAN, EULER_LAGRANGE_SYSTEM, M_RESIDUAL, M_RATIO}`  
+and forbids §8:1084 for anything else.
+
+**Mechanism**  
+If Wolfram (legally under shared) invents a fifth shared name under §10, SymPy is **forbidden** to match → another vocabulary gap that looks like missing physics. Conversely, if SymPy needs a fifth shared name, the directive pushes toward **omission** or incorrect `LOCAL_` placement — silent absence.
+
+**Literal output**
+
+```
+# /tmp/s11_sympy_directive_review/A6_no_additional_tags_stdout.txt
+Shared §8 permits: choose one and list it in the §10 report.
+Directive: Emit no additional shared tags.
+Conflict: freezes shared vocabulary below §8:1084.
+```
+
+**What must become true**  
+Directive must not undercut §8:1084, **or** shared must name every shared object so no §10 naming remains. Fix level: **this directive** (relax to shared §8:1084) **and/or shared** (close the name set). Coordinated with B1.
+
+---
+
+## NON-BLOCKING (but real)
+
+### N1 — Q6r base tags: `_LOCAL_` infix not forced in the Q6r section
+
+**What is wrong**  
+Shared: Q6r is engine-local under `_LOCAL_` (`PY_S11_LOCAL_…`).  
+Directive global line: “engine-local tags use `PY_S11_LOCAL_`.”  
+Q6r section only says **“local suffixes”** for `Q6R_RESOLVED<q>_*` and never writes `PY_S11_LOCAL_` next to `Q6R_RESOLVED_COEFFICIENTS` / `Q6R_UNRESOLVED_*` / `Q6R_RESIDUAL_SCOPE`.
+
+**Mechanism**  
+A builder can emit `PY_S11_MAIN_D3_Q6R_…` as **shared**. Comparator then flags Wolfram absence as a shared-tag gap (noise that trains people to ignore parity).
+
+**Literal output:** `/tmp/s11_sympy_directive_review/A7_q6r_local_placement_stdout.txt`  
+`PY_S11_LOCAL in Q6r section: False`; `"local suffixes" present: True`.
+
+**What must become true**  
+Every Q6r tag (including the two inventory tags and residual scope) is explicitly under `PY_S11_LOCAL_`.  
+**Fix level:** this directive.
+
+---
+
+### N2 — Thin deferral: intricate obligations are reachable only via blanket + shared
+
+**What is wrong**  
+Directive never names locus-protocol cores, strata, component count/status forms, `POINT_EVIDENCE`, `PD_TERM`/`V6`, N3, Q7/Q10/Q11 tags, package list, etc. Coverage is:
+
+- “Every Q1–Q11 object is computed and emitted at the scope required by the shared specification”
+- “Q9 precedes action assembly at each dimension”
+- “Every operand and residual required by the specification is emitted before any guard”
+
+**Mechanism**  
+A **directive-only skim** emits the four fixed names + Q6r scaffolding and can skip dual-route residuals (`ROOT_DEGREE_RESIDUAL`, `N7_RESIDUAL`, `V7_RESIDUAL`, `Q7_RESIDUAL`, …). Authority *does* bind shared, so a process-correct builder does not skip — but the directive does not make load-bearing obligations **visible**.
+
+**Literal output:** `A3`, `A5`, `A11` under `/tmp/s11_sympy_directive_review/`.
+
+Special case **P_D**: “Q9 precedes action assembly” does **not** restate the live-read rule that `PD_TERM` is built from computed `V6_BASIS`. Hand-typed `P_D` after running Q9 first satisfies the directive sentence and violates shared. Shared wins on conflict; wiring is invisible here.
+
+**What must become true (if strengthened)**  
+Either keep thin form **and** accept total dependence on shared literacy, or surface the highest-risk wirings (locus pack, component status form, `PD_TERM←V6`) without adding physics values. Not blocking under current authority text.
+
+---
+
+### N3 — Rule 2 is stated; host-boolean collapse remains an implementation hazard
+
+**What is right**  
+No `VERDICT`/`PASS`/`FAIL`; operands+residual before guards; “symbolic tests remain CAS objects rather than Python booleans”; pinned undecided/failure forms for incomplete material.
+
+**Residual risk**  
+Naive SymPy patterns collapse to host `bool`:
+
+```
+# A4_rule2_booleans_stdout.txt
+simplify_eq_zero_python: value=True type=bool is_python_bool=True
+ask_positive_returns: value=True type=bool is_python_bool=True
+sp.true: type=BooleanTrue is_python_bool=False
+```
+
+Achievable if the builder emits `sp.true`/`sp.false` / `Eq` / relationals. Directive forbids the defect; it does not make the trap impossible. Non-blocking.
+
+**Bare residual:** directive restates emit-operands-then-residual; does not restate corollary-3 “independent routes only” — relies on shared (correct for thin style).
+
+---
+
+### N4 — `RUN_PAIRS` observation rule is strong enough
+
+“Accumulated only after every required tag for that cell has been emitted”; after sweep “from observed completion, **not copied from the declaration**.” Matches shared. A declared list emitted as observed is forbidden by that wording. No finding.
+
+---
+
+### N5 — Q6r live lookup: resolve rule handles the real artifact; no Rule-5 leak
+
+**What was run**  
+`timeout 600 python3 /tmp/s11_sympy_directive_review/A2_q6r_live_lookup.py`  
+against committed `S10_exports.LEDGER` (617 keys), two-step `LEDGER[name]['dimension_key']` → `LEDGER[key]['value']` + provenance fields.
+
+**Literal result**
+
+| Map name | Status |
+|---|---|
+| `rho_br` | **RESOLVED** — dim `Matrix([[-D],[0],[1]])`, class/step KNOB/S9 → DERIVED/S10, corroborated `(S9,S10)` |
+| `mu_R` | **RESOLVED** — dim `Matrix([[2-D],[-2],[1]])`, same provenance shape |
+| `B_comp`, `mu_br`, `beta`, `s`, `s_rho`, `c_s0` | **UNRESOLVED** (`name_absent`) |
+
+Directive: resolved only when map + both live lookups supply value and provenance; else unresolved, no placeholder, continue. **Does not state which coefficients resolve.** Rule-5 clean on this axis.
+
+---
+
+### N6 — Rule 5 / 3 / 11 scan of the directive body
+
+| Rule | Result |
+|---|---|
+| **5** | No measured physics value, count, sign, spectrum, membership, or expected outcome. Only operational `timeout 600` and structural one-based `<q>`. Forbids `PASS`/`FAIL` as tags. |
+| **3** | Does not prescribe a Q9 recipe; defers objects to shared. Lexicographic `COEFFICIENT_ORDERING` is the engine’s **stated sort rule** (shared requires a stated rule), not a physics derivation path. |
+| **11** | No cost-based dropping of packages/controls. Incomplete cell → `SKIPPED_PAIRS` + §10 when material does not determine an object — not “drop to save time.” |
+
+No blocking rule leak.
+
+---
+
+### N7 — Does the directive **add** physics?
+
+No. Additions are vocabulary (`LAGRANGIAN`…), local Q6r tag shape, lex sort rule, flush/`RUN_PAIRS` process, timeout. None alter equations, premises, or expected outcomes.
+
+Does **not** stray into storage / export / merge / identity chain (correctly forbids ledger/sidecar).
+
+---
+
+### N8 — Ceremony (standing “physics, not process”)
+
+- `timeout 600` — operational seat/time control  
+- “REPORTING IS SUCCESS” — process framing  
+- “Report any shared suffix that the Wolfram stream lacks…” — §10 coupling smell; mitigated by “never delete or rename … to conceal the gap,” but still process  
+
+Not physics defects.
+
+---
+
+## Check 1 summary — parity of names the spec does not supply
+
+| Unnamed by shared | Shared vs local | Fixed where? | Wolfram sees it? | Comparator if differ |
+|---|---|---|---|---|
+| `LAGRANGIAN` | **shared** | this directive only | no | vocabulary gaps ≈ missing physics |
+| `EULER_LAGRANGE_SYSTEM` | **shared** | this directive only | no | same |
+| `M_RESIDUAL` | **shared** | this directive only | no | same |
+| `M_RATIO` | **shared** | this directive only | no | same |
+| `Q6R_RESOLVED<q>_*` (5 families) | **local** (must be) | this directive | N/A if LOCAL | OK if LOCAL-marked |
+
+**Can this reproduce “exactly one shared tag”?**  
+Not by re-bundling, if both engines use shared spellings (**A8**).  
+**Can it reproduce partial uncomparability on the four?** **Yes** (**B1**, **A10**).
+
+---
+
+## Check 2 summary — coverage of what shared requires
+
+| Area | Reachable from directive? |
+|---|---|
+| Q1–Q11 full object set | Yes via blanket + binding shared |
+| §5 locus protocol (5+4) | Only via shared (not restated) |
+| Q8 component counts + status tokens | Only via shared |
+| Q9 → `P_D` ordering | Ordering yes; **V6 live-read wiring** only via shared (**N2**) |
+| Q9 before every package needing `P_D` | “at each dimension” + shared once-per-D emission rule |
+
+Nothing the directive **requires** that shared forbids as physics. The **“no additional shared tags”** clause is the only active under-coverage of shared **process** permission (**B2**).
+
+---
+
+## Check 3 summary — can this engine state a conclusion?
+
+| Risk | Directive stance |
+|---|---|
+| Typed verdict sentence | Forbidden |
+| Payload from literal beside live object | Not permitted for non-exempt objects; relies on shared corollary 5 for `M_ROUTE_USED` etc. |
+| Bare residual without operands | Forbidden (restated) |
+| Host Python booleans for symbolic tests | Forbidden; still a build-time trap (**N3**) |
+| Declared `RUN_PAIRS` as observed | Forbidden (**N4**) |
+
+The measured “delete the computation, stdout byte-identical” class is **not** licensed by this text.
+
+---
+
+## Ablation inventory (absolute paths)
+
+| Path | Role |
+|---|---|
+| `/tmp/s11_sympy_directive_review/A1_unnamed_suffixes.py` + `_stdout.txt` | Four fixed names absent from shared |
+| `/tmp/s11_sympy_directive_review/A2_q6r_live_lookup.py` + `_stdout.txt` | Live two-step LEDGER lookup |
+| `/tmp/s11_sympy_directive_review/A3_coverage_walk_stdout.txt` | Marker presence in directive alone |
+| `/tmp/s11_sympy_directive_review/A4_rule2_booleans_stdout.txt` | Host bool vs CAS object |
+| `/tmp/s11_sympy_directive_review/A5_dual_route_residuals_stdout.txt` | Residual inventory vs directive naming |
+| `/tmp/s11_sympy_directive_review/A6_no_additional_tags_stdout.txt` | §8:1084 vs freeze |
+| `/tmp/s11_sympy_directive_review/A7_q6r_local_placement_stdout.txt` | LOCAL infix ambiguity |
+| `/tmp/s11_sympy_directive_review/A8_parity_mechanism_stdout.txt` | One-tag vs partial vocabulary |
+| `/tmp/s11_sympy_directive_review/A9_rule5_scan_stdout.txt` | Line scan for measured values |
+| `/tmp/s11_sympy_directive_review/A10_comparator_vocabulary_stdout.txt` | Simulated comparator confusion |
+| `/tmp/s11_sympy_directive_review/A11_thin_deferral_stdout.txt` | P_D / intricate markers absent |
+
+Binding physics used: `/tmp/S11_SHARED_PHYSICS.md` from `git show cf4a21a4:…`.  
+No Mathematica. No old S11 engines. Working tree not modified.
+
+---
+
+## Bottom line for a builder launch
+
+| | |
+|---|---|
+| **Block launch until** | Shared (or **both** engine directives) pins `LAGRANGIAN`, `EULER_LAGRANGE_SYSTEM`, `M_RESIDUAL`, `M_RATIO` identically (**B1**), and the “no additional shared tags” clause is reconciled with §8:1084 (**B2**). |
+| **Should fix before build (non-blocking)** | Explicit `PY_S11_LOCAL_` on all Q6r tags (**N1**). |
+| **Acceptable as-is** | Rule 2/5 stance, Q6r resolve semantics vs real LEDGER, `RUN_PAIRS` observation rule, no-ledger boundary, no physics values leaked. |
+
+⛔ No rewrites offered — only what must become true.

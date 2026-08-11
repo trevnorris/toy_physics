@@ -171,17 +171,20 @@ result no matter what the other entries are called.
 governs what an engine may **compute by hand**. §Q8c's witness pass supplies an engine something it does
 **not** compute at all: an **input**, in the same sense as the action's coefficients.
 
-⭐⭐ **The witness input is exactly one record per witness slot, and it is the ONLY thing an engine may
-receive from outside its own run:**
+⭐⭐ **The witness input is ONE FIELD — an exact point — and it is the only thing an engine may receive
+from the OTHER ENGINE'S run:**
 
 ```
 the exact counterpart point
-the source-locus identity it belongs to, translated to THIS engine's own indices
 ```
 
-⛔ **Nothing else may be received** — ⛔ no equation, matrix, root, ordering, count, result, status,
-certificate or coverage token. ⚠ The identity is supplied because a point alone does **not** determine
-which of the receiver's own loci it is to be tested against; ⭐ it names a **selector**, ⛔ never a value.
+⛔ **Nothing else may be received from the other engine** — ⛔ no equation, matrix, root, ordering, count,
+result, status, certificate, scope or coverage token.
+⚠ ⭐ **The receiver is NOT told which locus the point came from, and does not need to be:** ⭐ which of its
+**own** loci that point lies on is something it **computes** (§Q8c). ⇒ ⛔ no selector, ⛔ no index
+translation, ⛔ no donor scope.
+⚠ This says nothing about §Q6r's import of the **previous step's** `LEDGER`, which is a different channel
+and is unaffected.
 
 ⚠ ⭐ **Corollary 1's test does not apply to this record**, because it is an input rather than a computed
 tag — ⭐ exactly as the action's coefficients are inputs. ⛔ **The exemption does not generalise:** it names
@@ -707,14 +710,18 @@ them.
 `STRATUM<s>_ROOT<r>` scopes. ⛔ None of these component-scoped payloads may be obtained by substituting
 `STRATUM<s>_POINT`.
 
-⛔⛔ **WHICH VARIABLE IS ELIMINATED IS PINNED — ⚠ otherwise two engines describe one component in
-different variables and every symbolic payload differs for a reason that is not physics.**
-⭐ Order the symbols as `COEFFICIENT_ORDERING` followed by `k_1 … k_D`. Wherever a defining equation
-determines one of its variables in terms of the others, **eliminate the one occurring LATER in that order
-and retain the earlier.** `STRATUM<s>_FREE_PARAMETERS` is what remains after every defining equation has
-been used this way.
-⚠ If the engine cannot eliminate the pinned variable, it emits `STRATUM<s>_FREE_PARAMETERS` as what it
-actually retained and sets every affected `_STATUS` to `UNDECIDED` — ⛔ it does not silently choose another.
+⚠⚠ **THE TWO ENGINES MAY DESCRIBE ONE COMPONENT IN DIFFERENT VARIABLES, AND THIS FILE DOES NOT PIN WHICH.**
+⭐ Each engine emits `STRATUM<s>_FREE_PARAMETERS` as **what it actually retained**, and its component-scoped
+**symbolic** payloads in those parameters.
+⇒ ⭐⭐ **Those symbolic payloads are INSPECTION-ONLY: ⛔ they are not cross-engine comparison rows**, because
+two faithful engines can eliminate different variables and differ for a reason that is not physics.
+⭐⭐ **The COUNTS and their STATUSES ARE comparison rows** — a count is invariant under which variable was
+eliminated, and a status is a property of the component, ⛔ not of its description.
+⚠ **The certificate and the change locus are NOT comparison rows**: both are **expressed in** the free
+parameters, so two faithful engines write them differently. ⭐ They are emitted, and the orchestrator
+aligns them exactly as it aligns strata — ⛔ they are not differenced.
+⚠ ⭐ **Pinning an elimination is not attempted**: no rule that names one variable is valid on every
+component a CAS can return, and one that names the wrong variable **deletes a branch.**
 
 ⭐ **Every component-scoped Q3/Q4 tag whose payload is an integer count** — including a degree, rank,
 nullity or basis count — has three companion object families. Write `<COUNT>` for that tag's quantity name:
@@ -737,8 +744,10 @@ VALUE:        <the count on the component where it is defined there, whatever th
                the single token NOT_DEFINED_ON_COMPONENT where the engine did not obtain one>
 ```
 
-⚠ ⭐ Under `VARIES` the `VALUE` field is the count off the change sub-locus, and `_CHANGE_LOCUS_*` is what
-carries the rest — ⛔ the pair is the answer, ⛔ neither field alone.
+⚠ ⭐ Under `VARIES` the answer is the **pair** — the `VALUE` the engine obtained together with
+`_CHANGE_LOCUS_*` — ⛔ neither field alone. ⚠ Where the engine obtains no single count off the change
+sub-locus, `VALUE` is `NOT_DEFINED_ON_COMPONENT` and the change locus carries the object; ⛔ do not
+manufacture one.
 
 For a root-scoped count, insert the same suffixes after
 `STRATUM<s>_ROOT<r>_<COUNT>`. All named tags above are emitted unconditionally. The change sub-locus is
@@ -748,8 +757,9 @@ components. ⛔ A bare generic integer is not a component-scoped answer.
 ⭐ Also emit `STRATUM<s>_COMPONENT_Q3_Q4_COVERAGE`, with exactly one token:
 `COMPLETE_COVERAGE` when every requested component object was built and every component count has a
 `CONSTANT` or `VARIES` status; `INCOMPLETE_COVERAGE` otherwise. If the engine cannot build a component-wide
-Q3/Q4 object, its component-scoped tag carries `NOT_COMPUTED_COMPONENT_WIDE`, its count status if applicable
-is `UNDECIDED`, and ⛔ no component-level count may be copied or inferred from a point evaluation.
+Q3/Q4 object, its count status is `UNDECIDED` and its `VALUE` field is `NOT_DEFINED_ON_COMPONENT` — ⭐ the
+same one record as every other status, ⛔ never a second payload shape — and ⛔ no component-level count may
+be copied or inferred from a point evaluation.
 
 ⭐ **Then recompute and emit the complete `Q3` and `Q4` tag sets at `STRATUM<s>_POINT` as POINT-LOCAL
 EVIDENCE.** Insert `POINT_EVIDENCE_` immediately before each unscoped quantity name and immediately after
@@ -778,47 +788,45 @@ cannot decide. ⇒ ⭐ **That asymmetry becomes a computation instead of an inco
 
 1. ⭐ **Native pass.** Both engines run and emit every object this file requests. ⛔ Neither receives
    anything from the other.
-2. ⭐ **Alignment.** The **orchestrator** — ⛔ never either engine — reads both native outputs and pairs
-   loci by their §5 `_EQUATIONS`. ⭐ **The trigger is the SOURCE LOCUS, ⛔ not the stratum list:** wherever
-   one engine emitted an exact point for a locus and the other engine emitted a locus paired with it, the
-   orchestrator supplies that point to the other engine, ⛔ whether or not that engine admitted, excluded
-   or left undecided any component there. ⇒ ⛔ **An empty `STRATUM_ORDERING` does NOT suppress the
-   exchange.** The orchestrator translates the paired locus identity into the receiver's own `ROOT<r>` and
-   index vocabulary and supplies it with the point, as the §4 witness input.
-3. ⭐ **Witness pass.** Both engines run again, rebuild their own objects, consume only their witness
-   inputs, and emit the objects below. ⛔ No engine reads the other engine's output.
+2. ⭐ **Supply.** The **orchestrator** — ⛔ never either engine — collects **every exact point either engine
+   emitted**, for **any** locus or stratum, and supplies each of them to the other engine as the §4 witness
+   input. ⛔ **There is no pairing condition and no matching test.** ⇒ ⛔ **An empty `STRATUM_ORDERING`,
+   an undecided admissibility, or a differently-presented equation cannot suppress the exchange**, because
+   nothing has to match for a point to be handed over.
+3. ⭐ **Witness pass.** Both engines run again, rebuild their own objects, consume only the supplied points,
+   and emit the objects below. ⛔ No engine reads the other engine's output.
 
-⭐ Each receiving engine evaluates the supplied point against **its own** `_EQUATIONS` for the identified
-locus and evaluates **its own** live `M` at those coordinates. ⛔ It imports no equation, matrix, root,
-ordering, count, result, status or certificate, and ⛔ adjusts no local object toward the counterpart.
+⭐⭐ **The receiver is not told where the point came from. It COMPUTES where the point lies among its own
+objects.** ⛔ It imports no equation, matrix, root, ordering, count, result, status, scope or certificate,
+and ⛔ adjusts no local object toward the counterpart.
 
-⭐ Emit `WITNESS_ORDERING` unconditionally in the witness pass, with one entry per witness input supplied.
-⛔ **If the orchestrator supplied any input, a pair of empty orderings is non-compliant.** For each
-`WITNESS<w>`, emit:
+⭐ Emit `WITNESS_ORDERING` unconditionally in the witness pass, with one entry per point supplied.
+⛔ **If any point was supplied, an empty ordering is non-compliant.** For each `WITNESS<w>`, emit:
 
 ```
 WITNESS<w>_RECEIVED_POINT                  the exact point supplied
-WITNESS<w>_OWN_LOCUS_IDENTITY              this engine's own locus base tag for the identified locus
-WITNESS<w>_DONOR_SCOPE                     the counterpart scope the point was emitted under, as supplied,
-                                           carried verbatim so the two engines' rows can be joined
-WITNESS<w>_RECEIVED_POINT_COVERAGE         exactly COMPLETE_POINT · INCOMPLETE_POINT, from testing whether
-                                           the point assigns every symbol its OWN _EQUATIONS and the
-                                           coefficients of its OWN M depend on, with omegaSquared left as
-                                           the §Q3 solve indeterminate
-WITNESS<w>_OWN_EQUATIONS                   this engine's live `_EQUATIONS` for that locus
-WITNESS<w>_OWN_EQUATION_RESIDUAL           every own `lhs − rhs`, evaluated at RECEIVED_POINT
+WITNESS<w>_OWN_LOCUS_RESIDUALS             one entry for EVERY locus this engine emitted at this package
+                                           and dimension: that locus's own base tag, and its own
+                                           `lhs − rhs` for every equation, evaluated at RECEIVED_POINT
+WITNESS<w>_POINT_COVERAGE                  exactly COMPLETE_POINT · INCOMPLETE_POINT, from testing whether
+                                           the point assigns every symbol this engine's own `M` depends
+                                           on, with omegaSquared left as the §Q3 solve indeterminate
 WITNESS<w>_OWN_M_EVALUATED                 this engine's own live `M`, evaluated at RECEIVED_POINT
 WITNESS<w>_POINT_EVIDENCE_<QUANTITY>       the complete Q3/Q4 point-evidence set computed from that own M
 WITNESS<w>_ROOT<r>_POINT_EVIDENCE_<QUANTITY>  its root-scoped members
 ```
 
-⭐ The point is independent of the receiving engine's construction, so its equation residual is a genuine
-operand and is required by §5 corollary 3.
-⚠ ⭐ **`WITNESS<w>_DONOR_SCOPE` is what makes this a CROSS-ENGINE object.** ⛔ Without it a witness row and
-the counterpart's own row for the same point sit in different tag scopes and nothing pairs them; ⭐ with
-it, the receiver's point-evidence set and the donor's set at that point are one comparison.
-⛔ If `WITNESS<w>_RECEIVED_POINT_COVERAGE` is `INCOMPLETE_POINT`, the evaluated objects remain partly
-symbolic and their counts are generic — ⭐ emit them, and ⛔ do not read them as point values.
+⭐⭐ **`WITNESS<w>_OWN_LOCUS_RESIDUALS` is the object that replaces a supplied selector.** ⭐ It states, by
+computation, which of this engine's own loci the point satisfies — ⛔ so no engine needs to be told, and
+⛔ no two engines need to present a locus the same way for the exchange to work.
+⭐ The point is independent of the receiving engine's construction, so these residuals are genuine operands
+and are required by §5 corollary 3.
+⛔ If `WITNESS<w>_POINT_COVERAGE` is `INCOMPLETE_POINT`, the evaluated objects remain partly symbolic and
+their counts are generic — ⭐ emit them, and ⛔ do not read them as point values.
+
+⚠ ⭐ **Pairing a witness row with the counterpart's own row at the same point is the ORCHESTRATOR's job**,
+from `WITNESS<w>_RECEIVED_POINT` and §8's orderings — ⭐ the same alignment it already performs for stratum
+and root indices. ⛔ It is not encoded in any tag an engine receives.
 
 ### Q9 · ⭐⭐⭐ THE INVARIANT CENSUS
 

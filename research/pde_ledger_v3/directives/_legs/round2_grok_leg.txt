@@ -1,0 +1,190 @@
+I'll review the S11 PY decision list as an independent physics leg: form the chain requirements from the ordered sources first, then re-measure and attack the list — starting with the foundation docs and committed artifacts, not the decision list itself.Next I'll pull the shared physics spec, measure S10 exports myself, and load the settled chain/precedent docs before opening the decision list.S10 export key extraction failed — inspecting the actual file format next.Fixing the census script and building a full quantity-name inventory from the spec.Foundation measurements are in; opening the decision list now and testing its claims against those numbers.Constructing P4/P5 failure cases and probing P2's effect on same-object meetings and Q6r lookups.# Independent physics review — `S11_py_decisions_v2.md`
+
+**Verdict: BLOCK the build.** Two defects change what can be claimed about the export chain or let wrong physics sit under familiar names. Several further items are real but non-blocking if P2/P5 are fixed first.
+
+Read order followed. Artifact opened only after CLAUDE, SHARED_PHYSICS (`cf4a21a4`), `S10_exports.py`, S10 engine, v1 block message, `F1`–`F7`, and `D1`–`D12`.
+
+---
+
+## M1–M6 — independent re-measurement
+
+| # | Claim | My result | Status |
+|---|---|---|---|
+| **M1** | Schema `{display,value,value_kind,class,step}` on all 617; `dimension_key` on 50; `corroborated_steps` on 3; **zero** `dim` | Exact match | **Reproduced** |
+| **M2** | 46 symbol-identity keys (value is `Symbol` with `.name == key`); 10 keys with uppercase, all in that population; tag-derived all lowercase | 46; 10 uppercase keys `D, dim_mu_R_*, lambdaScale, mu_R, omegaSquared`; 0 uppercase in non-symbol population | **Reproduced** |
+| **M3** | S10 rule `suffix.lower()` + `_d<n>` for integer D; **556**/617 keys carry `_dN` | 556 with `_dN`; rule at engine `:1949-1953` | **Reproduced** |
+| **M4** | **97** candidate `<QUANTITY>` names; **3** collide under flat lowercasing: `ROOT_ORDERING`, `DIM_COEFFICIENTS`, `DIM_SOLUTION`; all different objects | **3 collisions reproduced**; `root_ordering_d3 = (0, mu_R*(k1**2+k2**2+k3**2)/rho_br)`, class DERIVED, step S10. Candidate count **not** 97 under any extraction I ran (≈87–131) | **Collisions yes; “97” no** |
+| **M5** | `RUN_PAIRS` / `SKIPPED_PAIRS` observed, `SKIPPED = declared ∖ completed` | Spec `:1037-1039` | **Reproduced** |
+| **M6** | `DIM_*` from non-local Q6; only Q6r is `_LOCAL_` for export-chain comparison | Spec `:498-501` vs `:553-556` | **Reproduced** |
+
+**Scripts / stdout (absolute paths):**
+
+| Work | Script | Stdout |
+|---|---|---|
+| Full ledger census | `/tmp/s11_review_m_census_script.py` | `/tmp/s11_review_m_census_stdout.txt` |
+| Quantity × key collisions | `/tmp/s11_review_quantity_census_script.py` | `/tmp/s11_review_quantity_census_stdout.txt` |
+| M1–M6 bundle | `/tmp/s11_review_M1_M6_script.py` | `/tmp/s11_review_M1_M6_stdout.txt` |
+| Collision objects | `/tmp/s11_review_dim_objects_script.py` | `/tmp/s11_review_dim_objects_stdout.txt` |
+| P4/P5 constructions | `/tmp/s11_review_P4_P5_guards_script.py` | `/tmp/s11_review_P4_P5_guards_stdout.txt` |
+| P2 consumer simulation | `/tmp/s11_review_P2_consumer_script.py` | `/tmp/s11_review_P2_consumer_stdout.txt` |
+
+**M4 census detail:** Under flat `quantity.lower()` (+ `_dN`), the only name collisions with the committed ledger are the three the list names. No fourth quantity-name collision found. The count “97” is an un-reproduced census method, not a missed collision.
+
+---
+
+## Blocking findings
+
+### B1 · `P2` deletes the chain meeting `F1` requires (and re-runs v1’s D12 workaround)
+
+**What is wrong.**  
+`P2` maps `PY_S11_MAIN_D3_ROOT_ORDERING` → `s11_main_d3_root_ordering`. That embeds **step + package + D + quantity** in the storage key. `F1` (two-legged, settled) says keys stay **flat** and “a later step re-deriving that object writes **the same key**.” Putting `s11` in the key is a **producer/step prefix** by another name. The list’s distinction “engine prefix (D11) vs run-scope from §8 tags” is a rationalization: §8 is the **emission** grammar for dual-engine parity; S10’s actual ledger rule was `suffix.lower()` + optional `_dN` with `step` in the **row**, not the key.
+
+**Mechanism — wrong physics survives.**  
+After S11 “succeeds,” a consumer that still uses the S10 flat name reads **S10’s** spectrum:
+
+```
+flat_key_root_ordering_d3_after_S11= (0, mu_R*(k1**2 + k2**2 + k3**2)/rho_br)
+flat_key_step= S10
+p2_key_value= (mu_R*.../rho_br, B_comp*.../rho_br)
+consumer_using_flat_name_sees_S10= True
+```
+
+(`/tmp/s11_review_P2_consumer_stdout.txt`)
+
+Under `F1`+`F2`, writing flat `root_ordering_d3` would **meet** S10’s row, compare objects, and **fail loudly** (different objects — correct). Under `P2`, that measurement never runs; the under-specified name stays invisible; the merged ledger keeps S10 physics under the natural name.
+
+**Same-object counterexample (chain, not S10∩S11 name list).**  
+For S10→S11, M4 is right that the three flat name overlaps are **different** objects — so a flat key would not yield a quiet re-derivation, it would yield an F2 finding. The deleted measurement is:
+
+1. **Future steps:** anything following the same rule writes `s12_…` / `s13_…` and can never share a key with S11’s objects.  
+2. **D12:** the three collisions are exactly the open naming problem v1 was blocked for inventing a transform to route around. `P2` makes them unmeetable instead of measurable.
+
+**Q6r under P2.**  
+Still works on the **symbol-identity** population (`rho_br` → `inertia_coefficient_dimension`, `mu_R` → `stiffness_coefficient_dimension`). `B_comp` etc. correctly unresolved. Live lookups are not broken; the damage is the **tag-derived** namespace and stale flat derived names.
+
+**Two populations under P2.**  
+Disjoint: tag-derived keys are `s11_…`; no imported key starts with `s11_`. No silent self-overwrite between the two populations. That part of the list is true and insufficient.
+
+**Vacuity of P4 on tag-derived vs import.**  
+The list admits P2 makes tag-derived collision impossible. Confirmed: sample P2 keys ∩ imported = ∅. So F2 never fires on the M4 naming collisions. Vacuity operands make the dead guard *visible*; they do not restore the measurement.
+
+**Third option (neither pure “ignore F1” nor P2).**  
+Keep S10’s key rule: **quantity.lower() + `_dN` when D is integer; symbol-identity keys flat by `.name`.** On key present + different object → **loud F2 finding** (names both objects) and **do not write**. That *is* the D12 signal for `ROOT_ORDERING` / `DIM_*`. Do not invent a mechanical scope prefix to make divergence impossible (rule 6). Optional refinement: D12 renames the three under-specified objects so flat keys become honest — still not a producer prefix.
+
+**What must become true instead.**  
+Storage keys must remain meetable across steps for the same mathematical object (`F1`). Scope that is only emission grammar must not be copied into the ledger key. Collisions that are different objects must fail loudly (`F2`), not be defined away.
+
+---
+
+### B2 · `P5` is blind to non-value corruption of imported rows (including `dimension_key`)
+
+**What is wrong.**  
+`P5` compares only **values** between snapshot and output. `class`, `step`, `dimension_key`, `corroborated_steps`, `display`, `value_kind` can change freely.
+
+**Mechanism.**  
+Q6r (and any later consumer) resolves dimensions via `LEDGER[name]['dimension_key']` then `LEDGER[that]['value']`. Forging `dimension_key` on `rho_br` / `mu_R` retargets the imported dimension **without** changing the coefficient symbol value. Chain integrity residual stays empty.
+
+**Literal output** (`/tmp/s11_review_P4_P5_guards_stdout.txt`):
+
+```
+# Accidental value write — P5 catches it
+before_accident root_ordering_d3=(0, mu_R*(k1**2 + k2**2 + k3**2)/rho_br)
+after_accident  root_ordering_d3=(999, mu_R*(k1**2 + k2**2 + k3**2)/rho_br)
+P5_operand1_differing_imported_keys=['root_ordering_d3']
+P5_operand3_symmetric_difference=['root_ordering_d3']
+P5_detects_accident=True
+
+# Metadata-only mutation — P5 does NOT catch it
+metadata_only_mutation value_diff=[] residual=[]
+P5_BLIND_TO_METADATA_MUTATION= True
+```
+
+**Defeat note:** if the accidental key is also placed in the “declared re-derives” set, residual empties again (`if_accident_also_declared residual=[]`). The list improves on v1 by saying “declared” rather than “touched,” but does not pin that the declaration is **a priori**, not “keys we wrote.” If a builder implements declared := written, v1’s tautology returns.
+
+**What must become true instead.**  
+Chain integrity must treat an imported **row** as the unit of identity (at least `value`, `class`, `step`, `dimension_key`, and any `corroborated_steps`), or emit separate residuals for each field — both operands and residual, per rule 2. Declaration of re-derived keys must be fixed before the write loop, not derived from it.
+
+---
+
+## Non-blocking findings
+
+### N1 · `P4` same-object predicate has false same / false different cases
+
+Constructed (`/tmp/s11_review_P4_P5_guards_stdout.txt`):
+
+| Pair | Physicist | P4 (as specified: Symbol+assumptions; else residual→0) |
+|---|---|---|
+| `Symbol("D", integer=True, positive=True)` vs `Symbol("D", integer=True)` | different | **different** (caught) |
+| Same after P3 `srepr` round-trip | same | **same** (survives) |
+| `(a+b)**2` vs expanded | same | same (simplify) |
+| `cos²+sin²` vs `1` | same value, different form | **same** |
+| `Float(0.5)` vs `Rational(1,2)` | dubious “same object” | **same** |
+| Identical `ImmutableMatrix` pair via `M-M` then `residual == 0` | same | **`R==0` is False** for zero matrices (`R==zeros` True) — **false different** |
+| `Tuple(1,0,0)` vs column matrix | different objects | **same** via matrix residual path |
+
+Under `P2`, tag-derived keys do not hit imports, so the matrix false-different mostly stays latent for import overwrite. It still matters for any same-key re-derivation (symbols use the Symbol branch). **What must become true:** pin object equality so that (a) zero matrices compare as zero residuals, (b) “residual → 0” does not mean “any trig/float identity,” or split **value residual** from **expression identity** and emit both.
+
+### N2 · No check that every non-`_LOCAL_` MAIN emission is present in the export
+
+`P1` defines the export set by tags; nothing requires a residual between **emitted MAIN non-LOCAL tags** and **keys written**. A completed MAIN cell (`P6` green) can still omit `ROOT_ORDERING` (or any quantity) from `S11_exports.py`. That is the expensive defect class: **absent export of a computed object**. Downstream binds a missing key or keeps S10’s stale flat row.
+
+**What must become true:** emit both the MAIN non-LOCAL tag set and the export key set (under whatever key rule survives), and their symmetric difference as residual — then guard.
+
+### N3 · `P1` LOCAL exclusion — claim checked, no physics loss found
+
+Walked LOCAL inventory: Q6r comparison payloads, `PREMISE_INVENTORY`, LOCAL name-list, solver-condition tags. MAIN dimension solve is in non-local Q6 (`DIM_COEFFICIENTS`, `DIM_EQUATIONS`, `DIM_SOLUTION`, …). **Excluding all `_LOCAL_` tags does not drop MAIN’s derived dimensions.** Rule is tag-decidable for those families.  
+
+**Caveat (non-blocking):** `RUN_PAIRS` / `SKIPPED_PAIRS` do not fit §8’s `PACKAGE_D<n>_QUANTITY` shape cleanly; `P1` special-cases them — good — but the tag form for the sweep record is still under-specified for a purely mechanical classifier.
+
+### N4 · `F3` evidence-in-row deferred away
+
+List: under M4+P2 this step writes no re-derived tag-derived row, so do not build F3 fields. Symbol re-derivation is only in P4 stream operands. A **file-only** consumer cannot recompute a symbol re-bind residual from the merged export (`F3`’s reason). Low risk if S11 never retires knobs; still a gap relative to settled `F3`.
+
+### N5 · Rule surface (items that are not physics findings, but were checked)
+
+- **Rule 5:** Decisions `P1`–`P9` do not hand the builder S11 physics targets or “which coefficients resolve.” `P7`/`F7` stay generic. The M-table states S10 measurements for reviewers (including `root_ordering_d3`’s value); that is artifact evidence, not an S11 acceptance target.  
+- **Rule 3:** `P2`/`P5` specify export machinery recipes; the load-bearing issue is B1 (what is stored), not prose style.  
+- **Rule 2:** P4/P5/P3 require operands+residuals in principle; P4’s vacuity operands under P2 are process for a dead collision class.  
+- **Rule 11:** P2 is not framed as cost-saving, but it **drops** the F2 collision measurement to avoid D12 — same failure mode as the v1 block message.
+
+---
+
+## What is missing (no item would catch it)
+
+1. **Stale flat derived names after S11** (mechanism in B1) — no residual comparing “natural flat name” vs “what this step derived for that quantity.”  
+2. **`dimension_key` / provenance forgery** (B2).  
+3. **Export omitted while tags exist** (N2).  
+4. **`declared` re-derives reconstructed from the write set** — reintroduces v1 tautology; list does not forbid it.  
+5. **Wrong but completed MAIN physics** — dual engine is the control; this list is export-chain only (appropriate), but export can still publish a full, self-consistent, wrong MAIN namespace with all guards green.
+
+---
+
+## Ablations that found nothing (so “clean” is evidence-backed)
+
+| Check | Computation | Result |
+|---|---|---|
+| Extra M4 collisions | All screaming quantity tokens × S10 bases/keys | Only the three named |
+| P2 ∩ imported keys | Simulated MAIN D=2..5 P2 keys | Empty intersection |
+| Q6r after P2 | Live `LEDGER[name]['dimension_key']` | `rho_br`, `mu_R` resolve; others unresolved |
+| P5 value accident | Mutate `root_ordering_d3` 0→999 | Residual names the key |
+| P4 Symbol assumptions | D int+pos vs int / plain | Detected as different |
+| P3 round-trip of D | `srepr` → eval | Assumptions preserved |
+| P1 LOCAL loss of Q6 dims | Spec Q6 vs Q6r | Q6 non-local carries dim solve |
+| Control-package keys in S10 | Census | Zero (P1 boundary matches artifact) |
+
+---
+
+## Summary for the gate
+
+| Decision | Pass? |
+|---|---|
+| P1 export set | OK on LOCAL loss / decidability with RUN_PAIRS special case |
+| **P2 keys** | **FAIL — blocks** |
+| P3 schema | OK (matches measured M1) |
+| P4 same-object | Live for symbols; vacuous for tag-derived vs import under P2; predicate holes (N1) |
+| **P5 chain integrity** | **FAIL — blocks** (value-only) |
+| P6 completeness | OK directionally |
+| P7 import / F7 | OK |
+| P8–P9 | Process; not physics blockers |
+
+**Do not launch the builder until B1 and B2 are settled in a revised list and that list is two-legged again.** Fixing only prose around `P2` while keeping step/package in the key will re-commit the defect class that blocked v1: a mechanical transform that makes the measurement impossible.

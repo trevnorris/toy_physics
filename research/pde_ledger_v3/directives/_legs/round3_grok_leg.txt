@@ -1,0 +1,271 @@
+I'll follow the load-bearing read order: project method first, then the physics specs and S10 export, then S9 rewrite decisions, and only after that the two artifacts.Next I'll pull S9 rewrite decisions and map the S10 export structure before opening either decision artifact.I have a chain-side view of what the naming rule must enforce. Opening both decision artifacts now.S10's committed export appears MAIN-only — I'll confirm that and dig up any multi-package emissions before measuring the F8a partition.I'll use the full S10 emission file to measure the F8a partition, since the committed LEDGER only carries MAIN.Digging into false universals and running the rename-control and PY-guard ablations next.Saving reproducible scripts and verifying a few remaining edge cases.# Independent physics review — F8 + S11 PY decisions v3
+
+**Read order followed.** Spec/export/S9 plan first; artifacts last. Read-only on the tree; all ablations on copies under `/tmp/s11_review_f8/`.
+
+**Scripts / stdout (absolute paths):**
+| Path | Content |
+|---|---|
+| `/tmp/s11_review_f8/RUN_ALL_KEY_ABLATIONS.py` | Consolidated re-runnable ablations |
+| `/tmp/s11_review_f8/RUN_ALL_KEY_ABLATIONS_stdout.txt` | Key numbers |
+| `/tmp/s11_review_f8/f8a_partition_stdout.txt` | Form-mutation partition |
+| `/tmp/s11_review_f8/f8a_deep_stdout.txt` | False universal / spectrum / Q7 |
+| `/tmp/s11_review_f8/rename_controls_stdout.txt` | Six rename controls + derangement |
+| `/tmp/s11_review_f8/p1_symbols_stdout.txt` | Symbol-row totality |
+| `/tmp/s11_review_f8/continuation_stdout.txt` | F8c engines, rule scan notes |
+
+---
+
+## Blocking findings
+
+### B1 — F8 rename controls do not catch quantity derangement (the failure mode they exist for)
+
+**What is wrong.** Controls 1–3 check map totality/injectivity and row preservation *relative to the map*. Control 4 binds the destination key only to an **action** descriptor (`F8c`/`F8` item 4). A derangement of **quantities** from the **same** action is invisible to C1–C4 as written. C5 requires a deliberate derangement to fail; under the written C4 it need not.
+
+**Mechanism.** Re-point names so consumer lookups by key receive a different object. Payload checks pass when payloads are equal, zero, or symmetry-invariant. Declared swap of unequal payloads still passes C2 (before[old] vs after[new] matches the map). Action-descriptor check still passes because both rows came from the same live action.
+
+**Literal output.**
+
+Equal-payload silent swap (homogeneity `True` × `True`):
+```text
+SWAP_PAIR q1_lagrangian_expanded_q6_solved_homogeneity_d2
+          q2_period_averaged_lagrangian_q6_solved_homogeneity_d2
+payloads_equal True
+C2_value_class_mismatches_after_equal_swap 0
+SILENT_REPOINT: C1_total True, C1_injective True, C2_row_preserved True, C3_dimension_key True
+C4_descriptor_present False  # committed LEDGER has no descriptor rows
+```
+
+Declared swap of **different** physics under the same action:
+```text
+pa=q1_lagrangian_expanded_d3  pb=q2_matrix_b_d3
+values_equal False
+map_preserves_objects True
+DECLARED_PHYS_SWAP: C1–C3 all True
+```
+
+C3 does catch **dimension_key-only** redirection (good):
+```text
+DIM_KEY_ONLY_ATTACK: C3_dimension_key False  (dim_value_mismatch → length_dimension)
+```
+
+**What must become true instead.** A derangement of destination keys must fail even when (i) payloads are equal/zero/invariant and (ii) both rows share one action. That requires non-payload **quantity** identity (or an equivalent binding of key ↔ object role), not only an action descriptor. Control 4 as written does not supply that.
+
+---
+
+### B2 — F8a’s partition is not a measurement you can finish on committed export data alone; incomplete mutators mint false universals
+
+**What is wrong.** `F8a` says: mutate the action; if it does not move, bare name. The committed `S10_exports.py` is **MAIN-only** (617 keys; zero control-package rows). “Does it move?” is **not** decidable from the ledger alone. The multi-package evidence lives in the engine `.out`, which is not what the rename consumes.
+
+Selecting form mutators **by action** (not by `XFORM_` prefix):
+
+| Package | Action fact | `@D3` vs MAIN |
+|---|---|---|
+| `XFORM_FULLGRAD` | stiffness form change | 108 differ / 112 same (common) |
+| `XFORM_DIVONLY` | stiffness form change | 98 differ / 206 same |
+| `XFORM_SIGNFLIP` | sign of `W`, same support | 36 differ / 268 same |
+| `XFORM_ANISO` | **kinetic only** | 86 differ (not a form control) |
+| `XCOEF_SCALE` | coefficient scale | 45 differ (not a form control) |
+
+**False universal (S10 form mutations leave it fixed; S11 multi-coefficient `W` moves it):**
+```text
+Q6_STIFFNESS_COEFFICIENTS:
+  MAIN / FULLGRAD / DIVONLY / SIGNFLIP → (mu_R,)
+  XCOEF_SCALE → (mu_R*s,)   # scale, still one coefficient
+# S11 MAIN = (μ_R/2)S_curl + (B_comp/2)S_div → inventory gains B_comp
+```
+
+**False “universal spectrum” if DIVONLY is the only form mutator used:**
+```text
+MAIN ROOT_ORDERING     (0, mu_R*(k1**2+k2**2+k3**2)/rho_br)
+DIVONLY ROOT_ORDERING  (0, mu_R*(k1**2+k2**2+k3**2)/rho_br)   # MAIN==DIVONLY True
+FULLGRAD ROOT_ORDERING (mu_R*(k1**2+k2**2+k3**2)/rho_br,)     # moves
+```
+Different materials can share the same ω² list (polarizations differ). A bare `root_ordering_d3` is exactly the defect F8 names — and DIVONLY alone would not have marked it action-dependent.
+
+**False action-dependent noise.** `XFORM_FULLGRAD` is missing 84 MAIN tags (almost all `ROOT2_*`) because it has one distinct root; “differs / only_main” is confounded by **emission shape**, not only physics motion. `SIGNFLIP` moves many payloads by an overall stiffness sign while `Q7_STIFFNESS` (the density form) **does not** move — correct for form, easy to mis-read if “any payload change ⇒ action-dependent key.”
+
+**Mechanism.** Builder measures on an incomplete mutator set or on MAIN-only ledger → wrong bare vs qualified split → either (a) bare keys force false cross-step “different object” loud fails for coefficient-inventory / multi-term `W`, or (b) over-qualification kills meetings that should happen (rule 6).
+
+**What must become true instead.** The partition used for naming must be computed from **actual action mutations that span the dependency being claimed**, recorded as operands (which packages, which objects moved), and must not treat tag-set cardinality changes as motion. Committed MAIN-only export is insufficient input for that measurement.
+
+---
+
+### B3 — P4 is not a complete F2 decision procedure; UNDECIDED is a gap; equal payloads of different roles look “same”
+
+**What is wrong.**
+1. Residual subtraction is undefined for most ledger types.
+2. `F2` only branches **same → re-derive** / **different → loud fail**. Neither artifact maps **`UNDECIDED`**.
+3. Structural identity of payloads is not identity of **objects** (roles).
+
+**Literal output (self-reconstruction of all 617 rows):**
+```text
+residual_path_kinds: basic_sub_ok=90, matrix=39, basic_no_sub=488
+self: same_zero=128, struct_same_res_undecided=489, fail=0, total=617
+```
+
+Matrix `residual == 0` is the exact trap P4 warns about:
+```text
+self residual R==0 → False   # matrix of zeros is not == 0
+R==zeros → True
+all entries 0 → True
+```
+
+**Two objects P4 treats as the same that are not the same object:**
+```text
+root_ordering_d3 vs q3_roots_distinct_d3: srepr equal True, values equal True
+# different roles (ordering slot vs distinct-root list); same MAIN spectrum payload
+two homogeneity booleans (q1_* vs q2_* _solved_homogeneity_d3): both True → structural same
+```
+
+**Two that residual-zero would call the same while structure differs (false different under srepr-only, false same under residual-only):**
+```text
+expand((x+1)**2) vs (x+1)**2: srepr differ, simplify(diff)==0
+unevaluated Mul(x,1/x) vs 1: srepr differ, simplify(diff)==0
+```
+
+**Mechanism.** On a colliding key, if residual is `UNDECIDED` and payloads match (`True`, empty tuple, shared spectrum list), a builder can treat that as “same object” and overwrite; the physics role of the key silently changes. That is the same class of failure as rename re-pointing.
+
+**What must become true instead.** For every value type the export admits: a total decision that emits both operands, which channel distinguished them, and a defined F2 action for `UNDECIDED` (must not throw, must not silently skip, must not default to overwrite). Payload equality alone must not license “same object.”
+
+---
+
+### B4 — P5 does not see a declared wrong-value re-derivation; correctness is entirely on F2/P4
+
+**Literal P5 operands (`changed − declared`):**
+
+| Construction | `changed − declared` | Visible? |
+|---|---|---|
+| Undeclared value write on `rho_br` | `{rho_br}` | Yes |
+| Undeclared metadata `class` write | `{rho_br}` | Yes |
+| Declared re-derivation, row reproduced | `∅` | Correctly quiet |
+| Declared re-derivation, **wrong** value | `∅` | **Invisible to P5** |
+
+**Mechanism.** By design P5 only polices undeclared field changes. Wrong physics under a declared key is F2’s job. Combined with B3, a declared re-derivation can write a wrong but structurally “matching” payload and exit green on P5, completeness, and round-trip.
+
+**What must become true instead.** Not “P5 must catch wrong values” — that would fight its stated operand. What must be true: F2/P4 actually distinguish wrong re-derivations for every admitted type (B3). As written, the chain’s physics load-bearing join is hollow for most rows.
+
+---
+
+## Non-blocking findings
+
+### N1 — F8c’s rejection of cross-CAS hash is sound under the current engines; the weak point is cross-step descriptor identity, not Wolfram
+
+**Attack result.** Verified from engines, not from the claim:
+
+- `S9_REWRITE_PLAN`: SymPy writes the chain; Wolfram imports nothing.
+- S11 `Q6r`: only the engine that imports `LEDGER` emits the comparison (`_LOCAL_`).
+- Both `.wl` engines: **0** hits for `LEDGER` / exports / `Import` / `Get`.
+- Within-step parity is tag suffixes (`PY_S10_…` / `WL_S10_…`), not storage keys.
+
+Nothing in the committed architecture requires Wolfram to produce, read, or agree on a **storage key**. Cross-CAS serialization for keys is not needed to keep the chain honest. **`F8c`’s rejection of the consult’s cross-CAS requirement is not unsound.**
+
+**Residual risk (non-blocking if stated).** Descriptor equality across steps still needs a **stable within-SymPy** form of the live action (symbol names, assumption flags, term order). That is cross-step canonicalization, not cross-CAS. Rejecting *all* canonicalization would leave the slug↔descriptor cross-check ill-defined; rejecting *cross-CAS* is fine.
+
+---
+
+### N2 — F8c miss cases for slug + descriptor
+
+Constructed cases the dual check does not cover:
+
+1. **Same slug, same action descriptor, different objects** — two quantities under one action (Lagrangian vs `M_B`). Full keys differ by quantity; the action check does not police quantity re-pointing (**B1**).
+2. **Slug and descriptor both differ, object the same** — over-qualified universals (e.g. `Q7_CURL_DOT`, truly package-invariant in the S10 out) exported under two action-qualified keys → meeting lost; F8c only fires on slug/desc *disagreement*, not on split meetings.
+3. **Action-only descriptor misses ansatz/premises** — two steps with the same `L` and different period-average or joint premises can share descriptor while spectra disagree; F8c still green.
+
+Descriptor **is** computable from the live action without package label or step name (writer has `L`). It is **not** a complete identity of the derivation context.
+
+---
+
+### N3 — F8d’s `(T,W)` cost is real; under MAIN-only export it is mostly latent
+
+Objects that depend only on `W` (e.g. `Q7_STIFFNESS`, pure density comparisons) lose meetings with counterparts under a different `T` (`MAIN` vs `XKIN_ANISO` share `W_MAIN` at S11; S10 `MAIN` vs `XFORM_ANISO` share curl `W`).
+
+With **P1 MAIN-only export**, those pairs are not both exported, so the cost is smaller than a multi-package export world. F8d’s “revisit if a step exports more than one package” is doing work. Cost is **understated only if** multi-package export returns without revisiting scope.
+
+---
+
+### N4 — Does F8 prevent collisions that should happen? (rule 6)
+
+- Intentional: W-only meetings under different `T` (F8d) — recorded cost.
+- Accidental risk: false action-dependent labels from incomplete mutation (B2) → bare meetings killed.
+- Not found: machinery that makes two true re-derivations of one universal object unable to share a key **when correctly partitioned**. F1 remains “collision is the measurement.”
+
+---
+
+### N5 — P6 / P7 behave as specified (ablation)
+
+**P6.** Refuse-to-write leaves the previous `S11_exports.py` importable as a complete run (constructed under `/tmp`). Atomic replace-on-success or start-of-run tombstone/delete is required; “don’t write” is not enough. Physics mechanism: downstream imports stale dimensions/objects.
+
+**P7.** Omitting one eligible key (`q3_roots_distinct_d3`) leaves P5 quiet (import unchanged), completeness can still pass, round-trip on written keys passes; only eligible−written is nonempty. Guard is capable of failing.
+
+---
+
+### N6 — P2 schema-from-import
+
+Committed fields: `class`, `corroborated_steps`, `dimension_key`, `display`, `step`, `value`, `value_kind`.
+
+If the first import **drops** a field (e.g. `dimension_key`), P2 discovers the hole and writes without it → `Q6r` becomes unresolved/KeyError at consumer time rather than at write time. That is **worse** than a typed required schema for silent incompleteness; **better** for preserving unknown future fields. Not a physics falsehood by itself; it shifts failure later.
+
+---
+
+### N7 — P1 symbol boundary
+
+On the committed ledger, free `Symbol` atoms in values: **46**; with rows: **46**; missing: **0** (`/tmp/s11_review_f8/p1_symbols_stdout.txt`). As “rows for every free symbol appearing in exported values,” the boundary is decidable and currently total. The list does not hard-specify the traversal operator (mild rule-3 recipe gap), but it is not undecidable in practice.
+
+---
+
+### N8 — Rule 5 / 3 / 2 / process filter
+
+**Rule 5.** No numeric physics targets, counts of modes, or “expected vacuity” handed to a builder in either artifact. Mentions of “measured” are methodological (`F8a` partition measured; support-level slug warning “Measured on §7”). `F4` “byte-identical” is a regeneration invariant for non-F3 fields — operational, not a physics answer. Prohibition language on membership (`F7`/`P9`) is anti-leak, not a leak.
+
+**Borderline:** `F8b` names `MAIN` / `XCOEF_BSCALE` / `XCOEF_BSIGN` as curl+div support aliases. That is readable from §7 actions (premise), but a builder can treat the named triple as a closed special case instead of computing a descriptor from the live action (recipe pressure).
+
+**Rule 3.** Several items specify *how*: P2 field discovery procedure; P4 two-channel predicate shape; P5 snapshot construction; F8a “mutate then see”; F8 six controls as a build recipe for the rename. Some of that is inevitable for export machinery; the load-bearing physics risk is when the recipe **replaces** an object identity (B1, B3).
+
+**Rule 2.** P3/P4/P5/P7 correctly demand operands and residuals. Rename controls 1–6 are mostly process gates; C4/C5 are the ones that must carry physics identity — and currently don’t (B1).
+
+**Process vs physics.** Migration-map totality/injectivity (C1) is necessary process. Without quantity identity (B1), it is process that does not catch the physics failure. That matches the user’s “machinery without catching a physics defect” filter.
+
+---
+
+## What is missing (absent computations)
+
+| Gap | Mechanism of silent wrong physics |
+|---|---|
+| **Quantity-level rename identity** | Action-only C4 → quantity derangement (B1) |
+| **Stored partition measurement** | Wrong bare/qualified split (B2); no row a review can re-check |
+| **F2 branch for P4 `UNDECIDED`** | Default overwrite or skip (B3) |
+| **Slug↔descriptor totality over action-dependent keys** | Orphan keys with no descriptor row; C4 never runs on them |
+| **Descriptor stability definition (within SymPy)** | False slug/desc findings or missed meetings across steps |
+| **Migration map against committed S10** | C1 not instantiable today; only identity map is checkable (455 S10 keys, total & injective for id) |
+
+---
+
+## F8c one-engine argument — summary judgment
+
+| Claim | Verdict |
+|---|---|
+| Only one engine writes the ledger | **True** (plan + both `.wl` files + Q6r) |
+| Cross-CAS key serialization required | **False** under current architecture |
+| Consult’s hash therefore mandatory | **Not established** — attack does not force the hash |
+| Descriptor/slug still need cross-step stability | **True** — weaker than cross-CAS, still real |
+
+---
+
+## Ablations that ran and found nothing (stated)
+
+- **WL import of LEDGER:** none found (supports F8c).
+- **P1 missing symbol rows on committed export:** none (46/46).
+- **P7 sole-fire on omit:** confirmed fires; no counterexample where another guard also fires first.
+- **C3 on dimension_key-only attack:** catches it (not a hole).
+
+---
+
+## Bottom line for the gate
+
+| Artifact | Gate |
+|---|---|
+| **F8** (esp. rename controls + F8a partition) | **Block** — B1, B2 |
+| **F8c hash rejection** | **Do not block** on cross-CAS grounds |
+| **S11 PY list v3** | **Block** on P4/F2 join (B3) and the dependence of declared re-derivation correctness on that join (B4); P5–P7 constructions themselves are sound |
+
+**Highest-value single fix target:** make rename control 4 (and F2 “same object”) bind **quantity identity**, not only action descriptor / payload equality — and define F2’s behavior when residual is undefined.

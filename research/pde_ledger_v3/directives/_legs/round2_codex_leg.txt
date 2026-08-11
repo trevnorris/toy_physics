@@ -1,0 +1,233 @@
+# Verdict: BLOCK
+
+The decision list is not safe to hand to a builder. I found eight build-blocking defects. The most serious are P2’s producer-prefixed namespace, P5’s unsound integrity equation, and P6’s stale-publication hole.
+
+All working-tree reads were non-mutating. No Mathematica was run. Every final harness exited 0 under `timeout 600`.
+
+## Blocking findings
+
+### B1 — M4 is not a whole-namespace census, so P2 suppresses real measurements
+
+What is wrong: the spec requires objects for which it supplies no `<QUANTITY>` name, explicitly leaving naming to the builder. Therefore the claimed closed set of 97 cannot be the whole future namespace.
+
+My census found 107 explicitly named families and at least 187 concrete shapes after expanding locus protocols. It reproduced the three advertised collision families, but also found at least seven required unnamed families. Giving Q1’s expanded Lagrangian the existing S10 precedent name creates another collision:
+
+```text
+explicit_named_family_count 107
+explicit_quantity_shape_lower_bound_after_locus_expansion 187
+automatic_explicit_collision_shape_count 3
+required_unnamed_object_family_lower_bound 7
+precedent_builder_key q1_lagrangian_expanded_d3
+precedent_builder_key_collides True
+whole_namespace_decidable_before_builder_names False
+```
+
+The collision is physically material:
+
+```text
+flat_key_exists True q1_lagrangian_expanded_d3
+p2_key_exists False s11_main_d3_q1_lagrangian_expanded
+s11_minus_s10 B_comp*(-Derivative(...)**2 ...)/2
+residual_is_zero False
+```
+
+Mechanism: P2 writes the new S11 Lagrangian under `s11_main_d3_…`, leaving the old flat S10 curl-only Lagrangian available under the established key. A flat-key consumer can consequently read stale physics without triggering F2.
+
+P2 also permanently prevents future canonicalized objects from meeting. I independently reconstructed three Q7 objects shared by S10 and S11; all residuals are zero. A canonical D12 alias makes each flat key meet, while P2 still does not:
+
+```text
+comparison q7_stiffness_d3 Q7_CURL_DENSITY
+residual 0
+after_D12_alias_flat_meets True
+after_D12_alias_p2_meets False
+```
+
+The distinction claimed at [P2](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_py_decisions_v2.md:49) is therefore partly real and partly rationalization: `MAIN_D3` is mathematical run scope, but `S11` is the producing step. The generated key has a producer prefix even though F1 expressly prohibits one.
+
+What must become true: all required quantity names must be closed and collision-censused before build, and storage identity must not depend on which step produced the object. A third option is a canonical object identity/alias independent of the step, with run scope retained as evidence or metadata. Same objects must meet; different-object name collisions must remain visible to F2.
+
+Evidence: [measurement script](/tmp/s11_review_measurements.py), [stdout](/tmp/s11_review_measurements_final.stdout), [same-object script](/tmp/s11_review_same_object_census.py), [stdout](/tmp/s11_review_same_object_census_final.stdout), [guard stdout](/tmp/s11_review_adversarial_guards_final.stdout).
+
+### B2 — P1 does not decide the symbol population and drops physics-bearing premise evidence
+
+P1 says export eligibility is decided from tags alone. Symbol-identity rows do not originate from tags; S10 manufactures them by traversing exported values. Thus two valid readings remain:
+
+1. Export literally only P1’s eligible tags: no new `B_comp` symbol row.
+2. Follow S10 precedent and add symbols found in exported expressions.
+
+P2 depends on the second population, but P1 never authorizes or defines it. The committed lookup shows the consequence:
+
+```text
+rho_br dimension_key= inertia_coefficient_dimension ...
+mu_R dimension_key= stiffness_coefficient_dimension ...
+B_comp UNRESOLVED_AT_COEFFICIENT_KEY
+```
+
+P1 also excludes `PREMISE_INVENTORY`, although the shared spec says that object lets a reader see every premise the build did not test. S11’s result conditions can then disappear while inherited S10 premise rows remain in the merged ledger. A downstream reader may treat signs, admissibility, or loci as unconditional or as conditioned on the wrong step’s premise inventory.
+
+What must become true: the export boundary must mechanically decide both tag-derived and symbol-identity rows, and the merged artifact must retain the premises and solver-coverage evidence needed to interpret its physics.
+
+### B3 — P3 cannot satisfy settled F3
+
+F3 requires a re-derived row to carry enough evidence that a consumer reading only the merged export can recompute the residual. P3 freezes the row schema to the current fields and explicitly forbids any new field. P4’s operands are emitted to stdout, not stored in the row.
+
+The contradiction is made explicit at [lines 137–140](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_py_decisions_v2.md:137), which defer F3’s shape while claiming P4 output covers symbol re-derivations. It does not cover an export-only consumer.
+
+Mechanism: the three existing `corroborated_steps` claims are merged unchanged; S10 regeneration under F3 is declared “not a precondition”; Q6r evidence is excluded by P1. A false corroboration can therefore be forwarded with no recoverable upstream operand.
+
+What must become true: every corroboration in the merged artifact must carry recoverable operands and comparison evidence as F3 requires, and unsupported predecessor corroborations must not be propagated.
+
+### B4 — P4’s “same object” predicate is neither total nor physically sound
+
+The known Symbol trap is handled correctly. Reconstruction preserves assumptions and distinguishes the two `D` objects even though both print as `D`:
+
+```text
+equal False
+srepr_plain Symbol('D')
+srepr_assumed Symbol('D', integer=True, positive=True)
+roundtrip_cross_equal False
+```
+
+But the generic “residual reduces to zero” rule loses domain information:
+
+```text
+simplified_residual 0
+left_at_zero nan
+right_at_zero 1
+```
+
+It calls `x/x` and `1` the same object even though the supplied real domain includes `x=0`. This is directly relevant to loci, charts, and component expressions.
+
+It also cannot compare equivalent relation objects:
+
+```text
+operand_a Eq(x, y)
+operand_b Eq(x - y, 0)
+residual_exception TypeError unsupported operand type(s) for -: 'Equality' and 'Equality'
+truth_table [(0, 0, True, True), (1, 1, True, True), (1, 0, False, False)]
+```
+
+The actual committed ledger contains 488 rows whose values cannot be subtracted from their reconstructions.
+
+Mechanism: different physics can be silently corroborated after a removable-singularity/domain loss, while identical loci represented as equations can cause an operational failure or be classified different. The latter also prevents rule 2’s required residual from being emitted.
+
+What must become true: F2 identity must be defined for every admitted export object type and must preserve assumptions, domains, relation/set semantics, and structure relevant to the named object.
+
+### B5 — P5’s symmetric-difference guard has both false negatives and false positives
+
+The advertised undeclared write is caught:
+
+```text
+P5_UNDECLARED_ACCIDENTAL_VALUE_WRITE
+({'D'}, set(), {'D'})
+```
+
+But a correct identical re-derivation is rejected:
+
+```text
+P5_CORRECT_IDENTICAL_REDERIVATION
+(set(), {'D'}, {'D'})
+```
+
+A wrong value on a declared key passes:
+
+```text
+P5_WRONG_DECLARED_VALUE_PASSES
+({'D'}, {'D'}, set())
+```
+
+That covers corruption after P4’s comparison, including writer or serialization-path corruption.
+
+P5 compares only `value`, so an undeclared metadata mutation that redirects a dimension lookup is invisible:
+
+```text
+dimension_key_before q1_lagrangian_expanded_q6_dimensions_d2
+dimension_key_after inertia_coefficient_dimension
+(set(), set(), set())
+```
+
+Independent reconstruction also produced 526 values that are `==`-equal but not the same Python object. I found no non-reflexive value in the permitted committed export trees:
+
+```text
+equal_not_identical_count 526
+nonreflexive_allowed_values []
+```
+
+Thus identity comparison would generate false positives; structural equality does not repair the logical defects above.
+
+What must become true: unchanged imported rows must be compared in full, and declared re-derivation must not be equated with value change. An identical successful re-derivation must pass, while any unapproved value or physics-bearing metadata change must remain visible.
+
+### B6 — P6 can leave a stale complete export importable
+
+P6 refuses to publish an incomplete run but never requires an old publication to become invalid. The constructed run shows the exact failure:
+
+```text
+observed_skipped_pairs ('MAIN_D4', 'MAIN_D5')
+publish_allowed False
+after_refusal_exists True
+consumer_RUN_PAIRS ('MAIN_D2', 'MAIN_D3', 'MAIN_D4', 'MAIN_D5')
+consumer_SKIPPED_PAIRS ()
+consumer_PHYSICS_VALUE old-complete-run
+```
+
+Mechanism: the current run is incomplete, but a downstream import sees the previous run’s apparently complete physics. P6’s assertion that refusal stops later binding is therefore false.
+
+What must become true: after an incomplete or failed current run, no previous artifact may remain importable as though it represented that run. Publication also needs to be atomic with respect to completeness.
+
+Evidence: [script](/tmp/s11_review_partial_publish.py), [stdout](/tmp/s11_review_partial_publish_final.stdout).
+
+### B7 — No control detects omission of a new export row
+
+Round trip checks only what was written. P5 checks imported rows. P6 checks cells. None compares eligible MAIN emissions against new ledger rows:
+
+```text
+roundtrip_count_residual 0
+chain_integrity_residual []
+skipped_main_pairs []
+missing_export_rows ['s11_main_d3_root_ordering']
+```
+
+Mechanism: a completed physics computation can print its tag but be omitted from `S11_exports.py`; every listed export guard still passes. This is the absent-computation defect class the pipeline is intended to catch.
+
+What must become true: every eligible emitted object and required symbol row must correspond to exactly one written export row, and omissions must be directly observable.
+
+Evidence: [script](/tmp/s11_review_missing_export.py), [stdout](/tmp/s11_review_missing_export_final.stdout).
+
+### B8 — The builder directive leaks measured physics and expected guard outcomes
+
+Rule 5 is violated at [M4](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_py_decisions_v2.md:31): the builder is shown the root spectrum, collision membership, counts, and the conclusion that all collisions are different objects. [P4](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_py_decisions_v2.md:89) additionally tells the builder that tag-derived collisions must be absent.
+
+Mechanism: a builder can converge on the advertised collision count or stub a comparison path that reports the stated vacuity. This is especially dangerous because M4 is not actually a whole-namespace census.
+
+P7/F7 did not leak resolved membership; the live lookup independently found two resolutions and one unresolved coefficient.
+
+What must become true: reviewer measurements and physics values must not appear in the directive handed to the builder. The directive may name the objects and required evidence, but not their measured counts, membership, values, or expected vacuity.
+
+## Non-blocking finding
+
+P8’s English-description requirement is process-only. Presence of an English comment does not test the action, assumptions, or any computed physics, and a wrong class or wrong description still passes. The class field may remain necessary chain data, but the stated presence check should not be represented as physics correctness evidence.
+
+I found no rule-11 defect: no control was explicitly dropped or narrowed to save cost.
+
+## Measurement disposition
+
+- M1 reproduced: 617 rows; base five fields on all; 50 `dimension_key`; 3 `corroborated_steps`; zero `dim`.
+- M2 reproduced: 46 symbol-identity rows, 571 others, empty intersection; all 10 uppercase keys are symbol-identity keys.
+- M3 reproduced: 556 `_d<n>` keys and 61 without.
+- M4 not reproducible as a whole-namespace claim. The restricted explicit census reproduced exactly the three advertised collision shapes. The actual namespace remains open because of required builder-chosen names.
+- M5 reproduced: both objects exist, completion is accumulated after emission, and skipped is declared minus completed.
+- M6 reproduced: all three DIM objects are in non-local Q6; Q6r alone is local.
+
+The committed two-population disjointness claim is true, and the direct Q6r lookup is not broken by P2 on the current import.
+
+## Evidence paths
+
+Final executable/output pairs:
+
+- [measurements](/tmp/s11_review_measurements.py) · [stdout](/tmp/s11_review_measurements_final.stdout)
+- [P2/P4/P5 adversarial guards](/tmp/s11_review_adversarial_guards.py) · [stdout](/tmp/s11_review_adversarial_guards_final.stdout)
+- [same-object census](/tmp/s11_review_same_object_census.py) · [stdout](/tmp/s11_review_same_object_census_final.stdout)
+- [partial-publication ablation](/tmp/s11_review_partial_publish.py) · [stdout](/tmp/s11_review_partial_publish_final.stdout)
+- [missing-export ablation](/tmp/s11_review_missing_export.py) · [stdout](/tmp/s11_review_missing_export_final.stdout)
+
+The two source-inventory probes and literal outputs are also retained at `/tmp/s11_review_measurement_probe.py`, `/tmp/s11_review_measurement_probe.stdout`, `/tmp/s11_review_span_probe.py`, and `/tmp/s11_review_span_probe.stdout`.

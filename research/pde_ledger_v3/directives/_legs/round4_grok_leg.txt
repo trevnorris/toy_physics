@@ -1,0 +1,326 @@
+I'll run this as a read-only physics review: load the materials in the specified order, form my own view of the chain, then attack the decision list with constructions and ablations.Continuing the load order: S10 exports, the audit that wrote them, the rewrite plan, and the F1–F7 decisions.I have enough chain context. Opening the decision list next and measuring claim population and join behavior against the committed export.Building ablation scripts under `/tmp` and counting the MAIN claim population from the spec.Fixing the D5 residual script and tightening a few constructions that need literal numbers.# Independent physics review — `S11_sympy_export_decisions_codex.md`
+
+**Verdict: block the build.** The move from key-identity to `object_claim` avoids the F8 rename trap, but it relocates identity into an **authored** tree that no guard checks for correctness. That is load-bearing for every join, and wrong physics survives quietly.
+
+Read order followed. Artifact opened only after CLAUDE, SHARED (`cf4a21a4`), `S10_exports.py` + writer, plan `D1`–`D12`, `F1`–`F7`/`F8` blocked, and prior `_legs/round{2,3}_*`.
+
+---
+
+## Scripts and literal stdout (absolute)
+
+| Work | Script | Stdout |
+|---|---|---|
+| D5 residual on all 617 rows | `/tmp/s11_export_review/01_d5_residual_every_row.py` | `/tmp/s11_export_review/01_d5_residual_every_row.stdout.txt` |
+| Claim join / F1 / false+lost meetings | `/tmp/s11_export_review/02_claim_join_and_f1.py` | `/tmp/s11_export_review/02_claim_join_and_f1.stdout.txt` |
+| D6 / D8 / D4 / D10 | `/tmp/s11_export_review/03_d6_d8_d4_d10.py` | `/tmp/s11_export_review/03_d6_d8_d4_d10.stdout.txt` |
+| Claim count + wrong-claim scan | `/tmp/s11_export_review/04_claim_count_and_wrong_claim.py` | `/tmp/s11_export_review/04_claim_count_and_wrong_claim.stdout.txt` |
+| Rule 5 + identical pairs | `/tmp/s11_export_review/05_rule_scan_and_identical_pair.py` | `/tmp/s11_export_review/05_rule_scan_and_identical_pair.stdout.txt` |
+| D4/D9/cross-D refs | (inline) | `/tmp/s11_export_review/06_more_constructions.stdout.txt` |
+| Spec tag inventory | (inline) | `/tmp/s11_export_review/07_claim_count_precise.stdout.txt` |
+| D8 ROOT_ORDERING dependence | (inline) | `/tmp/s11_export_review/08_d8_root_ordering_dependence.stdout.txt` |
+| FiniteSet / no-sub census | (inline) | `/tmp/s11_export_review/09_finiteset_and_summary.stdout.txt` |
+
+---
+
+## Answers to the starred questions (before findings)
+
+### 1 · Who writes a claim, and what catches a wrong one?
+
+**Who:** the builder, at emission time (`D2`: “created with the live object”, never later by a map). A claim is **authored**, not computed from a dependency residual.
+
+**How many for full MAIN?** Not a single a priori integer. The declared MAIN sweep is `D ∈ {2,3,4,5}` (4 cells). Root- and stratum-scoped claims are indexed by **computed** `ROOT_ORDERING` / `STRATUM_ORDERING` (`D8` admits this). Counts from the spec:
+
+| Layer | Count basis |
+|---|---|
+| Fixed package-level roles (stub inventory) | ~65 × 4 D ≈ **260** |
+| Root-scoped suffixes in the spec | **33** × Σₙ roots(D) |
+| Stratum-scoped | **11** × Σ n_strata |
+| Symbol claims | one per distinct `Symbol` atom (data-dependent) |
+| Illustrative if 2 roots/D, 0 strata | **~524 tag-role claims** + symbols |
+| S10 empirical MAIN floor (smaller Q set) | **426** dim-scoped rows already |
+
+So a MAIN export is **O(10²)–O(10³) hand-authored claim trees**, not a handful.
+
+**What catches a wrong claim?** **Nothing in this list.**  
+`D8` checks **population presence** of claim trees, not whether the tree names the right defining inputs. `D5` only runs **after** a claim match. `D4`/`D6`/`D9` treat a well-formed wrong tree as ground truth.
+
+**Mechanism wrong physics survives:** author the same claim for two different roles (or omit the action from both) → join merges them → equal payloads ⇒ `AGREE` and publish; or overscope the action → join never meets → comparison never runs (rule 6 killed).
+
+**vs plan `D11`:** same defect class in a new shape. `D11` was hand-written **name pairs**. `object_claim` is hand-written **identity trees**. Richer structure (can encode inputs) does not add an independent check that the tree is right. It is not “names as standard math object”; it is a second authored namespace the join trusts.
+
+### 2 · Does the claim join separate and unite the right objects?
+
+**Same kind, different actions** (S10 curl-only spectrum vs S11 curl+div), correct claims → **2 rows, 0 meetings, no overwrite** (`02_…stdout`):
+
+```text
+claim_equal False
+n_merged_rows 2
+n_meetings 0
+neither_overwrote True
+F1_key_collision_would_meet True
+D3_claim_join_meets False
+```
+
+**Genuinely identical objects that must meet** (found in committed data, not from a leg):
+
+1. **`rho_br` re-export under one claim** — meets; consumer keeps import value; comparison appends.  
+2. **`inertia_coefficient_dimension` re-derivation** under one claim — meets; `values_equal True`.  
+3. **Not a same-object pair:** `root_ordering_d3` and `q3_roots_distinct_d3` have **identical srepr** but different roles — must **not** meet.  
+4. **Committed “corroboration” is not identity:** three rows claim `corroborated_steps=(S9,S10)` with **no** `comparisons` operands (`F3` hole). S9 `dim_rho_br_*` are **unsolved symbols**; S10 inertia is **solved `(-D,0,1)`** — not equal.
+
+**Join wrong both ways (highest-value constructions):**
+
+| Failure | Construction | Result |
+|---|---|---|
+| **False meeting** | Same bare claim on `root_ordering_d3` and `q3_roots_distinct_d3` | `meetings 1`, `values_equal True`, 1 row instead of 2 |
+| **Lost meeting** | Same roots; claims overscoped by overall `(T,W)` scale | `claim_equal False`, `meetings 0`, `D5_never_runs` |
+| **False meeting (omitted action)** | Action dropped from both claim trees; S10 vs S11 spectra | meets; `DISAGREE` on payload **if** spectra differ; if they agreed, silent false identity |
+
+### 3 · What superseding `F1` costs
+
+- **Measurement:** **moved** from key collision to claim join when claims are right; **lost** when claims are wrong (above). Locator collision of different claims is a finding, not a value compare.
+- **`D6` append-only vs plan `D5`:** **silently supersedes** the plan. Plan: each step *overwrites what it derives*; `step` is last writer. Artifact: re-derivation **appends** comparison and **does not replace** the imported value.  
+  Literal dual-derivation consumer read (`02_…`):
+
+  ```text
+  consumer_value 1
+  derived_was 2
+  ```
+
+  Consumer of the merged export always reads the **first producer**. A later correct re-derivation never becomes the stored physics value.
+- **Preventing a collision that should happen (rule 6):** yes — any claim-tree split that is finer than object identity (overscoped action, package label smuggled into “physics”, declaration history) prevents the meeting. That is F8’s cost relocated into claim authoring.
+
+### 4 · Can each guard fail? (constructed)
+
+**`D5` — every row vs own reconstruction** (`01_…stdout`, `09_…stdout`):
+
+| Bucket | Count / 617 |
+|---|---|
+| `AGREE` via expr/integer sub with `R==0` | 89 |
+| `AGREE` via exact (no subtraction) | 488 |
+| Matrix self-residual: `R==0` is **False**, `R==zeros` **True** | **39 → UNDECIDED under literal `residual==0`** |
+| Rows where `a-a` raises | **488** |
+| Rows where `a-a` works but `R != 0` | **40** (39 matrices + FiniteSet→`EmptySet`) |
+| `value_kind` labels | only `COMPUTED_OBJECT` (593), `AUTHORED_WORD` (24) |
+
+```text
+MATRIX_SELF_R_eq_0_count 0
+MATRIX_SELF_R_eq_zeros_count 39
+omega2 v-v EmptySet eq0 False
+```
+
+So as written, **agreement is not total** over the committed export’s types. Most rows never support subtraction; a zero matrix is not `== 0`.
+
+**`D6` operands** (`03_…stdout`):
+
+| Attack | Diff residual |
+|---|---|
+| Undeclared value write on `rho_br` | `('value', 'rho_br')` — merged projection vs import recon |
+| Undeclared `class` write | `('class', 'rho_br', 'KNOB', 'DERIVED')` |
+| `dimension_key` redirect | `('dimension_key', …, 'inertia_…', 'length_dimension')` |
+| Declared wrong re-deriv that only appends | import value unchanged; D6 quiet on value; **D5** must catch |
+
+**`D8` independence** (`08_…stdout`): **not real.**
+
+1. Required claim list is authored by the **same builder** as the emitter → joint omit is invisible.  
+2. Root-scoped required set is indexed by **emitted** `ROOT_ORDERING`:
+
+```text
+TRUE_ROOT_ORDERING_LEN 2
+RESIDUAL_VS_TRUE_SPEC_INDEPENDENT {… root 2 roles …}
+RESIDUAL_VS_D8_ORDERING_SUPPLIED_INDICES set()
+OMISSION_VISIBLE_UNDER_D8_AS_WRITTEN False
+```
+
+Omit a root **before** emission by shrinking `ROOT_ORDERING` → D8 residual empty.
+
+**`D9`:** yes — **all same-claim comparisons must be `AGREE`** to publish. A genuine cross-step disagreement **blocks publication**. That is wrong for this project’s purpose: a disagreement is a finding the chain should **carry**. Withholding the whole merged export means the operands never become an importable record (they die in a run report). `D12` softens process failure but does not put both values in a published export a consumer can recompute.
+
+**`D4`:**  
+- Key only, no `dimension_claim` → schema finding (caught).  
+- **Consistent** redirect of key **and** claim to `length_dimension` → schema green; D6 catches **only** on imported rows; **new** S11 rows: nothing binds coefficient physics role to the dimension claim. Committed export already has **12** cross-D `dimension_key` refs (e.g. `q1_lagrangian_expanded_d3 → …_d2`) — reference hygiene is live physics risk.
+
+### 5 · `D10` upstream reach
+
+- S10 LEDGER: **617** keys; **162** `step=S9`, **455** `step=S10`; all **165** S9 export keys still present.  
+- D10: producers claim only what they derive; inherited rows must arrive claimed → **S9 regeneration is required** for those 162 rows.  
+- Reach is **chain-bounded** (export-chain root = S9 today), not infinite, but it **is** recursive: each step forces claim regeneration as far as imports go.  
+- Computed-but-unpublished S11: useful for dual-engine **tag** parity (no export needed); **not** useful for `Q6r`, next-step import, or F6-style completeness consumers — those need a published export.
+
+### 6 · Rules
+
+- **Rule 5:** decision list has **no** measured spectra/counts/signs for builders to target (only date `2026-08-11`). Clean on the leak that killed earlier attempts.  
+- **Rule 3:** `D2` is a **recipe for identity** (how to compose the claim tree), not only naming the object.  
+- **Rule 2:** `D11` states operands+residual; `D5` matrix/`==0` gap means some residuals cannot establish agreement as written.  
+- **Rule 11:** cost is not the issue; **net design weight is.**  
+- **`object_claim` price:** removes rename map + F8’s six controls + key-identity fights. Adds forever: per-row claim authoring, claim-join machinery, append-only semantics, S9+S10 regeneration under a new contract. **Net heavier**, not simpler. Ceremony risk is high relative to “simple here is usually better.”
+
+### 7 · Absent computations this list would not detect
+
+1. **Wrong claim trees** (wrong/missing defining inputs) → false or lost meetings; no residual against an independent identity oracle.  
+2. **Wrong `ROOT_ORDERING` / spectrum presentation** that shrinks D8’s required index set.  
+3. **Equal wrong payloads under a shared wrong claim** → `AGREE` + publish.  
+4. **Consistent reference+claim repoint on new rows.**  
+5. **Correct later derivation of an imported object** never becomes the consumer-visible value (`D6`), and **disagreeing** re-derivation never publishes (`D9`).  
+6. **Cross-engine identity** is out of scope here (PY-only ledger) — fine — but within PY, claim authoring is the single point of failure with no dual construction.
+
+---
+
+## Blocking findings
+
+### B1 · Nothing checks claim **correctness**; join treats authored trees as ground truth
+
+**What is wrong.** `object_claim` is the identity key for the whole design (`D2`–`D3`). Every guard assumes trees are right. Population (`D8`), schema (`D4`), value residual (`D5`), and import preservation (`D6`) never ask whether the tree names the right object.
+
+**Mechanism.** Wrong shared claim → false meeting → payload equality ⇒ `AGREE` ⇒ publish. Wrong split claim → lost meeting ⇒ no `D5` ⇒ rule 6 dead. Same class as the 3,121-line name-pair defect: **hand identity without a check**.
+
+**Literal output.** False meeting of different roles with equal payloads:
+
+```text
+FALSE_MEETING_via_wrong_claim
+  meetings 1 values_equal True
+  n_rows_should_be_2_if_claims_correct_but_got 1
+  D8_population_check_sees_this NO
+```
+
+**What must become true.** Identity used for join must be checkable against something that is **not** the same authored artifact (e.g. a residual that moves when a named defining input is mutated — rule 14 form ablation), or the design must not put load-bearing identity in an unchecked tree.
+
+---
+
+### B2 · `D8` “independent required population” is not independent
+
+**What is wrong.** `D8` says required claims come from the spec and MAIN sweep, independent of emitter and writer. In fact: (1) the claim **list** is builder-authored with the emitter; (2) root/stratum multiplicity is taken from **emitted orderings**.
+
+**Mechanism.** Drop a root from `ROOT_ORDERING` and all its scoped tags before emission → required set shrinks with the emission → residual empty → missing mode invisible.
+
+**Literal output.**
+
+```text
+OMISSION_VISIBLE_UNDER_D8_AS_WRITTEN False
+OMISSION_VISIBLE_IF_REQUIRED_WERE_INDEPENDENT_OF_ORDERING True
+SAME_AUTHOR_OMIT residual set()
+```
+
+**What must become true.** Omission checks that can be collapsed by the emitter’s own ordering are not omission checks. Fixed roles must not depend on the emitter; multiplicity must not be able to hide a deleted root by rewriting the ordering that defines the requirement.
+
+---
+
+### B3 · `D5` does not decide agreement on the committed type population
+
+**What is wrong.** `D5` requires a structure-preserving residual per `value_kind` and agreement only when the residual establishes no difference. Committed data has **two** `value_kind`s and **many** structures. Literal `residual == 0` **fails for every matrix self-compare**; sequences/bools/predicates/text mostly **cannot subtract**; `FiniteSet` self-diff is `EmptySet`, not `0`.
+
+**Mechanism.** Same-claim re-derivation of a matrix (dimensions, `M`, residuals) cannot reach `AGREE` under a naive reading → `UNDECIDED` → `D9` blocks publication even when values match; or a builder invents a non-residual channel that is not in the list (defaults/repairs forbidden by `D4`/`D12` tension).
+
+**Literal output.**
+
+```text
+TOTAL 617
+AGG_AGREE 578   # only if exact-no-sub is allowed as residual
+AGG_UNDECIDED_OR_RULE_GAP 39   # all matrices under R==0
+rows_where_self_sub_raises 488 of 617
+rows_self_sub_works_but_R_ne_0 40
+MATRIX_SELF_R_eq_0_count 0
+MATRIX_SELF_R_eq_zeros_count 39
+```
+
+**What must become true.** For every admitted structure, one total channel that emits both operands and a residual that can establish “no difference” (including matrix/set/sequence/boolean), with `UNDECIDED` mapped to a defined non-silent action.
+
+---
+
+### B4 · `D9` makes genuine disagreement unpublishable
+
+**What is wrong.** Publication requires all same-claim comparisons `AGREE`. Rule 6: disagreement is a finding. The merged export is how findings become chain state with operands (`F3`).
+
+**Mechanism.** S10 and S11 derive the same claim with different values → `DISAGREE` → no published export → consumer never imports the comparison row → measurement does not enter the ledger.
+
+**Literal output.** Design text + consumer simulation:
+
+```text
+D9_would_block_publish_on_DISAGREE True
+consumer_value 1   # import kept under D6
+derived_was 2
+```
+
+**What must become true.** A published artifact may carry `DISAGREE`/`UNDECIDED` comparisons with both operands; “complete MAIN run” and “all comparisons agree” must not be the same gate. Completeness ≠ consensus.
+
+---
+
+### B5 · `D6` append-only silently supersedes plan `D5` and freezes first-writer physics
+
+**What is wrong.** Plan `D5`/`D7`: overwrite is how “current value” and knob retirement work. Artifact `D6`: import fields immutable; comparisons append only.
+
+**Mechanism.** Wrong early value stays the only consumer-visible value forever if later claims differ (no meet) or if later agrees under a soft residual. If later disagrees under the same claim, `D9` blocks the whole publish (B4). Either way the chain does not get a corrected current object.
+
+**Literal output.**
+
+```text
+plan_D5_said_overwrite_step_field_records_last_writer
+artifact_D6_says_append_only_import_value_unchanged
+consumer_value 1
+derived_was 2
+```
+
+**What must become true.** Either the plan’s overwrite+last-writer semantics are restored for same-claim `AGREE`, with comparisons retained as history, or consumers are defined to read through `comparisons` — and that must be explicit, not a silent supersession.
+
+---
+
+### B6 · Claim join can lose meetings that should happen (rule 6)
+
+**What is wrong.** Identity includes “exactly the named defining inputs.” Overall scale of `(T,W)` that leaves roots invariant is still a different claim if the action pair is in the tree → no meet.
+
+**Mechanism.** Same mathematical root list from scale-related actions never compared.
+
+**Literal output.**
+
+```text
+LOST_MEETING_via_overscoped_action_inputs
+  claim_equal False
+  meetings 0 n_rows 2
+  payloads_equal_but_no_compare True
+  D5_never_runs_on_them True
+```
+
+**What must become true.** Claim dependency scope must not vary with inputs the named object does not depend on (the measured F8/`F8d` failure, now on trees instead of keys).
+
+---
+
+## Non-blocking findings
+
+### N1 · Rule 5 clean on this list  
+No measured spectra, membership, or expected outcomes for a builder to converge on. Earlier leak mode not repeated.
+
+### N2 · Different-action separation works **if** claims are right  
+Case A shows the intended separation. That is necessary and not sufficient (B1/B6).
+
+### N3 · `D4` catches incomplete references; not consistent wrong bindings on new rows  
+`dimension_key` without `dimension_claim` fails schema. Consistent dual repoint does not. Committed cross-D keys show the hazard is real.
+
+### N4 · `D10` reach is S9, chain-bounded  
+Measured: 162 inherited S9-step rows in S10 require S9-claimed regeneration. Not unbounded recursion past the export-chain root.
+
+### N5 · Ceremony / weight  
+Much of `D9`–`D12` is process around publication. The physics load is B1–B6. Pricing: **`object_claim` is net heavier** than the F1 flat-key + F2 compare model it replaces, once claim authoring and S9/S10 regen are counted. Prior legs already killed putting identity in the key; this list does not yet supply an identity that can fail when wrong.
+
+### N6 · Committed S10 already lacks `F3` evidence  
+Three `corroborated_steps` rows, zero `comparisons` — consistent with why `D10` demands regen; not a defect introduced by this list, but it shows the contract gap the list must actually close.
+
+---
+
+## Ablations that found nothing (must be named)
+
+| Probe | Result |
+|---|---|
+| Rule 5 numeric/physics leak scan of all 101 lines | No builder-facing measured physics |
+| Case A different-action claims | Separates correctly when trees differ as intended |
+| Same-symbol re-export under one claim | Meets and appends comparison as designed |
+| D6 on undeclared value/metadata/ref attacks | Sees them on import projection |
+
+“Nothing found” only for those probes — **not** for the list as a whole.
+
+---
+
+## Bottom line
+
+Superseding `F1` so keys are opaque is a reasonable response to three failed key-identity attempts. **Making `object_claim` the join key without any check on claim correctness recreates the hand-identity failure mode those attempts were circling.** Combined with D8’s emitter-tied population, D5’s incomplete residual rule, D6’s first-writer freeze, and D9’s “disagreement blocks publish,” the list does not yet make wrong export-chain physics reliably visible.
+
+**What must become true before a builder is handed this list:** join identity that can be falsified; omission checks that cannot shrink with the emission; total agreement residual over admitted types; published records that can carry disagreement; explicit consumer semantics for multi-step derivation (overwrite vs append) that do not silently rewrite the plan.

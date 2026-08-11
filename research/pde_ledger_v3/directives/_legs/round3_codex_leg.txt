@@ -1,0 +1,377 @@
+## Blocking findings
+
+### 1. `F8a` does not measure universality
+
+The committed form ablations were selected from their actions: only `XFORM_FULLGRAD` and `XFORM_DIVONLY` genuinely change stiffness form. The measured partition is incomplete:
+
+```text
+D3_MAIN_OBJECTS=304
+D3_UNIVERSAL_UNDER_FORM_ABLATION_COUNT=104
+D3_ACTION_DEPENDENT_UNDER_FORM_ABLATION_COUNT=116
+D3_UNDECIDABLE_MISSING_COUNTERPART_COUNT=84
+D4_UNIVERSAL_UNDER_FORM_ABLATION_COUNT=102
+D4_ACTION_DEPENDENT_UNDER_FORM_ABLATION_COUNT=109
+D4_UNDECIDABLE_MISSING_COUNTERPART_COUNT=84
+```
+
+A concrete false universal is already in the committed run:
+
+```text
+D3_FALSE_UNIVERSAL_MAIN='(rho_br, rho_br, rho_br)'
+D3_FALSE_UNIVERSAL_XFORM_FULLGRAD='(rho_br, rho_br, rho_br)'
+D3_FALSE_UNIVERSAL_XFORM_DIVONLY='(rho_br, rho_br, rho_br)'
+D3_FALSE_UNIVERSAL_XFORM_ANISO='(rho_br*s_rho, rho_br, rho_br)'
+```
+
+`Q6_INERTIAL_COEFFICIENTS` is invariant under the chosen `W` mutations but moves when `T` changes. If given a bare key, a future anisotropic action collides unnecessarily. For this example, `P4/F2` would probably reject the differing value, so the immediate result is a false loud collision rather than a silent overwrite. If the payload happens to agree, however, `P4` has no semantic evidence that the objects differ.
+
+A false action-dependent classification can also be manufactured without changing the action:
+
+```text
+FALSE_ACTION_DEPENDENT_CONSTRUCTION='root-index renumbering; action unchanged'
+FALSE_ACTION_DEPENDENT_CHANGED_SLOT_COUNT=104
+FALSE_ACTION_DEPENDENT_UNORDERED_PAYLOAD_MULTISET_PRESERVED=True
+FINITE_DATA_DECIDES_UNIVERSALITY=False
+```
+
+The mechanism is presentation/root-order movement, not action dependence. Nothing in `F8a` requires alignment before measuring movement.
+
+What must become true: dependency scope must identify every physical input on which the named object depends; finite equality under two available mutations cannot be promoted to “universal.” Missing counterparts and generated symbol rows need an explicit undecided classification, not a guessed partition.
+
+Evidence: [script](/tmp/s11_f8_partition.py), [literal stdout](/tmp/s11_f8_partition.stdout.txt).
+
+### 2. Equal slug and descriptor can still name different objects
+
+The S11 spec makes some objects depend on the declared additive-term inventory even when a declared density evaluates to the zero form. Then the simplified live `(T,W)` is identical, but `COEFFICIENT_ORDERING` is not:
+
+```text
+LIVE_ACTIONS_STRUCTURALLY_EQUAL=True
+SLUGS_EQUAL=True
+DESCRIPTORS_EQUAL=True
+MAIN_DECLARED_COEFFICIENT_ORDERING=('bulk', 'mu', 'rho')
+EXTRA_DECLARED_COEFFICIENT_ORDERING=('beta', 'bulk', 'mu', 'rho')
+COEFFICIENT_ORDERING_OBJECTS_EQUAL=False
+DECLARED_ZERO_TERM_RECOVERABLE_FROM_SIMPLIFIED_LIVE_ACTION=False
+```
+
+Thus the required descriptor cannot be recovered from the simplified live action without retaining declaration history. If declaration history is included instead, the descriptor no longer names only the mathematical action: two equal functionals represented by different declarations get different descriptors, preventing a meeting that should occur.
+
+`F8c` also never defines the canonicalization or slug derivation, so the required descriptor is not uniquely computable as written.
+
+What must become true: the identity context must cover declaration-sensitive inputs without pretending they are properties of `(T,W)`, and equal mathematical objects must still receive the same storage key.
+
+Evidence: [script](/tmp/s11_f8_descriptor_cases.py), [literal stdout](/tmp/s11_f8_descriptor_cases.stdout.txt).
+
+### 3. `F8d` violates Rule 6 more broadly than its stated `W`-only cost
+
+Different full action descriptors can produce the same requested object:
+
+```text
+ACTION_DESCRIPTORS_EQUAL=False
+ROOT_A=k2*mu/rho
+ROOT_B=k2*mu/rho
+ROOT_RESIDUAL=0
+```
+
+Here a common nonzero scale changes both `T` and `W`, while the generalized root is unchanged. Full-pair scoping prevents the cross-step root collision that should happen.
+
+The lost comparisons are not limited to `W`-only objects:
+
+- `T`-only: `KINETIC_TERMS`.
+- `W`-only: `STIFFNESS_TERMS`, `Q7_W_FULL`, `Q7_CURL_TERM`.
+- Action-independent: `Q7_CURL_DENSITY`, `Q7_CURL_REFERENCE`, `Q7_RESIDUAL`, `PD_TERM`, the complete Q9 census, and `C2_UNKNOWNS`/`C2_COUNT`.
+- Scale-invariant action-derived objects: roots, multiplicities, orderings, signs, ranks, nullities, scaling exponents, and many locus/count objects.
+
+The simplest literal `T`-only example is:
+
+```text
+FULL_ACTION_DESCRIPTORS_EQUAL=False
+KINETIC_TERMS_EQUAL=True
+```
+
+What must become true: a key must not vary with irrelevant parts of the action, including common overall scale. `F8d`’s blanket full-pair scope must not suppress genuine comparisons.
+
+### 4. The six rename controls can all pass while physics is re-pointed
+
+I used three committed rows whose payload and classification are identical:
+
+```text
+CHOSEN_ROW_IDENTITIES_ALL_EQUAL=True
+```
+
+A deliberate equal-row swap is rejected only because it differs from the frozen map; payload, reference, and descriptor controls remain green:
+
+```text
+DERANGEMENT_CONTROLS={'C1_TOTAL': True, 'C1_INJECTIVE': True,
+'C1_FROZEN': False, 'C2_ROWS_PRESERVED': True,
+'C3_REFERENCES_PRESERVED': True, 'C4_ACTION_DESCRIPTOR_BOUND': True,
+'C6_MEETING_FIXTURES': True}
+C5_DELIBERATE_DERANGEMENT_REJECTED=True
+```
+
+I then froze an already-wrong total and injective map. All six passed, including a fresh deliberate-derangement fixture:
+
+```text
+WRONG_FROZEN_MAP_CONTROLS={'C1_TOTAL': True, 'C1_INJECTIVE': True,
+'C1_FROZEN': True, 'C2_ROWS_PRESERVED': True,
+'C3_REFERENCES_PRESERVED': True, 'C4_ACTION_DESCRIPTOR_BOUND': True,
+'C6_MEETING_FIXTURES': True}
+WRONG_FROZEN_MAP_C5_DERANGEMENT_REJECTED=True
+WRONG_FROZEN_MAP_ALL_SIX_PASS=True
+DESTINATION_NAMED_FOR_q2_matrix_residual_q6_solved_homogeneity_d3_ACTUALLY_RECEIVES_SOURCE='q7_difference_q6_unsolved_expression_homogeneity_d3'
+MOVED_BINDINGS_PAYLOAD_INVISIBLE=True
+QUANTITY_NAME_HAS_NON_PAYLOAD_BINDING_EVIDENCE=False
+```
+
+The mechanism is that control 4 binds only the action qualifier. Controls 1–3 preserve rows through the same possibly-wrong map; control 5 proves that the frozen map cannot be altered, not that it was semantically correct; control 6 tests action/quantity key fixtures but does not bind each actual source row to its destination quantity name.
+
+What must become true: every destination’s quantity portion—not merely its action qualifier—must have independent, non-payload evidence binding it to the source mathematical object.
+
+The committed artifact contains 455 S10-owned source rows, so totality and injectivity are checkable for a supplied map. No migration map is present today, so they are not currently established.
+
+Evidence: [script](/tmp/s11_f8_rename_controls.py), [literal stdout](/tmp/s11_f8_rename_controls.stdout.txt).
+
+### 5. `P1` does not decide the symbol population
+
+Current data happens to contain no same-name assumption variants, but the admitted SymPy population permits them:
+
+```text
+TRAVERSED_SYMBOLS=("Symbol('x', positive=True)", "Symbol('x', real=True)")
+TRAVERSED_SYMBOL_COUNT=2
+AVAILABLE_FLAT_SYMBOL_KEYS=('x',)
+ONE_ROW_PER_REFERENCED_SYMBOL_POSSIBLE=False
+```
+
+It also does not decide whether “referenced” means all symbol atoms or free symbols:
+
+```text
+ATOMS_SYMBOL=('x',)
+FREE_SYMBOLS=()
+P1_TRAVERSAL_POPULATION_RULE_SPECIFIED=False
+```
+
+Nor does it say whether F3 evidence fields participate:
+
+```text
+VALUE_SYMBOLS=()
+F3_OPERAND_SYMBOLS=(evidence_only,)
+P1_EXPLICITLY_INCLUDES_EVIDENCE_FIELDS=False
+```
+
+A builder must therefore choose the population and same-name collision behavior. A symbol needed only by evidence can be absent while `P7` still sees equality between its self-manufactured eligible and written sets.
+
+What must become true: the traversed fields, bound/free-symbol rule, and same-name/different-assumption behavior must be decidable before construction.
+
+### 6. `P2` has no single imported schema to discover
+
+The committed ledger already has three row shapes:
+
+```text
+P2_CURRENT_SCHEMA_SHAPES=3
+P2_SCHEMA_1=(('display', 'value', 'value_kind', 'class', 'step'), 564, ...)
+P2_SCHEMA_2=(('display', 'value', 'value_kind', 'corroborated_steps', 'class', 'step'), 3, ...)
+P2_SCHEMA_3=(('display', 'value', 'value_kind', 'dimension_key', 'class', 'step'), 50, ...)
+```
+
+A union interpretation gives new rows fields for which no truthful value rule exists; a per-row interpretation gives no shape to choose for a new S11 row. On the first added field:
+
+```text
+NEW_ROW_FIELDS_WITH_NO_VALUE_RULE=('corroborated_steps', 'new_required_provenance')
+DYNAMIC_SCHEMA_CAN_TRUTHFULLY_POPULATE_NEW_ROW=False
+```
+
+On a removed field, runtime inference silently blesses the corruption:
+
+```text
+P10_CLASS_FIELD_SURVIVES=False
+TYPED_SCHEMA_WOULD_REJECT_AT_IMPORT=True
+RUNTIME_INFERENCE_IS_SAFER_THAN_TYPED_SCHEMA=False
+```
+
+This is worse than a typed contract for physics-bearing fields such as `dimension_key`: upstream schema corruption becomes the new schema instead of failing at the boundary.
+
+What must become true: mandatory, optional, and F3 evidence fields—and compatibility behavior—must be unambiguous. Merely observing field names is not a schema.
+
+Evidence: [script](/tmp/s11_p1_p2_boundary_ablation.py), [literal stdout](/tmp/s11_p1_p2_boundary_ablation.stdout.txt).
+
+### 7. `P4` compares encodings/values, not object identity
+
+Under a literal total implementation, every committed row reconstructs successfully:
+
+```text
+TOTAL_ROWS=617
+DECIDED_ROWS=617
+UNDECIDED_ROWS=0
+FAILED_ROWS=0
+VERDICT_COUNTS={'SAME': 617}
+RESIDUAL_STATUS_COUNTS={'NOT_DEFINED': 535, 'ZERO': 82}
+```
+
+But equal payloads from different physical quantities are called the same:
+
+```text
+FALSE_SAME_KEYS=('q2_matrix_residual_q6_solved_homogeneity_d3',
+'q7_difference_q6_unsolved_expression_homogeneity_d3')
+FALSE_SAME_VALUES=(True, True)
+FALSE_SAME_PREDICATE=('SAME', True, 'NOT_DEFINED')
+```
+
+And equal algebraic objects with different structures are called different if both tests must agree:
+
+```text
+FALSE_DIFFERENT_RESIDUAL=0
+FALSE_DIFFERENT_PREDICATE=('DIFFERENT', False, 'ZERO')
+PLAUSIBLE_OR_READING_CALLS_EQUIVALENT_PAIR_SAME=True
+P4_COMBINATION_RULE_SPECIFIED=False
+```
+
+An OR interpretation creates the opposite domain-loss problem. `P4` never specifies how its two tests combine, and `F2` does not say what an `UNDECIDED` collision does.
+
+What must become true: semantic object identity, algebraic/value agreement, and undecided comparison must be separate states with defined publication consequences. Equal payloads cannot establish identity, and structural presentation alone cannot veto a proven equality.
+
+Evidence: [script](/tmp/s11_p4_predicate_ablation.py), [literal stdout](/tmp/s11_p4_predicate_ablation.stdout.txt).
+
+### 8. `P5` permits a declared metadata redirect
+
+The four requested cases behave as follows:
+
+| Case | Changed operand | Declared operand | Residual/guard |
+|---|---|---|---|
+| Undeclared value write | contains row | empty | fires |
+| Undeclared metadata write | contains row | empty | fires |
+| Declared exact re-derivation | empty | contains row | does not fire |
+| Declared wrong value | contains row | contains row | does not fire |
+
+The more dangerous construction is declaring the metadata write:
+
+```text
+DECLARED_METADATA_REDIRECT
+CHANGED_OPERAND=('rho_br',)
+DECLARED_OPERAND=('rho_br',)
+CHANGED_MINUS_DECLARED_RESIDUAL=()
+P5_GUARD_FIRES=False
+```
+
+`P4` sees the unchanged `rho_br` value and calls it the same object. The redirected `dimension_key` therefore survives despite [P5’s own warning](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_py_decisions_v3.md:73).
+
+What must become true: declaration cannot exempt arbitrary field changes. Physics-bearing metadata changes need their own old target, new target, residual/equivalence, and guard.
+
+Evidence: [script and complete four-case output](/tmp/s11_p5_p7_missing_ablation.py), [literal stdout](/tmp/s11_p5_p7_missing_ablation.stdout.txt).
+
+### 9. `P7` cannot detect a computation omitted before eligibility, and proves only one direction
+
+The requested writer omission is correctly isolated:
+
+```text
+ELIGIBLE_MINUS_WRITTEN_RESIDUAL=('computed_object_b',)
+ONLY_FIRING_GUARD=('P7_ELIGIBLE_MINUS_WRITTEN',)
+```
+
+But “exactly one” also requires the reverse difference:
+
+```text
+ELIGIBLE_MINUS_WRITTEN=()
+WRITTEN_MINUS_ELIGIBLE=('spurious_row',)
+```
+
+More importantly, eligibility is manufactured from what reached emission. Deleting the entire computation shrinks both operands:
+
+```text
+ABSENT_REQUIRED_OBJECTS=('Q11_C1_EQUATIONS',)
+GUARD_PASS_STATES={'P5_IMPORTED_ROWS_UNCHANGED': True,
+'P6_MAIN_CELL_COMPLETE': True,
+'P7_ELIGIBLE_EQUALS_WRITTEN': True,
+'P8_ROUNDTRIP': True}
+ALL_LISTED_GUARDS_PASS=True
+```
+
+This is the concrete absent-computation defect no item catches. A whole required family can be absent from computation, emission, eligibility, and export together.
+
+What must become true: coverage must be against the spec-required object population independently of the emitter, and written-versus-eligible comparison must be bidirectional and multiplicity-aware.
+
+### 10. `P8` lacks a total comparison and an explicit guard
+
+It can detect an ordinary corruption:
+
+```text
+CORRUPT
+STRUCTURAL_IDENTITY=False
+RESIDUAL=-1
+RESIDUAL_ONLY_GUARD_FIRES=True
+```
+
+But a normalization has zero residual despite violating exact reconstruction, and tuple corruption cannot be subtracted:
+
+```text
+ALGEBRAICALLY_EQUAL_NORMALIZATION
+STRUCTURAL_IDENTITY=False
+RESIDUAL=0
+RESIDUAL_ONLY_GUARD_FIRES=False
+
+NON_SUBTRACTABLE_CORRUPTION
+STRUCTURAL_IDENTITY=False
+RESIDUAL_ATTEMPT='TypeError'
+P8_TOTAL_COMPARISON_RULE_SPECIFIED=False
+P8_EXPLICIT_GUARD_SPECIFIED=False
+```
+
+What must become true: exact reconstruction must be guarded for every admitted row/value type without assuming subtraction exists, and the compared operands must cover the whole physics-bearing row.
+
+Evidence: [script](/tmp/s11_p8_roundtrip_ablation.py), [literal stdout](/tmp/s11_p8_roundtrip_ablation.stdout.txt).
+
+### 11. Rule 5 is broken in `F8`
+
+The export decision artifact directly tells the builder a measured cross-step spectral outcome at [lines 56–59](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:56). It also reports a measured namespace census at [line 34](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:34) and the prior light-cone/`ω²` repointing outcome at [line 102](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:102).
+
+Those are builder-visible physics outcomes and targets. The mechanism is exactly Rule 5’s failure: implementation can be adjusted until the disclosed difference appears.
+
+What must become true: `F8` may state the collision/identity property and required operands, but no measured spectrum, movement, mapping outcome, or named result may be present.
+
+The PY v3 list does not leak an S11 measured value, count, sign, or data-dependent membership. Its one Rule-5-adjacent item is the generic `x/x` versus `1` expected predicate outcome at [line 56](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_py_decisions_v3.md:56); that is process guidance rather than a measured S11 result, but it is still an overfittable test target.
+
+## Rule 2, Rule 3, Rule 6, and process-cost audit
+
+- Rule 2: `P5` is correctly three-legged, and `P7` is three-legged in one direction. `P4` emits test results rather than unconditionally requiring both reconstructed operands; `P8` does not state a guard; `F8c`’s slug/descriptor cross-checks and rename controls do not require both claims plus a residual before failure.
+
+- Rule 3: `F8a` specifies the mutation recipe instead of the dependency object. `P2`, `P4`, `P5`, `P7`, and `P8` likewise prescribe concrete algorithms. For `F8a` and `P4`, that manufactures physics errors directly. The others are process machinery; they earn their cost only where they protect physics-bearing rows.
+
+- Rule 6: `F8d` deliberately prevents valid meetings for `T`-only, action-independent, and scale-invariant objects. `P4` under the conjunctive reading prevents algebraically equal but structurally different reconstructions from meeting.
+
+- Process-only cost: the English-description portion of `P10` catches no wrong physics. `F8` control 5 is a guard-for-a-guard; the successful six-control defeat shows it can be satisfied without validating the frozen map’s semantics. These fail the stated “less machinery” goal.
+
+## Non-blocking/confirmed results
+
+The cross-CAS hash rejection itself holds up:
+
+```text
+S10_brane_mode_spectrum_mathematica_audit.wl=(0, 0, 0, 0)
+S11_stray_longitudinal_mathematica_audit.wl=(0, 0, 0, 0)
+WL_FILES_WITH_LEDGER_STORAGE_REFS=()
+PLAN_SAYS_SYMPY_WRITES_MODULE=True
+PLAN_SAYS_WOLFRAM_IMPORTS_NOTHING=True
+SPEC_ENGINE_LOCAL_PREVIOUS_LEDGER=True
+SECOND_CAS_REQUIRED_TO_PRODUCE_OR_READ_STORAGE_KEY=False
+```
+
+No Wolfram engine has to produce, read, or serialize a ledger key. A cross-CAS descriptor hash would add machinery without repairing the equal-descriptor collision or the unbound quantity suffix.
+
+Evidence: [script](/tmp/s11_engine_key_dataflow.py), [literal stdout](/tmp/s11_engine_key_dataflow.stdout.txt).
+
+`P6` correctly forbids the naive stale-publication failure:
+
+```text
+FRESH_DOWNSTREAM_AFTER_NAIVE_FAILURE="('COMPLETE', 'OLD', {'physics': 'OLD'})"
+FRESH_DOWNSTREAM_AFTER_INVALIDATION_RETURN_CODE=1
+```
+
+Filesystem invalidation protects a fresh process, but not an already-cached import:
+
+```text
+CACHED_DOWNSTREAM_AFTER_INVALIDATION=('COMPLETE', 'OLD', {'physics': 'OLD'})
+FILESYSTEM_ONLY_P6_COVERS_CACHED_IMPORT=False
+```
+
+This is non-blocking if every consumer is guaranteed to be a fresh process; otherwise the consumer must validate publication/run identity.
+
+Evidence: [script](/tmp/s11_p6_publication_ablation.py), [literal stdout](/tmp/s11_p6_publication_ablation.stdout.txt).
+

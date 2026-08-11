@@ -180,6 +180,9 @@ the exact counterpart point
 
 ⛔ **Nothing else may be received from the other engine** — ⛔ no equation, matrix, root, ordering, count,
 result, status, certificate, scope or coverage token.
+⭐ It arrives in the **receiving engine's own coordinate names**; §Q8c step 2 says who re-spells it and with
+which map. ⚠ A re-spelling of the one permitted field is ⛔ not a second field, and ⛔ carries nothing the
+other engine computed.
 ⚠ ⭐ **The receiver is NOT told which locus the point came from, and does not need to be:** ⭐ which of its
 **own** loci that point lies on is something it **computes** (§Q8c). ⇒ ⛔ no selector, ⛔ no index
 translation, ⛔ no donor scope.
@@ -188,7 +191,7 @@ and is unaffected.
 
 ⚠ ⭐ **Corollary 1's test does not apply to this record**, because it is an input rather than a computed
 tag — ⭐ exactly as the action's coefficients are inputs. ⛔ **The exemption does not generalise:** it names
-these two fields, in this pass, and nothing else. ⛔ It is **not** a §5 live-read exemption and does not
+this one field, in this pass, and nothing else. ⛔ It is **not** a §5 live-read exemption and does not
 enlarge that closed list.
 
 ## 5 · ⭐⭐⭐ THE THREE CLAUSES
@@ -712,16 +715,26 @@ them.
 
 ⚠⚠ **THE TWO ENGINES MAY DESCRIBE ONE COMPONENT IN DIFFERENT VARIABLES, AND THIS FILE DOES NOT PIN WHICH.**
 ⭐ Each engine emits `STRATUM<s>_FREE_PARAMETERS` as **what it actually retained**, and its component-scoped
-**symbolic** payloads in those parameters.
-⇒ ⭐⭐ **Those symbolic payloads are INSPECTION-ONLY: ⛔ they are not cross-engine comparison rows**, because
-two faithful engines can eliminate different variables and differ for a reason that is not physics.
-⭐⭐ **The COUNTS and their STATUSES ARE comparison rows** — a count is invariant under which variable was
-eliminated, and a status is a property of the component, ⛔ not of its description.
-⚠ **The certificate and the change locus are NOT comparison rows**: both are **expressed in** the free
-parameters, so two faithful engines write them differently. ⭐ They are emitted, and the orchestrator
-aligns them exactly as it aligns strata — ⛔ they are not differenced.
+**symbolic** payloads in those parameters, ⛔ unchanged. ⛔ **Neither engine is told which variable to
+eliminate**, and ⛔ neither adjusts a payload toward the other's description.
+⇒ ⭐⭐ **A component-scoped symbolic payload IS a cross-engine comparison row**, and what is compared is the
+**difference of the two engines' payloads for that component, REDUCED MODULO
+`STRATUM<s>_DEFINING_EQUATIONS`.**
+⛔⛔ **THAT REDUCTION IS THE COMPARISON'S OPERATION, ⛔ NOT AN ENGINE'S OBLIGATION.** ⭐ Each engine keeps
+its own chart and emits its own payload as it built it; the reduction happens where the two are put side by
+side. ⇒ ⛔ It is **not** a normalisation, and ⛔ no rule here tells an engine to eliminate a variable, to
+present a component in a prescribed chart, or to reduce anything toward the counterpart.
+⭐ Where the reduction does **not** settle the row, the outcome is an explicit **undecided** — ⛔ never a
+silent pass, and ⛔ never a difference recorded as agreement because it was left unreduced.
+⭐⭐ **The COUNTS and their STATUSES ARE comparison rows too** — a count is invariant under which variable
+was eliminated, and a status is a property of the component, ⛔ not of its description.
+⚠ **The certificate and the change locus are expressed IN the free parameters**, so two faithful engines
+write them differently. ⭐ The orchestrator aligns them exactly as it aligns strata, and their symbolic
+members are compared by the same reduction — ⛔ not by a bare difference of two chart-dependent expressions.
 ⚠ ⭐ **Pinning an elimination is not attempted**: no rule that names one variable is valid on every
 component a CAS can return, and one that names the wrong variable **deletes a branch.**
+⚠ This does ⛔ not make comparable a payload this file has already declared non-canonical for a reason
+**other than** the chart — §Q4's null-space basis is such an object, at every scope.
 
 ⭐ **Every component-scoped Q3/Q4 tag whose payload is an integer count** — including a degree, rank,
 nullity or basis count — has three companion object families. Write `<COUNT>` for that tag's quantity name:
@@ -793,6 +806,13 @@ cannot decide. ⇒ ⭐ **That asymmetry becomes a computation instead of an inco
    input. ⛔ **There is no pairing condition and no matching test.** ⇒ ⛔ **An empty `STRATUM_ORDERING`,
    an undecided admissibility, or a differently-presented equation cannot suppress the exchange**, because
    nothing has to match for a point to be handed over.
+   ⭐⭐ **The orchestrator delivers each point in the RECEIVING engine's own coordinate names**, translating
+   the names with the **closed map at §Q6r** — ⛔ this file authors no second map. ⚠ Each engine's symbol
+   spellings are its own, and a name is a binding: a point handed over in the donor's spelling names
+   nothing in the receiver. ⛔ **Only the NAMES are translated**; ⭐ the coordinates themselves are supplied
+   exactly as emitted, and ⛔ nothing the donor computed travels with them. ⚠ That map is fixed by this
+   file and depends on nothing either run emitted, so it is ⛔ not a pairing condition and ⛔ not a
+   matching test.
 3. ⭐ **Witness pass.** Both engines run again, rebuild their own objects, consume only the supplied points,
    and emit the objects below. ⛔ No engine reads the other engine's output.
 
@@ -809,8 +829,11 @@ WITNESS<w>_OWN_LOCUS_RESIDUALS             one entry for EVERY locus this engine
                                            and dimension: that locus's own base tag, and its own
                                            `lhs − rhs` for every equation, evaluated at RECEIVED_POINT
 WITNESS<w>_POINT_COVERAGE                  exactly COMPLETE_POINT · INCOMPLETE_POINT, from testing whether
-                                           the point assigns every symbol this engine's own `M` depends
-                                           on, with omegaSquared left as the §Q3 solve indeterminate
+                                           the point assigns every symbol appearing in what this witness
+                                           slot actually evaluates — the union of the free symbols of every
+                                           equation of every locus entered in
+                                           `WITNESS<w>_OWN_LOCUS_RESIDUALS` with those of this engine's own
+                                           `M` — with omegaSquared left as the §Q3 solve indeterminate
 WITNESS<w>_OWN_M_EVALUATED                 this engine's own live `M`, evaluated at RECEIVED_POINT
 WITNESS<w>_POINT_EVIDENCE_<QUANTITY>       the complete Q3/Q4 point-evidence set computed from that own M
 WITNESS<w>_ROOT<r>_POINT_EVIDENCE_<QUANTITY>  its root-scoped members
@@ -821,6 +844,9 @@ computation, which of this engine's own loci the point satisfies — ⛔ so no e
 ⛔ no two engines need to present a locus the same way for the exchange to work.
 ⭐ The point is independent of the receiving engine's construction, so these residuals are genuine operands
 and are required by §5 corollary 3.
+⭐ **The union above is the coverage test's symbol set** because `WITNESS<w>_OWN_LOCUS_RESIDUALS` evaluates
+**every** locus this engine emitted, and a locus can depend on symbols `M` does not. ⛔ Do not decide
+coverage from `M`'s symbols alone.
 ⛔ If `WITNESS<w>_POINT_COVERAGE` is `INCOMPLETE_POINT`, the evaluated objects remain partly symbolic and
 their counts are generic — ⭐ emit them, and ⛔ do not read them as point values.
 
@@ -1170,7 +1196,7 @@ ignore it.
 | `ρ_br > 0`, `μ_R > 0`, `B_comp > 0`, `Σ k_m² > 0` | |
 | the isotropy of the kinetic form | |
 | the bulk supports a scalar sound mode **only**, with §Q11's field, ansatz and dispersion | |
-| the completeness of the stratum enumeration is not established by this build | the component-scoped Q3/Q4 status, coverage and point-evidence objects; the typed locus real status and counterpart-witness evaluations |
+| the completeness of the stratum enumeration is not established by this build | the component-scoped Q3/Q4 symbolic payloads, status, coverage and point-evidence objects; the typed locus real status and counterpart-witness evaluations |
 
 ### ⭐⭐ Premise inventory — one named object
 

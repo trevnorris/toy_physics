@@ -420,9 +420,45 @@ comparator is S10's, and ⛔ nothing reads `mathematica/out/S9_light_requires_sh
 cannot be done needs **no new instrument** — only a second pair of inputs. ⭐ **This is the cheapest open
 item in the rebuild and the one that closes the largest hole.** ⛔ Not on the S10 queue; do not fold it in.
 
-## ⭐⭐⭐ CURRENT STATE — 2026-08-11 (evening). ⛔ READ THIS BLOCK FIRST; everything after it is earlier.
+## ⭐⭐⭐ CURRENT STATE — 2026-08-11 (late). ⛔ READ THIS BLOCK FIRST; everything after it is earlier.
 
-### ⭐⭐ NEXT: BUILD S11's ENGINES. ⛔ THE EXPORT CHAIN IS DEFERRED, ⛔ NOT SOLVED.
+### ⛔⛔ NO BUILDER MAY LAUNCH. ⭐ Both S11 artifacts are BLOCKED and a decision is OPEN.
+
+| artifact | state |
+|---|---|
+| `S11_sympy_no_ledger_build_directive.md` (81 lines, Codex) | ⛔ **BLOCKED — 3 findings.** ⭐ 4 of 6 earlier fixes hold under construction |
+| `S11_SHARED_PHYSICS.md` amendment (+13 lines) | ⛔ **BLOCKED on 2 of 3 items** ⇒ ⚠⚠ **DELIBERATELY UNCOMMITTED in the working tree.** ⛔ Do not commit it as it stands; ⛔ do not revert it without reading why |
+| `chain_accumulate_or_generate_decision.md` | ⚠ **RECORDED, ⛔ NOT ADOPTED** — both legs blocked it |
+
+⭐⭐ **THE OPEN DECISION, and it is the user's:** fold both, with the **spec** reduced to the **four tag
+names + the completion obligation**, and the **directive told to POINT AT spec obligations, ⛔ never restate
+them.** ⭐ Three blockers collapse into that one move.
+
+⛔⛔ **WHY ALL THREE DIRECTIVE BLOCKERS ARE ONE DEFECT: the directive RESTATES a spec obligation in its own
+words, and ⭐ every restatement came out WEAKER than the original.**
+1. ⛔ **Completion is a SHARED obligation** — ⭐ two independent legs, on two different artifacts, concluded
+   **neither engine can define the predicate locally without the two diverging** (it needs the shared tag
+   list **and** each engine's own computed orderings). ⚠ The registry invented for it is **authored by the
+   emitter it audits** ⇒ ablating the engine's own rank made **4 objects and a whole `STRATUM` scope vanish
+   with both cells certified complete.**
+2. ⛔⛔ **The omission clause rescued `§Q11`'s `C1`–`C4` BY NAME, and the same defect re-opened on `§Q10`'s
+   pinned failure object** ⇒ ⚠ **rule 7's measured failure verbatim — an exception named instead of the
+   property.** ⭐ Corollary 4 already says it.
+3. ⛔ **"Operational failure" is reachable by ROUTE CHOICE** — measured on one required object at `D=5`: the
+   natural idiom costs **~2700×** an exact route that returns in seconds. ⭐ `§7:1048` already forbids
+   dropping a cell for cost.
+
+⚠⚠ **THREE TIMES THIS SESSION THE ANSWER WAS "THE FILE ALREADY SAYS IT"** — corollary 5 for the boolean
+property, corollary 4 for emission, `§7` for cost. ⇒ ⭐⭐ **before writing a rule, search the spec for the
+obligation it duplicates.**
+
+⛔ **QUARANTINE:** the last fold-review leg **computed real S11 physics** to make its case (a `D=5`
+determinant, root multiplicities). ⛔ **Its raw report is OUTSIDE the repo and must stay there** — those are
+answers the engine has not been built to produce.
+
+---
+
+### ⭐⭐ (still the plan) BUILD S11's ENGINES. ⛔ THE EXPORT CHAIN IS DEFERRED, ⛔ NOT SOLVED.
 
 ⛔⛔ **THE S11 SYMPY ENGINE WRITES NO LEDGER.** ⭐ It **imports** `S10_exports.LEDGER` (for `§Q6r`) and
 emits its tags; ⛔ it does **not** write `S11_exports.py`. ⇒ ⭐ One line of scope removed, and **four rounds

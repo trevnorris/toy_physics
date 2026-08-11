@@ -478,14 +478,24 @@ collision to catch.
 | owed | verdict | why |
 |---|---|---|
 | **3 sentences corrected in the S10 record after the last leg reported** (the eight-of-twelve verdict count + 2 companions) | ⭐⭐ **KEEP — CLAIM** | ⛔ A number in a signed record that **no leg has seen**. ⚠ This is the only owed item that could make S10 *say something false*. |
-| **`C19` — the emitted names are the engines'** (`S10:197` orders *"Emit `M_A`, `M_B`"*; engines emit `Q2_MATRIX_A/B`) | ⚠ **SPLIT** | ⭐ The **forward** discipline is PHYSICS — a name is a binding, and a mis-pointed one made the light cone an `ω²` with every repo check green. ⛔ But S11's spec fixes its own quantity names, so ⭐ **S11 is covered without touching S10.** ⇒ the S10 **rename** and its **record disclosure** are ⛔ **CEREMONY**. |
+| **`C19` — the emitted names are the engines'** (`S10:197` orders *"Emit `M_A`, `M_B`"*; engines emit `Q2_MATRIX_A/B`) | ⚠ **SPLIT — ⭐ cut STANDS, and ⛔ BOTH LEGS WERE WRONG ABOUT WHY IT DOESN'T** | ⭐ The **forward** discipline is PHYSICS — a name is a binding. ⛔ But S11's spec fixes its own quantity names ⇒ ⭐ **S11 is covered without touching S10.** ⚠⚠ **Both legs claimed the record carries an UNSUPPORTED CLAIM** — *"`M_A`/`M_B` PASS rows while comparator rows with those names are 0."* ⛔ **MEASURED FALSE.** `steps/S10_two_transverse_photons.md:658` says *"each have 12 PASS rows"* and **names the one failing row**; the comparator has **12 PASS + 1 FAIL** for `Q2_MATRIX_A`, `_B` and `_RESIDUAL` alike. ⇒ ⭐ **the number is RIGHT; the deviation is real but produced NO false claim** — it is a **traversal gap**, and the disclosure is cheap ⛔ but not physics. |
 | **`F3`/`F4` — regenerate S10's export so re-derived rows carry their operands** | ⛔ **CEREMONY** | ⭐ The residual is already computed, emitted and committed (`out/…:4215`), and `Q6r` emits **its own** derived/imported/difference triple (`S11:527-529`). ⇒ nothing physics-bearing changes. |
-| **`F6` — no export published from a partial `MAIN` sweep** | ⛔ **CEREMONY, for now** | ⭐ `RUN_PAIRS`/`SKIPPED_PAIRS` already make the run record **observed** (`S11:895`), and ⛔ **no S12 consumer exists.** ⚠ Revisit when one does. |
+| **`F6` — no export published from a partial `MAIN` sweep** | ⚠ **CUT, ⛔ but ONLY with an import obligation** — ⭐ both legs moved this | ⛔ Codex's counterexample: `MAIN, D=5` fails **after** the imported ledger is copied ⇒ the merged export publishes a **predecessor** `D=5` row that a record or card reads as S11 output. ⇒ ⭐⭐ **an importer MUST read `RUN_PAIRS`/`SKIPPED_PAIRS` before using a row** (`S11:895`). ⛔ Without that, the cut is wrong. |
 | **S10's requirements registers** (`SUBSTRATE_REQUIREMENTS.md`) | ⚠ **OWED CONTENT, ⛔ not a defect** | ⭐ It captures what the sector obliges; ⛔ no claim is wrong without it. |
-| **`DEFECT_REGISTER#F7`** — the old kernel equated a boolean with any nonzero number | ⭐ **DISCHARGED — ⛔ by deletion AND by measurement** | ⭐ `reduction/` is gone. ⚠ **And the NEW comparator does not reproduce it**: `residual_is_zero` is plain `== 0`, and measured `sp.true == 0` → `False`, `sp.false == 0` → `False` ⇒ a boolean residual reads as a **mismatch**, ⛔ never an agreement. ⚠ One narrow path left for a leg: a payload yielding a **Python** `bool`, since `False == 0` is `True`. |
+| **`DEFECT_REGISTER#F7`** — the kernel equates a boolean with a number | ⛔⛔ **NOT DISCHARGED — ⚠ MY VERDICT HERE WAS WRONG.** ⭐ **KEEP; it moves to the comparator contract (`T7`)** | ⛔⛔ **Measured in the live comparator:** both parsers turn the token `False` into a **native Python `bool`**, `residual_is_zero` is `value == 0`, and ⇒ **`False` vs `0` scores as AGREEMENT**; so does `True` vs `1`. ⭐ Lowercase `false` correctly mismatches ⇒ ⚠ the defect **depends on the spelling in the transcript**, and uppercase is what `str()` emits. ⭐⭐ **NOT REALIZED:** S10's join has **0** boolean payloads in 562 keys; S11's old engines have **400** bool/bool + **11** bool/other in 3042, all scored correctly. ⛔ **But S11's locus protocol requires 3 booleans PER LOCUS in BOTH engines** ⇒ on the critical path. ⚠⚠ **How I got it wrong: I tested `sp.false == 0` — the SymPy object — ⛔ not what the PARSER returns for the transcript token.** ⇒ a component of the path, generalised to the path. |
 | **`C20` detector** | ⭐ **KEEP — moves to S11's PY list as `F2`** | ⛔ Not S10 work. |
 
-⇒ ⭐⭐ **NET: exactly one owed S10 item survives the filter** — the three unlegged record sentences.
+⇒ ⭐⭐ **NET after both legs: TWO survive** — the three unlegged record sentences, and **`F7`**, which
+⛔ **I wrongly discharged** and which now lands in the comparator contract as `T7`.
+⚠ **`F6`'s cut is conditional**: an importer must honour `RUN_PAIRS`/`SKIPPED_PAIRS`.
+⚠ **The registers row needs re-checking** — a leg reports S9/S10 pass 1 is already marked complete, ⛔ which
+would make the row stale rather than owed.
+
+⛔⛔ **AND THE LEGS SPLIT ON FOUR OF THESE ROWS — ⭐ the split, ⛔ not either verdict, is what settled them.**
+⚠ On `F7` **both** were wrong in **opposite** directions (Codex *"reproduces"*, Grok *"correctly treated,
+closed"*) ⇒ ⭐ neither had measured whether it was **realized**. On `C19` **both** alleged the same
+unsupported claim and **both were refuted by opening the record and the comparator** ⇒ ⭐⭐ **a finding
+reproduced by two independent legs is still not a measurement** (rule 13).
 
 ### ⛔ THE FIVE FINDINGS THAT BLOCKED THE S11 PY LIST — ⭐ the rewrite must answer all five
 

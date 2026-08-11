@@ -420,7 +420,42 @@ comparator is S10's, and ⛔ nothing reads `mathematica/out/S9_light_requires_sh
 cannot be done needs **no new instrument** — only a second pair of inputs. ⭐ **This is the cheapest open
 item in the rebuild and the one that closes the largest hole.** ⛔ Not on the S10 queue; do not fold it in.
 
-## ⭐⭐⭐ CURRENT STATE — 2026-08-11. ⛔ READ THIS BLOCK FIRST; everything after it is earlier.
+## ⭐⭐⭐ CURRENT STATE — 2026-08-11 (evening). ⛔ READ THIS BLOCK FIRST; everything after it is earlier.
+
+### ⭐⭐ NEXT: BUILD S11's ENGINES. ⛔ THE EXPORT CHAIN IS DEFERRED, ⛔ NOT SOLVED.
+
+⛔⛔ **THE S11 SYMPY ENGINE WRITES NO LEDGER.** ⭐ It **imports** `S10_exports.LEDGER` (for `§Q6r`) and
+emits its tags; ⛔ it does **not** write `S11_exports.py`. ⇒ ⭐ One line of scope removed, and **four rounds
+of blocked design with it.**
+
+⭐⭐ **Measured, and this is why deferring costs nothing today:** ⛔ **nothing downstream needs the export to
+exist.** S12 does not exist; the **WL engine imports nothing**; the **comparator, step record and card read
+TAG STREAMS**, ⛔ not the ledger. ⭐ `Q6r` needs only to **read**, which works today.
+
+| | |
+|---|---|
+| spec | ⭐⭐ **DONE, `cf4a21a4`** — 1149 lines, two legs. ⛔ It was never the problem |
+| export chain | ⛔⛔ **4 designs, 8 legs, ALL BLOCKED** ⇒ `DEFECT_REGISTER.md#c20`, which now carries **why each died**. ⛔ Do not re-propose one |
+| S10 rename | ⚠ **NOT abandoned — DEFERRED.** ⛔ The collision is a **write-time** event and S11 will not write ⇒ **dormant** |
+
+⭐⭐ **WHY THE RENAME WAITS — ⛔ the reason, ⛔ not the difficulty:** the only validation of a rename is that
+**the chain still works afterwards**, and ⛔ there is no chain until something writes into it. ⇒ ⛔
+Re-pointing **429** committed rows with no consumer that would notice an error is the failure where **every
+repo check passes and the physics moves silently.**
+
+⚠ ⭐ **S10 owes FOUR items, and they are ONE pass, ⛔ not four** — the `F3` regeneration, the naming defect,
+**12 `dimension_key` refs crossing a `D` boundary**, and **one spectrum written in two vocabularies**
+(`k1,k2,k3` in one row, `kx,ky,kz` in the next). ⇒ ⭐ done when a consumer exists that would catch an error.
+
+⛔⛔ **THE LESSON, and it outranks the rest:** ⚠ **not one item in any of the four designs read a PHYSICS
+residual** — while `ROOT_DEGREE_RESIDUAL`, `N7_RESIDUAL`, `V7_RESIDUAL`, `Q7_RESIDUAL` and `M_A − M_B` sit
+in the spec already, each with **two operands from different routes**, unread. ⇒ ⭐⭐ **Four rounds of
+machinery that cannot catch wrong physics.** ⛔ Check the artifact against the physics, ⛔ not against
+itself.
+
+---
+
+## ⭐⭐ (superseded) CURRENT STATE — 2026-08-11 (midday)
 
 ### ⭐⭐ S11's SPEC IS DONE — `cf4a21a4`, 1149 lines. ⭐⭐ NEXT IS THE **PY DECISION LIST**.
 

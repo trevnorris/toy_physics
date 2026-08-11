@@ -711,10 +711,84 @@ action**.
 ⇒ ⛔ an S11 export under the same key **overwrites a different physical system's object**, and ⛔ **chain
 integrity cannot catch it** — the write is intentional, not drift.
 
-⭐ It is **exactly one key** — ⚠ an earlier reading of this as a namespace-wide problem was **not supported
-by measurement** (304 × 80 vocabularies, intersection 1).
+⛔⛔ **"EXACTLY ONE KEY" IS WITHDRAWN — 2026-08-11, re-measured.** ⭐ Census of the S11 spec's quantity names
+against all **617** committed keys: **`ROOT_ORDERING`** (`root_ordering_d2…d5`), **`DIM_COEFFICIENTS`**,
+**`DIM_SOLUTION`** — ⚠ and `q1_lagrangian_expanded_d3`, reachable through a **builder-chosen** name.
+⛔⛔ **The namespace cannot be closed in advance at all**: `S11_SHARED_PHYSICS.md:1084` explicitly lets a
+builder name any object the file does not name. ⇒ ⛔ **no census can ever license a naming rule.**
 
 **Fix at its own level — ⛔ NOT a naming authority.** ⭐ The consuming engine must **detect** the case: an
 imported key it is about to write must be compared as an **object**, and a write over a differing object is
 a **finding that fails loudly**, ⛔ never a silent overwrite. ⚠ That rule is needed whether or not `C19` is
 fixed, because a future accidental collision is not preventable by naming discipline alone.
+
+#### ⭐⭐ WHY THE NAME IS WRONG — ⛔ and it is S10's name, ⛔ not S11's
+
+```
+S10 MAIN:  L = (ρ_br/2)·Σ_j (∂_t u_j)²  −  (μ_R/2)·S_curl[∂u]
+S11 MAIN:  L = (ρ_br/2)·Σ_j (∂_t u_j)²  −  (μ_R/2)·S_curl[∂u]  −  (B_comp/2)·S_div[∂u]
+```
+
+⭐ **One extra term.** S10's brane resists shear only; S11's resists shear **and** compression. ⚠ The
+difference is visible in the colliding value itself — S10's leading root is `0`, a mode with no restoring
+force, and ⭐ **lifting that zero is what S11 exists to test.** ⇒ ⛔ Two different materials' spectra.
+
+⇒ ⭐⭐ **`root_ordering_d3` names a SLOT IN A PROCEDURE that every step has, ⛔ not an object.** ⚠ Every step
+solving a dispersion relation wants that name. ⇒ `D11` — *a name belongs to the object* — is what it
+violates, and ⛔ **S10 is the under-specified one.**
+
+#### ⛔⛔ FOUR DESIGNS, EIGHT LEGS, ALL BLOCKED — ⛔ do not propose any of them again
+
+| # | proposed | ⛔ killed by, measured |
+|---|---|---|
+| 1 | a mechanical tag→key transform | ⛔ routed around `D12`; the transform **was** the defect |
+| 2 | run scope in the key (`s11_main_d3_…`) | ⛔ a producer prefix `F1` forbids; ⭐ **and shared objects DO exist** — a leg reconstructed three Q7 objects across the two steps at **residual 0** |
+| 3 | readable slug + canonical action descriptor | ⛔ the descriptor is **not recoverable**: `COEFFICIENT_ORDERING` is built from **declared** terms including one whose density evaluates to zero, so two identical simplified `(T,W)` carry different orderings. ⛔ Full-`(T,W)` scope also blocks real meetings — a common overall scale moves both and leaves the root **identical** |
+| 4 | key = opaque locator; identity in a per-row `object_claim` (**Codex-authored**, supersedes `F1`) | ⛔ the claim is **authored and nothing recomputes it** — give two different objects one claim and the join merges them, reports `AGREE`, publishes, and the population check sees nothing. ⚠ ⛔ `D2` also **forbids the only measurement of per-object dependence** (*"observed payload movement never defines it"*) |
+
+⭐⭐ **THE INVARIANT ACROSS 1–3, and it is the thing to remember: a KEY STRING CANNOT CARRY OBJECT
+IDENTITY.** ⛔ Measured end of that approach — an **already-wrong** frozen migration map passed **all six**
+rename controls, with `QUANTITY_NAME_HAS_NON_PAYLOAD_BINDING_EVIDENCE=False`.
+⚠ ⭐ **Design 4 relocated identity out of the key and inherited the same defect**, because ⛔ **authored
+identity with no independent recomputation fails the same way wherever it is stored.**
+⇒ ⚠ This is `checks_S10.yaml`'s 3,121 hand-written name pairs in a new shape: a leg priced it at **108
+claim templates, every one asserting a dependency nothing checks**, against **690 name pairs, none of which
+asserts anything.**
+
+#### ⭐⭐ CURRENT DISPOSITION — ⛔ DORMANT, ⛔ NOT FIXED
+
+⭐⭐ **The collision is a WRITE-TIME event.** ⛔ S11 **reading** `S10_exports` does not collide — `Q6r` reads
+the **symbol-identity** population (`rho_br`, `mu_R`), ⛔ never the colliding tag-derived keys. ⭐ And the
+**tag** namespace already carries the step (`PY_S11_…`), so ⛔ tags never collided at all.
+⇒ ⭐ **While S11 writes no ledger, this defect cannot fire.** ⛔ It is not thereby fixed.
+
+⚠ ⭐ **WHY A RENAME IS NOT ATTEMPTED NOW — ⛔ and this is the reason, ⛔ not the difficulty:** the only
+validation of a rename is **that the chain still works afterwards**, and ⛔ there is no chain until
+something writes into it. ⇒ ⛔ Re-pointing **429** committed rows with no consumer that would notice an
+error is exactly the failure where **every repo check passes and the physics moves silently.**
+
+#### ⚠ TWO COMMITTED DEFECTS FOUND ALONGSIDE — ⭐ verified, ⛔ they are S10's, ⛔ independent of naming
+
+1. ⛔ **12 `dimension_key` references cross a `D` boundary** — e.g. `q1_lagrangian_expanded_d3` →
+   `q1_lagrangian_expanded_q6_dimensions_d2`. ⚠ The writer resolves by **value equality then string
+   prefix** (`S10_brane_mode_spectrum_sympy_audit.py:1971-2002`), so ⛔ payload comparison **selected** them
+   and can never police them. ⭐ Values currently equal ⇒ harmless **while a key means nothing**.
+2. ⛔ **The same spectrum is written in two vocabularies in one file** —
+   `q3_roots_distinct_d3 = (0, mu_R*(k1**2+k2**2+k3**2)/rho_br)` beside
+   `root_multiplicities_d3 = ((0,1), (mu_R*(kx**2+ky**2+kz**2)/rho_br, 2))`. ⚠ **98** rows in `kx,ky,kz`,
+   **119** in `k1,k2,k3`. ⇒ ⛔ any cross-step comparison reads `DISAGREE` on a **spelling**.
+
+⇒ ⭐ These, the `F3` regeneration, and the naming defect are **four items against one committed artifact**
+and belong in **one S10 pass**, ⛔ not four — ⭐ done when there is a consumer that would catch an error.
+
+#### ⛔⛔ THE FINDING NO ROUND PRODUCED — ⭐ and it outranks everything above
+
+⚠⚠ **Not one item in any of the four designs reads a PHYSICS residual.** ⭐ The shared spec already orders
+several whose two operands come from **genuinely different routes** — `ROOT_DEGREE_RESIDUAL`
+(`DET_M_DEGREE − ROOT_COUNT_ALL`, the degree computed from the polynomial and ⛔ not from the root list),
+`N7_RESIDUAL`, `V7_RESIDUAL`, `Q7_RESIDUAL`, `M_A − M_B`.
+⇒ ⛔⛔ **A cell can satisfy every publication condition while carrying a nonzero one in its own published
+payload.** ⚠ And since `P_D` is built from `V6_BASIS`, ⛔ a broken Q9 census silently changes the
+`XFORM_EXTRA` **action itself**.
+⇒ ⭐⭐ **Four rounds of storage machinery, ⛔ none of which can catch wrong physics** — ⚠ while the physics
+checks the spec **already specifies** go unread. ⇒ [[feedback-physics-not-ceremony]].

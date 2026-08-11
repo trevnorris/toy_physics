@@ -420,7 +420,41 @@ comparator is S10's, and ⛔ nothing reads `mathematica/out/S9_light_requires_sh
 cannot be done needs **no new instrument** — only a second pair of inputs. ⭐ **This is the cheapest open
 item in the rebuild and the one that closes the largest hole.** ⛔ Not on the S10 queue; do not fold it in.
 
-## ⭐⭐⭐ CURRENT STATE — 2026-08-10. ⛔ READ THIS BLOCK FIRST; everything after it is earlier.
+## ⭐⭐⭐ CURRENT STATE — 2026-08-11. ⛔ READ THIS BLOCK FIRST; everything after it is earlier.
+
+### ⭐⭐ S11's SPEC IS DONE — `cf4a21a4`, 1149 lines. ⭐⭐ NEXT IS THE **PY DECISION LIST**.
+
+| | state |
+|---|---|
+| `C17` | ⭐⭐ **CLOSED.** Counts computed **on the component**; each carries `CONSTANT` + certificate · `VARIES` + the **sub-locus where it moves** · `UNDECIDED`; a point survives only under `POINT_EVIDENCE_`. ⭐ Both legs re-ran the register's witness and reproduced it |
+| `C18` | ⚠ **PARTIALLY CLOSED — ⛔ say so whenever citing it.** The split is now `ADMISSIBLE` vs `UNDECIDED` **with operands** ⇒ a **coverage gap**, ⛔ not a phantom disagreement. ⛔ **No computation resolves it**, and `§9` states that |
+| `T3` witness exchange | ⛔⛔ **CUT** (user, 2026-08-11), struck through in the decisions doc |
+| `T7` comparator half | ⚠ **OPEN — ⛔ belongs to the COMPARATOR CONTRACT**, which does not exist yet. ⛔ Not a spec defect |
+
+⭐⭐ **WHY `T3` WAS CUT — ⛔ this is a FINDING, ⛔ not unfinished business, and ⛔ do NOT re-open it without
+a new way to establish the correspondence:** ⚠ handing a point from one engine to the other requires the
+two to **share a coordinate vocabulary**, ⛔ and the blind build exists precisely so they do not. ⭐ Every
+route violated a rule of the same file — a cross-engine **name map** is what this rebuild abolished, each
+engine **sorts its own `COEFFICIENT_ORDERING`** so positions do not correspond, and the coefficient list
+may ⛔ **never be hardcoded** (`:517-520`).
+
+⭐⭐ **THE TWO MEASURED FACTS THE SPEC NOW RESTS ON — ⛔ do not re-derive:**
+1. ⭐ A component's **counts are invariant** under which variable is eliminated (verified both CASes, both
+   charts) ⇒ **counts are the comparison rows.**
+2. ⛔⛔ **Counts CANNOT see a dispersion relation wrong by a factor of two** — measured: counts stay `1`
+   vs `1`, and only the difference **reduced modulo each engine's own defining equations** goes nonzero.
+   ⇒ ⭐ that reduction is why component-scoped symbolic payloads are compared at all.
+⚠ ⛔ **Which variable an engine eliminates is deliberately NOT pinned** — a round pinned it and **deleted a
+branch** (`x·y = 0` keeps `y = 0`, loses `x = 0`).
+
+⚠⚠ **WHAT NINE ROUNDS COST, and the lesson is one line:** ⭐ **thirteen of the sixteen bred defects lived
+in a mechanism invented to stop two engines describing a locus differently.** ⇒ ⭐⭐ `CLAUDE.md` **rule 3**
+(*name the object, do not specify the recipe*) and **rule 6** (*do not make divergence impossible*) — ⛔ a
+review arguing whether a construction is well-defined is answering a question the construction manufactured.
+
+---
+
+## ⭐⭐ (superseded) CURRENT STATE — 2026-08-10
 
 ### ⭐⭐ DONE, and gated
 

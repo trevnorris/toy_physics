@@ -1,6 +1,22 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐ WHERE WE ARE — 2026-08-10
+## ⭐⭐ WHERE WE ARE — 2026-08-11
+
+⭐⭐ **S11's SHARED SPEC IS DONE — `cf4a21a4`, 1149 lines.** ⭐ `C17` **closed**; `C18` **partially closed**
+(the divergence is typed and visible; ⛔ **no computation resolves it**, and `§9` says so).
+⛔ The `T3` **witness exchange is CUT** — ⚠ it required the two engines to share a coordinate vocabulary,
+and the blind build exists so they do not ⇒ `DEFECT_REGISTER.md#C18` carries the full reason.
+
+⭐⭐ **NEXT: the S11 PY decision list** — ⛔ it must answer **5** blocked findings of its own (`11bf8e05`)
+**and 10** from the export-chain list (`36589024`), then two legs, ⛔ then the builder.
+
+⚠ **Then:** S11 PY → WL → comparator → record → card → registers. ⛔ Every stage two legs.
+⚠ ⭐ **`T7`'s comparator-side native-boolean rejection is OPEN and belongs to the COMPARATOR CONTRACT**,
+which must be **frozen before it sees either output**.
+
+---
+
+## ⭐⭐ (superseded) WHERE WE WERE — 2026-08-10
 
 ⭐ **S11's shared spec is REPAIRED and gated** (`ab8cb50e`, 914 → 1005 lines): an inertia control, `C16`'s
 stacked-matrix stratum source, `Q6r` repointed off the deleted `reduction/`, `Q3`'s multiplicity object

@@ -23,7 +23,13 @@ the component-scoped count is the generic one, and a sub-locus where the count m
 incomplete-coverage token**; ⛔ no component-level count may be claimed from it.
 ⚠ Without this, both engines take the labelled fallback and `C17` survives **with a label on it**.
 
-**T3 · ⭐⭐ WITNESS EXCHANGE — where one engine has a point and the other has none.**
+**T3 · ⛔⛔ WITHDRAWN, 2026-08-11 (user decision). ⛔ Do not build this.**
+⭐⭐ **Why, and it is a finding rather than a retreat:** the exchange requires the two engines to share a
+**coordinate vocabulary**, ⛔ and the blind build exists precisely so they do not. ⚠ Nine rounds
+established that every route to that correspondence violates a rule of the same file ⇒
+`DEFECT_REGISTER.md#C18` carries the full reason. ⭐ `§9` now records that no computation resolves the gap.
+
+~~**T3 · ⭐⭐ WITNESS EXCHANGE — where one engine has a point and the other has none.**~~
 ⭐ Each engine evaluates the **other's** emitted point against **its own** `_EQUATIONS` and **its own** `M`,
 and emits the residual.
 ⇒ ⭐⭐ **The divergence becomes a computation instead of an incomparability.** ⚠ This is the only decision

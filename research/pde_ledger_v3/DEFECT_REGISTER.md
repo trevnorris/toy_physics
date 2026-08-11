@@ -551,10 +551,26 @@ engine for this.
 
 ### ⛔⛔ **`C17`** — a stratum's `Q3`/`Q4` rerun is a property of the POINT, ⛔ not of the component {#c17}
 
-**Locus:** `directives/S11_SHARED_PHYSICS.md:620` (`STRATUM<s>_POINT`), `:627` (the rerun), `:633` (the
-concession). **Status: OPEN.** ⚠ **A SPEC defect — ⛔ both engines implement it faithfully.**
-⚠ ⭐ **Loci re-pinned 2026-08-10** — the `ab8cb50e` repair moved every line this entry cited (`:556`/`:563`/
-`:569` were the 914-line file). ⛔ Do not trust a line number in this register without opening it.
+**Locus:** `directives/S11_SHARED_PHYSICS.md:652` (`§Q8b`), `:670` (`STRATUM<s>_POINT`).
+⭐⭐ **Status: CLOSED, 2026-08-11**, in the 1149-line spec.
+⚠ ⭐ **Loci re-pinned TWICE** (`ab8cb50e`, then the `C17`/`C18` repair). ⛔ Do not trust a line number in
+this register without opening it.
+
+⭐ **What closed it.** A stratum's `Q3`/`Q4` are computed **on the component**, under its defining
+equations, ⛔ never by substituting a point. Every component-scoped count carries a **status** —
+`CONSTANT` with a certificate · `VARIES` with the **sub-locus where the count changes** · `UNDECIDED` —
+in one payload shape across all three, and ⛔ **a bare generic integer is not a component-scoped answer.**
+⭐ A point evaluation survives only under a `POINT_EVIDENCE_` infix that ⛔ can never stand as the
+component's answer.
+⇒ ⭐⭐ **the sub-locus this entry measured — where the count moved and nothing said so — now carries its
+own tags.** ⚠ A review leg re-derived the closure on a committed component.
+
+⚠ ⭐ **What is deliberately NOT pinned:** which variable an engine eliminates. ⛔ A repair round pinned it
+and **deleted a branch** (`x·y = 0` keeps `y = 0` and loses `x = 0`). ⇒ ⭐ the two engines may describe one
+component in different variables; their **counts** are the comparison rows, and a component-scoped
+**symbolic** payload is compared as the difference **reduced modulo each engine's own defining equations,
+both carried as operands.** ⚠ ⭐ Measured: counts alone cannot see a dispersion coefficient wrong by a
+factor of two; the reduction can.
 ⚠ **Pre-existing. ⛔ Not created by the `C16` repair** — but the stacked source that repair adds **widens
 exposure to it**, which is why it is registered now.
 
@@ -588,9 +604,31 @@ agree** (`§8`, and the frozen comparator contract). ⛔ Do not repair an engine
 
 ### ⚠ **`C18`** — the locus protocol pins five OBJECTS but no CONSTRUCTION {#c18}
 
-**Locus:** `directives/S11_SHARED_PHYSICS.md:230-251`. **Status: OPEN.** ⚠ **A SPEC defect.**
-⚠ ⭐ **Locus re-pinned 2026-08-10** — `ab8cb50e` moved it; `:213-221` now points at the live-read exemption
-table, ⛔ a different section entirely.
+**Locus:** `directives/S11_SHARED_PHYSICS.md:231-300` (the locus protocol, in the 1149-line spec).
+⚠⚠ **Status: PARTIALLY CLOSED, 2026-08-11 — ⛔ read the limit below before citing this as closed.**
+⚠ ⭐ **Locus re-pinned TWICE.** ⛔ Do not trust a line number here without opening it.
+
+⭐ **What closed.** The protocol's outputs are now **typed**: each branch carries an explicit status
+(`ADMISSIBLE` · `EXCLUDED` · `UNDECIDED`) with its test object and operands, and ⛔ **a branch is never
+silently dropped** — an undecidable one is `UNDECIDED`, ⛔ never a bare false. `UNDECIDED` is an explicit
+**coverage finding** that ⛔ forbids the corresponding claim. Four extension objects type the locus's real
+status, with `_CANONICAL_LOCUS` deliberately **inert** on non-polynomial systems.
+⇒ ⭐ the measured divergence is no longer *"a component list against an empty list"*; ⭐ it is now
+*"`ADMISSIBLE` against `UNDECIDED`"*, which a comparator can report as a **coverage gap** rather than a
+disagreement.
+
+⛔⛔ **WHAT IS NOT CLOSED, and `§9` says so:** ⚠ **no computation in this build resolves that gap.** Where
+one engine admits a component and the other cannot decide, the difference is a **finding for the
+orchestrator to adjudicate**, ⛔ and this build establishes nothing about either engine's component from
+the other.
+
+⚠⚠ **A cross-engine witness exchange was built to close exactly this and was CUT (user, 2026-08-11).**
+⭐⭐ **The reason is worth keeping:** handing a point from one engine to the other requires the two to share
+a **coordinate vocabulary**, ⛔ and the blind build exists precisely so they do not. ⚠ Every route was
+tried and each violated a rule of the same file — a cross-engine name map is what this rebuild abolished,
+the coefficient ordering is each engine's own choice so positions do not correspond, and the coefficient
+list may ⛔ never be hardcoded. ⇒ ⛔ **do not re-open this without a new way to establish that
+correspondence.**
 
 `§5`'s protocol fixes five suffixes and their meanings, but `_SOLUTION` is *"the solution set exactly as
 your CAS returns it"* (`:244`) and `_REAL_ADMISSIBLE` is a test *"for each branch in `_SOLUTION`"*

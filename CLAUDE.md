@@ -11,6 +11,16 @@ Where we are: `STATUS.md`.
 2. **A script prints computed objects. It never states conclusions.** Emit both operands and the residual,
    then guard — a residual asserted zero always prints `0` and carries no information. Interpretation
    belongs to the step record.
+   **This binds me too, and that is the half I keep exempting myself from.** Every review-leg prompt I
+   write says *"a prose derivation is worth nothing; show the script and its literal stdout, or the claim
+   is discarded."* The same standard applies to anything I write. **A claim about an artifact carries the
+   command that produced it**, and the commands and their literal output go in a `_measurements/` file
+   beside the document — the same thing I make a leg do when I demand its script paths.
+   Measured 2026-08-12: four export-chain designs and eight legs died on a question one `len(LEDGER)`
+   answered; *"the imported action is in the LEDGER"* (there is no action row), *"no change to the publish
+   guard"* (false under execution) and a class citation pointing at two sections that declare no classes
+   each cost a full round. **All four were typed conclusions with no computation behind them — the exact
+   defect this rebuild exists to remove, relocated into the orchestrator.**
 3. **Name the object. Do not specify the recipe.** If a review is arguing about *how* to derive something —
    is this quotient well-defined, is this weight unique — the question was manufactured by specifying a
    derivation path. Ask for the object; let the engine hand over what it built.
@@ -47,13 +57,17 @@ Where we are: `STATUS.md`.
 
 11. **Correctness is king; cost is never a reason** to drop a control, narrow a check, or skip a leg.
     Scaling work down is the user's call.
-12. **Don't build blindness apparatus.** The measured failure is absence of computation, not anchoring.
-    Quarantine is cut; rule 2 replaced it. A do-not-read list is a denylist, and a denylist means the
-    architecture is wrong.
+12. **A prohibition is not a control.** Blindness is enforced by *absence* — by bounding what the builder is
+    handed — never by a sentence forbidding a read. A do-not-read list is a denylist, and a denylist means
+    the architecture is wrong. The measured failure is absence of computation, not anchoring; quarantine is
+    cut and rule 2 replaced it. **This applies to these rules as well: every one is prose I drift from
+    under load, so the ones that hold are the ones that leave an artifact whose absence you can see.**
 13. **A finding is not a mandate — verify it myself.** Legs have been wrong in both directions.
 14. **Ablate to test; don't read.** A form control tests physics; a coefficient control tests arithmetic.
     Demand a script and its literal stdout — a prose re-derivation is the same defect relocated into the
-    review.
+    review. **Controls written against a script that does not exist cannot be ablated**, so they get
+    reviewed by reading, which is the weakest instrument we have: put them in the build review, not in a
+    document about a build.
 15. **If successive revisions keep breeding defects in the material just changed, change the author.** Don't
     fold a fourth time.
 16. **Prior art is an oracle, never a premise.** Check our computed result against it; never assume its

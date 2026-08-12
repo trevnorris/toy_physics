@@ -422,55 +422,45 @@ item in the rebuild and the one that closes the largest hole.** ⛔ Not on the S
 
 ## ⭐⭐⭐ CURRENT STATE — 2026-08-12. ⛔ READ THIS BLOCK FIRST; everything after it is earlier.
 
-### ⭐⭐ THE NAMING QUESTION IS SETTLED. ⭐⭐ NEXT: BUILD THE S11 PY ENGINE.
+### ⭐⭐ THE BUILD DIRECTIVE IS CLOSED. ⭐⭐ NEXT: BUILD THE S11 PY ENGINE.
 
-⭐⭐ **THE USER'S DECISION:** *"Only add `s11_` if it would override something it shouldn't. The point was to
-override the times when it should."* ⇒ `directives/S11_export_chain_decisions_v2.md`, **`F9`** — three
-outcomes, decided per key by one comparison against the imported `LEDGER`:
+⭐ **`directives/S11_sympy_build_directive.md`, 57 lines, closed `29e0e1d7`** after **5 rounds / 10 legs**.
+⭐ Its job is scope, the export path and boundaries; ⛔ **all physics is `S11_SHARED_PHYSICS.md` §§1–10**,
+which it points at rather than restates.
 
-| | condition | outcome |
-|---|---|---|
-| `F9a` | key absent from the import | ⭐ bare key |
-| `F9b` | present, objects **proved equal** | ⭐ bare key — ⚠ **this is override-when-it-should** |
-| `F9c` | present, equality **not proved** (different **or undecided**) | ⭐ `s11_`-prefixed; ⛔ imported row untouched |
+| the directive settles | |
+|---|---|
+| products | ⭐ the flushed stdout tag stream **and** `scripts/S11_exports.py`. ⛔ Those are its only writes; ⛔ `S10_exports.py` is read-only |
+| export population | ⭐ **the primary package's computed objects AND the free symbols they contain** — ⚠ measured: the predecessor's export has **two** sources, and every `KNOB` row comes from the second |
+| key writing | ⭐ **`F1`** is the naming obligation; ⭐ **`F9`** decides which of its two forms is written |
+| publication | ⭐ `F6` first branch — publish only if every declared primary cell completed; ⛔ no completeness field |
+| `class` | ⭐ read from what the object is; ⛔ never a table keyed by row name |
+| collision surface | ⭐ the engine **emits** its derived keys and which the import already held — ⭐ rule 2 operands, ⛔ not a guard |
 
-⭐⭐ **Decided under the assumptions the two live objects themselves carry** — ⛔ never a premise this step
-asserts on top. ⚠ Measured: the same pair is `UNDECIDED` under the objects' own assumptions and `EQUAL`
-under S11's joint premise set, and ⛔ the second reading **overwrites a predecessor whose step never
-asserted that premise.**
+⭐⭐ **`F9` IS THE NAMING RULE AND IT IS THE USER'S** — *"only add `s11_` if it would override something it
+shouldn't; the point was to override the times when it should."* ⛔ It never changed across any round.
+⭐ Three outcomes: absent ⇒ bare · **proved equal** ⇒ bare (⚠ this is override-when-it-should) · **not
+proved** (different **or undecided**) ⇒ `s11_`-prefixed, imported row untouched.
+⭐ Decided under **the assumptions the two live objects carry**, ⛔ never a premise this step asserts on top.
 
-⭐⭐ **EVERY STEP WRITES ITS LEDGER, S11 INCLUDED.** ⛔⛔ *"S11 writes no ledger"* is **REVERSED** — it removed
-S11 from the accumulating record, ⚠ and that record **is** the point of the chain: the list of everything
-the model defines and the true list of knobs.
+### ⛔⛔ WHAT IT COST — ⭐ the most useful thing on this page
 
-### ⛔⛔ WHAT THIS COST — ⭐ the most useful thing on this page
+⚠⚠ **~20 review legs and ⛔ ZERO LINES OF ENGINE.** ⭐ Rounds returned 5, 4, 4, 4 findings — ⛔ **not
+converging** — and ⭐ **most traced to what I SPECIFIED, ⛔ not to how it was applied.**
+⇒ ⭐⭐ **What ended it was one census I had been asserting from precedent since round 1.** Three findings
+collapsed into a single measured fact: the population sentence was **factually wrong** about the
+predecessor's own export.
+⇒ ⭐⭐⭐ **RULE 2 NOW BINDS THE ORCHESTRATOR** (`CLAUDE.md`): a claim about an artifact carries the **command**
+that produced it, output in `directives/_measurements/<doc>.md`, enforced by a **commit gate** at
+`.claude/hooks/require_measurements.sh` (briefs included — ⚠ two defects were end-states demanded without
+checking the artifact could deliver them).
+⇒ ⭐ **Rule 12 is now the general form: a prohibition is not a control**; ⭐ rule 14 gained *"a control
+written against a script that does not exist cannot be ablated."*
 
-⚠⚠ **8 review legs, 4 revisions, ~15 findings, and ⛔ ZERO LINES OF ENGINE.** ⭐ The physics — does the
-compressional term lift the zero root, and what happens to the mode count — has ⛔ **not been computed
-once.**
+### ⚠ Open, ⛔ none of it blocking the build
 
-⇒ ⭐⭐⭐ **RULE 4, verbatim: many turns reasoning toward an answer a script would settle in one.**
-⇒ ⭐⭐⭐ **THE LEDGER EXPORT IS NOT THE INSTRUMENT.** ⭐ The instrument is **PY vs WL**, and the WL engine
-**imports nothing**. ⛔ A control on the export catches **nothing** about S11's physics — it governs where a
-value is **filed**.
-⇒ ⭐⭐ **`F9`'s rule survived all four rounds untouched.** ⛔ What broke, every round, was guard machinery
-written against **a script that does not exist**, where ⛔ nothing can be ablated ⇒ ⭐ those findings are now
-a **BUILD-REVIEW CHECKLIST** in the same file. ⛔ Do not fold them back into prose.
-⇒ ⛔ **A leak prohibition was written and CUT** — a denylist means the architecture is wrong; ⭐ blindness is
-enforced by **absence**, by bounding what the builder is handed.
-
-### ⚠ Still open, and small
-
-- ⚠⚠ **`S11_SHARED_PHYSICS.md` carries a +13-line UNCOMMITTED amendment, BLOCKED on 2 of 3 items.**
-  ⭐ **Keep** the four tag names (`LAGRANGIAN`, `EULER_LAGRANGE_SYSTEM`, `M_RESIDUAL`, `M_RATIO`) — ⛔ without
-  them the two engines name the step's primary objects differently and the comparator yields **zero rows**
-  for them. ⛔ **Withdraw** the decomposition rule (⚠ it merges a per-pair locus family into one system and
-  computes a **different locus**) and the boolean-rendering rule (⚠ defeated by a wrapper, ⛔ penalises the
-  stronger zero-test, and ⛔ manufactures a false cross-engine disagreement on **every** boolean row).
-- ⚠ `chain_accumulate_or_generate_decision.md` is **RECORDED, ⛔ NOT ADOPTED** — both legs blocked it.
-- ⛔ **QUARANTINE:** several leg workspaces computed real S11 physics (a `D=5` determinant, root
-  multiplicities) ⇒ `/tmp/s11_fold_leg/`, `/tmp/f9*_leg_*/`. ⛔ They must **not** enter the repo and ⛔ must
-  not reach a builder.
+⛔ `F4` (whether S10's export is regenerated) · ⛔ `F3`'s row shape · ⛔ S10's four owed items · ⚠ `T7`'s
+comparator-side native-boolean rejection ⇒ **the comparator contract, frozen before it sees either output**.
 
 ---
 

@@ -1,33 +1,29 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐ WHERE WE ARE — 2026-08-12. ⭐ THE NAMING QUESTION IS SETTLED; ⭐⭐ BUILD THE ENGINE.
+## ⭐⭐ WHERE WE ARE — 2026-08-12. ⭐⭐ THE DIRECTIVE IS CLOSED. ⛔ NEXT: BUILD THE ENGINE.
 
 ⭐⭐ **Full state: `research/pde_ledger_v3/REBUILD_HANDOFF.md`, top block.**
 
-⭐⭐ **THE USER'S DECISION, and it is the whole of it:** *"Only add `s11_` if it would override something it
-shouldn't. The point was to override the times when it should."*
-⇒ `directives/S11_export_chain_decisions_v2.md`, **`F9`**.
-⭐ **Every step writes its ledger, S11 included** — ⛔ the earlier *"S11 writes no ledger"* is **REVERSED**;
-it dropped S11 out of the accumulating record, which is the point of the chain.
+⭐ **`directives/S11_sympy_build_directive.md` — CLOSED `29e0e1d7`**, 57 lines, ⭐ 5 review rounds / 10 legs.
+⭐ **`F9` in `directives/S11_export_chain_decisions_v2.md` is the naming rule** — the user's decision, and
+⛔ it never changed across any round.
+⭐ **Every step writes its ledger, S11 included.** ⛔ *"S11 writes no ledger"* is REVERSED.
 
-⛔⛔ **WHAT THIS COST, and it is the lesson: 8 review legs, 4 revisions, ~15 findings — and ⛔ ZERO LINES OF
-ENGINE.** ⭐ The physics question — does the compressional term lift the zero root — has **not been computed
-once.** ⇒ ⭐⭐ **rule 4: many turns reasoning toward an answer a script would settle in one.**
-⇒ ⭐⭐ **The ledger export is NOT the instrument.** The instrument is **PY vs WL**, and WL imports nothing.
-⛔ Controls on the export catch nothing about S11's physics.
+⭐⭐ **NEXT, and it is the first thing all day that computes physics:** Codex builds
+`scripts/S11_stray_longitudinal_sympy_audit.py` from that directive ⇒ then a fresh Claude agent + Grok,
+⛔ **with a FORM ABLATION mandatory in every leg** (rule 14, and it is a script round).
 
-⭐ **`F9`'s rule survived all four rounds untouched.** ⛔ What kept breaking was guard machinery written
-against a script that does not exist ⇒ ⭐ it is now a **build-review checklist** in the same file, ⛔ not
-prose obligations.
+⛔⛔ **WHAT THIS COST, and it is the lesson: ~20 legs, 0 lines of engine.** ⭐ Rounds returned 5, 4, 4, 4
+findings — ⛔ **not convergence.** ⭐ What ended it was **one census I had asserted from precedent since
+round 1**: three findings collapsed into a single measured fact ⇒ **rule 2 now binds the orchestrator**
+(`CLAUDE.md`), with a `_measurements/` file beside every decision doc and a **commit gate** at
+`.claude/hooks/require_measurements.sh`.
 
-⚠⚠ **A +13-line amendment to `S11_SHARED_PHYSICS.md` is UNCOMMITTED and BLOCKED on 2 of its 3 items.**
-⭐ Keep the **four tag names**; ⛔ withdraw the decomposition rule and the boolean-rendering rule — ⚠ both
-were invented by the orchestrator and both were defeated by two legs.
-
-⚠ **Then, unchanged:** S11 PY → WL (blind) → comparator → record → card → registers. ⛔ Every stage two
-legs; ⛔ **script round ⇒ FORM ABLATION MANDATORY in every leg.**
-⚠ ⭐ **`T7`'s comparator-side native-boolean rejection is OPEN** and belongs to the **comparator contract**,
-frozen before it sees either output.
+⚠ **Still open, ⛔ none blocking the build:** `F4` (S10 regeneration); `F3`'s row shape; S10's four owed
+items; `T7`'s comparator-side native-boolean rejection ⇒ **comparator contract, frozen before it sees
+either output**.
+⛔ **QUARANTINE:** `/tmp/s11*_leg_*/`, `/tmp/f9*_leg_*/`, `/tmp/s11_fold_leg/` computed real S11 physics.
+⛔ They must not enter the repo and ⛔ must not reach a builder.
 
 ---
 

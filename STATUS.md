@@ -27,19 +27,26 @@ either output**.
 was **reaped by the harness at ~36 min mid-patch** — ⛔ not OOM (18 Gi free), ⛔ no orphan, ⛔ no
 `tokens used` line. ⚠ **Relaunch with `setsid` + pidfile so it survives reaping**
 ⇒ [[feedback-background-process-launch]].
-⛔⛔ **MEASURED DEFECT IN THE BUILT ENGINE — IT HANGS.** An ARBITER RE-RUN (mine, ⛔ not the builder's word)
-stalls at **856 emitted tags** with **zero further output** and ⛔ never emits
+⛔⛔ **MEASURED DEFECT — THE ENGINE EATS MEMORY UNTIL THE OOM KILLER TAKES IT.** ⚠ `ps` on the **python**
+pid: **22.3 GB RSS at 100% CPU** (`RN`) after ~3 min, on a 30 GB box. ⛔ I killed it; free went 5.7 → 22 Gi.
+⇒ ⭐⭐ **That is why every run "ended cleanly with zero stderr": SIGKILL leaves no traceback**, and it is
+why Codex's own build died at ~36 min. ⛔ **The harness was never the cause.**
+⚠ An ARBITER RE-RUN (mine, ⛔ not the builder's word) reaches **856 emitted tags**, then ⛔ never emits
 `PY_S11_LOCAL_SECTION10_REPORT`, so ⛔ **`S11_exports.py` is never published.** ⚠ The export writer and the
 **F6** guard both exist (`:1604`, `:1687`) and the guard is ⛔ **not** what fired.
 ⚠ **The stall point:** last tags are `PY_S11_MAIN_D5_ROOT_COINCIDENCE_R1_R2_COEFF_REAL_{WITNESS,STATUS_OPERANDS}`
 ⇒ **MAIN, D=5, root coincidence.** ⚠ Only `MAIN` D2–D5 ever run; ⛔ later packages in `PACKAGE_ORDER` are
 never reached.
-⛔⛔ **CORRECTION, and it is the rule-2 defect again:** I first recorded this as *"exits early and
-silently"*, inferred from `alive: no` + empty stderr ⛔ **without ever measuring an exit code** — ⚠ a SIGKILL
-is byte-identical to a clean exit under that test. ⭐ The run that stayed alive under `setsid` is what
-showed the hang. ⇒ [[feedback-script-timeout-policy]]: **long + PRINTING is fine; long + SILENT is the
-failure.** ⚠ Note ~7 bare `except Exception` handlers (`:756 :775 :955 :1317 :1450 :1668`) — a leg should
-check whether one masks the stall.
+⛔⛔ **I GOT THIS WRONG TWICE BEFORE MEASURING THE RIGHT OBJECT.** ⚠ (1) *"exits early and silently"* —
+inferred from `alive: no` + empty stderr, ⛔ with no exit code. ⚠ (2) *"it hangs"* — inferred from a pid at
+**0.0% CPU / 3.5 MB**, which was ⛔ **the `bash` WRAPPER, not `python`**: `$$` in `setsid bash -c` is the
+shell, and without `exec` bash **forks**. ⇒ ⭐⭐ **Measure the process that does the work** — one
+`ps -eo pid,ppid,pcpu,rss,args | grep <script>` settled what two rounds of inference got backwards.
+⚠⚠ ⭐ **`free -h` must be read WHILE the job runs** ⇒ [[feedback-review-agents]]. ⛔ I ran it *after* the
+runaway was already dead and it read 18 Gi free, which is what sent me down the harness-reaping story.
+⭐ **NEXT DIAGNOSIS, ⛔ for a leg, not for me to guess:** the stall is in D=5 root coincidence; ⚠ ~7 bare
+`except Exception` handlers (`:756 :775 :955 :1317 :1450 :1668`) may mask the real failure, and an
+unbounded exact-CAS root computation is the obvious suspect.
 ⭐ **NEXT:** finish the run, then its two legs — **a fresh Claude agent + Grok** (Codex wrote it), ⛔⛔ with
 a **FORM ABLATION MANDATORY in each** (rule 14). ⚠ Logs: `~/.s11_build/codex_s11_py_build.log`;
 arbiter stdout `/tmp/s11_arbiter.out`.

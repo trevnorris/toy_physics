@@ -31,26 +31,29 @@ External reviewers are reliable about *kinds* of error and unreliable about *spe
 ⇒ Take the class. **Open the file for the fact.** Both directions: reviewers are wrong about loci, and
 *you* are wrong when your grep is lazy.
 
-## 3. ⭐⭐ The tripwire — leave a stale WRONG prediction where a cribber would find it
+## 3. ⛔⛔ The tripwire — ⛔ CUT. ⭐ The measurement it produced is kept.
 
-The committed plan said `dim_before 10, dim_after 6, Δ 4`. The correct answer after the actual edit was
-`9/5/4`.
+⚠ **What was measured, and it stands:** the committed plan said `dim_before 10, dim_after 6, Δ 4`; the
+correct answer after the actual edit was `9/5/4`. Codex self-disclosed that a mis-rooted `--exclude` had
+exposed the plan file, and because it reported `9/5/4` the exposure was *provably* harmless.
 
-**Paid immediately:** Codex self-disclosed that a mis-rooted `--exclude` had exposed the forbidden plan
-file. Without the tripwire that disclosure would have been **unfalsifiable** and the whole leg would have
-had to be re-run. Because it reported `9/5/4` and not `10/6/4`, the exposure was *provably* harmless.
+⛔ **The technique is nonetheless CUT** — `.claude/skills/build/SKILL.md:143` lists tripwires in the CUT
+column, beside byte-identical-restore checks and do-not-read lists. ⚠ It defends against **anchoring**,
+while the measured failure is **absence of computation** ⇒ `CLAUDE.md` rule 12.
+⇒ ⭐ **What replaces it is rule 14's FORM ablation**, which asks whether the payload moved at all — a
+question a tripwire cannot ask, because a hand-typed payload passes a tripwire it never read.
 
-⇒ ⭐ Build the tripwire **before** you need it. It converts "I have to trust the builder" into "I can
-check."
-
-## 4. ⛔ "Do not read X" does not survive a grep — exclude structurally
+## 4. ⭐⭐ "Do not read X" does not survive a grep
 
 **Paid:** GLM began grepping the reviews directory it had been told to avoid; Codex hit the plan file via
 a mis-rooted exclusion. Neither was disobedient — `rg` has no notion of a forbidden path.
 
-⇒ **Move the contaminating artifact out of the repository** before launching. Keep the prose prohibition
-too — it costs nothing — but never rely on it. Second round, after moving the reviews to the scratchpad:
-contamination check came back **zero**.
+⇒ ⭐ **This is the measurement behind `CLAUDE.md` rule 12**, and the rule's conclusion is the opposite of
+what this section used to prescribe. ⛔ **CUT: "move the contaminating artifact out of the repository."**
+⚠ Relocation fails the same way — through `git show`, and through any path the builder still reaches.
+⇒ ⭐ The blindness control is the one at
+`research/pde_ledger_v3/directives/S9_export_chain_rebuild_directive.md:17`; ⛔ **nothing else may be built
+pretending to be one.**
 
 ## 5. ⭐ Record your own derivation BEFORE reading anyone else's
 
@@ -92,7 +95,11 @@ dimensions, plausible provenance. A value-check passes it.
 ⇒ The kind-check kills it in one line: `ξ_h` is **one number for the whole medium**; throat radii are
 **one per particle**. ⛔ Run this on every identification of two same-dimension quantities.
 
-## 10. ⭐ Scope rule: fix what computes, quarantine what only narrates
+## 10. ⭐ Scope rule: fix what computes, DEFER what only narrates
+
+⚠ **Worded "quarantine" until 2026-08-12.** ⛔ Same word, ⛔ unrelated mechanism — this is a **repair
+scope**, ⛔ not blindness. ⚠ A corpus where one word means both is how the cut mechanism keeps coming back
+⇒ [[feedback-quarantine-gap-governing-prose]].
 
 Cut step ① from ~21 files to **7**, with the omissions named explicitly in a do-not-touch list so the
 builder wouldn't "helpfully" widen.

@@ -69,25 +69,29 @@ mechanism that missed a live defect twice is not something to lean on alone.
    the unique comparison: do the two directives specify the same physics? The directive is shared by both
    engines, so one error there can make dual-engine agreement certify wrong physics.
 
-   ⛔⛔ **THE DO-NOT-READ LIST MEANS EVERY FILE THAT CONTAINS AN ANSWER — ⛔ NOT EVERY FILE NAMED LIKE ONE.**
-   ⚠ **Measured 2026-08-03:** the list was built by *filename* (`*PREREGISTERED*`) and so omitted
+   ⛔⛔ **THERE IS NO DO-NOT-READ LIST — ⛔ CUT 2026-08-12.** ⚠ This step used to say to build one, and
+   `CLAUDE.md` rule 12 had already cut it; the residue outlived §106's own rewrite in this same file.
+   ⚠⚠ **The measurement behind it stands, and it argues the opposite of what it used to prescribe.**
+   Measured 2026-08-03: the list was built by *filename* (`*PREREGISTERED*`) and so omitted
    `V3_STEP_PLAN.md` and `steps/`, which the **previous step's own directive had banned**. Four separate
    loci in the plan stated expected results outright — a long-wavelength exponent, an expected
    transverse-vs-longitudinal asymmetry, a projection identity's form **plus the exact file and lines
    where it was computed**, and a validity condition verbatim. ⇒ both builders could grep, both read the
    same paragraph, and dual-engine would certify **the plan's expectation rather than a derivation**.
-   ⭐ **Before writing the list, grep the live docs for the step's own tag names and expected objects, and
-   quarantine what hits.** ⚠ Two of those four loci were written **that same session, by the orchestrator,
-   while it was being careful about the directive** — the plan is reachable, and recording a result's
-   *shape and location* leaks it just as surely as recording its value.
+   ⇒ ⭐⭐ **A list that must enumerate every file containing an answer is a denylist against a corpus that
+   grows faster than the list.** ⛔ Do not grep-and-quarantine what hits.
+   ⭐ **What the measurement actually obliges: STOP WRITING EXPECTED RESULTS INTO LIVE DOCS.** ⚠ Two of
+   those four loci were written **that same session, by the orchestrator, while it was being careful about
+   the directive** — ⚠ recording a result's *shape and location* leaks it as surely as its value.
+   ⭐ The control is `CLAUDE.md` rule 5 at the moment of writing, ⛔ not a bar applied afterwards.
 4. **Build the blind `.wl` first, before any `.py` exists.** Its directive carries the action and none of
    the results. Invoke `.claude/skills/build/SKILL.md`; it leak-gates before launch and starts both review
    legs itself before you inspect the artifact.
 5. **Arbiter re-run.** Run the `.wl` yourself and compare its literal outputs with the pre-registration.
    Reproduction proves determinism and a match proves agreement with you; neither is review because a
    shared wrong assumption passes both.
-6. **Establish a baseline before change.** Commit the generated artifact before any repair, destructive
-   edit, or quarantine. A repair to an untracked file leaves no baseline and no reviewable blob.
+6. **Establish a baseline before change.** Commit the generated artifact before any repair or destructive
+   edit. A repair to an untracked file leaves no baseline and no reviewable blob.
    ⛔⛔ **`_scratch/` IS GITIGNORED (`.gitignore:96`), so "commit first" silently does NOTHING there.**
    `git add` refuses the path, so the baseline step **fails open** — you believe you committed and nothing
    happened. ⚠ **Measured twice:** a SymPy audit repaired with no baseline, and a directive revision that

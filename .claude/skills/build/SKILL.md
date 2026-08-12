@@ -7,7 +7,9 @@ user_invocable: true
 
 # Build With Automatic Review
 
-Invoke as `/build <absolute-directive> <absolute-deliverable> --check "<physics to check>" --do-not-read <absolute-path> ...`.
+Invoke as `/build <absolute-directive> <absolute-deliverable> --check "<physics to check>"`.
+⛔ **There is no `--do-not-read` argument.** ⚠ It was one until 2026-08-12 — a denylist means the
+architecture is wrong, and this file's own CUT table at §143 had already said so.
 
 This is one operation: build, verify the deliverable, and launch both review legs. Never return a
 successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
@@ -29,11 +31,12 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
      > /absolute/path/OUTSIDE/the/repo/codex-build.log 2>&1
    ```
 
-   ⛔⛔ **THE RAW TRANSCRIPT MUST BE WRITTEN OUTSIDE THE REPOSITORY.** ⚠ A transcript contains the
-   engine's **complete tag values verbatim**, so one left in the tree is a blindness leak that no
-   do-not-read list catches — it is not a `.wl`, not under `mathematica/`, not named `PREREGISTERED`, and
-   not reachable by `git show`. ⚠ **Measured 2026-08-03: several such files were already sitting in
-   `_scratch/`.** ⇒ `.claude/skills/review-legs/SKILL.md` § BLINDNESS IS ENFORCED BY ABSENCE.
+   ⭐ **Write the raw transcript OUTSIDE the repository — ⚠ as TREE HYGIENE, ⛔ not as a blindness claim.**
+   ⚠ A transcript carries the engine's complete tag values verbatim and is noise in the tree.
+   ⛔⛔ **It is NOT a leak to be plugged by relocation:** the same measurement (2026-08-03, several such
+   files sitting in `_scratch/`, reachable by none of the naming conventions) is evidence that ⭐ **hiding
+   cannot work**, ⛔ not that it should be done harder ⇒ the CUT table at §137 below, and `CLAUDE.md`
+   rule 12.
 
    Add `--sandbox danger-full-access` when the build must run Mathematica. ⛔ Never wrap the command in a
    shell `timeout` — SIGKILL has cost 300k+ tokens.
@@ -43,8 +46,9 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
    for the requested build. Exit 0 plus `hook: Stop` has accompanied an empty prompt and no work; the
    measured tell was about 3k tokens instead of 37k+.
 5. Do not open the deliverable or read its results. Immediately read and execute
-   `.claude/skills/review-legs/SKILL.md` with the deliverable, `--check`, and `--do-not-read` arguments
-   from this invocation. Launching the legs is the build skill's responsibility; do not tell the caller
+   `.claude/skills/review-legs/SKILL.md` with the deliverable and `--check` from this invocation.
+   ⛔ **There is no `--do-not-read` argument to pass** — it was cut 2026-08-12 (rule 12).
+   Launching the legs is the build skill's responsibility; do not tell the caller
    to invoke `/review-legs` later.
    ⭐ The deliverable here is **Codex-written**, so its two legs are **a fresh Claude agent + Grok**.
    ⛔ Codex does not review what Codex wrote — see that skill's authorship table.

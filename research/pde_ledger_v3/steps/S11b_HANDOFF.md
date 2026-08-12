@@ -76,9 +76,12 @@ caught it.
   physics confirmation came from a **review leg deriving from scratch**, ⛔ never from a blind builder.
 - ⭐ **Write binding kinematic relations as EQUATIONS, never prose.** `∇·u` fell out **four times**, every
   time it was described in a sentence.
-- ⭐ **Blindness structurally, not by instruction**: one engine quarantined, the other sandboxed so it
-  *could not reach* the quarantine. Both build logs clean. ⛔ Stop after: move files out, audit the log,
-  leave a tripwire — the rest is anti-adversary.
+- ⛔⛔ **CUT 2026-08-12 — this bullet described quarantine, sandboxing and a tripwire, ⛔ all three of which
+  `CLAUDE.md` rule 12 had already cut.** ⚠ The clean build logs it cited were evidence of nothing: they
+  are equally clean when a payload is hand-typed. ⇒ ⭐ **The only blindness control is
+  `research/pde_ledger_v3/directives/S9_export_chain_rebuild_directive.md:17`** — the Wolfram engine
+  imports nothing and re-derives; ⛔ nothing else may be built pretending to be one. ⭐ What catches the
+  real defect is rule 14's **FORM ablation**.
 - ⭐ **The registry generator** (`reduction/generate_rows.py`) emits a row **only where both engines agree**
   and blocks on disagreement. ⚠ It caught a defect five review rounds and a full cross-engine comparison
   had missed. ⇒ **use it for C.**

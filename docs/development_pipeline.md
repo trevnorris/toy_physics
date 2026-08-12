@@ -310,8 +310,9 @@ on a cyber-policy filter — phrase adversarial directives in correctness terms,
 
 **Paths.** Project root is `/var/projects/toy_physics` (not `toy_projects` — a transcription attractor).
 Render prompts under the project root, never `/tmp` — agents and Codex cannot read it. Raw transcripts go
-*outside* the repository: a transcript contains an engine's complete tag values verbatim, so one left in
-the tree is a leak no do-not-read list catches.
+*outside* the repository as **tree hygiene**: a transcript carries an engine's complete tag values verbatim
+and is noise in the record. It is **not** a blindness control, and relocating it is not one either — see
+rule 12 and the CUT table at `.claude/skills/build/SKILL.md:137-148`.
 
 **Grok** is one instance per user (`~/.grok/auth.json.lock`); a stale lock naming a dead PID is normal.
 Legs therefore serialise — a scheduling cost, not a reason to drop one.

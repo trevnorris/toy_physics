@@ -1,18 +1,20 @@
 ---
 name: review-legs
-description: Launch two independent PDE-ledger reviews of one artifact in parallel, choosing the two legs by WHO WROTE the artifact — Codex plus Grok for orchestrator-written plans, directives and prose; a fresh Claude agent plus Grok for Codex-written scripts and TeX. Renders a blind review prompt with the artifact, physics checks, do-not-read list, required ablations, and physics-only finding filter; requires a FORM ablation on every script, since a tag can be typed prose that no computation produced.
+description: Launch two independent PDE-ledger reviews of one artifact in parallel, choosing the two legs by WHO WROTE the artifact — Codex plus Grok for orchestrator-written plans, directives and prose; a fresh Claude agent plus Grok for Codex-written scripts and TeX. Renders one identical review prompt carrying the artifact, what the leg is handed, physics checks, required ablations, and a physics-only finding filter; requires a FORM ablation on every script, since a tag can be typed prose that no computation produced. There is no do-not-read list — what a leg must not use, it is not given.
 allowed-tools: Bash, Read, Edit, Write, Agent
 user_invocable: true
 ---
 
 # Independent Review Legs
 
-Invoke as `/review-legs <absolute-artifact-or-sha:path> --check "<physics to check>" --do-not-read <absolute-path> ...`.
+Invoke as `/review-legs <absolute-artifact-or-sha:path> --check "<physics to check>"`.
+⛔ **There is no `--do-not-read` argument.** ⚠ It was one until 2026-08-12; a denylist means the
+architecture is wrong (`CLAUDE.md` rule 12), and it survived here after `build` and `step-run` had cut it.
 
 ## Prompt Template
 
 Render this template to an absolute path and give the identical prompt to both legs. Do not render it
-until every field, including a concrete do-not-read list, is filled.
+until every field is filled.
 
 ```markdown
 # Independent physics review
@@ -20,8 +22,8 @@ until every field, including a concrete do-not-read list, is filled.
 {{ABSOLUTE_PATH_OR_GIT_SHOW_SELECTOR}}
 ## What to check
 {{PHYSICS_CLAIM_AND_ARTIFACT_ROLE}}
-## Do not read
-{{PREDICTIONS_SIBLING_IMPLEMENTATIONS_ANSWERS_PRIOR_REVIEWS}}
+## What you are handed
+{{LIST_EVERYTHING_THE_LEG_GETS — ⛔ there is no do-not-read list; what a leg must not use, it must not be given}}
 ## Required method
 {{SCRIPT_BRANCH_OR_DOCUMENT_BRANCH — use the one that matches the artifact}}
 
@@ -49,22 +51,30 @@ process, so the leg sees only PASS-or-crash. ⭐ Report any `assert` that preced
 
 **If the artifact is a DOCUMENT** (a `.tex` card, a step record, prose): read the **source of truth
 first**, form your own view of what it establishes and what it does not, and **only then** read the
-artifact. ⛔ Do not read them in the other order — reading the artifact first anchors you to its framing,
-which is the thing under test. ⭐ Blindness for a script comes from quarantine; for a document it comes
-from **reading order**, and it is just as load-bearing. Quote both sides for every finding.
-⚠ Put the **build directive on the do-not-read list**: an artifact can satisfy its directive and still
-misrepresent its source, and that case is exactly what this leg exists to catch.
+artifact. Quote both sides for every finding.
+⚠⚠ **Reading order is a METHOD instruction, ⛔ NOT a blindness control** — it is a sentence asking an agent
+not to read something, which is exactly what rule 12 says cannot be relied on. ⛔ Do not call it blindness
+and ⛔ do not claim a leg was blind because you asked it to read in an order.
+⭐ **Where it CAN be made structural, make it structural:** for an **Agent** leg, hand over the sources
+alone, require the source-grounded view back, and only then send the artifact — that is absence by
+assembly. ⚠ For a one-shot `codex exec` / `grok` leg the whole prompt arrives at once, so ⛔ **the ordering
+is unenforceable there and must not be counted as a control.**
+⚠ **Do not hand a document leg the build directive**: an artifact can satisfy its directive and still
+misrepresent its source, and that case is exactly what this leg exists to catch. ⛔ Withhold it by not
+sending it, ⛔ never by naming it in a prohibition.
 ⚠ For a `.tex` card, check `paper/macros.tex` — some fields are **suppressed in the default build**, so
 reader-critical content placed in one is invisible in the PDF. This has happened.
 ## Physics filter
 "report a finding only if it catches a way the physics could be wrong; do not report 'the script would be wrong on a different input'."
-## Quarantine rule
-{{GIT_BLOB_READ_ONLY_RULE_OR_NOT_APPLICABLE}}
+## Ablation sandbox
+{{COPY_TO_TMP_AND_ABLATE_THE_COPY — ⛔ never modify the working tree}}
 ```
 
-For a quarantined artifact, tell both reviewers to read it only with `git show <sha>:<path>` and to
-ablate a temporary copy. They must never restore it into the working tree; the blob keeps the parallel
-builder blind.
+⛔ **There is no quarantine rule field.** ⚠ It said to hand reviewers `git show <sha>:<path>` because "the
+blob keeps the parallel builder blind" — ⛔ that is the mechanism `CLAUDE.md` rule 12 cut, and `git show`
+is the very route quarantine has already failed through (`.claude/skills/build/SKILL.md:146`).
+⭐ **What survives is the sandbox, and it is hygiene:** reviewers copy the artifact to `/tmp` and ablate
+the copy so the working tree is never modified. ⛔ That is not blindness and must not be described as it.
 
 ## ⭐⭐ WHO REVIEWS — decided by WHO WROTE IT, ⛔ never by file type
 
@@ -137,22 +147,30 @@ leg quality tracks that demand.
 
 ## ⛔⛔ BLINDNESS IS ENFORCED BY ABSENCE, ⛔ NOT BY INSTRUCTION
 
-⚠ **A do-not-read list is a denylist, and a denylist means the architecture is wrong.** If each new step
-bans one more path and the next probe evades it, stop patching and move the artifact.
+⚠ **A do-not-read list is a denylist, and a denylist means the architecture is wrong.** ⛔ If each new step
+bans one more path and the next probe evades it, ⛔ **do not patch and do not relocate** — the architecture
+is what is wrong.
 
-⭐ **Anything carrying this step's answers must be OUT OF THE TREE while a blind build or review runs** —
-the pre-registration, the sibling engine's script, **the build directives**, and ⛔ **the raw build
-transcripts.**
+⛔⛔ **THE ONLY BLINDNESS CONTROL IN THIS DESIGN** is at
+`research/pde_ledger_v3/directives/S9_export_chain_rebuild_directive.md:17` — each step's Wolfram engine
+imports nothing and re-derives independently. ⛔ **Nothing else may be built pretending to be one.**
+⭐ The KEEP/CUT split is at `.claude/skills/build/SKILL.md:137-148`; ⛔ do not restate it here.
 
-⚠⚠ **THE HOLE THIS CLOSES, measured 2026-08-03 and open for several steps:** `_scratch/` accumulates raw
-Codex transcripts that contain a prior engine's **complete tag values verbatim** — `codex_s10_wl_raw.txt`
-carried every `WL_S10_*` value. It is not a `.wl`, not under `mathematica/`, not named `PREREGISTERED`,
-and not reachable by `git show`. ⇒ a builder could defeat quarantine **while obeying every instruction.**
-⭐ **Fix: raw transcripts are written OUTSIDE the repository**, and `_scratch/<step>_*` is moved out
-alongside the quarantined engine.
+⛔⛔ **CUT, and this section used to prescribe all of it:** moving answers, engines, directives,
+pre-registrations or transcripts out of the tree · the `git show <sha>:<path>` read protocol ·
+byte-identical-restore checks · tripwires · symmetric denylists. ⚠ Every one defends against **anchoring**,
+while the measured failure is **absence of computation** ⇒ `CLAUDE.md` rule 12.
 
-⛔ Keep a denylist only for large live trees that cannot be moved, and then **symmetrically in both
-directives** — an entry in one and not the other silently makes one engine better-informed than the other.
+⚠⚠ **THE MEASUREMENT THAT MADE THIS SECTION IS STILL TRUE, AND ITS CONCLUSION WAS BACKWARDS:** `_scratch/`
+accumulated raw Codex transcripts carrying a prior engine's **complete tag values verbatim**
+(`codex_s10_wl_raw.txt` held every `WL_S10_*` value) — not a `.wl`, not under `mathematica/`, not named
+`PREREGISTERED`. ⇒ ⭐ **that is evidence relocation cannot work, ⛔ not evidence to relocate harder.**
+⭐ Raw transcripts still go outside the repository — ⚠ **as tree hygiene, ⛔ never as a blindness claim.**
+
+⛔⛔ **WHAT CATCHES THE REAL DEFECT IS THE FORM ABLATION ABOVE** (rule 14), ⛔ not any of the cut
+mechanisms. ⚠ Measured: a hand-typed payload passes every denylist, tripwire and restore check it never
+read, and **eight fidelity legs missed it** — ⭐ only changing the STRUCTURE of a load-bearing object and
+re-running found it. ⛔ Do not weaken that demand to compensate for anything deleted here.
 
 ## ⛔⛔ SERIALIZE WHEN BOTH LEGS ABLATE MATHEMATICA — the licence has TWO seats
 

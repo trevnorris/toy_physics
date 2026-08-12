@@ -22,8 +22,13 @@ round 1**: three findings collapsed into a single measured fact ⇒ **rule 2 now
 ⚠ **Still open, ⛔ none blocking the build:** `F4` (S10 regeneration); `F3`'s row shape; S10's four owed
 items; `T7`'s comparator-side native-boolean rejection ⇒ **comparator contract, frozen before it sees
 either output**.
-⛔ **QUARANTINE:** `/tmp/s11*_leg_*/`, `/tmp/f9*_leg_*/`, `/tmp/s11_fold_leg/` computed real S11 physics.
-⛔ They must not enter the repo and ⛔ must not reach a builder.
+⚠ **HYGIENE, ⛔ NOT A CONTROL:** `/tmp/s11*_leg_*/`, `/tmp/f9*_leg_*/`, `/tmp/s11_fold_leg/` hold review-leg
+scratch that computed real S11 physics. ⛔ Do not commit it into the tree — it is scratch, and the tree is
+the record. ⛔⛔ **It is NOT quarantine and must not be turned into any: do not move it, do not hide it from
+a builder, do not claim blindness from it.** ⚠ **Measured 2026-08-12 — this exact line, in this exact file,
+is what made me move 336 files and then reverse it**, the third occurrence of a mechanism `CLAUDE.md`
+rule 12 cut. ⇒ the only blindness control is
+`research/pde_ledger_v3/directives/S9_export_chain_rebuild_directive.md:17`.
 
 ---
 

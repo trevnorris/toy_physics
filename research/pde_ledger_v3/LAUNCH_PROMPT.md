@@ -48,9 +48,10 @@ claims are stale; the session record says which.
    ⚠⚠ **THE HAZARD ONE BUILDER CREATES:** if the same Codex writes both engines, the `.wl` can **anchor
    on the `.py`** and the tension is gone — the two agree because they share an author, ⛔ not because
    the physics checks out.
-   ⭐ **Cheapest fix is ORDERING, and it costs nothing: write the blind `.wl` FIRST, before the SymPy
-   audit exists.** ⇒ There is nothing to anchor to. ⛔ Do not rely on a *"do not read the `.py`"*
-   instruction — that does not survive a grep; the file must not exist yet (or must be out of the tree).
+   ⭐ **The fix is ORDERING, and it costs nothing: write the blind `.wl` FIRST, before the SymPy audit
+   exists.** ⇒ There is nothing to anchor to. ⛔ Do not rely on a *"do not read the `.py`"* instruction —
+   that does not survive a grep. ⭐ **The file must not exist yet** — ⛔ and that is the ONLY form this
+   takes: absence by construction ORDER, ⛔ never by relocating a file that already exists (rule 12).
 3c. ⛔⛔ **A SCRIPT PRINTS COMPUTED OBJECTS; IT MAY NOT STATE CONCLUSIONS** (user decision, 2026-08-04).
    Three clauses, on every script directive: **(1)** an `emit` payload is a **CAS object**, ⛔ never prose
    describing a result; **(2)** **print the residual, do not only assert it** — `assert residual == 0` *is*
@@ -93,9 +94,11 @@ once run, found something no amount of reading would have. ⛔ The RULES above g
 1. **WALK IT with the user.** Setup first (what we are deriving · what we have · what is missing · where
    I expect trouble), then one move at a time, reasoning **before** the result. ⭐ **Flag every
    identification BEFORE making it**, and say what would make it wrong. ⛔ Never pre-derive and present.
-2. ⭐ **PRE-REGISTER your predictions.** Write down what you expect the scripts to produce, **commit it
-   to a TRACKED path** (so the timestamp proves priority) — then ⛔ **MOVE IT OUT OF THE TREE** for the
-   duration, or the review legs can read your answers. ⚠ I got this half-right once and leaked.
+2. ⭐ **PRE-REGISTER your predictions.** Write down what you expect the scripts to produce and **commit it
+   to a TRACKED path** — the timestamp proves priority, and ⛔ that is all it proves. ⭐ **It stays in the
+   tree.** A prediction file is a record, ⛔ never a blindness device: moving it out is the cut mechanism
+   (`CLAUDE.md` rule 12), and `REBUILD_HANDOFF.md:861-863` already rejects reading it as blinded
+   predictions.
 3. ⭐⭐ **REVIEW THE DIRECTIVE — fresh agent + Grok — BEFORE the build runs** (user, 2026-08-02).
    ⛔⛔ **The directive is the ONE artifact both engines share**, so an error in it lands in **both**,
    they agree, and dual-engine certifies wrong physics. Everything downstream is checked twice; the
@@ -111,10 +114,13 @@ once run, found something no amount of reading would have. ⛔ The RULES above g
 6. **ARBITER RE-RUN.** ⛔ Run it yourself; never take the builder's word. Compare against step 2.
    ⚠ Reproducing proves **determinism**; matching your predictions proves it agrees with **you**.
    ⛔ Neither is a review, and a shared wrong assumption passes both.
-7. **QUARANTINE the `.wl`**, then have Codex build the **SymPy audit + any registry insertion**. Restore
-   after and ⭐ **verify byte-identical to the committed blob** — that is what proves the quarantine held.
-   ⚠ Reviewers can still read a quarantined file from its **git blob** (`git show <sha>:<path>`) — that
-   keeps the builder blind while the review proceeds. ⛔ Tell them never to restore it into the tree.
+7. **Have Codex build the SymPy audit + any registry insertion — ⛔ and quarantine NOTHING.** ⭐ The `.wl`
+   stays in the tree. What makes the engines independent is step 4's construction order plus the invariant
+   at `research/pde_ledger_v3/directives/S9_export_chain_rebuild_directive.md:17` — ⛔ **do not build
+   anything else pretending to be a blindness control.**
+   ⛔ **CUT: moving the `.wl` out of the tree · restore-and-verify-byte-identical · the `git show` read
+   protocol.** ⚠ All three sit in the CUT column at `.claude/skills/build/SKILL.md:143`, and quarantine
+   has already failed **through `git show`** — ⇒ `CLAUDE.md` rule 12.
 8. **ALL GATES** — acceptance, dim gate, able-to-fail, pytest. ⭐ A new **discrete** row must leave the
    continuous payload **unchanged**.
 9. **YOU write the step record.** ⭐ It records the *walk*, and only you were there. ⛔ Codex cannot.

@@ -308,8 +308,8 @@ first for each `D`**, before assembling any action at that `D`.
 
 ### Q1 · The Lagrangian and the equations of motion
 
-Build `L` in coordinate space from §2. Emit `L` expanded. Also emit the package's **declared additive
-terms of `T_pkg`**, in the list `KINETIC_TERMS`, and **each additive term of `W_pkg`**, in the list
+Build `L` in coordinate space from §2. Emit `L` expanded as `LAGRANGIAN`. Also emit the package's
+**declared additive terms of `T_pkg`**, in the list `KINETIC_TERMS`, and **each additive term of `W_pkg`**, in the list
 `STIFFNESS_TERMS`. The two tags have the same list shape, with one entry per declared term, so a consumer
 can see which densities that package carries and with which coefficients.
 Take the **Euler–Lagrange** variation with respect to each `u_j`:
@@ -318,7 +318,7 @@ Take the **Euler–Lagrange** variation with respect to each `u_j`:
 ∂_t ( ∂L / ∂(∂_t u_j) )  +  Σ_i ∂_i ( ∂L / ∂(∂_i u_j) )  −  ∂L / ∂u_j  =  0
 ```
 
-Emit the full system.
+Emit the full system as `EULER_LAGRANGE_SYSTEM`.
 
 ### Q2 · The dynamical matrix, by two routes — ⚠ and BE HONEST ABOUT WHAT THAT DOES AND DOES NOT TEST
 
@@ -332,7 +332,8 @@ Emit the full system.
 - **Route B — through the quadratic form.** Period-average the §2 quadratic density on the §3 ansatz and
   take `M_B[[i,j]] = ∂²⟨L⟩/∂a_i ∂a_j`. Call it `M_B`.
 
-⭐ **Emit `M_A`, `M_B`, `M_A − M_B`, and the ratio `M_A[[1,1]]/M_B[[1,1]]` — all four, UNCONDITIONALLY**
+⭐ **Emit `M_A`, `M_B`, `M_RESIDUAL` (`M_A − M_B`), and `M_RATIO`
+(`M_A[[1,1]]/M_B[[1,1]]`) — all four, UNCONDITIONALLY**
 (corollary 4). ⛔ Do not normalise either route to the other, and ⛔ do not make any of these four tags
 conditional on the two matrices agreeing.
 

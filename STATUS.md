@@ -22,6 +22,28 @@ round 1**: three findings collapsed into a single measured fact ⇒ **rule 2 now
 ⚠ **Still open, ⛔ none blocking the build:** `F4` (S10 regeneration); `F3`'s row shape; S10's four owed
 items; `T7`'s comparator-side native-boolean rejection ⇒ **comparator contract, frozen before it sees
 either output**.
+⛔⛔ **S11 PY ENGINE — BUILT, ⛔ NOT FINISHED. 2026-08-12.** Codex rewrote
+`scripts/S11_stray_longitudinal_sympy_audit.py` (1703 lines, compiles, emits real `srepr` CAS objects) and
+was **reaped by the harness at ~36 min mid-patch** — ⛔ not OOM (18 Gi free), ⛔ no orphan, ⛔ no
+`tokens used` line. ⚠ **Relaunch with `setsid` + pidfile so it survives reaping**
+⇒ [[feedback-background-process-launch]].
+⛔⛔ **MEASURED DEFECT IN THE BUILT ENGINE — IT HANGS.** An ARBITER RE-RUN (mine, ⛔ not the builder's word)
+stalls at **856 emitted tags** with **zero further output** and ⛔ never emits
+`PY_S11_LOCAL_SECTION10_REPORT`, so ⛔ **`S11_exports.py` is never published.** ⚠ The export writer and the
+**F6** guard both exist (`:1604`, `:1687`) and the guard is ⛔ **not** what fired.
+⚠ **The stall point:** last tags are `PY_S11_MAIN_D5_ROOT_COINCIDENCE_R1_R2_COEFF_REAL_{WITNESS,STATUS_OPERANDS}`
+⇒ **MAIN, D=5, root coincidence.** ⚠ Only `MAIN` D2–D5 ever run; ⛔ later packages in `PACKAGE_ORDER` are
+never reached.
+⛔⛔ **CORRECTION, and it is the rule-2 defect again:** I first recorded this as *"exits early and
+silently"*, inferred from `alive: no` + empty stderr ⛔ **without ever measuring an exit code** — ⚠ a SIGKILL
+is byte-identical to a clean exit under that test. ⭐ The run that stayed alive under `setsid` is what
+showed the hang. ⇒ [[feedback-script-timeout-policy]]: **long + PRINTING is fine; long + SILENT is the
+failure.** ⚠ Note ~7 bare `except Exception` handlers (`:756 :775 :955 :1317 :1450 :1668`) — a leg should
+check whether one masks the stall.
+⭐ **NEXT:** finish the run, then its two legs — **a fresh Claude agent + Grok** (Codex wrote it), ⛔⛔ with
+a **FORM ABLATION MANDATORY in each** (rule 14). ⚠ Logs: `~/.s11_build/codex_s11_py_build.log`;
+arbiter stdout `/tmp/s11_arbiter.out`.
+
 ⚠ **HYGIENE, ⛔ NOT A CONTROL:** `/tmp/s11*_leg_*/`, `/tmp/f9*_leg_*/`, `/tmp/s11_fold_leg/` hold review-leg
 scratch that computed real S11 physics. ⛔ Do not commit it into the tree — it is scratch, and the tree is
 the record. ⛔⛔ **It is NOT quarantine and must not be turned into any: do not move it, do not hide it from

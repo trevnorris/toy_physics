@@ -420,59 +420,72 @@ comparator is S10's, and ⛔ nothing reads `mathematica/out/S9_light_requires_sh
 cannot be done needs **no new instrument** — only a second pair of inputs. ⭐ **This is the cheapest open
 item in the rebuild and the one that closes the largest hole.** ⛔ Not on the S10 queue; do not fold it in.
 
-## ⭐⭐⭐ CURRENT STATE — 2026-08-11 (late). ⛔ READ THIS BLOCK FIRST; everything after it is earlier.
+## ⭐⭐⭐ CURRENT STATE — 2026-08-12. ⛔ READ THIS BLOCK FIRST; everything after it is earlier.
 
-### ⛔⛔ NO BUILDER MAY LAUNCH. ⭐ Both S11 artifacts are BLOCKED and a decision is OPEN.
+### ⭐⭐ THE NAMING QUESTION IS SETTLED. ⭐⭐ NEXT: BUILD THE S11 PY ENGINE.
 
-| artifact | state |
-|---|---|
-| `S11_sympy_no_ledger_build_directive.md` (81 lines, Codex) | ⛔ **BLOCKED — 3 findings.** ⭐ 4 of 6 earlier fixes hold under construction |
-| `S11_SHARED_PHYSICS.md` amendment (+13 lines) | ⛔ **BLOCKED on 2 of 3 items** ⇒ ⚠⚠ **DELIBERATELY UNCOMMITTED in the working tree.** ⛔ Do not commit it as it stands; ⛔ do not revert it without reading why |
-| `chain_accumulate_or_generate_decision.md` | ⚠ **RECORDED, ⛔ NOT ADOPTED** — both legs blocked it |
+⭐⭐ **THE USER'S DECISION:** *"Only add `s11_` if it would override something it shouldn't. The point was to
+override the times when it should."* ⇒ `directives/S11_export_chain_decisions_v2.md`, **`F9`** — three
+outcomes, decided per key by one comparison against the imported `LEDGER`:
 
-⭐⭐ **THE OPEN DECISION, and it is the user's:** fold both, with the **spec** reduced to the **four tag
-names + the completion obligation**, and the **directive told to POINT AT spec obligations, ⛔ never restate
-them.** ⭐ Three blockers collapse into that one move.
+| | condition | outcome |
+|---|---|---|
+| `F9a` | key absent from the import | ⭐ bare key |
+| `F9b` | present, objects **proved equal** | ⭐ bare key — ⚠ **this is override-when-it-should** |
+| `F9c` | present, equality **not proved** (different **or undecided**) | ⭐ `s11_`-prefixed; ⛔ imported row untouched |
 
-⛔⛔ **WHY ALL THREE DIRECTIVE BLOCKERS ARE ONE DEFECT: the directive RESTATES a spec obligation in its own
-words, and ⭐ every restatement came out WEAKER than the original.**
-1. ⛔ **Completion is a SHARED obligation** — ⭐ two independent legs, on two different artifacts, concluded
-   **neither engine can define the predicate locally without the two diverging** (it needs the shared tag
-   list **and** each engine's own computed orderings). ⚠ The registry invented for it is **authored by the
-   emitter it audits** ⇒ ablating the engine's own rank made **4 objects and a whole `STRATUM` scope vanish
-   with both cells certified complete.**
-2. ⛔⛔ **The omission clause rescued `§Q11`'s `C1`–`C4` BY NAME, and the same defect re-opened on `§Q10`'s
-   pinned failure object** ⇒ ⚠ **rule 7's measured failure verbatim — an exception named instead of the
-   property.** ⭐ Corollary 4 already says it.
-3. ⛔ **"Operational failure" is reachable by ROUTE CHOICE** — measured on one required object at `D=5`: the
-   natural idiom costs **~2700×** an exact route that returns in seconds. ⭐ `§7:1048` already forbids
-   dropping a cell for cost.
+⭐⭐ **Decided under the assumptions the two live objects themselves carry** — ⛔ never a premise this step
+asserts on top. ⚠ Measured: the same pair is `UNDECIDED` under the objects' own assumptions and `EQUAL`
+under S11's joint premise set, and ⛔ the second reading **overwrites a predecessor whose step never
+asserted that premise.**
 
-⚠⚠ **THREE TIMES THIS SESSION THE ANSWER WAS "THE FILE ALREADY SAYS IT"** — corollary 5 for the boolean
-property, corollary 4 for emission, `§7` for cost. ⇒ ⭐⭐ **before writing a rule, search the spec for the
-obligation it duplicates.**
+⭐⭐ **EVERY STEP WRITES ITS LEDGER, S11 INCLUDED.** ⛔⛔ *"S11 writes no ledger"* is **REVERSED** — it removed
+S11 from the accumulating record, ⚠ and that record **is** the point of the chain: the list of everything
+the model defines and the true list of knobs.
 
-⛔ **QUARANTINE:** the last fold-review leg **computed real S11 physics** to make its case (a `D=5`
-determinant, root multiplicities). ⛔ **Its raw report is OUTSIDE the repo and must stay there** — those are
-answers the engine has not been built to produce.
+### ⛔⛔ WHAT THIS COST — ⭐ the most useful thing on this page
+
+⚠⚠ **8 review legs, 4 revisions, ~15 findings, and ⛔ ZERO LINES OF ENGINE.** ⭐ The physics — does the
+compressional term lift the zero root, and what happens to the mode count — has ⛔ **not been computed
+once.**
+
+⇒ ⭐⭐⭐ **RULE 4, verbatim: many turns reasoning toward an answer a script would settle in one.**
+⇒ ⭐⭐⭐ **THE LEDGER EXPORT IS NOT THE INSTRUMENT.** ⭐ The instrument is **PY vs WL**, and the WL engine
+**imports nothing**. ⛔ A control on the export catches **nothing** about S11's physics — it governs where a
+value is **filed**.
+⇒ ⭐⭐ **`F9`'s rule survived all four rounds untouched.** ⛔ What broke, every round, was guard machinery
+written against **a script that does not exist**, where ⛔ nothing can be ablated ⇒ ⭐ those findings are now
+a **BUILD-REVIEW CHECKLIST** in the same file. ⛔ Do not fold them back into prose.
+⇒ ⛔ **A leak prohibition was written and CUT** — a denylist means the architecture is wrong; ⭐ blindness is
+enforced by **absence**, by bounding what the builder is handed.
+
+### ⚠ Still open, and small
+
+- ⚠⚠ **`S11_SHARED_PHYSICS.md` carries a +13-line UNCOMMITTED amendment, BLOCKED on 2 of 3 items.**
+  ⭐ **Keep** the four tag names (`LAGRANGIAN`, `EULER_LAGRANGE_SYSTEM`, `M_RESIDUAL`, `M_RATIO`) — ⛔ without
+  them the two engines name the step's primary objects differently and the comparator yields **zero rows**
+  for them. ⛔ **Withdraw** the decomposition rule (⚠ it merges a per-pair locus family into one system and
+  computes a **different locus**) and the boolean-rendering rule (⚠ defeated by a wrapper, ⛔ penalises the
+  stronger zero-test, and ⛔ manufactures a false cross-engine disagreement on **every** boolean row).
+- ⚠ `chain_accumulate_or_generate_decision.md` is **RECORDED, ⛔ NOT ADOPTED** — both legs blocked it.
+- ⛔ **QUARANTINE:** several leg workspaces computed real S11 physics (a `D=5` determinant, root
+  multiplicities) ⇒ `/tmp/s11_fold_leg/`, `/tmp/f9*_leg_*/`. ⛔ They must **not** enter the repo and ⛔ must
+  not reach a builder.
 
 ---
 
-### ⭐⭐ (still the plan) BUILD S11's ENGINES. ⛔ THE EXPORT CHAIN IS DEFERRED, ⛔ NOT SOLVED.
 
-⛔⛔ **THE S11 SYMPY ENGINE WRITES NO LEDGER.** ⭐ It **imports** `S10_exports.LEDGER` (for `§Q6r`) and
-emits its tags; ⛔ it does **not** write `S11_exports.py`. ⇒ ⭐ One line of scope removed, and **four rounds
-of blocked design with it.**
+### ⭐⭐ (superseded 2026-08-12) BUILD S11's ENGINES. ⛔ THE EXPORT CHAIN WAS DEFERRED
 
-⭐⭐ **Measured, and this is why deferring costs nothing today:** ⛔ **nothing downstream needs the export to
-exist.** S12 does not exist; the **WL engine imports nothing**; the **comparator, step record and card read
-TAG STREAMS**, ⛔ not the ledger. ⭐ `Q6r` needs only to **read**, which works today.
+⛔⛔ **SUPERSEDED — read the block above.** ⚠ This said *"the S11 SymPy engine writes no ledger"*; ⭐ the user
+reversed it: **every step writes its output so the next can import it**, and ⛔ deferring dropped S11 out of
+the accumulating record. ⭐ `F9` settles the collision it was avoiding.
 
 | | |
 |---|---|
 | spec | ⭐⭐ **DONE, `cf4a21a4`** — 1149 lines, two legs. ⛔ It was never the problem |
-| export chain | ⛔⛔ **4 designs, 8 legs, ALL BLOCKED** ⇒ `DEFECT_REGISTER.md#c20`, which now carries **why each died**. ⛔ Do not re-propose one |
-| S10 rename | ⚠ **NOT abandoned — DEFERRED.** ⛔ The collision is a **write-time** event and S11 will not write ⇒ **dormant** |
+| export chain | ⭐⭐ **SETTLED — `F9`.** ⚠ Four earlier designs blocked ⇒ `DEFECT_REGISTER.md#c20` carries **why each died**; ⛔ do not re-propose one. ⭐ **`F9` is the fifth and it is the user's, ⛔ not a design** |
+| S10 rename | ⚠ **DEFERRED, ⛔ not abandoned** — ⭐ `F9c` prefixes rather than re-points, so ⛔ **no rename is needed to build S11** |
 
 ⭐⭐ **WHY THE RENAME WAITS — ⛔ the reason, ⛔ not the difficulty:** the only validation of a rename is that
 **the chain still works afterwards**, and ⛔ there is no chain until something writes into it. ⇒ ⛔

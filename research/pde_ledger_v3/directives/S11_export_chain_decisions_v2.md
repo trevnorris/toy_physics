@@ -15,12 +15,15 @@ the collision **is** the measurement. Two steps deriving one object must be able
 
 **F1 · Storage keys stay FLAT. `D5` is unchanged; ⛔ there is no producer prefix.**
 ⭐ A step writes the object's name. A later step re-deriving that object writes **the same key**.
+⚠⚠ **⛔ AMENDED BY `F9`:** a producer prefix **is** written when the override would be wrong. ⛔ Read `F9`.
 
 **F2 · Before writing a key that exists in the imported `LEDGER`, the writer compares the OBJECT.**
 ⭐ This is `DEFECT_REGISTER.md:675`, which already prescribed it.
 - ⭐ **Same object** ⇒ a **re-derivation**: emit both operands and the residual, then guard.
 - ⛔ **Different object** ⇒ a **finding that fails loudly**, naming both. ⛔ Never a silent overwrite.
 ⚠ Deciding "same object" is the load-bearing part and belongs to the S11 PY list.
+⚠⚠ **⛔ THE SECOND BRANCH IS SUPERSEDED BY `F9c`** — a differing object is the **ordinary** case and ⛔ must
+not stop the run. ⭐ The first branch survives as `F9b`. ⭐ `F9` settles the predicate. ⛔ Read `F9`.
 
 **F3 · A re-derived row carries its own evidence, in the row.**
 ⛔ `corroborated_steps` alone is an agreement claim with no operands in the file that carries it, and
@@ -130,8 +133,105 @@ only if a step exports more than one package.
 
 ---
 
+## ⭐⭐ F9 — WHEN A STEP'S EXPORT WRITES A KEY THE IMPORTED LEDGER ALREADY HAS
+
+**Orchestrator-written 2026-08-11, on the user's decision.** ⭐ It closes `F2`'s open part — the
+*"same object"* predicate — and amends `F1`: ⛔ a producer prefix is no longer universally forbidden; it is
+what a step writes **when the override would be wrong**.
+
+⭐⭐ **The user's instruction, and it is the whole of F9:** *"Only add `s11_` if it would override something
+it shouldn't. The point was to override the times when it should."*
+
+### ⭐⭐ THE RULE
+
+**F9a · The key is ABSENT from the imported `LEDGER`** ⇒ ⭐ write the bare key.
+
+**F9b · PRESENT, and the two objects are PROVED EQUAL** ⇒ a **re-derivation**. ⭐ Write the bare key.
+⚠⚠ **This is the override-when-it-should case.**
+
+**F9c · PRESENT, and equality is NOT PROVED** — ⭐ proved different, ⛔ **or the test returned no decision**
+⇒ ⭐ write the **prefixed** key, and ⛔ leave the imported row exactly as it stands. ⚠ The report
+distinguishes proved-different from undecided: ⭐ `§5`'s locus protocol already fixes that reading —
+⛔ **do not re-word it.**
+
+⭐⭐ **WHICH ASSUMPTIONS DECIDE IT: only the ones the two live objects themselves carry.** ⛔ Not a premise
+this step asserts on top of them.
+⚠⚠ **Measured, on the real colliding row:** the same pair is **UNDECIDED** under the objects' own
+assumptions and **PROVED EQUAL** under this step's joint premise set — ⛔ and the second reading
+**overwrites a predecessor whose step never asserted that premise.** ⇒ ⭐ the objects' own assumptions are
+the conservative reading and the only one both steps hold.
+
+⛔⛔ **F9c SUPERSEDES `F2`'s second branch.** ⚠ `F2` calls a differing object *"a finding that fails
+loudly"*; ⭐ under `F9` it is the **ordinary case** — two steps analysing two different materials — so ⛔ it
+must **not** stop the run. ⭐ `F2`'s first branch is unchanged and is now `F9b`.
+
+⭐⭐ **That is the whole rule.** ⛔ There is no fourth relation, ⛔ no substitution to derive, ⛔ no action to
+locate.
+
+⚠ ⭐ **F9 IS PY-ONLY.** The WL engine imports nothing and writes no ledger ⇒ ⛔ there is no joint property
+here, and ⛔ this must not enter `S11_SHARED_PHYSICS.md`.
+
+### ⛔⛔ (blocked record) ROUND 1 PROPOSED A THIRD OUTCOME — ⛔ DO NOT RE-PROPOSE IT
+
+⚠ **A SUPERSESSION branch:** *not equal, but this step's object carries the imported one as a special case
+⇒ write the bare key anyway.* ⭐ **Two legs killed it, and the measurement is one line:**
+⛔⛔ **`B_comp > 0` IS A DECLARED PREMISE** (`S11_SHARED_PHYSICS.md:69`, `:119`, `:1027`, `:1126`)
+⇒ ⭐⭐ **S11's model does NOT contain S10's as a special case OF ITSELF.** ⛔ The specialisation lies outside
+the premise set.
+⇒ ⭐ Whether a later result supersedes an earlier one is a claim for the **step record**, ⛔ never a ledger
+key. ⚠ Evidence: `/tmp/f9_leg_{codex,grok}/`, ⛔ outside the tree.
+
+### ⛔ What F9 does NOT decide
+
+- ⛔ Whether S10 is regenerated ⇒ `F4`, still open.
+- ⛔ The **model-level vs step-level** split — ⭐ the real distinction, still unmade. ⭐ Revisit on a third
+  step's evidence.
+- ⛔ The **tag stream** — `§8`'s grammar is untouched.
+- ⚠ Whether the prefix generalises from `s11_` to `<step>_`.
+- ⛔⛔ **WHAT "BARE" MEANS TO A LATER READER.** ⚠ Measured: ⛔ no presently instantiated broken consumer, ⭐ and
+  a latent one — after `F9c` the bare key still answers with the **predecessor**. ⇒ ⭐ **a routed-key
+  contract is owed BEFORE any consumer of an `F9c` object is built.**
+
+---
+
+## ⭐⭐ OWED TO THE BUILD REVIEW — ⛔ NOT to this list, and ⛔ NOT to the engine's own guards
+
+⚠⚠ **Eight review legs on this section produced these, and ⛔ every one of them is a property of a SCRIPT
+THAT DOES NOT EXIST YET.** ⭐ Reviewing them as prose measures the document instead of the artifact.
+⇒ ⭐⭐ **They are the checklist for the legs that review the built PY engine, where a FORM ablation can
+actually be run** (rule 14). ⛔ Do not fold them back into this list.
+
+1. ⛔⛔ **The published payload must MOVE under a FORM change to the action** — for every row, ⛔ not only
+   the comparison. ⚠ Measured: a hand-typed payload survives an ablation that only deletes the comparison.
+   ⭐ The obligation is `S11_SHARED_PHYSICS.md` **§4**'s *reached by computation* and its deletion test —
+   ⚠ ⛔ **not** corollary 5, whose letter admits a payload copied out of a live imported row.
+2. ⛔ **The class tag is policed on an `F9b`.** ⚠ S10's committed guard asserts it
+   (`S10_brane_mode_spectrum_sympy_audit.py:2085`); ⛔ an object-only rule drops it, and `class` is what
+   makes the accumulated ledger *the true list of knobs*.
+3. ⛔ **An imported row is never silently dropped.** ⚠ Measured: **50** live `dimension_key` references into
+   **34** target rows; ⛔ dropping one target makes `Q6r`'s cross-step check vacuous and `F7` reports it as
+   an ordinary unresolved lookup.
+4. ⛔⛔ **A `dimension_key` may not be re-pointed with the payload left intact** — ⚠ every residual reads
+   zero. ⭐ This is the re-pointing failure where **every repo check passes**; ⚠ **12** such references
+   already cross a `D` boundary.
+5. ⛔ **Two of the step's own objects may not collide on one key** — ⚠ S10's writer raises on it
+   (`:2072-2074`); ⛔ a rule quantified over *published rows* loses it.
+6. ⛔ **The comparison is total, elementwise and three-valued**, ⛔ and a consumer checking it must use its
+   **own** routine — ⚠ reusing the writer's makes the check audit its own input.
+
+⚠ ⭐ **`F9b` carries NO residual.** ⛔ The branch is entered *because* equality was proved, so the residual
+is structurally zero and the guard can never fire ⇒ ⭐ **the informative object is the operand pair.**
+⛔ Delete the residual; ⛔ do not repair it.
+
+⛔ **A leak prohibition was written here and is CUT.** ⚠ It said no key's outcome may appear *"anywhere a
+builder can read"* — ⛔ unenforceable, and `DEFECT_REGISTER.md#c20` already states the value, the
+membership and the count. ⭐ A denylist means the architecture is wrong: ⛔ blindness is enforced by
+**absence**, by bounding what the builder is handed, ⛔ never by a sentence forbidding it.
+
+---
+
 ## ⛔ What this list does not decide
 
-- ⭐ The **"same object" predicate** of `F2`, and the row shape of `F3` ⇒ the S11 PY decision list.
+- ⭐ The row shape of `F3` ⇒ the S11 PY decision list.
 - The `C19` rename worklist ⇒ its own gate, per `F5`.
 - `C17`, `C18`, S10's requirements registers.

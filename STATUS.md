@@ -1,35 +1,33 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⛔⛔ WHERE WE ARE — 2026-08-11 (late). ⛔ NO BUILDER MAY LAUNCH.
+## ⭐⭐ WHERE WE ARE — 2026-08-12. ⭐ THE NAMING QUESTION IS SETTLED; ⭐⭐ BUILD THE ENGINE.
 
-⭐⭐ **Full state: `research/pde_ledger_v3/REBUILD_HANDOFF.md`, top block.** ⭐ Both S11 artifacts are
-**BLOCKED**; ⭐ **one decision is open and it is the user's.**
+⭐⭐ **Full state: `research/pde_ledger_v3/REBUILD_HANDOFF.md`, top block.**
 
-⭐ **S11's shared spec is done — `cf4a21a4`, 1149 lines** (`C17` closed, `C18` **partial**, `T3` cut).
-⚠⚠ **A +13-line amendment to it is UNCOMMITTED IN THE WORKING TREE and BLOCKED on 2 of its 3 items.**
-⛔ Do not commit it as it stands; ⛔ do not revert it without reading why.
+⭐⭐ **THE USER'S DECISION, and it is the whole of it:** *"Only add `s11_` if it would override something it
+shouldn't. The point was to override the times when it should."*
+⇒ `directives/S11_export_chain_decisions_v2.md`, **`F9`**.
+⭐ **Every step writes its ledger, S11 included** — ⛔ the earlier *"S11 writes no ledger"* is **REVERSED**;
+it dropped S11 out of the accumulating record, which is the point of the chain.
 
-⭐⭐ **THE OPEN DECISION:** fold both artifacts back to **Codex** (rule 15 is standing for this material) —
-the **spec** cut to the **four tag names + the completion obligation**, and the **build directive told to
-POINT AT spec obligations, ⛔ never restate them.**
+⛔⛔ **WHAT THIS COST, and it is the lesson: 8 review legs, 4 revisions, ~15 findings — and ⛔ ZERO LINES OF
+ENGINE.** ⭐ The physics question — does the compressional term lift the zero root — has **not been computed
+once.** ⇒ ⭐⭐ **rule 4: many turns reasoning toward an answer a script would settle in one.**
+⇒ ⭐⭐ **The ledger export is NOT the instrument.** The instrument is **PY vs WL**, and WL imports nothing.
+⛔ Controls on the export catch nothing about S11's physics.
 
-⛔⛔ **WHY: all three directive blockers are ONE defect — the directive restates a spec obligation in its
-own words, and ⭐ every restatement came out WEAKER than the original.** ⚠ Completion is a **shared**
-obligation (two independent legs); the omission clause rescued one object **by name** and re-opened the same
-defect on another (⛔ rule 7's measured failure); and *"operational failure"* is reachable by **route
-choice**, not impossibility.
+⭐ **`F9`'s rule survived all four rounds untouched.** ⛔ What kept breaking was guard machinery written
+against a script that does not exist ⇒ ⭐ it is now a **build-review checklist** in the same file, ⛔ not
+prose obligations.
 
-⚠⚠ **THREE TIMES THIS SESSION THE ANSWER WAS "THE FILE ALREADY SAYS IT."** ⇒ ⭐⭐ **before writing a rule,
-search the spec for the obligation it duplicates.**
+⚠⚠ **A +13-line amendment to `S11_SHARED_PHYSICS.md` is UNCOMMITTED and BLOCKED on 2 of its 3 items.**
+⭐ Keep the **four tag names**; ⛔ withdraw the decomposition rule and the boolean-rendering rule — ⚠ both
+were invented by the orchestrator and both were defeated by two legs.
 
-⭐ **The export chain is DEFERRED, ⛔ not solved** — ⛔ 4 designs, 8 legs, all blocked ⇒
-`DEFECT_REGISTER.md#c20`. ⭐ **S11's engine writes NO LEDGER**; the collision is a **write-time** event, so
-it cannot fire. ⚠ The accumulate-vs-generate decision is **recorded, ⛔ NOT adopted** — both legs blocked it.
-
-⚠ **Then, unchanged:** S11 PY → WL → comparator → record → card → registers. ⛔ Every stage two legs;
-⛔ **script round ⇒ FORM ABLATION MANDATORY in every leg.**
-⚠ ⭐ **`T7`'s comparator-side native-boolean rejection is OPEN and belongs to the COMPARATOR CONTRACT**,
-which must be **frozen before it sees either output**.
+⚠ **Then, unchanged:** S11 PY → WL (blind) → comparator → record → card → registers. ⛔ Every stage two
+legs; ⛔ **script round ⇒ FORM ABLATION MANDATORY in every leg.**
+⚠ ⭐ **`T7`'s comparator-side native-boolean rejection is OPEN** and belongs to the **comparator contract**,
+frozen before it sees either output.
 
 ---
 

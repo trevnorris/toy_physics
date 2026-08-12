@@ -55,9 +55,12 @@ writer is built (`S11:895`).
 ## ⛔⛔ F8 — **BLOCKED RECORD, 2026-08-11. ⛔ NOT A DECISION. ⛔ DO NOT BUILD FROM IT.**
 
 ⚠⚠ **Two legs blocked it**, and `F1` and `F4`'s supersession above go with it — ⛔ neither survives as
-written. ⭐ **What replaced all of it: `directives/S11_sympy_export_decisions_codex.md`**, which supersedes
-`F1` outright — ⭐ **a key is an opaque row locator, ⛔ not an object name** — and moves identity into a
-typed per-row claim. ⇒ ⛔ **There is no rename**, so ⛔ every control below is moot.
+written. ⇒ ⛔ **There is no rename**, so ⛔ every control below is moot.
+
+⛔⛔ **STALE POINTER CORRECTED 2026-08-12.** ⚠ This block used to say `F8` was replaced by
+`directives/S11_sympy_export_decisions_codex.md`. ⛔ **That file is design 4 of the four blocked designs**
+(`DEFECT_REGISTER.md#c20`) — ⚠ it moved identity into an **authored per-row claim** and nothing recomputes
+it. ⭐ **What actually replaced all of it is `F9`**, below.
 
 ⭐ **Why it is kept:** it records the third and last attempt to make a **key string** carry object identity.
 ⛔ The measurement that ended the approach: an **already-wrong** frozen migration map passed **all six**
@@ -165,6 +168,16 @@ the conservative reading and the only one both steps hold.
 loudly"*; ⭐ under `F9` it is the **ordinary case** — two steps analysing two different materials — so ⛔ it
 must **not** stop the run. ⭐ `F2`'s first branch is unchanged and is now `F9b`.
 
+⭐⭐ **THE COMPARISON MUST BE TOTAL OVER THE ROW SHAPES THE IMPORT ACTUALLY CARRIES**, ⭐ elementwise into
+containers, ⭐ three-valued. ⚠⚠ **Measured: most of the imported namespace is NOT an expression** — tuples,
+booleans, strings, relations and predicates ⇒ ⛔ a routine built around a subtraction residual raises on
+them, falls back to structural equality, ⛔ and then `F9b` never fires — which deletes the
+override-when-it-should case entirely.
+
+⚠ ⭐ **`F9b` CARRIES NO RESIDUAL.** ⛔ The branch is entered *because* equality was proved, so a residual is
+structurally zero and can never fire ⇒ ⭐ **the informative object is the OPERAND PAIR**, which a consumer
+recomputes for itself. ⛔ Delete the residual; ⛔ do not repair it.
+
 ⭐⭐ **That is the whole rule.** ⛔ There is no fourth relation, ⛔ no substitution to derive, ⛔ no action to
 locate.
 
@@ -216,12 +229,14 @@ actually be run** (rule 14). ⛔ Do not fold them back into this list.
    already cross a `D` boundary.
 5. ⛔ **Two of the step's own objects may not collide on one key** — ⚠ S10's writer raises on it
    (`:2072-2074`); ⛔ a rule quantified over *published rows* loses it.
-6. ⛔ **The comparison is total, elementwise and three-valued**, ⛔ and a consumer checking it must use its
-   **own** routine — ⚠ reusing the writer's makes the check audit its own input.
-
-⚠ ⭐ **`F9b` carries NO residual.** ⛔ The branch is entered *because* equality was proved, so the residual
-is structurally zero and the guard can never fire ⇒ ⭐ **the informative object is the operand pair.**
-⛔ Delete the residual; ⛔ do not repair it.
+6. ⛔⛔ **AN EMPTY INTERSECTION BETWEEN THE ENGINE'S DERIVED KEYS AND THE IMPORTED `LEDGER` IS A FINDING,
+   ⛔ NOT A PASS.** ⚠ The engine emits both key sets as operands; ⭐ a builder whose key spelling never meets
+   the import takes the absent branch on every row, ⛔ `F9b` never runs, and the run looks identical to one
+   that met the import and agreed. ⇒ ⭐ **`F1` is what the spelling must satisfy** — ⛔ check it against `F1`,
+   ⛔ never against a transform this file does not supply.
+7. ⛔ **A consumer checking the comparison must use its OWN routine** — ⚠ reusing the writer's makes the
+   check audit its own input. ⭐ The comparison's own obligations are in the rule above, ⛔ not here: ⚠ they
+   are what the builder must DO, and a builder never reads this section.
 
 ⛔ **A leak prohibition was written here and is CUT.** ⚠ It said no key's outcome may appear *"anywhere a
 builder can read"* — ⛔ unenforceable, and `DEFECT_REGISTER.md#c20` already states the value, the

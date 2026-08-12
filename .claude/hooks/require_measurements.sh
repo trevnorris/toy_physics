@@ -43,7 +43,11 @@ except Exception: print("")' 2>/dev/null)
 
 cd "${CLAUDE_PROJECT_DIR:-/var/projects/toy_physics}" || exit 0
 
-DIR_RE='^research/pde_ledger_v3/directives/[^/]+\.md$'
+# Briefs are gated too. Measured 2026-08-12: a fix brief demanded an end-state the
+# declared population provably could not deliver, carried no measurement, and cost a
+# review round. A brief that asserts what is achievable is making a claim about an
+# artifact, and rule 2 binds it the same way.
+DIR_RE='^research/pde_ledger_v3/directives/([^/]+\.md|_legs/[^/]*brief[^/]*\.md)$'
 staged=$(git diff --cached --name-only 2>/dev/null)
 [ -z "$staged" ] && exit 0
 

@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐ WHERE WE ARE — 2026-08-13. ⭐⭐ §Q8b BUILT `94e14e42` + FIXED `36af7d95` — THE SYMPY ENGINE NOW IMPLEMENTS THE WHOLE SPEC. ⛔ NEXT: THE WL SIBLING ENGINE (BLIND).
+## ⭐⭐ WHERE WE ARE — 2026-08-13. ⭐⭐⭐ THE S11 LEDGER IS PUBLISHED `2f643ec3` — 1663 ROWS FROM A REAL MAIN-COMPLETE RUN. ⛔ NEXT: THE WL SIBLING ENGINE (BLIND).
 
 ⭐⭐ **Full state: `research/pde_ledger_v3/REBUILD_HANDOFF.md`, top block.**
 
@@ -86,11 +86,20 @@ line (unexercised); 4× exact determinant fallback recorded on driven component 
 SILENT stretch is the failure. `XKIN_ANISO` D3 (>600 s, streaming) is a cell to run through, ⛔ not a
 wall to design around.
 
+⭐⭐⭐ **THE LEDGER: `scripts/S11_exports.py`, committed `2f643ec3`** — 5.0 MB, **1663 rows**, every row
+imports and restores; build digest aboard; `publish_time_cell_states` says exactly what was true (4×
+MAIN `COMPLETED_AT_PUBLISH_TIME`, every control cell `NOT_YET_ATTEMPTED_AT_PUBLISH_TIME`); honest empty
+`stratum_ordering_d2..d5` rows; ⛔ the spec's post-sweep objects are correctly ABSENT from the export.
+⚠ The producing run (first real `run()` ever) was **stopped by the user after the publish**, mid
+`XFORM_CURLONLY` D2, zero cell exceptions. ⇒ ⛔ **the working-tree `.out` is a partial real stream
+(3.2 MB, MAIN complete) and stays UNCOMMITTED until a sweep runs to completion** — only the run record
+and §10 depend on that, ⛔ never the ledger.
+
 ⭐ **NEXT: the WL sibling engine** — written BLIND, imports nothing, re-derives from
 `S11_SHARED_PHYSICS.md` alone; ⛔ **it must receive NO S11 result** or the cross-engine disagreement is
-worth nothing. ⚠ Also pending, user's call on timing: a supervised full sweep (hours; `XKIN_ANISO`
-D3–D5 scale 4–5×/dim) to regenerate the stale committed `.out` — ⛔ which stays untouched until a real
-run completes. ⚠ Logs `~/.s11_build/`; Q8b probes `~/.s11_build/q8b/` + `/tmp/s11q8b*_leg_*/`;
+worth nothing. ⚠ Also pending, user's call on timing: rerunning the full sweep to completion (hours;
+`XKIN_ANISO` D3–D5 scale 4–5×/dim, streaming) for the post-sweep record + §10 + a committable `.out`.
+⚠ Logs `~/.s11_build/`; Q8b probes `~/.s11_build/q8b/` + `/tmp/s11q8b*_leg_*/`;
 the reproducer is `~/.s11_build/repro_d5.py` (~353 s) — ⛔ never run the full loop to test a fix.
 
 ⚠ **HYGIENE, ⛔ NOT A CONTROL:** `/tmp/s11*_leg_*/`, `/tmp/f9*_leg_*/`, `/tmp/s11_fold_leg/` hold review-leg

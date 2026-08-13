@@ -179,6 +179,13 @@ class RootData:
 
 
 @dataclass
+class StratumCandidate:
+    source: str
+    locus: dict[str, object]
+    root: int | None
+
+
+@dataclass
 class CandidateRow:
     base_key: str
     value: object
@@ -1426,10 +1433,628 @@ def emit_q5(package: str, n: int, roots: tuple[sp.Expr, ...]) -> None:
         emit_quantity(package, n, "SCALE_EXPONENT", scale_exponent_payload(ratio), root=idx)
 
 
-def emit_q8(package: str, n: int, roots: tuple[sp.Expr, ...], q4_data: dict[str, object],
-            coeff_order: tuple[sp.Symbol, ...], assumptions: sp.Tuple) -> None:
+LOCUS_PROTOCOL_SUFFIXES = (
+    "EQUATIONS",
+    "SOLUTION",
+    "IDENTICALLY_SATISFIED",
+    "INCONSISTENT",
+    "REAL_ADMISSIBLE",
+    "CANONICAL_LOCUS",
+    "REAL_STATUS",
+    "REAL_WITNESS",
+    "REAL_STATUS_OPERANDS",
+)
+
+
+def record_field(record: object, field_name: str) -> object | None:
+    if not isinstance(record, sp.Tuple):
+        return None
+    for field in record:
+        if isinstance(field, sp.Tuple) and len(field) == 2 and field[0] == Str(field_name):
+            return field[1]
+    return None
+
+
+def stratum_point_from_branch(variables: tuple[sp.Symbol, ...],
+                               branch: dict[sp.Symbol, object]) -> dict[sp.Symbol, sp.Expr]:
+    free_variables = tuple(variable for variable in variables if variable not in branch)
+    free_wavevectors = tuple(variable for variable in free_variables if variable in K_ALL)
+    values: dict[sp.Symbol, sp.Expr] = {}
+    for variable in free_variables:
+        if variable in K_ALL:
+            values[variable] = sp.Integer(1) if variable == free_wavevectors[0] else sp.Integer(0)
+        elif variable in (s, s_rho):
+            values[variable] = sp.Integer(2)
+        elif variable == beta:
+            values[variable] = sp.Integer(0)
+        else:
+            values[variable] = sp.Integer(1)
+    for _ in range(len(variables) + 1):
+        updated = False
+        for variable in variables:
+            if variable not in branch:
+                continue
+            value = sp.simplify(sp.sympify(branch[variable]).subs(values))
+            if variable not in values or values[variable] != value:
+                values[variable] = value
+                updated = True
+        if not updated:
+            break
+    return {variable: values[variable] for variable in variables if variable in values}
+
+
+def constancy_point_from_branch(variables: tuple[sp.Symbol, ...],
+                                 branch: dict[sp.Symbol, object]) -> dict[sp.Symbol, sp.Expr]:
+    free_variables = tuple(variable for variable in variables if variable not in branch)
+    free_wavevectors = tuple(variable for variable in free_variables if variable in K_ALL)
+    values: dict[sp.Symbol, sp.Expr] = {}
+    for variable in free_variables:
+        if variable in K_ALL:
+            values[variable] = sp.Integer(1) if variable == free_wavevectors[0] else sp.Integer(0)
+        elif variable in (s, s_rho):
+            values[variable] = sp.Integer(2)
+        elif variable == beta:
+            values[variable] = sp.Integer(0)
+        else:
+            values[variable] = sp.Integer(1)
+    for _ in range(len(variables) + 1):
+        updated = False
+        for variable in variables:
+            if variable not in branch:
+                continue
+            value = sp.simplify(sp.sympify(branch[variable]).subs(values))
+            if variable not in values or values[variable] != value:
+                values[variable] = value
+                updated = True
+        if not updated:
+            break
+    return {variable: values[variable] for variable in variables if variable in values}
+
+
+def exact_component_point(variables: tuple[sp.Symbol, ...], branch: dict[sp.Symbol, object],
+                          equations: tuple[object, ...], assumptions: sp.Tuple) -> dict[sp.Symbol, sp.Expr] | None:
+    point = stratum_point_from_branch(variables, branch)
+    if tuple(point) != variables:
+        return None
+    if not witness_valid(equations, assumptions, point):
+        return None
+    return point
+
+
+def component_free_parameters(n: int, coeff_order: tuple[sp.Symbol, ...],
+                              branch: dict[sp.Symbol, object]) -> tuple[sp.Symbol, ...]:
     _, k, _ = symbols_for_dimension(n)
-    stratum_candidates = []
+    ambient = tuple(dict.fromkeys(tuple(k) + tuple(coeff_order)))
+    retained = [variable for variable in ambient if variable not in branch]
+    extra_symbols = set()
+    for value in branch.values():
+        extra_symbols.update(sp.sympify(value).free_symbols)
+    retained.extend(
+        symbol for symbol in sorted(extra_symbols, key=lambda item: item.name)
+        if symbol not in branch and symbol not in retained
+    )
+    return tuple(retained)
+
+
+def admitted_strata(package: str, n: int, coeff_order: tuple[sp.Symbol, ...],
+                     assumptions: sp.Tuple, candidates: list[StratumCandidate]) -> list[dict[str, object]]:
+    components: list[dict[str, object]] = []
+    component_indices: dict[str, int] = {}
+    for candidate in candidates:
+        variables = candidate.locus["variables"]
+        solution = candidate.locus["solution"]
+        branches = exposed_branches(solution, variables)
+        entries = candidate.locus["real_admissible"]
+        if branches is None:
+            continue
+        if len(branches) != len(entries):
+            record_issue(
+                f"{candidate.locus['base_quantity']}: solution branches and real-admissibility entries do not align",
+                package=package, n=n, root=candidate.root,
+            )
+            continue
+        source_tag = tag_name(
+            package, n, candidate.locus["base_quantity"], root=candidate.root,
+        )
+        for branch, entry in zip(branches, entries):
+            if record_field(entry, "STATUS_TOKEN") != Str("ADMISSIBLE"):
+                continue
+            component_payload = record_field(entry, "BRANCH")
+            if component_payload is None:
+                record_issue(
+                    f"{candidate.locus['base_quantity']}: admitted branch has no BRANCH field",
+                    package=package, n=n, root=candidate.root,
+                )
+                continue
+            component_key = sp.srepr(component_payload)
+            if component_key not in component_indices:
+                defining_equations = tuple(
+                    sp.Eq(variable, sp.sympify(branch[variable]), evaluate=False)
+                    for variable in variables if variable in branch
+                )
+                component_indices[component_key] = len(components)
+                components.append({
+                    "component": component_payload,
+                    "branch": branch,
+                    "defining_equations": defining_equations,
+                    "source_rows": [],
+                })
+            component = components[component_indices[component_key]]
+            source_rows = component["source_rows"]
+            if source_tag not in [row[2] for row in source_rows]:
+                source_rows.append((candidate.source, candidate.locus, source_tag))
+
+    promoted: list[dict[str, object]] = []
+    _, k, _ = symbols_for_dimension(n)
+    ambient = tuple(dict.fromkeys(tuple(k) + tuple(coeff_order)))
+    for component in components:
+        source_rows = component["source_rows"]
+        point_variables = tuple(dict.fromkeys(
+            variable
+            for _source, locus, _tag in source_rows
+            for variable in locus["variables"]
+        ))
+        source_equations = tuple(
+            equation
+            for _source, locus, _tag in source_rows
+            for equation in locus["equations"]
+        )
+        point = exact_component_point(
+            point_variables,
+            component["branch"],
+            tuple(component["defining_equations"]) + source_equations,
+            assumptions,
+        )
+        if point is None:
+            record_issue(
+                "admitted candidate component had no exact point satisfying its defining equations and premises",
+                package=package, n=n,
+            )
+            continue
+        branch = component["branch"]
+        component_substitution = {
+            variable: sp.sympify(branch[variable])
+            for variable in ambient if variable in branch
+        }
+        component["point_variables"] = point_variables
+        component["point"] = point
+        component["component_substitution"] = component_substitution
+        component["free_parameters"] = component_free_parameters(n, coeff_order, branch)
+        promoted.append(component)
+    return promoted
+
+
+def normalized_change_residuals(residuals: tuple[sp.Expr, ...]) -> tuple[sp.Expr, ...]:
+    normalized = []
+    for residual in residuals:
+        expression = sp.factor(sp.together(sp.sympify(residual)))
+        numerator = sp.factor(sp.fraction(expression)[0])
+        if algebraic_zero_test(numerator) is not True:
+            normalized.append(numerator)
+    return tuple(normalized)
+
+
+def substitution_is_regular(expressions: tuple[object, ...],
+                            point: dict[sp.Symbol, sp.Expr]) -> bool:
+    invalid_values = (sp.nan, sp.zoo, sp.oo, -sp.oo)
+    if any(sp.sympify(value).has(*invalid_values) for value in point.values()):
+        return False
+    for expression in expressions:
+        if not isinstance(expression, sp.Basic):
+            continue
+        for subexpression in sp.preorder_traversal(expression):
+            if not isinstance(subexpression, sp.Pow) or subexpression.exp.is_negative is not True:
+                continue
+            denominator_value = sp.simplify(subexpression.base.subs(point))
+            if denominator_value == 0 or denominator_value.has(*invalid_values):
+                return False
+    return True
+
+
+def union_change_loci(left: tuple[sp.Expr, ...], right: tuple[sp.Expr, ...]) -> tuple[sp.Expr, ...]:
+    left = normalized_change_residuals(left)
+    right = normalized_change_residuals(right)
+    if not left:
+        return right
+    if not right:
+        return left
+    return normalized_change_residuals(tuple(sp.factor(a * b) for a in left for b in right))
+
+
+def component_count_record(status: str, value: object) -> sp.Tuple:
+    return sp.Tuple(
+        sp.Tuple(Str("STATUS_TOKEN"), Str(status)),
+        sp.Tuple(Str("VALUE"), casify(value)),
+    )
+
+
+def emit_not_applicable_locus(package: str, n: int, base_quantity: str, *,
+                              root: int | None, stratum: int) -> None:
+    for suffix in LOCUS_PROTOCOL_SUFFIXES:
+        emit_quantity(
+            package, n, f"{base_quantity}_{suffix}", NOT_APPLICABLE,
+            root=root, stratum=stratum,
+        )
+
+
+class ComponentConstancyAnalyzer:
+    def __init__(self, free_parameters: tuple[sp.Symbol, ...], assumptions: sp.Tuple) -> None:
+        self.free_parameters = free_parameters
+        self.assumptions = assumptions
+        self.witness_cache: dict[str, tuple[dict[sp.Symbol, sp.Expr], ...]] = {}
+
+    def constant_certificate(self, residuals: tuple[sp.Expr, ...]) -> object | None:
+        residuals = normalized_change_residuals(residuals)
+        if not residuals:
+            return sp.Tuple(sp.Tuple(*self.free_parameters), sp.EmptySet)
+        free_set = set(self.free_parameters)
+        for residual in residuals:
+            if residual.free_symbols.isdisjoint(free_set) and algebraic_zero_test(residual) is False:
+                derivatives = sp.Tuple(*[sp.diff(residual, parameter) for parameter in self.free_parameters])
+                return sp.Tuple(sp.Tuple(*self.free_parameters), residual, derivatives)
+            nonzero = sp.ask(sp.Q.nonzero(residual), sp.And(*self.assumptions))
+            if nonzero is True:
+                return sp.Tuple(
+                    sp.Tuple(*self.free_parameters),
+                    sp.Ne(residual, 0, evaluate=False),
+                    self.assumptions,
+                )
+        return None
+
+    def witnesses(self, residuals: tuple[sp.Expr, ...]) -> tuple[dict[sp.Symbol, sp.Expr], ...]:
+        residuals = normalized_change_residuals(residuals)
+        cache_key = sp.srepr(sp.Tuple(sp.Tuple(*self.free_parameters), sp.Tuple(*residuals)))
+        if cache_key in self.witness_cache:
+            return self.witness_cache[cache_key]
+        if not residuals or not self.free_parameters:
+            self.witness_cache[cache_key] = tuple()
+            return tuple()
+        equations = tuple(sp.Eq(residual, 0, evaluate=False) for residual in residuals)
+        solve_branches = sp.solve(
+            list(residuals), list(self.free_parameters),
+            dict=True, simplify=False, manual=True,
+        )
+        branches = solve_branches if isinstance(solve_branches, list) else []
+        points: list[dict[sp.Symbol, sp.Expr]] = []
+        for branch in branches:
+            if not isinstance(branch, dict):
+                continue
+            point = constancy_point_from_branch(self.free_parameters, branch)
+            if tuple(point) != self.free_parameters:
+                continue
+            if not substitution_is_regular(equations + tuple(self.assumptions), point):
+                continue
+            if witness_valid(equations, self.assumptions, point):
+                point_key = sp.srepr(casify(point))
+                if point_key not in [sp.srepr(casify(existing)) for existing in points]:
+                    points.append(point)
+        self.witness_cache[cache_key] = tuple(points)
+        return tuple(points)
+
+    def analyze(self, residuals: tuple[sp.Expr, ...], generic_value: object,
+                recompute: object) -> tuple[str, object, tuple[sp.Expr, ...]]:
+        residuals = normalized_change_residuals(residuals)
+        certificate = self.constant_certificate(residuals)
+        if certificate is not None:
+            return "CONSTANT", certificate, residuals
+        for witness in self.witnesses(residuals):
+            changed_value = recompute(witness)
+            if sp.srepr(casify(changed_value)) != sp.srepr(casify(generic_value)):
+                return "VARIES", NOT_APPLICABLE, residuals
+        return "UNDECIDED", NOT_APPLICABLE, residuals
+
+
+def emit_component_count(package: str, n: int, quantity: str, generic_value: object,
+                         analyzer: ComponentConstancyAnalyzer,
+                         change_residuals: tuple[sp.Expr, ...], recompute: object, *,
+                         root: int | None, stratum: int) -> str:
+    status, certificate, change_residuals = analyzer.analyze(
+        change_residuals, generic_value, recompute,
+    )
+    payload_value = generic_value if status in ("CONSTANT", "VARIES") else NOT_DEFINED_ON_COMPONENT
+    emit_quantity(
+        package, n, quantity, component_count_record(status, payload_value),
+        root=root, stratum=stratum,
+    )
+    emit_quantity(package, n, f"{quantity}_STATUS", Str(status), root=root, stratum=stratum)
+    emit_quantity(
+        package, n, f"{quantity}_CONSTANCY_CERTIFICATE", certificate,
+        root=root, stratum=stratum,
+    )
+    change_base = f"{quantity}_CHANGE_LOCUS"
+    if status == "VARIES":
+        emit_locus(
+            package, n, change_base, change_residuals,
+            analyzer.free_parameters, analyzer.assumptions,
+            root=root, stratum=stratum,
+        )
+    else:
+        emit_not_applicable_locus(
+            package, n, change_base, root=root, stratum=stratum,
+        )
+    return status
+
+
+def scoped_quantity(quantity: str, point_evidence: bool) -> str:
+    return f"POINT_EVIDENCE_{quantity}" if point_evidence else quantity
+
+
+def scoped_polynomial_data(det_m: sp.Expr) -> tuple[sp.Poly, tuple[RootData, ...], tuple[sp.Expr, ...]]:
+    poly = sp.Poly(sp.factor(det_m), omegaSquared)
+    if not isinstance(poly.degree(), int):
+        raise ValueError("component determinant does not have a finite omegaSquared degree")
+    pairs = root_multiplicity_pairs(det_m)
+    roots = distinct_roots(pairs)
+    return poly, pairs, roots
+
+
+def scoped_q3_count_values(det_m: sp.Expr) -> tuple[object, object, object, object]:
+    if algebraic_zero_test(det_m) is True:
+        return (
+            NOT_DEFINED_ON_COMPONENT,
+            NOT_DEFINED_ON_COMPONENT,
+            NOT_DEFINED_ON_COMPONENT,
+            NOT_DEFINED_ON_COMPONENT,
+        )
+    poly, pairs, roots = scoped_polynomial_data(det_m)
+    root_count_all = sp.Integer(sum(pair.multiplicity for pair in pairs))
+    degree = sp.Integer(poly.degree())
+    return root_count_all, degree, degree - root_count_all, sp.Integer(len(roots))
+
+
+def emit_scoped_q3(package: str, n: int, matrix: sp.ImmutableMatrix,
+                   coeff_order: tuple[sp.Symbol, ...], assumptions: sp.Tuple, *,
+                   stratum: int, free_parameters: tuple[sp.Symbol, ...],
+                   point_evidence: bool,
+                   analyzer: ComponentConstancyAnalyzer | None = None) -> tuple[sp.Expr, ...]:
+    _, k, _ = symbols_for_dimension(n)
+    det_m = exact_determinant(matrix)
+    poly, pairs, roots = scoped_polynomial_data(det_m)
+    prefix = lambda quantity: scoped_quantity(quantity, point_evidence)
+    emit_quantity(package, n, prefix("DET_M"), sp.factor(det_m), stratum=stratum)
+    emit_quantity(
+        package, n, prefix("ROOT_MULTIPLICITY_PAIRS"),
+        sp.Tuple(*[sp.Tuple(pair.value, sp.Integer(pair.multiplicity)) for pair in pairs]),
+        stratum=stratum,
+    )
+    solution_set = sp.solveset(sp.Eq(det_m, 0, evaluate=False), omegaSquared)
+    emit_quantity(package, n, prefix("ROOT_SOLUTION_SET"), solution_set, stratum=stratum)
+    root_count_all = sp.Integer(sum(pair.multiplicity for pair in pairs))
+    degree = sp.Integer(poly.degree())
+    degree_residual = degree - root_count_all
+    distinct_count = sp.Integer(len(roots))
+    leading_change = normalized_change_residuals((poly.LC(),))
+    distinct_factors = list(leading_change)
+    distinct_factors.extend(sp.simplify(roots[p] - roots[q]) for p, q in combinations(range(len(roots)), 2))
+    distinct_change = normalized_change_residuals(
+        (sp.prod(distinct_factors),) if distinct_factors else tuple()
+    )
+
+    if point_evidence:
+        emit_quantity(package, n, prefix("ROOT_COUNT_ALL"), root_count_all, stratum=stratum)
+        emit_quantity(package, n, prefix("DET_M_DEGREE"), degree, stratum=stratum)
+        emit_quantity(package, n, prefix("ROOT_DEGREE_RESIDUAL"), degree_residual, stratum=stratum)
+        emit_quantity(package, n, prefix("ROOT_DISTINCT"), sp.Tuple(*roots), stratum=stratum)
+        emit_quantity(package, n, prefix("ROOT_COUNT_DISTINCT"), distinct_count, stratum=stratum)
+    else:
+        if analyzer is None:
+            raise ValueError("component Q3 count emission requires a constancy analyzer")
+        emit_component_count(
+            package, n, "ROOT_COUNT_ALL", root_count_all, analyzer, leading_change,
+            lambda point: scoped_q3_count_values(det_m.subs(point))[0],
+            root=None, stratum=stratum,
+        )
+        emit_component_count(
+            package, n, "DET_M_DEGREE", degree, analyzer, leading_change,
+            lambda point: scoped_q3_count_values(det_m.subs(point))[1],
+            root=None, stratum=stratum,
+        )
+        emit_component_count(
+            package, n, "ROOT_DEGREE_RESIDUAL", degree_residual, analyzer, leading_change,
+            lambda point: scoped_q3_count_values(det_m.subs(point))[2],
+            root=None, stratum=stratum,
+        )
+        emit_quantity(package, n, "ROOT_DISTINCT", sp.Tuple(*roots), stratum=stratum)
+        emit_component_count(
+            package, n, "ROOT_COUNT_DISTINCT", distinct_count, analyzer, distinct_change,
+            lambda point: scoped_q3_count_values(det_m.subs(point))[3],
+            root=None, stratum=stratum,
+        )
+    emit_quantity(package, n, prefix("ROOT_ORDERING"), sp.Tuple(*roots), stratum=stratum)
+    for idx, root_value in enumerate(roots, start=1):
+        emit_quantity(package, n, prefix("VALUE"), root_value, root=idx, stratum=stratum)
+        emit_quantity(
+            package, n, prefix("SIGN"), sign_payload(root_value, assumptions),
+            root=idx, stratum=stratum,
+        )
+
+    remaining_k = tuple(variable for variable in k if variable in free_parameters)
+    remaining_coeff = tuple(variable for variable in coeff_order if variable in free_parameters)
+    if len(roots) < 2:
+        emit_locus(
+            package, n, prefix("ROOT_COINCIDENCE_K"), tuple(), remaining_k, assumptions,
+            stratum=stratum,
+        )
+        emit_locus(
+            package, n, prefix("ROOT_COINCIDENCE_COEFF"), tuple(), remaining_coeff, assumptions,
+            stratum=stratum,
+        )
+    else:
+        for p, q in combinations(range(len(roots)), 2):
+            pair_name_k = prefix(f"ROOT_COINCIDENCE_R{p + 1}_R{q + 1}_K")
+            pair_name_coeff = prefix(f"ROOT_COINCIDENCE_R{p + 1}_R{q + 1}_COEFF")
+            emit_custom_name(pair_name_k)
+            emit_custom_name(pair_name_coeff)
+            residual = sp.simplify(roots[p] - roots[q])
+            emit_locus(
+                package, n, pair_name_k, (residual,), remaining_k, assumptions,
+                stratum=stratum,
+            )
+            emit_locus(
+                package, n, pair_name_coeff, (residual,), remaining_coeff, assumptions,
+                stratum=stratum,
+            )
+    return roots
+
+
+def emit_scoped_q4(package: str, n: int, matrix: sp.ImmutableMatrix,
+                   roots: tuple[sp.Expr, ...], assumptions: sp.Tuple, *,
+                   stratum: int, point_evidence: bool,
+                   restriction: dict[sp.Symbol, sp.Expr],
+                   analyzer: ComponentConstancyAnalyzer | None = None) -> list[str]:
+    _, k, _ = symbols_for_dimension(n)
+    prefix = lambda quantity: scoped_quantity(quantity, point_evidence)
+    restricted_k = tuple(sp.sympify(ki).subs(restriction) for ki in k)
+    k_vector = sp.ImmutableMatrix(restricted_k)
+    k_sq = sum(ki ** 2 for ki in restricted_k)
+    statuses: list[str] = []
+    for idx, root_value in enumerate(roots, start=1):
+        m_r = sp.ImmutableMatrix(matrix.subs(omegaSquared, root_value))
+        rank = matrix_rank(m_r)
+        nullity = n - rank
+        stacked = sp.ImmutableMatrix.vstack(m_r, sp.ImmutableMatrix([list(restricted_k)]))
+        stacked_rank = matrix_rank(stacked)
+        transverse_nullity = n - stacked_rank
+        m_dot_k = sp.simplify(m_r * k_vector)
+        basis = generic_nullspace_vectors(m_r, rank, root=idx)
+        dot_k = sp.Tuple(*[sp.simplify((vec.T * k_vector)[0]) for vec in basis])
+        residuals = sp.Tuple(*[
+            sp.simplify(k_sq * sp.ImmutableMatrix(vec) - ((vec.T * k_vector)[0]) * k_vector)
+            for vec in basis
+        ])
+        basis_payload = sp.Tuple(*[sp.ImmutableMatrix(vec) for vec in basis])
+        emit_quantity(package, n, prefix("N1"), m_r, root=idx, stratum=stratum)
+
+        rank_change = normalized_change_residuals(all_minors(m_r, rank)) if rank else tuple()
+        stacked_change = normalized_change_residuals(all_minors(stacked, stacked_rank)) if stacked_rank else tuple()
+        combined_change = union_change_loci(rank_change, stacked_change)
+
+        def rank_at(point: dict[sp.Symbol, sp.Expr]) -> sp.Integer:
+            return sp.Integer(matrix_rank(sp.ImmutableMatrix(m_r.subs(point))))
+
+        def stacked_rank_at(point: dict[sp.Symbol, sp.Expr]) -> sp.Integer:
+            return sp.Integer(matrix_rank(sp.ImmutableMatrix(stacked.subs(point))))
+
+        def basis_count_at(point: dict[sp.Symbol, sp.Expr]) -> sp.Integer:
+            point_matrix = sp.ImmutableMatrix(m_r.subs(point))
+            point_rank = matrix_rank(point_matrix)
+            return sp.Integer(len(generic_nullspace_vectors(point_matrix, point_rank, root=idx)))
+
+        def basis_residual_at(point: dict[sp.Symbol, sp.Expr]) -> sp.Integer:
+            point_matrix = sp.ImmutableMatrix(m_r.subs(point))
+            point_rank = matrix_rank(point_matrix)
+            point_basis = generic_nullspace_vectors(point_matrix, point_rank, root=idx)
+            return sp.Integer(len(point_basis) - (n - point_rank))
+
+        count_rows = (
+            ("N2_RANK", sp.Integer(rank), rank_change, rank_at),
+            ("N2_NULLITY", sp.Integer(nullity), rank_change, lambda point: sp.Integer(n) - rank_at(point)),
+            ("N3_STACKED_RANK", sp.Integer(stacked_rank), stacked_change, stacked_rank_at),
+            ("N3_TRANSVERSE_NULLITY", sp.Integer(transverse_nullity), stacked_change, lambda point: sp.Integer(n) - stacked_rank_at(point)),
+            ("N4_NULLITY_DIFFERENCE", sp.Integer(nullity - transverse_nullity), combined_change,
+             lambda point: (sp.Integer(n) - rank_at(point)) - (sp.Integer(n) - stacked_rank_at(point))),
+            ("N7_BASIS_COUNT", sp.Integer(len(basis)), rank_change, basis_count_at),
+            ("N7_RESIDUAL", sp.Integer(len(basis) - nullity), rank_change, basis_residual_at),
+        )
+        if point_evidence:
+            for quantity, value, _change, _recompute in count_rows[:5]:
+                emit_quantity(package, n, prefix(quantity), value, root=idx, stratum=stratum)
+        else:
+            if analyzer is None:
+                raise ValueError("component Q4 count emission requires a constancy analyzer")
+            for quantity, value, change, recompute in count_rows[:5]:
+                statuses.append(emit_component_count(
+                    package, n, quantity, value, analyzer, change, recompute,
+                    root=idx, stratum=stratum,
+                ))
+        emit_quantity(package, n, prefix("N5_M_DOT_K"), m_dot_k, root=idx, stratum=stratum)
+        emit_quantity(package, n, prefix("N6_BASIS"), basis_payload, root=idx, stratum=stratum)
+        emit_quantity(package, n, prefix("N6_DOT_K"), dot_k, root=idx, stratum=stratum)
+        emit_quantity(package, n, prefix("N6_RESIDUAL"), residuals, root=idx, stratum=stratum)
+        if point_evidence:
+            for quantity, value, _change, _recompute in count_rows[5:]:
+                emit_quantity(package, n, prefix(quantity), value, root=idx, stratum=stratum)
+        else:
+            for quantity, value, change, recompute in count_rows[5:]:
+                statuses.append(emit_component_count(
+                    package, n, quantity, value, analyzer, change, recompute,
+                    root=idx, stratum=stratum,
+                ))
+    return statuses
+
+
+def emit_stratum(package: str, n: int, stratum: int, component: dict[str, object],
+                 route: RouteSelection, coeff_order: tuple[sp.Symbol, ...],
+                 assumptions: sp.Tuple) -> None:
+    source_rows = component["source_rows"]
+    sources = tuple(
+        Str(source)
+        for source in ("RANK_DROP", "STACKED_DROP", "ROOT_COINCIDENCE")
+        if source in [row[0] for row in source_rows]
+    )
+    source_tags = sp.Tuple(*[Str(row[2]) for row in source_rows])
+    defining_equations = tuple(component["defining_equations"])
+    free_parameters = tuple(component["free_parameters"])
+    point = component["point"]
+    point_payload = sp.Tuple(*[
+        sp.Tuple(variable, point[variable]) for variable in component["point_variables"]
+    ])
+    emit_quantity(package, n, "SOURCES", sp.Tuple(*sources), stratum=stratum)
+    emit_quantity(package, n, "SOURCE_LOCUS_TAGS", source_tags, stratum=stratum)
+    emit_quantity(
+        package, n, "DEFINING_EQUATIONS", sp.Tuple(*defining_equations), stratum=stratum,
+    )
+    emit_quantity(package, n, "FREE_PARAMETERS", sp.Tuple(*free_parameters), stratum=stratum)
+    emit_quantity(package, n, "POINT", point_payload, stratum=stratum)
+
+    component_substitution = component["component_substitution"]
+    component_matrix = sp.ImmutableMatrix(route.matrix.subs(component_substitution))
+    component_assumptions = sp.Tuple(*[
+        premise.subs(component_substitution) if hasattr(premise, "subs") else premise
+        for premise in assumptions
+    ])
+    analyzer = ComponentConstancyAnalyzer(free_parameters, component_assumptions)
+    component_roots = emit_scoped_q3(
+        package, n, component_matrix, coeff_order, component_assumptions,
+        stratum=stratum, free_parameters=free_parameters,
+        point_evidence=False, analyzer=analyzer,
+    )
+    count_statuses = emit_scoped_q4(
+        package, n, component_matrix, component_roots, component_assumptions,
+        stratum=stratum, point_evidence=False,
+        restriction=component_substitution, analyzer=analyzer,
+    )
+    q3_count_statuses = [
+        EMITTER.emitted[tag_name(package, n, f"{quantity}_STATUS", stratum=stratum)]
+        for quantity in ("ROOT_COUNT_ALL", "DET_M_DEGREE", "ROOT_DEGREE_RESIDUAL", "ROOT_COUNT_DISTINCT")
+    ]
+    all_statuses = q3_count_statuses + [Str(status) for status in count_statuses]
+    coverage = "COMPLETE_COVERAGE" if all(status != Str("UNDECIDED") for status in all_statuses) else "INCOMPLETE_COVERAGE"
+    emit_quantity(package, n, "COMPONENT_Q3_Q4_COVERAGE", Str(coverage), stratum=stratum)
+
+    point_matrix = sp.ImmutableMatrix(route.matrix.subs(point))
+    point_assumptions = sp.Tuple(*[
+        premise.subs(point) if hasattr(premise, "subs") else premise
+        for premise in assumptions
+    ])
+    point_free_parameters = tuple(parameter for parameter in free_parameters if parameter not in point)
+    point_roots = emit_scoped_q3(
+        package, n, point_matrix, coeff_order, point_assumptions,
+        stratum=stratum, free_parameters=point_free_parameters,
+        point_evidence=True,
+    )
+    emit_scoped_q4(
+        package, n, point_matrix, point_roots, point_assumptions,
+        stratum=stratum, point_evidence=True, restriction=point,
+    )
+
+
+def emit_q8(package: str, n: int, roots: tuple[sp.Expr, ...], q4_data: dict[str, object],
+            coeff_order: tuple[sp.Symbol, ...], assumptions: sp.Tuple,
+            route: RouteSelection, root_coincidence_candidates: list[StratumCandidate]) -> None:
+    _, k, _ = symbols_for_dimension(n)
+    rank_candidates: list[StratumCandidate] = []
+    stacked_candidates: list[StratumCandidate] = []
     for idx, root in enumerate(roots, start=1):
         m_r = q4_data["root_matrices"][idx - 1]
         rank, stacked_rank, stacked = q4_data["rank_data"][idx - 1]
@@ -1439,11 +2064,18 @@ def emit_q8(package: str, n: int, roots: tuple[sp.Expr, ...], q4_data: dict[str,
         emit_quantity(package, n, "STACKED_DROP_MINORS", sp.Tuple(*stacked_minors), root=idx)
         for suffix, variables in (("K", k), ("COEFF", coeff_order), ("JOINT", tuple(k) + tuple(coeff_order))):
             locus = emit_locus(package, n, f"RANK_DROP_{suffix}", tuple(rank_minors), tuple(variables), assumptions, root=idx)
-            stratum_candidates.append(("RANK_DROP", locus))
+            rank_candidates.append(StratumCandidate("RANK_DROP", locus, idx))
         for suffix, variables in (("K", k), ("COEFF", coeff_order), ("JOINT", tuple(k) + tuple(coeff_order))):
             locus = emit_locus(package, n, f"STACKED_DROP_{suffix}", tuple(stacked_minors), tuple(variables), assumptions, root=idx)
-            stratum_candidates.append(("STACKED_DROP", locus))
-    emit_quantity(package, n, "STRATUM_ORDERING", sp.Tuple())
+            stacked_candidates.append(StratumCandidate("STACKED_DROP", locus, idx))
+    stratum_candidates = rank_candidates + stacked_candidates + root_coincidence_candidates
+    strata = admitted_strata(package, n, coeff_order, assumptions, stratum_candidates)
+    emit_quantity(
+        package, n, "STRATUM_ORDERING",
+        sp.Tuple(*[component["component"] for component in strata]),
+    )
+    for stratum, component in enumerate(strata, start=1):
+        emit_stratum(package, n, stratum, component, route, coeff_order, assumptions)
 
 
 def emit_q10(package: str, n: int, roots: tuple[sp.Expr, ...], coeff_order: tuple[sp.Symbol, ...]) -> sp.ImmutableMatrix:
@@ -1453,7 +2085,8 @@ def emit_q10(package: str, n: int, roots: tuple[sp.Expr, ...], coeff_order: tupl
 
 
 def emit_q3(package: str, n: int, det_m: sp.Expr, coeff_order: tuple[sp.Symbol, ...],
-            assumptions: sp.Tuple) -> tuple[sp.Expr, ...]:
+            assumptions: sp.Tuple,
+            root_coincidence_candidates: list[StratumCandidate] | None = None) -> tuple[sp.Expr, ...]:
     _, k, _ = symbols_for_dimension(n)
     pairs = root_multiplicity_pairs(det_m)
     poly = sp.Poly(sp.factor(det_m), omegaSquared)
@@ -1477,8 +2110,11 @@ def emit_q3(package: str, n: int, det_m: sp.Expr, coeff_order: tuple[sp.Symbol, 
         emit_quantity(package, n, "VALUE", root, root=idx)
         emit_quantity(package, n, "SIGN", sign_payload(root, assumptions), root=idx)
     if len(roots) < 2:
-        emit_locus(package, n, "ROOT_COINCIDENCE_K", tuple(), k, assumptions)
-        emit_locus(package, n, "ROOT_COINCIDENCE_COEFF", tuple(), coeff_order, assumptions)
+        locus_k = emit_locus(package, n, "ROOT_COINCIDENCE_K", tuple(), k, assumptions)
+        locus_coeff = emit_locus(package, n, "ROOT_COINCIDENCE_COEFF", tuple(), coeff_order, assumptions)
+        if root_coincidence_candidates is not None:
+            root_coincidence_candidates.append(StratumCandidate("ROOT_COINCIDENCE", locus_k, None))
+            root_coincidence_candidates.append(StratumCandidate("ROOT_COINCIDENCE", locus_coeff, None))
     else:
         for p, q in combinations(range(len(roots)), 2):
             pair_name_k = f"ROOT_COINCIDENCE_R{p + 1}_R{q + 1}_K"
@@ -1486,8 +2122,11 @@ def emit_q3(package: str, n: int, det_m: sp.Expr, coeff_order: tuple[sp.Symbol, 
             emit_custom_name(pair_name_k)
             emit_custom_name(pair_name_coeff)
             residual = sp.simplify(roots[p] - roots[q])
-            emit_locus(package, n, pair_name_k, (residual,), k, assumptions)
-            emit_locus(package, n, pair_name_coeff, (residual,), coeff_order, assumptions)
+            locus_k = emit_locus(package, n, pair_name_k, (residual,), k, assumptions)
+            locus_coeff = emit_locus(package, n, pair_name_coeff, (residual,), coeff_order, assumptions)
+            if root_coincidence_candidates is not None:
+                root_coincidence_candidates.append(StratumCandidate("ROOT_COINCIDENCE", locus_k, None))
+                root_coincidence_candidates.append(StratumCandidate("ROOT_COINCIDENCE", locus_coeff, None))
     return roots
 
 
@@ -1524,7 +2163,11 @@ def run_cell(package: str, n: int, q9_cache: dict[int, dict[str, object]]) -> bo
 
     assumptions = assumptions_for(package, n)
     det_m = determinant_from_live_matrix(route.matrix, k)
-    roots = emit_q3(package, n, det_m, build.coefficient_ordering, assumptions)
+    root_coincidence_candidates: list[StratumCandidate] = []
+    roots = emit_q3(
+        package, n, det_m, build.coefficient_ordering, assumptions,
+        root_coincidence_candidates,
+    )
     q4_data = emit_q4(package, n, route, roots, assumptions)
     emit_q5(package, n, roots)
 
@@ -1551,7 +2194,10 @@ def run_cell(package: str, n: int, q9_cache: dict[int, dict[str, object]]) -> bo
     q6r(package, n, build.coefficient_ordering, dim_data["COEFF_DIMENSIONS_MAP"])
 
     q7_objects(package, n, build, q9_data)
-    emit_q8(package, n, roots, q4_data, build.coefficient_ordering, assumptions)
+    emit_q8(
+        package, n, roots, q4_data, build.coefficient_ordering, assumptions,
+        route, root_coincidence_candidates,
+    )
     emit_q10(package, n, roots, build.coefficient_ordering)
     kw_values = q11_objects(package, n, roots, build.coefficient_ordering, assumptions, dim_data["DIM_ENV"])
     if kw_values:

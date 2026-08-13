@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐ WHERE WE ARE — 2026-08-13. ⭐⭐ THE S11 PY ENGINE COMPUTES. ⛔ NEXT: FIX ROUND 3 + THE §Q8b BUILD.
+## ⭐⭐ WHERE WE ARE — 2026-08-13. ⭐⭐ ROUND 3 CLOSED `9fb45365` — THE ENGINE COMPUTES AND PUBLISHES. ⛔ NEXT: THE §Q8b BUILD DIRECTIVE.
 
 ⭐⭐ **Full state: `research/pde_ledger_v3/REBUILD_HANDOFF.md`, top block.**
 
@@ -9,7 +9,7 @@
 ⛔ it never changed across any round.
 ⭐ **Every step writes its ledger, S11 included.** ⛔ *"S11 writes no ledger"* is REVERSED.
 
-⭐ **(done — the engine was built and has had two fix rounds; see the S11 PY ENGINE block below.)**
+⭐ **(done — the engine was built and has had three fix rounds; see the S11 PY ENGINE block below.)**
 
 ⛔⛔ **WHAT THIS COST, and it is the lesson: ~20 legs, 0 lines of engine.** ⭐ Rounds returned 5, 4, 4, 4
 findings — ⛔ **not convergence.** ⭐ What ended it was **one census I had asserted from precedent since
@@ -20,36 +20,37 @@ round 1**: three findings collapsed into a single measured fact ⇒ **rule 2 now
 ⚠ **Still open, ⛔ none blocking the build:** `F4` (S10 regeneration); `F3`'s row shape; S10's four owed
 items; `T7`'s comparator-side native-boolean rejection ⇒ **comparator contract, frozen before it sees
 either output**.
-⭐⭐ **S11 PY ENGINE — ROUND 2 COMMITTED `4d5ff0f6`. ⭐ IT COMPUTES. ⛔ THREE BLOCKERS REMAIN.**
+⭐⭐ **S11 PY ENGINE — ROUND 3 CLOSED `9fb45365` (brief folded `1b2f8cf9`). ⭐ D1, D2 AND THE PUBLISH ARE
+FIXED; ⛔ ONLY D4 (§Q8b) REMAINS, AND IT IS A BUILD.**
 
-⭐ **What is genuinely fixed** (5 runs used to die; now `MAIN` D2–D5 completes in **~295 s** total):
-the `MemoryError` wall (rank/minors now exact `DomainMatrix` over a rational-function domain, verified by
-two legs as **the same algebraic object**, 34/34 agreements); the export digest path (⛔ publish could
-**never** have succeeded before — pre-existing, masked because `MAIN` D5 never completed); the mid-loop
-publish mislabel; a regressed nullspace basis (residual `[0,0,0]` verified independently); the hard-coded
-size gates; the `ISSUES[:20]` truncation.
+⭐ **What round 3 closed** — two legs on the folded brief (Codex + Grok: three brief defects, all
+verified before folding), Codex build, two script legs (fresh agent + Grok), **no finding surviving the
+physics filter from either**, orchestrator spot-probes agreeing:
+- **The attempt-free refusal class is dead.** `compound_radical_present` is deleted; every locus solve
+  is attempted (`emit_locus:824-839`) and an unavailability record carries the **raised failure**. The
+  refused compound-radical solves return real branches — including all three `XKIN_ANISO` D3 sibling
+  pairs, emitted **before** that cell's wall.
+- **Status tokens decide.** Both routes, both directions (`evaluate_premise:694-719`); `MAIN` D2
+  `_REAL_ADMISSIBLE` went `{UNDECIDED: 22}` → `{EXCLUDED: 12, UNDECIDED: 10}`, zero token↔test
+  disagreements; surviving UNDECIDEDs carry genuinely undecidable premises. `_INCONSISTENT` is
+  `Eq(locus_conditionset(equations, variables), EmptySet)` (`:858-861`) — one-sided corruption moved it
+  with the equations **32/32** and left it **byte-identical** under solver-payload corruption.
+- **`MAIN` publishes without waiting.** Publish fires right after `MAIN` with a publish-time cell-state
+  record (`NOT_YET_ATTEMPTED_AT_PUBLISH_TIME` ≠ failed ≠ completed) that cannot be mistaken for the
+  spec's post-sweep `RUN_PAIRS`/`SKIPPED_PAIRS`, which still emit after the sweep (spec `:1038`).
+  Publish failures attribute to `PUBLISH`; a failed run still emits §10.
+⭐ Form ablations moved **150–320 tags**; no typed payload found. Round-2 wins intact.
 
-⭐⭐⭐ **THE FORM ABLATION CAUGHT A TYPED OBJECT — rule 14's first catch on this engine.**
-`STRATUM_ORDERING` is **byte-identical `Tuple()` under both ablations**, including one that moved
-`ROOT_COUNT_DISTINCT` 2→1 and every rank. ⇒ `:1456` emits a literal `sp.Tuple()`; `stratum_candidates` is
-accumulated at 3 sites and **never read**; the five Q8b evidence objects grep to **0**.
-⭐ Everything else moved: 133/268 and 101/163 payloads; `Q7_RESIDUAL` `0 → nonzero`.
+⚠ **Costs and walls that remain, measured:** cells are slower for honest reasons — `MAIN` D2 2.6→5.6 s,
+`MAIN` D5 ~220→371 s, `XKIN_ANISO` D2 ~140→171–188 s; **`XKIN_ANISO` D3 still exceeds 600 s** (exit 124
+under the probe cap, with observable progress, pre- and post-fix). ⛔ The stale committed `.out` is
+STILL not replaced — only a completed real `__main__` run replaces it.
 
-⛔⛔ **THREE BLOCKERS, AND THEY CHAIN — ⛔ fixing them out of order accomplishes nothing:**
-| # | defect | measured |
-|---|---|---|
-| **D1** | `:820-828` gates `ROOT_COINCIDENCE_*_COEFF` on a **syntactic** radical check and writes *"measured unavailable"* | ⛔ gives up in **0.4 s**; independent solve returns branches in **3.8 s / 3.9 s** (⭐ I verified this myself). ⛔ Rule 2 violated **inside §10** |
-| **D2** | `evaluate_premise` falls through to `None` for `BooleanFalse` ⇒ a provably EXCLUDED branch types UNDECIDED | `_REAL_ADMISSIBLE` = `{UNDECIDED: 22/35/39}` at `MAIN` D2/D3/D4 — ⛔ **zero ADMISSIBLE, zero EXCLUDED** |
-| **D4** | **§Q8b is UNIMPLEMENTED** — ~126 spec lines, 19 obligations | ⛔ a **build**, not a fix. §Q8: *"NOT BOOKKEEPING"* |
-⇒ ⭐ **D1 starves the candidate pool §Q8b feeds from; D2 makes every candidate UNDECIDED** (a stratum is
-*defined* as ADMISSIBLE) ⇒ ⛔ implementing D4 alone would find nothing.
-⚠ Also open: `_INCONSISTENT` can never return `PROVED_TRUE` (`sp.Eq(...,evaluate=False)` is always an
-`Equality`) — §5 says it and its partner separate the three degenerate cases; ⛔ one is inert.
-
-⛔ **A FULL SWEEP STILL WILL NOT PUBLISH.** Publish is **end-of-run only**; `XKIN_ANISO` exceeds 600 s at D3
-and scales **4–5× per dimension**, while `MAIN` finishes in ~295 s. ⭐ A MAIN-only reduced run **does**
-publish (leg-verified). ⇒ ⭐ **the fix is a mid-loop publish whose run record says `unattempted ≠ skipped`**
-— ⛔ the dishonest version (18 rows claiming controls were *skipped*) is what round 2 correctly removed.
+⚠ **Recorded below the physics filter (both legs):** a latent **loud** `TypeError` if a live branch ever
+makes a relational premise's comparison non-real (`premise.subs` at `:693`; never observed live); ⚠
+`_INCONSISTENT` stays honestly UNDECIDED at regular loci even where the engine's own `PROVED_NONEMPTY`
+witness entails `PROVED_FALSE` — an under-claim, never a mis-claim; pre-existing `PUBLISH:
+unclassifiable free symbol G_1_1/G_1_2` diagnostics, untouched by this diff.
 
 ⚠⚠ **THE PREVIOUS ENGINE DID NOT "MISS" §Q8b — ⛔ there was no spec.** `S11_SHARED_PHYSICS.md` first exists
 at `f49a1684` (*"the shared spec it never had"*), **this cycle**. ⭐ Measured on the as-built copy:
@@ -69,10 +70,12 @@ with no traceback** — ⛔ **the exact symptom behind four wrong diagnoses in o
 ⚠ measured 2026-08-13: the pattern matched my own shell and killed it mid-command, so the edit and commit
 that followed silently did not run ⇒ [[feedback-background-process-launch]]. ⭐ Kill the captured pid.
 
-⭐ **NEXT:** fix brief round 3 (D1, D2, the publish placement) ⇒ **two legs on the list** (rule 7) ⇒ Codex
-⇒ two legs on the script with a **FORM ABLATION mandatory**. ⛔ §Q8b (D4) is a separate BUILD and needs its
-own directive. ⚠ Logs `~/.s11_build/`; leg probes `~/.s11_build/leg_probes/`; ⭐ the 4-min reproducer is
-`~/.s11_build/repro_d5.py` — ⛔ never run the full loop to test a fix.
+⭐ **NEXT: the §Q8b build directive** (D4 — ~126 spec lines, 19 obligations; §Q8: *"NOT BOOKKEEPING"*).
+⭐ Its feeders are now live: admissibility tokens are real and the COEFF candidate pools are populated.
+⇒ orchestrator writes the directive ⇒ **two legs on it** (rule 7) ⇒ Codex ⇒ two legs on the script,
+**FORM ABLATION mandatory**. ⚠ Logs `~/.s11_build/`; round-3 probes `~/.s11_build/round3_probes/`,
+script-leg scratch `/tmp/s11r3s_leg_*/`; ⭐ the reproducer is `~/.s11_build/repro_d5.py` (now ~371 s) —
+⛔ never run the full loop to test a fix.
 
 ⚠ **HYGIENE, ⛔ NOT A CONTROL:** `/tmp/s11*_leg_*/`, `/tmp/f9*_leg_*/`, `/tmp/s11_fold_leg/` hold review-leg
 scratch that computed real S11 physics. ⛔ Do not commit it into the tree — it is scratch, and the tree is

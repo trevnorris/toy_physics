@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐ WHERE WE ARE — 2026-08-12. ⭐⭐ THE DIRECTIVE IS CLOSED. ⛔ NEXT: BUILD THE ENGINE.
+## ⭐⭐ WHERE WE ARE — 2026-08-13. ⭐⭐ THE S11 PY ENGINE COMPUTES. ⛔ NEXT: FIX ROUND 3 + THE §Q8b BUILD.
 
 ⭐⭐ **Full state: `research/pde_ledger_v3/REBUILD_HANDOFF.md`, top block.**
 
@@ -9,9 +9,7 @@
 ⛔ it never changed across any round.
 ⭐ **Every step writes its ledger, S11 included.** ⛔ *"S11 writes no ledger"* is REVERSED.
 
-⭐⭐ **NEXT, and it is the first thing all day that computes physics:** Codex builds
-`scripts/S11_stray_longitudinal_sympy_audit.py` from that directive ⇒ then a fresh Claude agent + Grok,
-⛔ **with a FORM ABLATION mandatory in every leg** (rule 14, and it is a script round).
+⭐ **(done — the engine was built and has had two fix rounds; see the S11 PY ENGINE block below.)**
 
 ⛔⛔ **WHAT THIS COST, and it is the lesson: ~20 legs, 0 lines of engine.** ⭐ Rounds returned 5, 4, 4, 4
 findings — ⛔ **not convergence.** ⭐ What ended it was **one census I had asserted from precedent since
@@ -22,89 +20,52 @@ round 1**: three findings collapsed into a single measured fact ⇒ **rule 2 now
 ⚠ **Still open, ⛔ none blocking the build:** `F4` (S10 regeneration); `F3`'s row shape; S10's four owed
 items; `T7`'s comparator-side native-boolean rejection ⇒ **comparator contract, frozen before it sees
 either output**.
-⛔⛔ **S11 PY ENGINE — BUILT, ⛔ NOT FINISHED. 2026-08-12.** Codex rewrote
-`scripts/S11_stray_longitudinal_sympy_audit.py` (1703 lines, compiles, emits real `srepr` CAS objects) and
-was **reaped by the harness at ~36 min mid-patch** — ⛔ not OOM (18 Gi free), ⛔ no orphan, ⛔ no
-`tokens used` line. ⚠ **Relaunch with `setsid` + pidfile so it survives reaping**
-⇒ [[feedback-background-process-launch]].
-⛔⛔ **MEASURED DEFECT — THE ENGINE EATS MEMORY UNTIL THE OOM KILLER TAKES IT.** ⚠ `ps` on the **python**
-pid: **22.3 GB RSS at 100% CPU** (`RN`) after ~3 min, on a 30 GB box. ⛔ I killed it; free went 5.7 → 22 Gi.
-⇒ ⭐⭐ **That is why every run "ended cleanly with zero stderr": SIGKILL leaves no traceback**, and it is
-why Codex's own build died at ~36 min. ⛔ **The harness was never the cause.**
-⚠ An ARBITER RE-RUN (mine, ⛔ not the builder's word) reaches **856 emitted tags**, then ⛔ never emits
-`PY_S11_LOCAL_SECTION10_REPORT`, so ⛔ **`S11_exports.py` is never published.** ⚠ The export writer and the
-**F6** guard both exist (`:1604`, `:1687`) and the guard is ⛔ **not** what fired.
-⚠ **The stall point:** last tags are `PY_S11_MAIN_D5_ROOT_COINCIDENCE_R1_R2_COEFF_REAL_{WITNESS,STATUS_OPERANDS}`
-⇒ **MAIN, D=5, root coincidence.** ⚠ Only `MAIN` D2–D5 ever run; ⛔ later packages in `PACKAGE_ORDER` are
-never reached.
-⛔⛔ **I GOT THIS WRONG TWICE BEFORE MEASURING THE RIGHT OBJECT.** ⚠ (1) *"exits early and silently"* —
-inferred from `alive: no` + empty stderr, ⛔ with no exit code. ⚠ (2) *"it hangs"* — inferred from a pid at
-**0.0% CPU / 3.5 MB**, which was ⛔ **the `bash` WRAPPER, not `python`**: `$$` in `setsid bash -c` is the
-shell, and without `exec` bash **forks**. ⇒ ⭐⭐ **Measure the process that does the work** — one
-`ps -eo pid,ppid,pcpu,rss,args | grep <script>` settled what two rounds of inference got backwards.
-⚠⚠ ⭐ **`free -h` must be read WHILE the job runs** ⇒ [[feedback-review-agents]]. ⛔ I ran it *after* the
-runaway was already dead and it read 18 Gi free, which is what sent me down the harness-reaping story.
-⭐ **NEXT DIAGNOSIS, ⛔ for a leg, not for me to guess:** the stall is in D=5 root coincidence; ⚠ ~7 bare
-`except Exception` handlers (`:756 :775 :955 :1317 :1450 :1668`) may mask the real failure, and an
-unbounded exact-CAS root computation is the obvious suspect.
-⛔⛔ **RUN 4 (8 GB cap) STALLED AND WAS KILLED AT 5h37m — ⛔ the engine needs THREE FIXES before it is run
-again.** ⚠ It **entered** 21 of 22 cells — ⛔ **entered, NOT completed; see the RESOLVED block below, where
-`MAIN` D5 turns out to have RAISED** — then emitted **nothing for ~3.5 hours** at 99.7% CPU while RSS
-doubled 208 → 459 MB. ⚠ Stuck inside **`XKIN_ANISO_D4`**, ⛔ not D5.
-⭐ Output preserved: `~/.s11_build/s11_stalled_FINAL.out` (14.9 MB, 5123 tags).
+⭐⭐ **S11 PY ENGINE — ROUND 2 COMMITTED `4d5ff0f6`. ⭐ IT COMPUTES. ⛔ THREE BLOCKERS REMAIN.**
 
-⭐⭐ **THE THREE FIXES (user, 2026-08-12) — ⛔ a smaller memory cap is NOT one of them:**
-1. ⭐⭐ **WRITE THE LEDGER AS SOON AS `MAIN` COMPLETES.** ⛔ `write_exports` sits at `:1682`, **after the
-   whole package loop**, so a finished primary package is held hostage by a control cell and ⛔ **any
-   interruption discards it**. ⚠ That is what cost runs 1–4. ⭐ **F6's condition is already MAIN-only
-   (`:1680`), so this is a PLACEMENT change, ⛔ not a rule change.**
-2. ⭐ **PIPE STDOUT TO `research/pde_ledger_v3/scripts/out/S11_stray_longitudinal_sympy_audit.out`.** ⚠ The
-   script has **no `out/` writing of its own** — every run so far landed in `/tmp`. ⛔ The committed `.out`
-   is still the **stale 825-line OOM casualty**.
-3. ⛔⛔ **THE EXPENSIVE CALCULATION MUST CHANGE — ⛔ forcing a `MemoryError` is a WORKAROUND, not a fix**
-   (⚠ the orchestrator proposed a 2 GB cap; ⭐ the user rejected it and was right). ⚠ Measured: `XKIN_ANISO`
-   is **9.22 MB of 14.9 MB in 737 tags**, and its three `ROOT_COINCIDENCE_R*_R*_K_REAL_ADMISSIBLE` tags are
-   **0.82 / 0.55 / 0.41 MB EACH**. ⭐ Same object, tractable method (rule 3: ⭐ name the object, ⛔ never the
-   recipe). ⚠ `MAIN` is only **0.97 MB** — ⛔ the answer was never the cost.
+⭐ **What is genuinely fixed** (5 runs used to die; now `MAIN` D2–D5 completes in **~295 s** total):
+the `MemoryError` wall (rank/minors now exact `DomainMatrix` over a rational-function domain, verified by
+two legs as **the same algebraic object**, 34/34 agreements); the export digest path (⛔ publish could
+**never** have succeeded before — pre-existing, masked because `MAIN` D5 never completed); the mid-loop
+publish mislabel; a regressed nullspace basis (residual `[0,0,0]` verified independently); the hard-coded
+size gates; the `ISSUES[:20]` truncation.
 
-⛔⛔⛔ **RESOLVED, AND IT INVERTS THE DIAGNOSIS: `MAIN` D5 NEVER COMPLETED.** ⚠ Measured — D5 is missing
-**188 of D4's 249 tag suffixes**, including `DIM_COEFFICIENTS` and `COEFFICIENT_ORDERING`, ⭐ the exact two
-the code reads to fill `main_dim_data[n]`. ⚠ D5's last tag is
-`MAIN_D5_ROOT_COINCIDENCE_R1_R2_COEFF_REAL_STATUS_OPERANDS` — ⭐ **the same point where the uncapped runs
-died at 856 tags.** ⇒ `run_cell('MAIN',5)` **raised**, was swallowed at `:1668`, and D5 never entered
-`completed_pairs`.
-⇒ ⛔⛔ **`main_completed != main_declared`, so the export could NEVER have published** — ⛔ regardless of
-`XKIN_ANISO`, and ⛔ regardless of fix 1.
-⇒ ⭐⭐ **FIX 3 IS THE BLOCKER AND IT IS IN `MAIN`, ⛔ not in a control.** ⭐ `XKIN_ANISO`'s 9 MB is the SAME
-root-coincidence calculation in another package ⇒ ⭐ **one badly-formed calculation, two symptoms.**
-⛔⛔ **ORCHESTRATOR ERROR, ⛔ repeated after being caught once:** I claimed *"MAIN D2–D5 all complete"* from
-**tag PREFIXES appearing in the stream**. ⚠ A prefix means the cell STARTED. ⭐ Completion = the cell's
-**terminal tags**, or `completed_pairs`. ⇒ [[feedback-measure-the-artifact-not-the-document]].
-⭐ **Codex's leg found this** with a one-cell `run_cell('MAIN',5)` reproduction catching `BaseException`.
-⭐⭐ **REPRO REBUILT AND IT ANSWERED — `~/.s11_build/repro_d5.py`, verdict `d5_repro_verdict.out`.**
-⛔ **`MemoryError`**, and the frame is exact:
-`run_cell:1380 → emit_q4:1239 → matrix_rank:870 → sympy rank() → _row_reduce → cross_cancel`.
-⚠ 62 tags, last tag matches the full run ⇒ ⭐ **the isolated cell reproduces the whole failure in ~4 min,
-⛔ not 6 h.** ⭐ Use it before any fix round.
+⭐⭐⭐ **THE FORM ABLATION CAUGHT A TYPED OBJECT — rule 14's first catch on this engine.**
+`STRATUM_ORDERING` is **byte-identical `Tuple()` under both ablations**, including one that moved
+`ROOT_COUNT_DISTINCT` 2→1 and every rank. ⇒ `:1456` emits a literal `sp.Tuple()`; `stratum_candidates` is
+accumulated at 3 sites and **never read**; the five Q8b evidence objects grep to **0**.
+⭐ Everything else moved: 133/268 and 101/163 payloads; `Q7_RESIDUAL` `0 → nonzero`.
 
-⛔⛔ **THE DEFECT, `:868-870`:**
-```
-def matrix_rank(matrix):
-    simplified = sp.Matrix(matrix).applyfunc(lambda e: sp.factor(sp.cancel(e)))
-    return int(simplified.rank(iszerofunc=lambda entry: entry == 0, simplify=False))
-```
-⚠ **INPUT entries ARE pre-simplified** — ⛔ the INTERMEDIATE entries `cross_cancel` builds during
-elimination are **not** (`simplify=False`), and ⭐ those are what `iszerofunc` tests. ⚠ `entry == 0` is
-SymPy **structural** equality ⇒ an intermediate that is zero only after `cancel` reads NON-zero ⇒ ⛔ it is
-taken as a pivot ⇒ ⭐ **expression swell (the OOM) and a possible rank OVERCOUNT.**
-⛔⛔ **BLAST RADIUS — the same pattern is in `nullspace` at `:920`**, and ⚠ **nullspace is MORE
-physics-bearing than rank: it is what identifies ZERO MODES**, which is S11's actual question.
-⇒ ⚠ `MAIN` D2/D3/D4 **completed**, ⛔ but completing is not being right — ⭐ **their ranks and nullspaces
-are in scope for the legs.** ⛔ `matrix_rank` callers: `:1239`, `:1242`.
-⇒ ⭐⭐ **The fix is a CORRECT ZERO TEST — ⛔ not a performance workaround, ⛔ not a memory cap.**
+⛔⛔ **THREE BLOCKERS, AND THEY CHAIN — ⛔ fixing them out of order accomplishes nothing:**
+| # | defect | measured |
+|---|---|---|
+| **D1** | `:820-828` gates `ROOT_COINCIDENCE_*_COEFF` on a **syntactic** radical check and writes *"measured unavailable"* | ⛔ gives up in **0.4 s**; independent solve returns branches in **3.8 s / 3.9 s** (⭐ I verified this myself). ⛔ Rule 2 violated **inside §10** |
+| **D2** | `evaluate_premise` falls through to `None` for `BooleanFalse` ⇒ a provably EXCLUDED branch types UNDECIDED | `_REAL_ADMISSIBLE` = `{UNDECIDED: 22/35/39}` at `MAIN` D2/D3/D4 — ⛔ **zero ADMISSIBLE, zero EXCLUDED** |
+| **D4** | **§Q8b is UNIMPLEMENTED** — ~126 spec lines, 19 obligations | ⛔ a **build**, not a fix. §Q8: *"NOT BOOKKEEPING"* |
+⇒ ⭐ **D1 starves the candidate pool §Q8b feeds from; D2 makes every candidate UNDECIDED** (a stratum is
+*defined* as ADMISSIBLE) ⇒ ⛔ implementing D4 alone would find nothing.
+⚠ Also open: `_INCONSISTENT` can never return `PROVED_TRUE` (`sp.Eq(...,evaluate=False)` is always an
+`Equality`) — §5 says it and its partner separate the three degenerate cases; ⛔ one is inert.
 
-⭐ **THEN:** two legs — **a fresh Claude agent + Grok** (Codex wrote it), ⛔⛔ **FORM ABLATION MANDATORY in
-each** (rule 14). ⚠ Logs: `~/.s11_build/`. ⛔ `py-spy` needs sudo here, so no stack dump was possible.
+⛔ **A FULL SWEEP STILL WILL NOT PUBLISH.** Publish is **end-of-run only**; `XKIN_ANISO` exceeds 600 s at D3
+and scales **4–5× per dimension**, while `MAIN` finishes in ~295 s. ⭐ A MAIN-only reduced run **does**
+publish (leg-verified). ⇒ ⭐ **the fix is a mid-loop publish whose run record says `unattempted ≠ skipped`**
+— ⛔ the dishonest version (18 rows claiming controls were *skipped*) is what round 2 correctly removed.
+
+⚠⚠ **THE PREVIOUS ENGINE DID NOT "MISS" §Q8b — ⛔ there was no spec.** `S11_SHARED_PHYSICS.md` first exists
+at `f49a1684` (*"the shared spec it never had"*), **this cycle**. ⭐ Measured on the as-built copy:
+**955 lines, 41 emitted objects total, and 0 mentions of `STRATUM` / `ADMISSIBLE` / `RANK_DROP` /
+`ROOT_COINCIDENCE`.** ⇒ ⛔ S11's earlier results were far less verified than they looked: the mode count on
+exceptional strata was **never computed**, ⛔ not computed and found fine.
+
+⚠⚠ **A WATCHDOG IS RUNNING AND IS INVISIBLE IN THE UI: `/tmp/s11_watchdog.sh`.** It kills any S11 python
+over **6 GB RSS** (healthy runs sit at 120–460 MB; the blowup hit 22.3 GB and would take the user's other
+`codex` sessions with it). ⭐ `pkill -f s11_watchdog` to stop it; ⭐ **relaunch it before any S11 run.**
+⛔ It is NOT the memory cap the user rejected — that one sat inside the acceptance path.
+
+⭐ **NEXT:** fix brief round 3 (D1, D2, the publish placement) ⇒ **two legs on the list** (rule 7) ⇒ Codex
+⇒ two legs on the script with a **FORM ABLATION mandatory**. ⛔ §Q8b (D4) is a separate BUILD and needs its
+own directive. ⚠ Logs `~/.s11_build/`; leg probes `~/.s11_build/leg_probes/`; ⭐ the 4-min reproducer is
+`~/.s11_build/repro_d5.py` — ⛔ never run the full loop to test a fix.
 
 ⚠ **HYGIENE, ⛔ NOT A CONTROL:** `/tmp/s11*_leg_*/`, `/tmp/f9*_leg_*/`, `/tmp/s11_fold_leg/` hold review-leg
 scratch that computed real S11 physics. ⛔ Do not commit it into the tree — it is scratch, and the tree is

@@ -72,3 +72,47 @@ grep -n 'nullspace_basis\|generic_nullspace_vectors' "$S"
 echo '```'
 } > "$OUT"
 wc -l "$OUT"
+
+# appended after the two legs on this list
+{
+echo
+echo '## 9. WHAT THE TWO LEGS CORRECTED IN THIS LIST'
+echo '(verdicts: ~/.s11_build/fix2_brief_leg_{codex,grok}.log)'
+echo
+echo 'The legs DISAGREED on the item-5 counts. Codex measured both families and reconciles it:'
+echo '```'
+echo 'D 2 SOLVE_TOKENS 9   CANONICAL_TOKENS 3    REAL_STATUS {UNDECIDED: 3}'
+echo 'D 3 SOLVE_TOKENS 27  CANONICAL_TOKENS 9    REAL_STATUS {UNDECIDED: 5, PROVED_NONEMPTY: 4}'
+echo 'D 4 SOLVE_TOKENS 36  CANONICAL_TOKENS 12   REAL_STATUS {UNDECIDED: 6, PROVED_NONEMPTY: 6}'
+echo 'D 5 SOLVE_TOKENS 36  CANONICAL_TOKENS 12   REAL_STATUS {UNDECIDED: 6, PROVED_NONEMPTY: 6}'
+echo 'TOTAL_ISSUES 72'
+echo '```'
+echo '=> the list said 9/27/36/36 (SOLVE, correct but unlabelled); one leg called it a 3x overcount'
+echo '   while counting CANONICAL only. Both numbers are real. Rule 13: the correction was not adopted'
+echo '   blind.'
+echo
+echo 'The regression, measured independently (Codex):'
+echo '```'
+echo 'ROOT 1 RANK 2 NULLITY 1 MINOR_STATUS_COUNTS {False: 4, True: 5} BASIS_LEN 1'
+echo 'ROOT 2 RANK 2 NULLITY 1 MINOR_STATUS_COUNTS {None: 9}          BASIS_LEN 0'
+echo 'ROOT 3 RANK 2 NULLITY 1 MINOR_STATUS_COUNTS {None: 9}          BASIS_LEN 0'
+echo '```'
+echo
+echo 'The refused locus returns immediately (value withheld, rule 5):'
+echo '```'
+echo 'EQUATION_COUNT 6 VARIABLE_COUNT 2  SOLVE_SECONDS 0.019906  GROEBNER_SECONDS 0.009028'
+echo '```'
+echo
+echo 'Publish-failure mislabelling, reproduced by monkeypatching write_exports to raise:'
+echo '```'
+echo "PY_S11_LOCAL_MAIN_D2_CELL_EXCEPTION: Tuple(Str('MAIN'), Integer(2), Str('RuntimeError'), ...)"
+echo 'PY_S11_RUN_PAIRS: Tuple(Tuple(Str(MAIN), Integer(2)))     <-- same cell listed as RUN'
+echo 'SECTION10_EMITTED False'
+echo '```'
+echo
+echo 'Corrections folded: item 7 relocated to Q3 root-coincidence coefficient solving (both legs);'
+echo 'PROVED_NONEMPTY not universal; item 6 duplication is run_pairs/skipped_pairs only;'
+echo 'the "do not change what is computed" boundary contradicted items 3 and 5;'
+echo 'acceptance strengthened so items 4-7 cannot pass unfixed and clause 3 requires the'
+echo 'nullspace basis of the live M_r, not merely a non-empty tuple.'
+} >> research/pde_ledger_v3/directives/_measurements/S11_engine_fix_round2_brief.md

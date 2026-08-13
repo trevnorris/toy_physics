@@ -104,3 +104,43 @@ $ grep -n 'nullspace_basis\|generic_nullspace_vectors' research/pde_ledger_v3/sc
 984:def generic_nullspace_vectors(matrix: sp.MatrixBase, rank: int) -> list[sp.ImmutableMatrix]:
 1306:        basis = generic_nullspace_vectors(m_r, rank)
 ```
+
+## 9. WHAT THE TWO LEGS CORRECTED IN THIS LIST
+(verdicts: ~/.s11_build/fix2_brief_leg_{codex,grok}.log)
+
+The legs DISAGREED on the item-5 counts. Codex measured both families and reconciles it:
+```
+D 2 SOLVE_TOKENS 9   CANONICAL_TOKENS 3    REAL_STATUS {UNDECIDED: 3}
+D 3 SOLVE_TOKENS 27  CANONICAL_TOKENS 9    REAL_STATUS {UNDECIDED: 5, PROVED_NONEMPTY: 4}
+D 4 SOLVE_TOKENS 36  CANONICAL_TOKENS 12   REAL_STATUS {UNDECIDED: 6, PROVED_NONEMPTY: 6}
+D 5 SOLVE_TOKENS 36  CANONICAL_TOKENS 12   REAL_STATUS {UNDECIDED: 6, PROVED_NONEMPTY: 6}
+TOTAL_ISSUES 72
+```
+=> the list said 9/27/36/36 (SOLVE, correct but unlabelled); one leg called it a 3x overcount
+   while counting CANONICAL only. Both numbers are real. Rule 13: the correction was not adopted
+   blind.
+
+The regression, measured independently (Codex):
+```
+ROOT 1 RANK 2 NULLITY 1 MINOR_STATUS_COUNTS {False: 4, True: 5} BASIS_LEN 1
+ROOT 2 RANK 2 NULLITY 1 MINOR_STATUS_COUNTS {None: 9}          BASIS_LEN 0
+ROOT 3 RANK 2 NULLITY 1 MINOR_STATUS_COUNTS {None: 9}          BASIS_LEN 0
+```
+
+The refused locus returns immediately (value withheld, rule 5):
+```
+EQUATION_COUNT 6 VARIABLE_COUNT 2  SOLVE_SECONDS 0.019906  GROEBNER_SECONDS 0.009028
+```
+
+Publish-failure mislabelling, reproduced by monkeypatching write_exports to raise:
+```
+PY_S11_LOCAL_MAIN_D2_CELL_EXCEPTION: Tuple(Str('MAIN'), Integer(2), Str('RuntimeError'), ...)
+PY_S11_RUN_PAIRS: Tuple(Tuple(Str(MAIN), Integer(2)))     <-- same cell listed as RUN
+SECTION10_EMITTED False
+```
+
+Corrections folded: item 7 relocated to Q3 root-coincidence coefficient solving (both legs);
+PROVED_NONEMPTY not universal; item 6 duplication is run_pairs/skipped_pairs only;
+the "do not change what is computed" boundary contradicted items 3 and 5;
+acceptance strengthened so items 4-7 cannot pass unfixed and clause 3 requires the
+nullspace basis of the live M_r, not merely a non-empty tuple.

@@ -63,9 +63,11 @@ capability limit.
 ⛔ Against the physics authority: `S11_SHARED_PHYSICS.md:245` requires `_SOLUTION` be *the solution set
 exactly as your CAS returns it*; `:285` permits `NOT_APPLICABLE` **only** where a residual is
 non-polynomial — ⚠ these are polynomial; and neither token is defined by the spec.
-⚠ Scale: **9 / 27 / 36 / 36** such tokens at `MAIN` D2 / D3 / D4 / D5 — ⛔ this is the majority of the Q8
-locus machinery at **every** dimension, not a D5 effect. ⚠ `_REAL_STATUS` reads `PROVED_NONEMPTY` beside
-them.
+⚠ Scale, ⭐ two token families, both measured: **SOLVE 9 / 27 / 36 / 36** and **CANONICAL 3 / 9 / 12 / 12**
+at `MAIN` D2 / D3 / D4 / D5. ⛔ This is the majority of the Q8 locus machinery at **every** dimension, not a
+D5 effect.
+⚠ **CORRECTED:** an earlier draft said `_REAL_STATUS` reads `PROVED_NONEMPTY` beside them. ⛔ Not universal —
+measured: D2 is **all `UNDECIDED`**; D3 is 5 `UNDECIDED` / 4 `PROVED_NONEMPTY`; D4 and D5 are 6 / 6.
 
 ⇒ ⭐ **Emit what the CAS returns.** ⛔ Do not substitute an undefined token for a computation that
 completes. ⭐ If some system genuinely does not return, ⭐ that case reports under §10 — ⛔ a size count is
@@ -76,14 +78,17 @@ not evidence that it will not.
 `:1786` renders `ISSUES[:20]`. Measured: `MAIN` alone produces **72** entries (D2=6, D3=18, D4=24, D5=24),
 and `MAIN` runs first. ⇒ ⛔ **every issue round 1 added (`:916 :932 :1016 :1512`, and `CELL_EXCEPTION` at
 `:1764`) can never reach the report.** ⚠ `:749` writes its entry with no package/`D` prefix, so those are
-unattributable, and the mid-loop `merged_export` duplicates every export-path entry.
+unattributable. ⚠ **CORRECTED:** the duplication is ⛔ not of every export-path entry — measured, it is
+`run_pairs` and `skipped_pairs` only (each appearing twice).
 ⇒ ⭐ §10 must be able to carry what the run actually recorded, ⛔ and each entry must say which cell it came
 from.
 
 ## ⭐ 7 · A THIRD WALL — ⛔ MEASURE IT, ⛔ do not assume it
 
-Both the pre-fix and post-fix engines emit `..._KW_ZERO_LOCUS_EQUATIONS` and then stall in the next
-statement, `sp.solve` at `:776`, inside `XKIN_ANISO` D3/D4. ⚠ Never reached by any earlier run because they
+⛔⛔ **RELOCATED — both legs put it EARLIER than the list first said.** ⚠ The list cited `sp.solve` at
+`:776` after `..._KW_ZERO_LOCUS_EQUATIONS`; ⛔ that was read off the last tag emitted, which shows where
+**output** stopped, ⛔ not where **time** was spent. ⭐ Measured: the earliest stall is in **Q3
+root-coincidence coefficient solving, before Q4/Q11**, inside `XKIN_ANISO` D3/D4. ⚠ Never reached by any earlier run because they
 all died at `MAIN` D5 first. ⚠ **600 s was a review cap, ⛔ not proof of non-termination.**
 ⇒ ⭐ Determine whether it terminates. ⭐ Then either make it complete, or report it under §10 as an
 unavailable construction — ⛔ do not leave it unmeasured, and ⛔ do not gate it by a count (see item 5).
@@ -101,7 +106,12 @@ radical roots land in `EX`. ⭐ At minimum the stream should let a consumer tell
 ## Boundaries
 
 - ⛔ No memory cap, no timeout, no handler that swallows a failure to make a run finish.
-- ⛔ Do not change what is computed, `PACKAGE_DIMS`, the `D` range, or any package.
+- ⛔ Do not change `PACKAGE_DIMS`, the `D` range, or any package.
+- ⛔⛔ **CORRECTED — an earlier draft said "do not change what is computed", and that CONTRADICTS items 3
+  and 5**, which exist precisely to make the engine compute what it currently refuses or discards. ⚠ A
+  builder could have cited that boundary to keep the size gate and the empty bases. ⇒ ⭐ **The objects
+  §§4–8 name must not change. What the engine actually computes for them must change where items 3 and 5
+  say it is currently wrong.**
 - ⛔ **No expected value and no acceptance criterion referencing one** (rule 5). ⛔ Do not treat any prior
   output as a reference — ⭐ a changed value is a **finding to report under §10**, ⛔ never something to tune
   away.
@@ -113,8 +123,17 @@ radical roots land in `EX`. ⭐ At minimum the stream should let a consumer tell
 2. A run whose declared cells complete **publishes `S11_exports.py`**, and one that fails **still emits its
    §10 report**. ⭐ Demonstrate both on a reduced `PACKAGE_DIMS` copy under `/tmp` — ⛔ never by editing the
    engine's own declarations.
-3. `XKIN_ANISO` D3 roots 2 and 3 emit a non-empty basis, or §10 says why not.
-4. ⛔ Do not run the full package loop; it has OOM-killed this machine.
+3. ⛔ **NOT merely "non-empty" — any tuple satisfies that.** ⭐ `XKIN_ANISO` D3 roots 2 and 3 emit **the
+   nullspace basis of the live `M_r`**, demonstrated by the basis-times-matrix residual the engine already
+   computes; ⭐ or §10 states why it could not be built.
+4. ⛔⛔ **ITEMS 4–7 MUST NOT BE ABLE TO PASS UNFIXED.** ⚠ Measured gap: the first draft's acceptance went
+   green with false `skipped` rows, size-gate tokens, a truncated §10 and an unmeasured wall all still in
+   place. ⇒ ⭐ report, per item, the command and literal output showing it is closed **or** the §10 entry
+   that records why it is not.
+5. ⭐ **ORDER: item 1 before item 4 is WORSE than neither.** ⚠ Fixing the path alone starts publishing the
+   18 false `skipped` rows as `COMPUTED_OBJECT` instead of failing to publish at all. ⛔ Do not ship 1
+   without 4.
+6. ⛔ Do not run the full package loop; it has OOM-killed this machine.
 
 ## Deliverable
 

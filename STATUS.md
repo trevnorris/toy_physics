@@ -66,9 +66,21 @@ hours** at 99.7% CPU while RSS doubled 208 → 459 MB. ⚠ Stuck inside **`XKIN_
    **0.82 / 0.55 / 0.41 MB EACH**. ⭐ Same object, tractable method (rule 3: ⭐ name the object, ⛔ never the
    recipe). ⚠ `MAIN` is only **0.97 MB** — ⛔ the answer was never the cost.
 
-⚠ **Also measured, ⛔ unexplained:** `MAIN` D5 emitted **61 tags vs ~250** at D2/D3/D4. ⛔ Do not read that
-as completion — ⚠ a swallowed `MemoryError` in one of the ~7 bare `except Exception` handlers looks
-identical from outside. ⭐ **First question for the legs.**
+⛔⛔⛔ **RESOLVED, AND IT INVERTS THE DIAGNOSIS: `MAIN` D5 NEVER COMPLETED.** ⚠ Measured — D5 is missing
+**188 of D4's 249 tag suffixes**, including `DIM_COEFFICIENTS` and `COEFFICIENT_ORDERING`, ⭐ the exact two
+the code reads to fill `main_dim_data[n]`. ⚠ D5's last tag is
+`MAIN_D5_ROOT_COINCIDENCE_R1_R2_COEFF_REAL_STATUS_OPERANDS` — ⭐ **the same point where the uncapped runs
+died at 856 tags.** ⇒ `run_cell('MAIN',5)` **raised**, was swallowed at `:1668`, and D5 never entered
+`completed_pairs`.
+⇒ ⛔⛔ **`main_completed != main_declared`, so the export could NEVER have published** — ⛔ regardless of
+`XKIN_ANISO`, and ⛔ regardless of fix 1.
+⇒ ⭐⭐ **FIX 3 IS THE BLOCKER AND IT IS IN `MAIN`, ⛔ not in a control.** ⭐ `XKIN_ANISO`'s 9 MB is the SAME
+root-coincidence calculation in another package ⇒ ⭐ **one badly-formed calculation, two symptoms.**
+⛔⛔ **ORCHESTRATOR ERROR, ⛔ repeated after being caught once:** I claimed *"MAIN D2–D5 all complete"* from
+**tag PREFIXES appearing in the stream**. ⚠ A prefix means the cell STARTED. ⭐ Completion = the cell's
+**terminal tags**, or `completed_pairs`. ⇒ [[feedback-measure-the-artifact-not-the-document]].
+⭐ **Codex's leg found this** with a one-cell `run_cell('MAIN',5)` reproduction catching `BaseException`
+⇒ ⭐ **rebuild that repro first next session**; it is the instrument.
 
 ⭐ **THEN:** two legs — **a fresh Claude agent + Grok** (Codex wrote it), ⛔⛔ **FORM ABLATION MANDATORY in
 each** (rule 14). ⚠ Logs: `~/.s11_build/`. ⛔ `py-spy` needs sudo here, so no stack dump was possible.

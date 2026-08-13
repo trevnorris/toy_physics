@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐ WHERE WE ARE — 2026-08-13. ⭐⭐ ROUND 3 CLOSED `9fb45365` — THE ENGINE COMPUTES AND PUBLISHES. ⛔ NEXT: THE §Q8b BUILD DIRECTIVE.
+## ⭐⭐ WHERE WE ARE — 2026-08-13. ⭐⭐ §Q8b BUILT `94e14e42` + FIXED `36af7d95` — THE SYMPY ENGINE NOW IMPLEMENTS THE WHOLE SPEC. ⛔ NEXT: THE WL SIBLING ENGINE (BLIND).
 
 ⭐⭐ **Full state: `research/pde_ledger_v3/REBUILD_HANDOFF.md`, top block.**
 
@@ -70,12 +70,28 @@ with no traceback** — ⛔ **the exact symptom behind four wrong diagnoses in o
 ⚠ measured 2026-08-13: the pattern matched my own shell and killed it mid-command, so the edit and commit
 that followed silently did not run ⇒ [[feedback-background-process-launch]]. ⭐ Kill the captured pid.
 
-⭐ **NEXT: the §Q8b build directive** (D4 — ~126 spec lines, 19 obligations; §Q8: *"NOT BOOKKEEPING"*).
-⭐ Its feeders are now live: admissibility tokens are real and the COEFF candidate pools are populated.
-⇒ orchestrator writes the directive ⇒ **two legs on it** (rule 7) ⇒ Codex ⇒ two legs on the script,
-**FORM ABLATION mandatory**. ⚠ Logs `~/.s11_build/`; round-3 probes `~/.s11_build/round3_probes/`,
-script-leg scratch `/tmp/s11r3s_leg_*/`; ⭐ the reproducer is `~/.s11_build/repro_d5.py` (now ~371 s) —
-⛔ never run the full loop to test a fix.
+⭐⭐ **§Q8b IS BUILT AND LEG-CLEAN** — directive `20607fe6` (2 legs, 7 findings folded; the acceptance
+instrument is the measured dormant defect: *an ADMISSIBLE entry did not promote*), build `94e14e42`
+(658 lines; 2 legs: point-invariance byte-exact, equation corruption moves 162–800 tags, form ablation
+moves ordering+dispositions, publish carries 1046 stratum rows row-for-row), fix 1 `36af7d95` (1 line:
+`VALUE` reports what was **obtained**, not what constancy decided; brief hardened by 2 legs —
+bidirectional equality + a non-vacuous driven witness — then 2 script legs clean, tag diff exactly the
+six `VALUE` fields).
+⚠ **Live cells still promote zero strata** (all candidates EXCLUDED/UNDECIDED — that is the measured
+physics, not a defect); the machinery is verified through driven `/tmp` promotions covering all three
+source families. ⚠ Below-filter observations recorded in the leg logs: a latent loud NaN `TypeError`
+under artificial corruption; an ADMISSIBLE component whose exact point fails drops with only an ISSUES
+line (unexercised); 4× exact determinant fallback recorded on driven component matrices.
+⭐ Runtime ruling (user, 2026-08-13): **a cell may exceed 600 s while its output streams** — a long
+SILENT stretch is the failure. `XKIN_ANISO` D3 (>600 s, streaming) is a cell to run through, ⛔ not a
+wall to design around.
+
+⭐ **NEXT: the WL sibling engine** — written BLIND, imports nothing, re-derives from
+`S11_SHARED_PHYSICS.md` alone; ⛔ **it must receive NO S11 result** or the cross-engine disagreement is
+worth nothing. ⚠ Also pending, user's call on timing: a supervised full sweep (hours; `XKIN_ANISO`
+D3–D5 scale 4–5×/dim) to regenerate the stale committed `.out` — ⛔ which stays untouched until a real
+run completes. ⚠ Logs `~/.s11_build/`; Q8b probes `~/.s11_build/q8b/` + `/tmp/s11q8b*_leg_*/`;
+the reproducer is `~/.s11_build/repro_d5.py` (~353 s) — ⛔ never run the full loop to test a fix.
 
 ⚠ **HYGIENE, ⛔ NOT A CONTROL:** `/tmp/s11*_leg_*/`, `/tmp/f9*_leg_*/`, `/tmp/s11_fold_leg/` hold review-leg
 scratch that computed real S11 physics. ⛔ Do not commit it into the tree — it is scratch, and the tree is

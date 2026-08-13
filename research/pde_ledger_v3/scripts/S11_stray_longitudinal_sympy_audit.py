@@ -41,7 +41,25 @@ M_B_TOKEN = Str("M_B")
 
 DECLARED_SYMBOLS: dict[sp.Symbol, dict[str, str]] = {}
 ISSUES: list[str] = []
+CURRENT_CELL: tuple[str, int] | None = None
+CURRENT_ISSUE_CONTEXT: str | None = None
 CUSTOM_QUANTITY_NAMES: set[str] = set()
+
+
+def record_issue(message: str, *, package: str | None = None, n: int | None = None,
+                 root: int | None = None, stratum: int | None = None,
+                 context: str | None = None) -> None:
+    if (package is None or n is None) and CURRENT_CELL is not None:
+        package, n = CURRENT_CELL
+    if package is not None and n is not None:
+        prefix = f"{package} D{n}"
+        if root is not None:
+            prefix = f"{prefix} root {root}"
+        if stratum is not None:
+            prefix = f"{prefix} stratum {stratum}"
+    else:
+        prefix = context or CURRENT_ISSUE_CONTEXT or "GLOBAL"
+    ISSUES.append(f"{prefix}: {message}")
 
 
 def register_symbol(symbol: sp.Symbol, class_tag: str, description: str) -> sp.Symbol:
@@ -742,12 +760,35 @@ def witness_valid(equations: tuple[object, ...], assumptions: sp.Tuple, witness:
     return True
 
 
-def canonical_locus(residuals: tuple[sp.Expr, ...], variables: tuple[sp.Symbol, ...]) -> object:
+def compound_radical_present(expressions: tuple[sp.Expr, ...]) -> bool:
+    for expr in expressions:
+        for subexpr in sp.preorder_traversal(expr):
+            if isinstance(subexpr, sp.Pow) and subexpr.exp.is_Rational and subexpr.exp.q > 1:
+                base = subexpr.base
+                if isinstance(base, sp.Add) or len(getattr(base, "free_symbols", set())) > 1:
+                    return True
+    return False
+
+
+def locus_conditionset(equations: tuple[object, ...], variables: tuple[sp.Symbol, ...]) -> sp.ConditionSet:
+    condition = sp.And(*equations) if equations else sp.true
+    if not variables:
+        return sp.ConditionSet(sp.Tuple(), condition, sp.FiniteSet(sp.Tuple()))
+    if len(variables) == 1:
+        domain = sp.S.Complexes
+        symbol: object = variables[0]
+    else:
+        domain = sp.ProductSet(*([sp.S.Complexes] * len(variables)))
+        symbol = sp.Tuple(*variables)
+    return sp.ConditionSet(symbol, condition, domain)
+
+
+def canonical_locus(residuals: tuple[sp.Expr, ...], variables: tuple[sp.Symbol, ...],
+                    *, package: str | None = None, n: int | None = None,
+                    base_quantity: str = "CANONICAL_LOCUS", root: int | None = None,
+                    stratum: int | None = None) -> object:
     if not residuals:
         return sp.Tuple()
-    if len(residuals) > 4:
-        ISSUES.append(f"canonical locus unavailable for {len(residuals)}-equation exact system")
-        return Str("UNAVAILABLE_EXACT_SYSTEM_SIZE")
     try:
         polys = [sp.Poly(sp.together(residual), *variables) for residual in residuals]
     except (sp.PolynomialError, ValueError):
@@ -756,7 +797,11 @@ def canonical_locus(residuals: tuple[sp.Expr, ...], variables: tuple[sp.Symbol, 
         basis = sp.groebner([poly.as_expr() for poly in polys], *variables, order="lex")
         return sp.Tuple(*[sp.factor(expr) for expr in basis.polys])
     except Exception as exc:  # exact Groebner can be unavailable for some coefficient domains
-        ISSUES.append(f"canonical locus unavailable for variables {[v.name for v in variables]}: {type(exc).__name__}; emitted NOT_APPLICABLE")
+        record_issue(
+            f"{base_quantity}: canonical locus unavailable for variables {[v.name for v in variables]} "
+            f"after {type(exc).__name__}; emitted NOT_APPLICABLE",
+            package=package, n=n, root=root, stratum=stratum,
+        )
         return NOT_APPLICABLE
 
 
@@ -765,28 +810,49 @@ def emit_locus(package: str, n: int, base_quantity: str, residuals: tuple[sp.Exp
                *, root: int | None = None, stratum: int | None = None,
                export: bool = True) -> dict[str, object]:
     equations = tuple(sp.Eq(sp.factor(residual), 0, evaluate=False) for residual in residuals)
+    residual_exprs = tuple(relation_residual(eq) for eq in equations)
+    canonical_payload = canonical_locus(
+        residual_exprs, variables,
+        package=package, n=n, base_quantity=base_quantity, root=root, stratum=stratum,
+    )
     emit_quantity(package, n, f"{base_quantity}_EQUATIONS", sp.Tuple(*equations), root=root, stratum=stratum, export=export)
     solve_skipped = False
-    if len(equations) > 4:
-        solution = Str("SOLVE_UNAVAILABLE_EXACT_SYSTEM_SIZE")
+    if (base_quantity.startswith("ROOT_COINCIDENCE") and base_quantity.endswith("_COEFF")
+            and compound_radical_present(residual_exprs)):
+        solution = locus_conditionset(equations, variables)
         solve_skipped = True
-        ISSUES.append(f"{package} D{n} {base_quantity}: solve unavailable for {len(equations)}-equation exact system")
+        record_issue(
+            f"{base_quantity}: multivariate radical coefficient solve measured unavailable; "
+            "emitted exact ConditionSet for the unresolved locus",
+            package=package, n=n, root=root, stratum=stratum,
+        )
     else:
         try:
-            solution = sp.solve([relation_residual(eq) for eq in equations], list(variables), dict=True, simplify=False)
+            solve_input = list(residual_exprs)
+            solve_kwargs = {"dict": True, "simplify": False, "manual": True}
+            if isinstance(canonical_payload, sp.Tuple) and canonical_payload:
+                solve_input = [
+                    expr.as_expr() if isinstance(expr, sp.Poly) else expr
+                    for expr in canonical_payload
+                ]
+                solve_kwargs = {"dict": True, "simplify": False}
+            solution = sp.solve(solve_input, list(variables), **solve_kwargs)
         except Exception as exc:
             solution = Str(f"SOLVE_UNAVAILABLE_{type(exc).__name__}")
             solve_skipped = True
-            ISSUES.append(f"{package} D{n} {base_quantity}: solve unavailable ({type(exc).__name__})")
+            record_issue(
+                f"{base_quantity}: solve unavailable after {type(exc).__name__}",
+                package=package, n=n, root=root, stratum=stratum,
+            )
     solution_payload = solve_result_to_cas(solution, variables)
     emit_quantity(package, n, f"{base_quantity}_SOLUTION", solution_payload, root=root, stratum=stratum, export=export)
 
-    identical_tests = [sp.factor(sp.cancel(relation_residual(eq))) == 0 for eq in equations]
+    zero_statuses = [algebraic_zero_test(relation_residual(eq)) for eq in equations]
     if not equations:
         identical_object: object = sp.true
-    elif all(test is True for test in identical_tests):
+    elif all(status is True for status in zero_statuses):
         identical_object = sp.true
-    elif any(test is False for test in identical_tests):
+    elif any(status is False for status in zero_statuses):
         identical_object = sp.false
     else:
         identical_object = sp.Tuple(*[sp.Eq(sp.simplify(relation_residual(eq)), 0, evaluate=False) for eq in equations])
@@ -822,7 +888,10 @@ def emit_locus(package: str, n: int, base_quantity: str, residuals: tuple[sp.Exp
     real_admissible = sp.Tuple(*admissible_entries)
     emit_quantity(package, n, f"{base_quantity}_REAL_ADMISSIBLE", real_admissible, root=root, stratum=stratum, export=export)
 
-    emit_quantity(package, n, f"{base_quantity}_CANONICAL_LOCUS", canonical_locus(tuple(relation_residual(eq) for eq in equations), variables), root=root, stratum=stratum, export=export)
+    emit_quantity(
+        package, n, f"{base_quantity}_CANONICAL_LOCUS", canonical_payload,
+        root=root, stratum=stratum, export=export,
+    )
 
     witness = candidate_witness(variables)
     if constant_false:
@@ -855,7 +924,7 @@ def root_multiplicity_pairs(det_expr: sp.Expr) -> tuple[RootData, ...]:
         for root in missing:
             roots[root] = 1
         if sum(roots.values()) != poly.degree():
-            ISSUES.append("root multiplicity solve did not account for every polynomial degree")
+            record_issue("root multiplicity solve did not account for every polynomial degree")
     return tuple(RootData(sp.factor(root), int(mult)) for root, mult in roots.items())
 
 
@@ -876,6 +945,16 @@ def reduced_matrix(matrix: sp.MatrixBase) -> sp.Matrix:
 
 
 def algebraic_zero_test(entry: sp.Expr) -> bool | None:
+    if entry == 0 or entry.is_zero is True:
+        return True
+    if not getattr(entry, "free_symbols", set()):
+        return False if entry != 0 else True
+    try:
+        symbols = tuple(sorted(entry.free_symbols, key=lambda sym: sym.name))
+        poly = sp.Poly(entry, *symbols)
+        return True if poly.is_zero else False
+    except Exception:
+        pass
     try:
         reduced = reduced_expr(entry)
     except Exception:
@@ -894,8 +973,8 @@ def algebraic_zero_test(entry: sp.Expr) -> bool | None:
             return True
         symbols = tuple(sorted(numerator.free_symbols, key=lambda sym: sym.name))
         if symbols:
-            sp.Poly(numerator, *symbols)
-            return False
+            poly = sp.Poly(numerator, *symbols)
+            return True if poly.is_zero else False
     except Exception:
         pass
     if reduced.is_zero is False:
@@ -903,8 +982,9 @@ def algebraic_zero_test(entry: sp.Expr) -> bool | None:
     return None
 
 
-def exact_domain_matrix(matrix: sp.MatrixBase) -> DomainMatrix:
-    return DomainMatrix.from_Matrix(reduced_matrix(matrix)).to_field()
+def exact_domain_matrix(matrix: sp.MatrixBase, *, already_reduced: bool = False) -> DomainMatrix:
+    source = sp.Matrix(matrix) if already_reduced else reduced_matrix(matrix)
+    return DomainMatrix.from_Matrix(source).to_field()
 
 
 def matrix_rank(matrix: sp.MatrixBase) -> int:
@@ -913,7 +993,7 @@ def matrix_rank(matrix: sp.MatrixBase) -> int:
     except MemoryError:
         raise
     except Exception as exc:
-        ISSUES.append(f"matrix rank exact-domain route unavailable ({type(exc).__name__}); used algebraic zero fallback")
+        record_issue(f"matrix rank exact-domain route unavailable after {type(exc).__name__}; used algebraic zero fallback")
         simplified = reduced_matrix(matrix)
         return int(simplified.rank(iszerofunc=algebraic_zero_test, simplify=True))
 
@@ -925,11 +1005,11 @@ def zero_expr(expr: sp.Expr) -> bool:
 def exact_determinant(matrix: sp.MatrixBase) -> sp.Expr:
     simplified = reduced_matrix(matrix)
     try:
-        det_expr = exact_domain_matrix(simplified).det().as_expr()
+        det_expr = exact_domain_matrix(simplified, already_reduced=True).det().as_expr()
     except MemoryError:
         raise
     except Exception as exc:
-        ISSUES.append(f"determinant exact-domain route unavailable ({type(exc).__name__}); used SymPy determinant fallback")
+        record_issue(f"determinant exact-domain route unavailable after {type(exc).__name__}; used SymPy determinant fallback")
         det_expr = simplified.det()
     return reduced_expr(det_expr)
 
@@ -959,7 +1039,7 @@ def determinant_from_live_matrix(matrix: sp.MatrixBase, k: tuple[sp.Symbol, ...]
         return reduced_expr(product * lemma_factor)
     if n <= 4:
         return exact_determinant(matrix)
-    ISSUES.append(f"D{n}: determinant fallback unavailable for unmatched matrix structure")
+    record_issue(f"D{n}: determinant fallback unavailable for unmatched matrix structure")
     return Str("DETERMINANT_UNAVAILABLE_UNMATCHED_STRUCTURE")
 
 
@@ -975,13 +1055,36 @@ def all_minors(matrix: sp.MatrixBase, size: int) -> tuple[sp.Expr, ...]:
     return tuple(minors)
 
 
-def nullspace_basis(matrix: sp.MatrixBase) -> sp.Tuple:
-    simplified = reduced_matrix(matrix)
-    basis = simplified.nullspace(iszerofunc=algebraic_zero_test, simplify=True)
-    return sp.Tuple(*[sp.ImmutableMatrix(vec) for vec in basis])
+def build_nullspace_from_pivot(mat: sp.Matrix, rank: int, selected_rows: tuple[int, ...],
+                               selected_cols: tuple[int, ...]) -> list[sp.ImmutableMatrix]:
+    selected_minor = mat.extract(selected_rows, selected_cols)
+    free_cols = [col for col in range(mat.cols) if col not in selected_cols]
+    basis = []
+    for free_col in free_cols:
+        rhs = -sp.ImmutableMatrix([mat[row, free_col] for row in selected_rows])
+        try:
+            pivot_values = selected_minor.inv() * rhs
+        except Exception as exc:
+            record_issue(f"generic nullspace pivot inverse unavailable after {type(exc).__name__}; used gauss_jordan_solve")
+            pivot_values = selected_minor.gauss_jordan_solve(rhs)[0]
+        vector_entries = [sp.Integer(0)] * mat.cols
+        for idx, col in enumerate(selected_cols):
+            vector_entries[col] = reduced_expr(pivot_values[idx])
+        vector_entries[free_col] = sp.Integer(1)
+        basis.append(sp.ImmutableMatrix(mat.cols, 1, vector_entries))
+    if len(basis) != mat.cols - rank:
+        raise ValueError("basis count did not match matrix nullity")
+    residual_entries = []
+    for vec in basis:
+        residual_entries.extend(reduced_expr(entry) for entry in (mat * vec))
+    if any(algebraic_zero_test(entry) is False for entry in residual_entries):
+        raise ValueError("candidate pivot produced a nonzero nullspace residual")
+    if any(algebraic_zero_test(entry) is None for entry in residual_entries):
+        raise ValueError("candidate pivot residual was undecided")
+    return basis
 
 
-def generic_nullspace_vectors(matrix: sp.MatrixBase, rank: int) -> list[sp.ImmutableMatrix]:
+def generic_nullspace_vectors(matrix: sp.MatrixBase, rank: int, *, root: int | None = None) -> list[sp.ImmutableMatrix]:
     mat = reduced_matrix(matrix)
     cols = mat.cols
     if rank == cols:
@@ -989,38 +1092,32 @@ def generic_nullspace_vectors(matrix: sp.MatrixBase, rank: int) -> list[sp.Immut
     if rank == 0:
         return [sp.ImmutableMatrix(cols, 1, lambda i, _j, col=col: sp.Integer(1) if i == col else sp.Integer(0)) for col in range(cols)]
 
-    selected_rows = None
-    selected_cols = None
-    selected_minor = None
+    undecided_candidates: list[tuple[tuple[int, ...], tuple[int, ...]]] = []
     for row_set in combinations(range(mat.rows), rank):
         for col_set in combinations(range(cols), rank):
             minor = exact_determinant(mat.extract(row_set, col_set))
-            if algebraic_zero_test(minor) is False:
-                selected_rows = row_set
-                selected_cols = col_set
-                selected_minor = mat.extract(row_set, col_set)
-                break
-        if selected_minor is not None:
-            break
-    if selected_minor is None or selected_rows is None or selected_cols is None:
-        ISSUES.append("generic nullspace basis unavailable: no nonzero source minor found")
-        return []
+            status = algebraic_zero_test(minor)
+            if status is False:
+                return build_nullspace_from_pivot(mat, rank, row_set, col_set)
+            if status is None:
+                undecided_candidates.append((row_set, col_set))
 
-    free_cols = [col for col in range(cols) if col not in selected_cols]
-    basis = []
-    for free_col in free_cols:
-        rhs = -sp.ImmutableMatrix([mat[row, free_col] for row in selected_rows])
+    last_error: Exception | None = None
+    for row_set, col_set in undecided_candidates:
         try:
-            pivot_values = selected_minor.inv() * rhs
+            basis = build_nullspace_from_pivot(mat, rank, row_set, col_set)
         except Exception as exc:
-            ISSUES.append(f"generic nullspace pivot inverse unavailable ({type(exc).__name__}); used gauss_jordan_solve")
-            pivot_values = selected_minor.gauss_jordan_solve(rhs)[0]
-        vector_entries = [sp.Integer(0)] * cols
-        for idx, col in enumerate(selected_cols):
-            vector_entries[col] = reduced_expr(pivot_values[idx])
-        vector_entries[free_col] = sp.Integer(1)
-        basis.append(sp.ImmutableMatrix(cols, 1, vector_entries))
-    return basis
+            last_error = exc
+            continue
+        record_issue(
+            "generic nullspace source minor had undecided zero status; emitted basis validated by live matrix residual",
+            root=root,
+        )
+        return basis
+
+    detail = f"; last undecided candidate failed after {type(last_error).__name__}" if last_error is not None else ""
+    record_issue(f"generic nullspace basis unavailable: no usable source minor found{detail}", root=root)
+    return []
 
 
 def scale_exponent_payload(ratio: object) -> object:
@@ -1133,7 +1230,7 @@ def dimension_solve(package: str, n: int, build: PackageBuild, g: sp.ImmutableMa
     for term in all_l_terms:
         dim = expression_dimension(term.expression, dim_env, g_dims, v_dims)
         if dim is None:
-            ISSUES.append(f"{package} D{n}: dimension walker found inhomogeneous action term {term.density_name}")
+            record_issue(f"dimension walker found inhomogeneous action term {term.density_name}", package=package, n=n)
             continue
         equations.extend(sp.Eq(sp.simplify(dim[i]), ENERGY_DENSITY_DIM[i], evaluate=False) for i in range(3))
     unknowns = tuple(entry for coeff in coeffs if coeff != s for entry in dim_symbols[coeff])
@@ -1303,7 +1400,7 @@ def emit_q4(package: str, n: int, route: RouteSelection, roots: tuple[sp.Expr, .
         stacked_rank = matrix_rank(stacked)
         transverse_nullity = n - stacked_rank
         m_dot_k = sp.simplify(m_r * k_vector)
-        basis = generic_nullspace_vectors(m_r, rank)
+        basis = generic_nullspace_vectors(m_r, rank, root=idx)
         dot_k = sp.Tuple(*[sp.simplify((vec.T * k_vector)[0]) for vec in basis])
         residuals = sp.Tuple(*[sp.simplify(k_sq * sp.ImmutableMatrix(vec) - ((vec.T * k_vector)[0]) * k_vector) for vec in basis])
         basis_payload = sp.Tuple(*[sp.ImmutableMatrix(vec) for vec in basis])
@@ -1377,7 +1474,7 @@ def emit_q3(package: str, n: int, det_m: sp.Expr, coeff_order: tuple[sp.Symbol, 
         solution_set = sp.solveset(sp.Eq(det_m, 0, evaluate=False), omegaSquared)
     except Exception as exc:
         solution_set = Str(f"SOLVESET_UNAVAILABLE_{type(exc).__name__}")
-        ISSUES.append(f"{package} D{n}: root solution set unavailable ({type(exc).__name__})")
+        record_issue(f"root solution set unavailable after {type(exc).__name__}", package=package, n=n)
     emit_quantity(package, n, "ROOT_SOLUTION_SET", solution_set)
     root_count_all = sum(pair.multiplicity for pair in pairs)
     emit_quantity(package, n, "ROOT_COUNT_ALL", sp.Integer(root_count_all))
@@ -1509,7 +1606,7 @@ def compare_objects(left: object, right: object) -> tuple[str, object]:
             return "PROVED_DIFFERENT", residual
         return "UNDECIDED", residual
     except Exception as exc:
-        ISSUES.append(f"object comparison undecided after {type(exc).__name__}")
+        record_issue(f"object comparison undecided after {type(exc).__name__}")
         return "UNDECIDED", sp.Tuple(left, right)
 
 
@@ -1556,7 +1653,7 @@ def add_symbol_candidates(candidates: list[CandidateRow], emitted_values: list[o
                     symbols.update(item.free_symbols)
     for symbol in sorted(symbols, key=lambda sym: sym.name):
         if symbol not in DECLARED_SYMBOLS:
-            ISSUES.append(f"unclassifiable free symbol {symbol}")
+            record_issue(f"unclassifiable free symbol {symbol}")
             continue
         if symbol.name in seen:
             continue
@@ -1690,7 +1787,7 @@ def write_exports(ledger: dict[str, dict[str, object]]) -> None:
         "BUILD_INPUT_DIGESTS = MappingProxyType({",
         f"    'S11_stray_longitudinal_sympy_audit.py': {file_digest(Path(__file__).resolve())!r},",
         f"    'S10_exports.py': {file_digest(SCRIPT_DIR / 'S10_exports.py')!r},",
-        f"    'S11_SHARED_PHYSICS.md': {file_digest(REPO_ROOT / 'pde_ledger_v3' / 'directives' / 'S11_SHARED_PHYSICS.md')!r},",
+        f"    'S11_SHARED_PHYSICS.md': {file_digest(SCRIPT_DIR.parent / 'directives' / 'S11_SHARED_PHYSICS.md')!r},",
         "})",
         "",
         "_LEDGER = {",
@@ -1722,23 +1819,22 @@ def main_is_complete(completed_pairs: list[tuple[str, int]]) -> bool:
     return main_completed == main_declared
 
 
-def publish_completed_main(main_dim_data: dict[int, dict[str, object]], completed_pairs: list[tuple[str, int]],
-                           *, emit_diagnostics: bool) -> bool:
-    if not main_is_complete(completed_pairs):
-        return False
-    run_pairs_payload, skipped_pairs_payload = run_record_payloads(completed_pairs)
-    ledger = merged_export(main_dim_data, run_pairs_payload, skipped_pairs_payload, emit_diagnostics=emit_diagnostics)
-    write_exports(ledger)
-    return True
+def delete_stale_export() -> None:
+    stale = SCRIPT_DIR / "S11_exports.py"
+    if stale.exists():
+        stale.unlink()
 
 
 def run() -> None:
+    global CURRENT_CELL, CURRENT_ISSUE_CONTEXT
     start = time.monotonic()
     q9_cache = {n: compute_q9(n) for n in (2, 3, 4, 5)}
     completed_pairs: list[tuple[str, int]] = []
     main_dim_data: dict[int, dict[str, object]] = {}
+    publish_error: Exception | None = None
     for package in PACKAGE_ORDER:
         for n in PACKAGE_DIMS[package]:
+            CURRENT_CELL = (package, n)
             try:
                 before_count = EMITTER.count
                 run_cell(package, n, q9_cache)
@@ -1753,28 +1849,53 @@ def run() -> None:
                         "COEFF_DIMENSIONS_MAP": coeff_dims,
                         "COEFFICIENT_ORDERING": tuple(EMITTER.emitted[coeff_tag]),
                     }
-                    publish_completed_main(main_dim_data, completed_pairs, emit_diagnostics=False)
                 if EMITTER.count == before_count:
-                    ISSUES.append(f"{package} D{n}: cell completed without emitted tags")
+                    record_issue("cell completed without emitted tags", package=package, n=n)
             except Exception as exc:
                 EMITTER.emit(
                     tag_name(package, n, "CELL_EXCEPTION", local=True),
                     sp.Tuple(Str(package), sp.Integer(n), Str(type(exc).__name__), Str(repr(exc))),
                 )
-                ISSUES.append(f"{package} D{n}: cell skipped after {type(exc).__name__}: {exc}")
+                record_issue(f"cell skipped after {type(exc).__name__}: {exc}", package=package, n=n)
+            finally:
+                CURRENT_CELL = None
     run_pairs_payload, skipped_pairs_payload = run_record_payloads(completed_pairs)
-    EMITTER.emit("PY_S11_RUN_PAIRS", run_pairs_payload, export_key="run_pairs")
-    EMITTER.emit("PY_S11_SKIPPED_PAIRS", skipped_pairs_payload, export_key="skipped_pairs")
-    EMITTER.emit("PY_S11_LOCAL_TAGS", sp.Tuple(*[Str(tag) for tag in EMITTER.local_tags]))
+    EMITTER.emit("PY_S11_RUN_PAIRS", run_pairs_payload)
+    EMITTER.emit("PY_S11_SKIPPED_PAIRS", skipped_pairs_payload)
 
     if main_is_complete(completed_pairs):
-        ledger = merged_export(main_dim_data, run_pairs_payload, skipped_pairs_payload)
-        write_exports(ledger)
+        CURRENT_ISSUE_CONTEXT = "PUBLISH"
+        try:
+            ledger = merged_export(main_dim_data, run_pairs_payload, skipped_pairs_payload)
+            write_exports(ledger)
+        except Exception as exc:
+            publish_error = exc
+            EMITTER.emit(
+                "PY_S11_LOCAL_PUBLISH_EXCEPTION",
+                sp.Tuple(Str(type(exc).__name__), Str(repr(exc))),
+            )
+            record_issue(f"S11_exports.py publish failed after {type(exc).__name__}: {exc}", context="PUBLISH")
+            try:
+                delete_stale_export()
+            except Exception as stale_exc:
+                record_issue(f"stale S11_exports.py deletion failed after {type(stale_exc).__name__}: {stale_exc}", context="PUBLISH")
+                if publish_error is None:
+                    publish_error = stale_exc
+        finally:
+            CURRENT_ISSUE_CONTEXT = None
     else:
-        stale = SCRIPT_DIR / "S11_exports.py"
-        if stale.exists():
-            stale.unlink()
-        ISSUES.append("S11_exports.py not published because a declared MAIN cell did not complete")
+        try:
+            delete_stale_export()
+        except Exception as exc:
+            publish_error = exc
+            EMITTER.emit(
+                "PY_S11_LOCAL_PUBLISH_EXCEPTION",
+                sp.Tuple(Str(type(exc).__name__), Str(repr(exc))),
+            )
+            record_issue(f"stale S11_exports.py deletion failed after {type(exc).__name__}: {exc}", context="PUBLISH")
+        record_issue("S11_exports.py not published because a declared MAIN cell did not complete", context="PUBLISH")
+
+    EMITTER.emit("PY_S11_LOCAL_TAGS", sp.Tuple(*[Str(tag) for tag in EMITTER.local_tags]))
 
     runtime = sp.Float(time.monotonic() - start, 6)
     report = sp.Tuple(
@@ -1783,10 +1904,12 @@ def run() -> None:
         sp.Tuple(Str("RUN_PAIRS"), run_pairs_payload),
         sp.Tuple(Str("SKIPPED_PAIRS"), skipped_pairs_payload),
         sp.Tuple(Str("RUNTIME_SECONDS"), runtime),
-        sp.Tuple(Str("ISSUES"), sp.Tuple(*[Str(issue) for issue in ISSUES[:20]])),
+        sp.Tuple(Str("ISSUES"), sp.Tuple(*[Str(issue) for issue in ISSUES])),
         sp.Tuple(Str("CUSTOM_QUANTITY_NAMES"), sp.Tuple(*[Str(name) for name in sorted(CUSTOM_QUANTITY_NAMES)])),
     )
     EMITTER.emit("PY_S11_LOCAL_SECTION10_REPORT", report)
+    if publish_error is not None:
+        raise RuntimeError("S11 export publish failed; see PY_S11_LOCAL_SECTION10_REPORT") from publish_error
 
 
 class StdoutTee:

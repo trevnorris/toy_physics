@@ -57,10 +57,17 @@ at `f49a1684` (*"the shared spec it never had"*), **this cycle**. ⭐ Measured o
 `ROOT_COINCIDENCE`.** ⇒ ⛔ S11's earlier results were far less verified than they looked: the mode count on
 exceptional strata was **never computed**, ⛔ not computed and found fine.
 
-⚠⚠ **A WATCHDOG IS RUNNING AND IS INVISIBLE IN THE UI: `/tmp/s11_watchdog.sh`.** It kills any S11 python
-over **6 GB RSS** (healthy runs sit at 120–460 MB; the blowup hit 22.3 GB and would take the user's other
-`codex` sessions with it). ⭐ `pkill -f s11_watchdog` to stop it; ⭐ **relaunch it before any S11 run.**
+⭐⭐ **MEMORY WATCHDOG — ⛔ KILLED 2026-08-13. ⭐ RELAUNCH AT THE START OF AN S11 RUN, ⛔ never leave idle.**
+`/tmp/s11_watchdog.sh` kills any S11 python over **6 GB RSS** (healthy runs sit at 120–460 MB; the blowup
+hit **22.3 GB** and would take the user's other `codex` sessions with it).
+⛔⛔ **Why it must NOT sit idle (user, 2026-08-13):** the hazard exists only *during* a run, and an idle
+watchdog holds a **hardcoded threshold and process pattern**. ⚠ When it fires it produces a **`SIGKILL`
+with no traceback** — ⛔ **the exact symptom behind four wrong diagnoses in one day**
+⇒ [[feedback-measure-the-process-that-works]]. ⭐ An armed silent killer is a landmine, ⛔ not a guard.
 ⛔ It is NOT the memory cap the user rejected — that one sat inside the acceptance path.
+⚠⚠ **To stop it, ⛔ NEVER `pkill -f <its name>` from a shell whose own command line contains that name** —
+⚠ measured 2026-08-13: the pattern matched my own shell and killed it mid-command, so the edit and commit
+that followed silently did not run ⇒ [[feedback-background-process-launch]]. ⭐ Kill the captured pid.
 
 ⭐ **NEXT:** fix brief round 3 (D1, D2, the publish placement) ⇒ **two legs on the list** (rule 7) ⇒ Codex
 ⇒ two legs on the script with a **FORM ABLATION mandatory**. ⛔ §Q8b (D4) is a separate BUILD and needs its

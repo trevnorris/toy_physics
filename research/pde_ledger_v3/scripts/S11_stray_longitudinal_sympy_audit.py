@@ -1,41 +1,121 @@
 #!/usr/bin/env python3
-"""S11 independent SymPy audit, derived only from S11_SHARED_PHYSICS.md."""
+"""SymPy audit engine for S11 stray-longitudinal measurements.
+
+The script streams one computed object per tag and writes the accumulated
+Python ledger for the next step.  Its physics inputs are the equations in
+``directives/S11_SHARED_PHYSICS.md``.
+"""
 
 from __future__ import annotations
 
-import itertools
+from dataclasses import dataclass
+from itertools import combinations, combinations_with_replacement
+from pathlib import Path
+import hashlib
+import math
 import sys
 import time
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Any, Iterable, Mapping, Sequence
 
 import sympy as sp
 from sympy.core.symbol import Str
 from sympy.polys.matrices import DomainMatrix
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parents[2]
+OUT_PATH = SCRIPT_DIR / "out" / "S11_stray_longitudinal_sympy_audit.out"
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
 
-SCRIPT_PATH = Path(__file__).resolve()
-REDUCTION_DIR = SCRIPT_PATH.parent.parent / "reduction"
-sys.path.insert(0, str(REDUCTION_DIR))
-from registry_read import RegistryValidationError, load_registry  # noqa: E402
+from S10_exports import LEDGER as INCOMING_LEDGER  # noqa: E402
 
 
-D_symbol = sp.Symbol("D", integer=True, positive=True)
-rho_br = sp.Symbol("rho_br", real=True, positive=True)
-mu_R = sp.Symbol("mu_R", real=True, positive=True)
-B_comp = sp.Symbol("B_comp", real=True, positive=True)
-mu_br = sp.Symbol("mu_br", real=True, positive=True)
-beta = sp.Symbol("beta", real=True)
-s_scale = sp.Symbol("s", real=True, positive=True)
-c_s0 = sp.Symbol("c_s0", real=True, positive=True)
-omegaSquared = sp.Symbol("omegaSquared")
-lambdaScale = sp.Symbol("lambdaScale", real=True, positive=True)
+CLASS_TAGS = {"KNOB", "STRUCTURAL", "COORDINATE", "CONTROL", "PREMISE", "DERIVED"}
+NOT_APPLICABLE = Str("NOT_APPLICABLE")
+NOT_DEFINED_ON_COMPONENT = Str("NOT_DEFINED_ON_COMPONENT")
+NOT_A_PURE_POWER = Str("NOT_A_PURE_POWER")
+UNDEFINED_RATIO = Str("UNDEFINED_RATIO")
+CODING_CONSISTENCY_ONLY = Str("CODING_CONSISTENCY_ONLY")
+CROSS_STEP_CONSISTENCY_ONLY = Str("CROSS_STEP_CONSISTENCY_ONLY")
+M_B_TOKEN = Str("M_B")
 
-ENERGY_DENSITY_DIM = sp.Tuple(2 - D_symbol, -2, 1)
-U_DIMENSION = sp.Tuple(1, 0, 0)
 
-PACKAGE_SWEEPS: dict[str, tuple[int, ...]] = {
+DECLARED_SYMBOLS: dict[sp.Symbol, dict[str, str]] = {}
+ISSUES: list[str] = []
+CUSTOM_QUANTITY_NAMES: set[str] = set()
+
+
+def register_symbol(symbol: sp.Symbol, class_tag: str, description: str) -> sp.Symbol:
+    if class_tag not in CLASS_TAGS:
+        raise ValueError(f"unknown class tag {class_tag!r}")
+    DECLARED_SYMBOLS[symbol] = {"class": class_tag, "description": description}
+    return symbol
+
+
+def declared_symbol(name: str, class_tag: str, description: str, **assumptions) -> sp.Symbol:
+    return register_symbol(sp.Symbol(name, **assumptions), class_tag, description)
+
+
+D = register_symbol(INCOMING_LEDGER["D"]["value"], "STRUCTURAL", "brane spatial dimension")
+rho_br = register_symbol(INCOMING_LEDGER["rho_br"]["value"], "KNOB", "brane inertia density")
+mu_R = register_symbol(INCOMING_LEDGER["mu_R"]["value"], "KNOB", "brane rotational stiffness")
+B_comp = declared_symbol("B_comp", "KNOB", "brane compression stiffness", positive=True)
+mu_br = declared_symbol("mu_br", "KNOB", "traceless stiffness", positive=True)
+beta = declared_symbol("beta", "KNOB", "extra invariant coefficient", real=True)
+s = declared_symbol("s", "CONTROL", "compression coefficient scale", positive=True)
+s_rho = declared_symbol("s_rho", "CONTROL", "anisotropic inertia scale", positive=True)
+c_s0 = declared_symbol("c_s0", "KNOB", "bulk scalar sound speed", positive=True)
+
+omegaSquared = register_symbol(
+    INCOMING_LEDGER.get("omegaSquared", {}).get("value", sp.Symbol("omegaSquared", real=True)),
+    "COORDINATE",
+    "squared frequency spectral coordinate",
+)
+lambdaScale = register_symbol(
+    INCOMING_LEDGER.get("lambdaScale", {}).get("value", sp.Symbol("lambdaScale", positive=True)),
+    "CONTROL",
+    "wavevector scaling control",
+)
+kwSquared = declared_symbol("kwSquared", "COORDINATE", "normal wavevector square", real=True)
+bulk_amplitude = declared_symbol("A", "COORDINATE", "bulk scalar amplitude", real=True)
+phase = declared_symbol("phase", "COORDINATE", "plane-wave phase", real=True)
+t = declared_symbol("t", "COORDINATE", "time coordinate", real=True)
+
+X_ALL = tuple(declared_symbol(f"x{i}", "COORDINATE", "brane coordinate", real=True) for i in range(1, 6))
+K_ALL = tuple(declared_symbol(f"k{i}", "COORDINATE", "wavevector component", real=True) for i in range(1, 6))
+A_ALL = tuple(declared_symbol(f"a{i}", "COORDINATE", "brane displacement amplitude", real=True) for i in range(1, 6))
+QG_ALL = tuple(declared_symbol(f"g_{i}", "COORDINATE", "row-major gradient coordinate", real=True) for i in range(1, 26))
+G7_ALL = tuple(
+    declared_symbol(f"g_{i}_{j}", "COORDINATE", "independent gradient coordinate", real=True)
+    for i in range(1, 6)
+    for j in range(1, 6)
+)
+
+L_DIM = sp.ImmutableMatrix([1, 0, 0])
+T_DIM = sp.ImmutableMatrix([0, 1, 0])
+M_DIM = sp.ImmutableMatrix([0, 0, 1])
+ZERO_DIM = sp.ImmutableMatrix([0, 0, 0])
+FIELD_DIM = L_DIM
+ENERGY_DIM = sp.ImmutableMatrix([2, -2, 1])
+ENERGY_DENSITY_DIM = sp.ImmutableMatrix([2 - D, -2, 1])
+SPATIAL_DERIVATIVE_DIM = sp.ImmutableMatrix([-1, 0, 0])
+TIME_DERIVATIVE_DIM = sp.ImmutableMatrix([0, -1, 0])
+OMEGA_SQUARED_DIM = sp.ImmutableMatrix([0, -2, 0])
+WAVEVECTOR_DIM = SPATIAL_DERIVATIVE_DIM
+
+
+COEFFICIENT_NAME_MAP = {
+    "rho_br": "rho_br",
+    "mu_R": "mu_R",
+    "B_comp": "B_comp",
+    "mu_br": "mu_br",
+    "beta": "beta",
+    "s": "s",
+    "s_rho": "s_rho",
+    "c_s0": "c_s0",
+}
+
+
+PACKAGE_DIMS = {
     "MAIN": (2, 3, 4, 5),
     "XFORM_CURLONLY": (2, 3, 4, 5),
     "XFORM_EXTRA": (2, 3, 4, 5),
@@ -43,34 +123,98 @@ PACKAGE_SWEEPS: dict[str, tuple[int, ...]] = {
     "XFORM_TRACELESS": (3, 4),
     "XCOEF_BSCALE": (3,),
     "XCOEF_BSIGN": (3,),
+    "XKIN_ANISO": (2, 3, 4, 5),
 }
-
-emitted_names: set[str] = set()
-local_names: list[str] = []
-
-
-def emit(name: str, payload: Any) -> None:
-    if name in emitted_names:
-        raise RuntimeError(f"duplicate tag name: {name}")
-    emitted_names.add(name)
-    if "PY_S11_LOCAL_" in name:
-        local_names.append(name)
-    if isinstance(payload, str):
-        rendered = sp.srepr(Str(payload))
-    elif ((isinstance(payload, sp.Basic) and payload.atoms(Str))
-          or beta in getattr(payload, "free_symbols", set())):
-        rendered = sp.srepr(payload)
-    else:
-        rendered = str(payload)
-        if "\n" in rendered or "\r" in rendered:
-            rendered = sp.srepr(payload)
-    print(f"{name}: {rendered}", flush=True)
+PACKAGE_ORDER = tuple(PACKAGE_DIMS)
+PRIMARY_PACKAGE = "MAIN"
 
 
-def tag(package: str, dimension: int, quantity: str, *, stratum: int | None = None,
-        root: int | None = None, local: bool = False) -> str:
-    head = "PY_S11_LOCAL" if local else "PY_S11"
-    parts = [head, package, f"D{dimension}"]
+@dataclass(frozen=True)
+class Term:
+    factor: sp.Expr
+    density_name: str
+    density: sp.Expr
+
+    @property
+    def expression(self) -> sp.Expr:
+        return sp.expand(self.factor * self.density)
+
+
+@dataclass
+class PackageBuild:
+    kinetic_terms: tuple[Term, ...]
+    stiffness_terms: tuple[Term, ...]
+    coefficient_ordering: tuple[sp.Symbol, ...]
+    lagrangian: sp.Expr
+
+
+@dataclass
+class RouteSelection:
+    token: Str
+    matrix: sp.ImmutableMatrix
+
+
+@dataclass
+class RootData:
+    value: sp.Expr
+    multiplicity: int
+
+
+@dataclass
+class CandidateRow:
+    base_key: str
+    value: object
+    class_tag: str
+    source_tag: str
+    dimension_key: str | None = None
+    description: str | None = None
+
+
+def file_digest(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def casify(value: object) -> object:
+    if isinstance(value, sp.MatrixBase):
+        return sp.ImmutableMatrix(value)
+    if isinstance(value, dict):
+        return sp.Tuple(
+            *[
+                sp.Tuple(casify(key), casify(val))
+                for key, val in value.items()
+            ]
+        )
+    if isinstance(value, (list, tuple)):
+        return sp.Tuple(*(casify(item) for item in value))
+    if isinstance(value, str):
+        return Str(value)
+    if value is True:
+        return sp.true
+    if value is False:
+        return sp.false
+    if value is None:
+        return Str("None")
+    if isinstance(value, int):
+        return sp.Integer(value)
+    return value
+
+
+def render(value: object) -> str:
+    return sp.srepr(casify(value))
+
+
+def display(value: object) -> str:
+    return str(casify(value))
+
+
+def tag_name(package: str | None, n: int | None, quantity: str, root: int | None = None,
+             stratum: int | None = None, local: bool = False) -> str:
+    prefix = "PY_S11_LOCAL" if local else "PY_S11"
+    parts = [prefix]
+    if package is not None:
+        parts.append(package)
+    if n is not None:
+        parts.append(f"D{n}")
     if stratum is not None:
         parts.append(f"STRATUM{stratum}")
     if root is not None:
@@ -79,1336 +223,1597 @@ def tag(package: str, dimension: int, quantity: str, *, stratum: int | None = No
     return "_".join(parts)
 
 
-def canonical_solver_object(value: Any) -> Any:
-    if isinstance(value, dict):
-        return sp.Dict({canonical_solver_object(key): canonical_solver_object(item)
-                        for key, item in value.items()})
-    if isinstance(value, (list, tuple)):
-        return sp.Tuple(*(canonical_solver_object(item) for item in value))
-    if value is True:
-        return sp.true
-    if value is False:
-        return sp.false
-    if isinstance(value, str):
-        return Str(value)
-    return value
+def base_key(quantity: str, n: int | None = None, root: int | None = None,
+             stratum: int | None = None) -> str:
+    parts: list[str] = []
+    if stratum is not None:
+        parts.append(f"stratum{stratum}")
+    if root is not None:
+        parts.append(f"root{root}")
+    parts.append(quantity.lower())
+    key = "_".join(parts)
+    if n is not None:
+        key = f"{key}_d{n}"
+    return key
 
 
-@dataclass(frozen=True)
-class Q9Result:
-    payloads: tuple[tuple[str, Any], ...]
-    g_symbols: tuple[sp.Symbol, ...]
-    monomials: tuple[sp.Expr, ...]
-    v6_matrix: sp.Matrix
-    pd_form: sp.Expr
+class Emitter:
+    def __init__(self) -> None:
+        self.count = 0
+        self.local_tags: list[str] = []
+        self.export_candidates: list[CandidateRow] = []
+        self.emitted: dict[str, object] = {}
+
+    def emit(self, tag: str, payload: object, *, export_key: str | None = None,
+             class_tag: str = "DERIVED", dimension_key: str | None = None,
+             description: str | None = None) -> object:
+        payload = casify(payload)
+        print(f"{tag}: {render(payload)}", flush=True)
+        self.count += 1
+        self.emitted[tag] = payload
+        if "_LOCAL_" in tag:
+            self.local_tags.append(tag)
+        if export_key is not None:
+            self.export_candidates.append(
+                CandidateRow(export_key, payload, class_tag, tag, dimension_key, description)
+            )
+        return payload
 
 
-@dataclass(frozen=True)
-class ActionData:
-    coordinates: tuple[sp.Symbol, ...]
-    time: sp.Symbol
-    fields: tuple[sp.Expr, ...]
-    gradient: sp.Matrix
-    densities: Mapping[str, sp.Expr]
-    stiffness_records: tuple[tuple[str, sp.Expr, sp.Expr], ...]
-    stiffness_terms: tuple[sp.Expr, ...]
-    stiffness: sp.Expr
-    kinetic: sp.Expr
-    lagrangian: sp.Expr
-    action_terms: tuple[sp.Expr, ...]
-    coefficient_factors: tuple[sp.Expr, ...]
-    eom: tuple[sp.Expr, ...]
-    pd_term: sp.Expr
-    configuration: Mapping[str, Any]
+EMITTER = Emitter()
 
 
-@dataclass(frozen=True)
-class AssumptionData:
-    joint: sp.Expr
-    common_parts: tuple[sp.Expr, ...]
-    package_parts: tuple[sp.Expr, ...]
-    dimension_declarations: tuple["DimensionPremise", ...]
+def emit_quantity(package: str, n: int, quantity: str, payload: object, *,
+                  root: int | None = None, stratum: int | None = None,
+                  local: bool = False, export: bool = True,
+                  class_tag: str = "DERIVED", dimension_key: str | None = None) -> object:
+    tag = tag_name(package, n, quantity, root=root, stratum=stratum, local=local)
+    export_key = None
+    if export and not local and package == PRIMARY_PACKAGE:
+        export_key = base_key(quantity, n=n, root=root, stratum=stratum)
+    return EMITTER.emit(tag, payload, export_key=export_key, class_tag=class_tag, dimension_key=dimension_key)
 
 
-@dataclass(frozen=True)
-class DimensionPremise:
-    symbol: sp.Symbol
-    vector: sp.Tuple
+def emit_custom_name(name: str) -> None:
+    CUSTOM_QUANTITY_NAMES.add(name)
 
 
-@dataclass(frozen=True)
-class PhaseAverage:
-    variable: sp.Symbol
-    lower: sp.Expr
-    upper: sp.Expr
-    normalization: sp.Expr
-
-    def apply(self, expression: sp.Expr) -> sp.Expr:
-        return self.normalization * sp.integrate(
-            expression, (self.variable, self.lower, self.upper))
-
-    def declaration(self) -> sp.Expr:
-        integrand = sp.Function("F")(self.variable)
-        return self.normalization * sp.Integral(
-            integrand, (self.variable, self.lower, self.upper))
+def matrix_from_rows(rows: list[list[object]], cols: int) -> sp.ImmutableMatrix:
+    if not rows:
+        return sp.ImmutableMatrix.zeros(0, cols)
+    return sp.ImmutableMatrix(rows)
 
 
-@dataclass(frozen=True)
-class PlaneWaveAnsatz:
-    equations: sp.Tuple
-    phase: sp.Expr
-    amplitudes: tuple[sp.Symbol, ...]
-    wavevector: tuple[sp.Symbol, ...]
-    average: PhaseAverage
-
-    def substitutions(self) -> dict[sp.Expr, sp.Expr]:
-        return {equation.lhs: equation.rhs for equation in self.equations}
+def symbols_for_dimension(n: int) -> tuple[tuple[sp.Symbol, ...], tuple[sp.Symbol, ...], tuple[sp.Symbol, ...]]:
+    return X_ALL[:n], K_ALL[:n], A_ALL[:n]
 
 
-@dataclass(frozen=True)
-class BulkModeData:
-    ansatz: sp.Equality
-    amplitude: sp.Symbol
-    amplitude_reality: sp.Expr
-    sound_speed_domain: sp.Expr
-    dispersion: sp.Equality
-    normal_wavevector: sp.Symbol
-    interface_equations: sp.Tuple
-
-
-@dataclass(frozen=True)
-class MatrixRoute:
-    name: sp.Symbol
-    matrix: sp.Matrix
-
-
-@dataclass(frozen=True)
-class RegistryState:
-    value: Any | None
-    error: str | None
-
-    def unavailable_payload(self) -> sp.Tuple:
-        detail: Any = self.error if self.error is not None else sp.Symbol("NO_ERROR_REPORTED")
-        return sp.Tuple(sp.Symbol("REGISTRY_UNAVAILABLE"), canonical_solver_object(detail))
-
-
-@dataclass
-class LocusResult:
-    equations: tuple[sp.Equality, ...]
-    variables: tuple[sp.Symbol, ...]
-    raw_branches: list[dict[sp.Symbol, sp.Expr]]
-    solution_payload: sp.Tuple
-    identically_satisfied: sp.logic.boolalg.Boolean
-    inconsistent: sp.logic.boolalg.Boolean
-    real_admissible: sp.Tuple
-
-
-def canonical_rref_rows(vectors: Sequence[sp.MatrixBase], width: int) -> sp.Matrix:
-    if not vectors:
-        return sp.zeros(0, width)
-    rows = sp.Matrix.hstack(*(sp.Matrix(vector) for vector in vectors)).T
-    reduced = rows.rref()[0]
-    nonzero = [list(reduced.row(index)) for index in range(reduced.rows)
-               if any(entry != 0 for entry in reduced.row(index))]
-    return sp.Matrix(nonzero) if nonzero else sp.zeros(0, width)
-
-
-def build_q9(dimension: int) -> Q9Result:
-    """Compute invariant subspaces without inserting their known closed forms."""
-    n_entries = dimension * dimension
-    g_symbols = sp.symbols(f"g1:{n_entries + 1}", real=True)
-    G = sp.Matrix(dimension, dimension, g_symbols)
-    pairs = tuple((left, right) for left in range(n_entries)
-                  for right in range(left, n_entries))
-    monomials = tuple(g_symbols[left] * g_symbols[right] for left, right in pairs)
-    pair_index = {pair: index for index, pair in enumerate(pairs)}
-    width = len(monomials)
-
-    generator_operators: list[sp.SparseMatrix] = []
-    for first in range(dimension):
-        for second in range(first + 1, dimension):
-            generator = sp.zeros(dimension)
-            generator[first, second] = 1
-            generator[second, first] = -1
-            delta = generator * G - G * generator
-            delta_terms: list[dict[int, sp.Expr]] = []
-            for flat in range(n_entries):
-                row, column = divmod(flat, dimension)
-                expression = sp.expand(delta[row, column])
-                delta_terms.append({
-                    index: expression.coeff(symbol)
-                    for index, symbol in enumerate(g_symbols)
-                    if expression.coeff(symbol) != 0
-                })
-            entries: dict[tuple[int, int], sp.Expr] = {}
-            for source, (left, right) in enumerate(pairs):
-                for replacement, value in delta_terms[left].items():
-                    destination = pair_index[tuple(sorted((replacement, right)))]
-                    entries[(destination, source)] = entries.get((destination, source), 0) + value
-                for replacement, value in delta_terms[right].items():
-                    destination = pair_index[tuple(sorted((left, replacement)))]
-                    entries[(destination, source)] = entries.get((destination, source), 0) + value
-            generator_operators.append(sp.SparseMatrix(width, width, entries))
-
-    so_constraints = sp.SparseMatrix.vstack(*generator_operators)
-    v1_raw = so_constraints.nullspace()
-    v1_matrix = canonical_rref_rows(v1_raw, width)
-
-    signs = tuple([-1] + [1] * (dimension - 1))
-    reflection_diagonal = []
-    for left, right in pairs:
-        li, lj = divmod(left, dimension)
-        ri, rj = divmod(right, dimension)
-        reflection_diagonal.append(signs[li] * signs[lj] * signs[ri] * signs[rj])
-    reflection_operator_ambient = sp.diag(*reflection_diagonal)
-    reflection_constraints = reflection_operator_ambient - sp.eye(width)
-    o_constraints = sp.SparseMatrix.vstack(so_constraints, sp.SparseMatrix(reflection_constraints))
-    v2_raw = o_constraints.nullspace()
-    v2_matrix = canonical_rref_rows(v2_raw, width)
-
-    v1_forms = tuple(sp.expand(sum(v1_matrix[row, column] * monomials[column]
-                                   for column in range(width)))
-                     for row in range(v1_matrix.rows))
-    reflected_forms: list[sp.Expr] = []
-    reflection_coordinates: list[sp.Matrix] = []
-    for row, form in enumerate(v1_forms):
-        reflected_row = sp.Matrix([reflection_diagonal[column] * v1_matrix[row, column]
-                                   for column in range(width)]).T
-        reflected_form = sp.expand(sum(reflected_row[column] * monomials[column]
-                                       for column in range(width)))
-        reflected_forms.append(reflected_form)
-        reflection_coordinates.append(v1_matrix.T.gauss_jordan_solve(reflected_row.T)[0])
-    v6_operator = (sp.Matrix.hstack(*reflection_coordinates)
-                   if reflection_coordinates else sp.zeros(0, 0))
-    minus_eigenvectors = (v6_operator + sp.eye(v6_operator.rows)).nullspace()
-    v6_ambient_vectors = [v1_matrix.T * vector for vector in minus_eigenvectors]
-    v6_matrix = canonical_rref_rows(v6_ambient_vectors, width)
-    v6_forms = tuple(sp.expand(sum(v6_matrix[row, column] * monomials[column]
-                                   for column in range(width)))
-                     for row in range(v6_matrix.rows))
-    pd_form = sp.Add(*v6_forms)
-
-    coordinates = sp.symbols(f"x1:{dimension + 1}", real=True)
-    fields = tuple(sp.Function(f"u{index + 1}")(*coordinates) for index in range(dimension))
-    gradient_substitution = {
-        g_symbols[row * dimension + column]: sp.Derivative(fields[column], coordinates[row])
-        for row in range(dimension) for column in range(dimension)
-    }
-    euler_lagrange: list[sp.Tuple] = []
-    for form in v1_forms:
-        components = []
-        for field_column in range(dimension):
-            component = 0
-            for derivative_row in range(dimension):
-                gij = g_symbols[derivative_row * dimension + field_column]
-                first_variation = sp.diff(form, gij).xreplace(gradient_substitution)
-                component += sp.diff(first_variation, coordinates[derivative_row])
-            components.append(sp.expand(component.doit()))
-        euler_lagrange.append(sp.Tuple(*components))
-
-    R0 = sp.diag(*signs)
-    payloads: tuple[tuple[str, Any], ...] = (
-        ("MONOMIAL_ORDERING", sp.Tuple(*monomials)),
-        ("V1_BASIS", v1_matrix),
-        ("V1_DIM", sp.Integer(v1_matrix.rows)),
-        ("V2_BASIS", v2_matrix),
-        ("V2_DIM", sp.Integer(v2_matrix.rows)),
-        ("V3_DIFFERENCE", sp.Integer(v1_matrix.rows - v2_matrix.rows)),
-        ("R0_MATRIX", R0),
-        ("R0_ORTHOGONALITY_RESIDUAL", R0.T * R0 - sp.eye(dimension)),
-        ("R0_DETERMINANT", R0.det()),
-        ("V4_REFLECTED", sp.Tuple(*reflected_forms)),
-        ("V4_RESIDUAL", sp.Tuple(*(sp.expand(reflected - original)
-                                    for reflected, original in zip(reflected_forms, v1_forms)))),
-        ("V4_SUM", sp.Tuple(*(sp.expand(reflected + original)
-                               for reflected, original in zip(reflected_forms, v1_forms)))),
-        ("V5_EULER_LAGRANGE", sp.Tuple(*euler_lagrange)),
-        ("V6_OPERATOR", v6_operator),
-        ("V6_BASIS", v6_matrix),
-        ("V6_DIM", sp.Integer(v6_matrix.rows)),
-        ("V7_RESIDUAL", sp.Integer(v6_matrix.rows - (v1_matrix.rows - v2_matrix.rows))),
+def derivative_placeholders(n: int) -> tuple[sp.ImmutableMatrix, tuple[sp.Symbol, ...]]:
+    g = sp.ImmutableMatrix(
+        n, n, lambda i, j: sp.Symbol(f"G_{i + 1}_{j + 1}", real=True)
     )
-    return Q9Result(payloads, tuple(g_symbols), monomials, v6_matrix, pd_form)
+    v = tuple(sp.Symbol(f"V_{j + 1}", real=True) for j in range(n))
+    return g, v
 
 
-def density_forms(gradient: sp.Matrix, dimension: int) -> dict[str, sp.Expr]:
-    curl = sp.Rational(1, 2) * sp.Add(*(
-        (gradient[row, column] - gradient[column, row]) ** 2
-        for row in range(dimension) for column in range(dimension)
-    ))
-    divergence = sp.Add(*(gradient[index, index] for index in range(dimension))) ** 2
-    symmetric_traceless = ((gradient + gradient.T) / 2
-                            - sp.trace(gradient) * sp.eye(dimension) / dimension)
-    symtl = sp.Add(*(symmetric_traceless[row, column] ** 2
-                     for row in range(dimension) for column in range(dimension)))
-    return {"curl": curl, "div": divergence, "symtl": symtl}
+def u_functions(n: int) -> tuple[tuple[sp.Symbol, ...], tuple[sp.Expr, ...]]:
+    xs = X_ALL[:n]
+    args = (*xs, t)
+    funcs = tuple(sp.Function(f"u{j + 1}")(*args) for j in range(n))
+    return xs, funcs
 
 
-def package_stiffness_records(package: str, densities: Mapping[str, sp.Expr],
-                              pd_density: sp.Expr) -> tuple[tuple[str, sp.Expr, sp.Expr], ...]:
-    if package == "MAIN":
-        return (("curl", mu_R / 2, densities["curl"]),
-                ("div", B_comp / 2, densities["div"]))
-    if package == "XFORM_CURLONLY":
-        return (("curl", mu_R / 2, densities["curl"]),)
-    if package == "XFORM_DIVONLY":
-        return (("div", B_comp / 2, densities["div"]),)
+def stiffness_densities(g: sp.ImmutableMatrix) -> dict[str, sp.Expr]:
+    n = g.rows
+    trace = sum(g[i, i] for i in range(n))
+    sym = (g + g.T) / 2
+    stl = sym - sp.eye(n) * trace / n
+    return {
+        "S_curl": sp.Rational(1, 2) * sum((g[i, j] - g[j, i]) ** 2 for i in range(n) for j in range(n)),
+        "S_div": trace ** 2,
+        "S_symtl": sum(stl[i, j] ** 2 for i in range(n) for j in range(n)),
+    }
+
+
+def coordinate_substitution(n: int, g: sp.ImmutableMatrix, v: tuple[sp.Symbol, ...]) -> dict[sp.Symbol, sp.Expr]:
+    xs, funcs = u_functions(n)
+    sub: dict[sp.Symbol, sp.Expr] = {}
+    for i in range(n):
+        for j in range(n):
+            sub[g[i, j]] = sp.Derivative(funcs[j], xs[i], evaluate=False)
+    for j in range(n):
+        sub[v[j]] = sp.Derivative(funcs[j], t, evaluate=False)
+    return sub
+
+
+def to_coordinate(expr: sp.Expr, n: int, g: sp.ImmutableMatrix, v: tuple[sp.Symbol, ...]) -> sp.Expr:
+    return sp.expand(expr.xreplace(coordinate_substitution(n, g, v)))
+
+
+def euler_lagrange_from_placeholders(expr: sp.Expr, n: int, g: sp.ImmutableMatrix,
+                                     v: tuple[sp.Symbol, ...]) -> tuple[sp.Expr, ...]:
+    xs, funcs = u_functions(n)
+    coord_sub = coordinate_substitution(n, g, v)
+    system = []
+    for j in range(n):
+        time_part = sp.diff(expr, v[j])
+        time_coord = sum(
+            sp.diff(time_part, v[m]) * sp.Derivative(funcs[m], (t, 2), evaluate=False)
+            for m in range(n)
+        )
+        space_coord = 0
+        for i in range(n):
+            grad_part = sp.diff(expr, g[i, j])
+            for ell in range(n):
+                for m in range(n):
+                    coeff = sp.diff(grad_part, g[ell, m])
+                    if coeff != 0:
+                        space_coord += coeff * sp.Derivative(funcs[m], xs[i], xs[ell], evaluate=False)
+        system.append(sp.expand((time_coord + space_coord).xreplace(coord_sub)))
+    return tuple(system)
+
+
+def route_a_matrix(expr: sp.Expr, n: int, g: sp.ImmutableMatrix, v: tuple[sp.Symbol, ...],
+                   k: tuple[sp.Symbol, ...], a: tuple[sp.Symbol, ...]) -> tuple[sp.ImmutableMatrix, sp.Expr]:
+    rows = []
+    for j in range(n):
+        time_part = sp.diff(expr, v[j])
+        amp_eq = sum(sp.diff(time_part, v[m]) * (-omegaSquared * a[m]) for m in range(n))
+        for i in range(n):
+            grad_part = sp.diff(expr, g[i, j])
+            for ell in range(n):
+                for m in range(n):
+                    coeff = sp.diff(grad_part, g[ell, m])
+                    if coeff != 0:
+                        amp_eq += coeff * (-k[i] * k[ell] * a[m])
+        rows.append([sp.simplify(sp.diff(sp.expand(amp_eq), amp)) for amp in a])
+    return sp.ImmutableMatrix(rows), sp.cos(phase)
+
+
+def period_average(expr: sp.Expr) -> sp.Expr:
+    sin_phase = sp.Symbol("sin_phase", real=True)
+    tmp_omega = sp.Symbol("omega_linear", real=True)
+    averaged = sp.expand(expr).xreplace({sin_phase ** 2: sp.Rational(1, 2)})
+    averaged = averaged.xreplace({tmp_omega ** 2: omegaSquared})
+    averaged = averaged.subs(sin_phase ** 2, sp.Rational(1, 2)).subs(tmp_omega ** 2, omegaSquared)
+    return sp.simplify(averaged)
+
+
+def route_b_matrix(expr: sp.Expr, n: int, g: sp.ImmutableMatrix, v: tuple[sp.Symbol, ...],
+                   k: tuple[sp.Symbol, ...], a: tuple[sp.Symbol, ...]) -> tuple[sp.ImmutableMatrix, sp.Expr]:
+    sin_phase = sp.Symbol("sin_phase", real=True)
+    tmp_omega = sp.Symbol("omega_linear", real=True)
+    sub: dict[sp.Symbol, sp.Expr] = {}
+    for i in range(n):
+        for j in range(n):
+            sub[g[i, j]] = -a[j] * k[i] * sin_phase
+    for j in range(n):
+        sub[v[j]] = a[j] * tmp_omega * sin_phase
+    averaged = period_average(sp.expand(expr.xreplace(sub)))
+    return sp.ImmutableMatrix([[sp.simplify(sp.diff(averaged, ai, aj)) for aj in a] for ai in a]), averaged
+
+
+def coefficient_ordering(terms: tuple[Term, ...]) -> tuple[sp.Symbol, ...]:
+    coeffs: set[sp.Symbol] = set()
+    known = {rho_br, mu_R, B_comp, mu_br, beta, s, s_rho, c_s0}
+    for term in terms:
+        coeffs.update(sym for sym in term.factor.free_symbols if sym in known)
+    return tuple(sorted(coeffs, key=lambda sym: sym.name))
+
+
+def package_build(package: str, n: int, q9_data: dict[str, object]) -> PackageBuild:
+    g, v = derivative_placeholders(n)
+    densities = stiffness_densities(g)
+    pd_density = q9_data["PD_DENSITY_PLACEHOLDER"]
+    kinetic_iso = (Term(rho_br / 2, "T_ISO_SUM", sum(vj ** 2 for vj in v)),)
+    kinetic_aniso = (
+        Term(rho_br / 2, "T_ANISO_TRANSVERSE_SUM", sum(v[j] ** 2 for j in range(1, n))),
+        Term(s_rho * rho_br / 2, "T_ANISO_AXIS", v[0] ** 2),
+    )
+    stiffness_map = {
+        "MAIN": (
+            Term(mu_R / 2, "S_curl", densities["S_curl"]),
+            Term(B_comp / 2, "S_div", densities["S_div"]),
+        ),
+        "XFORM_CURLONLY": (Term(mu_R / 2, "S_curl", densities["S_curl"]),),
+        "XFORM_DIVONLY": (Term(B_comp / 2, "S_div", densities["S_div"]),),
+        "XFORM_TRACELESS": (
+            Term(mu_R / 2, "S_curl", densities["S_curl"]),
+            Term(mu_br, "S_symtl", densities["S_symtl"]),
+        ),
+        "XFORM_EXTRA": (
+            Term(mu_R / 2, "S_curl", densities["S_curl"]),
+            Term(B_comp / 2, "S_div", densities["S_div"]),
+            Term(beta / 2, "P_D", pd_density),
+        ),
+        "XCOEF_BSCALE": (
+            Term(mu_R / 2, "S_curl", densities["S_curl"]),
+            Term(s * B_comp / 2, "S_div", densities["S_div"]),
+        ),
+        "XCOEF_BSIGN": (
+            Term(mu_R / 2, "S_curl", densities["S_curl"]),
+            Term(-B_comp / 2, "S_div", densities["S_div"]),
+        ),
+        "XKIN_ANISO": (
+            Term(mu_R / 2, "S_curl", densities["S_curl"]),
+            Term(B_comp / 2, "S_div", densities["S_div"]),
+        ),
+    }
+    kinetic_terms = kinetic_aniso if package == "XKIN_ANISO" else kinetic_iso
+    stiffness_terms = stiffness_map[package]
+    all_l_terms = kinetic_terms + tuple(Term(-term.factor, term.density_name, term.density) for term in stiffness_terms)
+    return PackageBuild(
+        kinetic_terms=kinetic_terms,
+        stiffness_terms=stiffness_terms,
+        coefficient_ordering=coefficient_ordering(all_l_terms),
+        lagrangian=sp.expand(sum(term.expression for term in kinetic_terms) - sum(term.expression for term in stiffness_terms)),
+    )
+
+
+def q9_vector(poly: sp.Expr, variables: tuple[sp.Symbol, ...],
+              pairs: tuple[tuple[int, int], ...]) -> list[sp.Expr]:
+    pair_index = {pair: idx for idx, pair in enumerate(pairs)}
+    row = [sp.Integer(0)] * len(pairs)
+    p = sp.Poly(sp.expand(poly), *variables)
+    for exponents, coeff in p.terms():
+        indices: list[int] = []
+        for idx, exponent in enumerate(exponents):
+            indices.extend([idx] * int(exponent))
+        if len(indices) == 2:
+            row[pair_index[tuple(sorted(indices))]] = coeff
+    return row
+
+
+def q9_row_to_poly(row: sp.Matrix | list[object], monomials: tuple[sp.Expr, ...]) -> sp.Expr:
+    entries = list(row)
+    return sp.expand(sum(entries[i] * monomials[i] for i in range(len(monomials))))
+
+
+def compute_q9(n: int) -> dict[str, object]:
+    variables = QG_ALL[: n * n]
+    pairs = tuple(combinations_with_replacement(range(n * n), 2))
+    monomials = tuple(variables[p] * variables[q] for p, q in pairs)
+    qg = sp.ImmutableMatrix(n, n, lambda i, j: variables[i * n + j])
+
+    lie_equations: list[list[sp.Expr]] = []
+    for a_idx in range(n):
+        for b_idx in range(a_idx + 1, n):
+            generator = sp.zeros(n)
+            generator[a_idx, b_idx] = 1
+            generator[b_idx, a_idx] = -1
+            delta = generator * qg - qg * generator
+            delta_vars = tuple(delta[i, j] for i in range(n) for j in range(n))
+            for p, q in pairs:
+                lie_equations.append(q9_vector(delta_vars[p] * variables[q] + variables[p] * delta_vars[q], variables, pairs))
+
+    lie_matrix = matrix_from_rows(lie_equations, len(monomials))
+    v1_null = lie_matrix.nullspace()
+    v1_basis = matrix_from_rows([list(vec) for vec in v1_null], len(monomials)).rref()[0]
+    v1_basis = sp.ImmutableMatrix(v1_basis)
+    v1_pivots = v1_basis.rref()[1]
+
+    r0 = sp.diag(-1, *([1] * (n - 1)))
+    reflected_g = r0 * qg * r0.T
+    reflected_vars = tuple(reflected_g[i, j] for i in range(n) for j in range(n))
+    reflection_rows = [
+        q9_vector(reflected_vars[p] * reflected_vars[q] - variables[p] * variables[q], variables, pairs)
+        for p, q in pairs
+    ]
+    v2_matrix = sp.ImmutableMatrix(list(lie_equations) + reflection_rows)
+    v2_null = v2_matrix.nullspace()
+    v2_basis = matrix_from_rows([list(vec) for vec in v2_null], len(monomials)).rref()[0]
+    v2_basis = sp.ImmutableMatrix(v2_basis)
+
+    v1_polys = tuple(q9_row_to_poly(v1_basis.row(i), monomials) for i in range(v1_basis.rows))
+    v4_reflected = tuple(
+        sp.expand(poly.xreplace({variables[i]: reflected_vars[i] for i in range(n * n)}))
+        for poly in v1_polys
+    )
+    v4_residual = tuple(sp.expand(v4_reflected[i] - v1_polys[i]) for i in range(len(v1_polys)))
+    v4_sum = tuple(sp.expand(v4_reflected[i] + v1_polys[i]) for i in range(len(v1_polys)))
+
+    operator_cols = []
+    for reflected_poly in v4_reflected:
+        reflected_row = q9_vector(reflected_poly, variables, pairs)
+        operator_cols.append([reflected_row[pivot] for pivot in v1_pivots])
+    if operator_cols:
+        v6_operator = sp.ImmutableMatrix(operator_cols).T
+        minus_null = (v6_operator + sp.eye(v6_operator.rows)).nullspace()
+        v6_rows = []
+        for coord in minus_null:
+            row = (coord.T * v1_basis)
+            v6_rows.append(list(row))
+        v6_basis = matrix_from_rows(v6_rows, len(monomials)).rref()[0]
+    else:
+        v6_operator = sp.ImmutableMatrix.zeros(0, 0)
+        v6_basis = sp.ImmutableMatrix.zeros(0, len(monomials))
+    v6_basis = sp.ImmutableMatrix(v6_basis)
+
+    g_placeholder, _ = derivative_placeholders(n)
+    qg_to_placeholder = {variables[i * n + j]: g_placeholder[i, j] for i in range(n) for j in range(n)}
+    pd_poly = sp.expand(sum(q9_row_to_poly(v6_basis.row(i), monomials) for i in range(v6_basis.rows)))
+    pd_density = sp.expand(pd_poly.xreplace(qg_to_placeholder))
+
+    return {
+        "MONOMIAL_ORDERING": sp.Tuple(*monomials),
+        "V1_BASIS": v1_basis,
+        "V1_DIM": sp.Integer(v1_basis.rows),
+        "V2_BASIS": v2_basis,
+        "V2_DIM": sp.Integer(v2_basis.rows),
+        "V3_DIFFERENCE": sp.Integer(v1_basis.rows - v2_basis.rows),
+        "R0_MATRIX": sp.ImmutableMatrix(r0),
+        "R0_ORTHOGONALITY_RESIDUAL": sp.ImmutableMatrix(r0.T * r0 - sp.eye(n)),
+        "R0_DETERMINANT": sp.det(r0),
+        "V4_REFLECTED": sp.Tuple(*v4_reflected),
+        "V4_RESIDUAL": sp.Tuple(*v4_residual),
+        "V4_SUM": sp.Tuple(*v4_sum),
+        "V5_EULER_LAGRANGE": None,
+        "V6_OPERATOR": v6_operator,
+        "V6_BASIS": v6_basis,
+        "V6_DIM": sp.Integer(v6_basis.rows),
+        "V7_RESIDUAL": sp.Integer(v6_basis.rows - (v1_basis.rows - v2_basis.rows)),
+        "PD_DENSITY_PLACEHOLDER": pd_density,
+        "PD_POLY": pd_poly,
+        "V1_POLYS": v1_polys,
+        "QG_VARIABLES": variables,
+    }
+
+
+def q9_v5(n: int, q9_data: dict[str, object]) -> sp.Tuple:
+    g, v = derivative_placeholders(n)
+    qg_vars = q9_data["QG_VARIABLES"]
+    sub = {qg_vars[i * n + j]: g[i, j] for i in range(n) for j in range(n)}
+    out = []
+    for poly in q9_data["V1_POLYS"]:
+        density = sp.expand(poly.xreplace(sub))
+        out.append(sp.Tuple(*euler_lagrange_from_placeholders(density, n, g, v)))
+    return sp.Tuple(*out)
+
+
+def emit_q9(package: str, n: int, q9_data: dict[str, object]) -> None:
+    if q9_data["V5_EULER_LAGRANGE"] is None:
+        q9_data["V5_EULER_LAGRANGE"] = q9_v5(n, q9_data)
+    for quantity in (
+        "MONOMIAL_ORDERING", "V1_BASIS", "V1_DIM", "V2_BASIS", "V2_DIM", "V3_DIFFERENCE",
+        "R0_MATRIX", "R0_ORTHOGONALITY_RESIDUAL", "R0_DETERMINANT", "V4_REFLECTED",
+        "V4_RESIDUAL", "V4_SUM", "V5_EULER_LAGRANGE", "V6_OPERATOR", "V6_BASIS",
+        "V6_DIM", "V7_RESIDUAL",
+    ):
+        emit_quantity(package, n, quantity, q9_data[quantity])
+
+
+def assumptions_for(package: str, n: int, include_bulk: bool = False) -> sp.Tuple:
+    _, k, a = symbols_for_dimension(n)
+    assumptions: list[object] = [
+        sp.Gt(rho_br, 0, evaluate=False),
+        sp.Gt(mu_R, 0, evaluate=False),
+        sp.Gt(B_comp, 0, evaluate=False),
+        sp.Gt(sum(ki ** 2 for ki in k), 0, evaluate=False),
+        sp.Q.positive(D),
+        sp.Q.integer(D),
+    ]
+    assumptions.extend(sp.Q.real(ki) for ki in k)
+    assumptions.extend(sp.Q.real(ai) for ai in a)
     if package == "XFORM_TRACELESS":
-        return (("curl", mu_R / 2, densities["curl"]),
-                ("symtl", mu_br, densities["symtl"]))
+        assumptions.append(sp.Gt(mu_br, 0, evaluate=False))
     if package == "XFORM_EXTRA":
-        return (("curl", mu_R / 2, densities["curl"]),
-                ("div", B_comp / 2, densities["div"]),
-                ("pd", beta / 2, pd_density))
+        assumptions.append(sp.Q.real(beta))
     if package == "XCOEF_BSCALE":
-        return (("curl", mu_R / 2, densities["curl"]),
-                ("div", s_scale * B_comp / 2, densities["div"]))
-    if package == "XCOEF_BSIGN":
-        return (("curl", mu_R / 2, densities["curl"]),
-                ("div", -B_comp / 2, densities["div"]))
-    raise ValueError(f"unknown package: {package}")
+        assumptions.extend([sp.Gt(s, 0, evaluate=False), sp.Ne(s, 1, evaluate=False)])
+    if package == "XKIN_ANISO":
+        assumptions.extend([sp.Gt(s_rho, 0, evaluate=False), sp.Ne(s_rho, 1, evaluate=False)])
+    if include_bulk:
+        assumptions.extend([sp.Q.real(bulk_amplitude), sp.Gt(c_s0, 0, evaluate=False), sp.Q.real(c_s0)])
+    return sp.Tuple(*assumptions)
 
 
-def build_action(package: str, dimension: int, q9: Q9Result) -> ActionData:
-    coordinates = sp.symbols(f"x1:{dimension + 1}", real=True)
-    time_coordinate = sp.Symbol("t", real=True)
-    field_arguments = (*coordinates, time_coordinate)
-    fields = tuple(sp.Function(f"u{index + 1}")(*field_arguments) for index in range(dimension))
-    gradient = sp.Matrix(dimension, dimension,
-                         lambda row, column: sp.Derivative(fields[column], coordinates[row]))
-    densities = density_forms(gradient, dimension)
-    pd_substitution = {
-        q9.g_symbols[row * dimension + column]: gradient[row, column]
-        for row in range(dimension) for column in range(dimension)
-    }
-    pd_term = sp.expand(q9.pd_form.xreplace(pd_substitution))
-    records = package_stiffness_records(package, densities, pd_term)
-    stiffness_terms = tuple(factor * density for _, factor, density in records)
-    stiffness = sp.Add(*stiffness_terms)
-    kinetic = rho_br / 2 * sp.Add(*(sp.Derivative(field, time_coordinate) ** 2
-                                    for field in fields))
-    configuration = {
-        "background_velocity": sp.zeros(dimension, 1),
-        "dissipative_terms": sp.Tuple(),
-        "nonlinear_terms": sp.Tuple(),
-        "wall_width_fields": sp.Tuple(),
-    }
-    convective = sp.Add(*tuple(configuration["background_velocity"]))
-    dissipative = sp.Add(*tuple(configuration["dissipative_terms"]))
-    nonlinear = sp.Add(*tuple(configuration["nonlinear_terms"]))
-    width_terms = sp.Add(*tuple(configuration["wall_width_fields"]))
-    lagrangian = sp.expand(kinetic - stiffness + convective + dissipative + nonlinear + width_terms)
-    action_terms = (kinetic,) + tuple(-term for term in stiffness_terms)
-    coefficient_factors = (rho_br / 2,) + tuple(-factor for _, factor, _ in records)
-    eom: list[sp.Expr] = []
-    for field in fields:
-        expression = sp.diff(sp.diff(lagrangian, sp.Derivative(field, time_coordinate)), time_coordinate)
-        for coordinate in coordinates:
-            expression += sp.diff(sp.diff(lagrangian, sp.Derivative(field, coordinate)), coordinate)
-        expression -= sp.diff(lagrangian, field)
-        eom.append(sp.expand(expression.doit()))
-    return ActionData(tuple(coordinates), time_coordinate, fields, gradient, densities, records,
-                      stiffness_terms, stiffness, kinetic, lagrangian, action_terms,
-                      coefficient_factors, tuple(eom), pd_term, configuration)
-
-
-def build_assumptions(package: str, dimension: int, k_symbols: Sequence[sp.Symbol],
-                      amplitudes: Sequence[sp.Symbol]) -> AssumptionData:
-    common = (
-        sp.Q.positive(rho_br), sp.Q.positive(mu_R), sp.Q.positive(B_comp),
-        sp.Q.positive(sp.Add(*(component ** 2 for component in k_symbols))),
-        *(sp.Q.real(component) for component in k_symbols),
-        *(sp.Q.real(component) for component in amplitudes),
-        sp.Q.positive(sp.Integer(dimension)), sp.Q.integer(sp.Integer(dimension)),
-        sp.Q.positive(c_s0),
+def assumption_text_inventory(package: str, n: int) -> sp.Tuple:
+    qualitative = (
+        Str("u is in-plane only"),
+        Str("background brane at rest"),
+        Str("no dissipation"),
+        Str("linear quadratic response"),
+        Str("frozen wall width"),
+        Str("bulk scalar sound mode only"),
     )
-    package_parts: tuple[sp.Expr, ...] = ()
-    dimension_declarations: tuple[DimensionPremise, ...] = ()
-    if package == "XFORM_TRACELESS":
-        package_parts = (sp.Q.positive(mu_br),)
-    elif package == "XFORM_EXTRA":
-        package_parts = (sp.Q.real(beta),)
-    elif package == "XCOEF_BSCALE":
-        package_parts = (sp.Q.positive(s_scale), sp.Q.nonzero(s_scale - 1))
-        dimension_declarations = (DimensionPremise(s_scale, sp.Tuple(0, 0, 0)),)
-    return AssumptionData(sp.And(*(common + package_parts)), tuple(common), package_parts,
-                          dimension_declarations)
+    return sp.Tuple(assumptions_for(package, n), qualitative)
 
 
-def build_plane_wave_ansatz(action: ActionData, amplitudes: Sequence[sp.Symbol],
-                            k_symbols: Sequence[sp.Symbol]) -> PlaneWaveAnsatz:
-    phase = (sp.Add(*(wave * coordinate for wave, coordinate in
-                      zip(k_symbols, action.coordinates)))
-             - sp.sqrt(omegaSquared) * action.time)
-    equations = sp.Tuple(*(sp.Eq(field, amplitude * sp.cos(phase), evaluate=False)
-                           for field, amplitude in zip(action.fields, amplitudes)))
-    average_variable = sp.Symbol("theta", real=True)
-    average = PhaseAverage(average_variable, sp.Integer(0), 2 * sp.pi,
-                           1 / (2 * sp.pi))
-    return PlaneWaveAnsatz(equations, phase, tuple(amplitudes), tuple(k_symbols), average)
-
-
-def build_bulk_mode(action: ActionData, k_symbols: Sequence[sp.Symbol],
-                    bulk_amplitude: sp.Symbol) -> BulkModeData:
-    normal_coordinate = sp.Symbol("w", real=True)
-    normal_wavevector = sp.Symbol("k_w", real=True)
-    scalar_field = sp.Function("phi")(
-        *action.coordinates, normal_coordinate, action.time)
-    phase = (sp.Add(*(wave * coordinate for wave, coordinate in
-                      zip(k_symbols, action.coordinates)))
-             + normal_wavevector * normal_coordinate
-             - sp.sqrt(omegaSquared) * action.time)
-    scalar_ansatz = sp.Eq(
-        scalar_field, bulk_amplitude * sp.cos(phase), evaluate=False)
-    dispersion = sp.Eq(
-        omegaSquared,
-        c_s0 ** 2 * (sp.Add(*(wave ** 2 for wave in k_symbols))
-                     + normal_wavevector ** 2),
-        evaluate=False)
-    return BulkModeData(
-        scalar_ansatz, bulk_amplitude, sp.Q.real(bulk_amplitude),
-        sp.Q.positive(c_s0), dispersion, normal_wavevector, sp.Tuple())
-
-
-def emit_premises(package: str, dimension: int, action: ActionData,
-                  assumptions: AssumptionData, ansatz: PlaneWaveAnsatz,
-                  bulk_mode: BulkModeData) -> None:
-    amplitudes = ansatz.amplitudes
-    k_symbols = ansatz.wavevector
-    emit(tag(package, dimension, "PREMISE_U_DIMENSION"), U_DIMENSION)
-    emit(tag(package, dimension, "PREMISE_IN_PLANE_FIELD"), sp.Tuple(*amplitudes))
-    emit(tag(package, dimension, "PREMISE_REAL_ANSATZ"), ansatz.equations)
-    emit(tag(package, dimension, "PREMISE_PHASE_AVERAGE"),
-         ansatz.average.declaration())
-    emit(tag(package, dimension, "PREMISE_CURL_DENSITY_FORM"),
-         action.densities["curl"])
-    emit(tag(package, dimension, "PREMISE_COMPRESSION_DENSITY_FORM"),
-         action.densities["div"])
-    emit(tag(package, dimension, "PREMISE_S_DIMENSION"),
-         sp.Tuple(*(sp.Tuple(premise.symbol, premise.vector)
-                    for premise in assumptions.dimension_declarations)))
-    emit(tag(package, dimension, "PREMISE_JOINT_ASSUMPTIONS"), assumptions.joint)
-    emit(tag(package, dimension, "PREMISE_RHO_BR_DOMAIN"), assumptions.common_parts[0])
-    emit(tag(package, dimension, "PREMISE_MU_R_DOMAIN"), assumptions.common_parts[1])
-    emit(tag(package, dimension, "PREMISE_B_COMP_DOMAIN"), assumptions.common_parts[2])
-    emit(tag(package, dimension, "PREMISE_K_NORM_DOMAIN"), assumptions.common_parts[3])
-    emit(tag(package, dimension, "PREMISE_K_REAL"),
-         sp.Tuple(*assumptions.common_parts[4:4 + dimension]))
-    emit(tag(package, dimension, "PREMISE_AMPLITUDES_REAL"),
-         sp.Tuple(*assumptions.common_parts[4 + dimension:4 + 2 * dimension]))
-    emit(tag(package, dimension, "PREMISE_D_DOMAIN"),
-         sp.Tuple(*assumptions.common_parts[4 + 2 * dimension:6 + 2 * dimension]))
-    emit(tag(package, dimension, "PREMISE_C_S0_DOMAIN"),
-         assumptions.common_parts[-1])
-    emit(tag(package, dimension, "PREMISE_PACKAGE_DOMAIN"), sp.Tuple(*assumptions.package_parts))
-    emit(tag(package, dimension, "PREMISE_BACKGROUND_REST"),
-         action.configuration["background_velocity"])
-    emit(tag(package, dimension, "PREMISE_NO_DISSIPATION"),
-         action.configuration["dissipative_terms"])
-    emit(tag(package, dimension, "PREMISE_LINEAR_RESPONSE"),
-         action.configuration["nonlinear_terms"])
-    emit(tag(package, dimension, "PREMISE_FROZEN_WALL_WIDTH"),
-         action.configuration["wall_width_fields"])
-    emit(tag(package, dimension, "PREMISE_BULK_SCALAR_MODE"),
-         sp.Tuple(bulk_mode.ansatz, bulk_mode.dispersion,
-                  bulk_mode.amplitude_reality, bulk_mode.sound_speed_domain))
-    emit(tag(package, dimension, "PREMISE_INTERFACE_EQUATIONS"),
-         bulk_mode.interface_equations)
-
-
-def coefficient_ordering(action: ActionData) -> tuple[sp.Symbol, ...]:
-    inventory: set[sp.Symbol] = set()
-    for factor in action.coefficient_factors:
-        inventory.update(factor.free_symbols)
-    return tuple(sorted(inventory, key=str))
-
-
-def substitute_plane_wave(expression: sp.Expr, ansatz: PlaneWaveAnsatz) -> sp.Expr:
-    return sp.expand(expression.xreplace(ansatz.substitutions()).doit())
-
-
-def dynamical_matrices(action: ActionData,
-                       ansatz: PlaneWaveAnsatz) -> tuple[sp.Matrix, sp.Matrix, sp.Expr, sp.Expr]:
-    plane_eom = tuple(substitute_plane_wave(expression, ansatz)
-                      for expression in action.eom)
-    trigonometric_factor = sp.cos(ansatz.phase)
-    if any(sp.simplify(expression.xreplace({trigonometric_factor: 0})) != 0
-           for expression in plane_eom):
-        raise RuntimeError("plane-wave EOM lacks the common trigonometric factor")
-    stripped_factor = trigonometric_factor
-    stripped = [sp.cancel(expression / stripped_factor) for expression in plane_eom]
-    matrix_a = sp.Matrix(stripped).jacobian(ansatz.amplitudes)
-
-    plane_lagrangian = substitute_plane_wave(action.lagrangian, ansatz)
-    phase_lagrangian = plane_lagrangian.xreplace({ansatz.phase: ansatz.average.variable})
-    averaged = ansatz.average.apply(sp.expand(phase_lagrangian))
-    matrix_b = sp.hessian(sp.simplify(averaged), ansatz.amplitudes)
-    ratio = sp.cancel(matrix_a[0, 0] / matrix_b[0, 0])
-    return sp.simplify(matrix_a), sp.simplify(matrix_b), stripped_factor, ratio
-
-
-def sign_test(expression: sp.Expr, assumptions: sp.Expr) -> sp.Tuple:
-    operand = sp.refine(sp.simplify(expression), assumptions)
-    zero = sp.ask(sp.Q.zero(operand), assumptions)
-    positive = sp.ask(sp.Q.positive(operand), assumptions)
-    negative = sp.ask(sp.Q.negative(operand), assumptions)
-    if zero is True:
-        token = sp.Symbol("ZERO")
-    elif positive is True:
-        token = sp.Symbol("POSITIVE")
-    elif negative is True:
-        token = sp.Symbol("NEGATIVE")
+def symbolic_truth_status(test_object: object, operands: object) -> sp.Tuple:
+    if test_object is True or test_object == sp.true:
+        token = "PROVED_TRUE"
+    elif test_object is False or test_object == sp.false:
+        token = "PROVED_FALSE"
     else:
-        token = sp.Symbol("UNDECIDED")
-    return sp.Tuple(operand, token)
+        token = "UNDECIDED"
+    return sp.Tuple(sp.Tuple(Str("STATUS_TOKEN"), Str(token)), sp.Tuple(Str("TEST_OBJECT"), casify(test_object)), sp.Tuple(Str("OPERANDS"), casify(operands)))
 
 
-def exact_iszero(expression: sp.Expr) -> bool:
-    """Exact zero oracle for Matrix rank/nullspace elimination."""
-    return bool(sp.cancel(expression) == 0)
-
-
-def syntactic_iszero(expression: sp.Expr) -> bool:
-    return bool(expression == 0)
-
-
-def row_primitive_matrix(matrix: sp.Matrix) -> sp.Matrix:
-    """Exact nonzero row rescaling used only to precondition nullspace()."""
-    rows: list[list[sp.Expr]] = []
-    for row_index in range(matrix.rows):
-        values = list(matrix.row(row_index))
-        denominator = sp.lcm([sp.fraction(sp.cancel(value))[1]
-                              for value in values])
-        cleared = [sp.factor(sp.cancel(value * denominator))
-                   for value in values]
-        content = sp.gcd_list(cleared)
-        if content != 0:
-            cleared = [sp.factor(sp.cancel(value / content))
-                       for value in cleared]
-        rows.append(cleared)
-    return sp.Matrix(rows)
-
-
-def exact_nullspace_basis(matrix: sp.Matrix) -> list[sp.Matrix]:
-    """Row-only exact preprocessing followed by Matrix.nullspace()."""
-    primitive = row_primitive_matrix(matrix)
-    reduced_domain, _pivots = DomainMatrix.from_Matrix(primitive).rref()
-    reduced = reduced_domain.to_Matrix()
-    return reduced.nullspace(
-        simplify=False, iszerofunc=syntactic_iszero)
-
-
-def equations_identically_satisfied(equations: Sequence[sp.Equality],
-                                     variables: Sequence[sp.Symbol]) -> sp.logic.boolalg.Boolean:
-    del variables
-    residuals = [sp.simplify(equation.lhs - equation.rhs) for equation in equations]
-    return sp.true if all(residual == 0 for residual in residuals) else sp.false
-
-
-def equations_inconsistent(equations: Sequence[sp.Equality], variables: Sequence[sp.Symbol],
-                           branches: Sequence[Mapping[sp.Symbol, sp.Expr]]
-                           ) -> sp.logic.boolalg.Boolean:
-    residuals = [sp.simplify(equation.lhs - equation.rhs) for equation in equations]
-    if not residuals or all(residual == 0 for residual in residuals) or branches:
-        return sp.false
-    if any(not residual.free_symbols and residual != 0 for residual in residuals):
-        return sp.true
-    external = set().union(*(residual.free_symbols for residual in residuals), set()) - set(variables)
-    if external or not variables:
-        return sp.false
-    try:
-        numerators = [sp.together(residual).as_numer_denom()[0]
-                      for residual in residuals if residual != 0]
-        basis = sp.groebner(numerators, *variables)
-        return sp.true if any(poly.as_expr() == 1 for poly in basis.polys) else sp.false
-    except (sp.PolynomialError, NotImplementedError, ValueError):
-        return sp.false
-
-
-def branch_real_admissibility(branch: Mapping[sp.Symbol, sp.Expr],
-                              assumptions: sp.Expr) -> sp.Tuple:
-    branch_relations = sp.Tuple(*(sp.Eq(variable, value, evaluate=False)
-                                  for variable, value in sorted(branch.items(),
-                                                                key=lambda pair: str(pair[0]))))
-    try:
-        substituted = sp.refine(
-            assumptions.subs(branch, simultaneous=True), assumptions)
-        predicate = sp.And(
-            substituted, *(sp.Eq(variable, value, evaluate=False)
-                           for variable, value in branch.items()))
-        try:
-            result = sp.satisfiable(predicate, use_lra_theory=True)
-        except Exception:
-            result = sp.satisfiable(predicate)
-        return sp.Tuple(branch_relations, predicate,
-                        canonical_solver_object(result))
-    except Exception:
-        return sp.Tuple(branch_relations, assumptions, sp.Symbol("UNDECIDED"))
-
-
-def locus_protocol(equations: Sequence[sp.Equality], variables: Sequence[sp.Symbol],
-                   assumptions: sp.Expr) -> LocusResult:
-    equation_tuple = tuple(equations)
-    variable_tuple = tuple(variables)
-    residuals = [sp.simplify(equation.lhs - equation.rhs) for equation in equation_tuple]
-    solve_residuals = [residual for residual in residuals if residual != 0]
-    unrestricted = tuple(sp.Symbol(str(variable)) for variable in variable_tuple)
-    to_unrestricted = dict(zip(variable_tuple, unrestricted))
-    from_unrestricted = dict(zip(unrestricted, variable_tuple))
-    unrestricted_residuals = [residual.xreplace(to_unrestricted)
-                              for residual in solve_residuals]
-    if not unrestricted_residuals:
-        raw: list[dict[sp.Symbol, sp.Expr]] = []
+def sign_payload(expr: sp.Expr, assumptions: sp.Tuple) -> sp.Tuple:
+    expr = sp.factor(sp.simplify(expr))
+    if expr == 0:
+        token = "ZERO"
+    elif expr.is_positive is True:
+        token = "POSITIVE"
+    elif expr.is_negative is True:
+        token = "NEGATIVE"
     else:
-        returned = sp.solve(unrestricted_residuals, unrestricted, dict=True,
-                            simplify=True, check=False)
-        unrestricted_raw = [returned] if isinstance(returned, dict) else list(returned)
-        raw = [{from_unrestricted.get(key, key): value.xreplace(from_unrestricted)
-                for key, value in branch.items()}
-               for branch in unrestricted_raw]
-    solution_payload = sp.Tuple(sp.Tuple(*variable_tuple), canonical_solver_object(raw))
-    identity = equations_identically_satisfied(equation_tuple, variable_tuple)
-    inconsistent = equations_inconsistent(equation_tuple, variable_tuple, raw)
-    admissible = sp.Tuple(*(branch_real_admissibility(branch, assumptions) for branch in raw))
-    return LocusResult(equation_tuple, variable_tuple, raw, solution_payload,
-                       identity, inconsistent, admissible)
+        token = "UNDECIDED"
+    return sp.Tuple(sp.Tuple(Str("SIGN_TOKEN"), Str(token)), sp.Tuple(Str("OPERAND"), casify(expr)))
 
 
-def emit_locus(package: str, dimension: int, base: str, result: LocusResult,
-               *, root: int | None = None, stratum: int | None = None) -> None:
-    emit(tag(package, dimension, f"{base}_EQUATIONS", root=root, stratum=stratum),
-         sp.Tuple(*result.equations))
-    emit(tag(package, dimension, f"{base}_SOLUTION", root=root, stratum=stratum),
-         result.solution_payload)
-    emit(tag(package, dimension, f"{base}_IDENTICALLY_SATISFIED", root=root, stratum=stratum),
-         result.identically_satisfied)
-    emit(tag(package, dimension, f"{base}_INCONSISTENT", root=root, stratum=stratum),
-         result.inconsistent)
-    emit(tag(package, dimension, f"{base}_REAL_ADMISSIBLE", root=root, stratum=stratum),
-         result.real_admissible)
+def relation_residual(rel: object) -> sp.Expr:
+    if isinstance(rel, sp.Equality):
+        return sp.expand(rel.lhs - rel.rhs)
+    return sp.sympify(rel)
 
 
-def roots_with_multiplicity(determinant: sp.Expr) -> tuple[tuple[sp.Expr, ...], tuple[sp.Expr, ...]]:
-    polynomial = sp.Poly(determinant, omegaSquared)
-    root_dictionary = sp.roots(polynomial, omegaSquared)
-    if sum(int(multiplicity) for multiplicity in root_dictionary.values()) != polynomial.degree():
-        raise RuntimeError("SymPy did not return a multiplicity-complete root set")
-    ordered_items = sorted(root_dictionary.items(), key=lambda pair: sp.default_sort_key(pair[0]))
-    all_roots = tuple(root for root, multiplicity in ordered_items
-                      for _ in range(int(multiplicity)))
-    distinct_roots = tuple(root for root, _ in ordered_items)
-    return all_roots, distinct_roots
+def solve_result_to_cas(solution: object, variables: tuple[sp.Symbol, ...]) -> object:
+    if isinstance(solution, list):
+        branches = []
+        for branch in solution:
+            if isinstance(branch, dict):
+                branches.append(sp.Tuple(*[sp.Tuple(var, casify(branch[var])) for var in variables if var in branch]))
+            else:
+                branches.append(casify(branch))
+        return sp.Tuple(*branches)
+    return casify(solution)
 
 
-def deduplicate_roots(roots: Sequence[sp.Expr], assumptions: sp.Expr) -> tuple[sp.Expr, ...]:
-    result: list[sp.Expr] = []
-    for candidate in roots:
-        if not any(sp.ask(sp.Q.zero(sp.refine(candidate - existing, assumptions)),
-                          assumptions) is True for existing in result):
-            result.append(candidate)
-    return tuple(result)
+def exposed_branches(solution: object, variables: tuple[sp.Symbol, ...]) -> list[dict[sp.Symbol, object]] | None:
+    if not isinstance(solution, list):
+        return None
+    branches = []
+    for branch in solution:
+        if not isinstance(branch, dict):
+            return None
+        branches.append(branch)
+    return branches
 
 
-def coincidence_equations(roots: Sequence[sp.Expr]) -> tuple[sp.Equality, ...]:
-    return tuple(sp.Eq(sp.simplify(left - right), 0, evaluate=False)
-                 for left, right in itertools.combinations(roots, 2))
-
-
-@dataclass(frozen=True)
-class SpectrumData:
-    determinant: sp.Expr
-    all_roots: tuple[sp.Expr, ...]
-    roots: tuple[sp.Expr, ...]
-    root_matrices: tuple[sp.Matrix, ...]
-    ranks: tuple[int, ...]
-    nullities: tuple[int, ...]
-
-
-def compute_emit_spectrum_and_modes(package: str, dimension: int, matrix: sp.Matrix,
-                                    coefficient_symbols: Sequence[sp.Symbol],
-                                    k_symbols: Sequence[sp.Symbol], assumptions: sp.Expr,
-                                    *, stratum: int | None = None) -> SpectrumData:
-    determinant = sp.factor(matrix.det(method="berkowitz"))
-    emit(tag(package, dimension, "DET_M", stratum=stratum), determinant)
-    all_roots, solver_distinct = roots_with_multiplicity(determinant)
-    roots = deduplicate_roots(solver_distinct, assumptions)
-    emit(tag(package, dimension, "ROOT_SOLUTION_SET", stratum=stratum), sp.Tuple(*all_roots))
-    emit(tag(package, dimension, "ROOT_DISTINCT", stratum=stratum), sp.Tuple(*roots))
-    emit(tag(package, dimension, "ROOT_COUNT_ALL", stratum=stratum), sp.Integer(len(all_roots)))
-    emit(tag(package, dimension, "ROOT_COUNT_DISTINCT", stratum=stratum), sp.Integer(len(roots)))
-    emit(tag(package, dimension, "ROOT_ORDERING", stratum=stratum), sp.Tuple(*roots))
-    for index, root_value in enumerate(roots, 1):
-        emit(tag(package, dimension, "VALUE", root=index, stratum=stratum), root_value)
-        emit(tag(package, dimension, "SIGN", root=index, stratum=stratum),
-             sign_test(root_value, assumptions))
-
-    coincidence = coincidence_equations(roots)
-    emit_locus(package, dimension, "ROOT_COINCIDENCE_K",
-               locus_protocol(coincidence, k_symbols, assumptions), stratum=stratum)
-    emit_locus(package, dimension, "ROOT_COINCIDENCE_COEFF",
-               locus_protocol(coincidence, coefficient_symbols, assumptions), stratum=stratum)
-
-    root_matrices: list[sp.Matrix] = []
-    ranks: list[int] = []
-    nullities: list[int] = []
-    k_column = sp.Matrix(k_symbols)
-    k_norm_squared = sp.Add(*(component ** 2 for component in k_symbols))
-    for index, root_value in enumerate(roots, 1):
-        root_matrix = matrix.subs(omegaSquared, root_value).applyfunc(
-            lambda entry: sp.factor(sp.cancel(entry)))
-        emit(tag(package, dimension, "N1", root=index, stratum=stratum), root_matrix)
-        rank_input = row_primitive_matrix(root_matrix)
-        rank = int(rank_input.rank(iszerofunc=exact_iszero, simplify=False))
-        emit(tag(package, dimension, "N2_RANK", root=index, stratum=stratum), sp.Integer(rank))
-        nullity = dimension - rank
-        emit(tag(package, dimension, "N2_NULLITY", root=index, stratum=stratum), sp.Integer(nullity))
-        stacked = root_matrix.col_join(sp.Matrix([list(k_symbols)]))
-        stacked_rank_input = row_primitive_matrix(stacked)
-        stacked_rank = int(stacked_rank_input.rank(
-            iszerofunc=exact_iszero, simplify=False))
-        emit(tag(package, dimension, "N3_STACKED_RANK", root=index, stratum=stratum),
-             sp.Integer(stacked_rank))
-        transverse_nullity = dimension - stacked_rank
-        emit(tag(package, dimension, "N3_TRANSVERSE_NULLITY", root=index, stratum=stratum),
-             sp.Integer(transverse_nullity))
-        emit(tag(package, dimension, "N4_NULLITY_DIFFERENCE", root=index, stratum=stratum),
-             sp.Integer(nullity - transverse_nullity))
-        m_dot_k = root_matrix * k_column
-        emit(tag(package, dimension, "N5_M_DOT_K", root=index, stratum=stratum),
-             m_dot_k.applyfunc(sp.simplify))
-        basis = exact_nullspace_basis(root_matrix)
-        emit(tag(package, dimension, "N6_BASIS", root=index, stratum=stratum), sp.Tuple(*basis))
-        basis_verification = all(
-            all(exact_iszero(entry) for entry in root_matrix * vector)
-            for vector in basis)
-        if not basis_verification:
-            raise RuntimeError("row-preconditioned nullspace basis does not annihilate M_r")
-        dot_products = tuple((vector.T * k_column)[0] for vector in basis)
-        emit(tag(package, dimension, "N6_DOT_K", root=index, stratum=stratum),
-             sp.Tuple(*dot_products))
-        residuals = tuple(sp.simplify(k_norm_squared * vector - dot * k_column)
-                          for vector, dot in zip(basis, dot_products))
-        emit(tag(package, dimension, "N6_RESIDUAL", root=index, stratum=stratum),
-             sp.Tuple(*residuals))
-        emit(tag(package, dimension, "N7_BASIS_COUNT", root=index, stratum=stratum),
-             sp.Integer(len(basis)))
-        emit(tag(package, dimension, "N7_RESIDUAL", root=index, stratum=stratum),
-             sp.Integer(len(basis) - nullity))
-        root_matrices.append(root_matrix)
-        ranks.append(rank)
-        nullities.append(nullity)
-    return SpectrumData(determinant, all_roots, roots, tuple(root_matrices),
-                        tuple(ranks), tuple(nullities))
-
-
-def emit_scaling(package: str, dimension: int, roots: Sequence[sp.Expr],
-                 k_symbols: Sequence[sp.Symbol], assumptions: sp.Expr) -> None:
-    scaling = {component: lambdaScale * component for component in k_symbols}
-    for index, root in enumerate(roots, 1):
-        scaled = sp.simplify(root.subs(scaling, simultaneous=True))
-        emit(tag(package, dimension, "SCALED", root=index), scaled)
-        emit(tag(package, dimension, "UNSCALED", root=index), root)
-        root_is_zero = sp.ask(sp.Q.zero(sp.refine(root, assumptions)), assumptions) is True
-        if root_is_zero:
-            ratio: sp.Expr = sp.Symbol("UNDEFINED_RATIO")
-            exponent: sp.Expr = sp.Symbol("UNDEFINED_RATIO")
-        else:
-            ratio = sp.factor(sp.cancel(scaled / root))
-            numerator, denominator = sp.fraction(ratio)
-            try:
-                exponent_candidate = (sp.degree(numerator, lambdaScale)
-                                      - sp.degree(denominator, lambdaScale))
-                exponent = (sp.Integer(exponent_candidate)
-                            if sp.simplify(ratio / lambdaScale ** exponent_candidate) == 1
-                            else sp.Symbol("NOT_A_PURE_POWER"))
-            except (sp.PolynomialError, TypeError):
-                exponent = sp.Symbol("NOT_A_PURE_POWER")
-        emit(tag(package, dimension, "SCALE_RATIO", root=index), ratio)
-        emit(tag(package, dimension, "SCALE_EXPONENT", root=index), exponent)
-
-
-def vector_add(left: Sequence[sp.Expr], right: Sequence[sp.Expr]) -> tuple[sp.Expr, ...]:
-    return tuple(sp.simplify(a + b) for a, b in zip(left, right))
-
-
-def vector_scale(vector: Sequence[sp.Expr], scalar: sp.Expr) -> tuple[sp.Expr, ...]:
-    return tuple(sp.simplify(scalar * entry) for entry in vector)
-
-
-class DimensionWalker:
-    def __init__(self, action: ActionData, amplitudes: Sequence[sp.Symbol],
-                 k_symbols: Sequence[sp.Symbol],
-                 coefficient_dimensions: Mapping[sp.Symbol, Sequence[sp.Expr]]):
-        self.action = action
-        self.symbol_dimensions: dict[sp.Symbol, tuple[sp.Expr, ...]] = {
-            **{coordinate: (sp.Integer(1), 0, 0) for coordinate in action.coordinates},
-            action.time: (0, 1, 0),
-            **{amplitude: tuple(U_DIMENSION) for amplitude in amplitudes},
-            **{wave: (-1, 0, 0) for wave in k_symbols},
-            omegaSquared: (0, -2, 0),
-            lambdaScale: (0, 0, 0),
-            c_s0: (1, -1, 0),
-            D_symbol: (0, 0, 0),
-        }
-        for coefficient, vector in coefficient_dimensions.items():
-            self.symbol_dimensions[coefficient] = tuple(vector)
-
-    def dimensions(self, expression: sp.Expr) -> list[tuple[sp.Expr, ...]]:
-        expression = sp.sympify(expression)
-        if expression == 0:
-            return []
-        if isinstance(expression, sp.Add):
-            result: list[tuple[sp.Expr, ...]] = []
-            for term in expression.args:
-                result.extend(self.dimensions(term))
-            return result
-        return [self._single(expression)]
-
-    def _single(self, expression: sp.Expr) -> tuple[sp.Expr, ...]:
-        if expression.is_Number:
-            return (0, 0, 0)
-        if expression in self.action.fields:
-            return tuple(U_DIMENSION)
-        if isinstance(expression, sp.Derivative):
-            result = (tuple(U_DIMENSION) if expression.expr in self.action.fields
-                      else self._single(expression.expr))
-            for variable, count in expression.variable_count:
-                derivative_dimension = ((sp.Integer(-1), 0, 0)
-                                        if variable in self.action.coordinates else (0, -1, 0))
-                result = vector_add(result, vector_scale(derivative_dimension, sp.Integer(count)))
-            return result
-        if isinstance(expression, sp.Symbol):
-            if expression in self.symbol_dimensions:
-                return self.symbol_dimensions[expression]
-            if expression.name.startswith("g"):
-                return (0, 0, 0)
-            raise ValueError(f"no dimension assigned to symbol {expression}")
-        if isinstance(expression, sp.Add):
-            dimensions = self.dimensions(expression)
-            if not dimensions:
-                return (0, 0, 0)
-            reference = dimensions[0]
-            if any(any(sp.simplify(left - right) != 0
-                       for left, right in zip(vector, reference))
-                   for vector in dimensions[1:]):
-                raise ValueError(f"inhomogeneous additive subexpression: {expression}")
-            return reference
-        if isinstance(expression, sp.Mul):
-            result: tuple[sp.Expr, ...] = (0, 0, 0)
-            for factor in expression.args:
-                result = vector_add(result, self._single(factor))
-            return result
-        if isinstance(expression, sp.Pow):
-            if not expression.exp.is_number:
-                raise ValueError(f"dimensionful nonnumeric exponent: {expression}")
-            return vector_scale(self._single(expression.base), expression.exp)
-        if expression.func in (sp.sin, sp.cos):
-            argument_dimensions = self.dimensions(expression.args[0])
-            if any(any(sp.simplify(entry) != 0 for entry in vector)
-                   for vector in argument_dimensions):
-                raise ValueError(f"dimensionful trigonometric argument: {expression}")
-            return (0, 0, 0)
-        if isinstance(expression, sp.Function):
-            if expression in self.action.fields:
-                return tuple(U_DIMENSION)
-            return (0, 0, 0)
-        raise ValueError(f"no dimension rule for {type(expression).__name__}: {expression}")
-
-
-def dimension_solve(action: ActionData, coefficient_symbols: Sequence[sp.Symbol],
-                    dimension_declarations: Sequence[DimensionPremise]) -> tuple[
-        tuple[sp.Equality, ...], sp.FiniteSet, dict[sp.Symbol, tuple[sp.Expr, ...]],
-        int, int, sp.Symbol]:
-    declared_dimensions = {premise.symbol: tuple(premise.vector)
-                           for premise in dimension_declarations}
-    unknown_coefficients = tuple(symbol for symbol in coefficient_symbols
-                                 if symbol not in declared_dimensions)
-    dimension_unknowns: dict[sp.Symbol, tuple[sp.Symbol, ...]] = {
-        coefficient: tuple(sp.Symbol(f"dim_{coefficient}_{slot}")
-                           for slot in ("L", "T", "M"))
-        for coefficient in unknown_coefficients
-    }
-    provisional_dimensions: dict[sp.Symbol, tuple[sp.Expr, ...]] = {
-        **dimension_unknowns,
-        **{coefficient: declared_dimensions[coefficient]
-           for coefficient in declared_dimensions if coefficient in coefficient_symbols},
-    }
-    dummy_amplitudes = tuple(sp.Symbol(f"a{index + 1}", real=True)
-                             for index in range(len(action.fields)))
-    dummy_k = tuple(sp.Symbol(f"k{index + 1}", real=True)
-                    for index in range(len(action.fields)))
-    walker = DimensionWalker(action, dummy_amplitudes, dummy_k, provisional_dimensions)
-    equations: list[sp.Equality] = []
-    incidence_rows: list[list[sp.Expr]] = []
-    for term, factor in zip(action.action_terms, action.coefficient_factors):
-        term_dimensions = walker.dimensions(term)
-        if not term_dimensions:
-            continue
-        representative = term_dimensions[0]
-        equations.extend(sp.Eq(representative[slot], ENERGY_DENSITY_DIM[slot], evaluate=False)
-                         for slot in range(3))
-        incidence_rows.append([factor.as_powers_dict().get(symbol, 0)
-                               for symbol in unknown_coefficients])
-    flat_unknowns = tuple(value for coefficient in unknown_coefficients
-                          for value in dimension_unknowns[coefficient])
-    solution = sp.linsolve(equations, flat_unknowns)
-    if solution is sp.EmptySet:
-        raise RuntimeError("dimension system is unsolvable")
-    solution_tuple = next(iter(solution)) if flat_unknowns else tuple()
-    solved_dimensions: dict[sp.Symbol, tuple[sp.Expr, ...]] = {}
-    cursor = 0
-    for coefficient in unknown_coefficients:
-        solved_dimensions[coefficient] = tuple(solution_tuple[cursor:cursor + 3])
-        cursor += 3
-    for coefficient in coefficient_symbols:
-        if coefficient in declared_dimensions:
-            solved_dimensions[coefficient] = declared_dimensions[coefficient]
-    incidence = (sp.Matrix(incidence_rows)
-                 if incidence_rows else sp.zeros(0, len(unknown_coefficients)))
-    equation_count = int(incidence.rank())
-    unknown_count = len(unknown_coefficients)
-    if equation_count < unknown_count:
-        determination = sp.Symbol("UNDER_DETERMINED")
-    elif equation_count == unknown_count:
-        determination = sp.Symbol("EXACTLY_DETERMINED")
-    else:
-        determination = sp.Symbol("OVER_DETERMINED")
-    return (tuple(equations), solution, solved_dimensions, equation_count,
-            unknown_count, determination)
-
-
-def homogeneity_record(expression: Any, walker: DimensionWalker) -> sp.Tuple:
-    if isinstance(expression, sp.MatrixBase):
-        components = list(expression)
-    elif isinstance(expression, (tuple, list, sp.Tuple)):
-        components = []
-        for item in expression:
-            components.extend(list(item) if isinstance(item, sp.MatrixBase) else [sp.sympify(item)])
-    else:
-        components = [sp.sympify(expression)]
-    all_dimensions: list[sp.Tuple] = []
-    homogeneous = True
-    reference: tuple[sp.Expr, ...] | None = None
-    for component in components:
-        term_dimensions = walker.dimensions(component)
-        all_dimensions.append(sp.Tuple(*(sp.Tuple(*vector) for vector in term_dimensions)))
-        if term_dimensions:
-            local_reference = term_dimensions[0]
-            if any(any(sp.simplify(a - b) != 0 for a, b in zip(vector, local_reference))
-                   for vector in term_dimensions[1:]):
-                homogeneous = False
-            if reference is None:
-                reference = local_reference
-            elif any(sp.simplify(a - b) != 0 for a, b in zip(local_reference, reference)):
-                homogeneous = False
-    return sp.Tuple(expression, sp.Tuple(*all_dimensions),
-                    sp.true if homogeneous else sp.false)
-
-
-def emit_dimensions(package: str, dimension: int, action: ActionData,
-                    coefficient_symbols: Sequence[sp.Symbol], spectrum: SpectrumData,
-                    k_symbols: Sequence[sp.Symbol], amplitudes: Sequence[sp.Symbol],
-                    q7_residual: sp.Expr | None, kw_squared_values: Sequence[sp.Expr],
-                    assumptions: AssumptionData, registry_state: RegistryState) -> None:
-    equations, solution, solved, equation_count, unknown_count, determination = dimension_solve(
-        action, coefficient_symbols, assumptions.dimension_declarations)
-    ordered_dimensions = sp.Tuple(*(sp.Tuple(coefficient, sp.Tuple(*solved[coefficient]))
-                                    for coefficient in coefficient_symbols))
-    emit(tag(package, dimension, "DIM_COEFFICIENTS"), ordered_dimensions)
-    emit(tag(package, dimension, "DIM_EQUATIONS"), sp.Tuple(*equations))
-    emit(tag(package, dimension, "DIM_SOLUTION"), solution)
-    emit(tag(package, dimension, "DIM_EQUATION_COUNT"), sp.Integer(equation_count))
-    emit(tag(package, dimension, "DIM_UNKNOWN_COUNT"), sp.Integer(unknown_count))
-    emit(tag(package, dimension, "DIM_COUNT_DIFFERENCE"),
-         sp.Integer(equation_count - unknown_count))
-    emit(tag(package, dimension, "DIM_DETERMINACY"), determination)
-    walker = DimensionWalker(action, amplitudes, k_symbols, solved)
-    k_squared = sp.Add(*(component ** 2 for component in k_symbols))
-    for index, root in enumerate(spectrum.roots, 1):
-        dimensions = walker.dimensions(sp.cancel(root / k_squared))
-        payload = sp.nan if not dimensions else sp.Tuple(*dimensions[0])
-        emit(tag(package, dimension, "DIM_OVER_KSQ", root=index), payload)
-
-    emit(tag(package, dimension, "DIM_HOMOGENEITY_ACTION"),
-         sp.Tuple(*(homogeneity_record(term, walker) for term in action.action_terms)))
-    derived: list[sp.Tuple] = [homogeneity_record(spectrum.determinant, walker)]
-    for root, root_matrix, kw_value in zip(spectrum.roots,
-                                           spectrum.root_matrices, kw_squared_values):
-        derived.append(homogeneity_record(root, walker))
-        derived.append(homogeneity_record(root_matrix * sp.Matrix(k_symbols), walker))
-        basis = exact_nullspace_basis(root_matrix)
-        k_column = sp.Matrix(k_symbols)
-        k_norm = (k_column.T * k_column)[0]
-        n6 = tuple(sp.simplify(k_norm * vector - (vector.T * k_column)[0] * k_column)
-                   for vector in basis)
-        derived.append(homogeneity_record(n6, walker))
-        derived.append(homogeneity_record(kw_value, walker))
-    if q7_residual is not None:
-        derived.append(homogeneity_record(q7_residual, walker))
-    emit(tag(package, dimension, "DIM_HOMOGENEITY_DERIVED"), sp.Tuple(*derived))
-
-    if registry_state.value is not None:
-        by_symbol = {quantity.symbol_name: quantity
-                     for quantity in registry_state.value.quantities.values()}
-        derived_rows = []
-        declared_rows = []
-        residual_rows = []
-        locus_rows = []
-        for coefficient in coefficient_symbols:
-            quantity = by_symbol.get(str(coefficient))
-            if quantity is None:
-                continue
-            derived_vector = sp.Tuple(*solved[coefficient])
-            declared_vector = sp.Tuple(*(sp.Integer(value) for value in quantity.dimension))
-            residual_vector = sp.Tuple(*(sp.simplify(left - right)
-                                         for left, right in zip(derived_vector, declared_vector)))
-            opaque_locus = quantity.raw["dimension"]["provenance"]["source_locus"]
-            derived_rows.append(sp.Tuple(coefficient, derived_vector))
-            declared_rows.append(sp.Tuple(coefficient, declared_vector))
-            residual_rows.append(sp.Tuple(coefficient, residual_vector))
-            locus_rows.append(sp.Tuple(coefficient, canonical_solver_object(opaque_locus)))
-        registry_payloads = (
-            sp.Tuple(*derived_rows), sp.Tuple(*declared_rows),
-            sp.Tuple(*residual_rows), sp.Tuple(*locus_rows))
-    else:
-        unavailable = registry_state.unavailable_payload()
-        registry_payloads = (unavailable,) * 4
-    for quantity, payload in zip(
-            ("DIM_REGISTRY_DERIVED", "DIM_REGISTRY_DECLARED",
-             "DIM_REGISTRY_RESIDUAL", "DIM_REGISTRY_SOURCE_LOCUS"),
-            registry_payloads):
-        emit(tag(package, dimension, quantity, local=True), payload)
-
-
-def rank_drop_minors(matrix: sp.Matrix, rank: int) -> tuple[sp.Expr, ...]:
-    if rank == 0:
-        return tuple()
-    return tuple(sp.factor(matrix.extract(rows, columns).det(method="berkowitz"))
-                 for rows in itertools.combinations(range(matrix.rows), rank)
-                 for columns in itertools.combinations(range(matrix.cols), rank))
-
-
-def numeric_real(expr: sp.Expr) -> bool:
-    simplified = sp.simplify(expr)
-    return not simplified.free_symbols and simplified.is_real is True
-
-
-def witness_for_branch(branch: Mapping[sp.Symbol, sp.Expr],
-                       equations: Sequence[sp.Equality], package: str,
-                       k_symbols: Sequence[sp.Symbol], amplitudes: Sequence[sp.Symbol],
-                       coefficient_symbols: Sequence[sp.Symbol]
-                       ) -> dict[sp.Symbol, sp.Expr] | None:
-    positive_symbols = {rho_br, mu_R, B_comp, c_s0}
-    if package == "XFORM_TRACELESS":
-        positive_symbols.add(mu_br)
-    if package == "XCOEF_BSCALE":
-        positive_symbols.add(s_scale)
-    real_symbols = (set(k_symbols) | set(amplitudes) | set(coefficient_symbols)
-                    | {beta, mu_br, s_scale, c_s0})
-    all_symbols = real_symbols | set().union(*(equation.free_symbols
-                                               for equation in equations), set())
-    all_symbols |= set().union(*(value.free_symbols for value in branch.values()), set())
-    all_symbols |= set(branch)
-    for trial in range(1, 32):
-        values: dict[sp.Symbol, sp.Expr] = {}
-        for offset, symbol in enumerate(sorted(all_symbols - set(branch), key=str)):
-            candidate = sp.Integer(sp.prime(trial + offset + 1))
-            if symbol == beta:
-                candidate = sp.Integer(trial - 1)
-            if symbol == s_scale and candidate == 1:
-                candidate = sp.Integer(2)
-            values[symbol] = candidate
-        pending = dict(branch)
-        for _ in range(len(pending) + 2):
-            progressed = False
-            for symbol, expression in tuple(pending.items()):
-                value = sp.simplify(expression.subs(values))
-                if value.free_symbols:
-                    continue
-                values[symbol] = value
-                del pending[symbol]
-                progressed = True
-            if not pending or not progressed:
-                break
-        if pending:
-            continue
-        if any(not numeric_real(values.get(symbol, symbol)) for symbol in all_symbols):
-            continue
-        if any(sp.simplify(values[symbol]) <= 0
-               for symbol in positive_symbols if symbol in values):
-            continue
-        if s_scale in values and sp.simplify(values[s_scale] - 1) == 0:
-            continue
-        if sp.simplify(sum(values[symbol] ** 2 for symbol in k_symbols)) <= 0:
-            continue
-        if any(sp.simplify((equation.lhs - equation.rhs).subs(values)) != 0
-               for equation in equations):
-            continue
-        return values
+def evaluate_premise(premise: object, branch: dict[sp.Symbol, object]) -> bool | None:
+    substituted = premise.subs(branch) if hasattr(premise, "subs") else premise
+    if isinstance(substituted, (sp.StrictGreaterThan, sp.StrictLessThan, sp.GreaterThan, sp.LessThan, sp.Equality, sp.Unequality)):
+        simplified = sp.simplify(substituted)
+        if simplified == sp.true:
+            return True
+        if simplified == sp.false:
+            return False
+        return None
+    if getattr(substituted, "func", None).__name__ == "AppliedPredicate":
+        argument = substituted.arguments[0] if getattr(substituted, "arguments", ()) else None
+        predicate_name = getattr(substituted.function, "name", "")
+        if predicate_name == "real" and getattr(argument, "is_real", None) is True:
+            return True
+        if predicate_name == "positive" and getattr(argument, "is_positive", None) is True:
+            return True
+        if predicate_name == "integer" and getattr(argument, "is_integer", None) is True:
+            return True
+        return None
     return None
 
 
-@dataclass(frozen=True)
-class Stratum:
-    equations: tuple[sp.Equality, ...]
-    point: Mapping[sp.Symbol, sp.Expr]
-    source_root: int
-
-
-def compute_rank_drop_and_strata(package: str, dimension: int,
-                                 spectrum: SpectrumData,
-                                 coefficient_symbols: Sequence[sp.Symbol],
-                                 k_symbols: Sequence[sp.Symbol],
-                                 amplitudes: Sequence[sp.Symbol],
-                                 assumptions: sp.Expr) -> tuple[Stratum, ...]:
-    candidates: list[Stratum] = []
-    seen: set[str] = set()
-    for root_index, (root_matrix, rank) in enumerate(
-            zip(spectrum.root_matrices, spectrum.ranks), 1):
-        minors = rank_drop_minors(root_matrix, rank)
-        emit(tag(package, dimension, "RANK_DROP_MINORS", root=root_index),
-             sp.Tuple(*minors))
-        equations = tuple(sp.Eq(minor, 0, evaluate=False) for minor in minors)
-        protocols = {
-            "RANK_DROP_K": locus_protocol(equations, k_symbols, assumptions),
-            "RANK_DROP_COEFF": locus_protocol(equations, coefficient_symbols, assumptions),
-            "RANK_DROP_JOINT": locus_protocol(
-                equations, (*k_symbols, *coefficient_symbols), assumptions),
-        }
-        for base, protocol in protocols.items():
-            emit_locus(package, dimension, base, protocol, root=root_index)
-        for branch in protocols["RANK_DROP_JOINT"].raw_branches:
-            defining = tuple(sp.Eq(variable, value, evaluate=False)
-                             for variable, value in sorted(branch.items(),
-                                                           key=lambda pair: str(pair[0])))
-            point = witness_for_branch(branch, equations, package, k_symbols,
-                                       amplitudes, coefficient_symbols)
-            if point is None or int(root_matrix.subs(point).rank()) >= rank:
-                continue
-            key = sp.srepr(sp.Tuple(*defining))
-            if key not in seen:
-                seen.add(key)
-                candidates.append(Stratum(defining, point, root_index))
-    emit(tag(package, dimension, "STRATUM_ORDERING"),
-         sp.Tuple(*(sp.Tuple(*stratum.equations) for stratum in candidates)))
-    return tuple(candidates)
-
-
-def emit_strata(package: str, dimension: int, strata: Sequence[Stratum],
-                matrix: sp.Matrix, coefficient_symbols: Sequence[sp.Symbol],
-                k_symbols: Sequence[sp.Symbol], assumptions: sp.Expr,
-                generic_root_jacobian: sp.Matrix) -> None:
-    for stratum_index, stratum in enumerate(strata, 1):
-        point_payload = sp.Dict({symbol: value for symbol, value in sorted(
-            stratum.point.items(), key=lambda pair: str(pair[0]))})
-        residual = sp.Tuple(*(sp.simplify((equation.lhs - equation.rhs)
-                                          .subs(stratum.point))
-                              for equation in stratum.equations))
-        emit(tag(package, dimension, "DEFINING_EQUATIONS", stratum=stratum_index),
-             sp.Tuple(*stratum.equations))
-        emit(tag(package, dimension, "POINT", stratum=stratum_index), point_payload)
-        emit(tag(package, dimension, "POINT_RESIDUAL", stratum=stratum_index), residual)
-        specialized_matrix = sp.simplify(matrix.subs(stratum.point))
-        specialized = compute_emit_spectrum_and_modes(
-            package, dimension, specialized_matrix, coefficient_symbols, k_symbols,
-            assumptions.subs(stratum.point), stratum=stratum_index)
-        restricted = generic_root_jacobian.subs(stratum.point)
-        recomputed = sp.Matrix([[sp.diff(root, coefficient)
-                                 for coefficient in coefficient_symbols]
-                                for root in specialized.roots])
-        emit(tag(package, dimension, "ROOT_COEFFICIENT_JACOBIAN_RESTRICTED",
-                 stratum=stratum_index), restricted)
-        emit(tag(package, dimension, "ROOT_COEFFICIENT_JACOBIAN_RECOMPUTED",
-                 stratum=stratum_index), recomputed)
-
-
-def q7_objects(dimension: int, action: ActionData
-               ) -> tuple[sp.Expr | None, tuple[tuple[str, Any], ...]]:
-    if dimension != 3:
-        return None, tuple()
-    g = sp.symbols("g11 g12 g13 g21 g22 g23 g31 g32 g33", real=True)
-    G = sp.Matrix(3, 3, g)
-    substitution = {action.gradient[row, column]: G[row, column]
-                    for row in range(3) for column in range(3)}
-    w_full = action.stiffness.xreplace(substitution)
-    selected_curl_terms = tuple(term.xreplace(substitution)
-                                for (kind, _, _), term in zip(
-                                    action.stiffness_records, action.stiffness_terms)
-                                if kind == "curl")
-    curl_term = sp.Add(*selected_curl_terms)
-    curl_density = density_forms(G, 3)["curl"]
-    c_vector = sp.Matrix([
-        sp.Add(*(sp.LeviCivita(index, row, column) * G[row, column]
-                 for row in range(3) for column in range(3)))
-        for index in range(3)
-    ])
-    curl_reference = sp.expand((c_vector.T * c_vector)[0])
-    residual = sp.expand(curl_density - curl_reference)
-    return residual, (
-        ("Q7_W_FULL", w_full),
-        ("Q7_CURL_TERM", curl_term),
-        ("Q7_CURL_DENSITY", curl_density),
-        ("Q7_CURL_REFERENCE", curl_reference),
-        ("Q7_RESIDUAL", residual),
+def admissibility_entry(branch: dict[sp.Symbol, object], assumptions: sp.Tuple) -> sp.Tuple:
+    checks = [evaluate_premise(premise, branch) for premise in assumptions]
+    if any(check is False for check in checks):
+        token = "EXCLUDED"
+        test_object = sp.false
+    elif checks and all(check is True for check in checks):
+        token = "ADMISSIBLE"
+        test_object = sp.true
+    else:
+        token = "UNDECIDED"
+        test_object = sp.Tuple(*[premise.subs(branch) if hasattr(premise, "subs") else premise for premise in assumptions])
+    return sp.Tuple(
+        sp.Tuple(Str("BRANCH"), solve_result_to_cas([branch], tuple(branch.keys()))),
+        sp.Tuple(Str("STATUS_TOKEN"), Str(token)),
+        sp.Tuple(Str("TEST_OBJECT"), casify(test_object)),
+        sp.Tuple(Str("OPERANDS"), sp.Tuple(casify(branch), assumptions)),
     )
 
 
-def q11_objects(package: str, dimension: int, spectrum: SpectrumData,
-                coefficient_symbols: Sequence[sp.Symbol],
-                ansatz: PlaneWaveAnsatz, assumptions: sp.Expr,
-                bulk_mode: BulkModeData) -> tuple[sp.Expr, ...]:
-    kw_values: list[sp.Expr] = []
-    for root_index, root in enumerate(spectrum.roots, 1):
-        equation = bulk_mode.dispersion.xreplace({omegaSquared: root})
-        solution = sp.solve(equation, bulk_mode.normal_wavevector ** 2,
-                            dict=False, simplify=True)
-        if not solution:
-            raise RuntimeError("bulk normal-wavevector equation is unsolved")
-        kw_value = sp.simplify(solution[0])
-        kw_values.append(kw_value)
-        emit(tag(package, dimension, "KW_EQUATION", root=root_index), equation)
-        emit(tag(package, dimension, "KW_SQUARED", root=root_index), kw_value)
-        emit(tag(package, dimension, "KW_SIGN", root=root_index),
-             sign_test(kw_value, assumptions))
-        zero_locus = locus_protocol(
-            (sp.Eq(kw_value, 0, evaluate=False),),
-            (*coefficient_symbols, c_s0), assumptions)
-        emit_locus(package, dimension, "KW_ZERO_LOCUS", zero_locus,
-                   root=root_index)
-
-    c1 = tuple(bulk_mode.interface_equations)
-    unknowns = tuple(ansatz.amplitudes) + (bulk_mode.amplitude,)
-    coefficient_matrix = (sp.linear_eq_to_matrix(
-        [equation.lhs - equation.rhs for equation in c1], unknowns)[0]
-        if c1 else sp.zeros(0, len(unknowns)))
-    c2_count = len(unknowns)
-    c3_rank = int(coefficient_matrix.rank())
-    emit(tag(package, dimension, "C1_EQUATIONS"), sp.Tuple(*c1))
-    emit(tag(package, dimension, "C2_UNKNOWNS"), sp.Tuple(*unknowns))
-    emit(tag(package, dimension, "C2_COUNT"), sp.Integer(c2_count))
-    emit(tag(package, dimension, "C3_RANK"), sp.Integer(c3_rank))
-    emit(tag(package, dimension, "C4_DIFFERENCE"),
-         sp.Integer(c2_count - c3_rank))
-    return tuple(kw_values)
+def candidate_witness(variables: tuple[sp.Symbol, ...]) -> dict[sp.Symbol, sp.Expr]:
+    values = {}
+    for var in variables:
+        if var in K_ALL:
+            values[var] = sp.Integer(1) if var == variables[0] else sp.Integer(0)
+        elif var in (rho_br, mu_R, B_comp, mu_br, c_s0):
+            values[var] = sp.Integer(1)
+        elif var == s or var == s_rho:
+            values[var] = sp.Integer(2)
+        elif var == beta:
+            values[var] = sp.Integer(0)
+        elif var == kwSquared:
+            values[var] = sp.Integer(0)
+        else:
+            values[var] = sp.Integer(1)
+    return values
 
 
-def emit_q9(package: str, dimension: int, q9: Q9Result) -> None:
-    for quantity, payload in q9.payloads:
-        emit(tag(package, dimension, quantity), payload)
+def witness_valid(equations: tuple[object, ...], assumptions: sp.Tuple, witness: dict[sp.Symbol, sp.Expr]) -> bool:
+    for eq in equations:
+        residual = relation_residual(eq).subs(witness)
+        if sp.simplify(residual) != 0:
+            return False
+    for premise in assumptions:
+        result = evaluate_premise(premise, witness)
+        if result is False:
+            return False
+    return True
 
 
-def run_cell(package: str, dimension: int, q9: Q9Result,
-             registry_state: RegistryState) -> None:
-    emit_q9(package, dimension, q9)
-    action = build_action(package, dimension, q9)
-    k_symbols = tuple(sp.Symbol(f"k{index + 1}", real=True)
-                      for index in range(dimension))
-    amplitudes = tuple(sp.Symbol(f"a{index + 1}", real=True)
-                       for index in range(dimension))
-    bulk_amplitude = sp.Symbol("A", real=True)
-    assumptions = build_assumptions(package, dimension, k_symbols, amplitudes)
-    ansatz = build_plane_wave_ansatz(action, amplitudes, k_symbols)
-    bulk_mode = build_bulk_mode(action, k_symbols, bulk_amplitude)
-    emit_premises(package, dimension, action, assumptions, ansatz, bulk_mode)
-    emit(tag(package, dimension, "PD_TERM"), action.pd_term)
-    emit(tag(package, dimension, "L"), action.lagrangian)
-    emit(tag(package, dimension, "STIFFNESS_TERMS"),
-         sp.Tuple(*action.stiffness_terms))
-    emit(tag(package, dimension, "EULER_LAGRANGE"),
-         sp.Tuple(*(sp.Eq(expression, 0, evaluate=False)
-                    for expression in action.eom)))
-    coefficients = coefficient_ordering(action)
-    emit(tag(package, dimension, "COEFFICIENT_ORDERING"),
-         sp.Tuple(*coefficients))
-
-    matrix_a, matrix_b, stripped_factor, ratio = dynamical_matrices(action, ansatz)
-    emit(tag(package, dimension, "M_ROUTE_A_STRIPPED_FACTOR"), stripped_factor)
-    emit(tag(package, dimension, "M_A"), matrix_a)
-    emit(tag(package, dimension, "M_B"), matrix_b)
-    emit(tag(package, dimension, "M_A_MINUS_M_B"),
-         sp.simplify(matrix_a - matrix_b))
-    emit(tag(package, dimension, "M_A11_OVER_M_B11"), ratio)
-    emit(tag(package, dimension, "M_RESIDUAL_TEST_SCOPE"),
-         sp.Tuple(sp.Symbol("SUPPLIED_CLASSIFICATION"),
-                  sp.Symbol("CODING_CONSISTENCY")))
-    route_a = MatrixRoute(sp.Symbol("M_A"), matrix_a)
-    route_b = MatrixRoute(sp.Symbol("M_B"), matrix_b)
-    downstream_route = route_b
-    matrix = downstream_route.matrix
-    emit(tag(package, dimension, "M_ROUTE_USED"), downstream_route.name)
-    coefficient_jacobian = sp.Tuple(*(
-        matrix.applyfunc(lambda entry: sp.diff(entry, coefficient))
-        for coefficient in coefficients))
-    emit(tag(package, dimension, "M_COEFFICIENT_JACOBIAN"),
-         coefficient_jacobian)
-
-    spectrum = compute_emit_spectrum_and_modes(
-        package, dimension, matrix, coefficients, k_symbols, assumptions.joint)
-    emit_scaling(package, dimension, spectrum.roots,
-                 k_symbols, assumptions.joint)
-    root_jacobian = sp.Matrix([
-        [sp.diff(root, coefficient) for coefficient in coefficients]
-        for root in spectrum.roots
-    ])
-    emit(tag(package, dimension, "ROOT_COEFFICIENT_JACOBIAN"),
-         root_jacobian)
-
-    q7_residual, q7_payloads = q7_objects(dimension, action)
-    for quantity, payload in q7_payloads:
-        emit(tag(package, dimension, quantity), payload)
-
-    strata = compute_rank_drop_and_strata(
-        package, dimension, spectrum, coefficients, k_symbols,
-        amplitudes, assumptions.joint)
-    emit_strata(package, dimension, strata, matrix, coefficients,
-                k_symbols, assumptions.joint, root_jacobian)
-
-    kw_values = q11_objects(
-        package, dimension, spectrum, coefficients, ansatz,
-        assumptions.joint, bulk_mode)
-    emit_dimensions(package, dimension, action, coefficients, spectrum,
-                    k_symbols, amplitudes, q7_residual, kw_values,
-                    assumptions, registry_state)
-
-
-def main() -> int:
-    start = time.monotonic()
-    registry_error: str | None = None
+def canonical_locus(residuals: tuple[sp.Expr, ...], variables: tuple[sp.Symbol, ...]) -> object:
+    if not residuals:
+        return sp.Tuple()
+    if len(residuals) > 4:
+        ISSUES.append(f"canonical locus unavailable for {len(residuals)}-equation exact system")
+        return Str("UNAVAILABLE_EXACT_SYSTEM_SIZE")
     try:
-        registry = load_registry(REDUCTION_DIR)
-    except RegistryValidationError as error:
-        registry = None
-        registry_error = str(error)
-    registry_state = RegistryState(registry, registry_error)
+        polys = [sp.Poly(sp.together(residual), *variables) for residual in residuals]
+    except (sp.PolynomialError, ValueError):
+        return NOT_APPLICABLE
+    try:
+        basis = sp.groebner([poly.as_expr() for poly in polys], *variables, order="lex")
+        return sp.Tuple(*[sp.factor(expr) for expr in basis.polys])
+    except Exception as exc:  # exact Groebner can be unavailable for some coefficient domains
+        ISSUES.append(f"canonical locus unavailable for variables {[v.name for v in variables]}: {type(exc).__name__}; emitted NOT_APPLICABLE")
+        return NOT_APPLICABLE
 
-    declared = tuple((package, dimension)
-                     for package, dimensions in PACKAGE_SWEEPS.items()
-                     for dimension in dimensions)
-    completed: list[tuple[str, int]] = []
-    q9_cache: dict[int, Q9Result] = {}
-    for dimension in sorted({dimension for _, dimension in declared}):
-        q9_cache[dimension] = build_q9(dimension)
-        for package, dimensions in PACKAGE_SWEEPS.items():
-            if dimension not in dimensions:
+
+def emit_locus(package: str, n: int, base_quantity: str, residuals: tuple[sp.Expr, ...],
+               variables: tuple[sp.Symbol, ...], assumptions: sp.Tuple,
+               *, root: int | None = None, stratum: int | None = None,
+               export: bool = True) -> dict[str, object]:
+    equations = tuple(sp.Eq(sp.factor(residual), 0, evaluate=False) for residual in residuals)
+    emit_quantity(package, n, f"{base_quantity}_EQUATIONS", sp.Tuple(*equations), root=root, stratum=stratum, export=export)
+    solve_skipped = False
+    if len(equations) > 4:
+        solution = Str("SOLVE_UNAVAILABLE_EXACT_SYSTEM_SIZE")
+        solve_skipped = True
+        ISSUES.append(f"{package} D{n} {base_quantity}: solve unavailable for {len(equations)}-equation exact system")
+    else:
+        try:
+            solution = sp.solve([relation_residual(eq) for eq in equations], list(variables), dict=True, simplify=False)
+        except Exception as exc:
+            solution = Str(f"SOLVE_UNAVAILABLE_{type(exc).__name__}")
+            solve_skipped = True
+            ISSUES.append(f"{package} D{n} {base_quantity}: solve unavailable ({type(exc).__name__})")
+    solution_payload = solve_result_to_cas(solution, variables)
+    emit_quantity(package, n, f"{base_quantity}_SOLUTION", solution_payload, root=root, stratum=stratum, export=export)
+
+    identical_tests = [sp.factor(sp.cancel(relation_residual(eq))) == 0 for eq in equations]
+    if not equations:
+        identical_object: object = sp.true
+    elif all(test is True for test in identical_tests):
+        identical_object = sp.true
+    elif any(test is False for test in identical_tests):
+        identical_object = sp.false
+    else:
+        identical_object = sp.Tuple(*[sp.Eq(sp.simplify(relation_residual(eq)), 0, evaluate=False) for eq in equations])
+    ident_payload = symbolic_truth_status(identical_object, sp.Tuple(*equations))
+    emit_quantity(package, n, f"{base_quantity}_IDENTICALLY_SATISFIED", ident_payload, root=root, stratum=stratum, export=export)
+
+    constant_false = any(not eq.free_symbols and sp.simplify(relation_residual(eq)) != 0 for eq in equations)
+    if constant_false:
+        inconsistent_object: object = sp.true
+    elif identical_object == sp.true:
+        inconsistent_object = sp.false
+    elif solve_skipped:
+        inconsistent_object = sp.Tuple(Str("UNDECIDED_SOLVE_UNAVAILABLE"), solution_payload)
+    else:
+        inconsistent_object = sp.Eq(solution_payload, sp.Tuple(), evaluate=False)
+    inconsistent_payload = symbolic_truth_status(inconsistent_object, sp.Tuple(sp.Tuple(*equations), solution_payload))
+    emit_quantity(package, n, f"{base_quantity}_INCONSISTENT", inconsistent_payload, root=root, stratum=stratum, export=export)
+
+    branches = exposed_branches(solution, variables)
+    admissible_entries: list[object] = []
+    if branches is None:
+        admissible_entries.append(
+            sp.Tuple(
+                sp.Tuple(Str("BRANCH"), solution_payload),
+                sp.Tuple(Str("STATUS_TOKEN"), Str("UNDECIDED")),
+                sp.Tuple(Str("TEST_OBJECT"), solution_payload),
+                sp.Tuple(Str("OPERANDS"), sp.Tuple(solution_payload, assumptions)),
+            )
+        )
+    else:
+        for branch in branches:
+            admissible_entries.append(admissibility_entry(branch, assumptions))
+    real_admissible = sp.Tuple(*admissible_entries)
+    emit_quantity(package, n, f"{base_quantity}_REAL_ADMISSIBLE", real_admissible, root=root, stratum=stratum, export=export)
+
+    emit_quantity(package, n, f"{base_quantity}_CANONICAL_LOCUS", canonical_locus(tuple(relation_residual(eq) for eq in equations), variables), root=root, stratum=stratum, export=export)
+
+    witness = candidate_witness(variables)
+    if constant_false:
+        real_status = Str("PROVED_EMPTY")
+        real_witness = NOT_APPLICABLE
+    elif witness_valid(equations, assumptions, witness):
+        real_status = Str("PROVED_NONEMPTY")
+        real_witness = sp.Tuple(*[sp.Tuple(var, witness[var]) for var in variables])
+    else:
+        real_status = Str("UNDECIDED")
+        real_witness = NOT_APPLICABLE
+    emit_quantity(package, n, f"{base_quantity}_REAL_STATUS", real_status, root=root, stratum=stratum, export=export)
+    emit_quantity(package, n, f"{base_quantity}_REAL_WITNESS", real_witness, root=root, stratum=stratum, export=export)
+    emit_quantity(package, n, f"{base_quantity}_REAL_STATUS_OPERANDS", sp.Tuple(sp.Tuple(*equations), sp.Tuple(*variables), assumptions), root=root, stratum=stratum, export=export)
+    return {
+        "equations": equations,
+        "solution": solution,
+        "real_admissible": real_admissible,
+        "base_quantity": base_quantity,
+        "variables": variables,
+    }
+
+
+def root_multiplicity_pairs(det_expr: sp.Expr) -> tuple[RootData, ...]:
+    poly = sp.Poly(sp.factor(det_expr), omegaSquared)
+    roots = sp.roots(poly.as_expr(), omegaSquared)
+    if sum(roots.values()) != poly.degree():
+        solved = sp.solve(sp.Eq(poly.as_expr(), 0, evaluate=False), omegaSquared)
+        missing = [root for root in solved if root not in roots]
+        for root in missing:
+            roots[root] = 1
+        if sum(roots.values()) != poly.degree():
+            ISSUES.append("root multiplicity solve did not account for every polynomial degree")
+    return tuple(RootData(sp.factor(root), int(mult)) for root, mult in roots.items())
+
+
+def distinct_roots(pairs: tuple[RootData, ...]) -> tuple[sp.Expr, ...]:
+    roots: list[sp.Expr] = []
+    for pair in pairs:
+        if not any(sp.simplify(pair.value - existing) == 0 for existing in roots):
+            roots.append(pair.value)
+    return tuple(roots)
+
+
+def reduced_expr(expr: sp.Expr) -> sp.Expr:
+    return sp.factor(sp.cancel(expr))
+
+
+def reduced_matrix(matrix: sp.MatrixBase) -> sp.Matrix:
+    return sp.Matrix(matrix).applyfunc(reduced_expr)
+
+
+def algebraic_zero_test(entry: sp.Expr) -> bool | None:
+    try:
+        reduced = reduced_expr(entry)
+    except Exception:
+        try:
+            reduced = sp.simplify(entry)
+        except Exception:
+            return None
+    if reduced == 0 or reduced.is_zero is True:
+        return True
+    if not getattr(reduced, "free_symbols", set()):
+        return False if reduced != 0 else True
+    try:
+        numerator, _ = sp.fraction(sp.together(reduced))
+        numerator = sp.factor(numerator)
+        if numerator == 0:
+            return True
+        symbols = tuple(sorted(numerator.free_symbols, key=lambda sym: sym.name))
+        if symbols:
+            sp.Poly(numerator, *symbols)
+            return False
+    except Exception:
+        pass
+    if reduced.is_zero is False:
+        return False
+    return None
+
+
+def exact_domain_matrix(matrix: sp.MatrixBase) -> DomainMatrix:
+    return DomainMatrix.from_Matrix(reduced_matrix(matrix)).to_field()
+
+
+def matrix_rank(matrix: sp.MatrixBase) -> int:
+    try:
+        return int(exact_domain_matrix(matrix).rank())
+    except MemoryError:
+        raise
+    except Exception as exc:
+        ISSUES.append(f"matrix rank exact-domain route unavailable ({type(exc).__name__}); used algebraic zero fallback")
+        simplified = reduced_matrix(matrix)
+        return int(simplified.rank(iszerofunc=algebraic_zero_test, simplify=True))
+
+
+def zero_expr(expr: sp.Expr) -> bool:
+    return algebraic_zero_test(expr) is True
+
+
+def exact_determinant(matrix: sp.MatrixBase) -> sp.Expr:
+    simplified = reduced_matrix(matrix)
+    try:
+        det_expr = exact_domain_matrix(simplified).det().as_expr()
+    except MemoryError:
+        raise
+    except Exception as exc:
+        ISSUES.append(f"determinant exact-domain route unavailable ({type(exc).__name__}); used SymPy determinant fallback")
+        det_expr = simplified.det()
+    return reduced_expr(det_expr)
+
+
+def determinant_from_live_matrix(matrix: sp.MatrixBase, k: tuple[sp.Symbol, ...]) -> sp.Expr:
+    n = matrix.rows
+    coupling = None
+    for i in range(n):
+        for j in range(n):
+            if i == j:
                 continue
-            run_cell(package, dimension, q9_cache[dimension], registry_state)
-            completed.append((package, dimension))
+            if not zero_expr(matrix[i, j]):
+                coupling = sp.cancel(matrix[i, j] / (k[i] * k[j]))
+                break
+        if coupling is not None:
+            break
+    if coupling is None:
+        coupling = sp.Integer(0)
+    diagonal = [sp.cancel(matrix[i, i] - coupling * k[i] ** 2) for i in range(n)]
+    reconstructed = sp.ImmutableMatrix(
+        n, n,
+        lambda i, j: diagonal[i] * (1 if i == j else 0) + coupling * k[i] * k[j],
+    )
+    if all(zero_expr(matrix[i, j] - reconstructed[i, j]) for i in range(n) for j in range(n)):
+        product = sp.prod(diagonal)
+        lemma_factor = 1 + coupling * sum(k[i] ** 2 / diagonal[i] for i in range(n))
+        return reduced_expr(product * lemma_factor)
+    if n <= 4:
+        return exact_determinant(matrix)
+    ISSUES.append(f"D{n}: determinant fallback unavailable for unmatched matrix structure")
+    return Str("DETERMINANT_UNAVAILABLE_UNMATCHED_STRUCTURE")
 
-    skipped = tuple(pair for pair in declared if pair not in completed)
-    emit("PY_S11_RUN_PAIRS",
-         sp.Tuple(*(sp.Tuple(sp.Symbol(package), dimension)
-                    for package, dimension in completed)))
-    emit("PY_S11_SKIPPED_PAIRS",
-         sp.Tuple(*(sp.Tuple(sp.Symbol(package), dimension)
-                    for package, dimension in skipped)))
-    emit("PY_S11_LOCAL_REGISTRY_VALIDATION_ERROR",
-         registry_error if registry_error is not None else sp.Symbol("NO_ERROR"))
-    local_listing_name = "PY_S11_LOCAL_TAG_NAMES"
-    local_names.append(local_listing_name)
-    emit(local_listing_name, sp.Tuple(*(sp.Symbol(name) for name in local_names)))
-    _runtime = time.monotonic() - start
-    return 0
+
+def all_minors(matrix: sp.MatrixBase, size: int) -> tuple[sp.Expr, ...]:
+    if size == 0:
+        return tuple()
+    minors = []
+    rows = range(matrix.rows)
+    cols = range(matrix.cols)
+    for row_set in combinations(rows, size):
+        for col_set in combinations(cols, size):
+            minors.append(exact_determinant(matrix.extract(row_set, col_set)))
+    return tuple(minors)
+
+
+def nullspace_basis(matrix: sp.MatrixBase) -> sp.Tuple:
+    simplified = reduced_matrix(matrix)
+    basis = simplified.nullspace(iszerofunc=algebraic_zero_test, simplify=True)
+    return sp.Tuple(*[sp.ImmutableMatrix(vec) for vec in basis])
+
+
+def generic_nullspace_vectors(matrix: sp.MatrixBase, rank: int) -> list[sp.ImmutableMatrix]:
+    mat = reduced_matrix(matrix)
+    cols = mat.cols
+    if rank == cols:
+        return []
+    if rank == 0:
+        return [sp.ImmutableMatrix(cols, 1, lambda i, _j, col=col: sp.Integer(1) if i == col else sp.Integer(0)) for col in range(cols)]
+
+    selected_rows = None
+    selected_cols = None
+    selected_minor = None
+    for row_set in combinations(range(mat.rows), rank):
+        for col_set in combinations(range(cols), rank):
+            minor = exact_determinant(mat.extract(row_set, col_set))
+            if algebraic_zero_test(minor) is False:
+                selected_rows = row_set
+                selected_cols = col_set
+                selected_minor = mat.extract(row_set, col_set)
+                break
+        if selected_minor is not None:
+            break
+    if selected_minor is None or selected_rows is None or selected_cols is None:
+        ISSUES.append("generic nullspace basis unavailable: no nonzero source minor found")
+        return []
+
+    free_cols = [col for col in range(cols) if col not in selected_cols]
+    basis = []
+    for free_col in free_cols:
+        rhs = -sp.ImmutableMatrix([mat[row, free_col] for row in selected_rows])
+        try:
+            pivot_values = selected_minor.inv() * rhs
+        except Exception as exc:
+            ISSUES.append(f"generic nullspace pivot inverse unavailable ({type(exc).__name__}); used gauss_jordan_solve")
+            pivot_values = selected_minor.gauss_jordan_solve(rhs)[0]
+        vector_entries = [sp.Integer(0)] * cols
+        for idx, col in enumerate(selected_cols):
+            vector_entries[col] = reduced_expr(pivot_values[idx])
+        vector_entries[free_col] = sp.Integer(1)
+        basis.append(sp.ImmutableMatrix(cols, 1, vector_entries))
+    return basis
+
+
+def scale_exponent_payload(ratio: object) -> object:
+    if ratio == UNDEFINED_RATIO:
+        return UNDEFINED_RATIO
+    ratio = sp.simplify(ratio)
+    if ratio == 1:
+        return sp.Integer(0)
+    powers = ratio.as_powers_dict()
+    exponent = powers.get(lambdaScale)
+    if exponent is None:
+        return NOT_A_PURE_POWER
+    residual = sp.simplify(ratio / (lambdaScale ** exponent))
+    if residual == 1:
+        return sp.simplify(exponent)
+    return NOT_A_PURE_POWER
+
+
+def expression_dimension(expr: object, dim_env: dict[sp.Symbol, sp.ImmutableMatrix],
+                         g_dims: dict[sp.Symbol, sp.ImmutableMatrix] | None = None,
+                         v_dims: dict[sp.Symbol, sp.ImmutableMatrix] | None = None) -> sp.ImmutableMatrix | None:
+    g_dims = g_dims or {}
+    v_dims = v_dims or {}
+    expr = casify(expr)
+    if isinstance(expr, sp.MatrixBase):
+        entries = [expression_dimension(entry, dim_env, g_dims, v_dims) for entry in list(expr)]
+        if not entries:
+            return ZERO_DIM
+        if any(entry is None for entry in entries):
+            return None
+        return entries[0] if all(sp.simplify(entries[0] - entry) == sp.zeros(3, 1) for entry in entries[1:]) else None
+    if isinstance(expr, (sp.Integer, sp.Rational, sp.Float)):
+        return ZERO_DIM
+    if isinstance(expr, Str):
+        return ZERO_DIM
+    if isinstance(expr, sp.Symbol):
+        if expr in dim_env:
+            return sp.ImmutableMatrix(dim_env[expr])
+        if expr in g_dims:
+            return sp.ImmutableMatrix(g_dims[expr])
+        if expr in v_dims:
+            return sp.ImmutableMatrix(v_dims[expr])
+        return ZERO_DIM
+    if isinstance(expr, sp.Derivative):
+        base = FIELD_DIM
+        for var, count in expr.variable_count:
+            if var == t:
+                base += count * TIME_DERIVATIVE_DIM
+            else:
+                base += count * SPATIAL_DERIVATIVE_DIM
+        return sp.ImmutableMatrix(base)
+    if isinstance(expr, sp.Pow):
+        base = expression_dimension(expr.base, dim_env, g_dims, v_dims)
+        if base is None:
+            return None
+        exponent = expr.exp
+        if exponent.free_symbols:
+            return None
+        return sp.ImmutableMatrix([sp.simplify(exponent * entry) for entry in base])
+    if isinstance(expr, sp.Mul):
+        total = ZERO_DIM
+        for arg in expr.args:
+            dim = expression_dimension(arg, dim_env, g_dims, v_dims)
+            if dim is None:
+                return None
+            total += dim
+        return sp.ImmutableMatrix([sp.simplify(entry) for entry in total])
+    if isinstance(expr, sp.Add):
+        dims = [expression_dimension(arg, dim_env, g_dims, v_dims) for arg in expr.args]
+        if any(dim is None for dim in dims):
+            return None
+        if not dims:
+            return ZERO_DIM
+        if all(sp.simplify(dims[0] - dim) == sp.zeros(3, 1) for dim in dims[1:]):
+            return dims[0]
+        return None
+    return ZERO_DIM
+
+
+def dimension_solve(package: str, n: int, build: PackageBuild, g: sp.ImmutableMatrix,
+                    v: tuple[sp.Symbol, ...]) -> dict[str, object]:
+    coeffs = build.coefficient_ordering
+    dim_symbols = {
+        coeff: sp.ImmutableMatrix([
+            sp.Symbol(f"dim_{coeff.name}_L"),
+            sp.Symbol(f"dim_{coeff.name}_T"),
+            sp.Symbol(f"dim_{coeff.name}_M"),
+        ])
+        for coeff in coeffs
+        if coeff != s
+    }
+    dim_env: dict[sp.Symbol, sp.ImmutableMatrix] = {
+        D: ZERO_DIM,
+        omegaSquared: OMEGA_SQUARED_DIM,
+        lambdaScale: ZERO_DIM,
+        c_s0: sp.ImmutableMatrix([1, -1, 0]),
+        kwSquared: sp.ImmutableMatrix([-2, 0, 0]),
+        s: ZERO_DIM,
+    }
+    for ki in K_ALL[:n]:
+        dim_env[ki] = WAVEVECTOR_DIM
+    for ai in A_ALL[:n]:
+        dim_env[ai] = FIELD_DIM
+    for coeff, dim_vec in dim_symbols.items():
+        dim_env[coeff] = dim_vec
+    g_dims = {g[i, j]: FIELD_DIM + SPATIAL_DERIVATIVE_DIM for i in range(n) for j in range(n)}
+    v_dims = {v[j]: FIELD_DIM + TIME_DERIVATIVE_DIM for j in range(n)}
+    equations = []
+    all_l_terms = list(build.kinetic_terms) + [Term(-term.factor, term.density_name, term.density) for term in build.stiffness_terms]
+    for term in all_l_terms:
+        dim = expression_dimension(term.expression, dim_env, g_dims, v_dims)
+        if dim is None:
+            ISSUES.append(f"{package} D{n}: dimension walker found inhomogeneous action term {term.density_name}")
+            continue
+        equations.extend(sp.Eq(sp.simplify(dim[i]), ENERGY_DENSITY_DIM[i], evaluate=False) for i in range(3))
+    unknowns = tuple(entry for coeff in coeffs if coeff != s for entry in dim_symbols[coeff])
+    linear_exprs = [eq.lhs - eq.rhs for eq in equations]
+    solution = sp.linsolve(linear_exprs, unknowns) if unknowns else sp.FiniteSet(())
+    if solution:
+        solution_tuple = tuple(next(iter(solution))) if unknowns else tuple()
+        substitutions = dict(zip(unknowns, solution_tuple))
+    else:
+        substitutions = {}
+    coeff_dimensions = []
+    for coeff in coeffs:
+        if coeff == s:
+            coeff_dimensions.append(sp.Tuple(coeff, ZERO_DIM))
+        else:
+            coeff_dimensions.append(sp.Tuple(coeff, sp.ImmutableMatrix([sp.simplify(x.subs(substitutions)) for x in dim_symbols[coeff]])))
+    if unknowns:
+        coeff_matrix, rhs = sp.linear_eq_to_matrix(linear_exprs, unknowns)
+        equation_count = int(coeff_matrix.rank())
+    else:
+        equation_count = 0
+    unknown_count = len(coeffs) - (1 if s in coeffs else 0)
+    if equation_count > 3 * unknown_count:
+        determinacy = Str("OVER_DETERMINED")
+    elif equation_count == 3 * unknown_count:
+        determinacy = Str("EXACTLY_DETERMINED")
+    else:
+        determinacy = Str("UNDER_DETERMINED")
+    return {
+        "COEFFICIENT_ORDERING": sp.Tuple(*coeffs),
+        "DIM_COEFFICIENTS": sp.Tuple(*coeff_dimensions),
+        "DIM_EQUATIONS": sp.Tuple(*equations),
+        "DIM_SOLUTION": casify(solution),
+        "DIM_EQUATION_COUNT": sp.Integer(equation_count),
+        "DIM_UNKNOWN_COUNT": sp.Integer(unknown_count),
+        "DIM_COUNT_DIFFERENCE": sp.Integer(equation_count - 3 * unknown_count),
+        "DIM_DETERMINACY": determinacy,
+        "DIM_ENV": dim_env,
+        "G_DIMS": g_dims,
+        "V_DIMS": v_dims,
+        "COEFF_DIMENSIONS_MAP": {entry[0]: entry[1] for entry in coeff_dimensions},
+    }
+
+
+def homogeneity_payload(expressions: tuple[object, ...], dim_env: dict[sp.Symbol, sp.ImmutableMatrix],
+                        g_dims: dict[sp.Symbol, sp.ImmutableMatrix] | None = None,
+                        v_dims: dict[sp.Symbol, sp.ImmutableMatrix] | None = None) -> sp.Tuple:
+    rows = []
+    for expr in expressions:
+        expr = casify(expr)
+        terms = expr.args if isinstance(expr, sp.Add) else (expr,)
+        dims = [expression_dimension(term, dim_env, g_dims, v_dims) for term in terms]
+        homogeneous = bool(dims and dims[0] is not None and all(dim is not None and sp.simplify(dim - dims[0]) == sp.zeros(3, 1) for dim in dims))
+        rows.append(sp.Tuple(expr, sp.true if homogeneous else sp.false, sp.Tuple(*[dim if dim is not None else Str("UNDETERMINED") for dim in dims])))
+    return sp.Tuple(*rows)
+
+
+def q6r(package: str, n: int, coeff_order: tuple[sp.Symbol, ...], coeff_dims: dict[sp.Symbol, sp.ImmutableMatrix]) -> None:
+    resolved = []
+    unresolved = []
+    for coeff in coeff_order:
+        lookup_name = COEFFICIENT_NAME_MAP.get(coeff.name, coeff.name)
+        coeff_row = INCOMING_LEDGER.get(lookup_name)
+        dim_row = None
+        if coeff_row is not None:
+            dim_key = coeff_row.get("dimension_key")
+            if dim_key is not None:
+                dim_row = INCOMING_LEDGER.get(dim_key)
+        if dim_row is None or "value" not in dim_row:
+            unresolved.append(sp.Tuple(coeff, Str(lookup_name)))
+        else:
+            resolved.append(sp.Tuple(coeff, Str(lookup_name), Str(coeff_row["dimension_key"])))
+            safe_name = coeff.name.upper().replace("_", "_")
+            emit_custom_name(f"Q6R_{safe_name}_DERIVED_VECTOR")
+            emit_custom_name(f"Q6R_{safe_name}_IMPORTED_VECTOR")
+            emit_custom_name(f"Q6R_{safe_name}_DIFFERENCE")
+            emit_custom_name(f"Q6R_{safe_name}_COEFFICIENT_PROVENANCE")
+            emit_custom_name(f"Q6R_{safe_name}_DIMENSION_PROVENANCE")
+            emit_quantity(package, n, f"Q6R_{safe_name}_DERIVED_VECTOR", coeff_dims[coeff], local=True, export=False)
+            emit_quantity(package, n, f"Q6R_{safe_name}_IMPORTED_VECTOR", dim_row["value"], local=True, export=False)
+            emit_quantity(package, n, f"Q6R_{safe_name}_DIFFERENCE", sp.simplify(coeff_dims[coeff] - dim_row["value"]), local=True, export=False)
+            emit_quantity(
+                package, n, f"Q6R_{safe_name}_COEFFICIENT_PROVENANCE",
+                sp.Tuple(Str(str(coeff_row.get("class"))), Str(str(coeff_row.get("step")))),
+                local=True, export=False,
+            )
+            emit_quantity(
+                package, n, f"Q6R_{safe_name}_DIMENSION_PROVENANCE",
+                sp.Tuple(
+                    Str(str(dim_row.get("class"))),
+                    Str(str(dim_row.get("step"))),
+                    Str(str(dim_row.get("corroborated_steps"))),
+                ),
+                local=True, export=False,
+            )
+    emit_quantity(package, n, "Q6R_RESOLVED_COEFFICIENTS", sp.Tuple(*resolved), local=True, export=False)
+    emit_quantity(package, n, "Q6R_UNRESOLVED_COEFFICIENTS", sp.Tuple(*unresolved), local=True, export=False)
+    emit_quantity(package, n, "Q6R_RESIDUAL_SCOPE", CROSS_STEP_CONSISTENCY_ONLY, local=True, export=False)
+
+
+def q7_objects(package: str, n: int, build: PackageBuild, q9_data: dict[str, object]) -> None:
+    if n != 3:
+        return
+    g_symbols = sp.ImmutableMatrix(3, 3, lambda i, j: G7_ALL[i * 5 + j])
+    densities = stiffness_densities(g_symbols)
+    g_placeholder, _ = derivative_placeholders(n)
+    sub = {g_placeholder[i, j]: g_symbols[i, j] for i in range(3) for j in range(3)}
+    w_full = sp.expand(sum(term.expression.xreplace(sub) for term in build.stiffness_terms))
+    curl_terms = [term for term in build.stiffness_terms if term.density_name == "S_curl"]
+    curl_term = sp.expand(curl_terms[0].expression.xreplace(sub)) if curl_terms else sp.Integer(0)
+    c_vec = []
+    for i in range(3):
+        component = 0
+        for j in range(3):
+            for k_idx in range(3):
+                component += sp.LeviCivita(i, j, k_idx) * g_symbols[j, k_idx]
+        c_vec.append(sp.expand(component))
+    reference = sp.expand(sum(comp ** 2 for comp in c_vec))
+    emit_quantity(package, n, "Q7_W_FULL", w_full)
+    emit_quantity(package, n, "Q7_CURL_TERM", curl_term)
+    emit_quantity(package, n, "Q7_CURL_DENSITY", densities["S_curl"])
+    emit_quantity(package, n, "Q7_CURL_REFERENCE", reference)
+    emit_quantity(package, n, "Q7_RESIDUAL", sp.expand(densities["S_curl"] - reference))
+
+
+def q11_objects(package: str, n: int, roots: tuple[sp.Expr, ...], coeff_order: tuple[sp.Symbol, ...],
+                assumptions: sp.Tuple, dim_env: dict[sp.Symbol, sp.ImmutableMatrix]) -> tuple[object, ...]:
+    _, k, a = symbols_for_dimension(n)
+    k_sq = sum(ki ** 2 for ki in k)
+    bulk_assumptions = assumptions_for(package, n, include_bulk=True)
+    kw_squared_values = []
+    for idx, root in enumerate(roots, start=1):
+        equation = sp.Eq(root, c_s0 ** 2 * (k_sq + kwSquared), evaluate=False)
+        solved = sp.solve(equation, kwSquared, dict=True)
+        kw_value = solved[0][kwSquared] if solved else Str("KW_SOLVE_UNAVAILABLE")
+        kw_squared_values.append(kw_value)
+        emit_quantity(package, n, "KW_EQUATION", equation, root=idx)
+        emit_quantity(package, n, "KW_SQUARED", kw_value, root=idx)
+        emit_quantity(package, n, "KW_SIGN", sign_payload(kw_value, bulk_assumptions), root=idx)
+        emit_locus(
+            package, n, "KW_ZERO_LOCUS", (sp.sympify(kw_value),),
+            tuple(coeff_order) + (c_s0,), bulk_assumptions, root=idx,
+        )
+    c1_equations: tuple[object, ...] = tuple()
+    c2_unknowns = sp.Tuple(*(a + (bulk_amplitude,)))
+    c3_matrix = sp.zeros(0, len(c2_unknowns))
+    emit_quantity(package, n, "C1_EQUATIONS", sp.Tuple(*c1_equations))
+    emit_quantity(package, n, "C2_UNKNOWNS", c2_unknowns)
+    emit_quantity(package, n, "C2_COUNT", sp.Integer(len(c2_unknowns)))
+    emit_quantity(package, n, "C3_RANK", sp.Integer(c3_matrix.rank()))
+    emit_quantity(package, n, "C4_DIFFERENCE", sp.Integer(len(c2_unknowns) - c3_matrix.rank()))
+    return tuple(kw_squared_values)
+
+
+def emit_q4(package: str, n: int, route: RouteSelection, roots: tuple[sp.Expr, ...],
+            assumptions: sp.Tuple) -> dict[str, object]:
+    _, k, _ = symbols_for_dimension(n)
+    k_vector = sp.ImmutableMatrix(k)
+    k_sq = sum(ki ** 2 for ki in k)
+    root_matrices = []
+    rank_data = []
+    for idx, root in enumerate(roots, start=1):
+        m_r = sp.ImmutableMatrix(route.matrix.subs(omegaSquared, root))
+        rank = matrix_rank(m_r)
+        nullity = n - rank
+        stacked = sp.ImmutableMatrix.vstack(m_r, sp.ImmutableMatrix([list(k)]))
+        stacked_rank = matrix_rank(stacked)
+        transverse_nullity = n - stacked_rank
+        m_dot_k = sp.simplify(m_r * k_vector)
+        basis = generic_nullspace_vectors(m_r, rank)
+        dot_k = sp.Tuple(*[sp.simplify((vec.T * k_vector)[0]) for vec in basis])
+        residuals = sp.Tuple(*[sp.simplify(k_sq * sp.ImmutableMatrix(vec) - ((vec.T * k_vector)[0]) * k_vector) for vec in basis])
+        basis_payload = sp.Tuple(*[sp.ImmutableMatrix(vec) for vec in basis])
+        emit_quantity(package, n, "N1", m_r, root=idx)
+        emit_quantity(package, n, "N2_RANK", sp.Integer(rank), root=idx)
+        emit_quantity(package, n, "N2_NULLITY", sp.Integer(nullity), root=idx)
+        emit_quantity(package, n, "N3_STACKED_RANK", sp.Integer(stacked_rank), root=idx)
+        emit_quantity(package, n, "N3_TRANSVERSE_NULLITY", sp.Integer(transverse_nullity), root=idx)
+        emit_quantity(package, n, "N4_NULLITY_DIFFERENCE", sp.Integer(nullity - transverse_nullity), root=idx)
+        emit_quantity(package, n, "N5_M_DOT_K", m_dot_k, root=idx)
+        emit_quantity(package, n, "N6_BASIS", basis_payload, root=idx)
+        emit_quantity(package, n, "N6_DOT_K", dot_k, root=idx)
+        emit_quantity(package, n, "N6_RESIDUAL", residuals, root=idx)
+        emit_quantity(package, n, "N7_BASIS_COUNT", sp.Integer(len(basis)), root=idx)
+        emit_quantity(package, n, "N7_RESIDUAL", sp.Integer(len(basis) - nullity), root=idx)
+        root_matrices.append(m_r)
+        rank_data.append((rank, stacked_rank, stacked))
+    return {"root_matrices": tuple(root_matrices), "rank_data": tuple(rank_data)}
+
+
+def emit_q5(package: str, n: int, roots: tuple[sp.Expr, ...]) -> None:
+    _, k, _ = symbols_for_dimension(n)
+    scale_sub = {ki: lambdaScale * ki for ki in k}
+    for idx, root in enumerate(roots, start=1):
+        scaled = sp.simplify(root.subs(scale_sub))
+        emit_quantity(package, n, "SCALED", scaled, root=idx)
+        emit_quantity(package, n, "UNSCALED", root, root=idx)
+        if sp.simplify(root) == 0:
+            ratio: object = UNDEFINED_RATIO
+        else:
+            ratio = sp.simplify(scaled / root)
+        emit_quantity(package, n, "SCALE_RATIO", ratio, root=idx)
+        emit_quantity(package, n, "SCALE_EXPONENT", scale_exponent_payload(ratio), root=idx)
+
+
+def emit_q8(package: str, n: int, roots: tuple[sp.Expr, ...], q4_data: dict[str, object],
+            coeff_order: tuple[sp.Symbol, ...], assumptions: sp.Tuple) -> None:
+    _, k, _ = symbols_for_dimension(n)
+    stratum_candidates = []
+    for idx, root in enumerate(roots, start=1):
+        m_r = q4_data["root_matrices"][idx - 1]
+        rank, stacked_rank, stacked = q4_data["rank_data"][idx - 1]
+        rank_minors = all_minors(m_r, rank)
+        stacked_minors = all_minors(stacked, stacked_rank)
+        emit_quantity(package, n, "RANK_DROP_MINORS", sp.Tuple(*rank_minors), root=idx)
+        emit_quantity(package, n, "STACKED_DROP_MINORS", sp.Tuple(*stacked_minors), root=idx)
+        for suffix, variables in (("K", k), ("COEFF", coeff_order), ("JOINT", tuple(k) + tuple(coeff_order))):
+            locus = emit_locus(package, n, f"RANK_DROP_{suffix}", tuple(rank_minors), tuple(variables), assumptions, root=idx)
+            stratum_candidates.append(("RANK_DROP", locus))
+        for suffix, variables in (("K", k), ("COEFF", coeff_order), ("JOINT", tuple(k) + tuple(coeff_order))):
+            locus = emit_locus(package, n, f"STACKED_DROP_{suffix}", tuple(stacked_minors), tuple(variables), assumptions, root=idx)
+            stratum_candidates.append(("STACKED_DROP", locus))
+    emit_quantity(package, n, "STRATUM_ORDERING", sp.Tuple())
+
+
+def emit_q10(package: str, n: int, roots: tuple[sp.Expr, ...], coeff_order: tuple[sp.Symbol, ...]) -> sp.ImmutableMatrix:
+    jac = sp.ImmutableMatrix([[sp.simplify(sp.diff(root, coeff)) for coeff in coeff_order] for root in roots])
+    emit_quantity(package, n, "ROOT_COEFFICIENT_JACOBIAN", jac)
+    return jac
+
+
+def emit_q3(package: str, n: int, det_m: sp.Expr, coeff_order: tuple[sp.Symbol, ...],
+            assumptions: sp.Tuple) -> tuple[sp.Expr, ...]:
+    _, k, _ = symbols_for_dimension(n)
+    pairs = root_multiplicity_pairs(det_m)
+    poly = sp.Poly(sp.factor(det_m), omegaSquared)
+    roots = distinct_roots(pairs)
+    emit_quantity(package, n, "DET_M", sp.factor(det_m))
+    emit_quantity(package, n, "ROOT_MULTIPLICITY_PAIRS", sp.Tuple(*[sp.Tuple(pair.value, sp.Integer(pair.multiplicity)) for pair in pairs]))
+    try:
+        solution_set = sp.solveset(sp.Eq(det_m, 0, evaluate=False), omegaSquared)
+    except Exception as exc:
+        solution_set = Str(f"SOLVESET_UNAVAILABLE_{type(exc).__name__}")
+        ISSUES.append(f"{package} D{n}: root solution set unavailable ({type(exc).__name__})")
+    emit_quantity(package, n, "ROOT_SOLUTION_SET", solution_set)
+    root_count_all = sum(pair.multiplicity for pair in pairs)
+    emit_quantity(package, n, "ROOT_COUNT_ALL", sp.Integer(root_count_all))
+    emit_quantity(package, n, "DET_M_DEGREE", sp.Integer(poly.degree()))
+    emit_quantity(package, n, "ROOT_DEGREE_RESIDUAL", sp.Integer(poly.degree() - root_count_all))
+    emit_quantity(package, n, "ROOT_DISTINCT", sp.Tuple(*roots))
+    emit_quantity(package, n, "ROOT_COUNT_DISTINCT", sp.Integer(len(roots)))
+    emit_quantity(package, n, "ROOT_ORDERING", sp.Tuple(*roots))
+    for idx, root in enumerate(roots, start=1):
+        emit_quantity(package, n, "VALUE", root, root=idx)
+        emit_quantity(package, n, "SIGN", sign_payload(root, assumptions), root=idx)
+    if len(roots) < 2:
+        emit_locus(package, n, "ROOT_COINCIDENCE_K", tuple(), k, assumptions)
+        emit_locus(package, n, "ROOT_COINCIDENCE_COEFF", tuple(), coeff_order, assumptions)
+    else:
+        for p, q in combinations(range(len(roots)), 2):
+            pair_name_k = f"ROOT_COINCIDENCE_R{p + 1}_R{q + 1}_K"
+            pair_name_coeff = f"ROOT_COINCIDENCE_R{p + 1}_R{q + 1}_COEFF"
+            emit_custom_name(pair_name_k)
+            emit_custom_name(pair_name_coeff)
+            residual = sp.simplify(roots[p] - roots[q])
+            emit_locus(package, n, pair_name_k, (residual,), k, assumptions)
+            emit_locus(package, n, pair_name_coeff, (residual,), coeff_order, assumptions)
+    return roots
+
+
+def run_cell(package: str, n: int, q9_cache: dict[int, dict[str, object]]) -> bool:
+    q9_data = q9_cache[n]
+    emit_q9(package, n, q9_data)
+    emit_quantity(package, n, "PREMISE_INVENTORY", assumption_text_inventory(package, n), local=True, export=False, class_tag="PREMISE")
+    g, v = derivative_placeholders(n)
+    xs, k, a = symbols_for_dimension(n)
+    build = package_build(package, n, q9_data)
+    pd_term = to_coordinate(q9_data["PD_DENSITY_PLACEHOLDER"], n, g, v)
+    emit_quantity(package, n, "PD_TERM", pd_term)
+
+    kinetic_payload = sp.Tuple(*[to_coordinate(term.expression, n, g, v) for term in build.kinetic_terms])
+    stiffness_payload = sp.Tuple(*[to_coordinate(term.expression, n, g, v) for term in build.stiffness_terms])
+    lagrangian_coord = to_coordinate(build.lagrangian, n, g, v)
+    el_system = sp.Tuple(*euler_lagrange_from_placeholders(build.lagrangian, n, g, v))
+    emit_quantity(package, n, "LAGRANGIAN", lagrangian_coord, class_tag="PREMISE")
+    emit_quantity(package, n, "KINETIC_TERMS", kinetic_payload, class_tag="PREMISE")
+    emit_quantity(package, n, "STIFFNESS_TERMS", stiffness_payload, class_tag="PREMISE")
+    emit_quantity(package, n, "EULER_LAGRANGE_SYSTEM", el_system)
+
+    m_a, stripped = route_a_matrix(build.lagrangian, n, g, v, k, a)
+    m_b, averaged_l = route_b_matrix(build.lagrangian, n, g, v, k, a)
+    route = RouteSelection(M_B_TOKEN, m_b)
+    emit_quantity(package, n, "M_ROUTE_A_STRIPPED_FACTOR", stripped)
+    emit_quantity(package, n, "M_A", m_a)
+    emit_quantity(package, n, "M_B", m_b)
+    emit_quantity(package, n, "M_RESIDUAL", sp.simplify(m_a - m_b))
+    emit_quantity(package, n, "M_RATIO", sp.simplify(m_a[0, 0] / m_b[0, 0]))
+    emit_quantity(package, n, "M_ROUTE_RESIDUAL_SCOPE", CODING_CONSISTENCY_ONLY)
+    emit_quantity(package, n, "M_ROUTE_USED", route.token)
+    emit_quantity(package, n, "M_COEFFICIENT_JACOBIAN", sp.Tuple(*[sp.ImmutableMatrix([[sp.simplify(sp.diff(route.matrix[i, j], coeff)) for j in range(n)] for i in range(n)]) for coeff in build.coefficient_ordering]))
+
+    assumptions = assumptions_for(package, n)
+    det_m = determinant_from_live_matrix(route.matrix, k)
+    roots = emit_q3(package, n, det_m, build.coefficient_ordering, assumptions)
+    q4_data = emit_q4(package, n, route, roots, assumptions)
+    emit_q5(package, n, roots)
+
+    dim_data = dimension_solve(package, n, build, g, v)
+    for quantity in ("COEFFICIENT_ORDERING", "DIM_COEFFICIENTS", "DIM_EQUATIONS", "DIM_SOLUTION",
+                     "DIM_EQUATION_COUNT", "DIM_UNKNOWN_COUNT", "DIM_COUNT_DIFFERENCE", "DIM_DETERMINACY"):
+        emit_quantity(package, n, quantity, dim_data[quantity])
+    k_sq = sum(ki ** 2 for ki in k)
+    for idx, root in enumerate(roots, start=1):
+        dim_expr = expression_dimension(sp.simplify(root / k_sq), dim_data["DIM_ENV"])
+        emit_quantity(package, n, "DIM_OVER_KSQ", dim_expr if dim_expr is not None else Str("UNDETERMINED"), root=idx)
+
+    action_terms = tuple(term.expression for term in build.kinetic_terms) + tuple(-term.expression for term in build.stiffness_terms)
+    emit_quantity(package, n, "DIM_HOMOGENEITY_ACTION", homogeneity_payload(action_terms, dim_data["DIM_ENV"], dim_data["G_DIMS"], dim_data["V_DIMS"]))
+    derived_for_homogeneity: list[object] = [det_m]
+    derived_for_homogeneity.extend(roots)
+    for m_dot in [EMITTER.emitted[tag_name(package, n, "N5_M_DOT_K", root=i)] for i in range(1, len(roots) + 1)]:
+        derived_for_homogeneity.append(m_dot)
+    for residual in [EMITTER.emitted[tag_name(package, n, "N6_RESIDUAL", root=i)] for i in range(1, len(roots) + 1)]:
+        derived_for_homogeneity.append(residual)
+    if n == 3:
+        pass
+    emit_quantity(package, n, "DIM_HOMOGENEITY_DERIVED", homogeneity_payload(tuple(derived_for_homogeneity), dim_data["DIM_ENV"]))
+    q6r(package, n, build.coefficient_ordering, dim_data["COEFF_DIMENSIONS_MAP"])
+
+    q7_objects(package, n, build, q9_data)
+    emit_q8(package, n, roots, q4_data, build.coefficient_ordering, assumptions)
+    emit_q10(package, n, roots, build.coefficient_ordering)
+    kw_values = q11_objects(package, n, roots, build.coefficient_ordering, assumptions, dim_data["DIM_ENV"])
+    if kw_values:
+        emit_quantity(package, n, "DIM_HOMOGENEITY_DERIVED_Q11_KW", homogeneity_payload(tuple(kw_values), dim_data["DIM_ENV"]))
+    return True
+
+
+def compare_objects(left: object, right: object) -> tuple[str, object]:
+    left = casify(left)
+    right = casify(right)
+    if isinstance(left, sp.Symbol) and isinstance(right, sp.Symbol):
+        same = left.name == right.name and left.assumptions0 == right.assumptions0
+        return ("PROVED_EQUAL" if same else "PROVED_DIFFERENT", sp.Tuple(left, right))
+    if isinstance(left, Str) or isinstance(right, Str):
+        same = sp.srepr(left) == sp.srepr(right)
+        return ("PROVED_EQUAL" if same else "PROVED_DIFFERENT", sp.Tuple(left, right))
+    if isinstance(left, sp.MatrixBase) and isinstance(right, sp.MatrixBase):
+        if left.shape != right.shape:
+            return "PROVED_DIFFERENT", sp.Tuple(left, right)
+        residual = sp.simplify(left - right)
+        if all(entry == 0 for entry in residual):
+            return "PROVED_EQUAL", residual
+        if any(entry != 0 and not entry.free_symbols for entry in residual):
+            return "PROVED_DIFFERENT", residual
+        return "UNDECIDED", residual
+    if isinstance(left, sp.Tuple) and isinstance(right, sp.Tuple):
+        if len(left) != len(right):
+            return "PROVED_DIFFERENT", sp.Tuple(left, right)
+        statuses = [compare_objects(l_item, r_item)[0] for l_item, r_item in zip(left, right)]
+        if all(status == "PROVED_EQUAL" for status in statuses):
+            return "PROVED_EQUAL", sp.Tuple(left, right)
+        if any(status == "PROVED_DIFFERENT" for status in statuses):
+            return "PROVED_DIFFERENT", sp.Tuple(left, right)
+        return "UNDECIDED", sp.Tuple(left, right)
+    if sp.srepr(left) == sp.srepr(right):
+        return "PROVED_EQUAL", sp.Tuple(left, right)
+    try:
+        residual = sp.simplify(left - right)
+        if residual == 0:
+            return "PROVED_EQUAL", residual
+        if residual != 0 and not getattr(residual, "free_symbols", set()):
+            return "PROVED_DIFFERENT", residual
+        return "UNDECIDED", residual
+    except Exception as exc:
+        ISSUES.append(f"object comparison undecided after {type(exc).__name__}")
+        return "UNDECIDED", sp.Tuple(left, right)
+
+
+def record_source(record: dict[str, object]) -> str:
+    lines = ["    {"]
+    for key, value in record.items():
+        if key in {"value", "f9_operands"}:
+            lines.append(f"        {key!r}: _restore({sp.srepr(casify(value))!r}),")
+        else:
+            lines.append(f"        {key!r}: {value!r},")
+    lines.append("    }")
+    return "\n".join(lines)
+
+
+def make_record(candidate: CandidateRow) -> dict[str, object]:
+    record = {
+        "display": display(candidate.value),
+        "value": casify(candidate.value),
+        "value_kind": "COMPUTED_OBJECT",
+        "class": candidate.class_tag,
+        "step": "S11",
+    }
+    if candidate.dimension_key is not None:
+        record["dimension_key"] = candidate.dimension_key
+    if candidate.description is not None:
+        record["description"] = candidate.description
+    return record
+
+
+def add_symbol_candidates(candidates: list[CandidateRow], emitted_values: list[object],
+                          dimension_keys: dict[sp.Symbol, str]) -> None:
+    seen = {candidate.base_key for candidate in candidates}
+    symbols = set()
+    for value in emitted_values:
+        value = casify(value)
+        if isinstance(value, sp.MatrixBase):
+            for entry in value:
+                symbols.update(entry.free_symbols)
+        elif hasattr(value, "free_symbols"):
+            symbols.update(value.free_symbols)
+        if isinstance(value, sp.Tuple):
+            for item in value:
+                if hasattr(item, "free_symbols"):
+                    symbols.update(item.free_symbols)
+    for symbol in sorted(symbols, key=lambda sym: sym.name):
+        if symbol not in DECLARED_SYMBOLS:
+            ISSUES.append(f"unclassifiable free symbol {symbol}")
+            continue
+        if symbol.name in seen:
+            continue
+        metadata = DECLARED_SYMBOLS[symbol]
+        candidates.append(
+            CandidateRow(
+                symbol.name,
+                symbol,
+                metadata["class"],
+                "FREE_SYMBOL_POPULATION",
+                dimension_keys.get(symbol),
+                metadata["description"],
+            )
+        )
+        seen.add(symbol.name)
+
+
+def dimension_key_candidates(main_dim_data: dict[int, dict[str, object]]) -> tuple[list[CandidateRow], dict[sp.Symbol, str]]:
+    rows: list[CandidateRow] = []
+    symbol_dimension_keys: dict[sp.Symbol, str] = {}
+    imported_dimension_rows = {
+        key: record
+        for key, record in INCOMING_LEDGER.items()
+        if isinstance(record.get("value"), sp.MatrixBase) and str(key).endswith("dimension")
+    }
+    for n, dim_data in main_dim_data.items():
+        for coeff, vector in dim_data["COEFF_DIMENSIONS_MAP"].items():
+            match_key = None
+            for key, record in imported_dimension_rows.items():
+                status, _ = compare_objects(vector, record["value"])
+                if status == "PROVED_EQUAL":
+                    match_key = key
+                    break
+            if match_key is None:
+                match_key = f"{coeff.name}_dimension"
+            symbol_dimension_keys[coeff] = match_key
+            rows.append(CandidateRow(match_key, vector, "DERIVED", f"DIMENSION_ROW_{coeff.name}_D{n}"))
+    unique: dict[str, CandidateRow] = {}
+    for row in rows:
+        if row.base_key not in unique:
+            unique[row.base_key] = row
+    return list(unique.values()), symbol_dimension_keys
+
+
+def merged_export(main_dim_data: dict[int, dict[str, object]], run_pairs: sp.Tuple, skipped_pairs: sp.Tuple,
+                  *, emit_diagnostics: bool = True) -> dict[str, dict[str, object]]:
+    candidates = list(EMITTER.export_candidates)
+    dimension_rows, symbol_dimension_keys = dimension_key_candidates(main_dim_data)
+    candidates.extend(dimension_rows)
+    candidates.append(CandidateRow("run_pairs", run_pairs, "DERIVED", "RUN_PAIRS"))
+    candidates.append(CandidateRow("skipped_pairs", skipped_pairs, "DERIVED", "SKIPPED_PAIRS"))
+    emitted_values = [candidate.value for candidate in candidates]
+    add_symbol_candidates(candidates, emitted_values, symbol_dimension_keys)
+
+    key_operands = []
+    merged = {key: dict(record) for key, record in INCOMING_LEDGER.items()}
+    for candidate in candidates:
+        candidate_record = make_record(candidate)
+        imported = INCOMING_LEDGER.get(candidate.base_key)
+        if imported is None:
+            write_key = candidate.base_key
+            relation_token = Str("ABSENT")
+            operands = sp.Tuple(Str(candidate.base_key), sp.Tuple())
+        else:
+            value_status, value_operand = compare_objects(candidate_record["value"], imported.get("value"))
+            class_status = "PROVED_EQUAL" if candidate_record.get("class") == imported.get("class") else "PROVED_DIFFERENT"
+            if value_status == "PROVED_EQUAL" and class_status == "PROVED_EQUAL":
+                write_key = candidate.base_key
+                relation_token = Str("PROVED_EQUAL")
+                candidate_record["f9_operands"] = sp.Tuple(candidate_record["value"], imported.get("value"))
+                imported_steps = []
+                if imported.get("corroborated_steps"):
+                    imported_steps.extend(imported["corroborated_steps"])
+                elif imported.get("step"):
+                    imported_steps.append(imported["step"])
+                imported_steps.append("S11")
+                candidate_record["corroborated_steps"] = tuple(dict.fromkeys(imported_steps))
+            else:
+                write_key = f"s11_{candidate.base_key}"
+                relation_token = Str(value_status if value_status != "PROVED_EQUAL" else "CLASS_DIFFERENCE")
+            operands = sp.Tuple(Str(candidate.base_key), Str(write_key), relation_token, casify(value_operand if imported is not None else sp.Tuple()))
+        key_operands.append(sp.Tuple(Str(candidate.source_tag), Str(candidate.base_key), operands))
+        merged[write_key] = candidate_record
+
+    if emit_diagnostics:
+        EMITTER.emit("PY_S11_LOCAL_EXPORT_CANDIDATE_KEY_OPERANDS", sp.Tuple(*key_operands), export_key=None)
+    for n, dim_data in main_dim_data.items():
+        export_coeff_rows = []
+        for coeff in dim_data["COEFF_DIMENSIONS_MAP"]:
+            lookup_name = COEFFICIENT_NAME_MAP.get(coeff.name, coeff.name)
+            coeff_row = merged.get(lookup_name)
+            status = Str("UNRESOLVED")
+            dim_key_payload = NOT_APPLICABLE
+            if coeff_row is not None and coeff_row.get("dimension_key") in merged:
+                dim_record = merged[coeff_row["dimension_key"]]
+                if "value" in dim_record:
+                    status = Str("RESOLVED")
+                    dim_key_payload = Str(coeff_row["dimension_key"])
+            export_coeff_rows.append(sp.Tuple(coeff, Str(lookup_name), status, dim_key_payload))
+            if emit_diagnostics:
+                EMITTER.emit(
+                    tag_name("MAIN", n, f"Q6R_EXPORT_LOOKUP_{coeff.name.upper()}", local=True),
+                    sp.Tuple(coeff, Str(lookup_name), status, dim_key_payload),
+                )
+        if emit_diagnostics:
+            EMITTER.emit(tag_name("MAIN", n, "Q6R_EXPORT_LOOKUP_ROWS", local=True), sp.Tuple(*export_coeff_rows))
+    return merged
+
+
+def write_exports(ledger: dict[str, dict[str, object]]) -> None:
+    path = SCRIPT_DIR / "S11_exports.py"
+    lines = [
+        "# S11_exports.py -- GENERATED by S11_stray_longitudinal_sympy_audit.py. Do not edit.",
+        "from types import MappingProxyType",
+        "",
+        "import sympy as sp",
+        "from sympy.core.symbol import Str",
+        "",
+        "_RELATIONALS = {",
+        "    'Equality': lambda left, right: sp.Eq(left, right, evaluate=False),",
+        "    'Unequality': lambda left, right: sp.Ne(left, right, evaluate=False),",
+        "    'StrictGreaterThan': lambda left, right: sp.Gt(left, right, evaluate=False),",
+        "    'StrictLessThan': lambda left, right: sp.Lt(left, right, evaluate=False),",
+        "    'GreaterThan': lambda left, right: sp.Ge(left, right, evaluate=False),",
+        "    'LessThan': lambda left, right: sp.Le(left, right, evaluate=False),",
+        "}",
+        "",
+        "def _restore(source):",
+        "    return eval(source, {'__builtins__': {}, 'Str': Str, **vars(sp), **_RELATIONALS})",
+        "",
+        "BUILD_INPUT_DIGESTS = MappingProxyType({",
+        f"    'S11_stray_longitudinal_sympy_audit.py': {file_digest(Path(__file__).resolve())!r},",
+        f"    'S10_exports.py': {file_digest(SCRIPT_DIR / 'S10_exports.py')!r},",
+        f"    'S11_SHARED_PHYSICS.md': {file_digest(REPO_ROOT / 'pde_ledger_v3' / 'directives' / 'S11_SHARED_PHYSICS.md')!r},",
+        "})",
+        "",
+        "_LEDGER = {",
+    ]
+    for key in sorted(ledger):
+        lines.append(f"    {key!r}: {record_source(ledger[key])},")
+    lines.extend([
+        "}",
+        "LEDGER = MappingProxyType({",
+        "    name: MappingProxyType(record) for name, record in _LEDGER.items()",
+        "})",
+        "del _LEDGER",
+        "",
+    ])
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def run_record_payloads(completed_pairs: list[tuple[str, int]]) -> tuple[sp.Tuple, sp.Tuple]:
+    declared_pairs = [(package, n) for package in PACKAGE_ORDER for n in PACKAGE_DIMS[package]]
+    skipped_pairs_list = [pair for pair in declared_pairs if pair not in completed_pairs]
+    run_pairs_payload = sp.Tuple(*[sp.Tuple(Str(package), sp.Integer(n)) for package, n in completed_pairs])
+    skipped_pairs_payload = sp.Tuple(*[sp.Tuple(Str(package), sp.Integer(n)) for package, n in skipped_pairs_list])
+    return run_pairs_payload, skipped_pairs_payload
+
+
+def main_is_complete(completed_pairs: list[tuple[str, int]]) -> bool:
+    main_completed = {(package, n) for package, n in completed_pairs if package == PRIMARY_PACKAGE}
+    main_declared = {(PRIMARY_PACKAGE, n) for n in PACKAGE_DIMS[PRIMARY_PACKAGE]}
+    return main_completed == main_declared
+
+
+def publish_completed_main(main_dim_data: dict[int, dict[str, object]], completed_pairs: list[tuple[str, int]],
+                           *, emit_diagnostics: bool) -> bool:
+    if not main_is_complete(completed_pairs):
+        return False
+    run_pairs_payload, skipped_pairs_payload = run_record_payloads(completed_pairs)
+    ledger = merged_export(main_dim_data, run_pairs_payload, skipped_pairs_payload, emit_diagnostics=emit_diagnostics)
+    write_exports(ledger)
+    return True
+
+
+def run() -> None:
+    start = time.monotonic()
+    q9_cache = {n: compute_q9(n) for n in (2, 3, 4, 5)}
+    completed_pairs: list[tuple[str, int]] = []
+    main_dim_data: dict[int, dict[str, object]] = {}
+    for package in PACKAGE_ORDER:
+        for n in PACKAGE_DIMS[package]:
+            try:
+                before_count = EMITTER.count
+                run_cell(package, n, q9_cache)
+                completed_pairs.append((package, n))
+                if package == PRIMARY_PACKAGE:
+                    dim_tag = tag_name(package, n, "DIM_COEFFICIENTS")
+                    coeff_tag = tag_name(package, n, "COEFFICIENT_ORDERING")
+                    coeff_dims = {}
+                    for row in EMITTER.emitted[dim_tag]:
+                        coeff_dims[row[0]] = row[1]
+                    main_dim_data[n] = {
+                        "COEFF_DIMENSIONS_MAP": coeff_dims,
+                        "COEFFICIENT_ORDERING": tuple(EMITTER.emitted[coeff_tag]),
+                    }
+                    publish_completed_main(main_dim_data, completed_pairs, emit_diagnostics=False)
+                if EMITTER.count == before_count:
+                    ISSUES.append(f"{package} D{n}: cell completed without emitted tags")
+            except Exception as exc:
+                EMITTER.emit(
+                    tag_name(package, n, "CELL_EXCEPTION", local=True),
+                    sp.Tuple(Str(package), sp.Integer(n), Str(type(exc).__name__), Str(repr(exc))),
+                )
+                ISSUES.append(f"{package} D{n}: cell skipped after {type(exc).__name__}: {exc}")
+    run_pairs_payload, skipped_pairs_payload = run_record_payloads(completed_pairs)
+    EMITTER.emit("PY_S11_RUN_PAIRS", run_pairs_payload, export_key="run_pairs")
+    EMITTER.emit("PY_S11_SKIPPED_PAIRS", skipped_pairs_payload, export_key="skipped_pairs")
+    EMITTER.emit("PY_S11_LOCAL_TAGS", sp.Tuple(*[Str(tag) for tag in EMITTER.local_tags]))
+
+    if main_is_complete(completed_pairs):
+        ledger = merged_export(main_dim_data, run_pairs_payload, skipped_pairs_payload)
+        write_exports(ledger)
+    else:
+        stale = SCRIPT_DIR / "S11_exports.py"
+        if stale.exists():
+            stale.unlink()
+        ISSUES.append("S11_exports.py not published because a declared MAIN cell did not complete")
+
+    runtime = sp.Float(time.monotonic() - start, 6)
+    report = sp.Tuple(
+        sp.Tuple(Str("SCRIPT"), Str(str(Path(__file__).resolve())), sp.Integer(len(Path(__file__).read_text(encoding="utf-8").splitlines()))),
+        sp.Tuple(Str("EMITTED_TAGS"), sp.Integer(EMITTER.count)),
+        sp.Tuple(Str("RUN_PAIRS"), run_pairs_payload),
+        sp.Tuple(Str("SKIPPED_PAIRS"), skipped_pairs_payload),
+        sp.Tuple(Str("RUNTIME_SECONDS"), runtime),
+        sp.Tuple(Str("ISSUES"), sp.Tuple(*[Str(issue) for issue in ISSUES[:20]])),
+        sp.Tuple(Str("CUSTOM_QUANTITY_NAMES"), sp.Tuple(*[Str(name) for name in sorted(CUSTOM_QUANTITY_NAMES)])),
+    )
+    EMITTER.emit("PY_S11_LOCAL_SECTION10_REPORT", report)
+
+
+class StdoutTee:
+    def __init__(self, *streams: object) -> None:
+        self.streams = streams
+
+    def write(self, text: str) -> int:
+        for stream in self.streams:
+            stream.write(text)
+        return len(text)
+
+    def flush(self) -> None:
+        for stream in self.streams:
+            stream.flush()
+
+
+def run_with_stdout_tee() -> None:
+    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    original_stdout = sys.stdout
+    with OUT_PATH.open("w", encoding="utf-8") as out_stream:
+        sys.stdout = StdoutTee(original_stdout, out_stream)
+        try:
+            run()
+        finally:
+            sys.stdout.flush()
+            sys.stdout = original_stdout
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    run_with_stdout_tee()

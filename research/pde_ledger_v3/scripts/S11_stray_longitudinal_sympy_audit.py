@@ -1751,7 +1751,7 @@ def emit_component_count(package: str, n: int, quantity: str, generic_value: obj
     status, certificate, change_residuals = analyzer.analyze(
         change_residuals, generic_value, recompute,
     )
-    payload_value = generic_value if status in ("CONSTANT", "VARIES") else NOT_DEFINED_ON_COMPONENT
+    payload_value = generic_value
     emit_quantity(
         package, n, quantity, component_count_record(status, payload_value),
         root=root, stratum=stratum,

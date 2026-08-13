@@ -80,8 +80,28 @@ root-coincidence calculation in another package ⇒ ⭐ **one badly-formed calcu
 ⛔⛔ **ORCHESTRATOR ERROR, ⛔ repeated after being caught once:** I claimed *"MAIN D2–D5 all complete"* from
 **tag PREFIXES appearing in the stream**. ⚠ A prefix means the cell STARTED. ⭐ Completion = the cell's
 **terminal tags**, or `completed_pairs`. ⇒ [[feedback-measure-the-artifact-not-the-document]].
-⭐ **Codex's leg found this** with a one-cell `run_cell('MAIN',5)` reproduction catching `BaseException`
-⇒ ⭐ **rebuild that repro first next session**; it is the instrument.
+⭐ **Codex's leg found this** with a one-cell `run_cell('MAIN',5)` reproduction catching `BaseException`.
+⭐⭐ **REPRO REBUILT AND IT ANSWERED — `~/.s11_build/repro_d5.py`, verdict `d5_repro_verdict.out`.**
+⛔ **`MemoryError`**, and the frame is exact:
+`run_cell:1380 → emit_q4:1239 → matrix_rank:870 → sympy rank() → _row_reduce → cross_cancel`.
+⚠ 62 tags, last tag matches the full run ⇒ ⭐ **the isolated cell reproduces the whole failure in ~4 min,
+⛔ not 6 h.** ⭐ Use it before any fix round.
+
+⛔⛔ **THE DEFECT, `:868-870`:**
+```
+def matrix_rank(matrix):
+    simplified = sp.Matrix(matrix).applyfunc(lambda e: sp.factor(sp.cancel(e)))
+    return int(simplified.rank(iszerofunc=lambda entry: entry == 0, simplify=False))
+```
+⚠ **INPUT entries ARE pre-simplified** — ⛔ the INTERMEDIATE entries `cross_cancel` builds during
+elimination are **not** (`simplify=False`), and ⭐ those are what `iszerofunc` tests. ⚠ `entry == 0` is
+SymPy **structural** equality ⇒ an intermediate that is zero only after `cancel` reads NON-zero ⇒ ⛔ it is
+taken as a pivot ⇒ ⭐ **expression swell (the OOM) and a possible rank OVERCOUNT.**
+⛔⛔ **BLAST RADIUS — the same pattern is in `nullspace` at `:920`**, and ⚠ **nullspace is MORE
+physics-bearing than rank: it is what identifies ZERO MODES**, which is S11's actual question.
+⇒ ⚠ `MAIN` D2/D3/D4 **completed**, ⛔ but completing is not being right — ⭐ **their ranks and nullspaces
+are in scope for the legs.** ⛔ `matrix_rank` callers: `:1239`, `:1242`.
+⇒ ⭐⭐ **The fix is a CORRECT ZERO TEST — ⛔ not a performance workaround, ⛔ not a memory cap.**
 
 ⭐ **THEN:** two legs — **a fresh Claude agent + Grok** (Codex wrote it), ⛔⛔ **FORM ABLATION MANDATORY in
 each** (rule 14). ⚠ Logs: `~/.s11_build/`. ⛔ `py-spy` needs sudo here, so no stack dump was possible.

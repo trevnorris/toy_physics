@@ -93,3 +93,29 @@ $ grep -c "out/\|OUT_DIR" research/pde_ledger_v3/scripts/S11_stray_longitudinal_
 0
 committed out/ file: 825 lines (truncated casualty)
 ```
+
+## 6. BOTH LEGS OVERTURNED ITEM 1 (verdicts: ~/.s11_build/fix1_leg_{codex,grok}.log)
+
+Codex, measuring the matrix that reaches rank and the stronger zero predicate:
+```
+MB_SHAPE (5, 5)   MB_ENTRY_OPS max 22   DET_OPS 36   DET_STRLEN 190
+ROOT 1 PRE_MAX_OPS 10  PRE_TOTAL_OPS 150  PRE_MAX_STRLEN 49
+ROOT 1 ZERO_ENTRIES_STRUCT 0   ZERO_ENTRIES_SIMPLIFY 0
+RANK_EXC MemoryError  SECONDS 63.294   # with iszerofunc=factor(cancel(e))==0
+ZERO_CALLS {'n': 48, 'alg_zero': 9, 'structural_false_alg_zero': 0, 'max_ops': 34661}
+```
+=> zero missed structural zeros; a STRONGER predicate still OOMs; entries swell 22 -> 34661 ops
+   during reduction. The zero test is not the cause.
+
+Grok, on the next wall and the dead site:
+```
+all_minors(m_r, 4) at D=5 R1: ~26s per 4x4 det, 25 minors, timeout at 120s   (:906-915, :1289)
+nullspace_basis (:918-920) has NO callers; live path generic_nullspace_vectors (:924, :1245)
+MAIN D2-D4 ranks already agree with an independent rank route
+```
+
+Handler severity, where the legs DISAGREED (a finding, per rule 6):
+```
+:955  silent, no ISSUES   (both)        :1450 silent, no ISSUES  (both)
+:1668 swallows MemoryError (both)       :756  wrong-payload risk (Codex) vs soft (Grok)
+```

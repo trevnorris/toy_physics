@@ -32,12 +32,26 @@ def matrix_rank(matrix: sp.MatrixBase) -> int:
 elimination are not (`simplify=False`), and those are what `iszerofunc` receives. `entry == 0` is SymPy
 **structural** equality, so an intermediate that is zero only after reduction reads non-zero.
 
-⇒ ⭐ **State the property the zero test must have: it decides zero-ness of the entries the elimination
-actually presents to it, not only of the pre-simplified inputs.** ⛔ Do not specify the routine
-(`CLAUDE.md` rule 3 — name the object, never the recipe).
+⛔⛔ **REVISED AFTER TWO LEGS — the paragraph above is WHERE IT SURFACES, ⛔ NOT WHY.** ⚠ Both legs measured
+it independently: the matrix reaching `rank` is **small** (5×5, entries ≤22 ops), there were **zero** cases
+of an algebraically-zero entry read as non-zero, and **a stronger zero predicate still `MemoryError`s**.
+⇒ ⛔ **The structural zero test is NOT the cause.** ⭐ The cause is **expression-tree Gaussian elimination
+swelling from small exact entries** during row reduction.
+⚠ ⭐ The structural test **remains a real correctness hazard** — it never returns `None`, so SymPy never
+falls back to simplification — ⛔ but it is a separate item, not the blocker.
 
-⛔ **The same pattern is at `:920`** (`nullspace(iszerofunc=lambda entry: entry == 0, simplify=False)`).
-⚠ Both call sites are in scope. `matrix_rank` callers: `:1239`, `:1242`.
+⇒ ⭐⭐ **THE OBJECT IS Q4's `rank` AND `stacked_rank` OF THE LIVE `M_r`** (`:1239`, `:1242`) — ⭐ the exact
+algebraic rank, over the coefficient field the cell already carries. ⛔ Not a zero-test property, ⛔ not a
+generic rank at a numeric specialization, ⛔ not any cheaper object that happens to return an integer.
+⛔ **Do not specify the construction** (rule 3). ⭐ **A terminating construction exists** — ⚠ both legs
+found one — ⇒ ⛔ this is **not** a §10 unavailability, and ⛔ must not be reported as one.
+
+⛔ **`:918-920` (`nullspace_basis`) is DEAD — it has no caller.** ⚠ Scoping it was the list's error. ⭐ The
+live nullspace path is `generic_nullspace_vectors` (`:924`, called at `:1245`).
+
+⛔⛔ **THE NEXT WALL, and the list missed it: `all_minors` (`:906-915`, called `:1289`).** ⚠ Measured at
+D=5: ~26 s per 4×4 determinant × 25 minors, timing out at 120 s. ⇒ ⭐ **fixing rank alone does NOT complete
+the cell.** ⭐ Same instruction: name the object Q8 requires; ⛔ do not invent the routine.
 
 ⛔⛔ **A CHANGED RESULT AT D2/D3/D4 IS A FINDING TO REPORT UNDER §10, ⛔ NOT A REGRESSION TO SUPPRESS.**
 ⚠ Those dimensions completed under the same zero test. ⛔ Do not tune anything to reproduce prior output,
@@ -51,8 +65,16 @@ explanation of their own failure**, while the explanation existed in an unreacha
 
 ⇒ ⭐ A cell that fails must say so **at the time**, on the stream, with its exception type — without
 altering §10's existing role.
-⚠ There are bare `except Exception` handlers at `:756 :775 :955 :1317 :1450 :1668`. ⭐ Report under §10
-which of them can mask a real failure. ⛔ Do not silently delete one.
+⚠ There are bare `except Exception` handlers at `:756 :775 :955 :1317 :1450 :1668`. ⛔ **They are NOT
+equal, and the list treated them as if they were.**
+⛔⛔ **`:955` and `:1450` fall back with NO `ISSUES` entry at all** — ⚠ `:955` `inv` → `gauss_jordan_solve`;
+`:1450` a failed comparison → `UNDECIDED`, which `F9` equality then consumes. ⇒ ⭐ **a silent physics
+claim.** ⛔ `:1668` swallows the `MemoryError` and records it only where nothing ever reads it.
+⚠⚠ **The two legs DISAGREED on `:756`** — one called it a wrong-payload risk (a forced Gröbner failure
+returning `NOT_APPLICABLE`), the other called it soft because it does append to `ISSUES`. ⭐ **That
+disagreement is a finding: settle it by computation and report which is right under §10.**
+⛔ Do not silently delete any handler — ⚠ several encode genuine §10 unavailable constructions, and
+deleting `:1668` without a stream emit reintroduces hard aborts that kill every later cell.
 
 ## ⛔ 3 · A COMPLETED `MAIN` MUST SURVIVE AN INTERRUPTION
 
@@ -92,9 +114,15 @@ stream's content or ordering.
 
 ## Acceptance
 
-`/home/trevnorris/.s11_build/repro_d5.py` runs to completion without `MemoryError`, and its literal stdout
-is reported. ⭐ Use it before attempting a full run — it reproduces the whole failure in ~4 minutes rather
-than 6 hours.
+⛔⛔ **REVISED — the list's first acceptance was UNREACHABLE by its own item 1**, because `all_minors` walls
+after rank. ⚠ That is the same defect the orchestrator was caught on earlier the same day: demanding an
+end-state without measuring the artifact can deliver it.
+
+⭐ **`/home/trevnorris/.s11_build/repro_d5.py` runs `run_cell('MAIN', 5)` to completion** — ⛔ not merely
+past `:870` — ⭐ and the cell emits its terminal tags, so that in a full run it would enter
+`completed_pairs`. ⭐ Report the literal stdout.
+⚠ Use it before any full run: ~minutes against ~6 hours, and a full run has OOM-killed this machine.
+⛔ No expected value is stated here and none may be introduced (rule 5).
 
 ## Deliverable
 

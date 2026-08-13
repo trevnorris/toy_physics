@@ -54,3 +54,33 @@ echo "committed out/ file: $(wc -l < research/pde_ledger_v3/scripts/out/S11_stra
 echo '```'
 } > "$OUT"
 wc -l "$OUT"
+
+# appended after the two legs — what they overturned
+{
+echo
+echo '## 6. BOTH LEGS OVERTURNED ITEM 1 (verdicts: ~/.s11_build/fix1_leg_{codex,grok}.log)'
+echo
+echo 'Codex, measuring the matrix that reaches rank and the stronger zero predicate:'
+echo '```'
+echo 'MB_SHAPE (5, 5)   MB_ENTRY_OPS max 22   DET_OPS 36   DET_STRLEN 190'
+echo 'ROOT 1 PRE_MAX_OPS 10  PRE_TOTAL_OPS 150  PRE_MAX_STRLEN 49'
+echo 'ROOT 1 ZERO_ENTRIES_STRUCT 0   ZERO_ENTRIES_SIMPLIFY 0'
+echo "RANK_EXC MemoryError  SECONDS 63.294   # with iszerofunc=factor(cancel(e))==0"
+echo "ZERO_CALLS {'n': 48, 'alg_zero': 9, 'structural_false_alg_zero': 0, 'max_ops': 34661}"
+echo '```'
+echo '=> zero missed structural zeros; a STRONGER predicate still OOMs; entries swell 22 -> 34661 ops'
+echo '   during reduction. The zero test is not the cause.'
+echo
+echo 'Grok, on the next wall and the dead site:'
+echo '```'
+echo 'all_minors(m_r, 4) at D=5 R1: ~26s per 4x4 det, 25 minors, timeout at 120s   (:906-915, :1289)'
+echo 'nullspace_basis (:918-920) has NO callers; live path generic_nullspace_vectors (:924, :1245)'
+echo 'MAIN D2-D4 ranks already agree with an independent rank route'
+echo '```'
+echo
+echo 'Handler severity, where the legs DISAGREED (a finding, per rule 6):'
+echo '```'
+echo ':955  silent, no ISSUES   (both)        :1450 silent, no ISSUES  (both)'
+echo ':1668 swallows MemoryError (both)       :756  wrong-payload risk (Codex) vs soft (Grok)'
+echo '```'
+} >> research/pde_ledger_v3/directives/_measurements/S11_engine_fix_round1_brief.md

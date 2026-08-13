@@ -47,9 +47,31 @@ runaway was already dead and it read 18 Gi free, which is what sent me down the 
 ⭐ **NEXT DIAGNOSIS, ⛔ for a leg, not for me to guess:** the stall is in D=5 root coincidence; ⚠ ~7 bare
 `except Exception` handlers (`:756 :775 :955 :1317 :1450 :1668`) may mask the real failure, and an
 unbounded exact-CAS root computation is the obvious suspect.
-⭐ **NEXT:** finish the run, then its two legs — **a fresh Claude agent + Grok** (Codex wrote it), ⛔⛔ with
-a **FORM ABLATION MANDATORY in each** (rule 14). ⚠ Logs: `~/.s11_build/codex_s11_py_build.log`;
-arbiter stdout `/tmp/s11_arbiter.out`.
+⛔⛔ **RUN 4 (8 GB cap) STALLED AND WAS KILLED AT 5h37m — ⛔ the engine needs THREE FIXES before it is run
+again.** ⚠ It completed **21 of 22 cells**, including ALL of `MAIN` D2–D5, then emitted **nothing for ~3.5
+hours** at 99.7% CPU while RSS doubled 208 → 459 MB. ⚠ Stuck inside **`XKIN_ANISO_D4`**, ⛔ not D5.
+⭐ Output preserved: `~/.s11_build/s11_stalled_FINAL.out` (14.9 MB, 5123 tags).
+
+⭐⭐ **THE THREE FIXES (user, 2026-08-12) — ⛔ a smaller memory cap is NOT one of them:**
+1. ⭐⭐ **WRITE THE LEDGER AS SOON AS `MAIN` COMPLETES.** ⛔ `write_exports` sits at `:1682`, **after the
+   whole package loop**, so a finished primary package is held hostage by a control cell and ⛔ **any
+   interruption discards it**. ⚠ That is what cost runs 1–4. ⭐ **F6's condition is already MAIN-only
+   (`:1680`), so this is a PLACEMENT change, ⛔ not a rule change.**
+2. ⭐ **PIPE STDOUT TO `research/pde_ledger_v3/scripts/out/S11_stray_longitudinal_sympy_audit.out`.** ⚠ The
+   script has **no `out/` writing of its own** — every run so far landed in `/tmp`. ⛔ The committed `.out`
+   is still the **stale 825-line OOM casualty**.
+3. ⛔⛔ **THE EXPENSIVE CALCULATION MUST CHANGE — ⛔ forcing a `MemoryError` is a WORKAROUND, not a fix**
+   (⚠ the orchestrator proposed a 2 GB cap; ⭐ the user rejected it and was right). ⚠ Measured: `XKIN_ANISO`
+   is **9.22 MB of 14.9 MB in 737 tags**, and its three `ROOT_COINCIDENCE_R*_R*_K_REAL_ADMISSIBLE` tags are
+   **0.82 / 0.55 / 0.41 MB EACH**. ⭐ Same object, tractable method (rule 3: ⭐ name the object, ⛔ never the
+   recipe). ⚠ `MAIN` is only **0.97 MB** — ⛔ the answer was never the cost.
+
+⚠ **Also measured, ⛔ unexplained:** `MAIN` D5 emitted **61 tags vs ~250** at D2/D3/D4. ⛔ Do not read that
+as completion — ⚠ a swallowed `MemoryError` in one of the ~7 bare `except Exception` handlers looks
+identical from outside. ⭐ **First question for the legs.**
+
+⭐ **THEN:** two legs — **a fresh Claude agent + Grok** (Codex wrote it), ⛔⛔ **FORM ABLATION MANDATORY in
+each** (rule 14). ⚠ Logs: `~/.s11_build/`. ⛔ `py-spy` needs sudo here, so no stack dump was possible.
 
 ⚠ **HYGIENE, ⛔ NOT A CONTROL:** `/tmp/s11*_leg_*/`, `/tmp/f9*_leg_*/`, `/tmp/s11_fold_leg/` hold review-leg
 scratch that computed real S11 physics. ⛔ Do not commit it into the tree — it is scratch, and the tree is

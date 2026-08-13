@@ -691,6 +691,10 @@ def exposed_branches(solution: object, variables: tuple[sp.Symbol, ...]) -> list
 
 def evaluate_premise(premise: object, branch: dict[sp.Symbol, object]) -> bool | None:
     substituted = premise.subs(branch) if hasattr(premise, "subs") else premise
+    if substituted is True or substituted == sp.true:
+        return True
+    if substituted is False or substituted == sp.false:
+        return False
     if isinstance(substituted, (sp.StrictGreaterThan, sp.StrictLessThan, sp.GreaterThan, sp.LessThan, sp.Equality, sp.Unequality)):
         simplified = sp.simplify(substituted)
         if simplified == sp.true:
@@ -701,27 +705,38 @@ def evaluate_premise(premise: object, branch: dict[sp.Symbol, object]) -> bool |
     if getattr(substituted, "func", None).__name__ == "AppliedPredicate":
         argument = substituted.arguments[0] if getattr(substituted, "arguments", ()) else None
         predicate_name = getattr(substituted.function, "name", "")
-        if predicate_name == "real" and getattr(argument, "is_real", None) is True:
-            return True
-        if predicate_name == "positive" and getattr(argument, "is_positive", None) is True:
-            return True
-        if predicate_name == "integer" and getattr(argument, "is_integer", None) is True:
-            return True
+        attribute_name = {
+            "real": "is_real",
+            "positive": "is_positive",
+            "integer": "is_integer",
+        }.get(predicate_name)
+        if attribute_name is not None:
+            decision = getattr(argument, attribute_name, None)
+            if decision is True:
+                return True
+            if decision is False:
+                return False
         return None
     return None
 
 
 def admissibility_entry(branch: dict[sp.Symbol, object], assumptions: sp.Tuple) -> sp.Tuple:
     checks = [evaluate_premise(premise, branch) for premise in assumptions]
-    if any(check is False for check in checks):
+    test_terms = []
+    for premise, check in zip(assumptions, checks):
+        if check is True:
+            test_terms.append(sp.true)
+        elif check is False:
+            test_terms.append(sp.false)
+        else:
+            test_terms.append(premise.subs(branch) if hasattr(premise, "subs") else premise)
+    test_object = sp.And(*test_terms)
+    if test_object == sp.false:
         token = "EXCLUDED"
-        test_object = sp.false
-    elif checks and all(check is True for check in checks):
+    elif test_object == sp.true:
         token = "ADMISSIBLE"
-        test_object = sp.true
     else:
         token = "UNDECIDED"
-        test_object = sp.Tuple(*[premise.subs(branch) if hasattr(premise, "subs") else premise for premise in assumptions])
     return sp.Tuple(
         sp.Tuple(Str("BRANCH"), solve_result_to_cas([branch], tuple(branch.keys()))),
         sp.Tuple(Str("STATUS_TOKEN"), Str(token)),
@@ -760,18 +775,8 @@ def witness_valid(equations: tuple[object, ...], assumptions: sp.Tuple, witness:
     return True
 
 
-def compound_radical_present(expressions: tuple[sp.Expr, ...]) -> bool:
-    for expr in expressions:
-        for subexpr in sp.preorder_traversal(expr):
-            if isinstance(subexpr, sp.Pow) and subexpr.exp.is_Rational and subexpr.exp.q > 1:
-                base = subexpr.base
-                if isinstance(base, sp.Add) or len(getattr(base, "free_symbols", set())) > 1:
-                    return True
-    return False
-
-
-def locus_conditionset(equations: tuple[object, ...], variables: tuple[sp.Symbol, ...]) -> sp.ConditionSet:
-    condition = sp.And(*equations) if equations else sp.true
+def locus_conditionset(equations: tuple[object, ...], variables: tuple[sp.Symbol, ...]) -> sp.Set:
+    condition = sp.And(*[sp.simplify(equation) for equation in equations]) if equations else sp.true
     if not variables:
         return sp.ConditionSet(sp.Tuple(), condition, sp.FiniteSet(sp.Tuple()))
     if len(variables) == 1:
@@ -816,34 +821,22 @@ def emit_locus(package: str, n: int, base_quantity: str, residuals: tuple[sp.Exp
         package=package, n=n, base_quantity=base_quantity, root=root, stratum=stratum,
     )
     emit_quantity(package, n, f"{base_quantity}_EQUATIONS", sp.Tuple(*equations), root=root, stratum=stratum, export=export)
-    solve_skipped = False
-    if (base_quantity.startswith("ROOT_COINCIDENCE") and base_quantity.endswith("_COEFF")
-            and compound_radical_present(residual_exprs)):
-        solution = locus_conditionset(equations, variables)
-        solve_skipped = True
+    try:
+        solve_input = list(residual_exprs)
+        solve_kwargs = {"dict": True, "simplify": False, "manual": True}
+        if isinstance(canonical_payload, sp.Tuple) and canonical_payload:
+            solve_input = [
+                expr.as_expr() if isinstance(expr, sp.Poly) else expr
+                for expr in canonical_payload
+            ]
+            solve_kwargs = {"dict": True, "simplify": False}
+        solution = sp.solve(solve_input, list(variables), **solve_kwargs)
+    except Exception as exc:
+        solution = Str(f"SOLVE_UNAVAILABLE_{type(exc).__name__}")
         record_issue(
-            f"{base_quantity}: multivariate radical coefficient solve measured unavailable; "
-            "emitted exact ConditionSet for the unresolved locus",
+            f"{base_quantity}: solve attempt raised {type(exc).__name__}: {exc!r}",
             package=package, n=n, root=root, stratum=stratum,
         )
-    else:
-        try:
-            solve_input = list(residual_exprs)
-            solve_kwargs = {"dict": True, "simplify": False, "manual": True}
-            if isinstance(canonical_payload, sp.Tuple) and canonical_payload:
-                solve_input = [
-                    expr.as_expr() if isinstance(expr, sp.Poly) else expr
-                    for expr in canonical_payload
-                ]
-                solve_kwargs = {"dict": True, "simplify": False}
-            solution = sp.solve(solve_input, list(variables), **solve_kwargs)
-        except Exception as exc:
-            solution = Str(f"SOLVE_UNAVAILABLE_{type(exc).__name__}")
-            solve_skipped = True
-            record_issue(
-                f"{base_quantity}: solve unavailable after {type(exc).__name__}",
-                package=package, n=n, root=root, stratum=stratum,
-            )
     solution_payload = solve_result_to_cas(solution, variables)
     emit_quantity(package, n, f"{base_quantity}_SOLUTION", solution_payload, root=root, stratum=stratum, export=export)
 
@@ -855,20 +848,17 @@ def emit_locus(package: str, n: int, base_quantity: str, residuals: tuple[sp.Exp
     elif any(status is False for status in zero_statuses):
         identical_object = sp.false
     else:
-        identical_object = sp.Tuple(*[sp.Eq(sp.simplify(relation_residual(eq)), 0, evaluate=False) for eq in equations])
+        identical_object = sp.And(*[
+            sp.Eq(sp.simplify(relation_residual(eq)), 0, evaluate=False)
+            for eq in equations
+        ])
     ident_payload = symbolic_truth_status(identical_object, sp.Tuple(*equations))
     emit_quantity(package, n, f"{base_quantity}_IDENTICALLY_SATISFIED", ident_payload, root=root, stratum=stratum, export=export)
 
-    constant_false = any(not eq.free_symbols and sp.simplify(relation_residual(eq)) != 0 for eq in equations)
-    if constant_false:
-        inconsistent_object: object = sp.true
-    elif identical_object == sp.true:
-        inconsistent_object = sp.false
-    elif solve_skipped:
-        inconsistent_object = sp.Tuple(Str("UNDECIDED_SOLVE_UNAVAILABLE"), solution_payload)
-    else:
-        inconsistent_object = sp.Eq(solution_payload, sp.Tuple(), evaluate=False)
-    inconsistent_payload = symbolic_truth_status(inconsistent_object, sp.Tuple(sp.Tuple(*equations), solution_payload))
+    equation_defined_set = locus_conditionset(equations, variables)
+    inconsistent_object = sp.Eq(equation_defined_set, sp.EmptySet)
+    inconsistent_operands = sp.Tuple(sp.Tuple(*equations), sp.Tuple(*variables), equation_defined_set)
+    inconsistent_payload = symbolic_truth_status(inconsistent_object, inconsistent_operands)
     emit_quantity(package, n, f"{base_quantity}_INCONSISTENT", inconsistent_payload, root=root, stratum=stratum, export=export)
 
     branches = exposed_branches(solution, variables)
@@ -894,7 +884,7 @@ def emit_locus(package: str, n: int, base_quantity: str, residuals: tuple[sp.Exp
     )
 
     witness = candidate_witness(variables)
-    if constant_false:
+    if inconsistent_object == sp.true:
         real_status = Str("PROVED_EMPTY")
         real_witness = NOT_APPLICABLE
     elif witness_valid(equations, assumptions, witness):
@@ -1698,13 +1688,11 @@ def dimension_key_candidates(main_dim_data: dict[int, dict[str, object]]) -> tup
     return list(unique.values()), symbol_dimension_keys
 
 
-def merged_export(main_dim_data: dict[int, dict[str, object]], run_pairs: sp.Tuple, skipped_pairs: sp.Tuple,
+def merged_export(main_dim_data: dict[int, dict[str, object]],
                   *, emit_diagnostics: bool = True) -> dict[str, dict[str, object]]:
     candidates = list(EMITTER.export_candidates)
     dimension_rows, symbol_dimension_keys = dimension_key_candidates(main_dim_data)
     candidates.extend(dimension_rows)
-    candidates.append(CandidateRow("run_pairs", run_pairs, "DERIVED", "RUN_PAIRS"))
-    candidates.append(CandidateRow("skipped_pairs", skipped_pairs, "DERIVED", "SKIPPED_PAIRS"))
     emitted_values = [candidate.value for candidate in candidates]
     add_symbol_candidates(candidates, emitted_values, symbol_dimension_keys)
 
@@ -1819,6 +1807,24 @@ def main_is_complete(completed_pairs: list[tuple[str, int]]) -> bool:
     return main_completed == main_declared
 
 
+def publish_time_cell_states(completed_pairs: list[tuple[str, int]],
+                             attempted_pairs: list[tuple[str, int]]) -> sp.Tuple:
+    completed = set(completed_pairs)
+    attempted = set(attempted_pairs)
+    rows = []
+    for package in PACKAGE_ORDER:
+        for n in PACKAGE_DIMS[package]:
+            pair = (package, n)
+            if pair in completed:
+                state = "COMPLETED_AT_PUBLISH_TIME"
+            elif pair in attempted:
+                state = "ATTEMPT_FAILED_BEFORE_PUBLISH"
+            else:
+                state = "NOT_YET_ATTEMPTED_AT_PUBLISH_TIME"
+            rows.append(sp.Tuple(Str(package), sp.Integer(n), Str(state)))
+    return sp.Tuple(*rows)
+
+
 def delete_stale_export() -> None:
     stale = SCRIPT_DIR / "S11_exports.py"
     if stale.exists():
@@ -1830,10 +1836,13 @@ def run() -> None:
     start = time.monotonic()
     q9_cache = {n: compute_q9(n) for n in (2, 3, 4, 5)}
     completed_pairs: list[tuple[str, int]] = []
+    attempted_pairs: list[tuple[str, int]] = []
     main_dim_data: dict[int, dict[str, object]] = {}
     publish_error: Exception | None = None
+    publish_attempted = False
     for package in PACKAGE_ORDER:
         for n in PACKAGE_DIMS[package]:
+            attempted_pairs.append((package, n))
             CURRENT_CELL = (package, n)
             try:
                 before_count = EMITTER.count
@@ -1856,34 +1865,41 @@ def run() -> None:
                     tag_name(package, n, "CELL_EXCEPTION", local=True),
                     sp.Tuple(Str(package), sp.Integer(n), Str(type(exc).__name__), Str(repr(exc))),
                 )
-                record_issue(f"cell skipped after {type(exc).__name__}: {exc}", package=package, n=n)
+                record_issue(f"cell attempt failed after {type(exc).__name__}: {exc}", package=package, n=n)
             finally:
                 CURRENT_CELL = None
+            if not publish_attempted and main_is_complete(completed_pairs):
+                publish_attempted = True
+                publish_state = publish_time_cell_states(completed_pairs, attempted_pairs)
+                EMITTER.emit(
+                    "PY_S11_LOCAL_PUBLISH_TIME_CELL_STATES",
+                    publish_state,
+                    export_key="publish_time_cell_states",
+                )
+                CURRENT_ISSUE_CONTEXT = "PUBLISH"
+                try:
+                    ledger = merged_export(main_dim_data)
+                    write_exports(ledger)
+                except Exception as exc:
+                    publish_error = exc
+                    EMITTER.emit(
+                        "PY_S11_LOCAL_PUBLISH_EXCEPTION",
+                        sp.Tuple(Str(type(exc).__name__), Str(repr(exc))),
+                    )
+                    record_issue(f"S11_exports.py publish failed after {type(exc).__name__}: {exc}", context="PUBLISH")
+                    try:
+                        delete_stale_export()
+                    except Exception as stale_exc:
+                        record_issue(f"stale S11_exports.py deletion failed after {type(stale_exc).__name__}: {stale_exc}", context="PUBLISH")
+                        if publish_error is None:
+                            publish_error = stale_exc
+                finally:
+                    CURRENT_ISSUE_CONTEXT = None
     run_pairs_payload, skipped_pairs_payload = run_record_payloads(completed_pairs)
     EMITTER.emit("PY_S11_RUN_PAIRS", run_pairs_payload)
     EMITTER.emit("PY_S11_SKIPPED_PAIRS", skipped_pairs_payload)
 
-    if main_is_complete(completed_pairs):
-        CURRENT_ISSUE_CONTEXT = "PUBLISH"
-        try:
-            ledger = merged_export(main_dim_data, run_pairs_payload, skipped_pairs_payload)
-            write_exports(ledger)
-        except Exception as exc:
-            publish_error = exc
-            EMITTER.emit(
-                "PY_S11_LOCAL_PUBLISH_EXCEPTION",
-                sp.Tuple(Str(type(exc).__name__), Str(repr(exc))),
-            )
-            record_issue(f"S11_exports.py publish failed after {type(exc).__name__}: {exc}", context="PUBLISH")
-            try:
-                delete_stale_export()
-            except Exception as stale_exc:
-                record_issue(f"stale S11_exports.py deletion failed after {type(stale_exc).__name__}: {stale_exc}", context="PUBLISH")
-                if publish_error is None:
-                    publish_error = stale_exc
-        finally:
-            CURRENT_ISSUE_CONTEXT = None
-    else:
+    if not publish_attempted:
         try:
             delete_stale_export()
         except Exception as exc:

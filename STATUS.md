@@ -48,8 +48,9 @@ runaway was already dead and it read 18 Gi free, which is what sent me down the 
 `except Exception` handlers (`:756 :775 :955 :1317 :1450 :1668`) may mask the real failure, and an
 unbounded exact-CAS root computation is the obvious suspect.
 ⛔⛔ **RUN 4 (8 GB cap) STALLED AND WAS KILLED AT 5h37m — ⛔ the engine needs THREE FIXES before it is run
-again.** ⚠ It completed **21 of 22 cells**, including ALL of `MAIN` D2–D5, then emitted **nothing for ~3.5
-hours** at 99.7% CPU while RSS doubled 208 → 459 MB. ⚠ Stuck inside **`XKIN_ANISO_D4`**, ⛔ not D5.
+again.** ⚠ It **entered** 21 of 22 cells — ⛔ **entered, NOT completed; see the RESOLVED block below, where
+`MAIN` D5 turns out to have RAISED** — then emitted **nothing for ~3.5 hours** at 99.7% CPU while RSS
+doubled 208 → 459 MB. ⚠ Stuck inside **`XKIN_ANISO_D4`**, ⛔ not D5.
 ⭐ Output preserved: `~/.s11_build/s11_stalled_FINAL.out` (14.9 MB, 5123 tags).
 
 ⭐⭐ **THE THREE FIXES (user, 2026-08-12) — ⛔ a smaller memory cap is NOT one of them:**

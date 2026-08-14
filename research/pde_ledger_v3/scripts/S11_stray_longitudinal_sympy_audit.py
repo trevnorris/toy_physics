@@ -941,42 +941,124 @@ def reduced_matrix(matrix: sp.MatrixBase) -> sp.Matrix:
     return sp.Matrix(matrix).applyfunc(reduced_expr)
 
 
+def quadratic_radical_nodes(expr: sp.Expr) -> tuple[sp.Pow, ...]:
+    return tuple(
+        node
+        for node in sp.preorder_traversal(expr)
+        if isinstance(node, sp.Pow)
+        and node.exp.is_Rational
+        and int(node.exp.q) == 2
+        and int(node.exp.p) % 2 != 0
+    )
+
+
+def _declared_polynomial_zero_test(expr: sp.Expr) -> bool | None:
+    symbols = tuple(sorted(expr.free_symbols, key=lambda sym: sym.name))
+    if any(symbol not in DECLARED_SYMBOLS for symbol in symbols):
+        return None
+    try:
+        reduced = reduced_expr(expr)
+        if not symbols:
+            return reduced == 0 if isinstance(reduced, sp.Rational) else None
+        poly = sp.Poly(reduced, *symbols, domain=sp.QQ)
+    except Exception:
+        return None
+    return True if poly.is_zero else False
+
+
+def _joint_zero_test_assumptions() -> sp.Expr:
+    facts: list[sp.Expr] = [
+        sp.Q.positive(rho_br),
+        sp.Q.positive(mu_R),
+        sp.Q.positive(B_comp),
+        sp.Q.positive(D),
+        sp.Q.integer(D),
+    ]
+    if CURRENT_CELL is not None:
+        package, n = CURRENT_CELL
+        facts.append(sp.Q.positive(sum(ki ** 2 for ki in K_ALL[:n])))
+        if package == "XFORM_TRACELESS":
+            facts.append(sp.Q.positive(mu_br))
+        if package == "XCOEF_BSCALE":
+            facts.extend((sp.Q.positive(s), sp.Q.nonzero(s - 1)))
+        if package == "XKIN_ANISO":
+            facts.extend((sp.Q.positive(s_rho), sp.Q.nonzero(s_rho - 1)))
+    return sp.And(*facts)
+
+
+def _linear_radical_zero_test(a: sp.Expr, b: sp.Expr, radicand: sp.Expr) -> bool | None:
+    statuses = tuple(_declared_polynomial_zero_test(expr) for expr in (a, b, radicand))
+    if any(status is None for status in statuses):
+        return None
+    a_zero, b_zero, radicand_zero = statuses
+    if b_zero or radicand_zero:
+        return a_zero
+    norm = reduced_expr(a ** 2 - b ** 2 * radicand)
+    norm_status = _declared_polynomial_zero_test(norm)
+    if norm_status is False:
+        return False
+    if norm_status is None:
+        return None
+    quotient = reduced_expr(a / b)
+    if quotient == 0 or quotient.is_zero is True:
+        return True
+    if quotient.is_positive is True or quotient.is_nonnegative is True:
+        return False
+    if quotient.is_nonpositive is True:
+        return True
+    assumptions = _joint_zero_test_assumptions()
+    try:
+        if sp.ask(sp.Q.positive(quotient), assumptions) is True:
+            return False
+        if sp.ask(sp.Q.nonnegative(quotient), assumptions) is True:
+            return False
+        if sp.ask(sp.Q.nonpositive(quotient), assumptions) is True:
+            return True
+    except Exception:
+        pass
+    return None
+
+
 def algebraic_zero_test(entry: sp.Expr) -> bool | None:
     if entry == 0 or entry.is_zero is True:
         return True
-    if not getattr(entry, "free_symbols", set()):
-        return False if entry != 0 else True
-    try:
-        symbols = tuple(sorted(entry.free_symbols, key=lambda sym: sym.name))
-        poly = sp.Poly(entry, *symbols)
-        return True if poly.is_zero else False
-    except Exception:
-        pass
-    try:
-        reduced = reduced_expr(entry)
-    except Exception:
+    radical_nodes = quadratic_radical_nodes(entry)
+    radical_bases = {sp.srepr(node.base): node.base for node in radical_nodes}
+    if len(radical_bases) > 1:
+        return None
+    if not radical_bases:
         try:
-            reduced = sp.simplify(entry)
+            numerator, denominator = sp.fraction(sp.together(entry))
         except Exception:
             return None
-    if reduced == 0 or reduced.is_zero is True:
-        return True
-    if not getattr(reduced, "free_symbols", set()):
-        return False if reduced != 0 else True
+        denominator_status = _declared_polynomial_zero_test(denominator)
+        if denominator_status is not False:
+            return None
+        return _declared_polynomial_zero_test(numerator)
+
+    radicand = next(iter(radical_bases.values()))
+    if quadratic_radical_nodes(radicand):
+        return None
+    radical_symbol = sp.Dummy("quadratic_radical")
+    replacements = {
+        node: node.base ** ((int(node.exp.p) - 1) // 2) * radical_symbol
+        for node in set(radical_nodes)
+    }
     try:
-        numerator, _ = sp.fraction(sp.together(reduced))
-        numerator = sp.factor(numerator)
-        if numerator == 0:
-            return True
-        symbols = tuple(sorted(numerator.free_symbols, key=lambda sym: sym.name))
-        if symbols:
-            poly = sp.Poly(numerator, *symbols)
-            return True if poly.is_zero else False
+        lifted = sp.together(entry.xreplace(replacements))
+        numerator, denominator = sp.fraction(lifted)
+        modulus = sp.Poly(radical_symbol ** 2 - radicand, radical_symbol, domain="EX")
+        numerator_poly = sp.Poly(numerator, radical_symbol, domain="EX").rem(modulus)
+        denominator_poly = sp.Poly(denominator, radical_symbol, domain="EX").rem(modulus)
     except Exception:
-        pass
-    if reduced.is_zero is False:
-        return False
-    return None
+        return None
+    numerator_status = _linear_radical_zero_test(
+        numerator_poly.nth(0), numerator_poly.nth(1), radicand,
+    )
+    denominator_status = _linear_radical_zero_test(
+        denominator_poly.nth(0), denominator_poly.nth(1), radicand,
+    )
+    return numerator_status if denominator_status is False else None
 
 
 def exact_domain_matrix(matrix: sp.MatrixBase, *, already_reduced: bool = False) -> DomainMatrix:
@@ -1001,13 +1083,16 @@ def zero_expr(expr: sp.Expr) -> bool:
 
 def exact_determinant(matrix: sp.MatrixBase) -> sp.Expr:
     simplified = reduced_matrix(matrix)
-    try:
-        det_expr = exact_domain_matrix(simplified, already_reduced=True).det().as_expr()
-    except MemoryError:
-        raise
-    except Exception as exc:
-        record_issue(f"determinant exact-domain route unavailable after {type(exc).__name__}; used SymPy determinant fallback")
-        det_expr = simplified.det()
+    if any(quadratic_radical_nodes(entry) for entry in simplified):
+        det_expr = simplified.det(method="bareiss")
+    else:
+        try:
+            det_expr = exact_domain_matrix(simplified, already_reduced=True).det().as_expr()
+        except MemoryError:
+            raise
+        except Exception as exc:
+            record_issue(f"determinant exact-domain route unavailable after {type(exc).__name__}; used SymPy determinant fallback")
+            det_expr = simplified.det()
     return reduced_expr(det_expr)
 
 
@@ -1055,18 +1140,25 @@ def all_minors(matrix: sp.MatrixBase, size: int) -> tuple[sp.Expr, ...]:
 def build_nullspace_from_pivot(mat: sp.Matrix, rank: int, selected_rows: tuple[int, ...],
                                selected_cols: tuple[int, ...]) -> list[sp.ImmutableMatrix]:
     selected_minor = mat.extract(selected_rows, selected_cols)
+    pivot_determinant = exact_determinant(selected_minor)
+    if algebraic_zero_test(pivot_determinant) is not False:
+        raise ValueError("candidate pivot determinant was not proven nonzero")
     free_cols = [col for col in range(mat.cols) if col not in selected_cols]
     basis = []
     for free_col in free_cols:
         rhs = -sp.ImmutableMatrix([mat[row, free_col] for row in selected_rows])
-        try:
-            pivot_values = selected_minor.inv() * rhs
-        except Exception as exc:
-            record_issue(f"generic nullspace pivot inverse unavailable after {type(exc).__name__}; used gauss_jordan_solve")
-            pivot_values = selected_minor.gauss_jordan_solve(rhs)[0]
+        pivot_values = []
+        for pivot_col in range(rank):
+            replaced = sp.Matrix(selected_minor)
+            replaced[:, pivot_col] = rhs
+            pivot_values.append(reduced_expr(exact_determinant(replaced) / pivot_determinant))
+        pivot_solution = sp.ImmutableMatrix(pivot_values)
+        pivot_residual = selected_minor * pivot_solution - rhs
+        if any(algebraic_zero_test(reduced_expr(entry)) is not True for entry in pivot_residual):
+            raise ValueError("candidate pivot solve residual was not zero")
         vector_entries = [sp.Integer(0)] * mat.cols
         for idx, col in enumerate(selected_cols):
-            vector_entries[col] = reduced_expr(pivot_values[idx])
+            vector_entries[col] = pivot_solution[idx]
         vector_entries[free_col] = sp.Integer(1)
         basis.append(sp.ImmutableMatrix(mat.cols, 1, vector_entries))
     if len(basis) != mat.cols - rank:
@@ -1396,10 +1488,13 @@ def emit_q4(package: str, n: int, route: RouteSelection, roots: tuple[sp.Expr, .
         stacked = sp.ImmutableMatrix.vstack(m_r, sp.ImmutableMatrix([list(k)]))
         stacked_rank = matrix_rank(stacked)
         transverse_nullity = n - stacked_rank
-        m_dot_k = sp.simplify(m_r * k_vector)
+        m_dot_k = reduced_matrix(m_r * k_vector)
         basis = generic_nullspace_vectors(m_r, rank, root=idx)
-        dot_k = sp.Tuple(*[sp.simplify((vec.T * k_vector)[0]) for vec in basis])
-        residuals = sp.Tuple(*[sp.simplify(k_sq * sp.ImmutableMatrix(vec) - ((vec.T * k_vector)[0]) * k_vector) for vec in basis])
+        dot_k = sp.Tuple(*[reduced_expr((vec.T * k_vector)[0]) for vec in basis])
+        residuals = sp.Tuple(*[
+            reduced_matrix(k_sq * sp.ImmutableMatrix(vec) - ((vec.T * k_vector)[0]) * k_vector)
+            for vec in basis
+        ])
         basis_payload = sp.Tuple(*[sp.ImmutableMatrix(vec) for vec in basis])
         emit_quantity(package, n, "N1", m_r, root=idx)
         emit_quantity(package, n, "N2_RANK", sp.Integer(rank), root=idx)
@@ -1915,11 +2010,11 @@ def emit_scoped_q4(package: str, n: int, matrix: sp.ImmutableMatrix,
         stacked = sp.ImmutableMatrix.vstack(m_r, sp.ImmutableMatrix([list(restricted_k)]))
         stacked_rank = matrix_rank(stacked)
         transverse_nullity = n - stacked_rank
-        m_dot_k = sp.simplify(m_r * k_vector)
+        m_dot_k = reduced_matrix(m_r * k_vector)
         basis = generic_nullspace_vectors(m_r, rank, root=idx)
-        dot_k = sp.Tuple(*[sp.simplify((vec.T * k_vector)[0]) for vec in basis])
+        dot_k = sp.Tuple(*[reduced_expr((vec.T * k_vector)[0]) for vec in basis])
         residuals = sp.Tuple(*[
-            sp.simplify(k_sq * sp.ImmutableMatrix(vec) - ((vec.T * k_vector)[0]) * k_vector)
+            reduced_matrix(k_sq * sp.ImmutableMatrix(vec) - ((vec.T * k_vector)[0]) * k_vector)
             for vec in basis
         ])
         basis_payload = sp.Tuple(*[sp.ImmutableMatrix(vec) for vec in basis])

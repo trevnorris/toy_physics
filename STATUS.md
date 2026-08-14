@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐ WHERE WE ARE — 2026-08-13. ⭐⭐⭐ THE S11 LEDGER IS PUBLISHED `2f643ec3` — 1663 ROWS FROM A REAL MAIN-COMPLETE RUN. ⛔ NEXT: THE WL SIBLING ENGINE (BLIND).
+## ⭐⭐ WHERE WE ARE — 2026-08-13. ⭐⭐⭐ BOTH S11 ENGINES EXIST AND ARE LEG-CLEAN: the ledger is published `2f643ec3` (1663 rows), and the BLIND WL SIBLING is built + fixed `a4ee881c`. ⛔ NEXT: the two full sweeps (orchestrator-run, user timing), then the FROZEN COMPARATOR CONTRACT before any cross-engine look.
 
 ⭐⭐ **Full state: `research/pde_ledger_v3/REBUILD_HANDOFF.md`, top block.**
 
@@ -95,11 +95,24 @@ MAIN `COMPLETED_AT_PUBLISH_TIME`, every control cell `NOT_YET_ATTEMPTED_AT_PUBLI
 (3.2 MB, MAIN complete) and stays UNCOMMITTED until a sweep runs to completion** — only the run record
 and §10 depend on that, ⛔ never the ledger.
 
-⭐ **NEXT: the WL sibling engine** — written BLIND, imports nothing, re-derives from
-`S11_SHARED_PHYSICS.md` alone; ⛔ **it must receive NO S11 result** or the cross-engine disagreement is
-worth nothing. ⚠ Also pending, user's call on timing: rerunning the full sweep to completion (hours;
-`XKIN_ANISO` D3–D5 scale 4–5×/dim, streaming) for the post-sweep record + §10 + a committable `.out`.
-⚠ Logs `~/.s11_build/`; Q8b probes `~/.s11_build/q8b/` + `/tmp/s11q8b*_leg_*/`;
+⭐⭐ **THE WL SIBLING ENGINE IS BUILT (BLIND) AND LEG-CLEAN** — directive `b8395704` (2 legs, 8 defects
+folded pre-build), build `46ba77c2` (1530 lines from the spec alone; Codex; empty-dir byte-identity,
+strace-verified zero run-time reads, form ablation 352/430 moved with all 78 non-movers legitimately
+invariant, both Q2 routes independent under one-sided corruption, both legs' independent oracles match
+spectrum + census), fix round 1 `45042d55`+`a4ee881c` (4 items: undefined `RationalQ` → §Q6 inert on
+radicals; Q8b status typed by structure; silent point-drop; `SameQ[Reduce,False]` forging PROVED_FALSE
+from a solver non-answer — the last PROMOTED from a below-filter footnote after a leg measured the
+"unreachable" premise false, 14/79 radical `_INCONSISTENT` families). 2 legs clean; regression diff
+430/430 tags, 25 moved, every one item-2 scope. ⚠ Below-filter, step record: `realStatus` demotes
+proved-nonempty-without-witness to UNDECIDED (under-claim); strata emit last in a cell.
+⛔ `mathematica/out/*.out` is still the OLD engine's — replaced only by the orchestrator's WL sweep.
+
+⚠ **Pending, user's call on timing — the two full sweeps (both orchestrator-run, hours each):**
+the SymPy rerun (post-sweep record + §10 + a committable `.out`; `XKIN_ANISO` D3–D5 scale 4–5×/dim,
+streaming) and the first WL sweep (same shape; ⚠ WL `XKIN_ANISO`/`XFORM_EXTRA` cells hit 6 GB RSS at
+D2 in ~4–5 min under the build's kill criteria — expect kills or a bigger budget decision at D≥3).
+⭐ THEN the frozen comparator contract (`T7`) — written before it sees either output.
+⚠ Logs `~/.s11_build/` (WL under `wl/`, evidence `wl/evidence_r1/`); Q8b probes `~/.s11_build/q8b/`;
 the reproducer is `~/.s11_build/repro_d5.py` (~353 s) — ⛔ never run the full loop to test a fix.
 
 ⚠ **HYGIENE, ⛔ NOT A CONTROL:** `/tmp/s11*_leg_*/`, `/tmp/f9*_leg_*/`, `/tmp/s11_fold_leg/` hold review-leg

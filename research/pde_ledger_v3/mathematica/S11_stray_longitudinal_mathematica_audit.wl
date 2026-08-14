@@ -94,6 +94,19 @@ truthStatus[testObject_] := Which[
   True, tokenUndecided
 ];
 
+reductionAnswerQ[result_] :=
+  FreeQ[Unevaluated[result],
+    _Reduce | Inactive[Reduce][___] | _Failure | HoldPattern[$Aborted]] &&
+  MatchQ[Unevaluated[result],
+    True | False | _Equal | _Unequal | _Less | _LessEqual | _Greater |
+      _GreaterEqual | _Element | _And | _Or | _Not];
+
+inconsistencyTestObject[reduction_] := Which[
+  SameQ[reduction, False], True,
+  reductionAnswerQ[reduction], False,
+  True, reduction
+];
+
 admissibilityStatus[testObject_] := Which[
   TrueQ[testObject], tokenAdmissible,
   SameQ[testObject, False], tokenExcluded,
@@ -199,7 +212,7 @@ emitLocus[package_String, dimension_Integer, baseQuantity_String,
   inconsistentOperands = {"EQUATIONS" -> equations,
     "SOLVE_VARIABLES" -> variables,
     "UNRESTRICTED_REDUCTION" -> unrestrictedReduction};
-  inconsistentTest = SameQ[unrestrictedReduction, False];
+  inconsistentTest = inconsistencyTestObject[unrestrictedReduction];
   emitCell[package, dimension, baseQuantity <> "_INCONSISTENT", {
     "STATUS_TOKEN" -> truthStatus[inconsistentTest],
     "TEST_OBJECT" -> inconsistentTest,
@@ -217,7 +230,16 @@ emitLocus[package_String, dimension_Integer, baseQuantity_String,
         exactProjectedInstance[
           And[assumptions, And @@ branchRelations[branch]], variables],
         tokenNotApplicable];
-      If[SameQ[branchStatus, tokenAdmissible] && ListQ[point],
+      If[SameQ[branchStatus, tokenAdmissible],
+        If[! ListQ[point],
+          Throw[Failure["AdmittedBranchPointExtractionFailed", <|
+            "Package" -> package,
+            "Dimension" -> dimension,
+            "LocusQuantity" -> baseQuantity,
+            "BranchIndex" -> branchIndex,
+            "Branch" -> branch,
+            "SolveVariables" -> variables,
+            "ReturnedObject" -> point|>], operationalFailure]];
         AppendTo[admittedBranches, <|
           "Branch" -> branch,
           "Rules" -> plainBranchRules[branch],
@@ -638,13 +660,116 @@ changeLocusSuffixes = {
   "REAL_ADMISSIBLE", "CANONICAL_LOCUS", "REAL_STATUS", "REAL_WITNESS",
   "REAL_STATUS_OPERANDS"};
 
+componentCountStatus[attemptOutcome_] := Which[
+  TrueQ[attemptOutcome], tokenConstant,
+  SameQ[attemptOutcome, False], tokenVaries,
+  True, tokenUndecided
+];
+
+countDecisionAttempt[componentObject_, countPredicate_, changeEquations_List,
+    freeParameters_List, assumptions_] := Module[
+  {universalVariables, testObject, attemptOutcome},
+  universalVariables = DeleteDuplicates[Join[freeParameters,
+    orderedGlobalSymbols[And[assumptions, countPredicate]]]];
+  testObject = If[universalVariables === {},
+    Implies[assumptions, countPredicate],
+    With[{variables = universalVariables,
+      predicate = Implies[assumptions, countPredicate]},
+      ForAll[variables, predicate]]];
+  attemptOutcome = Quiet[Resolve[testObject, Reals]];
+  <|
+    "COMPONENT_OBJECT" -> componentObject,
+    "TEST_OBJECT" -> testObject,
+    "ATTEMPT_OUTCOME" -> attemptOutcome,
+    "CHANGE_EQUATIONS" -> changeEquations,
+    "ASSUMPTIONS" -> assumptions|>
+];
+
+unavailableCountDecision[componentObject_, returnedObject_] := <|
+  "COMPONENT_OBJECT" -> componentObject,
+  "TEST_OBJECT" -> returnedObject,
+  "ATTEMPT_OUTCOME" -> returnedObject,
+  "CHANGE_EQUATIONS" -> {},
+  "ASSUMPTIONS" -> True|>;
+
+polynomialDegreeDecision[polynomial_, variable_, degree_, freeParameters_List,
+    assumptions_, componentObject_] := Module[{leadingCoefficient},
+  If[! IntegerQ[degree] || degree < 0,
+    Return[unavailableCountDecision[componentObject,
+      Failure["PolynomialDegreeDecisionUnavailable", <|
+        "Polynomial" -> polynomial,
+        "Variable" -> variable,
+        "ObtainedDegree" -> degree|>]]]];
+  leadingCoefficient = Coefficient[polynomial, variable, degree];
+  countDecisionAttempt[componentObject, leadingCoefficient != 0,
+    {leadingCoefficient == 0}, freeParameters, assumptions]
+];
+
+distinctRootDecision[polynomial_, variable_, degree_, roots_List,
+    freeParameters_List, assumptions_] := Module[
+  {leadingCoefficient, polynomialDerivative, polynomialGCD, squareFreePart,
+   squareFreeDegree, squareFreeLeadingCoefficient, squareFreeDiscriminant,
+   nonvanishingFactors, changePolynomial, countPredicate},
+  If[! IntegerQ[degree] || degree < 0,
+    Return[unavailableCountDecision[
+      <|"POLYNOMIAL" -> polynomial, "ROOTS" -> roots|>,
+      Failure["DistinctRootDecisionUnavailable", <|
+        "Polynomial" -> polynomial,
+        "Variable" -> variable,
+        "ObtainedDegree" -> degree,
+        "ObtainedRoots" -> roots|>]]]];
+  leadingCoefficient = Coefficient[polynomial, variable, degree];
+  polynomialDerivative = D[polynomial, variable];
+  polynomialGCD = PolynomialGCD[polynomial, polynomialDerivative];
+  squareFreePart = Cancel[polynomial/polynomialGCD];
+  squareFreeDegree = Exponent[squareFreePart, variable];
+  If[! IntegerQ[squareFreeDegree] || squareFreeDegree =!= Length[roots],
+    Return[unavailableCountDecision[
+      <|"POLYNOMIAL" -> polynomial, "ROOTS" -> roots|>,
+      Failure["SquareFreeDegreeDecisionUnavailable", <|
+        "SQUARE_FREE_PART" -> squareFreePart,
+        "SQUARE_FREE_DEGREE" -> squareFreeDegree,
+        "OBTAINED_ROOT_COUNT" -> Length[roots]|>]]]];
+  squareFreeLeadingCoefficient = Coefficient[
+    squareFreePart, variable, squareFreeDegree];
+  squareFreeDiscriminant = If[squareFreeDegree <= 1, 1,
+    Discriminant[squareFreePart, variable]];
+  nonvanishingFactors = {leadingCoefficient, squareFreeLeadingCoefficient,
+    squareFreeDiscriminant};
+  countPredicate = And @@ (# != 0 & /@ nonvanishingFactors);
+  changePolynomial = Numerator[Together[Times @@ nonvanishingFactors]];
+  countDecisionAttempt[
+    <|"POLYNOMIAL" -> polynomial, "ROOTS" -> roots|>, countPredicate,
+    {changePolynomial == 0}, freeParameters, assumptions]
+];
+
+matrixRankDecision[matrix_List, rank_, freeParameters_List, assumptions_] :=
+  Module[{minors, countPredicate, changeEquations},
+    If[! IntegerQ[rank] || rank < 0,
+      Return[unavailableCountDecision[matrix,
+        Failure["MatrixRankDecisionUnavailable", <|
+          "Matrix" -> matrix, "ObtainedRank" -> rank|>]]]];
+    If[rank == 0,
+      countPredicate = And @@ (# == 0 & /@ Flatten[matrix]);
+      changeEquations = {1 == 0},
+      minors = allMaximalMinors[matrix, rank];
+      countPredicate = Or @@ (# != 0 & /@ minors);
+      changeEquations = (# == 0) & /@ minors
+    ];
+    countDecisionAttempt[matrix, countPredicate, changeEquations,
+      freeParameters, assumptions]
+  ];
+
 emitComponentCount[package_, dimension_, baseQuantity_String, value_,
-    freeParameters_List] := Module[{status, certificate},
-  status = If[freeParameters === {}, tokenConstant, tokenUndecided];
+    freeParameters_List, decision_Association] := Module[{status, certificate},
+  status = componentCountStatus[decision["ATTEMPT_OUTCOME"]];
   certificate = If[SameQ[status, tokenConstant], {
       "FREE_PARAMETERS" -> freeParameters,
-      "TEST_OBJECT" -> True,
-      "OPERANDS" -> {"VALUE" -> value, "FREE_PARAMETERS" -> freeParameters}
+      "TEST_OBJECT" -> decision["TEST_OBJECT"],
+      "OPERANDS" -> {
+        "VALUE" -> value,
+        "FREE_PARAMETERS" -> freeParameters,
+        "ATTEMPT_OUTCOME" -> decision["ATTEMPT_OUTCOME"]}
     }, tokenNotApplicable];
   emitCell[package, dimension, baseQuantity, {
     "STATUS_TOKEN" -> status,
@@ -652,16 +777,21 @@ emitComponentCount[package_, dimension_, baseQuantity_String, value_,
   }];
   emitCell[package, dimension, baseQuantity <> "_STATUS", status];
   emitCell[package, dimension, baseQuantity <> "_CONSTANCY_CERTIFICATE", certificate];
-  Scan[Function[suffix,
-    emitCell[package, dimension,
-      baseQuantity <> "_CHANGE_LOCUS_" <> suffix, tokenNotApplicable]],
-    changeLocusSuffixes];
+  If[SameQ[status, tokenVaries],
+    emitLocus[package, dimension, baseQuantity <> "_CHANGE_LOCUS",
+      decision["CHANGE_EQUATIONS"], freeParameters, decision["ASSUMPTIONS"]],
+    Scan[Function[suffix,
+      emitCell[package, dimension,
+        baseQuantity <> "_CHANGE_LOCUS_" <> suffix, tokenNotApplicable]],
+      changeLocusSuffixes]
+  ];
   status
 ];
 
 emitCountObject[package_, dimension_, baseQuantity_String, value_,
-    componentCounts_, freeParameters_List] := If[TrueQ[componentCounts],
-  emitComponentCount[package, dimension, baseQuantity, value, freeParameters],
+    componentCounts_, freeParameters_List, decision_] := If[TrueQ[componentCounts],
+  emitComponentCount[package, dimension, baseQuantity, value, freeParameters,
+    decision],
   emitCell[package, dimension, baseQuantity, value];
   tokenNotApplicable
 ];
@@ -677,7 +807,8 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
     package_String, dimension_Integer, scope_String, pointEvidence_,
     includeRankLoci_, componentCounts_, freeParameters_List,
     activeKVariables_List, activeCoefficientVariables_List] := Module[
-  {determinant, multiplicityPairs, solverSolution, degree, rootCountAll,
+  {determinant, determinantPolynomial, multiplicityPairs, solverSolution,
+   degree, rootCountAll,
    roots, rootCountDistinct, rootCountStatuses = {}, pairIndices,
    coincidenceEquations, coincidenceK, coincidenceCoefficient,
    coincidenceCandidates = {}, rankCandidates = {}, stackedCandidates = {},
@@ -686,8 +817,11 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
    basisCount, mDotK, rankMinors, stackedMinors, rankEquations, stackedEquations,
    rankKLocus, rankCoefficientLocus, rankJointLocus, stackedKLocus,
    stackedCoefficientLocus, stackedJointLocus, rootCountBase,
-   countStatus, q4Derived = {}, rootPrefix},
+   countStatus, degreeDecision, rootCountAllDecision, distinctDecision,
+   rankDecision, stackedDecision, basisCountDecision, q4Derived = {},
+   rootPrefix},
   determinant = Factor[Det[matrix]];
+  determinantPolynomial = Numerator[Together[determinant]];
   emitCell[package, dimension,
     unscopedQuantity[scope, pointEvidence, "DET_M"], determinant];
   multiplicityPairs = rootMultiplicityPairs[determinant, assumptions];
@@ -699,15 +833,31 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
     unscopedQuantity[scope, pointEvidence, "ROOT_SOLUTION_SET"],
     solverSolution];
   rootCountAll = Total[Last /@ multiplicityPairs];
+  degree = Exponent[determinantPolynomial, omegaSquared];
+  degreeDecision = If[TrueQ[componentCounts],
+    polynomialDegreeDecision[determinantPolynomial, omegaSquared, degree,
+      freeParameters, assumptions,
+      <|"DETERMINANT" -> determinant,
+        "MULTIPLICITY_PAIRS" -> multiplicityPairs|>],
+    tokenNotApplicable];
+  rootCountAllDecision = If[TrueQ[componentCounts] &&
+      ! SameQ[rootCountAll, degree],
+    unavailableCountDecision[multiplicityPairs,
+      Failure["RootMultiplicityCountDecisionUnavailable", <|
+        "MULTIPLICITY_PAIRS" -> multiplicityPairs,
+        "OBTAINED_COUNT" -> rootCountAll,
+        "POLYNOMIAL_DEGREE" -> degree|>]],
+    degreeDecision];
   rootCountBase = unscopedQuantity[scope, pointEvidence, "ROOT_COUNT_ALL"];
   countStatus = emitCountObject[package, dimension, rootCountBase, rootCountAll,
-    componentCounts, freeParameters];
+    componentCounts, freeParameters, rootCountAllDecision];
   If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
-  degree = Exponent[Numerator[Together[determinant]], omegaSquared];
   countStatus = emitCountObject[package, dimension,
     unscopedQuantity[scope, pointEvidence, "DET_M_DEGREE"], degree,
-    componentCounts, freeParameters];
+    componentCounts, freeParameters, degreeDecision];
   If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+  rootCountAllDecision = tokenNotApplicable;
+  degreeDecision = tokenNotApplicable;
   emitCell[package, dimension,
     unscopedQuantity[scope, pointEvidence, "ROOT_DEGREE_RESIDUAL"],
     degree - rootCountAll];
@@ -715,10 +865,14 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
   emitCell[package, dimension,
     unscopedQuantity[scope, pointEvidence, "ROOT_DISTINCT"], roots];
   rootCountDistinct = Length[roots];
+  distinctDecision = If[TrueQ[componentCounts],
+    distinctRootDecision[determinantPolynomial, omegaSquared, degree, roots,
+      freeParameters, assumptions], tokenNotApplicable];
   countStatus = emitCountObject[package, dimension,
     unscopedQuantity[scope, pointEvidence, "ROOT_COUNT_DISTINCT"],
-    rootCountDistinct, componentCounts, freeParameters];
+    rootCountDistinct, componentCounts, freeParameters, distinctDecision];
   If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+  distinctDecision = tokenNotApplicable;
   emitCell[package, dimension,
     unscopedQuantity[scope, pointEvidence, "ROOT_ORDERING"], roots];
 
@@ -756,26 +910,33 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
     emitCell[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N1"], matrixAtRoot];
     rank = assumedRank[matrixAtRoot, assumptions];
+    rankDecision = If[TrueQ[componentCounts],
+      matrixRankDecision[matrixAtRoot, rank, freeParameters, assumptions],
+      tokenNotApplicable];
     countStatus = emitCountObject[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N2_RANK"], rank,
-      componentCounts, freeParameters];
+      componentCounts, freeParameters, rankDecision];
     If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
     nullity = dimension - rank;
     countStatus = emitCountObject[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N2_NULLITY"], nullity,
-      componentCounts, freeParameters];
+      componentCounts, freeParameters, rankDecision];
     If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
     stacked = Join[matrixAtRoot, {wavevector}];
     stackedRank = assumedRank[stacked, assumptions];
+    stackedDecision = If[TrueQ[componentCounts],
+      matrixRankDecision[stacked, stackedRank, freeParameters, assumptions],
+      tokenNotApplicable];
     countStatus = emitCountObject[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N3_STACKED_RANK"],
-      stackedRank, componentCounts, freeParameters];
+      stackedRank, componentCounts, freeParameters, stackedDecision];
     If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
     transverseNullity = dimension - stackedRank;
     countStatus = emitCountObject[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N3_TRANSVERSE_NULLITY"],
-      transverseNullity, componentCounts, freeParameters];
+      transverseNullity, componentCounts, freeParameters, stackedDecision];
     If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+    stackedDecision = tokenNotApplicable;
     emitCell[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N4_NULLITY_DIFFERENCE"],
       nullity - transverseNullity];
@@ -797,10 +958,20 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
       rootQuantity[scope, pointEvidence, rootIndex, "N6_RESIDUAL"],
       basisResiduals];
     basisCount = Length[basis];
+    basisCountDecision = If[TrueQ[componentCounts] &&
+        ! SameQ[basisCount, nullity],
+      unavailableCountDecision[basis,
+        Failure["NullSpaceBasisCountDecisionUnavailable", <|
+          "BASIS" -> basis,
+          "OBTAINED_COUNT" -> basisCount,
+          "RANK_DERIVED_NULLITY" -> nullity|>]],
+      rankDecision];
     countStatus = emitCountObject[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N7_BASIS_COUNT"],
-      basisCount, componentCounts, freeParameters];
+      basisCount, componentCounts, freeParameters, basisCountDecision];
     If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+    basisCountDecision = tokenNotApplicable;
+    rankDecision = tokenNotApplicable;
     emitCell[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N7_RESIDUAL"],
       basisCount - nullity];
@@ -883,6 +1054,11 @@ dimensionVectorsEqualQ[left_, right_, assumptions_] :=
   ListQ[left] && ListQ[right] && Length[left] == Length[right] &&
     TrueQ[engineSimplify[And @@ Thread[left == right], assumptions]];
 
+rationalExponentQ[exponent_, assumptions_] := TrueQ[
+  IntegerQ[exponent] || MatchQ[Unevaluated[exponent], _Rational] ||
+    engineSimplify[Element[exponent, Rationals], assumptions]
+];
+
 dimensionOfScalar[expression_, atomDimensions_, assumptions_] := Module[
   {pieces, dimensions, uniqueDimensions, baseDimension},
   Which[
@@ -904,7 +1080,7 @@ dimensionOfScalar[expression_, atomDimensions_, assumptions_] := Module[
       If[And @@ (ListQ /@ dimensions), Total[dimensions],
         DimensionalProduct[dimensions]],
     Head[expression] === Power &&
-        (IntegerQ[expression[[2]]] || RationalQ[expression[[2]]]),
+        rationalExponentQ[expression[[2]], assumptions],
       baseDimension = dimensionOfScalar[expression[[1]], atomDimensions, assumptions];
       If[ListQ[baseDimension], expression[[2]] baseDimension,
         DimensionalPower[baseDimension, expression[[2]]]],
@@ -1150,7 +1326,6 @@ emitStrata[candidates_List, matrix_, genericRootJacobian_, coefficients_List,
         And[assumptions, And @@ component["Equations"]],
         component["Variables"]]]],
     mergeCandidates[candidates]];
-  strata = Select[strata, ListQ[#["Point"]] &];
   ordering = Lookup[strata, "Branch", {}];
   emitCell[package, dimension, "STRATUM_ORDERING", ordering];
   Do[
@@ -1173,6 +1348,15 @@ emitStrata[candidates_List, matrix_, genericRootJacobian_, coefficients_List,
     emitCell[package, dimension, scope <> "DEFINING_EQUATIONS",
       stratum["Equations"]];
     emitCell[package, dimension, scope <> "FREE_PARAMETERS", freeParameters];
+    If[! ListQ[point],
+      Throw[Failure["StratumPointExtractionFailed", <|
+        "Package" -> package,
+        "Dimension" -> dimension,
+        "StratumIndex" -> stratumIndex,
+        "Branch" -> stratum["Branch"],
+        "DefiningEquations" -> stratum["Equations"],
+        "SolveVariables" -> stratum["Variables"],
+        "ReturnedObject" -> point|>], operationalFailure]];
     emitCell[package, dimension, scope <> "POINT", point];
 
     activeK = Select[wavevector, MemberQ[freeParameters, #] &];
@@ -1438,10 +1622,6 @@ runCell[package_String, dimension_Integer, invariantData_] := Module[
   emitCell[package, dimension, "ROOT_COEFFICIENT_JACOBIAN",
     genericRootJacobian];
 
-  strata = emitStrata[spectrum["Candidates"], downstreamMatrix,
-    genericRootJacobian, coefficientOrdering, wavevector, assumptions,
-    package, dimension];
-
   q7Residual = If[dimension == 3,
     independentGradient = Partition[invariantData["GVariables"], dimension];
     emitQ7[stiffnessRecordList, coordinateGradient, independentGradient,
@@ -1473,6 +1653,10 @@ runCell[package_String, dimension_Integer, invariantData_] := Module[
       {rootIndex, Length[kwObjects]}]
   ];
   emitCell[package, dimension, "DIM_HOMOGENEITY_DERIVED", derivedHomogeneity];
+
+  strata = emitStrata[spectrum["Candidates"], downstreamMatrix,
+    genericRootJacobian, coefficientOrdering, wavevector, assumptions,
+    package, dimension];
 ];
 
 packageOrder = {
@@ -1523,7 +1707,12 @@ operationalResult = Catch[
   operationalFailure
 ];
 
-If[Head[operationalResult] === Failure, Quit[70]];
+If[Head[operationalResult] === Failure,
+  WriteString[First[$Output], "OPERATIONAL_FAILURE: " <>
+    ToString[operationalResult, InputForm, PageWidth -> Infinity] <> "\n"];
+  Flush[First[$Output]];
+  Quit[70]
+];
 emit[runEmission["RUN_PAIRS"], runPairs];
 emit[runEmission["SKIPPED_PAIRS"], Complement[declaredPairs, runPairs]];
 localInventoryName = standardEmissionName[localInventoryEmission[]];

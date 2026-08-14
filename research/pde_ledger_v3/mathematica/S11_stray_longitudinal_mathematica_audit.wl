@@ -1,36 +1,74 @@
 $HistoryLength = 0;
-
 ClearAll["Global`*"];
 $HistoryLength = 0;
 $Messages = {OutputStream["stderr", 2]};
 
-sScale = s;
-bulkAmplitude = A;
-ansatzProfile = Cos;
-bulkSpeedPremise = cs0 > 0;
+tokenProvedTrue = "PROVED_TRUE";
+tokenProvedFalse = "PROVED_FALSE";
+tokenUndecided = "UNDECIDED";
+tokenAdmissible = "ADMISSIBLE";
+tokenExcluded = "EXCLUDED";
+tokenPositive = "POSITIVE";
+tokenNegative = "NEGATIVE";
+tokenZero = "ZERO";
+tokenNotApplicable = "NOT_APPLICABLE";
+tokenUndefinedRatio = "UNDEFINED_RATIO";
+tokenNotPurePower = "NOT_A_PURE_POWER";
+tokenOverDetermined = "OVER_DETERMINED";
+tokenExactlyDetermined = "EXACTLY_DETERMINED";
+tokenUnderDetermined = "UNDER_DETERMINED";
+tokenConstant = "CONSTANT";
+tokenVaries = "VARIES";
+tokenCompleteCoverage = "COMPLETE_COVERAGE";
+tokenIncompleteCoverage = "INCOMPLETE_COVERAGE";
+tokenRankDrop = "RANK_DROP";
+tokenStackedDrop = "STACKED_DROP";
+tokenRootCoincidence = "ROOT_COINCIDENCE";
+
+(* Internal emission keys are mapped to the shared §8 names only here. *)
+cellEmission[package_String, dimension_Integer, quantity_String] :=
+  HoldComplete[CellObject, package, dimension, quantity];
+localCellEmission[package_String, dimension_Integer, quantity_String] :=
+  HoldComplete[LocalCellObject, package, dimension, quantity];
+runEmission[quantity_String] := HoldComplete[RunObject, quantity];
+localInventoryEmission[] := HoldComplete[LocalInventoryObject];
+
+standardEmissionName[HoldComplete[CellObject, package_String, dimension_Integer,
+    quantity_String]] := "WL_S11_" <> package <> "_D" <> ToString[dimension] <>
+  "_" <> quantity;
+standardEmissionName[HoldComplete[LocalCellObject, package_String,
+    dimension_Integer, quantity_String]] := "WL_S11_LOCAL_" <> package <> "_D" <>
+  ToString[dimension] <> "_" <> quantity;
+standardEmissionName[HoldComplete[RunObject, quantity_String]] :=
+  "WL_S11_" <> quantity;
+standardEmissionName[HoldComplete[LocalInventoryObject]] :=
+  "WL_S11_LOCAL_TAG_NAMES";
 
 emittedNames = <||>;
 localNames = {};
-localTagNamesTag = "WL_S11_LOCAL_TAG_NAMES";
-engineMethods = <|
-  "Simplifier" -> FullSimplify,
-  "CoefficientSortKey" -> SymbolName
-|>;
-
-emit[tag_String, payload_] := Module[{rendered},
-  If[KeyExistsQ[emittedNames, tag], Quit[2]];
-  AssociateTo[emittedNames, tag -> True];
-  If[StringStartsQ[tag, "WL_S11_LOCAL_"], AppendTo[localNames, tag]];
-  rendered = ToString[payload, InputForm];
-  WriteString[$Output[[1]], tag <> ": " <> rendered <> "\n"];
-  Flush[$Output[[1]]];
+emit[internalTag_, payload_] := Module[{emittedName, rendered, stream},
+  emittedName = standardEmissionName[internalTag];
+  If[! StringQ[emittedName], Quit[90]];
+  If[KeyExistsQ[emittedNames, emittedName], Quit[91]];
+  AssociateTo[emittedNames, emittedName -> True];
+  If[StringStartsQ[emittedName, "WL_S11_LOCAL_"],
+    AppendTo[localNames, emittedName]];
+  rendered = ToString[payload, InputForm, PageWidth -> Infinity];
+  stream = First[$Output];
+  WriteString[stream, emittedName <> ": " <> rendered <> "\n"];
+  Flush[stream];
 ];
 
-simp[expr_, assumptions_] :=
-  engineMethods["Simplifier"][expr, Assumptions -> assumptions];
-simpUnrestricted[expr_] := engineMethods["Simplifier"][expr];
-heldMethod[method_] := HoldForm[method];
-zeroTest[assumptions_] := Function[z, TrueQ[simp[z == 0, assumptions]]];
+emitCell[package_, dimension_, quantity_, payload_] :=
+  emit[cellEmission[package, dimension, quantity], payload];
+emitLocalCell[package_, dimension_, quantity_, payload_] :=
+  emit[localCellEmission[package, dimension, quantity], payload];
+
+engineSimplify[expression_, assumptions_] :=
+  FullSimplify[expression, Assumptions -> assumptions];
+unrestrictedSimplify[expression_] := FullSimplify[expression];
+zeroTest[assumptions_] := Function[value,
+  TrueQ[engineSimplify[value == 0, assumptions]]];
 assumedRank[matrix_, assumptions_] :=
   MatrixRank[matrix, ZeroTest -> zeroTest[assumptions]];
 assumedNullSpace[matrix_, assumptions_] :=
@@ -38,25 +76,496 @@ assumedNullSpace[matrix_, assumptions_] :=
 
 relationResidual[relation_] := Which[
   TrueQ[relation], 0,
-  TrueQ[relation === False], 1,
+  SameQ[relation, False], 1,
   Head[relation] === Equal, Subtract @@ List @@ relation,
   True, relation
 ];
 
-realConditionFromRelations[relations_List] := Module[{residuals},
-  residuals = relationResidual /@ relations;
-  And @@ Flatten[({ComplexExpand[Re[#]] == 0, ComplexExpand[Im[#]] == 0} &) /@ residuals]
+globalSymbolsIn[expression_] := DeleteDuplicates[Cases[
+  expression, symbol_Symbol /; Context[symbol] === "Global`",
+  {0, Infinity}]];
+
+orderedGlobalSymbols[expression_] :=
+  SortBy[globalSymbolsIn[expression], SymbolName];
+
+truthStatus[testObject_] := Which[
+  TrueQ[testObject], tokenProvedTrue,
+  SameQ[testObject, False], tokenProvedFalse,
+  True, tokenUndecided
 ];
 
-multiplicativeFactors[expr_] := Module[{factored = Factor[expr]},
+admissibilityStatus[testObject_] := Which[
+  TrueQ[testObject], tokenAdmissible,
+  SameQ[testObject, False], tokenExcluded,
+  True, tokenUndecided
+];
+
+fourWaySign[operand_, assumptions_] := Module[{positiveTest, negativeTest, zeroTestObject},
+  positiveTest = engineSimplify[operand > 0, assumptions];
+  negativeTest = engineSimplify[operand < 0, assumptions];
+  zeroTestObject = engineSimplify[operand == 0, assumptions];
+  Which[
+    TrueQ[positiveTest], tokenPositive,
+    TrueQ[negativeTest], tokenNegative,
+    TrueQ[zeroTestObject], tokenZero,
+    True, tokenUndecided
+  ]
+];
+
+signPayload[operand_, assumptions_] := {
+  "SIGN_TOKEN" -> fourWaySign[operand, assumptions],
+  "OPERAND" -> operand
+};
+
+realExistenceTest[condition_] := Module[{variables},
+  variables = orderedGlobalSymbols[condition];
+  Quiet[If[variables === {}, unrestrictedSimplify[condition],
+    With[{quantifiedVariables = variables, predicate = condition},
+      Resolve[Exists[quantifiedVariables, predicate], Reals]]]]
+];
+
+exactProjectedInstance[condition_, projectedVariables_List] := Module[
+  {allVariables, instances, instance, values},
+  allVariables = DeleteDuplicates[Join[orderedGlobalSymbols[condition], projectedVariables]];
+  instances = Quiet[If[allVariables === {},
+    If[TrueQ[unrestrictedSimplify[condition]], {{}}, {}],
+    With[{instanceVariables = allVariables, predicate = condition},
+      FindInstance[predicate, instanceVariables, Reals, 1]]]];
+  If[! ListQ[instances] || instances === {}, Return[tokenNotApplicable]];
+  instance = First[instances];
+  values = Table[variable /. instance, {variable, projectedVariables}];
+  If[AnyTrue[MapThread[SameQ[#1, #2] &, {values, projectedVariables}], TrueQ],
+    tokenNotApplicable,
+    MapThread[(#1 -> #2) &, {projectedVariables, values}]
+  ]
+];
+
+plainBranchRules[branch_] := Cases[branch, _Rule, {1}] /.
+  Rule[left_, ConditionalExpression[right_, _]] :> Rule[left, right];
+
+branchConditions[branch_] := Cases[
+  branch, Rule[_, ConditionalExpression[_, condition_]] :> condition, {1}];
+
+branchDefiningEquations[branch_] :=
+  (#[[1]] == #[[2]] &) /@ plainBranchRules[branch];
+
+conditionTerms[condition_] :=
+  If[Head[condition] === And, List @@ condition, {condition}];
+
+branchRelations[branch_] := Join[
+  branchDefiningEquations[branch],
+  Flatten[conditionTerms /@ branchConditions[branch], 1]
+];
+
+polynomialLocusQ[residuals_List] := And @@ Map[
+  Function[residual,
+    PolynomialQ[residual, orderedGlobalSymbols[residual]]],
+  residuals
+];
+
+canonicalLocus[residuals_List, variables_List] := Module[{},
+  If[! polynomialLocusQ[residuals], Return[tokenNotApplicable]];
+  Quiet[GroebnerBasis[residuals, variables,
+    MonomialOrder -> Lexicographic,
+    CoefficientDomain -> RationalFunctions]]
+];
+
+emitLocus[package_String, dimension_Integer, baseQuantity_String,
+    equations_List, variables_List, assumptions_] := Module[
+  {solution, identityResiduals, identityOperands, identityTest,
+   unrestrictedReduction, inconsistentOperands, inconsistentTest,
+   realAdmissible, admittedBranches, branch, branchOperands, branchTest,
+   branchStatus, point, canonical, fullCondition, realTest, realStatus,
+   realWitness, realStatusOperands},
+  emitCell[package, dimension, baseQuantity <> "_EQUATIONS", equations];
+  solution = Quiet[Solve[And @@ equations, variables]];
+  emitCell[package, dimension, baseQuantity <> "_SOLUTION", {
+    "SOLVE_VARIABLES" -> variables,
+    "SOLUTION_SET" -> solution
+  }];
+
+  identityResiduals = relationResidual /@ equations;
+  identityOperands = {"RESIDUALS" -> identityResiduals,
+    "SOLVE_VARIABLES" -> variables};
+  identityTest = unrestrictedSimplify[
+    And @@ (# == 0 & /@ identityResiduals)];
+  emitCell[package, dimension, baseQuantity <> "_IDENTICALLY_SATISFIED", {
+    "STATUS_TOKEN" -> truthStatus[identityTest],
+    "TEST_OBJECT" -> identityTest,
+    "OPERANDS" -> identityOperands
+  }];
+
+  unrestrictedReduction = Quiet[Reduce[And @@ equations, variables, Complexes]];
+  inconsistentOperands = {"EQUATIONS" -> equations,
+    "SOLVE_VARIABLES" -> variables,
+    "UNRESTRICTED_REDUCTION" -> unrestrictedReduction};
+  inconsistentTest = SameQ[unrestrictedReduction, False];
+  emitCell[package, dimension, baseQuantity <> "_INCONSISTENT", {
+    "STATUS_TOKEN" -> truthStatus[inconsistentTest],
+    "TEST_OBJECT" -> inconsistentTest,
+    "OPERANDS" -> inconsistentOperands
+  }];
+
+  admittedBranches = {};
+  realAdmissible = If[ListQ[solution],
+    Table[
+      branch = solution[[branchIndex]];
+      branchOperands = {"BRANCH" -> branch, "PREMISES" -> assumptions};
+      branchTest = realExistenceTest[And[assumptions, And @@ branchRelations[branch]]];
+      branchStatus = admissibilityStatus[branchTest];
+      point = If[SameQ[branchStatus, tokenAdmissible],
+        exactProjectedInstance[
+          And[assumptions, And @@ branchRelations[branch]], variables],
+        tokenNotApplicable];
+      If[SameQ[branchStatus, tokenAdmissible] && ListQ[point],
+        AppendTo[admittedBranches, <|
+          "Branch" -> branch,
+          "Rules" -> plainBranchRules[branch],
+          "Equations" -> branchDefiningEquations[branch],
+          "Variables" -> variables,
+          "Point" -> point|>]];
+      {
+        "BRANCH" -> branch,
+        "STATUS_TOKEN" -> branchStatus,
+        "TEST_OBJECT" -> branchTest,
+        "OPERANDS" -> branchOperands
+      },
+      {branchIndex, Length[solution]}],
+    {{
+      "BRANCH" -> solution,
+      "STATUS_TOKEN" -> tokenUndecided,
+      "TEST_OBJECT" -> Failure["OpaqueSolverResult", <|
+        "SolverResult" -> solution|>],
+      "OPERANDS" -> {"BRANCH" -> solution, "PREMISES" -> assumptions}
+    }}
+  ];
+  emitCell[package, dimension, baseQuantity <> "_REAL_ADMISSIBLE", realAdmissible];
+
+  canonical = canonicalLocus[identityResiduals, variables];
+  emitCell[package, dimension, baseQuantity <> "_CANONICAL_LOCUS", canonical];
+
+  fullCondition = And[assumptions, And @@ equations];
+  realTest = realExistenceTest[fullCondition];
+  realStatus = Which[
+    TrueQ[realTest], "PROVED_NONEMPTY",
+    SameQ[realTest, False], "PROVED_EMPTY",
+    True, tokenUndecided
+  ];
+  realWitness = If[SameQ[realStatus, "PROVED_NONEMPTY"],
+    exactProjectedInstance[fullCondition, variables], tokenNotApplicable];
+  If[SameQ[realStatus, "PROVED_NONEMPTY"] && ! ListQ[realWitness],
+    realStatus = tokenUndecided;
+    realWitness = tokenNotApplicable];
+  emitCell[package, dimension, baseQuantity <> "_REAL_STATUS", realStatus];
+  emitCell[package, dimension, baseQuantity <> "_REAL_WITNESS", realWitness];
+  realStatusOperands = {
+    "EQUATIONS" -> equations,
+    "SOLVE_VARIABLES" -> variables,
+    "PREMISES" -> assumptions,
+    "TEST_OBJECT" -> realTest
+  };
+  emitCell[package, dimension, baseQuantity <> "_REAL_STATUS_OPERANDS",
+    realStatusOperands];
+  <|
+    "BaseQuantity" -> baseQuantity,
+    "Equations" -> equations,
+    "Variables" -> variables,
+    "Solution" -> solution,
+    "RealAdmissible" -> realAdmissible,
+    "AdmittedBranches" -> admittedBranches,
+    "RealStatus" -> realStatus,
+    "RealWitness" -> realWitness|>
+];
+
+coordinateFrame[dimension_Integer] := Module[
+  {spaceCoordinates, timeCoordinate, fieldHeads, arguments, fields, gradient},
+  spaceCoordinates = Table[Symbol["x" <> ToString[index]], {index, dimension}];
+  timeCoordinate = Symbol["t"];
+  fieldHeads = Table[Symbol["u" <> ToString[index]], {index, dimension}];
+  arguments = Join[spaceCoordinates, {timeCoordinate}];
+  fields = (#[Sequence @@ arguments] &) /@ fieldHeads;
+  gradient = Table[D[fields[[column]], spaceCoordinates[[row]]],
+    {row, dimension}, {column, dimension}];
+  <|
+    "X" -> spaceCoordinates,
+    "T" -> timeCoordinate,
+    "Heads" -> fieldHeads,
+    "Arguments" -> arguments,
+    "Fields" -> fields,
+    "Gradient" -> gradient|>
+];
+
+curlDensity[gradient_] := Module[{dimension = Length[gradient]},
+  1/2 Total[Flatten[Table[
+    (gradient[[row, column]] - gradient[[column, row]])^2,
+    {row, dimension}, {column, dimension}]]]
+];
+
+divDensity[gradient_] := Tr[gradient]^2;
+
+symtlDensity[gradient_] := Module[{dimension = Length[gradient], tracelessPart},
+  tracelessPart = (gradient + Transpose[gradient])/2 -
+    Tr[gradient] IdentityMatrix[dimension]/dimension;
+  Total[Flatten[tracelessPart^2]]
+];
+
+quadraticCoordinates[polynomial_, variables_, pairs_] := Map[
+  Function[pair,
+    If[pair[[1]] === pair[[2]],
+      Coefficient[Expand[polynomial], variables[[pair[[1]]]], 2],
+      Coefficient[
+        Coefficient[Expand[polynomial], variables[[pair[[1]]]], 1],
+        variables[[pair[[2]]]], 1]
+    ]],
+  pairs
+];
+
+polynomialFromCoordinates[row_, monomials_] :=
+  Expand[Total[MapThread[Times, {row, monomials}]]];
+
+eulerOperatorForGradientDensity[polynomial_, gradientVariables_, frame_] := Module[
+  {dimension, gradient, spaceCoordinates},
+  dimension = Length[frame["X"]];
+  gradient = frame["Gradient"];
+  spaceCoordinates = frame["X"];
+  Table[
+    Expand[Total[Table[
+      D[D[polynomial, gradientVariables[[(row - 1) dimension + column]]] /.
+        Thread[gradientVariables -> Flatten[gradient]], spaceCoordinates[[row]]],
+      {row, dimension}]]],
+    {column, dimension}]
+];
+
+buildInvariantCensus[dimension_Integer, package_String] := Module[
+  {variableCount, gradientVariables, gradientMatrix, pairs, monomials,
+   generators, variationVariables, actionRows, connectedConstraints,
+   v1Raw, v1Basis, v1Dimension, reflection, reflectedGradient,
+   reflectionRows, fullConstraints, v2Raw, v2Basis, v2Dimension,
+   v1Polynomials, reflectedPolynomials, v4Residual, v4Sum, frame,
+   v5Euler, pivots, coordinateActionRows, v6Operator, v6Coordinates,
+   v6Ambient, v6Basis, v6Dimension, pdPolynomial},
+  variableCount = dimension^2;
+  gradientVariables = Table[Symbol["g" <> ToString[index]],
+    {index, variableCount}];
+  gradientMatrix = Partition[gradientVariables, dimension];
+  pairs = Flatten[Table[{left, right}, {left, variableCount},
+    {right, left, variableCount}], 1];
+  monomials = (gradientVariables[[#[[1]]]] gradientVariables[[#[[2]]]] &) /@ pairs;
+  emitCell[package, dimension, "MONOMIAL_ORDERING", monomials];
+
+  generators = Flatten[Table[
+    SparseArray[{{row, column} -> 1, {column, row} -> -1},
+      {dimension, dimension}],
+    {row, 1, dimension - 1}, {column, row + 1, dimension}], 1];
+  connectedConstraints = If[generators === {},
+    SparseArray[{}, {0, Length[monomials]}],
+    SparseArray[Join @@ Table[
+      variationVariables = Flatten[
+        generators[[generatorIndex]].gradientMatrix -
+          gradientMatrix.generators[[generatorIndex]]];
+      actionRows = Table[
+        quadraticCoordinates[
+          Expand[Total[MapThread[
+            (D[monomials[[monomialIndex]], #1] #2) &,
+            {gradientVariables, variationVariables}]]],
+          gradientVariables, pairs],
+        {monomialIndex, Length[monomials]}];
+      Transpose[actionRows],
+      {generatorIndex, Length[generators]}]]];
+  v1Raw = NullSpace[connectedConstraints];
+  v1Basis = If[v1Raw === {}, {}, RowReduce[v1Raw]];
+  v1Dimension = Length[v1Basis];
+  emitCell[package, dimension, "V1_BASIS", v1Basis];
+  emitCell[package, dimension, "V1_DIM", v1Dimension];
+
+  reflection = DiagonalMatrix[Join[{-1}, ConstantArray[1, dimension - 1]]];
+  reflectedGradient = Expand[reflection.gradientMatrix.Transpose[reflection]];
+  reflectionRows = Table[
+    quadraticCoordinates[
+      monomials[[monomialIndex]] /.
+        Thread[gradientVariables -> Flatten[reflectedGradient]],
+      gradientVariables, pairs],
+    {monomialIndex, Length[monomials]}];
+  fullConstraints = Join[connectedConstraints,
+    SparseArray[Transpose[reflectionRows - IdentityMatrix[Length[monomials]]]]];
+  v2Raw = NullSpace[fullConstraints];
+  v2Basis = If[v2Raw === {}, {}, RowReduce[v2Raw]];
+  v2Dimension = Length[v2Basis];
+  emitCell[package, dimension, "V2_BASIS", v2Basis];
+  emitCell[package, dimension, "V2_DIM", v2Dimension];
+  emitCell[package, dimension, "V3_DIFFERENCE", v1Dimension - v2Dimension];
+
+  emitCell[package, dimension, "R0_MATRIX", reflection];
+  emitCell[package, dimension, "R0_ORTHOGONALITY_RESIDUAL",
+    Transpose[reflection].reflection - IdentityMatrix[dimension]];
+  emitCell[package, dimension, "R0_DETERMINANT", Det[reflection]];
+
+  v1Polynomials = polynomialFromCoordinates[#, monomials] & /@ v1Basis;
+  reflectedPolynomials = Expand[# /.
+      Thread[gradientVariables -> Flatten[reflectedGradient]]] & /@ v1Polynomials;
+  v4Residual = MapThread[Expand[#1 - #2] &,
+    {reflectedPolynomials, v1Polynomials}];
+  v4Sum = MapThread[Expand[#1 + #2] &,
+    {reflectedPolynomials, v1Polynomials}];
+  emitCell[package, dimension, "V4_REFLECTED", reflectedPolynomials];
+  emitCell[package, dimension, "V4_RESIDUAL", v4Residual];
+  emitCell[package, dimension, "V4_SUM", v4Sum];
+
+  frame = coordinateFrame[dimension];
+  v5Euler = eulerOperatorForGradientDensity[#, gradientVariables, frame] & /@
+    v1Polynomials;
+  emitCell[package, dimension, "V5_EULER_LAGRANGE", v5Euler];
+
+  If[v1Dimension == 0,
+    v6Operator = {};
+    v6Basis = {},
+    pivots = FirstPosition[#, 1][[1]] & /@ v1Basis;
+    coordinateActionRows = Table[
+      quadraticCoordinates[reflectedPolynomials[[basisIndex]],
+        gradientVariables, pairs][[pivots]],
+      {basisIndex, v1Dimension}];
+    v6Operator = Transpose[coordinateActionRows];
+    v6Coordinates = NullSpace[v6Operator + IdentityMatrix[v1Dimension]];
+    v6Ambient = (#.v1Basis) & /@ v6Coordinates;
+    v6Basis = If[v6Ambient === {}, {}, RowReduce[v6Ambient]]
+  ];
+  v6Dimension = Length[v6Basis];
+  emitCell[package, dimension, "V6_OPERATOR", v6Operator];
+  emitCell[package, dimension, "V6_BASIS", v6Basis];
+  emitCell[package, dimension, "V6_DIM", v6Dimension];
+  emitCell[package, dimension, "V7_RESIDUAL",
+    v6Dimension - (v1Dimension - v2Dimension)];
+
+  pdPolynomial = Expand[Total[
+    polynomialFromCoordinates[#, monomials] & /@ v6Basis]];
+  <|
+    "D" -> dimension,
+    "GVariables" -> gradientVariables,
+    "GMatrix" -> gradientMatrix,
+    "Monomials" -> monomials,
+    "V1Basis" -> v1Basis,
+    "V1Dim" -> v1Dimension,
+    "V2Basis" -> v2Basis,
+    "V2Dim" -> v2Dimension,
+    "R0" -> reflection,
+    "V1Polynomials" -> v1Polynomials,
+    "ReflectedPolynomials" -> reflectedPolynomials,
+    "V4Residual" -> v4Residual,
+    "V4Sum" -> v4Sum,
+    "V5Euler" -> v5Euler,
+    "V6Operator" -> v6Operator,
+    "V6Basis" -> v6Basis,
+    "V6Dim" -> v6Dimension,
+    "PDPolynomial" -> pdPolynomial|>
+];
+
+emitInvariantCensus[data_, package_String, dimension_Integer] := Module[{},
+  emitCell[package, dimension, "MONOMIAL_ORDERING", data["Monomials"]];
+  emitCell[package, dimension, "V1_BASIS", data["V1Basis"]];
+  emitCell[package, dimension, "V1_DIM", Length[data["V1Basis"]]];
+  emitCell[package, dimension, "V2_BASIS", data["V2Basis"]];
+  emitCell[package, dimension, "V2_DIM", Length[data["V2Basis"]]];
+  emitCell[package, dimension, "V3_DIFFERENCE",
+    Length[data["V1Basis"]] - Length[data["V2Basis"]]];
+  emitCell[package, dimension, "R0_MATRIX", data["R0"]];
+  emitCell[package, dimension, "R0_ORTHOGONALITY_RESIDUAL",
+    Transpose[data["R0"]].data["R0"] - IdentityMatrix[dimension]];
+  emitCell[package, dimension, "R0_DETERMINANT", Det[data["R0"]]];
+  emitCell[package, dimension, "V4_REFLECTED", data["ReflectedPolynomials"]];
+  emitCell[package, dimension, "V4_RESIDUAL", data["V4Residual"]];
+  emitCell[package, dimension, "V4_SUM", data["V4Sum"]];
+  emitCell[package, dimension, "V5_EULER_LAGRANGE", data["V5Euler"]];
+  emitCell[package, dimension, "V6_OPERATOR", data["V6Operator"]];
+  emitCell[package, dimension, "V6_BASIS", data["V6Basis"]];
+  emitCell[package, dimension, "V6_DIM", Length[data["V6Basis"]]];
+  emitCell[package, dimension, "V7_RESIDUAL",
+    Length[data["V6Basis"]] -
+      (Length[data["V1Basis"]] - Length[data["V2Basis"]])];
+];
+
+stiffnessBlueprint[package_String] := Switch[package,
+  "MAIN" | "XKIN_ANISO", {{muR/2, "curl"}, {bComp/2, "div"}},
+  "XFORM_CURLONLY", {{muR/2, "curl"}},
+  "XFORM_DIVONLY", {{bComp/2, "div"}},
+  "XFORM_TRACELESS", {{muR/2, "curl"}, {muBr, "symtl"}},
+  "XFORM_EXTRA", {{muR/2, "curl"}, {bComp/2, "div"}, {beta/2, "pd"}},
+  "XCOEF_BSCALE", {{muR/2, "curl"}, {s bComp/2, "div"}},
+  "XCOEF_BSIGN", {{muR/2, "curl"}, {-bComp/2, "div"}}
+];
+
+kineticRecords[package_String, velocityJet_List] := If[package === "XKIN_ANISO",
+  {
+    <|"Factor" -> rhoBr/2, "DensityJet" -> Total[Rest[velocityJet]^2]|>,
+    <|"Factor" -> sRho rhoBr/2, "DensityJet" -> First[velocityJet]^2|>
+  },
+  {<|"Factor" -> rhoBr/2, "DensityJet" -> Total[velocityJet^2]|>}
+];
+
+stiffnessRecords[package_String, densityJet_, densityCoordinate_] := Map[
+  Function[item, <|
+    "Factor" -> item[[1]],
+    "Kind" -> item[[2]],
+    "DensityJet" -> densityJet[item[[2]]],
+    "DensityCoordinate" -> densityCoordinate[item[[2]]]|>],
+  stiffnessBlueprint[package]
+];
+
+makePremises[package_String, dimension_Integer, wavevector_List,
+    amplitudes_List] := Module[{symbolicEntries, packageEntries, symbolicJoint},
+  symbolicEntries = {
+    rhoBr > 0,
+    muR > 0,
+    bComp > 0,
+    Total[wavevector^2] > 0,
+    And @@ (Element[#, Reals] & /@ wavevector),
+    And @@ (Element[#, Reals] & /@ amplitudes),
+    Element[dimensionSymbol, Integers] && dimensionSymbol > 0
+  };
+  packageEntries = Switch[package,
+    "XFORM_TRACELESS", {muBr > 0},
+    "XFORM_EXTRA", {Element[beta, Reals]},
+    "XCOEF_BSCALE", {s > 0, s != 1},
+    "XKIN_ANISO", {sRho > 0, sRho != 1},
+    _, {}
+  ];
+  symbolicJoint = And @@ Join[symbolicEntries, packageEntries];
+  <|
+    "SymbolicEntries" -> Join[symbolicEntries, packageEntries],
+    "SymbolicJoint" -> symbolicJoint,
+    "AtDimension" -> (symbolicJoint /. dimensionSymbol -> dimension)|>
+];
+
+premiseInventory[premises_, package_String, dimension_Integer,
+    amplitudes_List] := {
+  "JOINT_SYMBOLIC_ASSUMPTIONS" -> premises["SymbolicJoint"],
+  "PACKAGE" -> package,
+  "BRANE_DIMENSION" -> dimension,
+  "DISPLACEMENT_DIMENSION" -> {1, 0, 0},
+  "IN_PLANE_COMPONENTS" -> amplitudes,
+  "OUT_OF_PLANE_FIELD_EXCLUDED" -> hBranon,
+  "BACKGROUND_VELOCITY" -> 0,
+  "DISSIPATIVE_TERMS" -> {},
+  "MAXIMUM_FIELD_DEGREE" -> 2,
+  "WALL_WIDTH_FIELDS" -> {},
+  "REAL_PHASE_ANSATZ" -> Cos,
+  "PHASE_AVERAGE_DOMAIN" -> {phaseVariable, 0, 2 Pi},
+  "DIMENSIONLESS_COEFFICIENTS" ->
+    If[package === "XCOEF_BSCALE", {s}, {}],
+  "BULK_MODE_CONTENT" -> {ScalarSoundMode},
+  "BULK_AMPLITUDE_PREMISE" -> Element[A, Reals],
+  "BULK_SPEED_PREMISE" -> cs0 > 0,
+  "INTERFACE_EQUATIONS_SUPPLIED" -> {}
+};
+
+multiplicativeFactors[expression_] := Module[{factored = Factor[expression]},
   If[Head[factored] === Times, List @@ factored, {factored}]
 ];
 
-routeAStrippedFactor[planeEquations_, amplitudes_, phaseCoordinates_List] := Module[
+routeAStrippedFactor[planeExpressions_, amplitudes_, phaseCoordinates_List] := Module[
   {coefficientEntries, nonzeroEntries, commonFactors, phaseFactors},
   coefficientEntries = Flatten[Table[
-    Coefficient[planeEquations[[i]], amplitudes[[j]]],
-    {i, Length[planeEquations]}, {j, Length[amplitudes]}]];
+    Coefficient[planeExpressions[[row]], amplitudes[[column]]],
+    {row, Length[planeExpressions]}, {column, Length[amplitudes]}]];
   nonzeroEntries = Select[coefficientEntries, ! TrueQ[# === 0] &];
   commonFactors = If[nonzeroEntries === {}, {},
     Fold[Intersection[#1, #2, SameTest -> SameQ] &,
@@ -67,579 +576,908 @@ routeAStrippedFactor[planeEquations_, amplitudes_, phaseCoordinates_List] := Mod
   If[phaseFactors === {}, Missing["NoCommonPhaseFactor"], Times @@ phaseFactors]
 ];
 
-stratumDerivativeFailure[roots_, coefficients_, equations_, point_] :=
-  Failure["UndefinedStratumDerivative", <|
-    "RootsRecomputedOnStratum" -> roots,
-    "CoefficientOrdering" -> coefficients,
-    "DefiningEquations" -> equations,
-    "EvaluationPoint" -> point,
-    "MissingConstruction" -> {TangentCoordinates, OffStratumExtension}|>];
-
-conditionalParts[expr_] := If[
-  Head[expr] === ConditionalExpression,
-  {expr[[1]], expr[[2]]},
-  {expr, True}
+coefficientOrderingFromRecords[kineticRecordsList_, stiffnessRecordsList_] := Module[
+  {factors, inertialCoefficients},
+  factors = Join[Lookup[kineticRecordsList, "Factor"],
+    Lookup[stiffnessRecordsList, "Factor"]];
+  inertialCoefficients = Flatten[globalSymbolsIn /@ Lookup[kineticRecordsList, "Factor"]];
+  SortBy[DeleteDuplicates[Join[
+    Flatten[globalSymbolsIn /@ factors], inertialCoefficients]], SymbolName]
 ];
 
-fourWaySign[operand_, assumptions_] := Which[
-  TrueQ[simp[operand > 0, assumptions]], POSITIVE,
-  TrueQ[simp[operand < 0, assumptions]], NEGATIVE,
-  TrueQ[simp[operand == 0, assumptions]], ZERO,
-  True, UNDECIDED
+mergeMultiplicityPairs[pairs_List, assumptions_] := Fold[
+  Function[{accumulator, pair}, Module[{position, index},
+    position = FirstPosition[accumulator,
+      existing_List /; Length[existing] == 2 &&
+        TrueQ[engineSimplify[existing[[1]] == pair[[1]], assumptions]],
+      Missing["NotFound"], {1}];
+    If[MissingQ[position], Append[accumulator, pair],
+      index = First[position];
+      ReplacePart[accumulator, position -> {
+        accumulator[[index, 1]],
+        accumulator[[index, 2]] + pair[[2]]}]]
+  ]],
+  {}, pairs
 ];
 
-globalSymbolsIn[expr_] := DeleteDuplicates[
-  Cases[expr, z_Symbol /; Context[z] === "Global`", {0, Infinity}]
-];
-
-coordinateFrame[d_Integer] := Module[{x, t, heads, args, fields, gradient},
-  x = Table[Symbol["x" <> ToString[i]], {i, d}];
-  t = Symbol["t"];
-  heads = Table[Symbol["u" <> ToString[j]], {j, d}];
-  args = Join[x, {t}];
-  fields = (#[Sequence @@ args] &) /@ heads;
-  gradient = Table[D[fields[[j]], x[[i]]], {i, d}, {j, d}];
-  <|"X" -> x, "T" -> t, "Heads" -> heads, "Arguments" -> args,
-    "Fields" -> fields, "Gradient" -> gradient|>
-];
-
-curlDensity[gradient_] := Module[{d = Length[gradient]},
-  1/2 Total[Flatten[Table[(gradient[[i, j]] - gradient[[j, i]])^2,
-    {i, d}, {j, d}]]]
-];
-
-divDensity[gradient_] := Tr[gradient]^2;
-
-symtlDensity[gradient_] := Module[{d = Length[gradient], stl},
-  stl = (gradient + Transpose[gradient])/2 -
-    Tr[gradient] IdentityMatrix[d]/d;
-  Total[Flatten[stl^2]]
-];
-
-quadCoordinates[poly_, variables_, pairs_] := Map[
-  Function[pair,
-    If[pair[[1]] === pair[[2]],
-      Coefficient[Expand[poly], variables[[pair[[1]]]], 2],
-      Coefficient[
-        Coefficient[Expand[poly], variables[[pair[[1]]]], 1],
-        variables[[pair[[2]]]], 1]
-    ]
-  ],
-  pairs
-];
-
-polyFromCoordinates[row_, monomials_] := Expand[Total[MapThread[Times, {row, monomials}]]];
-
-eulerOperatorForDensity[poly_, gVariables_, frame_] := Module[
-  {d = Length[frame["X"]], gradient = frame["Gradient"], x = frame["X"]},
-  Table[
-    Expand[Total[Table[
-      D[(D[poly, gVariables[[(i - 1) d + j]]] /. Thread[gVariables -> Flatten[gradient]]), x[[i]]],
-      {i, d}]]],
-    {j, d}
-  ]
-];
-
-buildInvariantCensus[d_Integer] := Module[
-  {n, gVariables, gMatrix, pairs, monomials, generators, deltaVariables,
-   actionRows, connectedConstraints, v1Raw, v1Basis, r0, reflectedG,
-   reflectionRows, fullConstraints, v2Raw, v2Basis, v1Dim, v2Dim,
-   basisPolynomials, reflectedPolynomials, pivots, coordinateActionRows,
-   operator, v6Coordinates, v6Ambient, v6Basis, v6Dim, frame,
-   eulerOperators, pdPolynomial},
-  n = d^2;
-  gVariables = Table[Symbol["g" <> ToString[i]], {i, n}];
-  gMatrix = Partition[gVariables, d];
-  pairs = Flatten[Table[{p, q}, {p, n}, {q, p, n}], 1];
-  monomials = (gVariables[[#[[1]]]] gVariables[[#[[2]]]] &) /@ pairs;
-  generators = Flatten[Table[
-    SparseArray[{{i, j} -> 1, {j, i} -> -1}, {d, d}],
-    {i, 1, d - 1}, {j, i + 1, d}], 1];
-  connectedConstraints = If[generators === {},
-    SparseArray[{}, {0, Length[monomials]}],
-    SparseArray[Join @@ Table[
-      deltaVariables = Flatten[generators[[q]].gMatrix - gMatrix.generators[[q]]];
-      actionRows = Table[
-        quadCoordinates[
-          Expand[Total[MapThread[(D[monomials[[p]], #1] #2) &,
-            {gVariables, deltaVariables}]]],
-          gVariables, pairs],
-        {p, Length[monomials]}];
-      Transpose[actionRows],
-      {q, Length[generators]}]]
-  ];
-  v1Raw = NullSpace[connectedConstraints];
-  v1Basis = RowReduce[v1Raw];
-  r0 = DiagonalMatrix[Join[{-1}, ConstantArray[1, d - 1]]];
-  reflectedG = Expand[r0.gMatrix.Transpose[r0]];
-  reflectionRows = Table[
-    quadCoordinates[monomials[[p]] /. Thread[gVariables -> Flatten[reflectedG]],
-      gVariables, pairs],
-    {p, Length[monomials]}];
-  fullConstraints = Join[connectedConstraints,
-    SparseArray[Transpose[reflectionRows - IdentityMatrix[Length[monomials]]]]];
-  v2Raw = NullSpace[fullConstraints];
-  v2Basis = RowReduce[v2Raw];
-  v1Dim = Length[v1Basis];
-  v2Dim = Length[v2Basis];
-  basisPolynomials = polyFromCoordinates[#, monomials] & /@ v1Basis;
-  reflectedPolynomials = Expand[# /. Thread[gVariables -> Flatten[reflectedG]]] & /@
-    basisPolynomials;
-  If[v1Dim == 0,
-    operator = {};
-    v6Basis = {};
-    v6Dim = 0,
-    pivots = FirstPosition[#, 1][[1]] & /@ v1Basis;
-    coordinateActionRows = Table[
-      quadCoordinates[reflectedPolynomials[[i]], gVariables, pairs][[pivots]],
-      {i, v1Dim}];
-    operator = Transpose[coordinateActionRows];
-    v6Coordinates = NullSpace[operator + IdentityMatrix[v1Dim]];
-    v6Ambient = (#.v1Basis) & /@ v6Coordinates;
-    v6Basis = If[v6Ambient === {}, {}, RowReduce[v6Ambient]];
-    v6Dim = Length[v6Basis]
-  ];
-  frame = coordinateFrame[d];
-  eulerOperators = eulerOperatorForDensity[#, gVariables, frame] & /@ basisPolynomials;
-  pdPolynomial = polyFromCoordinates[#, monomials] & /@ v6Basis // Total // Expand;
-  <|
-    "D" -> d, "GVariables" -> gVariables, "GMatrix" -> gMatrix,
-    "Pairs" -> pairs, "Monomials" -> monomials,
-    "V1Basis" -> v1Basis, "V1Dim" -> v1Dim,
-    "V2Basis" -> v2Basis, "V2Dim" -> v2Dim,
-    "R0" -> r0, "V1Polynomials" -> basisPolynomials,
-    "ReflectedPolynomials" -> reflectedPolynomials,
-    "V5Euler" -> eulerOperators, "V6Operator" -> operator,
-    "V6Basis" -> v6Basis, "V6Dim" -> v6Dim,
-    "PDPolynomial" -> pdPolynomial|>
-];
-
-emitInvariantCensus[data_, prefix_String] := Module[
-  {v1 = data["V1Polynomials"], reflected = data["ReflectedPolynomials"], r0 = data["R0"]},
-  emit[prefix <> "_MONOMIAL_ORDERING", data["Monomials"]];
-  emit[prefix <> "_V1_BASIS", data["V1Basis"]];
-  emit[prefix <> "_V1_DIM", Length[data["V1Basis"]]];
-  emit[prefix <> "_V2_BASIS", data["V2Basis"]];
-  emit[prefix <> "_V2_DIM", Length[data["V2Basis"]]];
-  emit[prefix <> "_V3_DIFFERENCE", Length[data["V1Basis"]] - Length[data["V2Basis"]]];
-  emit[prefix <> "_R0_MATRIX", r0];
-  emit[prefix <> "_R0_ORTHOGONALITY_RESIDUAL",
-    Transpose[r0].r0 - IdentityMatrix[data["D"]]];
-  emit[prefix <> "_R0_DETERMINANT", Det[r0]];
-  emit[prefix <> "_V4_REFLECTED", reflected];
-  emit[prefix <> "_V4_RESIDUAL", MapThread[Expand[#1 - #2] &, {reflected, v1}]];
-  emit[prefix <> "_V4_SUM", MapThread[Expand[#1 + #2] &, {reflected, v1}]];
-  emit[prefix <> "_V5_EULER_LAGRANGE", data["V5Euler"]];
-  emit[prefix <> "_V6_OPERATOR", data["V6Operator"]];
-  emit[prefix <> "_V6_BASIS", data["V6Basis"]];
-  emit[prefix <> "_V6_DIM", Length[data["V6Basis"]]];
-  emit[prefix <> "_V7_RESIDUAL",
-    Length[data["V6Basis"]] - (Length[data["V1Basis"]] - Length[data["V2Basis"]])];
-];
-
-packageTermBlueprint[package_String] := Switch[package,
-  "MAIN", {{muR/2, "curl"}, {bComp/2, "div"}},
-  "XFORM_CURLONLY", {{muR/2, "curl"}},
-  "XFORM_DIVONLY", {{bComp/2, "div"}},
-  "XFORM_TRACELESS", {{muR/2, "curl"}, {muBr, "symtl"}},
-  "XFORM_EXTRA", {{muR/2, "curl"}, {bComp/2, "div"}, {beta/2, "pd"}},
-  "XCOEF_BSCALE", {{muR/2, "curl"}, {sScale bComp/2, "div"}},
-  "XCOEF_BSIGN", {{muR/2, "curl"}, {-bComp/2, "div"}}
-];
-
-makeTermRecords[package_String, densityJet_, densityCoordinate_] := Module[{blueprint},
-  blueprint = packageTermBlueprint[package];
-  Map[
-    Function[item, <|"Factor" -> item[[1]], "Kind" -> item[[2]],
-      "DensityJet" -> densityJet[item[[2]]],
-      "DensityCoordinate" -> densityCoordinate[item[[2]]]|>],
-    blueprint
-  ]
-];
-
-makePremises[package_String, d_Integer, k_, amplitudes_, sDimension_, fieldModel_] := Module[
-  {common, domain, entries, joint, coefficientDimensionDeclarations},
-  coefficientDimensionDeclarations = fieldModel["CoefficientDimensionDeclarations"];
-  common = <|
-    "PREMISE_RHO" -> rhoBr > 0,
-    "PREMISE_MUR" -> muR > 0,
-    "PREMISE_BCOMP" -> bComp > 0,
-    "PREMISE_WAVEVECTOR" -> Total[k^2] > 0,
-    "PREMISE_WAVEVECTOR_REAL" -> And @@ (Element[#, Reals] & /@ k),
-    "PREMISE_AMPLITUDE_REAL" -> And @@ (Element[#, Reals] & /@ amplitudes),
-    "PREMISE_DIMENSION" -> (Element[dimensionSymbol, Integers] && dimensionSymbol > 0)
-  |>;
-  domain = Switch[package,
-    "XFORM_TRACELESS", <|"PREMISE_PACKAGE_DOMAIN" -> muBr > 0|>,
-    "XFORM_EXTRA", <|"PREMISE_PACKAGE_DOMAIN" -> Element[beta, Reals]|>,
-    "XCOEF_BSCALE", <|"PREMISE_PACKAGE_DOMAIN" ->
-      And[sScale > 0, sScale != 1,
-        And @@ Thread[sDimension == coefficientDimensionDeclarations[sScale]]]|>,
-    _, <|"PREMISE_PACKAGE_DOMAIN" -> True|>
-  ];
-  entries = Join[common, domain];
-  joint = And @@ Values[entries];
-  <|"Entries" -> entries, "Joint" -> joint, "AtDimension" -> (joint /. dimensionSymbol -> d)|>
-];
-
-emitPremises[premises_, prefix_String, fieldModel_, actionModel_, bulkModel_] := Module[{},
-  KeyValueMap[(emit[prefix <> "_" <> #1, #2]) &, premises["Entries"]];
-  emit[prefix <> "_JOINT_ASSUMPTIONS", premises["Joint"]];
-  emit[prefix <> "_PREMISE_U_DIMENSION", SuppliedPremise[fieldModel["UDimension"]]];
-  emit[prefix <> "_PREMISE_IN_PLANE_COMPONENTS",
-    SuppliedPremise[Length[fieldModel["Amplitudes"]]]];
-  emit[prefix <> "_PREMISE_BACKGROUND_STATE",
-    SuppliedPremiseWithNoInCodeConsumer[actionModel["BackgroundVelocity"]]];
-  emit[prefix <> "_PREMISE_NO_DISSIPATION",
-    SuppliedPremiseWithNoInCodeConsumer[actionModel["DissipativeTerms"]]];
-  emit[prefix <> "_PREMISE_LINEAR_RESPONSE",
-    SuppliedPremise[actionModel["MaximumFieldDegree"]]];
-  emit[prefix <> "_PREMISE_FROZEN_WALL_WIDTH",
-    SuppliedPremiseWithNoInCodeConsumer[actionModel["WallWidthFields"]]];
-  emit[prefix <> "_PREMISE_BULK_MODE", SuppliedPremise[bulkModel["ModeContent"]]];
-  emit[prefix <> "_PREMISE_BULK_SPEED", bulkModel["SpeedPremise"]];
-  emit[prefix <> "_PREMISE_BULK_AMPLITUDE",
-    SuppliedPremiseWithNoInCodeConsumer[bulkModel["AmplitudePremise"]]];
-];
-
-extractConditionalExpressions[expr_] := DeleteDuplicates[Cases[
-  expr, ConditionalExpression[value_, condition_] :> {value, condition}, Infinity]];
-
-branchEquations[branch_] := Module[{rules, conditions},
-  rules = Cases[branch, Rule[left_, right_] :> (left == right), {1}];
-  conditions = Cases[branch, ConditionalExpression[_, condition_] :> condition, Infinity];
-  Join[rules, conditions]
-];
-
-emitLocus[sharedBase_String, localBase_String, equations_List, variables_List, assumptions_] := Module[
-  {solution, residuals, identicallySatisfied, unrestrictedReduction, inconsistent,
-   realAdmissible, conditions, operands, realOperands, quantifiedVariables,
-   branchReduction, simplifiedBranchEquations},
-  emit[sharedBase <> "_EQUATIONS", equations];
-  solution = Quiet[Solve[And @@ equations, variables]];
-  emit[sharedBase <> "_SOLUTION", SolveResult[variables, solution]];
-  conditions = extractConditionalExpressions[solution];
-  emit[localBase <> "_CONDITIONS", conditions];
-  residuals = relationResidual /@ equations;
-  identicallySatisfied = And @@ (TrueQ[simpUnrestricted[# == 0]] & /@ residuals);
-  emit[sharedBase <> "_IDENTICALLY_SATISFIED", identicallySatisfied];
-  unrestrictedReduction = Quiet[Reduce[And @@ equations, variables, Complexes]];
-  inconsistent = TrueQ[unrestrictedReduction === False];
-  emit[sharedBase <> "_INCONSISTENT", inconsistent];
-  realAdmissible = If[ListQ[solution],
-    Map[
-      Function[branch,
-        operands = And[assumptions, And @@ branchEquations[branch]];
-        simplifiedBranchEquations = simp[#, assumptions] & /@ branchEquations[branch];
-        realOperands = And[assumptions,
-          realConditionFromRelations[simplifiedBranchEquations]];
-        quantifiedVariables = globalSymbolsIn[realOperands];
-        branchReduction = Quiet[Reduce[realOperands, quantifiedVariables, Reals]];
-        {operands, realOperands, branchReduction,
-          Not[SameQ[branchReduction, False]]}
-      ],
-      solution
-    ],
-    SolverBranchesUnavailable[solution]
-  ];
-  emit[sharedBase <> "_REAL_ADMISSIBLE", realAdmissible];
-  <|"Equations" -> equations, "Variables" -> variables, "Solution" -> solution,
-    "UnrestrictedReduction" -> unrestrictedReduction,
-    "RealAdmissible" -> realAdmissible|>
-];
-
-multiplicitySolutions[determinant_] := Module[{numerator, factors, pieces},
-  numerator = Numerator[Together[determinant]];
-  factors = Select[FactorList[numerator], ! FreeQ[First[#], omegaSquared] &];
-  pieces = Map[
+rootMultiplicityPairs[determinant_, assumptions_] := Module[
+  {polynomial, factorPairs, rawPairs, solutions, roots},
+  polynomial = Numerator[Together[determinant]];
+  factorPairs = Select[Rest[FactorList[polynomial]],
+    ! FreeQ[First[#], omegaSquared] &];
+  rawPairs = Flatten[Map[
     Function[factorPair,
-      Flatten[ConstantArray[#, factorPair[[2]]] & /@
-        Quiet[Solve[factorPair[[1]] == 0, omegaSquared]], 1]
-    ],
-    factors
-  ];
-  Flatten[pieces, 1]
+      solutions = Quiet[Solve[factorPair[[1]] == 0, omegaSquared]];
+      roots = omegaSquared /. solutions;
+      ({#, factorPair[[2]]} &) /@ roots],
+    factorPairs], 1];
+  mergeMultiplicityPairs[rawPairs, assumptions]
 ];
 
-distinctUnderAssumptions[values_, assumptions_] := DeleteDuplicates[
-  values, TrueQ[simp[#1 == #2, assumptions]] &
-];
+distinctUnderAssumptions[values_List, assumptions_] := DeleteDuplicates[
+  values, TrueQ[engineSimplify[#1 == #2, assumptions]] &];
 
-allMaximalMinors[matrix_, rank_Integer] := Module[{rows, columns},
+allMaximalMinors[matrix_, rank_Integer] := Module[{rowSets, columnSets},
   If[rank == 0, Return[{}]];
-  rows = Subsets[Range[Length[matrix]], {rank}];
-  columns = Subsets[Range[Length[First[matrix]]], {rank}];
-  Flatten[Table[Factor[Det[matrix[[rowSet, columnSet]]]],
-    {rowSet, rows}, {columnSet, columns}]]
+  rowSets = Subsets[Range[Length[matrix]], {rank}];
+  columnSets = Subsets[Range[Length[First[matrix]]], {rank}];
+  Flatten[Table[
+    Factor[Det[matrix[[rowSet, columnSet]]]],
+    {rowSet, rowSets}, {columnSet, columnSets}]]
 ];
 
-computeSpectrumModes[matrix_, coefficients_, k_, assumptions_, sharedPrefix_String,
-    localPrefix_String, includeRankLoci_] := Module[
-  {determinant, returnedSolutions, returnedValues, distinctRoots, rootConditions,
-   pairEquations, kLocus, coefficientLocus, rootObjects, root, rootParts,
-   rootPrefix, rootLocalPrefix, mr, rank, nullity, stacked, stackedRank,
-   transverseNullity, basis, basisDots, basisResiduals, basisCount,
-   minors, minorEquations, kRankLocus, coefficientRankLocus, jointRankLocus,
-   rankLoci = {}, q4Derived = {}, pairs},
+unscopedQuantity[scope_String, pointEvidence_, quantity_String] :=
+  scope <> If[TrueQ[pointEvidence], "POINT_EVIDENCE_", ""] <> quantity;
+
+rootQuantity[scope_String, pointEvidence_, rootIndex_Integer, quantity_String] :=
+  scope <> "ROOT" <> ToString[rootIndex] <> "_" <>
+    If[TrueQ[pointEvidence], "POINT_EVIDENCE_", ""] <> quantity;
+
+changeLocusSuffixes = {
+  "EQUATIONS", "SOLUTION", "IDENTICALLY_SATISFIED", "INCONSISTENT",
+  "REAL_ADMISSIBLE", "CANONICAL_LOCUS", "REAL_STATUS", "REAL_WITNESS",
+  "REAL_STATUS_OPERANDS"};
+
+emitComponentCount[package_, dimension_, baseQuantity_String, value_,
+    freeParameters_List] := Module[{status, certificate},
+  status = If[freeParameters === {}, tokenConstant, tokenUndecided];
+  certificate = If[SameQ[status, tokenConstant], {
+      "FREE_PARAMETERS" -> freeParameters,
+      "TEST_OBJECT" -> True,
+      "OPERANDS" -> {"VALUE" -> value, "FREE_PARAMETERS" -> freeParameters}
+    }, tokenNotApplicable];
+  emitCell[package, dimension, baseQuantity, {
+    "STATUS_TOKEN" -> status,
+    "VALUE" -> value
+  }];
+  emitCell[package, dimension, baseQuantity <> "_STATUS", status];
+  emitCell[package, dimension, baseQuantity <> "_CONSTANCY_CERTIFICATE", certificate];
+  Scan[Function[suffix,
+    emitCell[package, dimension,
+      baseQuantity <> "_CHANGE_LOCUS_" <> suffix, tokenNotApplicable]],
+    changeLocusSuffixes];
+  status
+];
+
+emitCountObject[package_, dimension_, baseQuantity_String, value_,
+    componentCounts_, freeParameters_List] := If[TrueQ[componentCounts],
+  emitComponentCount[package, dimension, baseQuantity, value, freeParameters],
+  emitCell[package, dimension, baseQuantity, value];
+  tokenNotApplicable
+];
+
+candidateRecords[locus_, sourceToken_, sourceLocusTag_] := Map[
+  Function[branchRecord, Join[branchRecord, <|
+    "Source" -> sourceToken,
+    "SourceLocusTag" -> sourceLocusTag|>]],
+  locus["AdmittedBranches"]
+];
+
+computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions_,
+    package_String, dimension_Integer, scope_String, pointEvidence_,
+    includeRankLoci_, componentCounts_, freeParameters_List,
+    activeKVariables_List, activeCoefficientVariables_List] := Module[
+  {determinant, multiplicityPairs, solverSolution, degree, rootCountAll,
+   roots, rootCountDistinct, rootCountStatuses = {}, pairIndices,
+   coincidenceEquations, coincidenceK, coincidenceCoefficient,
+   coincidenceCandidates = {}, rankCandidates = {}, stackedCandidates = {},
+   rootObjects, root, rootBase, matrixAtRoot, rank, nullity, stacked,
+   stackedRank, transverseNullity, basis, basisDots, basisResiduals,
+   basisCount, mDotK, rankMinors, stackedMinors, rankEquations, stackedEquations,
+   rankKLocus, rankCoefficientLocus, rankJointLocus, stackedKLocus,
+   stackedCoefficientLocus, stackedJointLocus, rootCountBase,
+   countStatus, q4Derived = {}, rootPrefix},
   determinant = Factor[Det[matrix]];
-  emit[sharedPrefix <> "_DET_M", determinant];
-  returnedSolutions = multiplicitySolutions[determinant];
-  emit[sharedPrefix <> "_ROOT_SOLUTION_SET", returnedSolutions];
-  rootConditions = extractConditionalExpressions[returnedSolutions];
-  emit[localPrefix <> "_ROOT_SOLUTION_CONDITIONS", rootConditions];
-  returnedValues = (omegaSquared /. #) & /@ returnedSolutions;
-  distinctRoots = distinctUnderAssumptions[returnedValues, assumptions];
-  emit[sharedPrefix <> "_ROOT_DISTINCT", distinctRoots];
-  emit[sharedPrefix <> "_ROOT_COUNT_ALL", Length[returnedSolutions]];
-  emit[sharedPrefix <> "_ROOT_COUNT_DISTINCT", Length[distinctRoots]];
-  emit[sharedPrefix <> "_ROOT_ORDERING", distinctRoots];
+  emitCell[package, dimension,
+    unscopedQuantity[scope, pointEvidence, "DET_M"], determinant];
+  multiplicityPairs = rootMultiplicityPairs[determinant, assumptions];
+  emitCell[package, dimension,
+    unscopedQuantity[scope, pointEvidence, "ROOT_MULTIPLICITY_PAIRS"],
+    multiplicityPairs];
+  solverSolution = Quiet[Solve[determinant == 0, omegaSquared]];
+  emitCell[package, dimension,
+    unscopedQuantity[scope, pointEvidence, "ROOT_SOLUTION_SET"],
+    solverSolution];
+  rootCountAll = Total[Last /@ multiplicityPairs];
+  rootCountBase = unscopedQuantity[scope, pointEvidence, "ROOT_COUNT_ALL"];
+  countStatus = emitCountObject[package, dimension, rootCountBase, rootCountAll,
+    componentCounts, freeParameters];
+  If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+  degree = Exponent[Numerator[Together[determinant]], omegaSquared];
+  countStatus = emitCountObject[package, dimension,
+    unscopedQuantity[scope, pointEvidence, "DET_M_DEGREE"], degree,
+    componentCounts, freeParameters];
+  If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+  emitCell[package, dimension,
+    unscopedQuantity[scope, pointEvidence, "ROOT_DEGREE_RESIDUAL"],
+    degree - rootCountAll];
+  roots = distinctUnderAssumptions[First /@ multiplicityPairs, assumptions];
+  emitCell[package, dimension,
+    unscopedQuantity[scope, pointEvidence, "ROOT_DISTINCT"], roots];
+  rootCountDistinct = Length[roots];
+  countStatus = emitCountObject[package, dimension,
+    unscopedQuantity[scope, pointEvidence, "ROOT_COUNT_DISTINCT"],
+    rootCountDistinct, componentCounts, freeParameters];
+  If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+  emitCell[package, dimension,
+    unscopedQuantity[scope, pointEvidence, "ROOT_ORDERING"], roots];
+
   Do[
-    rootParts = conditionalParts[distinctRoots[[r]]];
-    rootPrefix = sharedPrefix <> "_ROOT" <> ToString[r];
-    rootLocalPrefix = localPrefix <> "_ROOT" <> ToString[r];
-    emit[rootPrefix <> "_VALUE", rootParts[[1]]];
-    emit[rootLocalPrefix <> "_CONDITION", rootParts[[2]]];
-    emit[rootPrefix <> "_SIGN", {rootParts[[1]], fourWaySign[rootParts[[1]], assumptions]}],
-    {r, Length[distinctRoots]}];
-  pairs = Subsets[Range[Length[distinctRoots]], {2}];
-  pairEquations = (simp[distinctRoots[[#[[1]]]] - distinctRoots[[#[[2]]]], assumptions] == 0) & /@ pairs;
-  kLocus = emitLocus[sharedPrefix <> "_ROOT_COINCIDENCE_K",
-    localPrefix <> "_ROOT_COINCIDENCE_K", pairEquations, k, assumptions];
-  coefficientLocus = emitLocus[sharedPrefix <> "_ROOT_COINCIDENCE_COEFF",
-    localPrefix <> "_ROOT_COINCIDENCE_COEFF", pairEquations, coefficients, assumptions];
+    rootBase = rootQuantity[scope, pointEvidence, rootIndex, "VALUE"];
+    emitCell[package, dimension, rootBase, roots[[rootIndex]]];
+    emitCell[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "SIGN"],
+      signPayload[roots[[rootIndex]], assumptions]],
+    {rootIndex, Length[roots]}];
+
+  pairIndices = Subsets[Range[Length[roots]], {2}];
+  coincidenceEquations = (engineSimplify[
+      roots[[#[[1]]]] - roots[[#[[2]]]], assumptions] == 0) & /@ pairIndices;
+  coincidenceK = emitLocus[package, dimension,
+    unscopedQuantity[scope, pointEvidence, "ROOT_COINCIDENCE_K"],
+    coincidenceEquations, activeKVariables, assumptions];
+  coincidenceCoefficient = emitLocus[package, dimension,
+    unscopedQuantity[scope, pointEvidence, "ROOT_COINCIDENCE_COEFF"],
+    coincidenceEquations, activeCoefficientVariables, assumptions];
+  If[TrueQ[includeRankLoci],
+    coincidenceCandidates = Join[
+      candidateRecords[coincidenceK, tokenRootCoincidence,
+        standardEmissionName[cellEmission[package, dimension,
+          unscopedQuantity[scope, pointEvidence, "ROOT_COINCIDENCE_K"]]]],
+      candidateRecords[coincidenceCoefficient, tokenRootCoincidence,
+        standardEmissionName[cellEmission[package, dimension,
+          unscopedQuantity[scope, pointEvidence, "ROOT_COINCIDENCE_COEFF"]]]]
+    ]];
+
   rootObjects = Table[
-    root = distinctRoots[[r]];
-    rootPrefix = sharedPrefix <> "_ROOT" <> ToString[r];
-    rootLocalPrefix = localPrefix <> "_ROOT" <> ToString[r];
-    mr = Map[simp[#, assumptions] &, matrix /. omegaSquared -> root, {2}];
-    emit[rootPrefix <> "_N1", mr];
-    rank = assumedRank[mr, assumptions];
-    emit[rootPrefix <> "_N2_RANK", rank];
-    nullity = Length[mr] - rank;
-    emit[rootPrefix <> "_N2_NULLITY", nullity];
-    stacked = Join[mr, {k}];
+    root = roots[[rootIndex]];
+    matrixAtRoot = Map[engineSimplify[#, assumptions] &,
+      matrix /. omegaSquared -> root, {2}];
+    emitCell[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N1"], matrixAtRoot];
+    rank = assumedRank[matrixAtRoot, assumptions];
+    countStatus = emitCountObject[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N2_RANK"], rank,
+      componentCounts, freeParameters];
+    If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+    nullity = dimension - rank;
+    countStatus = emitCountObject[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N2_NULLITY"], nullity,
+      componentCounts, freeParameters];
+    If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+    stacked = Join[matrixAtRoot, {wavevector}];
     stackedRank = assumedRank[stacked, assumptions];
-    emit[rootPrefix <> "_N3_STACKED_RANK", stackedRank];
-    transverseNullity = Length[mr] - stackedRank;
-    emit[rootPrefix <> "_N3_TRANSVERSE_NULLITY", transverseNullity];
-    emit[rootPrefix <> "_N4_NULLITY_DIFFERENCE", nullity - transverseNullity];
-    emit[rootPrefix <> "_N5_M_DOT_K", Map[simp[#, assumptions] &, mr.k]];
-    basis = assumedNullSpace[mr, assumptions];
-    emit[rootPrefix <> "_N6_BASIS", basis];
-    basisDots = Map[simp[#.k, assumptions] &, basis];
-    emit[rootPrefix <> "_N6_DOT_K", basisDots];
+    countStatus = emitCountObject[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N3_STACKED_RANK"],
+      stackedRank, componentCounts, freeParameters];
+    If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+    transverseNullity = dimension - stackedRank;
+    countStatus = emitCountObject[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N3_TRANSVERSE_NULLITY"],
+      transverseNullity, componentCounts, freeParameters];
+    If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+    emitCell[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N4_NULLITY_DIFFERENCE"],
+      nullity - transverseNullity];
+    mDotK = Map[engineSimplify[#, assumptions] &, matrixAtRoot.wavevector];
+    emitCell[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N5_M_DOT_K"], mDotK];
+    basis = assumedNullSpace[matrixAtRoot, assumptions];
+    emitCell[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N6_BASIS"], basis];
+    basisDots = Map[engineSimplify[#.wavevector, assumptions] &, basis];
+    emitCell[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N6_DOT_K"], basisDots];
     basisResiduals = MapThread[
-      Function[{vector, dot}, Map[simp[#, assumptions] &,
-        Total[k^2] vector - dot k]],
+      Function[{basisVector, dotProduct},
+        Map[engineSimplify[#, assumptions] &,
+          Total[wavevector^2] basisVector - dotProduct wavevector]],
       {basis, basisDots}];
-    emit[rootPrefix <> "_N6_RESIDUAL", basisResiduals];
+    emitCell[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N6_RESIDUAL"],
+      basisResiduals];
     basisCount = Length[basis];
-    emit[rootPrefix <> "_N7_BASIS_COUNT", basisCount];
-    emit[rootPrefix <> "_N7_RESIDUAL", basisCount - nullity];
+    countStatus = emitCountObject[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N7_BASIS_COUNT"],
+      basisCount, componentCounts, freeParameters];
+    If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
+    emitCell[package, dimension,
+      rootQuantity[scope, pointEvidence, rootIndex, "N7_RESIDUAL"],
+      basisCount - nullity];
+
     If[TrueQ[includeRankLoci],
-      minors = allMaximalMinors[mr, rank];
-      emit[rootPrefix <> "_RANK_DROP_MINORS", minors];
-      minorEquations = (# == 0) & /@ minors;
-      kRankLocus = emitLocus[rootPrefix <> "_RANK_DROP_K",
-        rootLocalPrefix <> "_RANK_DROP_K", minorEquations, k, assumptions];
-      coefficientRankLocus = emitLocus[rootPrefix <> "_RANK_DROP_COEFF",
-        rootLocalPrefix <> "_RANK_DROP_COEFF", minorEquations, coefficients, assumptions];
-      jointRankLocus = emitLocus[rootPrefix <> "_RANK_DROP_JOINT",
-        rootLocalPrefix <> "_RANK_DROP_JOINT", minorEquations,
-        Join[k, coefficients], assumptions];
-      AppendTo[rankLoci, <|"RootIndex" -> r, "Joint" -> jointRankLocus|>]
+      rankMinors = allMaximalMinors[matrixAtRoot, rank];
+      emitCell[package, dimension,
+        rootQuantity[scope, pointEvidence, rootIndex, "RANK_DROP_MINORS"],
+        rankMinors];
+      rankEquations = (# == 0) & /@ rankMinors;
+      rootPrefix = rootQuantity[scope, pointEvidence, rootIndex, "RANK_DROP_K"];
+      rankKLocus = emitLocus[package, dimension, rootPrefix, rankEquations,
+        activeKVariables, assumptions];
+      rankCandidates = Join[rankCandidates,
+        candidateRecords[rankKLocus, tokenRankDrop,
+          standardEmissionName[cellEmission[package, dimension, rootPrefix]]]];
+      rootPrefix = rootQuantity[scope, pointEvidence, rootIndex, "RANK_DROP_COEFF"];
+      rankCoefficientLocus = emitLocus[package, dimension, rootPrefix,
+        rankEquations, activeCoefficientVariables, assumptions];
+      rankCandidates = Join[rankCandidates,
+        candidateRecords[rankCoefficientLocus, tokenRankDrop,
+          standardEmissionName[cellEmission[package, dimension, rootPrefix]]]];
+      rootPrefix = rootQuantity[scope, pointEvidence, rootIndex, "RANK_DROP_JOINT"];
+      rankJointLocus = emitLocus[package, dimension, rootPrefix, rankEquations,
+        Join[activeKVariables, activeCoefficientVariables], assumptions];
+      rankCandidates = Join[rankCandidates,
+        candidateRecords[rankJointLocus, tokenRankDrop,
+          standardEmissionName[cellEmission[package, dimension, rootPrefix]]]];
+
+      stackedMinors = allMaximalMinors[stacked, stackedRank];
+      emitCell[package, dimension,
+        rootQuantity[scope, pointEvidence, rootIndex, "STACKED_DROP_MINORS"],
+        stackedMinors];
+      stackedEquations = (# == 0) & /@ stackedMinors;
+      rootPrefix = rootQuantity[scope, pointEvidence, rootIndex, "STACKED_DROP_K"];
+      stackedKLocus = emitLocus[package, dimension, rootPrefix,
+        stackedEquations, activeKVariables, assumptions];
+      stackedCandidates = Join[stackedCandidates,
+        candidateRecords[stackedKLocus, tokenStackedDrop,
+          standardEmissionName[cellEmission[package, dimension, rootPrefix]]]];
+      rootPrefix = rootQuantity[scope, pointEvidence, rootIndex, "STACKED_DROP_COEFF"];
+      stackedCoefficientLocus = emitLocus[package, dimension, rootPrefix,
+        stackedEquations, activeCoefficientVariables, assumptions];
+      stackedCandidates = Join[stackedCandidates,
+        candidateRecords[stackedCoefficientLocus, tokenStackedDrop,
+          standardEmissionName[cellEmission[package, dimension, rootPrefix]]]];
+      rootPrefix = rootQuantity[scope, pointEvidence, rootIndex, "STACKED_DROP_JOINT"];
+      stackedJointLocus = emitLocus[package, dimension, rootPrefix,
+        stackedEquations, Join[activeKVariables, activeCoefficientVariables],
+        assumptions];
+      stackedCandidates = Join[stackedCandidates,
+        candidateRecords[stackedJointLocus, tokenStackedDrop,
+          standardEmissionName[cellEmission[package, dimension, rootPrefix]]]]
     ];
-    AppendTo[q4Derived, <|"MDotK" -> mr.k, "BasisResiduals" -> basisResiduals|>];
-    <|"Root" -> root, "Matrix" -> mr, "Rank" -> rank,
-      "Nullity" -> nullity, "Basis" -> basis,
+    AppendTo[q4Derived, <|
+      "MDotK" -> mDotK,
+      "BasisResiduals" -> basisResiduals|>];
+    <|
+      "Root" -> root,
+      "Matrix" -> matrixAtRoot,
+      "Rank" -> rank,
+      "Nullity" -> nullity,
+      "Stacked" -> stacked,
+      "StackedRank" -> stackedRank,
+      "Basis" -> basis,
       "BasisResiduals" -> basisResiduals|>,
-    {r, Length[distinctRoots]}];
-  <|"Determinant" -> determinant, "Solutions" -> returnedSolutions,
-    "Roots" -> distinctRoots, "RootObjects" -> rootObjects,
-    "RankLoci" -> rankLoci, "Q4Derived" -> q4Derived,
-    "CoincidenceK" -> kLocus, "CoincidenceCoefficient" -> coefficientLocus|>
+    {rootIndex, Length[roots]}];
+  <|
+    "Determinant" -> determinant,
+    "MultiplicityPairs" -> multiplicityPairs,
+    "Roots" -> roots,
+    "RootObjects" -> rootObjects,
+    "Q4Derived" -> q4Derived,
+    "Candidates" -> Join[rankCandidates, stackedCandidates,
+      coincidenceCandidates],
+    "CountStatuses" -> rootCountStatuses|>
 ];
 
-dimensionVectorsEqualQ[left_, right_] := If[ListQ[left] && ListQ[right] &&
-    Length[left] == Length[right],
-  And @@ (TrueQ[PossibleZeroQ[Together[#]]] & /@ (left - right)), False];
+dimensionVectorsEqualQ[left_, right_, assumptions_] :=
+  ListQ[left] && ListQ[right] && Length[left] == Length[right] &&
+    TrueQ[engineSimplify[And @@ Thread[left == right], assumptions]];
 
-dimensionOfScalar[expr_, atomDimensions_, assumptions_] := Module[{head, pieces, dimensions, unique},
+dimensionOfScalar[expression_, atomDimensions_, assumptions_] := Module[
+  {pieces, dimensions, uniqueDimensions, baseDimension},
   Which[
-    NumberQ[expr], {0, 0, 0},
-    KeyExistsQ[atomDimensions, Unevaluated[expr]], atomDimensions[Unevaluated[expr]],
-    Head[expr] === ConditionalExpression,
-      dimensionOfScalar[expr[[1]], atomDimensions, assumptions],
-    Head[expr] === Plus,
-      pieces = List @@ expr;
+    NumberQ[expression], {0, 0, 0},
+    KeyExistsQ[atomDimensions, Unevaluated[expression]],
+      atomDimensions[Unevaluated[expression]],
+    Head[expression] === ConditionalExpression,
+      dimensionOfScalar[expression[[1]], atomDimensions, assumptions],
+    Head[expression] === Plus,
+      pieces = List @@ expression;
       dimensions = dimensionOfScalar[#, atomDimensions, assumptions] & /@ pieces;
-      unique = DeleteDuplicates[dimensions, dimensionVectorsEqualQ];
-      If[Length[unique] == 1, First[unique], DimensionalAlternatives @@ unique],
-    Head[expr] === Times,
-      dimensions = dimensionOfScalar[#, atomDimensions, assumptions] & /@ (List @@ expr);
-      If[And @@ (ListQ /@ dimensions), Total[dimensions], DimensionalProduct[dimensions]],
-    Head[expr] === Power && (IntegerQ[expr[[2]]] || Head[expr[[2]]] === Rational),
-      expr[[2]] dimensionOfScalar[expr[[1]], atomDimensions, assumptions],
-    True, UnknownDimension[expr]
+      uniqueDimensions = DeleteDuplicates[dimensions,
+        dimensionVectorsEqualQ[#1, #2, assumptions] &];
+      If[Length[uniqueDimensions] == 1, First[uniqueDimensions],
+        DimensionalAlternatives @@ uniqueDimensions],
+    Head[expression] === Times,
+      dimensions = dimensionOfScalar[#, atomDimensions, assumptions] & /@
+        (List @@ expression);
+      If[And @@ (ListQ /@ dimensions), Total[dimensions],
+        DimensionalProduct[dimensions]],
+    Head[expression] === Power &&
+        (IntegerQ[expression[[2]]] || RationalQ[expression[[2]]]),
+      baseDimension = dimensionOfScalar[expression[[1]], atomDimensions, assumptions];
+      If[ListQ[baseDimension], expression[[2]] baseDimension,
+        DimensionalPower[baseDimension, expression[[2]]]],
+    True, UnknownDimension[expression]
   ]
 ];
 
-expandedTerms[expr_] := If[TrueQ[expr === 0], {},
-  If[Head[Expand[expr]] === Plus, List @@ Expand[expr], {Expand[expr]}]];
+dimensionOfDeclaredTerm[record_, atomDimensions_, assumptions_] := Module[
+  {density, factorDimension, densityDimension},
+  density = record["DensityJet"];
+  If[TrueQ[density === 0], Return[ZeroFormDimensionUndetermined[density]]];
+  factorDimension = dimensionOfScalar[record["Factor"], atomDimensions, assumptions];
+  densityDimension = dimensionOfScalar[density, atomDimensions, assumptions];
+  If[ListQ[factorDimension] && ListQ[densityDimension],
+    factorDimension + densityDimension,
+    DimensionalProduct[{factorDimension, densityDimension}]]
+];
 
-fieldDegree[term_, fieldAtoms_List] := Total[Exponent[term, #] & /@ fieldAtoms];
+expandedTerms[expression_] := If[TrueQ[expression === 0], {},
+  If[Head[Expand[expression]] === Plus, List @@ Expand[expression],
+    {Expand[expression]}]];
 
-retainThroughFieldDegree[expr_, fieldAtoms_List, maximumDegree_Integer] :=
-  Expand[Total[Select[expandedTerms[expr],
-    fieldDegree[#, fieldAtoms] <= maximumDegree &]]];
-
-dimensionInventory[expr_, atomDimensions_, assumptions_] := Module[{scalars, termDimensions},
-  scalars = If[ListQ[expr], Flatten[expr], {expr}];
-  Map[
+homogeneityRecord[objectName_String, expression_, atomDimensions_, assumptions_] := Module[
+  {scalars, termDimensions, referenceDimensions, testObject},
+  scalars = If[ListQ[expression], Flatten[expression], {expression}];
+  termDimensions = Map[
     Function[scalar,
-      termDimensions = dimensionOfScalar[#, atomDimensions, assumptions] & /@ expandedTerms[scalar];
-      {scalar, termDimensions,
-        If[termDimensions === {}, True,
-          And @@ (dimensionVectorsEqualQ[#, First[termDimensions]] & /@ termDimensions)]}
-    ],
-    scalars
-  ]
+      dimensionOfScalar[#, atomDimensions, assumptions] & /@ expandedTerms[scalar]],
+    scalars];
+  referenceDimensions = DeleteDuplicates[Flatten[termDimensions, 1],
+    dimensionVectorsEqualQ[#1, #2, assumptions] &];
+  testObject = If[referenceDimensions === {}, True,
+    And[And @@ (ListQ /@ referenceDimensions), Length[referenceDimensions] == 1]];
+  {
+    "OBJECT_NAME" -> objectName,
+    "EXPRESSION" -> expression,
+    "TERM_DIMENSIONS" -> termDimensions,
+    "TEST_OBJECT" -> testObject
+  }
 ];
 
-buildDimensions[coefficientOrdering_, actionTerms_, jetAtoms_, fieldModel_, assumptions_, prefix_String] := Module[
-  {dimensionDeclarations, dimensionless, unknownCoefficients, dimensionVariables,
-   coefficientDimensions,
-   atomDimensions, targetDimension, equationVectors, dimensionEquations,
-   flatUnknowns, solution, solutionRules, finalCoefficientDimensions,
-   firstSlotVariables, firstSlotExpressions, coefficientMatrix, equationCount,
-   unknownCount, unresolved, determinacy, finalAtomDimensions, actionInventory},
-  dimensionDeclarations = fieldModel["CoefficientDimensionDeclarations"];
-  dimensionless = Keys[Select[dimensionDeclarations, SameQ[#, {0, 0, 0}] &]];
-  unknownCoefficients = Select[coefficientOrdering, ! MemberQ[dimensionless, #] &];
+buildDimensions[coefficientOrdering_List, actionRecords_List, velocityJet_List,
+    gradientVariables_List, amplitudes_List, wavevector_List, assumptions_,
+    package_String, dimension_Integer] := Module[
+  {dimensionlessCoefficients, unknownCoefficients, dimensionVariables,
+   coefficientDimensions, baseAtomDimensions, targetDimension, termDimensions,
+   equationVectors, dimensionEquations, flatUnknowns, solution, solutionRules,
+   finalCoefficientDimensions, firstSlotVariables, firstSlotExpressions,
+   coefficientMatrix, equationCount, unknownCount, determinacy,
+   finalAtomDimensions, actionHomogeneity, soundSpeedDimensionVariables,
+   soundSpeedDimensionEquations, soundSpeedDimensionSolution,
+   soundSpeedDimension},
+  dimensionlessCoefficients = If[MemberQ[coefficientOrdering, s], {s}, {}];
+  unknownCoefficients = Select[coefficientOrdering,
+    ! MemberQ[dimensionlessCoefficients, #] &];
   dimensionVariables = Association@Table[
     coefficient -> Table[
-      Symbol["dim" <> SymbolName[coefficient] <> "slot" <> ToString[slot]],
+      Symbol["dim" <> SymbolName[coefficient] <> "Slot" <> ToString[slot]],
       {slot, 3}],
     {coefficient, unknownCoefficients}];
   coefficientDimensions = Association@Table[
-    coefficient -> If[MemberQ[dimensionless, coefficient], {0, 0, 0},
-      dimensionVariables[coefficient]],
+    coefficient -> If[MemberQ[dimensionlessCoefficients, coefficient],
+      {0, 0, 0}, dimensionVariables[coefficient]],
     {coefficient, coefficientOrdering}];
-  atomDimensions = Join[coefficientDimensions, jetAtoms];
+  baseAtomDimensions = Join[coefficientDimensions,
+    AssociationThread[velocityJet,
+      ConstantArray[{1, -1, 0}, Length[velocityJet]]],
+    AssociationThread[gradientVariables,
+      ConstantArray[{0, 0, 0}, Length[gradientVariables]]],
+    AssociationThread[amplitudes,
+      ConstantArray[{1, 0, 0}, Length[amplitudes]]],
+    AssociationThread[wavevector,
+      ConstantArray[{-1, 0, 0}, Length[wavevector]]],
+    <|omegaSquared -> {0, -2, 0}, lambdaScale -> {0, 0, 0},
+      kwSquared -> {-2, 0, 0}|>];
   targetDimension = {2 - dimensionSymbol, -2, 1};
-  equationVectors = DeleteDuplicates[Flatten[
-    (dimensionOfScalar[#, atomDimensions, assumptions] & /@ expandedTerms[#]) & /@ actionTerms,
-    1]];
-  dimensionEquations = Flatten[(Thread[# == targetDimension] &) /@ equationVectors];
+  termDimensions = dimensionOfDeclaredTerm[#, baseAtomDimensions, assumptions] & /@
+    actionRecords;
+  equationVectors = Select[termDimensions, ListQ];
+  dimensionEquations = Flatten[Thread[# == targetDimension] & /@ equationVectors];
   flatUnknowns = Flatten[Values[dimensionVariables]];
   solution = Quiet[Solve[dimensionEquations, flatUnknowns]];
-  emit[prefix <> "_DIM_EQUATIONS", dimensionEquations];
-  emit[prefix <> "_DIM_SOLUTION", solution];
-  solutionRules = If[solution === {}, {}, First[solution]];
+  emitCell[package, dimension, "DIM_EQUATIONS", dimensionEquations];
+  emitCell[package, dimension, "DIM_SOLUTION", solution];
+  solutionRules = If[ListQ[solution] && solution =!= {}, First[solution], {}];
   finalCoefficientDimensions = Table[
-    {coefficient, simp[coefficientDimensions[coefficient] /. solutionRules, assumptions]},
+    {coefficient,
+      engineSimplify[coefficientDimensions[coefficient] /. solutionRules,
+        assumptions]},
     {coefficient, coefficientOrdering}];
-  emit[prefix <> "_DIM_COEFFICIENTS", finalCoefficientDimensions];
+  emitCell[package, dimension, "DIM_COEFFICIENTS", finalCoefficientDimensions];
+
   firstSlotVariables = If[unknownCoefficients === {}, {},
     dimensionVariables[#][[1]] & /@ unknownCoefficients];
   firstSlotExpressions = If[equationVectors === {}, {},
     (#[[1]] - targetDimension[[1]]) & /@ equationVectors];
-  coefficientMatrix = If[firstSlotExpressions === {} || firstSlotVariables === {},
-    ConstantArray[0, {Length[firstSlotExpressions], Length[firstSlotVariables]}],
+  coefficientMatrix = If[firstSlotVariables === {} || firstSlotExpressions === {}, {},
     Normal[Last[CoefficientArrays[firstSlotExpressions, firstSlotVariables]]]];
-  equationCount = If[coefficientMatrix === {} || Length[firstSlotVariables] == 0,
-    0, MatrixRank[coefficientMatrix]];
+  equationCount = If[firstSlotVariables === {} || firstSlotExpressions === {}, 0,
+    assumedRank[coefficientMatrix, assumptions]];
   unknownCount = Length[unknownCoefficients];
-  unresolved = If[solution === {}, flatUnknowns,
-    Intersection[flatUnknowns,
-      Cases[Values[Association[solutionRules]], z_Symbol, Infinity]]];
   determinacy = Which[
-    solution === {}, OVER_DETERMINED,
-    unresolved =!= {} || Length[solutionRules] < Length[flatUnknowns], UNDER_DETERMINED,
-    True, EXACTLY_DETERMINED
+    ! ListQ[solution] || solution === {}, tokenOverDetermined,
+    equationCount > unknownCount, tokenOverDetermined,
+    equationCount < unknownCount, tokenUnderDetermined,
+    True, tokenExactlyDetermined
   ];
-  emit[prefix <> "_DIM_EQUATION_COUNT", equationCount];
-  emit[prefix <> "_DIM_UNKNOWN_COUNT", unknownCount];
-  emit[prefix <> "_DIM_COUNT_DIFFERENCE", equationCount - unknownCount];
-  emit[prefix <> "_DIM_DETERMINACY", determinacy];
-  finalAtomDimensions = atomDimensions /. solutionRules;
-  actionInventory = dimensionInventory[#, finalAtomDimensions, assumptions] & /@ actionTerms;
-  emit[prefix <> "_DIM_HOMOGENEITY_ACTION", actionInventory];
-  <|"CoefficientDimensions" -> finalCoefficientDimensions,
-    "AtomDimensions" -> finalAtomDimensions, "Solution" -> solution,
+  emitCell[package, dimension, "DIM_EQUATION_COUNT", equationCount];
+  emitCell[package, dimension, "DIM_UNKNOWN_COUNT", unknownCount];
+  emitCell[package, dimension, "DIM_COUNT_DIFFERENCE", equationCount - unknownCount];
+  emitCell[package, dimension, "DIM_DETERMINACY", determinacy];
+
+  soundSpeedDimensionVariables = Table[
+    Symbol["dimCs0Slot" <> ToString[slot]], {slot, 3}];
+  soundSpeedDimensionEquations = Thread[
+    2 soundSpeedDimensionVariables + {-2, 0, 0} == {0, -2, 0}];
+  soundSpeedDimensionSolution = Quiet[Solve[
+    soundSpeedDimensionEquations, soundSpeedDimensionVariables]];
+  soundSpeedDimension = soundSpeedDimensionVariables /.
+    First[soundSpeedDimensionSolution];
+  finalAtomDimensions = Join[baseAtomDimensions /. solutionRules,
+    <|cs0 -> soundSpeedDimension|>];
+  actionHomogeneity = Table[
+    homogeneityRecord["ACTION_TERM_" <> ToString[index],
+      actionRecords[[index]]["Factor"] actionRecords[[index]]["DensityJet"],
+      finalAtomDimensions, assumptions],
+    {index, Length[actionRecords]}];
+  emitCell[package, dimension, "DIM_HOMOGENEITY_ACTION", actionHomogeneity];
+  <|
+    "CoefficientDimensions" -> finalCoefficientDimensions,
+    "AtomDimensions" -> finalAtomDimensions,
+    "Solution" -> solution,
     "SolutionRules" -> solutionRules|>
 ];
 
-strataFromRankLoci[rankLoci_, assumptions_, pointVariables_] := Module[
-  {branchPairs, branches, equationSets, uniqueSets, instances},
-  branchPairs = Flatten[Map[
-    Function[item,
-      If[ListQ[item["Joint"]["Solution"]] && ListQ[item["Joint"]["RealAdmissible"]],
-        Transpose[{item["Joint"]["Solution"], item["Joint"]["RealAdmissible"]}], {}]],
-    rankLoci], 1];
-  branches = First /@ Select[branchPairs,
-    ! TrueQ[Last[Last[#]] === False] &];
-  equationSets = branchEquations /@ branches;
-  uniqueSets = DeleteDuplicates[equationSets,
-    Sort[ToString[#, InputForm] & /@ #1] === Sort[ToString[#, InputForm] & /@ #2] &];
-  instances = Map[
-    Function[equations,
-      Quiet[FindInstance[And[assumptions, And @@ equations], pointVariables, Reals, 1]]],
-    uniqueSets];
-  Cases[MapThread[{#1, #2} &, {uniqueSets, instances}],
-    {equations_, instance_} /; ListQ[instance] && Length[instance] > 0 &&
-      ListQ[First[instance]] && And @@ (MatchQ[#, _Rule] & /@ First[instance]) :>
-      <|"Equations" -> equations, "Point" -> First[instance]|>]
-];
-
-emitScaledRoots[spectrum_, k_, assumptions_, prefix_String] := Module[
-  {root, scaled, ratio, numeratorExponent, denominatorExponent, candidate, exponent},
+emitScaledRoots[spectrum_, wavevector_List, assumptions_, package_String,
+    dimension_Integer] := Module[
+  {root, scaled, ratio, numeratorExponent, denominatorExponent, candidate,
+   exponent, scaleAssumptions},
+  scaleAssumptions = And[assumptions, lambdaScale > 0];
   Do[
-    root = spectrum["Roots"][[r]];
-    scaled = simp[root /. Thread[k -> lambdaScale k],
-      And[assumptions, lambdaScale > 0]];
-    emit[prefix <> "_ROOT" <> ToString[r] <> "_SCALED", scaled];
-    emit[prefix <> "_ROOT" <> ToString[r] <> "_UNSCALED", root];
-    If[TrueQ[simp[root == 0, assumptions]],
-      ratio = UNDEFINED_RATIO;
-      exponent = UNDEFINED_RATIO,
-      ratio = simp[scaled/root, And[assumptions, lambdaScale > 0]];
+    root = spectrum["Roots"][[rootIndex]];
+    scaled = engineSimplify[root /. Thread[wavevector -> lambdaScale wavevector],
+      scaleAssumptions];
+    emitCell[package, dimension, "ROOT" <> ToString[rootIndex] <> "_SCALED", scaled];
+    emitCell[package, dimension, "ROOT" <> ToString[rootIndex] <> "_UNSCALED", root];
+    If[TrueQ[engineSimplify[root == 0, assumptions]],
+      ratio = tokenUndefinedRatio;
+      exponent = tokenUndefinedRatio,
+      ratio = engineSimplify[scaled/root, scaleAssumptions];
       numeratorExponent = Exponent[Numerator[Together[ratio]], lambdaScale];
       denominatorExponent = Exponent[Denominator[Together[ratio]], lambdaScale];
       candidate = numeratorExponent - denominatorExponent;
-      exponent = If[TrueQ[simp[ratio == lambdaScale^candidate,
-        And[assumptions, lambdaScale > 0]]], candidate, NOT_A_PURE_POWER]
+      exponent = If[TrueQ[engineSimplify[ratio == lambdaScale^candidate,
+          scaleAssumptions]], candidate, tokenNotPurePower]
     ];
-    emit[prefix <> "_ROOT" <> ToString[r] <> "_SCALE_RATIO", ratio];
-    emit[prefix <> "_ROOT" <> ToString[r] <> "_SCALE_EXPONENT", exponent],
-    {r, Length[spectrum["Roots"]]}]
+    emitCell[package, dimension,
+      "ROOT" <> ToString[rootIndex] <> "_SCALE_RATIO", ratio];
+    emitCell[package, dimension,
+      "ROOT" <> ToString[rootIndex] <> "_SCALE_EXPONENT", exponent],
+    {rootIndex, Length[spectrum["Roots"]]}]
 ];
 
-emitQ7[packageRecords_, coordinateDensities_, prefix_String] := Module[
-  {gMatrix, d, curlTerm, curlDensityValue, cVector, reference, fullW},
-  gMatrix = coordinateDensities["IndependentGradient"];
-  d = Length[gMatrix];
-  fullW = Total[(#["Factor"] (#["DensityCoordinate"] /.
-      Thread[Flatten[coordinateDensities["Gradient"]] -> Flatten[gMatrix]]) &) /@ packageRecords];
+emitQ7[stiffnessRecordList_, coordinateGradient_, independentGradient_,
+    package_String, dimension_Integer] := Module[
+  {gradientRules, fullStiffness, curlTerm, unweightedCurl, leviCivita,
+   curlVector, curlReference, residual},
+  gradientRules = Thread[Flatten[coordinateGradient] -> Flatten[independentGradient]];
+  fullStiffness = Total[(#["Factor"] #["DensityCoordinate"]) & /@
+      stiffnessRecordList] /. gradientRules;
   curlTerm = Total[Map[
-    Function[record,
-      If[TrueQ[record["Kind"] === "curl"],
-        record["Factor"] (record["DensityCoordinate"] /.
-          Thread[Flatten[coordinateDensities["Gradient"]] -> Flatten[gMatrix]]), 0]],
-    packageRecords]];
-  curlDensityValue = coordinateDensities["Curl"] /.
-    Thread[Flatten[coordinateDensities["Gradient"]] -> Flatten[gMatrix]];
-  cVector = Table[Total[Flatten[Table[
-    Signature[{i, j, k}] gMatrix[[j, k]], {j, d}, {k, d}]]], {i, d}];
-  reference = Expand[cVector.cVector];
-  emit[prefix <> "_Q7_W_FULL", Expand[fullW]];
-  emit[prefix <> "_Q7_CURL_TERM", Expand[curlTerm]];
-  emit[prefix <> "_Q7_CURL_DENSITY", Expand[curlDensityValue]];
-  emit[prefix <> "_Q7_CURL_REFERENCE", reference];
-  emit[prefix <> "_Q7_RESIDUAL", Expand[curlDensityValue - reference]];
-  Expand[curlDensityValue - reference]
+      Function[record, If[record["Kind"] === "curl",
+        record["Factor"] record["DensityCoordinate"], 0]],
+      stiffnessRecordList]] /. gradientRules;
+  unweightedCurl = curlDensity[coordinateGradient] /. gradientRules;
+  leviCivita = LeviCivitaTensor[dimension];
+  curlVector = Table[Total[Flatten[Table[
+      leviCivita[[component, row, column]] independentGradient[[row, column]],
+      {row, dimension}, {column, dimension}]]],
+    {component, dimension}];
+  curlReference = Expand[curlVector.curlVector];
+  residual = Expand[unweightedCurl - curlReference];
+  emitCell[package, dimension, "Q7_W_FULL", Expand[fullStiffness]];
+  emitCell[package, dimension, "Q7_CURL_TERM", Expand[curlTerm]];
+  emitCell[package, dimension, "Q7_CURL_DENSITY", Expand[unweightedCurl]];
+  emitCell[package, dimension, "Q7_CURL_REFERENCE", curlReference];
+  emitCell[package, dimension, "Q7_RESIDUAL", residual];
+  residual
 ];
 
+sourceOrder = {tokenRankDrop, tokenStackedDrop, tokenRootCoincidence};
+sourcePosition[source_] := FirstPosition[sourceOrder, source][[1]];
+
+mergeCandidates[candidates_List] := Module[{merged = {}, key, position, record},
+  Do[
+    record = candidates[[candidateIndex]];
+    key = ToString[record["Branch"],
+      InputForm, PageWidth -> Infinity];
+    position = FirstPosition[merged,
+      existing_Association /; SameQ[existing["Key"], key],
+      Missing["NotFound"], {1}];
+    If[MissingQ[position],
+      AppendTo[merged, <|
+        "Key" -> key,
+        "Branch" -> record["Branch"],
+        "Rules" -> record["Rules"],
+        "Equations" -> record["Equations"],
+        "Variables" -> record["Variables"],
+        "Point" -> record["Point"],
+        "Contributors" -> {{record["Source"], record["SourceLocusTag"]}}|>],
+      merged[[First[position], "Contributors"]] = DeleteDuplicates[
+        Append[merged[[First[position], "Contributors"]],
+          {record["Source"], record["SourceLocusTag"]}]];
+      merged[[First[position], "Variables"]] = DeleteDuplicates[Join[
+        merged[[First[position], "Variables"]], record["Variables"]]]
+    ],
+    {candidateIndex, Length[candidates]}];
+  merged
+];
+
+componentFreeParameters[restrictedMatrix_, wavevector_List,
+    coefficients_List] := Select[DeleteDuplicates[Join[wavevector, coefficients]],
+  ! FreeQ[restrictedMatrix, #] &];
+
+failureJacobianPayload[componentRoots_, coefficientOrdering_, equations_, point_] := {
+  "FAILURE_TOKEN" -> "MISSING_TANGENT_COORDINATES_AND_OFF_STRATUM_EXTENSION",
+  "RECOMPUTED_ROOTS" -> componentRoots,
+  "COEFFICIENT_ORDERING" -> coefficientOrdering,
+  "DEFINING_EQUATIONS" -> equations,
+  "EVALUATION_POINT" -> point
+};
+
+emitStrata[candidates_List, matrix_, genericRootJacobian_, coefficients_List,
+    wavevector_List, assumptions_, package_String, dimension_Integer] := Module[
+  {strata, ordering, stratum, contributors, sources, sourceTags, scope,
+   restrictionRules, restrictedMatrix, restrictedAssumptions, freeParameters,
+   activeK, activeCoefficients, componentSpectrum, coverage, point,
+   pointMatrix, pointAssumptions, pointActiveK, pointActiveCoefficients,
+   pointSpectrum, restrictedJacobian},
+  strata = Map[
+    Function[component,
+      Append[component, "Point" -> exactProjectedInstance[
+        And[assumptions, And @@ component["Equations"]],
+        component["Variables"]]]],
+    mergeCandidates[candidates]];
+  strata = Select[strata, ListQ[#["Point"]] &];
+  ordering = Lookup[strata, "Branch", {}];
+  emitCell[package, dimension, "STRATUM_ORDERING", ordering];
+  Do[
+    stratum = strata[[stratumIndex]];
+    scope = "STRATUM" <> ToString[stratumIndex] <> "_";
+    contributors = SortBy[stratum["Contributors"],
+      sourcePosition[First[#]] &];
+    sources = DeleteDuplicates[First /@ contributors];
+    sourceTags = Last /@ contributors;
+    restrictionRules = stratum["Rules"];
+    restrictedMatrix = Map[engineSimplify[#,
+          assumptions /. restrictionRules] &,
+      matrix /. restrictionRules, {2}];
+    restrictedAssumptions = engineSimplify[assumptions /. restrictionRules, True];
+    freeParameters = componentFreeParameters[restrictedMatrix, wavevector, coefficients];
+    point = stratum["Point"];
+
+    emitCell[package, dimension, scope <> "SOURCES", sources];
+    emitCell[package, dimension, scope <> "SOURCE_LOCUS_TAGS", sourceTags];
+    emitCell[package, dimension, scope <> "DEFINING_EQUATIONS",
+      stratum["Equations"]];
+    emitCell[package, dimension, scope <> "FREE_PARAMETERS", freeParameters];
+    emitCell[package, dimension, scope <> "POINT", point];
+
+    activeK = Select[wavevector, MemberQ[freeParameters, #] &];
+    activeCoefficients = Select[coefficients, MemberQ[freeParameters, #] &];
+    componentSpectrum = computeSpectrumAndModes[restrictedMatrix, coefficients,
+      wavevector, restrictedAssumptions, package, dimension, scope, False,
+      False, True, freeParameters, activeK, activeCoefficients];
+    coverage = If[And @@ (MemberQ[{tokenConstant, tokenVaries}, #] & /@
+          componentSpectrum["CountStatuses"]),
+      tokenCompleteCoverage, tokenIncompleteCoverage];
+    emitCell[package, dimension, scope <> "COMPONENT_Q3_Q4_COVERAGE", coverage];
+    ClearSystemCache[];
+
+    pointMatrix = Map[engineSimplify[#, assumptions /. point] &,
+      matrix /. point, {2}];
+    pointAssumptions = engineSimplify[assumptions /. point, True];
+    pointActiveK = Select[wavevector, ! FreeQ[pointMatrix, #] &];
+    pointActiveCoefficients = Select[coefficients, ! FreeQ[pointMatrix, #] &];
+    pointSpectrum = computeSpectrumAndModes[pointMatrix, coefficients, wavevector,
+      pointAssumptions, package, dimension, scope, True, False, False, {},
+      pointActiveK, pointActiveCoefficients];
+
+    restrictedJacobian = Quiet[genericRootJacobian /. point];
+    emitCell[package, dimension,
+      scope <> "POINT_EVIDENCE_ROOT_COEFFICIENT_JACOBIAN_RESTRICTED",
+      restrictedJacobian];
+    emitCell[package, dimension,
+      scope <> "ROOT_COEFFICIENT_JACOBIAN_RECOMPUTED",
+      failureJacobianPayload[componentSpectrum["Roots"], coefficients,
+        stratum["Equations"], point]];
+    ClearSystemCache[],
+    {stratumIndex, Length[strata]}];
+  strata
+];
+
+closureRankFromMatrix[matrix_List, assumptions_] := Module[
+  {rowCount, columnCount, possibleRanks, realisedRanks},
+  rowCount = Length[matrix];
+  columnCount = If[rowCount == 0, 0, Length[First[matrix]]];
+  possibleRanks = Range[Min[rowCount, columnCount]];
+  realisedRanks = Select[possibleRanks,
+    Function[rank,
+      AnyTrue[allMaximalMinors[matrix, rank],
+        ! TrueQ[engineSimplify[# == 0, assumptions]] &]]];
+  Max[Prepend[realisedRanks, 0]]
+];
+
+emitQ11[spectrum_, coefficients_List, wavevector_List, amplitudes_List,
+    assumptions_, package_String, dimension_Integer] := Module[
+  {bulkAssumptions, bulkFieldRecord, bulkDispersion, kwObjects, root,
+   kwEquation, kwSolutions, kwExpression, closureSourceEquations,
+   closureEquations, closureUnknowns, closureMatrix, closureRank},
+  bulkAssumptions = And[assumptions, Element[A, Reals], cs0 > 0];
+  bulkFieldRecord = <|
+    "Amplitude" -> A,
+    "FieldEquation" -> (bulkPhi[Sequence @@ wavevector, w, t] ==
+      A Cos[Total[MapThread[Times, {wavevector,
+          Table[Symbol["x" <> ToString[index]], {index, dimension}]}]] +
+        kw w - omegaLinear t]),
+    "Dispersion" -> (omegaSquared == cs0^2 (Total[wavevector^2] + kwSquared))|>;
+  bulkDispersion = bulkFieldRecord["Dispersion"];
+  kwObjects = Table[
+    root = spectrum["Roots"][[rootIndex]];
+    kwEquation = bulkDispersion /. omegaSquared -> root;
+    emitCell[package, dimension,
+      "ROOT" <> ToString[rootIndex] <> "_KW_EQUATION", kwEquation];
+    kwSolutions = Quiet[Solve[kwEquation, kwSquared]];
+    kwExpression = If[ListQ[kwSolutions] && kwSolutions =!= {},
+      kwSquared /. First[kwSolutions],
+      Failure["UnsolvedBulkNormalWavevector", <|
+        "Equation" -> kwEquation, "SolverResult" -> kwSolutions|>]];
+    emitCell[package, dimension,
+      "ROOT" <> ToString[rootIndex] <> "_KW_SQUARED", kwExpression];
+    emitCell[package, dimension,
+      "ROOT" <> ToString[rootIndex] <> "_KW_SIGN",
+      signPayload[kwExpression, bulkAssumptions]];
+    emitLocus[package, dimension,
+      "ROOT" <> ToString[rootIndex] <> "_KW_ZERO_LOCUS",
+      {kwExpression == 0}, Join[coefficients, {cs0}], bulkAssumptions];
+    kwExpression,
+    {rootIndex, Length[spectrum["Roots"]]}];
+
+  closureSourceEquations = Join[
+    Table[braneField[component] == amplitudes[[component]] Cos[phaseVariable],
+      {component, dimension}],
+    {bulkFieldRecord["FieldEquation"], bulkFieldRecord["Dispersion"]}];
+  closureEquations = Select[closureSourceEquations,
+    Function[equation,
+      ! FreeQ[equation, bulkFieldRecord["Amplitude"]] &&
+        AnyTrue[amplitudes, ! FreeQ[equation, #] &]]];
+  closureUnknowns = Join[amplitudes, {bulkFieldRecord["Amplitude"]}];
+  closureMatrix = Table[
+    Coefficient[relationResidual[equation], unknown],
+    {equation, closureEquations}, {unknown, closureUnknowns}];
+  closureRank = closureRankFromMatrix[closureMatrix, bulkAssumptions];
+  emitCell[package, dimension, "C1_EQUATIONS", closureEquations];
+  emitCell[package, dimension, "C2_UNKNOWNS", closureUnknowns];
+  emitCell[package, dimension, "C2_COUNT", Length[closureUnknowns]];
+  emitCell[package, dimension, "C3_RANK", closureRank];
+  emitCell[package, dimension, "C4_DIFFERENCE",
+    Length[closureUnknowns] - closureRank];
+  kwObjects
+];
+
+runCell[package_String, dimension_Integer, invariantData_] := Module[
+  {frame, spaceCoordinates, timeCoordinate, fields, coordinateGradient,
+   gradientVariables, gradientJet, velocityJet, bareFieldJet, amplitudes,
+   wavevector, phase, premises, assumptions, bulkAssumptions,
+   pdJet, pdCoordinate, densityJet, densityCoordinate, kineticRecordList,
+   stiffnessRecordList, jetRules, kineticTermsJet, kineticTermsCoordinate,
+   stiffnessTermsJet, stiffnessTermsCoordinate, stiffnessFunctional,
+   lagrangianJet, lagrangianCoordinate, eulerExpressions, eulerSystem,
+   ansatzRules, planeEuler, strippedFactor, amplitudeEquations, matrixA,
+   planeGradientRules, planeVelocityRules, planeLagrangian,
+   averagedLagrangian, matrixB, matrixResidual, routeSelection,
+   downstreamMatrix, coefficientOrdering, matrixCoefficientJacobian,
+   actionRecords, dimensionData, spectrum, rootDimensionObjects,
+   scaledObjects, genericRootJacobian, strata, q7Residual, kwObjects,
+   derivedHomogeneity, independentGradient},
+  frame = coordinateFrame[dimension];
+  spaceCoordinates = frame["X"];
+  timeCoordinate = frame["T"];
+  fields = frame["Fields"];
+  coordinateGradient = frame["Gradient"];
+  gradientVariables = invariantData["GVariables"];
+  gradientJet = Partition[gradientVariables, dimension];
+  velocityJet = Table[Symbol["v" <> ToString[index]], {index, dimension}];
+  bareFieldJet = Table[Symbol["uBare" <> ToString[index]], {index, dimension}];
+  amplitudes = Table[Symbol["a" <> ToString[index]], {index, dimension}];
+  wavevector = Table[Symbol["k" <> ToString[index]], {index, dimension}];
+  phase = Total[MapThread[Times, {wavevector, spaceCoordinates}]] -
+    omegaLinear timeCoordinate;
+
+  premises = makePremises[package, dimension, wavevector, amplitudes];
+  assumptions = premises["AtDimension"];
+  bulkAssumptions = And[assumptions, Element[A, Reals], cs0 > 0];
+  emitLocalCell[package, dimension, "PREMISE_INVENTORY",
+    premiseInventory[premises, package, dimension, amplitudes]];
+
+  pdJet = invariantData["PDPolynomial"];
+  pdCoordinate = pdJet /. Thread[gradientVariables -> Flatten[coordinateGradient]];
+  emitCell[package, dimension, "PD_TERM", Expand[pdCoordinate]];
+  densityJet = <|
+    "curl" -> curlDensity[gradientJet],
+    "div" -> divDensity[gradientJet],
+    "symtl" -> symtlDensity[gradientJet],
+    "pd" -> pdJet|>;
+  densityCoordinate = <|
+    "curl" -> curlDensity[coordinateGradient],
+    "div" -> divDensity[coordinateGradient],
+    "symtl" -> symtlDensity[coordinateGradient],
+    "pd" -> pdCoordinate|>;
+  kineticRecordList = kineticRecords[package, velocityJet];
+  stiffnessRecordList = stiffnessRecords[package, densityJet, densityCoordinate];
+  jetRules = Join[
+    Thread[velocityJet -> (D[#, timeCoordinate] & /@ fields)],
+    Thread[gradientVariables -> Flatten[coordinateGradient]],
+    Thread[bareFieldJet -> fields]];
+  kineticTermsJet = (#["Factor"] #["DensityJet"]) & /@ kineticRecordList;
+  kineticTermsCoordinate = kineticTermsJet /. jetRules;
+  stiffnessTermsJet = (#["Factor"] #["DensityJet"]) & /@ stiffnessRecordList;
+  stiffnessTermsCoordinate = (#["Factor"] #["DensityCoordinate"]) & /@
+    stiffnessRecordList;
+  stiffnessFunctional = Total[stiffnessTermsCoordinate];
+  lagrangianJet = Total[kineticTermsJet] - Total[stiffnessTermsJet];
+  lagrangianCoordinate = Expand[lagrangianJet /. jetRules];
+  emitCell[package, dimension, "LAGRANGIAN", lagrangianCoordinate];
+  emitCell[package, dimension, "KINETIC_TERMS", kineticTermsCoordinate];
+  emitCell[package, dimension, "STIFFNESS_TERMS", stiffnessTermsCoordinate];
+
+  eulerExpressions = Table[Expand[
+      D[D[lagrangianJet, velocityJet[[component]]] /. jetRules,
+        timeCoordinate] +
+      Total[Table[
+        D[D[lagrangianJet, gradientJet[[row, component]]] /. jetRules,
+          spaceCoordinates[[row]]],
+        {row, dimension}]] -
+      (D[lagrangianJet, bareFieldJet[[component]]] /. jetRules)],
+    {component, dimension}];
+  eulerSystem = (# == 0) & /@ eulerExpressions;
+  emitCell[package, dimension, "EULER_LAGRANGE_SYSTEM", eulerSystem];
+
+  ansatzRules = Table[With[
+      {head = frame["Heads"][[component]],
+       amplitude = amplitudes[[component]],
+       arguments = frame["Arguments"], phaseExpression = phase},
+      head -> Function[Evaluate[arguments],
+        Evaluate[amplitude Cos[phaseExpression]]]],
+    {component, dimension}];
+  planeEuler = TrigFactor[eulerExpressions /. ansatzRules] /.
+    omegaLinear^2 -> omegaSquared;
+  strippedFactor = routeAStrippedFactor[planeEuler, amplitudes,
+    Join[spaceCoordinates, {timeCoordinate}]];
+  If[MissingQ[strippedFactor],
+    Throw[Failure["RouteAStrippedFactorUnavailable", <|
+      "PlaneEulerExpressions" -> planeEuler|>], operationalFailure]];
+  amplitudeEquations = engineSimplify[#/strippedFactor, assumptions] & /@
+    planeEuler;
+  matrixA = Table[engineSimplify[
+      Coefficient[amplitudeEquations[[row]], amplitudes[[column]]], assumptions],
+    {row, dimension}, {column, dimension}];
+  emitCell[package, dimension, "M_ROUTE_A_STRIPPED_FACTOR", strippedFactor];
+  emitCell[package, dimension, "M_A", matrixA];
+
+  planeGradientRules = Thread[gradientVariables -> Flatten[Table[
+      D[amplitudes[[column]] Cos[phaseVariable], phaseVariable] wavevector[[row]],
+      {row, dimension}, {column, dimension}]]];
+  planeVelocityRules = Thread[velocityJet -> Table[
+      D[amplitudes[[component]] Cos[phaseVariable], phaseVariable] (-omegaLinear),
+      {component, dimension}]];
+  planeLagrangian = lagrangianJet /.
+    Join[planeGradientRules, planeVelocityRules];
+  averagedLagrangian = engineSimplify[
+    Integrate[Expand[planeLagrangian], {phaseVariable, 0, 2 Pi}]/(2 Pi) /.
+      omegaLinear^2 -> omegaSquared, assumptions];
+  matrixB = Table[engineSimplify[
+      D[averagedLagrangian, amplitudes[[row]], amplitudes[[column]]],
+      assumptions],
+    {row, dimension}, {column, dimension}];
+  emitCell[package, dimension, "M_B", matrixB];
+  matrixResidual = Map[engineSimplify[#, assumptions] &, matrixA - matrixB, {2}];
+  emitCell[package, dimension, "M_RESIDUAL", matrixResidual];
+  emitCell[package, dimension, "M_RATIO",
+    engineSimplify[matrixA[[1, 1]]/matrixB[[1, 1]], assumptions]];
+  emitCell[package, dimension, "M_ROUTE_RESIDUAL_SCOPE",
+    "CODING_CONSISTENCY_ONLY"];
+  routeSelection = <|"TOKEN" -> "M_B", "MATRIX" -> matrixB|>;
+  downstreamMatrix = routeSelection["MATRIX"];
+  emitCell[package, dimension, "M_ROUTE_USED", routeSelection["TOKEN"]];
+
+  coefficientOrdering = coefficientOrderingFromRecords[
+    kineticRecordList, stiffnessRecordList];
+  emitCell[package, dimension, "COEFFICIENT_ORDERING", coefficientOrdering];
+  matrixCoefficientJacobian = Table[
+    Map[engineSimplify[#, assumptions] &,
+      D[downstreamMatrix, coefficient], {2}],
+    {coefficient, coefficientOrdering}];
+  emitCell[package, dimension, "M_COEFFICIENT_JACOBIAN",
+    matrixCoefficientJacobian];
+
+  actionRecords = Join[kineticRecordList,
+    Map[Append[#, "Factor" -> -#["Factor"]] &, stiffnessRecordList]];
+  dimensionData = buildDimensions[coefficientOrdering, actionRecords,
+    velocityJet, gradientVariables, amplitudes, wavevector, assumptions,
+    package, dimension];
+
+  spectrum = computeSpectrumAndModes[downstreamMatrix, coefficientOrdering,
+    wavevector, assumptions, package, dimension, "", False, True, False, {},
+    wavevector, coefficientOrdering];
+  rootDimensionObjects = Table[
+    dimensionOfScalar[spectrum["Roots"][[rootIndex]]/Total[wavevector^2],
+      dimensionData["AtomDimensions"], assumptions],
+    {rootIndex, Length[spectrum["Roots"]]}];
+  Do[emitCell[package, dimension,
+      "ROOT" <> ToString[rootIndex] <> "_DIM_OVER_KSQ",
+      rootDimensionObjects[[rootIndex]]],
+    {rootIndex, Length[rootDimensionObjects]}];
+  emitScaledRoots[spectrum, wavevector, assumptions, package, dimension];
+  genericRootJacobian = Table[
+    engineSimplify[D[spectrum["Roots"][[rootIndex]], coefficient], assumptions],
+    {rootIndex, Length[spectrum["Roots"]]},
+    {coefficient, coefficientOrdering}];
+  emitCell[package, dimension, "ROOT_COEFFICIENT_JACOBIAN",
+    genericRootJacobian];
+
+  strata = emitStrata[spectrum["Candidates"], downstreamMatrix,
+    genericRootJacobian, coefficientOrdering, wavevector, assumptions,
+    package, dimension];
+
+  q7Residual = If[dimension == 3,
+    independentGradient = Partition[invariantData["GVariables"], dimension];
+    emitQ7[stiffnessRecordList, coordinateGradient, independentGradient,
+      package, dimension],
+    tokenNotApplicable];
+
+  kwObjects = emitQ11[spectrum, coefficientOrdering, wavevector, amplitudes,
+    assumptions, package, dimension];
+
+  derivedHomogeneity = Join[
+    {homogeneityRecord["DET_M", spectrum["Determinant"],
+      dimensionData["AtomDimensions"], assumptions]},
+    Table[homogeneityRecord["ROOT" <> ToString[rootIndex] <> "_VALUE",
+      spectrum["Roots"][[rootIndex]], dimensionData["AtomDimensions"],
+      assumptions], {rootIndex, Length[spectrum["Roots"]]}],
+    Table[homogeneityRecord["ROOT" <> ToString[rootIndex] <> "_N5_M_DOT_K",
+      spectrum["Q4Derived"][[rootIndex]]["MDotK"],
+      dimensionData["AtomDimensions"], assumptions],
+      {rootIndex, Length[spectrum["Q4Derived"]]}],
+    Table[homogeneityRecord["ROOT" <> ToString[rootIndex] <> "_N6_RESIDUAL",
+      spectrum["Q4Derived"][[rootIndex]]["BasisResiduals"],
+      dimensionData["AtomDimensions"], assumptions],
+      {rootIndex, Length[spectrum["Q4Derived"]]}],
+    If[dimension == 3,
+      {homogeneityRecord["Q7_RESIDUAL", q7Residual,
+        dimensionData["AtomDimensions"], assumptions]}, {}],
+    Table[homogeneityRecord["ROOT" <> ToString[rootIndex] <> "_KW_SQUARED",
+      kwObjects[[rootIndex]], dimensionData["AtomDimensions"], bulkAssumptions],
+      {rootIndex, Length[kwObjects]}]
+  ];
+  emitCell[package, dimension, "DIM_HOMOGENEITY_DERIVED", derivedHomogeneity];
+];
+
+packageOrder = {
+  "MAIN", "XFORM_CURLONLY", "XFORM_EXTRA", "XFORM_DIVONLY",
+  "XFORM_TRACELESS", "XCOEF_BSCALE", "XCOEF_BSIGN", "XKIN_ANISO"};
 declaredSweep = <|
   "MAIN" -> {2, 3, 4, 5},
   "XFORM_CURLONLY" -> {2, 3, 4, 5},
@@ -647,264 +1485,46 @@ declaredSweep = <|
   "XFORM_DIVONLY" -> {3, 4},
   "XFORM_TRACELESS" -> {3, 4},
   "XCOEF_BSCALE" -> {3},
-  "XCOEF_BSIGN" -> {3}
-|>;
-declaredPairs = Flatten[KeyValueMap[Function[{package, dimensions},
-  ({package, #} &) /@ dimensions], declaredSweep], 1];
+  "XCOEF_BSIGN" -> {3},
+  "XKIN_ANISO" -> {2, 3, 4, 5}|>;
+sweepDimensions = Sort[DeleteDuplicates[Flatten[Values[declaredSweep]]]];
+declaredPairs = Reap[
+    Do[If[MemberQ[declaredSweep[package], dimension],
+      Sow[{package, dimension}]],
+      {dimension, sweepDimensions}, {package, packageOrder}]][[2, 1]];
+
+scriptArguments = Rest[$ScriptCommandLine];
+selectedPairs = Which[
+  scriptArguments === {}, declaredPairs,
+  Length[scriptArguments] == 2 && MemberQ[packageOrder, First[scriptArguments]] &&
+      StringMatchQ[Last[scriptArguments], DigitCharacter ..],
+    selectedDimension = FromDigits[Last[scriptArguments]];
+    If[MemberQ[declaredSweep[First[scriptArguments]], selectedDimension],
+      {{First[scriptArguments], selectedDimension}}, Quit[64]],
+  True, Quit[64]
+];
+
 runPairs = {};
 invariantCache = <||>;
-
-Do[
-  invariantCache[d] = buildInvariantCensus[d];
+operationalResult = Catch[
   Do[
-    If[MemberQ[declaredPairs, {package, d}],
-      Module[
-        {prefix, localPrefix, invariant, frame, x, t, uFields, gCoordinate,
-         gVariables, gJet, vJet, amplitudes, k, phi, omegaLinear,
-         fieldModel, actionModel, bulkModel, sDimension, premises,
-         assumptions, bulkAssumptions, densityJet, densityCoordinate, pdJet, pdCoordinate,
-         termRecords, stiffnessTermsCoordinate, stiffnessTermsJet, wCoordinate,
-         kineticCoordinate, lagrangianCoordinate, kineticJet, lagrangianJet,
-         jetRules, eomExpressions, eomRelations, phase, ansatzRules,
-         eomPlane, strippedFactor, amplitudeEquations, matrixA,
-         planeGradientRules, planeVelocityRules, planeLagrangian,
-         averagedLagrangian, matrixB, routeRecords, downstreamRecord,
-         downstreamMatrix, coefficientFactors, coefficientOrdering,
-         dimensionlessCoefficients, jetAtomDimensions, dimensionData,
-         spectrum, rootJacobian, scaledData, rankLoci, pointVariables,
-         strata, stratum, stratumPrefix, stratumLocalPrefix, point,
-         stratumSpectrum, restrictedJacobian,
-         recomputedJacobian, q7Residual, q11Data, bulkDispersion,
-         kwEquation, kwSolutionRules, kwSolutionExpression, kwParts,
-         bulkModeRecords, suppliedEquationInventory, closureEquations, closureUnknowns,
-         closureMatrix, closurePadded, closureRref, closureRank, q11Derived, derivedInventory,
-         rootDimOverKsq, actionTermsForDimension},
-        prefix = "WL_S11_" <> package <> "_D" <> ToString[d];
-        localPrefix = "WL_S11_LOCAL_" <> package <> "_D" <> ToString[d];
-        invariant = invariantCache[d];
-        frame = coordinateFrame[d];
-        x = frame["X"];
-        t = frame["T"];
-        uFields = frame["Fields"];
-        gCoordinate = frame["Gradient"];
-        gVariables = invariant["GVariables"];
-        gJet = Partition[gVariables, d];
-        vJet = Table[Symbol["vt" <> ToString[j]], {j, d}];
-        amplitudes = Table[Symbol["a" <> ToString[j]], {j, d}];
-        k = Table[Symbol["k" <> ToString[i]], {i, d}];
-        phi = Symbol["phaseVariable"];
-        omegaLinear = Symbol["omegaLinear"];
-        sDimension = Table[Symbol["dimsslot" <> ToString[i]], {i, 3}];
-        fieldModel = <|"Amplitudes" -> amplitudes, "UDimension" -> {1, 0, 0},
-          "AnsatzProfile" -> ansatzProfile,
-          "CoefficientDimensionDeclarations" -> If[package === "XCOEF_BSCALE",
-            <|sScale -> {0, 0, 0}|>, <||>]|>;
-        actionModel = <|"BackgroundVelocity" -> 0, "DissipativeTerms" -> {},
-          "MaximumFieldDegree" -> 2, "WallWidthFields" -> {}|>;
-        bulkModel = <|"ModeContent" -> {ScalarSoundMode},
-          "SpeedPremise" -> bulkSpeedPremise,
-          "AmplitudePremise" -> Element[bulkAmplitude, Reals]|>;
-        premises = makePremises[package, d, k, amplitudes, sDimension, fieldModel];
-        assumptions = premises["AtDimension"];
-        bulkAssumptions = And[assumptions, bulkModel["SpeedPremise"]];
-        emit[localPrefix <> "_SIMPLIFIER", heldMethod[engineMethods["Simplifier"]]];
-        emit[localPrefix <> "_COEFFICIENT_SORT_KEY",
-          heldMethod[engineMethods["CoefficientSortKey"]]];
-        emitPremises[premises, prefix, fieldModel, actionModel, bulkModel];
-        emitInvariantCensus[invariant, prefix];
-        pdJet = invariant["PDPolynomial"];
-        pdCoordinate = pdJet /. Thread[gVariables -> Flatten[gCoordinate]];
-        emit[prefix <> "_PD_TERM", Expand[pdCoordinate]];
-        densityJet = <|"curl" -> curlDensity[gJet], "div" -> divDensity[gJet],
-          "symtl" -> symtlDensity[gJet], "pd" -> pdJet|>;
-        densityCoordinate = <|"curl" -> curlDensity[gCoordinate],
-          "div" -> divDensity[gCoordinate], "symtl" -> symtlDensity[gCoordinate],
-          "pd" -> pdCoordinate|>;
-        termRecords = Map[
-          Function[record, With[
-            {retainedDensity = retainThroughFieldDegree[record["DensityJet"],
-                Join[vJet, gVariables], actionModel["MaximumFieldDegree"]]},
-            <|"Factor" -> record["Factor"], "Kind" -> record["Kind"],
-              "DensityJet" -> retainedDensity,
-              "DensityCoordinate" -> retainedDensity /.
-                Thread[gVariables -> Flatten[gCoordinate]]|>]],
-          makeTermRecords[package, densityJet, densityCoordinate]];
-        stiffnessTermsCoordinate = (#["Factor"] #["DensityCoordinate"]) & /@ termRecords;
-        stiffnessTermsJet = (#["Factor"] #["DensityJet"]) & /@ termRecords;
-        wCoordinate = Total[stiffnessTermsCoordinate];
-        kineticJet = retainThroughFieldDegree[rhoBr/2 Total[vJet^2],
-          Join[vJet, gVariables], actionModel["MaximumFieldDegree"]];
-        jetRules = Join[Thread[vJet -> (D[#, t] & /@ uFields)],
-          Thread[gVariables -> Flatten[gCoordinate]]];
-        kineticCoordinate = kineticJet /. jetRules;
-        lagrangianCoordinate = Expand[kineticCoordinate - wCoordinate];
-        emit[prefix <> "_LAGRANGIAN", lagrangianCoordinate];
-        emit[prefix <> "_STIFFNESS_TERMS", stiffnessTermsCoordinate];
-        lagrangianJet = Expand[kineticJet - Total[stiffnessTermsJet]];
-        eomExpressions = Table[Expand[
-          D[(D[lagrangianJet, vJet[[j]]] /. jetRules), t] +
-          Total[Table[D[(D[lagrangianJet, gJet[[i, j]]] /. jetRules), x[[i]]], {i, d}]]],
-          {j, d}];
-        eomRelations = (# == 0) & /@ eomExpressions;
-        emit[prefix <> "_EULER_LAGRANGE_SYSTEM", eomRelations];
-        phase = Total[k x] - omegaLinear t;
-        ansatzRules = Table[With[{head = frame["Heads"][[j]], amp = amplitudes[[j]],
-            args = frame["Arguments"], phaseValue = phase,
-            profile = fieldModel["AnsatzProfile"]},
-          head -> Function[Evaluate[args], Evaluate[amp profile[phaseValue]]]], {j, d}];
-        eomPlane = TrigFactor[eomExpressions /. ansatzRules] /.
-          omegaLinear^2 -> omegaSquared;
-        strippedFactor = routeAStrippedFactor[eomPlane, amplitudes, Join[x, {t}]];
-        amplitudeEquations = Map[simp[TrigFactor[#/strippedFactor], assumptions] &, eomPlane];
-        matrixA = Table[Coefficient[amplitudeEquations[[i]], amplitudes[[j]]], {i, d}, {j, d}];
-        emit[prefix <> "_M_ROUTE_A_STRIPPED_FACTOR", strippedFactor];
-        emit[prefix <> "_M_A", matrixA];
-        planeGradientRules = Thread[gVariables -> Flatten[Table[
-          D[amplitudes[[j]] fieldModel["AnsatzProfile"][phi], phi] k[[i]],
-          {i, d}, {j, d}]]];
-        planeVelocityRules = Thread[vJet -> Table[
-          D[amplitudes[[j]] fieldModel["AnsatzProfile"][phi], phi] (-omegaLinear),
-          {j, d}]];
-        planeLagrangian = lagrangianJet /. Join[planeGradientRules, planeVelocityRules];
-        averagedLagrangian = simp[
-          Integrate[Expand[planeLagrangian], {phi, 0, 2 Pi}]/(2 Pi) /.
-            omegaLinear^2 -> omegaSquared, assumptions];
-        matrixB = Table[simp[D[averagedLagrangian, amplitudes[[i]], amplitudes[[j]]], assumptions],
-          {i, d}, {j, d}];
-        emit[prefix <> "_M_B", matrixB];
-        emit[prefix <> "_M_RESIDUAL", Map[simp[#, assumptions] &, matrixA - matrixB, {2}]];
-        emit[prefix <> "_M_RATIO", simp[matrixA[[1, 1]]/matrixB[[1, 1]], assumptions]];
-        routeRecords = {{EulerLagrangeRoute, matrixA}, {QuadraticFormRoute, matrixB}};
-        emit[prefix <> "_M_RESIDUAL_SCOPE",
-          CodingConsistency[First /@ routeRecords]];
-        downstreamRecord = Last[routeRecords];
-        downstreamMatrix = Last[downstreamRecord];
-        emit[prefix <> "_M_ROUTE_USED", First[downstreamRecord]];
-        coefficientFactors = Prepend[(#["Factor"] &) /@ termRecords, rhoBr/2];
-        coefficientOrdering = SortBy[
-          DeleteDuplicates[Flatten[globalSymbolsIn /@ coefficientFactors]],
-          engineMethods["CoefficientSortKey"]];
-        emit[prefix <> "_COEFFICIENT_ORDERING", coefficientOrdering];
-        emit[prefix <> "_M_COEFFICIENT_JACOBIAN",
-          Table[Map[simp[#, assumptions] &, D[downstreamMatrix, coefficient], {2}],
-            {coefficient, coefficientOrdering}]];
-        jetAtomDimensions = Association@Join[
-          Thread[vJet -> ConstantArray[fieldModel["UDimension"] + {0, -1, 0}, d]],
-          Thread[gVariables -> ConstantArray[fieldModel["UDimension"] + {-1, 0, 0}, d^2]],
-          Thread[k -> ConstantArray[{-1, 0, 0}, d]],
-          Thread[amplitudes -> ConstantArray[fieldModel["UDimension"], d]],
-          {omegaSquared -> {0, -2, 0}, cs0 -> {1, -1, 0}, kwSquared -> {-2, 0, 0},
-           lambdaScale -> {0, 0, 0}}
-        ];
-        actionTermsForDimension = Prepend[(-#) & /@ stiffnessTermsJet, kineticJet];
-        dimensionData = buildDimensions[coefficientOrdering, actionTermsForDimension,
-          jetAtomDimensions, fieldModel, assumptions, prefix];
-        spectrum = computeSpectrumModes[downstreamMatrix, coefficientOrdering, k,
-          assumptions, prefix, localPrefix, True];
-        rootDimOverKsq = Table[
-          dimensionOfScalar[spectrum["Roots"][[r]]/Total[k^2],
-            dimensionData["AtomDimensions"], assumptions],
-          {r, Length[spectrum["Roots"]]}];
-        Do[emit[prefix <> "_ROOT" <> ToString[r] <> "_DIM_OVER_KSQ", rootDimOverKsq[[r]]],
-          {r, Length[rootDimOverKsq]}];
-        emitScaledRoots[spectrum, k, assumptions, prefix];
-        rootJacobian = Table[
-          simp[D[spectrum["Roots"][[r]], coefficient], assumptions],
-          {r, Length[spectrum["Roots"]]}, {coefficient, coefficientOrdering}];
-        emit[prefix <> "_ROOT_COEFFICIENT_JACOBIAN", rootJacobian];
-        rankLoci = spectrum["RankLoci"];
-        pointVariables = DeleteDuplicates@Join[globalSymbolsIn[assumptions],
-          coefficientOrdering];
-        strata = strataFromRankLoci[rankLoci, assumptions, pointVariables];
-        strata = SortBy[strata, ToString[#["Equations"], InputForm] &];
-        emit[prefix <> "_STRATUM_ORDERING", (#["Equations"] &) /@ strata];
-        Do[
-          stratum = strata[[stratumIndex]];
-          stratumPrefix = prefix <> "_STRATUM" <> ToString[stratumIndex];
-          stratumLocalPrefix = localPrefix <> "_STRATUM" <> ToString[stratumIndex];
-          point = stratum["Point"];
-          emit[stratumPrefix <> "_DEFINING_EQUATIONS", stratum["Equations"]];
-          emit[stratumPrefix <> "_POINT", point];
-          stratumSpectrum = computeSpectrumModes[downstreamMatrix /. point,
-            coefficientOrdering, k, assumptions /. point, stratumPrefix,
-            stratumLocalPrefix, False];
-          restrictedJacobian = rootJacobian /. point;
-          emit[stratumPrefix <> "_ROOT_COEFFICIENT_JACOBIAN_RESTRICTED", restrictedJacobian];
-          recomputedJacobian = stratumDerivativeFailure[
-            stratumSpectrum["Roots"], coefficientOrdering,
-            stratum["Equations"], point];
-          emit[stratumPrefix <> "_ROOT_COEFFICIENT_JACOBIAN_RECOMPUTED", recomputedJacobian],
-          {stratumIndex, Length[strata]}];
-        q7Residual = If[d == 3,
-          emitQ7[termRecords,
-            <|"Gradient" -> gCoordinate, "IndependentGradient" -> Partition[gVariables, d],
-              "Curl" -> densityCoordinate["curl"]|>, prefix],
-          NotApplicableQ7[d]];
-        bulkModeRecords = Map[
-          Function[mode, Switch[mode,
-            ScalarSoundMode, <|
-              "Amplitude" -> bulkAmplitude,
-              "FieldEquation" -> (BulkScalarField[x, Symbol["w"], t] ==
-                bulkAmplitude Cos[Total[k x] + kw Symbol["w"] - omegaLinear t]),
-              "Dispersion" -> (omegaSquared == cs0^2 (Total[k^2] + kwSquared))|>,
-            _, Failure["UnsupportedBulkMode", <|"Mode" -> mode|>]]],
-          bulkModel["ModeContent"]];
-        bulkDispersion = First[Lookup[bulkModeRecords, "Dispersion"]];
-        q11Derived = Table[
-          kwEquation = bulkDispersion /. omegaSquared -> spectrum["Roots"][[r]];
-          emit[prefix <> "_ROOT" <> ToString[r] <> "_KW_EQUATION", kwEquation];
-          kwSolutionRules = Quiet[Solve[kwEquation, kwSquared]];
-          kwSolutionExpression = kwSquared /. First[kwSolutionRules];
-          kwParts = conditionalParts[kwSolutionExpression];
-          emit[prefix <> "_ROOT" <> ToString[r] <> "_KW_SQUARED", kwParts[[1]]];
-          emit[localPrefix <> "_ROOT" <> ToString[r] <> "_KW_CONDITION", kwParts[[2]]];
-          emit[prefix <> "_ROOT" <> ToString[r] <> "_KW_SIGN",
-            {kwParts[[1]], fourWaySign[kwParts[[1]], bulkAssumptions]}];
-          emitLocus[prefix <> "_ROOT" <> ToString[r] <> "_KW_ZERO_LOCUS",
-            localPrefix <> "_ROOT" <> ToString[r] <> "_KW_ZERO_LOCUS",
-            {kwParts[[1]] == 0}, Join[coefficientOrdering, {cs0}],
-            bulkAssumptions];
-          kwParts[[1]],
-          {r, Length[spectrum["Roots"]]}];
-        suppliedEquationInventory = Join[
-          Table[uFields[[j]] == amplitudes[[j]] fieldModel["AnsatzProfile"][phase],
-            {j, d}],
-          Flatten[({#["FieldEquation"], #["Dispersion"]} &) /@ bulkModeRecords]];
-        closureEquations = Select[suppliedEquationInventory,
-          Function[equation, ! FreeQ[equation, bulkAmplitude] &&
-            AnyTrue[amplitudes, Function[amplitude, ! FreeQ[equation, amplitude]]]]];
-        closureUnknowns = Join[fieldModel["Amplitudes"],
-          Lookup[bulkModeRecords, "Amplitude"]];
-        closureMatrix = Table[Coefficient[relationResidual[equation], unknown],
-          {equation, closureEquations}, {unknown, closureUnknowns}];
-        closurePadded = Join[closureMatrix, {ConstantArray[0, Length[closureUnknowns]]}];
-        closureRref = RowReduce[closurePadded];
-        closureRank = Length[Select[closureRref,
-          ! And @@ (zeroTest[bulkAssumptions] /@ #) &]];
-        emit[prefix <> "_C1_EQUATIONS", closureEquations];
-        emit[prefix <> "_C2_UNKNOWNS", closureUnknowns];
-        emit[prefix <> "_C2_COUNT", Length[closureUnknowns]];
-        emit[prefix <> "_C3_RANK", closureRank];
-        emit[prefix <> "_C4_DIFFERENCE", Length[closureUnknowns] - closureRank];
-        derivedInventory = Join[
-          {dimensionInventory[spectrum["Determinant"], dimensionData["AtomDimensions"], assumptions]},
-          (dimensionInventory[#, dimensionData["AtomDimensions"], assumptions] & /@ spectrum["Roots"]),
-          (dimensionInventory[#MDotK, dimensionData["AtomDimensions"], assumptions] & /@
-            spectrum["Q4Derived"]),
-          (dimensionInventory[#BasisResiduals, dimensionData["AtomDimensions"], assumptions] & /@
-            spectrum["Q4Derived"]),
-          If[d == 3, {dimensionInventory[q7Residual,
-            dimensionData["AtomDimensions"], assumptions]}, {}],
-          (dimensionInventory[#, dimensionData["AtomDimensions"], bulkAssumptions] & /@
-            q11Derived)
-        ];
-        emit[prefix <> "_DIM_HOMOGENEITY_DERIVED", derivedInventory];
-        AppendTo[runPairs, {package, d}];
-      ]
-    ],
-    {package, Keys[declaredSweep]}],
-  {d, Sort[DeleteDuplicates[Flatten[Values[declaredSweep]]]]}];
+    package = pair[[1]];
+    dimension = pair[[2]];
+    If[! KeyExistsQ[invariantCache, dimension],
+      invariant = buildInvariantCensus[dimension, package];
+      AssociateTo[invariantCache, dimension -> invariant],
+      invariant = invariantCache[dimension];
+      emitInvariantCensus[invariant, package, dimension]
+    ];
+    runCell[package, dimension, invariant];
+    AppendTo[runPairs, {package, dimension}],
+    {pair, selectedPairs}];
+  completedNormally,
+  operationalFailure
+];
 
-emit["WL_S11_RUN_PAIRS", runPairs];
-emit["WL_S11_SKIPPED_PAIRS", Complement[declaredPairs, runPairs]];
-emit[localTagNamesTag, Append[localNames, localTagNamesTag]];
+If[Head[operationalResult] === Failure, Quit[70]];
+emit[runEmission["RUN_PAIRS"], runPairs];
+emit[runEmission["SKIPPED_PAIRS"], Complement[declaredPairs, runPairs]];
+localInventoryName = standardEmissionName[localInventoryEmission[]];
+emit[localInventoryEmission[], Append[localNames, localInventoryName]];

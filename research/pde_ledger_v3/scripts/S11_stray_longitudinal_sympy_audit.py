@@ -1081,10 +1081,69 @@ def zero_expr(expr: sp.Expr) -> bool:
     return algebraic_zero_test(expr) is True
 
 
+def _single_quadratic_radical_determinant(matrix: sp.MatrixBase) -> sp.Expr | None:
+    radical_nodes = tuple(
+        node for entry in matrix for node in quadratic_radical_nodes(entry)
+    )
+    radical_bases = {sp.srepr(node.base): node.base for node in radical_nodes}
+    if (
+        len(radical_bases) != 1
+        or any(node.exp < 0 for node in radical_nodes)
+        or any(quadratic_radical_nodes(node.base) for node in radical_nodes)
+    ):
+        return None
+
+    radicand = next(iter(radical_bases.values()))
+    radical_symbol = sp.Dummy("quadratic_radical")
+    replacements = {
+        node: node.base ** ((int(node.exp.p) - 1) // 2) * radical_symbol
+        for node in set(radical_nodes)
+    }
+    lifted_fractions: list[list[tuple[sp.Expr, sp.Expr]]] = []
+    for i in range(matrix.rows):
+        lifted_row = []
+        for j in range(matrix.cols):
+            lifted_entry = sp.together(matrix[i, j].xreplace(replacements))
+            numerator, denominator = sp.fraction(lifted_entry)
+            if radical_symbol in denominator.free_symbols:
+                return None
+            try:
+                sp.Poly(numerator, radical_symbol, domain="EX")
+            except sp.PolynomialError:
+                return None
+            lifted_row.append((numerator, denominator))
+        lifted_fractions.append(lifted_row)
+
+    numerator_matrix = sp.zeros(matrix.rows, matrix.cols)
+    denominator_product = sp.Integer(1)
+    for i, lifted_row in enumerate(lifted_fractions):
+        row_denominator = sp.Integer(1)
+        for _, denominator in lifted_row:
+            row_denominator = sp.lcm(row_denominator, denominator)
+        for j, (numerator, denominator) in enumerate(lifted_row):
+            numerator_matrix[i, j] = sp.cancel(
+                numerator * row_denominator / denominator
+            )
+        denominator_product *= row_denominator
+
+    lifted_determinant = exact_domain_matrix(
+        numerator_matrix, already_reduced=True,
+    ).det().as_expr()
+    modulus = sp.Poly(radical_symbol ** 2 - radicand, radical_symbol, domain="EX")
+    reduced_determinant = sp.Poly(
+        lifted_determinant, radical_symbol, domain="EX",
+    ).rem(modulus).as_expr()
+    return reduced_determinant.subs(
+        radical_symbol, radicand ** sp.Rational(1, 2),
+    ) / denominator_product
+
+
 def exact_determinant(matrix: sp.MatrixBase) -> sp.Expr:
     simplified = reduced_matrix(matrix)
     if any(quadratic_radical_nodes(entry) for entry in simplified):
-        det_expr = simplified.det(method="bareiss")
+        det_expr = _single_quadratic_radical_determinant(simplified)
+        if det_expr is None:
+            det_expr = simplified.det(method="bareiss")
     else:
         try:
             det_expr = exact_domain_matrix(simplified, already_reduced=True).det().as_expr()

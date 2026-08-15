@@ -817,6 +817,165 @@ def canonical_locus(residuals: tuple[sp.Expr, ...], variables: tuple[sp.Symbol, 
         return NOT_APPLICABLE
 
 
+def _single_quadratic_radical_locus(
+    residuals: tuple[sp.Expr, ...], variables: tuple[sp.Symbol, ...],
+) -> bool:
+    if not residuals or not variables:
+        return False
+    numerators = []
+    radical_nodes = []
+    for residual in residuals:
+        try:
+            numerator, denominator = sp.fraction(sp.together(residual))
+        except Exception:
+            return False
+        if quadratic_radical_nodes(denominator):
+            return False
+        numerators.append(numerator)
+        radical_nodes.extend(quadratic_radical_nodes(numerator))
+
+    radical_bases = {sp.srepr(node.base): node.base for node in radical_nodes}
+    if len(radical_bases) != 1:
+        return False
+    radicand = next(iter(radical_bases.values()))
+    radicand_variables = radicand.free_symbols & set(variables)
+    if (
+        quadratic_radical_nodes(radicand)
+        or not radicand_variables
+        or len(set(variables) - radicand_variables) != 2
+    ):
+        return False
+
+    radical_symbol = sp.Dummy("quadratic_radical")
+    replacements = {
+        node: node.base ** ((int(node.exp.p) - 1) // 2) * radical_symbol
+        for node in set(radical_nodes)
+    }
+    for numerator in numerators:
+        lifted = numerator.xreplace(replacements)
+        symbols = tuple(sorted(lifted.free_symbols - {radical_symbol}, key=sp.default_sort_key))
+        if any(symbol not in DECLARED_SYMBOLS for symbol in symbols):
+            return False
+        try:
+            sp.Poly(lifted, *(symbols + (radical_symbol,)), domain=sp.QQ)
+        except (sp.PolynomialError, ValueError):
+            return False
+    return True
+
+
+def _solve_single_quadratic_radical_locus(
+    residuals: tuple[sp.Expr, ...], variables: tuple[sp.Symbol, ...],
+) -> list[dict[sp.Symbol, sp.Expr]]:
+    from sympy.solvers.solvers import _invert, _simple_dens, _vsolve, checksol
+
+    dens = set()
+    failed = []
+    for residual in residuals:
+        dens.update(_simple_dens(residual, variables))
+        independent, dependent = _invert(residual, *variables)
+        failed.append((dependent - independent).as_numer_denom()[0])
+
+    result: list[dict[sp.Symbol, sp.Expr]] = [{}]
+    legal = set(variables)
+
+    def available_symbols(expr: sp.Expr, *, sort: bool = False) -> object:
+        available = expr.free_symbols & legal
+        if not sort:
+            return available
+
+        def key(symbol: sp.Symbol) -> object:
+            poly = expr.as_poly(symbol)
+            if poly is None:
+                complexity = (sp.S.Infinity, sp.S.Infinity, sp.S.Infinity)
+            else:
+                coefficient_symbols = poly.LC().free_symbols
+                complexity = (
+                    poly.degree(),
+                    len(coefficient_symbols & available),
+                    len(coefficient_symbols),
+                )
+            return complexity + (sp.default_sort_key(symbol),)
+
+        return sorted(available, key=key)
+
+    check_flags = {"simplify": False, "manual": True}
+    check_symbol = sp.Dummy()
+    for equation in sp.ordered(failed, lambda expr: len(available_symbols(expr))):
+        new_result: list[dict[sp.Symbol, sp.Expr]] = []
+        bad_results: list[dict[sp.Symbol, sp.Expr]] = []
+        hit = False
+        for branch in result:
+            solved_symbols = set()
+            equation_substituted = equation.subs(branch)
+            if branch:
+                checked = checksol(
+                    check_symbol, check_symbol, equation_substituted, minimal=True,
+                )
+                if checked is not None:
+                    (new_result if checked else bad_results).append(branch)
+                    continue
+            candidates = available_symbols(equation_substituted, sort=True)
+            if not candidates:
+                if branch:
+                    new_result.append(branch)
+                break
+            for symbol in candidates:
+                try:
+                    solutions = _vsolve(equation_substituted, symbol, **check_flags)
+                except NotImplementedError:
+                    continue
+                for value in solutions:
+                    if solved_symbols and any(
+                        symbol in value.free_symbols for symbol in solved_symbols
+                    ):
+                        continue
+                    expanded_branch = {
+                        known_symbol: known_value.subs(symbol, value)
+                        for known_symbol, known_value in branch.items()
+                    }
+                    expanded_branch[symbol] = value
+                    expanded_items = set(expanded_branch.items())
+                    for known_branch in new_result:
+                        if len(known_branch) < len(expanded_items):
+                            updated_items = {
+                                (known_symbol, known_value.xreplace(expanded_branch))
+                                for known_symbol, known_value in known_branch.items()
+                            }
+                            if not updated_items - expanded_items:
+                                break
+                    else:
+                        new_result.append(expanded_branch)
+                hit = True
+                solved_symbols.add(symbol)
+                break
+            if not hit:
+                raise NotImplementedError(f"could not solve {equation_substituted}")
+        else:
+            result = new_result
+            for bad_result in bad_results:
+                if bad_result in result:
+                    result.remove(bad_result)
+
+    result = [
+        branch for branch in result
+        if not any(checksol(denominator, branch, **check_flags) for denominator in dens)
+    ]
+    result = [
+        branch for branch in result
+        if not any(
+            checksol(residual, branch, **check_flags) is False
+            for residual in residuals
+        )
+    ]
+    result = [branch for branch in result if branch]
+    result = [
+        {symbol: branch[symbol] for symbol in sp.ordered(branch)}
+        for branch in result
+    ]
+    result.sort(key=sp.default_sort_key)
+    return result
+
+
 def emit_locus(package: str, n: int, base_quantity: str, residuals: tuple[sp.Expr, ...],
                variables: tuple[sp.Symbol, ...], assumptions: sp.Tuple,
                *, root: int | None = None, stratum: int | None = None,
@@ -837,7 +996,13 @@ def emit_locus(package: str, n: int, base_quantity: str, residuals: tuple[sp.Exp
                 for expr in canonical_payload
             ]
             solve_kwargs = {"dict": True, "simplify": False}
-        solution = sp.solve(solve_input, list(variables), **solve_kwargs)
+        if (
+            canonical_payload == NOT_APPLICABLE
+            and _single_quadratic_radical_locus(residual_exprs, variables)
+        ):
+            solution = _solve_single_quadratic_radical_locus(residual_exprs, variables)
+        else:
+            solution = sp.solve(solve_input, list(variables), **solve_kwargs)
     except Exception as exc:
         solution = Str(f"SOLVE_UNAVAILABLE_{type(exc).__name__}")
         record_issue(

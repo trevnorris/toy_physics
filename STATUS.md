@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐ WHERE WE ARE — 2026-08-15. ⭐⭐⭐ BOTH S11 ENGINES LEG-CLEAN; the SymPy engine survived fix rounds 4 `ae105530` + 5 `9e392206` + 6 `a7e0d026` (radical decidability, the determinant size cliff, then the KW radical-locus solve). ⛔ SWEEP-4 is STUCK at the now-fixed wall; the kill-and-rerun and the D5-scope decisions are the USER'S, pending. ⛔ THEN: the WL sweep, then the FROZEN COMPARATOR CONTRACT before any cross-engine look.
+## ⭐⭐ WHERE WE ARE — 2026-08-15 PM. ⭐⭐⭐ THE SYMPY RECORD IS DONE: sweep-5 on the round-6 engine completed 21/21 cells, zero skips, 2h41m — committed `19591194` (.out + regenerated `S11_exports.py`). XKIN_ANISO rescoped to D2–D4 in the spec + BOTH engines `90acafa0` (user decision; D5 dropped). ⭐ THE WL SWEEP runs PER-CELL (fresh kernel each; driver `~/.s11_build/wl_percell_driver.sh`): 20/21 banked or running — ⛔ XKIN D2 is the ONE HOLE (its own working set >28 GB cold; memory-guard killed), XKIN D3 completed FIRST-EVER (285 s), XKIN D4 in progress (hours-long radical-loci stages, memory flat ~10 GB). ⛔ NEXT: D2 bounded-vs-runaway diagnosis → cloud box (user open to renting; check Mathematica licence portability) vs WL fix round; then the FROZEN COMPARATOR CONTRACT before any cross-engine look.
 
 ⭐⭐ **Full state: `research/pde_ledger_v3/REBUILD_HANDOFF.md`, top block.**
 
@@ -65,12 +65,26 @@ all 357 emitted loci moves exactly the 7 KW tags; 6/6 completed repaired cells b
 unsolved D4 operands verified by dual corruption-validated oracles + two independent enumerations with
 bidirectional set equivalence; **full fresh D3 cell 391/391 byte-identical (1117 s)** — a scoped cold
 rerun is now measured-viable; D2 invariant and 2.4× faster (217 s vs 527 s).
-⭐ **SWEEP-4 (on `9e392206`) is STILL RUNNING and still stuck at that wall** (launched 19:30 08-14).
-⛔ PENDING USER DECISIONS: (1) kill + rerun on `a7e0d026` (a full rerun reproduces completed cells
-byte-identically, measured at D2/D3 cell level; preserve the 91 MB partial first); (2) D5 scope —
-XKIN_ANISO declares (2,3,4,5) in BOTH engines (WL `:1673`), §10/RUN_PAIRS emit only at sweep end, and
-XKIN_ANISO D5's non-KW stages are unmeasured territory; the user's stated target is D4.
-⭐ USER TARGET: **D=4 out = success; D5 not necessary.** Killed partials preserved:
+⭐⭐ **RESOLVED 08-15 AM (user): sweep-4 killed** (8.5 h silent in the now-fixed stage; partial =
+`~/.s11_build/sweep4_partial_through_D4R2_KWEQ.out`), **D5 dropped** (`90acafa0`, spec + both
+engines), **sweep-5 rerun → COMPLETE `19591194`**: 21/21 cells, `SKIPPED_PAIRS` empty, zero cell
+exceptions, 2h41m; the formerly 8-hour KW stages emitted in seconds; §10 + `RUN_PAIRS` verified.
+⭐⭐ **THE WL SWEEP — single-kernel mode DOES NOT FIT the 30 GB box** (kernel killed by the
+available-memory guard at 23 GB inside XKIN D2; partial `~/.s11_build/wl_sweep1_partial_singlekernel.out`).
+⭐ **Per-cell mode is the architecture now**: the engine's own argv contract (`wolframscript -file <wl>
+PACKAGE D`) runs one cell per fresh kernel, sequential (2-seat licence), driver
+`~/.s11_build/wl_percell_driver.sh` concatenating into the canonical `.out` (engine output only;
+driver bookkeeping in `wl_percell_driver.log`). Measured: all 18 non-XKIN cells in ~6 min; XKIN D3
+complete FIRST-EVER (285 s); ⛔ **XKIN D2 is the hole — its own working set exceeds ~28 GB from a COLD
+kernel** (killed at 21 min; so it is the CELL, not accumulation); XKIN D4 fits so far (~10 GB flat,
+100% CPU, multi-hour radical-loci stages — rank-drop ROOT2 took ~3 h and completed with a JOINT
+solution; stacked-drop, ROOT3's blocks, the KW loci, and the 8 STRATUM audits remain).
+⛔ D2 NEXT: analysts decide **bounded working set vs runaway expansion** (the SymPy history warns all
+three of its "needs more memory" walls were algorithmic) → bounded ⇒ rent a big-RAM box for ONE cell
+(user open to it; ⚠ verify Mathematica licence activation there); runaway ⇒ a WL fix round via the
+usual brief→legs→build→legs. ⚠ Until D2 exists in the WL record, SymPy's XKIN D2 is single-engine —
+unverified by our own standard.
+⭐ Killed partials preserved:
 `~/.s11_build/sweep2_partial_through_D4R1.out`, `sweep3_partial_through_D4R1Q8.out` (first-ever D4 ROOT1
 complete Q8 record). ⚠ Working-tree `S11_exports.py` = sweep-3's honest re-publish (round-4 normal
 forms, values identical); commits with the successful sweep. ⛔ The `.out` is committed only from a

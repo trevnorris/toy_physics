@@ -141,7 +141,7 @@ PACKAGE_DIMS = {
     "XFORM_TRACELESS": (3, 4),
     "XCOEF_BSCALE": (3,),
     "XCOEF_BSIGN": (3,),
-    "XKIN_ANISO": (2, 3, 4, 5),
+    "XKIN_ANISO": (2, 3, 4),
 }
 PACKAGE_ORDER = tuple(PACKAGE_DIMS)
 PRIMARY_PACKAGE = "MAIN"

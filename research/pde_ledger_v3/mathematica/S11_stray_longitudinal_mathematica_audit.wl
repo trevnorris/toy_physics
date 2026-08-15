@@ -1670,7 +1670,7 @@ declaredSweep = <|
   "XFORM_TRACELESS" -> {3, 4},
   "XCOEF_BSCALE" -> {3},
   "XCOEF_BSIGN" -> {3},
-  "XKIN_ANISO" -> {2, 3, 4, 5}|>;
+  "XKIN_ANISO" -> {2, 3, 4}|>;
 sweepDimensions = Sort[DeleteDuplicates[Flatten[Values[declaredSweep]]]];
 declaredPairs = Reap[
     Do[If[MemberQ[declaredSweep[package], dimension],

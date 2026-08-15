@@ -983,7 +983,7 @@ XKIN_ANISO       =  (T_ANISO, W_MAIN)
 | `XFORM_TRACELESS` | 3, 4 |
 | `XCOEF_BSCALE` | 3 |
 | `XCOEF_BSIGN` | 3 |
-| `XKIN_ANISO` | 2, 3, 4, 5 |
+| `XKIN_ANISO` | 2, 3, 4 |
 
 ### ⭐⭐ `P_D` — the one term this file does not write down
 

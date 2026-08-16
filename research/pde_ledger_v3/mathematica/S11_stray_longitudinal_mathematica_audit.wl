@@ -25,6 +25,11 @@ tokenRankDrop = "RANK_DROP";
 tokenStackedDrop = "STACKED_DROP";
 tokenRootCoincidence = "ROOT_COINCIDENCE";
 
+(* Attempt 1 budget: preserve the existing exact QE primitive for up to 30 s. *)
+qePrimaryBudgetSeconds = 30;
+(* Attempt 2 budget: exact-rational specialization/instance decision for up to 30 s. *)
+qeExactRationalBudgetSeconds = 30;
+
 (* Internal emission keys are mapped to the shared §8 names only here. *)
 cellEmission[package_String, dimension_Integer, quantity_String] :=
   HoldComplete[CellObject, package, dimension, quantity];
@@ -101,6 +106,112 @@ reductionAnswerQ[result_] :=
     True | False | _Equal | _Unequal | _Less | _LessEqual | _Greater |
       _GreaterEqual | _Element | _And | _Or | _Not];
 
+quantifiedExistenceObject[predicate_, variables_List] :=
+  If[variables === {}, predicate,
+    With[{quantifiedVariables = variables, quantifiedPredicate = predicate},
+      Exists[quantifiedVariables, quantifiedPredicate]]];
+
+exactRationalAssignments[variables_List] := Module[{dimension, constantRules,
+    coordinateRules},
+  dimension = Length[variables];
+  constantRules = Table[
+    MapThread[Rule, {variables, ConstantArray[value, dimension]}],
+    {value, {0, 1, -1}}];
+  coordinateRules = Flatten[Table[
+    MapThread[Rule, {variables, ReplacePart[ConstantArray[0, dimension],
+      coordinate -> value]}],
+    {coordinate, dimension}, {value, {1, -1}}], 1];
+  DeleteDuplicates[Join[constantRules, coordinateRules]]
+];
+
+exactRationalExistenceDecision[predicate_, variables_List, domain_] := Module[
+  {specializations, specializedObjects, instances},
+  If[variables === {},
+    Return[unrestrictedSimplify[predicate]]];
+  specializations = exactRationalAssignments[variables];
+  specializedObjects = Quiet[
+    unrestrictedSimplify[predicate /. #] & /@ specializations];
+  If[AnyTrue[specializedObjects, TrueQ], Return[True]];
+  instances = Quiet[FindInstance[predicate, variables, domain, 1]];
+  Which[
+    SameQ[instances, {}], False,
+    MatchQ[instances, {_List ..}], True,
+    True, Failure["ExactRationalExistenceUndecided", <|
+      "PREDICATE" -> predicate,
+      "VARIABLES" -> variables,
+      "DOMAIN" -> domain,
+      "SPECIALIZATIONS" -> specializations,
+      "SPECIALIZED_OBJECTS" -> specializedObjects,
+      "INSTANCE_OUTCOME" -> instances|>]
+  ]
+];
+
+exactRationalDecision[testObject_, domain_] := Module[
+  {quantifierVariables, predicate, existenceOutcome},
+  Which[
+    TrueQ[testObject] || SameQ[testObject, False], testObject,
+    Head[testObject] === Exists,
+      quantifierVariables = Flatten[{testObject[[1]]}];
+      predicate = testObject[[2]];
+      exactRationalExistenceDecision[predicate, quantifierVariables, domain],
+    Head[testObject] === ForAll,
+      quantifierVariables = Flatten[{testObject[[1]]}];
+      predicate = testObject[[2]];
+      existenceOutcome = exactRationalExistenceDecision[
+        Not[predicate], quantifierVariables, domain];
+      If[TrueQ[existenceOutcome] || SameQ[existenceOutcome, False],
+        Not[existenceOutcome], existenceOutcome],
+    MatchQ[Unevaluated[testObject], Not[_Exists]],
+      quantifierVariables = Flatten[{testObject[[1, 1]]}];
+      predicate = testObject[[1, 2]];
+      existenceOutcome = exactRationalExistenceDecision[
+        predicate, quantifierVariables, domain];
+      If[TrueQ[existenceOutcome] || SameQ[existenceOutcome, False],
+        Not[existenceOutcome], existenceOutcome],
+    True, unrestrictedSimplify[testObject]
+  ]
+];
+
+boundedQERoute[primaryExpression_HoldComplete, testObject_, domain_] := Module[
+  {primaryTimeout, primaryOutcome, exactTimeout, exactOutcome, attempts},
+  primaryTimeout = Failure["QEBudgetExpired", <|
+    "ATTEMPT" -> "PRIMARY_QE",
+    "BUDGET_SECONDS" -> qePrimaryBudgetSeconds,
+    "OPERAND" -> primaryExpression|>];
+  primaryOutcome = TimeConstrained[
+    Quiet[ReleaseHold[primaryExpression]], qePrimaryBudgetSeconds,
+    primaryTimeout];
+  attempts = {<|
+    "ATTEMPT" -> "PRIMARY_QE",
+    "BUDGET_SECONDS" -> qePrimaryBudgetSeconds,
+    "OPERAND" -> primaryExpression,
+    "OUTCOME" -> primaryOutcome|>};
+  If[! MatchQ[primaryOutcome, Failure["QEBudgetExpired", _Association]],
+    Return[<|"OUTCOME" -> primaryOutcome, "ATTEMPTS" -> attempts|>]];
+
+  exactTimeout = Failure["QEBudgetExpired", <|
+    "ATTEMPT" -> "EXACT_RATIONAL_DECISION",
+    "BUDGET_SECONDS" -> qeExactRationalBudgetSeconds,
+    "OPERAND" -> testObject,
+    "DOMAIN" -> domain|>];
+  exactOutcome = TimeConstrained[
+    Quiet[exactRationalDecision[testObject, domain]],
+    qeExactRationalBudgetSeconds, exactTimeout];
+  AppendTo[attempts, <|
+    "ATTEMPT" -> "EXACT_RATIONAL_DECISION",
+    "BUDGET_SECONDS" -> qeExactRationalBudgetSeconds,
+    "OPERAND" -> testObject,
+    "DOMAIN" -> domain,
+    "OUTCOME" -> exactOutcome|>];
+  If[TrueQ[exactOutcome] || SameQ[exactOutcome, False],
+    <|"OUTCOME" -> exactOutcome, "ATTEMPTS" -> attempts|>,
+    <|"OUTCOME" -> testObject, "ATTEMPTS" -> attempts|>]
+];
+
+qeOperandsWithAttempts[operands_List, decision_Association] :=
+  If[Length[decision["ATTEMPTS"]] < 2, operands,
+    Append[operands, "QE_DECISION_ATTEMPTS" -> decision["ATTEMPTS"]]];
+
 inconsistencyTestObject[reduction_] := Which[
   SameQ[reduction, False], True,
   reductionAnswerQ[reduction], False,
@@ -130,11 +241,16 @@ signPayload[operand_, assumptions_] := {
   "OPERAND" -> operand
 };
 
-realExistenceTest[condition_] := Module[{variables},
+realExistenceDecision[condition_] := Module[
+  {variables, testObject, primaryExpression},
   variables = orderedGlobalSymbols[condition];
-  Quiet[If[variables === {}, unrestrictedSimplify[condition],
+  testObject = quantifiedExistenceObject[condition, variables];
+  primaryExpression = If[variables === {}, HoldComplete[
+      unrestrictedSimplify[condition]],
     With[{quantifiedVariables = variables, predicate = condition},
-      Resolve[Exists[quantifiedVariables, predicate], Reals]]]]
+      HoldComplete[
+        Resolve[Exists[quantifiedVariables, predicate], Reals]]]];
+  boundedQERoute[primaryExpression, testObject, Reals]
 ];
 
 exactProjectedInstance[condition_, projectedVariables_List] := Module[
@@ -186,10 +302,12 @@ canonicalLocus[residuals_List, variables_List] := Module[{},
 emitLocus[package_String, dimension_Integer, baseQuantity_String,
     equations_List, variables_List, assumptions_] := Module[
   {solution, identityResiduals, identityOperands, identityTest,
-   unrestrictedReduction, inconsistentOperands, inconsistentTest,
-   realAdmissible, admittedBranches, branch, branchOperands, branchTest,
+   unrestrictedVariables, unrestrictedTestObject, unrestrictedExpression,
+   unrestrictedDecision, unrestrictedReduction, inconsistentOperands,
+   inconsistentTest, realAdmissible, admittedBranches, branch,
+   branchDecision, branchOperands, branchTest,
    branchStatus, point, canonical, fullCondition, realTest, realStatus,
-   realWitness, realStatusOperands},
+   realDecision, realWitness, realStatusOperands},
   emitCell[package, dimension, baseQuantity <> "_EQUATIONS", equations];
   solution = Quiet[Solve[And @@ equations, variables]];
   emitCell[package, dimension, baseQuantity <> "_SOLUTION", {
@@ -208,11 +326,23 @@ emitLocus[package_String, dimension_Integer, baseQuantity_String,
     "OPERANDS" -> identityOperands
   }];
 
-  unrestrictedReduction = Quiet[Reduce[And @@ equations, variables, Complexes]];
+  unrestrictedVariables = DeleteDuplicates[Join[variables,
+    orderedGlobalSymbols[equations]]];
+  unrestrictedTestObject = quantifiedExistenceObject[
+    And @@ equations, unrestrictedVariables];
+  unrestrictedExpression = With[
+    {heldEquations = equations, heldVariables = variables},
+    HoldComplete[Reduce[And @@ heldEquations, heldVariables, Complexes]]];
+  unrestrictedDecision = boundedQERoute[unrestrictedExpression,
+    unrestrictedTestObject, Complexes];
+  unrestrictedReduction = unrestrictedDecision["OUTCOME"];
   inconsistentOperands = {"EQUATIONS" -> equations,
     "SOLVE_VARIABLES" -> variables,
-    "UNRESTRICTED_REDUCTION" -> unrestrictedReduction};
+    "UNRESTRICTED_REDUCTION" ->
+      unrestrictedDecision["ATTEMPTS"][[1]]["OUTCOME"]};
   inconsistentTest = inconsistencyTestObject[unrestrictedReduction];
+  inconsistentOperands = qeOperandsWithAttempts[
+    inconsistentOperands, unrestrictedDecision];
   emitCell[package, dimension, baseQuantity <> "_INCONSISTENT", {
     "STATUS_TOKEN" -> truthStatus[inconsistentTest],
     "TEST_OBJECT" -> inconsistentTest,
@@ -223,8 +353,11 @@ emitLocus[package_String, dimension_Integer, baseQuantity_String,
   realAdmissible = If[ListQ[solution],
     Table[
       branch = solution[[branchIndex]];
-      branchOperands = {"BRANCH" -> branch, "PREMISES" -> assumptions};
-      branchTest = realExistenceTest[And[assumptions, And @@ branchRelations[branch]]];
+      branchDecision = realExistenceDecision[
+        And[assumptions, And @@ branchRelations[branch]]];
+      branchTest = branchDecision["OUTCOME"];
+      branchOperands = qeOperandsWithAttempts[
+        {"BRANCH" -> branch, "PREMISES" -> assumptions}, branchDecision];
       branchStatus = admissibilityStatus[branchTest];
       point = If[SameQ[branchStatus, tokenAdmissible],
         exactProjectedInstance[
@@ -267,7 +400,8 @@ emitLocus[package_String, dimension_Integer, baseQuantity_String,
   emitCell[package, dimension, baseQuantity <> "_CANONICAL_LOCUS", canonical];
 
   fullCondition = And[assumptions, And @@ equations];
-  realTest = realExistenceTest[fullCondition];
+  realDecision = realExistenceDecision[fullCondition];
+  realTest = realDecision["OUTCOME"];
   realStatus = Which[
     TrueQ[realTest], "PROVED_NONEMPTY",
     SameQ[realTest, False], "PROVED_EMPTY",
@@ -286,6 +420,8 @@ emitLocus[package_String, dimension_Integer, baseQuantity_String,
     "PREMISES" -> assumptions,
     "TEST_OBJECT" -> realTest
   };
+  realStatusOperands = qeOperandsWithAttempts[
+    realStatusOperands, realDecision];
   emitCell[package, dimension, baseQuantity <> "_REAL_STATUS_OPERANDS",
     realStatusOperands];
   <|
@@ -668,7 +804,8 @@ componentCountStatus[attemptOutcome_] := Which[
 
 countDecisionAttempt[componentObject_, countPredicate_, changeEquations_List,
     freeParameters_List, assumptions_] := Module[
-  {universalVariables, testObject, attemptOutcome},
+  {universalVariables, testObject, primaryExpression, decision,
+   attemptOutcome},
   universalVariables = DeleteDuplicates[Join[freeParameters,
     orderedGlobalSymbols[And[assumptions, countPredicate]]]];
   testObject = If[universalVariables === {},
@@ -676,11 +813,15 @@ countDecisionAttempt[componentObject_, countPredicate_, changeEquations_List,
     With[{variables = universalVariables,
       predicate = Implies[assumptions, countPredicate]},
       ForAll[variables, predicate]]];
-  attemptOutcome = Quiet[Resolve[testObject, Reals]];
+  primaryExpression = With[{heldTestObject = testObject},
+    HoldComplete[Resolve[heldTestObject, Reals]]];
+  decision = boundedQERoute[primaryExpression, testObject, Reals];
+  attemptOutcome = decision["OUTCOME"];
   <|
     "COMPONENT_OBJECT" -> componentObject,
     "TEST_OBJECT" -> testObject,
     "ATTEMPT_OUTCOME" -> attemptOutcome,
+    "QE_DECISION_ATTEMPTS" -> decision["ATTEMPTS"],
     "CHANGE_EQUATIONS" -> changeEquations,
     "ASSUMPTIONS" -> assumptions|>
 ];
@@ -761,20 +902,30 @@ matrixRankDecision[matrix_List, rank_, freeParameters_List, assumptions_] :=
   ];
 
 emitComponentCount[package_, dimension_, baseQuantity_String, value_,
-    freeParameters_List, decision_Association] := Module[{status, certificate},
+    freeParameters_List, decision_Association] := Module[
+  {status, countAttempts, certificateOperands, certificate, countRecord},
   status = componentCountStatus[decision["ATTEMPT_OUTCOME"]];
+  countAttempts = Lookup[decision, "QE_DECISION_ATTEMPTS", {}];
+  certificateOperands = {
+    "VALUE" -> value,
+    "FREE_PARAMETERS" -> freeParameters,
+    "ATTEMPT_OUTCOME" -> If[countAttempts === {},
+      decision["ATTEMPT_OUTCOME"], countAttempts[[1]]["OUTCOME"]]
+  };
+  If[Length[countAttempts] > 1,
+    AppendTo[certificateOperands, "QE_DECISION_ATTEMPTS" -> countAttempts]];
   certificate = If[SameQ[status, tokenConstant], {
       "FREE_PARAMETERS" -> freeParameters,
       "TEST_OBJECT" -> decision["TEST_OBJECT"],
-      "OPERANDS" -> {
-        "VALUE" -> value,
-        "FREE_PARAMETERS" -> freeParameters,
-        "ATTEMPT_OUTCOME" -> decision["ATTEMPT_OUTCOME"]}
+      "OPERANDS" -> certificateOperands
     }, tokenNotApplicable];
-  emitCell[package, dimension, baseQuantity, {
+  countRecord = {
     "STATUS_TOKEN" -> status,
     "VALUE" -> value
-  }];
+  };
+  If[Length[countAttempts] > 1,
+    AppendTo[countRecord, "QE_DECISION_ATTEMPTS" -> countAttempts]];
+  emitCell[package, dimension, baseQuantity, countRecord];
   emitCell[package, dimension, baseQuantity <> "_STATUS", status];
   emitCell[package, dimension, baseQuantity <> "_CONSTANCY_CERTIFICATE", certificate];
   If[SameQ[status, tokenVaries],

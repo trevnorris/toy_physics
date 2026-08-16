@@ -792,3 +792,34 @@ payload.** ⚠ And since `P_D` is built from `V6_BASIS`, ⛔ a broken Q9 census 
 `XFORM_EXTRA` **action itself**.
 ⇒ ⭐⭐ **Four rounds of storage machinery, ⛔ none of which can catch wrong physics** — ⚠ while the physics
 checks the spec **already specifies** go unread. ⇒ [[feedback-physics-not-ceremony]].
+
+---
+
+## 2026-08-16 — two WL spec-compliance defects, found by the fix-round-1 review legs (Codex; verified by orchestrator re-execution)
+
+Both live in `mathematica/S11_stray_longitudinal_mathematica_audit.wl` and in every committed cell
+of its `.out`. ⛔ Both are OUT OF SCOPE for fix round 1 (the termination wall) — they need their own
+round, and the byte-identity regression bar of round 1 deliberately preserves them. ⭐ The SymPy
+sibling does not share either, so the frozen comparator (T7) will read genuine record divergence
+here; that divergence is a FINDING already explained, not a new measurement.
+
+1. **`_IDENTICALLY_SATISFIED` is computed pointwise, not identically** (`wl:203`:
+   `unrestrictedSimplify[And @@ (# == 0 &) /@ identityResiduals]`). The spec (§5, line 246) names
+   the test "whether every equation simplifies to zero **identically in its variables**". Measured:
+   `WL_S11_MAIN_D2_ROOT_COINCIDENCE_K_IDENTICALLY_SATISFIED` carries `STATUS_TOKEN -> UNDECIDED`
+   with `TEST_OBJECT` the pointwise equation `((k1^2+k2^2)*(bComp-muR))/rhoBr == 0`, while the
+   identity question is decidable (the residual has polynomial coefficients {1,1} in k — not the
+   zero polynomial ⇒ PROVED_FALSE). Command: `sed -n '56p' mathematica/out/S11_…_audit.out`;
+   re-derivation script archived in `~/.s11_build/wlfix1_review_scratches_codex.tar.gz`
+   (`physics_counterexamples.py` / `.stdout`, re-run by the orchestrator 2026-08-16).
+
+2. **`ROOT_COINCIDENCE_*` loci are one joint system over ALL root pairs, not per-pair loci**
+   (`wl:887–890`: all `Subsets[…,{2}]` differences passed to ONE `emitLocus`). The spec (line 381)
+   obliges a locus "for **every pair** of distinct roots"; the sibling emits per-pair records
+   (`PY_S11_XKIN_ANISO_D3_ROOT_COINCIDENCE_R1_R2_K_*` etc.). The joint system computes the
+   intersection (all-pairs coincidence). Measured counterexample (same archived script, re-run):
+   at an admissible exact rational point the specialized determinant factors with a double root —
+   a genuine pairwise coincidence (`ANY_PAIR_COINCIDES True`) — while the WL joint residuals
+   evaluate to `[0, -3, -3]` ⇒ the emitted locus excludes the point (`ALL_PAIRS_COINCIDE False`).
+   A rank-drop stratum sitting on a pairwise-coincidence surface is exactly where a stray mode
+   could hide, so this is a physics-bearing coverage hole, not a formatting divergence.

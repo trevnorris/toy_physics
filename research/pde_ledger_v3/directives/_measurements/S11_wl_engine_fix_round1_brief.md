@@ -1,4 +1,4 @@
-# Measurements — S11 WL engine fix round 1 brief (generated 2026-08-16 09:17)
+# Measurements — S11 WL engine fix round 1 brief (generated 2026-08-16 09:43)
 
 Generator: ~/.s11_build/gen_twin_wlfix1.sh (this file is written by that script, never by hand).
 
@@ -31,13 +31,15 @@ CELL_END XKIN_ANISO 4 rc=137 wall=79127s out_bytes=3921488 2026-08-16 09:11:18
 DRIVER_END 2026-08-16 09:11:18
 ```
 
-## The hang site: lines 205, 211, 216 of the engine
+## The hang site (205/211/216) and the other two QE sites (137, 679)
 
 ```
-$ sed -n '205p;211p;216p' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11_stray_longitudinal_mathematica_audit.wl
+$ sed -n '205p;211p;216p;137p;679p' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11_stray_longitudinal_mathematica_audit.wl
+      Resolve[Exists[quantifiedVariables, predicate], Reals]]]]
   emitCell[package, dimension, baseQuantity <> "_IDENTICALLY_SATISFIED", {
   unrestrictedReduction = Quiet[Reduce[And @@ equations, variables, Complexes]];
   emitCell[package, dimension, baseQuantity <> "_INCONSISTENT", {
+  attemptOutcome = Quiet[Resolve[testObject, Reals]];
 ```
 
 ## Last three tags emitted by XKIN D4 (committed .out at e2928b49)
@@ -57,24 +59,46 @@ mtime 2026-08-15 16:58:40.424295301 -0600
 CELL_END XKIN_ANISO 4 rc=137 wall=79127s out_bytes=3921488 2026-08-16 09:11:18
 ```
 
-## Call-site recurrence of the quantifier-elimination class in the engine
+## QE call sites: Reduce (excluding RowReduce, which is Gaussian elimination) and Resolve
 
 ```
-$ grep -n 'Reduce\[' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11_stray_longitudinal_mathematica_audit.wl | head -20; echo ---; grep -n 'Resolve\[' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11_stray_longitudinal_mathematica_audit.wl | head -20
+$ grep -n 'Reduce\[' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11_stray_longitudinal_mathematica_audit.wl | grep -v RowReduce; echo ---; grep -n 'Resolve\[' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11_stray_longitudinal_mathematica_audit.wl
 211:  unrestrictedReduction = Quiet[Reduce[And @@ equations, variables, Complexes]];
-398:  v1Basis = If[v1Raw === {}, {}, RowReduce[v1Raw]];
-414:  v2Basis = If[v2Raw === {}, {}, RowReduce[v2Raw]];
-452:    v6Basis = If[v6Ambient === {}, {}, RowReduce[v6Ambient]]
 ---
 137:      Resolve[Exists[quantifiedVariables, predicate], Reals]]]]
 679:  attemptOutcome = Quiet[Resolve[testObject, Reals]];
 ```
 
-## How many times the class ran in the completed D3 cell (record census)
+## D3 record census of the QE class, split by record kind
 
 ```
-$ grep -cE '^WL_S11_XKIN_ANISO_D3_[A-Z0-9_]*(INCONSISTENT|REAL_STATUS):' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.out
-328
+$ echo -n 'INCONSISTENT records: '; grep -cE '^WL_S11_XKIN_ANISO_D3_[A-Z0-9_]*_INCONSISTENT:' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.out; echo -n 'REAL_STATUS records: '; grep -cE '^WL_S11_XKIN_ANISO_D3_[A-Z0-9_]*_REAL_STATUS:' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.out; echo -n 'REAL_ADMISSIBLE branch entries: '; grep -E '^WL_S11_XKIN_ANISO_D3_[A-Z0-9_]*_REAL_ADMISSIBLE:' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.out | grep -oE 'STATUS_TOKEN' | wc -l; echo -n 'of the paired records, NOT_APPLICABLE (ran no QE): '; grep -E '^WL_S11_XKIN_ANISO_D3_[A-Z0-9_]*(_INCONSISTENT|_REAL_STATUS):' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.out | grep -c NOT_APPLICABLE
+INCONSISTENT records: 164
+REAL_STATUS records: 164
+REAL_ADMISSIBLE branch entries: 379
+of the paired records, NOT_APPLICABLE (ran no QE): 140
+```
+
+## D2 death site: last emitted tag is inside the strata blocks
+
+```
+$ grep -oE '^WL_S11_XKIN_ANISO_D2_[A-Z0-9_]+' /var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.out | tail -1
+WL_S11_XKIN_ANISO_D2_STRATUM6_ROOT1_N1
+```
+
+## Operand growth D3 to D4 (sizes only, from the archived diagnosis)
+
+```
+$ tar xzf /home/trevnorris/.s11_build/d4_stall_diagnosis_scratches.tar.gz -O d4diag/s2_minor_table.out 2>/dev/null | grep -E 'reduced radicand|rationalized N'
+[     0.4s] D=3 reduced radicand: terms=6, total_deg_k=4
+[     2.0s] D=3 minor2 rows=(1, 2, 4): A(terms=6,deg_k=5) B(terms=3,deg_k=3) rationalized N(terms=9,deg_k=10,deg_params=9)
+[     2.5s] D=3 minor3 rows=(1, 3, 4): A(terms=6,deg_k=5) B(terms=3,deg_k=3) rationalized N(terms=9,deg_k=10,deg_params=9)
+[     3.1s] D=3 minor4 rows=(2, 3, 4): A(terms=6,deg_k=5) B(terms=3,deg_k=3) rationalized N(terms=12,deg_k=10,deg_params=8)
+[     4.3s] D=4 reduced radicand: terms=10, total_deg_k=4
+[    33.7s] D=4 minor2 rows=(1, 2, 3, 5): A(terms=20,deg_k=7) B(terms=10,deg_k=5) rationalized N(terms=52,deg_k=14,deg_params=13)
+[    45.3s] D=4 minor3 rows=(1, 2, 4, 5): A(terms=20,deg_k=7) B(terms=10,deg_k=5) rationalized N(terms=52,deg_k=14,deg_params=13)
+[    52.4s] D=4 minor4 rows=(1, 3, 4, 5): A(terms=20,deg_k=7) B(terms=10,deg_k=5) rationalized N(terms=52,deg_k=14,deg_params=13)
+[    59.1s] D=4 minor5 rows=(2, 3, 4, 5): A(terms=20,deg_k=7) B(terms=10,deg_k=5) rationalized N(terms=74,deg_k=14,deg_params=12)
 ```
 
 ## Spec: the object definitions and the pinned payload form (S11_SHARED_PHYSICS.md)
@@ -143,6 +167,6 @@ WL_S11_XFORM_EXTRA_D2 IDENTICAL
 
 ```
 $ cd /var/projects/toy_physics && git log --oneline -1
-e2928b49 WL per-cell sweep DRIVER_END: 19/21 cells complete, XKIN D2+D4 partial — the honest record
+9190d569 WL fix round 1 brief: seven obligations, generated twin, D4 basis sizes stripped as answer-bearing
 ```
 

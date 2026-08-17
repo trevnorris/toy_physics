@@ -837,3 +837,49 @@ here; that divergence is a FINDING already explained, not a new measurement.
    outcome's value. Resolution deferred to the spec-compliance round (amend the spec to name the
    additive provenance extension, or move attempts to a companion record); ⭐ the frozen comparator
    (T7) must treat trailing provenance fields as an engine-local extension, not record divergence.
+
+## Entries 4–7 — registered 2026-08-17 (fix-round-2 script legs: fresh agent + grok, both findings verified by orchestrator re-computation)
+
+4. **`ROOT_COINCIDENCE_COEFF` `_SOLUTION` omits solution branches the primary `Solve` never
+   returned** (leg-1 finding 1, orchestrator-confirmed). At XKIN_ANISO D3 the emitted set
+   `{{bComp -> 0, muR -> 0}}` omits at least `{muR == bComp, sRho == 1}`, which satisfies all three
+   emitted `_EQUATIONS` identically in k on the principal sheet (orchestrator: independent parse +
+   substitution, residuals `[0, 0, 0]`; leg: WL kernel `Reduce` returns the component, `Solve` does
+   not, with `Solve::svars`). Byte-identical omission in the old committed record — WL `Solve`
+   incompleteness at the primary route, emitted as-is per spec:245. All omitted components are
+   premise-excluded (`sRho != 1`, positivity, real k) so measured strata do not change, but the
+   branches were silently dropped rather than typed `EXCLUDED` (spec:275). The class is live
+   engine-wide because the obligation-4 containment instrument has never run (see STATUS).
+
+5. **`ROOT2_RANK_DROP_JOINT` `_SOLUTION` contains a branch that does not solve the emitted joint
+   system, in BOTH engines' records, and the two engines emit incompatible objects for the same
+   tag** (grok finding 1, narrowed by orchestrator: grok's `{sRho -> 1}` claim REFUTED — vanishes
+   16/16 both sheets; `{muR -> bComp}` CONFIRMED failing 1 of 16 emitted minors on both sheets at
+   a generic rational point). The engine's own downstream recomputation corroborates:
+   `STRATUM2_ROOT2_N2_RANK: CONSTANT 3` — no rank drop on the stratum cut by `muR == bComp` —
+   while that branch sits ADMISSIBLE in the joint locus and is promoted to a stratum. Present in
+   the round-1 partial (old unbounded `Solve`) and the round-2 record (factor-lattice fallback)
+   alike — not a route regression. Cross-engine: SymPy's
+   `PY_S11_XKIN_ANISO_D4_ROOT2_RANK_DROP_JOINT_SOLUTION` (commit `19591194`) is a 2-branch complex
+   k-only object `{k1 -> 0, k2 -> 0, k3 -> ±I|k4|}` — neither engine's joint object contains the
+   other. ⭐ The frozen comparator (T7) WILL flag this tag family; adjudication belongs to the
+   defects round with the obligation-4 instrument repaired.
+
+6. **`_REAL_STATUS`/`_REAL_WITNESS` existentially quantify over the non-solve parameters; the
+   emitted witness need not satisfy the emitted `_EQUATIONS`** (leg-1 finding 4, orchestrator-
+   confirmed). `WL_S11_XKIN_ANISO_D3_ROOT_COINCIDENCE_COEFF_REAL_WITNESS: {bComp -> 1,
+   muR -> 1/2, rhoBr -> 1, sRho -> 2}` under `PROVED_NONEMPTY` fails the emitted equations at
+   generic k (orchestrator residuals `[0.091, -0.155, -0.246]` at k = (3/7, 5/11, 2/9)) and holds
+   only on the hidden slice `k2 = k3 = 0` — against spec:287's witness "satisfying `_EQUATIONS`".
+   Mechanism: `realExistenceDecision` quantifies ALL symbols (wl:540–550) and the witness is a
+   projection.
+
+7. **Latent route-layer gaps, zero live occurrences in the committed records** (both legs; kept
+   one entry because none fires in any committed record): (a) `factorLatticeSolve` cannot
+   represent checked-and-empty — equations constraining only non-solve variables have empty factor
+   support (wl:616–619), so under primary expiry a decidable `{}` degrades to
+   `Failure["FactorLatticeUnavailable", ...]` (route ablation `solvePrimaryBudgetSeconds = 0`,
+   `grep -c FactorLatticeUnavailable` = 0 on all three final records); (b) `DIM_SOLUTION`,
+   `ROOT_SOLUTION_SET`, and `*_KW_SQUARED` paths use `boundedSolveRoute` but emit only
+   `decision["OUTCOME"]` without `SOLUTION_ATTEMPTS` provenance (grok route census — provenance
+   gap only; outcomes agreed on the exercised cell).

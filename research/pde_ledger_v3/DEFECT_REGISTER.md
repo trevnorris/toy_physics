@@ -823,3 +823,17 @@ here; that divergence is a FINDING already explained, not a new measurement.
    evaluate to `[0, -3, -3]` ⇒ the emitted locus excludes the point (`ALL_PAIRS_COINCIDE False`).
    A rank-drop stratum sitting on a pairwise-coincidence surface is exactly where a stray mode
    could hide, so this is a physics-bearing coverage hole, not a formatting divergence.
+
+3. **Count/certificate payloads carry a conditional third field the spec's pinned form does not
+   admit** (added deliberately by the round-1 post-legs fold, reviewed by both scoped legs; found
+   as a spec tension by the round-2 brief legs). The spec pins ONE payload form for
+   `STRATUM<s>_<COUNT>` in all three statuses (spec:733: "never a different shape per status") —
+   `{STATUS_TOKEN, VALUE}` — while the committed engine appends `QE_DECISION_ATTEMPTS` to count
+   records and certificate operands whenever more than one attempt ran (engine: `AppendTo[
+   countRecord, "QE_DECISION_ATTEMPTS" -> countAttempts]` guarded by `Length[countAttempts] > 1`;
+   command: `grep -n 'QE_DECISION_ATTEMPTS' mathematica/S11_stray_longitudinal_mathematica_audit.wl`,
+   `sed -n '733p' directives/S11_SHARED_PHYSICS.md`). The deviation is ADDITIVE-ONLY — the pinned
+   fields are present, in order, unchanged — and presence keys to attempt count, never to the
+   outcome's value. Resolution deferred to the spec-compliance round (amend the spec to name the
+   additive provenance extension, or move attempts to a companion record); ⭐ the frozen comparator
+   (T7) must treat trailing provenance fields as an engine-local extension, not record divergence.

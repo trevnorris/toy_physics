@@ -1,4 +1,4 @@
-# Measurements — S11 WL engine fix round 2 brief (generated 2026-08-16 19:07)
+# Measurements — S11 WL engine fix round 2 brief (generated 2026-08-16 19:33)
 
 Generator: ~/.s11_build/gen_twin_wlfix2.sh (this file is written by that script, never by hand).
 
@@ -41,12 +41,28 @@ guarded_XKIN_ANISO_D2.out: 1411 emissions, last=WL_S11_XKIN_ANISO_D2_STRATUM6_RO
 guarded_XKIN_ANISO_D2.out.prerepair2: 1411 emissions, last=WL_S11_XKIN_ANISO_D2_STRATUM6_ROOT1_N2_NULLITY_CHANGE_LOCUS_REAL_STATUS_OPERANDS
 ```
 
-## Terminal silence: seconds from last emission to the guard's floor crossing (latest runs)
+## Guard-kill attribution: MEMGUARD record count per cell (D4's third death artifact was an external harness kill at the same frontier, not a guard kill)
 
 ```
-$ for d in 4 2; do le=$(tail -1 /home/trevnorris/.s11_build/fix1_build/guarded_XKIN_ANISO_D$d.emission_times.tsv | cut -f1); gt=$(grep "CELL_MEMGUARD XKIN_ANISO_D$d" /home/trevnorris/.s11_build/fix1_build/guarded_cells_record.log | tail -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:]{8}-[0-9:]{2}:[0-9]{2}'); ge=$(date -d "$gt" +%s); echo "D$d: last_emit_epoch=${le%%.*} guard_epoch=$ge silence=$(( ge - ${le%%.*} ))s"; done
-D4: last_emit_epoch=1786920731 guard_epoch=1786920925 silence=194s
-D2: last_emit_epoch=1786922228 guard_epoch=1786922251 silence=23s
+$ for d in 4 2; do echo -n "D$d CELL_MEMGUARD records: "; grep -c "CELL_MEMGUARD XKIN_ANISO_D$d" /home/trevnorris/.s11_build/fix1_build/guarded_cells_record.log; done; echo -n 'D4 CELL_START records: '; grep -c 'CELL_START XKIN_ANISO_D4' /home/trevnorris/.s11_build/fix1_build/guarded_cells_record.log
+D4 CELL_MEMGUARD records: 2
+D2 CELL_MEMGUARD records: 2
+D4 CELL_START records: 4
+```
+
+## Terminal silence: seconds from last emission to the guard's floor crossing (latest runs, sub-second from the tsv epoch)
+
+```
+$ for d in 4 2; do le=$(tail -1 /home/trevnorris/.s11_build/fix1_build/guarded_XKIN_ANISO_D$d.emission_times.tsv | cut -f1); gt=$(grep "CELL_MEMGUARD XKIN_ANISO_D$d" /home/trevnorris/.s11_build/fix1_build/guarded_cells_record.log | tail -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:]{8}-[0-9:]{2}:[0-9]{2}'); ge=$(date -d "$gt" +%s); awk -v le="$le" -v ge="$ge" -v d="$d" 'BEGIN{printf "D%s: last_emit=%.3f guard=%d silence=%.1fs\n", d, le, ge, ge-le}'; done
+D4: last_emit=1786920731.867 guard=1786920925 silence=193.1s
+D2: last_emit=1786922228.687 guard=1786922251 silence=22.3s
+```
+
+## D2 accumulation span: first STRATUM5 emission to the guard kill
+
+```
+$ s5=$(awk -F'\t' '$3 ~ /STRATUM5/ {print $1; exit}' /home/trevnorris/.s11_build/fix1_build/guarded_XKIN_ANISO_D2.emission_times.tsv); gt=$(grep 'CELL_MEMGUARD XKIN_ANISO_D2' /home/trevnorris/.s11_build/fix1_build/guarded_cells_record.log | tail -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:]{8}-[0-9:]{2}:[0-9]{2}'); ge=$(date -d "$gt" +%s); awk -v a="$s5" -v b="$ge" 'BEGIN{printf "stratum5_first_emit_to_guard=%.1fs\n", b-a}'
+stratum5_first_emit_to_guard=1222.7s
 ```
 
 ## D4 death site source: the _EQUATIONS emit (wl:311) and the unbounded Solve (wl:312)
@@ -127,12 +143,21 @@ $ awk -F'\t' 'NR>1{gap=$1-prev; if(gap>60) printf "%.1fs before %s\n", gap, $3} 
 137.2s before WL_S11_XKIN_ANISO_D4_ROOT3_RANK_DROP_JOINT_SOLUTION
 ```
 
-## D4 death-site Solve operand size (from its own emitted _EQUATIONS payload: equation count and bytes)
+## D4 death-site Solve operand size (from its own emitted _EQUATIONS payload: equation count and bytes) and the stratum's free-parameter count
 
 ```
-$ line=$(grep 'STRATUM3_ROOT2_N2_RANK_CHANGE_LOCUS_EQUATIONS' /home/trevnorris/.s11_build/fix1_build/guarded_XKIN_ANISO_D4.out | tail -1); echo "bytes=${#line}"; echo -n 'top-level comma-separated equations: '; echo "$line" | grep -oE '==' | wc -l
+$ line=$(grep 'STRATUM3_ROOT2_N2_RANK_CHANGE_LOCUS_EQUATIONS' /home/trevnorris/.s11_build/fix1_build/guarded_XKIN_ANISO_D4.out | tail -1); echo "bytes=${#line}"; echo -n 'equation relations (==): '; echo "$line" | grep -oE '==' | wc -l; fp=$(grep 'WL_S11_XKIN_ANISO_D4_STRATUM3_FREE_PARAMETERS:' /home/trevnorris/.s11_build/fix1_build/guarded_XKIN_ANISO_D4.out | tail -1); echo -n 'free parameters (unknowns): '; echo "$fp" | sed 's/^[^{]*{//; s/}.*//' | tr ',' '\n' | wc -l
 bytes=1163
-top-level comma-separated equations: 16
+equation relations (==): 16
+free parameters (unknowns): 7
+```
+
+## D2 sign-twin: STRATUM5 vs STRATUM6 defining equations (committed partial payloads; the two strata differ only in the radical's sign)
+
+```
+$ grep -E 'WL_S11_XKIN_ANISO_D2_STRATUM[56]_DEFINING_EQUATIONS:' /home/trevnorris/.s11_build/fix1_build/guarded_XKIN_ANISO_D2.out
+WL_S11_XKIN_ANISO_D2_STRATUM5_DEFINING_EQUATIONS: {k1 == -Sqrt[-((bComp*k2^2*muR)/(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2)) - (bComp^2*k2^2*sRho)/(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2) + (4*bComp*k2^2*muR*sRho)/(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2) - (k2^2*muR^2*sRho)/(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2) - (bComp*k2^2*muR*sRho^2)/(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2) + Sqrt[(2*bComp*k2^2*muR + 2*bComp^2*k2^2*sRho - 8*bComp*k2^2*muR*sRho + 2*k2^2*muR^2*sRho + 2*bComp*k2^2*muR*sRho^2)^2 - 4*(k2^4*muR^2 - 2*bComp*k2^4*muR*sRho + bComp^2*k2^4*sRho^2)*(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2)]/(2*(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2))]}
+WL_S11_XKIN_ANISO_D2_STRATUM6_DEFINING_EQUATIONS: {k1 == Sqrt[-((bComp*k2^2*muR)/(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2)) - (bComp^2*k2^2*sRho)/(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2) + (4*bComp*k2^2*muR*sRho)/(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2) - (k2^2*muR^2*sRho)/(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2) - (bComp*k2^2*muR*sRho^2)/(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2) + Sqrt[(2*bComp*k2^2*muR + 2*bComp^2*k2^2*sRho - 8*bComp*k2^2*muR*sRho + 2*k2^2*muR^2*sRho + 2*bComp*k2^2*muR*sRho^2)^2 - 4*(k2^4*muR^2 - 2*bComp*k2^4*muR*sRho + bComp^2*k2^4*sRho^2)*(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2)]/(2*(bComp^2 - 2*bComp*muR*sRho + muR^2*sRho^2))]}
 ```
 
 ## D2 death-site N1 matrix payload size and radical content (Sqrt/Abs/I node counts)
@@ -216,10 +241,10 @@ $ grep -E 'STRATUM_ORDERING' /var/projects/toy_physics/research/pde_ledger_v3/sc
       1 PY_S11_XKIN_ANISO_D4_STRATUM_ORDERING: Tuple()
 ```
 
-## Guard contract the builder must use (floor, wall, per-PID kill)
+## Guard contract the builder must use (floor, wall, per-PID kill) and its pinned hash
 
 ```
-$ grep -nE 'memory_floor_kb|wall_limit_seconds|find_kernel_descendant' /home/trevnorris/.s11_build/fix1_build/run_guarded_cell.sh | head -8
+$ grep -nE 'memory_floor_kb|wall_limit_seconds|find_kernel_descendant' /home/trevnorris/.s11_build/fix1_build/run_guarded_cell.sh | head -8; sha256sum /home/trevnorris/.s11_build/fix1_build/run_guarded_cell.sh
 14:memory_floor_kb=1048576
 15:wall_limit_seconds=14400
 17:find_kernel_descendant() {
@@ -228,6 +253,7 @@ $ grep -nE 'memory_floor_kb|wall_limit_seconds|find_kernel_descendant' /home/tre
 84:      "${stem}" "${available_kb}" "${memory_floor_kb}" "${wrapper_pid}" "${kernel_pid}" "${guard_iso}" | tee -a "${record}"
 96:  if [[ ${elapsed} -ge ${wall_limit_seconds} ]]; then
 100:      "${stem}" "${elapsed}" "${wall_limit_seconds}" "${wrapper_pid}" "${kernel_pid}" "${guard_iso}" | tee -a "${record}"
+ba17f9ab9016e40fa9932cfa875cbd2b40b5c7d731ae5257360cbdbfb1d0a664  /home/trevnorris/.s11_build/fix1_build/run_guarded_cell.sh
 ```
 
 ## The two registered out-of-scope defects exist in the register (entry heading lines)
@@ -258,10 +284,10 @@ s11_wall2_AQ1c/02_operands.py
 s11_wall2_AQ1c/04_bounded_routes.py
 ```
 
-## Head commit the brief targets
+## HEAD at twin-generation time (the brief's commit is this commit's child)
 
 ```
 $ cd /var/projects/toy_physics && git log --oneline -1
-ef486a51 Wall-2 diagnosis prompt: two deterministic strata memory deaths, measured facts only
+51f4018f Round-2 brief review prompt: defective-repair construction mandatory, both legs identical
 ```
 

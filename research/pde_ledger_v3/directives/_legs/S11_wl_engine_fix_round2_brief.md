@@ -8,7 +8,8 @@ there; they are not restated here.
 
 ## The measured wall (every claim here is twin-backed)
 
-- **D4**: guard-killed 3× fully deterministically at exactly emission 999, last tag
+- **D4**: three runs all died at exactly emission 999 with the same last tag (two memory-guard
+  kills plus one external harness kill at the same frontier), tag
   `..._STRATUM3_ROOT2_N2_RANK_CHANGE_LOCUS_EQUATIONS` — the `emitCell` at wl:311. The kernel died
   inside wl:312, `solution = Quiet[Solve[And @@ equations, variables]]` (the following `_SOLUTION`
   never printed), on 16 radical-bearing minor equations in 7 unknowns, after ~193 s of terminal
@@ -19,9 +20,9 @@ there; they are not restated here.
   assumedRank[stacked, assumptions]` — `MatrixRank` with a `FullSimplify` zero test (wl:72–78),
   unbounded. The identical call on the sign-twin stratum completed in 327.6 s earlier in the same
   run; the dying instance was killed only 22.3 s in, with available memory already at the floor.
-  **The D2 wall is accumulation plus a terminal call**: the two preceding strata account for
-  ~1,223 s of the run's last ~1,240 s, in unbounded `FullSimplify`-chain calls of 100–330 s each
-  on nested-radical/Abs/I entries.
+  **The D2 wall is accumulation plus a terminal call**: from the first STRATUM5 emission to the
+  guard kill is ~1,223 s of the 1,315 s run, spent in unbounded `FullSimplify`-chain calls of
+  100–330 s each on nested-radical/Abs/I entries.
 - **D3 is the control**: same engine, same package, every stratum, 255 s / 2,501 emissions; its
   corresponding operands are radical-free and small.
 - **Feasibility** (diagnosis: two independent analysts, all scripts + literal stdout archived):
@@ -35,9 +36,12 @@ there; they are not restated here.
 
 ## Out of scope
 
-The two DEFECT_REGISTER.md entries dated 2026-08-16 (pointwise `_IDENTICALLY_SATISFIED` wl:203;
-joint `ROOT_COINCIDENCE` wl:887–890): untouched, exactly as in round 1. The SymPy engine, the
-spec, and the comparator: untouched.
+The DEFECT_REGISTER.md entries dated 2026-08-16 (pointwise `_IDENTICALLY_SATISFIED`; joint
+`ROOT_COINCIDENCE`; the additive count-payload provenance extension): untouched, exactly as in
+round 1. ⚠ The register's engine line numbers predate the round-1 repair and have shifted — the
+register's TEXT, never a line number, identifies each defect. The SymPy engine, the spec, and the
+comparator: untouched. Provenance fields remain ADDITIVE-ONLY: appended after the spec's pinned
+payload fields, never replacing or reordering them.
 
 ## What must be true after the fix
 
@@ -45,28 +49,63 @@ spec, and the comparator: untouched.
    spec strength unchanged; the 19-cell byte regression run for real against the baseline of this
    commit; manifest census for newly completing cells; generated twin; primary-named slots carry
    the primary's actual outcome and multi-attempt routes emit their attempt sequences).
-2. **The two measured killer classes are bounded.** No invocation of the wl:312 locus `Solve` and
-   no invocation of the `assumedRank` / `engineSimplify` family may run without an explicit
-   resource bound — time AND memory (the D2 killer was 22.3 s old when the machine hit the floor;
-   a clock alone cannot catch it). A bound lives in the shared helper and applies at every call
-   site of that helper — ⛔ never selected by package, dimension, root index, stratum index, or
-   tag identity. If the builder bounds any further call class, it is bounded the same uniform way.
-   The diff is the evidence; a bound reachable only for some cells' identity is a build failure.
-3. **Expiry is per-call and recoverable.** An attempt exceeding its budget yields a measured
-   failure object; the route then runs its bounded fallback attempts and, only after all have run
-   and failed, an undecided token carrying the attempt sequence per the round-1 fold. An expiry
-   must never terminate the cell and must never reach the machine-level guard.
-4. **Honest incompleteness, only after a real attempt** — round-1 obligation 3 with its acceptance
-   probe, widened: the bounded, independent, exact-rational decision probe re-attacks every
-   undecided-class record of every kind (locus, rank, nullity, count, certificate) in each newly
-   completing cell, on that record's own emitted operands; any such record the probe decides is a
-   build failure.
-5. **Accumulation is part of the wall.** `XKIN_ANISO` D2 and D4 run to cell completion under the
-   committed guard contract — `~/.s11_build/fix1_build/run_guarded_cell.sh`, fresh kernel per
-   cell, 1 GiB available-memory floor, 14,400 s outer wall, no silent inter-emission gap over
-   1,800 s. A guard death is a measurement, not a papering-over target — ⛔ and its death record
-   must be analyzed: a death inside any call class this fix claims to have bounded means the fix
-   did not apply, and the build fails.
+2. **Every CAS call class on the live cell path is bounded.** No invocation of the locus `Solve`
+   (wl:312), the spectrum `Solve`s (wl:768, wl:982), the minor construction
+   `allMaximalMinors`/`Factor[Det[…]]`, or the `assumedRank` / `assumedNullSpace` /
+   `engineSimplify` / `unrestrictedSimplify` family may run without an explicit resource bound —
+   time AND memory (the D2 killer was 22.3 s old when the machine hit the floor; a clock alone
+   cannot catch it). A bound lives in the shared helper and applies at every call site of that
+   helper — ⛔ never selected by package, dimension, root index, stratum index, or tag identity.
+   Any further call class the builder bounds is bounded the same uniform way. The diff is the
+   evidence; a bound reachable only for some cells' identity is a build failure.
+3. **Expiry is per-call and recoverable, and the route is uniform all the way down.** An attempt
+   exceeding its budget yields a measured failure object; the route then runs its bounded
+   fallback attempts and, only after all have run and failed, an undecided token carrying the
+   attempt sequence per the round-1 fold. An expiry must never terminate the cell and must never
+   reach the machine-level guard. Round-1 obligation 2's uniformity binds every multi-attempt
+   route this round builds, generalized: selection of attempts, fallbacks, and post-processing
+   depends ONLY on measured expiry/failure of prior attempts — never on package, dimension, root
+   index, stratum index, tag identity, or the names of symbols. A structural dispatch (on radical
+   content, degree, operand class) must be a total rule applied identically at every call site,
+   and every fallback branch must be exercised by the acceptance harness on at least one operand
+   OUTSIDE the two previously-dying cells (synthetic if necessary) — a branch exercised in
+   practice by exactly one cell is an identity gate wearing a structural predicate, and the build
+   fails.
+   **Returns are never coerced.** A primary or fallback return that is not the solver's genuine
+   branch list (aborted, expired, a failure object) is emitted AS that object — spec:245 ("the
+   solution set exactly as your CAS returns it") and the opaque-object rule at spec:271–272 bind
+   every new route; coercing a non-answer to an empty or truncated list is a build failure. A
+   successful fallback's record carries the fallback's ENTIRE return — filtering or truncating
+   branches between the solver and the emit is a build failure.
+4. **Honest incompleteness, only after a real attempt** — round-1 obligation 3 with its
+   acceptance probe, widened four ways:
+   (a) every undecided-class rank / nullity / count record carries its live operands (the matrix
+   and the premises it was computed under), appended additively after the spec's pinned payload
+   fields, so the probe has something to attack;
+   (b) the probe re-attacks every undecided-class record of every kind in each newly completing
+   cell on that record's own emitted operands, with per-record budgets at least as large as the
+   engine's own primary budget for that class — a probe budgeted to lose is not a probe, and the
+   probe harness must demonstrate it can fail by deciding a planted decidable-but-undecided
+   record before the real census runs;
+   (c) any such record the probe decides is a build failure;
+   (d) emitted residual-class payloads in newly completing cells are recomputed from their own
+   record operands by the probe; a mismatch is a build failure.
+   **Completeness has an oracle**: for every newly emitted locus `_SOLUTION` in the two
+   previously-dying cells, an independent engine (SymPy) solves the same emitted `_EQUATIONS`
+   under the same premises within a fixed budget; where the independent route completes, every
+   branch/point it finds must lie in the emitted `_SOLUTION` up to algebraic equivalence — an
+   omitted branch is a build failure. Membership specialization alone (round-1 obligation 6)
+   does not test completeness; this does.
+5. **Accumulation is part of the wall, and completion is the acceptance.** `XKIN_ANISO` D2 and D4
+   run to cell completion — rc=0, `WL_S11_LOCAL_TAG_NAMES` emitted, guard=NONE — under the
+   committed guard contract: `~/.s11_build/fix1_build/run_guarded_cell.sh` (sha256 pinned in the
+   twin; the runner is not modified), fresh kernel per cell, 1 GiB available-memory floor,
+   14,400 s outer wall, no silent inter-emission gap over 1,800 s. ⛔ ANY guard death or
+   incompleteness on either cell is a build failure — there is no measurement exception this
+   round; the builder STOPS at the first death, preserves the death record, and reports — never
+   iterates past it. Kernel memory is instrumented as evidence: a sidecar samples the kernel's
+   RSS on a fixed interval to a separate file for both cells, and the build report includes the
+   per-stratum high-water profile — accumulation is measured, not inferred from survival.
 6. **Committed partial records stay at least as strong.** Every record present in the committed
    D2/D4 partials is present in the new run. An undecided-class token may become decided.
    ⛔ A decided token that changes value, or becomes undecided, is a HALT-AND-REPORT — it is a

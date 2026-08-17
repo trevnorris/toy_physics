@@ -81,6 +81,10 @@ resourceFailureQ[outcome_] := MatchQ[Unevaluated[outcome],
   Failure["CASMemoryBudgetExpired" | "CASTimeBudgetExpired", _Association] |
   Failure["QEMemoryBudgetExpired" | "QEBudgetExpired", _Association]];
 
+SetAttributes[computedOrOpaqueFailure, HoldRest];
+computedOrOpaqueFailure[object_, dependentComputation_] :=
+  If[FailureQ[object], object, dependentComputation];
+
 algebraicPresentationQ[expression_] := ! FreeQ[Unevaluated[expression],
   _Abs | Power[_, exponent_Rational /; Denominator[exponent] > 1]];
 
@@ -1580,18 +1584,23 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
     basis = nullSpaceRoute["OUTCOME"];
     emitCell[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N6_BASIS"], basis];
-    basisDots = Map[engineSimplify[#.wavevector, assumptions] &, basis];
+    (* An exhausted null-space route is an opaque computed return.  Propagate
+       that exact Failure through dependent slots instead of mapping algebra
+       over Failure's tag/payload or manufacturing Length[Failure] == 2. *)
+    basisDots = computedOrOpaqueFailure[basis,
+      Map[engineSimplify[#.wavevector, assumptions] &, basis]];
     emitCell[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N6_DOT_K"], basisDots];
-    basisResiduals = MapThread[
-      Function[{basisVector, dotProduct},
-        Map[engineSimplify[#, assumptions] &,
-          Total[wavevector^2] basisVector - dotProduct wavevector]],
-      {basis, basisDots}];
+    basisResiduals = computedOrOpaqueFailure[basis,
+      MapThread[
+        Function[{basisVector, dotProduct},
+          Map[engineSimplify[#, assumptions] &,
+            Total[wavevector^2] basisVector - dotProduct wavevector]],
+        {basis, basisDots}]];
     emitCell[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N6_RESIDUAL"],
       basisResiduals];
-    basisCount = Length[basis];
+    basisCount = computedOrOpaqueFailure[basis, Length[basis]];
     basisCountDecision = If[TrueQ[componentCounts] &&
         ! SameQ[basisCount, nullity],
       unavailableCountDecision[basis,
@@ -1612,7 +1621,7 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
     rankDecision = tokenNotApplicable;
     emitCell[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N7_RESIDUAL"],
-      basisCount - nullity];
+      computedOrOpaqueFailure[basisCount, basisCount - nullity]];
 
     If[TrueQ[includeRankLoci],
       rankMinors = allMaximalMinors[matrixAtRoot, rank];

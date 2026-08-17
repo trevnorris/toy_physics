@@ -30,6 +30,68 @@ qePrimaryBudgetSeconds = 30;
 (* Attempt 2 budget: exact-rational specialization/instance decision for up to 30 s. *)
 qeExactRationalBudgetSeconds = 30;
 
+(* Every bounded CAS attempt may allocate at most 128 MiB.  This is deliberately
+   well below the external guard's 1 GiB available-memory floor, so an individual
+   attempt expires inside the kernel while there is still room to run its fallback. *)
+casAttemptMemoryBudgetBytes = 134217728;
+(* FullSimplify keeps its committed presentation for ordinary cells, but a single
+   simplification may not hold the cell silent for more than 45 s. *)
+simplifyPrimaryBudgetSeconds = 45;
+(* A radical/Abs presentation gets the same 45 s ceiling before exact algebraic
+   presentation fallbacks.  This total structural rule is applied at every helper
+   call and is independent of package, dimension, root, stratum and tag. *)
+algebraicPrimaryBudgetSeconds = 45;
+(* The exact presentation fallback gets 15 s before the lossless identity route. *)
+simplifyFallbackBudgetSeconds = 15;
+(* MatrixRank and NullSpace retain their assumption-aware primary for 45 s; their
+   exact-specialization/pivot fallbacks each receive a separate 45 s budget. *)
+linearAlgebraPrimaryBudgetSeconds = 45;
+linearAlgebraFallbackBudgetSeconds = 45;
+(* Radical-bearing rank/null-space primaries receive 45 s because they can prove
+   lower component ranks that the generic specialization fallback must not guess. *)
+linearAlgebraRadicalPrimaryBudgetSeconds = 45;
+(* Solve keeps the native call for 30 s and then gives the exact factor-lattice
+   decomposition its own 30 s. *)
+solvePrimaryBudgetSeconds = 30;
+solveFallbackBudgetSeconds = 30;
+(* Maximal-minor construction keeps Factor[Det[...]] for 30 s and then computes
+   the same determinants without the optional factor presentation for 30 s. *)
+minorPrimaryBudgetSeconds = 30;
+minorFallbackBudgetSeconds = 30;
+
+boundedCASAttempt[held_HoldComplete, attemptName_String,
+    budgetSeconds_Integer] := Module[{memoryFailure, timeFailure},
+  memoryFailure = Failure["CASMemoryBudgetExpired", <|
+    "RESOURCE" -> "MEMORY",
+    "ATTEMPT" -> attemptName,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> held|>];
+  timeFailure = Failure["CASTimeBudgetExpired", <|
+    "RESOURCE" -> "TIME",
+    "ATTEMPT" -> attemptName,
+    "BUDGET_SECONDS" -> budgetSeconds,
+    "OPERAND" -> held|>];
+  TimeConstrained[
+    MemoryConstrained[Quiet[ReleaseHold[held]],
+      casAttemptMemoryBudgetBytes, memoryFailure],
+    budgetSeconds, timeFailure]
+];
+
+resourceFailureQ[outcome_] := MatchQ[Unevaluated[outcome],
+  Failure["CASMemoryBudgetExpired" | "CASTimeBudgetExpired", _Association] |
+  Failure["QEMemoryBudgetExpired" | "QEBudgetExpired", _Association]];
+
+algebraicPresentationQ[expression_] := ! FreeQ[Unevaluated[expression],
+  _Abs | Power[_, exponent_Rational /; Denominator[exponent] > 1]];
+
+primaryBudgetFor[operand_, standardBudget_Integer] :=
+  If[algebraicPresentationQ[operand],
+    Min[algebraicPrimaryBudgetSeconds, standardBudget], standardBudget];
+
+linearAlgebraBudgetFor[operand_] := If[algebraicPresentationQ[operand],
+  linearAlgebraRadicalPrimaryBudgetSeconds,
+  linearAlgebraPrimaryBudgetSeconds];
+
 (* Internal emission keys are mapped to the shared §8 names only here. *)
 cellEmission[package_String, dimension_Integer, quantity_String] :=
   HoldComplete[CellObject, package, dimension, quantity];
@@ -69,15 +131,231 @@ emitCell[package_, dimension_, quantity_, payload_] :=
 emitLocalCell[package_, dimension_, quantity_, payload_] :=
   emit[localCellEmission[package, dimension, quantity], payload];
 
+boundedSimplifyRoute[expression_, assumptions_, unrestricted_] := Module[
+  {primaryHeld, primaryOutcome, fallbackName, fallbackHeld, fallbackOutcome,
+   attempts, primaryBudget},
+  primaryHeld = If[TrueQ[unrestricted],
+    With[{heldExpression = expression},
+      HoldComplete[FullSimplify[heldExpression]]],
+    With[{heldExpression = expression, heldAssumptions = assumptions},
+      HoldComplete[FullSimplify[heldExpression,
+        Assumptions -> heldAssumptions]]]];
+  primaryBudget = primaryBudgetFor[expression, simplifyPrimaryBudgetSeconds];
+  primaryOutcome = boundedCASAttempt[primaryHeld, "PRIMARY_FULL_SIMPLIFY",
+    primaryBudget];
+  attempts = {<|"ATTEMPT" -> "PRIMARY_FULL_SIMPLIFY",
+    "BUDGET_SECONDS" -> primaryBudget,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> primaryHeld, "OUTCOME" -> primaryOutcome|>};
+  If[! resourceFailureQ[primaryOutcome],
+    Return[<|"OUTCOME" -> primaryOutcome, "ATTEMPTS" -> attempts|>]];
+
+  If[algebraicPresentationQ[expression],
+    fallbackName = "EXACT_TOGETHER_PRESENTATION";
+    fallbackHeld = With[{heldExpression = expression},
+      HoldComplete[Together[heldExpression]]],
+    fallbackName = "BOUNDED_SIMPLIFY";
+    fallbackHeld = If[TrueQ[unrestricted],
+      With[{heldExpression = expression}, HoldComplete[Simplify[heldExpression]]],
+      With[{heldExpression = expression, heldAssumptions = assumptions},
+        HoldComplete[Simplify[heldExpression,
+          Assumptions -> heldAssumptions]]]]
+  ];
+  fallbackOutcome = boundedCASAttempt[fallbackHeld, fallbackName,
+    simplifyFallbackBudgetSeconds];
+  AppendTo[attempts, <|"ATTEMPT" -> fallbackName,
+    "BUDGET_SECONDS" -> simplifyFallbackBudgetSeconds,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> fallbackHeld, "OUTCOME" -> fallbackOutcome|>];
+  If[! resourceFailureQ[fallbackOutcome],
+    Return[<|"OUTCOME" -> fallbackOutcome, "ATTEMPTS" -> attempts|>]];
+
+  (* Identity is an exact, lossless presentation fallback, not a claim that the
+     operand simplified.  It keeps downstream physical objects computable. *)
+  AppendTo[attempts, <|"ATTEMPT" -> "EXACT_IDENTITY_PRESENTATION",
+    "OPERAND" -> HoldComplete[Identity[expression]],
+    "OUTCOME" -> Identity[expression]|>];
+  <|"OUTCOME" -> Identity[expression], "ATTEMPTS" -> attempts|>
+];
+
 engineSimplify[expression_, assumptions_] :=
-  FullSimplify[expression, Assumptions -> assumptions];
-unrestrictedSimplify[expression_] := FullSimplify[expression];
-zeroTest[assumptions_] := Function[value,
-  TrueQ[engineSimplify[value == 0, assumptions]]];
-assumedRank[matrix_, assumptions_] :=
-  MatrixRank[matrix, ZeroTest -> zeroTest[assumptions]];
-assumedNullSpace[matrix_, assumptions_] :=
-  NullSpace[matrix, ZeroTest -> zeroTest[assumptions]];
+  boundedSimplifyRoute[expression, assumptions, False]["OUTCOME"];
+unrestrictedSimplify[expression_] :=
+  boundedSimplifyRoute[expression, True, True]["OUTCOME"];
+
+rankZeroTest[assumptions_] := Function[value, Module[{held, outcome},
+  held = With[{heldValue = value, heldAssumptions = assumptions},
+    HoldComplete[FullSimplify[heldValue == 0,
+      Assumptions -> heldAssumptions]]];
+  outcome = boundedCASAttempt[held, "ASSUMPTION_AWARE_ZERO_TEST",
+    linearAlgebraBudgetFor[value]];
+  If[resourceFailureQ[outcome], Throw[outcome, boundedLinearAlgebraAbort]];
+  TrueQ[outcome]
+]];
+
+genericityCondition[variables_List] := And[
+  And @@ (# != 0 & /@ variables),
+  And @@ ((#[[1]] != #[[2]]) & /@ Subsets[variables, {2}])];
+
+genericSpecializationRank[matrix_List, assumptions_, upperBound_] := Module[
+  {allVariables, relevantVariables, instances, instance, pointRank,
+   maximumRank},
+  maximumRank = Min[Length[matrix],
+    If[matrix === {}, 0, Length[First[matrix]]]];
+  relevantVariables = orderedGlobalSymbols[matrix];
+  allVariables = DeleteDuplicates[Join[relevantVariables,
+    orderedGlobalSymbols[assumptions]]];
+  instances = If[allVariables === {}, {{}},
+    FindInstance[And[assumptions, genericityCondition[relevantVariables]],
+      allVariables, Reals, 1]];
+  If[! MatchQ[instances, {_List ..}],
+    Return[Failure["GenericSpecializationUnavailable", <|
+      "MATRIX" -> matrix, "ASSUMPTIONS" -> assumptions,
+      "UPPER_BOUND" -> upperBound, "INSTANCE_OUTCOME" -> instances|>]]];
+  instance = First[instances];
+  pointRank = MatrixRank[matrix /. instance];
+  If[! IntegerQ[pointRank],
+    Return[Failure["SpecializedRankUnavailable", <|
+      "MATRIX" -> matrix, "ASSUMPTIONS" -> assumptions,
+      "UPPER_BOUND" -> upperBound, "INSTANCE" -> instance,
+      "SPECIALIZED_RANK" -> pointRank|>]]];
+  If[(IntegerQ[upperBound] && pointRank === upperBound) ||
+      (SameQ[upperBound, Automatic] && pointRank === maximumRank),
+    <|"RANK" -> pointRank, "INSTANCE" -> instance,
+      "UPPER_BOUND" -> If[SameQ[upperBound, Automatic], maximumRank,
+        upperBound]|>,
+    Failure["SpecializationDidNotMeetRankUpperBound", <|
+      "MATRIX" -> matrix, "ASSUMPTIONS" -> assumptions,
+      "UPPER_BOUND" -> upperBound, "INSTANCE" -> instance,
+      "SPECIALIZED_RANK" -> pointRank|>]
+  ]
+];
+
+assumedRankRoute[matrix_List, assumptions_, upperBound_: Automatic,
+    upperBoundCertificate_: tokenNotApplicable] := Module[
+  {primaryHeld, primaryOutcome, fallbackHeld, fallbackOutcome, attempts,
+   outcome, primaryBudget},
+  primaryHeld = With[{heldMatrix = matrix, heldAssumptions = assumptions},
+    HoldComplete[Catch[
+      MatrixRank[heldMatrix,
+        ZeroTest -> rankZeroTest[heldAssumptions]],
+      boundedLinearAlgebraAbort]]];
+  primaryBudget = linearAlgebraBudgetFor[matrix];
+  primaryOutcome = boundedCASAttempt[primaryHeld,
+    "PRIMARY_ASSUMED_MATRIX_RANK", primaryBudget];
+  attempts = {<|"ATTEMPT" -> "PRIMARY_ASSUMED_MATRIX_RANK",
+    "BUDGET_SECONDS" -> primaryBudget,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> matrix, "ASSUMPTIONS" -> assumptions,
+    "OUTCOME" -> primaryOutcome|>};
+  If[! resourceFailureQ[primaryOutcome],
+    Return[<|"OUTCOME" -> primaryOutcome, "ATTEMPTS" -> attempts|>]];
+
+  fallbackHeld = With[{heldMatrix = matrix,
+      heldAssumptions = assumptions, heldUpperBound = upperBound},
+    HoldComplete[genericSpecializationRank[heldMatrix, heldAssumptions,
+      heldUpperBound]]];
+  fallbackOutcome = boundedCASAttempt[fallbackHeld,
+    "EXACT_GENERIC_SPECIALIZATION_RANK",
+    linearAlgebraFallbackBudgetSeconds];
+  AppendTo[attempts, <|
+    "ATTEMPT" -> "EXACT_GENERIC_SPECIALIZATION_RANK",
+    "BUDGET_SECONDS" -> linearAlgebraFallbackBudgetSeconds,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> matrix, "ASSUMPTIONS" -> assumptions,
+    "UPPER_BOUND" -> upperBound,
+    "UPPER_BOUND_CERTIFICATE" -> upperBoundCertificate,
+    "OUTCOME" -> fallbackOutcome|>];
+  outcome = If[AssociationQ[fallbackOutcome] &&
+      KeyExistsQ[fallbackOutcome, "RANK"],
+    fallbackOutcome["RANK"], fallbackOutcome];
+  <|"OUTCOME" -> outcome, "ATTEMPTS" -> attempts|>
+];
+
+assumedRank[matrix_List, assumptions_] :=
+  assumedRankRoute[matrix, assumptions]["OUTCOME"];
+
+genericPivotNullSpace[matrix_List, assumptions_, rank_Integer] := Module[
+  {rowCount, columnCount, relevantVariables, allVariables, instances,
+   instance, rowSets, columnSets, pivot, pivotRows, pivotColumns,
+   freeColumns, pivotMatrix},
+  rowCount = Length[matrix];
+  columnCount = If[rowCount == 0, 0, Length[First[matrix]]];
+  If[rank == 0, Return[IdentityMatrix[columnCount]]];
+  If[rank == columnCount, Return[{}]];
+  relevantVariables = orderedGlobalSymbols[matrix];
+  allVariables = DeleteDuplicates[Join[relevantVariables,
+    orderedGlobalSymbols[assumptions]]];
+  instances = If[allVariables === {}, {{}},
+    FindInstance[And[assumptions, genericityCondition[relevantVariables]],
+      allVariables, Reals, 1]];
+  If[! MatchQ[instances, {_List ..}],
+    Return[Failure["NullSpaceSpecializationUnavailable", <|
+      "MATRIX" -> matrix, "ASSUMPTIONS" -> assumptions,
+      "RANK" -> rank, "INSTANCE_OUTCOME" -> instances|>]]];
+  instance = First[instances];
+  rowSets = Subsets[Range[rowCount], {rank}];
+  columnSets = Subsets[Range[columnCount], {rank}];
+  pivot = SelectFirst[Flatten[Table[{rows, columns}, {rows, rowSets},
+      {columns, columnSets}], 1],
+    ! TrueQ[PossibleZeroQ[Det[(matrix /. instance)[[#[[1]], #[[2]]]]]]] &,
+    Missing["NoPivot"]];
+  If[MissingQ[pivot],
+    Return[Failure["NullSpacePivotUnavailable", <|
+      "MATRIX" -> matrix, "ASSUMPTIONS" -> assumptions,
+      "RANK" -> rank, "INSTANCE" -> instance|>]]];
+  pivotRows = pivot[[1]];
+  pivotColumns = pivot[[2]];
+  freeColumns = Complement[Range[columnCount], pivotColumns];
+  pivotMatrix = matrix[[pivotRows, pivotColumns]];
+  Table[ReplacePart[UnitVector[columnCount, freeColumn],
+    Thread[pivotColumns ->
+      LinearSolve[pivotMatrix, -matrix[[pivotRows, freeColumn]]]]],
+    {freeColumn, freeColumns}]
+];
+
+assumedNullSpaceRoute[matrix_List, assumptions_, rank_] := Module[
+  {primaryHeld, primaryOutcome, fallbackHeld, fallbackOutcome, attempts,
+   primaryBudget},
+  primaryHeld = With[{heldMatrix = matrix, heldAssumptions = assumptions},
+    HoldComplete[Catch[
+      NullSpace[heldMatrix,
+        ZeroTest -> rankZeroTest[heldAssumptions]],
+      boundedLinearAlgebraAbort]]];
+  primaryBudget = linearAlgebraBudgetFor[matrix];
+  primaryOutcome = boundedCASAttempt[primaryHeld,
+    "PRIMARY_ASSUMED_NULL_SPACE", primaryBudget];
+  attempts = {<|"ATTEMPT" -> "PRIMARY_ASSUMED_NULL_SPACE",
+    "BUDGET_SECONDS" -> primaryBudget,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> matrix, "ASSUMPTIONS" -> assumptions,
+    "OUTCOME" -> primaryOutcome|>};
+  If[! resourceFailureQ[primaryOutcome],
+    Return[<|"OUTCOME" -> primaryOutcome, "ATTEMPTS" -> attempts|>]];
+  If[! IntegerQ[rank],
+    Return[<|"OUTCOME" -> Failure["NullSpaceRankUnavailable", <|
+      "MATRIX" -> matrix, "ASSUMPTIONS" -> assumptions,
+      "RANK" -> rank|>], "ATTEMPTS" -> attempts|>]];
+  fallbackHeld = With[{heldMatrix = matrix,
+      heldAssumptions = assumptions, heldRank = rank},
+    HoldComplete[genericPivotNullSpace[heldMatrix, heldAssumptions,
+      heldRank]]];
+  fallbackOutcome = boundedCASAttempt[fallbackHeld,
+    "EXACT_SPECIALIZED_PIVOT_NULL_SPACE",
+    linearAlgebraFallbackBudgetSeconds];
+  AppendTo[attempts, <|
+    "ATTEMPT" -> "EXACT_SPECIALIZED_PIVOT_NULL_SPACE",
+    "BUDGET_SECONDS" -> linearAlgebraFallbackBudgetSeconds,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> matrix, "ASSUMPTIONS" -> assumptions,
+    "RANK" -> rank, "OUTCOME" -> fallbackOutcome|>];
+  <|"OUTCOME" -> fallbackOutcome, "ATTEMPTS" -> attempts|>
+];
+
+assumedNullSpace[matrix_List, assumptions_] := Module[{rankRoute},
+  rankRoute = assumedRankRoute[matrix, assumptions];
+  assumedNullSpaceRoute[matrix, assumptions, rankRoute["OUTCOME"]]["OUTCOME"]
+];
 
 relationResidual[relation_] := Which[
   TrueQ[relation], 0,
@@ -173,20 +451,27 @@ exactRationalDecision[testObject_, domain_] := Module[
 ];
 
 boundedQERoute[primaryExpression_HoldComplete, testObject_, domain_] := Module[
-  {primaryTimeout, primaryOutcome, exactTimeout, exactOutcome, attempts},
+  {primaryTimeout, primaryMemory, primaryOutcome, exactTimeout, exactMemory,
+   exactOutcome, attempts},
   primaryTimeout = Failure["QEBudgetExpired", <|
     "ATTEMPT" -> "PRIMARY_QE",
     "BUDGET_SECONDS" -> qePrimaryBudgetSeconds,
     "OPERAND" -> primaryExpression|>];
+  primaryMemory = Failure["QEMemoryBudgetExpired", <|
+    "RESOURCE" -> "MEMORY",
+    "ATTEMPT" -> "PRIMARY_QE",
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> primaryExpression|>];
   primaryOutcome = TimeConstrained[
-    Quiet[ReleaseHold[primaryExpression]], qePrimaryBudgetSeconds,
+    MemoryConstrained[Quiet[ReleaseHold[primaryExpression]],
+      casAttemptMemoryBudgetBytes, primaryMemory], qePrimaryBudgetSeconds,
     primaryTimeout];
   attempts = {<|
     "ATTEMPT" -> "PRIMARY_QE",
     "BUDGET_SECONDS" -> qePrimaryBudgetSeconds,
     "OPERAND" -> primaryExpression,
     "OUTCOME" -> primaryOutcome|>};
-  If[! MatchQ[primaryOutcome, Failure["QEBudgetExpired", _Association]],
+  If[! resourceFailureQ[primaryOutcome],
     Return[<|"OUTCOME" -> primaryOutcome, "ATTEMPTS" -> attempts|>]];
 
   exactTimeout = Failure["QEBudgetExpired", <|
@@ -194,8 +479,15 @@ boundedQERoute[primaryExpression_HoldComplete, testObject_, domain_] := Module[
     "BUDGET_SECONDS" -> qeExactRationalBudgetSeconds,
     "OPERAND" -> testObject,
     "DOMAIN" -> domain|>];
+  exactMemory = Failure["QEMemoryBudgetExpired", <|
+    "RESOURCE" -> "MEMORY",
+    "ATTEMPT" -> "EXACT_RATIONAL_DECISION",
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> testObject,
+    "DOMAIN" -> domain|>];
   exactOutcome = TimeConstrained[
-    Quiet[exactRationalDecision[testObject, domain]],
+    MemoryConstrained[Quiet[exactRationalDecision[testObject, domain]],
+      casAttemptMemoryBudgetBytes, exactMemory],
     qeExactRationalBudgetSeconds, exactTimeout];
   AppendTo[attempts, <|
     "ATTEMPT" -> "EXACT_RATIONAL_DECISION",
@@ -292,6 +584,84 @@ polynomialLocusQ[residuals_List] := And @@ Map[
   residuals
 ];
 
+boundedNativeSolve[equations_, variables_List, attemptName_String,
+    budgetSeconds_Integer] := Module[{held},
+  held = With[{heldEquations = equations, heldVariables = variables},
+    HoldComplete[Solve[heldEquations, heldVariables]]];
+  boundedCASAttempt[held, attemptName, budgetSeconds]
+];
+
+factorSupportForSolve[residual_, variables_List] := Module[
+  {numerator, factorPairs},
+  numerator = Numerator[Together[residual]];
+  If[TrueQ[numerator === 0], Return[{}]];
+  factorPairs = Rest[FactorList[numerator]];
+  DeleteDuplicates[Select[First /@ factorPairs,
+    ! FreeQ[#, Alternatives @@ variables] &]]
+];
+
+factorLatticeSolve[equations_List, variables_List] := Module[
+  {residuals, activeResiduals, supports, universe, hittingQ, hits,
+   minimalHits, branchOutcomes},
+  residuals = relationResidual /@ equations;
+  activeResiduals = Select[residuals, ! TrueQ[# === 0] &];
+  If[activeResiduals === {},
+    Return[boundedNativeSolve[True, variables,
+      "FACTOR_LATTICE_TAUTOLOGY_SOLVE", solveFallbackBudgetSeconds]]];
+  supports = factorSupportForSolve[#, variables] & /@ activeResiduals;
+  If[AnyTrue[supports, SameQ[#, {}] &],
+    Return[Failure["FactorLatticeUnavailable", <|
+      "EQUATIONS" -> equations, "SOLVE_VARIABLES" -> variables,
+      "FACTOR_SUPPORTS" -> supports|>]]];
+  universe = DeleteDuplicates[Flatten[supports]];
+  hittingQ[hit_] := And @@
+    (Intersection[hit, #, SameTest -> SameQ] =!= {} & /@ supports);
+  hits = Select[Rest[Subsets[universe]], hittingQ];
+  minimalHits = Select[hits, Function[hit,
+    ! AnyTrue[hits, Function[other,
+      Length[other] < Length[hit] && Complement[other, hit] === {}]]]];
+  branchOutcomes = Table[
+    boundedNativeSolve[And @@ (# == 0 & /@ hit), variables,
+      "FACTOR_LATTICE_BRANCH_SOLVE", solveFallbackBudgetSeconds],
+    {hit, minimalHits}];
+  If[! And @@ (ListQ /@ branchOutcomes),
+    Return[Failure["FactorLatticeBranchSolveUnavailable", <|
+      "EQUATIONS" -> equations, "SOLVE_VARIABLES" -> variables,
+      "MINIMAL_FACTOR_HITS" -> minimalHits,
+      "BRANCH_OUTCOMES" -> branchOutcomes|>]]];
+  DeleteDuplicates[Flatten[branchOutcomes, 1]]
+];
+
+boundedSolveRoute[equations_List, variables_List] := Module[
+  {primaryHeld, primaryOutcome, fallbackHeld, fallbackOutcome, attempts,
+   primaryBudget},
+  primaryHeld = With[{heldEquations = equations, heldVariables = variables},
+    HoldComplete[Solve[And @@ heldEquations, heldVariables]]];
+  primaryBudget = primaryBudgetFor[equations, solvePrimaryBudgetSeconds];
+  primaryOutcome = boundedCASAttempt[primaryHeld, "PRIMARY_SOLVE",
+    primaryBudget];
+  attempts = {<|"ATTEMPT" -> "PRIMARY_SOLVE",
+    "BUDGET_SECONDS" -> primaryBudget,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> primaryHeld, "OUTCOME" -> primaryOutcome|>};
+  If[! resourceFailureQ[primaryOutcome],
+    Return[<|"OUTCOME" -> primaryOutcome, "ATTEMPTS" -> attempts|>]];
+  fallbackHeld = With[{heldEquations = equations,
+      heldVariables = variables},
+    HoldComplete[factorLatticeSolve[heldEquations, heldVariables]]];
+  fallbackOutcome = boundedCASAttempt[fallbackHeld,
+    "EXACT_FACTOR_LATTICE_SOLVE", solveFallbackBudgetSeconds];
+  AppendTo[attempts, <|"ATTEMPT" -> "EXACT_FACTOR_LATTICE_SOLVE",
+    "BUDGET_SECONDS" -> solveFallbackBudgetSeconds,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> fallbackHeld, "OUTCOME" -> fallbackOutcome|>];
+  <|"OUTCOME" -> fallbackOutcome, "ATTEMPTS" -> attempts|>
+];
+
+solveOperandsWithAttempts[operands_List, decision_Association] :=
+  If[Length[decision["ATTEMPTS"]] < 2, operands,
+    Append[operands, "SOLUTION_ATTEMPTS" -> decision["ATTEMPTS"]]];
+
 canonicalLocus[residuals_List, variables_List] := Module[{},
   If[! polynomialLocusQ[residuals], Return[tokenNotApplicable]];
   Quiet[GroebnerBasis[residuals, variables,
@@ -301,7 +671,8 @@ canonicalLocus[residuals_List, variables_List] := Module[{},
 
 emitLocus[package_String, dimension_Integer, baseQuantity_String,
     equations_List, variables_List, assumptions_] := Module[
-  {solution, identityResiduals, identityOperands, identityTest,
+  {solutionDecision, solutionPayload, solution, identityResiduals,
+   identityOperands, identityTest,
    unrestrictedVariables, unrestrictedTestObject, unrestrictedExpression,
    unrestrictedDecision, unrestrictedReduction, inconsistentOperands,
    inconsistentTest, realAdmissible, admittedBranches, branch,
@@ -309,11 +680,15 @@ emitLocus[package_String, dimension_Integer, baseQuantity_String,
    branchStatus, point, canonical, fullCondition, realTest, realStatus,
    realDecision, realWitness, realStatusOperands},
   emitCell[package, dimension, baseQuantity <> "_EQUATIONS", equations];
-  solution = Quiet[Solve[And @@ equations, variables]];
-  emitCell[package, dimension, baseQuantity <> "_SOLUTION", {
+  solutionDecision = boundedSolveRoute[equations, variables];
+  solution = solutionDecision["OUTCOME"];
+  solutionPayload = {
     "SOLVE_VARIABLES" -> variables,
     "SOLUTION_SET" -> solution
-  }];
+  };
+  solutionPayload = solveOperandsWithAttempts[solutionPayload,
+    solutionDecision];
+  emitCell[package, dimension, baseQuantity <> "_SOLUTION", solutionPayload];
 
   identityResiduals = relationResidual /@ equations;
   identityOperands = {"RESIDUALS" -> identityResiduals,
@@ -759,29 +1134,93 @@ mergeMultiplicityPairs[pairs_List, assumptions_] := Fold[
 ];
 
 rootMultiplicityPairs[determinant_, assumptions_] := Module[
-  {polynomial, factorPairs, rawPairs, solutions, roots},
+  {polynomial, factorPairs, rawPairs, solutionDecision, solutions, roots},
   polynomial = Numerator[Together[determinant]];
   factorPairs = Select[Rest[FactorList[polynomial]],
     ! FreeQ[First[#], omegaSquared] &];
-  rawPairs = Flatten[Map[
+  rawPairs = Catch[Flatten[Map[
     Function[factorPair,
-      solutions = Quiet[Solve[factorPair[[1]] == 0, omegaSquared]];
+      solutionDecision = boundedSolveRoute[
+        {factorPair[[1]] == 0}, {omegaSquared}];
+      solutions = solutionDecision["OUTCOME"];
+      If[! ListQ[solutions],
+        Throw[Failure["RootFactorSolveUnavailable", <|
+          "FACTOR_PAIR" -> factorPair,
+          "SOLUTION_DECISION" -> solutionDecision|>], rootFactorFailure]];
       roots = omegaSquared /. solutions;
       ({#, factorPair[[2]]} &) /@ roots],
-    factorPairs], 1];
+    factorPairs], 1], rootFactorFailure];
+  If[Head[rawPairs] === Failure, Return[rawPairs]];
   mergeMultiplicityPairs[rawPairs, assumptions]
 ];
 
 distinctUnderAssumptions[values_List, assumptions_] := DeleteDuplicates[
   values, TrueQ[engineSimplify[#1 == #2, assumptions]] &];
 
-allMaximalMinors[matrix_, rank_Integer] := Module[{rowSets, columnSets},
+constructMaximalMinors[matrix_, rank_Integer, factorPresentation_] := Module[
+  {rowSets, columnSets},
   If[rank == 0, Return[{}]];
   rowSets = Subsets[Range[Length[matrix]], {rank}];
   columnSets = Subsets[Range[Length[First[matrix]]], {rank}];
   Flatten[Table[
-    Factor[Det[matrix[[rowSet, columnSet]]]],
+    If[TrueQ[factorPresentation],
+      Factor[Det[matrix[[rowSet, columnSet]]]],
+      Det[matrix[[rowSet, columnSet]]]],
     {rowSet, rowSets}, {columnSet, columnSets}]]
+];
+
+maximalMinorsRoute[matrix_, rank_Integer] := Module[
+  {primaryHeld, primaryOutcome, fallbackHeld, fallbackOutcome, attempts,
+   primaryBudget},
+  primaryHeld = With[{heldMatrix = matrix, heldRank = rank},
+    HoldComplete[constructMaximalMinors[heldMatrix, heldRank, True]]];
+  primaryBudget = primaryBudgetFor[matrix, minorPrimaryBudgetSeconds];
+  primaryOutcome = boundedCASAttempt[primaryHeld,
+    "PRIMARY_FACTORED_MAXIMAL_MINORS", primaryBudget];
+  attempts = {<|"ATTEMPT" -> "PRIMARY_FACTORED_MAXIMAL_MINORS",
+    "BUDGET_SECONDS" -> primaryBudget,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> matrix, "RANK" -> rank,
+    "OUTCOME" -> primaryOutcome|>};
+  If[! resourceFailureQ[primaryOutcome],
+    Return[<|"OUTCOME" -> primaryOutcome, "ATTEMPTS" -> attempts|>]];
+  fallbackHeld = With[{heldMatrix = matrix, heldRank = rank},
+    HoldComplete[constructMaximalMinors[heldMatrix, heldRank, False]]];
+  fallbackOutcome = boundedCASAttempt[fallbackHeld,
+    "EXACT_UNFACTORED_MAXIMAL_MINORS", minorFallbackBudgetSeconds];
+  AppendTo[attempts, <|"ATTEMPT" -> "EXACT_UNFACTORED_MAXIMAL_MINORS",
+    "BUDGET_SECONDS" -> minorFallbackBudgetSeconds,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> matrix, "RANK" -> rank,
+    "OUTCOME" -> fallbackOutcome|>];
+  <|"OUTCOME" -> fallbackOutcome, "ATTEMPTS" -> attempts|>
+];
+
+allMaximalMinors[matrix_, rank_Integer] :=
+  maximalMinorsRoute[matrix, rank]["OUTCOME"];
+
+factoredDeterminantRoute[matrix_] := Module[
+  {primaryHeld, primaryOutcome, fallbackHeld, fallbackOutcome, attempts,
+   primaryBudget},
+  primaryHeld = With[{heldMatrix = matrix},
+    HoldComplete[Factor[Det[heldMatrix]]]];
+  primaryBudget = primaryBudgetFor[matrix, minorPrimaryBudgetSeconds];
+  primaryOutcome = boundedCASAttempt[primaryHeld,
+    "PRIMARY_FACTORED_DETERMINANT", primaryBudget];
+  attempts = {<|"ATTEMPT" -> "PRIMARY_FACTORED_DETERMINANT",
+    "BUDGET_SECONDS" -> primaryBudget,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> matrix, "OUTCOME" -> primaryOutcome|>};
+  If[! resourceFailureQ[primaryOutcome],
+    Return[<|"OUTCOME" -> primaryOutcome, "ATTEMPTS" -> attempts|>]];
+  fallbackHeld = With[{heldMatrix = matrix}, HoldComplete[Det[heldMatrix]]];
+  fallbackOutcome = boundedCASAttempt[fallbackHeld,
+    "EXACT_UNFACTORED_DETERMINANT", minorFallbackBudgetSeconds];
+  AppendTo[attempts, <|"ATTEMPT" -> "EXACT_UNFACTORED_DETERMINANT",
+    "BUDGET_SECONDS" -> minorFallbackBudgetSeconds,
+    "BUDGET_BYTES" -> casAttemptMemoryBudgetBytes,
+    "OPERAND" -> matrix, "OUTCOME" -> fallbackOutcome|>];
+  <|"OUTCOME" -> fallbackOutcome, "ATTEMPTS" -> attempts|>
 ];
 
 unscopedQuantity[scope_String, pointEvidence_, quantity_String] :=
@@ -826,12 +1265,12 @@ countDecisionAttempt[componentObject_, countPredicate_, changeEquations_List,
     "ASSUMPTIONS" -> assumptions|>
 ];
 
-unavailableCountDecision[componentObject_, returnedObject_] := <|
+unavailableCountDecision[componentObject_, returnedObject_, assumptions_: True] := <|
   "COMPONENT_OBJECT" -> componentObject,
   "TEST_OBJECT" -> returnedObject,
   "ATTEMPT_OUTCOME" -> returnedObject,
   "CHANGE_EQUATIONS" -> {},
-  "ASSUMPTIONS" -> True|>;
+  "ASSUMPTIONS" -> assumptions|>;
 
 polynomialDegreeDecision[polynomial_, variable_, degree_, freeParameters_List,
     assumptions_, componentObject_] := Module[{leadingCoefficient},
@@ -840,7 +1279,7 @@ polynomialDegreeDecision[polynomial_, variable_, degree_, freeParameters_List,
       Failure["PolynomialDegreeDecisionUnavailable", <|
         "Polynomial" -> polynomial,
         "Variable" -> variable,
-        "ObtainedDegree" -> degree|>]]]];
+        "ObtainedDegree" -> degree|>], assumptions]]];
   leadingCoefficient = Coefficient[polynomial, variable, degree];
   countDecisionAttempt[componentObject, leadingCoefficient != 0,
     {leadingCoefficient == 0}, freeParameters, assumptions]
@@ -858,7 +1297,7 @@ distinctRootDecision[polynomial_, variable_, degree_, roots_List,
         "Polynomial" -> polynomial,
         "Variable" -> variable,
         "ObtainedDegree" -> degree,
-        "ObtainedRoots" -> roots|>]]]];
+        "ObtainedRoots" -> roots|>], assumptions]]];
   leadingCoefficient = Coefficient[polynomial, variable, degree];
   polynomialDerivative = D[polynomial, variable];
   polynomialGCD = PolynomialGCD[polynomial, polynomialDerivative];
@@ -870,7 +1309,7 @@ distinctRootDecision[polynomial_, variable_, degree_, roots_List,
       Failure["SquareFreeDegreeDecisionUnavailable", <|
         "SQUARE_FREE_PART" -> squareFreePart,
         "SQUARE_FREE_DEGREE" -> squareFreeDegree,
-        "OBTAINED_ROOT_COUNT" -> Length[roots]|>]]]];
+        "OBTAINED_ROOT_COUNT" -> Length[roots]|>], assumptions]]];
   squareFreeLeadingCoefficient = Coefficient[
     squareFreePart, variable, squareFreeDegree];
   squareFreeDiscriminant = If[squareFreeDegree <= 1, 1,
@@ -884,28 +1323,44 @@ distinctRootDecision[polynomial_, variable_, degree_, roots_List,
     {changePolynomial == 0}, freeParameters, assumptions]
 ];
 
-matrixRankDecision[matrix_List, rank_, freeParameters_List, assumptions_] :=
-  Module[{minors, countPredicate, changeEquations},
+matrixRankDecision[matrix_List, rank_, freeParameters_List, assumptions_,
+    algebraRoute_: <||>] :=
+  Module[{minors, countPredicate, changeEquations, decision,
+    algebraAttempts},
     If[! IntegerQ[rank] || rank < 0,
       Return[unavailableCountDecision[matrix,
         Failure["MatrixRankDecisionUnavailable", <|
-          "Matrix" -> matrix, "ObtainedRank" -> rank|>]]]];
+          "Matrix" -> matrix, "ObtainedRank" -> rank|>], assumptions]]];
     If[rank == 0,
       countPredicate = And @@ (# == 0 & /@ Flatten[matrix]);
       changeEquations = {1 == 0},
       minors = allMaximalMinors[matrix, rank];
+      If[! ListQ[minors],
+        Return[unavailableCountDecision[matrix,
+          Failure["MaximalMinorConstructionUnavailable", <|
+            "Matrix" -> matrix, "Rank" -> rank,
+            "MINOR_OUTCOME" -> minors|>], assumptions]]];
       countPredicate = Or @@ (# != 0 & /@ minors);
       changeEquations = (# == 0) & /@ minors
     ];
-    countDecisionAttempt[matrix, countPredicate, changeEquations,
-      freeParameters, assumptions]
+    decision = countDecisionAttempt[matrix, countPredicate, changeEquations,
+      freeParameters, assumptions];
+    algebraAttempts = If[AssociationQ[algebraRoute],
+      Lookup[algebraRoute, "ATTEMPTS", {}], {}];
+    If[Length[algebraAttempts] > 1,
+      AssociateTo[decision,
+        "ALGEBRA_DECISION_ATTEMPTS" -> algebraAttempts]];
+    decision
   ];
 
 emitComponentCount[package_, dimension_, baseQuantity_String, value_,
     freeParameters_List, decision_Association] := Module[
-  {status, countAttempts, certificateOperands, certificate, countRecord},
+  {status, countAttempts, algebraAttempts, nullSpaceAttempts,
+   certificateOperands, certificate, countRecord, decisionOperands},
   status = componentCountStatus[decision["ATTEMPT_OUTCOME"]];
   countAttempts = Lookup[decision, "QE_DECISION_ATTEMPTS", {}];
+  algebraAttempts = Lookup[decision, "ALGEBRA_DECISION_ATTEMPTS", {}];
+  nullSpaceAttempts = Lookup[decision, "NULL_SPACE_ATTEMPTS", {}];
   certificateOperands = {
     "VALUE" -> value,
     "FREE_PARAMETERS" -> freeParameters,
@@ -925,6 +1380,19 @@ emitComponentCount[package_, dimension_, baseQuantity_String, value_,
   };
   If[Length[countAttempts] > 1,
     AppendTo[countRecord, "QE_DECISION_ATTEMPTS" -> countAttempts]];
+  If[Length[algebraAttempts] > 1,
+    AppendTo[countRecord,
+      "ALGEBRA_DECISION_ATTEMPTS" -> algebraAttempts]];
+  If[Length[nullSpaceAttempts] > 1,
+    AppendTo[countRecord,
+      "NULL_SPACE_ATTEMPTS" -> nullSpaceAttempts]];
+  If[SameQ[status, tokenUndecided],
+    decisionOperands = {
+      "COMPONENT_OBJECT" -> decision["COMPONENT_OBJECT"],
+      "TEST_OBJECT" -> decision["TEST_OBJECT"],
+      "FREE_PARAMETERS" -> freeParameters,
+      "PREMISES" -> decision["ASSUMPTIONS"]};
+    AppendTo[countRecord, "DECISION_OPERANDS" -> decisionOperands]];
   emitCell[package, dimension, baseQuantity, countRecord];
   emitCell[package, dimension, baseQuantity <> "_STATUS", status];
   emitCell[package, dimension, baseQuantity <> "_CONSTANCY_CERTIFICATE", certificate];
@@ -958,7 +1426,8 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
     package_String, dimension_Integer, scope_String, pointEvidence_,
     includeRankLoci_, componentCounts_, freeParameters_List,
     activeKVariables_List, activeCoefficientVariables_List] := Module[
-  {determinant, determinantPolynomial, multiplicityPairs, solverSolution,
+  {determinantRoute, determinant, determinantPolynomial, multiplicityPairs,
+   solverDecision, solverSolution,
    degree, rootCountAll,
    roots, rootCountDistinct, rootCountStatuses = {}, pairIndices,
    coincidenceEquations, coincidenceK, coincidenceCoefficient,
@@ -969,9 +1438,11 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
    rankKLocus, rankCoefficientLocus, rankJointLocus, stackedKLocus,
    stackedCoefficientLocus, stackedJointLocus, rootCountBase,
    countStatus, degreeDecision, rootCountAllDecision, distinctDecision,
-   rankDecision, stackedDecision, basisCountDecision, q4Derived = {},
-   rootPrefix},
-  determinant = Factor[Det[matrix]];
+   rankRoute, stackedRankRoute, nullSpaceRoute, rankDecision,
+   stackedDecision, basisCountDecision, q4Derived = {}, rootPrefix,
+   rootUpperBoundCertificate},
+  determinantRoute = factoredDeterminantRoute[matrix];
+  determinant = determinantRoute["OUTCOME"];
   determinantPolynomial = Numerator[Together[determinant]];
   emitCell[package, dimension,
     unscopedQuantity[scope, pointEvidence, "DET_M"], determinant];
@@ -979,7 +1450,8 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
   emitCell[package, dimension,
     unscopedQuantity[scope, pointEvidence, "ROOT_MULTIPLICITY_PAIRS"],
     multiplicityPairs];
-  solverSolution = Quiet[Solve[determinant == 0, omegaSquared]];
+  solverDecision = boundedSolveRoute[{determinant == 0}, {omegaSquared}];
+  solverSolution = solverDecision["OUTCOME"];
   emitCell[package, dimension,
     unscopedQuantity[scope, pointEvidence, "ROOT_SOLUTION_SET"],
     solverSolution];
@@ -997,7 +1469,7 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
       Failure["RootMultiplicityCountDecisionUnavailable", <|
         "MULTIPLICITY_PAIRS" -> multiplicityPairs,
         "OBTAINED_COUNT" -> rootCountAll,
-        "POLYNOMIAL_DEGREE" -> degree|>]],
+        "POLYNOMIAL_DEGREE" -> degree|>], assumptions],
     degreeDecision];
   rootCountBase = unscopedQuantity[scope, pointEvidence, "ROOT_COUNT_ALL"];
   countStatus = emitCountObject[package, dimension, rootCountBase, rootCountAll,
@@ -1060,9 +1532,16 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
       matrix /. omegaSquared -> root, {2}];
     emitCell[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N1"], matrixAtRoot];
-    rank = assumedRank[matrixAtRoot, assumptions];
+    rootUpperBoundCertificate = {
+      "SOURCE_DETERMINANT" -> determinant,
+      "SOURCE_ROOT" -> root,
+      "SOURCE_ROOT_SOLUTION" -> solverSolution};
+    rankRoute = assumedRankRoute[matrixAtRoot, assumptions,
+      dimension - 1, rootUpperBoundCertificate];
+    rank = rankRoute["OUTCOME"];
     rankDecision = If[TrueQ[componentCounts],
-      matrixRankDecision[matrixAtRoot, rank, freeParameters, assumptions],
+      matrixRankDecision[matrixAtRoot, rank, freeParameters, assumptions,
+        rankRoute],
       tokenNotApplicable];
     countStatus = emitCountObject[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N2_RANK"], rank,
@@ -1074,9 +1553,12 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
       componentCounts, freeParameters, rankDecision];
     If[TrueQ[componentCounts], AppendTo[rootCountStatuses, countStatus]];
     stacked = Join[matrixAtRoot, {wavevector}];
-    stackedRank = assumedRank[stacked, assumptions];
+    stackedRankRoute = assumedRankRoute[stacked, assumptions, dimension,
+      {"COLUMN_COUNT" -> dimension}];
+    stackedRank = stackedRankRoute["OUTCOME"];
     stackedDecision = If[TrueQ[componentCounts],
-      matrixRankDecision[stacked, stackedRank, freeParameters, assumptions],
+      matrixRankDecision[stacked, stackedRank, freeParameters, assumptions,
+        stackedRankRoute],
       tokenNotApplicable];
     countStatus = emitCountObject[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N3_STACKED_RANK"],
@@ -1094,7 +1576,8 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
     mDotK = Map[engineSimplify[#, assumptions] &, matrixAtRoot.wavevector];
     emitCell[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N5_M_DOT_K"], mDotK];
-    basis = assumedNullSpace[matrixAtRoot, assumptions];
+    nullSpaceRoute = assumedNullSpaceRoute[matrixAtRoot, assumptions, rank];
+    basis = nullSpaceRoute["OUTCOME"];
     emitCell[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N6_BASIS"], basis];
     basisDots = Map[engineSimplify[#.wavevector, assumptions] &, basis];
@@ -1115,8 +1598,12 @@ computeSpectrumAndModes[matrix_, coefficients_List, wavevector_List, assumptions
         Failure["NullSpaceBasisCountDecisionUnavailable", <|
           "BASIS" -> basis,
           "OBTAINED_COUNT" -> basisCount,
-          "RANK_DERIVED_NULLITY" -> nullity|>]],
+          "RANK_DERIVED_NULLITY" -> nullity|>], assumptions],
       rankDecision];
+    If[AssociationQ[basisCountDecision] &&
+        Length[nullSpaceRoute["ATTEMPTS"]] > 1,
+      AssociateTo[basisCountDecision,
+        "NULL_SPACE_ATTEMPTS" -> nullSpaceRoute["ATTEMPTS"]]];
     countStatus = emitCountObject[package, dimension,
       rootQuantity[scope, pointEvidence, rootIndex, "N7_BASIS_COUNT"],
       basisCount, componentCounts, freeParameters, basisCountDecision];
@@ -1278,11 +1765,13 @@ buildDimensions[coefficientOrdering_List, actionRecords_List, velocityJet_List,
     package_String, dimension_Integer] := Module[
   {dimensionlessCoefficients, unknownCoefficients, dimensionVariables,
    coefficientDimensions, baseAtomDimensions, targetDimension, termDimensions,
-   equationVectors, dimensionEquations, flatUnknowns, solution, solutionRules,
+   equationVectors, dimensionEquations, flatUnknowns, solutionDecision,
+   solution, solutionRules,
    finalCoefficientDimensions, firstSlotVariables, firstSlotExpressions,
    coefficientMatrix, equationCount, unknownCount, determinacy,
    finalAtomDimensions, actionHomogeneity, soundSpeedDimensionVariables,
-   soundSpeedDimensionEquations, soundSpeedDimensionSolution,
+   soundSpeedDimensionEquations, soundSpeedDimensionDecision,
+   soundSpeedDimensionSolution,
    soundSpeedDimension},
   dimensionlessCoefficients = If[MemberQ[coefficientOrdering, s], {s}, {}];
   unknownCoefficients = Select[coefficientOrdering,
@@ -1313,7 +1802,8 @@ buildDimensions[coefficientOrdering_List, actionRecords_List, velocityJet_List,
   equationVectors = Select[termDimensions, ListQ];
   dimensionEquations = Flatten[Thread[# == targetDimension] & /@ equationVectors];
   flatUnknowns = Flatten[Values[dimensionVariables]];
-  solution = Quiet[Solve[dimensionEquations, flatUnknowns]];
+  solutionDecision = boundedSolveRoute[dimensionEquations, flatUnknowns];
+  solution = solutionDecision["OUTCOME"];
   emitCell[package, dimension, "DIM_EQUATIONS", dimensionEquations];
   emitCell[package, dimension, "DIM_SOLUTION", solution];
   solutionRules = If[ListQ[solution] && solution =!= {}, First[solution], {}];
@@ -1348,8 +1838,9 @@ buildDimensions[coefficientOrdering_List, actionRecords_List, velocityJet_List,
     Symbol["dimCs0Slot" <> ToString[slot]], {slot, 3}];
   soundSpeedDimensionEquations = Thread[
     2 soundSpeedDimensionVariables + {-2, 0, 0} == {0, -2, 0}];
-  soundSpeedDimensionSolution = Quiet[Solve[
-    soundSpeedDimensionEquations, soundSpeedDimensionVariables]];
+  soundSpeedDimensionDecision = boundedSolveRoute[
+    soundSpeedDimensionEquations, soundSpeedDimensionVariables];
+  soundSpeedDimensionSolution = soundSpeedDimensionDecision["OUTCOME"];
   soundSpeedDimension = soundSpeedDimensionVariables /.
     First[soundSpeedDimensionSolution];
   finalAtomDimensions = Join[baseAtomDimensions /. solutionRules,
@@ -1558,7 +2049,8 @@ closureRankFromMatrix[matrix_List, assumptions_] := Module[
 emitQ11[spectrum_, coefficients_List, wavevector_List, amplitudes_List,
     assumptions_, package_String, dimension_Integer] := Module[
   {bulkAssumptions, bulkFieldRecord, bulkDispersion, kwObjects, root,
-   kwEquation, kwSolutions, kwExpression, closureSourceEquations,
+   kwEquation, kwSolutionDecision, kwSolutions, kwExpression,
+   closureSourceEquations,
    closureEquations, closureUnknowns, closureMatrix, closureRank},
   bulkAssumptions = And[assumptions, Element[A, Reals], cs0 > 0];
   bulkFieldRecord = <|
@@ -1574,7 +2066,8 @@ emitQ11[spectrum_, coefficients_List, wavevector_List, amplitudes_List,
     kwEquation = bulkDispersion /. omegaSquared -> root;
     emitCell[package, dimension,
       "ROOT" <> ToString[rootIndex] <> "_KW_EQUATION", kwEquation];
-    kwSolutions = Quiet[Solve[kwEquation, kwSquared]];
+    kwSolutionDecision = boundedSolveRoute[{kwEquation}, {kwSquared}];
+    kwSolutions = kwSolutionDecision["OUTCOME"];
     kwExpression = If[ListQ[kwSolutions] && kwSolutions =!= {},
       kwSquared /. First[kwSolutions],
       Failure["UnsolvedBulkNormalWavevector", <|

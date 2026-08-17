@@ -1,4 +1,4 @@
-# Measurements — S11 locus-census instrument brief (generated 2026-08-17T07:48:18-06:00 by gen_twin_census_instr.sh)
+# Measurements — S11 locus-census instrument brief (generated 2026-08-17T08:04:51-06:00 by gen_twin_census_instr.sh)
 
 ## Record identities
 ```text
@@ -45,22 +45,20 @@ research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.
 (no LIVE-EQ/NA-SOL lines = zero mismatches)
 ```
 
-## Census surface: in-class record counts per committed record
+## Census population: pairs and undecided tokens per committed record, per dialect
 ```text
-$ locus _SOLUTION / _EQUATIONS pairs and undecided-class records
+$ python3 (dialect-aware population scan; reconciled against raw counts)
 --- research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.out
-  LOCUS_SOLUTION lines: 1104
-  LOCUS_EQUATIONS lines: 1169
-  UNDECIDED status tokens: 814
-  REAL_ADMISSIBLE lines: 1083
+  raw _SOLUTION=1104 raw _EQUATIONS=1169 paired=1104 pair-classes={'PROTOCOL': 1083, 'DIM': 21} eq-only-classes={'C1': 21, 'STRATUM_DEFINING': 44}
+  _REAL_WITNESS lines=1083; _REAL_STATUS PROVED_NONEMPTY=480
+  UNDECIDED raw-occurrence lines=1245; WL-dialect STATUS_TOKEN=814 SIGN_TOKEN=66; PY-dialect STATUS_TOKEN=0 SIGN_TOKEN=0
 --- research/pde_ledger_v3/scripts/out/S11_stray_longitudinal_sympy_audit.out
-  LOCUS_SOLUTION lines: 379
-  LOCUS_EQUATIONS lines: 400
-  UNDECIDED status tokens: 0
-  REAL_ADMISSIBLE lines: 359
+  raw _SOLUTION=379 raw _EQUATIONS=400 paired=379 pair-classes={'PROTOCOL': 358, 'DIM': 21} eq-only-classes={'C1': 21}
+  _REAL_WITNESS lines=358; _REAL_STATUS PROVED_NONEMPTY=99
+  UNDECIDED raw-occurrence lines=881; WL-dialect STATUS_TOKEN=0 SIGN_TOKEN=0; PY-dialect STATUS_TOKEN=507 SIGN_TOKEN=82
 ```
 
-## Engine primary budgets (no-starvation floor for probe budgets)
+## Emitting-engine budgets (floors); unbudgeted routes
 ```text
 $ grep -nE 'BudgetSeconds = |BudgetBytes = ' research/pde_ledger_v3/mathematica/S11_stray_longitudinal_mathematica_audit.wl
 29:qePrimaryBudgetSeconds = 30;
@@ -76,5 +74,15 @@ $ grep -nE 'BudgetSeconds = |BudgetBytes = ' research/pde_ledger_v3/mathematica/
 56:solveFallbackBudgetSeconds = 30;
 59:minorPrimaryBudgetSeconds = 30;
 60:minorFallbackBudgetSeconds = 30;
+$ grep -cE 'Budget|TimeConstrained|setrlimit|signal.alarm' research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py
+0
+$ grep -n 'GroebnerBasis' research/pde_ledger_v3/mathematica/S11_stray_longitudinal_mathematica_audit.wl
+671:  Quiet[GroebnerBasis[residuals, variables,
+$ grep -nE 'sp\.solve\(|sp\.linsolve\(|sp\.solveset\(' research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py | head -5
+1005:            solution = sp.solve(solve_input, list(variables), **solve_kwargs)
+1084:        solved = sp.solve(sp.Eq(poly.as_expr(), 0, evaluate=False), omegaSquared)
+1551:    solution = sp.linsolve(linear_exprs, unknowns) if unknowns else sp.FiniteSet(())
+1680:        solved = sp.solve(equation, kwSquared, dict=True)
+2032:        solve_branches = sp.solve(
 ```
 

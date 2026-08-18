@@ -32,6 +32,7 @@ from s11_census_math import (
     association,
     branch_memberships,
     completeness_candidates,
+    conjunction,
     enforce_memory_budget,
     equation_residuals,
     parse_payload,
@@ -41,6 +42,7 @@ from s11_census_math import (
     render_text,
     sequence,
     simplify_residual,
+    exact_truth,
 )
 
 
@@ -74,6 +76,23 @@ def population_line(record: Path) -> str:
 
 def _branch_object(branch: dict[sp.Expr, sp.Expr]) -> tuple[tuple[sp.Expr, sp.Expr], ...]:
     return tuple(sorted(branch.items(), key=lambda item: sp.default_sort_key(item[0])))
+
+
+def _aggregate_branch_verdict(
+    row_verdicts: list[str], tested: int, total: int
+) -> str:
+    """Compute the branch token solely from the sheet lines that are printed."""
+    if tested < total:
+        return "SHEET_INCOMPLETE"
+    if row_verdicts and all(item.startswith("SPURIOUS_BRANCH") for item in row_verdicts):
+        return (
+            "SPURIOUS_BRANCH_SAMPLED"
+            if any(item == "SPURIOUS_BRANCH_SAMPLED" for item in row_verdicts)
+            else "SPURIOUS_BRANCH"
+        )
+    if "BRANCH_CONTAINED" in row_verdicts:
+        return "BRANCH_CONTAINED"
+    return "BRANCH_MEMBERSHIP_UNDECIDED"
 
 
 def _py_variables(tag: str, parsed: Any, residuals: tuple[sp.Expr, ...]) -> tuple[sp.Symbol, ...]:
@@ -137,18 +156,7 @@ def _pair_worker(
     for branch_index, branch in enumerate(parsed.branches, 1):
         rows, tested, total = branch_memberships(residuals, branch)
         row_verdicts = [str(row["verdict"]) for row in rows]
-        if "SPURIOUS_BRANCH" in row_verdicts:
-            verdict = "SPURIOUS_BRANCH"
-        elif "SPURIOUS_BRANCH_SAMPLED" in row_verdicts:
-            verdict = "SPURIOUS_BRANCH_SAMPLED"
-        elif tested < total:
-            verdict = "SHEET_INCOMPLETE"
-        elif "BRANCH_MEMBERSHIP_UNDECIDED" in row_verdicts:
-            verdict = "BRANCH_MEMBERSHIP_UNDECIDED"
-        elif "BRANCH_CONTAINED_SAMPLED" in row_verdicts:
-            verdict = "BRANCH_CONTAINED_SAMPLED"
-        else:
-            verdict = "BRANCH_CONTAINED"
+        verdict = _aggregate_branch_verdict(row_verdicts, tested, total)
         branch_results.append(
             {
                 "index": branch_index,
@@ -182,7 +190,10 @@ def _pair_worker(
             "factor_covers": 0,
             "cover_truncated": False,
             "candidate_count": 0,
+            "artifact_count": 0,
             "unresolved_count": 1,
+            "coverage_sampled": 0,
+            "coverage_undecided": 1,
             "missing": [],
             "detail": f"{type(exc).__name__}:{exc}",
             "verdict": "COMPLETENESS_UNDECIDED",
@@ -231,7 +242,12 @@ def _witness_worker(
         ("REAL_STATUS_OPERANDS", operand_payload),
     )
     try:
-        witness_object = parse_payload(dialect, witness_payload)
+        # Premises must be reconstructed on symbols with no producer
+        # assumptions.  Otherwise ``B_comp > 0`` can collapse to True before a
+        # planted B_comp=-1 witness is substituted.
+        witness_object = parse_payload(
+            dialect, witness_payload, assumption_free=True
+        )
         if dialect == "WL":
             branch: dict[sp.Expr, sp.Expr] = {}
             for entry in sequence(witness_object):
@@ -240,9 +256,21 @@ def _witness_worker(
                 branch[entry.args[0]] = entry.args[1]
         else:
             branch = {entry[0]: entry[1] for entry in sequence(witness_object)}  # type: ignore[index]
-        equation_object = parse_payload(dialect, equation_payload)
+        equation_object = parse_payload(
+            dialect, equation_payload, assumption_free=True
+        )
         residuals = equation_residuals(equation_object)
-        operand_equations, premises = _premises_from_operand(dialect, operand_payload)
+        parsed_operands = parse_payload(
+            dialect, operand_payload, assumption_free=True
+        )
+        if dialect == "WL":
+            fields = association(parsed_operands)
+            operand_equations, premises = fields.get("EQUATIONS"), fields.get("PREMISES")
+        else:
+            values = sequence(parsed_operands)
+            operand_equations, premises = (
+                (values[0], values[2]) if len(values) >= 3 else (None, None)
+            )
         if operand_equations is None or premises is None:
             raise ValueError("missing EQUATIONS or PREMISES in REAL_STATUS_OPERANDS")
         operand_residuals = equation_residuals(operand_equations)
@@ -264,24 +292,19 @@ def _witness_worker(
 
     residual_match = _residual_lists_equivalent(residuals, operand_residuals)
     rows, tested, total = branch_memberships(residuals, branch)
-    substituted_premises = premises.subs(branch, simultaneous=True)  # type: ignore[union-attr]
-    try:
-        premise_truth = str(sp.simplify(substituted_premises))
-    except BaseException:
-        premise_truth = str(substituted_premises)
+    premise_condition = conjunction(sequence(premises))
+    substituted_premises = premise_condition.subs(branch, simultaneous=True)  # type: ignore[union-attr]
+    premise_truth = exact_truth(substituted_premises)
     membership_verdicts = [str(row["verdict"]) for row in rows]
+    membership = _aggregate_branch_verdict(membership_verdicts, tested, total)
     if not residual_match:
         verdict = "RESIDUAL_MISMATCH"
-    elif any(item.startswith("SPURIOUS_BRANCH") for item in membership_verdicts):
+    elif membership.startswith("SPURIOUS_BRANCH") or premise_truth == "FALSE":
         verdict = "WITNESS_FAILURE"
-    elif tested < total:
+    elif membership == "SHEET_INCOMPLETE":
         verdict = "WITNESS_SHEET_INCOMPLETE"
-    elif "BRANCH_MEMBERSHIP_UNDECIDED" in membership_verdicts:
+    elif membership == "BRANCH_MEMBERSHIP_UNDECIDED" or premise_truth == "UNDECIDED":
         verdict = "WITNESS_UNDECIDED"
-    elif "BRANCH_CONTAINED_SAMPLED" in membership_verdicts:
-        verdict = "WITNESS_VALIDATED_SAMPLED"
-    elif substituted_premises is sp.false:
-        verdict = "WITNESS_FAILURE"
     else:
         verdict = "WITNESS_VALIDATED"
     connection.send(
@@ -457,7 +480,10 @@ def run_census(record: Path) -> None:
             f"factor_covers={completeness['factor_covers']} "
             f"cover_truncated={completeness['cover_truncated']} "
             f"candidate_count={completeness['candidate_count']} "
+            f"artifact_count={completeness['artifact_count']} "
             f"unresolved_count={completeness['unresolved_count']} "
+            f"coverage_sampled={completeness['coverage_sampled']} "
+            f"coverage_undecided={completeness['coverage_undecided']} "
             f"missing_memberships={completeness['missing']} "
             f"verdict={completeness['verdict']}",
             flush=True,

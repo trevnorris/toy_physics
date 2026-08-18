@@ -84,8 +84,23 @@ def _mapping_branch(value: object) -> dict[sp.Expr, sp.Expr]:
             current = only
         else:
             break
+    def is_assignment(item: object) -> bool:
+        return (
+            isinstance(item, sp.Basic)
+            and item.func.__name__ == "Rule"
+            and len(item.args) == 2
+        ) or (
+            isinstance(item, (tuple, list, sp.Tuple))
+            and len(item) == 2
+            and isinstance(item[0], sp.Basic)
+            # A two-rule WL branch is a sequence of assignments, not one
+            # Python-style ``(lhs, rhs)`` assignment.
+            and item[0].func.__name__ != "Rule"
+        )
+
+    entries = (current,) if is_assignment(current) else sequence(current)
     result: dict[sp.Expr, sp.Expr] = {}
-    for entry in sequence(current):
+    for entry in entries:
         if isinstance(entry, sp.Basic) and entry.func.__name__ == "Rule":
             result[entry.args[0]] = entry.args[1]
         elif isinstance(entry, (tuple, list, sp.Tuple)) and len(entry) == 2:
@@ -98,7 +113,7 @@ def _mapping_branch(value: object) -> dict[sp.Expr, sp.Expr]:
 def _residual_match(left: tuple[sp.Expr, ...], right: tuple[sp.Expr, ...]) -> bool:
     if len(left) != len(right):
         return False
-    return all(simplify_residual(a - b)[1] in {"ZERO", "ZERO_SAMPLED"} for a, b in zip(left, right))
+    return all(simplify_residual(a - b)[1] == "ZERO" for a, b in zip(left, right))
 
 
 def _outcome(
@@ -132,7 +147,7 @@ def _identity_probe(dialect: str, payload: str, equation_payload: str | None) ->
     statuses = tuple(simplify_residual(item)[1] for item in emitted_residuals)
     if not match:
         verdict = "RESIDUAL_MISMATCH"
-    elif all(status in {"ZERO", "ZERO_SAMPLED"} for status in statuses):
+    elif all(status == "ZERO" for status in statuses):
         verdict = "DECIDED_UNDECIDED_RECORD"
     elif any(status in {"NONZERO", "NONZERO_SAMPLED", "UNDEFINED"} for status in statuses):
         verdict = "DECIDED_UNDECIDED_RECORD"
@@ -257,8 +272,15 @@ def _inconsistent_probe(dialect: str, payload: str) -> list[dict[str, object]]:
     try:
         solved = sp.nonlinsolve(residuals, tuple(sequence(variables)))
         if solved is sp.EmptySet:
-            decision = "PROVED_INCONSISTENT"
-            verdict = "DECIDED_UNDECIDED_RECORD"
+            # An opaque solver return is not an independent emptiness
+            # certificate.  Record it literally and leave the occurrence
+            # undecided-confirmed.
+            decision = {
+                "solver_return": solved,
+                "independent_emptiness_certificate": "NONE",
+                "conclusion": "UNDECIDED_CONFIRMED",
+            }
+            verdict = "STILL_UNDECIDED"
         elif isinstance(solved, sp.FiniteSet) and len(solved) > 0:
             decision = "PROVED_CONSISTENT"
             verdict = "DECIDED_UNDECIDED_RECORD"

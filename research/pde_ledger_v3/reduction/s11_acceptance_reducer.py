@@ -20,7 +20,54 @@ from pathlib import Path
 VERDICT_RE = re.compile(r"(?:^| )verdict=([A-Z0-9_]+)(?:\r)?$")
 TAG_RE = re.compile(r"(?:^| )tag=([^ ]+)")
 
-FAILURE_VERDICTS = {
+# Closed verdict taxonomy.  Every token any production census/calibration path
+# can emit has exactly one classification.  CONTROL is explicit bookkeeping;
+# the three acceptance-bearing classes remain FAILURE/FINDING/LIMITATION.  A
+# token absent from this map is itself an acceptance failure.
+TOKEN_BUCKETS = {
+    # Control/success terminals.
+    "POPULATION_RECONCILED": "CONTROL",
+    "BUDGET_DECLARED": "CONTROL",
+    "PAIRED_NOT_APPLICABLE": "CONTROL",
+    "BRANCH_CONTAINED": "CONTROL",
+    "COMPLETE_FACTOR_COVER": "CONTROL",
+    "WITNESS_VALIDATED": "CONTROL",
+    "STILL_UNDECIDED": "CONTROL",
+    "CENSUS_EXECUTED": "CONTROL",
+    "CALIBRATION_DETECTED": "CONTROL",
+    "CALIBRATION_PASS": "CONTROL",
+    # Acceptance failures.
+    "UNRECONCILED_LINE": "FAILURE",
+    "UNRECONCILED_UNDECIDED": "FAILURE",
+    "IN_POPULATION_PARSE_FAILURE": "FAILURE",
+    "UNPARSEABLE_OPERANDS": "FAILURE",
+    "MISSING_OPERANDS": "FAILURE",
+    "DECIDED_UNDECIDED_RECORD": "FAILURE",
+    "RESIDUAL_MISMATCH": "FAILURE",
+    "CALIBRATION_EXECUTION_BLOCKED": "FAILURE",
+    "CALIBRATION_MISS": "FAILURE",
+    "CALIBRATION_FAIL": "FAILURE",
+    # Real-record findings.
+    "SPURIOUS_BRANCH": "FINDING",
+    "SPURIOUS_BRANCH_SAMPLED": "FINDING",
+    "OMITTED_BRANCH": "FINDING",
+    "WITNESS_FAILURE": "FINDING",
+    # Explicit limitations, including every formerly open token.
+    "PAIR_RESOURCE_EXPIRED": "LIMITATION",
+    "WITNESS_RESOURCE_EXPIRED": "LIMITATION",
+    "PROBE_RESOURCE_EXPIRED": "LIMITATION",
+    "SHEET_INCOMPLETE": "LIMITATION",
+    "NON_VERDICT_TEXT": "LIMITATION",
+    "BRANCH_MEMBERSHIP_UNDECIDED": "LIMITATION",
+    "BRANCH_CONTAINED_SAMPLED": "LIMITATION",
+    "COMPLETENESS_UNDECIDED": "LIMITATION",
+    "COMPLETE_FACTOR_COVER_SAMPLED": "LIMITATION",
+    "WITNESS_UNDECIDED": "LIMITATION",
+    "WITNESS_SHEET_INCOMPLETE": "LIMITATION",
+    "WITNESS_VALIDATED_SAMPLED": "LIMITATION",
+}
+
+FAILURE_KINDS = {
     "UNRECONCILED_LINE": "UNRECONCILED_POPULATION",
     "UNRECONCILED_UNDECIDED": "UNRECONCILED_POPULATION",
     "IN_POPULATION_PARSE_FAILURE": "IN_POPULATION_PARSE_FAILURE",
@@ -30,12 +77,10 @@ FAILURE_VERDICTS = {
     "RESIDUAL_MISMATCH": "RESIDUAL_MISMATCH",
 }
 
-LIMITATION_VERDICTS = {
-    "PAIR_RESOURCE_EXPIRED",
-    "WITNESS_RESOURCE_EXPIRED",
-    "PROBE_RESOURCE_EXPIRED",
-    "SHEET_INCOMPLETE",
-}
+
+def token_bucket(token: str) -> tuple[str, bool]:
+    bucket = TOKEN_BUCKETS.get(token)
+    return (bucket, True) if bucket is not None else ("FAILURE", False)
 
 
 @dataclass(frozen=True)
@@ -76,16 +121,50 @@ def emit_item(prefix: str, transcript: Transcript, line_number: int, line: str, 
 
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser()
-    result.add_argument("--calibration", required=True, type=Path)
-    result.add_argument("--containment-wl", required=True, type=Path)
-    result.add_argument("--containment-py", required=True, type=Path)
-    result.add_argument("--probe-wl", required=True, type=Path)
-    result.add_argument("--probe-py", required=True, type=Path)
+    result.add_argument("--calibrate-taxonomy", action="store_true")
+    result.add_argument("--calibration", type=Path)
+    result.add_argument("--containment-wl", type=Path)
+    result.add_argument("--containment-py", type=Path)
+    result.add_argument("--probe-wl", type=Path)
+    result.add_argument("--probe-py", type=Path)
     return result
+
+
+def calibrate_taxonomy() -> int:
+    formerly_open = (
+        "NON_VERDICT_TEXT",
+        "BRANCH_MEMBERSHIP_UNDECIDED",
+        "COMPLETENESS_UNDECIDED",
+        "WITNESS_UNDECIDED",
+        "WITNESS_SHEET_INCOMPLETE",
+        "WITNESS_VALIDATED_SAMPLED",
+    )
+    misses = sum(token_bucket(token) != ("LIMITATION", True) for token in formerly_open)
+    unknown_bucket, unknown_recognized = token_bucket("PLANTED_UNKNOWN_VERDICT")
+    print(
+        "TAXONOMY_CALIBRATION "
+        f"known_tokens={len(TOKEN_BUCKETS)} open_token_misses={misses} "
+        f"unknown_bucket={unknown_bucket} unknown_recognized={unknown_recognized} "
+        f"verdict={'CALIBRATION_DETECTED' if misses == 0 and unknown_bucket == 'FAILURE' and not unknown_recognized else 'CALIBRATION_MISS'}",
+        flush=True,
+    )
+    return 0 if misses == 0 and unknown_bucket == "FAILURE" and not unknown_recognized else 2
 
 
 def main() -> int:
     args = parser().parse_args()
+    if args.calibrate_taxonomy:
+        return calibrate_taxonomy()
+    required = {
+        "calibration": args.calibration,
+        "containment_wl": args.containment_wl,
+        "containment_py": args.containment_py,
+        "probe_wl": args.probe_wl,
+        "probe_py": args.probe_py,
+    }
+    missing_arguments = [name for name, value in required.items() if value is None]
+    if missing_arguments:
+        raise SystemExit("missing required census inputs: " + ", ".join(missing_arguments))
     calibration = Transcript.read("calibration", args.calibration)
     censuses = (
         Transcript.read("containment_wl", args.containment_wl),
@@ -104,6 +183,24 @@ def main() -> int:
     failure_counts: Counter[str] = Counter()
     finding_counts: Counter[str] = Counter()
     limitation_counts: Counter[str] = Counter()
+
+    # Calibration contains nested production-census stdout.  Audit every token
+    # for closure here, while leaving planted findings out of real-census
+    # arithmetic.
+    for number, line in enumerate(calibration.lines, 1):
+        token = verdict(line)
+        if token is None:
+            continue
+        _bucket, recognized = token_bucket(token)
+        if not recognized:
+            failure_counts["UNRECOGNIZED_VERDICT_TOKEN"] += 1
+            emit_item(
+                "ACCEPTANCE_FAILURE",
+                calibration,
+                number,
+                line,
+                "UNRECOGNIZED_VERDICT_TOKEN",
+            )
 
     calibration_misses = [
         (number, line)
@@ -159,11 +256,19 @@ def main() -> int:
 
         for number, line in enumerate(item.lines, 1):
             token = verdict(line)
-            if token in FAILURE_VERDICTS:
-                kind = FAILURE_VERDICTS[token]
+            if token is None:
+                continue
+            bucket, recognized = token_bucket(token)
+            if not recognized:
+                kind = "UNRECOGNIZED_VERDICT_TOKEN"
                 failure_counts[kind] += 1
                 emit_item("ACCEPTANCE_FAILURE", item, number, line, kind)
-            if token in LIMITATION_VERDICTS:
+                continue
+            if bucket == "FAILURE":
+                kind = FAILURE_KINDS.get(token, token)
+                failure_counts[kind] += 1
+                emit_item("ACCEPTANCE_FAILURE", item, number, line, kind)
+            if bucket == "LIMITATION":
                 limitation_counts[token] += 1
                 emit_item("ACCEPTANCE_LIMITATION", item, number, line, token)
 
@@ -190,6 +295,7 @@ def main() -> int:
             "DECIDED_UNDECIDED_RECORD",
             "RESIDUAL_MISMATCH",
             "INCOMPLETE_CENSUS",
+            "UNRECOGNIZED_VERDICT_TOKEN",
         )
     )
     finding_fields = " ".join(
@@ -198,12 +304,15 @@ def main() -> int:
     )
     limitation_fields = " ".join(
         f"{key.lower()}={limitation_counts[key]}"
-        for key in sorted(LIMITATION_VERDICTS)
+        for key in sorted(
+            token for token, bucket in TOKEN_BUCKETS.items() if bucket == "LIMITATION"
+        )
     )
     print(
         f"ACCEPTANCE_COUNTS failures={failure_total} {failure_fields} "
         f"findings={finding_total} {finding_fields} "
-        f"limitations={limitation_total} {limitation_fields} verdict=COUNTS_COMPUTED",
+        f"limitations={limitation_total} {limitation_fields} "
+        f"taxonomy_tokens={len(TOKEN_BUCKETS)} verdict=COUNTS_COMPUTED",
         flush=True,
     )
     round_verdict = "ROUND_PASS" if failure_total == 0 else "ROUND_FAIL"

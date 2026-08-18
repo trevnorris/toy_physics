@@ -20,7 +20,8 @@ import resource
 from typing import Any, Iterable, Iterator, Mapping, Sequence
 
 import sympy as sp
-from sympy.parsing.mathematica import parse_mathematica
+from sympy.core.function import AppliedUndef
+from sympy.parsing.mathematica import MathematicaParser
 
 
 # Floors required by brief obligation 7.  These apply independently to each
@@ -151,6 +152,98 @@ def split_top_relation(text: str, token: str) -> tuple[str, str]:
 
 _WL_PROTECTED_SYMBOLS = {"beta": "s11BetaSymbol"}
 
+# ``parse_mathematica`` deliberately leaves some Mathematica heads as undefined
+# SymPy functions.  That is safe for opaque provenance heads, but not for heads
+# whose semantics the census evaluates.  Keep this table explicit and small so
+# every evaluated head is audited in one place.  Unequal is rewritten to a
+# Boolean expression before parsing because an undefined function cannot be an
+# And/Or operand.
+_WL_EVALUATED_HEADS = {
+    "Abs": sp.Abs,
+    "Sign": sp.sign,
+    "Re": sp.re,
+    "Im": sp.im,
+    "Conjugate": sp.conjugate,
+    "Sin": sp.sin,
+    "Cos": sp.cos,
+    "Tan": sp.tan,
+    "Exp": sp.exp,
+    "Log": sp.log,
+    "Min": sp.Min,
+    "Max": sp.Max,
+}
+
+
+def _replace_wl_empty_lists(text: str) -> str:
+    """Protect nested literal {} objects from the Mathematica parser."""
+    result: list[str] = []
+    index = 0
+    in_string = False
+    escaped = False
+    while index < len(text):
+        char = text[index]
+        if in_string:
+            result.append(char)
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+            index += 1
+            continue
+        if char == '"':
+            in_string = True
+            result.append(char)
+            index += 1
+            continue
+        if text.startswith("{}", index):
+            result.append("s11EmptyList[0]")
+            index += 2
+            continue
+        result.append(char)
+        index += 1
+    return "".join(result)
+
+
+def _wl_unequal(*operands: sp.Basic) -> sp.Basic:
+    """Mathematica Unequal is pairwise inequality, including infix ``!=``."""
+    if len(operands) < 2:
+        raise ValueError("Unequal requires at least two operands")
+    return sp.And(
+        *(
+            sp.Ne(operands[left], operands[right])
+            for left in range(len(operands))
+            for right in range(left + 1, len(operands))
+        )
+    )
+
+
+def _parse_mathematica_evaluated(source: str) -> sp.Basic:
+    """Parse with every Boolean-producing record head bound before parents."""
+    parser = MathematicaParser()
+    # Infix ``!=`` and explicit Unequal[...] both become the same FullForm
+    # node.  It must be Boolean before an enclosing And/Or is constructed.
+    parser._node_conversions["Unequal"] = _wl_unequal
+    return parser.parse(source)
+
+
+def _bind_wl_evaluated_heads(value: sp.Basic) -> sp.Basic:
+    value = value.replace(
+        lambda item: isinstance(item, AppliedUndef)
+        and item.func.__name__ == "s11EmptyList",
+        lambda _item: sp.Tuple(),
+    )
+
+    def is_bound_head(item: sp.Basic) -> bool:
+        return isinstance(item, AppliedUndef) and item.func.__name__ in _WL_EVALUATED_HEADS
+
+    def bind(item: sp.Basic) -> sp.Basic:
+        constructor = _WL_EVALUATED_HEADS[item.func.__name__]
+        return constructor(*item.args)
+
+    return value.replace(is_bound_head, bind)
+
 
 def _replace_wl_elements(text: str) -> str:
     source = text
@@ -205,31 +298,54 @@ def parse_wl(text: str) -> sp.Basic:
     # SymPy's Mathematica translator represents unknown Element[...] heads as
     # non-Boolean functions, which then cannot be children of And.  Translate
     # the two record domains exactly to Boolean relations before parsing.
-    if text.strip() == "{}":
-        return sp.Tuple()
-    source = _replace_wl_elements(text)
+    stripped = text.strip()
+    # The Mathematica parser rejects nested empty lists (notably the 62 real
+    # ``{{}}`` solution payloads).  Parse list structure recursively; each
+    # non-list leaf still goes through the same Mathematica expression parser.
+    if stripped.startswith("{") and stripped.endswith("}"):
+        return sp.Tuple(*(parse_wl(item) for item in split_delimited(stripped)))
+    source = _replace_wl_empty_lists(_replace_wl_elements(stripped))
     for original, protected in _WL_PROTECTED_SYMBOLS.items():
         source = re.sub(rf"\b{re.escape(original)}\b", protected, source)
-    parsed = parse_mathematica(source)
+    parsed = _parse_mathematica_evaluated(source)
+    # Literal Mathematica True/False are returned as Python bools, unlike
+    # evaluated relations which return SymPy booleans.
+    if parsed is True:
+        return sp.true
+    if parsed is False:
+        return sp.false
     replacements = {
         sp.Symbol(protected): sp.Symbol(original)
         for original, protected in _WL_PROTECTED_SYMBOLS.items()
     }
-    return parsed.xreplace(replacements)
+    return _bind_wl_evaluated_heads(parsed.xreplace(replacements))
 
 
-def parse_py(text: str) -> sp.Basic:
+_PY_ASSUMED_SYMBOL_RE = re.compile(
+    r"Symbol\((?P<name>'(?:\\.|[^'])*'|\"(?:\\.|[^\"])*\")"
+    r"(?:,\s*[A-Za-z_][A-Za-z0-9_]*=(?:True|False|None))+\)"
+)
+
+
+def parse_py(text: str, *, assumption_free: bool = False) -> sp.Basic:
     # srepr is executable constructor syntax, not user-authored source.  sympify
     # supplies the SymPy constructor namespace and evaluate=False preserves the
     # record's unevaluated relation forms where SymPy supports doing so.
-    return sp.sympify(text, evaluate=False)
+    source = text
+    if assumption_free:
+        source = _PY_ASSUMED_SYMBOL_RE.sub(
+            lambda match: f"Symbol({match.group('name')})", source
+        )
+    return sp.sympify(source, evaluate=False)
 
 
-def parse_payload(dialect: str, text: str) -> sp.Basic:
+def parse_payload(
+    dialect: str, text: str, *, assumption_free: bool = False
+) -> sp.Basic:
     if dialect == "WL":
         return parse_wl(text)
     if dialect == "PY":
-        return parse_py(text)
+        return parse_py(text, assumption_free=assumption_free)
     raise ValueError(f"unknown dialect {dialect!r}")
 
 
@@ -342,37 +458,32 @@ def _radical_atoms(expression: sp.Basic) -> set[sp.Basic]:
         atom
         for atom in expression.atoms(sp.Pow)
         if atom.exp.is_Rational and atom.exp.q == 2 and atom.exp.p % 2 != 0
+        and atom.base.is_number is not True
     }
-    return powers | set(expression.atoms(sp.Abs))
-
-
-def _masked_branch(
-    branch: Mapping[sp.Expr, sp.Expr],
-) -> tuple[dict[sp.Expr, sp.Expr], dict[sp.Symbol, sp.Basic]]:
-    masked: dict[sp.Expr, sp.Expr] = {}
-    restore: dict[sp.Symbol, sp.Basic] = {}
-    serial = 0
-    for lhs, rhs in branch.items():
-        replacements: dict[sp.Basic, sp.Symbol] = {}
-        for atom in sorted(_radical_atoms(rhs), key=sp.default_sort_key):
-            dummy = sp.Dummy(f"branch_radical_{serial}")
-            serial += 1
-            replacements[atom] = dummy
-            restore[dummy] = atom
-        masked[lhs] = rhs.xreplace(replacements)
-    return masked, restore
+    absolute_values = {
+        atom for atom in expression.atoms(sp.Abs) if atom.args[0].is_number is not True
+    }
+    return powers | absolute_values
 
 
 def sheet_residuals(
     residuals: Sequence[sp.Expr], branch: Mapping[sp.Expr, sp.Expr]
 ) -> tuple[list[tuple[str, tuple[sp.Expr, ...]]], int, int]:
-    masked_branch, restore = _masked_branch(branch)
+    # Obligation 5 order is semantic: substitute the emitted branch exactly as
+    # written, simplify that residual, and only then enumerate radicals that
+    # remain.  Radicals originating in a branch RHS are fixed parts of the
+    # emitted object and are excluded from the global sheet sweep.
+    branch_radicals: set[sp.Basic] = set()
+    for rhs in branch.values():
+        branch_radicals.update(_radical_atoms(rhs))
     substituted = tuple(
-        residual.subs(masked_branch, simultaneous=True) for residual in residuals
+        simplify_residual(residual.subs(branch, simultaneous=True))[0]
+        for residual in residuals
     )
     sheet_atoms: set[sp.Basic] = set()
     for residual in substituted:
         sheet_atoms.update(_radical_atoms(residual))
+    sheet_atoms.difference_update(branch_radicals)
     ordered_atoms = sorted(sheet_atoms, key=sp.default_sort_key)
     total = 2 ** len(ordered_atoms)
     tested = min(total, MAX_SHEET_ASSIGNMENTS)
@@ -388,7 +499,7 @@ def sheet_residuals(
             else:
                 replacements[atom] = sign * atom
                 labels.append(f"sqrt({sp.sstr(atom.base)}):{sign:+d}")
-        values = tuple(item.xreplace(replacements).xreplace(restore) for item in substituted)
+        values = tuple(item.xreplace(replacements) for item in substituted)
         result.append(("[" + ",".join(labels) + "]", values))
     return result, tested, total
 
@@ -433,7 +544,9 @@ def simplify_residual(expression: sp.Expr) -> tuple[sp.Expr, str]:
             if not sampled.free_symbols and sampled != 0 and sampled.is_zero is not True:
                 return simplified, "NONZERO_SAMPLED"
         if sampled_count and sampled_zero == sampled_count:
-            return simplified, "ZERO_SAMPLED"
+            # Samples can refute an identity, never prove one.  Preserve the
+            # explicit diagnostic while leaving the symbolic result undecided.
+            return simplified, "UNDECIDED_ZERO_SAMPLES"
         return simplified, "UNDECIDED"
     except BaseException:
         return expression, "UNDECIDED"
@@ -451,10 +564,8 @@ def branch_memberships(
             verdict = "SPURIOUS_BRANCH"
         elif "NONZERO_SAMPLED" in statuses:
             verdict = "SPURIOUS_BRANCH_SAMPLED"
-        elif "UNDECIDED" in statuses:
+        elif any(status.startswith("UNDECIDED") for status in statuses):
             verdict = "BRANCH_MEMBERSHIP_UNDECIDED"
-        elif "ZERO_SAMPLED" in statuses:
-            verdict = "BRANCH_CONTAINED_SAMPLED"
         else:
             verdict = "BRANCH_CONTAINED"
         rows.append(
@@ -521,20 +632,90 @@ def _solution_tuple_to_branch(
     return result
 
 
+def _branch_constraints(branch: Mapping[sp.Expr, sp.Expr]) -> tuple[sp.Expr, ...]:
+    return tuple(lhs - rhs for lhs, rhs in branch.items())
+
+
+def _sample_union_coverage(
+    candidate: Mapping[sp.Expr, sp.Expr],
+    emitted: Sequence[Mapping[sp.Expr, sp.Expr]],
+) -> str:
+    symbols = set().union(
+        *(value.free_symbols for value in candidate.values()),
+        *(
+            constraint.free_symbols
+            for branch in emitted
+            for constraint in _branch_constraints(branch)
+        ),
+    )
+    symbols.difference_update(candidate.keys())
+    checked = 0
+    for assignment in itertools.islice(exact_sample_assignments(tuple(symbols)), 16):
+        point = dict(assignment)
+        try:
+            point.update(
+                {
+                    lhs: sp.simplify(rhs.subs(assignment, simultaneous=True))
+                    for lhs, rhs in candidate.items()
+                }
+            )
+        except BaseException:
+            continue
+        branch_truths: list[bool] = []
+        defined = True
+        for branch in emitted:
+            statuses = tuple(
+                simplify_residual(constraint.subs(point, simultaneous=True))[1]
+                for constraint in _branch_constraints(branch)
+            )
+            if any(status == "UNDEFINED" for status in statuses):
+                defined = False
+                break
+            branch_truths.append(all(status == "ZERO" for status in statuses))
+        if not defined:
+            continue
+        checked += 1
+        if not any(branch_truths):
+            return "NOT_COVERED_SAMPLED"
+    return "COVERED_SAMPLED" if checked else "COVERAGE_UNDECIDED"
+
+
 def _branch_is_covered(
     candidate: Mapping[sp.Expr, sp.Expr], emitted: Sequence[Mapping[sp.Expr, sp.Expr]]
-) -> bool:
-    for branch in emitted:
+) -> str:
+    """Decide containment in the union of emitted branch varieties.
+
+    The union is represented by products choosing one equation from each
+    emitted branch.  All such products vanish exactly on the branch union.
+    Substitution into the candidate chart therefore recognizes algebraically
+    equivalent radical/Abs charts that no single syntactic branch matches.
+    """
+    if any(not branch for branch in emitted):
+        return "COVERED_ALGEBRAIC"
+    if not emitted:
+        return "NOT_COVERED"
+    constraints = tuple(_branch_constraints(branch) for branch in emitted)
+    if any(not items for items in constraints):
+        return "COVERED_ALGEBRAIC"
+    combination_count = math.prod(len(items) for items in constraints)
+    if combination_count <= MAX_FACTOR_COVERS:
         statuses: list[str] = []
-        for lhs, rhs in branch.items():
-            value = (lhs - rhs).subs(candidate, simultaneous=True)
-            _simplified, status = simplify_residual(value)
+        for factors in itertools.product(*constraints):
+            product = sp.Mul(*factors)
+            _value, status = simplify_residual(
+                product.subs(candidate, simultaneous=True)
+            )
             statuses.append(status)
         if statuses and all(status == "ZERO" for status in statuses):
-            return True
-        if not statuses and not candidate:
-            return True
-    return False
+            return "COVERED_ALGEBRAIC"
+        if any(status in {"NONZERO", "NONZERO_SAMPLED", "UNDEFINED"} for status in statuses):
+            sampled = _sample_union_coverage(candidate, emitted)
+            return sampled if sampled != "COVERAGE_UNDECIDED" else "NOT_COVERED"
+    return _sample_union_coverage(candidate, emitted)
+
+
+def _is_point_candidate(values: Sequence[object]) -> bool:
+    return all(isinstance(value, sp.Expr) and not isinstance(value, sp.Set) for value in values)
 
 
 def completeness_candidates(
@@ -547,6 +728,7 @@ def completeness_candidates(
     covers, truncated = minimal_factor_covers(residuals)
     candidates: list[dict[sp.Expr, sp.Expr]] = []
     unresolved = 0
+    artifact_count = 0
     for cover in covers:
         if not cover:
             candidates.append({})
@@ -560,6 +742,9 @@ def completeness_candidates(
             for item in solved:
                 values = tuple(item) if isinstance(item, (tuple, sp.Tuple)) else (item,)
                 if len(values) == len(variables):
+                    if not _is_point_candidate(values):
+                        artifact_count += 1
+                        continue
                     candidate = _solution_tuple_to_branch(variables, values)
                     if candidate not in candidates:
                         candidates.append(candidate)
@@ -571,18 +756,36 @@ def completeness_candidates(
             # ConditionSet and other symbolic returns were parsed and retained,
             # but do not license a completeness conclusion.
             unresolved += 1
-    missing = [candidate for candidate in candidates if not _branch_is_covered(candidate, emitted)]
+    coverage = [
+        (candidate, _branch_is_covered(candidate, emitted)) for candidate in candidates
+    ]
+    missing = [
+        candidate
+        for candidate, status in coverage
+        if status in {"NOT_COVERED", "NOT_COVERED_SAMPLED"}
+    ]
+    coverage_undecided = sum(
+        status == "COVERAGE_UNDECIDED" for _candidate, status in coverage
+    )
+    coverage_sampled = sum(
+        status == "COVERED_SAMPLED" for _candidate, status in coverage
+    )
     if missing:
         verdict = "OMITTED_BRANCH"
-    elif truncated or unresolved:
+    elif truncated or unresolved or coverage_undecided:
         verdict = "COMPLETENESS_UNDECIDED"
+    elif coverage_sampled:
+        verdict = "COMPLETE_FACTOR_COVER_SAMPLED"
     else:
         verdict = "COMPLETE_FACTOR_COVER"
     return {
         "factor_covers": len(covers),
         "cover_truncated": truncated,
         "candidate_count": len(candidates),
+        "artifact_count": artifact_count,
         "unresolved_count": unresolved,
+        "coverage_sampled": coverage_sampled,
+        "coverage_undecided": coverage_undecided,
         "missing": missing,
         "verdict": verdict,
     }

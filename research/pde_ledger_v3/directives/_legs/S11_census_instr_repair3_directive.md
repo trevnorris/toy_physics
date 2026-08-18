@@ -1,81 +1,108 @@
-# Repair directive — S11 census instruments, round 3
+# Repair directive — S11 census instruments, round 3 (folded after two legs)
 
 You are repairing the instrument modules under
 `/var/projects/toy_physics/research/pde_ledger_v3/reduction/` at commit `89ed80c9`, governed by
 the folded brief (`S11_locus_census_instrument_brief.md`, `fa8c58b3`) — its eight obligations and
-population section remain the acceptance surface. Two independent review legs plus orchestrator
-re-computation verified the round-2 repairs (all seven classes live on the production path, one
-ablation diff each) and measured the five defects below in the round-2 census. Repair them all,
-extend the calibration, and re-run the full census. Everything the legs certified live must stay
+population section remain the acceptance surface. Two review legs on the round-2 repair, two
+legs on this directive, and orchestrator re-computation verified the six defects below in the
+round-2 census (the measured commands and literal outputs are in this directive's
+`../_measurements/` twin — evidence lives there, not here). Repair them all, extend the
+calibration, and re-run the full census. Everything the round-2 legs certified live must stay
 live — the round-3 calibration must still catch a regression of every round-2 class.
 
 ## Verified defects
 
-1. **The union-membership test lets one sibling branch poison coverage** (violates obligation 3).
-   A candidate is covered when it lies in the union of emitted branches — i.e. when it satisfies
-   the FULL constraint set of AT LEAST ONE emitted branch. The current test multiplies one
-   constraint from EVERY emitted branch (`s11_census_math.py:683-715`), so a sibling branch that
-   is undefined at the candidate (a rational chart with a pole there) makes the product
-   undefined; the sampling fallback discards any sample where ANY sibling is undefined
-   (`:639-680`); and `COVERAGE_UNDECIDED` is then collapsed to `NOT_COVERED` (`:713`), which the
-   completeness pass promotes to `OMITTED_BRANCH` (`:773-774`). Measured: a candidate satisfying
-   an emitted branch's constraint identically (simplified residual 0) is verdicted
-   `OMITTED_BRANCH`; 7 of the 70 round-2 PY omitted lines carry this shape. Required: membership
-   is decided per emitted branch — a branch undefined at the candidate is non-covering for that
-   branch, never poison for the union; the union verdict is the OR over branches;
-   `COVERAGE_UNDECIDED` keeps its own token and is never collapsed to a decided one.
+1. **One sibling branch poisons union coverage** (violates obligation 3). A candidate is covered
+   when it lies in the UNION of the emitted branches. The current test multiplies one constraint
+   from EVERY emitted branch (`s11_census_math.py:683-715`), so a branch undefined at the
+   candidate makes the product undefined; the sampling fallback discards any sample where ANY
+   sibling is undefined (`:639-680`); and `COVERAGE_UNDECIDED` is collapsed to `NOT_COVERED`
+   (`:713`) and promoted to `OMITTED_BRANCH` (`:773-774`). Measured: candidates satisfying an
+   emitted branch identically, and a candidate covered piecewise by the union of two branches
+   (each covering one sign of a real symbol) while no single branch covers it, are all verdicted
+   `OMITTED_BRANCH`. Required: the union test is computed over the branches DEFINED at the
+   candidate — a branch undefined there is non-covering and is excluded from the union
+   computation, never poison; the union decision object must cover the piecewise case (the
+   product of one substituted constraint per defined branch vanishing identically on the
+   candidate, or an equivalent union-variety membership — a per-branch containment OR is NOT
+   sufficient); `COVERAGE_UNDECIDED` keeps its own token and is never collapsed to a decided
+   one.
 2. **A pole of the as-written equation is treated as a candidate component** (violates
-   obligation 3's artifact exclusion). Candidates at which the equation as written is undefined
-   (the cleared-denominator points, e.g. a candidate zeroing a factor of the equation's
-   denominator) are currently kept and verdicted `OMITTED_BRANCH`
-   (`s11_census_math.py:717-718` drops only `Set` objects). Measured: 4 of the 13 round-2 WL
-   omitted records are exactly this (candidate zeroes the `_EQUATIONS` denominator; substitution
-   yields an undefined value, not a solution). Required: a candidate where the as-written
-   equation is undefined is an excluded artifact — excluded for that entailment, with the
-   candidate and the undefined substitution printed on its per-record line.
+   obligation 3's artifact exclusion). Candidates at which the as-written equation is undefined
+   are kept and verdicted `OMITTED_BRANCH` (`s11_census_math.py:717-718` drops only `Set`
+   objects). Measured: most of the round-2 WL omitted records carry only such candidates (the
+   two legs' counts and the per-record evidence are in the twin). Required: a candidate where
+   the as-written equation is undefined is an excluded artifact — excluded for that entailment,
+   with the candidate and the undefined substitution printed on its per-record line; the
+   record's completeness verdict is then computed over the surviving candidates (no surviving
+   missing candidate ⇒ the covered token, with the exclusions itemized), never left
+   `COVERAGE_UNDECIDED` for the exclusion alone. Where a record's equation is defined but every
+   emitted branch is undefined at the candidate, defect 1's rule applies (all non-covering);
+   where the equation itself is undefined, this exclusion wins.
 3. **The exact sampler is non-generic: symbols in the same assumption pool collide** (violates
    obligation 5's refutation direction). `exact_sample_assignments`
    (`s11_census_math.py:794-831`) assigns `positive[(serial + index) % len(positive)]` with a
-   pool of length 4, so two positive symbols whose sorted-index distance is ≡ 0 (mod 4) receive
-   IDENTICAL values in EVERY sample. Measured: for the free-symbol set
-   `(bComp, k1, k2, k3, muR)` every sample lies on `bComp = muR`, so a residual carrying the
-   factor `(bComp − muR)` samples to zero in all samples and is reported
-   `UNDECIDED_ZERO_SAMPLES` although one generic point refutes it; 28 WL probe records are
-   affected. Required: every sample assignment is generic — pairwise-distinct values within each
-   assumption pool for all symbols simultaneously (a pool at least as large as the symbol count,
-   or per-symbol distinct constructions); the refutation direction must be able to fire on a
-   residual vanishing only on a coincidence locus of ANY two sampled symbols.
-4. **Witness premise semantics leave the validated direction unreachable** (round-2 directive
-   defect, superseding its class 5 wording). Every real `_REAL_WITNESS` binds only its solve
-   variables, so premises over unbound symbols (`k1`, `k2`, `A`, `a1`, `a2`, …) evaluate
-   UNDECIDED and every witness lands in `WITNESS_UNDECIDED`: round-2 emitted ZERO
-   `WITNESS_VALIDATED` across both records (round 1: 107 + 99). Required semantics: partition
-   the §3 premises by whether their free symbols are all bound by the witness; evaluate the
-   bound ones conjuncted at the witness point on assumption-free symbols; print the unbound
-   premises verbatim on the per-record line as unevaluated. A witness VALIDATES when its
-   equations vanish on a coherent sheet AND every bound premise is TRUE; it FAILS when it fails
-   membership on all sheets or any bound premise is FALSE; it is UNDECIDED only when membership
-   or a bound premise is genuinely undecidable. The round-2 failure direction (premise-violating
-   plant fails; the 172 measured witness failures) must be unchanged.
-5. **The reducer counts sheet-level progress lines as objects** (violates obligation 6's
-   count semantics). `CONTAINMENT_BRANCH_SHEET` / `CONTAINMENT_WITNESS_SHEET` lines carrying a
+   pool of length 4, so two positive symbols at sorted-index distance ≡ 0 (mod 4) receive
+   IDENTICAL values in EVERY sample; residuals carrying the coincidence factor of two such
+   symbols sample to zero everywhere and are reported `UNDECIDED_ZERO_SAMPLES` although one
+   generic point refutes them (measured population in the twin). Required: every sample
+   assignment is generic — pairwise-distinct values within each assumption pool for all symbols
+   simultaneously; the refutation direction must be able to fire on a residual vanishing only
+   on a coincidence locus of ANY two sampled symbols.
+4. **Witness premise semantics: classification must happen AFTER substitution** (supersedes the
+   round-2 directive's class 5 wording; this round's directive originally partitioned by
+   pre-substitution symbol binding, and both directive legs refuted that with real records).
+   Required: substitute the witness into each premise conjunct FIRST (the WL `PREMISES` `And`
+   is split into conjuncts — never evaluated as one opaque object), then classify each
+   substituted conjunct: identically TRUE, identically FALSE, or contingent (free symbols
+   remain and neither truth value is forced). Any FALSE conjunct ⇒ `WITNESS_FAILURE`. All
+   conjuncts TRUE and membership contained on a coherent sheet ⇒ `WITNESS_VALIDATED`.
+   Otherwise the contingent conjuncts are printed verbatim on the per-record line and the
+   verdict is `WITNESS_UNDECIDED`. Assumption atoms on concrete numbers decide (a rational
+   substituted into a realness/positivity atom yields TRUE or FALSE, in both dialects — the PY
+   `Q.real(<rational>)` case must decide TRUE, not remain undecided). Membership-driven
+   failures (witness point failing its own locus equations on all sheets) are premise-
+   independent and must be unchanged. The round-2 premise-violating plant must still fail.
+5. **The reducer counts sheet-level progress lines as objects** (violates obligation 6's count
+   semantics). `CONTAINMENT_BRANCH_SHEET` / `CONTAINMENT_WITNESS_SHEET` lines carrying a
    limitation token are counted alongside the branch/witness verdict lines for the same objects
-   (`s11_acceptance_reducer.py:257-273`): round-2 `limitations=885` counts 78 sheet-progress
-   lines whose parent verdict lines are already counted (object-level count: 807). Required:
-   reducer buckets count OBJECT-level verdict lines once; sheet-level lines are evidence for
-   their parent verdict, not separately-counted objects. `failures` and `findings` semantics are
-   already object-level and must not move.
+   (`s11_acceptance_reducer.py:257-273`; measured split in the twin). Required: reducer buckets
+   count OBJECT-level verdict lines once; sheet-level lines are evidence for their parent
+   verdict, not separately-counted objects. `failures` and `findings` semantics are already
+   object-level and must not move.
+6. **Premise evaluation is branch-unsound before substitution** (orchestrator-measured; the
+   mechanism behind two false `premise_truth="FALSE"` witness failures). The parser expands
+   `Element[X, Reals]` into re/im components of complex symbols BEFORE the witness is
+   substituted (`parse_payload` with `assumption_free=True`); for radical/Abs-bearing `X` the
+   expansion takes a non-principal branch, and two real witnesses are verdicted FALSE on an
+   atom that is identically TRUE at the witness point (the `Sqrt` argument is exactly 0;
+   records and commands in the twin). Required: premise atoms are evaluated by substituting the
+   witness FIRST and then evaluating the principal value of the substituted atom; no
+   pre-substitution re/im expansion may decide a premise's truth.
 
 ## Calibration extension (obligation 2 binds: production path, byte-shaped, must fail)
 
-Keep every round-2 plant. Add, each demonstrated ABLE TO FAIL before the census runs: a covered
-chart candidate with a polar sibling branch (must NOT be omitted); a pole candidate zeroing the
-equation denominator (must be excluded as an artifact, not omitted); a residual vanishing
-exactly on the coincidence locus of two same-pool symbols (must be refuted by sample); a
-premise-satisfying witness on its locus (must VALIDATE) alongside the round-2 premise-violating
-plant (must still FAIL); a sheet-line/object-line counting case (object counted once). Replace
-the `Abs` plant's constant argument with one the parser cannot pre-fold, so the binding can
-fail.
+Keep every round-2 plant. Add, each demonstrated ABLE TO FAIL before the census runs:
+
+- a candidate covered only by the UNION of two emitted branches (each covering one sign of a
+  real symbol) with an additional sibling branch undefined at the candidate — must NOT be
+  omitted (fails under per-branch OR and under the current product);
+- a pole candidate zeroing the equation's denominator — must be excluded as an artifact, with
+  the record's completeness verdict computed over the survivors;
+- a residual vanishing exactly on the coincidence locus of two same-pool symbols — must be
+  refuted by sample;
+- a witness with a partially-bound premise that becomes identically FALSE after substitution —
+  must FAIL (byte-shaped; a fully-bound violator does not exercise the partition);
+- a byte-shaped witness whose premises include atoms still contingent after substitution
+  (realness of unbound field symbols) alongside all-TRUE decided atoms — must be UNDECIDED
+  with the contingent atoms printed;
+- a byte-shaped witness on its locus whose every premise conjunct decides TRUE after
+  substitution — must VALIDATE (fails at `89ed80c9`, where it lands UNDECIDED);
+- a radical/Abs-bearing realness atom identically TRUE at the witness — must NOT fail (fails
+  at `89ed80c9` via the pre-substitution expansion);
+- a sheet-line/object-line counting case — object counted once;
+- the `Abs` plant's argument replaced with one the parser cannot pre-fold, so the binding can
+  fail.
 
 ## Order of work
 

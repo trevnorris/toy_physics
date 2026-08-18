@@ -23,18 +23,31 @@ uncovered, and emits `NOT_COVERED_SAMPLED`; completeness promotes it to `OMITTED
 both its candidates lie identically in the union of its emitted branches; the symbolic union
 product exceeds the simplify size cap, so the sampled fallback decided). Required:
 
-1. **Zero-status of a constant is decided by proof, never by structure.** A free-symbol-less
-   expression is classified ZERO or NONZERO only with a certificate: an exact zero decision
-   (e.g. the expression's assumptions system / minimal-polynomial route on algebraic numbers)
-   or a numeric evaluation at precision with a rigorous separation bound; when neither
-   certifies, the status is UNDECIDED — never NONZERO by failure-to-simplify. This binds every
-   consumer of the status (coverage, membership, spurious refutation, probe refutation,
-   definedness).
-2. **Sampled coverage refutes only on a certified-uncovered point.** A candidate sample point
-   refutes union coverage only when the union product at that point is certified NONZERO under
-   rule 1. If every sampled point is covered or undecided, the coverage verdict is
-   `COVERAGE_UNDECIDED` (its own token, never collapsed) — a sample refutes coverage, it never
-   proves non-coverage.
+1. **Zero-status of a constant is decided by proof, never by structure — and the exact route
+   is mandatory, not one option.** For a free-symbol-less algebraic expression the
+   classification is: ZERO only with an exact zero certificate (the minimal-polynomial /
+   exact equals-zero decision on algebraic numbers); NONZERO only with an exact nonzero
+   certificate or a rigorous numeric enclosure that excludes zero; UNDECIDED only after the
+   exact route has been attempted and failed (resource-guarded, with the guard's expiry
+   recorded) — never NONZERO by failure-to-simplify, and never UNDECIDED merely because a
+   fixed working precision could not separate a nonzero value from zero when the exact route
+   decides it. This binds every consumer of the status (coverage, membership, spurious
+   refutation, probe refutation, definedness). Both directive legs measured the
+   under-specified version: two compliant implementations (fixed-precision interval vs
+   minimal-polynomial) returned different verdicts on the same branch — the exact-route
+   mandate is what removes that freedom.
+2. **Sampled coverage refutes only on a certified-uncovered point, under per-branch AND
+   semantics.** At a candidate sample point: a DEFINED branch covers the point iff EVERY one
+   of its substituted constraints is certified ZERO under rule 1; the point is
+   certified-uncovered iff EVERY defined branch has at least one constraint certified NONZERO
+   there (equivalently: some one-constraint-per-defined-branch combination product is
+   certified NONZERO); any other status pattern leaves the point undecided. ⛔ Constraints
+   belonging to ONE branch are never multiplied together — that turns the branch's AND into
+   an OR and manufactures coverage (both directive legs measured a real candidate this
+   mis-covers). A sample point that is certified-uncovered refutes union coverage
+   (`NOT_COVERED_SAMPLED`, the witness point printed); if every sampled point is covered or
+   undecided, the coverage verdict is `COVERAGE_UNDECIDED` (its own token, never collapsed) —
+   a sample refutes coverage, it never proves non-coverage.
 
 The genuine refutation direction must stay: a point where the union product is certified
 nonzero is a witness of non-coverage and must still be verdicted `NOT_COVERED_SAMPLED`; sampled
@@ -47,6 +60,9 @@ Keep every round-2/3 plant. Add, each demonstrated ABLE TO FAIL before the censu
 
 - a free-symbol-less nested-radical exact zero routed through the production status
   classification — must NOT be NONZERO (fails at `fd9a5835`);
+- a free-symbol-less algebraic constant that is nonzero but smaller than any fixed working
+  precision (shape: `Sqrt[10^200 + 1] - 10^100`) — must be certified NONZERO by the exact
+  route (fails under a fixed-precision-only implementation);
 - a solution/equation pair whose candidates are inverse charts of the emitted branches with a
   union product too large for the symbolic simplify route — must NOT be omitted (fails at
   `fd9a5835`);

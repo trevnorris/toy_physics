@@ -225,6 +225,16 @@ def _parse_mathematica_evaluated(source: str) -> sp.Basic:
     # Infix ``!=`` and explicit Unequal[...] both become the same FullForm
     # node.  It must be Boolean before an enclosing And/Or is constructed.
     parser._node_conversions["Unequal"] = _wl_unequal
+    # Witness premises use these private heads when Element is deliberately
+    # deferred.  Contains is a Boolean object, so it too must be constructed
+    # before a surrounding And is built.  evaluate=False is essential here:
+    # principal-value membership is decided only after witness substitution.
+    parser._node_conversions["s11ElementReals"] = lambda value: sp.Contains(
+        value, sp.S.Reals, evaluate=False
+    )
+    parser._node_conversions["s11ElementIntegers"] = lambda value: sp.Contains(
+        value, sp.S.Integers, evaluate=False
+    )
     return parser.parse(source)
 
 
@@ -245,7 +255,7 @@ def _bind_wl_evaluated_heads(value: sp.Basic) -> sp.Basic:
     return value.replace(is_bound_head, bind)
 
 
-def _replace_wl_elements(text: str) -> str:
+def _replace_wl_elements(text: str, *, deferred: bool = False) -> str:
     source = text
     search_from = 0
     while True:
@@ -285,16 +295,24 @@ def _replace_wl_elements(text: str) -> str:
         expression = body[:comma].strip()
         domain = body[comma + 1 :].strip()
         if domain == "Reals":
-            replacement = f"(Im[{expression}] == 0)"
+            replacement = (
+                f"s11ElementReals[{expression}]"
+                if deferred
+                else f"(Im[{expression}] == 0)"
+            )
         elif domain == "Integers":
-            replacement = f"(Im[{expression}] == 0 && Sin[Pi*({expression})] == 0)"
+            replacement = (
+                f"s11ElementIntegers[{expression}]"
+                if deferred
+                else f"(Im[{expression}] == 0 && Sin[Pi*({expression})] == 0)"
+            )
         else:
             raise ValueError(f"unsupported Element domain: {domain}")
         source = source[:start] + replacement + source[end + 1 :]
         search_from = start + len(replacement)
 
 
-def parse_wl(text: str) -> sp.Basic:
+def parse_wl(text: str, *, defer_elements: bool = False) -> sp.Basic:
     # SymPy's Mathematica translator represents unknown Element[...] heads as
     # non-Boolean functions, which then cannot be children of And.  Translate
     # the two record domains exactly to Boolean relations before parsing.
@@ -303,8 +321,12 @@ def parse_wl(text: str) -> sp.Basic:
     # ``{{}}`` solution payloads).  Parse list structure recursively; each
     # non-list leaf still goes through the same Mathematica expression parser.
     if stripped.startswith("{") and stripped.endswith("}"):
-        return sp.Tuple(*(parse_wl(item) for item in split_delimited(stripped)))
-    source = _replace_wl_empty_lists(_replace_wl_elements(stripped))
+        return sp.Tuple(
+            *(parse_wl(item, defer_elements=defer_elements) for item in split_delimited(stripped))
+        )
+    source = _replace_wl_empty_lists(
+        _replace_wl_elements(stripped, deferred=defer_elements)
+    )
     for original, protected in _WL_PROTECTED_SYMBOLS.items():
         source = re.sub(rf"\b{re.escape(original)}\b", protected, source)
     parsed = _parse_mathematica_evaluated(source)
@@ -340,10 +362,14 @@ def parse_py(text: str, *, assumption_free: bool = False) -> sp.Basic:
 
 
 def parse_payload(
-    dialect: str, text: str, *, assumption_free: bool = False
+    dialect: str,
+    text: str,
+    *,
+    assumption_free: bool = False,
+    defer_wl_elements: bool = False,
 ) -> sp.Basic:
     if dialect == "WL":
-        return parse_wl(text)
+        return parse_wl(text, defer_elements=defer_wl_elements)
     if dialect == "PY":
         return parse_py(text, assumption_free=assumption_free)
     raise ValueError(f"unknown dialect {dialect!r}")
@@ -636,44 +662,55 @@ def _branch_constraints(branch: Mapping[sp.Expr, sp.Expr]) -> tuple[sp.Expr, ...
     return tuple(lhs - rhs for lhs, rhs in branch.items())
 
 
-def _sample_union_coverage(
+def _defined_union_constraints(
     candidate: Mapping[sp.Expr, sp.Expr],
     emitted: Sequence[Mapping[sp.Expr, sp.Expr]],
-) -> str:
-    symbols = set().union(
-        *(value.free_symbols for value in candidate.values()),
-        *(
-            constraint.free_symbols
-            for branch in emitted
+) -> tuple[tuple[sp.Expr, ...], ...]:
+    """Return emitted branch equations that are defined on the candidate.
+
+    Definedness is branch-local.  A sibling containing a pole after candidate
+    substitution is non-covering and is removed; it must never contaminate the
+    product ideal for the remaining union.  An empty branch is retained because
+    it denotes the full ambient chart.
+    """
+    result: list[tuple[sp.Expr, ...]] = []
+    for branch in emitted:
+        substituted = tuple(
+            constraint.subs(candidate, simultaneous=True)
             for constraint in _branch_constraints(branch)
-        ),
+        )
+        statuses = tuple(simplify_residual(item)[1] for item in substituted)
+        if "UNDEFINED" in statuses:
+            continue
+        result.append(substituted)
+    return tuple(result)
+
+
+def _sample_union_coverage(
+    constraints: Sequence[Sequence[sp.Expr]],
+) -> str:
+    """Seek an exact refuting point for containment in a branch union.
+
+    At each candidate point, undefined branches are simply absent from the
+    union.  A point at which every branch is undefined is therefore uncovered,
+    exactly as required for a defined equation candidate.
+    """
+    symbols = set().union(
+        *(constraint.free_symbols for branch in constraints for constraint in branch)
     )
-    symbols.difference_update(candidate.keys())
     checked = 0
     for assignment in itertools.islice(exact_sample_assignments(tuple(symbols)), 16):
-        point = dict(assignment)
-        try:
-            point.update(
-                {
-                    lhs: sp.simplify(rhs.subs(assignment, simultaneous=True))
-                    for lhs, rhs in candidate.items()
-                }
-            )
-        except BaseException:
-            continue
         branch_truths: list[bool] = []
-        defined = True
-        for branch in emitted:
+        for branch in constraints:
             statuses = tuple(
-                simplify_residual(constraint.subs(point, simultaneous=True))[1]
-                for constraint in _branch_constraints(branch)
+                simplify_residual(
+                    constraint.subs(assignment, simultaneous=True)
+                )[1]
+                for constraint in branch
             )
             if any(status == "UNDEFINED" for status in statuses):
-                defined = False
-                break
+                continue
             branch_truths.append(all(status == "ZERO" for status in statuses))
-        if not defined:
-            continue
         checked += 1
         if not any(branch_truths):
             return "NOT_COVERED_SAMPLED"
@@ -690,11 +727,9 @@ def _branch_is_covered(
     Substitution into the candidate chart therefore recognizes algebraically
     equivalent radical/Abs charts that no single syntactic branch matches.
     """
-    if any(not branch for branch in emitted):
-        return "COVERED_ALGEBRAIC"
-    if not emitted:
+    constraints = _defined_union_constraints(candidate, emitted)
+    if not constraints:
         return "NOT_COVERED"
-    constraints = tuple(_branch_constraints(branch) for branch in emitted)
     if any(not items for items in constraints):
         return "COVERED_ALGEBRAIC"
     combination_count = math.prod(len(items) for items in constraints)
@@ -702,16 +737,13 @@ def _branch_is_covered(
         statuses: list[str] = []
         for factors in itertools.product(*constraints):
             product = sp.Mul(*factors)
-            _value, status = simplify_residual(
-                product.subs(candidate, simultaneous=True)
-            )
+            _value, status = simplify_residual(product)
             statuses.append(status)
         if statuses and all(status == "ZERO" for status in statuses):
             return "COVERED_ALGEBRAIC"
         if any(status in {"NONZERO", "NONZERO_SAMPLED", "UNDEFINED"} for status in statuses):
-            sampled = _sample_union_coverage(candidate, emitted)
-            return sampled if sampled != "COVERAGE_UNDECIDED" else "NOT_COVERED"
-    return _sample_union_coverage(candidate, emitted)
+            return _sample_union_coverage(constraints)
+    return _sample_union_coverage(constraints)
 
 
 def _is_point_candidate(values: Sequence[object]) -> bool:
@@ -756,8 +788,31 @@ def completeness_candidates(
             # ConditionSet and other symbolic returns were parsed and retained,
             # but do not license a completeness conclusion.
             unresolved += 1
+    surviving: list[dict[sp.Expr, sp.Expr]] = []
+    excluded_artifacts: list[dict[str, object]] = []
+    for candidate in candidates:
+        try:
+            substitutions = tuple(
+                residual.subs(candidate, simultaneous=True) for residual in residuals
+            )
+            statuses = tuple(simplify_residual(item)[1] for item in substitutions)
+        except BaseException:
+            # Failure to compute is a limitation, not permission to call a
+            # candidate an equation-domain artifact.
+            surviving.append(candidate)
+            continue
+        if "UNDEFINED" in statuses:
+            excluded_artifacts.append(
+                {
+                    "candidate": candidate,
+                    "undefined_substitution": substitutions,
+                    "definedness": statuses,
+                }
+            )
+        else:
+            surviving.append(candidate)
     coverage = [
-        (candidate, _branch_is_covered(candidate, emitted)) for candidate in candidates
+        (candidate, _branch_is_covered(candidate, emitted)) for candidate in surviving
     ]
     missing = [
         candidate
@@ -781,18 +836,22 @@ def completeness_candidates(
     return {
         "factor_covers": len(covers),
         "cover_truncated": truncated,
-        "candidate_count": len(candidates),
+        "generated_candidate_count": len(candidates),
+        "candidate_count": len(surviving),
         "artifact_count": artifact_count,
+        "excluded_artifact_count": len(excluded_artifacts),
+        "excluded_artifacts": excluded_artifacts,
         "unresolved_count": unresolved,
         "coverage_sampled": coverage_sampled,
         "coverage_undecided": coverage_undecided,
+        "coverage": coverage,
         "missing": missing,
         "verdict": verdict,
     }
 
 
 def exact_sample_assignments(symbols: Sequence[sp.Symbol]) -> Iterator[dict[sp.Symbol, sp.Rational]]:
-    values = (
+    general_seed = (
         sp.Integer(-2),
         sp.Integer(-1),
         sp.Rational(-1, 2),
@@ -819,17 +878,59 @@ def exact_sample_assignments(symbols: Sequence[sp.Symbol]) -> Iterator[dict[sp.S
         "cs0",
         "c_s0",
     }
+    pools: dict[str, list[sp.Symbol]] = {
+        "positive": [],
+        "nonnegative": [],
+        "general": [],
+    }
+    for symbol in symbols:
+        if symbol.is_positive or str(symbol) in positive_record_names:
+            pools["positive"].append(symbol)
+        elif symbol.is_nonnegative:
+            pools["nonnegative"].append(symbol)
+        else:
+            pools["general"].append(symbol)
+
+    def value_pool(kind: str, count: int) -> tuple[sp.Rational, ...]:
+        if kind == "positive":
+            result = [sp.Rational(1, 2), sp.Integer(1), sp.Integer(2), sp.Integer(3)]
+            next_positive = 4
+            while len(result) < count:
+                result.append(sp.Integer(next_positive))
+                next_positive += 1
+            return tuple(result)
+        if kind == "nonnegative":
+            result = [
+                sp.Integer(0),
+                sp.Rational(1, 2),
+                sp.Integer(1),
+                sp.Integer(2),
+                sp.Integer(3),
+            ]
+            next_nonnegative = 4
+            while len(result) < count:
+                result.append(sp.Integer(next_nonnegative))
+                next_nonnegative += 1
+            return tuple(result)
+        result = list(general_seed)
+        magnitude = 3
+        while len(result) < count:
+            result.extend((sp.Integer(-magnitude), sp.Integer(magnitude + 1)))
+            magnitude += 1
+        return tuple(result)
+
     for serial in range(MAX_SAMPLE_ASSIGNMENTS):
         assignment: dict[sp.Symbol, sp.Rational] = {}
-        for index, symbol in enumerate(symbols):
-            if symbol.is_positive or str(symbol) in positive_record_names:
-                positive = values[3:]
-                assignment[symbol] = positive[(serial + index) % len(positive)]
-            elif symbol.is_nonnegative:
-                nonnegative = (sp.Integer(0),) + values[3:]
-                assignment[symbol] = nonnegative[(serial + index) % len(nonnegative)]
-            else:
-                assignment[symbol] = values[(serial + 2 * index) % len(values)]
+        for kind, pool_symbols in pools.items():
+            values = value_pool(kind, len(pool_symbols))
+            for pool_index, symbol in enumerate(pool_symbols):
+                assignment[symbol] = values[(serial + pool_index) % len(values)]
+            # This invariant is the sampler's genericity contract: no
+            # coincidence locus between two symbols in one assumption pool is
+            # visited by any emitted assignment.
+            assigned = [assignment[symbol] for symbol in pool_symbols]
+            if len(assigned) != len(set(assigned)):
+                raise AssertionError(f"non-generic {kind} sample {serial}: {assigned}")
         yield assignment
 
 
@@ -847,6 +948,51 @@ def exact_truth(value: object) -> str:
     if simplified is False or simplified is sp.false:
         return "FALSE"
     return "UNDECIDED"
+
+
+def premise_conjuncts(value: object) -> tuple[object, ...]:
+    """Flatten only the premise-level And/list structure into atomic conjuncts."""
+    if isinstance(value, sp.And):
+        items: Iterable[object] = value.args
+    elif isinstance(value, (tuple, list, sp.Tuple)):
+        items = value
+    else:
+        return (value,)
+    if isinstance(value, (tuple, list, sp.Tuple, sp.And)):
+        return tuple(
+            conjunct
+            for item in items
+            for conjunct in premise_conjuncts(item)
+        )
+    raise AssertionError("unreachable premise structure")
+
+
+def premise_conjunct_truth(value: object) -> str:
+    """Classify one already-substituted premise atom at its principal value."""
+    direct = exact_truth(value)
+    if direct != "UNDECIDED":
+        return direct
+
+    # Applied assumptions deliberately survive assumption-free srepr parsing.
+    # refine, unlike simplify, decides Q.real(1/2), Q.positive(1), and their
+    # false concrete counterparts without importing assumptions for free
+    # symbols that remain after witness substitution.
+    try:
+        refined = sp.refine(value)  # type: ignore[arg-type]
+    except BaseException:
+        refined = value
+    refined_truth = exact_truth(refined)
+    if refined_truth != "UNDECIDED":
+        return refined_truth
+
+    # Deferred WL Element atoms are Contains objects.  For a concrete
+    # principal value, doit/simplify decides realness or integrality.  With
+    # unbound field symbols they remain intact and therefore contingent.
+    try:
+        evaluated = value.doit() if isinstance(value, sp.Basic) else value
+    except BaseException:
+        evaluated = value
+    return exact_truth(evaluated)
 
 
 def conjunction(items: Iterable[object]) -> object:

@@ -32,17 +32,17 @@ from s11_census_math import (
     association,
     branch_memberships,
     completeness_candidates,
-    conjunction,
     enforce_memory_budget,
     equation_residuals,
     parse_payload,
     parse_solution,
+    premise_conjunct_truth,
+    premise_conjuncts,
     quoted,
     render_object,
     render_text,
     sequence,
     simplify_residual,
-    exact_truth,
 )
 
 
@@ -180,6 +180,25 @@ def _pair_worker(
         completeness = completeness_candidates(residuals, variables, parsed.branches)
         completeness_result = {
             **completeness,
+            "coverage": [
+                {
+                    "candidate": render_object(_branch_object(candidate)),
+                    "decision": decision,
+                }
+                for candidate, decision in completeness["coverage"]  # type: ignore[index]
+            ],
+            "excluded_artifacts": [
+                {
+                    "candidate": render_object(
+                        _branch_object(exclusion["candidate"])  # type: ignore[arg-type]
+                    ),
+                    "undefined_substitution": render_object(
+                        exclusion["undefined_substitution"]
+                    ),
+                    "definedness": exclusion["definedness"],
+                }
+                for exclusion in completeness["excluded_artifacts"]  # type: ignore[index]
+            ],
             "missing": [
                 render_object(_branch_object(branch))
                 for branch in completeness["missing"]  # type: ignore[index]
@@ -189,11 +208,15 @@ def _pair_worker(
         completeness_result = {
             "factor_covers": 0,
             "cover_truncated": False,
+            "generated_candidate_count": 0,
             "candidate_count": 0,
             "artifact_count": 0,
+            "excluded_artifact_count": 0,
+            "excluded_artifacts": [],
             "unresolved_count": 1,
             "coverage_sampled": 0,
             "coverage_undecided": 1,
+            "coverage": [],
             "missing": [],
             "detail": f"{type(exc).__name__}:{exc}",
             "verdict": "COMPLETENESS_UNDECIDED",
@@ -261,7 +284,13 @@ def _witness_worker(
         )
         residuals = equation_residuals(equation_object)
         parsed_operands = parse_payload(
-            dialect, operand_payload, assumption_free=True
+            dialect,
+            operand_payload,
+            assumption_free=True,
+            # WL Element atoms must remain principal-value membership atoms
+            # until after the witness is substituted.  Pre-expanding them to
+            # re/im expressions selects unsound radical/Abs branches.
+            defer_wl_elements=True,
         )
         if dialect == "WL":
             fields = association(parsed_operands)
@@ -292,9 +321,27 @@ def _witness_worker(
 
     residual_match = _residual_lists_equivalent(residuals, operand_residuals)
     rows, tested, total = branch_memberships(residuals, branch)
-    premise_condition = conjunction(sequence(premises))
-    substituted_premises = premise_condition.subs(branch, simultaneous=True)  # type: ignore[union-attr]
-    premise_truth = exact_truth(substituted_premises)
+    conjuncts = premise_conjuncts(premises)
+    substituted_conjuncts = tuple(
+        conjunct.subs(branch, simultaneous=True)  # type: ignore[union-attr]
+        for conjunct in conjuncts
+    )
+    conjunct_truths = tuple(
+        premise_conjunct_truth(conjunct) for conjunct in substituted_conjuncts
+    )
+    contingent_conjuncts = tuple(
+        conjunct
+        for conjunct, truth in zip(substituted_conjuncts, conjunct_truths)
+        if truth == "UNDECIDED"
+    )
+    if "FALSE" in conjunct_truths:
+        premise_truth = "FALSE"
+    elif conjunct_truths and all(truth == "TRUE" for truth in conjunct_truths):
+        premise_truth = "TRUE"
+    elif not conjunct_truths:
+        premise_truth = "TRUE"
+    else:
+        premise_truth = "UNDECIDED"
     membership_verdicts = [str(row["verdict"]) for row in rows]
     membership = _aggregate_branch_verdict(membership_verdicts, tested, total)
     if not residual_match:
@@ -323,7 +370,9 @@ def _witness_worker(
             ],
             "tested": tested,
             "total": total,
-            "substituted_premises": render_object(substituted_premises),
+            "substituted_premises": render_object(substituted_conjuncts),
+            "premise_conjunct_truths": conjunct_truths,
+            "contingent_premises": render_object(contingent_conjuncts),
             "premise_truth": premise_truth,
             "verdict": verdict,
         }
@@ -479,11 +528,15 @@ def run_census(record: Path) -> None:
             f"equation_operand_tag={equations_tag} "
             f"factor_covers={completeness['factor_covers']} "
             f"cover_truncated={completeness['cover_truncated']} "
+            f"generated_candidate_count={completeness['generated_candidate_count']} "
             f"candidate_count={completeness['candidate_count']} "
             f"artifact_count={completeness['artifact_count']} "
+            f"excluded_artifact_count={completeness['excluded_artifact_count']} "
+            f"excluded_artifacts={completeness['excluded_artifacts']} "
             f"unresolved_count={completeness['unresolved_count']} "
             f"coverage_sampled={completeness['coverage_sampled']} "
             f"coverage_undecided={completeness['coverage_undecided']} "
+            f"coverage_memberships={completeness['coverage']} "
             f"missing_memberships={completeness['missing']} "
             f"verdict={completeness['verdict']}",
             flush=True,
@@ -559,6 +612,8 @@ def run_census(record: Path) -> None:
             f"record={quote(record)} tag={tag} witness_operand={result['witness']} "
             f"operand_residual_match={result['residual_match']} "
             f"substituted_premises={result['substituted_premises']} "
+            f"premise_conjunct_truths={list(result['premise_conjunct_truths'])} "
+            f"contingent_premises={result['contingent_premises']} "
             f"premise_truth={quoted(result['premise_truth'])} "
             f"tested_sheets={result['tested']} total_sheets={result['total']} "
             f"verdict={result['verdict']}",

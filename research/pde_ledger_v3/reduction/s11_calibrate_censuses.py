@@ -18,7 +18,7 @@ REPO = Path("/var/projects/toy_physics")
 REDUCTION = REPO / "research/pde_ledger_v3/reduction"
 WL_RECORD = REPO / "research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.out"
 PY_RECORD = REPO / "research/pde_ledger_v3/scripts/out/S11_stray_longitudinal_sympy_audit.out"
-DEFAULT_SCRATCH = Path("/home/trevnorris/.s11_build/census_build2")
+DEFAULT_SCRATCH = Path("/home/trevnorris/.s11_build/census_build3")
 EMPTY_WITNESS_STEM = "WL_S11_MAIN_D2_STRATUM1_POINT_EVIDENCE_ROOT_COINCIDENCE_COEFF"
 
 
@@ -113,6 +113,11 @@ def build_plants(scratch: Path) -> dict[str, Path]:
             "{True}",
             '{"SOLVE_VARIABLES" -> {x}, "SOLUTION_SET" -> {{}}}',
         ),
+        (
+            "WL_S11_CAL_POLE_SURVIVOR",
+            "{x/y == 0, y*(y - 1) == 0}",
+            '{"SOLVE_VARIABLES" -> {x, y}, "SOLUTION_SET" -> {{x -> 0, y -> 1}}}',
+        ),
     )
     semantic_lines: list[str] = []
     for stem, equations, solution in pairs:
@@ -126,6 +131,8 @@ def build_plants(scratch: Path) -> dict[str, Path]:
 
     probe_wl = scratch / "calibration_probe_parsers_wl.out"
     zero_sample = "f[x]*(x + 2)*(x + 1)*(2*x + 1)*(2*x - 1)"
+    coincidence = "(bComp - rhoBr)*Exp[k1]*Exp[k2]*Exp[k3]"
+    abs_identity = "Abs[Sin[x]^2 + Cos[x]^2 - 1]"
     _write_record(
         probe_wl,
         [
@@ -133,10 +140,12 @@ def build_plants(scratch: Path) -> dict[str, Path]:
                 "WL_S11_CAL_UNEQUAL_REAL_ADMISSIBLE",
                 '{{"STATUS_TOKEN" -> "UNDECIDED", "OPERANDS" -> {"BRANCH" -> {k1 -> 1, s -> 1/2}, "PREMISES" -> {Unequal[k1, 0], s != 1}}}}',
             ),
-            _literal("WL_S11_CAL_ABS_EQUATIONS", "{Abs[0] == 0}"),
+            _literal("WL_S11_CAL_ABS_EQUATIONS", f"{{{abs_identity} == 0}}"),
             _literal(
                 "WL_S11_CAL_ABS_IDENTICALLY_SATISFIED",
-                '{"STATUS_TOKEN" -> "UNDECIDED", "OPERANDS" -> {"RESIDUALS" -> {Abs[0]}}}',
+                '{"STATUS_TOKEN" -> "UNDECIDED", "OPERANDS" -> {"RESIDUALS" -> {'
+                + abs_identity
+                + "}}}",
             ),
             _literal(
                 "WL_S11_CAL_ZERO_SAMPLE_EQUATIONS", f"{{{zero_sample} == 0}}"
@@ -147,6 +156,42 @@ def build_plants(scratch: Path) -> dict[str, Path]:
                 + zero_sample
                 + "}}}",
             ),
+            _literal(
+                "WL_S11_CAL_COINCIDENCE_EQUATIONS", f"{{{coincidence} == 0}}"
+            ),
+            _literal(
+                "WL_S11_CAL_COINCIDENCE_IDENTICALLY_SATISFIED",
+                '{"STATUS_TOKEN" -> "UNDECIDED", "OPERANDS" -> {"RESIDUALS" -> {'
+                + coincidence
+                + "}}}",
+            ),
+        ],
+    )
+
+    # A single candidate chart is covered piecewise by two sign branches.  The
+    # third sibling has a pole at y=0 and must be excluded from the union rather
+    # than poisoning it.  This defeats both per-branch containment OR and the
+    # old product over every sibling.
+    union_py = scratch / "calibration_piecewise_union_py.out"
+    union_stem = "PY_S11_CAL_PIECEWISE"
+    x_real = "Symbol('x', real=True)"
+    y_real = "Symbol('y', real=True)"
+    t_real = "Symbol('t', real=True)"
+    union_equations = (
+        f"Tuple(Equality(Add({x_real}, Mul(Integer(-1), Abs({t_real}))), Integer(0)), "
+        f"Equality({y_real}, Integer(0)))"
+    )
+    union_solution = (
+        "Tuple("
+        f"Tuple(Tuple({x_real}, {t_real}), Tuple({y_real}, Integer(0))), "
+        f"Tuple(Tuple({x_real}, Mul(Integer(-1), {t_real})), Tuple({y_real}, Integer(0))), "
+        f"Tuple(Tuple({x_real}, Pow({y_real}, Integer(-1))), Tuple({y_real}, Integer(0))))"
+    )
+    _write_record(
+        union_py,
+        [
+            _literal(union_stem + "_EQUATIONS", union_equations),
+            _literal(union_stem + "_SOLUTION", union_solution),
         ],
     )
 
@@ -190,6 +235,70 @@ def build_plants(scratch: Path) -> dict[str, Path]:
         ],
     )
 
+    # Substitute first, then classify every conjunct independently.  The first
+    # witness becomes identically false only after a partial binding; the next
+    # retains two contingent field-realness atoms; the last has only concrete
+    # true atoms and must validate.
+    witness_semantics_py = scratch / "calibration_witness_semantics_py.out"
+    witness_lines: list[str] = []
+    witness_x = "Symbol('x', real=True)"
+    field_a = "Symbol('a1', real=True)"
+    field_b = "Symbol('a2', real=True)"
+    witness_equations = f"Tuple(Equality({witness_x}, Integer(1)))"
+    witness_solution = f"Tuple(Tuple(Tuple({witness_x}, Integer(1))))"
+    witness_value = f"Tuple(Tuple({witness_x}, Integer(1)))"
+    witness_cases = (
+        (
+            "PY_S11_CAL_PARTIAL_FALSE",
+            f"Tuple(Equality(Add({witness_x}, {field_a}), {field_a}))",
+        ),
+        (
+            "PY_S11_CAL_CONTINGENT",
+            f"Tuple(AppliedPredicate(Q.real, {witness_x}), "
+            f"StrictGreaterThan({witness_x}, Integer(0)), "
+            f"AppliedPredicate(Q.real, {field_a}), AppliedPredicate(Q.real, {field_b}))",
+        ),
+        (
+            "PY_S11_CAL_ALL_TRUE",
+            f"Tuple(AppliedPredicate(Q.real, {witness_x}), "
+            f"AppliedPredicate(Q.positive, {witness_x}), "
+            f"StrictGreaterThan({witness_x}, Integer(0)), "
+            f"Equality({witness_x}, Integer(1)))",
+        ),
+    )
+    for stem, premises in witness_cases:
+        witness_lines.extend(
+            (
+                _literal(stem + "_EQUATIONS", witness_equations),
+                _literal(stem + "_SOLUTION", witness_solution),
+                _literal(stem + "_REAL_STATUS", "Str('PROVED_NONEMPTY')"),
+                _literal(stem + "_REAL_WITNESS", witness_value),
+                _literal(
+                    stem + "_REAL_STATUS_OPERANDS",
+                    f"Tuple({witness_equations}, Tuple({witness_x}), {premises})",
+                ),
+            )
+        )
+    _write_record(witness_semantics_py, witness_lines)
+
+    # This is a literal committed radical/Abs witness whose realness atom is
+    # true at the witness (its square-root argument becomes exactly zero).
+    radical_stem = "WL_S11_XKIN_ANISO_D2_STRATUM5_ROOT_COINCIDENCE_COEFF"
+    radical_witness_wl = scratch / "calibration_radical_witness_wl.out"
+    _write_record(
+        radical_witness_wl,
+        [
+            _line(wl, radical_stem + suffix)
+            for suffix in (
+                "_EQUATIONS",
+                "_SOLUTION",
+                "_REAL_STATUS",
+                "_REAL_WITNESS",
+                "_REAL_STATUS_OPERANDS",
+            )
+        ],
+    )
+
     # Keep a real ConditionSet-bearing line whose live operands independently
     # produce a concrete consistency witness.
     condition_tag = "PY_S11_MAIN_D2_ROOT1_RANK_DROP_K_INCONSISTENT"
@@ -198,14 +307,58 @@ def build_plants(scratch: Path) -> dict[str, Path]:
         condition_py,
         [_line(py, condition_tag)],
     )
+
+    # Transcript-shaped reducer calibration: each sheet evidence row carries
+    # the same limitation as its parent object, but only the two parent objects
+    # are countable.
+    reducer_calibration = scratch / "calibration_reducer_input.stdout"
+    reducer_containment_wl = scratch / "calibration_reducer_containment_wl.stdout"
+    reducer_containment_py = scratch / "calibration_reducer_containment_py.stdout"
+    reducer_probe_wl = scratch / "calibration_reducer_probe_wl.stdout"
+    reducer_probe_py = scratch / "calibration_reducer_probe_py.stdout"
+    _write_record(
+        reducer_calibration,
+        ["CALIBRATION_SUMMARY cases=1 assertions=1 misses=0 verdict=CALIBRATION_PASS\n"],
+    )
+    _write_record(
+        reducer_containment_wl,
+        [
+            "CONTAINMENT_POPULATION record=plant verdict=POPULATION_RECONCILED\n",
+            "CONTAINMENT_BRANCH_SHEET tag=PLANT_BRANCH verdict=BRANCH_MEMBERSHIP_UNDECIDED\n",
+            "CONTAINMENT_BRANCH tag=PLANT_BRANCH verdict=BRANCH_MEMBERSHIP_UNDECIDED\n",
+            "CONTAINMENT_WITNESS_SHEET tag=PLANT_WITNESS verdict=BRANCH_MEMBERSHIP_UNDECIDED\n",
+            "CONTAINMENT_WITNESS tag=PLANT_WITNESS verdict=WITNESS_UNDECIDED\n",
+            "CONTAINMENT_SUMMARY record=plant verdict=CENSUS_EXECUTED\n",
+        ],
+    )
+    for path, prefix in (
+        (reducer_containment_py, "CONTAINMENT"),
+        (reducer_probe_wl, "PROBE"),
+        (reducer_probe_py, "PROBE"),
+    ):
+        _write_record(
+            path,
+            [
+                f"{prefix}_POPULATION record=plant verdict=POPULATION_RECONCILED\n",
+                f"{prefix}_SUMMARY record=plant verdict=CENSUS_EXECUTED\n",
+            ],
+        )
     return {
         "legacy_wl": legacy_wl,
         "semantic_wl": semantic_wl,
         "probe_wl": probe_wl,
+        "union_py": union_py,
         "emptyset_py": emptyset_py,
         "single_py": single_py,
         "premise_py": premise_py,
+        "witness_semantics_py": witness_semantics_py,
+        "radical_witness_wl": radical_witness_wl,
         "condition_py": condition_py,
+        "reducer_calibration": reducer_calibration,
+        "reducer_containment_wl": reducer_containment_wl,
+        "reducer_containment_py": reducer_containment_py,
+        "reducer_probe_wl": reducer_probe_wl,
+        "reducer_probe_py": reducer_probe_py,
     }
 
 
@@ -257,6 +410,49 @@ def _cases(plants: dict[str, Path]) -> tuple[Case, ...]:
                 Assertion("chart_not_omitted", ("CONTAINMENT_COMPLETENESS", "WL_S11_CAL_CHART_COVERED_SOLUTION", "verdict=OMITTED_BRANCH"), False),
                 Assertion("genuine_component_omitted", ("CONTAINMENT_COMPLETENESS", "WL_S11_CAL_CHART_OMITTED_SOLUTION", "verdict=OMITTED_BRANCH")),
                 Assertion("nested_empty_branch", ("CONTAINMENT_BRANCH ", "WL_S11_CAL_EMPTY_BRANCH_SOLUTION", "verdict=BRANCH_CONTAINED")),
+                Assertion(
+                    "pole_artifact_excluded",
+                    (
+                        "CONTAINMENT_COMPLETENESS",
+                        "WL_S11_CAL_POLE_SURVIVOR_SOLUTION",
+                        "excluded_artifact_count=1",
+                        "undefined_substitution",
+                        "verdict=COMPLETE_FACTOR_COVER",
+                    ),
+                ),
+                Assertion(
+                    "pole_survivor_not_omitted",
+                    (
+                        "CONTAINMENT_COMPLETENESS",
+                        "WL_S11_CAL_POLE_SURVIVOR_SOLUTION",
+                        "verdict=OMITTED_BRANCH",
+                    ),
+                    False,
+                ),
+            ),
+        ),
+        Case(
+            "piecewise_union_with_undefined_sibling_py",
+            census(containment, "union_py"),
+            (
+                Assertion(
+                    "piecewise_union_product_cover",
+                    (
+                        "CONTAINMENT_COMPLETENESS",
+                        "PY_S11_CAL_PIECEWISE_SOLUTION",
+                        "decision': 'COVERED_ALGEBRAIC'",
+                        "verdict=COMPLETE_FACTOR_COVER",
+                    ),
+                ),
+                Assertion(
+                    "undefined_sibling_does_not_omit",
+                    (
+                        "CONTAINMENT_COMPLETENESS",
+                        "PY_S11_CAL_PIECEWISE_SOLUTION",
+                        "verdict=OMITTED_BRANCH",
+                    ),
+                    False,
+                ),
             ),
         ),
         Case(
@@ -266,6 +462,15 @@ def _cases(plants: dict[str, Path]) -> tuple[Case, ...]:
                 Assertion("unequal_boolean", ("PROBE_RECORD", "WL_S11_CAL_UNEQUAL_REAL_ADMISSIBLE", "Unequality(Symbol('s'), Integer(1))", "verdict=STILL_UNDECIDED")),
                 Assertion("abs_zero", ("PROBE_RECORD", "WL_S11_CAL_ABS_IDENTICALLY_SATISFIED", "verdict=DECIDED_UNDECIDED_RECORD")),
                 Assertion("zero_samples_not_proof", ("PROBE_RECORD", "WL_S11_CAL_ZERO_SAMPLE_IDENTICALLY_SATISFIED", "UNDECIDED_ZERO_SAMPLES", "verdict=STILL_UNDECIDED")),
+                Assertion(
+                    "same_pool_coincidence_refuted",
+                    (
+                        "PROBE_RECORD",
+                        "WL_S11_CAL_COINCIDENCE_IDENTICALLY_SATISFIED",
+                        "NONZERO_SAMPLED",
+                        "verdict=DECIDED_UNDECIDED_RECORD",
+                    ),
+                ),
             ),
         ),
         Case(
@@ -287,6 +492,66 @@ def _cases(plants: dict[str, Path]) -> tuple[Case, ...]:
             (Assertion("premise_failure", ("CONTAINMENT_WITNESS ", "PY_S11_CAL_PREMISE_REAL_WITNESS", 'premise_truth="FALSE"', "verdict=WITNESS_FAILURE")),),
         ),
         Case(
+            "substitute_then_classify_witnesses_py",
+            census(containment, "witness_semantics_py"),
+            (
+                Assertion(
+                    "partially_bound_false_fails",
+                    (
+                        "CONTAINMENT_WITNESS ",
+                        "PY_S11_CAL_PARTIAL_FALSE_REAL_WITNESS",
+                        'premise_truth="FALSE"',
+                        "verdict=WITNESS_FAILURE",
+                    ),
+                ),
+                Assertion(
+                    "contingent_atoms_printed",
+                    (
+                        "CONTAINMENT_WITNESS ",
+                        "PY_S11_CAL_CONTINGENT_REAL_WITNESS",
+                        "AppliedPredicate(Q.real, Symbol('a1'))",
+                        "AppliedPredicate(Q.real, Symbol('a2'))",
+                        'premise_truth="UNDECIDED"',
+                        "verdict=WITNESS_UNDECIDED",
+                    ),
+                ),
+                Assertion(
+                    "all_true_conjuncts_validate",
+                    (
+                        "CONTAINMENT_WITNESS ",
+                        "PY_S11_CAL_ALL_TRUE_REAL_WITNESS",
+                        "premise_conjunct_truths=['TRUE', 'TRUE', 'TRUE', 'TRUE']",
+                        'premise_truth="TRUE"',
+                        "verdict=WITNESS_VALIDATED",
+                    ),
+                ),
+            ),
+        ),
+        Case(
+            "principal_radical_realness_wl",
+            census(containment, "radical_witness_wl"),
+            (
+                Assertion(
+                    "radical_realness_not_false",
+                    (
+                        "CONTAINMENT_WITNESS ",
+                        "WL_S11_XKIN_ANISO_D2_STRATUM5_ROOT_COINCIDENCE_COEFF_REAL_WITNESS",
+                        'premise_truth="FALSE"',
+                    ),
+                    False,
+                ),
+                Assertion(
+                    "radical_realness_contingent_only",
+                    (
+                        "CONTAINMENT_WITNESS ",
+                        "WL_S11_XKIN_ANISO_D2_STRATUM5_ROOT_COINCIDENCE_COEFF_REAL_WITNESS",
+                        'premise_truth="UNDECIDED"',
+                        "verdict=WITNESS_UNDECIDED",
+                    ),
+                ),
+            ),
+        ),
+        Case(
             "condition_set_and_decidable_py",
             census(probe, "condition_py"),
             (
@@ -300,6 +565,38 @@ def _cases(plants: dict[str, Path]) -> tuple[Case, ...]:
             (
                 Assertion("formerly_open_tokens_classified", ("TAXONOMY_CALIBRATION", "open_token_misses=0")),
                 Assertion("unknown_is_failure", ("TAXONOMY_CALIBRATION", "unknown_bucket=FAILURE")),
+            ),
+        ),
+        Case(
+            "sheet_evidence_object_counting",
+            (
+                sys.executable,
+                reducer,
+                "--calibration",
+                str(plants["reducer_calibration"]),
+                "--containment-wl",
+                str(plants["reducer_containment_wl"]),
+                "--containment-py",
+                str(plants["reducer_containment_py"]),
+                "--probe-wl",
+                str(plants["reducer_probe_wl"]),
+                "--probe-py",
+                str(plants["reducer_probe_py"]),
+            ),
+            (
+                Assertion(
+                    "sheet_rows_not_objects",
+                    (
+                        "ACCEPTANCE_COUNTS",
+                        "limitations=2",
+                        "branch_membership_undecided=1",
+                        "witness_undecided=1",
+                    ),
+                ),
+                Assertion(
+                    "object_fixture_passes",
+                    ("ACCEPTANCE_SUMMARY", "failures=0", "verdict=ROUND_PASS"),
+                ),
             ),
         ),
     )

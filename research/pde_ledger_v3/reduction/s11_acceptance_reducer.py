@@ -36,6 +36,12 @@ TOKEN_BUCKETS = {
     "CENSUS_EXECUTED": "CONTROL",
     "CALIBRATION_DETECTED": "CONTROL",
     "CALIBRATION_PASS": "CONTROL",
+    # Reducer terminals can appear inside its own transcript-shaped planted
+    # calibration and therefore belong to the same closed taxonomy.
+    "INPUT_READ": "CONTROL",
+    "COUNTS_COMPUTED": "CONTROL",
+    "ROUND_PASS": "CONTROL",
+    "ROUND_FAIL": "CONTROL",
     # Acceptance failures.
     "UNRECONCILED_LINE": "FAILURE",
     "UNRECONCILED_UNDECIDED": "FAILURE",
@@ -268,7 +274,13 @@ def main() -> int:
                 kind = FAILURE_KINDS.get(token, token)
                 failure_counts[kind] += 1
                 emit_item("ACCEPTANCE_FAILURE", item, number, line, kind)
-            if bucket == "LIMITATION":
+            # Sheet rows are evidence for their parent branch/witness object.
+            # Counting their token again would turn one limited object into N
+            # objects solely because N coherent sheets were printed.
+            sheet_evidence = line.startswith(
+                ("CONTAINMENT_BRANCH_SHEET ", "CONTAINMENT_WITNESS_SHEET ")
+            )
+            if bucket == "LIMITATION" and not sheet_evidence:
                 limitation_counts[token] += 1
                 emit_item("ACCEPTANCE_LIMITATION", item, number, line, token)
 

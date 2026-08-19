@@ -226,32 +226,52 @@ residual that records it, ablation-verified against four distinct corruptions; `
 
 ---
 
-## ⭐⭐ Strata-audit closure (2026-08-19) — the conclusion is INDEPENDENT of the exhaustive Q8a/Q8b census
+## ⭐⭐ Strata-audit closure (2026-08-19) — the conclusion is independent of the census; the census's one physical family belongs to S11b
 
 The exhaustive rank-drop / strata audit (spec §5 Q8a/Q8b — every `ρ×ρ` minor of each `M_r`, three
 solve-variable sets, the degenerate strata) was subsequently run through **certified** census instruments
 (`reduction/s11_*`; campaign closed `cbc49029`, four repair rounds, both engines, two legs + orchestrator
-each). Measured result (`~/.s11_build/census_build4/`): the two engines **under-decide 917
-degenerate-locus sub-cases** and carry finding-level enumeration gaps — 171 spurious branches, 104
-membership witness failures, 72 omitted solve branches — plus the 7 registered engine defects
-(`DEFECT_REGISTER` entries 4–7 + the obligation-4 instrument).
+each). Measured result (`~/.s11_build/census_build4/`): the two engines **under-decide 917 sub-cases** and
+carry finding-level gaps — 171 spurious branches, 72 omitted solve **records** (multiple missing
+memberships each), 104 membership witness failures — plus the 7 registered defects (`DEFECT_REGISTER`
+entries 4–7 + the obligation-4 instrument). ⚠ **Not all of these are "hard CAS questions":** the register
+entries are genuine engine **logic** bugs (pointwise-vs-identical testing, joint-vs-pairwise coincidence,
+false solution branches, projected witnesses); "known CAS limitations" understates them.
 
-⭐ **All of it lives in the measure-zero degeneracy strata; none of it touches this step's conclusion.**
-Measured: every finding tag and every one of the 917 under-decided records carries a `RANK_DROP` /
-`STACKED_DROP` / `ROOT_COINCIDENCE` / `STRATUM` marker — the loci where already-known roots coincide or
-`M_r` drops rank on a measure-zero set (grep over the four census stdouts returns only those markers; the
-sole non-strata hits are the planted calibration records). The **computed result** above — the generic
-`M_ij` eigenvalues at generic `k`: transverse `μ_R/ρ_br` (nullity `D−1`), longitudinal `B_comp/ρ_br`
-(nullity 1), cross-sector residuals zero, degeneracy exactly `B_comp=μ_R`, and the FORM-control
-uniqueness of the trace invariant — is a **generic-`k`** fact, cross-engine agreed and gated `PASS`. It
-does not depend on the strata enumeration being complete: a degeneracy is a coincidence of **known**
-modes, not a hidden new one, so incompleteness there is a gap in completeness bookkeeping, ⛔ **not** in
-the observable mode content.
+The census findings/under-decisions fall in **two kinds** (the first closure draft wrongly called all of
+it "degeneracy strata" — an independent Codex check refuted that; corrected here):
 
-⇒ ⭐ **S11's physics conclusion stands closed.** The 917 under-decided strata and the 7 defects are
-recorded here and in `DEFECT_REGISTER` as **KNOWN CAS LIMITATIONS of the exhaustive degeneracy audit** —
-to be reopened only if a downstream step turns out to need a specific degenerate locus decided (none does
-today). ⛔ **The engine round to drive them to zero was NOT run**: it would buy completeness of a
-measure-zero edge-case census, not a change to any physics conclusion (user's call, rule 11). The census
-instruments themselves are certified and preserved, so the audit can be resumed exactly where it stands
-if a real need appears.
+- **(a) measure-zero eigenvalue-degeneracy strata** — `RANK_DROP` / `STACKED_DROP` / `ROOT_COINCIDENCE` /
+  `STRATUM`: loci where already-known roots coincide or `M_r` drops rank. Genuine completeness
+  bookkeeping. A degeneracy merges the kernels of known roots; it cannot create a new one — the
+  characteristic polynomial is degree 3 in `ω²` with leading coefficient `−ρ_br³ ≠ 0`, so **exactly three
+  finite roots always** (verified by independent factorization, both engines). ⚠ One nuance the first
+  draft overstated: **at the coincidence `B_comp=μ_R` all three roots merge**, the full eigenspace is
+  degenerate, and the longitudinal/transverse *character* dissolves on that measure-zero locus — no new
+  mode, but the sector labels are not globally rigid.
+- **(b) the `KW_ZERO_LOCUS` phase-matching family** (592 finding/under-decided lines, **88 on the MAIN
+  package**) — its solution is `{B_comp → c_s0²ρ_br}` (and `{μ_R → c_s0²ρ_br}`), i.e. **`c_L = c_s0`**:
+  exactly the `k_w = 0` **grazing threshold** of Move 6, the boundary between the longitudinal radiating
+  into the bulk and staying bound. ⭐ **This is physics, not bookkeeping** — but it is the
+  **bound-vs-radiating** question this step *explicitly defers* (see Departure, and "What S11 does NOT
+  deliver"). ⇒ It belongs to the brane–bulk interface law, **S11b**, not to any S11 engine round. The
+  threshold value itself is decided; only the exhaustive status-token completeness on the locus is not.
+
+⭐ **S11's own conclusion is independent of both.** The **computed result** above — the generic `M_ij`
+eigenvalues (transverse `μ_R/ρ_br` nullity `D−1`, longitudinal `B_comp/ρ_br` nullity 1, no cross-modulus,
+degeneracy exactly `B_comp=μ_R`, FORM-control uniqueness of the trace invariant) — is a generic-`k` fact,
+its **root VALUES cross-engine agreed** (`ROOT{1,2}_N7_RESIDUAL=0`, both engines). ⚠ Scope caveats, none
+touching the decoupling: (i) this is the **in-plane, frozen-wall-width** spectrum (`WALL_WIDTH_FIELDS={}`,
+`hBranon` excluded, `INTERFACE_EQUATIONS_SUPPLIED={}`) — it does not decide inhomogeneous mode conversion,
+leakage, or binding; (ii) root **positivity** follows trivially from `B_comp,μ_R,ρ_br>0`, `k²>0`, but the
+SymPy sign **probe** leaves it `UNDECIDED`, so "both engines decide every generic verdict" is an
+overstatement — the values are decided, one sign token is not; (iii) sector separation is a **`D=3`
+fact** (at `D=2` the reflection-odd invariant mixes the sectors — Move 2), not structural; (iv) the
+`PASS` gates live in this step record's acceptance harness, **not** in the two engine `.out` payloads.
+
+⇒ ⭐ **S11's stated conclusion stands closed.** Kind (a) is documented completeness bookkeeping; kind (b)
+is handed to **S11b** where it already belongs. ⛔ **The S11 engine round was NOT run** — it would buy
+completeness of the degeneracy census, not a change to any S11 conclusion (user's call, rule 11), and it
+would not touch the KW/interface physics either. The certified instruments and all four census runs are
+preserved, so the audit resumes exactly where it stands if a downstream step (or S11b's grazing case)
+turns out to need a specific locus decided.

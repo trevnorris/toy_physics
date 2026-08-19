@@ -344,6 +344,76 @@ The full normal operator must show one of the following:
 
 A vanishing bulk shear modulus by itself may create a floppy or strongly coupled region rather than a clean bound state. The spectral problem must decide.
 
+The localization test must not be reduced to normalizing \(f_0\) to unit norm, because that normalization can hide a profile that spreads arbitrarily far into the bulk. At each fixed in-brane wave number \(k\), and within the same complete constrained parity and polarization block as the candidate mode, let \(\omega_{\rm ess}(k)\) denote the lower edge of the relevant essential spectrum and define
+
+\[
+\boxed{
+\Delta_{\rm spec}(k)
+=
+\omega_{\rm ess}(k)-\omega_0(k).
+}
+\]
+
+If the generalized eigenproblem is naturally posed in \(\omega^2\), also track
+
+\[
+\Delta_{\rm spec}^{(2)}(k)
+=
+\omega_{\rm ess}^2(k)-\omega_0^2(k),
+\]
+
+so the conclusion does not depend on a square-root branch convention. A true isolated bound mode has positive spectral separation and zero resonance width at fixed \(k\). For an outgoing resonance, write its pole conventionally as
+
+\[
+\omega_{\rm pole}(k)
+=
+\Omega_0(k)-\frac{i}{2}\Gamma_0(k),
+\qquad
+\Gamma_0(k)\ge0,
+\]
+
+and calculate the lifetime and leakage from \(\Gamma_0(k)\).
+
+The calculation must also track a normal localization length \(\ell_w(k)\), obtained from the asymptotic decay or a stated positive energy- or norm-weighted width, and a brane-participation fraction. Let \(b_{\rm br}(w)\) be a smooth window derived from the solved ordered profile, with \(0\le b_{\rm br}\le1\), rather than an arbitrarily selected hard slab boundary. For a healthy bound branch, define
+
+\[
+\boxed{
+\mathcal P_{\rm br}(k)
+=
+\frac{
+\displaystyle\int_{\mathbb R}dw\,
+b_{\rm br}(w)
+f_0^*(w;k)\mathcal W_w(k)f_0(w;k)
+}{
+\displaystyle\int_{\mathbb R}dw\,
+f_0^*(w;k)\mathcal W_w(k)f_0(w;k)
+}.
+}
+\]
+
+For a leaky resonance, whose outgoing profile is not ordinarily square-integrable, any analogous participation measure must use a stated finite-window, flux, pole-residue, complex-scaling, or absorbing-boundary prescription and must be stable as that regulator is varied.
+
+To expose delocalization that a unit-norm convention would conceal, fix a nonzero on-brane amplitude—for an even lowest mode with nonzero mid-surface value, for example,
+
+\[
+f_0(0;k)=1,
+\]
+
+and track the resulting effective three-dimensional inertia
+
+\[
+\boxed{
+\mathcal I_{\rm 3D}(k)
+=
+\int_{\mathbb R}dw\,
+f_0^*(w;k)\mathcal W_w(k)f_0(w;k).
+}
+\]
+
+If the mode has a mid-surface node, the normalization must instead fix another nonzero on-brane field or energy diagnostic. Once an explicit brane source or observable has been defined, the associated pole residue should also be tracked.
+
+No universal requirement is imposed that \(\Delta_{\rm spec}\) remain bounded away from zero or that \(\ell_w\) approach a finite constant as \(k\to0\). A gapless guided or surface branch may have a closing separation or a penetration depth that scales with wavelength. The required result is an acceptable derived asymptotic regime: the leakage ratio or lifetime remains acceptable, \(\mathcal P_{\rm br}\) does not vanish unacceptably, \(\mathcal I_{\rm 3D}\) remains finite and nonzero under the fixed on-brane normalization, \(\ell_w\) remains compatible with an effective three-dimensional description, and the brane-observable pole residue does not disappear.
+
 ### 4.4 Finite thickness supplies a length scale and dispersion
 
 The slab thickness \(H_{\rm br}\) introduces a natural material length scale. After normal-mode projection, the effective dispersion may contain
@@ -981,7 +1051,11 @@ Determine:
 - the dispersions \(\omega_{a,n}(k)\);
 - energy signs and norm signs;
 - group velocities;
-- bulk leakage or resonance widths;
+- the relevant essential-spectrum edges and \(\Delta_{\rm spec}(k)\), or \(\Delta_{\rm spec}^{(2)}(k)\) where natural;
+- bulk leakage and resonance widths \(\Gamma_0(k)\);
+- normal localization lengths \(\ell_w(k)\);
+- brane-participation fractions \(\mathcal P_{\rm br}(k)\);
+- fixed-on-brane-normalization effective inertia \(\mathcal I_{\rm 3D}(k)\), and pole residues once a brane observable is specified;
 - transverse-longitudinal mixing;
 - interface and order participation;
 - whether the lowest transverse branch is truly gapless;
@@ -1153,8 +1227,10 @@ A successful candidate should satisfy all of the following within a declared reg
 1. The stable slab exists and has bounded energy.
 2. The lowest transverse guided branch is gapless.
 3. Exactly two healthy transverse polarizations occur on the homogeneous branch.
-4. The normal profile is bound or has an acceptably small calculated leakage rate.
+4. The normal profile is spectrally isolated and localized, or is an acceptably long-lived calculated resonance, as judged by the derived asymptotics of \(\Delta_{\rm spec}\), \(\Gamma_0\), \(\ell_w\), \(\mathcal P_{\rm br}\), \(\mathcal I_{\rm 3D}\), and the brane-observable pole residue where defined.
 5. The relevant frequency family lies on one connected physical branch.
+
+Criterion 4 is not satisfied merely by rescaling the eigenfunction to unit norm. Nor does it require a \(k\)-independent positive spectral gap or a \(k\)-independent localization length. The asymptotic scaling must preserve the declared effective three-dimensional regime and an appreciable coupling to brane observables.
 
 ### 14.2 Localization criteria
 
@@ -1198,7 +1274,7 @@ The selected photon branch fails if any required result proves impossible, inclu
 
 1. no stable finite-thickness shear-supporting slab exists;
 2. no gapless guided transverse branch exists;
-3. the lowest guided branch is unacceptably leaky into the bulk;
+3. the lowest guided branch is unacceptably leaky into the bulk, merges into the relevant essential spectrum without an acceptable resonance, delocalizes so that \(\mathcal P_{\rm br}\) or the brane-observable pole residue vanishes unacceptably, or has divergent or vanishing fixed-on-brane-normalization effective inertia incompatible with the intended three-dimensional mode;
 4. the background supports the wrong number of transverse polarizations;
 5. polarization degeneracy is unacceptably broken;
 6. the finite slab supplies no usable dispersion or nonlocality and every packet spreads;
@@ -1261,7 +1337,7 @@ The following entries should be added to the broader provenance ledger as this p
 |---|---|---|---|---|
 | Two transverse homogeneous modes | Derived under supplied quadratic assumptions | Existing homogeneous action analysis | Free light, support mode, magnetism, radiation | Wrong mode count or instability |
 | Stable finite slab | Open | Solved \(n_0(w),\chi_0(w)\) with selected thickness and spectrum | Every light result | No stable or metastable slab |
-| Lowest guided transverse profile \(f_0(w)\) | Target | Variable-coefficient normal eigenproblem | Confinement, dispersion, photon packet | No bound or long-lived guided branch |
+| Lowest guided transverse profile \(f_0(w;k)\) | Target | Variable-coefficient normal eigenproblem with \(\Delta_{\rm spec}\), \(\Gamma_0\), \(\ell_w\), \(\mathcal P_{\rm br}\), fixed-on-brane \(\mathcal I_{\rm 3D}\), regulator tests for resonances, and a pole residue once an observable is specified | Confinement, effective inertia, dispersion, photon packet | No bound or long-lived resonance branch, unacceptable delocalization or leakage, vanishing brane participation/residue, or singular effective inertia |
 | Gapless guided photon branch | Target | \(\lambda_0=0\), \(\omega_0(k)\to0\) | Light-like propagation | Lowest branch remains gapped |
 | Two guided polarizations | Target reduction | Complete constrained guided spectrum | Photon identity | Extra or missing polarization |
 | Finite-thickness dispersion | Open | Coefficients \(a_4,a_6,\ldots\) from projection | Soliton balance | No compatible dispersion |
@@ -1293,7 +1369,10 @@ Each stage should produce reproducible symbolic and numerical outputs.
 
 - slab profiles;
 - guided mode profiles across \(w\);
-- eigenvalue and leakage curves;
+- essential-spectrum edges and spectral-separation curves;
+- resonance-width and lifetime curves;
+- localization-length, brane-participation, fixed-on-brane-inertia, and applicable pole-residue curves;
+- regulator-convergence tests for outgoing resonances;
 - dispersion surfaces;
 - helper Green functions;
 - one-dimensional solitary branches;
@@ -1321,8 +1400,8 @@ The first practical questions are deliberately narrower than “solve the photon
 
 1. What transversely isotropic shear action is being postulated for the ordered state?
 2. How do its coefficients depend on \(n\) and \(\chi_B\)?
-3. Does a symmetric finite slab possess a gapless, bound transverse zero branch?
-4. What is the branch's exact normal profile \(f_0(w)\)?
+3. Does a symmetric finite slab possess a gapless bound transverse branch or an acceptably long-lived outgoing resonance?
+4. What are the branch's exact normal profile \(f_0(w;k)\), spectral separation, width, localization length, brane participation, and fixed-on-brane effective inertia?
 5. What higher-order dispersion follows from finite thickness?
 6. Is the in-plane longitudinal branch faster or slower than the transverse branch?
 7. Which even eigenmode is most strongly sourced by transverse intensity?

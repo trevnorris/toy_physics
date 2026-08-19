@@ -975,9 +975,17 @@ It is essential to keep three objects separate:
 - \(h_+,h_-\), or equivalently \(h_m,h_t\): the two interface displacements and their mid-surface and thickness combinations in the normal \(w\) direction;
 - \(s=\pm1\): the orientation of a throat and the sign of charge.
 
-The longitudinal mode is not charge and does not become the throat's \(\pm w\) orientation. Its eventual physical role depends on the brane–bulk interface law: it may remain bound, radiate into bulk sound, acquire its own long-wavelength dispersion, or mix with transverse waves near defects. Moving and accelerating throat calculations must compute any emitted longitudinal power rather than assume that only the transverse light sector radiates.
+The longitudinal mode is not charge and does not become the throat's \(\pm w\) orientation. Its complete finite-slab role depends on the brane–bulk interface law: it may remain bound, radiate into bulk sound, receive finite-thickness corrections to its homogeneous dispersion, or mix with transverse waves near defects. Moving and accelerating throat calculations must compute any emitted longitudinal power rather than assume that only the transverse light sector radiates.
 
-**Status:** simultaneous transverse and longitudinal mode support is established for the supplied homogeneous quadratic response. The physical dispersion, brane–bulk leakage, and defect-induced mixing of the longitudinal branch remain open.
+**Status:** the homogeneous quadratic dispersion
+
+\[
+\omega_L^2
+=
+\frac{B_{\rm comp}}{\rho_{\rm br}}k^2
+\]
+
+and homogeneous transverse–longitudinal block separation are derived under the selected assumptions. The complete finite-slab dispersion, essential-spectrum placement, brane–bulk leakage, nonlinear intensity coupling, and defect-induced mixing remain open.
 
 ## 11. Electric charge as an oriented defect
 

@@ -25,7 +25,7 @@ The conceptual freeze rule remains in force:
 
 The leading light hypothesis is:
 
-> **The photon analog is a gapless, two-polarization, transverse guided carrier of the ordered finite-thickness brane. Its profile is confined across the brane's normal thickness, and its finite three-dimensional envelope is maintained by finite-thickness dispersion together with a reflection-even, nonradiative longitudinal/thickness/order dressing that is slaved to the transverse intensity.**
+> **The photon analog is a gapless, two-polarization, transverse guided carrier of the ordered finite-thickness brane. Its profile is confined across the brane's normal thickness, and its finite three-dimensional envelope is maintained by finite-thickness dispersion together with a reflection-even longitudinal/thickness/order dressing that is slaved to the transverse intensity and is either nonradiative or has a derived acceptably small leakage rate.**
 
 This hypothesis uses only structures already present in the ontology:
 
@@ -47,7 +47,7 @@ ordered finite-thickness brane
         ├── supports a lowest gapless guided transverse branch
         │       │
         │       ├── two independent transverse polarizations
-        │       ├── bound profile across the normal direction w
+        │       ├── bound or acceptably long-lived guided profile across w
         │       └── net energy transport along the brane
         │
         ├── finite thickness supplies dispersion and a material length scale
@@ -67,7 +67,7 @@ The final object would therefore be predominantly transverse but materially dres
 ```text
 observable transverse light carrier
         +
-bound, determined longitudinal/thickness/order response
+sought localized or sufficiently long-lived, determined longitudinal/thickness/order response
         =
 classical photon-packet candidate
 ```
@@ -106,10 +106,10 @@ Under the selected homogeneous, isotropic, parity-even quadratic brane response 
 =
 \mu_Rk^2P_T
 +
-B_{\rm comp}k^2P_L,
+B_{\rm comp}k^2P_L.
 \]
 
-where
+For \(\mathbf k\ne0\), define \(k^2=\mathbf k\cdot\mathbf k\) and
 
 \[
 P_T
@@ -141,14 +141,25 @@ and
 \text{multiplicity }1.
 \]
 
-The characteristic polynomial is cubic in \(\omega^2\), with nonzero leading coefficient proportional to \(-\rho_{\rm br}^3\). For \(\rho_{\rm br}\ne0\), the selected homogeneous system therefore has exactly three finite roots counted with multiplicity. Degeneracy can merge the known transverse and longitudinal eigenvalues but cannot create a hidden additional finite mode. At \(B_{\rm comp}=\mu_R\), all three roots coincide; the eigenvalue alone then does not distinguish transverse from longitudinal character, but no new mode appears.
+The projectors are undefined algebraically at \(k=0\); the zero-wave-number mode is obtained by continuity from a chosen direction in \(\mathbf k\)-space.
 
-At generic coefficients,
+The characteristic polynomial is cubic in \(\omega^2\), with nonzero leading coefficient proportional to \(-\rho_{\rm br}^3\). For \(\rho_{\rm br}\ne0\), the selected homogeneous system therefore has exactly three finite roots counted with multiplicity. Degeneracy can merge the known transverse and longitudinal eigenvalues but cannot create a hidden additional finite mode. At \(B_{\rm comp}=\mu_R\), all three roots coincide. The eigenvalue alone then ceases to distinguish their character, but the geometrical \(P_T/P_L\) decomposition remains available for every \(\mathbf k\ne0\), and no new mode appears.
+
+For every \(\mathbf k\ne0\) and all coefficient values within the selected quadratic operator,
 
 \[
 \boxed{
 P_T\mathcal M P_L=0.
 }
+\]
+
+At \(B_{\rm comp}=\mu_R\), this remains
+
+\[
+P_T\mathcal M P_L
+=
+\mu_Rk^2P_TP_L
+=0.
 \]
 
 The transverse light root is independent of \(B_{\rm comp}\), while the longitudinal root is independent of \(\mu_R\). Equivalently:
@@ -364,7 +375,9 @@ Projection onto a normal branch then produces
 
 ### 4.2 Gapless lowest branch
 
-The photon branch must be gapless in the intended long-wavelength regime:
+The photon branch must be gapless in the intended long-wavelength regime, but the mathematical test is branch-dependent.
+
+**Conservative or inertial branch.** The lowest transverse generalized eigenvalue must satisfy
 
 \[
 \boxed{
@@ -381,7 +394,7 @@ Higher normal branches may be gapped:
 \lambda_{n>0}>0.
 \]
 
-A naive thickness standing wave with a fixed normal frequency would instead give
+A naive conservative thickness standing wave with a fixed normal frequency would instead give
 
 \[
 \omega^2=\Omega_w^2+c^2k^2,
@@ -389,9 +402,11 @@ A naive thickness standing wave with a fixed normal frequency would instead give
 
 which behaves like a massive mode at low \(k\). That is not the desired free-light branch.
 
-The lowest branch must therefore be an acoustic-like guided zero mode, a symmetry-protected mode, a coupled-interface mode, or another branch whose frequency vanishes appropriately even though its profile is confined across \(w\).
+**Dissipative or mixed branch.** The full retarded response must contain a brane-coupled physical pole or continuous branch whose real frequency approaches zero appropriately as \(k\to0\), while its damping, lifetime, spectral weight, and, where defined, brane-observable pole residue remain acceptable in the declared light regime.
 
-### 4.3 Confinement is not guaranteed by “zero bulk shear” alone
+The lowest physical branch must therefore be an acoustic-like guided zero mode, a symmetry-protected mode, a coupled-interface mode, or another branch whose branch-appropriate frequency tends to zero while its profile remains sufficiently guided across \(w\).
+
+### 4.3 Conservative/inertial spectral localization and the limits of “zero bulk shear”
 
 It is tempting to say that the mode is automatically trapped because the bulk does not support shear. That is only a design intuition.
 
@@ -403,6 +418,20 @@ The full normal operator must show one of the following:
 - another mathematically closed nonpropagating bulk response.
 
 A vanishing bulk shear modulus by itself may create a floppy or strongly coupled region rather than a clean bound state. The spectral problem must decide.
+
+The real essential-spectrum and weighted-norm formulation below is most natural for a conservative or inertial branch whose constrained normal operator is self-adjoint, or can be reduced to a well-posed generalized self-adjoint problem. It must not be silently reused as the complete analysis of a dissipative or mixed branch.
+
+For a dissipative branch, including a relaxational realization, or for a mixed branch, the corresponding starting object is the full retarded operator and its inverse,
+
+\[
+\mathcal O_R(\omega,\mathbf k),
+\qquad
+\mathcal G_R(\omega,\mathbf k)
+=
+\mathcal O_R^{-1}(\omega,\mathbf k),
+\]
+
+including every internal reservoir variable needed to close material, momentum, energy, and entropy accounting. The localization audit must then track complex poles, branch cuts and continua, spectral density, resonance widths, and—where the response is non-normal—left/right modes and pseudospectral sensitivity. A real spectral gap or a unit-normalized right eigenfunction alone is not a sufficient confinement diagnostic in that branch.
 
 The localization test must not be reduced to normalizing \(f_0\) to unit norm, because that normalization can hide a profile that spreads arbitrarily far into the bulk. At each fixed in-brane wave number \(k\), and within the same complete constrained parity and polarization block as the candidate mode, let \(\omega_{\rm ess}(k)\) denote the lower edge of the relevant essential spectrum and define
 
@@ -713,7 +742,15 @@ Route A should therefore be used as an inexpensive precursor and diagnostic. Suc
 
 The canonical ontology already contains an in-plane longitudinal mode \(u_L\). It is not charge and it is not the \(\pm w\) throat orientation.
 
-Its physical dispersion, confinement, leakage, and coupling to transverse waves remain open.
+Its homogeneous quadratic dispersion is derived as
+
+\[
+\omega_L^2
+=
+\frac{B_{\rm comp}}{\rho_{\rm br}}k^2.
+\]
+
+Its complete finite-slab dispersion, essential-spectrum placement, interface leakage, defect-induced mixing, and nonlinear coupling to transverse intensity remain open.
 
 This makes it a legitimate candidate participant in photon localization.
 
@@ -811,7 +848,7 @@ Thus the photon candidate contains
 
 It does not contain three freely selectable propagating polarizations.
 
-The background brane may still support an independent free longitudinal wave. The claim is only that the longitudinal component inside the photon packet is a bound response rather than an independent photon label.
+The background brane may still support an independent free longitudinal wave. The longitudinal component inside the candidate photon is **sought as** a bound, nonradiative, or sufficiently long-lived slaved response rather than an independent photon label.
 
 ### 8.5 Reflection parity protects electrical neutrality
 
@@ -864,7 +901,7 @@ c_{s0}
 :\ \text{asymptotic bulk-sound speed in the simple phase-matching model}.
 \]
 
-Let \(v_{\rm packet}=|\mathbf v|\) denote the translational speed of the nonlinear photon packet.
+Let \(\mathbf v_{\rm packet}\) denote the actual translational velocity of the nonlinear photon packet and \(v_{\rm packet}=|\mathbf v_{\rm packet}|\) its speed.
 
 The first comparison is
 
@@ -961,13 +998,14 @@ Thus the three regimes must be called **bulk channel kinematically closed**, **g
 
 ### 9.3 Forced-helper radiation and harmonic audit
 
-The photon helper is not necessarily an on-shell free longitudinal wave. For a packet traveling with velocity \(\mathbf v\) and possessing comoving internal frequency \(\Omega\), write its nonlinear source spectrum as
+The photon helper is not necessarily an on-shell free longitudinal wave. For a packet traveling with velocity \(\mathbf v_{\rm packet}\) and possessing one comoving internal frequency \(\Omega_{\rm int}\), write its nonlinear source spectrum as
 
 \[
 \boxed{
 \omega_{m,\mathbf q}
 =
-\mathbf q\cdot\mathbf v+m\Omega,
+\mathbf q\cdot\mathbf v_{\rm packet}
++m\Omega_{\rm int},
 \qquad
 m\in\mathbb Z.
 }
@@ -978,7 +1016,8 @@ The free in-plane longitudinal resonance test is
 \[
 \omega_L(\mathbf q)
 =
-\mathbf q\cdot\mathbf v+m\Omega.
+\mathbf q\cdot\mathbf v_{\rm packet}
++m\Omega_{\rm int}.
 \]
 
 For the simple isotropic bulk-sound model, a forced source component has
@@ -989,7 +1028,8 @@ k_w^2(m,\mathbf q)
 =
 \frac{
 \left(
-\mathbf q\cdot\mathbf v+m\Omega
+\mathbf q\cdot\mathbf v_{\rm packet}
++m\Omega_{\rm int}
 \right)^2
 }{
 c_{s0}^2
@@ -1012,9 +1052,34 @@ The complete audit must include every longitudinal, bulk, thickness, order, dens
 
 A slaved off-shell helper can remain nonradiative even when the corresponding free eigenmode lies in an open continuum, provided its Fourier support does not hit a receiving pole or its interface overlap is sufficiently suppressed. Conversely, a DC helper may be localized while a second harmonic, sideband, or higher harmonic radiates.
 
+The preceding formula is the principal form for a solution that is periodic in its comoving frame with one fundamental frequency. If a later family contains independent breathing, polarization-beat, envelope, or other quasiperiodic frequencies, generalize it to
+
+\[
+\omega_{\mathbf m,\mathbf q}
+=
+\mathbf q\cdot\mathbf v_{\rm packet}
++
+\sum_\alpha m_\alpha\Omega_\alpha.
+\]
+
+For signed-frequency retarded response, the receiving-pole condition is more generally
+
+\[
+\det\mathcal O_j^R
+\left(
+\mathbf q\cdot\mathbf v_{\rm packet}
++
+\sum_\alpha m_\alpha\Omega_\alpha,
+\mathbf q
+\right)
+=0,
+\]
+
+together with nonzero projected source and interface overlap. This is future-proofing for quasiperiodic solutions, not an additional requirement on the first single-frequency calculation.
+
 ### 9.4 Comoving helper equation
 
-A diagnostic helper equation may be written
+A local diagnostic helper equation may be written
 
 \[
 \partial_t^2\eta
@@ -1023,7 +1088,9 @@ A diagnostic helper equation may be written
 =\alpha I+\beta\nabla^2 I+\cdots.
 \]
 
-In a packet frame \(\xi=z-vt\), the operator changes character depending on the relative dispersion and speed.
+This local form is shorthand for the full retarded response introduced in Section 10; pole, threshold, phase-lag, and radiation questions must be answered with that retarded operator before taking a quasistatic limit.
+
+For a packet moving along \(z\), in the packet frame \(\xi=z-v_{\rm packet}t\), the operator changes character depending on the relative dispersion and speed.
 
 A bound helper requires an elliptic, screened, or otherwise nonradiative comoving response over the packet's spectrum. A hyperbolic outgoing solution indicates wake production.
 
@@ -1033,11 +1100,11 @@ This is a direct calculation and a major early gate.
 
 The helper need not itself be gapless. A moderately gapped even mode can generate a localized, finite-range response around the photon envelope.
 
-After being integrated out, it may produce a nonlocal effective interaction
+After being integrated out through the retarded response, it may produce a frequency-dependent nonlocal effective interaction. Only in the controlled quasistatic limit specified in Section 10 does that response reduce to a static kernel of the form
 
 \[
 \eta(\mathbf x)
-=-\alpha\int d^3x'\,G_\eta(\mathbf x-\mathbf x')I(\mathbf x'),
+=-\alpha\int d^3x'\,G_\eta^{\rm stat}(\mathbf x-\mathbf x')I(\mathbf x'),
 \]
 
 which feeds back into the transverse equation.
@@ -1054,7 +1121,7 @@ The same gapped helper must remain compatible with the electric-sector requireme
 | Number of finite homogeneous roots | Exactly three under the stated assumptions; no hidden finite mode |
 | Free longitudinal branch versus bulk continuum | Simple kinematic threshold derived at \(c_L=c_{s0}\) |
 | Actual free-longitudinal leakage | Open; requires interface coupling and spectral boundary conditions |
-| Nonlinear DC helper response | Desired if localized and nonradiative; not yet derived |
+| Nonlinear DC helper response | Desired if localized and nonradiative or shown to have an acceptably small derived leakage rate; not yet derived |
 | Nonlinear \(2\omega_0\), sideband, and higher-harmonic leakage | Open |
 | Defect-, curvature-, or slab-gradient-induced conversion | Open |
 | Longitudinal-to-bulk leakage in the complete slab | S11b / open |
@@ -1092,20 +1159,60 @@ where
 - \(\gamma_\eta\eta\) is helper-mediated self-guiding;
 - \(\mathcal N_a^{\rm pol}\) contains polarization-dependent nonlinearities allowed by symmetry.
 
-The helper equation may take the form
+The general helper response must be written in retarded form first:
+
+\[
+\boxed{
+\eta(\omega,\mathbf q)
+=
+-\alpha
+\mathcal G_\eta^R(\omega,\mathbf q)
+I(\omega,\mathbf q),
+}
+\]
+
+where
+
+\[
+\mathcal G_\eta^R
+=
+\left(
+\mathcal O_\eta^R
+\right)^{-1}.
+\]
+
+A local time-domain realization may have the schematic form
 
 \[
 \mathcal L_\eta(\partial_t,\nabla)\eta
 =-\alpha I+\cdots.
 \]
 
-In a quasistatic nonradiative regime,
+The replacement
 
 \[
-\eta=-\alpha\mathcal L_\eta^{-1}I,
+\mathcal G_\eta^R(\omega,\mathbf q)
+\longrightarrow
+\mathcal L_\eta^{-1}(\mathbf q)
+\]
+
+is a controlled quasistatic limit only when
+
+\[
+|\omega|\tau_\eta\ll1,
+\]
+
+there is no nearby pole or continuum threshold, memory corrections are small, and the imaginary part of the response is negligible or is explicitly retained in the reduced coefficients. In that regime,
+
+\[
+\eta(\mathbf q)
+=
+-\alpha\mathcal L_\eta^{-1}(\mathbf q)I(\mathbf q),
 \]
 
 and the transverse field experiences a nonlocal effective nonlinearity.
+
+Outside that limit, the helper produces calculable phase lag, temporal memory, a generally complex effective nonlinearity, absorption, and possibly outgoing radiation. Those effects belong to the branch-specific power and response ledger rather than being hidden inside a real instantaneous coefficient.
 
 The signs are decisive:
 
@@ -1115,6 +1222,117 @@ The signs are decisive:
 - a saturating, competing, or nonlocal response may permit stable three-dimensional packets.
 
 No sign should be chosen after the fact. Once a common constitutive law is selected, these coefficients are calculated projections of that law.
+
+### 10.1 Conservative, dissipative, and mixed photon branches
+
+The meaning of a photon solution depends on the selected dynamical branch. That branch, its state variables, and its accounting rules must be frozen before an existence or stability result is interpreted.
+
+#### 10.1.1 Conservative periodic photon
+
+A conservative candidate is a traveling, internally periodic solution of a closed action or Hamiltonian system. It should possess conserved total energy and momentum,
+
+\[
+E_\gamma,
+\qquad
+\mathbf P_\gamma,
+\]
+
+and may possess a conserved wave action \(\mathcal I_\gamma\) only if the selected action actually supplies the required symmetry.
+
+Depending on the derived fixed-frequency, fixed-action, or traveling-wave ensemble, the appropriate object may be a cycle-averaged Hamiltonian, averaged action, quasienergy, or Routhian. None is interchangeable by notation alone.
+
+When that charge and its ensemble have been derived, a traveling family may be characterized by a constrained functional such as
+
+\[
+\boxed{
+\mathscr R
+=
+E_\gamma
+-\mathbf v_{\rm packet}\cdot\mathbf P_\gamma
+-\Omega_{\rm int}\mathcal I_\gamma.
+}
+\]
+
+If \(\mathcal I_\gamma\) or the associated ensemble is not derived, this Routhian must not be assumed. The packet should instead be obtained directly as a traveling periodic solution and analyzed through its derived Noether charges and Floquet spectrum.
+
+For an exact conservative periodic photon, the tests are:
+
+- a bounded Hamiltonian on the physical constrained space;
+- finite \(E_\gamma\) and \(\mathbf P_\gamma\);
+- zero net outgoing flux, unless an equal incoming flux is part of the explicitly declared boundary ensemble;
+- Floquet stability;
+- an approximately light-like relation
+  \[
+  E_\gamma\simeq c_\gamma|\mathbf P_\gamma|.
+  \]
+
+A conservative metastable resonance is a distinct candidate, not an exact periodic photon. It may have small nonzero outgoing flux, but then the calculation must derive its complex pole, decay rate, stored-energy loss, and finite lifetime.
+
+#### 10.1.2 Dissipative photon
+
+A dissipative packet requires the general stored-energy balance
+
+\[
+\boxed{
+\frac{dE_\gamma}{dt}
+=
+P_{\rm supplied}
+-P_{\rm dissipated}
+-P_{\rm radiated}.
+}
+\]
+
+Here \(P_{\rm dissipated}\) and \(P_{\rm radiated}\) are nonnegative loss rates under the displayed convention. For a stationary maintained dissipative packet,
+
+\[
+\frac{dE_\gamma}{dt}=0,
+\qquad
+P_{\rm supplied}
+=
+P_{\rm dissipated}
++
+P_{\rm radiated}.
+\]
+
+For an unmaintained metastable packet, typically
+
+\[
+P_{\rm supplied}=0,
+\qquad
+\frac{dE_\gamma}{dt}
+=
+-P_{\rm dissipated}
+-P_{\rm radiated}
+<0,
+\]
+
+and its lifetime must be calculated from this decay. For a slowly evolving maintained packet, all four terms in the general balance may be nonzero; their residual determines whether the packet grows, shrinks, or approaches a stationary attractor.
+
+The calculation must identify:
+
+- the internal reservoir supplying power;
+- its depletion or replenishment within the closed one-medium loop;
+- momentum transfer;
+- entropy production;
+- the packet lifetime;
+- whether the solution is permanently maintained or merely metastable.
+
+A freely propagating dissipative photon cannot silently draw power from an unchanged bulk. That would contradict exact constituent conservation and the closed-reservoir discipline.
+
+#### 10.1.3 Mixed inertial-dissipative photon
+
+A mixed branch may store reversible energy and momentum while also possessing damping, memory, and reservoir exchange. Its defining object is the full retarded response operator including every internal reservoir variable.
+
+It must derive:
+
+- the real part of the response responsible for stored and focusing behavior;
+- the imaginary part responsible for damping and absorption;
+- passivity for an unprepared reservoir;
+- the storage-inclusive power and momentum balance, using the same distinction among stationary, metastable, and slowly evolving states;
+- entropy and reservoir accounting;
+- a lifetime if exact conservation is unavailable.
+
+The conservative spectral and variational functionals may be used only for the reversible part under a controlled reduction. A complex pole or damped numerical packet is not, by itself, a closed dissipative or mixed photon solution.
 
 ## 11. Minimal constitutive requirements
 
@@ -1237,12 +1455,30 @@ Freeze the following notation and distinctions:
 - \(c_\gamma\): low-amplitude transverse guided speed;
 - \(c_L\): homogeneous in-plane longitudinal speed;
 - \(c_{s0}\): asymptotic bulk-sound speed entering the simple phase-matching comparison;
-- \(v_{\rm packet}\): translational velocity of the nonlinear photon packet;
+- \(\mathbf k_0\): carrier wave vector;
+- \(\omega_0\): carrier frequency in the selected frame;
+- \(v_{\rm ph}=\omega_0/|\mathbf k_0|\): carrier phase velocity;
+- \(\mathbf v_g=\left.\nabla_{\mathbf k}\omega(\mathbf k)\right|_{\mathbf k_0}\): linear guided-branch group velocity, with \(v_g=\hat{\mathbf z}\cdot\mathbf v_g\) in the displayed \(z\)-directed envelope equation;
+- \(\mathbf v_{\rm packet}\): actual translational velocity of the nonlinear packet, with \(v_{\rm packet}=|\mathbf v_{\rm packet}|\);
 - \(k_w\): bulk normal wave number;
 - `KW_ZERO_LOCUS`: the simple homogeneous grazing locus \(c_L=c_{s0}\);
-- \(\omega_0\): carrier frequency in the selected frame;
-- \(\Omega\): comoving internal periodic frequency used to organize source harmonics and sidebands;
+- \(\Omega_{\rm int}\): internal periodic frequency in the packet frame;
+- \(\Omega_{\rm env}\): an optional independent envelope-phase, breathing, polarization-beat, or Floquet frequency;
+- \(E_\gamma\): total conserved packet energy in a conservative branch or the branch-consistent stored packet energy in a dissipative or mixed branch;
+- \(\mathbf P_\gamma\): total canonical or stress-derived packet momentum, with the definition fixed by the selected parent dynamics;
+- \(\mathcal I_\gamma\): an optional wave action only if a symmetry and conserved charge are derived;
 - free-mode continuum placement versus forced-source radiation as distinct questions.
+
+For a simple single-carrier traveling ansatz one may derive
+
+\[
+\Omega_{\rm int}
+=
+\omega_0
+-\mathbf k_0\cdot\mathbf v_{\rm packet},
+\]
+
+but that relation must not be assumed for every nonlinear or quasiperiodic branch.
 
 At minimum:
 
@@ -1252,6 +1488,7 @@ At minimum:
 - a sufficiently nondispersive observational regime;
 - calculable higher-order dispersion outside that regime;
 - a candidate nonlinear self-guiding mechanism;
+- a frozen conservative, dissipative, or mixed photon branch with its required Noether-charge or reservoir accounting;
 - no leading electric-odd source from a free photon;
 - acceptable coupling to longitudinal, thickness, density, order, and bulk modes;
 - an explicit audit of DC, harmonic, and sideband radiation channels.
@@ -1300,6 +1537,7 @@ Determine:
 - the dispersions \(\omega_{a,n}(k)\);
 - energy signs and norm signs;
 - group velocities;
+- for dissipative and mixed branches, including relaxational realizations, complex retarded poles, branch cuts, spectral density, left/right mode residues, passivity, and any material pseudospectral sensitivity;
 - the relevant essential-spectrum edges and \(\Delta_{\rm spec}(k)\), or \(\Delta_{\rm spec}^{(2)}(k)\) where natural;
 - bulk leakage and resonance widths \(\Gamma_0(k)\);
 - normal localization lengths \(\ell_w(k)\);
@@ -1327,7 +1565,7 @@ Record:
 - \(a_4,a_6,\ldots\);
 - frequency dependence;
 - nonlocal kernels;
-- damping if the selected branch is mixed or relaxational;
+- damping if the selected branch is dissipative or mixed;
 - the range over which the mode is approximately linear and nondispersive.
 
 The projected action must reproduce the conditional quadratic light sector already present in the ontology.
@@ -1412,7 +1650,9 @@ The reduction must state:
 - amplitude ordering;
 - retained helper modes;
 - neglected branches;
-- conservation or dissipation law;
+- the selected conservative, dissipative, or mixed branch;
+- its Noether-charge and constrained-ensemble data, or its power, momentum, entropy, and internal-reservoir balance;
+- the full retarded operator and passivity test wherever damping or memory is retained;
 - validity time and length scales.
 
 ### 13.7 Stage L6 — perform inexpensive no-go and existence tests
@@ -1428,6 +1668,7 @@ Before large simulations, test:
 - harmonic and sideband radiation into every receiving branch;
 - threshold behavior at `KW_ZERO_LOCUS`;
 - full-slab corrections to the simple homogeneous phase-matching formula;
+- whether any maintained branch depends on an unspecified power source, damping term, or reservoir;
 - whether a finite-energy three-dimensional branch is allowed;
 - whether helper-field elimination produces focusing of the required sign.
 
@@ -1461,7 +1702,7 @@ Reconstruct or directly solve the parent fields in four spatial dimensions and v
 
 ### 13.10 Stage L9 — long-time stability and Floquet/response analysis
 
-If the photon candidate is internally oscillatory, analyze perturbations around the traveling periodic solution.
+If a conservative photon candidate is internally oscillatory, analyze perturbations around the traveling periodic solution through its Floquet spectrum and conserved charges. For a dissipative or mixed candidate, use the complete retarded linearization including reservoir variables; a conservative Floquet calculation alone does not close that branch.
 
 Determine:
 
@@ -1472,6 +1713,8 @@ Determine:
 - longitudinal/helper modes;
 - growing instabilities;
 - radiation continua;
+- retarded passivity and non-normal or pseudospectral sensitivity where applicable;
+- stationary power, momentum, entropy, and reservoir balance for maintained branches;
 - lifetime for a metastable resonance.
 
 ### 13.11 Stage L10 — collision tests
@@ -1493,7 +1736,8 @@ Measure:
 - helper-field radiation;
 - bulk leakage;
 - fusion or breakup;
-- energy and momentum conservation.
+- packet-plus-fields energy and momentum conservation for a conservative branch;
+- total closed-system energy and momentum balance, including emitted fields and internal reservoirs, together with entropy production for a dissipative or mixed branch.
 
 Weak interaction or soliton-like passage is required for a vacuum-like light sector.
 
@@ -1513,10 +1757,16 @@ The free-light program therefore reduces uncertainty in the later supported-thro
 
 A successful candidate should satisfy all of the following within a declared regime.
 
+Before applying the common criteria, the selected dynamical branch must also close its own accounting:
+
+- a conservative branch must derive its action or Hamiltonian, conserved charges, admissible constrained ensemble, and Floquet stability;
+- a dissipative branch must derive its stored-energy change, supplied, dissipated, and radiated power together with momentum, entropy, reservoir evolution, and lifetime;
+- a mixed branch must derive the complete passive retarded operator, separate stored from absorptive response, and close its storage-inclusive stationary, metastable, or slowly evolving balance.
+
 ### 14.1 Background and spectral criteria
 
 1. The stable slab exists and has bounded energy.
-2. The lowest transverse guided branch is gapless.
+2. The lowest transverse guided branch passes the branch-appropriate gapless test: \(\lambda_0=0\) and \(\omega_0(k)\to0\) for a conservative or inertial generalized eigenproblem, or an acceptable brane-coupled low-frequency pole or continuous branch of the full retarded response for a dissipative or mixed branch.
 3. The appropriate homogeneous limit reproduces the closed two-transverse/one-longitudinal finite-mode census with zero selected quadratic cross-block, while the complete slab retains exactly two healthy freely selectable transverse photon polarizations.
 4. The normal profile is spectrally isolated and localized, or is an acceptably long-lived calculated resonance, as judged by the derived asymptotics of \(\Delta_{\rm spec}\), \(\Gamma_0\), \(\ell_w\), \(\mathcal P_{\rm br}\), \(\mathcal I_{\rm 3D}\), and the brane-observable pole residue where defined.
 5. The relevant frequency family lies on one connected physical branch.
@@ -1583,7 +1833,8 @@ The selected photon branch fails if any required result proves impossible, inclu
 16. a viable packet requires constitutive coefficients incompatible with the stable slab or force sectors;
 17. a viable result exists only after introducing a photon-specific fitted term not propagated through the common medium;
 18. the parent-field solution contradicts the reduced envelope solution;
-19. no sufficiently long-lived three-dimensional packet exists despite exhausting the allowed shared constitutive branches.
+19. no sufficiently long-lived three-dimensional packet exists despite exhausting the allowed shared constitutive branches;
+20. packet existence depends on unspecified damping, an unexplained power supply, an unclosed reservoir, failure of passivity, or incompatible uses of conservative and dissipative functionals.
 
 Failure of the self-bound branch would not erase the conditional linear two-transverse-mode result. It would mean that this medium supplies classical light waves but does not close the intended localized free-photon ontology.
 
@@ -1634,18 +1885,19 @@ The following entries should be added to the broader provenance ledger as this p
 | Homogeneous \(D=3\) mode census and quadratic block separation | Derived under stated assumptions | [S11](../research/pde_ledger_v3/steps/S11_stray_longitudinal.md): \(\omega_T^2=(\mu_R/\rho_{\rm br})k^2\) with multiplicity 2, \(\omega_L^2=(B_{\rm comp}/\rho_{\rm br})k^2\) with multiplicity 1, cubic characteristic polynomial with nonzero leading coefficient for \(\rho_{\rm br}\ne0\), and zero selected \(T\)-\(L\) cross-block | Free light, helper ordering, support mode, magnetism, radiation | Wrong mode count, instability, or use outside the homogeneous isotropic parity-even quadratic scope without reopening the result |
 | Stable finite slab | Open | Solved \(n_0(w),\chi_0(w)\) with selected thickness and spectrum | Every light result | No stable or metastable slab |
 | Lowest guided transverse profile \(f_0(w;k)\) | Target | Variable-coefficient normal eigenproblem with \(\Delta_{\rm spec}\), \(\Gamma_0\), \(\ell_w\), \(\mathcal P_{\rm br}\), fixed-on-brane \(\mathcal I_{\rm 3D}\), regulator tests for resonances, and a pole residue once an observable is specified | Confinement, effective inertia, dispersion, photon packet | No bound or long-lived resonance branch, unacceptable delocalization or leakage, vanishing brane participation/residue, or singular effective inertia |
-| Gapless guided photon branch | Target | \(\lambda_0=0\), \(\omega_0(k)\to0\) | Light-like propagation | Lowest branch remains gapped |
+| Gapless guided photon branch | Target | Conservative/inertial: \(\lambda_0=0\) and \(\omega_0(k)\to0\). Dissipative/mixed: a brane-coupled physical pole or continuous branch of the full retarded response whose real frequency approaches zero appropriately, with acceptable damping, lifetime, spectral weight, and, where defined, brane-observable pole residue | Light-like propagation | No acceptable branch-appropriate gapless response |
 | Two guided polarizations | Target reduction | Complete constrained guided spectrum | Photon identity | Extra or missing polarization |
 | Finite-thickness dispersion | Open | Coefficients \(a_4,a_6,\ldots\) from projection | Soliton balance | No compatible dispersion |
 | KW grazing threshold | Derived kinematic threshold under the simple homogeneous phase-matching model | \(k_w^2=k^2(c_L^2/c_{s0}^2-1)\), with **KW_ZERO_LOCUS** \(B_{\rm comp}=\rho_{\rm br}c_{s0}^2\) or \(c_L=c_{s0}\) | Free-longitudinal continuum placement and full-slab threshold audit | Threshold is treated as proof of coupling, leakage, boundness, or absence of a bound state in the continuum |
 | Full interface leakage closure | Open / S11b | Complete brane–bulk operator, kinetic norm, essential spectrum, interface matching, bound/threshold/BIC/resonance classification, source overlap, outgoing flux, and leakage width | Light confinement, longitudinal observability, drag, packet lifetime | Unacceptable leakage or no mathematically closed spectral classification |
-| Longitudinal/even helper mode | Open hypothesis | Derived mixed eigenmode, coupling to \(I\), and placement relative to all receiving continua | Self-guiding | No localized nonradiative helper |
+| Longitudinal/even helper mode | Open hypothesis | Derived mixed eigenmode, coupling to \(I\), placement relative to all receiving continua, and calculated leakage or lifetime | Self-guiding | No localized nonradiative or acceptably long-lived helper |
 | Nonlinear helper radiation closure | Open | Complete DC, harmonic, and sideband source spectrum; mode projectors; interface overlaps; retarded response; emitted powers; and threshold behavior | Photon localization and lifetime | Any unavoidable source component radiates unacceptably |
+| Conservative/dissipative/mixed photon-branch closure | Open branch choice | Conserved action, charges, justified ensemble, and zero net outgoing flux for an exact conservative periodic branch; complex pole, decay rate, and lifetime for a conservative metastable resonance; explicit internal reservoir plus storage-inclusive power, momentum, and entropy balance for a dissipative branch; full passive retarded operator and storage-inclusive balance for a mixed branch | Packet existence, stability, lifetime, and interpretation of energy or quasienergy methods | Packet existence depends on unspecified damping, an unexplained power supply, an omitted stored-energy term, or incompatible uses of conservative and dissipative functionals |
 | Nonlinear envelope coefficients | Target | Projection of shared constitutive law | Existence and stability | Wrong sign, collapse, or independent tuning |
 | Three-dimensional localized packet | Target relation | Reduced and parent-field traveling solution | Classical photon ontology | No finite-energy stable branch |
 | Packet stability | Target | Linear, Floquet, or retarded spectrum | Lifetime and interactions | Growing mode or unacceptable leakage |
 | Photon collision behavior | Target | Time-dependent two-packet simulations | Vacuum linearity analog | Strong generic inelasticity |
-| Energy-frequency and energy-momentum laws | Open | Conserved charges of packet family | Photon phenomenology | Unacceptable non-light-like behavior |
+| Energy-frequency and energy-momentum laws | Open | Noether charges for a conservative family, or branch-consistent stored-energy, stress-momentum, flux, and reservoir diagnostics for a dissipative or mixed family | Photon phenomenology | Unacceptable non-light-like behavior or use of a quantity not defined by the selected branch |
 | Quantized action or \(E=\hbar\omega\) analog | Outside present classical closure / later target | Additional mechanism not yet specified | Quantum photon behavior | Not used to judge the classical packet stage |
 
 ## 18. Recommended computational artifacts
@@ -1665,6 +1917,9 @@ Each stage should produce reproducible symbolic and numerical outputs.
 - receiving-mode projector and interface-overlap formulas;
 - projected coupling coefficients;
 - envelope/helper equations;
+- conservative Noether charges and any justified Routhian or averaged functional;
+- passive retarded operators, spectral densities, and branch-cut or pole data for dissipative and mixed branches, including relaxational realizations;
+- power, momentum, entropy, and internal-reservoir balance identities;
 - energy, momentum, and virial identities;
 - resonance and emission conditions.
 
@@ -1676,6 +1931,8 @@ Each stage should produce reproducible symbolic and numerical outputs.
 - free-longitudinal and forced-source continuum-placement maps;
 - parameter sweeps through and around **KW_ZERO_LOCUS**;
 - resonance-width and lifetime curves;
+- retarded spectral-density and pseudospectral-sensitivity maps where applicable;
+- supplied, dissipated, and radiated power histories for maintained branches;
 - localization-length, brane-participation, fixed-on-brane-inertia, and applicable pole-residue curves;
 - regulator-convergence tests for outgoing resonances;
 - dispersion surfaces;
@@ -1692,6 +1949,7 @@ Each stage should produce reproducible symbolic and numerical outputs.
 For each derived claim, record:
 
 - exact equations and branch assumptions;
+- the frozen conservative, dissipative, or mixed branch and its closure ledger;
 - frozen parameters;
 - boundary conditions;
 - solver and convergence tests;
@@ -1705,16 +1963,17 @@ The first practical questions are deliberately narrower than “solve the photon
 
 1. What transversely isotropic shear action is being postulated for the ordered state?
 2. How do its coefficients depend on \(n\) and \(\chi_B\)?
-3. Does a symmetric finite slab possess a gapless bound transverse branch or an acceptably long-lived outgoing resonance?
-4. What are the branch's exact normal profile \(f_0(w;k)\), spectral separation, width, localization length, brane participation, and fixed-on-brane effective inertia?
-5. What higher-order dispersion follows from finite thickness?
-6. How do \(v_{\rm packet}\), \(c_\gamma\), \(c_L\), and \(c_{s0}\) compare, and how does the complete slab behave at and near the simple **KW_ZERO_LOCUS**?
-7. Which even eigenmode is most strongly sourced by transverse intensity?
-8. Does eliminating that mode produce focusing, defocusing, or nonlocal response, and do any of its DC, harmonic, or sideband source components radiate?
-9. Is the nonlinear energy bounded below?
-10. Can a one-dimensional traveling envelope exist?
-11. Is that envelope stable to the two lateral brane directions?
-12. Can one common coefficient set satisfy both this photon audit and the low-\(k\) force audit?
+3. Which conservative, dissipative, or mixed photon branch is selected, and do its Noether-charge, reservoir, power, momentum, entropy, and passivity requirements close as applicable?
+4. Does a symmetric finite slab possess a gapless bound transverse branch or an acceptably long-lived outgoing resonance?
+5. What are the branch's exact normal profile \(f_0(w;k)\), spectral separation, width, localization length, brane participation, and fixed-on-brane effective inertia?
+6. What higher-order dispersion follows from finite thickness?
+7. How do \(v_{\rm packet}\), \(c_\gamma\), \(c_L\), and \(c_{s0}\) compare, and how does the complete slab behave at and near the simple **KW_ZERO_LOCUS**?
+8. Which even eigenmode is most strongly sourced by transverse intensity?
+9. Does eliminating that mode produce focusing, defocusing, or nonlocal response, and do any of its DC, harmonic, or sideband source components radiate?
+10. Is the nonlinear energy bounded below in a conservative branch, or does the appropriate branch-specific power and passivity ledger close otherwise?
+11. Can a one-dimensional traveling envelope exist?
+12. Is that envelope stable to the two lateral brane directions?
+13. Can one common coefficient set satisfy both this photon audit and the low-\(k\) force audit?
 
 Answering these questions would determine whether a full three-dimensional photon solve is promising before committing to the hardest numerical continuation.
 
@@ -1722,7 +1981,7 @@ Answering these questions would determine whether a full three-dimensional photo
 
 One conserved four-dimensional medium forms an ordered finite-thickness brane. The brane has a globally defined normal axis but remains isotropic within its three observed directions. The normal **sign** is available to oriented throats and electric charge, while the unsigned normal axis organizes light guidance.
 
-Light is postulated to be the lowest gapless transverse shear branch of that slab. Its displacement is tangent to the brane and transverse to its direction of propagation, leaving two independent polarizations. Its field has a bound profile across \(w\), while its energy travels along the brane.
+Light is postulated to be the lowest gapless transverse shear branch of that slab. Its displacement is tangent to the brane and transverse to its direction of propagation, leaving two independent polarizations. Its field is sought as a bound profile across \(w\), or as an outgoing resonance with a derived acceptable lifetime, while its energy travels primarily along the brane.
 
 The finite slab can prevent normal leakage and supply a material length scale and dispersion, but normal guidance alone does not localize a packet within all three brane directions. The photon candidate therefore carries an oscillatory transverse carrier inside a finite envelope. Its intensity excites a reflection-even material response—most likely a mixture of longitudinal compression, thickness, density, and order change. That response is slaved to the two transverse polarization amplitudes and creates a moving guide that opposes in-brane diffraction.
 
@@ -1740,9 +1999,11 @@ The central candidate structure is
 }
 \]
 
-The longitudinal mode is therefore not redefined as charge or promoted to a third photon polarization. It is investigated as a possible bound support field for the packet. If its dispersion permits a comoving nonradiative response, it may be essential. If it necessarily forms a wake, causes drag, or destabilizes the brane, it becomes a failure channel.
+The longitudinal mode is therefore not redefined as charge or promoted to a third photon polarization. It is investigated as a possible bound, nonradiative, or sufficiently long-lived slaved support field for the packet. If its dispersion permits such a comoving response with acceptable leakage, it may be essential. If it necessarily forms a wake, causes drag, or destabilizes the brane, it becomes a failure channel.
 
 The homogeneous \(D=3\) quadratic theory now supplies a closed three-mode census and exact linear transverse–longitudinal separation under the selected action. It also supplies a genuine free-longitudinal/bulk-sound grazing threshold at \(c_L=c_{s0}\). These results strengthen the weak-field light sector but do not close photon confinement or longitudinal leakage. The photon-soliton program therefore proceeds with a purely transverse linear carrier and a nonlinearly induced even helper, while the complete slab and retarded-response calculations determine whether the helper and all of its harmonics remain bound or radiate.
+
+Any resulting packet must additionally close one explicitly selected dynamical branch: conserved charges, Floquet stability, and zero net outgoing flux for an exact conservative periodic photon; a complex pole, decay rate, and lifetime for a conservative metastable resonance; a complete storage-inclusive internal-reservoir power and entropy balance for a dissipative photon; or a passive full retarded response and storage-inclusive balance for a mixed photon.
 
 This program is largely independent of the full throat solve and should run in parallel with the far-field force audit. Both depend on the same stable slab and complete background spectrum, and both must use the same frozen constitutive coefficients. The photon track tests finite-wave-number nonlinear localization; the force track tests long-wavelength carriers, ranges, and couplings.
 

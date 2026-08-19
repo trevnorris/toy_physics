@@ -256,9 +256,10 @@ it "degeneracy strata" — an independent Codex check refuted that; corrected he
   bookkeeping. A degeneracy merges the kernels of known roots; it cannot create a new one — the
   characteristic polynomial is degree 3 in `ω²` with leading coefficient `−ρ_br³ ≠ 0`, so **exactly three
   finite roots always** (verified by independent factorization, both engines). ⚠ One nuance the first
-  draft overstated: **at the coincidence `B_comp=μ_R` all three roots merge**, the full eigenspace is
-  degenerate, and the longitudinal/transverse *character* dissolves on that measure-zero locus — no new
-  mode, but the sector labels are not globally rigid.
+  draft overstated: **at the coincidence `B_comp=μ_R` all three roots merge** and the eigenvalue no longer
+  distinguishes transverse from longitudinal vectors. For every nonzero `k`, however, the geometrical
+  projectors remain defined and the selected quadratic cross-block remains zero; an arbitrary basis of
+  the degenerate eigenspace may mix those geometrical sectors, but no new mode appears.
 - **(b) the `KW_ZERO_LOCUS` phase-matching family** (592 finding/under-decided lines, **88 on the MAIN
   package**) — its solution is `{B_comp → c_s0²ρ_br}` (and `{μ_R → c_s0²ρ_br}`), i.e. **`c_L = c_s0`**:
   exactly the `k_w = 0` **grazing threshold** of Move 6, the boundary between a kinematically closed and

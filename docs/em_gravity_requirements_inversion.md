@@ -1,4 +1,4 @@
-> **⛔ SUPERSEDED (2026-07-11) by `em_gravity_native_ontology.md`.** This doc's gauge/requirements-inversion framing — and its §9 Higgs/deconfinement reframe — were found to be a mis-import (EM is not a mediating gauge field in this model). Kept only for history/graveyard. Do NOT build on it.
+> **⛔ SUPERSEDED (2026-07-11).** This doc's gauge/requirements-inversion framing — and its §9 Higgs/deconfinement reframe — were found to be a mis-import (EM is not a mediating gauge field in this model). Kept only for history/graveyard (the canonical EM treatment is now `toy_model_ontology_summary.md`). Do NOT build on it.
 
 # Requirements-Inversion: what the medium's constituents must be to host gravity + light + EM — and whether one medium *can*
 

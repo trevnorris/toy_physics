@@ -1,6 +1,6 @@
 # Banked reviewer verdicts vs. the native EM/gravity ontology — consolidated (2026-07-11)
 
-Mined from prior AI-review logs by three extraction agents. Companion to `em_gravity_ontology_draft.md`. Purpose: check whether the assembled ontology is consistent with what reviewers already banked, BEFORE rewriting the real doc. Citations are `file:line`; log basenames under `docs/` unless noted.
+Mined from prior AI-review logs by three extraction agents. Companion to the retired 2026-07 ontology draft (superseded by `toy_model_ontology_summary.md`; in git history). Purpose: check whether the assembled ontology is consistent with what reviewers already banked, BEFORE rewriting the real doc. Citations are `file:line`; log basenames under `docs/` unless noted.
 
 **Log legend:** `codex1/grok1/glm1` = `em_sector_review_{codex,grok,glm}.log` (v1: EM-as-separate-sector). `codex2/grok2/glm2` = `em_sector_review_v2_{...}.log` (v2: geon/MacCullagh). `req_{codex,grok,glm}` = `em_gravity_requirements_review_*.log`. `higgs_{codex,grok,glm}` = `em_higgs_deconfinement_review_*.log`. `mag` = `software/force_visualizer/notes/magnetism_sign_consult.log`.
 

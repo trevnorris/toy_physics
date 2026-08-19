@@ -1,6 +1,6 @@
 # EM as a decoupled charge-attribute — requirements-inversion (toy 4D superfluid analog)
 
-**Status: WORKING HYPOTHESIS v2 — 2026-07-11.** Corrections folded from a **unanimous 3-AI panel (Codex + Grok + GLM), all `conditional-needs-X`** — i.e. **not** a fundamental no-go, **not** circular, a genuine conditional target (the first EM direction all program that a panel could not kill). This reframe is downstream of the finding (unanimous prior panels) that building EM from the medium's *collective mechanical modes* is a computed no-go (gauge lock ⇒ `B_eff→0` kills gravity, or stays second-class; scalar-only ⇒ attraction + no magnetism). It pursues the one avenue never graveyarded: **EM lives on a separate constituent *charge-attribute*, decoupled from the density that gives gravity.** Companion: `em_gravity_native_ontology.md`. Tags: **[COMPUTED]** / **[POSTULATE]** / **[HYPOTHESIS]** / **[OPEN]** / **[GRAVEYARD]**.
+**Status: WORKING HYPOTHESIS v2 — 2026-07-11.** Corrections folded from a **unanimous 3-AI panel (Codex + Grok + GLM), all `conditional-needs-X`** — i.e. **not** a fundamental no-go, **not** circular, a genuine conditional target (the first EM direction all program that a panel could not kill). This reframe is downstream of the finding (unanimous prior panels) that building EM from the medium's *collective mechanical modes* is a computed no-go (gauge lock ⇒ `B_eff→0` kills gravity, or stays second-class; scalar-only ⇒ attraction + no magnetism). It pursues the one avenue never graveyarded: **EM lives on a separate constituent *charge-attribute*, decoupled from the density that gives gravity.** Companion: `toy_model_ontology_summary.md` (canonical ontology; supersedes the retired `em_gravity_native_ontology.md`). Tags: **[COMPUTED]** / **[POSTULATE]** / **[HYPOTHESIS]** / **[OPEN]** / **[GRAVEYARD]**.
 
 ---
 
@@ -71,7 +71,7 @@ Apply it: the constituents carry a **charge-attribute** (internal DOF) distinct 
 - **Mode count (E):** reconcile the emergent gauge photon (2 transverse) with the brane shear.
 - **`±w` → additive conserved charge** via the emergent Gauss flux (not the bare `Z₂`).
 - **Geography:** gauge on the brane (3+1D) → `1/r²` directly, no bulk-photon localization step.
-- **Companion-ontology cleanup:** the retired Maxwell-nonholonomic-lock framing (`em_gravity_native_ontology.md` v2) and this charge-attribute framing are *different* EM ontologies — do not run both / double-count. This doc supersedes the constraint framing for the EM sector.
+- **Companion-ontology cleanup:** the retired Maxwell-nonholonomic-lock framing (the 2026-07 `em_gravity_native_ontology.md` v2, since removed — in git history) and this charge-attribute framing are *different* EM ontologies — do not run both / double-count. This doc supersedes the constraint framing for the EM sector.
 
 ---
 

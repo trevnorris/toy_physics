@@ -7,7 +7,7 @@ You are design-reviewing a directive, not running it. Toy 4D superfluid analog p
 ## Read
 - software/em_charge_attribute/directive_native_vortex_sign.md  (THE directive under review)
 - docs/conceptual_foundation.md sec 3-4 (magnetism = moving throat's 4D-body swirl, +/-w; gravitomagnetism vs EM-magnetism distinction)
-- docs/em_gravity_native_ontology.md (native ontology, sec 9 roll-vs-slip probe)
+- docs/em_u1_body_definition.md (E4/E5 roll-vs-slip boundary-operator endpoints — supersedes the retired em_gravity_native_ontology.md §9)
 
 ## The question
 The force_visualizer sim shows two parallel currents (like-circulation swirls) attracting = correct EM. But pathA_39 got that sign by IMPORTING an EM current source (j=sV) + Maxwell exchange, not from native moving-throat/vortex dynamics. This gate computes the sign natively (Magnus/Berry/inertia/derived-flow), with the honest possibility it gives repel/co-rotate (a falsifier). Two like superfluid vortices co-rotate; parallel currents attract; these are opposite — that is the crux.

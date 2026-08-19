@@ -223,3 +223,35 @@ residual that records it, ablation-verified against four distinct corruptions; `
 - **Disclosure, volunteered by a review leg:** a `grep` for `K_br` incidentally returned two lines of
   `V3_STEP_PLAN.md`, which was on its do-not-read list. The file was not opened and every reported result
   was derived beforehand.
+
+---
+
+## ⭐⭐ Strata-audit closure (2026-08-19) — the conclusion is INDEPENDENT of the exhaustive Q8a/Q8b census
+
+The exhaustive rank-drop / strata audit (spec §5 Q8a/Q8b — every `ρ×ρ` minor of each `M_r`, three
+solve-variable sets, the degenerate strata) was subsequently run through **certified** census instruments
+(`reduction/s11_*`; campaign closed `cbc49029`, four repair rounds, both engines, two legs + orchestrator
+each). Measured result (`~/.s11_build/census_build4/`): the two engines **under-decide 917
+degenerate-locus sub-cases** and carry finding-level enumeration gaps — 171 spurious branches, 104
+membership witness failures, 72 omitted solve branches — plus the 7 registered engine defects
+(`DEFECT_REGISTER` entries 4–7 + the obligation-4 instrument).
+
+⭐ **All of it lives in the measure-zero degeneracy strata; none of it touches this step's conclusion.**
+Measured: every finding tag and every one of the 917 under-decided records carries a `RANK_DROP` /
+`STACKED_DROP` / `ROOT_COINCIDENCE` / `STRATUM` marker — the loci where already-known roots coincide or
+`M_r` drops rank on a measure-zero set (grep over the four census stdouts returns only those markers; the
+sole non-strata hits are the planted calibration records). The **computed result** above — the generic
+`M_ij` eigenvalues at generic `k`: transverse `μ_R/ρ_br` (nullity `D−1`), longitudinal `B_comp/ρ_br`
+(nullity 1), cross-sector residuals zero, degeneracy exactly `B_comp=μ_R`, and the FORM-control
+uniqueness of the trace invariant — is a **generic-`k`** fact, cross-engine agreed and gated `PASS`. It
+does not depend on the strata enumeration being complete: a degeneracy is a coincidence of **known**
+modes, not a hidden new one, so incompleteness there is a gap in completeness bookkeeping, ⛔ **not** in
+the observable mode content.
+
+⇒ ⭐ **S11's physics conclusion stands closed.** The 917 under-decided strata and the 7 defects are
+recorded here and in `DEFECT_REGISTER` as **KNOWN CAS LIMITATIONS of the exhaustive degeneracy audit** —
+to be reopened only if a downstream step turns out to need a specific degenerate locus decided (none does
+today). ⛔ **The engine round to drive them to zero was NOT run**: it would buy completeness of a
+measure-zero edge-case census, not a change to any physics conclusion (user's call, rule 11). The census
+instruments themselves are certified and preserved, so the audit can be resumed exactly where it stands
+if a real need appears.

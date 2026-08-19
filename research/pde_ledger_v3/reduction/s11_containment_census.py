@@ -27,6 +27,7 @@ from s11_census_common import (
     sentinel_payload,
 )
 from s11_census_math import (
+    EXACT_ROUTE_TIME_BUDGET_SECONDS,
     OPERATION_MEMORY_BUDGET_BYTES,
     OPERATION_TIME_BUDGET_SECONDS,
     association,
@@ -184,8 +185,9 @@ def _pair_worker(
                 {
                     "candidate": render_object(_branch_object(candidate)),
                     "decision": decision,
+                    "witness": render_object(_branch_object(witness)),
                 }
-                for candidate, decision in completeness["coverage"]  # type: ignore[index]
+                for candidate, decision, witness in completeness["coverage"]  # type: ignore[index]
             ],
             "excluded_artifacts": [
                 {
@@ -423,6 +425,7 @@ def run_census(record: Path) -> None:
         "CONTAINMENT_BUDGET "
         f"record={quote(record)} operation_seconds={OPERATION_TIME_BUDGET_SECONDS} "
         f"operation_memory_bytes={OPERATION_MEMORY_BUDGET_BYTES} "
+        f"exact_route_seconds={EXACT_ROUTE_TIME_BUDGET_SECONDS} "
         "solver_route=FACTOR_COVER_NONLINSOLVE verdict=BUDGET_DECLARED",
         flush=True,
     )

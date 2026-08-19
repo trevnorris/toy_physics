@@ -17,6 +17,8 @@ import json
 import math
 import re
 import resource
+import signal
+import time
 from typing import Any, Iterable, Iterator, Mapping, Sequence
 
 import sympy as sp
@@ -28,6 +30,11 @@ from sympy.parsing.mathematica import MathematicaParser
 # semantic locus, witness, and undecided-record operation.
 OPERATION_TIME_BUDGET_SECONDS = 60
 OPERATION_MEMORY_BUDGET_BYTES = 512 * 1024 * 1024
+# Constant algebraic decisions are a mandatory sub-route of every operation.
+# Bound an individual minimal-polynomial attempt so a hard algebraic number
+# cannot consume the enclosing 60-second record budget without leaving a
+# classifier-level expiry token in the printed residual statuses.
+EXACT_ROUTE_TIME_BUDGET_SECONDS = 2.0
 MAX_SHEET_ASSIGNMENTS = 256
 MAX_FACTOR_COVERS = 256
 MAX_SAMPLE_ASSIGNMENTS = 96
@@ -547,8 +554,12 @@ def simplify_residual(expression: sp.Expr) -> tuple[sp.Expr, str]:
                 return sp.Integer(0), "ZERO"
             if simplified.has(sp.zoo, sp.nan, sp.oo, -sp.oo):
                 return simplified, "UNDEFINED"
-            if simplified.is_zero is False or (not simplified.free_symbols and simplified != 0):
+            if not simplified.free_symbols:
+                return simplified, _constant_zero_status(simplified)
+            if simplified.is_zero is False:
                 return simplified, "NONZERO"
+        elif not simplified.free_symbols:
+            return simplified, _constant_zero_status(simplified)
         # A single exact nonzero specialization is a proof that a symbolic
         # residual is not identically zero.  It is only a fallback, and the
         # status/verdict names that sampling explicitly.
@@ -564,10 +575,13 @@ def simplify_residual(expression: sp.Expr) -> tuple[sp.Expr, str]:
             if sampled.has(sp.zoo, sp.nan, sp.oo, -sp.oo):
                 continue
             sampled_count += 1
-            if sampled == 0 or sampled.is_zero is True:
+            if sampled.free_symbols:
+                continue
+            sampled_status = _constant_zero_status(sampled)
+            if sampled_status == "ZERO":
                 sampled_zero += 1
                 continue
-            if not sampled.free_symbols and sampled != 0 and sampled.is_zero is not True:
+            if sampled_status == "NONZERO":
                 return simplified, "NONZERO_SAMPLED"
         if sampled_count and sampled_zero == sampled_count:
             # Samples can refute an identity, never prove one.  Preserve the
@@ -575,7 +589,87 @@ def simplify_residual(expression: sp.Expr) -> tuple[sp.Expr, str]:
             return simplified, "UNDECIDED_ZERO_SAMPLES"
         return simplified, "UNDECIDED"
     except BaseException:
+        if not expression.free_symbols:
+            try:
+                return expression, _constant_zero_status(expression)
+            except BaseException:
+                # The exact route itself was entered but could not return a
+                # certificate or its own expiry token.
+                return expression, "UNDECIDED_EXACT_ROUTE_FAILED"
         return expression, "UNDECIDED"
+
+
+class _ExactRouteExpired(Exception):
+    """Internal alarm used to make exact-constant resource expiry explicit."""
+
+
+def _constant_zero_status(expression: sp.Expr) -> str:
+    """Classify a constant only from an exact certificate.
+
+    Rational equality and SymPy's three-valued exact zero predicate are exact
+    equals-zero decisions.  When that predicate is undecided, the mandatory
+    exact route continues through a guarded minimal-polynomial calculation. A
+    successful minimal polynomial has zero constant term exactly for the
+    algebraic number zero; a nonzero constant term certifies a nonzero
+    algebraic number.  Floats never use the predicate as an exact certificate.
+    No structural ``expression != 0`` or fixed-precision midpoint is a
+    certificate.
+    """
+    if expression.free_symbols:
+        raise ValueError("constant classifier received a symbolic expression")
+    if expression.is_Rational:
+        return "ZERO" if expression == 0 else "NONZERO"
+    if not expression.has(sp.Float):
+        exact_zero = expression.is_zero
+        if exact_zero is True:
+            return "ZERO"
+        if exact_zero is False:
+            return "NONZERO"
+
+    previous_handler = signal.getsignal(signal.SIGALRM)
+    previous_delay, previous_interval = signal.getitimer(signal.ITIMER_REAL)
+    started = time.monotonic()
+
+    def expire(_signum: int, _frame: object) -> None:
+        raise _ExactRouteExpired
+
+    guard_seconds = EXACT_ROUTE_TIME_BUDGET_SECONDS
+    if previous_delay > 0:
+        guard_seconds = min(guard_seconds, previous_delay)
+    try:
+        signal.signal(signal.SIGALRM, expire)
+        signal.setitimer(signal.ITIMER_REAL, guard_seconds)
+        generator = sp.Dummy("s11_zero_certificate")
+        polynomial = sp.minpoly(expression, generator, polys=True)
+    except _ExactRouteExpired:
+        return "UNDECIDED_EXACT_ROUTE_EXPIRED"
+    except BaseException:
+        # The minimal-polynomial route was attempted after the exact predicate
+        # declined to decide.  Do not turn either failure into NONZERO.
+        if expression.has(sp.Float):
+            return "UNDECIDED_EXACT_ROUTE_FAILED"
+        if expression.is_zero is True:
+            return "ZERO"
+        if expression.is_zero is False:
+            return "NONZERO"
+        return "UNDECIDED_EXACT_ROUTE_FAILED"
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, previous_handler)
+        if previous_delay > 0:
+            elapsed = time.monotonic() - started
+            signal.setitimer(
+                signal.ITIMER_REAL,
+                max(1e-6, previous_delay - elapsed),
+                previous_interval,
+            )
+
+    constant_term = polynomial.TC()
+    if polynomial.degree() == 1 and constant_term == 0:
+        return "ZERO"
+    if constant_term.is_zero is False:
+        return "NONZERO"
+    return "UNDECIDED_EXACT_ROUTE_FAILED"
 
 
 def branch_memberships(
@@ -688,19 +782,22 @@ def _defined_union_constraints(
 
 def _sample_union_coverage(
     constraints: Sequence[Sequence[sp.Expr]],
-) -> str:
+) -> tuple[str, dict[sp.Symbol, sp.Rational]]:
     """Seek an exact refuting point for containment in a branch union.
 
-    At each candidate point, undefined branches are simply absent from the
-    union.  A point at which every branch is undefined is therefore uncovered,
-    exactly as required for a defined equation candidate.
+    Each emitted branch is a conjunction.  A defined branch covers a point
+    only when every constraint is certified zero.  A point is certified
+    uncovered only when every defined branch has at least one certified
+    nonzero constraint; undefined branches are absent from the union.  Any
+    other status pattern is undecided.  Samples can therefore refute union
+    coverage, but can never prove it.
     """
     symbols = set().union(
         *(constraint.free_symbols for branch in constraints for constraint in branch)
     )
-    checked = 0
     for assignment in itertools.islice(exact_sample_assignments(tuple(symbols)), 16):
-        branch_truths: list[bool] = []
+        covered = False
+        every_defined_branch_refuted = True
         for branch in constraints:
             statuses = tuple(
                 simplify_residual(
@@ -710,16 +807,19 @@ def _sample_union_coverage(
             )
             if any(status == "UNDEFINED" for status in statuses):
                 continue
-            branch_truths.append(all(status == "ZERO" for status in statuses))
-        checked += 1
-        if not any(branch_truths):
-            return "NOT_COVERED_SAMPLED"
-    return "COVERED_SAMPLED" if checked else "COVERAGE_UNDECIDED"
+            if all(status == "ZERO" for status in statuses):
+                covered = True
+                break
+            if not any(status in {"NONZERO", "NONZERO_SAMPLED"} for status in statuses):
+                every_defined_branch_refuted = False
+        if not covered and every_defined_branch_refuted:
+            return "NOT_COVERED_SAMPLED", assignment
+    return "COVERAGE_UNDECIDED", {}
 
 
 def _branch_is_covered(
     candidate: Mapping[sp.Expr, sp.Expr], emitted: Sequence[Mapping[sp.Expr, sp.Expr]]
-) -> str:
+) -> tuple[str, dict[sp.Symbol, sp.Rational]]:
     """Decide containment in the union of emitted branch varieties.
 
     The union is represented by products choosing one equation from each
@@ -729,9 +829,9 @@ def _branch_is_covered(
     """
     constraints = _defined_union_constraints(candidate, emitted)
     if not constraints:
-        return "NOT_COVERED"
+        return "NOT_COVERED", {}
     if any(not items for items in constraints):
-        return "COVERED_ALGEBRAIC"
+        return "COVERED_ALGEBRAIC", {}
     combination_count = math.prod(len(items) for items in constraints)
     if combination_count <= MAX_FACTOR_COVERS:
         statuses: list[str] = []
@@ -740,7 +840,7 @@ def _branch_is_covered(
             _value, status = simplify_residual(product)
             statuses.append(status)
         if statuses and all(status == "ZERO" for status in statuses):
-            return "COVERED_ALGEBRAIC"
+            return "COVERED_ALGEBRAIC", {}
         if any(status in {"NONZERO", "NONZERO_SAMPLED", "UNDEFINED"} for status in statuses):
             return _sample_union_coverage(constraints)
     return _sample_union_coverage(constraints)
@@ -812,25 +912,22 @@ def completeness_candidates(
         else:
             surviving.append(candidate)
     coverage = [
-        (candidate, _branch_is_covered(candidate, emitted)) for candidate in surviving
+        (candidate, *_branch_is_covered(candidate, emitted)) for candidate in surviving
     ]
     missing = [
         candidate
-        for candidate, status in coverage
+        for candidate, status, _witness in coverage
         if status in {"NOT_COVERED", "NOT_COVERED_SAMPLED"}
     ]
     coverage_undecided = sum(
-        status == "COVERAGE_UNDECIDED" for _candidate, status in coverage
+        status == "COVERAGE_UNDECIDED"
+        for _candidate, status, _witness in coverage
     )
-    coverage_sampled = sum(
-        status == "COVERED_SAMPLED" for _candidate, status in coverage
-    )
+    coverage_sampled = 0
     if missing:
         verdict = "OMITTED_BRANCH"
     elif truncated or unresolved or coverage_undecided:
         verdict = "COMPLETENESS_UNDECIDED"
-    elif coverage_sampled:
-        verdict = "COMPLETE_FACTOR_COVER_SAMPLED"
     else:
         verdict = "COMPLETE_FACTOR_COVER"
     return {

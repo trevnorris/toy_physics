@@ -18,7 +18,7 @@ REPO = Path("/var/projects/toy_physics")
 REDUCTION = REPO / "research/pde_ledger_v3/reduction"
 WL_RECORD = REPO / "research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.out"
 PY_RECORD = REPO / "research/pde_ledger_v3/scripts/out/S11_stray_longitudinal_sympy_audit.out"
-DEFAULT_SCRATCH = Path("/home/trevnorris/.s11_build/census_build3")
+DEFAULT_SCRATCH = Path("/home/trevnorris/.s11_build/census_build4")
 EMPTY_WITNESS_STEM = "WL_S11_MAIN_D2_STRATUM1_POINT_EVIDENCE_ROOT_COINCIDENCE_COEFF"
 
 
@@ -195,6 +195,87 @@ def build_plants(scratch: Path) -> dict[str, Path]:
         ],
     )
 
+    # Round-4 certificate plants.  The first branch value is the exact D2
+    # inverse-chart/root pairing at the directive's rational sampler point.
+    # It is a nested-radical algebraic zero that does not simplify
+    # structurally at the round-3 pin.  The second record includes an
+    # algebraic nonzero far below any fixed working precision; its minimal
+    # polynomial, x^2 + 2*10^100*x - 1, certifies nonzero exactly.
+    certificate_py = scratch / "calibration_constant_certificates_py.out"
+    x_real = "Symbol('x', real=True)"
+    nested_exact_zero = (
+        "Add(Rational(200, 729), Mul(Integer(-1), Rational(20, 81), "
+        "Pow(Integer(2), Rational(1, 2)), Pow(Mul(Integer(-1), "
+        "Pow(Add(Rational(23, 18), Mul(Integer(-1), Rational(5, 9), "
+        "Pow(Integer(2), Rational(1, 2)), I)), Integer(2))), "
+        "Rational(1, 2))), Mul(Rational(230, 729), Pow(Integer(2), "
+        "Rational(1, 2)), I))"
+    )
+    tiny_nonzero = (
+        "Add(Pow(Add(Pow(Integer(10), Integer(200)), Integer(1)), "
+        "Rational(1, 2)), Mul(Integer(-1), Pow(Integer(10), Integer(100))))"
+    )
+    _write_record(
+        certificate_py,
+        [
+            _literal(
+                "PY_S11_CAL_NESTED_EXACT_ZERO_EQUATIONS",
+                f"Tuple(Equality({x_real}, Integer(0)))",
+            ),
+            _literal(
+                "PY_S11_CAL_NESTED_EXACT_ZERO_SOLUTION",
+                f"Tuple(Tuple(Tuple({x_real}, {nested_exact_zero})))",
+            ),
+            _literal(
+                "PY_S11_CAL_TINY_NONZERO_EQUATIONS",
+                f"Tuple(Equality({x_real}, Integer(0)))",
+            ),
+            _literal(
+                "PY_S11_CAL_TINY_NONZERO_SOLUTION",
+                f"Tuple(Tuple(Tuple({x_real}, Integer(0))), "
+                f"Tuple(Tuple({x_real}, {tiny_nonzero})))",
+            ),
+        ],
+    )
+
+    # The committed D2 pair is itself the byte-shaped regression: factor-cover
+    # candidates express bComp in terms of muR, while the two emitted branches
+    # express muR in terms of bComp.  Its union products exceed the compact
+    # symbolic route and therefore exercise sampled coverage without allowing
+    # samples to manufacture a positive coverage proof.
+    inverse_chart_stem = "WL_S11_XKIN_ANISO_D2_ROOT_COINCIDENCE_COEFF"
+    inverse_chart_wl = scratch / "calibration_inverse_chart_wl.out"
+    _write_record(
+        inverse_chart_wl,
+        [
+            _line(wl, inverse_chart_stem + "_EQUATIONS"),
+            _line(wl, inverse_chart_stem + "_SOLUTION"),
+        ],
+    )
+
+    # A genuine sampled refutation with two constraints in one branch.  The
+    # candidate (x,y)=(0,0) violates x=1 while satisfying y=0.  Multiplying the
+    # two within-branch constraints would yield zero and falsely cover it; the
+    # required per-branch AND semantics instead prints a certified witness.
+    uncovered_py = scratch / "calibration_uncovered_and_py.out"
+    uncovered_stem = "PY_S11_CAL_UNCOVERED_AND"
+    y_real = "Symbol('y', real=True)"
+    _write_record(
+        uncovered_py,
+        [
+            _literal(
+                uncovered_stem + "_EQUATIONS",
+                f"Tuple(Equality({x_real}, Integer(0)), "
+                f"Equality({y_real}, Integer(0)))",
+            ),
+            _literal(
+                uncovered_stem + "_SOLUTION",
+                f"Tuple(Tuple(Tuple({x_real}, Integer(1)), "
+                f"Tuple({y_real}, Integer(0))))",
+            ),
+        ],
+    )
+
     emptyset_tag = "PY_S11_XFORM_CURLONLY_D2_ROOT2_KW_ZERO_LOCUS_INCONSISTENT"
     emptyset_py = scratch / "calibration_emptyset_py.out"
     _write_record(emptyset_py, [_line(py, emptyset_tag)])
@@ -348,6 +429,9 @@ def build_plants(scratch: Path) -> dict[str, Path]:
         "semantic_wl": semantic_wl,
         "probe_wl": probe_wl,
         "union_py": union_py,
+        "certificate_py": certificate_py,
+        "inverse_chart_wl": inverse_chart_wl,
+        "uncovered_py": uncovered_py,
         "emptyset_py": emptyset_py,
         "single_py": single_py,
         "premise_py": premise_py,
@@ -450,6 +534,89 @@ def _cases(plants: dict[str, Path]) -> tuple[Case, ...]:
                         "CONTAINMENT_COMPLETENESS",
                         "PY_S11_CAL_PIECEWISE_SOLUTION",
                         "verdict=OMITTED_BRANCH",
+                    ),
+                    False,
+                ),
+            ),
+        ),
+        Case(
+            "exact_constant_certificates_py",
+            census(containment, "certificate_py"),
+            (
+                Assertion(
+                    "nested_radical_exact_zero",
+                    (
+                        "CONTAINMENT_BRANCH_SHEET",
+                        "PY_S11_CAL_NESTED_EXACT_ZERO_SOLUTION",
+                        "definedness=['ZERO']",
+                        "verdict=BRANCH_CONTAINED",
+                    ),
+                ),
+                Assertion(
+                    "nested_radical_never_nonzero",
+                    (
+                        "CONTAINMENT_BRANCH_SHEET",
+                        "PY_S11_CAL_NESTED_EXACT_ZERO_SOLUTION",
+                        "NONZERO",
+                    ),
+                    False,
+                ),
+                Assertion(
+                    "tiny_algebraic_exact_nonzero",
+                    (
+                        "CONTAINMENT_BRANCH_SHEET",
+                        "PY_S11_CAL_TINY_NONZERO_SOLUTION",
+                        "branch_index=2",
+                        "definedness=['NONZERO']",
+                        "verdict=SPURIOUS_BRANCH",
+                    ),
+                ),
+            ),
+        ),
+        Case(
+            "inverse_chart_sample_never_proves_wl",
+            census(containment, "inverse_chart_wl"),
+            (
+                Assertion(
+                    "inverse_charts_not_omitted",
+                    (
+                        "CONTAINMENT_COMPLETENESS",
+                        "WL_S11_XKIN_ANISO_D2_ROOT_COINCIDENCE_COEFF_SOLUTION",
+                        "verdict=OMITTED_BRANCH",
+                    ),
+                    False,
+                ),
+                Assertion(
+                    "sampled_cover_stays_undecided",
+                    (
+                        "CONTAINMENT_COMPLETENESS",
+                        "WL_S11_XKIN_ANISO_D2_ROOT_COINCIDENCE_COEFF_SOLUTION",
+                        "decision': 'COVERAGE_UNDECIDED'",
+                        "verdict=COMPLETENESS_UNDECIDED",
+                    ),
+                ),
+            ),
+        ),
+        Case(
+            "certified_uncovered_and_semantics_py",
+            census(containment, "uncovered_py"),
+            (
+                Assertion(
+                    "genuine_sampled_refutation",
+                    (
+                        "CONTAINMENT_COMPLETENESS",
+                        "PY_S11_CAL_UNCOVERED_AND_SOLUTION",
+                        "decision': 'NOT_COVERED_SAMPLED'",
+                        "witness':",
+                        "verdict=OMITTED_BRANCH",
+                    ),
+                ),
+                Assertion(
+                    "within_branch_product_never_covers",
+                    (
+                        "CONTAINMENT_COMPLETENESS",
+                        "PY_S11_CAL_UNCOVERED_AND_SOLUTION",
+                        "decision': 'COVERED_ALGEBRAIC'",
                     ),
                     False,
                 ),

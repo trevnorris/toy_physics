@@ -24,6 +24,7 @@ from s11_census_common import (
     undecided_occurrence_classes,
 )
 from s11_census_math import (
+    EXACT_ROUTE_TIME_BUDGET_SECONDS,
     OPERATION_MEMORY_BUDGET_BYTES,
     OPERATION_TIME_BUDGET_SECONDS,
     association,
@@ -415,6 +416,7 @@ def run_census(record: Path) -> None:
         "PROBE_BUDGET "
         f"record={quote(record)} operation_seconds={OPERATION_TIME_BUDGET_SECONDS} "
         f"operation_memory_bytes={OPERATION_MEMORY_BUDGET_BYTES} "
+        f"exact_route_seconds={EXACT_ROUTE_TIME_BUDGET_SECONDS} "
         "solver_route=OPERAND_RECOMPUTE_NONLINSOLVE_EXACT_SAMPLE "
         "verdict=BUDGET_DECLARED",
         flush=True,

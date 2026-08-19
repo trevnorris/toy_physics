@@ -1,4 +1,4 @@
-# S11 · The stray longitudinal — and every question it raises is one question
+# S11 · The stray longitudinal — closed homogeneous census, open interface physics
 
 **Sector 1 (light), step 3.** Walked side by side with the user, 2026-08-02.
 
@@ -13,13 +13,17 @@ actually is.
 ## What it does
 
 Lifts S10's zero to a propagating longitudinal mode, enters the brane's compression modulus as a
-**postulated** knob with a **named retirement condition**, and — the part that matters most — establishes
-that the new mode's entire physical status reduces to **one** unbuilt object.
+**postulated** knob with a **named retirement condition**, closes the homogeneous three-finite-mode
+census, and derives the simple \(k_w=0\) grazing locus. The free mode's actual leakage remains an
+interface and spectral-boundary problem; its possible finite-amplitude photon-helper role additionally
+requires nonlinear coupling and a harmonic/sideband radiation audit.
 
-⛔ **This is not a defect being repaired.** ⚠ **Exact Maxwell would be the FAILURE**: Maxwell puts charge
-in by hand, so a model matching it exactly would have no way to physically anchor charge. The extra mode
-is the anchor — it is what made the drum-head charge picture click (`CHARTER.md#falsification-standard`).
-⛔ `FAIL_CAUCHY_STRAY_LONGITUDINAL` is a **misnamed** token; never read the prefix as a verdict.
+⛔ **This is not a defect being repaired.** The extra mode is a characterized departure from a
+transverse-only Maxwell field. Historical drum-head discussions used the compressional response as
+motivation for a material electric sector, but the current canonical ontology does **not** identify
+\(u_L\) with charge: charge is the oriented throat/electric-odd boundary condition, while \(u_L\) is a
+separate in-plane longitudinal material mode. ⛔ `FAIL_CAUCHY_STRAY_LONGITUDINAL` is a **misnamed** token;
+never read the prefix as a verdict.
 
 ---
 
@@ -62,9 +66,11 @@ operator structure. ⇒ ⭐ **Sector separation is a `D=3` fact, ⛔ not a struc
 ρ_br ω² a = μ_R[k²a − k(k·a)] + B_comp k(k·a)
 ```
 
-⇒ transverse (`k·a = 0`): the new term vanishes **identically** — ⭐ **compression cannot touch light**,
-and S9/S10 are not reopened. Longitudinal (`a ∥ k`): the `μ_R` bracket vanishes and the zero is not
-perturbed but **replaced**.
+⇒ transverse (`k·a = 0`): the new term vanishes **identically** in the selected homogeneous \(D=3\)
+quadratic action. Longitudinal (`a ∥ k`): the `μ_R` bracket vanishes and the zero is not perturbed but
+**replaced**. Thus the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero
+linear cross-block under the selected action. This does not establish decoupling at nonlinear order, on
+a nonuniform slab, at an interface or defect, or after additional allowed fields are introduced.
 
 **Move 4 — where `B_comp` comes from.** ⛔ **The orchestrator's first mechanism was wrong** — it had
 brane material "squeezing out into the bulk," which smuggles in a phase transition (bulk *is* the
@@ -101,7 +107,9 @@ that is absent. ⚠ A third case was also omitted: `k_w = 0`, grazing.
 | transverse | `ω² = (μ_R/ρ_br)k²`, nullity `D−1`, kernel ⊥ `k` ⭐ **unchanged from S9/S10** |
 | longitudinal | `ω² = (B_comp/ρ_br)k²`, nullity `1`, kernel ∥ `k` |
 | cross-sector | ⊥ root independent of `B_comp`; ∥ root independent of `μ_R` — **computed residuals, both zero** |
+| finite \(D=3\) census | characteristic polynomial degree 3 in `ω²`, leading coefficient `−ρ_br³ ≠ 0`; exactly three finite roots counted with multiplicity and no hidden fourth mode |
 | degeneracy | **exactly** `B_comp = μ_R` |
+| simple longitudinal/bulk threshold | `k_w² = k²(c_L²/c_s0² − 1)`; `KW_ZERO_LOCUS` is `B_comp = ρ_br c_s0²`, equivalently `c_L = c_s0`; kinematic only |
 | dimensions | `[ρ_br]=(−D,0,1)`, `[μ_R]=[B_comp]=(2−D,−2,1)`, both speeds `(1,−1,0)` |
 
 ⭐ Every value matches predictions committed **before either script existed**
@@ -132,22 +140,24 @@ medium's modulus. Registered with `aliases: []` and no borrowed loci.
 
 ---
 
-## ⭐⭐⭐ Departure — and it is ONE statement, not three
+## ⭐⭐⭐ Departure — closed homogeneous census, open interface and nonlinear roles
 
-The walk carried three apparently separate open questions. They are the same question:
+The audit now separates four questions that earlier prose compressed into one:
 
-| question | reduces to |
+| question | present owner |
 |---|---|
-| does the longitudinal radiate into the bulk, or stay bound? | the coupling law |
-| is light's confinement **unconditional**, or does it rest on a polarization-overlap argument? | the coupling law |
-| does a second characteristic speed break Lorentz invariance **for us**? | the coupling law |
+| where the free homogeneous longitudinal root lies relative to simple bulk sound | S11 kinematic `KW_ZERO_LOCUS` |
+| whether that mode is bound, a threshold state, a bound state in the continuum, or a resonance | S11b interface and full-slab spectrum |
+| whether matter directly observes the second cone | derived matter/interface coupling |
+| whether the mode participates in a finite-amplitude photon helper | nonlinear intensity coupling plus harmonic and sideband response |
 
-⇒ ⭐⭐ **The second mode's entire physical status — radiative, observable, Lorentz-breaking, or none of
-the above — reduces to whether and how matter couples to it.** That is the **brane–bulk interface law**,
-it is **LINEAR**, and it was deferred by choice, not by difficulty. ⇒ **`S11b`.**
+At homogeneous linear order, the mode's bulk leakage and direct observability require the brane–bulk
+interface law. Its possible finite-amplitude photon-helper role additionally requires nonlinear intensity
+coupling, the complete slab spectrum, and a harmonic and sideband radiation audit.
 
-⛔ **What S11 does NOT deliver**, stated so it cannot be over-read: bound-vs-radiating · that light's
-confinement is unconditional · that the longitudinal is observable or unobservable · any leakage rate.
+⛔ **What S11 does NOT deliver**, stated so it cannot be over-read: bound-versus-resonant classification ·
+nonzero interface overlap · an actual leakage rate · unconditional light confinement · observability or
+unobservability of the longitudinal branch · a localized or nonradiative nonlinear photon helper.
 
 ## ⭐ What this settles about the light sector as a whole
 
@@ -167,13 +177,13 @@ Established with the user, 2026-08-02, and load-bearing for how the departure ab
   If uniform flow were observable we would detect absolute motion; if gradients were not, there would be
   no gravity. ⚠ *"The bulk flow is invisible because we are made of it"* and *"density gradients bend
   light"* are the same statement about different derivatives.
-- ⭐⭐ **Light gravitates but does NOT dissipate, and the second is a consequence of S9.** ⛔ The
-  orchestrator conflated them. Light must carry stress-energy (a **co-moving** disturbance, no loss);
-  light must **not** leak (photons from distant galaxies arrive). ⇒ A photon can only lose energy into a
-  mode that exists to receive it, and **the bulk carries no transverse mode** — S9's second requirement.
-  ⭐ **Photon stability over cosmological distance is a consequence of bulk shear-freeness**, which
-  upgrades that requirement from bookkeeping to an observational consequence. ⚠ The one genuine loss
-  channel is **mode conversion where the medium is inhomogeneous** — near matter, ⛔ not in vacuum.
+- ⭐⭐ **Light must carry stress-energy and must not dissipate unacceptably, but bulk shear-freeness alone
+  proves only a narrower statement.** Absence of a transverse bulk branch removes the simplest direct
+  transverse-to-transverse bulk channel. It does not exclude conversion into longitudinal, bulk-sound,
+  thickness, density, order, electric, or reservoir modes. The homogeneous selected action also removes
+  direct quadratic transverse–longitudinal mixing in \(D=3\), but finite-amplitude harmonics, slab
+  gradients, interfaces, defects, and enlarged field content remain open radiation channels that must be
+  calculated.
 
 ---
 
@@ -251,11 +261,12 @@ it "degeneracy strata" — an independent Codex check refuted that; corrected he
   mode, but the sector labels are not globally rigid.
 - **(b) the `KW_ZERO_LOCUS` phase-matching family** (592 finding/under-decided lines, **88 on the MAIN
   package**) — its solution is `{B_comp → c_s0²ρ_br}` (and `{μ_R → c_s0²ρ_br}`), i.e. **`c_L = c_s0`**:
-  exactly the `k_w = 0` **grazing threshold** of Move 6, the boundary between the longitudinal radiating
-  into the bulk and staying bound. ⭐ **This is physics, not bookkeeping** — but it is the
-  **bound-vs-radiating** question this step *explicitly defers* (see Departure, and "What S11 does NOT
-  deliver"). ⇒ It belongs to the brane–bulk interface law, **S11b**, not to any S11 engine round. The
-  threshold value itself is decided; only the exhaustive status-token completeness on the locus is not.
+  exactly the `k_w = 0` **grazing threshold** of Move 6, the boundary between a kinematically closed and
+  kinematically open propagating bulk-sound channel for the matched free longitudinal branch. ⭐ **This is
+  physics, not bookkeeping**, but it is not by itself a bound-versus-radiating verdict. Interface overlap,
+  boundary conditions, kinetic norm, bound-state-in-continuum possibilities, and leakage width belong to
+  the brane–bulk interface and full-slab problem, **S11b**, not to any S11 engine round. The threshold value
+  itself is decided; only the exhaustive status-token completeness on the locus is not.
 
 ⭐ **S11's own conclusion is independent of both.** The **computed result** above — the generic `M_ij`
 eigenvalues (transverse `μ_R/ρ_br` nullity `D−1`, longitudinal `B_comp/ρ_br` nullity 1, no cross-modulus,
@@ -268,6 +279,25 @@ SymPy sign **probe** leaves it `UNDECIDED`, so "both engines decide every generi
 overstatement — the values are decided, one sign token is not; (iii) sector separation is a **`D=3`
 fact** (at `D=2` the reflection-odd invariant mixes the sectors — Move 2), not structural; (iv) the
 `PASS` gates live in this step record's acceptance harness, **not** in the two engine `.out` payloads.
+
+### Ownership boundary after the grazing-threshold audit
+
+**S11 owns:**
+
+- the homogeneous \(D=3\) dynamical matrix;
+- the two transverse roots and one longitudinal root;
+- their selected quadratic linear cross-block being zero;
+- the proof that the cubic characteristic polynomial has no hidden finite root for \(\rho_{\rm br}\ne0\);
+- the simple **KW_ZERO_LOCUS** phase-matching threshold \(c_L=c_{s0}\).
+
+**S11b and the nonlinear light program own:**
+
+- the complete brane–bulk interface law and whether its overlap is nonzero;
+- classification as a bound state, threshold state, bound state in the continuum, or resonance;
+- actual leakage rates and behavior at and near \(k_w=0\);
+- the full variable-coefficient slab spectrum;
+- nonlinear intensity coupling and longitudinal participation in the photon helper;
+- DC, harmonic, and sideband radiation into every receiving branch.
 
 ⇒ ⭐ **S11's stated conclusion stands closed.** Kind (a) is documented completeness bookkeeping; kind (b)
 is handed to **S11b** where it already belongs. ⛔ **The S11 engine round was NOT run** — it would buy

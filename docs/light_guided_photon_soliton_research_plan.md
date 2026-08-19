@@ -97,7 +97,67 @@ A linear wave equation can support plane waves and ordinary wave packets. It doe
 
 The photon program is therefore a nonlinear extension of the background light sector, not a restatement of the existing two-mode count.
 
-### 1.2 Wave packet, solitary wave, soliton, and photon analog
+### 1.2 Derived homogeneous transverse–longitudinal separation
+
+Under the selected homogeneous, isotropic, parity-even quadratic brane response in three brane dimensions,
+
+\[
+\mathcal M(\mathbf k)
+=
+\mu_Rk^2P_T
++
+B_{\rm comp}k^2P_L,
+\]
+
+where
+
+\[
+P_T
+=
+I-\frac{\mathbf k\mathbf k^T}{k^2},
+\qquad
+P_L
+=
+\frac{\mathbf k\mathbf k^T}{k^2}.
+\]
+
+The audited spectrum is
+
+\[
+\omega_T^2
+=
+\frac{\mu_R}{\rho_{\rm br}}k^2,
+\qquad
+\text{multiplicity }2,
+\]
+
+and
+
+\[
+\omega_L^2
+=
+\frac{B_{\rm comp}}{\rho_{\rm br}}k^2,
+\qquad
+\text{multiplicity }1.
+\]
+
+The characteristic polynomial is cubic in \(\omega^2\), with nonzero leading coefficient proportional to \(-\rho_{\rm br}^3\). For \(\rho_{\rm br}\ne0\), the selected homogeneous system therefore has exactly three finite roots counted with multiplicity. Degeneracy can merge the known transverse and longitudinal eigenvalues but cannot create a hidden additional finite mode. At \(B_{\rm comp}=\mu_R\), all three roots coincide; the eigenvalue alone then does not distinguish transverse from longitudinal character, but no new mode appears.
+
+At generic coefficients,
+
+\[
+\boxed{
+P_T\mathcal M P_L=0.
+}
+\]
+
+The transverse light root is independent of \(B_{\rm comp}\), while the longitudinal root is independent of \(\mu_R\). Equivalently:
+
+> The homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero linear cross-block under the selected action.
+
+This is a **derived result under the stated homogeneous quadratic assumptions**. It does not establish decoupling at nonlinear order, on a nonuniform slab, near interfaces or defects, in a parity- or time-reversal-breaking background, or after additional reservoir variables are introduced.
+
+### 1.3 Wave packet, solitary wave, soliton, and photon analog
 
 These terms should remain distinct.
 
@@ -121,7 +181,7 @@ A **classical photon analog** in this model should satisfy more than temporary l
 
 A classical soliton does not automatically supply quantum mechanics. Even a successful packet may form a continuous family in amplitude, width, or action. The later emergence of a universal action scale, an \(E\)-versus-\(\omega\) quantum law, discrete emission and absorption, photon number, and statistics would remain separate closure problems.
 
-### 1.3 How serious is failure?
+### 1.4 How serious is failure?
 
 The linear light sector could remain mathematically valid even if no free self-bound packet exists. A throat could also trap an otherwise non-self-bound wave as a cavity or defect mode.
 
@@ -659,9 +719,23 @@ This makes it a legitimate candidate participant in photon localization.
 
 ### 8.2 Linear decoupling, nonlinear coupling
 
-In the homogeneous weak-field limit, the transverse and longitudinal branches should remain separate normal modes. This preserves two freely selectable transverse light polarizations.
+In the selected homogeneous \(D=3\) weak-field theory, the transverse and longitudinal branches are derived to have zero quadratic cross-block. This preserves two freely selectable transverse light polarizations at leading order. The result is not assumed to survive an arbitrary nonuniform slab or an enlarged quadratic action; Stage L2 must test the complete operator.
 
 At finite amplitude, however, transverse shear can produce compression, density change, order change, or thickness response. Nonlinear coupling is therefore natural even if linear mixing vanishes.
+
+A natural weakly nonlinear ordering is
+
+\[
+\boxed{
+u_T=O(\epsilon),
+\qquad
+\eta_{\rm helper}=O(\epsilon^2),
+\qquad
+\text{feedback on }u_T=O(\epsilon^3).
+}
+\]
+
+This hierarchy is a reduction target, not an independent postulate. It follows only if the first allowed even helper source is quadratic in the transverse amplitude. A derived constitutive law with a different consistent leading order must state and propagate that ordering.
 
 The desired feedback is
 
@@ -691,7 +765,7 @@ Introduce a schematic helper coordinate
 
 \[
 \boxed{
-\eta
+\eta\equiv\eta_{\rm helper}
 =
 a_L\nabla\cdot\mathbf u_L
 +a_t h_t
@@ -767,31 +841,178 @@ A successful photon packet can therefore use thickness and longitudinal structur
 
 ## 9. Nonradiative versus radiative longitudinal response
 
-### 9.1 Speed ordering
+### 9.1 Three separate speed comparisons
 
-The relative speed of the transverse and helper branches is critical.
-
-Let \(c_L\) denote the relevant long-wavelength speed of the longitudinal-like helper branch. The photon envelope travels at \(v\simeq c_\gamma\).
-
-A promising ordering is
+The homogeneous audit introduces three speeds that must not be collapsed into one inequality:
 
 \[
-\boxed{c_L>c_\gamma.}
+c_\gamma
+:\ \text{low-amplitude transverse guided speed},
 \]
-
-Then the photon can be subsonic relative to the longitudinal branch. In a comoving frame, the induced helper response may be spatially bound rather than emitted as a traveling wake.
-
-If instead the packet satisfies a resonance condition
 
 \[
-\omega_L(\mathbf q)=\mathbf q\cdot\mathbf v,
+c_L^2
+=
+\frac{B_{\rm comp}}{\rho_{\rm br}}
+:\ \text{homogeneous in-plane longitudinal speed},
 \]
 
-it can emit longitudinal radiation continuously. That would drain energy and likely prevent a stable free photon.
+and
 
-The complete condition must use the actual coupled dispersion, not only the low-\(k\) speed.
+\[
+c_{s0}
+:\ \text{asymptotic bulk-sound speed in the simple phase-matching model}.
+\]
 
-### 9.2 Comoving helper equation
+Let \(v_{\rm packet}=|\mathbf v|\) denote the translational speed of the nonlinear photon packet.
+
+The first comparison is
+
+\[
+v_{\rm packet}
+\quad\text{versus}\quad
+c_L.
+\]
+
+For a simple acoustic longitudinal branch, \(v_{\rm packet}<c_L\) helps prevent a DC comoving source from resonantly emitting a free in-plane longitudinal wave. It is neither necessary nor sufficient for the complete mixed helper to be nonradiative.
+
+The second comparison is
+
+\[
+c_L
+\quad\text{versus}\quad
+c_{s0}.
+\]
+
+It places the **free homogeneous longitudinal eigenbranch** below, at, or inside the simple bulk-sound continuum.
+
+The third comparison is
+
+\[
+v_{\rm packet}
+\quad\text{versus}\quad
+c_{s0}.
+\]
+
+It places the DC comoving helper source below, at, or above the corresponding simple bulk-sound grazing condition. Higher harmonics and sidebands require their own frequency-dependent tests.
+
+If a later sector enforces
+
+\[
+v_{\rm packet}\simeq c_\gamma=c_{s0},
+\]
+
+the DC comoving helper may lie near a bulk grazing threshold for collinear Fourier components. This is not automatically fatal: interface overlap, polarization, finite-thickness dispersion, a gap, or a mixed helper eigenmode may suppress radiation. It is nevertheless a cross-sector compatibility condition that must be calculated rather than omitted.
+
+### 9.2 Free longitudinal branch versus the bulk-sound continuum
+
+For the simple homogeneous phase-matching comparison, let
+
+\[
+\omega=c_Lk,
+\qquad
+c_L^2=\frac{B_{\rm comp}}{\rho_{\rm br}},
+\]
+
+and let the isotropic bulk-sound branch satisfy
+
+\[
+\omega^2
+=
+c_{s0}^2(k^2+k_w^2),
+\]
+
+where \(k\) is the conserved tangential wave number and \(k_w\) is the bulk normal wave number. Matching the free brane-longitudinal branch to bulk sound gives
+
+\[
+\boxed{
+k_w^2
+=
+k^2
+\left(
+\frac{c_L^2}{c_{s0}^2}-1
+\right).
+}
+\]
+
+The three kinematic regimes are:
+
+| Regime | Normal wave number | Kinematic meaning |
+|---|---:|---|
+| \(c_L<c_{s0}\) | \(k_w^2<0\) | No propagating bulk-sound channel for the matched free longitudinal mode; an evanescent profile is possible |
+| \(c_L=c_{s0}\) | \(k_w=0\) | Grazing or continuum threshold |
+| \(c_L>c_{s0}\) | \(k_w^2>0\) | A propagating bulk-sound channel is kinematically open |
+
+The audited `KW_ZERO_LOCUS` is
+
+\[
+\boxed{
+B_{\rm comp}
+=
+\rho_{\rm br}c_{s0}^{\,2},
+\qquad
+c_L=c_{s0}.
+}
+\]
+
+This phase-matching test determines whether a propagating bulk channel exists in the simple homogeneous comparison. It does not determine whether the brane mode couples to that channel, whether the overlap vanishes by symmetry, whether a bound state in the continuum exists, or whether an evanescent solution is a normalizable bound eigenstate. Those questions require the complete brane–bulk interface operator, boundary conditions, kinetic norm, and spectral classification.
+
+Thus the three regimes must be called **bulk channel kinematically closed**, **grazing threshold**, and **bulk channel kinematically open**—not simply bound, threshold, and radiating.
+
+### 9.3 Forced-helper radiation and harmonic audit
+
+The photon helper is not necessarily an on-shell free longitudinal wave. For a packet traveling with velocity \(\mathbf v\) and possessing comoving internal frequency \(\Omega\), write its nonlinear source spectrum as
+
+\[
+\boxed{
+\omega_{m,\mathbf q}
+=
+\mathbf q\cdot\mathbf v+m\Omega,
+\qquad
+m\in\mathbb Z.
+}
+\]
+
+The free in-plane longitudinal resonance test is
+
+\[
+\omega_L(\mathbf q)
+=
+\mathbf q\cdot\mathbf v+m\Omega.
+\]
+
+For the simple isotropic bulk-sound model, a forced source component has
+
+\[
+\boxed{
+k_w^2(m,\mathbf q)
+=
+\frac{
+\left(
+\mathbf q\cdot\mathbf v+m\Omega
+\right)^2
+}{
+c_{s0}^2
+}
+-|\mathbf q|^2.
+}
+\]
+
+Kinematic intersection with a receiving dispersion branch is not enough. Radiation into branch \(j\) additionally requires nonzero projected source overlap:
+
+\[
+\boxed{
+\Pi_j(\mathbf q)\,
+\mathbf S_m(\mathbf q)
+\ne0.
+}
+\]
+
+The complete audit must include every longitudinal, bulk, thickness, order, density, electric, and conversion branch. The KW threshold places the **free longitudinal eigenbranch** relative to the simple bulk-sound continuum. The Fourier-support and projector audit decides whether the **nonlinearly forced helper** emits.
+
+A slaved off-shell helper can remain nonradiative even when the corresponding free eigenmode lies in an open continuum, provided its Fourier support does not hit a receiving pole or its interface overlap is sufficiently suppressed. Conversely, a DC helper may be localized while a second harmonic, sideband, or higher harmonic radiates.
+
+### 9.4 Comoving helper equation
 
 A diagnostic helper equation may be written
 
@@ -808,7 +1029,7 @@ A bound helper requires an elliptic, screened, or otherwise nonradiative comovin
 
 This is a direct calculation and a major early gate.
 
-### 9.3 A gapped helper may be useful
+### 9.5 A gapped helper may be useful
 
 The helper need not itself be gapless. A moderately gapped even mode can generate a localized, finite-range response around the photon envelope.
 
@@ -824,6 +1045,19 @@ which feeds back into the transverse equation.
 A finite-range or nonlocal response can stabilize a three-dimensional packet more effectively than a simple local cubic self-focusing term.
 
 The same gapped helper must remain compatible with the electric-sector requirement that unwanted even thickness forces be short-ranged.
+
+### 9.6 Current radiation status
+
+| Channel or question | Status |
+|---|---|
+| Homogeneous quadratic \(T\leftrightarrow L\) conversion | Derived to vanish in \(D=3\) under the selected action |
+| Number of finite homogeneous roots | Exactly three under the stated assumptions; no hidden finite mode |
+| Free longitudinal branch versus bulk continuum | Simple kinematic threshold derived at \(c_L=c_{s0}\) |
+| Actual free-longitudinal leakage | Open; requires interface coupling and spectral boundary conditions |
+| Nonlinear DC helper response | Desired if localized and nonradiative; not yet derived |
+| Nonlinear \(2\omega_0\), sideband, and higher-harmonic leakage | Open |
+| Defect-, curvature-, or slab-gradient-induced conversion | Open |
+| Longitudinal-to-bulk leakage in the complete slab | S11b / open |
 
 ## 10. Candidate reduced envelope system
 
@@ -998,6 +1232,18 @@ Both must use the same frozen slab and constitutive coefficients.
 
 Before solving, define the exact output required from the medium.
 
+Freeze the following notation and distinctions:
+
+- \(c_\gamma\): low-amplitude transverse guided speed;
+- \(c_L\): homogeneous in-plane longitudinal speed;
+- \(c_{s0}\): asymptotic bulk-sound speed entering the simple phase-matching comparison;
+- \(v_{\rm packet}\): translational velocity of the nonlinear photon packet;
+- \(k_w\): bulk normal wave number;
+- `KW_ZERO_LOCUS`: the simple homogeneous grazing locus \(c_L=c_{s0}\);
+- \(\omega_0\): carrier frequency in the selected frame;
+- \(\Omega\): comoving internal periodic frequency used to organize source harmonics and sidebands;
+- free-mode continuum placement versus forced-source radiation as distinct questions.
+
 At minimum:
 
 - one lowest gapless guided transverse branch;
@@ -1007,7 +1253,8 @@ At minimum:
 - calculable higher-order dispersion outside that regime;
 - a candidate nonlinear self-guiding mechanism;
 - no leading electric-odd source from a free photon;
-- acceptable coupling to longitudinal, thickness, density, order, and bulk modes.
+- acceptable coupling to longitudinal, thickness, density, order, and bulk modes;
+- an explicit audit of DC, harmonic, and sideband radiation channels.
 
 This document is the first version of that contract.
 
@@ -1046,6 +1293,8 @@ Solve the normal eigenproblem for each brane wave vector \(\mathbf k\).
 
 Determine:
 
+- whether the complete \(w\)-dependent operator reproduces the exact homogeneous \(D=3\) two-transverse/one-longitudinal roots in the appropriate limit;
+- whether the zero homogeneous quadratic transverse–longitudinal cross-block survives or is replaced by slab-gradient, interface, anisotropic, parity-breaking, or reservoir-induced mixing;
 - the number and parity of guided branches;
 - the normal profiles \(f_{a,n}(w;k)\);
 - the dispersions \(\omega_{a,n}(k)\);
@@ -1056,10 +1305,17 @@ Determine:
 - normal localization lengths \(\ell_w(k)\);
 - brane-participation fractions \(\mathcal P_{\rm br}(k)\);
 - fixed-on-brane-normalization effective inertia \(\mathcal I_{\rm 3D}(k)\), and pole residues once a brane observable is specified;
+- the bulk essential spectrum and the placement of the free longitudinal branch relative to it;
+- whether the complete slab reproduces or replaces the simple `KW_ZERO_LOCUS`;
+- whether the longitudinal branch is a bound eigenstate, threshold state, bound state in the continuum, or outgoing resonance;
+- interface overlaps and leakage widths for every kinematically open channel;
+- whether the \(k_w=0\) locus produces long normal tails, singular normalization, anomalous density of states, or enhanced mode conversion;
 - transverse-longitudinal mixing;
 - interface and order participation;
 - whether the lowest transverse branch is truly gapless;
 - whether the two polarizations remain degenerate.
+
+The homogeneous KW formula is a baseline and consistency limit, not a substitute for the complete variable-coefficient operator.
 
 ### 13.4 Stage L3 — construct the projected transverse effective action
 
@@ -1102,6 +1358,28 @@ h_tI,
 
 and polarization-dependent invariants.
 
+Promote the cubic-invariant audit explicitly. Among the candidate terms to derive or exclude are
+
+\[
+(\nabla\cdot\mathbf u_L)\mathcal S_T^2,
+\qquad
+h_t\mathcal S_T^2,
+\qquad
+\delta n\,\mathcal S_T^2,
+\qquad
+\delta\chi_B\,\mathcal S_T^2.
+\]
+
+For every candidate coupling, determine:
+
+- whether it is independent or a total derivative;
+- its reflection and time-reversal parity;
+- whether it preserves the homogeneous quadratic block separation;
+- its DC, \(2\omega_0\), sideband, and higher-harmonic source content;
+- its projector and interface overlap with free longitudinal, bulk, thickness, order, density, electric, and conversion continua;
+- its focusing or defocusing sign;
+- whether the complete constrained energy remains bounded below.
+
 Determine:
 
 - focusing or defocusing sign;
@@ -1114,6 +1392,16 @@ Determine:
 ### 13.6 Stage L5 — derive the weakly nonlinear envelope system
 
 Use a multiple-scale expansion around a transverse carrier \((k_0,\omega_0)\).
+
+Unless the derived constitutive law produces a different consistent ordering, use
+
+\[
+A=O(\epsilon),
+\qquad
+\eta=O(\epsilon^2),
+\]
+
+so the helper first responds to transverse intensity and feeds back on the carrier at \(O(\epsilon^3)\).
 
 The output should be a **derived** vector envelope/helper system, not an assumed nonlinear Schrödinger equation.
 
@@ -1135,8 +1423,11 @@ Before large simulations, test:
 - virial or scaling identities;
 - collapse criteria;
 - transverse instability of one-dimensional pulses;
-- longitudinal resonance conditions;
-- leakage thresholds;
+- free longitudinal eigenmode confinement and leakage;
+- DC forced-helper localization;
+- harmonic and sideband radiation into every receiving branch;
+- threshold behavior at `KW_ZERO_LOCUS`;
+- full-slab corrections to the simple homogeneous phase-matching formula;
 - whether a finite-energy three-dimensional branch is allowed;
 - whether helper-field elimination produces focusing of the required sign.
 
@@ -1226,11 +1517,13 @@ A successful candidate should satisfy all of the following within a declared reg
 
 1. The stable slab exists and has bounded energy.
 2. The lowest transverse guided branch is gapless.
-3. Exactly two healthy transverse polarizations occur on the homogeneous branch.
+3. The appropriate homogeneous limit reproduces the closed two-transverse/one-longitudinal finite-mode census with zero selected quadratic cross-block, while the complete slab retains exactly two healthy freely selectable transverse photon polarizations.
 4. The normal profile is spectrally isolated and localized, or is an acceptably long-lived calculated resonance, as judged by the derived asymptotics of \(\Delta_{\rm spec}\), \(\Gamma_0\), \(\ell_w\), \(\mathcal P_{\rm br}\), \(\mathcal I_{\rm 3D}\), and the brane-observable pole residue where defined.
 5. The relevant frequency family lies on one connected physical branch.
 
 Criterion 4 is not satisfied merely by rescaling the eigenfunction to unit norm. Nor does it require a \(k\)-independent positive spectral gap or a \(k\)-independent localization length. The asymptotic scaling must preserve the declared effective three-dimensional regime and an appreciable coupling to brane observables.
+
+The complete slab calculation must also classify the free longitudinal branch relative to the bulk essential spectrum and determine whether `KW_ZERO_LOCUS` survives, shifts, splits, or is replaced. Kinematic opening of a bulk channel is not itself evidence of leakage without nonzero interface overlap and outgoing flux.
 
 ### 14.2 Localization criteria
 
@@ -1252,7 +1545,7 @@ Criterion 4 is not satisfied merely by rescaling the eigenfunction to unit norm.
 15. The packet propagates at or extremely near \(c_\gamma\).
 16. Speed dependence on amplitude, width, or frequency is acceptably small in the intended regime.
 17. The energy-momentum relation is approximately light-like.
-18. There is no persistent longitudinal, bulk, electric, thickness, or conversion wake.
+18. There is no persistent longitudinal, bulk, electric, thickness, or conversion wake from the DC helper, carrier harmonics, sidebands, or higher nonlinear source components.
 19. Any metastable leakage lifetime is sufficiently long.
 
 ### 14.5 Interaction criteria
@@ -1281,7 +1574,7 @@ The selected photon branch fails if any required result proves impossible, inclu
 7. every allowed nonlinear response is defocusing when focusing is required;
 8. every focusing branch collapses or has energy unbounded below;
 9. no reflection-even helper mode can bind to the packet;
-10. the helper necessarily radiates a persistent longitudinal or bulk wake;
+10. the DC helper or any unavoidable carrier harmonic or sideband necessarily radiates an unacceptable persistent longitudinal, bulk, thickness, density, order, electric, or conversion wake;
 11. the helper becomes a third freely selectable photon polarization;
 12. the packet necessarily carries a leading electric-odd monopole;
 13. localization exists only at a single isolated frequency with no acceptable light spectrum;
@@ -1307,10 +1600,13 @@ For every background eigenmode, record:
 - static small-\(k\) stiffness;
 - dynamic dispersion;
 - gap or screening length;
+- essential-spectrum placement and any grazing threshold;
 - group velocity;
 - energy sign;
 - damping or leakage;
 - allowed source couplings;
+- interface and mode-projector overlaps;
+- DC, harmonic, and sideband source support;
 - role in light, electricity, magnetism, gravity, inertia, or unwanted radiation.
 
 The light branch needs the finite-\(k\), nonlinear part of this matrix. The force branch needs the low-\(k\), static and retarded part.
@@ -1335,13 +1631,16 @@ The following entries should be added to the broader provenance ledger as this p
 
 | Claim or quantity | Current status | Required evidence | Downstream dependencies | Failure condition |
 |---|---|---|---|---|
-| Two transverse homogeneous modes | Derived under supplied quadratic assumptions | Existing homogeneous action analysis | Free light, support mode, magnetism, radiation | Wrong mode count or instability |
+| Homogeneous \(D=3\) mode census and quadratic block separation | Derived under stated assumptions | [S11](../research/pde_ledger_v3/steps/S11_stray_longitudinal.md): \(\omega_T^2=(\mu_R/\rho_{\rm br})k^2\) with multiplicity 2, \(\omega_L^2=(B_{\rm comp}/\rho_{\rm br})k^2\) with multiplicity 1, cubic characteristic polynomial with nonzero leading coefficient for \(\rho_{\rm br}\ne0\), and zero selected \(T\)-\(L\) cross-block | Free light, helper ordering, support mode, magnetism, radiation | Wrong mode count, instability, or use outside the homogeneous isotropic parity-even quadratic scope without reopening the result |
 | Stable finite slab | Open | Solved \(n_0(w),\chi_0(w)\) with selected thickness and spectrum | Every light result | No stable or metastable slab |
 | Lowest guided transverse profile \(f_0(w;k)\) | Target | Variable-coefficient normal eigenproblem with \(\Delta_{\rm spec}\), \(\Gamma_0\), \(\ell_w\), \(\mathcal P_{\rm br}\), fixed-on-brane \(\mathcal I_{\rm 3D}\), regulator tests for resonances, and a pole residue once an observable is specified | Confinement, effective inertia, dispersion, photon packet | No bound or long-lived resonance branch, unacceptable delocalization or leakage, vanishing brane participation/residue, or singular effective inertia |
 | Gapless guided photon branch | Target | \(\lambda_0=0\), \(\omega_0(k)\to0\) | Light-like propagation | Lowest branch remains gapped |
 | Two guided polarizations | Target reduction | Complete constrained guided spectrum | Photon identity | Extra or missing polarization |
 | Finite-thickness dispersion | Open | Coefficients \(a_4,a_6,\ldots\) from projection | Soliton balance | No compatible dispersion |
-| Longitudinal/even helper mode | Open hypothesis | Derived eigenmode and coupling to \(I\) | Self-guiding | No bound or nonradiative helper |
+| KW grazing threshold | Derived kinematic threshold under the simple homogeneous phase-matching model | \(k_w^2=k^2(c_L^2/c_{s0}^2-1)\), with **KW_ZERO_LOCUS** \(B_{\rm comp}=\rho_{\rm br}c_{s0}^2\) or \(c_L=c_{s0}\) | Free-longitudinal continuum placement and full-slab threshold audit | Threshold is treated as proof of coupling, leakage, boundness, or absence of a bound state in the continuum |
+| Full interface leakage closure | Open / S11b | Complete brane–bulk operator, kinetic norm, essential spectrum, interface matching, bound/threshold/BIC/resonance classification, source overlap, outgoing flux, and leakage width | Light confinement, longitudinal observability, drag, packet lifetime | Unacceptable leakage or no mathematically closed spectral classification |
+| Longitudinal/even helper mode | Open hypothesis | Derived mixed eigenmode, coupling to \(I\), and placement relative to all receiving continua | Self-guiding | No localized nonradiative helper |
+| Nonlinear helper radiation closure | Open | Complete DC, harmonic, and sideband source spectrum; mode projectors; interface overlaps; retarded response; emitted powers; and threshold behavior | Photon localization and lifetime | Any unavoidable source component radiates unacceptably |
 | Nonlinear envelope coefficients | Target | Projection of shared constitutive law | Existence and stability | Wrong sign, collapse, or independent tuning |
 | Three-dimensional localized packet | Target relation | Reduced and parent-field traveling solution | Classical photon ontology | No finite-energy stable branch |
 | Packet stability | Target | Linear, Floquet, or retarded spectrum | Lifetime and interactions | Growing mode or unacceptable leakage |
@@ -1358,8 +1657,12 @@ Each stage should produce reproducible symbolic and numerical outputs.
 - parent quadratic operator;
 - normal-mode reduction;
 - polarization projectors;
+- homogeneous characteristic polynomial and finite-root census;
+- simple and full-slab \(k_w=0\) threshold conditions;
 - small- and finite-\(k\) dispersion expansions;
 - nonlinear invariant inventory;
+- DC, harmonic, and sideband source spectra;
+- receiving-mode projector and interface-overlap formulas;
 - projected coupling coefficients;
 - envelope/helper equations;
 - energy, momentum, and virial identities;
@@ -1370,6 +1673,8 @@ Each stage should produce reproducible symbolic and numerical outputs.
 - slab profiles;
 - guided mode profiles across \(w\);
 - essential-spectrum edges and spectral-separation curves;
+- free-longitudinal and forced-source continuum-placement maps;
+- parameter sweeps through and around **KW_ZERO_LOCUS**;
 - resonance-width and lifetime curves;
 - localization-length, brane-participation, fixed-on-brane-inertia, and applicable pole-residue curves;
 - regulator-convergence tests for outgoing resonances;
@@ -1403,9 +1708,9 @@ The first practical questions are deliberately narrower than “solve the photon
 3. Does a symmetric finite slab possess a gapless bound transverse branch or an acceptably long-lived outgoing resonance?
 4. What are the branch's exact normal profile \(f_0(w;k)\), spectral separation, width, localization length, brane participation, and fixed-on-brane effective inertia?
 5. What higher-order dispersion follows from finite thickness?
-6. Is the in-plane longitudinal branch faster or slower than the transverse branch?
+6. How do \(v_{\rm packet}\), \(c_\gamma\), \(c_L\), and \(c_{s0}\) compare, and how does the complete slab behave at and near the simple **KW_ZERO_LOCUS**?
 7. Which even eigenmode is most strongly sourced by transverse intensity?
-8. Does eliminating that mode produce focusing, defocusing, or nonlocal response?
+8. Does eliminating that mode produce focusing, defocusing, or nonlocal response, and do any of its DC, harmonic, or sideband source components radiate?
 9. Is the nonlinear energy bounded below?
 10. Can a one-dimensional traveling envelope exist?
 11. Is that envelope stable to the two lateral brane directions?
@@ -1436,6 +1741,8 @@ The central candidate structure is
 \]
 
 The longitudinal mode is therefore not redefined as charge or promoted to a third photon polarization. It is investigated as a possible bound support field for the packet. If its dispersion permits a comoving nonradiative response, it may be essential. If it necessarily forms a wake, causes drag, or destabilizes the brane, it becomes a failure channel.
+
+The homogeneous \(D=3\) quadratic theory now supplies a closed three-mode census and exact linear transverse–longitudinal separation under the selected action. It also supplies a genuine free-longitudinal/bulk-sound grazing threshold at \(c_L=c_{s0}\). These results strengthen the weak-field light sector but do not close photon confinement or longitudinal leakage. The photon-soliton program therefore proceeds with a purely transverse linear carrier and a nonlinearly induced even helper, while the complete slab and retarded-response calculations determine whether the helper and all of its harmonics remain bound or radiate.
 
 This program is largely independent of the full throat solve and should run in parallel with the far-field force audit. Both depend on the same stable slab and complete background spectrum, and both must use the same frozen constitutive coefficients. The photon track tests finite-wave-number nonlinear localization; the force track tests long-wavelength carriers, ranges, and couplings.
 

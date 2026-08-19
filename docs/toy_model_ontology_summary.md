@@ -35,6 +35,16 @@ The model assumes four spatial coordinates. Write a projected brane point as \(\
 
 and one time coordinate \(t\). The familiar directions \(x,y,z\) lie along the brane. The coordinate \(w\) is normal to it and points into the bulk.
 
+The postulated parent arena is
+
+\[
+\boxed{
+\mathbb R_t\times(\mathbb R^4,\delta_{AB})
+},
+\]
+
+with preferred Newtonian time \(t\) and flat Euclidean spatial metric \(\delta_{AB}\). The operators \(\nabla_4\), spatial dot products, reflection \(\mathcal R_w\), and norms such as \(\|\mathbf Y_+-\mathbf Y_-\|_4\) use this ambient metric. Constitutive coefficients or a solved background may be anisotropic without changing this metric postulate. If a future branch replaces the flat ambient geometry, Euclidean set distance must be replaced by the corresponding geodesic distance and every dependent Green function and wave operator reopened.
+
 This background arena is part of the model's setup. The model does not currently attempt to derive space or time themselves. Instead, it asks whether effective \(3+1\)-dimensional physics can emerge for observers confined to a brane inside this \(4+1\)-dimensional arena.
 
 ## 2. The one fundamental substance
@@ -51,6 +61,29 @@ where:
 - \(\theta\) is the condensate phase;
 - gradients of \(\theta\) generate the four-dimensional material velocity \(\mathbf v_{\rm med}\) in the conservative Madelung branch;
 - the density and velocity live throughout all four spatial dimensions.
+
+The total constituent current \(\mathbf J_n\) is defined by exact parent-medium conservation,
+
+\[
+\boxed{
+\partial_t n+\nabla_4\cdot\mathbf J_n=0
+}.
+\]
+
+In the conservative Madelung branch,
+
+\[
+\mathbf J_n=n\mathbf v_{\rm med}.
+\]
+
+A coarse-grained relaxational or mixed branch may instead have
+
+\[
+\mathbf J_n
+=n\mathbf v_{\rm med}+\mathbf J_n^{\rm rel},
+\]
+
+but any relative or diffusive current \(\mathbf J_n^{\rm rel}\) must be derived with its momentum, energy, and entropy partners. It is not an additional material source. Thus \(n\) has constituent-number-per-four-volume units, while an aperture integral of \(\mathbf J_n\) has constituent-number-per-time units.
 
 The working substrate is a generalized nonlinear-Schrödinger or Gross–Pitaevskii medium with a stiff polytropic equation of state, presently written
 
@@ -83,6 +116,8 @@ An order variable \(\chi_B\) distinguishes two states of the medium:
 \]
 
 The brane and bulk are therefore not two substances. They are two states of one substance. Material can de-structure from the brane state into the bulk state and can reorder from the bulk state into the brane state.
+
+The symbol \(\chi_B\) always denotes the material order variable. It is interpreted literally as an ordered fraction only on the fraction/relaxational branch. If an inertial or mixed branch requires both an order field and a separate coarse-grained ordered material fraction, reserve \(f_B\in[0,1]\) for that fraction and derive its coupling to \(\chi_B\).
 
 The existence of this two-state structure and the potential that supports it are major postulates. The final theory must also make a major branch choice about the dynamics of \(\chi_B\).
 
@@ -120,7 +155,7 @@ A physical effective theory may contain both reversible order dynamics and dampi
 
 The final parent theory must explicitly select and close a conservative, relaxational, or mixed inertial-dissipative order branch. What is forbidden is leaving the branch unspecified or using damping without its internal reservoir, energy, momentum, and entropy partners. Every selected branch must close constituent conservation, momentum and energy accounting, a consistent inertia/drag formalism, and entropy production where damping is present. If the effective description requires fluctuation/noise partners or records their omission, those consequences must also be stated. The branch choice affects gravity, throat stability, leakage, cosmology, and the global reservoir loop.
 
-Branch choice also controls which mathematical objects are legitimate. A conservative or genuine equilibrium static problem may use a free-energy Hessian \(\mathcal H\), its inverse \(\mathcal G_{\rm stat}\), and an ensemble-appropriate interaction potential. Dynamic response uses a retarded operator \(\mathcal O_R(\omega,\mathbf k)\) and \(\mathcal G_R=\mathcal O_R^{-1}\) to determine poles, damping, phase lag, and radiation. For a maintained dissipative stationary pair, force must be obtained from stress, momentum flux, conversion, and reservoir response; a scalar pair potential may be introduced only after that force is shown to be conservative and path independent.
+Branch choice also controls which mathematical objects are legitimate. A conservative or genuine equilibrium static problem may use a free-energy Hessian \(\mathcal H\), its inverse \(\mathcal G_{\rm stat}\), and an ensemble-appropriate interaction potential. Dynamic response uses a retarded operator \(\mathcal O_R(\omega,\mathbf k)\) and \(\mathcal G_R=\mathcal O_R^{-1}\) to determine poles, damping, phase lag, and radiation. A conservative but intrinsically periodic supported throat or pair is not automatically an equilibrium static problem: its interaction may require a cycle-averaged Hamiltonian, Routhian, quasienergy, or averaged action in an explicitly derived ensemble with fixed support-mode action, frequency, phase relation, or other conjugate data. If no such scalar functional is established, its mean force must instead be derived from the cycle-averaged Noether stress and momentum flux. For a maintained dissipative stationary pair, force must be obtained from stress, momentum flux, conversion, and reservoir response; a scalar pair potential may be introduced only after that force is shown to be conservative and path independent.
 
 ## 4. Field and variable dictionary
 
@@ -128,14 +163,14 @@ The model uses several descriptions of the same medium at different levels:
 
 | Level | Variables | Meaning |
 |---|---|---|
-| Parent arena and medium | \(\mathbf x,\mathbf X=(\mathbf x,w),\psi,n,\theta,\chi_B,\mathbf v_{\rm med}\) | Projected brane point, full four-dimensional spatial point, condensate, density, phase, four-dimensional material velocity, and material order |
+| Parent arena and medium | \(t,\delta_{AB},\mathbf x,\mathbf X=(\mathbf x,w),\psi,n,\theta,\chi_B,f_B,\mathbf v_{\rm med},\mathbf J_n\) | Preferred time, ambient Euclidean spatial metric, projected and full spatial points, condensate, density, phase, order field, optional distinct coarse-grained ordered fraction, material velocity, and total constituent current |
 | Background brane | \(n_0(w),\chi_0(w),H_{\rm br}\) | Brane profile and local selected slab thickness |
 | Brane collective modes | \(\mathbf u_T,u_L,h_+,h_-,h_m,h_t,\phi_E\) | Transverse and longitudinal motion; upper- and lower-interface displacement; mid-surface and thickness combinations; and schematic notation for the Coulomb-carrying eigencombination if one is derived |
 | Linear operators | \(\mathcal H,\mathcal G_{\rm stat},\mathcal O_R,\mathcal G_R\) | Equilibrium free-energy Hessian and static Green matrix versus dynamic retarded operator and retarded response matrix |
 | Throat coordinates | \(s_a,\mathbf x_a,R_a\) | Orientation, projected three-dimensional position, and characteristic size of throat \(a\) |
 | Reflection and antiparticle candidate | \(\mathcal R_w,\mathcal I_{\rm internal},\mathcal C_{\rm th}\) | Geometric \(w\)-reflection, any additional transformation of odd internal data, and the candidate complete throat map \(\mathcal C_{\rm th}=\mathcal I_{\rm internal}\circ\mathcal R_w\) |
 | Interface versus core geometry | \(h_\pm,h_m,h_t\) versus \(\chi_B,n,\theta\), support fields, and core level sets | Graph-regime interface coordinates versus the full nonlinear four-dimensional throat geometry |
-| Transport and conversion | \(\widetilde Q_n^{(w)},Q_n^{\rm net},Q_n,Q_\chi,Q_{\rm ap}\) | Signed global-\(w\) coordinate flux, signed local net outward flux, positive net outward throughput on a selected drain branch, nonnegative gross local order-conversion drain, and optional gross-aperture shorthand |
+| Transport and conversion | \(\widetilde Q_n^{(w)},Q_n^{\rm net},Q_n,Q_\chi,Q_{\rm ap}\) | Signed global-\(w\) coordinate flux, signed local net outward flux, positive net outward throughput on a selected drain branch, branch-specific nonnegative gross local order-conversion drain, and optional gross-aperture shorthand |
 | Gravity source and calibration | \(\widetilde Q_g^{(s)}(r),\overline Q_g(r),\boldsymbol{\mathfrak g}_{\rm src},\mathcal C_{\rm ref},\mathbf g_{\rm eff},C_g,G_{\rm eff}\) | Raw orientation-labeled source coefficient; reflection-even but radially signed enclosed coefficient; source-side environmental field; fixed operational calibration; calibrated observable; inverse-square source normalization; and effective gravitational constant in the observer's chosen units |
 | Charge quantities | \(s_a,N_s,g_a,C_{E,ab}\) | Throat orientation, net oriented count, possible derived nonnegative leading one-throat coupling magnitude, and coefficient of the reflection-odd Coulomb monopole channel only |
 | Other observables | \(\mathbf B_{\rm eff},M_{\rm active}^{\rm local},M_{\rm active}^{\rm eff}(r),M_{\rm passive},M_{\rm inertial}\) | Magnetic response, local and scale-dependent active mass, and the passive and inertial mass roles |
@@ -148,13 +183,13 @@ C_{E,ab}(R)=g_ag_b+\delta C_{ab}^{\rm odd}(R)
 
 is a target decomposition of the reflection-odd Coulomb monopole coefficient, not a derived identity or a container for even thickness and nonlinear core forces. In any such factorized convention, the \(g_a\) are nonnegative magnitudes; electric sign remains in \(s_a\).
 
-The constituent-flux convention is
+Let \(\mathcal A_a\) be the selected \(w\)-normal three-dimensional reference cut through an axis-aligned throat, with one global orientation \(\hat{\mathbf w}\). The constituent-flux convention on this cut is
 
 \[
 \widetilde Q_{n,a}^{(w)}
 \equiv
 \int_{\mathcal A_a}
-\mathbf J_n\cdot\hat{\mathbf w}\,d^3x,
+\mathbf J_n\cdot\hat{\mathbf w}\,d^3\Sigma,
 \]
 
 where \(\widetilde Q_{n,a}^{(w)}\) is signed in the global \(w\) coordinate. With local outward throat normal
@@ -169,7 +204,7 @@ the signed local net outward flux is
 Q_{n,a}^{\rm net}
 \equiv
 \int_{\mathcal A_a}
-\mathbf J_n\cdot\hat{\mathbf n}_a\,d^3x.
+\mathbf J_n\cdot\hat{\mathbf n}_a\,d^3\Sigma.
 \]
 
 The coordinate relation
@@ -180,7 +215,7 @@ The coordinate relation
 }
 \]
 
-is an **identity** following from the two normal conventions. For a solved stationary outward-drain branch, define the critical-flow throughput only after verifying the branch sign:
+is an **identity** following from the two normal conventions on the selected reference cut. For a general curved cut with normal field \(\hat{\mathbf n}(\mathbf X)\), the invariant flux is \(\int\mathbf J_n\cdot\hat{\mathbf n}(\mathbf X)\,d^3\Sigma\); the simple global-\(w\) identity is then conditional on the geometry of that cut and may require a projected-area relation. For a solved stationary outward-drain branch, define the selected positive throughput only after verifying the branch sign:
 
 \[
 Q_{n,a}\equiv Q_{n,a}^{\rm net}>0.
@@ -199,7 +234,18 @@ Q_{n,\alpha}^{(+)}=Q_{n,\alpha}^{(-)}
 }.
 \]
 
-The quantity \(Q_\chi\ge0\) remains the gross local ordered-to-bulk drain magnitude; signed net conversion remains in \(\Gamma_{\rm drain}\), \(\Gamma_{\rm return}\), and \(\Gamma_B\).
+In the fraction/relaxational branch, when \(\Gamma_{\rm drain}\) is a local nonnegative conversion rate per unit time, define
+
+\[
+\boxed{
+Q_{\chi,a}
+=\int_{\Omega_{{\rm throat},a}}
+n\Gamma_{\rm drain}\,d^4X
+\ge0
+}.
+\]
+
+It has the same constituent-number-per-time dimensions as \(Q_{n,a}\) but need not equal it. It excludes distributed return and is not a signed net rate. In an inertial order-field branch, an equivalent gross conversion diagnostic and its units must be derived from that dynamics rather than importing this constitutive formula. Signed net conversion remains in \(\Gamma_{\rm drain}\), \(\Gamma_{\rm return}\), and \(\Gamma_B\) only on branches where those rates are defined.
 
 ## 5. The brane: our effective three-dimensional space
 
@@ -246,7 +292,25 @@ h_t=\frac{h_+-h_-}{2},
 \delta H=2h_t.
 \]
 
-Under reflection through the slab, \(h_+\to-h_-\) and \(h_-\to-h_+\), so \(h_m\) is odd and \(h_t\) is even. Uniform \(h_m\) translation must remain unpinned when the parent medium is translation invariant, whereas stable thickness selection may give a primarily thickness-like eigenmode a restoring scale. Parity alone does not determine range because these coordinates may mix with order, density, phase, longitudinal, bulk, or reservoir variables.
+Under reflection through the slab,
+
+\[
+\boxed{
+h_+\to-h_-,
+\qquad
+h_-\to-h_+
+},
+\]
+
+and therefore
+
+\[
+h_m\to-h_m,
+\qquad
+h_t\to+h_t.
+\]
+
+Both interface displacements acquire the required minus sign while their upper/lower labels are exchanged. Uniform \(h_m\) translation must remain unpinned when the parent medium is translation invariant, whereas stable thickness selection may give a primarily thickness-like eigenmode a restoring scale. Parity alone does not determine range because these coordinates may mix with order, density, phase, longitudinal, bulk, or reservoir variables.
 
 The fields \(h_+\) and \(h_-\) describe the interfaces only while each remains a single-valued graph over the brane coordinates. They are useful background, far-field, and separated-interface collective coordinates, not a complete nonlinear throat topology. Overhangs, necks, tubes, folded sheets, reconnection, pinch-off, and topology change must be represented by the parent fields \(\chi_B(\mathbf x,w),n(\mathbf x,w),\theta(\mathbf x,w)\), the support fields, and core level sets. The earlier single coordinate \(h\) should be read only as schematic notation for a derived normal eigencombination.
 
@@ -298,14 +362,14 @@ The working decomposition of a particle is:
 - **Structural support:** energy \(E_{\rm support}\) in a trapped transverse brane-shear standing mode—the model's light or photon mode—helps hold the aperture open.
 - **Finite size:** a dynamical balance among standing-wave support, throat flow, brane tension, and bulk backpressure.
 - **Constituent transport:** \(Q_n^{\rm net}\) is signed local net outward flux and obeys the coordinate identity \(\widetilde Q_n^{(w)}=sQ_n^{\rm net}\). On a solved stationary drain branch, \(Q_n\equiv Q_n^{\rm net}>0\) is the selected net outward throughput used by critical-flow estimates.
-- **Order conversion:** \(Q_\chi\ge0\), the positive gross ordered-to-bulk drain rate in the throat region, excluding distributed return.
+- **Order conversion:** \(Q_\chi\ge0\), the positive branch-specific gross ordered-to-bulk drain rate or derived diagnostic in the throat region, excluding distributed return.
 - **Gross aperture process:** \(Q_{\rm ap}\), an optional umbrella shorthand for the complete aperture process when the distinction between \(Q_n\) and \(Q_\chi\) is not at issue. It does not assert \(Q_n=Q_\chi\).
 - **Gravity-source strength:** \(\widetilde Q_g^{(s)}(r)\) is the provisional raw orientation-labeled projected coefficient. After reflection closure, \(\overline Q_g(r)\in\mathbb R\) is orientation-even but retains its radial sign after enclosed return. Attraction on the ordinary local branch is a separate sign test.
 - **Active gravitational mass:** a local source property and a possibly scale-dependent effective source inferred from the gravity field.
 - **Passive gravitational response:** the throat's response coefficient in an external gravity flow.
 - **Inertial response:** the resistance encountered when the complete dressed throat configuration is accelerated.
 
-For a reversible equilibrium branch, candidate antiparticle degeneracy includes equality of equilibrium energy. For a driven relaxational or mixed branch, the reflected stationary comparison must instead or additionally test equality of positive throughput, dissipation and entropy-production rates, lifetime, stationary stress and momentum fluxes, and retarded response kernels under reflected environmental data. Equality of a scalar energy is not assumed where no equilibrium potential exists.
+For a reversible equilibrium branch, candidate antiparticle degeneracy includes equality of equilibrium energy. For a conservative periodic branch, the complete \(\mathcal C_{\rm th}\) test must also map support-mode action, frequency, and phase data and compare the appropriate cycle-averaged invariant or stress/momentum flux; an arbitrary relative phase is not a reflection partner. For a driven relaxational or mixed branch, the reflected stationary comparison must instead or additionally test equality of positive throughput, dissipation and entropy-production rates, lifetime, stationary stress and momentum fluxes, and retarded response kernels under reflected environmental data. Equality of a scalar energy is not assumed where no equilibrium or periodic variational functional exists.
 
 ### 6.1 Spectrally localized ordered support mode
 
@@ -346,7 +410,7 @@ R_{\rm throat},\text{shape}
 \longleftrightarrow
 \widetilde Q_n^{(w)},Q_n^{\rm net},Q_n,Q_\chi
 \longleftrightarrow
-P_{\rm bulk},\text{brane tension}
+p_{\rm bulk},\text{brane tension}
 }.
 \]
 
@@ -426,7 +490,7 @@ For the illustrative equal-amplitude outward pair, \(h_t^{\rm tot}=a_c\), so bef
 d_w^{\rm core}\simeq H_{\rm br}+2a_c.
 \]
 
-Projected mouth footprints can therefore overlap without full four-dimensional core contact. The fields \(h_\pm\) cease to be sufficient if overhangs, necks, reconnection, pinch-off, or topology change occurs; the parent fields and core level sets must then supply the full geometry and a coordinate-independent core-set distance. Whether exact projected coincidence yields separated cores, contact, reconnection, annihilation, exclusion, or a neutral composite is an open short-range question developed in the [opposite-orientation derivation plan](opposite_orientation_throat_coincidence.md).
+Projected mouth footprints can therefore overlap without full four-dimensional core contact. The fields \(h_\pm\) cease to be sufficient if overhangs, necks, reconnection, pinch-off, or topology change occurs; the parent fields and core level sets must then supply the full geometry and an interface-graph-independent ambient core-set distance. Whether exact projected coincidence yields separated cores, contact, reconnection, annihilation, exclusion, or a neutral composite is an open short-range question developed in the [opposite-orientation derivation plan](opposite_orientation_throat_coincidence.md).
 
 Because parent fields may have noncompact tails, a nonlinear core is not the literal support of every disturbed field. Choose a solved, invariant or operationally specified localized core diagnostic \(\mathcal I_a(\mathbf X)\)—for example order depletion, defect density, or conversion intensity—and define a thresholded core set
 
@@ -439,17 +503,22 @@ Because parent fields may have noncompact tails, a nonlinear core is not the lit
 }.
 \]
 
-The admissible diagnostic and threshold range must make \(\mathcal C_a(\epsilon)\) compact, or at least closed and localized so that the distance infimum is attained. With \(\mathcal C_a\) denoting such a fixed thresholded set, define the precontact separation
+The admissible diagnostic and threshold range must make \(\mathcal C_a(\epsilon)\) compact, or at least closed and localized so that the distance infimum is attained. Individual core labels must themselves be outputs of the nonlinear solution. Two acceptable procedures are:
+
+1. **Orientation-resolved diagnostics:** derive distinct physical \(\mathcal I_+\) and \(\mathcal I_-\), for example from an oriented topological or conversion-density field.
+2. **Connected-component continuation:** use one total diagnostic \(\mathcal I(\mathbf X)\), identify its two thresholded connected components at large separation, and continue those components as \(R\) decreases. Contact or merger is the parameter value at which their closures first touch or the number or topology of components changes.
+
+The symbols \(\mathcal C_+\) and \(\mathcal C_-\) may be used only while one of these procedures still identifies two physical cores. After merger, a decomposition of the total field into two analyst-assigned contributions is not permitted. While two sets remain identifiable, define the precontact separation
 
 \[
 d_{\rm core}(\epsilon)
 =\inf_{\substack{
-\mathbf Y_+\in\mathcal C_+\\
-\mathbf Y_-\in\mathcal C_-}}
+\mathbf Y_+\in\mathcal C_+(\epsilon)\\
+\mathbf Y_-\in\mathcal C_-(\epsilon)}}
 \left\|\mathbf Y_+-\mathbf Y_-\right\|_4,
 \]
 
-and define actual contact by
+using the ambient Euclidean norm fixed in Section 1. For orientation-resolved sets, define actual contact by
 
 \[
 \boxed{
@@ -460,7 +529,7 @@ and define actual contact by
 }.
 \]
 
-For compact sets, contact is equivalent to \(d_{\rm core}(\epsilon)=0\); without the required closure/localization, zero infimum alone is insufficient. Numerical conclusions must be robust over a reasonable range of \(\epsilon\). Neither contact nor distance selects the subsequent merger, reconnection, annihilation, or exclusion outcome.
+For compact orientation-resolved sets, contact is equivalent to \(d_{\rm core}(\epsilon)=0\); without the required closure/localization, zero infimum alone is insufficient. Under connected-component continuation, use closure contact and the component-count or topology change as the merger criterion rather than forcing a post-merger \(+/-\) decomposition. Numerical conclusions must be robust over a reasonable range of \(\epsilon\). Neither contact nor distance selects the subsequent merger, reconnection, annihilation, or exclusion outcome.
 
 The trapped support mode is not itself gravitational mass, and the model does not assume \(E_{\rm support}=M_{\rm active}^{\rm local}c^2\). The mode is structural support, not the direct gravitational source. The supported open aperture permits transport and conversion; the source-side flow, pressure, stress, conversion, return, and reservoir state must first produce an environmental gravity field independently of any later probe. A fixed calibration then defines the operational gravity observable, after which arbitrary test-throat response is derived separately.
 
@@ -487,8 +556,8 @@ Before a drain branch is selected, the throat region has signed local net outwar
 
 \[
 Q_n^{\rm net}
-=\int_{\mathcal A}
-\mathbf J_n\cdot\hat{\mathbf n}\,d^3x.
+=\int_{\mathcal A_a}
+\mathbf J_n\cdot\hat{\mathbf n}_a\,d^3\Sigma.
 \]
 
 On a solved stationary outward-drain branch,
@@ -504,7 +573,7 @@ Q_\chi\equiv\text{gross ordered-to-bulk conversion rate at the throat},
 \qquad Q_\chi\ge0.
 \]
 
-The corresponding coordinate-normal flux obeys the identity \(\widetilde Q_n^{(w)}=sQ_n^{\rm net}\). Its sign reverses between independently solved reflection partners only when their throughput magnitudes are equal. The quantity \(Q_\chi\) is a positive gross local drain magnitude. It does not include distributed return and is not itself a signed net conversion rate. Net conversion signs remain encoded by \(\Gamma_{\rm drain}\), \(\Gamma_{\rm return}\), and \(\Gamma_B\).
+The corresponding coordinate-normal flux obeys the identity \(\widetilde Q_n^{(w)}=sQ_n^{\rm net}\) on the selected reference cut. Independently solved outward-drain partners have opposite coordinate-flux signs by orientation; their coordinate fluxes are equal and opposite only when the separately tested positive throughputs are equal. The quantity \(Q_\chi\) is a positive gross local drain magnitude or derived inertial-branch diagnostic. It does not include distributed return and is not itself a signed net conversion rate. In the fraction/relaxational branch, net conversion signs remain encoded by \(\Gamma_{\rm drain}\), \(\Gamma_{\rm return}\), and \(\Gamma_B\); an inertial branch must derive its own signed bookkeeping from its equations.
 
 Their relationship depends on the selected \(\chi_B\) dynamics. When their distinction is not important, \(Q_{\rm ap}\) denotes the complete gross aperture process, but it is only shorthand and does not assert that \(Q_n\) and \(Q_\chi\) are numerically identical.
 
@@ -610,6 +679,18 @@ F_i(\omega)
 
 The scalar \(M_{\rm passive}\) must emerge in the low-frequency isotropic limit. It is a response property of the complete dressed throat, is not automatically equal to the active source strength, and must be derived from the full moving-defect response.
 
+After the gravity sign and calibration conventions are frozen, the ordinary stable branch must have positive passive response. Writing the symmetric quasistatic part as \(\mathcal M_{(ij)}^{\rm passive}(0)\), require
+
+\[
+\boxed{
+\xi_i\mathcal M_{(ij)}^{\rm passive}(0)\xi_j>0
+\quad
+\text{for every nonzero }\boldsymbol\xi
+},
+\]
+
+or \(M_{\rm passive}>0\) in the isotropic limit. Universality of a wrong-sign or singular passive response is not acceptable.
+
 The source-side environmental field is derived independently of the later test species. A single reference convention may set the units of \(\mathbf g_{\rm eff}\), but that calibration is then frozen; it may not absorb species dependence and make universal free fall tautological.
 
 ### 7.3 Composite inertial response
@@ -645,18 +726,43 @@ M_{ij}^{\rm eff}
 
 where \(P_i\) includes internal standing-wave momentum, near-field medium momentum, conversion-field momentum, and throat-shape and brane-deformation contributions.
 
-For a dissipative branch, a conserved canonical momentum cannot be assumed. The response is instead frequency dependent:
+On the ordinary stable branch, the symmetric zero-frequency inertial response must be positive definite:
+
+\[
+\boxed{
+\xi_iM_{(ij)}^{\rm eff}(0)\xi_j>0
+\quad
+\text{for every nonzero }\boldsymbol\xi
+}.
+\]
+
+Zero or negative inertial directions signal a marginal or unstable branch rather than an acceptable universal mass.
+
+For a dissipative branch, a conserved canonical momentum cannot be assumed. The response to a small projected throat displacement \(\delta\mathbf x_a\) is instead frequency dependent:
 
 \[
 F_i(\omega)
-=\left[-\omega^2M_{ij}(\omega)-i\omega\Gamma_{ij}(\omega)+\cdots\right]X_j(\omega),
+=\left[-\omega^2M_{ij}(\omega)-i\omega\Gamma_{ij}(\omega)+\cdots\right]\delta x_{a,j}(\omega),
 \]
 
 where \(M_{ij}(\omega)\) is the dynamical inertial response and \(\Gamma_{ij}(\omega)\) is damping. Its ledger must include entropy, heat, or explicit reservoir variables, all representing degrees of freedom internal to the same substrate.
 
+The retarded response of an ordinary unexcited internal reservoir must also be passive: for every small periodic perturbation, the cycle-averaged external power entering the complete throat-plus-reservoir system must satisfy
+
+\[
+\boxed{
+\left\langle
+\mathbf F_{\rm ext}\cdot\dot{\mathbf x}_a
+\right\rangle_{\rm cycle}
+\ge0
+}.
+\]
+
+Equality is allowed for a lossless channel. A response that extracts net work from an unexcited reservoir is unacceptable unless an explicitly prepared energetic state and its depletion are included in the ledger.
+
 For an explicitly mixed inertial-dissipative branch, both reversible momentum storage and the retarded damping response must be derived from the same closed system with its internal reservoir variables. The conservative and dissipative pieces may coexist, but neither may be inserted without the associated material, momentum, energy, and entropy accounting.
 
-**Status:** the possible components of inertia are identified, but neither the reversible momentum nor the dissipative response kernel has been derived from a supported-throat solution.
+**Status:** the possible components of inertia are identified, but neither the reversible momentum, positive-definite ordinary response, dissipative kernel, nor retarded passivity has been derived from a supported-throat solution.
 
 ### 7.4 Radiation thresholds and uniform motion
 
@@ -734,6 +840,8 @@ R_{\rm throat}\ll r\ll L_{\rm return}\\
 
 The constants may be normalized only after units and source/response conventions are fixed. Universality of passive/inertial response is the analog of universal free fall. Universality of local active/inertial response is a source-strength reciprocity or source-universality requirement. Neither result alone establishes the full geometric equivalence principle of GR. At finite velocity, frequency, field strength, or environmental inhomogeneity, the tensorial and dispersive response kernels remain the relevant quantities.
 
+These ratios are tested only after the ordinary branch has passed the separate positive active-source, passive-response, inertial-response, and retarded-passivity conditions. Equality of equally wrong-signed coefficients is not universality.
+
 Such low-energy universality would be an emergent property of the same complete object: local active mass arises from the matched source-region gravity strength, passive mass from response to \(\mathbf g_{\rm eff}\), and inertia from the coupled dynamical response of the support mode, geometry, near fields, and conversion sector. The separate return profile \(f_{\rm ret}(r;\mathcal E)\) must then map local active mass into scale-dependent effective mass in a universal or calculable way.
 
 **Status:** the three-role distinction is an ontological correction; the local active source map, passive response, inertial kernel, both universality ratios, and the return-profile map to effective active mass remain open outputs.
@@ -747,6 +855,7 @@ Such low-energy universality would be an emergent property of the same complete 
 \[
 \boldsymbol{\mathfrak g}_{\rm src}
 =\mathcal G_{\rm src}\!\left[
+\mathbf J_n,
 \mathbf v_{\rm med},
 D_t\mathbf v_{\rm med},
 n,P,\mu,\chi_B,
@@ -1052,7 +1161,7 @@ E_{ab}(R)
 +E_{\rm core}^{\rm nl}(R).
 \]
 
-On an exactly reflection-symmetric background, \(E_{ab}^{\rm mix}\) should vanish at quadratic order, but even and nonlinear terms may remain, especially near \(R\sim H_{\rm br}\). In a driven dissipative stationary branch, the same decomposition may organize response channels, but the force must be obtained from stress, momentum flux, conversion, and reservoir response unless a conservative potential is independently established.
+On an exactly reflection-symmetric background, \(E_{ab}^{\rm mix}\) should vanish at quadratic order, but even and nonlinear terms may remain, especially near \(R\sim H_{\rm br}\). For a conservative intrinsically periodic pair, the corresponding scalar object—if one exists—must be a derived cycle-averaged Hamiltonian, Routhian, quasienergy, or averaged action in a stated fixed-action, fixed-frequency, fixed-relative-phase, or other conjugate ensemble. Otherwise its mean force must come from cycle-averaged Noether stress and momentum flux. In a driven dissipative stationary branch, the same decomposition may organize response channels, but the force must be obtained from stress, momentum flux, conversion, and reservoir response unless a conservative potential is independently established.
 
 For the odd equilibrium channel, let \(A_{ab}(R)=g_ag_b+\delta C_{ab}^{\rm odd}(R)\). Its radial force contribution is
 
@@ -1065,7 +1174,7 @@ F_{R,ab}^{\rm odd}
 \right].
 \]
 
-Thus a positive coefficient alone does not fix the force sign at finite \(R\). The leading far-field like-repels/opposite-attracts target additionally requires
+Here positive \(F_R\) means force toward increasing separation. Thus a positive coefficient alone does not fix the force sign at finite \(R\). For \(g_ag_b>0\), the leading far-field like-repels/opposite-attracts target additionally requires
 
 \[
 \frac{\delta C_{ab}^{\rm odd}(R)}{g_ag_b}\to0,
@@ -1096,11 +1205,11 @@ g_a\simeq g_0,
 
 for ordinary unit-charge throats. Different standing-wave configurations must not cause unacceptable species-dependent electric coupling unless that nonuniversality is retained as a falsifiable prediction. Thickness, core, environmental, and many-body corrections must all be calculated and constrained.
 
-The **leading far-field odd channel** gives repulsion for \(s_as_b=+1\) and attraction for \(s_as_b=-1\) only if the coefficient and derivative conditions above are derived. In an equilibrium branch, this requires a bounded-below, ghost-free two-interface/order boundary-value problem whose physical ensemble has the required interaction-energy ordering after one-body self terms are subtracted. Fixed-value, fixed-source, fixed-flux, mixed, or topological boundary conditions need not give the same sign. In a driven branch, the corresponding force sign must come from the complete stress and momentum-flux calculation. Neither sign is guaranteed by calling a height coordinate a scalar or by choosing a source sign.
+The **leading far-field odd channel** gives repulsion for \(s_as_b=+1\) and attraction for \(s_as_b=-1\) only if the coefficient and derivative conditions above are derived. In an equilibrium branch, this requires a bounded-below, ghost-free two-interface/order boundary-value problem whose physical ensemble has the required interaction-energy ordering after one-body self terms are subtracted. Fixed-value, fixed-source, fixed-flux, mixed, or topological boundary conditions need not give the same sign. In a conservative periodic branch, the sign must follow from the correctly constrained cycle-averaged functional or averaged stress force. In a driven branch, it must come from the complete stress and momentum-flux calculation. No sign is guaranteed by calling a height coordinate a scalar or by choosing a source sign.
 
-The nonlinear throat only needs to fix the core boundary branch and normalization. The far field may still linearize to a \(1/R\) potential and a \(1/R^2\) force; strong nonlinearity need not persist to arbitrarily large distance.
+The nonlinear throat must fix the core boundary branch and normalization and supply the solved source profile seen by the linear far field. The exterior may still linearize to a \(1/R\) potential and a \(1/R^2\) force; strong nonlinearity need not persist to arbitrarily large distance.
 
-Finite slab thickness introduces a further distinction between far-field cancellation and core contact. For a same-species pair with opposite orientation, the reflection-odd disturbance can cancel at projected coincidence while reflection-even thickness disturbance and internal support configurations remain nonzero. In the graph regime,
+Finite slab thickness introduces a further distinction between far-field cancellation and core contact. For a same-species pair with opposite orientation, the reflection-odd disturbance can cancel at projected coincidence while reflection-even thickness disturbance and internal support configurations remain nonzero. For periodic throats this means the cycle-averaged odd source, or the instantaneous source only when \(\mathcal C_{\rm th}\) fixes the required relative phase; arbitrary relative phase may leave transient odd response and sidebands. In the graph regime,
 
 \[
 d_w^{\rm core}
@@ -1232,7 +1341,9 @@ emitted into the two transverse light modes, the odd normal/electric mode, the e
 
 ## 13. Brane–bulk conversion and leakage
 
-Total constituent density is intended to obey an exact four-dimensional conservation law. The ordered fraction obeys a separate conversion balance,
+Total constituent density obeys the exact four-dimensional conservation law defined in Section 2. The order-sector evolution must remain branch specific.
+
+In the fraction/relaxational branch, where \(\chi_B\) itself is a coarse-grained ordered material fraction, the constitutive evolution equation for \(\chi_Bn\) is
 
 \[
 \partial_t(\chi_B n)
@@ -1248,9 +1359,20 @@ Here:
 - \(\Gamma_{\rm return}\) converts bulk material back into the ordered brane state;
 - \(\mathbf J_\chi\) transports order independently of total material transport.
 
-The quantity \(Q_\chi\ge0\) denotes the positive gross rate of ordered-to-bulk conversion associated with a throat. It does not include distributed return and is not itself a signed net conversion rate. Net conversion signs remain encoded by \(\Gamma_{\rm drain}\), \(\Gamma_{\rm return}\), and \(\Gamma_B\).
+In an inertial branch, \(\chi_B\) instead obeys the selected Euler–Lagrange equation. The balance above must not be imposed as a second independent equation for the same variable. Any \(\mathbf J_\chi\), \(\Gamma_B\), drain, or return balance must be derived from the inertial dynamics or assigned to a distinct coarse-grained ordered-fraction variable, which may be denoted \(f_B\). A mixed branch must state explicitly whether its order field and material fraction are the same effective variable or separate coupled variables and must provide exactly one nonredundant closed evolution system.
 
-This is phase conversion, not suction into empty space and not transfer between two substances. It is not automatically identical to signed local net constituent flux \(Q_n^{\rm net}\), selected positive throughput \(Q_n\), or signed coordinate flux \(\widetilde Q_n^{(w)}\). A complete theory must supply the material, momentum, and energy partners of this order-conversion equation and must make them consistent with the explicitly chosen conservative, relaxational, or mixed inertial-dissipative \(\chi_B\) branch.
+On the fraction/relaxational branch, the quantity
+
+\[
+Q_\chi
+=\int_{\Omega_{\rm throat}}
+n\Gamma_{\rm drain}\,d^4X
+\ge0
+\]
+
+denotes the positive gross rate of ordered-to-bulk conversion associated with a throat. It has constituent-number-per-time units, does not include distributed return, and is not itself a signed net conversion rate. Net conversion signs remain encoded by \(\Gamma_{\rm drain}\), \(\Gamma_{\rm return}\), and \(\Gamma_B\). On an inertial branch, the corresponding nonnegative gross diagnostic is **not yet derived** and this rate formula is not assumed.
+
+This is phase conversion, not suction into empty space and not transfer between two substances. It is not automatically identical to signed local net constituent flux \(Q_n^{\rm net}\), selected positive throughput \(Q_n\), or signed coordinate flux \(\widetilde Q_n^{(w)}\). A complete theory must supply the material, momentum, and energy partners of the selected branch-specific order evolution and must make them consistent with the explicitly chosen conservative, relaxational, or mixed inertial-dissipative \(\chi_B\) branch.
 
 In the closed-loop interpretation, throat drainage populates de-structured bulk degrees of freedom and distributed return repopulates the ordered brane state. Bulk backpressure or a chemical-potential imbalance is a candidate driver of return, not an assumed external pump. The global solution must track where drained material, momentum, energy, and, in the dissipative branch, entropy reside throughout this cycle.
 
@@ -1271,7 +1393,7 @@ No particular \(\widetilde{\mathcal F}_r\) or source-side map \(\mathcal G_{\rm 
 
 ## 14. Cosmological expansion hypothesis
 
-The cosmological hypothesis is that the conversion balance contains a slow DC component for which distributed return exceeds localized throat drainage. The causal proposal is
+In the fraction/relaxational branch—or in an inertial/mixed branch only after an equivalent coarse-grained balance is derived—the cosmological hypothesis is that the conversion balance contains a slow DC component for which distributed return exceeds localized throat drainage. The causal proposal is
 
 \[
 \text{distributed return excess}
@@ -1346,30 +1468,33 @@ This table records claim maturity rather than merely whether a script ran. “De
 
 | Claim or quantity | Status | Assumptions | Derivation or script | Frozen inputs | Downstream dependencies | Last provenance audit | Failure condition |
 |---|---|---|---|---|---|---|---|
+| Parent arena and metric | **Postulated** | Preferred Newtonian time and flat Euclidean four-space | No derivation is needed to make the arena a postulate | \(t,\delta_{AB}\) | Every operator, Green function, wave speed, reflection, and core distance | 2026-08-18; definition checked | A different ambient metric is used without reopening and propagating all dependencies |
 | \(P=Kn^5\) | **Postulated** | Stiff polytropic substrate | Historical provenance only: `research/pde_ledger_v2/notes/stage005_pathA20_source_map.md` explicitly says not to consume it as current closure; no derivation is needed to make the EOS a postulate | EOS exponent and \(K\) | \(c_s\), critical-flow tests, throat and gravity reductions | 2026-08-18; path exists, historical warning checked | EOS gives instability or cannot participate in a consistent parent action |
-| \(\chi_B\) order dynamics | **Postulated branch choice / open closure** | One-medium order sector | Conservative/relaxational precursor: `research/pde_ledger_v2/paper/stages/stage_006.tex`; a fully closed conservative, relaxational, or mixed branch is **not yet derived** | Order potential, transport, reservoir variables | Conversion, support, gravity, drag, cosmology | 2026-08-18; precursor scope checked | Chosen branch cannot close material, momentum, energy, and entropy/reservoir ledgers |
+| \(\chi_B\) order dynamics | **Postulated branch choice / open closure** | One-medium order sector; fraction balance used only in its branch | Conservative/relaxational precursor: `research/pde_ledger_v2/paper/stages/stage_006.tex`; a fully closed conservative, relaxational, or mixed branch is **not yet derived** | Order potential, transport, reservoir variables, and whether a separate fraction \(f_B\) exists | Conversion, support, gravity, drag, cosmology | 2026-08-18; precursor scope checked | Chosen branch overdetermines \(\chi_B\) or cannot close material, momentum, energy, and entropy/reservoir ledgers |
 | Finite-thickness slab existence and selection | **Open hypothesis** | Two-state order sector and suitable boundary data | Interface precursor: `research/pde_ledger_v2/paper/stages/stage_006.tex`; failed alternative wall branch: `software/stage1_solver/reports/pathA_24_T1_wall.md`; width selection **not yet derived** | Order potential and parent constitutive data | Every brane, throat, electric, and light sector | 2026-08-18; both paths and caveats checked | No stable or metastable selected slab exists |
 | Shear modulus and two transverse modes | **Derived under stated assumptions** for mode count; modulus provenance open | Supplied homogeneous quadratic brane action and isotropic inertia | Current requirement/action record: `research/pde_ledger_v3/steps/S9_light_requires_shear.md`; current conditional count: `research/pde_ledger_v3/steps/S10_two_transverse_photons.md`; v2 precursor: `research/pde_ledger_v2/paper/stages/stage_003.tex` | \(\mu_R,\rho_{\rm br}\) and supplied action | Light speed, support mode, magnetism, radiation | 2026-08-18; paths and conditional scope checked | No healthy two-polarization shear sector or no acceptable modulus origin |
 | Longitudinal mode | **Derived under stated assumptions** | Supplied homogeneous compressional response | Current record: `research/pde_ledger_v3/steps/S11_stray_longitudinal.md`; v2 precursor: `research/pde_ledger_v2/paper/stages/stage_003.tex` | Homogeneous elastic coefficients | Leakage, drag, extra radiation, Maxwell departure | 2026-08-18; paths and conditional scope checked | Instability or unacceptable mixing/radiation |
 | Two-interface parity variables | **Operational definition / target reduction** | Reflection-symmetric graph-regime slab | **not yet derived** | \(H_{\rm br}\), solved interface profiles | Electric spectrum, finite-thickness kernels, contact geometry | 2026-08-18; no closing path identified | No consistent graph-regime reduction or parity assignment |
-| Constituent flux convention and reflection throughput | **Identity plus target relation** | Solved mouth surface and reflected environmental data | Historical flux-law audit: `software/stage1_solver/reports/pathA_20_velocity_constants.md`; accepted stationary throat flux and reflected-throughput equality **not yet derived** | EOS, mouth geometry, boundary/reservoir data | Critical flow, conversion, gravity reduction | 2026-08-18; path exists and underdetermined verdict checked | No positive drain branch or unequal reflected throughput |
+| Constituent conservation, flux convention, and reflection throughput | **Postulated conservation law; identity plus target relation** | Selected \(w\)-normal reference cut, or derived geometric replacement for a curved cut, and reflected environmental data | Historical flux-law audit: `software/stage1_solver/reports/pathA_20_velocity_constants.md`; accepted stationary throat flux and reflected-throughput equality **not yet derived** | Current law, EOS, mouth geometry, boundary/reservoir data | Critical flow, conversion, gravity reduction | 2026-08-18; path exists and underdetermined verdict checked | Conservation fails, cut geometry invalidates the identity without replacement, no positive branch exists, or reflected throughput differs |
 | Ideal critical-flow estimate | **Derived only in an idealized limit** | Steady inviscid isentropic nozzle flow, fixed geometry/upstream state, no quantum-pressure correction | Precursor branch audit: `software/stage1_solver/reports/pathA_20_velocity_constants.md`; accepted throat flux law **not yet derived** | EOS and chosen upstream data | Necessary radius/throughput bounds | 2026-08-18; path and caveat checked | Full throat has no corresponding critical branch or violates the assumed limit |
 | Support seed and nonlinear periodic throat | **Target relation** | Provisional variable-coefficient geometry followed by self-consistent free-boundary/periodic continuation | **not yet derived** | Solved throat, shear law, flow/conversion, and open-system boundary data | Stability, particle lifetime, radiation | 2026-08-18; no closing path identified | No bound/outgoing-resonance seed, nonlinear continuation, or acceptable Floquet/response stability with nonzero throughput |
 | Inverse-square gravity under sink/return assumptions | **Derived under stated assumptions** | Effective localized sink/return completion | Conditional precursor: `software/stage1_solver/reports/pathA_29_brane_bulk_return.md`; full gravity reduction **not yet derived** | Effective return ansatz and background data | Gravity range and matching program | 2026-08-18; path and conditional scope checked | Full reduction changes range or sign unacceptably |
 | Gravity source, reflection reduction, and calibration | **Target relation / operational calibration** | Full projected continuity, stress, conversion, return, reservoir, and reflected environment | \(\widetilde Q_g^{(s)}\to\overline Q_g\), \(\mathcal G_{\rm src}\), and \(\mathcal C_{\rm ref}\): **not yet derived** | Parent dynamics and solved local/global state | Active mass, passive response, cosmology | 2026-08-18; no closing path identified | No probe-independent source field, signed reflection closure, or fixed calibration exists |
-| Active, passive, and inertial mass | **Operational definitions**; extraction open | Defined low-energy weak-field homogeneous regime and valid local matching | **not yet derived** | Fixed gravity normalization and solved moving throat | Source universality and free-fall analog | 2026-08-18; no closing path identified | Low-energy ratios are not species universal |
+| Active, passive, and inertial mass | **Operational definitions**; extraction open | Defined low-energy weak-field homogeneous regime, valid local matching, positive ordinary response, and passive reservoir | **not yet derived** | Fixed gravity normalization and solved moving throat | Source universality and free-fall analog | 2026-08-18; no closing path identified | Passive/inertial response is non-positive, retarded response is active without a prepared reservoir, or low-energy ratios are not species universal |
 | Complete odd/even source, Hessian, and retarded blocks | **Target relation** | Equilibrium \(\mathcal H_{\rm odd/even}\) and dynamic \(\mathcal O_{R,{\rm odd/even}}\) on the complete constrained system | One-height precursor only: `research/pde_ledger_v2/paper/stages/stage_030.tex`; current parity blocks, source profiles, and support coupling **not yet derived** | Stable slab and all coupled fields | Coulomb range, thickness forces, damping, radiation | 2026-08-18; path and precursor scope checked | No healthy equilibrium odd \(k^2\) branch, inconsistent retarded spectrum, or unacceptable additional long range |
 | \(1/R\) electric far field | **Conditional precursor**; current claim open | Postulated scalar/interface branch and selected boundary data | One-height precursor: `research/pde_ledger_v2/paper/stages/stage_031.tex`; current two-interface carrier **not yet derived** | Candidate operator and source branch | Electric force and factorization | 2026-08-18; path and precursor scope checked | Full carrier lacks \(k^2\) stiffness or gives wrong range |
-| Electric force sign | **Target relation** | Correct equilibrium ensemble and self-energy subtraction, or complete driven stress/momentum/reservoir force ledger | Boundary-ensemble precursor/audit: `research/pde_ledger_v2/paper/stages/stage_032.tex`; sign **not yet derived** | Solved core boundary and branch data | Attraction/repulsion and bound states | 2026-08-18; path and open status checked | Desired sign requires an unsupported ensemble, unjustified potential, or fitted mechanism |
+| Electric force sign | **Target relation** | Correct equilibrium ensemble and self-energy subtraction, derived conservative-periodic averaged ensemble or stress force, or complete driven stress/momentum/reservoir force ledger | Boundary-ensemble precursor/audit: `research/pde_ledger_v2/paper/stages/stage_032.tex`; sign **not yet derived** | Solved core boundary, support action/frequency/phase, and branch data | Attraction/repulsion and bound states | 2026-08-18; path and open status checked | Desired sign requires an unsupported static/periodic ensemble, unjustified potential, or fitted mechanism |
 | Leading odd-channel factorization \(g_ag_b\) | **Target relation** | Local Coulomb carrier plus universal solved throat couplings | **not yet derived** | Multiple solved throat species and frozen normalization | Charge universality, magnetic/radiative normalization | 2026-08-18; no closing path identified | Odd monopole coefficient is not acceptably rank one/positive or its value/derivative corrections are not asymptotically subleading |
 | Conserved oriented current | **Target relation** | Co-orientable brane and conserving throat topology | **not yet derived** | Complete \(\mathcal C_{\rm th}\)/topological map | Additive charge, magnetism, radiation | 2026-08-18; no closing path identified | No conserved count/current or global orientation exists |
 | Magnetic tensor structure | **Derived under stated assumptions** at structural level | Rigid moving profile and postulated transverse response | `software/em_charge_attribute/magnetism_moving_throat_result.md`; normalization and electric tie remain open | Supplied transverse operator and provisional source | Dynamic electromagnetic closure | 2026-08-18; path and conditional/R1 scope checked | Full moving throat changes tensor/falloff or needs independent normalization |
 | Transverse radiation from acceleration | **Target relation** | Solved accelerating throat and far-zone outgoing conditions | **not yet derived** | Conserved current and shared coupling | Electromagnetic closure and energy ledger | 2026-08-18; no closing path identified | No tied transverse radiation or unacceptable extra channels |
-| Projected coincidence and core-contact criterion | **Operational geometric definition** | Graph regime for \(d_w^{\rm core}\); compact or suitably closed localized diagnostic level sets otherwise | **not yet derived** | Solved core diagnostic, threshold range, level sets, and interface geometry | Collision, annihilation, neutral binding | 2026-08-18; no closing path identified | No graph-to-core handoff, actual intersection test, or threshold-robust four-dimensional set distance |
+| Projected coincidence and core-contact criterion | **Operational geometric definition** | Graph regime for \(d_w^{\rm core}\); orientation-resolved diagnostics or connected-component continuation with compact or suitably closed localized level sets otherwise | **not yet derived** | Solved diagnostic, threshold range, component labels, level sets, and interface geometry | Collision, annihilation, neutral binding | 2026-08-18; no closing path identified | No graph-to-core handoff, physical label-continuation rule, threshold-robust contact test, or ambient four-dimensional set distance |
 | Same-species annihilation and different-species neutral binding | **Open hypothesis / target dynamics** | Complete \(\mathcal C_{\rm th}\) partners and nonlinear time evolution | **not yet derived** | Full internal map, core topology, and conservation laws | Particle phenomenology | 2026-08-18; no closing path identified | False universal annihilation or no conserving antiparticle channel |
 | Local/global drain-return fixed point and cosmological expansion | **Open hypothesis** | Closed one-medium reservoir and cosmological reduction | Conditional return precursor: `software/stage1_solver/reports/pathA_29_brane_bulk_return.md`; fixed point and expansion **not yet derived** | Global material, momentum, energy, and entropy data | Return scale, active mass, expansion history | 2026-08-18; path and conditional scope checked | No local–global fixed point or no acceptable expansion law |
 
 Any change to a frozen input requires updating its row, rerunning every real downstream derivation listed here, and marking dependent claims as reopened until that propagation is complete.
+
+The [mechanical synchronization check](../software/check_ontology_shared_definitions.py) guards the repeated definitions of \(h_m,h_t\), the two-minus interface reflection map, the flux identity, \(\mathcal C_{\rm th}\), and the graph-regime core gap across this ontology and its focused companion. A passing result establishes documentation consistency only; it is not mathematical or physical validation.
 
 ## 17. Explicit failure conditions
 
@@ -1378,28 +1503,29 @@ The present candidate architecture fails if any required result proves impossibl
 1. no finite-thickness, shear-supporting brane exists whose energy is bounded below and whose interfaces and perturbation spectrum are stable or sufficiently metastable;
 2. no normalizable bound seed or acceptably long-lived outgoing resonance exists, or no seed continues to a self-consistent nonlinear periodic supported throat with nonzero throughput and acceptable Floquet/response stability;
 3. no stationary drain branch exists with \(Q_n^{\rm net}>0\), or independently solved reflection partners fail to have equal positive throughput under reflection-symmetric environmental data;
-4. no consistent relation among \(\widetilde Q_n^{(w)}\), \(Q_n^{\rm net}\), selected \(Q_n\), gross local conversion drain \(Q_\chi\), distributed return, raw gravity source, and signed \(\overline Q_g(r)\) can be derived;
+4. exact constituent conservation cannot be maintained; the aperture cut does not support the claimed flux identity and no correct geometric replacement is supplied; or no consistent relation among \(\widetilde Q_n^{(w)}\), \(Q_n^{\rm net}\), selected \(Q_n\), gross local conversion drain \(Q_\chi\), distributed return, raw gravity source, and signed \(\overline Q_g(r)\) can be derived;
 5. no source-side gravity field can be derived independently of the later probe species, or the fixed operational calibration absorbs species-dependent response and makes passive universality tautological;
 6. reflected solutions fail to transform covariantly with reflected reservoir data, or the ordinary vacuum branch is not sufficiently reflection symmetric to avoid unacceptable charge-correlated gravitational splitting;
 7. the reflected solutions fail to produce one orientation-even gravity-source coefficient, or the ordinary local particle branch fails to satisfy \(\overline Q_g(r_{\rm local})>0\);
 8. screening, return overshoot, or a sign reversal at larger radius is hidden by an absolute-value convention, is unacceptably species dependent, or violates observational constraints;
 9. no matching plateau or equivalent scale-independent near-to-far extraction exists for local active mass, or the map to the signed scale-dependent effective source is neither universal nor environmentally calculable;
-10. a conservative/equilibrium coupled system has no healthy odd Hessian eigenbranch with nonzero throat coupling and the \(k^2\) static stiffness required for a \(1/R\) potential, or a driven branch cannot derive the corresponding acceptable long-range force from its stress and momentum-flux response;
+10. a conservative/equilibrium coupled system has no healthy odd Hessian eigenbranch with nonzero throat coupling and the \(k^2\) static stiffness required for a \(1/R\) potential, a conservative periodic branch cannot derive the corresponding acceptable averaged force, or a driven branch cannot derive it from stress and momentum-flux response;
 11. no complete odd/even decomposition of the solved throat source exists, additional odd/even long-range modes produce unacceptable forces or radiation, or the full parity-block spectrum contains ghosts or instabilities;
-12. the coupled \(V_{\rm mat}(\chi_B,\sigma)\) boundary problem cannot provide bounded energy, a stable brane, a physical oriented core branch, and freedom from unacceptable modes; an equilibrium calculation cannot obtain the required interaction sign from the correct energy ensemble; or a driven dissipative calculation assigns a potential without first deriving a conservative force from stress, material/order momentum flux, conversion, and reservoir response;
+12. the coupled \(V_{\rm mat}(\chi_B,\sigma)\) boundary problem cannot provide bounded energy, a stable brane, a physical oriented core branch, and freedom from unacceptable modes; an equilibrium calculation cannot obtain the required interaction sign from the correct energy ensemble; a conservative periodic calculation assigns a static potential without deriving the correct cycle-averaged ensemble or stress force; or a driven dissipative calculation assigns a potential without first deriving a conservative force from stress, material/order momentum flux, conversion, and reservoir response;
 13. the odd-monopole coefficient \(C_{E,ab}\) is used to hide even or nonlinear forces, its value or derivative corrections are not asymptotically subleading, or common slab conditions plus derived core data cannot produce sufficiently universal leading electric coupling among ordinary unit-charge throats;
 14. the brane geometry does not support a global co-orientation or equivalent topological construction needed for additive signed throat number, or no conserved oriented current/Gauss-like projected law exists;
-15. either low-energy \(M_{\rm active}^{\rm local}/M_{\rm inertial}\) or low-energy \(M_{\rm passive}/M_{\rm inertial}\) cannot be sufficiently species universal in its defined operational regime;
-16. in a conservative branch, unavoidable sub-threshold emission or zero-critical-velocity coupling produces unacceptable drag;
-17. in a relaxational or mixed branch, low-frequency friction, relaxation, or conversion lag produces unacceptable drag during uniform motion;
-18. the chosen conservative, relaxational, or mixed order dynamics cannot close its material, momentum, energy, inertia/drag, and required entropy/internal-reservoir ledgers;
-19. transverse light leaks or converts excessively into longitudinal, bulk, odd-electric, even-thickness, or conversion modes;
-20. an accelerating oriented throat cannot source the two transverse light modes with normalization tied to the same leading electric coupling as static electricity and magnetism, or it necessarily produces unacceptable unsuppressed additional radiation;
-21. no self-consistent fixed point exists between the local supported throat and the global drain-return/reservoir boundary conditions;
-22. no consistent handoff exists from projected positions \(\mathbf x_a\) and two-interface graphs to full points \(\mathbf X=(\mathbf x,w)\), compact or suitably closed localized diagnostic core sets measured with \(\mathbf Y_\pm\), actual set intersection, and nonlinear parent-field topology; the inferred contact is not robust under reasonable threshold variation; or projected coincidence causes an unphysical singularity, arbitrary branch selection, unacceptable short-range force, or loss of particle identity;
-23. no complete \(\mathcal C_{\rm th}=\mathcal I_{\rm internal}\circ\mathcal R_w\) produces an equilibrium equal-energy partner of the same solved branch or, for a driven branch, equality of the applicable stationary throughput, dissipation, entropy production, lifetime, stress/momentum fluxes, and retarded response kernels;
-24. a same-species throat–antithroat pair has no material-, momentum-, and energy-conserving annihilation or neutralization channel, or the theory incorrectly forces distinct-species opposite charges to annihilate solely because their odd electric disturbance cancels;
-25. any desired gravity, electric, contact, radiation, support, or cosmological result can be obtained only by introducing a separately fitted coefficient or retuning a frozen upstream input without propagating the change.
+15. the ordinary stable branch has a non-positive passive or inertial response direction after conventions are fixed, or a retarded response extracts net work from an unexcited internal reservoir;
+16. either low-energy \(M_{\rm active}^{\rm local}/M_{\rm inertial}\) or low-energy \(M_{\rm passive}/M_{\rm inertial}\) cannot be sufficiently species universal in its defined operational regime;
+17. in a conservative branch, unavoidable sub-threshold emission or zero-critical-velocity coupling produces unacceptable drag;
+18. in a relaxational or mixed branch, low-frequency friction, relaxation, or conversion lag produces unacceptable drag during uniform motion;
+19. the chosen conservative, relaxational, or mixed order dynamics overdetermines \(\chi_B\) or cannot close its nonredundant material, momentum, energy, inertia/drag, and required entropy/internal-reservoir ledgers;
+20. transverse light leaks or converts excessively into longitudinal, bulk, odd-electric, even-thickness, or conversion modes;
+21. an accelerating oriented throat cannot source the two transverse light modes with normalization tied to the same leading electric coupling as static electricity and magnetism, or it necessarily produces unacceptable unsuppressed additional radiation;
+22. no self-consistent fixed point exists between the local supported throat and the global drain-return/reservoir boundary conditions;
+23. no consistent handoff exists from projected positions \(\mathbf x_a\) and two-interface graphs to full points \(\mathbf X=(\mathbf x,w)\), compact or suitably closed localized diagnostic core sets measured with \(\mathbf Y_\pm\), and nonlinear parent-field topology; neither orientation-resolved diagnostics nor connected-component continuation supplies physical core labels through contact; separate labels are imposed after merger; the inferred contact is not robust under reasonable threshold variation; or projected coincidence causes an unphysical singularity, arbitrary branch selection, unacceptable short-range force, or loss of particle identity;
+24. no complete \(\mathcal C_{\rm th}=\mathcal I_{\rm internal}\circ\mathcal R_w\) produces an equilibrium equal-energy partner, a conservative periodic partner with consistently mapped action/frequency/phase data and cycle-averaged invariants, or a driven partner with equality of the applicable stationary throughput, dissipation, entropy production, lifetime, stress/momentum fluxes, and retarded response kernels;
+25. a same-species throat–antithroat pair has no material-, momentum-, and energy-conserving annihilation or neutralization channel, or the theory incorrectly forces distinct-species opposite charges to annihilate solely because their odd electric disturbance cancels;
+26. any desired gravity, electric, contact, radiation, support, or cosmological result can be obtained only by introducing a separately fitted coefficient or retuning a frozen upstream input without propagating the change.
 
 These are not admissions that the model has already failed. They define the computational tests that prevent the ontology from being protected by post-hoc adjustment.
 
@@ -1415,6 +1541,7 @@ The current ontology contains:
 - no second material substance;
 - no empty bulk vacuum that actively sucks material away;
 - no ordinary linearly sourced scalar explanation of electric repulsion;
+- no assignment of a static interaction energy to a conservative periodic pair without a derived cycle-averaged ensemble or averaged stress-force construction;
 - no assignment of an equilibrium interaction potential to a maintained dissipative pair unless its quasistatic force is first shown to be conservative;
 - no use of the odd Coulomb coefficient \(C_{E,ab}\) to absorb reflection-even thickness or nonlinear core forces;
 - no identification of a proton-like object with an electron-like throat whose orientation has merely been reversed—that operation defines the positron-like branch;
@@ -1519,8 +1646,8 @@ The stationary or time-periodic supported-throat solution must determine:
 - how its averaged pressure or stress holds the aperture open;
 - the equilibrium throat radius and shape;
 - the support of each oriented core across the slab and whether it is anchored to one interface, spans the slab, or requires a multi-sheet geometry;
-- signed local net outward flux \(Q_n^{\rm net}\), selected positive drain-branch throughput \(Q_n\), and signed coordinate-normal flux \(\widetilde Q_n^{(w)}=sQ_n^{\rm net}\);
-- nonnegative gross local order-conversion drain \(Q_\chi\);
+- signed local net outward flux \(Q_n^{\rm net}\), selected positive drain-branch throughput \(Q_n\), and signed coordinate-normal flux \(\widetilde Q_n^{(w)}=sQ_n^{\rm net}\) on the selected \(w\)-normal reference cut, or the derived geometric replacement for a curved cut;
+- nonnegative gross local order-conversion drain \(Q_\chi\), including its branch-specific definition and number-per-time units;
 - gross shorthand \(Q_{\rm ap}\), if useful, without conflating those processes;
 - whether displacement relative to the brane mid-surface produces the proposed conversion-and-entrainment feedback;
 - whether a sonic or other critical-flow condition bounds \(Q_n\) for the solved mouth geometry and upstream state, and whether that bound participates in the equilibrium-radius relation;
@@ -1562,6 +1689,8 @@ The moving family must determine:
 - for a relaxational or mixed branch, the frequency-dependent inertia, conversion, and low-frequency damping kernels with complete internal-reservoir accounting;
 - local active, passive, and inertial mass relations;
 - passive response kept separate from the fixed source-field calibration, so later test-species dependence remains measurable;
+- positive-definite symmetric passive and inertial response on the ordinary stable branch;
+- nonnegative cycle-averaged absorbed power for perturbations of an unexcited dissipative reservoir;
 - \(\widetilde Q_n^{(w)}(v)\), \(Q_n^{\rm net}(v)\), selected \(Q_n(v)\), the nonnegative gross drain magnitude \(Q_\chi(v)\), the raw gravity source, and signed \(\overline Q_g(r;v)\) after reflection closure;
 - electromagnetic magnetism;
 - one-current normalization across \(O(v^0)\) electricity, \(O(v)\) magnetism, and \(O(a)\) transverse radiation;
@@ -1575,6 +1704,7 @@ The moving family must determine:
 The two-body problem must determine:
 
 - gravitational force normalization;
+- whether the pair is equilibrium static, conservative phase-locked periodic, or driven dissipative, and the corresponding static ensemble, fixed support-mode action/frequency/relative-phase data, or stress/momentum/reservoir force prescription;
 - reflected or asymmetric environmental data and any resulting orientation-dependent splitting;
 - the effect of return-halo overlap on the signed \(\overline Q_g(r)\) rather than on an absolute source magnitude;
 - projected throat positions \(\mathbf x_a\) and the full four-dimensional core-set distance using dummy points \(\mathbf Y_\pm\);
@@ -1585,10 +1715,11 @@ The two-body problem must determine:
 - whether core data are universal, quantized, or topology controlled;
 - whether thickness, environmental, finite-size, and polarization corrections are acceptably small;
 - whether many-body effects preserve approximate additivity;
-- the electric force sign from the correct equilibrium ensemble or, for a driven pair, from the complete stress, material/order momentum-flux, conversion, and reservoir response;
+- the electric force sign from the correct equilibrium ensemble, the derived conservative-periodic averaged functional or stress force, or, for a driven pair, the complete stress, material/order momentum-flux, conversion, and reservoir response;
 - the finite-thickness cross-interface Green matrix and its \(R\sim H_{\rm br}\) corrections;
 - whether oppositely oriented throats can coincide in projected three-space while remaining separated in \(w\);
-- the graph-regime gap \(d_w^{\rm core}=H_{\rm br}+2h_t^{\rm tot}-\ell_+^{\rm in}-\ell_-^{\rm in}\), a solved localized core diagnostic \(\mathcal I_a\), thresholded sets \(\mathcal C_a(\epsilon)\), their actual intersection, and the threshold-robust distance \(d_{\rm core}(\epsilon)\) after graph breakdown;
+- the graph-regime gap \(d_w^{\rm core}=H_{\rm br}+2h_t^{\rm tot}-\ell_+^{\rm in}-\ell_-^{\rm in}\), a solved localized core diagnostic, thresholded sets, orientation-resolved intersection or component-closure/topology transition, and the threshold-robust distance \(d_{\rm core}(\epsilon)\) while two cores remain identifiable after graph breakdown;
+- orientation-resolved diagnostics or connected-component continuation that keeps the two core labels physical up to contact and stops assigning separate labels after merger;
 - whether the exact-coincidence limit gives exclusion, saturation, annihilation, reconnection, or a stable neutral composite, with same-species antiparticles distinguished from different or composite species;
 - overlap of return halos and the modification of each throat's \(Q_n^{\rm net}\), selected throughput, conversion, raw gravity source, signed effective source, and active mass by the other's environment;
 - conditions under which isolated one-throat profiles approximately superpose;
@@ -1603,6 +1734,7 @@ The two-body problem must determine:
 The global problem must determine:
 
 - localized drainage and distributed return;
+- a nonredundant branch-specific order evolution: the \(\chi_Bn\) balance for a fraction/relaxational branch, an Euler–Lagrange equation for an inertial order field, or explicitly coupled \(\chi_B\) and \(f_B\) variables where both are needed;
 - the \(\widetilde{\mathcal F}_r\) relation among \(\widetilde Q_n^{(w)}\), \(Q_n^{\rm net}\), selected \(Q_n\), \(Q_\chi\), return, and the raw gravity coefficient;
 - the reflected-environment reduction to signed \(\overline Q_g(r)\), the probe-independent source-side field \(\boldsymbol{\mathfrak g}_{\rm src}\), and fixed calibration \(\mathcal C_{\rm ref}\) to \(\mathbf g_{\rm eff}\);
 - the return or gravity-screening scale, if one exists;
@@ -1618,11 +1750,11 @@ The global solution must update \(\mathcal B_\infty\) and be iterated with the l
 
 ## 20. Compact mental picture
 
-One globally conserved four-dimensional medium forms an ordered, finite-thickness, shear-supporting three-dimensional brane. The present candidate assumes the brane is globally two-sided and co-orientable, with its local mid-surface defined relationally. A finite oriented throat at projected position \(\mathbf x_a\) extends the ordered structure into a bulk-facing defect. Its complete geometry lives at full points \(\mathbf X=(\mathbf x,w)\). A linear normalizable bound mode or outgoing resonance on a provisional geometry is only a spectral seed. The particle must be a self-consistent nonlinear periodic supported throat whose averaged support stress, geometry, flow, conversion, and reservoir loading close together, followed by Floquet or response stability. A rim, collar, sheath, cavity wall, or other \(\Omega_{\rm support}\) is diagnosed from the solved energy and stress localization. Support energy is structural and is not itself observed mass.
+One globally conserved four-dimensional medium lives in preferred Newtonian time and flat Euclidean parent space \((\mathbb R^4,\delta_{AB})\) and forms an ordered, finite-thickness, shear-supporting three-dimensional brane. The present candidate assumes the brane is globally two-sided and co-orientable, with its local mid-surface defined relationally. A finite oriented throat at projected position \(\mathbf x_a\) extends the ordered structure into a bulk-facing defect. Its complete geometry lives at full points \(\mathbf X=(\mathbf x,w)\). A linear normalizable bound mode or outgoing resonance on a provisional geometry is only a spectral seed. The particle must be a self-consistent nonlinear periodic supported throat whose averaged support stress, geometry, flow, conversion, and reservoir loading close together, followed by Floquet or response stability. A rim, collar, sheath, cavity wall, or other \(\Omega_{\rm support}\) is diagnosed from the solved energy and stress localization. Support energy is structural and is not itself observed mass.
 
-A throat has signed local net outward flux \(Q_n^{\rm net}\), signed global-coordinate flux \(\widetilde Q_n^{(w)}=sQ_n^{\rm net}\), and, on a selected stationary drain branch, positive throughput \(Q_n=Q_n^{\rm net}>0\). Its transport, nonnegative gross conversion drain \(Q_\chi\), stress, distributed return, and reservoir response must first determine the probe-independent source field \(\boldsymbol{\mathfrak g}_{\rm src}\). One fixed \(\mathcal C_{\rm ref}\) calibrates that field into \(\mathbf g_{\rm eff}\), which is distinct from raw \(\mathbf v_{\rm med}\); passive response is then derived separately. Reflection covariance compares the complete candidate throat operation \(\mathcal C_{\rm th}\) with geometrically reflected environmental data, and same-environment degeneracy requires \(\mathcal R_w\mathcal B_\infty=\mathcal B_\infty\). Reflection closure yields orientation-even but radially signed \(\overline Q_g(r)\); local active mass is defined only where the ordinary branch has \(\overline Q_g(r_{\rm local})>0\), while larger-scale screening, overshoot, or sign reversal remains visible. Active, passive, and inertial universality is required only in the defined weak-field, low-velocity, low-frequency regime.
+A throat has signed local net outward flux \(Q_n^{\rm net}\), signed global-coordinate flux \(\widetilde Q_n^{(w)}=sQ_n^{\rm net}\) on its selected \(w\)-normal reference cut, and, on a selected stationary drain branch, positive throughput \(Q_n=Q_n^{\rm net}>0\). Exact total conservation defines \(\mathbf J_n\); a curved aperture needs the invariant surface flux and a derived projected-area relation. Its transport, branch-specific nonnegative gross conversion drain \(Q_\chi\), stress, distributed return, and reservoir response must first determine the probe-independent source field \(\boldsymbol{\mathfrak g}_{\rm src}\). One fixed \(\mathcal C_{\rm ref}\) calibrates that field into \(\mathbf g_{\rm eff}\), which is distinct from raw \(\mathbf v_{\rm med}\); passive response is then derived separately. Reflection covariance compares the complete candidate throat operation \(\mathcal C_{\rm th}\) with geometrically reflected environmental data, and same-environment degeneracy requires \(\mathcal R_w\mathcal B_\infty=\mathcal B_\infty\). Reflection closure yields orientation-even but radially signed \(\overline Q_g(r)\); local active mass is defined only where the ordinary branch has \(\overline Q_g(r_{\rm local})>0\), while larger-scale screening, overshoot, or sign reversal remains visible. Ordinary passive and inertial response must be positive, dissipative response must be passive for an unexcited reservoir, and mass-ratio universality is required only in the defined weak-field, low-velocity, low-frequency regime.
 
-The two brane interfaces have leading reflection-odd mid-surface and reflection-even thickness projections, but the complete source and response decompose into parity blocks that may contain multiple eigenbranches. Electric orientation imposes a signed material boundary condition, while even thickness and nonlinear core dressing may remain after the complete odd source cancels for a candidate pair. A Coulomb-like equilibrium tail requires a healthy odd Hessian eigenbranch with nonzero throat coupling and leading \(k^2\) static stiffness; parity or gaplessness alone is insufficient, and a flexural \(k^4\) branch is a different static problem. The coefficient \(C_{E,ab}\) belongs only to that odd Coulomb monopole channel; even, mixed, and core interactions remain separate, and both the odd correction and its radial derivative must be asymptotically subleading for the leading force sign. Equilibrium interactions use \(\mathcal H\) and an ensemble-appropriate potential, whereas damping and radiation use \(\mathcal O_R\); a driven dissipative pair gets its force from stress and momentum/reservoir ledgers unless conservativity is derived. Opposite orientations can have \(\mathbf x_+=\mathbf x_-\) while their cores remain separated. In the graph regime their gap is \(H_{\rm br}+2h_t^{\rm tot}-\ell_+^{\rm in}-\ell_-^{\rm in}\); interface coordinates hand off to full parent fields and thresholded localized core sets, whose actual intersection defines contact and whose \(d_{\rm core}(\epsilon)\) measures precontact separation. The complete \(\mathcal C_{\rm th}\), not geometric reflection alone, defines only the antiparticle candidate until the branch-appropriate partner tests are derived.
+The two brane interfaces have leading reflection-odd mid-surface and reflection-even thickness projections, but the complete source and response decompose into parity blocks that may contain multiple eigenbranches. Electric orientation imposes a signed material boundary condition, while even thickness and nonlinear core dressing may remain after the cycle-averaged or correctly phase-mapped odd source cancels for a candidate pair. A Coulomb-like equilibrium tail requires a healthy odd Hessian eigenbranch with nonzero throat coupling and leading \(k^2\) static stiffness; parity or gaplessness alone is insufficient, and a flexural \(k^4\) branch is a different static problem. The coefficient \(C_{E,ab}\) belongs only to that odd Coulomb monopole channel; even, mixed, and core interactions remain separate, and both the odd correction and its radial derivative must be asymptotically subleading for the leading force sign. Equilibrium interactions use \(\mathcal H\) and an ensemble-appropriate potential; a conservative periodic pair requires a derived cycle-averaged action/frequency/relative-phase ensemble or averaged stress force; damping and radiation use \(\mathcal O_R\); and a driven dissipative pair gets its force from stress and momentum/reservoir ledgers unless conservativity is derived. Opposite orientations can have \(\mathbf x_+=\mathbf x_-\) while their cores remain separated. In the graph regime their gap is \(H_{\rm br}+2h_t^{\rm tot}-\ell_+^{\rm in}-\ell_-^{\rm in}\); interface coordinates hand off to full parent fields and thresholded localized core sets. Orientation-resolved diagnostics or connected-component continuation must supply physical core labels through contact and retire them after merger; \(d_{\rm core}(\epsilon)\) is an ambient Euclidean precontact measure while two cores remain identifiable. The complete \(\mathcal C_{\rm th}\), not geometric reflection alone, defines only the antiparticle candidate until the branch-appropriate partner tests are derived.
 
 Electromagnetic closure requires one conserved oriented current and one derived coupling structure to connect the \(O(v^0)\) static electric response, the \(O(v)\) magnetic response, and \(O(a)\) emission into the two transverse light polarizations. Radiation into odd-normal, even-thickness, longitudinal, bulk, and conversion/reservoir modes is a calculable prediction. The local supported throat and the global drain-return/reservoir problem must be iterated to a common fixed point with frozen parameters and complete material, momentum, energy, and, where applicable, entropy accounting. Cosmological expansion through distributed return remains an open closed-reservoir hypothesis, not a derived dark-energy sector.
 

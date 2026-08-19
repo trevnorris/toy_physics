@@ -6,6 +6,8 @@ This document records a geometric extension and the calculations it requires. It
 
 This plan is conceptually frozen with the ontology: revisions should now be driven by the slab, spectrum, Green-matrix, source-profile, and nonlinear-throat calculations rather than by adding untested mechanisms.
 
+Definitions repeated from the ontology are guarded by a [mechanical synchronization check](../software/check_ontology_shared_definitions.py); that check detects documentation drift and does not validate the physics.
+
 The central observation is simple:
 
 > Two defects can occupy the same projected three-dimensional position while remaining distinct in the normal direction of a finite-thickness brane.
@@ -61,6 +63,8 @@ Q_{\chi,\alpha}^{(+)}=Q_{\chi,\alpha}^{(-)},
 
 while all required orientation-odd data reverse. Chirality, circulation, knot orientation, support-mode phase convention, topological index, or conversion-current data may therefore have to transform as part of the complete map. Electric-orientation reversal alone has not yet established that map.
 
+For a conservative periodic branch, the complete map must additionally transform support-mode action, frequency, and phase data. Compare a derived cycle-averaged invariant or the cycle-averaged stress and momentum flux in the same stated ensemble; two throats with arbitrary relative phase are not automatically reflection partners.
+
 For a driven relaxational or mixed branch, equality of an equilibrium energy may be unavailable or insufficient. The reflected stationary tests must instead include, as applicable, equality of positive throughput, dissipation rate, entropy-production rate, lifetime, stationary stress and momentum fluxes, and the complete retarded response kernels under reflected environmental data.
 
 The environment must transform with the throat. For any source-side gravity comparison the target covariance imported from the ontology is
@@ -80,19 +84,19 @@ Therefore, reversing an electron-like throat produces a positron-like candidate,
 
 This distinction prevents the model from predicting that every positive and negative object must annihilate merely because their electric orientations are opposite.
 
-Flux notation follows the ontology. With \(\hat{\mathbf n}_\alpha=s\hat{\mathbf w}\),
+Flux notation follows the ontology, including \(\partial_t n+\nabla_4\cdot\mathbf J_n=0\). Let \(\mathcal A_\alpha\) be its selected \(w\)-normal three-dimensional reference cut through an axis-aligned throat. With \(\hat{\mathbf n}_\alpha=s\hat{\mathbf w}\),
 
 \[
 \widetilde Q_{n,\alpha}^{(w)}
 =\int_{\mathcal A_\alpha}
-\mathbf J_n\cdot\hat{\mathbf w}\,d^3x,
+\mathbf J_n\cdot\hat{\mathbf w}\,d^3\Sigma,
 \qquad
 Q_{n,\alpha}^{\rm net}
 =\int_{\mathcal A_\alpha}
-\mathbf J_n\cdot\hat{\mathbf n}_\alpha\,d^3x.
+\mathbf J_n\cdot\hat{\mathbf n}_\alpha\,d^3\Sigma.
 \]
 
-Thus \(\widetilde Q_{n,\alpha}^{(w)}\) is signed in the global \(w\) convention and \(Q_{n,\alpha}^{\rm net}\) is signed local net outward flux. The normal definitions give the **identity**
+Thus \(\widetilde Q_{n,\alpha}^{(w)}\) is signed in the global \(w\) convention and \(Q_{n,\alpha}^{\rm net}\) is signed local net outward flux. On this reference cut the normal definitions give the **identity**
 
 \[
 \boxed{
@@ -100,6 +104,8 @@ Thus \(\widetilde Q_{n,\alpha}^{(w)}\) is signed in the global \(w\) convention 
 =sQ_{n,\alpha}^{\rm net}
 }.
 \]
+
+For a general curved cut with normal field \(\hat{\mathbf n}(\mathbf X)\), use the invariant surface flux; the simple global-\(w\) identity then requires a derived projected-area relation and is not automatic.
 
 For each independently solved stationary outward-drain branch, define \(Q_{n,\alpha}\equiv Q_{n,\alpha}^{\rm net}>0\) only after its sign is verified. Under reflection-symmetric boundary and reservoir data, the actual physical targets for \(\mathcal C_{\rm th}\)-related partners are
 
@@ -114,7 +120,7 @@ Q_{n,\alpha}^{(+)}=Q_{n,\alpha}^{(-)}
 }.
 \]
 
-The quantity \(Q_{\chi,\alpha}\ge0\) remains the separate gross local ordered-to-bulk drain magnitude.
+The quantity \(Q_{\chi,\alpha}\ge0\) remains the separate gross local ordered-to-bulk drain magnitude. In the fraction/relaxational branch it is \(\int_{\Omega_{{\rm throat},\alpha}}n\Gamma_{\rm drain}\,d^4X\), with the same number-per-time dimensions as \(Q_{n,\alpha}\); in an inertial order-field branch the corresponding gross diagnostic must be derived rather than imported.
 
 ## 2. Finite slab and two interface coordinates
 
@@ -257,6 +263,8 @@ A brane observer assigns a throat the projected position
 
 A general full four-dimensional spatial point is \(\mathbf X=(\mathbf x,w)\).
 
+The canonical arena metric is the ambient Euclidean \(\delta_{AB}\), so \(\|\mathbf Y_+-\mathbf Y_-\|_4\) below is Euclidean distance. It is independent of the interface-graph parameterization, not of arbitrary changes to the ambient metric; a nonflat parent branch would require geodesic distance instead.
+
 Because the parent fields may have noncompact tails, “core” cannot mean the literal support of every disturbance. Let \(\mathcal I_a(\mathbf X)\) be a solved localized diagnostic such as order depletion, defect density, conversion intensity, or another invariant selected by the parent solution, and define
 
 \[
@@ -268,7 +276,12 @@ Because the parent fields may have noncompact tails, “core” cannot mean the 
 \subset\mathbb R^3_{\mathbf x}\times\mathbb R_w.
 \]
 
-The diagnostic and threshold range must give compact core sets, or at least closed localized sets for which the distance infimum is attained. Below, \(\mathcal C_a\) abbreviates one such thresholded set unless \(\epsilon\) is shown explicitly.
+The diagnostic and threshold range must give compact core sets, or at least closed localized sets for which the distance infimum is attained. The separate \(+/-\) labels must also be derived rather than imposed. Use one of two procedures:
+
+1. **Orientation-resolved diagnostics:** derive genuinely distinct \(\mathcal I_+\) and \(\mathcal I_-\), for example from an oriented topological or conversion-density field. Their threshold sets may be intersected directly.
+2. **Connected-component continuation:** use one total diagnostic \(\mathcal I(\mathbf X)\), identify two thresholded connected components at large \(R\), and continue them toward smaller \(R\). Contact or merger occurs when their closures first touch or their component count or topology changes.
+
+Below, \(\mathcal C_a\) abbreviates a physical set obtained by one of these procedures unless \(\epsilon\) is shown explicitly. Once a merger leaves only one component and no orientation-resolved diagnostic, separate \(\mathcal C_+\) and \(\mathcal C_-\) cease to exist; they must not be reconstructed by an analyst-chosen decomposition of the total field.
 
 Two cores can therefore satisfy
 
@@ -322,17 +335,17 @@ d_w^{\rm core}\simeq H_0+2a_c,
 
 not merely \(H_0\). In that restricted geometry the two cores cannot touch. Contact requires the solved cores or deformation zones to extend sufficiently toward the mid-surface, one core to span the slab, or the interfaces to undergo a topology change. This is a conditional geometric result, not yet a solved property of the model's throats.
 
-Once graph coordinates fail, use the coordinate-independent core-set distance
+Once graph coordinates fail, use the interface-graph-independent ambient core-set distance while two cores remain identifiable:
 
 \[
 d_{\rm core}(\epsilon)
 =\inf_{\substack{
-\mathbf Y_+\in\mathcal C_+\\
-\mathbf Y_-\in\mathcal C_-}}
+\mathbf Y_+\in\mathcal C_+(\epsilon)\\
+\mathbf Y_-\in\mathcal C_-(\epsilon)}}
 \left\|\mathbf Y_+-\mathbf Y_-\right\|_4.
 \]
 
-This definition remains meaningful when the interfaces develop overhangs, necks, folds, or topology changes. Actual contact is
+This definition remains meaningful when the interfaces develop overhangs, necks, or folds. For orientation-resolved sets, actual contact is
 
 \[
 \boxed{
@@ -343,7 +356,7 @@ This definition remains meaningful when the interfaces develop overhangs, necks,
 }.
 \]
 
-For compact sets this is equivalent to \(d_{\rm core}(\epsilon)=0\); for nonclosed or nonlocalized sets, zero infimum alone would not prove intersection. The inferred contact point and qualitative outcome must be robust under reasonable variation of \(\epsilon\). Neither contact nor set distance decides whether the subsequent evolution is merger, reconnection, annihilation, pinch-off, or another conserving topology change.
+For compact orientation-resolved sets this is equivalent to \(d_{\rm core}(\epsilon)=0\); for nonclosed or nonlocalized sets, zero infimum alone would not prove intersection. Under connected-component continuation, closure contact and the component-count or topology change define merger, after which separate set distance is no longer meaningful. The inferred contact point and qualitative outcome must be robust under reasonable variation of \(\epsilon\). Neither contact nor set distance decides whether the subsequent evolution is reconnection, annihilation, pinch-off, or another conserving topology change.
 
 ## 5. Quadratic two-interface action
 
@@ -452,13 +465,17 @@ Poles, damping, phase lag, radiation, and time-dependent response are instead go
 
 For a conservative theory, \(\mathcal O_R\) is related to the action's linearized equations and its zero-frequency limit must be consistent with \(\mathcal H\). For a relaxational or mixed theory, \(\mathcal O_R\) may be non-Hermitian and must include every internal reservoir variable needed to close energy, momentum, and entropy accounting. Its inverse is a response function, not automatically the Hessian of an interaction energy.
 
-### 6.3 Driven dissipative stationary pair
+### 6.3 Conservative intrinsically periodic pair
+
+A self-consistent supported throat may be conservative yet intrinsically time periodic. Such a solution is not automatically governed by the static free energy above. A phase-locked periodic pair may instead admit a cycle-averaged Hamiltonian, Routhian, quasienergy, or averaged action, but only in a derived ensemble that states what is held fixed—for example support-mode action, frequency, relative phase, or the appropriate conjugate data. If no scalar functional is established, derive the mean force from the cycle-averaged Noether stress and momentum flux. Do not substitute a static Hessian merely because the cycle-averaged geometry is stationary.
+
+### 6.4 Driven dissipative stationary pair
 
 For a maintained dissipative nonequilibrium pair, do not assume that a scalar \(E_{ab}(R)\) exists. Derive the quasistatic force from the complete stress tensor, material and order momentum flux, conversion terms, and reservoir response. A potential may be introduced only after the force is shown to be conservative and path independent over the relevant configuration space.
 
-### 6.4 Source parity and pair kernels
+### 6.5 Source parity and pair kernels
 
-For a static oriented throat, the source vector should separate orientation-odd and orientation-even data:
+For a static oriented throat—or for a declared cycle-averaged source of a phase-locked periodic throat—the source vector should separate orientation-odd and orientation-even data:
 
 \[
 \boldsymbol J_{\alpha,s}
@@ -501,7 +518,7 @@ e^{i\mathbf k\cdot\mathbf R}
 \boldsymbol J_b(\mathbf k).
 \]
 
-This is an equilibrium/conservative static kernel only. The physical interaction energy is not automatically equal to the bare expression: it must use the correct conjugate functional for the boundary ensemble and subtract one-body self terms. Fixed-value, fixed-source, fixed-flux, and mixed boundary data can change the interaction sign. The driven dissipative analog uses \(\mathcal G_R\) to obtain response and the stress/momentum ledger to obtain force; it is not assigned an energy by analogy.
+This is an equilibrium/conservative static kernel only. The physical interaction energy is not automatically equal to the bare expression: it must use the correct conjugate functional for the boundary ensemble and subtract one-body self terms. Fixed-value, fixed-source, fixed-flux, and mixed boundary data can change the interaction sign. A conservative periodic pair requires the cycle-averaged treatment above, including its action/frequency/phase ensemble; the driven dissipative analog uses \(\mathcal G_R\) to obtain response and the stress/momentum ledger to obtain force. Neither is assigned a static energy by analogy.
 
 On a reflection-symmetric background, the propagator separates into odd and even parity blocks unless a parity-breaking datum is present. The leading kernel then has the schematic block form
 
@@ -623,6 +640,8 @@ Within the linear source description, exact projected coincidence of a complete 
 +\boldsymbol J_{\alpha,-}^{\rm odd}=0.
 \]
 
+For intrinsically periodic throats, this statement is exact only when \(\boldsymbol J^{\rm odd}\) denotes the cycle-averaged stationary source or when the complete \(\mathcal C_{\rm th}\) operation supplies the required instantaneous phase map. An arbitrary relative support-mode phase may leave transient odd multipoles, phase-dependent stresses, or sideband radiation even when the cycle-averaged Coulomb monopole cancels.
+
 The complete even data add rather than cancel:
 
 \[
@@ -650,7 +669,7 @@ E_{\alpha\bar\alpha}(R)
 +E_{\rm core}^{\rm nl}(R).
 \]
 
-On an exactly reflection-symmetric background, the mixed term should vanish at quadratic order. After the physical electric sign has been derived from the correct boundary ensemble, the leading long-range odd contribution should be attractive for opposite orientation. The even contribution may be attractive, repulsive, or sign-changing and must be calculated. The nonlinear core term decides contact, reconnection, annihilation, saturation, or exclusion; no desired short-range barrier may be inserted by hand. For a driven dissipative pair, use the same labels only to organize response channels and derive force from the stress, momentum-flux, conversion, and reservoir ledgers unless conservativity is independently established.
+On an exactly reflection-symmetric background, the mixed term should vanish at quadratic order. After the physical electric sign has been derived from the correct boundary ensemble, the leading long-range odd contribution should be attractive for opposite orientation. The even contribution may be attractive, repulsive, or sign-changing and must be calculated. The nonlinear core term decides contact, reconnection, annihilation, saturation, or exclusion; no desired short-range barrier may be inserted by hand. For a conservative periodic pair, replace this static energy by the derived cycle-averaged functional at fixed support-mode action, frequency, relative phase, or other stated conjugate data; absent such a functional, use cycle-averaged stress and momentum flux. For a driven dissipative pair, use the same labels only to organize response channels and derive force from the stress, momentum-flux, conversion, and reservoir ledgers unless conservativity is independently established.
 
 A viable electron-like branch must possess an allowed electron–positron annihilation channel, but annihilation need not be instantaneous or compulsory in every encounter. The time-dependent calculation must conserve total constituent content, momentum, and energy; in a relaxational or mixed realization it must also account for entropy and internal reservoir excitation.
 
@@ -732,7 +751,7 @@ C_{E,ab}(R)
 g_a\ge0.
 \]
 
-Require both \(\delta C_{ab}^{\rm odd}/(g_ag_b)\to0\) and \(R\partial_R\delta C_{ab}^{\rm odd}/(g_ag_b)\to0\) in the far-field regime before inferring the leading force sign. Compute reflection-even, parity-mixed, and nonlinear core interactions separately; none belongs inside \(C_{E,ab}\). Common slab thickness alone does not establish factorization.
+For pairs with \(g_ag_b>0\), require both \(\delta C_{ab}^{\rm odd}/(g_ag_b)\to0\) and \(R\partial_R\delta C_{ab}^{\rm odd}/(g_ag_b)\to0\) in the far-field regime before inferring the leading force sign. Compute reflection-even, parity-mixed, and nonlinear core interactions separately; none belongs inside \(C_{E,ab}\). Common slab thickness alone does not establish factorization.
 
 ### 10.7 Accelerating-source and radiation test
 
@@ -762,6 +781,8 @@ Then solve the nonlinear free-boundary or periodic-orbit problem in which the su
 
 Independently derive the source-side environmental gravity field before introducing a later probe. Track the raw \(\widetilde Q_g^{(s)}(r)\), test covariance under \((\mathcal T,\mathcal B_\infty)\mapsto(\mathcal C_{\rm th}\mathcal T,\mathcal R_w\mathcal B_\infty)\), and determine whether one orientation-even but radially signed \(\overline Q_g(r)\) results. Test \(\overline Q_g(r_{\rm local})>0\) separately from reflection parity. The fixed operational calibration and passive response remain canonical ontology tasks and must not be collapsed into this source-side comparison.
 
+For each ordinary supported branch carried into the pair problem, import and verify the ontology's separate requirements of positive-definite quasistatic passive and inertial response and retarded passivity for an unexcited internal reservoir. Common wrong-sign response is not rescued by species universality.
+
 ## 11. Nonlinear contact and annihilation program
 
 Linear graph-regime theory must hand off to the full parent fields and core level sets before overhangs, necks, reconnection, pinch-off, or core contact invalidate \(h_\pm\).
@@ -770,16 +791,18 @@ Linear graph-regime theory must hand off to the full parent fields and core leve
 
 Obtain both orientations of each species from the same parent equations under reflected environmental data, and separately test degeneracy in a reflection-symmetric unchanged environment. Verify the complete candidate map \(\mathcal C_{\rm th}\), including equal orientation-even scalar magnitudes and reversal of every required orientation-odd internal datum. Use the linear transverse mode only as a seed, continue to a self-consistent nonlinear periodic supported throat, and then determine its Floquet or response stability. For a bound seed record its norm and finite energy; for a resonant seed record outgoing conditions, complex frequency or decay rate, and lifetime. Identify diagnostic support regions and full core level sets rather than identifying the interfaces alone with the throat.
 
-### 11.2 Two-core stationary families
+### 11.2 Two-core stationary or phase-locked periodic families
 
-Continue same- and opposite-orientation solutions from large projected separation through \(R\sim H_0\) toward \(R=0\). Track:
+Continue same- and opposite-orientation solutions from large projected separation through \(R\sim H_0\) toward \(R=0\). For periodic throats, construct families at explicitly fixed support-mode action, frequency, relative phase, or other derived conjugate data rather than silently treating the averaged geometry as static. Track:
 
 - the graph-regime gap \(d_w^{\rm core}=H_0+2h_t^{\rm tot}-\ell_+^{\rm in}-\ell_-^{\rm in}\), while valid;
-- the thresholded full set distance \(d_{\rm core}(\epsilon)\), actual intersection \(\mathcal C_+(\epsilon)\cap\mathcal C_-(\epsilon)\ne\varnothing\), and robustness under reasonable \(\epsilon\) variation after the graph description fails;
+- the thresholded full set distance \(d_{\rm core}(\epsilon)\) while two cores remain identifiable, orientation-resolved intersection or component-closure/topology transition, and robustness under reasonable \(\epsilon\) variation after the graph description fails;
+- whether orientation-resolved diagnostics or connected-component continuation supplies physical core labels, and the parameter value at which separate labels cease to exist after merger;
 - interface topology;
 - throat radii and support-mode amplitudes;
+- support-mode actions or frequencies, relative phase, phase locking, and any phase-dependent sidebands;
 - even and odd field energy;
-- signed local net outward flux \(Q_n^{\rm net}\), selected positive throughput \(Q_n\), the coordinate identity \(\widetilde Q_n^{(w)}=sQ_n^{\rm net}\), and gross order-conversion rate \(Q_\chi\);
+- signed local net outward flux \(Q_n^{\rm net}\), selected positive throughput \(Q_n\), the reference-cut identity \(\widetilde Q_n^{(w)}=sQ_n^{\rm net}\) or derived curved-cut replacement, and the branch-specific gross order-conversion rate or diagnostic \(Q_\chi\);
 - the provisional raw projected gravity source, its reflected-environment covariance, and the orientation-even but radially signed \(\overline Q_g(r)\);
 - reflection-symmetric and asymmetric \(\mathcal B_\infty\), including return-halo overlap and any environmental splitting;
 - the support-mode norm, energy/stress localization, leakage rate, and lifetime;
@@ -807,20 +830,21 @@ The two-interface construction fails if any of the following occurs:
 5. every primarily thickness-like even branch remains gapless or produces unacceptable long-range species-dependent forces when the intended construction requires screening;
 6. no normalizable bound seed or acceptably long-lived outgoing resonance exists, or no seed continues to a self-consistent nonlinear periodic supported throat with positive throughput and acceptable Floquet/response stability;
 7. the selected conservative, relaxational, or mixed order branch cannot close material, momentum, energy, inertia/drag, and required entropy/internal-reservoir ledgers;
-8. no complete \(\mathcal C_{\rm th}=\mathcal I_{\rm internal}\circ\mathcal R_w\) maps a solved species branch into an equilibrium equal-energy partner or, for a driven branch, a partner with equal reflected stationary throughput, dissipation, entropy production, lifetime, stress/momentum fluxes, and response kernels as applicable;
-9. the interface graph description loses validity without a consistent handoff from projected \(\mathbf x_a\) to full \(\mathbf X=(\mathbf x,w)\), parent fields, localized thresholded core sets, and the four-dimensional set distance using \(\mathbf Y_\pm\);
-10. no well-defined graph-regime gap, compact or suitably closed core diagnostic, actual intersection criterion, or threshold-robust nonlinear separation measure exists;
+8. no complete \(\mathcal C_{\rm th}=\mathcal I_{\rm internal}\circ\mathcal R_w\) maps a solved species branch into an equilibrium equal-energy partner, a conservative periodic partner with consistently mapped action/frequency/phase data and cycle-averaged invariants, or a driven partner with equal reflected stationary throughput, dissipation, entropy production, lifetime, stress/momentum fluxes, and response kernels as applicable;
+9. the interface graph description loses validity without a consistent handoff from projected \(\mathbf x_a\) to full \(\mathbf X=(\mathbf x,w)\), parent fields, physically labeled localized threshold sets, and the ambient four-dimensional set distance using \(\mathbf Y_\pm\);
+10. no well-defined graph-regime gap, compact or suitably closed core diagnostic, orientation-resolved or connected-component identification procedure, threshold-robust contact criterion, or rule for retiring separate labels after merger exists;
 11. projected coincidence necessarily produces an unphysical singularity, arbitrary branch selection, loss of conservation, or unacceptable short-distance scattering or bound-state behavior;
 12. same-species opposite-orientation pairs have no conservation-respecting annihilation or neutralization channel;
 13. different-species opposite charges are forced to annihilate solely because their leading electric monopoles cancel despite unmatched odd or even internal data;
 14. the required odd electric branch produces unacceptable extra radiation or drag, including unsuppressed radiation incompatible with the intended light/electromagnetic phenomenology;
-15. a driven dissipative force is assigned an unjustified potential, the odd coefficient \(C_{E,ab}\) hides even/core forces or non-subleading derivative corrections, or a desired flux, gravity, support, spectrum, or short-range result requires a separately tuned coefficient or absolute-value convention.
+15. a conservative periodic pair is assigned a static potential without a derived cycle-averaged ensemble or stress force; a driven dissipative force is assigned an unjustified potential; the odd coefficient \(C_{E,ab}\) hides even/core forces or non-subleading derivative corrections; or a desired flux, gravity, support, spectrum, or short-range result requires a separately tuned coefficient or absolute-value convention;
+16. the ordinary supported branch has a non-positive passive or inertial response direction after conventions are fixed, or its retarded response violates passivity for an unexcited internal reservoir.
 
 Finite-thickness corrections, any neutral remnant or hard core, leakage into transverse light, and every additional radiative branch are therefore calculable predictions rather than adjustable exceptions.
 
 ## 13. Compact interpretation
 
-The finite brane has two interfaces. Charge orientation can select which side carries the dominant protrusion, while a brane observer records only \(\mathbf x_a\); full core points are \(\mathbf X=(\mathbf x,w)\). Opposite orientations may therefore overlap in projection while remaining separated across the slab. For a complete same-species candidate pair, the full odd source vector can cancel even though even source data, thickness deformation, and internal support structures remain. The corrected graph-regime separation uses the locally deformed thickness \(H_0+2h_t^{\rm tot}\), not the undeformed \(H_0\) alone. Nonlinear cores are compact or suitably closed localized diagnostic level sets; contact is their actual intersection, while \(d_{\rm core}(\epsilon)\) is a threshold-robust precontact measure using full points \(\mathbf Y_\pm\).
+The finite brane has two interfaces in the canonical flat Euclidean parent space. Charge orientation can select which side carries the dominant protrusion, while a brane observer records only \(\mathbf x_a\); full core points are \(\mathbf X=(\mathbf x,w)\). Opposite orientations may therefore overlap in projection while remaining separated across the slab. For a complete same-species candidate pair, the cycle-averaged or correctly phase-mapped full odd source vector can cancel even though even source data, thickness deformation, and internal support structures remain; arbitrary periodic relative phase need not cancel instantaneously. The corrected graph-regime separation uses the locally deformed thickness \(H_0+2h_t^{\rm tot}\), not the undeformed \(H_0\) alone. Nonlinear cores are compact or suitably closed localized diagnostic level sets identified through orientation-resolved fields or connected-component continuation. Their intersection or component-topology transition defines contact while two labels remain physical; \(d_{\rm core}(\epsilon)\) is a threshold-robust ambient Euclidean precontact measure using full points \(\mathbf Y_\pm\), not a post-merger decomposition.
 
 For the same solved internal throat branch, \(\mathcal C_{\rm th}=\mathcal I_{\rm internal}\circ\mathcal R_w\) defines the antiparticle candidate, so electron-like plus consistently transformed electron-like means electron–positron, not electron–proton. Whether \(\mathcal I_{\rm internal}\) is trivial, whether the partner tests close, and what happens in collision remain to be derived. A same-species opposite pair may annihilate or form a temporary neutral state. An oppositely charged object of a different or composite species can remain materially distinct after electric cancellation.
 
@@ -836,4 +860,4 @@ The logical separation is
 \text{annihilation}.
 \]
 
-Linear two-interface theory must determine the complete odd/even source sectors, equilibrium Hessian and retarded-response blocks, the selected eigenbranches' static stiffnesses, the multicomponent finite-thickness Green matrices, the support seed and nonlinear periodic throat, reflected-environment gravity behavior, and every radiation channel. Equilibrium kernels may define an ensemble-qualified potential; driven dissipative forces require stress, momentum-flux, conversion, and reservoir accounting unless conservativity is derived. The coefficient \(C_{E,ab}\) covers only the odd Coulomb monopole channel. Parity does not by itself determine range, and gaplessness does not by itself produce a Coulomb kernel. Electric neutrality for different species need not cancel unmatched odd multipoles or even material data. The interface variables apply only while the surfaces remain graphs; full parent-field, nonlinear, time-dependent theory must determine contact, reconnection, annihilation, exclusion, and neutral composite formation.
+Linear two-interface theory must determine the complete odd/even source sectors, equilibrium Hessian and retarded-response blocks, the selected eigenbranches' static stiffnesses, the multicomponent finite-thickness Green matrices, the support seed and nonlinear periodic throat, reflected-environment gravity behavior, and every radiation channel. Equilibrium kernels may define an ensemble-qualified potential; a conservative periodic pair requires a derived cycle-averaged action/frequency/relative-phase ensemble or averaged stress force; driven dissipative forces require stress, momentum-flux, conversion, and reservoir accounting unless conservativity is derived. The coefficient \(C_{E,ab}\) covers only the odd Coulomb monopole channel. Parity does not by itself determine range, and gaplessness does not by itself produce a Coulomb kernel. Electric neutrality for different species need not cancel unmatched odd multipoles or even material data. The interface variables apply only while the surfaces remain graphs; full parent-field, nonlinear, time-dependent theory must determine contact, reconnection, annihilation, exclusion, and neutral composite formation.

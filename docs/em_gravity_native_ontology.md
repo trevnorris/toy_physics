@@ -1,5 +1,8 @@
 # The native EM + gravity ontology — supersolid + constraint reframe (toy 4D superfluid analog)
 
+> [!CAUTION]
+> **ARCHIVED HISTORICAL CHECKPOINT — NOT THE CURRENT ONTOLOGY.** This working foundation is retained to document an earlier branch and contains superseded claims about trapped configurations and mass. The canonical model specification is [Ontology and Closure Ledger of the Toy Analog Physics Model](toy_model_ontology_summary.md), which treats the trapped mode as structural support and keeps active, passive, and inertial mass operationally distinct.
+
 **Status: WORKING FOUNDATION v2 — 2026-07-11.** Full rewrite. Supersedes the v1 native-ontology draft and the entire gauge/Higgs/deconfinement program. Folds the v1 3-AI panel catches (esp. Codex's electric-sign catch) **and** a new conceptual reframe grounded in two external anchors: **(a) Maxwell's 1861 mechanical model** of EM, and **(b) the supersolid** state of matter. Falsification is the goal. Tags: **[COMPUTED]** / **[POSTULATED]** / **[HYPOTHESIS]** / **[OPEN]** / **[GRAVEYARD]**.
 
 **One-line orientation.** One medium, two phases: a **superfluid brane** (our 3D space — hosts gravity + light) and a **supersolid bulk** (flows *and* carries a lattice). Gravity = compression/flow; Light = brane shear; Charge = `±w` throats. **EM is not a new field — it is a *constraint* tying moving throats (current) to the brane shear (`B`), the way Maxwell's idle wheels were tied to his vortex cells.** Whether that constraint physically exists is the single pivot on which the entire EM sector turns.

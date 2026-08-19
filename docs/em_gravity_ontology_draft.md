@@ -1,5 +1,8 @@
 # Native EM + gravity ontology — assembled checkpoint (2026-07-11)
 
+> [!CAUTION]
+> **ARCHIVED HISTORICAL CHECKPOINT — NOT THE CURRENT ONTOLOGY.** This document is preserved for provenance only. It contains superseded statements, including older identifications of trapped standing-wave content with observed mass. The canonical model specification is [Ontology and Closure Ledger of the Toy Analog Physics Model](toy_model_ontology_summary.md), which treats the trapped mode as structural support and keeps active, passive, and inertial mass operationally distinct.
+
 **Purpose.** This is the picture we (user + Claude) have hammered out after the gauge/Higgs program was found to be a *mis-import*. It is a CHECKPOINT, not the final doc: the plan is to (a) mine the review logs for banked verdicts, (b) have Codex + Grok check the mined verdicts against THIS ontology, and only then (c) rewrite the real doc from scratch. Everything here is tagged **[COMPUTED]** (a run result we trust), **[HYPOTHESIS]** (proposed, not yet earned), **[OPEN]** (unresolved), or **[GRAVEYARD]** (killed — do not resurrect).
 
 ---

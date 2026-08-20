@@ -1,13 +1,16 @@
 # S11b — where the work stands, 2026-08-04
 
 > ⭐⭐ **SUPERSEDED FOR THE A/B REWRITE (2026-08-19).** S11b is being rebuilt as **ONE unified
-> export-chain step** subsuming A+B — the current authority is `directives/S11b_unified_decisions.md`
-> (G-series, committed `ddd0ae4c`). The "Next actions" below predate that decision: the immediate next
-> artifact is the **unified A+B shared spec**, ⛔ not C. ⭐ **C's material below (the four ingredients + the
-> bench-top-optics falsification) is preserved as historical input, ⛔ to be revalidated in C's own
-> decision list/spec** — the unified decision list ratifies only C's *scope* (the non-uniform
-> variable-coefficient spectrum, leakage rates, and unconditional confinement), ⛔ not this specific
-> requirement package.
+> export-chain step** subsuming A+B — the authorities are `directives/S11b_unified_decisions.md` (G-series,
+> committed `ddd0ae4c`) and the **unified shared spec `directives/S11b_SHARED_PHYSICS.md`** (committed
+> `1a2395a3`; two legs Codex+Grok, folded once). ⛔ **The immediate next artifact is the two per-engine
+> build directives** — SymPy imports the S11 LEDGER + binds `c_s0`/`μ_R` + writes `S11b_exports.py`;
+> Wolfram blind (imports nothing, re-derives) — each reviewed before its build; ⛔ not C, and ⛔ not the
+> spec (done). The "Next actions" below predate the rewrite; the live NEXT is in `STATUS.md`'s top block.
+> ⭐ **C's material below (the four ingredients + the bench-top-optics falsification) is preserved as
+> historical input, ⛔ to be revalidated in C's own decision list/spec** — the unified decision list
+> ratifies only C's *scope* (the non-uniform variable-coefficient spectrum, leakage rates, and
+> unconditional confinement), ⛔ not this specific requirement package.
 
 | | state |
 |---|---|

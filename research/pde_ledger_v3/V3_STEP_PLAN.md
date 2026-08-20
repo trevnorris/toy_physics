@@ -532,6 +532,17 @@ mode).
 
 #### ⭐⭐ S11b IS SPLIT INTO THREE — ⛔ AND S11b IS **NOT CLOSED** UNTIL C IS {#s11b-split}
 
+> ⭐⭐ **UNIFIED REWRITE UNDERWAY (2026-08-19) — this section's A/B/C framing is SUPERSEDED.** A+B are being
+> rebuilt as **ONE unified export-chain step** (decision list `directives/S11b_unified_decisions.md`
+> `ddd0ae4c`; unified spec `directives/S11b_SHARED_PHYSICS.md` `1a2395a3`, two legs Codex+Grok folded once).
+> ⭐ **The immediate NEXT is the two per-engine build directives** (each reviewed before its build); the two
+> blind engines, comparator, step record and card follow. ⚠ The **"✅ CLOSED"** tags below are the **OLD
+> pre-chain** sense — the physics stands and is being re-packaged, but the ledger rows **do not exist yet**.
+> ⛔ **SUPERSEDED below:** *"C runs immediately after B's rebuild"*, *"C is not a separate step"*, and the
+> table's **"S11b-C ▶ NEXT"** — per G1, **C is a separate LATER step** (a later build **after** the unified
+> A+B build closes; ⛔ not immediately after B, and ⛔ not the immediate NEXT); no renumbering (still
+> S11b-C). ⇒ live NEXT in `STATUS.md`'s top block and memory `project-s11b-interface-law-result`.
+
 ⛔⛔ **CORRECTED 2026-08-05 (user).** ⚠ Several docs — including a memory titled *"S11b CLOSED"* — read as
 though S11b were finished. ⛔ **It is not.** The split below was for **specification tractability**: three
 attempts to spec the whole interface in one pass were rejected. ⇒ ⭐ **A, B and C are ONE STEP**, and

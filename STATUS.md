@@ -35,10 +35,26 @@ non-passive-root power-source obligation; **locus protocol restricted to equatio
 & B5 grazing exempt); self-containment fixes (4D continuity law supplied; `μ_s=0` velocity-channel; B2c→B0c);
 T7/exports summary → a pointer. rule-2 twin + review prompt committed.
 
-⛔ **NEXT = the two per-engine build directives** — wrap this spec byte-identically; SymPy imports the S11
-LEDGER, binds `c_s0` **and** `μ_R`, writes `S11b_exports.py`; Wolfram blind (imports nothing, re-derives) —
-each **reviewed before its build**. Then: the two blind engines, the cross-engine comparator **to the frozen
-T7 contract** (net-new — S11 has none), the step record, re-point the card
+⭐⭐ **Artifact #3 DONE — the two per-engine build directives, committed `9bd2f184`** (each wraps the spec
+§§0–13, adding only per-engine wiring). **SymPy** (`directives/S11b_sympy_build_directive.md`): imports the
+S11 LEDGER, binds `c_s0`/`μ_R`/`ρ_br⁰=rho_br` to the imported objects (⛔ never re-declared), `ρ_m`/`v_dr`
+originate here, writes `S11b_exports.py` (F1 flat keys, F3 row evidence, three-valued F9 applied **whole**,
+digest pin `{own source, S11_exports.py, spec}`, `MappingProxyType` freeze; the three **G8** deviations —
+comparator SEPARATE to G8(a)+T7, D3 restored, `_RELATIONALS` included; F6 publish gate). **Wolfram**
+(`directives/S11b_wl_build_directive.md`): BLIND (imports nothing, re-derives), blindness by **absence** ⛔
+not a denylist, no VERDICT, one-kernel/two-seat run discipline. Two legs (Codex+Grok), folded **once**: both
+killed the SymPy F9 **paraphrase** (it dropped F9's *"TOTAL over the imported row shapes"* clause — F9's own
+measured failure) ⇒ point at F9 whole + only the S11b-specific wirings pointing can't supply: the `s11b_` F9c
+prefix (⭐ `s11_` is **already taken** in the import ⇒ would collide) and the **§5→§8** locus-protocol remap;
+Codex caught a **T7 mis-attribution** (join/residual/repoint are G8(a)'s, not T7's); self-caught a
+`B0–B7,B9` range imprecision (→ "every §9 task except B8"). WL directive **CLEAR** both legs. rule-2 twins
+script-generated; review prompt committed.
+
+⛔ **NEXT = the two engine BUILDS** (the directive-review gate is now met, rule 7). Build the SymPy engine
+(`scripts/S11b_interface_coupling_law_sympy_audit.py` → `S11b_exports.py`) and the blind Wolfram engine
+(`mathematica/S11b_interface_coupling_law_mathematica_audit.wl`); each Codex build then gets its **two script
+legs** (fresh agent + Grok, FORM ablation). Then: the cross-engine comparator **to the frozen T7 contract**
+(net-new — S11 has none), the step record, re-point the card
 `paper/steps/S11b_interface_coupling_law.tex`. Pattern reference = S10/S11. Full state in memory
 `project-s11b-interface-law-result`.
 

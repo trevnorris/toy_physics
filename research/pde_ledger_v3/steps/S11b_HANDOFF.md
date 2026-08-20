@@ -1,5 +1,14 @@
 # S11b — where the work stands, 2026-08-04
 
+> ⭐⭐ **SUPERSEDED FOR THE A/B REWRITE (2026-08-19).** S11b is being rebuilt as **ONE unified
+> export-chain step** subsuming A+B — the current authority is `directives/S11b_unified_decisions.md`
+> (G-series, committed `ddd0ae4c`). The "Next actions" below predate that decision: the immediate next
+> artifact is the **unified A+B shared spec**, ⛔ not C. ⭐ **C's material below (the four ingredients + the
+> bench-top-optics falsification) is preserved as historical input, ⛔ to be revalidated in C's own
+> decision list/spec** — the unified decision list ratifies only C's *scope* (the non-uniform
+> variable-coefficient spectrum, leakage rates, and unconditional confinement), ⛔ not this specific
+> requirement package.
+
 | | state |
 |---|---|
 | **S11b-A** — the bulk's response to moving faces | ✅ closed; ⚠ **its headline was later overturned** — see below |

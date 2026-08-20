@@ -1,5 +1,37 @@
 # STATUS — where the Path-A program is (single front door)
 
+## ⭐⭐⭐ CURRENT FRONT — S11b UNIFIED REWRITE (opened 2026-08-19)
+
+⭐ **S11b is being rebuilt as ONE unified export-chain step** ("the interface coupling law"), subsuming
+the historical A (bulk face response) + B (homogeneous assembly) execution stages; **C stays a separate
+later step.** Chosen 2026-08-19 (user): "S11b-A alone" is not a well-defined chain unit — A earns no
+ledger rows, the card is already one-for-S11b, the ledger content lives at B. ⭐ Physics is REUSABLE
+(both `.py`+`.wl` exist, agree, 5 hand re-derivations); only the packaging is pre-chain (no `exports.py`,
+no comparator, no committed `.out`; old spec/directives cite the deleted `reduction/` + a rule-12 denylist).
+
+⭐⭐ **Artifact #1 DONE — `directives/S11b_unified_decisions.md` (G1–G14), committed `ddd0ae4c`** — two
+legs (Codex + Grok), 7 findings folded once, rule-2 `_measurements` twin (which caught 2 of my citation
+errors). Both design snags resolved (Codex consult + my verification; the A→B difference is a
+GENERALISATION, ⛔ not a rename):
+- **`v₀`** — S11's (in-plane brane, pinned 0) ≠ S11b's (**normal bulk drain**): DIFFERENT quantities ⇒
+  distinct names; ⛔ never reuse the bare `v_0` key (`F9` object-compares two `Symbol('v_0')` as **EQUAL**
+  and silently merges them — Grok reproduced it). ⛔ NOT a premise override.
+- **`Λ`** — `Λ_A⁰` (affinity `𝒜=μ_s−δp/ρ_m`) ≠ `Λ_p⁰` (raw pressure); keep distinct, **A recovered as a
+  `μ_s=0` reduction slice**; three independent times `τ_A,τ_V,τ_X`; `Λ_X` a **SUPPLIED** channel.
+- **Scope (G14, corrected after both legs)** — the **UNIFORM** longitudinal fate + grazing are THIS
+  step's (B5); only the non-uniform variable-coefficient spectrum → C; the DC/harmonic/sideband radiation
+  audit → the **nonlinear program** (⛔ not C).
+
+⛔ **NEXT = artifact #2, the shared spec `directives/S11b_SHARED_PHYSICS.md`** — authored from the
+decision list (physics-bearing ⇒ **its own two legs** before any builder), honoring the **withhold
+discipline** (name objects, diff acceptance values on our side). Then: two blind engines (import S11
+LEDGER, bind `c_s0` **and** `μ_R`), `S11b_exports.py`, a cross-engine comparator **to the frozen T7
+contract** (net-new — S11 has none), step record, re-point the existing card
+`paper/steps/S11b_interface_coupling_law.tex`. Pattern reference = S10/S11. Full state in memory
+`project-s11b-interface-law-result`.
+
+---
+
 ## ⭐⭐ WHERE WE ARE — 2026-08-19. ⭐⭐⭐ S11 CLOSED on its computed conclusion (generic mode spectrum, gated PASS, 8 legs). Census instruments CERTIFIED `cbc49029`; the exhaustive Q8a/Q8b strata audit's 917 under-decisions + 7 defects are DOCUMENTED CAS LIMITATIONS — the engine round to zero them was NOT run (rule 11, user's call 2026-08-19).
 
 ⭐⭐ **Why S11 closes without the engine round** (`steps/S11_stray_longitudinal.md` strata-audit closure; ⚠ **corrected 2026-08-19 after an independent Codex check** refuted the first draft's "100% strata" taxonomy): the conclusion — the generic `M_ij` eigenvalues (transverse `μ_R/ρ_br` ×`D−1`, longitudinal `B_comp/ρ_br` ×1, no cross-modulus, degeneracy exactly `B_comp=μ_R`, FORM-control unique) — is a generic-`k` result whose root VALUES are cross-engine agreed (`ROOT{1,2}_N7_RESIDUAL=0`). The char. poly is degree 3, leading coeff `−ρ_br³≠0` ⇒ **exactly 3 finite roots always**; a degeneracy merges known kernels, never creates a mode. The census findings/under-decisions are **two kinds**: **(a)** measure-zero eigenvalue-degeneracy strata (`RANK_DROP`/`STACKED_DROP`/`ROOT_COINCIDENCE`/`STRATUM`) = completeness bookkeeping; **(b)** the `KW_ZERO_LOCUS` phase-matching family (592 lines, 88 MAIN) = `c_L=c_s0`, the `k_w=0` grazing threshold (Move 6) — **physics, but the bound-vs-radiating question S11 EXPLICITLY DEFERS to S11b**, not an S11-conclusion gap and not something the engine round would touch. Neither (a) nor (b) changes the decoupled spectrum. ⚠ Honest caveats: this is the in-plane **frozen-wall-width** spectrum (not the full observable one); positivity is trivially true from premises but SymPy's sign probe is `UNDECIDED`; separation is a `D=3` fact; the `PASS` gates live in the acceptance harness, not the engine `.out`; the 7 register defects are engine **logic** bugs, not merely CAS-hard. Certified instruments + all runs preserved (`~/.s11_build/census_build4/`, `orch_verify4/`), resumable if a downstream step (or S11b's grazing case) needs a specific locus decided.

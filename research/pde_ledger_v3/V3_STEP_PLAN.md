@@ -535,8 +535,9 @@ mode).
 > ⭐⭐ **UNIFIED REWRITE UNDERWAY (2026-08-19) — this section's A/B/C framing is SUPERSEDED.** A+B are being
 > rebuilt as **ONE unified export-chain step** (decision list `directives/S11b_unified_decisions.md`
 > `ddd0ae4c`; unified spec `directives/S11b_SHARED_PHYSICS.md` `1a2395a3`, two legs Codex+Grok folded once).
-> ⭐ **The immediate NEXT is the two per-engine build directives** (each reviewed before its build); the two
-> blind engines, comparator, step record and card follow. ⚠ The **"✅ CLOSED"** tags below are the **OLD
+> ⭐ **The two per-engine build directives are DONE** (`9bd2f184`, two legs Codex+Grok each, folded once);
+> **the immediate NEXT is the two engine BUILDS** (each Codex build gated by two script legs), then the
+> cross-engine comparator, step record and card. ⚠ The **"✅ CLOSED"** tags below are the **OLD
 > pre-chain** sense — the physics stands and is being re-packaged, but the ledger rows **do not exist yet**.
 > ⛔ **SUPERSEDED below:** *"C runs immediately after B's rebuild"*, *"C is not a separate step"*, and the
 > table's **"S11b-C ▶ NEXT"** — per G1, **C is a separate LATER step** (a later build **after** the unified

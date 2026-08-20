@@ -22,11 +22,23 @@ GENERALISATION, ⛔ not a rename):
   step's (B5); only the non-uniform variable-coefficient spectrum → C; the DC/harmonic/sideband radiation
   audit → the **nonlinear program** (⛔ not C).
 
-⛔ **NEXT = artifact #2, the shared spec `directives/S11b_SHARED_PHYSICS.md`** — authored from the
-decision list (physics-bearing ⇒ **its own two legs** before any builder), honoring the **withhold
-discipline** (name objects, diff acceptance values on our side). Then: two blind engines (import S11
-LEDGER, bind `c_s0` **and** `μ_R`), `S11b_exports.py`, a cross-engine comparator **to the frozen T7
-contract** (net-new — S11 has none), step record, re-point the existing card
+⭐⭐ **Artifact #2 DONE — `directives/S11b_SHARED_PHYSICS.md`, committed `1a2395a3`** (the unified A+B spec;
+⛔ replaces the superseded rev-2 whole-interface spec that sat at that path). Two legs (Codex 14 + Grok 11,
+convergent on an **incomplete bulk-response provenance-move**); folded once (rule 7), each verified myself.
+Folds: `Z`/regimes/dissipation **DERIVED in B0b, not stated** (§2 prohibition narrowed; `q_out`'s supplied
+branch structure exempt); ⭐ **physics fix** — `μ_s=0` turns the flux pressure-driven but keeps the velocity
+channel; `ρ_br⁰` = `rho_br` **settled** (frozen wall width); restored the anti-tautology clauses in the two
+energy discriminators; **cut the `v₀/c_s0` convective-order leak** (derive-only, G12a); distinct drain glyph
+`v_dr` (⛔ never `v_0` — the F9 false-merge hazard); added the k=0 **breathing-slice task**, the permeable
+regime/parity audit, the flux-channel + basis-count tags, the exact one-parameter control cuts, a
+non-passive-root power-source obligation; **locus protocol restricted to equation-system loci** (B2d region
+& B5 grazing exempt); self-containment fixes (4D continuity law supplied; `μ_s=0` velocity-channel; B2c→B0c);
+T7/exports summary → a pointer. rule-2 twin + review prompt committed.
+
+⛔ **NEXT = the two per-engine build directives** — wrap this spec byte-identically; SymPy imports the S11
+LEDGER, binds `c_s0` **and** `μ_R`, writes `S11b_exports.py`; Wolfram blind (imports nothing, re-derives) —
+each **reviewed before its build**. Then: the two blind engines, the cross-engine comparator **to the frozen
+T7 contract** (net-new — S11 has none), the step record, re-point the card
 `paper/steps/S11b_interface_coupling_law.tex`. Pattern reference = S10/S11. Full state in memory
 `project-s11b-interface-law-result`.
 

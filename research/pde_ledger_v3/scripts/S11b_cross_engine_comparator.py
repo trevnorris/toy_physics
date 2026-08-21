@@ -2,7 +2,7 @@
 """Compare PY/WL S11b tag streams without interpreting their physics.
 
 The comparator joins non-local tags by emitted object name, parses each
-payload, applies only injective mechanical symbol transliteration, and prints
+payload, applies only injective mechanical symbol/function-head transliteration, and prints
 the operands, computed residual, and one of AGREE, DISAGREE, UNDECIDED, or
 UNCOMPARED.  A disagreement is a reported result; only operational failures
 make the process exit nonzero.
@@ -14,10 +14,13 @@ import argparse
 import ast
 import io
 import keyword
+import math
 import re
+import signal
 import sys
 import tokenize
 from collections.abc import Iterable, Mapping, Sequence
+from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -35,6 +38,7 @@ WL_DERIVATIVE = re.compile(
 )
 WL_INEQUALITY = re.compile(r"Inequality\[([^\[\]]+)\]")
 UNDECIDED_TOKEN = re.compile(r"(?:^|_)UNDECIDED(?:_|$)")
+DEFAULT_RESIDUAL_LEAF_BUDGET_SECONDS = 5.0
 
 
 class ComparatorInputError(ValueError):
@@ -47,6 +51,10 @@ class AssociationParseError(ValueError):
 
 class DimensionVectorError(ValueError):
     """A DIM payload did not expose exactly one integer L,T,M vector."""
+
+
+class ResidualBudgetExceeded(TimeoutError):
+    """One algebraic residual leaf exceeded its independent time budget."""
 
 
 @dataclass(frozen=True)
@@ -104,6 +112,19 @@ class BooleanNotResidualable:
 class ResidualFailure:
     py_value: object
     wl_value: object
+    reason: str
+
+
+@dataclass(frozen=True)
+class UndecidedResidual:
+    py_value: object
+    wl_value: object
+    reason: str
+
+
+@dataclass(frozen=True)
+class TransliterationFailure:
+    value: object
     reason: str
 
 
@@ -424,6 +445,17 @@ def _association_key(value: object) -> str | None:
     return text
 
 
+def _is_explicit_textual_atom(value: object) -> bool:
+    if isinstance(value, (TextAtom, str, Str)):
+        return True
+    return (
+        isinstance(value, AppliedUndef)
+        and len(value.args) == 1
+        and value.func.__name__ in {"Str", "_Str"}
+        and isinstance(value.args[0], sp.Symbol)
+    )
+
+
 def _convert_parsed_containers(value: object) -> object:
     if isinstance(value, Association):
         return Association(tuple((key, _convert_parsed_containers(item)) for key, item in value.entries))
@@ -449,7 +481,9 @@ def _convert_parsed_containers(value: object) -> object:
     if isinstance(value, (tuple, list, sp.Tuple)):
         converted = tuple(_convert_parsed_containers(item) for item in value)
         if converted and all(
-            isinstance(item, tuple) and len(item) == 2 and _association_key(item[0]) is not None
+            isinstance(item, tuple)
+            and len(item) == 2
+            and _is_explicit_textual_atom(item[0])
             for item in converted
         ):
             entries = []
@@ -502,12 +536,22 @@ def _iter_basic_values(value: object) -> Iterable[sp.Basic]:
         yield value
 
 
+def _basic_source_labels(value: sp.Basic) -> set[str]:
+    labels = {f"SYMBOL:{symbol.name}" for symbol in value.atoms(sp.Symbol)}
+    labels.update(
+        f"FUNCTION:{application.func.__name__}"
+        for application in value.atoms(AppliedUndef)
+    )
+    return labels
+
+
 def transliteration_collisions(value: object) -> tuple[tuple[str, tuple[str, ...]], ...]:
     """Return every non-injective target in one engine's source vocabulary."""
     by_target: dict[str, set[str]] = {}
     for basic in _iter_basic_values(value):
-        for symbol in basic.atoms(sp.Symbol):
-            by_target.setdefault(mechanical_lower_camel(symbol.name), set()).add(symbol.name)
+        for label in _basic_source_labels(basic):
+            _, source_name = label.split(":", 1)
+            by_target.setdefault(mechanical_lower_camel(source_name), set()).add(label)
     return tuple(
         (target, tuple(sorted(sources)))
         for target, sources in sorted(by_target.items())
@@ -534,7 +578,7 @@ def _transliterate_basic(value: sp.Basic) -> sp.Basic:
 
 
 def transliterate(value: object) -> object:
-    """Apply only container canonicalization and mechanical symbol spelling."""
+    """Apply only container canonicalization and mechanical identifier spelling."""
     value = _convert_parsed_containers(value)
     if isinstance(value, Association):
         return Association(tuple((key, transliterate(item)) for key, item in value.entries))
@@ -543,6 +587,33 @@ def transliterate(value: object) -> object:
     if isinstance(value, sp.Basic):
         return _transliterate_basic(value)
     return value
+
+
+def transliterate_with_collision_guard(
+    value: object,
+    engine: str,
+    collisions: tuple[tuple[str, tuple[str, ...]], ...],
+) -> object:
+    """Mark only collision-bearing leaves so disagreeing siblings still win."""
+    blocked_sources = {
+        source
+        for _, sources in collisions
+        for source in sources
+    }
+    reason = _collision_reason(engine, collisions)
+
+    def visit(item: object) -> object:
+        if isinstance(item, Association):
+            return Association(tuple((key, visit(child)) for key, child in item.entries))
+        if isinstance(item, tuple):
+            return tuple(visit(child) for child in item)
+        if isinstance(item, sp.Basic):
+            if _basic_source_labels(item) & blocked_sources:
+                return TransliterationFailure(item, reason)
+            return _transliterate_basic(item)
+        return item
+
+    return visit(value)
 
 
 def _is_native_boolean(value: object) -> bool:
@@ -554,10 +625,97 @@ def _canonical_basic_same(left: sp.Basic, right: sp.Basic) -> bool:
     return type(left) is type(right) and sp.srepr(left) == sp.srepr(right)
 
 
-def residual(py_value: object, wl_value: object) -> object:
+def _is_status_key(key: str | None) -> bool:
+    if key is None:
+        return False
+    upper = key.upper()
+    return upper == "STATUS_TOKEN" or "COVERAGE" in upper
+
+
+def _is_authoritative_uncertain_leaf(
+    name: str,
+    value: object,
+    field_key: str | None,
+    *,
+    root: bool,
+) -> bool:
+    token = _text_value(value)
+    if token is None or not _is_uncertain_token(token):
+        return False
+    if _is_status_key(field_key):
+        return True
+    return root and (
+        token.upper() == "UNDECIDED" or "COVERAGE" in name or "STATUS" in name
+    )
+
+
+@contextmanager
+def _algebraic_leaf_budget(seconds: float) -> Iterable[None]:
+    """Interrupt one algebraic leaf without enclosing any sibling residuals."""
+    if not math.isfinite(seconds) or seconds <= 0:
+        raise ValueError("residual leaf budget must be positive and finite")
+    if not hasattr(signal, "SIGALRM") or not hasattr(signal, "setitimer"):
+        raise RuntimeError("per-leaf residual budget requires POSIX interval timers")
+
+    previous_handler = signal.getsignal(signal.SIGALRM)
+    previous_timer = signal.getitimer(signal.ITIMER_REAL)
+
+    def exceed_budget(_signum: int, _frame: object) -> None:
+        raise ResidualBudgetExceeded
+
+    signal.signal(signal.SIGALRM, exceed_budget)
+    signal.setitimer(signal.ITIMER_REAL, seconds)
+    try:
+        yield
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0.0)
+        signal.signal(signal.SIGALRM, previous_handler)
+        if previous_timer != (0.0, 0.0):
+            signal.setitimer(signal.ITIMER_REAL, *previous_timer)
+
+
+def residual(
+    py_value: object,
+    wl_value: object,
+    *,
+    name: str = "",
+    path: str = "$",
+    field_key: str | None = None,
+    leaf_budget_seconds: float = DEFAULT_RESIDUAL_LEAF_BUDGET_SECONDS,
+) -> object:
     """Compute a recursive exact residual without using operand equality."""
     if _is_native_boolean(py_value) or _is_native_boolean(wl_value):
         return BooleanNotResidualable(py_value, wl_value)
+
+    transliteration_failures = [
+        value
+        for value in (py_value, wl_value)
+        if isinstance(value, TransliterationFailure)
+    ]
+    if transliteration_failures:
+        reasons = tuple(dict.fromkeys(item.reason for item in transliteration_failures))
+        return ResidualFailure(py_value, wl_value, " | ".join(reasons))
+
+    root = path == "$"
+    py_uncertain = _is_authoritative_uncertain_leaf(
+        name, py_value, field_key, root=root
+    )
+    wl_uncertain = _is_authoritative_uncertain_leaf(
+        name, wl_value, field_key, root=root
+    )
+    if py_uncertain or wl_uncertain:
+        py_text = _text_value(py_value)
+        wl_text = _text_value(wl_value)
+        if py_text is not None and wl_text is not None:
+            if py_text == wl_text:
+                return sp.S.Zero
+            if _is_status_key(field_key) or (py_uncertain and wl_uncertain):
+                return Mismatch("TOKEN_DISAGREE", py_value, wl_value)
+        return UndecidedResidual(
+            py_value,
+            wl_value,
+            "authoritative uncertain token has no comparable status-token counterpart",
+        )
 
     if isinstance(py_value, Association) or isinstance(wl_value, Association):
         if not isinstance(py_value, Association) or not isinstance(wl_value, Association):
@@ -581,7 +739,20 @@ def residual(py_value: object, wl_value: object) -> object:
                 f"MISSING_FROM_PY={missing_from_py} MISSING_FROM_WL={missing_from_wl}",
             )
         return ResidualAssociation(
-            tuple((key, residual(py_items[key], wl_items[key])) for key in sorted(py_keys))
+            tuple(
+                (
+                    key,
+                    residual(
+                        py_items[key],
+                        wl_items[key],
+                        name=name,
+                        path=f"{path}.{key}",
+                        field_key=key,
+                        leaf_budget_seconds=leaf_budget_seconds,
+                    ),
+                )
+                for key in sorted(py_keys)
+            )
         )
 
     if isinstance(py_value, tuple) or isinstance(wl_value, tuple):
@@ -594,7 +765,16 @@ def residual(py_value: object, wl_value: object) -> object:
             )
         if len(py_value) != len(wl_value):
             return Mismatch("STRUCTURE_DISAGREE", len(py_value), len(wl_value), "unequal tuple length")
-        return tuple(residual(left, right) for left, right in zip(py_value, wl_value))
+        return tuple(
+            residual(
+                left,
+                right,
+                name=name,
+                path=f"{path}[{index}]",
+                leaf_budget_seconds=leaf_budget_seconds,
+            )
+            for index, (left, right) in enumerate(zip(py_value, wl_value))
+        )
 
     if isinstance(py_value, Relational) or isinstance(wl_value, Relational):
         if not isinstance(py_value, Relational) or not isinstance(wl_value, Relational):
@@ -611,7 +791,22 @@ def residual(py_value: object, wl_value: object) -> object:
                 type(wl_value).__name__,
                 "relational operator",
             )
-        return (residual(py_value.lhs, wl_value.lhs), residual(py_value.rhs, wl_value.rhs))
+        return (
+            residual(
+                py_value.lhs,
+                wl_value.lhs,
+                name=name,
+                path=f"{path}.lhs",
+                leaf_budget_seconds=leaf_budget_seconds,
+            ),
+            residual(
+                py_value.rhs,
+                wl_value.rhs,
+                name=name,
+                path=f"{path}.rhs",
+                leaf_budget_seconds=leaf_budget_seconds,
+            ),
+        )
 
     if isinstance(py_value, TextAtom) or isinstance(wl_value, TextAtom):
         if isinstance(py_value, TextAtom) and isinstance(wl_value, TextAtom):
@@ -622,7 +817,10 @@ def residual(py_value: object, wl_value: object) -> object:
 
     if isinstance(py_value, sp.Expr) and isinstance(wl_value, sp.Expr):
         try:
-            return sp.factor(sp.cancel(sp.together(py_value - wl_value)))
+            with _algebraic_leaf_budget(leaf_budget_seconds):
+                return sp.factor(sp.cancel(sp.together(py_value - wl_value)))
+        except ResidualBudgetExceeded:
+            return ResidualFailure(py_value, wl_value, "RESIDUAL_BUDGET_EXCEEDED")
         except Exception as error:
             return ResidualFailure(py_value, wl_value, f"{type(error).__name__}: {error}")
 
@@ -653,16 +851,23 @@ def _is_structural_zero(value: object) -> bool:
     return value is sp.S.Zero
 
 
-def classify_residual(value: object) -> tuple[str, str | None]:
-    """Use DISAGREE > UNCOMPARED > AGREE precedence across sibling leaves."""
+def classify_residual(
+    value: object,
+    *,
+    has_authoritative_undecided: bool = False,
+) -> tuple[str, str | None]:
+    """Use DISAGREE > UNCOMPARED > UNDECIDED > AGREE across leaves."""
     leaves = list(_iter_residual_leaves(value))
     disagreement_kinds: list[str] = []
     operational = False
+    undecided = has_authoritative_undecided
     for _, leaf in leaves:
         if isinstance(leaf, BooleanNotResidualable):
             operational = True
         elif isinstance(leaf, ResidualFailure):
             operational = True
+        elif isinstance(leaf, UndecidedResidual):
+            undecided = True
         elif isinstance(leaf, Mismatch):
             disagreement_kinds.append(leaf.kind)
         elif not _is_structural_zero(leaf):
@@ -677,6 +882,8 @@ def classify_residual(value: object) -> tuple[str, str | None]:
         return "DISAGREE", kind
     if operational:
         return "UNCOMPARED", None
+    if undecided:
+        return "UNDECIDED", None
     return "AGREE", None
 
 
@@ -688,27 +895,39 @@ def _is_uncertain_token(token: str) -> bool:
     }
 
 
-def authoritative_undecided_token(name: str, value: object) -> str | None:
-    """Find only an explicit STATUS_TOKEN or coverage-status payload."""
+def authoritative_undecided_tokens(
+    name: str,
+    value: object,
+    path: str = "$",
+) -> tuple[str, ...]:
+    """Find explicit uncertain status/coverage leaves at every nesting depth."""
+    found: list[str] = []
     if isinstance(value, Association):
-        items = value.as_dict()
-        status = items.get("STATUS_TOKEN")
-        status_text = _text_value(status)
-        if status_text is not None and _is_uncertain_token(status_text):
-            return f"STATUS_TOKEN={status_text}"
         for key, item in value.entries:
-            if "COVERAGE" not in key.upper():
-                continue
-            coverage_text = _text_value(item)
-            if coverage_text is not None and _is_uncertain_token(coverage_text):
-                return f"{key}={coverage_text}"
-        return None
+            child_path = f"{path}.{key}"
+            text = _text_value(item)
+            if _is_status_key(key) and text is not None and _is_uncertain_token(text):
+                found.append(f"{child_path}={text}")
+            found.extend(authoritative_undecided_tokens(name, item, child_path))
+        return tuple(found)
+    if isinstance(value, tuple):
+        for index, item in enumerate(value):
+            found.extend(authoritative_undecided_tokens(name, item, f"{path}[{index}]"))
+        return tuple(found)
+    if path != "$":
+        return ()
     token = _text_value(value)
     if token is None or not _is_uncertain_token(token):
-        return None
+        return ()
     if token.upper() == "UNDECIDED" or "COVERAGE" in name or "STATUS" in name:
-        return token
-    return None
+        return (f"{path}={token}",)
+    return ()
+
+
+def authoritative_undecided_token(name: str, value: object) -> str | None:
+    """Return the first authoritative uncertain token, when one exists."""
+    tokens = authoritative_undecided_tokens(name, value)
+    return tokens[0] if tokens else None
 
 
 def _strict_integer(value: object) -> sp.Integer | None:
@@ -762,7 +981,12 @@ def _collision_reason(engine: str, collisions: tuple[tuple[str, tuple[str, ...]]
     return f"TRANSLITERATION_COLLISION ENGINE={engine} {rendered}"
 
 
-def compare_records(name: str, py_record: Record, wl_record: Record) -> Comparison:
+def compare_records(
+    name: str,
+    py_record: Record,
+    wl_record: Record,
+    leaf_budget_seconds: float = DEFAULT_RESIDUAL_LEAF_BUDGET_SECONDS,
+) -> Comparison:
     try:
         parsed_py = _convert_parsed_containers(parse_sympy_payload(py_record.raw))
     except Exception as error:
@@ -779,47 +1003,43 @@ def compare_records(name: str, py_record: Record, wl_record: Record) -> Comparis
         )
 
     py_collisions = transliteration_collisions(parsed_py)
-    if py_collisions:
-        return Comparison(
-            name, py_record, wl_record, parsed_py, parsed_wl, None, "UNCOMPARED",
-            _collision_reason("PY", py_collisions),
-        )
     wl_collisions = transliteration_collisions(parsed_wl)
-    if wl_collisions:
-        return Comparison(
-            name, py_record, wl_record, parsed_py, parsed_wl, None, "UNCOMPARED",
-            _collision_reason("WL", wl_collisions),
-        )
 
     try:
-        py_object = transliterate(parsed_py)
-        wl_object = transliterate(parsed_wl)
+        py_object = (
+            transliterate_with_collision_guard(parsed_py, "PY", py_collisions)
+            if py_collisions
+            else transliterate(parsed_py)
+        )
+        wl_object = (
+            transliterate_with_collision_guard(parsed_wl, "WL", wl_collisions)
+            if wl_collisions
+            else transliterate(parsed_wl)
+        )
     except Exception as error:
         return Comparison(
             name, py_record, wl_record, parsed_py, parsed_wl, None, "UNCOMPARED",
             f"TRANSLITERATE_{type(error).__name__}: {error}",
         )
 
-    py_undecided = authoritative_undecided_token(name, py_object)
-    wl_undecided = authoritative_undecided_token(name, wl_object)
-    if py_undecided is not None or wl_undecided is not None:
-        sources = []
-        if py_undecided is not None:
-            sources.append(f"PY={py_undecided}")
-        if wl_undecided is not None:
-            sources.append(f"WL={wl_undecided}")
-        return Comparison(
-            name, py_record, wl_record, py_object, wl_object, None, "UNDECIDED",
-            "ENGINE_STATUS " + " ".join(sources),
-        )
+    py_undecided = authoritative_undecided_tokens(name, py_object)
+    wl_undecided = authoritative_undecided_tokens(name, wl_object)
 
     if _is_dimension_name(name):
         try:
             py_vector = extract_dimension_vector(py_object)
             wl_vector = extract_dimension_vector(wl_object)
             difference = tuple(left - right for left, right in zip(py_vector, wl_vector))
-            result = residual(py_vector, wl_vector)
-            classification, _ = classify_residual(result)
+            result = residual(
+                py_vector,
+                wl_vector,
+                name=name,
+                leaf_budget_seconds=leaf_budget_seconds,
+            )
+            classification, _ = classify_residual(
+                result,
+                has_authoritative_undecided=bool(py_undecided or wl_undecided),
+            )
             disagreement_kind = "DIM" if classification == "DISAGREE" else None
             return Comparison(
                 name,
@@ -840,8 +1060,16 @@ def compare_records(name: str, py_record: Record, wl_record: Record) -> Comparis
             )
 
     try:
-        difference = residual(py_object, wl_object)
-        classification, disagreement_kind = classify_residual(difference)
+        difference = residual(
+            py_object,
+            wl_object,
+            name=name,
+            leaf_budget_seconds=leaf_budget_seconds,
+        )
+        classification, disagreement_kind = classify_residual(
+            difference,
+            has_authoritative_undecided=bool(py_undecided or wl_undecided),
+        )
         reason = None
         if classification == "UNCOMPARED":
             reasons = []
@@ -851,6 +1079,13 @@ def compare_records(name: str, py_record: Record, wl_record: Record) -> Comparis
                 elif isinstance(leaf, ResidualFailure):
                     reasons.append(f"{path}: RESIDUAL_FAILURE {leaf.reason}")
             reason = "; ".join(reasons)
+        elif classification == "UNDECIDED":
+            reasons = [f"PY={token}" for token in py_undecided]
+            reasons.extend(f"WL={token}" for token in wl_undecided)
+            for path, leaf in _iter_residual_leaves(difference):
+                if isinstance(leaf, UndecidedResidual):
+                    reasons.append(f"{path}: {leaf.reason}")
+            reason = "ENGINE_STATUS " + " ".join(reasons)
         return Comparison(
             name,
             py_record,
@@ -897,6 +1132,17 @@ def render_value(value: object) -> str:
             f"PY={render_value(value.py_value)}, WL={render_value(value.wl_value)}, "
             f"REASON={value.reason!r})"
         )
+    if isinstance(value, UndecidedResidual):
+        return (
+            "UNDECIDED_RESIDUAL("
+            f"PY={render_value(value.py_value)}, WL={render_value(value.wl_value)}, "
+            f"REASON={value.reason!r})"
+        )
+    if isinstance(value, TransliterationFailure):
+        return (
+            "TRANSLITERATION_FAILURE("
+            f"VALUE={render_value(value.value)}, REASON={value.reason!r})"
+        )
     if isinstance(value, tuple):
         contents = ", ".join(render_value(item) for item in value)
         if len(value) == 1:
@@ -930,6 +1176,10 @@ def render_comparison(comparison: Comparison) -> list[str]:
             elif isinstance(leaf, ResidualFailure):
                 lines.append(
                     f"LEAF_OUTCOME: PATH={path} KIND=RESIDUAL_FAILURE REASON={leaf.reason}"
+                )
+            elif isinstance(leaf, UndecidedResidual):
+                lines.append(
+                    f"LEAF_OUTCOME: PATH={path} KIND=UNDECIDED REASON={leaf.reason}"
                 )
             elif isinstance(leaf, Mismatch):
                 lines.append(f"LEAF_OUTCOME: PATH={path} KIND={leaf.kind}")
@@ -968,14 +1218,20 @@ def _local_names(transcript: Transcript) -> list[str]:
     return sorted(name for name in transcript.records if is_local_name(name))
 
 
-def run(py: Transcript, wl: Transcript) -> int:
+def run(
+    py: Transcript,
+    wl: Transcript,
+    leaf_budget_seconds: float = DEFAULT_RESIDUAL_LEAF_BUDGET_SECONDS,
+) -> int:
     print(f"PY_INPUT: {py.path}")
     print(f"WL_INPUT: {wl.path}")
     print("JOIN_RULE: pair PY_S11B_<QUANTITY> with WL_S11B_<QUANTITY> by exact non-local object name")
-    print("SYMBOL_RULE: injective snake_case to lowerCamel transliteration; collisions are UNCOMPARED")
+    print("SYMBOL_RULE: injective symbol/function-head snake_case to lowerCamel transliteration")
     print("STRUCTURE_RULE: residual only equal-length tuples or Associations with equal key sets")
     print("BOOLEAN_RULE: a native boolean leaf is BOOLEAN_NOT_RESIDUALABLE and never scores AGREE")
     print("DIM_RULE: extract and subtract exact L,T,M integer vectors; no normalization")
+    print("LEAF_PRECEDENCE: DISAGREE > UNCOMPARED > UNDECIDED > AGREE")
+    print(f"RESIDUAL_LEAF_BUDGET_SECONDS: {leaf_budget_seconds:g}")
 
     py_locals = _local_names(py)
     wl_locals = _local_names(wl)
@@ -998,17 +1254,22 @@ def run(py: Transcript, wl: Transcript) -> int:
     shared_names = py_nonlocal & wl_nonlocal
     shared_duplicate_names = shared_names & duplicate_names
     comparable_names = sorted(shared_names - shared_duplicate_names)
-    comparisons = [compare_records(name, py.records[name], wl.records[name]) for name in comparable_names]
 
-    print("CATEGORY: SHARED_OBJECTS")
-    for comparison in comparisons:
-        for line in render_comparison(comparison):
-            print(line)
+    print("CATEGORY: SHARED_OBJECTS", flush=True)
+    comparisons: list[Comparison] = []
+    for name in comparable_names:
+        comparison = compare_records(
+            name,
+            py.records[name],
+            wl.records[name],
+            leaf_budget_seconds,
+        )
+        comparisons.append(comparison)
+        print("\n".join(render_comparison(comparison)), flush=True)
 
     print("CATEGORY: DUPLICATE_NONLOCAL_NAMES")
     for name in sorted(duplicate_names):
-        for line in _render_duplicate_name(py, wl, name):
-            print(line)
+        print("\n".join(_render_duplicate_name(py, wl, name)), flush=True)
 
     print("CATEGORY: UNPAIRED_NONLOCAL_COVERAGE")
     py_only = sorted(py_nonlocal - wl_nonlocal)
@@ -1064,8 +1325,21 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Join one synthetic-or-real PY and WL S11b .out transcript by emitted object name."
     )
+    parser.add_argument(
+        "--residual-leaf-budget-seconds",
+        type=float,
+        default=DEFAULT_RESIDUAL_LEAF_BUDGET_SECONDS,
+        metavar="SECONDS",
+        help="positive wall-clock budget applied independently to each algebraic residual leaf",
+    )
     parser.add_argument("out_files", nargs=2, type=Path, metavar="OUT")
-    return parser.parse_args(argv)
+    args = parser.parse_args(argv)
+    if (
+        not math.isfinite(args.residual_leaf_budget_seconds)
+        or args.residual_leaf_budget_seconds <= 0
+    ):
+        parser.error("--residual-leaf-budget-seconds must be positive and finite")
+    return args
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -1076,7 +1350,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"INPUT_ERROR: {error}")
         print("FINAL_OPERATIONAL_STATUS: FAIL")
         return 2
-    return run(py, wl)
+    return run(py, wl, args.residual_leaf_budget_seconds)
 
 
 if __name__ == "__main__":

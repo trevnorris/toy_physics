@@ -7,9 +7,11 @@
 > (`directives/S11b_sympy_build_directive.md`, `directives/S11b_wl_build_directive.md`; committed
 > `9bd2f184`, two legs Codex+Grok each, folded once) — SymPy imports the S11 LEDGER + binds
 > `c_s0`/`μ_R`/`ρ_br⁰=rho_br` + writes `S11b_exports.py`; Wolfram blind (imports nothing, re-derives).
-> ⛔ **The immediate next is the two engine BUILDS** (each Codex build gated by two script legs), then the
-> comparator, step record and card; ⛔ not C, and ⛔ not the spec/directives (done). The "Next actions"
-> below predate the rewrite; the live NEXT is in `STATUS.md`'s top block.
+> ⛔ **The SymPy engine is DONE** (`864d6f41`; 3 build rounds — physics correct throughout, 2 emission-fidelity
+> repair rounds, hard stop). **The immediate next is the blind WOLFRAM engine** (handed only its
+> self-contained directive, two legs), then the T7 comparator, step record and card; ⛔ not C, and ⛔ not the
+> spec/directives (done). The "Next actions" below predate the rewrite; the live NEXT is in `STATUS.md`'s top
+> block and `steps/S11b_RUN_CHECKLIST.md`.
 > ⭐ **C's material below (the four ingredients + the bench-top-optics falsification) is preserved as
 > historical input, ⛔ to be revalidated in C's own decision list/spec** — the unified decision list
 > ratifies only C's *scope* (the non-uniform variable-coefficient spectrum, leakage rates, and

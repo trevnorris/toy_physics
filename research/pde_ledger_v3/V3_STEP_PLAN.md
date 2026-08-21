@@ -535,10 +535,11 @@ mode).
 > ⭐⭐ **UNIFIED REWRITE UNDERWAY (2026-08-19) — this section's A/B/C framing is SUPERSEDED.** A+B are being
 > rebuilt as **ONE unified export-chain step** (decision list `directives/S11b_unified_decisions.md`
 > `ddd0ae4c`; unified spec `directives/S11b_SHARED_PHYSICS.md` `1a2395a3`, two legs Codex+Grok folded once).
-> ⭐ **The two per-engine build directives are DONE** (`9bd2f184`, two legs Codex+Grok each, folded once);
-> **the immediate NEXT is the two engine BUILDS** (each Codex build gated by two script legs), then the
-> cross-engine comparator, step record and card. ⚠ The **"✅ CLOSED"** tags below are the **OLD
-> pre-chain** sense — the physics stands and is being re-packaged, but the ledger rows **do not exist yet**.
+> ⭐ Build directives DONE (`9bd2f184`). **The SymPy engine is DONE** (`864d6f41`; 3 build rounds — physics
+> correct throughout, 2 emission-fidelity repair rounds, hard stop; `S11b_exports.py` = 1916 rows +
+> committed `.out`). **The immediate NEXT is the blind WOLFRAM engine** (two legs), then the T7 comparator,
+> step record and card. ⚠ The **"✅ CLOSED"** tags below are the **OLD pre-chain** sense — the physics stands;
+> the SymPy ledger rows now EXIST (the WL engine + comparator remain).
 > ⛔ **SUPERSEDED below:** *"C runs immediately after B's rebuild"*, *"C is not a separate step"*, and the
 > table's **"S11b-C ▶ NEXT"** — per G1, **C is a separate LATER step** (a later build **after** the unified
 > A+B build closes; ⛔ not immediately after B, and ⛔ not the immediate NEXT); no renumbering (still

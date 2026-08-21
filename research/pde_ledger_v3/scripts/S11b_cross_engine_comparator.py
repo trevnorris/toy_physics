@@ -39,6 +39,8 @@ WL_DERIVATIVE = re.compile(
 WL_INEQUALITY = re.compile(r"Inequality\[([^\[\]]+)\]")
 UNDECIDED_TOKEN = re.compile(r"(?:^|_)UNDECIDED(?:_|$)")
 DEFAULT_RESIDUAL_LEAF_BUDGET_SECONDS = 5.0
+MAX_RENDERED_OPERAND_CHARS = 16 * 1024
+RENDERED_OPERAND_HEAD_CHARS = 160
 
 
 class ComparatorInputError(ValueError):
@@ -536,26 +538,29 @@ def _iter_basic_values(value: object) -> Iterable[sp.Basic]:
         yield value
 
 
-def _basic_source_labels(value: sp.Basic) -> set[str]:
-    labels = {f"SYMBOL:{symbol.name}" for symbol in value.atoms(sp.Symbol)}
+def _basic_source_labels(value: sp.Basic) -> set[tuple[str, str]]:
+    labels = {("SYMBOL", symbol.name) for symbol in value.atoms(sp.Symbol)}
     labels.update(
-        f"FUNCTION:{application.func.__name__}"
+        ("FUNCTION", application.func.__name__)
         for application in value.atoms(AppliedUndef)
     )
     return labels
 
 
-def transliteration_collisions(value: object) -> tuple[tuple[str, tuple[str, ...]], ...]:
-    """Return every non-injective target in one engine's source vocabulary."""
-    by_target: dict[str, set[str]] = {}
+def transliteration_collisions(
+    value: object,
+) -> tuple[tuple[str, tuple[tuple[str, str], ...]], ...]:
+    """Return same-kind source-name merges in one engine's vocabulary."""
+    by_kind_and_target: dict[tuple[str, str], set[tuple[str, str]]] = {}
     for basic in _iter_basic_values(value):
-        for label in _basic_source_labels(basic):
-            _, source_name = label.split(":", 1)
-            by_target.setdefault(mechanical_lower_camel(source_name), set()).add(label)
+        for source_object in _basic_source_labels(basic):
+            kind, source_name = source_object
+            target = mechanical_lower_camel(source_name)
+            by_kind_and_target.setdefault((kind, target), set()).add(source_object)
     return tuple(
         (target, tuple(sorted(sources)))
-        for target, sources in sorted(by_target.items())
-        if len(sources) > 1
+        for (_, target), sources in sorted(by_kind_and_target.items())
+        if len({source_name for _, source_name in sources}) > 1
     )
 
 
@@ -592,7 +597,7 @@ def transliterate(value: object) -> object:
 def transliterate_with_collision_guard(
     value: object,
     engine: str,
-    collisions: tuple[tuple[str, tuple[str, ...]], ...],
+    collisions: tuple[tuple[str, tuple[tuple[str, str], ...]], ...],
 ) -> object:
     """Mark only collision-bearing leaves so disagreeing siblings still win."""
     blocked_sources = {
@@ -976,8 +981,18 @@ def _is_dimension_name(name: str) -> bool:
     return name.startswith("S11B_DIM_") and not name.startswith("S11B_DIM_ROUTE_KIND")
 
 
-def _collision_reason(engine: str, collisions: tuple[tuple[str, tuple[str, ...]], ...]) -> str:
-    rendered = "; ".join(f"TARGET={target} SOURCES={sources}" for target, sources in collisions)
+def _collision_reason(
+    engine: str,
+    collisions: tuple[tuple[str, tuple[tuple[str, str], ...]], ...],
+) -> str:
+    rendered_groups = []
+    for target, sources in collisions:
+        kinds = tuple(sorted({kind for kind, _ in sources}))
+        source_names = tuple(source_name for _, source_name in sources)
+        rendered_groups.append(
+            f"KIND={'|'.join(kinds)} TARGET={target} SOURCE_NAMES={source_names}"
+        )
+    rendered = "; ".join(rendered_groups)
     return f"TRANSLITERATION_COLLISION ENGINE={engine} {rendered}"
 
 
@@ -1153,18 +1168,58 @@ def render_value(value: object) -> str:
     return repr(value)
 
 
-def render_comparison(comparison: Comparison) -> list[str]:
+def _render_raw_operand(raw: str) -> str:
+    length = len(raw)
+    if length <= MAX_RENDERED_OPERAND_CHARS:
+        return raw
+    head = raw[:RENDERED_OPERAND_HEAD_CHARS]
+    return f"{head}... <RENDER_TRUNCATED length={length}>"
+
+
+def _render_parsed_operand(value: object, serialized_length: int) -> str:
+    if serialized_length <= MAX_RENDERED_OPERAND_CHARS:
+        return render_value(value)
+    return f"{type(value).__name__}(<RENDER_TRUNCATED length={serialized_length}>)"
+
+
+def render_comparison_status(comparison: Comparison) -> list[str]:
+    """Render only already-computed status fields; never render an operand."""
     lines = [
         f"COMPARE_NAME: {comparison.name}",
-        f"PY_OPERAND: {comparison.py_record.raw}",
-        f"WL_OPERAND: {comparison.wl_record.raw}",
+        f"CLASSIFICATION: {comparison.classification}",
+    ]
+    if comparison.reason is not None:
+        label = "UNDECIDED_REASON" if comparison.classification == "UNDECIDED" else "UNCOMPARED_REASON"
+        lines.append(f"{label}: {comparison.reason}")
+    if comparison.disagreement_kind is not None:
+        lines.append(f"DISAGREEMENT_KIND: {comparison.disagreement_kind}")
+    return lines
+
+
+def render_comparison_details(comparison: Comparison) -> list[str]:
+    """Render display-only operands and residuals under the operand size bound."""
+    py_length = len(comparison.py_record.raw)
+    wl_length = len(comparison.wl_record.raw)
+    oversized_operand = max(py_length, wl_length) > MAX_RENDERED_OPERAND_CHARS
+    lines = [
+        f"PY_OPERAND: {_render_raw_operand(comparison.py_record.raw)}",
+        f"WL_OPERAND: {_render_raw_operand(comparison.wl_record.raw)}",
     ]
     if comparison.py_object is not None:
-        lines.append(f"PY_PARSED_OBJECT: {render_value(comparison.py_object)}")
+        lines.append(
+            f"PY_PARSED_OBJECT: {_render_parsed_operand(comparison.py_object, py_length)}"
+        )
     if comparison.wl_object is not None:
-        lines.append(f"WL_PARSED_OBJECT: {render_value(comparison.wl_object)}")
+        lines.append(
+            f"WL_PARSED_OBJECT: {_render_parsed_operand(comparison.wl_object, wl_length)}"
+        )
     if comparison.residual is None:
         lines.append("RESIDUAL: NOT_COMPUTED")
+    elif oversized_operand:
+        lines.append(
+            "RESIDUAL: <RENDER_TRUNCATED "
+            f"length={max(py_length, wl_length)} SOURCE=OVERSIZED_OPERAND>"
+        )
     else:
         lines.append(f"RESIDUAL: {render_value(comparison.residual)}")
         for path, leaf in _iter_residual_leaves(comparison.residual):
@@ -1185,13 +1240,13 @@ def render_comparison(comparison: Comparison) -> list[str]:
                 lines.append(f"LEAF_OUTCOME: PATH={path} KIND={leaf.kind}")
     if comparison.dimension_difference is not None:
         lines.append(f"DIM_DIFFERENCE_VECTOR: {render_value(comparison.dimension_difference)}")
-    if comparison.reason is not None:
-        label = "UNDECIDED_REASON" if comparison.classification == "UNDECIDED" else "UNCOMPARED_REASON"
-        lines.append(f"{label}: {comparison.reason}")
-    if comparison.disagreement_kind is not None:
-        lines.append(f"DISAGREEMENT_KIND: {comparison.disagreement_kind}")
-    lines.append(f"CLASSIFICATION: {comparison.classification}")
     return lines
+
+
+def render_comparison(comparison: Comparison) -> list[str]:
+    """Render one complete row for non-streaming callers."""
+    status = render_comparison_status(comparison)
+    return [status[0], *render_comparison_details(comparison), *status[2:], status[1]]
 
 
 def _render_duplicate_name(py: Transcript, wl: Transcript, name: str) -> list[str]:
@@ -1265,7 +1320,8 @@ def run(
             leaf_budget_seconds,
         )
         comparisons.append(comparison)
-        print("\n".join(render_comparison(comparison)), flush=True)
+        print("\n".join(render_comparison_status(comparison)), flush=True)
+        print("\n".join(render_comparison_details(comparison)), flush=True)
 
     print("CATEGORY: DUPLICATE_NONLOCAL_NAMES")
     for name in sorted(duplicate_names):

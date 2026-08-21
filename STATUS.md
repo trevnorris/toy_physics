@@ -50,12 +50,27 @@ Codex caught a **T7 mis-attribution** (join/residual/repoint are G8(a)'s, not T7
 `B0–B7,B9` range imprecision (→ "every §9 task except B8"). WL directive **CLEAR** both legs. rule-2 twins
 script-generated; review prompt committed.
 
-⛔ **NEXT = the two engine BUILDS** (the directive-review gate is now met, rule 7). Build the SymPy engine
-(`scripts/S11b_interface_coupling_law_sympy_audit.py` → `S11b_exports.py`) and the blind Wolfram engine
-(`mathematica/S11b_interface_coupling_law_mathematica_audit.wl`); each Codex build then gets its **two script
-legs** (fresh agent + Grok, FORM ablation). Then: the cross-engine comparator **to the frozen T7 contract**
-(net-new — S11 has none), the step record, re-point the card
-`paper/steps/S11b_interface_coupling_law.tex`. Pattern reference = S10/S11. Full state in memory
+⭐⭐ **Artifact #4 (SymPy engine) DONE — committed `864d6f41`** (3 build rounds, hard stop honored).
+`scripts/S11b_interface_coupling_law_sympy_audit.py` → `S11b_exports.py` (1916 rows: 1663 S11 carried
+forward + S11b) + committed `.out`. Round-1 build → 2 script legs found the physics CORRECT (both engines'
+independent derivations match every load-bearing object incl. the G13 criterion `Λ_p⁰=−Λ_A⁰/ρ_m`) but two
+emission defects: a TYPED load-bearing impedance (F4) and ~12 EXPORTED tautological check-rows. Round-1
+repair (directive `0863645b`): impedance now COMPUTED (`BULK_ACOUSTIC`), the big §6 checks bite. Round-2
+repair (directive `75560832`, user chose "clean the export" then a Codex consult corrected the disposition):
+made genuine the 4 tail checks — kernel_orientation (separate retarded reference; global transpose now bites),
+onsager crosscheck (independent all-flux/all-force solves + monic compare), both parity branches (live
+integrand), the B8 control (per-residual). Both round-2 legs: "nothing survives the physics filter";
+value-preservation clean (non-target objects byte-identical; carry-forward intact). ⛔ **HARD STOP — no
+round-3.** ⚠ Lessons: I twice leaked an expected value into an acceptance criterion (rule 5); a review
+agent reverted `exports.py` to HEAD in cleanup (regenerated); a spurious kill fired after the engine's work
+completed (`[[feedback-background-tasks-can-die-spuriously]]`).
+
+⛔ **NEXT = the blind Wolfram engine** (`mathematica/S11b_interface_coupling_law_mathematica_audit.wl`,
+imports nothing, re-derives; handed ONLY its self-contained directive `directives/S11b_wl_build_directive.md`
+— ⛔ never the `.py`/exports/.out). Then: the cross-engine comparator **to the frozen T7 contract** (net-new
+— S11 has none; ⚠ must compare dimension tags — a wrong dimension is caught only by the 2nd engine), the
+step record (I write it, 2 legs), re-point the card `paper/steps/S11b_interface_coupling_law.tex` (Codex,
+2 legs). Run-checklist: `steps/S11b_RUN_CHECKLIST.md`. Pattern = S10/S11. Full state in memory
 `project-s11b-interface-law-result`.
 
 ---

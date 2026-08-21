@@ -86,3 +86,15 @@ the plan when C opens). Slug = `S11b_interface_coupling_law`.
 - ⛔ **Fold ONCE, then go** (rule 7); ⛔ **verify each finding myself** (rule 13).
 - Whatever writes does not review: engines/card (Codex) → fresh agent + Grok; directives/step record
   (orchestrator) → Codex + Grok.
+
+## ✅ SymPy engine CLOSED (`864d6f41`, 2026-08-21)
+Steps 1–9 of the proven order for the SymPy engine are done: directives (1–4) `9bd2f184`; build (5)
+round-1; baseline commits (6) `7dd89076`/`6d57b27e`; script legs (7) each round; `.out` captured +
+committed (8) `scripts/out/S11b_interface_coupling_law_sympy_audit.out`. Export-chain integrity
+sub-checklist all ✅ (carry-forward fidelity: 1663 S11 rows, none dropped/mutated; bindings to imported
+objects; drain `v_bulk_normal_0` no v_0 merge; digests(3); D3; _RELATIONALS; freeze; F6). G13 acceptance
+diff ✅ (both legs independently reproduced `Λ_p⁰=−Λ_A⁰/ρ_m`). Two emission-fidelity repair rounds
+(directives `0863645b`, `75560832`), HARD STOP, no round-3.
+⬜ STILL OPEN for the STEP (not the SymPy engine): step 9 blind WL engine; step 10 T7 comparator (⚠ compare
+dimension tags); step 11 fold; step 12 step record; step 13 card. The `.wl`-first deviation stands (blindness
+by absence) — the WL Codex gets ONLY its self-contained directive.

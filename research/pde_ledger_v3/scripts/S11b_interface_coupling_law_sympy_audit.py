@@ -656,22 +656,47 @@ def task_b0a() -> None:
     emit("PROJECTION_FINITE", sp.Tuple(sp.Integral(Omega * rho4, (w, w1, w2)), source_finite), key="projection_finite")
     emit("PROJECTION_INFINITE", sp.Tuple(sp.Integral(Omega * rho4, (w, -sp.oo, sp.oo)), source_infinite), key="projection_infinite")
 
-    Om = symbol("Omega_w", "COORDINATE", "window value at a reflected point")
-    Omp = symbol("Omega_prime_w", "COORDINATE", "window derivative at a reflected point")
-    je = symbol("j_even_w", "COORDINATE", "even normal-current value")
-    jo = symbol("j_odd_w", "COORDINATE", "odd normal-current value")
-    live_integral = next(iter(source_finite.atoms(sp.Integral)))
-    upper_product = (Omega * jw).subs(w, w2)
-    lower_product = (Omega * jw).subs(w, w1)
-    integral_coefficient = source_finite.coeff(live_integral)
-    upper_coefficient = source_finite.coeff(upper_product)
-    lower_coefficient = source_finite.coeff(lower_product)
-    even_pair = sp.expand(integral_coefficient * (Omp * je + (-Omp) * je))
-    odd_pair = sp.expand(integral_coefficient * (Omp * jo + (-Omp) * (-jo)))
-    even_boundary = sp.expand(upper_coefficient * Om * je + lower_coefficient * Om * je)
-    odd_boundary = sp.expand(upper_coefficient * Om * jo + lower_coefficient * Om * (-jo))
-    emit("PARITY_EVEN_JW", sp.Tuple(even_pair, even_boundary, sp.simplify(even_pair + even_boundary)), key="parity_even_jw")
-    emit("PARITY_ODD_JW", sp.Tuple(odd_pair, odd_boundary, sp.simplify(odd_pair + odd_boundary)), key="parity_odd_jw")
+    omega_half = sp.Function("Omega_even_half")(w)
+    even_current_half = sp.Function("j_even_half")(w)
+    odd_current_half = sp.Function("j_odd_half")(w)
+    symmetric_source = source_finite.subs({w1: -control_L, w2: control_L})
+    symmetric_integral = next(iter(symmetric_source.atoms(sp.Integral)))
+
+    def evaluated_parity_source(current_half: sp.Expr, parity_sign: sp.Integer) -> sp.Tuple:
+        live_integrand = symmetric_integral.function
+        omega_derivative = sp.diff(Omega, w)
+        positive_integrand = live_integrand.xreplace({
+            omega_derivative: sp.diff(omega_half, w),
+            Omega: omega_half,
+            jw: current_half,
+        })
+        reflected_integrand = live_integrand.xreplace({
+            omega_derivative: -sp.diff(omega_half, w),
+            Omega: omega_half,
+            jw: parity_sign * current_half,
+            w: -w,
+        })
+        paired_integrand = sp.simplify(positive_integrand + reflected_integrand)
+        half_integral = sp.Integral(paired_integrand, (w, 0, control_L)).doit()
+        boundary_map = {
+            Omega.func(-control_L): omega_half.subs(w, control_L),
+            Omega.func(control_L): omega_half.subs(w, control_L),
+            jw.func(-control_L): parity_sign * current_half.subs(w, control_L),
+            jw.func(control_L): current_half.subs(w, control_L),
+        }
+        boundary = symmetric_source.xreplace({symmetric_integral: sp.Integer(0)}).xreplace(boundary_map)
+        integral_part = sp.expand(symmetric_source.coeff(symmetric_integral) * half_integral)
+        residual = sp.simplify(integral_part + boundary)
+        return sp.Tuple(
+            sp.Tuple(positive_integrand, reflected_integrand, integral_part),
+            boundary,
+            residual,
+        )
+
+    parity_even = evaluated_parity_source(even_current_half, sp.Integer(1))
+    parity_odd = evaluated_parity_source(odd_current_half, sp.Integer(-1))
+    emit("PARITY_EVEN_JW", parity_even, key="parity_even_jw")
+    emit("PARITY_ODD_JW", parity_odd, key="parity_odd_jw")
     emit(
         "PARITY_INTERVAL",
         sp.Tuple(
@@ -946,7 +971,11 @@ def causality_objects() -> dict[str, object]:
         sp.diff(closure_law.subs(affinity_coordinate, 0), velocity_coordinate),
         sp.diff(live_load_plus - delta_p_plus, A_plus_affinity),
     )
-    supplied = (Lambda_A, Lambda_V, Lambda_X)
+    supplied = (
+        Lambda_A0 / (1 - I * omega * tau_A),
+        Lambda_V0 / (1 - I * omega * tau_V),
+        Lambda_X0 / (1 - I * omega * tau_X),
+    )
     orientation_rows = []
     for name, left, right, coefficient, relaxation in zip(
         ("A", "V", "X"), extracted, supplied, (Lambda_A0, Lambda_V0, Lambda_X0), (tau_A, tau_V, tau_X)
@@ -1368,19 +1397,79 @@ def task_b2d() -> None:
     )
 
     epsilon = symbol("epsilon_port", "CONTROL", "formal mixed-law conversion coefficient", nonzero=True, real=True)
-    a_entry, b_entry, c_entry, d_entry = Lambda_A, Lambda_V, Lambda_X, epsilon
+    f_X_coordinate = symbol("f_X_coordinate", "COORDINATE", "independent reciprocal-traction force amplitude")
+    mixed_inputs = sp.ImmutableMatrix([affinity_coordinate, velocity_coordinate])
+
+    flux_outputs = mixed_matrix * mixed_inputs
+    flux_second_row = f_X_coordinate - flux_outputs[1] - epsilon * velocity_coordinate
+    flux_velocity_solution = sp.solve(
+        sp.Eq(flux_second_row, 0), velocity_coordinate, dict=True
+    )[0][velocity_coordinate]
+    flux_first_row = J_face - flux_outputs[0]
+    flux_current_solution = sp.solve(
+        sp.Eq(flux_first_row.subs(velocity_coordinate, flux_velocity_solution), 0),
+        J_face,
+        dict=True,
+    )[0][J_face]
+    flux_solutions = tuple(sp.expand(item) for item in (flux_current_solution, flux_velocity_solution))
     all_flux = sp.ImmutableMatrix([
-        [a_entry - b_entry * c_entry / d_entry, b_entry / d_entry],
-        [-c_entry / d_entry, 1 / d_entry],
+        [sp.diff(item, coordinate) for coordinate in (affinity_coordinate, f_X_coordinate)]
+        for item in flux_solutions
     ])
-    flux_reciprocity_residual = sp.factor(sp.together(all_flux[0, 1] - all_flux[1, 0]) * epsilon)
+    all_flux = sp.ImmutableMatrix(all_flux.applyfunc(
+        lambda item: sp.Add(*(
+            sp.factor(term)
+            for term in sp.Add.make_args(sp.apart(sp.cancel(item), epsilon))
+        ))
+    ))
+    flux_raw_residual = sp.cancel(all_flux[0, 1] - all_flux[1, 0])
+    flux_epsilon_power = sp.degree(sp.denom(flux_raw_residual), epsilon) or 0
+    flux_reciprocity_residual = sp.factor(sp.limit(
+        sp.together(flux_raw_residual * epsilon**flux_epsilon_power),
+        epsilon,
+        0,
+    ))
+
+    force_outputs = mixed_matrix * mixed_inputs
+    force_first_row = J_face - force_outputs[0]
+    force_affinity_solution = sp.solve(
+        sp.Eq(force_first_row, 0), affinity_coordinate, dict=True
+    )[0][affinity_coordinate]
+    force_second_row = f_X_coordinate - force_outputs[1] - epsilon * velocity_coordinate
+    force_reciprocal_solution = sp.solve(
+        sp.Eq(force_second_row.subs(affinity_coordinate, force_affinity_solution), 0),
+        f_X_coordinate,
+        dict=True,
+    )[0][f_X_coordinate]
+    force_solutions = tuple(sp.expand(item) for item in (force_affinity_solution, force_reciprocal_solution))
     all_force = sp.ImmutableMatrix([
-        [1 / a_entry, -b_entry / a_entry],
-        [c_entry / a_entry, d_entry - c_entry * b_entry / a_entry],
+        [sp.diff(item, coordinate) for coordinate in (J_face, velocity_coordinate)]
+        for item in force_solutions
     ])
-    force_reciprocity_residual = sp.factor(sp.together(all_force[0, 1] - all_force[1, 0]) * a_entry)
+    all_force = sp.ImmutableMatrix(all_force.applyfunc(
+        lambda item: sp.Add(*(
+            sp.factor(term)
+            for term in sp.Add.make_args(sp.apart(sp.cancel(item), epsilon))
+        ))
+    ))
+    a_entry = mixed_matrix[0, 0]
+    force_reciprocity_residual = sp.factor(sp.together(
+        (all_force[0, 1] - all_force[1, 0]) * a_entry
+    ))
+
+    def canonical_relation(expression: sp.Expr) -> sp.Expr:
+        numerator = sp.expand(sp.together(sp.cancel(expression)).as_numer_denom()[0])
+        if numerator == 0:
+            return sp.Integer(0)
+        generators = tuple(sorted(numerator.free_symbols, key=sp.default_sort_key))
+        if not generators:
+            return sp.Integer(1)
+        return sp.Poly(numerator, *generators, extension=I).monic().as_expr()
+
     reciprocity_equation = sp.Eq(flux_reciprocity_residual, 0, evaluate=False)
-    reciprocity_crosscheck = sp.simplify(flux_reciprocity_residual - force_reciprocity_residual)
+    flux_relation = canonical_relation(flux_reciprocity_residual)
+    force_relation = canonical_relation(force_reciprocity_residual)
+    reciprocity_crosscheck = sp.expand(flux_relation - force_relation)
     emit("ONSAGER_CONDITION", sp.Tuple(all_flux, reciprocity_equation), key="onsager_condition")
     emit("ONSAGER_RECIPROCITY", sp.Tuple(all_force, flux_reciprocity_residual, force_reciprocity_residual, reciprocity_crosscheck), key="onsager_reciprocity")
     emit("ONSAGER_DETERMINABLE", relation_status(reciprocity_equation), key="onsager_determinable")
@@ -1916,19 +2005,53 @@ def task_b8() -> None:
         export=False,
     )
 
-    control_f_model = derive_model(substitutions={Lambda_X0: 0})
+    placeholder_control = independent_kernel_model()
+    full_kernel_replacements = {ell_A: Lambda_A, ell_V: Lambda_V, ell_X: Lambda_X}
+    cut_kernel_replacements = {ell_A: Lambda_A, ell_V: Lambda_V, ell_X: sp.Integer(0)}
+    control_f_model = {
+        "mass": sp.cancel(placeholder_control["mass"].subs(cut_kernel_replacements)),
+        "inplane": sp.expand(placeholder_control["inplane"].subs(cut_kernel_replacements)),
+        "thickness": sp.cancel(placeholder_control["thickness"].subs(cut_kernel_replacements)),
+        "determinant": placeholder_control["determinant"].subs(cut_kernel_replacements),
+        "sigma_eta": sp.diff(U_LONG, eta),
+        "mu_theta": sp.diff(U_LONG, theta),
+    }
     operator_substituted = sp.cancel(MODEL["thickness"].subs(Lambda_X0, 0))
     operator_residual = sp.cancel(control_f_model["thickness"] - operator_substituted)
-    V = symbol("V_control_F", "CONTROL", "control-F face velocity amplitude")
-    A = symbol("A_control_F", "CONTROL", "control-F affinity amplitude")
-    p = symbol("p_control_F", "CONTROL", "control-F face pressure amplitude")
-    J = symbol("J_control_F", "CONTROL", "control-F face flux amplitude")
-    mu_s = A + p / rho_m
-    v_bulk = V + J / rho_m
-    full_power = sp.re((p + Lambda_X * A) * sp.conjugate(V) + mu_s * sp.conjugate(J)) / 2
-    recomputed_power = sp.re(p * sp.conjugate(V) + mu_s * sp.conjugate(J)) / 2
-    substituted_power = sp.simplify(full_power.subs(Lambda_X0, 0))
-    power_residual = sp.simplify(recomputed_power - substituted_power)
+
+    live_traction_effect = sp.cancel(MODEL["thickness"] - operator_substituted)
+    placeholder_full_operator = sp.cancel(placeholder_control["thickness"].subs(full_kernel_replacements))
+    placeholder_cut_operator = sp.cancel(placeholder_control["thickness"].subs(cut_kernel_replacements))
+    placeholder_traction_effect = sp.cancel(placeholder_full_operator - placeholder_cut_operator)
+    traction_effect_residual = sp.cancel(live_traction_effect - placeholder_traction_effect)
+
+    emitted_power = EMITTER.values["PY_S11B_TWO_PORT_POWER_IDENTITY"]
+    emitted_power_cut = sp.Tuple(
+        emitted_power[0],
+        *(sp.simplify(item.subs(Lambda_X0, 0)) for item in emitted_power[1:]),
+    )
+    port_symbols = {
+        item.name: item
+        for expression in emitted_power[1:]
+        for item in expression.free_symbols
+    }
+    V = port_symbols["V_port"]
+    mu_s = port_symbols["mu_s_port"]
+    p = port_symbols["p_port"]
+    J = port_symbols["J_port"]
+    A = sp.expand(mu_s - p / rho_m)
+    v_bulk = sp.expand(V + J / rho_m)
+    recomputed_left = real_axis_simplify(sp.re(sp.expand(
+        p * sp.conjugate(V) + mu_s * sp.conjugate(J)
+    )) / 2)
+    recomputed_right = real_axis_simplify(sp.re(sp.expand(
+        p * sp.conjugate(v_bulk) + A * sp.conjugate(J)
+    )) / 2)
+    recomputed_power = sp.Tuple(REAL_AXIS, recomputed_left, recomputed_right)
+    power_residual = sp.ImmutableMatrix([
+        sp.simplify(recomputed_left - emitted_power_cut[1]),
+        sp.simplify(recomputed_right - emitted_power_cut[2]),
+    ])
     control_f_compression = compressional_response(control_f_model)
     emit(
         "CONTROL_NO_RECIPROCAL_TRACTION",
@@ -1936,7 +2059,8 @@ def task_b8() -> None:
             control_f_model["inplane"], control_f_model["thickness"],
             control_f_compression["ratio"], control_f_model["determinant"],
             operator_substituted, operator_residual,
-            recomputed_power, substituted_power, power_residual,
+            live_traction_effect, placeholder_traction_effect, traction_effect_residual,
+            recomputed_power, emitted_power_cut, power_residual,
         ),
         key=None,
         export=False,

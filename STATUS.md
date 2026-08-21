@@ -6,8 +6,9 @@
 the historical A (bulk face response) + B (homogeneous assembly) execution stages; **C stays a separate
 later step.** Chosen 2026-08-19 (user): "S11b-A alone" is not a well-defined chain unit — A earns no
 ledger rows, the card is already one-for-S11b, the ledger content lives at B. ⭐ Physics is REUSABLE
-(both `.py`+`.wl` exist, agree, 5 hand re-derivations); only the packaging is pre-chain (no `exports.py`,
-no comparator, no committed `.out`; old spec/directives cite the deleted `reduction/` + a rule-12 denylist).
+(both `.py`+`.wl` existed historically, agreed, 5 hand re-derivations). ⭐ The **SymPy packaging is now
+BUILT** (`S11b_exports.py` 1916 rows + committed `.out`, `864d6f41`); the **WL engine + comparator remain**.
+Old spec/directives cite the deleted `reduction/` + a rule-12 denylist.
 
 ⭐⭐ **Artifact #1 DONE — `directives/S11b_unified_decisions.md` (G1–G14), committed `ddd0ae4c`** — two
 legs (Codex + Grok), 7 findings folded once, rule-2 `_measurements` twin (which caught 2 of my citation
@@ -52,8 +53,9 @@ script-generated; review prompt committed.
 
 ⭐⭐ **Artifact #4 (SymPy engine) DONE — committed `864d6f41`** (3 build rounds, hard stop honored).
 `scripts/S11b_interface_coupling_law_sympy_audit.py` → `S11b_exports.py` (1916 rows: 1663 S11 carried
-forward + S11b) + committed `.out`. Round-1 build → 2 script legs found the physics CORRECT (both engines'
-independent derivations match every load-bearing object incl. the G13 criterion `Λ_p⁰=−Λ_A⁰/ρ_m`) but two
+forward + S11b) + committed `.out`. Round-1 build → 2 script legs found the physics CORRECT (both **script legs'**
+independent derivations match every load-bearing object incl. the G13 criterion `Λ_p⁰=−Λ_A⁰/ρ_m`; ⛔ NOT
+cross-engine — the WL engine is not built yet) but two
 emission defects: a TYPED load-bearing impedance (F4) and ~12 EXPORTED tautological check-rows. Round-1
 repair (directive `0863645b`): impedance now COMPUTED (`BULK_ACOUSTIC`), the big §6 checks bite. Round-2
 repair (directive `75560832`, user chose "clean the export" then a Codex consult corrected the disposition):

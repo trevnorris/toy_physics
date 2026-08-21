@@ -17,7 +17,11 @@
 > ratifies only C's *scope* (the non-uniform variable-coefficient spectrum, leakage rates, and
 > unconditional confinement), ⛔ not this specific requirement package.
 
-| | state |
+⛔⛔ **The table below is HISTORICAL / PRE-UNIFICATION and SUPERSEDED** — its "✅ CLOSED / two blind engines /
+cross-verified / card reviewed" and "S11b-C ▶ NEXT" are the OLD A/B/C execution framing. Live status: the
+banner above (SymPy engine done, WL engine next) + `STATUS.md` + `steps/S11b_RUN_CHECKLIST.md`.
+
+| | state (⛔ HISTORICAL, superseded) |
 |---|---|
 | **S11b-A** — the bulk's response to moving faces | ✅ closed; ⚠ **its headline was later overturned** — see below |
 | **S11b-B** — the homogeneous assembly | ✅ **CLOSED.** Two blind engines, repaired, cross-verified; card written and reviewed by two legs |

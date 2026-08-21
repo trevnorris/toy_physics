@@ -7,6 +7,11 @@ obligations, with status and citation. ⛔ This is process tracking, not physics
 Naming: **A+B unified → `S11b`** (G1); **C → `S11c`** (forward decision, no artifacts to migrate; record in
 the plan when C opens). Slug = `S11b_interface_coupling_law`.
 
+> ⚠⚠ **The table + export-integrity block below are the PRE-RUN TEMPLATE (authored before the builds); their
+> ⏳/⬜ marks are NOT current status.** ⭐ **The live status is the "✅ SymPy engine CLOSED" section at the
+> bottom** — the SymPy engine's steps 1–8 + all export-integrity items are DONE there; the WL engine (step 9),
+> comparator (10), step record (12) and card (13) remain.
+
 ## The proven order (step-run table + runbook)
 
 | # | step | status | S11b obligation + citation |
@@ -88,7 +93,7 @@ the plan when C opens). Slug = `S11b_interface_coupling_law`.
   (orchestrator) → Codex + Grok.
 
 ## ✅ SymPy engine CLOSED (`864d6f41`, 2026-08-21)
-Steps 1–9 of the proven order for the SymPy engine are done: directives (1–4) `9bd2f184`; build (5)
+The SymPy-engine portions of steps 1–8 are done (step 9 = the WL build, still open): directives (1–4) `9bd2f184`; build (5)
 round-1; baseline commits (6) `7dd89076`/`6d57b27e`; script legs (7) each round; `.out` captured +
 committed (8) `scripts/out/S11b_interface_coupling_law_sympy_audit.out`. Export-chain integrity
 sub-checklist all ✅ (carry-forward fidelity: 1663 S11 rows, none dropped/mutated; bindings to imported

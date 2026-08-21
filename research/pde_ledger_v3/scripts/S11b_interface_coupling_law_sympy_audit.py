@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
+from itertools import permutations
 from pathlib import Path
 from types import MappingProxyType
 import hashlib
@@ -120,6 +121,24 @@ p_face = symbol("delta_p_face", "COORDINATE", "bulk face-pressure amplitude")
 J_face = symbol("J_face", "COORDINATE", "outward relative mass-flux amplitude")
 mu_drive = symbol("mu_theta_drive", "COORDINATE", "slab chemical driving amplitude")
 F_W = symbol("F_W", "COORDINATE", "generalized thickness driving force density")
+w = symbol("w", "COORDINATE", "bulk normal coordinate", real=True)
+A_plus = symbol("A_plus", "COORDINATE", "upper outgoing bulk amplitude")
+A_minus = symbol("A_minus", "COORDINATE", "lower outgoing bulk amplitude")
+kappa_out = symbol("kappa_out", "COORDINATE", "positive evanescent decay rate", positive=True)
+
+# Off-shell face coordinates.  The uneliminated balance-law forms built from
+# these are the live objects used by the energy and traction diagnostics.
+V_plus = symbol("V_plus", "COORDINATE", "upper outward face velocity amplitude")
+V_minus = symbol("V_minus", "COORDINATE", "lower outward face velocity amplitude")
+delta_p_plus = symbol("delta_p_plus", "COORDINATE", "upper face pressure amplitude")
+delta_p_minus = symbol("delta_p_minus", "COORDINATE", "lower face pressure amplitude")
+A_plus_affinity = symbol("A_plus_affinity", "COORDINATE", "upper affinity amplitude")
+A_minus_affinity = symbol("A_minus_affinity", "COORDINATE", "lower affinity amplitude")
+J_plus = symbol("J_plus", "COORDINATE", "upper outward relative mass flux")
+J_minus = symbol("J_minus", "COORDINATE", "lower outward relative mass flux")
+mu_s_coordinate = symbol("mu_s_coordinate", "COORDINATE", "specific slab chemical potential amplitude")
+affinity_coordinate = symbol("affinity_coordinate", "COORDINATE", "independent affinity amplitude")
+velocity_coordinate = symbol("velocity_coordinate", "COORDINATE", "independent outward velocity amplitude")
 
 # Diagnostic coordinates and controls.
 ell_A = symbol("ell_A", "CONTROL", "inert affinity-kernel placeholder")
@@ -135,7 +154,46 @@ I = sp.I
 Lambda_A = sp.cancel(Lambda_A0 / (1 - I * omega * tau_A))
 Lambda_V = sp.cancel(Lambda_V0 / (1 - I * omega * tau_V))
 Lambda_X = sp.cancel(Lambda_X0 / (1 - I * omega * tau_X))
-Z_GENERAL = sp.cancel(rho_m * omega / q_out)
+
+
+def derive_outgoing_acoustic_field() -> dict[str, object]:
+    """Construct the two outgoing half-space fields and solve their response."""
+    phi_plus = A_plus * sp.exp(I * q_out * (w - W0 / 2))
+    phi_minus = A_minus * sp.exp(I * q_out * (-w - W0 / 2))
+    v_plus = sp.diff(phi_plus, w).subs(w, W0 / 2)
+    v_minus = -sp.diff(phi_minus, w).subs(w, -W0 / 2)
+    p_plus = I * rho_m * omega * phi_plus.subs(w, W0 / 2)
+    p_minus = I * rho_m * omega * phi_minus.subs(w, -W0 / 2)
+    z_plus = sp.cancel(p_plus / v_plus)
+    z_minus = sp.cancel(p_minus / v_minus)
+
+    outward_distance = symbol("s_out", "COORDINATE", "outward distance", positive=True)
+    ode_basis = sp.ImmutableMatrix([
+        sp.exp(I * q_out * outward_distance),
+        sp.exp(-I * q_out * outward_distance),
+    ])
+    fundamental = sp.ImmutableMatrix([
+        [basis.subs(outward_distance, 0) for basis in ode_basis],
+        [sp.diff(basis, outward_distance).subs(outward_distance, 0) for basis in ode_basis],
+    ])
+    return {
+        "phi_plus": phi_plus,
+        "phi_minus": phi_minus,
+        "v_plus": v_plus,
+        "v_minus": v_minus,
+        "p_plus": p_plus,
+        "p_minus": p_minus,
+        "z_plus": z_plus,
+        "z_minus": z_minus,
+        "fundamental": fundamental,
+        "outward_distance": outward_distance,
+    }
+
+
+BULK_ACOUSTIC = derive_outgoing_acoustic_field()
+# This is the sole impedance object.  Every specialization below is reached
+# from this solve by substitution or a limit.
+Z_ACOUSTIC = BULK_ACOUSTIC["z_plus"]
 
 
 def casify(value: object) -> object:
@@ -212,6 +270,13 @@ def real_axis_part(value: object, part: str) -> object:
     axis_value = casify(value).subs(omega, _omega_real_axis)
     extracted = sp.re(axis_value) if part == "real" else sp.im(axis_value)
     return extracted.xreplace({_omega_real_axis: omega})
+
+
+def real_axis_expanded(value: object) -> object:
+    """Canonicalize real-axis power expressions for independent residuals."""
+    axis_value = casify(value).subs(omega, _omega_real_axis)
+    expanded = sp.simplify(sp.expand_complex(axis_value))
+    return expanded.xreplace({_omega_real_axis: omega})
 
 
 REAL_AXIS = sp.Eq(sp.im(omega), 0, evaluate=False)
@@ -366,7 +431,8 @@ def face_solution(
 ) -> dict[str, sp.Expr | sp.ImmutableMatrix]:
     mu_s_value = sp.cancel(mu_theta_value / rho_br)
     affinity = mu_s_value - p_face / rho_m
-    closure = lambda_a * affinity + lambda_v * velocity_value
+    closure_template = lambda_a * affinity_coordinate + lambda_v * velocity_coordinate
+    closure = closure_template.subs({affinity_coordinate: affinity, velocity_coordinate: velocity_value})
     equations = (
         p_face - z_value * (velocity_value + J_face / rho_m),
         J_face - closure,
@@ -381,6 +447,7 @@ def face_solution(
         "bulk_velocity": sp.cancel(velocity_value + flux / rho_m),
         "matrix": matrix,
         "equations": sp.ImmutableMatrix(equations),
+        "closure_template": closure_template,
     }
 
 
@@ -475,7 +542,7 @@ U_TRANSVERSE = ENERGY_DATA["transverse_energy"]
 def derive_model(
     substitutions: Mapping[sp.Symbol, sp.Expr] | None = None,
     *,
-    z_value: sp.Expr = Z_GENERAL,
+    z_value: sp.Expr = Z_ACOUSTIC,
     lambda_a: sp.Expr | None = None,
     lambda_v: sp.Expr | None = None,
     lambda_x: sp.Expr | None = None,
@@ -498,13 +565,22 @@ def derive_model(
     flux = face["flux"]
     affinity = face["affinity"]
 
-    mass = sp.cancel(-I * omega * rho_br * (theta + e_W + eta) + 2 * flux)
+    mass_uneliminated = sp.expand(-I * omega * rho_br * (theta + e_W + eta) + J_plus + J_minus)
+    mass = sp.cancel(mass_uneliminated.subs({J_plus: flux, J_minus: flux}))
     inplane = sp.expand(rho_br * omega**2 * eta - k**2 * (sigma_eta - mu_theta_value))
-    thickness = sp.cancel(
+    face_load_plus = delta_p_plus + lx * A_plus_affinity
+    face_load_minus = delta_p_minus + lx * A_minus_affinity
+    thickness_uneliminated = sp.expand(
         -mu_W * W0**2 * omega**2 * e_W
         + p_w_value - mu_theta_value
-        + W0 * (pressure + lx * affinity)
+        + W0 * (face_load_plus + face_load_minus) / 2
     )
+    thickness = sp.cancel(thickness_uneliminated.subs({
+        delta_p_plus: pressure,
+        delta_p_minus: pressure,
+        A_plus_affinity: affinity,
+        A_minus_affinity: affinity,
+    }))
     equations = (inplane, mass, thickness)
     raw_matrix = sp.ImmutableMatrix([[sp.diff(equation, variable) for variable in (eta, theta, e_W)] for equation in equations])
     normalized_equations = tuple(sp.together(equation).as_numer_denom()[0] for equation in equations)
@@ -518,8 +594,11 @@ def derive_model(
         "sigma_eta": sp.expand(sigma_eta),
         "face": face,
         "mass": mass,
+        "mass_uneliminated": mass_uneliminated,
         "inplane": inplane,
         "thickness": thickness,
+        "thickness_uneliminated": thickness_uneliminated,
+        "face_loads": sp.Tuple(face_load_plus, face_load_minus),
         "raw_matrix": raw_matrix,
         "matrix": matrix,
         "raw_determinant": raw_determinant,
@@ -565,7 +644,6 @@ def task_b0_energy() -> None:
 
 
 def task_b0a() -> None:
-    w = symbol("w", "COORDINATE", "bulk normal coordinate", real=True)
     w1 = symbol("w_1", "COORDINATE", "finite projection lower endpoint", real=True)
     w2 = symbol("w_2", "COORDINATE", "finite projection upper endpoint", real=True)
     x1, x2, x3, t = tuple(symbol(name, "COORDINATE", "projection coordinate", real=True) for name in ("x_1", "x_2", "x_3", "t"))
@@ -582,10 +660,16 @@ def task_b0a() -> None:
     Omp = symbol("Omega_prime_w", "COORDINATE", "window derivative at a reflected point")
     je = symbol("j_even_w", "COORDINATE", "even normal-current value")
     jo = symbol("j_odd_w", "COORDINATE", "odd normal-current value")
-    even_pair = sp.expand(Omp * je + (-Omp) * je)
-    odd_pair = sp.expand(Omp * jo + (-Omp) * (-jo))
-    even_boundary = sp.expand(-Om * je + Om * je)
-    odd_boundary = sp.expand(-Om * jo + Om * (-jo))
+    live_integral = next(iter(source_finite.atoms(sp.Integral)))
+    upper_product = (Omega * jw).subs(w, w2)
+    lower_product = (Omega * jw).subs(w, w1)
+    integral_coefficient = source_finite.coeff(live_integral)
+    upper_coefficient = source_finite.coeff(upper_product)
+    lower_coefficient = source_finite.coeff(lower_product)
+    even_pair = sp.expand(integral_coefficient * (Omp * je + (-Omp) * je))
+    odd_pair = sp.expand(integral_coefficient * (Omp * jo + (-Omp) * (-jo)))
+    even_boundary = sp.expand(upper_coefficient * Om * je + lower_coefficient * Om * je)
+    odd_boundary = sp.expand(upper_coefficient * Om * jo + lower_coefficient * Om * (-jo))
     emit("PARITY_EVEN_JW", sp.Tuple(even_pair, even_boundary, sp.simplify(even_pair + even_boundary)), key="parity_even_jw")
     emit("PARITY_ODD_JW", sp.Tuple(odd_pair, odd_boundary, sp.simplify(odd_pair + odd_boundary)), key="parity_odd_jw")
     emit(
@@ -594,7 +678,6 @@ def task_b0a() -> None:
             sp.Interval(w1, w2),
             sp.Eq(w1 + w2, 0, evaluate=False),
             sp.Interval(-control_L, control_L),
-            sp.true,
         ),
         key="parity_interval",
     )
@@ -606,28 +689,20 @@ def task_b0a() -> None:
 
 
 def task_b0b() -> None:
-    w = next(sym for sym in DECLARED_SYMBOLS if sym.name == "w")
-    A_plus = symbol("A_plus", "COORDINATE", "upper outgoing bulk amplitude")
-    A_minus = symbol("A_minus", "COORDINATE", "lower outgoing bulk amplitude")
-    phi_plus = A_plus * sp.exp(I * q_out * (w - W0 / 2))
-    phi_minus = A_minus * sp.exp(I * q_out * (-w - W0 / 2))
-    v_plus = sp.diff(phi_plus, w).subs(w, W0 / 2)
-    v_minus = -sp.diff(phi_minus, w).subs(w, -W0 / 2)
-    p_plus = I * rho_m * omega * phi_plus.subs(w, W0 / 2)
-    p_minus = I * rho_m * omega * phi_minus.subs(w, -W0 / 2)
-    z_plus = sp.cancel(p_plus / v_plus)
-    z_minus = sp.cancel(p_minus / v_minus)
-    emit("Z_IMPERMEABLE", sp.Tuple(z_plus, z_minus), key="z_impermeable")
+    v_plus = BULK_ACOUSTIC["v_plus"]
+    v_minus = BULK_ACOUSTIC["v_minus"]
+    p_plus = BULK_ACOUSTIC["p_plus"]
+    p_minus = BULK_ACOUSTIC["p_minus"]
+    emit("Z_IMPERMEABLE", sp.Tuple(Z_ACOUSTIC, Z_ACOUSTIC), key="z_impermeable")
 
     q_squared = sp.expand(omega**2 / c_s0**2 - k**2)
     q_squared_axis = q_squared.subs(omega, _omega_real_axis)
     q_prop_axis = sp.sign(_omega_real_axis) * sp.sqrt(q_squared_axis)
     q_prop = q_prop_axis.xreplace({_omega_real_axis: omega})
-    kappa = symbol("kappa_out", "COORDINATE", "positive evanescent decay rate", positive=True)
-    q_evan = I * kappa
-    z_prop = real_axis_simplify(Z_GENERAL.subs(q_out, q_prop))
-    z_evan = real_axis_simplify(Z_GENERAL.subs(q_out, q_evan))
-    grazing_sides = sp.Tuple(sp.limit(Z_GENERAL, q_out, 0, dir="+"), sp.limit(Z_GENERAL, q_out, 0, dir="-"))
+    q_evan = I * kappa_out
+    z_prop = real_axis_simplify(Z_ACOUSTIC.subs(q_out, q_prop))
+    z_evan = real_axis_simplify(Z_ACOUSTIC.subs(q_out, q_evan))
+    grazing_sides = sp.Tuple(sp.limit(Z_ACOUSTIC, q_out, 0, dir="+"), sp.limit(Z_ACOUSTIC, q_out, 0, dir="-"))
     regimes = sp.Tuple(
         REAL_AXIS,
         sp.Tuple(sp.Gt(q_squared, 0, evaluate=False), q_prop, z_prop, real_axis_simplify(sp.re(z_prop)), real_axis_simplify(sp.im(z_prop))),
@@ -641,8 +716,8 @@ def task_b0b() -> None:
     thickness_velocities = sp.ImmutableMatrix([-I * omega * zeta_W / 2, -I * omega * zeta_W / 2])
     centre_velocities = sp.ImmutableMatrix([-I * omega * zeta_c, I * omega * zeta_c])
     parity_payload = sp.Tuple(
-        sp.Tuple(Str("THICKNESS"), thickness_velocities, sp.simplify(Z_GENERAL * thickness_velocities)),
-        sp.Tuple(Str("CENTRE_SHIFT"), centre_velocities, sp.simplify(Z_GENERAL * centre_velocities)),
+        sp.Tuple(Str("THICKNESS"), thickness_velocities, sp.simplify(Z_ACOUSTIC * thickness_velocities)),
+        sp.Tuple(Str("CENTRE_SHIFT"), centre_velocities, sp.simplify(Z_ACOUSTIC * centre_velocities)),
     )
     emit("Z_BY_PARITY", parity_payload, key="z_by_parity")
 
@@ -665,10 +740,11 @@ def task_b0b() -> None:
         REAL_AXIS,
         sp.Tuple(Str("UPPER"), q_prop, acoustic_flux_plus.subs(q_out, q_prop)),
         sp.Tuple(Str("LOWER"), q_prop, acoustic_flux_minus.subs(q_out, q_prop)),
-        sp.Tuple(Str("EVANESCENT"), q_evan, sp.exp(I * q_evan * symbol("s_out", "COORDINATE", "outward distance", positive=True))),
+        sp.Tuple(Str("EVANESCENT"), q_evan, sp.exp(I * q_evan * BULK_ACOUSTIC["outward_distance"])),
     )
     emit("BRANCH_REALAXIS_CHECK", realaxis, key="branch_realaxis_check")
-    emit("BRANCH_DEGENERATE_POINT", sp.Tuple(REAL_AXIS, sp.Eq(omega**2, c_s0**2 * k**2, evaluate=False), sp.Integer(0), sp.ImmutableMatrix([[1, 0], [1, 0]]).rank()), key="branch_degenerate_point")
+    degenerate_rank = BULK_ACOUSTIC["fundamental"].subs(q_out, 0).rank()
+    emit("BRANCH_DEGENERATE_POINT", sp.Tuple(REAL_AXIS, sp.Eq(omega**2, c_s0**2 * k**2, evaluate=False), sp.Integer(0), degenerate_rank), key="branch_degenerate_point")
 
 
 def locus_payload(equation: sp.Expr, solve_variable: sp.Symbol) -> tuple[object, object, object, object, object]:
@@ -695,7 +771,7 @@ def locus_payload(equation: sp.Expr, solve_variable: sp.Symbol) -> tuple[object,
 
 
 def task_b0c() -> None:
-    face = face_solution(Z_GENERAL, mu_drive, V_face)
+    face = face_solution(Z_ACOUSTIC, mu_drive, V_face)
     pressure = face["pressure"]
     emit("FACE_RESPONSE", sp.Tuple(face["equations"], pressure), key="face_response")
     coeff_v = sp.cancel(sp.diff(pressure, V_face))
@@ -712,13 +788,16 @@ def task_b0c() -> None:
         emit(f"DEGENERATE_LOCI_{suffix}", payload, key=f"degenerate_loci_{suffix.lower()}")
 
     q_squared = omega**2 / c_s0**2 - k**2
-    z_prop = rho_m * sp.Abs(omega) / sp.sqrt(q_squared)
-    kappa = next(sym for sym in DECLARED_SYMBOLS if sym.name == "kappa_out")
-    z_evan = -I * rho_m * omega / kappa
+    q_prop_response = omega * sp.sqrt(q_squared) / sp.Abs(omega)
+    z_prop = sp.cancel(Z_ACOUSTIC.subs(q_out, q_prop_response))
+    z_evan = sp.cancel(Z_ACOUSTIC.subs(q_out, I * kappa_out))
     coefficient_by_regime = []
-    for regime_name, z_value in (("PROPAGATING", z_prop), ("EVANESCENT", z_evan), ("GRAZING", sp.oo)):
+    for regime_name, z_value in (("PROPAGATING", z_prop), ("EVANESCENT", z_evan), ("GRAZING", Z_ACOUSTIC)):
         response = face_solution(z_value, sp.Integer(0), V_face)["pressure"]
-        coefficient = real_axis_cancel(sp.diff(response, V_face))
+        coefficient = sp.diff(response, V_face)
+        if regime_name == "GRAZING":
+            coefficient = safe_limit(coefficient, q_out, 0)
+        coefficient = real_axis_cancel(coefficient)
         dissipative = real_axis_part(coefficient, "real")
         coefficient_by_regime.append(sp.Tuple(Str(regime_name), Str("THICKNESS"), coefficient, dissipative))
         coefficient_by_regime.append(sp.Tuple(Str(regime_name), Str("CENTRE_SHIFT"), coefficient, dissipative))
@@ -736,8 +815,6 @@ def task_b0c() -> None:
         )
     emit("PERMEABLE_DISSIPATION_VS_OMEGA_TAU", sp.Tuple(*tau_rows), key="permeable_dissipation_vs_omega_tau")
 
-    J_plus = symbol("J_plus", "COORDINATE", "upper outward relative mass flux")
-    J_minus = symbol("J_minus", "COORDINATE", "lower outward relative mass flux")
     channel_matrix = sp.ImmutableMatrix([[-1, -1], [sp.Rational(1, 2), -sp.Rational(1, 2)]])
     channel_values = channel_matrix * sp.ImmutableMatrix([J_plus, J_minus])
     emit("FLUX_CHANNELS", sp.Tuple(channel_matrix, channel_values), key="flux_channels")
@@ -749,7 +826,7 @@ def task_b1() -> None:
     exact_balance = sp.Eq(
         symbol("dt_Sigma", "COORDINATE", "time derivative of slab-integrated density")
         + exact_sigma * exact_velocity_divergence,
-        -(next(sym for sym in DECLARED_SYMBOLS if sym.name == "J_plus") + next(sym for sym in DECLARED_SYMBOLS if sym.name == "J_minus")),
+        -(J_plus + J_minus),
         evaluate=False,
     )
     constraint = sp.Eq(MODEL["mass"], 0, evaluate=False)
@@ -805,15 +882,69 @@ def kernel_pole_inventory() -> sp.Tuple:
     return sp.Tuple(*rows)
 
 
+def live_face_loads(model: Mapping[str, object]) -> sp.Tuple:
+    """Extract the two face loads from the uneliminated thickness equation."""
+    equation = model["thickness_uneliminated"]
+    face_coordinates = (delta_p_plus, A_plus_affinity, delta_p_minus, A_minus_affinity)
+    face_part = sp.expand(equation - equation.subs({coordinate: 0 for coordinate in face_coordinates}))
+    plus_part = sp.expand(
+        delta_p_plus * sp.diff(face_part, delta_p_plus)
+        + A_plus_affinity * sp.diff(face_part, A_plus_affinity)
+    )
+    minus_part = sp.expand(
+        delta_p_minus * sp.diff(face_part, delta_p_minus)
+        + A_minus_affinity * sp.diff(face_part, A_minus_affinity)
+    )
+    return sp.Tuple(sp.cancel(2 * plus_part / W0), sp.cancel(2 * minus_part / W0))
+
+
+def independent_kernel_model() -> dict[str, object]:
+    """Propagate inert kernels by a constructor independent of ``derive_model``."""
+    energy = sp.expand(U_LONG)
+    mu_theta_value = sp.diff(energy, theta)
+    p_w_value = sp.diff(energy, e_W)
+    sigma_eta = sp.diff(energy, eta)
+    velocity = -I * omega * W0 * e_W / 2
+    affinity = sp.cancel(mu_theta_value / rho_br - p_face / rho_m)
+    face_equations = (
+        p_face - Z_ACOUSTIC * (velocity + J_face / rho_m),
+        J_face - (ell_A * affinity + ell_V * velocity),
+    )
+    solution, _ = solve_linear(face_equations, (p_face, J_face))
+    pressure = sp.cancel(solution[0])
+    flux = sp.cancel(solution[1])
+    solved_affinity = sp.cancel(mu_theta_value / rho_br - pressure / rho_m)
+    mass = sp.cancel(-I * omega * rho_br * (theta + e_W + eta) + 2 * flux)
+    inplane = sp.expand(rho_br * omega**2 * eta - k**2 * (sigma_eta - mu_theta_value))
+    thickness = sp.cancel(
+        -mu_W * W0**2 * omega**2 * e_W
+        + p_w_value - mu_theta_value
+        + W0 * (pressure + ell_X * solved_affinity)
+    )
+    equations = (inplane, mass, thickness)
+    normalized = tuple(sp.together(equation).as_numer_denom()[0] for equation in equations)
+    matrix = sp.ImmutableMatrix([
+        [sp.diff(equation, variable) for variable in (eta, theta, e_W)]
+        for equation in normalized
+    ])
+    return {
+        "face": pressure,
+        "mass": mass,
+        "inplane": inplane,
+        "thickness": thickness,
+        "equations": equations,
+        "matrix": matrix,
+        "determinant": sp.Determinant(matrix),
+    }
+
+
 def causality_objects() -> dict[str, object]:
-    affinity_coordinate = symbol("affinity_coordinate", "COORDINATE", "independent affinity amplitude")
-    velocity_coordinate = symbol("velocity_coordinate", "COORDINATE", "independent outward velocity amplitude")
-    closure_law = Lambda_A * affinity_coordinate + Lambda_V * velocity_coordinate
-    traction_law = p_face + Lambda_X * affinity_coordinate
+    closure_law = MODEL["face"]["closure_template"]
+    live_load_plus = live_face_loads(MODEL)[0]
     extracted = (
         sp.diff(closure_law.subs(velocity_coordinate, 0), affinity_coordinate),
         sp.diff(closure_law.subs(affinity_coordinate, 0), velocity_coordinate),
-        sp.diff(traction_law - p_face, affinity_coordinate),
+        sp.diff(live_load_plus - delta_p_plus, A_plus_affinity),
     )
     supplied = (Lambda_A, Lambda_V, Lambda_X)
     orientation_rows = []
@@ -825,21 +956,41 @@ def causality_objects() -> dict[str, object]:
         indistinguishable = sp.Or(sp.Eq(coefficient, 0, evaluate=False), sp.Eq(relaxation, 0, evaluate=False))
         orientation_rows.append(sp.Tuple(Str(name), left, right, residual, status, test, indistinguishable))
 
-    placeholder_model = derive_model(lambda_a=ell_A, lambda_v=ell_V, lambda_x=ell_X)
+    placeholder_model = independent_kernel_model()
     replacements = {ell_A: Lambda_A, ell_V: Lambda_V, ell_X: Lambda_X}
     propagation_rows = []
     for name in ("face", "mass", "inplane", "thickness", "determinant"):
         if name == "face":
-            placeholder_object = placeholder_model["face"]["pressure"]
+            placeholder_object = placeholder_model["face"]
             actual_object = MODEL["face"]["pressure"]
+        elif name == "determinant":
+            checked_equations = tuple(
+                sp.cancel(equation.subs(replacements))
+                for equation in placeholder_model["equations"]
+            )
+            checked_normalized = tuple(
+                sp.together(equation).as_numer_denom()[0]
+                for equation in checked_equations
+            )
+            checked_matrix = sp.ImmutableMatrix([
+                [sp.cancel(sp.diff(equation, variable)) for variable in (eta, theta, e_W)]
+                for equation in checked_normalized
+            ])
+            actual_matrix = sp.ImmutableMatrix(MODEL["determinant"].arg).applyfunc(sp.cancel)
+            placeholder_object = sp.Determinant(checked_matrix)
+            actual_object = sp.Determinant(actual_matrix)
         else:
             placeholder_object = placeholder_model[name]
             actual_object = MODEL[name]
         propagated = casify(placeholder_object).subs(replacements)
         if isinstance(actual_object, sp.MatrixBase):
             residual = sp.ImmutableMatrix(propagated - actual_object)
+        elif name == "determinant":
+            residual = propagated - actual_object
         else:
-            residual = sp.Add(propagated, -actual_object, evaluate=False)
+            propagated = sp.cancel(propagated)
+            actual_object = sp.cancel(actual_object)
+            residual = sp.cancel(propagated - actual_object)
         propagation_rows.append(sp.Tuple(Str(name.upper()), propagated, actual_object, residual))
     return {
         "orientation": sp.Tuple(*orientation_rows),
@@ -849,67 +1000,108 @@ def causality_objects() -> dict[str, object]:
 
 
 def energy_accounting_objects() -> dict[str, object]:
-    Vp = symbol("V_plus", "COORDINATE", "upper outward face velocity amplitude")
-    Vm = symbol("V_minus", "COORDINATE", "lower outward face velocity amplitude")
-    pp = symbol("delta_p_plus", "COORDINATE", "upper face pressure amplitude")
-    pm = symbol("delta_p_minus", "COORDINATE", "lower face pressure amplitude")
-    Ap = symbol("A_plus_affinity", "COORDINATE", "upper affinity amplitude")
-    Am = symbol("A_minus_affinity", "COORDINATE", "lower affinity amplitude")
-    Jp = next(sym for sym in DECLARED_SYMBOLS if sym.name == "J_plus")
-    Jm = next(sym for sym in DECLARED_SYMBOLS if sym.name == "J_minus")
-    mu_s_coordinate = symbol("mu_s_coordinate", "COORDINATE", "specific slab chemical potential amplitude")
-
+    live_load_plus, live_load_minus = live_face_loads(MODEL)
+    live_mass = MODEL["mass_uneliminated"]
+    live_mass_exchange = sp.expand(live_mass - live_mass.subs({J_plus: 0, J_minus: 0}))
+    live_flux_plus = sp.expand(J_plus * sp.diff(live_mass_exchange, J_plus))
+    live_flux_minus = sp.expand(J_minus * sp.diff(live_mass_exchange, J_minus))
+    live_pressure_plus = sp.expand(delta_p_plus * sp.diff(live_load_plus, delta_p_plus))
+    live_pressure_minus = sp.expand(delta_p_minus * sp.diff(live_load_minus, delta_p_minus))
+    live_traction_plus = sp.expand(A_plus_affinity * sp.diff(live_load_plus, A_plus_affinity))
+    live_traction_minus = sp.expand(A_minus_affinity * sp.diff(live_load_minus, A_minus_affinity))
+    internal_thickness = MODEL["thickness_uneliminated"].subs({
+        delta_p_plus: 0,
+        delta_p_minus: 0,
+        A_plus_affinity: 0,
+        A_minus_affinity: 0,
+    })
+    internal_mass = live_mass.subs({J_plus: 0, J_minus: 0})
+    eta_rate = -I * omega * eta
+    e_rate = -I * omega * e_W
+    live_mu_s = MODEL["mu_theta"] / rho_br
+    internal_power_residual = real_axis_expanded(sp.re(
+        (-MODEL["inplane"] / k**2) * sp.conjugate(eta_rate)
+        + internal_thickness * sp.conjugate(e_rate)
+        + live_mu_s * sp.conjugate(internal_mass)
+    ) / 2)
     pressure_terms = sp.Tuple(*(
         real_axis_simplify(term)
         for term in (
-            -sp.re(pp * sp.conjugate(Vp)) / 2,
-            -sp.re(pm * sp.conjugate(Vm)) / 2,
+            -sp.re(live_pressure_plus * sp.conjugate(V_plus)) / 2,
+            -sp.re(live_pressure_minus * sp.conjugate(V_minus)) / 2,
         )
     ))
     traction_terms = sp.Tuple(*(
         real_axis_simplify(term)
         for term in (
-            -sp.re(Lambda_X * Ap * sp.conjugate(Vp)) / 2,
-            -sp.re(Lambda_X * Am * sp.conjugate(Vm)) / 2,
+            -sp.re(live_traction_plus * sp.conjugate(V_plus)) / 2,
+            -sp.re(live_traction_minus * sp.conjugate(V_minus)) / 2,
         )
     ))
     transfer_terms = sp.Tuple(*(
         real_axis_simplify(term)
         for term in (
-            -sp.re(mu_s_coordinate * sp.conjugate(Jp)) / 2,
-            -sp.re(mu_s_coordinate * sp.conjugate(Jm)) / 2,
+            -sp.re(mu_s_coordinate * sp.conjugate(live_flux_plus)) / 2,
+            -sp.re(mu_s_coordinate * sp.conjugate(live_flux_minus)) / 2,
         )
     ))
-    total = sp.simplify(sum((*pressure_terms, *traction_terms, *transfer_terms), sp.Integer(0)))
+    external_total = sp.simplify(sum((*pressure_terms, *traction_terms, *transfer_terms), sp.Integer(0)))
+    total = sp.simplify(external_total + internal_power_residual)
 
-    Zprop = symbol("Z_prop_real", "COORDINATE", "real outgoing propagating face response", positive=True)
-    Vabs2 = symbol("V_abs_squared", "COORDINATE", "squared face-velocity amplitude", nonnegative=True)
-    slab_pressure_route = sp.simplify(-2 * sp.re(Zprop) * Vabs2 / 2)
-    bulk_flux_route = sp.simplify(2 * sp.re(Zprop) * Vabs2 / 2)
-    pressure_residual = sp.simplify(slab_pressure_route + bulk_flux_route)
+    impermeable_thickness = sp.cancel(MODEL["thickness"].subs({Lambda_A0: 0, Lambda_V0: 0, Lambda_X0: 0}))
+    no_bulk_thickness = sp.cancel(impermeable_thickness.subs(rho_m, 0))
+    live_pressure_operator = sp.cancel(impermeable_thickness - no_bulk_thickness)
+    e_from_face_velocity = sp.solve(sp.Eq(-I * omega * W0 * e_W / 2, V_face), e_W, dict=True)[0][e_W]
+    e_time_rate = sp.cancel(2 * V_face / W0)
+    q_squared = omega**2 / c_s0**2 - k**2
+    q_prop_response = omega * sp.sqrt(q_squared) / sp.Abs(omega)
+    slab_pressure_route = real_axis_simplify(
+        -sp.re(
+            live_pressure_operator.subs({e_W: e_from_face_velocity, q_out: q_prop_response})
+            * sp.conjugate(e_time_rate)
+        ) / 2
+    )
 
-    slab_exchange = real_axis_simplify(-sp.re(
-        (pp + Lambda_X * Ap) * sp.conjugate(Vp)
-        + (pm + Lambda_X * Am) * sp.conjugate(Vm)
-        + mu_s_coordinate * sp.conjugate(Jp)
-        + mu_s_coordinate * sp.conjugate(Jm)
+    amplitude_solution = sp.solve(
+        sp.Eq(BULK_ACOUSTIC["v_plus"], V_face), A_plus, dict=True
+    )[0][A_plus]
+    bulk_pressure = sp.cancel(BULK_ACOUSTIC["p_plus"].subs(A_plus, amplitude_solution))
+    bulk_flux_route = real_axis_simplify(
+        -2 * sp.re(bulk_pressure.subs(q_out, q_prop_response) * sp.conjugate(V_face)) / 2
+    )
+    pressure_residual = real_axis_expanded(slab_pressure_route - bulk_flux_route)
+
+    supplied_exchange = real_axis_simplify(-sp.re(
+        (delta_p_plus + Lambda_X * A_plus_affinity) * sp.conjugate(V_plus)
+        + (delta_p_minus + Lambda_X * A_minus_affinity) * sp.conjugate(V_minus)
+        + mu_s_coordinate * sp.conjugate(J_plus)
+        + mu_s_coordinate * sp.conjugate(J_minus)
     ) / 2)
-    supplied_exchange = sp.simplify(sum((*pressure_terms, *traction_terms, *transfer_terms), sp.Integer(0)))
+    unattributed_residual = sp.expand(real_axis_expanded(total - supplied_exchange))
+    unattributed_terms = sp.Tuple(*(
+        term for term in sp.Add.make_args(unattributed_residual) if sp.simplify(term) != 0
+    ))
     scale_X = symbol("scale_X", "CONTROL", "traction-order decomposition scale", real=True)
-    left_scaled = sp.expand(slab_exchange.subs(Lambda_X0, scale_X * Lambda_X0))
+    left_scaled = sp.expand(total.subs(Lambda_X0, scale_X * Lambda_X0))
     right_scaled = sp.expand(supplied_exchange.subs(Lambda_X0, scale_X * Lambda_X0))
     max_degree = max(sp.degree(left_scaled, scale_X) or 0, sp.degree(right_scaled, scale_X) or 0)
     order_rows = []
     for degree in range(max_degree + 1):
         left_coefficient = sp.expand(left_scaled).coeff(scale_X, degree)
         right_coefficient = sp.expand(right_scaled).coeff(scale_X, degree)
-        order_rows.append(sp.Tuple(sp.Integer(degree), left_coefficient, right_coefficient, sp.simplify(left_coefficient - right_coefficient)))
+        order_rows.append(sp.Tuple(
+            sp.Integer(degree),
+            left_coefficient,
+            right_coefficient,
+            real_axis_expanded(left_coefficient - right_coefficient),
+        ))
     return {
         "pressure": pressure_terms,
         "traction": traction_terms,
         "transfer": transfer_terms,
         "total": total,
-        "pressure_check": sp.Tuple(REAL_AXIS, slab_pressure_route, -bulk_flux_route, pressure_residual),
+        "unattributed": unattributed_terms,
+        "pressure_check": sp.Tuple(REAL_AXIS, slab_pressure_route, bulk_flux_route, pressure_residual),
         "two_port_check": sp.Tuple(REAL_AXIS, *order_rows),
     }
 
@@ -934,24 +1126,28 @@ def task_b2a() -> None:
     emit("KERNEL_POLE_LOCATIONS", causality["poles"], key="kernel_pole_locations")
     emit("CAUSALITY_CHECK", sp.Tuple(causality["orientation"], causality["propagation"], causality["poles"]), key="causality_check")
 
-    sigma_coordinate = symbol("sigma_eta_coordinate", "COORDINATE", "independent explicit strain stress")
-    mu_coordinate = symbol("mu_theta_coordinate", "COORDINATE", "independent chemical potential density")
-    constrained_stress = sigma_coordinate - mu_coordinate
-    inplane_coefficient = sp.diff(constrained_stress, mu_coordinate)
-    emit("CONVENTION_CHECK_INPLANE", sp.Tuple(constrained_stress, inplane_coefficient, sp.Eq(inplane_coefficient, -1, evaluate=False)), key="convention_check_inplane")
+    live_inplane_stress = sp.cancel((rho_br * omega**2 * eta - MODEL["inplane"]) / k**2)
+    reference_inplane_stress = sp.expand(sp.diff(U_LONG, eta) - sp.diff(U_LONG, theta))
+    inplane_residual = sp.simplify(live_inplane_stress - reference_inplane_stress)
+    emit("CONVENTION_CHECK_INPLANE", sp.Tuple(live_inplane_stress, reference_inplane_stress, inplane_residual), key="convention_check_inplane")
 
     reduced_energy = sp.expand(U_LONG.subs({k: 0, kappa_W: 0, theta: -e_W, eta: 0}))
     K_check = sp.diff(reduced_energy, e_W, 2)
-    p_w = sp.diff(U_LONG, e_W)
-    mu_theta_value = sp.diff(U_LONG, theta)
-    equation_stiffness = sp.diff((p_w - mu_theta_value).subs({k: 0, kappa_W: 0, theta: -e_W, eta: 0}), e_W)
+    conservative_equation = sp.cancel(sp.cancel(
+        MODEL["thickness"].subs({Lambda_A0: 0, Lambda_V0: 0, Lambda_X0: 0, k: 0, kappa_W: 0, eta: 0, theta: -e_W})
+    ).subs(rho_m, 0).subs(omega, 0))
+    equation_stiffness = sp.diff(conservative_equation, e_W)
     stiffness_residual = sp.simplify(equation_stiffness - K_check)
     omega_squared = sp.solve(sp.Eq(-mu_W * W0**2 * omega**2 + equation_stiffness, 0), omega**2, dict=True)[0][omega**2]
     conservative_inequality = sp.Gt(omega_squared, 0, evaluate=False)
-    positive_energy = sp.And(sp.Gt(B_rho_3, 0, evaluate=False), sp.Gt(B_rho_3 * k_W * W0**2 - (C * W0)**2, 0, evaluate=False))
+    live_energy_hessian = sp.hessian(U_LONG.subs({k: 0, eta: 0}), (theta, e_W))
+    positive_energy = sp.And(
+        sp.Gt(live_energy_hessian[0, 0], 0, evaluate=False),
+        sp.Gt(sp.Determinant(live_energy_hessian), 0, evaluate=False),
+    )
     positivity_implication = sp.Implies(positive_energy, conservative_inequality, evaluate=False)
     emit("CONVENTION_CHECK_CONSERVATIVE", sp.Tuple(equation_stiffness, K_check, stiffness_residual, omega_squared, sp.diff(omega_squared, B_rho_3)), key="convention_check_conservative")
-    emit("CONSERVATIVE_POSITIVITY_INEQUALITY", sp.Tuple(conservative_inequality, positive_energy, positivity_implication), key="conservative_positivity_inequality")
+    emit("CONSERVATIVE_POSITIVITY_INEQUALITY", sp.Tuple(conservative_inequality, live_energy_hessian, positive_energy, positivity_implication), key="conservative_positivity_inequality")
 
     accounting = energy_accounting_objects()
     sinks = sp.Tuple(accounting["pressure"], accounting["traction"], accounting["transfer"])
@@ -962,8 +1158,8 @@ def task_b2a() -> None:
     ))
     emit("ENERGY_SINKS", sinks, key="energy_sinks")
     emit("ENERGY_SOURCES", sources, key="energy_sources")
-    emit("UNATTRIBUTED_SINK_TERMS", sp.Tuple(), key="unattributed_sink_terms")
-    emit("UNATTRIBUTED_EXCHANGE_TERMS", sp.Tuple(), key="unattributed_exchange_terms")
+    emit("UNATTRIBUTED_SINK_TERMS", accounting["unattributed"], key="unattributed_sink_terms")
+    emit("UNATTRIBUTED_EXCHANGE_TERMS", accounting["unattributed"], key="unattributed_exchange_terms")
     emit("PRESSURE_WORK_SIGN_CHECK", accounting["pressure_check"], key="pressure_work_sign_check")
     emit("FULL_TWO_PORT_BALANCE_CHECK", accounting["two_port_check"], key="full_two_port_balance_check")
 
@@ -988,18 +1184,18 @@ def task_b2b() -> None:
     )
 
     q_squared = omega**2 / c_s0**2 - k**2
-    kappa = next(sym for sym in DECLARED_SYMBOLS if sym.name == "kappa_out")
+    q_prop_response = omega * sp.sqrt(q_squared) / sp.Abs(omega)
     regime_z = (
-        (Str("PROPAGATING"), rho_m * sp.Abs(omega) / sp.sqrt(q_squared)),
-        (Str("EVANESCENT"), -I * rho_m * omega / kappa),
-        (Str("GRAZING"), symbol("Z_grazing_control", "CONTROL", "grazing face-response limit coordinate", positive=True)),
+        (Str("PROPAGATING"), sp.cancel(Z_ACOUSTIC.subs(q_out, q_prop_response))),
+        (Str("EVANESCENT"), sp.cancel(Z_ACOUSTIC.subs(q_out, I * kappa_out))),
+        (Str("GRAZING"), Z_ACOUSTIC),
     )
     rows = []
     interpretation_rows = []
     for name, z_value in regime_z:
         operator = bulk_motion_operator(z_value)
         if name == Str("GRAZING"):
-            operator = safe_limit(operator, z_value, sp.oo)
+            operator = safe_limit(operator, q_out, 0)
         operator = real_axis_cancel(operator)
         real_piece = real_axis_part(operator, "real")
         imaginary_piece = I * real_axis_part(operator, "imag")
@@ -1108,7 +1304,7 @@ def task_b2c() -> None:
     mapping_solution = sp.solve(map_equation, Lambda_A0, dict=True)
     emit("ZPERM_SLICE_MAP", sp.Tuple(affinity_flux_pressure_coefficient, map_equation, mapping_solution), key="zperm_slice_map")
 
-    sliced_face = face_solution(Z_GENERAL, sp.Integer(0), V_face)
+    sliced_face = face_solution(Z_ACOUSTIC, sp.Integer(0), V_face)
     sliced_pressure = sp.cancel(sliced_face["pressure"].subs({tau_A: tau_slice, tau_V: tau_slice}))
     if mapping_solution:
         sliced_pressure = sp.cancel(sliced_pressure.subs(mapping_solution[0]))
@@ -1144,10 +1340,9 @@ def task_b2d() -> None:
     right_power = sp.expand(p * sp.conjugate(v_bulk) + A * sp.conjugate(J) + Lambda_X * A * sp.conjugate(V))
     left_power_real = real_axis_simplify(sp.re(left_power) / 2)
     right_power_real = real_axis_simplify(sp.re(right_power) / 2)
-    power_residual = sp.simplify(left_power_real - right_power_real)
-    emit("TWO_PORT_POWER_IDENTITY", sp.Tuple(REAL_AXIS, left_power_real, right_power_real, power_residual), key="two_port_power_identity")
+    emit("TWO_PORT_POWER_IDENTITY", sp.Tuple(REAL_AXIS, left_power_real, right_power_real), key="two_port_power_identity")
 
-    response = face_solution(Z_GENERAL, rho_br * mu_s, V)
+    response = face_solution(Z_ACOUSTIC, rho_br * mu_s, V)
     pressure = response["pressure"]
     flux = response["flux"]
     affinity = response["affinity"]
@@ -1162,7 +1357,7 @@ def task_b2d() -> None:
         sp.Ge(sp.Determinant(H_port), 0, evaluate=False),
     )
     emit("PORT_DISSIPATIVITY", sp.Tuple(REAL_AXIS, output_matrix, H_port, port_minors), key="port_dissipativity")
-    z_dependence = sp.Tuple(*sorted(H_port.free_symbols.intersection(Z_GENERAL.free_symbols), key=sp.default_sort_key))
+    z_dependence = sp.Tuple(*sorted(H_port.free_symbols.intersection(Z_ACOUSTIC.free_symbols), key=sp.default_sort_key))
     emit("PORT_CONDITION_KIND", sp.Tuple(z_dependence, sp.Eq(sp.Integer(len(z_dependence)), 0, evaluate=False)), key="port_condition_kind")
 
     mixed_matrix = sp.ImmutableMatrix([[Lambda_A, Lambda_V], [Lambda_X, 0]])
@@ -1303,7 +1498,6 @@ def task_b5() -> None:
             sp.Eq(q_out**2, omega**2 / c_s0**2 - k**2, evaluate=False),
             Str("ANALYTIC_CONTINUATION_FROM_UPPER_RIM"),
             opposite_roots,
-            sp.Eq(-q_out, -q_out, evaluate=False),
         ),
         key="sheet_of_each_root",
     )
@@ -1333,9 +1527,12 @@ def task_b5() -> None:
 
 
 def task_b4() -> None:
+    q_squared = sp.expand(omega**2 / c_s0**2 - k**2)
+    q_breathing = sp.cancel(omega * sp.sqrt(sp.cancel(q_squared.subs(k, 0) / omega**2)))
+    z_breathing = sp.cancel(Z_ACOUSTIC.subs(q_out, q_breathing))
     slice_model = derive_model(
         substitutions={Lambda_A0: 0, Lambda_V0: 0, Lambda_X0: 0, k: 0},
-        z_value=rho_m * c_s0,
+        z_value=z_breathing,
     )
     breathing_equation = sp.cancel(slice_model["thickness"].subs({eta: 0, theta: -e_W}) / e_W)
     roots = sp.solve(sp.Eq(breathing_equation, 0), omega)
@@ -1388,11 +1585,90 @@ def derive_dimension(rhs: sp.MatrixBase) -> sp.ImmutableMatrix:
     return sp.ImmutableMatrix([solution[0][d_l], solution[0][d_t], solution[0][d_m]])
 
 
-def homogeneous_payload(term_dimensions: Sequence[sp.MatrixBase]) -> sp.Tuple:
-    frozen = tuple(sp.ImmutableMatrix(item) for item in term_dimensions)
-    tests = tuple(sp.Eq(sp.Tuple(*item), sp.Tuple(*frozen[0]), evaluate=False) for item in frozen[1:])
-    result = sp.And(*tests) if tests else sp.true
-    return sp.Tuple(sp.Tuple(*frozen), result)
+@dataclass(frozen=True)
+class DimensionTrace:
+    vector: sp.ImmutableMatrix
+    tests: tuple[object, ...]
+
+
+def dimension_match(left: sp.MatrixBase, right: sp.MatrixBase) -> object:
+    return sp.true if sp.ImmutableMatrix(left - right) == sp.zeros(3, 1) else sp.false
+
+
+def trace_dimension(expression: sp.Expr, symbol_dimensions: Mapping[sp.Symbol, sp.MatrixBase]) -> DimensionTrace:
+    """Derive an expression's dimension and every internal additive test."""
+    expression = sp.sympify(expression)
+    if expression.is_Number or expression in (I, sp.oo, -sp.oo, sp.nan):
+        return DimensionTrace(ZERO_DIM, ())
+    if isinstance(expression, sp.Symbol):
+        if expression not in symbol_dimensions:
+            raise KeyError(f"no live dimension route for {expression}")
+        return DimensionTrace(sp.ImmutableMatrix(symbol_dimensions[expression]), ())
+    if isinstance(expression, sp.Add):
+        traces = tuple(trace_dimension(argument, symbol_dimensions) for argument in expression.args)
+        reference = traces[0].vector
+        tests = tuple(test for trace in traces for test in trace.tests)
+        tests += tuple(dimension_match(trace.vector, reference) for trace in traces[1:])
+        return DimensionTrace(reference, tests)
+    if isinstance(expression, sp.Mul):
+        traces = tuple(trace_dimension(argument, symbol_dimensions) for argument in expression.args)
+        vector = sum((trace.vector for trace in traces), ZERO_DIM)
+        tests = tuple(test for trace in traces for test in trace.tests)
+        return DimensionTrace(sp.ImmutableMatrix(vector), tests)
+    if isinstance(expression, sp.Pow):
+        base_trace = trace_dimension(expression.base, symbol_dimensions)
+        if expression.exp.is_number:
+            return DimensionTrace(sp.ImmutableMatrix(expression.exp * base_trace.vector), base_trace.tests)
+        exponent_trace = trace_dimension(expression.exp, symbol_dimensions)
+        tests = base_trace.tests + exponent_trace.tests + (dimension_match(base_trace.vector, ZERO_DIM),)
+        return DimensionTrace(ZERO_DIM, tests)
+    if expression.func in (sp.conjugate, sp.re, sp.im, sp.Abs):
+        return trace_dimension(expression.args[0], symbol_dimensions)
+    if expression.func == sp.sign:
+        argument_trace = trace_dimension(expression.args[0], symbol_dimensions)
+        return DimensionTrace(ZERO_DIM, argument_trace.tests)
+    if expression.func in (sp.exp, sp.sin, sp.cos):
+        argument_trace = trace_dimension(expression.args[0], symbol_dimensions)
+        return DimensionTrace(ZERO_DIM, argument_trace.tests + (dimension_match(argument_trace.vector, ZERO_DIM),))
+    if expression.func == sp.atan2:
+        traces = tuple(trace_dimension(argument, symbol_dimensions) for argument in expression.args)
+        return DimensionTrace(
+            ZERO_DIM,
+            tuple(test for trace in traces for test in trace.tests)
+            + (dimension_match(traces[0].vector, traces[1].vector),),
+        )
+    raise TypeError(f"unsupported dimensional expression {type(expression).__name__}: {expression}")
+
+
+def homogeneous_from_terms(
+    terms: Sequence[sp.Expr], symbol_dimensions: Mapping[sp.Symbol, sp.MatrixBase]
+) -> sp.Tuple:
+    live_terms = tuple(sp.sympify(term) for term in terms if sp.sympify(term) != 0)
+    traces = tuple(trace_dimension(term, symbol_dimensions) for term in live_terms)
+    if not traces:
+        return sp.Tuple(sp.Tuple(), sp.true)
+    tests = tuple(test for trace in traces for test in trace.tests)
+    tests += tuple(dimension_match(trace.vector, traces[0].vector) for trace in traces[1:])
+    status = sp.And(*tests) if tests else sp.true
+    return sp.Tuple(sp.Tuple(*(trace.vector for trace in traces)), status)
+
+
+def determinant_terms(matrix: sp.MatrixBase) -> tuple[sp.Expr, ...]:
+    terms = []
+    for permutation in permutations(range(matrix.rows)):
+        inversions = sum(
+            permutation[left] > permutation[right]
+            for left in range(len(permutation))
+            for right in range(left + 1, len(permutation))
+        )
+        factors = tuple(matrix[row, column] for row, column in enumerate(permutation))
+        if any(factor == 0 for factor in factors):
+            continue
+        term = sp.Mul(*factors)
+        if inversions % 2:
+            term = -term
+        terms.append(term)
+    return tuple(terms)
 
 
 def task_b7() -> None:
@@ -1448,26 +1724,68 @@ def task_b7() -> None:
     for name, (vector, route_kind, route_operands) in dimensions.items():
         key_name = f"dim_{name.lower()}"
         emit(f"DIM_{name}", vector, key=key_name)
+        # Route kind is epistemic provenance (whether the asserted relation
+        # defines the tested quantity), so it is irreducibly authored metadata.
         emit(f"DIM_ROUTE_KIND_{name}", sp.Tuple(route_kind, route_operands), key=f"dim_route_kind_{name.lower()}")
 
-    homogeneity = {
-        "INPLANE_EOM": (M_DIM - 3 * L_DIM - 2 * T_DIM,) * len(sp.Add.make_args(sp.expand(MODEL["inplane"]))),
-        "THICKNESS_EOM": (energy_density,) * len(sp.Add.make_args(sp.expand(MODEL["thickness"]))),
-        "MASS_BALANCE": (mass_flux,) * len(sp.Add.make_args(sp.expand(MODEL["mass"]))),
-        "AFFINITY": (specific_energy, pressure_4d - (M_DIM - 4 * L_DIM)),
-        "CLOSURE": (mass_flux, dimensions["LAMBDA_A_0"][0] + specific_energy, dimensions["LAMBDA_V_0"][0] + L_DIM - T_DIM),
-        "FACE_RESPONSE": (pressure_4d, dimensions["Z"][0] + L_DIM - T_DIM),
-        "TWO_PORT_POWER_IDENTITY": (M_DIM - L_DIM - 3 * T_DIM,) * 3,
-        "DISPERSION_DETERMINANT": (3 * M_DIM - 7 * L_DIM - 5 * T_DIM,),
+    symbol_dimensions: dict[sp.Symbol, sp.MatrixBase] = {
+        omega: -T_DIM, k: -L_DIM, q_out: -L_DIM, kappa_out: -L_DIM,
+        eta: ZERO_DIM, theta: ZERO_DIM, e_W: ZERO_DIM,
+        W0: L_DIM, rho_m: dimensions["RHO_M"][0], rho_br: dimensions["RHO_BR"][0],
+        B_rho_3: dimensions["B_RHO_3"][0], mu_W: dimensions["MU_W"][0],
+        k_W: dimensions["K_W"][0], kappa_W: dimensions["KAPPA_W"][0],
+        C: dimensions["C"][0], B_div: dimensions["B_DIV"][0],
+        mu_S: dimensions["MU_S_COEFFICIENT"][0], G_theta_u: dimensions["G_THETA_U"][0],
+        G_W_u: dimensions["G_W_U"][0], kappa_theta: dimensions["KAPPA_THETA"][0],
+        kappa_theta_W: dimensions["KAPPA_THETA_W"][0],
+        Lambda_A0: dimensions["LAMBDA_A_0"][0], Lambda_V0: dimensions["LAMBDA_V_0"][0],
+        Lambda_X0: dimensions["LAMBDA_X_0"][0], tau_A: T_DIM, tau_V: T_DIM, tau_X: T_DIM,
+        p_face: pressure_4d, delta_p_plus: pressure_4d, delta_p_minus: pressure_4d,
+        J_face: mass_flux, J_plus: mass_flux, J_minus: mass_flux,
+        V_face: L_DIM - T_DIM, V_plus: L_DIM - T_DIM, V_minus: L_DIM - T_DIM,
+        mu_drive: energy_density, mu_s_coordinate: specific_energy,
+        affinity_coordinate: specific_energy, velocity_coordinate: L_DIM - T_DIM,
+        A_plus_affinity: specific_energy, A_minus_affinity: specific_energy,
     }
-    for name, term_dimensions in homogeneity.items():
-        emit(f"HOMOGENEITY_{name}", homogeneous_payload(term_dimensions), key=f"homogeneity_{name.lower()}")
+    dimensions_by_name = {
+        "V_port": L_DIM - T_DIM,
+        "mu_s_port": specific_energy,
+        "p_port": pressure_4d,
+        "J_port": mass_flux,
+    }
+    for declared in DECLARED_SYMBOLS:
+        if declared.name in dimensions_by_name:
+            symbol_dimensions[declared] = dimensions_by_name[declared.name]
 
-    correct = homogeneous_payload(homogeneity["INPLANE_EOM"])
-    corrupted_terms = list(homogeneity["INPLANE_EOM"])
-    corrupted_terms[0] = corrupted_terms[0] + L_DIM
-    corrupted = homogeneous_payload(corrupted_terms)
-    restored = homogeneous_payload(homogeneity["INPLANE_EOM"])
+    two_port_identity = EMITTER.values["PY_S11B_TWO_PORT_POWER_IDENTITY"]
+    homogeneity_terms = {
+        "INPLANE_EOM": sp.Add.make_args(MODEL["inplane"]),
+        "THICKNESS_EOM": sp.Add.make_args(MODEL["thickness"]),
+        "MASS_BALANCE": sp.Add.make_args(MODEL["mass"]),
+        "AFFINITY": sp.Add.make_args(MODEL["face"]["affinity"]),
+        "CLOSURE": sp.Add.make_args(MODEL["face"]["equations"][1]),
+        "FACE_RESPONSE": sp.Add.make_args(p_face - MODEL["face"]["pressure"]),
+        "TWO_PORT_POWER_IDENTITY": (
+            *sp.Add.make_args(two_port_identity[1]),
+            *sp.Add.make_args(two_port_identity[2]),
+        ),
+        # Row factors are restored here by checking the live raw matrix whose
+        # determinant underlies the reported row-normalized determinant.
+        "DISPERSION_DETERMINANT": determinant_terms(MODEL["raw_matrix"]),
+    }
+    for name, live_terms in homogeneity_terms.items():
+        emit(
+            f"HOMOGENEITY_{name}",
+            homogeneous_from_terms(live_terms, symbol_dimensions),
+            key=f"homogeneity_{name.lower()}",
+        )
+
+    live_inplane_terms = list(sp.Add.make_args(MODEL["inplane"]))
+    correct = homogeneous_from_terms(live_inplane_terms, symbol_dimensions)
+    corrupted_terms = list(live_inplane_terms)
+    corrupted_terms[0] = corrupted_terms[0] * W0
+    corrupted = homogeneous_from_terms(corrupted_terms, symbol_dimensions)
+    restored = homogeneous_from_terms(live_inplane_terms, symbol_dimensions)
     emit("HOMOGENEITY_ABLATION_DEMO", sp.Tuple(correct, corrupted, restored), key="homogeneity_ablation_demo")
 
 
@@ -1503,7 +1821,7 @@ def no_thickness_control_objects() -> dict[str, object]:
     energy = sp.expand(U_LONG.subs(e_W, 0))
     mu_theta_value = sp.diff(energy, theta)
     sigma_eta = sp.diff(energy, eta)
-    face = face_solution(Z_GENERAL, mu_theta_value, sp.Integer(0))
+    face = face_solution(Z_ACOUSTIC, mu_theta_value, sp.Integer(0))
     mass = sp.cancel(-I * omega * rho_br * (theta + eta) + 2 * face["flux"])
     inplane = sp.expand(rho_br * omega**2 * eta - k**2 * (sigma_eta - mu_theta_value))
     matrix = sp.ImmutableMatrix([[sp.diff(equation, variable) for variable in (eta, theta)] for equation in (inplane, mass)])
@@ -1590,7 +1908,7 @@ def task_b8() -> None:
     )
 
     control_e_model = derive_model(slab_affinity=False)
-    control_e_power_response = face_solution(Z_GENERAL, sp.Integer(0), V_face)
+    control_e_power_response = face_solution(Z_ACOUSTIC, sp.Integer(0), V_face)
     emit(
         "CONTROL_NO_MU_COUPLING",
         sp.Tuple(control_e_model["determinant"], control_e_power_response["pressure"], control_e_power_response["flux"]),

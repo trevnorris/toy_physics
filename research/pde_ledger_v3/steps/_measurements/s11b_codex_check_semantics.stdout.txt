@@ -1,0 +1,3 @@
+pressurePowerResidual = 0
+Cases extraction = {}
+And@@extraction = True

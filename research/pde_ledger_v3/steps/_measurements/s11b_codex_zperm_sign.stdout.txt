@@ -1,0 +1,6 @@
+affinity = -delta_p/rho_m + mu_s
+mu_s=0 canonical RHS = -Lambda_A0*delta_p/rho_m + Lambda_V0*V
+coefficient in J=RHS = -Lambda_A0/rho_m
+zero-form residual J-RHS = J + Lambda_A0*delta_p/rho_m - Lambda_V0*V
+coefficient of delta_p in residual = Lambda_A0/rho_m
+forced map Lambda_p0 = -Lambda_A0/rho_m

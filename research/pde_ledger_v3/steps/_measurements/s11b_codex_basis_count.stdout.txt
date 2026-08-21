@@ -1,0 +1,8 @@
+Fourier image of (div u)^2 = k1**2*u1**2 + 2*k1*k2*u1*u2 + 2*k1*k3*u1*u3 + k2**2*u2**2 + 2*k2*k3*u2*u3 + k3**2*u3**2
+Fourier image of tr((grad u)^2) = k1**2*u1**2 + 2*k1*k2*u1*u2 + 2*k1*k3*u1*u3 + k2**2*u2**2 + 2*k2*k3*u2*u3 + k3**2*u3**2
+difference = 0
+grad_u modulo divergence: 2
+theta,e scalars: 3
+grad(theta),grad(e): 3
+scalar-times-div(u): 2
+basis count modulo total divergences = 10

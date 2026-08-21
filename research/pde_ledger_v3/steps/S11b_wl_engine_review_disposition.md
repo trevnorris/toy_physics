@@ -76,3 +76,45 @@ layer**, NOT wrong physics in the derived responses.
    step record, applied to whichever engine the decision goes against.
 4. **Codex-consult the disposition + repair directive** before the builder (SymPy round-2 precedent: my
    disposition was wrong there; Codex corrected it).
+
+---
+
+## Codex consult — corrections ADOPTED (each re-verified by the orchestrator, rule 13)
+Consult prompt `directives/_legs/S11b_wl_disposition_codex_consult.md`; Codex measurements under
+`steps/_measurements/s11b_codex_*`. The consult confirmed F-WL-1 and comparator-first, and corrected the
+disposition in three ways + found two misses. Each adopted below was re-derived/re-read by me.
+
+- **F-WL-1 (sign) — CONFIRMED**, and **EXTENDED**: the emitted `ZPERM_SLICE_MAP` payload (`.out:52`) is
+  `RAW_PRESSURE_COEFFICIENT -> lambdaA0/(rhoM(1 - I ω τ))` — i.e. **also the wrong LEVEL** (the dynamic
+  `Λ_A(ω)/ρ_m`), where B2c asks for the **static** `Λ_p⁰ ↔ Λ_A⁰`. Repair: emit static `Λ_p⁰ = −Λ_A⁰/ρ_m`
+  (optionally a separate dynamic relation).
+- **F-WL-3 — SPLIT (I over-bundled).** Verified in code: grazing consumes `fullSystem["MATRIX"]` (L1312)
+  and kernel-propagation touches `fullSystem` (L1048) — these are NOT shadows. Three distinct defects:
+  - **3a shadow extraction** — `KERNEL_ORIENTATION_IDENTITIES` extracts from `closureLawForExtraction`
+    (L1020), not the assembled closure ⇒ extract from the actual closure equations.
+  - **3b broken aggregator** — `CAUSALITY_CHECK`: `Cases` on nested `Association`s → `{}`, `And@@{} = True`
+    unconditionally ⇒ explicit association lookups.
+  - **3c degenerate grazing** — `Limit[q·fullSystem["MATRIX"], q→0]` = zero matrix, rank 0 ⇒ stratum-aware
+    Laurent / nullspace classification.
+  (F-WL-2 stands: `PRESSURE_WORK_SIGN_CHECK` tautological; energy/two-port are detached hand
+  transcriptions L1116–1144 / L1184–1228 ⇒ contract the actual EOM.)
+- **X-1 — NOT open; the SPEC decides it, and it is a SYMPY defect.** §5 (L286-287) mandates equivalence
+  **modulo total divergences**. Verified: `st_squared = (2/3)(∇·u)² + (1/2)curl²` modulo a total divergence
+  (from `(∇·u)² − tr((∇u)²) = ∂_i(u_i ∂_j u_j − u_j ∂_j u_i)`), so among SymPy's `{curl²[0], st_squared[1],
+  (∇·u)²[2]}` only TWO are independent. **WL's 10 is correct; SymPy's 11 over-counts** (`sympy_audit.py:
+  470-510` judges independence over the full 9-component gradient, not modulo divergence; `st_squared`'s
+  coefficient is degenerate with `B_div`/`mu_R`). ⛔ This **REOPENS the committed SymPy engine** for X-1
+  (basis count + redundant coefficient); the SymPy physics EOM is unaffected (the surplus term is a total
+  divergence). ⇒ X-1 is a **SymPy** repair scope, ⛔ NOT part of the WL repair.
+- **Q5-2 (missed) — thickness-response DIMENSION difference is normalization, not physics.** WL uses
+  displacement/pressure (L763-792); SymPy uses displacement/force-per-x-volume (`sympy_audit.py:1203-1212`).
+  ⇒ the T7 comparator must **normalize by `W₀`** on that row, ⛔ not report it as a physics disagreement.
+
+## Path — CONFIRMED (user 2026-08-21): comparator FIRST, then SPLIT repairs
+1. Author + FREEZE + commit the T7 comparator (join by emitted name, residual with symbol transliteration,
+   ⛔ reject native boolean as a residual operand, three-valued undecided, COMPARE dimension tags with the
+   `W₀` normalization above, synthetic pass/fail self-tests + repoint ablation) BEFORE it sees the engines'
+   real output (rule 5). Run it against the pinned baseline (`S11b_exports.py` rows ↔ WL `.out` tag stream);
+   the live F-WL-1 sign defect and X-1 count are useful failure cases.
+2. THEN two SEPARATE 2-legged repair directives: **WL** (F-WL-1 sign+level, F-WL-2, F-WL-3a/b/c) and
+   **SymPy** (X-1 basis count + redundant coefficient). Each: directive → 2 legs (rule 7) → build → 2 legs.

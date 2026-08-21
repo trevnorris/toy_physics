@@ -67,13 +67,27 @@ round-3.** ⚠ Lessons: I twice leaked an expected value into an acceptance crit
 agent reverted `exports.py` to HEAD in cleanup (regenerated); a spurious kill fired after the engine's work
 completed (`[[feedback-background-tasks-can-die-spuriously]]`).
 
-⛔ **NEXT = the blind Wolfram engine** (`mathematica/S11b_interface_coupling_law_mathematica_audit.wl`,
-imports nothing, re-derives; handed ONLY its self-contained directive `directives/S11b_wl_build_directive.md`
-— ⛔ never the `.py`/exports/.out). Then: the cross-engine comparator **to the frozen T7 contract** (net-new
-— S11 has none; ⚠ must compare dimension tags — a wrong dimension is caught only by the 2nd engine), the
-step record (I write it, 2 legs), re-point the card `paper/steps/S11b_interface_coupling_law.tex` (Codex,
-2 legs). Run-checklist: `steps/S11b_RUN_CHECKLIST.md`. Pattern = S10/S11. Full state in memory
-`project-s11b-interface-law-result`.
+⭐⭐ **Artifact #5 (blind WL engine) DONE + REVIEWED — committed `ec89f9df`** (`mathematica/S11b_..._audit.wl`,
+178 tags, imports nothing, no VERDICT; `.out` captured). 2 script legs: physics CORRECT, but **F-WL-1** = the
+withheld G13 map `ZPERM_SLICE_MAP` emitted WRONG SIGN + WRONG LEVEL (`+Λ_A/ρ_m` dynamic; correct = static
+`Λ_p⁰=−Λ_A⁰/ρ_m`, verified 4 ways), **F-WL-2/3** = a tautological/decoupled §6 energy + causality/kernel/
+grazing check layer. Codex consult (`bee278a7`) found **X-1**: SymPy basis OVER-COUNTS **11 vs correct 10**
+(spec §5 mandates the total-divergence quotient; `st_squared=(2/3)div²+(1/2)curl²` mod div) ⇒ X-1 REOPENS the
+committed SymPy engine (count/coeff only; EOM unaffected). Disposition: `steps/S11b_wl_engine_review_disposition.md`.
+
+⭐⭐ **Artifact #6 (T7 comparator) DONE + FROZEN + RUN — `17fe32c8`.** `scripts/S11b_cross_engine_comparator.py`
+(reused S10; build `c95213b7` → fix1 `bd97a571` → fix2 `f0c796a9`, each 2 legs; precedence rule
+`DISAGREE>UNCOMPARED>UNDECIDED>AGREE`). Frozen run `scripts/out/S11b_cross_engine_comparison.out`: **X-1 confirmed**
+(ENERGY_BASIS_COUNT 11 vs 10, CONTENT), DIM_THICKNESS_RESPONSE off by `(-1,0,0)=W₀` (known convention), all other
+DIM AGREE, DEGENERATE_LOCI a locus-form/qOut-vs-q artifact (not physics). ⚠ FINDING: the two engines physics-agree
+but are NOT emission-parallel — 103 STRUCTURE (PY Tuple vs WL Association) + 47 UNPAIRED + naming (qOut/q); only
+20 clean AGREE. Comparator confirms NO cross-engine physics disagreement beyond X-1 + the known F-WL-1 sign.
+
+⛔ **NEXT = the two SEPARATE physics repairs (user 2026-08-21: proceed):** **WL repair** (F-WL-1 sign+level,
+F-WL-2, F-WL-3a/b/c) + **SymPy repair** (X-1 basis over-count) — each directive → 2 legs → build → 2 legs. Then
+the step record (I write, 2 legs; NOTE the emission non-parallelism finding + the W₀ convention) and re-point the
+card `paper/steps/S11b_interface_coupling_law.tex` (Codex, 2 legs; owed G12c/G12d items). Run-checklist:
+`steps/S11b_RUN_CHECKLIST.md`. Pattern = S10/S11. Full state in memory `project-s11b-interface-law-result`.
 
 ---
 

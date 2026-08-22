@@ -9,8 +9,8 @@ the plan when C opens). Slug = `S11b_interface_coupling_law`.
 
 > ⚠⚠ **The table + export-integrity block below are the PRE-RUN TEMPLATE (authored before the builds); their
 > ⏳/⬜ marks are NOT current status.** ⭐ **The live status is the "✅ SymPy engine CLOSED" section at the
-> bottom** — the SymPy engine's steps 1–8 + all export-integrity items are DONE there; the WL engine (step 9),
-> comparator (10), step record (12) and card (13) remain.
+> bottom** — the SymPy engine's steps 1–8 + all export-integrity items are DONE there; the WL engine (9), comparator (10) and WL repair are DONE (see the two CLOSED sections below); the SymPy X-1 repair,
+> step record (12) and card (13) remain.
 
 ## The proven order (step-run table + runbook)
 
@@ -93,7 +93,7 @@ the plan when C opens). Slug = `S11b_interface_coupling_law`.
   (orchestrator) → Codex + Grok.
 
 ## ✅ SymPy engine BUILT (`864d6f41`, 2026-08-21) — ⚠ X-1 REOPENS it (basis over-count 11→10 = the current NEXT)
-The SymPy-engine portions of steps 1–8 are done (steps 9-11 -- WL engine, comparator, WL repair -- now DONE; see the CLOSED section below): directives (1–4) `9bd2f184`; build (5)
+The SymPy-engine portions of steps 1–8 are done (steps 9-10 + the WL branch of step 11 DONE -- see the CLOSED section below; the SymPy X-1 repair, step 11, is the current NEXT): directives (1–4) `9bd2f184`; build (5)
 round-1; baseline commits (6) `7dd89076`/`6d57b27e`; script legs (7) each round; `.out` captured +
 committed (8) `scripts/out/S11b_interface_coupling_law_sympy_audit.out`. Export-chain integrity
 sub-checklist all ✅ (carry-forward fidelity: 1663 S11 rows, none dropped/mutated; bindings to imported

@@ -64,7 +64,7 @@ layer**, NOT wrong physics in the derived responses.
   equation-route). Transverse coupling `{0,0}` is a **computed** vanishing (moved under FORM-B, 50 tags).
   No `Abort` precedes a physics emit. No duplicate/verdict tags.
 
-## Disposition — proposed (⛔ NOT yet executed; repair directive is orchestrator-written ⇒ 2 legs first, rule 7)
+## Disposition — [⚠ HISTORICAL / EXECUTED: comparator DONE 17fe32c8, WL repair DONE bd598ae7; SymPy X-1 = current NEXT. Original proposal below.]
 1. **Pin the reviewed baseline**: commit `.wl` + captured `.out` before any repair (rule 6).
 2. **Comparator FIRST** (honours "the disagreement is the measurement"): author + freeze + commit the T7
    comparator, run it against the *current* engines so it MEASURES F-WL-1 (sign) and X-1 (count) plus any

@@ -114,10 +114,10 @@ disposition in three ways + found two misses. Each adopted below was re-derived/
 > ⚠ **STATUS 2026-08-22: comparator DONE+FROZEN+RUN (`17fe32c8`, X-1 confirmed); WL repair DONE (`bd598ae7`).
 > This path is mostly executed — the CURRENT NEXT is the SymPy X-1 repair. See `STATUS.md` + the memory
 > frontmatter for authoritative current state.**
-1. Author + FREEZE + commit the T7 comparator (join by emitted name, residual with symbol transliteration,
+1. [✅ DONE 17fe32c8] Author + FREEZE + commit the T7 comparator (join by emitted name, residual with symbol transliteration,
    ⛔ reject native boolean as a residual operand, three-valued undecided, COMPARE dimension tags with the
    `W₀` normalization above, synthetic pass/fail self-tests + repoint ablation) BEFORE it sees the engines'
    real output (rule 5). Run it against the pinned baseline (`S11b_exports.py` rows ↔ WL `.out` tag stream);
    the live F-WL-1 sign defect and X-1 count are useful failure cases.
-2. THEN two SEPARATE 2-legged repair directives: **WL** (F-WL-1 sign+level, F-WL-2, F-WL-3a/b/c) and
+2. [WL repair ✅ DONE bd598ae7; SymPy X-1 repair = current NEXT] THEN two SEPARATE 2-legged repair directives: **WL** (F-WL-1 sign+level, F-WL-2, F-WL-3a/b/c) and
    **SymPy** (X-1 basis count + redundant coefficient). Each: directive → 2 legs (rule 7) → build → 2 legs.

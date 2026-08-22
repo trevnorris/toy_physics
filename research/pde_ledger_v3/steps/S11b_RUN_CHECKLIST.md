@@ -92,7 +92,7 @@ the plan when C opens). Slug = `S11b_interface_coupling_law`.
 - Whatever writes does not review: engines/card (Codex) → fresh agent + Grok; directives/step record
   (orchestrator) → Codex + Grok.
 
-## ✅ SymPy engine CLOSED (`864d6f41`, 2026-08-21)
+## ✅ SymPy engine BUILT (`864d6f41`, 2026-08-21) — ⚠ X-1 REOPENS it (basis over-count 11→10 = the current NEXT)
 The SymPy-engine portions of steps 1–8 are done (steps 9-11 -- WL engine, comparator, WL repair -- now DONE; see the CLOSED section below): directives (1–4) `9bd2f184`; build (5)
 round-1; baseline commits (6) `7dd89076`/`6d57b27e`; script legs (7) each round; `.out` captured +
 committed (8) `scripts/out/S11b_interface_coupling_law_sympy_audit.out`. Export-chain integrity

@@ -2,6 +2,11 @@
 
 ## ⭐⭐⭐ CURRENT FRONT — S11b UNIFIED REWRITE (opened 2026-08-19)
 
+⚠ **PATH BASE:** every S11b artifact pointer in this block (`scripts/…`, `mathematica/…`, `steps/…`,
+`directives/…`, `paper/…`) is relative to **`research/pde_ledger_v3/`** — e.g. `scripts/S11b_cross_engine_comparator.py`
+= `research/pde_ledger_v3/scripts/S11b_cross_engine_comparator.py`, and the card `paper/steps/S11b_interface_coupling_law.tex`
+= `research/pde_ledger_v3/paper/steps/S11b_interface_coupling_law.tex`. Only `STATUS.md` and `CLAUDE.md` are repo-root.
+
 ⭐ **S11b is being rebuilt as ONE unified export-chain step** ("the interface coupling law"), subsuming
 the historical A (bulk face response) + B (homogeneous assembly) execution stages; **C stays a separate
 later step.** Chosen 2026-08-19 (user): "S11b-A alone" is not a well-defined chain unit — A earns no

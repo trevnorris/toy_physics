@@ -288,55 +288,97 @@ deriveInternalOperators[sourceEnergy_] := Module[
 
 internalOperators = deriveInternalOperators[fullEnergyDensity];
 
-(* Supplied face law.  The solver is reused with inert kernel placeholders. *)
+(* One pre-elimination face-law object feeds the solver, traction assembly,
+   and kernel extraction.  Its affinity and slab velocity remain inert until
+   the solve step, so their constitutive coefficients stay inspectable. *)
+rawFaceLawAssociation[muThetaInput_, velocityInput_, laInput_, lvInput_,
+    lxInput_, slabAffinityFactor_] := <|
+  "AFFINITY_DEFINITION" ->
+    faceAffinityRaw == slabAffinityFactor muThetaInput/rhoBr -
+      facePressure/rhoM,
+  "SLAB_VELOCITY_DEFINITION" -> faceVelocityRaw == velocityInput,
+  "IMPEDANCE_LAW" -> facePressure == zFace faceBulkVelocity,
+  "KINEMATIC_LAW" ->
+    faceBulkVelocity == faceVelocityRaw + faceFlux/rhoM,
+  "CLOSURE_LAW" ->
+    faceFlux == laInput faceAffinityRaw + lvInput faceVelocityRaw,
+  "TRACTION_LAW" ->
+    faceTractionRaw == facePressure + lxInput faceAffinityRaw|>;
+
 solveFace[muThetaInput_, velocityInput_, laInput_, lvInput_, lxInput_,
-    slabAffinityFactor_] := Module[{equations, solution, pResult, jResult,
-    vbResult, affinityResult, tractionResult},
-  equations = {
-    facePressure == zFace faceBulkVelocity,
-    faceBulkVelocity == velocityInput + faceFlux/rhoM,
-    faceFlux == laInput (slabAffinityFactor muThetaInput/rhoBr -
-        facePressure/rhoM) + lvInput velocityInput
-  };
+    slabAffinityFactor_] := Module[{rawLaws, eliminationRules, equations,
+    solution, pResult, jResult, vbResult, affinityResult, tractionResult},
+  rawLaws = rawFaceLawAssociation[muThetaInput, velocityInput, laInput,
+    lvInput, lxInput, slabAffinityFactor];
+  eliminationRules = {
+    faceAffinityRaw -> Last[rawLaws["AFFINITY_DEFINITION"]],
+    faceVelocityRaw -> Last[rawLaws["SLAB_VELOCITY_DEFINITION"]]};
+  equations = ({rawLaws["IMPEDANCE_LAW"],
+      rawLaws["KINEMATIC_LAW"], rawLaws["CLOSURE_LAW"]} /.
+    eliminationRules);
   solution = First[Solve[equations,
     {facePressure, faceFlux, faceBulkVelocity}]];
   pResult = Cancel[facePressure /. solution];
   jResult = Cancel[faceFlux /. solution];
   vbResult = Cancel[faceBulkVelocity /. solution];
-  affinityResult = Cancel[slabAffinityFactor muThetaInput/rhoBr -
-    pResult/rhoM];
-  tractionResult = Cancel[pResult + lxInput affinityResult];
-  <|"EQUATIONS" -> equations, "SOLUTION" -> solution,
+  affinityResult = Cancel[faceAffinityRaw /. eliminationRules /. solution];
+  tractionResult = Cancel[faceTractionRaw /.
+    First[Solve[rawLaws["TRACTION_LAW"], faceTractionRaw]] /.
+    {faceAffinityRaw -> affinityResult, facePressure -> pResult}];
+  <|"RAW_FACE_LAWS" -> rawLaws,
+    "ELIMINATION_RULES" -> eliminationRules,
+    "EQUATIONS" -> equations, "SOLUTION" -> solution,
     "PRESSURE" -> pResult, "FLUX" -> jResult,
     "BULK_VELOCITY" -> vbResult, "AFFINITY" -> affinityResult,
     "TRACTION" -> tractionResult|>
 ];
 
+preEliminationEOMAssociation[internal_Association, tractionFactor_,
+    fluxFactor_] := <|
+  "INPLANE_EQUATION" -> Expand[-rhoBr omega^2 uL +
+    internal["INPLANE_INTERNAL"]],
+  "THICKNESS_EQUATION" -> Together[-muW omega^2 w0 eAmp +
+    internal["THICKNESS_INTERNAL"] + tractionFactor
+      (tractionPlusPower + tractionMinusPower)/2],
+  "MASS_EQUATION_WITH_THICKNESS" -> Together[-I omega rhoBr
+    (thetaAmp + eAmp + I k uL) + fluxFactor
+      (jPlusPower + jMinusPower)],
+  "MASS_EQUATION_FROZEN_THICKNESS" -> Together[-I omega rhoBr
+    (thetaAmp + I k uL) + fluxFactor
+      (jPlusPower + jMinusPower)]|>;
+
 assembleSystem[sourceEnergy_, laInput_, lvInput_, lxInput_,
     slabAffinityFactor_, includeThickness_] := Module[
-  {internal, face, vInput, inplaneEquation, thicknessEquation,
-   massEquation, unknowns, equations, matrix, determinant},
+  {internal, face, vInput, preEliminationEOM, symmetricFaceRules,
+   inplaneEquation, thicknessEquation, massEquation, unknowns, equations,
+   matrix, determinant},
   internal = deriveInternalOperators[sourceEnergy];
   vInput = If[TrueQ[includeThickness], -I omega w0 eAmp/2, 0];
   face = solveFace[internal["MU_THETA"], vInput, laInput, lvInput,
     lxInput, slabAffinityFactor];
-  inplaneEquation = Expand[-rhoBr omega^2 uL +
-    internal["INPLANE_INTERNAL"]];
+  preEliminationEOM = preEliminationEOMAssociation[internal, 1, 1];
+  symmetricFaceRules = {tractionPlusPower -> face["TRACTION"],
+    tractionMinusPower -> face["TRACTION"],
+    jPlusPower -> face["FLUX"], jMinusPower -> face["FLUX"]};
+  inplaneEquation = preEliminationEOM["INPLANE_EQUATION"];
   If[TrueQ[includeThickness],
-    thicknessEquation = Together[-muW omega^2 w0 eAmp +
-      internal["THICKNESS_INTERNAL"] + face["TRACTION"]];
-    massEquation = Together[-I omega rhoBr
-       (thetaAmp + eAmp + I k uL) + 2 face["FLUX"]];
+    thicknessEquation = Together[
+      preEliminationEOM["THICKNESS_EQUATION"] /. symmetricFaceRules];
+    massEquation = Together[
+      preEliminationEOM["MASS_EQUATION_WITH_THICKNESS"] /.
+        symmetricFaceRules];
     unknowns = {uL, eAmp, thetaAmp};
     equations = {inplaneEquation, thicknessEquation, massEquation},
-    massEquation = Together[-I omega rhoBr
-       (thetaAmp + I k uL) + 2 face["FLUX"]];
+    massEquation = Together[
+      preEliminationEOM["MASS_EQUATION_FROZEN_THICKNESS"] /.
+        symmetricFaceRules];
     unknowns = {uL, thetaAmp};
     equations = {inplaneEquation, massEquation}
   ];
   matrix = coefficientVector[#, unknowns] & /@ equations;
   determinant = Cancel[Together[Det[matrix]]];
   <|"INTERNAL" -> internal, "FACE" -> face,
+    "PRE_ELIMINATION_EOM" -> preEliminationEOM,
     "INPLANE_EQUATION" -> inplaneEquation,
     "THICKNESS_EQUATION" -> thicknessEquation,
     "MASS_EQUATION" -> massEquation, "UNKNOWNS" -> unknowns,
@@ -366,6 +408,13 @@ emitLocal["PREMISE_INVENTORY", premiseInventory];
 
 equationZeroForm[equal_Equal] := equal[[1]] - equal[[2]];
 equationZeroForm[expression_] := expression;
+constitutiveFluxExpression[closure_Equal, fluxSymbol_] := Module[
+  {fluxFreeSides},
+  fluxFreeSides = Select[List @@ closure, FreeQ[#, fluxSymbol] &];
+  If[Length[fluxFreeSides] == 1, First[fluxFreeSides],
+    Missing["ConstitutiveFluxExpression", HoldForm[closure]]]
+];
+swapEquationSides[equal_Equal] := Apply[Equal, Reverse[List @@ equal]];
 
 emitLocus[baseName_String, equations_List, variables_List,
     realPremises_] := Module[
@@ -853,18 +902,55 @@ emitShared["FROZEN_THICKNESS_IDENTIFICATION", <|
   "FULL_RESPONSE_RESIDUAL" -> Together[compressionalResponse - frozenStress]|>];
 
 (* Equal-time, slab-affinity-off acceptance slice: no reference is present. *)
-rawPressureSliceClosure = generalFace["EQUATIONS"] /.
+rawPressureSliceLaws = generalFace["RAW_FACE_LAWS"] /.
   {muThetaFace -> 0, tauA -> tauCommon, tauV -> tauCommon};
-rawPressureCoefficient = Coefficient[
-  equationZeroForm[rawPressureSliceClosure[[3]]], facePressure];
-zPermSliceMap = Solve[rawPressureCoefficient == lambdaPressureCoefficient,
+rawPressureSliceClosure = rawPressureSliceLaws["CLOSURE_LAW"] /.
+  faceAffinityRaw -> Last[rawPressureSliceLaws["AFFINITY_DEFINITION"]];
+rawPressureFluxExpression = constitutiveFluxExpression[
+  rawPressureSliceClosure, faceFlux];
+dynamicRawPressureCoefficient = Coefficient[
+  rawPressureFluxExpression, facePressure];
+staticRawPressureCoefficient = Block[{$Assumptions = True},
+  Limit[dynamicRawPressureCoefficient, omega -> 0]];
+zPermSliceMap = Solve[
+  staticRawPressureCoefficient == lambdaPressureCoefficient,
   lambdaPressureCoefficient];
-zPermSliceSolution = First[Solve[rawPressureSliceClosure,
+zPermSliceEquations = generalFace["EQUATIONS"] /.
+  {muThetaFace -> 0, tauA -> tauCommon, tauV -> tauCommon};
+zPermSliceSolution = First[Solve[zPermSliceEquations,
   {facePressure, faceFlux, faceBulkVelocity}]];
 zPermSlice = Cancel[facePressure/velocityFace /. zPermSliceSolution];
 emitShared["ZPERM_SLICE_MAP", <|
-  "RAW_PRESSURE_COEFFICIENT" -> rawPressureCoefficient,
+  "STATIC_RAW_PRESSURE_COEFFICIENT" -> staticRawPressureCoefficient,
   "MAPPING" -> zPermSliceMap|>];
+emitShared["ZPERM_SLICE_DYNAMIC_COEFFICIENT", <|
+  "FLUX_EXPRESSION" -> rawPressureFluxExpression,
+  "DYNAMIC_RAW_PRESSURE_COEFFICIENT" -> dynamicRawPressureCoefficient|>];
+swappedRawPressureSliceClosure = swapEquationSides[
+  rawPressureSliceClosure];
+oldPressureExtractorOriginal = Coefficient[
+  equationZeroForm[rawPressureSliceClosure], facePressure];
+oldPressureExtractorSwapped = Coefficient[
+  equationZeroForm[swappedRawPressureSliceClosure], facePressure];
+newPressureExtractorOriginal = Coefficient[
+  constitutiveFluxExpression[rawPressureSliceClosure, faceFlux],
+  facePressure];
+newPressureExtractorSwapped = Coefficient[
+  constitutiveFluxExpression[swappedRawPressureSliceClosure, faceFlux],
+  facePressure];
+emitShared["ZPERM_SLICE_MAP_REPRESENTATION_CONTROL", <|
+  "ORIGINAL_CLOSURE" -> rawPressureSliceClosure,
+  "SIDE_SWAPPED_CLOSURE" -> swappedRawPressureSliceClosure,
+  "OLD_RESIDUAL_EXTRACTOR_OPERANDS" ->
+    {oldPressureExtractorOriginal, oldPressureExtractorSwapped},
+  "OLD_RESIDUAL_EXTRACTOR_DIFFERENCE" -> Together[
+    oldPressureExtractorOriginal - oldPressureExtractorSwapped],
+  "FLUX_EXTRACTOR_OPERANDS" ->
+    {newPressureExtractorOriginal, newPressureExtractorSwapped},
+  "FLUX_EXTRACTOR_RESIDUAL" -> Together[
+    newPressureExtractorOriginal - newPressureExtractorSwapped],
+  "STATIC_PARAMETER_DERIVATIVES" ->
+    (D[staticRawPressureCoefficient, #] & /@ {omega, tauCommon})|>];
 emitShared["ZPERM_SLICE", zPermSlice];
 
 (* ---------------------------------------------------------------------- *)
@@ -1017,19 +1103,28 @@ emitShared["COEFFICIENT_ADMISSIBILITY", <|
 (* Causality diagnostic: extraction, inert propagation and pole inventory. *)
 (* ---------------------------------------------------------------------- *)
 
-closureLawForExtraction = faceFlux == lambdaA affinityExtract +
-  lambdaV velocityExtract;
-tractionLawForExtraction = tractionExtract == deltaPExtract +
-  lambdaX affinityExtract;
+extractFaceKernels[rawLaws_Association] := Module[
+  {fluxExpression, tractionExpression},
+  fluxExpression = constitutiveFluxExpression[
+    rawLaws["CLOSURE_LAW"], faceFlux];
+  tractionExpression = constitutiveFluxExpression[
+    rawLaws["TRACTION_LAW"], faceTractionRaw];
+  <|"A" -> Coefficient[fluxExpression /. faceVelocityRaw -> 0,
+      faceAffinityRaw],
+    "V" -> Coefficient[fluxExpression /. faceAffinityRaw -> 0,
+      faceVelocityRaw],
+    "X" -> Coefficient[tractionExpression - facePressure,
+      faceAffinityRaw]|>
+];
+assembledRawFaceLaws = fullSystem["FACE"]["RAW_FACE_LAWS"];
+assembledKernelExtraction = extractFaceKernels[assembledRawFaceLaws];
 kernelExtracted = <|
-  "A_PLUS" -> Coefficient[Last[closureLawForExtraction], affinityExtract],
-  "V_PLUS" -> Coefficient[Last[closureLawForExtraction], velocityExtract],
-  "X_PLUS" -> Coefficient[
-    Last[tractionLawForExtraction] - deltaPExtract, affinityExtract],
-  "A_MINUS" -> Coefficient[Last[closureLawForExtraction], affinityExtract],
-  "V_MINUS" -> Coefficient[Last[closureLawForExtraction], velocityExtract],
-  "X_MINUS" -> Coefficient[
-    Last[tractionLawForExtraction] - deltaPExtract, affinityExtract]
+  "A_PLUS" -> assembledKernelExtraction["A"],
+  "V_PLUS" -> assembledKernelExtraction["V"],
+  "X_PLUS" -> assembledKernelExtraction["X"],
+  "A_MINUS" -> assembledKernelExtraction["A"],
+  "V_MINUS" -> assembledKernelExtraction["V"],
+  "X_MINUS" -> assembledKernelExtraction["X"]
 |>;
 kernelOrientationIdentities = <|
   "A_PLUS" -> rationalIdentityRecord[kernelExtracted["A_PLUS"],
@@ -1047,8 +1142,9 @@ kernelOrientationIdentities = <|
 |>;
 kernelReplacement = {ellA -> kernelExtracted["A_PLUS"],
   ellV -> kernelExtracted["V_PLUS"], ellX -> kernelExtracted["X_PLUS"]};
-propagatedFace = AssociationMap[Cancel[# /. kernelReplacement] &,
-  placeholderSystem["FACE"]];
+propagatedFace = AssociationMap[
+  Cancel[placeholderSystem["FACE"][#] /. kernelReplacement] &,
+  {"PRESSURE", "FLUX", "BULK_VELOCITY", "AFFINITY", "TRACTION"}];
 kernelPropagationResiduals = <|
   "FACE_PRESSURE" -> comparisonRecord[propagatedFace["PRESSURE"],
     fullSystem["FACE"]["PRESSURE"]],
@@ -1095,16 +1191,75 @@ kernelPoleInventory = AssociationMap[
         ]], Keys[downstreamKernelObjects]]|>
   ]], Keys[bareKernelDenominators]];
 
-orientationTestObjects = Flatten[Cases[Values[kernelOrientationIdentities],
-  Rule["TEST_OBJECT", value_] :> value, Infinity]];
-propagationTestObjects = Flatten[Cases[Values[kernelPropagationResiduals],
-  Rule["TEST_OBJECT", value_] :> value, Infinity]];
+requiredOrientationRecords = {
+  "A_PLUS", "V_PLUS", "X_PLUS", "A_MINUS", "V_MINUS", "X_MINUS"};
+requiredPropagationRecords = {"FACE_PRESSURE", "FACE_FLUX",
+  "INPLANE_EQUATION", "THICKNESS_EQUATION", "MASS_EQUATION",
+  "DISPERSION_DETERMINANT"};
+aggregateNamedTestRecords[records_Association, requiredKeys_List] := Module[
+  {lookups, presentRecords, testObjects, presenceTest, aggregateTest},
+  lookups = Lookup[records, requiredKeys,
+    Missing["RequiredRecord"]];
+  presentRecords = Select[lookups,
+    AssociationQ[#] && Length[#] > 0 && KeyExistsQ[#, "TEST_OBJECT"] &];
+  testObjects = Lookup[presentRecords, "TEST_OBJECT"];
+  presenceTest = Length[presentRecords] == Length[requiredKeys];
+  aggregateTest = If[TrueQ[presenceTest], And @@ testObjects, False];
+  <|"REQUIRED_RECORDS" -> requiredKeys,
+    "AVAILABLE_RECORDS" -> Keys[records],
+    "PRESENT_RECORD_COUNT" -> Length[presentRecords],
+    "REQUIRED_RECORD_COUNT" -> Length[requiredKeys],
+    "PRESENCE_TEST_OBJECT" -> presenceTest,
+    "TEST_OBJECTS" -> testObjects,
+    "AGGREGATE_TEST_OBJECT" -> casTest[aggregateTest]|>
+];
+orientationAggregation = aggregateNamedTestRecords[
+  kernelOrientationIdentities, requiredOrientationRecords];
+propagationAggregation = aggregateNamedTestRecords[
+  kernelPropagationResiduals, requiredPropagationRecords];
+causalityAggregate = casTest[
+  orientationAggregation["AGGREGATE_TEST_OBJECT"] &&
+  propagationAggregation["AGGREGATE_TEST_OBJECT"]];
+
+kernelAblatedSystem = assembleSystem[fullEnergyDensity,
+  lambdaA /. lambdaA0 -> lambdaA0 + kernelAblation, lambdaV, lambdaX,
+  1, True];
+kernelAblatedExtraction = extractFaceKernels[
+  kernelAblatedSystem["FACE"]["RAW_FACE_LAWS"]];
+kernelUnrelatedSystem = assembleSystem[
+  fullEnergyDensity /. crossC -> crossC + kernelUnrelatedAblation,
+  lambdaA, lambdaV, lambdaX, 1, True];
+kernelUnrelatedExtraction = extractFaceKernels[
+  kernelUnrelatedSystem["FACE"]["RAW_FACE_LAWS"]];
+removedOrientationAggregation = aggregateNamedTestRecords[
+  KeyDrop[kernelOrientationIdentities, First[requiredOrientationRecords]],
+  requiredOrientationRecords];
+unrelatedCausalityAggregation = aggregateNamedTestRecords[
+  kernelOrientationIdentities, requiredOrientationRecords];
 emitShared["KERNEL_ORIENTATION_IDENTITIES", kernelOrientationIdentities];
+emitShared["KERNEL_ORIENTATION_CONTROLS", <|
+  "ASSEMBLED_KERNEL_ABLATION" -> rationalIdentityRecord[
+    kernelAblatedExtraction["A"], lambdaA, omega],
+  "UNRELATED_SOURCE_OPERANDS" ->
+    {assembledKernelExtraction, kernelUnrelatedExtraction},
+  "UNRELATED_SOURCE_RESIDUALS" -> AssociationMap[
+    Together[assembledKernelExtraction[#] -
+      kernelUnrelatedExtraction[#]] &, Keys[assembledKernelExtraction]]|>];
 emitShared["KERNEL_PROPAGATION_RESIDUALS", kernelPropagationResiduals];
 emitShared["KERNEL_POLE_LOCATIONS", kernelPoleInventory];
 emitShared["CAUSALITY_CHECK", <|
-  "ORIENTATION_TEST_OBJECT" -> And @@ orientationTestObjects,
-  "PROPAGATION_TEST_OBJECT" -> And @@ propagationTestObjects,
+  "ORIENTATION_RECORDS" -> orientationAggregation,
+  "PROPAGATION_RECORDS" -> propagationAggregation,
+  "TEST_OBJECT" -> causalityAggregate,
+  "REMOVED_RECORD_CONTROL" -> removedOrientationAggregation,
+  "UNRELATED_OBJECT_CONTROL" -> unrelatedCausalityAggregation,
+  "REMOVED_RECORD_INDICATOR_RESIDUAL" ->
+    Boole[TrueQ[causalityAggregate]] - Boole[TrueQ[
+      removedOrientationAggregation["AGGREGATE_TEST_OBJECT"]]],
+  "UNRELATED_OBJECT_INDICATOR_RESIDUAL" ->
+    Boole[TrueQ[causalityAggregate]] - Boole[TrueQ[
+      unrelatedCausalityAggregation["AGGREGATE_TEST_OBJECT"] &&
+      propagationAggregation["AGGREGATE_TEST_OBJECT"]]],
   "COVERAGE_BOUNDARIES" -> {
     Thread[{lambdaA0, lambdaV0, lambdaX0} == 0],
     Thread[{tauA, tauV, tauX} == 0]}|>];
@@ -1113,49 +1268,96 @@ emitShared["CAUSALITY_CHECK", <|
 (* Energy accounting and the two independent power discriminators.        *)
 (* ---------------------------------------------------------------------- *)
 
-energyRateBeforeBalances = rhoBr uDot uDDot + muW dWdot dWDDot +
-  explicitUForce uDot + muThetaPower thetaDot + pWPower eDot;
-energyEquationRules = {
-  rhoBr uDDot -> -explicitUForce - gradientMuForce,
-  muW dWDDot -> -(pWPower - muThetaPower)/w0 + externalThicknessForce};
-energyKinematicRules = {
-  gradientMuForce uDot -> -muThetaPower divUDot,
-  dWdot -> w0 eDot,
-  thetaDot -> -eDot - divUDot - (jPlusPower + jMinusPower)/rhoBr,
-  externalThicknessForce -> -(tractionPlusPower + tractionMinusPower)/2,
-  velocityPlusPower -> w0 eDot/2,
-  velocityMinusPower -> w0 eDot/2};
-energyRateAfterEquations = Expand[energyRateBeforeBalances /.
-  energyEquationRules];
-energyRateAfterBalances = Expand[Fold[ReplaceAll, energyRateAfterEquations,
-   energyKinematicRules] /. muThetaPower -> rhoBr muSPower];
-energyRateFaceVariables = Expand[energyRateAfterBalances /.
-  {w0 eDot -> 2 velocityPlusPower,
-   tractionPlusPower + tractionMinusPower -> 2 tractionPower,
-   jPlusPower + jMinusPower -> 2 fluxPower}];
-suppliedTransportExchange = -(
-  tractionPlusPower velocityPlusPower +
-  tractionMinusPower velocityMinusPower +
-  muSPower (jPlusPower + jMinusPower));
-suppliedTransportExchangeReduced = Expand[suppliedTransportExchange /.
-  {velocityPlusPower -> w0 eDot/2,
-   velocityMinusPower -> w0 eDot/2}];
-energyExchangeResidual = Expand[energyRateAfterBalances -
-  suppliedTransportExchangeReduced];
+preEliminationEnergyEOM = fullSystem["PRE_ELIMINATION_EOM"];
+slabSpecificChemicalPotential =
+  fullSystem["INTERNAL"]["MU_THETA"]/rhoBr;
+slabPowerPairingTerms = <|
+  "INPLANE_EOM_TIMES_CONJUGATE_U_DOT" -> 1/2 Re[
+    preEliminationEnergyEOM["INPLANE_EQUATION"]
+      Conjugate[-I omega uL]],
+  "THICKNESS_EOM_TIMES_CONJUGATE_DELTA_W_DOT" -> 1/2 Re[
+    preEliminationEnergyEOM["THICKNESS_EQUATION"]
+      Conjugate[-I omega w0 eAmp]],
+  "MASS_BALANCE_TIMES_MU_S" -> 1/2 Re[
+    slabSpecificChemicalPotential Conjugate[
+      preEliminationEnergyEOM["MASS_EQUATION_WITH_THICKNESS"]]]|>;
+slabVirtualPairing = Total[Values[slabPowerPairingTerms]];
+slabBoundaryPairing = Expand[slabVirtualPairing -
+  (slabVirtualPairing /. {tractionPlusPower -> 0,
+    tractionMinusPower -> 0, jPlusPower -> 0, jMinusPower -> 0})];
 
-signedExchangeTerms = List @@ Expand[energyRateAfterBalances];
+thicknessVelocityAmplitude = -I omega dW;
+faceVelocityScale = Cancel[thicknessVelocityAmplitude/
+  Last[First[outwardFaceVelocities]]];
+powerFaceRawLaws = rawFaceLawAssociation[rhoBr muSFree,
+    velocityFree, lambdaA, lambdaV, lambdaX, 1] /.
+  {facePressure -> facePressureFree, faceFlux -> fluxFree,
+    faceBulkVelocity -> bulkVelocityFree,
+    faceAffinityRaw -> affinityFree,
+    faceVelocityRaw -> velocityFree,
+    faceTractionRaw -> tractionFree};
+
+slabFacePowerFromEOM[eom_Association, rawLaws_Association] := Module[
+  {tractionCoefficient, fluxCoefficient, tractionExpression},
+  tractionCoefficient = faceVelocityScale Coefficient[
+    eom["THICKNESS_EQUATION"], tractionPlusPower];
+  fluxCoefficient = Coefficient[
+    eom["MASS_EQUATION_WITH_THICKNESS"], jPlusPower];
+  tractionExpression = constitutiveFluxExpression[
+    rawLaws["TRACTION_LAW"], tractionFree];
+  -1/2 Re[tractionCoefficient tractionExpression
+      Conjugate[velocityFree] +
+    fluxCoefficient muSFree Conjugate[fluxFree]]
+];
+
+routeASlabFacePower = slabFacePowerFromEOM[
+  preEliminationEnergyEOM, powerFaceRawLaws];
+powerFluxExpression = constitutiveFluxExpression[
+  powerFaceRawLaws["CLOSURE_LAW"], fluxFree];
+powerBulkVelocityExpression = constitutiveFluxExpression[
+  powerFaceRawLaws["KINEMATIC_LAW"], bulkVelocityFree];
+powerAffinityExpression = affinityFree;
+powerMuSExpression = Cancel[muSFree /.
+  First[Solve[powerFaceRawLaws["AFFINITY_DEFINITION"], muSFree]]];
+powerTractionExpression = constitutiveFluxExpression[
+  powerFaceRawLaws["TRACTION_LAW"], tractionFree];
+powerStateRules = {muSFree -> powerMuSExpression};
+routeASlabPowerOnFaceLaws = routeASlabFacePower /. powerStateRules;
+routeBOutgoingBulkPower = 1/2 Re[
+  facePressureFree Conjugate[powerBulkVelocityExpression]];
+routeBConstitutivePower = 1/2 Re[
+  powerAffinityExpression Conjugate[fluxFree] +
+  (powerTractionExpression - facePressureFree)
+    Conjugate[velocityFree]];
+routeBTotalOutgoingPower = routeBOutgoingBulkPower +
+  routeBConstitutivePower;
+energyExchangeResidual = FullSimplify[ComplexExpand[
+  routeASlabPowerOnFaceLaws + routeBTotalOutgoingPower,
+  {facePressureFree, affinityFree, velocityFree, fluxFree}]];
+signedExchangeTerms = {-routeBOutgoingBulkPower,
+  -(routeBConstitutivePower /. fluxFree -> powerFluxExpression)};
+routeBB0bImpedanceOperand = facePressureFree ==
+  zImpermeable powerBulkVelocityExpression;
+
 emitShared["ENERGY_SINKS", <|
+  "ROUTE_A_SLAB_PAIRING" -> slabPowerPairingTerms,
+  "ROUTE_A_BOUNDARY_OPERAND" -> routeASlabPowerOnFaceLaws,
+  "ROUTE_B_OUTGOING_BULK_OPERAND" -> routeBOutgoingBulkPower,
+  "ROUTE_B_B0B_IMPEDANCE_OPERAND" -> routeBB0bImpedanceOperand,
+  "ROUTE_B_CONSTITUTIVE_OPERAND" -> routeBConstitutivePower,
   "SIGNED_EXCHANGE_TERMS" -> signedExchangeTerms,
   "REAL_POWER_SIGNS" -> (Sign[Re[#]] & /@ signedExchangeTerms)|>];
 emitShared["ENERGY_SOURCES", <|
+  "ROUTE_A_SLAB_PAIRING" -> slabPowerPairingTerms,
   "SIGNED_EXCHANGE_TERMS" -> signedExchangeTerms,
-  "NEGATED_REAL_POWER_SIGNS" -> (Sign[-Re[#]] & /@ signedExchangeTerms)|>];
+  "NEGATED_REAL_POWER_SIGNS" -> (Sign[-Re[#]] & /@
+    signedExchangeTerms)|>];
 emitShared["UNATTRIBUTED_SINK_TERMS", <|
-  "DERIVED_EXCHANGE" -> energyRateAfterBalances,
-  "TRANSPORT_EXCHANGE" -> suppliedTransportExchangeReduced,
+  "ROUTE_A_SLAB_OPERAND" -> routeASlabPowerOnFaceLaws,
+  "ROUTE_B_BULK_PLUS_CONSTITUTIVE_OPERAND" -> routeBTotalOutgoingPower,
   "RESIDUAL" -> energyExchangeResidual|>];
 emitShared["UNATTRIBUTED_EXCHANGE_TERMS", comparisonRecord[
-  energyRateAfterBalances, suppliedTransportExchangeReduced]];
+  routeASlabPowerOnFaceLaws, -routeBTotalOutgoingPower]];
 
 upperPressureAmplitude = -rhoM D[upperAcousticAnsatz, t]/harmonicFactor /.
   w -> w0/2;
@@ -1165,54 +1367,96 @@ lowerPressureAmplitude = -rhoM D[lowerAcousticAnsatz, t]/harmonicFactor /.
   w -> -w0/2;
 lowerVelocityAmplitude = -D[lowerAcousticAnsatz, w]/harmonicFactor /.
   w -> -w0/2;
-slabPressurePower = -1/2 Re[
-  upperPressureAmplitude Conjugate[upperVelocityAmplitude] +
-  lowerPressureAmplitude Conjugate[lowerVelocityAmplitude]];
 outgoingBulkPower = 1/2 Re[
   upperPressureAmplitude Conjugate[upperVelocityAmplitude] +
   lowerPressureAmplitude Conjugate[lowerVelocityAmplitude]];
-pressurePowerResidual = ComplexExpand[slabPressurePower + outgoingBulkPower,
+routeAPressureFacePower = routeASlabFacePower /.
+  {lambdaA0 -> 0, lambdaV0 -> 0, lambdaX0 -> 0, fluxFree -> 0};
+slabPressurePower = Total[{
+  routeAPressureFacePower /. {facePressureFree -> upperPressureAmplitude,
+    velocityFree -> upperVelocityAmplitude},
+  routeAPressureFacePower /. {facePressureFree -> lowerPressureAmplitude,
+    velocityFree -> lowerVelocityAmplitude}}];
+pressurePowerResidual = ComplexExpand[
+  slabPressurePower + outgoingBulkPower,
+  {aPlus, aMinus}];
+
+routeAEOMAblated = preEliminationEOMAssociation[
+  fullSystem["INTERNAL"], 1 + routeAEOMAblation, 1];
+routeAEOMAblatedFacePower = slabFacePowerFromEOM[
+  routeAEOMAblated, powerFaceRawLaws];
+routeAEOMAblatedPressureFacePower = routeAEOMAblatedFacePower /.
+  {lambdaA0 -> 0, lambdaV0 -> 0, lambdaX0 -> 0, fluxFree -> 0};
+routeAEOMAblatedPressurePower = Total[{
+  routeAEOMAblatedPressureFacePower /.
+    {facePressureFree -> upperPressureAmplitude,
+      velocityFree -> upperVelocityAmplitude},
+  routeAEOMAblatedPressureFacePower /.
+    {facePressureFree -> lowerPressureAmplitude,
+      velocityFree -> lowerVelocityAmplitude}}];
+pressurePowerEOMAblationResidual = ComplexExpand[
+  routeAEOMAblatedPressurePower + outgoingBulkPower,
+  {aPlus, aMinus}];
+routeAUnrelatedEOM = preEliminationEOMAssociation[
+  deriveInternalOperators[
+    fullEnergyDensity /. kappaW -> kappaW + energyUnrelatedAblation],
+  1, 1];
+routeAUnrelatedPressureFacePower = slabFacePowerFromEOM[
+    routeAUnrelatedEOM, powerFaceRawLaws] /.
+  {lambdaA0 -> 0, lambdaV0 -> 0, lambdaX0 -> 0, fluxFree -> 0};
+routeAUnrelatedPressurePower = Total[{
+  routeAUnrelatedPressureFacePower /.
+    {facePressureFree -> upperPressureAmplitude,
+      velocityFree -> upperVelocityAmplitude},
+  routeAUnrelatedPressureFacePower /.
+    {facePressureFree -> lowerPressureAmplitude,
+      velocityFree -> lowerVelocityAmplitude}}];
+pressurePowerUnrelatedResidual = ComplexExpand[
+  routeAUnrelatedPressurePower + outgoingBulkPower,
   {aPlus, aMinus}];
 emitShared["PRESSURE_WORK_SIGN_CHECK", <|
+  "ROUTE_A_PAIRING_OPERANDS" -> slabPowerPairingTerms,
+  "ROUTE_A_BOUNDARY_PAIRING" -> slabBoundaryPairing,
   "SLAB_OFF_SHELL_OPERAND" -> slabPressurePower,
   "OUTGOING_BULK_OPERAND" -> outgoingBulkPower,
   "RESIDUAL" -> pressurePowerResidual,
   "TEST_OBJECT" -> casTest[pressurePowerResidual == 0],
+  "ONE_SIDED_EOM_ABLATION" -> <|
+    "ROUTE_A_OPERAND" -> routeAEOMAblatedPressurePower,
+    "ROUTE_B_OPERAND" -> outgoingBulkPower,
+    "RESIDUAL" -> pressurePowerEOMAblationResidual|>,
+  "UNRELATED_ENERGY_ABLATION" -> <|
+    "ROUTE_A_OPERAND" -> routeAUnrelatedPressurePower,
+    "ROUTE_B_OPERAND" -> outgoingBulkPower,
+    "RESIDUAL" -> pressurePowerUnrelatedResidual|>,
   "RESTRICTIONS" -> {Element[omega, Reals], qSquared > 0,
     lambdaA0 == 0, lambdaV0 == 0, lambdaX0 == 0}|>];
 
-derivedTractionCoefficient = Coefficient[energyRateAfterBalances,
-  tractionPlusPower];
-derivedFluxCoefficient = Coefficient[energyRateAfterBalances,
-  jPlusPower];
-derivedTwoPortFacePower = 1/2 Re[
-  (derivedTractionCoefficient /. {eDot -> 2 Conjugate[velocityFree]/w0})
-      (facePressureFree + lambdaX affinityFree) +
-  (derivedFluxCoefficient /. muSPower -> muSFree) Conjugate[fluxFree]];
-suppliedTwoPortFacePower = -1/2 Re[
-  (facePressureFree + lambdaX affinityFree) Conjugate[velocityFree] +
-  muSFree Conjugate[fluxFree]];
-mutatedEnergyEquationRules = {
-  rhoBr uDDot -> -explicitUForce - gradientMuForce,
-  muW dWDDot -> -(pWPower - muThetaPower)/w0 - externalThicknessForce};
-mutatedEnergyRateAfterEquations = Expand[energyRateBeforeBalances /.
-  mutatedEnergyEquationRules];
-mutatedEnergyRateAfterBalances = Expand[Fold[ReplaceAll,
-   mutatedEnergyRateAfterEquations, energyKinematicRules] /.
-   muThetaPower -> rhoBr muSPower];
-mutatedTractionCoefficient = Coefficient[mutatedEnergyRateAfterBalances,
-  tractionPlusPower];
-mutatedFluxCoefficient = Coefficient[mutatedEnergyRateAfterBalances,
-  jPlusPower];
-mutatedTwoPortFacePower = 1/2 Re[
-  (mutatedTractionCoefficient /.
-      eDot -> 2 Conjugate[velocityFree]/w0)
-      (facePressureFree + lambdaX affinityFree) +
-  (mutatedFluxCoefficient /. muSPower -> muSFree) Conjugate[fluxFree]];
-twoPortExpandedA = ComplexExpand[derivedTwoPortFacePower,
-  {facePressureFree, affinityFree, velocityFree, muSFree, fluxFree}];
-twoPortExpandedB = ComplexExpand[suppliedTwoPortFacePower,
-  {facePressureFree, affinityFree, velocityFree, muSFree, fluxFree}];
+routeAEOMAblatedPowerOnFaceLaws = routeAEOMAblatedFacePower /.
+  powerStateRules;
+routeAClosureAblatedLaws = rawFaceLawAssociation[rhoBr muSFree,
+    velocityFree, lambdaA + routeAClosureAblation, lambdaV, lambdaX, 1] /.
+  {facePressure -> facePressureFree, faceFlux -> fluxFree,
+    faceBulkVelocity -> bulkVelocityFree,
+    faceAffinityRaw -> affinityFree,
+    faceVelocityRaw -> velocityFree,
+    faceTractionRaw -> tractionFree};
+routeAClosureAblatedFlux = constitutiveFluxExpression[
+  routeAClosureAblatedLaws["CLOSURE_LAW"], fluxFree];
+routeAClosureAblatedPower = slabFacePowerFromEOM[
+    preEliminationEnergyEOM, routeAClosureAblatedLaws] /.
+  {fluxFree -> routeAClosureAblatedFlux,
+    muSFree -> powerMuSExpression};
+routeASlabPowerOnClosure = routeASlabPowerOnFaceLaws /.
+  fluxFree -> powerFluxExpression;
+routeBTotalOutgoingPowerOnClosure = routeBTotalOutgoingPower /.
+  fluxFree -> powerFluxExpression;
+routeAUnrelatedFacePower = slabFacePowerFromEOM[
+    routeAUnrelatedEOM, powerFaceRawLaws] /. powerStateRules;
+twoPortExpandedA = ComplexExpand[routeASlabPowerOnFaceLaws,
+  {facePressureFree, affinityFree, velocityFree, fluxFree}];
+twoPortExpandedB = ComplexExpand[-routeBTotalOutgoingPower,
+  {facePressureFree, affinityFree, velocityFree, fluxFree}];
 twoPortOrders = Range[0, Exponent[twoPortExpandedA, lambdaX0]];
 twoPortOrderRecords = Table[
   With[{operandA = Coefficient[twoPortExpandedA, lambdaX0, order],
@@ -1220,12 +1464,29 @@ twoPortOrderRecords = Table[
     order -> comparisonRecord[operandA, operandB]],
   {order, twoPortOrders}];
 emitShared["FULL_TWO_PORT_BALANCE_CHECK", <|
-  "DERIVED_OPERAND" -> derivedTwoPortFacePower,
-  "SUPPLIED_OPERAND" -> suppliedTwoPortFacePower,
+  "ROUTE_A_SLAB_OPERAND" -> routeASlabPowerOnFaceLaws,
+  "ROUTE_B_OUTGOING_BULK_OPERAND" -> routeBOutgoingBulkPower,
+  "ROUTE_B_CONSTITUTIVE_OPERAND" -> routeBConstitutivePower,
+  "RESIDUAL" -> energyExchangeResidual,
   "ORDERS_IN_RECIPROCAL_COEFFICIENT" -> twoPortOrderRecords,
-  "ONE_SIDED_ABLATION" -> comparisonRecord[
-    mutatedTwoPortFacePower,
-    suppliedTwoPortFacePower]|>];
+  "ONE_SIDED_EOM_ABLATION" -> <|
+    "ROUTE_A_OPERAND" -> routeAEOMAblatedPowerOnFaceLaws,
+    "ROUTE_B_OPERAND" -> routeBTotalOutgoingPower,
+    "RESIDUAL" -> FullSimplify[ComplexExpand[
+      routeAEOMAblatedPowerOnFaceLaws + routeBTotalOutgoingPower,
+      {facePressureFree, affinityFree, velocityFree, fluxFree}]]|>,
+  "ONE_SIDED_CLOSURE_ABLATION" -> <|
+    "ROUTE_A_OPERAND" -> routeAClosureAblatedPower,
+    "ROUTE_B_OPERAND" -> routeBTotalOutgoingPowerOnClosure,
+    "RESIDUAL" -> FullSimplify[ComplexExpand[
+      routeAClosureAblatedPower + routeBTotalOutgoingPowerOnClosure,
+      {facePressureFree, affinityFree, velocityFree}]]|>,
+  "UNRELATED_ENERGY_ABLATION" -> <|
+    "ROUTE_A_OPERAND" -> routeAUnrelatedFacePower,
+    "ROUTE_B_OPERAND" -> routeBTotalOutgoingPower,
+    "RESIDUAL" -> FullSimplify[ComplexExpand[
+      routeAUnrelatedFacePower + routeBTotalOutgoingPower,
+      {facePressureFree, affinityFree, velocityFree, fluxFree}]]|>|>];
 
 (* ---------------------------------------------------------------------- *)
 (* B4: the k=0 impermeable breathing slice with the bulk retained.         *)
@@ -1309,27 +1570,116 @@ impermeableSystem = assembleSystem[fullEnergyDensity, 0, 0, lambdaX, 1, True];
 bulkEvanescentSystem = fullSystem["DETERMINANT"] /. q -> qEvanescent;
 bulkPropagatingSystem = fullSystem["DETERMINANT"] /. q -> qPropagating;
 
-thresholdMatrixScaled = Limit[q fullSystem["MATRIX"], q -> 0];
-thresholdDispersion = Factor[Det[thresholdMatrixScaled] /.
-  omega^2 -> cs0^2 k^2];
-thresholdRank = MatrixRank[thresholdMatrixScaled /.
-  omega^2 -> cs0^2 k^2];
+thresholdMatrixQ0 = Map[
+  SeriesCoefficient[Together[#], {q, 0, 0}] &,
+  fullSystem["MATRIX"], {2}];
+thresholdSoundConeBlocks = <|
+  "POSITIVE_SOUND_CONE" -> Simplify[
+    thresholdMatrixQ0 /. omega -> cs0 k],
+  "NEGATIVE_SOUND_CONE" -> Simplify[
+    thresholdMatrixQ0 /. omega -> -cs0 k]|>;
+thresholdLeadingOrderAvailable =
+  AllTrue[Values[thresholdSoundConeBlocks], MatrixQ] &&
+  FreeQ[thresholdSoundConeBlocks, _Missing | _SeriesCoefficient |
+    Indeterminate | ComplexInfinity];
+modeCategoryByUnknown = AssociationThread[
+  fullSystem["UNKNOWNS"],
+  {longitudinalModeCategory, thicknessModeCategory,
+    densityModeCategory}];
+classifyLeadingBlock[block_?MatrixQ] := Module[
+  {rank, nullspace, strata},
+  rank = MatrixRank[block];
+  nullspace = NullSpace[block];
+  strata = Map[Function[nullVector, <|
+      "LEADING_VECTOR" -> nullVector,
+      "COMPONENT_SUPPORT" -> AssociationThread[
+        fullSystem["UNKNOWNS"], Not[TrueQ[PossibleZeroQ[#]]] & /@
+          nullVector],
+      "MODE_CATEGORIES" -> Pick[Values[modeCategoryByUnknown],
+        Not[TrueQ[PossibleZeroQ[#]]] & /@ nullVector]|>], nullspace];
+  <|"RANK" -> rank, "NULLSPACE" -> nullspace,
+    "NULLITY" -> Length[nullspace], "MODE_STRATA" -> strata|>
+];
+thresholdLeadingClassification = If[TrueQ[thresholdLeadingOrderAvailable],
+  AssociationMap[Function[branch, Module[
+    {block, dispersion, stratumRule, stratumBlock},
+    block = thresholdSoundConeBlocks[branch];
+    dispersion = Factor[Together[Det[block]]];
+    stratumRule = First[Solve[dispersion == 0, chi5]];
+    stratumBlock = Map[Cancel[# /. stratumRule] &, block, {2}];
+    <|"LAURENT_Q0_BLOCK" -> block,
+      "LEADING_DISPERSION_EQUATION" -> dispersion == 0,
+      "STRATUM_PARAMETER_RULE" -> stratumRule,
+      "STRATUM_BLOCK" -> stratumBlock,
+      "CLASSIFICATION" -> classifyLeadingBlock[stratumBlock]|>
+  ]], Keys[thresholdSoundConeBlocks]], Missing["LeadingOrderBlock"]];
 thresholdBulkNormFinite = Integrate[Abs[thresholdBulkAmplitude]^2,
   {w, w0/2, radialCutoff}, Assumptions -> radialCutoff > w0/2];
 thresholdBulkNorm = Block[{$Assumptions = True},
   Limit[thresholdBulkNormFinite, radialCutoff -> Infinity]];
 grazingPressureLaurentCoefficient = SeriesCoefficient[
   zImpermeable velocityFace, {q, 0, -1}];
-grazingCriteria = <|
-  "SCALED_MATRIX" -> thresholdMatrixScaled,
-  "DISPERSION_ON_SOUND_CONE" -> thresholdDispersion,
-  "MATRIX_RANK" -> thresholdRank,
-  "COALESCENCE_SERIES" -> Series[Exp[I q (w - w0/2)], {q, 0, 1}],
-  "BULK_NORM" -> thresholdBulkNorm,
-  "ZERO_BULK_AMPLITUDE_CONDITION" ->
-    Solve[thresholdBulkAmplitude == 0, thresholdBulkAmplitude],
-  "FINITE_PRESSURE_CONDITION" -> Solve[
-    grazingPressureLaurentCoefficient == 0, velocityFace]|>;
+ablateLeadingStratum[payload_Association] := Module[
+  {block, cofactors, position, ablatedBlock, ablatedClassification},
+  block = payload["STRATUM_BLOCK"];
+  cofactors = Table[(-1)^(row + column) Det[
+    Delete[Map[Delete[#, column] &, block], row]],
+    {row, Length[block]}, {column, Length[First[block]]}];
+  position = First[Position[cofactors,
+    entry_ /; !TrueQ[PossibleZeroQ[entry]], {2}, Heads -> False],
+    Missing["NonzeroCofactor"]];
+  ablatedBlock = ReplacePart[block, position ->
+    (Extract[block, position] + grazingBlockAblation)];
+  ablatedClassification = classifyLeadingBlock[ablatedBlock];
+  <|"POSITION" -> position, "BLOCK" -> ablatedBlock,
+    "CLASSIFICATION" -> ablatedClassification,
+    "RANK_RESIDUAL" ->
+      ablatedClassification["RANK"] -
+        payload["CLASSIFICATION"]["RANK"],
+    "NULLITY_RESIDUAL" ->
+      ablatedClassification["NULLITY"] -
+        payload["CLASSIFICATION"]["NULLITY"]|>
+];
+thresholdAblationPayload = If[TrueQ[thresholdLeadingOrderAvailable],
+  AssociationMap[ablateLeadingStratum[
+    thresholdLeadingClassification[#]] &,
+    Keys[thresholdLeadingClassification]],
+  Missing["LeadingOrderBlock"]];
+thresholdUnrelatedClassification = thresholdLeadingClassification;
+grazingCriteria = If[TrueQ[thresholdLeadingOrderAvailable], <|
+    "LAURENT_Q0_BLOCKS" -> thresholdSoundConeBlocks,
+    "LEADING_ORDER_STRATA" -> thresholdLeadingClassification,
+    "NONDEGENERATE_LEADING_PAYLOAD" -> casTest[
+      AllTrue[Values[thresholdLeadingClassification],
+        !AllTrue[Flatten[#1["LAURENT_Q0_BLOCK"]],
+          TrueQ[PossibleZeroQ[#]] &] &&
+        Length[#1["CLASSIFICATION"]["NULLSPACE"]] > 0 &]],
+    "MODE_CATEGORY_MAP" -> modeCategoryByUnknown,
+    "COALESCENCE_SERIES" ->
+      Series[Exp[I q (w - w0/2)], {q, 0, 1}],
+    "BULK_NORM" -> thresholdBulkNorm,
+    "ZERO_BULK_AMPLITUDE_CONDITION" ->
+      Solve[thresholdBulkAmplitude == 0, thresholdBulkAmplitude],
+    "FINITE_PRESSURE_CONDITION" -> Solve[
+      grazingPressureLaurentCoefficient == 0, velocityFace],
+    "LEADING_BLOCK_ABLATION" -> thresholdAblationPayload,
+    "UNRELATED_BULK_AMPLITUDE_ABLATION" -> <|
+      "OPERAND" -> thresholdBulkNorm /.
+        thresholdBulkAmplitude ->
+          thresholdBulkAmplitude + grazingUnrelatedAblation,
+      "CLASSIFICATION" -> thresholdUnrelatedClassification,
+      "RANK_RESIDUALS" -> AssociationMap[
+        thresholdUnrelatedClassification[#]["CLASSIFICATION"]["RANK"] -
+          thresholdLeadingClassification[#]["CLASSIFICATION"]["RANK"] &,
+        Keys[thresholdLeadingClassification]],
+      "NULLITY_RESIDUALS" -> AssociationMap[
+        thresholdUnrelatedClassification[#]["CLASSIFICATION"]["NULLITY"] -
+          thresholdLeadingClassification[#]["CLASSIFICATION"]["NULLITY"] &,
+        Keys[thresholdLeadingClassification]]|>|>,
+  <|"AVAILABLE_OPERANDS" -> <|
+      "MATRIX_PENCIL" -> fullSystem["MATRIX"],
+      "LAURENT_Q0_ATTEMPT" -> thresholdMatrixQ0|>,
+    "STATUS" -> "MISSING_OPERAND"|>];
 
 closedFormRootTest = casTest[FreeQ[longitudinalRootSolve, _Solve]];
 rootStabilityClasses = AssociationThread[

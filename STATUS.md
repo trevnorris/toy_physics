@@ -83,10 +83,26 @@ DIM AGREE, DEGENERATE_LOCI a locus-form/qOut-vs-q artifact (not physics). ⚠ FI
 but are NOT emission-parallel — 103 STRUCTURE (PY Tuple vs WL Association) + 47 UNPAIRED + naming (qOut/q); only
 20 clean AGREE. Comparator confirms NO cross-engine physics disagreement beyond X-1 + the known F-WL-1 sign.
 
-⛔ **NEXT = the two SEPARATE physics repairs (user 2026-08-21: proceed):** **WL repair** (F-WL-1 sign+level,
-F-WL-2, F-WL-3a/b/c) + **SymPy repair** (X-1 basis over-count) — each directive → 2 legs → build → 2 legs. Then
-the step record (I write, 2 legs; NOTE the emission non-parallelism finding + the W₀ convention) and re-point the
-card `paper/steps/S11b_interface_coupling_law.tex` (Codex, 2 legs; owed G12c/G12d items). Run-checklist:
+⭐⭐ **Artifact #7 (WL engine REPAIR) DONE — committed `bd598ae7`** (directive `e273398a` + fix-2 `a6b0b684`;
+baseline `a5186dce`). All F-WL fixes GENUINE + physics CORRECT: **F-WL-1** now emits static `−Λ_A⁰/ρ_m` (the
+withheld G13, representation-invariant, ω/τ-free); **F-WL-2** energy = two independent routes (pre-elim EOM vs
+§2 bulk acoustic power); **F-WL-3a** kernel-orientation from the pre-elim closure; **F-WL-3b** causality
+removed-record presence control bites (dead A-A dropped); **F-WL-3c** grazing classifies the ACTUAL q⁰
+sound-cone block (rank 3 non-grazing; moves under a form flip; chi5-tuning removed, dead alias dropped). No
+Scope regression (byte-identical). `.out` regenerated from the repaired tree (stderr dropped → no
+config-warning FORMAT_ISSUE). ⚠ Review: Agent full ablation leg = sound; Grok's FULL ablation leg was blocked
+by **3 spurious kills of long Mathematica jobs** (not OOM/watchdog; the Agent path completes, grok CLI does
+not) — covered for this narrow fix by the Agent leg + Grok source audit + orchestrator diff-verification + the
+build's scratch demo. ⚠ OPS: long Mathematica legs/builds get spuriously killed here — recover mechanically
+(edits complete before the kill), and prefer the Agent path over grok for Mathematica ablation legs.
+
+⛔ **NEXT = the SymPy X-1 repair** (the WL repair is DONE): SymPy basis OVER-COUNTS 11 vs correct 10 —
+`st_squared` (basis[1], `sympy_audit.py:470-510`) is `(2/3)(∇·u)²+(1/2)curl²` mod a total divergence, and §5
+mandates the divergence quotient; drop it → count 10, and the redundant coefficient (degenerate with
+`B_div`/`mu_R`) — the EOM/physics is unaffected. Directive → 2 legs → build → 2 legs; then re-run the T7
+comparator (ENERGY_BASIS_COUNT should then AGREE). Then the step record (I write, 2 legs; NOTE the emission
+non-parallelism finding + the W₀ convention + the DEGENERATE_LOCI qOut/q artifact) and re-point the card
+`paper/steps/S11b_interface_coupling_law.tex` (Codex, 2 legs; owed G12c/G12d items). Run-checklist:
 `steps/S11b_RUN_CHECKLIST.md`. Pattern = S10/S11. Full state in memory `project-s11b-interface-law-result`.
 
 ---

@@ -100,6 +100,16 @@ sub-checklist all ✅ (carry-forward fidelity: 1663 S11 rows, none dropped/mutat
 objects; drain `v_bulk_normal_0` no v_0 merge; digests(3); D3; _RELATIONALS; freeze; F6). G13 acceptance
 diff ✅ (both legs independently reproduced `Λ_p⁰=−Λ_A⁰/ρ_m`). Two emission-fidelity repair rounds
 (directives `0863645b`, `75560832`), HARD STOP, no round-3.
-⬜ STILL OPEN for the STEP (not the SymPy engine): step 9 blind WL engine; step 10 T7 comparator (⚠ compare
-dimension tags); step 11 fold; step 12 step record; step 13 card. The `.wl`-first deviation stands (blindness
-by absence) — the WL Codex gets ONLY its self-contained directive.
+## ✅ WL engine + T7 comparator + WL repair CLOSED (2026-08-21)
+Step 9 (blind WL engine) DONE `ec89f9df` (2 legs). Step 10 (T7 comparator) DONE+FROZEN+RUN `17fe32c8`
+(reused S10; 2 build rounds; frozen run confirms X-1, engines emission-diverge but physics-agree). WL engine
+REPAIR DONE `bd598ae7` (directive `e273398a` + fix-2 `a6b0b684`): F-WL-1 static `−Λ_A⁰/ρ_m`, F-WL-2/3a/3b/3c
+all genuine, no Scope regression, `.out` regenerated. ⚠ OPS: long Mathematica legs/builds spuriously killed
+(3×) — recover mechanically (edits complete first); prefer the Agent path over grok for Mathematica ablation
+legs; Grok's 2nd WL-repair ablation leg was blocked (covered by Agent leg + Grok source audit + orchestrator
+verification).
+⬜ STILL OPEN for the STEP: **the SymPy X-1 repair** (basis 11→10: drop `st_squared` basis[1] =
+`(2/3)div²+(1/2)curl²` mod divergence, §5 mandates the quotient; redundant coeff degenerate with
+`B_div`/`mu_R`; EOM unaffected) → re-run T7 comparator (`ENERGY_BASIS_COUNT` should AGREE) → step 12 step
+record (2 legs; NOTE emission non-parallelism + W₀ convention + DEGENERATE_LOCI qOut/q artifact) → step 13
+card re-point (Codex, 2 legs, G12c/G12d owed).

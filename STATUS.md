@@ -7,7 +7,7 @@ the historical A (bulk face response) + B (homogeneous assembly) execution stage
 later step.** Chosen 2026-08-19 (user): "S11b-A alone" is not a well-defined chain unit — A earns no
 ledger rows, the card is already one-for-S11b, the ledger content lives at B. ⭐ Physics is REUSABLE
 (both `.py`+`.wl` existed historically, agreed, 5 hand re-derivations). ⭐ The **SymPy packaging is now
-BUILT** (`S11b_exports.py` 1916 rows + committed `.out`, `864d6f41`); the **WL engine + comparator remain**.
+BUILT** (`S11b_exports.py` 1916 rows + committed `.out`, `864d6f41`); the WL engine + comparator + WL repair are now DONE (ec89f9df/17fe32c8/bd598ae7); only the SymPy X-1 repair remains.
 Old spec/directives cite the deleted `reduction/` + a rule-12 denylist.
 
 ⭐⭐ **Artifact #1 DONE — `directives/S11b_unified_decisions.md` (G1–G14), committed `ddd0ae4c`** — two
@@ -73,7 +73,7 @@ withheld G13 map `ZPERM_SLICE_MAP` emitted WRONG SIGN + WRONG LEVEL (`+Λ_A/ρ_m
 `Λ_p⁰=−Λ_A⁰/ρ_m`, verified 4 ways), **F-WL-2/3** = a tautological/decoupled §6 energy + causality/kernel/
 grazing check layer. Codex consult (`bee278a7`) found **X-1**: SymPy basis OVER-COUNTS **11 vs correct 10**
 (spec §5 mandates the total-divergence quotient; `st_squared=(2/3)div²+(1/2)curl²` mod div) ⇒ X-1 REOPENS the
-committed SymPy engine (count/coeff only; EOM unaffected). Disposition: `steps/S11b_wl_engine_review_disposition.md`.
+committed SymPy engine (count/coeff only; the physical EOM span is unchanged but the emitted EOM COORDINATES shift (mu_S absorbs into mu_R,B_div: mu_R_eff=mu_R+mu_S/2, B_div_eff=B_div+2mu_S/3 -- do NOT require EOM byte-preservation)). Disposition: `steps/S11b_wl_engine_review_disposition.md`.
 
 ⭐⭐ **Artifact #6 (T7 comparator) DONE + FROZEN + RUN — `17fe32c8`.** `scripts/S11b_cross_engine_comparator.py`
 (reused S10; build `c95213b7` → fix1 `bd97a571` → fix2 `f0c796a9`, each 2 legs; precedence rule
@@ -82,6 +82,7 @@ committed SymPy engine (count/coeff only; EOM unaffected). Disposition: `steps/S
 DIM AGREE, DEGENERATE_LOCI a locus-form/qOut-vs-q artifact (not physics). ⚠ FINDING: the two engines physics-agree
 but are NOT emission-parallel — 103 STRUCTURE (PY Tuple vs WL Association) + 47 UNPAIRED + naming (qOut/q); only
 20 clean AGREE. Comparator confirms NO cross-engine physics disagreement beyond X-1 + the known F-WL-1 sign.
+⚠ **This frozen run PREDATES the WL repair (`bd598ae7`) and the SymPy X-1 repair** — its `ZPERM_SLICE_MAP`/warnings show the OLD WL engine; RE-RUN the comparator after the X-1 repair (`ENERGY_BASIS_COUNT` should then AGREE, the F-WL-1 map DISAGREE should clear).
 
 ⭐⭐ **Artifact #7 (WL engine REPAIR) DONE — committed `bd598ae7`** (directive `e273398a` + fix-2 `a6b0b684`;
 baseline `a5186dce`). All F-WL fixes GENUINE + physics CORRECT: **F-WL-1** now emits static `−Λ_A⁰/ρ_m` (the

@@ -111,6 +111,9 @@ disposition in three ways + found two misses. Each adopted below was re-derived/
   ⇒ the T7 comparator must **normalize by `W₀`** on that row, ⛔ not report it as a physics disagreement.
 
 ## Path — CONFIRMED (user 2026-08-21): comparator FIRST, then SPLIT repairs
+> ⚠ **STATUS 2026-08-22: comparator DONE+FROZEN+RUN (`17fe32c8`, X-1 confirmed); WL repair DONE (`bd598ae7`).
+> This path is mostly executed — the CURRENT NEXT is the SymPy X-1 repair. See `STATUS.md` + the memory
+> frontmatter for authoritative current state.**
 1. Author + FREEZE + commit the T7 comparator (join by emitted name, residual with symbol transliteration,
    ⛔ reject native boolean as a residual operand, three-valued undecided, COMPARE dimension tags with the
    `W₀` normalization above, synthetic pass/fail self-tests + repoint ablation) BEFORE it sees the engines'

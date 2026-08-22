@@ -93,7 +93,7 @@ the plan when C opens). Slug = `S11b_interface_coupling_law`.
   (orchestrator) → Codex + Grok.
 
 ## ✅ SymPy engine CLOSED (`864d6f41`, 2026-08-21)
-The SymPy-engine portions of steps 1–8 are done (step 9 = the WL build, still open): directives (1–4) `9bd2f184`; build (5)
+The SymPy-engine portions of steps 1–8 are done (steps 9-11 -- WL engine, comparator, WL repair -- now DONE; see the CLOSED section below): directives (1–4) `9bd2f184`; build (5)
 round-1; baseline commits (6) `7dd89076`/`6d57b27e`; script legs (7) each round; `.out` captured +
 committed (8) `scripts/out/S11b_interface_coupling_law_sympy_audit.out`. Export-chain integrity
 sub-checklist all ✅ (carry-forward fidelity: 1663 S11 rows, none dropped/mutated; bindings to imported
@@ -110,6 +110,6 @@ legs; Grok's 2nd WL-repair ablation leg was blocked (covered by Agent leg + Grok
 verification).
 ⬜ STILL OPEN for the STEP: **the SymPy X-1 repair** (basis 11→10: drop `st_squared` basis[1] =
 `(2/3)div²+(1/2)curl²` mod divergence, §5 mandates the quotient; redundant coeff degenerate with
-`B_div`/`mu_R`; EOM unaffected) → re-run T7 comparator (`ENERGY_BASIS_COUNT` should AGREE) → step 12 step
+`B_div`/`mu_R`; the physical EOM span is unchanged but the emitted EOM COORDINATES shift (mu_S absorbs into mu_R,B_div: mu_R_eff=mu_R+mu_S/2, B_div_eff=B_div+2mu_S/3 -- do NOT require EOM byte-preservation)) → re-run T7 comparator (`ENERGY_BASIS_COUNT` should AGREE) → step 12 step
 record (2 legs; NOTE emission non-parallelism + W₀ convention + DEGENERATE_LOCI qOut/q artifact) → step 13
 card re-point (Codex, 2 legs, G12c/G12d owed).

@@ -52,7 +52,7 @@ residual and ⛔ no `TEST_OBJECT`.
   aggregating (a positive presence check), so a missing/renamed record FAILS rather than silently passing.
 - **3c `GRAZING_MODE_CLASSIFICATION`** (~L1368): `Limit[q·fullSystem["MATRIX"], q→0]` zeros a finite matrix
   (rank 0). Fix: classify from the **leading `q⁰` block** of the matrix pencil as `q→0` (which is
-  non-degenerate — rank 2), via a Laurent/nullspace analysis of that leading-order block, and map the
+  non-degenerate (⚠ SUPERSEDED by fix-2 a6b0b684: the actual sound-cone block is rank 3 = non-grazing, NOT rank 2)), via a Laurent/nullspace analysis of that leading-order block, and map the
   leading-order stratum to the mode categories. Require a non-degenerate leading-order payload. ⛔
   `NOT_ESTABLISHED` here is bounded to "no leading-order object exists," ⛔ never "cannot classify."
 

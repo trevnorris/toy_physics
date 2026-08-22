@@ -1234,8 +1234,6 @@ kernelUnrelatedExtraction = extractFaceKernels[
 removedOrientationAggregation = aggregateNamedTestRecords[
   KeyDrop[kernelOrientationIdentities, First[requiredOrientationRecords]],
   requiredOrientationRecords];
-unrelatedCausalityAggregation = aggregateNamedTestRecords[
-  kernelOrientationIdentities, requiredOrientationRecords];
 emitShared["KERNEL_ORIENTATION_IDENTITIES", kernelOrientationIdentities];
 emitShared["KERNEL_ORIENTATION_CONTROLS", <|
   "ASSEMBLED_KERNEL_ABLATION" -> rationalIdentityRecord[
@@ -1252,14 +1250,9 @@ emitShared["CAUSALITY_CHECK", <|
   "PROPAGATION_RECORDS" -> propagationAggregation,
   "TEST_OBJECT" -> causalityAggregate,
   "REMOVED_RECORD_CONTROL" -> removedOrientationAggregation,
-  "UNRELATED_OBJECT_CONTROL" -> unrelatedCausalityAggregation,
   "REMOVED_RECORD_INDICATOR_RESIDUAL" ->
     Boole[TrueQ[causalityAggregate]] - Boole[TrueQ[
       removedOrientationAggregation["AGGREGATE_TEST_OBJECT"]]],
-  "UNRELATED_OBJECT_INDICATOR_RESIDUAL" ->
-    Boole[TrueQ[causalityAggregate]] - Boole[TrueQ[
-      unrelatedCausalityAggregation["AGGREGATE_TEST_OBJECT"] &&
-      propagationAggregation["AGGREGATE_TEST_OBJECT"]]],
   "COVERAGE_BOUNDARIES" -> {
     Thread[{lambdaA0, lambdaV0, lambdaX0} == 0],
     Thread[{tauA, tauV, tauX} == 0]}|>];
@@ -1608,10 +1601,11 @@ thresholdLeadingClassification = If[TrueQ[thresholdLeadingOrderAvailable],
     stratumRule = First[Solve[dispersion == 0, chi5]];
     stratumBlock = Map[Cancel[# /. stratumRule] &, block, {2}];
     <|"LAURENT_Q0_BLOCK" -> block,
-      "LEADING_DISPERSION_EQUATION" -> dispersion == 0,
-      "STRATUM_PARAMETER_RULE" -> stratumRule,
-      "STRATUM_BLOCK" -> stratumBlock,
-      "CLASSIFICATION" -> classifyLeadingBlock[stratumBlock]|>
+      "COMPUTED_DISPERSION_STRATUM" -> <|
+        "EQUATION" -> dispersion == 0,
+        "PARAMETER_RULE" -> stratumRule,
+        "BLOCK" -> stratumBlock|>,
+      "CLASSIFICATION" -> classifyLeadingBlock[block]|>
   ]], Keys[thresholdSoundConeBlocks]], Missing["LeadingOrderBlock"]];
 thresholdBulkNormFinite = Integrate[Abs[thresholdBulkAmplitude]^2,
   {w, w0/2, radialCutoff}, Assumptions -> radialCutoff > w0/2];
@@ -1619,9 +1613,9 @@ thresholdBulkNorm = Block[{$Assumptions = True},
   Limit[thresholdBulkNormFinite, radialCutoff -> Infinity]];
 grazingPressureLaurentCoefficient = SeriesCoefficient[
   zImpermeable velocityFace, {q, 0, -1}];
-ablateLeadingStratum[payload_Association] := Module[
+ablateLeadingBlock[payload_Association] := Module[
   {block, cofactors, position, ablatedBlock, ablatedClassification},
-  block = payload["STRATUM_BLOCK"];
+  block = payload["LAURENT_Q0_BLOCK"];
   cofactors = Table[(-1)^(row + column) Det[
     Delete[Map[Delete[#, column] &, block], row]],
     {row, Length[block]}, {column, Length[First[block]]}];
@@ -1641,11 +1635,10 @@ ablateLeadingStratum[payload_Association] := Module[
         payload["CLASSIFICATION"]["NULLITY"]|>
 ];
 thresholdAblationPayload = If[TrueQ[thresholdLeadingOrderAvailable],
-  AssociationMap[ablateLeadingStratum[
+  AssociationMap[ablateLeadingBlock[
     thresholdLeadingClassification[#]] &,
     Keys[thresholdLeadingClassification]],
   Missing["LeadingOrderBlock"]];
-thresholdUnrelatedClassification = thresholdLeadingClassification;
 grazingCriteria = If[TrueQ[thresholdLeadingOrderAvailable], <|
     "LAURENT_Q0_BLOCKS" -> thresholdSoundConeBlocks,
     "LEADING_ORDER_STRATA" -> thresholdLeadingClassification,
@@ -1662,20 +1655,7 @@ grazingCriteria = If[TrueQ[thresholdLeadingOrderAvailable], <|
       Solve[thresholdBulkAmplitude == 0, thresholdBulkAmplitude],
     "FINITE_PRESSURE_CONDITION" -> Solve[
       grazingPressureLaurentCoefficient == 0, velocityFace],
-    "LEADING_BLOCK_ABLATION" -> thresholdAblationPayload,
-    "UNRELATED_BULK_AMPLITUDE_ABLATION" -> <|
-      "OPERAND" -> thresholdBulkNorm /.
-        thresholdBulkAmplitude ->
-          thresholdBulkAmplitude + grazingUnrelatedAblation,
-      "CLASSIFICATION" -> thresholdUnrelatedClassification,
-      "RANK_RESIDUALS" -> AssociationMap[
-        thresholdUnrelatedClassification[#]["CLASSIFICATION"]["RANK"] -
-          thresholdLeadingClassification[#]["CLASSIFICATION"]["RANK"] &,
-        Keys[thresholdLeadingClassification]],
-      "NULLITY_RESIDUALS" -> AssociationMap[
-        thresholdUnrelatedClassification[#]["CLASSIFICATION"]["NULLITY"] -
-          thresholdLeadingClassification[#]["CLASSIFICATION"]["NULLITY"] &,
-        Keys[thresholdLeadingClassification]]|>|>,
+    "LEADING_BLOCK_ABLATION" -> thresholdAblationPayload|>,
   <|"AVAILABLE_OPERANDS" -> <|
       "MATRIX_PENCIL" -> fullSystem["MATRIX"],
       "LAURENT_Q0_ATTEMPT" -> thresholdMatrixQ0|>,

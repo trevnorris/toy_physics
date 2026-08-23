@@ -312,7 +312,9 @@ The graph thickness and slab mass fixed by these face maps are
 
 ```text
 W^α(x,t) ≡ h_+^α(x,t) − h_−^α(x,t) ,      Σ^α ≡ ρ_4D^α W^α ,
-ρ_4D^α = ρ_4D,bg⁰(1+θ) .
+ρ_4D^α(x,t) ≡ ρ_4D,bg^{0,α}(x,t) (1+θ) ,
+   ρ_4D,bg^{0,L} ≡ ρ_4D,bg⁰(x) ,        ρ_4D,bg^{0,M} ≡ ρ_4D,bg⁰(χ(x,t)) ;
+μ_s^α ≡ μ_θ^α / ρ_br,bg^{0,α} ,   with ρ_br,bg^{0,α} the §2c-branched ρ_br,bg⁰ .
 ```
 
 The slab interior is selected by `sF_s^α < 0`. The outward unit normal `n̂_s^α` is the unit vector normal
@@ -349,7 +351,7 @@ Use the same `V_s^α` in every object below. With all bulk quantities traced at 
 J_s^α ≡ ρ_m (v_bulk,s − v_face,s^α)·n̂_s^α ,
 n̂_s^α·v_bulk,s = V_s^α + J_s^α/ρ_m ,
 𝒜_s^α ≡ μ_s^α − δp_s^α/ρ_m ,
-t_s^α ≡ −(δp_s^α + Λ_X(ω) 𝒜_s^α)n̂_s^α + t_hold,s⁰ ,
+t_s^α ≡ −(δp_s^α + Λ_X(ω) 𝒜_s^α)n̂_s^α ,
 J_s^α − Λ_A𝒜_s^α − Λ_VV_s^α = 0 .
 ```
 
@@ -467,8 +469,8 @@ the two routes. For every compared T-object emit the two operators and their dif
 For the one-sided independence control, mutate only one route at its source and recompute downstream:
 
 - for T-g, replace `Σ_E(x(X,t),t)` by `Σ_E(X,t)` only in the direct-route definition of `Σ_mat`;
-- for T-h, apply the advection-omission corruption `Σ_E(x(X,t),t) → Σ_E(X,t)` only on the direct
-  route;
+- for T-h, replace `∇_x·(Σ^α v)` by `Σ^α ∇_x·v`, dropping `v·∇_xΣ^α`, only in the direct-route
+  source law;
 - for T-c, T-d, and T-i, reverse only the `x¹` first jet of `W_bg` in the upper-face direct-route
   `F_+^α`/`R_+^α` source, leaving the material-coordinate route and every other source unchanged.
 

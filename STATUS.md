@@ -13,10 +13,11 @@ directive `304fa46f`** (2 legs; fixed my `ρ_m` re-origination → bind `LEDGER[
 → point at G8(a)+T7 whole). ⭐ μ_θ PIN: both engines use §3a's branched `μ_s^α`.
 ⛔⛔ **IN-FLIGHT AT 2026-08-23 COMPACT: the SymPy ENGINE BUILD** (`buo60i510`, Codex, log
 `~/.s11_build/S11c_a_sympy_engine_build.log`) — had written `scripts/S11c_a_interface_geometry_sympy_audit.py`
-(~82 KB) + `scripts/S11c_a_exports.py` (~17 MB) but was STILL RUNNING. ⚠ NEXT SESSION: check if it
-completed (⛔ don't relaunch a running/spuriously-killed builder); verify the DELIVERABLE (not exit status;
-`reduction/derived_or_declared.py` + `engine_output_checks.py`); launch its **2 legs (fresh Agent + Grok,
-MANDATORY FORM ablation)**; fold; commit; **CHECKPOINT before the blind WL engine**. See memory
+(~82 KB) + `scripts/S11c_a_exports.py` (~17 MB). ⭐ **COMPLETED exit 0 (~224 s) + DELIVERABLE VERIFIED WHOLE**
+(2093 frozen rows, all inherited preserved, 19 primary export keys, D3 proved equal, three-file digests match,
+`rho_m` BOUND not re-originated, all T-0…T-i + 5 controls ran); ⛔ UNCOMMITTED (rule 9, legs pending). ⚠ NEXT
+SESSION (⛔ builder is DONE — don't relaunch): launch its **2 legs (fresh Agent + Grok, MANDATORY FORM
+ablation)** on the deliverable; fold; commit; **CHECKPOINT before the blind WL engine**. See memory
 `project_s11c_a_state`.
 
 ---

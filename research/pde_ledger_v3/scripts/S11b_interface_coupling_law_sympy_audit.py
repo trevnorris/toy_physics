@@ -298,6 +298,7 @@ class Emitter:
         self.values: dict[str, object] = {}
         self.rendered: dict[str, str] = {}
         self.local_tags: list[str] = []
+        self.primary_tags: list[str] = []
         self.export_candidates: list[CandidateRow] = []
 
     def emit(
@@ -342,14 +343,20 @@ def emit(
 ) -> object:
     infix = "LOCAL_" if local else ""
     tag = f"PY_S11B_{infix}{quantity}"
+    primary_emission = not local and CURRENT_TASK in PRIMARY_TASKS
+    if primary_emission and (not export or key is None):
+        raise RuntimeError(f"D1 primary emission {tag} has no flat-export key")
     export_key = None if local or not export else key
-    return EMITTER.emit(
+    emitted = EMITTER.emit(
         tag,
         payload,
         export_key=export_key,
         class_tag=class_tag,
         dimension_key=dimension_key,
     )
+    if primary_emission:
+        EMITTER.primary_tags.append(tag)
+    return emitted
 
 
 def issue(message: str) -> None:
@@ -416,6 +423,33 @@ def independent_columns(expressions: Sequence[sp.Expr], variables: Sequence[sp.S
     return tuple(matrix.rref()[1])
 
 
+def polynomial_vector_matrix(
+    columns: Sequence[Sequence[sp.Expr]], variables: Sequence[sp.Symbol]
+) -> sp.ImmutableMatrix:
+    """Represent polynomial-valued columns without erasing component identity."""
+    if not columns:
+        return sp.ImmutableMatrix(0, 0, [])
+    component_count = len(columns[0])
+    if any(len(column) != component_count for column in columns):
+        raise ValueError("polynomial-vector columns have inconsistent component counts")
+    rows: list[list[sp.Expr]] = []
+    for component in range(component_count):
+        polys = [sp.Poly(sp.expand(column[component]), *variables, domain="EX") for column in columns]
+        monomials = sorted({monomial for poly in polys for monomial in poly.monoms()})
+        rows.extend([
+            [poly.coeff_monomial(monomial) for poly in polys]
+            for monomial in monomials
+        ])
+    return sp.ImmutableMatrix(rows)
+
+
+def independent_vector_columns(
+    columns: Sequence[Sequence[sp.Expr]], variables: Sequence[sp.Symbol]
+) -> tuple[int, ...]:
+    matrix = polynomial_vector_matrix(columns, variables)
+    return tuple(matrix.rref()[1])
+
+
 def solve_linear(equations: Sequence[sp.Expr], variables: Sequence[sp.Symbol]) -> tuple[sp.ImmutableMatrix, sp.ImmutableMatrix]:
     matrix, rhs = sp.linear_eq_to_matrix(equations, variables)
     solution = matrix.inv() * rhs
@@ -459,6 +493,110 @@ grad_e_components = tuple(symbol(f"grad_e_W_{i + 1}", "COORDINATE", "thickness-f
 grad_theta = sp.ImmutableMatrix(grad_theta_components)
 grad_e = sp.ImmutableMatrix(grad_e_components)
 
+# Commuting second-jet coordinates let the CAS apply the in-plane total
+# derivatives in the Euler--Lagrange operator before any mode ansatz exists.
+second_u_components = {
+    (component, left, right): symbol(
+        f"grad2_u_{component + 1}_{left + 1}_{right + 1}",
+        "COORDINATE",
+        "commuting second in-plane derivative of displacement",
+    )
+    for component in range(3)
+    for left in range(3)
+    for right in range(left, 3)
+}
+second_theta_components = {
+    (left, right): symbol(
+        f"grad2_theta_{left + 1}_{right + 1}",
+        "COORDINATE",
+        "commuting second in-plane derivative of densification",
+    )
+    for left in range(3)
+    for right in range(left, 3)
+}
+second_e_components = {
+    (left, right): symbol(
+        f"grad2_e_W_{left + 1}_{right + 1}",
+        "COORDINATE",
+        "commuting second in-plane derivative of thickness fraction",
+    )
+    for left in range(3)
+    for right in range(left, 3)
+}
+
+
+def symmetric_jet(components: Mapping[tuple[int, ...], sp.Symbol], *indices: int) -> sp.Symbol:
+    prefix = indices[:-2]
+    left, right = sorted(indices[-2:])
+    return components[(*prefix, left, right)]
+
+
+ENERGY_FIELD_NAMES = tuple(Str(name) for name in ("u_1", "u_2", "u_3", "theta", "e_W"))
+ENERGY_JET_VARIABLES = (
+    *G_COMPONENTS,
+    theta,
+    e_W,
+    *grad_theta_components,
+    *grad_e_components,
+    *second_u_components.values(),
+    *second_theta_components.values(),
+    *second_e_components.values(),
+)
+
+
+def energy_total_derivative(expression: sp.Expr, direction: int) -> sp.Expr:
+    """In-plane total derivative on the first-jet energy algebra."""
+    derivative = sp.diff(expression, theta) * grad_theta[direction]
+    derivative += sp.diff(expression, e_W) * grad_e[direction]
+    for component in range(3):
+        for gradient_direction in range(3):
+            derivative += sp.diff(expression, G[component, gradient_direction]) * symmetric_jet(
+                second_u_components, component, gradient_direction, direction
+            )
+    for gradient_direction in range(3):
+        derivative += sp.diff(expression, grad_theta[gradient_direction]) * symmetric_jet(
+            second_theta_components, gradient_direction, direction
+        )
+        derivative += sp.diff(expression, grad_e[gradient_direction]) * symmetric_jet(
+            second_e_components, gradient_direction, direction
+        )
+    return sp.expand(derivative)
+
+
+def energy_euler_lagrange_signature(density: sp.Expr) -> tuple[sp.Expr, ...]:
+    """Euler--Lagrange derivatives with respect to every energy field."""
+    displacement = tuple(
+        sp.expand(-sum(
+            energy_total_derivative(sp.diff(density, G[component, direction]), direction)
+            for direction in range(3)
+        ))
+        for component in range(3)
+    )
+    scalar_theta = sp.expand(
+        sp.diff(density, theta)
+        - sum(
+            energy_total_derivative(sp.diff(density, grad_theta[direction]), direction)
+            for direction in range(3)
+        )
+    )
+    scalar_e = sp.expand(
+        sp.diff(density, e_W)
+        - sum(
+            energy_total_derivative(sp.diff(density, grad_e[direction]), direction)
+            for direction in range(3)
+        )
+    )
+    return (*displacement, scalar_theta, scalar_e)
+
+
+def enumerate_energy_density(
+    invariants: Sequence[sp.Expr], density_coefficients: Sequence[sp.Expr]
+) -> sp.Expr:
+    return sp.expand(sum(
+        coefficient * invariant
+        for coefficient, invariant in zip(density_coefficients, invariants)
+    ))
+
 
 def construct_energy_basis() -> dict[str, object]:
     trace_g = sp.trace(G)
@@ -467,7 +605,7 @@ def construct_energy_basis() -> dict[str, object]:
     st_g = sym_g - sp.eye(3) * trace_g / 3
     curl_squared = sp.expand(2 * sp.trace(anti_g.T * anti_g))
     st_squared = sp.expand(sp.trace(st_g.T * st_g))
-    basis = (
+    constructed_basis = (
         curl_squared,
         st_squared,
         sp.expand(trace_g**2),
@@ -480,34 +618,116 @@ def construct_energy_basis() -> dict[str, object]:
         sp.expand((grad_theta.T * grad_e)[0]),
         sp.expand((grad_e.T * grad_e)[0]),
     )
-    variables = (*G_COMPONENTS, theta, e_W, *grad_theta_components, *grad_e_components)
-    pivots = independent_columns(basis, variables)
-    carried = (basis[0], basis[3], basis[4], basis[5], basis[10])
-    carried_rank = len(independent_columns(carried, variables))
+    signatures = tuple(energy_euler_lagrange_signature(invariant) for invariant in constructed_basis)
+    signature_matrix = polynomial_vector_matrix(signatures, ENERGY_JET_VARIABLES)
+    pivots = tuple(signature_matrix.rref()[1])
+    retained_basis = tuple(constructed_basis[index] for index in pivots)
+    retained_signatures = tuple(signatures[index] for index in pivots)
+    retained_matrix = signature_matrix[:, pivots]
+
+    fold_columns = tuple(
+        retained_matrix.gauss_jordan_solve(signature_matrix[:, index])[0]
+        for index in range(len(constructed_basis))
+    )
+    fold_matrix = sp.ImmutableMatrix(sp.Matrix.hstack(*(sp.Matrix(column) for column in fold_columns)))
+
+    carried_indices = (0, 3, 4, 5, 10)
+    carried_signatures = [signatures[index] for index in carried_indices]
+    carried_rank = len(independent_vector_columns(carried_signatures, ENERGY_JET_VARIABLES))
     omitted = []
-    span = list(carried)
+    span = list(carried_signatures)
     rank = carried_rank
-    for candidate in basis:
-        trial = span + [candidate]
-        trial_rank = len(independent_columns(trial, variables))
+    for candidate, candidate_signature in zip(constructed_basis, signatures):
+        trial = span + [candidate_signature]
+        trial_rank = len(independent_vector_columns(trial, ENERGY_JET_VARIABLES))
         if trial_rank > rank:
             omitted.append(candidate)
-            span.append(candidate)
+            span.append(candidate_signature)
             rank = trial_rank
 
-    full_energy = sp.expand(
-        mu_R * basis[0] / 2
-        + mu_S * basis[1] / 2
-        + B_div * basis[2] / 2
-        + B_rho_3 * basis[3] / 2
-        + C * W0 * basis[4]
-        + k_W * W0**2 * basis[5] / 2
-        + G_theta_u * basis[6]
-        + G_W_u * basis[7]
-        + kappa_theta * basis[8] / 2
-        + kappa_theta_W * basis[9]
-        + kappa_W * W0**4 * basis[10] / 2
+    coefficient_parameters = (
+        mu_R,
+        mu_S,
+        B_div,
+        B_rho_3,
+        C,
+        k_W,
+        G_theta_u,
+        G_W_u,
+        kappa_theta,
+        kappa_theta_W,
+        kappa_W,
     )
+    enumerated_density_coefficients = (
+        mu_R / 2,
+        mu_S / 2,
+        B_div / 2,
+        B_rho_3 / 2,
+        C * W0,
+        k_W * W0**2 / 2,
+        G_theta_u,
+        G_W_u,
+        kappa_theta / 2,
+        kappa_theta_W,
+        kappa_W * W0**4 / 2,
+    )
+    enumerated_energy = enumerate_energy_density(constructed_basis, enumerated_density_coefficients)
+    retained_density_coefficients = tuple(
+        sp.expand(value)
+        for value in fold_matrix * sp.ImmutableMatrix(enumerated_density_coefficients)
+    )
+    reexpressed_energy = enumerate_energy_density(retained_basis, retained_density_coefficients)
+    reexpression_residual = sp.expand(enumerated_energy - reexpressed_energy)
+    reexpression_euler_derivatives = energy_euler_lagrange_signature(reexpression_residual)
+
+    retained_moduli = tuple(
+        sp.cancel(
+            retained_density_coefficients[row]
+            / sp.cancel(enumerated_density_coefficients[index] / coefficient_parameters[index])
+        )
+        for row, index in enumerate(pivots)
+    )
+    active_parameters = tuple(
+        parameter
+        for parameter in coefficient_parameters
+        if any(modulus.has(parameter) for modulus in retained_moduli)
+    )
+
+    redundant_indices = tuple(index for index in range(len(constructed_basis)) if index not in pivots)
+    collapse_rows = []
+    corruption_rows = []
+    for index in redundant_indices:
+        coefficients = fold_columns[index]
+        collapse_residual = sp.expand(
+            constructed_basis[index]
+            - sum(coefficients[row] * retained_basis[row] for row in range(len(retained_basis)))
+        )
+        collapse_rows.append(sp.Tuple(
+            sp.Integer(index),
+            constructed_basis[index],
+            sp.Tuple(*(
+                sp.Tuple(sp.Integer(pivot), coefficients[row])
+                for row, pivot in enumerate(pivots)
+            )),
+            collapse_residual,
+            sp.Tuple(*energy_euler_lagrange_signature(collapse_residual)),
+        ))
+
+        corrupted_coefficients = list(enumerated_density_coefficients)
+        corrupted_coefficients[index] = sp.expand(
+            corrupted_coefficients[index] + enumerated_density_coefficients[index]
+        )
+        corrupted_enumeration = enumerate_energy_density(constructed_basis, corrupted_coefficients)
+        corrupted_residual = sp.expand(corrupted_enumeration - reexpressed_energy)
+        corruption_rows.append(sp.Tuple(
+            sp.Integer(index),
+            sp.Tuple(*corrupted_coefficients),
+            corrupted_enumeration,
+            reexpressed_energy,
+            corrupted_residual,
+            sp.Tuple(*energy_euler_lagrange_signature(corrupted_residual)),
+        ))
+
     longitudinal_substitutions = {
         **{component: sp.Integer(0) for component in G_COMPONENTS},
         **{component: sp.Integer(0) for component in grad_theta_components},
@@ -522,14 +742,32 @@ def construct_energy_basis() -> dict[str, object]:
         **{component: sp.Integer(0) for component in grad_e_components},
         G[1, 0]: k * u_T,
     }
-    longitudinal_basis = tuple(sp.expand(item.subs(longitudinal_substitutions)) for item in basis)
+    longitudinal_constructed_basis = tuple(
+        sp.expand(item.subs(longitudinal_substitutions)) for item in constructed_basis
+    )
+    longitudinal_basis = tuple(longitudinal_constructed_basis[index] for index in pivots)
     return {
-        "basis": basis,
+        "constructed_basis": constructed_basis,
+        "basis": retained_basis,
         "pivots": pivots,
         "omitted": tuple(omitted),
-        "full_energy": full_energy,
-        "longitudinal_energy": sp.expand(full_energy.subs(longitudinal_substitutions)),
-        "transverse_energy": sp.expand(full_energy.subs(transverse_substitutions)),
+        "signatures": signatures,
+        "signature_matrix": signature_matrix,
+        "fold_matrix": fold_matrix,
+        "collapse_rows": sp.Tuple(*collapse_rows),
+        "coefficient_parameters": coefficient_parameters,
+        "enumerated_density_coefficients": enumerated_density_coefficients,
+        "retained_density_coefficients": retained_density_coefficients,
+        "retained_moduli": retained_moduli,
+        "active_parameters": active_parameters,
+        "enumerated_energy": enumerated_energy,
+        "reexpressed_energy": reexpressed_energy,
+        "reexpression_residual": reexpression_residual,
+        "reexpression_euler_derivatives": reexpression_euler_derivatives,
+        "corruption_rows": sp.Tuple(*corruption_rows),
+        "full_energy": reexpressed_energy,
+        "longitudinal_energy": sp.expand(reexpressed_energy.subs(longitudinal_substitutions)),
+        "transverse_energy": sp.expand(reexpressed_energy.subs(transverse_substitutions)),
         "longitudinal_basis": longitudinal_basis,
     }
 
@@ -615,14 +853,106 @@ MODEL: dict[str, object] = {}
 
 def task_b0_energy() -> None:
     basis = ENERGY_DATA["basis"]
+    constructed_basis = ENERGY_DATA["constructed_basis"]
     emit("ENERGY_BASIS", basis, key="energy_basis")
     emit("ENERGY_BASIS_COUNT", sp.Integer(len(basis)), key="energy_basis_count")
     emit("ENERGY_BASIS_OMISSIONS", ENERGY_DATA["omitted"], key="energy_basis_omissions")
-    emit("ENERGY_BASIS_INDEPENDENT_TERMS", sp.Tuple(*(basis[index] for index in ENERGY_DATA["pivots"])), key="energy_basis_independent_terms")
+    emit("ENERGY_BASIS_INDEPENDENT_TERMS", basis, key="energy_basis_independent_terms")
+    CUSTOM_QUANTITY_NAMES.update({
+        "energy_basis_el_signatures",
+        "energy_basis_collapse_evidence",
+        "energy_coefficient_assignment",
+        "energy_enumerated_density",
+        "energy_reexpressed_density",
+        "energy_reexpression_residual",
+        "energy_reexpression_euler_derivatives",
+        "energy_reexpression_corruption",
+        "mode_substituted_independence",
+    })
+    signature_rows = sp.Tuple(*(
+        sp.Tuple(
+            sp.Integer(index),
+            invariant,
+            sp.Tuple(*(
+                sp.Tuple(field, derivative)
+                for field, derivative in zip(ENERGY_FIELD_NAMES, signature)
+            )),
+        )
+        for index, (invariant, signature) in enumerate(zip(
+            constructed_basis, ENERGY_DATA["signatures"]
+        ))
+    ))
+    emit(
+        "ENERGY_BASIS_EL_SIGNATURES",
+        sp.Tuple(signature_rows, ENERGY_DATA["signature_matrix"], ENERGY_DATA["fold_matrix"]),
+        key="energy_basis_el_signatures",
+    )
+    emit(
+        "ENERGY_BASIS_COLLAPSE_EVIDENCE",
+        ENERGY_DATA["collapse_rows"],
+        key="energy_basis_collapse_evidence",
+    )
+    coefficient_assignment = sp.Tuple(*(
+        sp.Tuple(
+            sp.Integer(index),
+            invariant,
+            density_coefficient,
+            modulus,
+        )
+        for index, invariant, density_coefficient, modulus in zip(
+            ENERGY_DATA["pivots"],
+            basis,
+            ENERGY_DATA["retained_density_coefficients"],
+            ENERGY_DATA["retained_moduli"],
+        )
+    ))
+    emit(
+        "ENERGY_COEFFICIENT_ASSIGNMENT",
+        coefficient_assignment,
+        key="energy_coefficient_assignment",
+    )
+    emit(
+        "ENERGY_ENUMERATED_DENSITY",
+        ENERGY_DATA["enumerated_energy"],
+        key="energy_enumerated_density",
+        dimension_key="dim_energy_density",
+    )
+    emit(
+        "ENERGY_REEXPRESSED_DENSITY",
+        ENERGY_DATA["reexpressed_energy"],
+        key="energy_reexpressed_density",
+        dimension_key="dim_energy_density",
+    )
+    emit(
+        "ENERGY_REEXPRESSION_RESIDUAL",
+        ENERGY_DATA["reexpression_residual"],
+        key="energy_reexpression_residual",
+        dimension_key="dim_energy_density",
+    )
+    reexpression_el = sp.Tuple(*(
+        sp.Tuple(field, derivative)
+        for field, derivative in zip(
+            ENERGY_FIELD_NAMES, ENERGY_DATA["reexpression_euler_derivatives"]
+        )
+    ))
+    emit(
+        "ENERGY_REEXPRESSION_EULER_DERIVATIVES",
+        reexpression_el,
+        key="energy_reexpression_euler_derivatives",
+    )
+    emit(
+        "ENERGY_REEXPRESSION_CORRUPTION",
+        ENERGY_DATA["corruption_rows"],
+        key="energy_reexpression_corruption",
+    )
 
     impermeable_substitution = {theta: -eta - e_W}
     impermeable_reduced = tuple(sp.expand(item.subs(impermeable_substitution)) for item in ENERGY_DATA["longitudinal_basis"])
     imp_pivots = independent_columns(impermeable_reduced, (eta, e_W))
+    imp_el_signatures = tuple(
+        (sp.diff(item, eta), sp.diff(item, e_W)) for item in impermeable_reduced
+    )
+    imp_el_pivots = independent_vector_columns(imp_el_signatures, (eta, e_W))
     flux_mass = MODEL["mass"]
     coeff_theta = sp.diff(flux_mass, theta)
     coeff_eta = sp.diff(flux_mass, eta)
@@ -631,6 +961,10 @@ def task_b0_energy() -> None:
     alpha_e = symbol("alpha_e_constraint", "CONTROL", "generic flux-on constraint coefficient for thickness")
     flux_reduced = tuple(sp.expand(item.subs(theta, alpha_eta * eta + alpha_e * e_W)) for item in ENERGY_DATA["longitudinal_basis"])
     flux_pivots = independent_columns(flux_reduced, (eta, e_W))
+    flux_el_signatures = tuple(
+        (sp.diff(item, eta), sp.diff(item, e_W)) for item in flux_reduced
+    )
+    flux_el_pivots = independent_vector_columns(flux_el_signatures, (eta, e_W))
     derived_constraint_coefficients = sp.Tuple(
         sp.cancel(-coeff_eta / coeff_theta),
         sp.cancel(-coeff_e / coeff_theta),
@@ -641,6 +975,36 @@ def task_b0_energy() -> None:
         sp.Tuple(Str("FLUX_ON"), sp.Tuple(*(sp.Integer(i) for i in flux_pivots)), flux_reduced, derived_constraint_coefficients),
     )
     emit("BASIS_REDUNDANCY_UNDER_CONSTRAINT", redundancy, key="basis_redundancy_under_constraint")
+    raw_gradient_symbols = set((*G_COMPONENTS, *grad_theta_components, *grad_e_components))
+    mode_comparison = sp.Tuple(
+        sp.Tuple(
+            Str("IMPERMEABLE"),
+            sp.Tuple(*(sp.Integer(index) for index in imp_pivots)),
+            sp.Tuple(*(sp.Integer(index) for index in imp_el_pivots)),
+            casify(imp_pivots == imp_el_pivots),
+            sp.Tuple(*(sorted(
+                set().union(*(item.free_symbols for item in impermeable_reduced))
+                & raw_gradient_symbols,
+                key=sp.default_sort_key,
+            ))),
+        ),
+        sp.Tuple(
+            Str("FLUX_ON"),
+            sp.Tuple(*(sp.Integer(index) for index in flux_pivots)),
+            sp.Tuple(*(sp.Integer(index) for index in flux_el_pivots)),
+            casify(flux_pivots == flux_el_pivots),
+            sp.Tuple(*(sorted(
+                set().union(*(item.free_symbols for item in flux_reduced))
+                & raw_gradient_symbols,
+                key=sp.default_sort_key,
+            ))),
+        ),
+    )
+    emit(
+        "MODE_SUBSTITUTED_INDEPENDENCE",
+        mode_comparison,
+        key="mode_substituted_independence",
+    )
 
 
 def task_b0a() -> None:
@@ -1530,7 +1894,14 @@ def task_b5() -> None:
     real_roots = sp.ConditionSet(omega, sp.And(sp.Contains(omega, roots), sp.Eq(sp.im(omega), 0, evaluate=False)), sp.S.Complexes)
     emit("ROOT_STABILITY_CLASS", sp.Tuple(growing_roots, decaying_roots, real_roots), key="root_stability_class")
 
-    moduli = sp.Tuple(B_rho_3, C, k_W, kappa_W, B_div, mu_S, G_theta_u, G_W_u, kappa_theta, kappa_theta_W)
+    determinant_symbols = determinant.free_symbols
+    moduli = sp.Tuple(*(
+        modulus
+        for longitudinal_invariant, modulus in zip(
+            ENERGY_DATA["longitudinal_basis"], ENERGY_DATA["retained_moduli"]
+        )
+        if longitudinal_invariant != 0 and bool(modulus.free_symbols & determinant_symbols)
+    ))
     stability_system = sp.Tuple(
         sp.Eq(determinant, 0, evaluate=False),
         sp.Le(sp.im(omega), 0, evaluate=False),
@@ -1761,11 +2132,73 @@ def determinant_terms(matrix: sp.MatrixBase) -> tuple[sp.Expr, ...]:
 
 
 def task_b7() -> None:
+    CUSTOM_QUANTITY_NAMES.update({
+        "dim_energy_density",
+        "dim_fractional_scalar",
+        "dim_displacement_gradient",
+        "dim_scalar_gradient",
+        "dim_displacement_second_gradient",
+        "dim_scalar_second_gradient",
+    })
     energy_density = derive_dimension(M_DIM - L_DIM - 2 * T_DIM)
     pressure_4d = derive_dimension(M_DIM - 2 * L_DIM - 2 * T_DIM)
     mass_flux = derive_dimension(M_DIM - 3 * L_DIM - T_DIM)
     specific_energy = derive_dimension(2 * L_DIM - 2 * T_DIM)
+
+    invariant_symbol_dimensions = {
+        **{component: ZERO_DIM for component in G_COMPONENTS},
+        theta: ZERO_DIM,
+        e_W: ZERO_DIM,
+        **{component: -L_DIM for component in grad_theta_components},
+        **{component: -L_DIM for component in grad_e_components},
+    }
+    coefficient_factor_dimensions = {W0: L_DIM}
+    energy_parameter_dimensions: dict[sp.Symbol, tuple[str, sp.ImmutableMatrix, object]] = {}
+    for parameter in ENERGY_DATA["active_parameters"]:
+        routes = []
+        for invariant, density_coefficient in zip(
+            ENERGY_DATA["basis"], ENERGY_DATA["retained_density_coefficients"]
+        ):
+            factor = sp.diff(density_coefficient, parameter)
+            if factor == 0:
+                continue
+            invariant_trace = trace_dimension(invariant, invariant_symbol_dimensions)
+            factor_trace = trace_dimension(factor, coefficient_factor_dimensions)
+            vector = derive_dimension(
+                energy_density - invariant_trace.vector - factor_trace.vector
+            )
+            routes.append(sp.Tuple(
+                invariant,
+                density_coefficient,
+                factor,
+                invariant_trace.vector,
+                factor_trace.vector,
+                vector,
+                sp.And(*(invariant_trace.tests + factor_trace.tests))
+                if invariant_trace.tests or factor_trace.tests else sp.true,
+            ))
+        if not routes:
+            raise RuntimeError(f"energy coefficient {parameter} has no retained-basis route")
+        vector = routes[0][5]
+        route_consistency = sp.And(*(
+            dimension_match(route[5], vector) for route in routes[1:]
+        )) if len(routes) > 1 else sp.true
+        quantity_name = parameter.name.upper()
+        if quantity_name == "MU_S":
+            quantity_name = "MU_S_COEFFICIENT"
+        energy_parameter_dimensions[parameter] = (
+            quantity_name,
+            sp.ImmutableMatrix(vector),
+            sp.Tuple(sp.Tuple(*routes), route_consistency),
+        )
+
     dimensions: dict[str, tuple[object, Str, object]] = {
+        "ENERGY_DENSITY": (energy_density, Str("INDEPENDENT"), sp.Tuple(M_DIM, L_DIM, T_DIM)),
+        "FRACTIONAL_SCALAR": (ZERO_DIM, Str("DEFINITIONAL"), sp.Tuple(theta, e_W)),
+        "DISPLACEMENT_GRADIENT": (ZERO_DIM, Str("INDEPENDENT"), sp.Tuple(L_DIM, -L_DIM)),
+        "SCALAR_GRADIENT": (-L_DIM, Str("INDEPENDENT"), sp.Tuple(ZERO_DIM, -L_DIM)),
+        "DISPLACEMENT_SECOND_GRADIENT": (-L_DIM, Str("INDEPENDENT"), sp.Tuple(L_DIM, -2 * L_DIM)),
+        "SCALAR_SECOND_GRADIENT": (-2 * L_DIM, Str("INDEPENDENT"), sp.Tuple(ZERO_DIM, -2 * L_DIM)),
         "Z": (derive_dimension(pressure_4d - (L_DIM - T_DIM)), Str("INDEPENDENT"), sp.Tuple(pressure_4d, L_DIM - T_DIM)),
         "M_ADD": (derive_dimension(pressure_4d - (L_DIM - 2 * T_DIM)), Str("INDEPENDENT"), sp.Tuple(pressure_4d, L_DIM - 2 * T_DIM)),
         "RHO_M": (derive_dimension(M_DIM - 4 * L_DIM), Str("DEFINITIONAL"), sp.Tuple(M_DIM, 4 * L_DIM)),
@@ -1773,12 +2206,7 @@ def task_b7() -> None:
         "V_DR": (derive_dimension(L_DIM - T_DIM), Str("INDEPENDENT"), sp.Tuple(L_DIM, T_DIM)),
         "RHO_BR": (derive_dimension(M_DIM - 3 * L_DIM), Str("DEFINITIONAL"), sp.Tuple(M_DIM, 3 * L_DIM)),
         "B_RHO": (pressure_4d, Str("INDEPENDENT"), sp.Tuple(pressure_4d)),
-        "B_RHO_3": (energy_density, Str("INDEPENDENT"), sp.Tuple(pressure_4d, L_DIM)),
         "MU_W": (derive_dimension(energy_density - 2 * (L_DIM - T_DIM)), Str("INDEPENDENT"), sp.Tuple(energy_density, 2 * (L_DIM - T_DIM))),
-        "K_W": (derive_dimension(energy_density - 2 * L_DIM), Str("INDEPENDENT"), sp.Tuple(energy_density, 2 * L_DIM)),
-        "KAPPA_W": (derive_dimension(energy_density - 2 * L_DIM), Str("INDEPENDENT"), sp.Tuple(energy_density, 2 * L_DIM)),
-        "C": (derive_dimension(energy_density - L_DIM), Str("INDEPENDENT"), sp.Tuple(energy_density, L_DIM)),
-        "MU_R": (energy_density, Str("INDEPENDENT"), sp.Tuple(energy_density, ZERO_DIM)),
         "THICKNESS_RESPONSE": (derive_dimension(L_DIM - energy_density), Str("INDEPENDENT"), sp.Tuple(L_DIM, energy_density)),
         "COMPRESSIONAL_RESPONSE": (energy_density, Str("INDEPENDENT"), sp.Tuple(energy_density, ZERO_DIM)),
         "TRANSVERSE_COUPLING": (sp.nan, Str("UNDETERMINED"), sp.Tuple(EMITTER.values["PY_S11B_TRANSVERSE_COUPLING"])),
@@ -1793,22 +2221,25 @@ def task_b7() -> None:
         "MU_S": (specific_energy, Str("INDEPENDENT"), sp.Tuple(energy_density, M_DIM - 3 * L_DIM)),
         "PROJECTION_SOURCE": (mass_flux, Str("INDEPENDENT"), sp.Tuple(M_DIM - 4 * L_DIM, T_DIM, L_DIM)),
         "FACE_RESPONSE": (sp.Tuple(pressure_4d, pressure_4d - (L_DIM - T_DIM), pressure_4d - energy_density), Str("INDEPENDENT"), sp.Tuple(p_face, V_face, mu_drive)),
-        "B_DIV": (energy_density, Str("INDEPENDENT"), sp.Tuple(energy_density)),
-        "MU_S_COEFFICIENT": (energy_density, Str("INDEPENDENT"), sp.Tuple(energy_density)),
-        "G_THETA_U": (energy_density, Str("INDEPENDENT"), sp.Tuple(energy_density)),
-        "G_W_U": (energy_density, Str("INDEPENDENT"), sp.Tuple(energy_density)),
-        "KAPPA_THETA": (derive_dimension(energy_density + 2 * L_DIM), Str("INDEPENDENT"), sp.Tuple(energy_density, -2 * L_DIM)),
-        "KAPPA_THETA_W": (derive_dimension(energy_density + 2 * L_DIM), Str("INDEPENDENT"), sp.Tuple(energy_density, -2 * L_DIM)),
     }
+    for _, (name, vector, route_operands) in energy_parameter_dimensions.items():
+        dimensions[name] = (vector, Str("INDEPENDENT"), route_operands)
+
     symbol_links = {
         rho_m: "dim_rho_m", c_s0: "dim_c_s0", v_dr: "dim_v_dr", rho_br: "dim_rho_br",
-        B_rho: "dim_b_rho", B_rho_3: "dim_b_rho_3", mu_W: "dim_mu_w", k_W: "dim_k_w",
-        kappa_W: "dim_kappa_w", C: "dim_c", mu_R: "dim_mu_r", Lambda_A0: "dim_lambda_a_0",
+        B_rho: "dim_b_rho", mu_W: "dim_mu_w", Lambda_A0: "dim_lambda_a_0",
         Lambda_V0: "dim_lambda_v_0", Lambda_X0: "dim_lambda_x_0", tau_A: "dim_tau_a",
-        tau_V: "dim_tau_v", tau_X: "dim_tau_x", B_div: "dim_b_div", mu_S: "dim_mu_s_coefficient",
-        G_theta_u: "dim_g_theta_u", G_W_u: "dim_g_w_u", kappa_theta: "dim_kappa_theta",
-        kappa_theta_W: "dim_kappa_theta_w",
+        tau_V: "dim_tau_v", tau_X: "dim_tau_x",
     }
+    symbol_links.update({component: "dim_displacement_gradient" for component in G_COMPONENTS})
+    symbol_links.update({component: "dim_scalar_gradient" for component in (*grad_theta_components, *grad_e_components)})
+    symbol_links.update({component: "dim_displacement_second_gradient" for component in second_u_components.values()})
+    symbol_links.update({component: "dim_scalar_second_gradient" for component in (*second_theta_components.values(), *second_e_components.values())})
+    symbol_links.update({theta: "dim_fractional_scalar", e_W: "dim_fractional_scalar"})
+    symbol_links.update({
+        parameter: f"dim_{name.lower()}"
+        for parameter, (name, _, _) in energy_parameter_dimensions.items()
+    })
     SYMBOL_DIMENSION_KEYS.update(symbol_links)
     for name, (vector, route_kind, route_operands) in dimensions.items():
         key_name = f"dim_{name.lower()}"
@@ -1821,12 +2252,7 @@ def task_b7() -> None:
         omega: -T_DIM, k: -L_DIM, q_out: -L_DIM, kappa_out: -L_DIM,
         eta: ZERO_DIM, theta: ZERO_DIM, e_W: ZERO_DIM,
         W0: L_DIM, rho_m: dimensions["RHO_M"][0], rho_br: dimensions["RHO_BR"][0],
-        B_rho_3: dimensions["B_RHO_3"][0], mu_W: dimensions["MU_W"][0],
-        k_W: dimensions["K_W"][0], kappa_W: dimensions["KAPPA_W"][0],
-        C: dimensions["C"][0], B_div: dimensions["B_DIV"][0],
-        mu_S: dimensions["MU_S_COEFFICIENT"][0], G_theta_u: dimensions["G_THETA_U"][0],
-        G_W_u: dimensions["G_W_U"][0], kappa_theta: dimensions["KAPPA_THETA"][0],
-        kappa_theta_W: dimensions["KAPPA_THETA_W"][0],
+        mu_W: dimensions["MU_W"][0],
         Lambda_A0: dimensions["LAMBDA_A_0"][0], Lambda_V0: dimensions["LAMBDA_V_0"][0],
         Lambda_X0: dimensions["LAMBDA_X_0"][0], tau_A: T_DIM, tau_V: T_DIM, tau_X: T_DIM,
         p_face: pressure_4d, delta_p_plus: pressure_4d, delta_p_minus: pressure_4d,
@@ -1836,6 +2262,10 @@ def task_b7() -> None:
         affinity_coordinate: specific_energy, velocity_coordinate: L_DIM - T_DIM,
         A_plus_affinity: specific_energy, A_minus_affinity: specific_energy,
     }
+    symbol_dimensions.update({
+        parameter: vector
+        for parameter, (_, vector, _) in energy_parameter_dimensions.items()
+    })
     dimensions_by_name = {
         "V_port": L_DIM - T_DIM,
         "mu_s_port": specific_energy,
@@ -2268,6 +2698,14 @@ def make_record(candidate: CandidateRow) -> dict[str, object]:
 
 def merged_export() -> tuple[dict[str, dict[str, object]], dict[str, object]]:
     candidates = list(EMITTER.export_candidates)
+    candidate_source_tags = {candidate.source_tag for candidate in candidates}
+    missing_primary = [
+        tag for tag in EMITTER.primary_tags if tag not in candidate_source_tags
+    ]
+    if missing_primary:
+        raise RuntimeError(
+            "D1 primary emissions absent from flat export: " + ", ".join(missing_primary)
+        )
     add_free_symbol_candidates(candidates)
     candidate_keys = sp.Tuple(*(Str(candidate.key) for candidate in candidates))
     imported_matching_keys = sp.Tuple(*(Str(candidate.key) for candidate in candidates if candidate.key in INCOMING_LEDGER))
@@ -2276,6 +2714,7 @@ def merged_export() -> tuple[dict[str, dict[str, object]], dict[str, object]]:
     routing_rows = []
     seen_candidates: set[str] = set()
     f9c_rows = []
+    write_routes: dict[str, str] = {}
     for candidate in candidates:
         if candidate.key in seen_candidates:
             raise RuntimeError(f"two S11b candidates have the same key {candidate.key!r}")
@@ -2303,8 +2742,18 @@ def merged_export() -> tuple[dict[str, dict[str, object]], dict[str, object]]:
                 status = value_status if value_status != "PROVED_EQUAL" else "PROVED_DIFFERENT"
                 f9c_rows.append(sp.Tuple(Str(candidate.key), Str(write_key), Str(status), casify(comparison_operand)))
                 issue(f"F9c write {write_key} for {candidate.key}: {status}")
+        write_routes[candidate.key] = write_key
         routing_rows.append(sp.Tuple(Str(candidate.source_tag), Str(candidate.key), Str(write_key), Str(status), casify(comparison_operand)))
         merged[write_key] = record
+
+    # A dimension reference is an object reference, so it follows the same
+    # computed F9 route as the dimension row itself.  This second pass is
+    # necessary because an emitted value can precede its B7 dimension row.
+    for candidate in candidates:
+        write_key = write_routes[candidate.key]
+        dimension_key = candidate.dimension_key
+        if dimension_key is not None and dimension_key in write_routes:
+            merged[write_key]["dimension_key"] = write_routes[dimension_key]
     diagnostics = {
         "candidate_keys": candidate_keys,
         "imported_matching_keys": imported_matching_keys,

@@ -5,7 +5,7 @@ preserved as historical input across `steps/S11b_HANDOFF.md`, the decision list 
 (G14), and `V3_STEP_PLAN.md#s11b-split`. ⛔ **It is NOT the decision list.** S11c's first artifact is its OWN
 decision list (orchestrator-written, two legs), which **re-validates** every requirement below — ⛔ do not
 treat this package as ratified (the unified S11b decision list ratified only C's *scope*, not this specific
-requirement set; `steps/S11b_HANDOFF.md:15-18`).
+requirement set; `steps/S11b_HANDOFF.md:12-18`, the top banner).
 
 Naming (G1): **C → `S11c`** (a forward decision; no artifacts to migrate — C was never built). The closed
 unified step is `S11b` (A+B). ⛔ Do not reuse the `S11b` slug for S11c artifacts.
@@ -52,7 +52,7 @@ fate needs no gradients (S11b did it); light's confinement needs them (S11c).
 
 ## Method (the v3 pattern, and the S11b lesson)
 - ⚠⚠ **SPLIT S11c FINER than S11b was.** S11b took **eleven** directive revisions before a build because the
-  step surface was too large (`steps/S11b_HANDOFF.md:109`). ⭐ If the S11c surface is large, split it into
+  step surface was too large (`steps/S11b_HANDOFF.md:106`, the "Eleven directive revisions" note). ⭐ If the S11c surface is large, split it into
   tightly-scoped sub-steps in the decision list (⛔ decide the split WITH the two legs, do not pre-commit it
   here).
 - The order is the proven v3 pattern (`.claude/skills/step-run/SKILL.md`, `steps/S11b_RUN_CHECKLIST.md`):

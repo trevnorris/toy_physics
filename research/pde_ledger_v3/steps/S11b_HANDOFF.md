@@ -1,17 +1,14 @@
 # S11b — where the work stands, 2026-08-04
 
-> ⭐⭐ **SUPERSEDED FOR THE A/B REWRITE (2026-08-19).** S11b is being rebuilt as **ONE unified
-> export-chain step** subsuming A+B — the authorities are `directives/S11b_unified_decisions.md` (G-series,
-> committed `ddd0ae4c`) and the **unified shared spec `directives/S11b_SHARED_PHYSICS.md`** (committed
-> `1a2395a3`; two legs Codex+Grok, folded once). ⛔ **The two per-engine build directives are DONE**
-> (`directives/S11b_sympy_build_directive.md`, `directives/S11b_wl_build_directive.md`; committed
-> `9bd2f184`, two legs Codex+Grok each, folded once) — SymPy imports the S11 LEDGER + binds
-> `c_s0`/`μ_R`/`ρ_br⁰=rho_br` + writes `S11b_exports.py`; Wolfram blind (imports nothing, re-derives).
-> ⛔ **The SymPy engine is DONE** (`864d6f41`; 3 build rounds — physics correct throughout, 2 emission-fidelity
-> repair rounds, hard stop). **The immediate next is the blind WOLFRAM engine** (handed only its
-> self-contained directive, two legs), then the T7 comparator, step record and card; ⛔ not C, and ⛔ not the
-> spec/directives (done). The "Next actions" below predate the rewrite; the live NEXT is in `STATUS.md`'s top
-> block and `steps/S11b_RUN_CHECKLIST.md`.
+> ⭐⭐⭐ **S11b IS CLOSED (`565b3fe8`, 2026-08-23); this 2026-08-04 handoff is retained ONLY as the C (now
+> `S11c`) requirements source.** S11b was rebuilt as ONE unified export-chain step ("the linear brane–bulk
+> interface coupling law"; decision list `ddd0ae4c`, spec `1a2395a3`, build directives `9bd2f184`): SymPy
+> engine `864d6f41` + blind WL engine `ec89f9df` cross-checked (frozen T7 `17fe32c8` / re-run `fba6a34c`; X-1
+> over-count corrected `53fcd98d`; WL repair `bd598ae7`), step record `8ddccb74`, card `565b3fe8` — all 13
+> steps done. ⛔⛔ **The entire "where the work stands" narrative below (and the table) is HISTORICAL
+> PRE-UNIFICATION state — the "immediate next is the blind Wolfram engine" and "S11b-C ▶ NEXT" are DEAD.**
+> ⭐ **Live NEXT = `S11c`** (the non-uniform transverse coupling) — ⭐ start at **`steps/S11c_SCOPE.md`**; live
+> state in `STATUS.md` + `steps/S11b_RUN_CHECKLIST.md`.
 > ⭐ **C's material below (the four ingredients + the bench-top-optics falsification) is preserved as
 > historical input, ⛔ to be revalidated in C's own decision list/spec** — the unified decision list
 > ratifies only C's *scope* (the non-uniform variable-coefficient spectrum, leakage rates, and
@@ -19,7 +16,7 @@
 
 ⛔⛔ **The table below is HISTORICAL / PRE-UNIFICATION and SUPERSEDED** — its "✅ CLOSED / two blind engines /
 cross-verified / card reviewed" and "S11b-C ▶ NEXT" are the OLD A/B/C execution framing. Live status: the
-banner above (SymPy engine done, WL engine next) + `STATUS.md` + `steps/S11b_RUN_CHECKLIST.md`.
+banner above (**S11b CLOSED; NEXT = S11c at `steps/S11c_SCOPE.md`**) + `STATUS.md` + `steps/S11b_RUN_CHECKLIST.md`.
 
 | | state (⛔ HISTORICAL, superseded) |
 |---|---|

@@ -5,6 +5,11 @@ that lost a whole review round and cost the first hour. ⛔ Do not let this one 
 documents and states rules; it does **not** restate findings. If it and a named document disagree, ⛔ **the
 document is right.**
 
+> ⭐⭐⭐ **CURRENT FRONT (2026-08-23): S11b is CLOSED (`565b3fe8`); NEXT = `S11c`** (the non-uniform transverse
+> coupling — was "S11b-C"). ⛔ **The "NEXT: S11b" and S11b-framing content below is STALE** (this file predates
+> the whole S11b build). ⭐ **Start at `STATUS.md`'s top block + `steps/S11c_SCOPE.md`**, then author the S11c
+> decision list (2 legs, rule 7 TRIGGER). Everything else below stands as standing rules/pointers.
+
 ---
 
 Branch `ledger-v3-rebuild`. Run `git log --oneline -5` and `git status` first —
@@ -213,7 +218,8 @@ discrete symbols, and the schema (`additionalProperties: false`) cannot express 
 dimension; S10's closed form shows why: `[μ_R] − [ρ_br] = (2−D) − (−D) = 2` in the length slot **for
 every `D`**. ⛔ Not a blind spot — an **identity**.
 
-**▶ NEXT: S11b — the brane–bulk interface coupling law** (`V3_STEP_PLAN.md#s11b`), then **S5–S7**.
+**▶ [DONE — S11b CLOSED `565b3fe8`, 2026-08-23; the live NEXT is `S11c`, see the banner at the top of this
+file. Historical:] S11b — the brane–bulk interface coupling law** (`V3_STEP_PLAN.md#s11b`), then **S5–S7**.
 ⭐ **User decision, 2026-08-02: extend the light sector by two steps before declaring it closed.**
 
 ⛔ **S11b is NOT scope creep, and the test is one line: it is LINEAR, so by this ledger's own definition

@@ -847,9 +847,10 @@ large deformations requiring nonlinear description."*
 - ⛔ **And our brane–bulk interface law (S11b-A/B) is LINEAR**, and it is what the charge story runs on.
 - ⇒ ⭐ the **object** is plausibly nonlinear while the **instrument** we built for it is linear.
 
-⭐⭐ **THE DECISIVE TEST IS CHEAP AND ALREADY NAMED: ⛔ S11b-C, non-uniform coupling, WAS NEVER BUILT** —
-and it is the **MacCullagh differentiator**. ⇒ ⭐ **Run it before committing this phase to anything.**
-- ⭐ If S11b-C anchors charge linearly, we have what he did not, and half one's linear scope holds.
+⭐⭐ **THE DECISIVE TEST IS CHEAP AND ALREADY NAMED: ⛔ `S11c` (was S11b-C), non-uniform coupling, WAS NEVER
+BUILT** — and it is the **MacCullagh differentiator**. ⇒ ⭐ **Run it before committing this phase to anything**
+(scope: `steps/S11c_SCOPE.md`).
+- ⭐ If S11c anchors charge linearly, we have what he did not, and half one's linear scope holds.
 - ⛔ If it cannot, that is **independent convergence on his conclusion**, and **C6** (the absent nonlinear
   brane-shear action) moves onto the critical path **with a measured reason**, ⛔ not an assumption.
 

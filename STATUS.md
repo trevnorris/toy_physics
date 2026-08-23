@@ -1,19 +1,20 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11b UNIFIED REWRITE (opened 2026-08-19)
+## ⭐⭐⭐ CURRENT FRONT — S11c (non-uniform transverse coupling); S11b CLOSED 2026-08-23
 
 ⚠ **PATH BASE:** every S11b artifact pointer in this block (`scripts/…`, `mathematica/…`, `steps/…`,
 `directives/…`, `paper/…`) is relative to **`research/pde_ledger_v3/`** — e.g. `scripts/S11b_cross_engine_comparator.py`
 = `research/pde_ledger_v3/scripts/S11b_cross_engine_comparator.py`, and the card `paper/steps/S11b_interface_coupling_law.tex`
 = `research/pde_ledger_v3/paper/steps/S11b_interface_coupling_law.tex`. Only `STATUS.md` and `CLAUDE.md` are repo-root.
 
-⭐ **S11b is being rebuilt as ONE unified export-chain step** ("the interface coupling law"), subsuming
-the historical A (bulk face response) + B (homogeneous assembly) execution stages; **C stays a separate
-later step.** Chosen 2026-08-19 (user): "S11b-A alone" is not a well-defined chain unit — A earns no
-ledger rows, the card is already one-for-S11b, the ledger content lives at B. ⭐ Physics is REUSABLE
-(both `.py`+`.wl` existed historically, agreed, 5 hand re-derivations). ⭐ The **SymPy packaging is now
-BUILT** (`S11b_exports.py` 1916 rows + committed `.out`, `864d6f41`); the WL engine + comparator + WL repair + the SymPy X-1 repair + the comparator re-run are now DONE (ec89f9df/17fe32c8/bd598ae7/53fcd98d/fba6a34c); only the step record + card re-point remain.
-Old spec/directives cite the deleted `reduction/` + a rule-12 denylist.
+⭐⭐⭐ **S11b IS CLOSED (`565b3fe8`, 2026-08-23).** It was rebuilt as ONE unified export-chain step ("the linear
+brane–bulk interface coupling law"), subsuming the historical A (bulk face response) + B (homogeneous assembly)
+execution stages; **C is now the separate later step `S11c`.** SymPy engine `864d6f41` + blind WL engine
+`ec89f9df` cross-checked by the frozen T7 comparator (`17fe32c8`, re-run `fba6a34c` — physics agree; the
+**X-1** energy-basis over-count 11→10 corrected `53fcd98d`) + WL repair `bd598ae7`; step record `8ddccb74`;
+card `565b3fe8`. **All 13 step-run steps + export integrity done.** The live NEXT is the S11c block below;
+the artifact history is retained for provenance. Old spec/directives cite the deleted `reduction/` + a rule-12
+denylist.
 
 ⭐⭐ **Artifact #1 DONE — `directives/S11b_unified_decisions.md` (G1–G14), committed `ddd0ae4c`** — two
 legs (Codex + Grok), 7 findings folded once, rule-2 `_measurements` twin (which caught 2 of my citation
@@ -374,7 +375,7 @@ compared; scope them and **nothing compares them** ⇒ ⭐ rule 6, *don't make d
 ⚠ **Next concrete step:** the **S11 PY decision list**, rewritten against `F1`–`F7` and its own five blocked
 findings — ⛔ two legs before any builder moves.
 
-## ⭐⭐ YOU ARE HERE — v3 ledger is open (2026-07-31)
+## ⚠ [HISTORICAL SNAPSHOT 2026-07-31 — the LIVE front is the top block (S11b CLOSED; NEXT S11c). Read below only for v3-rebuild backstory; ⛔ its "S11 NEXT / A,B to rebuild / S11b-C never built" is stale.] v3 ledger opened
 
 ⛔⛔ **FRONT DOOR CHANGED 2026-08-04 — `research/pde_ledger_v3/REBUILD_HANDOFF.md`.** Read that first.
 **ALL NEW LEDGER PHYSICS IS STOPPED**, S11b-C included, until the script rebuild closes. ⚠ The engines were
@@ -395,8 +396,9 @@ reproduces **`C16`** — strata come from minors of `M_r`, ⛔ never the stacked
 transverse count. ⚠ **A closed spec is not a correct spec**, and a shared spec is physics-bearing.
 ⛔ Also: the PY engine **will not run** — `from registry_read` at `:21`, and `reduction/` is deleted.
 
-⛔⛔ **THE LIGHT SECTOR'S REMAINING QUEUE IS PAPERWORK. ⭐ The physics that moves anything is `S11b-C` and
-`S8`** — ⚠ `S11b-C` is the **MacCullagh differentiator** and was **never built**; ⛔ `R-S8-04` decides
+⛔⛔ **THE LIGHT SECTOR'S REMAINING QUEUE IS PAPERWORK. ⭐ The physics that moves anything is `S11c`** (was
+S11b-C; S11b's uniform half is now CLOSED) **and `S8`** — ⚠ `S11c` is the **MacCullagh differentiator** and
+is still **unbuilt** (scope: `steps/S11c_SCOPE.md`); ⛔ `R-S8-04` decides
 whether the curl-only functional is an **admissible continuum mechanics at all**, and **S8 has never been
 run** ⇒ `SUBSTRATE_REQUIREMENTS.md`, `V3_STEP_PLAN.md` PHASE 4b.
 

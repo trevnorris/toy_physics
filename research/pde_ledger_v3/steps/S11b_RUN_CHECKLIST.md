@@ -7,10 +7,10 @@ obligations, with status and citation. ⛔ This is process tracking, not physics
 Naming: **A+B unified → `S11b`** (G1); **C → `S11c`** (forward decision, no artifacts to migrate; record in
 the plan when C opens). Slug = `S11b_interface_coupling_law`.
 
-> ⚠⚠ **The table + export-integrity block below are the PRE-RUN TEMPLATE (authored before the builds); their
-> ⏳/⬜ marks are NOT current status.** ⭐ **The live status is the "✅ SymPy engine CLOSED" section at the
-> bottom** — the SymPy engine's steps 1–8 + all export-integrity items are DONE there; the WL engine (9), comparator (10) and WL repair are DONE (see the two CLOSED sections below); the SymPy X-1 repair,
-> step record (12) and card (13) remain.
+> ⭐⭐⭐ **S11b IS CLOSED (`565b3fe8`, 2026-08-23) — all 13 steps + export integrity DONE.** The table +
+> export-integrity block below are the PRE-RUN TEMPLATE (authored before the builds); their ⏳/⬜ marks are
+> HISTORICAL, ⛔ not status. The dated "✅ … DONE/CLOSED" sections below are the record. NEXT = **S11c** (was
+> S11b-C), the non-uniform transverse coupling — start at `steps/S11c_SCOPE.md`.
 
 ## The proven order (step-run table + runbook)
 
@@ -92,8 +92,8 @@ the plan when C opens). Slug = `S11b_interface_coupling_law`.
 - Whatever writes does not review: engines/card (Codex) → fresh agent + Grok; directives/step record
   (orchestrator) → Codex + Grok.
 
-## ✅ SymPy engine BUILT (`864d6f41`, 2026-08-21) — ⚠ X-1 REOPENS it (basis over-count 11→10 = the current NEXT)
-The SymPy-engine portions of steps 1–8 are done (steps 9-10 + the WL branch of step 11 DONE -- see the CLOSED section below; the SymPy X-1 repair, step 11, is the current NEXT): directives (1–4) `9bd2f184`; build (5)
+## ✅ SymPy engine BUILT (`864d6f41`, 2026-08-21) — ⚠ [HISTORICAL: X-1 reopened it (basis over-count 11→10); the X-1 repair is now DONE `53fcd98d`, see the closed section below]
+The SymPy-engine portions of steps 1–8 are done (steps 9-13 all DONE -- see the CLOSED sections below): directives (1–4) `9bd2f184`; build (5)
 round-1; baseline commits (6) `7dd89076`/`6d57b27e`; script legs (7) each round; `.out` captured +
 committed (8) `scripts/out/S11b_interface_coupling_law_sympy_audit.out`. Export-chain integrity
 sub-checklist all ✅ (carry-forward fidelity: 1663 S11 rows, none dropped/mutated; bindings to imported
@@ -135,7 +135,8 @@ PASS all 8 with CAS: slice map `Λ_p⁰=−Λ_A⁰/ρ_m` residual 0, transverse 
 frozen-wall-width freeze + `𝒜→𝒜_±`). G12c (`Λ_A⁰` defined, `Λ_p⁰=0` qualifier, `τ_A` narrowed) + G12d
 (background-flow standing limit) done; suppressed-`Verification` handling preserved (plain paragraph); card
 stub-compiles clean. **ALL 13 step-run steps + all export-integrity items DONE — S11b is CLOSED.**
-⛔ The light sector is not finished until **S11b-C** (the non-uniform transverse coupling), a separate later
+⛔ The light sector is not finished until **S11c** (was S11b-C; the non-uniform transverse coupling; start at
+`steps/S11c_SCOPE.md`), a separate later
 step. Ops this session: the spurious background-job killer escalated to codex/grok bash jobs generally
 (directive/step-record/card legs all hit) — recovered by serializing legs + a mechanical emitted-tag digest so
 each finishes inside a sweep window; the fresh-Agent path stayed robust.

@@ -127,8 +127,15 @@ CONDITIONAL on `μ⊥≥0`; breathing slice all three cuts incl. `Λ_X⁰=0`; ad
 (coverage gaps + regular-domain locus equivalence, not "all format"); coeff map `B_div+2μ_S/3`; KEY =
 Association-key mismatches; DIM = drive-normalization; background-flow `|q v₀/ω|≳1`. Legs spuriously killed
 twice → recovered by serializing + an emitted-tag digest.
-⬜ STILL OPEN for the STEP: **step 13 (card re-point)** — re-point `paper/steps/S11b_interface_coupling_law.tex`
-to the unified step (Codex writes; the directive is orchestrator-written ⇒ 2 legs Codex+Grok FIRST per rule 7,
-then the card gets its own 2 legs = fresh Agent + Grok). Owed G12c (`Λ_A⁰` undefined + dropped `Λ_p⁰=0`
-qualifier) + G12d (background-flow limit, frozen-wall-width freeze); fold in the corrected transverse
-conditional-stability + `Λ_X⁰=0` breathing cut; check `paper/macros.tex` for suppressed fields.
+## ✅ Card re-point (step 13) DONE (`565b3fe8`, 2026-08-23) — ⭐ S11b CLOSED
+`paper/steps/S11b_interface_coupling_law.tex` re-pointed to the unified step: directive `3fcf085d` (2 legs
+Codex+Grok, folded once — Grok caught a cross-change consistency defect: transverse must be written `μ_⊥=μ_R`
+in the card's `(∇·u)²` representative, not `μ_R+μ_S/2`) → Codex build → 2 card legs (fresh Agent + Grok, both
+PASS all 8 with CAS: slice map `Λ_p⁰=−Λ_A⁰/ρ_m` residual 0, transverse `μ_⊥=μ_R`) → folded once (added the
+frozen-wall-width freeze + `𝒜→𝒜_±`). G12c (`Λ_A⁰` defined, `Λ_p⁰=0` qualifier, `τ_A` narrowed) + G12d
+(background-flow standing limit) done; suppressed-`Verification` handling preserved (plain paragraph); card
+stub-compiles clean. **ALL 13 step-run steps + all export-integrity items DONE — S11b is CLOSED.**
+⛔ The light sector is not finished until **S11b-C** (the non-uniform transverse coupling), a separate later
+step. Ops this session: the spurious background-job killer escalated to codex/grok bash jobs generally
+(directive/step-record/card legs all hit) — recovered by serializing legs + a mechanical emitted-tag digest so
+each finishes inside a sweep window; the fresh-Agent path stayed robust.

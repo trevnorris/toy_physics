@@ -134,14 +134,19 @@ equal only on the regular domain q≠0 (differs at grazing q=0); coeff map WL-`(
 `|q v₀/ω|≳1`. ⚠ OPS: the step-record legs were spuriously killed twice (memory healthy) — recovered by
 SERIALIZING + a mechanical emitted-tag digest so a leg finishes inside a sweep window.
 
-⛔ **NEXT = the card re-point (step 13) — the LAST piece of S11b.** Re-point
-`paper/steps/S11b_interface_coupling_law.tex` to the unified step (Codex writes, its own 2 legs = fresh Agent +
-Grok; the directive for it is orchestrator-written ⇒ 2 legs Codex+Grok FIRST, rule 7 TRIGGER). Owed: G12c
-`Λ_A⁰` used undefined + dropped `Λ_p⁰=0` qualifier; note G12d background-flow limit + the frozen-wall-width
-freeze; and fold in the step record's corrected transverse (conditional stability), the `Λ_X⁰=0` breathing
-cut, and the "region not prohibition" framing. ⚠ Check `paper/macros.tex` (some fields are suppressed in the
-default build). Run-checklist: `steps/S11b_RUN_CHECKLIST.md`. Pattern = S10/S11. Full state in memory
-`project-s11b-interface-law-result`.
+⭐⭐⭐ **S11b IS CLOSED — card re-point (step 13) DONE `565b3fe8`.** The unified export-chain step "the linear
+brane–bulk interface coupling law" is complete: SymPy + blind WL engines cross-checked (physics agree, X-1
+corrected), step record `8ddccb74`, and card `paper/steps/S11b_interface_coupling_law.tex` re-pointed
+(directive `3fcf085d`, 2 legs, folded once) → Codex build → 2 card legs (fresh Agent + Grok, both PASS with CAS:
+slice map residual 0, transverse `μ_⊥=μ_R` representative) → folded once (added the frozen-wall-width freeze +
+`𝒜→𝒜_±`); card stub-compiles clean. All 13 step-run steps done; all export-integrity items ✅.
+
+⛔ **NEXT (the S11b light sector is not finished until C):** **S11b-C** — the **non-uniform** variable-coefficient
+transverse coupling (is light's confinement unconditional?), a separate later step with its own decision
+list/spec. The uniform coupling is identically zero (so a uniform-limit control for C is known-vacuous); C's
+coefficient is bounded by **bench-top optics** (falsifiable with no cosmology/gravity sector). ⭐ Broader
+frontier per memory: remaining force sectors → comprehensive S1–S8 substrate register → **throat interior**.
+Full state in memory `project-s11b-interface-law-result`. Run-checklist: `steps/S11b_RUN_CHECKLIST.md`.
 
 ---
 

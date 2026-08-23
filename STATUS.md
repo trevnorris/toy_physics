@@ -12,7 +12,7 @@ the historical A (bulk face response) + B (homogeneous assembly) execution stage
 later step.** Chosen 2026-08-19 (user): "S11b-A alone" is not a well-defined chain unit — A earns no
 ledger rows, the card is already one-for-S11b, the ledger content lives at B. ⭐ Physics is REUSABLE
 (both `.py`+`.wl` existed historically, agreed, 5 hand re-derivations). ⭐ The **SymPy packaging is now
-BUILT** (`S11b_exports.py` 1916 rows + committed `.out`, `864d6f41`); the WL engine + comparator + WL repair are now DONE (ec89f9df/17fe32c8/bd598ae7); only the SymPy X-1 repair remains.
+BUILT** (`S11b_exports.py` 1916 rows + committed `.out`, `864d6f41`); the WL engine + comparator + WL repair + the SymPy X-1 repair + the comparator re-run are now DONE (ec89f9df/17fe32c8/bd598ae7/53fcd98d/fba6a34c); only the step record + card re-point remain.
 Old spec/directives cite the deleted `reduction/` + a rule-12 denylist.
 
 ⭐⭐ **Artifact #1 DONE — `directives/S11b_unified_decisions.md` (G1–G14), committed `ddd0ae4c`** — two
@@ -87,7 +87,7 @@ committed SymPy engine (count/coeff only; the physical EOM span is unchanged but
 DIM AGREE, DEGENERATE_LOCI a locus-form/qOut-vs-q artifact (not physics). ⚠ FINDING: the two engines physics-agree
 but are NOT emission-parallel — 103 STRUCTURE (PY Tuple vs WL Association) + 47 UNPAIRED + naming (qOut/q); only
 20 clean AGREE. Comparator confirms NO cross-engine physics disagreement beyond X-1 + the known F-WL-1 sign.
-⚠ **This frozen run PREDATES the WL repair (`bd598ae7`) and the SymPy X-1 repair** — its `ZPERM_SLICE_MAP`/warnings show the OLD WL engine; RE-RUN the comparator after the X-1 repair (`ENERGY_BASIS_COUNT` should then AGREE, the F-WL-1 map DISAGREE should clear).
+⚠ **That frozen run (`17fe32c8`) PREDATED both repairs; the comparator has since been RE-RUN — see Artifact #8.**
 
 ⭐⭐ **Artifact #7 (WL engine REPAIR) DONE — committed `bd598ae7`** (directive `e273398a` + fix-2 `a6b0b684`;
 baseline `a5186dce`). All F-WL fixes GENUINE + physics CORRECT: **F-WL-1** now emits static `−Λ_A⁰/ρ_m` (the
@@ -102,14 +102,34 @@ not) — covered for this narrow fix by the Agent leg + Grok source audit + orch
 build's scratch demo. ⚠ OPS: long Mathematica legs/builds get spuriously killed here — recover mechanically
 (edits complete before the kill), and prefer the Agent path over grok for Mathematica ablation legs.
 
-⛔ **NEXT = the SymPy X-1 repair** (the WL repair is DONE): SymPy basis OVER-COUNTS 11 vs correct 10 —
-`st_squared` (basis[1], `sympy_audit.py:470-510`) is `(2/3)(∇·u)²+(1/2)curl²` mod a total divergence, and §5
-mandates the divergence quotient; drop it → count 10, and the redundant coefficient (degenerate with
-`B_div`/`mu_R`) — the EOM/physics is unaffected. Directive → 2 legs → build → 2 legs; then re-run the T7
-comparator (ENERGY_BASIS_COUNT should then AGREE). Then the step record (I write, 2 legs; NOTE the emission
-non-parallelism finding + the W₀ convention + the DEGENERATE_LOCI qOut/q artifact) and re-point the card
-`paper/steps/S11b_interface_coupling_law.tex` (Codex, 2 legs; owed G12c/G12d items). Run-checklist:
-`steps/S11b_RUN_CHECKLIST.md`. Pattern = S10/S11. Full state in memory `project-s11b-interface-law-result`.
+⭐⭐ **Artifact #8 (SymPy X-1 repair + comparator re-run) DONE — `53fcd98d` (build) + `fba6a34c` (re-run)**,
+directive `b4c02381`. The energy-basis independence judgment now honors §5's total-divergence equivalence
+(EL-signature rank at `sympy_audit.py:623`): the constructed 11 invariants reduce to a 10-dim quotient. The
+redundant `(∇·u)²` is eliminated by REWRITING it into the retained curl²/strain invariants
+(`(∇·u)² ≡ (3/2)st² − (3/4)curl²`), folding its `B_div` coefficient in — ⛔ NOT deleted; `ENERGY_BASIS_COUNT`
+emits `Integer(10)`. Two build legs (fresh Agent + Grok, parallel): each wrote its OWN O(3) + Euler–Lagrange
+enumeration and independently derived 11 pointwise / 10 mod-divergence (redundant `(∇·u)²`, matching the
+orchestrator's own `x1_independent_basis_count.py`); FORM ablations (rule 14) all bit (forcing pointwise → 11;
+divergence-equivalent perturbation stays 10; the two-route `ENERGY_REEXPRESSION_RESIDUAL` EL derivative is 0
+and fails under a wrong fold; delete-instead-of-fold changes `U_LONG` by `B_div·η²/2`). Physics preserved
+(transverse operator, in-plane EOM, breathing form, `Λ_p⁰=−Λ_A⁰/ρ_m` slice), export chain intact (1663
+carried, new proof rows via D1, §11 imports `is`-bound, D3 `PROVED_EQUAL`, F6 published, no task skipped).
+⭐ **Comparator RE-RUN (`fba6a34c`)** against repaired PY + repaired WL: **`ENERGY_BASIS_COUNT` now AGREE**
+(10=10) and **`ZPERM_SLICE_MAP` (F-WL-1) physics-agrees** (both `−Λ_A⁰/ρ_m`; only tuple-vs-Association remains).
+AGREE 20→21, DISAGREE 109→108, UNPAIRED 47→71 (the X-1 proof emissions + WL controls, one-engine-only).
+Adjudicated (rule 13): **ALL 108 disagreements are emission-format/naming/representation, ZERO are physics** —
+102 STRUCTURE (Tuple vs Association), 3 KEY (qOut/q), 1 DIM (`DIM_THICKNESS_RESPONSE`, W₀ convention), 2 CONTENT
+(`DEGENERATE_LOCI` = same locus under an `i`-factor + `qOut==q`; `ENERGY_BASIS_OMISSIONS` = the two engines'
+equally-valid representative split PY-`st²` vs WL-`(∇·u)²`, same span). `FINAL_OPERATIONAL_STATUS FAIL` = the
+long-standing SymPy-Tuple vs Wolfram-Association non-parallelism, not a physics divergence.
+
+⛔ **NEXT = the step record + the card re-point** (all engine work is DONE). **Step record** — the orchestrator
+writes it (Codex/Grok weren't at the walk), then 2 legs Codex+Grok; NOTE the emission non-parallelism finding,
+the W₀ thickness convention, the `DEGENERATE_LOCI` qOut/q artifact, the X-1 representative split (PY keeps `st²`
+/ WL keeps `(∇·u)²`), and the ops note (Grok's WL-repair ablation leg blocked by 3 spurious Mathematica kills).
+**Card** — re-point `paper/steps/S11b_interface_coupling_law.tex` (Codex writes, its own 2 legs; owed G12c
+`Λ_A⁰`-undefined + dropped `Λ_p⁰=0` qualifier; note G12d background-flow limit + frozen-wall-width freeze).
+Run-checklist: `steps/S11b_RUN_CHECKLIST.md`. Pattern = S10/S11. Full state in memory `project-s11b-interface-law-result`.
 
 ---
 

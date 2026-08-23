@@ -108,8 +108,19 @@ all genuine, no Scope regression, `.out` regenerated. ⚠ OPS: long Mathematica 
 (3×) — recover mechanically (edits complete first); prefer the Agent path over grok for Mathematica ablation
 legs; Grok's 2nd WL-repair ablation leg was blocked (covered by Agent leg + Grok source audit + orchestrator
 verification).
-⬜ STILL OPEN for the STEP: **the SymPy X-1 repair** (basis 11→10: drop `st_squared` basis[1] =
-`(2/3)div²+(1/2)curl²` mod divergence, §5 mandates the quotient; redundant coeff degenerate with
-`B_div`/`mu_R`; the physical EOM span is unchanged but the emitted EOM COORDINATES shift (mu_S absorbs into mu_R,B_div: mu_R_eff=mu_R+mu_S/2, B_div_eff=B_div+2mu_S/3 -- do NOT require EOM byte-preservation)) → re-run T7 comparator (`ENERGY_BASIS_COUNT` should AGREE) → step 12 step
-record (2 legs; NOTE emission non-parallelism + W₀ convention + DEGENERATE_LOCI qOut/q artifact) → step 13
-card re-point (Codex, 2 legs, G12c/G12d owed).
+## ✅ SymPy X-1 repair + comparator RE-RUN CLOSED (2026-08-22)
+Step 11 (the SymPy X-1 repair) DONE: directive `b4c02381` (2 legs Codex+Grok, folded once — 3 findings:
+twin-leak stripped per rule 12, D1+full F-chain, §11 import-identity) → build `53fcd98d` (2 legs fresh
+Agent+Grok, parallel; each independently derived 11 pointwise / 10 mod-divergence, FORM ablations all bit,
+physics preserved, export chain intact) → comparator RE-RUN `fba6a34c`. The energy-basis independence now
+honors §5's total-divergence equivalence (`sympy_audit.py:623`); the redundant `(∇·u)²` is REWRITTEN into the
+retained curl²/strain invariants (`(∇·u)² ≡ (3/2)st² − (3/4)curl²`), folding `B_div` in — ⛔ not deleted;
+`ENERGY_BASIS_COUNT` = 10. RE-RUN result: `ENERGY_BASIS_COUNT` now AGREE (10=10), `ZPERM_SLICE_MAP` (F-WL-1)
+physics-agrees (both `−Λ_A⁰/ρ_m`); adjudicated (rule 13) ALL 108 remaining disagreements are
+emission-format/naming/representation, ZERO physics (102 Tuple-vs-Association STRUCTURE, 3 KEY qOut/q, 1 DIM
+W₀-convention, 2 CONTENT = the `i`-factor+`qOut==q` locus form and the equally-valid representative split
+PY-`st²` vs WL-`(∇·u)²`). Orchestrator's own check: `x1_independent_basis_count.py` (scratchpad).
+⬜ STILL OPEN for the STEP: **step 12 (the step record)** — orchestrator writes it (Codex/Grok weren't at the
+walk), 2 legs Codex+Grok; NOTE the emission non-parallelism, the W₀ convention, the DEGENERATE_LOCI qOut/q
+artifact, the X-1 representative split, and the ops note (Grok's WL ablation leg blocked by 3 spurious kills) →
+**step 13 (card re-point)** `paper/steps/S11b_interface_coupling_law.tex` (Codex, its own 2 legs, G12c/G12d owed).

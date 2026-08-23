@@ -1,6 +1,27 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c (non-uniform transverse coupling); S11b CLOSED 2026-08-23
+## ⭐⭐⭐ CURRENT FRONT — S11c-a engine build (S11c non-uniform coupling); S11b CLOSED 2026-08-23
+
+⭐⭐ **S11c is a STAGED FAMILY a–e** (decision list `research/pde_ledger_v3/directives/S11c_decisions.md`
+`24853f3a`, N1–N15, 2 legs): **a**=background & geometry, **b**=variable-coeff brane operator/kernel,
+**c**=curved-interface bulk DtN closure, **d**=profile-conditioned spectrum, **e**=leakage/confinement/
+bench-optics falsification. Building **a** first (user chose staged: checkpoint before the blind WL engine).
+⭐ **S11c-a SPEC CLOSED `2926c71c`** (`directives/S11c_a_SHARED_PHYSICS.md`) after a long rule-15 arc
+(draft→my fold BRED defects→**Codex re-author**→repair-1→repair-2→final; both final legs PASS + CAS-verified;
+core: perturbation-`δp` ⇒ `J_s⁰=0` rest, drain off; N4 branch map; T-h own-law corruption). **SymPy build
+directive `304fa46f`** (2 legs; fixed my `ρ_m` re-origination → bind `LEDGER['rho_m']`; comparator paraphrase
+→ point at G8(a)+T7 whole). ⭐ μ_θ PIN: both engines use §3a's branched `μ_s^α`.
+⛔⛔ **IN-FLIGHT AT 2026-08-23 COMPACT: the SymPy ENGINE BUILD** (`buo60i510`, Codex, log
+`~/.s11_build/S11c_a_sympy_engine_build.log`) — had written `scripts/S11c_a_interface_geometry_sympy_audit.py`
+(~82 KB) + `scripts/S11c_a_exports.py` (~17 MB) but was STILL RUNNING. ⚠ NEXT SESSION: check if it
+completed (⛔ don't relaunch a running/spuriously-killed builder); verify the DELIVERABLE (not exit status;
+`reduction/derived_or_declared.py` + `engine_output_checks.py`); launch its **2 legs (fresh Agent + Grok,
+MANDATORY FORM ablation)**; fold; commit; **CHECKPOINT before the blind WL engine**. See memory
+`project_s11c_a_state`.
+
+---
+
+### S11b (CLOSED) — historical recap
 
 ⚠ **PATH BASE:** every S11b artifact pointer in this block (`scripts/…`, `mathematica/…`, `steps/…`,
 `directives/…`, `paper/…`) is relative to **`research/pde_ledger_v3/`** — e.g. `scripts/S11b_cross_engine_comparator.py`

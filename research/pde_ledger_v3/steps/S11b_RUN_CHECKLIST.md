@@ -120,7 +120,15 @@ physics-agrees (both `−Λ_A⁰/ρ_m`); adjudicated (rule 13) ALL 108 remaining
 emission-format/naming/representation, ZERO physics (102 Tuple-vs-Association STRUCTURE, 3 KEY qOut/q, 1 DIM
 W₀-convention, 2 CONTENT = the `i`-factor+`qOut==q` locus form and the equally-valid representative split
 PY-`st²` vs WL-`(∇·u)²`). Orchestrator's own check: `x1_independent_basis_count.py` (scratchpad).
-⬜ STILL OPEN for the STEP: **step 12 (the step record)** — orchestrator writes it (Codex/Grok weren't at the
-walk), 2 legs Codex+Grok; NOTE the emission non-parallelism, the W₀ convention, the DEGENERATE_LOCI qOut/q
-artifact, the X-1 representative split, and the ops note (Grok's WL ablation leg blocked by 3 spurious kills) →
-**step 13 (card re-point)** `paper/steps/S11b_interface_coupling_law.tex` (Codex, its own 2 legs, G12c/G12d owed).
+## ✅ Step record (step 12) DONE (`8ddccb74`, 2026-08-23)
+`steps/S11b_interface_coupling_law.md` — orchestrator-written; 2 legs Codex+Grok (they DISAGREED, Codex more
+rigorous; each finding adjudicated against the emitted objects, rule 13). Folded once: transverse `Im ω=0`
+CONDITIONAL on `μ⊥≥0`; breathing slice all three cuts incl. `Λ_X⁰=0`; adjudication "no physics CONTRADICTION"
+(coverage gaps + regular-domain locus equivalence, not "all format"); coeff map `B_div+2μ_S/3`; KEY =
+Association-key mismatches; DIM = drive-normalization; background-flow `|q v₀/ω|≳1`. Legs spuriously killed
+twice → recovered by serializing + an emitted-tag digest.
+⬜ STILL OPEN for the STEP: **step 13 (card re-point)** — re-point `paper/steps/S11b_interface_coupling_law.tex`
+to the unified step (Codex writes; the directive is orchestrator-written ⇒ 2 legs Codex+Grok FIRST per rule 7,
+then the card gets its own 2 legs = fresh Agent + Grok). Owed G12c (`Λ_A⁰` undefined + dropped `Λ_p⁰=0`
+qualifier) + G12d (background-flow limit, frozen-wall-width freeze); fold in the corrected transverse
+conditional-stability + `Λ_X⁰=0` breathing cut; check `paper/macros.tex` for suppressed fields.

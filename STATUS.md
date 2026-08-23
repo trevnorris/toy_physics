@@ -123,13 +123,25 @@ Adjudicated (rule 13): **ALL 108 disagreements are emission-format/naming/repres
 equally-valid representative split PY-`st²` vs WL-`(∇·u)²`, same span). `FINAL_OPERATIONAL_STATUS FAIL` = the
 long-standing SymPy-Tuple vs Wolfram-Association non-parallelism, not a physics divergence.
 
-⛔ **NEXT = the step record + the card re-point** (all engine work is DONE). **Step record** — the orchestrator
-writes it (Codex/Grok weren't at the walk), then 2 legs Codex+Grok; NOTE the emission non-parallelism finding,
-the W₀ thickness convention, the `DEGENERATE_LOCI` qOut/q artifact, the X-1 representative split (PY keeps `st²`
-/ WL keeps `(∇·u)²`), and the ops note (Grok's WL-repair ablation leg blocked by 3 spurious Mathematica kills).
-**Card** — re-point `paper/steps/S11b_interface_coupling_law.tex` (Codex writes, its own 2 legs; owed G12c
-`Λ_A⁰`-undefined + dropped `Λ_p⁰=0` qualifier; note G12d background-flow limit + frozen-wall-width freeze).
-Run-checklist: `steps/S11b_RUN_CHECKLIST.md`. Pattern = S10/S11. Full state in memory `project-s11b-interface-law-result`.
+⭐⭐ **Step record (step 12) DONE — `8ddccb74`** (`steps/S11b_interface_coupling_law.md`). Orchestrator-written;
+2 legs Codex+Grok (they DISAGREED — Codex the more rigorous; I adjudicated each against the emitted objects,
+rule 13). Folded once, corrections: transverse `Im ω=0` is CONDITIONAL on `μ⊥=μ_R+μ_S/2≥0` (μ_S free, no
+positivity §0; only DISSIPATION is unconditionally 0); breathing slice needs all three cuts incl. `Λ_X⁰=0`;
+the adjudication is "no physics CONTRADICTION" (not "all format") — there are COVERAGE gaps
+(`DEGENERATE_LOCI_SOLUTION` PY-solves/WL-empty; `ONSAGER_DETERMINABLE` PY-undecided/WL-solved), `DEGENERATE_LOCI`
+equal only on the regular domain q≠0 (differs at grazing q=0); coeff map WL-`(∇·u)²` ≡ SymPy `B_div+2μ_S/3`;
+3 KEY = Association-key-name mismatches (not qOut/q); DIM_THICKNESS = drive-normalization; background-flow fail
+`|q v₀/ω|≳1`. ⚠ OPS: the step-record legs were spuriously killed twice (memory healthy) — recovered by
+SERIALIZING + a mechanical emitted-tag digest so a leg finishes inside a sweep window.
+
+⛔ **NEXT = the card re-point (step 13) — the LAST piece of S11b.** Re-point
+`paper/steps/S11b_interface_coupling_law.tex` to the unified step (Codex writes, its own 2 legs = fresh Agent +
+Grok; the directive for it is orchestrator-written ⇒ 2 legs Codex+Grok FIRST, rule 7 TRIGGER). Owed: G12c
+`Λ_A⁰` used undefined + dropped `Λ_p⁰=0` qualifier; note G12d background-flow limit + the frozen-wall-width
+freeze; and fold in the step record's corrected transverse (conditional stability), the `Λ_X⁰=0` breathing
+cut, and the "region not prohibition" framing. ⚠ Check `paper/macros.tex` (some fields are suppressed in the
+default build). Run-checklist: `steps/S11b_RUN_CHECKLIST.md`. Pattern = S10/S11. Full state in memory
+`project-s11b-interface-law-result`.
 
 ---
 

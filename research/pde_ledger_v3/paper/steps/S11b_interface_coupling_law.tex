@@ -59,14 +59,32 @@ coordinate receives
 from each face.
 
 \paragraph{Permeable closure and its affinity.}
-A pressure--velocity parameterisation of the face flux is
+The assembled face law uses the affinity and velocity channels
 \[
-  J_\pm=\Lambda_p(\omega)\,\delta p
+  J_\pm=\Lambda_A(\omega)\,\mathcal A_\pm
        +\Lambda_V(\omega)\,V_\pm,
   \qquad
-  \Lambda(\omega)=\frac{\Lambda^0}{1-i\omega\tau}.
+  f_{X,\pm}=\Lambda_X(\omega)\,\mathcal A_\pm,
+  \qquad
+  \Lambda_I(\omega)=\frac{\Lambda_I^0}{1-i\omega\tau_I},
+  \quad I\in\{A,V,X\}.
 \]
-In the equal-relaxation-time face-response slice this gives
+Here \(\Lambda_A^0\), \(\Lambda_V^0\), and \(\Lambda_X^0\) are,
+respectively, the DC (\(\omega\to0\)) affinity-channel flux,
+velocity-channel flux, and reciprocal-traction-channel coefficients. The
+thermodynamic driving variable is
+\[
+  \mathcal A_\pm=\mu_s-\frac{\delta p_\pm}{\rho_m}.
+\]
+On the slab-side-off slice \(\mu_s=0\), the affinity channel becomes a raw
+pressure channel with the static map
+\[
+  \Lambda_p^0=-\frac{\Lambda_A^0}{\rho_m}.
+\]
+Its pressure contribution is therefore normalised by \(\rho_m\); replacing
+\(\delta p/\rho_m\) by an unnormalised pressure is a different law. In the
+equal-relaxation-time face-response slice the resulting pressure--velocity
+parameterisation, with \(\tau_A=\tau_V=\tau\), gives
 \[
   Z_{\mathrm{perm}}
   =\frac{\rho_m r+\Lambda_V^0}{y r-\Lambda_p^0},
@@ -75,12 +93,6 @@ In the equal-relaxation-time face-response slice this gives
   \qquad
   y=\frac{q_{\mathrm{out}}}{\omega}.
 \]
-The thermodynamic driving variable in the assembled law is the affinity
-\[
-  \mathcal A=\mu_s-\frac{\delta p}{\rho_m}.
-\]
-Its pressure contribution is therefore normalised by \(\rho_m\); replacing
-\(\delta p/\rho_m\) by an unnormalised pressure is a different law.
 
 \paragraph{Assembly by virtual displacement and balance law.}
 The virtual-displacement rule fixes the face tractions, including their sign,
@@ -105,8 +117,14 @@ two face conditions fix them.
 The resulting system couples the brane's in-plane displacement, its thickness
 degree of freedom, interfacial transfer, and both bulk face amplitudes. Closing
 its brane energy by symmetry yields \textbf{ten} independent quadratic
-invariants, not the five supplied to the construction. The five additional
-terms are
+invariants, not the five supplied to the construction. The count is ten under
+the shared specification's \S5 equivalence modulo total in-plane divergences;
+the basis representative is not unique, and the two engines retain equivalent
+representatives using, respectively, the traceless-symmetric strain square
+and \((\nabla\!\cdot u)^2\) while spanning the same ten-dimensional quotient.
+One engine initially over-counted eleven by omitting this quotient and was
+corrected. In the \((\nabla\!\cdot u)^2\) representative retained here, the
+five additional terms are
 \[
   \frac{K_L}{2}(\nabla\!\cdot u)^2,
   \qquad
@@ -136,9 +154,10 @@ interface to be \emph{passive}, gives
   \left(\Lambda_X^0=-\Lambda_V^0,\ \tau_V=\tau_X=0\right)
   \right],
 \]
-while \(\tau_A\) is unrestricted. A separate and \emph{conditional} test ---
-Onsager--Casimir reciprocity, which holds only if the underlying microdynamics
-is time-reversible --- fixes the full kernels,
+while \(\tau_A\) is unrestricted by the passivity conditions: there is no
+relation beyond the supplied \(\tau_A\geq0\). A separate and
+\emph{conditional} test --- Onsager--Casimir reciprocity, which holds only if
+the underlying microdynamics is time-reversible --- fixes the full kernels,
 \[
   \Lambda_X(\omega)=-\Lambda_V(\omega),
 \]
@@ -161,17 +180,26 @@ separate possible from impossible.
 
 \paragraph{Uniform transverse null.}
 On a uniform background the transverse mode is exactly decoupled: in-plane
-parity admits no \(e_W\leftrightarrow u_T\) bilinear. Its dispersion and
-imaginary part are
+parity admits no \(e_W\leftrightarrow u_T\) bilinear. This coupling vanishes
+identically, and the mode is non-dissipative unconditionally. In the
+\((\nabla\!\cdot u)^2\) energy representative retained on this card, its
+oscillator is
 \[
-  \rho_{\mathrm{br}}^0\omega^2=\mu_R k^2,
-  \qquad
-  \operatorname{Im}\omega=0.
+  \rho_{\mathrm{br}}^0\omega^2=\mu_\perp k^2,
+  \qquad \mu_\perp=\mu_R.
 \]
+It has a stable real frequency, \(\operatorname{Im}\omega=0\), only where
+\(\mu_\perp=\mu_R\geq0\). No positivity is assumed for the moduli, so
+\(\mu_\perp<0\) is admissible and gives the growing/decaying pair
+\(\omega=\pm i k\sqrt{|\mu_\perp|/\rho_{\mathrm{br}}^0}\). (In the
+cross-engine coefficient-basis comparison, the same physical stiffness is
+\(\mu_R\) in the blind-Wolfram/card \((\nabla\!\cdot u)^2\) representative
+and \(\mu_R+\mu_S/2\) in the SymPy traceless-symmetric-strain representative;
+this is not the card's working formula.)
 The dimension of the vanishing coupling is undetermined because a coefficient
 that vanishes identically has no dimension. \textbf{This uniform transverse
 null does not settle whether confinement is unconditional;} that is a
-non-uniform question.
+non-uniform question deferred to C.
 
 \paragraph{Breathing-mode stability boundary.}
 On the soluble slice \(k=0\), with impermeable faces and no reciprocal
@@ -196,12 +224,14 @@ For \(K_0>0\), every nonzero imaginary part on this slice comes from
 propagating bulk radiation resistance, which survives impermeability.
 
 \paragraph{Departure --- the finite-memory velocity channel, and what it costs.}
-The face-response algebra admits a finite-memory branch on which a velocity
-coupling has evanescent \(\operatorname{Re}Z\neq0\) iff \(\omega\tau\neq0\),
-approaching the impermeable response as \(\omega\tau\to\infty\). Its frequency
-profile is a Debye loss peak at \(\omega\tau\sim1\), vanishing at both ends. On
-that branch the coupling dissipates only at nonzero \(\omega\tau\), so slow
-disturbances see a leak which fast disturbances do not.
+On the pure-velocity branch \(\Lambda_p^0=0\), so the raw-pressure DC channel
+is off and the coupling is velocity-driven. The face-response algebra admits
+finite memory on this branch, with evanescent \(\operatorname{Re}Z\neq0\) iff
+\(\omega\tau\neq0\), approaching the impermeable response as
+\(\omega\tau\to\infty\). Its frequency profile is a Debye loss peak at
+\(\omega\tau\sim1\), vanishing at both ends. On that branch the coupling
+dissipates only at nonzero \(\omega\tau\), so slow disturbances see a leak
+which fast disturbances do not.
 
 This branch lies \emph{outside} the passive region: it is available only if the
 interface draws on an energy reservoir. \textbf{That is a statement of price,
@@ -221,9 +251,14 @@ on the thickness coordinate is \(\rho_m/(2\alpha)\) per face, not the predicted
 \(\rho_m/\alpha\) per face.
 
 \paragraph{Inputs and regime.}
-The only source records for this card are
+The source of record for this card is the unified step record
+\StageFile{research/pde\_ledger\_v3/steps/S11b\_interface\_coupling\_law.md}.
+The historical
 \StageFile{research/pde\_ledger\_v3/steps/S11bA\_interface\_response.md} and
-\StageFile{research/pde\_ledger\_v3/steps/S11bB\_interface\_assembly.md}.
+\StageFile{research/pde\_ledger\_v3/steps/S11bB\_interface\_assembly.md} are
+archival pre-unification history, not current sources. S11b is one unified
+export-chain step subsuming A and B; C, the non-uniform transverse coupling,
+is a separate later step.
 The interface assembly and transverse result use a uniform background. The
 breathing root statement is confined to the \(k=0\), impermeable,
 no-reciprocal-coupling slice; it is not the general dispersion.
@@ -232,13 +267,43 @@ no-reciprocal-coupling slice; it is not the general dispersion.
 % build.  The scope of the checks and every limitation below must remain
 % visible.
 \paragraph{Verification scope.}
-The two engines agree on the recorded assembled values, but their
-\texttt{VERDICT: PASS} strings mean only that each engine's internal checks do
-not contradict one another. They are not verdicts on the physics or on the
-correctness of supplied objects.
+The SymPy engine imports the S11 \texttt{LEDGER}; the blind Wolfram engine
+imports nothing and re-derives the objects, making it the only cross-engine
+control. Their transcripts were compared by the frozen T7 comparator
+\StageFile{research/pde\_ledger\_v3/scripts/S11b\_cross\_engine\_comparator.py},
+with the recorded run in
+\StageFile{research/pde\_ledger\_v3/scripts/out/S11b\_cross\_engine\_comparison.out}.
+No compared object is a physics contradiction. The recorded disagreements are
+emission format (SymPy \texttt{Tuple} versus Wolfram \texttt{Association}),
+the coefficient-basis representative split, naming, a \(W_0\)-normalisation
+convention, and a denominator-clearing form/domain artifact: the
+\texttt{DEGENERATE\_LOCI} loci coincide on the regular domain and differ only
+where the cleared denominator vanishes, including the grazing locus \(q=0\).
+A few remaining cases are coverage gaps in which one engine solves an object
+the other leaves open, not conflicts.
 
 \paragraph{Known limits --- recorded, not fixed.}
 \begin{enumerate}[leftmargin=2.2em]
+\item \textbf{The background-flow correction is uncarried.} The rest-frame
+bulk operator omits the convective correction
+\(O(v_0|q_n|/\omega)\). The engines emit the relative term
+\(-2qv_0/\omega\) (\texttt{RELATIVE\_TERM}), so first order fails where
+\(|qv_0/\omega|\gtrsim1\). In the regime \(kc_{s0}\gg|\omega|\),
+\(|q|\simeq k\), and failure requires
+\[
+  \frac{|v_0|}{c_{s0}}\frac{kc_{s0}}{|\omega|}\gtrsim1.
+\]
+Thus large \(kc_{s0}/|\omega|\) is necessary, not sufficient. The same steady
+drain \(v_0\) is the candidate reservoir named for the departure; this is a
+standing scope limit, not an active term in the assembled operator.
+
+\item \textbf{The wall width is frozen.} The slab inertia
+\(\rho_{\mathrm{br}}^0\equiv\rho_{4D}^0 W_0\) \emph{is} the imported
+\(\rho_{\mathrm{br}}\); S11's wall width is held fixed, so \(\rho_{\mathrm{br}}\)
+already is the slab-integrated three-inertia. The thickness response is taken at
+this frozen \(W_0\). This is a recorded freeze, not a fix; a dynamical wall width
+would carry terms this step does not.
+
 \item \textbf{The supplied objects cannot be falsified by this build.} The
 affinity, branch prescription, mass balance, virtual-displacement rule, and row
 structure were supplied, so both engines transcribed them and an error would

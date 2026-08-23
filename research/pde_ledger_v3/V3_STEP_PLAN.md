@@ -532,26 +532,27 @@ mode).
 
 #### ⭐⭐ S11b IS SPLIT INTO THREE — ⛔ AND S11b IS **NOT CLOSED** UNTIL C IS {#s11b-split}
 
-> ⭐⭐ **UNIFIED REWRITE UNDERWAY (2026-08-19) — this section's A/B/C framing is SUPERSEDED.** A+B are being
-> rebuilt as **ONE unified export-chain step** (decision list `directives/S11b_unified_decisions.md`
-> `ddd0ae4c`; unified spec `directives/S11b_SHARED_PHYSICS.md` `1a2395a3`, two legs Codex+Grok folded once).
-> ⭐ Build directives DONE (`9bd2f184`). **The SymPy engine is DONE** (`864d6f41`; 3 build rounds — physics
-> correct throughout, 2 emission-fidelity repair rounds, hard stop; `S11b_exports.py` = 1916 rows +
-> committed `.out`). **The immediate NEXT is the blind WOLFRAM engine** (two legs), then the T7 comparator,
-> step record and card. ⚠ The **"✅ CLOSED"** tags below are the **OLD pre-chain** sense — the physics stands;
-> the SymPy ledger rows now EXIST (the WL engine + comparator remain).
-> ⛔ **SUPERSEDED below:** *"C runs immediately after B's rebuild"*, *"C is not a separate step"*, and the
-> table's **"S11b-C ▶ NEXT"** — per G1, **C is a separate LATER step** (a later build **after** the unified
-> A+B build closes; ⛔ not immediately after B, and ⛔ not the immediate NEXT); no renumbering (still
-> S11b-C). ⇒ live NEXT in `STATUS.md`'s top block and memory `project-s11b-interface-law-result`.
+> ⭐⭐⭐ **S11b (A+B unified) is CLOSED (2026-08-23, `565b3fe8`) and C is renamed `S11c`.** This section's
+> whole A/B/C framing — the "NOT CLOSED until C", the "no renumbering", the "C runs immediately after B" — is
+> **SUPERSEDED**. S11b was rebuilt as **ONE unified export-chain step** ("the linear brane–bulk interface
+> coupling law"; decision list `directives/S11b_unified_decisions.md` `ddd0ae4c`, spec
+> `directives/S11b_SHARED_PHYSICS.md` `1a2395a3`). SymPy engine `864d6f41` + blind WL engine `ec89f9df`
+> cross-checked by the frozen T7 comparator (`17fe32c8`, re-run `fba6a34c` — physics agree; the **X-1**
+> energy-basis over-count 11→10 was corrected, `53fcd98d`); step record `8ddccb74`; card `565b3fe8`. **All 13
+> step-run steps + export integrity done.**
+> ⭐ **C is now `S11c`** — a **separate LATER step** (G1; user-confirmed 2026-08-23): the non-uniform,
+> variable-coefficient transverse coupling (is light's confinement unconditional?). ⛔ The old "no
+> renumbering / C is part of S11b" language is dead — do NOT reuse the `S11b` slug for S11c.
+> ⇒ ⭐ **scope: `steps/S11c_SCOPE.md`**; live NEXT in `STATUS.md`'s top block + memory
+> `project-s11b-interface-law-result`.
 
-⛔⛔ **CORRECTED 2026-08-05 (user).** ⚠ Several docs — including a memory titled *"S11b CLOSED"* — read as
-though S11b were finished. ⛔ **It is not.** The split below was for **specification tractability**: three
-attempts to spec the whole interface in one pass were rejected. ⇒ ⭐ **A, B and C are ONE STEP**, and
-⛔ **S11b closes only when C closes.** ⚠ A ledger that calls a step closed when a third of it was never
-built overstates what the light sector establishes.
-⇒ ⭐ **C runs immediately after B's rebuild** — ⛔ it is a FIRST BUILD, not a rebuild, since C never existed.
-⭐ ⛔ **No renumbering:** C is genuinely part of S11b, ⛔ not a separate step.
+⚠ **History (both superseded by the banner above).** A 2026-08-05 user correction had said "A, B and C are
+ONE STEP; S11b closes only when C closes; no renumbering; C runs immediately after B." G1 (2026-08-19) then
+made C a **separate later step**, and the 2026-08-23 close of the unified A+B **`S11b`** plus the C → **`S11c`**
+rename retire that framing entirely. ⭐ The lasting content: the split was for **specification tractability**
+(three attempts to spec the whole interface in one pass were rejected), and the uniform result (S11b) does
+NOT close the non-uniform question (S11c) — a ledger that called the light sector finished while S11c is
+unbuilt would overstate it.
 
 
 
@@ -560,9 +561,8 @@ and a third was rejected for mandating a non-uniform background while fixing pla
 
 | | scope | state |
 |---|---|---|
-| **S11b-A** | the bulk's response to moving faces + the projection identity | ✅ **CLOSED** — `steps/S11bA_interface_response.md` |
-| **S11b-B** | the **homogeneous** assembly ⇒ does the longitudinal radiate or stay bound | ✅ **CLOSED** — `steps/S11bB_interface_assembly.md`. ⚠ **A's velocity leak lies OUTSIDE the passive region ⇒ it costs a named reservoir; ⛔ it is NOT forbidden.** Passivity + Onsager are classifications, ⛔ not gates, and both assume an equilibrium reference state this model does not have (`v₀ ≠ 0`) |
-| **S11b-C** | the **non-uniform** transverse coupling ⇒ is light's confinement unconditional | ▶ **NEXT.** ⚠ B proved the uniform coupling is **identically zero**, so a uniform-limit control is now **known-vacuous** |
+| **S11b-A + S11b-B** | bulk face response + projection identity, and the **homogeneous** assembly (does the longitudinal radiate or stay bound) | ✅ **SUBSUMED into the closed unified `S11b`** (`565b3fe8`). Archival A/B records: `steps/S11bA_interface_response.md`, `steps/S11bB_interface_assembly.md`. ⚠ **The velocity leak lies OUTSIDE the passive region ⇒ it costs a named reservoir; ⛔ NOT forbidden** — passivity + Onsager are classifications, not gates, and both assume an equilibrium reference state this model lacks (`v₀ ≠ 0`) |
+| **`S11c`** (was S11b-C) | the **non-uniform** variable-coefficient transverse coupling ⇒ is light's confinement unconditional | ▶ **NEXT.** ⚠ the uniform coupling is **identically zero** (proven in S11b), so a uniform-limit control is **known-vacuous**. ⇒ ⭐ scope: `steps/S11c_SCOPE.md` |
 
 ⭐ **The seam is real:** the longitudinal mode's fate needs no gradients; light's confinement needs them.
 ⇒ Full state, traps, and C's requirements: **`steps/S11b_HANDOFF.md`**.

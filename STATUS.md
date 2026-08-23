@@ -141,12 +141,17 @@ corrected), step record `8ddccb74`, and card `paper/steps/S11b_interface_couplin
 slice map residual 0, transverse `μ_⊥=μ_R` representative) → folded once (added the frozen-wall-width freeze +
 `𝒜→𝒜_±`); card stub-compiles clean. All 13 step-run steps done; all export-integrity items ✅.
 
-⛔ **NEXT (the S11b light sector is not finished until C):** **S11b-C** — the **non-uniform** variable-coefficient
-transverse coupling (is light's confinement unconditional?), a separate later step with its own decision
-list/spec. The uniform coupling is identically zero (so a uniform-limit control for C is known-vacuous); C's
-coefficient is bounded by **bench-top optics** (falsifiable with no cosmology/gravity sector). ⭐ Broader
-frontier per memory: remaining force sectors → comprehensive S1–S8 substrate register → **throat interior**.
-Full state in memory `project-s11b-interface-law-result`. Run-checklist: `steps/S11b_RUN_CHECKLIST.md`.
+⛔ **NEXT (the S11b light sector is not finished until C, now `S11c`):** **S11c** — the **non-uniform**
+variable-coefficient transverse coupling (is light's confinement unconditional?), a separate later step with
+its own decision list + spec (⛔ do not reuse the `S11b` slug; G1 renamed C → S11c). ⭐ **Start at the scope
+doc `steps/S11c_SCOPE.md`** — it consolidates the five re-validate-in-the-decision-list requirements (tilted
+faces; Eulerian vs material density; plane waves are NOT eigenmodes — ⛔ no global dispersion relation;
+uniform-limit control is known-vacuous; **falsification-first** — the coefficient is bounded by bench-top
+optics), the carry-ins (`O(v₀|q_n|/ω)`, the frozen-wall reconciliation), the G14 scope boundary (nonlinear
+radiation audit is NOT S11c), and the "split S11c finer than S11b" lesson. Then author the S11c decision list
+(2 legs, rule 7 TRIGGER). ⭐ Broader frontier: remaining force sectors → comprehensive S1–S8 substrate
+register → **throat interior**. Full state in memory `project-s11b-interface-law-result`. Run-checklist:
+`steps/S11b_RUN_CHECKLIST.md`.
 
 ---
 

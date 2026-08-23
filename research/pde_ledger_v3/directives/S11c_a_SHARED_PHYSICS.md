@@ -221,6 +221,10 @@ RHOBR-CONSTANT:
     ρ_4D,bg⁰(y) ≡ rho_br/W_bg(y) .
 ```
 
+`W_bg` varies in every branch. These representatives are the two factorizations of
+`ρ_br = ρ_4D W`; an independent `ρ_4D(x)` at frozen `W` (pure `N4`, with no `N3`) is not a background
+in this build.
+
 For each representative, construct `Σ_E⁰(y) ≡ ρ_4D,bg⁰(y)W_bg(y)` and compute its full in-plane gradient.
 Do not simplify either representative into the other before T-g, T-h, or T-i. Emit the two computed maps
 under `S11CA_BACKGROUND_DENSITY_MAP`.
@@ -244,14 +248,23 @@ given in §3; an engine may not substitute another parameterization.
 For each anchoring and density representative, name the supplied background state
 
 ```text
-𝔅⁰ ≡ {W_bg, μ_R,bg, ρ_4D,bg⁰, ρ_br,bg⁰, θ⁰, p_s⁰, J_s⁰, boundary loads} .
+𝔅⁰ ≡ {W_bg, μ_R,bg, ρ_4D,bg⁰, ρ_br,bg⁰, θ⁰, V_s⁰, J_s⁰, 𝒜_s⁰, boundary loads} .
 ```
 
 Because `θ` is defined relative to the selected local background density, set `θ⁰ ≡ 0`; the spatial
 background density is already carried by `ρ_4D,bg⁰` and is not counted again through `θ⁰`.
-The profile is declared **externally held** by the named support bundle
-`𝒮_hold⁰ ≡ {f_hold⁰(x), t_hold,s⁰(x)}`. The face backgrounds `p_s⁰(x)` and `J_s⁰(x)` are not set to zero,
-and their in-plane gradients are not excluded. Emit the state and premise, unchanged, as supplied objects:
+For both §2c anchoring branches, the profile is declared **support-stabilised** at background order by the
+named support bundle `𝒮_hold⁰ ≡ {f_hold⁰(x), t_hold,s⁰(x)}`. Supply, rather than compute, the
+leading-order background
+
+```text
+V_s⁰ = 0 ,                    J_s⁰ = 0 ,                    𝒜_s⁰ = 0 .
+```
+
+Here `μ_s⁰ = 0` because `θ⁰ = e_W⁰ = 0` and `U` is quadratic, while `δp_s⁰ = 0` by definition of
+the pressure perturbation. Any static background face pressure `p_s⁰` carried by the support-stabilised
+curved brane enters only as the mechanical background traction `t_hold,s⁰` in `𝒮_hold⁰`, never in
+`𝒜_s` and never through `Λ_A(ω)`. Emit the state and premise, unchanged, as supplied objects:
 
 ```text
 S11CA_BACKGROUND_STATE
@@ -295,6 +308,13 @@ h_s^M(x,t) = s W_bg(χ(x,t))/2  + ζ_s(χ(x,t),t) ,
 F_s^α(x,w,t) ≡ w − h_s^α(x,t) ,                 α ∈ {L,M} .
 ```
 
+The graph thickness and slab mass fixed by these face maps are
+
+```text
+W^α(x,t) ≡ h_+^α(x,t) − h_−^α(x,t) ,      Σ^α ≡ ρ_4D^α W^α ,
+ρ_4D^α = ρ_4D,bg⁰(1+θ) .
+```
+
 The slab interior is selected by `sF_s^α < 0`. The outward unit normal `n̂_s^α` is the unit vector normal
 to `F_s^α=0` satisfying the binding orientation law
 
@@ -311,10 +331,9 @@ a_s^α(x,t) ≡ sqrt(1 + |∇_x h_s^α(x,t)|²) .
 
 ### 3b · Face displacement, velocity, flux, traction, and balance
 
-Write each total face pressure as `p_s^α = p_s^{0,α} + δp_s^α`; the first variation `δp_s^α` is the
-quantity denoted `δp_s` in the uniform S11b law. Decompose every other face field about its declared §2d
-background in the same way, but obtain the variation of `J_s^α` from the single relative-flux definition
-below rather than introducing an independent flat flux.
+For each branch, `δp_s^α` is the perturbation bulk face pressure, with background value zero, and is the
+quantity denoted `δp_s` in the uniform S11b law. Obtain the variation of `J_s^α` from the single
+relative-flux definition below rather than introducing an independent flat flux.
 
 For each branch, the only permitted virtual face displacement and face velocity vector are obtained from
 the supplied parameterization:
@@ -329,8 +348,8 @@ Use the same `V_s^α` in every object below. With all bulk quantities traced at 
 ```text
 J_s^α ≡ ρ_m (v_bulk,s − v_face,s^α)·n̂_s^α ,
 n̂_s^α·v_bulk,s = V_s^α + J_s^α/ρ_m ,
-𝒜_s^α ≡ μ_s^α − p_s^α/ρ_m ,
-t_s^α ≡ −(p_s^α + Λ_X𝒜_s^α)n̂_s^α ,
+𝒜_s^α ≡ μ_s^α − δp_s^α/ρ_m ,
+t_s^α ≡ −(δp_s^α + Λ_X(ω) 𝒜_s^α)n̂_s^α + t_hold,s⁰ ,
 J_s^α − Λ_A𝒜_s^α − Λ_VV_s^α = 0 .
 ```
 
@@ -346,7 +365,8 @@ mass balance are
 ```
 
 Neither `a_s^α` may be replaced by one before the shape derivative is taken. The background values
-`p_s⁰` and `J_s⁰` remain in these laws during differentiation.
+obey `J_s⁰=0`, so the would-be `δa_s·J_s⁰` contribution vanishes; the true-area measure remains in the
+exact laws and its shape derivative acts on the perturbation flux and traction.
 
 ### 3c · Shifted traces and the dynamic window
 
@@ -429,7 +449,7 @@ Every comparison emits operand A, operand B, and the computed residual. No resid
 
 ### 5a · Representation-invariance routes (`N4`/`N6`)
 
-For each physical anchoring, compute T-g, T-c, T-d, and T-i by two independent routes:
+For each physical anchoring, compute T-g, T-h, T-c, T-d, and T-i by two independent routes:
 
 1. direct Eulerian graph/level-set differentiation from §§2c and 3;
 2. material-coordinate differentiation using `x=x(X,t)` and the exact face-flattening coordinate
@@ -447,6 +467,8 @@ the two routes. For every compared T-object emit the two operators and their dif
 For the one-sided independence control, mutate only one route at its source and recompute downstream:
 
 - for T-g, replace `Σ_E(x(X,t),t)` by `Σ_E(X,t)` only in the direct-route definition of `Σ_mat`;
+- for T-h, apply the advection-omission corruption `Σ_E(x(X,t),t) → Σ_E(X,t)` only on the direct
+  route;
 - for T-c, T-d, and T-i, reverse only the `x¹` first jet of `W_bg` in the upper-face direct-route
   `F_+^α`/`R_+^α` source, leaving the material-coordinate route and every other source unchanged.
 

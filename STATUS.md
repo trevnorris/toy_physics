@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a engine build (S11c non-uniform coupling); S11b CLOSED 2026-08-23
+## ⭐⭐⭐ CURRENT FRONT — S11c-a: SymPy engine CLOSED, blind WL engine NEXT; S11b CLOSED 2026-08-23
 
 ⭐⭐ **S11c is a STAGED FAMILY a–e** (decision list `research/pde_ledger_v3/directives/S11c_decisions.md`
 `24853f3a`, N1–N15, 2 legs): **a**=background & geometry, **b**=variable-coeff brane operator/kernel,
@@ -11,14 +11,23 @@ bench-optics falsification. Building **a** first (user chose staged: checkpoint 
 core: perturbation-`δp` ⇒ `J_s⁰=0` rest, drain off; N4 branch map; T-h own-law corruption). **SymPy build
 directive `304fa46f`** (2 legs; fixed my `ρ_m` re-origination → bind `LEDGER['rho_m']`; comparator paraphrase
 → point at G8(a)+T7 whole). ⭐ μ_θ PIN: both engines use §3a's branched `μ_s^α`.
-⛔⛔ **IN-FLIGHT AT 2026-08-23 COMPACT: the SymPy ENGINE BUILD** (`buo60i510`, Codex, log
-`~/.s11_build/S11c_a_sympy_engine_build.log`) — had written `scripts/S11c_a_interface_geometry_sympy_audit.py`
-(~82 KB) + `scripts/S11c_a_exports.py` (~17 MB). ⭐ **COMPLETED exit 0 (~224 s) + DELIVERABLE VERIFIED WHOLE**
-(2093 frozen rows, all inherited preserved, 19 primary export keys, D3 proved equal, three-file digests match,
-`rho_m` BOUND not re-originated, all T-0…T-i + 5 controls ran); ⛔ UNCOMMITTED (rule 9, legs pending). ⚠ NEXT
-SESSION (⛔ builder is DONE — don't relaunch): launch its **2 legs (fresh Agent + Grok, MANDATORY FORM
-ablation)** on the deliverable; fold; commit; **CHECKPOINT before the blind WL engine**. See memory
-`project_s11c_a_state`.
+⭐⭐ **S11c-a SymPy ENGINE CLOSED — committed `9b6438fa`** (build `buo60i510` → reviewed baseline `488c2a65`
+→ §5a repair `b41ueycyz`). `scripts/S11c_a_interface_geometry_sympy_audit.py` (~2096 lines) +
+`scripts/S11c_a_exports.py` (2093 frozen rows). **Two review rounds, four fresh legs total.** Round 1 (Grok +
+Agent) found a BLOCKING defect: §5a route-2 (material-coordinate) was a byte-identical alias of route-1 for
+T-c/T-d/T-i/T-g — a control that could not fail. **Codex repair** (directive relayed both legs VERBATIM,
+rule 15): reimplemented route-2 as the genuine `w′` face-flattening derivation (`build_material_face_source`,
+covector mapped back via `(dx/dX)^-T`) + one-sided corruption on the direct route only + T-c′ two operands.
+**Round 2 (fresh Grok + Agent): BOTH CLEAR — safe to commit.** Primary T-0…T-i correct (independent derivs
+MATCH; orientation `s(n̂·ŵ)>0`; `ρ_m` bound; virtual `δ_vu`) + form-ablation clean; §5a route-2 now genuinely
+independent for all five (one-sided AND two-sided corruption isolate); uniform-limit→S11b exact (19
+primaries). Step-record notes (NOT defects): T-c′ residual is a definitional identity; T-g's §5a residual is
+a structural determinant identity (block-triangular Jacobian ⇒ det=det(F)·thickness) — independent
+constructions, weak only vs a shared density/anchor mistake ⇒ WL engine is the cross-check.
+⭐ **NEXT = the blind WOLFRAM (WL) engine** (imports nothing, re-derives) — the real cross-engine check.
+⛔⛔ its build directive MUST guard §5a route-2 against the same alias shortcut. Then frozen T7 comparator →
+S11c-a step record (carry the 3 notes) → family card. **CHECKPOINT with user (their staged choice) before
+launching WL.** See memory `project_s11c_a_state`.
 
 ---
 

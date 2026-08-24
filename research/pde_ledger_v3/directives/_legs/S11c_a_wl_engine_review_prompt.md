@@ -4,7 +4,7 @@
 `/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_a_interface_geometry_mathematica_audit.wl`
 (~1570 lines). It is a **blind** engine: it imports nothing and re-derives every object from the spec's
 equations, streaming `WL_S11CA_<QUANTITY>` tags to stdout in Mathematica `InputForm`. A full run is heavy
-(~15 minutes, ~4–5 GB RSS).
+(~20 minutes, peaks ~9-10 GB RSS).
 
 ## What to check
 This engine takes the **closed** S11c-a spec and computes the **first-order shape derivative of every S11b
@@ -90,7 +90,7 @@ is weak evidence — state exactly what you derived, what you ablated, and the l
 
 ## ⛔ Mathematica operational constraints — Wolfram has a TWO-SEAT licence
 ⛔ Copy the `.wl` to `/tmp` and ablate the **COPY**. ⛔ Never modify the working tree.
-⛔ **Wrap EVERY kernel run in `timeout 1800`** (a full engine run is ~15 min; 1800 s = 30 min leaves margin).
+⛔ **Wrap EVERY kernel run in `timeout 1800`** (a full engine run is ~20 min at ~9-10 GB; 1800 s leaves margin).
 A 1800 s hit is a FAILED ablation — report it and move on; ⛔ never raise the timeout.
 ⛔ **Run at most ONE kernel at a time** (the licence has two seats and the other is reserved). ⛔ Never launch
 two `wolframscript` runs concurrently.

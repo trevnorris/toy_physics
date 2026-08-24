@@ -140,6 +140,10 @@ muRValue = muR (1 + etaBg m1Jet[0, 0, 0]);
 widthJetRule[orders_List] := With[{total = Total[orders]},
   Apply[Derivative, orders][widthProfile][x1, x2, x3] ->
     (sigmaW/LW^(total - 1)) (w1Jet @@ orders)];
+reversedWidthJetRule[orders_List] := With[{total = Total[orders]},
+  Apply[Derivative, orders][widthProfileReversedX1][x1, x2, x3] ->
+    (sigmaW/LW^(total - 1)) If[orders === {1, 0, 0},
+      -(w1Jet @@ orders), w1Jet @@ orders]];
 muRJetRule[orders_List] := With[{total = Total[orders]},
   Apply[Derivative, orders][muRProfile][x1, x2, x3] ->
     (muR/W0) (sigmaW/LW^(total - 1)) (m1Jet @@ orders)];
@@ -150,21 +154,35 @@ profileJetRules = Join[
   Flatten[Table[If[1 <= i + j + k <= 3,
       {widthJetRule[{i, j, k}], muRJetRule[{i, j, k}]}, Nothing],
     {i, 0, 3}, {j, 0, 3}, {k, 0, 3}]]];
+reversedWidthProfileJetRules = Join[
+  {widthProfileReversedX1[x1, x2, x3] -> widthValue},
+  Flatten[Table[If[1 <= i + j + k <= 3,
+      {reversedWidthJetRule[{i, j, k}]}, Nothing],
+    {i, 0, 3}, {j, 0, 3}, {k, 0, 3}]]];
+corruptedProfileJetRules = Join[profileJetRules,
+  reversedWidthProfileJetRules];
 
 materialToEulerianRules = Thread[materialCoordinates -> spatialCoordinates];
 
-applyProfileJets[expression_, ablatedDirection_:0,
-    reversedFirstJet_:False] := Module[{result, target},
-  result = expression /. materialToEulerianRules /. profileJetRules;
+applySelectedProfileJets[expression_, rules_List,
+    ablatedDirection_:0] := Module[{result, target},
+  result = expression /. materialToEulerianRules /. rules;
   If[MemberQ[spatialDirections, ablatedDirection],
     target = UnitVector[dimBrane, ablatedDirection];
     result = result /. {
       w1Jet @@ target -> 0,
       m1Jet @@ target -> m1Jet @@ target}];
-  If[TrueQ[reversedFirstJet], result = result /. w1Jet[1, 0, 0] ->
-      -w1Jet[1, 0, 0]];
   computedExpression[result]
 ];
+applyProfileJets[expression_, ablatedDirection_:0] :=
+  applySelectedProfileJets[expression, profileJetRules, ablatedDirection];
+applyCorruptedProfileJets[expression_, ablatedDirection_:0] :=
+  applySelectedProfileJets[expression, corruptedProfileJetRules,
+    ablatedDirection];
+
+directWidthProfileSource[coordinates_List, reversedFirstJet_:False] :=
+  If[TrueQ[reversedFirstJet],
+    widthProfileReversedX1 @@ coordinates, widthProfile @@ coordinates];
 
 rho4Profile["RHO4_CONSTANT", coordinates_List] := rhoBr/W0;
 rhoBrProfile["RHO4_CONSTANT", coordinates_List] :=
@@ -176,27 +194,31 @@ rho4Profile["RHOBR_CONSTANT", coordinates_List] :=
 inverseCoordinates[] := spatialCoordinates - waveOrder uVector[spatialCoordinates];
 materialMap[] := materialCoordinates + waveOrder uVector[materialCoordinates];
 
-heightSource[branch_String, sign_] := Module[{inverse},
+heightSource[branch_String, sign_, reversedFirstJet_:False] := Module[
+  {inverse},
   inverse = inverseCoordinates[];
   Switch[branch,
     "LAB_HELD",
-      sign (widthProfile @@ spatialCoordinates)/2 +
+      sign directWidthProfileSource[spatialCoordinates,
+        reversedFirstJet]/2 +
         waveOrder zetaSource[inverse, sign],
     "MATERIAL_ADVECTED",
-      sign (widthProfile @@ inverse)/2 +
+      sign directWidthProfileSource[inverse, reversedFirstJet]/2 +
         waveOrder zetaSource[inverse, sign]]
 ];
 
-levelSetSource[branch_String, sign_] :=
-  normalCoordinate - heightSource[branch, sign];
+levelSetSource[branch_String, sign_, reversedFirstJet_:False] :=
+  normalCoordinate - heightSource[branch, sign, reversedFirstJet];
 
-parametricFaceMapSource[branch_String, sign_] := Module[
+parametricFaceMapSource[branch_String, sign_, reversedFirstJet_:False] := Module[
   {mapped, vertical},
   mapped = materialMap[];
   vertical = Switch[branch,
-    "LAB_HELD", sign (widthProfile @@ mapped)/2 +
+    "LAB_HELD", sign directWidthProfileSource[mapped,
+      reversedFirstJet]/2 +
       waveOrder zetaSource[materialCoordinates, sign],
-    "MATERIAL_ADVECTED", sign (widthProfile @@ materialCoordinates)/2 +
+    "MATERIAL_ADVECTED", sign directWidthProfileSource[
+      materialCoordinates, reversedFirstJet]/2 +
       waveOrder zetaSource[materialCoordinates, sign]];
   Append[mapped, vertical]
 ];
@@ -205,21 +227,23 @@ flatteningCoordinateSource[branch_String] := Module[{mapped, denominator},
   mapped = materialMap[];
   denominator = Switch[branch,
     "LAB_HELD", (widthProfile @@ mapped) +
-      waveOrder (deltaWidth @@ Append[materialCoordinates, time]),
+      waveOrder dofWidth (deltaWidth @@ Append[materialCoordinates, time]),
     "MATERIAL_ADVECTED", (widthProfile @@ materialCoordinates) +
-      waveOrder (deltaWidth @@ Append[materialCoordinates, time])];
-  (normalCoordinate - waveOrder (zetaCenter @@
+      waveOrder dofWidth (deltaWidth @@ Append[materialCoordinates, time])];
+  (normalCoordinate - waveOrder dofCenter (zetaCenter @@
       Append[materialCoordinates, time]))/denominator
 ];
 
-graphNormalSource[branch_String, sign_] := Module[{height, gradient},
-  height = heightSource[branch, sign];
+graphNormalSource[branch_String, sign_, reversedFirstJet_:False] := Module[
+  {height, gradient},
+  height = heightSource[branch, sign, reversedFirstJet];
   gradient = D[height, #] & /@ spatialCoordinates;
   sign Join[-gradient, {1}]/Sqrt[1 + gradient.gradient]
 ];
 
-graphMeasureSource[branch_String, sign_] := Module[{height, gradient},
-  height = heightSource[branch, sign];
+graphMeasureSource[branch_String, sign_, reversedFirstJet_:False] := Module[
+  {height, gradient},
+  height = heightSource[branch, sign, reversedFirstJet];
   gradient = D[height, #] & /@ spatialCoordinates;
   Sqrt[1 + gradient.gradient]
 ];
@@ -247,19 +271,22 @@ parametricMeasureSource[branch_String, sign_] := Module[
   Sqrt[Det[tangents.Transpose[tangents]]]/Det[spatialJacobian]
 ];
 
-faceVelocitySource[branch_String, sign_] :=
-  D[parametricFaceMapSource[branch, sign], time] /.
+faceVelocitySource[branch_String, sign_, reversedFirstJet_:False] :=
+  D[parametricFaceMapSource[branch, sign, reversedFirstJet], time] /.
     materialToEulerianRules;
 
-virtualFaceDisplacementSource[branch_String, sign_] := Module[
+virtualFaceDisplacementSource[branch_String, sign_,
+    reversedFirstJet_:False] := Module[
   {virtualMap, mapped, vertical},
   mapped = materialCoordinates + waveOrder uVector[materialCoordinates] +
     virtualOrder virtualUVector[materialCoordinates];
   vertical = Switch[branch,
-    "LAB_HELD", sign (widthProfile @@ mapped)/2 +
+    "LAB_HELD", sign directWidthProfileSource[mapped,
+      reversedFirstJet]/2 +
       waveOrder zetaSource[materialCoordinates, sign] +
       virtualOrder virtualZetaSource[materialCoordinates, sign],
-    "MATERIAL_ADVECTED", sign (widthProfile @@ materialCoordinates)/2 +
+    "MATERIAL_ADVECTED", sign directWidthProfileSource[
+      materialCoordinates, reversedFirstJet]/2 +
       waveOrder zetaSource[materialCoordinates, sign] +
       virtualOrder virtualZetaSource[materialCoordinates, sign]];
   virtualMap = Append[mapped, vertical];
@@ -274,9 +301,10 @@ faceHeightFromFlattening[branch_String, sign_] := Module[
   normalCoordinate /. First[solutions]
 ];
 
-traceSource[fieldZero_, fieldWave_, branch_String, sign_] := Module[
+traceSource[fieldZero_, fieldWave_, branch_String, sign_,
+    reversedFirstJet_:False] := Module[
   {height},
-  height = heightSource[branch, sign];
+  height = heightSource[branch, sign, reversedFirstJet];
   fieldZero[spatialCoordinates, height] +
     waveOrder fieldWave[spatialCoordinates, height]
 ];
@@ -300,14 +328,15 @@ currentXWave[index_][coordinates_List, normal_] :=
   Symbol["currentXPerturbation" <> ToString[index]] @@
     Append[coordinates, {normal, time}];
 
-bulkVelocityTraceSource[branch_String, sign_] := Module[{height},
-  height = heightSource[branch, sign];
+bulkVelocityTraceSource[branch_String, sign_,
+    reversedFirstJet_:False] := Module[{height},
+  height = heightSource[branch, sign, reversedFirstJet];
   bulkVelocityZero[spatialCoordinates, height] +
     waveOrder bulkVelocityWave[spatialCoordinates, height]
 ];
 
-pressureTraceSource[branch_String, sign_] :=
-  traceSource[pressureZero, pressureWave, branch, sign];
+pressureTraceSource[branch_String, sign_, reversedFirstJet_:False] :=
+  traceSource[pressureZero, pressureWave, branch, sign, reversedFirstJet];
 
 branchedProfileCoordinates[branch_String] := Switch[branch,
   "LAB_HELD", spatialCoordinates,
@@ -319,37 +348,44 @@ muThetaSource[branch_String] := Switch[branch,
   "MATERIAL_ADVECTED", waveOrder (muThetaOperand @@
     Append[inverseCoordinates[], time])];
 
-affinitySource[branch_String, sign_, density_String] := Module[
+affinitySource[branch_String, sign_, density_String,
+    reversedFirstJet_:False] := Module[
   {coordinates, densityProfile},
   coordinates = branchedProfileCoordinates[branch];
   densityProfile = rhoBrProfile[density, coordinates];
   muThetaSource[branch]/densityProfile -
-    pressureTraceSource[branch, sign]/rhoM
+    pressureTraceSource[branch, sign, reversedFirstJet]/rhoM
 ];
 
 lambdaA = lambdaAZero/(1 - I omega tauA);
 lambdaV = lambdaVZero/(1 - I omega tauV);
 lambdaX = lambdaXZero/(1 - I omega tauX);
 
-directFaceObjectsSource[branch_String, sign_, density_String] := Module[
+directFaceObjectsSource[branch_String, sign_, density_String,
+    reversedFirstJet_:False] := Module[
   {normal, measure, velocity, normalVelocity, bulkVelocity, flux,
-    affinity, pressure, traction, kinematic, closure},
-  normal = graphNormalSource[branch, sign];
-  measure = graphMeasureSource[branch, sign];
-  velocity = faceVelocitySource[branch, sign];
+    affinity, pressure, traction, kinematicOperandA, kinematicOperandB,
+    kinematic, closure},
+  normal = graphNormalSource[branch, sign, reversedFirstJet];
+  measure = graphMeasureSource[branch, sign, reversedFirstJet];
+  velocity = faceVelocitySource[branch, sign, reversedFirstJet];
   normalVelocity = normal.velocity;
-  bulkVelocity = bulkVelocityTraceSource[branch, sign];
+  bulkVelocity = bulkVelocityTraceSource[branch, sign, reversedFirstJet];
   flux = rhoM (bulkVelocity - velocity).normal;
-  affinity = affinitySource[branch, sign, density];
-  pressure = pressureTraceSource[branch, sign];
+  affinity = affinitySource[branch, sign, density, reversedFirstJet];
+  pressure = pressureTraceSource[branch, sign, reversedFirstJet];
   traction = -(pressure + lambdaX affinity) normal;
-  kinematic = normal.bulkVelocity - normalVelocity - flux/rhoM;
+  kinematicOperandA = normal.bulkVelocity;
+  kinematicOperandB = normalVelocity + flux/rhoM;
+  kinematic = kinematicOperandA - kinematicOperandB;
   closure = flux - lambdaA affinity - lambdaV normalVelocity;
   <|"NORMAL" -> normal, "MEASURE" -> measure,
     "FACE_VELOCITY_VECTOR" -> velocity, "NORMAL_VELOCITY" -> normalVelocity,
     "BULK_VELOCITY_TRACE" -> bulkVelocity, "FLUX" -> flux,
     "AFFINITY" -> affinity, "PRESSURE_TRACE" -> pressure,
     "TRACTION" -> traction, "KINEMATIC" -> kinematic,
+    "KINEMATIC_OPERAND_A" -> kinematicOperandA,
+    "KINEMATIC_OPERAND_B" -> kinematicOperandB,
     "CLOSURE" -> closure|>
 ];
 
@@ -397,10 +433,10 @@ applyVirtualDof[expression_, dof_String] := Switch[dof,
 applyDof[expression_, dof_String] := applyVirtualDof[
   applyPhysicalDof[expression, dof], dof];
 
-derivedFaceCase[source_, dof_String, dimension_, ablatedDirection_:0,
-    reverseJet_:False] := objectRecord[
+derivedFaceCase[source_, dof_String, dimension_, ablatedDirection_:0] :=
+  objectRecord[
   applyProfileJets[applyDof[shapeDerivative[source], dof],
-    ablatedDirection, reverseJet], dimension];
+    ablatedDirection], dimension];
 
 (* The constant bindings and the reserved operand are deliberately inert. *)
 inheritedConstants = {cs0, muR, rhoBr, W0, eW, rhoM,
@@ -419,6 +455,8 @@ densityCaseKey[branch_, density_, dof_] :=
 directShape[branch_String, sign_, density_String, name_String] :=
   directShape[branch, sign, density, name] =
     shapeDerivative[directFaceObjectsSource[branch, sign, density][name]];
+corruptedUpperDirectShape[branch_String, density_String, name_String] :=
+  shapeDerivative[directFaceObjectsSource[branch, 1, density, True][name]];
 materialShape[branch_String, sign_, density_String, name_String] :=
   materialShape[branch, sign, density, name] =
     shapeDerivative[materialFaceObjectsSource[branch, sign, density][name]];
@@ -479,8 +517,8 @@ branchedRho4Source[branch_String, density_String] :=
   rho4Profile[density, branchedProfileCoordinates[branch]];
 
 sigmaEulerianSource[branch_String, density_String] :=
-  branchedRho4Source[branch, density]
-    (1 + waveOrder (thetaWave @@ Append[spatialCoordinates, time]))
+  branchedRho4Source[branch, density] *
+    (1 + waveOrder (thetaWave @@ Append[spatialCoordinates, time])) *
     graphThicknessSource[branch];
 
 materialJacobianSource[] := Det[Table[
@@ -491,9 +529,9 @@ virtualConstraintDirectSource[branch_String, density_String,
     corrupted_:False] := Module[
   {virtualMap, inverseVirtual, thickness, rhoFour, sigmaEulerian,
     jacobian, evaluationCoordinates},
-  virtualMap = materialCoordinates + virtualOrder
+  virtualMap = materialCoordinates + virtualOrder *
     virtualUVector[materialCoordinates];
-  inverseVirtual = spatialCoordinates - virtualOrder
+  inverseVirtual = spatialCoordinates - virtualOrder *
     virtualUVector[spatialCoordinates];
   evaluationCoordinates = If[TrueQ[corrupted], materialCoordinates,
     virtualMap];
@@ -511,8 +549,8 @@ virtualConstraintDirectSource[branch_String, density_String,
     "MATERIAL_ADVECTED", rho4Profile[density,
       If[TrueQ[corrupted], inverseVirtual /. Thread[
         spatialCoordinates -> materialCoordinates], materialCoordinates]]];
-  sigmaEulerian = rhoFour
-    (1 + virtualOrder (virtualTheta @@ Append[materialCoordinates, time]))
+  sigmaEulerian = rhoFour *
+    (1 + virtualOrder (virtualTheta @@ Append[materialCoordinates, time])) *
     thickness;
   jacobian = Det[IdentityMatrix[dimBrane] + virtualOrder Table[
     D[virtualUVector[materialCoordinates][[row]],
@@ -523,27 +561,52 @@ virtualConstraintDirectSource[branch_String, density_String,
     materialToEulerianRules
 ];
 
-virtualConstraintMaterialSource[branch_String, density_String] := Module[
-  {virtualMap, denominator, rhoFour, jacobian, pulledMass},
-  virtualMap = materialCoordinates + virtualOrder
+virtualFlatteningCoordinateSource[branch_String] := Module[
+  {virtualMap, center, denominator},
+  virtualMap = materialCoordinates + virtualOrder *
     virtualUVector[materialCoordinates];
+  center = virtualOrder * virtualDofCenter *
+    (virtualZetaCenter @@ Append[materialCoordinates, time]);
   denominator = Switch[branch,
     "LAB_HELD", (widthProfile @@ virtualMap) +
-      virtualOrder virtualDofWidth (virtualDeltaWidth @@
-        Append[materialCoordinates, time]),
+      virtualOrder * virtualDofWidth *
+        (virtualDeltaWidth @@ Append[materialCoordinates, time]),
     "MATERIAL_ADVECTED", (widthProfile @@ materialCoordinates) +
-      virtualOrder virtualDofWidth (virtualDeltaWidth @@
-        Append[materialCoordinates, time])];
+      virtualOrder * virtualDofWidth *
+        (virtualDeltaWidth @@ Append[materialCoordinates, time])];
+  (normalCoordinate - center)/denominator
+];
+
+virtualFlatteningMapSource[branch_String] := Module[
+  {solutions, physicalNormal},
+  solutions = Solve[
+    virtualFlatteningCoordinateSource[branch] == flattenedNormalCoordinate,
+    normalCoordinate];
+  physicalNormal = normalCoordinate /. First[solutions];
+  Append[materialCoordinates + virtualOrder *
+    virtualUVector[materialCoordinates], physicalNormal]
+];
+
+virtualConstraintMaterialSource[branch_String, density_String] := Module[
+  {flatteningMap, sourceCoordinates, fullJacobian, profileCoordinates,
+    rhoFour, pulledFourDensity, pulledMass},
+  flatteningMap = virtualFlatteningMapSource[branch];
+  sourceCoordinates = Append[materialCoordinates, flattenedNormalCoordinate];
+  fullJacobian = Det[Table[
+    D[flatteningMap[[row]], sourceCoordinates[[column]]],
+    {row, Range[dimBrane + 1]}, {column, Range[dimBrane + 1]}]];
+  profileCoordinates = Switch[branch,
+    "LAB_HELD", Most[flatteningMap],
+    "MATERIAL_ADVECTED", materialCoordinates];
   rhoFour = Switch[branch,
-    "LAB_HELD", rho4Profile[density, virtualMap],
+    "LAB_HELD", rho4Profile[density, profileCoordinates],
     "MATERIAL_ADVECTED", rho4Profile[density, materialCoordinates]];
-  jacobian = Det[IdentityMatrix[dimBrane] + virtualOrder Table[
-    D[virtualUVector[materialCoordinates][[row]],
-      materialCoordinates[[column]]], {row, spatialDirections},
-      {column, spatialDirections}]];
-  pulledMass = rhoFour
-    (1 + virtualOrder (virtualTheta @@ Append[materialCoordinates, time]))
-    denominator jacobian;
+  pulledFourDensity = rhoFour *
+    (1 + virtualOrder *
+      (virtualTheta @@ Append[materialCoordinates, time])) *
+    fullJacobian;
+  pulledMass = Integrate[pulledFourDensity,
+    {flattenedNormalCoordinate, -1/2, 1/2}];
   Together[(D[pulledMass, virtualOrder] /. virtualOrder -> 0)/
     (pulledMass /. virtualOrder -> 0)] /. materialToEulerianRules
 ];
@@ -796,13 +859,23 @@ emitShared["RELATIVE_FLUX", fluxPayload];
 
 kinematicPayload = Association[Flatten[Table[
   With[{key = densityFaceCaseKey[branch, density, sign, dof],
-      exact = directFaceObjectsSource[branch, sign, density]["KINEMATIC"]},
-    key -> <|"BOUND_SOURCE_LAW" -> exact,
-      "SHAPE_DERIVATIVE" -> derivedFaceCase[exact, dof,
+      operandASource = directFaceObjectsSource[branch, sign, density][
+        "KINEMATIC_OPERAND_A"],
+      operandBSource = directFaceObjectsSource[branch, sign, density][
+        "KINEMATIC_OPERAND_B"]}, Module[{operandA, operandB, residual},
+    operandA = applyProfileJets[applyPhysicalDof[
+      shapeDerivative[operandASource], dof]];
+    operandB = applyProfileJets[applyPhysicalDof[
+      shapeDerivative[operandBSource], dof]];
+    residual = Together[operandA - operandB];
+    key -> <|"BOUND_SOURCE_LAW" ->
+        relationalObject[operandASource, operandBSource],
+      "OPERAND_A_SHAPE_DERIVATIVE" -> objectRecord[operandA,
         dimensionVelocity],
-      "TEST_OBJECT" -> relationalObject[
-        applyProfileJets[applyPhysicalDof[shapeDerivative[exact], dof]], 0],
-      "DIMENSION_L_T_M" -> dimensionVelocity|>],
+      "OPERAND_B_SHAPE_DERIVATIVE" -> objectRecord[operandB,
+        dimensionVelocity],
+      "RESIDUAL_A_MINUS_B" -> objectRecord[residual, dimensionVelocity],
+      "DIMENSION_L_T_M" -> dimensionVelocity|>]],
   {branch, branchNames}, {density, densityNames}, {sign, faceSigns},
   {dof, dofNames}]]];
 emitShared["KINEMATIC_BALANCE", kinematicPayload];
@@ -983,15 +1056,20 @@ emitShared["CLOSURE_SHAPE_DERIV", closurePayload];
 
 processedVirtualWorkShape[route_String, branch_String, density_String,
     physicalDof_String, virtualDof_String, ablatedDirection_:0,
-    reverseUpper_:False] := Total[Table[Module[{objects, faceTerm},
+    reverseUpper_:False] := Total[Table[Module[
+  {objects, faceTerm, processed, reverseDirectSource},
+  reverseDirectSource = route === "EULERIAN" && TrueQ[reverseUpper] &&
+    sign == 1;
   objects = If[route === "EULERIAN",
-    directFaceObjectsSource[branch, sign, density],
+    directFaceObjectsSource[branch, sign, density, reverseDirectSource],
     materialFaceObjectsSource[branch, sign, density]];
   faceTerm = objects["MEASURE"] objects["TRACTION"].
-    virtualFaceDisplacementSource[branch, sign];
-  applyProfileJets[applyVirtualDof[applyPhysicalDof[
-    shapeDerivative[faceTerm], physicalDof], virtualDof],
-    ablatedDirection, TrueQ[reverseUpper] && sign == 1]
+    virtualFaceDisplacementSource[branch, sign, reverseDirectSource];
+  processed = applyVirtualDof[applyPhysicalDof[
+    shapeDerivative[faceTerm], physicalDof], virtualDof];
+  If[TrueQ[reverseDirectSource],
+    applyCorruptedProfileJets[processed, ablatedDirection],
+    applyProfileJets[processed, ablatedDirection]]
 ], {sign, faceSigns}]];
 
 repEulerianOperand = <||>;
@@ -1105,8 +1183,11 @@ Do[Module[{key, sourceName, dimension, base, corrupted},
   key = object <> "|" <> densityFaceCaseKey[branch, density, sign, dof];
   base = applyProfileJets[applyPhysicalDof[
     directShape[branch, sign, density, sourceName], dof]];
-  corrupted = applyProfileJets[applyPhysicalDof[
-    directShape[branch, sign, density, sourceName], dof], 0, sign == 1];
+  corrupted = If[sign == 1,
+    applyCorruptedProfileJets[applyPhysicalDof[
+      corruptedUpperDirectShape[branch, density, sourceName], dof]],
+    applyProfileJets[applyPhysicalDof[
+      directShape[branch, sign, density, sourceName], dof]]];
   AssociateTo[independenceBaseOperand, key -> objectRecord[base, dimension]];
   AssociateTo[independenceCorruptedOperand, key -> objectRecord[corrupted,
     dimension]];

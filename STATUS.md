@@ -36,21 +36,24 @@ move exactly the data-dependent tags; §5a independence genuine. My authoritativ
 tags, ZERO divergent ∫1, byte-identical to Codex definitive run (40/40); regression vs a15bc69c = 28 identical
 / 12 changed (exactly T-0+5×PROJECTION_*+6×CONTROL_FORM/UNIFORM_LIMIT). ⚠ LESSON: my "88 ∫1 in ORIGINS" alarm
 was a STALE INTERMEDIATE SCRATCH file — verify against a FRESH run I control, not the builder's scratch stdout.
-⭐⭐⭐ **T7 CROSS-ENGINE COMPARATOR — decided: SHARED-SCHEMA RE-EMIT (user, after compact).**
-`directives/S11c_a_comparator_reemit_plan.md` is the roadmap. Both directive legs (Codex+Grok) rejected the
-comparator-side key-alignment approach (superseded directive `S11c_a_comparator_build_directive.md`) as UNSAFE
-— the two engines serialize case keys incompatibly (PY positional tuples w/ ambiguous integer faces; WL
-labeled pipe-strings w/ rich axes DIRECTION/FIELD/ORIGIN/VIRTUAL_DOF the 4-vocab table missed) + field-
-envelope nesting differences; a safe comparator would leave ~half the objects (incl. primary physics) to
-orchestrator hand-adjudication (the weak instrument the method removes). **Post-compact plan:** (0) complete
-schema enumeration → (1) **§7 amendment** pinning the shared key+envelope+field schema (reopens closed spec
-`2926c71c`; 2 legs+fold) → (2) **emit-layer patches** to BOTH engines (serialization only; MECHANICAL gate:
-payload VALUES byte-unchanged modulo relabeling) → (3) re-run → (4) light re-review (2 legs each) → (5)
-**trivial join+residual comparator** (2 legs, frozen T7 contract) → freeze+run → step record → family card.
-⭐ Pin the §7 schema FORWARD for S11c-b…e so it does not recur. See memory `project_s11c_a_state`. ⚠ another
-session works untracked in repo `memory/` — commit EXPLICIT paths only, never `git add -A`. ⚠ codex/grok
-bash jobs die SPURIOUSLY → relaunch review legs fresh; a spurious kill can orphan a WolframKernel eating
-memory (kill by PID).
+⭐⭐⭐ **T7 CROSS-ENGINE — the engines DISAGREE on CASE STRUCTURE (real findings, not serialization).**
+Roadmap `directives/S11c_a_comparator_reemit_plan.md`. Arc: comparator-side key-alignment REJECTED by 2
+directive legs (superseded `S11c_a_comparator_build_directive.md`) → user chose **re-emit** → Codex plan-review
+(orchestrator-verified) found the **emit-only assumption FALSE**: the two independently-built engines compute
+**different case SETS + semantic content** — ⭐ **VIRTUAL_WORK 8 (PY, virtual-DOF tied to physical) vs 16 (WL,
+independent physical×virtual matrix)**; projection density-decomposed (PY) vs not (WL), PY's 2 density cases
+DIFFER; CONTROL_FORM/UNIFORM coverage differs; PY stores `(bg,ε·deriv,total)` tuple vs WL coefficient
+(waveOrder stripped into MULTIGRADE). These are **potential physics findings** (rule 1 — the disagreement IS
+the measurement) requiring **spec adjudication** (which engine is right? did §4/§5 under-specify?) BEFORE any
+comparator; fixing the wrong engine = a COMPUTATION patch + FULL review. **Revised post-compact plan:** (0)
+**feasibility/adjudication matrix** (per tag: PY vs WL case sets+leaves+bookkeeper; 2 legs) → (1) **adjudicate
+each divergence vs spec** → (2) fix (computation→full review; serialization→emit-patch under a PROVENANCE-
+MANIFEST gate→light review; spec-gap→narrow §7/§4 addendum) → (3) re-run → (4) trivial join+residual comparator
+(2 legs) → freeze+run → step record (carry the case-structure findings) → family card. ⚠ SCOPE now bigger +
+front-loaded on physics (adjudication), not serialization. ⭐ pin the adjudicated schema FORWARD for
+S11c-b…e. ⚠ PY emit feeds `export_candidates` — any reformat mutates `S11c_a_exports.py` (decouple/preserve).
+See memory `project_s11c_a_state`. ⚠ another session works untracked in `memory/` — commit EXPLICIT paths
+only. ⚠ codex/grok jobs die SPURIOUSLY; a spurious kill can orphan a WolframKernel eating memory (kill by PID).
 
 ---
 

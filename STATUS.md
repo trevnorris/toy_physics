@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a: SymPy engine CLOSED, blind WL engine NEXT; S11b CLOSED 2026-08-23
+## ⭐⭐⭐ CURRENT FRONT — S11c-a: SymPy CLOSED; WL engine repair-round-2 (T-f/T-0-grad) after COMPACT 2026-08-24
 
 ⭐⭐ **S11c is a STAGED FAMILY a–e** (decision list `research/pde_ledger_v3/directives/S11c_decisions.md`
 `24853f3a`, N1–N15, 2 legs): **a**=background & geometry, **b**=variable-coeff brane operator/kernel,
@@ -24,10 +24,20 @@ independent for all five (one-sided AND two-sided corruption isolate); uniform-l
 primaries). Step-record notes (NOT defects): T-c′ residual is a definitional identity; T-g's §5a residual is
 a structural determinant identity (block-triangular Jacobian ⇒ det=det(F)·thickness) — independent
 constructions, weak only vs a shared density/anchor mistake ⇒ WL engine is the cross-check.
-⭐ **NEXT = the blind WOLFRAM (WL) engine** (imports nothing, re-derives) — the real cross-engine check.
-⛔⛔ its build directive MUST guard §5a route-2 against the same alias shortcut. Then frozen T7 comparator →
-S11c-a step record (carry the 3 notes) → family card. **CHECKPOINT with user (their staged choice) before
-launching WL.** See memory `project_s11c_a_state`.
+⭐⭐ **S11c-a blind WL ENGINE — built, §5a/T-h repair VERIFIED, repair-round-2 PENDING (after compact).**
+`mathematica/S11c_a_interface_geometry_mathematica_audit.wl` (blind: imports nothing, 40 WL_S11CA_ tags).
+Build (Codex) → eval-fix (Part/AssociateTo) → **§5a/T-h repair (Codex, baseline `a15bc69c`)** verified good
+by 2 fresh legs: route-2 genuinely independent for all 5 under one-sided SOURCE corruption, T-c′ two
+operands, T-h `Σ=ρ_4D(1+θ)(W_bg+δW)`. ⚠ Grok found **2 pre-existing WL defects** (verified at src;
+**WL-specific — SymPy is CLEAN on both**): **T-f** dynamic projection shape-deriv pulls the window OUT of
+`Inactive[Integrate]` → divergent `∫1 dw` (physics wrong); **T-0** RHO4 gradient graded η not σ_W (value
+right, grade wrong; the `etaBg W0/LW -> sigmaW` substitution no-ops). ⛔ **NEXT (post-compact, user chose FIX
+BOTH):** launch the Codex **repair-round-2** `directives/S11c_a_wl_engine_repair2_directive.md` (T-f
+window-inside-integral + T-0 σ_W grading; Grok relayed verbatim, blind-safe) → I re-run (⚠ ~20min/~9-10GB;
+watch orphan kernels) → 2 fresh legs (Agent+Grok SERIALIZED) → commit → committed `mathematica/out/*.out` →
+**frozen T7 comparator** (SymPy↔WL; the real cross-engine physics test) → S11c-a step record → family card.
+See memory `project_s11c_a_state`. ⚠ codex/grok bash jobs die SPURIOUSLY → relaunch review legs fresh; a
+spurious job-kill can orphan a WolframKernel that keeps eating memory (kill by PID).
 
 ---
 

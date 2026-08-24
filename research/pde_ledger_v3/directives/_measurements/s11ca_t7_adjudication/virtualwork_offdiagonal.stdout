@@ -1,0 +1,16 @@
+DIAG phys=DELTA_W  virt=DELTA_W  zero=False  expr=((-I)*lambdaXZero*muThetaOperand[x1, x2, x3, time]*virtualDe
+OFF  phys=DELTA_W  virt=ZETA_C   zero=False  expr=(I*pressurePerturbation[x1, x2, x3, {-1/2*W0, time}]*virtual
+OFF  phys=ZETA_C   virt=DELTA_W  zero=False  expr=((-I)*lambdaXZero*muThetaOperand[x1, x2, x3, time]*virtualDe
+DIAG phys=ZETA_C   virt=ZETA_C   zero=False  expr=(I*pressurePerturbation[x1, x2, x3, {-1/2*W0, time}]*virtual
+DIAG phys=DELTA_W  virt=DELTA_W  zero=False  expr=((-I)*lambdaXZero*muThetaOperand[x1, x2, x3, time]*virtualDe
+OFF  phys=DELTA_W  virt=ZETA_C   zero=False  expr=(I*pressurePerturbation[x1, x2, x3, {-1/2*W0, time}]*virtual
+OFF  phys=ZETA_C   virt=DELTA_W  zero=False  expr=((-I)*lambdaXZero*muThetaOperand[x1, x2, x3, time]*virtualDe
+DIAG phys=ZETA_C   virt=ZETA_C   zero=False  expr=(I*pressurePerturbation[x1, x2, x3, {-1/2*W0, time}]*virtual
+DIAG phys=DELTA_W  virt=DELTA_W  zero=False  expr=((-I)*lambdaXZero*muThetaOperand[x1, x2, x3, time]*virtualDe
+OFF  phys=DELTA_W  virt=ZETA_C   zero=False  expr=(I*pressurePerturbation[x1, x2, x3, {-1/2*W0, time}]*virtual
+OFF  phys=ZETA_C   virt=DELTA_W  zero=False  expr=((-I)*lambdaXZero*muThetaOperand[x1, x2, x3, time]*virtualDe
+DIAG phys=ZETA_C   virt=ZETA_C   zero=False  expr=(I*pressurePerturbation[x1, x2, x3, {-1/2*W0, time}]*virtual
+DIAG phys=DELTA_W  virt=DELTA_W  zero=False  expr=((-I)*lambdaXZero*muThetaOperand[x1, x2, x3, time]*virtualDe
+OFF  phys=DELTA_W  virt=ZETA_C   zero=False  expr=(I*pressurePerturbation[x1, x2, x3, {-1/2*W0, time}]*virtual
+OFF  phys=ZETA_C   virt=DELTA_W  zero=False  expr=((-I)*lambdaXZero*muThetaOperand[x1, x2, x3, time]*virtualDe
+DIAG phys=ZETA_C   virt=ZETA_C   zero=False  expr=(I*pressurePerturbation[x1, x2, x3, {-1/2*W0, time}]*virtual

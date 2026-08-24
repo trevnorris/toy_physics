@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a: SymPy CLOSED; WL engine repair-round-2 (T-f/T-0-grad) after COMPACT 2026-08-24
+## ⭐⭐⭐ CURRENT FRONT — S11c-a: BOTH engines committed+verified; T7 comparator via SHARED-SCHEMA RE-EMIT after COMPACT 2026-08-24
 
 ⭐⭐ **S11c is a STAGED FAMILY a–e** (decision list `research/pde_ledger_v3/directives/S11c_decisions.md`
 `24853f3a`, N1–N15, 2 legs): **a**=background & geometry, **b**=variable-coeff brane operator/kernel,
@@ -24,20 +24,33 @@ independent for all five (one-sided AND two-sided corruption isolate); uniform-l
 primaries). Step-record notes (NOT defects): T-c′ residual is a definitional identity; T-g's §5a residual is
 a structural determinant identity (block-triangular Jacobian ⇒ det=det(F)·thickness) — independent
 constructions, weak only vs a shared density/anchor mistake ⇒ WL engine is the cross-check.
-⭐⭐ **S11c-a blind WL ENGINE — built, §5a/T-h repair VERIFIED, repair-round-2 PENDING (after compact).**
-`mathematica/S11c_a_interface_geometry_mathematica_audit.wl` (blind: imports nothing, 40 WL_S11CA_ tags).
-Build (Codex) → eval-fix (Part/AssociateTo) → **§5a/T-h repair (Codex, baseline `a15bc69c`)** verified good
-by 2 fresh legs: route-2 genuinely independent for all 5 under one-sided SOURCE corruption, T-c′ two
-operands, T-h `Σ=ρ_4D(1+θ)(W_bg+δW)`. ⚠ Grok found **2 pre-existing WL defects** (verified at src;
-**WL-specific — SymPy is CLEAN on both**): **T-f** dynamic projection shape-deriv pulls the window OUT of
-`Inactive[Integrate]` → divergent `∫1 dw` (physics wrong); **T-0** RHO4 gradient graded η not σ_W (value
-right, grade wrong; the `etaBg W0/LW -> sigmaW` substitution no-ops). ⛔ **NEXT (post-compact, user chose FIX
-BOTH):** launch the Codex **repair-round-2** `directives/S11c_a_wl_engine_repair2_directive.md` (T-f
-window-inside-integral + T-0 σ_W grading; Grok relayed verbatim, blind-safe) → I re-run (⚠ ~20min/~9-10GB;
-watch orphan kernels) → 2 fresh legs (Agent+Grok SERIALIZED) → commit → committed `mathematica/out/*.out` →
-**frozen T7 comparator** (SymPy↔WL; the real cross-engine physics test) → S11c-a step record → family card.
-See memory `project_s11c_a_state`. ⚠ codex/grok bash jobs die SPURIOUSLY → relaunch review legs fresh; a
-spurious job-kill can orphan a WolframKernel that keeps eating memory (kill by PID).
+⭐⭐ **S11c-a blind WL ENGINE — COMMITTED `ddecdbc2` (repair-round-2 done + verified).**
+`mathematica/S11c_a_interface_geometry_mathematica_audit.wl` (blind: imports nothing, 40 WL_S11CA_ tags) +
+committed `mathematica/out/*.out`. Build `277f3fe7` → §5a/T-h repair `a15bc69c` → **repair-2 `ddecdbc2`**
+(T-f divergent `∫1 dw` + T-0 σ_W grading). Repair-2 directive `bf3c3acc`→`30e96ee2` (Codex clarity leg1 +
+Grok directive leg2 = 3 CAS-backed edits: held-factor T-0 recipe [the "retain W_bg" wording was a NO-OP],
+stripped a rule-5 grade leak, broadened the T-f confirm). Codex build → **2 fresh WL legs (Grok + Agent,
+serialized) BOTH "safe to commit, no blocking defect"** — T-0 (RHO4 σ_W first-jet `{0,0,1}`, RHOBR zero
+`{{0,-∞,-∞}}`) + T-f (0 divergent ∫1, genuine per-term localization) independently re-derived; FORM ablations
+move exactly the data-dependent tags; §5a independence genuine. My authoritative re-run (run4): exit 0, 40
+tags, ZERO divergent ∫1, byte-identical to Codex definitive run (40/40); regression vs a15bc69c = 28 identical
+/ 12 changed (exactly T-0+5×PROJECTION_*+6×CONTROL_FORM/UNIFORM_LIMIT). ⚠ LESSON: my "88 ∫1 in ORIGINS" alarm
+was a STALE INTERMEDIATE SCRATCH file — verify against a FRESH run I control, not the builder's scratch stdout.
+⭐⭐⭐ **T7 CROSS-ENGINE COMPARATOR — decided: SHARED-SCHEMA RE-EMIT (user, after compact).**
+`directives/S11c_a_comparator_reemit_plan.md` is the roadmap. Both directive legs (Codex+Grok) rejected the
+comparator-side key-alignment approach (superseded directive `S11c_a_comparator_build_directive.md`) as UNSAFE
+— the two engines serialize case keys incompatibly (PY positional tuples w/ ambiguous integer faces; WL
+labeled pipe-strings w/ rich axes DIRECTION/FIELD/ORIGIN/VIRTUAL_DOF the 4-vocab table missed) + field-
+envelope nesting differences; a safe comparator would leave ~half the objects (incl. primary physics) to
+orchestrator hand-adjudication (the weak instrument the method removes). **Post-compact plan:** (0) complete
+schema enumeration → (1) **§7 amendment** pinning the shared key+envelope+field schema (reopens closed spec
+`2926c71c`; 2 legs+fold) → (2) **emit-layer patches** to BOTH engines (serialization only; MECHANICAL gate:
+payload VALUES byte-unchanged modulo relabeling) → (3) re-run → (4) light re-review (2 legs each) → (5)
+**trivial join+residual comparator** (2 legs, frozen T7 contract) → freeze+run → step record → family card.
+⭐ Pin the §7 schema FORWARD for S11c-b…e so it does not recur. See memory `project_s11c_a_state`. ⚠ another
+session works untracked in repo `memory/` — commit EXPLICIT paths only, never `git add -A`. ⚠ codex/grok
+bash jobs die SPURIOUSLY → relaunch review legs fresh; a spurious kill can orphan a WolframKernel eating
+memory (kill by PID).
 
 ---
 

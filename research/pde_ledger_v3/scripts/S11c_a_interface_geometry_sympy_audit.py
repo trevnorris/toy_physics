@@ -579,6 +579,138 @@ class FaceSource:
 _FACE_CACHE: dict[tuple[object, ...], FaceSource] = {}
 
 
+def material_deformation_gradient(
+    parameter: sp.Symbol,
+    displacement_jet: tuple[tuple[sp.Expr, ...], ...],
+) -> sp.ImmutableMatrix:
+    return sp.ImmutableMatrix(sp.eye(3) + parameter * sp.Matrix(displacement_jet))
+
+
+def material_inverse_transpose(
+    parameter: sp.Symbol,
+    displacement_jet: tuple[tuple[sp.Expr, ...], ...],
+) -> sp.ImmutableMatrix:
+    deformation = material_deformation_gradient(parameter, displacement_jet)
+    inverse_transpose_derivative = shape(deformation.inv().T, parameter)
+    return sp.ImmutableMatrix(sp.eye(3) + parameter * inverse_transpose_derivative)
+
+
+def build_material_face_source(
+    branch: str,
+    face: int,
+    dof: str,
+    representative: str,
+    *,
+    ablate_direction: int | None = None,
+) -> FaceSource:
+    """Build a face source through the material map and exact w-prime flattening."""
+    parameter = sp.Dummy("material_shape_parameter", real=True)
+    scales = source_jet_scales(ablate_direction)
+    zeta, zeta_t, grad_zeta, physical_delta_W, virtual_delta_W = dof_fields(dof, face)
+
+    deformation = material_deformation_gradient(parameter, grad_u)
+    inverse_transpose = material_inverse_transpose(parameter, grad_u)
+    profile_gradient = sp.ImmutableMatrix([scales[i] * grad_W[i] for i in range(3)])
+    profile_gradient_at_inverse = sp.ImmutableMatrix([
+        scales[i] * grad_W[i]
+        - parameter * sp.Add(*(u[j] * scales[i] * hess_W[i][j] for j in range(3)))
+        for i in range(3)
+    ])
+    if branch == "LAB_HELD":
+        anchor_value = W_bg
+        anchor_material_gradient = deformation.T * profile_gradient
+    else:
+        anchor_value = W_bg - parameter * dot(u, tuple(profile_gradient))
+        anchor_material_gradient = profile_gradient_at_inverse
+
+    if dof == "DELTA_W":
+        centre_value = sp.Integer(0)
+        centre_gradient = sp.zeros(3, 1)
+        thickness_value = physical_delta_W
+        thickness_gradient = sp.ImmutableMatrix([W0 * grad_e_W[i] for i in range(3)])
+    else:
+        centre_value = zeta
+        centre_gradient = sp.ImmutableMatrix(grad_zeta)
+        thickness_value = sp.Integer(0)
+        thickness_gradient = sp.zeros(3, 1)
+
+    # Differentiate the supplied exact flattening coordinate at fixed X, then
+    # transform its material covector with (dx/dX)^(-T).  The graph conormal is
+    # obtained only after evaluating w-prime on the selected flat face.
+    anchor_slot = sp.Dummy("material_anchor")
+    centre_slot = sp.Dummy("material_centre")
+    thickness_slot = sp.Dummy("material_thickness")
+    w_prime = (w - parameter * centre_slot) / (anchor_slot + parameter * thickness_slot)
+    material_gradient_w_prime = sp.ImmutableMatrix([
+        sp.diff(w_prime, anchor_slot) * anchor_material_gradient[i]
+        + sp.diff(w_prime, centre_slot) * centre_gradient[i]
+        + sp.diff(w_prime, thickness_slot) * thickness_gradient[i]
+        for i in range(3)
+    ])
+    eulerian_gradient_w_prime = inverse_transpose * material_gradient_w_prime
+    vertical_derivative_w_prime = sp.diff(w_prime, w)
+    face_w = parameter * centre_slot + face * (anchor_slot + parameter * thickness_slot) / 2
+    flattening_substitutions = {
+        anchor_slot: anchor_value,
+        centre_slot: centre_value,
+        thickness_slot: thickness_value,
+    }
+    graph_covector = [
+        sp.cancel(
+            (eulerian_gradient_w_prime[i] / vertical_derivative_w_prime)
+            .subs(w, face_w)
+            .subs(flattening_substitutions)
+        )
+        for i in range(3)
+    ]
+    cofactor = tuple(face * component for component in graph_covector) + (sp.Integer(face),)
+    norm = sp.sqrt(dot(cofactor, cofactor))
+    normal_exact = tuple(component / norm for component in cofactor)
+    measure_exact = norm
+
+    face_height = parameter * centre_value + face * (anchor_value + parameter * thickness_value) / 2
+    h0 = face_height.subs(parameter, 0)
+    dh = shape(face_height, parameter)
+
+    virtual_parameter = sp.Dummy("material_virtual_parameter", real=True)
+    virtual_centre = delta_v_zeta_c if dof == "ZETA_C" else sp.Integer(0)
+    virtual_thickness = virtual_delta_W if dof == "DELTA_W" else sp.Integer(0)
+    if branch == "LAB_HELD":
+        virtual_anchor = W_bg + virtual_parameter * dot(delta_v_u, tuple(profile_gradient))
+    else:
+        virtual_anchor = W_bg
+    virtual_face_height = (
+        virtual_parameter * virtual_centre
+        + face * (virtual_anchor + virtual_parameter * virtual_thickness) / 2
+    )
+    virtual_vertical = shape(virtual_face_height, virtual_parameter)
+    virtual_displacement = tuple(delta_v_u) + (virtual_vertical,)
+
+    if branch == "LAB_HELD":
+        anchor_time_derivative = dot(u_t, tuple(profile_gradient))
+    else:
+        anchor_time_derivative = sp.Integer(0)
+    centre_time_derivative = zeta_t if dof == "ZETA_C" else sp.Integer(0)
+    thickness_time_derivative = W0 * e_W_t if dof == "DELTA_W" else sp.Integer(0)
+    face_vertical_velocity = (
+        centre_time_derivative
+        + face * (anchor_time_derivative + thickness_time_derivative) / 2
+    )
+    face_velocity_exact = tuple(parameter * item for item in tuple(u_t) + (face_vertical_velocity,))
+
+    pressure_face = delta_p_plus if face == 1 else delta_p_minus
+    pressure_trace_first = pressure_face + dh * dw_delta_p_0[face]
+    bulk_velocity_trace_first = tuple(
+        delta_v_bulk[face][i] + dh * dw_v_bulk_0[face][i] for i in range(4)
+    )
+    rho4_exact, rhobr_exact = density_pair(representative, anchor_value)
+    return FaceSource(
+        branch, face, dof, representative, "MATERIAL", parameter, h0, dh,
+        normal_exact, measure_exact, virtual_displacement, face_velocity_exact,
+        pressure_trace_first, bulk_velocity_trace_first, rho4_exact, rhobr_exact,
+    )
+
+
 def build_face_source(
     branch: str,
     face: int,
@@ -593,6 +725,14 @@ def build_face_source(
     cached = _FACE_CACHE.get(cache_key)
     if cached is not None:
         return cached
+    if route == "MATERIAL":
+        source = build_material_face_source(
+            branch, face, dof, representative, ablate_direction=ablate_direction,
+        )
+        _FACE_CACHE[cache_key] = source
+        return source
+    if route != "EULERIAN":
+        raise ValueError(f"unknown face-source route {route!r}")
     parameter = sp.Dummy("shape_parameter", real=True)
     scales = source_jet_scales(ablate_direction, reverse_upper_x1, face)
     zeta, zeta_t, _, _, virtual_delta_W = dof_fields(dof, face)
@@ -601,19 +741,10 @@ def build_face_source(
     dh = zeta if branch == "LAB_HELD" else zeta - face * advective_height / 2
     h_exact = h0 + parameter * dh
 
-    if route == "EULERIAN":
-        grad_h = tuple(dx(h_exact, i, scales) for i in range(3))
-        denominator = sp.sqrt(1 + dot(grad_h, grad_h))
-        normal_exact = tuple([-face * component / denominator for component in grad_h] + [face / denominator])
-        measure_exact = denominator
-    else:
-        # Tangents of the fixed-X parametric map give an independent normal
-        # construction.  Their cofactor is mapped back to Eulerian jets.
-        tangent_vertical = tuple(dx(h_exact, i, scales) for i in range(3))
-        cofactor = tuple([-face * component for component in tangent_vertical] + [face])
-        norm = sp.sqrt(dot(cofactor, cofactor))
-        normal_exact = tuple(component / norm for component in cofactor)
-        measure_exact = norm
+    grad_h = tuple(dx(h_exact, i, scales) for i in range(3))
+    denominator = sp.sqrt(1 + dot(grad_h, grad_h))
+    normal_exact = tuple([-face * component / denominator for component in grad_h] + [face / denominator])
+    measure_exact = denominator
 
     virtual_zeta = delta_v_zeta_c if dof == "ZETA_C" else face * virtual_delta_W / 2
     if branch == "LAB_HELD":
@@ -695,13 +826,19 @@ def closure_raw(source: FaceSource) -> sp.Expr:
     return sp.factor_terms(relative_flux_raw(source) - Lambda_A * affinity_raw(source) - Lambda_V * face_velocity_raw(source))
 
 
-def kinematic_raw(source: FaceSource) -> Relational:
-    lhs = epsilon * shape(
+def kinematic_raw(source: FaceSource) -> sp.Tuple:
+    operand_a = epsilon * shape(
         dot(source.normal_exact, tuple(source.parameter * item for item in source.bulk_velocity_trace_first)),
         source.parameter,
     )
-    residual = sp.factor_terms(lhs - face_velocity_raw(source) - relative_flux_raw(source) / rho_m)
-    return sp.Eq(residual, 0, evaluate=False)
+    flux_from_relative_law = relative_flux_raw(source)
+    operand_b = sp.factor_terms(face_velocity_raw(source) + flux_from_relative_law / rho_m)
+    residual = sp.factor_terms(operand_a - operand_b)
+    return sp.Tuple(
+        sp.Tuple(Str("OPERAND_A"), operand_a),
+        sp.Tuple(Str("OPERAND_B"), operand_b),
+        sp.Tuple(Str("RESIDUAL"), residual),
+    )
 
 
 def conormal_raw(source: FaceSource) -> sp.Tuple:
@@ -974,8 +1111,34 @@ def virtual_constraint_route(
     density = rho4_anchor * (1 + parameter * delta_v_theta)
     jacobian = determinant_jacobian(grad_delta_v_u, parameter)
     if route == "MATERIAL":
-        # The face-flattening Jacobian supplies exactly the local thickness.
-        flattened_mass = density * thickness * jacobian
+        w_prime_coordinate = sp.Dummy("w_prime", real=True)
+        centre_virtual = delta_v_zeta_c if dof == "ZETA_C" else sp.Integer(0)
+        inverse_flattening = sp.Eq(
+            w_prime_coordinate,
+            (w - parameter * centre_virtual) / thickness,
+            evaluate=False,
+        )
+        flattened_w = sp.solve(inverse_flattening, w)[0]
+        material_map_jacobian = sp.zeros(4, 4)
+        deformation = material_deformation_gradient(parameter, grad_delta_v_u)
+        for i in range(3):
+            for j in range(3):
+                material_map_jacobian[i, j] = deformation[i, j]
+        material_map_jacobian[3, 3] = sp.diff(flattened_w, w_prime_coordinate)
+        anchor_gradient = sp.ImmutableMatrix([scales[i] * grad_W[i] for i in range(3)])
+        thickness_gradient = anchor_gradient + parameter * sp.ImmutableMatrix([
+            W0 * grad_e_W[i] if dof == "DELTA_W" else 0 for i in range(3)
+        ])
+        centre_gradient = sp.ImmutableMatrix(
+            grad_zeta_c if dof == "ZETA_C" else (0, 0, 0)
+        )
+        flattened_w_gradient = (
+            parameter * centre_gradient + w_prime_coordinate * thickness_gradient
+        )
+        for j in range(3):
+            material_map_jacobian[3, j] = flattened_w_gradient[j]
+        flattened_volume_jacobian = sp.det(material_map_jacobian)
+        flattened_mass = density * flattened_volume_jacobian
         background_mass = density_pair(representative, W_bg)[0] * W_bg
         return epsilon * shape(flattened_mass / background_mass, parameter)
     sigma_e = density * thickness
@@ -1221,12 +1384,20 @@ def task_independence() -> None:
     base: dict[object, object] = {}
     corrupted: dict[object, object] = {}
     for quantity in ("RELATIVE_FLUX", "TRACTION", "CLOSURE_SHAPE_DERIV", "VIRTUAL_WORK_SHAPE_DERIV"):
-        base[quantity] = build_geometry_quantity(quantity)
-        corrupted[quantity] = build_geometry_quantity(quantity, reverse_upper_x1=True)
-    base["VIRTUAL_CONSTRAINT"] = build_virtual_constraint_raw()
-    corrupted["VIRTUAL_CONSTRAINT"] = build_virtual_constraint_raw(corrupt_direct=True)
-    base["EVOLUTION_MASS_BALANCE"] = build_evolution_raw("EVOLUTION_MASS_BALANCE")
-    corrupted["EVOLUTION_MASS_BALANCE"] = build_evolution_raw("EVOLUTION_MASS_BALANCE", corrupt_direct=True)
+        base[quantity] = build_geometry_quantity(quantity, route="MATERIAL")
+        corrupted[quantity] = build_geometry_quantity(
+            quantity, route="EULERIAN", reverse_upper_x1=True,
+        )
+    base["VIRTUAL_CONSTRAINT"] = build_virtual_constraint_raw(route="MATERIAL")
+    corrupted["VIRTUAL_CONSTRAINT"] = build_virtual_constraint_raw(
+        route="EULERIAN", corrupt_direct=True,
+    )
+    base["EVOLUTION_MASS_BALANCE"] = build_evolution_raw(
+        "EVOLUTION_MASS_BALANCE", route="MATERIAL",
+    )
+    corrupted["EVOLUTION_MASS_BALANCE"] = build_evolution_raw(
+        "EVOLUTION_MASS_BALANCE", route="EULERIAN", corrupt_direct=True,
+    )
     emit("CONTROL_INDEPENDENCE_BASE_OPERAND", base)
     emit("CONTROL_INDEPENDENCE_CORRUPTED_OPERAND", corrupted)
     emit("CONTROL_INDEPENDENCE_RESIDUAL", object_difference(base, corrupted))
@@ -1334,7 +1505,13 @@ def uniform_reference_geometry(quantity: str) -> dict[object, object]:
                 elif quantity == "RELATIVE_FLUX":
                     raw = flux
                 elif quantity == "KINEMATIC_BALANCE":
-                    raw = sp.Eq(epsilon * face * (vb[3] + zeta * dw_v_bulk_0[face][3]) - V - flux / rho_m, 0, evaluate=False)
+                    operand_a = epsilon * face * (vb[3] + zeta * dw_v_bulk_0[face][3])
+                    operand_b = sp.factor_terms(V + flux / rho_m)
+                    raw = sp.Tuple(
+                        sp.Tuple(Str("OPERAND_A"), operand_a),
+                        sp.Tuple(Str("OPERAND_B"), operand_b),
+                        sp.Tuple(Str("RESIDUAL"), sp.factor_terms(operand_a - operand_b)),
+                    )
                 elif quantity == "TRACTION":
                     raw = -(p + Lambda_X * affinity) * normal
                 elif quantity == "CLOSURE_SHAPE_DERIV":

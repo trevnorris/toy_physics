@@ -180,6 +180,104 @@ applyCorruptedProfileJets[expression_, ablatedDirection_:0] :=
   applySelectedProfileJets[expression, corruptedProfileJetRules,
     ablatedDirection];
 
+(* Projection integrals stay opaque to every outer algebraic transform.
+   The D/Series algebra is applied to each integrand and then re-wrapped. *)
+fullLineProjectionIntegrals[expression_] := DeleteDuplicates[Cases[
+  expression,
+  integral : HoldPattern[Inactive[Integrate][_, _]] :> integral,
+  {0, Infinity}]];
+projectionZeroIntegralNormalize[expression_] := expression /.
+  HoldPattern[Inactive[Integrate][0, _]] :> 0;
+
+integralPreservingProjectionTransform[expression_, integrandTransform_,
+    outerTransform_] := Module[
+  {integrals, tokens, transformedIntegrals, protected},
+  integrals = fullLineProjectionIntegrals[expression];
+  If[integrals === {}, Return[outerTransform[expression]]];
+  tokens = Table[projectionHeldIntegralToken[index],
+    {index, Length[integrals]}];
+  transformedIntegrals = integrals /. HoldPattern[
+      Inactive[Integrate][integrand_, limits_]] :>
+    Inactive[Integrate][integrandTransform[integrand], limits];
+  protected = expression /. Thread[integrals -> tokens];
+  projectionZeroIntegralNormalize[
+    outerTransform[protected] /. Thread[tokens -> transformedIntegrals]]
+];
+
+projectionComputedExpression[expression_] :=
+  integralPreservingProjectionTransform[expression,
+    computedExpression, computedExpression];
+
+projectionShapeDerivative[expression_List] :=
+  projectionShapeDerivative /@ expression;
+projectionShapeDerivative[expression_Association] :=
+  AssociationMap[projectionShapeDerivative, expression];
+projectionShapeDerivative[expression_] := Module[
+  {integrals, tokens, protected, baseIntegrals, derivativeIntegrals,
+    replacementRules, result},
+  integrals = fullLineProjectionIntegrals[expression];
+  If[integrals === {}, Return[shapeDerivative[expression]]];
+  tokens = Table[Unique["projectionWaveIntegralToken$"],
+    {Length[integrals]}];
+  protected = expression /. Thread[integrals ->
+      ((#[waveOrder] &) /@ tokens)];
+  result = Together[Expand[D[protected, waveOrder] /.
+      waveOrder -> 0]];
+  baseIntegrals = integrals /. HoldPattern[
+      Inactive[Integrate][integrand_, limits_]] :>
+    Inactive[Integrate][Together[Expand[integrand /.
+      waveOrder -> 0]], limits];
+  derivativeIntegrals = integrals /. HoldPattern[
+      Inactive[Integrate][integrand_, limits_]] :>
+    Inactive[Integrate][Together[Expand[D[integrand, waveOrder] /.
+      waveOrder -> 0]], limits];
+  replacementRules = Flatten[Table[{
+      tokens[[index]][0] -> baseIntegrals[[index]],
+      Derivative[1][tokens[[index]]][0] ->
+        derivativeIntegrals[[index]]},
+    {index, Length[integrals]}]];
+  result /. replacementRules
+];
+
+applySelectedProjectionProfileJets[expression_, rules_List,
+    ablatedDirection_:0] := Module[{processor, target, ablationRules},
+  ablationRules = {};
+  If[MemberQ[spatialDirections, ablatedDirection],
+    target = UnitVector[dimBrane, ablatedDirection];
+    ablationRules = {w1Jet @@ target -> 0}];
+  processor = Function[part, computedExpression[
+    part /. materialToEulerianRules /. rules /. ablationRules]];
+  integralPreservingProjectionTransform[expression, processor, processor]
+];
+applyProjectionProfileJets[expression_, ablatedDirection_:0] :=
+  applySelectedProjectionProfileJets[expression, profileJetRules,
+    ablatedDirection];
+
+projectionGradeTerms[expression_] := Module[{integrals, integrands},
+  integrals = fullLineProjectionIntegrals[expression];
+  If[integrals === {}, Return[gradeTerms[expression]]];
+  integrands = integrals /. HoldPattern[
+      Inactive[Integrate][integrand_, _]] :> integrand;
+  DeleteDuplicates[Sort[Flatten[gradeTerms /@ integrands, 1]]]
+];
+
+projectionObjectRecord[expression_, dimension_, epsilonOrder_:1] := Module[
+  {computed, grades},
+  computed = projectionComputedExpression[expression];
+  grades = projectionGradeTerms[computed] /.
+    {1, a_, b_} :> {epsilonOrder, a, b};
+  <|"EXPRESSION" -> computed,
+    "MULTIGRADE_EPSILON_ETA_SIGMAW" -> grades,
+    "DIMENSION_L_T_M" -> dimension|>
+];
+
+projectionDifference[left_, right_] :=
+  integralPreservingProjectionTransform[left - right, Identity, Together];
+projectionComparisonPayload[expression_, dimension_] := Join[
+  projectionObjectRecord[expression, dimension],
+  <|"TEST_OBJECT" -> relationalObject[
+    projectionComputedExpression[expression], 0]|>];
+
 directWidthProfileSource[coordinates_List, reversedFirstJet_:False] :=
   If[TrueQ[reversedFirstJet],
     widthProfileReversedX1 @@ coordinates, widthProfile @@ coordinates];
@@ -437,6 +535,10 @@ derivedFaceCase[source_, dof_String, dimension_, ablatedDirection_:0] :=
   objectRecord[
   applyProfileJets[applyDof[shapeDerivative[source], dof],
     ablatedDirection], dimension];
+derivedProjectionCase[source_, dof_String, dimension_,
+    ablatedDirection_:0] := projectionObjectRecord[
+  applyProjectionProfileJets[applyDof[
+    projectionShapeDerivative[source], dof], ablatedDirection], dimension];
 
 (* The constant bindings and the reserved operand are deliberately inert. *)
 inheritedConstants = {cs0, muR, rhoBr, W0, eW, rhoM,
@@ -697,17 +799,58 @@ widthGradientAnsatz = (D[widthAnsatz, #] & /@ {y1, y2, y3}) /.
 muRGradientAnsatz = (D[muRAnsatz, #] & /@ {y1, y2, y3}) /.
   etaBg muR/LW -> (muR/W0) sigmaW;
 
+(* Keep W_bg and rho_4D,bg as independent inert factors through D.
+   Only the generated W_bg first jets receive the supplied section 2a map. *)
+backgroundCoordinates = {y1, y2, y3};
+backgroundWidthHeld = widthBackgroundHeld[y1, y2, y3];
+backgroundWidthFirstJetRules = Table[
+  D[backgroundWidthHeld, backgroundCoordinates[[index]]] ->
+    sigmaW Apply[Derivative, UnitVector[dimBrane, index]][w1Profile][
+      y1/LW, y2/LW, y3/LW], {index, spatialDirections}];
+backgroundRhoFourHeldSource["RHO4_CONSTANT"] =
+  rhoFourRho4BackgroundHeld[y1, y2, y3];
+backgroundRhoFourHeldSource["RHOBR_CONSTANT"] =
+  rhoFourRhobrBackgroundHeld[y1, y2, y3];
+backgroundRhoFourDefinition["RHO4_CONSTANT"] = rhoBr/W0;
+backgroundRhoFourDefinition["RHOBR_CONSTANT"] =
+  rhoBr/backgroundWidthHeld;
+backgroundRhoFourFirstJetRules[density_String] := Table[
+  D[backgroundRhoFourHeldSource[density],
+      backgroundCoordinates[[index]]] ->
+    D[backgroundRhoFourDefinition[density],
+      backgroundCoordinates[[index]]], {index, spatialDirections}];
+
+backgroundSigmaObjects[density_String] := Module[
+  {sigmaHeld, gradientHeld, sigmaZero, gradient},
+  sigmaHeld = backgroundRhoFourHeldSource[density] backgroundWidthHeld;
+  gradientHeld = D[sigmaHeld, #] & /@ backgroundCoordinates;
+  sigmaZero = Together[sigmaHeld /.
+      backgroundRhoFourHeldSource[density] ->
+        backgroundRhoFourDefinition[density] /.
+      backgroundWidthHeld -> widthAnsatz];
+  gradient = gradientHeld /.
+    backgroundRhoFourFirstJetRules[density];
+  gradient = gradient /. backgroundWidthFirstJetRules;
+  gradient = gradient /.
+    backgroundRhoFourHeldSource[density] ->
+      backgroundRhoFourDefinition[density] /.
+    backgroundWidthHeld -> widthAnsatz;
+  <|"SIGMA_E_ZERO" -> sigmaZero,
+    "GRADIENT_SIGMA_E_ZERO" -> (Together /@ gradient)|>
+];
+
 backgroundDensityMap = Association[Table[
-  density -> Module[{rhoFour, rhoIntegrated, sigmaZero, gradient},
+  density -> Module[
+    {rhoFour, rhoIntegrated, sigmaObjects, sigmaZero, gradient},
     rhoFour = Switch[density,
       "RHO4_CONSTANT", rhoBr/W0,
       "RHOBR_CONSTANT", rhoBr/widthAnsatz];
     rhoIntegrated = Switch[density,
       "RHO4_CONSTANT", (rhoBr/W0) widthAnsatz,
       "RHOBR_CONSTANT", rhoBr];
-    sigmaZero = Together[rhoFour widthAnsatz];
-    gradient = (D[sigmaZero, #] & /@ {y1, y2, y3}) /.
-      etaBg W0/LW -> sigmaW;
+    sigmaObjects = backgroundSigmaObjects[density];
+    sigmaZero = sigmaObjects["SIGMA_E_ZERO"];
+    gradient = sigmaObjects["GRADIENT_SIGMA_E_ZERO"];
     <|
       "RHO4_BG" -> objectRecord[rhoFour, dimensionBulkDensity, 0],
       "RHOBR_BG" -> objectRecord[rhoIntegrated,
@@ -940,7 +1083,7 @@ projectionShapePayload = Association[Flatten[Table[
       exact = projectionOperand[projectionDynamicTerms[branch]]}, key -> <|
     "DYNAMIC_WINDOW" -> windowSource[branch],
     "EXACT_PROJECTED_IDENTITY_ZERO_FORM" -> exact,
-    "SHAPE_DERIVATIVE" -> derivedFaceCase[exact, dof,
+    "SHAPE_DERIVATIVE" -> derivedProjectionCase[exact, dof,
       dimensionEvolution],
     "DIMENSION_L_T_M" -> dimensionEvolution|>],
   {branch, branchNames}, {dof, dofNames}]]];
@@ -948,17 +1091,21 @@ emitShared["PROJECTION_SHAPE_DERIV", projectionShapePayload];
 
 projectionDynamicPayload = Association[Flatten[Table[
   With[{key = branch <> "|DOF_" <> dof,
-      operand = applyProfileJets[applyPhysicalDof[
-        shapeDerivative[projectionOperand[projectionDynamicTerms[branch]]],
-        dof]]}, key -> objectRecord[operand, dimensionEvolution]],
+      operand = applyProjectionProfileJets[applyPhysicalDof[
+        projectionShapeDerivative[
+          projectionOperand[projectionDynamicTerms[branch]]],
+        dof]]}, key -> projectionObjectRecord[operand,
+      dimensionEvolution]],
   {branch, branchNames}, {dof, dofNames}]]];
 emitShared["PROJECTION_DYNAMIC_OPERAND", projectionDynamicPayload];
 
 projectionStaticPayload = Association[Flatten[Table[
   With[{key = branch <> "|DOF_" <> dof,
-      operand = applyProfileJets[applyPhysicalDof[
-        shapeDerivative[projectionOperand[projectionStaticTerms[branch]]],
-        dof]]}, key -> objectRecord[operand, dimensionEvolution]],
+      operand = applyProjectionProfileJets[applyPhysicalDof[
+        projectionShapeDerivative[
+          projectionOperand[projectionStaticTerms[branch]]],
+        dof]]}, key -> projectionObjectRecord[operand,
+      dimensionEvolution]],
   {branch, branchNames}, {dof, dofNames}]]];
 emitShared["PROJECTION_STATIC_OPERAND", projectionStaticPayload];
 
@@ -966,8 +1113,8 @@ projectionResidualPayload = AssociationMap[
   Function[key, Module[{dynamic, static, residual},
     dynamic = projectionDynamicPayload[key]["EXPRESSION"];
     static = projectionStaticPayload[key]["EXPRESSION"];
-    residual = Together[dynamic - static];
-    comparisonPayload[residual, dimensionEvolution]
+    residual = projectionDifference[dynamic, static];
+    projectionComparisonPayload[residual, dimensionEvolution]
   ]], Keys[projectionDynamicPayload]];
 emitShared["PROJECTION_RESIDUAL", projectionResidualPayload];
 
@@ -975,11 +1122,11 @@ projectionOriginsPayload = Association[Flatten[Table[
   With[{key = branch <> "|" <> origin <> "|DOF_" <> dof,
       dynamicTerm = projectionDynamicTerms[branch][origin],
       staticTerm = projectionStaticTerms[branch][origin]}, key -> <|
-    "DYNAMIC_SOURCE_TERM" -> dynamicTerm,
-    "DYNAMIC_SHAPE_DERIVATIVE" -> derivedFaceCase[dynamicTerm, dof,
+    "DYNAMIC_SOURCE_TERM" -> projectionZeroIntegralNormalize[dynamicTerm],
+    "DYNAMIC_SHAPE_DERIVATIVE" -> derivedProjectionCase[dynamicTerm, dof,
       dimensionEvolution],
-    "STATIC_SOURCE_TERM" -> staticTerm,
-    "STATIC_SHAPE_DERIVATIVE" -> derivedFaceCase[staticTerm, dof,
+    "STATIC_SOURCE_TERM" -> projectionZeroIntegralNormalize[staticTerm],
+    "STATIC_SHAPE_DERIVATIVE" -> derivedProjectionCase[staticTerm, dof,
       dimensionEvolution],
     "DIMENSION_L_T_M" -> dimensionEvolution|>],
   {branch, branchNames}, {origin, Keys[projectionDynamicTerms[branch]]},
@@ -1308,14 +1455,16 @@ Do[Module[{objects, faceTerm, source, key, base, ablated},
   {direction, spatialDirections}];
 
 Do[Module[{source, key, base, ablated},
-  source = shapeDerivative[projectionOperand[projectionDynamicTerms[branch]]];
+  source = projectionShapeDerivative[
+    projectionOperand[projectionDynamicTerms[branch]]];
   key = "PROJECTION_SHAPE_DERIV|" <> faceCaseKey[branch, sign, dof] <>
     "|DIRECTION_" <> ToString[direction];
-  base = applyProfileJets[applyPhysicalDof[source, dof]];
-  ablated = applyProfileJets[applyPhysicalDof[source, dof], direction];
-  AssociateTo[formBaseOperand, key -> objectRecord[base,
+  base = applyProjectionProfileJets[applyPhysicalDof[source, dof]];
+  ablated = applyProjectionProfileJets[
+    applyPhysicalDof[source, dof], direction];
+  AssociateTo[formBaseOperand, key -> projectionObjectRecord[base,
     dimensionEvolution]];
-  AssociateTo[formAblatedOperand, key -> objectRecord[ablated,
+  AssociateTo[formAblatedOperand, key -> projectionObjectRecord[ablated,
     dimensionEvolution]];
 ], {branch, branchNames}, {sign, faceSigns}, {dof, dofNames},
   {direction, spatialDirections}];
@@ -1351,8 +1500,11 @@ emitShared["CONTROL_FORM_ABLATED_OPERAND", formAblatedOperand];
 formResidual = AssociationMap[Function[key, Module[{base, ablated},
   base = formBaseOperand[key]["EXPRESSION"];
   ablated = formAblatedOperand[key]["EXPRESSION"];
-  comparisonPayload[Together[base - ablated],
-    formBaseOperand[key]["DIMENSION_L_T_M"]]
+  If[StringStartsQ[key, "PROJECTION_SHAPE_DERIV|"],
+    projectionComparisonPayload[projectionDifference[base, ablated],
+      formBaseOperand[key]["DIMENSION_L_T_M"]],
+    comparisonPayload[Together[base - ablated],
+      formBaseOperand[key]["DIMENSION_L_T_M"]]]
 ]], Keys[formBaseOperand]];
 emitShared["CONTROL_FORM_RESIDUAL", formResidual];
 
@@ -1370,6 +1522,17 @@ uniformS11ca[expression_] := computedExpression[
   applyProfileJets[expression] /. {etaBg -> 0, sigmaW -> 0}];
 uniformS11b[expression_] := computedExpression[
   expression /. materialToEulerianRules /. uniformProfileRules];
+uniformProjectionS11ca[expression_] := Module[{processor},
+  processor = Function[part, computedExpression[
+    part /. {etaBg -> 0, sigmaW -> 0}]];
+  integralPreservingProjectionTransform[
+    applyProjectionProfileJets[expression], processor, processor]
+];
+uniformProjectionS11b[expression_] := Module[{processor},
+  processor = Function[part, computedExpression[
+    part /. materialToEulerianRules /. uniformProfileRules]];
+  integralPreservingProjectionTransform[expression, processor, processor]
+];
 
 uniformS11caOperand = <||>;
 uniformS11bOperand = <||>;
@@ -1448,13 +1611,13 @@ Do[Module[{inventory, source, key, dimension},
   {fieldName, Keys[traceFieldInventory]}, {dof, dofNames}];
 
 Do[Module[{source, key},
-  source = applyPhysicalDof[shapeDerivative[
+  source = applyPhysicalDof[projectionShapeDerivative[
     projectionOperand[projectionDynamicTerms[branch]]], dof];
   key = "PROJECTION_SHAPE_DERIV|" <> branch <> "|DOF_" <> dof;
-  AssociateTo[uniformS11caOperand, key -> objectRecord[
-    uniformS11ca[source], dimensionEvolution]];
-  AssociateTo[uniformS11bOperand, key -> objectRecord[
-    uniformS11b[source], dimensionEvolution]];
+  AssociateTo[uniformS11caOperand, key -> projectionObjectRecord[
+    uniformProjectionS11ca[source], dimensionEvolution]];
+  AssociateTo[uniformS11bOperand, key -> projectionObjectRecord[
+    uniformProjectionS11b[source], dimensionEvolution]];
 ], {branch, branchNames}, {dof, dofNames}];
 
 Do[Module[{virtualSource, evolutionSource, virtualKey, evolutionKey},
@@ -1498,8 +1661,11 @@ emitShared["UNIFORM_LIMIT_S11B_OPERAND", uniformS11bOperand];
 uniformResidual = AssociationMap[Function[key, Module[{left, right},
   left = uniformS11caOperand[key]["EXPRESSION"];
   right = uniformS11bOperand[key]["EXPRESSION"];
-  comparisonPayload[Together[left - right],
-    uniformS11caOperand[key]["DIMENSION_L_T_M"]]
+  If[StringStartsQ[key, "PROJECTION_SHAPE_DERIV|"],
+    projectionComparisonPayload[projectionDifference[left, right],
+      uniformS11caOperand[key]["DIMENSION_L_T_M"]],
+    comparisonPayload[Together[left - right],
+      uniformS11caOperand[key]["DIMENSION_L_T_M"]]]
 ]], Keys[uniformS11caOperand]];
 emitShared["UNIFORM_LIMIT_RESIDUAL", uniformResidual];
 

@@ -60,8 +60,8 @@ Quoted:
 > Engine lines 709–710, emit 720: `gradient = (D[sigmaZero, #] & /@ {y1, y2, y3}) /. etaBg W0/LW -> sigmaW`.
 > For `RHO4_CONSTANT`, `Together[ρ_4D W_bg] = rhoBr (1 + η w1)`, so `∇Σ` is `(η ρBr / L_W) ∂w1` and **does
 > not contain the product `η W_0 / L_W`** — the replacement is a no-op. The emitted CAS object is graded as
-> an `η` zero-jet (`{0,1,0}`), not a first-jet (`{0,0,1}`). Spec §2a forbids collapsing those bookkeepers.
-> `RHOBR_CONSTANT` gradient `{0,0,0}` is correct.
+> an `η` zero-jet, not a `σ_W` first-jet. Spec §2a forbids collapsing those bookkeepers.
+> `RHOBR_CONSTANT` gradient is the zero vector (correct).
 
 **Root cause.** The gradient is graded through a fragile literal pattern substitution `etaBg W0/LW -> sigmaW`
 that only fires when the exact product `etaBg·W0/LW` appears. For `RHO4_CONSTANT` the derivative carries
@@ -69,13 +69,18 @@ that only fires when the exact product `etaBg·W0/LW` appears. For `RHO4_CONSTAN
 first-jet grade.
 
 **Fix.** Grade `∇Σ_E^0` by the spec §2a first-jet map `∂_{y_i}W_bg = σ_W ∂_{ξ_i}w_1` itself, not by a
-literal-product rewrite that assumes a particular coefficient. Retain `W_bg` through the differentiation,
-then apply the §2a map to each generated `∂_{y_i}W_bg` factor so every such factor is expressed through
-`σ_W` and carries the correct `{ε,η,σ_W}` multigrade — independent of the density representative's prefactor
-— for **both** representatives. ⛔ Do not hard-code the answer and ⛔ do not assume a target grade; derive
-the gradient, let its grade fall out of the §2a map, and emit/report the resulting computed expression and
-its multigrade for each representative. (This directive supplies no expected gradient value or grade;
-`CLAUDE.md` rule 5.)
+literal-product rewrite that assumes a particular coefficient. ⚠ **"Retain `W_bg`" is not sufficient on its
+own:** `W_bg` must remain an **unexpanded, held factor through the `D`** — a held object, ⛔ not the
+substituted product `W_0(1+η w_1)`. `Together` is not the only cancellation that defeats the map:
+`Times[(ρ_br/W_0), W_0(1+η w_1)]` **already cancels `W_0`** before differentiation, so `D` never produces a
+`∂_{y_i}W_bg` unit and `etaBg W0/LW -> sigmaW` still no-ops. Keep `W_bg` inert through the derivative;
+**after `D`, replace each generated `∂_{y_i}W_bg` factor by the §2a RHS `σ_W ∂_{ξ_i}w_1`**, so every such
+factor is expressed through `σ_W` and carries the `{ε,η,σ_W}` multigrade the §2a map assigns — independent
+of the density representative's prefactor — for **both** representatives. ⛔ Do **not** globally rewrite `η`
+in terms of `σ_W` (that collapses the two bookkeepers §2a keeps independent). ⛔ Do not hard-code the answer
+and ⛔ do not assume a target grade; derive the gradient, let its grade fall out of the §2a map, and
+emit/report the resulting computed expression and its multigrade for each representative. (This directive
+supplies no expected gradient value or grade; `CLAUDE.md` rule 5.)
 
 ## Preserve
 
@@ -92,10 +97,13 @@ at ~9–10 GB RSS; ⛔ watch for an orphaned kernel if the job dies and `kill -9
 never `mathematica/out/`; `--sandbox danger-full-access`). Verify: (1) stderr carries only the benign
 `WolframScript.conf` line; (2) all 40 `WL_S11CA_<QUANTITY>` tags still emit; (3) **every** full-line
 projection integral — in `WL_S11CA_PROJECTION_*` **and** in every T-f consumer that carries a projection
-integral (e.g. the projection entries inside `CONTROL_FORM_*` and `UNIFORM_LIMIT_*`) — retains a localizing
-`windowFunction` (or a derivative of it) **inside** its integrand, and ⛔ **no** held integral has an
-integrand constant in `normalCoordinate` (in particular none contains `Inactive[Integrate][1, {normalCoordinate,
-…}]`); (4) the `RHO4_CONSTANT` and `RHOBR_CONSTANT` `GRADIENT_SIGMA_E_ZERO` payloads are computed via the §2a
+integral (the projection entries inside `CONTROL_FORM_*` and `UNIFORM_LIMIT_*`) — retains a localizing
+`windowFunction` (or a derivative of it) **inside** its integrand, and satisfies **both**: (i) ⛔ **no**
+factor that depends on `normalCoordinate` sits **outside** a held `∫ dw` — this is stronger than "no
+`Inactive[Integrate][1, {normalCoordinate, …}]`": a term like `field[w]·Inactive[Integrate][window''[w],
+{normalCoordinate, …}]` with the field left **outside** must also be rejected; and (ii) the **dynamic**
+operand still depends on `etaBg`, with those `etaBg` factors sitting **inside** the integrand (a fix that
+drops the mixed-`η` terms removes the `∫1` but destroys the window's `η` dependence, which §2a forbids); (4) the `RHO4_CONSTANT` and `RHOBR_CONSTANT` `GRADIENT_SIGMA_E_ZERO` payloads are computed via the §2a
 map — **report the computed expression and its multigrade for each** (the orchestrator verifies the grade;
 this directive supplies no target grade); (5) the §5a/T-h objects are **byte-unchanged** from baseline
 `a15bc69c` — byte-compare all fenced payloads (REP_INVARIANCE_*, CONTROL_INDEPENDENCE_*, KINEMATIC_BALANCE,

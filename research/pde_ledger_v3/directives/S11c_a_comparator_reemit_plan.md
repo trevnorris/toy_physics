@@ -1,5 +1,20 @@
 # S11c-a T7 comparator — CROSS-ENGINE RECONCILIATION plan (post-compact roadmap)
 
+## ⭐ PROGRESS (2026-08-24)
+- **Step 0 (feasibility/adjudication matrix): DONE, committed `3c7f9137`** —
+  `S11c_a_T7_adjudication_matrix.md` (+ twin + census `_measurements/s11ca_t7_census/`), 2 legs + fold.
+- **Step 1 (adjudicate vs spec): DONE, committed `3491a376`** — `S11c_a_T7_adjudication_verdicts.md`
+  (+ twin + `_measurements/s11ca_t7_adjudication/`), 2 legs + fold. **User chose FULL RECONCILE.**
+  Verdicts (fixes on BOTH engines): B density → PY correct; C virtual-work → WL correct; H.1 coverage →
+  PY correct; BG → WL correct. See the verdicts doc for the per-engine fix list.
+- **NEXT = Step 2 ENGINE PATCHES** (workflow step (2) below, "computation → full review"): WL patch
+  (B projection + H.1 + kinematic/flux drop) + PY patch (C full grid + BG loads + density-map branch drop);
+  each a full-review Codex build relaying the verdicts verbatim (no pre-legs — verdicts already 2-legged).
+  Then re-run → shallow bridges (step (2) serialization rows) → trivial comparator step (4-5) → step record.
+- ⚠ The workflow below is the original revised roadmap; steps 0-1 are now complete as above. The
+  case-structure divergences it anticipated were adjudicated in step 1 (both engines need fixes).
+
+
 ## The headline (Codex plan-review, orchestrator-verified): the engines DISAGREE on CASE STRUCTURE
 The re-emit was chosen to get a full mechanical cross-check. Codex's plan review then found — and I verified
 against the two real `.out`s — that **the two engines diverge deeper than serialization: they compute

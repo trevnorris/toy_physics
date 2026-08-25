@@ -43,3 +43,8 @@ User chose re-emit (2026-08-24) over the partial comparator. Codex plan-review t
 assumption false (case-structure + semantic divergences); plan revised to a feasibility/adjudication-matrix
 first. No expected cross-engine RESULT is asserted; the case-structure divergences are engine facts (counts),
 not comparator verdicts.
+
+## Progress (2026-08-24)
+Step 0 committed `3c7f9137` (matrix + 2 legs + fold); Step 1 committed `3491a376` (verdicts + 2 legs +
+fold). Verifiable: `git log --oneline | grep -E '3c7f9137|3491a376'`. User chose FULL RECONCILE; NEXT =
+step-2 engine patches (both engines). Provenance carried in the two committed docs + their twins.

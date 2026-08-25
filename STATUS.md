@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a: BOTH engines committed+verified; T7 comparator via SHARED-SCHEMA RE-EMIT after COMPACT 2026-08-24
+## ⭐⭐⭐ CURRENT FRONT — S11c-a: T7 steps 0-1 DONE (matrix `3c7f9137` + adjudication `3491a376`); NEXT = STEP-2 ENGINE PATCHES (fixes on BOTH engines)
 
 ⭐⭐ **S11c is a STAGED FAMILY a–e** (decision list `research/pde_ledger_v3/directives/S11c_decisions.md`
 `24853f3a`, N1–N15, 2 legs): **a**=background & geometry, **b**=variable-coeff brane operator/kernel,
@@ -36,24 +36,32 @@ move exactly the data-dependent tags; §5a independence genuine. My authoritativ
 tags, ZERO divergent ∫1, byte-identical to Codex definitive run (40/40); regression vs a15bc69c = 28 identical
 / 12 changed (exactly T-0+5×PROJECTION_*+6×CONTROL_FORM/UNIFORM_LIMIT). ⚠ LESSON: my "88 ∫1 in ORIGINS" alarm
 was a STALE INTERMEDIATE SCRATCH file — verify against a FRESH run I control, not the builder's scratch stdout.
-⭐⭐⭐ **T7 CROSS-ENGINE — the engines DISAGREE on CASE STRUCTURE (real findings, not serialization).**
+⭐⭐⭐ **T7 CROSS-ENGINE — the engines DISAGREE on CASE STRUCTURE; user chose FULL RECONCILE; fixes land on BOTH engines.**
 Roadmap `directives/S11c_a_comparator_reemit_plan.md`. Arc: comparator-side key-alignment REJECTED by 2
-directive legs (superseded `S11c_a_comparator_build_directive.md`) → user chose **re-emit** → Codex plan-review
-(orchestrator-verified) found the **emit-only assumption FALSE**: the two independently-built engines compute
-**different case SETS + semantic content** — ⭐ **VIRTUAL_WORK 8 (PY, virtual-DOF tied to physical) vs 16 (WL,
-independent physical×virtual matrix)**; projection density-decomposed (PY) vs not (WL), PY's 2 density cases
-DIFFER; CONTROL_FORM/UNIFORM coverage differs; PY stores `(bg,ε·deriv,total)` tuple vs WL coefficient
-(waveOrder stripped into MULTIGRADE). These are **potential physics findings** (rule 1 — the disagreement IS
-the measurement) requiring **spec adjudication** (which engine is right? did §4/§5 under-specify?) BEFORE any
-comparator; fixing the wrong engine = a COMPUTATION patch + FULL review. **Revised post-compact plan:** (0)
-**feasibility/adjudication matrix** (per tag: PY vs WL case sets+leaves+bookkeeper; 2 legs) → (1) **adjudicate
-each divergence vs spec** → (2) fix (computation→full review; serialization→emit-patch under a PROVENANCE-
-MANIFEST gate→light review; spec-gap→narrow §7/§4 addendum) → (3) re-run → (4) trivial join+residual comparator
-(2 legs) → freeze+run → step record (carry the case-structure findings) → family card. ⚠ SCOPE now bigger +
-front-loaded on physics (adjudication), not serialization. ⭐ pin the adjudicated schema FORWARD for
-S11c-b…e. ⚠ PY emit feeds `export_candidates` — any reformat mutates `S11c_a_exports.py` (decouple/preserve).
-See memory `project_s11c_a_state`. ⚠ another session works untracked in `memory/` — commit EXPLICIT paths
-only. ⚠ codex/grok jobs die SPURIOUSLY; a spurious kill can orphan a WolframKernel eating memory (kill by PID).
+directive legs → user chose re-emit → Codex found the emit-only assumption FALSE (genuine case-structure
+divergences) → user chose **MATRIX-FIRST** then **FULL RECONCILE**.
+**STEP 0 — adjudication MATRIX `3c7f9137`** (`directives/S11c_a_T7_adjudication_matrix.md` + twin + frozen
+census `_measurements/s11ca_t7_census/`): a COMPUTED axis-set census over both hash-locked streams, 2 legs
+(Codex+Grok) + fold. 39-tag join; classifies every divergence.
+**STEP 1 — adjudication VERDICTS `3491a376`** (`directives/S11c_a_T7_adjudication_verdicts.md` + twin +
+`_measurements/s11ca_t7_adjudication/`): every verdict = decidable computation + spec citation; 2 legs
+reproduced every engine ASSIGNMENT (no reversal) + corrected severity/scope; folded, each re-verified (rule 13).
+**VERDICTS (fixes on BOTH engines):** (B) density → **PY correct** (WL drop redundant axis on kinematic/flux
+[use `ρ_m` §3b:351, rep-identical, SHALLOW]; WL add axis to rep-dependent projection SHAPE_DERIV/_DYNAMIC/
+_RESIDUAL/_TERM_ORIGINS [COMPUTATION]); (C) virtual-work → **WL correct** (full grid §4 T-d:419; PY missing
+pairing CASES, off-diagonals physical-DOF-REDUNDANT not new physics; PY emit full grid → cross-checks WL);
+(H.1) coverage → **PY correct** (WL add form+uniform for 5 quantities; spec NOT under-specified); (BG) →
+**WL correct** (PY add BOUNDARY_LOADS only, already has the zeros §2d:251); BACKGROUND_DENSITY_MAP → PY branch
+axis redundant (2-per-rep, §2b).
+**NEXT = STEP 2 ENGINE PATCHES** (each full-review Codex build; relay verdicts VERBATIM, NO pre-legs per the
+repair precedent since verdicts already 2-legged): **WL patch** (B projection + H.1 + kinematic/flux drop;
+Mathematica `--sandbox danger-full-access`, ~23 min) + **PY patch** (C full grid + BG loads + density-map
+branch drop). Then re-run both → shallow reconciliation bridges (leaf-rep reconstruction, decompositions,
+encoding) → trivial join+residual comparator (frozen T7 = `scripts/S11b_cross_engine_comparator.py`) + 2 legs
+→ step record → family card. ⭐ pin the adjudicated schema FORWARD for S11c-b…e. ⚠ PY emit feeds
+`export_candidates` — any reformat mutates `S11c_a_exports.py` (decouple/preserve/review). See memory
+`project_s11c_a_state`. ⚠ another session works untracked in `memory/` — commit EXPLICIT paths only. ⚠ codex/
+grok jobs die SPURIOUSLY; a spurious kill can orphan a WolframKernel eating memory (kill by PID).
 
 ---
 

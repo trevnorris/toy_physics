@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 2: WL PATCH COMMITTED (patch + repair, 2 fresh legs PASS, F1 resolved); NEXT = PY patch → reconciliation bridges → T7 comparator
+## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 2 DONE: BOTH engine patches COMMITTED (WL `a7459cb8` + PY); NEXT = reconciliation bridges → T7 cross-engine comparator → step record
 
 ⭐ **T7 STEP 2 (engine patches, fixes on BOTH engines).** WL patch DONE: added the density-representative axis
 to the 5 T-f projection objects (spec §1b/§3a/§4:398), dropped the spurious axis from KINEMATIC/RELATIVE_FLUX
@@ -9,9 +9,12 @@ repair fixed a patch-introduced blocker (the reset refactor cleared `materialSha
 §5a rep-invariance material route went inert for T-c/T-d/T-i). Two fresh legs (Agent + Grok) PASS; Grok's F1
 (static-projection form control) resolved by computation to a working control (fires 6/24 where the RHOBR
 material-advected density genuinely carries `∂W_bg`; honest invariant elsewhere) — a step-record note, not a
-defect. NEXT = **PY patch** (full physical×virtual virtual-work grid + BACKGROUND_STATE boundary loads +
-BACKGROUND_DENSITY_MAP branch drop; directive drafted+gated) → shallow reconciliation bridges → the trivial
-T7 cross-engine comparator → step record + family card (pin the schema forward for S11c-b…e).
+defect. **PY patch DONE** (full physical×virtual virtual-work grid — 16 cases, off-diagonals genuinely
+computed; BACKGROUND_STATE boundary loads f_hold/t_hold; BACKGROUND_DENSITY_MAP branch drop). Two fresh legs
+(Agent + Grok) PASS; both independently reached — and both, with the orchestrator, judged non-defect — the one
+finding (BACKGROUND_STATE dimension tuple is declarative/emitted-only, a pre-patch convention that skips the
+supplied zeros; step-record note + a comparator DIMENSIONS-bridge note). NEXT = shallow reconciliation bridges
+→ the trivial T7 cross-engine comparator → step record + family card (pin the schema forward for S11c-b…e).
 
 ⭐⭐ **S11c is a STAGED FAMILY a–e** (decision list `research/pde_ledger_v3/directives/S11c_decisions.md`
 `24853f3a`, N1–N15, 2 legs): **a**=background & geometry, **b**=variable-coeff brane operator/kernel,

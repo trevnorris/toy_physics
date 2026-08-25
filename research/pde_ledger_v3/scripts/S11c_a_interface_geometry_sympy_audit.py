@@ -853,7 +853,8 @@ def conormal_raw(source: FaceSource) -> sp.Tuple:
 
 def virtual_work_cases(
     branch: str,
-    dof: str,
+    physical_dof: str,
+    virtual_dof: str,
     representative: str,
     *,
     route: str = "EULERIAN",
@@ -863,16 +864,20 @@ def virtual_work_cases(
     face_rows = []
     total = sp.Integer(0)
     for face in FACES:
-        source = build_face_source(
-            branch, face, dof, representative, route=route,
+        physical_source = build_face_source(
+            branch, face, physical_dof, representative, route=route,
             ablate_direction=ablate_direction, reverse_upper_x1=reverse_upper_x1,
         )
-        exact_pressure = source.parameter * source.pressure_trace_first
-        exact_mu = source.parameter * mu_theta_branch[branch] / source.rhobr_bg_exact
+        virtual_source = build_face_source(
+            branch, face, virtual_dof, representative, route=route,
+            ablate_direction=ablate_direction, reverse_upper_x1=reverse_upper_x1,
+        )
+        exact_pressure = physical_source.parameter * physical_source.pressure_trace_first
+        exact_mu = physical_source.parameter * mu_theta_branch[branch] / physical_source.rhobr_bg_exact
         exact_affinity = exact_mu - exact_pressure / rho_m
-        exact_traction = -(exact_pressure + Lambda_X * exact_affinity) * sp.ImmutableMatrix(source.normal_exact)
-        exact_work = source.measure_exact * dot(tuple(exact_traction), source.virtual_displacement)
-        contribution = epsilon * shape(exact_work, source.parameter)
+        exact_traction = -(exact_pressure + Lambda_X * exact_affinity) * sp.ImmutableMatrix(physical_source.normal_exact)
+        exact_work = physical_source.measure_exact * dot(tuple(exact_traction), virtual_source.virtual_displacement)
+        contribution = epsilon * shape(exact_work, physical_source.parameter)
         face_rows.append(sp.Tuple(Str("UPPER" if face == 1 else "LOWER"), contribution))
         total += contribution
     return sp.Tuple(sp.Tuple(*face_rows), sp.factor_terms(total))
@@ -896,12 +901,11 @@ def profile_context() -> sp.Tuple:
 
 def build_background_density_raw() -> dict[object, object]:
     cases: dict[object, object] = {}
-    for branch in BRANCHES:
-        for representative in DENSITY_REPS:
-            rho4_value, _ = density_pair(representative, W_bg)
-            sigma_e = sp.factor_terms(rho4_value * W_bg)
-            gradient = sp.ImmutableMatrix([dx(sigma_e, i) for i in range(3)])
-            cases[(branch, representative)] = sp.Tuple(profile_context(), finalize(sigma_e), finalize(gradient))
+    for representative in DENSITY_REPS:
+        rho4_value, _ = density_pair(representative, W_bg)
+        sigma_e = sp.factor_terms(rho4_value * W_bg)
+        gradient = sp.ImmutableMatrix([dx(sigma_e, i) for i in range(3)])
+        cases[(representative,)] = sp.Tuple(profile_context(), finalize(sigma_e), finalize(gradient))
     return cases
 
 
@@ -917,11 +921,12 @@ def build_geometry_quantity(
     for branch in BRANCHES:
         for dof in DOFS:
             if quantity == "VIRTUAL_WORK_SHAPE_DERIV":
-                for representative in representatives:
-                    cases[(branch, dof, representative)] = virtual_work_cases(
-                        branch, dof, representative, route=route,
-                        ablate_direction=ablate_direction, reverse_upper_x1=reverse_upper_x1,
-                    )
+                for virtual_dof in DOFS:
+                    for representative in representatives:
+                        cases[(branch, dof, virtual_dof, representative)] = virtual_work_cases(
+                            branch, dof, virtual_dof, representative, route=route,
+                            ablate_direction=ablate_direction, reverse_upper_x1=reverse_upper_x1,
+                        )
                 continue
             for face in FACES:
                 for representative in representatives:
@@ -1323,6 +1328,7 @@ def emit_supplied_objects() -> None:
             sp.Eq(symbol(f"V_0_{branch}_{representative}", "PREMISE", "supplied zero background face velocity"), 0, evaluate=False),
             sp.Eq(symbol(f"J_0_{branch}_{representative}", "PREMISE", "supplied zero background face flux"), 0, evaluate=False),
             sp.Eq(symbol(f"A_0_{branch}_{representative}", "PREMISE", "supplied zero background affinity"), 0, evaluate=False),
+            support_body, support_face_plus, support_face_minus,
         )
         for branch in BRANCHES for representative in DENSITY_REPS
     }
@@ -1467,18 +1473,20 @@ def uniform_reference_geometry(quantity: str) -> dict[object, object]:
     for branch in BRANCHES:
         for dof in DOFS:
             if quantity == "VIRTUAL_WORK_SHAPE_DERIV":
-                for representative in reps:
-                    contributions = []
-                    for face in FACES:
-                        zeta, zeta_t, grad_zeta, _, virtual_delta_W = dof_fields(dof, face)
-                        normal = sp.ImmutableMatrix([0, 0, 0, face])
-                        p = epsilon * ((delta_p_plus if face == 1 else delta_p_minus) + zeta * dw_delta_p_0[face])
-                        mu_s = epsilon * mu_theta_branch[branch] / rho_br
-                        tr = -(p + Lambda_X * (mu_s - p / rho_m)) * normal
-                        virtual_zeta = delta_v_zeta_c if dof == "ZETA_C" else face * virtual_delta_W / 2
-                        virtual = sp.ImmutableMatrix([*delta_v_u, virtual_zeta])
-                        contributions.append(sp.Tuple(Str("UPPER" if face == 1 else "LOWER"), dot(tuple(tr), tuple(virtual))))
-                    cases[(branch, dof, representative)] = sp.Tuple(sp.Tuple(*contributions), sp.Add(*(row[1] for row in contributions)))
+                for virtual_dof in DOFS:
+                    for representative in reps:
+                        contributions = []
+                        for face in FACES:
+                            zeta, zeta_t, grad_zeta, _, _ = dof_fields(dof, face)
+                            _, _, _, _, virtual_delta_W = dof_fields(virtual_dof, face)
+                            normal = sp.ImmutableMatrix([0, 0, 0, face])
+                            p = epsilon * ((delta_p_plus if face == 1 else delta_p_minus) + zeta * dw_delta_p_0[face])
+                            mu_s = epsilon * mu_theta_branch[branch] / rho_br
+                            tr = -(p + Lambda_X * (mu_s - p / rho_m)) * normal
+                            virtual_zeta = delta_v_zeta_c if virtual_dof == "ZETA_C" else face * virtual_delta_W / 2
+                            virtual = sp.ImmutableMatrix([*delta_v_u, virtual_zeta])
+                            contributions.append(sp.Tuple(Str("UPPER" if face == 1 else "LOWER"), dot(tuple(tr), tuple(virtual))))
+                        cases[(branch, dof, virtual_dof, representative)] = sp.Tuple(sp.Tuple(*contributions), sp.Add(*(row[1] for row in contributions)))
                 continue
             for face in FACES:
                 zeta, zeta_t, grad_zeta, _, _ = dof_fields(dof, face)
@@ -1610,9 +1618,8 @@ def uniform_evolution_reference(quantity: str) -> dict[object, object]:
 def independent_uniform_reference(quantity: str) -> object:
     if quantity == "BACKGROUND_DENSITY_MAP":
         cases = {}
-        for branch in BRANCHES:
-            for representative in DENSITY_REPS:
-                cases[(branch, representative)] = sp.Tuple(profile_context(), rho_br, sp.zeros(3, 1))
+        for representative in DENSITY_REPS:
+            cases[(representative,)] = sp.Tuple(profile_context(), rho_br, sp.zeros(3, 1))
         return uniform_substitution(cases)
     if quantity in {"FACE_NORMAL", "CONORMAL_DERIV", "FACE_MEASURE_SHAPE_DERIV", "FACE_VELOCITY", "RELATIVE_FLUX", "KINEMATIC_BALANCE", "TRACTION", "VIRTUAL_WORK_SHAPE_DERIV", "CLOSURE_SHAPE_DERIV"}:
         return uniform_reference_geometry(quantity)
@@ -1646,7 +1653,10 @@ def task_uniform_control() -> None:
 
 def task_homogeneity() -> None:
     dimensions: dict[object, object] = {
-        "BACKGROUND_STATE": sp.Tuple(DIM_L, dim_mul(DIM_M, -DIM_L, -2 * DIM_T), DIM_RHO4, DIM_RHOBR, DIM_ZERO),
+        "BACKGROUND_STATE": sp.Tuple(
+            DIM_L, dim_mul(DIM_M, -DIM_L, -2 * DIM_T), DIM_RHO4, DIM_RHOBR, DIM_ZERO,
+            dim_div(DIM_PRESSURE, DIM_L), DIM_PRESSURE, DIM_PRESSURE,
+        ),
         "ADMISSIBILITY_PREMISE": DIM_ZERO,
         "FACE_MAP_LAB_HELD": DIM_L,
         "FACE_MAP_MATERIAL_ADVECTED": DIM_L,

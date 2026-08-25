@@ -1,6 +1,17 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a: T7 steps 0-1 DONE (matrix `3c7f9137` + adjudication `3491a376`); NEXT = STEP-2 ENGINE PATCHES (fixes on BOTH engines)
+## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 2: WL PATCH COMMITTED (patch + repair, 2 fresh legs PASS, F1 resolved); NEXT = PY patch → reconciliation bridges → T7 comparator
+
+⭐ **T7 STEP 2 (engine patches, fixes on BOTH engines).** WL patch DONE: added the density-representative axis
+to the 5 T-f projection objects (spec §1b/§3a/§4:398), dropped the spurious axis from KINEMATIC/RELATIVE_FLUX
+(they use `ρ_m`, §3b:351), extended §5b/§5c control coverage to the 5 missing objects (§5b:490/§5c:497). A
+repair fixed a patch-introduced blocker (the reset refactor cleared `materialShape` without redefining it →
+§5a rep-invariance material route went inert for T-c/T-d/T-i). Two fresh legs (Agent + Grok) PASS; Grok's F1
+(static-projection form control) resolved by computation to a working control (fires 6/24 where the RHOBR
+material-advected density genuinely carries `∂W_bg`; honest invariant elsewhere) — a step-record note, not a
+defect. NEXT = **PY patch** (full physical×virtual virtual-work grid + BACKGROUND_STATE boundary loads +
+BACKGROUND_DENSITY_MAP branch drop; directive drafted+gated) → shallow reconciliation bridges → the trivial
+T7 cross-engine comparator → step record + family card (pin the schema forward for S11c-b…e).
 
 ⭐⭐ **S11c is a STAGED FAMILY a–e** (decision list `research/pde_ledger_v3/directives/S11c_decisions.md`
 `24853f3a`, N1–N15, 2 legs): **a**=background & geometry, **b**=variable-coeff brane operator/kernel,

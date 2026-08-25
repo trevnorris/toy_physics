@@ -74,7 +74,7 @@ def wl_density_test(tag):
                 a, b = d["RHO4_CONSTANT"], d["RHOBR_CONSTANT"]
                 # first differing char window
                 j = next((k for k in range(min(len(a), len(b))) if a[k] != b[k]), min(len(a), len(b)))
-                print(f"  {'|'.join(coord):40s} DIFFER  RHO4[..{a[max(0,j-8):j+24]}..] vs RHOBR[..{b[max(0,j-8):j+24]}..]")
+                print(f"  {'|'.join(coord):40s} DIFFER")
     print(f"  => groups: {len(groups)}, DIFFER={ndiff}, IDENTICAL={nsame}")
 
 def py_entries_top(payload):
@@ -103,9 +103,7 @@ def py_density_test(tag):
             same = d["RHO4_CONSTANT"] == d["RHOBR_CONSTANT"]
             nsame += same; ndiff += (not same)
             if not same:
-                a, b = d["RHO4_CONSTANT"], d["RHOBR_CONSTANT"]
-                j = next((k for k in range(min(len(a), len(b))) if a[k] != b[k]), min(len(a), len(b)))
-                print(f"  {'|'.join(coord):24s} DIFFER  @{j}")
+                print(f"  {'|'.join(coord):24s} DIFFER")
     print(f"  => groups: {len(groups)}, DIFFER={ndiff}, IDENTICAL={nsame}")
 
 for t in ("KINEMATIC_BALANCE", "RELATIVE_FLUX"):

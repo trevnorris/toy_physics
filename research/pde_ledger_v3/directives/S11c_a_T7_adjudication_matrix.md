@@ -61,9 +61,10 @@ integer keys. Grid agrees; leaf-schema differs — a Family-F concern, not bespo
 
 Bucket: **AGREE-STRUCTURE grid**, pending the Family-F leaf check. ⚠ These certify the CASE GRIDS align,
 ⛔ NOT that stored objects match. Two members carry a **CONTENT-DIVERGENCE** under the agreeing grid:
-- **`BACKGROUND_STATE` (fold, verified):** WL stores fields `BOUNDARY_LOADS, AFFINITY_ZERO,
-  FACE_FLUX_ZERO, FACE_VELOCITY_ZERO, THETA_ZERO` (+ W_BG/MU_R_BG/RHOBR_BG); PY's BACKGROUND_STATE leaves
-  carry none of the boundary-load / zero-condition fields. Likely a cross-tag PLACEMENT difference (PY
+- **`BACKGROUND_STATE` (fold, verified; refined in step-1 verdicts):** WL stores fields `BOUNDARY_LOADS,
+  AFFINITY_ZERO, FACE_FLUX_ZERO, FACE_VELOCITY_ZERO, THETA_ZERO` (+ W_BG/MU_R_BG/RHOBR_BG). ⚠ PY **already
+  emits** the zero-conditions (`θ⁰/V_0/J_0/A_0 = 0`); it is missing only `BOUNDARY_LOADS` (the earlier
+  "carries none of the … fields" was corrected in Verdict BG). Likely a cross-tag PLACEMENT difference (PY
   carries the admissibility conditions in `ADMISSIBILITY_PREMISE`), ⛔ not proof PY omits them — step 1
   confirms placement. Classify CONTENT-DIVERGENCE, not 1:1.
 - All Family-A tags remain subject to Family F (leaf representation).

@@ -3,12 +3,17 @@
 Inputs (paths are literal, runnable): `WL=research/pde_ledger_v3/mathematica/out/S11c_a_interface_geometry_mathematica_audit.out`
 (committed `ddecdbc2`); `PY=/home/trevnorris/.s11_build/S11c_a_sympy_engine.out` (fresh run of `9b6438fa`).
 
+⚠ Fix (2026-08-24 audit): the two commands below were inaccurate as first written — corrected here.
+Run from repo root; `PY`/`WL` as defined above.
+
 ## Name-join (39 exact)
-CMD: `comm -3 <(grep -oE '^PY_S11CA_[A-Z][A-Z0-9_]*' "$PY" | sed 's/^PY_//' | sort -u) <(grep -oE '^WL_S11CA_[A-Z][A-Z0-9_]*' "$WL" | sed 's/^WL_//' | sort -u)`
-⇒ empty (39 non-local stems each side, exact 1-to-1). (Local `_LOCAL_` tags excluded: PY 8, WL 1.)
+CMD: `comm -3 <(grep -oE '^PY_S11CA_[A-Z][A-Z0-9_]*' "$PY" | grep -v _LOCAL_ | sed 's/^PY_//' | sort -u) <(grep -oE '^WL_S11CA_[A-Z][A-Z0-9_]*' "$WL" | grep -v _LOCAL_ | sed 's/^WL_//' | sort -u)`
+⇒ empty (39 non-local stems each side, exact 1-to-1). (Without the `_LOCAL_` filter the raw `comm -3`
+shows 9 local-only stems: PY 8 + WL 1 — excluded here.)
 
 ## CASE-STRUCTURE DISAGREEMENTS (Codex plan-review, orchestrator-verified — the headline)
-CMD: `grep -m1 '^WL_S11CA_VIRTUAL_WORK_SHAPE_DERIV' "$WL" | grep -oE '"[A-Z_|]*VIRTUAL_DOF_[A-Z_]*"' | sort -u | wc -l`
+CMD (robust regex — the earlier `"[A-Z_|]*VIRTUAL_DOF_[A-Z_]*"` returned 8 because `RHO4` contains a
+digit): `grep -m1 '^WL_S11CA_VIRTUAL_WORK_SHAPE_DERIV' "$WL" | grep -oE '"[^"]*VIRTUAL_DOF[^"]*"' | sort -u | wc -l`
 ⇒ **16** WL cases (branch×density×DOF×VIRTUAL_DOF), incl. 8 off-diagonal `DOF_x|VIRTUAL_DOF_y` (x≠y).
 CMD: `grep -m1 '^PY_S11CA_VIRTUAL_WORK_SHAPE_DERIV' "$PY" | grep -oE "Str\('(LAB_HELD|MATERIAL_ADVECTED)'\)" | wc -l`
 ⇒ **8** PY top-level cases (branch×dof×density; virtual DOF TIED to physical DOF, no off-diagonal). ⇒ WL has

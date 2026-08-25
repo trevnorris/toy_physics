@@ -32,4 +32,4 @@ for k,v in entries(line.strip()):
     pd=pd.group(1) if pd else '?';vd=vd.group(1) if vd else '?'
     sd=field(v,'SHAPE_DERIVATIVE'); ex=field(sd,'EXPRESSION') if sd else None
     z = (ex is not None and ex.strip() in ('0','{0}'))
-    print(f"{'OFF' if pd!=vd else 'DIAG':4s} phys={pd:8s} virt={vd:8s} zero={z}  expr={ (ex or '')[:60] }")
+    print(f"{'OFF' if pd!=vd else 'DIAG':4s} phys={pd:8s} virt={vd:8s} zero={z}")

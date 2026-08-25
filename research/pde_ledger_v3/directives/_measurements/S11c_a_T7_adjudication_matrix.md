@@ -1,5 +1,12 @@
 # Measurements twin — S11c_a_T7_adjudication_matrix.md
 
+CONVENTIONS (all commands below): run from repo root `/var/projects/toy_physics` with
+`PY=/home/trevnorris/.s11_build/S11c_a_sympy_engine.out`,
+`WL=research/pde_ledger_v3/mathematica/out/S11c_a_interface_geometry_mathematica_audit.out`,
+`SPEC=research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md`. Producer-citation lines that abbreviate
+a path with `…` mean the full engine source: PY `scripts/S11c_a_interface_geometry_sympy_audit.py`,
+WL `mathematica/S11c_a_interface_geometry_mathematica_audit.wl` (both under `research/pde_ledger_v3/`).
+
 Inputs (hash-locked):
 ```
 sha256  6386471555b1e99d0aeb0f716eea30f839d59be50c0cedd4677ea7b376b79129  ~/.s11_build/S11c_a_sympy_engine.out   (PY, fresh run of 9b6438fa)

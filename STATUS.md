@@ -1,6 +1,6 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 2 DONE: BOTH engine patches COMMITTED (WL `a7459cb8` + PY); NEXT = reconciliation bridges → T7 cross-engine comparator → step record
+## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 2 DONE: BOTH engine patches COMMITTED (WL `a7459cb8` + PY `2d0f0055`); NEXT = reconciliation bridges → T7 cross-engine comparator → step record
 
 ⭐ **T7 STEP 2 (engine patches, fixes on BOTH engines).** WL patch DONE: added the density-representative axis
 to the 5 T-f projection objects (spec §1b/§3a/§4:398), dropped the spurious axis from KINEMATIC/RELATIVE_FLUX
@@ -67,10 +67,8 @@ pairing CASES, off-diagonals physical-DOF-REDUNDANT not new physics; PY emit ful
 (H.1) coverage → **PY correct** (WL add form+uniform for 5 quantities; spec NOT under-specified); (BG) →
 **WL correct** (PY add BOUNDARY_LOADS only, already has the zeros §2d:251); BACKGROUND_DENSITY_MAP → PY branch
 axis redundant (2-per-rep, §2b).
-**NEXT = STEP 2 ENGINE PATCHES** (each full-review Codex build; relay verdicts VERBATIM, NO pre-legs per the
-repair precedent since verdicts already 2-legged): **WL patch** (B projection + H.1 + kinematic/flux drop;
-Mathematica `--sandbox danger-full-access`, ~23 min) + **PY patch** (C full grid + BG loads + density-map
-branch drop). Then re-run both → shallow reconciliation bridges (leaf-rep reconstruction, decompositions,
+**STEP 2 DONE — both engine patches committed (WL `a7459cb8`, PY `2d0f0055`; each build + 2 fresh legs PASS;
+WL also needed a §5a `materialShape` repair).** NEXT = shallow reconciliation bridges (leaf-rep reconstruction, decompositions,
 encoding) → trivial join+residual comparator (frozen T7 = `scripts/S11b_cross_engine_comparator.py`) + 2 legs
 → step record → family card. ⭐ pin the adjudicated schema FORWARD for S11c-b…e. ⚠ PY emit feeds
 `export_candidates` — any reformat mutates `S11c_a_exports.py` (decouple/preserve/review). See memory

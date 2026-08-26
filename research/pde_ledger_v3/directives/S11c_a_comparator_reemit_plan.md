@@ -1,20 +1,32 @@
 # S11c-a T7 comparator — CROSS-ENGINE RECONCILIATION plan (post-compact roadmap)
 
-## ⭐ PROGRESS (2026-08-24)
+## ⭐ PROGRESS (2026-08-25)
 - **Step 0 (feasibility/adjudication matrix): DONE, committed `3c7f9137`** —
   `S11c_a_T7_adjudication_matrix.md` (+ twin + census `_measurements/s11ca_t7_census/`), 2 legs + fold.
 - **Step 1 (adjudicate vs spec): DONE, committed `3491a376`** — `S11c_a_T7_adjudication_verdicts.md`
   (+ twin + `_measurements/s11ca_t7_adjudication/`), 2 legs + fold. **User chose FULL RECONCILE.**
   Verdicts (fixes on BOTH engines): B density → PY correct; C virtual-work → WL correct; H.1 coverage →
   PY correct; BG → WL correct. See the verdicts doc for the per-engine fix list.
-- **NEXT = Step 2 ENGINE PATCHES** (see the **Patch plan in `S11c_a_T7_adjudication_verdicts.md`** — NOT
-  the serialization-only step (2) of the workflow below, which covers the shallow reconciliation rows):
-  WL patch (B projection + H.1 + kinematic/flux drop) + PY patch (C full grid + BG loads + density-map
-  branch drop); each a full-review Codex build relaying the verdicts verbatim (no pre-legs — verdicts
-  already 2-legged).
-  Then re-run → shallow bridges (step (2) serialization rows) → trivial comparator step (4-5) → step record.
-- ⚠ The workflow below is the original revised roadmap; steps 0-1 are now complete as above. The
-  case-structure divergences it anticipated were adjudicated in step 1 (both engines need fixes).
+- **Step 2 (ENGINE PATCHES): DONE — BOTH engines committed.**
+  - **WL patch committed `a7459cb8`** (`S11c_a_wl_patch_directive.md` + `S11c_a_wl_patch_repair_directive.md`
+    + twins + `_legs/S11c_a_wl_patch_review_prompt.md`): B projection density axis + H.1 §5b/§5c coverage +
+    kinematic/flux axis drop; needed a repair for a patch-introduced §5a `materialShape` blocker; 2 fresh legs
+    (Agent + Grok) PASS; Grok's F1 (PROJECTION_STATIC form control) resolved by computed counts → working
+    control (fires 6/24, honest invariant elsewhere).
+  - **PY patch committed `2d0f0055`** (`S11c_a_py_patch_directive.md` + twin + `_legs/S11c_a_py_patch_review_prompt.md`):
+    C full physical×virtual virtual-work grid (16 cases) + BG boundary loads + density-map branch drop; 2 fresh
+    legs (Agent + Grok) PASS; virtual-work off-diagonal crux confirmed genuine 3 ways.
+  - ⚠ Shared non-defect note carried forward: BACKGROUND_STATE DIMENSIONS tuple is declarative (skips the
+    supplied zeros V⁰/J⁰/𝒜⁰) — both engines may differ in that bookkeeping ⇒ a DIMENSIONS comparator-bridge.
+- **NEXT = Step 3-4: shallow reconciliation bridges → the TRIVIAL join+residual comparator** (see the
+  "Revised workflow" steps 2-5 below): declared adapters for the serialization-only rows (leaf-rep graded↔
+  coefficient reconstruction, FACE_SHIFT field-explosion, ORIGIN repartition, encoding, WL-only provenance
+  leaves excluded+logged) under the provenance-manifest gate, then the trivial comparator (frozen T7 =
+  `scripts/S11b_cross_engine_comparator.py`) + 2 legs (synthetic fixtures, rule 5) → freeze + run → THE
+  cross-engine result → step record + family card (pin the schema forward for S11c-b…e).
+- ⚠ The "Revised workflow" below is the original roadmap; steps 0-2 are now complete. The case-structure
+  divergences it anticipated were adjudicated in step 1 and fixed on both engines in step 2. Tag granularity
+  differs (PY 47 vs WL 40) — the comparator joins per matching key; bookkeeping/control tags bridged or excluded.
 
 
 ## The headline (Codex plan-review, orchestrator-verified): the engines DISAGREE on CASE STRUCTURE

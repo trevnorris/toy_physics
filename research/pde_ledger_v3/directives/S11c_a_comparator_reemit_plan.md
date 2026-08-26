@@ -45,20 +45,31 @@
 - **Step 5 (comparator + coverage): IN PROGRESS (2026-08-26).** Measure-first coverage via
   `~/.s11_build/S11c_a_cov_all.py`: **11 tag-families reconcile EXACTLY to 0** (FACE_NORMAL/MEASURE/VELOCITY,
   VIRTUAL_CONSTRAINT, RELATIVE_FLUX, TRACTION, CLOSURE, EVOLUTION [implemented+verified face-detect],
-  KINEMATIC A+B, VIRTUAL_WORK 16 incl. off-diagonals). Declared map += 4 params (lambdaAZero/lambdaVZero/
-  tauA/tauV) + the EVOLUTION face-detect (`{±1/2*W0}` eval-point → `XFACEX` face-tagged symbols).
-  **CONORMAL (T-a′) ADJUDICATED VERDICT A — no finding** (2 from-spec legs Agent+Grok, each residual 0, +
-  my WL-source check: WL's W_0²/3rd-order = §3c flat-face Taylor of PY's background-face traces;
-  `conormalPerturbation`=the probe field's wave, not δn̂). ⛔ **PROJECTION "window drops the lower face" was a
-  FALSE finding — rule-13 catch**: the Agent leg rested on MY truncated-fragment prompt ("single-argument");
-  the raw WL window is 2-arg `𝒪(w−W0/2,−w−W0/2)` with BOTH-face derivatives, identical to PY. ⚠ OPEN =
-  PROJECTION integrand = (1) missing current field map (mechanical) + (2) IBP form (PY current-OUTSIDE vs WL
-  current-INSIDE the integral; §1b IBPs in w) + (3) a POSSIBLE finding: WL keeps `currentXBackground`/
-  `currentWBackground` SYMBOLIC (not zeroed), §3c says the rest-frame background current vanishes — measure,
-  ⛔ don't force to 0. Detail `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§10–15. NET: only confirmed finding
-  is still the shifted-trace (`c36beac4`). **NEXT (user-approved):** current map + IBP-aware bridge → measure
-  PROJECTION → adjudicate background-current from spec if it survives → mechanical sweep (origins/FACE_SHIFT/
-  controls/bookkeeping) → then the Codex comparator build below.
+  KINEMATIC A+B, VIRTUAL_WORK 16). Declared map += 4 params + the EVOLUTION face-detect (`{±1/2*W0}` →
+  `XFACEX` tokens). **CONORMAL (T-a′) ADJUDICATED VERDICT A — no finding** (2 from-spec legs + WL-source
+  check). ⛔ **PROJECTION "window drops a face" was a FALSE finding — rule-13 catch** (MY truncated-fragment
+  prompt; the raw WL window is 2-arg `𝒪(w−W0/2,−w−W0/2)`, both-face derivatives, identical to PY).
+  ⭐⭐ **BACKGROUND-CURRENT — was a REAL finding, NOW FIXED (WL `6fae82b8`).** WL carried the rest-frame
+  background bulk current as FREE PREMISE symbols (`currentWBackground`/`currentXBackground{i}`), violating §3c
+  ("none may be introduced as a free premise"), §1b, and its own `bulkVelocityZero→0` (survived 1660 hits in the
+  dynamic projection; PY had `j⁰=ρ⁰·v⁰=0`). 2 from-spec adjudication legs confirmed divergence; on the user's
+  rule-6 pivot (symbolic-carry is MORE informative than PY's hardcoded `v⁰=0`), 2 physics consults (Codex+Grok,
+  own CAS+stdout) COMPUTED the survivor = 0 under static continuity `∇₄·j⁰=0` (`∫δΩ·∇₄·j⁰` → total `w`-deriv →
+  boundary term → 0) — benign, but WL internally inconsistent. USER DECISION: build `j⁰=ρ⁰·v⁰` in WL + record the
+  continuity-cancellation in the step record (not a silent hardcode). Directive rev 2 `1610b9e9` (2 legs; Codex
+  caught 3 real defects — a leaked downstream result, an acceptance that couldn't distinguish construction from
+  `:=0` → the velocity-probe ablation, weak §6 clauses; Grok clean; folded once). Fix `6fae82b8` (2 build legs
+  Agent+Grok PASS — velocity-probe ablation shows the bg current TRACKS a nonzero probe ⇒ genuine `ρ·v`, not
+  `:=0`; a `Part::pkspec1` symbolic-index bug that ballooned the run to 14 GB was fixed via the `_Integer`
+  pattern restriction). Regenerated `.out`: 40 tags, **0** bg-current (was 667), only 10 bg-current-consumer tags
+  changed, 30 byte-identical. Detail `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§10–16d.
+  **NET: two confirmed T7 findings, BOTH FIXED — shifted-trace (PY `c36beac4`) + free-premise bg-current
+  (WL `6fae82b8`).** ⚠ REMAINING coverage (MECHANICAL, NOT findings): the PROJECTION integrand = (1) the
+  perturbation current map (WL `currentXPerturbation{i}`↔PY `delta_j_bulk_{i}`, `currentWPerturbation`↔
+  `delta_j_bulk_4`) + (2) the IBP form (PY pulls the current OUTSIDE the integral, WL keeps it INSIDE; §1b IBPs
+  in w). **NEXT:** the projection IBP-aware bridge → the mechanical sweep (origins/FACE_SHIFT/controls/
+  bookkeeping) → then the Codex comparator build below.
+
 - **Step-5 PLAN (Codex comparator build — ONLY AFTER the coverage sweep above is complete):** fold the FULL
   measured declared map into the frozen contract (`scripts/S11b_cross_engine_comparator.py` — reuse its
   parsers/transliterate/residual + the multi-line WL reassembly). The map already includes (measured this
@@ -117,7 +128,7 @@ True; nested `Derivative[o,{a,b}]`; integer Association keys `<|1->,-1->|>` in B
 rejects). Full evidence: `~/.s11_build/S11c_a_comparator_directive_{codex,grok}.log`.
 
 ## State
-SymPy `9b6438fa`, WL `ddecdbc2` (both committed+verified). PY tag stream = fresh run to
+PY `c36beac4`, WL `6fae82b8` (both committed+verified; the WL `.out` under `mathematica/out/` was regenerated at `6fae82b8` — 40 tags, 0 background-current). PY tag stream = fresh run to
 `~/.s11_build/S11c_a_sympy_engine.out` (NOT committed). WL committed `.out` under `mathematica/out/`.
 Superseded comparator-side directive `S11c_a_comparator_build_directive.md` (+twin+review prompt) kept for the
 record. ⚠ Running the SymPy engine rewrites committed `S11c_a_exports.py` (Dummy-index counters) AND the

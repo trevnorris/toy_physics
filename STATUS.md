@@ -1,37 +1,36 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 3 SCOUT + MEASURE-FIRST DONE (uncommitted, measurement only); NEXT = adjudicate the ONE shifted-trace finding vs spec §3c/§379, then finish the integral tail → harden the comparator (2 legs) → certified T7 result
+## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 shifted-trace finding RESOLVED: fix committed `c36beac4` (PY had 2 §3c bugs, WL was right); RELATIVE_FLUX + TRACTION reconcile to 0. NEXT = harden the comparator (EVOLUTION face-axis + fold the map; 2 legs) + finish coverage (CONORMAL / integrals / controls / bookkeeping) → full T7 result → step record
 
-⭐⭐ **T7 STEP 3 — SCOUT + MEASURE-FIRST reconciliation (2026-08-26, no commits — pure measurement over the
-committed engines WL `a7459cb8` / PY `2d0f0055`).** Instrument `~/.s11_build/S11c_a_measure_reconcile.py`;
-full findings `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md`.
-- **Namespace joins 39↔39** (LOCAL_* provenance excluded). ⛔ WL `.out` is NOT one-tag-per-line: the 3
-  `CONTROL_FORM_*` tags stream-emit multi-line (`Write` newlines each record, ~900-960 phys lines) — all
-  data present, but a naive loader joins 1/960. **User chose: comparator WL loader reassembles blocks**
-  (no engine churn); note the emit inconsistency as a step-record cleanup for b-e.
-- ⛔⛔ **NO TRANSLATION DICTIONARY / generic runner.** The engines emit in DIFFERENT bases (PY reduced `e_W`,
-  WL explicit `deltaWidth`); checked S10/S11b comparators — they reconcile with MECHANICAL transliteration +
-  join-on-name ONLY, no semantic pair-table. The trap (S10 `omega2→omega**2`) = smuggling an ALGEBRAIC
-  identity into the naming layer ⇒ silently turns DISAGREE→AGREE. **Measure-first (user's call):** small
-  EXPLICIT S11c-a map only — ~11 params + ~18 field renames + WL-Derivative→PY-jet decode + mixed-partial
-  jet-order canonicalization + the ONE spec relation `e_W≡δW/W₀` (spec:45). Any residual after that = a FINDING.
-- **RESULT — 4 primaries AGREE EXACTLY** (residual 0, 8/8 each = 32 cases): FACE_NORMAL(T-0),
-  FACE_MEASURE(T-b), FACE_VELOCITY(T-c), VIRTUAL_CONSTRAINT(T-g).
-- ⚠ **THE ONE FINDING (candidate, adjudicate — do NOT overclaim):** in the shape-derivative of any TRACED
-  BULK field (RELATIVE_FLUX, TRACTION T-d, EVOLUTION T-h, KINEMATIC T-c′ OPERAND_A) the two engines expand
-  the face-shift correction differently — PY `(∂_normal of BACKGROUND field)·(shift∝e_W)` [d_w_v_bulk_0_{±},
-  d_w_delta_p_0_{±}] vs WL `∂_normal of the PERTURBATION` [delta_v_bulk_{±}_dw ×etaBg]. Localized to
-  traced-bulk terms (absent from the 4 pure-surface primaries), so physically coherent; verified NOT a naming
-  artifact. ⇒ adjudicate vs spec §3c/§379 shifted-trace law — reconciles under the law, or one engine mis-
-  expanded (a genuine dual-engine catch).
-- NOT YET MEASURED: CONORMAL(T-a) [reconcilable — BOTH use a probe/test field; inventory's "PY bare covector"
-  was WRONG, rule 13 — needs a test-field name map], PROJECTION(T-f)/CLOSURE(T-i) [genuine window INTEGRALS,
-  need an integral-syntactic bridge — the one place a NEW finding could still hide], controls [~16
-  REP_INVARIANCE + ~66 UNIFORM_LIMIT nonzero residuals to verify; CONTROL_FORM nonzero BY DESIGN], bookkeeping.
-- **NEXT:** adjudicate the shifted-trace finding (read both engines' §3c impl vs spec; likely a leg) → finish
-  the integral tail + CONORMAL map + control join → harden `measure_reconcile.py` into the comparator
-  (Codex-written ⇒ fresh Agent + Grok legs, synthetic fixtures, rule 5) → freeze + run → certified T7 result →
-  step record + family card, pin the reconciliation map forward for b-e.
+⭐⭐⭐ **T7 SHIFTED-TRACE FINDING — ADJUDICATED + FIXED + COMMITTED `c36beac4` (2026-08-26).** The dual-engine
+method caught **two real SymPy bugs; WL was correct.** Adjudicated by 2 independent from-spec CAS derivations
+(fresh Agent + Grok, each residual 0) + a source check: **(D1)** PY fabricated background-normal-jet PREMISE
+symbols the spec never supplies (`d_w_v_bulk_0`/`d_w_delta_p_0`/`d_w_j_0`/`d_w_rho_4D_0`) → a spurious §3c
+term-2; **(D2)** PY froze the traced perturbation at the flat face → dropped the mandated ε·η term-1 correction.
+- **Fixed spec-question-first:** §3c clarified in the shared spec (structural premises only — every background
+  jet is `∂_w` of a supplied `𝔅⁰` member, genuinely zero for velocity/pressure/current + `w`-independent
+  density; traced perturbation evaluated at `h_s⁰=sW_bg/2`), then the PY engine fix.
+- **Full gate:** 2 directive-review legs (Codex+Grok) caught a leaky, under-scoped rev-1 directive (killer
+  grep-dodge, corrected-monomial leak, missed FACE_SHIFT/CLOSURE/VIRTUAL_WORK + current/density jets) → folded
+  once → rebuilt; then 2 ablation legs (fresh Agent+Grok) both PASS — their form ablations proved term-2 now
+  DERIVES from the real background (fires when nonzero, vanishes when zero), not deleted blindly.
+- **Cross-engine confirmation** (fixed PY vs committed WL, via `~/.s11_build/S11c_a_reconcile_fixed.py` =
+  measure_reconcile + the mechanical `d_w_X`↔`X_dw` perturbation-jet rename): **RELATIVE_FLUX 8/8→0** and
+  **TRACTION 16/16→0** (TRACTION also needs the mechanical `mu_theta_L→mu_theta` rename + `sp.cancel` for the
+  λ_X complex-denominator factoring — naming/CAS-form, not physics); the 24 pure-geometry cases stay at 0.
+  Measurement `directives/_measurements/S11c_a_py_shifted_trace_fix_directive.md`. Engines now: WL `a7459cb8`
+  UNCHANGED (was correct), PY corrected in `c36beac4`.
+- ⚠ **EVOLUTION residual = a COMPARATOR harness gap, NOT a finding:** EVOLUTION's case key has no FACE axis,
+  so the instrument applies one face to a two-face-SUMMED expression and drops the minus-face field evaluations;
+  the raw WL expression is complete (both faces, brackets balanced). Fix = detect the face from the `{±1/2*W0}`
+  evaluation-point argument (comparator hardening), not the engine.
+- **STILL TO MEASURE (coverage):** CONORMAL(T-a) [test-field name map], PROJECTION(T-f)/CLOSURE(T-i) [genuine
+  window INTEGRALS — the one place a NEW finding could still hide], controls [REP_INVARIANCE/UNIFORM_LIMIT
+  residuals], bookkeeping. ⚠ FACE_SHIFT now carries the density rep (8→16 cases) after the fix.
+- **NEXT:** harden `measure_reconcile.py` into the comparator (EVOLUTION face-detect + fold the declared map —
+  `d_w_X↔X_dw`, `mu_theta_L→mu_theta`, `sp.cancel`; Codex-written ⇒ fresh Agent + Grok legs, synthetic
+  fixtures, rule 5) → finish coverage → freeze + run → the full T7 cross-engine result → step record + family
+  card, pin the reconciliation map forward for b-e.
 
 ⭐ **T7 STEP 2 (engine patches, fixes on BOTH engines).** WL patch DONE: added the density-representative axis
 to the 5 T-f projection objects (spec §1b/§3a/§4:398), dropped the spurious axis from KINEMATIC/RELATIVE_FLUX

@@ -35,7 +35,9 @@ Each independently derived (residual 0), then ablated a /tmp copy:
 Run fixed engine → `~/.s11_build/S11c_a_py_fixed_run.out`. TWO reconciliation commands (distinct outputs):
 
 (1) `python3 ~/.s11_build/S11c_a_reconcile_fixed.py` (measure_reconcile over the fixed PY `.out` + the
-mechanical `d_w_X`↔`X_dw` perturbation-jet rename). Columns = TAG join zero nonz unmap err. Literal:
+mechanical `d_w_X`↔`X_dw` perturbation-jet rename). Columns = TAG join zero nonz unmap err (the printed
+header row and the trailing per-row sample-expression column are elided; the TAG + counts are verbatim, the
+`(...)` are my annotations):
 ```
 FACE_VELOCITY                     8    8    0     0   0
 FACE_NORMAL                       8    8    0     0   0

@@ -1,6 +1,6 @@
 # S11c-a T7 comparator — CROSS-ENGINE RECONCILIATION plan (post-compact roadmap)
 
-## ⭐ PROGRESS (2026-08-25)
+## ⭐ PROGRESS (updated 2026-08-26)
 - **Step 0 (feasibility/adjudication matrix): DONE, committed `3c7f9137`** —
   `S11c_a_T7_adjudication_matrix.md` (+ twin + census `_measurements/s11ca_t7_census/`), 2 legs + fold.
 - **Step 1 (adjudicate vs spec): DONE, committed `3491a376`** — `S11c_a_T7_adjudication_verdicts.md`
@@ -18,12 +18,25 @@
     legs (Agent + Grok) PASS; virtual-work off-diagonal crux confirmed genuine 3 ways.
   - ⚠ Shared non-defect note carried forward: BACKGROUND_STATE DIMENSIONS tuple is declarative (skips the
     supplied zeros V⁰/J⁰/𝒜⁰) — both engines may differ in that bookkeeping ⇒ a DIMENSIONS comparator-bridge.
-- **NEXT = Step 3-4: shallow reconciliation bridges → the TRIVIAL join+residual comparator** (see the
-  "Revised workflow" steps 2-5 below): declared adapters for the serialization-only rows (leaf-rep graded↔
-  coefficient reconstruction, FACE_SHIFT field-explosion, ORIGIN repartition, encoding, WL-only provenance
-  leaves excluded+logged) under the provenance-manifest gate, then the trivial comparator (frozen T7 =
-  `scripts/S11b_cross_engine_comparator.py`) + 2 legs (synthetic fixtures, rule 5) → freeze + run → THE
-  cross-engine result → step record + family card (pin the schema forward for S11c-b…e).
+- **Step 3 (SCOUT + MEASURE-FIRST): DONE 2026-08-26 — measurement only, NO commits.** Instrument
+  `~/.s11_build/S11c_a_measure_reconcile.py`; findings `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md`.
+  Namespace joins 39↔39. ⛔ WL `.out` CONTROL_FORM_* are multi-line (Write-newline) — comparator loader
+  reassembles blocks (user's call). ⛔⛔ **No translation dictionary** (S10/S11b = mechanical transliteration +
+  join-on-name only; the trap is smuggling an algebraic identity into naming — S10 `omega2→omega**2`).
+  Measure-first per the user: a SMALL EXPLICIT map (~11 params + ~18 fields + WL-Derivative→PY-jet decode +
+  mixed-partial canon + the ONE spec relation `e_W≡δW/W₀` spec:45). **4 primaries AGREE EXACTLY** (T-0
+  FACE_NORMAL, T-b FACE_MEASURE, T-c FACE_VELOCITY, T-g VIRTUAL_CONSTRAINT — 32 cases, residual 0). **ONE
+  candidate FINDING (adjudicate vs §3c/§379):** traced-bulk shape-derivatives (RELATIVE_FLUX, TRACTION,
+  EVOLUTION, KINEMATIC OPERAND_A) — PY `(∂_n background)·shift` vs WL `∂_n(perturbation)`. NOT-YET-MEASURED:
+  CONORMAL (both use a test field — reconcilable), PROJECTION/CLOSURE (window integrals — integral bridge),
+  controls (16 rep-inv + 66 uniform nonzero residuals to verify), bookkeeping.
+- **NEXT = Step 3b/4:** adjudicate the shifted-trace finding (both engines' §3c impl vs spec — likely a leg)
+  → finish the integral tail + CONORMAL test-field map + control full-join + bookkeeping → **harden
+  `measure_reconcile.py` into the comparator** (Codex-written ⇒ fresh Agent + Grok legs, synthetic fixtures,
+  rule 5) → freeze + run → THE cross-engine result → step record + family card (pin the reconciliation map
+  forward for S11c-b…e). ⚠ the "shallow bridges + trivial comparator" framing below UNDERSTATED this: the
+  reconciliation is a spec-grounded per-field map (not a byte relabel), authored measure-first, and the
+  residual after it is the physics.
 - ⚠ The "Revised workflow" below is the original roadmap; steps 0-2 are now complete. The case-structure
   divergences it anticipated were adjudicated in step 1 and fixed on both engines in step 2. Tag granularity
   differs (PY 47 vs WL 40) — the comparator joins per matching key; bookkeeping/control tags bridged or excluded.

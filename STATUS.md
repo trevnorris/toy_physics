@@ -1,6 +1,37 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 2 DONE: BOTH engine patches COMMITTED (WL `a7459cb8` + PY `2d0f0055`); NEXT = reconciliation bridges → T7 cross-engine comparator → step record
+## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 3 SCOUT + MEASURE-FIRST DONE (uncommitted, measurement only); NEXT = adjudicate the ONE shifted-trace finding vs spec §3c/§379, then finish the integral tail → harden the comparator (2 legs) → certified T7 result
+
+⭐⭐ **T7 STEP 3 — SCOUT + MEASURE-FIRST reconciliation (2026-08-26, no commits — pure measurement over the
+committed engines WL `a7459cb8` / PY `2d0f0055`).** Instrument `~/.s11_build/S11c_a_measure_reconcile.py`;
+full findings `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md`.
+- **Namespace joins 39↔39** (LOCAL_* provenance excluded). ⛔ WL `.out` is NOT one-tag-per-line: the 3
+  `CONTROL_FORM_*` tags stream-emit multi-line (`Write` newlines each record, ~900-960 phys lines) — all
+  data present, but a naive loader joins 1/960. **User chose: comparator WL loader reassembles blocks**
+  (no engine churn); note the emit inconsistency as a step-record cleanup for b-e.
+- ⛔⛔ **NO TRANSLATION DICTIONARY / generic runner.** The engines emit in DIFFERENT bases (PY reduced `e_W`,
+  WL explicit `deltaWidth`); checked S10/S11b comparators — they reconcile with MECHANICAL transliteration +
+  join-on-name ONLY, no semantic pair-table. The trap (S10 `omega2→omega**2`) = smuggling an ALGEBRAIC
+  identity into the naming layer ⇒ silently turns DISAGREE→AGREE. **Measure-first (user's call):** small
+  EXPLICIT S11c-a map only — ~11 params + ~18 field renames + WL-Derivative→PY-jet decode + mixed-partial
+  jet-order canonicalization + the ONE spec relation `e_W≡δW/W₀` (spec:45). Any residual after that = a FINDING.
+- **RESULT — 4 primaries AGREE EXACTLY** (residual 0, 8/8 each = 32 cases): FACE_NORMAL(T-0),
+  FACE_MEASURE(T-b), FACE_VELOCITY(T-c), VIRTUAL_CONSTRAINT(T-g).
+- ⚠ **THE ONE FINDING (candidate, adjudicate — do NOT overclaim):** in the shape-derivative of any TRACED
+  BULK field (RELATIVE_FLUX, TRACTION T-d, EVOLUTION T-h, KINEMATIC T-c′ OPERAND_A) the two engines expand
+  the face-shift correction differently — PY `(∂_normal of BACKGROUND field)·(shift∝e_W)` [d_w_v_bulk_0_{±},
+  d_w_delta_p_0_{±}] vs WL `∂_normal of the PERTURBATION` [delta_v_bulk_{±}_dw ×etaBg]. Localized to
+  traced-bulk terms (absent from the 4 pure-surface primaries), so physically coherent; verified NOT a naming
+  artifact. ⇒ adjudicate vs spec §3c/§379 shifted-trace law — reconciles under the law, or one engine mis-
+  expanded (a genuine dual-engine catch).
+- NOT YET MEASURED: CONORMAL(T-a) [reconcilable — BOTH use a probe/test field; inventory's "PY bare covector"
+  was WRONG, rule 13 — needs a test-field name map], PROJECTION(T-f)/CLOSURE(T-i) [genuine window INTEGRALS,
+  need an integral-syntactic bridge — the one place a NEW finding could still hide], controls [~16
+  REP_INVARIANCE + ~66 UNIFORM_LIMIT nonzero residuals to verify; CONTROL_FORM nonzero BY DESIGN], bookkeeping.
+- **NEXT:** adjudicate the shifted-trace finding (read both engines' §3c impl vs spec; likely a leg) → finish
+  the integral tail + CONORMAL map + control join → harden `measure_reconcile.py` into the comparator
+  (Codex-written ⇒ fresh Agent + Grok legs, synthetic fixtures, rule 5) → freeze + run → certified T7 result →
+  step record + family card, pin the reconciliation map forward for b-e.
 
 ⭐ **T7 STEP 2 (engine patches, fixes on BOTH engines).** WL patch DONE: added the density-representative axis
 to the 5 T-f projection objects (spec §1b/§3a/§4:398), dropped the spurious axis from KINEMATIC/RELATIVE_FLUX
@@ -13,7 +44,7 @@ defect. **PY patch DONE** (full physical×virtual virtual-work grid — 16 cases
 computed; BACKGROUND_STATE boundary loads f_hold/t_hold; BACKGROUND_DENSITY_MAP branch drop). Two fresh legs
 (Agent + Grok) PASS; both independently reached — and both, with the orchestrator, judged non-defect — the one
 finding (BACKGROUND_STATE dimension tuple is declarative/emitted-only, a pre-patch convention that skips the
-supplied zeros; step-record note + a comparator DIMENSIONS-bridge note). NEXT = shallow reconciliation bridges
+supplied zeros; step-record note + a comparator DIMENSIONS-bridge note). [SUPERSEDED — see the Step-3 front at top] NEXT = shallow reconciliation bridges
 → the trivial T7 cross-engine comparator → step record + family card (pin the schema forward for S11c-b…e).
 
 ⭐⭐ **S11c is a STAGED FAMILY a–e** (decision list `research/pde_ledger_v3/directives/S11c_decisions.md`
@@ -68,7 +99,7 @@ pairing CASES, off-diagonals physical-DOF-REDUNDANT not new physics; PY emit ful
 **WL correct** (PY add BOUNDARY_LOADS only, already has the zeros §2d:251); BACKGROUND_DENSITY_MAP → PY branch
 axis redundant (2-per-rep, §2b).
 **STEP 2 DONE — both engine patches committed (WL `a7459cb8`, PY `2d0f0055`; each build + 2 fresh legs PASS;
-WL also needed a §5a `materialShape` repair).** NEXT = shallow reconciliation bridges (leaf-rep reconstruction, decompositions,
+WL also needed a §5a `materialShape` repair).** [SUPERSEDED — see the Step-3 front at top] NEXT = shallow reconciliation bridges (leaf-rep reconstruction, decompositions,
 encoding) → trivial join+residual comparator (frozen T7 = `scripts/S11b_cross_engine_comparator.py`) + 2 legs
 → step record → family card. ⭐ pin the adjudicated schema FORWARD for S11c-b…e. ⚠ PY emit feeds
 `export_candidates` — any reformat mutates `S11c_a_exports.py` (decouple/preserve/review). See memory

@@ -66,3 +66,23 @@ TRACTION                 join=16 zero=16 nonzero=0
 ```
 Full per-tag record (incl. the EVOLUTION comparator single-face gap, NOT a finding) in
 `_measurements/S11c_a_py_shifted_trace_fix_directive.md`.
+
+## Step 5 (2026-08-26) — measure-first coverage + the two structural adjudications
+Instrument `~/.s11_build/S11c_a_cov_all.py` (grows the reconcile_fixed declared map; committed
+reconcile_fixed.py/reconcile_traction_check.py UNCHANGED). rule 2: prints residuals, asserts nothing.
+CMD (regression + EVOLUTION face-detect): `python3 ~/.s11_build/S11c_a_run_evolution.py`
+⇒ `EVOLUTION_MASS_BALANCE  8  8  0  0` (face-detect: reads `{±1/2*W0}` eval-point arg → face-tagged symbol).
+CMD (algebraic-bare primaries incl. CLOSURE+VIRTUAL_CONSTRAINT): `python3 ~/.s11_build/S11c_a_cov_primaries.py`
+⇒ FACE_VELOCITY/NORMAL/MEASURE 8/8→0, RELATIVE_FLUX 8/8→0, TRACTION 16/16→0, VIRTUAL_CONSTRAINT 8/8→0,
+CLOSURE_SHAPE_DERIV 16/16→0 (after +4 params lambdaAZero/lambdaVZero/tauA/tauV).
+CMD (KINEMATIC operands): `python3 ~/.s11_build/S11c_a_run_kinematic.py` ⇒ OPERAND_A 8/8→0, OPERAND_B 8/8→0.
+CMD (VIRTUAL_WORK, position-aware key): `python3 ~/.s11_build/S11c_a_run_vw.py` ⇒ 16/16→0.
+CONORMAL (T-a′) VERDICT A: 2 from-spec CAS legs, each residual 0 — Agent `~/.s11_build/S11c_a_conormal_leg_agent.out`
+(STEP 4b/4c/5/6 all 0), Grok `research/pde_ledger_v3/_measurements/s11c_a_conormal_adjudication_grok/*.stdout`.
+Rule-13 check: WL `S11c_a_interface_geometry_mathematica_audit.wl:601-610` conormalSource = conormalBackground
++ waveOrder·conormalPerturbation ⇒ conormalPerturbation is the PROBE wave, not δn̂.
+PROJECTION window = NOT a finding (rule-13): `python3 ~/.s11_build/S11c_a_verify_proj_window.py` ⇒ WL window
+`windowFunction[normalCoordinate - W0/2, -normalCoordinate - W0/2]` = 2 args (identical to PY O_window plus/minus);
+`python3 ~/.s11_build/S11c_a_verify_proj_derivs.py` ⇒ WL carries Derivative[{m,n}][windowFunction] with BOTH
+{1,0} and {0,1} (both faces). PROJECTION integrand residual OPEN (current map + IBP + background-current), see
+`~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§13-15; instrument `~/.s11_build/S11c_a_run_projection.py`.

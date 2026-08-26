@@ -1,6 +1,40 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 shifted-trace finding RESOLVED: fix committed `c36beac4` (PY had 2 §3c bugs, WL was right); RELATIVE_FLUX + TRACTION reconcile to 0. NEXT = harden the comparator (EVOLUTION face-axis + fold the map; 2 legs) + finish coverage (CONORMAL / integrals / controls / bookkeeping) → full T7 result → step record
+## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 5 (comparator + coverage): 11 tag-families reconcile to 0 (incl. EVOLUTION via the face-detect); CONORMAL adjudicated VERDICT A (no finding); the PROJECTION "window" alarm was a FALSE finding (rule-13 catch). OPEN = PROJECTION integrand (current map + IBP + a POSSIBLE background-current finding) → mechanical sweep → Codex comparator build → step record
+
+⭐⭐⭐ **T7 STEP 5 — MEASURE-FIRST COVERAGE + the two structural adjudications (2026-08-26).**
+**11 tag-families reconcile EXACTLY to 0** (the two blind engines agree): FACE_NORMAL/MEASURE/VELOCITY,
+VIRTUAL_CONSTRAINT, RELATIVE_FLUX, TRACTION, CLOSURE, EVOLUTION, KINEMATIC (OPERAND_A+B), VIRTUAL_WORK (16
+incl. off-diagonals). Instrument `~/.s11_build/S11c_a_cov_all.py` (grows the reconcile_fixed declared map;
+the committed reconcile_fixed.py / reconcile_traction_check.py are UNCHANGED). Map extensions: +4 mechanical
+params (lambdaAZero→Lambda_A_0, lambdaVZero→Lambda_V_0, tauA→tau_A, tauV→tau_V) + the **EVOLUTION face-detect**
+(a face-aware WL preprocessor reads the `{±1/2*W0}` eval-point arg → parser-safe `XFACEX` face-tagged symbols;
+EVOLUTION 8/8→0 — confirms last session's "harness gap not a finding" call BY COMPUTATION, rule 13).
+- **CONORMAL (T-a′): adjudicated VERDICT A — same physics, NO finding.** 2 independent from-spec CAS legs
+  (fresh Agent + Grok, each residual 0) + my WL-source check: WL's `W_0²`/3rd-normal-order terms are the §3c
+  flat-face Taylor expansion of PY's background-face traces (WL RETAINS the η-correction ⇒ NOT the prohibited
+  "freeze"); `conormalPerturbation` is the PROBE FIELD's wave part (WL src `conormalSource` :601-610), NOT δn̂,
+  so isolating the geometric operator's shape-derivative is legitimate, not rule-6 forcing. Legs
+  `directives/_legs/S11c_a_conormal_adjudication_leg.md`; artifacts `~/.s11_build/S11c_a_conormal_leg_agent.*`
+  + `_measurements/s11c_a_conormal_adjudication_grok/`.
+- ⛔ **PROJECTION "window drops the lower face" was a FALSE finding — rule-13 catch.** The Agent leg returned
+  verdict B; it rested on MY prompt calling WL "single-argument", which came from a 70-char TRUNCATED display
+  fragment that cut off the 2nd window arg. The raw WL tag uses the IDENTICAL 2-arg window `𝒪(w−W0/2,−w−W0/2)`
+  with derivatives w.r.t. BOTH faces ({1,0},{0,1},{1,1},…). Grok-PROJECTION NOT launched with the flawed
+  prompt. Lesson: a leg prompt must carry the ACCURATE engine form; a truncated fragment leaks a WRONG premise.
+- ⚠ **OPEN — PROJECTION integrand** (window confirmed identical) decomposes into: (1) a missing bulk-current
+  field map (mechanical: WL currentXPerturbation{i}↔PY delta_j_bulk_{i}, currentWPerturbation↔delta_j_bulk_4);
+  (2) an IBP form difference (PY pulls the current OUTSIDE the integral, WL keeps it INSIDE; §1b integrates by
+  parts in w); (3) a **POSSIBLE FINDING** — the WL engine keeps `currentWBackground`/`currentXBackground{i}`
+  as SYMBOLS, not zeroed (contrast: `pressureZero=0` explicit), while §3c says the rest-frame background
+  current `ρ_4D⁰v_bulk⁰` vanishes and PY (post-`c36beac4`) has none. ⛔ NOT yet determined whether those
+  symbols survive WL's final expression — measure, ⛔ do NOT force them to 0 (that would mask a finding).
+- **NET after adjudication: the ONLY confirmed T7 finding is still the shifted-trace (fixed `c36beac4`).**
+  Full coverage detail `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§10–15.
+- **NEXT (user-approved):** build the current field map + IBP-aware integral bridge → measure PROJECTION → if
+  `currentXBackground` survives, adjudicate the background-current from spec (leg pair, shifted-trace pattern)
+  → mechanical sweep (origins/FACE_SHIFT/controls/bookkeeping) → Codex comparator build (2 legs, synthetic
+  fixtures) → step record + family card.
 
 ⭐⭐⭐ **T7 SHIFTED-TRACE FINDING — ADJUDICATED + FIXED + COMMITTED `c36beac4` (2026-08-26).** The dual-engine
 method caught **two real SymPy bugs; WL was correct.** Adjudicated by 2 independent from-spec CAS derivations

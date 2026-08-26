@@ -42,7 +42,24 @@
   mechanical `mu_theta_L→mu_theta` rename + `sp.cancel` for the λ_X complex denominators). ⚠ EVOLUTION residual
   = a COMPARATOR single-face-canonicalization gap (its case key has no FACE axis; raw WL complete, both faces),
   NOT a finding. Engines: WL `a7459cb8` UNCHANGED (was correct), PY corrected in `c36beac4`.
-- **NEXT = Step 5 (comparator + coverage):** **harden `measure_reconcile.py` into the comparator** — fold the
+- **Step 5 (comparator + coverage): IN PROGRESS (2026-08-26).** Measure-first coverage via
+  `~/.s11_build/S11c_a_cov_all.py`: **11 tag-families reconcile EXACTLY to 0** (FACE_NORMAL/MEASURE/VELOCITY,
+  VIRTUAL_CONSTRAINT, RELATIVE_FLUX, TRACTION, CLOSURE, EVOLUTION [implemented+verified face-detect],
+  KINEMATIC A+B, VIRTUAL_WORK 16 incl. off-diagonals). Declared map += 4 params (lambdaAZero/lambdaVZero/
+  tauA/tauV) + the EVOLUTION face-detect (`{±1/2*W0}` eval-point → `XFACEX` face-tagged symbols).
+  **CONORMAL (T-a′) ADJUDICATED VERDICT A — no finding** (2 from-spec legs Agent+Grok, each residual 0, +
+  my WL-source check: WL's W_0²/3rd-order = §3c flat-face Taylor of PY's background-face traces;
+  `conormalPerturbation`=the probe field's wave, not δn̂). ⛔ **PROJECTION "window drops the lower face" was a
+  FALSE finding — rule-13 catch**: the Agent leg rested on MY truncated-fragment prompt ("single-argument");
+  the raw WL window is 2-arg `𝒪(w−W0/2,−w−W0/2)` with BOTH-face derivatives, identical to PY. ⚠ OPEN =
+  PROJECTION integrand = (1) missing current field map (mechanical) + (2) IBP form (PY current-OUTSIDE vs WL
+  current-INSIDE the integral; §1b IBPs in w) + (3) a POSSIBLE finding: WL keeps `currentXBackground`/
+  `currentWBackground` SYMBOLIC (not zeroed), §3c says the rest-frame background current vanishes — measure,
+  ⛔ don't force to 0. Detail `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§10–15. NET: only confirmed finding
+  is still the shifted-trace (`c36beac4`). **NEXT (user-approved):** current map + IBP-aware bridge → measure
+  PROJECTION → adjudicate background-current from spec if it survives → mechanical sweep (origins/FACE_SHIFT/
+  controls/bookkeeping) → then the Codex comparator build below.
+- **Step-5 PLAN (Codex comparator build, after coverage is measured): harden `measure_reconcile.py` into the comparator** — fold the
   declared map (`d_w_X↔X_dw` perturbation-jet rename, `mu_theta_L→mu_theta`, `sp.cancel` for λ_X denominators)
   and FIX the EVOLUTION no-FACE-axis bug (detect the face from the `{±1/2*W0}` eval-point argument);
   Codex-written ⇒ fresh Agent + Grok legs, synthetic fixtures, rule 5 → finish coverage (CONORMAL test-field

@@ -1,0 +1,67 @@
+========================================================================
+IDENTIFICATION TEST — Engine A vs Engine B CONORMAL_DERIV
+CASE: LAB_HELD | FACE_MINUS | DOF δW
+========================================================================
+
+--- (I1)(I2)(I3) identification ---
+I1: geometric kernel ⇔ set conormalPerturbation φ1 = 0
+I2: trace_grad_f_i |_{h0} = ∂_i φ0 |_{h0} = ∂_i conormalBackground |_{h0}
+    d_w_trace_grad_f_i |_{h0} = ∂_w ∂_i φ0 |_{h0}
+I3: h0 − flat = s W_0 η w1 / 2 = -W_0 η w1 / 2  (s=-1)
+    Taylor of I2 jets about flat brings η·W_0·(higher normal jets)
+
+h0_minus_flat = -W_0*eta_bg*w1_profile/2
+
+--- Engine A (h0-jet symbols, finalized flat+O(σ_W)) ---
+W_0*(2*d_w_trace_grad_f_4*e_W - 2*e_W_d1*trace_grad_f_1 - 2*e_W_d2*trace_grad_f_2 - 2*e_W_d3*trace_grad_f_3 + sigma_W*(d_w_trace_grad_f_1*e_W*w1_profile_d1 + d_w_trace_grad_f_2*e_W*w1_profile_d2 + d_w_trace_grad_f_3*e_W*w1_profile_d3 + trace_grad_f_4*(e_W_d1*w1_profile_d1 + e_W_d2*w1_profile_d2 + e_W_d3*w1_profile_d3)))/4
+
+--- Engine A after I3 Taylor O(η^1), drop η·σ_W ---
+-W_0**2*e_W*eta_bg*phi0_dwww*w1_profile/4 + W_0**2*e_W_d1*eta_bg*phi0_d1_dw*w1_profile/4 + W_0**2*e_W_d2*eta_bg*phi0_d2_dw*w1_profile/4 + W_0**2*e_W_d3*eta_bg*phi0_d3_dw*w1_profile/4 + W_0*e_W*phi0_d1_dw*sigma_W*w1_profile_d1/4 + W_0*e_W*phi0_d2_dw*sigma_W*w1_profile_d2/4 + W_0*e_W*phi0_d3_dw*sigma_W*w1_profile_d3/4 + W_0*e_W*phi0_dww/2 - W_0*e_W_d1*phi0_d1/2 + W_0*e_W_d1*phi0_dw*sigma_W*w1_profile_d1/4 - W_0*e_W_d2*phi0_d2/2 + W_0*e_W_d2*phi0_dw*sigma_W*w1_profile_d2/4 - W_0*e_W_d3*phi0_d3/2 + W_0*e_W_d3*phi0_dw*sigma_W*w1_profile_d3/4
+
+--- Engine B geometric (φ1=0), drop η·σ_W ---
+-W_0**2*e_W*eta_bg*phi0_dwww*w1_profile/4 + W_0**2*e_W_d1*eta_bg*phi0_d1_dw*w1_profile/4 + W_0**2*e_W_d2*eta_bg*phi0_d2_dw*w1_profile/4 + W_0**2*e_W_d3*eta_bg*phi0_d3_dw*w1_profile/4 + W_0*e_W*phi0_d1_dw*sigma_W*w1_profile_d1/4 + W_0*e_W*phi0_d2_dw*sigma_W*w1_profile_d2/4 + W_0*e_W*phi0_d3_dw*sigma_W*w1_profile_d3/4 + W_0*e_W*phi0_dww/2 - W_0*e_W_d1*phi0_d1/2 + W_0*e_W_d1*phi0_dw*sigma_W*w1_profile_d1/4 - W_0*e_W_d2*phi0_d2/2 + W_0*e_W_d2*phi0_dw*sigma_W*w1_profile_d2/4 - W_0*e_W_d3*phi0_d3/2 + W_0*e_W_d3*phi0_dw*sigma_W*w1_profile_d3/4
+
+RESIDUAL (A_Taylor − B_geom) after drop η·σ_W = 0
+
+--- η=0 slice under flat identification g=∇φ0|_flat ---
+RESIDUAL (A_flat_id - B|eta=0) = 0
+
+--- Engine B φ1 sector (background n̂·∇ acting on conormalPerturbation) ---
+W_0*eta_bg*phi1_d1_dw*sigma_W*w1_profile*w1_profile_d1/4 + W_0*eta_bg*phi1_d2_dw*sigma_W*w1_profile*w1_profile_d2/4 + W_0*eta_bg*phi1_d3_dw*sigma_W*w1_profile*w1_profile_d3/4 + W_0*eta_bg*phi1_dww*w1_profile/2 - phi1_d1*sigma_W*w1_profile_d1/2 - phi1_d2*sigma_W*w1_profile_d2/2 - phi1_d3*sigma_W*w1_profile_d3/2 - phi1_dw
+
+Engine A has no φ1 sector (Eulerian-fixed probe).
+RESIDUAL (B_full_geom+φ1 − B_geom) = W_0*eta_bg*phi1_d1_dw*sigma_W*w1_profile*w1_profile_d1/4 + W_0*eta_bg*phi1_d2_dw*sigma_W*w1_profile*w1_profile_d2/4 + W_0*eta_bg*phi1_d3_dw*sigma_W*w1_profile*w1_profile_d3/4 + W_0*eta_bg*phi1_dww*w1_profile/2 - phi1_d1*sigma_W*w1_profile_d1/2 - phi1_d2*sigma_W*w1_profile_d2/2 - phi1_d3*sigma_W*w1_profile_d3/2 - phi1_dw
+RESIDUAL (B_φ1 − 0) under I1 (φ1→0) = 0
+
+--- η=0 term census (A via flat id vs B) ---
+A terms:
+  W_0*e_W*phi0_dww/2
+  -W_0*e_W_d1*phi0_d1/2
+  -W_0*e_W_d2*phi0_d2/2
+  -W_0*e_W_d3*phi0_d3/2
+  W_0*e_W*phi0_d1_dw*sigma_W*w1_profile_d1/4
+  W_0*e_W*phi0_d2_dw*sigma_W*w1_profile_d2/4
+  W_0*e_W*phi0_d3_dw*sigma_W*w1_profile_d3/4
+  W_0*e_W_d1*phi0_dw*sigma_W*w1_profile_d1/4
+  W_0*e_W_d2*phi0_dw*sigma_W*w1_profile_d2/4
+  W_0*e_W_d3*phi0_dw*sigma_W*w1_profile_d3/4
+B terms:
+  W_0*e_W*phi0_dww/2
+  -W_0*e_W_d1*phi0_d1/2
+  -W_0*e_W_d2*phi0_d2/2
+  -W_0*e_W_d3*phi0_d3/2
+  W_0*e_W*phi0_d1_dw*sigma_W*w1_profile_d1/4
+  W_0*e_W*phi0_d2_dw*sigma_W*w1_profile_d2/4
+  W_0*e_W*phi0_d3_dw*sigma_W*w1_profile_d3/4
+  W_0*e_W_d1*phi0_dw*sigma_W*w1_profile_d1/4
+  W_0*e_W_d2*phi0_dw*sigma_W*w1_profile_d2/4
+  W_0*e_W_d3*phi0_dw*sigma_W*w1_profile_d3/4
+
+--- extra W_0 power from I3 (one sample monomial) ---
+A η-piece from δn̂_1 * (h0−flat)∂_w∂_1 φ0 = W_0**2*e_W_d1*eta_bg*phi0_d1_dw*w1_profile/4
+B term (eta*W0*w1*∂_1 δW*∂_1∂_w φ0)/4   = W_0**2*e_W_d1*eta_bg*phi0_d1_dw*w1_profile/4
+RESIDUAL sample = 0
+
+========================================================================
+END identification test
+========================================================================

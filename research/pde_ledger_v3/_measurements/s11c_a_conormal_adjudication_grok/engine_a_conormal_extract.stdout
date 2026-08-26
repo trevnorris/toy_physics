@@ -1,0 +1,6 @@
+loading module (may take a bit)...
+loaded
+ENGINE_A_CONORMAL_SHAPE_DERIV LAB_HELD FACE_MINUS DELTA_W =
+W_0*(2*d_w_trace_grad_f_4*e_W - 2*e_W_d1*trace_grad_f_1 - 2*e_W_d2*trace_grad_f_2 - 2*e_W_d3*trace_grad_f_3 + sigma_W*(d_w_trace_grad_f_1*e_W*w1_profile_d1 + d_w_trace_grad_f_2*e_W*w1_profile_d2 + d_w_trace_grad_f_3*e_W*w1_profile_d3 + trace_grad_f_4*(e_W_d1*w1_profile_d1 + e_W_d2*w1_profile_d2 + e_W_d3*w1_profile_d3)))/4
+---
+free symbols: ['W_0', 'd_w_trace_grad_f_1', 'd_w_trace_grad_f_2', 'd_w_trace_grad_f_3', 'd_w_trace_grad_f_4', 'e_W', 'e_W_d1', 'e_W_d2', 'e_W_d3', 'sigma_W', 'trace_grad_f_1', 'trace_grad_f_2', 'trace_grad_f_3', 'trace_grad_f_4', 'w1_profile_d1', 'w1_profile_d2', 'w1_profile_d3']

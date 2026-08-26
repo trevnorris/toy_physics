@@ -86,3 +86,5 @@ PROJECTION window = NOT a finding (rule-13): `python3 ~/.s11_build/S11c_a_verify
 `python3 ~/.s11_build/S11c_a_verify_proj_derivs.py` ⇒ WL carries Derivative[{m,n}][windowFunction] with BOTH
 {1,0} and {0,1} (both faces). PROJECTION integrand residual OPEN (current map + IBP + background-current), see
 `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§13-15; instrument `~/.s11_build/S11c_a_run_projection.py`.
+
+(Doc-hygiene 2026-08-26: SCOUT_FINDINGS §§11-12 are historical/superseded by §§13-14; the roadmap Step-5 PLAN bullet de-staled — EVOLUTION face-detect + CONORMAL are DONE. Commands above unchanged.)

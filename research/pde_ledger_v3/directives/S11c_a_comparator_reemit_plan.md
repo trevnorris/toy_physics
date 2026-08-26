@@ -1,6 +1,6 @@
 # S11c-a T7 comparator — CROSS-ENGINE RECONCILIATION plan (post-compact roadmap)
 
-## ⭐ PROGRESS (updated 2026-08-26 — Step 4 shifted-trace fix committed c36beac4)
+## ⭐ PROGRESS (updated 2026-08-26 — Step 5 coverage + CONORMAL/PROJECTION adjudications committed aef0ed36)
 - **Step 0 (feasibility/adjudication matrix): DONE, committed `3c7f9137`** —
   `S11c_a_T7_adjudication_matrix.md` (+ twin + census `_measurements/s11ca_t7_census/`), 2 legs + fold.
 - **Step 1 (adjudicate vs spec): DONE, committed `3491a376`** — `S11c_a_T7_adjudication_verdicts.md`
@@ -59,15 +59,17 @@
   is still the shifted-trace (`c36beac4`). **NEXT (user-approved):** current map + IBP-aware bridge → measure
   PROJECTION → adjudicate background-current from spec if it survives → mechanical sweep (origins/FACE_SHIFT/
   controls/bookkeeping) → then the Codex comparator build below.
-- **Step-5 PLAN (Codex comparator build, after coverage is measured): harden `measure_reconcile.py` into the comparator** — fold the
-  declared map (`d_w_X↔X_dw` perturbation-jet rename, `mu_theta_L→mu_theta`, `sp.cancel` for λ_X denominators)
-  and FIX the EVOLUTION no-FACE-axis bug (detect the face from the `{±1/2*W0}` eval-point argument);
-  Codex-written ⇒ fresh Agent + Grok legs, synthetic fixtures, rule 5 → finish coverage (CONORMAL test-field
-  map, PROJECTION/CLOSURE window integrals — the one place a NEW finding could still hide, controls,
-  bookkeeping) → freeze + run → THE full cross-engine result → step record + family card (pin the
-  reconciliation map forward for S11c-b…e). ⚠ FACE_SHIFT now carries the density rep (8→16 cases) after the
-  fix. ⚠ the "shallow bridges + trivial comparator" framing below UNDERSTATED this: the reconciliation is a
-  spec-grounded per-field map (not a byte relabel), and the residual after it is the physics.
+- **Step-5 PLAN (Codex comparator build — ONLY AFTER the coverage sweep above is complete):** fold the FULL
+  measured declared map into the frozen contract (`scripts/S11b_cross_engine_comparator.py` — reuse its
+  parsers/transliterate/residual + the multi-line WL reassembly). The map already includes (measured this
+  step): params/fields/jet-decode/`e_W`/`d_w_X↔X_dw`/`mu_theta`/`sp.cancel` + the `XFACEX` EVOLUTION
+  face-detect [DONE, verified] + the CONORMAL §3c-flat-face identification [DONE, verdict A]; still to add from
+  the remaining sweep: the bulk-current map + the IBP window canonicalization + the origin/control/bookkeeping
+  bridges. Codex-written ⇒ fresh Agent + Grok legs, synthetic fixtures, rule 5 → freeze + run → THE full
+  cross-engine result → step record + family card (pin the reconciliation map forward for S11c-b…e). ⚠
+  FACE_SHIFT carries the density rep (16 cases). ⚠ the reconciliation is a spec-grounded per-field map (not a
+  byte relabel); the residual after it is the physics. (CLOSURE is ALGEBRAIC traced-bulk, already 16/16→0 —
+  NOT a window integral; only PROJECTION_* are Inactive[Integrate].)
 - ⚠ The "Revised workflow" below is the original roadmap; steps 0-2 are now complete. The case-structure
   divergences it anticipated were adjudicated in step 1 and fixed on both engines in step 2. Tag granularity
   differs (PY 47 vs WL 40) — the comparator joins per matching key; bookkeeping/control tags bridged or excluded.

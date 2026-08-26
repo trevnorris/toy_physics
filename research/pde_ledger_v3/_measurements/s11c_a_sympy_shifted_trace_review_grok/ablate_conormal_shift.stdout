@@ -1,0 +1,11 @@
+CONORMAL FORM ABLATION: drop parameter*dh*dw_grad_f from traced_gradient
+BEFORE (engine conormal_raw finalized):
+(-sigma_W*(trace_grad_f_1*w1_profile_d1 + trace_grad_f_2*w1_profile_d2 + trace_grad_f_3*w1_profile_d3)/2 + trace_grad_f_4, epsilon_shape*(d_w_trace_grad_f_4*zeta_c - sigma_W*(d_w_trace_grad_f_1*w1_profile_d1*zeta_c + d_w_trace_grad_f_2*w1_profile_d2*zeta_c + d_w_trace_grad_f_3*w1_profile_d3*zeta_c + trace_grad_f_4*(w1_profile_d1*zeta_c_d1 + w1_profile_d2*zeta_c_d2 + w1_profile_d3*zeta_c_d3))/2 - trace_grad_f_1*zeta_c_d1 - trace_grad_f_2*zeta_c_d2 - trace_grad_f_3*zeta_c_d3), epsilon_shape*(d_w_trace_grad_f_4*zeta_c - trace_grad_f_1*zeta_c_d1 - trace_grad_f_2*zeta_c_d2 - trace_grad_f_3*zeta_c_d3) - sigma_W*(epsilon_shape*(d_w_trace_grad_f_1*w1_profile_d1*zeta_c + d_w_trace_grad_f_2*w1_profile_d2*zeta_c + d_w_trace_grad_f_3*w1_profile_d3*zeta_c + trace_grad_f_4*(w1_profile_d1*zeta_c_d1 + w1_profile_d2*zeta_c_d2 + w1_profile_d3*zeta_c_d3)) + trace_grad_f_1*w1_profile_d1 + trace_grad_f_2*w1_profile_d2 + trace_grad_f_3*w1_profile_d3)/2 + trace_grad_f_4)
+
+AFTER (probe field without shifted-eval term):
+(-sigma_W*(trace_grad_f_1*w1_profile_d1 + trace_grad_f_2*w1_profile_d2 + trace_grad_f_3*w1_profile_d3)/2 + trace_grad_f_4, -epsilon_shape*(sigma_W*trace_grad_f_4*(w1_profile_d1*zeta_c_d1 + w1_profile_d2*zeta_c_d2 + w1_profile_d3*zeta_c_d3)/2 + trace_grad_f_1*zeta_c_d1 + trace_grad_f_2*zeta_c_d2 + trace_grad_f_3*zeta_c_d3), -epsilon_shape*(trace_grad_f_1*zeta_c_d1 + trace_grad_f_2*zeta_c_d2 + trace_grad_f_3*zeta_c_d3) - sigma_W*(epsilon_shape*trace_grad_f_4*(w1_profile_d1*zeta_c_d1 + w1_profile_d2*zeta_c_d2 + w1_profile_d3*zeta_c_d3) + trace_grad_f_1*w1_profile_d1 + trace_grad_f_2*w1_profile_d2 + trace_grad_f_3*w1_profile_d3)/2 + trace_grad_f_4)
+
+DERIV DIFF (after-before): epsilon_shape*zeta_c*(d_w_trace_grad_f_1*sigma_W*w1_profile_d1 + d_w_trace_grad_f_2*sigma_W*w1_profile_d2 + d_w_trace_grad_f_3*sigma_W*w1_profile_d3 - 2*d_w_trace_grad_f_4)/2
+MOVED: True
+Contains d_w_trace_grad_f in BEFORE deriv? True
+Contains d_w_trace_grad_f in AFTER deriv? False

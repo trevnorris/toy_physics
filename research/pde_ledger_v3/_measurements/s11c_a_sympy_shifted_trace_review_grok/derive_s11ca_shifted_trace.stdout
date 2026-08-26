@@ -1,0 +1,117 @@
+INDEPENDENT DERIVATION — S11c-a §3c shifted-trace law
+Truncation: first order in epsilon (wave), first order in eta (shape).
+
+========================================================================
+CASE: (a) background identically zero  [f0=0, dw_f0=0]
+------------------------------------------------------------------------
+W_bg               = W0*(eta*w1 + 1)
+h_s0 = s*W_bg/2    = W0*eta*s*w1/2 + W0*s/2
+h_s  = h_s0+eps*dh = W0*eta*s*w1/2 + W0*s/2 + delta_h*epsilon
+w_flat = s*W0/2    = W0*s/2
+f0_flat            = 0
+dw_f0_flat         = 0
+df_flat            = df_at_flat
+dw_df_flat         = dw_df_at_flat
+
+COMPOSITION delta[f(x,h_s)]  (O(eps^1), O(eta^0..1)):
+  W0*dw_df_at_flat*eta*s*w1/2 + df_at_flat
+
+SECTION 3c LAW  df(x,h_s0) + dh*dw_f0(x,h_s0)  (O(eta^0..1)):
+  W0*dw_df_at_flat*eta*s*w1/2 + df_at_flat
+
+RESIDUAL (composition - law): 0
+
+FROZEN-AT-FLAT (wrong) df(flat)+dh*dw_f0(flat):
+  df_at_flat
+RESIDUAL (composition - frozen): W0*dw_df_at_flat*eta*s*w1/2
+
+TERM CENSUS (each monomial and whether it carries eta):
+  term=df_at_flat   has_eta=False
+  term=W0*dw_df_at_flat*eta*s*w1/2   has_eta=True
+
+========================================================================
+CASE: (b) background nonzero WITH nonzero normal derivative
+------------------------------------------------------------------------
+W_bg               = W0*(eta*w1 + 1)
+h_s0 = s*W_bg/2    = W0*eta*s*w1/2 + W0*s/2
+h_s  = h_s0+eps*dh = W0*eta*s*w1/2 + W0*s/2 + delta_h*epsilon
+w_flat = s*W0/2    = W0*s/2
+f0_flat            = f0_at_flat
+dw_f0_flat         = dw_f0_at_flat
+df_flat            = df_at_flat
+dw_df_flat         = dw_df_at_flat
+
+COMPOSITION delta[f(x,h_s)]  (O(eps^1), O(eta^0..1)):
+  W0*dw_df_at_flat*eta*s*w1/2 + delta_h*dw_f0_at_flat + df_at_flat
+
+SECTION 3c LAW  df(x,h_s0) + dh*dw_f0(x,h_s0)  (O(eta^0..1)):
+  W0*dw_df_at_flat*eta*s*w1/2 + delta_h*dw_f0_at_flat + df_at_flat
+
+RESIDUAL (composition - law): 0
+
+FROZEN-AT-FLAT (wrong) df(flat)+dh*dw_f0(flat):
+  delta_h*dw_f0_at_flat + df_at_flat
+RESIDUAL (composition - frozen): W0*dw_df_at_flat*eta*s*w1/2
+
+TERM CENSUS (each monomial and whether it carries eta):
+  term=df_at_flat   has_eta=False
+  term=delta_h*dw_f0_at_flat   has_eta=False
+  term=W0*dw_df_at_flat*eta*s*w1/2   has_eta=True
+
+========================================================================
+CASE: (c) density-like: nonzero bg, w-independent  [dw_f0=0]  (supplied §3c density)
+------------------------------------------------------------------------
+W_bg               = W0*(eta*w1 + 1)
+h_s0 = s*W_bg/2    = W0*eta*s*w1/2 + W0*s/2
+h_s  = h_s0+eps*dh = W0*eta*s*w1/2 + W0*s/2 + delta_h*epsilon
+w_flat = s*W0/2    = W0*s/2
+f0_flat            = f0_at_flat
+dw_f0_flat         = 0
+df_flat            = df_at_flat
+dw_df_flat         = dw_df_at_flat
+
+COMPOSITION delta[f(x,h_s)]  (O(eps^1), O(eta^0..1)):
+  W0*dw_df_at_flat*eta*s*w1/2 + df_at_flat
+
+SECTION 3c LAW  df(x,h_s0) + dh*dw_f0(x,h_s0)  (O(eta^0..1)):
+  W0*dw_df_at_flat*eta*s*w1/2 + df_at_flat
+
+RESIDUAL (composition - law): 0
+
+FROZEN-AT-FLAT (wrong) df(flat)+dh*dw_f0(flat):
+  df_at_flat
+RESIDUAL (composition - frozen): W0*dw_df_at_flat*eta*s*w1/2
+
+TERM CENSUS (each monomial and whether it carries eta):
+  term=df_at_flat   has_eta=False
+  term=W0*dw_df_at_flat*eta*s*w1/2   has_eta=True
+
+========================================================================
+SUMMARY — what the law requires for physical fields in this scope
+========================================================================
+
+From composition:
+  delta[f(x,h_s)] = df(x, h_s0) + dh * dw_f0(x, h_s0)
+  with h_s0 = s*W_bg/2 = s*W0/2 + eta*(s*W0*w1/2)
+
+Expanding df(x,h_s0) about the flat face to O(eta):
+  df(x,h_s0) = df(flat) + eta*(s*W0*w1/2)*dw_df(flat) + O(eta^2)
+
+So two structural pieces, distinct in role:
+  (1) PERTURBATION EVALUATION FACE: df is evaluated at h_s0 (carries eta through W_bg),
+      NOT frozen at w = s*W0/2. The eta*dw_df piece is O(eps)*O(eta) and is retained
+      at first shape order (§2a: do not drop mixed bookkeepers).
+  (2) BACKGROUND NORMAL JET: dh * dw_f0(x,h_s0). This is present only when the
+      supplied background has nonzero dw_f0. Per §3c / §2d in this scope:
+        v_bulk^0 = 0,  delta_p^0 = 0,  j^0 = 0  =>  dw_f0 = 0 for those
+        rho_4D,bg^0 depends on in-plane anchor, not on w  =>  dw_rho0 = 0
+      Therefore NO free premise jet may be invented; the jet term vanishes because
+      the supplied background makes it vanish, not because the law was truncated.
+
+Conormal on an ARBITRARY probe field is not one of the supplied physical fields:
+its shifted-evaluation term (the eta*dw_df piece for a generic probe) must be left
+intact — it is an operator identity, not a physical-field specialisation.
+
+case (a) residual composition-vs-law: 0
+case (b) residual composition-vs-law: 0
+case (c) residual composition-vs-law: 0

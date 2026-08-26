@@ -147,23 +147,37 @@ delta_v_u = tuple(symbol(f"delta_v_u_{i}", "COORDINATE", f"virtual displacement 
 grad_delta_v_u = tuple(tuple(symbol(f"delta_v_u_{i}_d{j}", "COORDINATE", f"virtual-displacement jet {i},{j}") for j in range(1, 4)) for i in range(1, 4))
 delta_v_zeta_c = symbol("delta_v_zeta_c", "COORDINATE", "virtual centre-face displacement")
 
-# Traced bulk perturbations and background normal derivatives used by the
-# supplied shifted-trace law.
+# Traced bulk perturbations and their normal jets at the flat reference faces.
+# These are wave-field coordinates, not premises about the physical
+# background.  The background normal jets used by the supplied shifted-trace
+# law are computed below from the members of the supplied background state.
 delta_v_bulk = {
-    s: tuple(symbol(f"delta_v_bulk_{'plus' if s == 1 else 'minus'}_{i}", "COORDINATE", f"bulk velocity perturbation at face {s}, component {i}") for i in range(1, 5))
+    s: tuple(symbol(f"delta_v_bulk_{'plus' if s == 1 else 'minus'}_{i}", "COORDINATE", f"bulk velocity perturbation at flat reference face {s}, component {i}") for i in range(1, 5))
     for s in FACES
 }
-dw_v_bulk_0 = {
-    s: tuple(symbol(f"d_w_v_bulk_0_{'plus' if s == 1 else 'minus'}_{i}", "PREMISE", f"background bulk-velocity normal jet at face {s}, component {i}") for i in range(1, 5))
+dw_delta_v_bulk = {
+    s: tuple(symbol(f"d_w_delta_v_bulk_{'plus' if s == 1 else 'minus'}_{i}", "COORDINATE", f"bulk velocity perturbation normal jet at flat reference face {s}, component {i}") for i in range(1, 5))
     for s in FACES
 }
-dw_delta_p_0 = {
-    1: symbol("d_w_delta_p_0_plus", "PREMISE", "upper background pressure normal jet"),
-    -1: symbol("d_w_delta_p_0_minus", "PREMISE", "lower background pressure normal jet"),
+dw_delta_p = {
+    1: symbol("d_w_delta_p_plus", "COORDINATE", "upper pressure-perturbation normal jet at the flat reference face"),
+    -1: symbol("d_w_delta_p_minus", "COORDINATE", "lower pressure-perturbation normal jet at the flat reference face"),
+}
+delta_rho4_face = {
+    s: symbol(f"delta_rho_4D_face_{'plus' if s == 1 else 'minus'}", "COORDINATE", f"density perturbation at flat reference face {s}")
+    for s in FACES
+}
+dw_delta_rho4_face = {
+    s: symbol(f"d_w_delta_rho_4D_face_{'plus' if s == 1 else 'minus'}", "COORDINATE", f"density-perturbation normal jet at flat reference face {s}")
+    for s in FACES
 }
 rho4_bulk_1 = symbol("delta_rho_4D_bulk", "COORDINATE", "bulk density perturbation in the projection")
 rho4_bulk_1_t = symbol("delta_rho_4D_bulk_t", "COORDINATE", "time derivative of bulk density perturbation")
 j_bulk = tuple(symbol(f"delta_j_bulk_{i}", "COORDINATE", f"bulk current perturbation component {i}") for i in range(1, 5))
+dw_delta_j_bulk = {
+    s: tuple(symbol(f"d_w_delta_j_bulk_{'plus' if s == 1 else 'minus'}_{i}", "COORDINATE", f"bulk-current perturbation normal jet at flat reference face {s}, component {i}") for i in range(1, 5))
+    for s in FACES
+}
 grad_j_bulk = tuple(tuple(symbol(f"delta_j_bulk_{i}_d{j}", "COORDINATE", f"bulk-current in-plane jet {i},{j}") for j in range(1, 4)) for i in range(1, 5))
 
 mu_theta_branch = {
@@ -235,7 +249,12 @@ SYMBOL_DIMENSIONS: dict[sp.Symbol, sp.ImmutableMatrix] = {
 }
 SYMBOL_DIMENSIONS.update({item: DIM_VELOCITY for item in u_t})
 SYMBOL_DIMENSIONS.update({item: DIM_VELOCITY for values in delta_v_bulk.values() for item in values})
+SYMBOL_DIMENSIONS.update({item: dim_div(DIM_VELOCITY, DIM_L) for values in dw_delta_v_bulk.values() for item in values})
+SYMBOL_DIMENSIONS.update({item: dim_div(DIM_PRESSURE, DIM_L) for item in dw_delta_p.values()})
+SYMBOL_DIMENSIONS.update({item: DIM_RHO4 for item in delta_rho4_face.values()})
+SYMBOL_DIMENSIONS.update({item: dim_div(DIM_RHO4, DIM_L) for item in dw_delta_rho4_face.values()})
 SYMBOL_DIMENSIONS.update({item: DIM_FLUX for item in j_bulk})
+SYMBOL_DIMENSIONS.update({item: dim_div(DIM_FLUX, DIM_L) for values in dw_delta_j_bulk.values() for item in values})
 SYMBOL_DIMENSIONS.update({item: dim_div(DIM_FLUX, DIM_L) for row in grad_j_bulk for item in row})
 SYMBOL_DIMENSIONS.update({item: -DIM_T for row in grad_u_t for item in row})
 
@@ -556,6 +575,32 @@ def dof_fields(dof: str, face: int) -> tuple[sp.Expr, sp.Expr, tuple[sp.Expr, ..
     return zeta_c, zeta_c_t, grad_zeta_c, sp.Integer(0), sp.Integer(0)
 
 
+def affine_bulk_perturbation(
+    reference_value: sp.Expr,
+    reference_normal_jet: sp.Expr,
+    face: int,
+) -> sp.Expr:
+    """Construct the supplied wave ansatz around the flat reference face."""
+    reference_height = sp.Rational(face, 2) * W0
+    return reference_value + (w - reference_height) * reference_normal_jet
+
+
+def compose_physical_trace(
+    background_field: sp.Expr,
+    perturbation_field: sp.Expr,
+    h0: sp.Expr,
+    dh: sp.Expr,
+    parameter: sp.Symbol,
+) -> sp.Expr:
+    """Compose f0 + q*delta-f with w=h0+q*delta-h before linearising."""
+    background_face = background_field.subs(w, h0)
+    background_normal_jet = sp.diff(background_field, w).subs(w, h0)
+    background_ansatz = background_face + (w - h0) * background_normal_jet
+    bulk_field = background_ansatz + parameter * perturbation_field
+    face_height = h0 + parameter * dh
+    return bulk_field.subs(w, face_height)
+
+
 @dataclass(frozen=True)
 class FaceSource:
     branch: str
@@ -570,13 +615,73 @@ class FaceSource:
     measure_exact: sp.Expr
     virtual_displacement: tuple[sp.Expr, ...]
     face_velocity_exact: tuple[sp.Expr, ...]
-    pressure_trace_first: sp.Expr
-    bulk_velocity_trace_first: tuple[sp.Expr, ...]
+    pressure_trace_exact: sp.Expr
+    bulk_velocity_trace_exact: tuple[sp.Expr, ...]
+    density_trace_exact: sp.Expr
+    current_trace_exact: tuple[sp.Expr, ...]
     rho4_bg_exact: sp.Expr
     rhobr_bg_exact: sp.Expr
 
 
 _FACE_CACHE: dict[tuple[object, ...], FaceSource] = {}
+
+
+def physical_trace_fields(
+    face: int,
+    h0: sp.Expr,
+    dh: sp.Expr,
+    parameter: sp.Symbol,
+    rho4_bg_exact: sp.Expr,
+) -> tuple[sp.Expr, tuple[sp.Expr, ...], sp.Expr, tuple[sp.Expr, ...]]:
+    """Build all physical traces from the common §3c field composition."""
+    pressure_reference = delta_p_plus if face == 1 else delta_p_minus
+    pressure_perturbation = affine_bulk_perturbation(
+        pressure_reference, dw_delta_p[face], face,
+    )
+    velocity_perturbation = tuple(
+        affine_bulk_perturbation(
+            delta_v_bulk[face][i], dw_delta_v_bulk[face][i], face,
+        )
+        for i in range(4)
+    )
+    density_perturbation = affine_bulk_perturbation(
+        delta_rho4_face[face], dw_delta_rho4_face[face], face,
+    )
+    current_perturbation = tuple(
+        affine_bulk_perturbation(j_bulk[i], dw_delta_j_bulk[face][i], face)
+        for i in range(4)
+    )
+
+    # These are the physical members of B0 supplied in §§2d, 3b, and 3c.
+    # Keeping their construction here makes every normal jet enter through an
+    # actual d/dw performed by the trace composition, including the current
+    # background rho_4D^0 v_bulk^0 and each density representative.
+    velocity_background = (sp.Integer(0),) * 4
+    pressure_background = sp.Integer(0)
+    density_background = rho4_bg_exact.subs(parameter, 0)
+    current_background = tuple(
+        density_background * component for component in velocity_background
+    )
+
+    pressure_trace = compose_physical_trace(
+        pressure_background, pressure_perturbation, h0, dh, parameter,
+    )
+    velocity_trace = tuple(
+        compose_physical_trace(
+            velocity_background[i], velocity_perturbation[i], h0, dh, parameter,
+        )
+        for i in range(4)
+    )
+    density_trace = compose_physical_trace(
+        density_background, density_perturbation, h0, dh, parameter,
+    )
+    current_trace = tuple(
+        compose_physical_trace(
+            current_background[i], current_perturbation[i], h0, dh, parameter,
+        )
+        for i in range(4)
+    )
+    return pressure_trace, velocity_trace, density_trace, current_trace
 
 
 def material_deformation_gradient(
@@ -698,16 +803,15 @@ def build_material_face_source(
     )
     face_velocity_exact = tuple(parameter * item for item in tuple(u_t) + (face_vertical_velocity,))
 
-    pressure_face = delta_p_plus if face == 1 else delta_p_minus
-    pressure_trace_first = pressure_face + dh * dw_delta_p_0[face]
-    bulk_velocity_trace_first = tuple(
-        delta_v_bulk[face][i] + dh * dw_v_bulk_0[face][i] for i in range(4)
-    )
     rho4_exact, rhobr_exact = density_pair(representative, anchor_value)
+    pressure_trace, velocity_trace, density_trace, current_trace = physical_trace_fields(
+        face, h0, dh, parameter, rho4_exact,
+    )
     return FaceSource(
         branch, face, dof, representative, "MATERIAL", parameter, h0, dh,
         normal_exact, measure_exact, virtual_displacement, face_velocity_exact,
-        pressure_trace_first, bulk_velocity_trace_first, rho4_exact, rhobr_exact,
+        pressure_trace, velocity_trace, density_trace, current_trace,
+        rho4_exact, rhobr_exact,
     )
 
 
@@ -756,16 +860,16 @@ def build_face_source(
     virtual_displacement = tuple(delta_v_u) + (virtual_vertical,)
     face_velocity_exact = tuple(parameter * item for item in tuple(u_t) + (velocity_vertical,))
 
-    pressure_face = delta_p_plus if face == 1 else delta_p_minus
-    pressure_trace_first = pressure_face + dh * dw_delta_p_0[face]
-    bulk_velocity_trace_first = tuple(delta_v_bulk[face][i] + dh * dw_v_bulk_0[face][i] for i in range(4))
-
     W_alpha = branch_profile(W_bg, branch, parameter, scales)
     rho4_exact, rhobr_exact = density_pair(representative, W_alpha)
+    pressure_trace, velocity_trace, density_trace, current_trace = physical_trace_fields(
+        face, h0, dh, parameter, rho4_exact,
+    )
     source = FaceSource(
         branch, face, dof, representative, route, parameter, h0, dh,
         normal_exact, measure_exact, virtual_displacement, face_velocity_exact,
-        pressure_trace_first, bulk_velocity_trace_first, rho4_exact, rhobr_exact,
+        pressure_trace, velocity_trace, density_trace, current_trace,
+        rho4_exact, rhobr_exact,
     )
     _FACE_CACHE[cache_key] = source
     return source
@@ -788,21 +892,19 @@ def face_velocity_raw(source: FaceSource) -> sp.Expr:
 
 
 def relative_flux_raw(source: FaceSource) -> sp.Expr:
-    bulk_exact = tuple(source.parameter * item for item in source.bulk_velocity_trace_first)
-    relative = tuple(bulk_exact[i] - source.face_velocity_exact[i] for i in range(4))
+    relative = tuple(source.bulk_velocity_trace_exact[i] - source.face_velocity_exact[i] for i in range(4))
     exact = rho_m * dot(relative, source.normal_exact)
     return epsilon * shape(exact, source.parameter)
 
 
 def true_area_flux_raw(source: FaceSource) -> sp.Expr:
-    bulk_exact = tuple(source.parameter * item for item in source.bulk_velocity_trace_first)
-    relative = tuple(bulk_exact[i] - source.face_velocity_exact[i] for i in range(4))
+    relative = tuple(source.bulk_velocity_trace_exact[i] - source.face_velocity_exact[i] for i in range(4))
     exact_flux = rho_m * dot(relative, source.normal_exact)
     return epsilon * shape(source.measure_exact * exact_flux, source.parameter)
 
 
 def pressure_trace_raw(source: FaceSource) -> sp.Expr:
-    return epsilon * source.pressure_trace_first
+    return epsilon * shape(source.pressure_trace_exact, source.parameter)
 
 
 def mu_specific_raw(source: FaceSource) -> sp.Expr:
@@ -815,7 +917,7 @@ def affinity_raw(source: FaceSource) -> sp.Expr:
 
 
 def traction_raw(source: FaceSource) -> sp.ImmutableMatrix:
-    exact_pressure = source.parameter * source.pressure_trace_first
+    exact_pressure = source.pressure_trace_exact
     exact_mu = source.parameter * mu_theta_branch[source.branch] / source.rhobr_bg_exact
     exact_affinity = exact_mu - exact_pressure / rho_m
     exact = -(exact_pressure + Lambda_X * exact_affinity) * sp.ImmutableMatrix(source.normal_exact)
@@ -828,7 +930,7 @@ def closure_raw(source: FaceSource) -> sp.Expr:
 
 def kinematic_raw(source: FaceSource) -> sp.Tuple:
     operand_a = epsilon * shape(
-        dot(source.normal_exact, tuple(source.parameter * item for item in source.bulk_velocity_trace_first)),
+        dot(source.normal_exact, source.bulk_velocity_trace_exact),
         source.parameter,
     )
     flux_from_relative_law = relative_flux_raw(source)
@@ -872,7 +974,7 @@ def virtual_work_cases(
             branch, face, virtual_dof, representative, route=route,
             ablate_direction=ablate_direction, reverse_upper_x1=reverse_upper_x1,
         )
-        exact_pressure = physical_source.parameter * physical_source.pressure_trace_first
+        exact_pressure = physical_source.pressure_trace_exact
         exact_mu = physical_source.parameter * mu_theta_branch[branch] / physical_source.rhobr_bg_exact
         exact_affinity = exact_mu - exact_pressure / rho_m
         exact_traction = -(exact_pressure + Lambda_X * exact_affinity) * sp.ImmutableMatrix(physical_source.normal_exact)
@@ -964,20 +1066,25 @@ def build_face_shift_raw(
     for branch in BRANCHES:
         for face in FACES:
             for dof in DOFS:
-                source = build_face_source(
-                    branch, face, dof, ablate_direction=ablate_direction,
-                    reverse_upper_x1=reverse_upper_x1,
-                )
-                pressure = pressure_trace_raw(source)
-                velocity = epsilon * sp.ImmutableMatrix(source.bulk_velocity_trace_first)
-                rho_trace_1 = symbol(f"delta_rho_4D_face_{'plus' if face == 1 else 'minus'}", "COORDINATE", f"density perturbation at face {face}")
-                dw_rho_0 = symbol(f"d_w_rho_4D_0_{'plus' if face == 1 else 'minus'}", "PREMISE", f"background density normal jet at face {face}")
-                current_trace = sp.ImmutableMatrix([
-                    epsilon * (j_bulk[i] + source.dh * symbol(f"d_w_j_0_{'plus' if face == 1 else 'minus'}_{i + 1}", "PREMISE", f"background-current normal jet at face {face}, component {i + 1}"))
-                    for i in range(4)
-                ])
-                density = epsilon * (rho_trace_1 + source.dh * dw_rho_0)
-                cases[(branch, face, dof)] = sp.Tuple(pressure, velocity, density, current_trace)
+                for representative in DENSITY_REPS:
+                    source = build_face_source(
+                        branch, face, dof, representative,
+                        ablate_direction=ablate_direction,
+                        reverse_upper_x1=reverse_upper_x1,
+                    )
+                    pressure = pressure_trace_raw(source)
+                    velocity = epsilon * sp.ImmutableMatrix(
+                        shape(source.bulk_velocity_trace_exact, source.parameter)
+                    )
+                    density = epsilon * shape(
+                        source.density_trace_exact, source.parameter,
+                    )
+                    current = epsilon * sp.ImmutableMatrix(
+                        shape(source.current_trace_exact, source.parameter)
+                    )
+                    cases[(branch, face, dof, representative)] = sp.Tuple(
+                        pressure, velocity, density, current,
+                    )
     return finalize(cases)
 
 
@@ -1480,7 +1587,7 @@ def uniform_reference_geometry(quantity: str) -> dict[object, object]:
                             zeta, zeta_t, grad_zeta, _, _ = dof_fields(dof, face)
                             _, _, _, _, virtual_delta_W = dof_fields(virtual_dof, face)
                             normal = sp.ImmutableMatrix([0, 0, 0, face])
-                            p = epsilon * ((delta_p_plus if face == 1 else delta_p_minus) + zeta * dw_delta_p_0[face])
+                            p = epsilon * (delta_p_plus if face == 1 else delta_p_minus)
                             mu_s = epsilon * mu_theta_branch[branch] / rho_br
                             tr = -(p + Lambda_X * (mu_s - p / rho_m)) * normal
                             virtual_zeta = delta_v_zeta_c if virtual_dof == "ZETA_C" else face * virtual_delta_W / 2
@@ -1494,8 +1601,8 @@ def uniform_reference_geometry(quantity: str) -> dict[object, object]:
                 dn = sp.ImmutableMatrix([-face * component for component in grad_zeta] + [0])
                 V = epsilon * face * zeta_t
                 vb = delta_v_bulk[face]
-                flux = epsilon * rho_m * face * (vb[3] + zeta * dw_v_bulk_0[face][3] - zeta_t)
-                p = epsilon * ((delta_p_plus if face == 1 else delta_p_minus) + zeta * dw_delta_p_0[face])
+                flux = epsilon * rho_m * face * (vb[3] - zeta_t)
+                p = epsilon * (delta_p_plus if face == 1 else delta_p_minus)
                 mu_s = epsilon * mu_theta_branch[branch] / rho_br
                 affinity = mu_s - p / rho_m
                 if quantity == "FACE_NORMAL":
@@ -1513,7 +1620,7 @@ def uniform_reference_geometry(quantity: str) -> dict[object, object]:
                 elif quantity == "RELATIVE_FLUX":
                     raw = flux
                 elif quantity == "KINEMATIC_BALANCE":
-                    operand_a = epsilon * face * (vb[3] + zeta * dw_v_bulk_0[face][3])
+                    operand_a = epsilon * face * vb[3]
                     operand_b = sp.factor_terms(V + flux / rho_m)
                     raw = sp.Tuple(
                         sp.Tuple(Str("OPERAND_A"), operand_a),
@@ -1537,20 +1644,15 @@ def uniform_face_shift_reference() -> dict[object, object]:
     for branch in BRANCHES:
         for face in FACES:
             for dof in DOFS:
-                zeta, _, _, _, _ = dof_fields(dof, face)
                 pressure_face = delta_p_plus if face == 1 else delta_p_minus
-                pressure = epsilon * (pressure_face + zeta * dw_delta_p_0[face])
-                velocity = epsilon * sp.ImmutableMatrix([
-                    delta_v_bulk[face][i] + zeta * dw_v_bulk_0[face][i] for i in range(4)
-                ])
-                rho_trace_1 = symbol(f"delta_rho_4D_face_{'plus' if face == 1 else 'minus'}", "COORDINATE", f"density perturbation at face {face}")
-                dw_rho_0 = symbol(f"d_w_rho_4D_0_{'plus' if face == 1 else 'minus'}", "PREMISE", f"background density normal jet at face {face}")
-                density = epsilon * (rho_trace_1 + zeta * dw_rho_0)
-                current = epsilon * sp.ImmutableMatrix([
-                    j_bulk[i] + zeta * symbol(f"d_w_j_0_{'plus' if face == 1 else 'minus'}_{i + 1}", "PREMISE", f"background-current normal jet at face {face}, component {i + 1}")
-                    for i in range(4)
-                ])
-                cases[(branch, face, dof)] = sp.Tuple(pressure, velocity, density, current)
+                pressure = epsilon * pressure_face
+                velocity = epsilon * sp.ImmutableMatrix(delta_v_bulk[face])
+                density = epsilon * delta_rho4_face[face]
+                current = epsilon * sp.ImmutableMatrix(j_bulk)
+                for representative in DENSITY_REPS:
+                    cases[(branch, face, dof, representative)] = sp.Tuple(
+                        pressure, velocity, density, current,
+                    )
     return cases
 
 

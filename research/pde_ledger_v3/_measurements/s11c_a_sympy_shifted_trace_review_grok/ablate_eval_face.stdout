@@ -1,0 +1,43 @@
+Wrote /tmp/s11c_a_review_grok/engine_ablate_eval_face.py
+FORM CHANGE: compose_physical_trace evaluation face h0=s*W_bg/2 -> h_eval=s*W0/2
+
+========================================================================
+LITERAL BEFORE / AFTER / DIFF
+========================================================================
+
+--- FACE_SHIFT.pressure ---
+BEFORE: epsilon_shape*(W_0*d_w_delta_p_plus*eta_bg*w1_profile/2 + delta_p_plus)
+AFTER:  delta_p_plus*epsilon_shape
+DIFF:   -W_0*d_w_delta_p_plus*epsilon_shape*eta_bg*w1_profile/2
+MOVED:  True
+
+--- FACE_SHIFT.velocity_w ---
+BEFORE: epsilon_shape*(W_0*d_w_delta_v_bulk_plus_4*eta_bg*w1_profile/2 + delta_v_bulk_plus_4)
+AFTER:  delta_v_bulk_plus_4*epsilon_shape
+DIFF:   -W_0*d_w_delta_v_bulk_plus_4*epsilon_shape*eta_bg*w1_profile/2
+MOVED:  True
+
+--- FACE_SHIFT.density ---
+BEFORE: epsilon_shape*(W_0*d_w_delta_rho_4D_face_plus*eta_bg*w1_profile/2 + delta_rho_4D_face_plus)
+AFTER:  delta_rho_4D_face_plus*epsilon_shape
+DIFF:   -W_0*d_w_delta_rho_4D_face_plus*epsilon_shape*eta_bg*w1_profile/2
+MOVED:  True
+
+--- RELATIVE_FLUX ---
+BEFORE: epsilon_shape*rho_m*(W_0*d_w_delta_v_bulk_plus_4*eta_bg*w1_profile/2 - W_0*eta_bg*sigma_W*w1_profile*(d_w_delta_v_bulk_plus_1*w1_profile_d1 + d_w_delta_v_bulk_plus_2*w1_profile_d2 + d_w_delta_v_bulk_plus_3*w1_profile_d3)/4 + delta_v_bulk_plus_4 - sigma_W*(u_1_t*w1_profile_d1 + u_2_t*w1_profile_d2 + u_3_t*w1_profile_d3 + w1_profile_d1*(delta_v_bulk_plus_1 - u_1_t) + w1_profile_d2*(delta_v_bulk_plus_2 - u_2_t) + w1_profile_d3*(delta_v_bulk_plus_3 - u_3_t))/2 - zeta_c_t)
+AFTER:  epsilon_shape*rho_m*(delta_v_bulk_plus_4 - sigma_W*(u_1_t*w1_profile_d1 + u_2_t*w1_profile_d2 + u_3_t*w1_profile_d3 + w1_profile_d1*(delta_v_bulk_plus_1 - u_1_t) + w1_profile_d2*(delta_v_bulk_plus_2 - u_2_t) + w1_profile_d3*(delta_v_bulk_plus_3 - u_3_t))/2 - zeta_c_t)
+DIFF:   W_0*epsilon_shape*eta_bg*rho_m*w1_profile*(d_w_delta_v_bulk_plus_1*sigma_W*w1_profile_d1 + d_w_delta_v_bulk_plus_2*sigma_W*w1_profile_d2 + d_w_delta_v_bulk_plus_3*sigma_W*w1_profile_d3 - 2*d_w_delta_v_bulk_plus_4)/4
+MOVED:  True
+
+--- h0_geometry ---
+BEFORE: W_bg/2
+AFTER:  W_bg/2
+DIFF:   0
+MOVED:  False
+
+========================================================================
+ABLATION_MOVED_ANY_OBJECT = True
+JUDGEMENT: evaluation face of traced perturbation is LOAD-BEARING iff MOVED.
+If AFTER loses the eta_bg*(W0/2)*w1*d_w_delta_* piece while geometry h0 still
+carries W_bg, the physics of §3c (evaluate df at h_s0, not freeze at flat) is
+confirmed present in the pristine engine.

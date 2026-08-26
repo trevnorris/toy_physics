@@ -230,3 +230,57 @@ $ grep -nE "'(W_0|e_W|rho_br|mu_R|v_0)': *\{" research/pde_ledger_v3/scripts/S11
 13806:    'v_0':     {
 ```
 
+
+# --- §3c shifted-trace clarification (appended 2026-08-26) ---
+
+The §3c note added this round states only structural premises; it asserts no computed result ("Which trace
+terms then survive is computed ... not stated here"). Below: the note, and the spec sources each premise
+rests on. Verified independently by two residual-0 CAS derivations (see S11c_a_py_shifted_trace_fix_directive.md).
+## the §3c clarification note
+
+```
+$ sed -n '385,392p' research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md
+Every background face value or normal derivative appearing in this law is obtained by differentiating a
+member of the supplied background state `𝔅⁰` (§2d); none may be introduced as a free premise. In this scope
+the traced bulk velocity, the perturbation pressure, and the bulk current have zero background — `V_s⁰=J_s⁰=0`
+(§2d), the drain `v_bulk_normal_0` is the inert rest-frame scope limit of §1, `δp` has background value zero
+(§3b), and the rest-frame background current `ρ_4D⁰v_bulk⁰` vanishes — and the supplied density background
+depends on the in-plane anchor, not on `w`. Evaluate the perturbation trace at the background face
+`h_s⁰ = sW_bg/2`, which carries `η` through `W_bg` (§2a); retain its first-shape-order dependence there and
+do not freeze it at `w=sW₀/2`. Which trace terms then survive is computed from these premises, not stated here.
+```
+
+## premise: background face-normal bulk vel/flux vanish (§2d)
+
+```
+$ sed -n '261p' research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md
+V_s⁰ = 0 ,                    J_s⁰ = 0 ,                    𝒜_s⁰ = 0 .
+```
+
+## premise: the drain is an inert rest-frame scope limit (§1)
+
+```
+$ sed -n '48,49p' research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md
+- `ρ_m` and `c_s0` are the bulk mass density and sound speed. `v_bulk_normal_0` is the steady bulk-normal
+  drain and remains only the inherited rest-frame scope limit; the convective bulk problem is not reopened.
+```
+
+## premise: perturbation pressure has zero background (§3b)
+
+```
+$ sed -n '336p' research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md
+For each branch, `δp_s^α` is the perturbation bulk face pressure, with background value zero, and is the
+```
+
+## premise: background face carries eta via W_bg (§2a); mixed-grade retained (§2a truncation)
+
+```
+$ sed -n '176p' research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md; echo '---'; sed -n '195,198p' research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md
+W_bg(y)   ≡ W̄₀ [1 + η w₁(ξ)] ,
+---
+independent amplitude bookkeeper `ε`. Every computed object must be multigraded by `(ε,η,σ_W)` from its
+actual data dependency. No term is removed merely because it contains both a wave and a background
+bookkeeper; the requested truncation is first order in wave amplitude and first shape order in each
+background bookkeeper.
+```
+

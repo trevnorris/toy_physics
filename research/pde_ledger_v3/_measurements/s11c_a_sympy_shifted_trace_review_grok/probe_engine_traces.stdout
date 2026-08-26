@@ -1,0 +1,93 @@
+========================================================================
+PROBE — engine traced-bulk objects vs §3c
+========================================================================
+
+ASSERTS in engine (any assert preceding a guarded value):
+  (none)
+
+--- FaceSource structural fields (LAB_HELD, UPPER, DELTA_W, RHO4) ---
+h0 (exact, pre-finalize) = W_bg/2
+dh = W_0*e_W/2
+h0 == face*W_bg/2 ? True
+
+--- Linearised traces (pre-finalize, shape derivative) ---
+pressure_lin = d_w_delta_p_plus*(-W_0/2 + W_bg/2) + delta_p_plus
+velocity_lin[0..3] = [d_w_delta_v_bulk_plus_1*(-W_0/2 + W_bg/2) + delta_v_bulk_plus_1, d_w_delta_v_bulk_plus_2*(-W_0/2 + W_bg/2) + delta_v_bulk_plus_2, d_w_delta_v_bulk_plus_3*(-W_0/2 + W_bg/2) + delta_v_bulk_plus_3, d_w_delta_v_bulk_plus_4*(-W_0/2 + W_bg/2) + delta_v_bulk_plus_4]
+density_lin = d_w_delta_rho_4D_face_plus*(-W_0/2 + W_bg/2) + delta_rho_4D_face_plus
+current_lin[0..3] = [d_w_delta_j_bulk_plus_1*(-W_0/2 + W_bg/2) + delta_j_bulk_1, d_w_delta_j_bulk_plus_2*(-W_0/2 + W_bg/2) + delta_j_bulk_2, d_w_delta_j_bulk_plus_3*(-W_0/2 + W_bg/2) + delta_j_bulk_3, d_w_delta_j_bulk_plus_4*(-W_0/2 + W_bg/2) + delta_j_bulk_4]
+
+--- Fabricated BACKGROUND normal-jet symbols in linearised traces? ---
+  pressure: fabricated_bg_jet_hits=none; has_v_dr=False
+  velocity: fabricated_bg_jet_hits=none; has_v_dr=False
+  density: fabricated_bg_jet_hits=none; has_v_dr=False
+  current: fabricated_bg_jet_hits=none; has_v_dr=False
+  FABRICATED_BACKGROUND_JET = False
+
+--- Wave-field normal jets (COORDINATE, not premises) present? ---
+  pressure: ['d_w_delta_p_plus']
+  velocity_w_comp: ['d_w_delta_v_bulk_plus_4']
+  density: ['d_w_delta_rho_4D_face_plus']
+  current_w_comp: ['d_w_delta_j_bulk_plus_4']
+
+--- After PROFILE_SUBS + O(eta): does shifted eval of perturbation carry eta? ---
+  pressure O(eta^0) = delta_p_plus
+  pressure O(eta^1) = W_0*d_w_delta_p_plus*w1_profile/2
+  pressure O(eta^1) is zero? False
+  velocity_w O(eta^0) = delta_v_bulk_plus_4
+  velocity_w O(eta^1) = W_0*d_w_delta_v_bulk_plus_4*w1_profile/2
+  velocity_w O(eta^1) is zero? False
+  density O(eta^0) = delta_rho_4D_face_plus
+  density O(eta^1) = W_0*d_w_delta_rho_4D_face_plus*w1_profile/2
+  density O(eta^1) is zero? False
+
+--- Pressure linearisation vs independent formula ---
+  engine  = -W_0*d_w_delta_p_plus/2 + W_bg*d_w_delta_p_plus/2 + delta_p_plus
+  expect  = -W_0*d_w_delta_p_plus/2 + W_bg*d_w_delta_p_plus/2 + delta_p_plus
+  residual= 0
+
+--- Velocity_w linearisation vs independent formula ---
+  engine  = -W_0*d_w_delta_v_bulk_plus_4/2 + W_bg*d_w_delta_v_bulk_plus_4/2 + delta_v_bulk_plus_4
+  expect  = -W_0*d_w_delta_v_bulk_plus_4/2 + W_bg*d_w_delta_v_bulk_plus_4/2 + delta_v_bulk_plus_4
+  residual= 0
+
+--- Density linearisation vs independent formula (dw_rho0=0) ---
+  density_background used = rho_br/W_0
+  engine  = -W_0*d_w_delta_rho_4D_face_plus/2 + W_bg*d_w_delta_rho_4D_face_plus/2 + delta_rho_4D_face_plus
+  expect  = -W_0*d_w_delta_rho_4D_face_plus/2 + W_bg*d_w_delta_rho_4D_face_plus/2 + delta_rho_4D_face_plus
+  residual= 0
+
+--- If engine froze perturbation at flat face, pressure would equal delta_p_plus ---
+  engine - frozen = d_w_delta_p_plus*(-W_0 + W_bg)/2
+  (nonzero means engine DID evaluate at h_s0, not freeze at flat)
+
+--- CONORMAL_DERIV generic probe shifted-evaluation term ---
+  conormal shape-deriv (raw) = -W_0*W_bg_d1*d_w_trace_grad_f_1*e_W/(4*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_0*W_bg_d2*d_w_trace_grad_f_2*e_W/(4*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_0*W_bg_d3*d_w_trace_grad_f_3*e_W/(4*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) + W_0*d_w_trace_grad_f_4*e_W/(2*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_0*e_W_d1*trace_grad_f_1/(2*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_0*e_W_d2*trace_grad_f_2/(2*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_0*e_W_d3*trace_grad_f_3/(2*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_bg_d1*trace_grad_f_1*(-W_0*W_bg_d1*e_W_d1/4 - W_0*W_bg_d2*e_W_d2/4 - W_0*W_bg_d3*e_W_d3/4)/(2*(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)**(3/2)) - W_bg_d2*trace_grad_f_2*(-W_0*W_bg_d1*e_W_d1/4 - W_0*W_bg_d2*e_W_d2/4 - W_0*W_bg_d3*e_W_d3/4)/(2*(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)**(3/2)) - W_bg_d3*trace_grad_f_3*(-W_0*W_bg_d1*e_W_d1/4 - W_0*W_bg_d2*e_W_d2/4 - W_0*W_bg_d3*e_W_d3/4)/(2*(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)**(3/2)) + trace_grad_f_4*(-W_0*W_bg_d1*e_W_d1/4 - W_0*W_bg_d2*e_W_d2/4 - W_0*W_bg_d3*e_W_d3/4)/(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)**(3/2)
+  contains d_w_trace_grad_f_* (shifted-eval / face-motion jet)? ['d_w_trace_grad_f_1', 'd_w_trace_grad_f_2', 'd_w_trace_grad_f_3', 'd_w_trace_grad_f_4']
+  term with dh*jet: W_0*d_w_trace_grad_f_4*e_W/(2*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1))
+  source.dh = W_0*e_W/2
+  recomputed conormal deriv = -W_0*W_bg_d1*d_w_trace_grad_f_1*e_W/(4*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_0*W_bg_d2*d_w_trace_grad_f_2*e_W/(4*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_0*W_bg_d3*d_w_trace_grad_f_3*e_W/(4*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) + W_0*d_w_trace_grad_f_4*e_W/(2*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_0*e_W_d1*trace_grad_f_1/(2*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_0*e_W_d2*trace_grad_f_2/(2*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_0*e_W_d3*trace_grad_f_3/(2*sqrt(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)) - W_bg_d1*trace_grad_f_1*(-W_0*W_bg_d1*e_W_d1/4 - W_0*W_bg_d2*e_W_d2/4 - W_0*W_bg_d3*e_W_d3/4)/(2*(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)**(3/2)) - W_bg_d2*trace_grad_f_2*(-W_0*W_bg_d1*e_W_d1/4 - W_0*W_bg_d2*e_W_d2/4 - W_0*W_bg_d3*e_W_d3/4)/(2*(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)**(3/2)) - W_bg_d3*trace_grad_f_3*(-W_0*W_bg_d1*e_W_d1/4 - W_0*W_bg_d2*e_W_d2/4 - W_0*W_bg_d3*e_W_d3/4)/(2*(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)**(3/2)) + trace_grad_f_4*(-W_0*W_bg_d1*e_W_d1/4 - W_0*W_bg_d2*e_W_d2/4 - W_0*W_bg_d3*e_W_d3/4)/(W_bg_d1**2/4 + W_bg_d2**2/4 + W_bg_d3**2/4 + 1)**(3/2)
+  dh*dw_grad_f present in recomputed? True
+
+--- Which lines compute traced-bulk objects ---
+  compose_physical_trace:     L588-601  (δ[f]= compose f0+q*df at h0+q*dh)
+  physical_trace_fields:      L629-685  (bg from B0; affine pert about flat)
+  affine_bulk_perturbation:   L578-585  (pert jet about s*W0/2)
+  build_face_source h0:       L844      (h0 = face*W_bg/2)  [EULERIAN]
+  build_material_face h0:     L776-777  (h0 = face_height|q=0)
+  relative_flux_raw:          L894-897  (uses bulk_velocity_trace_exact)
+  traction_raw:               L919-924  (uses pressure_trace_exact)
+  kinematic_raw:              L931-943  (uses bulk_velocity_trace_exact)
+  conormal_raw:               L946-953  (generic probe keeps dh*dw_grad_f)
+  build_face_shift_raw:       L1062-1088 (emits all four physical traces)
+  velocity_background:        L659      (=0; no free premise jet)
+  pressure_background:        L660      (=0)
+  density_background:         L661      (rho4_bg_exact; w-indep via density_pair)
+  current_background:         L662-664  (rho0 * v0 = 0)
+
+--- FACE_SHIFT single case after finalize (pressure, velocity_w, density) ---
+  FACE pressure finalized = epsilon_shape*(W_0*d_w_delta_p_plus*eta_bg*w1_profile/2 + delta_p_plus)
+  FACE velocity finalized = Matrix([[epsilon_shape*(W_0*d_w_delta_v_bulk_plus_1*eta_bg*w1_profile/2 + delta_v_bulk_plus_1)], [epsilon_shape*(W_0*d_w_delta_v_bulk_plus_2*eta_bg*w1_profile/2 + delta_v_bulk_plus_2)], [epsilon_shape*(W_0*d_w_delta_v_bulk_plus_3*eta_bg*w1_profile/2 + delta_v_bulk_plus_3)], [epsilon_shape*(W_0*d_w_delta_v_bulk_plus_4*eta_bg*w1_profile/2 + delta_v_bulk_plus_4)]])
+  FACE density finalized  = epsilon_shape*(W_0*d_w_delta_rho_4D_face_plus*eta_bg*w1_profile/2 + delta_rho_4D_face_plus)
+  pressure has eta_bg? True
+  velocity[3] has eta_bg? True
+  density has eta_bg? True

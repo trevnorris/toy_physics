@@ -382,6 +382,15 @@ linearisation law
 Apply it to every traced bulk field used by T-c through T-i; do not evaluate first at `w=sW_0/2` and then
 discard the face shift.
 
+Every background face value or normal derivative appearing in this law is obtained by differentiating a
+member of the supplied background state `𝔅⁰` (§2d); none may be introduced as a free premise. In this scope
+the traced bulk velocity, the perturbation pressure, and the bulk current have zero background — `V_s⁰=J_s⁰=0`
+(§2d), the drain `v_bulk_normal_0` is the inert rest-frame scope limit of §1, `δp` has background value zero
+(§3b), and the rest-frame background current `ρ_4D⁰v_bulk⁰` vanishes — and the supplied density background
+depends on the in-plane anchor, not on `w`. Evaluate the perturbation trace at the background face
+`h_s⁰ = sW_bg/2`, which carries `η` through `W_bg` (§2a); retain its first-shape-order dependence there and
+do not freeze it at `w=sW₀/2`. Which trace terms then survive is computed from these premises, not stated here.
+
 Let `G_s^α ≡ sF_s^α`. Supply one fixed smooth two-argument window function `𝒪` and define
 
 ```text

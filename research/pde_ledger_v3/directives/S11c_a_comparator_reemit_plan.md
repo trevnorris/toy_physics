@@ -1,6 +1,6 @@
 # S11c-a T7 comparator — CROSS-ENGINE RECONCILIATION plan (post-compact roadmap)
 
-## ⭐ PROGRESS (updated 2026-08-26)
+## ⭐ PROGRESS (updated 2026-08-26 — Step 4 shifted-trace fix committed c36beac4)
 - **Step 0 (feasibility/adjudication matrix): DONE, committed `3c7f9137`** —
   `S11c_a_T7_adjudication_matrix.md` (+ twin + census `_measurements/s11ca_t7_census/`), 2 legs + fold.
 - **Step 1 (adjudicate vs spec): DONE, committed `3491a376`** — `S11c_a_T7_adjudication_verdicts.md`
@@ -27,16 +27,30 @@
   mixed-partial canon + the ONE spec relation `e_W≡δW/W₀` spec:45). **4 primaries AGREE EXACTLY** (T-0
   FACE_NORMAL, T-b FACE_MEASURE, T-c FACE_VELOCITY, T-g VIRTUAL_CONSTRAINT — 32 cases, residual 0). **ONE
   candidate FINDING (adjudicate vs §3c/§379):** traced-bulk shape-derivatives (RELATIVE_FLUX, TRACTION,
-  EVOLUTION, KINEMATIC OPERAND_A) — PY `(∂_n background)·shift` vs WL `∂_n(perturbation)`. NOT-YET-MEASURED:
-  CONORMAL (both use a test field — reconcilable), PROJECTION/CLOSURE (window integrals — integral bridge),
-  controls (16 rep-inv + 66 uniform nonzero residuals to verify), bookkeeping.
-- **NEXT = Step 3b/4:** adjudicate the shifted-trace finding (both engines' §3c impl vs spec — likely a leg)
-  → finish the integral tail + CONORMAL test-field map + control full-join + bookkeeping → **harden
-  `measure_reconcile.py` into the comparator** (Codex-written ⇒ fresh Agent + Grok legs, synthetic fixtures,
-  rule 5) → freeze + run → THE cross-engine result → step record + family card (pin the reconciliation map
-  forward for S11c-b…e). ⚠ the "shallow bridges + trivial comparator" framing below UNDERSTATED this: the
-  reconciliation is a spec-grounded per-field map (not a byte relabel), authored measure-first, and the
-  residual after it is the physics.
+  EVOLUTION, KINEMATIC OPERAND_A) — PY `(∂_n background)·shift` vs WL `∂_n(perturbation)`. ⇒ **NOW RESOLVED
+  — see Step 4.**
+- **Step 4 (ADJUDICATE + FIX the shifted-trace finding): DONE, committed `c36beac4` (2026-08-26).** The
+  dual-engine method caught TWO real PY bugs; WL was correct. Adjudicated by 2 from-spec CAS derivations (fresh
+  Agent + Grok, each residual 0) + a source check: **(D1)** PY fabricated background-normal-jet PREMISE symbols
+  the spec never supplies (`d_w_v_bulk_0`/`d_w_delta_p_0`/`d_w_j_0`/`d_w_rho_4D_0`) → a spurious §3c term-2;
+  **(D2)** PY froze the traced perturbation at the flat face → dropped the mandated ε·η term-1 correction. Fixed
+  SPEC-QUESTION-FIRST (§3c clarified in the shared spec, structural premises only; then the PY engine fix):
+  directive `S11c_a_py_shifted_trace_fix_directive.md` (+ twin), 2 directive-review legs (Codex+Grok, folded
+  once — they caught a leaky, under-scoped rev-1) → build → 2 ablation legs (fresh Agent+Grok, both PASS, form
+  ablations confirm term-2 derives from the real background). CONFIRM (fixed PY vs WL via
+  `~/.s11_build/S11c_a_reconcile_fixed.py`): **RELATIVE_FLUX 8/8→0 + TRACTION 16/16→0** (TRACTION also needs a
+  mechanical `mu_theta_L→mu_theta` rename + `sp.cancel` for the λ_X complex denominators). ⚠ EVOLUTION residual
+  = a COMPARATOR single-face-canonicalization gap (its case key has no FACE axis; raw WL complete, both faces),
+  NOT a finding. Engines: WL `a7459cb8` UNCHANGED (was correct), PY corrected in `c36beac4`.
+- **NEXT = Step 5 (comparator + coverage):** **harden `measure_reconcile.py` into the comparator** — fold the
+  declared map (`d_w_X↔X_dw` perturbation-jet rename, `mu_theta_L→mu_theta`, `sp.cancel` for λ_X denominators)
+  and FIX the EVOLUTION no-FACE-axis bug (detect the face from the `{±1/2*W0}` eval-point argument);
+  Codex-written ⇒ fresh Agent + Grok legs, synthetic fixtures, rule 5 → finish coverage (CONORMAL test-field
+  map, PROJECTION/CLOSURE window integrals — the one place a NEW finding could still hide, controls,
+  bookkeeping) → freeze + run → THE full cross-engine result → step record + family card (pin the
+  reconciliation map forward for S11c-b…e). ⚠ FACE_SHIFT now carries the density rep (8→16 cases) after the
+  fix. ⚠ the "shallow bridges + trivial comparator" framing below UNDERSTATED this: the reconciliation is a
+  spec-grounded per-field map (not a byte relabel), and the residual after it is the physics.
 - ⚠ The "Revised workflow" below is the original roadmap; steps 0-2 are now complete. The case-structure
   divergences it anticipated were adjudicated in step 1 and fixed on both engines in step 2. Tag granularity
   differs (PY 47 vs WL 40) — the comparator joins per matching key; bookkeeping/control tags bridged or excluded.

@@ -53,3 +53,16 @@ not comparator verdicts.
 Step 0 committed `3c7f9137` (matrix + 2 legs + fold); Step 1 committed `3491a376` (verdicts + 2 legs +
 fold). Verifiable: `git log --oneline | grep -E '3c7f9137|3491a376'`. User chose FULL RECONCILE; NEXT =
 step-2 engine patches (both engines). Provenance carried in the two committed docs + their twins.
+
+## Step 4 (2026-08-26) — fixed-PY vs WL reconciliation confirmation (the shifted-trace fix)
+Fixed PY committed `c36beac4`; WL `a7459cb8` unchanged. Reconciliation instrument =
+`~/.s11_build/S11c_a_reconcile_fixed.py` (measure_reconcile over the fixed PY .out + the mechanical
+`d_w_X`↔`X_dw` perturbation-jet rename). The RELATIVE_FLUX + TRACTION headline (TRACTION also folds the
+mechanical `mu_theta_L→mu_theta` rename + `sp.cancel` for the λ_X complex denominators) reproduces via:
+```
+$ python3 /home/trevnorris/.s11_build/S11c_a_reconcile_traction_check.py
+RELATIVE_FLUX            join=8 zero=8 nonzero=0
+TRACTION                 join=16 zero=16 nonzero=0
+```
+Full per-tag record (incl. the EVOLUTION comparator single-face gap, NOT a finding) in
+`_measurements/S11c_a_py_shifted_trace_fix_directive.md`.

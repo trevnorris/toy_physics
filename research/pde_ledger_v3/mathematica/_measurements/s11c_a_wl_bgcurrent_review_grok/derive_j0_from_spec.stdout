@@ -1,0 +1,9 @@
+OPERAND_rho0 = rho_4D^0
+OPERAND_v_bulk0 = [0, 0, 0, 0]
+PRODUCT_j0 = rho0 * v_bulk0 = [0, 0, 0, 0]
+RESIDUAL_j0_minus_zero = [0, 0, 0, 0]
+j0_is_identically_zero = True
+rho0_stays_symbolic_nonzero = True
+PROBE_FORM_j = [rho_4D^0*vp1, rho_4D^0*vp2, rho_4D^0*vp3, rho_4D^0*vpW]
+PROBE_currentW = rho_4D^0*vpW
+PROBE_currentX = [rho_4D^0*vp1, rho_4D^0*vp2, rho_4D^0*vp3]

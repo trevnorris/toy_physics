@@ -1,0 +1,16 @@
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+PROBE_bulkVelocityZero = {vp1, vp2, vp3, vpW}
+PROBE_rhoBulkZero = rhoBulkBackground[x1, x2, x3, {w, time}]
+PROBE_bulkCurrentZero = {vp1*rhoBulkBackground[x1, x2, x3, {w, time}], vp2*rhoBulkBackground[x1, x2, x3, {w, time}], vp3*rhoBulkBackground[x1, x2, x3, {w, time}], vpW*rhoBulkBackground[x1, x2, x3, {w, time}]}
+PROBE_currentWZero = vpW*rhoBulkBackground[x1, x2, x3, {w, time}]
+PROBE_currentXZero[1] = vp1*rhoBulkBackground[x1, x2, x3, {w, time}]
+PROBE_currentXZero[2] = vp2*rhoBulkBackground[x1, x2, x3, {w, time}]
+PROBE_currentXZero[3] = vp3*rhoBulkBackground[x1, x2, x3, {w, time}]
+TRACKS_probe_W = True
+TRACKS_probe_X1 = True
+TRACKS_probe_X2 = True
+TRACKS_probe_X3 = True
+STAYS_IDENTICALLY_ZERO_UNDER_PROBE = False

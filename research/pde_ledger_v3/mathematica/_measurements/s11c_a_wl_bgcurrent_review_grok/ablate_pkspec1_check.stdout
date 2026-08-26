@@ -1,0 +1,13 @@
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+
+Set::wrsym: Symbol $MessageList is Protected.
+RESULTS = {0, 0, 0, 0, currentXZero[k][{x1, x2, x3}, w]}
+MESSAGE_LIST = {HoldForm[MessageName[Set, wrsym]]}
+HAS_Part_pkspec1 = False
+currentWZero = 0
+currentX concrete = {0, 0, 0}
+symbolic index form = currentXZero[k][{x1, x2, x3}, w]
+symbolic stays unevaluated = True

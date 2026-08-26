@@ -1,0 +1,18 @@
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+REAL_bulkVelocityZero = {0, 0, 0, 0}
+REAL_rhoBulkZero = rhoBulkBackground[x1, x2, x3, {w, time}]
+REAL_bulkCurrentZero = {0, 0, 0, 0}
+REAL_currentWZero = 0
+REAL_currentXZero[1] = 0
+REAL_currentXZero[2] = 0
+REAL_currentXZero[3] = 0
+SYMBOLIC_INDEX_currentXZero[k] = currentXZero[k][{x1, x2, x3}, w]
+SYMBOLIC_INDEX_stays_inert = True
+Part_pkspec1_message_count = 0
+Part_pkspec1_messages = {}
+currentWZero_is_zero = True
+currentXZero_all_zero = True
+rhoBulkZero_still_nonzero_head = True

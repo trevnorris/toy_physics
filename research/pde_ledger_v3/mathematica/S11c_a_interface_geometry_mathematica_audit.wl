@@ -435,13 +435,14 @@ rhoBulkZero[coordinates_List, normal_] :=
   rhoBulkBackground @@ Append[coordinates, {normal, time}];
 rhoBulkWave[coordinates_List, normal_] :=
   rhoBulkPerturbation @@ Append[coordinates, {normal, time}];
+bulkCurrentZero[coordinates_List, normal_] :=
+  rhoBulkZero[coordinates, normal] bulkVelocityZero[coordinates, normal];
 currentWZero[coordinates_List, normal_] :=
-  currentWBackground @@ Append[coordinates, {normal, time}];
+  Last[bulkCurrentZero[coordinates, normal]];
 currentWWave[coordinates_List, normal_] :=
   currentWPerturbation @@ Append[coordinates, {normal, time}];
-currentXZero[index_][coordinates_List, normal_] :=
-  Symbol["currentXBackground" <> ToString[index]] @@
-    Append[coordinates, {normal, time}];
+currentXZero[index_Integer][coordinates_List, normal_] :=
+  bulkCurrentZero[coordinates, normal][[index]];
 currentXWave[index_][coordinates_List, normal_] :=
   Symbol["currentXPerturbation" <> ToString[index]] @@
     Append[coordinates, {normal, time}];

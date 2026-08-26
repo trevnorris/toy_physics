@@ -1,0 +1,26 @@
+--- /tmp/s11ca_wl_bgcurrent_review_grok/baseline_current_block.txt	2026-08-26 17:12:39.270786499 -0600
++++ /tmp/s11ca_wl_bgcurrent_review_grok/new_current_block.txt	2026-08-26 17:12:39.271786489 -0600
+@@ -6,13 +6,14 @@
+   rhoBulkBackground @@ Append[coordinates, {normal, time}];
+ rhoBulkWave[coordinates_List, normal_] :=
+   rhoBulkPerturbation @@ Append[coordinates, {normal, time}];
++bulkCurrentZero[coordinates_List, normal_] :=
++  rhoBulkZero[coordinates, normal] bulkVelocityZero[coordinates, normal];
+ currentWZero[coordinates_List, normal_] :=
+-  currentWBackground @@ Append[coordinates, {normal, time}];
++  Last[bulkCurrentZero[coordinates, normal]];
+ currentWWave[coordinates_List, normal_] :=
+   currentWPerturbation @@ Append[coordinates, {normal, time}];
+-currentXZero[index_][coordinates_List, normal_] :=
+-  Symbol["currentXBackground" <> ToString[index]] @@
+-    Append[coordinates, {normal, time}];
++currentXZero[index_Integer][coordinates_List, normal_] :=
++  bulkCurrentZero[coordinates, normal][[index]];
+ currentXWave[index_][coordinates_List, normal_] :=
+   Symbol["currentXPerturbation" <> ToString[index]] @@
+     Append[coordinates, {normal, time}];
+@@ -28,4 +29,3 @@
+   traceSource[pressureZero, pressureWave, branch, sign, reversedFirstJet];
+ 
+ branchedProfileCoordinates[branch_String] := Switch[branch,
+-  "LAB_HELD", spatialCoordinates,

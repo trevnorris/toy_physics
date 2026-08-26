@@ -32,17 +32,27 @@ Each independently derived (residual 0), then ablated a /tmp copy:
 - Grok artifacts: `research/pde_ledger_v3/_measurements/s11c_a_sympy_shifted_trace_review_grok/`.
 
 ## Cross-engine reconciliation of the FIXED engine (the confirmation)
-Command: run fixed engine → `~/.s11_build/S11c_a_py_fixed_run.out`; then
-`python3 ~/.s11_build/S11c_a_reconcile_fixed.py` (measure_reconcile + the mechanical `d_w_X`↔`X_dw`
-perturbation-jet rename). Literal result:
+Run fixed engine → `~/.s11_build/S11c_a_py_fixed_run.out`. TWO reconciliation commands (distinct outputs):
+
+(1) `python3 ~/.s11_build/S11c_a_reconcile_fixed.py` (measure_reconcile over the fixed PY `.out` + the
+mechanical `d_w_X`↔`X_dw` perturbation-jet rename). Columns = TAG join zero nonz unmap err. Literal:
 ```
-FACE_VELOCITY            8/8 -> 0     (untouched, still agree)
-FACE_NORMAL              8/8 -> 0
-FACE_MEASURE_SHAPE_DERIV 8/8 -> 0
-RELATIVE_FLUX            8/8 -> 0     (WAS 0/8 before the fix)
-TRACTION               16/16 -> 0     (with mechanical mu_theta_L->mu_theta rename + sp.cancel for the
-                                       lambdaX complex-denominator factoring; both are naming/CAS-form, not physics)
+FACE_VELOCITY                     8    8    0     0   0
+FACE_NORMAL                       8    8    0     0   0
+FACE_MEASURE_SHAPE_DERIV          8    8    0     0   0
+RELATIVE_FLUX                     8    8    0     0   0      (WAS 0 zero / 8 nonz before the fix)
+TRACTION                         16    0   16     0   0      (nonz is naming/CAS-form only — resolved in (2))
+EVOLUTION_MASS_BALANCE            8    0    8     0   0      (comparator single-face gap — see OPEN below)
 ```
+(2) `python3 ~/.s11_build/S11c_a_reconcile_traction_check.py` (adds the mechanical `mu_theta_L/M→mu_theta`
+rename + `sp.cancel(sp.together(·))` for the λ_X `1/(1−iωτ_X)` complex-denominator factoring — both
+CAS-form/naming, NOT physics). Literal:
+```
+RELATIVE_FLUX            join=8 zero=8 nonzero=0
+TRACTION                 join=16 zero=16 nonzero=0
+```
+⇒ Both traced-bulk primaries that carried the finding reconcile EXACTLY once the naming/CAS-form folds are
+applied. The fixed PY agrees with WL. (The 24 pure-geometry cases in (1) stay at residual 0.)
 ⇒ Both traced-bulk primaries that carried the finding now reconcile EXACTLY. The fixed PY agrees with WL.
 
 ## OPEN (harness, NOT a finding, NOT a fix defect): EVOLUTION_MASS_BALANCE reconciliation

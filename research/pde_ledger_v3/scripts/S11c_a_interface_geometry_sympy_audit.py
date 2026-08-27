@@ -1149,8 +1149,9 @@ def projection_terms(
     rho_shape = finalize(shape(rho4_bg_alpha + parameter * rho4_bulk_1, parameter))
     rho_shape_t = dt(rho_shape)
     rho0 = finalize(density_pair(representative, W_bg)[0])
-    current_divergence = sp.Add(*(grad_j_bulk[i][i] for i in range(3)))
-    # The face-less §1b bulk current remains a field of w under projection.
+    # The face-less §1b bulk current (both the in-plane divergence and the normal component)
+    # remains a field of w under projection — it may not be frozen at the face.
+    current_divergence = sp.Add(*(sp.Function(grad_j_bulk[i][i].name)(w) for i in range(3)))
     normal_current = sp.Function(j_bulk[3].name)(w)
 
     if dynamic:
@@ -1661,8 +1662,8 @@ def uniform_face_shift_reference() -> dict[object, object]:
 def uniform_projection_reference(quantity: str) -> dict[object, object]:
     cases: dict[object, object] = {}
     bounds = (w, -sp.oo, sp.oo)
-    current_divergence = sp.Add(*(grad_j_bulk[i][i] for i in range(3)))
-    # Reconstruct the same face-less §1b current independently for §5c.
+    # Reconstruct the same face-less §1b current independently for §5c — a field of w, not face-frozen.
+    current_divergence = sp.Add(*(sp.Function(grad_j_bulk[i][i].name)(w) for i in range(3)))
     normal_current = sp.Function(j_bulk[3].name)(w)
     rho0 = rho_br / W0
     for branch in BRANCHES:

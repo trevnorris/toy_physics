@@ -1,0 +1,15 @@
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+=== BEFORE (grounded RHO4_CONSTANT; w-independent) ===
+backgroundField = rhoBr/W0
+D[bg,w] = 0
+SHAPE_DERIVATIVE = rhoBulkPerturbation[x1, x2, x3, {-1/2*(W0*(1 + etaBg*w1Jet[0, 0, 0])), time}]
+=== AFTER (FORM ablation: bg -> rhoBr/W0 + alphaTest*w^2) ===
+backgroundField = alphaTest*normalCoordinate^2 + rhoBr/W0
+D[bg,w] = 2*alphaTest*normalCoordinate
+SHAPE_DERIVATIVE = (alphaTest*W0*deltaWidth[x1, x2, x3, time] + 2*rhoBulkPerturbation[x1, x2, x3, {-1/2*(W0*(1 + etaBg*w1Jet[0, 0, 0])), time}] + alphaTest*etaBg*W0*deltaWidth[x1, x2, x3, time]*w1Jet[0, 0, 0])/2
+=== residual (AFTER - BEFORE) â shift term must reappear ===
+AFTER - BEFORE = (alphaTest*W0*deltaWidth[x1, x2, x3, time] + alphaTest*etaBg*W0*deltaWidth[x1, x2, x3, time]*w1Jet[0, 0, 0])/2
+shift_reappeared? True

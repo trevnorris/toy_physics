@@ -1,0 +1,17 @@
+=== rg rhoBulkBackground assignments ===
+435:  rhoBulkBackground @@ Append[coordinates, {normal, time}];
+=== rg normalDerivativeBackground ===
+1118:            normalDerivativeBackground[fieldName, sign]],
+=== FACE_SHIFT emit vs uniform-limit FACE_SHIFT keys ===
+1106:faceShiftPayload = Association[Flatten[Table[
+1122:emitShared["FACE_SHIFT", faceShiftPayload];
+1123:Clear[faceShiftPayload];
+1451:  faceShiftPayload, projectionDynamicTerms, projectionStaticTerms,
+1877:      "FACE_SHIFT|" <> faceCaseKey[branch, sign, #] <>
+2087:  key = "FACE_SHIFT|" <> faceCaseKey[branch, sign, dof] <>
+2197:emitShared["UNIFORM_LIMIT_S11CA_OPERAND", uniformS11caOperand];
+2198:emitShared["UNIFORM_LIMIT_S11B_OPERAND", uniformS11bOperand];
+2209:emitShared["UNIFORM_LIMIT_RESIDUAL", uniformResidual];
+2281:  "UNIFORM_LIMIT_S11CA_OPERAND" -> Values[dimensionInventoryForm],
+2282:  "UNIFORM_LIMIT_S11B_OPERAND" -> Values[dimensionInventoryForm],
+2283:  "UNIFORM_LIMIT_RESIDUAL" -> Values[dimensionInventoryForm],

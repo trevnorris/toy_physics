@@ -1,0 +1,9 @@
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+=== EXACT_TRACE background face (waveOrder -> 0) ===
+RHO4_CONSTANT face = rhoBr/W0
+RHOBR_CONSTANT face = rhoBr/(W0*(1 + etaBg*w1Jet[0, 0, 0]))
+faces_differ? True
+RHO4 - RHOBR = (etaBg*rhoBr*w1Jet[0, 0, 0])/(W0 + etaBg*W0*w1Jet[0, 0, 0])

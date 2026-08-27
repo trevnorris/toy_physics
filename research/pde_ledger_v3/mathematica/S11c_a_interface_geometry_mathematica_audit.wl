@@ -421,10 +421,20 @@ faceHeightFromFlattening[branch_String, sign_] := Module[
 
 traceSource[fieldZero_, fieldWave_, branch_String, sign_,
     reversedFirstJet_:False] := Module[
-  {height},
+  {height, backgroundHeight, backgroundField, backgroundFace,
+    backgroundNormalDerivative, backgroundAnsatz},
   height = heightSource[branch, sign, reversedFirstJet];
-  fieldZero[spatialCoordinates, height] +
-    waveOrder fieldWave[spatialCoordinates, height]
+  backgroundHeight = backgroundValue[height];
+  backgroundField = fieldZero[spatialCoordinates, normalCoordinate];
+  backgroundFace = backgroundField /.
+    normalCoordinate -> backgroundHeight;
+  backgroundNormalDerivative = D[backgroundField, normalCoordinate] /.
+    normalCoordinate -> backgroundHeight;
+  backgroundAnsatz = backgroundFace +
+    (normalCoordinate - backgroundHeight) backgroundNormalDerivative;
+  (backgroundAnsatz +
+      waveOrder fieldWave[spatialCoordinates, normalCoordinate]) /.
+    normalCoordinate -> height
 ];
 
 pressureZero[coordinates_List, normal_] :=
@@ -433,6 +443,8 @@ pressureWave[coordinates_List, normal_] :=
   pressurePerturbation @@ Append[coordinates, {normal, time}];
 rhoBulkZero[coordinates_List, normal_] :=
   rhoBulkBackground @@ Append[coordinates, {normal, time}];
+rhoBulkRepresentativeZero[density_String][coordinates_List, normal_] :=
+  rho4Profile[density, coordinates];
 rhoBulkWave[coordinates_List, normal_] :=
   rhoBulkPerturbation @@ Append[coordinates, {normal, time}];
 bulkCurrentZero[coordinates_List, normal_] :=
@@ -610,9 +622,10 @@ conormalSource[branch_String, sign_] := Module[
   (normal.gradient) /. normalCoordinate -> height
 ];
 
-traceFieldInventory = <|
+traceFieldInventory[density_String] := <|
   "PRESSURE" -> {pressureZero, pressureWave, dimensionPressure},
-  "BULK_DENSITY" -> {rhoBulkZero, rhoBulkWave, dimensionBulkDensity},
+  "BULK_DENSITY" -> {rhoBulkRepresentativeZero[density], rhoBulkWave,
+    dimensionBulkDensity},
   "NORMAL_CURRENT" -> {currentWZero, currentWWave, dimensionFlux},
   "CURRENT_X1" -> {currentXZero[1], currentXWave[1], dimensionFlux},
   "CURRENT_X2" -> {currentXZero[2], currentXWave[2], dimensionFlux},
@@ -638,6 +651,7 @@ traceFieldInventory = <|
     Function[{coordinates, normal},
       Last[bulkVelocityWave[coordinates, normal]]], dimensionVelocity}
 |>;
+traceFieldNames = Keys[traceFieldInventory[First[densityNames]]];
 
 virtualWorkSource[route_String, branch_String, density_String] := Total[
   Table[With[{objects = If[route === "EULERIAN",
@@ -1104,9 +1118,9 @@ emitShared["VIRTUAL_WORK_SHAPE_DERIV", virtualWorkPayload];
 Clear[virtualWorkPayload];
 
 faceShiftPayload = Association[Flatten[Table[
-  With[{inventory = traceFieldInventory[fieldName],
-      key = branch <> "|FACE_" <> faceLabel[sign] <> "|FIELD_" <>
-        fieldName <> "|DOF_" <> dof},
+  With[{inventory = traceFieldInventory[density][fieldName],
+      key = densityFaceCaseKey[branch, density, sign, dof] <>
+        "|FIELD_" <> fieldName},
     key -> <|"EXACT_TRACE_SOURCE" -> traceSource[inventory[[1]],
         inventory[[2]], branch, sign],
       "SHAPE_DERIVATIVE" -> derivedFaceCase[
@@ -1117,8 +1131,8 @@ faceShiftPayload = Association[Flatten[Table[
           deltaHeight[branch, sign]
             normalDerivativeBackground[fieldName, sign]],
       "DIMENSION_L_T_M" -> inventory[[3]]|>],
-  {branch, branchNames}, {sign, faceSigns},
-  {fieldName, Keys[traceFieldInventory]}, {dof, dofNames}]]];
+  {branch, branchNames}, {density, densityNames}, {sign, faceSigns},
+  {fieldName, traceFieldNames}, {dof, dofNames}]]];
 emitShared["FACE_SHIFT", faceShiftPayload];
 Clear[faceShiftPayload];
 
@@ -1867,20 +1881,20 @@ emitFormOperands[] := Module[
     {branch, branchNames}, {density, densityNames}, {sign, faceSigns}];
 
   Do[Module[{inventory, source, dimension, sources, keyStems},
-    inventory = traceFieldInventory[fieldName];
+    inventory = traceFieldInventory[density][fieldName];
     source = shapeDerivative[traceSource[
       inventory[[1]], inventory[[2]], branch, sign]];
     dimension = inventory[[3]];
     sources = AssociationMap[
       applyPhysicalDof[source, #] &, dofNames];
     keyStems = AssociationMap[
-      "FACE_SHIFT|" <> faceCaseKey[branch, sign, #] <>
+      "FACE_SHIFT|" <> densityFaceCaseKey[branch, density, sign, #] <>
         "|FIELD_" <> fieldName &,
       Keys[sources]];
     writeGroupedFormDirections[writeRule, keyStems, sources, dimension,
       False];
-  ], {branch, branchNames}, {sign, faceSigns},
-    {fieldName, Keys[traceFieldInventory]}];
+  ], {branch, branchNames}, {density, densityNames}, {sign, faceSigns},
+    {fieldName, traceFieldNames}];
 
   Do[Module[{objects, faceTerm, source, sources, keyStems},
     objects = directFaceObjectsSource[branch, sign, density];
@@ -2080,18 +2094,18 @@ Do[Module[{sourceName, source, dimension, key},
   {dof, dofNames}];
 
 Do[Module[{inventory, source, key, dimension},
-  inventory = traceFieldInventory[fieldName];
+  inventory = traceFieldInventory[density][fieldName];
   source = applyPhysicalDof[shapeDerivative[traceSource[inventory[[1]],
     inventory[[2]], branch, sign]], dof];
   dimension = inventory[[3]];
-  key = "FACE_SHIFT|" <> faceCaseKey[branch, sign, dof] <>
+  key = "FACE_SHIFT|" <> densityFaceCaseKey[branch, density, sign, dof] <>
     "|FIELD_" <> fieldName;
   AssociateTo[uniformS11caOperand, key -> objectRecord[
     uniformS11ca[source], dimension]];
   AssociateTo[uniformS11bOperand, key -> objectRecord[
     uniformS11b[source], dimension]];
-], {branch, branchNames}, {sign, faceSigns},
-  {fieldName, Keys[traceFieldInventory]}, {dof, dofNames}];
+], {branch, branchNames}, {density, densityNames}, {sign, faceSigns},
+  {fieldName, traceFieldNames}, {dof, dofNames}];
 
 Do[Module[{dynamicSource, staticSource, source, key, s11ca, s11b},
   Switch[object,

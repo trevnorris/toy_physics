@@ -1,0 +1,25 @@
+=== §2b ρ_4D,bg⁰ representatives ===
+RHO4_CONSTANT: rho_br/W_0
+RHOBR_CONSTANT: rho_br/(W_0*(eta_bg*w1_profile(x1, x2, x3) + 1))
+
+=== background normal derivative by differentiation (must emerge) ===
+RHO4_CONSTANT: D[rho4_bg, w] = 0
+RHO4_CONSTANT: D[rho4_bg, w] == 0 ? True
+RHOBR_CONSTANT: D[rho4_bg, w] = 0
+RHOBR_CONSTANT: D[rho4_bg, w] == 0 ? True
+
+=== background face values at h_s⁰ = s W_bg/2 (LAB_HELD, s=-1) ===
+RHO4_CONSTANT: rho4_bg(h0) = rho_br/W_0
+RHOBR_CONSTANT: rho4_bg(h0) = rho_br/(W_0*(eta_bg*w1_profile(x1, x2, x3) + 1))
+
+=== §3c shift term δh · ∂_w ρ⁰ |_{h0}  (DOF=DELTA_W, ζ_c=0) ===
+RHO4_CONSTANT: delta_h * D_w(rho0)|_h0 = 0
+RHOBR_CONSTANT: delta_h * D_w(rho0)|_h0 = 0
+
+=== representative-independence of face value (not a hardcoded 0) ===
+RHO4 face - RHOBR face = eta_bg*rho_br*w1_profile(x1, x2, x3)/(W_0*(eta_bg*w1_profile(x1, x2, x3) + 1))
+faces_equal? False
+
+=== composed first-order δ[ρ] at LAB_HELD/MINUS/DELTA_W ===
+RHO4_CONSTANT: first-order delta[rho] = -W_0*delta_rho_4D_face_minus_dw*eta_bg*w1_profile(x1, x2, x3)/2 + delta_rho_4D_face_minus
+RHOBR_CONSTANT: first-order delta[rho] = -W_0*delta_rho_4D_face_minus_dw*eta_bg*w1_profile(x1, x2, x3)/2 + delta_rho_4D_face_minus

@@ -1,0 +1,25 @@
+=== §2b members of 𝔅⁰: ρ_4D,bg⁰ ===
+RHO4_CONSTANT : rho_br/W_0
+RHOBR_CONSTANT: rho_br/(W_0*(eta_bg*w1_profile(x1, x2, x3) + 1))
+
+=== ∂_w ρ_4D,bg⁰  (differentiate the 𝔅⁰ member) ===
+RHO4_CONSTANT: d/dw rho_4D_bg0 = 0
+RHO4_CONSTANT: d/dw rho_4D_bg0 == 0 ? True
+RHOBR_CONSTANT: d/dw rho_4D_bg0 = 0
+RHOBR_CONSTANT: d/dw rho_4D_bg0 == 0 ? True
+
+=== §3c shift term δh · ∂_w ρ⁰ for each representative ===
+RHO4_CONSTANT: delta_h * d_w(rho0)|_h0 = 0
+RHOBR_CONSTANT: delta_h * d_w(rho0)|_h0 = 0
+
+=== §3c first-order shifted density trace (both reps) ===
+RHO4_CONSTANT:
+  first-order trace = -W_0*delta_rho_4D_face_minus_dw*eta_bg*w1_profile(x1, x2, x3)/2 + delta_rho_4D_face_minus
+RHOBR_CONSTANT:
+  first-order trace = -W_0*delta_rho_4D_face_minus_dw*eta_bg*w1_profile(x1, x2, x3)/2 + delta_rho_4D_face_minus
+
+=== residual of background shift against forced zero ===
+forced value of d/dw rho_4D_bg0 from 𝔅⁰: 0
+WL free-premise d/dw rhoBulkBackground is NOT a 𝔅⁰ member
+spec-forced residual (WL bg-shift terms - 0): vanishes identically
+correct δ[ρ](LAB_HELD, MINUS, DELTA_W) = delta_rho_4D_face_minus - (W_0/2)*eta_bg*w1_profile*delta_rho_4D_face_minus_dw

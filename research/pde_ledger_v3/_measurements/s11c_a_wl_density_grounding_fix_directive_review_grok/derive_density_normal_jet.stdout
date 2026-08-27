@@ -1,0 +1,6 @@
+RHO4_CONSTANT: rho4_bg = rho_br/W0
+RHO4_CONSTANT: d_w rho4_bg = 0
+RHOBR_CONSTANT: rho4_bg = rho_br/(W0*(eta_bg*w1_profile + 1))
+RHOBR_CONSTANT: d_w rho4_bg = 0
+both_dw_are_zero = True
+ungrounded free premise d_w = Derivative(rhoBulkBackground(x1, x2, x3, w, t), w)

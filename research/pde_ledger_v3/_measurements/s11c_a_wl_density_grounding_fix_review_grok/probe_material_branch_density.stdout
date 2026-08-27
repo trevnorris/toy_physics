@@ -1,0 +1,11 @@
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+=== MATERIAL_ADVECTED RHOBR density background ===
+FACE_SHIFT path (spatial): rhoBr/(W0*(1 + etaBg*w1[x1, x2, x3]))
+branchedRho4 path (chi):   rhoBr/(W0*(1 + etaBg*w1[x1 - waveOrder*uOne[x1, x2, x3, time], x2 - waveOrder*uTwo[x1, x2, x3, time], x3 - waveOrder*uThree[x1, x2, x3, time]]))
+SHAPE FACE_SHIFT path: 0
+SHAPE branched path:   (etaBg*rhoBr*uThree[x1, x2, x3, time]*Derivative[0, 0, 1][w1][x1, x2, x3] + etaBg*rhoBr*uTwo[x1, x2, x3, time]*Derivative[0, 1, 0][w1][x1, x2, x3] + etaBg*rhoBr*uOne[x1, x2, x3, time]*Derivative[1, 0, 0][w1][x1, x2, x3])/(W0*(1 + etaBg*w1[x1, x2, x3])^2)
+SHAPE residual (branched - FACE_SHIFT path) = (etaBg*rhoBr*(uThree[x1, x2, x3, time]*Derivative[0, 0, 1][w1][x1, x2, x3] + uTwo[x1, x2, x3, time]*Derivative[0, 1, 0][w1][x1, x2, x3] + uOne[x1, x2, x3, time]*Derivative[1, 0, 0][w1][x1, x2, x3]))/(W0*(1 + etaBg*w1[x1, x2, x3])^2)
+material_transport_missing_from_FACE_SHIFT_path? True

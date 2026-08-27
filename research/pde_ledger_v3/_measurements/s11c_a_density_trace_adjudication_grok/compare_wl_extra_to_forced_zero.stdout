@@ -1,0 +1,9 @@
+WL extra (δh · ∂_w rhoBulkBackground at h0), Series[η]:
+-W_0*e_W(x1, x2, x3, t)*Derivative(rhoBulkBackground(x1, x2, x3, w, t), w)/2
+
+Manual expansion to user's quoted structure:
+W_0**2*eta_bg*e_W(x1, x2, x3, t)*w1_profile(x1, x2, x3)*Subs(Derivative(rhoBulkBackground(x1, x2, x3, w, t), (w, 2)), w, -W_0/2)/4 - W_0*e_W(x1, x2, x3, t)*Subs(Derivative(rhoBulkBackground(x1, x2, x3, w, t), w), w, -W_0/2)/2
+
+spec-forced value of this entire extra (from 𝔅⁰ ∂_w ρ⁰=0): 0
+WL−PY residual on density FACE_SHIFT equals this extra: YES
+Is that residual a genuine missing physical term? NO — forced to 0

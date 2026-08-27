@@ -1,6 +1,41 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 5 (comparator + coverage): BOTH §3c findings now FIXED — shifted-trace (PY `c36beac4`) + free-premise background current (WL `6fae82b8`). 11 tag-families reconcile to 0; CONORMAL verdict A (no finding); the PROJECTION "window" alarm was a FALSE finding (rule-13). OPEN = projection integrand IBP (perturbation current — mechanical bridge, NOT a finding) → mechanical sweep → Codex comparator build → full T7 result → step record
+## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 5: THREE §3c-class engine defects now FIXED — shifted-trace (PY `c36beac4`) + free-premise background current (WL `6fae82b8`) + current-freezing (PY `49b5c525`). The projection integrand was NOT "mechanical" — it was finding #3 (PY froze the perturbation current in the projection), caught ONLY because the user flagged a "field-name map" as a trap. 11 tag-families reconcile to 0; CONORMAL verdict A; controls measured CLEAN. OPEN = the DEFERRED comparator (rev-1 drew ~14 defects) → the full cross-engine T7 result (which will DETERMINE whether the projection agrees post-fix) → step record
+
+⭐⭐⭐ **T7 CURRENT-FREEZING FINDING (#3) — FIXED + COMMITTED `49b5c525` (2026-08-26).** The projection
+integrand — which the prior roadmap filed as a "mechanical bridge, NOT a finding" — was a REAL PY defect,
+caught ONLY because the user flagged building a "field-name map" as a known pitfall. PY's `projection_terms`
+froze the perturbation current's normal component at its face value (w-constant `j_bulk[3]`), so
+`WINDOW_NORMAL_CURRENT = -ε∫ j_w·∂_wΩ` was IDENTICALLY 0 (constant × ∫∂_wΩ = boundary = 0) — the entire
+`∂_wδj_w` contribution ABSENT, violating §1b (`∇₄·δj` includes the normal divergence). §3c's zero-background/
+trace language is scoped to TRACED face fields, NOT the bulk current under the `w`-integral.
+- **CAS-verify (Codex+Grok, runnable SymPy+stdout):** Q1 (does the current's w-dependence matter?) = DIFFERENT
+  (concrete nonzero witnesses); Q2 (window shape-derivative form) = SAME/benign ⇒ the disagreement is the
+  current, not the window.
+- **From-spec adjudication (Codex+Grok):** UNANIMOUS — §1b requires the full w-dependent bulk current (WL
+  faithful, PY defect); an implementation defect, not a spec ambiguity. Orchestrator rule-13 self-verified.
+- **Fix:** `δj_w = delta_j_bulk_4(w)` INSIDE the existing post-IBP normal term (⛔ NOT a second `∫Ω·∂_wδj_w`
+  channel = double-count), both dynamic/static branches + `uniform_projection_reference`. 2 build legs (fresh
+  Claude + Grok) ablation-PASS: `∂_wδj_w` enters (a w-varying probe moves the term, a constant collapses it to
+  the old 0), single channel; pre-fix `WINDOW_NORMAL_CURRENT` was literally ≡ 0 (direct confirmation of #3).
+- ⚠ **Directive took rev-2:** rev-1 over-specified a FACE-keyed recipe (`affine_bulk_perturbation`) for a
+  FACE-LESS projection (rule 3 — name the object, not the recipe; the SAME over-specification I made on the
+  comparator directive). Both caught by the 2-leg directive gate BEFORE any build. ⛔ A §5c uniform-limit
+  "corroboration" was RETRACTED as a non-simplified-zero false alarm (a CAS-integral zero-test needs INTEGRAL
+  LINEARITY, not expand/cancel).
+- ⚠ The ULTIMATE cross-engine projection AGREEMENT (PY now == WL) is NOT yet computed — needs the current name
+  map (LEGITIMATE now: both engines carry the same w-dependent δj_w) + ITG/IBP canon = the DEFERRED comparator.
+
+⭐⭐ **COMPARATOR DEFERRED (2026-08-26 — user chose "lean measurement first, then batch fixes").** The rev-1 build
+directive (uncommitted WIP `directives/S11c_a_comparator_build_directive.md` +twin +review leg) drew ~14 defects
+from its own 2-leg gate: WRONG PY input (`exports.py` is a LEDGER; real PY = an uncommitted scratch transcript — now the FIXED `~/.s11_build/S11c_a_py_fixed_run2.out` (47 tags,
+post-`49b5c525`), loaded by a `measure_reconcile.py` in the PREVIOUS session's /tmp),
+false "S11b reassembles multi-line WL", dropped FACE_SHIFT, `_RESIDUAL_OPERAND` (engines emit `_RESIDUAL`),
+**2 SMUGGLING folds** (5 `mu_theta_L/M→mu_theta` branch-collapse, 9 CONORMAL Taylor) → must go to a REGISTRY not
+the map, `canon_key` CASE-LOSS (full-axis keying needed), DIMENSIONS/BACKGROUND_DENSITY_MAP mislabeled supplied.
+Lean measurement instead cleared the CONTROLS (no new finding; REP_INVARIANCE/UNIFORM_LIMIT all-0 invariants,
+CONTROL_INDEPENDENCE/CONTROL_FORM/HOMOGENEITY bite; 7 parser false-alarms caught by rule-13). FACE_SHIFT/origins/
+bookkeeping = deferred to the comparator. Detail `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§17–22.
 
 ⭐⭐⭐ **WL BACKGROUND-CURRENT FINDING — RESOLVED + FIXED + COMMITTED `6fae82b8` (2026-08-26).** The T-f
 projection's "possible background-current finding" was REAL: WL carried the rest-frame background bulk current
@@ -36,15 +71,16 @@ the **EVOLUTION face-detect** (WL preprocessor reads `{±1/2*W0}` → `XFACEX` t
 - ⛔ **PROJECTION "window drops a face" was a FALSE finding — rule-13 catch.** MY prompt called WL "single-arg"
   from a 70-char TRUNCATED fragment; the raw WL window is the identical 2-arg `𝒪(w−W0/2,−w−W0/2)`, both-face
   derivatives. Lesson: a leg prompt must carry the ACCURATE engine form.
-- **NET: two confirmed T7 findings, BOTH FIXED** — shifted-trace (PY `c36beac4`) + free-premise bg-current
-  (WL `6fae82b8`). Each engine had one independent §3c implementation error; the two-engine method caught both.
-  Full coverage detail `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§10–16d.
-- **NEXT:** the projection integrand IBP bridge (perturbation current map WL `currentXPerturbation{i}`↔PY
-  `delta_j_bulk_{i}` + IBP-canonicalize the window derivatives — MECHANICAL, not a finding) → mechanical sweep
-  (origins / FACE_SHIFT 16↔80 / controls REP_INVARIANCE·CONTROL_INDEPENDENCE·UNIFORM_LIMIT·CONTROL_FORM·
-  HOMOGENEITY / bookkeeping) → Codex comparator build (fold the full declared map, 2 legs, synthetic fixtures)
-  → freeze + run → the full T7 cross-engine result → step record + family card (carry BOTH §3c fixes + the
-  recorded continuity-cancellation).
+- **NET: THREE confirmed T7 findings, ALL FIXED** — shifted-trace (PY `c36beac4`) + free-premise bg-current
+  (WL `6fae82b8`) + current-freezing (PY `49b5c525`, this session). Each of the two engines carried §3c-class
+  implementation errors (PY: two — shifted-trace + current-freezing; WL: one — bg-current); the two-engine
+  method caught all three. Full coverage detail `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§10–22.
+- **NEXT (SUPERSEDED — the projection integrand was NOT mechanical; it was finding #3, fixed `49b5c525`):**
+  the DEFERRED comparator — rebuild the rev-1 directive grounded in reality (commit a PY `.out`, port the
+  ephemeral loaders + full-axis extractors, folds 5 `mu_theta`/9 CONORMAL → a REGISTRY not the map), 2 legs,
+  synthetic fixtures → freeze + run → the full T7 cross-engine result (which should now show the projection
+  AGREEING post-fix, and sweeps FACE_SHIFT/origins/bookkeeping) → step record + family card (carry ALL THREE
+  §3c fixes + the recorded bg-current continuity-cancellation).
 
 ⭐⭐⭐ **T7 SHIFTED-TRACE FINDING — ADJUDICATED + FIXED + COMMITTED `c36beac4` (2026-08-26).** The dual-engine
 method caught **two real SymPy bugs; WL was correct.** Adjudicated by 2 independent from-spec CAS derivations
@@ -72,8 +108,9 @@ term-2; **(D2)** PY froze the traced perturbation at the flat face → dropped t
 - ⛔ **[SUPERSEDED by the CURRENT FRONT block above]** The shifted-trace-era "still to measure" plan is done:
   CONORMAL adjudicated VERDICT A; CLOSURE is ALGEBRAIC (16/16→0, NOT a window integral); the PROJECTION
   "window" was a FALSE finding (rule-13); the bg-current WAS the finding hiding here and is FIXED (`6fae82b8`).
-  Only the MECHANICAL projection integrand IBP bridge + the controls/bookkeeping sweep + the Codex comparator
-  build remain — see the top block for the current NEXT.
+  ⛔ CORRECTED (see top block): the projection integrand was NOT mechanical — it was finding #3
+  (current-freezing, FIXED `49b5c525`); the controls are measured clean; only the DEFERRED comparator build
+  remains (FACE_SHIFT/origins/bookkeeping sweep folds into it).
 
 ⭐ **T7 STEP 2 (engine patches, fixes on BOTH engines).** WL patch DONE: added the density-representative axis
 to the 5 T-f projection objects (spec §1b/§3a/§4:398), dropped the spurious axis from KINEMATIC/RELATIVE_FLUX

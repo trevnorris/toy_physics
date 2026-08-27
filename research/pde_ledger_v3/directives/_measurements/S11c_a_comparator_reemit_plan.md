@@ -118,3 +118,12 @@ _message_count = 0`. Directive `S11c_a_wl_bgcurrent_fix_directive.md` (+twin), f
 NET: two confirmed T7 findings, BOTH FIXED — shifted-trace (PY `c36beac4`) + free-premise bg-current (WL
 `6fae82b8`). REMAINING coverage (mechanical): projection integrand perturbation-current map + IBP bridge →
 sweep → Codex comparator. Detail `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§16–16d.
+
+## 2026-08-26 update — finding #3 (current-freezing) FIXED; comparator DEFERRED
+The Step-5 "projection integrand IBP bridge — MECHANICAL, not a finding" was WRONG. It was finding #3: PY froze
+the perturbation current in the projection (`WINDOW_NORMAL_CURRENT ≡ 0`, dropping ∂_wδj_w §1b requires). Caught
+via the user's name-map flag; CAS consult (Q1=DIFFERENT) + unanimous from-spec adjudication; fixed `49b5c525`
+(2 build legs). Verify: `git show 49b5c525 -- research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py`
+(normal current became `delta_j_bulk_4(w)` inside the post-IBP term, no double-count). Comparator DEFERRED (user
+chose lean-measure-then-fix; rev-1 directive drew ~14 defects — see the Step-5 PLAN). Controls measured CLEAN.
+Full session record `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§17–22.

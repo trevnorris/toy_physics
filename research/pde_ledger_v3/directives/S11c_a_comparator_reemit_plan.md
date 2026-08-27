@@ -63,14 +63,28 @@
   `:=0`; a `Part::pkspec1` symbolic-index bug that ballooned the run to 14 GB was fixed via the `_Integer`
   pattern restriction). Regenerated `.out`: 40 tags, **0** bg-current (was 667), only 10 bg-current-consumer tags
   changed, 30 byte-identical. Detail `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§10–16d.
-  **NET: two confirmed T7 findings, BOTH FIXED — shifted-trace (PY `c36beac4`) + free-premise bg-current
-  (WL `6fae82b8`).** ⚠ REMAINING coverage (MECHANICAL, NOT findings): the PROJECTION integrand = (1) the
-  perturbation current map (WL `currentXPerturbation{i}`↔PY `delta_j_bulk_{i}`, `currentWPerturbation`↔
-  `delta_j_bulk_4`) + (2) the IBP form (PY pulls the current OUTSIDE the integral, WL keeps it INSIDE; §1b IBPs
-  in w). **NEXT:** the projection IBP-aware bridge → the mechanical sweep (origins/FACE_SHIFT/controls/
-  bookkeeping) → then the Codex comparator build below.
+  **NET: THREE confirmed T7 findings, ALL FIXED — shifted-trace (PY `c36beac4`) + free-premise bg-current
+  (WL `6fae82b8`) + current-freezing (PY `49b5c525`).** ⛔ CORRECTION (this was WRONG above):
+  the PROJECTION integrand was NOT mechanical. Issue (1) the "perturbation current map" was the exact NAME-MAP
+  TRAP the user flagged — a freeze-diagnostic + a CAS consult (Codex+Grok, Q1 = DIFFERENT with concrete
+  witnesses) proved `currentWPerturbation(w)` (WL field) and `delta_j_bulk_4` (PY constant) are DIFFERENT
+  objects: PY froze the current at the face, so `WINDOW_NORMAL_CURRENT ≡ 0` and the `∂_wδj_w` term §1b requires
+  was ABSENT = finding #3 (unanimous from-spec adjudication; fixed `49b5c525`, 2 build legs ablation-PASS).
+  Issue (2) the window shape-derivative IBP form (Q2) is genuinely benign/SAME. **NEXT:** the DEFERRED comparator
+  (PLAN below — REBUILD rev-1 grounded in reality) → the full cross-engine T7 result (should now show PROJECTION
+  AGREEING post-fix) + the FACE_SHIFT/origins/bookkeeping sweep → step record + family card. Detail §§17–22.
 
-- **Step-5 PLAN (Codex comparator build — ONLY AFTER the coverage sweep above is complete):** fold the FULL
+- **Step-5 PLAN (Codex comparator build — ⛔ DEFERRED; user chose "lean measurement first, then batch fixes"):**
+  ⚠ A rev-1 build directive was written and drew ~14 defects from its own 2-leg gate (uncommitted WIP
+  `directives/S11c_a_comparator_build_directive.md` +twin +review leg): WRONG PY input (`exports.py` is a
+  LEDGER; the real PY tag stream is the uncommitted FIXED transcript `~/.s11_build/S11c_a_py_fixed_run2.out` [47 tags, post-`49b5c525`]),
+  false "S11b reassembles multi-line WL" (that lives in the ephemeral scratch loader), dropped FACE_SHIFT,
+  `_RESIDUAL_OPERAND` (engines emit `_RESIDUAL`), **2 SMUGGLING folds** — `mu_theta_L/M→mu_theta` (branch
+  collapse) and the CONORMAL §3c Taylor identification — which must move to an explicit REGISTRY, NOT the
+  naming map, `canon_key` CASE-LOSS (needs FULL-AXIS keying + extracted/unpaired/duplicate counts),
+  DIMENSIONS/BACKGROUND_DENSITY_MAP mislabeled supplied (they are COMPUTED). The controls were instead measured
+  by hand and are CLEAN (§§18,20). The REBUILT comparator must: commit a PY `.out` + port the ephemeral loaders,
+  then fold the FULL
   measured declared map into the frozen contract (`scripts/S11b_cross_engine_comparator.py` — reuse its
   parsers/transliterate/residual + the multi-line WL reassembly). The map already includes (measured this
   step): params/fields/jet-decode/`e_W`/`d_w_X↔X_dw`/`mu_theta`/`sp.cancel` + the `XFACEX` EVOLUTION
@@ -128,8 +142,7 @@ True; nested `Derivative[o,{a,b}]`; integer Association keys `<|1->,-1->|>` in B
 rejects). Full evidence: `~/.s11_build/S11c_a_comparator_directive_{codex,grok}.log`.
 
 ## State
-PY `c36beac4`, WL `6fae82b8` (both committed+verified; the WL `.out` under `mathematica/out/` was regenerated at `6fae82b8` — 40 tags, 0 background-current). PY tag stream = fresh run to
-`~/.s11_build/S11c_a_sympy_engine.out` (NOT committed). WL committed `.out` under `mathematica/out/`.
+PY `49b5c525` (projection current-freezing fix; earlier §3c fix `c36beac4`), WL `6fae82b8` (all committed+verified; the WL `.out` under `mathematica/out/` regenerated at `6fae82b8` — 40 tags, 0 background-current). PY tag stream from the FIXED engine = `~/.s11_build/S11c_a_py_fixed_run2.out` (47 tags, NOT committed — the comparator must commit a PY `.out`). WL committed `.out` under `mathematica/out/`. ⛔ COMPARATOR DEFERRED — rev-1 directive drew ~14 defects (see Step-5 PLAN); rebuild grounded in reality. Full session record `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§17–22.
 Superseded comparator-side directive `S11c_a_comparator_build_directive.md` (+twin+review prompt) kept for the
 record. ⚠ Running the SymPy engine rewrites committed `S11c_a_exports.py` (Dummy-index counters) AND the
 emitted payload feeds `export_candidates` (sympy 333-343 → 1852-1878), so ANY PY emit reformat mutates

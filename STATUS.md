@@ -1,6 +1,8 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 5: REVIEWED CROSS-ENGINE COMPARATOR BUILT + RUN — THE TWO ENGINES AGREE. All 39 families diffed by a durable, 2-build-legs-cleared instrument (`50f43123`, PY transcript `afdc8158`). After rule-13 classification, EVERY cross-engine residual reduces to a REPRESENTATIONAL difference, not physics: WL writes face-evaluated bulk quantities (μ_θ^α, δj, δρ=ρ_br·θ) as APPLIED FUNCTIONS of x while PY uses BARE SYMBOLS; CONORMAL is the known §3c verdict-A form. Three §3c-class engine defects already fixed (shifted-trace PY `c36beac4`, free-premise bg-current WL `6fae82b8`, current-freezing PY `49b5c525`). OPEN = (1) from-spec ADJUDICATE that the representational identities are benign (are WL's face-eval args inert? — the #3-pattern name-map trap), (2) characterize the control battery (bite/hold), (3) step record + family card pinning the schema for S11c-b..e.
+## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 5: the "engines AGREE / all residuals representational" claim was WRONG — a BLANKET-COLLAPSE classifier HID two findings. Corrected 2026-08-27. My aggregation-side collapse (map every applied fn `X(args)→X`, then zero-test) DELETES real dependence and can only HIDE a difference — the same arg-strip that hid finding #3. Caught by the step-record review legs (Codex) + a HAND-CODED comparison. **#4 FIXED + committed `8c1a5ed1`:** PY froze the IN-PLANE bulk-current divergence in w (`Σ grad_j_bulk[i][i]` bare); §1b makes the whole current a field of w (`j=ρ_4D∇₄φ`) and the projection integrates over w; un-frozen (`Σ Function(grad_j_bulk[i][i].name)(w)`), verified vs WL. **STILL OPEN (deferred post-compact, task #69):** FACE_SHIFT (T-e shifted trace) has `join=0` — WL missing the DENSITY axis, the family is UNCOMPARED. FOUR engine fixes total: `c36beac4`, `6fae82b8`, `49b5c525`, `8c1a5ed1`. METHOD (governing): never blanket-collapse to judge representational-vs-finding — basic pass for obvious matches, HAND-CODE the rest, FLAG never massage. PENDING: FACE_SHIFT; a FULL comparator re-run vs the fixed transcript (only focused per-projection verification done); rewrite the step record (`steps/S11c_a_interface_shape_derivatives.md`, an overclaiming DRAFT).
+
+⛔ **[SUPERSEDED / OVERCLAIMED — see the corrected front above] The block below reported a clean "THE TWO ENGINES AGREE, every residual representational." That conclusion depended on the blanket collapse that hid the #4 in-plane current freeze and the FACE_SHIFT non-join. Read it as the (partly wrong) prior state, not the result.**
 
 ⭐⭐⭐ **T7 CROSS-ENGINE COMPARATOR — BUILT + 2 BUILD LEGS PASS + COMMITTED `50f43123` (2026-08-27); RESULT: ENGINES AGREE.**
 - **Instrument:** `research/pde_ledger_v3/scripts/S11c_a_cross_engine_comparator.py` (+ synthetic tests). Reads
@@ -98,10 +100,12 @@ the **EVOLUTION face-detect** (WL preprocessor reads `{±1/2*W0}` → `XFACEX` t
 - ⛔ **PROJECTION "window drops a face" was a FALSE finding — rule-13 catch.** MY prompt called WL "single-arg"
   from a 70-char TRUNCATED fragment; the raw WL window is the identical 2-arg `𝒪(w−W0/2,−w−W0/2)`, both-face
   derivatives. Lesson: a leg prompt must carry the ACCURATE engine form.
-- **NET: THREE confirmed T7 findings, ALL FIXED** — shifted-trace (PY `c36beac4`) + free-premise bg-current
-  (WL `6fae82b8`) + current-freezing (PY `49b5c525`, this session). Each of the two engines carried §3c-class
-  implementation errors (PY: two — shifted-trace + current-freezing; WL: one — bg-current); the two-engine
-  method caught all three. Full coverage detail `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§10–22.
+- **[SUPERSEDED — now FOUR fixes; see corrected front] NET: ~~THREE~~ FOUR confirmed T7 findings, ALL FIXED** —
+  shifted-trace (PY `c36beac4`) + free-premise bg-current (WL `6fae82b8`) + current-freezing/normal-jet
+  (PY `49b5c525`) + **in-plane current freeze (PY `8c1a5ed1`, 2026-08-27 — the 4th, hidden by the blanket
+  collapse)**. PY carried three §3c/§1b-class implementation errors, WL one; the two-engine method caught all
+  four. FACE_SHIFT non-join + a full comparator re-run remain OPEN. Detail
+  `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§10–25.
 - **NEXT (SUPERSEDED — the projection integrand was NOT mechanical; it was finding #3, fixed `49b5c525`):**
   the DEFERRED comparator — rebuild the rev-1 directive grounded in reality (commit a PY `.out`, port the
   ephemeral loaders + full-axis extractors, folds 5 `mu_theta`/9 CONORMAL → a REGISTRY not the map), 2 legs,

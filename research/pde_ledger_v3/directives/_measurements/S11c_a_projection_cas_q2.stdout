@@ -1,0 +1,83 @@
+=== Q2 STAGE 0: chain rule vs raw ∂ε of Omega (integrands) ===
+dOmega/deps (raw) =
+-delta_W(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 + epsilon*zeta_c(x1, x2, x3, t) - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 - epsilon*zeta_c(x1, x2, x3, t) + w)/2 - delta_W(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 - epsilon*zeta_c(x1, x2, x3, t) + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 + epsilon*zeta_c(x1, x2, x3, t) - w)/2 - zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 + epsilon*zeta_c(x1, x2, x3, t) - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 - epsilon*zeta_c(x1, x2, x3, t) + w) + zeta_c(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 - epsilon*zeta_c(x1, x2, x3, t) + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 + epsilon*zeta_c(x1, x2, x3, t) - w)
+
+dOmega/deps (chain rule through G+,G-) =
+-delta_W(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 + epsilon*zeta_c(x1, x2, x3, t) - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 - epsilon*zeta_c(x1, x2, x3, t) + w)/2 - delta_W(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 - epsilon*zeta_c(x1, x2, x3, t) + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 + epsilon*zeta_c(x1, x2, x3, t) - w)/2 - zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 + epsilon*zeta_c(x1, x2, x3, t) - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 - epsilon*zeta_c(x1, x2, x3, t) + w) + zeta_c(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 - epsilon*zeta_c(x1, x2, x3, t) + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - epsilon*delta_W(x1, x2, x3, t)/2 + epsilon*zeta_c(x1, x2, x3, t) - w)
+
+raw - chain = 0
+integrands_identical: True
+integrands_identical_at_eps0: True
+
+=== Q2 STAGE 1: formal integrals (a) and (b) ===
+form_(b)_diff_under_integral =
+Integral((-delta_W(x1, x2, x3, t)/2 - zeta_c(x1, x2, x3, t))*Subs(Derivative(O(_xi_1, -W0*(eta*w1(x1, x2, x3) + 1)/2 + epsilon*(-delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t)) - w), _xi_1), _xi_1, -W0*(eta*w1(x1, x2, x3) + 1)/2 - epsilon*(delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t)) + w) + (-delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t))*Subs(Derivative(O(-W0*(eta*w1(x1, x2, x3) + 1)/2 - epsilon*(delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t)) + w, _xi_2), _xi_2), _xi_2, -W0*(eta*w1(x1, x2, x3) + 1)/2 + epsilon*(-delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t)) - w), (w, -oo, oo))
+form_(a)_chain_then_Integral =
+Integral((-delta_W(x1, x2, x3, t)/2 - zeta_c(x1, x2, x3, t))*Subs(Derivative(O(_xi_1, -W0*(eta*w1(x1, x2, x3) + 1)/2 + epsilon*(-delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t)) - w), _xi_1), _xi_1, -W0*(eta*w1(x1, x2, x3) + 1)/2 - epsilon*(delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t)) + w) + (-delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t))*Subs(Derivative(O(-W0*(eta*w1(x1, x2, x3) + 1)/2 - epsilon*(delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t)) + w, _xi_2), _xi_2), _xi_2, -W0*(eta*w1(x1, x2, x3) + 1)/2 + epsilon*(-delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t)) - w), (w, -oo, oo))
+Integral(raw - chain) = Integral(0, (w, -oo, oo))
+Integral_difference_identically_zero: True
+
+=== Q2 STAGE 2: evaluate at eps=0 (first shape order) ===
+integrand_(b)|_eps0 =
+-delta_W(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 + w)/2 - delta_W(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w)/2 - zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 + w) + zeta_c(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w)
+
+integrand_(a)|_eps0 =
+-delta_W(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 + w)/2 - delta_W(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w)/2 - zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 + w) + zeta_c(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w)
+
+form_(b)|_eps0 = Integral(-delta_W(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 + w)/2 - delta_W(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w)/2 - zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 + w) + zeta_c(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w), (w, -oo, oo))
+form_(a)|_eps0 = Integral(-delta_W(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 + w)/2 - delta_W(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w)/2 - zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w), _xi_1), _xi_1, -W0*eta*w1(x1, x2, x3)/2 - W0/2 + w) + zeta_c(x1, x2, x3, t)*Subs(Derivative(O(-W0*eta*w1(x1, x2, x3)/2 - W0/2 + w, _xi_2), _xi_2), _xi_2, -W0*eta*w1(x1, x2, x3)/2 - W0/2 - w), (w, -oo, oo))
+(a)-(b) integrand at eps0 = 0
+
+=== Q2 STAGE 3: analytic η-expansion of ∂εΩ|_ε0 (exposes O_ij × profile) ===
+dG+/deta|_0 = -W0*w1(x1, x2, x3)/2
+dG-/deta|_0 = -W0*w1(x1, x2, x3)/2
+dG+/deps|_0 = -delta_W(x1, x2, x3, t)/2 - zeta_c(x1, x2, x3, t)
+dG-/deps|_0 = -delta_W(x1, x2, x3, t)/2 + zeta_c(x1, x2, x3, t)
+
+series_eta(dOmega/deps|_eps0) to O(eta) =
+W0*eta*delta_W(x1, x2, x3, t)*w1(x1, x2, x3)*Subs(Derivative(O(_xi_1, _xi_2), _xi_1, _xi_2), _xi_2, -W0/2 - w)/4 + W0*eta*delta_W(x1, x2, x3, t)*w1(x1, x2, x3)*Subs(Derivative(O(_xi_1, _xi_2), _xi_1, _xi_2), _xi_1, -W0/2 + w)/4 + W0*eta*w1(x1, x2, x3)*zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, _xi_2), _xi_1, _xi_2), _xi_2, -W0/2 - w)/2 - W0*eta*w1(x1, x2, x3)*zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, _xi_2), _xi_1, _xi_2), _xi_1, -W0/2 + w)/2 - delta_W(x1, x2, x3, t)*Derivative(O(_xi_1, -W0/2 - w), _xi_1)/2 - delta_W(x1, x2, x3, t)*Derivative(O(-W0/2 + w, _xi_2), _xi_2)/2 - zeta_c(x1, x2, x3, t)*Derivative(O(_xi_1, -W0/2 - w), _xi_1) + zeta_c(x1, x2, x3, t)*Derivative(O(-W0/2 + w, _xi_2), _xi_2)
+
+analytic_chain_Taylor_O(eta) =
+W0*eta*delta_W(x1, x2, x3, t)*w1(x1, x2, x3)*Subs(Derivative(O(_xi_1, _xi_2), (_xi_1, 2)), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/4 + W0*eta*delta_W(x1, x2, x3, t)*w1(x1, x2, x3)*Subs(Derivative(O(_xi_1, _xi_2), (_xi_2, 2)), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/4 + W0*eta*delta_W(x1, x2, x3, t)*w1(x1, x2, x3)*Subs(Derivative(O(_xi_1, _xi_2), _xi_1, _xi_2), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/2 + W0*eta*w1(x1, x2, x3)*zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, _xi_2), (_xi_1, 2)), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/2 - W0*eta*w1(x1, x2, x3)*zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, _xi_2), (_xi_2, 2)), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/2 - delta_W(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, _xi_2), _xi_1), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/2 - delta_W(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, _xi_2), _xi_2), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/2 - zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, _xi_2), _xi_1), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w)) + zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, _xi_2), _xi_2), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))
+
+concrete_O=exp(-(G+)^2-(G-)^2): series - analytic_Taylor = 0
+eta_expansion_matches_chain_Taylor_on_concrete_O: True
+
+=== Q2 STAGE 4: in-plane derivative of the η¹ shape integrand ===
+eta^1 coefficient of dOmega/deps|_eps0 =
+W0*delta_W(x1, x2, x3, t)*w1(x1, x2, x3)*Subs(Derivative(O(_xi_1, _xi_2), (_xi_1, 2)), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/4 + W0*delta_W(x1, x2, x3, t)*w1(x1, x2, x3)*Subs(Derivative(O(_xi_1, _xi_2), (_xi_2, 2)), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/4 + W0*delta_W(x1, x2, x3, t)*w1(x1, x2, x3)*Subs(Derivative(O(_xi_1, _xi_2), _xi_1, _xi_2), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/2 + W0*w1(x1, x2, x3)*zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, _xi_2), (_xi_1, 2)), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/2 - W0*w1(x1, x2, x3)*zeta_c(x1, x2, x3, t)*Subs(Derivative(O(_xi_1, _xi_2), (_xi_2, 2)), (_xi_1, _xi_2), (-W0/2 + w, -W0/2 - w))/2
+
+d/dx1 of that coefficient (after doit) =
+W0*delta_W(x1, x2, x3, t)*Derivative(w1(x1, x2, x3), x1)*Subs(Derivative(O(_xi_1, -W0/2 - w), (_xi_1, 2)), _xi_1, -W0/2 + w)/4 + W0*delta_W(x1, x2, x3, t)*Derivative(w1(x1, x2, x3), x1)*Subs(Derivative(O(-W0/2 + w, _xi_2), (_xi_2, 2)), _xi_2, -W0/2 - w)/4 + W0*delta_W(x1, x2, x3, t)*Derivative(w1(x1, x2, x3), x1)*Subs(Derivative(O(_xi_1, _xi_2), _xi_1, _xi_2), (_xi_2, _xi_1), (-W0/2 - w, -W0/2 + w))/2 + W0*w1(x1, x2, x3)*Derivative(delta_W(x1, x2, x3, t), x1)*Subs(Derivative(O(_xi_1, -W0/2 - w), (_xi_1, 2)), _xi_1, -W0/2 + w)/4 + W0*w1(x1, x2, x3)*Derivative(delta_W(x1, x2, x3, t), x1)*Subs(Derivative(O(-W0/2 + w, _xi_2), (_xi_2, 2)), _xi_2, -W0/2 - w)/4 + W0*w1(x1, x2, x3)*Derivative(delta_W(x1, x2, x3, t), x1)*Subs(Derivative(O(_xi_1, _xi_2), _xi_1, _xi_2), (_xi_2, _xi_1), (-W0/2 - w, -W0/2 + w))/2 + W0*w1(x1, x2, x3)*Derivative(zeta_c(x1, x2, x3, t), x1)*Subs(Derivative(O(_xi_1, -W0/2 - w), (_xi_1, 2)), _xi_1, -W0/2 + w)/2 - W0*w1(x1, x2, x3)*Derivative(zeta_c(x1, x2, x3, t), x1)*Subs(Derivative(O(-W0/2 + w, _xi_2), (_xi_2, 2)), _xi_2, -W0/2 - w)/2 + W0*zeta_c(x1, x2, x3, t)*Derivative(w1(x1, x2, x3), x1)*Subs(Derivative(O(_xi_1, -W0/2 - w), (_xi_1, 2)), _xi_1, -W0/2 + w)/2 - W0*zeta_c(x1, x2, x3, t)*Derivative(w1(x1, x2, x3), x1)*Subs(Derivative(O(-W0/2 + w, _xi_2), (_xi_2, 2)), _xi_2, -W0/2 - w)/2
+
+contains_second_derivative_of_O: True
+contains_in_plane_profile_gradient_dw1/dx1: True
+
+=== Q2 STAGE 5: concrete decaying window — commute d/deps and Integral ===
+concrete raw-chain integrand difference at eps0 = 0
+concrete_integrands_identical: True
+I(eps) closed form = (-sqrt(2)*pi*(A*epsilon - B*epsilon + W0)*exp((A*epsilon - B*epsilon + W0)**2/2)*erf(sqrt(2)*(A*epsilon - B*epsilon + W0)/2)/2 + sqrt(2)*pi*(A*epsilon - B*epsilon + W0)*exp((A*epsilon - B*epsilon + W0)**2/2)/2)*exp(-A**2*epsilon**2 + 2*A*B*epsilon**2 - 2*A*W0*epsilon - B**2*epsilon**2 + 2*B*W0*epsilon - W0**2)/(2*sqrt(pi)*(A*epsilon - B*epsilon + W0)) - (-sqrt(2)*pi*(A*epsilon + W0)*(-B*epsilon/(A*epsilon + W0) + 1)*exp((A*epsilon + W0)**2*(-B*epsilon/(A*epsilon + W0) + 1)**2/2)*erf(sqrt(2)*(A*epsilon + W0)*(-B*epsilon/(A*epsilon + W0) + 1)/2)/2 - sqrt(2)*pi*(A*epsilon + W0)*(-B*epsilon/(A*epsilon + W0) + 1)*exp((A*epsilon + W0)**2*(-B*epsilon/(A*epsilon + W0) + 1)**2/2)/2)*exp(-A**2*epsilon**2 + 2*A*B*epsilon**2 - 2*A*W0*epsilon - B**2*epsilon**2 + 2*B*W0*epsilon - W0**2)/(sqrt(pi)*(2*A*epsilon + 2*W0)*(-B*epsilon/(A*epsilon + W0) + 1))
+dI/deps|_0 from closed form = sqrt(2)*sqrt(pi)*W0*(-A + B)*exp(-W0**2/2)/2
+Integral(dOc/deps|_0) from under-integral = sqrt(2)*sqrt(pi)*W0*(-A + B)*exp(-W0**2/2)/2
+closed_minus_under_integral = 0
+commute_on_concrete_decaying_window: True
+
+=== Q2 STAGE 6: boundary / decay property check (concrete) ===
+limit w->+oo Oc|_eps0 = 0
+limit w->-oo Oc|_eps0 = 0
+limit w->+oo dOc/deps|_0 = 0
+limit w->-oo dOc/deps|_0 = 0
+
+=== Q2 LITERAL RESIDUAL REPORT ===
+DIFF_integrand_(a)_minus_(b) = 0
+DIFF_IDENTICALLY_ZERO: True
+DIFF_Integral_(a)_minus_(b) = Integral(0, (w, -oo, oo))
+CHAIN_RULE_EXACT_FOR_O_of_Gplus_Gminus: True
+d/deps_AND_Integral_COMMUTE_FORMALLY: True
+d/deps_AND_Integral_COMMUTE_ON_CONCRETE_DECAYING_O: True
+PROPERTY_USED: O -> 0 as |arguments| -> +oo (equivalently |w|->oo at fixed faces);
+  used to justify dominated/compact-support passage of d/deps under ∫dw
+  and verified on O=exp(-(G+)^2-(G-)^2) by matching closed-form dI/deps.
+ETA_PROFILE_SECOND_DERIV_TERMS_ARE_PART_OF_THE_SAME_CHAIN_RULE:
+  concrete series-analytic residual = 0
+  eta_expansion_matches_chain_Taylor_on_concrete_O: True

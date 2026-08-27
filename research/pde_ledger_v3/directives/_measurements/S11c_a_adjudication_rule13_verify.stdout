@@ -1,0 +1,39 @@
+==============================================================================
+CLASS 1  mu_theta closure coefficient  (TRACTION / CLOSURE_SHAPE_DERIV / VIRTUAL_WORK_SHAPE_DERIV)
+  cases=48  raw-nonzero=44  nonzero AFTER collapse X(args)->X = 0
+  => residual is EXACTLY the applied-vs-bare mu_theta difference; collapse -> 0 for all.
+==============================================================================
+CLASS 2  PROJECTION density term  (collapse + linearity cancels in-plane div.j; density identity remains)
+  family                     branch            density         divj-cancelled  zero  nonzero
+  PROJECTION_DYNAMIC_OPERAND LAB_HELD          RHO4_CONSTANT            True     2       0
+  PROJECTION_DYNAMIC_OPERAND LAB_HELD          RHOBR_CONSTANT           True     2       0
+  PROJECTION_DYNAMIC_OPERAND MATERIAL_ADVECTED RHO4_CONSTANT            True     2       0
+  PROJECTION_DYNAMIC_OPERAND MATERIAL_ADVECTED RHOBR_CONSTANT           True     2       0
+  PROJECTION_RESIDUAL        LAB_HELD          RHO4_CONSTANT            True     2       0
+  PROJECTION_RESIDUAL        LAB_HELD          RHOBR_CONSTANT           True     2       0
+  PROJECTION_RESIDUAL        MATERIAL_ADVECTED RHO4_CONSTANT            True     2       0
+  PROJECTION_RESIDUAL        MATERIAL_ADVECTED RHOBR_CONSTANT           True     0       2
+  PROJECTION_SHAPE_DERIV     LAB_HELD          RHO4_CONSTANT            True     2       0
+  PROJECTION_SHAPE_DERIV     LAB_HELD          RHOBR_CONSTANT           True     2       0
+  PROJECTION_SHAPE_DERIV     MATERIAL_ADVECTED RHO4_CONSTANT            True     2       0
+  PROJECTION_SHAPE_DERIV     MATERIAL_ADVECTED RHOBR_CONSTANT           True     2       0
+  PROJECTION_STATIC_OPERAND  LAB_HELD          RHO4_CONSTANT            True     2       0
+  PROJECTION_STATIC_OPERAND  LAB_HELD          RHOBR_CONSTANT           True     2       0
+  PROJECTION_STATIC_OPERAND  MATERIAL_ADVECTED RHO4_CONSTANT            True     2       0
+  PROJECTION_STATIC_OPERAND  MATERIAL_ADVECTED RHOBR_CONSTANT           True     0       2
+  PROJECTION_TERM_ORIGINS    LAB_HELD          RHO4_CONSTANT            True     4       0
+  PROJECTION_TERM_ORIGINS    LAB_HELD          RHOBR_CONSTANT           True     4       0
+  PROJECTION_TERM_ORIGINS    MATERIAL_ADVECTED RHO4_CONSTANT            True     4       0
+  PROJECTION_TERM_ORIGINS    MATERIAL_ADVECTED RHOBR_CONSTANT           True     2       2
+  NOTE: MATERIAL_ADVECTED/RHOBR_CONSTANT nonzero here reflects the OMITTED background-advection
+        term d_t[rho_bg(chi)] = -grad(rho_bg).u (the sigma_W.u.dw1 piece); the theta-only identity
+        is INCOMPLETE for the advected branch -> this is the one from-spec question for the consult.
+
+########## ADDENDUM: Q1 finding-scenario probe (command grounding the "inert args" verdict) ##########
+# command: grep -oE "(Symbol|Function)\('mu_theta_[LM]_[a-z0-9]+'\)" comparator_run.out   -> (no output)
+# command: grep -oE "Derivative\([^)]*mu_theta[^)]*" comparator_run.out                    -> (no output)
+# => across all 37300 lines, WL NEVER differentiates mu_theta (0 in-plane/normal jets, 0 Derivative wrappers).
+#    mu_theta appears ONLY as bare Symbol('mu_theta_{L,M}') (PY) or applied
+#    Function('mu_theta_{L,M}')(x1,x2,x3,time) (WL) at the SAME 4 args. If WL treated mu_theta as an x-field
+#    the shape derivative would emit a d_x(mu_theta) jet; none exists -> evaluation-point args are inert.
+#    counts: mu_theta_L applied=1776 bare=1820 ; mu_theta_M applied=2686 bare=3378.

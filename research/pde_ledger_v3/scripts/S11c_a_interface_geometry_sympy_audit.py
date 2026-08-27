@@ -1150,6 +1150,8 @@ def projection_terms(
     rho_shape_t = dt(rho_shape)
     rho0 = finalize(density_pair(representative, W_bg)[0])
     current_divergence = sp.Add(*(grad_j_bulk[i][i] for i in range(3)))
+    # The face-less §1b bulk current remains a field of w under projection.
+    normal_current = sp.Function(j_bulk[3].name)(w)
 
     if dynamic:
         origins = {
@@ -1157,7 +1159,7 @@ def projection_terms(
             "PROJECTED_INPLANE_CURRENT": epsilon * sp.Integral(window_bg * current_divergence + sp.Add(*(j_bulk[i] * window_gradient[i] for i in range(3))), bounds),
             "DYNAMIC_WINDOW_TIME": -epsilon * sp.Integral(rho0 * delta_window_t, bounds),
             "DYNAMIC_WINDOW_INPLANE": -epsilon * sp.Integral(sp.Add(*(j_bulk[i] * window_gradient[i] for i in range(3))), bounds),
-            "WINDOW_NORMAL_CURRENT": -epsilon * sp.Integral(j_bulk[3] * window_normal, bounds),
+            "WINDOW_NORMAL_CURRENT": -epsilon * sp.Integral(normal_current * window_normal, bounds),
         }
     else:
         origins = {
@@ -1165,7 +1167,7 @@ def projection_terms(
             "PROJECTED_INPLANE_CURRENT": epsilon * sp.Integral(WINDOW_FLAT * current_divergence, bounds),
             "DYNAMIC_WINDOW_TIME": sp.Integer(0),
             "DYNAMIC_WINDOW_INPLANE": sp.Integer(0),
-            "WINDOW_NORMAL_CURRENT": -epsilon * sp.Integral(j_bulk[3] * (WINDOW_PLUS - WINDOW_MINUS), bounds),
+            "WINDOW_NORMAL_CURRENT": -epsilon * sp.Integral(normal_current * (WINDOW_PLUS - WINDOW_MINUS), bounds),
         }
     operand = sp.Add(*origins.values())
     return sp.factor_terms(operand), origins
@@ -1660,6 +1662,8 @@ def uniform_projection_reference(quantity: str) -> dict[object, object]:
     cases: dict[object, object] = {}
     bounds = (w, -sp.oo, sp.oo)
     current_divergence = sp.Add(*(grad_j_bulk[i][i] for i in range(3)))
+    # Reconstruct the same face-less §1b current independently for §5c.
+    normal_current = sp.Function(j_bulk[3].name)(w)
     rho0 = rho_br / W0
     for branch in BRANCHES:
         for dof in DOFS:
@@ -1672,14 +1676,14 @@ def uniform_projection_reference(quantity: str) -> dict[object, object]:
                 "PROJECTED_INPLANE_CURRENT": epsilon * sp.Integral(WINDOW_FLAT * current_divergence, bounds),
                 "DYNAMIC_WINDOW_TIME": -epsilon * sp.Integral(rho0 * delta_window_t, bounds),
                 "DYNAMIC_WINDOW_INPLANE": sp.Integer(0),
-                "WINDOW_NORMAL_CURRENT": -epsilon * sp.Integral(j_bulk[3] * (WINDOW_PLUS - WINDOW_MINUS), bounds),
+                "WINDOW_NORMAL_CURRENT": -epsilon * sp.Integral(normal_current * (WINDOW_PLUS - WINDOW_MINUS), bounds),
             }
             static_origins = {
                 "PROJECTED_MASS_TIME": epsilon * sp.Integral(WINDOW_FLAT * rho4_bulk_1_t, bounds),
                 "PROJECTED_INPLANE_CURRENT": epsilon * sp.Integral(WINDOW_FLAT * current_divergence, bounds),
                 "DYNAMIC_WINDOW_TIME": sp.Integer(0),
                 "DYNAMIC_WINDOW_INPLANE": sp.Integer(0),
-                "WINDOW_NORMAL_CURRENT": -epsilon * sp.Integral(j_bulk[3] * (WINDOW_PLUS - WINDOW_MINUS), bounds),
+                "WINDOW_NORMAL_CURRENT": -epsilon * sp.Integral(normal_current * (WINDOW_PLUS - WINDOW_MINUS), bounds),
             }
             dynamic = sp.Add(*dynamic_origins.values())
             static = sp.Add(*static_origins.values())

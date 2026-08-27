@@ -1,6 +1,33 @@
 # STATUS — where the Path-A program is (single front door)
 
-## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 5: THREE §3c-class engine defects now FIXED — shifted-trace (PY `c36beac4`) + free-premise background current (WL `6fae82b8`) + current-freezing (PY `49b5c525`). The projection integrand was NOT "mechanical" — it was finding #3 (PY froze the perturbation current in the projection), caught ONLY because the user flagged a "field-name map" as a trap. 11 tag-families reconcile to 0; CONORMAL verdict A; controls measured CLEAN. OPEN = the DEFERRED comparator (rev-1 drew ~14 defects) → the full cross-engine T7 result (which will DETERMINE whether the projection agrees post-fix) → step record
+## ⭐⭐⭐ CURRENT FRONT — S11c-a T7 STEP 5: REVIEWED CROSS-ENGINE COMPARATOR BUILT + RUN — THE TWO ENGINES AGREE. All 39 families diffed by a durable, 2-build-legs-cleared instrument (`50f43123`, PY transcript `afdc8158`). After rule-13 classification, EVERY cross-engine residual reduces to a REPRESENTATIONAL difference, not physics: WL writes face-evaluated bulk quantities (μ_θ^α, δj, δρ=ρ_br·θ) as APPLIED FUNCTIONS of x while PY uses BARE SYMBOLS; CONORMAL is the known §3c verdict-A form. Three §3c-class engine defects already fixed (shifted-trace PY `c36beac4`, free-premise bg-current WL `6fae82b8`, current-freezing PY `49b5c525`). OPEN = (1) from-spec ADJUDICATE that the representational identities are benign (are WL's face-eval args inert? — the #3-pattern name-map trap), (2) characterize the control battery (bite/hold), (3) step record + family card pinning the schema for S11c-b..e.
+
+⭐⭐⭐ **T7 CROSS-ENGINE COMPARATOR — BUILT + 2 BUILD LEGS PASS + COMMITTED `50f43123` (2026-08-27); RESULT: ENGINES AGREE.**
+- **Instrument:** `research/pde_ledger_v3/scripts/S11c_a_cross_engine_comparator.py` (+ synthetic tests). Reads
+  the two committed transcripts (PY `scripts/out/S11c_a_interface_geometry_sympy_audit.out` `afdc8158`, WL
+  `mathematica/out/…`), and per case prints operand_A(PY)/operand_B(WL)/A−B + per-family accounting. rule 2:
+  computes+prints, decides nothing. 6714 triples, exit 0.
+- **THE PIVOT (rule 15):** the prose build directive FAILED THREE independent-leg rounds (rev-1 ~14, rev-2 ~8,
+  rev-3 more) — the instrument is 39 bespoke per-family schemas that cannot be pre-enumerated in prose
+  ("2 failed designs = wrong shape"). rev-4 = a BUILD BRIEF that locks the thrice-reviewed physics folds,
+  DROPS the (B) held-context diagnostic (last #3-trap), reuses S11b's typed `residual`, and DELEGATES
+  per-family extraction to the builder with mandatory accounting. Codex discovered the schemas from the
+  payloads and surfaced the real axis mismatches honestly (FACE_SHIFT WL-missing-DENSITY, ADMISSIBILITY
+  PY-missing-BRANCH, CONTROL_FORM 528/960) rather than manufacturing matches.
+- **2 build legs (fresh Claude + Grok) CLEAR it with FORM-ablation teeth:** the current fold is a strict
+  arity-preserving AST-head rename (arg-strip ablation collapses to the exact #3 false-agreement → teeth);
+  the integral canon is a capture-safe BoundIntegral (bound-equality ablation collapses a real disagreement);
+  object-nested controls extract; no asserts on measured payloads, no verdict emitted, MU per-branch, CONORMAL
+  raw. Non-blocking: PROJECTION_TERM_ORIGINS labels DYNAMIC/STATIC positionally (symmetric → can only surface a
+  false DISagreement, never false agreement).
+- **RESULT (rule-13-classified; detail SCOUT §24):** 8 physics families reconcile to exactly 0; TRACTION /
+  CLOSURE / VIRTUAL_WORK are notational-only (collapse μ_θ(x)→μ_θ ⇒ residual 0 — the whole TRACTION residual
+  is `coeff·(mu_theta_L − mu_theta_L(x1,x2,x3,time))`); PROJECTION reduces under collapse + full integral linearity
+  to the density-time term δρ_4D vs ρ_br·θ; CONORMAL = §3c verdict-A. ⭐ The OLD reference reconciler had HIDDEN
+  the μ_θ difference by arg-STRIPPING (the FIELD `AppliedUndef→Symbol` smuggle) — the honest arg-preserving
+  comparator SURFACES it. NO genuine physics disagreement (pending the adjudication of the representational
+  identities). NEXT = adjudicate (are WL's face-eval args inert per §3a/§1b + is δρ=ρ_br·θ) → controls
+  bite/hold → step record.
 
 ⭐⭐⭐ **T7 CURRENT-FREEZING FINDING (#3) — FIXED + COMMITTED `49b5c525` (2026-08-26).** The projection
 integrand — which the prior roadmap filed as a "mechanical bridge, NOT a finding" — was a REAL PY defect,
@@ -23,10 +50,10 @@ trace language is scoped to TRACED face fields, NOT the bulk current under the `
   comparator directive). Both caught by the 2-leg directive gate BEFORE any build. ⛔ A §5c uniform-limit
   "corroboration" was RETRACTED as a non-simplified-zero false alarm (a CAS-integral zero-test needs INTEGRAL
   LINEARITY, not expand/cancel).
-- ⚠ The ULTIMATE cross-engine projection AGREEMENT (PY now == WL) is NOT yet computed — needs the current name
+- ⚠ [SUPERSEDED by the front block — the comparator IS built + run 50f43123] The ULTIMATE cross-engine projection AGREEMENT was NOT yet computed AT THAT TIME — needs the current name
   map (LEGITIMATE now: both engines carry the same w-dependent δj_w) + ITG/IBP canon = the DEFERRED comparator.
 
-⭐⭐ **COMPARATOR DEFERRED (2026-08-26 — user chose "lean measurement first, then batch fixes").** The rev-1 build
+⭐⭐ **[SUPERSEDED — comparator BUILT + committed 50f43123 on 2026-08-27; see front block] COMPARATOR DEFERRED (2026-08-26 — user chose "lean measurement first, then batch fixes").** The rev-1 build
 directive (uncommitted WIP `directives/S11c_a_comparator_build_directive.md` +twin +review leg) drew ~14 defects
 from its own 2-leg gate: WRONG PY input (`exports.py` is a LEDGER; real PY = an uncommitted scratch transcript — now the FIXED `~/.s11_build/S11c_a_py_fixed_run2.out` (47 tags,
 post-`49b5c525`), loaded by a `measure_reconcile.py` in the PREVIOUS session's /tmp),

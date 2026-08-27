@@ -1,5 +1,18 @@
 # S11c-a T7 comparator — CROSS-ENGINE RECONCILIATION plan (post-compact roadmap)
 
+## ⭐⭐⭐ DONE — COMPARATOR BUILT + RUN, ENGINES AGREE (2026-08-27, `50f43123`) — this plan is CLOSED; see below
+The reviewed comparator (`scripts/S11c_a_cross_engine_comparator.py`, 2 build legs PASS) diffed all 39
+families. THE TWO ENGINES AGREE: after rule-13 classification every residual is REPRESENTATIONAL (WL writes
+face-eval bulk quantities μ_θ^α/δj as APPLIED FUNCTIONS of x, PY as BARE SYMBOLS; δρ=ρ_br·θ; CONORMAL §3c
+verdict-A), NO genuine physics disagreement. ⭐ Built via the rule-15 pivot — the prose directive failed THREE
+leg rounds, so rev-4 was a build brief that DELEGATED per-family extraction to the builder with mandatory
+accounting. PY transcript committed `afdc8158`. Detail: SCOUT `~/.s11_build/S11c_a_T7_SCOUT_FINDINGS.md` §§23–24;
+STATUS.md front; memory `project_s11c_a_state`. OPEN = (1) from-spec ADJUDICATE the representational identities
+are benign (are WL's face-eval args inert per §3a/§1b? is δρ=ρ_br·θ?) — the #3-pattern name-map trap; (2)
+characterize the control battery (bite/hold); (3) step record + family card. The blocks below are the
+superseded planning history.
+
+
 ## ⭐ PROGRESS (updated 2026-08-26 — Step 5 coverage + CONORMAL/PROJECTION adjudications committed aef0ed36)
 - **Step 0 (feasibility/adjudication matrix): DONE, committed `3c7f9137`** —
   `S11c_a_T7_adjudication_matrix.md` (+ twin + census `_measurements/s11ca_t7_census/`), 2 legs + fold.

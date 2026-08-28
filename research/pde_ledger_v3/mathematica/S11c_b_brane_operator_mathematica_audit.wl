@@ -148,6 +148,9 @@ gradeTerms[expression_] := Module[{coefficient, grades, operators,
   If[grades === {}, {}, DeleteDuplicates[Sort[First[grades]]]]
 ];
 
+withEpsilonGrade[expression_, epsilonOrder_Integer] :=
+  ({epsilonOrder, #[[1]], #[[2]]} & /@ gradeTerms[expression]);
+
 objectRecord[expression_, dimension_, epsilonOrder_:1] := Module[
   {computed, grades},
   computed = truncateBackground[expression];
@@ -217,10 +220,20 @@ lambdaXResponse = lambdaXZero/(1 - I frequency tauX);
 
 uVector = Through[{uOne, uTwo, uThree}[
     xOne, xTwo, xThree, time]];
-uTransverseVector = Through[{uTransverseOne, uTransverseTwo,
-    uTransverseThree}[xOne, xTwo, xThree, time]];
-uLongitudinalVector = Through[{uLongitudinalOne, uLongitudinalTwo,
-    uLongitudinalThree}[xOne, xTwo, xThree, time]];
+transverseTrialPotentialVector = Through[{transverseTrialPotentialOne,
+    transverseTrialPotentialTwo, transverseTrialPotentialThree}[
+      xOne, xTwo, xThree, time]];
+transverseTestPotentialVector = Through[{transverseTestPotentialOne,
+    transverseTestPotentialTwo, transverseTestPotentialThree}[
+      xOne, xTwo, xThree, time]];
+longitudinalTrialPotentialField = longitudinalTrialPotential[
+  xOne, xTwo, xThree, time];
+longitudinalTestPotentialField = longitudinalTestPotential[
+  xOne, xTwo, xThree, time];
+thetaTrialField = thetaTrial[xOne, xTwo, xThree, time];
+thetaTestField = thetaTest[xOne, xTwo, xThree, time];
+ewTrialField = ewTrial[xOne, xTwo, xThree, time];
+ewTestField = ewTest[xOne, xTwo, xThree, time];
 virtualUVector = Through[{virtualUOne, virtualUTwo, virtualUThree}[
     xOne, xTwo, xThree, time]];
 thetaField = thetaWave[xOne, xTwo, xThree, time];
@@ -237,6 +250,21 @@ curl[vector_] := {
   D[vector[[3]], xTwo] - D[vector[[2]], xThree],
   D[vector[[1]], xThree] - D[vector[[3]], xOne],
   D[vector[[2]], xOne] - D[vector[[1]], xTwo]};
+
+functionAtCoordinates[expression_] := Function[Evaluate[
+  expression /. Thread[Append[spatialCoordinates, time] ->
+    {#1, #2, #3, #4}]]];
+
+waveFieldHeadRules[uReplacement_List, thetaReplacement_, ewReplacement_,
+    centerReplacement_:0, upperPressureReplacement_:0,
+    lowerPressureReplacement_:0] := Join[
+  MapThread[#1 -> functionAtCoordinates[#2] &,
+    {{uOne, uTwo, uThree}, uReplacement}],
+  {thetaWave -> functionAtCoordinates[thetaReplacement],
+    eWave -> functionAtCoordinates[ewReplacement],
+    zetaCenter -> functionAtCoordinates[centerReplacement],
+    pressureUpper -> functionAtCoordinates[upperPressureReplacement],
+    pressureLower -> functionAtCoordinates[lowerPressureReplacement]}];
 
 eulerScalar[density_, field_] := D[density, field] -
   Sum[D[D[density, D[field, spatialCoordinates[[index]]]],
@@ -298,6 +326,39 @@ profileRules[source_String, direction_Integer] := Module[
     profileDerivativeRules[heads[[2]], modulusValue, modulusJets,
       (muR/WZero) sigmaW, modulusCut]]
 ];
+
+profileJetSymbol["W_BG", {1, 0, 0}] := w1JetOne;
+profileJetSymbol["W_BG", {0, 1, 0}] := w1JetTwo;
+profileJetSymbol["W_BG", {0, 0, 1}] := w1JetThree;
+profileJetSymbol["MU_R_BG", {1, 0, 0}] := m1JetOne;
+profileJetSymbol["MU_R_BG", {0, 1, 0}] := m1JetTwo;
+profileJetSymbol["MU_R_BG", {0, 0, 1}] := m1JetThree;
+profileJetSymbol["W_BG", orders_List] := widthProfileJet @@ orders;
+profileJetSymbol["MU_R_BG", orders_List] := modulusProfileJet @@ orders;
+
+profileRulesRetainingGeneratedJets[] := Module[{orders},
+  Flatten[Table[
+    orders = {i, j, k};
+    Which[
+      i + j + k == 0,
+        {widthBase[Sequence @@ spatialCoordinates] -> widthValue,
+          modulusBase[Sequence @@ spatialCoordinates] -> modulusValue},
+      i + j + k >= 1,
+        {Derivative[i, j, k][widthBase][
+            Sequence @@ spatialCoordinates] ->
+            sigmaW profileJetSymbol["W_BG", orders]/
+              LWidth^(i + j + k - 1),
+          Derivative[i, j, k][modulusBase][
+            Sequence @@ spatialCoordinates] ->
+            (muR/WZero) sigmaW
+              profileJetSymbol["MU_R_BG", orders]/
+              LWidth^(i + j + k - 1)},
+      True, Nothing],
+    {i, 0, 3}, {j, 0, 3}, {k, 0, 3}]]
+];
+
+applyBackgroundProfileWithGeneratedJets[expression_] :=
+  truncateBackground[expression /. profileRulesRetainingGeneratedJets[]];
 
 applyProfile[expression_, source_String:"BASE", direction_Integer:0] :=
   truncateBackground[expression /. profileRules[source, direction]];
@@ -462,6 +523,57 @@ constructEnergyData[branch_String, widthHead_Symbol,
     "ENERGY" -> Total[allRecords[[All, "ENERGY_TERM"]]],
     "ANCHORED_WIDTH" -> anchoredWidth /. waveOrder -> 0,
     "ANCHORED_MODULUS" -> anchoredModulus /. waveOrder -> 0|>
+];
+
+constructFullFieldBackgroundEnergy[branch_String, widthHead_Symbol,
+    modulusHead_Symbol] := Module[
+  {order, anchoredWidth, anchoredModulus, uVariation, thetaVariation,
+    ewVariation, localEw, fullWidth, gradTheta, gradLocalEw, divU,
+    curlU, uniformInvariants, uniformCoefficients, uniformFactors,
+    uniformTerms, widthSpurion, modulusSpurion, newTerms},
+  order = backgroundOrder;
+  anchoredWidth = backgroundAnchor[branch, widthHead, order];
+  anchoredModulus = backgroundAnchor[branch, modulusHead, order];
+  uVariation = order uVector;
+  thetaVariation = order thetaField;
+  ewVariation = order eWField;
+  localEw = (WZero/anchoredWidth) ewVariation;
+  fullWidth = anchoredWidth + WZero ewVariation;
+  gradTheta = gradient[thetaVariation];
+  gradLocalEw = gradient[localEw];
+  divU = divergence[uVariation];
+  curlU = curl[uVariation];
+
+  uniformInvariants = {
+    Dot[curlU, curlU],
+    divU^2,
+    thetaVariation^2,
+    localEw^2,
+    thetaVariation localEw,
+    Dot[gradTheta, gradTheta],
+    anchoredWidth^(-2) Dot[gradient[fullWidth], gradient[fullWidth]],
+    Dot[gradTheta, gradLocalEw],
+    thetaVariation divU,
+    localEw divU};
+  uniformCoefficients = {
+    anchoredModulus, modulusDivU, bRho anchoredWidth,
+    kW anchoredWidth^2, cCross anchoredWidth,
+    gradientThetaCoefficient, kappaW anchoredWidth^4,
+    gradientThetaEwCoefficient, thetaDivUCoefficient,
+    ewDivUCoefficient anchoredWidth/WZero};
+  uniformFactors = {1/2, 1/2, 1/2, 1/2, 1, 1/2, 1/2, 1, 1, 1};
+  uniformTerms = MapThread[#1 #2 #3 &,
+    {uniformFactors, uniformCoefficients, uniformInvariants}];
+
+  widthSpurion = gradient[anchoredWidth]/WZero;
+  modulusSpurion = gradient[anchoredModulus]/muR;
+  newTerms = Flatten[Table[MapThread[Times,
+      {newCoefficientSymbols[sourceName],
+        newInvariantExpressions[
+          If[sourceName === "W_BG", widthSpurion, modulusSpurion],
+          uVariation, thetaVariation, ewVariation]}],
+    {sourceName, profileSources}], 1];
+  Total[Join[uniformTerms, newTerms][[basisRepresentativeIndices]]]
 ];
 
 fieldAlgebraRules = Join[
@@ -843,7 +955,11 @@ evaluatedModel[route_String, branch_String, density_String,
     "THETA_VARIATION_RULE" -> rows["THETA_VARIATION_RULE"],
     "MU_THETA" -> rows["MU_THETA"], "OPERATOR" -> operator,
     "ORIGINS" -> origins, "FACE_SUBSTRATE" -> facesData,
-    "DIVERGENCE_FORM_SOURCE" -> divergenceSource|>
+    "DIVERGENCE_FORM_SOURCE" -> divergenceSource,
+    "CONSTRUCTION_METADATA" -> <|"ROUTE" -> route,
+      "BRANCH" -> branch, "DENSITY" -> density,
+      "SOURCE" -> source, "DIRECTION" -> direction,
+      "CORRUPTED" -> corrupted|>|>
 ];
 
 modelDimensions = <|
@@ -891,85 +1007,149 @@ modelRecord[model_Association] := <|
     faceSubstrateRecord[model["FACE_SUBSTRATE"]]|>;
 
 (* ---------------------------------------------------------------------- *)
-(* Local curl/div block extraction and variational adjoint operands.      *)
+(* Weak local differential-sector restrictions and adjoint operands.     *)
 (* ---------------------------------------------------------------------- *)
 
-sectorSubstitution = Thread[uVector ->
-  (uTransverseVector + uLongitudinalVector)];
+transverseTrialVector = curl[transverseTrialPotentialVector];
+transverseTestVector = curl[transverseTestPotentialVector];
+longitudinalTrialVector = gradient[longitudinalTrialPotentialField];
+longitudinalTestVector = gradient[longitudinalTestPotentialField];
 
-localSectorRules = {
-  divergence[uTransverseVector] -> 0,
-  curl[uLongitudinalVector] -> {0, 0, 0}};
-
-linearPartIn[expression_, fields_List] := Module[{parameter},
-  parameter = sectorOrder;
-  D[expression /. Thread[fields -> parameter fields], parameter] /.
-    parameter -> 0
+linearRestrictedOperator[operator_Association, trialU_List, trialTheta_,
+    trialEw_] := Module[{rules, scaled},
+  rules = waveFieldHeadRules[sectorOrder trialU,
+    sectorOrder trialTheta, sectorOrder trialEw];
+  scaled = operator /. rules;
+  Map[(D[#, sectorOrder] /. sectorOrder -> 0) &, scaled]
 ];
 
-extractCoupling[model_Association] := Module[
-  {operator, substituted, transverseInputRules, thicknessInputRules,
-    transverseToThickness, thicknessToTransverse, energy,
-    mixedForward, mixedReverse, transverseProbe, thicknessProbe,
-    fieldScaleRules, probeScaleRules},
-  operator = model["OPERATOR"];
-  substituted = operator /. sectorSubstitution;
-  transverseInputRules = Join[
-    {thetaField -> 0, eWField -> 0},
-    Thread[uLongitudinalVector -> 0]];
-  thicknessInputRules = Thread[uTransverseVector -> 0];
-  transverseToThickness = <|
-    "MASS_ROW" -> (substituted["MASS_EVOLUTION_ROW"] /.
-      transverseInputRules /. localSectorRules),
-    "THICKNESS_ROW" -> (substituted["THICKNESS_ROW"] /.
-      transverseInputRules /. localSectorRules),
-    "LOCAL_DIVERGENCE_OF_U_ROW" ->
-      Inactive[Div][substituted["U_MOMENTUM_ROWS"] /.
-        transverseInputRules /. localSectorRules,
-        spatialCoordinates]|>;
-  thicknessToTransverse = <|
-    "LOCAL_CURL_OF_U_ROW" ->
-      Inactive[Curl][substituted["U_MOMENTUM_ROWS"] /.
-        thicknessInputRules /. localSectorRules,
-        spatialCoordinates]|>;
+weakPairTerm[test_,
+    coefficient_. Inactive[Div][flux_, coordinates_List]] /;
+      SameQ[coordinates, spatialCoordinates] :=
+  -Dot[gradient[coefficient test], flux];
+weakPairTerm[test_, term_] := test term;
 
-  energy = model["ENERGY"] /. sectorSubstitution;
-  transverseProbe = probeOrder;
-  thicknessProbe = sectorOrder;
-  fieldScaleRules = Thread[uTransverseVector ->
-    transverseProbe uTransverseVector];
-  probeScaleRules = Join[
-    Thread[uLongitudinalVector -> thicknessProbe uLongitudinalVector],
-    {thetaField -> thicknessProbe thetaField,
-      eWField -> thicknessProbe eWField}];
-  mixedForward = D[D[energy /. fieldScaleRules /.
-      probeScaleRules, transverseProbe], thicknessProbe] /.
-      {transverseProbe -> 0, thicknessProbe -> 0};
-  mixedReverse = D[D[energy /. fieldScaleRules /.
-      probeScaleRules, thicknessProbe], transverseProbe] /.
-      {transverseProbe -> 0, thicknessProbe -> 0};
+topLevelTerms[row_] := If[Head[row] === Plus, List @@ row, {row}];
+divergenceTermQ[term_] := MatchQ[term,
+  HoldPattern[coefficient_. Inactive[Div][flux_, coordinates_List]] /;
+    SameQ[coordinates, spatialCoordinates]];
+
+weakPairScalar[test_, row_] := Module[{terms},
+  terms = topLevelTerms[row];
+  Total[weakPairTerm[test, #] & /@ terms]
+];
+weakPairVector[test_List, rows_List] := Total[
+  MapThread[weakPairScalar, {test, rows}]];
+
+splitDivergenceRows[rows_List] := Module[{termRows, divergenceRows,
+    directRows},
+  termRows = topLevelTerms /@ rows;
+  divergenceRows = Select[#, divergenceTermQ] & /@ termRows;
+  directRows = Total[Select[#, !divergenceTermQ[#] &]] & /@ termRows;
+  {divergenceRows, directRows}
+];
+
+weakLongitudinalPair[potential_, testVector_List, rows_List] := Module[
+  {split, divergenceRows, directRows, divergencePairing},
+  split = splitDivergenceRows[rows];
+  divergenceRows = split[[1]];
+  directRows = split[[2]];
+  divergencePairing = Total[MapThread[
+    Function[{test, terms}, Total[weakPairTerm[test, #] & /@ terms]],
+    {testVector, divergenceRows}]];
+  divergencePairing - potential divergence[directRows]
+];
+
+weakTransversePair[potentialVector_List, testVector_List,
+    rows_List] := Module[
+  {split, divergenceRows, directRows, divergencePairing},
+  split = splitDivergenceRows[rows];
+  divergenceRows = split[[1]];
+  directRows = split[[2]];
+  divergencePairing = Total[MapThread[
+    Function[{test, terms}, Total[weakPairTerm[test, #] & /@ terms]],
+    {testVector, divergenceRows}]];
+  divergencePairing + Dot[potentialVector, curl[directRows]]
+];
+
+weakPairingRecord[density_] := <|
+  "PAIRING_DENSITY_MODULO_COMPACT_SUPPORT_IBP" -> density,
+  "IN_PLANE_BOUNDARY_TERM" -> 0,
+  "SUPPORT" -> CompactInPlaneSupport|>;
+
+extractCoupling[model_Association] := Module[
+  {operator, transverseRows, thicknessRows, transverseToThickness,
+    thicknessToTransverse, forwardDensity, reverseDensity,
+    reverseRelabelRules,
+    reverseRelabeledDensity, adjointnessResidual},
+  operator = model["OPERATOR"];
+  transverseRows = linearRestrictedOperator[operator,
+    transverseTrialVector, 0, 0];
+  thicknessRows = linearRestrictedOperator[operator,
+    longitudinalTrialVector, thetaTrialField, ewTrialField];
+
+  forwardDensity =
+    weakPairScalar[thetaTestField,
+      transverseRows["MASS_EVOLUTION_ROW"]] +
+    weakPairScalar[ewTestField, transverseRows["THICKNESS_ROW"]] +
+    weakLongitudinalPair[longitudinalTestPotentialField,
+      longitudinalTestVector,
+      transverseRows["U_MOMENTUM_ROWS"]];
+  reverseDensity =
+    weakTransversePair[transverseTestPotentialVector,
+      transverseTestVector,
+      thicknessRows["U_MOMENTUM_ROWS"]];
+  reverseRelabelRules = {
+    transverseTestPotentialOne -> functionAtCoordinates[
+      transverseTrialPotentialVector[[1]]],
+    transverseTestPotentialTwo -> functionAtCoordinates[
+      transverseTrialPotentialVector[[2]]],
+    transverseTestPotentialThree -> functionAtCoordinates[
+      transverseTrialPotentialVector[[3]]],
+    longitudinalTrialPotential -> functionAtCoordinates[
+      longitudinalTestPotentialField],
+    thetaTrial -> functionAtCoordinates[thetaTestField],
+    ewTrial -> functionAtCoordinates[ewTestField]};
+  reverseRelabeledDensity = reverseDensity /. reverseRelabelRules;
+  adjointnessResidual = forwardDensity - reverseRelabeledDensity;
+
+  transverseToThickness = <|
+    "WEAK_PAIRING" -> weakPairingRecord[forwardDensity],
+    "TEST_FIELDS" -> <|"THETA" -> thetaTestField,
+      "E_W" -> ewTestField, "U_L" -> longitudinalTestVector|>|>;
+  thicknessToTransverse = <|
+    "WEAK_PAIRING" -> weakPairingRecord[reverseRelabeledDensity],
+    "TEST_FIELD" -> transverseTestVector,
+    "FORMAL_ADJOINT_RELABELING" -> reverseRelabelRules,
+    "RELABELLED_WEAK_PAIRING_DENSITY" -> reverseRelabeledDensity|>;
   <|"TRANSVERSE_TO_THETA_EW_UL" -> transverseToThickness,
     "THETA_EW_UL_TO_TRANSVERSE" -> thicknessToTransverse,
-    "ADJOINTNESS_OPERAND_FORWARD" -> mixedForward,
-    "ADJOINTNESS_OPERAND_REVERSE" -> mixedReverse,
-    "ADJOINTNESS_RELATION" -> relationalObject[mixedForward,
-      mixedReverse],
-    "ADJOINTNESS_RESIDUAL" -> (mixedForward - mixedReverse),
+    "ADJOINTNESS_OPERAND_FORWARD" -> weakPairingRecord[forwardDensity],
+    "ADJOINTNESS_OPERAND_REVERSE" ->
+      weakPairingRecord[reverseRelabeledDensity],
+    "ADJOINTNESS_RELATION" -> relationalObject[forwardDensity,
+      reverseRelabeledDensity],
+    "ADJOINTNESS_RESIDUAL" -> weakPairingRecord[adjointnessResidual],
     "SECTOR_LABELS" -> <|
-      "TRANSVERSE" -> Inactive[Curl][uTransverseVector,
-        spatialCoordinates],
-      "LONGITUDINAL" -> Inactive[Div][uLongitudinalVector,
-        spatialCoordinates]|>|>
+      "TRANSVERSE_TRIAL" -> transverseTrialVector,
+      "TRANSVERSE_TEST" -> transverseTestVector,
+      "LONGITUDINAL_TRIAL" -> longitudinalTrialVector,
+      "LONGITUDINAL_TEST" -> longitudinalTestVector,
+      "TRANSVERSE_CONSTRAINTS" -> {
+        relationalObject[divergence[transverseTrialVector], 0],
+        relationalObject[divergence[transverseTestVector], 0]},
+      "LONGITUDINAL_CONSTRAINTS" -> {
+        relationalObject[curl[longitudinalTrialVector], {0, 0, 0}],
+        relationalObject[curl[longitudinalTestVector], {0, 0, 0}]},
+      "PAIRING_DOMAIN" -> CompactInPlaneSupport|>|>
 ];
 
 kernelDimensions = <|
   "TRANSVERSE_TO_THETA_EW_UL" -> <|
-    "MASS_ROW" -> dimensionMassEvolution,
-    "THICKNESS_ROW" -> dimensionThicknessRow,
-    "LOCAL_DIVERGENCE_OF_U_ROW" ->
-      dimensionBulkForce - dimensionL|>,
+    "WEAK_PAIRING" -> dimensionEnergy|>,
   "THETA_EW_UL_TO_TRANSVERSE" -> <|
-    "LOCAL_CURL_OF_U_ROW" -> dimensionBulkForce - dimensionL|>,
+    "WEAK_PAIRING" -> dimensionEnergy,
+    "RELABELLED_WEAK_PAIRING_DENSITY" -> dimensionEnergy|>,
   "ADJOINTNESS_OPERANDS" -> dimensionEnergy|>;
 
 kernelRecord[kernel_Association] := <|
@@ -977,6 +1157,38 @@ kernelRecord[kernel_Association] := <|
   "MULTIGRADE_EPSILON_ETA_SIGMAW" ->
     (gradeTerms[kernel] /. {a_, b_} :> {1, a, b}),
   "DIMENSION_L_T_M" -> kernelDimensions|>;
+
+removeZeroInactiveDivergences[expression_] := FixedPoint[
+  ReplaceAll[#, divergenceObject : Inactive[Div][vector_List,
+      coordinates_List] :> If[
+        SameQ[coordinates, spatialCoordinates] &&
+          AllTrue[vector, PossibleZeroQ], 0, divergenceObject]] &,
+  expression];
+
+simplifyWeakKernel[kernel_Association] := Module[
+  {forward, reverse, residual, forwardBlock, reverseBlock},
+  forward = FullSimplify[
+    removeZeroInactiveDivergences[
+      kernel["TRANSVERSE_TO_THETA_EW_UL"]["WEAK_PAIRING"][
+        "PAIRING_DENSITY_MODULO_COMPACT_SUPPORT_IBP"]]];
+  reverse = FullSimplify[
+    removeZeroInactiveDivergences[
+      kernel["THETA_EW_UL_TO_TRANSVERSE"]["WEAK_PAIRING"][
+        "PAIRING_DENSITY_MODULO_COMPACT_SUPPORT_IBP"]]];
+  residual = FullSimplify[forward - reverse];
+  forwardBlock = Join[kernel["TRANSVERSE_TO_THETA_EW_UL"], <|
+    "WEAK_PAIRING" -> weakPairingRecord[forward]|>];
+  reverseBlock = Join[kernel["THETA_EW_UL_TO_TRANSVERSE"], <|
+    "WEAK_PAIRING" -> weakPairingRecord[reverse],
+    "RELABELLED_WEAK_PAIRING_DENSITY" -> reverse|>];
+  Join[kernel, <|
+    "TRANSVERSE_TO_THETA_EW_UL" -> forwardBlock,
+    "THETA_EW_UL_TO_TRANSVERSE" -> reverseBlock,
+    "ADJOINTNESS_OPERAND_FORWARD" -> weakPairingRecord[forward],
+    "ADJOINTNESS_OPERAND_REVERSE" -> weakPairingRecord[reverse],
+    "ADJOINTNESS_RELATION" -> relationalObject[forward, reverse],
+    "ADJOINTNESS_RESIDUAL" -> weakPairingRecord[residual]|>]
+];
 
 kernelFromOrigin[originOperator_Association] := Module[{fakeModel},
   fakeModel = <|"OPERATOR" -> <|
@@ -1113,30 +1325,25 @@ Clear[kernelOriginsPayload];
 (* Background-order admissibility pairing.                               *)
 (* ---------------------------------------------------------------------- *)
 
-zeroField[___] := 0;
-zeroWaveRules = Thread[
-  {uOne, uTwo, uThree, thetaWave, eWave, zetaCenter,
-    pressureUpper, pressureLower} -> zeroField];
-
 backgroundBalanceFromModel[model_Association] := Module[
-  {energy, scaledEnergy, firstVariation, bodyRows, faceTractions},
-  energy = model["ENERGY"];
-  scaledEnergy = energy /. Join[
-    Thread[uVector -> backgroundOrder uVector],
-    {thetaField -> backgroundOrder thetaField,
-      eWField -> backgroundOrder eWField}];
-  firstVariation = D[scaledEnergy, backgroundOrder] /.
+  {branch, fullFieldEnergy, firstVariation, bodyRows, ewBodyForce,
+    faceTractions},
+  branch = model["CONSTRUCTION_METADATA"]["BRANCH"];
+  fullFieldEnergy = constructFullFieldBackgroundEnergy[branch,
+    widthBase, modulusBase];
+  firstVariation = D[fullFieldEnergy, backgroundOrder] /.
     backgroundOrder -> 0;
   bodyRows = <|
-    "U" -> (eulerVector[firstVariation, uVector] /. zeroWaveRules),
-    "THETA" -> (eulerScalar[firstVariation, thetaField] /.
-      zeroWaveRules),
-    "E_W" -> (eulerScalar[firstVariation, eWField] /.
-      zeroWaveRules)|>;
+    "U" -> applyBackgroundProfileWithGeneratedJets[
+      eulerVector[firstVariation, uVector]],
+    "THETA" -> applyBackgroundProfileWithGeneratedJets[
+      eulerScalar[firstVariation, thetaField]],
+    "E_W" -> applyBackgroundProfileWithGeneratedJets[
+      eulerScalar[firstVariation, eWField]]|>;
+  ewBodyForce = bodyRows["E_W"];
   faceTractions = AssociationMap[Function[face,
     With[{normal = model["FACE_SUBSTRATE"][face]["NORMAL"]},
-      -((model["FACE_SUBSTRATE"][face]["TRACTION_PRESSURE"] /.
-          zeroWaveRules /. muThetaReserved -> 0) normal)]],
+      truncateBackground[(ewBodyForce/WZero) normal]]],
     {"UPPER", "LOWER"}];
   <|"BULK_DOF_BODY_FORCE" -> bodyRows,
     "PER_FACE_TRACTION" -> faceTractions|>
@@ -1144,10 +1351,9 @@ backgroundBalanceFromModel[model_Association] := Module[
 
 admissibilityOperatorPayload = Map[Function[model, <|
   "BACKGROUND_ORDER_BALANCE" -> backgroundBalanceFromModel[model],
-  "ORDER_SOURCE" -> backgroundFirstVariationAtBZero,
+  "ORDER_SOURCE" -> fullFieldBackgroundFirstVariationAtBZero,
   "MULTIGRADE_EPSILON_ETA_SIGMAW" ->
-    (gradeTerms[backgroundBalanceFromModel[model]] /.
-      {a_, b_} :> {0, a, b}),
+    withEpsilonGrade[backgroundBalanceFromModel[model], 0],
   "DIMENSION_L_T_M" -> <|
     "BULK_DOF_BODY_FORCE" -> <|"U" -> dimensionBulkForce,
       "THETA" -> dimensionEnergy, "E_W" -> dimensionEnergy|>,
@@ -1187,7 +1393,7 @@ admissibilityResidualPayload = AssociationMap[Function[key, Module[
   residual = mapDifference[operator, support];
   <|"RESIDUAL_OPERATOR_MINUS_SUPPORT" -> residual,
     "MULTIGRADE_EPSILON_ETA_SIGMAW" ->
-      (gradeTerms[residual] /. {a_, b_} :> {0, a, b}),
+      withEpsilonGrade[residual, 0],
     "DIMENSION_L_T_M" -> admissibilitySupportPayload[key][
       "DIMENSION_L_T_M"]|>
 ]], Keys[admissibilityOperatorPayload]];
@@ -1459,22 +1665,19 @@ uniformS11bModel[] := Module[
     "OPERATOR" -> operator|>
 ];
 
-uniformLimit[expression_] := expression /. {etaBg -> 0, sigmaW -> 0};
+uniformLimit[expression_] := truncateBackground[
+  expression /. {etaBg -> 0, sigmaW -> 0}];
 
 planeWaveCoefficient[expression_] := Module[{rules, reduced},
-  rules = Join[
-    Thread[uTransverseVector -> {0, transverseAmplitude
-      Exp[I (waveNumber xOne - frequency time)], 0}],
-    Thread[uLongitudinalVector -> {0, 0, 0}],
-    {thetaField -> 0, eWField -> 0, zetaCenterField -> 0,
-      pressureUpper[___] -> 0, pressureLower[___] -> 0}];
-  reduced = expression /. sectorSubstitution /. rules;
+  rules = waveFieldHeadRules[{0, transverseAmplitude
+      Exp[I (waveNumber xOne - frequency time)], 0}, 0, 0];
+  reduced = expression /. rules;
   Together[reduced[[2]]/
     (transverseAmplitude Exp[I (waveNumber xOne - frequency time)])]
 ];
 
 uniformS11b = uniformS11bModel[];
-uniformS11bKernel = extractCoupling[uniformS11b];
+uniformS11bKernel = simplifyWeakKernel[extractCoupling[uniformS11b]];
 
 uniformLimitS11cbOperand = <||>;
 uniformLimitS11bOperand = <||>;
@@ -1483,7 +1686,8 @@ Do[Module[{key, model, operatorLimit, kernelLimit},
   model = evaluatedModel["EULERIAN", branch, density,
     "BASE", 0, False, True];
   operatorLimit = uniformLimit[model["OPERATOR"]];
-  kernelLimit = uniformLimit[extractCoupling[model]];
+  kernelLimit = simplifyWeakKernel[
+    uniformLimit[extractCoupling[model]]];
   AssociateTo[uniformLimitS11cbOperand, key -> <|
     "SLAB_OPERATOR" -> operatorLimit,
     "COUPLING_KERNEL" -> kernelLimit,

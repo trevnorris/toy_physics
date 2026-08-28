@@ -1151,10 +1151,20 @@ def uniform_coefficient(label: str, invariant: sp.Expr) -> sp.Expr:
     index = next(
         i for i, (candidate_label, _) in enumerate(UNIFORM_CANDIDATES, 1) if candidate_label == label
     )
+    abstract_dimensions = {
+        btheta: DIM_ZERO,
+        be: DIM_ZERO,
+        **{bu[i]: DIM_L for i in DIRECTIONS},
+        **{bq[i]: -DIM_L for i in DIRECTIONS},
+        **{br[i]: -DIM_L for i in DIRECTIONS},
+        **{bG[a][i]: DIM_ZERO for a in DIRECTIONS for i in DIRECTIONS},
+    }
+    invariant_dimension = dimension_of(invariant, abstract_dimensions)
     coefficient = symbol(
         f"a_s11cb_uniform_{index:02d}",
         "KNOB",
         f"coefficient for constructed uniform invariant {index}",
+        dim_div(DIM_ENERGY, invariant_dimension),
     )
     return coefficient
 
@@ -1806,6 +1816,7 @@ def build_kernel(
     ablation_source: str | None = None,
     ablation_direction: int | None = None,
     include_term_origins: bool = True,
+    corrupt_material_constraint: bool = False,
 ) -> tuple[object, object]:
     cache_key = (
         branch,
@@ -1814,79 +1825,203 @@ def build_kernel(
         ablation_source,
         ablation_direction,
         include_term_origins,
+        corrupt_material_constraint,
     )
     if cache_key in KERNEL_CACHE:
         return KERNEL_CACHE[cache_key]
-    energy = construct_energy(branch, ablation_source, ablation_direction)
-    density = energy.density
-    if route == "MATERIAL":
-        density = material_pullback(density, branch, representative)
+    operator, operator_origins, mu_theta_value = build_operator(
+        branch,
+        representative,
+        route,
+        ablation_source,
+        ablation_direction,
+        corrupt_material_constraint,
+    )
+
+    def named_row(rows: sp.Tuple, name: str) -> object:
+        for row_name, row_value in rows:
+            if str(row_name) == name:
+                return row_value
+        raise KeyError(name)
+
+    def expanded_balance(balance: sp.Tuple) -> object:
+        return named_row(balance, "EXPANDED")
+
+    def operator_dx(expression: sp.Expr, direction: int) -> sp.Expr:
+        derivative_map = dict(DERIVATIVE_MAP[direction])
+        for jet_direction in DIRECTIONS:
+            jet_index = sorted_index(direction, jet_direction)
+            w_profile_second = INCOMING_LEDGER[
+                f"w1_profile_d{jet_index[0] + 1}d{jet_index[1] + 1}"
+            ]["value"]
+            m_profile_second = symbol(
+                f"m1_profile_d{jet_index[0] + 1}d{jet_index[1] + 1}",
+                "KNOB",
+                "dimensionless modulus-profile second jet "
+                f"{jet_index[0] + 1},{jet_index[1] + 1}",
+                DIM_ZERO,
+            )
+            derivative_map[grad_W[jet_direction]] = (
+                sigma_W * w_profile_second / L_W
+            )
+            derivative_map[grad_mu[jet_direction]] = (
+                mu_R * sigma_W * m_profile_second / (W0 * L_W)
+            )
+        result = sp.Integer(0)
+        for atom, derivative in derivative_map.items():
+            if atom in expression.free_symbols:
+                result += sp.diff(expression, atom) * derivative
+        return sp.expand(result)
+
+    def operator_divergence(vector: tuple[sp.Expr, ...]) -> sp.Expr:
+        return sp.expand(
+            sp.Add(*(operator_dx(vector[i], i) for i in DIRECTIONS))
+        )
+
+    def operator_curl(vector: tuple[sp.Expr, ...]) -> tuple[sp.Expr, ...]:
+        return (
+            sp.expand(operator_dx(vector[2], 1) - operator_dx(vector[1], 2)),
+            sp.expand(operator_dx(vector[0], 2) - operator_dx(vector[2], 0)),
+            sp.expand(operator_dx(vector[1], 0) - operator_dx(vector[0], 1)),
+        )
+
+    theta_test = symbol(
+        "v_theta_s11cb",
+        "COORDINATE",
+        "independent compact-support densification test field",
+        DIM_ZERO,
+    )
+    e_test = symbol(
+        "v_e_W_s11cb",
+        "COORDINATE",
+        "independent compact-support thickness test field",
+        DIM_ZERO,
+    )
+    longitudinal_test_potential = symbol(
+        "psi_L_s11cb",
+        "COORDINATE",
+        "compact-support longitudinal test potential",
+        2 * DIM_L,
+    )
+    transverse_test_potential = tuple(
+        symbol(
+            f"A_T_s11cb_{a + 1}",
+            "COORDINATE",
+            f"compact-support solenoidal test potential {a + 1}",
+            2 * DIM_L,
+        )
+        for a in DIRECTIONS
+    )
+
+    def weak_operator_blocks(
+        u_balance: sp.Tuple,
+        theta_balance: sp.Tuple,
+        e_balance: sp.Tuple,
+    ) -> dict[str, object]:
+        u_residual = tuple(expanded_balance(u_balance))
+        theta_residual = sp.sympify(expanded_balance(theta_balance))
+        e_residual = sp.sympify(expanded_balance(e_balance))
+        u_transverse = tuple(
+            restrict_expression(item, "TRANSVERSE") for item in u_residual
+        )
+        transverse_divergence = restrict_expression(
+            operator_divergence(u_transverse), "TRANSVERSE"
+        )
+        target_curls = {
+            target: operator_curl(
+                tuple(restrict_expression(item, target) for item in u_residual)
+            )
+            for target in ("THETA", "E_W", "LONGITUDINAL")
+        }
+        return {
+            "TRANSVERSE_TO_THICKNESS": {
+                "THETA": sp.expand(
+                    theta_test * restrict_expression(theta_residual, "TRANSVERSE")
+                ),
+                "E_W": sp.expand(
+                    e_test * restrict_expression(e_residual, "TRANSVERSE")
+                ),
+                "DIV_U": sp.expand(
+                    -longitudinal_test_potential
+                    * transverse_divergence
+                ),
+            },
+            "THICKNESS_TO_TRANSVERSE": {
+                "THETA": dot(
+                    transverse_test_potential,
+                    target_curls["THETA"],
+                ),
+                "E_W": dot(
+                    transverse_test_potential,
+                    target_curls["E_W"],
+                ),
+                "DIV_U": dot(
+                    transverse_test_potential,
+                    target_curls["LONGITUDINAL"],
+                ),
+            },
+        }
+
+    operator_u = named_row(operator, "U_BODY_BALANCE")
+    operator_theta = named_row(operator, "THETA_BALANCE")
+    operator_e = named_row(operator, "E_W_BALANCE")
     core_key = (
         branch,
         route,
         representative if route == "MATERIAL" else None,
         ablation_source,
         ablation_direction,
+        corrupt_material_constraint,
     )
     if core_key in KERNEL_BLOCK_CACHE:
         bulk, adjointness = KERNEL_BLOCK_CACHE[core_key]
     else:
-        bulk, adjointness = paired_kernel_from_density(density)
+        bulk = weak_operator_blocks(operator_u, operator_theta, operator_e)
+        adjointness = sp.Tuple(
+            Str("NO_INDEPENDENT_SECOND_ROUTE"),
+            sp.Tuple(
+                Str("TRANSVERSE_TO_THICKNESS_OPERATOR_BLOCK"),
+                casify(bulk["TRANSVERSE_TO_THICKNESS"]),
+            ),
+            sp.Tuple(
+                Str("THICKNESS_TO_TRANSVERSE_OPERATOR_BLOCK"),
+                casify(bulk["THICKNESS_TO_TRANSVERSE"]),
+            ),
+        )
         KERNEL_BLOCK_CACHE[core_key] = bulk, adjointness
     if include_term_origins and core_key in KERNEL_ORIGIN_CACHE:
         origin_rows_value = KERNEL_ORIGIN_CACHE[core_key]
     elif include_term_origins:
         origin_rows = []
-        for label, term in energy.terms:
-            term_channels = {
-                "THETA": epsilon * mixed_variation(term, "THETA"),
-                "E_W": epsilon * mixed_variation(term, "E_W"),
-                "DIV_U": epsilon * mixed_variation(term, "LONGITUDINAL"),
-            }
-            origin_rows.append(sp.Tuple(Str(label), casify(term_channels)))
+        bulk_energy_origins = named_row(operator_origins, "BULK_ENERGY")
+        for label, term_operator in bulk_energy_origins:
+            term_blocks = weak_operator_blocks(
+                named_row(term_operator, "U"),
+                named_row(term_operator, "THETA"),
+                named_row(term_operator, "E_W"),
+            )
+            origin_rows.append(sp.Tuple(label, casify(term_blocks)))
         origin_rows_value = sp.Tuple(*origin_rows)
         KERNEL_ORIGIN_CACHE[core_key] = origin_rows_value
     else:
         origin_rows_value = sp.Tuple()
-    _, _, mu_theta_value = build_operator(
-        branch,
-        representative,
-        route,
-        ablation_source,
-        ablation_direction,
-    )
     mu_theta_amplitude = mu_theta_value[1] / epsilon
+    face_bundle = named_row(operator, "FACE_FLUX_BOUNDARY_OPERANDS")
     boundary_source = sp.Tuple(
         *(
             sp.Tuple(
                 Str(name),
-                filtered_substrate(
-                    name,
-                    branch,
-                    representative,
-                    mu_theta_amplitude,
-                    ablation_source,
-                    ablation_direction,
-                ),
+                named_row(face_bundle, name),
             )
             for name in ("traction", "virtual_work_shape_deriv", "evolution_mass_balance")
         ),
         sp.Tuple(
             Str("MU_THETA_FACE_BINDING"),
-            INCOMING_LEDGER[
-                "mu_theta_M" if branch == "MATERIAL_ADVECTED" else "mu_theta_L"
-            ]["value"],
-            mu_theta_amplitude,
+            named_row(operator, "MU_THETA_FACE_BINDING"),
         ),
     )
-    mass_source = filtered_substrate(
-        "evolution_mass_balance",
-        branch,
-        representative,
-        mu_theta_amplitude,
-        ablation_source,
-        ablation_direction,
-    )
+    mass_source = named_row(face_bundle, "evolution_mass_balance")
+    advective_source = named_row(operator, "ADVECTIVE_MASS_OPERAND")
     boundary = sp.Tuple(
         sp.Tuple(Str("SOURCE_SUBSTRATE"), boundary_source),
         sp.Tuple(
@@ -1904,6 +2039,19 @@ def build_kernel(
                 }
             ),
         ),
+        sp.Tuple(
+            Str("ADVECTIVE_MASS_BLOCK"),
+            casify(
+                {
+                    "TRANSVERSE_TRIAL": restrict_expression(
+                        advective_source, "TRANSVERSE"
+                    ),
+                    "LONGITUDINAL_TRIAL": restrict_expression(
+                        advective_source, "LONGITUDINAL"
+                    ),
+                }
+            ),
+        ),
     )
     kernel = sp.Tuple(
         sp.Tuple(Str("SECTOR_LABELS"), sp.Tuple(Str("CURL_LOCAL"), Str("DIVERGENCE_LOCAL"))),
@@ -1911,13 +2059,12 @@ def build_kernel(
         sp.Tuple(Str("FACE_FLUX_BLOCKS"), boundary),
         sp.Tuple(Str("VARIATIONAL_ADJOINTNESS"), adjointness),
     )
-    _, _, rhobr_gradient = density_pair(representative)
     origins = sp.Tuple(
         sp.Tuple(Str("BULK_ENERGY"), origin_rows_value),
         sp.Tuple(Str("FACE_FLUX"), boundary),
         sp.Tuple(
             Str("ADVECTIVE"),
-            epsilon * dot(u_t, rhobr_gradient),
+            advective_source,
         ),
     )
     result = kernel, origins
@@ -1947,43 +2094,172 @@ def admissibility_operator(
     route: str = "EULERIAN",
     ablation_source: str | None = None,
     ablation_direction: int | None = None,
+    corrupt_material_constraint: bool = False,
 ) -> object:
     energy = construct_energy(branch, ablation_source, ablation_direction)
-    density = energy.density
+    selected_labels = {label for label, _ in energy.terms}
+    g_w, g_mu = ablated_jets(ablation_source, ablation_direction)
+    rho4, rhobr, rhobr_gradient = density_pair(representative)
+
+    second_w: dict[tuple[int, int], sp.Expr] = {}
+    second_mu: dict[tuple[int, int], sp.Expr] = {}
+    for i in DIRECTIONS:
+        for j in range(i, 3):
+            w_profile_second = INCOMING_LEDGER[
+                f"w1_profile_d{i + 1}d{j + 1}"
+            ]["value"]
+            m_profile_second = symbol(
+                f"m1_profile_d{i + 1}d{j + 1}",
+                "KNOB",
+                f"dimensionless modulus-profile second jet {i + 1},{j + 1}",
+                DIM_ZERO,
+            )
+            second_w[(i, j)] = sigma_W * w_profile_second / L_W
+            second_mu[(i, j)] = (
+                mu_R * sigma_W * m_profile_second / (W0 * L_W)
+            )
+
+    def background_dx(expression: sp.Expr, direction: int) -> sp.Expr:
+        derivative_map = dict(DERIVATIVE_MAP[direction])
+        derivative_map[W_bg] = g_w[direction]
+        derivative_map[mu_R_bg] = g_mu[direction]
+        for jet_direction in DIRECTIONS:
+            derivative_map[grad_W[jet_direction]] = second_w[
+                sorted_index(direction, jet_direction)
+            ]
+            derivative_map[grad_mu[jet_direction]] = second_mu[
+                sorted_index(direction, jet_direction)
+            ]
+        result = sp.Integer(0)
+        for atom, derivative in derivative_map.items():
+            if atom in expression.free_symbols:
+                result += sp.diff(expression, atom) * derivative
+        return sp.expand(result)
+
+    rho4_gradient = tuple(background_dx(rho4, i) for i in DIRECTIONS)
+    constraint_gradient = (
+        (sp.Integer(0),) * 3 if corrupt_material_constraint else rhobr_gradient
+    )
+    theta_configuration = theta
+    e_configuration = e_W
+    if route == "EULERIAN":
+        theta_configuration += dot(u, constraint_gradient) / rhobr
+    elif route == "MATERIAL":
+        theta_configuration += dot(u, rho4_gradient) / rho4
+        if branch == "LAB_HELD":
+            e_configuration += dot(u, g_w) / W_bg
+    else:
+        raise ValueError(route)
+
+    theta_full = 1 + theta_configuration
+    theta_full_gradient = tuple(
+        sp.expand(
+            (
+                rho4_gradient[i] * theta_full
+                + rho4 * background_dx(theta_configuration, i)
+            )
+            / rho4
+        )
+        for i in DIRECTIONS
+    )
+    thickness_full = 1 + W0 * e_configuration / W_bg
+    thickness_full_gradient = tuple(
+        sp.expand((g_w[i] + W0 * background_dx(e_configuration, i)) / W_bg)
+        for i in DIRECTIONS
+    )
+
+    def full_field_substitution(g_vector: tuple[sp.Expr, ...]) -> dict[sp.Symbol, sp.Expr]:
+        substitutions: dict[sp.Symbol, sp.Expr] = {
+            btheta: theta_full,
+            be: thickness_full,
+            **{bu[i]: u[i] for i in DIRECTIONS},
+            **{bq[i]: theta_full_gradient[i] for i in DIRECTIONS},
+            **{br[i]: thickness_full_gradient[i] for i in DIRECTIONS},
+            **{bg[i]: g_vector[i] for i in DIRECTIONS},
+        }
+        substitutions.update(
+            {bG[a][i]: grad_u[a][i] for a in DIRECTIONS for i in DIRECTIONS}
+        )
+        return substitutions
+
+    full_terms = []
+    uniform_substitution = full_field_substitution(g_w)
+    for index in UNIFORM_SELECTED:
+        label, abstract_invariant = UNIFORM_CANDIDATES[index]
+        if label not in selected_labels:
+            continue
+        full_terms.append(
+            uniform_coefficient(label, abstract_invariant)
+            * abstract_invariant.subs(uniform_substitution, simultaneous=True)
+        )
+    for source, abstract_g, actual_g in (
+        ("W_BG", tuple(bg[i] if g_w[i] != 0 else sp.Integer(0) for i in DIRECTIONS), g_w),
+        ("MU_R_BG", tuple(bg[i] if g_mu[i] != 0 else sp.Integer(0) for i in DIRECTIONS), g_mu),
+    ):
+        substitution = full_field_substitution(actual_g)
+        for index, (label, abstract_invariant) in enumerate(
+            enumerate_new_candidates(abstract_g)
+        ):
+            if f"{source}_{label}" not in selected_labels:
+                continue
+            full_terms.append(
+                NEW_COEFFICIENTS[source][index]
+                * abstract_invariant.subs(substitution, simultaneous=True)
+            )
+    full_density = sp.expand(sp.Add(*full_terms))
     if route == "MATERIAL":
-        density = material_pullback(density, branch, representative)
-    body = sp.Tuple(
-        sp.Tuple(
-            Str("U"),
-            sp.Tuple(
+        full_density = sp.expand((1 + trace(grad_u)) * full_density)
+
+    def background_euler(
+        field: sp.Symbol,
+        first_jets: tuple[sp.Symbol, ...],
+    ) -> sp.Expr:
+        return sp.expand(
+            sp.diff(full_density, field)
+            - sp.Add(
                 *(
-                    zero_wave(euler_derivative(density, u[a], grad_u[a]))
-                    for a in DIRECTIONS
+                    background_dx(sp.diff(full_density, first_jets[i]), i)
+                    for i in DIRECTIONS
                 )
-            ),
-        ),
-        sp.Tuple(Str("THETA"), zero_wave(euler_derivative(density, theta, grad_theta))),
-        sp.Tuple(Str("E_W"), zero_wave(euler_derivative(density, e_W, grad_e))),
+            )
+        )
+
+    background_substitutions = {
+        item: sp.Integer(0) for item in ACTUAL_WAVE_SYMBOLS
+    }
+
+    def at_background(expression: sp.Expr) -> sp.Expr:
+        value = sp.expand(
+            expression.subs(background_substitutions, simultaneous=True)
+        )
+        return first_shape_series(value)
+
+    u_force = tuple(
+        at_background(background_euler(u[a], grad_u[a])) for a in DIRECTIONS
+    )
+    theta_force = at_background(background_euler(theta, grad_theta))
+    e_force = at_background(background_euler(e_W, grad_e))
+    body = sp.Tuple(
+        sp.Tuple(Str("U"), sp.Tuple(*u_force)),
+        sp.Tuple(Str("THETA"), theta_force),
+        sp.Tuple(Str("E_W"), e_force),
     )
     face_rows = []
-    mu_theta_background = zero_wave(euler_derivative(density, theta, grad_theta))
-    substitutions = substrate_substitutions(
-        branch, mu_theta_background, ablation_source, ablation_direction
-    )
     for face in FACES:
-        traction = exact_substrate_value(
-            "traction", (branch, face, "DELTA_W", representative)
+        face_rows.append(
+            sp.Tuple(
+                sp.Integer(face),
+                sp.Tuple(
+                    sp.Integer(0),
+                    sp.Integer(0),
+                    sp.Integer(0),
+                    sp.expand(face * e_force / W0),
+                ),
+            )
         )
-        traction = map_object(
-            traction,
-            lambda expression: sp.expand(expression.subs(substitutions, simultaneous=True)),
-        )
-        face_rows.append(sp.Tuple(sp.Integer(face), casify(zero_wave(traction))))
     return sp.Tuple(
-        sp.Tuple(Str("BACKGROUND_ORDER"), sp.Integer(0)),
         sp.Tuple(Str("BODY_FORCE"), body),
         sp.Tuple(Str("PER_FACE_TRACTION"), sp.Tuple(*face_rows)),
-        sp.Tuple(Str("PROFILE_DEFINITIONS"), profile_definitions()),
     )
 
 
@@ -2126,6 +2402,20 @@ def task_rep_invariance() -> None:
 def task_independence() -> None:
     baseline = {}
     corrupted = {}
+
+    def record_if_source_present(
+        object_name: str,
+        branch: str,
+        representative: str,
+        base_value: object,
+        corrupted_value: object,
+    ) -> None:
+        if sp.srepr(casify(base_value)) == sp.srepr(casify(corrupted_value)):
+            return
+        key = (object_name, branch, representative)
+        baseline[key] = base_value
+        corrupted[key] = corrupted_value
+
     for branch in BRANCHES:
         for representative in DENSITY_REPS:
             operator_base = build_operator(branch, representative, "EULERIAN")[0]
@@ -2135,19 +2425,48 @@ def task_independence() -> None:
                 "EULERIAN",
                 corrupt_material_constraint=True,
             )[0]
-            baseline[("SLAB_OPERATOR", branch, representative)] = operator_base
-            corrupted[("SLAB_OPERATOR", branch, representative)] = operator_corrupt
-            baseline[("COUPLING_KERNEL", branch, representative)] = build_kernel(
-                branch, representative, "EULERIAN"
+            record_if_source_present(
+                "SLAB_OPERATOR",
+                branch,
+                representative,
+                operator_base,
+                operator_corrupt,
+            )
+            kernel_base = build_kernel(
+                branch,
+                representative,
+                "EULERIAN",
+                include_term_origins=False,
             )[0]
-            corrupted[("COUPLING_KERNEL", branch, representative)] = build_kernel(
-                branch, representative, "EULERIAN"
+            kernel_corrupt = build_kernel(
+                branch,
+                representative,
+                "EULERIAN",
+                include_term_origins=False,
+                corrupt_material_constraint=True,
             )[0]
-            baseline[("ADMISSIBILITY_OPERATOR", branch, representative)] = admissibility_operator(
+            record_if_source_present(
+                "COUPLING_KERNEL",
+                branch,
+                representative,
+                kernel_base,
+                kernel_corrupt,
+            )
+            admissibility_base = admissibility_operator(
                 branch, representative, "EULERIAN"
             )
-            corrupted[("ADMISSIBILITY_OPERATOR", branch, representative)] = admissibility_operator(
-                branch, representative, "EULERIAN"
+            admissibility_corrupt = admissibility_operator(
+                branch,
+                representative,
+                "EULERIAN",
+                corrupt_material_constraint=True,
+            )
+            record_if_source_present(
+                "ADMISSIBILITY_OPERATOR",
+                branch,
+                representative,
+                admissibility_base,
+                admissibility_corrupt,
             )
     residual = object_difference(baseline, corrupted)
     emit("CONTROL_INDEPENDENCE_BASE_OPERAND", case_payload(baseline))

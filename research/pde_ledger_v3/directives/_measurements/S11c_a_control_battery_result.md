@@ -28,3 +28,30 @@ Result — EVERY object ALIVE (bit>=1):
 Cross-engine A_minus_B of the BITE controls is EXPECTED nonzero (each engine bites in its own representation)
 and is not finding-relevant: the bite controls are form-ablations/corruptions of the SAME shape-derivative
 objects whose primary cross-engine residuals were adjudicated benign (§25) — no new residual class appears.
+
+---
+
+## ⚠ CORRECTION (2026-08-27, post-`cccb4f9e`) — the BITE-liveness above was WRONG
+
+The "every object bites (no dead control)" claim above came from a string awk that **counted sentinel
+operands** (`TextAtom('UNDEFINED_UNJOINED')`, `Mismatch`, `<MISSING>`) as bites — a buggy liveness test.
+A correct liveness test (a genuine bite = `operand_A` is a nonzero sympy expression carrying a `Symbol`;
+sentinels and literal zeros excluded) run against the FINAL committed-state comparator
+(`~/.s11_build/comparator_final_cccb4f9e.out`), script
+`scratchpad/bite_liveness.py`, stdout `~/.s11_build/bite_liveness_cccb4f9e.out`:
+
+- **CONTROL_FORM (∂W_bg jet ablation) bites 16 of 18 objects** — including FACE_VELOCITY (12),
+  PROJECTION_{SHAPE,DYNAMIC,RESIDUAL,TERM_ORIGINS} (6 each), EVOLUTION_*, VIRTUAL_CONSTRAINT, and the
+  geometry set (24–48 each). It is **DEAD (BITE=0)** for exactly **FACE_SHIFT** (0/480) and
+  **PROJECTION_STATIC_OPERAND** (0/24): those operands carry the `W_bg` profile *value* (`w1_profile`),
+  not its in-plane *jet* (`w1_profile_d`), so ablating a jet direction does not move them. So the earlier
+  "every object bites" AND the interim narrative "only geometric objects bite" are both wrong.
+- **CONTROL_INDEPENDENCE (corruption) bites all 6 objects it covers** (CLOSURE, EVOLUTION_MASS_BALANCE,
+  RELATIVE_FLUX, TRACTION, VIRTUAL_CONSTRAINT, VIRTUAL_WORK).
+- **HOLD controls unchanged: 0 genuine nonzero** (the HOLD result above stands).
+
+FACE_SHIFT is therefore not exercised by the §5 form/independence battery; it is validated instead by the
+cross-engine residual (joins 16/16 at 0 post-`cccb4f9e`), the density-grounding build-leg form ablation
+(`_measurements/s11c_a_wl_density_grounding_fix_review_grok/ablate_density_bg_form.*`), and the
+material-transport adjudication. A fully re-run CONTROL_FORM coverage table for the abstract-symbol objects
+remains an owed item.

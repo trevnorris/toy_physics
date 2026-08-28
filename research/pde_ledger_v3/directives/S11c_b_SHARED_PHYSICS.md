@@ -246,10 +246,14 @@ S11b's B0-energy, extended: enumerate the DOF fields and their first gradients `
 **one thickness coordinate only**, with the exact map `e_W,bg=(W_0/W_bg)e_W` (S11c-a §2a) imposed **before**
 any independence/rank test so the thickness sector is not double-counted — **together with the supplied
 background first jets** `{∂W_bg, ∂μ_R,bg}` treated as symmetry-breaking spurion data (the divergence-form
-operator needs only first coefficient jets; no higher jet is introduced), and construct **every** scalar
-bilinear in the DOF data allowed by the S11b symmetry group with those spurions carrying their
-transformation. Independence is judged as field bilinears with B1's constraint not applied;
-carry every independent invariant with its own free symbolic coefficient.
+operator's **first-background-jet order** bounds the number of independent background-amplitude factors —
+powers of `η`/`σ_W` — not the spatial-derivative order), and construct **every** scalar bilinear in the DOF
+data allowed by the S11b symmetry group with those spurions carrying their transformation. A divergence or
+variation may generate a higher spatial derivative of a background profile, and that term is retained at the
+background-bookkeeper order of its originating factor: a second spatial derivative of `W_bg` is still first
+order in background amplitude, `O(η)` / `O(σ_W)`, and is not dropped. Independence is judged as field
+bilinears with B1's constraint not applied; carry every independent invariant with its own free symbolic
+coefficient.
 
 ⭐ **Emit as RESULTS** the constructed basis, its count, and — separately — every invariant whose coefficient
 carries a background first jet (a **new gradient-of-background invariant**), naming any new constant it
@@ -285,15 +289,34 @@ representative, multigraded and dimensioned.
 
 ### 3c · The off-diagonal coupling kernel
 
-Extract the block of the §3b operator that couples the transverse structure (the `∇×u` part of the `u`
-equations and its reciprocal) to the `{θ,e_W,∇·u}` structure — the object whose uniform limit is S11b's
-decoupled zero (§1d). The sectors are the local differential-operator labels of §1a (curl vs divergence),
-not a global spectral projection. Emit both off-diagonal blocks (transverse→thickness and thickness→
-transverse) and their adjointness relation **with respect to the supplied variational pairing** (the
-stored-energy/kinetic bilinear form of §1c, on the stated in-plane domain with the inherited face boundary
-conditions), together with the kernel's `(ε,η,σ_W)` multigrade and dimension, per anchoring and density
+Extract the block of the §3b operator that couples the transverse structure to the `{θ,e_W,u_L}` structure
+— the object whose uniform limit is S11b's decoupled zero (§1d) — as a **weak variational restriction** under
+the supplied stored-energy/kinetic variational pairing of §1c. Use independent transverse trial and test
+displacements `u_T,v_T` with `∇·u_T=∇·v_T=0`, independent longitudinal trial and test displacements `u_L,v_L`
+with `∇×u_L=∇×v_L=0`, and independent trial and test fields for `θ` and `e_W`. A transverse trial paired with
+a `{θ,e_W,u_L}` test defines the transverse→thickness block; a `{θ,e_W,u_L}` trial paired with a transverse
+test defines the thickness→transverse block. These are restrictions to local differential-operator-labelled
+trial/test spaces, not a global spectral or Helmholtz projection. They attribute both the gradient-structured
+terms and the undifferentiated-`u` spurion couplings such as `g·u` (§1a/`N15`) to a sector without introducing
+a global projector (`N5`).
+
+⛔ Do **not** implement the split by setting only the **undifferentiated** field occurrences to zero: that
+projection is inert on gradient content and leaves diagonal thickness/longitudinal dynamics inside the
+block. ⛔ Extract both weak blocks from the §3b operator itself, not from a parallel direct-variation route.
+For the in-plane domain, take all trial and test fields to have compact support in its interior, so the
+in-plane integration-by-parts boundary term is fixed to zero; the inherited face boundary conditions still
+apply.
+
+Emit both off-diagonal blocks and their pairing-based adjointness residual. Define that residual by applying
+the two weak operator restrictions to arbitrary independent cross-sector trial/test fields and comparing the
+transverse→thickness pairing with the formal-adjoint thickness→transverse pairing. ⛔ It is **not** the mixed
+second derivative of the scalar energy (`∂²U/∂u_T∂e_W − ∂²U/∂e_W∂u_T`), which is zero for any energy by the
+commutation of partial derivatives and tests nothing (rule 2 corollary 3). If the two blocks are adjoint by
+construction, emit the two blocks and state that there is no independent second route rather than dressing
+a structural zero as a check. Emit the two blocks, the pairing-based adjointness residual when it is an
+independent route, and the kernel's `(ε,η,σ_W)` multigrade and dimension, per anchoring and density
 representative. ⛔ Do not filter the kernel to a single channel and do not state its coefficient, sign,
-parity, or grade — the operator's own block extraction is the computation.
+parity, or grade — the operator's own weak block extraction is the computation.
 
 ```text
 ⇒ S11CB_COUPLING_KERNEL , S11CB_COUPLING_KERNEL_TERM_ORIGINS .
@@ -301,14 +324,29 @@ parity, or grade — the operator's own block extraction is the computation.
 
 ### 3d · The background-order balance (the admissibility operator operand)
 
-Separately from the §3b first-order wave operator, compute the **background-order (ε⁰)** balance of the
-variable-coefficient energy-and-geometry on `𝔅⁰`: the first variation of the total background functional with
-respect to the brane configuration at `𝔅⁰`, yielding the generalized **body force and per-face traction** the
-varying profile sources, in the **same ordered pairing** as `𝒮_hold⁰` (bulk-DOF body force + per-face
-traction). This is the operator operand of §2b. Retain the full spatial dependence and first jets of `W_bg`,
-`μ_R,bg`, and the `Σ_E⁰` map; keep both anchorings and both density representatives. ⛔ Do not reduce it to the
-`ε→0` limit of the §3b wave operator, and do not insert `W_bg−W_0` into the uniform perturbation equations.
-Whether the profile is stationary (residual against `𝒮_hold⁰` zero) or not is the computed result.
+The admissibility operator operand is the **background-order (ε⁰) first variation with respect to the brane
+configuration of the §3a variable-coefficient energy-and-geometry functional written in full fields**,
+evaluated at `𝔅⁰`; it is neither the uniform §1c form nor the perturbation (wave) energy or any limit of the
+§3b perturbation operator. The full brane configuration contains `W=W_bg+δW`,
+`ρ_4D=ρ_4D,bg⁰(1+θ)`, and the brane displacement. Its thickness and variable-coefficient gradient content
+must be the gradient content of the **full fields**, including `∇(W_bg+δW)` and the corresponding full-field
+gradients wherever a coefficient varies. Thus the background profile's own gradients are present at
+background order; ⛔ `|∇(δW)|²`, or any perturbation-only gradient, is not an acceptable background-order
+representative of that content.
+
+Take the first variation with respect to the brane configuration and then evaluate it at `𝔅⁰`
+(`θ=e_W=δW=0`, `u=0`; the profile and its jets retained). Retain the full spatial dependence of `W_bg`,
+`μ_R,bg`, and the `Σ_E⁰` map and every spatial derivative generated by the variation or divergence at the
+background-bookkeeper order specified in §3a; keep both anchorings and both density representatives. The
+resulting generalized body force and per-face traction use the **same ordered pairing** as `𝒮_hold⁰`
+(bulk-DOF body force + per-face traction). This is the operator operand of §2b.
+
+⛔ Do **not** take the first variation of the perturbation (wave) energy and then set the perturbations to
+zero: that energy is bilinear in the perturbations, so its first variation is linear in them and vanishes
+identically at `𝔅⁰`, producing a vacuous operand with no data dependence on the background it is meant to
+vary. ⛔ Do not reduce it to the `ε→0` limit of the §3b wave operator, and do not insert `W_bg−W_0` into the
+uniform perturbation equations. Whether the profile is stationary (the residual against `𝒮_hold⁰` is zero)
+or not is the computed result; its value is not stated here.
 
 ```text
 ⇒ S11CB_ADMISSIBILITY_OPERATOR_OPERAND  (the background-order balance operand of §2b) .
@@ -375,10 +413,19 @@ downstream — the independence test between the two same-order channels (tilt, 
 - reverse only the `x¹` first jet of `W_bg` in the upper-face direct-route source, leaving the
   material-coordinate route and every other source unchanged.
 
+For each of the slab operator, coupling kernel, and admissibility operand, the single source mutation must
+**propagate through every construction in which the computed and emitted dependence shows that source to be
+structurally present**; the resulting residual is the computed outcome, not an asserted value (an honest zero
+from symmetric cancellation is a valid finding, rule 6). An object may be omitted from this control only
+when the computed and emitted dependence shows that the mutated source is **structurally absent** from the
+object's construction; an asserted prose reason is not sufficient. ⛔ A control whose baseline and corrupted
+operands are identical calls (residual `A−A ≡ 0`) is **not** a control (rule 2 corollary 3) and must never be
+emitted as a structural zero.
+
 Emit the uncorrupted-route operand, the corrupted-route operand, and their residual under
 `S11CB_CONTROL_INDEPENDENCE_BASE_OPERAND`, `S11CB_CONTROL_INDEPENDENCE_CORRUPTED_OPERAND`,
-`S11CB_CONTROL_INDEPENDENCE_RESIDUAL`. The control does not authorize editing an already-emitted operator,
-kernel, invariant, or residual.
+`S11CB_CONTROL_INDEPENDENCE_RESIDUAL`, keyed by object and anchoring. The control does not authorize editing
+an already-emitted operator, kernel, invariant, or residual.
 
 ### 5b · Source-level form ablations, one direction at a time
 

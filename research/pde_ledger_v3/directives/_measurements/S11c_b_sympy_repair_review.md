@@ -50,3 +50,41 @@ be preserved.
   side too.
 - Dead code (`paired_kernel_from_density`, `mixed_variation`, `combined_sector_substitution`,
   `bulk_kernel_from_density`) — harmless cleanup.
+
+## Round-2 outcome (B1 scalar over-promotion fix) — BOTH legs CLEAN
+Codex B1 round-2 patch (directive `c402ef50`) confined to `admissibility_operator` (7 ins/14 del): scalars
+kept as perturbations (`btheta→θ`, `be→(W₀/W_bg)e_W`), full-field promotion gradient-only
+(`br→(g_w+W₀∂e)/W_bg`); B2/B3/B4/N15/operator/kernel byte-identical to the round-1-verified state. Two review
+legs (Grok + resumed Claude agent, prompt with the round-2 uniform-limit-survivor banner) BOTH CLEAN:
+- **B1 uniform-limit probe:** operand → 0 with all jets zeroed (`σ_W→0` keeping `η` free — the sharp test),
+  NO jet-independent survivor; κ_W second-jet bending content present when jets nonzero
+  (`−W₀³κ_W σ_W ∇²w₁/L_W`, face `±W₀²κ_W σ_W ∇²w₁/L_W`), matching the independent `−∇·(κ_W W_bg²∇W_bg)`;
+  distinct from the vacuous `zero_wave` limit.
+- **DECISIVE one-sided test (both legs):** re-injecting the over-promotion (`θ→1+θ`, `e→1+e`) into a /tmp copy
+  revives exactly the spurious jet-independent survivor (`B_ρ⁽³⁾+CW₀`, `CW₀+k_W W₀²`) — proving the patch
+  targets precisely that defect.
+- B2 (kernel from operator, both blocks → 0 under `uniformize()` — one leg self-corrected an incomplete first
+  ablation that zeroed only `grad_W` not `σ_W`), B3 (adjoint `NO_INDEPENDENT_SECOND_ROUTE`; independence
+  corruption reaches the kernel; omits admissibility on structural absence), B4 (dimension fallback), and
+  N15/operator/coupling — all still clean.
+⚠ The round-1 leg disagreement (Grok caught the over-promotion, Claude-agent missed the jet=0 survivor) is a
+recorded lesson: a "clean" leg that probes "moves under jets?" but not "survivor at jet=0?" is weak evidence;
+both round-2 legs ran the uniform-limit-survivor probe because the prompt named it explicitly. Also: the first
+Claude-agent round-2 leg STALLED (yield-to-monitor loop, twice) — resumed once to deliver; the anti-loop
+guidance (foreground ablations, no background monitor) is the fix; [[feedback-background-tasks-can-die-spuriously]].
+
+## OWED (non-blocking; orchestrator adjudication, rule 13) — admissibility §5b FORM-control coverage
+Both legs note: the admissibility operand is verified CORRECT and genuinely `W_bg`-jet-sensitive (the FORM
+`W_BG`-dir0 ablation moves it), but **no EMITTED §5 control discriminates it** — the independence control omits
+it on structural absence (`u·∇ρ` dies at 𝔅⁰, §5a-legal and a *consequence* of the correct B1 fix), the
+rep-invariance residual is a background-order structural zero (honest, rule 6), and §5b-FORM/§5c do not name
+the admissibility operand (spec §5b lists basis/operator/kernel only). **Adjudication:** NON-BLOCKING — the
+physics is verified by the legs' direct uniform-limit ablation + the WL cross-check + the operator−support
+residual; this is a control-COVERAGE refinement, not a physics gap, analogous to S11c-a's owed control-family
+keying. Carry forward as an owed item (extend the §5b FORM control to `ADMISSIBILITY_OPERATOR`, or record that
+residual+rep-invariance+uniform-limit suffice) — flag in the step record + S11c roll-up card; do not block
+S11c-b close.
+
+## Status
+SymPy engine COMPLETE and review-clean (B1-B4). Both engines (SymPy + WL) now review-clean. NEXT: run both
+reviewed engines → committed transcripts → S11c-b T7 comparator → reconcile → step record.

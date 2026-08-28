@@ -1,4 +1,13 @@
-# Independent physics review — S11c-b SymPy engine, REPAIR round 1 (a SCRIPT)
+# Independent physics review — S11c-b SymPy engine, REPAIR (a SCRIPT)
+
+> **NOTE — this is the B1 ROUND-2 re-leg.** Round 1 fixed B2/B3/B4 and B1's κ_W bending content (verified),
+> but left a residual B1 defect: a scalar over-promotion (`θ→(1+θ)`, `e_W→(1+e)` in the perturbation-bilinear
+> energy terms) that injected a spurious **jet-independent** body force surviving the uniform limit. Round 2
+> patched `admissibility_operator` to keep the scalars as perturbations and full-field only the gradient slot.
+> **Your highest-priority check is B1's uniform-limit probe (ablation 1 below): zero all background jets
+> `η,σ_W` and confirm the admissibility operand → 0 with NO jet-independent survivor** (the over-promotion is
+> gone), while the κ_W background-jet bending content is preserved. Also re-confirm B2/B3/B4 did not regress.
+
 
 ## Artifact
 `/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py`

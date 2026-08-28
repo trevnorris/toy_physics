@@ -2151,18 +2151,11 @@ def admissibility_operator(
     else:
         raise ValueError(route)
 
-    theta_full = 1 + theta_configuration
-    theta_full_gradient = tuple(
-        sp.expand(
-            (
-                rho4_gradient[i] * theta_full
-                + rho4 * background_dx(theta_configuration, i)
-            )
-            / rho4
-        )
-        for i in DIRECTIONS
+    theta_perturbation = theta_configuration
+    theta_perturbation_gradient = tuple(
+        background_dx(theta_configuration, i) for i in DIRECTIONS
     )
-    thickness_full = 1 + W0 * e_configuration / W_bg
+    thickness_perturbation = W0 * e_configuration / W_bg
     thickness_full_gradient = tuple(
         sp.expand((g_w[i] + W0 * background_dx(e_configuration, i)) / W_bg)
         for i in DIRECTIONS
@@ -2170,10 +2163,10 @@ def admissibility_operator(
 
     def full_field_substitution(g_vector: tuple[sp.Expr, ...]) -> dict[sp.Symbol, sp.Expr]:
         substitutions: dict[sp.Symbol, sp.Expr] = {
-            btheta: theta_full,
-            be: thickness_full,
+            btheta: theta_perturbation,
+            be: thickness_perturbation,
             **{bu[i]: u[i] for i in DIRECTIONS},
-            **{bq[i]: theta_full_gradient[i] for i in DIRECTIONS},
+            **{bq[i]: theta_perturbation_gradient[i] for i in DIRECTIONS},
             **{br[i]: thickness_full_gradient[i] for i in DIRECTIONS},
             **{bg[i]: g_vector[i] for i in DIRECTIONS},
         }

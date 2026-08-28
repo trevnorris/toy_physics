@@ -58,7 +58,7 @@ of S11c-a the two-engine method surfaced **five single-engine defects** (§ belo
 sibling did not share it. After all five fixes, the final full comparator run vs the committed
 both-engines-fixed state (`~/.s11_build/comparator_final_cccb4f9e.out`;
 `RUN_ACCOUNTING families=39 families_with_join=38 families_with_unpaired=11 parse_failed=0 duplicate_key=0
-runtime_seconds=2214`):
+runtime_seconds=2214.826`):
 
 - **Every physics-bearing family cross-compares to a clean zero or a reviewed representational identity.**
   The geometry set (FACE_NORMAL, FACE_MEASURE_SHAPE_DERIV, FACE_VELOCITY, RELATIVE_FLUX, KINEMATIC_BALANCE),
@@ -76,7 +76,7 @@ runtime_seconds=2214`):
 
 So: **no genuine T7 physics disagreement survives** — established by the comparator's raw residuals plus the
 documented per-family reconciliations (the μ_θ inert-collapse, the δρ identity, the FACE_SHIFT field-name
-bridge in `scratchpad/faceshift_postfix_check.py`, the CONORMAL verdict-A, and the from-spec adjudications),
+bridge in `directives/_measurements/S11c_a_faceshift_postfix_check.py`, the CONORMAL verdict-A, and the from-spec adjudications),
 each carrying its own measurement — not a single classifier. (The committed hand-coded comparison script
 `S11c_a_handcoded_comparison.py`, `bb2a050a`, packages the basic-pass-then-flag method but does not carry
 every family's bridge, so it correctly FLAGs the bridge-reducible families rather than settling them; the
@@ -128,18 +128,21 @@ these reviewed classes:
 
 **Clean zero — comparator `A_minus_B` is literally a scalar/tuple zero.** FACE_NORMAL,
 FACE_MEASURE_SHAPE_DERIV, FACE_VELOCITY, RELATIVE_FLUX, KINEMATIC_BALANCE, EVOLUTION_MASS_BALANCE,
-EVOLUTION_TERM_ORIGINS, VIRTUAL_CONSTRAINT. (⚠ PROJECTION_*, FACE_SHIFT and UNIFORM_LIMIT **join clean but
-their raw `A_minus_B` is a nonzero expression** that reduces to 0 only under a reviewed representational
-bridge — they belong to the identity classes below, not here.)
+EVOLUTION_TERM_ORIGINS, VIRTUAL_CONSTRAINT. (⚠ PROJECTION_* and FACE_SHIFT's density+current cases **join
+clean but their raw `A_minus_B` is a nonzero expression** that reduces to 0 only under a reviewed
+representational bridge — see the identity classes below, not here. UNIFORM_LIMIT also joins clean but as
+**308 literal zeros + 24 structural `Mismatch(tuple/non-tuple)`** — a representation difference, not a
+bridge case; and FACE_SHIFT's other 80 cases (pressure/velocity) are literal zeros.)
 
 **Representational identity — FACE_SHIFT (after #5).** All 160 cases join (`py_only=wl_only=0`); the raw
 residual is nonzero because the two engines represent the traced perturbation differently. The **16 density
 cases** reduce to exactly **0** under the field-name bridge (`rhoBulkPerturbation ↔ delta_rho_4D_face`,
 `e_W ≡ δW/W_0 ↔ eta_bg·w1_profile`) — verified, `directives/_measurements/S11c_a_faceshift_postfix_check.py`
-("nonzero density residuals: 0"). The **64 current cases** carry the identical **applied-at-the-face-point ↔
+("nonzero density residuals: 0"). The **current cases** (64 total — 32 distinct `RHO4_CONSTANT`, the
+`RHOBR_CONSTANT` reps byte-identical/degenerate) carry the identical **applied-at-the-face-point ↔
 bare-symbol** difference: WL writes the current perturbation as `delta_j_bulk_i(x1,x2,x3,(sW_0/2,time))`
 applied at the trace point (plus its `_dw` jet), PY as the bare face symbol `delta_j_bulk_i` (plus its `_dw`
-jet) — `directives/_measurements/S11c_a_faceshift_current_check.py` shows the residual is exactly that
+jet) — `directives/_measurements/S11c_a_faceshift_current_check.py` (the 32 `RHO4_CONSTANT` cases) shows the residual is exactly that
 naming/application difference (`delta_j_bulk_i(x,face) − delta_j_bulk_i` + jet rename), the same μ_θ-class
 applied↔bare pattern, since the T-e trace is a point evaluation at the shared in-plane `x`, not an
 `x`-derivative. Physics identical, representation different. The committed hand-coded comparison
@@ -206,7 +209,8 @@ cross-compared. (`directives/_measurements/S11c_a_faceshift_nonjoin.md` §8–10
 The earlier draft's "every object bites, no dead control" was **wrong** — it came from a string liveness
 test that counted sentinel operands (`TextAtom('UNDEFINED_UNJOINED')`, `Mismatch`) as bites. A correct
 liveness test (a genuine bite = `operand_A` is a nonzero sympy expression carrying a `Symbol`; sentinels
-and literal zeros excluded) run against the final committed-state run (`scratchpad/bite_liveness.py`,
+and literal zeros excluded) run against the final committed-state run
+(`directives/_measurements/S11c_a_bite_liveness.py`,
 stdout `~/.s11_build/bite_liveness_cccb4f9e.out`; the stale claim in
 `directives/_measurements/S11c_a_control_battery_result.md` is superseded by its own CORRECTION section):
 

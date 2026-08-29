@@ -1,0 +1,11 @@
+ZERO_JET_DEFINITION = W_0*(eta_bg*w1_profile + 1)
+DIRECTIVE_FIRST_JET = W_0*eta_bg*w1_profile_d1
+ENGINE_FIRST_JET_PROFILE_GRADE = sigma_W*w1_profile_d1
+FIRST_JET_RESIDUAL_directive_minus_engine = W_0*eta_bg*w1_profile_d1 - sigma_W*w1_profile_d1
+DIRECTIVE_SECOND_JET = W_0*eta_bg*w1_profile_d1d1
+ENGINE_SECOND_JET = sigma_W*w1_profile_d1d1/L_W
+SECOND_JET_RESIDUAL_directive_minus_engine = W_0*eta_bg*w1_profile_d1d1 - sigma_W*w1_profile_d1d1/L_W
+ENGINE_MU_FIRST_JET = m1_profile_d1*mu_R*sigma_W/W_0
+DIRECTIVE_NAMES_MU_R_BG_JETS = False
+CONTINUUM_CHAIN_dW_dx = W_0*eta_bg*Derivative(w1(x), x)
+NOTE = eta_bg and sigma_W are independent bookkeepers; chain-through-eta is not PROFILE_GRADE_SUBS

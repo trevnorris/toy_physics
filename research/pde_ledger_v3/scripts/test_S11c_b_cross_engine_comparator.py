@@ -18,6 +18,30 @@ from sympy.core.function import AppliedUndef
 import S11c_b_cross_engine_comparator as comparator
 
 
+class CanonJetNameTests(unittest.TestCase):
+    def test_time_order_spellings_converge_to_exact_canonical_names(self) -> None:
+        canon_jet_name = comparator.s11ca.canon_jet_name
+        self.assertEqual(canon_jet_name("u_1_t_t"), "u_1_tt")
+        self.assertEqual(canon_jet_name("u_1_tt"), "u_1_tt")
+        self.assertEqual(canon_jet_name("e_W_t_t"), "e_W_tt")
+        self.assertEqual(canon_jet_name("e_W_tt"), "e_W_tt")
+        self.assertEqual(canon_jet_name("u_1_t_t_d1"), "u_1_tt_d1")
+        self.assertEqual(canon_jet_name("u_1_tt_d1"), "u_1_tt_d1")
+        self.assertEqual(
+            canon_jet_name("A_T_s11cb_1_t_t_d2_d3"),
+            "A_T_s11cb_1_tt_d2d3",
+        )
+
+    def test_order_one_and_spatial_only_names_are_unchanged(self) -> None:
+        canon_jet_name = comparator.s11ca.canon_jet_name
+        self.assertEqual(canon_jet_name("u_1_t"), "u_1_t")
+        self.assertEqual(canon_jet_name("e_W_t"), "e_W_t")
+        self.assertEqual(canon_jet_name("theta_t"), "theta_t")
+        self.assertEqual(canon_jet_name("mu_R_bg_d1_d2"), "mu_R_bg_d1d2")
+        self.assertEqual(canon_jet_name("w1_profile_d1"), "w1_profile_d1")
+        self.assertEqual(canon_jet_name("theta_d1"), "theta_d1")
+
+
 class TypedKeyTests(unittest.TestCase):
     def test_fixed_axis_order_and_sector_spelling_fold(self) -> None:
         key = comparator.make_key(

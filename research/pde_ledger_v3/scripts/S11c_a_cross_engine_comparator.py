@@ -787,7 +787,7 @@ def canon_jet_name(name: str) -> str:
     base_parts: list[str] = []
     derivatives: list[str] = []
     for part in parts:
-        if part in {"t", "dw"} or re.fullmatch(r"(?:d\d+)+", part):
+        if part in {"t", "tt", "dw"} or re.fullmatch(r"(?:d\d+)+", part):
             derivatives.append(part)
         elif derivatives:
             derivatives.append(part)
@@ -795,17 +795,17 @@ def canon_jet_name(name: str) -> str:
             base_parts.append(part)
     if not derivatives:
         return name
-    has_time = False
+    time_order = 0
     directions: list[int] = []
     for token in derivatives:
-        if token == "t":
-            has_time = True
+        if token in {"t", "tt"}:
+            time_order += len(token)
         elif token == "dw":
             directions.append(99)
         else:
             directions.extend(int(item) for item in re.findall(r"d(\d+)", token))
     directions.sort()
-    suffix = "_t" if has_time else ""
+    suffix = "_" + "t" * time_order if time_order else ""
     if directions:
         suffix += "_" + "".join("dw" if item == 99 else f"d{item}" for item in directions)
     return "_".join(base_parts) + suffix

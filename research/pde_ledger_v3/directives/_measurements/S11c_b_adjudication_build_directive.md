@@ -45,3 +45,13 @@ $ grep -nE "DivGrad(Theta|Ew)" research/pde_ledger_v3/mathematica/S11c_b_brane_o
 # selected reps {1,4,5,6,7,9,10,13} / omitted {2,3,8,11,12,14,15} recomputed independently by both
 # round-2 & round-3 decision-list legs (see _measurements/S11c_b_adjudication_directive_review.md);
 # PY-only 07/10 and WL-only DivGrad 08/11 remain unmapped in H.WL_TO_PY_RENAME.
+
+## v4 fold (post comparator-fix): family tally re-confirmed against the regenerated reconcile
+$ grep -cE "^MATCH|^FLAG|^NAMESPACE_INCOMPLETE" (per keyword)
+MATCH   2
+FLAG    14
+NAMESPC 12
+# Same 2/14/12 family structure as pre-fix; the fix corrected the inertia time-order within SLAB
+# (u_i_tt/e_W_tt now order-2) and the transverse-trial d2t in COUPLING cancels (0 in printed residual).
+# v4 folded decision-list rounds 1-3 (complete taxonomy, exact-multiset accounting, positive sp.Expr,
+# jet-ID alias, 4 rule-5 leaks stripped); build-review result in _measurements/S11c_b_adjudication_build_review.md.

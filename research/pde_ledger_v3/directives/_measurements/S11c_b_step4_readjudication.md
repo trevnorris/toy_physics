@@ -44,8 +44,9 @@ review) and the build legs' engine byte-identity. No unintended propagation.
    (`gradFullEw = anchoredWidth^(-1) gradient[fullWidth]`, i.e. `∇(W_bg+δW)/W_bg` — NOT a `ρ_4D` density
    weighting, NOT `/W_0`). Other admissibility components already agreed and still do.
 2. **KINETIC — WL correct; NOT a gap (reversed in §9).** Residual `μ·e_W_tt·(W_bg²−W_0²)` persists (WL emits
-   the §1a-correct `μ_W W_0²`, unchanged) — a representational `e_W` vs `e_W,bg=(W_0/W_bg)e_W` normalization
-   artifact, not a WL under-retention. No repair. ⚠ Owed at re-adjudication of the family: confirm whether the
+   `μ_W W_0²`, unchanged; §1a: `e_W ≡ δW/W_0` with constant `W_0` ⇒ `δW = W_0 e_W` ⇒ the e_W-row inertia IS
+   `μ_W W_0²`, ∂/∂W_bg = 0) — a representational `e_W` vs `e_W,bg=(W_0/W_bg)e_W` normalization artifact, not a
+   WL under-retention. No repair. ⚠ Owed at re-adjudication of the family: confirm whether the
    sibling's `W_bg²` is a bare normalization convention (representational) or a genuine sibling bug.
 3. **ADVECTIVE — representational** (continuity constraint-vs-evolution), unchanged. ⚠ owed: confirm PY
    imposes continuity as the constraint.

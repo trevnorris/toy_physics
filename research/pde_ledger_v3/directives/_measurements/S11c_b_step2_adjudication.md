@@ -205,10 +205,11 @@ coupling per remainder; energy-basis = deferred/documented).
    pure energy-basis reps vs incomplete FACE exclusion (build-review C5/G3) — to separate. This is the OWED
    energy-basis quotient reconciliation.
 
-## STEP 3 PLAN (repairs of the CONFIRMED genuine WL gaps only) — ⚠ REVISED by §9: ONE gap, not two
-- WL admissibility θ body force — §3a/§3d — is the ONLY step-3 repair (Item A). ⚠ KINETIC (Item B) is
-  WITHDRAWN: §9 reversed it — WL's `μ_W W_0²` is spec-correct. Full-rigor WL repair of Item A only (directive →
-  2 decision legs → Codex WL/Mathematica fix → 2 build legs → commit → re-run comparator/adjudication).
+## STEP 3 PLAN [⚠ HISTORICAL — EXECUTED; see §9 (decision-list) + `_measurements/S11c_b_step4_readjudication.md`]
+- WL admissibility θ body force — §3a/§3d — was the ONLY step-3 repair (Item A). KINETIC (Item B) WITHDRAWN
+  (§9 reversed it — WL's `μ_W W_0²` is spec-correct). ✅ DONE: directive → 2 decision legs (v1 reversal + v2
+  clear, `b8443a48`) → Codex WL 3-line fix `b875cdde` (both build legs SOUND) → step-4 re-run `c2af531c`
+  (admissibility θ residual → Integer(0), all 4 branch×density; nothing else moved).
 - ADVECTIVE: no repair (representational); document + confirm the PY continuity constraint.
 - COUPLING: NOT a step-3 engine repair yet. The genuine in-scope disagreement is SETTLED; a §3c/§2a
   SPEC-adjudication (which coupling form is spec-correct, or a §3c spec-AMBIGUITY) precedes any engine fix; +
@@ -242,5 +243,9 @@ blanket-collapsing.
 - **v1 directive defects folded to v2:** rule-5 leaks ("do not freeze at W_0"; stating `Integer(0)`/`muW WZero²`;
   directional prose), rule-3 over-specification (density-multiplier recipe), wrong WL cites (`fullWidth` L541
   not L565; [[7]] L554 not L560; `thetaVariation` L538 not L562), incomplete leak-gate. Blindness clean.
-  ⇒ v2 = Item A only, object-named (full-field thickness-gradient content in every thickness-gradient-carrying
-  invariant), cites corrected, leaks removed; re-run 2 decision-list legs on v2 before any builder.
+  ⇒ v2 = Item A only, object-named (full-field thickness-gradient content in the uniform thickness-gradient
+  invariants; N15 spurion invariants NOT lifted), cites corrected, leaks removed. ✅ EXECUTED: v2's 2 decision
+  legs CLEARED (`b8443a48`) → build `b875cdde` (both build legs SOUND — FORM-ablation zeros θ, `/W_bg`
+  normalization forced by the committed pure-thickness invariant [[7]]) → step-4 re-run `c2af531c`
+  (admissibility θ residual → Integer(0), all 4; every other family byte-identical). Record:
+  `_measurements/S11c_b_step4_readjudication.md`.

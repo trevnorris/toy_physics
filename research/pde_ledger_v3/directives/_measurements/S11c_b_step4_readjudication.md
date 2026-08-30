@@ -1,8 +1,9 @@
 # S11c-b step 4 — re-run + re-adjudication against the repaired WL transcript (2026-08-30)
 
 The reviewed row-residual instrument (`scripts/S11c_b_row_residual.py`, committed `ef26084c`) re-run against
-the repaired WL transcript (`mathematica/out/S11c_b_brane_operator_mathematica_audit.out` at HEAD `b875cdde`,
-the admissibility θ full-field lift) and the unchanged PY transcript. Every claim carries its command (rule 2).
+the repaired WL transcript (`mathematica/out/S11c_b_brane_operator_mathematica_audit.out`, regenerated +
+committed in `b875cdde` — the admissibility θ full-field lift) and the unchanged PY transcript. Every claim
+carries its command (rule 2).
 
 ## Run
 ```
@@ -39,7 +40,9 @@ review) and the build legs' engine byte-identity. No unintended propagation.
 
 ## Per-family standing after the repair (rule 13)
 1. **ADMISSIBILITY θ — REPAIRED.** Residual → 0 (all 4). WL now carries the §3d full-field `∇²W_bg` body force
-   and agrees with PY. Other admissibility components already agreed and still do.
+   and agrees with PY. Mechanism (§9 + build review): the full-field lift of the MIXED `∇θ·∇e_W` invariant
+   (`gradFullEw = anchoredWidth^(-1) gradient[fullWidth]`, i.e. `∇(W_bg+δW)/W_bg` — NOT a `ρ_4D` density
+   weighting, NOT `/W_0`). Other admissibility components already agreed and still do.
 2. **KINETIC — WL correct; NOT a gap (reversed in §9).** Residual `μ·e_W_tt·(W_bg²−W_0²)` persists (WL emits
    the §1a-correct `μ_W W_0²`, unchanged) — a representational `e_W` vs `e_W,bg=(W_0/W_bg)e_W` normalization
    artifact, not a WL under-retention. No repair. ⚠ Owed at re-adjudication of the family: confirm whether the

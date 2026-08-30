@@ -528,7 +528,7 @@ constructEnergyData[branch_String, widthHead_Symbol,
 constructFullFieldBackgroundEnergy[branch_String, widthHead_Symbol,
     modulusHead_Symbol] := Module[
   {order, anchoredWidth, anchoredModulus, uVariation, thetaVariation,
-    ewVariation, localEw, fullWidth, gradTheta, gradLocalEw, divU,
+    ewVariation, localEw, fullWidth, gradTheta, gradFullEw, divU,
     curlU, uniformInvariants, uniformCoefficients, uniformFactors,
     uniformTerms, widthSpurion, modulusSpurion, newTerms},
   order = backgroundOrder;
@@ -540,7 +540,7 @@ constructFullFieldBackgroundEnergy[branch_String, widthHead_Symbol,
   localEw = (WZero/anchoredWidth) ewVariation;
   fullWidth = anchoredWidth + WZero ewVariation;
   gradTheta = gradient[thetaVariation];
-  gradLocalEw = gradient[localEw];
+  gradFullEw = anchoredWidth^(-1) gradient[fullWidth];
   divU = divergence[uVariation];
   curlU = curl[uVariation];
 
@@ -552,7 +552,7 @@ constructFullFieldBackgroundEnergy[branch_String, widthHead_Symbol,
     thetaVariation localEw,
     Dot[gradTheta, gradTheta],
     anchoredWidth^(-2) Dot[gradient[fullWidth], gradient[fullWidth]],
-    Dot[gradTheta, gradLocalEw],
+    Dot[gradTheta, gradFullEw],
     thetaVariation divU,
     localEw divU};
   uniformCoefficients = {

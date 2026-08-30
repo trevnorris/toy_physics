@@ -10,8 +10,9 @@ A(PY)=`{(0,1),(1,1)}`, B(WL)=`∅`. PY carries a background-Laplacian body force
 `κ_θ·σ_W/(L_W·W_0)·(η_bg·w1 − 1)·Σ_i ∂_{ii}w1` (a `∇²w1`, grade σ¹); WL's admissibility operand is identically 0.
 This is the standalone §2b/§3d background-order balance (NOT a term-provenance split). §3a is explicit: "a second
 spatial derivative of `W_bg` is still first order in background amplitude, `O(η)`/`O(σ_W)`, and is not dropped."
-⇒ PY spec-correct; WL's admissibility path lacks the `∇²W_bg` body force entirely. ADJUDICATED (root-cause pinned
-by WL code read): WL's θ body force = `applyBackgroundProfileWithGeneratedJets[eulerScalar[firstVariation, thetaField]]`
+⇒ PY spec-correct; WL's admissibility path lacks the `∇²W_bg` body force entirely. ADJUDICATED — the FINDING (genuine WL
+under-retention) is SETTLED (WL operand 0 while §3a mandates the term); the MECHANISM below is a leading hypothesis
+from a WL CODE READ, NOT yet run-confirmed. WL's θ body force = `applyBackgroundProfileWithGeneratedJets[eulerScalar[firstVariation, thetaField]]`
 = `truncateBackground[eulerScalar[...] /. profileRules]` (WL audit L1339-1340, L360). `truncateBackground` is the
 `Series[etaBg,0,1] + Series[sigmaW,0,1]` truncation (`truncateScalar`, L102-125) — it keeps only FIRST background
 order in each bookkeeper. A `∇²W_bg` (second spatial derivative) is graded by WL at SECOND background order and is
@@ -46,19 +47,22 @@ retain); (2,0)=η²w1² is the shape-order question (§3a: independent-factor co
 under-retention (W_bg²→W_0² truncation) at least for (1,0); CONFIRM via the THICKNESS row modulo quotient + §2a/§3a
 on (2,0).
 
-## 4. COUPLING_KERNEL (SECTOR=TRANSVERSE_TO_THICKNESS, ±ADJOINTNESS_OPERAND_FORWARD) ×8 — genuine bidirectional bulk
+## 4. COUPLING_KERNEL (SECTOR=TRANSVERSE_TO_THICKNESS, ±ADJOINTNESS_OPERAND_FORWARD) ×8 — certified non-IBP bulk; §2a which-engine verdict PENDING
 Certified genuine non-IBP bulk by BOTH v2 build legs (from-scratch Euler operator + exact rational zero-test;
 `REPRESENTATIONAL_DIVERGENCE=0` real). Grades: A(PY)=`{(0,1),(1,1),(2,1),(3,1),(4,1)}`+rem`(5,1)`;
 B(WL)=`{(0,1),(0,2),(1,1),(1,2)}`. BIDIRECTIONAL — WL carries `b=2` cells `(0,2),(1,2)` PY lacks; PY carries `a≥2`
 cells `(2,1),(3,1),(4,1),(5,1)…` WL lacks (the rational density `1/(1+η w1)` geometric tail); both differ at
-`(0,1),(1,1)`. ⇒ genuine cross-engine COUPLING difference. Adjudicate which retention is spec-correct per §3c
+`(0,1),(1,1)`. ⇒ the non-IBP BULK is certified (v2 legs) and the bidirectional grade pattern is MEASURED; the §2a
+per-cell "which engine is spec-correct" verdict is PENDING. Adjudicate which retention is spec-correct per §3c
 (weak variational restriction) + §2a (first shape order in EACH of η,σ): WL's `b=2` = second σ_W order (§2a would
 truncate it → WL over-retains σ²?); PY's `a≥2` = higher η order from the density (§2a first η order → PY over-retains
 η²?). Both may be over-retaining beyond §2a's "first shape order in each" — OR the density's full η-dependence is
 mandated. OPEN — needs the §2a/§3a per-cell reading + possibly a WL/PY correctness check.
 
 ## Plan (full rigor)
-- (A) Confirm admissibility §3d (spec mandates ∇²W_bg body force) + locate WL's structural gap.
+- (A) ADMISSIBILITY — SETTLED (genuine WL under-retention; §3a/§3d mandate the ∇²W_bg body force; WL operand 0).
+  Mechanism = leading-hypothesis `truncateBackground` truncation, run-confirm at repair. No further step-2 work — it
+  is a step-3 repair target.
 - (B) SLAB advective/kinetic: the ENERGY_BASIS quotient reconciliation — does each full operator ROW (U_MOMENTUM for
   advective, THICKNESS for kinetic) agree modulo the §1d total-in-plane-divergence quotient? ⛔⛔ DO NOT reuse
   `classify_total_divergence` on the SLAB rows — the v2 build legs established that classifier is valid ONLY for

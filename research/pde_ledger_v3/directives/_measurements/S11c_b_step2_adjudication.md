@@ -174,12 +174,16 @@ coupling per remainder; energy-basis = deferred/documented).
    = PY ≠ 0`) — WL's θ background-order body force is IDENTICALLY ZERO while PY carries the §3a-mandated ∇²w1.
    Every OTHER component AGREES: BODY_FORCE DOF=U (both 0), DOF=E_W (WL nonzero, RES=0), PER_FACE_TRACTION
    PLUS/MINUS (RES=0). ⇒ isolated genuine gap = WL's θ body force. **REPAIR WL** (§3a first-shape-order ∇²W_bg).
-2. **KINETIC = GENUINE WL under-retention.** Step-1 isolated the kinetic bucket: `μ·e_W_tt·(W_bg²−W_0²)` — WL
-   froze the thickness inertia coefficient at the constant binding W_0² (WL `kineticEw = muW·WZero²·e_W_tt`,
-   L841) vs PY W_bg²; §2a "every explicit W_0 factor in U becomes W_bg(y)" + §3b "do not freeze a coefficient
-   before differentiation". **REPAIR WL** (thickness inertia W_bg²). ⚠ the complete THICKNESS ROW residual
-   ENTANGLES this with the deferred energy-basis reps (below); the kinetic verdict rests on the step-1 isolated
-   bucket.
+   ⚠ §9 (2026-08-30): DIRECTION CONFIRMED (genuine WL under-retention, repair WL) by 2 independent CAS legs +
+   an orchestrator code read, but the MECHANISM stated here (§3a body force) is refined — the mandated source
+   is the full-field thickness-gradient LIFT of the mixed `∇θ·∇e_W` invariant, NOT a `ρ_4D` density-weighting.
+2. **KINETIC = ⚠⚠ REVERSED by §9 (2026-08-30): WL is CORRECT (`μ_W W_0²`); do NOT repair.** [was stated here as:
+   GENUINE WL under-retention.] Step-1 isolated the kinetic bucket: `μ·e_W_tt·(W_bg²−W_0²)` — read at the time as
+   WL freezing the thickness inertia at the constant binding W_0² (WL `kineticEw = muW·WZero²·e_W_tt`, L841/L838/
+   L923) vs PY W_bg². §9 shows that read was wrong: §1a `e_W ≡ δW/W_0` ⇒ `δW = W_0 e_W` identically ⇒ the e_W-row
+   inertia IS `μ_W W_0²`; the PY `W_bg²` is an OVER-PRODUCTION (an `e_W`/`e_W,bg` conflation), and §2a's promotion
+   is scoped to `U` and the listed bindings, not to the field definition `e_W ≡ δW/W_0`. The `W_bg²−W_0²`
+   residual was a normalization artifact, not a genuine WL gap. **NO REPAIR** (re-adjudicate the family at step 4).
 3. **ADVECTIVE = REPRESENTATIONAL (continuity constraint-vs-evolution) [high confidence, confirmation owed].**
    MASS_EVOLUTION_ROW residual is a CASE-DEPENDENT continuity accumulation (each of the 4 branch×density = its own ∂_tρ; LAB_HELD/RHO4 = `ρ_br·(−e_W_t − θ_t − ∇·u_t − η w1·(θ_t+∇·u_t))`, the RHOBR/MATERIAL cases differ in the η w1 structure) = −(WL's continuity
    ACCUMULATION ∂_t ρ). PY's mass row = the advective/mass CONSTRAINT operand only; WL writes the full
@@ -201,13 +205,42 @@ coupling per remainder; energy-basis = deferred/documented).
    pure energy-basis reps vs incomplete FACE exclusion (build-review C5/G3) — to separate. This is the OWED
    energy-basis quotient reconciliation.
 
-## STEP 3 PLAN (repairs of the CONFIRMED genuine WL gaps only)
-- WL admissibility θ body force (∇²w1) — §3a/§3d; and WL thickness kinetic inertia (W_bg², not W_0²) — §2a/§3b.
-  Both are WL under-retentions with clear spec mandates ⇒ full-rigor WL repair (directive → 2 decision legs →
-  Codex WL/Mathematica fix → 2 build legs → commit → re-run comparator/adjudication).
+## STEP 3 PLAN (repairs of the CONFIRMED genuine WL gaps only) — ⚠ REVISED by §9: ONE gap, not two
+- WL admissibility θ body force — §3a/§3d — is the ONLY step-3 repair (Item A). ⚠ KINETIC (Item B) is
+  WITHDRAWN: §9 reversed it — WL's `μ_W W_0²` is spec-correct. Full-rigor WL repair of Item A only (directive →
+  2 decision legs → Codex WL/Mathematica fix → 2 build legs → commit → re-run comparator/adjudication).
 - ADVECTIVE: no repair (representational); document + confirm the PY continuity constraint.
 - COUPLING: NOT a step-3 engine repair yet. The genuine in-scope disagreement is SETTLED; a §3c/§2a
   SPEC-adjudication (which coupling form is spec-correct, or a §3c spec-AMBIGUITY) precedes any engine fix; +
   the ADJOINTNESS_RESIDUAL finding.
 - ENERGY-BASIS (U_MOMENTUM/THICKNESS strong rows): the deferred §1d quotient reconciliation (separate reps from
   any face-leftover first).
+
+## 9. STEP 3 DECISION-LIST LEGS (2026-08-30) — Item B REVERSED, Item A mechanism re-diagnosed (before any builder)
+Two independent decision-list legs (Codex + Grok, rule 7) on the v1 WL-repair directive, each with its own
+SymPy derivation (script + literal stdout), plus an orchestrator rule-13 read of the source of truth. Record:
+`_measurements/S11c_b_wl_admissibility_repair_directive_review.md`. The gate did NOT clear the v1 directive; the two items
+adjudicated OPPOSITE ways — a demonstration of "a one-engine fix is a SPEC question first" and of never
+blanket-collapsing.
+
+- **ITEM B (thickness kinetic) — OVER-PRODUCTION; WL correct; DROP.** §1a `e_W ≡ δW/W_0` (constant `W_0`) ⇒
+  `δW = W_0 e_W` ⇒ the named-`e_W`-row inertia is `μ_W W_0²` (∂/∂W_bg = 0), independently reproduced by both
+  legs (Codex: `coefficient of d_t^2 e_W: W_0**2*mu_W`; Grok: `inertia_coeff_depends_on_W_bg = False`). The
+  §8-item-2 read ("WL froze W_0²") conflated the named DOF `e_W` with the background-referenced `e_W,bg =
+  (W_0/W_bg)e_W`; the sibling's `W_bg²` is the over-production. WL's `kineticEw = muW WZero^2 …` is faithful.
+  ⇒ §8 item 2 REVERSED. The `W_bg²−W_0²` residual is a normalization artifact — re-adjudicate the kinetic
+  family at step 4 (representational `e_W`/`e_W,bg` conflation in the comparator/PY vs a genuine PY bug).
+- **ITEM A (admissibility θ) — GENUINE WL under-retention CONFIRMED, mechanism re-diagnosed.** Both legs'
+  independent CAS: the §3a mixed invariant `∇θ·∇e_W`, thickness-gradient factor lifted to the §3d full width
+  `∇(W_bg+δW)`, gives a nonzero θ Euler covector `∝ κ_θW·∇²W_bg/W_bg` (Codex: `-K_thetaW*W_bg''/W_bg`, nonzero
+  in both density reps) — reproducing the sibling's θ body force structure (rule-1: independent route matches
+  PY here, opposite Item B). ⇒ WL under-retains; **repair WL**. But the mechanism is the full-field lift of the
+  MIXED invariant, NOT the `ρ_4D=ρ_bg⁰(1+θ)` density-weighting the v1 directive wrongly diagnosed. Orchestrator
+  code read (rule 13) confirms the asymmetry: `constructFullFieldBackgroundEnergy` lifts the pure-thickness
+  invariant [[7]] (L554) to `fullWidth` but leaves the mixed [[8]] `Dot[gradTheta, gradLocalEw]` (L555) on the
+  wave-only `gradLocalEw` (L543).
+- **v1 directive defects folded to v2:** rule-5 leaks ("do not freeze at W_0"; stating `Integer(0)`/`muW WZero²`;
+  directional prose), rule-3 over-specification (density-multiplier recipe), wrong WL cites (`fullWidth` L541
+  not L565; [[7]] L554 not L560; `thetaVariation` L538 not L562), incomplete leak-gate. Blindness clean.
+  ⇒ v2 = Item A only, object-named (full-field thickness-gradient content in every thickness-gradient-carrying
+  invariant), cites corrected, leaks removed; re-run 2 decision-list legs on v2 before any builder.

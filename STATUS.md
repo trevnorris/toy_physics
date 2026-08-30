@@ -2,9 +2,9 @@
 
 ## ⭐⭐⭐ S11c-b STEP 2 ADJUDICATION COMPLETE (2026-08-30) — the four families are COMPUTED, not asserted
 **Row-residual instrument BUILT + FIXED + COMMITTED `ef26084c`** (`scripts/S11c_b_row_residual.py`; run
-`~/.s11_build/S11c_b_row_residual_fixrun.out` exit 0, 26.76MB; reporter `scratchpad/row_residual_report.py`).
+`~/.s11_build/S11c_b_row_residual_fixrun.out` exit 0, 26.76MB; reporter `scripts/S11c_b_row_residual_report.py`).
 **FOUR leg rounds, all folded** (directive→2 decision legs [Codex+Grok, rejected a uniform bucket-sum recipe,
-9 findings; the requested-truncation reading c≤1∧a≤1∧b≤1 + linearize-coeffs independently derived by both +
+9 findings; the requested truncation = retain iff c≤1∧a≤1∧b≤1 (coeffs Taylor-linearized in η), independently derived by both + me, NOT a spec ambiguity, +
 me]; build→2 legs [fresh Claude SOUND + Grok found the coupling bridge-convention + a nondeterministic witness;
 a mass-residual leg DISAGREEMENT resolved rule-13 = false alarm]; fix-directive→2 decision legs [rejected two
 of my drafts — the Euler operator does NOT commute with the profile bridge — and converged on the construction];

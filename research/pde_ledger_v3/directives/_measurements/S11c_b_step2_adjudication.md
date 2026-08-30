@@ -82,6 +82,7 @@ mandated. OPEN — needs the §2a/§3a per-cell reading + possibly a WL/PY corre
   not an engine bug.
 
 ## 5. REFINED FRAMING (2026-08-29, code-grounded, post-compact) — the requested-truncation ROW-LEVEL residual instrument
+(SETTLED truncation reading, §§5-8: retain iff c≤1 ∧ a≤1 ∧ b≤1 in (ε,η_bg,σ_W), coefficients Taylor-LINEARIZED in η; independently derived by both step-1 decision legs + me, NOT a spec ambiguity.)
 
 Commands run this session (rule 2 — the claims carry the reads):
 - `sed -n '95,135p' mathematica/S11c_b_brane_operator_mathematica_audit.wl` → `truncateScalar` = `Normal[Series[·,{etaBg,0,1}]]` then `Normal[Series[·,{sigmaW,0,1}]]`, PROTECTING `Inactive[_][…]` operator tokens across the Series (products of protected jets survive to higher combined order). WL truncates INTERNALLY at (η≤1 ∧ σ_W≤1).
@@ -102,7 +103,7 @@ CONSEQUENCES (refine §§1-4 above):
 Verdict reads off RES_row:
   RES_row = 0  ⟺ engines AGREE within the deliverable scope (advective's re-bucketing / divergence-form arrangement is REPRESENTATIONAL).
   RES_row ≠ 0  ⟺ genuine in-scope difference (missing/frozen operator content) → adjudicate which engine is spec-correct against §3a/§3b/§3c; that engine's sibling is the repair target.
-Predicted (COMPUTE, do not assume): ADVECTIVE RES_row=0 (product-rule identity ∇·(W_bg u_t)=∇W_bg·u_t+W_bg∇·u_t, pure re-bucket); KINETIC RES_row≠0 at (1,0) (WL froze thickness inertia W_bg²→W_0², §3b "do not freeze a coefficient at its constant binding before differentiation" ⇒ genuine WL gap); COUPLING RES_row=0 (agree at (0,1),(1,1); the a≥2 / b≥2 tails are OUT of the requested truncation); ADMISSIBILITY RES_row=PY_row≠0 (WL_row≡0, genuine gap). The kinetic (2,0) and coupling η²/σ² cells are OUT of scope under (η≤1∧σ_W≤1) and are NOT engine bugs unless a leg reads §2a as mandating full (unlinearized) coefficients — a SPEC question the instrument's decision-list legs adjudicate.
+⚠ [PREDICTION — SUPERSEDED by §8: ADVECTIVE RES_row is NONZERO yet REPRESENTATIONAL (the continuity accumulation from constraint-vs-evolution, not a re-bucketing/divergence); RES_row=0 was the WRONG classifier for advective.] Predicted (COMPUTE, do not assume): ADVECTIVE RES_row=0 (product-rule identity ∇·(W_bg u_t)=∇W_bg·u_t+W_bg∇·u_t, pure re-bucket); KINETIC RES_row≠0 at (1,0) (WL froze thickness inertia W_bg²→W_0², §3b "do not freeze a coefficient at its constant binding before differentiation" ⇒ genuine WL gap); COUPLING RES_row=0 (agree at (0,1),(1,1); the a≥2 / b≥2 tails are OUT of the requested truncation); ADMISSIBILITY RES_row=PY_row≠0 (WL_row≡0, genuine gap). The kinetic (2,0) and coupling η²/σ² cells are OUT of scope under (η≤1∧σ_W≤1) and are NOT engine bugs unless a leg reads §2a as mandating full (unlinearized) coefficients — a SPEC question the instrument's decision-list legs adjudicate.
 This is the reviewed Phase-A/B build: directive (name the OBJECT = RES_row; WITHHOLD the predicted residuals, rule 5) → 2 decision-list legs (Codex + Grok; they also verify the (η≤1∧σ_W≤1) reading of §2a) → Codex build → 2 build legs (fresh Claude agent + Grok; FORM-ablate the row-sum and the divergence expansion) → commit.
 
 ## 6. WL-side computability + kinetic mechanism (2026-08-29, `sed -n '815,875p' …_mathematica_audit.wl`)
@@ -129,8 +130,8 @@ This is the reviewed Phase-A/B build: directive (name the OBJECT = RES_row; WITH
   ∇·(σ_E u_t) split across ACCUMULATION+ADVECTIVE; the row-sum over {ACCUMULATION, ADVECTIVE, FLUX}
   reconciles it iff representational (RES_row=0). The fingerprint's `ADVECTIVE` family = this mass-row term.
 
-## 7. ADJUDICATION START (2026-08-30) — reading the committed instrument's residuals (run `~/.s11_build/S11c_b_row_residual_fixrun.out`, PARTIAL: non-coupling done, coupling 12/20, admissibility PENDING; full run ~2h)
-Reporter (scratchpad `row_residual_report.py`): parses the emit srepr (Association.entries is a DICT; TextAtom.value)
+## 7. ADJUDICATION START (2026-08-30) — ⚠ HISTORICAL PARTIAL SNAPSHOT, SUPERSEDED BY §8 (full run now complete, exit 0, 26.76MB). [was: partial — non-coupling done, coupling 12/20, admissibility pending]
+Reporter (`scripts/S11c_b_row_residual_report.py`): parses the emit srepr (Association.entries is a DICT; TextAtom.value)
 → per case (family/key, ROW_RESIDUAL zero?/form/grades, FULL_PREBRIDGE_ROUTE, IN_SCOPE_WEAK_REMAINDER).
 
 - **ADVECTIVE = MASS_EVOLUTION_ROW** (all 4 branch×density): `ROW_RESIDUAL NONZERO grades={(0,0),(1,0)}` =
@@ -180,7 +181,7 @@ coupling per remainder; energy-basis = deferred/documented).
    ENTANGLES this with the deferred energy-basis reps (below); the kinetic verdict rests on the step-1 isolated
    bucket.
 3. **ADVECTIVE = REPRESENTATIONAL (continuity constraint-vs-evolution) [high confidence, confirmation owed].**
-   MASS_EVOLUTION_ROW residual (all 4) = `ρ_br·(−e_W_t − θ_t − ∇·u_t − η w1·(θ_t+∇·u_t))` = −(WL's continuity
+   MASS_EVOLUTION_ROW residual is a CASE-DEPENDENT continuity accumulation (each of the 4 branch×density = its own ∂_tρ; LAB_HELD/RHO4 = `ρ_br·(−e_W_t − θ_t − ∇·u_t − η w1·(θ_t+∇·u_t))`, the RHOBR/MATERIAL cases differ in the η w1 structure) = −(WL's continuity
    ACCUMULATION ∂_t ρ). PY's mass row = the advective/mass CONSTRAINT operand only; WL writes the full
    continuity ∂_tρ+∇·(ρu) as an evolution row. Same physics, different imposition (constraint vs evolution).
    Clean residual (no higher derivs / shape terms ⇒ not face-contaminated). **NO REPAIR.** ⚠ OWED: confirm PY
@@ -205,7 +206,8 @@ coupling per remainder; energy-basis = deferred/documented).
   Both are WL under-retentions with clear spec mandates ⇒ full-rigor WL repair (directive → 2 decision legs →
   Codex WL/Mathematica fix → 2 build legs → commit → re-run comparator/adjudication).
 - ADVECTIVE: no repair (representational); document + confirm the PY continuity constraint.
-- COUPLING: NOT a step-3 engine repair yet — a §3c/§2a SPEC-adjudication (which coupling form is spec-correct,
-  or genuine disagreement) precedes any engine fix; + the ADJOINTNESS_RESIDUAL finding.
+- COUPLING: NOT a step-3 engine repair yet. The genuine in-scope disagreement is SETTLED; a §3c/§2a
+  SPEC-adjudication (which coupling form is spec-correct, or a §3c spec-AMBIGUITY) precedes any engine fix; +
+  the ADJOINTNESS_RESIDUAL finding.
 - ENERGY-BASIS (U_MOMENTUM/THICKNESS strong rows): the deferred §1d quotient reconciliation (separate reps from
   any face-leftover first).

@@ -76,7 +76,7 @@ mandated. OPEN — needs the §2a/§3a per-cell reading + possibly a WL/PY corre
   re-buckets W_bg∇·u_t to ACCUMULATION/FLUX ⇒ likely representational); kinetic = PY-has-more W_bg²vsW_0² (⇒ likely
   genuine WL under-retention, NOT re-bucketing).
 - (C) COUPLING: §2a/§3a per-cell adjudication of the bidirectional grades → which engine (or genuine disagreement).
-- Then step 3 repairs ONLY the confirmed genuine engine gaps (⇒ likely admissibility ∇²w1, maybe kinetic (1,0); NOT
-  advective if representational), step 4 re-run + re-adjudicate, step 5 honest record.
+- Then step 3 repairs ONLY the confirmed genuine engine gaps (⇒ admissibility ∇²w1 [SETTLED], kinetic (1,0) if
+  confirmed genuine; NOT advective if representational), step 4 re-run + re-adjudicate, step 5 honest record.
 - ⛔ a one-engine fix is a SPEC question FIRST — if §3d/§2a is ambiguous for a cell, that is a SPEC defect (fix spec),
   not an engine bug.

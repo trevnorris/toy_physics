@@ -128,3 +128,84 @@ This is the reviewed Phase-A/B build: directive (name the OBJECT = RES_row; WITH
 - ADVECTIVE re-bucketing lives WITHIN `MASS_EVOLUTION_ROW`: PY ∇ρ_br·u_t (advective_constraint) vs WL full
   ∇·(σ_E u_t) split across ACCUMULATION+ADVECTIVE; the row-sum over {ACCUMULATION, ADVECTIVE, FLUX}
   reconciles it iff representational (RES_row=0). The fingerprint's `ADVECTIVE` family = this mass-row term.
+
+## 7. ADJUDICATION START (2026-08-30) — reading the committed instrument's residuals (run `~/.s11_build/S11c_b_row_residual_fixrun.out`, PARTIAL: non-coupling done, coupling 12/20, admissibility PENDING; full run ~2h)
+Reporter (scratchpad `row_residual_report.py`): parses the emit srepr (Association.entries is a DICT; TextAtom.value)
+→ per case (family/key, ROW_RESIDUAL zero?/form/grades, FULL_PREBRIDGE_ROUTE, IN_SCOPE_WEAK_REMAINDER).
+
+- **ADVECTIVE = MASS_EVOLUTION_ROW** (all 4 branch×density): `ROW_RESIDUAL NONZERO grades={(0,0),(1,0)}` =
+  `ρ_br·(−e_W_t − θ_t − ∇·u_t − η w1·(θ_t + ∇·u_t))` — CLEAN (no higher derivs, no shape terms). This is the
+  CONTINUITY ACCUMULATION (∂_t of density = e_W_t+θ_t+∇·u_t) that WL books in an explicit mass-evolution row and
+  PY books in the density/θ equation ⇒ REPRESENTATIONAL continuity-split (strong evidence; ⚠ FINAL confirmation
+  owed: verify PY's θ/density equation carries this accumulation, so PY_full_continuity = WL_full_continuity).
+- **U_MOMENTUM_ROWS + THICKNESS_ROW complete rows**: `ROW_RESIDUAL NONZERO`, LARGE. ⚠ U_MOMENTUM AGREED per-bucket
+  in step-1 yet the COMPLETE row differs. Numeric rule-13 check (LAB_HELD/RHO4 U_MOMENTUM): PY_TRUNC 56 free syms
+  vs WL 129 (WL carries THIRD derivatives `e_W_d1d1d1`, `B_div`, `C` PY lacks); PY/WL ratio varies
+  {0.039,0.165,−0.230} across random subs ⇒ NOT a scale/normalization artifact — a GENUINE structural difference.
+  ⇒ these are the DEFERRED §1d ENERGY-BASIS REPRESENTATIVE differences (the 07/10 + gamma·DivGrad reps; their
+  variation yields the higher derivatives) surfacing at the ROW level — §1d: "the uniform quotient does NOT lift
+  to variable coefficients; the first-jet terms are PHYSICS in the operator." These are NOT one of the 4 target
+  families (U_MOMENTUM agreed per-bucket). ⚠ AMBIGUITY to resolve: energy-basis reps (deferred, expected) vs
+  INCOMPLETE FACE EXCLUSION leftover (build-review C5/G3 non-commensurability — WL FACE generalized-rows vs the
+  subtracted FACE origin; shape-substrate carries higher derivatives too). The MASS residual is clean (no shape
+  terms) ⇒ MASS not face-contaminated; U_MOMENTUM/THICKNESS need the disentangling.
+- **KINETIC**: the thickness ROW residual CONFLATES the kinetic inertia diff (step-1 isolated it:
+  μ·e_W_tt·(W_bg²−W_0²), genuine WL freeze of W_0², §2a/§3b) with the energy-basis bulk difference. For the KINETIC
+  verdict use the step-1 ISOLATED kinetic-bucket result (genuine WL under-retention); the complete-row is
+  entangled with the deferred energy-basis question.
+- **ADMISSIBILITY, COUPLING**: PENDING full run. Coupling: FULL_PREBRIDGE_ROUTE=RESIDUAL_BULK ×20 (legs); the
+  IN_SCOPE_WEAK_REMAINDER (zero? ⇒ in-scope representational; nonzero ⇒ genuine in-scope bulk) is READ from the
+  full run.
+
+⇒ REFRAME: the complete-row instrument is the right object for ADVECTIVE (re-bucketing→row residual = accumulation,
+representational) and for COUPLING (weak remainder) and ADMISSIBILITY (WL=0). For KINETIC and the bulk-energy
+sector it ENTANGLES the target-family diff with the DEFERRED §1d energy-basis quotient. NEXT: (i) complete the full
+run; (ii) read ADMISSIBILITY (confirm WL θ body force = 0 + all components) + COUPLING IN_SCOPE_WEAK_REMAINDER;
+(iii) disentangle the U_MOMENTUM/THICKNESS strong-row differences (energy-basis reps vs face-leftover) — this is
+the OWED §1d energy-basis quotient reconciliation; (iv) confirm ADVECTIVE representational (PY continuity carries
+the accumulation); then the per-family verdict + repairs (admissibility+kinetic = repair WL; advective = repres.;
+coupling per remainder; energy-basis = deferred/documented).
+
+## 8. ADJUDICATION COMPLETE (2026-08-30) — full run `~/.s11_build/S11c_b_row_residual_fixrun.out` (exit 0, 26.76MB, admissibility+coupling now present). Per-family verdict:
+
+1. **ADMISSIBILITY = GENUINE WL under-retention [CONFIRMED by instrument].** Componentwise (reporter): the ONLY
+   nonzero residual is `BODY_FORCE DOF=THETA` (all 4 branch×density: `ROW_OPERAND_WL = Integer(0)`, `ROW_RESIDUAL
+   = PY ≠ 0`) — WL's θ background-order body force is IDENTICALLY ZERO while PY carries the §3a-mandated ∇²w1.
+   Every OTHER component AGREES: BODY_FORCE DOF=U (both 0), DOF=E_W (WL nonzero, RES=0), PER_FACE_TRACTION
+   PLUS/MINUS (RES=0). ⇒ isolated genuine gap = WL's θ body force. **REPAIR WL** (§3a first-shape-order ∇²W_bg).
+2. **KINETIC = GENUINE WL under-retention.** Step-1 isolated the kinetic bucket: `μ·e_W_tt·(W_bg²−W_0²)` — WL
+   froze the thickness inertia coefficient at the constant binding W_0² (WL `kineticEw = muW·WZero²·e_W_tt`,
+   L841) vs PY W_bg²; §2a "every explicit W_0 factor in U becomes W_bg(y)" + §3b "do not freeze a coefficient
+   before differentiation". **REPAIR WL** (thickness inertia W_bg²). ⚠ the complete THICKNESS ROW residual
+   ENTANGLES this with the deferred energy-basis reps (below); the kinetic verdict rests on the step-1 isolated
+   bucket.
+3. **ADVECTIVE = REPRESENTATIONAL (continuity constraint-vs-evolution) [high confidence, confirmation owed].**
+   MASS_EVOLUTION_ROW residual (all 4) = `ρ_br·(−e_W_t − θ_t − ∇·u_t − η w1·(θ_t+∇·u_t))` = −(WL's continuity
+   ACCUMULATION ∂_t ρ). PY's mass row = the advective/mass CONSTRAINT operand only; WL writes the full
+   continuity ∂_tρ+∇·(ρu) as an evolution row. Same physics, different imposition (constraint vs evolution).
+   Clean residual (no higher derivs / shape terms ⇒ not face-contaminated). **NO REPAIR.** ⚠ OWED: confirm PY
+   imposes continuity as the constraint (so PY_full ≡ WL_full).
+4. **COUPLING = GENUINE in-scope cross-engine disagreement [rule 6 finding; NOT a simple one-engine gap].**
+   `IN_SCOPE_WEAK_REMAINDER = NONZERO` for ALL 20 (kernel fwd/rev blocks + ADJOINTNESS_OPERAND fwd/rev +
+   ADJOINTNESS_RESIDUAL, every branch×density) ⇒ at the requested truncation the coupling residual is NOT a
+   total in-plane divergence — genuine bulk survives in-scope. Consistent with v2's reviewed certification (the
+   8 coupling residuals = non-IBP bulk, both engines' from-scratch Euler agreed). FULL_PREBRIDGE_ROUTE=RESIDUAL_
+   BULK ×20 (correct pre-bridge convention). ⇒ the engines' coupling kernels GENUINELY differ in-scope. ⛔ a
+   one-engine fix is a SPEC question FIRST: the WHICH-engine / §3c-form verdict is OWED (deep). Also: nonzero
+   ADJOINTNESS_RESIDUAL ⇒ the fwd/rev blocks are not formal adjoints in-scope — its own finding to adjudicate.
++ **DEFERRED (§1d energy-basis quotient):** U_MOMENTUM_ROWS + THICKNESS_ROW complete strong rows differ
+   genuinely (numeric: WL 129 free syms incl. 3rd derivs vs PY 56; PY not ∝ WL). These are the 07/10 +
+   gamma·DivGrad energy-basis representatives that §1d says do NOT lift to variable coefficients (first-jet
+   terms are physics). NOT a target family (U_MOMENTUM agreed per-bucket in step-1). ⚠ residual sub-ambiguity:
+   pure energy-basis reps vs incomplete FACE exclusion (build-review C5/G3) — to separate. This is the OWED
+   energy-basis quotient reconciliation.
+
+## STEP 3 PLAN (repairs of the CONFIRMED genuine WL gaps only)
+- WL admissibility θ body force (∇²w1) — §3a/§3d; and WL thickness kinetic inertia (W_bg², not W_0²) — §2a/§3b.
+  Both are WL under-retentions with clear spec mandates ⇒ full-rigor WL repair (directive → 2 decision legs →
+  Codex WL/Mathematica fix → 2 build legs → commit → re-run comparator/adjudication).
+- ADVECTIVE: no repair (representational); document + confirm the PY continuity constraint.
+- COUPLING: NOT a step-3 engine repair yet — a §3c/§2a SPEC-adjudication (which coupling form is spec-correct,
+  or genuine disagreement) precedes any engine fix; + the ADJOINTNESS_RESIDUAL finding.
+- ENERGY-BASIS (U_MOMENTUM/THICKNESS strong rows): the deferred §1d quotient reconciliation (separate reps from
+  any face-leftover first).

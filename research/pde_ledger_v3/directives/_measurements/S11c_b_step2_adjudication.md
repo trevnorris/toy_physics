@@ -82,7 +82,7 @@ mandated. OPEN — needs the §2a/§3a per-cell reading + possibly a WL/PY corre
   not an engine bug.
 
 ## 5. REFINED FRAMING (2026-08-29, code-grounded, post-compact) — the requested-truncation ROW-LEVEL residual instrument
-(SETTLED truncation reading, §§5-8: retain iff c≤1 ∧ a≤1 ∧ b≤1 in (ε,η_bg,σ_W), coefficients Taylor-LINEARIZED in η; independently derived by both step-1 decision legs + me, NOT a spec ambiguity.)
+(SETTLED truncation reading, §§5-8: retain iff c≤1 ∧ a≤1 ∧ b≤1 in (ε,η_bg,σ_W), coefficients Taylor-LINEARIZED in η; independently derived by both of the ROW-RESIDUAL INSTRUMENT's directive decision legs + me, NOT a spec ambiguity.)
 
 Commands run this session (rule 2 — the claims carry the reads):
 - `sed -n '95,135p' mathematica/S11c_b_brane_operator_mathematica_audit.wl` → `truncateScalar` = `Normal[Series[·,{etaBg,0,1}]]` then `Normal[Series[·,{sigmaW,0,1}]]`, PROTECTING `Inactive[_][…]` operator tokens across the Series (products of protected jets survive to higher combined order). WL truncates INTERNALLY at (η≤1 ∧ σ_W≤1).
@@ -100,9 +100,9 @@ CONSEQUENCES (refine §§1-4 above):
   WL_row  := Σ_buckets WL term-origin operands of that row, likewise expanded,
   both TRUNCATED to the §2a requested truncation (ε¹, η≤1, σ_W≤1),
   RES_row := PY_row − WL_row     (emit all three; rule 2 — print, do not assert).
-Verdict reads off RES_row:
-  RES_row = 0  ⟺ engines AGREE within the deliverable scope (advective's re-bucketing / divergence-form arrangement is REPRESENTATIONAL).
-  RES_row ≠ 0  ⟺ genuine in-scope difference (missing/frozen operator content) → adjudicate which engine is spec-correct against §3a/§3b/§3c; that engine's sibling is the repair target.
+Verdict reads off RES_row (⚠ this simple RES_row=0⟺representational rule was SUPERSEDED for ADVECTIVE by §8 — a NONZERO RES_row can still be representational when it is the continuity accumulation from a constraint-vs-evolution imposition, not a divergence; RES_row=0 is NOT the iff classifier):
+  RES_row = 0  ⟺ engines AGREE within the deliverable scope.
+  RES_row ≠ 0  ⟺ an in-scope difference — genuine (missing/frozen content) OR representational bookkeeping (continuity constraint-vs-evolution); adjudicate against §3a/§3b/§3c per §8.
 ⚠ [PREDICTION — SUPERSEDED by §8: ADVECTIVE RES_row is NONZERO yet REPRESENTATIONAL (the continuity accumulation from constraint-vs-evolution, not a re-bucketing/divergence); RES_row=0 was the WRONG classifier for advective.] Predicted (COMPUTE, do not assume): ADVECTIVE RES_row=0 (product-rule identity ∇·(W_bg u_t)=∇W_bg·u_t+W_bg∇·u_t, pure re-bucket); KINETIC RES_row≠0 at (1,0) (WL froze thickness inertia W_bg²→W_0², §3b "do not freeze a coefficient at its constant binding before differentiation" ⇒ genuine WL gap); COUPLING RES_row=0 (agree at (0,1),(1,1); the a≥2 / b≥2 tails are OUT of the requested truncation); ADMISSIBILITY RES_row=PY_row≠0 (WL_row≡0, genuine gap). The kinetic (2,0) and coupling η²/σ² cells are OUT of scope under (η≤1∧σ_W≤1) and are NOT engine bugs unless a leg reads §2a as mandating full (unlinearized) coefficients — a SPEC question the instrument's decision-list legs adjudicate.
 This is the reviewed Phase-A/B build: directive (name the OBJECT = RES_row; WITHHOLD the predicted residuals, rule 5) → 2 decision-list legs (Codex + Grok; they also verify the (η≤1∧σ_W≤1) reading of §2a) → Codex build → 2 build legs (fresh Claude agent + Grok; FORM-ablate the row-sum and the divergence expansion) → commit.
 
@@ -121,14 +121,14 @@ This is the reviewed Phase-A/B build: directive (name the OBJECT = RES_row; WITH
 - KINETIC mechanism CONFIRMED by direct read: WL `kineticEw = muW WZero^2 D[eWField,{time,2}]` (L841) —
   the thickness inertia coefficient FROZEN at W_0² — vs PY `mu_W·W_bg²·e_tt`. §2a: "Every explicit `W₀`
   factor in `U` and in the bindings … is the physical background thickness and becomes `W_bg(y)`"; §3b: "do
-  not freeze a coefficient at its constant binding before differentiation." ⇒ PY-correct is the LEADING read
-  (WL under-retains W_bg²→W_0²), BUT confirm the §2a "explicit W_0 factor in U" scope covers the KINETIC
-  inertia coefficient (kinetic energy, not stored energy U) — a §2a/§3b reading the instrument's legs / a
-  spec check settle (one-engine fix is a spec question first). The instrument computes RES_row =
-  μ_W·e_W_tt·(W_bg²−W_0²); the WHICH-ENGINE verdict is the §2a/§3b reading.
+  not freeze a coefficient at its constant binding before differentiation." ⇒ [SETTLED per §8: genuine WL gap
+  — WL froze the thickness inertia at W_0² vs the required W_bg² (§2a/§3b), still awaiting repair. Historical:
+  the §2a "explicit W_0 factor in U" scope was a leading read here; §8 confirms it.] The instrument computes
+  RES_row = μ_W·e_W_tt·(W_bg²−W_0²).
 - ADVECTIVE re-bucketing lives WITHIN `MASS_EVOLUTION_ROW`: PY ∇ρ_br·u_t (advective_constraint) vs WL full
-  ∇·(σ_E u_t) split across ACCUMULATION+ADVECTIVE; the row-sum over {ACCUMULATION, ADVECTIVE, FLUX}
-  reconciles it iff representational (RES_row=0). The fingerprint's `ADVECTIVE` family = this mass-row term.
+  ∇·(σ_E u_t) split across ACCUMULATION+ADVECTIVE; [⚠ superseded by §8: the actual representational mechanism
+  is continuity CONSTRAINT-vs-EVOLUTION and the mass RES_row is NONZERO (= the accumulation), not RES_row=0].
+  The fingerprint's `ADVECTIVE` family = this mass-row term.
 
 ## 7. ADJUDICATION START (2026-08-30) — ⚠ HISTORICAL PARTIAL SNAPSHOT, SUPERSEDED BY §8 (full run now complete, exit 0, 26.76MB). [was: partial — non-coupling done, coupling 12/20, admissibility pending]
 Reporter (`scripts/S11c_b_row_residual_report.py`): parses the emit srepr (Association.entries is a DICT; TextAtom.value)

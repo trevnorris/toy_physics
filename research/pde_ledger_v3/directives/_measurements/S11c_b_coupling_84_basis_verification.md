@@ -1,5 +1,19 @@
 # S11c-b #84 — CAS verification of the bulk-core basis claim (rule 13; "no rederivation trusted until in CAS")
 
+> ⚠⚠ **SUPERSEDED IN PART by `S11c_b_86_reference_result.md` (#86, settled).** Two claims below are WRONG:
+> (1) "the correct count is between 8 and 15 / rank 15 over-counts" — WRONG: nullity is 0 (the would-be
+> null-Lagrangians are parity-ODD and excluded), so per-source **15 is exact**; the corrected basis is **40**
+> (= 10 uniform + 15 + 15), reducing to the engine's frozen **26**. (2) any implied "second facet" (separate
+> uniform/spurion passes miss cross-sector merges) — WRONG: combined vs separated is delta **0**. (3) the body's
+> "WL kept a different frozen representative / near-certainly the same frozen-spurion defect, pending #87" —
+> CORRECTED: code-verified, **WL does NOT freeze** — `newInvariantExpressions` HAND-CODES 8 invariants and
+> `independentRepresentativeIndices` takes literal linear independence (no divergence quotient at all); a
+> DIFFERENT mechanism than PY's frozen Hessian (both land at 8/source, so 26=26 was a coincidence of two
+> undercomplete mechanisms). STILL TRUE: the §3a basis is undercomplete in BOTH engines and the bulk-core
+> residual is genuine §1d physics; per-source **8→15**, corrected basis **40**. Established four ways (engine
+> anchor 26, Codex + Claude legs, own crux CAS). ⚠ the `/tmp/...basis_rank_probe.py` cited below is superseded;
+> durable probes are under `~/.s11_build/S11c_b_86_probes/`. Read the #86 result record for the corrected finding.
+
 Codex (round 2) claimed the ~118-term bulk-core coupling residual is a GENUINE basis-content disagreement
 (not a coefficient-renaming artifact), because the §3a first-jet independence test "froze the
 spurion during IBP", undercounting the §1d-mandated invariants. I verified the MECHANISM myself in CAS — but for

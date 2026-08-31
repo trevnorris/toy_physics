@@ -1,8 +1,9 @@
 # S11c-b #84 — CAS verification of the bulk-core basis claim (rule 13; "no rederivation trusted until in CAS")
 
 Codex (round 2) claimed the ~118-term bulk-core coupling residual is a GENUINE basis-content disagreement
-(not a coefficient-renaming artifact), because both engines' §3a first-jet independence test "froze the
-spurion during IBP", undercounting the §1d-mandated invariants. I verified this myself in CAS.
+(not a coefficient-renaming artifact), because the §3a first-jet independence test "froze the
+spurion during IBP", undercounting the §1d-mandated invariants. I verified the MECHANISM myself in CAS — but for
+PY ONLY; WL's freeze is INFERRED (it kept a different representative), pending #87.
 
 ## What the reviewed comparator already localized (grounding)
 `scripts/S11c_b_handcoded_comparison.py:205-213` (committed, leg-reviewed) states: WL's
@@ -42,8 +43,9 @@ total-divergence quotient, which §1d says does NOT lift to variable coefficient
 2. ⇒ the ~118-term bulk-core coupling residual is a GENUINE §1d physics difference (PY reps {07,10} vs WL reps
    {08,11}, inequivalent at variable coefficients), NOT a benign coefficient relabeling. Codex's direction
    CONFIRMED; the exact "undercomplete by N" is not yet pinned (my probe over-counts).
-3. Both engines kept DIFFERENT frozen 8-subsets ⇒ both are affected. WL's Mathematica basis reduction should be
-   checked for the same frozen-spurion quotient (very likely, given it kept a different frozen representative).
+3. PY froze the spurion (VERIFIED). WL kept a DIFFERENT representative subset (08/11 vs PY's 07/10, per the
+   reviewed comparator) ⇒ near-certainly the same frozen-spurion defect, but this is INFERRED — WL's Mathematica
+   basis reduction must be checked in CAS (#87) before WL's freeze is treated as established.
 4. ⛔ SCOPE ESCALATION: this is the deferred §1d energy-basis quotient (#85), now root-caused, and it is
    FOUNDATIONAL — the §3a basis feeds the §3b operator and EVERY family (slab operator, admissibility, coupling).
    The coupling bulk core cannot be cleanly closed without fixing the §3a basis quotient in BOTH engines.

@@ -2,9 +2,14 @@
 
 The user chose "pin physics intent first" and asked me to consult Codex and Grok on the two axes, then bring
 back the best results. Two rounds: (1) independent, (2) adversarial cross-examination. This records the
-converged verdict + the transcripts (rule 2: the claim carries its command). ⚠ Consultant reasoning is INPUT
-for the user + for the eventual COMPUTE-verified adjudication — not itself a verdict (no rederivation is
-trusted until in CAS; the one quantitative probe is flagged UNVERIFIED below).
+converged verdict + the transcripts (rule 2: the claim carries its command).
+
+⭐ UPDATE (post-consultation, current state): the §3c CONTENT verdict (INCLUDE/INCLUDE ⇒ WL correct) is a
+two-consultant SPEC-READING that the USER SUBSEQUENTLY ENDORSED — it is NOT a from-scratch CAS which-engine
+derivation, and it is no longer "awaiting adjudication" or conditional on user intent. Separately, the quantitative
+bulk-basis probe flagged UNVERIFIED below was subsequently CAS-verified for PY (mechanism only) in
+`S11c_b_coupling_84_basis_verification.md`; WL's freeze remains inferred (pending #87). Read the framing below as
+the mid-consultation record.
 
 ## Prompts + transcripts (absolute)
 - Round 1 prompt: `~/.s11_build/S11c_b_84_intent_consult.md`

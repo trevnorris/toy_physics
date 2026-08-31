@@ -7,7 +7,8 @@ it reduces to the engine's committed frozen basis **26** when the background Hes
 undercomplete at **8 spurion invariants/source**, but by **DIFFERENT mechanisms** (code-verified, not just
 count agreement): **PY** enumerates 15 candidates and `basis_euler_signatures` freezes the Hessian (treats
 `∂W_bg`/`∂μ_R,bg` as constant) ⇒ a spurious total-divergence quotient collapses 15→8; **WL**
-(`mathematica/…_audit.wl` `newInvariantExpressions` L417 / `independentRepresentativeIndices` L599) HAND-CODES
+(`mathematica/S11c_b_brane_operator_mathematica_audit.wl` `newInvariantExpressions` L417 /
+`independentRepresentativeIndices` L599) HAND-CODES
 only 8 invariant forms and takes literal linear independence — **no divergence quotient at all**, hence no
 frozen-Hessian defect; it is undercomplete by *incomplete enumeration*. The correct per-source count is **15**
 (8 → 15, **+14** total; carrier-independent). ⇒ the #89 repair differs per engine (PY: correct the quotient to

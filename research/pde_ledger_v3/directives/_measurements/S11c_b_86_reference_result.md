@@ -64,14 +64,12 @@ inherits the engine's 1-carrier convention (the cross-engine-agreed frozen 26). 
 should be a larger module (3-carrier → 60) is a SEPARATE question, out of #86's scope, with no current evidence —
 both engines already agree on the 1-carrier 26.
 
-## Next (NEXT = #88)
-- **#88 (NEXT)** blast radius: does correcting 26→40 disturb the already-adjudicated families
-  (admissibility/kinetic/advective/coupling — which may have agreed across engines only because BOTH were
-  undercomplete at 8/source, by whichever mechanism)?
-- #87 (largely resolved by the code-read above, not a pending blocker): WL is undercomplete by *incomplete
-  hand-enumeration* — a DIFFERENT mechanism than PY's frozen quotient (both code-verified). Remaining CAS check:
-  confirm WL's 8 hand-coded invariants span a strict subspace of the correct 15 (genuinely undercomplete, not 8
-  different correct forms).
+## Next (NEXT = #89; #88 and #87 are DONE — this section is historical)
+- **#88** ✅ DONE (record `S11c_b_88_blast_radius_result.md`, commit `acce13e5`): correcting 26→40 disturbs
+  every strong stored-energy EL row non-absorbably (RANK_GAIN 8/8/8/6/4) ⇒ KINETIC + θ verdicts INVALIDATED,
+  #89 re-adjudicates them (not only coupling).
+- **#87** ✅ DONE (record `S11c_b_87_wl_subspace_result.md`, commit `d7ddad72`): WL's 8 span a strict 8-dim
+  subspace of the correct 15 (rank 8/15/15) — undercomplete by exactly 7, not 8 different correct forms.
 - #89 both-engine §3a repair — the two fixes DIFFER: **PY** retain the Hessian in the quotient; **WL** complete
   the enumeration to the full 15 (nullity 0 ⇒ linear independence of all 15 gives 15). Repaired engines must
   emit **40** (checked against this reference; 40 withheld from the builder).

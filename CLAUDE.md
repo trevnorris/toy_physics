@@ -1,6 +1,6 @@
 # How we work
 
-Sixteen rules. Every one exists because ignoring it cost a session.
+Seventeen rules. Every one exists because ignoring it cost a session.
 Full process: `docs/development_pipeline.md`. What we're building: `docs/development_plan.md`.
 Where we are: `STATUS.md`.
 
@@ -72,3 +72,10 @@ Where we are: `STATUS.md`.
     fold a fourth time.
 16. **Prior art is an oracle, never a premise.** Check our computed result against it; never assume its
     result for our object. Its conditions may not be ours.
+17. **A freeze is a red flag; a required freeze is the finding.** The one move that has cost this program
+    a round, nearly every time, is treating a quantity that VARIES — a background field, a field's argument
+    dependence, a jet/derivative order, a rate, a shape — as if it were constant. It manufactures a
+    wrong-but-consistent answer both engines can share, so the comparator reads agreement and the defect
+    hides (26=26 was a coincidence of two frozen mechanisms). Keep every varying quantity LIVE and
+    differentiate it; when a method seems to require holding one fixed to proceed, that requirement is the
+    measurement, not a step. Caught only by a ground-truth anchor or a variable-coefficient/form ablation.

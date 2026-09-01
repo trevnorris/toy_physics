@@ -5,8 +5,12 @@ objects and report the LITERAL diff (code-reading alone has repeatedly missed re
 numbered list (file:line — problem — how you found it), then a one-line verdict.
 
 ## Artifact
-`research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py` (working tree) and its committed output
+`research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py` (working tree = committed) and its output
 `research/pde_ledger_v3/scripts/out/S11c_b_brane_operator_sympy_audit.out`.
+⚠ The `.out` is a **git-annex pointer** (symlink); its content is present locally — read/grep it directly (if it ever
+resolves empty, run `datalad get <path>`). Treat the `.out` as read-only INPUT: do NOT modify it. The ablation
+target is the ENGINE `.py` — copy IT to /tmp and ablate the copy (never touch the working tree). This is a
+SymPy/Python engine (no Mathematica kernels), so run python freely — no kernel-seat serialization needed.
 
 ## What it is (context, all readable)
 Two changes to review, distinct in purpose:

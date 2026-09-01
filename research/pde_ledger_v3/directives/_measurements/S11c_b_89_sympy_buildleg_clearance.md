@@ -6,8 +6,11 @@ pre-migration checkpoint commit (`f655ea65`, rewritten from `fce14c1a`) + its an
 
 ## Legs (rule 7: engine is Codex-written + orchestrator lever-C ⇒ legs = fresh Claude agent + Grok)
 - **Leg A — fresh Claude general-purpose agent.** VERDICT CLEAR. Evidence dir
-  `~/.s11_build/S11c_b_89_buildleg_claude/` (A1_independent_basis_count, A1_form_ablation_driver +
-  engine_ablated.py, A2_A3_paths, B5_bounded, B6_fallback_ordering, B6_ordering_small, C8, each `.py`+`.out`).
+  `~/.s11_build/S11c_b_89_buildleg_claude/`: saved `.py`+`.out` for A1 (A1_independent_basis_count +
+  A1_form_ablation_driver + engine_ablated.py), A2/A3/**A4** (A2_A3_paths — carries the σ_W 2nd-jet), and
+  B5/B6/**B7** (B5_bounded [carries the `srepr-formdiffs=17` reduced-form result], B5_B6_leverC,
+  B6_fallback_ordering, B6_ordering_small). ⚠ Leg A saved NO separate C8 script — it reported C8 soundness
+  in its VERDICT only; C8 is fully evidenced by Leg B (`C8_soundness.py/.out`) with Leg A concurring.
 - **Leg B — Grok (grok-4.5, high).** VERDICT CLEAR. Evidence dir `~/.s11_build/S11c_b_89_buildleg_grok2/`
   (A1_independent_basis_count, A1_form_ablation + engine_ablated.py, A2_A3_A4_paths, A3_material_pullback,
   A3_operator_from_density, B5_leverC_numeric, B6_fallback_ordering, B7_reduced_form_comparator, C8_soundness).
@@ -50,7 +53,7 @@ engines are independent (fresh Claude + Grok) and agree.
 - Integral/Derivative-bearing scalars route to the exact reference (srepr byte-identical); serial vs parallel
   `retained_grade` reassembly residual 0. (Both legs, B6.)
 
-## Soundness (C8)
+## Soundness (C8) — Leg B saved (`C8_soundness.py/.out`); Leg A concurred in its verdict (no saved C8 script)
 Primary `count = len(basis_rows)+len(new_rows)` is computed, not asserted; no `Integer(40)` hardcode. The only
 hardcoded count is `Integer(26)` (L3540) = the HESSIAN_FREEZE **control reference** (its residual emitted as an
 operand), which does NOT gate the live primary. Working tree == committed.

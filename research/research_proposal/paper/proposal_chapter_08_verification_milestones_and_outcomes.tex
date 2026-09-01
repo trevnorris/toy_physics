@@ -1,0 +1,320 @@
+% =============================================================================
+% Chapter 8: Verification, Milestones, and Possible Outcomes
+% Input-ready fragment for the lean toy-model research proposal.
+% This file intentionally contains no preamble or document environment.
+% =============================================================================
+
+\chapter{Verification, Milestones, and Possible Outcomes}
+\label{ch:verification-milestones-outcomes}
+
+The preceding chapters define the proposed ontology, the sector calculations,
+the common-medium test, and the later throat and reservoir program. This final
+chapter states what evidence permits any of those claims to advance and what
+conclusion is authorized at each stage. It does not reproduce the detailed
+artifact schemas, discrepancy taxonomy, numerical procedures, or revision
+records maintained in the derivation ledger. Its purpose is narrower: to keep
+the top-down proposal, the bottom-up calculations, and the scientific decision
+sequence attached to the same controlled candidate.
+
+A result belongs to the current program only when the question, assumptions,
+branch, frozen inputs, calculation, evidence, and downstream use all refer to
+the same version. A recent file, a successful script run, or a plausible plot is
+not enough. Conversely, a negative or inconclusive result is not discarded
+merely because it interrupts the intended sequence. The verification process is
+part of the falsification test because it determines whether several apparent
+sector successes truly arise from one medium.
+
+\section{Proposal-to-ledger verification}
+
+The proposal and the derivation ledger are independent views of the same
+research program. The proposal works from observable behavior downward: it
+states what must be reproduced, which unwanted channels must be included, what
+the result would require from the common medium, and what would reject the
+branch. The derivation ledger works from the candidate equations upward: it
+records the selected branch and boundary data, performs the symbolic and
+numerical calculations, preserves the actual signs and extra modes, and tracks
+the inputs and outputs inherited by later steps.
+
+These views should be compared through a concise proposal-to-ledger crosswalk.
+For every mandatory requirement, the crosswalk should identify the exact claim,
+the Candidate Parent System version and dynamical branch, the background and
+environment, the boundary or interaction ensemble, all frozen inputs, the valid
+scale and approximation regime, the ledger steps that test it, the human and
+executable evidence, the expected and observed result, the current decision,
+and the downstream dependencies. One requirement may need several calculations,
+and one calculation may support several requirements; the mapping therefore
+must work in both directions.
+
+The minimum completeness rule is straightforward. No mandatory proposal claim
+should lack either a current evidence path or an explicit open-status record.
+No promoted ledger result should lack a stated proposal purpose and claim
+boundary. No derived output should be used downstream without a dependency
+record, and no current pass should rely on a superseded candidate, an unstated
+ensemble, or a reopened upstream result.
+
+This comparison is also where discrepancies become scientifically useful. The
+proposal is not rewritten automatically to match an unexpected output, and a
+complicated expression is not declared successful merely because the ledger
+produced it. A mismatch may reveal that the proposal asked the wrong physical
+question, that the derivation used different assumptions, that a convention or
+implementation is inconsistent, or that the candidate fails. Until the earliest
+cause is identified and the affected evidence is rerun, the claim remains open
+or reopened.
+
+Current calculation status is therefore read from the derivation ledger,
+executable artifacts, and the independent Codex repository audit rather than from a
+dated status chapter in this proposal. The proposal records the enduring
+research contract; the audit records which parts of that contract presently
+have current evidence.
+
+\section{Required symbolic and numerical evidence}
+
+Every load-bearing claim begins with a human-readable derivation. It should state
+the governing equations and whether each is postulated or inherited, the field
+variables and units, the conservative, relaxational, or mixed branch, all
+constraints and symmetries, the boundary or reservoir data, the approximation
+order, and the conclusion the calculation is authorized to support. Intermediate
+steps must remain visible where signs, cancellations, singular limits, source
+normalizations, or branch choices affect the result. A necessary-condition
+calculation obtained by solving for a desired coefficient may be useful, but it
+must not be reported as a derivation of that coefficient from the candidate.
+
+Where symbolic verification is feasible, SymPy and Mathematica should construct
+the central mathematics independently from the same controlled specification.
+They may share the symbol dictionary, assumptions, and expected invariants, but
+one implementation should not import the other's final symbolic expression.
+Comparison should use canonical objects rather than visual similarity: equation
+residuals, characteristic polynomials, root multiplicities, invariant
+subspaces, projectors, ranks, principal minors, series coefficients, symmetry
+transforms, current divergences, and high-precision samples at regular and
+near-threshold points. Exact arithmetic and explicit assumptions should be
+retained as long as practical.
+
+Agreement between the two systems supports the algebraic claim under the stated
+assumptions. It does not establish that the parent postulates are true, that the
+required nonlinear branch exists, or that the result is observationally
+acceptable. If one system cannot complete a calculation, the missing check may
+be replaced by an independent hand reduction, another mathematical method, a
+controlled high-precision residual, or an alternative numerical implementation,
+but the asymmetry must remain visible.
+
+Numerical evidence is required for most existence, localization, stability, and
+closure claims. A stable finite slab, guided or resonant modes, a localized
+photon candidate, a supported throat, moving and accelerating families,
+two-core contact, and the local--global fixed point cannot be established by a
+formal symbolic expression alone. The numerical record must retain the exact
+equations and baseline, domain and boundary conditions, discretization and
+solver, initial data or continuation seed, raw solution fields, residuals and
+constraint violations, and the observables used by the gate.
+
+A gate-level numerical result also requires the refinements relevant to its
+physical classification. These may include grid or basis refinement, timestep
+and domain variation, outgoing-boundary or regulator variation, precision
+increase, continuation in both directions, multiple seeds, and comparison of
+independent solvers or discretizations at selected points. Conservation,
+supplied and dissipated power, radiation into every coupled branch, entropy and
+reservoir balance, and linear, Floquet, or retarded-response stability must be
+checked when the chosen branch requires them. Open, dissipative, or non-normal
+problems may additionally require complex poles, resonance widths, residues,
+passivity, and sensitivity to transient growth.
+
+The evidence standard must match the mathematical problem. A static energy
+minimum cannot validate a maintained dissipative state. A conservative Floquet
+spectrum cannot close a mixed branch whose reservoir was omitted. A reduced
+envelope or imposed throat geometry is a precursor until it is continued to the
+parent fields. Failure of one solver or one seed is not a proof of nonexistence;
+one converged solution is not proof of uniqueness, robustness, or an acceptable
+family.
+
+\section{Milestones and decision gates}
+
+The gates follow the mathematical closure order, even when conditional work is
+scheduled in parallel. Each exit condition authorizes the next level of claim;
+it does not confer success on later stages. The lean program uses the sequence
+in \cref{tab:program-gates}.
+
+\begingroup
+\small
+\begin{longtable}{@{}L{0.08\textwidth}L{0.27\textwidth}L{0.57\textwidth}@{}}
+\caption{Major verification and decision gates.}
+\label{tab:program-gates}\\
+\toprule
+\textbf{Gate} & \textbf{Milestone} & \textbf{Minimum exit condition} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Gate} & \textbf{Milestone} & \textbf{Minimum exit condition} \\
+\midrule
+\endhead
+G0
+& Controlled research contract
+& Canonical definitions, proposal requirements, failure conditions, shared
+  quantity identities, and the proposal--ledger crosswalk are current and
+  mutually consistent. \\
+\addlinespace
+G1
+& Light and far-field capability contracts
+& The light, gravity, electric, magnetic, radiation, mass-response, extra-mode,
+  leakage, and drag programs have produced explicit common-medium requirements
+  and named failure channels rather than separate tuned solutions. \\
+\addlinespace
+G2
+& Common region and Candidate V1
+& The Medium Capability Matrix identifies a nonempty contract-feasible region,
+  and one Candidate Parent System version freezes its fields, branch, equations,
+  operator basis, coefficients, symmetries, source conventions, and boundary and
+  reservoir data. \\
+\addlinespace
+G3
+& Stable background and common far field
+& Candidate V1 produces a selected stable or sufficiently metastable finite
+  brane, a complete acceptable constrained spectrum, and all mandatory declared
+  light and far-field capabilities at the same current point or region. \\
+\addlinespace
+G4
+& Supported throat and species basis
+& At least one self-consistent stable or sufficiently long-lived supported
+  oriented throat exists; its source profiles replace the provisional sources;
+  and the required orientation-partner, species, charge, and conservation tests
+  are defined and passed to the declared scope. \\
+\addlinespace
+G5
+& Moving and accelerating throat closure
+& The solved throat family yields positive ordinary passive and inertial
+  response, acceptable low-energy universality, one electric--magnetic--radiative
+  normalization, and bounded extra radiation, leakage, wake, and drag. \\
+\addlinespace
+G6
+& Two-throat and contact closure
+& The same solved objects recover the far field, survive the finite-thickness
+  crossover, and produce conservation-respecting contact, annihilation,
+  exclusion, or neutral-binding outcomes with same-species partners distinguished
+  from different species. \\
+\addlinespace
+G7
+& Localized throat drainage, distributed return, and reservoir closure
+& The local one-way throat problem and the global bulk-reservoir problem,
+  including distributed porous-brane return through the positive bulk-to-brane
+  contribution to \(S_{\mathrm{leak}}\), converge to a stable or sufficiently
+  long-lived common fixed point with material, momentum, energy, and, where
+  applicable, entropy and internal-reservoir accounting closed. \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+The localized photon-packet track is a stronger light milestone that branches
+from the stable-background and complete-spectrum result. It may be pursued in
+parallel with later realization work, but it receives its own controlled
+existence, stability, leakage, and collision decision. Failure of that stronger
+track narrows the outcome to guided classical light unless the frozen candidate
+explicitly made a self-bound packet mandatory; it does not silently convert an
+unsolved packet into a passed light result.
+
+A gate may be recorded as \emph{pass}, \emph{conditional pass}, \emph{reopen},
+\emph{fail}, or \emph{open/inconclusive}. A conditional pass must name the
+unresolved condition and the limited reason downstream exploratory work remains
+useful; it cannot conceal a known violation of a mandatory requirement. A fail
+means the current branch or candidate misses a frozen condition. An open result
+means that evidence, convergence, domain coverage, or the mathematical object
+itself is still insufficient to decide.
+
+\section{Revision and downstream reopening}
+
+A substantive upstream change is a scientific change, not a prose correction.
+If a field, constitutive term, coefficient, dynamical branch, source definition,
+calibration, boundary ensemble, or reservoir law changes, the candidate receives
+a new version and every actual dependent result is marked reopened until it is
+rederived. Derived outputs are frozen downstream inputs: a guided-light profile,
+electric eigenvector, throat residue, support frequency, or reservoir state
+cannot become adjustable again merely because a later sector prefers another
+value.
+
+Reopening should follow real dependencies rather than trigger ceremonial reruns
+of unrelated work. A revised shear law or slab-thickness mechanism reopens the
+background spectrum, guided light, electric response, characteristic speeds,
+and throat support. A revised oriented-current normalization reopens static
+charge, magnetism, transverse radiation, and charge universality. A revised
+order or reservoir branch reopens gravity, throughput, throat lifetime, inertia,
+drag, and global closure. A revised antiparticle map or physical core diagnostic
+reopens species, pair, contact, and annihilation claims without necessarily
+invalidating the homogeneous background spectrum.
+
+Historical calculations remain valuable as failed branches, special limits,
+regression tests, or sources of new requirements, but they no longer count as
+current evidence for the revised candidate. A new mechanism introduced after a
+failure is permitted only as an explicit revision of the common parent system,
+with its consequences propagated through every affected sector. It may not be
+added privately to the calculation that exposed the problem.
+
+\section{Interpreting success, partial survival, and failure}
+
+The outcome of the program is layered. Every report should state the strongest
+coherent submodel that survives, the exact gate reached, the gate that failed or
+remains open, and the assumptions under which the conclusion holds.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}L{0.27\textwidth}X@{}}
+\toprule
+\textbf{Outcome} & \textbf{Authorized conclusion} \\
+\midrule
+Open or inconclusive
+& A required equation, branch, source, convergence study, acceptance bound, or
+  domain test is missing or conflicting. Neither pass nor failure is justified. \\
+Sector result
+& One named behavior, compatibility condition, or no-go statement is established
+  within its assumptions. It need not establish any larger part of the ontology. \\
+Partial analog
+& A coherent subset survives after a stronger claim fails or remains outside
+  scope, such as guided classical light without a self-bound photon packet or a
+  local gravity analog with a limited return regime. \\
+Common far-field medium
+& One frozen candidate has a stable background and rederives all mandatory
+  declared light and far-field sectors at one shared point or region. Particle
+  existence and global closure remain unproved. \\
+Supported particle sector
+& One or more stable or sufficiently long-lived throat branches exist with
+  solved source profiles and the declared orientation, species, and charge
+  structure. Moving, pair, or reservoir gates may still fail. \\
+Moving and interacting particle sector
+& The candidate also closes ordinary response, universality, magnetism,
+  radiation, drag, two-body crossover, contact, and the declared short-range
+  outcomes. The global reservoir fixed point may remain open. \\
+Full declared classical survival
+& One current parent system passes every mandatory gate through the local--global
+  fixed point in the stated regimes, with all shared inputs frozen and all
+  unwanted channels retained in the evidence. \\
+Candidate failure
+& One named Candidate Parent System violates a mandatory gate or cannot close
+  its own background, throat, interaction, or reservoir problem. Other admitted
+  candidates are not thereby rejected. \\
+Architecture failure
+& The mandatory intersection is shown to be empty throughout the admitted
+  architecture, an essential mechanism is impossible across its permitted
+  realizations, or success requires prohibited sector-specific retuning or an
+  unsupported new mechanism. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Meaningful negative results include several important intermediate outcomes.
+Classical guided light may survive while every permitted self-binding mechanism
+for a free photon packet fails. Gravity and electricity may work in separate
+effective limits but have no common coefficient region. A stable common brane
+and far field may exist while no self-consistent supported throat does. Stable
+throats may exist while unavoidable drag, excess radiation, wrong-sign response,
+or nonuniversal charge or mass ratios reject the particle interpretation. Local
+particle physics may close while the global distributed-return and reservoir
+iteration has no conservation-respecting fixed point. Each result narrows the
+viable model and identifies where the one-medium program stops.
+
+Full declared survival would be the strongest result available to this proposal,
+but its scope remains classical and conditional on the stated regimes. It would
+not establish that the real universe is literally this medium, reproduce exact
+general relativity or exact Maxwell theory, or supply quantum statistics, a
+universal quantum of action, or a complete particle spectrum. A later
+cosmological extension would remain a separate result unless deliberately made
+mandatory. The value of the program is therefore not limited to a final positive
+answer: a controlled partial analog, a precise candidate failure, an empty
+common region, or a well-supported no-go result is also a successful scientific
+outcome because it is obtained without hiding dependencies or repairing the
+model after the fact.

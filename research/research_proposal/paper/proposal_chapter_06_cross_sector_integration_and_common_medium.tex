@@ -1,0 +1,525 @@
+% =============================================================================
+% Chapter 6: Cross-Sector Integration and the Common Medium
+% Input-ready fragment for the lean toy-model research proposal.
+% This file intentionally contains no preamble or document environment.
+% =============================================================================
+
+\chapter{Cross-Sector Integration and the Common Medium}
+\label{ch:cross-sector-integration}
+
+The light and far-field chapters do not define several independent effective
+models. They define a linked set of conditions that one parent medium must meet.
+This chapter performs the transition from those conditions to an actual
+realization attempt. It normalizes the sector outputs in one Medium Capability
+Matrix, identifies the quantities that several sectors share, tests whether a
+common admissible region exists, and states what must be frozen in Candidate
+Parent System V1. The candidate is then required to produce one stable brane and
+one complete response spectrum from which the light and far-field results are
+rederived.
+
+The compatibility burdens collected here are not established contradictions.
+The companion cross-sector review found no present no-go theorem. Each burden
+becomes a falsification gate only when a frozen system shows that a mandatory
+capability is impossible or necessarily entails a forbidden consequence. The
+central risk is therefore not an already-proved inconsistency, but the
+possibility that requirements which are separately plausible have an empty
+intersection when imposed on one medium.
+
+\section{The Medium Capability Matrix}
+
+The Medium Capability Matrix is the common interface between requirement
+discovery and model construction. It is not a narrative summary and it is not a
+scorecard. Each row identifies one controlled physical or mathematical object,
+the property required of it, the regime in which that property is required, the
+sectors that use it, and the evidence needed to decide whether the requirement
+is satisfied. Two sectors that refer to the same mode, coefficient, source, or
+normalization must point to the same row rather than introducing parallel
+versions of it.
+
+The matrix must preserve four different kinds of entry. First are
+\emph{candidate choices}: the field inventory, dynamical branch, operator basis,
+symmetries, independent coefficients, and boundary or reservoir ensemble.
+Second are \emph{background outputs}: the slab profile and thickness, guided
+normal profiles, mode compositions, eigenvalues or retarded poles, continuum
+thresholds, and physical normalizations. Third are \emph{provisional source
+contracts}: the parity, multipole content, continuity law, and symbolic form
+factor required of an eventual throat. Fourth are \emph{later nonlinear
+outputs}: actual throat source magnitudes, universality, inertial and passive
+response, pair topology, and the converged reservoir state. Keeping these
+classes separate prevents an unknown throat or global quantity from being
+promoted to an adjustable parent parameter.
+
+A compact matrix schema is shown in \cref{tab:capability-matrix-schema}. The
+filled matrix remains a working companion to the proposal; the proposal needs
+only enough structure to make the common-medium decision unambiguous.
+
+\begin{table}[htbp]
+\centering
+\caption{Compact schema for the Medium Capability Matrix.}
+\label{tab:capability-matrix-schema}
+\begin{tabularx}{\textwidth}{@{}L{0.20\textwidth}L{0.34\textwidth}Y@{}}
+\toprule
+\textbf{Entry class} & \textbf{Controlled content} & \textbf{Cross-sector use} \\
+\midrule
+Background and branch
+& Arena, fields, conservative, relaxational, or mixed dynamics, finite-slab
+  profile, shear support, constraints, and reservoir variables
+& Establishes the common host on which every mode, source, force, and lifetime
+  calculation is performed. \\
+Mode or response branch
+& Field composition, reflection parity, normal profile, static stiffness,
+  dispersion or retarded pole, gap, continuum placement, norm or energy sign,
+  damping, leakage, and observable residue
+& Connects guided light, the electric odd and even sectors, longitudinal and
+  bulk response, radiation, throat support, critical velocity, and drag. \\
+Source and coupling
+& Odd and even source vectors, form factors, current or constraint identity,
+  one-throat coupling magnitude, gravity-source reduction, and mode overlap
+& Connects static forces to moving-source response, acceleration radiation,
+  universality, and the later replacement of provisional sources by solved
+  throats. \\
+Observable and ensemble
+& Force or flux extraction, equilibrium, periodic, or driven ensemble,
+  outgoing conditions, one-time calibration, and declared physical regime
+& Prevents a static energy, retarded response, mode normalization, or
+  calibration from being changed between sectors. \\
+Decision record
+& Exact gate, bounded departure, or scope choice; metric and domain where
+  needed; uncertainty; current evidence; failure scope; and dependencies
+& Converts qualitative words such as ``small,'' ``long lived,'' and
+  ``universal'' into a conjunctive common-medium decision. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+For every background eigenmode, the matrix should record enough information to
+serve both the low-wave-number force audit and the finite-wave-number light
+program. A label such as ``longitudinal mode'' is insufficient. The same row
+must state its actual mixture of displacement, interface, density, order, bulk,
+and reservoir variables; its parity; its profile across the slab; its static
+and dynamic behavior; its source overlaps; and whether it is desired in one
+sector but unwanted in another. The light program may use a reflection-even
+mode as a packet helper while the electric program requires the same branch to
+avoid an additional long-range force. That is one shared constraint, not two
+independent design choices.
+
+The matrix also records the difference between an exact structural gate and a
+bounded physical departure. Exact constituent conservation, a nonredundant
+branch closure, bounded physical energy or branch-appropriate stability, the
+absence of ghosts, the correct number of freely selectable light polarizations,
+a legitimate force construction, and one shared normalization cannot be traded
+against performance elsewhere. Leakage, resonance lifetime, weak dispersion,
+extra radiation, species variation, return screening, and low-frequency drag
+may instead be bounded over a declared regime. Detailed numerical budgets and
+evidence paths remain in the capability matrix and derivation ledger rather
+than being reproduced here.
+
+\section{Shared fields, coefficients, speeds, sources, and constraints}
+
+The common-medium test begins by identifying quantities that must have one
+meaning everywhere. The first group belongs to the host material: the
+background profiles \(n_0(w)\) and \(\chi_0(w)\), the selected thickness
+\(H_{\rm br}\), the ordered-state shear law, the equation of state, and the
+chosen conservative, relaxational, or explicitly mixed order dynamics. A sector
+may not use a conservative free-energy Hessian while another silently treats the
+same order variable as dissipative without the associated reservoir. Different
+branch choices define different candidates because they change the phase space,
+constraints, conserved quantities, force formalism, damping, entropy ledger,
+and particle-longevity problem.
+
+The second group is the complete constrained response. Where an equilibrium
+reduction exists, the static calculation uses one physical Hessian
+\(\mathcal H(\mathbf k)\). Dynamics uses one retarded operator
+\(\mathcal O_R(\omega,\mathbf k)\), including every internal variable needed by
+the selected branch. Their parity blocks, constraints, poles, branch cuts,
+continua, norm signs, damping rates, profiles, and residues are shared data. The
+transverse speed \(c_\gamma\), longitudinal speed \(c_L\), bulk compressional
+speed \(c_s\), and any electric-sector speed or relaxation scale are therefore
+outputs of one spectrum. They cannot be assigned separately to obtain light
+confinement, Coulomb range, gravity propagation, and low drag.
+
+The third group is the source hierarchy. The reflection-odd and
+reflection-even source vectors, the oriented density and current, the leading
+nonnegative electric coupling magnitude \(g_a\), the gravity source-side
+reduction, and the normalization of outgoing transverse modes must retain one
+parent definition. A provisional far-field source may leave its amplitude and
+form factor symbolic, but its transformation law and continuity assumptions
+must be explicit. The later throat program must derive those quantities. It may
+select among source families permitted by Candidate V1; it may not alter the
+background operator or introduce a new electric, magnetic, radiative, or
+gravity coupling after seeing the result.
+
+Boundary and ensemble data are shared as well. Reflection covariance requires a
+specified transformation of the environmental data. An equilibrium pair, a
+conservative periodic pair, and a driven dissipative pair do not automatically
+share one interaction potential. Outgoing-wave conditions, fixed source or
+fixed boundary-value ensembles, support-mode action or phase conditions, and
+reservoir asymptotics must therefore be frozen with the candidate. Otherwise a
+force sign or lifetime could be changed by changing the problem rather than the
+medium.
+
+These shared objects create direct cross-sector tensions. Increasing a
+thickness-mode gap may screen an unwanted even electric force while weakening a
+photon helper. A higher-gradient term may aid packet localization while adding
+vacuum dispersion or a low-threshold branch. Giving the odd Coulomb carrier
+ordinary inertia may produce a clean wave but also extra radiation; making it
+relaxational may replace radiation with lag, friction, and reservoir cost.
+Locking characteristic speeds may improve an emergent common cone while placing
+a guided mode at a bulk continuum threshold. A distributed porous-brane
+\(S_{\mathrm{leak}}\) return law that supplies the desired local gravity regime
+changes the asymptotic reservoir seen by the slab, light, and throat. The purpose
+of the shared-quantity map is to make these consequences unavoidable.
+
+\section{Major cross-sector compatibility gates}
+
+Seven architecture gates collect the largest known ways in which separately
+reasonable requirements may conflict. They summarize the detailed companion
+review rather than replacing it. Each gate begins as a present burden. An
+adverse calculation normally rejects a branch or Candidate V1 first. It becomes
+an architecture-level result only if the obstruction persists throughout the
+admitted common-medium class or can be avoided only by prohibited retuning or
+an unsupported new mechanism.
+
+\begingroup
+\small
+\begin{longtable}{@{}L{0.12\textwidth}L{0.39\textwidth}L{0.41\textwidth}@{}}
+\caption{Proposal-level summary of the seven cross-sector architecture gates.}
+\label{tab:cross-sector-gates}\\
+\toprule
+\textbf{Gate} & \textbf{Common burden} & \textbf{Earliest decisive test and initial adverse scope} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Gate} & \textbf{Common burden} & \textbf{Earliest decisive test and initial adverse scope} \\
+\midrule
+\endhead
+1. Frozen candidate
+& The broad ontology still permits more than one dynamical branch, operator
+  basis, shear realization, higher-gradient completion, and reservoir closure.
+  Results cannot be combined while sectors choose different members of that
+  menu.
+& Freeze Candidate V1, then solve its finite slab and complete constrained
+  response. Failure initially rejects V1; it threatens the architecture only if
+  no allowed frozen candidate can realize the contracts. \\
+\addlinespace
+2. Odd Coulomb dynamics
+& A healthy reflection-odd branch with leading \(k^2\) static stiffness can
+  produce a Coulomb tail, but that fact does not determine whether the branch
+  propagates, relaxes, or is a genuine constrained variable.
+& Derive the complete odd static and retarded blocks, constraints, poles,
+  residues, radiation, passivity, and low-frequency friction. Static success
+  does not pass if every completion creates a ghost, strong coupling,
+  unacceptable radiation, drag, or independent electromagnetic normalizations. \\
+\addlinespace
+3. Speeds and confinement
+& Relations among \(c_\gamma\), \(c_L\), \(c_s\), electric response, and slower
+  branches affect guided-mode localization, continuum thresholds, gravity
+  response, mode conversion, and the critical velocity of a moving throat.
+& Compute the full spectrum, essential continua, source and interface overlaps,
+  leakage widths, and directional all-branch critical velocity. Exact cone
+  locking may survive through a derived decoupling; distinct speeds may survive
+  only as an explicitly bounded preferred-medium analog. \\
+\addlinespace
+4. Universality and discreteness
+& Distinct throat species must coexist with sufficiently universal unit electric
+  coupling, positive and universal low-energy mass ratios, and a conserved
+  oriented count or current. Continuous internal moduli may instead produce
+  arbitrary charge, size, throughput, or mass.
+& Continue solved throat families and measure source residues, response ratios,
+  topology, and sensitivity to internal parameters. Failure initially rejects
+  the proposed particle family or its charge and mass interpretation, not the
+  already-derived background response. \\
+\addlinespace
+5. Photon binding and linearity
+& The nonlinearity and dispersion strong enough to bind one finite packet also
+  affect ordinary light speed, vacuum dispersion, polarization, wakes,
+  collisions, even-sector forces, and throat support.
+& From the same projected V1 coefficients, test boundedness, scaling, collapse,
+  speed shift, helper radiation, and preliminary packet interactions. Failure
+  of the shared binding window rejects the self-bound photon ontology before it
+  rejects a viable linear guided-light sector. \\
+\addlinespace
+6. Localized drainage, distributed return, and reservoir closure
+& Persistent one-way throat throughput and ordered-to-bulk conversion link
+  throat longevity to energy, momentum, entropy, drag, gravity screening, and
+  depletion of the common bulk reservoir. Compensating material return is a
+  distinct process: bulk reorganizes into brane state across the porous brane
+  through the positive bulk-to-brane contribution to \(S_{\mathrm{leak}}\).
+& Iterate the local supported-throat problem with the global bulk-reservoir and
+  distributed porous-brane return problem to a stable branch-consistent fixed
+  point. Failure rejects the selected conservative, dissipative, or mixed
+  throat branch; it threatens the architecture only if no branch can close. \\
+\addlinespace
+7. Contact and topology
+& Cancellation of the leading odd electric disturbance, projected coincidence,
+  four-dimensional core contact, topology change, and annihilation are distinct.
+  Same-species partners must also be distinguished from opposite charges of
+  different internal or composite species.
+& Solve both orientations, continue two-core families through graph breakdown,
+  and evolve conserving nonlinear collisions. Failure first rejects a simple
+  annihilation mechanism or species map; the particle--antiparticle sector fails
+  only if no conserving channel exists. \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+The first three gates can be attacked substantially at the background and
+linear-response stage. The photon gate begins there and continues through the
+finite-amplitude light calculation. The universality, reservoir, and topology
+gates cannot be finally closed without solved throats and global evolution, but
+they constrain Candidate V1 before that work begins. The candidate must contain
+an admissible conservation structure, nonlinear field content, branch-specific
+reservoir, and topology capable of posing those tests. A later failure may reveal
+that V1 lacks the required enforcing structure; it may not be repaired by adding
+one only to the failed sector without declaring a new candidate version.
+
+\section{The common viable-region test}
+
+Let \(\lambda\) denote the independent continuous parameters of one
+declared candidate architecture, with discrete branch, symmetry, operator, and
+boundary choices carried as explicit labels rather than hidden coordinates. For
+each mandatory requirement \(i\), let \(\Lambda_i\) be the subset on which its
+exact gate closes or its bounded departure remains inside the declared
+admissible set. The common contract-feasible region is
+
+\[
+\boxed{
+\Lambda_{\rm contract}
+=
+\bigcap_{i\in\mathcal I_{\rm mandatory}}\Lambda_i.
+}
+\]
+
+Equivalently, at the architecture level the principal burdens may be displayed
+schematically as
+
+\[
+\begin{aligned}
+\Lambda_{\rm architecture}
+={}&
+\Lambda_{\rm slab}
+\cap\Lambda_{\rm guided\ light}
+\cap\Lambda_{\rm Coulomb}
+\cap\Lambda_{\rm electric\ dynamics}
+\\
+&\cap\Lambda_{\rm throat\ universality}
+\cap\Lambda_{\rm photon\ packet}
+\cap\Lambda_{\rm reservoir}
+\cap\Lambda_{\rm topology}.
+\end{aligned}
+\]
+
+Before throats are solved, some of these sets express necessary structural
+conditions rather than completed existence results. A nonempty
+\(\Lambda_{\rm contract}\) therefore authorizes selection of a realization
+attempt; it does not yet prove that the background, throats, or reservoir fixed
+point exist. Candidate V1 must convert the provisional intersection into a
+realized one by producing the objects used to evaluate it.
+
+Mandatory requirements are conjunctive. No weighted score permits a long photon
+lifetime to compensate for failed charge conservation, a clean Coulomb tail to
+compensate for a ghost, or an attractive gravity regime to compensate for an
+external energy source disguised as an internal reservoir. Optional or stronger
+capabilities may be reported separately, and a failure may reduce the model's
+scope, but they cannot pay for a failed mandatory gate. Every point reported as
+common must use the same parent version, branch, background, source conventions,
+and shared parameter values.
+
+The geometry of the surviving set is itself a scientific result. An empty set
+means that the tested combination cannot be realized. An isolated point or
+singular locus may indicate a special exact solution but provides no robustness
+without a derived protection. A narrow band close to a continuum threshold,
+pole collision, sign reversal, instability, collapse boundary, or vanishing
+source residue is fragile. Several disconnected components represent distinct
+candidate branches and must not be blended. A robust region contains a finite
+neighborhood in which all hard gates remain closed and every bounded departure
+retains a margin larger than the relevant numerical and model uncertainty.
+Perturbing shared coefficients, boundary data, regulator choices, and retained
+higher-order terms within their declared uncertainty should not immediately
+reverse the decision.
+
+The matrix should therefore report not only passing points but the limiting
+requirements, distances to decision boundaries, uncertainty on those margins,
+and which components of the intersection remain conditional on later throat or
+reservoir work. A broad exploratory scan may locate promising regions or no-go
+surfaces. The final claim, however, is the common region after one candidate and
+its evaluation rules have been frozen.
+
+\section{Freezing Candidate Parent System V1}
+
+If the contract-feasible intersection is nonempty, the project selects one
+complete realization for a full test. Candidate Parent System V1 is not the
+entire architecture and is not a menu from which each sector may choose. It can
+be represented schematically as
+
+\[
+\boxed{
+\mathfrak{C}_1
+=
+\left(
+\mathcal A_1,
+\Phi_1,
+\mathcal E_1,
+\mathcal R_1,
+\Sigma_1,
+\lambda_1\in\Lambda_1,
+\mathcal Q_1,
+\mathcal O_1
+\right),
+}
+\]
+
+where the entries denote the parent arena; complete field content; equations,
+constitutive laws, and operator basis; internal reservoir closure; symmetries
+and constraints; independent parameter point or domain; boundary, source, and
+ensemble rules; and operational maps used to extract observables. The explicit
+freeze must state the maximum derivative order, any allowed nonlocality or
+memory, time-reversal and reflection properties, the physical constrained
+space, asymptotic and outgoing conditions, and the one-time calibration choices.
+
+The field inventory includes every fundamental, retained effective, auxiliary,
+constrained, and reservoir variable needed by the selected branch. The equation
+set must specify whether the order sector is conservative, relaxational, or
+mixed and must close the corresponding material, momentum, energy, and, where
+applicable, entropy transfers. The operator-basis freeze is as important as the
+numerical parameter freeze. A term omitted from V1 is absent for V1; it cannot
+reappear later as a photon-only, electricity-only, or throat-only repair.
+
+Candidate V1 may retain a declared common parameter domain when a family rather
+than one number is being tested. It may not retain materially different field
+contents or branch choices under one name. Alternative completions remain
+separate candidates. Simplicity is a discriminator only after mandatory
+capabilities are represented: omitting a required degree of freedom is not a
+virtue, while adding speculative operators that no contract requires weakens the
+meaning of later failure.
+
+The freeze also identifies what remains to be derived. The stable thickness,
+mode profiles, electric eigenvector, throat radius, source magnitudes,
+universality, packet solution, distributed porous-brane
+\(S_{\mathrm{leak}}\) return profile, and converged reservoir state are not
+independent knobs merely because they are not yet known. They are outputs of V1.
+Once obtained, they become inherited inputs for downstream calculations with
+their regimes and uncertainty attached.
+
+Freezing does not certify that V1 is correct. It makes the test definite. If a
+later calculation exposes a missing assumption or an inconsistent operator, the
+project may define V2. That revision must state the change and reopen every real
+dependency. Results derived from V1 remain historical evidence about V1; they
+cannot be combined with V2 outputs as though the parent system had never
+changed.
+
+\section{Stable brane, complete spectrum, and far-field rederivation}
+
+Candidate V1 first faces the least expensive decisive realization test: can its
+own equations produce the host medium assumed by the capability contracts? The
+background solve must yield a finite ordered slab with selected thickness,
+appropriate reflection properties, positive shear support, bounded or
+branch-appropriate stable energy, and stable or sufficiently metastable
+interfaces. The background profiles and asymptotic reservoir data must solve the
+same V1 equations and boundary conditions that will be used downstream.
+
+The next task is the complete constrained linear response about that slab. The
+calculation must inventory every physical transverse, longitudinal, interface,
+density, phase, order, bulk, electric, conversion, and reservoir branch. For an
+equilibrium sector it derives the physical static Hessian and its parity blocks.
+For dynamics it derives the full retarded operator. The output includes
+constraints and auxiliary variables; eigenvectors or left and right response
+modes where appropriate; static stiffnesses; poles, cuts, and continua; norm and
+energy signs; characteristic speeds; gaps and screening lengths; damping and
+leakage; normal profiles; source and interface overlaps; flux normalizations;
+and observable residues. A sector-specific truncation is acceptable only after
+this full operator shows that the omitted variables decouple in the stated
+regime.
+
+This one background calculation supplies the common inputs to several tests at
+once. It must recover a healthy two-polarization guided transverse branch or
+record the failure of the selected light branch. It must identify the
+longitudinal and bulk thresholds that control helper radiation and drag. It must
+show whether a reflection-odd source-coupled eigenbranch has the required
+\(k^2\) static stiffness and whether its retarded completion is propagating,
+relaxational, mixed, auxiliary, or constrained. It must classify the even
+thickness and order response, every additional long-range force, and the modes
+available for gravity response, throat support, radiation, and uniform-motion
+emission.
+
+The far-field contracts are then rerun on this actual background. Guided-light
+profiles, speed, dispersion, leakage, and nonlinear projection coefficients are
+computed from V1 rather than imported from a provisional action. Gravity uses
+the V1 response and source-side variables with one frozen calibration and a
+distributed porous-brane \(S_{\mathrm{leak}}\) return ensemble. Static
+electricity uses the complete V1 odd and even blocks, the
+physical boundary ensemble, and one source normalization. Magnetism and
+acceleration radiation use the same oriented current, coupling, transverse mode
+norms, and retarded response. The mass and drag audits use the same spectrum,
+reservoir, and source conventions. Every unwanted odd, even, longitudinal,
+bulk, and conversion channel remains in the accounting.
+
+At this stage the localized source may still be a controlled placeholder, but it
+is now a source class permitted by V1 and coupled to V1's actual normalized
+modes. The later throat solve must replace its amplitude, profile,
+conservation law, and universality assumptions. Thus a successful rederivation
+establishes a realized \emph{common far-field medium}, not yet a realized
+particle sector. A candidate that has a stable slab but requires different
+parameter points for guided light, Coulomb response, acceptable dynamics, and
+low drag fails the common-medium test just as surely as a candidate with no
+stable slab.
+
+A useful realized region may be written
+
+\[
+\boxed{
+\Lambda_{\rm far}^{(1)}
+=
+\Lambda_1
+\cap\Lambda_{\rm slab}^{(1)}
+\cap\Lambda_{\rm spectrum}^{(1)}
+\cap
+\bigcap_{S\in\mathcal S_{\rm far}}
+\Lambda_S^{(1)}.
+}
+\]
+
+Only if this set is nonempty, with every mandatory result evaluated on the same
+V1 background and parameter point or region, does the program advance to the
+supported-throat and particle work in \cref{ch:throat-particle-program}.
+
+\section{Decision outcomes of the common-medium phase}
+
+The common-medium phase can end with several scientifically distinct outcomes.
+An empty contract intersection means that the tested capability combination
+does not justify a Candidate V1. It becomes an architecture failure only after
+the admitted common-medium class has been examined broadly enough to show that
+the obstruction is structural rather than peculiar to one realization.
+
+A nonempty but isolated or fragile intersection justifies a focused realization
+attempt, not a robust success claim. Candidate V1 may be frozen to determine
+whether the apparent point survives the full background, spectrum, convergence,
+and perturbation tests. Its proximity to every threshold must remain part of the
+result. Disconnected viable components should be treated as separate candidates
+rather than combined into a single flexible system.
+
+A contract-feasible Candidate V1 can still fail because it has no selected
+stable slab, an unhealthy constrained spectrum, a wrong force sign, an
+unacceptable extra channel, incompatible characteristic speeds, or an empty
+realized far-field region. That is a controlled candidate failure and is one of
+the principal intended outputs of the program. It identifies which capability
+combination could not be realized by the frozen equations.
+
+A weaker sector may also survive after a stronger claim fails. A healthy guided
+linear-light branch may remain even if every shared self-bound photon packet
+fails. A locally inverse-square gravity analog may remain while a larger-scale
+return behavior limits its scope. Such outcomes must be declared as partial
+analogs, not averaged into either complete success or complete failure. Whether
+a stronger capability is mandatory for V1 must be stated in the candidate's
+scope before its decisive test.
+
+The positive exit condition for this chapter is deliberately limited: one
+versioned parent system produces a stable common background and complete healthy
+response and rederives all mandatory light and far-field capabilities in one
+shared region. That result authorizes the nonlinear throat program. It does not
+establish particle existence, charge discreteness, universal mass response,
+annihilation, or the global reservoir fixed point. Those deferred gates remain
+capable of rejecting the particle branch or Candidate V1 later. The value of the
+common-medium phase is that either outcome---a surviving common background or a
+controlled incompatibility---has a precise meaning without sector-specific
+retuning.

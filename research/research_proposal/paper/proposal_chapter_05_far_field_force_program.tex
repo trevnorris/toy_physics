@@ -1,0 +1,1092 @@
+% =============================================================================
+% Chapter 5: Far-Field Force Program
+% Input-ready fragment for the lean toy-model research proposal.
+% This file intentionally contains no preamble or document environment.
+% =============================================================================
+
+\chapter{Far-Field Force Program}
+\label{ch:far-field-force-program}
+
+The far-field program asks what one common brane--bulk medium must do before the
+project commits to a particular nonlinear particle core. At distances large
+compared with a throat radius, and where appropriate large compared with the
+brane thickness, a localized object can be represented provisionally by its
+symmetry, multipole content, source parity, motion, and unresolved form factors.
+The background response can then be used to determine the range, sign,
+propagation, leakage, and unwanted channels that any eventual throat must
+produce. This does not establish that a stable throat with the assumed source
+exists. It establishes a capability contract that the later throat solution
+must inherit.
+
+The sectors are ordered so that each removes freedoms from the next. Gravity
+first establishes a probe-independent source field, a fixed calibration, and
+the role of distributed porous-brane return. Static electricity adds the reflection-odd
+finite-slab response and the requirements for charge conservation and
+universality. Magnetism asks whether motion of that same oriented source
+produces the required transverse response without a second normalization.
+Acceleration then tests whether static electricity, magnetism, and transverse
+light are three limits of one current and one coupling structure. Passive
+response, inertia, extra modes, and drag complete the far-field contract by
+stating what a future dressed throat must do when it is placed in, moved
+through, and accelerated within the same medium.
+
+\section{Common method for the far-field sectors}
+
+The far-field calculation begins on a declared throat-free slab background with
+all fields needed by the selected conservative, relaxational, or mixed branch.
+Let
+
+\[
+\bm{\Phi}
+=
+(\mathbf u_T,u_L,h_m,h_t,\delta n,\delta\theta,\delta\chi_B,\ldots)^T
+\]
+
+stand schematically for the complete constrained perturbation vector. The list
+is not a commitment that every displayed coordinate remains independent after
+constraints are solved. It is a reminder that the desired carrier cannot be
+isolated from other variables merely by naming it. Static equilibrium response,
+when a genuine equilibrium reduction exists, is governed by a Hessian and
+static Green matrix,
+
+\[
+\mathcal H(\mathbf k),
+\qquad
+\mathcal G_{\rm stat}(\mathbf k)=\mathcal H^{-1}(\mathbf k),
+\]
+
+on the physical constrained subspace. Dynamic response is governed separately
+by a retarded operator and its inverse,
+
+\[
+\mathcal O_R(\omega,\mathbf k),
+\qquad
+\mathcal G_R(\omega,\mathbf k)=\mathcal O_R^{-1}(\omega,\mathbf k).
+\]
+
+The static inverse determines long-range kernels only in an ensemble for which
+an equilibrium interaction functional is legitimate. The retarded inverse
+determines poles, phase lag, damping, outgoing radiation, and memory. A
+conservative but intrinsically periodic source may require a cycle-averaged
+Hamiltonian, Routhian, averaged action, or Noether-stress calculation rather
+than a static free energy. A maintained dissipative source requires stress,
+momentum-flux, conversion, and reservoir accounting and may not be assigned a
+pair potential unless conservativity is independently established.
+
+Before throats are solved, a localized source is represented by a vector
+\(\mathbf{J}_a\) with its overall amplitude, internal profile, and
+finite-thickness form factor left symbolic. The placeholder may carry known
+transformation properties under reflection and motion, but it may not assume
+that its magnitude is universal, that it is topologically conserved, or that
+its static and moving normalizations agree. Those are later outputs. For an
+oriented source it is useful to write
+
+\[
+\mathbf{J}_{\alpha,s}
+=
+ s\,\mathbf{J}^{\rm odd}_\alpha
++\mathbf{J}^{\rm even}_\alpha,
+\qquad
+s\in\{+1,-1\},
+\]
+
+where the odd and even vectors may each contain several coupled fields. This
+parity decomposition does not determine range or force sign. It only states how
+the source transforms on a reflection-symmetric background.
+
+Each sector must perform both a desired-channel calculation and a complete
+response audit. The desired calculation asks whether the common medium contains
+the required low-wave-number stiffness, tensor structure, pole, source overlap,
+and normalization. The audit asks what else the same source excites: additional
+odd or even branches, the in-plane longitudinal mode, bulk sound, interface and
+order modes, conversion and reservoir response, or the transverse light
+continuum. A sector does not pass merely because its leading asymptotic term has
+the right power law while an omitted branch is unstable, long ranged, strongly
+radiative, or dissipative.
+
+The expansion must also state its spatial regime. The strict leading far field
+has
+
+\[
+R\gg \max(R_{\rm throat},H_{\rm br}),
+\]
+
+so the source is seen primarily through its lowest surviving projected
+multipoles. An intermediate regime may satisfy \(R\gg R_{\rm throat}\) while
+\(R\sim H_{\rm br}\), in which case finite-thickness form factors and heavier
+normal branches can modify the kernel. The leading contract should identify the
+asymptotic coefficient without pretending that it controls contact or
+annihilation, while also recording the scale and operator data needed to compute
+the crossover later. A result obtained only by replacing the two interfaces
+with an infinitesimal sheet must be reopened if the neglected thickness is what
+selects parity, screening, source normalization, or the sign of a correction.
+
+Normalization must likewise be carried consistently from source to response.
+For each desired carrier the calculation should specify the physical mode norm,
+source overlap, observable convention, and flux or stress used to extract a
+force or emitted power. This prevents the same eigenfunction from being
+rescaled one way in the static sector and another way in the moving or
+radiative sector. Dimensional agreement and the desired power law are necessary
+checks, but they do not replace a common normalization tied to the parent
+variables and boundary data.
+
+The distinction between capability and realization remains strict. During this
+chapter, a result may show that a source with a specified parity and continuity
+law would generate an acceptable far field. After Candidate Parent System V1 is
+frozen, the stable slab and complete spectrum must reproduce the same operators
+and coefficients. After a throat is solved, its actual source vector, form
+factor, throughput, conservation law, and motion must reproduce the provisional
+inputs. A failure at either handoff reopens or rejects the corresponding claim.
+
+Every sector therefore exports the same kinds of information to
+\cref{ch:cross-sector-integration}: the fields and constraints it uses; the
+static and retarded operator blocks it requires; coefficient signs and allowed
+ranges; characteristic speeds and screening scales; source parity and
+conservation requirements; normalization relations; prohibited extra channels;
+and the regime in which the result is meant to hold. These outputs are
+conjunctive. A correct range cannot compensate for a wrong sign, and a correct
+static sign cannot compensate for unacceptable dynamics.
+
+\section{Gravity}
+
+\subsection{Behavior and proposed source-side material response}
+
+The observer-facing target is an approximately central, attractive,
+inverse-square gravity-like field over a declared local or intermediate regime.
+The source should be independent of the species later used to probe it, and its
+leading ordinary behavior should be unchanged when an otherwise identical
+throat is reflected from the \(+w\) orientation to the \(-w\) orientation in
+correspondingly reflected environmental data. At larger distances the field may
+be modified by distributed porous-brane return, but screening, overshoot, or sign
+reversal must be calculated explicitly rather than removed by convention.
+
+The proposed material mechanism is broader than the slogan ``gravity is
+inflow.'' A supported open throat supplies a localized, one-way constituent
+drain. Its local region may generate pressure gradients, material acceleration,
+ordered stress, ordered-to-bulk conversion, bulk compression, and interface
+deformation. Material that crosses the throat mouth de-structures into the bulk
+and does not return through that throat. Return is a separate, spatially
+distributed process in which bulk material reorganizes into brane state across
+the porous brane; in projected continuity it is represented by the positive
+bulk-to-brane contribution to \(S_{\mathrm{leak}}\). Reservoir backreaction
+couples the local drain and distributed return without making them one route or
+one rate. The gravity calculation asks whether a definite combination of these
+source-side and environmental quantities produces a three-dimensional field
+before any test throat is introduced. Schematically,
+
+\[
+\vec{\mathfrak{g}}_{\rm src}
+=
+\mathcal G_{\rm src}
+\!\left[
+\mathbf J_n,\mathbf v_{\rm med},D_t\mathbf v_{\rm med},
+n,P,\chi_B,\bm{\tau}_{\rm order},
+\Gamma_B,\mathbf J_\chi,\mathcal R_{\rm porous};\mathcal B_\infty
+\right].
+\]
+
+Here \(\mathcal R_{\rm porous}\) denotes the separate distributed porous-brane
+\(S_{\mathrm{leak}}\) return profile and its coupled reservoir state. This
+equation names candidate inputs; it does not assume that each survives the final
+reduction or that the map is already known. In particular, the source is not
+defined by how one selected probe accelerates. A reference convention may fix
+the observer's acceleration units once,
+
+\[
+\boxed{
+\mathbf g_{\rm eff}
+=
+\mathcal C_{\rm ref}\,
+\vec{\mathfrak{g}}_{\rm src}
+},
+\]
+
+but \(\mathcal C_{\rm ref}\) is then frozen. It may not depend on the later test
+species or be adjusted with distance to hide a changing source. Raw material
+velocity and the calibrated gravity observable are therefore not identified by
+notation alone.
+
+For a nearly spherical source, the desired local parameterization is
+
+\[
+\mathbf g_{\rm eff}(r)
+=
+-\frac{C_g\,\overline Q_g(r)}{r^2}\,\hat{\mathbf r},
+\]
+
+where \(\overline Q_g(r)\) is an orientation-even but radially signed enclosed
+source coefficient after the source and environmental reflection test has
+closed. The target covariance is
+
+\[
+\boxed{
+\mathbf g_{\rm eff}
+[\mathcal C_{\rm th}\mathcal T;
+ \mathcal R_w\mathcal B_\infty]
+=
+\mathbf g_{\rm eff}
+[\mathcal T;\mathcal B_\infty]
+}.
+\]
+
+This is not the same as requiring equal coordinate-normal constituent flux.
+Reflected outward-drain throats may have opposite global-\(w\) flux signs while
+producing the same gravity source. Nor does orientation evenness establish
+attraction. On the ordinary local branch the independent sign test is
+
+\[
+\overline Q_g(r_{\rm local})>0,
+\]
+
+in the displayed radial convention.
+
+The separate, spatially distributed bulk-to-brane contribution to
+\(S_{\mathrm{leak}}\) makes the gravity source potentially scale dependent. The
+local one-way throat drain and its ordered-to-bulk conversion region may produce
+a positive enclosed source, while return distributed across the porous brane
+over a much larger region reduces it. A useful regime would
+contain a matching window
+
+\[
+R_{\rm throat}\ll r\ll L_{\rm return},
+\]
+
+or another scale-independent near-to-far prescription, in which the local
+coefficient is approximately constant. Beyond the return scale,
+\(\overline Q_g(r)\) may approach zero, settle to another value, overshoot, or
+change sign. The proposal does not select among those outcomes in advance. It
+requires the global material and reservoir solution to determine them and to
+show that any resulting departure is compatible with the intended application
+of the analog.
+
+\subsection{Required calculations and medium requirements}
+
+The first calculation is a source-side reduction on a provisional localized
+drain and conversion profile. It must begin from exact four-dimensional
+constituent conservation and the selected order dynamics, project the complete
+stress and transport response onto the brane, and identify the three-dimensional
+quantity that has acceleration dimensions after one fixed calibration. Earlier
+effective calculations coupling a localized sink to a separate distributed
+porous-brane return motivate an inverse-square branch under stated assumptions,
+but the current program must determine which combination of transport, pressure,
+stress, ordered-to-bulk conversion, and the positive bulk-to-brane contribution
+to \(S_{\mathrm{leak}}\) supplies the coefficient. It must also keep net throat
+throughput, gross local order conversion, integrated distributed return, and the
+final gravity-source coefficient distinct; none may be substituted for another
+by definition.
+
+The second calculation is the reflected-source comparison. Both orientations
+of the provisional source must be embedded in reflected environmental data, and
+the complete parent fields must be transformed. If the ordinary vacuum is
+itself reflection symmetric, the two source fields should agree in that same
+environment. If the upper and lower bulk-facing reservoirs differ, the
+calculation should expose the resulting environmental splitting. A charge-
+correlated gravity difference may be an unacceptable prediction, but it must
+not be misidentified as an intrinsic failure of the throat reflection map
+without first transforming the environment consistently.
+
+The third calculation is the radial matching problem for the local one-way drain
+and the separate distributed porous-brane \(S_{\mathrm{leak}}\) return. A local
+source profile and a distributed return profile must be solved together far
+enough to obtain \(\overline Q_g(r)\), not merely its near-source normalization. The
+calculation must determine whether an inverse-square interval exists, how its
+coefficient is extracted without an arbitrary radius choice, and where return
+begins to screen or reshape it. The return profile must be universal,
+environmentally calculable, or retained as an explicit departure. It cannot be
+chosen separately for each throat species after the local source has been
+computed.
+
+The local-drain and distributed-return calculations must also close their
+material and mechanical ledgers. A stationary source cannot remove ordered
+material, momentum, or energy from the local slab while leaving the bulk and
+porous-brane return system unchanged.
+For a conservative branch, the relevant fluxes and stored energies must close
+within the full medium. For a relaxational or mixed branch, the internal
+reservoir, dissipation, and entropy production must be included. This does not
+require the full cosmological solution during the far-field requirement pass,
+but it does require enough accounting to rule out a gravity source maintained
+by an implicit external pump.
+
+The fourth calculation is dynamic. A time-dependent source must be coupled to
+the full retarded background operator. Schematically,
+
+\[
+g_i(\omega,\mathbf k)
+=
+\mathcal R^g_{ij}(\omega,\mathbf k)
+\mathcal S_j(\omega,\mathbf k).
+\]
+
+The poles of \(\mathcal R^g\) determine propagation, delay, phase lag, damping,
+and radiation. The leading local compressional response may be associated with
+a bulk-sound speed \(c_s\), but the complete gravity response may also involve
+order, interface, return, and reservoir modes. The proposal therefore does not
+assign gravity one propagation speed before the coupled operator is solved.
+Every pole with nonzero source overlap must be recorded, including slow
+relaxational tails and any vorticity or frame-dragging-like component of the
+gravity flow.
+
+These calculations impose several requirements on the common medium. It must
+support a well-posed source-side reduction that is independent of later probe
+species; a reflection-covariant ordinary source branch; a positive local radial
+sign; an inverse-square matching regime or another controlled extraction of
+local source strength; a calculable return profile; a stable dynamic response
+with acceptable characteristic speeds and damping; and one frozen calibration.
+The required source variables must also coexist with the light and electric
+sectors. A constitutive choice that produces the desired gravity response while
+destabilizing the slab, opening an unacceptable light continuum, or giving the
+electric odd branch the wrong stiffness is not a gravity success for the common
+program.
+
+\subsection{Failure conditions and handoff}
+
+The selected gravity branch fails if no probe-independent environmental field
+can be constructed; if attraction appears only after inserting the response of
+a chosen test object into the source definition; if reflected ordinary sources
+do not yield the same gravity behavior under reflected symmetric data; if the
+local radial sign is wrong; or if the inverse-square coefficient cannot be
+extracted without an arbitrary observation radius. It also fails if distributed
+return produces unacceptable species dependence, screening, overshoot, or sign
+change; if the response contains ghosts, instabilities, or ill-posed modes within
+the declared analog; if damping or delay is unacceptable; or if
+one desired result requires a gravity-only coefficient not propagated through
+the shared medium.
+
+A narrower negative result need not reject the entire architecture. It may
+reject one source functional, one order-dynamics branch, one return ansatz, or
+one candidate calibration. The handoff to Chapter 6 must state the surviving
+source variables, parity and sign requirements, matching and return scales,
+retarded poles, characteristic speeds, calibration convention, and every
+coefficient shared with the slab, electric, light, and reservoir sectors.
+
+\section{Static electricity and charge}
+
+\subsection{Oriented source, long-range carrier, and interaction sign}
+
+The observer-facing static target is a signed long-range interaction whose
+leading potential scales as \(1/R\) and whose leading force scales as
+\(1/R^2\), with like orientations repelling and opposite orientations
+attracting. The source sign is not assigned as a free scalar charge. It is
+postulated to arise from the \(+w/-w\) orientation of a finite throat and is
+represented in the far field as an oriented material boundary condition on the
+two-interface slab.
+
+For the graph-regime interfaces,
+
+\[
+h_m=\frac{h_++h_-}{2},
+\qquad
+h_t=\frac{h_+-h_-}{2},
+\]
+
+where \(h_m\) is reflection odd and \(h_t\) is reflection even. These are
+leading collective coordinates, not guaranteed eigenmodes. The complete odd
+and even response blocks may mix them with order, density, phase,
+longitudinal, bulk, and reservoir variables. The static calculation must
+therefore diagonalize the complete constrained Hessian rather than assume that
+one bare height coordinate carries electricity.
+
+A Coulomb-like equilibrium tail in three brane dimensions requires a healthy
+odd eigenbranch with nonzero source overlap and leading \(k^2\) static
+stiffness,
+
+\[
+\lambda_E(k)
+=
+\kappa_E k^2+O(k^4),
+\qquad
+\kappa_E>0.
+\]
+
+Its static Green function then has the target behavior
+
+\[
+G_E(0,k)
+\sim
+\frac{1}{\kappa_E k^2},
+\qquad
+G_E(R)
+\sim
+\frac{1}{4\pi\kappa_E R}.
+\]
+
+Reflection oddness is not enough. A gapped odd branch would be screened, while
+a flexural branch with \(k^4\) static stiffness would have a different spatial
+kernel even though it may also be gapless dynamically. Conversely, reflection
+evenness does not guarantee short range. Every even branch with nonzero throat
+coupling must be classified, and any intended thickness-like screened branch
+must acquire its gap after all mixing and constraints are included.
+
+The force sign must come from the physical source and boundary ensemble. A
+healthy scalar field with an ordinary linear source term does not automatically
+produce the required like-repels behavior. The model instead treats orientation
+as a material boundary condition: same-oriented disturbances should compound
+the departure from the preferred slab state, while opposite-oriented
+disturbances should partially cancel it. To turn that picture into a result, an
+equilibrium branch must compute the correct constrained or Legendre-transformed
+on-shell energy with one-body self terms removed. A conservative periodic pair
+must use a derived cycle-averaged functional or averaged stress. A driven branch
+must obtain the force from the complete stress, momentum-flux, conversion, and
+reservoir ledger.
+
+It is useful to isolate the reflection-odd Coulomb monopole coefficient,
+
+\[
+C_{E,ab}(R)
+=
+g_a g_b+\delta C_{ab}^{\rm odd}(R),
+\qquad
+g_a,g_b\ge0,
+\]
+
+with all electric sign carried by \(s_a s_b\). The quantity
+\(C_{E,ab}\) must not absorb even thickness forces, parity-mixed environmental
+terms, or nonlinear core interactions. In an equilibrium description, the
+leading odd contribution may be organized as
+
+\[
+E_{ab}^{\rm odd}(R)
+=
+ s_a s_b\,
+\frac{g_a g_b+\delta C_{ab}^{\rm odd}(R)}{R}.
+\]
+
+At finite distance a positive coefficient is not by itself enough, because the
+radial derivative of the correction also enters the force. The asymptotic
+like-repels/opposite-attracts result therefore requires both the correction and
+its scaled derivative to be subleading over the declared Coulomb regime. The
+finite-thickness crossover and nonlinear core force remain later calculations,
+developed in detail in the focused opposite-orientation companion rather than
+inside this far-field chapter.
+
+The static calculation must also inspect every additional long-range branch. A
+second odd mode could alter charge universality or introduce an extra force. An
+even gapless mode could survive after electric monopole cancellation and produce
+a species-dependent neutral interaction. A parity-mixed term may appear if the
+background or reservoirs break reflection symmetry. These are not automatically
+fatal, but their range, sign, source overlap, and observational role must be
+known before the electric sector can be handed to the common-medium synthesis.
+
+\subsection{Universality, conservation, and dynamic status}
+
+The long-range coefficient is not complete until its source dependence is
+understood. If several independently solved unit-charge species later produce
+an asymptotic coefficient matrix, removal of \(s_as_b\) should leave a leading
+positive-semidefinite, approximately rank-one structure. That is the test that
+allows one to assign a nonnegative one-throat magnitude \(g_a\). For ordinary
+unit-charge branches, the further target is
+
+\[
+g_a\simeq g_0
+\]
+
+within the declared regime. Common slab thickness alone does not establish this.
+The throat boundary amplitude, topology, support state, and normal source
+profile must either be universal, quantized, topologically controlled, or
+sufficiently decoupled from the leading electric eigenmode. Species-dependent
+finite-size and polarization corrections may remain, but they must be
+subleading and calculable.
+
+The orientation label also requires a conservation structure. On a globally
+two-sided, co-orientable brane, a candidate additive count is
+
+\[
+N_s=\sum_a s_a,
+\]
+
+or, more fundamentally, an oriented intersection number. A successful electric
+sector must derive why continuous evolution conserves the relevant count, how
+opposite orientations can be created or removed in pairs, and how the count
+appears in a projected Gauss-like law. At the effective level the target is a
+continuity equation
+
+\[
+\partial_t\rho_s+\nabla\cdot\mathbf J_s=0.
+\]
+
+This law is not established by writing it. It must descend from the permitted
+parent evolution and remain valid through motion, deformation, pair creation or
+annihilation, and the finite-thickness core description. If no global normal or
+equivalent topological construction exists, the charge definition must be
+reformulated rather than used unchanged.
+
+The present architecture does not yet possess a demonstrated first-class
+\(U(1)\) Gauss constraint. The intended result is therefore a material and
+topological charge law whose projected far field is Maxwell-like in the stated
+regime, not an assumption that exact electromagnetic gauge structure is already
+present. The derivation must show which constraint or conservation identity
+replaces the missing structure and what additional longitudinal, normal, or
+material degrees of freedom remain observable. An additive count that is
+conserved only in the static ansatz but fails during motion or topology change
+would not close the charge sector.
+
+The electric carrier's dynamical status is a separate gate. The static Hessian
+may supply a \(k^2\) inverse without determining whether the corresponding
+degree of freedom is propagating, constrained, relaxational, diffusive, or part
+of a mixed response. The complete retarded odd block
+\(\mathcal O_{R,{\rm odd}}(\omega,\mathbf k)\) must identify its poles, damping,
+phase lag, continuum placement, and energy or passivity properties. With
+ordinary local inertia, the Coulomb branch may have
+\(\omega_E\simeq c_Ek\), but this is not assumed before diagonalization. A
+constrained branch must show how a time-dependent conserved source is satisfied
+without an omitted propagating degree of freedom. A relaxational branch must
+close its internal reservoir and show that low-frequency damping, noise or
+memory, and entropy production are acceptable.
+
+This dynamic classification is important even before the radiation chapter.
+A propagating electric mode may create an additional radiation channel. A slow
+mode may produce Cherenkov-like emission or drag for ordinary motion. A
+diffusive mode may generate persistent lag or attenuation. A mode placed near a
+bulk or longitudinal continuum may leak. Conversely, a constrained response
+may reduce radiation but impose a nontrivial instantaneous or elliptic closure
+that must remain mathematically and materially consistent with the parent
+system. Static success cannot postpone these questions indefinitely.
+
+The electric handoff therefore includes more than \(\kappa_E\). It must record
+the complete odd and even eigenvectors, source form factors, screening lengths,
+continuum thresholds, leading factorization structure, allowed corrections,
+conservation law, dynamic branch, characteristic speed or relaxation scale,
+and all shared coefficients. The same \(g_a\), source profile, and current must
+then be inherited by magnetism and radiation.
+
+\subsection{Failure conditions and handoff}
+
+The selected electric branch fails if the complete constrained system contains
+no healthy odd eigenmode with nonzero source overlap and leading \(k^2\) static
+stiffness; if the desired force sign appears only after choosing an unjustified
+energy ensemble or inserting a sign by hand; if an additional odd or even
+long-range mode produces unacceptable forces; or if the full static operator is
+unbounded, ghostlike, or unstable. It also fails if the leading coupling does
+not factorize sufficiently to define individual charge magnitudes, if ordinary
+unit-charge species are unacceptably nonuniversal, or if the asymptotic
+corrections and their derivatives are not genuinely subleading.
+
+The charge program further fails if no conserved oriented count or current can
+be defined, if charge depends on an inconsistent global orientation, if the
+dynamic carrier has unacceptable poles, damping, leakage, or radiation, or if
+the required result can be obtained only by assigning electricity a private
+field or coefficient that is absent from light, magnetism, the throat, and the
+common parent action. Failure of one candidate odd branch may leave another
+permitted realization open; failure of every admitted route to a conserved,
+healthy Coulomb carrier would reject the electric architecture of the model.
+
+\section{Magnetism}
+
+\subsection{Moving oriented source and transverse response}
+
+Magnetism is the first direct test that static charge belongs to a dynamical
+source rather than to an isolated boundary-value analogy. At low speed, motion
+of the same oriented object should produce a sign-dependent transverse source
+of schematic form
+
+\[
+\mathbf J_s\simeq \rho_s\mathbf V,
+\qquad
+\mathbf J_T\propto s\mathbf V.
+\]
+
+The target brane response is rotationally covariant and transverse, with the
+leading tensor and distance dependence appropriate to a slowly moving localized
+charge. In the simplest isotropic far field this means a magnetic-like response
+whose direction is organized by the cross product of source velocity and
+separation and whose leading magnitude has the corresponding inverse-square
+field falloff. The exact coefficient and any medium-dependent corrections must
+be derived from the shared retarded transverse operator rather than copied from
+Maxwell theory.
+
+The calculation should begin from the conserved oriented source obtained in the
+static-electric package, expand a translated source profile to first order in
+\(\mathbf V\), and project it onto every transverse background eigenmode. The
+physical magnetic observable \(\mathbf B_{\rm eff}\) must be defined through a
+fixed source and response convention, including its transformation under
+orientation reversal, velocity reversal, spatial rotations, and time reversal.
+The far-zone tensor, power law, phase, and finite-thickness form factor can then
+be extracted from the retarded Green matrix. Existing exploratory work supports
+the expected moving-source tensor structure, falloff, and velocity order under
+stated assumptions, but the source normalization and sign remain conditional on
+the unresolved electric boundary data and throat interior.
+
+A moving source also perturbs the background in sign-independent ways. The
+complete calculation must separate at least three effects:
+
+\begin{enumerate}[leftmargin=2.2em,itemsep=0.35em]
+  \item electromagnetic magnetism, which reverses with \(s\) and with
+        \(\mathbf V\);
+  \item inertial rebuilding, compression, and wake structure of the dressed
+        medium, which is not principally electric-sign dependent; and
+  \item velocity-dependent gravity, including any change in localized throat
+        throughput or conversion, in the separate distributed
+        \(S_{\mathrm{leak}}\) return profile, or in vorticity of the
+        gravity-associated flow.
+\end{enumerate}
+
+The last effect may include a gravitomagnetic or frame-dragging-like component,
+but it is not electromagnetic magnetism merely because both involve transverse
+or vortical response. Their source parity, calibration, and coupling to probes
+must remain distinct.
+
+\subsection{Shared normalization and unwanted responses}
+
+The decisive magnetic requirement is inheritance. If the electric far field
+has a leading source magnitude \(g_a\), then the same \(g_a\), the same
+orientation sign \(s_a\), the same normal source form factor, and the same
+continuity law must determine the leading moving current. The magnetic
+coefficient may depend on already-frozen transverse-mode normalization and
+characteristic speed, but it may not be independently fitted. Schematically,
+
+\[
+\text{electric source data}
++\text{source velocity}
++\text{shared transverse response}
+\longrightarrow
+\mathbf B_{\rm eff}.
+\]
+
+This relation is stronger than obtaining the correct tensor form. Many media can
+produce a velocity-dependent transverse field. The unification claim requires
+the electric and magnetic normalizations, relative sign, and source dependence
+to arise from one coupling structure. A source whose static response couples to
+one eigenmode while its moving response requires an unrelated coefficient or a
+different current has not closed the electromagnetic sector.
+
+The unwanted-response audit must include excitation of the odd electric mode,
+even thickness and order modes, the longitudinal branch, bulk sound, transverse
+light, and conversion or reservoir modes. Uniform slow motion should not
+continuously radiate below the applicable thresholds. Any stationary comoving
+wake must be distinguished from an outgoing wave, and any dissipative phase lag
+must be included in the force and power balance. The calculation must also test
+whether the magnetic observable acquires unacceptable dependence on the
+particle species, internal support state, direction relative to a preferred
+medium frame, slab asymmetry, or environmental reservoir.
+
+Because the target is Maxwell-like rather than exact Maxwell theory, the
+calculation must also record any time-reversal or constitutive departure carried
+by the magnetic observable. Such a departure is not automatically fatal in a
+toy analog, but it must remain compatible with the static source law, the
+radiation response, and the declared observer-facing regime. Calling a
+transverse material swirl \(\mathbf B_{\rm eff}\) does not by itself establish
+its transformation properties or its force on a later moving probe.
+
+The magnetic branch fails if it has the wrong orientation or velocity parity,
+wrong leading tensor or falloff, instability, or unacceptable extra channels.
+It also fails as an electromagnetic-unification result if its normalization can
+be obtained only by a new independent coupling. Its handoff to Chapter 6 is the
+complete first-order moving-source kernel, tied normalization, transformation
+properties, characteristic speed and phase behavior, and a separated inventory
+of magnetic, inertial, and gravity-associated responses.
+
+\section{Accelerating charge and electromagnetic radiation}
+
+\subsection{One current across electricity, magnetism, and light}
+
+Acceleration tests whether the static, moving, and radiative limits belong to
+one source hierarchy,
+
+\[
+O(v^0):\ \text{static electricity},
+\qquad
+O(v):\ \text{magnetism},
+\qquad
+O(a):\ \text{transverse radiation}.
+\]
+
+The target is not simply that an accelerating defect makes some waves. The same
+conserved oriented density and current, with the same leading one-throat
+coupling magnitude and source profile, must generate all three orders. The
+normalized transverse light modes obtained in
+\cref{ch:light-research-program} provide the receiving states. The accelerating
+source calculation must show how energy and momentum leave the dressed source
+and enter both physical transverse polarizations with no separately chosen
+radiation coefficient.
+
+At the effective level the source obeys
+
+\[
+\partial_t\rho_s+\nabla\cdot\mathbf J_s=0,
+\]
+
+while its acceleration-dependent perturbation is projected through the complete
+retarded response. For each normalized outgoing light mode \(\lambda=1,2\),
+the far-zone amplitude is determined by the overlap of the source with that
+mode's eigenvector, normal profile, and flux normalization. The exact formula is
+candidate dependent, but the logic is fixed:
+
+\[
+(\rho_s,\mathbf J_s;g_a)
+\xrightarrow{\ \mathcal G_R\ }
+\{\mathcal A_1,\mathcal A_2,\mathcal A_{\rm extra}\}.
+\]
+
+The emitted transverse power, polarization pattern, angular dependence, and
+frequency scaling must follow from those amplitudes and the same energy-momentum
+normalization used for free light. A calculation that rescales the outgoing
+modes or source separately from the light chapter would not test a shared
+coupling.
+
+The source-side energy balance must include reversible storage as well as
+radiation. Acceleration can reconfigure the standing support mode, throat
+geometry, near-field electric and gravity response, pressure distribution, and
+conversion region. The external power should therefore be organized
+schematically as
+
+\[
+P_{\rm ext}
+=
+\frac{dE_{\rm dressed}}{dt}
++P_{u_T}
++P_{\rm extra}
++P_{\rm diss},
+\]
+
+with momentum carried by the corresponding fields and reservoir. Reversible
+near-field rebuilding contributes to the time derivative and later to inertia;
+it must not be counted as radiation. Conversely, outgoing flux may not be
+hidden inside a frequency-dependent inertial coefficient without being included
+in the power ledger.
+
+This stage also fixes the dynamic interpretation of the electric carrier. If it
+is a propagating mode, its acceleration-induced radiation must be calculated.
+If it is constrained, the constraint must remain compatible with the conserved
+source and the retarded transverse response. If it is relaxational or mixed,
+its phase lag, dissipation, internal reservoir, and possible stochastic partner
+must be explicit. Static Coulomb behavior, magnetic response, and transverse
+light emission cannot be declared unified while the main electric degree of
+freedom remains dynamically unspecified.
+
+\subsection{Additional radiative channels and energy--momentum transfer}
+
+The accelerating source couples to the complete medium, not only to the desired
+light branch. The calculation must separately determine
+
+\[
+P_{u_T},
+\quad
+P_{\rm odd},
+\quad
+P_{\rm even},
+\quad
+P_{u_L},
+\quad
+P_{\rm bulk},
+\quad
+P_\chi,
+\]
+
+where \(P_{u_T}\) includes both transverse light polarizations; the odd and even
+terms cover the electric-normal and thickness/order sectors; \(P_{u_L}\) is
+in-plane longitudinal emission; \(P_{\rm bulk}\) covers density or sound modes
+in the surrounding phase; and \(P_\chi\) covers conversion or internal-reservoir
+response. Additional branches discovered by the complete spectrum must be added
+rather than folded into one residual loss number.
+
+For every channel, the project must establish the receiving dispersion, source
+Fourier support, mode-projector overlap, interface overlap, outgoing boundary
+condition, energy or norm sign, and emitted flux. Kinematic intersection with a
+continuum is not enough to prove radiation, but a desired symmetry suppression
+must be derived rather than asserted. Harmonics and sidebands generated by an
+intrinsically periodic supported throat may radiate even when the mean source is
+slow. A dissipative branch may absorb power without a propagating far-zone wave.
+Both effects belong to the closure test.
+
+The desired ordinary regime requires transverse emission to dominate in the
+specified electromagnetic process while every extra channel is absent,
+symmetry suppressed, screened, threshold closed, or quantitatively acceptable.
+The proposal does not require exact Maxwell theory. It permits calculable
+longitudinal, bulk, order, or preferred-medium departures, but they must be
+small enough in the declared regime and remain consequences of the one frozen
+medium. An extra channel cannot be suppressed by reducing a coupling that the
+static-electric or magnetic calculation already fixed unless the change is
+propagated through all three sectors.
+
+This stage fails as electromagnetic closure if the static, magnetic, and
+radiative normalizations cannot be tied to one source; if acceleration does not
+couple correctly to both transverse light polarizations; if energy and momentum
+cannot be balanced; if the electric carrier's dynamic branch is inconsistent;
+or if unavoidable extra radiation is unacceptable. A narrower failure may
+reject one source profile, one speed ordering, or one candidate parent response.
+The handoff must record the tied current and coupling, normalized transverse
+emission kernel, complete channel powers, frequency and angular dependence,
+retarded poles, and every speed or threshold that constrains the common medium.
+
+\section{Passive response, inertia, extra modes, and drag}
+
+\subsection{Active, passive, and inertial roles}
+
+The far-field program must not use the word \emph{mass} as though one scalar
+coefficient had already been derived. Active gravitational strength, passive
+response, and inertial resistance are different measurements of the complete
+object. They may ultimately obey universal low-energy ratios, but their equality
+cannot be imposed by one normalization.
+
+Active strength is a source-side quantity. Once the local signed gravity
+coefficient, matching prescription, and calibration are fixed, an observer may
+parameterize the local source by an active mass. That definition records the
+strength of the derived environmental field; it does not identify the source
+with trapped-wave energy, constituent rest mass, aperture throughput alone, or
+any other single microscopic quantity. Return may make the effective active
+source scale dependent outside the local matching regime.
+
+Passive response belongs to a later test throat placed in the already calibrated
+external field. In the low-frequency limit, write
+
+\[
+F_i^{\rm test}(\omega\!\to\!0)
+=
+\mathcal M_{ij}^{\rm passive}(0)
+ g_{{\rm eff},j}+\cdots.
+\]
+
+The source field is held fixed while the response of different throat species
+is calculated. On the ordinary stable branch, the symmetric quasistatic
+response must be positive definite. A reference throat may set units, but the
+calibration may not be altered for each later species to force equal
+acceleration. Tensor, frequency, field-strength, and environmental corrections
+must remain visible outside the declared universal regime.
+
+Inertial response is the resistance encountered when the complete dressed
+throat is accelerated. The relevant object includes the support mode, throat
+shape, brane deformation, near-field flow, pressure and density response,
+conversion region, and reservoir dressing. Two broad reversible contributions
+are anticipated. The trapped standing pattern may need to retime its
+counterpropagating components, shift phases and nodes, or alter its resonant
+geometry. The surrounding material configuration must also be rebuilt as the
+throat velocity changes. Energy and momentum stored in those adjustments can
+produce an added-inertia-like response without identifying observed mass with a
+sum of microscopic constituent masses.
+
+For a closed reversible branch, the low-speed inertial tensor may be extracted
+from the total momentum of the complete solution,
+
+\[
+M_{ij}^{\rm eff}
+=
+\left.
+\frac{\partial P_i}{\partial v_j}
+\right|_{\mathbf v=0},
+\]
+
+with all field and near-zone contributions included. For a relaxational or
+mixed branch, the response is frequency dependent,
+
+\[
+F_i(\omega)
+=
+\left[
+-\omega^2M_{ij}(\omega)
+-i\omega\Gamma_{ij}(\omega)
++\cdots
+\right]
+\delta x_j(\omega).
+\]
+
+The real, reactive part describes stored momentum and effective inertia; the
+absorptive part describes damping, conversion lag, heat, or reservoir
+excitation. Both must follow from one closed retarded system. An unexcited
+internal reservoir must be passive: a small periodic perturbation may deposit
+zero or positive net work into the complete throat-plus-reservoir system, but it
+may not extract unlimited work from an unprepared bath.
+
+Only after positive ordinary active, passive, and inertial behavior is
+established are universality ratios meaningful. The target low-energy tests have
+the schematic form
+
+\[
+\frac{M_{\rm passive}}{M_{\rm inertial}}
+\longrightarrow \eta_{\rm PI},
+\qquad
+\frac{M_{\rm active}^{\rm local}}{M_{\rm inertial}}
+\longrightarrow \eta_{\rm AI}
+\]
+
+in a weak-field, low-velocity, low-frequency, homogeneous environment and a
+valid local gravity matching regime. The constants may be normalized only after
+the source and response conventions are frozen. Universality of a negative,
+singular, unstable, or active response does not count as success. Nor would
+these ratios alone establish the full geometric equivalence principle of GR;
+they are the model's operational low-energy universality requirements.
+
+The far-field stage can determine what source and response kernels are required,
+which background modes contribute, and how species-dependent source residues
+would enter. It cannot complete the mass test until moving supported-throat
+families exist. Its handoff to the throat program is therefore explicit: each
+solved species must later supply active source data, passive response, inertial
+response, and their dependence on internal state without changing the common
+background calibration.
+
+\subsection{Complete mode inventory, thresholds, leakage, and friction}
+
+A preferred material frame makes the complete spectrum part of the force
+phenomenology. The model contains, or may contain after full diagonalization,
+transverse guided light, in-plane longitudinal motion, odd electric/normal
+response, even thickness response, bulk sound or density branches, order modes,
+interface modes, and reservoir relaxation. Gravity may involve more than one of
+these branches. Their characteristic speeds are not automatically equal:
+\(c_\gamma\), the bulk sound speed \(c_s\), a possible electric speed \(c_E\),
+and the longitudinal speed \(c_L\) arise from different combinations of common
+coefficients. Cone alignment may emerge, remain approximate, or fail. Each
+possibility changes leakage, radiation thresholds, and the observable
+preferred-medium scope.
+
+On a reversible homogeneous branch, uniform motion can emit into any coupled
+mode satisfying the kinematic resonance condition. In an isotropic background,
+a useful first diagnostic is
+
+\[
+v_c
+=
+\min_a\inf_{k>0}
+\frac{\omega_a(k)}{k},
+\]
+
+where \(a\) runs over every physical branch with nonzero throat coupling. In an
+anisotropic or defect background the threshold is directional and must use
+\(\omega_a(\mathbf k)=\mathbf k\!\cdot\!\mathbf v\). A quadratic dispersion
+\(\omega\propto k^2\) has vanishing \(\omega/k\) at long wavelength, so a
+nonzero drag-free interval would then require symmetry suppression or a
+vanishing source residue rather than merely a small velocity. A branch may also
+be kinematically open yet dark because the relevant projection vanishes; the
+source overlap and outgoing flux must be calculated.
+
+Dissipative or mixed branches require an additional test. Absence of a
+propagating wave does not imply absence of drag. The low-frequency friction,
+order-relaxation, diffusion, and conversion kernels must vanish or remain within
+the declared regime for uniform translation. A long-range static electric
+response with a diffusive pole, for example, may leave a wake even when no
+on-shell wave is emitted. The complete response should separate reversible
+added inertia, acceleration radiation, and steady friction instead of fitting
+them with one effective mass.
+
+Motion may also change the source itself. For an isotropic throat, scalar
+throughput and conversion corrections begin naturally at even powers of speed,
+for example
+
+\[
+Q_A(v)
+=
+Q_{A0}
+\left[
+1+\alpha_A\frac{v^2}{c_*^2}+O(v^4)
+\right],
+\qquad
+A\in\{n,\chi\}.
+\]
+
+The coefficients are outputs of the moving-throat family. Any resulting change
+in the signed gravity source \(\overline Q_g(r;v)\) is a velocity-dependent
+gravity effect, not inertial mass or electromagnetism. Likewise, velocity-
+dependent electric coupling, polarization, slab thickness, or reservoir loading
+would be a preferred-medium prediction that must be propagated through the
+magnetic and radiation sectors.
+
+The full audit therefore combines static range with dynamic risk. It asks which
+modes are long ranged, which are screened, which are constrained, which can
+carry energy away, which create low-frequency lag, and which couple to a
+stationary, moving, or accelerating throat. It must include leakage from the
+brane into bulk continua, conversion among transverse and longitudinal modes,
+odd and even radiation, and reservoir dissipation. No unwanted branch may be
+omitted because it is not part of the desired analogy.
+
+The selected common-medium branch fails this stage if an ordinary stable throat
+would possess a non-positive passive or inertial direction; if the retarded
+response is active for an unexcited reservoir; if low-energy mass ratios are
+unacceptably species dependent; if any unavoidable coupled mode gives a
+vanishing or too-low critical velocity; if uniform motion has unacceptable
+friction; or if the required characteristic-speed relations destroy light
+confinement, Coulomb dynamics, or gravity response. A less severe result may
+instead narrow the model to a preferred-medium regime with explicit bounded
+departures. The scope of the conclusion depends on the calculated magnitude and
+whether the conflict persists throughout the allowed common parameter region.
+
+\section{Far-field requirement summary}
+
+The force program does not end by assigning a separate pass label to gravity,
+electricity, magnetism, radiation, and inertia. It ends by exporting one linked
+set of source, response, and spectral requirements. The principal handoff is
+summarized in \cref{tab:far-field-handoff}.
+
+\begin{table}[htbp]
+\centering
+\caption{Principal far-field handoff to the common-medium synthesis.}
+\label{tab:far-field-handoff}
+\begin{tabularx}{\textwidth}{@{}L{0.20\textwidth}L{0.37\textwidth}Y@{}}
+\toprule
+\textbf{Category} & \textbf{Required output} & \textbf{Principal rejection mode} \\
+\midrule
+Gravity source
+& Probe-independent source reduction; reflection-even signed coefficient;
+  attractive inverse-square local regime; distributed porous-brane
+  \(S_{\mathrm{leak}}\) return and matching map; one frozen calibration
+& Wrong sign or parity, no usable local regime, species-dependent calibration,
+  or unacceptable screening, overshoot, or retarded response. \\
+Electric static sector
+& Complete odd/even Hessian blocks; healthy source-coupled odd
+  \(\kappa_Ek^2\) branch; correct physical force ensemble and sign; screened or
+  bounded additional forces
+& Wrong range or sign, ghost or instability, or an unavoidable extra long-range
+  branch. \\
+Charge universality
+& Nonnegative one-throat magnitudes \(g_a\), bounded factorization corrections,
+  conserved oriented count/current, and projected Gauss-like relation
+& Independent normalization by species, no conserved current, or large
+  nonfactorizing corrections. \\
+Electric dynamics
+& Propagating, relaxational, mixed, auxiliary, or constrained classification of
+  the full odd retarded block, with poles, residues, damping, passivity, and
+  zero-frequency closure
+& Static Coulomb behavior necessarily entails unacceptable radiation, drag,
+  dissipation, strong coupling, or constraint inconsistency. \\
+Magnetism
+& \(O(v)\) orientation-odd transverse source, required tensor and falloff, and
+  normalization inherited from static charge and the light operator
+& Independent magnetic coupling, wrong reversal law, or domination by an
+  orientation-even wake. \\
+Radiation
+& \(O(a)\) transfer into both transverse light polarizations, shared current and
+  coupling, radiation reaction, and channel-resolved energy--momentum balance
+& Missing tied transverse emission, failed conservation, or excessive odd,
+  even, longitudinal, bulk, or conversion radiation. \\
+Mass response
+& Positive active source, positive passive and inertial tensors, retarded
+  passivity, and bounded low-energy species variation of the required ratios
+& Wrong-sign or active response, singular inertia, or failed low-energy
+  universality. \\
+Speeds and drag
+& Complete characteristic-speed, continuum, source-overlap, critical-velocity,
+  leakage, and low-frequency friction map
+& Unavoidable low-threshold emission, vacuum drag, cone incompatibility, or
+  uncontrolled preferred-medium effects. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Several shared quantities appear repeatedly and must be represented only once in
+Candidate Parent System V1: the slab thickness and background profiles; the
+order branch and reservoir variables; the complete constrained static and
+retarded operators; the transverse light normalization; odd and even source
+profiles; the oriented current; the independent couplings; and the boundary and
+environmental ensembles. The force requirements therefore constrain one another
+before a throat is solved. A parameter that screens an unwanted even force may
+change the photon helper. An electric kinetic term may open extra radiation. A
+speed choice that reduces drag may move light or longitudinal modes into a bulk
+continuum. A distributed porous-brane \(S_{\mathrm{leak}}\) return law that
+produces the desired local gravity source may alter the reservoir state used by
+every other sector.
+
+The common-medium synthesis in \cref{ch:cross-sector-integration} will place
+these outputs beside the light requirements and test their intersection. A
+robust region must satisfy every hard structural gate and keep every bounded
+departure inside its declared range at the same parameter point or throughout a
+single declared region. A fragile point lying on a pole collision, continuum
+threshold, sign change, or vanishing source residue is not equivalent to a
+robust capability region, even if one numerical evaluation appears favorable.
+An empty intersection rejects the candidate combination rather than authorizing
+a private repair for the sector that failed.
+
+Even a successful far-field intersection remains conditional until one frozen
+parent system produces the stable slab and complete spectrum and then rederives
+all of the responses above. It also remains conditional on the later throat
+program: actual supported objects must realize the provisional source profiles,
+conserved current, universal couplings, positive response, and acceptable motion.
+The purpose of this chapter is to make that later solve decisive. The throat may
+select among permitted source families, but it may not change what gravity,
+electricity, magnetism, radiation, inertia, and drag were required to mean.

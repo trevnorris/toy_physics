@@ -1,0 +1,582 @@
+% =============================================================================
+% Chapter 4: Light Research Program
+% Input-ready fragment for the lean toy-model research proposal.
+% This file intentionally contains no preamble or document environment.
+% =============================================================================
+
+\chapter{Light Research Program}
+\label{ch:light-research-program}
+
+Light is the first detailed sector in the requirement-discovery program because
+it tests the proposed host medium before a particle throat has been solved. A
+throat-free ordered slab must already possess the right shear support, guided
+mode structure, polarization count, characteristic speed, dispersion, and
+isolation from unwanted branches. Those results can be sought directly from the
+background brane and its perturbation operator. They therefore expose
+incompatible constitutive choices earlier and more cheaply than beginning with
+a nonlinear particle core.
+
+The light program contains two nested claims. The first asks whether the common
+medium supports ordinary long-wavelength transverse light on the finite slab.
+The second asks whether the same medium can also support a finite, freely
+propagating classical packet that could serve as an individual photon analog.
+Success of the second track requires success of the first, but failure of the
+second would not erase a valid conditional light-wave sector. The detailed
+sequence of spectral, asymptotic, envelope, and numerical calculations is
+maintained in the companion document \emph{Guided Light and the Photon-Soliton
+Research Program}. This chapter states the scientific contract and the outputs
+that must be handed to the common-medium synthesis.
+
+\section{Research goals and proposed material picture}
+
+The proposed material picture begins with one finite ordered slab embedded in
+the de-structured phase of the same medium. The ordered state must support
+in-plane shear, whereas the surrounding bulk need not support the same resolved
+transverse elastic branch. Light is identified with the lowest physical
+transverse branch guided by this finite material structure. It is not a second
+substance and no fundamental electromagnetic field is inserted solely to carry
+it.
+
+Let the brane possess a local normal axis represented by a unit vector
+\(N^A\). The sign of \(N^A\) distinguishes the two throat orientations used by
+the charge sector, but ordinary free light should depend at leading order only
+on the unsigned axis, through reflection-even structures such as \(N^A N^B\).
+For a wave vector tangent to the brane, a light displacement is required to be
+both tangent to the slab and transverse to the direction of propagation. In the
+four-dimensional parent space, excluding the normal direction and the
+propagation direction leaves two independent tangential polarization
+directions. The complete guided spectrum must realize that count dynamically;
+geometrical counting alone is not sufficient.
+
+Under the currently supplied homogeneous, isotropic quadratic brane action, the
+two transverse modes have
+
+\[
+\omega_T^2
+=
+\frac{\mu_R}{\rho_{\mathrm{br}}}k^2,
+\qquad
+c_\gamma^2
+=
+\frac{\mu_R}{\rho_{\mathrm{br}}},
+\]
+
+where \(\mu_R\) is the effective ordered-state shear modulus and
+\(\rho_{\mathrm{br}}\) is the effective inertia density of the brane mode. The
+same action contains one in-plane longitudinal branch,
+
+\[
+\omega_L^2
+=
+\frac{B_{\mathrm{comp}}}{\rho_{\mathrm{br}}}k^2,
+\qquad
+c_L^2
+=
+\frac{B_{\mathrm{comp}}}{\rho_{\mathrm{br}}}.
+\]
+
+At homogeneous quadratic order its transverse and longitudinal blocks decouple. This is a useful
+conditional result, but it does not yet establish a stable finite slab, derive
+the shear modulus from the parent medium, confine a transverse mode across the
+normal direction, or control mixing caused by interfaces, defects,
+nonlinearity, and reservoir variables.
+
+Three uses of the transverse sector must remain distinct throughout the
+research:
+
+\begin{enumerate}[leftmargin=2.2em,itemsep=0.35em]
+  \item \emph{Ordinary light} is a small-amplitude guided transverse excitation
+        of the throat-free slab. Plane waves and ordinary spreading packets
+        belong to this sector.
+  \item A \emph{free photon-packet candidate} is a finite-energy traveling
+        object localized across \(w\) and within all three brane directions,
+        with only two freely selectable asymptotic polarizations.
+  \item A \emph{throat support mode} is a transverse standing mode bound to, or
+        resonant around, a nonlinear particle throat. It may exist even if the
+        free slab does not support a self-bound photon packet.
+\end{enumerate}
+
+The immediate goals are therefore ordered. First, determine whether the
+throat-free slab possesses a healthy gapless guided transverse branch with two
+polarizations and acceptable leakage. Second, derive its finite-thickness
+dispersion and nonlinear couplings from the same common constitutive law. Third,
+test whether those outputs permit a stable or sufficiently long-lived
+three-dimensional traveling packet. Finally, record every coefficient, profile,
+speed, continuum threshold, and unwanted coupling that the light calculation
+imposes on gravity, electricity, magnetism, radiation, inertia, and the later
+throat-support problem.
+
+\section{Track A: ordinary guided transverse light}
+
+Track A asks for a controlled effective light-wave sector before making the
+stronger photon claim. The finite slab must act as a genuine waveguide rather
+than merely being declared one. A variable-coefficient transverse reduction has
+the schematic form
+
+\[
+S_T^{(2)}
+=
+\frac12\int dt\,d^3x\,dw
+\left[
+\rho_T(w)|\dot{\mathbf u}_T|^2
+-\mu_\parallel(w)|\nabla_\parallel\mathbf u_T|^2
+-\mu_w(w)|\partial_w\mathbf u_T|^2
+-\mathbf u_T\!\cdot\!\mathbf V_T(w)\mathbf u_T
+\right],
+\]
+
+with coefficient profiles derived from the solved slab and the selected
+shear-supporting constitutive structure. This expression is a diagnostic
+template rather than a frozen final action. The actual operator may contain
+higher gradients, nonlocal response, coupling to density, order, thickness, or
+longitudinal variables, and branch-appropriate damping with its internal
+reservoir.
+
+The normal problem must identify a lowest transverse profile \(f_0(w;k)\) and
+its projected dispersion \(\omega_0(k)\). On a conservative or inertial branch,
+the intended light mode is gapless:
+
+\[
+\lambda_0=0,
+\qquad
+\omega_0(k)\longrightarrow0
+\quad\text{as}\quad k\longrightarrow0.
+\]
+
+A fixed normal standing frequency that gives
+\(\omega^2=\Omega_w^2+c^2k^2\) would instead describe a gapped branch and cannot
+serve as ordinary long-wavelength light. On a dissipative or mixed branch, the
+corresponding requirement is a brane-coupled physical pole or continuous branch
+of the full retarded response whose real frequency approaches zero in the
+required way while its damping, spectral weight, and lifetime remain
+acceptable.
+
+Calling the bulk ``unable to carry shear'' is not a proof of confinement. A
+vanishing bulk shear modulus could yield a bound profile, an evanescent tail, a
+floppy continuum, or strong conversion into other material motion. The complete
+normal operator and boundary conditions must determine which occurs. A true
+bound mode requires a well-defined physical norm, finite energy, and acceptable
+normal decay. A leaky mode must instead be treated as an outgoing resonance with
+calculated complex frequency, emitted flux, and lifetime. The calculation must
+also verify that normalization does not hide a profile whose support spreads
+arbitrarily far into the bulk. Useful diagnostics include the branch's
+separation from the relevant essential spectrum, its normal localization
+length, the fraction of its norm or energy carried by the ordered slab, its
+effective three-dimensional inertia under a fixed on-brane amplitude, and the
+residue with which a brane observable couples to the mode.
+
+The two transverse polarizations must remain healthy and degenerate on the
+homogeneous isotropic background. The full constrained mode census must also
+retain the separate longitudinal, normal-interface, order, density, and bulk
+branches. Track A does not require those branches to disappear. It requires
+that their spectra, couplings, and leakage be known well enough to show that
+ordinary transverse propagation is not destabilized or accompanied by
+unacceptable conversion, birefringence, attenuation, or additional radiation.
+Near a throat or another inhomogeneity, any reactivated
+transverse--longitudinal or transverse--bulk mixing becomes a calculable
+prediction rather than an omitted effect.
+
+Finite thickness supplies a material length scale and generally modifies the
+in-brane dispersion. After projection, the lowest branch may have
+
+\[
+\omega_T^2(k)
+=
+c_\gamma^2k^2
++a_4H_{\mathrm{br}}^2k^4
++a_6H_{\mathrm{br}}^4k^6
++\cdots.
+\]
+
+The coefficients \(a_4,a_6,\ldots\) are outputs of the slab reduction. They
+must be small enough over the intended ordinary-light regime to preserve the
+required approximately nondispersive propagation, yet their signs and
+magnitudes may become important for the photon-packet track. They cannot be
+selected independently for packet binding after the background dispersion has
+been computed.
+
+A successful Track A result therefore consists of more than the homogeneous
+formula for \(c_\gamma\). It must deliver a stable slab profile; the complete
+transverse eigenfunction; a branch-appropriate gapless classification; two
+polarizations; a declared low-dispersion regime; normal localization or an
+acceptable resonance lifetime; the surrounding continua and coupling
+strengths; and the dependence of these outputs on the same parameters that
+enter the force sectors. Until those calculations are completed, the present
+light-wave result remains conditional on the assumed quadratic action.
+
+The observer-facing contract should be evaluated over a frequency and
+wave-number family, not at one specially favorable point. The phase and group
+velocities must be recorded separately, as must any frequency dependence of the
+polarization vectors and normal profile. Positive energy and a healthy physical
+norm are required throughout the declared light regime. The two polarization
+branches should remain degenerate on an isotropic background, and any splitting
+introduced by curvature, defects, environmental asymmetry, or nonlinear
+intensity must be computed rather than hidden in an averaged speed. Ordinary
+free light must also carry no leading reflection-odd electric monopole on a
+symmetric background. This requirement does not make the light sector exact
+Maxwell theory: the medium may retain a separate longitudinal branch and other
+falsifiable material structure. It requires only that the transverse carrier
+seen as light be cleanly identifiable and that the additional structure remain
+stable, sufficiently weakly coupled, and observationally acceptable in the
+stated regime.
+
+Track A must finally provide a normalized carrier for later source calculations.
+The same mode norm, energy flux, and polarization basis used to describe free
+light must be used when an accelerating oriented throat is tested for emission.
+Otherwise the radiation amplitude could be adjusted independently of the
+background light sector. This later use does not require a solved throat now,
+but it does require Track A to export unambiguous normalization and flux
+conventions rather than only a dispersion curve.
+
+\section{Track B: localized classical photon-packet candidate}
+
+A linear guided mode is not yet an individual photon analog. Linear equations
+permit plane waves and localized superpositions, but they do not normally
+select a finite packet width, prevent diffraction in three dimensions, or
+produce a distinguished unit of energy. Guidance across \(w\) solves only the
+normal-confinement problem. A packet moving along, for example, the \(z\)
+direction may still spread in \(x\), \(y\), and along its envelope even when its
+normal profile remains bound.
+
+The preferred candidate is therefore an oscillatory transverse carrier inside
+a localized vector envelope,
+
+\[
+\mathbf u_T(\mathbf x,w,t)
+=
+\operatorname{Re}\!\left[
+\left(
+\mathbf e_1A_1(\mathbf x,t)
++
+\mathbf e_2A_2(\mathbf x,t)
+\right)
+ f_0(w)
+ e^{i(k_0z-\omega_0t)}
+\right].
+\]
+
+The normal profile \(f_0\) is inherited from Track A. The complex envelopes
+\(A_1\) and \(A_2\) carry the two independent polarization amplitudes. The
+carrier retains a frequency, wavelength, and phase while the envelope localizes
+energy, momentum, strain, and stress. Compact support of the displacement itself
+is unnecessary; the physical requirement is finite, concentrated energy and
+momentum with no unacceptable secular tail.
+
+The proposed binding mechanism combines finite-thickness dispersion with a
+reflection-even material dressing excited by the transverse intensity
+
+\[
+I=|A_1|^2+|A_2|^2.
+\]
+
+The helper is not assumed to be a pure longitudinal displacement. In the finite
+slab it may be a derived mixture of in-plane compression, even thickness
+change, density response, and order response,
+
+\[
+\eta_{\mathrm{helper}}
+=
+a_L\nabla\!\cdot\!\mathbf u_L
++a_t h_t
++a_n\delta n
++a_\chi\delta\chi_B
++\cdots.
+\]
+
+The coefficients and mode composition must come from the complete background
+spectrum. At weak amplitude the desired hierarchy is a transverse carrier at
+first order, an even helper sourced by intensity at second order, and feedback
+on the carrier at third order. If the helper is functionally determined by
+\(I\), it is a slaved material dressing rather than a third freely selectable
+photon polarization. Its even reflection parity also allows the packet to use
+the slab's thickness and compression response without acquiring the leading
+odd electric monopole assigned to an oriented throat.
+
+Eliminating the helper through its retarded response may generate a nonlocal,
+frequency-dependent self-interaction for the two transverse envelopes. The
+general reduction must retain
+
+\[
+\eta(\omega,\mathbf q)
+=-\alpha\mathcal G_\eta^R(\omega,\mathbf q)I(\omega,\mathbf q).
+\]
+
+Only in a controlled quasistatic regime may this reduce schematically to
+
+\[
+\eta(\mathbf q)
+=-\alpha\mathcal L_\eta^{-1}(\mathbf q)I(\mathbf q),
+\]
+
+so that the packet creates a moving guide in the material through which its own
+transverse carrier propagates. A focusing response may oppose diffraction; a
+defocusing response cannot. A simple local focusing nonlinearity is not enough
+if its energy is unbounded below and the packet collapses. Saturation,
+competing nonlinearities, higher-gradient terms, or a finite-range nonlocal
+helper may be required, but every such stabilizing structure must be part of the
+shared medium rather than a photon-only repair.
+
+Two reduced routes are useful. A Korteweg--de Vries-like one-dimensional
+solitary shear pulse is an inexpensive test of whether finite-thickness
+dispersion and amplitude-dependent propagation can balance at all. It is not
+the preferred final photon model because it does not establish lateral
+localization, two-polarization carrier structure, or near amplitude-independent
+light speed. The principal route is the guided oscillatory carrier with a
+three-dimensional vector envelope and slaved helper. A one-dimensional success
+is therefore a precursor; it must survive transverse stability, full
+three-dimensional continuation, and reconstruction in the parent fields.
+
+The reduced vector system must preserve the symmetries of the parent slab. On a
+homogeneous isotropic background, no fixed in-brane direction may be introduced
+to collimate one chosen propagation axis. Any effective guide should align with
+the packet that creates it. Polarization-dependent nonlinear invariants must be
+derived explicitly so that linearly, circularly, and elliptically polarized
+families can be compared. A helper sourced only by total intensity may preserve
+leading polarization degeneracy, whereas other allowed invariants may split
+energies, speeds, widths, or stability. Such splitting is a prediction to be
+bounded, not a coefficient to be independently tuned for each polarization.
+
+Existence of one isolated numerical lump would also be insufficient. The desired
+result is a connected traveling family over a declared carrier-frequency range,
+with calculable relations among amplitude, width, speed, energy, momentum, and
+helper strength. Those relations reveal whether localization is robust or
+requires tuning to a measure-zero point near collapse, continuum emission, or a
+change of spectral branch. They also determine whether ordinary low-intensity
+light approaches the linear Track A carrier smoothly. A packet branch that has
+no controlled small-amplitude connection, changes speed strongly with energy,
+or exists only at a single exceptional frequency may still be an interesting
+solitary material excitation, but it would not satisfy the intended broad
+classical photon role.
+
+The interpretation of a packet also depends on the selected dynamical branch.
+A conservative photon candidate must be a finite-energy traveling periodic
+solution with derived energy and momentum, zero net outgoing flux for an exact
+bound branch, and appropriate Floquet stability. A conservative resonance must
+instead carry a calculated decay rate and lifetime. A dissipative or mixed
+candidate must identify the internal reservoir, supplied and dissipated power,
+momentum transfer, entropy production, passivity, and depletion or replenishment
+within the closed one-medium loop. A freely propagating packet may not draw
+unrecorded power from an unchanged bulk.
+
+Within the intended classical stage, a viable packet should propagate at or
+very near \(c_\gamma\), have finite energy and momentum, possess no independent
+rest configuration with the same conserved data, and approach a light-like
+relation such as
+
+\[
+E_\gamma\simeq c_\gamma|\mathbf P_\gamma|
+\]
+
+in its declared regime. It should remain localized for the required lifetime,
+retain exactly two free polarizations, and interact weakly or soliton-like with
+other packets in ordinary vacuum conditions. These conditions do not by
+themselves derive \(E=\hbar\omega\), photon number, quantum statistics, or
+discrete emission and absorption. Those remain outside the present classical
+packet test.
+
+\section{Calculations, unwanted channels, and early failure tests}
+
+The light program is organized to reject unsuitable branches before expensive
+four-dimensional nonlinear simulation. Its practical sequence is:
+
+\begin{enumerate}[leftmargin=2.2em,itemsep=0.42em]
+  \item solve a stable or sufficiently metastable finite slab and freeze the
+        branch-appropriate background and reservoir data;
+  \item derive the complete constrained linear spectrum, including guided
+        transverse, longitudinal, interface, density, order, bulk, and
+        reservoir response;
+  \item project the lowest transverse branch to obtain \(c_\gamma\), its normal
+        profile, finite-thickness dispersion, leakage, and observational range;
+  \item derive the first allowed nonlinear invariants and their projections
+        onto both transverse polarizations and every candidate helper or loss
+        branch;
+  \item obtain a vector envelope/helper system from a controlled multiple-scale
+        reduction rather than assuming a nonlinear Schrödinger equation;
+  \item apply energy, scaling, collapse, continuum, radiation, and transverse
+        instability tests before seeking full packet families;
+  \item continue surviving reduced solutions to the parent fields, then test
+        long-time stability, leakage, and two-packet collisions.
+\end{enumerate}
+
+The longitudinal branch is central to the unwanted-channel audit. Its presence
+is not itself a failure and it may participate in the even helper. What matters
+is whether a moving packet excites a localized comoving response or a persistent
+wake. Three speed comparisons must remain distinct: the packet speed
+\(v_{\mathrm{packet}}\) relative to the free in-plane longitudinal speed
+\(c_L\), the placement of that longitudinal branch relative to the bulk-sound
+speed \(c_{s0}\), and the packet speed relative to the bulk continuum. In the
+simple homogeneous comparison,
+
+\[
+k_w^2
+=
+k^2\left(\frac{c_L^2}{c_{s0}^2}-1\right),
+\]
+
+so \(c_L=c_{s0}\) is a grazing threshold for the free longitudinal branch. It
+is not by itself proof of leakage or confinement. Actual radiation also
+requires nonzero source projection and interface overlap with an outgoing mode.
+The complete finite-slab operator may shift or replace this simple threshold.
+
+The nonlinear helper produces a broader test than the free longitudinal
+branch. A traveling packet sources a DC comoving component, carrier harmonics,
+sidebands, and possibly additional internal frequencies. Every such component
+must be compared with every receiving longitudinal, bulk, thickness, density,
+order, odd-electric, and conversion branch using the retarded operator and the
+actual source overlap. A DC response may remain localized while a second
+harmonic radiates. Conversely, a kinematically open continuum may remain dark
+by symmetry or vanishing overlap. Neither outcome may be assumed.
+
+The most useful early gates are summarized in
+\cref{tab:light-early-gates}.
+
+\begin{table}[htbp]
+\centering
+\caption{Early gates for the light program.}
+\label{tab:light-early-gates}
+\begin{tabularx}{\textwidth}{@{}L{0.25\textwidth}L{0.33\textwidth}Y@{}}
+\toprule
+\textbf{Gate} & \textbf{Required result} & \textbf{Failure meaning} \\
+\midrule
+Stable host slab
+& Bounded or sufficiently metastable finite ordered slab with positive shear
+  support
+& The intended light architecture has no viable background. \\
+Guided transverse branch
+& Branch-appropriate gapless mode, two polarizations, and acceptable normal
+  localization or resonance lifetime
+& Track A fails for the selected common-medium branch. \\
+Ordinary-light regime
+& Acceptably small dispersion, attenuation, birefringence, and conversion over
+  the declared range
+& The mode is not an acceptable ordinary light analog in that regime. \\
+Helper sign and boundedness
+& Even intensity response focuses when required without an unbounded collapse
+  direction
+& The proposed self-guiding mechanism fails or requires a different common
+  constitutive branch. \\
+Radiation audit
+& DC, harmonic, and sideband coupling to all unwanted branches is absent,
+  suppressed, or quantitatively acceptable
+& The packet produces an unacceptable wake, leakage, drag, or lifetime. \\
+Three-dimensional existence
+& Finite-energy localized traveling family survives transverse and parent-field
+  continuation
+& Track B fails even if Track A remains conditionally viable. \\
+Stability and collisions
+& No growing physical mode and weak or soliton-like ordinary interactions
+& The candidate is not a persistent free photon analog. \\
+Cross-sector inheritance
+& Every useful coefficient and profile remains compatible with the force and
+  throat sectors without retuning
+& A light-only success does not define one common medium. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+These gates deliberately distinguish levels of failure. Absence of a stable
+host slab or a healthy guided transverse branch rejects the selected ordinary
+light architecture. Failure of a particular helper mode rejects that binding
+mechanism, not necessarily all possible common-medium branches. Failure of all
+permitted shared self-binding mechanisms would leave classical guided light but
+not the intended localized free-photon ontology. A packet found only after
+adding a private coefficient or ignoring its force-sector consequences does not
+count as a success.
+
+Several of the early tests can produce useful negative results without a full
+packet simulation. A virial or scaling identity may show that all local focusing
+branches collapse or disperse. The projected helper Green function may have the
+wrong sign. A required harmonic may intersect an outgoing continuum with
+nonzero overlap for every admissible speed. The one-dimensional precursor may
+possess an unavoidable transverse instability. A non-normal retarded operator
+may make an apparently narrow resonance extremely sensitive to perturbations.
+Each result should be recorded at the narrowest justified level: it may reject a
+coefficient sign, a helper eigenmode, a dynamical branch, or the complete packet
+track. These analytic and reduced-model gates are valuable precisely because
+they prevent a difficult numerical search from being interpreted as evidence
+for a solution when the governing structure already forbids one.
+
+\section{Requirements handed to the common-medium synthesis}
+
+The light program must return normalized requirements and calculated outputs,
+not merely the statement that ``the brane carries waves.'' The principal
+handoff is summarized in \cref{tab:light-handoff}.
+
+\begin{table}[htbp]
+\centering
+\caption{Principal light-sector handoff to the common-medium synthesis.}
+\label{tab:light-handoff}
+\begin{tabularx}{\textwidth}{@{}L{0.27\textwidth}X@{}}
+\toprule
+\textbf{Category} & \textbf{Required output or restriction} \\
+\midrule
+Background material
+& Stable finite slab profile, selected thickness, positive ordered-state shear
+  support, and explicit conservative, relaxational, or mixed branch with its
+  reservoir closure. \\
+Guided carrier
+& Lowest physical transverse profile \(f_0(w;k)\), two polarization vectors,
+  gapless classification, \(c_\gamma\), mode norm, brane participation, and
+  leakage or resonance lifetime. \\
+Dispersion and scales
+& Valid ordinary-light range; coefficients such as \(a_4,a_6,\ldots\); relevant
+  continuum thresholds; and any relation among \(H_{\mathrm{br}}\), localization
+  length, and carrier wavelength. \\
+Complete spectrum
+& Longitudinal, interface, density, order, bulk, and reservoir branches with
+  their parity, characteristic speeds, damping, source overlaps, and dangerous
+  low-threshold channels. \\
+Nonlinear response
+& Allowed transverse invariants; helper eigenvector and parity; focusing or
+  defocusing sign; saturation, nonlocality, memory, and boundedness; and the
+  same coefficients' effects on the force sectors. \\
+Radiative closure
+& Derived power or leakage for packet motion, together with the normalized
+  outgoing modes, projectors, and loss channels needed to evaluate later
+  accelerating-throat emission into both transverse polarizations and every
+  odd, even, longitudinal, bulk, and conversion branch. \\
+Packet outcome
+& Either a stable or sufficiently long-lived three-dimensional family with its
+  energy, momentum, speed, polarization, lifetime, and collision behavior, or a
+  bounded negative result identifying which requirement cannot be met. \\
+Frozen inheritance
+& No photon-specific terms; every profile, coefficient, speed, branch choice,
+  and reservoir datum is exported to Candidate Parent System V1 and reopened if
+  an upstream choice changes. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Several cross-sector burdens follow immediately. The same slab thickness and
+constitutive coefficients that guide light also determine the normal parity
+spectrum used by electricity, the even thickness response used in finite-size
+forces, the longitudinal and bulk modes that control drag and extra radiation,
+and the transverse operator later used by throat support and electromagnetic
+emission. A gapped even helper may be useful for packet localization and for
+screening unwanted thickness forces, but its speed, range, and nonlinear
+couplings must satisfy both roles. Finite-thickness dispersion useful for
+binding cannot produce unacceptable vacuum dispersion. A light branch close to
+a longitudinal or bulk continuum may constrain the characteristic-speed region
+available to gravity and the electric sector. Most decisively, the same
+transverse coupling structure must later accept energy and momentum from an
+accelerating oriented throat in both polarizations without opening excessive
+competing channels.
+
+The common-medium synthesis in \cref{ch:cross-sector-integration} will therefore
+not score light with a single pass or fail label. It will intersect a light
+requirement region containing the stable-slab, guided-mode, ordinary-propagation,
+helper, packet, leakage, and branch-closure conditions with the corresponding
+regions from the far-field force program. A robust common region would justify
+freezing those light outputs in Candidate Parent System V1 and rederiving them
+from its complete constrained spectrum. A fragile region near continuum,
+instability, or collapse thresholds would remain a risk even if one numerical
+packet were found. An empty intersection would reject the candidate combination
+rather than invite sector-specific retuning.
+
+Light thus performs two roles in the proposal. Track A determines whether the
+medium can carry ordinary two-polarization guided radiation at all. Track B
+asks whether the same material can turn that radiation into a localized
+classical photon analog without sacrificing ordinary vacuum behavior. Together
+they provide an early, unusually direct test of the common background and a
+precise set of inherited quantities for the force, throat, and reservoir work
+that follows.

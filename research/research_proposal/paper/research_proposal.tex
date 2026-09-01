@@ -1,0 +1,579 @@
+% !TeX program = pdflatex
+% !TeX encoding = UTF-8
+% -----------------------------------------------------------------------------
+% Lean research-proposal skeleton for the one-medium brane--bulk toy model.
+%
+% STRUCTURAL AUTHORITY
+% This file supersedes toy_model_research_proposal_skeleton.tex as the
+% controlling proposal structure. The earlier 40-chapter skeleton and its
+% completed chapters remain reference material only. They must not be included
+% wholesale or allowed to recreate the superseded structure.
+%
+% ASSEMBLY
+% Rewritten proposal fragments should use the distinct filenames listed in the
+% \InputIfFileExists calls below. Each fragment may contain its own \chapter or
+% \chapter* command, but no preamble or document environment.
+%
+% SCOPE
+% The proposal explains the ontology, defines the far-field-first research
+% program, derives the questions for each sector, intersects the resulting
+% requirements, and outlines the later throat and reservoir work. Detailed
+% derivation ledgers, dated program-status audits, governance manuals, templates,
+% and large registers remain separate project artifacts.
+% -----------------------------------------------------------------------------
+
+\documentclass[11pt,oneside]{report}
+
+% --- Typography and page geometry ---------------------------------------------
+\usepackage[letterpaper,margin=1in,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,mathtools,bm}
+% Prefer Libertinus when the package is installed, but retain a standard
+% TeX Live fallback so the proposal can be built on lean installations.
+\IfFileExists{libertinus.sty}{\usepackage{libertinus}}{\usepackage{lmodern}}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.06}
+\usepackage{ragged2e}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\setlength{\emergencystretch}{2em}
+
+% --- Tables, lists, and figures -----------------------------------------------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+
+% --- Color and compact drafting guidance --------------------------------------
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\definecolor{ProposalBlue}{HTML}{244B74}
+\definecolor{ProposalBlueLight}{HTML}{EDF4FA}
+\definecolor{ProposalGreen}{HTML}{315E4B}
+\definecolor{ProposalGreenLight}{HTML}{EEF7F2}
+\definecolor{ProposalAmber}{HTML}{8A5A13}
+\definecolor{ProposalAmberLight}{HTML}{FFF7E8}
+\definecolor{ProposalRed}{HTML}{8A2F32}
+\definecolor{ProposalRedLight}{HTML}{FCEFF0}
+\definecolor{ProposalGray}{HTML}{4F5963}
+\definecolor{ProposalGrayLight}{HTML}{F4F6F8}
+
+\newtcolorbox{chapterplan}[1][]{
+  enhanced,
+  breakable,
+  title={Chapter plan},
+  colback=ProposalBlueLight,
+  colframe=ProposalBlue,
+  boxrule=0.7pt,
+  arc=1.5mm,
+  left=2mm,
+  right=2mm,
+  top=1.5mm,
+  bottom=1.5mm,
+  #1
+}
+
+\newtcolorbox{scopebox}[1][]{
+  enhanced,
+  breakable,
+  title={Scope control},
+  colback=ProposalAmberLight,
+  colframe=ProposalAmber,
+  boxrule=0.7pt,
+  arc=1.5mm,
+  left=2mm,
+  right=2mm,
+  top=1.5mm,
+  bottom=1.5mm,
+  #1
+}
+
+\newcommand{\DraftPlaceholder}{%
+  \textcolor{ProposalGray}{\emph{This section will be replaced by the rewritten chapter fragment.}}%
+}
+\newcommand{\TBD}[1]{\textcolor{ProposalRed}{\textbf{[TBD: #1]}}}
+\newcommand{\filepath}[1]{\texttt{\nolinkurl{#1}}}
+
+% --- Frequently used notation -------------------------------------------------
+\newcommand{\xbrane}{\mathbf{x}}
+\newcommand{\Xfull}{\mathbf{X}}
+\newcommand{\chiB}{\chi_B}
+\newcommand{\Jconst}{\mathbf{J}_n}
+\newcommand{\geff}{\mathbf{g}_{\mathrm{eff}}}
+\newcommand{\Rw}{\mathcal{R}_w}
+\newcommand{\Cth}{\mathcal{C}_{\mathrm{th}}}
+\newcommand{\Binf}{\mathcal{B}_\infty}
+\newcommand{\Oret}{\mathcal{O}_R}
+\newcommand{\Gret}{\mathcal{G}_R}
+\newcommand{\Hstat}{\mathcal{H}}
+\newcommand{\Gstat}{\mathcal{G}_{\mathrm{stat}}}
+\newcommand{\Hbrane}{H_{\mathrm{br}}}
+\newcommand{\cgamma}{c_\gamma}
+\newcommand{\csound}{c_s}
+
+% --- Optional epistemic-status labels -----------------------------------------
+\newcommand{\statuslabel}[2]{%
+  \begingroup\setlength{\fboxsep}{2.5pt}%
+  \colorbox{#1!14}{\textcolor{#1}{\sffamily\bfseries\footnotesize #2}}%
+  \endgroup}
+\newcommand{\Postulated}{\statuslabel{ProposalBlue}{POSTULATED}}
+\newcommand{\Operational}{\statuslabel{ProposalGreen}{OPERATIONAL DEFINITION}}
+\newcommand{\TargetRelation}{\statuslabel{ProposalAmber}{TARGET RELATION}}
+\newcommand{\DerivedAssumptions}{\statuslabel{ProposalGreen}{DERIVED UNDER STATED ASSUMPTIONS}}
+\newcommand{\OpenHypothesis}{\statuslabel{ProposalAmber}{OPEN HYPOTHESIS}}
+\newcommand{\FailureCriterion}{\statuslabel{ProposalRed}{FAILURE CRITERION}}
+
+% --- Navigation and chapter formatting ---------------------------------------
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\color{ProposalBlue}}
+  {\filleft\Large\chaptername\ \thechapter}
+  {0.5ex}
+  {\titlerule\vspace{1ex}\huge\RaggedRight}
+  [\vspace{1ex}\titlerule]
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{ProposalBlue}}
+  {\thesection}{0.75em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{ProposalGreen}}
+  {\thesubsection}{0.75em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small One-Medium Brane--Bulk Research Proposal}
+\fancyhead[R]{\small\ifnum\value{chapter}>0 \chaptername\ \thechapter\fi}
+\fancyfoot[C]{\small Page \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% --- Proposal metadata --------------------------------------------------------
+\newcommand{\ProposalTitle}{Research Proposal for a One-Medium Brane--Bulk Toy Physics Model}
+\newcommand{\ProposalSubtitle}{A Far-Field-First Test of Light, Forces, and Particle-Like Throats}
+\newcommand{\ProposalAuthor}{Trevor Norris}
+\newcommand{\ProposalVersion}{0.2 -- Lean Skeleton}
+\newcommand{\ProposalDate}{August 23, 2026}
+
+\hypersetup{
+  pdftitle={\ProposalTitle},
+  pdfauthor={\ProposalAuthor},
+  pdfsubject={Lean research proposal for a one-medium brane--bulk toy model},
+  pdfkeywords={toy physics model, brane, bulk, light, gravity, charge, magnetism, throat}
+}
+
+\begin{document}
+
+% The unnumbered title page should not claim the same PDF page destination as
+% the first Arabic-numbered page in the main matter.
+\hypersetup{pageanchor=false}
+
+% =============================================================================
+% TITLE PAGE
+% =============================================================================
+\begin{titlepage}
+  \centering
+  \vspace*{1.0in}
+  {\Huge\bfseries\color{ProposalBlue}\ProposalTitle\par}
+  \vspace{0.45in}
+  {\Large\color{ProposalGreen}\ProposalSubtitle\par}
+  \vspace{0.75in}
+
+  \begin{tcolorbox}[
+    width=0.86\textwidth,
+    colback=ProposalAmberLight,
+    colframe=ProposalAmber,
+    boxrule=0.8pt,
+    arc=2mm]
+  \centering
+  \textbf{Status:} Classical toy-model research proposal.\\[0.35em]
+  The proposal organizes a falsifiable research program. It does not claim that
+  the real universe is literally constituted this way or that any open target
+  has already been derived.
+  \end{tcolorbox}
+
+  \vfill
+  {\large \ProposalAuthor\par}
+  \vspace{0.2in}
+  {\large \ProposalDate\par}
+  \vspace{0.12in}
+  {\large \ProposalVersion\par}
+  \vspace*{0.6in}
+\end{titlepage}
+
+\pagenumbering{roman}
+\hypersetup{pageanchor=true}
+
+% =============================================================================
+% LEAN DOCUMENT CONTROL -- FRONT MATTER, NOT A NUMBERED CHAPTER
+% =============================================================================
+\chapter*{Document Control}
+\addcontentsline{toc}{chapter}{Document Control}
+
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}L{0.28\textwidth}X@{}}
+\toprule
+Document role & Plain-language ontology explanation and top-down research proposal. It defines the questions, sequence, cross-sector handoffs, and decision points; it is not the canonical derivation or status ledger. \\
+Canonical definitions & Imported from the current ontology and closure ledger. The proposal does not silently redefine symbols, ontological commitments, epistemic status, or failure conditions. \\
+Detailed companion plans & The guided-light/photon plan, opposite-orientation throat plan, and cross-sector compatibility review retain their detailed derivation programs. \\
+Current calculation status & Controlled by the derivation ledger and an independent Codex repository audit, not by a dated ``Current State of the Program'' chapter. \\
+Old proposal material & The earlier 40-chapter skeleton and Chapters 0--10 are reference-only source material. They are not assembly inputs unless a passage is deliberately rewritten into the lean structure. \\
+Structure control & Eight numbered chapters. No additional chapter or large appendix is added without an explicit structural revision. \\
+Version & \ProposalVersion \\
+Date & \ProposalDate \\
+\bottomrule
+\end{tabularx}
+
+\begin{scopebox}
+\textbf{Core drafting rule.}
+Every substantial paragraph in the proposal should help answer at least one of
+these questions: What is the model? What must a sector reproduce? What
+calculation will test it? What does it require from the common medium? How will
+those requirements be combined? What work follows after the far-field program?
+Detailed governance, dated status, exhaustive provenance, and reusable templates
+belong in separate project artifacts.
+\end{scopebox}
+
+% =============================================================================
+% PROVISIONAL ABSTRACT
+% Target: 300--450 words. Rewritten after the body stabilizes.
+% =============================================================================
+\InputIfFileExists{proposal_provisional_abstract.tex}{}{%
+  \chapter*{Provisional Abstract}
+  \addcontentsline{toc}{chapter}{Provisional Abstract}
+  \begin{chapterplan}
+  \textbf{Target length:} 300--450 words.\\
+  Summarize the one-medium ontology, the far-field-first method, the common-medium
+  compatibility test, the later throat program, and the meaning of a negative
+  result. Do not reproduce the chapter map or detailed verification protocol.
+  \end{chapterplan}
+  \DraftPlaceholder
+}
+
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+% =============================================================================
+% CHAPTER 1 -- EXECUTIVE SUMMARY
+% Target: 1,000--1,500 words.
+% =============================================================================
+\InputIfFileExists{proposal_chapter_01_executive_summary.tex}{}{%
+  \chapter{Executive Summary}
+  \label{ch:executive-summary}
+  \begin{chapterplan}
+  \textbf{Purpose:} Give the complete proposal in a compact form: the ontology,
+  central compatibility test, far-field work sequence, common-medium freeze,
+  later throat program, and possible outcomes.\\
+  \textbf{Target length:} 1,000--1,500 words.
+  \end{chapterplan}
+
+  \section{The model and its central test}
+  \DraftPlaceholder
+
+  \section{The far-field-first research program}
+  \DraftPlaceholder
+
+  \section{From sector requirements to one common medium}
+  \DraftPlaceholder
+
+  \section{Beyond the far field and meaning of success or failure}
+  \DraftPlaceholder
+}
+
+% =============================================================================
+% CHAPTER 2 -- PLAIN-ENGLISH ONTOLOGY
+% Target: 3,000--4,500 words.
+% =============================================================================
+\InputIfFileExists{proposal_chapter_02_plain_english_ontology.tex}{}{%
+  \chapter{Plain-English Ontology}
+  \label{ch:plain-english-ontology}
+  \begin{chapterplan}
+  \textbf{Purpose:} Give a technically faithful but readable mental picture of
+  the model. This is a summary of the canonical ontology, not a second ontology
+  or a full symbol ledger.\\
+  \textbf{Target length:} 3,000--4,500 words.
+  \end{chapterplan}
+
+  \section{Arena and one fundamental medium}
+  \DraftPlaceholder
+
+  \section{Ordered brane and de-structured bulk}
+  \DraftPlaceholder
+
+  \section{Light in the brane}
+  \DraftPlaceholder
+
+  \section{Particles as finite supported throats}
+  \DraftPlaceholder
+
+  \section{Charge, gravity, magnetism, and radiation}
+  \DraftPlaceholder
+
+  \section{Inertia and the complete dressed particle}
+  \DraftPlaceholder
+
+  \section{Global conservation, return, and reservoir closure}
+  \DraftPlaceholder
+
+  \section{What is postulated and what remains to be shown}
+  \DraftPlaceholder
+}
+
+% =============================================================================
+% CHAPTER 3 -- RESEARCH QUESTION AND STRATEGY
+% Target: 2,000--3,000 words.
+% =============================================================================
+\InputIfFileExists{proposal_chapter_03_research_question_and_strategy.tex}{}{%
+  \chapter{Research Question and Strategy}
+  \label{ch:research-question-strategy}
+  \begin{chapterplan}
+  \textbf{Purpose:} State the existential common-medium question and explain the
+  research method without turning the proposal into a governance manual. This
+  chapter absorbs only the essential material from the former methodology,
+  scope, falsifiability, freeze, and verification chapters.\\
+  \textbf{Target length:} 2,000--3,000 words.
+  \end{chapterplan}
+
+  \section{Central research question and scope}
+  \DraftPlaceholder
+
+  \section{Capability-first, far-field-first reasoning}
+  \DraftPlaceholder
+
+  \section{Requirement-discovery order and mathematical closure order}
+  \DraftPlaceholder
+
+  \section{Compact sector-analysis pattern}
+  \DraftPlaceholder
+
+  \section{Frozen parameters and the proposal--ledger cross-check}
+  \DraftPlaceholder
+
+  \section{Falsifiability and levels of outcome}
+  \DraftPlaceholder
+}
+
+% =============================================================================
+% CHAPTER 4 -- LIGHT RESEARCH PROGRAM
+% Target: 3,000--4,500 words.
+% =============================================================================
+\InputIfFileExists{proposal_chapter_04_light_research_program.tex}{}{%
+  \chapter{Light Research Program}
+  \label{ch:light-research-program}
+  \begin{chapterplan}
+  \textbf{Purpose:} Explain why light leads the far-field program, summarize the
+  linear guided-light and nonlinear photon-packet tracks, and state the medium
+  requirements they produce. Refer to the detailed light companion rather than
+  reproducing its full staged derivation plan.\\
+  \textbf{Target length:} 3,000--4,500 words.
+  \end{chapterplan}
+
+  \section{Research goals and proposed material picture}
+  \DraftPlaceholder
+
+  \section{Track A: ordinary guided transverse light}
+  \DraftPlaceholder
+
+  \section{Track B: localized classical photon-packet candidate}
+  \DraftPlaceholder
+
+  \section{Calculations, unwanted channels, and early failure tests}
+  \DraftPlaceholder
+
+  \section{Requirements handed to the common-medium synthesis}
+  \DraftPlaceholder
+}
+
+% =============================================================================
+% CHAPTER 5 -- FAR-FIELD FORCE PROGRAM
+% Target: 6,000--8,500 words total.
+% =============================================================================
+\InputIfFileExists{proposal_chapter_05_far_field_force_program.tex}{}{%
+  \chapter{Far-Field Force Program}
+  \label{ch:far-field-force-program}
+  \begin{chapterplan}
+  \textbf{Purpose:} Walk through the force sectors in discovery order. For each
+  sector, state the behavior to reproduce, proposed material mechanism,
+  calculations required, requirements imposed on the medium, unwanted channels,
+  and conditions that would reject the selected branch.\\
+  \textbf{Target length:} 6,000--8,500 words total.
+  \end{chapterplan}
+
+  \section{Common method for the far-field sectors}
+  \DraftPlaceholder
+
+  \section{Gravity}
+  \subsection{Behavior and proposed source-side material response}
+  \DraftPlaceholder
+  \subsection{Required calculations and medium requirements}
+  \DraftPlaceholder
+  \subsection{Failure conditions and handoff}
+  \DraftPlaceholder
+
+  \section{Static electricity and charge}
+  \subsection{Oriented source, long-range carrier, and interaction sign}
+  \DraftPlaceholder
+  \subsection{Universality, conservation, and dynamic status}
+  \DraftPlaceholder
+  \subsection{Failure conditions and handoff}
+  \DraftPlaceholder
+
+  \section{Magnetism}
+  \subsection{Moving oriented source and transverse response}
+  \DraftPlaceholder
+  \subsection{Shared normalization and unwanted responses}
+  \DraftPlaceholder
+
+  \section{Accelerating charge and electromagnetic radiation}
+  \subsection{One current across electricity, magnetism, and light}
+  \DraftPlaceholder
+  \subsection{Additional radiative channels and energy--momentum transfer}
+  \DraftPlaceholder
+
+  \section{Passive response, inertia, extra modes, and drag}
+  \subsection{Active, passive, and inertial roles}
+  \DraftPlaceholder
+  \subsection{Complete mode inventory, thresholds, leakage, and friction}
+  \DraftPlaceholder
+
+  \section{Far-field requirement summary}
+  \DraftPlaceholder
+}
+
+% =============================================================================
+% CHAPTER 6 -- CROSS-SECTOR INTEGRATION AND THE COMMON MEDIUM
+% Target: 3,000--4,500 words.
+% =============================================================================
+\InputIfFileExists{proposal_chapter_06_cross_sector_integration_and_common_medium.tex}{}{%
+  \chapter{Cross-Sector Integration and the Common Medium}
+  \label{ch:cross-sector-integration}
+  \begin{chapterplan}
+  \textbf{Purpose:} Combine the sector outputs, identify shared quantities and
+  conflicts, test whether a common admissible region exists, freeze Candidate
+  Parent System V1, and define the background calculations required before any
+  unified claim is allowed.\\
+  \textbf{Target length:} 3,000--4,500 words.
+  \end{chapterplan}
+
+  \section{The Medium Capability Matrix}
+  \DraftPlaceholder
+
+  \section{Shared fields, coefficients, speeds, sources, and constraints}
+  \DraftPlaceholder
+
+  \section{Major cross-sector compatibility gates}
+  \DraftPlaceholder
+
+  \section{The common viable-region test}
+  \DraftPlaceholder
+
+  \section{Freezing Candidate Parent System V1}
+  \DraftPlaceholder
+
+  \section{Stable brane, complete spectrum, and far-field rederivation}
+  \DraftPlaceholder
+
+  \section{Decision outcomes of the common-medium phase}
+  \DraftPlaceholder
+}
+
+% =============================================================================
+% CHAPTER 7 -- BEYOND THE FAR FIELD
+% Target: 3,000--4,500 words.
+% =============================================================================
+\InputIfFileExists{proposal_chapter_07_beyond_far_field_throat_particle_program.tex}{}{%
+  \chapter{Beyond the Far Field: Throat and Particle Program}
+  \label{ch:throat-particle-program}
+  \begin{chapterplan}
+  \textbf{Purpose:} Explain the work that follows only after a common background
+  medium survives: supported-throat existence, species and antiparticle
+  structure, moving response, pair interactions, contact, and global closure.
+  Refer to the focused contact companion for the detailed geometry.\\
+  \textbf{Target length:} 3,000--4,500 words.
+  \end{chapterplan}
+
+  \section{One-throat existence, support, and stability}
+  \DraftPlaceholder
+
+  \section{Species structure, orientation partners, and charge universality}
+  \DraftPlaceholder
+
+  \section{Moving throats, inertia, passive response, and radiation}
+  \DraftPlaceholder
+
+  \section{Two-throat interactions and finite-thickness crossover}
+  \DraftPlaceholder
+
+  \section{Projected coincidence, core contact, and annihilation}
+  \DraftPlaceholder
+
+  \section{Localized throat drainage, distributed porous-brane return, and the
+  reservoir fixed point}
+  \DraftPlaceholder
+}
+
+% =============================================================================
+% CHAPTER 8 -- VERIFICATION, MILESTONES, AND POSSIBLE OUTCOMES
+% Target: 1,800--2,800 words.
+% =============================================================================
+\InputIfFileExists{proposal_chapter_08_verification_milestones_and_outcomes.tex}{}{%
+  \chapter{Verification, Milestones, and Possible Outcomes}
+  \label{ch:verification-milestones-outcomes}
+  \begin{chapterplan}
+  \textbf{Purpose:} State how the proposal is checked against the independent
+  derivation ledger, what evidence each work package must produce, the major
+  decision gates, and how full, partial, negative, or inconclusive outcomes are
+  interpreted. Keep detailed SOPs and artifact schemas outside the proposal.\\
+  \textbf{Target length:} 1,800--2,800 words.
+  \end{chapterplan}
+
+  \section{Proposal-to-ledger verification}
+  \DraftPlaceholder
+
+  \section{Required symbolic and numerical evidence}
+  \DraftPlaceholder
+
+  \section{Milestones and decision gates}
+  \DraftPlaceholder
+
+  \section{Revision and downstream reopening}
+  \DraftPlaceholder
+
+  \section{Interpreting success, partial survival, and failure}
+  \DraftPlaceholder
+}
+
+% =============================================================================
+% END MATTER
+% =============================================================================
+\chapter*{Companion Documents}
+\addcontentsline{toc}{chapter}{Companion Documents}
+
+The proposal should end with a short controlled list of companion documents and
+repository locations, not a collection of new book-length appendices. The final
+assembly should include only the current canonical filenames and versions.
+
+\begin{itemize}[leftmargin=2em]
+  \item Canonical ontology and closure ledger: \TBD{final filename and version}
+  \item Guided-light and photon-soliton research plan: \TBD{final filename and version}
+  \item Opposite-orientation throat and contact plan: \TBD{final filename and version}
+  \item Cross-sector research burdens and compatibility gates: \TBD{final filename and version}
+  \item Derivation-ledger root and repository revision: \TBD{final path and commit}
+\end{itemize}
+
+\begin{scopebox}
+Detailed glossary tables, epistemic rubrics, acceptance-budget ledgers,
+proposal-to-ledger crosswalks, parameter-dependency tables, failure registers,
+provenance tables, review checklists, and revision histories remain separate
+project-control artifacts unless a later reader-facing need justifies a small,
+specific appendix.
+\end{scopebox}
+
+\end{document}

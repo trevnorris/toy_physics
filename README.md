@@ -35,6 +35,7 @@ Papers currently in `research/`:
 - `4d_plasma` — Plasma dynamics in the 4D model
 - `pde` — Moving-throat PDE paper: geometry lift, reduced wall-support-gauge dynamics, quadrupole response (draft)
 - `pde_ledger` — Moving-throat PDE derivation companion archive ledger
+- `research_proposal` — Far-field-first research proposal for the one-medium brane--bulk model (draft)
 
 ### Work in progress (not yet published)
 Files for ongoing work that doesn't have a paper yet remain in the original directories:

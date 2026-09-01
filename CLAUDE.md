@@ -79,3 +79,23 @@ Where we are: `STATUS.md`.
     hides (26=26 was a coincidence of two frozen mechanisms). Keep every varying quantity LIVE and
     differentiate it; when a method seems to require holding one fixed to proceed, that requirement is the
     measurement, not a step. Caught only by a ground-truth anchor or a variable-coefficient/form ablation.
+
+## Repository infrastructure — the `.out` transcripts live in git-annex + GIN (set up 2026-09-01)
+
+The v3 CAS audit transcripts (`research/pde_ledger_v3/scripts/out/*.out` and
+`research/pde_ledger_v3/mathematica/out/*.out`, ~370 MB) are **git-annex content backed by GIN**
+(`gin.g-node.org/trevnorris/toy_physics`, public), NOT plain git blobs — one exceeded GitHub's 100 MB/file cap.
+The policy is the root `.gitattributes` (last-match-wins): everything is `annex.largefiles=nothing` (plain git)
+**except** those two `out/*.out` globs, which are `anything` (annex). GitHub is `annex-ignore` by design (git +
+tiny pointers only); GIN holds the bytes.
+
+- **Generating/updating a v3 `.out`**: just `datalad save -m "…"` — the policy annexes `out/*.out` automatically
+  and keeps everything else in git. Then publish with **both** `datalad push --to gin` (content → GIN) **and**
+  `git push origin <branch>` (git + pointers → GitHub). ⛔ Never `git add -f` a big `.out`. ⛔ Never annex an
+  `*_exports.py` — they are hash-chained plain-git inputs the next step imports.
+- **After any fresh checkout/clone the `.out` are annex symlinks with NO content** until `datalad get <path>`.
+  `grep`-by-line still resolves once content is present (the symlink is followed), so a script/directive/leg
+  that reads a committed `.out` must `datalad get` it first — otherwise it reads a dangling link.
+- The GIN token is stored in the datalad keyring under credential name **`gin`**; use `--credential gin` with any
+  `create-sibling-gin`/publish. Full record, exact commands, and open follow-ups: the
+  `project-datalad-gin-out-storage` auto-memory.

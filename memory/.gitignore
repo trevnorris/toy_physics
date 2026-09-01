@@ -1,0 +1,6 @@
+/transactions/
+/locks/
+/journals/
+/backups/
+__pycache__/
+*.py[cod]

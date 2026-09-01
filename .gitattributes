@@ -1,2 +1,8 @@
 * annex.backend=MD5E
 **/.git* annex.largefiles=nothing
+
+# toy_physics annex policy (last-match-wins): keep EVERYTHING in git,
+# EXCEPT the v3 CAS audit transcripts, which live in git-annex (backed by GIN).
+* annex.largefiles=nothing
+research/pde_ledger_v3/scripts/out/*.out annex.largefiles=anything
+research/pde_ledger_v3/mathematica/out/*.out annex.largefiles=anything

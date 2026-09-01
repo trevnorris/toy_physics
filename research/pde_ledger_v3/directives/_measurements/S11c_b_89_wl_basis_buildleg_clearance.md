@@ -41,7 +41,10 @@ the engine; two independent derivations + the engine all agree — ⛔ not a mat
 - **Operator-freeze diagnostic HONEST (scope split verified).** `PRODUCTION_FROZEN_EL_RANK=26`,
   `LIVE_BACKGROUND_EL_RANK=40`, difference 14, NOT asserted equal; `evaluatedModel` still `applyProfile`s
   before `constrainedRows` — the operator freeze is DOCUMENTED, not repaired (deferred to #89b). Both legs'
-  abstract EL tests independently confirm frozen < live (the Hessian is non-absorbable operator content).
+  abstract EL tests independently confirm the Hessian is non-absorbable operator content, ⚠ by DIFFERENT
+  measures (not the same total-rank number): the engine's total frozen-EL 26 vs live-EL 40; Grok's abstract
+  total frozen 7 vs live 12; Leg A's abstract Hessian-SECTOR rank 2→0 (its total abstract rank was 4=4 — the
+  drop is confined to the Hessian sector). All three agree the freeze removes the Hessian.
 - Existing controls (`REP_INVARIANCE`, `INDEPENDENCE`, `FORM`, `UNIFORM`, `HOMOGENEITY`) still emit; per-
   anchoring ranks computed separately with span-equivalence residual 0; coefficient control count-invariant;
   Hessian-in-energy guard Δ 0.
@@ -64,5 +67,9 @@ metadata sum), or delete the tautological residual. ⛔ Do NOT claim the in-band
 two independent legs — completed count 40, span identical to independent derivation, computed-not-typed, form
 ablation load-bearing, operator-freeze honestly deferred (scope split verified). Both engines (PY #89, WL #89a)
 now emit 40 on the CORRECT completed basis (formal cross-engine comparator = integration step). One converged
-control-quality nit (§5.E tautology) folded to #89b. NEXT = commit #89a → #89b WL operator unfreeze (own 2
-decision legs + build) → integration/re-adjudicate KINETIC+θ → #90 → close.
+control-quality nit (§5.E tautology) folded to #89b. #89a is COMMITTED + PUSHED (basis `d4adbd99`, STATUS
+`6f5c8c38`; origin + GIN, `.out` has a gin annex copy). NEXT = #89b WL operator unfreeze: ⛔ spec-confirm §3b
+WL-side FIRST → orchestrator directive → 2 decision legs (Codex+Grok, rule 7) → Codex build → 2 build legs
+(fresh Claude + Grok, Mathematica SERIALIZED; the live-operator rank WITHHELD, basis 40 already public,
+frozen operator = public regression) → integration/re-adjudicate KINETIC+θ + fold 2 owed #88 hardenings →
+#90 PY §3c content → close.

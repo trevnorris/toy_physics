@@ -387,61 +387,204 @@ uniformLabels = {
 carriedUniformLabels = {"CURL_U_SQUARED", "THETA_SQUARED",
   "THETA_ELOCAL", "ELOCAL_SQUARED", "GRAD_ELOCAL_SQUARED"};
 
-newCoefficientSymbols = <|
-  "W_BG" -> {gammaWidthUTheta, gammaWidthUEw, gammaWidthUDiv,
-    gammaWidthDivGradTheta, gammaWidthShearGradTheta,
-    gammaWidthDivGradEw, gammaWidthShearGradEw,
-    gammaWidthThetaGradEw},
-  "MU_R_BG" -> {gammaModulusUTheta, gammaModulusUEw,
-    gammaModulusUDiv, gammaModulusDivGradTheta,
-    gammaModulusShearGradTheta, gammaModulusDivGradEw,
-    gammaModulusShearGradEw, gammaModulusThetaGradEw}|>;
+(* The O(3) family is generated from tensor ranks.  Every scalar is one
+   vector spurion times two DOF factors, with all slots paired by delta.
+   Levi-Civita contractions are generated only for the parity diagnostic. *)
+dofFactorSpecifications = {
+  <|"NAME" -> "U", "RANK" -> 1, "DIMENSION" -> dimensionU|>,
+  <|"NAME" -> "GRADU", "RANK" -> 2,
+    "DIMENSION" -> dimensionGradient + dimensionU|>,
+  <|"NAME" -> "THETA", "RANK" -> 0,
+    "DIMENSION" -> dimensionTheta|>,
+  <|"NAME" -> "GRADTHETA", "RANK" -> 1,
+    "DIMENSION" -> dimensionGradient + dimensionTheta|>,
+  <|"NAME" -> "EW", "RANK" -> 0, "DIMENSION" -> dimensionEw|>,
+  <|"NAME" -> "GRADEW", "RANK" -> 1,
+    "DIMENSION" -> dimensionGradient + dimensionEw|>};
 
-newCoefficientNames = <|
-  "W_BG" -> {"gamma_W_u_theta", "gamma_W_u_eW",
-    "gamma_W_u_divu", "gamma_W_divu_gradtheta",
-    "gamma_W_gradu_gradtheta", "gamma_W_divu_gradeW",
-    "gamma_W_gradu_gradeW", "gamma_W_theta_gradeW"},
-  "MU_R_BG" -> {"gamma_mu_u_theta", "gamma_mu_u_eW",
-    "gamma_mu_u_divu", "gamma_mu_divu_gradtheta",
-    "gamma_mu_gradu_gradtheta", "gamma_mu_divu_gradeW",
-    "gamma_mu_gradu_gradeW", "gamma_mu_theta_gradeW"}|>;
+perfectMatchings[{}] := {{}};
+perfectMatchings[slots_List] /; EvenQ[Length[slots]] := Module[
+  {first, rest},
+  first = First[slots];
+  rest = Rest[slots];
+  Flatten[Table[
+    (Prepend[#, {first, rest[[position]]}] & /@
+      perfectMatchings[Delete[rest, position]]),
+    {position, Length[rest]}], 1]
+];
 
-newInvariantLabels[source_String] := Module[{prefix},
+partnerOfSlot[matching_List, slot_List] := Module[{pair},
+  pair = First[Select[matching, MemberQ[#, slot] &]];
+  First[DeleteCases[pair, slot]]
+];
+
+pairingCode[matching_List] := Module[{slotCode, pairCodes},
+  slotCode[{1, slot_}] := "S" <> ToString[slot];
+  slotCode[{2, slot_}] := "A" <> ToString[slot];
+  slotCode[{3, slot_}] := "B" <> ToString[slot];
+  pairCodes = Sort[StringRiffle[Sort[slotCode /@ #], ""] & /@
+    matching];
+  "K" <> StringRiffle[pairCodes, "_"]
+];
+
+invariantLabelSuffix[factors_List, matching_List] := Module[
+  {ranks, names, scalarPosition, vectorPosition, tensorPosition,
+    scalarName, vectorName, vectorBlock, tensorBlock, spurionPartner},
+  ranks = factors[[All, "RANK"]];
+  names = factors[[All, "NAME"]];
+  Which[
+    Sort[ranks] === {0, 1},
+      scalarPosition = First[FirstPosition[ranks, 0]];
+      vectorPosition = First[FirstPosition[ranks, 1]];
+      scalarName = names[[scalarPosition]];
+      vectorName = names[[vectorPosition]];
+      If[vectorName === "U", vectorName <> "_" <> scalarName,
+        scalarName <> "_" <> vectorName],
+    Sort[ranks] === {1, 2},
+      vectorPosition = First[FirstPosition[ranks, 1]];
+      tensorPosition = First[FirstPosition[ranks, 2]];
+      vectorName = names[[vectorPosition]];
+      vectorBlock = vectorPosition + 1;
+      tensorBlock = tensorPosition + 1;
+      spurionPartner = partnerOfSlot[matching, {1, 1}];
+      Which[
+        spurionPartner === {vectorBlock, 1},
+          If[vectorName === "U", "U_DIVU",
+            "DIVU_" <> vectorName],
+        spurionPartner === {tensorBlock, 1},
+          "GRADU_" <> vectorName,
+        spurionPartner === {tensorBlock, 2},
+          "GRADUT_" <> vectorName,
+        True, StringRiffle[names, "_"] <> "_" <> pairingCode[matching]],
+    True, StringRiffle[names, "_"] <> "_" <> pairingCode[matching]]
+];
+
+enumerateO3KroneckerBlueprints[] := Module[
+  {factorPairs, candidates},
+  factorPairs = Join[Subsets[Range[Length[dofFactorSpecifications]],
+    {2}], ({#, #} & /@ Range[Length[dofFactorSpecifications]])];
+  factorPairs = Select[factorPairs, EvenQ[1 + Total[
+    dofFactorSpecifications[[#, "RANK"]]]] &];
+  candidates = Flatten[Table[Module[
+      {factors, ranks, slots, matchings},
+      factors = dofFactorSpecifications[[factorPair]];
+      ranks = Join[{1}, factors[[All, "RANK"]]];
+      slots = Flatten[Table[Table[{block, slot},
+        {slot, ranks[[block]]}], {block, Length[ranks]}], 1];
+      matchings = perfectMatchings[slots];
+      Map[Function[matching, <|
+        "FACTOR_NAMES" -> factors[[All, "NAME"]],
+        "FACTOR_RANKS" -> factors[[All, "RANK"]],
+        "FACTOR_DIMENSIONS" -> Join[{dimensionGradient},
+          factors[[All, "DIMENSION"]]],
+        "PAIRING" -> matching,
+        "LABEL_SUFFIX" -> invariantLabelSuffix[factors, matching],
+        "STORED_INVARIANT_DIMENSION" ->
+          Total[Join[{dimensionGradient},
+            factors[[All, "DIMENSION"]]]]|>], matchings]
+    ], {factorPair, factorPairs}], 1];
+  DeleteDuplicatesBy[candidates,
+    {#1["FACTOR_NAMES"], #1["PAIRING"]} &]
+];
+
+o3KroneckerBlueprints = enumerateO3KroneckerBlueprints[];
+
+(* This list names only the committed form-ablation slice.  It never sources
+   the completed family or its rank. *)
+legacyRestrictedLabelSuffixes = {"U_THETA", "U_EW", "U_DIVU",
+  "DIVU_GRADTHETA", "GRADU_GRADTHETA", "DIVU_GRADEW",
+  "GRADU_GRADEW", "THETA_GRADEW"};
+restrictNewInvariantEnumerationToLegacyEight = False;
+
+selectedO3Blueprints[
+    restricted_:restrictNewInvariantEnumerationToLegacyEight] :=
+  If[TrueQ[restricted],
+  Select[o3KroneckerBlueprints,
+    MemberQ[legacyRestrictedLabelSuffixes, #1["LABEL_SUFFIX"]] &],
+  o3KroneckerBlueprints];
+
+tensorComponent[tensor_, {}] := tensor;
+tensorComponent[tensor_, indices_List] := Extract[tensor, indices];
+pairPositionForSlot[matching_List, slot_List] :=
+  First[FirstPosition[matching, pair_ /; MemberQ[pair, slot]]];
+
+kroneckerFullContraction[tensors_List, ranks_List,
+    matching_List] := Total[Map[Function[assignment,
+  Times @@ Table[Module[{indices},
+    indices = Table[assignment[[pairPositionForSlot[matching,
+      {block, slot}]]], {slot, ranks[[block]]}];
+    tensorComponent[tensors[[block]], indices]],
+    {block, Length[tensors]}]],
+  Tuples[directions, Length[matching]]]];
+
+instantiateO3KroneckerFamily[spurion_List, u_List, theta_, ew_,
+    restricted_:restrictNewInvariantEnumerationToLegacyEight] := Module[
+  {tensorValues, blueprints, records},
+  tensorValues = <|
+    "U" -> u,
+    "GRADU" -> Table[D[u[[i]], spatialCoordinates[[j]]],
+      {i, directions}, {j, directions}],
+    "THETA" -> theta,
+    "GRADTHETA" -> gradient[theta],
+    "EW" -> ew,
+    "GRADEW" -> gradient[ew]|>;
+  blueprints = selectedO3Blueprints[restricted];
+  records = Map[Function[blueprint, Append[blueprint,
+    "EXPRESSION" -> kroneckerFullContraction[
+      Join[{spurion}, Lookup[tensorValues,
+        blueprint["FACTOR_NAMES"]]],
+      Join[{1}, blueprint["FACTOR_RANKS"]],
+      blueprint["PAIRING"]]]], blueprints];
+  DeleteDuplicatesBy[records, Expand[#1["EXPRESSION"]] &]
+];
+
+newInvariantLabels[source_String,
+    restricted_:restrictNewInvariantEnumerationToLegacyEight] :=
+  Module[{prefix},
   prefix = If[source === "W_BG", "WJET", "MUJET"];
-  prefix <> "_" <> # & /@ {"U_THETA", "U_EW", "U_DIVU",
-    "DIVU_GRADTHETA", "GRADU_GRADTHETA", "DIVU_GRADEW",
-    "GRADU_GRADEW", "THETA_GRADEW"}
+  prefix <> "_" <> #1["LABEL_SUFFIX"] & /@
+    selectedO3Blueprints[restricted]
 ];
 
-newInvariantExpressions[spurion_List, u_List, theta_, ew_] := Module[
-  {gradTheta, gradEw, divU},
-  gradTheta = gradient[theta];
-  gradEw = gradient[ew];
-  divU = divergence[u];
-  {
-    Dot[spurion, u] theta,
-    Dot[spurion, u] ew,
-    Dot[spurion, u] divU,
-    divU Dot[spurion, gradTheta],
-    Sum[spurion[[i]] gradTheta[[j]]
-      D[u[[i]], spatialCoordinates[[j]]], {i, directions},
-      {j, directions}],
-    divU Dot[spurion, gradEw],
-    Sum[spurion[[i]] gradEw[[j]]
-      D[u[[i]], spatialCoordinates[[j]]], {i, directions},
-      {j, directions}],
-    theta Dot[spurion, gradEw]
-  }
+newCoefficientSymbol[source_String, label_String] := Symbol[
+  "gamma" <> StringReplace[label, "_" -> ""]];
+newCoefficientStandardName[source_String, label_String] := Module[
+  {sourceCode, suffix},
+  sourceCode = If[source === "W_BG", "W", "mu"];
+  suffix = StringDrop[label, StringLength[
+    If[source === "W_BG", "WJET_", "MUJET_"]]];
+  "gamma_" <> sourceCode <> "_" <> ToLowerCase[suffix]
 ];
+
+newCoefficientSymbols = Association[Table[source ->
+  (newCoefficientSymbol[source, #] & /@ newInvariantLabels[source, False]),
+  {source, profileSources}]];
+newCoefficientNames = Association[Table[source ->
+  (newCoefficientStandardName[source, #] & /@
+    newInvariantLabels[source, False]),
+  {source, profileSources}]];
+newCoefficientSymbolMaps = Association[Table[source ->
+  AssociationThread[newInvariantLabels[source, False],
+    newCoefficientSymbols[source]], {source, profileSources}]];
+newCoefficientNameMaps = Association[Table[source ->
+  AssociationThread[newInvariantLabels[source, False],
+    newCoefficientNames[source]], {source, profileSources}]];
+
+newInvariantExpressions[spurion_List, u_List, theta_, ew_,
+    restricted_:restrictNewInvariantEnumerationToLegacyEight] :=
+  instantiateO3KroneckerFamily[
+  spurion, u, theta, ew, restricted][[All, "EXPRESSION"]];
 
 quadraticCoefficient[expression_] :=
   D[expression, {waveOrder, 2}]/2 /. waveOrder -> 0;
 
 constructEnergyData[branch_String, widthHead_Symbol,
-    modulusHead_Symbol] := Module[
+    modulusHead_Symbol,
+    restricted_:restrictNewInvariantEnumerationToLegacyEight,
+    useThicknessMap_:True] := Module[
   {wave, anchoredWidth, anchoredModulus, uWave, thetaWave, ewWave,
-    localEw, gradTheta, gradLocalEw, divU, curlU, uniformInvariants,
+    localEw, newEw, gradTheta, gradLocalEw, divU, curlU,
+    uniformInvariants,
     uniformCoefficients, uniformFactors, uniformTerms,
     widthSpurion, modulusSpurion, newRecords, allRecords},
   wave = waveOrder;
@@ -451,6 +594,7 @@ constructEnergyData[branch_String, widthHead_Symbol,
   thetaWave = wave thetaField;
   ewWave = wave eWField;
   localEw = (WZero/anchoredWidth) ewWave;
+  newEw = If[TrueQ[useThicknessMap], localEw, ewWave];
   gradTheta = gradient[thetaWave];
   gradLocalEw = gradient[localEw];
   divU = divergence[uWave];
@@ -503,10 +647,10 @@ constructEnergyData[branch_String, widthHead_Symbol,
       source = sourceName;
       spurion = If[source === "W_BG", widthSpurion, modulusSpurion];
       expressions = newInvariantExpressions[spurion, uWave,
-        thetaWave, ewWave];
-      labels = newInvariantLabels[source];
-      coefficients = newCoefficientSymbols[source];
-      names = newCoefficientNames[source];
+        thetaWave, newEw, restricted];
+      labels = newInvariantLabels[source, restricted];
+      coefficients = Lookup[newCoefficientSymbolMaps[source], labels];
+      names = Lookup[newCoefficientNameMaps[source], labels];
       MapThread[Function[{label, invariant, coefficient, standardName},
         <|"LABEL" -> label,
           "INVARIANT" -> quadraticCoefficient[invariant],
@@ -568,10 +712,11 @@ constructFullFieldBackgroundEnergy[branch_String, widthHead_Symbol,
   widthSpurion = gradient[anchoredWidth]/WZero;
   modulusSpurion = gradient[anchoredModulus]/muR;
   newTerms = Flatten[Table[MapThread[Times,
-      {newCoefficientSymbols[sourceName],
+      {Lookup[newCoefficientSymbolMaps[sourceName],
+          newInvariantLabels[sourceName]],
         newInvariantExpressions[
           If[sourceName === "W_BG", widthSpurion, modulusSpurion],
-          uVariation, thetaVariation, ewVariation]}],
+          uVariation, thetaVariation, localEw]}],
     {sourceName, profileSources}], 1];
   Total[Join[uniformTerms, newTerms][[basisRepresentativeIndices]]]
 ];
@@ -596,15 +741,31 @@ rankVariables = Join[
   Table[ewAlgebraGradient[i], {i, directions}],
   widthJetSymbols, modulusJetSymbols];
 
-independentRepresentativeIndices[expressions_List] := Module[
-  {polynomials, ruleLists, monomials, matrix, selected, current,
-    oldRank, newRank},
+rankMatrix[expressions_List] := Module[
+  {polynomials, ruleLists, monomials},
   polynomials = Expand[(applyProfile[#, "BASE", 0] /.
       fieldAlgebraRules)] & /@ expressions;
   ruleLists = CoefficientRules[#, rankVariables] & /@ polynomials;
   monomials = DeleteDuplicates[Flatten[Keys /@ ruleLists, 1]];
-  matrix = Table[Lookup[Association[ruleLists[[row]]], Key[monomial], 0],
-    {row, Length[ruleLists]}, {monomial, monomials}];
+  Table[Lookup[Association[ruleLists[[row]]], Key[monomial], 0],
+    {row, Length[ruleLists]}, {monomial, monomials}]
+];
+
+polynomialFeatureMatrix[expressionVectors_List, variables_List] := Module[
+  {ruleLists, featureKeys},
+  ruleLists = Map[Function[expressionVector, Flatten[MapIndexed[
+    Function[{expression, position},
+      ({First[position], First[#]} -> Last[#] & /@
+        CoefficientRules[Expand[expression], variables])],
+    Flatten[{expressionVector}]], 1]], expressionVectors];
+  featureKeys = DeleteDuplicates[Flatten[Keys /@ ruleLists, 1]];
+  Table[Lookup[Association[ruleLists[[row]]], Key[feature], 0],
+    {row, Length[ruleLists]}, {feature, featureKeys}]
+];
+
+independentRepresentativeIndices[expressions_List] := Module[
+  {matrix, selected, current, oldRank, newRank},
+  matrix = rankMatrix[expressions];
   selected = {};
   current = {};
   oldRank = 0;
@@ -618,13 +779,84 @@ independentRepresentativeIndices[expressions_List] := Module[
   selected
 ];
 
-baseEnergyData = constructEnergyData["LAB_HELD", widthBase, modulusBase];
-basisRepresentativeIndices = independentRepresentativeIndices[
-  baseEnergyData["RECORDS"][[All, "INVARIANT"]]];
+baseEnergyDataByBranch = Association[Table[branch ->
+  constructEnergyData[branch, widthBase, modulusBase],
+  {branch, branches}]];
+basisRepresentativeIndicesByBranch = AssociationMap[
+  independentRepresentativeIndices[
+    baseEnergyDataByBranch[#]["RECORDS"][[All, "INVARIANT"]]] &,
+  branches];
+
+anchoringExpressions = AssociationMap[
+  baseEnergyDataByBranch[#]["RECORDS"][[All, "INVARIANT"]] &,
+  branches];
+anchoringRankMatrices = AssociationMap[rankMatrix[
+  anchoringExpressions[#]] &, branches];
+anchoringCommonMatrix = rankMatrix[Join[
+  anchoringExpressions["LAB_HELD"],
+  anchoringExpressions["MATERIAL_ADVECTED"]]];
+anchoringRecordCount = Length[anchoringExpressions["LAB_HELD"]];
+anchoringLabSelectedRows = anchoringCommonMatrix[[
+  basisRepresentativeIndicesByBranch["LAB_HELD"]]];
+anchoringMaterialSelectedRows = anchoringCommonMatrix[[
+  anchoringRecordCount +
+    basisRepresentativeIndicesByBranch["MATERIAL_ADVECTED"]]];
+anchoringSpanCombinedRank = MatrixRank[Join[
+  anchoringLabSelectedRows, anchoringMaterialSelectedRows]];
+anchoringRankPayload = <|
+  "PER_ANCHORING" -> AssociationMap[<|
+    "RANK_OPERAND" -> MatrixRank[anchoringRankMatrices[#]],
+    "RANK_SELECTED_INDICES" -> basisRepresentativeIndicesByBranch[#]|> &,
+    branches],
+  "COMBINED_SELECTED_SPAN_RANK" -> anchoringSpanCombinedRank,
+  "SPAN_EQUIVALENCE_RESIDUAL" -> <|
+    "COMBINED_MINUS_LAB" -> anchoringSpanCombinedRank -
+      MatrixRank[anchoringLabSelectedRows],
+    "COMBINED_MINUS_MATERIAL" -> anchoringSpanCombinedRank -
+      MatrixRank[anchoringMaterialSelectedRows]|>,
+  "DIMENSION_L_T_M" -> dimensionZero,
+  "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>;
+emitShared["ENERGY_BASIS_ANCHORING_RANK", anchoringRankPayload];
+
+(* Common indices enter downstream constructors only after the independent
+   anchoring ranks and span residual have been emitted. *)
+basisRepresentativeIndices =
+  basisRepresentativeIndicesByBranch["LAB_HELD"];
+baseEnergyData = baseEnergyDataByBranch["LAB_HELD"];
 basisLabels = baseEnergyData["RECORDS"][[basisRepresentativeIndices,
   "LABEL"]];
 newBasisLabels = Select[basisLabels,
   !MemberQ[uniformLabels, #] &];
+Clear[anchoringExpressions, anchoringRankMatrices, anchoringCommonMatrix,
+  anchoringLabSelectedRows, anchoringMaterialSelectedRows,
+  anchoringRankPayload];
+
+epsilonPseudoscalarCandidates[branch_String, source_String] := Module[
+  {wave, anchoredWidth, anchoredModulus, uWave, thetaWave, ewWave,
+    localEw, spurion, vectorNames, vectorValues, vectorPairs},
+  wave = waveOrder;
+  anchoredWidth = backgroundAnchor[branch, widthBase, wave];
+  anchoredModulus = backgroundAnchor[branch, modulusBase, wave];
+  uWave = wave uVector;
+  thetaWave = wave thetaField;
+  ewWave = wave eWField;
+  localEw = (WZero/anchoredWidth) ewWave;
+  spurion = If[source === "W_BG", gradient[anchoredWidth]/WZero,
+    gradient[anchoredModulus]/muR];
+  vectorNames = Cases[dofFactorSpecifications,
+    specification_ /; specification["RANK"] == 1 :>
+      specification["NAME"]];
+  vectorValues = <|"U" -> uWave,
+    "GRADTHETA" -> gradient[thetaWave],
+    "GRADEW" -> gradient[localEw]|>;
+  vectorPairs = Subsets[vectorNames, {2}];
+  Map[Function[pair, <|"FACTOR_NAMES" -> pair,
+    "EXPRESSION" -> quadraticCoefficient[Sum[
+      Signature[{i, j, k}] spurion[[i]]
+        vectorValues[pair[[1]]][[j]] vectorValues[pair[[2]]][[k]],
+      {i, directions}, {j, directions}, {k, directions}]]|>],
+    vectorPairs]
+];
 
 (* ---------------------------------------------------------------------- *)
 (* Independent virtual-constraint, evolution, and tilted-face routes.    *)
@@ -962,6 +1194,70 @@ evaluatedModel[route_String, branch_String, density_String,
       "CORRUPTED" -> corrupted|>|>
 ];
 
+activateSpatialDivergences[expression_] := FixedPoint[ReplaceAll[#,
+  divergenceObject : Inactive[Div][vector_List, coordinates_List] :>
+    If[SameQ[coordinates, spatialCoordinates],
+      Sum[D[vector[[index]], coordinates[[index]]],
+        {index, Length[coordinates]}], divergenceObject]] &, expression];
+
+elRowVector[energy_, constraint_] := Module[{rows},
+  rows = constrainedRows[energy, constraint];
+  activateSpatialDivergences[Join[{rows["MU_THETA"]},
+    rows["U_INTERNAL"], {rows["EW_INTERNAL"]}]]
+];
+
+operatorFieldAtoms[expression_] := DeleteDuplicates[Join[
+  Cases[expression,
+    derivative : HoldPattern[Derivative[orders___][head_][arguments___]] /;
+      MemberQ[{uOne, uTwo, uThree, thetaWave, eWave}, head] :>
+        derivative, {0, Infinity}],
+  Cases[expression,
+    field : HoldPattern[head_[arguments___]] /;
+      MemberQ[{uOne, uTwo, uThree, thetaWave, eWave}, head] :>
+        field, {0, Infinity}]]];
+
+operatorFreezeRankDiagnostic[branch_String, density_String] := Module[
+  {records, coefficientRules, constraint, frozenRows, liveRows, allAtoms,
+    atomTokens, atomRules, variables, frozenMatrix, liveMatrix,
+    frozenRank, liveRank},
+  records = baseEnergyDataByBranch[branch]["RECORDS"][[
+    basisRepresentativeIndicesByBranch[branch]]];
+  coefficientRules = Thread[Flatten[Values[newCoefficientSymbols]] -> 1];
+  constraint = virtualConstraintSource["EULERIAN", branch, density,
+    widthBase];
+  frozenRows = Map[Function[record, elRowVector[
+    applyProfile[record["ENERGY_TERM"] /. coefficientRules,
+      "BASE", 0], applyProfile[constraint, "BASE", 0]]], records];
+  liveRows = Map[Function[record,
+    applyBackgroundProfileWithGeneratedJets[elRowVector[
+      record["ENERGY_TERM"] /. coefficientRules, constraint]]], records];
+  allAtoms = operatorFieldAtoms[Join[frozenRows, liveRows]];
+  atomTokens = Table[Symbol["elFieldAtom" <> ToString[index]],
+    {index, Length[allAtoms]}];
+  atomRules = Thread[allAtoms -> atomTokens];
+  variables = DeleteDuplicates[Join[atomTokens, rankVariables,
+    generatedBackgroundJetAtoms]];
+  frozenMatrix = polynomialFeatureMatrix[frozenRows /. atomRules,
+    variables];
+  liveMatrix = polynomialFeatureMatrix[liveRows /. atomRules, variables];
+  frozenRank = MatrixRank[frozenMatrix];
+  liveRank = MatrixRank[liveMatrix];
+  <|"EL_ROW_COMPONENT_ORDER" -> {"MU_THETA", "U_ONE", "U_TWO",
+      "U_THREE", "E_W"},
+    "ENERGY_TERM_CONTRIBUTION_COUNT" -> Length[records],
+    "PRODUCTION_FROZEN_EL_RANK" -> frozenRank,
+    "LIVE_BACKGROUND_EL_RANK" -> liveRank,
+    "LIVE_MINUS_FROZEN_RANK" -> liveRank - frozenRank,
+    "PRODUCTION_FROZEN_ZERO_CONTRIBUTION_INDICES" ->
+      Select[Range[Length[frozenMatrix]],
+        MatrixRank[{frozenMatrix[[#]]}] == 0 &],
+    "LIVE_BACKGROUND_ZERO_CONTRIBUTION_INDICES" ->
+      Select[Range[Length[liveMatrix]],
+        MatrixRank[{liveMatrix[[#]]}] == 0 &],
+    "DIMENSION_L_T_M" -> dimensionZero,
+    "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>
+];
+
 modelDimensions = <|
   "U_MOMENTUM_ROWS" -> dimensionBulkForce,
   "THICKNESS_ROW" -> dimensionThicknessRow,
@@ -1243,6 +1539,220 @@ energyBasisCountPayload = Association[Table[branch -> <|
   {branch, branches}]];
 emitShared["ENERGY_BASIS_COUNT", energyBasisCountPayload];
 
+(* Dedicated form ablation to the committed eight-form slice. *)
+restrictedEnergyDataByBranch = Association[Table[branch ->
+  constructEnergyData[branch, widthBase, modulusBase, True, True],
+  {branch, branches}]];
+restrictedIndicesByBranch = AssociationMap[
+  independentRepresentativeIndices[
+    restrictedEnergyDataByBranch[#]["RECORDS"][[All, "INVARIANT"]]] &,
+  branches];
+restrictedCountPayload = AssociationMap[Function[branch, Module[
+  {count, labels},
+  count = Length[restrictedIndicesByBranch[branch]];
+  labels = restrictedEnergyDataByBranch[branch]["RECORDS"][[
+    restrictedIndicesByBranch[branch], "LABEL"]];
+  <|"RESTRICT_TO_COMMITTED_FORMS_SWITCH" -> True,
+    "COUNT_OPERAND" -> count,
+    "REFERENCE_OPERAND" -> 26,
+    "RESIDUAL_COUNT_MINUS_REFERENCE" -> count - 26,
+    "RANK_SELECTED_INDICES" -> restrictedIndicesByBranch[branch],
+    "NEW_INVARIANT_LABELS" -> Select[labels,
+      !MemberQ[uniformLabels, #] &],
+    "DIMENSION_L_T_M" -> dimensionZero,
+    "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>]], branches];
+emitShared["ENERGY_BASIS_RESTRICTED_FORM_OPERAND",
+  restrictedCountPayload];
+
+formAblationCountPayload = AssociationMap[Function[branch, <|
+  "COMPLETED_COUNT_OPERAND" ->
+    Length[basisRepresentativeIndicesByBranch[branch]],
+  "RESTRICTED_COUNT_OPERAND" -> Length[restrictedIndicesByBranch[branch]],
+  "COMPLETED_MINUS_RESTRICTED" ->
+    Length[basisRepresentativeIndicesByBranch[branch]] -
+      Length[restrictedIndicesByBranch[branch]],
+  "COMPLETED_SELECTED_INDICES" ->
+    basisRepresentativeIndicesByBranch[branch],
+  "RESTRICTED_SELECTED_INDICES" -> restrictedIndicesByBranch[branch],
+  "DIMENSION_L_T_M" -> dimensionZero,
+  "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>], branches];
+emitShared["ENERGY_BASIS_FORM_ABLATION_COUNT", formAblationCountPayload];
+
+o3KroneckerEnumerationPayload = <|
+  "SPURION_TENSOR_RANK" -> 1,
+  "DOF_BUILDING_BLOCKS" -> dofFactorSpecifications,
+  "CONTRACTION_TENSOR" -> HoldForm[KroneckerDelta],
+  "GENERATED_BLUEPRINT_COUNT" -> Length[o3KroneckerBlueprints],
+  "GENERATED_BLUEPRINTS" -> Map[KeyTake[#,
+    {"FACTOR_NAMES", "FACTOR_RANKS", "PAIRING", "LABEL_SUFFIX"}] &,
+    o3KroneckerBlueprints],
+  "PAIRING_SLOT_COVERAGE_RESIDUAL" -> Map[Function[blueprint, Module[
+    {ranks, expectedSlots, pairedSlots},
+    ranks = Join[{1}, blueprint["FACTOR_RANKS"]];
+    expectedSlots = Flatten[Table[Table[{block, slot},
+      {slot, ranks[[block]]}], {block, Length[ranks]}], 1];
+    pairedSlots = Flatten[blueprint["PAIRING"], 1];
+    <|"MISSING_SLOTS" -> Complement[expectedSlots, pairedSlots],
+      "DUPLICATED_SLOT_COUNT" -> Length[pairedSlots] -
+        Length[DeleteDuplicates[pairedSlots]]|>
+  ]], o3KroneckerBlueprints],
+  "DIMENSION_L_T_M" -> dimensionZero,
+  "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>;
+emitShared["ENERGY_BASIS_O3_KRONECKER_ENUMERATION",
+  o3KroneckerEnumerationPayload];
+
+recordsForProfileSource[data_Association, source_String] := Module[
+  {prefix},
+  prefix = If[source === "W_BG", "WJET_", "MUJET_"];
+  Select[data["RECORDS"], StringStartsQ[#1["LABEL"], prefix] &]
+];
+
+completenessPayload = Association[Flatten[Table[
+  (branch <> "|" <> source) -> Module[
+    {fullRecords, legacyRecords, fullExpressions, legacyExpressions,
+      fullRank, combinedRank, epsilonRecord, epsilonRank,
+      selectedIndices, selectedMatrix, zeroRows, dependentPairs},
+    fullRecords = recordsForProfileSource[
+      baseEnergyDataByBranch[branch], source];
+    legacyRecords = recordsForProfileSource[
+      restrictedEnergyDataByBranch[branch], source];
+    fullExpressions = fullRecords[[All, "INVARIANT"]];
+    legacyExpressions = legacyRecords[[All, "INVARIANT"]];
+    fullRank = MatrixRank[rankMatrix[fullExpressions]];
+    combinedRank = MatrixRank[rankMatrix[
+      Join[fullExpressions, legacyExpressions]]];
+    epsilonRecord = First[epsilonPseudoscalarCandidates[branch, source]];
+    epsilonRank = MatrixRank[rankMatrix[Append[fullExpressions,
+      epsilonRecord["EXPRESSION"]]]];
+    selectedIndices = independentRepresentativeIndices[fullExpressions];
+    selectedMatrix = rankMatrix[fullExpressions][[selectedIndices]];
+    zeroRows = Select[Range[Length[selectedMatrix]],
+      MatrixRank[{selectedMatrix[[#]]}] == 0 &];
+    dependentPairs = Select[Subsets[Range[Length[selectedMatrix]], {2}],
+      MatrixRank[selectedMatrix[[#]]] < 2 &];
+    <|"GENERATED_FAMILY_RANK" -> fullRank,
+      "COMMITTED_FORM_RANK" -> MatrixRank[rankMatrix[legacyExpressions]],
+      "GENERATED_PLUS_COMMITTED_RANK" -> combinedRank,
+      "COMMITTED_RANK_INCREMENT_ON_GENERATED" -> combinedRank - fullRank,
+      "EPSILON_TRIAL_FACTOR_CONTENT" ->
+        epsilonRecord["FACTOR_NAMES"],
+      "EPSILON_TRIAL_EXPRESSION" -> applyProfile[
+        epsilonRecord["EXPRESSION"], "BASE", 0],
+      "EPSILON_TRIAL_RANK_OPERAND" -> epsilonRank,
+      "EPSILON_TRIAL_RANK_INCREMENT" -> epsilonRank - fullRank,
+      "GENERATED_CONTRACTION_TENSOR" -> HoldForm[KroneckerDelta],
+      "EPSILON_TRIAL_CONTRACTION_TENSOR" -> HoldForm[Signature],
+      "SELECTED_COUNT_OPERAND" -> Length[selectedIndices],
+      "SELECTED_RANK_OPERAND" -> MatrixRank[selectedMatrix],
+      "ZERO_ROW_INDICES" -> zeroRows,
+      "DEPENDENT_DIRECTION_PAIRS" -> dependentPairs,
+      "DIMENSION_L_T_M" -> dimensionZero,
+      "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>
+  ], {branch, branches}, {source, profileSources}], 1]];
+emitShared["ENERGY_BASIS_KRONECKER_COMPLETENESS_OPERAND",
+  completenessPayload];
+
+coefficientRescalingPayload = AssociationMap[Function[branch, Module[
+  {expressions, labels, firstNewPosition, rescaledExpressions,
+    baseSelected, rescaledSelected},
+  expressions = baseEnergyDataByBranch[branch]["RECORDS"][[All,
+    "INVARIANT"]];
+  labels = baseEnergyDataByBranch[branch]["RECORDS"][[All, "LABEL"]];
+  firstNewPosition = First[FirstPosition[labels,
+    label_String /; !MemberQ[uniformLabels, label]]];
+  rescaledExpressions = ReplacePart[expressions,
+    firstNewPosition -> 7 expressions[[firstNewPosition]]];
+  baseSelected = independentRepresentativeIndices[expressions];
+  rescaledSelected = independentRepresentativeIndices[rescaledExpressions];
+  <|"RESCALED_LABEL" -> labels[[firstNewPosition]],
+    "NONZERO_RESCALING_OPERAND" -> 7,
+    "BASE_COUNT_OPERAND" -> Length[baseSelected],
+    "RESCALED_COUNT_OPERAND" -> Length[rescaledSelected],
+    "COUNT_RESIDUAL" -> Length[rescaledSelected] - Length[baseSelected],
+    "BASE_SELECTED_INDICES" -> baseSelected,
+    "RESCALED_SELECTED_INDICES" -> rescaledSelected,
+    "SELECTED_INDEX_RESIDUAL" ->
+      Complement[Join[baseSelected, rescaledSelected],
+        Intersection[baseSelected, rescaledSelected]],
+    "DIMENSION_L_T_M" -> dimensionZero,
+    "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>]], branches];
+emitShared["ENERGY_BASIS_COEFFICIENT_RESCALING_CONTROL",
+  coefficientRescalingPayload];
+
+rawThicknessEnergyDataByBranch = Association[Table[branch ->
+  constructEnergyData[branch, widthBase, modulusBase, False, False],
+  {branch, branches}]];
+thicknessMapResidualPayload = Association[Flatten[Table[
+  (branch <> "|" <> source) -> Module[
+    {mappedRecords, rawRecords},
+    mappedRecords = recordsForProfileSource[
+      baseEnergyDataByBranch[branch], source];
+    rawRecords = recordsForProfileSource[
+      rawThicknessEnergyDataByBranch[branch], source];
+    Association[MapThread[Function[{mappedRecord, rawRecord},
+      mappedRecord["LABEL"] -> <|
+        "MAPPED_LOCAL_FIELD_OPERAND" -> applyProfile[
+          mappedRecord["INVARIANT"], "BASE", 0],
+        "RAW_FIELD_OPERAND" -> applyProfile[
+          rawRecord["INVARIANT"], "BASE", 0],
+        "RESIDUAL_MAPPED_MINUS_RAW" -> applyProfile[
+          mappedRecord["INVARIANT"] - rawRecord["INVARIANT"],
+          "BASE", 0],
+        "MULTIGRADE_EPSILON_ETA_SIGMAW" ->
+          withEpsilonGrade[applyProfile[mappedRecord["INVARIANT"] -
+            rawRecord["INVARIANT"], "BASE", 0], 2],
+        "DIMENSION_L_T_M" ->
+          dimensionGradient + Total[First[Select[
+            o3KroneckerBlueprints,
+            StringEndsQ[mappedRecord["LABEL"],
+              #1["LABEL_SUFFIX"]] &]]["FACTOR_DIMENSIONS"][[2 ;;]]]|>
+    ], {mappedRecords, rawRecords}]]
+  ], {branch, branches}, {source, profileSources}], 1]];
+emitShared["ENERGY_BASIS_THICKNESS_MAP_RESIDUAL",
+  thicknessMapResidualPayload];
+
+generatedBackgroundJetAtoms = DeleteDuplicates[Flatten[Table[
+  If[1 <= i + j + k <= 3,
+    Table[profileJetSymbol[source, {i, j, k}],
+      {source, profileSources}], Nothing],
+  {i, 0, 3}, {j, 0, 3}, {k, 0, 3}]]];
+backgroundSecondJetAtoms = DeleteDuplicates[Flatten[Table[
+  If[i + j + k == 2,
+    Table[profileJetSymbol[source, {i, j, k}],
+      {source, profileSources}], Nothing],
+  {i, 0, 2}, {j, 0, 2}, {k, 0, 2}]]];
+energyHessianGuardPayload = AssociationMap[Function[branch, Module[
+  {expressions, liveExpressions, zeroHessianExpressions, variables,
+    liveRank, zeroHessianRank},
+  expressions = baseEnergyDataByBranch[branch]["RECORDS"][[
+    basisRepresentativeIndicesByBranch[branch], "INVARIANT"]];
+  liveExpressions = (Expand[
+    applyBackgroundProfileWithGeneratedJets[#] /. fieldAlgebraRules] & /@
+    expressions);
+  zeroHessianExpressions = liveExpressions /.
+    Thread[backgroundSecondJetAtoms -> 0];
+  variables = DeleteDuplicates[Join[rankVariables,
+    generatedBackgroundJetAtoms]];
+  liveRank = MatrixRank[polynomialFeatureMatrix[
+    liveExpressions, variables]];
+  zeroHessianRank = MatrixRank[polynomialFeatureMatrix[
+    zeroHessianExpressions, variables]];
+  <|"WITH_BACKGROUND_SECOND_JET_ATOMS_RANK" -> liveRank,
+    "SECOND_JET_ATOMS_ZERO_RANK" -> zeroHessianRank,
+    "RANK_DIFFERENCE" -> liveRank - zeroHessianRank,
+    "SECOND_JET_ATOMS" -> backgroundSecondJetAtoms,
+    "DIMENSION_L_T_M" -> dimensionZero,
+    "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>]], branches];
+emitShared["ENERGY_BASIS_HESSIAN_IN_ENERGY_GUARD",
+  energyHessianGuardPayload];
+
+operatorFreezeDiagnosticPayload = Association[Flatten[Table[
+  caseKey[branch, density] ->
+    operatorFreezeRankDiagnostic[branch, density],
+  {branch, branches}, {density, densities}], 1]];
+emitShared["OPERATOR_BACKGROUND_FREEZE_DIAGNOSTIC",
+  operatorFreezeDiagnosticPayload];
+
 newInvariantPayload = Association[Table[branch -> Module[
     {records},
     records = Select[
@@ -1275,7 +1785,14 @@ energyBasisOmissionsPayload = Association[Table[branch -> Module[
 emitShared["ENERGY_BASIS_OMISSIONS", energyBasisOmissionsPayload];
 
 Clear[energyBasisPayload, energyBasisCountPayload, newInvariantPayload,
-  energyBasisOmissionsPayload, energyRecordsByBranch, baseEnergyData];
+  energyBasisOmissionsPayload, energyRecordsByBranch, baseEnergyData,
+  baseEnergyDataByBranch, restrictedEnergyDataByBranch,
+  restrictedIndicesByBranch, restrictedCountPayload,
+  formAblationCountPayload, completenessPayload,
+  coefficientRescalingPayload, rawThicknessEnergyDataByBranch,
+  thicknessMapResidualPayload, energyHessianGuardPayload,
+  operatorFreezeDiagnosticPayload, generatedBackgroundJetAtoms,
+  backgroundSecondJetAtoms];
 ClearSystemCache[];
 
 mainModels = <||>;
@@ -1747,21 +2264,36 @@ uniformInvariantDimensions = <|
   "THETA_DIV_U" -> dimensionTheta + dimensionGradient + dimensionU,
   "ELOCAL_DIV_U" -> dimensionEw + dimensionGradient + dimensionU|>;
 
+factorDimensionByName = Association[Map[
+  #1["NAME"] -> #1["DIMENSION"] &, dofFactorSpecifications]];
+deriveInvariantDimensionFromFactorContent[blueprint_Association] :=
+  dimensionGradient + Total[Lookup[factorDimensionByName,
+    blueprint["FACTOR_NAMES"]]];
+
 newInvariantDimensions = Association[Flatten[Table[
-  With[{labels = newInvariantLabels[source]}, Thread[labels -> {
-    -dimensionL + dimensionU + dimensionTheta,
-    -dimensionL + dimensionU + dimensionEw,
-    -dimensionL + dimensionU + dimensionGradient + dimensionU,
-    (dimensionGradient + dimensionU) - dimensionL +
-      dimensionGradient + dimensionTheta,
-    -dimensionL + dimensionGradient + dimensionTheta +
-      dimensionGradient + dimensionU,
-    (dimensionGradient + dimensionU) - dimensionL +
-      dimensionGradient + dimensionEw,
-    -dimensionL + dimensionGradient + dimensionEw +
-      dimensionGradient + dimensionU,
-    dimensionTheta - dimensionL + dimensionGradient + dimensionEw}]],
+  MapThread[#1 -> deriveInvariantDimensionFromFactorContent[#2] &,
+    {newInvariantLabels[source, False], o3KroneckerBlueprints}],
   {source, profileSources}], 1]];
+
+newInvariantDimensionPayload = Association[Flatten[Table[
+  MapThread[Function[{label, blueprint}, label -> <|
+    "FACTOR_CONTENT" -> Join[{"BACKGROUND_FIRST_JET"},
+      blueprint["FACTOR_NAMES"]],
+    "FACTOR_DIMENSIONS" -> Join[{dimensionGradient},
+      Lookup[factorDimensionByName, blueprint["FACTOR_NAMES"]]],
+    "DERIVED_DIMENSION_OPERAND" ->
+      deriveInvariantDimensionFromFactorContent[blueprint],
+    "STORED_DIMENSION_OPERAND" ->
+      blueprint["STORED_INVARIANT_DIMENSION"],
+    "RESIDUAL_DERIVED_MINUS_STORED" ->
+      deriveInvariantDimensionFromFactorContent[blueprint] -
+        blueprint["STORED_INVARIANT_DIMENSION"],
+    "DIMENSION_L_T_M" -> dimensionZero,
+    "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>],
+    {newInvariantLabels[source, False], o3KroneckerBlueprints}],
+  {source, profileSources}], 1]];
+emitShared["ENERGY_BASIS_NEW_INVARIANT_DIMENSION_DERIVATION",
+  newInvariantDimensionPayload];
 
 coefficientDimensions = Join[
   Map[dimensionEnergy - # &, uniformInvariantDimensions],

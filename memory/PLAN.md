@@ -188,7 +188,7 @@ allowed to say.
 Create a deterministic inventory of candidate sources, grouped into at least:
 
 - Canonical papers and maintained TeX sources.
-- Current step records, ledgers, and handoff documents.
+- Current audit records, result reports, and handoff documents inside the selected corpus.
 - Measurement records and literal engine output.
 - Working notes and exploratory material.
 - Scripts and executable audit entry points.
@@ -217,7 +217,7 @@ such as directives, prompts, and red-team material is citation-only by default.
 
 The initial corpus should be a small representative set, approximately 20–50
 sources, rather than the whole repository. It must cover at least one current
-paper, one changing ledger/step-record family, one conflict or supersession,
+paper, one changing audit/software family, one conflict or supersession,
 one status firewall, and representative Python and Wolfram Language scripts.
 
 ### 0.3 Define the evidence contract

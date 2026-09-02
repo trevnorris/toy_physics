@@ -1,6 +1,9 @@
 # Scanner Decision Review Fold
 
 Date: 2026-08-24
+Superseded for current corpus selection: 2026-09-01 by
+[`pde_ledger_exclusion_validation.md`](pde_ledger_exclusion_validation.md).
+The historical review below remains as recorded.
 Artifact reviewed: `memory/_meta/SCANNER_DECISIONS.md` (author draft)
 
 Two independent review legs were completed before builder launch. Neither leg

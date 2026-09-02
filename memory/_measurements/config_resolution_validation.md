@@ -1,6 +1,9 @@
 # Config Resolution Validation
 
 Date: 2026-08-24
+Superseded for current corpus selection: 2026-09-01 by
+[`pde_ledger_exclusion_validation.md`](pde_ledger_exclusion_validation.md).
+The historical validation below remains as recorded.
 Config: `memory/_meta/config.yaml` schema version 2
 Committed snapshot: `ddecdbc249a4d9d860dd25ecd4531726a01d26c6`
 

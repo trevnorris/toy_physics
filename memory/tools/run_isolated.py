@@ -16,10 +16,13 @@ import datetime as dt
 import json
 import os
 from pathlib import Path
+import signal
 import shutil
 import subprocess
 import sys
+import time
 from typing import Any, Sequence
+import uuid
 
 import yaml
 
@@ -42,6 +45,13 @@ class IsolationError(mem.MemoryErrorBase):
 # Hard wall-clock limit for one Codex authoring invocation.  A timed-out run is
 # never imported into the transaction's staged memory.
 CODEX_WRITER_TIMEOUT_SECONDS = 20 * 60
+CODEX_WRITER_MEMORY_MAX_BYTES = 6 * 1024 * 1024 * 1024
+CODEX_WRITER_SWAP_MAX_BYTES = 2 * 1024 * 1024 * 1024
+CODEX_WRITER_PIDS_MAX = 128
+CODEX_WRITER_FILE_MAX_BYTES = 256 * 1024 * 1024
+CODEX_WRITER_OUTPUT_MAX_BYTES = 16 * 1024 * 1024
+FAILED_LOG_MAX_BYTES = 4 * 1024 * 1024
+OWNED_PROCESS_TERM_GRACE_SECONDS = 5
 
 
 WRITER_PROMPT = (
@@ -56,7 +66,7 @@ REVISION_PROMPT = (
     "/packet/revision_review_attestation.json, then read /packet/task.json, every "
     "frozen prompt named there, /packet/schema.md, and the current sealed source inputs below /packet. "
     "Use the prior candidate as the starting point: preserve its accurate, supported content and stable "
-    "IDs, while resolving every blocking/major failed-review finding and addressing the current task's "
+    "IDs, while resolving every failed-review finding and addressing the current task's "
     "editorial_focus and frozen policy. Current sealed sources and prerequisite pages remain authoritative "
     "and may be used. Produce the complete revised Markdown page with no wrapper or "
     "commentary. Return that page as your final response; the trusted launcher writes the final response "
@@ -85,6 +95,7 @@ class RuntimeProfile:
     environment: tuple[tuple[str, str], ...]
     capture_stdout: bool = False
     stdin_data: bytes | None = None
+    enforce_resource_limits: bool = False
 
 
 def _probe_version(command: Sequence[str]) -> str:
@@ -106,18 +117,174 @@ def _timeout_output(value: bytes | str | None) -> bytes:
     return value.encode("utf-8", "replace")
 
 
-def _preserve_timeout_diagnostics(output: Path, exc: subprocess.TimeoutExpired) -> None:
-    """Best-effort preservation of partial writer diagnostics inside the task."""
-    for name, data in (
-        ("failed-stdout.bin", _timeout_output(exc.stdout)),
-        ("failed-stderr.bin", _timeout_output(exc.stderr)),
+def _tail_file(path: Path, limit: int = 4000) -> bytes:
+    if not path.is_file():
+        return b""
+    with path.open("rb") as handle:
+        handle.seek(0, os.SEEK_END)
+        size = handle.tell()
+        handle.seek(max(0, size - limit), os.SEEK_SET)
+        return handle.read(limit)
+
+
+def _terminate_owned_process(proc: subprocess.Popen[bytes]) -> None:
+    """Stop only the exact child PID created by this launcher."""
+    if proc.poll() is not None:
+        return
+    proc.terminate()
+    try:
+        proc.wait(timeout=OWNED_PROCESS_TERM_GRACE_SECONDS)
+    except subprocess.TimeoutExpired:
+        if proc.poll() is None:
+            proc.kill()
+        proc.wait()
+
+
+def _preserve_process_logs(output: Path, stdout_log: Path, stderr_log: Path) -> None:
+    """Retain bounded diagnostic tails without keeping large failed transcripts."""
+    for source, name in (
+        (stdout_log, "failed-stdout.bin"),
+        (stderr_log, "failed-stderr.bin"),
     ):
+        if source.exists():
+            mem.atomic_write(output / name, _tail_file(source, FAILED_LOG_MAX_BYTES), 0o600)
+            source.unlink()
+
+
+def _current_cgroup_path() -> Path:
+    try:
+        line = next(
+            item for item in Path("/proc/self/cgroup").read_text(encoding="utf-8").splitlines()
+            if item.startswith("0::")
+        )
+    except (OSError, StopIteration) as exc:
+        raise IsolationError("cannot resolve the current cgroup-v2 path") from exc
+    relative = line.split("::", 1)[1].lstrip("/")
+    return Path("/sys/fs/cgroup") / relative
+
+
+def _create_owned_cgroup() -> Path:
+    parent = _current_cgroup_path().parent
+    try:
+        controllers = set((parent / "cgroup.subtree_control").read_text(encoding="utf-8").split())
+    except OSError as exc:
+        raise IsolationError("cannot inspect the delegated parent cgroup") from exc
+    if "memory" not in controllers or "pids" not in controllers:
+        raise IsolationError("delegated parent cgroup lacks memory/pids control")
+    owned = parent / f"codex-memory-writer-{os.getpid()}-{uuid.uuid4().hex[:12]}"
+    try:
+        owned.mkdir(mode=0o755)
+        (owned / "memory.max").write_text(str(CODEX_WRITER_MEMORY_MAX_BYTES), encoding="ascii")
+        (owned / "memory.swap.max").write_text(str(CODEX_WRITER_SWAP_MAX_BYTES), encoding="ascii")
+        (owned / "pids.max").write_text(str(CODEX_WRITER_PIDS_MAX), encoding="ascii")
+    except OSError as exc:
         try:
-            mem.atomic_write(output / name, data, 0o600)
+            owned.rmdir()
         except OSError:
-            # The timeout remains the primary failure if the diagnostic volume
-            # itself became unavailable or unwritable.
             pass
+        raise IsolationError("cannot create the owned Codex resource cgroup") from exc
+    return owned
+
+
+def _attach_stopped_pid(owned: Path, pid: int) -> None:
+    try:
+        waited_pid, status = os.waitpid(pid, os.WUNTRACED)
+        if waited_pid != pid or not os.WIFSTOPPED(status):
+            raise IsolationError("owned Codex child did not stop before cgroup attachment")
+        (owned / "cgroup.procs").write_text(f"{pid}\n", encoding="ascii")
+        os.kill(pid, signal.SIGCONT)
+    except OSError as exc:
+        raise IsolationError("cannot attach the exact Codex child PID to its cgroup") from exc
+
+
+def _owned_cgroup_stats(owned: Path | None) -> dict[str, Any] | None:
+    if owned is None:
+        return None
+    stats: dict[str, Any] = {
+        "memory_max_bytes": CODEX_WRITER_MEMORY_MAX_BYTES,
+        "swap_max_bytes": CODEX_WRITER_SWAP_MAX_BYTES,
+        "pids_max": CODEX_WRITER_PIDS_MAX,
+        "file_max_bytes": CODEX_WRITER_FILE_MAX_BYTES,
+        "output_max_bytes": CODEX_WRITER_OUTPUT_MAX_BYTES,
+    }
+    for name in ("memory.current", "memory.peak", "pids.current", "pids.peak"):
+        path = owned / name
+        if path.is_file():
+            try:
+                stats[name.replace(".", "_")] = int(path.read_text(encoding="ascii").strip())
+            except (OSError, ValueError):
+                pass
+    for filename, stats_key in (("memory.events", "memory_events"), ("pids.events", "pids_events")):
+        events = owned / filename
+        if not events.is_file():
+            continue
+        try:
+            stats[stats_key] = {
+                event: int(value)
+                for event, value in (line.split() for line in events.read_text(encoding="ascii").splitlines())
+            }
+        except (OSError, ValueError):
+            pass
+    return stats
+
+
+def _cleanup_owned_cgroup(owned: Path | None) -> bool:
+    if owned is None:
+        return True
+    for _ in range(50):
+        try:
+            populated = "populated 1" in (owned / "cgroup.events").read_text(encoding="ascii")
+        except FileNotFoundError:
+            return True
+        except OSError:
+            return False
+        if not populated:
+            try:
+                owned.rmdir()
+            except FileNotFoundError:
+                return True
+            except OSError:
+                return False
+            return True
+        time.sleep(0.1)
+    return False
+
+
+def _spawn_owned_process(
+    command: Sequence[str], profile: RuntimeProfile, stdout_handle: Any, stderr_handle: Any,
+    *, use_cgroup: bool,
+) -> tuple[subprocess.Popen[bytes], Path | None]:
+    owned = _create_owned_cgroup() if use_cgroup else None
+    launch_command = list(command)
+    if owned is not None:
+        launch_command = [
+            "/bin/sh", "-c",
+            'ulimit -f "$1" || exit 125; shift; kill -STOP "$$"; exec "$@"',
+            "owned-codex", str(CODEX_WRITER_FILE_MAX_BYTES // 512), *launch_command,
+        ]
+    try:
+        proc = subprocess.Popen(
+            launch_command,
+            stdin=subprocess.PIPE if profile.stdin_data is not None else subprocess.DEVNULL,
+            stdout=stdout_handle,
+            stderr=stderr_handle,
+        )
+        if owned is not None:
+            try:
+                _attach_stopped_pid(owned, proc.pid)
+            except BaseException:
+                if proc.poll() is None:
+                    try:
+                        os.kill(proc.pid, signal.SIGCONT)
+                    except ProcessLookupError:
+                        pass
+                    _terminate_owned_process(proc)
+                raise
+        return proc, owned
+    except BaseException as exc:
+        if not _cleanup_owned_cgroup(owned):
+            raise IsolationError("cannot clean the failed Codex resource cgroup") from exc
+        raise
 
 
 def _required_file(path: Path, label: str) -> Path:
@@ -179,6 +346,7 @@ def runtime_profile(name: str) -> RuntimeProfile:
             environment=(("HOME", "/runtime-home"), ("CODEX_HOME", "/runtime-home/.codex"),
                          ("PATH", "/runtime:/usr/bin:/bin"), ("LANG", "C.UTF-8"),
                          ("SSL_CERT_FILE", "/etc/ssl/certs/ca-certificates.crt")),
+            enforce_resource_limits=True,
         )
     raise IsolationError(f"unknown writer runtime profile {name!r}; choose codex")
 
@@ -1339,29 +1507,65 @@ def run_task(
     if existing:
         raise IsolationError(f"isolated output is not empty for {task_id}; refusing to overwrite")
     sandbox_command = bubblewrap_command(repo, packet, output, profile)
+    stdout_log = task_root / "runner-stdout.bin"
+    stderr_log = task_root / "runner-stderr.bin"
+    timed_out: subprocess.TimeoutExpired | None = None
+    owned_cgroup: Path | None = None
+    resource_stats: dict[str, Any] | None = None
     try:
-        proc = subprocess.run(
-            sandbox_command, check=False, input=profile.stdin_data,
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            timeout=CODEX_WRITER_TIMEOUT_SECONDS,
+        with stdout_log.open("wb") as stdout_handle, stderr_log.open("wb") as stderr_handle:
+            proc, owned_cgroup = _spawn_owned_process(
+                sandbox_command, profile, stdout_handle, stderr_handle,
+                use_cgroup=profile.enforce_resource_limits,
+            )
+            try:
+                proc.communicate(input=profile.stdin_data, timeout=CODEX_WRITER_TIMEOUT_SECONDS)
+            except subprocess.TimeoutExpired as exc:
+                timed_out = exc
+                _terminate_owned_process(proc)
+            except BaseException:
+                _terminate_owned_process(proc)
+                raise
+        resource_stats = _owned_cgroup_stats(owned_cgroup)
+    finally:
+        if resource_stats is None:
+            resource_stats = _owned_cgroup_stats(owned_cgroup)
+        cleanup_confirmed = _cleanup_owned_cgroup(owned_cgroup)
+    if not cleanup_confirmed:
+        _preserve_process_logs(output, stdout_log, stderr_log)
+        raise IsolationError(
+            "owned Codex resource cgroup remained populated after the exact child exited"
         )
-    except subprocess.TimeoutExpired as exc:
-        _preserve_timeout_diagnostics(output, exc)
-        partial_stderr = _timeout_output(exc.stderr).decode("utf-8", "replace").strip()
-        suffix = f": {partial_stderr[-4000:]}" if partial_stderr else ""
+    if timed_out is not None:
+        partial_stderr = _tail_file(stderr_log).decode("utf-8", "replace").strip()
+        _preserve_process_logs(output, stdout_log, stderr_log)
+        suffix = f": {partial_stderr}" if partial_stderr else ""
         raise IsolationError(
             f"isolated Codex writer timed out after {CODEX_WRITER_TIMEOUT_SECONDS} seconds{suffix}"
-        ) from exc
+        ) from timed_out
     if proc.returncode:
-        diagnostic = (proc.stderr or proc.stdout or b"").decode("utf-8", "replace").strip()
-        if len(diagnostic) > 4000:
-            diagnostic = diagnostic[-4000:]
+        diagnostic = (_tail_file(stderr_log) or _tail_file(stdout_log)).decode("utf-8", "replace").strip()
+        _preserve_process_logs(output, stdout_log, stderr_log)
         suffix = f": {diagnostic}" if diagnostic else ""
         raise IsolationError(f"isolated writer exited with status {proc.returncode}{suffix}")
+    if profile.enforce_resource_limits and not isinstance(
+        (resource_stats or {}).get("memory_events"), dict,
+    ):
+        _preserve_process_logs(output, stdout_log, stderr_log)
+        raise IsolationError("isolated Codex writer lacks readable private cgroup accounting")
+    memory_events = (resource_stats or {}).get("memory_events", {})
+    if memory_events.get("oom", 0) or memory_events.get("oom_kill", 0):
+        _preserve_process_logs(output, stdout_log, stderr_log)
+        raise IsolationError("isolated Codex writer exceeded its private memory cgroup")
     if profile.capture_stdout:
         if list(output.iterdir()):
             raise IsolationError(f"{profile.name} profile wrote undeclared output while stdout capture was active")
-        mem.atomic_write(output / writer["expected_output_name"], proc.stdout or b"", 0o600)
+        os.replace(stdout_log, output / writer["expected_output_name"])
+        (output / writer["expected_output_name"]).chmod(0o600)
+    elif stdout_log.exists():
+        stdout_log.unlink()
+    if stderr_log.exists():
+        stderr_log.unlink()
     produced = list(output.iterdir())
     expected_name = writer["expected_output_name"]
     if len(produced) != 1 or produced[0].name != expected_name:
@@ -1370,6 +1574,10 @@ def run_task(
     generated = produced[0]
     if generated.is_symlink() or not generated.is_file():
         raise IsolationError("isolated output must be one regular file, not a link or directory")
+    if generated.stat().st_size > CODEX_WRITER_OUTPUT_MAX_BYTES:
+        raise IsolationError(
+            f"isolated output exceeds {CODEX_WRITER_OUTPUT_MAX_BYTES} bytes"
+        )
     data = generated.read_bytes()
     raw_output_sha256 = None
     if isinstance(profile_name, str):
@@ -1396,6 +1604,8 @@ def run_task(
         "runtime_profile": profile.name,
         "runtime_version": profile.version,
         "runtime_executable_sha256": profile.executable_sha256,
+        "runtime_resource_cgroup": resource_stats,
+        "runtime_termination_scope": "exact-child-pid",
         "completed_at": dt.datetime.now(dt.timezone.utc).isoformat(),
     }
     attestation_path = transaction / "attestations" / f"{task_id}.json"

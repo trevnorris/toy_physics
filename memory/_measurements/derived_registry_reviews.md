@@ -1,6 +1,9 @@
 # Derived Registry Review Record
 
 Date: 2026-08-24
+Superseded for current corpus selection: 2026-09-01 by
+[`pde_ledger_exclusion_validation.md`](pde_ledger_exclusion_validation.md).
+The historical review below remains as recorded.
 Artifact: `output_budgets`, `derived_pages`, mixed-page bases, and Atlas routes
 Method: two independent read-only review legs, followed by one fold
 

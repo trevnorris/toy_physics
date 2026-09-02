@@ -4,6 +4,7 @@ import dataclasses
 import json
 import os
 from pathlib import Path
+import signal
 import shutil
 import subprocess
 import tempfile
@@ -277,6 +278,105 @@ class MemoryToolTests(unittest.TestCase):
         entries = mem.enumerate_tree(self.root, first["target_commit"], ["research", "software"])
         self.assertEqual(mem.resolve_units(config, entries)["selected"].members[0]["path"], "research/bundle/A-root.md")
 
+    def test_hard_excluded_roots_reject_unit_members_and_selectors(self) -> None:
+        repo = MemoryRepo(self.root)
+        invalid_member = repo.config([
+            MemoryRepo.unit("ledger", "research/pde_ledger/step.md"),
+        ])
+        with self.assertRaisesRegex(mem.ConfigError, "hard-excluded source root"):
+            mem.validate_config(invalid_member)
+
+        invalid_selector = repo.config([{
+            "id": "ledger",
+            "kind": "paper",
+            "capsule": "memory/sources/ledger.md",
+            "lifecycle": "current",
+            "selectors": [{
+                "prefix": "research/pde_ledger_v3",
+                "recursive": True,
+                "role": "paper_member",
+                "read_mode": "semantic",
+                "ownership": "primary",
+                "required": True,
+            }],
+        }])
+        with self.assertRaisesRegex(mem.ConfigError, "hard-excluded source root"):
+            mem.validate_config(invalid_selector)
+
+    def test_hard_excluded_roots_reject_direct_sources_and_supporting_lineages(self) -> None:
+        repo = MemoryRepo(self.root)
+        invalid_direct = repo.config([
+            MemoryRepo.unit("paper", "research/a.md"),
+        ])
+        invalid_direct["output_budgets"] = {"topic": {"max_words": 100, "max_key_statements": 2}}
+        invalid_direct["derived_pages"] = [{
+            "id": "topic-one",
+            "task_kind": "topic",
+            "page": "memory/topics/one.md",
+            "region": "working-position",
+            "order": 20,
+            "input_units": ["paper"],
+            "input_pages": [],
+            "direct_sources": [{
+                "path": "research/pde_ledger_v2/claim.md",
+                "read_mode": "semantic",
+            }],
+            "budget": "topic",
+        }]
+        with self.assertRaisesRegex(mem.ConfigError, "hard-excluded source root"):
+            mem.validate_config(invalid_direct)
+
+        invalid_lineage = repo.config([])
+        invalid_lineage["supporting_lineages"] = [{
+            "id": "legacy",
+            "root": "research/pde_ledger",
+            "selection": "on_demand",
+        }]
+        with self.assertRaisesRegex(mem.ConfigError, "hard-excluded source root"):
+            mem.validate_config(invalid_lineage)
+
+    def test_hard_excluded_roots_reject_migration_original_sources(self) -> None:
+        repo = MemoryRepo(self.root)
+        repo.write(
+            "memory/_meta/atlas-migration.yaml",
+            "schema_version: 1\nitems:\n"
+            "  - id: forbidden\n"
+            "    disposition: migrate\n"
+            "    target: memory/topics/one.md\n"
+            "    original_sources:\n"
+            "      - research/pde_ledger_v3/CHARTER.md#scope\n",
+        )
+        with self.assertRaisesRegex(mem.ConfigError, "hard-excluded source"):
+            mem.migration_requirements(self.root)
+
+    def test_hard_excluded_roots_filter_broad_selectors_and_are_segment_safe(self) -> None:
+        broad = {
+            "id": "selected",
+            "kind": "paper",
+            "capsule": "memory/sources/selected.md",
+            "lifecycle": "current",
+            "selectors": [{
+                "prefix": "research",
+                "recursive": True,
+                "suffixes": [".md"],
+                "role": "paper_member",
+                "read_mode": "semantic",
+                "ownership": "primary",
+                "required": True,
+            }],
+        }
+        repo = MemoryRepo(self.root, [broad])
+        repo.write("research/ordinary.md", "## Claim\nordinary\n")
+        repo.write("research/pde_ledger/hidden.md", "## Claim\nhidden\n")
+        repo.write("research/pde_ledger_v2/hidden.md", "## Claim\nhidden\n")
+        repo.write("research/pde_ledger_v3/hidden.md", "## Claim\nhidden\n")
+        repo.write("research/pde_ledger_v30/allowed.md", "## Claim\nallowed\n")
+        commit = repo.commit()
+        config, _ = mem.load_config(self.root)
+        entries = mem.enumerate_tree(self.root, commit, ["research", "software"])
+        paths = [member["path"] for member in mem.resolve_units(config, entries)["selected"].members]
+        self.assertEqual(paths, ["research/ordinary.md", "research/pde_ledger_v30/allowed.md"])
+
     def test_mode_identity_and_identity_only_symlink(self) -> None:
         units = [
             MemoryRepo.unit("script", "research/run.sh"),
@@ -361,6 +461,7 @@ class MemoryToolTests(unittest.TestCase):
         for name in ("codex",):
             profile = run_isolated.runtime_profile(name)
             self.assertTrue(profile.version)
+            self.assertTrue(profile.enforce_resource_limits)
             self.assertRegex(profile.executable_sha256, r"^[0-9a-f]{64}$")
             command = run_isolated.bubblewrap_command(self.root, packet, output, profile)
             self.assertIn("--clearenv", command)
@@ -388,29 +489,169 @@ class MemoryToolTests(unittest.TestCase):
             ])
         self.assertIn("writer task ID", run_isolated.build_parser().format_help())
 
+    def test_owned_process_termination_targets_only_popen_child(self) -> None:
+        proc = mock.Mock()
+        proc.poll.side_effect = [None, None]
+        proc.wait.side_effect = [
+            subprocess.TimeoutExpired(["owned-child"], run_isolated.OWNED_PROCESS_TERM_GRACE_SECONDS),
+            0,
+        ]
+
+        run_isolated._terminate_owned_process(proc)
+
+        proc.terminate.assert_called_once_with()
+        proc.kill.assert_called_once_with()
+        self.assertEqual(proc.wait.call_count, 2)
+
+    def test_owned_cgroup_configuration_and_stats_are_private(self) -> None:
+        parent = self.root / "delegated.slice"
+        current = parent / "terminal.scope"
+        current.mkdir(parents=True)
+        (parent / "cgroup.subtree_control").write_text("memory pids\n", encoding="ascii")
+        with (
+            mock.patch.object(run_isolated, "_current_cgroup_path", return_value=current),
+            mock.patch.object(run_isolated.uuid, "uuid4") as uuid_mock,
+        ):
+            uuid_mock.return_value.hex = "1234567890abcdef"
+            owned = run_isolated._create_owned_cgroup()
+
+        self.assertEqual(owned.parent, parent)
+        self.assertIn("codex-memory-writer-", owned.name)
+        self.assertEqual(
+            (owned / "memory.max").read_text(encoding="ascii"),
+            str(run_isolated.CODEX_WRITER_MEMORY_MAX_BYTES),
+        )
+        self.assertEqual(
+            (owned / "memory.swap.max").read_text(encoding="ascii"),
+            str(run_isolated.CODEX_WRITER_SWAP_MAX_BYTES),
+        )
+        self.assertEqual(
+            (owned / "pids.max").read_text(encoding="ascii"),
+            str(run_isolated.CODEX_WRITER_PIDS_MAX),
+        )
+        (owned / "memory.peak").write_text("4096\n", encoding="ascii")
+        (owned / "memory.events").write_text("oom 0\noom_kill 0\n", encoding="ascii")
+        stats = run_isolated._owned_cgroup_stats(owned)
+        self.assertEqual(stats["memory_peak"], 4096)
+        self.assertEqual(stats["memory_events"], {"oom": 0, "oom_kill": 0})
+
+    def test_owned_process_is_stopped_before_exact_cgroup_attachment(self) -> None:
+        profile = run_isolated._test_profile(("/bin/true",))
+        profile = dataclasses.replace(profile, enforce_resource_limits=True)
+        proc = mock.Mock(pid=424242)
+        owned = self.root / "owned-cgroup"
+        with (
+            mock.patch.object(run_isolated, "_create_owned_cgroup", return_value=owned),
+            mock.patch.object(run_isolated, "_attach_stopped_pid") as attach_mock,
+            mock.patch.object(run_isolated.subprocess, "Popen", return_value=proc) as popen_mock,
+        ):
+            actual_proc, actual_owned = run_isolated._spawn_owned_process(
+                ["/runtime/codex", "exec"], profile, subprocess.DEVNULL, subprocess.DEVNULL,
+                use_cgroup=True,
+            )
+
+        self.assertIs(actual_proc, proc)
+        self.assertEqual(actual_owned, owned)
+        attach_mock.assert_called_once_with(owned, 424242)
+        launch = popen_mock.call_args.args[0]
+        self.assertEqual(
+            launch[:3],
+            ["/bin/sh", "-c", 'ulimit -f "$1" || exit 125; shift; kill -STOP "$$"; exec "$@"'],
+        )
+        self.assertEqual(launch[4], str(run_isolated.CODEX_WRITER_FILE_MAX_BYTES // 512))
+        self.assertEqual(launch[-2:], ["/runtime/codex", "exec"])
+
+    def test_unexpected_writer_interruption_terminates_exact_child(self) -> None:
+        repo = MemoryRepo(self.root, [MemoryRepo.unit("paper", "research/a.md")])
+        repo.write("research/a.md", "## Claim\nA\n")
+        repo.commit()
+        transaction = repo.prepare()
+        proc = mock.Mock()
+        proc.communicate.side_effect = KeyboardInterrupt()
+        with (
+            mock.patch.object(run_isolated, "_spawn_owned_process", return_value=(proc, None)),
+            mock.patch.object(run_isolated, "_terminate_owned_process") as terminate_mock,
+        ):
+            with self.assertRaises(KeyboardInterrupt):
+                run_isolated.run_task(
+                    self.root, str(transaction), "paper", ["/bin/true"],
+                )
+
+        terminate_mock.assert_called_once_with(proc)
+        self.assertFalse((transaction / "staged/memory/sources/paper.md").exists())
+        self.assertFalse((transaction / "attestations/paper.json").exists())
+
+    def test_cgroup_attachment_interruption_terminates_exact_child(self) -> None:
+        profile = dataclasses.replace(
+            run_isolated._test_profile(("/bin/true",)), enforce_resource_limits=True,
+        )
+        proc = mock.Mock(pid=424242)
+        proc.poll.return_value = None
+        owned = self.root / "interrupted-cgroup"
+        with (
+            mock.patch.object(run_isolated, "_create_owned_cgroup", return_value=owned),
+            mock.patch.object(run_isolated, "_attach_stopped_pid", side_effect=KeyboardInterrupt()),
+            mock.patch.object(run_isolated.os, "kill") as kill_mock,
+            mock.patch.object(run_isolated, "_terminate_owned_process") as terminate_mock,
+            mock.patch.object(run_isolated.subprocess, "Popen", return_value=proc),
+        ):
+            with self.assertRaises(KeyboardInterrupt):
+                run_isolated._spawn_owned_process(
+                    ["/runtime/codex"], profile, subprocess.DEVNULL, subprocess.DEVNULL,
+                    use_cgroup=True,
+                )
+
+        kill_mock.assert_called_once_with(424242, signal.SIGCONT)
+        terminate_mock.assert_called_once_with(proc)
+
+    def test_writer_output_size_limit_prevents_unbounded_parent_read(self) -> None:
+        repo = MemoryRepo(self.root, [MemoryRepo.unit("paper", "research/a.md")])
+        repo.write("research/a.md", "## Claim\nA\n")
+        repo.commit()
+        transaction = repo.prepare()
+        with mock.patch.object(run_isolated, "CODEX_WRITER_OUTPUT_MAX_BYTES", 5):
+            with self.assertRaisesRegex(run_isolated.IsolationError, "exceeds 5 bytes"):
+                run_isolated.run_task(
+                    self.root, str(transaction), "paper",
+                    ["/bin/sh", "-c", "printf 123456 > /output/page.md"],
+                )
+
+        self.assertFalse((transaction / "staged/memory/sources/paper.md").exists())
+        self.assertFalse((transaction / "attestations/paper.json").exists())
+
+    def test_failed_writer_logs_retain_only_bounded_tails(self) -> None:
+        output = self.root / "output"
+        output.mkdir()
+        stdout_log = self.root / "stdout.bin"
+        stderr_log = self.root / "stderr.bin"
+        stdout_log.write_bytes(b"0123456789")
+        stderr_log.write_bytes(b"abcdefghij")
+        with mock.patch.object(run_isolated, "FAILED_LOG_MAX_BYTES", 4):
+            run_isolated._preserve_process_logs(output, stdout_log, stderr_log)
+
+        self.assertEqual((output / "failed-stdout.bin").read_bytes(), b"6789")
+        self.assertEqual((output / "failed-stderr.bin").read_bytes(), b"ghij")
+        self.assertFalse(stdout_log.exists())
+        self.assertFalse(stderr_log.exists())
+
     def test_codex_writer_timeout_preserves_diagnostics_without_import(self) -> None:
         repo = MemoryRepo(self.root, [MemoryRepo.unit("paper", "research/a.md")])
         repo.write("research/a.md", "## Claim\nA\n")
         repo.commit()
         transaction = repo.prepare()
-        expired = subprocess.TimeoutExpired(
-            ["fake-codex"], run_isolated.CODEX_WRITER_TIMEOUT_SECONDS,
-            output=b"partial writer stdout", stderr="writer stalled",
+        script = (
+            "printf 'partial writer stdout'; "
+            "printf 'writer stalled' >&2; "
+            "sleep 10"
         )
-        with (
-            mock.patch.object(run_isolated, "bubblewrap_command", return_value=["fake-codex"]),
-            mock.patch.object(run_isolated.subprocess, "run", side_effect=expired) as run_mock,
-        ):
+        with mock.patch.object(run_isolated, "CODEX_WRITER_TIMEOUT_SECONDS", 0.2):
             with self.assertRaisesRegex(
-                run_isolated.IsolationError, r"timed out after 1200 seconds: writer stalled",
+                run_isolated.IsolationError, r"timed out after 0.2 seconds: writer stalled",
             ):
                 run_isolated.run_task(
-                    self.root, str(transaction), "paper", ["/bin/true"],
+                    self.root, str(transaction), "paper", ["/bin/sh", "-c", script],
                 )
 
-        self.assertEqual(
-            run_mock.call_args.kwargs["timeout"], run_isolated.CODEX_WRITER_TIMEOUT_SECONDS,
-        )
         output = transaction / "tasks/paper/output"
         self.assertEqual((output / "failed-stdout.bin").read_bytes(), b"partial writer stdout")
         self.assertEqual((output / "failed-stderr.bin").read_bytes(), b"writer stalled")
@@ -468,6 +709,7 @@ class MemoryToolTests(unittest.TestCase):
             mem.sha256_file(prior / "reviews/paper/output/report.md"),
         )
         self.assertIn("editorial_focus", run_isolated.REVISION_PROMPT)
+        self.assertIn("every failed-review finding", run_isolated.REVISION_PROMPT)
         self.assertIn("Current sealed sources and prerequisite pages", run_isolated.REVISION_PROMPT)
         self.assertEqual(attestation["runtime_profile"], "codex")
         revised_front, _ = mem.parse_frontmatter(

@@ -13,6 +13,9 @@ policy:
   excluded_as_semantic_sources:
     - notes
     - docs
+    - research/pde_ledger
+    - research/pde_ledger_v2
+    - research/pde_ledger_v3
   dispositions:
     migrate: Preserve the useful knowledge in the proposed memory target after re-reading original sources.
     covered_by_source: Do not copy the Atlas representation; the selected source capsule or topic synthesis will recover it.
@@ -20,6 +23,7 @@ policy:
     obsolete: Do not migrate; it is Atlas maintenance state, excluded notes-only material, or a stale status snapshot.
   status_rule: Never copy an Atlas status as current; resolve it from the cited research/software lineage.
   unanchored_rule: Items with reanchor_complete false cannot enter semantic memory until an eligible source is found.
+  excluded_source_rule: A record whose only eligible reanchor is under an excluded source root is obsolete, not covered_by_source.
 
 legacy_snapshot:
   graph_primary:
@@ -33,11 +37,7 @@ legacy_snapshot:
     topics: 12
     last_commit: 0ca49cd73f64452d45a8b3b47780fd5f7d1aa103
   newer_lineage_warning:
-    reason: The Atlas predates the requirements-first v3 lineage and cannot determine current status.
-    examples:
-      - research/pde_ledger_v3/CHARTER.md
-      - research/pde_ledger_v3/DEFECT_REGISTER.md
-      - research/pde_ledger_v3/V3_STEP_PLAN.md
+    reason: The Atlas predates current selected papers, PDE-audit records, and software verdicts and cannot determine current status.
 
 categories:
   - id: maintained_graph_yaml
@@ -154,7 +154,6 @@ status_firewalls:
       - research/4d/paper/4d.tex#eq:circulation-fluxoid
       - research/4d_em_fields/paper/4d_em_fields.tex
       - research/pde_audit/notes/stage_v2_30_electromagnetic_ontology_and_status.md#3-circulation-and-magnetism
-      - research/pde_ledger_v3/CHARTER.md#1-scope-gravity-light-gravitomagnetism-charge-magnetism
     reanchor_complete: true
 
   - id: FIREWALL_QEFF_THICKNESS_NOT_BREATHING
@@ -165,7 +164,6 @@ status_firewalls:
     original_sources:
       - research/4d_em_fields/paper/4d_em_fields.tex#sec:canonical_charge
       - research/4d/paper/4d.tex#sec:emreduction
-      - research/pde_ledger_v3/DEFECT_REGISTER.md#C5
     reanchor_complete: true
 
   - id: FIREWALL_KAPPARHO_NOT_CHARGE
@@ -187,7 +185,6 @@ status_firewalls:
     original_sources:
       - research/4d_em_fields/paper/4d_em_fields.tex
       - research/4d_plasma/paper/4d_plasma.tex#eq:app_Ew_def
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
     reanchor_complete: true
 
   - id: FIREWALL_PROJECTION_NOT_REDUCTION
@@ -208,7 +205,6 @@ status_firewalls:
     reason: Preserves the distinction between a confinement argument, an effective wall law, and a closed parent action.
     original_sources:
       - research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md#executive-result
-      - research/pde_ledger_v3/DEFECT_REGISTER.md#C6
       - software/stage1_solver/derivations/pathA_01_return_source_and_balance.md
     reanchor_complete: true
 
@@ -220,7 +216,6 @@ status_firewalls:
     original_sources:
       - research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md
       - research/pde_audit/notes/stage_v2_16_branch_freeze_no_refit_derivation.md
-      - research/pde_ledger_v3/CHARTER.md#1-3-what-would-count-as-failure
     reanchor_complete: true
 
   - id: FIREWALL_4PN_LOCAL_NOT_FULL_TAIL
@@ -232,7 +227,6 @@ status_firewalls:
       - research/4d_4pn/paper/4d_4pn.tex#sec:tail-bridge
       - research/4d_4pn/paper/4d_4pn.tex#sec:final-conditional-4pn-theorem
       - research/4d_2_5pn/paper/4d_2_5pn.tex#sec:conditional-theorem-gap-normalization
-      - research/pde_ledger_v3/CHARTER.md#3-what-carries-forward-from-v2-and-what-does-not
     reanchor_complete: true
 
   - id: FIREWALL_25PN_CONDITIONAL
@@ -243,19 +237,16 @@ status_firewalls:
     original_sources:
       - research/4d_2_5pn/paper/4d_2_5pn.tex#sec:intro-claims
       - research/4d_2_5pn/paper/4d_2_5pn.tex#sec:conditional-theorem-gap-normalization
-      - research/pde_ledger_v2/notes/stage028_pathA43_2_5pn_matchback_source_map.md
-      - research/pde_ledger_v3/CHARTER.md#3-what-carries-forward-from-v2-and-what-does-not
     reanchor_complete: true
 
   - id: FIREWALL_ANGULAR_NOT_RADIAL
     legacy_status: active_v07
     disposition: migrate
     target: memory/topics/quadrupole-normalization.md
-    reason: Durable scope distinction that is repeated in the maintained PDE ledger dependency map.
+    reason: Durable scope distinction supported by the PDE audit and 2.5PN paper.
     original_sources:
       - research/pde_audit/notes/stage_v2_12_stf_angular_source_map_derivation.md
       - research/4d_2_5pn/paper/4d_2_5pn.tex#sec:quadrupole-surviving-source-map
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
     reanchor_complete: true
 
   - id: FIREWALL_READOUTS_NOT_THROAT
@@ -281,13 +272,10 @@ status_firewalls:
   - id: FIREWALL_LEPTON_CONDITIONAL
     legacy_status: active_v07
     disposition: obsolete
-    reason: The supporting notes are excluded and the later v3 charter explicitly warns that the earlier lepton tower was falsified; do not preserve the Atlas formulation.
+    reason: The supporting material is excluded root-note work with no eligible source; do not preserve the Atlas formulation.
     legacy_sources:
       - notes/lepton_work.md
       - notes/lepton_mass_notes.md
-    current_context_sources:
-      - research/pde_ledger_v3/CHARTER.md
-      - research/pde_ledger_v3/DEFECT_REGISTER.md#D1
     original_sources: []
     reanchor_complete: false
 
@@ -298,7 +286,6 @@ status_firewalls:
     reason: Durable separation between a quotient/orbit result and independent conservative gates.
     original_sources:
       - research/pde_audit/notes/stage_v2_18_monomial_quotient_similarity_orbit_derivation.md
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
     reanchor_complete: true
 
   - id: FIREWALL_G2_COMMON_CONDITIONAL
@@ -327,7 +314,6 @@ status_firewalls:
     reason: Unique physical-ontology firewall not included in the 16-rule status register.
     original_sources:
       - research/pde_audit/notes/stage_v2_28_physical_picture_and_ontology.md#3-mouth-versus-interior
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
     reanchor_complete: true
 
 open_gates:
@@ -341,13 +327,12 @@ open_gates:
     legacy_status: open
     disposition: migrate
     target: memory/topics/branch-response-and-export.md
-    reason: High-value executable research question and provenance requirement; status must be re-evaluated against later solver and v3 sources.
+    reason: High-value executable research question and provenance requirement; status must be re-evaluated against the PDE audit and later solver verdict.
     original_sources:
       - research/pde_audit/notes/stage_v2_25_actual_branch_protocol_derivation.md#7-next-calculation
       - research/pde_audit/notes/stage_v2_26_program_status_after_audit.md#current-status-statement
       - research/pde_audit/simulation/ACTUAL_BRANCH_PROTOCOL_V1.md
       - software/stage1_solver/STAGE1_VERDICT.md
-      - research/pde_ledger_v3/CHARTER.md#1-2-the-deliverable-has-two-halves
     reanchor_complete: true
 
   - id: OPEN_EXECUTABLE_BRANCH_SOLVER
@@ -365,7 +350,7 @@ open_gates:
   - id: OPEN_LEPTON_SPIN_DISCRETIZER
     legacy_status: conditional_open
     disposition: obsolete
-    reason: Notes-only future-work item; later v3 sources record a materially changed/falsified lepton lineage.
+    reason: Notes-only future-work item with no eligible source in the selected corpus.
     legacy_sources:
       - notes/lepton_work.md
       - notes/lepton_mass_notes.md
@@ -379,8 +364,6 @@ open_gates:
     reason: Explicit tracked gap and part of the newer broad nonlinear handoff.
     original_sources:
       - research/pde_audit/notes/stage_v2_29_superfluid_material_closure_gap.md
-      - research/pde_ledger_v3/CHARTER.md#1-2-the-deliverable-has-two-halves
-      - research/pde_ledger_v3/DEFECT_REGISTER.md
     reanchor_complete: true
 
   - id: OPEN_MIXED_RECIRCULATION
@@ -390,7 +373,6 @@ open_gates:
     reason: Preserve as a legacy gap to reconcile with the current charge/magnetism lineage; do not copy the old plumbing model as current.
     original_sources:
       - research/pde_audit/notes/stage_v2_30_electromagnetic_ontology_and_status.md#4-what-is-reduced-versus-still-open
-      - research/pde_ledger_v3/CHARTER.md#1-scope-gravity-light-gravitomagnetism-charge-magnetism
       - software/em_charge_attribute/reports/emergent_em_construction.md
       - software/em_charge_attribute/magnetism_moving_throat_result.md
     reanchor_complete: true
@@ -399,23 +381,20 @@ open_gates:
     legacy_status: open
     disposition: covered_by_source
     target: memory/topics/branch-response-and-export.md
-    reason: The question is fully stated in the actual-branch protocol and later PDE ledger; synthesize from those sources rather than copy the node.
+    reason: The question is fully stated in the actual-branch protocol; synthesize from that eligible source rather than copy the node.
     original_sources:
       - research/pde_audit/notes/stage_v2_25_actual_branch_protocol_derivation.md#3-outgoing-prefactor-and-moment-shape-conditions
       - research/pde_audit/simulation/ACTUAL_BRANCH_PROTOCOL_V1.md#target-quantities
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
     reanchor_complete: true
 
   - id: OPEN_NONLINEAR_S_SIGMA
     legacy_status: open_patch_required
     disposition: migrate
     target: memory/topics/material-closure-and-nonlinear-handoff.md
-    reason: Unique parent-action/nonlinear-handoff question retained by the current v3 defect register.
+    reason: Unique parent-action/nonlinear-handoff question retained by the PDE audit and Stage-1 derivation.
     original_sources:
       - research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md
       - software/stage1_solver/derivations/pathA_01_return_source_and_balance.md
-      - research/pde_ledger_v3/DEFECT_REGISTER.md#C6
-      - research/pde_ledger_v3/CHARTER.md#1-2-the-deliverable-has-two-halves
     reanchor_complete: true
 
   - id: OPEN_PARENT_PROMOTION_S_SIGMA
@@ -428,34 +407,29 @@ open_gates:
     legacy_status: open_actual_branch_data
     disposition: covered_by_source
     target: memory/topics/quadrupole-normalization.md
-    reason: Historically important, but its May 2026 status cannot be copied past the later v2/v3 lineage; source pages must show the status history.
+    reason: Historically important, but its May 2026 status cannot be copied over the later PN papers; source pages must show the status history.
     original_sources:
       - research/4d_2_5pn/paper/4d_2_5pn.tex#sec:conditional-theorem-gap-normalization
       - research/4d_4pn/paper/4d_4pn.tex#sec:tail-bridge
-      - research/pde_ledger_v2/notes/stage028_pathA43_2_5pn_matchback_source_map.md
-      - research/pde_ledger_v3/CHARTER.md#3-what-carries-forward-from-v2-and-what-does-not
     reanchor_complete: true
 
   - id: OPEN_SOURCE_PORT_NORMALIZATION
     legacy_status: open
     disposition: covered_by_source
     target: memory/topics/quadrupole-normalization.md
-    reason: Later tracked ledgers contain the detailed normalization and provenance chain.
+    reason: The PDE-audit status record carries the eligible normalization and provenance chain.
     original_sources:
       - research/pde_audit/notes/stage_v2_26_program_status_after_audit.md#8-remaining-derivation-program
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
-      - research/pde_ledger_v2/notes/stage028_pathA43_2_5pn_matchback_source_map.md
     reanchor_complete: true
 
   - id: OPEN_WEAK_AXISYM_ORBIT_LOCK
     legacy_status: open
     disposition: covered_by_source
     target: memory/topics/weak-axisymmetric-and-orbit-closure.md
-    reason: The current PDE ledger has a substantially richer orbit-lock lineage; regenerate the topic from it.
+    reason: The PDE-audit records carry the eligible orbit-lock lineage; regenerate the topic from them.
     original_sources:
       - research/pde_audit/notes/stage_v2_17_weak_axisymmetric_splitting_derivation.md
       - research/pde_audit/notes/stage_v2_25_actual_branch_protocol_derivation.md#packet-b
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
     reanchor_complete: true
 
   - id: TARGET_PACKET_A
@@ -480,10 +454,9 @@ open_gates:
     legacy_status: open_actual_branch_data
     disposition: covered_by_source
     target: memory/topics/weak-axisymmetric-and-orbit-closure.md
-    reason: The maintained PDE ledger now carries this distinction and its later branch-placement context.
+    reason: The PDE-audit orbit derivation carries the eligible distinction and branch-placement context.
     original_sources:
       - research/pde_audit/notes/stage_v2_18_monomial_quotient_similarity_orbit_derivation.md
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
     reanchor_complete: true
 
   - id: OPEN_G2_COMMON_LAYER
@@ -503,7 +476,6 @@ reader_topics:
     original_sources:
       - research/4d/paper/4d.tex
       - research/brane_bulk_ontology/paper/brane_bulk_ontology.tex
-      - research/pde_ledger_v3/CHARTER.md
 
   - id: projection-open-brane
     disposition: migrate
@@ -520,7 +492,6 @@ reader_topics:
     original_sources:
       - research/4d_em_fields/paper/4d_em_fields.tex
       - research/4d_plasma/paper/4d_plasma.tex
-      - research/pde_ledger_v3/CHARTER.md
       - software/em_charge_attribute/reports/emergent_em_construction.md
       - software/em_charge_attribute/puncture_deflection_electric_sign_result.md
       - software/em_charge_attribute/magnetism_moving_throat_result.md
@@ -543,8 +514,6 @@ reader_topics:
     original_sources:
       - research/4d_2_5pn/paper/4d_2_5pn.tex
       - research/4d_4pn/paper/4d_4pn.tex
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
-      - research/pde_ledger_v2/notes/stage028_pathA43_2_5pn_matchback_source_map.md
 
   - id: moving-throat-pde
     disposition: migrate
@@ -555,10 +524,6 @@ reader_topics:
       - research/pde_audit/notes/stage_v2_25_actual_branch_protocol_derivation.md
       - research/pde_audit/notes/stage_v2_26_program_status_after_audit.md
       - research/pde_audit/notes/stage_v2_28_physical_picture_and_ontology.md
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
-      - research/pde_ledger_v2/notes/stage028_pathA43_2_5pn_matchback_source_map.md
-      - research/pde_ledger_v3/CHARTER.md
-      - research/pde_ledger_v3/DEFECT_REGISTER.md
       - software/stage1_solver/README.md
       - software/stage1_solver/STAGE1_VERDICT.md
 
@@ -573,16 +538,14 @@ reader_topics:
       - software/stage1_solver/STAGE1_VERDICT.md
 
   - id: five-pn-continuation
-    disposition: covered_by_source
-    target: memory/topics/weak-axisymmetric-and-orbit-closure.md
-    reason: The old notes-backed page is superseded as a representation by the maintained PDE ledger paper and current lineages.
-    original_sources:
-      - research/pde_ledger/paper
-      - research/pde_ledger_v3
+    disposition: obsolete
+    reason: No eligible selected source reanchors this full notes-backed topic; supported subclaims are inventoried separately through PDE-audit records.
+    original_sources: []
+    reanchor_complete: false
 
   - id: lepton-atom-sectors
     disposition: obsolete
-    reason: Built from excluded future-work notes; the later v3 record also warns that the lepton lineage materially changed.
+    reason: Built from excluded future-work notes with no eligible source for the exact lineage.
     original_sources: []
     reanchor_complete: false
 
@@ -601,9 +564,6 @@ reader_topics:
       - research/pde_audit/CLAIM_CHECK_MATRIX.md
       - research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md
       - research/pde_audit/notes/stage_v2_30_electromagnetic_ontology_and_status.md
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
-      - research/pde_ledger_v3/CHARTER.md
-      - research/pde_ledger_v3/DEFECT_REGISTER.md
 
   - id: future-paper-worklist
     disposition: obsolete
@@ -625,9 +585,8 @@ source_crosswalks_and_anchors:
 
   - id: pde_ledger_stage_component_map
     source_range: research/pde_ledger/paper/stages/stage_001.tex through stage_025.tex
-    disposition: covered_by_source
-    target: memory/sources/pde-ledger.md
-    reason: The componentized paper and its own dependency map now provide the canonical structure.
+    disposition: obsolete
+    reason: The component map belongs solely to an excluded PDE-ledger root and has no memory target.
 
   - id: notes_only_section_anchors
     node_ids:
@@ -707,8 +666,9 @@ claim_theorem_summaries:
       - CLAIM_STAGE023_FULL_BUNDLE_RATIO
       - CLAIM_STAGE025_031_SELECTED_BRANCH
     disposition: covered_by_source
-    target: memory/sources/pde-ledger.md and related memory/topics pages
-    reason: Later tracked PDE audit/ledger sources contain the detailed claims and status lineage.
+    selection: only members with an explicit reanchor under research/pde_audit; unmatched ledger-only members are obsolete
+    target: memory/sources/pde-audit.md and related memory/topics pages
+    reason: Eligible PDE-audit sources contain the retained claims and status lineage; excluded-root-only claims do not migrate.
 
   - id: fluxoid_identity_claim
     node_ids:
@@ -745,11 +705,11 @@ ontology_equation_and_derivation_summaries:
     target: memory/sources and concept syntheses
     reason: Equations and derivations belong in source capsules or topic pages, not atomic graph nodes.
 
-  - id: pde_audit_and_ledger_equations_math_and_derivations
-    selection: nodes re-anchorable to research/pde_audit, research/pde_ledger, research/pde_ledger_v2, or research/pde_ledger_v3
+  - id: pde_audit_equations_math_and_derivations
+    selection: nodes re-anchorable to research/pde_audit
     disposition: covered_by_source
-    target: memory/sources/pde-audit.md, memory/sources/pde-ledger.md, and related topics
-    reason: Current tracked lineages carry fuller derivations, measurement records, and status context.
+    target: memory/sources/pde-audit.md and related topics
+    reason: The selected PDE-audit lineage carries the eligible derivations, measurement records, and status context.
 
   - id: response_readout_ontology
     node_ids:
@@ -810,9 +770,6 @@ query_validations:
       - research/pde_audit/CLAIM_CHECK_MATRIX.md
       - research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md
       - research/pde_audit/notes/stage_v2_29_superfluid_material_closure_gap.md
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
-      - research/pde_ledger_v3/CHARTER.md
-      - research/pde_ledger_v3/DEFECT_REGISTER.md
     node_ids:
       - QUERY_4PN_TAIL_BLOCKER
       - QUERY_G2_XI1
@@ -840,9 +797,6 @@ query_validations:
       - research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md
       - research/pde_audit/notes/stage_v2_12_stf_angular_source_map_derivation.md
       - research/pde_audit/notes/stage_v2_30_electromagnetic_ontology_and_status.md
-      - research/pde_ledger/paper/frontmatter/05_dependency_map.tex
-      - research/pde_ledger_v3/CHARTER.md
-      - research/pde_ledger_v3/DEFECT_REGISTER.md
     node_ids:
       - NEG_QUERY_CHARGE_FROM_CIRCULATION
       - NEG_QUERY_QEFF_FROM_THROAT_GEOMETRY

@@ -51,6 +51,11 @@ PAGE_TYPES = {"source_capsule", "topic", "script_catalog", "conflict_register", 
 OWNERS = {"ai_generated", "human_curated", "mixed"}
 EVIDENCE = {"measured", "derived", "provisional", "open", "disputed"}
 READ_MODES = {"semantic", "identity_only", "excerpt"}
+HARD_EXCLUDED_SOURCE_PREFIXES = (
+    "research/pde_ledger",
+    "research/pde_ledger_v2",
+    "research/pde_ledger_v3",
+)
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 STATUS_RE = re.compile(
     r"Status:\s*`lifecycle=([^`]+)`\s*·\s*`evidence=([^`]+)`\s*·\s*`memory_review=([^`]+)`"
@@ -255,6 +260,10 @@ def segment_prefix(path: str, prefix: str) -> bool:
     return path == prefix or path.startswith(prefix + "/")
 
 
+def _hard_excluded_source(path: str) -> bool:
+    return any(segment_prefix(path, prefix) for prefix in HARD_EXCLUDED_SOURCE_PREFIXES)
+
+
 @dataclasses.dataclass
 class ResolvedUnit:
     unit: dict[str, Any]
@@ -269,6 +278,8 @@ class ResolvedUnit:
 
 
 def _excluded_by_defaults(path: str, config: Mapping[str, Any]) -> bool:
+    if _hard_excluded_source(path):
+        return True
     rules = config.get("semantic_excludes") or {}
     if any(segment_prefix(path, str(p).rstrip("/")) for p in rules.get("prefixes", [])):
         return True
@@ -371,6 +382,8 @@ def validate_config(raw: Any) -> dict[str, Any]:
                 if field not in member:
                     raise ConfigError(f"{mlabel} is missing {field}")
             path = clean_repo_path(member["path"], f"{mlabel}.path")
+            if _hard_excluded_source(path):
+                raise ConfigError(f"{mlabel}.path is in a hard-excluded source root: {path}")
             if path in seen_exact:
                 raise ConfigError(f"duplicate exact member in {unit_id}: {path}")
             seen_exact.add(path)
@@ -394,6 +407,10 @@ def validate_config(raw: Any) -> dict[str, Any]:
                 if field not in selector:
                     raise ConfigError(f"{slabel} is missing {field}")
             clean_repo_path(selector["prefix"] + "/x", f"{slabel}.prefix")
+            if _hard_excluded_source(selector["prefix"]):
+                raise ConfigError(
+                    f"{slabel}.prefix is in a hard-excluded source root: {selector['prefix']}"
+                )
             if not isinstance(selector["recursive"], bool) or not isinstance(selector["required"], bool):
                 raise ConfigError(f"{slabel} recursive/required must be boolean")
             if selector["read_mode"] not in READ_MODES:
@@ -411,6 +428,16 @@ def validate_config(raw: Any) -> dict[str, Any]:
                     clean_repo_path(value + "/x", f"{slabel}.{key}")
         if not unit.get("members") and not unit.get("selectors"):
             raise ConfigError(f"{label} has no members or selectors")
+    supporting_lineages = config.get("supporting_lineages", [])
+    if not isinstance(supporting_lineages, list):
+        raise ConfigError("supporting_lineages must be a list")
+    for position, lineage in enumerate(supporting_lineages):
+        label = f"supporting_lineages[{position}]"
+        if not isinstance(lineage, dict) or not isinstance(lineage.get("root"), str):
+            raise ConfigError(f"{label} must be a mapping with a root")
+        clean_repo_path(lineage["root"] + "/x", f"{label}.root")
+        if _hard_excluded_source(lineage["root"]):
+            raise ConfigError(f"{label}.root is in a hard-excluded source root: {lineage['root']}")
     derived_pages = config.get("derived_pages", [])
     if not isinstance(derived_pages, list):
         raise ConfigError("derived_pages must be a list")
@@ -486,6 +513,8 @@ def validate_config(raw: Any) -> dict[str, Any]:
                 if not {"path", "read_mode"}.issubset(direct):
                     raise ConfigError(f"{dlabel} requires path and read_mode")
                 path = clean_repo_path(direct["path"], f"{dlabel}.path")
+                if _hard_excluded_source(path):
+                    raise ConfigError(f"{dlabel}.path is in a hard-excluded source root: {path}")
                 if path in direct_paths:
                     raise ConfigError(f"{label}.direct_sources repeats {path}")
                 direct_paths.add(path)
@@ -651,6 +680,13 @@ def migration_requirements(repo: Path) -> dict[str, list[dict[str, Any]]]:
                     originals = value.get("original_sources", [])
                     if not isinstance(originals, list) or not all(isinstance(item, str) for item in originals):
                         raise ConfigError(f"migration item {value['id']} has invalid original_sources")
+                    for reference in originals:
+                        source_path = reference.partition("#")[0]
+                        clean_repo_path(source_path, f"migration item {value['id']} original source")
+                        if _hard_excluded_source(source_path):
+                            raise ConfigError(
+                                f"migration item {value['id']} uses hard-excluded source {source_path}"
+                            )
                     by_target.setdefault(target, []).append({
                         "legacy_id": value["id"],
                         "required_original_refs": originals,

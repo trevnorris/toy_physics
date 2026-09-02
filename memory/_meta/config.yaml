@@ -24,12 +24,14 @@ output_budgets:
   conflict_register: {max_words: 1800, max_entries: 5, max_entry_words: 350}
   index: {max_words: 700}
 
-# These are defaults for tree discovery. An exact member in a configured unit
-# may override a semantic exclusion when that process artifact is load-bearing.
+# These are defaults for tree discovery. The PDE-ledger roots are absolute
+# corpus exclusions and may not be restored by exact members, selectors,
+# derived direct sources, supporting lineages, or Atlas migration records.
 semantic_excludes:
   prefixes:
-    - research/pde_ledger/redteam/
-    - research/pde_ledger/redteam_adversarial/
+    - research/pde_ledger/
+    - research/pde_ledger_v2/
+    - research/pde_ledger_v3/
   path_segments:
     - .git
     - __pycache__
@@ -83,12 +85,10 @@ selector_contract:
 canonical_lineages:
   - id: moving-throat-pde-program
     retrieval_order:
-      - pde-ledger-v3-governance
-      - pde-ledger-v3-paper
       - paper-moving-throat-pde
+      - stage1-verdict
+      - stage1-solver
       - pde-audit
-      - pde-ledger-v2
-      - pde-ledger-archive
     basis: configured_retrieval_lineage_only
     note: This chooses navigation order; it does not declare whole-source scientific supersession.
 
@@ -249,151 +249,6 @@ units:
     members:
       - {path: research/pde/paper/pde.tex, role: primary, read_mode: semantic, required: true}
 
-  - id: pde-ledger-v3-governance
-    kind: research_governance
-    source_role: current_program_governance
-    capsule: memory/sources/pde-ledger-v3-governance.md
-    lifecycle: current
-    members:
-      - {path: research/pde_ledger_v3/CHARTER.md, role: governance, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/DEFECT_REGISTER.md, role: governance, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md, role: governance, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/V3_STEP_PLAN.md, role: governance, read_mode: semantic, required: true}
-
-  - id: pde-ledger-v3-paper
-    kind: componentized_paper
-    source_role: current_working_paper
-    capsule: memory/sources/pde-ledger-v3-paper.md
-    lifecycle: current
-    entrypoint: research/pde_ledger_v3/paper/pde_ledger_v3.tex
-    selectors:
-      - prefix: research/pde_ledger_v3/paper
-        recursive: true
-        suffixes: [.tex]
-        exclude_prefixes: [research/pde_ledger_v3/paper/steps]
-        role: paper_member
-        read_mode: semantic
-        ownership: primary
-        required: true
-
-  - id: pde-ledger-v3-s9
-    kind: step_family
-    source_role: current_step_record
-    capsule: memory/sources/pde-ledger-v3-s9.md
-    lifecycle: current
-    members:
-      - {path: research/pde_ledger_v3/steps/S9_light_requires_shear.md, role: step_record, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/steps/S9_PILOT_ADJUDICATION.md, role: adjudication, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/steps/S9_REBUILD_QUESTION_DEFECTS.md, role: supporting, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/paper/steps/S9_light_requires_shear.tex, role: paper_card, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S9_light_requires_shear_sympy_audit.py, role: engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S9_exports.py, role: dependency, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/mathematica/S9_light_requires_shear_mathematica_audit.wl, role: engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/out/S9_light_requires_shear_sympy_audit.out, role: measurement, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/mathematica/out/S9_light_requires_shear_mathematica_audit.out, role: measurement, read_mode: semantic, required: true}
-
-  - id: pde-ledger-v3-s10
-    kind: step_family
-    source_role: current_step_record
-    capsule: memory/sources/pde-ledger-v3-s10.md
-    lifecycle: current
-    editorial_focus:
-      - >-
-        Preserve that every preregistered prediction was reported as holding; later controls narrow the headline interpretation and generality of exact transversality, not the factual FULLGRAD longitudinal-polarization prediction.
-      - >-
-        Preserve the three scoped history records from the interpretive step record: declared-name coverage superseded by mechanical matching with D12 injectivity still open; historical Q7 before/after counts unreproducible because the old harness is absent; and the old reduction registry absent with a distributed live replacement plus its historical provenance defect.
-      - >-
-        State the comparator's negative coverage explicitly: no shared action-payload name, all 13 Euler-Lagrange rows fail representational comparison, all 13 route-account rows fail token-content comparison, and underlying route constructions are not compared; the two routes remain a coding-consistency control.
-      - >-
-        Preserve open physical assumptions about equilibrium of the unstrained state, stable stiffness sign, possible internal-angular-momentum or couple-stress requirements for a curl-only continuum, and admissibility of the rotational-stiffness preferred-orientation frame.
-      - >-
-        Preserve both unresolved substrate-delivery gates: the curl-only functional is supplied rather than derived from the substrate, and the substrate still owes the joint quadratic operator on in-plane u and out-of-plane h, including whether h couples to or is degenerate with the transverse pair; failure can change the headline mode count.
-      - >-
-        Preserve the S9-to-S10 export-chain guard and the MAIN dimensional-homogeneity result as conditional status boundaries, including the guard's known blind spots.
-      - >-
-        Keep the conditional MAIN spectrum, longitudinal zero-mode, control-boundary, and MAIN dimensional results provisional unless the sealed transaction supplies a recorded invocation; do not label those four results derived merely because a transcript reports them.
-      - >-
-        Use the available 12-statement budget for these load-bearing boundaries before secondary numerical detail.
-    selectors:
-      - {prefix: research/pde_ledger_v3/steps, recursive: false, name_prefixes: [S10], suffixes: [.md], role: step_record, read_mode: semantic, ownership: primary, required: true}
-    members:
-      - {path: research/pde_ledger_v3/paper/steps/S10_two_transverse_photons.tex, role: paper_card, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S10_brane_mode_spectrum_sympy_audit.py, role: engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S10_brane_mode_spectrum_sympy_audit.premises, role: premises, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S10_cross_engine_comparator.py, role: comparator, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S10_cross_engine_comparator_repoint_ablation.py, role: control, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S10_exports.py, role: dependency, read_mode: identity_only, required: true}
-      - {path: research/pde_ledger_v3/mathematica/S10_brane_mode_spectrum_mathematica_audit.wl, role: engine, read_mode: semantic, required: true}
-      - path: research/pde_ledger_v3/scripts/out/S10_brane_mode_spectrum_sympy_audit.out
-        role: measurement
-        read_mode: excerpt
-        anchors: [PY_S10_MAIN_D2_Q3_ROOT_COUNT, PY_S10_XFORM_ANISO_D3_Q3_ROOT_COUNT, PY_S10_XCOEF_SCALE_D3_Q3_ROOT_COUNT]
-        required: true
-      - path: research/pde_ledger_v3/scripts/out/S10_cross_engine_comparator.out
-        role: measurement
-        read_mode: excerpt
-        anchors: ['CATEGORY: SUMMARY', FINAL_GUARD]
-        required: true
-      - {path: research/pde_ledger_v3/scripts/out/S10_cross_engine_comparator_repoint_ablation.out, role: measurement, read_mode: semantic, required: true}
-      - path: research/pde_ledger_v3/mathematica/out/S10_brane_mode_spectrum_mathematica_audit.out
-        role: measurement
-        read_mode: excerpt
-        anchors: [WL_S10_MAIN_D2_Q3_ROOT_COUNT, WL_S10_RUN_PAIRS, WL_S10_SKIPPED_PAIRS, WL_S10_EMITTED_TAG_COUNT]
-        required: true
-
-  - id: pde-ledger-v3-s11
-    kind: step_family
-    source_role: current_step_record
-    capsule: memory/sources/pde-ledger-v3-s11.md
-    lifecycle: current
-    selectors:
-      - {prefix: research/pde_ledger_v3/steps, recursive: false, name_prefixes: [S11_], suffixes: [.md], role: step_record, read_mode: semantic, ownership: primary, required: true}
-      - {prefix: research/pde_ledger_v3/reduction, recursive: false, name_prefixes: [s11_], suffixes: [.py], role: instrument, read_mode: semantic, ownership: primary, required: true}
-    members:
-      - {path: research/pde_ledger_v3/paper/steps/S11_stray_longitudinal.tex, role: paper_card, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, role: engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.premises, role: premises, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S11_exports.py, role: dependency, read_mode: identity_only, required: true}
-      - {path: research/pde_ledger_v3/mathematica/S11_stray_longitudinal_mathematica_audit.wl, role: engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/out/S11_stray_longitudinal_sympy_audit.out, role: measurement, read_mode: identity_only, required: true}
-      - {path: research/pde_ledger_v3/mathematica/out/S11_stray_longitudinal_mathematica_audit.out, role: measurement, read_mode: identity_only, required: true}
-
-  - id: pde-ledger-v3-s11b
-    kind: step_family
-    source_role: current_step_record_with_history
-    capsule: memory/sources/pde-ledger-v3-s11b.md
-    lifecycle: current
-    selectors:
-      - {prefix: research/pde_ledger_v3/steps, recursive: false, name_prefixes: [S11b], suffixes: [.md], role: step_record, read_mode: semantic, ownership: primary, required: true}
-      - {prefix: research/pde_ledger_v3/steps/_measurements, recursive: true, role: measurement, read_mode: semantic, ownership: primary, required: false}
-    members:
-      - {path: research/pde_ledger_v3/paper/steps/S11b_interface_coupling_law.tex, role: paper_card, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S11bA_interface_response_sympy_audit.py, role: historical_engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S11bB_interface_assembly_sympy_audit.py, role: historical_engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py, role: engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S11b_cross_engine_comparator.py, role: comparator, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S11b_exports.py, role: dependency, read_mode: identity_only, required: true}
-      - {path: research/pde_ledger_v3/mathematica/S11bA_interface_response_mathematica_audit.wl, role: historical_engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/mathematica/S11bB_interface_assembly_mathematica_audit.wl, role: historical_engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/mathematica/S11b_interface_coupling_law_mathematica_audit.wl, role: engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/out/S11b_cross_engine_comparison.out, role: measurement, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/out/S11b_interface_coupling_law_sympy_audit.out, role: measurement, read_mode: identity_only, required: true}
-      - {path: research/pde_ledger_v3/mathematica/out/S11b_interface_coupling_law_mathematica_audit.out, role: measurement, read_mode: identity_only, required: true}
-
-  - id: pde-ledger-v3-s11c
-    kind: in_progress_step_family
-    source_role: current_in_progress_work
-    capsule: memory/sources/pde-ledger-v3-s11c.md
-    lifecycle: current
-    members:
-      - {path: research/pde_ledger_v3/steps/S11c_SCOPE.md, role: scope, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/directives/S11c_decisions.md, role: reviewed_decisions, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md, role: shared_specification, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py, role: engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/scripts/S11c_a_exports.py, role: dependency, read_mode: identity_only, required: true}
-      - {path: research/pde_ledger_v3/mathematica/S11c_a_interface_geometry_mathematica_audit.wl, role: engine, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v3/mathematica/out/S11c_a_interface_geometry_mathematica_audit.out, role: measurement, read_mode: identity_only, required: true}
-
   - id: pde-audit
     kind: verification_project
     source_role: supporting_verification
@@ -420,15 +275,6 @@ units:
     selectors:
       - {prefix: research/pde_audit/scripts, recursive: true, suffixes: [.py], role: engine, read_mode: semantic, ownership: primary, required: true}
       - {prefix: research/pde_audit/mathematica, recursive: true, suffixes: [.wl], role: engine, read_mode: semantic, ownership: primary, required: true}
-
-  - id: pde-lineage-support
-    kind: research_governance
-    source_role: historical_lineage_and_migration_support
-    capsule: memory/sources/pde-lineage-support.md
-    lifecycle: current
-    members:
-      - {path: research/pde_ledger/paper/frontmatter/05_dependency_map.tex, role: historical_dependency_map, read_mode: semantic, required: true}
-      - {path: research/pde_ledger_v2/notes/stage028_pathA43_2_5pn_matchback_source_map.md, role: historical_source_map, read_mode: semantic, required: true}
 
   - id: software-em-emergent-construction
     kind: software_result_family
@@ -552,12 +398,11 @@ derived_pages:
     page: memory/topics/foundations.md
     region: working-position
     order: 20
-    input_units: [paper-unified-4d, paper-brane-bulk-ontology, paper-moving-throat-pde, pde-ledger-v3-governance]
+    input_units: [paper-unified-4d, paper-brane-bulk-ontology, paper-moving-throat-pde]
     input_pages: []
     direct_sources:
       - {path: research/4d/paper/4d.tex, read_mode: excerpt, anchors: ['\label{sec:fields}', '\label{sec:action}', '\label{sec:braneobs}']}
       - {path: research/brane_bulk_ontology/paper/brane_bulk_ontology.tex, read_mode: excerpt, anchors: ['\label{subsec:intro_ontology}', '\label{sec:bulk_framework}', '\label{subsec:brane_hypersurface}']}
-      - {path: research/pde_ledger_v3/CHARTER.md, read_mode: semantic}
     budget: topic
 
   - id: topic-projection-and-reduction
@@ -565,14 +410,13 @@ derived_pages:
     page: memory/topics/projection-and-reduction.md
     region: working-position
     order: 20
-    input_units: [paper-unified-4d, paper-4d-em-fields, paper-4d-plasma, paper-moving-throat-pde, pde-ledger-v3-governance, pde-lineage-support, stage1-solver]
+    input_units: [paper-unified-4d, paper-4d-em-fields, paper-4d-plasma, paper-moving-throat-pde, stage1-solver]
     input_pages: []
     direct_sources:
       - {path: research/4d/paper/4d.tex, read_mode: excerpt, anchors: ['\subsection{Brane observables: projection versus reduction}', '\label{sec:projection}', '\label{sec:emreduction}']}
       - {path: research/4d_em_fields/paper/4d_em_fields.tex, read_mode: excerpt, anchors: ['\label{sec:brane_reduction}', '\label{eq:zero_mode_ansatz}']}
       - {path: research/4d_plasma/paper/4d_plasma.tex, read_mode: excerpt, anchors: ['\label{sec:projection_defs}', '\label{eq:app_Ew_def}', '\label{eq:mixed_suppression_assumption}']}
       - {path: research/pde/paper/pde.tex, read_mode: excerpt, anchors: ['\subsection{Projection versus reduction and the mixed-sector firewall}', '\label{eq:projected-continuity}', '\label{eq:zero-mode-assumptions}']}
-      - {path: research/pde_ledger/paper/frontmatter/05_dependency_map.tex, read_mode: excerpt, anchors: ['\subsection{Part I dependency map: parent theory, geometry lift, and linearized backbone}']}
       - {path: software/stage1_solver/reports/pathA_23_stage0_action_and_contracts.md, read_mode: semantic}
     budget: topic
 
@@ -581,7 +425,7 @@ derived_pages:
     page: memory/topics/charge-and-electromagnetism.md
     region: working-position
     order: 20
-    input_units: [paper-unified-4d, paper-4d-1pn-full, paper-4d-2pn, paper-4d-em-fields, paper-em-fields, paper-4d-plasma, pde-ledger-v3-governance, pde-audit, software-em-emergent-construction, software-em-electric-sign, software-em-magnetism, software-em-native-p, software-em-u1]
+    input_units: [paper-unified-4d, paper-4d-1pn-full, paper-4d-2pn, paper-4d-em-fields, paper-em-fields, paper-4d-plasma, pde-audit, software-em-emergent-construction, software-em-electric-sign, software-em-magnetism, software-em-native-p, software-em-u1]
     input_pages: []
     direct_sources:
       - {path: research/4d/paper/4d.tex, read_mode: excerpt, anchors: ['\label{eq:circulation-fluxoid}', '\label{sec:emreduction}', '\label{app:claims-controlled}']}
@@ -591,8 +435,6 @@ derived_pages:
       - {path: research/4d_plasma/paper/4d_plasma.tex, read_mode: excerpt, anchors: ['\label{sec:projection_defs}', '\label{eq:mixed_fields_em}']}
       - {path: research/pde_audit/notes/stage_v2_02_maxwell_gauge_localization_derivation.md, read_mode: semantic}
       - {path: research/pde_audit/notes/stage_v2_30_electromagnetic_ontology_and_status.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/CHARTER.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/DEFECT_REGISTER.md, read_mode: excerpt, anchors: ['| **C5** |', '## C. Open negatives and gaps']}
       - {path: software/em_charge_attribute/reports/emergent_em_construction.md, read_mode: semantic}
       - {path: software/em_charge_attribute/puncture_deflection_electric_sign_result.md, read_mode: semantic}
       - {path: software/em_charge_attribute/magnetism_moving_throat_result.md, read_mode: semantic}
@@ -605,7 +447,7 @@ derived_pages:
     page: memory/topics/post-newtonian-ladder.md
     region: working-position
     order: 20
-    input_units: [paper-4d-1pn-bridge, paper-4d-1pn-full, paper-4d-2pn, paper-4d-2-5pn, paper-4d-3pn, paper-4d-4pn, pde-ledger-v3-governance]
+    input_units: [paper-4d-1pn-bridge, paper-4d-1pn-full, paper-4d-2pn, paper-4d-2-5pn, paper-4d-3pn, paper-4d-4pn]
     input_pages: []
     direct_sources:
       - {path: research/4d_1pn_bridge/paper/4d_1pn_bridge.tex, read_mode: excerpt, anchors: ['\label{sec:exec-summary}', '\label{sec:1pn-interaction-alpha-K}']}
@@ -614,7 +456,6 @@ derived_pages:
       - {path: research/4d_2_5pn/paper/4d_2_5pn.tex, read_mode: excerpt, anchors: ['\label{sec:conditional-theorem-gap}', '\label{sec:conditional-theorem-gap-statement}', '\label{sec:conditional-theorem-gap-normalization}']}
       - {path: research/4d_3pn/paper/4d_3pn.tex, read_mode: excerpt, anchors: ['\label{sec:final-main}', '\label{sec:fixed-open}']}
       - {path: research/4d_4pn/paper/4d_4pn.tex, read_mode: excerpt, anchors: ['\label{sec:local-final}', '\label{sec:tail-bridge}', '\label{sec:final-conditional-4pn-theorem}', '\label{sec:fixed-open}']}
-      - {path: research/pde_ledger_v3/CHARTER.md, read_mode: excerpt, anchors: ['## 3. What carries forward from v2, and what does not']}
     budget: topic
 
   - id: topic-quadrupole-normalization
@@ -622,15 +463,12 @@ derived_pages:
     page: memory/topics/quadrupole-normalization.md
     region: working-position
     order: 20
-    input_units: [paper-4d-2-5pn, paper-4d-3pn, paper-4d-4pn, paper-moving-throat-pde, pde-ledger-v3-governance, pde-audit, pde-lineage-support]
+    input_units: [paper-4d-2-5pn, paper-4d-3pn, paper-4d-4pn, paper-moving-throat-pde, pde-audit]
     input_pages: []
     direct_sources:
       - {path: research/4d_2_5pn/paper/4d_2_5pn.tex, read_mode: excerpt, anchors: ['\label{sec:intro-claims}', '\label{sec:quadrupole-surviving-source-map}', '\label{sec:conditional-theorem-gap-normalization}']}
       - {path: research/4d_4pn/paper/4d_4pn.tex, read_mode: excerpt, anchors: ['\label{sec:tail-bridge}', '\label{sec:fixed-open}']}
       - {path: research/pde_audit/notes/stage_v2_12_stf_angular_source_map_derivation.md, read_mode: semantic}
-      - {path: research/pde_ledger/paper/frontmatter/05_dependency_map.tex, read_mode: excerpt, anchors: ['\subsection{Part V dependency map: weak-axisymmetric quotient and orbit closure}']}
-      - {path: research/pde_ledger_v2/notes/stage028_pathA43_2_5pn_matchback_source_map.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/CHARTER.md, read_mode: excerpt, anchors: ['## 3. What carries forward from v2, and what does not']}
     budget: topic
 
   - id: topic-moving-throat-dynamics
@@ -638,7 +476,7 @@ derived_pages:
     page: memory/topics/moving-throat-dynamics.md
     region: working-position
     order: 20
-    input_units: [paper-moving-throat-pde, pde-ledger-v3-governance, pde-ledger-v3-paper, pde-ledger-v3-s9, pde-ledger-v3-s10, pde-ledger-v3-s11, pde-ledger-v3-s11b, pde-ledger-v3-s11c, pde-audit, pde-lineage-support, stage1-solver, stage1-verdict]
+    input_units: [paper-moving-throat-pde, pde-audit, stage1-solver, stage1-verdict]
     input_pages: []
     direct_sources:
       - {path: research/pde/paper/pde.tex, read_mode: excerpt, anchors: ['\label{sec:status-parent}', '\label{sec:how-to-use}', '\label{sec:discussion-gap}', '\label{app:verification-map}']}
@@ -648,11 +486,6 @@ derived_pages:
       - {path: research/pde_audit/notes/stage_v2_25_actual_branch_protocol_derivation.md, read_mode: semantic}
       - {path: research/pde_audit/notes/stage_v2_26_program_status_after_audit.md, read_mode: semantic}
       - {path: research/pde_audit/notes/stage_v2_28_physical_picture_and_ontology.md, read_mode: semantic}
-      - {path: research/pde_ledger/paper/frontmatter/05_dependency_map.tex, read_mode: excerpt, anchors: ['\subsection{Part I dependency map: parent theory, geometry lift, and linearized backbone}', '\subsection{Part VIII dependency map: relaxed open-system branch}']}
-      - {path: research/pde_ledger_v2/notes/stage028_pathA43_2_5pn_matchback_source_map.md, read_mode: excerpt, anchors: ['## §3 Reshape cost (NO bridge to sever) + the 028 verdict (a CONSISTENCY landing, no FAIL/PASS physics token)']}
-      - {path: research/pde_ledger_v3/CHARTER.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/DEFECT_REGISTER.md, read_mode: excerpt, anchors: ['| **C6** |', '## C. Open negatives and gaps']}
-      - {path: research/pde_ledger_v3/steps/S11c_SCOPE.md, read_mode: semantic}
       - {path: software/stage1_solver/README.md, read_mode: semantic}
       - {path: software/stage1_solver/STAGE1_VERDICT.md, read_mode: semantic}
       - {path: software/stage1_solver/derivations/pathA_01_return_source_and_balance.md, read_mode: semantic}
@@ -663,7 +496,7 @@ derived_pages:
     page: memory/topics/branch-response-and-export.md
     region: working-position
     order: 20
-    input_units: [pde-ledger-v3-governance, pde-ledger-v3-s9, pde-ledger-v3-s10, pde-ledger-v3-s11, pde-ledger-v3-s11b, pde-ledger-v3-s11c, pde-audit, pde-lineage-support, stage1-solver, stage1-verdict]
+    input_units: [pde-audit, stage1-solver, stage1-verdict]
     input_pages: []
     direct_sources:
       - {path: research/pde_audit/notes/stage_v2_23_minimal_branch_solver_derivation.md, read_mode: semantic}
@@ -672,8 +505,6 @@ derived_pages:
       - {path: research/pde_audit/notes/stage_v2_28_physical_picture_and_ontology.md, read_mode: semantic}
       - {path: research/pde_audit/simulation/ACTUAL_BRANCH_PROTOCOL_V1.md, read_mode: semantic}
       - {path: research/pde_audit/simulation/README.md, read_mode: semantic}
-      - {path: research/pde_ledger/paper/frontmatter/05_dependency_map.tex, read_mode: excerpt, anchors: ['\subsection{Part VIII dependency map: relaxed open-system branch}']}
-      - {path: research/pde_ledger_v3/CHARTER.md, read_mode: excerpt, anchors: ['{#two-halves}', '{#falsification-standard}']}
       - {path: software/stage1_solver/README.md, read_mode: semantic}
       - {path: software/stage1_solver/STAGE1_VERDICT.md, read_mode: semantic}
     budget: topic
@@ -683,12 +514,10 @@ derived_pages:
     page: memory/topics/weak-axisymmetric-and-orbit-closure.md
     region: working-position
     order: 20
-    input_units: [paper-1pn-orbital-dynamics, paper-1pn-spin-and-nbody, pde-ledger-v3-governance, pde-audit, pde-lineage-support, stage1-solver, stage1-verdict]
+    input_units: [paper-1pn-orbital-dynamics, paper-1pn-spin-and-nbody, pde-audit, stage1-solver, stage1-verdict]
     input_pages: []
     direct_sources:
       - {path: research/pde_audit/notes/stage_v2_18_monomial_quotient_similarity_orbit_derivation.md, read_mode: semantic}
-      - {path: research/pde_ledger/paper/frontmatter/05_dependency_map.tex, read_mode: excerpt, anchors: ['\subsection{Part V dependency map: weak-axisymmetric quotient and orbit closure}']}
-      - {path: research/pde_ledger_v3/CHARTER.md, read_mode: excerpt, anchors: ['{#falsification-standard}']}
       - {path: software/stage1_solver/STAGE1_VERDICT.md, read_mode: semantic}
     budget: topic
 
@@ -697,13 +526,12 @@ derived_pages:
     page: memory/topics/moving-throat-ontology.md
     region: working-position
     order: 20
-    input_units: [paper-unified-4d, paper-brane-bulk-ontology, paper-moving-throat-pde, pde-ledger-v3-governance, pde-audit, pde-lineage-support]
+    input_units: [paper-unified-4d, paper-brane-bulk-ontology, paper-moving-throat-pde, pde-audit]
     input_pages: []
     direct_sources:
       - {path: research/4d/paper/4d.tex, read_mode: excerpt, anchors: ['\label{sec:braneobs}']}
       - {path: research/brane_bulk_ontology/paper/brane_bulk_ontology.tex, read_mode: excerpt, anchors: ['\label{subsec:brane_hypersurface}', '\label{subsec:throat_geometry}']}
       - {path: research/pde_audit/notes/stage_v2_28_physical_picture_and_ontology.md, read_mode: semantic}
-      - {path: research/pde_ledger/paper/frontmatter/05_dependency_map.tex, read_mode: excerpt, anchors: ['\subsection{Part I dependency map: parent theory, geometry lift, and linearized backbone}']}
     budget: topic
 
   - id: topic-material-closure-and-nonlinear-handoff
@@ -711,14 +539,11 @@ derived_pages:
     page: memory/topics/material-closure-and-nonlinear-handoff.md
     region: working-position
     order: 20
-    input_units: [paper-moving-throat-pde, pde-ledger-v3-governance, pde-ledger-v3-s11b, pde-ledger-v3-s11c, pde-audit, pde-lineage-support, stage1-solver, stage1-verdict]
+    input_units: [paper-moving-throat-pde, pde-audit, stage1-solver, stage1-verdict]
     input_pages: []
     direct_sources:
       - {path: research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md, read_mode: semantic}
       - {path: research/pde_audit/notes/stage_v2_29_superfluid_material_closure_gap.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/CHARTER.md, read_mode: excerpt, anchors: ['{#two-halves}', '{#falsification-standard}']}
-      - {path: research/pde_ledger_v3/DEFECT_REGISTER.md, read_mode: excerpt, anchors: ['| **C6** |', '## C. Open negatives and gaps']}
-      - {path: research/pde_ledger_v3/steps/S11c_SCOPE.md, read_mode: semantic}
       - {path: software/stage1_solver/STAGE1_VERDICT.md, read_mode: semantic}
       - {path: software/stage1_solver/derivations/pathA_01_return_source_and_balance.md, read_mode: semantic}
     budget: topic
@@ -728,7 +553,7 @@ derived_pages:
     page: memory/topics/status-and-reading-rules.md
     region: working-position
     order: 20
-    input_units: [paper-unified-4d, paper-4d-1pn-full, paper-4d-2pn, paper-4d-em-fields, paper-4d-plasma, paper-4d-2-5pn, paper-4d-4pn, paper-moving-throat-pde, pde-ledger-v3-governance, pde-ledger-v3-s11b, pde-ledger-v3-s11c, pde-audit, pde-lineage-support, stage1-solver, stage1-verdict]
+    input_units: [paper-unified-4d, paper-4d-1pn-full, paper-4d-2pn, paper-4d-em-fields, paper-4d-plasma, paper-4d-2-5pn, paper-4d-4pn, paper-moving-throat-pde, pde-audit, stage1-solver, stage1-verdict]
     input_pages: []
     direct_sources:
       - {path: research/4d/paper/4d.tex, read_mode: excerpt, anchors: ['\label{sec:braneobs}', '\label{app:claims}']}
@@ -736,32 +561,8 @@ derived_pages:
       - {path: research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md, read_mode: semantic}
       - {path: research/pde_audit/notes/stage_v2_26_program_status_after_audit.md, read_mode: semantic}
       - {path: research/pde_audit/notes/stage_v2_30_electromagnetic_ontology_and_status.md, read_mode: semantic}
-      - {path: research/pde_ledger/paper/frontmatter/05_dependency_map.tex, read_mode: excerpt, anchors: ['\caption{Top-level dependency map for the result anchors.}']}
-      - {path: research/pde_ledger_v3/CHARTER.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/DEFECT_REGISTER.md, read_mode: excerpt, anchors: ['## C. Open negatives and gaps', '{#c12}', '{#c20}']}
-      - {path: research/pde_ledger_v3/steps/S11b_RUN_CHECKLIST.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/steps/S11c_SCOPE.md, read_mode: semantic}
       - {path: software/stage1_solver/README.md, read_mode: semantic}
       - {path: software/stage1_solver/STAGE1_VERDICT.md, read_mode: semantic}
-    budget: topic
-
-  - id: topic-pde-ledger-v3-status
-    task_kind: topic
-    page: memory/topics/pde-ledger-v3-status.md
-    region: working-position
-    order: 20
-    input_units: [pde-ledger-v3-governance, pde-ledger-v3-s9, pde-ledger-v3-s10, pde-ledger-v3-s11, pde-ledger-v3-s11b, pde-ledger-v3-s11c]
-    input_pages: []
-    direct_sources:
-      - {path: research/pde_ledger_v3/CHARTER.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/DEFECT_REGISTER.md, read_mode: excerpt, anchors: ['## C. Open negatives and gaps', '{#c12}', '{#c20}']}
-      - {path: research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/V3_STEP_PLAN.md, read_mode: excerpt, anchors: ['{#s11b}', '{#s11b-split}']}
-      - {path: research/pde_ledger_v3/steps/S11b_RUN_CHECKLIST.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/steps/S11bA_interface_response.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/steps/S11bB_interface_assembly.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/steps/S11b_interface_coupling_law.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/steps/S11c_SCOPE.md, read_mode: semantic}
     budget: topic
 
   - id: topic-stage1-branch-realization
@@ -784,7 +585,7 @@ derived_pages:
     page: memory/topics/emergent-charge.md
     region: working-position
     order: 20
-    input_units: [paper-unified-4d, paper-4d-em-fields, pde-ledger-v3-governance, pde-audit, software-em-emergent-construction, software-em-electric-sign, software-em-native-p, software-em-u1]
+    input_units: [paper-unified-4d, paper-4d-em-fields, pde-audit, software-em-emergent-construction, software-em-electric-sign, software-em-native-p, software-em-u1]
     input_pages: []
     direct_sources:
       - {path: software/em_charge_attribute/puncture_deflection_electric_sign_result.md, read_mode: semantic}
@@ -798,33 +599,13 @@ derived_pages:
     page: memory/topics/emergent-magnetism.md
     region: working-position
     order: 20
-    input_units: [paper-unified-4d, paper-4d-em-fields, paper-em-fields, pde-ledger-v3-governance, pde-audit, software-em-magnetism]
+    input_units: [paper-unified-4d, paper-4d-em-fields, paper-em-fields, pde-audit, software-em-magnetism]
     input_pages: []
     direct_sources:
       - {path: software/em_charge_attribute/magnetism_moving_throat_result.md, read_mode: semantic}
       - {path: software/em_charge_attribute/magnetism_moving_throat_check.py, read_mode: excerpt, anchors: ['def derive_source(', 'def derive_route_b(', 'def derive_route_a(', 'def compare_routes(', 'def section4_adjudicate(', 'def main()']}
       - {path: software/em_charge_attribute/magnetism_moving_throat_check.wl, read_mode: excerpt, anchors: ['deriveSource[', 'deriveRouteB[', 'deriveRouteA[', 'compareRoutes[', 'Print["SECTION4_LANDING="', 'Print["SECTION4_ALL_R1="', 'Print["ENGINE_AGREE=PASS"']}
     budget: topic
-
-  - id: scripts-pde-ledger-v3
-    task_kind: script_catalog
-    page: memory/scripts/pde-ledger-v3.md
-    region: entries
-    order: 30
-    input_units: [pde-ledger-v3-s9, pde-ledger-v3-s10, pde-ledger-v3-s11, pde-ledger-v3-s11b, pde-ledger-v3-s11c]
-    input_pages: []
-    direct_sources:
-      - {path: research/pde_ledger_v3/scripts/S9_light_requires_shear_sympy_audit.py, read_mode: excerpt, anchors: ['def derive(', 'def write_exports(']}
-      - {path: research/pde_ledger_v3/scripts/S10_cross_engine_comparator.py, read_mode: excerpt, anchors: ['class ComparatorInputError', 'def read_transcript(', 'def compare_nullspace_basis(', 'def compare_records(', 'def run(', 'def main(']}
-      - {path: research/pde_ledger_v3/mathematica/S10_brane_mode_spectrum_mathematica_audit.wl, read_mode: excerpt, anchors: ['buildPackage[', 'runSpectrum[', 'runModeSet[', 'runPackage[', 'WL_S10_RUN_PAIRS', 'WL_S10_SKIPPED_PAIRS', 'WL_S10_EMITTED_TAG_COUNT']}
-      - {path: research/pde_ledger_v3/scripts/out/S10_cross_engine_comparator.out, read_mode: excerpt, anchors: ['CATEGORY: SUMMARY', FINAL_GUARD]}
-      - {path: research/pde_ledger_v3/mathematica/out/S10_brane_mode_spectrum_mathematica_audit.out, read_mode: excerpt, anchors: [WL_S10_RUN_PAIRS, WL_S10_SKIPPED_PAIRS, WL_S10_EMITTED_TAG_COUNT]}
-      - {path: research/pde_ledger_v3/paper/steps/S10_two_transverse_photons.tex, read_mode: excerpt, anchors: ['\label{step:S10}']}
-      - {path: research/pde_ledger_v3/steps/S10_two_transverse_photons.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/scripts/S11_stray_longitudinal_sympy_audit.py, read_mode: excerpt, anchors: ['def package_build(', 'def emit_stratum(', 'def run()']}
-      - {path: research/pde_ledger_v3/scripts/S11b_cross_engine_comparator.py, read_mode: excerpt, anchors: ['def read_transcript(', 'def compare_records(', 'def run(', 'def main(']}
-      - {path: research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py, read_mode: excerpt, anchors: ['def build_material_face_source(', 'def build_face_source(', 'def run()']}
-    budget: script_catalog
 
   - id: scripts-pde-audit
     task_kind: script_catalog
@@ -903,12 +684,9 @@ derived_pages:
     page: memory/conflicts.md
     region: candidates
     order: 40
-    input_units: [paper-unified-4d, paper-4d-em-fields, paper-4d-2-5pn, paper-4d-4pn, paper-moving-throat-pde, pde-ledger-v3-governance, pde-ledger-v3-s9, pde-ledger-v3-s10, pde-ledger-v3-s11, pde-ledger-v3-s11b, pde-ledger-v3-s11c, pde-audit, software-em-electric-sign, software-em-magnetism, stage1-solver, stage1-verdict]
-    input_pages: [topic-foundations, topic-projection-and-reduction, topic-charge-and-electromagnetism, topic-post-newtonian-ladder, topic-quadrupole-normalization, topic-moving-throat-dynamics, topic-branch-response-and-export, topic-weak-axisymmetric-and-orbit-closure, topic-moving-throat-ontology, topic-material-closure-and-nonlinear-handoff, topic-status-and-reading-rules, topic-pde-ledger-v3-status, topic-stage1-branch-realization, topic-emergent-charge, topic-emergent-magnetism]
+    input_units: [paper-unified-4d, paper-4d-em-fields, paper-4d-2-5pn, paper-4d-4pn, paper-moving-throat-pde, pde-audit, software-em-electric-sign, software-em-magnetism, stage1-solver, stage1-verdict]
+    input_pages: [topic-foundations, topic-projection-and-reduction, topic-charge-and-electromagnetism, topic-post-newtonian-ladder, topic-quadrupole-normalization, topic-moving-throat-dynamics, topic-branch-response-and-export, topic-weak-axisymmetric-and-orbit-closure, topic-moving-throat-ontology, topic-material-closure-and-nonlinear-handoff, topic-status-and-reading-rules, topic-stage1-branch-realization, topic-emergent-charge, topic-emergent-magnetism]
     direct_sources:
-      - {path: research/pde_ledger_v3/steps/S11bA_interface_response.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/steps/S11bB_interface_assembly.md, read_mode: semantic}
-      - {path: research/pde_ledger_v3/steps/S11b_interface_coupling_law.md, read_mode: semantic}
       - {path: software/stage1_solver/README.md, read_mode: semantic}
       - {path: software/stage1_solver/STAGE1_VERDICT.md, read_mode: semantic}
     budget: conflict_register
@@ -919,16 +697,8 @@ derived_pages:
     region: navigation
     order: 50
     input_units: []
-    input_pages: [topic-foundations, topic-projection-and-reduction, topic-charge-and-electromagnetism, topic-post-newtonian-ladder, topic-quadrupole-normalization, topic-moving-throat-dynamics, topic-branch-response-and-export, topic-weak-axisymmetric-and-orbit-closure, topic-moving-throat-ontology, topic-material-closure-and-nonlinear-handoff, topic-status-and-reading-rules, topic-pde-ledger-v3-status, topic-stage1-branch-realization, topic-emergent-charge, topic-emergent-magnetism, scripts-pde-ledger-v3, scripts-pde-audit, scripts-em-charge-attribute, scripts-force-visualizer, scripts-stage1-solver, conflicts]
+    input_pages: [topic-foundations, topic-projection-and-reduction, topic-charge-and-electromagnetism, topic-post-newtonian-ladder, topic-quadrupole-normalization, topic-moving-throat-dynamics, topic-branch-response-and-export, topic-weak-axisymmetric-and-orbit-closure, topic-moving-throat-ontology, topic-material-closure-and-nonlinear-handoff, topic-status-and-reading-rules, topic-stage1-branch-realization, topic-emergent-charge, topic-emergent-magnetism, scripts-pde-audit, scripts-em-charge-attribute, scripts-force-visualizer, scripts-stage1-solver, conflicts]
     budget: index
-
-supporting_lineages:
-  - id: pde-ledger-archive
-    root: research/pde_ledger
-    selection: on_demand_citation_and_atlas_migration
-  - id: pde-ledger-v2
-    root: research/pde_ledger_v2
-    selection: on_demand_citation_and_atlas_migration
 
 legacy_migration:
   normal_sync_input: false

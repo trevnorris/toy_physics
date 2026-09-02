@@ -2,6 +2,7 @@
 
 Status: reviewed and folded once; builder-ready
 Date: 2026-08-24
+Updated: 2026-09-01 for git-annex storage and the PDE-ledger corpus exclusion
 Review record: `memory/_measurements/scanner_decision_reviews.md`
 
 This is the builder-facing contract for the deterministic memory tooling. It
@@ -11,6 +12,10 @@ contains the verified fold from two independent review legs.
 
 1. Normal discovery is limited to committed objects under `research/` and
    `software/`. Root `notes/` and `docs/` are excluded.
+   The roots `research/pde_ledger/`, `research/pde_ledger_v2/`, and
+   `research/pde_ledger_v3/` are also absolute exclusions: normal discovery,
+   exact membership, selectors, derived direct sources, supporting lineages,
+   and Atlas migration may not restore them.
 2. `atlas/` and `graph/` are visible only to the explicit migration workflow.
 3. Enumerate the target commit once with NUL-safe Git plumbing equivalent to
    `git ls-tree -rz --full-tree <commit> -- research software`.
@@ -42,9 +47,10 @@ contains the verified fold from two independent review legs.
     shared capsule targets.
 14. Directives, prompts, review history, tests, helpers, and measurements are
     dependencies by default. Exact unit membership may override a broad
-    semantic exclusion when the source is load-bearing.
+    semantic exclusion when the source is load-bearing, except for the three
+    absolute PDE-ledger exclusions above.
 15. Scientific unit identity is explicit. Filename prefixes never infer that
-    S11b-A/B, unified S11b, and S11c are separate or equivalent steps.
+    similarly named records are separate or equivalent research steps.
 
 ## Read modes and bounded evidence
 
@@ -58,7 +64,11 @@ contains the verified fold from two independent review legs.
     semantic member exceeding a limit fails unless it has an explicit smaller
     override or excerpt rule.
 20. Tracked `.out` files are valid evidence dependencies. They are never
-    blanket-excluded by extension.
+    blanket-excluded by extension. When a transcript is stored as a git-annex
+    symlink, the committed tree contains only the annex pointer; configure that
+    member as `identity_only` rather than resolving worktree-local annex
+    content. Its owning selected record and executable engines remain the
+    portable semantic evidence.
 
 ## Identity and drift
 
@@ -112,7 +122,9 @@ contains the verified fold from two independent review legs.
     silently changes the global baseline.
 41. A unit removed from config is `retired_from_corpus`; a configured source
     missing from the tree is `source_deleted`. Both remain auditable until
-    dependent pages are deliberately retired.
+    dependent pages are deliberately retired. A hard corpus exclusion removes
+    the semantic capsule and queryable IDs from served state; ignored sealed
+    transactions may retain non-served provenance.
 
 ## CLI behavior
 

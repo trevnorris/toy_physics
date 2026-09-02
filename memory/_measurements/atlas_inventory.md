@@ -1,6 +1,9 @@
 # Phase 0 Atlas Migration Inventory
 
 Date: 2026-08-24
+Superseded for current corpus selection: 2026-09-01 by
+[`pde_ledger_exclusion_validation.md`](pde_ledger_exclusion_validation.md).
+The historical audit below remains as recorded.
 Repository snapshot: `30e96ee22245d4a7d0e873ad228cf5ce33de76f0`
 Machine-readable inventory: [`../_meta/atlas-migration.yaml`](../_meta/atlas-migration.yaml)
 

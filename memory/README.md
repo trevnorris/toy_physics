@@ -4,6 +4,11 @@ This directory is the repository's small navigation and synthesis layer for
 selected sources under `research/` and `software/`. Repository sources remain
 authoritative. Start every lookup at [`index.md`](index.md).
 
+The three PDE-ledger trees—`research/pde_ledger/`,
+`research/pde_ledger_v2/`, and `research/pde_ledger_v3/`—are intentionally
+outside this memory corpus. The maintained moving-throat sources remain
+`research/pde/`, `research/pde_audit/`, and relevant `software/` results.
+
 ## Freshness model
 
 Normal memory updates read the committed Git tree. Dirty tracked files should

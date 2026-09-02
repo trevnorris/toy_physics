@@ -216,10 +216,10 @@ Canonical display examples:
 
 ```markdown
 - `research/pde/paper/pde.tex` — `\label{sec:status-parent}`
-- `research/pde_ledger_v3/V3_STEP_PLAN.md` — `{#s11b-split}`
 - `software/stage1_solver/STAGE1_VERDICT.md` — heading `## The test`
-- `research/pde_ledger_v3/scripts/S10_cross_engine_comparator.py` — function `run`
-- `research/pde_ledger_v3/scripts/out/S10_cross_engine_comparator.out` — tag `CATEGORY: SUMMARY`
+- `research/pde_audit/scripts/stage_v2_23_minimal_open_throat_branch_solver.py` — function `main`
+- `software/em_charge_attribute/puncture_deflection_electric_sign_check.py` — function `section4_adjudicate`
+- `software/em_charge_attribute/puncture_deflection_electric_sign_result.md` — heading `## Concise result (body; ≤2 pages)`
 ```
 
 Clickable Markdown links may accompany this display, but the visible

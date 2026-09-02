@@ -14,6 +14,16 @@ Normal memory synchronization considers only Git-tracked content under:
 The root `notes/` and `docs/` trees are excluded. They contain future ideas or
 secondary writeups rather than the material this memory should catalog.
 
+The three PDE-ledger roots are also absolute exclusions:
+
+- `research/pde_ledger/`
+- `research/pde_ledger_v2/`
+- `research/pde_ledger_v3/`
+
+They are not eligible through exact configuration, derived pages, supporting
+lineages, or legacy migration. This does not exclude `research/pde/`,
+`research/pde_audit/`, or relevant results under `software/`.
+
 `atlas/` and `graph/` are not normal corpus roots. They are temporary legacy
 migration inputs, and every useful item taken from them must be re-anchored to
 an original source under `research/` or `software/` before deletion.
@@ -39,8 +49,6 @@ The root [`.gitignore`](../../.gitignore) is semantic policy, not merely cleanup
 - Small curated Markdown/YAML reports may be tracked and can be evidence.
 - `.out` is deliberately **not** blanket-ignored because committed Wolfram and
   arbiter transcripts may be dual-engine evidence.
-- The v3 ledger PDF is deliberately untracked while that paper is under
-  construction.
 
 Consequently, neither `output/` nor `.out` can be rejected merely by name.
 Tracked evidence is included only as a dependency of a selected report, step,
@@ -48,8 +56,10 @@ paper, or script family; it does not automatically receive its own capsule.
 
 ## What the scan found
 
-The candidate roots contain 7,839 tracked paths: 7,235 under `research/` and
-604 under `software/`. The raw filesystem is much larger—especially
+The initial broad scan of the candidate roots found 7,839 tracked paths: 7,235
+under `research/` and 604 under `software/`. Those historical scan totals
+precede the PDE-ledger exclusion and are not current eligible-corpus counts.
+The raw filesystem is much larger—especially
 `software/`, where ignored `_scratch/` content accounts for 120,979 files.
 
 The tracked research set contains:
@@ -60,10 +70,9 @@ The tracked research set contains:
 - 423 Wolfram Language files.
 - 20 TeX document entry points.
 
-Most of the apparent research volume is process history, not primary memory
-content: 3,752 tracked red-team paths and 863 tracked directive paths. These
-remain available for provenance disputes but are excluded from normal semantic
-extraction.
+Most of that initial apparent research volume was process history rather than
+primary memory content. The excluded ledger trees remain in Git for their own
+workflow, but are not provenance inputs to this memory.
 
 ## Research structure
 
@@ -95,55 +104,6 @@ Many of these families also have a small `scripts/` and/or `mathematica/`
 verification archive. The memory will catalog the referee/master harness or
 declared suite for each paper, not every theorem-step helper. Existing README
 and manifest files take precedence when identifying those entry points.
-
-### Componentized PDE lineages
-
-The PDE ledgers cannot be treated as one capsule per file.
-
-#### `research/pde_ledger/`
-
-This is a large archive ledger with two paper entry points, shared Parts I–VIII,
-and 253 stage cards. Its paper README declares the stage cards to be canonical
-per-stage provenance/audit anchors.
-
-Initial treatment: supporting historical lineage and Atlas-migration source.
-Do not generate 253 stage capsules. Read a stage file on demand when a selected
-current source or migrated firewall cites it.
-
-#### `research/pde_ledger_v2/`
-
-This is an intermediate rebuild lineage that remains directly cited by current
-software reports and v3 provenance. Its paper README and current tree are not
-sufficient to declare the whole lineage obsolete.
-
-Initial treatment: supporting lineage. Create capsules only for records that
-are dependencies of active v3 steps, current software results, or selected
-Atlas migrations.
-
-#### `research/pde_ledger_v3/`
-
-This is the active, self-contained requirements-first rebuild. It has:
-
-- Governance and status documents (`CHARTER.md`, `DEFECT_REGISTER.md`,
-  `SUBSTRATE_REQUIREMENTS.md`, and `V3_STEP_PLAN.md`).
-- A componentized TeX paper.
-- Completed/in-progress step-record families under `steps/`.
-- Paper-facing step cards under `paper/steps/`.
-- Paired SymPy and Wolfram engines plus comparators and export scripts.
-- Explicit `_measurements/` records.
-
-Initial treatment:
-
-- One governance/status capsule.
-- One paper capsule whose hash covers the componentized paper bundle.
-- One capsule and one script-family entry per completed step ID, grouping its
-  record, paper card, engines, comparators, and selected evidence.
-- Directives, review prompts, repair history, and `_scratch/` remain
-  citation-only unless a dispute requires them.
-
-This grouping is essential: a source unit may be a file or a bundle. Every
-bundle member is hashed independently, and changing any member refreshes the
-owning capsule without creating a second representation of every helper.
 
 ### PDE audit bundle
 
@@ -209,21 +169,17 @@ Initial treatment:
 
 ## Initial corpus size and shape
 
-The executable configuration now contains 32 initial source units:
+The executable configuration now contains 25 source units:
 
 - 16 monolithic paper capsules.
-- 1 v3 governance capsule.
-- 1 v3 paper capsule.
-- Explicit S9, S10, S11, unified S11b, and in-progress S11c step-family
-  capsules, with large outputs and export modules hashed identity-only.
 - 1 PDE-audit project capsule.
-- 3 software-project capsules.
-- Selected result capsules for Stage 1 and four EM/charge pipelines.
+- 8 software/result units covering Stage 1, force visualization, and five
+  EM/charge pipelines.
 - Script catalogs grouped by paper or software project.
 
 This stays within the planned 20–50 source-unit pilot while covering papers,
-componentized research, paired engines, explicit measurements, a supersession
-lineage, and executable software.
+paired engines, explicit measurements, scoped revision, and executable
+software.
 
 ## Execution order from here
 
@@ -234,8 +190,8 @@ lineage, and executable software.
    tree/blob snapshot.
 4. Run `memory status` before any semantic extraction; verify that it proposes
    only the source units above.
-5. Pilot extraction on one monolithic paper, one v3 step family, and one
-   software result family.
+5. Pilot extraction on one monolithic paper, one PDE-audit or changing
+   software family, and one software result family.
 6. Review the pilot for citation accuracy, status restraint, and usefulness.
 7. Populate the remaining initial corpus.
 8. Migrate Atlas firewalls/open gates/source crosswalks into the resulting

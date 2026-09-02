@@ -1,8 +1,8 @@
 # Phase 0 Retrieval Benchmark
 
 Status: baseline before population
-Benchmark version: 1
-Last updated: 2026-08-24
+Benchmark version: 2
+Last updated: 2026-09-01
 
 ## Purpose and protocol
 
@@ -29,6 +29,18 @@ For the migration gate:
 The proposed memory destinations below guide initial population. They may be
 renamed once if `index.md` keeps an explicit redirect/crosswalk and the same
 question remains answerable.
+
+## Retired cases
+
+The following IDs are permanently retired because their sources are outside
+the selected corpus; IDs are not reused:
+
+- `B03` — v3 work frontier.
+- `B04` — v3 interface-response revision.
+- `B06` — v3 S10 Python comparator.
+- `B07` — v3 S10 Wolfram audit.
+
+Active cases for version 2 are `B01`, `B02`, `B05`, and `B08`–`B12`.
 
 ## B01 — Latest moving-throat treatment
 
@@ -75,62 +87,6 @@ assumptions, preserves the mixed/open-system caveat, and cites original TeX
 rather than `FIREWALL_PROJECTION_NOT_REDUCTION` or another generated Atlas
 page.
 
-## B03 — Current v3 frontier and open gates
-
-**Question:** What is the current v3 work frontier, which nearby step family is
-closed, and which named requirements, defects, or gates still constrain the
-next work?
-
-**Expected memory destination:** `memory/topics/pde-ledger-v3-status.md` plus
-the v3 governance and current-step capsules.
-
-**Expected original source targets:**
-
-- `research/pde_ledger_v3/CHARTER.md` — `{#two-halves}` and
-  `{#falsification-standard}`
-- `research/pde_ledger_v3/V3_STEP_PLAN.md` — `{#s11b}` and
-  `{#s11b-split}`
-- `research/pde_ledger_v3/steps/S11b_RUN_CHECKLIST.md` — heading
-  `## ✅ Step record (step 12) DONE` and heading
-  `## ✅ Card re-point (step 13) DONE`
-- `research/pde_ledger_v3/steps/S11c_SCOPE.md` — headings `## The question`,
-  `## The requirements`, and `## Scope boundaries (G14 — do not let C swallow neighbours)`
-- `research/pde_ledger_v3/DEFECT_REGISTER.md` — heading
-  `## C. Open negatives and gaps` and explicit anchors `{#c12}` through
-  `{#c20}` where applicable
-- `research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md` — heading `## Entries`
-
-**Pass conditions:** The answer derives status from current governance and step
-records rather than directory shape, separates done/in-progress/open, and does
-not silently treat a dormant, named, or planned item as fixed.
-
-## B04 — Explicit revision inside the v3 lineage
-
-**Question:** Which later v3 step record explicitly revises or overturns an
-earlier interface-response conclusion, what is the scope of that revision, and
-what remains valid or open afterward?
-
-**Expected memory destination:** `memory/conflicts.md` and
-`memory/topics/pde-ledger-v3-status.md`.
-
-**Expected original source targets:**
-
-- `research/pde_ledger_v3/steps/S11bA_interface_response.md` — heading
-  `## ⭐⭐⭐ The headline — the leak is FREQUENCY-DEPENDENT`
-- `research/pde_ledger_v3/steps/S11bB_interface_assembly.md` — opening record
-  boundary and heading
-  `## ⭐⭐⭐ THE HEADLINE — the velocity-coupled leak costs an ENERGY RESERVOIR`
-- `research/pde_ledger_v3/steps/S11bB_interface_assembly.md` — heading
-  `### ⚠ Known limits — ⛔ recorded, not fixed`
-- `research/pde_ledger_v3/steps/S11b_interface_coupling_law.md` — headings
-  `## The result`, `## Static-or-instantaneous freezes, standing limits, and owed items`,
-  and `## Provenance`
-
-**Pass conditions:** The answer uses the explicit source relationship rather
-than recency alone, limits supersession to the affected statement/scope,
-retains the older position as lineage, and preserves the later record's known
-limits.
-
 ## B05 — Post-Newtonian chain and its status boundaries
 
 **Question:** Map the paper chain from the 1PN bridge and full 1PN assembly
@@ -161,61 +117,6 @@ the relevant paper capsules.
 **Pass conditions:** The answer provides a navigable lineage, does not flatten
 different theorem scopes into one “PN proved” statement, and makes the 4PN
 local/tail distinction and conditional/open boundaries retrievable.
-
-## B06 — Representative Python comparator
-
-**Question:** What does
-`research/pde_ledger_v3/scripts/S10_cross_engine_comparator.py` consume and
-compare, what categories and artifacts does it emit, and what does its final
-guard not establish?
-
-**Expected memory destination:** `memory/scripts/pde-ledger-v3.md`.
-
-**Expected original source targets:**
-
-- `research/pde_ledger_v3/scripts/S10_cross_engine_comparator.py` — module
-  docstring, class `ComparatorInputError`, and functions `read_transcript`,
-  `compare_records`, `compare_nullspace_basis`, `run`, and `main`
-- `research/pde_ledger_v3/scripts/out/S10_cross_engine_comparator.out` — tags
-  `CATEGORY: SUMMARY` and `FINAL_GUARD`
-- `research/pde_ledger_v3/steps/S10_two_transverse_photons.md` — heading
-  `## Live comparator: measured scope, not a blanket verdict`
-
-**Pass conditions:** The catalog entry names the input transcript grammar,
-comparison/output categories, tracked output, and guard boundary. It attributes
-interpretation to the step record and does not paraphrase an exit code as a
-physical verdict.
-
-## B07 — Representative Wolfram audit and paper-facing provenance
-
-**Question:** What object family does
-`research/pde_ledger_v3/mathematica/S10_brane_mode_spectrum_mathematica_audit.wl`
-construct and emit, and how can an agent trace a paper-facing S10 statement
-from card to step record, engine transcript, and comparator?
-
-**Expected memory destination:** `memory/scripts/pde-ledger-v3.md` plus the S10
-source-unit capsule.
-
-**Expected original source targets:**
-
-- `research/pde_ledger_v3/mathematica/S10_brane_mode_spectrum_mathematica_audit.wl`
-  — functions `buildPackage`, `runPackage`, `runSpectrum`, `runModeSet`, and
-  emitted tags `WL_S10_RUN_PAIRS`, `WL_S10_SKIPPED_PAIRS`, and
-  `WL_S10_EMITTED_TAG_COUNT`
-- `research/pde_ledger_v3/mathematica/out/S10_brane_mode_spectrum_mathematica_audit.out`
-  — corresponding `WL_S10_*` tags
-- `research/pde_ledger_v3/paper/steps/S10_two_transverse_photons.tex` —
-  `\label{step:S10}`
-- `research/pde_ledger_v3/steps/S10_two_transverse_photons.md` — headings
-  `## What was supplied and what was computed`,
-  `## Measured MAIN spectrum and count`, and
-  `## Claims this step still does not establish`
-- `research/pde_ledger_v3/scripts/out/S10_cross_engine_comparator.out` —
-  `CATEGORY: SUMMARY`
-
-**Pass conditions:** The answer distinguishes supplied premises from computed
-objects, names literal output provenance, traces the interpretive hop, and
-retains the step's explicit nonclaims and comparator-coverage limits.
 
 ## B08 — Stage-1 verdict
 
@@ -302,9 +203,60 @@ independence and literal evidence chain without importing a desired result; it
 separates decided tensor/diagnostic content from unresolved physical
 normalization, selection, and non-conservative contributions.
 
+## B11 — Material closure and nonlinear handoff
+
+**Question:** Which ingredients of the moving-throat PDE are already present,
+which constitutive/material closure is still missing, and why can that gap
+block a final nonlinear PDE even when the framework and audits are internally
+consistent?
+
+**Expected memory destination:**
+`memory/topics/material-closure-and-nonlinear-handoff.md` plus the PDE and
+PDE-audit capsules.
+
+**Expected original source targets:**
+
+- `research/pde/paper/pde.tex` — `\label{sec:status-parent}` and
+  `\label{sec:discussion-gap}`
+- `research/pde_audit/notes/stage_v2_29_superfluid_material_closure_gap.md` —
+  headings `## 1. What is already present`, `## 2. What is missing`, and
+  `## 3. Why this can block the final PDE`
+- `software/stage1_solver/STAGE1_VERDICT.md` — headings
+  `## Interpretation — what it means (and does NOT mean)` and
+  `## Open after Stage-1 (deferred)`
+
+**Pass conditions:** The answer distinguishes kinematic/geometric structure
+from material closure, preserves the scoped Stage-1 result, and does not treat
+an audit or numerical miss as a completed nonlinear theory.
+
+## B12 — Scoped Stage-1 status revision
+
+**Question:** Which build/status expectation in the Stage-1 README is revised
+by the later frozen verdict, what is the exact scope of that revision, and
+which README architecture and run instructions remain current?
+
+**Expected memory destination:** `memory/conflicts.md`,
+`memory/topics/stage1-branch-realization.md`, and the Stage-1 source capsules.
+
+**Expected original source targets:**
+
+- `software/stage1_solver/README.md` — headings `## Build status`,
+  `## How to run`, `## What to expect`, and
+  `### What the numbers mean — and what they do **not**`
+- `software/stage1_solver/STAGE1_VERDICT.md` — headings `## The test`,
+  `## The result — a robust MISS`, and
+  `## Interpretation — what it means (and does NOT mean)`
+
+**Pass conditions:** The answer treats the verdict as a section-scoped
+revision rather than whole-source supersession and keeps architecture,
+commands, and explicit nonclaims available.
+
 ## Recording a run
 
 Append run records only after the memory has been populated:
+
+Record one row for every active version-2 ID: `B01`, `B02`, `B05`, and
+`B08`–`B12`.
 
 ```markdown
 ### Run YYYY-MM-DD — <commit>

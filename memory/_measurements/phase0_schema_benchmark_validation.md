@@ -1,6 +1,9 @@
 # Phase 0 Schema and Benchmark Validation
 
 Date: 2026-08-24
+Superseded for current corpus selection: 2026-09-01 by
+[`pde_ledger_exclusion_validation.md`](pde_ledger_exclusion_validation.md).
+The historical validation below remains as recorded.
 Working directory: `/var/projects/toy_physics`
 
 This read-only check supports only the structural statement that the benchmark's

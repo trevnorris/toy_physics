@@ -1,6 +1,9 @@
 # Phase 0 Corpus Scan Measurement
 
 Date: 2026-08-24
+Superseded for current corpus selection: 2026-09-01 by
+[`pde_ledger_exclusion_validation.md`](pde_ledger_exclusion_validation.md).
+The historical scan below remains as recorded.
 Working directory: `/var/projects/toy_physics`
 
 This record supports the structural counts in `memory/_meta/CORPUS.md`. The

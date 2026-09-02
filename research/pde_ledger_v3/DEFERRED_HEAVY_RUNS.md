@@ -43,7 +43,7 @@ of headroom to be safe. Watch RSS; a Mathematica kernel can balloon and orphan �
   exact pid). Cause is intrinsic to the un-freeze physics itself, ⛔ not the double-checking: the correct
   un-frozen operator must hold its **full background jet tower un-reduced (~16 GB/case)** right up to the
   **final** `applyBackgroundProfileRetainingJets` reduction — reducing any earlier is the very re-freeze #89b
-  removes (rule 17). Per-case streaming (`directives/S11c_b_89b_wl_percase_streaming.md`, sha `9094251a`) frees
+  removes (rule 17). Per-case streaming (`directives/S11c_b_89b_wl_percase_streaming.md`; the streaming behavior — `KeyDrop` of `KERNEL_SOURCE_*` + `spoolAssociationValue` — is in the committed engine) frees
   between cases, but a single case's un-reduced operator is ~16 GB, so producing all four cases' operator emits
   does not fit 30 GB. ⇒ the **whole** in-band `.out` regen (the operator/kernel/μ_θ emits AND the two deferred
   controls below) is bigger-box work; on 30 GB the committed engine ships WITHOUT a fresh full `.out` and the

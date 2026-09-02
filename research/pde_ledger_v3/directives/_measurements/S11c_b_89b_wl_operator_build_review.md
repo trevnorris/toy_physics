@@ -1,8 +1,9 @@
 # S11c-b #89b WL operator un-freeze — build-review measurements (2 legs + orchestrator verification)
 
 Codex-written engine change (operator un-freeze + tractability + deferral gate). Two independent build-review
-legs on the working-tree engine `research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl`
-(uncommitted, +~750 lines vs #89a HEAD). Both worked at REDUCED SCALE (full-depth operator ~16 GB/case,
+legs on the then-working-tree engine `research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl`
+(+~750 lines vs #89a HEAD; NOW committed at `a1be8d8f` after the repair recorded below — line numbers here are
+pre-repair, shifted by ~+1 at HEAD). Both worked at REDUCED SCALE (full-depth operator ~16 GB/case,
 deferred to a bigger box). Prompt: `directives/_legs/S11c_b_89b_wl_operator_build_review.md`.
 
 ## Leg verdicts

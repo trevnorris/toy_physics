@@ -1,4 +1,4 @@
-# S11c-b strong-row jet-depth reconciliation (the #89b PY-check FLAG) — IN PROGRESS
+# S11c-b strong-row jet-depth reconciliation (the #89b PY-check FLAG) — PINNED (B)
 
 The #89b PY sibling freeze-check (`_measurements/S11c_b_89b_py_sibling_freeze_check.md`) surfaced a FLAG:
 PY caps strong rows at `STRONG_ROW_JET_DEPTH = 2` (Hessian) while WL #89b "emits 3rd-order background jets in the
@@ -7,8 +7,11 @@ as a spec question BEFORE reading it as physics. This record reconciles it. ⛔ 
 
 ## Step 0 — the σ_W-grade cannot be the discriminator (source read, both settled)
 
-- PY `background_jet_expression` (`sympy_audit.py:681-693`): a background jet of ANY order n carries exactly ONE
-  power of `sigma_W` (`sigma_W * profile_atom / L_W**(n-1)`); orders differ only by powers of `1/L_W`.
+- PY `background_jet_expression` (`sympy_audit.py:681-693`): for order n≥2 the expression carries exactly ONE
+  power of `sigma_W` directly (`sigma_W * profile_atom / L_W**(n-1)`); the order-1 case returns the bare first-jet
+  symbol (`:686`) which acquires its single `sigma_W` later via `PROFILE_GRADE_SUBS` (`grad_W → sigma_W·w1_grad`,
+  `:822`). ⇒ AFTER the profile substitution every jet order carries exactly one `sigma_W`; orders differ only by
+  powers of `1/L_W` (the committed stdout confirms: order-1 σ_W power 0 pre-subs vs power 1 for orders 2–3).
 - PY `retained_grade` → `first_shape_series` truncates ONLY `eta_bg <= 1` and `sigma_W <= 1` (`:883`, `:911`).
 - ⇒ the retained grade does NOT separate an order-2 Hessian jet from an order-3 jet (both are σ_W¹). Whether
   depth-2 is complete is therefore a question of whether a strong row GENERATES nonzero order-3 jets, which is
@@ -142,7 +145,9 @@ AGREE with each other and with the orchestrator's own PY probe — three consist
 4. PY keeps θ SEPARATE (`operator_from_density` returns `(operator, mu_theta_amplitude)`; the U-row is the
    unconstrained EL). Cross-check: PY's OWN constraint-reduced row reproduces WL's 10 order-3 atoms EXACTLY
    (Codex PY `CONSTRAINED_U_RETAINED` = `w1_profile_d1d1d1…d3d3d3` ↔ WL `widthProfileJet[3,0,0]…[0,0,3]`). So the
-   engines reproduce each other's objects — there is NO physics error, only a REPRESENTATION mismatch.
+   engines reproduce each other's objects (⚠ measured as matching MAX jet order + the same 10 order-3 atom NAMES on
+the probed case/term — one PY term, WL representative 16; NOT verified as full coefficient equality across all
+branches/densities) — there is NO physics error, only a REPRESENTATION mismatch.
 5. ⇒ `scripts/S11c_b_row_residual.py` on the bulk U-row WILL disagree, and reading it as "jet-depth convention" or
    "PY under-emits Hessians" is the WRONG diagnosis. The residual is the off-shell `∇μ_θ` constraint reaction.
 
@@ -169,7 +174,8 @@ this ties into the S11b interface/coupling law and #88 (KINETIC+θ) — the pin 
 transcripts `~/.s11_build/S11c_b_jet_depth/{codex,grok}_leg_verdict.log`): PINNED (B).** The slab U-momentum row is the
 constraint-reduced in-plane equation carrying `−∇μ_θ`; θ's virtual displacement is NOT independent. The earlier
 lean toward (A) is OVERTURNED. Decisive governing text (orchestrator-verified verbatim): `S11b_SHARED_PHYSICS.md`
-`:337` ("Do NOT vary U with θ held fixed") and `:426` ("the in-plane equation must carry `−∇(δU/δθ)` … varying at
+`:341-342` ("`δ_vθ, δ_v(δW), δ_vu` are not independent … Do NOT vary U with θ held fixed"; the constraint eq is at
+`:337`) and `:426` ("the in-plane equation must carry `−∇(δU/δθ)` … varying at
 fixed θ removes this contribution … selects the convention uniquely"); S11b's engine `…coupling_law_mathematica_
 audit.wl:280` (`constrainedUL = explicitUL + I k muTheta`). ⇒ **WL is correct; PY is the engine that must change**
 (fold S11b's virtual constraint into `U_MOMENTUM_ROWS` + thickness row, raise `STRONG_ROW_JET_DEPTH` 2→3, keep

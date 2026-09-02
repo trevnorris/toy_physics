@@ -19,11 +19,12 @@ and the consequence of each branch. Per rule 7 it gets two decision legs (Codex 
    is background-jet order **2** on BOTH engines. Retained-grade depth 3/4 generate nothing new (PY measured
    identical at depths 2,3,4; WL's raw energy EL measured order 2).
 3. The order-3 in WL's emitted `U_INTERNAL` is ENTIRELY the θ-constraint reaction: WL's
-   `constrainedRowsWithLiveEnergyEL` eliminates the virtual θ through the linearized mass balance
+   `constrainedRowsWithLiveEnergyEL` eliminates the virtual θ through the material virtual constraint `δ_vΣ_mat=0` (linearized)
    (`θ + (W0/W) e_W + u·∇W/W + Div u`), leaving `Inactive[Div]` of a flux that IS `μ_θ`; activating that outer Div
    with `W_bg` live adds one derivative → `∇μ_θ`, background-jet order **3** (10 atoms). PY reproduces the SAME 10
-   order-3 atoms when the same constraint is applied — so the engines agree on BOTH objects; they merely emit
-   DIFFERENT ones as the U-row.
+   order-3 atoms when the same constraint is applied — so the engines agree on BOTH objects (⚠ measured as matching
+   max jet order + the same 10 order-3 atom NAMES on the probed case/term — one PY term, WL representative 16; NOT
+   verified as full coefficient equality across all branches/densities); they merely emit DIFFERENT ones as the U-row.
 
 ## The two candidate objects (they differ by exactly the order-3 `∇μ_θ` constraint reaction)
 
@@ -31,7 +32,7 @@ and the consequence of each branch. Per rule 7 it gets two decision legs (Codex 
   (PY `operator_from_density`). θ is an independent DOF carrying its OWN row `μ_θ`; the constraint is NOT folded
   into the U-row. Bulk U-row max background-jet order 2.
 - **(B) θ-ELIMINATED.** The slab U-momentum row is the constraint-reduced momentum equation: S11b's binding
-  virtual-displacement rule eliminates virtual θ via the linearized mass balance, folding `∇μ_θ` into the U-row
+  virtual-displacement rule eliminates virtual θ via the material virtual constraint `δ_vΣ_mat=0` (linearized), folding `∇μ_θ` into the U-row
   (WL `constrainedRowsWithLiveEnergyEL`). Bulk U-row max background-jet order 3.
 
 ## Proposed resolution — (A), θ-INDEPENDENT — TO BE ADVERSARIALLY VERIFIED, not assumed
@@ -101,7 +102,7 @@ decisive citations verbatim against the source (rule 13). **PIN: (B) — the sla
 constraint-reduced in-plane equation carrying `−∇μ_θ`; θ's virtual displacement is NOT independent.**
 
 **Decisive governing text (orchestrator-verified verbatim):**
-- `S11b_SHARED_PHYSICS.md:337`: "Thus `δ_vθ, δ_v(δW), δ_vu` are not independent. ⛔ **Do NOT vary `U` with `θ`
+- `S11b_SHARED_PHYSICS.md:341-342` (constraint eq at `:337`): "Thus `δ_vθ, δ_v(δW), δ_vu` are not independent. ⛔ **Do NOT vary `U` with `θ`
   held fixed.** Impose the VIRTUAL CONSTRAINT either by eliminating one virtual variation or by a Lagrange
   multiplier… The **same** multiplier supplies the in-plane restoring force and the thickness term."
 - `S11b_SHARED_PHYSICS.md:426` (convention check a): "**The in-plane equation your variation produces must carry

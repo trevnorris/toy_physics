@@ -57,6 +57,28 @@ appendAssociationEmission[key_String, value_, first_:False] := Module[
   Flush[stream];
 ];
 
+spoolAssociationValue[value_] := Module[{path, stream, rendered},
+  path = CreateTemporary[];
+  stream = OpenWrite[path, PageWidth -> Infinity];
+  rendered = ToString[stripConditional[value], InputForm,
+    PageWidth -> Infinity];
+  WriteString[stream, rendered];
+  Close[stream];
+  path
+];
+
+appendAssociationEmissionFromSpool[key_String, path_String,
+    first_:False] := Module[{stream, rendered},
+  stream = First[$Output];
+  rendered = ReadString[path];
+  WriteString[stream, If[TrueQ[first], "", ", "] <>
+    ToString[key, InputForm, PageWidth -> Infinity] <> " -> " <>
+    rendered];
+  Flush[stream];
+  Clear[rendered];
+  DeleteFile[path];
+];
+
 endAssociationEmission[] := Module[{stream},
   stream = First[$Output];
   WriteString[stream, "|>\n"];
@@ -96,32 +118,55 @@ dimensionLambdaX = dimensionPressure - dimensionAffinity;
 dimensionMuTheta = dimensionEnergy;
 dimensionThicknessRow = dimensionEnergy;
 
-truncateScalar[expression_] := Module[
-  {operators, tokens, protected, first, second, restored},
-  operators = DeleteDuplicates[Cases[expression,
-    operator : Inactive[_][___] :> operator, {0, Infinity}]];
-  If[operators === {},
-    first = Quiet[Check[Normal[Series[expression, {etaBg, 0, 1}]],
-        expression]];
-    Return[Quiet[Check[Normal[Series[first, {sigmaW, 0, 1}]],
-      first]]]
-  ];
-  tokens = Table[inactiveOperatorToken[index],
-    {index, Length[operators]}];
-  protected = expression /. Thread[operators -> tokens];
-  first = Quiet[Check[Normal[Series[protected, {etaBg, 0, 1}]],
-      protected]];
-  second = Quiet[Check[Normal[Series[first, {sigmaW, 0, 1}]], first]];
-  restored = second /. Thread[tokens -> (truncateBackground /@ operators)];
-  restored
+backgroundSeriesGlobal[expression_] := Module[{first},
+  first = Quiet[Check[Normal[Series[expression, {etaBg, 0, 1}]],
+    expression]];
+  Quiet[Check[Normal[Series[first, {sigmaW, 0, 1}]], first]]
 ];
+
+(* Series is linear.  Applying it to each top-level summand avoids building
+   discarded cross-summand products in the large EL rows. *)
+backgroundSeriesPerSummand[expression_] := Total[
+  backgroundSeriesGlobal /@ If[Head[expression] === Plus,
+    List @@ expression, {expression}]];
+
+backgroundGradeCoefficient[expression_, etaOrder_Integer,
+    sigmaOrder_Integer] := Coefficient[
+  Coefficient[backgroundSeriesPerSummand[expression], etaBg,
+    etaOrder], sigmaW, sigmaOrder];
+polynomialBackgroundGradeCoefficient[expression_, etaOrder_Integer,
+    sigmaOrder_Integer] := Coefficient[
+  Coefficient[Expand[expression], etaBg, etaOrder], sigmaW,
+  sigmaOrder];
+
+(* Inactive Div is linear, while Series treats its arguments as opaque.
+   Expose the grades of each vector entry outside the Div before projecting,
+   so an exterior grade and an interior grade are counted jointly.  Nested
+   divergences are exposed from the inside out. *)
+exposeInactiveDivergenceGrades[
+    Inactive[Div][vector_List, coordinates_List]] := Module[
+  {innerVector, gradeVector},
+  innerVector = exposeInactiveDivergenceGrades /@ vector;
+  Total[Flatten[Table[
+    gradeVector = backgroundGradeCoefficient[#, etaOrder,
+        sigmaOrder] & /@ innerVector;
+    If[AllTrue[gradeVector, TrueQ[PossibleZeroQ[#]] &], Nothing,
+      etaBg^etaOrder sigmaW^sigmaOrder
+        Inactive[Div][gradeVector, coordinates]],
+    {etaOrder, 0, 1}, {sigmaOrder, 0, 1}]]]
+];
+exposeInactiveDivergenceGrades[expression_?AtomQ] := expression;
+exposeInactiveDivergenceGrades[expression_] :=
+  Map[exposeInactiveDivergenceGrades, expression];
+
+truncateScalar[expression_String] := expression;
+truncateScalar[expression_] := backgroundSeriesPerSummand[
+  exposeInactiveDivergenceGrades[expression]];
 truncateBackground[expression_Association] :=
   Map[truncateBackground, expression];
 truncateBackground[expression_List] := truncateBackground /@ expression;
 truncateBackground[expression_Rule] :=
   Rule[expression[[1]], truncateBackground[expression[[2]]]];
-truncateBackground[Inactive[head_][arguments___]] :=
-  Inactive[head] @@ (truncateBackground /@ {arguments});
 truncateBackground[expression_] := truncateScalar[expression];
 
 gradeTerms[expression_Association] := DeleteDuplicates[Sort[
@@ -357,8 +402,41 @@ profileRulesRetainingGeneratedJets[] := Module[{orders},
     {i, 0, 3}, {j, 0, 3}, {k, 0, 3}]]
 ];
 
+profileRulesRetainingGeneratedJets[maximumOrder_Integer] := Module[
+  {orders},
+  Flatten[Table[
+    orders = {i, j, k};
+    Which[
+      i + j + k == 0,
+        {widthBase[Sequence @@ spatialCoordinates] -> widthValue,
+          modulusBase[Sequence @@ spatialCoordinates] -> modulusValue},
+      1 <= i + j + k <= maximumOrder,
+        {Derivative[i, j, k][widthBase][
+            Sequence @@ spatialCoordinates] ->
+            sigmaW profileJetSymbol["W_BG", orders]/
+              LWidth^(i + j + k - 1),
+          Derivative[i, j, k][modulusBase][
+            Sequence @@ spatialCoordinates] ->
+            (muR/WZero) sigmaW
+              profileJetSymbol["MU_R_BG", orders]/
+              LWidth^(i + j + k - 1)},
+      i + j + k > maximumOrder,
+        {Derivative[i, j, k][widthBase][
+            Sequence @@ spatialCoordinates] -> 0,
+          Derivative[i, j, k][modulusBase][
+            Sequence @@ spatialCoordinates] -> 0},
+      True, Nothing],
+    {i, 0, Max[3, maximumOrder + 1]},
+    {j, 0, Max[3, maximumOrder + 1]},
+    {k, 0, Max[3, maximumOrder + 1]}]]
+];
+
 applyBackgroundProfileWithGeneratedJets[expression_] :=
   truncateBackground[expression /. profileRulesRetainingGeneratedJets[]];
+
+applyBackgroundProfileAtRetainingDepth[expression_,
+    maximumOrder_Integer] := truncateBackground[
+  expression /. profileRulesRetainingGeneratedJets[maximumOrder]];
 
 applyProfile[expression_, source_String:"BASE", direction_Integer:0] :=
   truncateBackground[expression /. profileRules[source, direction]];
@@ -1036,6 +1114,26 @@ constrainedRows[energy_, constraint_] := Module[
     "EW_INTERNAL" -> ewRow, "THETA_VARIATION_RULE" -> thetaRule|>
 ];
 
+constrainedRowsWithLiveEnergyEL[energy_, constraint_] := Module[
+  {muTheta, ewDerivative, uDerivative, thetaRule, variedDensity,
+    uRows, ewRow},
+  muTheta = activateSpatialDivergences[
+    variationalSource[energy, thetaField]];
+  ewDerivative = activateSpatialDivergences[
+    variationalSource[energy, eWField]];
+  uDerivative = activateSpatialDivergences[
+    variationalSource[energy, #]] & /@ uVector;
+  thetaRule = -(constraint -
+      Coefficient[constraint, virtualThetaField] virtualThetaField)/
+      Coefficient[constraint, virtualThetaField];
+  variedDensity = muTheta thetaRule + ewDerivative virtualEwField +
+    Dot[uDerivative, virtualUVector];
+  uRows = linearVirtualVariation[variedDensity, #] & /@ virtualUVector;
+  ewRow = linearVirtualVariation[variedDensity, virtualEwField];
+  <|"MU_THETA" -> muTheta, "U_INTERNAL" -> uRows,
+    "EW_INTERNAL" -> ewRow, "THETA_VARIATION_RULE" -> thetaRule|>
+];
+
 faceGeneralizedRows[faceAssociation_Association] := Module[
   {work, uRows, ewRow, centerRow},
   work = Total[faceAssociation[[All, "VIRTUAL_WORK"]]];
@@ -1127,7 +1225,7 @@ processFormModel[model_Association, source_String:"BASE",
   "ENERGY" -> applyProfile[model["ENERGY"], source, direction],
   "OPERATOR" -> applyProfile[model["OPERATOR"], source, direction]|>;
 
-evaluatedModel[route_String, branch_String, density_String,
+frozenEvaluatedModel[route_String, branch_String, density_String,
     source_String:"BASE", direction_Integer:0, corrupted_:False,
     formOnly_:False] := Module[
   {energyData, selectedRecords, energy, constraint, rows, width,
@@ -1194,11 +1292,193 @@ evaluatedModel[route_String, branch_String, density_String,
       "CORRUPTED" -> corrupted|>|>
 ];
 
+parametricGeneratedJetRules["PARAMETRIC_W"] := Join[
+  Thread[widthJetSymbols -> MapThread[Times,
+    {{widthFormOne, widthFormTwo, widthFormThree}, widthJetSymbols}]],
+  {widthProfileJet[i_, j_, k_] :>
+    widthFormOne^Boole[i > 0] widthFormTwo^Boole[j > 0]
+      widthFormThree^Boole[k > 0] widthProfileJet[i, j, k]}];
+parametricGeneratedJetRules["PARAMETRIC_MU"] := Join[
+  Thread[modulusJetSymbols -> MapThread[Times,
+    {{modulusFormOne, modulusFormTwo, modulusFormThree},
+      modulusJetSymbols}]],
+  {modulusProfileJet[i_, j_, k_] :>
+    modulusFormOne^Boole[i > 0] modulusFormTwo^Boole[j > 0]
+      modulusFormThree^Boole[k > 0] modulusProfileJet[i, j, k]}];
+parametricGeneratedJetRules[_String] := {};
+
+finalBackgroundReduction[expression_, source_String:"BASE"] :=
+  truncateBackground[
+    applyBackgroundProfileWithGeneratedJets[expression] /.
+      parametricGeneratedJetRules[source]];
+
+evaluatedModel[route_String, branch_String, density_String,
+    source_String:"BASE", direction_Integer:0, corrupted_:False,
+    formOnly_:False] := Module[
+  {energyData, selectedRecordsLive, energyLive, constraintLive, rowsLive,
+    rhoBrValueLive, facesLive, faceRowsLive, evolutionLive, kineticULive,
+    kineticEwLive, operatorLive, originsLive, divergenceSourceLive,
+    activatedOperator, activatedMuTheta, activatedOrigins,
+    activatedFaces, activatedDivergenceSource, activatedThetaRule,
+    selectedRecords, energy, constraint, muTheta, operator, origins,
+    facesData, divergenceSource, activationPostconditions,
+    elRowsActivated},
+  energyData = constructEnergyData[branch, widthBase, modulusBase];
+  selectedRecordsLive =
+    energyData["RECORDS"][[basisRepresentativeIndices]];
+  energyLive = Total[selectedRecordsLive[[All, "ENERGY_TERM"]]];
+  constraintLive = virtualConstraintSource[route, branch, density,
+    widthBase, corrupted];
+  rowsLive = constrainedRowsWithLiveEnergyEL[energyLive, constraintLive];
+  rhoBrValueLive = rhoBrBackground[density,
+    widthBase[Sequence @@ spatialCoordinates]];
+  facesLive = Association[Table[faceLabel[sign] ->
+    faceSources[route, branch, sign, widthBase, rowsLive["MU_THETA"],
+      rhoBrValueLive], {sign, faces}]];
+  faceRowsLive = faceGeneralizedRows[facesLive];
+  evolutionLive = evolutionSource[route, branch, density, widthBase];
+  kineticULive = rhoBrValueLive D[uVector, {time, 2}];
+  kineticEwLive = muW WZero^2 D[eWField, {time, 2}];
+  operatorLive = <|
+    "U_MOMENTUM_ROWS" -> (kineticULive + rowsLive["U_INTERNAL"] +
+      faceRowsLive["U_FACE"]),
+    "THICKNESS_ROW" -> (kineticEwLive + rowsLive["EW_INTERNAL"] +
+      faceRowsLive["EW_FACE"]),
+    "MASS_EVOLUTION_ROW" -> (evolutionLive["ACCUMULATION"] +
+      evolutionLive["ADVECTIVE"] + projectedFaceFlux[facesLive]),
+    "CENTER_FACE_GENERALIZED_ROW" -> faceRowsLive["CENTER_FACE"]|>;
+  originsLive = <|
+    "KINETIC" -> <|"U_MOMENTUM_ROWS" -> kineticULive,
+      "THICKNESS_ROW" -> kineticEwLive|>,
+    "BULK_ENERGY" -> <|
+      "U_MOMENTUM_ROWS" -> rowsLive["U_INTERNAL"],
+      "THICKNESS_ROW" -> rowsLive["EW_INTERNAL"],
+      "ENERGY_BASIS_LABELS" ->
+        selectedRecordsLive[[All, "LABEL"]]|>,
+    "FACE" -> <|"U_MOMENTUM_ROWS" -> faceRowsLive["U_FACE"],
+      "THICKNESS_ROW" -> faceRowsLive["EW_FACE"],
+      "CENTER_FACE_GENERALIZED_ROW" ->
+        faceRowsLive["CENTER_FACE"]|>,
+    "FLUX" -> projectedFaceFlux[facesLive],
+    "ADVECTIVE" -> evolutionLive["ADVECTIVE"],
+    "ACCUMULATION" -> evolutionLive["ACCUMULATION"]|>;
+  divergenceSourceLive = <|
+    "MU_THETA" -> variationalSource[energyLive, thetaField],
+    "U_ENERGY_VARIATIONS" ->
+      (variationalSource[energyLive, #] & /@ uVector),
+    "EW_ENERGY_VARIATION" ->
+      variationalSource[energyLive, eWField]|>;
+
+  (* The first energy EL has already been activated with live profiles.
+     Full activation here also expands the outer constrained divergences
+     before the reduced emitted surfaces are formed.  The separate live
+     kernel-source slots retain the divergence form required by the §3c
+     weak split. *)
+  activatedOperator = activateSpatialDivergences[operatorLive];
+  activatedMuTheta = activateSpatialDivergences[rowsLive["MU_THETA"]];
+  activatedOrigins = activateSpatialDivergences[originsLive];
+  activatedFaces = activateSpatialDivergences[facesLive];
+  activatedDivergenceSource =
+    activateSpatialDivergences[divergenceSourceLive];
+  activatedThetaRule =
+    activateSpatialDivergences[rowsLive["THETA_VARIATION_RULE"]];
+  elRowsActivated = activateSpatialDivergences[Join[
+    {rowsLive["MU_THETA"]}, rowsLive["U_INTERNAL"],
+    {rowsLive["EW_INTERNAL"]}]];
+  activationPostconditions = <|
+    "SLAB_OPERATOR" ->
+      derivativeNormalPostcondition[activatedOperator],
+    "MU_THETA_OPERATOR" ->
+      derivativeNormalPostcondition[activatedMuTheta],
+    "SLAB_OPERATOR_TERM_ORIGINS" ->
+      derivativeNormalPostcondition[activatedOrigins],
+    "FACE_SHAPE_SUBSTRATE" ->
+      derivativeNormalPostcondition[activatedFaces],
+    "DIVERGENCE_FORM_SOURCE" ->
+      derivativeNormalPostcondition[activatedDivergenceSource],
+    "EL_ROW_VECTOR" -> derivativeNormalPostcondition[elRowsActivated]|>;
+
+  selectedRecords = finalBackgroundReduction[selectedRecordsLive, source];
+  energy = finalBackgroundReduction[energyLive, source];
+  constraint = finalBackgroundReduction[constraintLive, source];
+  muTheta = finalBackgroundReduction[activatedMuTheta, source];
+  operator = finalBackgroundReduction[activatedOperator, source];
+  origins = finalBackgroundReduction[activatedOrigins, source];
+  facesData = finalBackgroundReduction[activatedFaces, source];
+  divergenceSource = finalBackgroundReduction[
+    activatedDivergenceSource, source];
+  If[TrueQ[formOnly], Return[<|
+    "SELECTED_RECORDS" -> selectedRecords,
+    "ENERGY" -> energy, "OPERATOR" -> operator,
+    "KERNEL_SOURCE_OPERATOR" -> operatorLive,
+    "ACTIVATION_POSTCONDITIONS" -> activationPostconditions,
+    "CONSTRUCTION_METADATA" -> <|"ROUTE" -> route,
+      "BRANCH" -> branch, "DENSITY" -> density,
+      "SOURCE" -> source, "DIRECTION" -> direction,
+      "CORRUPTED" -> corrupted|>|>]];
+  <|"SELECTED_RECORDS" -> selectedRecords, "ENERGY" -> energy,
+    "CONSTRAINT" -> constraint,
+    "THETA_VARIATION_RULE" -> finalBackgroundReduction[
+      activatedThetaRule, source],
+    "MU_THETA" -> muTheta, "OPERATOR" -> operator,
+    "ORIGINS" -> origins, "FACE_SUBSTRATE" -> facesData,
+    "DIVERGENCE_FORM_SOURCE" -> divergenceSource,
+    "KERNEL_SOURCE_OPERATOR" -> operatorLive,
+    "KERNEL_SOURCE_ORIGINS" -> originsLive,
+    "ACTIVATION_POSTCONDITIONS" -> activationPostconditions,
+    "CONSTRUCTION_METADATA" -> <|"ROUTE" -> route,
+      "BRANCH" -> branch, "DENSITY" -> density,
+      "SOURCE" -> source, "DIRECTION" -> direction,
+      "CORRUPTED" -> corrupted|>|>
+];
+
+activateSpatialDivergences[expression_Association] :=
+  Map[activateSpatialDivergences, expression];
+activateSpatialDivergences[expression_List] :=
+  activateSpatialDivergences /@ expression;
+activateSpatialDivergences[expression_Rule] := Rule[expression[[1]],
+  activateSpatialDivergences[expression[[2]]]];
 activateSpatialDivergences[expression_] := FixedPoint[ReplaceAll[#,
-  divergenceObject : Inactive[Div][vector_List, coordinates_List] :>
-    If[SameQ[coordinates, spatialCoordinates],
+  (Inactive[Div][vector_List, coordinates_List] /;
+      SameQ[coordinates, spatialCoordinates] &&
+        FreeQ[vector, HoldPattern[Inactive[Div][___]]]) :>
+    Sum[D[vector[[index]], coordinates[[index]]],
+      {index, Length[coordinates]}]] &, expression];
+
+(* The deliberately top-down reference is applied only to one scalar row at
+   a time.  Unlike the production activator it may expand an outer Div while
+   inner Divs remain, but on a scalar row it terminates and supplies the
+   independent tractability operand. *)
+activateSpatialDivergencesTopDownReference[expression_] := FixedPoint[
+  ReplaceAll[#,
+    (Inactive[Div][vector_List, coordinates_List] /;
+        SameQ[coordinates, spatialCoordinates]) :>
       Sum[D[vector[[index]], coordinates[[index]]],
-        {index, Length[coordinates]}], divergenceObject]] &, expression];
+        {index, Length[coordinates]}]] &, expression];
+
+mapOperatorScalarRows[function_, operator_Association] :=
+  AssociationMap[Function[row, If[ListQ[operator[row]],
+    function /@ operator[row], function[operator[row]]]],
+    Keys[operator]];
+
+activateOperatorPerRowTopDownReference[operator_Association] :=
+  mapOperatorScalarRows[activateSpatialDivergencesTopDownReference,
+    operator];
+
+nestedDivergenceCounts[operator_Association] :=
+  mapOperatorScalarRows[Function[row, Count[row,
+    HoldPattern[Inactive[Div][___]], {0, Infinity}]], operator];
+
+backgroundFunctionHeads = Join[widthHeads, modulusHeads];
+heldBackgroundOperationCount[expression_] := Length[Cases[expression,
+  held : HoldPattern[(D | Sum | If)[___]] /;
+    !FreeQ[held, Alternatives @@ backgroundFunctionHeads],
+  {0, Infinity}]];
+derivativeNormalPostcondition[expression_] := <|
+  "INACTIVE_DIVERGENCE_COUNT" -> Count[expression,
+    HoldPattern[Inactive[Div][___]], {0, Infinity}],
+  "HELD_BACKGROUND_OPERATION_COUNT" ->
+    heldBackgroundOperationCount[expression]|>;
 
 elRowVector[energy_, constraint_] := Module[{rows},
   rows = constrainedRows[energy, constraint];
@@ -1299,6 +1579,8 @@ modelRecord[model_Association] := <|
     Keys[model["OPERATOR"]]],
   "VIRTUAL_CONSTRAINT" -> objectRecord[model["CONSTRAINT"],
     dimensionZero, 0],
+  "THETA_VARIATION_RULE" -> objectRecord[
+    model["THETA_VARIATION_RULE"], dimensionZero, 0],
   "FACE_SHAPE_SUBSTRATE" ->
     faceSubstrateRecord[model["FACE_SUBSTRATE"]]|>;
 
@@ -1345,6 +1627,22 @@ splitDivergenceRows[rows_List] := Module[{termRows, divergenceRows,
   {divergenceRows, directRows}
 ];
 
+prepareWeakSplitTerm[term_] := If[divergenceTermQ[term],
+  Replace[term,
+    HoldPattern[coefficient_. Inactive[Div][flux_List,
+        coordinates_List]] /; SameQ[coordinates, spatialCoordinates] :>
+      activateSpatialDivergences[coefficient]
+        Inactive[Div][activateSpatialDivergences[flux], coordinates],
+    {0}],
+  activateSpatialDivergences[term]];
+
+prepareRowsForWeakSplit[rows_List] := Total[
+  prepareWeakSplitTerm /@ topLevelTerms[#]] & /@ rows;
+prepareOperatorForWeakSplit[operator_Association] :=
+  AssociationMap[Function[row, If[ListQ[operator[row]],
+    prepareRowsForWeakSplit[operator[row]],
+    First[prepareRowsForWeakSplit[{operator[row]}]]]], Keys[operator]];
+
 weakLongitudinalPair[potential_, testVector_List, rows_List] := Module[
   {split, divergenceRows, directRows, divergencePairing},
   split = splitDivergenceRows[rows];
@@ -1373,12 +1671,15 @@ weakPairingRecord[density_] := <|
   "IN_PLANE_BOUNDARY_TERM" -> 0,
   "SUPPORT" -> CompactInPlaneSupport|>;
 
-extractCoupling[model_Association] := Module[
-  {operator, transverseRows, thicknessRows, transverseToThickness,
+extractCouplingLive[model_Association] := Module[
+  {operatorSource, operator, transverseRows, thicknessRows,
+    transverseToThickness,
     thicknessToTransverse, forwardDensity, reverseDensity,
     reverseRelabelRules,
     reverseRelabeledDensity, adjointnessResidual},
-  operator = model["OPERATOR"];
+  operatorSource = Lookup[model, "KERNEL_SOURCE_OPERATOR",
+    model["OPERATOR"]];
+  operator = prepareOperatorForWeakSplit[operatorSource];
   transverseRows = linearRestrictedOperator[operator,
     transverseTrialVector, 0, 0];
   thicknessRows = linearRestrictedOperator[operator,
@@ -1440,6 +1741,22 @@ extractCoupling[model_Association] := Module[
       "PAIRING_DOMAIN" -> CompactInPlaneSupport|>|>
 ];
 
+extractCouplingData[model_Association] := Module[
+  {liveKernel, activatedKernel, source},
+  liveKernel = extractCouplingLive[model];
+  activatedKernel = activateSpatialDivergences[liveKernel];
+  source = If[KeyExistsQ[model, "CONSTRUCTION_METADATA"],
+    Lookup[model["CONSTRUCTION_METADATA"], "SOURCE", "BASE"], "BASE"];
+  <|"LIVE_KERNEL_AFTER_WEAK_SPLIT" -> liveKernel,
+    "ACTIVATED_KERNEL" -> activatedKernel,
+    "FINAL_KERNEL" -> finalBackgroundReduction[activatedKernel, source],
+    "ACTIVATION_POSTCONDITION" ->
+      derivativeNormalPostcondition[activatedKernel]|>
+];
+
+extractCoupling[model_Association] :=
+  extractCouplingData[model]["FINAL_KERNEL"];
+
 kernelDimensions = <|
   "TRANSVERSE_TO_THETA_EW_UL" -> <|
     "WEAK_PAIRING" -> dimensionEnergy|>,
@@ -1487,15 +1804,73 @@ simplifyWeakKernel[kernel_Association] := Module[
 ];
 
 kernelFromOrigin[originOperator_Association] := Module[{fakeModel},
-  fakeModel = <|"OPERATOR" -> <|
+  fakeModel = <|"KERNEL_SOURCE_OPERATOR" -> <|
     "U_MOMENTUM_ROWS" -> Lookup[originOperator,
       "U_MOMENTUM_ROWS", {0, 0, 0}],
     "THICKNESS_ROW" -> Lookup[originOperator, "THICKNESS_ROW", 0],
     "MASS_EVOLUTION_ROW" -> Lookup[originOperator,
-      "MASS_EVOLUTION_ROW", 0]|>, "ENERGY" -> 0|>;
+      "MASS_EVOLUTION_ROW", 0]|>, "OPERATOR" -> <||>,
+    "ENERGY" -> 0|>;
   KeyTake[extractCoupling[fakeModel],
     {"TRANSVERSE_TO_THETA_EW_UL", "THETA_EW_UL_TO_TRANSVERSE"}]
 ];
+
+originOperatorAssociation[name_String, origin_Association] := origin;
+originOperatorAssociation[name_String, origin_] /;
+    MemberQ[{"FLUX", "ADVECTIVE", "ACCUMULATION"}, name] :=
+  <|"MASS_EVOLUTION_ROW" -> origin|>;
+originOperatorAssociation[_String, _] := <||>;
+
+kernelOriginsFromOrigins[origins_Association] := Association[
+  KeyValueMap[Function[{name, origin}, name -> kernelFromOrigin[
+    originOperatorAssociation[name, origin]]], origins]];
+
+operatorFromOrigins[origins_Association] := <|
+  "U_MOMENTUM_ROWS" ->
+    Lookup[origins["KINETIC"], "U_MOMENTUM_ROWS", {0, 0, 0}] +
+    Lookup[origins["BULK_ENERGY"], "U_MOMENTUM_ROWS", {0, 0, 0}] +
+    Lookup[origins["FACE"], "U_MOMENTUM_ROWS", {0, 0, 0}],
+  "THICKNESS_ROW" ->
+    Lookup[origins["KINETIC"], "THICKNESS_ROW", 0] +
+    Lookup[origins["BULK_ENERGY"], "THICKNESS_ROW", 0] +
+    Lookup[origins["FACE"], "THICKNESS_ROW", 0],
+  "MASS_EVOLUTION_ROW" -> origins["ACCUMULATION"] +
+    origins["ADVECTIVE"] + origins["FLUX"],
+  "CENTER_FACE_GENERALIZED_ROW" ->
+    Lookup[origins["FACE"], "CENTER_FACE_GENERALIZED_ROW", 0]|>;
+
+kernelPairingSurface[kernel_Association] := <|
+  "TRANSVERSE_TO_THETA_EW_UL" ->
+    kernel["TRANSVERSE_TO_THETA_EW_UL"]["WEAK_PAIRING"][
+      "PAIRING_DENSITY_MODULO_COMPACT_SUPPORT_IBP"],
+  "THETA_EW_UL_TO_TRANSVERSE" ->
+    kernel["THETA_EW_UL_TO_TRANSVERSE"]["WEAK_PAIRING"][
+      "PAIRING_DENSITY_MODULO_COMPACT_SUPPORT_IBP"]|>;
+
+kernelOriginPairingSum[kernelOrigins_Association] := AssociationMap[
+  Function[block, Total[Map[
+    kernelPairingSurface[#][block] &, Values[kernelOrigins]]]],
+  {"TRANSVERSE_TO_THETA_EW_UL", "THETA_EW_UL_TO_TRANSVERSE"}];
+
+backgroundJetOrder[w1JetOne | w1JetTwo | w1JetThree |
+    m1JetOne | m1JetTwo | m1JetThree] := 1;
+backgroundJetOrder[widthProfileJet[orders__Integer]] := Total[{orders}];
+backgroundJetOrder[modulusProfileJet[orders__Integer]] := Total[{orders}];
+backgroundJetAtomsIn[expression_] := DeleteDuplicates[Cases[expression,
+  atom : (w1JetOne | w1JetTwo | w1JetThree | m1JetOne | m1JetTwo |
+      m1JetThree | widthProfileJet[__Integer] |
+      modulusProfileJet[__Integer]) :> atom, {0, Infinity}]];
+higherBackgroundJetAtomsIn[expression_] := Select[
+  backgroundJetAtomsIn[expression], backgroundJetOrder[#] >= 2 &];
+
+generatedBackgroundDerivativeDepth[expression_] := Max[Append[
+  Cases[expression,
+    HoldPattern[Derivative[orders__Integer][head_][___]] /;
+        MemberQ[{widthBase, modulusBase}, head] :> Total[{orders}],
+    {0, Infinity}], 0]];
+
+surfaceDifferenceJetAtoms[corrected_, frozen_] :=
+  backgroundJetAtomsIn[mapDifference[corrected, frozen]];
 
 (* ---------------------------------------------------------------------- *)
 (* Main variable-coefficient objects.                                    *)
@@ -1796,11 +2171,98 @@ Clear[energyBasisPayload, energyBasisCountPayload, newInvariantPayload,
 ClearSystemCache[];
 
 mainModels = <||>;
-Do[Module[{processed},
+mainKernels = <||>;
+mainKernelOrigins = <||>;
+mainKernelActivationPostconditions = <||>;
+skipHeavyControls =
+  StringQ[Environment["S11CB_SKIP_HEAVY_CONTROLS"]];
+deferredHeavyControlPayload = <|
+  "DEFERRED_HEAVY_CONTROL" -> True,
+  "REASON" -> "OOM on 30 GB box; full in-band run deferred to a bigger box (DEFERRED_HEAVY_RUNS.md); verified OUT-OF-BAND by the #89b build legs + tractability decision legs",
+  "RUN_FULL_WITH" -> "unset S11CB_SKIP_HEAVY_CONTROLS"|>;
+tractabilityPayload = If[skipHeavyControls,
+  deferredHeavyControlPayload, <||>];
+towerSpoolPaths = <||>;
+Do[Module[{key, processed, compactModel, kernelData, operatorLive,
+    operatorActivated, operatorDepth, operatorTruncated, operatorExtended,
+    kernelActivated, kernelDepth, kernelTruncated, kernelExtended,
+    towerCase, towerPath, tractableOperator, referenceOperator,
+    tractabilityCase},
+  key = caseKey[branch, density];
   processed = evaluatedModel["EULERIAN", branch, density];
-  AssociateTo[mainModels, caseKey[branch, density] -> processed];
-  Clear[processed];
-  ClearSystemCache[]],
+  operatorLive = processed["KERNEL_SOURCE_OPERATOR"];
+
+  kernelData = extractCouplingData[processed];
+  AssociateTo[mainKernels, key -> kernelData["FINAL_KERNEL"]];
+  AssociateTo[mainKernelActivationPostconditions,
+    key -> kernelData["ACTIVATION_POSTCONDITION"]];
+  AssociateTo[mainKernelOrigins, key -> kernelOriginsFromOrigins[
+    processed["KERNEL_SOURCE_ORIGINS"]]];
+
+  operatorActivated = activateSpatialDivergences[operatorLive];
+  operatorDepth = generatedBackgroundDerivativeDepth[operatorActivated];
+  operatorTruncated = applyBackgroundProfileAtRetainingDepth[
+    operatorActivated, Max[0, operatorDepth - 1]];
+  operatorExtended = applyBackgroundProfileAtRetainingDepth[
+    operatorActivated, operatorDepth + 1];
+  kernelActivated = kernelData["ACTIVATED_KERNEL"];
+  kernelDepth = generatedBackgroundDerivativeDepth[kernelActivated];
+  kernelTruncated = applyBackgroundProfileAtRetainingDepth[
+    kernelActivated, Max[0, kernelDepth - 1]];
+  kernelExtended = applyBackgroundProfileAtRetainingDepth[
+    kernelActivated, kernelDepth + 1];
+  towerCase = <|"SLAB_OPERATOR" -> <|
+      "LIVE_DIVERGENCE_FORM_OPERAND" -> operatorLive,
+      "RETAINED_DEPTH_OPERAND" -> processed["OPERATOR"],
+      "DEPTH_TRUNCATED_OPERAND" -> operatorTruncated,
+      "DEPTH_EXTENDED_OPERAND" -> operatorExtended,
+      "RESIDUAL_RETAINED_MINUS_TRUNCATED" ->
+        mapDifference[processed["OPERATOR"], operatorTruncated],
+      "RESIDUAL_RETAINED_MINUS_EXTENDED" ->
+        mapDifference[processed["OPERATOR"], operatorExtended]|>,
+    "COUPLING_KERNEL" -> <|
+      "LIVE_DERIVATIVE_NORMAL_OPERAND" -> kernelActivated,
+      "RETAINED_DEPTH_OPERAND" -> kernelData["FINAL_KERNEL"],
+      "DEPTH_TRUNCATED_OPERAND" -> kernelTruncated,
+      "DEPTH_EXTENDED_OPERAND" -> kernelExtended,
+      "RESIDUAL_RETAINED_MINUS_TRUNCATED" ->
+        mapDifference[kernelData["FINAL_KERNEL"], kernelTruncated],
+      "RESIDUAL_RETAINED_MINUS_EXTENDED" ->
+        mapDifference[kernelData["FINAL_KERNEL"], kernelExtended]|>|>;
+  towerPath = spoolAssociationValue[towerCase];
+  AssociateTo[towerSpoolPaths, key -> towerPath];
+  Clear[kernelData, operatorActivated, operatorDepth, operatorTruncated,
+    operatorExtended, kernelActivated, kernelDepth, kernelTruncated,
+    kernelExtended, towerCase, towerPath];
+  ClearSystemCache[];
+  Share[];
+
+  If[!skipHeavyControls,
+    tractableOperator = activateSpatialDivergences[operatorLive];
+    referenceOperator =
+      activateOperatorPerRowTopDownReference[operatorLive];
+    tractabilityCase = <|
+      "FULL_OPERATOR_RESIDUAL_TRACTABLE_MINUS_PER_ROW_TOP_DOWN" ->
+        mapDifference[tractableOperator, referenceOperator],
+      "INPUT_INACTIVE_DIVERGENCE_COUNT_BY_ROW" ->
+        nestedDivergenceCounts[operatorLive],
+      "TRACTABLE_DERIVATIVE_NORMAL_POSTCONDITION" ->
+        derivativeNormalPostcondition[tractableOperator],
+      "PER_ROW_TOP_DOWN_DERIVATIVE_NORMAL_POSTCONDITION" ->
+        derivativeNormalPostcondition[referenceOperator],
+      "ACTIVATION_CONSUMER_POSTCONDITIONS" -> Join[
+        processed["ACTIVATION_POSTCONDITIONS"], <|
+          "COUPLING_KERNEL" ->
+            mainKernelActivationPostconditions[key]|>]|>;
+    AssociateTo[tractabilityPayload, key -> tractabilityCase]];
+
+  compactModel = KeyDrop[processed,
+    {"KERNEL_SOURCE_OPERATOR", "KERNEL_SOURCE_ORIGINS"}];
+  AssociateTo[mainModels, key -> compactModel];
+  Clear[processed, compactModel, operatorLive, tractableOperator,
+    referenceOperator, tractabilityCase];
+  ClearSystemCache[];
+  Share[]],
   {branch, branches}, {density, densities}];
 
 slabOperatorPayload = Map[modelRecord, mainModels];
@@ -1812,6 +2274,15 @@ operatorOriginsPayload = Map[Function[model,
   mainModels];
 emitShared["SLAB_OPERATOR_TERM_ORIGINS", operatorOriginsPayload];
 Clear[operatorOriginsPayload];
+
+slabOriginSumResidualPayload = AssociationMap[Function[key, <|
+  "RESIDUAL_ORIGINS_SUM_MINUS_PRODUCTION" -> preparedObjectRecord[
+    mapDifference[operatorFromOrigins[mainModels[key]["ORIGINS"]],
+      mainModels[key]["OPERATOR"]], modelDimensions, 1]|>],
+  Keys[mainModels]];
+emitShared["SLAB_OPERATOR_TERM_ORIGINS_SUM_RESIDUAL",
+  slabOriginSumResidualPayload];
+Clear[slabOriginSumResidualPayload];
 
 muThetaPayload = Association[KeyValueMap[Function[{key, model},
   key -> <|
@@ -1826,17 +2297,35 @@ muThetaPayload = Association[KeyValueMap[Function[{key, model},
 emitShared["MU_THETA_OPERATOR", muThetaPayload];
 Clear[muThetaPayload];
 
-mainKernels = Map[extractCoupling, mainModels];
+beginAssociationEmission[
+  sharedObject["CONTROL_BACKGROUND_JET_TOWER_OPERANDS"]];
+firstTowerEmission = True;
+Do[Module[{key},
+  key = caseKey[branch, density];
+  appendAssociationEmissionFromSpool[key, towerSpoolPaths[key],
+    firstTowerEmission];
+  firstTowerEmission = False;
+  ClearSystemCache[]],
+  {branch, branches}, {density, densities}];
+endAssociationEmission[];
+Clear[firstTowerEmission, towerSpoolPaths];
 couplingKernelPayload = Map[kernelRecord, mainKernels];
 emitShared["COUPLING_KERNEL", couplingKernelPayload];
 Clear[couplingKernelPayload];
 
-kernelOriginsPayload = Map[Function[model, preparedObjectRecord[
-  Map[Function[origin,
-    kernelFromOrigin[If[AssociationQ[origin], origin, <||>]]],
-    model["ORIGINS"]], kernelDimensions, 1]], mainModels];
+kernelOriginsPayload = Map[Function[origins, preparedObjectRecord[
+  origins, kernelDimensions, 1]], mainKernelOrigins];
 emitShared["COUPLING_KERNEL_TERM_ORIGINS", kernelOriginsPayload];
 Clear[kernelOriginsPayload];
+
+kernelOriginSumResidualPayload = AssociationMap[Function[key, <|
+  "RESIDUAL_ORIGINS_SUM_MINUS_PRODUCTION" -> preparedObjectRecord[
+    mapDifference[kernelOriginPairingSum[mainKernelOrigins[key]],
+      kernelPairingSurface[mainKernels[key]]], kernelDimensions, 1]|>],
+  Keys[mainModels]];
+emitShared["COUPLING_KERNEL_TERM_ORIGINS_SUM_RESIDUAL",
+  kernelOriginSumResidualPayload];
+Clear[kernelOriginSumResidualPayload];
 
 (* ---------------------------------------------------------------------- *)
 (* Background-order admissibility pairing.                               *)
@@ -1973,32 +2462,222 @@ emitShared["REP_INVARIANCE_RESIDUAL", representationResidual];
 
 independenceBase = <||>;
 independenceCorrupted = <||>;
-Do[Module[{key, base, corrupted},
+independenceResidual = <||>;
+Do[Module[{key, base, corrupted, basePackage, corruptedPackage},
   key = caseKey[branch, density];
   base = mainModels[key];
-  corrupted = evaluatedModel["EULERIAN", branch, density,
-    "BASE", 0, True];
-  AssociateTo[independenceBase, key -> <|
-    "SLAB_OPERATOR" -> base["OPERATOR"],
-    "COUPLING_KERNEL" -> mainKernels[key],
-    "ADMISSIBILITY_OPERATOR" -> backgroundBalanceFromModel[base]|>];
-  AssociateTo[independenceCorrupted, key -> <|
-    "SLAB_OPERATOR" -> corrupted["OPERATOR"],
-    "COUPLING_KERNEL" -> extractCoupling[corrupted],
-    "ADMISSIBILITY_OPERATOR" -> backgroundBalanceFromModel[corrupted]|>]],
+  If[branch === First[branches],
+    corrupted = evaluatedModel["EULERIAN", branch, density,
+      "BASE", 0, True];
+    basePackage = <|
+      "SLAB_OPERATOR" -> base["OPERATOR"],
+      "COUPLING_KERNEL" -> mainKernels[key],
+      "ADMISSIBILITY_OPERATOR" -> backgroundBalanceFromModel[base]|>;
+    corruptedPackage = <|
+      "SLAB_OPERATOR" -> corrupted["OPERATOR"],
+      "COUPLING_KERNEL" -> extractCoupling[corrupted],
+      "ADMISSIBILITY_OPERATOR" ->
+        backgroundBalanceFromModel[corrupted]|>;
+    AssociateTo[independenceBase,
+      key -> comparisonPackageRecord[basePackage]];
+    AssociateTo[independenceCorrupted,
+      key -> comparisonPackageRecord[corruptedPackage]];
+    AssociateTo[independenceResidual, key -> <|
+      "RESIDUAL_A_MINUS_B" -> comparisonPackageResidualRecord[
+        basePackage, corruptedPackage]|>],
+    AssociateTo[independenceBase, key -> <|
+      "VALIDATED_ON_REPRESENTATIVE_BRANCH" ->
+        caseKey[First[branches], density]|>];
+    AssociateTo[independenceCorrupted, key -> <|
+      "VALIDATED_ON_REPRESENTATIVE_BRANCH" ->
+        caseKey[First[branches], density]|>];
+    AssociateTo[independenceResidual, key -> <|
+      "VALIDATED_ON_REPRESENTATIVE_BRANCH" ->
+        caseKey[First[branches], density]|>]]],
   {branch, branches}, {density, densities}];
 emitShared["CONTROL_INDEPENDENCE_BASE_OPERAND",
-  Map[comparisonPackageRecord, independenceBase]];
+  independenceBase];
 emitShared["CONTROL_INDEPENDENCE_CORRUPTED_OPERAND",
-  Map[comparisonPackageRecord, independenceCorrupted]];
-emitShared["CONTROL_INDEPENDENCE_RESIDUAL", AssociationMap[
-  Function[key, <|"RESIDUAL_A_MINUS_B" ->
-    comparisonPackageResidualRecord[independenceBase[key],
-      independenceCorrupted[key]]|>],
-  Keys[independenceBase]]];
+  independenceCorrupted];
+emitShared["CONTROL_INDEPENDENCE_RESIDUAL", independenceResidual];
 
 Clear[representationEulerian, representationMaterial,
-  representationResidual, independenceBase, independenceCorrupted];
+  representationResidual, independenceBase, independenceCorrupted,
+  independenceResidual];
+ClearSystemCache[];
+
+(* ---------------------------------------------------------------------- *)
+(* Live-operator controls: replay, jet ablations, depth, and tractability. *)
+(* ---------------------------------------------------------------------- *)
+
+originNumericSurface[origin_Association] :=
+  KeyDrop[origin, {"ENERGY_BASIS_LABELS"}];
+originNumericSurface[origin_] := origin;
+surfaceHessianWitnessPayload = If[skipHeavyControls,
+  deferredHeavyControlPayload, <||>];
+
+beginAssociationEmission[
+  sharedObject["CONTROL_OPERATOR_REFREEZE_REGRESSION_OPERAND"]];
+firstRegressionEmission = True;
+Do[Module[{key, frozenModel, frozenComparisonModel, frozenKernel,
+    frozenKernelOrigins, replayCase, witnessCase},
+  key = caseKey[branch, density];
+  frozenModel = frozenEvaluatedModel["EULERIAN", branch, density];
+  frozenKernel = extractCoupling[frozenModel];
+  replayCase = <|"SLAB_OPERATOR" -> preparedObjectRecord[
+      frozenModel["OPERATOR"], modelDimensions, 1],
+    "COUPLING_KERNEL" -> kernelRecord[frozenKernel]|>;
+  appendAssociationEmission[key, replayCase, firstRegressionEmission];
+  firstRegressionEmission = False;
+  Clear[replayCase];
+  ClearSystemCache[];
+
+  If[!skipHeavyControls,
+    frozenComparisonModel = AssociationMap[
+      Function[slot, activateSpatialDivergences[frozenModel[slot]]],
+      {"OPERATOR", "MU_THETA", "CONSTRAINT", "THETA_VARIATION_RULE",
+        "ORIGINS", "DIVERGENCE_FORM_SOURCE", "FACE_SUBSTRATE"}];
+    frozenKernelOrigins = kernelOriginsFromOrigins[frozenModel["ORIGINS"]];
+    witnessCase = <|
+      "SLAB_OPERATOR_ROWS" -> AssociationMap[Function[row,
+        surfaceDifferenceJetAtoms[
+          mainModels[key]["OPERATOR"][row],
+          frozenComparisonModel["OPERATOR"][row]]],
+        Keys[mainModels[key]["OPERATOR"]]],
+      "MU_THETA_OPERATOR" -> surfaceDifferenceJetAtoms[
+        mainModels[key]["MU_THETA"], frozenComparisonModel["MU_THETA"]],
+      "DENSITY_CONSTRAINT" -> <|
+        "VIRTUAL_CONSTRAINT" -> surfaceDifferenceJetAtoms[
+          activateSpatialDivergences[mainModels[key]["CONSTRAINT"]],
+          frozenComparisonModel["CONSTRAINT"]],
+        "THETA_VARIATION_RULE" -> surfaceDifferenceJetAtoms[
+          mainModels[key]["THETA_VARIATION_RULE"],
+          frozenComparisonModel["THETA_VARIATION_RULE"]]|>,
+      "COUPLING_KERNEL_BLOCKS" -> AssociationMap[Function[block,
+        surfaceDifferenceJetAtoms[
+          kernelPairingSurface[mainKernels[key]][block],
+          kernelPairingSurface[frozenKernel][block]]],
+        {"TRANSVERSE_TO_THETA_EW_UL", "THETA_EW_UL_TO_TRANSVERSE"}],
+      "SLAB_OPERATOR_TERM_ORIGINS" -> AssociationMap[Function[origin,
+        surfaceDifferenceJetAtoms[
+          originNumericSurface[mainModels[key]["ORIGINS"][origin]],
+          originNumericSurface[
+            frozenComparisonModel["ORIGINS"][origin]]]],
+        Keys[mainModels[key]["ORIGINS"]]],
+      "COUPLING_KERNEL_TERM_ORIGINS" -> AssociationMap[
+        Function[origin, AssociationMap[Function[block,
+          surfaceDifferenceJetAtoms[
+            kernelPairingSurface[mainKernelOrigins[key][origin]][block],
+            kernelPairingSurface[frozenKernelOrigins[origin]][block]]],
+          {"TRANSVERSE_TO_THETA_EW_UL",
+            "THETA_EW_UL_TO_TRANSVERSE"}]],
+        Keys[mainKernelOrigins[key]]],
+      "DIVERGENCE_FORM_SOURCE" -> AssociationMap[Function[sourceRow,
+        surfaceDifferenceJetAtoms[
+          mainModels[key]["DIVERGENCE_FORM_SOURCE"][sourceRow],
+          frozenComparisonModel[
+            "DIVERGENCE_FORM_SOURCE"][sourceRow]]],
+        Keys[mainModels[key]["DIVERGENCE_FORM_SOURCE"]]],
+      "FACE_SHAPE_SUBSTRATE" -> AssociationMap[Function[face,
+        AssociationMap[Function[field, surfaceDifferenceJetAtoms[
+          mainModels[key]["FACE_SUBSTRATE"][face][field],
+          frozenComparisonModel["FACE_SUBSTRATE"][face][field]]],
+          Keys[mainModels[key]["FACE_SUBSTRATE"][face]]]],
+        Keys[mainModels[key]["FACE_SUBSTRATE"]]]|>;
+    AssociateTo[surfaceHessianWitnessPayload, key -> witnessCase]];
+  Clear[frozenModel, frozenComparisonModel, frozenKernel,
+    frozenKernelOrigins, witnessCase];
+  ClearSystemCache[];
+  Share[]],
+  {branch, branches}, {density, densities}];
+endAssociationEmission[];
+Clear[firstRegressionEmission];
+
+beginAssociationEmission[
+  sharedObject["CONTROL_OPERATOR_HESSIAN_ZERO_ABLATION"]];
+firstHessianEmission = True;
+Do[Module[
+  {key, operatorAtoms, kernelAtoms, operatorAblated, kernelAblated,
+    hessianCase},
+  key = caseKey[branch, density];
+  operatorAtoms = higherBackgroundJetAtomsIn[
+    mainModels[key]["OPERATOR"]];
+  kernelAtoms = higherBackgroundJetAtomsIn[mainKernels[key]];
+  operatorAblated = mainModels[key]["OPERATOR"] /.
+    Thread[operatorAtoms -> 0];
+  kernelAblated = mainKernels[key] /. Thread[kernelAtoms -> 0];
+  hessianCase = <|"SLAB_OPERATOR" -> <|
+      "ABLATION_ATOMS_FROM_EMITTED_SURFACE" -> operatorAtoms,
+      "ABLATION_OPERAND" -> operatorAblated,
+      "RESIDUAL_CORRECTED_MINUS_ABLATED" ->
+        mapDifference[mainModels[key]["OPERATOR"], operatorAblated]|>,
+    "COUPLING_KERNEL" -> <|
+      "ABLATION_ATOMS_FROM_EMITTED_SURFACE" -> kernelAtoms,
+      "ABLATION_OPERAND" -> kernelAblated,
+      "RESIDUAL_CORRECTED_MINUS_ABLATED" ->
+        mapDifference[mainKernels[key], kernelAblated]|>|>;
+  appendAssociationEmission[key, hessianCase, firstHessianEmission];
+  firstHessianEmission = False;
+  Clear[operatorAtoms, kernelAtoms, operatorAblated, kernelAblated,
+    hessianCase];
+  ClearSystemCache[]],
+  {branch, branches}, {density, densities}];
+endAssociationEmission[];
+Clear[firstHessianEmission];
+ClearSystemCache[];
+
+emitShared["CONTROL_SURFACE_BACKGROUND_JET_DIFFERENCE_ATOMS",
+  surfaceHessianWitnessPayload];
+Clear[surfaceHessianWitnessPayload];
+
+emitShared["CONTROL_TRACTABLE_ACTIVATION_EQUIVALENCE",
+  tractabilityPayload];
+Clear[tractabilityPayload, skipHeavyControls,
+  deferredHeavyControlPayload];
+ClearSystemCache[];
+
+gradeSupportEnergy = (etaBg + sigmaW)
+  D[thetaField, xOne]^2/2;
+gradeSupportConstraint = virtualThetaField +
+  (etaBg + sigmaW) virtualEwField;
+gradeSupportRaw = constrainedRows[gradeSupportEnergy,
+  gradeSupportConstraint]["EW_INTERNAL"];
+gradeSupportProjected = truncateBackground[gradeSupportRaw];
+emitShared["CONTROL_GRADE_SUPPORT_OPERAND", <|
+  "EL_OPERAND_BEFORE_PROJECTION" -> gradeSupportRaw,
+  "EL_OPERAND_AFTER_GLOBAL_PROJECTION" -> gradeSupportProjected,
+  "INPUT_GRADE_COEFFICIENTS" -> <|
+    "ETA_0_SIGMA_2" -> polynomialBackgroundGradeCoefficient[
+      exposeInactiveDivergenceGrades[gradeSupportRaw], 0, 2],
+    "ETA_1_SIGMA_1" -> polynomialBackgroundGradeCoefficient[
+      exposeInactiveDivergenceGrades[gradeSupportRaw], 1, 1]|>,
+  "PROJECTED_GRADE_COEFFICIENTS" -> <|
+    "ETA_0_SIGMA_2" -> polynomialBackgroundGradeCoefficient[
+      gradeSupportProjected, 0, 2],
+    "ETA_1_SIGMA_1" -> polynomialBackgroundGradeCoefficient[
+      gradeSupportProjected, 1, 1]|>|>];
+
+seriesControlEnergy = (etaBg + sigmaW)
+  D[thetaField, xOne]^2/2;
+seriesControlConstraint = (1 + etaBg seriesDenominator)
+    virtualThetaField + (1 + sigmaW seriesNumerator)
+      virtualEwField;
+seriesControlExpression = exposeInactiveDivergenceGrades[
+  constrainedRows[seriesControlEnergy, seriesControlConstraint][
+    "EW_INTERNAL"]];
+seriesControlPerSummand =
+  backgroundSeriesPerSummand[seriesControlExpression];
+seriesControlGlobal = backgroundSeriesGlobal[seriesControlExpression];
+emitShared["CONTROL_SERIES_LINEARITY_EQUIVALENCE", <|
+  "RATIONAL_EL_OPERAND" -> seriesControlExpression,
+  "PER_SUMMAND_SERIES_OPERAND" -> seriesControlPerSummand,
+  "GLOBAL_SERIES_OPERAND" -> seriesControlGlobal,
+  "RESIDUAL_PER_SUMMAND_MINUS_GLOBAL" ->
+    seriesControlPerSummand - seriesControlGlobal|>];
+Clear[gradeSupportEnergy, gradeSupportConstraint, gradeSupportRaw,
+  gradeSupportProjected, seriesControlEnergy, seriesControlConstraint,
+  seriesControlExpression, seriesControlPerSummand,
+  seriesControlGlobal];
 ClearSystemCache[];
 
 (* ---------------------------------------------------------------------- *)
@@ -2040,7 +2719,8 @@ Do[Module[{baseline, baselineKernel, value, key},
   {branch, branches}, {density, densities}];
 endAssociationEmission[];
 
-Clear[mainModels, mainKernels];
+Clear[mainModels, mainKernels, mainKernelActivationPostconditions,
+  mainKernelOrigins];
 ClearSystemCache[];
 
 formParameters = {widthFormOne, widthFormTwo, widthFormThree,
@@ -2064,6 +2744,7 @@ Do[Module[{parametric, parametricKernel, ablated, ablatedKernel,
   parametric = evaluatedModel["EULERIAN", branch, density,
     parametricSourceName[source], 0, False, True];
   parametricKernel = extractCoupling[parametric];
+  parametric = KeyDrop[parametric, {"KERNEL_SOURCE_OPERATOR"}];
   Do[
     rules = formAblationRules[source, direction];
     ablated = parametric /. rules;
@@ -2094,6 +2775,7 @@ Do[Module[{parametric, parametricKernel, baseline, baselineKernel,
   parametric = evaluatedModel["EULERIAN", branch, density,
     parametricSourceName[source], 0, False, True];
   parametricKernel = extractCoupling[parametric];
+  parametric = KeyDrop[parametric, {"KERNEL_SOURCE_OPERATOR"}];
   baseline = parametric /. formBaseRules;
   baselineKernel = parametricKernel /. formBaseRules;
   Do[
@@ -2195,6 +2877,8 @@ planeWaveCoefficient[expression_] := Module[{rules, reduced},
 
 uniformS11b = uniformS11bModel[];
 uniformS11bKernel = simplifyWeakKernel[extractCoupling[uniformS11b]];
+uniformS11bComparisonOperator =
+  activateSpatialDivergences[uniformS11b["OPERATOR"]];
 
 uniformLimitS11cbOperand = <||>;
 uniformLimitS11bOperand = <||>;
@@ -2211,10 +2895,10 @@ Do[Module[{key, model, operatorLimit, kernelLimit},
     "TRANSVERSE_DISPERSION" -> planeWaveCoefficient[
       operatorLimit["U_MOMENTUM_ROWS"]]|>];
   AssociateTo[uniformLimitS11bOperand, key -> <|
-    "SLAB_OPERATOR" -> uniformS11b["OPERATOR"],
+    "SLAB_OPERATOR" -> uniformS11bComparisonOperator,
     "COUPLING_KERNEL" -> uniformS11bKernel,
     "TRANSVERSE_DISPERSION" -> planeWaveCoefficient[
-      uniformS11b["OPERATOR"]["U_MOMENTUM_ROWS"]]|>];
+      uniformS11bComparisonOperator["U_MOMENTUM_ROWS"]]|>];
   Clear[model, operatorLimit, kernelLimit];
   ClearSystemCache[];
   Share[]],
@@ -2244,7 +2928,8 @@ emitShared["UNIFORM_LIMIT_RESIDUAL", AssociationMap[Function[key, <|
     uniformLimitS11cbOperand[key], uniformLimitS11bOperand[key]]|>],
   Keys[uniformLimitS11cbOperand]]];
 Clear[uniformLimitS11cbOperand, uniformLimitS11bOperand, uniformS11b,
-  uniformS11bKernel, mainModels, mainKernels];
+  uniformS11bKernel, uniformS11bComparisonOperator, mainModels,
+  mainKernels];
 ClearSystemCache[];
 
 (* ---------------------------------------------------------------------- *)
@@ -2275,25 +2960,75 @@ newInvariantDimensions = Association[Flatten[Table[
     {newInvariantLabels[source, False], o3KroneckerBlueprints}],
   {source, profileSources}], 1]];
 
+primitiveHeadDimensions = <|uOne -> dimensionU, uTwo -> dimensionU,
+  uThree -> dimensionU, thetaWave -> dimensionTheta,
+  eWave -> dimensionEw, widthBase -> dimensionL,
+  modulusBase -> dimensionEnergy|>;
+primitiveSymbolDimensions = <|WZero -> dimensionL,
+  muR -> dimensionEnergy, etaBg -> dimensionZero,
+  sigmaW -> dimensionZero|>;
+primitiveExpressionDimension[expression_?NumericQ] := dimensionZero;
+primitiveExpressionDimension[
+    HoldPattern[Derivative[orders__Integer][head_][___]]] /;
+      KeyExistsQ[primitiveHeadDimensions, head] := Module[
+  {orderList},
+  orderList = {orders};
+  primitiveHeadDimensions[head] -
+    Total[Take[orderList, UpTo[3]]] dimensionL -
+    If[Length[orderList] >= 4, orderList[[4]] dimensionT,
+      dimensionZero]
+];
+primitiveExpressionDimension[head_[___]] /;
+    KeyExistsQ[primitiveHeadDimensions, head] :=
+  primitiveHeadDimensions[head];
+primitiveExpressionDimension[Power[base_, exponent_?NumericQ]] :=
+  exponent primitiveExpressionDimension[base];
+primitiveExpressionDimension[expression_Times] := Total[
+  primitiveExpressionDimension /@ (List @@ expression)];
+primitiveExpressionDimension[expression_Plus] := Module[{dimensions},
+  dimensions = DeleteDuplicates[
+    primitiveExpressionDimension /@ (List @@ expression)];
+  If[Length[dimensions] == 1, First[dimensions],
+    InhomogeneousPrimitiveDimensions @@ dimensions]
+];
+primitiveExpressionDimension[symbol_Symbol] := Lookup[
+  primitiveSymbolDimensions, symbol, dimensionZero];
+primitiveExpressionDimension[expression_] :=
+  UnassignedPrimitiveDimension[HoldForm[expression]];
+
+dimensionAuditData = constructEnergyData["LAB_HELD", widthBase,
+  modulusBase];
+dimensionAuditInvariantMap = Association[Map[
+  #1["LABEL"] -> #1["INVARIANT"] &,
+  Select[dimensionAuditData["RECORDS"],
+    !MemberQ[uniformLabels, #1["LABEL"]] &]]];
+
 newInvariantDimensionPayload = Association[Flatten[Table[
-  MapThread[Function[{label, blueprint}, label -> <|
+  MapThread[Function[{label, blueprint}, Module[
+    {invariantExpression, expressionDimension},
+    invariantExpression = dimensionAuditInvariantMap[label];
+    expressionDimension =
+      primitiveExpressionDimension[invariantExpression];
+    label -> <|
     "FACTOR_CONTENT" -> Join[{"BACKGROUND_FIRST_JET"},
       blueprint["FACTOR_NAMES"]],
     "FACTOR_DIMENSIONS" -> Join[{dimensionGradient},
       Lookup[factorDimensionByName, blueprint["FACTOR_NAMES"]]],
     "DERIVED_DIMENSION_OPERAND" ->
       deriveInvariantDimensionFromFactorContent[blueprint],
-    "STORED_DIMENSION_OPERAND" ->
-      blueprint["STORED_INVARIANT_DIMENSION"],
-    "RESIDUAL_DERIVED_MINUS_STORED" ->
+    "PRIMITIVE_EXPRESSION_OPERAND" -> invariantExpression,
+    "PRIMITIVE_EXPRESSION_DIMENSION_OPERAND" -> expressionDimension,
+    "RESIDUAL_DERIVED_MINUS_PRIMITIVE_EXPRESSION" ->
       deriveInvariantDimensionFromFactorContent[blueprint] -
-        blueprint["STORED_INVARIANT_DIMENSION"],
+        expressionDimension,
     "DIMENSION_L_T_M" -> dimensionZero,
-    "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>],
+    "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>
+  ]],
     {newInvariantLabels[source, False], o3KroneckerBlueprints}],
   {source, profileSources}], 1]];
 emitShared["ENERGY_BASIS_NEW_INVARIANT_DIMENSION_DERIVATION",
   newInvariantDimensionPayload];
+Clear[dimensionAuditData, dimensionAuditInvariantMap];
 
 coefficientDimensions = Join[
   Map[dimensionEnergy - # &, uniformInvariantDimensions],
@@ -2426,3 +3161,5 @@ emitLocal["TAG_NAMES", <|"EXPRESSION" -> Append[localNames,
     "WL_S11CB_LOCAL_TAG_NAMES"],
   "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}},
   "DIMENSION_L_T_M" -> dimensionZero|>];
+WriteString[First[$Output], "S11CB_MAX_MEMORY_USED_BYTES: " <>
+  ToString[MaxMemoryUsed[]] <> "\n"];

@@ -1,0 +1,26 @@
+Building retained-grade strong rows at depths 1..4 ...
+depth1 leaves=5
+depth2 leaves=5
+depth3 leaves=5
+depth4 leaves=5
+
+=== RESIDUAL_21_HESSIAN_SANITY ===
+RESIDUAL_21_HESSIAN_SANITY_NONZERO_LEAF_COUNT: 5 of 5
+RESIDUAL_21_HESSIAN_SANITY_MAX_SIGMA_W_POWER: 1   (retained grade keeps <=1)
+RESIDUAL_21_HESSIAN_SANITY_BG_JET_ORDERS_PRESENT: [1, 2]
+RESIDUAL_21_HESSIAN_SANITY_FIRST_NONZERO_LEAF (truncated 400 chars):
+  e_W_d1d1*epsilon_shape*eta_bg*gamma_s11cb_w_bg_11*sigma_W*w1_profile*w1_profile_d1 - e_W_d1d1*epsilon_shape*gamma_s11cb_w_bg_11*sigma_W*w1_profile_d1 + e_W_d1d2*epsilon_shape*eta_bg*gamma_s11cb_w_bg_11*sigma_W*w1_profile*w1_profile_d2 - e_W_d1d2*epsilon_shape*gamma_s11cb_w_bg_11*sigma_W*w1_profile_d2 + e_W_d1d3*epsilon_shape*eta_bg*gamma_s11cb_w_bg_11*sigma_W*w1_profile*w1_profile_d3 - e_W_d1d3*ep
+
+=== RESIDUAL_32_DECISIVE ===
+RESIDUAL_32_DECISIVE_NONZERO_LEAF_COUNT: 0 of 5
+RESIDUAL_32_DECISIVE_RESIDUAL: 0  (identical after retained grade)
+
+=== RESIDUAL_43_TERMINATION ===
+RESIDUAL_43_TERMINATION_NONZERO_LEAF_COUNT: 0 of 5
+RESIDUAL_43_TERMINATION_RESIDUAL: 0  (identical after retained grade)
+
+=== UNREDUCED DEPTH-3 STRONG ROWS: background-jet orders present ===
+UNREDUCED_DEPTH3_BG_JET_ORDERS_PRESENT: [1, 2]
+UNREDUCED_DEPTH3_ORDER>=3_ATOMS (0): []
+
+DONE

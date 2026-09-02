@@ -1,0 +1,15 @@
+ORIGINS_SLOT_KEYS: {"KINETIC", "BULK_ENERGY", "FACE", "FLUX", "ADVECTIVE", "ACCUMULATION"}
+FULL_U_MOMENTUM_ROWS_MAX_JET_ORDER: 3
+FULL_U_MOMENTUM_ROWS_N_ATOMS: 19
+FULL_U_MOMENTUM_ROWS_ORDER3PLUS_ATOMS: {widthProfileJet[2, 0, 1], widthProfileJet[1, 0, 2], widthProfileJet[1, 1, 1], widthProfileJet[2, 1, 0], widthProfileJet[1, 2, 0], widthProfileJet[3, 0, 0], widthProfileJet[0, 1, 2], widthProfileJet[0, 2, 1], widthProfileJet[0, 3, 0], widthProfileJet[0, 0, 3]}
+ORIGIN_KINETIC_U_MAX_JET_ORDER: 0
+ORIGIN_KINETIC_U_N_ATOMS: 0
+ORIGIN_KINETIC_U_ORDER3PLUS_ATOMS: {}
+ORIGIN_BULK_ENERGY_U_MAX_JET_ORDER: 3
+ORIGIN_BULK_ENERGY_U_N_ATOMS: 19
+ORIGIN_BULK_ENERGY_U_ORDER3PLUS_ATOMS: {widthProfileJet[2, 0, 1], widthProfileJet[1, 0, 2], widthProfileJet[1, 1, 1], widthProfileJet[2, 1, 0], widthProfileJet[1, 2, 0], widthProfileJet[3, 0, 0], widthProfileJet[0, 1, 2], widthProfileJet[0, 2, 1], widthProfileJet[0, 3, 0], widthProfileJet[0, 0, 3]}
+ORIGIN_FACE_U_MAX_JET_ORDER: 0
+ORIGIN_FACE_U_N_ATOMS: 0
+ORIGIN_FACE_U_ORDER3PLUS_ATOMS: {}
+FULL_MINUS_SLOTSUM_U (expect 0 vector): {0, 0, 0}
+DONE

@@ -84,16 +84,43 @@ and have no upstream row; ⛔ do not manufacture one, and ⛔ do not let any of 
 reservations bind: the new operators/kernels/constants take fresh names, never `W_0`/`mu_R`/`rho_br`/`e_W`/`v_0`,
 and `v_bulk_normal_0` is never aliased to `v_0`).
 
-This step's candidate population is the computed objects the **primary** tasks of **§4** emit — the curved-face
-DtN operator (§3a: flat symbol, composition operator, two-momentum kernel, rigid-shift residual, regime-pair /
-parity / Hermitian / reactive / inertial-loading / grazing structure, term origins) and the permeable curved
-face response (§3b: response and coeffs, noninvertibility condition, finite-dim degenerate loci, the two-port
-permeable Hermitian form, the dissipation-vs-`ωτ`, and the independent traction-vs-far-field-flux energy
-operands and residual) — and the free symbols they contain (`S9_REWRITE_PLAN.md` **D1**: export what the
-primary derivations emit). ⛔ **The §5 controls (5a representation-invariance + one-sided independence, 5b
-per-direction form ablation, 5c uniform-limit, 5d zero-jet, 5e branch/momentum liveness) and §6's homogeneity
-controls are ablation evidence, ⛔ NOT exports** — they are the S11b-`B8` analog. §7's engine-local tags are
-engine-local, ⛔ not exports. Carry forward the imported `LEDGER`. A row's `class` follows from what its object
+**⭐ EMIT vs EXPORT are SEPARATE channels, and the export is NARROW (a size finding forces the distinction the
+spec already implies).** The two channels:
+
+- **Emit (stdout tag stream → the annexed `out/*.out`):** the engine emits **every** §4 primary object **and**
+  every §5/§6 control operand and residual, unchanged and complete. That stream is what the cross-engine
+  comparator and the review legs consume, and it is where the large diagnostic objects live — the `.out` is
+  git-annex+GIN backed, so it carries **no** size cap. ⛔ Nothing is dropped from the emit (rule 11:
+  correctness is king; the dissipation audit, loci, and structural views are all still computed, printed,
+  cross-engine-compared, and reviewed).
+- **Export (the plain-git `S11c_c1_exports.py` LEDGER → imported ONLY by S11c-c2):** a **strict subset** — the
+  model-definition objects §3b names as c2's consumed set, plus the free symbols they reference, merged onto the
+  carried-forward inherited LEDGER. The LEDGER is a forward-chain **register**, not a dump of derived evidence,
+  and it must stay under GitHub's 100 MB plain-git file cap.
+
+**The candidate EXPORT population is ONLY** (§3b: *"the response objects `(δp_s, J_s, t_s)`, the DtN operator,
+and the flat symbol are the c1 exports S11c-c2 consumes"* — that sentence is the authority; nothing else):
+
+- the curved-face **DtN operator** and its **flat symbol** (§3a): `dtn_flat_symbol`, `dtn_operator`
+  (composition), `dtn_kernel` (two-momentum `k,k′`);
+- the **permeable curved face response** (§3b): `face_response`, `face_response_coeffs`;
+- the **free symbols** those objects reference (`S9_REWRITE_PLAN.md` **D1**), including any new
+  permeability/memory-kernel constant §3 introduces (`q_out`, `kappa_out`, `zeta_out`, the `k_out_*`/`k_in_*`
+  legs, `V_±`, the `Lambda_*`/`tau_*` closure knobs, the profiles, the density representatives, …);
+- carried forward: the **entire inherited LEDGER** (S11b + S11c-a + S11c-b), unchanged (F9b corroboration of a
+  re-derived inherited constant is fine — the row keeps its identity and accretes `corroborated_steps`).
+
+⛔ **NOT exported — emit-to-stdout ONLY, because these are derived DIAGNOSTICS/EVIDENCE, not chain inputs c2
+imports** (c2 re-derives its own dissipation and loci on the coupled self-energy operator): the dissipation
+audit (`permeable_dissipation_vs_omega_tau`, `permeable_port_hermitian`, the `energy_*` operands and residual),
+the DtN Hermitian/reactive split (`dtn_hermitian_part`, `dtn_reactive_part`, `dtn_inertial_loading`), the DtN
+structural views and traces (`dtn_by_regime_pair`, `dtn_by_parity`, `dtn_grazing_behaviour`, `dtn_term_origins`,
+`dtn_rigid_shift_*`), the loci and noninvertibility condition (`noninvertibility_condition`,
+`degenerate_loci_*`), and — as before — **every §5 control (5a–5e) and §6 homogeneity operand** (the S11b-`B8`
+analog). §7's engine-local tags are engine-local, ⛔ not exports. ⭐ **This refines D1 ("export what the primary
+derivations emit") to "export what the next step CONSUMES"; the same policy governs S11c-c2's export set when
+it is authored.** If an object's chain role is genuinely unclear, default it to emit-only and report it under §8
+rather than export it. Carry forward the imported `LEDGER`. A row's `class` follows from what its object
 **is** — a declared symbol carries its declared class, ⛔ never a table lookup by row name. Use the class
 vocabulary at `research/pde_ledger_v3/S9_REWRITE_PLAN.md:41` and `research/pde_ledger_v3/REBUILD_HANDOFF.md:40`;
 report anything unclassifiable under §7/§8 rather than guess.

@@ -7,6 +7,7 @@ D=$SP/directives/S11c_c1_sympy_build_directive.md
 B=$SP/scripts/S11b_exports.py
 CA=$SP/scripts/S11c_a_exports.py
 CB=$SP/scripts/S11c_b_exports.py
+CB_CMP=$SP/scripts/S11c_b_cross_engine_comparator.py
 claim () { printf '## %s\n\n```\n$ %s\n' "$1" "$2"; eval "$2"; printf '```\n\n'; }
 present () { for k in $2; do n=$(grep -cE "^    '$k':     \{" "$1"); printf '%-46s %s\n' "$k" "$([ "$n" -ge 1 ] && echo PRESENT || echo MISSING)"; done; }
 export -f present
@@ -49,3 +50,11 @@ claim "T7 comparator contract (:53-60) — rejects a native boolean as a residua
   "sed -n '53,60p' $SP/directives/S11_C17_C18_spec_repair_decisions_v2.md"
 claim "class vocabulary (S9_REWRITE_PLAN:41) and D3 in-run round-trip (:217)" \
   "sed -n '41p;217p' $SP/S9_REWRITE_PLAN.md"
+claim "EXPORT-TRIM motivation: the comparator reads the two stdout .out tag streams, NOT the exports LEDGER (so narrowing the export cannot blind it)" \
+  "sed -n '4,10p' $CB_CMP"
+claim "EXPORT-TRIM authority: spec §3b names EXACTLY what c2 consumes (the export keep-set)" \
+  "sed -n '347,348p' $A"
+claim "EXPORT-TRIM applied in the directive: narrow KEEP set + emit-only DROP set" \
+  "grep -nE 'candidate EXPORT population is ONLY|NOT exported — emit-to-stdout ONLY|export what the next step CONSUMES' $D"
+claim "EXPORT-TRIM finding: the pre-trim c1 export was 152 MB, and the two DISSIPATION-AUDIT rows are 84.7 MB (56%) of it — evidence, not chain inputs (this build re-runs with them emit-only)" \
+  "printf 'pre-trim S11c_c1_exports.py size: '; wc -c $SP/scripts/S11c_c1_exports.py 2>/dev/null | awk '{printf \"%d bytes (%.1f MB)\n\",\$1,\$1/1048576}'; printf 'the two dissipation-audit rows present in the pre-trim export:\n'; grep -nE \"^    '(s11c_c1_permeable_dissipation_vs_omega_tau|permeable_port_hermitian)':\" $SP/scripts/S11c_c1_exports.py 2>/dev/null || echo '(export regenerated post-trim; dissipation rows now emit-only)'"

@@ -15,7 +15,7 @@ db5cbf88 S11c-c START: 2-way split decided; c1 (curved bulk closure) spec author
 ```
 $ grep -nE 'S11c_c1_bulk_closure_sympy_audit\.py' research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md | head -3
 5:Write `research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py` in full. Its products are the flushed
-119:full ancestry: `{ 'S11c_c1_bulk_closure_sympy_audit.py' (this engine's own source), 'S11b_exports.py',
+146:full ancestry: `{ 'S11c_c1_bulk_closure_sympy_audit.py' (this engine's own source), 'S11b_exports.py',
 ```
 
 ## μ_θ operand — S11CB_MU_THETA_OPERATOR binds to row mu_theta_operator (S11c_b_exports.py); display begins (mu_theta,…)
@@ -132,7 +132,7 @@ $ grep -nE 'BUILD_INPUT_DIGESTS' research/pde_ledger_v3/directives/S11c_c1_SHARE
 
 ```
 $ grep -nE 's11c_c1_' research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md | head -2
-110:write the fresh step prefix is **`s11c_c1_`** — `s11_`, `s11b_`, `s11c_a_`, `s11c_b_` are already taken in the
+137:write the fresh step prefix is **`s11c_c1_`** — `s11_`, `s11b_`, `s11c_a_`, `s11c_b_` are already taken in the
 ```
 
 ## c1 HAS a §6 locus protocol (unlike S11c-a/S11c-b) — DEGENERATE_LOCI, finite-dim only; typed CAS booleans feed T7
@@ -190,5 +190,45 @@ $ sed -n '53,60p' research/pde_ledger_v3/directives/S11_C17_C18_spec_repair_deci
 $ sed -n '41p;217p' research/pde_ledger_v3/S9_REWRITE_PLAN.md
 ⭐ Classes: `KNOB` · `STRUCTURAL` · `COORDINATE` · `CONTROL` · `PREMISE` · `DERIVED`.
 **D3 · Reconstruction format.** ⭐ Use a form SymPy reconstructs **exactly**, and ⭐ **verify the round trip
+```
+
+## EXPORT-TRIM motivation: the comparator reads the two stdout .out tag streams, NOT the exports LEDGER (so narrowing the export cannot blind it)
+
+```
+$ sed -n '4,10p' research/pde_ledger_v3/scripts/S11c_b_cross_engine_comparator.py
+This program is a measurement instrument.  It reads the two committed S11c-b
+tag streams, applies only the closed mechanical reconciliation map, and emits
+both operands plus their typed recursive A-minus-B residual.  Algebraic and
+structural disagreements are output data and do not change the exit status.
+
+The SymPy engine is deliberately never imported or run.  In particular,
+S11c_b_exports.py is not used as a tag stream.
+```
+
+## EXPORT-TRIM authority: spec §3b names EXACTLY what c2 consumes (the export keep-set)
+
+```
+$ sed -n '347,348p' research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md
+The response objects `(δp_s, J_s, t_s)(V_s, μ_θ)`, the DtN operator, and the flat symbol are the c1 exports
+S11c-c2 consumes.
+```
+
+## EXPORT-TRIM applied in the directive: narrow KEEP set + emit-only DROP set
+
+```
+$ grep -nE 'candidate EXPORT population is ONLY|NOT exported — emit-to-stdout ONLY|export what the next step CONSUMES' research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md
+101:**The candidate EXPORT population is ONLY** (§3b: *"the response objects `(δp_s, J_s, t_s)`, the DtN operator,
+113:⛔ **NOT exported — emit-to-stdout ONLY, because these are derived DIAGNOSTICS/EVIDENCE, not chain inputs c2
+121:derivations emit") to "export what the next step CONSUMES"; the same policy governs S11c-c2's export set when
+```
+
+## EXPORT-TRIM finding: the pre-trim c1 export was 152 MB, and the two DISSIPATION-AUDIT rows are 84.7 MB (56%) of it — evidence, not chain inputs (this build re-runs with them emit-only)
+
+```
+$ printf 'pre-trim S11c_c1_exports.py size: '; wc -c research/pde_ledger_v3/scripts/S11c_c1_exports.py 2>/dev/null | awk '{printf "%d bytes (%.1f MB)\n",$1,$1/1048576}'; printf 'the two dissipation-audit rows present in the pre-trim export:\n'; grep -nE "^    '(s11c_c1_permeable_dissipation_vs_omega_tau|permeable_port_hermitian)':" research/pde_ledger_v3/scripts/S11c_c1_exports.py 2>/dev/null || echo '(export regenerated post-trim; dissipation rows now emit-only)'
+pre-trim S11c_c1_exports.py size: 152574695 bytes (145.5 MB)
+the two dissipation-audit rows present in the pre-trim export:
+5930:    'permeable_port_hermitian':     {
+15420:    's11c_c1_permeable_dissipation_vs_omega_tau':     {
 ```
 

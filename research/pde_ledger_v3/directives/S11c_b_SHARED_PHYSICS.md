@@ -281,6 +281,22 @@ flux terms are not recomputed here but consumed from that substrate. Emit the op
 computed provenance of each term (bulk-energy vs face/flux vs advective), per anchoring and density
 representative, multigraded and dimensioned.
 
+**The slab momentum and thickness rows are the CONSTRAINT-REDUCED equations under S11b's binding material
+virtual-displacement rule, not the held-fixed variational derivatives.** First compute the constitutive operand
+`μ_θ ≡ (δU/δθ)|_{u,e_W,… held fixed}`, before applying any constraint. Then, for each anchoring, density
+representative, and construction route, obtain the applicable material virtual-constraint operand `δ_vΣ_mat = 0`
+from the supplied S11c-a substrate (§1c; the three-term relation on `S11c_b_SHARED_PHYSICS.md:143` is only the
+uniform linearisation and does not replace it on the non-uniform background), solve it for `δ_vθ`, substitute that
+into the internal virtual variation, and extract the coefficients of the independent `δ_vu` and `δ_ve_W` after
+compact-support in-plane integration by parts (§3c interior convention). The same computed `μ_θ` generates both
+the in-plane and the thickness reaction (`S11b_SHARED_PHYSICS.md:341-345`). The `u`-row is therefore not
+`δU/δu|_{θ,e_W fixed}`. In the convention check the physical in-plane restoring-force contribution is `−∇(δU/δθ)`
+(`S11b_SHARED_PHYSICS.md:426`) — a check the variation must be able to fail, not a term to type, and not to be
+confused with the sign of the internal Euler–Lagrange residual an engine stores. The `θ` slot of the slab operator
+is the supplied sourced mass-evolution equation `∂_tΣ + ∇_x·(Σv) = −(J₊+J₋)` (§1c), restored after the variation
+(`S11b:356-357`), not `μ_θ = 0`. `S11CB_MU_THETA_OPERATOR` remains the separate held-fixed constitutive operand
+used by the face affinity; it is neither the mass-evolution row nor the vector momentum reaction.
+
 ```text
 ⇒ S11CB_SLAB_OPERATOR , S11CB_SLAB_OPERATOR_TERM_ORIGINS ,
   S11CB_MU_THETA_OPERATOR  (the variable-coefficient μ_θ = δU/δθ operand, kept as a named operand,

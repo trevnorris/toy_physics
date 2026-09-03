@@ -27,8 +27,9 @@ Prompt `directives/_legs/S11c_b_90_coupling_decision_review.md`; logs `~/.s11_bu
 v2 folded both legs (rule 7, one pass, no re-leg). Leak-gated clean.
 
 ## Build (Codex, `--sandbox danger-full-access`, 631k tok)
-Log `~/.s11_build/S11c_b_90_coupling/build_codex.log`. Deliverable verified vs the DIFF: engine +517/−116, §0 +6,
-`DEFERRED_HEAVY_RUNS.md` +22; parses OK; **`operator_from_density`/`committed_strong_rows` BYTE-IDENTICAL to HEAD**
+Log `~/.s11_build/S11c_b_90_coupling/build_codex.log`. Deliverable verified vs the DIFF (Codex-corrected numstat):
+commit `7677aa18` = engine **+489/−116**, §0 +6, `DEFERRED_HEAVY_RUNS.md` +22 (the earlier "+517" conflated
+engine+spec+deferred); parses OK; **`operator_from_density`/`committed_strong_rows` BYTE-IDENTICAL to HEAD**
 (#88 refs preserved, both legs re-hashed them); the dead `bulk_kernel_from_density`/`paired_kernel_from_density` have
 NO callers. ⚠ Codex ran its OWN "review legs" with two Codex variants (Claude/Grok "unavailable") — DISCARDED as
 self-review (invalid per the authorship rule); the real legs are below.
@@ -46,7 +47,9 @@ Both legs independently ablated a COPY; working tree untouched. The mandatory FO
   channels (virtual-work → E_W/DIV_U/reciprocal; Λ-closure → θ-forward, and `Lambda_A_0→Lambda_V_0` collapse changes
   the kernel's Λ); zeroing a NON-face key (projection) moves NOTHING. A typed/frozen face tag would be byte-identical.
 - **Delete face feed (probe 3):** face-origin terms leave, bulk `γ·profile-jet` (count 26) stays.
-- **Λ symbolic (probe 4):** `Λ_I⁰/(1−iωτ_I)`; no `Z`/DtN/impedance/`.solve`/`linsolve`. Grok independently validated
+- **Λ symbolic (probe 4):** `Λ_I⁰/(1−iωτ_I)`; no `Z`/DtN/impedance bulk-response solve in the build_kernel/operator/
+  face slices (⚠ "no `.solve`" is scoped to the RESPONSE path — the UNRELATED constraint fold does use `sp.solve` at
+  ~`:2459`/`:2475`; the point is no bulk-response/DtN solve, not that the engine is `sp.solve`-free). Grok independently validated
   the closure-fold recipe: the T-i identity `TRUE_AREA − RELFLUX_SUM = 0`, so `mass − closure` = replacing kinematic
   `J` by `Λ𝒜+ΛV` (`RECIPE_MINUS_TRUEAREA_REPLACE_ZERO True`).
 - **Exact-once (probe 5):** `evolution_mass_balance` not re-contracted (`Σ origins − θ EXPANDED = 0`); no `δ_v` /

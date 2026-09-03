@@ -35,7 +35,9 @@ independently and computation-backed.** Convergent defects (orchestrator-verifie
 ## Build (Codex, `--sandbox danger-full-access`) — deliverable verification
 
 Log `~/.s11_build/S11c_b_constraint_fold/build_codex.log` (266k tokens). Verified against the DIFF, not the report:
-- `git diff --stat`: `S11c_b_SHARED_PHYSICS.md` +16, engine +859/−87. Both target files only.
+- `git diff --stat` (Codex-corrected): `S11c_b_SHARED_PHYSICS.md` +16, engine **+851/−87** (the earlier "+859" was
+  engine+spec combined). Both target files only. ⚠ NOTE: this θ-row = imported `evolution_mass_balance` claim is the
+  state AT `82f53828`; **#90 subsequently changed the θ-row to `evolution_mass_balance − Σ closure_shape_deriv`**.
 - Engine `ast.parse` OK; depth constants now `STRONG=3, COUPLING=4, DEPTH_CONTROL=5`.
 - **`operator_from_density` and `committed_strong_rows` BYTE-IDENTICAL to HEAD** (checked by extracting both function
   bodies from working tree vs `git show HEAD:` — the #88 raw-reference preservation invariant holds).

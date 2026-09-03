@@ -1198,6 +1198,93 @@ class MemoryToolTests(unittest.TestCase):
         result = mem.finalize_update(self.root, str(current))
         self.assertEqual(result["transaction_id"], current_manifest["transaction_id"])
 
+    def test_derived_task_hydrates_verified_reviewed_reuse_dependency(self) -> None:
+        unit = MemoryRepo.unit("paper", "research/a.md")
+        repo = MemoryRepo(self.root, [unit])
+        repo.write("memory/prompts/topic-synthesis.md", "# Topic task\n")
+        config = repo.config([unit])
+        config["output_budgets"] = {
+            "source_capsule": {"max_words": 100},
+            "topic": {"max_words": 100},
+        }
+        config["derived_pages"] = [{
+            "id": "topic-one",
+            "task_kind": "topic",
+            "page": "memory/topics/one.md",
+            "region": "working-position",
+            "order": 20,
+            "input_units": ["paper"],
+            "input_pages": [],
+            "budget": "topic",
+            "direct_sources": [{"path": "research/a.md", "read_mode": "semantic"}],
+        }]
+        repo.write("memory/_meta/config.yaml", yaml.safe_dump(config, sort_keys=False))
+        repo.write("research/a.md", "## Claim\nA\n")
+        repo.write(
+            "memory/topics/one.md",
+            """---
+schema_version: 2
+id: topic-one
+title: Topic one
+type: topic
+lifecycle: current
+memory_review: ai_draft
+sources: []
+content_owner: mixed
+last_updated: 2026-08-24
+generated_from_commit: pending
+---
+
+<!-- BEGIN GENERATED:working-position -->
+pending
+<!-- END GENERATED:working-position -->
+
+## Curator notes
+keep
+""",
+        )
+        repo.commit()
+
+        prior = repo.prepare()
+        repo.staged_page(prior, "paper", title="reviewed dependency")
+        add_review_attestation(prior, "paper", "PASS")
+
+        current = repo.prepare()
+        run_isolated.reuse_reviewed_candidate(self.root, str(current), "paper", str(prior))
+        attestation_path = current / "attestations/paper.json"
+        original_attestation = attestation_path.read_bytes()
+        wrong_pair = json.loads(original_attestation)
+        wrong_pair["runtime_profile"] = "codex-candidate-reuse"
+        mem.write_json(attestation_path, wrong_pair)
+        copy_base = ["/bin/sh", "-c", "cp /packet/base_page.md /output/page.md"]
+        with self.assertRaisesRegex(run_isolated.IsolationError, "isolation/runtime profile mismatch"):
+            run_isolated.run_task(self.root, str(current), "topic-one", copy_base)
+
+        candidate_only = json.loads(original_attestation)
+        candidate_only["isolation"] = "deterministic-candidate-reuse"
+        candidate_only["runtime_profile"] = "codex-candidate-reuse"
+        mem.write_json(attestation_path, candidate_only)
+        with self.assertRaisesRegex(run_isolated.IsolationError, "unsupported isolation"):
+            run_isolated.run_task(self.root, str(current), "topic-one", copy_base)
+
+        tampered = json.loads(original_attestation)
+        tampered["reviewed_reuse"]["prior_candidate_sha256"] = "0" * 64
+        mem.write_json(attestation_path, tampered)
+        with self.assertRaisesRegex(run_isolated.IsolationError, "reviewed reuse"):
+            run_isolated.run_task(self.root, str(current), "topic-one", copy_base)
+
+        mem.atomic_write(attestation_path, original_attestation, 0o600)
+        run_isolated.run_task(self.root, str(current), "topic-one", copy_base)
+        topic_packet = current / "tasks/topic-one/packet"
+        self.assertTrue((topic_packet / "memory_inputs/memory/sources/paper.md").is_file())
+        hydration = json.loads((topic_packet / "hydration.json").read_text())
+        self.assertEqual(hydration["dependencies"][0]["task_id"], "paper")
+
+        prior_report = prior / "reviews/paper/output/report.md"
+        prior_report.write_text("tampered after hydration\n", encoding="utf-8")
+        with self.assertRaisesRegex(run_isolated.IsolationError, "Grok report hash mismatch"):
+            run_isolated.run_task(self.root, str(current), "topic-one", copy_base)
+
     def test_reviewed_reuse_rejects_fail_and_finalizer_rechecks_tampering(self) -> None:
         repo = MemoryRepo(self.root, [MemoryRepo.unit("paper", "research/a.md")])
         repo.write("research/a.md", "## Claim\nA\n")

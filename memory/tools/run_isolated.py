@@ -16,6 +16,7 @@ import datetime as dt
 import json
 import os
 from pathlib import Path
+import re
 import signal
 import shutil
 import subprocess
@@ -1398,7 +1399,7 @@ def run_task(
     dynamic_inputs = task_document.get("semantic_contract", {}).get("dynamic_memory_inputs", [])
     needs_hydration = bool(dynamic_inputs) and not (packet / "hydration.json").is_file()
     hydration_records: list[dict[str, Any]] = []
-    for dependency in dynamic_inputs if needs_hydration else []:
+    for dependency in dynamic_inputs:
         dependency_id = dependency["task_id"]
         dependency_writer = next(
             (item for item in manifest.get("writer_tasks", []) if item.get("task_id") == dependency_id), None
@@ -1406,29 +1407,67 @@ def run_task(
         if dependency_writer is None or not dependency_writer.get("required"):
             raise IsolationError(f"prerequisite task is not declared as a required writer: {dependency_id}")
         dependency_attestation_path = transaction / "attestations" / f"{dependency_id}.json"
-        if not dependency_attestation_path.is_file():
+        if not dependency_attestation_path.is_file() or dependency_attestation_path.is_symlink():
             raise IsolationError(f"prerequisite task has no isolation attestation: {dependency_id}")
         dependency_attestation = json.loads(dependency_attestation_path.read_text(encoding="utf-8"))
-        if (
-            dependency_attestation.get("isolation") != "bubblewrap"
-            or dependency_attestation.get("transaction_id") != manifest["transaction_id"]
-            or dependency_attestation.get("task_id") != dependency_id
-            or dependency_attestation.get("output_repository_path") != dependency.get("page")
-            or dependency_writer.get("output_repository_path") != dependency.get("page")
-        ):
-            raise IsolationError(f"prerequisite task was not isolated: {dependency_id}")
+        expected_dependency_identity = {
+            "transaction_id": manifest["transaction_id"],
+            "task_id": dependency_id,
+            "source_unit_id": dependency_writer.get("source_unit_id"),
+            "workspace_hidden": repo.as_posix(),
+            "packet_path": dependency_writer["packet_path"],
+            "output_repository_path": dependency_writer["output_repository_path"],
+            "staged_output_path": dependency_writer["staged_output_path"],
+        }
+        if dependency_writer.get("output_repository_path") != dependency.get("page"):
+            raise IsolationError(f"prerequisite writer page mismatch: {dependency_id}")
+        for key, value in expected_dependency_identity.items():
+            if dependency_attestation.get(key) != value:
+                raise IsolationError(f"prerequisite attestation identity mismatch: {dependency_id}: {key}")
         dependency_task_root = transaction / "tasks" / dependency_id
-        dependency_packet_seal = json.loads(
-            (dependency_task_root / "packet-seal.json").read_text(encoding="utf-8")
-        )
+        dependency_packet_seal_path = dependency_task_root / "packet-seal.json"
+        if not dependency_packet_seal_path.is_file() or dependency_packet_seal_path.is_symlink():
+            raise IsolationError(f"prerequisite task has no regular packet seal: {dependency_id}")
+        dependency_packet_seal = json.loads(dependency_packet_seal_path.read_text(encoding="utf-8"))
         if (
             dependency_attestation.get("packet_sha256") != dependency_packet_seal.get("combined_sha256")
             or dependency_attestation.get("runner_sha256") != mem.sha256_file(Path(__file__).resolve())
         ):
             raise IsolationError(f"prerequisite attestation identity mismatch: {dependency_id}")
         dependency_staged = transaction / dependency_attestation["staged_output_path"]
-        if not dependency_staged.is_file() or mem.sha256_file(dependency_staged) != dependency_attestation.get("output_sha256"):
+        if not dependency_staged.is_file() or dependency_staged.is_symlink():
+            raise IsolationError(f"prerequisite staged page is not a regular file: {dependency_id}")
+        dependency_staged_sha256 = mem.sha256_file(dependency_staged)
+        if dependency_staged_sha256 != dependency_attestation.get("output_sha256"):
             raise IsolationError(f"prerequisite staged page changed: {dependency_id}")
+        dependency_isolation = dependency_attestation.get("isolation")
+        if dependency_isolation == "bubblewrap":
+            allowed_dependency_profiles = {"codex"}
+            if os.environ.get("MEMORY_TEST_ALLOW_PROFILE") == "1":
+                allowed_dependency_profiles.add("_test")
+            if dependency_attestation.get("runtime_profile") not in allowed_dependency_profiles:
+                raise IsolationError(f"prerequisite isolation/runtime profile mismatch: {dependency_id}")
+            if not isinstance(dependency_attestation.get("runtime_version"), str) or not dependency_attestation["runtime_version"]:
+                raise IsolationError(f"prerequisite runtime version is missing: {dependency_id}")
+            if not isinstance(dependency_attestation.get("runtime_executable_sha256"), str) or not re.fullmatch(
+                r"[0-9a-f]{64}", dependency_attestation["runtime_executable_sha256"]
+            ):
+                raise IsolationError(f"prerequisite runtime executable identity is missing: {dependency_id}")
+        elif dependency_isolation == "deterministic-reviewed-reuse":
+            if dependency_attestation.get("runtime_profile") != "codex-reviewed-reuse":
+                raise IsolationError(f"prerequisite isolation/runtime profile mismatch: {dependency_id}")
+            reuse_errors = mem.verify_reviewed_reuse_chain(
+                repo,
+                transaction,
+                manifest,
+                dependency_writer,
+                dependency_attestation,
+                dependency_staged_sha256,
+            )
+            if reuse_errors:
+                raise IsolationError(reuse_errors[0])
+        else:
+            raise IsolationError(f"prerequisite task has unsupported isolation: {dependency_id}")
         if dependency.get("policy_fresh") is not True or dependency.get("policy_sha256") != manifest["policy"]["combined_sha256"]:
             raise IsolationError(f"prerequisite policy metadata is stale: {dependency_id}")
         dependency_front, _ = mem.parse_frontmatter(dependency_staged.read_bytes(), dependency["page"])
@@ -1443,32 +1482,43 @@ def run_task(
             if actual_digest != expected_unit_digest:
                 raise IsolationError(f"prerequisite unit digest mismatch: {dependency_id}")
         destination = packet / "memory_inputs" / dependency["page"]
-        if destination.exists():
-            raise IsolationError(f"dynamic memory input already exists; refusing to overwrite: {dependency['page']}")
-        mem.atomic_write(destination, dependency_staged.read_bytes(), 0o444)
         attestation_sha256 = mem.sha256_file(dependency_attestation_path)
         enriched_fields = {
-            "page_sha256": dependency_attestation["output_sha256"],
+            "page_sha256": dependency_staged_sha256,
             "attestation_sha256": attestation_sha256,
             "attestation_packet_sha256": dependency_attestation["packet_sha256"],
             "attestation_identity": {
                 "transaction_id": manifest["transaction_id"], "task_id": dependency_id,
             },
         }
-        dependency.update(enriched_fields)
-        duplicate_dependency = next(
-            item for item in task_document["writer_task"]["semantic_contract"]["dynamic_memory_inputs"]
-            if item["task_id"] == dependency_id
-        )
-        duplicate_dependency.update(enriched_fields)
-        hydration_records.append({
-            "task_id": dependency_id,
-            "page": dependency["page"],
-            "staged_output_path": dependency_attestation["staged_output_path"],
-            "page_sha256": dependency_attestation["output_sha256"],
-            "attestation_sha256": attestation_sha256,
-            "attestation_packet_sha256": dependency_attestation["packet_sha256"],
-        })
+        if needs_hydration:
+            if destination.exists() or destination.is_symlink():
+                raise IsolationError(f"dynamic memory input already exists; refusing to overwrite: {dependency['page']}")
+            mem.atomic_write(destination, dependency_staged.read_bytes(), 0o444)
+            dependency.update(enriched_fields)
+            duplicate_dependency = next(
+                item for item in task_document["writer_task"]["semantic_contract"]["dynamic_memory_inputs"]
+                if item["task_id"] == dependency_id
+            )
+            duplicate_dependency.update(enriched_fields)
+            hydration_records.append({
+                "task_id": dependency_id,
+                "page": dependency["page"],
+                "staged_output_path": dependency_attestation["staged_output_path"],
+                "page_sha256": dependency_staged_sha256,
+                "attestation_sha256": attestation_sha256,
+                "attestation_packet_sha256": dependency_attestation["packet_sha256"],
+            })
+        else:
+            if (
+                not destination.is_file()
+                or destination.is_symlink()
+                or mem.sha256_file(destination) != dependency_staged_sha256
+            ):
+                raise IsolationError(f"hydrated prerequisite page changed: {dependency_id}")
+            for key, value in enriched_fields.items():
+                if dependency.get(key) != value:
+                    raise IsolationError(f"hydrated prerequisite metadata mismatch: {dependency_id}: {key}")
     if needs_hydration:
         initial_packet_sha256 = packet_seal["combined_sha256"]
         mem.atomic_write(packet / "task.json", mem.canonical_json(task_document), 0o444)

@@ -865,6 +865,7 @@ basisRepresentativeIndicesByBranch = AssociationMap[
     baseEnergyDataByBranch[#]["RECORDS"][[All, "INVARIANT"]]] &,
   branches];
 
+If[!StringQ[Environment["S11CB_PRIMARIES_ONLY"]],
 anchoringExpressions = AssociationMap[
   baseEnergyDataByBranch[#]["RECORDS"][[All, "INVARIANT"]] &,
   branches];
@@ -895,6 +896,7 @@ anchoringRankPayload = <|
   "DIMENSION_L_T_M" -> dimensionZero,
   "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}}|>;
 emitShared["ENERGY_BASIS_ANCHORING_RANK", anchoringRankPayload];
+];
 
 (* Common indices enter downstream constructors only after the independent
    anchoring ranks and span residual have been emitted. *)
@@ -1915,6 +1917,7 @@ energyBasisCountPayload = Association[Table[branch -> <|
 emitShared["ENERGY_BASIS_COUNT", energyBasisCountPayload];
 
 (* Dedicated form ablation to the committed eight-form slice. *)
+If[!StringQ[Environment["S11CB_PRIMARIES_ONLY"]],
 restrictedEnergyDataByBranch = Association[Table[branch ->
   constructEnergyData[branch, widthBase, modulusBase, True, True],
   {branch, branches}]];
@@ -2127,6 +2130,7 @@ operatorFreezeDiagnosticPayload = Association[Flatten[Table[
   {branch, branches}, {density, densities}], 1]];
 emitShared["OPERATOR_BACKGROUND_FREEZE_DIAGNOSTIC",
   operatorFreezeDiagnosticPayload];
+];
 
 newInvariantPayload = Association[Table[branch -> Module[
     {records},
@@ -2198,6 +2202,15 @@ Do[Module[{key, processed, compactModel, kernelData, operatorLive,
     key -> kernelData["ACTIVATION_POSTCONDITION"]];
   AssociateTo[mainKernelOrigins, key -> kernelOriginsFromOrigins[
     processed["KERNEL_SOURCE_ORIGINS"]]];
+
+  If[StringQ[Environment["S11CB_PRIMARIES_ONLY"]],
+    compactModel = KeyDrop[processed,
+      {"KERNEL_SOURCE_OPERATOR", "KERNEL_SOURCE_ORIGINS"}];
+    AssociateTo[mainModels, key -> compactModel];
+    Clear[processed, compactModel, kernelData, operatorLive];
+    ClearSystemCache[];
+    Share[];
+    Continue[]];
 
   operatorActivated = activateSpatialDivergences[operatorLive];
   operatorDepth = generatedBackgroundDerivativeDepth[operatorActivated];
@@ -2297,6 +2310,7 @@ muThetaPayload = Association[KeyValueMap[Function[{key, model},
 emitShared["MU_THETA_OPERATOR", muThetaPayload];
 Clear[muThetaPayload];
 
+If[!StringQ[Environment["S11CB_PRIMARIES_ONLY"]],
 beginAssociationEmission[
   sharedObject["CONTROL_BACKGROUND_JET_TOWER_OPERANDS"]];
 firstTowerEmission = True;
@@ -2309,6 +2323,7 @@ Do[Module[{key},
   {branch, branches}, {density, densities}];
 endAssociationEmission[];
 Clear[firstTowerEmission, towerSpoolPaths];
+];
 couplingKernelPayload = Map[kernelRecord, mainKernels];
 emitShared["COUPLING_KERNEL", couplingKernelPayload];
 Clear[couplingKernelPayload];
@@ -2407,6 +2422,8 @@ emitShared["ADMISSIBILITY_RESIDUAL", admissibilityResidualPayload];
 Clear[admissibilityOperatorPayload, admissibilitySupportPayload,
   admissibilityResidualPayload];
 ClearSystemCache[];
+
+If[StringQ[Environment["S11CB_PRIMARIES_ONLY"]], Quit[0]];
 
 admissibilityPairingDimensions = <|
   "BULK_DOF_BODY_FORCE" -> <|"U" -> dimensionBulkForce,

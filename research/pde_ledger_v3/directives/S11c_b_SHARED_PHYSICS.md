@@ -32,6 +32,12 @@ The following remain outside this build:
   interpretation (`N13`), and the bench-optics comparison (`N7`);
 - all nonlinear DC, harmonic, sideband, intensity, and soliton questions (`N10`/`G14`).
 
+The §0 exclusion of permeability/memory kernels applies only to kernels derived by the S11c-c curved-bulk
+response solve (`δp = Z·v_bulk`); it does not remove the supplied flat-face kernels `Λ_I(ω)=Λ_I⁰/(1−iωτ_I)` of
+§1c. Those kernels stay symbolic in each §3b face/flux contribution that consumes the S11c-a closure, flux,
+traction, or T-i shape-derivative (no bulk elimination / DtN), and therefore in any §3c block extracted from
+those contributions. The §0 exclusion of a face-parity impedance object is unchanged.
+
 ⛔ The background-flow correction `O(v_bulk_normal_0·|q_n|/ω)` is **not** an S11c-b task (`N11a`): S11c-b
 inherits it as a standing rest-frame limit, and every emitted object is implicitly conditional on the
 S11b-derived smallness domain `|q·v_bulk_normal_0/ω| ≪ 1`. `v_bulk_normal_0` is the inert rest-frame scope

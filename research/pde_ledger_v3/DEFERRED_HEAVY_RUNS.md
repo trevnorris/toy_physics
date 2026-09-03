@@ -33,6 +33,28 @@ of headroom to be safe. Watch RSS; a Mathematica kernel can balloon and orphan �
 
 ---
 
+## PY — S11c-b #90 (SymPy engine): enlarged face-coupling all-case output and heavy controls
+
+- **Engine:** `research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py`
+- **What's deferred:** regeneration of the full four-case `.out` and the build-heavy §5a/§5b, tower-depth,
+  uniform-limit, and homogeneity control payloads after folding the supplied face generalized-force rows into
+  the operator. The #90 build directive explicitly excludes the full package loop on this box.
+- **Completed targeted computation:** one requested-depth coupling case, a reduced-depth origin-schema smoke,
+  and independent source-feed removal/form-ablation probes. These print the folded operator rows, the complete
+  weak blocks, construction origins, adjointness operands, and literal source-ablation differences without
+  using a residual value as an acceptance condition.
+- **Re-run command (full in-band, on a ≥64 GB box):**
+  ```
+  cd /var/projects/toy_physics
+  python3 research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py \
+    > research/pde_ledger_v3/scripts/out/S11c_b_brane_operator_sympy_audit.out 2>&1
+  # (do NOT set S11CB_PRIMARIES_ONLY)
+  ```
+- **What it would add:** the all-case computed primary objects and every affected control's operand A, operand
+  B, and `A−B`. Those residual values are emitted findings, not build acceptance gates.
+
+---
+
 ## WL — S11c-b #89b (Wolfram engine): the ENTIRE in-band `.out` regen (operator emit + the two controls)
 
 - **Engine:** `research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl`

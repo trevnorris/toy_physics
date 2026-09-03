@@ -1210,7 +1210,7 @@ def multigrade(value: object) -> sp.Tuple:
 def dimension_of(expression: sp.Expr, dimensions: Mapping[sp.Symbol, sp.ImmutableMatrix] | None = None) -> sp.ImmutableMatrix:
     dimension_map = SYMBOL_DIMENSIONS if dimensions is None else dimensions
     expression = sp.sympify(expression)
-    if expression.is_Number or isinstance(expression, Str):
+    if expression.is_Number or expression.is_number is True or isinstance(expression, Str):
         return DIM_ZERO
     if isinstance(expression, sp.Symbol):
         if expression not in dimension_map:
@@ -1993,8 +1993,6 @@ def metadata_value(row: sp.Tuple) -> object:
 
 
 def substrate_substitutions(
-    branch: str,
-    mu_theta_amplitude: sp.Expr,
     ablation_source: str | None,
     ablation_direction: int | None,
     full_zero_source: str | None,
@@ -2027,14 +2025,11 @@ def filtered_substrate(
     name: str,
     branch: str,
     representative: str,
-    mu_theta_amplitude: sp.Expr,
     ablation_source: str | None = None,
     ablation_direction: int | None = None,
     full_zero_source: str | None = None,
 ) -> sp.Tuple:
     substitutions = substrate_substitutions(
-        branch,
-        mu_theta_amplitude,
         ablation_source,
         ablation_direction,
         full_zero_source,
@@ -2058,7 +2053,6 @@ def filtered_substrate(
 def substrate_bundle(
     branch: str,
     representative: str,
-    mu_theta_amplitude: sp.Expr,
     ablation_source: str | None = None,
     ablation_direction: int | None = None,
     full_zero_source: str | None = None,
@@ -2071,7 +2065,6 @@ def substrate_bundle(
                     name,
                     branch,
                     representative,
-                    mu_theta_amplitude,
                     ablation_source,
                     ablation_direction,
                     full_zero_source,
@@ -2100,6 +2093,150 @@ def selected_substrate_case(
             if normalized_axes == selected_axes:
                 return value
     raise KeyError((name, selected_axes))
+
+
+def selected_substrate_axes(
+    bundle: sp.Tuple,
+    name: str,
+    selected_axes: tuple[object, ...],
+) -> object:
+    normalized_selected = tuple(str(item) for item in selected_axes)
+    for substrate_name, rows in bundle:
+        if str(substrate_name) != name:
+            continue
+        for axes, value in rows:
+            normalized_axes = tuple(
+                int(item) if isinstance(item, sp.Integer) else str(item)
+                for item in axes
+            )
+            if tuple(str(item) for item in normalized_axes) == normalized_selected:
+                return value
+    raise KeyError((name, normalized_selected))
+
+
+def bind_mu_theta_operand(
+    value: object,
+    branch: str,
+    mu_theta_amplitude: sp.Expr,
+) -> object:
+    reserved_mu_theta = INCOMING_LEDGER[
+        "mu_theta_M" if branch == "MATERIAL_ADVECTED" else "mu_theta_L"
+    ]["value"]
+    return map_object(
+        value,
+        lambda expression: expression.subs(
+            reserved_mu_theta,
+            mu_theta_amplitude,
+            simultaneous=True,
+        ),
+    )
+
+
+def face_generalized_force_rows(
+    bundle: sp.Tuple,
+    branch: str,
+    representative: str,
+    evolution_origins: sp.Tuple,
+    mu_theta_amplitude: sp.Expr,
+) -> dict[str, object]:
+    """Extract supplied face virtual-work coefficients as operator rows.
+
+    The S11c-a virtual-work object is already a weak density.  Differentiating it
+    with respect to its independent virtual displacements produces generalized
+    force rows; the later §3c restriction acts on those rows exactly once.
+    """
+
+    thickness_work_source = selected_substrate_axes(
+        bundle,
+        "virtual_work_shape_deriv",
+        (branch, "DELTA_W", "DELTA_W", representative),
+    )
+    center_work_source = selected_substrate_axes(
+        bundle,
+        "virtual_work_shape_deriv",
+        (branch, "DELTA_W", "ZETA_C", representative),
+    )
+    thickness_work = bind_mu_theta_operand(
+        thickness_work_source,
+        branch,
+        mu_theta_amplitude,
+    )
+    center_work = bind_mu_theta_operand(
+        center_work_source,
+        branch,
+        mu_theta_amplitude,
+    )
+    thickness_density = sp.sympify(thickness_work[1])
+    center_density = sp.sympify(center_work[1])
+    u_face = tuple(
+        sp.expand(sp.diff(thickness_density, delta_v_u[a]))
+        for a in DIRECTIONS
+    )
+    e_face = sp.expand(sp.diff(thickness_density, delta_v_e_W))
+    center_face = sp.expand(
+        sp.diff(center_density, INCOMING_LEDGER["delta_v_zeta_c"]["value"])
+    )
+    face_flux = sp.sympify(
+        named_tuple_row(evolution_origins, "TRUE_AREA_FACE_FLUX")
+    )
+    source_operands = sp.Tuple(
+        sp.Tuple(
+            Str("TRACTION"),
+            sp.Tuple(
+                *(
+                    casify(
+                        bind_mu_theta_operand(
+                            selected_substrate_axes(
+                                bundle,
+                                "traction",
+                                (branch, face, "DELTA_W", representative),
+                            ),
+                            branch,
+                            mu_theta_amplitude,
+                        )
+                    )
+                    for face in FACES
+                )
+            ),
+        ),
+        sp.Tuple(
+            Str("VIRTUAL_WORK_SHAPE_DERIV"),
+            casify(thickness_work),
+        ),
+        sp.Tuple(
+            Str("CLOSURE_SHAPE_DERIV"),
+            sp.Tuple(
+                *(
+                    casify(
+                        bind_mu_theta_operand(
+                            selected_substrate_axes(
+                                bundle,
+                                "closure_shape_deriv",
+                                (branch, face, "DELTA_W", representative),
+                            ),
+                            branch,
+                            mu_theta_amplitude,
+                        )
+                    )
+                    for face in FACES
+                )
+            ),
+        ),
+        sp.Tuple(
+            Str("MU_THETA_FACE_BINDING"),
+            sp.Tuple(
+                Str("LIVE_MU_THETA_AMPLITUDE"),
+                mu_theta_amplitude,
+            ),
+        ),
+    )
+    return {
+        "U": u_face,
+        "E_W": e_face,
+        "THETA_FACE_FLUX": face_flux,
+        "CENTER_FACE_GENERALIZED_ROW": center_face,
+        "SOURCE_OPERANDS": source_operands,
+    }
 
 
 def replace_selected_substrate_case(
@@ -2647,7 +2784,6 @@ def build_operator(
     faces = substrate_bundle(
         branch,
         representative,
-        mu_theta_amplitude,
         ablation_source,
         ablation_direction,
         full_zero_source,
@@ -2674,6 +2810,37 @@ def build_operator(
             "evolution_term_origins",
             branch,
             representative,
+        )
+    )
+    closure_residuals = tuple(
+        sp.sympify(
+            bind_mu_theta_operand(
+                selected_substrate_axes(
+                    faces,
+                    "closure_shape_deriv",
+                    (branch, face, "DELTA_W", representative),
+                ),
+                branch,
+                mu_theta_amplitude,
+            )
+        )
+        for face in FACES
+    )
+    closure_residual_sum = sp.Add(*closure_residuals)
+    # T-i supplies relative_flux - response_flux.  The sourced evolution row
+    # already contains the true-area relative flux, so subtracting the closure
+    # residual folds the symbolic Lambda_A/Lambda_V response into that same row
+    # without re-contracting or adding a second mass-evolution equation.
+    mass_balance_source = sp.expand(mass_balance_source - closure_residual_sum)
+    evolution_origin_source = sp.Tuple(
+        *(
+            sp.Tuple(
+                label,
+                sp.expand(value - closure_residual_sum)
+                if str(label) == "TRUE_AREA_FACE_FLUX"
+                else value,
+            )
+            for label, value in evolution_origin_source
         )
     )
     evolution_origins = evolution_origin_source
@@ -2803,6 +2970,75 @@ def build_operator(
             sp.expand(reduced_e["EXPANDED"] - e_kinetic),
         ),
     )
+    face_rows = face_generalized_force_rows(
+        faces,
+        branch,
+        representative,
+        evolution_origins,
+        mu_theta_amplitude,
+    )
+    face_u = tuple(sp.sympify(item) for item in face_rows["U"])
+    face_e = sp.sympify(face_rows["E_W"])
+    reduced_u_balance = operator["U_BODY_BALANCE"]
+    reduced_e_balance = operator["E_W_BALANCE"]
+    zero_vector_flux = sp.Tuple(
+        *(sp.Tuple(*(sp.Integer(0) for _ in DIRECTIONS)) for _ in DIRECTIONS)
+    )
+    zero_scalar_flux = sp.Tuple(*(sp.Integer(0) for _ in DIRECTIONS))
+    face_u_balance = sp.Tuple(
+        sp.Tuple(Str("LOCAL"), sp.Tuple(*face_u)),
+        sp.Tuple(Str("DIVERGENCE_FLUX"), zero_vector_flux),
+        sp.Tuple(Str("EXPANDED"), sp.Tuple(*face_u)),
+    )
+    face_e_balance = sp.Tuple(
+        sp.Tuple(Str("LOCAL"), face_e),
+        sp.Tuple(Str("DIVERGENCE_FLUX"), zero_scalar_flux),
+        sp.Tuple(Str("EXPANDED"), face_e),
+    )
+    operator["U_BODY_BALANCE"] = sp.Tuple(
+        sp.Tuple(
+            Str("LOCAL"),
+            sp.Tuple(
+                *(
+                    sp.expand(
+                        named_tuple_row(reduced_u_balance, "LOCAL")[a]
+                        + face_u[a]
+                    )
+                    for a in DIRECTIONS
+                )
+            ),
+        ),
+        sp.Tuple(
+            Str("DIVERGENCE_FLUX"),
+            named_tuple_row(reduced_u_balance, "DIVERGENCE_FLUX"),
+        ),
+        sp.Tuple(
+            Str("EXPANDED"),
+            sp.Tuple(
+                *(
+                    sp.expand(
+                        named_tuple_row(reduced_u_balance, "EXPANDED")[a]
+                        + face_u[a]
+                    )
+                    for a in DIRECTIONS
+                )
+            ),
+        ),
+    )
+    operator["E_W_BALANCE"] = sp.Tuple(
+        sp.Tuple(
+            Str("LOCAL"),
+            sp.expand(named_tuple_row(reduced_e_balance, "LOCAL") + face_e),
+        ),
+        sp.Tuple(
+            Str("DIVERGENCE_FLUX"),
+            named_tuple_row(reduced_e_balance, "DIVERGENCE_FLUX"),
+        ),
+        sp.Tuple(
+            Str("EXPANDED"),
+            sp.expand(named_tuple_row(reduced_e_balance, "EXPANDED") + face_e),
+        ),
+    )
     operator["THETA_BALANCE"] = sp.Tuple(
         sp.Tuple(Str("SOURCE_OPERAND"), mass_balance),
         sp.Tuple(Str("EVOLUTION_TERM_ORIGINS"), evolution_origins),
@@ -2812,6 +3048,19 @@ def build_operator(
         evolution_origins, "BACKGROUND_ADVECTION"
     )
     operator["FACE_FLUX_BOUNDARY_OPERANDS"] = faces
+    operator["FACE_GENERALIZED_FORCE_ROWS"] = sp.Tuple(
+        sp.Tuple(Str("U"), sp.Tuple(*face_u)),
+        sp.Tuple(Str("E_W"), face_e),
+        sp.Tuple(
+            Str("THETA_FACE_FLUX"),
+            sp.sympify(face_rows["THETA_FACE_FLUX"]),
+        ),
+        sp.Tuple(
+            Str("CENTER_FACE_GENERALIZED_ROW"),
+            sp.sympify(face_rows["CENTER_FACE_GENERALIZED_ROW"]),
+        ),
+        sp.Tuple(Str("SOURCE_OPERANDS"), face_rows["SOURCE_OPERANDS"]),
+    )
 
     if branch == "MATERIAL_ADVECTED":
         mu_theta_value = sp.Tuple(Str("mu_theta^alpha"), epsilon * mu_theta_amplitude)
@@ -2934,16 +3183,34 @@ def build_operator(
                 ),
             )
         )
-    face_origin_substrate = sp.Tuple(
+    face_virtual_work_origin = casify(
+        {
+            "U": face_u_balance,
+            "THETA": sp.Tuple(
+                sp.Tuple(Str("EXPANDED"), sp.Integer(0)),
+            ),
+            "E_W": face_e_balance,
+        }
+    )
+    face_flux_origins = sp.Tuple(
         *(
-            row
-            for row in faces
-            if str(row[0])
-            not in (
-                "virtual_constraint",
-                "evolution_mass_balance",
-                "evolution_term_origins",
-            )
+            sp.Tuple(label, value)
+            for label, value in evolution_origins
+            if str(label) == "TRUE_AREA_FACE_FLUX"
+        )
+    )
+    advective_origins = sp.Tuple(
+        *(
+            sp.Tuple(label, value)
+            for label, value in evolution_origins
+            if str(label) == "BACKGROUND_ADVECTION"
+        )
+    )
+    mass_evolution_origins = sp.Tuple(
+        *(
+            sp.Tuple(label, value)
+            for label, value in evolution_origins
+            if str(label) in ("DENSITY_TIME", "VELOCITY_DILATATION")
         )
     )
     origins = sp.Tuple(
@@ -2967,8 +3234,16 @@ def build_operator(
                 epsilon * mu_W * W_bg**2 * e_tt,
             ),
         ),
-        sp.Tuple(Str("MASS_EVOLUTION"), evolution_origins),
-        sp.Tuple(Str("FACE_FLUX"), face_origin_substrate),
+        sp.Tuple(
+            Str("FACE_VIRTUAL_WORK"),
+            sp.Tuple(
+                sp.Tuple(Str("ROWS"), face_virtual_work_origin),
+                sp.Tuple(Str("SOURCE_OPERANDS"), face_rows["SOURCE_OPERANDS"]),
+            ),
+        ),
+        sp.Tuple(Str("FACE_FLUX"), face_flux_origins),
+        sp.Tuple(Str("ADVECTIVE"), advective_origins),
+        sp.Tuple(Str("MASS_EVOLUTION"), mass_evolution_origins),
     )
     FOLD_DIAGNOSTIC_CACHE[cache_key] = sp.Tuple(
         sp.Tuple(Str("RAW_BULK_U_EL"), sp.Tuple(*raw_internal_u)),
@@ -3276,7 +3551,7 @@ def build_kernel(
     )
     if cache_key in KERNEL_CACHE:
         return KERNEL_CACHE[cache_key]
-    operator, operator_origins, mu_theta_value = build_operator(
+    operator, operator_origins, _ = build_operator(
         branch,
         representative,
         route,
@@ -3456,7 +3731,7 @@ def build_kernel(
     core_key = (
         branch,
         route,
-        representative if route == "MATERIAL" else None,
+        representative,
         ablation_source,
         ablation_direction,
         corrupt_material_constraint,
@@ -3464,25 +3739,29 @@ def build_kernel(
         full_zero_source,
     )
     if core_key in KERNEL_BLOCK_CACHE:
-        bulk, adjointness = KERNEL_BLOCK_CACHE[core_key]
+        complete_blocks, adjointness = KERNEL_BLOCK_CACHE[core_key]
     else:
-        bulk = weak_operator_blocks(operator_u, operator_theta, operator_e)
+        complete_blocks = weak_operator_blocks(
+            operator_u,
+            operator_theta,
+            operator_e,
+        )
         adjointness = sp.Tuple(
             Str("NO_INDEPENDENT_SECOND_ROUTE"),
             sp.Tuple(
                 Str("TRANSVERSE_TO_THICKNESS_OPERATOR_BLOCK"),
-                casify(bulk["TRANSVERSE_TO_THICKNESS"]),
+                casify(complete_blocks["TRANSVERSE_TO_THICKNESS"]),
             ),
             sp.Tuple(
                 Str("THICKNESS_TO_TRANSVERSE_OPERATOR_BLOCK"),
-                casify(bulk["THICKNESS_TO_TRANSVERSE"]),
+                casify(complete_blocks["THICKNESS_TO_TRANSVERSE"]),
             ),
         )
-        KERNEL_BLOCK_CACHE[core_key] = bulk, adjointness
+        KERNEL_BLOCK_CACHE[core_key] = complete_blocks, adjointness
     if include_term_origins and core_key in KERNEL_ORIGIN_CACHE:
         origin_groups = KERNEL_ORIGIN_CACHE[core_key]
     elif include_term_origins:
-        origin_rows = []
+        bulk_origin_rows = []
         bulk_energy_origins = named_row(operator_origins, "BULK_ENERGY")
         for label, term_operator in bulk_energy_origins:
             term_blocks = weak_operator_blocks(
@@ -3490,102 +3769,94 @@ def build_kernel(
                 named_row(term_operator, "THETA"),
                 named_row(term_operator, "E_W"),
             )
-            origin_rows.append(sp.Tuple(label, casify(term_blocks)))
+            bulk_origin_rows.append(sp.Tuple(label, casify(term_blocks)))
         zero_u_balance = sp.Tuple(
             sp.Tuple(Str("EXPANDED"), sp.Tuple(*(sp.Integer(0) for _ in DIRECTIONS)))
         )
         zero_scalar_balance = sp.Tuple(
             sp.Tuple(Str("EXPANDED"), sp.Integer(0))
         )
-        mass_origin_rows = []
-        for label, value in named_row(operator_theta, "EVOLUTION_TERM_ORIGINS"):
-            theta_origin_balance = sp.Tuple(
-                sp.Tuple(Str("EXPANDED"), value)
-            )
-            mass_origin_rows.append(
-                sp.Tuple(
-                    label,
-                    casify(
-                        weak_operator_blocks(
-                            zero_u_balance,
-                            theta_origin_balance,
-                            zero_scalar_balance,
-                        )
-                    ),
+        face_virtual_source = named_row(operator_origins, "FACE_VIRTUAL_WORK")
+        face_virtual_operator = named_row(face_virtual_source, "ROWS")
+        face_virtual_blocks = weak_operator_blocks(
+            named_row(face_virtual_operator, "U"),
+            named_row(face_virtual_operator, "THETA"),
+            named_row(face_virtual_operator, "E_W"),
+        )
+
+        def theta_origin_blocks(rows: sp.Tuple) -> sp.Tuple:
+            restricted_rows = []
+            for label, value in rows:
+                theta_origin_balance = sp.Tuple(
+                    sp.Tuple(Str("EXPANDED"), value)
                 )
-            )
+                restricted_rows.append(
+                    sp.Tuple(
+                        label,
+                        casify(
+                            weak_operator_blocks(
+                                zero_u_balance,
+                                theta_origin_balance,
+                                zero_scalar_balance,
+                            )
+                        ),
+                    )
+                )
+            return sp.Tuple(*restricted_rows)
+
         origin_groups = sp.Tuple(
-            sp.Tuple(Str("BULK_ENERGY"), sp.Tuple(*origin_rows)),
-            sp.Tuple(Str("MASS_EVOLUTION"), sp.Tuple(*mass_origin_rows)),
+            sp.Tuple(Str("BULK_ENERGY"), sp.Tuple(*bulk_origin_rows)),
+            sp.Tuple(
+                Str("FACE_VIRTUAL_WORK"),
+                sp.Tuple(
+                    sp.Tuple(
+                        Str("GENERALIZED_FORCE_ROWS"),
+                        casify(face_virtual_blocks),
+                    ),
+                ),
+            ),
+            sp.Tuple(
+                Str("FACE_FLUX"),
+                theta_origin_blocks(named_row(operator_origins, "FACE_FLUX")),
+            ),
+            sp.Tuple(
+                Str("ADVECTIVE"),
+                theta_origin_blocks(
+                    sp.Tuple(
+                        *named_row(operator_origins, "ADVECTIVE"),
+                        *named_row(operator_origins, "MASS_EVOLUTION"),
+                    )
+                ),
+            ),
         )
         KERNEL_ORIGIN_CACHE[core_key] = origin_groups
     else:
         origin_groups = sp.Tuple(
             sp.Tuple(Str("BULK_ENERGY"), sp.Tuple()),
-            sp.Tuple(Str("MASS_EVOLUTION"), sp.Tuple()),
+            sp.Tuple(Str("FACE_VIRTUAL_WORK"), sp.Tuple()),
+            sp.Tuple(Str("FACE_FLUX"), sp.Tuple()),
+            sp.Tuple(Str("ADVECTIVE"), sp.Tuple()),
         )
-    mu_theta_amplitude = mu_theta_value[1] / epsilon
-    face_bundle = named_row(operator, "FACE_FLUX_BOUNDARY_OPERANDS")
-    boundary_source = sp.Tuple(
-        *(
-            sp.Tuple(
-                Str(name),
-                named_row(face_bundle, name),
-            )
-            for name in ("traction", "virtual_work_shape_deriv", "evolution_mass_balance")
-        ),
-        sp.Tuple(
-            Str("MU_THETA_FACE_BINDING"),
-            named_row(operator, "MU_THETA_FACE_BINDING"),
-        ),
-    )
-    evolution_origins = named_row(operator_theta, "EVOLUTION_TERM_ORIGINS")
-    face_flux_source = named_row(evolution_origins, "TRUE_AREA_FACE_FLUX")
-    advective_source = named_row(operator, "ADVECTIVE_MASS_OPERAND")
-    boundary = sp.Tuple(
-        sp.Tuple(Str("SOURCE_SUBSTRATE"), boundary_source),
-        sp.Tuple(
-            Str("TRANSVERSE_TO_FACE_FLUX"),
-            casify(restrict_expression(face_flux_source, "TRANSVERSE")),
-        ),
-        sp.Tuple(
-            Str("MU_THETA_TO_TRANSVERSE"),
-            casify(
-                {
-                    "THETA": restrict_expression(mu_theta_amplitude, "THETA"),
-                    "E_W": restrict_expression(mu_theta_amplitude, "E_W"),
-                    "DIV_U": restrict_expression(mu_theta_amplitude, "LONGITUDINAL"),
-                    "TRANSVERSE": restrict_expression(mu_theta_amplitude, "TRANSVERSE"),
-                }
-            ),
-        ),
-        sp.Tuple(
-            Str("ADVECTIVE_MASS_BLOCK"),
-            casify(
-                {
-                    "TRANSVERSE_TRIAL": restrict_expression(
-                        advective_source, "TRANSVERSE"
-                    ),
-                    "LONGITUDINAL_TRIAL": restrict_expression(
-                        advective_source, "LONGITUDINAL"
-                    ),
-                }
-            ),
-        ),
-    )
     kernel = sp.Tuple(
         sp.Tuple(Str("SECTOR_LABELS"), sp.Tuple(Str("CURL_LOCAL"), Str("DIVERGENCE_LOCAL"))),
-        sp.Tuple(Str("BULK_BLOCKS"), casify(bulk)),
-        sp.Tuple(Str("FACE_FLUX_BLOCKS"), boundary),
+        sp.Tuple(Str("COMPLETE_OPERATOR_BLOCKS"), casify(complete_blocks)),
         sp.Tuple(Str("VARIATIONAL_ADJOINTNESS"), adjointness),
     )
-    origins = sp.Tuple(
-        *origin_groups,
-        sp.Tuple(Str("FACE_FLUX"), boundary),
-    )
+    origins = origin_groups
     result = kernel, origins
     KERNEL_CACHE[cache_key] = result
     return result
+
+
+def coupling_semantic_operands(kernel: object) -> sp.Tuple:
+    """Return only the six cross-sector block operands, in declared order."""
+
+    complete = named_tuple_row(casify(kernel), "COMPLETE_OPERATOR_BLOCKS")
+    forward = named_tuple_row(complete, "TRANSVERSE_TO_THICKNESS")
+    reciprocal = named_tuple_row(complete, "THICKNESS_TO_TRANSVERSE")
+    return sp.Tuple(
+        *(named_tuple_row(block, channel) for block in (forward, reciprocal) for channel in ("THETA", "E_W", "DIV_U"))
+    )
 
 
 def zero_wave(value: object) -> object:
@@ -3832,6 +4103,7 @@ def task_energy_basis() -> None:
 
 
 def task_slab_operator() -> None:
+    face_rows = {}
     diagnostic_cases = {
         name: {}
         for name in (
@@ -3849,6 +4121,9 @@ def task_slab_operator() -> None:
             OPERATOR_PRIMARY_CASES[case] = retained_grade(operator)
             ORIGINS_PRIMARY_CASES[case] = retained_grade(origins)
             MU_PRIMARY_CASES[case] = retained_grade(mu_theta_value)
+            face_rows[case] = retained_grade(
+                named_tuple_row(operator, "FACE_GENERALIZED_FORCE_ROWS")
+            )
             cache_key = (
                 branch,
                 representative,
@@ -3867,22 +4142,67 @@ def task_slab_operator() -> None:
     emit_primary("SLAB_OPERATOR", OPERATOR_PRIMARY_CASES, "slab_operator")
     emit_primary("SLAB_OPERATOR_TERM_ORIGINS", ORIGINS_PRIMARY_CASES, "slab_operator_term_origins")
     emit_primary("MU_THETA_OPERATOR", MU_PRIMARY_CASES, "mu_theta_operator")
+    emit(
+        "SLAB_FACE_GENERALIZED_FORCE_ROWS",
+        case_payload(face_rows),
+        local=True,
+    )
     for name, cases in diagnostic_cases.items():
         emit(name, case_payload(cases), local=True)
 
 
 def task_coupling_kernel() -> None:
+    complete_blocks = {}
+    adjointness_operands = {}
     for branch in BRANCHES:
         for representative in DENSITY_REPS:
             case = (branch, representative)
             kernel, origins = build_kernel(branch, representative)
             KERNEL_PRIMARY_CASES[case] = retained_grade(kernel)
             KERNEL_ORIGINS_PRIMARY_CASES[case] = retained_grade(origins)
+            complete_blocks[case] = retained_grade(
+                named_tuple_row(kernel, "COMPLETE_OPERATOR_BLOCKS")
+            )
+            adjointness_operands[case] = retained_grade(
+                named_tuple_row(kernel, "VARIATIONAL_ADJOINTNESS")
+            )
     emit_primary("COUPLING_KERNEL", KERNEL_PRIMARY_CASES, "coupling_kernel")
     emit_primary(
         "COUPLING_KERNEL_TERM_ORIGINS",
         KERNEL_ORIGINS_PRIMARY_CASES,
         "coupling_kernel_term_origins",
+    )
+    emit("COUPLING_COMPLETE_WEAK_BLOCKS", case_payload(complete_blocks), local=True)
+    emit(
+        "COUPLING_PAIRING_ADJOINTNESS_OPERAND",
+        case_payload(adjointness_operands),
+        local=True,
+    )
+    emit(
+        "COUPLING_SUPPLIED_INPUT_STATUS",
+        sp.Tuple(
+            sp.Tuple(
+                Str("CONTENT_VERDICT_REVERSIBLE_TILTED_FACE_GEOMETRY"),
+                Str("SUPPLIED_UNFALSIFIABLE_IN_THIS_BUILD"),
+            ),
+            sp.Tuple(
+                Str("CONTENT_VERDICT_IRREVERSIBLE_FLAT_FACE_RESPONSE"),
+                Str("SUPPLIED_UNFALSIFIABLE_IN_THIS_BUILD"),
+            ),
+            sp.Tuple(
+                Str("S11CA_T_A_THROUGH_T_I_SHAPE_DERIVATIVE_SUBSTRATE"),
+                Str("SUPPLIED_UNFALSIFIABLE_IN_THIS_BUILD"),
+            ),
+            sp.Tuple(
+                Str("S11CA_FLAT_FACE_LAMBDA_KERNELS"),
+                Str("SUPPLIED_UNFALSIFIABLE_IN_THIS_BUILD"),
+            ),
+            sp.Tuple(
+                Str("S11CB_WEAK_OPERATOR_RESTRICTION"),
+                Str("SUPPLIED_UNFALSIFIABLE_IN_THIS_BUILD"),
+            ),
+        ),
+        local=True,
     )
 
 
@@ -4544,13 +4864,34 @@ def task_tower_depth_control() -> None:
             strong_deeper[case] = deeper_rows
             strong_shallower[case] = shallower_rows
             coupling_chosen[case] = retained_grade(
-                coupling_outer_rows(chosen_rows, COUPLING_JET_DEPTH)
+                coupling_semantic_operands(
+                    build_kernel(
+                        branch,
+                        representative,
+                        include_term_origins=False,
+                        background_depth=COUPLING_JET_DEPTH,
+                    )[0]
+                )
             )
             coupling_deeper[case] = retained_grade(
-                coupling_outer_rows(chosen_rows, DEPTH_CONTROL_JET_DEPTH)
+                coupling_semantic_operands(
+                    build_kernel(
+                        branch,
+                        representative,
+                        include_term_origins=False,
+                        background_depth=DEPTH_CONTROL_JET_DEPTH,
+                    )[0]
+                )
             )
             coupling_shallower[case] = retained_grade(
-                coupling_outer_rows(chosen_rows, STRONG_ROW_JET_DEPTH)
+                coupling_semantic_operands(
+                    build_kernel(
+                        branch,
+                        representative,
+                        include_term_origins=False,
+                        background_depth=STRONG_ROW_JET_DEPTH,
+                    )[0]
+                )
             )
     depth_operands = sp.Tuple(
         sp.Tuple(Str("ENERGY_BASIS"), sp.Integer(STRONG_ROW_JET_DEPTH)),
@@ -4559,20 +4900,38 @@ def task_tower_depth_control() -> None:
         sp.Tuple(Str("COUPLING_CASCADE"), sp.Integer(COUPLING_JET_DEPTH)),
         sp.Tuple(Str("DEEPER_CONTROL"), sp.Integer(DEPTH_CONTROL_JET_DEPTH)),
     )
+    chosen_operands = {
+        "ENERGY_BASIS": energy_chosen,
+        "MATERIAL_PULLBACK": pullback_chosen,
+        "STRONG_ROWS": strong_chosen,
+        "COUPLING_CASCADE": coupling_chosen,
+    }
+    deeper_operands = {
+        "ENERGY_BASIS": energy_deeper,
+        "MATERIAL_PULLBACK": pullback_deeper,
+        "STRONG_ROWS": strong_deeper,
+        "COUPLING_CASCADE": coupling_deeper,
+    }
+    shallower_operands = {
+        "ENERGY_BASIS": energy_shallower,
+        "MATERIAL_PULLBACK": pullback_shallower,
+        "STRONG_ROWS": strong_shallower,
+        "COUPLING_CASCADE": coupling_shallower,
+    }
     deeper_residual = {
-        "ENERGY_BASIS": structural_residual(energy_deeper, energy_chosen),
-        "MATERIAL_PULLBACK": structural_residual(pullback_deeper, pullback_chosen),
-        "STRONG_ROWS": structural_residual(strong_deeper, strong_chosen),
-        "COUPLING_CASCADE": structural_residual(coupling_deeper, coupling_chosen),
+        name: structural_residual(chosen_operands[name], deeper_operands[name])
+        for name in chosen_operands
     }
     shallower_residual = {
-        "ENERGY_BASIS": structural_residual(energy_chosen, energy_shallower),
-        "MATERIAL_PULLBACK": structural_residual(pullback_chosen, pullback_shallower),
-        "STRONG_ROWS": structural_residual(strong_chosen, strong_shallower),
-        "COUPLING_CASCADE": structural_residual(coupling_chosen, coupling_shallower),
+        name: structural_residual(chosen_operands[name], shallower_operands[name])
+        for name in chosen_operands
     }
     emit("TOWER_DEPTH_OPERAND", depth_operands)
+    emit("TOWER_DEPTH_DEEPER_OPERAND_A", case_payload(chosen_operands))
+    emit("TOWER_DEPTH_DEEPER_OPERAND_B", case_payload(deeper_operands))
     emit("TOWER_DEPTH_DEEPER_RESIDUAL", case_payload(deeper_residual))
+    emit("TOWER_DEPTH_SHALLOWER_OPERAND_A", case_payload(chosen_operands))
+    emit("TOWER_DEPTH_SHALLOWER_OPERAND_B", case_payload(shallower_operands))
     emit("TOWER_DEPTH_SHALLOWER_RESIDUAL", case_payload(shallower_residual))
 
 
@@ -4647,6 +5006,12 @@ def s11b_uniform_semantic_rows() -> sp.Tuple:
     )
 
 
+def s11b_uniform_coupling_operands() -> sp.Tuple:
+    coupling = INCOMING_LEDGER["transverse_coupling"]["value"]
+    operand = coupling[2]
+    return sp.Tuple(*(operand for _ in range(6)))
+
+
 def task_uniform_control() -> None:
     s11cb = {}
     s11b = {}
@@ -4660,8 +5025,16 @@ def task_uniform_control() -> None:
                     )
                     s11b[key] = s11b_uniform_semantic_rows()
                 elif object_name == "COUPLING_KERNEL":
-                    s11cb[key] = uniformize(build_kernel(branch, representative)[0])
-                    s11b[key] = INCOMING_LEDGER["transverse_coupling"]["value"]
+                    s11cb[key] = coupling_semantic_operands(
+                        uniformize(
+                            build_kernel(
+                                branch,
+                                representative,
+                                include_term_origins=False,
+                            )[0]
+                        )
+                    )
+                    s11b[key] = s11b_uniform_coupling_operands()
                 else:
                     s11cb[key] = uniform_transverse_dispersion()
                     s11b[key] = INCOMING_LEDGER["transverse_dispersion"]["value"]

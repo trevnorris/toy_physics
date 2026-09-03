@@ -2309,8 +2309,7 @@ def verify_task_packet_chain(
             lint_record = json.loads(lint_record_path.read_text(encoding="utf-8"))
             lint_errors = lint_record.get("errors")
             if (
-                task.get("source_unit_id") is None
-                or not isinstance(lint_errors, list) or not lint_errors
+                not isinstance(lint_errors, list) or not lint_errors
                 or not all(
                     isinstance(error, str) and error.startswith(f"{task['output_repository_path']}:")
                     for error in lint_errors
@@ -3175,24 +3174,37 @@ def _render_staged_lint_failure_report(record: Mapping[str, Any]) -> bytes:
     return ("\n".join(lines).rstrip() + "\n").encode("utf-8")
 
 
-def record_staged_lint_failure(repo: Path, transaction_arg: str) -> dict[str, Any]:
+def record_staged_lint_failure(
+    repo: Path, transaction_arg: str, task_id: str | None = None,
+) -> dict[str, Any]:
     """Record one task-scoped staged lint failure after an exact current Grok PASS."""
     transaction, manifest = load_transaction(repo, transaction_arg)
     _recheck_transaction(repo, manifest)
     required = [task for task in manifest.get("writer_tasks", []) if task.get("required")]
-    if len(required) != 1:
-        raise MemoryErrorBase("recorded staged lint failure requires exactly one writer task")
-    task = required[0]
-    task_id = task["task_id"]
-    if task.get("source_unit_id") is None:
-        raise MemoryErrorBase("recorded staged lint failure is only supported for source-unit tasks")
+    if task_id is None:
+        if len(required) != 1:
+            raise MemoryErrorBase("recorded staged lint failure requires --task when multiple writers are required")
+        task = required[0]
+        task_id = task["task_id"]
+    else:
+        task = next((item for item in required if item.get("task_id") == task_id), None)
+        if task is None:
+            raise MemoryErrorBase(f"recorded staged lint task is not a required writer: {task_id}")
     output_path = task["output_repository_path"]
     candidate = transaction / task["staged_output_path"]
     if not candidate.is_file() or candidate.is_symlink():
         raise MemoryErrorBase(f"cannot record lint failure without a regular staged candidate: {task_id}")
     candidate_sha256 = sha256_file(candidate)
+    staged_hashes: dict[str, str] = {}
+    for required_task in required:
+        staged = transaction / required_task["staged_output_path"]
+        if not staged.is_file() or staged.is_symlink():
+            raise MemoryErrorBase(
+                f"cannot record lint failure while required candidate is missing: {required_task['task_id']}"
+            )
+        staged_hashes[required_task["output_repository_path"]] = sha256_file(staged)
     attestation_errors = verify_isolation_attestations(
-        repo, transaction, manifest, {output_path: candidate_sha256},
+        repo, transaction, manifest, staged_hashes,
     )
     if attestation_errors:
         raise MemoryErrorBase(
@@ -4206,6 +4218,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--record", action="store_true",
         help="record one exact task-scoped staged lint failure after a current Grok PASS",
     )
+    lint.add_argument("--task", help="writer task whose exact staged lint failures should be recorded")
     lint.add_argument("--json", action="store_true")
     query = sub.add_parser("query", help="retrieve ranked local memory excerpts")
     query.add_argument("question", nargs="+")
@@ -4219,6 +4232,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.command == "lint" and args.record and not args.staged:
         parser.error("--record requires --staged TRANSACTION")
+    if args.command == "lint" and args.task and not args.record:
+        parser.error("--task requires --record")
     try:
         repo = args.repo.resolve() if args.repo else find_repo()
         recovered = recover_publication(repo)
@@ -4244,7 +4259,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         elif args.command == "lint":
             if args.staged:
                 if args.record:
-                    record = record_staged_lint_failure(repo, args.staged)
+                    record = record_staged_lint_failure(repo, args.staged, args.task)
                     errors = list(record["errors"])
                     warnings = list(record["warnings"])
                     print(f"recorded: {record['report_path']}")

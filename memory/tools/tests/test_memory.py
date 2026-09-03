@@ -1280,6 +1280,35 @@ keep
         hydration = json.loads((topic_packet / "hydration.json").read_text())
         self.assertEqual(hydration["dependencies"][0]["task_id"], "paper")
 
+        add_review_attestation(current, "topic-one", "PASS")
+        lint_record = mem.record_staged_lint_failure(self.root, str(current), "topic-one")
+        self.assertEqual(lint_record["task_id"], "topic-one")
+        self.assertIsNone(lint_record["source_unit_id"])
+        self.assertTrue(all(
+            error.startswith("memory/topics/one.md:") for error in lint_record["errors"]
+        ))
+
+        revised = repo.prepare()
+        run_isolated.reuse_reviewed_candidate(self.root, str(revised), "paper", str(prior))
+        fake_profile = dataclasses.replace(
+            run_isolated._test_profile((
+                "/bin/sh", "-c", "cp /packet/revision_candidate.md /output/page.md",
+                run_isolated.WRITER_PROMPT,
+            )),
+            name="codex",
+        )
+        with mock.patch.object(run_isolated, "runtime_profile", return_value=fake_profile):
+            run_isolated.run_task(
+                self.root,
+                str(revised),
+                "topic-one",
+                "codex",
+                revise_lint_from=str(current),
+            )
+        revision = json.loads((revised / "tasks/topic-one/packet/revision.json").read_text())
+        self.assertEqual(revision["revision_basis"], "machine_lint_failure")
+        self.assertIsNone(revision["source_unit_id"])
+
         prior_report = prior / "reviews/paper/output/report.md"
         prior_report.write_text("tampered after hydration\n", encoding="utf-8")
         with self.assertRaisesRegex(run_isolated.IsolationError, "Grok report hash mismatch"):

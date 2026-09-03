@@ -772,18 +772,16 @@ def _render_lint_failure_report(record: dict[str, Any]) -> bytes:
 def _verified_lint_revision_input(
     repo: Path, manifest: dict[str, Any], writer: dict[str, Any], prior_transaction_arg: str,
 ) -> dict[str, Any]:
-    """Verify a source candidate, its PASS review, and its trusted machine-lint FAIL."""
+    """Verify a candidate, its PASS review, and its trusted machine-lint FAIL."""
     task_id = writer["task_id"]
-    if writer.get("source_unit_id") is None:
-        raise IsolationError("lint revision is only supported for source-unit tasks")
     prior_transaction, prior_manifest = mem.load_transaction(repo, prior_transaction_arg)
     if prior_manifest.get("transaction_id") == manifest.get("transaction_id"):
         raise IsolationError("lint revision input must come from another transaction")
     prior_writer = next(
         (item for item in prior_manifest.get("writer_tasks", []) if item.get("task_id") == task_id), None,
     )
-    if prior_writer is None or not prior_writer.get("required") or prior_writer.get("source_unit_id") is None:
-        raise IsolationError(f"lint revision transaction has no source writer task for {task_id}")
+    if prior_writer is None or not prior_writer.get("required"):
+        raise IsolationError(f"lint revision transaction has no required writer task for {task_id}")
     if (
         prior_writer.get("task_kind") != writer.get("task_kind")
         or prior_writer.get("source_unit_id") != writer.get("source_unit_id")
@@ -910,7 +908,7 @@ def admit_lint_revision_candidate(
     repo: Path, transaction: Path, manifest: dict[str, Any], writer: dict[str, Any],
     packet: Path, packet_seal: dict[str, Any], prior_transaction_arg: str,
 ) -> tuple[Path, dict[str, Any], dict[str, Any]]:
-    """Seal a reviewed candidate and trusted machine-lint failure into a source retry packet."""
+    """Seal a reviewed candidate and trusted machine-lint failure into a retry packet."""
     task_id = writer["task_id"]
     task_root = transaction / "tasks" / task_id
     if (packet / "revision.json").exists() or (packet / "revision_candidate.md").exists():

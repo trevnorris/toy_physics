@@ -73,3 +73,5 @@ min MemAvailable 8.4 GB (my 2.5 GB-floor watchdog never fired — a system OOM t
 - ⇒ recommended path: a LIGHTER WL emit that SKIPS `mainKernelOrigins`/`COUPLING_KERNEL_TERM_ORIGINS` → the CORE
   cross-engine residual (fold rows + #90 kernel + μθ) fits this box; the coupling origin-family attribution + the
   full run stay deferred (≥64 GB). Needs a small gate change (re-leg) + P2a making the coupling-origin join optional.
+- ⇒ **USER DECISION (2026-09-03, `66e8d021`): the lighter core-only path was DECLINED** — the WHOLE cross-engine
+  residual is deferred to a ≥64 GB box. The recommendation above is recorded for completeness, NOT the chosen path.

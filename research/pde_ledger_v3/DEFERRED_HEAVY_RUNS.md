@@ -4,8 +4,11 @@ Some in-band engine self-checks OOM the current **30 GB** dev box (the un-reduce
 operators are ~50k+ LeafCount and several are held/expanded at once). Where that happens we run a memory-fitting
 variant in-band and prove the skipped/scoped checks **out-of-band** (independent build-leg ablations + numerics),
 recording the provenance. This file lists exactly what to re-run, and how, on a machine with more RAM to get the
-full-fidelity in-band run. Everything here is **already verified out-of-band** — this is belt-and-suspenders
-in-band self-certification, not open physics.
+full-fidelity in-band run. The tower/heavy in-band CONTROLS listed here are **already verified out-of-band** —
+belt-and-suspenders self-certification, not open physics. ⚠ EXCEPTION (added 2026-09-03): the **cross-engine
+residual** entry below is OPEN physics — the fold + #90 are per-engine leg-verified but NOT yet cross-engine-validated
+(the 2 sign conventions + #90's 2 flags are unadjudicated); that entry is a genuine deferred cross-check, not
+belt-and-suspenders.
 
 Guidance for the re-run box: the operators peak ~15–16 GB per engine on the current controls; give it **≥64 GB**
 of headroom to be safe. Watch RSS; a Mathematica kernel can balloon and orphan — `kill -9` by exact pid if so.

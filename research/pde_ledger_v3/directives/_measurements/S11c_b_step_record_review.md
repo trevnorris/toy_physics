@@ -34,7 +34,9 @@ step-2/4 family verdicts. All cited SHAs resolve.
     as such, so it does not fail the record's own rule-2 promise.
 14. **Stale in-tree `.out`** (Grok): the committed WL `.out` (`d4adbd99`) is pre-#89b frozen, PY is pre-fold; a
     reader of them won't see the established objects. Stated in the close note.
-15. **Exports** (Grok): `S11c_b_exports.py` regenerated but HELD uncommitted pending the ≥64 GB cross-validation;
+15. **Exports** (Grok): `S11c_b_exports.py` regenerated (faithful — digests match the committed folded+#90 engine/spec)
+    and later COMMITTED `af560257` (per user direction, satisfying N1's per-sub-step obligation; coupling
+    per-engine-verified, cross-validation deferred) — the step record was noted here as "held" pre-commit;
     N1's per-sub-step exports obligation deferred with the residual. Stated.
 16. **Deferral was a CHOICE** (Grok): a lighter core-only residual (~8 GB, fits) was OFFERED and NOT taken — the
     ≥64 GB deferral is the user's choice, not forced by physics. Stated.

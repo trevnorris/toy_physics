@@ -10,6 +10,16 @@ in-band self-certification, not open physics.
 Guidance for the re-run box: the operators peak ~15–16 GB per engine on the current controls; give it **≥64 GB**
 of headroom to be safe. Watch RSS; a Mathematica kernel can balloon and orphan — `kill -9` by exact pid if so.
 
+> ⚠ **SCOPE — what the ≥64 GB requirement DOES and DOES NOT bound (measured 2026-09-03,
+> `directives/_measurements/S11c_b_step0_residual_scope.md`).** The ≥64 GB requirement is for the **full 4-case
+> in-band `.out` regen with the tower-depth control variants** (`operatorTruncated/Extended`,
+> `kernelTruncated/Extended`, built unconditionally at `…mathematica_audit.wl:2204-2231`) — those variants are the
+> ~16 GB/case peak. It does **NOT** bound the cross-engine **residual**, which needs only the PRIMARY single-case
+> operator + `FINAL_KERNEL`: a guarded single-case WL run of exactly those (no tower variants) peaked **7.95 GB RSS
+> / 0.99 GB in-kernel, min MemAvailable 14.94 GB, ~26 min** on this 30 GB box. ⇒ the cross-engine single-case
+> residual is **doable on the 30 GB box**; only a comparator-PARSEABLE single-case `.out` needs a residual-mode
+> emit (engine's own `emitShared` on the primary objects, tower variants skipped).
+
 ---
 
 ## PY — S11c-b #89 (SymPy engine): the PRIMARIES_ONLY-skipped in-band controls

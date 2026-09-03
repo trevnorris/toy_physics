@@ -54,3 +54,22 @@ Wall time (samples): 00:50:43 → 01:17:02 ≈ **26.3 min** for one case (operat
 The cross-engine single-case residual (validating the constraint-fold's U/E_W rows and #90's face+response kernel)
 is DOABLE on this 30 GB box. The ≥64 GB box stays required only for the full 4-case in-band `.out` regen with tower
 + heavy controls (belt-and-suspenders, already proven out-of-band per `DEFERRED_HEAVY_RUNS.md`).
+
+---
+
+## ⚠ CORRECTION (2026-09-03) — the production run OVERTURNS STEP 0's lower bound
+The P1-WL production run (full 40-invariant basis, all 4 cases, `S11CB_PRIMARIES_ONLY`, memory-watched) was
+OOM-killed while STILL on case 1: `peak_kernel_RSS_GB 15.61` and GROWING, tags=4 (no operator emitted) after ~56 min,
+min MemAvailable 8.4 GB (my 2.5 GB-floor watchdog never fired — a system OOM took it). Evidence
+`~/.s11_build/S11c_b_production/{run.log,mem_samples.log}`.
+- ROOT CAUSE (Codex's P1-WL build-leg #5 caveat, now measured): STEP 0's 7.95 GB measured only `evaluatedModel`
+  + ONE `FINAL_KERNEL`. The full primary emit ALSO builds `mainKernelOrigins` = `kernelOriginsFromOrigins`
+  (`…audit.wl:1826`) → a FULL `extractCoupling` PER ORIGIN (`kernelFromOrigin:1808/1815`, ~6 origins/case) for the
+  `COUPLING_KERNEL_TERM_ORIGINS` tag. That is ~2× the kernel cost and does NOT fit 30 GB.
+- ⇒ **STEP 0's "the residual FITS 30 GB" is WRONG for the FULL primaries emit (with term-origins).** The CORE
+  objects the residual needs for fold+#90 validation — SLAB_OPERATOR (rows), COUPLING_KERNEL (FINAL), MU_THETA,
+  ENERGY_BASIS, ADMISSIBILITY — are ~8 GB (STEP 0). Only `COUPLING_KERNEL_TERM_ORIGINS` (the coupling origin-family
+  attribution) is the ≥64 GB-class part.
+- ⇒ recommended path: a LIGHTER WL emit that SKIPS `mainKernelOrigins`/`COUPLING_KERNEL_TERM_ORIGINS` → the CORE
+  cross-engine residual (fold rows + #90 kernel + μθ) fits this box; the coupling origin-family attribution + the
+  full run stay deferred (≥64 GB). Needs a small gate change (re-leg) + P2a making the coupling-origin join optional.

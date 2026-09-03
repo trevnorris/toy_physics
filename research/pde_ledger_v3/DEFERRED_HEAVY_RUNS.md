@@ -10,15 +10,22 @@ in-band self-certification, not open physics.
 Guidance for the re-run box: the operators peak ~15–16 GB per engine on the current controls; give it **≥64 GB**
 of headroom to be safe. Watch RSS; a Mathematica kernel can balloon and orphan — `kill -9` by exact pid if so.
 
-> ⚠ **SCOPE — what the ≥64 GB requirement DOES and DOES NOT bound (measured 2026-09-03,
-> `directives/_measurements/S11c_b_step0_residual_scope.md`).** The ≥64 GB requirement is for the **full 4-case
-> in-band `.out` regen with the tower-depth control variants** (`operatorTruncated/Extended`,
-> `kernelTruncated/Extended`, built unconditionally at `…mathematica_audit.wl:2204-2231`) — those variants are the
-> ~16 GB/case peak. It does **NOT** bound the cross-engine **residual**, which needs only the PRIMARY single-case
-> operator + `FINAL_KERNEL`: a guarded single-case WL run of exactly those (no tower variants) peaked **7.95 GB RSS
-> / 0.99 GB in-kernel, min MemAvailable 14.94 GB, ~26 min** on this 30 GB box. ⇒ the cross-engine single-case
-> residual is **doable on the 30 GB box**; only a comparator-PARSEABLE single-case `.out` needs a residual-mode
-> emit (engine's own `emitShared` on the primary objects, tower variants skipped).
+> ⚠ **CROSS-ENGINE RESIDUAL — ≥64 GB-GATED (measured 2026-09-03; STEP 0's on-box claim OVERTURNED;
+> `directives/_measurements/S11c_b_step0_residual_scope.md`).** STEP 0 measured only `evaluatedModel` + one
+> `FINAL_KERNEL` = 7.95 GB and concluded the residual fit 30 GB — WRONG. The full `S11CB_PRIMARIES_ONLY` production
+> emit ALSO builds `mainKernelOrigins` (`kernelOriginsFromOrigins:1826` → a FULL `extractCoupling` per origin, ~6/
+> case, for `COUPLING_KERNEL_TERM_ORIGINS`), which pushed ONE case past **15.6 GB and still growing** → OOM on this
+> 30 GB box. ⇒ **the full cross-engine residual (fresh WL primaries `.out` with term-origins + the P2a/P2b comparator
+> run) is DEFERRED to a ≥64 GB box** (user decision 2026-09-03). The comparator decision lists P2a (slab-row join +
+> `row_residual`) and P2b (§3a scale bridge) are committed as the SPEC for that run; their BUILDS + the run are the
+> ≥64 GB work. On 30 GB only the ~8 GB CORE objects (SLAB rows, `FINAL_KERNEL`, μ_θ, energy, admissibility) fit — a
+> lighter core-residual path was offered and NOT taken; S11c-b closes on per-engine leg-verification + the coarse
+> cross-engine consistency already established.
+>
+> **Re-run (≥64 GB): P2b build → 2 legs → P2a build → 2 legs → regen fresh WL primaries `.out` (with term-origins)
+> + PY `S11CB_PRIMARIES_ONLY` → `row_residual --py <PY> --wl <WL>` → adjudicate the two whole-row SIGN conventions
+> (kinetic −K PY vs +K WL; face) + the two #90 flags (closure-fold sign; uniform-Λ survivors) → #88 KINETIC+θ
+> re-adjudication + the 2 owed control-hardenings.**
 
 ---
 

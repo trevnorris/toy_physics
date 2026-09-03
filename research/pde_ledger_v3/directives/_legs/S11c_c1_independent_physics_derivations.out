@@ -1,0 +1,68 @@
+
+=== 1. wavy half-space Dirichlet-to-Neumann kernel ===
+G1 physical-space = -D0(f D0 g) + f D0^2 g - grad(f).grad(g)
+G1 kernel before dispersion reduction = k_dot_kprime - kprime_squared + q_k*q_kprime - q_kprime**2
+G1 kernel after q(k')^2=kappa^2-|k'|^2 = k_dot_kprime - kappa_squared + q_k*q_kprime
+kernel - expected two-momentum form = 0
+impedance Z1(k,k') = I*f_hat*omega*rho_bulk*(k_dot_kprime - kappa_squared + q_k*q_kprime)/(q_k*q_kprime)
+rigid-shift diagonal kernel = 0
+kernel after illegal q(k)->q(k') freeze = k_dot_kprime - kprime_squared
+
+=== 2. outward face-normal parity ===
+s*grad(F_s) = [-W_x*s**2/2, -W_y*s**2/2, -W_z*s**2/2, s]
+first-order in-plane tilt = [-W_x*s**2/2, -W_y*s**2/2, -W_z*s**2/2]
+vertical component = s
+tilt under s -> -s residual = [0, 0, 0]
+
+=== 3. flat B0c permeable closure ===
+delta_p = Z*rho_m*(Lambda_A*mu_theta + Lambda_V*V*rho_br + V*rho_br*rho_m)/(rho_br*(Lambda_A*Z + rho_m**2))
+delta_p - [I+Lambda_A Z/rho_m^2]^-1 Z*drive = 0
+J = -rho_m*(Lambda_A*V*Z*rho_br - Lambda_A*mu_theta*rho_m - Lambda_V*V*rho_br*rho_m)/(rho_br*(Lambda_A*Z + rho_m**2))
+minus-normal traction scalar delta_p+Lambda_X*A = (Lambda_A*Z*mu_theta*rho_m - Lambda_V*Lambda_X*V*Z*rho_br + Lambda_V*V*Z*rho_br*rho_m - Lambda_X*V*Z*rho_br*rho_m + Lambda_X*mu_theta*rho_m**2 + V*Z*rho_br*rho_m**2)/(rho_br*(Lambda_A*Z + rho_m**2))
+d(delta_p)/d(Lambda_X) = 0
+d(J)/d(Lambda_X) = 0
+d(traction scalar)/d(Lambda_X) = -(Lambda_V*V*Z*rho_br + V*Z*rho_br*rho_m - mu_theta*rho_m**2)/(rho_br*(Lambda_A*Z + rho_m**2))
+
+=== 4. global normal scaling is secular ===
+delta(Laplacian) u = -2*z*Derivative(f(x), x)*Derivative(u(x, z), x, z) - z*Derivative(f(x), (x, 2))*Derivative(u(x, z), z) - 2*f(x)*Derivative(u(x, z), (z, 2))
+delta(Laplacian) on exp(i k x+i q z), divided by wave = q*(2*k*z*Derivative(f(x), x) + 2*q*f(x) - I*z*Derivative(f(x), (x, 2)))
+delta outgoing phase / outgoing phase = I*q*z*f(x)
+coefficients proportional to unbounded z = [-2*Derivative(f(x), x), -Derivative(f(x), (x, 2)), I*q*f(x)]
+
+=== 5. convective normal-wavenumber correction near grazing ===
+linearized convective dispersion on rest shell = -2*q0*(c**2*delta_q + omega*v0)
+delta_q = -omega*v0/c**2
+relative delta_q/q0 = -omega*v0/(c**2*q0)
+timescale ratio = Abs(q0*v0/omega)
+normal-root relative-correction ratio = Abs(omega*v0/(c**2*q0))
+exact dispersion at rest-frame grazing = q_k*(-c**2*q_k - 2*omega*v0 + q_k*v0**2)
+
+=== 6. entrywise real part is not the Hermitian part ===
+A = Matrix([[0, I], [0, 0]])
+entrywise Re(A) = Matrix([[0, 0], [0, 0]])
+Hermitian part (A+A^dagger)/2 = Matrix([[0, I/2], [-I/2, 0]])
+x^dagger H x for x=(1,-i) = 1
+Re(x^dagger A x) = 1
+entrywise Re(A) - Hermitian part = Matrix([[0, -I/2], [I/2, 0]])
+
+=== 7. traction-derived slab work versus outgoing bulk flux ===
+traction normal component for t=-p*n = -p_amp
+slab work derived from t dot v_face = -V_amp*p_amp
+outgoing bulk flux amplitude = V_amp*p_amp
+correct energy-sum residual = 0
+energy-sum residual after reversing traction = 2*V_amp*p_amp
+typed +pV slab operand minus outgoing flux = 0
+
+=== 8. advected density is absent from mu_s at linear wave order ===
+mu_s with advected rho, through epsilon^2 = density_jet*epsilon**2*mu1*sigma/rho0**2 + epsilon*mu1/rho0
+mu_s with background rho held = epsilon*mu1/rho0
+difference = density_jet*epsilon**2*mu1*sigma/rho0**2
+coefficient of epsilon^1 in difference = 0
+coefficient of epsilon^2 in difference = density_jet*mu1*sigma/rho0**2
+
+=== 9. sign-definiteness is not decidable from a first-order truncation on a lossless nullspace ===
+exact positive-semidefinite completion = Matrix([[a, b*eta], [b*eta, b**2*eta**2/a]])
+det(exact completion) = 0
+first-shape-order truncation = Matrix([[a, b*eta], [b*eta, 0]])
+det(first-order truncation) = -b**2*eta**2
+order of the negative determinant in eta = 2

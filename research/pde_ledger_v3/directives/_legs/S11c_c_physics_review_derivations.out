@@ -1,0 +1,58 @@
+
+=== CURVED N-TO-D KERNEL HAS TWO MOMENTA / TWO q FACTORS ===
+boundary_rhs_raw = -kp*(k - kp) + q_kp**2
+using q_kp^2 = K^2-kp^2 -> K**2 - k*kp
+NtoD_shape_coefficient(k,kp) = (-K**2 + k*kp + q_k*q_kp)/(q_k*q_kp)
+depends_on_q_k = True
+depends_on_q_kp = True
+constant_height_shift_coefficient = 0
+mixed_example_K5_k3_PROP_kp6_EVAN = 1 + 7*sqrt(11)*I/44
+
+=== GRAPH-SLOPE PARITY VERSUS ORIENTED-NORMAL PARITY ===
+graph_slopes_plus_minus = (gradW/2, -gradW/2)
+oriented_normals_plus_minus = (Matrix([
+[-gradW/2],
+[       1]]), Matrix([
+[-gradW/2],
+[      -1]]))
+face_even_part_of_normal = Matrix([[-gradW/2], [0]])
+face_odd_part_of_normal = Matrix([[0], [1]])
+
+=== BULK ELIMINATION AND OFF-DIAGONAL EXTRACTION DO NOT COMMUTE ===
+open_residual = Matrix([[p + x], [y]])
+open_slab_jacobian_treating_p_independent = Matrix([[1, 0], [0, 1]])
+open_x_from_y_block = 0
+substitute_p_eq_alpha_y_into_open_block = 0
+closed_residual = Matrix([[alpha*y + x], [y]])
+closed_slab_jacobian = Matrix([[1, alpha], [0, 1]])
+extract_block_after_elimination = alpha
+noncommutation_residual = alpha
+
+=== FACE CLOSURE: OPERATOR INVERSE AND THETA-ROW CHANNELS ===
+scalar_flat_face_pressure_solution = Z*rho_m*(Lambda_A*mu + Lambda_V*V + V*rho_m)/(Lambda_A*Z + rho_m**2)
+curved_operator_left_factor = I + (Lambda_A/rho_m**2)*Z
+theta_row_after_evolution_minus_closure = Lambda_A*mu - Lambda_A*p/rho_m + Lambda_V*V + mass
+theta_row_depends_on_Lambda_X = False
+
+=== NONLOCAL DISSIPATION REQUIRES THE HERMITIAN OPERATOR PART ===
+real_skew_entrywise_real = Matrix([[0, 1], [-1, 0]])
+real_skew_Hermitian_part = Matrix([[0, 0], [0, 0]])
+imag_Hermitian_entrywise_real = Matrix([[0, 0], [0, 0]])
+imag_Hermitian_Hermitian_part = Matrix([[0, I], [-I, 0]])
+power_pairing_for_vec = 2
+
+=== GLOBAL WIDTH-SCALING FLATTENING IS SECULAR AT INFINITY ===
+transformed_laplacian_to_O(d) = -2*d*y*Derivative(f(x), x)*Derivative(u(x, y), x, y) - d*y*Derivative(f(x), (x, 2))*Derivative(u(x, y), y) + Derivative(u(x, y), (x, 2)) - 2*d*f(x)*Derivative(u(x, y), (y, 2))/W0**2 + Derivative(u(x, y), (y, 2))/W0**2
+O(d)_coefficient = -2*y*Derivative(f(x), x)*Derivative(u(x, y), x, y) - y*Derivative(f(x), (x, 2))*Derivative(u(x, y), y) - 2*f(x)*Derivative(u(x, y), (y, 2))/W0**2
+coefficient_of_y_in_O(d)_operator = -2*Derivative(f(x), x)*Derivative(u(x, y), x, y) - Derivative(f(x), (x, 2))*Derivative(u(x, y), y)
+relative_first_variation_of_outgoing_wave = I*W0*q*y*f(x)
+
+=== CONVECTIVE REST-FRAME EXPANSION IS NONUNIFORM AT GRAZING ===
+convective_dispersion = -c**2*k**2 - c**2*q**2 + omega**2 - 2*omega*q*v + q**2*v**2
+dq_dv_at_v0 = -omega/c**2
+relative_normal_root_correction = -omega*v/(c**2*q0)
+stated_operator_smallness = q0*v/omega
+limit_q_to_0_stated_smallness = 0
+limit_q_to_0_abs_root_correction = oo
+exact_dispersion_at_rest_sound_cone = q*(-c**2*q - 2*c*k*v + q*v**2)
+sound_cone_normal_roots = [0, 2*c*k*v/(-c**2 + v**2)]

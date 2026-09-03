@@ -1,0 +1,41 @@
+========================================================================
+S11CC_GROK_LEG: PERMEABLE CLOSURE LINEAR SYSTEM
+========================================================================
+
+--- supplied system ---
+B: Eq(delta_p, Z*v_bulk)
+K: Eq(v_bulk, J/rho_m + V)
+C: Eq(J, Lambda_A*(-delta_p/rho_m + mu_s) + Lambda_V*V)
+A: -delta_p/rho_m + mu_s
+
+B after K: Eq(delta_p, Z*(J/rho_m + V))
+
+--- solve for (delta_p, J) in (V, mu_s) ---
+n_solutions = 1
+delta_p = Z*rho_m*(Lambda_A*mu_s + Lambda_V*V + V*rho_m)/(Lambda_A*Z + rho_m**2)
+J       = rho_m*(-Lambda_A*V*Z + Lambda_A*mu_s*rho_m + Lambda_V*V*rho_m)/(Lambda_A*Z + rho_m**2)
+delta_p collected in V, mu_s:
+   Lambda_A*Z*mu_s*rho_m/(Lambda_A*Z + rho_m**2) + V*(Lambda_V*Z*rho_m/(Lambda_A*Z + rho_m**2) + Z*rho_m**2/(Lambda_A*Z + rho_m**2))
+coeff_V(delta_p)    = Z*rho_m*(Lambda_V + rho_m)/(Lambda_A*Z + rho_m**2)
+coeff_mu_s(delta_p) = Lambda_A*Z*rho_m/(Lambda_A*Z + rho_m**2)
+coeff_V(J)          = rho_m*(-Lambda_A*Z + Lambda_V*rho_m)/(Lambda_A*Z + rho_m**2)
+coeff_mu_s(J)       = Lambda_A*rho_m**2/(Lambda_A*Z + rho_m**2)
+
+--- homogeneous (V=0, mu_s=0) kernel ---
+homogeneous solutions = [{J: 0, delta_p: 0}]
+system matrix M =
+Matrix([[1, -Z/rho_m], [Lambda_A/rho_m, 1]])
+det M = Lambda_A*Z/rho_m**2 + 1
+rhs = Matrix([[V*Z], [Lambda_A*mu_s + Lambda_V*V]])
+
+--- degenerate locus equations (det M = 0) ---
+det_eq: Eq(Lambda_A*Z/rho_m**2 + 1, 0)
+det expanded: Lambda_A*Z/rho_m**2 + 1
+
+--- T-i vs traction: which law carries Lambda_X ---
+T_i_closure_contains_Lambda_X = False
+T_d_traction_contains_Lambda_X = True
+theta_row_S11c_b = evolution_mass_balance - sum closure_shape_deriv
+Lambda_X_enters_slab_via = traction / virtual_work (thickness and in-plane rows)
+
+DONE

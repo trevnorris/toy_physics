@@ -1,0 +1,93 @@
+========================================================================
+S11CC_GROK_LEG: FACE MAP, NORMAL, CONORMAL, MEASURE, TRANSLATION
+========================================================================
+
+--- OBJ1: graph slope dh_s/dx ---
+h_s = Wbar*s*(eta*w1 + 1)/2
+dh_dx = Matrix([[s*sigma_W*w1_d1/2], [s*sigma_W*w1_d2/2], [s*sigma_W*w1_d3/2]])
+dh_dx / (s/2) = Matrix([[sigma_W*w1_d1], [sigma_W*w1_d2], [sigma_W*w1_d3]])
+slope_upper_minus_minus_lower = Matrix([[sigma_W*w1_d1], [sigma_W*w1_d2], [sigma_W*w1_d3]])
+slope_upper_plus_lower = Matrix([[0], [0], [0]])
+
+--- OBJ2: oriented outward unit normal from F = w - h, s(n·w-hat)>0 ---
+n_inplane = Matrix([[-s**2*sigma_W*w1_d1/(2*sqrt(s**2*sigma_W**2*w1_d1**2/4 + s**2*sigma_W**2*w1_d2**2/4 + s**2*sigma_W**2*w1_d3**2/4 + 1))], [-s**2*sigma_W*w1_d2/(2*sqrt(s**2*sigma_W**2*w1_d1**2/4 + s**2*sigma_W**2*w1_d2**2/4 + s**2*sigma_W**2*w1_d3**2/4 + 1))], [-s**2*sigma_W*w1_d3/(2*sqrt(s**2*sigma_W**2*w1_d1**2/4 + s**2*sigma_W**2*w1_d2**2/4 + s**2*sigma_W**2*w1_d3**2/4 + 1))]])
+n_w = s/sqrt(s**2*sigma_W**2*w1_d1**2/4 + s**2*sigma_W**2*w1_d2**2/4 + s**2*sigma_W**2*w1_d3**2/4 + 1)
+s * n_w = 2*s**2/sqrt(s**2*sigma_W**2*w1_d1**2 + s**2*sigma_W**2*w1_d2**2 + s**2*sigma_W**2*w1_d3**2 + 4)   (must be >0)
+n_inplane first-order in sigma_W = Matrix([[-sigma_W*w1_d1/2], [-sigma_W*w1_d2/2], [-sigma_W*w1_d3/2]])
+n_w first-order in sigma_W = s
+n_inplane(s=+1) = Matrix([[-sigma_W*w1_d1/2], [-sigma_W*w1_d2/2], [-sigma_W*w1_d3/2]])
+n_inplane(s=-1) = Matrix([[-sigma_W*w1_d1/2], [-sigma_W*w1_d2/2], [-sigma_W*w1_d3/2]])
+n_inplane even residual (plus - minus) = Matrix([[0], [0], [0]])
+n_inplane odd residual (plus + minus) = Matrix([[-sigma_W*w1_d1], [-sigma_W*w1_d2], [-sigma_W*w1_d3]])
+n_w(s=+1) = 1
+n_w(s=-1) = -1
+n_w even residual (plus - minus) = 2
+n_w odd residual (plus + minus) = 0
+
+--- OBJ3: n·w-hat expansion (drain projection) ---
+n·w-hat = s/sqrt(s**2*sigma_W**2*w1_d1**2/4 + s**2*sigma_W**2*w1_d2**2/4 + s**2*sigma_W**2*w1_d3**2/4 + 1)
+n·w-hat series in sigma_W to O(4) = s + s*sigma_W**2*(-s**2*w1_d1**2/8 - s**2*w1_d2**2/8 - s**2*w1_d3**2/8) + O(sigma_W**4)
+n·w-hat minus s, first two jet orders:
+   -s**3*sigma_W**2*w1_d1**2/8 - s**3*sigma_W**2*w1_d2**2/8 - s**3*sigma_W**2*w1_d3**2/8
+
+--- OBJ4: outward-normal coordinates (outward displacement of each half-space boundary) ---
+outward graph height s*h_s = Wbar*s**2*(eta*w1 + 1)/2
+outward graph slope s*(dh/dx) = Matrix([[s**2*sigma_W*w1_d1/2], [s**2*sigma_W*w1_d2/2], [s**2*sigma_W*w1_d3/2]])
+outward slope even residual (plus - minus) = Matrix([[0], [0], [0]])
+outward slope odd residual (plus + minus) = Matrix([[sigma_W*w1_d1], [sigma_W*w1_d2], [sigma_W*w1_d3]])
+outward-into-bulk face displacement under dW_bg = delta_Wbg*s**2/2
+  s=+1: delta_Wbg/2   s=-1: delta_Wbg/2
+
+--- OBJ5: conormal n·nabla_4 at first shape order ---
+conormal first-order inplane coeff = Matrix([[-sigma_W*w1_d1/2], [-sigma_W*w1_d2/2], [-sigma_W*w1_d3/2]])
+conormal first-order w coeff = s
+flat outward conormal would be s * d/dw
+tilt correction to conormal (inplane piece) even residual = Matrix([[0], [0], [0]])
+
+--- OBJ6: true-area measure a_s = sqrt(1+|grad h|^2) ---
+a_s = sqrt(s**2*sigma_W**2*w1_d1**2/4 + s**2*sigma_W**2*w1_d2**2/4 + s**2*sigma_W**2*w1_d3**2/4 + 1)
+a_s series in sigma_W to O(4) = 1 + sigma_W**2*(s**2*w1_d1**2/8 + s**2*w1_d2**2/8 + s**2*w1_d3**2/8) + O(sigma_W**4)
+a_s - 1 at first order in sigma_W = 0
+a_s - 1 at second order in sigma_W = s**2*sigma_W**2*w1_d1**2/8 + s**2*sigma_W**2*w1_d2**2/8 + s**2*sigma_W**2*w1_d3**2/8
+
+--- OBJ7: half-space translation invariance (pure eta, sigma_W=0) ---
+Z_flat_plane = rho_m * omega / q_out  (independent of h0)
+d Z_flat / d h0 = 0
+Z at W_bg = Wbar(1+eta), sigma_W=0, minus Z at Wbar: 0
+translation_invariance_residual = 0
+
+--- OBJ8: 2x2 parity-block mixing from per-face Z_s ---
+load_thickness = -V_c*Z_minus + V_c*Z_plus + V_th*Z_minus + V_th*Z_plus
+load_centre    = V_c*Z_minus + V_c*Z_plus - V_th*Z_minus + V_th*Z_plus
+mixing coefficient coeff_Vc(load_th) = -Z_minus + Z_plus
+diagonal thickness coeff_Vth(load_th) = Z_minus + Z_plus
+mix_coeff minus (Z_plus - Z_minus) = 0
+diag_th minus (Z_plus + Z_minus) = 0
+
+--- OBJ9: first-order Z_s from even outward geometry ---
+Z_plus - Z_minus at first shape order (even outward geometry) = 0
+mixing coefficient at first shape order = 0
+mixing coefficient if correction taken odd in s = 2*dZ_odd
+
+--- OBJ10: convective mixed-order at the boundary ---
+drain projection minus rest-frame (v_dr * s) = -s*v_bulk_normal_0 + s*v_bulk_normal_0/sqrt(s**2*sigma_W**2*w1_d1**2/4 + s**2*sigma_W**2*w1_d2**2/4 + s**2*sigma_W**2*w1_d3**2/4 + 1)
+series in sigma_W to O(4) = s*sigma_W**2*v_bulk_normal_0*(-s**2*w1_d1**2/8 - s**2*w1_d2**2/8 - s**2*w1_d3**2/8) + O(sigma_W**4)
+O(sigma_W^1) coefficient of drain-projection correction = 0
+O(sigma_W^2) coefficient present; first shape order residual = 0
+
+--- OBJ11: product-in-x is off-diagonal in k ---
+v_mode = exp(I*k0*x)
+f_jet * v_mode = x*exp(I*k0*x)
+d/dx (f v) / (I v) = k0*x - I
+that equals k0 iff the extra term from differentiating f vanishes:
+  extra = k0*x - k0 - I
+single_k_multiplier_would_require_extra = 0; computed extra is not 0
+
+--- OBJ12: kinematic V_s = n · v_face vs flat s * dt zeta ---
+V_s first shape order = s*zeta_s_t - sigma_W*u1_t*w1_d1/2 - sigma_W*u2_t*w1_d2/2 - sigma_W*u3_t*w1_d3/2
+flat piece s * zeta_s_t = s*zeta_s_t
+tilt piece n_inplane · u_t = -sigma_W*u1_t*w1_d1/2 - sigma_W*u2_t*w1_d2/2 - sigma_W*u3_t*w1_d3/2
+tilt piece even in s (plus - minus) = 0
+this channel is structurally present in the kinematic drive of the bulk
+
+DONE

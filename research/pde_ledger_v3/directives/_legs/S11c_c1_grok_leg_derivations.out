@@ -1,0 +1,156 @@
+========================================================================
+OBJ1  outward unit normal from s(n·w-hat)>0, NOT sign(grad F)
+========================================================================
+n_inplane = Matrix([[-h_x*s/sqrt(h_x**2 + h_y**2 + h_z**2 + 1)], [-h_y*s/sqrt(h_x**2 + h_y**2 + h_z**2 + 1)], [-h_z*s/sqrt(h_x**2 + h_y**2 + h_z**2 + 1)]])
+n_w = s/sqrt(h_x**2 + h_y**2 + h_z**2 + 1)
+s*(n·w-hat) = s**2/sqrt(h_x**2 + h_y**2 + h_z**2 + 1)
+s*(n·w-hat) at s=+1 = 1/sqrt(h_x**2 + h_y**2 + h_z**2 + 1)
+s*(n·w-hat) at s=-1 = 1/sqrt(h_x**2 + h_y**2 + h_z**2 + 1)
+equals 1/a at both faces? True
+
+========================================================================
+OBJ2  background in-plane tilt of outward normal, both faces
+========================================================================
+grad h_s (bg) = Matrix([[W_x*s/2], [W_y*s/2], [W_z*s/2]])
+n_inplane (bg) = Matrix([[-W_x*s**2/sqrt(W_x**2*s**2 + W_y**2*s**2 + W_z**2*s**2 + 4)], [-W_y*s**2/sqrt(W_x**2*s**2 + W_y**2*s**2 + W_z**2*s**2 + 4)], [-W_z*s**2/sqrt(W_x**2*s**2 + W_y**2*s**2 + W_z**2*s**2 + 4)]])
+n_w (bg) = 2*s/sqrt(W_x**2*s**2 + W_y**2*s**2 + W_z**2*s**2 + 4)
+n_inplane(s=+1) = Matrix([[-W_x/sqrt(W_x**2 + W_y**2 + W_z**2 + 4)], [-W_y/sqrt(W_x**2 + W_y**2 + W_z**2 + 4)], [-W_z/sqrt(W_x**2 + W_y**2 + W_z**2 + 4)]])
+n_inplane(s=-1) = Matrix([[-W_x/sqrt(W_x**2 + W_y**2 + W_z**2 + 4)], [-W_y/sqrt(W_x**2 + W_y**2 + W_z**2 + 4)], [-W_z/sqrt(W_x**2 + W_y**2 + W_z**2 + 4)]])
+n_inplane(+)-n_inplane(-) = Matrix([[0], [0], [0]])
+in-plane tilt EVEN in s? True
+n_w(s=+1) = 2/sqrt(W_x**2 + W_y**2 + W_z**2 + 4)
+n_w(s=-1) = -2/sqrt(W_x**2 + W_y**2 + W_z**2 + 4)
+n_w ODD in s? True
+graph slope (s/2)grad W at + = Matrix([[W_x/2], [W_y/2], [W_z/2]])
+graph slope (s/2)grad W at - = Matrix([[-W_x/2], [-W_y/2], [-W_z/2]])
+graph slope ODD in s? True
+n_inplane linearized in grad W = Matrix([[-W_x*s**2/2], [-W_y*s**2/2], [-W_z*s**2/2]])
+n_inplane linearized at s=+1 = Matrix([[-W_x/2], [-W_y/2], [-W_z/2]])
+n_inplane linearized at s=-1 = Matrix([[-W_x/2], [-W_y/2], [-W_z/2]])
+equals -1/2 grad W at both faces? True
+n_w series in slope bookkeeper = s + 2*eps_g**2*s*(-W_x**2*s**2/16 - W_y**2*s**2/16 - W_z**2*s**2/16) + O(eps_g**3)
+O(1) term of n_w = s
+O(eps_g) coeff of n_w = 0
+O(eps_g^2) coeff of n_w = 2*s*(-W_x**2*s**2/16 - W_y**2*s**2/16 - W_z**2*s**2/16)
+(n·w-hat - s) starts at O(slope^2)? True
+
+========================================================================
+OBJ3  flat B0c elimination; Lambda channel placement; operator inverse
+========================================================================
+closure equation: Eq(J, Lambda_A*(-Z*(J/rho_m + V)/rho_m + mu_s) + Lambda_V*V)
+J solved = rho_m*(-Lambda_A*V*Z + Lambda_A*mu_s*rho_m + Lambda_V*V*rho_m)/(Lambda_A*Z + rho_m**2)
+lhs_coeff I+(Lambda_A/rho_m^2)Z = Lambda_A*Z/rho_m**2 + 1
+rhs = -Lambda_A*V*Z/rho_m + Lambda_A*mu_s + Lambda_V*V
+lhs_coeff * J_solved - rhs = 0
+delta_p solved = Z*rho_m*(Lambda_A*mu_s + Lambda_V*V + V*rho_m)/(Lambda_A*Z + rho_m**2)
+t / n  (i.e. -(dp + Lambda_X A)) = (Lambda_X*(Lambda_V*V*Z + V*Z*rho_m - mu_s*rho_m**2) - Z*rho_m*(Lambda_A*mu_s + Lambda_V*V + V*rho_m))/(Lambda_A*Z + rho_m**2)
+J depends on Lambda_X? False
+dp depends on Lambda_X? False
+t_factor depends on Lambda_X? True
+J depends on Lambda_A? True
+J depends on Lambda_V? True
+T-i expression has Lambda_X? False
+T-d traction factor has Lambda_X? True
+
+========================================================================
+OBJ4  first-shape-order half-space DtN correction is two-momentum
+========================================================================
+kernel piece -N0(h N0) coeff = q_out*q_out_prime
+kernel piece -Div(h Grad) coeff = k*kprime
+kernel piece -kappa^2 h coeff = -kappa**2
+total dN K(k,k') = k*kprime - kappa**2 + q_out*q_out_prime
+depends on q(k)? True
+depends on q(k')? True
+depends on k? True
+depends on k'? True
+Fourier-diagonal (k=k' only, no hat_h convolution)? False
+K(k,k) on-shell (rigid-shift / k=k' diagonal) = 0
+rigid-shift cancellation (K(k,k) on-shell == 0)? True
+first-order Z kernel / hat_h ~ (k*kprime - kappa**2 + q_out*q_out_prime)/(q_out*q_out_prime)
+K(k,k') - K(k,k) = -k**2 + k*kprime - q_out**2 + q_out*q_out_prime
+off-diagonal remainder zero? False
+K at (k,k')=(0, 3/5) kappa=1: -1/5 = -1/5
+K at (k,k)=(0,0): 0
+K at (k',k')=(3/5,3/5): 0
+flat Fourier symbol Z_0 = omega*rho_m/q_out
+
+========================================================================
+OBJ5  global flattening w'=(w-zeta_c)/(W_bg+deltaW) is secular at infinity
+========================================================================
+coeff of d^2/dw'^2 in Laplacian (from d_w^2) = W(x)**(-2)
+coeff of mixed d/dx d/dw' from chain rule = -wprime*Derivative(W(x), x)/W(x)
+mixed coeff grows with w'? True
+degree in w' of mixed coeff = 1
+secular (w')^2 coeff in (d_x|_w)^2 = wprime**2*Derivative(W(x), x)**2/W(x)**2
+secular w' coeff in cross term = 2*wprime*Derivative(W(x), x)/W(x)
+first variation of outgoing wave = I*q_out*wprime*f(x)*exp(I*W_0*q_out*wprime)
+secular (grows in w')? True
+prefactor of exp(I q W0 w') = I*q_out*wprime*f(x)
+Hanzawa dw/dw' = eps_s*f(x)*Derivative(chi(wprime), wprime) + 1
+Hanzawa perturbation supported where chi nonzero; identity at inf if chi(inf)=0
+
+========================================================================
+OBJ6  convective smallness at grazing: two inequivalent parameters
+========================================================================
+leading delta q (qrest != 0) = -omega*v_bulk_normal_0/c_s0**2
+independent of q_rest? True
+relative Z correction |delta q / q| = omega*v_bulk_normal_0/(c_s0**2*q_n)
+this is |omega v|/(c^2 |q|)
+stated smallness |q v / omega| = Abs(q_n*v_bulk_normal_0)/omega
+limit qrest->0 of stated smallness = 0
+limit qrest->0 of |rel Z| = oo*sign(Abs(v_bulk_normal_0))
+relative PDE residual of rest-frame wave = 2*q_n*v_bulk_normal_0/omega - q_n**2*v_bulk_normal_0**2/omega**2
+limit qrest->0 of PDE residual = 0
+convective q-roots at rest-frame grazing q_rest=0 = [0, -2*omega*v_bulk_normal_0/((c_s0 - v_bulk_normal_0)*(c_s0 + v_bulk_normal_0))]
+subsonic parameter |v|/c = Abs(v_bulk_normal_0)/c_s0
+stated |q v/omega| implies subsonic? False
+
+========================================================================
+OBJ7  dissipation: entrywise Re vs Hermitian part of a mode-mixing operator
+========================================================================
+Z = Matrix([[I, 1], [0, I]])
+Hermitian part (Z+Z^H)/2 = Matrix([[0, 1/2], [1/2, 0]])
+entrywise Re Z = Matrix([[0, 1], [0, 0]])
+entrywise Re == Hermitian part? False
+true Re <v,Zv> for v=[1,1] = 1
+Re <v, (entrywise Re Z) v> = 1
+they differ? False
+Z2 (real skew) = Matrix([[0, 1], [-1, 0]])
+Hermitian part = Matrix([[0, 0], [0, 0]])
+entrywise Re = Matrix([[0, 1], [-1, 0]])
+true Re <v,Z2 v> = 0
+entrywise-Re quadratic form Re <v,(Re Z2)v> = 0
+entrywise Re nonzero while true dissipative form vanishes? True
+a_s series in |grad h|^2 = 1 + gradh2/2 + O(gradh2**2)
+a_s-1 is O(sigma^2) on the background graph
+
+========================================================================
+OBJ8  zero-jet (sigma_W->0, eta retained): uniform thickness shift vs cavity
+========================================================================
+rigid face shift = W_0*eta_bg*s*w1/2
+flat Z_0 independent of W_bg / W0 / eta? True
+cavity phase q W_bg = W_0*q_out*(eta_bg*w1 + 1)
+cavity phase depends on eta? True
+d(q W_bg)/d eta = W_0*q_out*w1 nonzero? True
+
+========================================================================
+OBJ9  two half-spaces disconnected; Z per-face
+========================================================================
+upper domain: w > h_+ ; lower domain: w < h_- ; intersection empty
+flat Z_plus depends on lower-face data? False
+flat Z_minus depends on upper-face data? False
+
+========================================================================
+OBJ10  first shape order vs |grad h|^2 and Hessian-of-W
+========================================================================
+|grad h|^2 grade = sigma_W^2
+Hadamard dN is linear in h => first order in eta (height) / first in sigma_W (when h varies)
+mean-curvature / |grad h|^2 terms are O(sigma_W^2)
+
+========================================================================
+OBJ11  operator inverse [I+(Lambda_A/rho_m^2) Z] with Z a kernel
+========================================================================
+flat symbol of I+(Lambda_A/rho_m^2)Z = Lambda_A*omega/(q_out*rho_m) + 1
+curved invertibility is Fredholm of that operator, not this scalar
+
+DONE

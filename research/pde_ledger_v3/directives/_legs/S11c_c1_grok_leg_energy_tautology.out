@@ -1,0 +1,18 @@
+dp_face = I*A*omega*rho_m
+V_outward = I*A*q_out
+spec face pairing 1/2 Re(dp V*) = A**2*omega*q_out*rho_m/2
+bulk flux 1/2 Re(dp v_w*) at face = A**2*omega*q_out*rho_m/2
+bulk flux 1/2 Re(dp v_w*) at generic w = A**2*omega*q_out*rho_m/2
+flux independent of w? True
+spec pairing minus bulk flux = 0
+energy leaving slab from traction, 1/2 Re(s_t dp V*) = A**2*omega*q_out*rho_m*s_t/2
+leave_slab - bulk_flux at s_t=+1 = 0
+leave_slab - bulk_flux at s_t=-1 = -A**2*omega*q_out*rho_m
+spec residual contains s_t? False
+traction residual contains s_t? True
+two-sided N0 h N0 kernel ~ q(k) q(k') : depends on q(k')? True
+left-quantized h(x) * N0(k)^2 kernel ~ q(k)^2 : depends on q(k')? False
+difference (two-sided - left) = q*(-q + qprime)
+two-sided at (0,3/5) = 4/5
+left-quantized at (0,3/5) using q(k) only = 1
+they differ? True

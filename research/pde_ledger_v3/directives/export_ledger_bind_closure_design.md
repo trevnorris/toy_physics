@@ -102,11 +102,24 @@ compares rows that **were** written — so a value round-trips even when a refer
 1. **Manifest.** Each consumer publishes an exact **`IMPORT_KEYS`** list of the **F9 write-keys** it binds (as
    construction or control/regression operands). ⛔ **No `PASS_THROUGH_KEYS`** — a later, non-adjacent consumer
    declares its own binds against the fold. **A missing manifest blocks publication of the delta (hard error).**
-2. **Route resolution over every closure EDGE, not just roots.** Compute the free-symbol + recursive
-   `dimension_key` closure; for **every** edge (root, referenced symbol, `dimension_key` target) assert the
-   fold resolves it to the **intended F9 write-key**, ⛔ not merely that some bare key is present (a bare
-   predecessor can satisfy presence while the intended prefixed row is absent — `a1` vs `s11_a1` both serialize
-   `Symbol('a1')`). Every edge carries its producer-qualified route.
+2. **Edge resolution by FULL SYMBOL IDENTITY, not name (measured refinement, 2026-09-03).** Compute the
+   recursive `dimension_key` + referenced-atom closure; resolve **each edge** against the fold by the atom's
+   **full identity** (its `srepr` — name **plus assumptions**), ⛔ not its bare name. Three outcomes:
+   - **exactly one** fold row shares that identity ⇒ **resolved** — this is why `omega=Symbol('omega',real=True)`
+     resolves to the bare `omega` row, not to `s11b_omega=Symbol('omega')` (distinct identities);
+   - **zero** fold rows ⇒ the atom is a **free/structural symbol or function** (a coordinate, or a structural
+     function like the window `O_window` — 0 rows, referenced 3,284× as `Function('O_window')`) ⇒ it is **not a
+     required dependency**; ⛔ do **not** demand a row for it (requiring one was the over-reach that
+     false-positived);
+   - **two or more** fold rows share the identity under **different keys** ⇒ **genuinely ambiguous** (the
+     unresolved routed-key contract, `S11_export_chain_decisions_v2.md:205`) ⇒ **raise-and-name**.
+   ⚠ A referenced-name→producer index keys on **identity**, ⛔ never on "any row that USES the symbol": a row
+   like `f_hold_e_W_0` (class `PREMISE`) that merely *mentions* `Symbol('W_0')` is a **user**, not a producer of
+   `W_0`. **Measured (2026-09-03):** 16 F9c routed pairs exist — **11 resolve by identity, 5 are genuine
+   same-srepr ambiguities, and 0 of the 5 are referenced by any critical-path root** (only `omega`, resolvable,
+   is). The 5 off-path genuine ambiguities are the **deferred residual routed-key contract** — documented,
+   resolved when a consumer actually binds one, ⛔ not a blocker for c1/c2. ⭐ The real under-export guarantee is
+   the smoke-test (step 3): a build that looks up a genuinely-absent required row **fails there**.
 3. **Bidirectional smoke-test.** The consumer builds against an **access-recording ledger proxy**; assert the
    set of **observed** construction/regression lookups **equals `IMPORT_KEYS`** — catching both an undeclared
    lookup (under-export risk) and a declared-but-unused key (stale manifest).

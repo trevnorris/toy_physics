@@ -76,3 +76,14 @@ $ grep -nE 'v2 folds the two decision legs|v2 changed \(folded' research/pde_led
 11:**v2 changed (folded from the review legs):** the availability mechanism — F9 is **write-time** and the fold
 ```
 
+## F9c-severity scan (design §D3 refinement): 16 pairs, 11 identity-resolvable, 5 genuine, but 0 genuine on the critical path (only omega, resolvable)
+
+```
+$ timeout 200 python3 research/pde_ledger_v3/directives/_measurements/f9c_pair_scan.py
+total F9c routed pairs (prefixed + bare both present): 16
+  identity-resolvable (distinct srepr):        11
+  genuinely ambiguous (same srepr):            5
+critical-path roots reference 1 pair(s); genuinely-ambiguous on the critical path: 0
+  [resolvable] omega: bare=S11c-b vs s11b_omega=S11b
+```
+

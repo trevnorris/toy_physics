@@ -32,3 +32,5 @@ claim "the GATE: deliberation (2 engines) + design-review (2 engines), both conv
   "ls -la $L/export_ledger_minimum_*.out $L/export_ledger_bind_closure_design_review_*.out | awk '{print \$5\"  \"\$9}'"
 claim "both design-review legs said NOT-SOUND-as-is and v2 folded their convergent must-fixes (v2 note in the design head)" \
   "grep -nE 'v2 folds the two decision legs|v2 changed \\(folded' $D"
+claim "F9c-severity scan (design §D3 refinement): 16 pairs, 11 identity-resolvable, 5 genuine, but 0 genuine on the critical path (only omega, resolvable)" \
+  "timeout 200 python3 $SP/directives/_measurements/f9c_pair_scan.py"

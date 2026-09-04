@@ -52,3 +52,21 @@ $ grep -n 'class_residual = \|duplicate S10 export key\|def exact_reconstruction
 2085:        class_residual = sp.Integer(upstream["class"] != record.class_tag)
 2087:            not record.overwrites_upstream or upstream["step"] != "S9"
 ```
+
+---
+
+## F10 added (2026-09-03) — the model-level-register export rule
+
+F10 resolves the "model-level vs step-level split" that this file's "What F9 does NOT decide" left open
+"for a third step's evidence." That third-step evidence is S11c-c1's, committed at d1fe1bf0
+(_measurements/S11c_c1_sympy_build_directive.md): the pre-trim full-primary export was 152574695 bytes
+(145.5 MB), of which two dissipation-AUDIT rows were 84.7 MB (56%), exceeding GitHub's 100 MB plain-git cap
+(and an *_exports.py must stay plain-git, never annexed).
+
+F10: the plain-git LEDGER carries the chain-CONSUMED model-definition set (the emitting spec's declared
+consume-set) plus its free-symbol closure; step-level diagnostics (dissipation/energy/loci/structural-views)
+are emit-only, in the annexed .out. It refines D1 by a SPEC-declared boundary (not builder judgement), so
+D1's anti-under-export default stands. Safe because the cross-engine comparator, the review legs, and the WL
+engine read the .out tag streams, not the LEDGER (F9 is PY-only; WL writes no ledger). Gated by the S11c-c1
+build-directive review (Grok CLEAR + Codex must-fix, saved under directives/_legs/); ratified by the user
+2026-09-03.

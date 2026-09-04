@@ -1,0 +1,108 @@
+I'll form the c2-consume set and free-symbol closure from the specs, LEDGER, and export rules first, then check the directive against that.Next I’ll pull S11c-b’s face slots, the F1–F9/D1 export rules, and the existing LEDGER so I can name what c2 actually consumes.I'll extract LEDGER keys and the S11c-b face-slot construction next, then lock the c2 consume-set before opening the directive.Independent consume-set is locked. Next I’ll read the directive against it, including free-symbol closure and the F-rules.I have the consume-set, LEDGER keys, F-rules, and comparator behavior. Writing the findings against the directive now.## Independent view (formed from the specs/LEDGER before trusting the directive)
+
+**What S11c-c2 consumes from c1.** The c1 spec names the consume-set twice, identically:
+
+- Header: “c1 exports the closed face response c2 consumes.”
+- §0: “S11c-c1 emits the closed face response `(δp_s, J_s, t_s)(V_s, μ_θ)` and the DtN operator; it does **not** substitute them into `S11CB_SLAB_OPERATOR` or `S11CB_COUPLING_KERNEL`.”
+- §3b closing sentence: “The response objects `(δp_s, J_s, t_s)(V_s, μ_θ)`, the DtN operator, and the flat symbol are the c1 exports S11c-c2 consumes.”
+
+S11c-b’s slab still has symbolic face slots: `δp_s` in `𝒜_s = μ_s − δp_s/ρ_m` and `t_s = −(δp_s + Λ_X 𝒜_s)n̂_s`, with `Λ_I(ω)` kept symbolic (`S11c_b_SHARED_PHYSICS.md` §1c; c1 spec §1d: “S11c-c1 supplies the bulk relation `δp_s = Z · v_bulk,s` that eliminates `δp_s`, keeping `Λ_I(ω)` symbolic”). The LEDGER confirms those slots are still live (`delta_p_plus` / `delta_p_minus` / `d_w_delta_p_*` appear inside `S11c_b_exports.py` coupling/operator payloads). c2’s fold substitutes the **closed** `(δp_s, J_s, t_s)(V_s, μ_θ)` into those slots; `Λ_I` is already in the inherited LEDGER.
+
+Exact c1 objects c2 must import:
+
+| object | why |
+|---|---|
+| `face_response` | the closed map `(δp_s, J_s, t_s)(V_s, μ_θ)` |
+| `face_response_coeffs` | same map in coefficient form (S11b exported both; spec §4 lists both) |
+| `dtn_operator` | composition form of Z (§3a (ii), named by §3b) |
+| `dtn_kernel` | two-momentum form of the same operator (§3a (iii)) |
+| `dtn_flat_symbol` | named by §3b |
+
+**What c2 does not import** (c1 still emits these; c2 re-derives the analogous objects on the *coupled* operator):
+
+- **Noninvertibility / `degenerate_loci_*`.** §3b: the face-response Fredholm object is invertibility of `[I+(Λ_A/ρ_m²)Z]`. Once `FACE_RESPONSE` is the closed map, that inverse is already applied. Profile-conditioned spectrum is reserved for S11c-d. After the fold, invertibility of the self-energy is a different object (§0: c2 re-extracts from the *closed full operator*).
+- **`dtn_by_regime_pair` / `dtn_by_parity`.** Structural views of the *bare* DtN. Parity/regime cases of the consumed objects already live as keyed maps in those objects’ payloads (spec §7: “a single object's branch/face/…/regime-pair/parity/… cases are a keyed CAS map in that object's payload”).
+- **Dissipation / energy operands.** §3b item 3: the traction-vs-far-field route “does **not** import `S11CB_SLAB_OPERATOR` (that pairing is S11c-c2's, after the fold).”
+- **Hermitian/reactive split, inertial loading, grazing view, rigid-shift residual, term origins.** Diagnostics of the bare DtN, not substitution payloads. Spec §3b does not name them as consumed.
+
+**Free-symbol closure (before the directive).** Inherited in `S11c_b_exports.py` (2441 LEDGER keys), already bindable: `q_out`, `kappa_out`, `zeta_out`, `k`, `k1`/`k2`/`k3`, `omega`, `V_plus`/`V_minus`, `Lambda_A_0`/`Lambda_V_0`/`Lambda_X_0`, `tau_A`/`tau_V`/`tau_X`, `rho_m`, `c_s0`, `mu_theta_operator`, `W_bg`/`w1_profile`/`m1_profile`/`L_W`/`sigma_W`/`eta_bg`, density representatives, T-a..T-i rows (`face_normal`, `conormal_deriv`, `face_measure_shape_deriv`, `face_velocity`, `relative_flux`, `kinematic_balance`, `traction`, `face_shift`, `closure_shape_deriv`). Not present: two-momentum legs `k_out_*`/`k_in_*` (and any `Ŵ_bg` Fourier symbol). Those must be new F9a rows. `_restore` revives from srepr via `vars(sp)`, so a missing *row* does not break revival; D3 still catches a live-vs-written residual.
+
+---
+
+## Findings
+
+**No must-fix items.** Checks 1–7 below; each names what was verified.
+
+### 1. Under-export — nothing c2 needs is missing from the keep-set
+
+**Expectation (spec).** Consume-set = `{dtn_flat_symbol, dtn_operator, dtn_kernel, face_response, face_response_coeffs}` as derived above.
+
+**Directive (lines 101–119).** Keep-set is exactly that, plus free symbols plus the carried-forward inherited LEDGER. Explicitly emit-only: dissipation (`permeable_port_hermitian`, `permeable_dissipation_vs_omega_tau`, `energy_*`), Hermitian/reactive split, `dtn_by_regime_pair`/`dtn_by_parity`/`dtn_grazing_behaviour`/`dtn_term_origins`/`dtn_rigid_shift_*`, `noninvertibility_condition`/`degenerate_loci_*`, and all §5/§6 controls.
+
+Each exclusion is settled by the spec line cited in the independent view, not by the directive’s own claim. Face/parity/regime structure of the consumed objects is inside the keyed payloads (spec §7), so dropping the *view* tags does not drop the structure c2 would substitute.
+
+### 2. Free-symbol closure — holds structurally
+
+**Expectation.** Every free symbol in the five kept objects is either already in `S11c_b_exports.py` or listed as new (`k_out_*`/`k_in_*`, plus any §3-emitted permeability constant).
+
+**Directive.** Lines 70–85 bind inherited constants to existing rows (`q_out` → `LEDGER['q_out']`, `c_s0`/`mu_R`/`rho_br`/`W_0`/`e_W`/`rho_m`/`v_bulk_normal_0`, T-substrate, profiles, density reps, `mu_theta_operator`) and forbid re-origination. Lines 107–111 add “the free symbols those objects reference,” with `k_out_*`/`k_in_*` as the only names not already in the LEDGER. Line 110–111: F9b corroboration of a re-derived inherited constant accretes `corroborated_steps` and keeps the bare key.
+
+The parenthetical on lines 107–109 lists inherited names (`q_out`, `kappa_out`, `zeta_out`, `V_±`, `Lambda_*`, `tau_*`) next to “new … constant.” That is not a re-origination instruction: line 74 already binds `q_out`, and F9 is applied whole (lines 128–135). A Function-valued `q_out(ω,k)` that fails equality with `Symbol('q_out')` takes F9c prefix `s11c_c1_` and leaves the predecessor; the kernel srepr remains self-contained for `_restore`. D3 (lines 164–166) is the catch for any unlisted symbol.
+
+No structural gap: nothing the kept objects must reference is in neither the inherited LEDGER nor the new-symbol rule.
+
+### 3. Over-export / policy consistency — legitimate spec-internal refinement, not an F-rule break
+
+**Expectation.** D1 (`S9_REWRITE_PLAN.md:210–213`): export every MAIN object, controls are evidence, “no per-object judgement, errs toward exporting more.” F1–F9 do not decide *what* to export; they decide key shape, collision, completeness (F6), and evidence (F3). S11c-b applied D1 as “primary §4 physics, not §5/§6.” c1 spec §7 (lines 560–564) is broad (“LEDGER of the emitted `PY_S11CC1_*` objects”); §3b’s last sentence is narrow (the consume-set “are the c1 exports S11c-c2 consumes”).
+
+**Directive (lines 87–122).** Splits EMIT (every §4/§5/§6 tag → annexed `.out`) from EXPORT (consume-set → plain-git LEDGER). It says this “refines D1 … to export what the next step CONSUMES,” citing §3b as authority.
+
+This does not contradict F1–F9: F6 still gates publish on primary §4 completion (lines 150–152); F9 still decides collisions. D1’s letter is S9-MAIN; the *same* c1 spec that §7 writes broadly also writes the consume-set in §3b and names those as “the c1 exports.” The directive’s own conflict rule (line 13) is that the spec wins; §3b is the more specific chain-output sentence. Previous steps already did not put every `PY_*` tag in the LEDGER (S11c-b excluded §5/§6). Narrowing further from MAIN-diagnostics to consume-set is a per-object judgement D1 dislikes, but it is the spec’s own §3b, not a directive invention, and the emit channel still carries every MAIN object for review. Not a rule-wins finding.
+
+### 4. Emit-vs-export soundness — comparator and WL do not read the LEDGER
+
+**Expectation.** If the comparator or any downstream consumer reads `_exports.py` for physics, narrowing is unsafe.
+
+**Verified.**
+
+- `scripts/S11c_b_cross_engine_comparator.py:3–10`: “It reads the two committed S11c-b **tag streams** … `S11c_b_exports.py` is **not** used as a tag stream.” Defaults are `scripts/out/S11c_b_brane_operator_sympy_audit.out` and `mathematica/out/…audit.out` (lines 47–53). Parsers match `PY_S11CB_` / `WL_S11CB_` tag lines.
+- F9 (`S11_export_chain_decisions_v2.md:184–185`): “F9 IS PY-ONLY. The WL engine imports nothing and writes no ledger.” No S11c-b/S11c-a/S11c-c1 WL `*_exports.py` exists. c1 spec §7: the c1 comparator is this sub-step’s own T7 join on the tag streams.
+
+Narrowing the PY LEDGER does not starve the comparator or the WL engine. The only LEDGER consumer is future S11c-c2, which is what the keep-set is sized for.
+
+### 5. No added physics / no leaked answer — clean (two known-benign items only)
+
+**Expectation.** Rule 5: withhold acceptance values. No expected parity, sign, regime outcome, coefficient, or residual. A prohibition that reveals the answer is a leak.
+
+**Verified.** The directive withholds operator/kernel structure, parity, regime-pair behaviour, loci, dissipation signs, residuals (lines 23–25). Bindings are naming, not results (lines 31–56). Spec-verbatim items:
+
+- `v_bulk_normal_0=0` as the grazing *domain limit*, step-record-only, not an operator term (lines 54–56 = spec §2b).
+- “never suppressed, re-branched, or reclassified to reach a passive or lossless form” (lines 199–200 = spec §1b/§6).
+
+§5d’s “do not re-solve a finite-gap cavity” (lines 42–44) is the spec’s construction of operand B, not a stated residual. Kernel-leg convention `k` = output, `k′` = input (lines 48–51) is spec §5e anchoring, not a computed sign. No other expected value, parity, or coefficient found.
+
+### 6. Chain bindings — all named rows exist; F9c/F6/digests match the spec
+
+| binding | source | directive | LEDGER |
+|---|---|---|---|
+| `μ_θ` opaque `mu_theta_operator` | spec §0/§1d: consume `S11CB_MU_THETA_OPERATOR`, do not expand (that is c2) | lines 33–38 | key present, class DERIVED, step S11c-b |
+| inherited constants bound, not re-originated | F9b; spec §7 reservations `W_0`/`mu_R`/`rho_br`/`e_W`/`v_0` | lines 70–85 | `c_s0`, `mu_R`, `rho_br`, `W_0`, `e_W`, `rho_m`, `q_out`, `v_bulk_normal_0` all present |
+| T-a..T-i | spec §1a | lines 75–77 | all nine keys present |
+| B0b/B0c regression operands | spec §1c/§5c/§5d | lines 39–47 | `z_impermeable`, `z_by_regime`, `z_by_parity`, `added_mass`, `grazing_behaviour`, `face_response`, `face_response_coeffs`, `permeable_dissipative_by_regime_and_parity` present |
+| `BUILD_INPUT_DIGESTS` five files | spec §7: `{audit, S11b, S11c_a, S11c_b exports, spec}` | lines 144–148 | matches; differs from S11c-b’s three-file pin, as the c1 spec requires |
+| F9c prefix `s11c_c1_` | F9c; existing prefixes `s11_`/`s11b_`/`s11c_b_` taken | lines 136–138 | `s11c_c1_` absent (non-colliding). Note: `s11c_a_` is *not* actually present as a prefix; using `s11c_c1_` is still safe |
+| audit product name | spec §7 “this sub-step’s SymPy audit” | `S11c_c1_bulk_closure_sympy_audit.py` | consistent with the digest key |
+| F6 first branch | F6: publish only if every MAIN cell completed | lines 150–152: primary §4 = §3a DtN + §3b response objects | aligned with emit-completeness (lines 90–95: dissipation/loci/structural views still computed) |
+| import parent | N1: each sub-step imports the prior one’s exports | lines 63–68: import `S11c_b_exports.py` only; pin all three in digests | correct chain |
+
+`face_response` / `face_response_coeffs` already exist as S11b flat objects. F9c will write `s11c_c1_face_response` (and coeffs) and leave the predecessor. That is the designed collision, not a wrong bind. F9’s owed routed-key contract is on the *c2* consumer, not on this build.
+
+No inherited object is told to be re-originated.
+
+### 7. Ambiguity the builder would have to invent physics/answers/self-review to fill — none that survive the filter
+
+Physics, routes, controls, tag grammar, F9, D3, `_RELATIONALS`, F6 branch, and the emit/export split are pinned to the spec or to named F-rules. Line 195: “Do not fill such a gap with new physics, an expected result, or a self-review mechanism.” Fallback “if chain role is unclear, default emit-only” (lines 122–123) cannot drop a keep-set member (the keep-set is enumerated). `_RELATIONALS` “likely used” (lines 168–170) is slightly off because noninvertibility/loci are emit-only, but the instruction is “do not drop the block and do not manufacture a relational” — same as S11c-b.
+
+---
+
+**Verdict:** the directive — including the export-narrowing — is safe to build against as-is. No must-fix items. The keep-set matches the spec’s consume-set; excluded objects are c1 diagnostics that c2 re-derives on the coupled operator; free-symbol closure holds via inherited LEDGER + new `k_out_*`/`k_in_*` + D3; the comparator and WL engine read `.out` tag streams, not the LEDGER; chain bindings and F9/F6/digest wiring match the spec.

@@ -1,0 +1,80 @@
+
+  Section 3a requires the flat symbol, composition operator, and “the same object” as the two-momentum kernel [lines 245–253](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:245). Section 3b emits the response and coefficients [lines 340–348](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:340), then expressly says the response, DtN operator, and flat symbol are what c2 consumes.
+
+  The inherited S11c-b equations retain symbolic `δp_s` and `Λ_I` slots [S11c_b_SHARED_PHYSICS.md lines 140–149](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:140), while c1 supplies the closed `δp_s` relation without eliminating `Λ_I` [c1 lines 155–164](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:155). The actual ledger carries those slots in `coupling_kernel` [S11c_b_exports.py line 863](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:863) and `slab_operator` [line 15215](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:15215).
+
+  Thus c2 does not directly need separate `noninvertibility_condition`, regime/parity views, energy objects, or the Hermitian/reactive split. Their omission is nevertheless prohibited by the export contract above.
+
+- **Free-symbol closure:** No concrete gap found. The directive’s rule is generic—export the free symbols referenced by all five kept objects, not merely the examples [lines 101–111](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:101). The existing ledger contains `V_±` [lines 348–362](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:348), all three `Λ_I⁰` [lines 302–330](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:302), all three `τ_I` [lines 15411–15439](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:15411), `q_out`, profiles, densities, and the face substrate. Fresh `k_out_*`/`k_in_*` symbols fall under the generic free-symbol rule. D3 round-trip and `_RELATIONALS` are also required [directive lines 164–170](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:164).
+
+- **Emit-versus-export review channel:** Verified. The comparator says it reads committed tag streams and explicitly does not use `S11c_b_exports.py` [lines 2–10](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_cross_engine_comparator.py:2); its defaults are the Python and Mathematica `.out` files [lines 47–53](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_cross_engine_comparator.py:47). The WL engine writes `WL_S11CB_*` records to `$Output` [lines 23–33](/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl:23), not an exports ledger. Therefore narrowing would not erase cross-engine review evidence—but that does not cure the export-contract violation.
+
+- **Bindings and chain mechanics:** No additional defect found. `mu_theta_operator` is a real inherited row [S11c_b_exports.py lines 5628–5633](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:5628), and the directive correctly keeps it opaque [lines 33–38](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:33). The product name, five digests, `s11c_c1_` F9c prefix, F9b corroboration behavior, and primary-task F6 publication gate are correctly wired [lines 128–152](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:128).
+
+- **Leakage:** No coefficient, parity, sign, regime result, locus result, or residual value is supplied. The two identified benign domain/prohibition statements remain source-grounded. The unsupported c2 scope assertion above is added physics allocation, not an output-value leak.
+
+**Verdict: not safe to build as-is—there is a must-fix export-contract conflict; the five-row keep-set is sufficient for c2, but it is not a lawful replacement for the full primary export required by §7/D1.**
+hook: Stop
+hook: Stop Completed
+tokens used
+181,550
+## Findings
+
+### Must-fix — the narrowed export contradicts the committed export contract
+
+The governing c1 spec requires:
+
+> “the flat plain-git LEDGER of the emitted `PY_S11CC1_*` objects”  
+> — [S11c_c1_SHARED_PHYSICS.md §7, lines 560–564](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:560)
+
+D1 likewise says:
+
+> “Export every object S9’s `MAIN` package emits… Mechanical, ⛔ no per-object judgement, and it errs toward exporting more.”  
+> — [S9_REWRITE_PLAN.md, lines 210–213](/var/projects/toy_physics/research/pde_ledger_v3/S9_REWRITE_PLAN.md:210)
+
+The directive instead says:
+
+> “Export … a **strict subset**”  
+> — [build directive, lines 96–99](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:96)
+
+and explicitly excludes primary §3 objects such as the Hermitian/reactive split, regime/parity views, Fredholm condition, loci, and dissipation/energy package:
+
+> “⛔ **NOT exported — emit-to-stdout ONLY**…”  
+> — [build directive, lines 113–123](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:113)
+
+Those are not merely §5 control packages. They are declared primary §3a/§3b outputs in [§4 lines 358–365](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:358). The directive therefore cannot legitimately “refine D1” from primary-emitted objects to next-consumer-only objects. F1–F9 contain no authority for that selection change; F6 governs publication completeness, while F9 governs collision keys.
+
+The narrowing rationale also introduces unsupported future physics:
+
+> “c2 re-derives its own dissipation and loci on the coupled self-energy operator”  
+> — [build directive, lines 113–115](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:113)
+
+The authority assigns c2 only the fold, closed-kernel re-extraction, and resulting self-energy [§0 lines 34–38](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:34); it does not assign c2 a dissipation/locus re-derivation. Moreover, profile-conditioned singular loci are reserved for S11c-d [§3b lines 297–304](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:297).
+
+This is a wrong-export finding even though the immediate c2 dependency set itself is complete. The size constraint requires an authority/spec change or a different representation; the build directive cannot silently amend §7/D1.
+
+## Checks with no additional finding
+
+- **Direct c2 dependency set:** The five kept c1 rows are sufficient:
+
+  - `dtn_flat_symbol`
+  - `dtn_operator`
+  - `dtn_kernel`
+  - `face_response`
+  - `face_response_coeffs`
+
+  Section 3a requires the flat symbol, composition operator, and “the same object” as the two-momentum kernel [lines 245–253](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:245). Section 3b emits the response and coefficients [lines 340–348](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:340), then expressly says the response, DtN operator, and flat symbol are what c2 consumes.
+
+  The inherited S11c-b equations retain symbolic `δp_s` and `Λ_I` slots [S11c_b_SHARED_PHYSICS.md lines 140–149](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:140), while c1 supplies the closed `δp_s` relation without eliminating `Λ_I` [c1 lines 155–164](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:155). The actual ledger carries those slots in `coupling_kernel` [S11c_b_exports.py line 863](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:863) and `slab_operator` [line 15215](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:15215).
+
+  Thus c2 does not directly need separate `noninvertibility_condition`, regime/parity views, energy objects, or the Hermitian/reactive split. Their omission is nevertheless prohibited by the export contract above.
+
+- **Free-symbol closure:** No concrete gap found. The directive’s rule is generic—export the free symbols referenced by all five kept objects, not merely the examples [lines 101–111](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:101). The existing ledger contains `V_±` [lines 348–362](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:348), all three `Λ_I⁰` [lines 302–330](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:302), all three `τ_I` [lines 15411–15439](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:15411), `q_out`, profiles, densities, and the face substrate. Fresh `k_out_*`/`k_in_*` symbols fall under the generic free-symbol rule. D3 round-trip and `_RELATIONALS` are also required [directive lines 164–170](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:164).
+
+- **Emit-versus-export review channel:** Verified. The comparator says it reads committed tag streams and explicitly does not use `S11c_b_exports.py` [lines 2–10](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_cross_engine_comparator.py:2); its defaults are the Python and Mathematica `.out` files [lines 47–53](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_cross_engine_comparator.py:47). The WL engine writes `WL_S11CB_*` records to `$Output` [lines 23–33](/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl:23), not an exports ledger. Therefore narrowing would not erase cross-engine review evidence—but that does not cure the export-contract violation.
+
+- **Bindings and chain mechanics:** No additional defect found. `mu_theta_operator` is a real inherited row [S11c_b_exports.py lines 5628–5633](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:5628), and the directive correctly keeps it opaque [lines 33–38](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:33). The product name, five digests, `s11c_c1_` F9c prefix, F9b corroboration behavior, and primary-task F6 publication gate are correctly wired [lines 128–152](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:128).
+
+- **Leakage:** No coefficient, parity, sign, regime result, locus result, or residual value is supplied. The two identified benign domain/prohibition statements remain source-grounded. The unsupported c2 scope assertion above is added physics allocation, not an output-value leak.
+
+**Verdict: not safe to build as-is—there is a must-fix export-contract conflict; the five-row keep-set is sufficient for c2, but it is not a lawful replacement for the full primary export required by §7/D1.**

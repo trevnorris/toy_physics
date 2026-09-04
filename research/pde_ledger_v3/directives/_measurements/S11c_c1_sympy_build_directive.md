@@ -15,7 +15,7 @@ db5cbf88 S11c-c START: 2-way split decided; c1 (curved bulk closure) spec author
 ```
 $ grep -nE 'S11c_c1_bulk_closure_sympy_audit\.py' research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md | head -3
 5:Write `research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py` in full. Its products are the flushed
-146:full ancestry: `{ 'S11c_c1_bulk_closure_sympy_audit.py' (this engine's own source), 'S11b_exports.py',
+151:full ancestry: `{ 'S11c_c1_bulk_closure_sympy_audit.py' (this engine's own source), 'S11b_exports.py',
 ```
 
 ## μ_θ operand — S11CB_MU_THETA_OPERATOR binds to row mu_theta_operator (S11c_b_exports.py); display begins (mu_theta,…)
@@ -125,14 +125,14 @@ $ grep -nE '^### 5[a-e] |^## 4 ' research/pde_ledger_v3/directives/S11c_c1_SHARE
 
 ```
 $ grep -nE 'BUILD_INPUT_DIGESTS' research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md
-562:flat plain-git LEDGER of the emitted `PY_S11CC1_*` objects, its `BUILD_INPUT_DIGESTS` pinning
+566:LEDGER) — its `BUILD_INPUT_DIGESTS` pinning
 ```
 
 ## F9c taken prefixes s11_/s11b_/s11c_a_/s11c_b_ — fresh c1 prefix is s11c_c1_ (directive pins it)
 
 ```
 $ grep -nE 's11c_c1_' research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md | head -2
-137:write the fresh step prefix is **`s11c_c1_`** — `s11_`, `s11b_`, `s11c_a_`, `s11c_b_` are already taken in the
+142:write the fresh step prefix is **`s11c_c1_`** — `s11_`, `s11b_`, `s11c_a_`, `s11c_b_` are already taken in the
 ```
 
 ## c1 HAS a §6 locus protocol (unlike S11c-a/S11c-b) — DEGENERATE_LOCI, finite-dim only; typed CAS booleans feed T7
@@ -155,7 +155,7 @@ $ grep -nE 'convective operator|v_bulk_normal_0=0|never aliased to .v_0' researc
 205:(`directives/S11c_a_SHARED_PHYSICS.md:49`; never aliased to `v_0`). The bulk operator solved in §3 is the
 206:rest-frame `∂_t²φ=c_s0²∇₄²φ`; ⛔ **the convective operator `(∂_t+v_bulk_normal_0∂_w)²φ=c_s0²∇₄²φ` is not
 212:- the requested **grazing** behaviour (`q_out→0`, §3a) is the **strict `v_bulk_normal_0=0` result** and is stated
-612:non-uniform validity domain condition every result (§2b, grazing = strict `v_bulk_normal_0=0`), and reports no
+616:non-uniform validity domain condition every result (§2b, grazing = strict `v_bulk_normal_0=0`), and reports no
 ```
 
 ## F9 totality is TOTAL over imported row shapes (:171-186)
@@ -213,22 +213,48 @@ The response objects `(δp_s, J_s, t_s)(V_s, μ_θ)`, the DtN operator, and the 
 S11c-c2 consumes.
 ```
 
-## EXPORT-TRIM applied in the directive: narrow KEEP set + emit-only DROP set
+## EXPORT-TRIM applied in the directive: narrow KEEP set + emit-only DROP set, cited to F10 (not a self-authorized D1 refinement)
 
 ```
-$ grep -nE 'candidate EXPORT population is ONLY|NOT exported — emit-to-stdout ONLY|export what the next step CONSUMES' research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md
-101:**The candidate EXPORT population is ONLY** (§3b: *"the response objects `(δp_s, J_s, t_s)`, the DtN operator,
-113:⛔ **NOT exported — emit-to-stdout ONLY, because these are derived DIAGNOSTICS/EVIDENCE, not chain inputs c2
-121:derivations emit") to "export what the next step CONSUMES"; the same policy governs S11c-c2's export set when
+$ grep -nE 'candidate EXPORT population is ONLY|NOT exported — emit-to-stdout ONLY|This is .F10. applied|does not amend .D1./§7 on its own authority' research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md
+102:**The candidate EXPORT population is ONLY** (§3b: *"the response objects `(δp_s, J_s, t_s)`, the DtN operator,
+114:⛔ **NOT exported — emit-to-stdout ONLY, because these are step-level DIAGNOSTICS/EVIDENCE, not the model-level
+123:analog). §7's engine-local tags are engine-local, ⛔ not exports. ⭐ **This is `F10` applied — the LEDGER is the
+125:at the list level; ⛔ this directive does not amend `D1`/§7 on its own authority — it points at `F10` and the
 ```
 
-## EXPORT-TRIM finding: the pre-trim c1 export was 152 MB, and the two DISSIPATION-AUDIT rows are 84.7 MB (56%) of it — evidence, not chain inputs (this build re-runs with them emit-only)
+## EXPORT-TRIM authority F10: the model-level-register rule added to the export-chain decisions (resolves the model-vs-step split the file flagged open for a third step's evidence)
 
 ```
+$ grep -nE '^## ⭐ F10|MADE in .F10. below' research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md
+200:- ⛔ The **model-level vs step-level** split — ⭐ the real distinction. ⭐⭐ **MADE in `F10` below, on S11c-c1's
+211:## ⭐ F10 · THE LEDGER CARRIES THE MODEL-LEVEL REGISTER; STEP-LEVEL DIAGNOSTICS ARE EMIT-ONLY
+```
+
+## EXPORT-TRIM §7 reconciled: c1 spec §7 now names the CONSUMED objects + cites F10 (was 'the emitted PY_S11CC1_* objects')
+
+```
+$ grep -nE 'chain-\*\*CONSUMED\*\*|per .F10.' research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md
+562:flat plain-git LEDGER of the chain-**CONSUMED** `PY_S11CC1_*` objects — the §3b consume-set (the DtN operator
+564:per `F10` (the model-level register; the §4 dissipation, energy, loci/noninvertibility, and Hermitian/reactive
+```
+
+## EXPORT-TRIM gate: the change is gated by the S11c-c1 directive review (Grok CLEAR + Codex must-fix → this lawful recording); leg outputs saved beside the prompt
+
+```
+$ ls -la research/pde_ledger_v3/directives/_legs/S11c_c1_sympy_build_directive_review*.* | awk '{print $5"  "$9}'
+11332  research/pde_ledger_v3/directives/_legs/S11c_c1_sympy_build_directive_review_codex.out
+13563  research/pde_ledger_v3/directives/_legs/S11c_c1_sympy_build_directive_review_grok.out
+7120  research/pde_ledger_v3/directives/_legs/S11c_c1_sympy_build_directive_review.md
+```
+
+## EXPORT-TRIM finding (committed evidence at d1fe1bf0): the pre-trim full-primary export was 145.5 MB, two DISSIPATION-AUDIT rows 84.7 MB (56%) of it — step-level evidence, now emit-only under F10
+
+```
+$ git -C /var/projects/toy_physics show d1fe1bf0:research/pde_ledger_v3/directives/_measurements/S11c_c1_sympy_build_directive.md 2>/dev/null | grep -E 'pre-trim S11c_c1_exports.py size:|permeable_port_hermitian|permeable_dissipation_vs_omega_tau' | head -3; printf 'current export (rebuilt against F10, model-level register only): '; wc -c research/pde_ledger_v3/scripts/S11c_c1_exports.py 2>/dev/null | awk '{printf "%.1f MB\n",$1/1048576}' || echo '(not yet rebuilt)'
 $ printf 'pre-trim S11c_c1_exports.py size: '; wc -c research/pde_ledger_v3/scripts/S11c_c1_exports.py 2>/dev/null | awk '{printf "%d bytes (%.1f MB)\n",$1,$1/1048576}'; printf 'the two dissipation-audit rows present in the pre-trim export:\n'; grep -nE "^    '(s11c_c1_permeable_dissipation_vs_omega_tau|permeable_port_hermitian)':" research/pde_ledger_v3/scripts/S11c_c1_exports.py 2>/dev/null || echo '(export regenerated post-trim; dissipation rows now emit-only)'
 pre-trim S11c_c1_exports.py size: 152574695 bytes (145.5 MB)
-the two dissipation-audit rows present in the pre-trim export:
 5930:    'permeable_port_hermitian':     {
-15420:    's11c_c1_permeable_dissipation_vs_omega_tau':     {
+current export (rebuilt against F10, model-level register only): (not yet rebuilt)
 ```
 

@@ -54,7 +54,13 @@ claim "EXPORT-TRIM motivation: the comparator reads the two stdout .out tag stre
   "sed -n '4,10p' $CB_CMP"
 claim "EXPORT-TRIM authority: spec §3b names EXACTLY what c2 consumes (the export keep-set)" \
   "sed -n '347,348p' $A"
-claim "EXPORT-TRIM applied in the directive: narrow KEEP set + emit-only DROP set" \
-  "grep -nE 'candidate EXPORT population is ONLY|NOT exported — emit-to-stdout ONLY|export what the next step CONSUMES' $D"
-claim "EXPORT-TRIM finding: the pre-trim c1 export was 152 MB, and the two DISSIPATION-AUDIT rows are 84.7 MB (56%) of it — evidence, not chain inputs (this build re-runs with them emit-only)" \
-  "printf 'pre-trim S11c_c1_exports.py size: '; wc -c $SP/scripts/S11c_c1_exports.py 2>/dev/null | awk '{printf \"%d bytes (%.1f MB)\n\",\$1,\$1/1048576}'; printf 'the two dissipation-audit rows present in the pre-trim export:\n'; grep -nE \"^    '(s11c_c1_permeable_dissipation_vs_omega_tau|permeable_port_hermitian)':\" $SP/scripts/S11c_c1_exports.py 2>/dev/null || echo '(export regenerated post-trim; dissipation rows now emit-only)'"
+claim "EXPORT-TRIM applied in the directive: narrow KEEP set + emit-only DROP set, cited to F10 (not a self-authorized D1 refinement)" \
+  "grep -nE 'candidate EXPORT population is ONLY|NOT exported — emit-to-stdout ONLY|This is .F10. applied|does not amend .D1./§7 on its own authority' $D"
+claim "EXPORT-TRIM authority F10: the model-level-register rule added to the export-chain decisions (resolves the model-vs-step split the file flagged open for a third step's evidence)" \
+  "grep -nE '^## ⭐ F10|MADE in .F10. below' $SP/directives/S11_export_chain_decisions_v2.md"
+claim "EXPORT-TRIM §7 reconciled: c1 spec §7 now names the CONSUMED objects + cites F10 (was 'the emitted PY_S11CC1_* objects')" \
+  "grep -nE 'chain-\*\*CONSUMED\*\*|per .F10.' $A"
+claim "EXPORT-TRIM gate: the change is gated by the S11c-c1 directive review (Grok CLEAR + Codex must-fix → this lawful recording); leg outputs saved beside the prompt" \
+  "ls -la $SP/directives/_legs/S11c_c1_sympy_build_directive_review*.* | awk '{print \$5\"  \"\$9}'"
+claim "EXPORT-TRIM finding (committed evidence at d1fe1bf0): the pre-trim full-primary export was 145.5 MB, two DISSIPATION-AUDIT rows 84.7 MB (56%) of it — step-level evidence, now emit-only under F10" \
+  "git -C /var/projects/toy_physics show d1fe1bf0:research/pde_ledger_v3/directives/_measurements/S11c_c1_sympy_build_directive.md 2>/dev/null | grep -E 'pre-trim S11c_c1_exports.py size:|permeable_port_hermitian|permeable_dissipation_vs_omega_tau' | head -3; printf 'current export (rebuilt against F10, model-level register only): '; wc -c $SP/scripts/S11c_c1_exports.py 2>/dev/null | awk '{printf \"%.1f MB\n\",\$1/1048576}' || echo '(not yet rebuilt)'"

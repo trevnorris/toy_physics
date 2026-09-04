@@ -558,8 +558,12 @@ constant emitted by §3 — take fresh names and ⛔ must **not** reuse the impo
 keys; a disagreement emits and continues.
 
 **Chain output (`N1`/`N8`, inherited verbatim — pointed at, not restated).** The SymPy engine writes
-`scripts/S11c_c1_exports.py` under the export-chain rules `F1`–`F9` (`S11_export_chain_decisions_v2.md`): the
-flat plain-git LEDGER of the emitted `PY_S11CC1_*` objects, its `BUILD_INPUT_DIGESTS` pinning
+`scripts/S11c_c1_exports.py` under the export-chain rules `F1`–`F10` (`S11_export_chain_decisions_v2.md`): the
+flat plain-git LEDGER of the chain-**CONSUMED** `PY_S11CC1_*` objects — the §3b consume-set (the DtN operator
+and its flat symbol, and the closed face response `(δp_s, J_s, t_s)(V_s, μ_θ)`) with their free-symbol closure,
+per `F10` (the model-level register; the §4 dissipation, energy, loci/noninvertibility, and Hermitian/reactive
+and regime/parity/term-origin structural-view diagnostics are **emit-only**, in the annexed `.out`, ⛔ not in the
+LEDGER) — its `BUILD_INPUT_DIGESTS` pinning
 `{this sub-step's SymPy audit, the imported `scripts/{S11b,S11c_a,S11c_b}_exports.py`, this spec}`, the `D3`
 in-run round-trip, and the `_RELATIONALS` reviver. ⛔ Never `git add -f` a big `.out`; ⛔ never annex an
 `*_exports.py`. The S11c-c1 comparator is this sub-step's own frozen `T7` join (`N8`, inherited verbatim — join

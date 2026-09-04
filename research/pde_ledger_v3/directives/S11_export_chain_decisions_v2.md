@@ -197,13 +197,64 @@ key. ⚠ Evidence: `/tmp/f9_leg_{codex,grok}/`, ⛔ outside the tree.
 ### ⛔ What F9 does NOT decide
 
 - ⛔ Whether S10 is regenerated ⇒ `F4`, still open.
-- ⛔ The **model-level vs step-level** split — ⭐ the real distinction, still unmade. ⭐ Revisit on a third
-  step's evidence.
+- ⛔ The **model-level vs step-level** split — ⭐ the real distinction. ⭐⭐ **MADE in `F10` below, on S11c-c1's
+  third-step evidence** (the 145 MB full-primary export): the LEDGER carries the model-level register, step-level
+  diagnostics are emit-only.
 - ⛔ The **tag stream** — `§8`'s grammar is untouched.
 - ⚠ Whether the prefix generalises from `s11_` to `<step>_`.
 - ⛔⛔ **WHAT "BARE" MEANS TO A LATER READER.** ⚠ Measured: ⛔ no presently instantiated broken consumer, ⭐ and
   a latent one — after `F9c` the bare key still answers with the **predecessor**. ⇒ ⭐ **a routed-key
   contract is owed BEFORE any consumer of an `F9c` object is built.**
+
+---
+
+## ⭐ F10 · THE LEDGER CARRIES THE MODEL-LEVEL REGISTER; STEP-LEVEL DIAGNOSTICS ARE EMIT-ONLY
+
+⭐⭐ **This makes the model-level-vs-step-level split `F9`'s "does not decide" (above) left open "for a third
+step's evidence."** The third step's evidence is S11c-c1's: the full-primary export measured **145 MB**, of
+which **84.7 MB was two dissipation-AUDIT rows**, exceeding GitHub's 100 MB plain-git file cap — and an
+`*_exports.py` must stay plain-git (⛔ never annexed; it is a hash-chained input the next step imports). The
+model-level register the next step consumes (the DtN operator + closed face response) was ~5 MB; the rest was
+step-level evidence.
+
+⭐ **Two channels, and the split is between them:**
+- **EMIT** (the stdout tag stream → the annexed `out/*.out`): **every** primary object **and** every control
+  operand and residual, unchanged and complete. This is what the cross-engine comparator and the review legs
+  read, and the `.out` is git-annex+GIN backed, so it carries **no** size cap.
+- **EXPORT** (the plain-git `*_exports.py` LEDGER → imported only by the next chain step): the **model-level
+  register** — the chain-**consumed** model-definition objects (operators, kernels, closed responses, and the
+  knobs/symbols a later step binds) **as NAMED by the emitting step's own spec's consume-set**, plus their
+  free-symbol closure, merged onto the carried-forward inherited LEDGER. Derived **step-level diagnostics**
+  (dissipation/energy audits, Hermitian/reactive splits, regime/parity/term-origin views, loci/noninvertibility
+  conditions) are **emit-only** — in the `.out`, ⛔ not in the LEDGER.
+
+⚠ **This REFINES `D1`, it does not overturn it.** `D1`'s anti-under-export default stands — the safe direction
+is still to export, and the builder still makes **no per-object judgement**: it exports exactly the objects the
+**spec** names in its consume-set (plus free-symbol closure plus the carried-forward LEDGER), ⛔ never a set the
+builder chooses. The change from `D1` is only that the boundary is the **spec-declared consume-set**, ⛔ not
+"every emitted primary object." `D1`'s real fear — a builder silently dropping something a consumer needs — is
+answered by making the keep-set **spec-driven**, not builder-discretionary.
+
+⛔ **Guards (an under-export here breaks a downstream step, so these bind):**
+- The emitting step's spec **MUST declare its consume-set** (the objects the next step imports). A step with no
+  declared consume-set falls back to `D1` (export every primary object). ⛔ F10 is not a licence to narrow a
+  spec that did not declare one.
+- The engine's `D3` in-run round-trip catches a **free-symbol-closure gap** (a kept object referencing a symbol
+  neither inherited nor freshly exported).
+- A diagnostic is emit-only **only** because the spec's consume-set does not name it. If a **later** step turns
+  out to need one, it is promoted into that step's import then — the object is still in the annexed `.out`,
+  recoverable. ⛔ Emit-only is never "computed then discarded."
+
+⚠ **SAFE because the only LEDGER consumer is the next chain step.** The cross-engine comparator and the review
+legs read the `.out` tag streams, ⛔ not the LEDGER (`S11c_b_cross_engine_comparator.py`: *"S11c_b_exports.py is
+not used as a tag stream"*); `F9` is PY-ONLY and the WL engine writes no ledger — so nothing that reads the
+`.out` loses anything under F10.
+
+⭐ **Scope.** Applies going forward to any step whose spec declares a consume-set; ⛔ prior committed exports are
+unchanged. **First applied: S11c-c1** (ratified by the user 2026-09-03; gated by the S11c-c1 build-directive
+review — Grok + Codex — where Codex's must-fix is what elevated this from a build-directive "refinement" to this
+list-level rule). ⛔ F10 does **not** authorize dropping a knob, a structural relation, or any object a later
+step binds.
 
 ---
 

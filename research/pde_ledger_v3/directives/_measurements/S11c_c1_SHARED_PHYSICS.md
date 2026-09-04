@@ -107,3 +107,15 @@ does not fold); N1/N8/N12/N14; the two inherited S11b caveats are legitimate set
 Fold all above into c1 v2 in ONE pass (rule 7: fold and go, ⛔ do not re-leg to green). The build's 2 legs +
 the cross-engine comparator are the next review layer; a from-scratch WL engine that disagrees surfaces any
 residual spec ambiguity. Then dual-engine build of c1 (SymPy + blind Wolfram, each 2 build legs).
+
+---
+
+## §7 reconciliation (2026-09-03) — post-authoring governance edit, gated by the build-directive review
+
+The §7 chain-output sentence was reconciled from "the flat plain-git LEDGER of the emitted PY_S11CC1_*
+objects" to "the chain-CONSUMED PY_S11CC1_* objects (the §3b consume-set: the DtN operator + flat symbol and
+the closed face response) with free-symbol closure, per F10; the §4 dissipation/energy/loci/structural-view
+diagnostics are emit-only in the annexed .out, not in the LEDGER." This removes the §7-vs-§3b internal
+inconsistency that Codex's directive-review leg flagged as a must-fix (§7 read broad, §3b read narrow).
+Authority: F10 (S11_export_chain_decisions_v2.md). Gate: the S11c-c1 build-directive review (Grok + Codex,
+saved under directives/_legs/); ratified by the user 2026-09-03. No physics content changed.

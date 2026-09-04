@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Decisive self-test for ledger_fold.py; imports no real engine export."""
+"""Decisive synthetic tests plus a guarded frozen-ledger test for ledger_fold.py."""
 
 from __future__ import annotations
 
@@ -20,6 +20,22 @@ from ledger_fold import (
     check_consumer,
     load_model,
     promotion_delta,
+)
+
+
+REAL_LEDGER_ROOTS = (
+    "mu_theta_operator",
+    "slab_operator",
+    "coupling_kernel",
+    "face_normal",
+    "conormal_deriv",
+    "face_measure_shape_deriv",
+    "face_velocity",
+    "relative_flux",
+    "kinematic_balance",
+    "traction",
+    "face_shift",
+    "closure_shape_deriv",
 )
 
 
@@ -122,22 +138,43 @@ def test_predecessor_trap(fold: dict) -> None:
     assert exact_key_error != "NO ERROR"
 
 
-def test_missing_symbol_closure() -> None:
-    missing_fold = {"kept": row(sp.Symbol("foo") + 1, "D")}
-    try:
-        check_consumer(missing_fold, {"kept"})
-    except ClosureError as exc:
-        missing_error = str(exc)
-    else:
-        missing_error = "NO ERROR"
-    complete_fold = dict(missing_fold)
-    complete_fold["foo"] = row(sp.Symbol("foo"), "B")
-    report = check_consumer(complete_fold, {"kept"})
-    operands = {"manifest": ["kept"], "missing_keys": sorted(missing_fold), "complete_keys": sorted(complete_fold)}
-    observed = {"missing_error": missing_error, "closure_after_add": sorted(report["closure"])}
-    emit("missing_symbol_closure", operands, observed)
-    assert "foo" in missing_error and missing_error != "NO ERROR"
-    assert report["closure"] == frozenset({"kept", "foo"})
+def test_identity_resolution() -> None:
+    omega_real = sp.Symbol("omega", real=True)
+    omega_plain = sp.Symbol("omega")
+    fold = {
+        "kept_real": row(omega_real + 1, "ROOT"),
+        "kept_plain": row(omega_plain + 1, "ROOT"),
+        "omega": row(omega_real, "BARE"),
+        "s11b_omega": row(omega_plain, "PREFIXED"),
+    }
+    reports: dict[str, object] = {}
+    errors: dict[str, str] = {}
+    for root in ("kept_real", "kept_plain"):
+        try:
+            reports[root] = check_consumer(fold, {root})
+        except LedgerFoldError as exc:
+            errors[root] = f"{type(exc).__name__}: {exc}"
+    operands = {
+        "manifest_roots": ["kept_real", "kept_plain"],
+        "producer_identities": {
+            "omega": sp.srepr(omega_real),
+            "s11b_omega": sp.srepr(omega_plain),
+        },
+    }
+    observed = {
+        "errors": errors,
+        "closures": {
+            root: sorted(report["closure"])
+            for root, report in reports.items()
+        },
+        "edges": {root: report["symbol_edges"] for root, report in reports.items()},
+    }
+    emit("identity_resolution", operands, observed)
+    assert not errors
+    assert reports["kept_real"]["closure"] == frozenset({"kept_real", "omega"})
+    assert reports["kept_plain"]["closure"] == frozenset(
+        {"kept_plain", "s11b_omega"}
+    )
 
 
 def test_dimension_closure() -> None:
@@ -158,11 +195,90 @@ def test_dimension_closure() -> None:
     assert report["closure"] == frozenset({"kept", "dim_kept"})
 
 
-def test_f9c_ambiguity() -> None:
+def test_depth_2_recursion() -> None:
+    leaf = sp.Symbol("leaf", positive=True)
+    fold = {
+        "root": row(sp.Integer(1), "ROOT", dimension_key="mid"),
+        "mid": row(leaf + 1, "MID"),
+        "leaf": row(leaf, "LEAF"),
+    }
+    report = check_consumer(fold, {"root"})
+    operands = {
+        "manifest": ["root"],
+        "chain": ["root", "mid", "leaf"],
+        "edge_kinds": ["dimension_key", "atom_identity"],
+    }
+    observed = {
+        "closure": sorted(report["closure"]),
+        "symbol_edges": report["symbol_edges"],
+        "dimension_edges": report["dimension_edges"],
+    }
+    emit("depth_2_recursion", operands, observed)
+    assert report["closure"] == frozenset({"root", "mid", "leaf"})
+
+
+def test_recursive_dimension_closure() -> None:
+    missing_fold = {
+        "root": row(sp.Integer(1), "ROOT", dimension_key="mid"),
+        "mid": row(sp.Integer(2), "MID", dimension_key="leaf"),
+    }
+    try:
+        check_consumer(missing_fold, {"root"})
+    except ClosureError as exc:
+        missing_error = str(exc)
+    else:
+        missing_error = "NO ERROR"
+    complete_fold = dict(missing_fold)
+    complete_fold["leaf"] = row(sp.Integer(3), "LEAF")
+    report = check_consumer(complete_fold, {"root"})
+    operands = {
+        "manifest": ["root"],
+        "dimension_chain": ["root", "mid", "leaf"],
+        "missing_keys": sorted(missing_fold),
+    }
+    observed = {
+        "missing_error": missing_error,
+        "closure_after_add": sorted(report["closure"]),
+    }
+    emit("recursive_dimension_closure", operands, observed)
+    assert "leaf" in missing_error and "mid" in missing_error
+    assert missing_error != "NO ERROR"
+    assert report["closure"] == frozenset({"root", "mid", "leaf"})
+
+
+def test_structural_skip() -> None:
+    x = sp.Symbol("x")
+    matrix = sp.MatrixSymbol("M_structural", 2, 2)
+    value = sp.Tuple(sp.Function("O_window")(x), matrix)
+    fold = {"kept": row(value, "ROOT")}
+    error = None
+    report = None
+    try:
+        report = check_consumer(fold, {"kept"})
+    except LedgerFoldError as exc:
+        error = f"{type(exc).__name__}: {exc}"
+    operands = {
+        "manifest": ["kept"],
+        "value": value,
+        "absent_structural_atoms": ["O_window", "x", "M_structural"],
+    }
+    observed = {
+        "error": error,
+        "closure": None if report is None else sorted(report["closure"]),
+        "symbol_edges": None if report is None else report["symbol_edges"],
+    }
+    emit("structural_skip", operands, observed)
+    assert error is None
+    assert report is not None and report["closure"] == frozenset({"kept"})
+    assert report["symbol_edges"] == ()
+
+
+def test_genuine_ambiguity() -> None:
+    z = sp.Symbol("z")
     ambiguous_fold = {
-        "kept": row(sp.Symbol("a1") + 1, "D"),
-        "a1": row(sp.Symbol("a1"), "BASE"),
-        "s11_a1": row(sp.Symbol("a1"), "DELTA"),
+        "kept": row(z + 1, "ROOT"),
+        "z": row(z, "BASE"),
+        "s11_z": row(z, "DELTA"),
     }
     try:
         check_consumer(ambiguous_fold, {"kept"})
@@ -170,15 +286,47 @@ def test_f9c_ambiguity() -> None:
         ambiguity_error = str(exc)
     else:
         ambiguity_error = "NO ERROR"
-    unambiguous_fold = dict(ambiguous_fold)
-    del unambiguous_fold["s11_a1"]
-    report = check_consumer(unambiguous_fold, {"kept"})
-    operands = {"manifest": ["kept"], "colliding_keys": ["a1", "s11_a1"]}
-    observed = {"ambiguity_error": ambiguity_error, "closure_without_collision": sorted(report["closure"])}
-    emit("f9c_ambiguity", operands, observed)
-    assert "competing write-keys: a1, s11_a1" in ambiguity_error
+    operands = {
+        "manifest": ["kept"],
+        "identity": sp.srepr(z),
+        "colliding_keys": ["z", "s11_z"],
+    }
+    observed = {"ambiguity_error": ambiguity_error}
+    emit("genuine_ambiguity", operands, observed)
+    assert "competing write-keys: s11_z, z" in ambiguity_error
+    assert sp.srepr(z) in ambiguity_error
     assert ambiguity_error != "NO ERROR"
-    assert report["closure"] == frozenset({"kept", "a1"})
+
+
+def test_user_is_not_a_producer() -> None:
+    w_0 = sp.Symbol("W_0")
+    fold = {
+        "kept": row(2 * w_0, "ROOT"),
+        "W_0": row(w_0, "DECLARATION"),
+        "uses_w": row(w_0 + 1, "PREMISE"),
+    }
+    error = None
+    report = None
+    try:
+        report = check_consumer(fold, {"kept"})
+    except LedgerFoldError as exc:
+        error = f"{type(exc).__name__}: {exc}"
+    operands = {
+        "manifest": ["kept"],
+        "declaration_key": "W_0",
+        "symbol_user_key": "uses_w",
+        "identity": sp.srepr(w_0),
+    }
+    observed = {
+        "error": error,
+        "closure": None if report is None else sorted(report["closure"]),
+        "symbol_edges": None if report is None else report["symbol_edges"],
+    }
+    emit("user_is_not_a_producer", operands, observed)
+    assert error is None
+    assert report is not None
+    assert report["closure"] == frozenset({"kept", "W_0"})
+    assert "uses_w" not in report["closure"]
 
 
 def test_bidirectional_smoke() -> None:
@@ -194,6 +342,9 @@ def test_bidirectional_smoke() -> None:
     def exact(proxy: dict) -> tuple[object, object]:
         return proxy["declared"], proxy["other"]
 
+    def absent(proxy: dict) -> None:
+        proxy["absent"]
+
     try:
         assert_lookups_equal_manifest(undeclared, fold, {"declared"})
     except ManifestError as exc:
@@ -206,16 +357,27 @@ def test_bidirectional_smoke() -> None:
         unused_error = str(exc)
     else:
         unused_error = "NO ERROR"
+    try:
+        assert_lookups_equal_manifest(absent, fold, {"absent"})
+    except KeyError as exc:
+        absent_error = repr(exc)
+    else:
+        absent_error = "NO ERROR"
     exact_report = assert_lookups_equal_manifest(exact, fold, {"declared", "other"})
-    operands = {"fold_keys": sorted(fold), "manifests": [["declared"], ["declared", "other"]]}
+    operands = {
+        "fold_keys": sorted(fold),
+        "manifests": [["declared"], ["declared", "other"], ["absent"]],
+    }
     observed = {
         "undeclared_error": undeclared_error,
         "unused_error": unused_error,
+        "absent_required_error": absent_error,
         "exact_lookups": sorted(exact_report["lookups"]),
     }
     emit("bidirectional_smoke", operands, observed)
     assert "other" in undeclared_error and "undeclared" in undeclared_error
     assert "other" in unused_error and "declared-but-unused" in unused_error
+    assert "absent" in absent_error and absent_error != "NO ERROR"
     assert exact_report["lookups"] == frozenset({"declared", "other"})
 
 
@@ -243,6 +405,25 @@ def test_minimum_mode() -> None:
     assert report["exported_keys"] == frozenset({"bound", "infra"})
 
 
+def test_minimum_mode_missing_required() -> None:
+    delta = {"infra": row(1, "D")}
+    try:
+        assert_delta_is_minimal(delta, {"bound"}, {"infra"})
+    except LedgerFoldError as exc:
+        missing_error = str(exc)
+    else:
+        missing_error = "NO ERROR"
+    operands = {
+        "delta_keys": sorted(delta),
+        "own_bind_closure": ["bound"],
+        "infra_keys": ["infra"],
+    }
+    observed = {"missing_error": missing_error}
+    emit("minimum_mode_missing_required", operands, observed)
+    assert "missing row(s): bound" in missing_error
+    assert missing_error != "NO ERROR"
+
+
 def test_promotion_delta() -> None:
     symbol = sp.Symbol("promoted")
     evidence = {
@@ -267,6 +448,72 @@ def test_promotion_delta() -> None:
     assert {"display", "value", "value_kind", "class", "step"}.issubset(promoted)
 
 
+def test_promotion_delta_guards() -> None:
+    symbol = sp.Symbol("promoted")
+    complete_evidence = {
+        "step": "PRODUCER",
+        "f9_operands": sp.Tuple(symbol, sp.Tuple()),
+        "route": {"decision": "F9a", "write_key": "promoted"},
+        "value": sp.Integer(0),
+        "class": "FORBIDDEN",
+    }
+    try:
+        promotion_delta("promoted", sp.srepr(symbol), "SYNTHETIC", complete_evidence)
+    except LedgerFoldError as exc:
+        forbidden_error = str(exc)
+    else:
+        forbidden_error = "NO ERROR"
+    try:
+        promotion_delta(
+            "promoted",
+            sp.srepr(symbol),
+            "SYNTHETIC",
+            {"step": "PRODUCER"},
+        )
+    except LedgerFoldError as exc:
+        missing_error = str(exc)
+    else:
+        missing_error = "NO ERROR"
+    operands = {
+        "row_key": "promoted",
+        "forbidden_evidence_fields": ["class", "value"],
+        "incomplete_evidence_fields": ["step"],
+    }
+    observed = {"forbidden_error": forbidden_error, "missing_error": missing_error}
+    emit("promotion_delta_guards", operands, observed)
+    assert "class, value" in forbidden_error and forbidden_error != "NO ERROR"
+    assert "f9_operands, route" in missing_error and missing_error != "NO ERROR"
+
+
+def test_real_ledger_roots() -> None:
+    ledger_path = Path(__file__).with_name("S11c_b_exports.py")
+    operands = {"ledger_path": str(ledger_path), "roots": list(REAL_LEDGER_ROOTS)}
+    if not ledger_path.is_file():
+        emit("real_ledger_roots", operands, {"guard": "SKIPPED: ledger file absent"})
+        return
+
+    from S11c_b_exports import LEDGER as real_ledger
+
+    closures: dict[str, list[str]] = {}
+    errors: dict[str, str] = {}
+    for root in REAL_LEDGER_ROOTS:
+        try:
+            report = check_consumer(real_ledger, {root})
+        except BaseException as exc:
+            errors[root] = f"{type(exc).__name__}: {exc}"
+        else:
+            closures[root] = sorted(report["closure"])
+    observed = {
+        "ledger_rows": len(real_ledger),
+        "resolved_roots": sorted(closures),
+        "closure_sizes": {root: len(keys) for root, keys in closures.items()},
+        "errors": errors,
+    }
+    emit("real_ledger_roots", operands, observed)
+    assert not errors
+    assert set(closures) == set(REAL_LEDGER_ROOTS)
+
+
 def main() -> int:
     started = time.perf_counter()
     failures: list[tuple[str, BaseException]] = []
@@ -277,12 +524,19 @@ def main() -> int:
             ("last_wins", lambda: test_last_wins(fold, audit, base_path, delta_path)),
             ("no_f9_reapply", lambda: test_no_f9_reapply(fold)),
             ("predecessor_trap", lambda: test_predecessor_trap(fold)),
-            ("missing_symbol_closure", test_missing_symbol_closure),
+            ("identity_resolution", test_identity_resolution),
             ("dimension_closure", test_dimension_closure),
-            ("f9c_ambiguity", test_f9c_ambiguity),
+            ("depth_2_recursion", test_depth_2_recursion),
+            ("recursive_dimension_closure", test_recursive_dimension_closure),
+            ("structural_skip", test_structural_skip),
+            ("genuine_ambiguity", test_genuine_ambiguity),
+            ("user_is_not_a_producer", test_user_is_not_a_producer),
             ("bidirectional_smoke", test_bidirectional_smoke),
             ("minimum_mode", test_minimum_mode),
+            ("minimum_mode_missing_required", test_minimum_mode_missing_required),
             ("promotion_delta", test_promotion_delta),
+            ("promotion_delta_guards", test_promotion_delta_guards),
+            ("real_ledger_roots", test_real_ledger_roots),
         ]
         for name, test in tests:
             try:

@@ -16,6 +16,7 @@ from types import ModuleType
 from typing import Any
 
 import sympy as sp
+from sympy.core.function import AppliedUndef, UndefinedFunction
 from sympy.core.symbol import Str
 from sympy.functions.elementary.piecewise import ExprCondPair
 
@@ -143,45 +144,67 @@ def _manifest_keys(import_keys: Iterable[str] | None) -> frozenset[str]:
     return keys
 
 
-def _free_symbol_names(value: object) -> set[str]:
-    """Return free-symbol names from SymPy values and ordinary containers."""
+def _referenced_atoms(value: object) -> set[object]:
+    """Return typed reference atoms from SymPy values and ordinary containers."""
 
     if isinstance(value, Mapping):
-        names: set[str] = set()
+        atoms: set[object] = set()
         for key, item in value.items():
-            names.update(_free_symbol_names(key))
-            names.update(_free_symbol_names(item))
-        return names
+            atoms.update(_referenced_atoms(key))
+            atoms.update(_referenced_atoms(item))
+        return atoms
     if isinstance(value, (tuple, list, set, frozenset)):
-        names = set()
+        atoms = set()
         for item in value:
-            names.update(_free_symbol_names(item))
-        return names
-    free_symbols = getattr(value, "free_symbols", ())
-    return {symbol.name for symbol in free_symbols if isinstance(symbol, sp.Symbol)}
+            atoms.update(_referenced_atoms(item))
+        return atoms
+    if isinstance(value, UndefinedFunction):
+        return {value}
+    if isinstance(value, sp.Basic):
+        atoms = set(value.atoms(sp.Symbol))
+        atoms.update(function.func for function in value.atoms(AppliedUndef))
+        atoms.update(value.atoms(sp.MatrixSymbol))
+        return atoms
+    return set()
 
 
-def _symbol_rows(
+def _atom_identity(atom: object) -> str:
+    """Serialize a reference atom's full identity, including assumptions."""
+
+    return sp.srepr(atom)
+
+
+def _producer_identities(value: object) -> set[str]:
+    """Return only identities declared by a row's own value, never identities it uses."""
+
+    if isinstance(value, (sp.Symbol, sp.MatrixSymbol, UndefinedFunction)):
+        return {_atom_identity(value)}
+    return set()
+
+
+def _identity_rows(
     fold: Mapping[str, Mapping[str, object]],
 ) -> Mapping[str, frozenset[str]]:
-    """Index rows whose payload is itself a serialized Symbol by symbol name."""
+    """Index declaration-valued rows by full atom identity."""
 
     index: dict[str, set[str]] = defaultdict(set)
     for key, row in fold.items():
-        value = row.get("value")
-        if isinstance(value, sp.Symbol):
-            index[value.name].add(key)
-    return {name: frozenset(keys) for name, keys in index.items()}
+        if not isinstance(row, Mapping):
+            continue
+        for identity in _producer_identities(row.get("value", _MISSING)):
+            index[identity].add(key)
+    return {identity: frozenset(keys) for identity, keys in index.items()}
 
 
 def check_consumer(
     fold: Mapping[str, Mapping[str, object]], import_keys: Iterable[str] | None
 ) -> dict[str, object]:
-    """Resolve an exact manifest and verify its recursive bind closure.
+    """Resolve an exact manifest and its identity-resolvable recursive closure.
 
-    A symbol edge resolves to the union of an exact bare key and rows whose
-    payload is that Symbol.  More than one candidate is an unresolved F9c route,
-    so this function raises and names every competing key instead of guessing.
+    Each typed reference atom resolves by full ``srepr`` identity to rows whose
+    own value declares that atom.  A unique declaration is followed, no
+    declaration denotes a free/structural atom and is skipped, and duplicate
+    declarations are a genuine ambiguity.
     """
 
     if not isinstance(fold, Mapping):
@@ -193,7 +216,7 @@ def check_consumer(
             "IMPORT_KEYS missing exact write-key(s): " + ", ".join(missing_roots)
         )
 
-    symbol_rows = _symbol_rows(fold)
+    identity_rows = _identity_rows(fold)
     closure = set(manifest)
     pending = deque(sorted(manifest))
     symbol_edges: list[tuple[str, str, str]] = []
@@ -207,22 +230,24 @@ def check_consumer(
         if "value" not in row:
             raise ClosureError(f"closure row {source_key!r} has no value")
 
-        for symbol_name in sorted(_free_symbol_names(row["value"])):
-            candidates = set(symbol_rows.get(symbol_name, ()))
-            if symbol_name in fold:
-                candidates.add(symbol_name)
+        value = row["value"]
+        referenced_atoms = _referenced_atoms(value)
+        if _producer_identities(value):
+            referenced_atoms.discard(value)
+
+        for atom in sorted(referenced_atoms, key=_atom_identity):
+            identity = _atom_identity(atom)
+            candidates = identity_rows.get(identity, ())
             if not candidates:
-                raise ClosureError(
-                    f"symbol edge from {source_key!r} is missing row {symbol_name!r}"
-                )
+                continue
             if len(candidates) > 1:
                 competing = ", ".join(sorted(candidates))
                 raise AmbiguousSymbolError(
-                    f"ambiguous symbol {symbol_name!r} from {source_key!r}; "
+                    f"ambiguous atom identity {identity!r} from {source_key!r}; "
                     f"competing write-keys: {competing}"
                 )
             target = next(iter(candidates))
-            symbol_edges.append((source_key, symbol_name, target))
+            symbol_edges.append((source_key, identity, target))
             if target not in closure:
                 closure.add(target)
                 pending.append(target)
@@ -248,6 +273,13 @@ def check_consumer(
 
 
 class _AccessRecordingLedger(Mapping[str, Mapping[str, object]]):
+    """Record only mapping lookups made through this proxy.
+
+    A consumer that captures the raw fold or reaches ``_fold`` evades the
+    witness.  Such access is outside the consumer contract; callers must use
+    only the proxy argument supplied to their build function.
+    """
+
     def __init__(self, fold: Mapping[str, Mapping[str, object]]) -> None:
         self._fold = fold
         self.lookups: set[str] = set()

@@ -1,0 +1,10 @@
+# Fresh-Claude agent leg — ledger_fold review (verdict summary; full transcript at the agent task output)
+VERDICT: NOT sound as-is — two must-fix.
+MF1: closure blind to Function(AppliedUndef)/MatrixSymbol names; ledger represents fields/profiles as functions
+     (Function('O_window') x5444, u1..u5, delta_j_bulk_4). Guard cannot enforce its "profile referenced in a
+     value" contract; a kept row applying an absent profile-function passes the guard. Probe /tmp/lfrev/probe1,2,5.
+     Honest caveat (rule 13): no PROVEN live exploit on today's base (the one overlap is a Symbol decl sharing a
+     name); structural contract violation regardless. Fix: collect atoms(AppliedUndef) + MatrixSymbol names.
+MF2: recursion untested — one-level ablation ships suite green (9/9). Add depth-2 symbol + dimension_key tests.
+Decisive (sound): last_wins, predecessor_trap (roots), f9c_ambiguity (Symbol payloads), bidirectional_smoke.
+Nits: _fold backdoor / captured-fold reference evades proxy (out of contract); untested minimal/promotion branches.

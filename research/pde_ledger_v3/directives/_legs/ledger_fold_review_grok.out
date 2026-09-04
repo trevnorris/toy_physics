@@ -1,0 +1,156 @@
+I'll start by reading the review contract, the two artifacts, and the authority docs, then run ablations and probes against a `/tmp` copy.Next I’ll pull the design authority and build directive, then copy the artifacts into `/tmp` for ablation.I have the contract. Next I’ll copy the artifacts into `/tmp`, run the four required ablations, and fire the under-export / merge / proxy / F9c probes.Baseline is green. I’ll patch the four `/tmp` copies and write the probe scripts next.Ablations are in. I’ll pull the remaining probe transcripts next so the holes are measured, not inferred.One more probe: a prefixed F9c row that’s actually absent while the bare predecessor still satisfies the symbol edge.The guard is **not sound**. Two must-fix holes: the recursive-closure tests are tautological, and an F9c symbol edge whose producers are ordinary (non-`Symbol`) payloads is silently routed to the bare predecessor.
+
+All work was on `/tmp` copies. The working tree was not modified. Baseline: `test_ledger_fold.py` 9/9 PASS (`/tmp/ledger_fold_review/original/test_stdout.txt`).
+
+---
+
+## Must-fix 1 — recursive-closure tests do not move
+
+The implementation *is* recursive (`pending.append` at `ledger_fold.py:228` and `:239`). The tests are not. `test_missing_symbol_closure` and `test_dimension_closure` (`test_ledger_fold.py:125–158`) only walk **one** edge. Ablating the copy to one-level-only (do not enqueue targets) leaves **all 9 tests PASS**.
+
+**Ablation:** `/tmp/ledger_fold_review/ablate_nonrecursive/ledger_fold.py`  
+**Status diff:** `/tmp/ledger_fold_review/probes/ablation_status_diff.txt`
+
+```
+===== DIFF statuses original vs ablate_nonrecursive =====
+...
+ABLATED:
+TEST last_wins PASS
+TEST no_f9_reapply PASS
+TEST predecessor_trap PASS
+TEST missing_symbol_closure PASS
+TEST dimension_closure PASS
+TEST f9c_ambiguity PASS
+TEST bidirectional_smoke PASS
+TEST minimum_mode PASS
+TEST promotion_delta PASS
+SUMMARY tests=9 failures=0 runtime_seconds=0.027638
+RESULT: NO TEST STATUS MOVED (tautological for this ablation)
+```
+
+Full ablated run: `/tmp/ledger_fold_review/ablate_nonrecursive/test_stdout.txt`.
+
+A two-deep missing dependency is an under-export the **broken** copy accepts and the real module catches. Script `/tmp/ledger_fold_review/probes/probe_recursion_vs_tests.py`, stdout `/tmp/ledger_fold_review/probes/probe_recursion_vs_tests_stdout.txt`:
+
+```
+===== two-deep shapes (NOT in test_ledger_fold.py) =====
+--- orig ---
+PROBE orig_symbol_two_missing OBSERVED guard=RAISE type=ClosureError msg="symbol edge from 'foo' is missing row 'bar'"
+PROBE orig_dim_two_missing OBSERVED guard=RAISE type=ClosureError msg="dimension edge from 'mid' is missing exact key 'leaf'"
+PROBE orig_mixed_two_missing OBSERVED guard=RAISE type=ClosureError msg="dimension edge from 'foo' is missing exact key 'dim_foo'"
+--- onelevel ---
+PROBE onelevel_symbol_two_missing OBSERVED guard=PASS closure=['foo', 'kept'] ...
+PROBE onelevel_dim_two_missing OBSERVED guard=PASS closure=['kept', 'mid'] ...
+PROBE onelevel_mixed_two_missing OBSERVED guard=PASS closure=['foo', 'kept'] ...
+```
+
+Deleting the two `pending.append` lines ships green. That is (c): a broken implementation passes its tests.
+
+The other three required ablations **are** decisive (not findings):
+
+| Ablation | Copy | Test that moved | Literal failure |
+|---|---|---|---|
+| first-wins | `/tmp/ledger_fold_review/ablate_first_wins/` | `last_wins` | `AssertionError` — OBSERVED `value: 1` (want 3) |
+| bare key satisfies prefixed | `/tmp/ledger_fold_review/ablate_bare_for_prefixed/` | `predecessor_trap` | `KeyError: 's11c_c1_face_response'` |
+| smoke-test records nothing | `/tmp/ledger_fold_review/ablate_smoke_silent/` | `bidirectional_smoke` | `ManifestError: declared-but-unused key(s): declared, other` |
+
+---
+
+## Must-fix 2 — F9c symbol edge silently binds the bare predecessor when payloads are not `Symbol`
+
+`_symbol_rows` (`ledger_fold.py:169–174`) indexes a write-key **only if `value` is `isinstance(..., sp.Symbol)`**. Candidate assembly (`:210–213`) is then “that index ∪ exact bare key”. An F9c pair of *computed* rows (`face_response` vs `s11c_c1_face_response`, or any re-derived expression) never enters the index. The symbol name hits the bare key alone, so the guard **does not raise** and **does not name** the prefixed producer.
+
+That is the predecessor trap on a **closure edge**. The committed test only covers it at **roots** (`IMPORT_KEYS` exact-key) and only the F9c case where both payloads *are* `Symbol('a1')`.
+
+**Both producers present, expression payloads — silent pick of `a1`:**  
+script `/tmp/ledger_fold_review/probes/probe_f9c.py`  
+stdout `/tmp/ledger_fold_review/probes/probe_f9c_stdout.txt`
+
+```
+PROBE expression_payloads_bare_and_prefixed OPERANDS {..., 'payloads': 'Integer 99 vs 100, not Symbol', 'symbol_row_index': {}}
+PROBE expression_payloads_bare_and_prefixed OBSERVED {'guard': 'PASS', 'closure': ['a1', 'kept'], 'symbol_edges': (('kept', 'a1', 'a1'),)}
+
+PROBE face_response_predecessor_via_symbol_edge OPERANDS {..., 'symbol_row_index': {}}
+PROBE face_response_predecessor_via_symbol_edge OBSERVED {'guard': 'PASS', 'closure': ['face_response', 'kept'], 'symbol_edges': (('kept', 'face_response', 'face_response'),)}
+```
+
+Same hole from the under-export suite (`/tmp/ledger_fold_review/probes/probe_under_export.py`):
+
+```
+CASE f9c_expression_payloads_both_present OBSERVED guard=PASS closure=['a1', 'kept'] symbol_edges=(('kept', 'a1', 'a1'),)
+CASE f9c_expression_payloads_both_present HOLE=True
+```
+
+Specified Symbol-payload collision **does** raise; no-collision **is** a no-op (same stdout):
+
+```
+PROBE specified_collision_both_Symbol_payloads OBSERVED {'guard': 'RAISE', 'type': 'AmbiguousSymbolError', 'msg': "ambiguous symbol 'a1' from 'kept'; competing write-keys: a1, s11_a1"}
+PROBE no_collision_bare_only OBSERVED {'guard': 'PASS', 'closure': ['a1', 'kept'], ...}
+PROBE two_prefixed_Symbol_payloads_no_bare OBSERVED {'guard': 'RAISE', ..., 'msg': "ambiguous symbol 'a1' from 'kept'; competing write-keys: s11_a1, s11c_a1"}
+```
+
+The collision shape the module fails to detect is: **two F9c write-keys present, neither payload is a `Symbol`**. D3 requires every *edge* resolve to the intended F9 write-key and raise-and-name when the srepr cannot disambiguate. Here it silently picks the predecessor. That is (d), and it is also (a) for a consumer whose `value` carries `Symbol('face_response')` / `Symbol('a1')` while meaning the prefixed object.
+
+---
+
+## Nits (measured, not load-bearing for this ledger’s bind mechanism)
+
+**`_free_symbol_names` (`:146–161`) only takes `sp.Symbol` atoms of `.free_symbols`.** Nested `ImmutableDenseMatrix` / `Tuple` / `Eq` / Python dict-of-matrices **are** surfaced. Python `str`, sympy `Str`, `Function('u1')` names, and `MatrixSymbol` are not.
+
+Script `/tmp/ledger_fold_review/probes/probe_free_symbols.py` + `/tmp/ledger_fold_review/probes/probe_under_export.py`:
+
+```
+PROBE immutable_matrix OBSERVED names=['bar', 'foo']
+PROBE sympy_tuple_eq OBSERVED names=['bar', 'foo']
+PROBE equality OBSERVED names=['foo']
+PROBE python_str OBSERVED names=[]
+PROBE sympy_Str OBSERVED names=[]
+PROBE function_u1 OBSERVED names=['t']          # not 'u1'
+PROBE matrix_symbol OBSERVED names=[]           # M and n both dropped
+```
+
+```
+CASE nested_matrix_tuple_relational_MISSING OBSERVED guard=RAISE ... missing row 'bar'
+CASE relational_Eq_MISSING OBSERVED guard=RAISE ... missing row 'foo'
+CASE python_string_payload_MISSING OBSERVED guard=PASS closure=['kept'] HOLE=True
+CASE function_name_u1_MISSING_row OBSERVED guard=PASS closure=['kept', 't'] HOLE=True
+CASE matrix_symbol_MISSING OBSERVED guard=PASS closure=['kept'] HOLE=True
+```
+
+Real `*_exports.py` bind edges are `Symbol` knobs plus the `dimension_key` field (`Str` is a label; there is no `u1` row). Not a reachable under-export on this schema; still a hole if a later row binds through `Str` / `Function` / `MatrixSymbol`.
+
+**Smoke-test proxy** (`_AccessRecordingLedger`, `:250–267`). Script `/tmp/ledger_fold_review/probes/probe_proxy.py`:
+
+| Operation | Recorded? |
+|---|---|
+| `proxy[k]`, `proxy.get(k)`, `keys` then `proxy[k]`, `.items()`, `.values()` | yes |
+| `'k' in proxy`, `list(proxy)`, `list(proxy.keys())` (no getitem) | no — and they do not return the row |
+| `proxy._fold[k]` | **no**, value returned (`evaded: True`) |
+| `build_fn` closing over the original fold | **PASS** while reading `secret` |
+
+```
+PROBE cached_reference_undeclared_secret OBSERVED {'guard': 'PASS', 'lookups': ['declared'], 'result': {..., 'value': 3, ...}}
+PROBE internal_fold_attr OBSERVED {'lookups': [], 'value': 3, 'evaded': True}
+PROBE get_undeclared_vs_manifest_declared OBSERVED {'guard': 'RAISE', ... undeclared lookup(s): secret ...}
+```
+
+`.get` / `in` / `keys`-then-index do not defeat a consumer that only uses the mapping protocol. A captured fold reference or `._fold` does. The smoke test cannot see that; it is only as strong as `build_fn` using the proxy argument.
+
+---
+
+## Probes that found nothing (with the stdout that shows it)
+
+**`load_model` mis-merge.** Script `/tmp/ledger_fold_review/probes/probe_load_model.py`, stdout `/tmp/ledger_fold_review/probes/probe_load_model_stdout.txt`. Chronological last-wins, F9b audit, two-delta collision, and no F9 re-prefix all matched the contract. Out-of-order deltas last-win in the *given* order (caller chronology, not a fold bug).
+
+```
+PROBE chronological_last_wins OBSERVED {'shared_value': 5, 'shared_step': 'D2', ..., 'overwrites': [('shared', 'BASE', 'D1'), ('shared', 'D1', 'D2'), ('d1_only', 'D1', 'D2')], ...}
+PROBE f9b_overwrite_audit OBSERVED {..., 'audit_equals_expected': True}
+PROBE no_f9_reapply OBSERVED {'x_present': True, 's11c_c1_x_present': True, 'x_value': 10, 's11c_c1_x_value': 11, 'extra_keys': [], 'x_not_overwritten': True}
+PROBE key_in_two_deltas_not_in_base OBSERVED {'fresh_value': 2, 'fresh_step': 'DB', 'overwrites': [('fresh', 'DA', 'DB')]}
+```
+
+**Two-deep dimension/symbol closure in the implementation** — caught (must-fix 1 is the *tests*, not the walker). Nested Matrix/Tuple/relational Symbol atoms — caught.
+
+---
+
+**Verdict:** must-fix holes — recursive-closure tests are tautological, and an F9c symbol edge to an expression-valued predecessor is a silent mis-route the guard and its F9c test both miss.

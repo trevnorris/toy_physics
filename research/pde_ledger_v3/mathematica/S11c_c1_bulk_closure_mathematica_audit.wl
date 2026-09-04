@@ -539,10 +539,47 @@ substrateByAnchoringAndFace = Association@Flatten@Table[
   {anchoring, anchorings}, {face, faces},
   {density, densityRepresentatives}];
 
-operatorCompositionFromDerivation[anchoring_] := Module[
-  {source, nZero, gZero, multiplication, dtnVariation,
-   inverseVariation, flatOperator, firstOperator},
+operatorCompositionRecordFromDerivation[anchoring_,
+    rightLegMomentum_:momentumInput] := Module[
+  {source, nZeroOutput, nZeroInput, gZeroOutput, gZeroInput,
+   multiplication, dtnVariation, inverseVariation, flatOperator,
+   firstOperator, composition},
   source = sourceForCase[anchoring, unitSlopeWeights];
+  nZeroOutput = FourierMultiplier[
+    1/(I qOut[omega, momentumOutput])];
+  nZeroInput = FourierMultiplier[
+    1/(I qOut[omega, rightLegMomentum])];
+  gZeroOutput = FourierMultiplier[
+    I qOut[omega, momentumOutput]];
+  gZeroInput = FourierMultiplier[
+    I qOut[omega, rightLegMomentum]];
+  multiplication = MultiplicationOperator[
+    (WBg @@ anchorArguments[anchoring] - W0)/2,
+    FourierKernelData[source["HEIGHT_FOURIER"], momentumTransfer]];
+  dtnVariation = OperatorSum[
+    -OperatorComposition[gZeroOutput, multiplication, gZeroInput],
+    -DivergenceOperator[multiplication, GradientOperator],
+    -ScalarMultiplier[kappa^2] multiplication];
+  inverseVariation = -OperatorComposition[
+    nZeroOutput, dtnVariation, nZeroInput];
+  flatOperator = FourierMultiplier[flatSymbolC1];
+  firstOperator = OperatorComposition[
+    ScalarMultiplier[I rhoM omega], inverseVariation];
+  composition = OperatorSum[flatOperator, firstOperator];
+  <|"COMPOSITION" -> composition,
+    "FIRST_SHAPE_COMPOSITION" -> firstOperator,
+    "PROFILE_SOURCE" -> source|>
+];
+
+operatorCompositionFromDerivation[anchoring_] :=
+  operatorCompositionRecordFromDerivation[anchoring]["COMPOSITION"];
+
+(* The Fredholm condition is a formal one-variable function-space
+   operator.  Its Fourier momentum is a dummy coordinate, rather than
+   either external kernel leg. *)
+fredholmFunctionSpaceOperator[anchoring_] := Module[
+  {nZero, gZero, multiplication, dtnVariation,
+   inverseVariation, flatOperator, firstOperator},
   nZero = FourierMultiplier[1/(I qOut[omega, momentumOutput])];
   gZero = FourierMultiplier[I qOut[omega, momentumOutput]];
   multiplication = MultiplicationOperator[
@@ -557,6 +594,36 @@ operatorCompositionFromDerivation[anchoring_] := Module[
   firstOperator = OperatorComposition[
     ScalarMultiplier[I rhoM omega], inverseVariation];
   OperatorSum[flatOperator, firstOperator]
+];
+
+operatorKernelExpansionRules = {
+  HoldPattern[DivergenceOperator[
+    MultiplicationOperator[_, FourierKernelData[profileKernel_, _]],
+    GradientOperator]] :>
+      -(momentumOutput.momentumInput) profileKernel,
+  HoldPattern[OperatorSum[terms__]] :> Plus[terms],
+  HoldPattern[OperatorComposition[factors__]] :> Times[factors],
+  HoldPattern[FourierMultiplier[symbol_]] :> symbol,
+  HoldPattern[MultiplicationOperator[_,
+    FourierKernelData[profileKernel_, _]]] :> profileKernel,
+  HoldPattern[ScalarMultiplier[scalar_]] :> scalar};
+operatorKernelExpansion[composition_] := FixedPoint[
+  ReplaceAll[#, operatorKernelExpansionRules] &, composition];
+
+compositionOnShellRules = {
+  kappa^2 -> qInputLive^2 + momentumInput.momentumInput,
+  sigmaW -> etaBg W0/LW};
+compositionKernelOnShell[composition_] := Together[
+  operatorKernelExpansion[composition] /. compositionOnShellRules];
+
+computedContainmentProbe[expression_, target_] := Module[{count},
+  count = Count[HoldComplete[expression], HoldPattern[target],
+    {0, Infinity}];
+  <|"MATCH_COUNT" -> count,
+    "STATUS_TOKEN" -> If[count > 0, "PROVED_TRUE", "PROVED_FALSE"],
+    "TEST_OBJECT" -> Inactive[Greater][count, 0],
+    "SEARCH_OPERAND" -> HoldComplete[expression],
+    "TARGET_OPERAND" -> HoldComplete[target]|>
 ];
 
 (* ---------------------------------------------------------------------- *)
@@ -689,7 +756,8 @@ recomputeBranchKernel[anchoring_, corruption_] := Module[
 flatFaceResponseSolve[zSymbol_, rhoBackground_] := Module[
   {pressureUnknown, fluxUnknown, faceVelocityDrive, chemicalDrive,
    bulkRelation, fluxRelation, solution, pressureSolution,
-   fluxSolution, affinitySolution, tractionScalarSolution},
+   fluxSolution, affinitySolution, tractionScalarSolution,
+   sourceEquations},
   faceVelocityDrive = epsilonShape faceVelocityInput;
   chemicalDrive = epsilonShape muTheta/rhoBackground;
   bulkRelation = pressureUnknown == zSymbol
@@ -704,8 +772,12 @@ flatFaceResponseSolve[zSymbol_, rhoBackground_] := Module[
   affinitySolution = Together[chemicalDrive - pressureSolution/rhoM];
   tractionScalarSolution = Together[-(pressureSolution +
     lambdaX affinitySolution)];
+  sourceEquations = ({bulkRelation, fluxRelation} /. {
+      pressureUnknown -> FacePressureUnknown[FlatShapeOrder],
+      fluxUnknown -> RelativeFluxUnknown[FlatShapeOrder]}) /.
+    Equal -> Inactive[Equal];
   <|
-    "SOURCE_EQUATIONS" -> HoldForm[{bulkRelation, fluxRelation}],
+    "SOURCE_EQUATIONS" -> sourceEquations,
     "PRESSURE" -> pressureSolution,
     "RELATIVE_FLUX" -> fluxSolution,
     "AFFINITY" -> affinitySolution,
@@ -716,14 +788,15 @@ flatFaceResponseSolve[zSymbol_, rhoBackground_] := Module[
 ];
 
 curvedFaceResponseKernelSolve[zOutput_, zInput_, zFirst_,
-    rhoBackground_, anchoring_, face_, memoryKernels_:Automatic] := Module[
+    rhoBackground_, anchoring_, face_, memoryKernels_:Automatic,
+    tractionOrientation_:-1] := Module[
   {pressureZero, fluxZero, pressureOne, fluxOne,
    faceVelocityDrive, chemicalDrive, flatBulk, flatClosure,
    curvedBulk, curvedClosure, solution, pZero, jZero, pOne, jOne,
    affinityZero, affinityOne, tractionScalarZero,
    tractionScalarOne, normalZero, normalOne, tractionVectorOne,
    source, slope, rawNormal, normalDerivative, lambdaASolve,
-   lambdaVSolve, lambdaXSolve},
+   lambdaVSolve, lambdaXSolve, sourceEquations},
   {lambdaASolve, lambdaVSolve, lambdaXSolve} = If[
     memoryKernels === Automatic, {lambdaA, lambdaV, lambdaX},
     memoryKernels];
@@ -744,8 +817,10 @@ curvedFaceResponseKernelSolve[zOutput_, zInput_, zFirst_,
     {pressureZero, fluxZero, pressureOne, fluxOne} /. solution];
   affinityZero = Together[chemicalDrive - pZero/rhoM];
   affinityOne = Together[-pOne/rhoM];
-  tractionScalarZero = Together[-(pZero + lambdaXSolve affinityZero)];
-  tractionScalarOne = Together[-(pOne + lambdaXSolve affinityOne)];
+  tractionScalarZero = Together[tractionOrientation
+    (pZero + lambdaXSolve affinityZero)];
+  tractionScalarOne = Together[tractionOrientation
+    (pOne + lambdaXSolve affinityOne)];
   source = sourceForCase[anchoring, unitSlopeWeights];
   slope = source["SLOPE_FOURIER"];
   rawNormal = Join[-normalScale slope, {face}]/
@@ -755,9 +830,15 @@ curvedFaceResponseKernelSolve[zOutput_, zInput_, zFirst_,
   normalOne = normalDerivative;
   tractionVectorOne = Simplify[
     tractionScalarOne normalZero + tractionScalarZero normalOne];
+  sourceEquations = ({flatBulk, flatClosure, curvedBulk,
+      curvedClosure} /. {
+      pressureZero -> FacePressureUnknown[FlatShapeOrder],
+      fluxZero -> RelativeFluxUnknown[FlatShapeOrder],
+      pressureOne -> FacePressureUnknown[FirstShapeOrder],
+      fluxOne -> RelativeFluxUnknown[FirstShapeOrder]}) /.
+    Equal -> Inactive[Equal];
   <|
-    "SOURCE_EQUATIONS" -> HoldForm[
-      {flatBulk, flatClosure, curvedBulk, curvedClosure}],
+    "SOURCE_EQUATIONS" -> sourceEquations,
     "PRESSURE_FLAT" -> pZero,
     "RELATIVE_FLUX_FLAT" -> jZero,
     "TRACTION_FLAT_VECTOR" -> tractionScalarZero normalZero,
@@ -770,7 +851,7 @@ curvedFaceResponseKernelSolve[zOutput_, zInput_, zFirst_,
 
 faceResponseCase[anchoring_, face_, density_, kernel_:Automatic,
     qOutput_:qOutputLive, qInput_:qInputLive,
-    memoryKernels_:Automatic] :=
+    memoryKernels_:Automatic, tractionOrientation_:-1] :=
  Module[{zFirst, rhoBackground},
   zFirst = If[kernel === Automatic,
     directMain[anchoring]["KERNEL"], kernel];
@@ -778,7 +859,8 @@ faceResponseCase[anchoring_, face_, density_, kernel_:Automatic,
   Append[curvedFaceResponseKernelSolve[
     flatSymbolC1 /. qOutputLive -> qOutput,
     flatSymbolC1 /. qOutputLive -> qInput,
-    zFirst, rhoBackground, anchoring, face, memoryKernels],
+    zFirst, rhoBackground, anchoring, face, memoryKernels,
+    tractionOrientation],
     "DENSITY_BINDING" -> densityBinding[density, anchoring]]
 ];
 
@@ -808,7 +890,8 @@ responseCoefficients[response_Association] := AssociationMap[
 (* An independently solved flat B0c object is used only by regressions. *)
 deriveFlatS11bFaceResponse[momentum_, rhoBackground_] := Module[
   {zReference, pressureReference, fluxReference, velocityReference,
-   chemicalReference, equationsReference, solutionReference},
+   chemicalReference, equationsReference, solutionReference,
+   sourceEquationsReference},
   zReference = deriveFlatS11bImpedance[momentum];
   velocityReference = epsilonShape faceVelocityInput;
   chemicalReference = epsilonShape muTheta/rhoBackground;
@@ -820,13 +903,17 @@ deriveFlatS11bFaceResponse[momentum_, rhoBackground_] := Module[
       lambdaV velocityReference};
   solutionReference = First[Solve[equationsReference,
     {pressureReference, fluxReference}]];
+  sourceEquationsReference = (equationsReference /. {
+      pressureReference -> FacePressureUnknown[FlatReferenceOrder],
+      fluxReference -> RelativeFluxUnknown[FlatReferenceOrder]}) /.
+    Equal -> Inactive[Equal];
   <|
     "PRESSURE" -> Together[pressureReference /. solutionReference],
     "RELATIVE_FLUX" -> Together[fluxReference /. solutionReference],
     "TRACTION_SCALAR" -> Together[-((pressureReference /.
       solutionReference) + lambdaX (chemicalReference -
       (pressureReference /. solutionReference)/rhoM))],
-    "SOURCE_EQUATIONS" -> HoldForm[equationsReference]|>
+    "SOURCE_EQUATIONS" -> sourceEquationsReference|>
 ];
 
 (* ---------------------------------------------------------------------- *)
@@ -851,39 +938,50 @@ inconsistentStatus = If[inconsistentComputed, "PROVED_TRUE",
   "PROVED_FALSE"];
 
 realAdmissibilityForBranch[branchRule_] := Module[
-  {branchEquations, realTest, reduced, status},
+  {branchEquations, realVariables, realPredicate, realTest,
+   resolved, status},
   branchEquations = Thread[Equal @@@ (List @@@ branchRule)];
-  realTest = Inactive[Reduce][
-    And @@ Join[branchEquations,
-      {Element[{LambdaA0, tauA, omega, rhoM, cS0}, Reals],
-       tauA >= 0}],
-    {LambdaA0, tauA, omega, rhoM, cS0}, Reals];
-  reduced = Quiet[Reduce[
-    And @@ Join[branchEquations,
-      {Element[{LambdaA0, tauA, omega, rhoM, cS0}, Reals],
-       tauA >= 0}],
-    {LambdaA0, tauA, omega, rhoM, cS0}, Reals]];
+  realVariables = {LambdaA0, tauA, omega, rhoM, cS0};
+  realPredicate = And @@ Join[branchEquations, {tauA >= 0}];
+  realTest = Inactive[Resolve][
+    Inactive[Exists][realVariables, realPredicate], Reals];
+  resolved = Quiet[Resolve[
+    Exists[realVariables, realPredicate], Reals]];
   status = Which[
-    TrueQ[reduced === False], "EXCLUDED",
-    TrueQ[reduced === True], "ADMISSIBLE",
-    Head[reduced] =!= Reduce, "ADMISSIBLE",
+    TrueQ[resolved === True], "ADMISSIBLE",
+    TrueQ[resolved === False], "EXCLUDED",
     True, "UNDECIDED"];
   <|"BRANCH" -> branchRule, "STATUS_TOKEN" -> status,
     "TEST_OBJECT" -> realTest,
     "OPERANDS" -> <|"BRANCH_EQUATIONS" ->
       (relationalObject[#[[1]], #[[2]]] & /@ branchEquations),
-      "REAL_PREMISES" -> HoldForm[
-        {LambdaA0, tauA, omega, rhoM, cS0} ∈ Reals && tauA >= 0]|>,
+      "REAL_VARIABLES" -> realVariables,
+      "REAL_PREDICATE" -> realPredicate,
+      "RESOLUTION_OPERAND" -> realTest|>,
     "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}},
     "DIMENSION_L_T_M" -> {0, 0, 0}|>
 ];
 
+emptyLocusRealVariables = {LambdaA0, tauA, omega, rhoM, cS0};
+emptyLocusRealPredicate = flatDegeneracyEquationActive && tauA >= 0;
+emptyLocusRealResult = Quiet[Resolve[
+  Exists[emptyLocusRealVariables, emptyLocusRealPredicate], Reals]];
+emptyLocusRealStatus = Which[
+  TrueQ[emptyLocusRealResult === True], "ADMISSIBLE",
+  TrueQ[emptyLocusRealResult === False], "EXCLUDED",
+  True, "UNDECIDED"];
+
 realAdmissibilityPayload = If[flatDegeneracySolutions === {},
   {<|"BRANCH" -> EmptySolutionSet,
-    "STATUS_TOKEN" -> "EXCLUDED",
-    "TEST_OBJECT" -> Inactive[Reduce][flatDegeneracyEquationActive,
-      LambdaA0, Reals],
-    "OPERANDS" -> {flatDegeneracyEquation},
+    "STATUS_TOKEN" -> emptyLocusRealStatus,
+    "TEST_OBJECT" -> Inactive[Resolve][Inactive[Exists][
+      emptyLocusRealVariables, emptyLocusRealPredicate], Reals],
+    "OPERANDS" -> <|
+      "EQUATIONS" -> {flatDegeneracyEquation},
+      "REAL_VARIABLES" -> emptyLocusRealVariables,
+      "REAL_PREDICATE" -> emptyLocusRealPredicate,
+      "RESOLUTION_OPERAND" -> Inactive[Resolve][Inactive[Exists][
+        emptyLocusRealVariables, emptyLocusRealPredicate], Reals]|>,
     "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}},
     "DIMENSION_L_T_M" -> {0, 0, 0}|>},
   realAdmissibilityForBranch /@ flatDegeneracySolutions];
@@ -991,11 +1089,76 @@ memoryLimitPackage[anchoring_, face_, density_, outputRegime_,
       outputRegime, inputRegime, timeSymbol, Infinity]|>,
   {timeSymbol, {tauA, tauV, tauX}}];
 
-deriveEnergyOperands[anchoring_, face_, tractionOrientation_:-1] := Module[
-  {measure, normal, faceVelocityVector, bulkAmplitude,
-   boundaryEquation, amplitudeRule, pressureAtFace,
-   tractionVector, facePairing, farFieldPressure,
-   farFieldVelocity, outgoingFlux, comparisonBulkOperand},
+outgoingHalfSpaceEnergyConstruction[anchoring_, face_,
+    branchOrientation_:1] := Module[
+  {source, heightHat, slopeHat, qOutput, qInput, boundaryDrive,
+   amplitudeZero, amplitudeOne, flatBoundaryEquation, flatRule,
+   boundaryShift, conormalTilt, firstBoundaryEquation, firstRule,
+   phaseZero, phaseOne, potentialZero, potentialOne,
+   pressureZero, pressureOne, velocityZero, velocityOne,
+   poyntingDensity, measure, surfaceFlux, farFieldFlux,
+   sourceEquations},
+  source = sourceForCase[anchoring, unitSlopeWeights];
+  heightHat = source["HEIGHT_FOURIER"];
+  slopeHat = source["SLOPE_FOURIER"];
+  qOutput = branchOrientation
+    qRegimeValue["PROPAGATING", momentumOutput];
+  qInput = branchOrientation
+    qRegimeValue["PROPAGATING", momentumInput];
+  boundaryDrive = epsilonShape faceVelocityInput;
+  flatBoundaryEquation = I qInput amplitudeZero == boundaryDrive;
+  flatRule = First[Solve[flatBoundaryEquation, amplitudeZero]];
+  boundaryShift = -qInput^2 heightHat amplitudeZero;
+  conormalTilt = -slopeHat.(I momentumInput) amplitudeZero;
+  firstBoundaryEquation = I qOutput amplitudeOne + boundaryShift +
+    conormalTilt == 0;
+  firstRule = First[Solve[
+    firstBoundaryEquation /. flatRule, amplitudeOne]];
+  phaseZero = Exp[I (momentumInput.spatialCoordinates +
+    qInput outwardDistance)];
+  phaseOne = Exp[I (momentumOutput.spatialCoordinates +
+    qOutput outwardDistance)];
+  potentialZero = (amplitudeZero /. flatRule) phaseZero;
+  potentialOne = (amplitudeOne /. flatRule /. firstRule) phaseOne;
+  pressureZero = I rhoM omega potentialZero;
+  pressureOne = I rhoM omega potentialOne;
+  velocityZero = D[potentialZero, outwardDistance];
+  velocityOne = D[potentialOne, outwardDistance];
+  poyntingDensity = Re[
+    pressureZero Conjugate[velocityZero] +
+    pressureZero Conjugate[velocityOne] +
+    pressureOne Conjugate[velocityZero]]/2;
+  measure = backgroundMeasureFirstShape[anchoring, face];
+  surfaceFlux = Inactive[Integrate][measure poyntingDensity,
+    {xOne, -Infinity, Infinity}, {xTwo, -Infinity, Infinity},
+    {xThree, -Infinity, Infinity}];
+  farFieldFlux = Inactive[Limit][surfaceFlux,
+    outwardDistance -> Infinity];
+  sourceEquations = ({flatBoundaryEquation,
+      firstBoundaryEquation} /. {
+      amplitudeZero -> BulkOutgoingAmplitude[FlatShapeOrder],
+      amplitudeOne -> BulkOutgoingAmplitude[FirstShapeOrder]}) /.
+    Equal -> Inactive[Equal];
+  <|"OUTGOING_POTENTIAL_FLAT" -> potentialZero,
+    "OUTGOING_POTENTIAL_FIRST_SHAPE" -> potentialOne,
+    "PRESSURE_FROM_PHI_FLAT" -> pressureZero,
+    "PRESSURE_FROM_PHI_FIRST_SHAPE" -> pressureOne,
+    "OUTWARD_VELOCITY_FROM_PHI_FLAT" -> velocityZero,
+    "OUTWARD_VELOCITY_FROM_PHI_FIRST_SHAPE" -> velocityOne,
+    "POYNTING_DENSITY_THROUGH_FIRST_SHAPE" -> poyntingDensity,
+    "CONTROL_SURFACE_FLUX" -> surfaceFlux,
+    "OUTGOING_FARFIELD_POYNTING_FLUX" -> farFieldFlux,
+    "SOURCE_EQUATIONS" -> sourceEquations,
+    "PROFILE_SOURCE" -> source|>
+];
+
+deriveEnergyOperands[anchoring_, face_, tractionOrientation_:-1,
+    bulkBranchOrientation_:1] := Module[
+  {measure, normal, faceVelocityVector, responseKey, response,
+   tractionFieldNames, responseTractionSource, energySliceRules,
+   tractionVector, facePowerDensity, facePairing,
+   tractionReferenceProbe, bulkConstruction, outgoingFlux,
+   comparisonBulkOperand},
   measure = backgroundMeasureFirstShape[anchoring, face];
   normal = substrateByAnchoringAndFace[
     anchoring <> "|FACE_" <> ToString[face] <>
@@ -1004,27 +1167,51 @@ deriveEnergyOperands[anchoring_, face_, tractionOrientation_:-1] := Module[
   normal = Simplify[(normal /. sigmaW -> geometryScale sigmaW) /.
       geometryScale -> 0] + shapeCoefficient[
     normal /. sigmaW -> geometryScale sigmaW, geometryScale];
-  faceVelocityVector = energyVelocity normal;
-  boundaryEquation = I qOut[omega, momentumOutput] bulkAmplitude ==
-    energyVelocity;
-  amplitudeRule = First[Solve[boundaryEquation, bulkAmplitude]];
-  pressureAtFace = I rhoM omega bulkAmplitude /. amplitudeRule;
-  tractionVector = tractionOrientation pressureAtFace normal;
-  facePairing = Simplify[measure Re[
-    tractionVector.Conjugate[faceVelocityVector]]/2];
-  farFieldPressure = I rhoM omega bulkAmplitude farFieldPhase /.
-    amplitudeRule;
-  farFieldVelocity = I qOut[omega, momentumOutput]
-    bulkAmplitude farFieldPhase /. amplitudeRule;
-  outgoingFlux = Simplify[measure Re[
-    farFieldPressure Conjugate[farFieldVelocity]]/2];
+  faceVelocityVector = epsilonShape faceVelocityInput normal;
+  responseKey = anchoring <> "|FACE_" <> ToString[face] <>
+    "|RHOBR_CONSTANT";
+  response = If[tractionOrientation === -1,
+    mainFaceResponses[responseKey],
+    faceResponseCase[anchoring, face, "RHOBR_CONSTANT", Automatic,
+      qOutputLive, qInputLive, Automatic, tractionOrientation]];
+  tractionFieldNames = Select[Keys[response],
+    StringStartsQ[#, "TRACTION_"] &];
+  responseTractionSource = Total[Lookup[response,
+    tractionFieldNames]];
+  energySliceRules = {
+    LambdaA0 -> 0, LambdaV0 -> 0, LambdaX0 -> 0,
+    qOutputLive -> qRegimeValue["PROPAGATING", momentumOutput],
+    qInputLive -> qRegimeValue["PROPAGATING", momentumInput]};
+  tractionVector = Together[
+    responseTractionSource /. energySliceRules];
+  facePowerDensity = measure Re[
+    tractionVector.Conjugate[faceVelocityVector]]/2;
+  facePairing = Inactive[Integrate][facePowerDensity,
+    {xOne, -Infinity, Infinity}, {xTwo, -Infinity, Infinity},
+    {xThree, -Infinity, Infinity}];
+  tractionReferenceProbe = <|
+    "RESPONSE_KEY" -> responseKey,
+    "REFERENCED_RESPONSE_FIELDS" -> tractionFieldNames,
+    "REFERENCE_COUNT" -> Length[tractionFieldNames],
+    "STATUS_TOKEN" -> If[Length[tractionFieldNames] > 0,
+      "PROVED_TRUE", "PROVED_FALSE"],
+    "TEST_OBJECT" -> Inactive[Greater][
+      Length[tractionFieldNames], 0],
+    "RESPONSE_TRACTION_OPERAND" -> responseTractionSource|>;
+  bulkConstruction = outgoingHalfSpaceEnergyConstruction[
+    anchoring, face, bulkBranchOrientation];
+  outgoingFlux = bulkConstruction[
+    "OUTGOING_FARFIELD_POYNTING_FLUX"];
   comparisonBulkOperand = -outgoingFlux;
   <|"FACE_TRACTION_PAIRING" -> facePairing,
+    "FACE_TRACTION_POWER_DENSITY" -> facePowerDensity,
+    "FACE_RESPONSE_TRACTION_SOURCE" -> responseTractionSource,
+    "FACE_HAS_TS_FROM_RESPONSE" -> tractionReferenceProbe,
     "OUTGOING_FARFIELD_POYNTING_FLUX" -> outgoingFlux,
+    "OUTGOING_BULK_CONSTRUCTION" -> bulkConstruction,
     "COMPARISON_ORIENTED_BULK_OPERAND" -> comparisonBulkOperand,
     "RESIDUAL_A_MINUS_B" ->
-      Simplify[facePairing - comparisonBulkOperand],
-    "SOURCE_BOUNDARY_EQUATION" -> HoldForm[boundaryEquation]|>
+      facePairing - comparisonBulkOperand|>
 ];
 
 energyCases = Association@Flatten@Table[
@@ -1033,7 +1220,11 @@ energyCases = Association@Flatten@Table[
   {anchoring, anchorings}, {face, faces}];
 energySignCorruptedCases = Association@Flatten@Table[
   (anchoring <> "|FACE_" <> ToString[face]) ->
-    deriveEnergyOperands[anchoring, face, 1],
+    deriveEnergyOperands[anchoring, face, 1, 1],
+  {anchoring, anchorings}, {face, faces}];
+energyBulkBranchCorruptedCases = Association@Flatten@Table[
+  (anchoring <> "|FACE_" <> ToString[face]) ->
+    deriveEnergyOperands[anchoring, face, -1, -1],
   {anchoring, anchorings}, {face, faces}];
 
 (* ---------------------------------------------------------------------- *)
@@ -1125,17 +1316,45 @@ mapDifference[left_, right_] := Together[left - right];
 (* Primary DtN emissions.                                                *)
 (* ---------------------------------------------------------------------- *)
 
-dtnOperatorPayload = Association@Table[anchoring -> <|
-    "COMPOSITION" -> objectRecord[
-      operatorCompositionFromDerivation[anchoring], dimensionImpedance],
-    "TWO_DISCONNECTED_FACE_BLOCK" -> DiagonalMatrix[
-      {operatorCompositionFromDerivation[anchoring],
-       operatorCompositionFromDerivation[anchoring]}],
-    "KERNEL_EQUIVALENCE_RESIDUAL" -> Together[
-      directMain[anchoring]["KERNEL"] -
-        layerMain[anchoring]["KERNEL"]],
-    "PROFILE_SOURCE" -> sourceForCase[anchoring, unitSlopeWeights]
-    |>, {anchoring, anchorings}];
+dtnOperatorPayload = Association@Table[anchoring -> Module[
+    {record, composition, firstComposition, compositionKernel,
+     emittedKernelOnShell, refrozenRecord, refrozenComposition,
+     refrozenKernel},
+    record = operatorCompositionRecordFromDerivation[anchoring];
+    composition = record["COMPOSITION"];
+    firstComposition = record["FIRST_SHAPE_COMPOSITION"];
+    compositionKernel = compositionKernelOnShell[firstComposition];
+    emittedKernelOnShell = Together[
+      directMain[anchoring]["KERNEL"] /. compositionOnShellRules];
+    refrozenRecord = operatorCompositionRecordFromDerivation[
+      anchoring, momentumOutput];
+    refrozenComposition = refrozenRecord[
+      "FIRST_SHAPE_COMPOSITION"];
+    refrozenKernel = compositionKernelOnShell[refrozenComposition];
+    <|
+      "COMPOSITION" -> objectRecord[composition, dimensionImpedance],
+      "TWO_DISCONNECTED_FACE_BLOCK" -> DiagonalMatrix[
+        {composition, composition}],
+      "COMPOSITION_HAS_Q_INPUT" -> computedContainmentProbe[
+        composition, qOut[omega, momentumInput]],
+      "COMPOSITION_HAS_Q_OUTPUT" -> computedContainmentProbe[
+        composition, qOut[omega, momentumOutput]],
+      "COMPOSITION_KERNEL_OPERAND_A" -> compositionKernel,
+      "DTN_KERNEL_OPERAND_B" -> emittedKernelOnShell,
+      "COMPOSITION_KERNEL_RESIDUAL_A_MINUS_B" -> Together[
+        compositionKernel - emittedKernelOnShell],
+      "RIGHTMOST_REFROZEN_COMPOSITION_OPERAND" ->
+        refrozenComposition,
+      "RIGHTMOST_REFROZEN_KERNEL_OPERAND_A" -> refrozenKernel,
+      "RIGHTMOST_REFROZEN_DTN_KERNEL_OPERAND_B" ->
+        emittedKernelOnShell,
+      "RIGHTMOST_REFROZEN_RESIDUAL_A_MINUS_B" -> Together[
+        refrozenKernel - emittedKernelOnShell],
+      "KERNEL_EQUIVALENCE_RESIDUAL" -> Together[
+        directMain[anchoring]["KERNEL"] -
+          layerMain[anchoring]["KERNEL"]],
+      "PROFILE_SOURCE" -> record["PROFILE_SOURCE"]|>
+    ], {anchoring, anchorings}];
 emitShared["DTN_OPERATOR", dtnOperatorPayload];
 Clear[dtnOperatorPayload];
 
@@ -1318,11 +1537,11 @@ emitShared["FACE_RESPONSE_COEFFS", Map[
 fredholmPayload = Association@Table[anchoring -> <|
   "OPERATOR" -> OperatorSum[IdentityOperator,
     OperatorComposition[ScalarMultiplier[lambdaA/rhoM^2],
-      operatorCompositionFromDerivation[anchoring]]],
+      fredholmFunctionSpaceOperator[anchoring]]],
   "NONINVERTIBILITY_RELATION" -> relationalObject[
     Inactive[Det][OperatorSum[IdentityOperator,
       OperatorComposition[ScalarMultiplier[lambdaA/rhoM^2],
-        operatorCompositionFromDerivation[anchoring]]]], 0],
+        fredholmFunctionSpaceOperator[anchoring]]]], 0],
   "FLAT_DIAGONAL_SYMBOL_RELATION" -> flatDegeneracyEquation,
   "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}},
   "DIMENSION_L_T_M" -> dimensionZero|>,
@@ -1381,32 +1600,114 @@ portCaseGrade[anchoring_, face_, density_] :=
     epsilonShape (flatSymbolC1 + directMain[anchoring]["KERNEL"])
   ];
 
+portParityCaseKey[anchoring_, density_, outputRegime_, inputRegime_,
+    parity_] := anchoring <> "|" <> density <> "|OUTPUT_" <>
+  outputRegime <> "|INPUT_" <> inputRegime <> "|PARITY_" <> parity;
+portParityTransformation = KroneckerProduct[
+  faceToParityMatrix, IdentityMatrix[2]];
+portParityCombination[anchoring_, density_, outputRegime_,
+    inputRegime_] := Module[
+  {plusCase, minusCase, plusPortMatrix, minusPortMatrix,
+   plusHermitian, minusHermitian, deltaWPortMatrix,
+   zetaCPortMatrix, deltaWHermitian, zetaCHermitian,
+   deltaWToZetaC, zetaCToDeltaW, transformedPortMatrix,
+   transformedHermitian},
+  plusCase = portCaseForAxes[anchoring, 1, density,
+    outputRegime, inputRegime];
+  minusCase = portCaseForAxes[anchoring, -1, density,
+    outputRegime, inputRegime];
+  plusPortMatrix = plusCase["PORT_MATRIX"];
+  minusPortMatrix = minusCase["PORT_MATRIX"];
+  plusHermitian = plusCase["HERMITIAN_FORM"];
+  minusHermitian = minusCase["HERMITIAN_FORM"];
+  deltaWPortMatrix = (plusPortMatrix + minusPortMatrix)/4;
+  zetaCPortMatrix = plusPortMatrix + minusPortMatrix;
+  deltaWHermitian = (plusHermitian + minusHermitian)/4;
+  zetaCHermitian = plusHermitian + minusHermitian;
+  deltaWToZetaC = (plusPortMatrix - minusPortMatrix)/2;
+  zetaCToDeltaW = deltaWToZetaC;
+  transformedPortMatrix = ArrayFlatten[{
+    {deltaWPortMatrix, deltaWToZetaC},
+    {zetaCToDeltaW, zetaCPortMatrix}}];
+  transformedHermitian = ArrayFlatten[{
+    {deltaWHermitian,
+      (deltaWToZetaC + ConjugateTranspose[zetaCToDeltaW])/2},
+    {(zetaCToDeltaW + ConjugateTranspose[deltaWToZetaC])/2,
+      zetaCHermitian}}];
+  <|"FACE_PORT_MATRICES" -> <|
+      "FACE_1" -> plusCase["PORT_MATRIX"],
+      "FACE_-1" -> minusCase["PORT_MATRIX"]|>,
+    "FACE_TO_DELTA_W_ZETA_C_TRANSFORMATION" ->
+      portParityTransformation,
+    "TRANSFORMED_PORT_MATRIX" -> transformedPortMatrix,
+    "TRANSFORMED_HERMITIAN_FORM" -> transformedHermitian,
+    "DELTA_W_PORT_MATRIX" -> deltaWPortMatrix,
+    "ZETA_C_PORT_MATRIX" -> zetaCPortMatrix,
+    "DELTA_W_HERMITIAN_FORM" -> deltaWHermitian,
+    "ZETA_C_HERMITIAN_FORM" -> zetaCHermitian,
+    "DELTA_W_TO_ZETA_C_BLOCK" -> deltaWToZetaC,
+    "ZETA_C_TO_DELTA_W_BLOCK" -> zetaCToDeltaW|>
+];
+portParityBlock[combination_Association, "DELTA_W"] := <|
+  "PORT_MATRIX" -> combination["DELTA_W_PORT_MATRIX"],
+  "HERMITIAN_FORM" -> combination["DELTA_W_HERMITIAN_FORM"],
+  "COUPLING_TO_OTHER_COMBINATION" ->
+    combination["DELTA_W_TO_ZETA_C_BLOCK"]|>;
+portParityBlock[combination_Association, "ZETA_C"] := <|
+  "PORT_MATRIX" -> combination["ZETA_C_PORT_MATRIX"],
+  "HERMITIAN_FORM" -> combination["ZETA_C_HERMITIAN_FORM"],
+  "COUPLING_TO_OTHER_COMBINATION" ->
+    combination["ZETA_C_TO_DELTA_W_BLOCK"]|>;
+
 beginAssociationEmission[sharedObject["PERMEABLE_PORT_HERMITIAN"]];
 firstPortEmission = True;
 Do[
-  portCase = portCaseForAxes[anchoring, face, density,
+  portCombination = portParityCombination[anchoring, density,
     outputRegime, inputRegime];
-  appendAssociationEmission[portCaseKey[anchoring, face, density,
-    outputRegime, inputRegime, parity], <|
-      "PORT_MATRIX" -> portCase["PORT_MATRIX"],
-      "HERMITIAN_FORM" -> portCase["HERMITIAN_FORM"],
-      "POWER_CONJUGATE_INPUT" -> portCase["INPUT_VECTOR"],
-      "POWER_CONJUGATE_OUTPUT" -> portCase["OUTPUT_VECTOR"],
+  Do[
+    portBlock = portParityBlock[portCombination, parity];
+    appendAssociationEmission[portParityCaseKey[anchoring, density,
+      outputRegime, inputRegime, parity], <|
+      "PORT_MATRIX" -> portBlock["PORT_MATRIX"],
+      "HERMITIAN_FORM" -> portBlock["HERMITIAN_FORM"],
+      "POWER_CONJUGATE_INPUT" -> If[parity === "DELTA_W",
+        {deltaWVelocityPort, deltaWMuSPort},
+        {zetaCVelocityPort, zetaCMuSPort}],
+      "POWER_CONJUGATE_OUTPUT" -> If[parity === "DELTA_W",
+        {deltaWTractionPressurePort, deltaWFluxPort},
+        {zetaCTractionPressurePort, zetaCFluxPort}],
+      "COUPLING_TO_OTHER_COMBINATION" ->
+        portBlock["COUPLING_TO_OTHER_COMBINATION"],
       "INPUT_DIMENSIONS_L_T_M" -> {dimensionVelocity, dimensionMuS},
       "OUTPUT_DIMENSIONS_L_T_M" -> {dimensionPressure, dimensionFlux},
       "POWER_DIMENSION_L_T_M" -> dimensionPressure + dimensionVelocity,
       "MULTIGRADE_EPSILON_ETA_SIGMAW" ->
-        portCaseGrade[anchoring, face, density],
+        DeleteDuplicates[Join[
+          portCaseGrade[anchoring, 1, density],
+          portCaseGrade[anchoring, -1, density]]],
       "NONDEGENERATE_SUBSPACE_TEST" ->
-        principalMinorObjects[portCase["HERMITIAN_FORM"]],
+        principalMinorObjects[portBlock["HERMITIAN_FORM"]],
       "ZEROTH_ORDER_NULLSPACE_STATUS" ->
         "NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER"|>, firstPortEmission];
-  firstPortEmission = False;
-  Clear[portCase];
+    firstPortEmission = False,
+    {parity, {"DELTA_W", "ZETA_C"}}];
+  appendAssociationEmission[portParityCaseKey[anchoring, density,
+    outputRegime, inputRegime, "COMBINATION_COMPARISON"], <|
+      "OPERAND_A_DELTA_W" ->
+        portCombination["DELTA_W_HERMITIAN_FORM"],
+      "OPERAND_B_ZETA_C" ->
+        portCombination["ZETA_C_HERMITIAN_FORM"],
+      "RESIDUAL_A_MINUS_B" -> Together[
+        portCombination["DELTA_W_HERMITIAN_FORM"] -
+          portCombination["ZETA_C_HERMITIAN_FORM"]],
+      "TEST_OBJECT" -> relationalObject[
+        portCombination["DELTA_W_HERMITIAN_FORM"],
+        portCombination["ZETA_C_HERMITIAN_FORM"]],
+      "CONSTRUCTION_OPERANDS" -> portCombination|>];
+  Clear[portCombination, portBlock];
   ClearSystemCache[],
-  {anchoring, anchorings}, {face, faces},
-  {density, densityRepresentatives}, {outputRegime, regimes},
-  {inputRegime, regimes}, {parity, {"DELTA_W", "ZETA_C"}}];
+  {anchoring, anchorings}, {density, densityRepresentatives},
+  {outputRegime, regimes}, {inputRegime, regimes}];
 endAssociationEmission[];
 
 beginAssociationEmission[
@@ -1437,9 +1738,16 @@ endAssociationEmission[];
 Clear[firstPortEmission, firstMemoryEmission, portCase];
 
 emitShared["ENERGY_FACE_TRACTION_OPERAND", Map[
-  Function[energyCase, objectRecord[
-    energyCase["FACE_TRACTION_PAIRING"],
-    dimensionPressure + dimensionVelocity]], energyCases]];
+  Function[energyCase, <|
+    "FACE_TRACTION_PAIRING" -> objectRecord[
+      energyCase["FACE_TRACTION_PAIRING"],
+      dimensionPressure + dimensionVelocity],
+    "FACE_TRACTION_POWER_DENSITY" ->
+      energyCase["FACE_TRACTION_POWER_DENSITY"],
+    "RESPONSE_TRACTION_SOURCE" ->
+      energyCase["FACE_RESPONSE_TRACTION_SOURCE"],
+    "FACE_HAS_TS_FROM_RESPONSE" ->
+      energyCase["FACE_HAS_TS_FROM_RESPONSE"]|>], energyCases]];
 
 emitShared["ENERGY_BULK_FARFIELD_FLUX_OPERAND", Map[
   Function[energyCase, <|
@@ -1449,8 +1757,8 @@ emitShared["ENERGY_BULK_FARFIELD_FLUX_OPERAND", Map[
     "COMPARISON_ORIENTED_OPERAND" -> objectRecord[
       energyCase["COMPARISON_ORIENTED_BULK_OPERAND"],
       dimensionPressure + dimensionVelocity],
-    "SOURCE_BOUNDARY_EQUATION" ->
-      energyCase["SOURCE_BOUNDARY_EQUATION"]|>], energyCases]];
+    "OUTGOING_BULK_CONSTRUCTION" ->
+      energyCase["OUTGOING_BULK_CONSTRUCTION"]|>], energyCases]];
 
 emitShared["ENERGY_RESIDUAL", Association@KeyValueMap[
   Function[{energyKey, energyCase}, energyKey -> <|
@@ -1462,14 +1770,43 @@ emitShared["ENERGY_RESIDUAL", Association@KeyValueMap[
     "TEST_OBJECT" -> relationalObject[
       energyCase["FACE_TRACTION_PAIRING"],
       energyCase["COMPARISON_ORIENTED_BULK_OPERAND"]],
-    "TRACTION_SIGN_SOURCE_CORRUPTION" -> 1,
-    "CORRUPTED_OPERAND_A" ->
-      energySignCorruptedCases[energyKey]["FACE_TRACTION_PAIRING"],
-    "UNCHANGED_OPERAND_B" ->
-      energySignCorruptedCases[energyKey][
+    "RESPONSE_TRACTION_SIGN_SOURCE_CORRUPTION" -> <|
+      "OPERAND_A" -> energySignCorruptedCases[energyKey][
+        "FACE_TRACTION_PAIRING"],
+      "OPERAND_B" -> energyCase[
         "COMPARISON_ORIENTED_BULK_OPERAND"],
-    "CORRUPTED_RESIDUAL_A_MINUS_B" ->
-      energySignCorruptedCases[energyKey]["RESIDUAL_A_MINUS_B"]|>],
+      "RESIDUAL_A_MINUS_B" ->
+        energySignCorruptedCases[energyKey]["FACE_TRACTION_PAIRING"] -
+          energyCase["COMPARISON_ORIENTED_BULK_OPERAND"],
+      "FACE_OPERAND_CHANGE" ->
+        energySignCorruptedCases[energyKey]["FACE_TRACTION_PAIRING"] -
+          energyCase["FACE_TRACTION_PAIRING"],
+      "BULK_OPERAND_CHANGE" ->
+        energySignCorruptedCases[energyKey][
+          "COMPARISON_ORIENTED_BULK_OPERAND"] -
+          energyCase["COMPARISON_ORIENTED_BULK_OPERAND"],
+      "FACE_HAS_TS_FROM_RESPONSE" ->
+        energySignCorruptedCases[energyKey][
+          "FACE_HAS_TS_FROM_RESPONSE"]|>,
+    "OUTGOING_BULK_BRANCH_SOURCE_CORRUPTION" -> <|
+      "OPERAND_A" -> energyCase["FACE_TRACTION_PAIRING"],
+      "OPERAND_B" -> energyBulkBranchCorruptedCases[energyKey][
+        "COMPARISON_ORIENTED_BULK_OPERAND"],
+      "RESIDUAL_A_MINUS_B" -> energyCase[
+        "FACE_TRACTION_PAIRING"] -
+          energyBulkBranchCorruptedCases[energyKey][
+            "COMPARISON_ORIENTED_BULK_OPERAND"],
+      "FACE_OPERAND_CHANGE" ->
+        energyBulkBranchCorruptedCases[energyKey][
+          "FACE_TRACTION_PAIRING"] -
+          energyCase["FACE_TRACTION_PAIRING"],
+      "BULK_OPERAND_CHANGE" ->
+        energyBulkBranchCorruptedCases[energyKey][
+          "COMPARISON_ORIENTED_BULK_OPERAND"] -
+          energyCase["COMPARISON_ORIENTED_BULK_OPERAND"],
+      "OUTGOING_BULK_CONSTRUCTION" ->
+        energyBulkBranchCorruptedCases[energyKey][
+          "OUTGOING_BULK_CONSTRUCTION"]|>|>],
   energyCases]];
 
 (* ---------------------------------------------------------------------- *)
@@ -1496,9 +1833,9 @@ representationHanzawaPayload = Association@Table[
         faceResponseCase[anchoring, face, density,
         layerMain[anchoring]["KERNEL"]],
       {face, faces}, {density, densityRepresentatives}],
-    "RADIATION_PRESERVING_SECOND_ROUTE" ->
-      RadiationPreservingLayerPotential[outgoingGreenKernel,
-        IdentityMapAtInfinity]|>,
+    "RADIATION_PRESERVING_SECOND_ROUTE" -> objectRecord[
+      layerMain[anchoring]["KERNEL"], dimensionImpedance],
+    "SECOND_ROUTE_DERIVATION" -> layerMain[anchoring]|>,
   {anchoring, anchorings}];
 
 emitShared["REP_INVARIANCE_EULERIAN_OPERAND",
@@ -1507,11 +1844,14 @@ emitShared["REP_INVARIANCE_HANZAWA_OPERAND",
   representationHanzawaPayload];
 emitShared["REP_INVARIANCE_RESIDUAL", Association@Table[
   anchoring -> <|
-    "DTN_OPERAND_A" -> directMain[anchoring]["KERNEL"],
-    "DTN_OPERAND_B" -> layerMain[anchoring]["KERNEL"],
+    "DTN_OPERAND_A" ->
+      representationEulerianPayload[anchoring]["DTN"]["EXPRESSION"],
+    "DTN_OPERAND_B" -> representationHanzawaPayload[anchoring][
+      "RADIATION_PRESERVING_SECOND_ROUTE"]["EXPRESSION"],
     "DTN_RESIDUAL_A_MINUS_B" -> Together[
-      directMain[anchoring]["KERNEL"] -
-      layerMain[anchoring]["KERNEL"]],
+      representationEulerianPayload[anchoring]["DTN"]["EXPRESSION"] -
+      representationHanzawaPayload[anchoring][
+        "RADIATION_PRESERVING_SECOND_ROUTE"]["EXPRESSION"]],
     "FACE_RESPONSE_RESIDUAL_A_MINUS_B" -> Association@Flatten@Table[
       ("FACE_" <> ToString[face] <> "|" <> density) -> mapDifference[
         representationEulerianPayload[anchoring]["FACE_RESPONSE"][

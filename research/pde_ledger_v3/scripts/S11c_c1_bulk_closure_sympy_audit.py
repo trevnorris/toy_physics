@@ -98,6 +98,24 @@ CONTROL_TASKS = (
     "BRANCH",
     "HOMOGENEITY",
 )
+INTENDED_EXPORT_CANDIDATE_ROOTS = frozenset(
+    {
+        "dtn_flat_symbol",
+        "dtn_operator",
+        "dtn_kernel",
+        "face_response",
+        "face_response_coeffs",
+    }
+)
+INTENDED_EXPORT_WRITE_ROOTS = frozenset(
+    {
+        "dtn_flat_symbol",
+        "dtn_operator",
+        "dtn_kernel",
+        "s11c_c1_face_response",
+        "s11c_c1_face_response_coeffs",
+    }
+)
 ANCHORINGS = ("LAB_HELD", "MATERIAL_ADVECTED")
 FACES = (1, -1)
 DENSITIES = ("RHO4_CONSTANT", "RHOBR_CONSTANT")
@@ -314,6 +332,28 @@ def object_difference(left: object, right: object) -> object:
         except TypeError:
             return sp.Function("S11CC1ObjectDifference")(casify(left), casify(right))
     return sp.Function("S11CC1ObjectDifference")(casify(left), casify(right))
+
+
+def simplified_object_difference(left: object, right: object) -> object:
+    """Reduce a CAS comparison while preserving its container topology."""
+    if isinstance(left, Mapping) and isinstance(right, Mapping):
+        keys = tuple(dict.fromkeys((*left.keys(), *right.keys())))
+        return {
+            key: simplified_object_difference(left.get(key, sp.Tuple()), right.get(key, sp.Tuple()))
+            for key in keys
+        }
+    if isinstance(left, sp.MatrixBase) and isinstance(right, sp.MatrixBase) and left.shape == right.shape:
+        return sp.ImmutableMatrix(left - right).applyfunc(sp.simplify)
+    left_container = isinstance(left, (tuple, list, sp.Tuple))
+    right_container = isinstance(right, (tuple, list, sp.Tuple))
+    if left_container and right_container and len(left) == len(right):
+        return sp.Tuple(*(simplified_object_difference(a, b) for a, b in zip(left, right)))
+    if isinstance(left, sp.Basic) and isinstance(right, sp.Basic):
+        try:
+            return sp.simplify(left - right)
+        except TypeError:
+            return object_difference(left, right)
+    return object_difference(left, right)
 
 
 def total_compare(left: object, right: object) -> tuple[str, object]:
@@ -595,6 +635,91 @@ def dtn_first_kernel(
     raise ValueError(route)
 
 
+def hanzawa_first_kernel(
+    inputs: Inputs,
+    source: Mapping[str, object],
+    q_output: sp.Expr,
+    q_input: sp.Expr,
+) -> tuple[sp.Expr, sp.Tuple]:
+    """Construct the second route with the outgoing Neumann layer potential."""
+    normal_coordinate = sp.Symbol("s11cc1_layer_normal_coordinate", nonnegative=True, real=True)
+    phi_flat_amplitude = sp.Symbol("s11cc1_layer_phi_flat_amplitude")
+    height = source["height_hat"]
+    tilt = source["tilt_hat"]
+    k_input_sq = sp.Add(*(component**2 for component in k_in))
+    tilt_dot_input = sp.Add(*(component * momentum for component, momentum in zip(tilt, k_in)))
+    kappa_sq = inputs.omega**2 / inputs.c_s0**2
+
+    conormal_source = height * (k_input_sq - kappa_sq) - sp.I * tilt_dot_input
+    flat_boundary_equation = sp.Eq(
+        sp.I * q_input * phi_flat_amplitude, 1, evaluate=False
+    )
+    flat_amplitudes = sp.solve(
+        (flat_boundary_equation,),
+        (phi_flat_amplitude,),
+        dict=True,
+    )
+    if len(flat_amplitudes) != 1:
+        raise RuntimeError(
+            f"layer-potential flat boundary solve returned {len(flat_amplitudes)} branches"
+        )
+    phi_flat_trace = flat_amplitudes[0][phi_flat_amplitude]
+    layer_density = -conormal_source * phi_flat_trace
+    outgoing_neumann_poisson_kernel = sp.exp(
+        sp.I * q_output * normal_coordinate
+    ) / (sp.I * q_output)
+    outgoing_scattered_field = layer_density * outgoing_neumann_poisson_kernel
+    phi_scattered_trace = outgoing_scattered_field.subs(normal_coordinate, 0)
+    shifted_pressure_trace = sp.I * inputs.rho_m * inputs.omega * (
+        sp.I * q_input * height * phi_flat_trace + phi_scattered_trace
+    )
+    kernel = sp.factor(shifted_pressure_trace)
+    construction = sp.Tuple(
+        sp.Tuple(
+            Str("SECOND_CONSTRUCTION"),
+            Str("OUTGOING_NEUMANN_LAYER_POTENTIAL"),
+        ),
+        sp.Tuple(
+            Str("PULLED_BACK_BULK_DISPERSION"),
+            sp.Eq(q_input**2 + k_input_sq, kappa_sq, evaluate=False),
+            sp.Eq(
+                q_output**2 + sp.Add(*(component**2 for component in k_out)),
+                kappa_sq,
+                evaluate=False,
+            ),
+        ),
+        sp.Tuple(Str("FLAT_BOUNDARY_EQUATION"), flat_boundary_equation),
+        sp.Tuple(Str("CURVED_CONORMAL_LAYER_DENSITY"), layer_density),
+        sp.Tuple(
+            Str("OUTGOING_NEUMANN_POISSON_KERNEL"),
+            outgoing_neumann_poisson_kernel,
+        ),
+        sp.Tuple(
+            Str("OUTGOING_SCATTERED_FIELD"),
+            outgoing_scattered_field,
+        ),
+        sp.Tuple(
+            Str("LAYER_POTENTIAL_RADIATION_CONDITION"),
+            Str("OUTGOING_OR_DECAYING_ALREADY_SELECTED_BRANCH"),
+            q_output,
+        ),
+    )
+    return kernel, construction
+
+
+def reduce_on_shell(
+    expression: sp.Expr,
+    inputs: Inputs,
+    q_leg: sp.Symbol,
+    momentum_leg: tuple[sp.Symbol, ...],
+) -> sp.Expr:
+    """Apply the bulk dispersion through the normal-momentum square."""
+    tangential_sq = sp.Add(*(component**2 for component in momentum_leg))
+    dispersion = inputs.omega**2 / inputs.c_s0**2 - tangential_sq
+    collected = sp.together(expression)
+    return sp.factor(sp.cancel(collected.subs(q_leg**2, dispersion)))
+
+
 def closed_coefficients(
     inputs: Inputs,
     z0_output: sp.Expr,
@@ -628,6 +753,82 @@ def closed_coefficients(
         "RESOLVENT_SYMBOL_OUTPUT": response_output,
         "RESOLVENT_SYMBOL_INPUT": response_input,
     }
+
+
+def first_shape_true_area_weight(source: Mapping[str, object]) -> sp.Expr:
+    area_order = sp.Symbol("s11cc1_true_area_expansion_order", real=True)
+    slope_sq = sp.Add(*(component**2 for component in source["tilt_hat"]))
+    area = sp.sqrt(1 + area_order**2 * slope_sq)
+    return sp.series(area, area_order, 0, 2).removeO().subs(area_order, 1)
+
+
+def outgoing_farfield_poynting(
+    inputs: Inputs,
+    source: Mapping[str, object],
+    q_output: sp.Expr,
+    q_input: sp.Expr,
+    velocity: sp.Expr,
+) -> tuple[sp.Expr, sp.Tuple]:
+    """Solve the outgoing bulk amplitudes and evaluate their remote flux."""
+    control_radius = sp.Symbol("s11cc1_farfield_control_radius", positive=True, real=True)
+    phi_flat_amplitude, phi_scattered_amplitude = sp.symbols(
+        "s11cc1_farfield_phi_flat_amplitude s11cc1_farfield_phi_scattered_amplitude"
+    )
+    height = source["height_hat"]
+    tilt = source["tilt_hat"]
+    k_input_sq = sp.Add(*(component**2 for component in k_in))
+    kappa_sq = inputs.omega**2 / inputs.c_s0**2
+    tilt_dot_input = sp.Add(*(component * momentum for component, momentum in zip(tilt, k_in)))
+    conormal_source = height * (k_input_sq - kappa_sq) - sp.I * tilt_dot_input
+    boundary_system = (
+        sp.Eq(sp.I * q_input * phi_flat_amplitude, velocity, evaluate=False),
+        sp.Eq(
+            sp.I * q_output * phi_scattered_amplitude
+            + conormal_source * phi_flat_amplitude,
+            0,
+            evaluate=False,
+        ),
+    )
+    amplitudes = sp.solve(
+        boundary_system,
+        (phi_flat_amplitude, phi_scattered_amplitude),
+        dict=True,
+    )
+    if len(amplitudes) != 1:
+        raise RuntimeError(f"far-field amplitude solve returned {len(amplitudes)} branches")
+    phi_flat = amplitudes[0][phi_flat_amplitude] * sp.exp(
+        sp.I * q_input * control_radius
+    )
+    phi_scattered = amplitudes[0][phi_scattered_amplitude] * sp.exp(
+        sp.I * q_output * control_radius
+    )
+    pressure_flat = sp.I * inputs.rho_m * inputs.omega * phi_flat
+    pressure_scattered = sp.I * inputs.rho_m * inputs.omega * phi_scattered
+    normal_velocity_flat = sp.diff(phi_flat, control_radius)
+    normal_velocity_scattered = sp.diff(phi_scattered, control_radius)
+    poynting_through_first_shape = sp.re(
+        pressure_flat * sp.conjugate(normal_velocity_flat)
+        + pressure_flat * sp.conjugate(normal_velocity_scattered)
+        + pressure_scattered * sp.conjugate(normal_velocity_flat),
+        evaluate=False,
+    ) / 2
+    control_surface_flux = sp.simplify(poynting_through_first_shape)
+    farfield_flux = sp.limit(control_surface_flux, control_radius, sp.oo)
+    construction = sp.Tuple(
+        sp.Tuple(Str("BULK_OPERATOR"), Str("REST_FRAME_HELMHOLTZ"), kappa_sq),
+        sp.Tuple(Str("DRIVEN_BOUNDARY_SYSTEM"), casify(boundary_system)),
+        sp.Tuple(Str("OUTGOING_PHI_FLAT"), phi_flat),
+        sp.Tuple(Str("OUTGOING_PHI_SCATTERED"), phi_scattered),
+        sp.Tuple(
+            Str("RADIATION_CONDITION"),
+            Str("OUTGOING_ALREADY_SELECTED_BRANCH"),
+            q_output,
+            q_input,
+        ),
+        sp.Tuple(Str("CONTROL_SURFACE_FLUX"), control_surface_flux),
+        sp.Tuple(Str("FARFIELD_LIMIT"), farfield_flux),
+    )
+    return farfield_flux, construction
 
 
 def response_operator_case(inputs: Inputs, anchoring: str, face: int, density: str) -> sp.Tuple:
@@ -768,26 +969,38 @@ def port_matrix(
     inputs: Inputs,
     z0_output: sp.Expr,
     z0_input: sp.Expr,
-    z1: sp.Expr,
+    bare_dtn: sp.Expr,
     lambdas: tuple[sp.Expr, sp.Expr, sp.Expr] | None = None,
 ) -> sp.ImmutableMatrix:
     lambda_A, lambda_V, lambda_X = lambda_kernels(inputs) if lambdas is None else lambdas
     response_output = 1 / (1 + lambda_A * z0_output / inputs.rho_m**2)
     response_input = 1 / (1 + lambda_A * z0_input / inputs.rho_m**2)
-    p_v = response_output * z1 * response_input * (1 + lambda_V / inputs.rho_m)
-    p_mu = response_output * z1 * response_input * lambda_A / inputs.rho_m
+    z0_kernel = z0_output * delta_k
+    z1_kernel = sp.expand(bare_dtn - z0_kernel)
+    closed_dtn = response_output * z0_kernel + response_output * z1_kernel * response_input
+    p_v = closed_dtn * (1 + lambda_V / inputs.rho_m)
+    p_mu = closed_dtn * lambda_A / inputs.rho_m
+    j_v = lambda_V * delta_k - lambda_A * p_v / inputs.rho_m
+    j_mu = lambda_A * delta_k - lambda_A * p_mu / inputs.rho_m
     return sp.ImmutableMatrix(
         [
-            [(1 - lambda_X / inputs.rho_m) * p_v, (1 - lambda_X / inputs.rho_m) * p_mu],
-            [-lambda_A * p_v / inputs.rho_m, -lambda_A * p_mu / inputs.rho_m],
+            [
+                (1 - lambda_X / inputs.rho_m) * p_v,
+                (1 - lambda_X / inputs.rho_m) * p_mu + lambda_X * delta_k,
+            ],
+            [j_v, j_mu],
         ]
     )
 
 
-def port_hermitian(inputs: Inputs, kernel: sp.Expr, lambdas: tuple[sp.Expr, ...] | None = None) -> sp.ImmutableMatrix:
+def port_hermitian(
+    inputs: Inputs,
+    bare_dtn: sp.Expr,
+    lambdas: tuple[sp.Expr, ...] | None = None,
+) -> sp.ImmutableMatrix:
     z0_output = dtn_flat_symbol(inputs, q_out_k)
     z0_input = dtn_flat_symbol(inputs, q_out_kp)
-    matrix = port_matrix(inputs, z0_output, z0_input, kernel, lambdas)
+    matrix = port_matrix(inputs, z0_output, z0_input, bare_dtn, lambdas)
     swap = {q_out_k: q_out_kp, q_out_kp: q_out_k}
     swap.update({a: b for a, b in zip(k_out, k_in)})
     swap.update({b: a for a, b in zip(k_out, k_in)})
@@ -842,6 +1055,7 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
     operator_cases = {}
     direct_kernels: dict[tuple[str, int], sp.Expr] = {}
     hanzawa_kernels: dict[tuple[str, int], sp.Expr] = {}
+    hanzawa_constructions: dict[tuple[str, int], sp.Tuple] = {}
     g1_operator = (
         -flat_normal_operator * height_multiplication_operator * flat_normal_operator
         - div_height_grad_operator
@@ -856,9 +1070,12 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
             key = (anchoring, face)
             source = shape_source(inputs, face=face)
             direct = dtn_first_kernel(inputs, source, q_out_k, q_out_kp, route="EULERIAN")
-            hanzawa = dtn_first_kernel(inputs, source, q_out_k, q_out_kp, route="HANZAWA")
+            hanzawa, hanzawa_construction = hanzawa_first_kernel(
+                inputs, source, q_out_k, q_out_kp
+            )
             direct_kernels[key] = direct
             hanzawa_kernels[key] = hanzawa
+            hanzawa_constructions[key] = hanzawa_construction
             flat_cases[key] = package(
                 z0_out,
                 ((0, 0, 0),),
@@ -908,8 +1125,7 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
     rigid_diagonal = rigid_pre.xreplace(
         {q_out_kp: q_out_k, **{b: a for a, b in zip(k_out, k_in)}}
     )
-    on_shell = {sp.Add(*(component**2 for component in k_out)): kappa_sq - q_out_k**2}
-    rigid_after_dispersion = sp.factor(rigid_diagonal.xreplace(on_shell))
+    rigid_after_dispersion = reduce_on_shell(rigid_diagonal, inputs, q_out_k, k_out)
     objects["DTN_RIGID_SHIFT_OPERAND"] = case_map(
         {key: package(sp.Tuple(rigid_diagonal, sp.Integer(0)), ((0, 1, 0),), DIM_KERNEL) for key in direct_kernels}
     )
@@ -967,17 +1183,23 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
         )
         for face in FACES:
             key = (anchoring, face)
-            adjoint, hermitian, reactive = hermitian_kernel(direct_kernels[key])
+            bare_dtn = z0_out * delta_k + direct_kernels[key]
+            adjoint, hermitian, reactive = hermitian_kernel(bare_dtn)
             hermitian_cases[key] = package(
                 sp.Tuple(
+                    sp.Tuple(Str("FULL_BARE_DTN"), bare_dtn),
                     sp.Tuple(Str("TRUE_AREA_ADJOINT"), adjoint),
                     sp.Tuple(Str("HERMITIAN_PART"), hermitian),
                     sp.Tuple(Str("PAIRING_MEASURE_SOURCE"), Str("face_measure_shape_deriv")),
                 ),
-                ((0, 1, 0), (0, 0, 1)),
+                ((0, 0, 0), (0, 1, 0), (0, 0, 1)),
                 DIM_KERNEL,
             )
-            reactive_cases[key] = package(reactive, ((0, 1, 0), (0, 0, 1)), DIM_KERNEL)
+            reactive_cases[key] = package(
+                reactive,
+                ((0, 0, 0), (0, 1, 0), (0, 0, 1)),
+                DIM_KERNEL,
+            )
     objects["DTN_BY_PARITY"] = case_map(parity_cases)
     objects["DTN_HERMITIAN_PART"] = case_map(hermitian_cases)
     objects["DTN_REACTIVE_PART"] = case_map(reactive_cases)
@@ -1077,8 +1299,8 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
     port_cases = {}
     dissipation_limits = {}
     for anchoring in ANCHORINGS:
-        kernel = direct_kernels[(anchoring, 1)]
-        hermitian = port_hermitian(inputs, kernel)
+        bare_dtn = z0_out * delta_k + direct_kernels[(anchoring, 1)]
+        hermitian = port_hermitian(inputs, bare_dtn)
         for parity in PARITIES:
             for output_regime in REGIMES:
                 for input_regime in REGIMES:
@@ -1101,19 +1323,21 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
                         sp.Ge(sp.re(regime_h[0, 0], evaluate=False), 0, evaluate=False),
                         sp.Ge(sp.re(determinant, evaluate=False), 0, evaluate=False),
                     )
-                    token = (
-                        Str("SIGN_TEST_ON_NONDEGENERATE_FLAT_SUBSPACE")
-                        if output_regime == input_regime == "PROPAGATING"
-                        else Str("NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER")
+                    nondegenerate = output_regime == input_regime == "PROPAGATING"
+                    token = Str("SIGN_TEST_ON_NONDEGENERATE_FLAT_SUBSPACE") if nondegenerate else Str(
+                        "NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER"
                     )
+                    form_fields = [
+                        sp.Tuple(Str("FULL_BARE_DTN"), bare_dtn),
+                        sp.Tuple(Str("BLOCK_HERMITIAN_FORM"), regime_h),
+                        sp.Tuple(Str("STATUS_TOKEN"), token),
+                        sp.Tuple(Str("PAIRING_MEASURE_SOURCE"), Str("face_measure_shape_deriv")),
+                    ]
+                    if nondegenerate:
+                        form_fields.insert(2, sp.Tuple(Str("SIGN_TEST_OBJECTS"), sign_tests))
                     port_cases[key] = package(
-                        sp.Tuple(
-                            sp.Tuple(Str("BLOCK_HERMITIAN_FORM"), regime_h),
-                            sp.Tuple(Str("SIGN_TEST_OBJECTS"), sign_tests),
-                            sp.Tuple(Str("STATUS_TOKEN"), token),
-                            sp.Tuple(Str("PAIRING_MEASURE_SOURCE"), Str("face_measure_shape_deriv")),
-                        ),
-                        ((0, 1, 0), (0, 0, 1)),
+                        sp.Tuple(*form_fields),
+                        ((0, 0, 0), (0, 1, 0), (0, 0, 1)),
                         sp.Tuple(DIM_PRESSURE, DIM_FLUX),
                     )
         normal_lambdas = dict(zip(("A", "V", "X"), lambda_kernels(inputs)))
@@ -1124,7 +1348,7 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
                 changed = dict(normal_lambdas)
                 changed[channel] = replacement
                 changed_tuple = (changed["A"], changed["V"], changed["X"])
-                rebuilt = port_hermitian(inputs, kernel, changed_tuple)
+                rebuilt = port_hermitian(inputs, bare_dtn, changed_tuple)
                 for parity in PARITIES:
                     for output_regime in REGIMES:
                         for input_regime in REGIMES:
@@ -1138,7 +1362,7 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
                                         evaluate_grazing=False,
                                     )
                                 ),
-                                ((0, 1, 0), (0, 0, 1)),
+                                ((0, 0, 0), (0, 1, 0), (0, 0, 1)),
                                 sp.Tuple(DIM_PRESSURE, DIM_FLUX),
                             )
     objects["PERMEABLE_PORT_HERMITIAN"] = case_map(port_cases)
@@ -1151,44 +1375,96 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
     for anchoring in ANCHORINGS:
         for face in FACES:
             velocity = velocity_inputs[(anchoring, face)]
-            z_energy = dtn_flat_symbol(inputs, q_out_k) + direct_kernels[(anchoring, face)]
-            z_energy = z_energy.xreplace({q_out_k: qprop, q_out_kp: qprop})
-            face_power = sp.re(
-                -z_energy * velocity * sp.conjugate(velocity), evaluate=False
-            ) / 2
-            inverse_dtn_route = sp.factor(z_energy / (sp.I * inputs.rho_m * inputs.omega))
-            outgoing_flux = sp.re(
-                sp.I
-                * inputs.rho_m
-                * inputs.omega
-                * inverse_dtn_route
+            source = shape_source(inputs, face=face)
+            z0_propagating = dtn_flat_symbol(inputs, qprop)
+            z1_propagating = direct_kernels[(anchoring, face)].xreplace(
+                {q_out_k: qprop, q_out_kp: qprop}
+            )
+            impermeable_traction = closed_coefficients(
+                inputs,
+                z0_propagating,
+                z0_propagating,
+                z1_propagating,
+                inputs.rho_br,
+                (sp.Integer(0), sp.Integer(0), sp.Integer(0)),
+            )["TRACTION_NORMAL_AMPLITUDE"]
+            traction_v0 = impermeable_traction[0][0]
+            traction_v1 = impermeable_traction[1][0]
+            true_area_weight = first_shape_true_area_weight(source)
+            traction_pairing = (
+                -true_area_weight
+                * (traction_v0 + traction_v1)
                 * velocity
-                * sp.conjugate(velocity),
-                evaluate=False,
-            ) / 2
+                * sp.conjugate(velocity)
+            )
+            face_power = sp.re(traction_pairing, evaluate=False) / 2
+            outgoing_flux, farfield_construction = outgoing_farfield_poynting(
+                inputs, source, qprop, qprop, velocity
+            )
+            branch_reversed_flux, branch_reversed_construction = outgoing_farfield_poynting(
+                inputs, source, -qprop, -qprop, velocity
+            )
             bulk_comparison = -outgoing_flux
+            branch_reversed_comparison = -branch_reversed_flux
             key = (anchoring, face, "REAL_OMEGA_PROPAGATING_IMPERMEABLE_LAMBDA_X0_ZERO")
             energy_face[key] = package(
                 sp.Tuple(
                     sp.Tuple(Str("BASELINE"), face_power),
                     sp.Tuple(Str("TRACTION_SIGN_REVERSED"), -face_power),
+                    sp.Tuple(Str("FARFIELD_BRANCH_SIGN_REVERSED"), face_power),
                 ),
                 ((2, 0, 0), (2, 1, 0), (2, 0, 1)),
                 dim_add(DIM_PRESSURE, DIM_VELOCITY),
+                TRACTION_FROM_CLOSED_RESPONSE=casify(impermeable_traction),
+                TRUE_AREA_WEIGHT=true_area_weight,
                 MEASURE_SOURCE=Str("face_measure_shape_deriv"),
             )
             energy_bulk[key] = package(
                 sp.Tuple(
-                    sp.Tuple(Str("OUTGOING_POYNTING_FLUX"), outgoing_flux),
-                    sp.Tuple(Str("COMPARISON_ORIENTATION"), bulk_comparison),
+                    sp.Tuple(
+                        Str("BASELINE"),
+                        sp.Tuple(
+                            Str("OUTGOING_POYNTING_FLUX"),
+                            outgoing_flux,
+                            Str("COMPARISON_ORIENTATION"),
+                            bulk_comparison,
+                        ),
+                    ),
+                    sp.Tuple(
+                        Str("TRACTION_SIGN_REVERSED"),
+                        sp.Tuple(
+                            Str("OUTGOING_POYNTING_FLUX"),
+                            outgoing_flux,
+                            Str("COMPARISON_ORIENTATION"),
+                            bulk_comparison,
+                        ),
+                    ),
+                    sp.Tuple(
+                        Str("FARFIELD_BRANCH_SIGN_REVERSED"),
+                        sp.Tuple(
+                            Str("OUTGOING_POYNTING_FLUX"),
+                            branch_reversed_flux,
+                            Str("COMPARISON_ORIENTATION"),
+                            branch_reversed_comparison,
+                        ),
+                    ),
                 ),
                 ((2, 0, 0), (2, 1, 0), (2, 0, 1)),
                 dim_add(DIM_PRESSURE, DIM_VELOCITY),
+                OUTGOING_PHI_CONSTRUCTION=farfield_construction,
+                BRANCH_REVERSED_PHI_CONSTRUCTION=branch_reversed_construction,
             )
             energy_residual[key] = package(
                 sp.Tuple(
-                    sp.Tuple(Str("BASELINE"), sp.factor(face_power - bulk_comparison)),
-                    sp.Tuple(Str("TRACTION_SIGN_REVERSED"), sp.factor(-face_power - bulk_comparison)),
+                    sp.Tuple(Str("BASELINE"), sp.simplify(face_power - bulk_comparison)),
+                    sp.Tuple(
+                        Str("TRACTION_SIGN_REVERSED"),
+                        sp.simplify(-face_power - bulk_comparison),
+                    ),
+                    sp.Tuple(
+                        Str("FARFIELD_BRANCH_SIGN_REVERSED"),
+                        sp.simplify(face_power - branch_reversed_comparison),
+                    ),
                 ),
                 ((2, 0, 0), (2, 1, 0), (2, 0, 1)),
                 dim_add(DIM_PRESSURE, DIM_VELOCITY),
@@ -1203,9 +1479,50 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
     for anchoring in ANCHORINGS:
         direct_map = {face: direct_kernels[(anchoring, face)] for face in FACES}
         hanzawa_map = {face: hanzawa_kernels[(anchoring, face)] for face in FACES}
-        rep_eulerian[("DTN", anchoring)] = case_map(direct_map)
-        rep_hanzawa[("DTN", anchoring)] = case_map(hanzawa_map)
-        rep_residual[("DTN", anchoring)] = object_difference(direct_map, hanzawa_map)
+        eulerian_operand = {
+            face: sp.Tuple(
+                sp.Tuple(Str("VALUE"), direct_map[face]),
+                sp.Tuple(
+                    Str("CONSTRUCTION"),
+                    Str("DIRECT_EULERIAN_LEVEL_SET_BOUNDARY_PERTURBATION"),
+                    Str("face_normal"),
+                    Str("conormal_deriv"),
+                    Str("face_shift"),
+                ),
+            )
+            for face in FACES
+        }
+        hanzawa_operand = {
+            face: sp.Tuple(
+                sp.Tuple(Str("VALUE"), hanzawa_map[face]),
+                sp.Tuple(Str("CONSTRUCTION"), hanzawa_constructions[(anchoring, face)]),
+            )
+            for face in FACES
+        }
+        rep_eulerian[("DTN", anchoring)] = case_map(eulerian_operand)
+        rep_hanzawa[("DTN", anchoring)] = case_map(hanzawa_operand)
+        rep_residual[("DTN", anchoring)] = simplified_object_difference(
+            direct_map, hanzawa_map
+        )
+
+        one_sided_eulerian = {
+            face: dtn_first_kernel(
+                inputs,
+                shape_source(inputs, face=face, flip_upper_x1=True),
+                q_out_k,
+                q_out_kp,
+            )
+            for face in FACES
+        }
+        rep_eulerian[("DTN_EULERIAN_ONE_SIDED_CORRUPTION", anchoring)] = case_map(
+            one_sided_eulerian
+        )
+        rep_hanzawa[("DTN_EULERIAN_ONE_SIDED_CORRUPTION", anchoring)] = case_map(
+            hanzawa_map
+        )
+        rep_residual[("DTN_EULERIAN_ONE_SIDED_CORRUPTION", anchoring)] = (
+            simplified_object_difference(one_sided_eulerian, hanzawa_map)
+        )
         for density in DENSITIES:
             rho_background = density_value(inputs, density)
             direct_response = {
@@ -1218,8 +1535,28 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
             }
             rep_eulerian[("FACE_RESPONSE", anchoring, density)] = case_map(direct_response)
             rep_hanzawa[("FACE_RESPONSE", anchoring, density)] = case_map(hanzawa_response)
-            rep_residual[("FACE_RESPONSE", anchoring, density)] = object_difference(
+            rep_residual[("FACE_RESPONSE", anchoring, density)] = simplified_object_difference(
                 direct_response, hanzawa_response
+            )
+            one_sided_response = {
+                face: closed_coefficients(
+                    inputs,
+                    z0_out,
+                    z0_in,
+                    one_sided_eulerian[face],
+                    rho_background,
+                )
+                for face in FACES
+            }
+            corruption_key = (
+                "FACE_RESPONSE_EULERIAN_ONE_SIDED_CORRUPTION",
+                anchoring,
+                density,
+            )
+            rep_eulerian[corruption_key] = case_map(one_sided_response)
+            rep_hanzawa[corruption_key] = case_map(hanzawa_response)
+            rep_residual[corruption_key] = simplified_object_difference(
+                one_sided_response, hanzawa_response
             )
     objects["REP_INVARIANCE_EULERIAN_OPERAND"] = case_map(rep_eulerian)
     objects["REP_INVARIANCE_HANZAWA_OPERAND"] = case_map(rep_hanzawa)
@@ -1362,7 +1699,10 @@ def build_model(ledger: Mapping[str, Mapping[str, object]]) -> AuditModel:
     zero_jet_first = dtn_first_kernel(inputs, zero_jet_source, q_out_k, q_out_kp)
     zero_jet_diagonal = zero_jet_first.xreplace(
         {q_out_kp: q_out_k, **{b: a for a, b in zip(k_out, k_in)}}
-    ).xreplace(on_shell)
+    )
+    zero_jet_diagonal = reduce_on_shell(
+        zero_jet_diagonal, inputs, q_out_k, k_out
+    )
     zero_jet_value = sp.Tuple(
         z0_out + sp.factor(zero_jet_diagonal), z0_out + sp.factor(zero_jet_diagonal)
     ).xreplace({q_out_k: inputs.q_out})
@@ -1733,10 +2073,35 @@ def make_record(candidate: CandidateRow) -> dict[str, object]:
     return record
 
 
+def intended_own_bind_closure(candidates: list[CandidateRow]) -> frozenset[str]:
+    candidate_roots = {candidate.key for candidate in candidates}
+    if candidate_roots != INTENDED_EXPORT_CANDIDATE_ROOTS:
+        raise RuntimeError(
+            "export candidate roots differ from intended roots: "
+            + repr(
+                sorted(
+                    candidate_roots.symmetric_difference(INTENDED_EXPORT_CANDIDATE_ROOTS)
+                )
+            )
+        )
+    root_values = tuple(candidate.value for candidate in candidates)
+    used_atoms = set().union(*(atoms_of(value) for value in root_values))
+    introduced_root_atoms = {
+        atom
+        for atom in used_atoms.intersection(NEW_SYMBOLS)
+        if atom.name.startswith("s11cc1_")
+    }
+    return frozenset(
+        INTENDED_EXPORT_WRITE_ROOTS
+        | {atom.name for atom in introduced_root_atoms}
+    )
+
+
 def build_delta(
     fold: Mapping[str, Mapping[str, object]],
 ) -> tuple[dict[str, dict[str, object]], dict[str, object], frozenset[str]]:
     candidates = list(EMITTER.export_candidates)
+    own_closure = intended_own_bind_closure(candidates)
     root_values = tuple(candidate.value for candidate in candidates)
     used_atoms = set().union(*(atoms_of(value) for value in root_values))
     existing_candidate_names = {candidate.key for candidate in candidates}
@@ -1808,17 +2173,9 @@ def build_delta(
             )
         )
 
-    required_roots = {
-        "dtn_flat_symbol",
-        "dtn_operator",
-        "dtn_kernel",
-        "s11c_c1_face_response",
-        "s11c_c1_face_response_coeffs",
-    }
-    missing_roots = required_roots.difference(resolved_keys)
+    missing_roots = INTENDED_EXPORT_WRITE_ROOTS.difference(resolved_keys)
     if missing_roots:
         raise RuntimeError("missing resolved bind roots: " + ", ".join(sorted(missing_roots)))
-    own_closure = frozenset(required_roots | {key for key in resolved_keys if key not in required_roots})
     diagnostics = {
         "KEY_OPERANDS": sp.Tuple(*key_operands),
         "ROUTING": sp.Tuple(*routing),

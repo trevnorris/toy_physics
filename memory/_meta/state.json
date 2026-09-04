@@ -5,8 +5,8 @@
       "page_hash": "2c692a3e6d7bb57cfe35ea7576c1ede1245ddfaf32efe42ce9c01d26d3c79342"
     },
     "memory-index": {
-      "input_hash": "d2d0decea50c9df36141d9f19f597c1f7a9d28abb847d7752bcff08a53be0a8c",
-      "page_hash": "9166398ed940f1a8675c012f0912e6b4a7f4438cd2aa15825af150d73be651ee"
+      "input_hash": "82b494740d2d3e8ac8f390c0fb34e8c6ba444a8aac0c4b6a11f9ddd3a8ebc975",
+      "page_hash": "3489f306b2156c083b810049321f5f0718443d22b91250adf199cf36df7e171c"
     },
     "scripts-em-charge-attribute": {
       "input_hash": "693d5ded42ae689496636d532b76a98a40ca3ba9146b1ce83582f137881df097",
@@ -125,6 +125,10 @@
     "pde-audit": {
       "content_hash": "39aba0c69897646e18e90b31daa094236a3c8fa5617f37209c83afe440bf3296",
       "page_hash": "75b91ba9c6cf93be2aeac96ed53313a52e7b58dba842f0205ba4a3e0c41e5397"
+    },
+    "research-proposal": {
+      "content_hash": "7ed529646bb870a87a5998fdf31a7d187977372ae2453b0719c2c5c89474da0f",
+      "page_hash": "ad1f05e40e35c9ff6fc0ead26bfb984206c4fbd9f692221be318da861b010ec4"
     },
     "software-em-electric-sign": {
       "content_hash": "f5a50cf0e923154b385c546ccaf1e233dd74e948d59b9500615bb6469605f509",

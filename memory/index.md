@@ -36,6 +36,7 @@ the exact identities or every possible completion.
 | What do the weak-axisymmetric tests and orbit-closure criterion establish? | [Weak-axisymmetric and orbit closure](topics/weak-axisymmetric-and-orbit-closure.md) |
 | How strong is a claim, and what does a script pass mean? | [Status and reading rules](topics/status-and-reading-rules.md) |
 | Which older claims were corrected, and which choices remain unresolved? | [Conflicts](conflicts.md) |
+| What is the current future research program and its decision sequence? | [Lean research proposal](sources/research-proposal.md) |
 
 ## Script catalogs
 
@@ -68,6 +69,7 @@ Individual summaries live in:
 - [paper capsules](sources/papers/)
 - [software and result capsules](sources/software/)
 - [maintained PDE-audit capsule](sources/pde-audit.md)
+- [lean research-proposal capsule](sources/research-proposal.md)
 
 The original files under `research/` and `software/` are authoritative. Root
 `notes/`, root `docs/`, and all `research/pde_ledger*` trees are deliberately

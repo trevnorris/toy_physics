@@ -71,6 +71,15 @@
       "page": "memory/sources/papers/moving-throat-pde.md",
       "sources": ["research/pde/paper/pde.tex"]
     },
+    "research-proposal": {
+      "page": "memory/sources/research-proposal.md",
+      "sources": [
+        "research/research_proposal/notes/research_proposal_migration_and_reset_handoff.md",
+        "research/research_proposal/paper/research_proposal.tex",
+        "research/research_proposal/paper/proposal_provisional_abstract.tex",
+        "research/research_proposal/paper/proposal_chapter_*.tex"
+      ]
+    },
     "pde-audit": {
       "page": "memory/sources/pde-audit.md",
       "sources": [
@@ -219,7 +228,7 @@
     },
     "memory-index": {
       "path": "memory/index.md",
-      "inputs": ["topic-foundations", "topic-projection-and-reduction", "topic-charge-and-electromagnetism", "topic-post-newtonian-ladder", "topic-quadrupole-normalization", "topic-moving-throat-dynamics", "topic-weak-axisymmetric-and-orbit-closure", "topic-status-and-reading-rules", "scripts-pde-audit", "scripts-em-charge-attribute", "scripts-force-visualizer", "scripts-stage1-solver", "conflicts"]
+      "inputs": ["topic-foundations", "topic-projection-and-reduction", "topic-charge-and-electromagnetism", "topic-post-newtonian-ladder", "topic-quadrupole-normalization", "topic-moving-throat-dynamics", "topic-weak-axisymmetric-and-orbit-closure", "topic-status-and-reading-rules", "scripts-pde-audit", "scripts-em-charge-attribute", "scripts-force-visualizer", "scripts-stage1-solver", "conflicts", "research-proposal"]
     }
   }
 }

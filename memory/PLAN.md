@@ -36,16 +36,17 @@ There is no stored Git SHA. Git only supplies the tracked-file list. A rebase,
 merge, or unrelated commit does not make memory stale; changing source bytes
 does.
 
-## Remaining work
+## Initial buildout (completed)
 
-1. Finish the seven unpopulated software/source capsules.
-2. Populate the eight topic pages and four script catalogs.
-3. Fold the useful Atlas status firewalls into those topic pages using
-   [`MIGRATION.md`](MIGRATION.md).
-4. Refresh `conflicts.md` and make `index.md` a useful entry point.
-5. Ask a fresh agent a handful of real retrieval questions.
-6. Delete `atlas/` and `graph/` only after every migration checklist item is
-   either represented or deliberately discarded.
+- [x] Populate the selected paper, software, and proposal capsules.
+- [x] Populate the eight topic pages and four script catalogs.
+- [x] Migrate the useful Atlas status firewalls with original-source citations.
+- [x] Refresh `conflicts.md` and make `index.md` the entry point.
+- [x] Pass independent retrieval checks using only the memory.
+- [x] Retire `atlas/` and `graph/` after completing the migration checklist.
+
+Ongoing work is source-driven maintenance: when `status` reports a changed
+unit, reread that unit and refresh only its affected pages.
 
 That is the entire system. If maintaining the helper ever becomes harder than
 reading a few changed files, simplify it again.

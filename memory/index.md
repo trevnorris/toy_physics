@@ -23,6 +23,11 @@ and electric boundary selection, and outgoing normalization remain open.
 Tested frozen candidate branches miss their target packets without invalidating
 the exact identities or every possible completion.
 
+Here “parent action” means the strict matter-plus-localized-Maxwell action. It
+does not include autonomous wall dynamics: the separate levels are the strict
+parent, an effective linear wall closure, and a still-unselected promoted
+nonlinear throat/material action. See [Moving-throat dynamics](topics/moving-throat-dynamics.md#three-action-levels).
+
 ## Where to look
 
 | Question | Start here |

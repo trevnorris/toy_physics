@@ -42,6 +42,24 @@ The `status: current` field at the top of a memory page means only that the
 page reflects the current repository. It does **not** upgrade every scientific
 statement on that page to an exact or established result.
 
+## Legacy capsule tags
+
+Some source capsules retain extraction-era lines such as
+`lifecycle=current`, `evidence=derived`, and `memory_review=ai_draft`. They are
+not a competing status ladder:
+
+| Legacy tag | How to read it now |
+|---|---|
+| `lifecycle=current` | The capsule did not identify the statement as superseded. This says nothing about whether the statement is exact, conditional, or physically realized. |
+| `evidence=derived` | The cited source presents a derivation. Classify its result as Exact, Exact Within Closure, or Reduced according to the assumptions stated in the prose; never promote it from this tag alone. |
+| `evidence=provisional` | The statement is adopted, conditional, interpretive, or awaiting stronger support. Use the prose to choose the weaker current-ladder label. |
+| `evidence=open` | Read as Open. |
+| `memory_review=ai_draft` | An editorial note about the original AI extraction, not scientific evidence and not a freshness indicator. |
+
+When an old inline tag, the surrounding prose, and a current topic page differ,
+the explicit scope and current topic synthesis control. Follow their citation
+to the original source before relying on a technical detail.
+
 ## Boundaries that must remain visible
 
 ### Projection is not reduction

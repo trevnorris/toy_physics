@@ -36,6 +36,12 @@ A source capsule should answer:
 Important statements cite an original path plus a TeX label, Markdown heading,
 or nearby code identifier when practical.
 
+Some capsules migrated from the first extraction pass retain inline
+`lifecycle`, `evidence`, and `memory_review` tags. These are legacy annotations,
+not a second claim-status system. Their mapping and limitations are defined in
+`memory/topics/status-and-reading-rules.md`; new prose should use the current
+claim ladder and plain-language scope instead.
+
 ## Topic pages
 
 A topic page gives the current working picture across a few source capsules.

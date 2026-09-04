@@ -56,8 +56,10 @@ points rather than hashing every helper used to build it.
 - Treat unresolved disagreements as conflicts; do not manufacture consensus.
 - A script catalog says what code does and emits. A script printing `PASS`
   does not by itself establish a physical conclusion.
+- Older source capsules retain a small legacy inline status vocabulary; use the
+  mapping in [`topics/status-and-reading-rules.md`](topics/status-and-reading-rules.md).
 - Follow citations into `research/` or `software/` before relying on a detail.
 
 The short conventions are in [`_meta/schema.md`](_meta/schema.md). The selected
 source bundles and page dependencies are in [`catalog.json`](catalog.json).
-The remaining Atlas migration checklist is in [`MIGRATION.md`](MIGRATION.md).
+The completed Atlas migration record is in [`MIGRATION.md`](MIGRATION.md).

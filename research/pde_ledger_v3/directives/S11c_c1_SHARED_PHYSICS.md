@@ -2,9 +2,11 @@
 
 **Orchestrator-authored, 2026-09-03, under the S11c decision list (`directives/S11c_decisions.md`, N-series)
 and `CLAUDE.md`.** This is the physics authority read by the two blind S11c-c1 engines: the SymPy engine imports
-the closed S11b `LEDGER` (`scripts/S11b_exports.py`), the S11c-a exports (`scripts/S11c_a_exports.py`), and the
-S11c-b exports (`scripts/S11c_b_exports.py`); the Wolfram engine imports nothing and reconstructs every object
-from the supplied setup below and its cited sibling specs. This document is an **obligation-to-compute
+the inherited model via the fold `load_model` (`scripts/ledger_fold.py`) over the atomic frozen base
+`scripts/S11c_b_exports.py` — which already carries the whole F9-resolved S11b + S11c-a + S11c-b model — binding
+only its declared `IMPORT_KEYS` from that fold (§7; the generate-over-a-frozen-base topology of
+`directives/export_ledger_bind_closure_design.md`); the Wolfram engine imports nothing and reconstructs every
+object from the supplied setup below and its cited sibling specs. This document is an **obligation-to-compute
 specification**, not a script and not a record of results. There is no acceptance value to withhold beyond the
 value-free packages named below; there is no terminal `VERDICT`, `PASS`, or `FAIL`.
 
@@ -66,8 +68,8 @@ There is no acceptance value to withhold in S11c-c1. There is no terminal `VERDI
 The supplied background ansatz, anchoring branches, face maps, level sets, orientation, measures, trace law,
 dynamic window, and interface laws are **S11c-a §§1–3 imported unchanged** (`directives/S11c_a_SHARED_PHYSICS.md`);
 the tilted-face first-order shape derivatives T-a..T-i are the S11c-a §4 exports. The SymPy engine imports
-T-a..T-i from `scripts/S11c_a_exports.py` and `S11CB_MU_THETA_OPERATOR` from `scripts/S11c_b_exports.py`; the
-Wolfram engine re-derives every consumed object from the sibling specs, importing nothing. This document amends
+T-a..T-i and `S11CB_MU_THETA_OPERATOR` from the fold over the atomic frozen base `scripts/S11c_b_exports.py`
+(§7); the Wolfram engine re-derives every consumed object from the sibling specs, importing nothing. This document amends
 and extends that setup with the bulk-closure constructions of §§2–3; where it does not amend, the S11c-a text
 governs.
 
@@ -557,16 +559,26 @@ constant emitted by §3 — take fresh names and ⛔ must **not** reuse the impo
 `v_0`. The importing SymPy engine applies the inherited F9 collision check against the S11b, S11c-a, and S11c-b
 keys; a disagreement emits and continues.
 
-**Chain output (`N1`/`N8`, inherited verbatim — pointed at, not restated).** The SymPy engine writes
-`scripts/S11c_c1_exports.py` under the export-chain rules `F1`–`F10` (`S11_export_chain_decisions_v2.md`): the
-flat plain-git LEDGER of the chain-**CONSUMED** `PY_S11CC1_*` objects — the §3b consume-set (the DtN operator
-and its flat symbol, and the closed face response `(δp_s, J_s, t_s)(V_s, μ_θ)`) with their free-symbol closure,
-per `F10` (the model-level register; the §4 dissipation, energy, loci/noninvertibility, and Hermitian/reactive
-and regime/parity/term-origin structural-view diagnostics are **emit-only**, in the annexed `.out`, ⛔ not in the
-LEDGER) — its `BUILD_INPUT_DIGESTS` pinning
-`{this sub-step's SymPy audit, the imported `scripts/{S11b,S11c_a,S11c_b}_exports.py`, this spec}`, the `D3`
-in-run round-trip, and the `_RELATIONALS` reviver. ⛔ Never `git add -f` a big `.out`; ⛔ never annex an
-`*_exports.py`. The S11c-c1 comparator is this sub-step's own frozen `T7` join (`N8`, inherited verbatim — join
+**Chain output (`N1`/`N8`; the topology is the two-leg-gated `directives/export_ledger_bind_closure_design.md`,
+§D1–§D3, which supersedes `F10` — pointed at, not restated).** The SymPy engine imports the inherited model via
+`load_model` (`scripts/ledger_fold.py`) over the atomic frozen base `scripts/S11c_b_exports.py`, binding only its
+declared `IMPORT_KEYS`, and writes `scripts/S11c_c1_exports.py` as its **own-rows delta** (§D2 — ⛔ **not** the
+accumulated whole-model file): the flat plain-git LEDGER of the rows c1 **defines or re-derives that some later
+step binds** (§D1 bind-closure membership) — the §3b consume-set (the DtN operator `dtn_operator`, its flat
+symbol `dtn_flat_symbol`, the two-momentum kernel `dtn_kernel`, and the closed face response `(δp_s, J_s,
+t_s)(V_s, μ_θ)`, F9c-written `s11c_c1_face_response`/`s11c_c1_face_response_coeffs`) with the **new-symbol**
+closure those rows introduce (the inherited symbols they reference already live in the frozen base and are ⛔ not
+re-emitted). The §4 dissipation, energy, loci/noninvertibility, and Hermitian/reactive and
+regime/parity/term-origin structural-view diagnostics are **emit-only**, in the annexed `.out`, ⛔ not in the
+LEDGER. Its `BUILD_INPUT_DIGESTS` pins
+`{this sub-step's SymPy audit, `scripts/S11b_exports.py`, `scripts/S11c_a_exports.py`,
+`scripts/S11c_b_exports.py`, this spec, and `scripts/ledger_fold.py`}` (the fold module is a shared executable
+input, §D3); before publication the delta is validated by the §D3 guard —
+`check_consumer(load_model(base), IMPORT_KEYS)` resolves the manifest's recursive closure, the bidirectional
+smoke-test asserts the recorded lookups equal `IMPORT_KEYS`, and the minimum-mode check asserts the delta is its
+own bind-closure plus named infrastructure — alongside the `D3` in-run round-trip and the `_RELATIONALS` reviver.
+⛔ Never `git add -f` a big `.out`; ⛔ never annex an `*_exports.py`. The S11c-c1 comparator is this sub-step's own
+frozen `T7` join (`N8`, inherited verbatim — join
 by object name with the axis-typed keys of the S11c-a reconciliation schema
 `steps/S11c_a_interface_shape_derivatives.md:233-253`, pair residual operands, reject a native boolean as a
 residual operand, three-valued, repoint ablation). It computes and prints, deciding nothing (rule 2). ⛔ No
@@ -584,9 +596,10 @@ where `<ENGINE>` is `PY` or `WL`. Each base name written as `S11CC1_<QUANTITY>` 
 leading `S11CC1` with `PY_S11CC1` or `WL_S11CC1`; do not duplicate the `S11CC1` component. Emit one tag per named
 object; a single object's branch/face/DOF/density/regime-pair/parity/direction/mutation cases are a keyed CAS map
 in that object's payload, not separately invented tag names. Any unavoidable engine-local tag has `_LOCAL_`
-immediately after `S11CC1`, and each engine emits one local-tag inventory. The SymPy engine imports and carries
-the S11b `LEDGER`, the S11c-a exports, and the S11c-b exports; the Wolfram engine re-derives the supplied §§1–2
-inputs and the S11c-a substrate it consumes and the S11c-b `μ_θ` operand, importing nothing.
+immediately after `S11CC1`, and each engine emits one local-tag inventory. The SymPy engine imports the inherited
+model via the fold over the atomic frozen base `scripts/S11c_b_exports.py` (the whole F9-resolved S11b + S11c-a +
+S11c-b model), binding only its declared `IMPORT_KEYS`; the Wolfram engine re-derives the supplied §§1–2 inputs
+and the S11c-a substrate it consumes and the S11c-b `μ_θ` operand, importing nothing.
 
 ---
 

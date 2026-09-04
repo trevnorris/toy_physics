@@ -30,6 +30,10 @@ claim "N1 — S11c-a imports the S11b LEDGER (S11b_exports.py, 1958 rows)" \
   "sed -n '22p' $SP/steps/S11b_interface_coupling_law.md"
 claim "N1 — S11b_exports.py exists on the export chain" \
   "ls $SP/scripts/ | grep -E '_exports.py\$'"
+claim "N1 amended (2026-09-04) — from S11c-c1 onward the chain uses the generate-over-a-frozen-base topology; the design is two-leg-gated + committed (c04e071f/fd8c89d0), F10 superseded (4274b403)" \
+  "grep -nE 'from S11c-c1 onward the chain uses the generate-over-a-frozen-base|imports the fold|own-rows delta' $SP/directives/S11c_decisions.md | head -3; git -C /var/projects/toy_physics log --oneline -- $SP/directives/export_ledger_bind_closure_design.md | head -2"
+claim "N1 amended — the fold+guard module ledger_fold.py exists (a shared executable input added to a delta-writer's BUILD_INPUT_DIGESTS)" \
+  "grep -nE 'def load_model|def check_consumer' $SP/scripts/ledger_fold.py"
 claim "N1/N2 — S11b's single spec took eleven directive revisions (why the family is split finer)" \
   "sed -n '106p' $SP/steps/S11b_HANDOFF.md"
 claim "Header — the unified S11b list ratified only C's SCOPE, not the requirement package" \

@@ -119,3 +119,25 @@ diagnostics are emit-only in the annexed .out, not in the LEDGER." This removes 
 inconsistency that Codex's directive-review leg flagged as a must-fix (§7 read broad, §3b read narrow).
 Authority: F10 (S11_export_chain_decisions_v2.md). Gate: the S11c-c1 build-directive review (Grok + Codex,
 saved under directives/_legs/); ratified by the user 2026-09-03. No physics content changed.
+
+---
+
+## §1/§7 migration (2026-09-04) — SUPERSEDES the §7 reconciliation above (F10 → bind-closure)
+
+The export chain over-exported ~56%; a two-leg-gated design (`directives/export_ledger_bind_closure_design.md`,
+committed `c04e071f`/`fd8c89d0`) replaced the accumulate topology with generate-over-a-frozen-base and
+**superseded F10** (`4274b403`). The c1 spec §1 header, §1a, and §7 (chain-output + tag-grammar) are amended
+from "import/carry the whole S11b+S11c-a+S11c-b LEDGER" to: import the inherited model via the fold
+`load_model(frozen base ⊔ deltas)` over the **atomic frozen base** `scripts/S11c_b_exports.py`, binding only the
+declared `IMPORT_KEYS`, and write `scripts/S11c_c1_exports.py` as an **own-rows delta** (bind-closure membership,
+§D1; the under-export guard `scripts/ledger_fold.py`, §D3). No physics content changed — the migration touches
+only the export/import topology (spec diff: §1 header, §1a, §7 only; §§1b–6 and the §4 tag list byte-unchanged).
+
+Gate: the **c1 migration review** — two legs, Codex + Grok, orchestrator-written physics-bearing material
+(prompt `directives/_legs/c1_migration_review.md`; logs saved outside the repo). Both returned "changes
+requested" and independently re-derived c1's bind-set from the spec; their convergent finding (over-declared
+`mu_R_bg`/`m1_profile`, the c2-reserved modulus channel) plus Codex's under-declaration finding (`omega`,
+`epsilon_shape`) and the density/`mu_R` reconciliation were folded in ONE pass (rule 7). The reconciled 44-root
+`IMPORT_KEYS` manifest is grounded against the real frozen base (44 roots → 193-row closure, 0 ambiguity;
+`_measurements/c1_migration_import_keys_scan.py`) and its command + literal output live in the build-directive
+twin `_measurements/S11c_c1_sympy_build_directive.md`.

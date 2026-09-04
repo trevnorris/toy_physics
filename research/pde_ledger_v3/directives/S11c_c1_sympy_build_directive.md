@@ -7,8 +7,10 @@ stdout tag stream and `research/pde_ledger_v3/scripts/S11c_c1_exports.py`. Those
 writes; every other file, including `S11b_exports.py`, `S11c_a_exports.py`, and `S11c_b_exports.py`, is
 read-only.
 
-`CLAUDE.md` binds. `research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md` (committed `db5cbf88`, unchanged
-since) is the sole physics authority and the sole physics input: every equation, inherited object, ansatz,
+`CLAUDE.md` binds. `research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md` (first committed `db5cbf88`;
+§1/§7 amended by the export-architecture migration to the fold/own-rows-delta topology — its exact content sha
+is pinned in `BUILD_INPUT_DIGESTS`) is the sole physics authority and the sole physics input: every equation,
+inherited object, ansatz,
 premise, supplied law, face map, radiation condition, branch object, derivation route, control and tag
 obligation enters from it alone, and it wins every conflict with this directive. Implement its §§0–8 directly.
 Point to rather than duplicate: §0 (scope, and what is reserved for S11c-c2/S11c-d/S11c-e); §1 (the inherited
@@ -58,35 +60,76 @@ without named exceptions.
 These are naming/binding/anchoring conventions, ⛔ not new physics; every one is already in the spec, and the
 spec wins any conflict.
 
-## Accumulated export
+## Delta export — generate over the frozen base (`directives/export_ledger_bind_closure_design.md` §D1–§D3)
 
-Import `LEDGER` from `research/pde_ledger_v3/scripts/S11c_b_exports.py` as the incoming chain record — it is the
-immediate parent (`N1`: each sub-step imports the prior one's exports) and already carries the merged S11b +
-S11c-a + S11c-b rows flat, so every object c1 binds (the constants, the `S11CA_*` T-substrate, the S11b flat
-B0b/B0c refs, and `mu_theta_operator`) is present in it. Write `S11c_c1_exports.py` as the accumulated
-model-definition and knob record the next sub-step imports — the previous `LEDGER`, plus this step's own
-entries, merged flat.
+⭐ **Topology (§D2): import the fold, write only c1's own-rows DELTA — ⛔ NOT the accumulated model.** Obtain the
+inherited model with `from ledger_fold import load_model, check_consumer, assert_lookups_equal_manifest,
+assert_delta_is_minimal` then `fold, fold_audit = load_model('research/pde_ledger_v3/scripts/S11c_b_exports.py')`.
+`S11c_b_exports.py` is the **single atomic frozen base** (c1 is the first delta-producer, so there are no prior
+deltas); it already carries the whole F9-resolved S11b + S11c-a + S11c-b model flat (2441 rows), so every object
+c1 binds is present in `fold`. ⛔ Do **not** `import LEDGER from S11c_b_exports.py`; ⛔ do **not** re-apply F9 on
+the fold (`load_model` is last-wins on exact key and never re-routes). **Throughout this directive `LEDGER[k]`
+denotes `fold[k]`.** Write `S11c_c1_exports.py` as c1's **own-rows delta only** — the rows c1 defines/re-derives
+that a later step binds (§D1) — ⛔ never the previous LEDGER carried forward.
+
+⭐ **Declare c1's `IMPORT_KEYS` explicitly and exactly (§D3.1; ⛔ not "closure will find them")** — the exact list
+of F9 write-keys c1 binds directly (every key looked up in `fold` as a construction or control/regression
+operand), grounded present-and-closing against the real frozen base (both review legs folded;
+`directives/_measurements/c1_migration_import_keys_scan.py`: **44 roots → 193-row recursive closure, 0 ambiguity**):
+
+- **μ_θ operand + bulk/closure constants, frequency, and grade bookkeepers:** `mu_theta_operator`, `c_s0`,
+  `rho_m`, `rho_br`, `W_0`, `e_W`, `v_bulk_normal_0`, `q_out`, `omega`, `epsilon_shape`, `Lambda_A_0`,
+  `Lambda_V_0`, `Lambda_X_0`, `tau_A`, `tau_V`, `tau_X` (⭐ `omega` = the frequency ω in `q_out(ω,k)`/`Λ_I(ω)`/the
+  dissipation; `epsilon_shape` = the wave-amplitude bookkeeper `ε` grading every object, the third of `(ε,η,σ_W)`
+  with `eta_bg`/`sigma_W` — both are direct binds a faithful build looks up, not "closure will find them");
+- **the nine S11c-a T-substrate rows:** `face_normal`, `conormal_deriv`, `face_measure_shape_deriv`,
+  `face_velocity`, `relative_flux`, `kinematic_balance`, `traction`, `face_shift`, `closure_shape_deriv`;
+- **the S11c-a varying profiles and the two ρ_br,bg⁰ density representatives** (⭐ density enters c1 ONLY through
+  `μ_s = μ_θ/ρ_br,bg⁰`; the bulk is constant `ρ_m`, §1b): `W_bg`, `w1_profile`, `L_W`, `sigma_W`, `eta_bg`,
+  `rho_br_bg_rho4_constant` (the RHO4-const rep — `rho_br` above is the RHOBR-const rep);
+- **the S11b flat B0b/B0c §5c/§5d regression rows (spec §1c):** `z_impermeable`, `z_by_regime`, `z_by_parity`,
+  `added_mass`, `grazing_behaviour`, the **bare** `face_response`, `face_response_coeffs`,
+  `permeable_dissipative_by_regime_and_parity`, and the five `degenerate_loci_{equations,solution,
+  identically_satisfied,inconsistent,real_admissible}` (the design names the loci a c1 regression operand,
+  `export_ledger_bind_closure_design.md`:49; §5d uses only `z_impermeable`, the rest are §5c's flat package).
+
+⛔ **NOT bound by c1 — reserved for c2 or structurally absent** (both legs, verified against the real base: none
+is referenced by any c1 root's closure): `mu_R_bg` and `m1_profile` (the modulus channel `μ_R,bg`, inside opaque
+`μ_θ`, reserved for c2 — spec §5a/§5b/§8); `mu_R` (the bare constant, reachable only through `μ_θ`'s closure —
+⛔ never a direct lookup); `rho_4D_bg_rho4_constant`/`rho_4D_bg_rhobr_constant` (slab-side 4D-density reps — the
+bulk background is the constant `ρ_m`); `e_W_bg` (the background contrast, carried by `η` = `eta_bg`).
+
+⚠ **The manifest is grounded, but the build's bidirectional smoke-test is the FINAL arbiter.** If the engine's
+actual construction/regression lookups differ from this list in either direction — an undeclared lookup
+(under-export) or a declared-but-unused key (stale manifest) — `assert_lookups_equal_manifest` raises. Treat any
+such mismatch as an **operational** failure: report the exact offending keys under §8 for a one-key manifest fix,
+⛔ never resolve it by adding a spurious lookup, by re-originating an inherited row (severs chain identity), or by
+silently dropping a genuinely-bound key.
 
 Bind the inherited objects to the imported rows per §1/§2/§3 of the spec, ⛔ never re-declaring them under a new
-identity: the constants `c_s0` → `LEDGER['c_s0']`, `μ_R` → `LEDGER['mu_R']`, `ρ_br⁰`/`W̄₀`/`e_W` →
+identity: the constants `c_s0` → `LEDGER['c_s0']`, `ρ_br⁰`/`W̄₀`/`e_W` →
 `LEDGER['rho_br']`/`LEDGER['W_0']`/`LEDGER['e_W']`, `ρ_m` → `LEDGER['rho_m']` (an S11b `KNOB`; ⛔ do not
 re-originate it — a fresh declaration severs chain identity in every bulk/flux/balance/traction/closure object
-that uses it), `v_dr` → `LEDGER['v_bulk_normal_0']`, the branch object `q_out` → `LEDGER['q_out']`; the S11c-a
-shape-derivative substrate the curved face objects are built on (T-a `face_normal`, T-a′ `conormal_deriv`, T-a″
-`face_measure_shape_deriv`, T-b `face_velocity`, T-c `relative_flux`, T-c′ `kinematic_balance`, T-d `traction`,
-T-e `face_shift`, T-i `closure_shape_deriv`) and the S11c-a varying profiles the operator consumes (`W_bg`,
-`mu_R_bg`, `w1_profile`, `m1_profile`, `L_W`, `sigma_W`, `eta_bg`, the density representatives, `e_W_bg`) →
-their `S11c_a`-originated rows; the S11c-b `mu_theta_operator` → its row; the S11b flat B0b/B0c reference rows
-named above → their rows. ⛔ Never re-originate any of these. Only S11c-c1's **own new objects** — the curved
+that uses it), `v_dr` → `LEDGER['v_bulk_normal_0']`, the branch object `q_out` → `LEDGER['q_out']`, the frequency
+`ω` → `LEDGER['omega']`, the amplitude bookkeeper `ε` → `LEDGER['epsilon_shape']`; ⚠ `μ_R` is **not** bound
+directly (it lives inside the opaque `μ_θ` and is reserved for c2 — it reaches c1 only through `μ_θ`'s closure,
+⛔ never a direct `LEDGER['mu_R']` lookup). Bind the S11c-a shape-derivative substrate the curved face objects
+are built on (T-a `face_normal`, T-a′ `conormal_deriv`, T-a″ `face_measure_shape_deriv`, T-b `face_velocity`,
+T-c `relative_flux`, T-c′ `kinematic_balance`, T-d `traction`, T-e `face_shift`, T-i `closure_shape_deriv`) and
+the S11c-a varying profiles the bulk closure consumes — `W_bg`, `w1_profile`, `L_W`, `sigma_W`, `eta_bg`, and the
+two ρ_br,bg⁰ density representatives `rho_br`/`rho_br_bg_rho4_constant` (⛔ **not** `mu_R_bg`/`m1_profile` — the
+c2-reserved modulus channel; ⛔ **not** the slab-side `rho_4D_bg_*` 4D-density reps or `e_W_bg` — the bulk is
+constant `ρ_m` and the contrast is `η`=`eta_bg`) → their `S11c_a`-originated rows; the S11c-b `mu_theta_operator`
+→ its row; the S11b flat B0b/B0c reference rows named above → their rows. ⛔ Never re-originate any of these. Only S11c-c1's **own new objects** — the curved
 DtN operator, its flat symbol, the two-momentum kernel, the permeable curved face response, the formal
 noninvertibility condition, and any new permeability/memory-kernel constant §3 emits — originate in this step
 and have no upstream row; ⛔ do not manufacture one, and ⛔ do not let any of them reuse a constant key (§7's
 reservations bind: the new operators/kernels/constants take fresh names, never `W_0`/`mu_R`/`rho_br`/`e_W`/`v_0`,
 and `v_bulk_normal_0` is never aliased to `v_0`).
 
-**⭐ EMIT vs EXPORT are SEPARATE channels, per `F10`** (`S11_export_chain_decisions_v2.md`: the LEDGER carries
-the model-level register; step-level diagnostics are emit-only) **and spec §7** (reconciled to the §3b
-consume-set). The two channels:
+**⭐ EMIT vs EXPORT are SEPARATE channels** (the survivor of the superseded `F10`, retained in
+`directives/export_ledger_bind_closure_design.md` §D1: the LEDGER carries the bind-closure model-level rows;
+step-level diagnostics are emit-only) **and spec §7** (the §3b consume-set). The two channels:
 
 - **Emit (stdout tag stream → the annexed `out/*.out`):** the engine emits **every** §4 primary object **and**
   every §5/§6 control operand and residual, unchanged and complete. That stream is what the cross-engine
@@ -94,41 +137,58 @@ consume-set). The two channels:
   git-annex+GIN backed, so it carries **no** size cap. ⛔ Nothing is dropped from the emit (rule 11:
   correctness is king; the dissipation audit, loci, and structural views are all still computed, printed,
   cross-engine-compared, and reviewed).
-- **Export (the plain-git `S11c_c1_exports.py` LEDGER → imported ONLY by S11c-c2):** a **strict subset** — the
-  model-definition objects §3b names as c2's consumed set, plus the free symbols they reference, merged onto the
-  carried-forward inherited LEDGER. The LEDGER is a forward-chain **register**, not a dump of derived evidence,
-  and it must stay under GitHub's 100 MB plain-git file cap.
+- **Export (the plain-git `S11c_c1_exports.py` delta → folded by S11c-c2):** c1's **own-rows delta only** — the
+  rows c1 defines/re-derives that a later step **binds** (§D1), plus the **new symbols** those rows introduce.
+  ⛔ **Not** merged onto a carried-forward LEDGER: the delta holds only c1's own rows; c2 obtains everything else
+  from the frozen base through `load_model(base ⊔ deltas)`.
 
-**The candidate EXPORT population is ONLY** (§3b: *"the response objects `(δp_s, J_s, t_s)`, the DtN operator,
+**The EXPORTED delta population is EXACTLY** (§3b: *"the response objects `(δp_s, J_s, t_s)`, the DtN operator,
 and the flat symbol are the c1 exports S11c-c2 consumes"* — that sentence is the authority; nothing else):
 
-- the curved-face **DtN operator** and its **flat symbol** (§3a): `dtn_flat_symbol`, `dtn_operator`
-  (composition), `dtn_kernel` (two-momentum `k,k′`);
-- the **permeable curved face response** (§3b): `face_response`, `face_response_coeffs`;
-- the **free symbols** those objects reference (`S9_REWRITE_PLAN.md` **D1**), including any new
-  permeability/memory-kernel constant §3 introduces (`q_out`, `kappa_out`, `zeta_out`, the `k_out_*`/`k_in_*`
-  legs, `V_±`, the `Lambda_*`/`tau_*` closure knobs, the profiles, the density representatives, …);
-- carried forward: the **entire inherited LEDGER** (S11b + S11c-a + S11c-b), unchanged (F9b corroboration of a
-  re-derived inherited constant is fine — the row keeps its identity and accretes `corroborated_steps`).
+- the curved-face **DtN operator** and its **flat symbol** (§3a): `dtn_operator` (composition), `dtn_flat_symbol`,
+  `dtn_kernel` (two-momentum `k,k′`) — fresh names, F9-written **bare** (no collision in the frozen base);
+- the **permeable curved face response** (§3b): its object name `face_response`/`face_response_coeffs`
+  **collides** with the inherited S11b flat rows, so F9c writes c1's under the **producer-prefixed** keys
+  `s11c_c1_face_response`, `s11c_c1_face_response_coeffs` (the bare predecessors stay the S11b rows c1 imported as
+  §5c/§5d regression operands — ⛔ never overwrite them). Report the F9c write under §8;
+- the **new symbols** those five rows introduce (any new permeability/memory-kernel constant §3 emits, the new
+  `k`/`k′` legs, `V_±`, …) — ⛔ **not** the inherited symbols they reference (`q_out`, the `Lambda_*`/`tau_*`
+  knobs, the profiles, the density representatives, …): those already live in the frozen base and are resolved by
+  the fold, ⛔ not re-emitted into the delta.
 
-⛔ **NOT exported — emit-to-stdout ONLY, because these are step-level DIAGNOSTICS/EVIDENCE, not the model-level
-objects §3b names as consumed** (they are outside c2's §0 scope — the fold, closed-kernel re-extraction, and the
-self-energy operator; per `F10`, if a later step turns out to need one it is promoted into that step's import
-then, the object being still present in the annexed `.out`): the dissipation
+⛔ **NOT exported — emit-to-stdout ONLY, because these are step-level DIAGNOSTICS/EVIDENCE, not model-level rows a
+later step binds** (per §D1's recovery clause, if a later step turns out to bind one it is promoted then via an
+explicit **producer promotion-delta** — `promotion_delta` — the object being still present in the annexed
+`.out`; ⛔ a bare `IMPORT_KEYS` addition does **not** materialize it): the dissipation
 audit (`permeable_dissipation_vs_omega_tau`, `permeable_port_hermitian`, the `energy_*` operands and residual),
 the DtN Hermitian/reactive split (`dtn_hermitian_part`, `dtn_reactive_part`, `dtn_inertial_loading`), the DtN
 structural views and traces (`dtn_by_regime_pair`, `dtn_by_parity`, `dtn_grazing_behaviour`, `dtn_term_origins`,
 `dtn_rigid_shift_*`), the loci and noninvertibility condition (`noninvertibility_condition`,
-`degenerate_loci_*`), and — as before — **every §5 control (5a–5e) and §6 homogeneity operand** (the S11b-`B8`
-analog). §7's engine-local tags are engine-local, ⛔ not exports. ⭐ **This is `F10` applied — the LEDGER is the
-model-level register (the spec-declared §3b consume-set), not every emitted primary object. `F10` refines `D1`
-at the list level; ⛔ this directive does not amend `D1`/§7 on its own authority — it points at `F10` and the
-reconciled §7. The same rule governs S11c-c2's export set.** If an object's chain role is genuinely unclear,
-default it to emit-only and report it under §8 rather than export it — but ⛔ do not drop any object §3b names as
-consumed. Carry forward the imported `LEDGER`. A row's `class` follows from what its object
-**is** — a declared symbol carries its declared class, ⛔ never a table lookup by row name. Use the class
-vocabulary at `research/pde_ledger_v3/S9_REWRITE_PLAN.md:41` and `research/pde_ledger_v3/REBUILD_HANDOFF.md:40`;
-report anything unclassifiable under §7/§8 rather than guess.
+c1's own `degenerate_loci_*`), and **every §5 control (5a–5e) and §6 homogeneity operand** (the S11b-`B8`
+analog). §7's engine-local tags are engine-local, ⛔ not exports. ⛔ **A missing manifest is a HARD ERROR, ⛔
+never a fallback to "export every primary"** (§D3.1 — that fallback is what put 17 MiB of `term_origins` in plain
+git). If an object's chain role is genuinely unclear, default it to emit-only and report it under §8 — but ⛔ do
+not drop any object §3b names as consumed. A row's `class` follows from what its object **is** — a declared
+symbol carries its declared class, ⛔ never a table lookup by row name. Use the class vocabulary at
+`research/pde_ledger_v3/S9_REWRITE_PLAN.md:41` and `research/pde_ledger_v3/REBUILD_HANDOFF.md:40`; report anything
+unclassifiable under §7/§8 rather than guess.
+
+**⭐ Validate the delta before publication (§D3, from `ledger_fold.py`) — a required real-artifact acceptance
+step, not a synthetic check:**
+
+- `check_consumer(fold, IMPORT_KEYS)` — the manifest's recursive `srepr`-identity + `dimension_key` closure
+  resolves with no `AmbiguousSymbolError`/`ClosureError` (a missing declared key raises `ManifestError`);
+- `assert_lookups_equal_manifest(build_fn, fold, IMPORT_KEYS)` — the **bidirectional smoke-test**: route **every**
+  construction/regression `fold` lookup through the access-recording proxy this passes to `build_fn`, so the set
+  of observed `__getitem__` keys **equals `IMPORT_KEYS` exactly** (an undeclared lookup = under-export risk; a
+  declared-but-unused key = stale manifest — both raise);
+- `assert_delta_is_minimal(delta_ledger, own_bind_closure, infra_keys)` — the written delta's key set equals c1's
+  own bind-closure (the five model-level rows above + their new-symbol closure) plus any explicitly named
+  infrastructure; an accidental re-accumulation fails loudly.
+
+Emit `check_consumer`'s `closure`/`symbol_edges`/`dimension_edges` counts and each assertion's outcome as
+computed objects in the stdout stream (rule-2 operands; ⛔ not a bare "OK"). A guard failure is an **operational**
+failure (nonzero exit), distinct from a physics disagreement (§6: emit-and-continue, exit 0).
 
 `research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md` **F1** (keys stay FLAT; `D5` unchanged) is
 the storage rule, and **F9** alone decides which key form a collision writes. **Apply both whole; ⛔ do not
@@ -146,11 +206,14 @@ protocol governs §3b **physics** loci and its typed CAS booleans are objects co
 comparator (which rejects native booleans) — it is **not** an F9 override; F9's proved-different-vs-undecided
 row-collision reporting still uses the **inherited `T5` default**, with no spec-specific override.
 
-`BUILD_INPUT_DIGESTS` is a `MappingProxyType` sha256-pinning **exactly the five inputs the c1 spec §7 requires**
-— note this **differs** from the earlier sub-steps, which pinned only the immediate parent; the c1 spec pins the
-full ancestry: `{ 'S11c_c1_bulk_closure_sympy_audit.py' (this engine's own source), 'S11b_exports.py',
-'S11c_a_exports.py', 'S11c_b_exports.py', 'S11c_c1_SHARED_PHYSICS.md' }`. Freeze the export as
-S11b/S11c-a/S11c-b do — outer `MappingProxyType`, per-record `MappingProxyType`, then `del _LEDGER`.
+`BUILD_INPUT_DIGESTS` is a `MappingProxyType` sha256-pinning **exactly the six inputs the c1 spec §7 requires**
+— the full ancestry (differing from the earlier sub-steps, which pinned only the immediate parent) **plus the
+shared fold module** (a 6th executable input, `export_ledger_bind_closure_design.md` §D3 / build-plan step 1):
+`{ 'S11c_c1_bulk_closure_sympy_audit.py' (this engine's own source), 'S11b_exports.py', 'S11c_a_exports.py',
+'S11c_b_exports.py', 'S11c_c1_SHARED_PHYSICS.md', 'ledger_fold.py' }`. All six are read to compute their sha256
+even though `load_model` reads only `S11c_b_exports.py` for data — the `S11b`/`S11c_a` pins are the byte-provenance
+of the frozen base's ancestry (each base file already pins its parent's content sha), retained unchanged. Freeze
+the export as S11b/S11c-a/S11c-b do — outer `MappingProxyType`, per-record `MappingProxyType`, then `del _LEDGER`.
 
 Choose **F6**'s first branch: publish `S11c_c1_exports.py` only if every **primary** task of §4 (the §3a DtN
 operator objects and the §3b response objects) completed. Use §4/§5's observed run record; add no completeness

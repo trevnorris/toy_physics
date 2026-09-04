@@ -19,8 +19,29 @@ $ sed -n '22p' research/pde_ledger_v3/steps/S11b_interface_coupling_law.md
 $ ls research/pde_ledger_v3/scripts/ | grep -E '_exports.py$'
 S10_exports.py
 S11b_exports.py
+S11c_a_exports.py
+S11c_b_exports.py
 S11_exports.py
 S9_exports.py
+```
+
+## N1 amended (2026-09-04) — from S11c-c1 onward the chain uses the generate-over-a-frozen-base topology; the design is two-leg-gated + committed (c04e071f/fd8c89d0), F10 superseded (4274b403)
+
+```
+$ grep -nE 'from S11c-c1 onward the chain uses the generate-over-a-frozen-base|imports the fold|own-rows delta' research/pde_ledger_v3/directives/S11c_decisions.md | head -3; git -C /var/projects/toy_physics log --oneline -- research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md | head -2
+29:⭐ **from S11c-c1 onward the chain uses the generate-over-a-frozen-base topology** of
+32:supersedes `F10`): each such sub-step **imports the fold** `load_model(frozen base ⊔ deltas)` over the atomic
+34:model) and **writes only its own-rows delta** (bind-closure membership, §D1; the under-export guard
+fd8c89d0 Design §D3 refined: edge resolution by full symbol identity (F9c scan)
+c04e071f Export architecture redesign: the bind-closure LEDGER (design, 2-leg-gated)
+```
+
+## N1 amended — the fold+guard module ledger_fold.py exists (a shared executable input added to a delta-writer's BUILD_INPUT_DIGESTS)
+
+```
+$ grep -nE 'def load_model|def check_consumer' research/pde_ledger_v3/scripts/ledger_fold.py
+102:def load_model(
+199:def check_consumer(
 ```
 
 ## N1/N2 — S11b's single spec took eleven directive revisions (why the family is split finer)

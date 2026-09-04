@@ -25,10 +25,18 @@ load-bearing physics anchors are in the `_measurements` twin.
 ⭐[folded — both legs: one spec + one engine pair over this surface cannot be independently reviewed, and
 S11b's single spec took eleven directive revisions.] Each sub-step is its own build unit: **its own spec,
 two blind engines, frozen comparator, and `S11c_<x>_exports.py`** — reviewed on its own. The SymPy engines
-**chain** (S11c-a imports `scripts/S11b_exports.py`, 1958 rows, `steps/S11b_interface_coupling_law.md:22`;
-each later sub-step imports the prior one's exports); the Wolfram engines are **blind** and re-derive. A
-single roll-up ledger **card** closes the family. `BUILD_INPUT_DIGESTS` pins, per sub-step,
-`{that sub-step's audit, the imported exports, that sub-step's spec}`. ⛔ **Do not reuse the `S11b` slug.**
+**chain** (S11c-a imports `scripts/S11b_exports.py`, 1958 rows, `steps/S11b_interface_coupling_law.md:22`);
+⭐ **from S11c-c1 onward the chain uses the generate-over-a-frozen-base topology** of
+`directives/export_ledger_bind_closure_design.md` (§D1–§D3; orchestrator-authored, two-leg-gated, committed
+`c04e071f`/`fd8c89d0` — it un-supersedes the 2026-08-11 `chain_accumulate_or_generate_decision.md` and
+supersedes `F10`): each such sub-step **imports the fold** `load_model(frozen base ⊔ deltas)` over the atomic
+frozen base `scripts/S11c_b_exports.py` (which already carries the whole F9-resolved S11b + S11c-a + S11c-b
+model) and **writes only its own-rows delta** (bind-closure membership, §D1; the under-export guard
+`scripts/ledger_fold.py`, §D3) — ⛔ **not** the accumulated whole-model file. S11c-a and S11c-b, already built
+under the prior accumulate topology, are the frozen base, byte-unchanged. The Wolfram engines are **blind** and
+re-derive. A single roll-up ledger **card** closes the family. `BUILD_INPUT_DIGESTS` pins, per sub-step,
+`{that sub-step's audit, the imported exports, that sub-step's spec}` — and, for a delta-writing sub-step,
+**also `scripts/ledger_fold.py`** (a shared executable input, §D3). ⛔ **Do not reuse the `S11b` slug.**
 
 **N2 · The split — decided WITH the legs; ⛔ not pre-committed, ⛔ not frozen. ⭐[folded]**
 Both legs independently found the draft's three-seam sketch **too coarse** — its "result" seam re-merged

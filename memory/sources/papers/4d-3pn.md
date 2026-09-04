@@ -26,10 +26,6 @@ Sources:
 - Entry point and sole member: `research/4d_3pn/paper/4d_3pn.tex`
 - Role: `primary`
 - Read mode: `semantic`
-- Git mode: `100644`
-- Object type: `blob`
-- Blob ID: `4f67e082f79ce08c10547e9c7dba209a652b8d48`
-- Blob size: `320909` bytes
 
 ## Key statements
 

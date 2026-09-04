@@ -270,7 +270,19 @@ def command_lint() -> int:
         for item in spec["inputs"]:
             if item not in known:
                 errors.append(f"{page_id}: unknown input {item}")
-    forbidden = ("generated_from_commit:", "blob_oid:", "processed_commit:", "target_commit:", "transaction_id:", "Git object:")
+    forbidden = (
+        "generated_from_commit:",
+        "blob_oid:",
+        "processed_commit:",
+        "target_commit:",
+        "transaction_id:",
+        "Git object:",
+        "Git mode:",
+        "Git mode/type:",
+        "Blob:",
+        "Blob ID:",
+        "Blob OID:",
+    )
     for path in MEMORY.rglob("*.md"):
         if "transactions" in path.parts:
             continue

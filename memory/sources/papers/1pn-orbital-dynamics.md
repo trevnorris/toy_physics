@@ -26,9 +26,6 @@ Sources:
 - Entry point and sole member: `research/1pn_orbital_dynamics/paper/1pn_orbital_dynamics.tex`
 - Role: `primary`
 - Read mode: `semantic`
-- Git mode/type: `100644` / `blob`
-- Blob OID: `1e983833805ee3507b0006e75339fbafde44cc35`
-- Blob size: `99866` bytes
 
 ## Key statements
 

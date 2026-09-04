@@ -27,7 +27,6 @@ Sources:
 - Entry point and primary member: `research/4d/paper/4d.tex`
 - Shape: single-file paper
 - Read mode: `semantic`
-- Blob: `abedb6cc0255ab6f58b3244eff37c6331a5e078b` (124234 bytes)
 
 ## Key statements
 

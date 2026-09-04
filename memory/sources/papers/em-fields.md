@@ -174,4 +174,5 @@ Sources:
 
 ## Related topics and scripts
 
-No related memory pages or script domains were supplied by the transaction.
+- `memory/topics/charge-and-electromagnetism.md`
+- `memory/conflicts.md`

@@ -1,14 +1,66 @@
 {
   "pages": {
+    "conflicts": {
+      "input_hash": "e42e7d4d3f1913c44b4cda5fd32e99fd3d2c3c8f84177cf873648cd1989793b2",
+      "page_hash": "2c692a3e6d7bb57cfe35ea7576c1ede1245ddfaf32efe42ce9c01d26d3c79342"
+    },
+    "memory-index": {
+      "input_hash": "d2d0decea50c9df36141d9f19f597c1f7a9d28abb847d7752bcff08a53be0a8c",
+      "page_hash": "9166398ed940f1a8675c012f0912e6b4a7f4438cd2aa15825af150d73be651ee"
+    },
+    "scripts-em-charge-attribute": {
+      "input_hash": "693d5ded42ae689496636d532b76a98a40ca3ba9146b1ce83582f137881df097",
+      "page_hash": "ee0d1178d0003435e04e375bc49a98c2e1cc5111c180f99223fcf2ba5e7e146f"
+    },
+    "scripts-force-visualizer": {
+      "input_hash": "444fbcd3f60523666695cc3cd63813d1defd3ee972b2d9f604d28eb84b09ad10",
+      "page_hash": "c945c92f0de822c823e36c7de6dfff41c1d44483db7a369053c56fca4a147ecf"
+    },
     "scripts-pde-audit": {
       "input_hash": "a03ad72337901074979da6049b7a268c226772bf2dcb2ff34522bdb819a9f036",
       "page_hash": "86d8f0c06f37cb3cb59a73936d3bd305cb923bd0c89cef4ca6441ce2781bd17e"
+    },
+    "scripts-stage1-solver": {
+      "input_hash": "db25dbf9527dadf826da612d0c8dc2f57bf3b83261caf52d046839e5a025a26f",
+      "page_hash": "c29b1b9d7b9f22058223f76ccffdf0e8e2ae230b1417f01976606d60dbc287d4"
+    },
+    "topic-charge-and-electromagnetism": {
+      "input_hash": "911168d4d57198e5654afd3c3de581c376dea806c346f38b79599a1fd673161a",
+      "page_hash": "6e364de70a9dcb0de0fba85581dcc7e35ecfae6beffb67a90bc2c4af769d7d26"
+    },
+    "topic-foundations": {
+      "input_hash": "f2ac0269e91bb85761b3216853983c19fa3550d1585ad386930c77fdee9eb4a2",
+      "page_hash": "8c22eed66849434c7781aab2b6cdd3937f0c7a0d9cfb1f9a6177f7a1dd049697"
+    },
+    "topic-moving-throat-dynamics": {
+      "input_hash": "52f84471ee51f3b061d727c648d3bab389864e63484f965147d57eedca093561",
+      "page_hash": "2389740495e4b92a2f24cac56590f41685e6c662e8344c931b6697198df4a707"
+    },
+    "topic-post-newtonian-ladder": {
+      "input_hash": "dafa352120e9e9cc780982711c2f700c125c742cb400996268159dba46a29b41",
+      "page_hash": "9fefa55f27c1cc6b1b5dcceb50a4c15de56bd5072026674dcd3662e3c2cdc6e5"
+    },
+    "topic-projection-and-reduction": {
+      "input_hash": "a149587698891149d82209c5cc395204914af5121afe7b64f4fa1e556a546cc0",
+      "page_hash": "6a0051591699ae36beeeb424869f2c02a5e907a5641bbba4740d89de0a823f80"
+    },
+    "topic-quadrupole-normalization": {
+      "input_hash": "5b244c1e3f6c69d2256e6778de1cb5fd303e0b5eccc9e63cda46cb41408335f9",
+      "page_hash": "360adcf8724e4b9c58ef254f7edb481aac111994a66ba0831929bd8120dd3602"
+    },
+    "topic-status-and-reading-rules": {
+      "input_hash": "a4ec4fb7186e36802a5639f63ad0ed17856909270653fd6da2f3aef0a85a03d0",
+      "page_hash": "f57e72e8eadfeeb0c48a53387db078be452f2b06cee92139512b363757851ef2"
+    },
+    "topic-weak-axisymmetric-and-orbit-closure": {
+      "input_hash": "af47a1f7421ffe017e6db269d61350dadfc284c041310db8f33a1516fedc8187",
+      "page_hash": "6da75c9cb3fc7fc41b42d8c764fa4fc1b92afab49bcef1c65ae07fcaa8668678"
     }
   },
   "units": {
     "paper-1pn-hybrid": {
       "content_hash": "20b1afccc40ba4361f5f42ee79599378205ab6478cfc3c02faef9f73d5b0d464",
-      "page_hash": "a00908127785a4c681db170c649123ae1a9960b39eecc1da0fdc37175c963eba"
+      "page_hash": "dd9111cc51407a88e502214f703d6df37d4e45bb99356332102e9daa96d10281"
     },
     "paper-1pn-optics": {
       "content_hash": "10e8343cb826ec0572545f142111bc580f7da5be9fb063d761126e0d40578fc9",
@@ -16,7 +68,7 @@
     },
     "paper-1pn-orbital-dynamics": {
       "content_hash": "4cb658ed9b9605fd46c7dc507bfd3768a4fe6441c73e3602d2303685e78b8449",
-      "page_hash": "1000002cacd339b71205f67884d4a5e27a52494cb5f31cf57766973e6778a048"
+      "page_hash": "986ab9d1cbefbc35f1ffdee7a3b0cd6b5ce5ca26a3418c88dac1af03521b87ff"
     },
     "paper-1pn-spin-and-nbody": {
       "content_hash": "d3d1ec2e7936989097a02a902b9fdc3b4cf55fdc3a55ebbfb830242199df6076",
@@ -40,7 +92,7 @@
     },
     "paper-4d-3pn": {
       "content_hash": "d2614940b4f809a78a19ade92b9b8d4ec7ee54501d5071095a8396e71487a2c0",
-      "page_hash": "95febf7f4b7fd9e82602164b16a118cf387175207cf2c689cc42395ebbae2c75"
+      "page_hash": "52ae2d670b344c1607f93d5517fc9159bf96787b0964339b1199836ca93da10e"
     },
     "paper-4d-4pn": {
       "content_hash": "d4ed0763b7ed56a6527c8c3f9adbae8ed86bac5297d5102ca1a6e4965d9bb92a",
@@ -60,7 +112,7 @@
     },
     "paper-em-fields": {
       "content_hash": "1eb6bc1e95e65fbf6cc9c0cc299a2e3b3a3ca323c33c9565099db410f0c95d8c",
-      "page_hash": "b49ffa7c1b62c5c7a401645e0252f6521be638bea6aa59982e91d7b894cc8846"
+      "page_hash": "c161feb24d7c0936cf1decc967ec8e7d35cef1260a6544a6f0ecd2fae5ef751d"
     },
     "paper-moving-throat-pde": {
       "content_hash": "028362515fb0fb42871c2de23950aad7174a104e478629bcfcdafac00bbacc20",
@@ -68,11 +120,39 @@
     },
     "paper-unified-4d": {
       "content_hash": "f02ba0da9af0608de2765a558343d3577322f7783684e0dd07f44f4028330454",
-      "page_hash": "1181eaf07bf241f8e8e516ffd7367abed745c00ba802843789cd5197eb4a84be"
+      "page_hash": "bb542be72b9f726507858db059018df9b8d2ef1488d30c0c2d88ace50ddaa5e0"
     },
     "pde-audit": {
       "content_hash": "39aba0c69897646e18e90b31daa094236a3c8fa5617f37209c83afe440bf3296",
       "page_hash": "75b91ba9c6cf93be2aeac96ed53313a52e7b58dba842f0205ba4a3e0c41e5397"
+    },
+    "software-em-electric-sign": {
+      "content_hash": "f5a50cf0e923154b385c546ccaf1e233dd74e948d59b9500615bb6469605f509",
+      "page_hash": "62b5f1c00230f8589335732e10de5f8a0afda876a60f7e8685c2c41c2b02bd24"
+    },
+    "software-em-emergent-construction": {
+      "content_hash": "74d0ee710718cf70d410568d515ac449ba86df0d4886d5cb7abcbdc08a936cf2",
+      "page_hash": "0e29d2f1e391c2411c2f82389e34911d77ab0edfb4b7cd0ca5c9cfef3ef9d6e9"
+    },
+    "software-em-magnetism": {
+      "content_hash": "42033714456e0e32752ce02c962809319310fe990f0282e11fc34c896f1a7726",
+      "page_hash": "36dccc5de92b3f05ea19f6bc69c0a9902cc396d067321ed757559f2d650907b8"
+    },
+    "software-em-native-p": {
+      "content_hash": "e27c6233d30443d82e833f259d9427f3f90d599ac37a069db126e88f2802b71c",
+      "page_hash": "965152ef249bb7413cfe5b0bae0fa3207e686d11c32037b4539e2ceb5e9344d6"
+    },
+    "software-em-u1": {
+      "content_hash": "03e477f2a2c8e6a8d77f4f3bb77a1c71d1b751815f921690bc0871a3908c7326",
+      "page_hash": "15a6e0ef82831f2be5845768fddd5b895b05f5554b935d3a25fe3dd92631925a"
+    },
+    "software-force-visualizer": {
+      "content_hash": "e9eab5db6161632d2ddc795346fd192f3df65e8800392495fcc5529387979a41",
+      "page_hash": "3602e122ef7a4ca65b884ab8859cb8867c2da331384938f8fca3acd71fd093f0"
+    },
+    "stage1-solver": {
+      "content_hash": "afe745e017fb64a6cb13b668fdc54e91a1eb4e00396b4b55378b02eb36fc8c97",
+      "page_hash": "d42c995188964201930b679f2c86abf841d90a2b56bca50397e7c54ccf9e8b31"
     },
     "stage1-verdict": {
       "content_hash": "cbd63dc3273bb5dcbc5336b5fda7c6dabcf15b785124ec0b97468716ada627f1",

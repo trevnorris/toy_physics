@@ -57,8 +57,9 @@ and 5PN-planning material. Do not migrate content whose only support is root
 
 ## Cutover
 
-- [ ] Every retained item above appears in a current topic page with original
+- [x] Every retained item above appears in a current topic page with original
       source citations.
-- [ ] `memory/index.md` points to the resulting pages.
-- [ ] A fresh agent can answer a few representative lookup questions.
+- [x] `memory/index.md` points to the resulting pages.
+- [x] A fresh agent can answer representative lookup questions using only the
+      memory index and linked pages, without a source-tree grep.
 - [ ] Delete `atlas/` and `graph/` in a separate, reviewable commit.

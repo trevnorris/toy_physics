@@ -42,6 +42,11 @@ python3 memory/update.py lint
 solely to determine which source files are tracked, so ignored and untracked
 files are never pulled into the catalog accidentally.
 
+Source units are curated reading bundles, not transitive build-dependency
+graphs. For generated scientific results, regenerate the tracked report/result
+first; the memory summarizes that published bundle and a few meaningful entry
+points rather than hashing every helper used to build it.
+
 ## Reading it
 
 - Prefer source pages marked current and newer explicit revisions over older

@@ -173,4 +173,5 @@ Sources:
 
 ## Related topics and scripts
 
-No related memory pages or script domains were supplied by the transaction.
+- `memory/topics/post-newtonian-ladder.md`
+- `memory/topics/weak-axisymmetric-and-orbit-closure.md`

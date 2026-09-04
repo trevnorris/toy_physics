@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-4d-em-fields
 title: Paper 4D Em Fields
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/4d_em_fields/paper/4d_em_fields.tex
-content_owner: ai_generated
 last_updated: '2026-09-01'
-generated_from_commit: 60e31504b8425840cf6b5e814a0c518d68ab2db6
-source_kind: paper
-source_unit:
-  id: paper-4d-em-fields
-  shape: file
-  entrypoint: research/4d_em_fields/paper/4d_em_fields.tex
-  unit_digest_sha256: 74a9584271b5fda78b24083619ce202e8d8a86154103edbda3e6cd42174caddf
-  members:
-  - path: research/4d_em_fields/paper/4d_em_fields.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 582224346384289b734db22779a08ad3b8fc8c62
-    blob_size: 86841
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

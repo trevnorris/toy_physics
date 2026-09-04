@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-4d-1pn-full
 title: Paper 4D 1Pn Full
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/4d_1pn_full/paper/4d_1pn_full.tex
-content_owner: ai_generated
 last_updated: '2026-08-31'
-generated_from_commit: 3f7234d3ba673817864c8938be209d451da19f36
-source_kind: paper
-source_unit:
-  id: paper-4d-1pn-full
-  shape: file
-  entrypoint: research/4d_1pn_full/paper/4d_1pn_full.tex
-  unit_digest_sha256: 1a741fcac48df06d3a41063a0457d7c653c927c88dc08f68211d297e12a98728
-  members:
-  - path: research/4d_1pn_full/paper/4d_1pn_full.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 01deaeb26753fb2ff4bb0144f413b329998cd63d
-    blob_size: 218696
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

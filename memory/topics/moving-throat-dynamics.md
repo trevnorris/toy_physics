@@ -1,20 +1,12 @@
 ---
-schema_version: 2
-id: topic-moving-throat-dynamics
 title: Moving-throat dynamics
 type: topic
-lifecycle: current
-memory_review: ai_draft
+status: draft
 sources: []
-content_owner: mixed
-last_updated: 2026-08-24
-generated_from_commit: ddecdbc249a4d9d860dd25ecd4531726a01d26c6
+last_updated: 2026-09-03
 ---
 
-<!-- BEGIN GENERATED:working-position -->
-<!-- Unpopulated: generated during semantic synchronization. -->
-<!-- END GENERATED:working-position -->
+# Moving-throat dynamics
 
-## Curator notes
-
-Human-owned; generated updates preserve this section.
+To combine ontology, wall dynamics, branch freeze, response/export packets,
+material closure, and Stage-1 realization in one maintained page.

@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-1pn-hybrid
 title: Paper 1Pn Hybrid
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/1pn_hybrid/paper/1pn_hybrid.tex
-content_owner: ai_generated
 last_updated: '2026-08-31'
-generated_from_commit: 3f7234d3ba673817864c8938be209d451da19f36
-source_kind: paper
-source_unit:
-  id: paper-1pn-hybrid
-  shape: file
-  entrypoint: research/1pn_hybrid/paper/1pn_hybrid.tex
-  unit_digest_sha256: 0e5bed36ee13dea3cf10197fb6916eb99b4e067e7f826f718acf54a9e4331709
-  members:
-  - path: research/1pn_hybrid/paper/1pn_hybrid.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 65227f6ca9f5b64b858a8f59b32a5f9b27e5aa53
-    blob_size: 136440
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 
@@ -47,7 +25,6 @@ Sources:
 - Entrypoint: `research/1pn_hybrid/paper/1pn_hybrid.tex`
 - Role: primary monolithic paper
 - Read mode: semantic
-- Git object: blob `65227f6ca9f5b64b858a8f59b32a5f9b27e5aa53` (`136440` bytes, mode `100644`)
 
 ## Key statements
 

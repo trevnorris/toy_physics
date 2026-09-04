@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-4d-plasma
 title: Paper 4D Plasma
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/4d_plasma/paper/4d_plasma.tex
-content_owner: ai_generated
 last_updated: '2026-09-01'
-generated_from_commit: 27da4fd8015e1f620abb5124d468a1cc7271faab
-source_kind: paper
-source_unit:
-  id: paper-4d-plasma
-  shape: file
-  entrypoint: research/4d_plasma/paper/4d_plasma.tex
-  unit_digest_sha256: 20726aa50e796e1c1a075cc594e451003c6583edda72f0201c3fe66b2b1b264b
-  members:
-  - path: research/4d_plasma/paper/4d_plasma.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: d044b1399ab2f230410e0f1ff580772fd728f951
-    blob_size: 220494
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

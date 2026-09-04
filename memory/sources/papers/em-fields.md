@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-em-fields
 title: Paper Em Fields
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/em_fields/paper/em_fields.tex
-content_owner: ai_generated
 last_updated: '2026-09-02'
-generated_from_commit: 6f25d7ea3171549372fa6a6dd93931418fbd832e
-source_kind: paper
-source_unit:
-  id: paper-em-fields
-  shape: file
-  entrypoint: research/em_fields/paper/em_fields.tex
-  unit_digest_sha256: 7d02bc0be7e59c3c6763b3fb45be077972dd9d4adc9462a548ffe721affa6e4f
-  members:
-  - path: research/em_fields/paper/em_fields.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 34c544d0dfb00d326bf29c9b26e08a9bd8cddd58
-    blob_size: 124796
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

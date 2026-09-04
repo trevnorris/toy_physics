@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-1pn-orbital-dynamics
 title: Paper 1Pn Orbital Dynamics
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/1pn_orbital_dynamics/paper/1pn_orbital_dynamics.tex
-content_owner: ai_generated
 last_updated: '2026-08-31'
-generated_from_commit: 3f7234d3ba673817864c8938be209d451da19f36
-source_kind: paper
-source_unit:
-  id: paper-1pn-orbital-dynamics
-  shape: file
-  entrypoint: research/1pn_orbital_dynamics/paper/1pn_orbital_dynamics.tex
-  unit_digest_sha256: 827b7af9af9963b4d764e959ec87cf1cdde19ce12f0ea8798ab878498255f15a
-  members:
-  - path: research/1pn_orbital_dynamics/paper/1pn_orbital_dynamics.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 1e983833805ee3507b0006e75339fbafde44cc35
-    blob_size: 99866
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-1pn-spin-and-nbody
 title: Paper 1Pn Spin And Nbody
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/1pn_spin_and_nbody/paper/1pn_spin_and_nbody.tex
-content_owner: ai_generated
 last_updated: '2026-08-31'
-generated_from_commit: 3f7234d3ba673817864c8938be209d451da19f36
-source_kind: paper
-source_unit:
-  id: paper-1pn-spin-and-nbody
-  shape: file
-  entrypoint: research/1pn_spin_and_nbody/paper/1pn_spin_and_nbody.tex
-  unit_digest_sha256: 3b27034c2270397aec5c2829845211f521b9ee5f1d599357c44bab1a7470a758
-  members:
-  - path: research/1pn_spin_and_nbody/paper/1pn_spin_and_nbody.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 2f30d99ae29c729b1f876eb75c4d2283d15446ef
-    blob_size: 83701
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

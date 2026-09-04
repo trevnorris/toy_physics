@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-4d-3pn
 title: Paper 4D 3Pn
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/4d_3pn/paper/4d_3pn.tex
-content_owner: ai_generated
 last_updated: '2026-09-01'
-generated_from_commit: 5d3b78e8e39c0ea9dcc6c37b8f940d36d1183c0b
-source_kind: paper
-source_unit:
-  id: paper-4d-3pn
-  shape: file
-  entrypoint: research/4d_3pn/paper/4d_3pn.tex
-  unit_digest_sha256: 5d62367d03c9d28dd80f5eba442a7bf65ac91cdf6db692a1b1ef970bae4a49dd
-  members:
-  - path: research/4d_3pn/paper/4d_3pn.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 4f67e082f79ce08c10547e9c7dba209a652b8d48
-    blob_size: 320909
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

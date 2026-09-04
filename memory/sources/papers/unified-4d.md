@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-unified-4d
 title: Paper Unified 4D
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/4d/paper/4d.tex
-content_owner: ai_generated
 last_updated: '2026-08-25'
-generated_from_commit: e15f5a358d03e0f5ca0061c9316e690758e7e625
-source_kind: paper
-source_unit:
-  id: paper-unified-4d
-  shape: file
-  entrypoint: research/4d/paper/4d.tex
-  unit_digest_sha256: 5502373933a1b9814ce84c2a13714581ca07e30fe3bc8682311f234b86ad051b
-  members:
-  - path: research/4d/paper/4d.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: abedb6cc0255ab6f58b3244eff37c6331a5e078b
-    blob_size: 124234
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

@@ -1,21 +1,11 @@
 ---
-schema_version: 2
-id: scripts-force-visualizer
-title: Force visualizer script catalog
+title: Force visualizer scripts
 type: script_catalog
-lifecycle: current
-memory_review: ai_draft
+status: draft
 sources: []
-content_owner: mixed
-last_updated: 2026-08-24
-generated_from_commit: ddecdbc249a4d9d860dd25ecd4531726a01d26c6
-domain: force-visualizer
+last_updated: 2026-09-03
 ---
 
-<!-- BEGIN GENERATED:entries -->
-<!-- Unpopulated: generated during semantic synchronization. -->
-<!-- END GENERATED:entries -->
+# Force visualizer scripts
 
-## Curator notes
-
-Human-owned; generated updates preserve this section.
+Pending the `software-force-visualizer` source capsule.

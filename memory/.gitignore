@@ -1,6 +1,3 @@
-/transactions/
-/locks/
-/journals/
-/backups/
 __pycache__/
 *.py[cod]
+_meta/state.json.tmp

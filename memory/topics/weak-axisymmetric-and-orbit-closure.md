@@ -1,20 +1,12 @@
 ---
-schema_version: 2
-id: topic-weak-axisymmetric-and-orbit-closure
 title: Weak-axisymmetric and orbit closure
 type: topic
-lifecycle: current
-memory_review: ai_draft
+status: draft
 sources: []
-content_owner: mixed
-last_updated: 2026-08-24
-generated_from_commit: ddecdbc249a4d9d860dd25ecd4531726a01d26c6
+last_updated: 2026-09-03
 ---
 
-<!-- BEGIN GENERATED:working-position -->
-<!-- Unpopulated: generated during semantic synchronization. -->
-<!-- END GENERATED:working-position -->
+# Weak-axisymmetric and orbit closure
 
-## Curator notes
-
-Human-owned; generated updates preserve this section.
+To summarize the orbital, spin/N-body, weak-axisymmetric, and similarity-orbit
+results while preserving their stated scope limits.

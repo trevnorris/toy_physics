@@ -1,20 +1,12 @@
 ---
-schema_version: 2
-id: topic-projection-and-reduction
 title: Projection and reduction
 type: topic
-lifecycle: current
-memory_review: ai_draft
+status: draft
 sources: []
-content_owner: mixed
-last_updated: 2026-08-24
-generated_from_commit: ddecdbc249a4d9d860dd25ecd4531726a01d26c6
+last_updated: 2026-09-03
 ---
 
-<!-- BEGIN GENERATED:working-position -->
-<!-- Unpopulated: generated during semantic synchronization. -->
-<!-- END GENERATED:working-position -->
+# Projection and reduction
 
-## Curator notes
-
-Human-owned; generated updates preserve this section.
+To distinguish parent bulk dynamics, brane projection, dimensional reduction,
+and the surviving mixed channels.

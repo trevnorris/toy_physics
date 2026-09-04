@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-1pn-optics
 title: Paper 1Pn Optics
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/1pn_optics/paper/1pn_optics.tex
-content_owner: ai_generated
 last_updated: '2026-08-31'
-generated_from_commit: 3f7234d3ba673817864c8938be209d451da19f36
-source_kind: paper
-source_unit:
-  id: paper-1pn-optics
-  shape: file
-  entrypoint: research/1pn_optics/paper/1pn_optics.tex
-  unit_digest_sha256: 3a7d4471e96d303c8b337028e309a9dfa8929b50b1c486f8cccf822a55c64895
-  members:
-  - path: research/1pn_optics/paper/1pn_optics.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 0b5272655b80eef3bf280041fd24b82b2c204431
-    blob_size: 162853
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

@@ -1,21 +1,12 @@
 ---
-schema_version: 2
-id: scripts-stage1-solver
-title: Stage 1 solver script catalog
+title: Stage-1 solver scripts
 type: script_catalog
-lifecycle: current
-memory_review: ai_draft
+status: draft
 sources: []
-content_owner: mixed
-last_updated: 2026-08-24
-generated_from_commit: ddecdbc249a4d9d860dd25ecd4531726a01d26c6
-domain: stage1-solver
+last_updated: 2026-09-03
 ---
 
-<!-- BEGIN GENERATED:entries -->
-<!-- Unpopulated: generated during semantic synchronization. -->
-<!-- END GENERATED:entries -->
+# Stage-1 solver scripts
 
-## Curator notes
-
-Human-owned; generated updates preserve this section.
+Pending the `stage1-solver` source capsule. The current verdict is summarized
+separately in [`../sources/software/stage1-verdict.md`](../sources/software/stage1-verdict.md).

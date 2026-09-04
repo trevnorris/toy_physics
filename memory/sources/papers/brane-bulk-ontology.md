@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-brane-bulk-ontology
 title: Paper Brane Bulk Ontology
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/brane_bulk_ontology/paper/brane_bulk_ontology.tex
-content_owner: ai_generated
 last_updated: '2026-09-01'
-generated_from_commit: 60e31504b8425840cf6b5e814a0c518d68ab2db6
-source_kind: paper
-source_unit:
-  id: paper-brane-bulk-ontology
-  shape: file
-  entrypoint: research/brane_bulk_ontology/paper/brane_bulk_ontology.tex
-  unit_digest_sha256: 8e775db4fd931759fccc2b22655db50a2602a14dbaa1dc8de2e5dd4f9bd91a05
-  members:
-  - path: research/brane_bulk_ontology/paper/brane_bulk_ontology.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 39a2d6427f820112d341f30bf49a9dc4a7b0b6c1
-    blob_size: 134349
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

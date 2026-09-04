@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-4d-2pn
 title: Paper 4D 2Pn
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/4d_2pn/paper/4d_2pn.tex
-content_owner: ai_generated
 last_updated: '2026-08-31'
-generated_from_commit: 3f7234d3ba673817864c8938be209d451da19f36
-source_kind: paper
-source_unit:
-  id: paper-4d-2pn
-  shape: file
-  entrypoint: research/4d_2pn/paper/4d_2pn.tex
-  unit_digest_sha256: f2d7b25541435fbe3ab7409a418e4ab65c974dcbecdb9bde4d03e06c164fe38d
-  members:
-  - path: research/4d_2pn/paper/4d_2pn.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: c979d7c3cea74bf4cb482665b013faf9eac3319d
-    blob_size: 301004
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

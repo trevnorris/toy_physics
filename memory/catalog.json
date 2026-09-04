@@ -1,0 +1,225 @@
+{
+  "version": 1,
+  "roots": ["research", "software"],
+  "excluded_prefixes": [
+    "research/pde_ledger/",
+    "research/pde_ledger_v2/",
+    "research/pde_ledger_v3/"
+  ],
+  "units": {
+    "paper-1pn-hybrid": {
+      "page": "memory/sources/papers/1pn-hybrid.md",
+      "sources": ["research/1pn_hybrid/paper/1pn_hybrid.tex"]
+    },
+    "paper-1pn-optics": {
+      "page": "memory/sources/papers/1pn-optics.md",
+      "sources": ["research/1pn_optics/paper/1pn_optics.tex"]
+    },
+    "paper-1pn-orbital-dynamics": {
+      "page": "memory/sources/papers/1pn-orbital-dynamics.md",
+      "sources": ["research/1pn_orbital_dynamics/paper/1pn_orbital_dynamics.tex"]
+    },
+    "paper-1pn-spin-and-nbody": {
+      "page": "memory/sources/papers/1pn-spin-and-nbody.md",
+      "sources": ["research/1pn_spin_and_nbody/paper/1pn_spin_and_nbody.tex"]
+    },
+    "paper-unified-4d": {
+      "page": "memory/sources/papers/unified-4d.md",
+      "sources": ["research/4d/paper/4d.tex"]
+    },
+    "paper-4d-1pn-bridge": {
+      "page": "memory/sources/papers/4d-1pn-bridge.md",
+      "sources": ["research/4d_1pn_bridge/paper/4d_1pn_bridge.tex"]
+    },
+    "paper-4d-1pn-full": {
+      "page": "memory/sources/papers/4d-1pn-full.md",
+      "sources": ["research/4d_1pn_full/paper/4d_1pn_full.tex"]
+    },
+    "paper-4d-2pn": {
+      "page": "memory/sources/papers/4d-2pn.md",
+      "sources": ["research/4d_2pn/paper/4d_2pn.tex"]
+    },
+    "paper-4d-2-5pn": {
+      "page": "memory/sources/papers/4d-2-5pn.md",
+      "sources": ["research/4d_2_5pn/paper/4d_2_5pn.tex"]
+    },
+    "paper-4d-3pn": {
+      "page": "memory/sources/papers/4d-3pn.md",
+      "sources": ["research/4d_3pn/paper/4d_3pn.tex"]
+    },
+    "paper-4d-4pn": {
+      "page": "memory/sources/papers/4d-4pn.md",
+      "sources": ["research/4d_4pn/paper/4d_4pn.tex"]
+    },
+    "paper-4d-em-fields": {
+      "page": "memory/sources/papers/4d-em-fields.md",
+      "sources": ["research/4d_em_fields/paper/4d_em_fields.tex"]
+    },
+    "paper-4d-plasma": {
+      "page": "memory/sources/papers/4d-plasma.md",
+      "sources": ["research/4d_plasma/paper/4d_plasma.tex"]
+    },
+    "paper-brane-bulk-ontology": {
+      "page": "memory/sources/papers/brane-bulk-ontology.md",
+      "sources": ["research/brane_bulk_ontology/paper/brane_bulk_ontology.tex"]
+    },
+    "paper-em-fields": {
+      "page": "memory/sources/papers/em-fields.md",
+      "sources": ["research/em_fields/paper/em_fields.tex"]
+    },
+    "paper-moving-throat-pde": {
+      "page": "memory/sources/papers/moving-throat-pde.md",
+      "sources": ["research/pde/paper/pde.tex"]
+    },
+    "pde-audit": {
+      "page": "memory/sources/pde-audit.md",
+      "sources": [
+        "research/pde_audit/CLAIM_CHECK_MATRIX.md",
+        "research/pde_audit/run_all.sh",
+        "research/pde_audit/scripts/run_all_audits.sh",
+        "research/pde_audit/scripts/*.py",
+        "research/pde_audit/mathematica/run_all_audits.sh",
+        "research/pde_audit/mathematica/*.wl",
+        "research/pde_audit/simulation/README.md",
+        "research/pde_audit/simulation/ACTUAL_BRANCH_PROTOCOL_V1.md",
+        "research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md",
+        "research/pde_audit/notes/stage_v2_02_maxwell_gauge_localization_derivation.md",
+        "research/pde_audit/notes/stage_v2_12_stf_angular_source_map_derivation.md",
+        "research/pde_audit/notes/stage_v2_16_branch_freeze_no_refit_derivation.md",
+        "research/pde_audit/notes/stage_v2_18_monomial_quotient_similarity_orbit_derivation.md",
+        "research/pde_audit/notes/stage_v2_23_minimal_branch_solver_derivation.md",
+        "research/pde_audit/notes/stage_v2_25_actual_branch_protocol_derivation.md",
+        "research/pde_audit/notes/stage_v2_26_program_status_after_audit.md",
+        "research/pde_audit/notes/stage_v2_28_physical_picture_and_ontology.md",
+        "research/pde_audit/notes/stage_v2_29_superfluid_material_closure_gap.md",
+        "research/pde_audit/notes/stage_v2_30_electromagnetic_ontology_and_status.md"
+      ]
+    },
+    "software-em-emergent-construction": {
+      "page": "memory/sources/software/em-emergent-construction.md",
+      "sources": [
+        "software/em_charge_attribute/reports/emergent_em_construction.md",
+        "software/em_charge_attribute/run_emergent_em_construction.sh",
+        "software/em_charge_attribute/emergent_em_sympy.py",
+        "software/em_charge_attribute/emergent_em_dual.wl",
+        "software/em_charge_attribute/compare_engines.py"
+      ]
+    },
+    "software-em-electric-sign": {
+      "page": "memory/sources/software/em-electric-sign.md",
+      "sources": ["software/em_charge_attribute/puncture_deflection_electric_sign_*"]
+    },
+    "software-em-magnetism": {
+      "page": "memory/sources/software/em-magnetism.md",
+      "sources": ["software/em_charge_attribute/magnetism_moving_throat_*"]
+    },
+    "software-em-native-p": {
+      "page": "memory/sources/software/em-native-p.md",
+      "sources": [
+        "software/em_charge_attribute/reports/native_p_constraint_gate.md",
+        "software/em_charge_attribute/run_native_p_gate.sh",
+        "software/em_charge_attribute/native_p_gate_*"
+      ]
+    },
+    "software-em-u1": {
+      "page": "memory/sources/software/em-u1-body-dynamics.md",
+      "sources": [
+        "software/em_charge_attribute/reports/u1_body_dynamics.md",
+        "software/em_charge_attribute/reports/u1_body_dynamics_results.yaml",
+        "software/em_charge_attribute/run_u1_body_dynamics.sh",
+        "software/em_charge_attribute/run_u1_body_b2.sh",
+        "software/em_charge_attribute/run_u1_body_phaseC.sh",
+        "software/em_charge_attribute/u1_body_dynamics_sympy.py",
+        "software/em_charge_attribute/u1_body_dynamics_dual.wl",
+        "software/em_charge_attribute/u1_body_dynamics_compare.py"
+      ]
+    },
+    "software-force-visualizer": {
+      "page": "memory/sources/software/force-visualizer.md",
+      "sources": [
+        "software/force_visualizer/README.md",
+        "software/force_visualizer/notes/build_spec.md",
+        "software/force_visualizer/app.py",
+        "software/force_visualizer/render_all.py",
+        "software/force_visualizer/report.py",
+        "software/force_visualizer/output/verification_report.txt"
+      ]
+    },
+    "stage1-solver": {
+      "page": "memory/sources/software/stage1-solver.md",
+      "sources": [
+        "software/stage1_solver/README.md",
+        "software/stage1_solver/src/stage1_solver/harness.py",
+        "software/stage1_solver/src/stage1_solver/branch_harness.py",
+        "software/stage1_solver/src/stage1_solver/convergence_harness.py",
+        "software/stage1_solver/reports/pathA_23_stage0_action_and_contracts.md",
+        "software/stage1_solver/derivations/pathA_01_return_source_and_balance.md"
+      ]
+    },
+    "stage1-verdict": {
+      "page": "memory/sources/software/stage1-verdict.md",
+      "sources": [
+        "software/stage1_solver/STAGE1_VERDICT.md",
+        "software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/*"
+      ]
+    }
+  },
+  "pages": {
+    "topic-foundations": {
+      "path": "memory/topics/foundations.md",
+      "inputs": ["paper-unified-4d", "paper-brane-bulk-ontology", "paper-moving-throat-pde"]
+    },
+    "topic-projection-and-reduction": {
+      "path": "memory/topics/projection-and-reduction.md",
+      "inputs": ["paper-unified-4d", "paper-4d-em-fields", "paper-4d-plasma", "paper-moving-throat-pde", "stage1-solver"]
+    },
+    "topic-charge-and-electromagnetism": {
+      "path": "memory/topics/charge-and-electromagnetism.md",
+      "inputs": ["paper-unified-4d", "paper-4d-1pn-full", "paper-4d-2pn", "paper-4d-em-fields", "paper-em-fields", "paper-4d-plasma", "pde-audit", "software-em-emergent-construction", "software-em-electric-sign", "software-em-magnetism", "software-em-native-p", "software-em-u1"]
+    },
+    "topic-post-newtonian-ladder": {
+      "path": "memory/topics/post-newtonian-ladder.md",
+      "inputs": ["paper-4d-1pn-bridge", "paper-4d-1pn-full", "paper-4d-2pn", "paper-4d-2-5pn", "paper-4d-3pn", "paper-4d-4pn"]
+    },
+    "topic-quadrupole-normalization": {
+      "path": "memory/topics/quadrupole-normalization.md",
+      "inputs": ["paper-4d-2-5pn", "paper-4d-3pn", "paper-4d-4pn", "paper-moving-throat-pde", "pde-audit"]
+    },
+    "topic-moving-throat-dynamics": {
+      "path": "memory/topics/moving-throat-dynamics.md",
+      "inputs": ["paper-unified-4d", "paper-brane-bulk-ontology", "paper-moving-throat-pde", "pde-audit", "stage1-solver", "stage1-verdict"]
+    },
+    "topic-weak-axisymmetric-and-orbit-closure": {
+      "path": "memory/topics/weak-axisymmetric-and-orbit-closure.md",
+      "inputs": ["paper-1pn-orbital-dynamics", "paper-1pn-spin-and-nbody", "pde-audit", "stage1-solver", "stage1-verdict"]
+    },
+    "topic-status-and-reading-rules": {
+      "path": "memory/topics/status-and-reading-rules.md",
+      "inputs": ["paper-unified-4d", "paper-4d-1pn-full", "paper-4d-2pn", "paper-4d-em-fields", "paper-4d-plasma", "paper-4d-2-5pn", "paper-4d-4pn", "paper-moving-throat-pde", "pde-audit", "stage1-solver", "stage1-verdict"]
+    },
+    "scripts-pde-audit": {
+      "path": "memory/scripts/pde-audit.md",
+      "inputs": ["pde-audit"]
+    },
+    "scripts-em-charge-attribute": {
+      "path": "memory/scripts/em-charge-attribute.md",
+      "inputs": ["software-em-emergent-construction", "software-em-electric-sign", "software-em-magnetism", "software-em-native-p", "software-em-u1"]
+    },
+    "scripts-force-visualizer": {
+      "path": "memory/scripts/force-visualizer.md",
+      "inputs": ["software-force-visualizer"]
+    },
+    "scripts-stage1-solver": {
+      "path": "memory/scripts/stage1-solver.md",
+      "inputs": ["stage1-solver", "stage1-verdict"]
+    },
+    "conflicts": {
+      "path": "memory/conflicts.md",
+      "inputs": ["topic-foundations", "topic-projection-and-reduction", "topic-charge-and-electromagnetism", "topic-post-newtonian-ladder", "topic-quadrupole-normalization", "topic-moving-throat-dynamics", "topic-weak-axisymmetric-and-orbit-closure", "topic-status-and-reading-rules"]
+    },
+    "memory-index": {
+      "path": "memory/index.md",
+      "inputs": ["topic-foundations", "topic-projection-and-reduction", "topic-charge-and-electromagnetism", "topic-post-newtonian-ladder", "topic-quadrupole-normalization", "topic-moving-throat-dynamics", "topic-weak-axisymmetric-and-orbit-closure", "topic-status-and-reading-rules", "scripts-pde-audit", "scripts-em-charge-attribute", "scripts-force-visualizer", "scripts-stage1-solver", "conflicts"]
+    }
+  }
+}

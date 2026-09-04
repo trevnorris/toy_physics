@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-moving-throat-pde
 title: Paper Moving Throat Pde
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/pde/paper/pde.tex
-content_owner: ai_generated
 last_updated: '2026-09-02'
-generated_from_commit: 6f25d7ea3171549372fa6a6dd93931418fbd832e
-source_kind: paper
-source_unit:
-  id: paper-moving-throat-pde
-  shape: file
-  entrypoint: research/pde/paper/pde.tex
-  unit_digest_sha256: b2c2e5f4697c3af6a5c4e1d89e6648f034cf5f5eabb3a0d07f6cd750fd038e74
-  members:
-  - path: research/pde/paper/pde.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 710deea0b03d5ed9212c6d5a467a8846b62ed73c
-    blob_size: 191565
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

@@ -1,20 +1,12 @@
 ---
-schema_version: 2
-id: topic-status-and-reading-rules
 title: Status and reading rules
 type: topic
-lifecycle: current
-memory_review: ai_draft
+status: draft
 sources: []
-content_owner: mixed
-last_updated: 2026-08-24
-generated_from_commit: ddecdbc249a4d9d860dd25ecd4531726a01d26c6
+last_updated: 2026-09-03
 ---
 
-<!-- BEGIN GENERATED:working-position -->
-<!-- Unpopulated: generated during semantic synchronization. -->
-<!-- END GENERATED:working-position -->
+# Status and reading rules
 
-## Curator notes
-
-Human-owned; generated updates preserve this section.
+To collect the model’s important “is not the same as” boundaries and explain
+which conclusions are current, conditional, superseded, or still open.

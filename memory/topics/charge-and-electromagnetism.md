@@ -1,20 +1,13 @@
 ---
-schema_version: 2
-id: topic-charge-and-electromagnetism
 title: Charge and electromagnetism
 type: topic
-lifecycle: current
-memory_review: ai_draft
+status: draft
 sources: []
-content_owner: mixed
-last_updated: 2026-08-24
-generated_from_commit: ddecdbc249a4d9d860dd25ecd4531726a01d26c6
+last_updated: 2026-09-03
 ---
 
-<!-- BEGIN GENERATED:working-position -->
-<!-- Unpopulated: generated during semantic synchronization. -->
-<!-- END GENERATED:working-position -->
+# Charge and electromagnetism
 
-## Curator notes
-
-Human-owned; generated updates preserve this section.
+To consolidate electric-sign, localization, fluxoid, magnetism, native-
+momentum, and U(1) body-dynamics results without identifying charge with
+circulation.

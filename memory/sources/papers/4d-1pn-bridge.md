@@ -1,33 +1,11 @@
 ---
-schema_version: 2
-id: source-paper-4d-1pn-bridge
 title: Paper 4D 1Pn Bridge
-type: source_capsule
-lifecycle: current
-memory_review: ai_draft
+type: source
+status: current
 sources:
 - research/4d_1pn_bridge/paper/4d_1pn_bridge.tex
-content_owner: ai_generated
 last_updated: '2026-08-25'
-generated_from_commit: e15f5a358d03e0f5ca0061c9316e690758e7e625
-source_kind: paper
-source_unit:
-  id: paper-4d-1pn-bridge
-  shape: file
-  entrypoint: research/4d_1pn_bridge/paper/4d_1pn_bridge.tex
-  unit_digest_sha256: bb493bcfba08a21a861b35b8574ffd2184bcf3f46d75c2f05b85271681f4d15e
-  members:
-  - path: research/4d_1pn_bridge/paper/4d_1pn_bridge.tex
-    role: primary
-    read_mode: semantic
-    mode: '100644'
-    object_type: blob
-    blob_oid: 3b57094fb54c0d4a42e9913cb188d056a1494363
-    blob_size: 183816
-extractor_version: 1
 ---
-
-> Generated capsule. Refresh from the source unit; do not hand-edit.
 
 ## Purpose and scope
 

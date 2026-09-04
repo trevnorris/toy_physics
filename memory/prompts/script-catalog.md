@@ -36,6 +36,25 @@ interpretation. Otherwise use `provisional` for the catalog description and
 name missing invocation, output, or interpretation. For identity-only
 artifacts, record identity and path only.
 
+Treat each of those fields as an evidence boundary:
+
+- An invocation is `recorded` only when a supplied execution record says that
+  exact command was run. A usage example, runner dispatch branch, shebang, or
+  obvious way to invoke the file is not a recorded invocation.
+- Say that a script emits or writes an artifact only when the supplied code or
+  record visibly performs that write. Constructing an in-memory object, naming
+  a file in a consumer, or receiving an output-path argument is not evidence
+  that this entry writes the artifact.
+- Describe runner argument routing member by member. Do not compress a
+  discontinuous set into a stage range, and distinguish fixture arguments from
+  output-path or filter arguments.
+- Attribute every guard to the object that actually evaluates it. Keep gates,
+  auxiliary formula audits, report aggregation, and downstream consumption
+  distinct unless the supplied source explicitly combines them.
+- Link only related pages explicitly supplied in the task's `input_pages` or
+  `dynamic_memory_inputs`. Do not infer navigation links from filenames or
+  general subject knowledge.
+
 When a runner coordinates engines, comparator, and report, one family entry is
 preferred over repetitive helper entries. Still identify which member supplies
 each role and whether engines share premises or exports. A visualizer's render
@@ -45,7 +64,7 @@ is not a verification unless a supplied source explicitly records that role.
 
 Start from the staged base page and replace only the exact
 `BEGIN GENERATED:entries` region. Preserve markers and all unmarked body
-bytes. Generated statements and the page roll-up remain
+bytes, including the final newline state. Generated statements and the page roll-up remain
 `memory_review: ai_draft`. Update only delegated machine-owned frontmatter;
 sort and deduplicate direct original source paths.
 

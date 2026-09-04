@@ -62,4 +62,8 @@ and 5PN-planning material. Do not migrate content whose only support is root
 - [x] `memory/index.md` points to the resulting pages.
 - [x] A fresh agent can answer representative lookup questions using only the
       memory index and linked pages, without a source-tree grep.
-- [ ] Delete `atlas/` and `graph/` in a separate, reviewable commit.
+- [x] Delete `atlas/` and `graph/` in a separate, reviewable commit.
+
+Cutover completed 2026-09-03. The retained synthesis is now sourced directly
+from `research/` and `software/`; the old generated graph is no longer part of
+the maintenance path.

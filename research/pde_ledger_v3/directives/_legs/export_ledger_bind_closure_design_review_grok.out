@@ -1,0 +1,77 @@
+I'll review the decision list against the sources first, then pressure-test each new decision. Starting by reading the artifact, the deliberation outputs, and the live chain constraints.The deliberation files are on disk. Next I’ll read those, the prior decisions, and the live chain files before judging the design.I have the prior decisions. Next I’ll pull the deliberation outputs, S9 plan, c1 spec, and the live export/comparator files.Deliberation outputs match the design’s membership rule. Next I’ll verify c1/c2 bind-sets, the reviver, digest pinning, and F9 fold semantics against the live files.I’ll measure the live LEDGER, digest pinning, F9c keys, and whether the c1 spec still requires carrying parent files.Independent view, formed from the live files before scoring the design:
+
+**What c2 must be able to bind.** S11c-c2 folds the closed face response into the S11c-b slab and re-extracts the closed kernel (`S11c_c1_SHARED_PHYSICS.md:34–38, :14–15, :347–348`). That is `slab_operator`, `coupling_kernel`, c1’s DtN/response (`dtn_*` / routed `face_response*`), and still-live `mu_theta_operator` (c1 carries it opaque; c2 composes it — `:42–43, :427–429, :446–448`). c1 itself binds μ_θ, the nine T-a..T-i rows (`:159–163`), knobs/profiles (`S11c_c1_sympy_build_directive.md:70–80`), and the S11b §5c/§5d regression set including `z_impermeable` (`SHARED_PHYSICS.md:122–131, :465–467`). Under generate, those objects have to be *resolvable in the fold*, not copied into c1’s file.
+
+**What the fold+guard must therefore deliver.** c2 does `load_model(S11c_b_exports.py, S11c_c1_exports.py)` and binds by routed key. c1’s delta is only what c1 defined. Nothing in c1 needs to “pass through” slab/kernel: they already live in the frozen base (`S11c_b_exports.py` has both; 18,147,887 and 7,640,692 bytes). N1 as written (“each later sub-step imports the prior one’s exports”, `S11c_decisions.md:28–29`) is the under-export: c2 importing only the c1 delta would miss the 26 MiB operators.
+
+---
+
+## Must-fix
+
+### 1. Write-time `PASS_THROUGH` is the wrong availability surface and will mis-build the generate topology
+
+**(a) Source.** Generate was “each step exports only the rows it defines or re-derives; the whole-model list is generated on demand” (`chain_accumulate_or_generate_decision.md:7–9`). N1 today is hop+1 file import (`S11c_decisions.md:28–29`). The frozen base already holds c2’s S11c-b operands (`S11c_b_exports.py` keys `slab_operator`, `coupling_kernel`, `mu_theta_operator`). c1 is forbidden to fold them (`S11c_c1_SHARED_PHYSICS.md:36–38`). Codex’s `PassThroughForDeclaredLaterBinds` was for a *per-boundary snapshot*, not for own-rows files.
+
+**(b) Design.** D2 says each `*_exports.py` is an own-rows delta and the consumer binds from `base ⊔ deltas` (`export_ledger_bind_closure_design.md:63–66, :68–71`). D3.1 still requires c1 to *publish* `PASS_THROUGH_KEYS` for `slab_operator`/`coupling_kernel` (`:86–88, :135–137`). D3.5 says the delta’s key set equals its own bind-closure “apart from explicitly named infrastructure” (`:94–96`) — the only way those two clauses both hold is to copy the 26 MiB operators into c1’s file as “infrastructure,” which is D5 accumulation under a new name (`S9_REWRITE_PLAN.md:235–237`) and is the false coupling generate exists to remove (`chain_accumulate_or_generate_decision.md:46–47`). If instead `PASS_THROUGH` *filters* the fold, a missed key under-exports to c2. If it is only a sidecar list and the fold is the unfiltered merge, it is dead weight that re-imposes the forward-knowledge D2 just removed.
+
+**The closed rule:** no write-time pass-through. Each consumer declares `IMPORT_KEYS` (routed write-keys). The fold is the unfiltered last-wins merge of the single frozen snapshot `S11c_b_exports.py` with every later delta. Closure (free-symbol + recursive `dimension_key`) and the smoke-test run at *consume* time. c2 lists `slab_operator`; the base supplies it. c1 never names it.
+
+---
+
+### 2. D3.2 does not close F9c routing — c1’s `face_response` is the latent consumer F9 already named
+
+**(a) Source.** After F9c “the bare key still answers with the predecessor”; a routed-key contract is owed *before* any consumer of an F9c object is built (`S11_export_chain_decisions_v2.md:205–207`). F9c: present and not proved equal → write the prefixed key, leave the imported row (`:154–157`). The live base already has S11b `face_response` / `face_response_coeffs` (`S11c_b_exports.py:3626–3638`, `step: 'S11b'`). c1’s candidate export population uses those same keys (`S11c_c1_sympy_build_directive.md:102–107`). Flat vs curved is not F9b. Writer-side F9 in S11c-b already prefixes on that branch (`S11c_b_brane_operator_sympy_audit.py:5313–5333`). c2 is specified to consume “the closed face response” (`S11c_c1_SHARED_PHYSICS.md:347–348`).
+
+**(b) Design.** D3.2 says “every listed key resolves to the intended F9 route (not merely that a bare key is present)” (`:90–91`) but the manifest is specified as a list of keys (`:86–88`). There is no field for the write-key vs the candidate key. The build plan names bare `face_response*` as c1’s export (`:136–137`). Presence of `face_response` in the fold is guaranteed — it is S11b’s. Guard 2 as written can pass and c2 still binds the predecessor. Guard 4 (smoke-test every *declared* key, `:93–94`) does not catch a declared bare key that resolves to the wrong object.
+
+**Fix:** `IMPORT_KEYS` entries are F9 *write-keys* (bare on F9a/b, `s11c_c1_…` on F9c), asserted against the fold. D3.2 without that representation is not a guard.
+
+This also answers the hybrid-F9 question: it is benign *if and only if* F9 stays write-time against the then-current fold and the merge is last-wins on exact key. `load_model(base, *deltas) applying F9` (`:132–133, :65–66`) will be mis-read as re-running F9 at fold time (double-prefix, or re-comparing already-resolved base-internal pairs). Specify last-wins; do not re-apply F9 in the fold. The frozen base is already F9-resolved. Using only `S11c_b_exports.py` as the base (not a fold of nested snapshots S9⊔…⊔S11c-b) is the same requirement — the plural “files … are the frozen base” (`:68–69`) should be pinned to that one snapshot.
+
+---
+
+### 3. Live c1 spec §7 / N1 still require hop+1 carry; the build plan does not amend them
+
+**(a) Source.** c1 spec is the sole physics authority and wins every conflict with the directive (`S11c_c1_sympy_build_directive.md:10–13`). Spec header: the SymPy engine imports S11b + S11c-a + S11c-b (`S11c_c1_SHARED_PHYSICS.md:4–6`). §7: write the LEDGER “under the export-chain rules F1–F10”, consume-set *plus* “The SymPy engine imports and carries the S11b LEDGER, the S11c-a exports, and the S11c-b exports” (`:560–588`). N1: each later sub-step imports the prior one’s exports (`S11c_decisions.md:28–29`). Directive today: import `S11c_b_exports.py` and write “the previous LEDGER, plus this step’s own entries, merged flat” (`:61–68, :111–112`).
+
+**(b) Design.** F10 is superseded and N1 is “refined” to import the fold (`:116–120, :126–127`). Build plan item 2 updates *only* the c1 SymPy build directive (`:135–138`). It does not amend spec §7’s carry sentences or N1. An updated directive that still says the spec wins will re-accumulate (~59 MiB inherited + c1 rows) and miss the shrink. A later c2 builder who still obeyes N1 as hop+1 will import only the small c1 delta and under-export `slab_operator`/`coupling_kernel`/`mu_theta_operator`.
+
+Reversing F10/N1 does **not** collide with the comparator (header: `S11c_b_exports.py` is not a tag stream, `:9–10`), the WL engine (imports nothing), or `extract_knob_inventory.py` (no LEDGER reads). The collision is with the *written* c1/N1 contracts, which the reconciliation list does not strike.
+
+---
+
+## Should-fix
+
+### 4. The no-manifest D1-fallback is the loophole that already returned the bloat
+
+**(a) Source.** S11c-b §7 declared no consume-set; F10’s fallback is export-every-primary (`S11_export_chain_decisions_v2.md:238–241`). That is why `slab_operator_term_origins` (13,144,484 bytes) and `coupling_kernel_term_origins` (4,180,340 bytes) are in plain git — six origin rows total 18,196,692 bytes = 29.54% of 61,608,243. F10 applied only to c1’s *new* rows still copies that file forward (`:226–227, :253–254`).
+
+**(b) Design.** Membership-by-bind is right (`:39–43`). It then keeps “export-every-primary” as the no-manifest fallback and calls a missing manifest a spec defect “not steady state” (`:49–54`). That is the same engine behaviour that produced the 17.35 MiB origin blob. Under generate, a future step with no manifest writes every primary into its delta (c1’s full-primary *own* rows were the 145 MB − 58.75 MiB inherited ≈ 86 MiB class, next to the cap). A spec defect that the engine still implements is not a control.
+
+**Fix:** missing `IMPORT_KEYS` is a hard error. Promotion from the annexed `.out` (`:97–100`) is the recovery path; the fallback is not.
+
+---
+
+## Checks that pass (not findings)
+
+**D1 membership rule (bind, not label), as a rule.** Correct and complete: export iff a declared later step binds the key as a construction *or* control/regression operand, plus symbol / `dimension_key` / F9c-route closure (`:29–43`). That matches what c1/c2 actually bind, and it correctly keeps diagnostic-labelled S11b regression rows and drops `energy_basis_variable` / `*_term_origins` / `admissibility_*`. Probe against the live file (all present): `mu_theta_operator`, nine T-substrate keys, `z_impermeable`/`z_by_regime`/`z_by_parity`/`added_mass`/`grazing_behaviour`/`face_response`/`face_response_coeffs`/`permeable_dissipative_by_regime_and_parity`, `slab_operator`, `coupling_kernel`. Spec §1c also names `S11B_DEGENERATE_LOCI_*` (`SHARED_PHYSICS.md:129–131`; five `degenerate_loci_*` rows exist). The D1 *example* list (`:41–42`) omits `z_impermeable` (the §5d operand B, `:465–467`) and `degenerate_loci_*`. That is not a rule defect if the spec is the manifest; it becomes finding 1/4 if anyone copies the example as `IMPORT_KEYS` and filters.
+
+**~508 rows / ~26 MiB.** Independent census: 61,608,243 bytes, 2,441 rows; `slab_operator` 18,147,887 + `coupling_kernel` 7,640,692 = 25.79 MB of the set-cut remainder; origin cut 17.35 MiB. Codex’s 508-row mechanical closure is a defensible *prune* estimate of this file. D2 does not prune the base (honest, `:72–74`); c1’s git file is the small delta, not 26 MiB.
+
+**D2 freeze avoids the `BUILD_INPUT_DIGESTS` cascade.** Pin chain is file-content sha of the *parent export*: `S11c_b_exports.py:20–24` pins `S11c_a_exports.py`; `S11c_a_exports.py:20–24` pins `S11b_exports.py`; `S11b_exports.py:20–24` pins `S11_exports.py`. Leaving `S11c_b_exports.py` byte-identical means no upstream rewrite. c1 still pins the frozen file (`S11c_c1_sympy_build_directive.md:149–153`). Re-running the chain is what would cascade. Own-rows c1 (F10’s ~5 MB model register) is under the 100 MB cap; generate is what keeps *later* writes under it. F10-as-written (accumulate + ~5 MB) was already ~64 MB for c1 — still under — so the cap claim is about stopping monotonic copy, not about c1 being over the cap today.
+
+**D3-round-trip does not catch under-export.** Confirmed. `_restore` is `eval` of an srepr in a sympy namespace with no LEDGER lookup (`S11c_b_exports.py:17–18`). Values are `_restore("Symbol('…')")` (e.g. `:3628`). `publish_export` execs the written module and `total_compare`s reconstructed values to the live objects, keyed only by rows that *were* written (`S11c_b_brane_operator_sympy_audit.py:5402–5434`). A missing symbol *row* still round-trips. F10’s claim (`S11_export_chain_decisions_v2.md:242–243`) is false; striking it is right (`:82–84, :124–125`). S9 D3 is only “reconstruct what was written” (`S9_REWRITE_PLAN.md:217–219`).
+
+**D3 closure over `dimension_key` of listed rows** is the right extra check (S11b already dereferences `dimension_key` into `INCOMING_LEDGER`). It is closed only if the closure is recursive and the listed keys are write-keys (finding 2). Free-symbol closure cannot substitute for F9c routing: `_restore` will always mint a `Symbol` of that name.
+
+**D4 representation is separable.** Comparator residual is `sp.cancel(sp.together(sp.expand(left - right)))` at `:1205–1206`; the LEDGER is not the instrument (`:9–10`). Agreement does not require the stored expanded form. D3’s display+srepr double-store is why the two operators stay huge; parking that is correct. Nothing in the set decision forces a representation choice. No physics or expected value is added; 508/26 MiB is a measurement of the current file, not an acceptance criterion.
+
+**Consumers of reversing accumulation (executable).** No collision: comparator, WL, `extract_knob_inventory.py`, and already-built importers (`from S11c_a_exports import LEDGER`, etc.) are frozen and not re-run. Keep F9 / D3-round-trip / F6 / F3; strike F10’s category membership, whole-file carry, and “D3 catches closure.” That keep/strike split is right. The hole is the unamended spec/N1 text (finding 3), not a running importer.
+
+**No naming/representation smuggled into D1–D3** except the bare `face_response*` in the build plan (finding 2).
+
+---
+
+## Verdict
+
+Not sound to build against as-is: three must-fixes (kill write-time `PASS_THROUGH` in favour of consume-time `IMPORT_KEYS` on an unfiltered last-wins fold of `S11c_b_exports.py ⊔ deltas`; put F9 write-keys in the manifest, F9 only at write time; amend spec §7 carry and N1 so the directive cannot lose to hop+1 accumulation). The bind-closure membership rule and the frozen-base migration are the right objects; the availability mechanism is the part the deliberation did not decide and the design got wrong.

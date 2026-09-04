@@ -1,0 +1,103 @@
+## 1. Principle: export the live dependency closure
+
+At the boundary after step \(i\), the minimum ledger is:
+
+\[
+L_i=\operatorname{Close}\bigl(\text{DirectBinds}_{i+1}\ \cup\ \text{PassThroughForDeclaredLaterBinds}\bigr)
+\]
+
+“Close” means recursively include:
+
+- every row the downstream engine dereferences by key to compose, substitute, solve, evaluate, or construct a required control;
+- every knob, coordinate, profile, or other symbol referenced by those values;
+- every referenced metadata target such as `dimension_key`;
+- the correct routed key where F9c leaves the predecessor under the bare name.
+
+Everything else is emit-only. `class`, `step`, whether an object is called “primary,” and whether it sounds model-level or diagnostic do not decide membership.
+
+This is narrower than F10 as presently worded because F10 includes the entire carried-forward inherited ledger [F10 export definition](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:224), [F10 carried-forward wording](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:231). Dead inherited rows are not necessary merely because they were once exported.
+
+One important correction to the premise: c1 imports the entire module, but computationally binds `mu_theta_operator`; the slab operator and coupling kernel are live-through objects for c2. The c1 spec expressly says c1 does not fold them, while c2 will [c1 scope](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:34), and identifies `μ_θ` as c1’s consumed S11c-b operand [c1 μθ consumption](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:39).
+
+## 2. Categorization
+
+| Content | Decision | Binding evidence |
+|---|---|---|
+| Knobs/constants such as `c_s0`, `rho_m`, `W_0`, `mu_R`, `rho_br`, `e_W`, `q_out`, `v_bulk_normal_0` | **EXPORT when named or in closure** | c1’s build directive binds these exact ledger keys [bindings](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:70). The closure laws bind `rho_m`, `Lambda_A/V/X`, and independent `tau_A/V/X` [closure equations](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:147). Current rows confirm, for example, `Lambda_A_0` is a `KNOB` [row](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:302), while `c_s0` is inherited from S11b [row](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:746). Unreferenced historical knobs are cut. |
+| Varying profiles: `W_bg`, `mu_R_bg`, `w1_profile`, `m1_profile`, `L_W`, `sigma_W`, `eta_bg`, density representatives, `e_W_bg` | **EXPORT when bound or in closure** | These are explicitly enumerated as c1 bindings [profile bindings](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:75). Their classifications do not matter: `W_bg` is `DERIVED` [row](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:382), `w1_profile` is a `KNOB` [row](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:17600), and `sigma_W` is `DERIVED` [row](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:15205), but all are live. Derivative aliases not actually referenced by key or by a kept value are emit-only. |
+| `slab_operator`, `coupling_kernel`, `mu_theta_operator` | **EXPORT** | `mu_theta_operator` is directly bound by c1 [directive](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:33). The current rows are at [slab operator](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:15215), [coupling kernel](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:863), and [μθ operator](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:5628). The first two must pass through c1 because c2 folds the response into the slab and re-extracts the closed kernel [c2 boundary](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:34). |
+| S11c-a T-substrate | **EXPORT the nine actually bound rows** | The binding list is exact: `face_normal`, `conormal_deriv`, `face_measure_shape_deriv`, `face_velocity`, `relative_flux`, `kinematic_balance`, `traction`, `face_shift`, and `closure_shape_deriv` [directive](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:75). The shared spec independently enumerates the same curved-face objects [spec](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:159). T-f/T-g/T-h companions not bound by c1 are not retained merely because they belong to “T-a..T-i.” |
+| c1 DtN/response output | **EXPORT five roots** | `dtn_flat_symbol`, `dtn_operator`, `dtn_kernel`, `face_response`, and `face_response_coeffs` are c1’s c2-consume set [candidate export](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:102); the shared spec states that the response, DtN operator, and flat symbol are consumed by c2 [spec](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:347). |
+| `*_term_origins` | **EMIT-ONLY**, absent a future explicit bind | S11c-b asks for provenance separately from the operator [operator provenance](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:280), but neither c1’s binding list nor the c2 fold binds it. The two large rows are [slab origins](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:15222) and [kernel origins](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:870). |
+| Dissipation, energy, loci/noninvertibility, Hermitian/reactive, regime/parity views | **Normally EMIT-ONLY; binding overrides the label** | c1’s new versions are explicitly emit-only [chain output](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:560). But the inherited S11b `z_by_regime`, `z_by_parity`, `added_mass`, `grazing_behaviour`, and `permeable_dissipative_by_regime_and_parity` must remain across the b→c1 boundary because c1 binds them as regression operands [flat-reference list](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:122), [binding directive](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:39). |
+| §5/§6 control operands and residuals | **EMIT-ONLY unless a later computation explicitly binds one** | S11c-b requires these to be computed and emitted [§4 list](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:393), while F10 places every control operand/residual in EMIT [F10 channels](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:220). A downstream regression reference is the exception above. |
+| Named intermediate or end results with no downstream bind | **EMIT-ONLY** | This cuts `energy_basis_variable`, new-invariant/count/omission rows, and the admissibility operand/support/residual despite their being S11c-b MAIN results [S11c-b result list](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:385). c1’s exhaustive binding directive omits them and forbids importing sibling computed physics beyond its named bindings [directive](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:179). |
+
+## 3. Concrete minimum and cut
+
+For the presently declared b→c1→c2 chain, I get 46 root rows:
+
+- 3 S11c-b roots: slab, coupling kernel, `μ_θ`;
+- 9 T-substrate roots;
+- 14 directly bound constants/closure knobs;
+- 12 profile/density roots;
+- 8 S11b flat regression references.
+
+Mechanically closing those roots over the current serialized values produces:
+
+- 474 distinct referenced symbol keys, 26 already among the roots;
+- 14 additional `dimension_key` targets;
+- **508 unique ledger rows**.
+
+Using the current representation, that is approximately **25.51 MiB**, including the small module scaffold, versus the current **58.754 MiB**: a cut of **33.245 MiB, 56.6%, and 1,933 of 2,441 rows**.
+
+The cut breaks down as follows:
+
+| Producer recorded in current row | Rows cut | MiB cut |
+|---|---:|---:|
+| S9 | 155 | 0.106 |
+| S10 | 443 | 1.116 |
+| S11 | 1,060 | 3.547 |
+| S11b | 236 | 9.160 |
+| S11c-a | 10 | 1.902 |
+| S11c-b | 29 | 17.413 |
+
+The six provenance/origin rows alone occupy **17.354 MiB, 29.54%** of the entire file. The two S11c-b rows account for **16.522 MiB**; the other origin rows are `projection_term_origins`, `evolution_term_origins`, `constraint_term_origins`, and `dissipation_origin` [representative inherited origin rows](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:6465).
+
+After those origins, another **15.891 MiB** is removable: unconsumed energy/admissibility rows plus dead accumulated S9/S10/S11/S11b/S11c-a history. This estimate is conditional on the consume sets currently declared; a later spec that names another row expands the roots before regeneration.
+
+## 4. Under-export risk and guards
+
+The `.out` is a data-recovery safety net, not a build-availability guarantee. F10 correctly says the comparator and reviewers read `.out`, not the ledger [F10 safety statement](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:248); the comparator confirms that it reads the two tag streams and never uses `S11c_b_exports.py` as one [comparator header](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_cross_engine_comparator.py:4). A missing export root can nevertheless stop the SymPy chain or induce a forbidden fresh declaration.
+
+D3 does **not by itself** catch under-export. As written, it reconstructs the serialized value and compares it with the live object [D3](/var/projects/toy_physics/research/pde_ledger_v3/S9_REWRITE_PLAN.md:217). Because `_restore` constructs `Symbol(...)` directly from each row’s s-expression [reviver](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:17), the round trip can succeed even when the corresponding symbol row is absent. Therefore F10’s assertion that D3 catches a free-symbol-closure gap [F10 guard](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:242) is too strong.
+
+The necessary guard is mechanical:
+
+1. The consumer publishes an exact `IMPORT_KEYS` list and any `PASS_THROUGH_KEYS`.
+2. Generation asserts every listed key resolves to the intended F9 route.
+3. Generation computes the free-symbol and metadata-reference closure and asserts every target row is present.
+4. The consumer smoke test actually binds every declared key.
+5. Minimum mode additionally asserts `LEDGER.keys()` equals that closure, apart from explicitly required infrastructure.
+
+F9 routing matters because the rules already identify a latent case where the bare key still names the predecessor after F9c [routed-key debt](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:205). Mere key presence is therefore insufficient.
+
+D1’s “err toward more” remains a reasonable fallback only when no validated consume manifest exists, matching F10’s fallback rule [F10 fallback](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:238). Once the manifest and closure guards exist, export-every-MAIN is unnecessary; the complete `.out` preserves everything needed to amend the manifest and regenerate the ledger.
+
+## 5. Representation is a separate lever
+
+The minimum **set** still retains the 18.15-million-byte `slab_operator` row and 7.64-million-byte `coupling_kernel` row. They cannot be deleted because downstream composition needs their objects.
+
+Whether they must remain expanded and duplicated as `display` plus `_restore("<srepr>")` is separate. The current row visibly stores both forms [slab row](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:15215), while D3 requires exact reconstruction plus a human-readable rendering [D3](/var/projects/toy_physics/research/pde_ledger_v3/S9_REWRITE_PLAN.md:217). The comparator itself compares algebraically by `cancel(together(expand(A−B)))` [canonical residual](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_cross_engine_comparator.py:1205). That suggests a distinct representation optimization, but it does not change the live key set decided here.
+
+## 6. Revisions to F10 and D1
+
+I would revise three pieces:
+
+- Replace “plus the carried-forward LEDGER” with “plus the live inherited pass-through set required by already declared later consumers.” Carrying every dead historical row is not minimum.
+- Replace the claim that D3 catches closure gaps with an explicit key/free-symbol/metadata-closure guard.
+- Retain D1 only as the no-manifest fallback; for a validated consume set, the exact closure replaces “export every MAIN object.”
+
+Also, F10 currently says prior committed exports are unchanged [scope](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:253). Trimming the present `S11c_b_exports.py` therefore requires an explicit migration/regeneration amendment; F10 presently authorizes the principle going forward but not retroactive alteration of this committed file.
+
+**EXPORT at boundary \(i\) exactly the recursively closed live set of rows that the next step binds or must pass through to an already declared later consumer—including every referenced symbol, knob, and metadata target—and EMIT everything else only to the annexed `.out`.**

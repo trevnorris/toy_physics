@@ -1,0 +1,65 @@
+My independent c1→c2 trace is: c1 must bind `mu_theta_operator`, the nine T-substrate rows, the branch/drain/constants/profiles, and the S11b regression rows; c2 must receive the full `slab_operator` plus c1’s exact DtN/closed-response outputs. The existing open `coupling_kernel` is not presently declared as a c2 construction operand.
+
+## Findings
+
+### 1. Must-fix — F9 is assigned to the wrong phase, and c1 has an immediate collision
+
+F9 is explicitly a write-time rule: absent → write bare; proved equal → write bare; otherwise → write prefixed ([F9a–c](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:150)). The earlier generate decision also says each per-step file is authoritative for its own rows ([decision](/var/projects/toy_physics/research/pde_ledger_v3/directives/chain_accumulate_or_generate_decision.md:11)).
+
+The design instead says the consumer fold merges deltas while “applying `F9` collision semantics” ([D2](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:63); [build plan](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:132)). That is already ambiguous for c1: the base has a bare S11b `face_response` ([row](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:3626)), while c1 proposes a new curved `face_response` ([candidate exports](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:102)); the current directive therefore requires an `s11c_c1_` F9c key ([route](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:141)).
+
+Required resolution: the writer must compare against the chronological prior fold and store the final F9-resolved key in its delta. The fold must apply deltas in a validated chronological order and verify those routes, not choose or change their spelling. With that rule, an accumulated base treated as one atomic S11c-b cutoff plus own-row deltas is benign.
+
+### 2. Must-fix — the closure guard is not closed under F9c routing
+
+F9 warns that after F9c “the bare key still answers with the predecessor,” so a routed-key contract is required before a consumer is built ([source](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:205)). The current ledger demonstrates why names or payloads cannot infer the route: bare `a1` is an S9 row containing `Symbol('a1', real=True)` ([bare row](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:422)), while `s11_a1` is a different routed row with the same serialized symbol ([prefixed row](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:15071)).
+
+The proposed guard asserts the intended route only for “every listed key” ([D3.2](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:90)); closure-added free symbols and `dimension_key` targets are then checked only for presence ([D3.3](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:92)). A bare predecessor can therefore satisfy presence while the intended prefixed dependency is absent.
+
+Every closure edge—not only manifest roots—needs an explicit resolved ledger key or equivalent producer-qualified route record. The fixed-point must apply this to both free-symbol and recursive `dimension_key` edges. Literal `dimension_key` traversal itself is otherwise sound; existing rows already demonstrate explicit prefixed targets such as `s11b_dim_energy_density` ([example](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:3441)).
+
+The smoke test is also one-directional: “bind every declared key” ([D3.4](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:94)) does not prove that every actual lookup was declared. Use an access-recording ledger proxy and assert observed construction/regression lookups equal `IMPORT_KEYS`.
+
+### 3. Must-fix — the build plan does not reconcile the live c1 authority or its digest contract
+
+The c1 directive says the shared spec “wins every conflict” ([authority](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:10)). That spec still requires the SymPy engine to import and carry the S11b, S11c-a, and S11c-b ledgers ([spec](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:587)); the current directive likewise requires an accumulated output ([directive](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:61)). The design plans to update only the directive ([plan](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:135)). A builder would therefore face two binding instructions.
+
+The shared spec’s chain-output paragraph must also be amended, not merely the build directive.
+
+There are two related concrete specification errors:
+
+- The design’s `IMPORT_KEYS` summary omits direct c1 bindings such as `v_bulk_normal_0`, `q_out`, and the varying profile/density rows, all expressly bound by the current directive ([bindings](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:70)). They must appear explicitly, even if closure would incidentally find some of them.
+- The design calls the outgoing set ``dtn_*`, `face_response*` `` ([plan](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:138)), but the authority names exactly five roots ([exact list](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:102)) and explicitly excludes `dtn_hermitian_part`, `dtn_by_regime_pair`, `dtn_term_origins`, loci, and other `dtn_*` diagnostics ([exclusions](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:114)). The wildcard can recreate the bloat F10 removed.
+
+Finally, c1 pins exactly five build inputs ([digest contract](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:149)). A separately imported fold/guard module is a sixth executable input. Either inline it into the self-pinned audit or amend the spec and digest set to pin it.
+
+### 4. Must-fix — a later manifest cannot by itself promote an emit-only row
+
+Under generation, the authoritative model is formed from the base and exported per-step deltas ([prior decision](/var/projects/toy_physics/research/pde_ledger_v3/directives/chain_accumulate_or_generate_decision.md:8); [D2 fold](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:63)). The design nevertheless says a row omitted from every delta is recoverable merely by “promotion into a later manifest” from `.out` ([D3 recovery](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:98)). Adding an import key does not materialize its row; the fold will correctly report it missing.
+
+For rows already present in the frozen base or a prior delta, writer-time `PASS_THROUGH_KEYS` are unnecessary: the later consumer’s own `IMPORT_KEYS` should discover them from the full fold. For rows retained only in `.out`, the design needs an explicit, validated promotion artifact—such as a producer-owned promotion delta reconstructed with its row schema/evidence—or a producer rebuild. Without that, the claimed recovery path is not executable.
+
+### 5. Major — `coupling_kernel` currently fails D1’s own bind-only test
+
+The final c1 scope assigns c2 the fold into the full `slab_operator` and then re-extraction of the closed kernel from that closed operator ([scope](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:34)). The review that forced this ordering says substitution into the already-extracted open kernel is “at most a residual after proving per-channel commutation” ([source](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c_spec_review.md:59)). No c2 spec presently declares that optional regression bind.
+
+The design nevertheless states that c2 binds both `slab_operator` and `coupling_kernel` ([D4 claim](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:105)) and puts both in c1’s pass-through manifest ([plan](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:136)). That contradicts D1’s “already-declared later bind” predicate.
+
+This matters materially: I reproduced approximately 507 rows/25.509 MiB for the stated 46-root closure, so the advertised “~508/~26 MiB” arithmetic is defensible. Removing the unsupported open `coupling_kernel` root reduces that closure to 319 rows/18.171 MiB. Either c2 must explicitly declare it as a regression operand, or it should be removed from the minimum.
+
+### 6. Major — the no-manifest fallback is still a bloat loophole
+
+The old fallback says a missing consume-set exports every primary ([F10](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11_export_chain_decisions_v2.md:238)); the current file shows the consequence in `slab_operator_term_origins` alone ([row](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:15222)). The design retains that fallback ([D1](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:49)), while its minimum-mode assertion merely checks equality to the selected policy ([D3.5](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:95)). Under fallback, export-every-primary is the selected policy, so minimum mode passes.
+
+A missing manifest must prevent publication of a new delta. Calling it a “spec defect” without a hard gate does not protect the cap.
+
+## Checks that pass
+
+- D1 correctly retains c1’s μθ bind ([source](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:33)), nine T-substrate rows ([source](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:75)), and S11b regression operands ([source](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_sympy_build_directive.md:39)).
+- The D3-round-trip correction is right: D3 only reconstructs what was written ([D3](/var/projects/toy_physics/research/pde_ledger_v3/S9_REWRITE_PLAN.md:217)), and `_restore` creates symbols directly from srepr ([reviver](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py:17)).
+- Freezing the existing base causes no immediate SHA cascade because none of the hashed upstream files changes. It does not eliminate future whole-file-digest coupling; the earlier decision expressly left that provenance contract unchanged ([source](/var/projects/toy_physics/research/pde_ledger_v3/directives/chain_accumulate_or_generate_decision.md:46)).
+- D4 is separable: the comparator operates on tag streams, not the ledger ([header](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_cross_engine_comparator.py:9)), and canonicalizes `A−B` itself ([residual](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_cross_engine_comparator.py:1205)). Dropping `display` later would, however, require explicitly superseding D3’s human-readable-rendering requirement.
+- Comparator, Wolfram, and `extract_knob_inventory` do not require accumulation: WL imports nothing ([spec](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:68)), while the inventory scans source declarations rather than ledgers ([implementation](/var/projects/toy_physics/research/pde_ledger_v3/scripts/extract_knob_inventory.py:136)).
+- I found no added physics, expected value, or new naming policy.
+
+**Verdict: not sound to build against as-is; fix F9 timing/routing, amend the live c1 spec and digest contract, hard-fail missing manifests, and use consumer-time closure with no writer-time pass-through—plus an explicit promotion delta for rows that exist only in `.out`.**

@@ -1,0 +1,200 @@
+I'll reason from the chain rules, the downstream consume-sets, and the actual LEDGER contents rather than from a target size. First I need the decision list, the specs that bind objects, and the current export file.D1/D3 aren't in the first part of the rewrite plan. I'll search the rest of that file and the downstream consume-set specs next.I’ll pull D1/D3 verbatim, the consume-sets that actually bind objects, and a census of the current LEDGER.Next I’ll read the consume-set language in both specs and census the LEDGER keys, classes, and sizes.The LEDGER is an accumulating merge, so I’ll census keys, classes, and byte sizes, then check what later steps actually bind.The written accumulation rule and the live files may disagree. I’ll measure LEDGER sizes, keys, and what later steps actually bind.Large rows hid `class`/`step` in the first 2 KB. I’ll parse those fields from the end of each row and inspect the actual bind sites.I have the bind sites, the byte census, and the rule text. Next I’ll turn that into the minimum-export rule, the cut list, and where it revises F10/D1.**The LEDGER is a binding environment, not an evidence dump.** A later SymPy step functions iff it can `INCOMING_LEDGER[k]["value"]` every object it **uses as a construction operand** (compose, substitute, evaluate, fold, take a variational derivative of) **without re-deriving it** (`N1`). The `.out` is the evidence channel. Those two jobs were fused by `D1`; they are not the same set.
+
+Measured on the committed file, not the prompt’s 58.8 MB figure:
+
+```text
+S11c_b_exports.py  61,608,243 bytes  (61.61 MB)  2441 rows
+  S11c-b-originated  488 rows  44.414 MB
+  inherited          1953 rows 17.193 MB
+```
+
+(`wc`/`stat` on `research/pde_ledger_v3/scripts/S11c_b_exports.py`. The 29% `*_term_origins` figure is real: 17.871 MB / 61.61 MB.)
+
+---
+
+## 1. The principle
+
+**A row belongs in the LEDGER iff a later chain step binds that key as a construction operand, or the row is in the free-symbol / `dimension_key` closure of such an operand.**
+
+Closed set, smallest:
+
+1. **Produced bind-set.** Every object **this step derived** that **any later step** (not just the immediate next hop) will look up by key and use to build. For S11c-b that is `slab_operator`, `coupling_kernel`, `mu_theta_operator` — not because they are “operators,” but because c1/c2 bind them (cites below).
+2. **Still-live inherited bind-set.** Inherited rows that some **still-later** step binds the same way. Not “the previous file.”
+3. **Identity closure.** Every symbol a later step binds **by key** (`c_s0 = INCOMING_LEDGER["c_s0"]["value"]` — `S11c_b_brane_operator_sympy_audit.py:144`, `S11c_c1_sympy_build_directive.md:71–73`: a fresh declaration severs chain identity). Plus `dimension_key` targets if a later step dereferences them while building (`F3`/`Q6r`). `D3` (`S9_REWRITE_PLAN.md:217–219`) only round-trips what was written; it does not require writing diagnostics.
+
+Everything else is **emit-only**: computed, printed to the annexed `.out`, compared by the T7 comparator, reviewed — **not** imported.
+
+That is a **bind test**, not a category test. “Operator / kernel / response / knob” is a useful heuristic for the bind-set. It is not the rule. An energy basis is constitutive and still emit-only if nobody later binds it. A 400-byte `z_impermeable` is a model object and still only a **control** operand at c1 (`S11c_c1_SHARED_PHYSICS.md:122–126`).
+
+**Two channels, already written:**
+
+- Comparator header, `S11c_b_cross_engine_comparator.py:9–10`: *“S11c_b_exports.py is not used as a tag stream.”* Residual, `:1205–1206`: `sp.cancel(sp.together(sp.expand(left - right)))`. The LEDGER is not this instrument.
+- `F10` (`S11_export_chain_decisions_v2.md:220–229`) already splits EMIT vs EXPORT. The membership test below is stricter than F10’s category list and stricter than “carry the whole inherited file.”
+
+---
+
+## 2. Categorization of the current LEDGER
+
+Binding is cited. Absence of binding is also cited.
+
+### (a) Knob / constant rows (`c_s0`, `rho_m`, `Lambda_*`, `tau_*`, `W_0`, …) — **EXPORT**
+
+They are identity, not bulk. `c_s0` is 433 bytes: `class KNOB`, `step S11b`, `dimension_key: dim_c_s0`, `f9_operands`, `corroborated_steps: ('S11', 'S11b')`. `Lambda_A_0` (`S11c_b_exports.py:302–311`) is the same shape, corroborated through S11c-b.
+
+c1 binds them by key (`S11c_c1_sympy_build_directive.md:71–73`; spec §1b `:94–95`, §1d `:149–151`). S11c-b already does (`S11c_b_brane_operator_sympy_audit.py:144–152`). Dropping the **row** while keeping the symbol inside `slab_operator`’s srepr would let a later step re-declare `Symbol('c_s0')` and silently fork identity — the exact failure the c1 directive names.
+
+Size: the named knob set is ~0.01 MB. Irrelevant to the 100 MB cap. **Keep.**
+
+### (b) Varying-profile rows (`W_bg`, `w1_profile`, `sigma_W`, …) — **EXPORT**
+
+Same identity reason. `W_bg` (`:382–391`) is `class DERIVED`, corroborated `('S11c-a', 'S11c-b')`. c1’s reserved names (`S11c_c1_SHARED_PHYSICS.md:551–553`) and c1 directive `:77–79` bind `W_bg`, `mu_R_bg`, `w1_profile`, `m1_profile`, `L_W`, `sigma_W`, `eta_bg`, the density representatives, `e_W_bg`. Rule 17: these stay live functions, not frozen numbers. **Keep.** Tiny.
+
+### (c) Model-definition operators a later step **composes** — **EXPORT** (the ones that are actually bound)
+
+| object | MB | who binds |
+|---|---:|---|
+| `slab_operator` | 18.148 | **c2**, not c1. c1 §0 `:36–38`: c1 “does **not** substitute them into `S11CB_SLAB_OPERATOR` or `S11CB_COUPLING_KERNEL`.” c1 §3b `:327–328`: c1 “does **not** import `S11CB_SLAB_OPERATOR` (that pairing is S11c-c2's, after the fold).” |
+| `coupling_kernel` | 7.641 | **c2** re-extracts from the closed full operator (`S11c_c1_SHARED_PHYSICS.md:14–15, 34–38`). |
+| `mu_theta_operator` | 0.216 | **c1** (`:42–43, :69, :148`: `μ_θ = S11CB_MU_THETA_OPERATOR`). c2 still composes it (`:427, :448`). |
+| T-a..T-i substrate | ~0.37 | **c1** (`:68–69, :160–162`): `face_normal`, `conormal_deriv`, `face_measure_shape_deriv`, `face_velocity`, `relative_flux`, `kinematic_balance`, `traction`, `face_shift`, `closure_shape_deriv`. |
+| c1’s own DtN + `(δp_s,J_s,t_s)` | (not in this file) | **c2** (`:347–348`, §7 `:562–563`). |
+
+**Correction to the prompt.** c1 does **not** import `slab_operator` or `coupling_kernel`. It imports `mu_theta_operator` plus the T-substrate and the knobs. `slab_operator` / `coupling_kernel` are in the LEDGER because **c2** binds them, and because the current file is an accumulating dump. Next-hop consume-set (c1’s) is **not** the produced bind-set (S11c-b’s).
+
+### (d) `*_term_origins` — **EMIT-ONLY**
+
+Five rows, **17.871 MB (29.0%)**:
+
+| key | MB | step |
+|---|---:|---|
+| `slab_operator_term_origins` | 13.144 | S11c-b |
+| `coupling_kernel_term_origins` | 4.180 | S11c-b |
+| `projection_term_origins` | 0.507 | S11c-a |
+| `evolution_term_origins` | 0.034 | S11c-a |
+| `constraint_term_origins` | 0.005 | (inherited) |
+
+The display head of `slab_operator_term_origins` is a provenance tree (`BULK_ENERGY` / `CURL_SQUARED` / `LOCAL` / `DIVERGENCE_FLUX` labels on terms). Nothing in c1’s spec, c1’s directive, or S11c-b’s own downstream language **substitutes into** it. S11c-b emits it because `emit_primary(..., export=True)` (`S11c_b_brane_operator_sympy_audit.py:4143, 4170–4173`) and because S11c-b **has no consume-set** — `F10:239–241` then falls back to `D1` (every §4 primary). `F10:228–229` already names “term-origin views” as emit-only. The comparator never reads these rows (`:9–10`).
+
+### (e) Dissipation / energy / loci / noninvertibility / Hermitian-reactive / regime-parity views — **EMIT-ONLY**
+
+These are F10’s own list (`:228–229`). In *this* file they are almost all **inherited S11b/S11 diagnostics that D1 dumped and D5 copied**:
+
+S11b rows ≥50 KB (none of which c1 constructs with — c1 builds the curved DtN from §2–§3, using the flat objects **only** as §5c regression, `:122–126`):
+
+`growth_artifact_diagnostics` 1.416 + `decay_artifact_diagnostics` 1.416 + `causality_check` 1.079 + `bulk_operator_by_regime` 0.851 + `reciprocal_traction_root_effect` 0.845 + `kernel_pole_locations` 0.762 + `dissipation_origin` 0.325 + `kernel_propagation_residuals` 0.316 + `root_power_source` 0.247 + `root_stability_class` 0.245 + `permeable_dissipative_by_regime_and_parity` 0.202 + … ≈ **9 MB**.
+
+S11 loci: `root1_rank_drop_joint_canonical_locus_d5` 0.683 + `root1_stacked_drop_joint_canonical_locus_d5` 0.432 + `indexed_derivations_d5` 0.232 + `indexed_derivations_d4` 0.135.
+
+c1’s §5c **does** bind `z_impermeable` (402 bytes), `z_by_regime` (3 KB), `face_response` (4 KB), `grazing_behaviour` (0.5 KB) — as **control operands**, not construction. Under a single-file incoming LEDGER they must be present **in c1’s import**. They do not need to be in c1’s **outgoing** consume-set (`F10` / c1 §7). And c1’s spec already imports `S11b_exports.py` as a separate parent (`S11c_c1_SHARED_PHYSICS.md:4–6`), so they do not even need to live in `S11c_b_exports.py`.
+
+### (f) §5 / §6 control operands — **EMIT-ONLY**
+
+Already the S11c-b rule: `S11c_b_sympy_build_directive.md:73–75` — “The §5 controls … and §6’s homogeneity controls are ablation evidence, **NOT exports**.” S11c-b’s own `control_*` / `rep_invariance_*` rows are not in the large-row census; the engine already dropped them (`emit(..., export=False)` unless `emit_primary`). Inherited `homogeneity_*` from S11b are the same class: evidence, not construction. c1 §4 lists its own §5a–e / §6 operands as things to **emit**; c1 §7 / F10 put them emit-only.
+
+### (g) Intermediates named but not bound downstream — **EMIT-ONLY**
+
+S11c-b §4 primaries that no later spec binds:
+
+| key | MB | why emit-only |
+|---|---:|---|
+| `energy_basis_variable` | 0.452 | Constitutive *input* to S11c-b’s own operator construction. c2 folds the **operator**, not the basis (`S11c_c1_SHARED_PHYSICS.md:14–15, 34–38`). N1: a later step does not re-derive an inherited object. |
+| `energy_basis_new_invariants` | 0.364 | Same. `N15` says **emit** new invariants as results — that is the `.out` / step-record job. |
+| other `energy_basis_*` | ~0.03 | Counts/omissions. |
+| `admissibility_{operator,support,residual}` | 0.098 | Background-order residual (`S11c_b_SHARED_PHYSICS.md:222–229, 391–392`). A diagnostic that the profile is held. c1 does not compose it. |
+
+S11c-a rows S11c-b bound for **its** construction (`SHAPE_SUBSTRATE_KEYS` at `:370–390` includes `projection_*` and `virtual_work_shape_deriv`) but **c1 does not name**:
+
+`projection_term_origins` 0.507 + `projection_residual` 0.432 + `projection_dynamic_operand` 0.411 + `projection_shape_deriv` 0.411 + `virtual_work_shape_deriv` 0.125 ≈ **1.89 MB**. c1’s T-a..T-i list (`:160–162`) does not include them.
+
+---
+
+## 3. The minimum set, and the cut
+
+**Minimum S11c-b LEDGER (produced bind-set + identity closure + still-live T-substrate / knobs / profiles):**
+
+- `slab_operator` (18.148) + `coupling_kernel` (7.641) + `mu_theta_operator` (0.216)
+- T-a..T-i (~0.37)
+- knobs / profiles / `q_out` / new `gamma_s11cb_*` free-symbol rows (~0.05)
+- optionally, if this file is c1’s **only** import: the tiny S11b B0b/B0c rows c1 §5c binds (`z_impermeable` 402 B, `face_response` 4 KB, …)
+
+**≈ 26.4 MB**, dominated by the two operators c2 folds. The rest of the 61.61 MB is evidence.
+
+**Cut list (this file):**
+
+| cut | MB | % of 61.61 |
+|---|---:|---:|
+| all `*_term_origins` | 17.87 | 29.0 |
+| inherited S11b diagnostics (≥50 KB list above, ~9 MB) + S11 loci (~1.5) | ~10.5 | 17 |
+| S11c-a projection package not in T-a..T-i | 1.89 | 3.1 |
+| S11c-b `energy_basis_*` + admissibility | 0.95 | 1.5 |
+| **subtotal, clearly unbound** | **~31** | **~51** |
+
+After the cut, **~26–28 MB remains**, and **~26 MB of that is `slab_operator` + `coupling_kernel` in expanded form** — a representation problem, not a set problem (§5).
+
+F10 applied only to **c1’s new rows** does **not** shrink this file. `F10:253–254`: “prior committed exports are unchanged.” c1 §7 then **carries the entire inherited LEDGER** (`S11c_c1_SHARED_PHYSICS.md:587–588`; directive `:111–112`). So c1’s export is ≥ 61.61 MB + ~5 MB DtN/response (F10’s own 145 MB measurement: 84.7 MB was two dissipation rows; model-level ~5 MB; the rest is this inherited dump). The 100 MB cap is still in play **because D1’s over-export is being copied forward**, not because c1’s consume-set is large.
+
+S11c-b’s spec §7 **never declares a consume-set**. F10’s fallback (`:239–241`) is exactly why `term_origins` landed in plain git.
+
+---
+
+## 4. Under-export risk, and what actually bounds it
+
+Three failure modes, only one of which is dangerous.
+
+**Dangerous: a construction operand missing from the bind-set.** If `slab_operator` is not in some file c2 imports, c2 cannot fold (`N1`: PY does not re-derive inherited objects). The guard is **not** “export everything.” It is:
+
+- the emitting spec **names** the produced bind-set (union over **known later** steps, not only hop+1);
+- that list is physics-bearing ⇒ **two legs before the builder** (rule 7) — this is the same tax F10 already put on the consume-set;
+- `D3` round-trip on what **was** written (`S9_REWRITE_PLAN.md:217`);
+- “never re-originate” on identity rows (c1 directive `:73`).
+
+**Not dangerous: dropping a diagnostic.** It remains in the annexed `.out` (`F10:244–246`: “Emit-only is never computed then discarded”). Recovery is a promotion into a later consume-set, not a rebuild of physics. The comparator and the review legs never needed the LEDGER (`:248–251`; comparator `:9–10`).
+
+**The next-hop hole, which F10 currently papers over with “carry the whole inherited file.”** c1’s consume-set is DtN + face response (`:347–348, :562–563`). That set does **not** contain `slab_operator`. c2 needs `slab_operator`. Today that works only because c1 copies 61 MB of S11c-b, including 18 MB of operator **and** 17 MB of origins. If we prune S11c-b to **c1’s** consume-set, c2 breaks. The bind-set of S11c-b is `{mu_theta_operator, slab_operator, coupling_kernel}`, which is **larger** than “what the immediate next step binds.”
+
+`D1`’s “errs toward more” (`S9_REWRITE_PLAN.md:210–213`) was the right default when export **was** emit — one channel, no consume-set, no `.out` safety-net. That world is gone. **F10 + the `.out` replace D1’s err-toward-more as a builder default.** What survives from D1 is the one clause that was always the real control: **the builder makes no per-object judgement.** The spec names the bind-set; the builder exports exactly that plus closure.
+
+Unclear object: **emit-only, report it, promote later.** That disagrees with F10’s “the safe direction is still to export” (`:231–232`) and agrees with the c1 directive’s own operational line (`S11c_c1_sympy_build_directive.md:126–128`: unclear → emit-only). The `.out` is the safety-net; exporting a 13 MB origins tree “just in case” is how we got here.
+
+Worst case a step re-derives: true for WL (always; it imports nothing, `S9_REWRITE_PLAN.md:17–18`). False for PY under `N1`. So “just re-derive” is **not** a PY recovery path. Promotion from `.out` is.
+
+---
+
+## 5. Representation vs set (flagged, not solved)
+
+Even the minimum set still contains `slab_operator` at **18.148 MB** (display 4.738 + srepr 13.409, ratio 2.83) and `coupling_kernel` at 7.641 MB (2.004 + 5.636). The prompt’s expansion diagnostic (271 symbols, 365,820 occurrences) is why: the stored object is a flattened sum, not a factored operator.
+
+`D3` (`:217–219`) requires (i) a form SymPy reconstructs exactly and (ii) a human-readable rendering **alongside**. That is why every row stores the expression twice. The comparator canonicalizes by `expand` (`:1206`), so agreement does **not** require the LEDGER to store the expanded representative.
+
+That is a **separate lever** (store unexpanded / drop `display` from the LEDGER and keep it on the `.out` / don’t expand before export). It is not this question. Cutting the set without touching representation still leaves ~26 MB of operators that c2 must bind.
+
+---
+
+## 6. Does this revise F10 or D1 as written?
+
+**D1 — replace, do not “refine.”** `D1` (`S9_REWRITE_PLAN.md:210–213`): *“Export every object S9's MAIN package emits … Mechanical, no per-object judgement, and it errs toward exporting more.”* The no-judgement clause stays. “Every MAIN” and “errs toward more” are the operational default that put `slab_operator_term_origins` (13.1 MB) in plain git. F10 already moved the boundary to the spec-declared consume-set (`:232–236`). Call that a **replacement of D1’s membership rule**, with D1 retained only as the fallback when a spec **has not** declared a bind-set (`F10:239–241`) — and treat a missing consume-set as a **spec defect** (S11c-b §7 is that defect), not as a licence to keep D1 in steady state.
+
+**F10 — revise in three places.**
+
+1. **Membership is the bind test, not the category list.** `F10:224–229` says “model-level register — operators, kernels, closed responses, and the knobs/symbols a later step binds” and then lists diagnostic categories as emit-only. The second half is right. The first half over-generates: `energy_basis_variable` is model-level and unbound; `z_impermeable` is a model object and only a §5c control at c1. Write the bind test; keep the category list as a heuristic the bind test can override.
+2. **The consume-set is the produced bind-set (any later step), not hop+1.** c1’s named consume-set (`:347–348`) is correct **for c1→c2**. It is **not** S11c-b’s export set. S11c-b must export `slab_operator` even though c1 is forbidden to import it. F10 as applied to c1, plus “carry the entire inherited LEDGER,” currently hides this by copying 61 MB.
+3. **Carried-forward inherited LEDGER means the inherited bind-set, not the inherited file.** `F10:226–227` “merged onto the carried-forward inherited LEDGER” + `:253` “prior committed exports are unchanged” is how 9 MB of S11b growth/decay/causality diagnostics and 17 MB of origins ride into c1. Prune inherited diagnostics at the write. (The 2026-08-11 `chain_accumulate_or_generate_decision.md:8–9` already superseded D5’s physical accumulation — “each step exports only the rows it defines or re-derives” — and was never implemented; F10 of 2026-09-03 re-asserted accumulation. I am not reopening storage topology here. I am saying that **whatever topology is used, membership is the bind-set.**)
+
+`D3` is untouched: round-trip whatever you write; do not write what you do not need to revive.
+
+`F9` is untouched: it decides **keys**, not **which objects exist**.
+
+---
+
+## Disagreement I would expect with F10/D1 as currently written
+
+- F10: “this refines D1, it does not overturn it” and “the safe direction is still to export.” I would overturn D1’s membership default. Unclear → emit-only, promote from `.out`.
+- F10: carry the inherited LEDGER whole. I would carry only the inherited bind-set. Otherwise F10 cannot actually shrink the chain.
+- F10: emitting spec’s consume-set = what the next step imports. Necessary, not sufficient. S11c-b’s produced bind-set includes objects c1 is forbidden to touch.
+- D1-as-fallback on S11c-b (no consume-set) is the measured cause of the 17.9 MB origins blob. That is a spec hole, not a virtue of D1.
+
+---
+
+**Decision-list sentence:**
+
+**The LEDGER carries exactly the bind-set: every object a later chain step looks up by key and uses as a construction operand, plus that set’s free-symbol and `dimension_key` closure; everything else the engine computes — including `*_term_origins`, dissipation/energy/loci/Hermitian/regime views, §5/§6 controls, and named intermediates no later step binds — is emit-only in the annexed `.out`.**

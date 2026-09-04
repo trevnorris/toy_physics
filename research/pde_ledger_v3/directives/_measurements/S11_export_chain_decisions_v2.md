@@ -70,3 +70,15 @@ D1's anti-under-export default stands. Safe because the cross-engine comparator,
 engine read the .out tag streams, not the LEDGER (F9 is PY-only; WL writes no ledger). Gated by the S11c-c1
 build-directive review (Grok CLEAR + Codex must-fix, saved under directives/_legs/); ratified by the user
 2026-09-03.
+
+---
+
+## F10 SUPERSEDED (2026-09-03) — by the bind-closure design c04e071f
+
+A two-engine deliberation + two-leg design review found F10 insufficient: it used category membership (not the
+bind test), carried the whole inherited LEDGER forward (leaving the 61.6 MB dump), wrongly claimed D3 catches
+the closure gap, and kept an export-every-primary fallback. F10's correct half (the EMIT-vs-EXPORT channel
+split) survives in the design's §D1/§D3. F10 is marked SUPERSEDED in place (retained as a record); the
+"model-level vs step-level" open note now points at the design's bind test. Authority:
+export_ledger_bind_closure_design.md (committed c04e071f). Gate: the deliberation + design-review leg outputs
+under directives/_legs/export_ledger_*.

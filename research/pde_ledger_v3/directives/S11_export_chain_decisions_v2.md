@@ -197,8 +197,9 @@ key. ⚠ Evidence: `/tmp/f9_leg_{codex,grok}/`, ⛔ outside the tree.
 ### ⛔ What F9 does NOT decide
 
 - ⛔ Whether S10 is regenerated ⇒ `F4`, still open.
-- ⛔ The **model-level vs step-level** split — ⭐ the real distinction. ⭐⭐ **MADE in `F10` below, on S11c-c1's
-  third-step evidence** (the 145 MB full-primary export): the LEDGER carries the model-level register, step-level
+- ⛔ The **model-level vs step-level** split — ⭐ the real distinction. ⭐⭐ **MADE via the bind test in
+  `export_ledger_bind_closure_design.md` (`c04e071f`)** on S11c-c1's evidence (F10 below made a first, category-
+  based cut and is now superseded by that design): the LEDGER carries the **bind-closure**, step-level
   diagnostics are emit-only.
 - ⛔ The **tag stream** — `§8`'s grammar is untouched.
 - ⚠ Whether the prefix generalises from `s11_` to `<step>_`.
@@ -209,6 +210,16 @@ key. ⚠ Evidence: `/tmp/f9_leg_{codex,grok}/`, ⛔ outside the tree.
 ---
 
 ## ⭐ F10 · THE LEDGER CARRIES THE MODEL-LEVEL REGISTER; STEP-LEVEL DIAGNOSTICS ARE EMIT-ONLY
+
+⛔⛔ **SUPERSEDED 2026-09-03 by `export_ledger_bind_closure_design.md` (committed `c04e071f`, two-leg-gated).**
+F10's correct half — the EMIT-vs-EXPORT channel split and the `.out`-is-the-comparator-channel fact — survives
+in the design's §D1/§D3. Its wrong halves are struck: **category** membership (the design uses the **bind
+test** — export iff a later step binds the row's **F9 write-key**, not by label); **"carry the whole inherited
+LEDGER"** (the design carries only the bind-closure, via a **generate/fold** topology over a frozen base);
+**"D3 catches the closure gap"** (false — the `D3` round-trip does **not** catch under-export; the design
+supplies a manifest + edge-wise closure guard); and the **export-every-primary no-manifest fallback** (a missing
+manifest is now a **hard error**). ⛔ Do not build from the F10 text below — read the design. It is retained as
+a record.
 
 ⭐⭐ **This makes the model-level-vs-step-level split `F9`'s "does not decide" (above) left open "for a third
 step's evidence."** The third step's evidence is S11c-c1's: the full-primary export measured **145 MB**, of

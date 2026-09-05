@@ -194,6 +194,21 @@ the bind-closure (D1); `assert_delta_is_minimal` requires the delta's key-set = 
 `BUILD_INPUT_DIGESTS` pins `{this SymPy audit, scripts/S11c_b_exports.py, scripts/S11c_c1_exports.py, the c2 spec,
 scripts/ledger_fold.py}` (§D3). ⛔ Never `git add -f` a big `.out`; ⛔ never annex an `*_exports.py`.
 
+⭐⭐ **EMIT ≠ EXPORT — export ONLY what a future step binds (D1); everything else is EMIT-only (→ the `.out`).** §4
+lists what to **emit** (PRINT to stdout, for review + the T7 comparator). The **export delta** is far smaller: per
+`directives/S11c_decisions.md:51`, S11c-c hands S11c-d exactly **"the coupled nonlocal self-energy operator."** ⇒
+**EXPORT only the coupled self-energy operator** — `S11CC2_CLOSED_COUPLING_KERNEL` (the re-extracted closed
+off-diagonal coupling = the self-energy operator; pin whether S11c-d also needs the full `S11CC2_CLOSED_SLAB_OPERATOR`
+— default NO, the coupling kernel is the deliverable) — plus its bind-closure of new coordinate/function/dimension
+declarations. ⛔ **EMIT-ONLY (→ `.out`, ⛔ NOT the ledger export):** `S11CC2_SELF_ENERGY_INCREMENT` and its two
+same-extract operands (a **comparator representation**, §3c — the T7 comparator reads it from stdout; ⛔ nothing
+downstream binds it), every `…_TERM_ORIGINS` / `…_PARITY_BLOCKS`, the six §3d re-adjudication objects, and every §5
+control operand/residual. ⭐ **Store the exported operator COMPRESSED (held/factored — ⛔ NOT `sp.expand`ed):** the
+comparator canonicalizes `A−B` itself, so the export must not carry the fully-expanded form; PRINT the expanded form
+to `.out` only. ⚠ **Measured (astra's first build over-exported):** three fully-expanded closed objects = **60 MB**
+(`ClosedCouplingKernel` 24.7 MB, `ClosedSlabOperator` 19.9 MB, `SelfEnergyIncrement` 15.9 MB) — the fix is
+**membership** (export only the one bound operator) **+ representation** (held/factored, not expanded).
+
 ---
 
 ## 6 · Supplied / withheld (leak discipline)
@@ -211,6 +226,13 @@ coefficient) and read every hit; a residual "must vanish"/"must equal" phrasing 
 Detached launch (`setsid` + a completion marker + `Monitor`; the harness reaps `run_in_background` ~87 s). c2's fold
 threads the nonlocal `Z`, so the full increment may be **heavy** — measure the process that runs; defer heavy
 controls in-band→out-of-band (`DEFERRED_HEAVY_RUNS.md`); ⛔ never run two memory-heavy CAS jobs concurrently. Astra
-needs `--sandbox danger-full-access` to run SymPy. Verify the **deliverable** (script + export exist, non-empty,
-plausible token count), ⛔ not the exit status; then the two re-review legs (Codex-written → **fresh Claude agent +
-Grok**) launch on sight.
+needs `--sandbox danger-full-access` to run SymPy.
+
+⛔⛔ **THE BUILDER'S JOB ENDS AT build → verify-own-deliverable → report.** ⛔ Do **NOT** launch review legs,
+comparators, the Wolfram engine, or any downstream step, and ⛔ do **NOT** read the `/build` or `/review-legs` skills
+and act on them — **those are the ORCHESTRATOR's, run in a separate process.** A builder that reviews (or spawns
+reviewers for) its own output is the self-check trap (`CLAUDE.md` L-R8/G1: whatever writes does not review). The
+builder writes only: `scripts/S11c_c2_selfenergy_fold_sympy_audit.py`, `scripts/S11c_c2_exports.py`, its `.out`, and
+one `_measurements/S11c_c2_sympy_builder_report.md` (the frozen map + per-object which-line-computed-it + literal §5
+residuals — ⛔ no verdicts). The orchestrator verifies the deliverable (exists, non-empty, plausible token count — ⛔
+not the exit status) and launches the two independent legs (Codex-written → **fresh Claude agent + Grok**).

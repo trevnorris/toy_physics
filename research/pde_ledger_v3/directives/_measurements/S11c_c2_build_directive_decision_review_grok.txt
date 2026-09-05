@@ -1,0 +1,131 @@
+I'll review the S11c-c2 SymPy decision list as a one-pass pre-builder check: load the review-legs skill, then verify import wiring and the fold map against the real files.I'll treat this as the Grok decision-list pass: read the directive and cleared spec, then run `ledger_fold` against the real export files rather than trusting the prose.I'll verify the fold against the real export files next, then check the spec pointers and the fold symbol map.I'll write a fold-verification script next and run it against the real export files, saving the command and stdout under `/tmp`.I'll write a fold-verification script that checks wiring, consume-set coverage, the symbol map, and the `face_response` provenance hazard.The S11c-b export is 59 MB, so I'll run the fold script with a long timeout and keep an eye on memory.The fold script exited 1 — I'll inspect stdout and stderr to see where it failed.The fold counts and 18-root closure check out; I'll fix the atom-walk crash and continue with the symbol-map verification.The c1 `face_response` display has no `PRESSURE` token — I'll inspect the restored structure and the symbol-map stdout next.# S11c-c2 SymPy build directive — Grok decision-list review (one pass)
+
+Artifact: `directives/S11c_c2_sympy_build_directive.md`  
+Physics authority (not re-reviewed): `directives/S11c_c2_SHARED_PHYSICS.md` @ `16849fc6`
+
+**Commands / stdout (working tree untouched):**
+- `/tmp/s11cc2_dl_fold_verify.py` → `/tmp/s11cc2_dl_fold_verify.stdout` (wiring; A–J completed)
+- `/tmp/s11cc2_dl_symbol_map.py` → `/tmp/s11cc2_dl_symbol_map.stdout` (slots / Λ_X / map)
+- `/tmp/s11cc2_dl_c1_structure2.py` → `/tmp/s11cc2_dl_c1_structure2.stdout` (c1 `DELTA_P` vs `PRESSURE`)
+
+---
+
+## MUST-FIX
+
+### 1. Stage 1 looks up a `PRESSURE` slot that is not the closed `δp_s`
+
+**Directive §3 (quoted):**
+> The closed `δp_s` per case lives in `s11c_c1_face_response` / `s11c_c1_face_response_coeffs`, indexed `(anchoring∈{LAB_HELD,MATERIAL_ADVECTED}, face∈{+1,−1}, density∈{RHO4_CONSTANT,RHOBR_CONSTANT})`, `PRESSURE` slot; it is a function of the c1 symbols below and carries the operator inverse `s11cc1_response_resolvent_{α}_{s}_{ρ}_constant = [I+(Λ_A/ρ_m²)Z]⁻¹` (⛔ a nonlocal operator inverse, ⛔ not a scalar division…)
+>
+> …replace, in all three rows, the `s=+` slot pair `(delta_p_plus, d_w_delta_p_plus)` with c1's closed `δp_s` + w-jets…
+
+**Real rows (`/tmp/s11cc2_dl_c1_structure2.stdout`):**
+
+| Row | Closed `δp_s` tag | What that tag actually is |
+|---|---|---|
+| `s11c_c1_face_response` | **`DELTA_P`**, under `CASES/(α, ±1, ρ)/VALUE` | Operator-valued closed pressure. 8 nodes. Each carries `s11cc1_V_*`, `s11cc1_mu_theta_*`, `s11cc1_response_resolvent_*`, `s11cc1_dtn_operator_*`. **`PRESSURE` count = 0.** **No `D_W_DELTA_P` / jet tag.** |
+| `s11c_c1_face_response_coeffs` | **`PRESSURE`** (this is the only `PRESSURE`) | A **2-tuple of linear coefficients** in `q_out`, `k`, `w1_profile_hat_*`. **No** `s11cc1_V_*`, **no** `s11cc1_mu_theta_*`, **no** resolvent **operator** — `RESOLVENT_SYMBOL_OUTPUT` is the **scalar** `1/(Λ_A⁰ ω /(ρ_m q_out (−Iωτ_A+1)) + 1)`. |
+
+Literal DELTA_P head (LAB_HELD, +1, RHO4):
+```
+(Lambda_A_0*epsilon_shape*s11cc1_mu_theta_lab_held_plus/(rho_br_bg_rho4_constant*rho_m*(-I*omega*tau_A + 1))
+ + epsilon_shape*s11cc1_V_lab_held_plus*(Lambda_V_0/…
+```
+Literal coeffs PRESSURE head (same case):
+```
+((omega*rho_m*(Lambda_V_0/(rho_m*(-I*omega*tau_V + 1)) + 1)/(s11cc1_q_out_output*(Lambda_A_0*omega/(rho_m*s11cc1_q_out_output*(-I*omega*tau_A + 1)) + 1)), …)
+```
+
+The spec (`16849fc6` §3a) says substitute closed `δp_s` **from `s11c_c1_face_response`**. It does **not** name a `PRESSURE` slot. The directive invented a slot name that exists only on the **coeffs** row, whose `PRESSURE` is the **flat/coefficient** object — scalar division, no nonlocal `Z`. Binding that is exactly the construction the directive’s own “⛔ not a scalar division” sentence forbids, and it is the close-the-extracted-kernel route §2/`export_ledger_bind_closure_design.md:148-153` bars.
+
+The open `d_w_delta_p_±` slots **are** live in the three slab rows (`_referenced_atoms`; `/tmp/s11cc2_dl_symbol_map.stdout` lines 13–38). They are **not** stored on c1. Stage 1 as written lets a builder (i) KeyError on `face_response['PRESSURE']`, (ii) substitute coeffs `PRESSURE` (wrong physics), or (iii) leave the w-jet slots unsubstituted.
+
+**Freeze before the astra build:**
+1. Closed `δp_s` = `s11c_c1_face_response` → `CASES` → `(α, s∈{+1,−1}, ρ)` → `VALUE` → **`DELTA_P`**.
+2. ⛔ Not `PRESSURE` on `s11c_c1_face_response_coeffs` (regression/coefficient object).
+3. w-jets are **not an export**: compute `d_w` of that `DELTA_P` by the same shape derivative that produced the open `d_w_delta_p_±` slots, then substitute both.
+
+This is the one finding that changes what Stage 1 substitutes.
+
+---
+
+## SHOULD-FIX
+
+### 2. The `V_s` map is not frozen; `kinematic_balance` is the wrong row
+
+**Directive §3 table (quoted):**
+> `s11cc1_V_{lab_held,material_advected}_{plus,minus}` → the slab interfacial normal velocity `V_s`  
+> **NOT a rename**: the slab has **no bare `V_s` symbol** … Derive the `V_s` identity from the slab's `kinematic_balance`/`face_velocity` rows (§1d `n̂_s·v_bulk,s = V_s + J_s/ρ_m`) and freeze it.
+
+**Real rows (`/tmp/s11cc2_dl_symbol_map.stdout`):**
+- Slab `slab_operator` / `closure_shape_deriv` / `traction`: **no** `V_s`, `V_plus`, `V_minus`, or `s11cc1_V_*`. Asymmetry (b) is real; not-a-rename is right.
+- `face_velocity` **is** `V_s`, keyed `(α, s∈{±1}, ΔW|ζ_c)`: e.g. LAB_HELD/+ /DELTA_W = `W_0*e_W_t*epsilon_shape/2`.
+- `kinematic_balance` is an `OPERAND_A`/`OPERAND_B`/`RESIDUAL` identity on **`delta_v_bulk_*`**, not `V_s`. Using it as the substitution target is a different object.
+- c1 `s11cc1_V_*` rows: class `COORDINATE`, description **“face-velocity input amplitude”**.
+
+Spec §3a assigned **this directive** to freeze the exact map. Two representations (`DELTA_W` vs `ZETA_C`) and two named rows leave the builder a choice that changes the substituted `V_s`. Freeze: `s11cc1_V_{α,s} → face_velocity VALUE` for the same `(α, s, ΔW|ζ_c)` instance being closed. Drop `kinematic_balance` as a `V_s` source.
+
+The μ_θ half of the table **is** right: slab `mu_theta_L`/`mu_theta_M` are per-anchoring `PREMISE` symbols; c1 is per anchoring×face; both faces map to one slab symbol; `mu_theta_operator` is per `(anchoring, density)` with no face. No fourth *rename* is required: after Stage 1 the leftover c1-only atoms are `s11cc1_V_*`, `s11cc1_mu_theta_*`, resolvents, `s11cc1_dtn_operator_*`, `s11cc1_identity_operator`, and `rho_br_bg_rho4_constant` (the last is the §3d.1 pre-fold bind, not a Stage-2 rename). `dtn_operator_*` / identity stay symbolic, as Stage 1 already says for `Z`.
+
+---
+
+## NIT
+
+### 3. Three script clauses are present in substance, not byte-verbatim
+
+Skill (`.claude/skills/build/SKILL.md:60-65, 91-93`) vs directive §0: `emit`/`Print` vs `emit`; “boolean from a symbolic test” vs “symbolic boolean”; “then assert” vs “then (optionally) guard”; structural rule gains “/ the imported operands”. Meaning is the same; the extra imported-operands clause is appropriate for a fold. Does not change what is computed.
+
+---
+
+## What was checked and holds
+
+### 1. Import wiring — ran `load_model` / `check_consumer` / `assert_lookups_equal_manifest`
+
+From `/tmp/s11cc2_dl_fold_verify.stdout`:
+
+| Claim | Result |
+|---|---|
+| base 2441 + c1 44 → 2485 | `source_row_counts: [('scripts/S11c_b_exports.py', 2441), ('scripts/S11c_c1_exports.py', 44)]`, `fold_len: 2485` |
+| exact-key intersection empty, `overwrites==[]` | `exact_key_intersection: []`, `overwrites: []` |
+| `check_consumer(fold, 18)` | `RESOLVED`, `closure_size: 355`, `ambiguity: NONE` |
+| 18-closure covers the 38 | `38_missing_from_fold: []`, `38_missing_from_closure: []` (8 resolvents, 6 `s11cc1_k_*`, 2 `q_out`, transfer + 3 jets) |
+| spec §7 extras (constants, `s11cc1_*`) | all 57 unique spec-§7 names in the 18-closure; every `s11cc1_*`/`s11c_c1_*` key is in it |
+| 18 minimal | drop-one: **none** of the 18 is reachable from the other 17; dropping any misses at least that root from the 38 |
+| `IMPORT_KEYS` = exact `fold[key]` lookups | exact 18: PASS; undeclared `omega`: `undeclared lookup(s): omega`; declared-but-unused `v_bulk_normal_0`: `declared-but-unused key(s): v_bulk_normal_0` |
+| `v_bulk_normal_0` must not be declared | in fold, **not** in 18-closure, **not** in the 38 |
+| bare vs prefixed `face_response` | both exist; steps `S11b` vs `S11c-c1`; `values_equal: False`; `check_consumer` and `assert_lookups` **PASS on either** |
+| `coupling_kernel` | in fold, **not** in 18-closure; bind only as §5a regression operand is correct |
+
+Prefixed `s11c_c1_face_response` as a hard requirement is right. The 18-root list is the right minimal cover.
+
+### 2. Fold symbol map (except MUST-FIX 1 / SHOULD-FIX 2)
+
+`/tmp/s11cc2_dl_symbol_map.stdout`, via `ledger_fold._referenced_atoms` on restored values:
+
+- `delta_p_plus`, `delta_p_minus`, `d_w_delta_p_plus`, `d_w_delta_p_minus`: own rows, class `COORDINATE`, step `S11c-b`, **bare `Symbol`s**.
+- All four present in **`slab_operator`, `closure_shape_deriv`, and `traction`**.
+- `Lambda_X_0`: **present in `traction`**, **absent from `closure_shape_deriv`** (`Lambda_A_0`/`Lambda_V_0` the other way around). Λ_X-in-traction-only is the real row.
+- Disjoint names: **none** of the four slots appear in `s11c_c1_face_response`. Two-stage explicit `subs` is required.
+- `background_density_map` really has `Eq(rho_br_bg_rho4_constant, W_bg*rho_br/W_0)`; the `rho_br_bg_rho4_constant` **row** is a bare Symbol. Pre-fold bind is the right mechanical move.
+
+### 3. Faithfulness to `16849fc6` (pointers only)
+
+HELD-PHYSICS matches the spec: `extract(close(SLAB))`; substitute closed `δp_s`(+w-jets), not a closed `J_s`; `Λ_X` in `t_s` only; increment **SURFACES** the two UNVALIDATED sign conventions; §3d.4 pairing adjudicates face-force sign; §3d.1 live `background_density_map` bind and `∇ρ→0` barred; §3d.2 native covector; §3d.3 kernel-vs-whole-form. §1 pointer lists all five c1 UNDECIDED items (density freeze, `t_s`, DtN whole-form, flat-resolvent, ENERGY) and forbids treating them as cross-engine-closed. No contradiction, weakening, or omission of a spec requirement. The Stage-1 `PRESSURE` name is a **directive** defect, not a spec drift.
+
+### 4. Build-skill + leak
+
+Three clauses + structural rule + “no tautological residual / increment is an export representation” corollary are present. No c2 **output** value/sign/order/parity/grade, and no acceptance criterion referencing an expected value. Fold counts (2441/44/2485) and supplied slot/operator structures are inputs.
+
+---
+
+## Verdict
+
+**Not READY TO BUILD.**
+
+Fix before the astra build:
+
+1. **MUST:** Stage 1 closed `δp_s` = `s11c_c1_face_response[CASES][(α, s, ρ)][VALUE][DELTA_P]`; ⛔ not `PRESSURE` on `s11c_c1_face_response_coeffs`; freeze w-jets as a **computed** `d_w` of that `DELTA_P` (they are not an export).
+
+Recommended in the same one-pass fold (spec told this directive to freeze the map):
+
+2. **SHOULD:** freeze `s11cc1_V_{α,s} → face_velocity` VALUE for the matching `(α, s, ΔW|ζ_c)` instance; do not send the builder to `kinematic_balance` as `V_s`.

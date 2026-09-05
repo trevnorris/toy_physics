@@ -1,0 +1,192 @@
+## Verdict
+
+**NOT READY TO BUILD.** The fold wiring is sound, but five build-mechanical items must be fixed before the Astra build. No SHOULD-FIX or NIT findings.
+
+## Evidence runs
+
+No working-tree files were modified.
+
+```bash
+python -u /tmp/s11cc2_fold_wiring_probe.py \
+  | tee /tmp/s11cc2_fold_wiring_probe.stdout
+```
+
+[probe script](/tmp/s11cc2_fold_wiring_probe.py) · [literal stdout](/tmp/s11cc2_fold_wiring_probe.stdout)
+
+```bash
+python -u /tmp/s11cc2_symbol_map_probe.py \
+  | tee /tmp/s11cc2_symbol_map_probe.stdout
+```
+
+[probe script](/tmp/s11cc2_symbol_map_probe.py) · [literal stdout](/tmp/s11cc2_symbol_map_probe.stdout)
+
+## MUST-FIX findings
+
+### 1. Two required `d_w_delta_p_s` substitutions have no frozen source
+
+Directive:
+
+> “replace … `(delta_p_plus, d_w_delta_p_plus)` with c1's closed `δp_s` + w-jets…”  
+> “The closed `δp_s` per case lives in `s11c_c1_face_response` / `s11c_c1_face_response_coeffs` … `PRESSURE` slot”
+
+[directive §3](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_sympy_build_directive.md:124)
+
+Real-file evidence:
+
+```text
+C1_FACE_RESPONSE_QUANTITY_KEYS=['RESOLVENT', 'RESOLVENT_DEFINITION', 'MU_S', 'DELTA_P', 'J', 'T']
+C1_RESPONSE_EXPLICIT_D_W_DELTA_P_REFS=[]
+C1_FACE_RESPONSE_COEFF_QUANTITY_KEYS=['PRESSURE', 'RELATIVE_FLUX', ...]
+```
+
+The c1 full response uses `DELTA_P`, not `PRESSURE`, and neither c1 response row exports an explicit `d_w_delta_p_*` object. The latter is a genuine normal jet, defined as such in [S11c_a_interface_geometry_sympy_audit.py](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py:150).
+
+The cleared spec requires all four slots to be closed:
+
+> “Substitute … pressure `δp_s(V_s,μ_θ)` and its w-jets `d_w_delta_p_s`…”
+
+[spec §3a](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:170)
+
+Fix: freeze the exact computed source/formula for each normal-pressure jet, including face orientation and momentum-leg convention. Pointing generally at the two response rows is insufficient.
+
+### 2. The pressure/amplitude normalization and `V_s` map are not frozen
+
+Directive:
+
+> “`s11cc1_V_…` | the slab interfacial normal velocity `V_s` … Derive the `V_s` identity from … `kinematic_balance`/`face_velocity` rows and freeze it.”
+
+[directive §3](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_sympy_build_directive.md:138)
+
+This delegates the central choice to the builder. The real `face_velocity` has eight values—separate `DELTA_W` and `ZETA_C` rows for every anchoring×face—not one RHS:
+
+```text
+FACE_VELOCITY_CASE_COUNT=8
+FACE_VELOCITY[(LAB_HELD,1,DELTA_W)]=W_0*e_W_t*epsilon_shape/2
+FACE_VELOCITY[(LAB_HELD,1,ZETA_C)]=epsilon_shape*zeta_c_t
+...
+KINEMATIC_BALANCE_CASES=[... eight cases ...]
+```
+
+There is also a normalization fork:
+
+```text
+C1_DELTA_P[(LAB_HELD,1,RHO4_CONSTANT)]=has_epsilon_shape:True
+C1_PRESSURE_COEFFICIENTS_ANY_EPSILON_SHAPE=False
+CLOSURE_SLOT_COEFF_DELTA_P_PLUS=I*Lambda_A_0*epsilon_shape/(...)
+CLOSURE_COEFF_TIMES_FULL_C1_DELTA_P_FACTORED=...*epsilon_shape**2*...
+MU_THETA_OPERATOR_RHS_EPSILON_TEST={'has_epsilon_shape': True, ...}
+```
+
+The c1 full `DELTA_P` is explicitly ε-scaled because c1 constructs both inputs as `epsilon * input_symbol` in [S11c_c1_bulk_closure_sympy_audit.py](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py:834). The slab slot carrier already contains ε. Direct substitution therefore produces ε², while the coefficient representation is unscaled.
+
+Fix: state, per anchoring×face×slab channel, the exact amplitude-level `V_s` and `μ_θ` RHS and exactly whether the slot receives `DELTA_P/epsilon_shape` or a reconstruction from `PRESSURE` coefficients. Specify how the `DELTA_W`/`ZETA_C` rows are selected or composed.
+
+### 3. The required kernel bridge is absent from Stage 2
+
+Directive:
+
+> “`s11cc1_response_resolvent_…` … keep symbolic”  
+> “the `Z` is `s11cc1_dtn_operator_…`, load-bearing object = … `dtn_kernel`”
+
+[directive §3](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_sympy_build_directive.md:129)
+
+The actual pressure has four c1 identifier classes, but the table handles only `V`, `μ_θ`, and the resolvent:
+
+```text
+SELECTED_PRESSURE_C1_IDENTIFIERS=[
+ 's11cc1_V_lab_held_plus',
+ 's11cc1_dtn_operator_lab_held_plus',
+ 's11cc1_mu_theta_lab_held_plus',
+ 's11cc1_response_resolvent_lab_held_plus_rho4_constant']
+STAGE2_C1_REFS_AFTER_V_MU_ONLY=[
+ 's11cc1_dtn_operator_lab_held_plus',
+ 's11cc1_response_resolvent_lab_held_plus_rho4_constant']
+```
+
+The fourth required bridge is the per-case `s11cc1_dtn_operator_*` provenance. Leaving the imported full response unchanged makes the raw whole-form operator load-bearing, contrary to:
+
+> “Structure the fold so the load-bearing bulk object is … `dtn_kernel`… Do not assume whole-form AGREE.”
+
+[spec §3d.3](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:242)
+
+Fix: freeze how each per-case DtN symbol and its resolvent are represented by the matching two-momentum kernel case. The whole-form dependency must remain a separately emitted adjudication object, not silently become the construction operand.
+
+### 4. `coupling_kernel` must be promoted to the mandatory regression imports
+
+The 18 listed roots are genuinely minimal for the stated 38-key §7 consume-set:
+
+```text
+ROOT_COUNT=18
+CONSUME_SET_COUNT=38
+CLOSURE_COUNT=355
+CONSUME_SET_MISSING_FROM_CLOSURE=[]
+ROOTS_REACHABLE_FROM_OTHER_17=[]
+```
+
+But the mandatory §5a regression also consumes the inherited open `coupling_kernel`. It is neither among those roots nor closure-pulled:
+
+```text
+COUPLING_KERNEL_IN_18_ROOTS=False
+COUPLING_KERNEL_IN_18_ROOT_CLOSURE=False
+ROOTS_PLUS_COUPLING_KERNEL_PASS=count:19,closure:543
+```
+
+Directive:
+
+> “`coupling_kernel` is bindable only as the §5a ORDERING-ABLATION regression operand”
+
+[directive §2](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_sympy_build_directive.md:107)
+
+The design authority is stronger:
+
+> “if c2 … explicitly declares it a regression operand — at which point c2's `IMPORT_KEYS` promotes it”
+
+[bind-closure design](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:148)
+
+Fix: retain the 18 as the minimal 38-key construction consume-set, but make `coupling_kernel` the mandatory nineteenth object root/direct lookup for §5a. Its restriction is otherwise correct: regression only, never §3a/§3c construction.
+
+### 5. The clauses labelled “verbatim” are not verbatim
+
+Directive clause 1 changes `` `emit`/`Print` payload must be`` to `` `emit` payload is``. Clause 2 changes:
+
+> “Compute → emit → *then* assert.”
+
+to:
+
+> “Compute → emit → *then* (optionally) guard.”
+
+The structural rule changes:
+
+> “at the ACTION”
+
+to:
+
+> “at the ACTION / the imported operands”
+
+Compare [directive §0](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_sympy_build_directive.md:15) with the binding [build skill](/var/projects/toy_physics/.claude/skills/build/SKILL.md:58).
+
+The four substantive corollaries are present, including no tautological residual, export-representation treatment, independent-route qualification, unconditional emission, placeholder anti-examples, and `derived_or_declared.py`. The defect is the explicit non-negotiable verbatim requirement.
+
+Fix: paste the three clauses and structural rule literally, then add any c2-specific “imported operands” clarification separately.
+
+## Confirmed with no finding
+
+- Fold: `2441 + 44 = 2485`, empty intersection, `overwrites=[]`.
+- Lookup manifest semantics are exact:
+
+```text
+LOOKUP_UNDECLARED_FAIL=... undeclared lookup(s): slab_operator
+LOOKUP_DECLARED_UNUSED_FAIL=... declared-but-unused key(s): v_bulk_normal_0
+V_BULK_NORMAL_0_IN_FOLD=True
+V_BULK_NORMAL_0_IN_CONSUME38=False
+```
+
+- Both bare and prefixed response rows exist, differ, and pass both guards independently; the prefixed provenance requirement is necessary.
+- All four pressure slots are bare `COORDINATE` Symbols present in `slab_operator`, `closure_shape_deriv`, and `traction`.
+- `Lambda_X_0` is present in `traction` and absent from `closure_shape_deriv`.
+- The μθ face-collapse is correct: four c1 face symbols map to the two face-independent slab symbols `mu_theta_L/M`.
+- The live density bind is exactly `Eq(rho_br_bg_rho4_constant, W_bg*rho_br/W_0)`.
+- The directive faithfully carries the settled ordering, no-`J_s` rule, traction-only ΛX routing, surfaced sign conventions, §3d.4 adjudication, all c1 UNDECIDED items, and the three mandatory rule-17 carry-ins.
+- The leak scan found only meta-prohibitions; no c2 output value, sign, order, parity, grade, or expected-value acceptance criterion is disclosed.
+
+Exact pre-build fix list: **freeze the normal-pressure jets; freeze amplitude normalization and all `V_s`/μθ RHS mappings; add the DtN/resolvent-to-kernel bridge; promote `coupling_kernel` as the mandatory §5a-only import; restore the literal build-skill clauses.**

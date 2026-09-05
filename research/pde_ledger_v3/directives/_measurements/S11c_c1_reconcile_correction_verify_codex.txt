@@ -1,0 +1,36 @@
++print("single_scalar_tuned_at_a_residual_at_b =", tuned_b_residual)
++print("residual_at_b_is_zero?", tuned_b_residual == 0)
+
+codex
+# Verdict: DEFECT — not yet clear to move to c2
+
+The fold faithfully attempted all requested corrections, and the two-momentum kernel result is fully sound. Seal 5 is also correctly left `UNDECIDED`.
+
+However, the corrected artifacts still have two substantive problems:
+
+1. The broad face-response coefficient verdict is not reproduced by the committed broad test.
+2. Closure-wide/broad `AGREE` statements and inheritance classifications still contradict the scoped verdict.
+
+Commit inspected:
+
+```text
+$ git show -s --format='COMMIT %H%nSUBJECT %s' 072d0b75
+COMMIT 072d0b75bf3729b160b926ab9ae7396f7c820400
+SUBJECT S11c-c1 T7 cross-engine RECONCILE + step record — 2 legs, verdict scoped to what's measured
+```
+
+Output: [/tmp/S11c_c1_verify_commit_provenance.stdout](/tmp/S11c_c1_verify_commit_provenance.stdout)
+
+## Defects, most severe first
+
+1. **Face-response closure is overstated.** The canonical reproducer tests only one pressure/first-shape/μθ key per anchoring. The committed 96-case broad test repeatedly returns `AGREE=24 MISMATCH=24 ERR=48`, not the reconcile’s claimed clean anchoring split. A vector-aware rerun at the claimed kinematics found `AGREE=48 NONZERO=16 INCOMPLETE=32`; all traction leaves remained unpaired as scalar versus four-component objects. Therefore the blanket `(δp_s,J_s,t_s)` response-AGREE and c2-safe-response claims are not earned.
+
+2. **Broad `AGREE` wording remains.** The step record still says “the two engines AGREE”; `DEFERRED_HEAVY_RUNS.md` says “every surfaced residual is spurious.” Those sweep over operator, density, ENERGY and flat-leg items that are explicitly `UNDECIDED`.
+
+3. **Derived-family classifications conflict.** The step record establishes degenerate loci/dimensions as AGREE although the reconcile says not to read those inheritance arguments as measured AGREE. `DEFERRED_HEAVY_RUNS.md` still lists `HOMOGENEITY` under AGREE-by-inheritance while the reconcile explicitly says it is not.
+
+4. **Over-correction wording:** “the kernel is cross-engine closed; the rest is UNDECIDED/deferred” contradicts the same documents’ positive claims for the scoped response coefficients and flat symbol.
+
+## 1. Faithful fold — CLEAR for incorporation
+
+All enumerated reviewer corrections are represented in the new text and canonical reproducer:

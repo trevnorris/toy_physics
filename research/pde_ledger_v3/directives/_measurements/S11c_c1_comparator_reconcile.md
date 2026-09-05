@@ -10,14 +10,17 @@ values used below — AGREE / DISAGREE / UNDECIDED(coverage-bounded) — are OUR
 ⭐ **HEADLINE (scoped after the 2 step-record review legs — Grok + Codex sol — corrected an earlier
 overreach).** The **core two-momentum DtN kernel AGREES cross-engine** — all 4 (anchoring×face) joined cases
 collapse to **exact zero** off-diagonal under physically-justified identifications; the collapse is load-bearing
-(a wrong jet sign or freezing the two legs into one leaves it nonzero). The **face-response coefficients AGREE**
-for LAB_HELD (off-diagonal exact zero) and for MATERIAL_ADVECTED on the physical diagonal `k=k′`. **No
-cross-engine DISAGREEMENT was found among anything measured.** ⛔ But a **closure-wide "AGREE" is NOT earned on
-this box**: seal 5 (background density) stays a **surfaced rule-17 freeze (UNDECIDED)**, the raw DTN_OPERATOR
-form, the ENERGY audit, and a flat-resolvent leg-labeling (off-diagonal, MATERIAL) are **UNDECIDED**, and the 4
-giant families + the full per-family symbolic residual are **UNMEASURED — DEFERRED** to the ≥64 GB box
-(`DEFERRED_HEAVY_RUNS.md`), ⛔ not pre-adjudicated. Verdict: **the kernel is cross-engine closed; the rest is
-UNDECIDED/deferred.** Reproduce: `python3 _measurements/S11c_c1_reconcile_reproduce.py --runlog <run> --adversarial`.
+(a wrong jet sign or freezing the two legs into one leaves it nonzero). The **δp_s (pressure) and J_s
+(relative-flux) response coefficients AGREE** cross-engine (all leaves collapse to exact zero at physical
+kinematics — sweep `AGREE=54`). **No cross-engine DISAGREEMENT was found among anything measured.** ⛔ But a
+**closure-wide "AGREE" is NOT earned on this box** (a step-record leg + a correction-verify leg both narrowed my
+claims — rule 15): seal 5 (background density) stays a **surfaced rule-17 freeze (UNDECIDED)**; the **t_s
+(traction) response leaf** (WL zero-padded 4-vector vs PY scalar), the raw **DTN_OPERATOR** form, the **ENERGY**
+audit, and the off-diagonal flat-resolvent leg-labeling are **UNDECIDED**; the 4 giant families + the full
+per-family symbolic residual are **UNMEASURED — DEFERRED** (≥64 GB, `DEFERRED_HEAVY_RUNS.md`), ⛔ not
+pre-adjudicated. Verdict: **the two-momentum DtN KERNEL is cross-engine closed and δp_s/J_s AGREE; the operator
+whole-form, t_s, ENERGY, seal 5 and the giants are UNDECIDED/deferred.** Reproduce:
+`_measurements/S11c_c1_reconcile_reproduce.py --runlog <run> --adversarial` + `…_coeff_sweep.py --runlog <run>`.
 
 ---
 
@@ -99,17 +102,23 @@ residual; the *coefficient* is the real cross-engine test. The residual mismatch
 keeps ε in the coefficient (`.wl:748,866-870`). Under `PY_coeff·ε = WL_coeff`:
 `[MU_THETA_COEFF] worst_rel=0.00e+00 AGREE`, `[FACE_VELOCITY_COEFF] worst_rel=4.33e-20 AGREE`.
 
-⚠ **Coverage (corrected after Codex sol's leg flagged the earlier "proven EXACT ZERO" as overstated):** the
-exact-zero collapse holds for the **LAB_HELD** coefficients (off-diagonal) and all 4 **DTN_KERNEL** cases. A broad
-test over all 96 joined coefficient cases (`S11c_c1_reconcile_broad_coeff_test.py`) split cleanly by anchoring:
-**LAB_HELD collapses off-diagonal; MATERIAL_ADVECTED does NOT** (worst_rel ~1e-2…1e-4, real at 50-digit precision
-`S11c_c1_reconcile_flat_leglabel_diagonal.py`). Cause: the **flat half-space resolvent's leg labeling** — PY
-writes the flat DtN symbol on the OUTPUT leg (`s11cc1_q_out_output`, `ρ_m ω/q_out`, `.py:602-603`), WL on the
-INPUT leg (`qOut(ω,{k′})`); equal on the physical **diagonal k=k′** (where the half-space object lives — retest
-there gives `rel=0`), differing only OFF-diagonal where the randomized bridge wrongly probed it. ⇒ the MATERIAL
-coefficients AGREE on the diagonal; the off-diagonal flat-leg labeling is a **surfaced representational
-difference (UNDECIDED)** — a diagonal-restricted or the deferred symbolic residual settles whether it is purely a
-convention.
+⚠ **Coverage (twice-corrected — a step-record leg AND a correction-verify leg both narrowed my coefficient
+characterization; rule 15, I stop refining and report the LITERAL sweep).** The comprehensive sweep over all 96
+joined coefficient cases at **CORRECT per-leaf kinematics** (`S11c_c1_reconcile_coeff_sweep.py`; FLAT leaves are the
+diagonal half-space object `k=k′`, FIRST_SHAPE leaves the off-diagonal two-momentum kernel `k≠k′`; WL's zero-padded
+traction 4-vector reduced to its nonzero component) prints:
+```
+COEFF SWEEP … AGREE=54  NONZERO=6  INCOMPLETE=36  of 96  (traction zero-padded WL-vec vs PY-scalar: 16)
+  NONZERO leaves: {'TRACTION.FLAT.FACE_VELOCITY_COEFFICIENT': 4, 'TRACTION.FLAT.MU_THETA_COEFFICIENT': 2}
+```
+⇒ **the δp_s (pressure) and J_s (relative-flux) response coefficients AGREE cross-engine** (all their FLAT +
+FIRST_SHAPE, μθ + face-velocity leaves collapse to exact zero at physical kinematics); **the t_s (traction) leaf is
+UNRESOLVED** — WL emits it as a zero-padded 4-vector `(0,0,0,scalar)` where PY emits the scalar (they match on the
+one case checked on-diagonal, `rel=0`, `S11c_c1_reconcile_flat_leglabel_diagonal.py`), but the flat-traction cases
+do not cleanly reduce under the randomized bridge. ⛔ **My earlier "clean anchoring split" was a test artifact** (I
+evaluated the FLAT diagonal objects off-diagonal, exposing the flat-resolvent leg-labeling — PY output-leg `q_out`,
+`.py:602-603`, vs WL input-leg — which is equal on the diagonal). ⇒ **the response `(δp_s,J_s,t_s)` is 2/3 verified:
+δp_s, J_s AGREE; t_s is a surfaced scalar-vs-vector representation, UNDECIDED — deferred to the symbolic residual.**
 
 ### 3.4 Seal 4 (regime / parity naming) — **AGREE (content); spurious keying convention**
 `DTN_BY_REGIME_PAIR` is fully unjoined (j=0, pyO=72, wlO=180) for ONE reason surfaced in the case notes:
@@ -219,8 +228,9 @@ ACCOUNTING UNIFORM_LIMIT_S11B_OPERAND j=0 pyO=234 wlO=180  pf=0
   UNIFORM_LIMIT_* families in the ≥64 GB deferral.
 
 ⇒ Full light+mid coverage: **46 of 50 families run on 30 GB; the 4 giants UNMEASURED — DEFERRED.** No cross-engine
-DISAGREEMENT was found among anything measured. What is EARNED: the two-momentum DtN kernel (all cases, exact
-zero, load-bearing) and the LAB_HELD + diagonal-MATERIAL response coefficients AGREE. What is NOT earned (stays
-UNDECIDED/deferred, ⛔ not pre-adjudicated AGREE): seal 5 (density freeze), the raw DTN_OPERATOR form, ENERGY, the
-off-diagonal flat-leg labeling, the derived/control families' full symbolic residual, and the 4 giant families.
-⇒ **the kernel is cross-engine closed; the closure-wide verdict awaits the ≥64 GB symbolic run.**
+DISAGREEMENT was found among anything measured. **EARNED (cross-engine AGREE):** the two-momentum DtN kernel (all
+cases, exact zero, load-bearing), the δp_s/J_s response coefficients, the flat symbol and parity matrix (= the
+kernel), degenerate loci, dimensions. **NOT earned — UNDECIDED/deferred (⛔ not pre-adjudicated AGREE):** seal 5
+(density freeze), the raw DTN_OPERATOR whole-form, the t_s traction leaf, ENERGY, the off-diagonal flat-leg
+labeling, the derived/control families' full symbolic residual, and the 4 giants. ⇒ **the kernel + δp_s/J_s are
+cross-engine closed; the operator whole-form, t_s, ENERGY, density and the giants await the ≥64 GB symbolic run.**

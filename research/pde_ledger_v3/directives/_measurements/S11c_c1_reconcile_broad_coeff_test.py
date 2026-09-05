@@ -1,3 +1,7 @@
+"""SUPERSEDED by S11c_c1_reconcile_coeff_sweep.py — this early broad test used UNIFORM off-diagonal
+kinematics, which wrongly flags FLAT (diagonal half-space) leaves as mismatches (the flat-resolvent leg-labeling
+is equal only on k=k'). Kept as the measurement that surfaced the issue; use coeff_sweep.py for the correct
+per-leaf-kinematics verdict (AGREE=54 NONZERO=6[traction] INCOMPLETE=36)."""
 import sympy as sp, random, sys, re
 from sympy import Add,Mul,Pow,Integer,Rational,Symbol,I,Function,Tuple
 HFT=Function('HeldInactiveFourierTransform');qOut=Function('qOut');w1Profile=Function('w1Profile');rhoField=Function('rhoBrBgRho4Constant')

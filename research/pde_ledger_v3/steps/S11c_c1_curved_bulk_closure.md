@@ -18,10 +18,12 @@ command in `directives/_measurements/` (rule 2).
 > 46 of 50 families on 30 GB). **What is EARNED cross-engine:** the **core two-momentum DtN kernel AGREES** — all 4
 > (anchoring×face) joined cases collapse to **EXACT ZERO** off-diagonal under physically-justified identifications,
 > and the collapse is load-bearing (a wrong jet sign or freezing the two legs into one leaves it nonzero); the
-> **face-response coefficients AGREE** for LAB_HELD (off-diagonal) and MATERIAL_ADVECTED on the physical diagonal
-> `k=k′`. **No cross-engine DISAGREEMENT was found among anything measured.** ⛔ **What is NOT earned — a closure-wide
-> AGREE:** seal 5 (background density) stays a **surfaced rule-17 freeze (UNDECIDED)**; the **raw DTN_OPERATOR** form,
-> the **ENERGY** audit, and an off-diagonal **flat-resolvent leg-labeling** (MATERIAL) are **UNDECIDED**; the **4 giant
+> **δp_s (pressure) and J_s (relative-flux) response coefficients AGREE** (all leaves collapse to exact zero at
+> physical kinematics — sweep `AGREE=54`; `_measurements/S11c_c1_reconcile_coeff_sweep.py`). **No cross-engine
+> DISAGREEMENT was found among anything measured.** ⛔ **What is NOT earned — a closure-wide AGREE** (two review legs
+> narrowed my claims, rule 15): seal 5 (background density) stays a **surfaced rule-17 freeze (UNDECIDED)**; the **t_s
+> (traction) response leaf** (WL zero-padded 4-vector vs PY scalar), the **raw DTN_OPERATOR** form, the **ENERGY**
+> audit, and the off-diagonal **flat-resolvent leg-labeling** are **UNDECIDED**; the **4 giant
 > families** (PERMEABLE_PORT_HERMITIAN, PERMEABLE_DISSIPATION_VS_OMEGA_TAU, UNIFORM_LIMIT_S11CC1_OPERAND,
 > UNIFORM_LIMIT_RESIDUAL) + the **full per-family symbolic residual** are **UNMEASURED — DEFERRED** (≥64 GB,
 > `DEFERRED_HEAVY_RUNS.md`), ⛔ not pre-adjudicated. Reconcile record + reproducible bridge:
@@ -79,10 +81,11 @@ the two-port permeable-port Hermitian form, and the INDEPENDENT traction-vs-far-
   `.out`: `_measurements/S11c_c1_reconcile_reproduce.py`). Verdicts on the five pre-identified seals: **(1)
   two-momentum q_out — AGREE** (DtN kernel → EXACT ZERO, all 4 (face×anchoring) cases; the Stage-2 residual
   collapsed to the radiation-branch dispersion relation itself, →0 on-shell; adversarial corruptions bite); **(2) ω
-  real-assumption — AGREE** (unified, contributes nothing); **(3) μ_θ — AGREE, scoped** (opaque/supplied both sides;
-  response coefficients `ε·A≡B` to machine zero for LAB_HELD and for MATERIAL on the physical diagonal `k=k′`; ε
-  sits in PY's μ_θ `.py:840` vs WL's coefficient, the coeff constructor `closed_coefficients` `.py:723-755` omits
-  ε); **(4) regime/parity naming — AGREE on content** (`OUTPUT_X`/`INPUT_X` vs bare is a bridgeable keying
+  real-assumption — AGREE** (unified, contributes nothing); **(3) μ_θ — AGREE for δp_s/J_s** (opaque/supplied both
+  sides; the pressure + relative-flux coefficients `ε·A≡B` to machine zero at physical kinematics — sweep `AGREE=54`,
+  `_measurements/S11c_c1_reconcile_coeff_sweep.py`; ε sits in PY's μ_θ `.py:840` vs WL's coefficient, `closed_coefficients`
+  `.py:723-755` omits ε; ⚠ the **t_s traction leaf is UNRESOLVED** — WL zero-padded 4-vector vs PY scalar, below);
+  **(4) regime/parity naming — AGREE on content** (`OUTPUT_X`/`INPUT_X` vs bare is a bridgeable keying
   convention; PARITY_MATRIX joins and IS the proven kernel); **(5) background density (rule 17) — UNDECIDED,
   SURFACED FREEZE** ⛔ NOT AGREE (the functional dependence agrees and neither engine differentiates ρ — 0
   derivatives — but a PY bare constant is not globally a WL live field `rhoBrBgRho4Constant(x)=(ρbr/W₀)WBg(x)`;
@@ -93,18 +96,21 @@ the two-port permeable-port Hermitian form, and the INDEPENDENT traction-vs-far-
 
 ## Established (cross-engine AGREE) vs owed (surfaced/deferred)
 - **ESTABLISHED — per-engine SOUND (2-leg each) AND cross-engine AGREE:** the **two-momentum DtN KERNEL** (all 4
-  cases, exact zero, load-bearing) and the **permeable face-response COEFFICIENTS** `(δp_s,J_s,t_s)` (LAB_HELD
-  off-diagonal; MATERIAL diagonal), the flat symbol, the parity matrix (= the kernel), the degenerate loci, the
-  dimensions. ⛔ **The raw DtN OPERATOR (whole-object noncommutative form) is NOT in this list — it is UNDECIDED**
-  (§ below): kernel-AGREE does not extend to the operator. The Hermitian/reactive dissipation parts AGREE only at
-  c1's first order (WL's true-area-weighted adjoint `BoundaryMeasure` → PY's plain conjugate-swap at first order;
-  O(η²)→S11c-e; full symbolic DEFERRED). **For c2's consume-set** (`dtn_operator`, `dtn_flat_symbol`, `dtn_kernel`,
-  face response — per-engine-verified 44-row delta over `S11c_b_exports.py`): the **kernel + flat symbol + response
-  are cross-engine AGREE**; the **`dtn_operator` whole-form and seal-5 density are UNDECIDED — c2 must NOT treat them
-  as cross-engine-closed** (re-adjudicate in c2, see What's next).
+  cases, exact zero, load-bearing), the **δp_s (pressure) + J_s (relative-flux) response COEFFICIENTS** (all leaves
+  collapse at physical kinematics, sweep `AGREE=54`), the flat symbol, the parity matrix (= the kernel), the
+  degenerate loci, the dimensions. ⛔ **NOT in this list — UNDECIDED (§ below):** the raw DtN OPERATOR (whole-object
+  noncommutative form — kernel-AGREE does NOT extend to it), and the **t_s (traction) response leaf** (WL zero-padded
+  4-vector `(0,0,0,scalar)` vs PY scalar; the flat-traction cases do not cleanly reduce). The Hermitian/reactive
+  dissipation parts AGREE only at c1's first order (WL's true-area-weighted adjoint `BoundaryMeasure` → PY's plain
+  conjugate-swap at first order; O(η²)→S11c-e; full symbolic DEFERRED). **For c2's consume-set** (`dtn_operator`,
+  `dtn_flat_symbol`, `dtn_kernel`, face response — per-engine-verified 44-row delta over `S11c_b_exports.py`): the
+  **kernel + flat symbol + δp_s/J_s response are cross-engine AGREE**; the **`dtn_operator` whole-form, the t_s
+  traction, and the seal-5 density are UNDECIDED — c2 must NOT treat them as cross-engine-closed** (re-adjudicate in
+  c2, see What's next).
 - **OWED / SURFACED (UNDECIDED, on this box) — ⛔ not AGREE, ⛔ no predicted residual:** seal 5 (background density
-  field-vs-constant freeze); the raw **DTN_OPERATOR** face-form (PY per-face, WL per-branch); the **ENERGY** audit
-  (PY closed-form propagating energy vs WL unevaluated far-field flux integral); the off-diagonal **flat-resolvent
+  field-vs-constant freeze); the **t_s (traction) response leaf** (WL zero-padded 4-vector vs PY scalar — a
+  scalar-vs-vector representation); the raw **DTN_OPERATOR** face-form (PY per-face, WL per-branch); the **ENERGY**
+  audit (PY closed-form propagating energy vs WL unevaluated far-field flux integral); the off-diagonal **flat-resolvent
   leg-labeling** (MATERIAL). `HOMOGENEITY_*` is a keying gap (j=0, PY `HEIGHT_NORMAL_NORMAL` vs WL `HOMOGENEITY`),
   ⛔ NOT AGREE-by-inheritance.
 - **DEFERRED to a ≥64 GB box (`DEFERRED_HEAVY_RUNS.md`):** (a) the **4 giant families** by payload

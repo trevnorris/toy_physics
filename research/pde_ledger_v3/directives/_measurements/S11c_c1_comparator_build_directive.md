@@ -109,4 +109,44 @@ Leg logs (outside repo): `<scratch>/codex_c1_comparator_directive_review.txt` (C
 
 ## Build + re-review (rule 9 — filled after the gate)
 
-_pending._
+**Build (Codex, detached; default model — pre-policy):** `codex exec -c model_reasoning_effort=xhigh
+--sandbox danger-full-access "$(cat <directive>)"`, EXIT=0, 493,658 tokens. Deliverables:
+`scripts/S11c_c1_cross_engine_comparator.py` (88 KB, ~2175 lines) + `scripts/test_S11c_c1_cross_engine_comparator.py`
+(22 KB). Builder self-report: 50 families, 1,080 joins across 27 families, no family extracts 0 leaves; 11
+bare-symbol folds added (rhoM…tauV — the verified list, NO qOut/kOne); raw whitelist exactly
+`{DTN_OPERATOR.WHOLE_OBJECT, NONINVERTIBILITY_CONDITION.OPERATOR}`; 30/30 new + 48/48 combined tests pass; peak
+RSS 436 MiB; full all-family symbolic residual NOT run (heavy — deferred, as the directive allows). Builder
+flagged my directive error: `mechanical_lower_camel("c_s0")` returns `cS0`, not `cs0`.
+
+**Re-review legs (Codex-written script → fresh Claude Agent + Grok, launched on sight):**
+```
+$ grok --prompt-file _legs/S11c_c1_comparator_review_prompt.md --cwd /var/projects/toy_physics --model grok-4.6 --effort high --permission-mode bypassPermissions --output-format plain   # detached, EXIT=0
+# + a fresh general-purpose Claude Agent (agentId a42308ce…) executing the same prompt
+```
+BOTH CLEAN — the comparator is SOUND (computes/prints/decides-nothing; no false agreement, no hidden
+disagreement, no broken seal, no dropped family; 30/30 tests). Grok: 7/7 CLEAN. Claude Agent: checks 1–4,6,7
+CLEAN, check 5 CLEAN w/ two surfaced caveats. Both ran real ablations: one-sided corruption moved only the
+corrupted row; repoint moved the residual; FACE↔DIRECTION merge DROPPED joins (156→60/8, collisions surface as
+`UNDEFINED_DUPLICATE_KEY`, never new zeros); every seal's name-map ablation moved a residual (seals
+load-bearing); `Inactive[Greater]`→`HeldInactiveGreater` (never a native bool).
+
+**cS0 adjudication (rule 13, self-verified):** `python3 -c "import S11b_cross_engine_comparator as m;
+print(m.mechanical_lower_camel('c_s0'))"` → `cS0`. So `cS0` IS the exact mechanical inverse of the real PY
+`Symbol('c_s0')` — my directive's fold-1 claim (`=="cs0"`) was WRONG. The Agent's controlled synthetic proves
+folding it collapses the residual to `Integer(0)` (pure spelling artifact). It fires in ZERO currently-joined
+residuals (cS0 concentrates in the deferred PERMEABLE_* families; feasible joined leaves carry no cS0) and can
+only over-report DISAGREEMENT — never a false agreement. LOW/latent, but a legitimate fold to add before the
+deferred heavy run.
+
+**Two surfaced INFO caveats (not soundness defects):** (a) WL `Inactive[Integrate][(…)]` /
+`Inactive[Limit][Inactive[Integrate]…]` energy leaves fail to parse (56 ENERGY_RESIDUAL + 4
+ENERGY_FACE_TRACTION) — surfaced honestly as `<PARSE_FAILED>` in UNPAIRED leaves, no residual corruption; (b) 4
+giant families (PERMEABLE_PORT_HERMITIAN, PERMEABLE_DISSIPATION_VS_OMEGA_TAU, UNIFORM_LIMIT_S11CC1_OPERAND,
+UNIFORM_LIMIT_RESIDUAL) deferred by size (OOM risk on 30 GB) — the one place cS0 could activate (unverified).
+
+Leg outputs (outside repo): `<scratch>/grok_c1_comparator_review.txt`, agent transcript
+`<session>/tasks/a42308ce….output`; leg ablation artifacts under `/tmp/s11cc1_t7_review/` and `/tmp/s11cc1_review/`.
+
+**Verdict:** comparator SOUND + committed as the reviewed baseline. Scoped repair to follow (gated): R1 add the
+`cS0←c_s0` mechanical fold (+ fix this directive's fold-1 cS0 paragraph); R2 parse the WL held-integral energy
+leaves so the operand is displayed. No soundness change.

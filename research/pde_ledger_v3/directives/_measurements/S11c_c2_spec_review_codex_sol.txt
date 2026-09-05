@@ -1,0 +1,250 @@
+# Review verdict: BLOCK
+
+Close-before-extract is physically sound, but the spec’s central claim that the substitution increment is independent of S11c-b’s unresolved sign conventions is false. I found seven MUST-FIX defects and two SHOULD-FIX gaps. A builder should not launch against this revision.
+
+Computational evidence is preserved verbatim:
+
+- [Symbolic fold review](/tmp/s11cc2_review_sympy.py) and [literal stdout](/tmp/s11cc2_review_sympy.stdout)
+- [Real two-parent fold audit](/tmp/s11cc2_fold_audit.py) and [literal stdout](/tmp/s11cc2_fold_audit.stdout)
+- [Actual exported-slot audit](/tmp/s11cc2_actual_slot_audit.py) and [literal stdout](/tmp/s11cc2_actual_slot_audit.stdout)
+
+All three stdout files were re-run and diffed byte-for-byte. The working tree was not modified.
+
+## 1. Non-commutation
+
+Verdict: close first is correct, but the spec conflates the non-commutation residual with the full self-energy increment.
+
+For
+\[
+R_T=ax+by+cp,\qquad R_H=dx+ey+fp,\qquad p=\alpha x+\beta y,
+\]
+my independent weak-block extraction produced:
+
+```text
+open block                 = (b, d)
+extract(close(S))          = (b+βc, d+αf)
+close(extract(S))          = (b, d)
+non-commutation difference = (βc, αf)
+```
+
+The spec’s scalar counterexample also checks exactly: open \(x\to y=0\), closed \(x\to y=\alpha\).
+
+Thus [§2 lines 136–143](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:136>) is sound about ordering. Extract-first is valid only when closure is sector-preserving, the relevant carriers vanish, or the “extraction” retains every auxiliary-pressure block needed for a later Schur complement. Extracting only the already-reduced S11c-b off-diagonal kernel is not such a construction.
+
+However, the spec later equates three different objects:
+
+\[
+K_{\rm closed},\qquad
+K_{\rm closed}-K_{\rm open},\qquad
+K_{\rm closed}-C(K_{\rm open}).
+\]
+
+They are respectively called the self-energy at [line 181](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:181>), [line 190](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:190>), and [line 260](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:260>). They coincide only if closing the open extracted kernel does nothing. The real `coupling_kernel` still contains all four `delta_p_±`/`d_w_delta_p_±` slots, as the actual-slot audit proves, so that condition is not available.
+
+## 2. Substitution-increment cancellation
+
+Verdict:
+
+- (a) Yes. For fixed trial/test spaces and pairing, weak restriction is linear:
+  \[
+  E(CS)-E(S)=E(CS-S).
+  \]
+  My SymPy linearity and increment-identity residuals are both `Matrix([[0, 0]])`.
+
+- (b) No. Only terms independent of the substituted slots cancel. Slab-side carrier coefficients multiplying those slots survive.
+
+In the example, the increment is `(βc, αf)`. If the second engine uses the opposite unresolved carrier sign, the cross-engine increment residual is:
+
+```text
+Matrix([[2*beta*c, 2*alpha*f]])
+```
+
+The diagonal coefficients and pre-existing off-diagonal coefficients cancel, but the closure-sensitive carriers `c,f` do not.
+
+This directly defeats [§3c lines 197–200](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:197>), which say all deferred S11c-b terms and sign conventions cancel. The source record identifies unresolved signs precisely on the closure-sensitive carriers: “face generalized-force PY `+diff` vs WL `−linearVirtualVariation`” and “closure-fold sign” at [S11c-b step lines 112–115](</var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md:112>).
+
+The kinetic whole-row convention may disappear if it touches no response slot. The face-force and closure-fold conventions cannot be declared absent from c2’s residual.
+
+## 3. Λ-channel routing
+
+Verdict: the high-level routing is right, but the operative carrier decision is wrong and incomplete.
+
+Correct inherited physics:
+
+- `J_s` enters the true-area mass balance.
+- `t_s`, including `Λ_X𝒜_s`, enters mechanical virtual work.
+- `δp_s` enters the flux through `𝒜_s=μ_s−δp_s/ρ_m`.
+
+That is fixed by [c1 §1d lines 150–161](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:150>) and the true-area laws at [S11c-a lines 361–367](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:361>).
+
+But c2 [lines 103–105](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:103>) say `closure_shape_deriv` carries both flux and mechanically routed `Λ_X`. The source says the opposite:
+
+> “`Λ_X` appears only in the traction `t_s`, not … in `S11CA_CLOSURE_SHAPE_DERIV`.”
+
+— [c1 §1d lines 157–160](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:157>)
+
+T-i is only the derivative of `J_s−Λ_A𝒜_s−Λ_VV_s`; traction belongs to T-d/virtual work.
+
+There is a second gap: the S11c-b θ row has already subtracted T-i and thereby eliminated the explicit `J_s` carrier. The actual exported slab row contains `δp_±` and `d_w_delta_p_±`, but no `J_s` slot. Therefore “substitute closed `J_s`” is not a defined operation. The spec must decide between:
+
+1. replacing the entire open flux contribution with the closed `Σ_s a_sJ_s`; or
+2. retaining the already-eliminated `Λ_A𝒜_s+Λ_VV_s` row and substituting the closed pressure and all required pressure jets.
+
+Adding closed `J_s` on top of the existing eliminated flux would double count it.
+
+The mapping for `d_w_delta_p_±`, c1’s `V_s` symbols, and its opaque `μ_θ` symbols is also unstated.
+
+Finally, the physical operator is a two-face sum. The source laws contain `Σ_s` in both mass balance and virtual work, whereas c2 [line 163](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:163>) requests the “closed full operator per `(α,ρ,s)`.” Per-face contributions are useful provenance, but an assembled `(α,ρ)` two-face operator and its parity blocks must also be mandatory.
+
+## 4. Completeness of the three re-adjudications
+
+Verdict: incomplete.
+
+The three listed items—density, traction representation, and DtN whole form—are genuinely load-bearing, but they are not the complete set.
+
+- Energy/traction-versus-slab pairing is missing. c1 explicitly says:
+
+  > “This route uses no slab EOM row and does not import `S11CB_SLAB_OPERATOR` (that pairing is S11c-c2’s, after the fold).”
+
+  — [c1 §3b lines 328–330](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:328>)
+
+  This is not S11c-e work. The parent assigns S11c-e the conversion observable/leakage interpretation at [N2 lines 51–53](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:51>), while c2 owns the folded operator. A post-fold mechanical-power/traction pairing is required to settle the load-bearing traction sign.
+
+- Flat-resolvent leg labeling enters c2. The reconcile record says the PY output-leg and WL input-leg conventions differ “off-diagonal in the MATERIAL_ADVECTED response coefficients” at [lines 180–184](</var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_comparator_reconcile.md:180>). Since c2 consumes those response coefficients to construct an off-diagonal operator, it must re-adjudicate this unless it first proves the relevant use is diagonal-only.
+
+- The `μ_R,bg` form control is also omitted. c1 expressly reserves it for c2, “where `μ_θ` is composed with the slab variables,” at [c1 lines 448–450](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:448>).
+
+The four giant families are not silently inherited: c2 explicitly names them as deferred, consistent with [c1 step lines 116–122](</var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:116>).
+
+## 5. Export topology
+
+Verdict: the underlying fold works, but the spec gives an invalid call and two wrong c1 keys.
+
+Measured on the real files:
+
+```text
+BASE_ROWS=2441
+C1_ROWS=44
+FOLD_ROWS=2485
+EXACT_KEY_INTERSECTION=[]
+OVERWRITES=[]
+CHECK_CONSUMER=OK roots=10 closure=524
+LOOKUP_GUARD=OK lookups=10
+```
+
+So positional `load_model(base, c1_delta)` binds the delta correctly and there is no exact-key collision.
+
+But [§7 line 329](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:329>) specifies:
+
+```python
+load_model(base=..., deltas=[...])
+```
+
+The actual signature is `load_model(base_path, *delta_paths)` at [ledger_fold lines 102–104](</var/projects/toy_physics/research/pde_ledger_v3/scripts/ledger_fold.py:102>). The stated call raises:
+
+```text
+TypeError: load_model() got an unexpected keyword argument 'base'
+```
+
+More seriously, [lines 339–340](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:339>) name c1 roots `face_response` and `face_response_coeffs`. Those are S11b rows. The c1 rows are `s11c_c1_face_response` and `s11c_c1_face_response_coeffs`, as frozen by [the fold design lines 186–188](</var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:186>) and present at [c1 exports line 101](</var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py:101>).
+
+The guard will not catch this provenance error: both stale S11b keys exist, so key existence and lookup-manifest equality can still pass.
+
+Leaving the complete exact root set to the two-leg-gated build directive is acceptable under D3, but only after the spec fixes the intended c1 write-keys and adds every required physics carrier.
+
+## 6. Rule 5 leak check
+
+Verdict: no improper answer leak in the structural controls, but one control encodes false physics.
+
+“Must move/nonzero” are load-bearing ablation requirements inherited from N6; uniform vanishing is the supplied S11b decoupling; these do not give the builder a sign or coefficient to target.
+
+The defect is [§5e lines 292–294](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:292>):
+
+> “`Z→0`, equivalently the impermeable `Λ_A⁰=0` slice”
+
+They are not equivalent. Solving the supplied face equations gives:
+
+```text
+Z → 0:
+    pressure = 0
+    J = Λ_A μ + Λ_V V
+
+Λ_A → 0:
+    J = Λ_V V
+    pressure = Z V (Λ_V + ρ)/ρ
+
+Λ_A = Λ_V = 0:
+    J = 0
+    pressure = Z V
+```
+
+The inherited source explicitly defines impermeable faces by `Λ_A⁰=Λ_V⁰=0` at [S11b step lines 89–90](</var/projects/toy_physics/research/pde_ledger_v3/steps/S11b_interface_coupling_law.md:89>). The control must be split into distinct zero-DtN, zero-affinity-channel, and impermeable limits.
+
+## 7. Rule 17 integrity
+
+Verdict: conceptually genuine, not a disguised uniform-limit control; operationally under-specified.
+
+The cross-engine adjudication is the two engines’ live-field `A` objects against each other. The within-engine `A−B` comparison freezes density while leaving the thickness profile and other jets live, so it is a density-liveness ablation, not `W_bg→constant`.
+
+However, the real Python export row `rho_br_bg_rho4_constant` is literally a bare `Symbol`; the live relation resides separately in `background_density_map`. The slot audit confirms both facts. The spec must explicitly require the SymPy c2 construction to bind
+
+\[
+\rho_{\rm br,bg}^{0}(x)=\frac{\rho_{\rm br}}{W_0}W_{\rm bg}(x)
+\]
+
+and its jet from `background_density_map` before the fold. Otherwise “keep it live” is not executable from the declared c1 response, and a consumer can accidentally repeat the c1 freeze while passing the manifest guards.
+
+## 8. Rule 3 / rule 2 corollary 3
+
+Verdict: the increment itself is not a tautological check, and the adjointness handling is sound. Two reviewability defects remain.
+
+The framing at [§3c lines 193–201](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:193>) correctly treats the increment as an exported definition, not evidence that physics agrees. Likewise, §3b correctly suppresses an adjointness residual when no independent route exists.
+
+But:
+
+- The spec must give distinct names to the closed coupling, substitution increment, and ordering commutator; currently all three are called “self-energy.”
+- The §5c “one-sided corruption” has no defined pair of independent c2 routes. Parent N6 requires direct graph linearization and material-coordinate/flattened-face construction, comparison after field redefinition, and only then corruption of one route at [N6 lines 100–102](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:100>). C2 exports no such baseline route operands or representation-invariance residual. It also omits the separately reserved `μ_R,bg` ablation.
+
+## Ranked findings
+
+1. **MUST-FIX — The claimed cancellation of all unresolved S11c-b physics is false.**  
+   Spec: “terms … appear identically … and cancel” ([lines 197–200](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:197>)).  
+   Source: unresolved “face generalized-force” and “closure-fold sign” conventions ([S11c-b lines 112–115](</var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md:112>)).  
+   Computation: opposite carrier signs leave `(2βc,2αf)`.
+
+2. **MUST-FIX — The response replacement map is physically under-specified and assigns `Λ_X` to the wrong carrier.**  
+   Spec: `closure_shape_deriv` carries mechanically routed `Λ_X` ([lines 103–105](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:103>)).  
+   Source: `Λ_X` is only in traction, never T-i ([c1 lines 157–160](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:157>)).  
+   The exact handling of the already-eliminated `J_s`, pressure jets, and whole face-force replacement must be frozen.
+
+3. **MUST-FIX — The assembled two-face operator is missing.**  
+   Spec: full operator emitted per face ([line 163](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:163>)).  
+   Source: both mass and virtual-work laws require `Σ_s` ([S11c-a lines 361–367](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:361>)).  
+   Require per-face provenance plus the assembled face sum/parity blocks.
+
+4. **MUST-FIX — The “exactly three” re-adjudication list omits load-bearing obligations.**  
+   Spec: exactly density, traction, and DtN whole-form ([lines 34–36](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:34>)).  
+   Sources: traction-versus-slab pairing belongs to c2 ([c1 lines 328–330](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:328>)); flat-resolvent labeling differs in off-diagonal material response ([reconcile lines 180–184](</var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_comparator_reconcile.md:180>)).
+
+5. **MUST-FIX — Three inequivalent operators are all named “self-energy.”**  
+   Spec: closed kernel, closed-minus-open increment, and ordering commutator at [lines 181](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:181>), [190](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:190>), and [260](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:260>).  
+   Source: S11c-b’s extracted open block is an independently existing, pressure-slot-bearing object ([S11c-b §3c lines 314–327](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:314>)); therefore it cannot be silently treated as zero or closure-inert.
+
+6. **MUST-FIX — Export wiring contains an invalid API call and stale-parent keys.**  
+   Spec: keyword `base/deltas` call and c1 `face_response` roots ([lines 329–340](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:329>)).  
+   Sources: positional `load_model(base_path,*delta_paths)` ([ledger fold line 102](</var/projects/toy_physics/research/pde_ledger_v3/scripts/ledger_fold.py:102>)); exact c1 roots are prefixed ([fold design lines 186–188](</var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:186>)).
+
+7. **MUST-FIX — `Z→0` is falsely identified with impermeability/`Λ_A=0`.**  
+   Spec: [line 292](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:292>).  
+   Source: impermeability requires `Λ_A=Λ_V=0` ([S11b step lines 89–90](</var/projects/toy_physics/research/pde_ledger_v3/steps/S11b_interface_coupling_law.md:89>)).  
+   The independent solve confirms all three limits differ.
+
+8. **MUST-FIX — The N6 independent-route control is absent.**  
+   Spec: only a one-sided corruption is requested ([lines 271–276](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:271>)).  
+   Source: N6 requires two independently constructed routes before corruption ([N6 lines 100–102](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:100>)).
+
+9. **SHOULD-FIX — The live-density lift and `μ_R,bg` control lack executable provenance.**  
+   Spec: asks for a live density field but lists no explicit `background_density_map` binding ([lines 208–214](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:208>)).  
+   Sources: c1 records the Python input as a bare constant ([reconcile lines 137–152](</var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_comparator_reconcile.md:137>)); c1 explicitly reserves the `μ_R,bg` form control for c2 ([lines 448–450](</var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:448>)).
+
+The single most important change before launching a builder is to remove the claim that the c2 increment automatically cancels S11c-b’s deferred residual. C2 must either first adjudicate the closure-sensitive S11c-b face-force/closure carriers and their signs, or expose and cross-compare a factorization in which those carriers and the c1 response are separately validated. Until that is done, the proposed c2 comparator can report a residual without knowing whether it comes from c2 physics or the unresolved S11c-b base.

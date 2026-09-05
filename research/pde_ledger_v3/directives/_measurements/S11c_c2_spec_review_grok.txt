@@ -1,0 +1,249 @@
+I'll form an independent view from the parent sources first, then read the S11c-c2 spec and stress the contested claims with computation.Parent N-series is in. Next I’ll read the c1/S11c-b records and the spec sections that actually settle the fold.Records are in. Next I’ll pull the c1/S11c-b spec sections, then the export files and fold module.Next I’ll inspect the two parent export files and how S11c-b actually routes the θ-row and closure terms.Zero parent-key overlap is confirmed. Next I’ll inspect how S11c-b actually stores the symbolic response in the slab operator.I have enough to stress the two computational claims. Next I’ll run independent SymPy checks for non-commutation and increment cancellation, plus the fold API.The decisions are **not sound to build against**. Close-then-extract is the right object, but the spec’s central isolation claim is false for the S11c-b face/closure signs, §1c mis-states what `closure_shape_deriv` carries, and §7 would bind the open S11b `face_response` instead of c1’s closed response.
+
+Computation is in `/tmp/s11cc2_q1_noncommutation.py`, `/tmp/s11cc2_q2_increment_cancellation.py`, `/tmp/s11cc2_q5_fold_api_and_keys.py`, `/tmp/s11cc2_q5e_z_vs_lambda_and_q7_density.py` and their `*.stdout.txt`. Commands: `python3 /tmp/s11cc2_q1_noncommutation.py` (and the three siblings).
+
+---
+
+## 1. Non-commutation — close-first is sound
+
+**Verdict:** `extract(close(SLAB)) ≠ close(extract(SLAB))` for an operator of this shape, and **`extract(close(·))` is the correct object.** Extract-first is correct only when the closure does not mix sectors; that is not this problem.
+
+Spec §2 (lines 131–145) supplies `R_x = x + p`, `p = α y`, and names `extract(close(·))` as the object. Independent operator of the actual shape (diagonal TT/θθ + off-diagonal + face slots `p,q` closed onto both sectors):
+
+```
+R_x_open = A_TT x + B_Tth y + p
+R_y_open = B_thT x + A_thth y + q
+p_closed = α y + β x
+q_closed = γ x + δ y
+extract(open)        = {x←y: B_Tth, y←x: B_thT}
+close(extract)       = {x←y: B_Tth, y←x: B_thT}
+extract(close)       = {x←y: B_Tth+α, y←x: B_thT+γ}
+extract(close)−close(extract) = {α, γ}
+```
+
+The spec counterexample reproduces: `extract(close)−close(extract) = α`. Same-sector closure (`p=βx`, `q=δy`) **does** commute (residuals 0). That is the case that is *not* S11c-c2: closed `t_s`/`J_s` depend on `V_s` (tilt + thickness) and `μ_θ` (thickness), so they thread one sector into the other. Close-first is the Schur/self-energy move; extract-first discards exactly that induced coupling. §5a as a form ablation of extract-first is the right control.
+
+**Object-identity split the spec then blurs.** §2 says the self-energy *is* `extract(close)−close(extract)`. §3b names `extract(close)` the “self-energy kernel” (that still contains S11c-b’s open geometric coupling). §3c emits `extract(close)−extract(open)`. Those are three different operators. See F3.
+
+---
+
+## 2. Substitution-increment cancellation — linear extract, but the face/closure signs multiply, they do not cancel
+
+**Verdict:** (a) **yes**, extract is linear, so `extract(close)−extract(open)=extract(close−open)`. (b) **The S11c-b bulk/kinetic base cancels. The unvalidated face generalized-force sign and the #90 closure-fold sign multiply the increment and leak into c2’s cross-engine residual.** The central design claim is false for the conventions it was written to kill.
+
+(a) From `/tmp/s11cc2_q2_increment_cancellation.stdout.txt`:
+
+```
+linearity residual increment - extract(close-open) = {x_from_y: 0, y_from_x: 0, x_from_x: 0, y_from_y: 0}
+linearity_residual_all_zero True
+```
+
+(b) Open rows `R_x = −K x + A_TT x + B_Tth y + c_face p`, `R_y = B_thT x + A_thth y + c_clos q`, close `p→αy+βx`, `q→γx+δy`:
+
+```
+increment = {x←y: α c_face, y←x: c_clos γ, x←x: β c_face, y←y: c_clos δ}
+increment K-coefficients = all 0
+kinetic-sign-only cross-engine residual = all 0
+face_sign_leaks_in_x_from_y True     # PY +1 vs WL −1 → residual 2α, 2β
+closure_sign_leaks_in_y_from_x True  # c_clos +1 vs −1 → residual 2γ, 2δ
+```
+
+Close is substitution of an already-solved bulk response, not a Schur complement of the slab θ-block, so S11c-b’s thickness diagonal is not inverted into Σ. The leak is the **coefficients of the substituted slots**.
+
+This matches the sources, not a toy artifact:
+
+- Kinetic `−K` PY vs `+K` WL lives in bulk terms independent of `(δp_s,J_s,t_s)` (`steps/S11c_b_variable_coefficient_operator.md` STATUS). Those appear in both `close` and `open` and cancel. Spec is right here.
+- Face generalized-force PY `+diff` vs WL `−linearVirtualVariation` **is** `c_face`, the coefficient of `t_s` in the mechanical rows (`S11c_b_brane_operator_sympy_audit.py` `face_generalized_force_rows` → added into `U_BODY_BALANCE`/`E_W_BALANCE`).
+- #90 closure-fold sign **is** `c_clos` on `mass_balance − Σ closure_shape_deriv` (`S11c_b_90_coupling_content_directive.md` lines 65–68: “the one place a subtle physics error would hide”).
+
+The spec contradicts itself:
+
+- §1c lines 105–106: the two sign conventions “are **not** normalized by c2; the §3c increment representation **carries each engine’s own convention**.”
+- §3c lines 197–199 / §7 lines 353–355: those same terms “appear identically in `close(·)` and `open(·)` **within each engine and cancel** before any cross-engine diff” so the residual “depend[s] only on the c1 response fold.”
+
+§1c is the computation. §3c/§7 are false for the face and closure-fold signs. (The §1c pointer “consistently (§3d, rule 1/6)” is also dead: §3d does not mention sign conventions.)
+
+A second leak, if c2 **imports** `coupling_kernel` rather than re-extracting `extract(SLAB)` with the same extract used on `close(SLAB)`: `extract(close) − KERNEL_imported` equals `extract(close−open)` only if the stored S11c-b kernel *is* c2’s extract of the open operator. That identity is unvalidated (S11c-b residual deferred). The bind-closure design the spec cites already dropped `coupling_kernel` for this reason (`export_ledger_bind_closure_design.md` lines 148–153: “c2 **re-extracts** … does **not** bind S11c-b’s **open** `coupling_kernel`” unless it is a regression operand). §3c/§7 bind it as a construction operand. See F1, F5.
+
+---
+
+## 3. Λ-channel routing — destination is right; `closure_shape_deriv` content is wrong
+
+**Verdict:** Routing closed `J_s` into the mass/θ row and closed `t_s` (the only Λ_X carrier) into the mechanical rows is the correct reading of c1 §1d + S11c-b #90. Spec §1c **incorrectly** puts `Λ_X 𝒜_s` inside `closure_shape_deriv`. `δp_s` via `𝒜_s = μ_s − δp_s/ρ_m` is the right mass-row entry, but §3a’s “via `closure_shape_deriv`” recipe can double-count.
+
+c1 §1d lines 157–161:
+
+> `Λ_X` appears **only** in the traction `t_s`, **not** in the flux closure `J_s` and **not** in S11c-a’s T-i closure shape-derivative (`S11CA_CLOSURE_SHAPE_DERIV`, which is the shape derivative of `J_s − Λ_A 𝒜_s − Λ_V V_s = 0` only). … the routing of `J_s` into the mass row and `t_s` into the mechanical rows is S11c-c2’s.
+
+S11c-a T-i (`S11c_a_SHARED_PHYSICS.md` 448–452) is the same restriction. #90 inventory: “traction/virtual_work→Λ_X, closure_shape_deriv→Λ_A/Λ_V”; the θ-row recipe is `mass − closure` = replace kinematic `J` by `Λ𝒜+ΛV` (`S11c_b_90_coupling_content_directive.md` 53–54, 65–68).
+
+Spec §1d/§3a destinations match that. Spec §1c lines 103–105 do not:
+
+> `closure_shape_deriv` carries the irreversible face responses `Λ_A 𝒜_s + Λ_V V_s` (flux) **and — routed into the mechanical rows — `Λ_X 𝒜_s` (traction/virtual work)**.
+
+That is false. A builder looking for Λ_X in T-i will not find it; a builder who *puts* Λ_X into the θ-row violates c1 §1d.
+
+On `δp_s`: after #90 the θ-row is already `Λ_A 𝒜_s + Λ_V V_s` with `𝒜_s = μ_s − δp_s/ρ_m`, `δp_s` symbolic. Closing means evaluate that on **closed** `δp_s` (equivalently replace the #90 content by `J_s_closed`, which satisfies the flux closure). It does **not** mean add `J_s_closed` on top of an already-replaced row, and it does **not** mean substitute both closed `t_s` and a second copy of closed `δp_s` into the mechanical rows (`t_s` already contains `δp_s` and `Λ_X 𝒜_s`). Name the objects: closed θ-row = sourced mass-evolution with source `−Σ_s a_s J_s_closed`; closed mechanical rows = constraint-reduced `u`/`e_W` rows with virtual work of closed `t_s`. See F2.
+
+---
+
+## 4. Three re-adjudications — not the complete load-bearing set
+
+**Verdict:** Density, `t_s` 4-covector, and DtN whole-form are the right *c1-UNDECIDED* carry-ins for the fold. They are not complete.
+
+**(a) Traction-vs-slab energy pairing — scope defect, not S11c-e.**  
+c1 §3b lines 328–330: the independent energy route “uses **no** slab EOM row and does **not** import `S11CB_SLAB_OPERATOR` (**that pairing is S11c-c2’s, after the fold**)”. Parent N2 gives S11c-c the “coupled nonlocal self-energy/**operator**” and S11c-e the flux-normalized conversion FORM + N13 confinement interpretation. The missing object is a **fold-sign control** (does `t_s` do mechanical virtual work with the same sign as the slab kinetic/stored variation?), not S11c-e’s conversion. §5b tests *which row* a channel hits, not the shared sign against the slab. Combined with Q2, this is the control that would have caught the leaking face-sign. Absence is a defect. See F4.
+
+**(b) Flat-resolvent leg-labeling — can enter, and is not named.**  
+c1 UNDECIDED: PY output-leg `q_out` vs WL input-leg; equal on `k=k′`, differs off-diagonal in MATERIAL response coefficients (`S11c_c1_comparator_reconcile.md` §4). §3d.3 correctly prefers the AGREE’d two-momentum **kernel**. §7 still consumes `dtn_flat_symbol`. If that symbol is used off-diagonal, the UNDECIDED labeling enters the MATERIAL self-energy. It is not a fourth mandatory re-adjudication *if* the spec pins `dtn_flat_symbol` as a uniform-limit regression operand only (c1 §1c’s pattern for S11b `Z`). Right now it does not. See F8.
+
+**(c) c1 DEFERRED giants — not silently inherited as AGREE.**  
+§0/§7 name the four giants + full symbolic residual as deferred, not pre-adjudicated. Correct. PERMEABLE_* would only become load-bearing if c2 emitted a dissipation object (it doesn’t; that is Q4a, not silent inheritance). c2’s own uniform-limit control is not a claim that c1’s UNIFORM_LIMIT families AGREE.
+
+---
+
+## 5. Export topology — positional fold is right; §7 binds the wrong `face_response`
+
+**Verdict:** `load_model(S11c_b_exports.py, S11c_c1_exports.py)` as **positional** base+one-delta is the N1/D2 topology and the guards work on a two-parent fold. True LEDGER-key overlap is **0**. Leaving the exact `IMPORT_KEYS` root set to the build directive is correct *if* the consume-set names F9 write-keys. §7 does not.
+
+```
+load_model signature: (base_path, *delta_paths)
+spec_keyword_call_error TypeError("load_model() got an unexpected keyword argument 'base'")
+n_S11c_b 2441  n_S11c_c1 44  overlap []
+face_response: in_S11c_b=True in_S11c_c1=False
+s11c_c1_face_response: in_S11c_c1=True in_S11c_b=False
+```
+
+Synthetic fold: positional `load_model(base, c1-delta)` binds `face_response → F_open` (S11b) and `s11c_c1_face_response → F_closed` with **no** overwrite. A colliding delta on the bare key *does* F9b-overwrite (`overwrites [('face_response', 'S11b', 'S11c-c1')]`). `check_consumer` / `assert_lookups_equal_manifest` / `assert_delta_is_minimal` all function on the merged fold; declaring unused open `face_response` fails lookups; carrying a parent row in the c2 delta fails minimality.
+
+§1a/§3a use `s11c_c1_face_response`. §7 lines 339–340 lists `face_response`, `face_response_coeffs` “from **S11c-c1**”. Those are S11c-b/S11b **open/flat** keys (c1’s own `IMPORT_KEYS` consumed them as the §5c regression operand). Binding them is the N14/F9 false-equal: the fold would substitute the open S11b response. `w1_profile_hat_transfer` is in **neither** LEDGER; the write-key is `s11cc1_w1_profile_hat_transfer`.
+
+Deferring the exact root set is fine (D1: directive verifies against the real files). The consume-set in this spec still has to name the F9 write-keys of the objects it binds. See F1, F6.
+
+---
+
+## 6. Rule 5 — one leaked expected form, the rest are structural
+
+**Verdict:** §5a “must be nonzero”, §5b/§5c “must move”, §5e uniform “must vanish” are legitimate structural properties (non-commutation, form ablation, N6 decoupling of the *off-diagonal increment*). **§5e zero-DtN is a leaked expected form and is physically wrong.**
+
+§5e lines 292–294:
+
+> **Zero-DtN limit** (`Z→0`, **equivalently** the impermeable `Λ_A⁰=0` slice): the self-energy increment must reduce to the S11c-b symbolic-`δp_s`-only contribution …
+
+Those limits are not equivalent. From the linear c1 system `𝒜=μ−p/ρ`, `J=Λ_A 𝒜+Λ_V V`, `p=Z(V+J/ρ)`:
+
+```
+Z→0:     p=0,  J=Λ_A μ + Λ_V V,  t=−Λ_X μ
+Λ_A→0:   p=Z V (Λ_V+ρ)/ρ ≠ 0,  J=Λ_V V
+Z0_equals_LA0_p/J/t  False, False, False
+```
+
+`Z→0` kills bulk pressure. `Λ_A→0` is impermeable *flux*; Z still generates `δp`. c1 §1c already uses impermeable Z as the S11b regression operand, with `Re Z` = bulk radiation “present even with impermeable faces.”
+
+At actual `Z→0`, the substitution increment against the *open* symbolic-`δp` operator is not zero and is not “the S11c-b symbolic-`δp_s`-only contribution”:
+
+```
+J_Z0 − J_open = Λ_A p_sym / ρ
+t_Z0 − t_open = p_sym (−Λ_X + ρ)/ρ
+increment_*_is_zero False
+```
+
+“The increment’s *bulk-nonlocal* part vanishes” at `Z→0` is tautological if that part is defined as the Z-dependent piece. See F3 (object mix) and F7.
+
+N12’s `O(εη)` on the coupling is inherited parent power counting, not a computed c2 coefficient.
+
+---
+
+## 7. Rule 17 — the jet test is the wrong object for seal 5
+
+**Verdict:** §3d.1/§5d correctly forbids `∇ρ→0` as an N6-style corruption, but then **tests a jet that c1 never had**. Seal 5 is field-valued `ρ_br,bg⁰(x)` vs a bare constant, a **local** `1/ρ` in `μ_s=μ_θ/ρ_br,bg⁰`. Neither c1 engine differentiated ρ (0 matches). At first shape order that is an `O(η)` multiplicative difference, not a `∇ρ` term.
+
+```
+1/ρ_field through O(η) = 1/ρ0 − η ρ1/ρ0
+local μ/ρ(x) has_Derivative False
+jet_coeff_of_A 0
+A_minus_B_field_vs_const = μ/ρ(x) − μ/ρ0   # real, not a jet
+```
+
+A genuine jet appears in `∂_x(ρ v)`, which is already in S11c-b’s open mass row and **cancels in the increment** if it is not a response slot. Requiring `A≠B` “wherever `∇ρ` enters” either (i) is tautological zero at working order (freeze-after-diff when no diff acts), or (ii) forces a manufactured `∇ρ` into the self-energy. The valid field-vs-field object is `Σ[ρ(x)] − Σ[ρ̄]` with `ρ` a live `Function`, joined field-against-field — which §5d’s comparator sentence already says, then undermines with the jet residual.
+
+§3d.1 also folds `ρ_m` into the brane-density story (`v_bulk=V_s+J_s/ρ_m`). `ρ_m` is the bulk fluid density, a different S11b object from `rho_br_bg_rho4_constant`. See F9.
+
+---
+
+## 8. Rule 3 / tautological residuals — increment framing is honoured in §3c, violated by §5e and by recipes
+
+**Verdict:** §3c/§6 correctly call the increment an export representation, not a check, and withhold adjointness unless it is an independent route. Several nearby decisions specify recipes or tautologies.
+
+- §3a “via `closure_shape_deriv`” is a recipe. The object is the closed mass-evolution row with source `−Σ a_s J_s_closed` (rule 3).
+- §5e “bulk-nonlocal part vanishes at `Z→0`” is zero by construction of that part (rule 2 corollary 3).
+- §5d jet residual is tautological if ρ is never differentiated.
+- §2’s counterexample is supplied framing, not a c2 output. Fine.
+- Naming `extract(close)` the “self-energy kernel” dresses the *closed coupling* (open geometry + fold) as the self-energy. The self-energy in the parent N2 sense is the increment of the operator, including diagonal threading that §3b then throws away by off-diagonal extract. Closed full operator *is* emitted (§3a), so the diagonal is not dropped from the chain — but the names will be what S11c-d binds.
+
+---
+
+## Ranked findings
+
+### F1 — MUST-FIX. §7 binds S11b `face_response`, not c1’s closed response (N14/F9)
+
+- Spec §7:399–340: from S11c-c1, `face_response`, `face_response_coeffs`.
+- Spec §1a:67–68 / §3a:157: `s11c_c1_face_response`.
+- Measured: `face_response` is in `S11c_b_exports.py` only; `s11c_c1_face_response` is in `S11c_c1_exports.py` only; LEDGER overlap is empty, so the fold will **keep** the open S11b object under the bare key.
+
+A builder honouring the consume-set substitutes the open/flat response. That is the fold of the wrong physics object.
+
+### F2 — MUST-FIX. §1c puts `Λ_X` in `closure_shape_deriv` (contradicts c1 §1d, T-i, #90)
+
+- Spec §1c:103–105 vs c1 §1d:157–159 vs `S11c_a_SHARED_PHYSICS.md:448–452` vs #90 Λ inventory.
+
+Route `t_s` (only) into mechanical rows; `closure_shape_deriv` is flux-only. Name the closed θ-row as mass-evolution sourced by `J_s_closed`, not “J via T-i,” so #90’s already-replaced row is not double-substituted.
+
+### F3 — MUST-FIX. Three different operators are all called “self-energy”; §5e then leaks a form for the wrong one
+
+| Spec location | Object |
+|---|---|
+| §2 | `extract(close)−close(extract)` (non-commutation remainder) |
+| §3b `S11CC2_SELF_ENERGY_KERNEL` | `extract(close)` (closed **coupling**, includes S11c-b open geometry) |
+| §3c `S11CC2_SELF_ENERGY_INCREMENT` | `extract(close)−extract(open)` |
+
+Parent N2’s object is the coupled nonlocal self-energy **operator**. Emit `CLOSED_SLAB_OPERATOR`, the re-extracted **closed coupling kernel**, and the **substitution increment** under those names. Do not tell the builder the increment “must reduce to the S11c-b symbolic-`δp_s`-only contribution” at a `Z→0 ≡ Λ_A⁰=0` limit that is not an identity (Q6 computation).
+
+### F4 — MUST-FIX. Increment does **not** drop S11c-b’s unvalidated face/closure signs; the c1-assigned slab pairing that would catch them is absent
+
+- Spec §3c:197–199 / §7:353–355 (cancel, residual “only the c1 response fold”) vs §1c:105–106 (increment **carries** the conventions) vs Q2 computation (`c_face`, `c_clos` multiply; `K` cancels).
+- c1 §3b:328–330 assigned traction-vs-`S11CB_SLAB_OPERATOR` pairing to c2. Not in scope, not in §4, not replaced by a shared-sign control. S11c-e is the conversion FORM (`N7`/`N2`), not this pairing. §5b is channel identity, not sign vs slab kinetic.
+
+Repair: (i) retract the “cancel / never enter c2’s diff” claim for face generalized-force and #90 closure-fold; (ii) re-extract both operands of the increment from `SLAB_OPERATOR` with the **same** extract (do not subtract imported `coupling_kernel` as a construction operand); (iii) add the c1-assigned traction–slab pairing, or a one-sided `t_s`-sign corruption that must move the mechanical increment against the slab kinetic/stored variation. Comparator SURFACES the remaining face-sign (rule 1/6), as §1c already said.
+
+### F5 — SHOULD-FIX. `coupling_kernel` as construction operand vs cited D1
+
+`export_ledger_bind_closure_design.md:148–153`: c2 re-extracts; open `coupling_kernel` is emit-only unless declared a **regression** operand. §5a (close of extract) is a legitimate regression use. §3c’s definition of the increment is not. Binding it also makes Q2’s cancellation depend on an unvalidated S11c-b kernel≡extract(operator) identity.
+
+### F6 — SHOULD-FIX. Spec §7 `load_model(base=..., deltas=[...])` is not the API
+
+`ledger_fold.load_model(base_path, *delta_paths)` — keyword `base=` TypeErrors. Write `load_model(scripts/S11c_b_exports.py, scripts/S11c_c1_exports.py)`. Same section: `w1_profile_hat_transfer` is not a write-key.
+
+### F7 — SHOULD-FIX. Closed operator is a two-face object per `(α,ρ)`, not per face `s`
+
+§3a:163 / §3c:190 / §4:231 emit “per `(α,ρ,s)`”. `S11CB_SLAB_OPERATOR` already sums both faces (`J₊+J₋`, both tractions). Per-face term origins are fine; a per-face “full operator” is not the slab EOM.
+
+### F8 — SHOULD-FIX. Flat-resolvent UNDECIDED + `dtn_flat_symbol` in the consume-set
+
+Pin `dtn_flat_symbol` as uniform-limit regression only, or add it as a fourth re-adjudication. Otherwise MATERIAL off-diagonal c2 can inherit c1’s unresolved output-leg vs input-leg labeling.
+
+### F9 — SHOULD-FIX. Density re-adjudication must be field-vs-constant, not a `∇ρ` jet, and must not mix `ρ_m` with `ρ_br,bg⁰`
+
+Seal 5 (`S11c_c1_comparator_reconcile.md` §3.5) is PY `Symbol('rho_br_bg_rho4_constant')` vs WL `rhoBrBgRho4Constant(x)`. Emit `Σ[ρ(x)]−Σ[ρ̄]` joined field-against-field. Do not require a jet residual; do not treat `ρ_m` as that field. `∇ρ→0` stays forbidden (`N6`).
+
+### NIT — §1c’s “consistently (§3d)” pointer is dead; §4’s parenthetical on self-energy order is harmless inherited `N12`.
+
+---
+
+## What must change before a builder is launched
+
+**Retract the claim that `extract(close)−extract(open)` makes c2 independent of S11c-b’s unvalidated face and closure-fold signs, and stop §7 from binding S11b `face_response` as if it were c1’s closed response.**
+
+Those two, together, are the fold: the first leaves c2’s “isolated” residual equal to the exact S11c-b conventions the increment was designed to kill (and drops the c1-assigned traction–slab pairing that would have caught them); the second can close the operator on the open S11b face map. Also fold F2 (Λ_X is not in T-i) and F3 (one name per operator; `Z→0` is not `Λ_A=0`) in the same pass.
+
+Close-then-extract, the three named c1-UNDECIDED re-adjudications, positional base+c1-delta, and “no expected coefficient of a c2 output” (apart from §5e) are sound. The rest is not yet a spec a builder can honour without both engines agreeing on the same wrong fold.

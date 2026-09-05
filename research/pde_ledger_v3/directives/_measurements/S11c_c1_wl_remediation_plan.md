@@ -1,5 +1,16 @@
 # S11c-c1 WL engine — FULL REMEDIATION PLAN (user-approved 2026-09-04)
 
+> ## ✅ STATUS: COMPLETE (2026-09-04) — ⛔ do NOT re-execute
+> All four items done, committed, pushed. (A) repair-2 `dd34d564` — its 2 decision legs ran BEFORE the build and
+> **caught that the first-draft R2 targeted a non-defect** (would have corrupted the correct `PERMEABLE_PORT_
+> HERMITIAN`); folded once → build (+144/−45) → 2 re-review legs (fresh Claude Agent + Grok) BOTH CLEAR. (B) rule-2
+> records corrected + the retroactive repair-directive decision-leg record added (`_measurements/S11c_c1_wl_repair2_
+> directive.md`, `_measurements/S11c_c1_wl_repair_directive_review.md`, `_measurements/S11c_c1_wl_repair2_directive_
+> review.md`). (C) both `.out` committed `4a14100a` via GIN (WL SHA-256 `d63e616786…`; SymPy run reproduced the
+> committed export). (D) "DONE" overstatement corrected. Defect #3 was **relocated** (not `PERMEABLE_PORT_HERMITIAN`
+> — that is the correct congruence — but the dead parity axis in `PERMEABLE_DISSIPATION_VS_OMEGA_TAU`). NEXT = the
+> c1 **T7 cross-engine comparator**. See [[project_s11c_c_state]]. The rest of this file is the plan as executed.
+
 ## Why this exists
 The repair directive `directives/S11c_c1_wl_repair_directive.md` (orchestrator-written, physics-bearing) was
 built against **without its rule-7 decision legs** — the orchestrator rationalized the skip via "SymPy precedent"

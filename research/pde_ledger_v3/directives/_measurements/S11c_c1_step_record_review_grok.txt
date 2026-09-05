@@ -1,0 +1,213 @@
+I'll start by reading the review skill and the step-record artifact, then form my own view from the sources before checking the reconcile verdict.I'll form an independent view from the reconcile, engines, and contract first, then judge the step record against that.I have the reconcile claims; next I’ll re-run the committed bridges and check the engine sources before reading the step record.The bridge scripts hardcode a scratchpad path. I’ll locate the operand files, copy the scripts to `/tmp`, and re-run them from there.Operands are in the scratchpad. I’ll copy everything to `/tmp`, re-run the committed bridges, and start the engine-source and transcript checks.Kernel bridge matched Stage-2 dispersion and Stage-3 zero. Next I’ll re-run the response-coefficient bridge, write adversarial corruptions, and check the engine sources.Committed bridges collapse as claimed. I’ll write adversarial corruptions next and check that the identifications are load-bearing.Corruption (c) froze both engines the same way, so I’ll make it one-sided: collapse only the Wolfram legs and re-test.Independent picture is in place. Next I’ll read the step record and check it against the measurements.# Independent review — S11c-c1 step record + reconcile verdict
+
+**Artifact:** `research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md`  
+**Sources read first:** reconcile + committed bridges, both engine sources, comparator run (`light_run.out` / `mid_run.out`), contract N8, then the step record.
+
+**Verdict on the physics headline:** the **core AGREE is earned**. The two-momentum DtN kernel and the permeable face-response coefficients collapse under physically justified identifications, and that collapse **moves under one-sided corruption** (not tuned to zero). Rule 17 on background density is correctly caveated. The comparator printed the seals unreconciled.
+
+**One real fidelity defect** (below): the ESTABLISHED / “c2 consumes” sentence claims cross-engine AGREE on the raw **DtN operator**, which the reconcile left **UNDECIDED**.
+
+All scripts and literal stdout: `/tmp/s11cc1_steprec_review/`. Working tree untouched.
+
+---
+
+## Check 1 — central collapse is REAL (not tuned to zero) — **CLEAR**
+
+Operands `opA.txt`/`opB.txt` are byte-identical to the comparator’s `DTN_KERNEL` LAB_HELD FACE=1 KERNEL_EXPRESSION case (`light_run.out:16133-16135`).
+
+**Re-run of committed kernel bridge**
+
+```
+python3 /tmp/s11cc1_steprec_review/S11c_c1_reconcile_dtn_kernel_bridge.py
+```
+
+Literal stdout (`/tmp/s11cc1_steprec_review/rerun_dtn_kernel_bridge.stdout`):
+
+```
+=== STAGE 2 (maps applied, assumptions fixed) ===
+free: ['HAT', 'Q_IN', 'Q_OUT', 'W_0', 'c_s0', 'eta_bg', 'kPrimeOne', 'kPrimeThree', 'kPrimeTwo', 'omega', 'rho_m']
+r2 = I*HAT*W_0*eta_bg*omega*rho_m*(Q_IN**2*c_s0**2 + c_s0**2*kPrimeOne**2 + c_s0**2*kPrimeThree**2 + c_s0**2*kPrimeTwo**2 - omega**2)/(2*Q_IN*Q_OUT*c_s0**2)
+ZERO? False
+
+=== STAGE 3 (+ on-shell Q^2 = om^2/cs0^2 - |k|^2) ===
+r3 = 0
+ZERO? True
+```
+
+Stage-2 remainder **is** the radiation-branch dispersion polynomial (CAS `div` remainder `0`, quotient `I*HAT*W_0*eta_bg*omega*rho_m`). On-shell → exact `0`.
+
+**Re-run of committed response-coeff bridge**
+
+```
+python3 /tmp/s11cc1_steprec_review/S11c_c1_reconcile_response_coeff_bridge.py /tmp/s11cc1_steprec_review
+```
+
+Literal stdout (`rerun_response_coeff_bridge.stdout`):
+
+```
+[MU_THETA_COEFF] (eps*A) worst_rel=0.00e+00  AGREE
+[FACE_VELOCITY_COEFF] (eps*A) worst_rel=0.00e+00  AGREE
+```
+
+All 4 `DTN_KERNEL` KERNEL_EXPRESSION cases (`rerun_kernel_all4cases.stdout`): `worst_rel=0.0e+00 AGREE`.
+
+### Adversarial corruptions — all three bite
+
+Script: `/tmp/s11cc1_steprec_review/adversarial_kernel_corruptions.py`  
+Stdout: `/tmp/s11cc1_steprec_review/adversarial_kernel_corruptions.stdout`
+
+**(a) Wrong jet** `jet_hat_i → I·L_W·(k_i + k′_i)·HAT` (form change, not a rescale):
+
+```
+r3 = I*HAT*L_W*omega*rho_m*sigma_W*(kPrimeOne**2 + kPrimeThree**2 + kPrimeTwo**2)/(Q_IN*Q_OUT)
+r3 == 0? False
+```
+
+**(b) Drop on-shell:** Stage-2 residual **is** `Q_IN² c_s0² + |k′|² c_s0² − ω²` (polynomial remainder `0`, quotient nonzero). Not an arbitrary leftover.
+
+**(c) One-sided freeze of WL’s two `qOut` legs to one opaque `Q_SAME`** (PY keeps two legs):
+
+```
+r2c == 0? False
+r3c == 0? False
+```
+
+A two-sided freeze of both engines (control, not the test) leaves the input-leg dispersion; that is expected when a **shared** two-momentum structure cancels. The one-sided freeze is the independence test, and it moves.
+
+Response-coeff corruptions (`adversarial_response_coeff.py` / `.stdout`):
+
+| corruption | MU_THETA | FACE_VELOCITY |
+|---|---|---|
+| honest `ε·A` | `worst_rel=0.00e+00 AGREE` | `0.00e+00 AGREE` |
+| drop ε | `6.76e-01 MISMATCH` | `9.02e-01 MISMATCH` |
+| drop ρ map | unsubstituted `rho_br_bg_rho4_constant`, `xOne/Two/Three` | `0.00e+00` (V coeff does not carry ρ — selective) |
+| wrong jet | `1.00e+00 MISMATCH` | `1.00e+00 MISMATCH` |
+
+Committed `numeric_zerotest.py` (no ε factor) independently mismatches MU_THETA at `worst_rel=8.24e-01` — the ε identification is load-bearing, not decorative.
+
+**VACUOUS? False.** Collapse is meaningful.
+
+---
+
+## Check 2 — identifications have engine-source basis — **CLEAR** (one citation nit)
+
+Each reconcile §2 map, read from the engines (not from the step record):
+
+| map | source basis |
+|---|---|
+| `s11cc1_q_out_{output,input}` ↔ `qOut(ω,{k})` / `qOut(ω,{k′})` | PY opaques `.py:191-193`; WL `qOutputLive`/`qInputLive` `.wl:478-479`. Two distinct legs on both sides. |
+| `s11cc1_w1_profile_hat_transfer` ↔ `HeldInactiveFourierTransform(w1Profile(x/L_W),…,k−k′)` | PY `.py:194-198`; WL `profileTransform` `.wl:170-172`. |
+| `jet_hat_i → I·L_W·(k_i−k′_i)·hat` | WL `slopeHat = I sigmaW profileHat (slopeWeights (LW momentumTransfer))/2` `.wl:174-179` with `unitSlopeWeights = ConstantArray[1, braneDimension]` `.wl:480`. PY `tilt = σ_W * jet / 2` (jet opaque `.py:200-207`; used `.py:591-598,606`). Identification makes PY tilt = WL slopeHat (FT-of-derivative at transfer momentum). |
+| `σ_W = η_bg W_0 / L_W` | WL `SIGMA_BINDING` `.wl:182`. PY does **not** substitute it. Drop-σ numeric test still AGREE (`drop_sigma_binding.stdout`) — the binding is physically real on WL but **not** what forces the residual to zero. |
+| ε-placement `PY_coeff · ε = WL_coeff` | WL `chemicalDrive = epsilonShape muTheta/rhoBackground` `.wl:748` and `Coefficient[response, muTheta]` `.wl:868-869`. PY **coefficient** constructor `closed_coefficients` `.py:723-755` never inserts ε. (Nit: reconcile cites `.py:840`, which is the **full** `response_operator_case` that bakes `mu_theta = ε·mu_theta_inputs`. Same physical fact, wrong line for the coefficient residual.) |
+| on-shell in `qOut` vs PY `κ²=ω²/c_s0²` | PY `.py:618`; WL radiation root `.wl:141-149`. Stage-2 remainder **is** that polynomial. |
+| density Function(x) vs bare Symbol | WL `densityAtAnchor` `.wl:188-193`; PY `density_value` `.py:587-588`. |
+
+No identification was invented solely to force a match. The jet sign and the two-`qOut` legs are the content; corrupting either un-collapses the residual.
+
+---
+
+## Check 3 — Rule 17, background density — **CLEAR** (caveat is correct)
+
+Tight greps (not greedy `.*` across a 80 MB payload line):
+
+Script `/tmp/s11cc1_steprec_review/density_derivative_grep.py`  
+Stdout `/tmp/s11cc1_steprec_review/density_grep.stdout`
+
+```
+PATTERN 'D\[rhoBrBgRho4Constant' in …audit.wl: 0 matches
+PATTERN 'Derivative\[[^\]]*\]\[rhoBrBgRho4Constant' in …audit.wl: 0 matches
+PATTERN 'diff\([^)]*rho_br_bg_rho4' in …audit.py: 0 matches
+PATTERN 'D\[rhoBrBgRho4Constant' in …mathematica_audit.out: 0 matches
+PATTERN 'Derivative\[[0-9, ]+\]\[rhoBrBgRho4Constant' in …mathematica_audit.out: 0 matches
+PATTERN 'diff\([^)]*rho_br_bg_rho4' in …sympy_audit.out: 0 matches
+TIGHT_MATCH_TOTAL 0
+muTheta/rhoBrBgRho4Constant[...] count: 13
+```
+
+WL **does** bind a live field (`.wl:191-193`):
+
+```
+rhoBrBgRho4Constant @@ anchorArguments[anchoring]  =  (rhoBr/W0) (WBg @@ anchorArguments[anchoring])
+```
+
+and **uses** it only pointwise: `affinityExact = waveScale muTheta/densityAtAnchor[…]` (`.wl:320-321`), `chemicalDrive = epsilonShape muTheta/rhoBackground` (`.wl:748`), transcript token `muTheta/rhoBrBgRho4Constant[xOne, xTwo, xThree]`. The `Derivative[0,0,0,1,0]` at `.wl:332` is of `bulkFieldBackground`, not density. PY never even applies the `(ρ_br/W_0) W_bg` binding at the use site (`.py:587-588` returns the ledger Symbol).
+
+**AGREE at c1 is correct:** c1 never takes `∂ρ`, so Function(x) ≡ Symbol is a pointwise representational identification, not a hidden freeze of a differentiated field. **The c2 re-adjudication caveat is the right control** — if c2 differentiates ρ or uses it nonlocally, this becomes a genuine rule-17 finding. The record does not wave a freeze through; it names the condition under which the freeze is currently lossless.
+
+Dropping the ρ map breaks MU_THETA (`unsubstituted=['rho_br_bg_rho4_constant','xOne',…]`) and does **not** break FACE_VELOCITY — the density identification is specific to `μ_s = μ_θ/ρ`, not a blanket fold.
+
+---
+
+## Check 3b — comparator SURFACES the seals (no pre-registered fold) — **CLEAR**
+
+Contract N8 (`SHARED_PHYSICS.md:580-587`): comparator computes and prints; adjudication is post-run.
+
+From the actual run (`comparator_seal_surface.stdout`, `dtn_kernel_case_block.stdout`):
+
+| seal | as printed (not folded) |
+|---|---|
+| DTN_KERNEL | `join=4`; `A_minus_B` is a 9 922-character `Mul(...)`, not `Integer(0)`. PY opaques `s11cc1_q_out_{input,output}` vs WL `qOut(omega, Tuple(kOne,…))` / `qOut(omega, Tuple(kPrime…))`. |
+| DTN_BY_REGIME_PAIR | `join=0 py_only=72 wl_only=180`. PY `REGIME_OUT=EVANESCENT`; WL `REGIME_OUT=OUTPUT_EVANESCENT, REGIME_IN=INPUT_EVANESCENT`. Notes carry `REGIME_OUT:EVANESCENT!=OUTPUT_EVANESCENT`. |
+| density + ε | FACE_RESPONSE_COEFFS FLAT MU_THETA: PY `rho_br_bg_rho4_constant` (bare); WL `Function('rhoBrBgRho4Constant')(xOne,xTwo,xThree)` **and** `epsilon_shape`. `A_minus_B` 3 225 chars. |
+| ENERGY_* | all `join=0`. PY keyed with `SCENARIO=REAL_OMEGA_PROPAGATING_IMPERMEABLE_LAMBDA_X0_ZERO`; WL `HeldInactiveIntegrate` / `HeldInactiveLimit`. |
+| DTN_OPERATOR | `join=0 py_only=4 wl_only=2`; PY `FACE=±1`; WL missing FACE. |
+
+Header: `MEASUREMENT_SCOPE … residual_target=none`. No AGREE/DISAGREE token in the comparator. The record’s AGREE is **our** post-run reading, as N8 requires.
+
+Light footer matches the committed accounting: `families=42 families_with_join=24 … runtime_seconds=1112.847`. Mid: FACE_RESPONSE `j=24`, CONTROL_BRANCH `j=104` pf=32, CONTROL_FORM `j=156` pf=24, UNIFORM_LIMIT_S11B `j=0`.
+
+---
+
+## Check 4 — deferrals honest — **CLEAR**
+
+The 4 giants are deferred by **payload size** (WL 62 MB / PY 37 / PY 33 / WL 12), consistent with the 30 GB box and S11c-b’s residual deferral. The record does **not** assign them an expected residual.
+
+Two coverage gaps are flagged **UNDECIDED / OPEN**, not AGREE:
+- raw `DTN_OPERATOR` (face-axis, noncommutative form)
+- `ENERGY_*` (closed-form vs unevaluated far-field integral)
+
+`DEFERRED_HEAVY_RUNS.md:132-139` records the re-run:
+
+```
+datalad get scripts/out/S11c_c1_bulk_closure_sympy_audit.out \
+            mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out
+python3 scripts/S11c_c1_cross_engine_comparator.py            # NO --family = all 50 families
+```
+
+Hermitian/reactive AGREE is scoped to **first order** (`BoundaryMeasure → 1 + O(η²)`, O(η²)→S11c-e); full symbolic confirmation deferred. I did not invent a residual for that deferred family.
+
+---
+
+## Check 5 — faithful to sources / no overstatement — **DEFECT (fidelity, one sentence)**
+
+**Accurate, and important that it is said:**
+- “Per-engine SOUND (2-leg each)” including the **WL repair-directive rule-7 skip**, retroactive legs finding the directive not sound, and repair-2 catching a first-draft fix that would have corrupted the correct `PERMEABLE_PORT_HERMITIAN`. Matches `_measurements/S11c_c1_wl_remediation_plan.md` and the PY/WL build-review records.
+- STATUS box correctly scopes AGREE to **46/50 families**, kernel + response **coefficients** to exact zero, giants + full symbolic residual deferred, ENERGY and raw DTN_OPERATOR as coverage gaps.
+- Comparator SOUND (`7141e6ad` + repair `704308af`) is cited, not re-litigated.
+
+### DEFECT — ESTABLISHED bullet claims operator AGREE that the reconcile did not earn
+
+`steps/S11c_c1_curved_bulk_closure.md:83-88`:
+
+> ESTABLISHED — … cross-engine AGREE on the **DtN operator/kernel** … The exports (closed face response + **DtN operator/kernel** …) are per-engine-verified and, **for the DtN kernel/operator/response that c2 consumes, now cross-engine AGREE**.
+
+The reconcile (`S11c_c1_comparator_reconcile.md:127-130`) leaves **DTN_OPERATOR** as keying/coverage, **DEFERRED**, not AGREE. The run: `join=0`, PY per-face, WL missing FACE (`homogeneity_and_operator_keys.stdout`).
+
+c2’s consume-set (spec §7 / N1) is `dtn_operator`, `dtn_flat_symbol`, `dtn_kernel`, face response. **Kernel AGREE is earned. Operator-as-raw-form is UNDECIDED.** Bundling them so that c2 may treat `dtn_operator` as cross-engine validated is more than the sources support. The same section’s OWED paragraph correctly marks the operator UNDECIDED — the ESTABLISHED sentence contradicts it.
+
+Lesser (same class, not the kernel): OWED lists `HOMOGENEITY` as “AGREE-by-inheritance / identical symbolic transform of the proven kernel”, but `HOMOGENEITY_{BASE,CONTROL,RESIDUAL}` are **fully unjoined** (`j=0`; PY `OBJECT=HEIGHT_NORMAL_NORMAL` vs WL `OBJECT=HOMOGENEITY`). That is a keying gap, not an inherited kernel collapse.
+
+**Not a defect:** “ε sits in PY’s μ_θ vs WL’s coefficient” is slightly the full-response story (`.py:840`) told about the coefficient residual (`closed_coefficients` simply omits ε). The `ε·A≡B` identification is still source-justified and load-bearing.
+
+---
+
+## Ranking
+
+1. **DEFECT (fidelity / c2 blast radius).** ESTABLISHED + “c2 consumes … operator … AGREE” overclaims relative to an UNDECIDED `DTN_OPERATOR` family. Fix: split kernel (AGREE, proven) from raw operator (UNDECIDED, coverage). Do not let c2 inherit an operator AGREE that was not measured.
+2. **NIT.** HOMOGENEITY listed as AGREE-by-inheritance while `j=0`.
+3. **NIT.** Coefficient ε-placement cited at `.py:840` rather than `closed_coefficients` `.py:723-755`.
+
+**No defect on the physics collapse.** Kernel Stage-2 = dispersion, Stage-3 = 0; three form corruptions move it; `ε·A≡B` is load-bearing; density is underived on both engines; seals were printed unreconciled; giants and ENERGY are honestly deferred.
+
+**Bottom line:** the step record’s **AGREE on the curved-interface bulk closure, as carried by the two-momentum DtN kernel and the face-response coefficients, is earned**. Narrow the operator/export sentence so c2 does not treat an UNDECIDED family as closed.

@@ -1,0 +1,474 @@
++for leaf in leaves:
++    print("LEAF", leaf, "BRIDGED" if leaf in bridge_leaves else "NOT_BRIDGED")
++print("JOINED_CASES_COVERED_BY_TWO_BRIDGE_LEAVES", sum(dict(key)["LEAF"] in bridge_leaves for key in common))
++print("JOINED_CASES_NOT_COVERED_BY_TWO_BRIDGE_LEAVES", sum(dict(key)["LEAF"] not in bridge_leaves for key in common))
++
++bridge = (ROOT / "directives/_measurements/S11c_c1_reconcile_response_coeff_bridge.py").read_text().splitlines()
++for number, line in enumerate(bridge, 1):
++    if "worst_rel" in line or line.startswith("test(") or "complex(sp.N" in line:
++        print(f"BRIDGE_SOURCE:{number}:{line}")
+diff --git a//tmp/S11c_c1_rule17_pointwise_counterexample.py b//tmp/S11c_c1_rule17_pointwise_counterexample.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..672c7d62eef5f6baab0f4656fc7cd037ef94bb93
+--- /dev/null
++++ b//tmp/S11c_c1_rule17_pointwise_counterexample.py
+@@ -0,0 +1,34 @@
++#!/usr/bin/env python3
++"""Test whether 'no density derivative' licenses replacing rho(x) by one scalar."""
++import sympy as sp
++
++epsilon, eta, mu, rho0, w_a, w_b = sp.symbols(
++    "epsilon eta mu rho0 w_a w_b", nonzero=True
++)
++rho_a = rho0 * (1 + eta * w_a)
++rho_b = rho0 * (1 + eta * w_b)
++
++mu_s_live_a = epsilon * mu / rho_a
++mu_s_live_b = epsilon * mu / rho_b
++mu_s_frozen = epsilon * mu / rho0
++
++first_order_live_a = sp.series(mu_s_live_a, eta, 0, 2).removeO()
++first_order_live_b = sp.series(mu_s_live_b, eta, 0, 2).removeO()
++missing_if_frozen_a = sp.factor(first_order_live_a - mu_s_frozen)
++
++# Give the one PY scalar its best chance: tune it to equal the live density at a.
++R = rho_a
++two_point_residual_a = sp.simplify(epsilon * mu / R - mu_s_live_a)
++two_point_residual_b = sp.factor(epsilon * mu / R - mu_s_live_b)
++
++print("rho_live_a =", rho_a)
++print("rho_live_b =", rho_b)
++print("mu_s_live_a_O_eta =", first_order_live_a)
++print("mu_s_frozen =", mu_s_frozen)
++print("missing_O_eta_without_any_derivative =", missing_if_frozen_a)
++print("missing_is_zero?", missing_if_frozen_a == 0)
++print("tune_single_scalar_R_to_rho_a:")
++print("  residual_at_a =", two_point_residual_a)
++print("  residual_at_b =", two_point_residual_b)
++print("  residual_at_b_is_zero?", two_point_residual_b == 0)
++print("CONCLUSION single_bare_scalar_equals_live_field_globally?", two_point_residual_b == 0)
+diff --git a//tmp/S11c_c1_sample_scoped_comparator.py b//tmp/S11c_c1_sample_scoped_comparator.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..16d2435eb36e3ce6a8f43a03e5e2bda893062389
+--- /dev/null
++++ b//tmp/S11c_c1_sample_scoped_comparator.py
+@@ -0,0 +1,81 @@
++#!/usr/bin/env python3
++"""Emit compact literal witnesses from the scoped comparator's full stdout."""
++from pathlib import Path
++import re
++
++PATH = Path("/tmp/S11c_c1_scoped_comparator.stdout")
++lines = PATH.read_text().splitlines()
++
++for line in lines:
++    if line.startswith("ACCOUNTING DTN_BY_REGIME_PAIR"):
++        print(line.split("} reasons=", 1)[0] + "}")
++        print("REGIME_ACCOUNTING_HAS_OUTPUT_INPUT_MISMATCH", "REGIME_OUT:EVANESCENT!=OUTPUT_EVANESCENT" in line, "REGIME_IN:EVANESCENT!=INPUT_EVANESCENT" in line)
++    elif line.startswith(("SPELLING_INJECTIVITY", "ACCOUNTING DTN_KERNEL", "ACCOUNTING FACE_RESPONSE_COEFFS", "RUN_ACCOUNTING", "MEASUREMENT_SCOPE")):
++        print(line)
++
++blocks = []
++block = []
++for line in lines:
++    if line.startswith("CASE family="):
++        if block:
++            blocks.append(block)
++        block = [line]
++    elif block:
++        block.append(line)
++if block:
++    blocks.append(block)
++
++
++def fields(block):
++    return {line.split(" = ", 1)[0]: line.split(" = ", 1)[1] for line in block[1:] if " = " in line}
++
++
++kernel = next(
++    b for b in blocks
++    if b[0].startswith("CASE family=DTN_KERNEL ")
++    and "LEAF=KERNEL_EXPRESSION" in b[0]
++)
++kf = fields(kernel)
++print("KERNEL_RAW_WITNESS", kernel[0])
++print("KERNEL_A_HAS_DISTINCT_OPAQUES", "s11cc1_q_out_output" in kf["operand_A"], "s11cc1_q_out_input" in kf["operand_A"])
++print("KERNEL_B_HAS_OUTPUT_QOUT", "qOut" in kf["operand_B"] and "kOne" in kf["operand_B"])
++print("KERNEL_B_HAS_INPUT_QOUT", "qOut" in kf["operand_B"] and "kPrimeOne" in kf["operand_B"])
++print("KERNEL_RAW_A_MINUS_B_CHARS", len(kf["A_minus_B"]))
++print("KERNEL_RAW_A_MINUS_B_PREFIX", kf["A_minus_B"][:500])
++print("KERNEL_RAW_A_MINUS_B_IS_ZERO_TOKEN", kf["A_minus_B"] in {"Integer(0)", "0"})
++
++regime_py = next(
++    b for b in blocks
++    if b[0].startswith("CASE family=DTN_BY_REGIME_PAIR ")
++    and "REGIME_OUT=EVANESCENT" in b[0]
++    and fields(b).get("operand_B") == "<MISSING>"
++)
++regime_wl = next(
++    b for b in blocks
++    if b[0].startswith("CASE family=DTN_BY_REGIME_PAIR ")
++    and "REGIME_OUT=OUTPUT_EVANESCENT" in b[0]
++    and fields(b).get("operand_A") == "<MISSING>"
++)
++print("REGIME_PY_UNJOINED", regime_py[0])
++for line in regime_py:
++    if line.startswith(("A_minus_B", "case_note")):
++        print(line)
++print("REGIME_WL_UNJOINED", regime_wl[0])
++for line in regime_wl:
++    if line.startswith(("A_minus_B", "case_note")):
++        print(line)
++
++density = next(
++    b for b in blocks
++    if b[0].startswith("CASE family=FACE_RESPONSE_COEFFS ")
++    and "DENSITY=RHO4_CONSTANT" in b[0]
++    and "LEAF=PRESSURE.FIRST_SHAPE_KERNEL.MU_THETA_COEFFICIENT" in b[0]
++)
++df = fields(density)
++py_density = re.search(r"Symbol\('rho_br_bg_rho4_constant'[^)]*\)", df["operand_A"])
++wl_density_literal = "Function('rhoBrBgRho4Constant')(Symbol('xOne'), Symbol('xTwo'), Symbol('xThree'))"
++print("DENSITY_RAW_WITNESS", density[0])
++print("DENSITY_PY_TOKEN", py_density.group(0) if py_density else "NOT_FOUND")
++print("DENSITY_WL_TOKEN", wl_density_literal if wl_density_literal in df["operand_B"] else "NOT_FOUND")
++print("DENSITY_RAW_A_MINUS_B_CHARS", len(df["A_minus_B"]))
++print("DENSITY_RAW_A_MINUS_B_IS_ZERO_TOKEN", df["A_minus_B"] in {"Integer(0)", "0"})
+
+hook: Stop
+hook: Stop Completed
+tokens used
+364,593
+# Verdict: DEFECT
+
+The closure-wide cross-engine `AGREE` verdict is not earned.
+
+What is earned:
+
+- The four joined `DTN_KERNEL` cases agree after independently sourced identifications.
+- That collapse is non-vacuous: wrong jet sign, omitted on-shell relation, and frozen two-leg structure all leave nonzero residuals.
+- Two selected pressure first-shape response coefficients agree numerically after the ε-placement map.
+- The comparator correctly surfaces, rather than pre-folds, the representation differences.
+- The two per-engine `SOUND` histories, including the Wolfram rule-7 remediation, are faithfully reported.
+
+What is not earned, ranked most serious first:
+
+1. **Rule 17 is mis-adjudicated.** A varying density affects `μθ/ρ(x)` without ever being differentiated. The SymPy bare scalar cannot globally equal the Wolfram live field.
+2. **Deferred and uncovered physics is pre-adjudicated as `AGREE`.** Four giant families, raw `DTN_OPERATOR`, `ENERGY_*`, the fully unjoined regime family, and 61 parse failures cannot support a closure-wide verdict.
+3. **“Face-response coefficients proven EXACT ZERO” is overstated.** The bridge is randomized floating-point testing of only 16/96 joined cases and 2/12 leaf types.
+4. **The stated “committed bridge scripts” are untracked and not self-contained.** They depend on an ephemeral `/tmp/.../scratchpad/reconcile` directory.
+
+Preflight:
+
+```text
+$ datalad get research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out research/pde_ledger_v3/mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out
+action summary:
+  get (notneeded: 2)
+
+$ git branch --show-current
+ledger-v3-rebuild
+```
+
+Outputs: [datalad](/tmp/S11c_c1_datalad_get.stdout), [branch](/tmp/S11c_c1_branch.stdout).
+
+## 1. Central computational claim — CLEAR, with response-scope qualification
+
+Committed DtN bridge rerun:
+
+```text
+$ python research/pde_ledger_v3/directives/_measurements/S11c_c1_reconcile_dtn_kernel_bridge.py | tee /tmp/S11c_c1_review_committed_dtn_bridge.stdout
+=== STAGE 2 (maps applied, assumptions fixed) ===
+free: ['HAT', 'Q_IN', 'Q_OUT', 'W_0', 'c_s0', 'eta_bg', 'kPrimeOne', 'kPrimeThree', 'kPrimeTwo', 'omega', 'rho_m']
+r2 = I*HAT*W_0*eta_bg*omega*rho_m*(Q_IN**2*c_s0**2 + c_s0**2*kPrimeOne**2 + c_s0**2*kPrimeThree**2 + c_s0**2*kPrimeTwo**2 - omega**2)/(2*Q_IN*Q_OUT*c_s0**2)
+ZERO? False
+
+=== STAGE 3 (+ on-shell Q^2 = om^2/cs0^2 - |k|^2) ===
+r3 = 0
+ZERO? True
+```
+
+Committed response bridge rerun:
+
+```text
+$ python research/pde_ledger_v3/directives/_measurements/S11c_c1_reconcile_response_coeff_bridge.py /tmp/claude-1000/-var-projects-toy-physics/53620ffb-59f9-482d-b804-aef04f767516/scratchpad/reconcile | tee /tmp/S11c_c1_review_committed_response_bridge.stdout
+[MU_THETA_COEFF] (eps*A) worst_rel=0.00e+00  AGREE
+[FACE_VELOCITY_COEFF] (eps*A) worst_rel=0.00e+00  AGREE
+```
+
+All four kernel cases:
+
+```text
+$ python research/pde_ledger_v3/directives/_measurements/S11c_c1_reconcile_kernel_all4cases.py /tmp/claude-1000/-var-projects-toy-physics/53620ffb-59f9-482d-b804-aef04f767516/scratchpad/reconcile
+  (BRANCH=LAB_HELD, FACE=-1, LEAF=KERNEL_EXPRESSION)           worst_rel=0.0e+00 AGREE
+  (BRANCH=LAB_HELD, FACE=1, LEAF=KERNEL_EXPRESSION)            worst_rel=0.0e+00 AGREE
+  (BRANCH=MATERIAL_ADVECTED, FACE=-1, LEAF=KERNEL_EXPRESSION)  worst_rel=0.0e+00 AGREE
+  (BRANCH=MATERIAL_ADVECTED, FACE=1, LEAF=KERNEL_EXPRESSION)   worst_rel=0.0e+00 AGREE
+```
+
+My direct-transcript adversarial verifier:
+
+```text
+$ python /tmp/S11c_c1_adversarial_reconcile_verify.py | tee /tmp/S11c_c1_adversarial_reconcile_verify.stdout
+KERNEL_SOURCE annex_bytes 90722857 81881078
+KERNEL_JOINED_CASES 4
+CASE (BRANCH=LAB_HELD, FACE=-1, LEAF=KERNEL_EXPRESSION)
+  correct_stage2 = I*HAT*W_0*eta_bg*omega*rho_m*(Q_IN**2*c_s0**2 + c_s0**2*kPrimeOne**2 + c_s0**2*kPrimeThree**2 + c_s0**2*kPrimeTwo**2 - omega**2)/(2*Q_IN*Q_OUT*c_s0**2)
+  stage2_over_expected_dispersion_multiple = 1
+  correct_on_shell = 0 ZERO? True
+  WRONG_JET_on_shell = I*HAT*L_W*omega*rho_m*sigma_W*(kPrimeOne**2 + kPrimeThree**2 + kPrimeTwo**2)/(Q_IN*Q_OUT) ZERO? False
+...
+RESPONSE_JOINED_SELECTED_CASES 16 trials_each 5
+RESPONSE eps_times_PY_vs_WL worst_rel=0.000e+00
+RESPONSE OMIT_EPS_CORRUPTION worst_rel=6.522e-01
+RESPONSE DOUBLE_WL_DENSITY_CORRUPTION_MU worst_rel=3.333e-01
+```
+
+The same three kernel results occur for all four branch/face cases; the full literal frozen-leg polynomials are in the output file.
+
+Therefore:
+
+- Wrong jet sign: nonzero.
+- Dropped on-shell substitution: exactly one times the requested dispersion polynomial.
+- Two WL `qOut` legs frozen into one: nonzero.
+- Omitted ε identification: nonzero.
+
+The kernel agreement is real, not tuned to zero.
+
+The response result is genuine numerical corroboration for the tested leaves, but is not an exact symbolic proof. The bridge uses `complex(sp.N(...))`, an unseeded PRNG, and a floating relative tolerance.
+
+Scripts/outputs: [adversarial script](/tmp/S11c_c1_adversarial_reconcile_verify.py), [adversarial stdout](/tmp/S11c_c1_adversarial_reconcile_verify.stdout), [DtN bridge stdout](/tmp/S11c_c1_review_committed_dtn_bridge.stdout), [response stdout](/tmp/S11c_c1_review_committed_response_bridge.stdout), [four-case stdout](/tmp/S11c_c1_review_committed_kernel_all4cases.stdout).
+
+## 2. Physical identifications — DEFECT only for density
+
+Command:
+
+```text
+$ python /tmp/S11c_c1_identification_source_audit.py | tee /tmp/S11c_c1_identification_source_audit.stdout
+...
+CHECK wl_transfer_is_k_minus_kprime True
+CHECK wl_slope_is_i_sigma_profile_LW_transfer True
+CHECK wl_sigma_binding True
+CHECK py_kappa_is_omega2_over_cs02 True
+CHECK py_mu_theta_has_epsilon True
+CHECK wl_mu_theta_coefficient_has_epsilon True
+```
+
+The valid source-backed maps are:
+
+- Distinct output/input momenta and `qOut` legs: [WL source](/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_c1_bulk_closure_mathematica_audit.wl:103), [PY source](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py:177).
+- FT derivative jet and momentum transfer: [WL source](/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_c1_bulk_closure_mathematica_audit.wl:170), [PY opaque jets](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py:200), [PY kernel use](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py:606).
+- `σ_W=η_bg W_0/L_W`: [WL source](/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_c1_bulk_closure_mathematica_audit.wl:182).
+- ε placement: [PY source](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py:834), [WL source](/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_c1_bulk_closure_mathematica_audit.wl:742).
+- On-shell dispersion: [PY source](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py:618), [WL source](/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_c1_bulk_closure_mathematica_audit.wl:128).
+
+The density binding itself has source basis—upstream SymPy records
+`rho_br_bg_rho4_constant = W_bg*rho_br/W_0`—but treating the bare scalar as globally interchangeable with an applied live field hides a real content difference. It is not a valid representation equivalence as used by the reconcile.
+
+Script/output: [source audit](/tmp/S11c_c1_identification_source_audit.py), [stdout](/tmp/S11c_c1_identification_source_audit.stdout).
+
+## 3. Rule 17 — DEFECT
+
+The narrow factual claim “neither engine differentiates density” is true.
+
+Commands:
+
+```text
+$ rg -n 'D\[[^]]*rhoBrBgRho4Constant|Derivative[^\n]*rhoBrBgRho4Constant' research/pde_ledger_v3/mathematica/S11c_c1_bulk_closure_mathematica_audit.wl
+<empty stdout>
+
+$ rg -n 'diff\([^)]*rho_br_bg_rho4|Derivative[^\n]*rho_br_bg_rho4' research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py
+<empty stdout>
+```
+
+Structural audit:
+
+```text
+$ python /tmp/S11c_c1_density_liveness_audit.py | tee /tmp/S11c_c1_density_liveness_audit.stdout
+WL_ACTIVE_D_CALLS 7
+WL_DENSITY_IN_D_CALLS 0
+WL_DERIVATIVE_CALLS 1
+WL_DENSITY_IN_DERIVATIVE_CALLS 0
+PY_DIFF_OR_DERIVATIVE_CALLS 5
+PY_DENSITY_IN_DIFF_OR_DERIVATIVE_CALLS 0
+```
+
+But the inference “no derivative ⇒ variation loses nothing” is false. A varying coefficient changes a pointwise product or quotient without differentiation:
+
+```text
+$ python /tmp/S11c_c1_rule17_pointwise_counterexample.py | tee /tmp/S11c_c1_rule17_pointwise_counterexample.stdout
+rho_live_a = rho0*(eta*w_a + 1)
+rho_live_b = rho0*(eta*w_b + 1)
+mu_s_live_a_O_eta = -epsilon*eta*mu*w_a/rho0 + epsilon*mu/rho0
+mu_s_frozen = epsilon*mu/rho0
+missing_O_eta_without_any_derivative = -epsilon*eta*mu*w_a/rho0
+missing_is_zero? False
+tune_single_scalar_R_to_rho_a:
+  residual_at_a = 0
+  residual_at_b = -epsilon*eta*mu*(w_a - w_b)/(rho0*(eta*w_a + 1)*(eta*w_b + 1))
+  residual_at_b_is_zero? False
+CONCLUSION single_bare_scalar_equals_live_field_globally? False
+```
+
+Wolfram explicitly binds and consumes the live field:
+
+- `rhoBrBgRho4Constant(x)=(rhoBr/W0)WBg(x)`: [WL source](/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_c1_bulk_closure_mathematica_audit.wl:188).
+- It is passed into the curved response at the anchor: [WL source](/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_c1_bulk_closure_mathematica_audit.wl:838).
+
+SymPy instead imports and reuses one scalar:
+
+- [density selection](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py:587).
+- [pointwise response](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py:834).
+
+The frozen contract itself says a c1 density-representation control would mutate `ρ_br,bg` in `μ_s=μθ/ρ_br,bg`: [contract](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:423). Thus the contract does not make density variation irrelevant merely because no derivative acts on it.
+
+Consequently, [the record’s seal-5 `AGREE`](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:78) and its “only re-adjudicate in c2 if differentiated” caveat are incorrect. Seal 5 must remain a surfaced c1 difference pending a valid field/operator comparison.
+
+Scripts/outputs: [density audit](/tmp/S11c_c1_density_liveness_audit.py), [stdout](/tmp/S11c_c1_density_liveness_audit.stdout), [counterexample](/tmp/S11c_c1_rule17_pointwise_counterexample.py), [stdout](/tmp/S11c_c1_rule17_pointwise_counterexample.stdout), [WL empty grep](/tmp/S11c_c1_density_wl_derivative_rg.stdout), [PY empty grep](/tmp/S11c_c1_density_py_derivative_rg.stdout).
+
+## 3b. Comparator surfaces the seals — CLEAR
+
+I reran the sound comparator for the three relevant families:
+
+```text
+$ /usr/bin/time -v python research/pde_ledger_v3/scripts/S11c_c1_cross_engine_comparator.py --family DTN_KERNEL --family DTN_BY_REGIME_PAIR --family FACE_RESPONSE_COEFFS > /tmp/S11c_c1_scoped_comparator.stdout 2> /tmp/S11c_c1_scoped_comparator.time
+```
+
+Literal sampled output:
+
+```text
+ACCOUNTING DTN_BY_REGIME_PAIR {join=0, py_only=72, wl_only=180, duplicate_key=0, parse_failed=0, axis_set_mismatch=0, extracted_leaves_py=72, extracted_leaves_wl=180}
+REGIME_ACCOUNTING_HAS_OUTPUT_INPUT_MISMATCH True True
+ACCOUNTING DTN_KERNEL {join=4, py_only=8, wl_only=12, duplicate_key=0, parse_failed=0, axis_set_mismatch=0, extracted_leaves_py=12, extracted_leaves_wl=16} reasons=none
+ACCOUNTING FACE_RESPONSE_COEFFS {join=96, py_only=16, wl_only=0, duplicate_key=0, parse_failed=0, axis_set_mismatch=0, extracted_leaves_py=112, extracted_leaves_wl=96} reasons=none
+RUN_ACCOUNTING families=3 families_with_join=2 families_with_unpaired=3 parse_failed=0 duplicate_key=0 runtime_seconds=540.192
+KERNEL_A_HAS_DISTINCT_OPAQUES True True
+KERNEL_B_HAS_OUTPUT_QOUT True
+KERNEL_B_HAS_INPUT_QOUT True
+KERNEL_RAW_A_MINUS_B_CHARS 9909
+KERNEL_RAW_A_MINUS_B_IS_ZERO_TOKEN False
+...
+DENSITY_PY_TOKEN Symbol('rho_br_bg_rho4_constant')
+DENSITY_WL_TOKEN Function('rhoBrBgRho4Constant')(Symbol('xOne'), Symbol('xTwo'), Symbol('xThree'))
+DENSITY_RAW_A_MINUS_B_CHARS 169165
+DENSITY_RAW_A_MINUS_B_IS_ZERO_TOKEN False
+```
+
+The run took 9:00.92, exited 0, and peaked at 382,620 kB RSS. The comparator did not decide `AGREE`; it left kernel, regime and density differences visible, exactly as [contract N8](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:580) requires.
+
+Outputs: [full 77 MB comparator stdout](/tmp/S11c_c1_scoped_comparator.stdout), [time/RSS](/tmp/S11c_c1_scoped_comparator.time), [sampler](/tmp/S11c_c1_sample_scoped_comparator.py), [sampled stdout](/tmp/S11c_c1_sample_scoped_comparator.stdout).
+
+## 4. Deferrals — DEFECT overall
+
+The size/resource rationale is real:
+
+```text
+$ python /tmp/S11c_c1_coverage_deferral_fidelity_audit.py | tee /tmp/S11c_c1_coverage_deferral_fidelity_audit.stdout
+GIANT PERMEABLE_PORT_HERMITIAN PY_BYTES 1853489 WL_BYTES 62268998
+GIANT UNIFORM_LIMIT_RESIDUAL PY_BYTES 36754730 WL_BYTES 38954
+GIANT UNIFORM_LIMIT_S11CC1_OPERAND PY_BYTES 33520634 WL_BYTES 163538
+GIANT PERMEABLE_DISSIPATION_VS_OMEGA_TAU PY_BYTES 7872469 WL_BYTES 12329118
+LIGHT_FOOTER RUN_ACCOUNTING families=42 families_with_join=24 families_with_unpaired=41 parse_failed=5 duplicate_key=0 runtime_seconds=1112.847
+MID RUN_ACCOUNTING families=4 families_with_join=3 families_with_unpaired=4 parse_failed=56 duplicate_key=0 runtime_seconds=1086.652
+DEFERRED_CONTAINS 'The **4 giant families** by payload size' True
+DEFERRED_CONTAINS 'python3 scripts/S11c_c1_cross_engine_comparator.py            # NO --family = all 50 families' True
+DEFERRED_CONTAINS 'raw DTN_OPERATOR' True
+DEFERRED_CONTAINS 'ENERGY_*' True
+```
+
+Machine memory:
+
+```text
+Mem:            30Gi       4.6Gi        10Gi       692Mi        15Gi        23Gi
+Swap:           19Gi       4.3Gi        15Gi
+```
+
+The full no-`--family` command is honestly recorded at [DEFERRED_HEAVY_RUNS.md](/var/projects/toy_physics/research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md:132), and raw `DTN_OPERATOR` plus `ENERGY_*` are described as open coverage gaps.
+
+The defect is that the same document says the unrun giant families are “already adjudicated AGREE” and “not open physics”: [lines 140–143](/var/projects/toy_physics/research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md:140). The comparator run alone also cannot “confirm collapse,” because it deliberately applies no bridge and decides nothing.
+
+Additional uncovered facts:
+
+- `DTN_BY_REGIME_PAIR`: `join=0`, PY-only 72, WL-only 180. Calling its physics `AGREE` solely by kernel inheritance is not a direct regime comparison.
+- Light and mid runs contain `5+56=61` parse failures.
+- Raw `DTN_OPERATOR` and `ENERGY_*` remain genuinely undecided.
+
+The four deferred physics-bearing families must stay surfaced/undecided until measured. I make no prediction about their eventual residuals.
+
+Script/output: [coverage audit](/tmp/S11c_c1_coverage_deferral_fidelity_audit.py), [stdout](/tmp/S11c_c1_coverage_deferral_fidelity_audit.stdout), [accounting capture](/tmp/S11c_c1_reconcile_accounting_literal.stdout).
+
+## 5. Faithfulness and overstatement — DEFECT
+
+The per-engine history is accurate. My provenance audit found all cited build/repair commits and confirmed that the Wolfram rule-7 gap was explicitly corrected and remediated:
+
+```text
+$ python /tmp/S11c_c1_per_engine_review_provenance.py | tee /tmp/S11c_c1_per_engine_review_provenance.stdout
+...
+COMMIT 65afa1cd EXISTS True
+COMMIT d6e16471 EXISTS True
+COMMIT e139bc61 EXISTS True
+COMMIT 13f0bd2c EXISTS True
+COMMIT dd34d564 EXISTS True
+```
+
+So “per-engine SOUND (2-leg each)” is supported.
+
+The cross-engine wording is not:
+
+- [Lines 16–24](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:16) call every joined residual spurious and the response coefficients exact despite limited numeric bridge coverage.
+- [Lines 83–88](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:83) establish cross-engine agreement on `DTN_OPERATOR`, while [lines 94–96](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:94) call the same raw operator a genuine undecided coverage gap.
+- The response bridge covers only 16 of 96 joined cases:
+
+```text
+$ python /tmp/S11c_c1_response_bridge_scope.py | tee /tmp/S11c_c1_response_bridge_scope.stdout
+FACE_RESPONSE_COEFFS_JOINED 96
+JOINED_DISTINCT_LEAF_TYPES 12
+...
+JOINED_CASES_COVERED_BY_TWO_BRIDGE_LEAVES 16
+JOINED_CASES_NOT_COVERED_BY_TWO_BRIDGE_LEAVES 80
+```
+
+Only `PRESSURE.FIRST_SHAPE_KERNEL.{MU_THETA,FACE_VELOCITY}_COEFFICIENT` is bridged; flat pressure, relative-flux and traction coefficients are not.
+
+Finally, the record’s “committed bridge scripts” claim is false in the inspected branch:
+
+```text
+$ git status --short
+ M research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md
+?? research/pde_ledger_v3/directives/_measurements/S11c_c1_comparator_reconcile.md
+?? research/pde_ledger_v3/directives/_measurements/S11c_c1_reconcile_dtn_kernel_bridge.py
+?? research/pde_ledger_v3/directives/_measurements/S11c_c1_reconcile_response_coeff_bridge.py
+?? research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md
+...
+```
+
+Moreover:
+
+```text
+DTN_BRIDGE_HARDCODED_SCRATCH /tmp/claude-1000/-var-projects-toy-physics/53620ffb-59f9-482d-b804-aef04f767516/scratchpad/reconcile
+DTN_BRIDGE_SCRATCH_EXISTS True
+DTN_OPERANDS_PRESENT_IN_REPO False False
+RESPONSE_BRIDGE_REQUIRES_ARGV1 True
+RESPONSE_BRIDGE_RANDOM_SEEDED False
+RESPONSE_BRIDGE_USES_FLOAT_COMPLEX True
+```
+
+Thus the current evidence is neither committed nor reproducible from a clean checkout.
+
+Scripts/outputs: [provenance audit](/tmp/S11c_c1_per_engine_review_provenance.py), [stdout](/tmp/S11c_c1_per_engine_review_provenance.stdout), [response-scope audit](/tmp/S11c_c1_response_bridge_scope.py), [stdout](/tmp/S11c_c1_response_bridge_scope.stdout), [git status](/tmp/S11c_c1_final_git_status.stdout).
+
+## Review artifact inventory
+
+Primary independent scripts and outputs:
+
+- [Adversarial bridge verifier](/tmp/S11c_c1_adversarial_reconcile_verify.py) · [stdout](/tmp/S11c_c1_adversarial_reconcile_verify.stdout)
+- [Identification audit](/tmp/S11c_c1_identification_source_audit.py) · [stdout](/tmp/S11c_c1_identification_source_audit.stdout)
+- [Density liveness audit](/tmp/S11c_c1_density_liveness_audit.py) · [stdout](/tmp/S11c_c1_density_liveness_audit.stdout)
+- [Rule-17 counterexample](/tmp/S11c_c1_rule17_pointwise_counterexample.py) · [stdout](/tmp/S11c_c1_rule17_pointwise_counterexample.stdout)
+- [Comparator sampler](/tmp/S11c_c1_sample_scoped_comparator.py) · [stdout](/tmp/S11c_c1_sample_scoped_comparator.stdout)
+- [Coverage/deferral audit](/tmp/S11c_c1_coverage_deferral_fidelity_audit.py) · [stdout](/tmp/S11c_c1_coverage_deferral_fidelity_audit.stdout)
+- [Response bridge scope](/tmp/S11c_c1_response_bridge_scope.py) · [stdout](/tmp/S11c_c1_response_bridge_scope.stdout)
+- [Per-engine provenance](/tmp/S11c_c1_per_engine_review_provenance.py) · [stdout](/tmp/S11c_c1_per_engine_review_provenance.stdout)
+- [Extracted-case inspection](/tmp/S11c_c1_inspect_extracted_cases.py) · [stdout](/tmp/S11c_c1_inspect_extracted_cases.stdout)
+- [Bridge operand-location audit](/tmp/S11c_c1_locate_committed_bridge_operands.py) · [stdout](/tmp/S11c_c1_locate_committed_bridge_operands.stdout)
+
+Hashes and remaining literal captures are recorded in [primary manifest](/tmp/S11c_c1_independent_review_manifest.stdout) and [manifest addendum](/tmp/S11c_c1_manifest_addendum.stdout). No working-tree file was modified by this review.

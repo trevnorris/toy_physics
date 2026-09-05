@@ -108,3 +108,41 @@ of headroom to be safe. Watch RSS; a Mathematica kernel can balloon and orphan �
   on **every** case. Both are already proven OUT-OF-BAND: the un-freeze/tractability approach by the diagnosis
   agent + 2 tractability decision legs (`PossibleZeroQ`), and the engine's implementation by the #89b build legs
   (source-fidelity + reduced-scale ablation). A green in-band all-cases run is confirmation, not new physics.
+
+---
+
+## S11c-c1 T7 cross-engine reconcile — the 4 GIANT families + the full per-family symbolic residual
+
+- **Comparator:** `research/pde_ledger_v3/scripts/S11c_c1_cross_engine_comparator.py` (SOUND; baseline `7141e6ad`
+  + repair `704308af`). Inputs: `scripts/out/S11c_c1_bulk_closure_sympy_audit.out` (90 MB) +
+  `mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out` (82 MB) — both git-annex, `datalad get` first.
+- **What ran on 30 GB (light+mid tier, 46 of 50 families):** peak RSS ~301 MB; the two engines AGREE — every
+  surfaced residual is a spurious representational/keying difference (core DtN kernel + response coefficients
+  collapse to EXACT zero under the physical identifications; record `_measurements/S11c_c1_comparator_reconcile.md`).
+- **What is DEFERRED (⛔ do NOT narrow the comparison to fit):**
+  - The **4 giant families** by payload size — `PERMEABLE_PORT_HERMITIAN` (WL 62 MB), `UNIFORM_LIMIT_RESIDUAL`
+    (PY 37 MB), `UNIFORM_LIMIT_S11CC1_OPERAND` (PY 33 MB), `PERMEABLE_DISSIPATION_VS_OMEGA_TAU` (WL 12 MB). These
+    are the only place the R1 `cS0←c_s0` fold activates a JOINED residual (WL `cS0` dense in PERMEABLE_*).
+  - The **full per-family symbolic residual** as belt-and-suspenders for the AGREE-by-inheritance families
+    (REP_INVARIANCE / CONTROL_* / DEGENERATE / DIMENSIONS / HOMOGENEITY), and the three additional
+    representational reconciliations left open on 30 GB: **DTN_OPERATOR** (raw noncommutative operator-algebra
+    face-axis form), **DTN_HERMITIAN_PART / DTN_REACTIVE_PART** (WL true-area-weighted adjoint `BoundaryMeasure`
+    vs PY plain conjugate-swap — reduces at first order, O(η²)→S11c-e), and **ENERGY_*** (PY closed-form
+    propagating energy vs WL unevaluated far-field flux integral; needs the integral evaluated asymptotically).
+- **Re-run command (full in-band, ≥64 GB box):**
+  ```
+  cd /var/projects/toy_physics/research/pde_ledger_v3
+  datalad get scripts/out/S11c_c1_bulk_closure_sympy_audit.out \
+              mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out
+  python3 scripts/S11c_c1_cross_engine_comparator.py            # NO --family = all 50 families
+  # watch RSS; the PERMEABLE_/UNIFORM_LIMIT_ residual canon can balloon
+  ```
+- **What it would add:** the joined residuals for the 4 giants (incl. the `cS0` fold's one live activation), and
+  the full symbolic per-family residual. ⛔ **The 4 giants are UNMEASURED — do NOT pre-adjudicate them AGREE.**
+  What the light+mid tier + the kernel/coefficient bridges EARNED is narrower (record
+  `_measurements/S11c_c1_comparator_reconcile.md`): the two-momentum DtN kernel (all cases, exact zero) and the
+  LAB_HELD + diagonal-MATERIAL response coefficients AGREE; the derived/control families are an inheritance
+  ARGUMENT (not a per-family computation). GENUINELY OPEN at ≥64 GB (UNDECIDED, ⛔ no predicted residual): the 4
+  giants, the raw DTN_OPERATOR face-form, ENERGY_* (closed-form vs integral), the off-diagonal flat-resolvent
+  leg-labeling (MATERIAL), seal 5 (the density field-vs-constant freeze), and the full symbolic confirmation of the
+  inheritance-argument families.

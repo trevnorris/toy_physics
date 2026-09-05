@@ -1,0 +1,226 @@
+# Independent review result
+
+**BLOCK.** The DtN kernel itself is correct, as are the operator inverse and Λ-channel placement. However, c1 drops a live `ρ_br,bg(x)` contribution at retained `O(εη)`, and its claimed grazing result exceeds the validity of the first-shape inverse. The density error changes computed/exported response objects and requires reopening c1.
+
+## Computation record
+
+All independent computations were run from `/tmp`; the working tree was not modified.
+
+- Boundary matching: [script](/tmp/s11c_c1_boundary_matching.py), [literal stdout](/tmp/s11c_c1_boundary_matching.stdout)
+- Closure, dissipation, grazing, and convection: [script](/tmp/s11c_c1_independent_review.py), [literal stdout](/tmp/s11c_c1_independent_review.stdout)
+- Density liveness: [script](/tmp/s11c_c1_density_liveness.py), [literal stdout](/tmp/s11c_c1_density_liveness.stdout)
+
+## Items 1–7
+
+### 1. Two-momentum DtN/impedance — correct result, ambiguous specification
+
+Using outward distance `r` in either disconnected half-space gives `N₀(k)=iq_out(k)`. For outward shape displacement
+
+\[
+a_s=s\,[h_s^0-sW_0/2]=(W_{\rm bg}-W_0)/2,
+\]
+
+the actual DtN derivative and impedance derivative are
+
+\[
+N_1=-\left[N_0M_aN_0+\operatorname{Div}(a\nabla)+\kappa^2M_a\right],
+\]
+
+\[
+Z_1(k,k')
+=i\rho_m\omega\,\widehat a(k-k')
+\frac{q(k)q(k')+k\!\cdot\!k'-\kappa^2}{q(k)q(k')}.
+\]
+
+The direct boundary solve prints exactly this kernel and a zero residual at [stdout lines 7–11](/tmp/s11c_c1_boundary_matching.stdout:7). Thus:
+
+- Both `q(k)` and `q(k′)` are required.
+- The quoted numerator and sign for `Z₁` are correct.
+- The positive composition is the bracket entering the **impedance after inverse differentiation**; the DtN derivative itself has the minus sign above.
+- `q` has the sign of `ω` in the propagating sector and equals `iα`, `α>0`, in the evanescent sector.
+- The outward normal is indeed `(-½∇W_bg,s)`, not bare `∇F`; see [stdout lines 11–16](/tmp/s11c_c1_independent_review.stdout:11).
+- The diagonal rigid-translation contribution vanishes on `q²+|k|²=κ²`; see [boundary stdout lines 12–13](/tmp/s11c_c1_boundary_matching.stdout:12).
+
+This independently validates the cross-engine kernel agreement reported at [step lines 18–22](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:18).
+
+### 2. Permeable response — inverse correct; density handling wrong
+
+Let \(\beta=M_{1/\rho_{\rm br,bg}}\). The correct operator response as a function of `μ_θ` is
+
+\[
+D=I+\frac{\Lambda_A}{\rho_m^2}Z,
+\qquad
+\delta p=D^{-1}Z
+\left[
+\left(1+\frac{\Lambda_V}{\rho_m}\right)V
++\frac{\Lambda_A}{\rho_m}\beta\mu_\theta
+\right],
+\]
+
+followed by
+
+\[
+\mathcal A=\beta\mu_\theta-\delta p/\rho_m,\quad
+J=\Lambda_A\mathcal A+\Lambda_VV,\quad
+t=-(\delta p+\Lambda_X\mathcal A)\hat n.
+\]
+
+The scalar elimination residuals are all zero at [stdout lines 22–29](/tmp/s11c_c1_independent_review.stdout:22). Therefore `[I+(Λ_A/ρ_m²)Z]⁻¹` and the plus sign are correct.
+
+`Λ_A,Λ_V` belong only in flux and `Λ_X` only in traction, exactly as inherited from [S11b lines 214–240](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md:214) and [lines 358–363](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md:358).
+
+The defect is that \(\beta\) is a live multiplication operator. In `RHO4_CONSTANT`,
+
+\[
+\rho_{\rm br,bg}=\rho_{\rm br}(1+\eta w_1),\qquad
+\beta=\rho_{\rm br}^{-1}(1-\eta w_1)+O(\eta^2).
+\]
+
+Consequently, even with `Z₁=0` the omitted pressure term is
+
+\[
+\delta p_{\rm live}^{(1)}-\delta p_{\rm frozen}^{(1)}
+=
+-\frac{\Lambda_A Z_0\,\epsilon\mu_{\theta0}\rho_m w_1}
+{\rho_{\rm br0}(\Lambda_A Z_0+\rho_m^2)},
+\]
+
+printed at [density stdout lines 7–8](/tmp/s11c_c1_density_liveness.stdout:7). Nonzero retained terms also occur in `J` and `t` at [lines 11–16](/tmp/s11c_c1_density_liveness.stdout:11). The two-mode operator residual is explicitly nonzero at [lines 21–23](/tmp/s11c_c1_density_liveness.stdout:21).
+
+The formal noninvertibility condition is otherwise correct:
+
+\[
+0\in\sigma(D)
+\quad\Longleftrightarrow\quad
+-\rho_m^2/\Lambda_A\in\sigma(Z)
+\]
+
+for `Λ_A≠0`; see [stdout lines 44–45](/tmp/s11c_c1_independent_review.stdout:44). Deferring the profile-conditioned resolvent to S11c-d is appropriate. Calling it “Fredholm” does not itself establish Fredholmness without a named function space, but the record properly labels it formal.
+
+### 3. Dissipation audit — three valid objects, with two wording defects
+
+The three objects are genuinely distinct:
+
+1. Bulk radiation:
+   \[
+   H_a[Z]=(Z+Z^{\dagger_a})/2.
+   \]
+   In flat coordinates its quadratic-form matrix is
+   \[
+   (AZ+Z^\dagger A)/2,
+   \]
+   verified at [stdout lines 35–38](/tmp/s11c_c1_independent_review.stdout:35).
+
+2. Closed two-port form: the Hermitian part of
+   \[
+   (V,\mu_s)\mapsto(\delta p+\Lambda_X\mathcal A,J).
+   \]
+   The computed response matrix appears at [stdout lines 30–31](/tmp/s11c_c1_independent_review.stdout:30).
+
+3. Independent bulk-energy check: traction work on the slab must be compared with the **negative** outgoing far-field flux:
+   \[
+   P_{\rm traction,slab}+P_{\infty}=0.
+   \]
+   Directly subtracting positive outgoing flux from traction work gives `−ρ_mωq|φ|²`, while comparing with the orientation-reversed bulk operand gives zero; see [stdout lines 17–21](/tmp/s11c_c1_independent_review.stdout:17).
+
+The evanescent-nullspace caveat is physically correct. A truncated block
+\[
+\begin{pmatrix}0&\eta c\\\eta c&R\end{pmatrix}
+\]
+has its apparent negative eigenvalue only at `−η²c²/R+O(η⁴)`; [stdout lines 41–43](/tmp/s11c_c1_independent_review.stdout:41). It does not conceal a first-order passivity violation. With c1’s independent grading, however, the omitted completion should be called second shape order—`η²`, `ησ_W`, and `σ_W²`—rather than only `O(η²)`.
+
+### 4. Rest-frame limit and grazing — convection conditions correct, shape validity incomplete
+
+Expanding the convective dispersion
+\[
+(\omega-v_{\rm dr}q)^2=c_{s0}^2(k^2+q^2)
+\]
+gives
+
+\[
+\delta q=-\omega v_{\rm dr}/c_{s0}^2,\qquad
+\delta q/q=-\omega v_{\rm dr}/(c_{s0}^2q),
+\]
+
+while the direct operator correction scales as `2v_dr q/ω`; see [stdout lines 49–52](/tmp/s11c_c1_independent_review.stdout:49). Thus the two conditions in [c1 §2b](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:204) are correct, and must hold on **both momentum legs**. Strict `v_bulk_normal_0=0` is necessary at grazing.
+
+The claimed `O(σ_W²)` vertical-projection statement is also correct: [stdout line 53](/tmp/s11c_c1_independent_review.stdout:53) has no linear slope term.
+
+But strict `v_dr=0` does not cure the separate shape-expansion singularity. The Neumann-to-Dirichlet correction contains `N₁/(q(k)q(k′))`; [stdout lines 46–48](/tmp/s11c_c1_independent_review.stdout:46). At exact double grazing, a two-mode exact inverse scales as `1/(ηc)`, not as a Taylor series in `η`; see [lines 54–56](/tmp/s11c_c1_independent_review.stdout:54). Hence the existing first-shape operator may report a formal singular coefficient, but it cannot establish the physical threshold response without degenerate analysis.
+
+### 5. Rule 17 and freezes — seal 5 is decidably wrong
+
+`ρ_m` is correctly constant in the bulk. `W_bg`, both `q_out` legs, and the profile transfer remain live in the validated DtN kernel.
+
+The background integrated density is different. S11c-a supplies:
+
+> “`ρ_br,bg⁰(y) ≡ ρ_4D,bg⁰(y) W_bg(y)`”  
+> — [S11c-a lines 215–221](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:215)
+
+and requires the exact maps to remain present until after differentiation at [lines 200–208](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:200).
+
+The reconcile instead says the freeze is harmless because the density difference would be `O(η²)` at [lines 148–151](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_comparator_reconcile.md:148). The computation above disproves that: it is `O(εη)`.
+
+Therefore seal 5 should not remain `UNDECIDED`. The frozen response is wrong in the `RHO4_CONSTANT` representative.
+
+### 6. Rules 5, 3, and 2
+
+There are leaked expected results:
+
+- The composition is supplied at [c1 lines 247–260](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:247).
+- Rigid-shift cancellation is stated as mandatory there.
+- The flat result `Z₀=ρ_mω/q_out` and expected zero-jet outcome are printed at [lines 467–476](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:467).
+
+This contradicts:
+
+> “The spec says what to compute — never what anything equals.”  
+> — [CLAUDE.md lines 30–32](/var/projects/toy_physics/CLAUDE.md:30)
+
+and the composition prescription conflicts with rule 3’s “Name the object. Do not specify the recipe” at [CLAUDE.md lines 24–26](/var/projects/toy_physics/CLAUDE.md:24).
+
+The initial A−A energy and Hanzawa controls were implementation defects, not rooted in the final spec: the spec demands independent far-field and layer-potential constructions, and explicitly forbids A−A. The build review confirms those implementations were repaired at [build review lines 32–51](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_build_review.md:32).
+
+### 7. Inheritance correctness
+
+B0b/B0c, T-a..T-i, the affinity normalization, Λ placement, disconnected half-spaces, and opaque `μ_θ` are inherited correctly.
+
+Two naming/representation defects remain:
+
+- `Z` is an impedance/Neumann-to-Dirichlet response, whereas the mathematical DtN is `N`; they are related by `Z=iρ_mωN⁻¹`, not synonyms.
+- The spec’s `M_{h_s}` refers back to the signed lab-`w` graph height, whereas the Hadamard shape displacement is the face-even outward quantity `a_s=sδh_s`. The build happened to use the correct face-even `(W_bg−W₀)/2`.
+
+## Ranked findings
+
+1. **MUST-FIX — live background density omitted from the c1 response.**  
+   Spec: “`Σ_E`/density advection … structurally absent” and a density-response mutation only “if … wanted” at [c1 lines 423–434](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:423).  
+   Source: S11c-a requires live `ρ_br,bg=ρ_4D,bgW_bg` and exact maps through differentiation at [lines 200–221](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:200).  
+   Impact: **changes what was computed.** Reopen c1; represent `M_{1/ρ_br,bg}` as a multiplication operator, retain its `O(η)` piece, regenerate `δp_s,J_s,t_s` and exports for `RHO4_CONSTANT`, and rerun the comparator. The step-record claim that `δp_s/J_s` agree is not valid under the field→constant fold. Bare `Z`, its Fredholm denominator, and the impermeable energy slice are unaffected.
+
+2. **MUST-FIX — first-shape grazing behavior is claimed outside the inverse expansion’s domain.**  
+   Spec requests behavior “at each grazing zero” at [c1 lines 263–267](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:263), while §2b treats strict `v_dr=0` as the grazing qualification at [lines 204–220](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:204).  
+   Computation: the inverse is nonanalytic at grazing, scaling as `1/η`; [stdout lines 46–56](/tmp/s11c_c1_independent_review.stdout:46).  
+   Impact: **changes what may be claimed.** Existing `Z₁` remains a correct fixed-nongrazing asymptotic coefficient. Either mark exact grazing `NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER`, with `‖N₀⁻¹N₁‖≪1` imposed on both legs, or reopen computation for a degenerate threshold solve.
+
+3. **MUST-FIX — rule-5/rule-3 leakage makes the original dual-engine agreement non-independent evidence.**  
+   Spec supplies the composition, expected rigid cancellation, flat `Z₀`, and expected zero-jet conclusion at [lines 247–260](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:247) and [467–476](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:467).  
+   Source: [CLAUDE.md rules 3 and 5](/var/projects/toy_physics/CLAUDE.md:24) prohibit recipes and expected values.  
+   Impact: **changes only what may be claimed.** Cross-engine agreement establishes fidelity to the supplied structure, not independent discovery. The kernel’s correctness is nevertheless independently established by this review’s boundary solve.
+
+4. **SHOULD-FIX — `h_s` and “DtN/impedance” are conflated.**  
+   Spec uses `N₀M_{h_s}N₀` at [line 251](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:251).  
+   Source: inherited `h_s=sW_bg/2+ζ_s` is a signed lab height at [S11c-a lines 292–308](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:292), while computation gives the face-even outward displacement at [boundary stdout lines 14–16](/tmp/s11c_c1_boundary_matching.stdout:14). Also distinguish `N₁=−(…)` from `Z₁=iρ_mω(-N₀⁻¹N₁N₀⁻¹)`.  
+   Impact: no recomputation—the built kernel used the correct outward height.
+
+5. **SHOULD-FIX — energy residual orientation is underspecified.**  
+   Spec names negative traction work and positive outgoing flux at [lines 321–327](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:321), while requiring `A−B` comparisons at [lines 386–387](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:386).  
+   Source: S11b says slab pressure work is `−P_bulk` at [lines 463–474](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md:463); computation confirms only `P_face−(−P∞)=0` at [stdout lines 19–21](/tmp/s11c_c1_independent_review.stdout:19).  
+   Impact: no recomputation; the repaired engines used an orientation-reversed comparison operand. Fix the spec and tag semantics.
+
+6. **NIT — the reactive operator is mislabeled anti-Hermitian.**  
+   Spec calls `K_a=(Z−Z†ₐ)/(2i)` “anti-Hermitian” at [line 269](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:269).  
+   Computation gives `K_a†−K_a=0` at [stdout line 39](/tmp/s11c_c1_independent_review.stdout:39). `K_a` is Hermitian; `(Z−Z†ₐ)/2` is the anti-Hermitian part.
+
+7. **NIT — the evanescent caveat uses the wrong multigrade shorthand.**  
+   Spec says only `O(η²)` at [lines 332–338](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:332), while §2c declares `η` and `σ_W` independent at [lines 223–232](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:223). The caveat should cover all second-shape grades `η²,ησ_W,σ_W²`. Its physical conclusion remains correct.
+
+**Final verdict: BLOCK — MUST-FIX the retained-order background-density response, the exact-grazing validity claim, and the rule-5/rule-3 expected-result leakage. The density fix changes c1’s computed/exported face response; the other two principally constrain what the step may claim.**

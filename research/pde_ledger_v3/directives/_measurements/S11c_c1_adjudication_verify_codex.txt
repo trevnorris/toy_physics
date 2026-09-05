@@ -1,0 +1,84 @@
+## Verdict: NO REOPEN — override correct
+
+The folded export preserves the density dependence opaquely. For `(LAB_HELD, +1, RHO4_CONSTANT)`, the exported flat pressure coefficient multiplying `MU_THETA` is:
+
+```text
+Lambda_A_0*omega/
+(rho_br_bg_rho4_constant*s11cc1_q_out_output*(-I*omega*tau_A + 1)*
+ (Lambda_A_0*omega/
+  (rho_m*s11cc1_q_out_output*(-I*omega*tau_A + 1)) + 1))
+```
+
+Independent inspection found, across all four RHO4_CONSTANT anchoring/face cases:
+
+- Only `rho_br_bg_rho4_constant` occurs.
+- Every density-bearing coefficient leaf has an exact `1/rho_br_bg_rho4_constant` factor.
+- Zero density derivatives.
+- Zero occurrences combining it with literal `w1_profile`.
+- The first-shape terms do separately contain Fourier profile-transfer symbols, but the density relation itself is not baked into them.
+
+The folded `background_density_map` contains:
+
+```text
+rho_br_bg_rho4_constant = W_bg*rho_br/W_0
+W_bg = W_0*(1 + eta_bg*w1_profile)
+```
+
+hence:
+
+```text
+rho_br_bg_rho4_constant = rho_br*(1 + eta_bg*w1_profile)
+```
+
+The SymPy recovery is exact:
+
+```text
+mu_theta/rho_br_bg_rho4_constant
+→ mu_theta/[rho_br*(1 + eta_bg*w1_profile)]
+= mu_theta/rho_br
+  - eta_bg*mu_theta*w1_profile/rho_br
+  + O(eta_bg**2)
+```
+
+Therefore:
+
+```text
+d(mu_s)/d eta_bg |0 = -mu_theta*w1_profile/rho_br
+```
+
+I also substituted the live relation into the actual exported pressure coefficient; the recovered first-order term equaled `-w1_profile` times its flat coefficient, with residual `0`.
+
+Nothing about this density channel is irrecoverably lost. The previous field-to-constant comparison was not a valid global field-level agreement—seal 5 properly remains UNDECIDED—but that is a claim/representation correction, not grounds to regenerate c1. The c2 §3d.1 rebind is the correct recovery mechanism.
+
+Evidence: [verification script](/tmp/S11c_c1_retro_override_verify.py), [literal stdout](/tmp/S11c_c1_retro_override_verify.stdout).
+
+## Adjudication and STATUS
+
+The verdict-level transcript is accurate:
+
+- Grok: CLEAR, no MUST-FIX.
+- Codex-sol: BLOCK with exactly three MUST-FIX findings.
+- Codex MUST #2 maps correctly to grazing correction 2.
+- Codex MUST #3 maps correctly to independence-scoping correction 3.
+- Codex MUST #1 is legitimately downgraded to seal-5 record correction 1 because the channel is recoverable.
+- No MUST-FIX was dropped.
+
+The three corrections are therefore complete at the adjudicated MUST/record level. They are not, however, a complete inventory of all claim/control defects reported. The legs also recorded lower-severity items that the adjudication mentions only by count or leaves in the source reports:
+
+- energy-balance residual orientation;
+- graph `h_s` versus outward displacement, plus DtN/impedance terminology;
+- naming live density as a multiplication operator;
+- `K_a=(Z-Z†)/(2i)` is Hermitian, not anti-Hermitian;
+- second-shape shorthand should include `η²`, `ησ_W`, and `σ_W²`;
+- drain-projection wording;
+- expected-value leakage for flat `Z₀` and rigid cancellation, partly covered by correction 3.
+
+Under [CLAUDE.md](/var/projects/toy_physics/CLAUDE.md:25), review-until-clear includes anything changing what may be claimed. Consequently, the adjudication’s and [STATUS.md](/var/projects/toy_physics/STATUS.md:5) wording that only three claim-level corrections are owed is too broad. Also, “c2 recovers it” is prospective: c2 is specified to recover it but has not yet been built.
+
+## Fix before compacting
+
+1. Change “3 claim-level corrections owed” to “3 adjudicated MUST-level record corrections,” and explicitly disposition or carry forward the lower-severity findings above.
+2. Change “c2 recovers it” to “c2 §3d.1 is specified to recover it.”
+3. Keep the engine disposition unchanged: **c1 stands; no reopen**.
+
+**NOT CLEAR TO COMPACT until those state-document completeness fixes are recorded.**

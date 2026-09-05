@@ -1,0 +1,144 @@
+I'll start from the parent decisions and inherited S11b/S11c-a/S11c-b physics, derive the curved-face objects independently, then cross-check the c1 spec against that derivation.I'll read the parent decisions and inherited S11b / S11c-a / S11c-b sources first, and keep the c1 spec closed until the independent derivation is written.S11b is in; next I’ll pull the S11c-a and S11c-b specs and step records that c1 is supposed to inherit.I have the inherited setup. Next I’ll write the independent SymPy derivation of the two-momentum DtN, the permeable inverse, and the dissipation objects — before opening the c1 spec.I’ll write the independent derivation scripts to `/tmp` and run them before opening the c1 spec.Independent derivation is on disk. I’ll read the c1 spec now and cross-check it against those computed objects.I’ll inspect how each engine built the per-face kernel and energy operands, to see whether the spec’s composition schematic or energy signs actually landed in the result.Independent derivation is in `/tmp/s11c_c1_indep_dtn_permeable.{py,stdout}`, `/tmp/s11c_c1_indep_dissipation_ablation.{py,stdout}`, and `/tmp/s11c_c1_indep_energy_density_order.{py,stdout}`. Below, every computational claim points at those files.
+
+---
+
+## Items 1–7
+
+### 1. Two-momentum DtN (`§3a`) — **sound**
+
+**Kernel structure.** Two independent routes agree, and one-sided corruption moves only the corrupted route.
+
+- Route A (graph linearization / Fourier Born) and Route B (`N = N_0 - (N_0\circ M_h\circ N_0 + \mathrm{Div}(h\nabla)+\kappa^2 h)`, with `h` the **outward-normal** displacement) give the same first-order DtN kernel  
+  `N_1(k,k') = \hat h(k-k')[q(k)q(k') + k\cdot k' - \omega^2/c_{s0}^2]`  
+  (`N1_A - N1_B: 0`, stdout BLOCK 3; ablation script uncorrupted residual `0`).
+- Impedance `Z = i\omega\rho_m N^{-1}` then gives  
+  `Z_1 = (i\omega\rho_m/2)\,\widehat{\delta W}_{\mathrm{bg}}(k-k')\,[qq'+k\cdot k'-\kappa^2]/(q(k)q(k'))`  
+  with prefactor `I*omega*rho_m/2` (BLOCK 4). The review prompt’s `∝` kernel is the right **structure**; the spec itself does **not** type that formula (`§3a` names the object and both legs, which is the right rule-3/5 move).
+- Rigid shift: `bracket at k=k' = 0` and `q^2 + k\cdot k - \kappa^2 = 0` (BLOCK 3). Genuine, not a freeze.
+- Freezing a branch leg (`q(k')\to q(k)`) is invisible on `|k|=|k'|` and **nonzero** off that diagonal (`numeric residual A-frozenB: -1.188…`, live residual `0`). The spec’s `§5e` two-leg freeze control is the right rule-17 instrument.
+
+**Composition vs `h_s`.** The composition is right **only** if `h` is the outward-normal displacement `\delta W_{\mathrm{bg}}/2`, **same on both faces**. Using the **graph** height `h_s = s W_{\mathrm{bg}}/2` inside the upper-face formula **flips** the lower-face `N_1` (`BLOCK 7`: graph-h + outward-h sum to `0`).  
+Spec `§2a:185` defines `h_s^\alpha = s W_{\mathrm{bg}}/2+\zeta_s` (graph). Spec `§3a:250-251` writes schematically `N_0\circ M_{h_s}\circ N_0` with that same `h_s`. Spec `§2a:192-195` also states the **outward** tilt `n̂_s = (-½\nabla W_{\mathrm{bg}}, s)+O(|\nabla W|^2)` is face-even and forbids inferring parity from opposite graph slopes. Those two uses of `h_s` fight. Both engines in fact used `heightHat = \eta W_0 \hat w_1/2` **independent of face** (PY `shape_source:592`, WL `:177`) — the correct outward displacement — so the schematic did **not** land in the computed kernel. Notation SHOULD-FIX, not a wrong object.
+
+**Radiation / orientation.** `sign(\nabla_4 F)` keeps `n_w=+1` on **both** faces. Oriented `s\,\nabla_4 F` matches `(-½\nabla W, s)` on both; the raw gradient does **not** on the lower face (`USING_SIGN_NABLA_F_minus_closed` is a nonzero 4-vector for `s=-1`, BLOCK 1). Wrong lower-face orientation flips `Z` (`Z_lower if n = sign(nabla F) = -omega*rho_m/q`, BLOCK 2). Spec `§2a:188-189` is right to bind `s(n̂\cdotŵ)>0` and forbid `sign(\nabla_4 F)`.
+
+**True area.** `d(a_s)/d\eta|_0 = 0`; first correction is `O(\eta^2)` (BLOCK 1). Spec `§2c:232` is right that `|∇_x h_s|^2` is not a first-shape-order ingredient.
+
+### 2. Permeable response (`§3b`) — **sound**
+
+Two elimination orders for  
+`{\delta p = Z\cdot v_{\mathrm{bulk}},\; v_{\mathrm{bulk}}=V+J/\rho_m,\; J=\Lambda_A\mathcal{A}+\Lambda_V V,\; \mathcal{A}=\mu_s-\delta p/\rho_m}`  
+give the same  
+`\delta p = [I+(\Lambda_A/\rho_m^2)Z]^{-1} Z[(1+\Lambda_V/\rho_m)V+(\Lambda_A/\rho_m)\mu_s]`  
+(`order1 - order2: 0`; impermeable reduction `V*Zop`; inverse factor `1 + Lambda_A*Zop/rho_m**2`, BLOCK 8).
+
+`\Lambda_X` does **not** enter `\delta p` or `J` (`dp.coeff(LamX)=0`, `J.coeff(LamX)=0`); it enters only the traction scalar (BLOCK 8). That matches the supplied S11b/S11c-a placement (`S11b_SHARED_PHYSICS.md:214-216,370`; spec `§1d:150-156`). Spec is right to keep `\Lambda_X` out of the flux closure and out of T-i.
+
+Fredholm: noninvertibility of `[I+(\Lambda_A/\rho_m^2)Z]`, with the algebraic locus protocol only on the flat symbol / finite-dimensional degeneracy, and the profile resolvent reserved for S11c-d — correct split (`N5`).
+
+### 3. Dissipation audit (`§3b`) — **objects distinct and correctly named; energy residual convention is sloppy**
+
+Three objects are **not** the same bilinear form (ablation script):
+
+| cut | what happens |
+|---|---|
+| impermeable, `\Lambda_X=0`, `a_s=1`, on-shell `\delta p=ZV` | they collapse (up to the `V` vs `V^2` stand-in) |
+| impermeable, `\Lambda_X` live, `\mu_s=0` | `obj2 - forbidden = -LamX V^2 Z/\rho` — `½\mathrm{Re}(\delta p V^*)` **misses** `\Lambda_X` |
+| `a_s=1+c_2\eta^2` | `d(\mathrm{obj3})/d\eta\|_0=0` — true-area vs projected is **not** a first-shape-order effect |
+
+**`H_a[Z]` (bulk radiation).** On a propagating–propagating block `Z_1` is anti-Hermitian: `H_a[Z_1](k,k')=0` (BLOCK 5). On propagating–evanescent it is **not**: `H_a[Z_1]_{p-e} = -2\sqrt{3} \neq 0`. A 2×2 anti-Hermitian off-diagonal model has `H_a` independent of `\eta` at first order; free-Neumann drive `(1,0)` has no `O(\eta)` power. So the spec’s `O(\eta^2)` evanescent-nullspace caveat (`§3b:332-338`) is **right** and does **not** hide a first-order p–p radiation error. Requiring adjoint-related regime pairs before the Hermitian part is the right instruction for the p–e block.
+
+**Energy identity vs the written A−B.** Spec `§3b:322-330` sets
+
+- face `= ½\mathrm{Re}\int a\, t\cdot v_{\mathrm{face}}^*` which “reduces to `-½\mathrm{Re}\int a\,\delta p V^*`”,
+- bulk `=` outgoing Poynting,
+- residual `A-B`,
+- t-sign reversal “making the residual nonzero”.
+
+Computation (`energy_density_order` stdout):
+
+```
+A-B  (face t·v minus outgoing Poynting): -2*dp*conjugate(V)
+A+B  (work-on-slab + flux-to-infinity): 0
+A-B after t reversal: 0
+```
+
+A literal `A-B` on the written operands **vanishes for the wrong `t` sign** and is `-2P` for the supplied S11b `t=-(δp+Λ_X𝒜)n̂` (`S11b_SHARED_PHYSICS.md:370`). PY in fact compared to **`-`outgoing** (`bulk_comparison = -outgoing_flux`, `.py:1407,1459`), which is the `A+B` identity. The traction law itself is **supplied** (`§1d`) and was not solved from this control. ENERGY is already UNDECIDED in the reconcile. This is a **control-bookkeeping** defect, not a wrong `t_s` decision.
+
+### 4. Rest-frame limit + grazing (`§2b`) — **sound**
+
+N11a already dropped the convective bulk operator as a **scope** limit, not as an `O(\eta)` truncation (`S11c_decisions.md:180-186`). The convective relative correction is `2 v_{\mathrm{bulk\_normal\_0}} q/\omega + O(v^2)` and **has no `\eta`** (`d(rel)/d(eta)=0`, BLOCK 11). Dropping it at first **shape** order is legitimate as inheritance of that standing limit; it is **not** because the convective operator is `O(\sigma_W^2)`.
+
+The geometric drain-projection onto the tilted normal **is** `O(\sigma_W^2)`: `n̂\cdotŵ - s = O(\sigma_W^2)` (unit-normal Taylor; BLOCK 1 `da/d\eta|_0=0` is the same order counting). Spec `§0:54-58` bundles that identity into the justification for N11a. Read strictly, “drain-projection correction is `O(\sigma_W^2)`” is true of **tilt of the drain**, false of **convection on a flat face**. `§2b` still computes only the rest-frame object and records the S11b domain plus a grazing boundary-layer exclusion `|ω v_{\mathrm{dr}}|/(c_{s0}^2|q_{\mathrm{out}}|)\ll 1`. That second inequality is the right grazing refinement: rest-frame `q\to 0` while convection shifts `q` to `O(ω v_{\mathrm{dr}}/c^2)`. Grazing as the strict `v_{\mathrm{dr}}=0` result is correct. Non-uniformity in `(k,k')` (poles in each of `q(k)`, `q(k')`, BLOCK 12) is correctly named.
+
+### 5. Rule 17 / freezes; seal-5 UNDECIDED — **right call; spec did not force the freeze**
+
+Live in the spec: both `q_{\mathrm{out}}` legs (`§3a`, `§5e`), `W_{\mathrm{bg}}(x)` and its jets, regime pairs, `μ_θ` as opaque operand. Bulk `ρ_m` is **not** a freeze of a varying field — S11c-b `§2a:202` already says `ρ_m` does not vary in-plane.
+
+Seal-5: PY `Symbol('rho_br_bg_rho4_constant')` vs WL `rhoBrBgRho4Constant(x)=(ρ_{\mathrm{br}}/W_0)W_{\mathrm{bg}}(x)` (reconcile `§3.5`). Spec `§4:355` requires both density representatives **wherever density enters**; `μ_s=μ_θ/ρ_{\mathrm{br,bg}}^0` (`§1d:150`) is exactly where it enters. Spec does **not** authorize replacing RHO4-CONSTANT `ρ_{\mathrm{br,bg}}(x)` by a scalar.
+
+The reconcile’s “harmless because `ρ(x)-ρ_0=O(η)` makes the difference `O(η^2)`” is **false**. For RHO4-CONSTANT, `ρ_{\mathrm{br,bg}}=ρ_{\mathrm{br}}(1+η w_1)` and
+
+```
+d(mu_s)/d(eta)|_0 = -mu_theta*w1/rho_br   ≠ 0
+```
+
+(`energy_density_order` stdout). That is a **first-order-in-`η` (zero-jet)** multiplication on the **flat** `μ_θ\toδp` channel, not an `O(η^2)` remainder. PY dropped a channel the spec’s truncation includes. That is an **engine** freeze. Leaving seal-5 UNDECIDED, with mandatory c2 re-adjudication, is the correct spec-gate reading. The spec could have named `1/ρ_{\mathrm{br,bg}}^0(x)` as a multiplication operator so this channel could not be emitted as a bare constant (SHOULD-FIX, under-specification, not a wrong decision).
+
+### 6. Rule 5 / 3 / 2
+
+- **Rule 5 leak:** `§5d:468-476` types `Z_0=ρ_m ω/q_{\mathrm{out}}`, which S11b withheld. It is used to explain why operand B must not be a re-solved cavity (that physics is right: rigid shift ⇒ thickness-independent half-space `Z`). Still a typed expected value in a builder-facing spec.
+- **Rule 5 leak, milder:** `§3a:259-261` “a rigid vertical translation **must cancel**” states the residual’s value while also telling engines to emit it. Physics is correct (`bracket at k=k' = 0`).
+- **Rule 3:** `§3a` names the operator/kernel **and** sketches a composition **and** requires a second Hanzawa/layer-potential route (`§5a`). The object is named; the schematic is not the only path. The `h_s` vs `h_{\mathrm{out}}` clash above is the real rule-3 cost of that sketch.
+- **A−A:** spec `§5:393-396` forbids `A-A≡0` controls and correctly reserves `Σ_E` / `μ_{R,\mathrm{bg}}` mutations as structurally absent (would be A−A). The build’s emit-only A−A controls were **engine** defects against that clause, later repaired to bite. Not a spec-rooted A−A.
+
+### 7. Inheritance (rule 16) — **sound**
+
+- Flat B0b/B0c are the `§5c` regression operand only; curved objects are not a `W_0\to W_{\mathrm{bg}}` substitution (`§1c:135-137`). Zero-jet `§5d` forbids re-solving a finite-gap cavity as operand B — that is the right thickness-independence test.
+- T-a..T-i consumed as geometry; T-i is **not** B0c (`S11c_a_SHARED_PHYSICS.md:448-452`).
+- `μ_θ = S11CB_MU_THETA_OPERATOR` kept opaque (`§1d:150`).
+- Fresh names; `v_{\mathrm{bulk\_normal\_0}}` not aliased to `v_0` (`N14`).
+- Two half-spaces disconnected (`§1b:97-100`) — correct; curvature does not couple the exteriors through the bulk.
+
+---
+
+## Ranked findings
+
+### SHOULD-FIX — energy-balance residual convention (`§3b:322-330`)
+
+**Spec:** face `= ½\mathrm{Re}\int a\,t\cdot v^*` `= -½\mathrm{Re}\int a\,\delta p V^*`; bulk `=` outgoing Poynting; emit `A-B`; t-reversal “making the residual nonzero”.  
+**Source:** S11b `:370,705-710` — `t=-(δp+Λ_X𝒜)n̂`, `P_{\mathrm{out}}=½\mathrm{Re}[(δp+Λ_X𝒜)V^*+\cdots]` is energy **leaving** the slab.  
+**Computation:** `A-B = -2 dp V^*` for the supplied `t`; `A-B = 0` after flipping `t`; `A+B = 0` for the supplied `t`.  
+**Impact:** does **not** change the computed DtN or `(δp,J)` (`t_s` is supplied in `§1d`; ENERGY already UNDECIDED). It **does** make the independent energy control, as written, select the wrong `t` sign if `A-B\to 0` is treated as the identity. Fix: define the bulk comparison as **minus** outgoing Poynting, or emit `A+B`, and state that t-reversal drives a **vanishing** identity **off** zero.
+
+### SHOULD-FIX — composition schematic uses graph `h_s` (`§3a:250-251` vs `§2a:185,192-195`)
+
+**Spec:** `M_{h_s}` with `h_s` the graph height, which is face-odd; outward-normal tilt is face-even.  
+**Computation:** graph-`h` on the lower face flips `N_1`; outward `δW_{\mathrm{bg}}/2` does not.  
+**Impact:** engines computed the even height; kernel AGREES. Claim-level: the schematic should say `M_{h_{\mathrm{out}}}` with `h_{\mathrm{out}}=s(h_s - s\bar W_0/2)` (or equivalent), so a future reader cannot put `s W_{\mathrm{bg}}/2` into the upper-face formula on both faces.
+
+### SHOULD-FIX — RHO4-CONSTANT `ρ_{\mathrm{br,bg}}(x)` not named as a multiplication operator (`§1d:150`, `§4:355`)
+
+**Spec** requires both representatives wherever density enters; it never says “treat `rho_br_bg_rho4_constant` as a scalar”.  
+**Computation:** `dμ_s/dη|_0 = -μ_θ w_1/ρ_{\mathrm{br}}` is first order in `η`.  
+**Impact:** does not change the spec’s **decision** (live density). PY froze anyway. Seal-5 UNDECIDED is right; c2 must not fold field→constant. Naming the multiplier would have made the freeze un-emittable.
+
+### NIT — `Z_0=ρ_m ω/q_{\mathrm{out}}` typed in `§5d:473`
+
+S11b withheld this. The cavity-warning physics is right. Engines derived `Z` from acoustics (`dtn_flat_symbol` = `ρ_m ω/q`). Claim-only.
+
+### NIT — `§0:54-58` “drain-projection correction is `O(σ_W^2)`”
+
+True of `n̂\cdotŵ-s`; false if read as “convection is `O(σ_W^2)`”. `§2b` still scopes convection correctly. Did not enter the computed operator.
+
+### NIT — `§3a:259` rigid shift “must cancel”
+
+Correct physics, typed expected residual. Engines emitted the residual.
+
+---
+
+## Verdict
+
+**CLEAR** — the c1 spec’s physics decisions are sound; **no MUST-FIX**.
+
+The two-momentum DtN (both `q_{\mathrm{out}}` legs, composition with outward `h`, orientation `s(n\cdotŵ)>0` not `sign(∇_4 F)`, genuine rigid-shift zero), the operator inverse `[I+(Λ_A/ρ_m^2)Z]^{-1}`, `Λ_X` in traction only, the three distinct dissipation objects, N11a rest-frame plus non-uniform grazing, and the S11b / S11c-a / S11c-b inheritance are the right physics. Seal-5 left UNDECIDED is the right call: the spec did not freeze `ρ_{\mathrm{br,bg}}(x)`; PY did. The SHOULD-FIX items change **claims/controls** (energy residual convention, `h_s` notation, density-operator naming), not the objects c1 already computed and cross-engine-closed (the two-momentum kernel and `δp_s`/`J_s`).

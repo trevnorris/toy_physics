@@ -311,9 +311,9 @@ def decode_wl_key(raw: str, schema: Sequence[str]) -> Key:
 
 # ---------- closed spelling/CAS-form map ----------
 
-# Every active c1 addition is bare-symbol to bare-symbol.  cS0 is deliberately
-# absent: the brief says to leave it exposed if the inherited PARAM lacks it.
+# Every active c1 addition is bare-symbol to bare-symbol.
 C1_BARE_SYMBOL = {
+    "cS0": "c_s0",
     "rhoM": "rho_m",
     "W0": "W_0",
     "LW": "L_W",
@@ -385,6 +385,16 @@ def preprocess_wl(raw: str) -> str:
             f"C1BareProtected{wl_name}",
             protected,
         )
+    # Hold unsupported multi-range integrals before the inherited one-range
+    # parser sees them.  Keep every argument; nested Limit uses the held-head
+    # rewrite below.  One-range Integrate and Equal retain their inherited paths.
+    def hold_multi_range(match: re.Match[str]) -> str:
+        body, _ = s11ca.read_bracket(protected, match.end() - 1)
+        if len(split_top(body)) > 2:
+            return "HeldInactiveIntegrate["
+        return match.group(0)
+
+    protected = re.sub(r"Inactive\[Integrate\]\[", hold_multi_range, protected)
     text = s11ca.preprocess_wl(protected)
     # Undo S11c-a's geometry vocabulary.  C1 numeric association rules are
     # inner FACE keys and must remain the literal typed values 1/-1.

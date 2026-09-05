@@ -61,6 +61,38 @@ parse-failure COUNTS change (expected).
 Leg logs (outside repo): `<scratch>/codex_repair_dir_review.txt` (sol, 177k tokens, verdict :4913-5052),
 `<scratch>/grok_repair_dir_review.txt` (grok).
 
-## Repair build + re-review (rule 9 — filled after the gate)
+## Repair build + re-review (rule 9)
 
-_pending (repair build = Codex `gpt-6-astra` high, code policy)._
+**Repair build (Codex `gpt-6-astra` high — first astra code job; new model policy):** `codex exec -m gpt-6-astra
+-c model_reasoning_effort=high --sandbox danger-full-access "$(cat <repair directive>)"`, EXIT=0, 34,435 tokens.
+Diff vs baseline `7141e6ad`: comparator **+14 lines / 2 hunks** (R1 `"cS0":"c_s0"` map entry; R2 `hold_multi_range`
+in the c1 `preprocess_wl` rewriting multi-range `Inactive[Integrate][→HeldInactiveIntegrate[` before
+`s11ca.preprocess_wl`), test file +92/−8 (replaced `test_noninherited_sound_speed_spelling_is_exposed` + new
+activation/held-parse/BoundIntegral-preservation tests). 32 c1 tests pass (64 with siblings). I verified the diff
+against the builder's compliance claim: the 5 seals, `raw_control_case` whitelist, axis typing, three-valued
+residual, accounting are NOT in the diff (byte-identical), and `mechanical_lower_camel("c_s0")→cS0`.
+
+**Re-review legs (Codex-written repair → fresh Claude Agent + Grok, launched on sight; prompt
+`_legs/S11c_c1_comparator_repair_review_prompt.md`):** BOTH CLEAN, NO defects, every claim ablated on /tmp copies:
+- **Diff = exactly R1+R2** (no seal/whitelist/axis/three-valued/accounting change).
+- **R1**: full 12-symbol vocab → `cS0` folds to `c_s0`, residual `Integer(0)`; vocab absent → `active_c1_folds=[]`
+  (all-or-none gate; dropping `c_s0` disables ALL 12), `cS0` stays a Symbol; injectivity collisions=0 with the
+  12th entry; `cS0[xOne]→Function('cS0')` (no applied-head strip; qOut/rhoBrBg/w1* stay applied); `cS0`≡`c_s0`≡
+  bulk sound speed proven on both streams (WL `omega^2/cS0^2`, PY `omega**2/c_s0**2`; `cS0[`=0).
+- **R2**: real 4-arg triple-range `Inactive[Integrate]` + nested `Inactive[Limit][…,outwardDistance->Infinity]`
+  → held `AppliedUndef`; inherited 1-range `→BOUND_INTEGRAL` and `Inactive[Equal]→HeldEqual` preserved; ENERGY
+  `parse_failed 76→0`, **join stays 0** (SCENARIO mismatch), **no residual moved** (292/292 still unjoined) — a
+  display/completeness fix.
+- **Seals load-bearing**: DTN_KERNEL `qOut` two-momentum residual byte-identical to baseline (join=4, nonzero),
+  name-map ablation moves it; FACE_RESPONSE μ_θ join=24 all nonzero; ω/regime/bg-density all still surfaced.
+- **No new false-agreement**: on DTN_BY_REGIME_PAIR (where `cS0` most reaches leaves) the `A_minus_B` residuals
+  are byte-identical baseline↔repaired; only 272 UNJOINED operand DISPLAY lines changed `cS0→c_s0` (cosmetic).
+  The only joined `Integer(0)` from the fold is the synthetic same-quantity leaf.
+
+Leg outputs (outside repo): `<scratch>/grok_repair_review.txt`, agent transcript `<session>/tasks/ab92bf73….output`;
+ablation artifacts under `/tmp/s11cc1_c1_repair_review/`. Both deferred the heavy families (PERMEABLE_*,
+UNIFORM_LIMIT_*, CONTROL_* up to 62–88 MB) — the only place `cS0` could activate a joined residual — to the
+≥64 GB box (operational, not a defect).
+
+**Verdict:** repair SOUND (both legs CLEAR). Repaired comparator committed. NEXT = reconcile (run family-scoped;
+adjudicate the surfaced residuals; defer the heavy families) → c1 step record → c2.

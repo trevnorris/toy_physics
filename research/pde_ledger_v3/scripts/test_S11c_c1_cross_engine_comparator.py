@@ -211,12 +211,54 @@ class ClosedSpellingTests(unittest.TestCase):
         self.assertIsNone(plain_omega.is_real)
         self.assertNotEqual(sp.srepr(real_omega), sp.srepr(plain_omega))
 
-    def test_noninherited_sound_speed_spelling_is_exposed(self) -> None:
-        key = comparator.make_key(())
-        py = comparator.parse_py_value("Symbol('c_s0')", key, coefficient=False)
-        wl = comparator.parse_wl_value("cS0", key)
-        self.assertEqual(py, sp.Symbol("c_s0"))
-        self.assertEqual(wl, sp.Symbol("cS0"))
+    def test_sound_speed_spelling_is_mechanical_and_injective(self) -> None:
+        self.assertEqual(comparator.mechanical_lower_camel("c_s0"), "cS0")
+        names = comparator.REQUIRED_C1_PY_SYMBOLS
+        self.assertEqual(len(names), 12)
+        inverse = comparator.checked_mechanical_symbol_map(names)
+        self.assertEqual(len(inverse), 12)
+        self.assertEqual(inverse, comparator.C1_BARE_SYMBOL)
+        active, present = comparator.verify_active_spelling_map(
+            (sp.srepr(sp.Tuple(*(sp.Symbol(name) for name in sorted(names)))),)
+        )
+        self.assertEqual(present, names)
+        self.assertEqual(active, inverse)
+
+    def test_multi_range_integral_and_nested_limit_stay_held(self) -> None:
+        coordinates = sp.symbols("xOne xTwo xThree")
+        raw = (
+            "Inactive[Integrate][f[xOne,xTwo,xThree],"
+            "{xOne,-Infinity,Infinity},{xTwo,-Infinity,Infinity},"
+            "{xThree,-Infinity,Infinity}]"
+        )
+        integral = sp.Function("HeldInactiveIntegrate")(
+            sp.Function("f")(*coordinates),
+            *(sp.Tuple(coordinate, -sp.oo, sp.oo) for coordinate in coordinates),
+        )
+        limit = sp.Function("HeldInactiveLimit")(
+            integral, sp.Function("Rule")(sp.Symbol("outwardDistance"), sp.oo)
+        )
+        for operand, expected in (
+            (raw, integral),
+            (f"Inactive[Limit][{raw}, outwardDistance -> Infinity]", limit),
+        ):
+            with self.subTest(operand=operand):
+                value = comparator.parse_wl_value(operand, ())
+                self.assertIsInstance(value, AppliedUndef)
+                self.assertEqual(value, expected)
+                self.assertFalse(value.has(sp.Integral, sp.Limit))
+                stream = io.StringIO()
+                with contextlib.redirect_stdout(stream):
+                    accounting = comparator.compare_family(
+                        "SYNTHETIC", comparator.FamilyCases(
+                            wl=[comparator.wl_case((), operand)]
+                        ), budget=0.1,
+                    )
+                self.assertEqual(accounting.join, 0)
+                self.assertEqual(accounting.wl_only, 1)
+                self.assertEqual(accounting.parse_failed, 0)
+                self.assertIn(f"operand_B = {sp.srepr(expected)}", stream.getvalue())
+                self.assertNotIn("<PARSE_FAILED>", stream.getvalue())
 
 
 class ResidualTests(unittest.TestCase):
@@ -232,6 +274,13 @@ class ResidualTests(unittest.TestCase):
         ]
         self.assertEqual(len(nodes), 1)
         self.assertEqual(nodes[0].args[1:3], (0, 2))
+        self.assertEqual(
+            value,
+            comparator.BOUND_INTEGRAL(
+                comparator.BOUND_BINDER, 0, 2,
+                sp.Function("f")(comparator.BOUND_BINDER),
+            ),
+        )
 
     def test_native_boolean_is_not_a_residual_operand(self) -> None:
         value = comparator.typed_residual(True, sp.Integer(1), "SYNTHETIC", 0.1, 2)
@@ -421,6 +470,37 @@ class RepointAndRawControlTests(unittest.TestCase):
 
 
 class RunSemanticsTests(unittest.TestCase):
+    def test_sound_speed_fold_requires_complete_real_py_vocabulary(self) -> None:
+        required = comparator.REQUIRED_C1_PY_SYMBOLS
+        for names in (required, required - {"c_s0"}, {"c_s0"}, set()):
+            with self.subTest(names=sorted(names)), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                py_path = root / "py.out"
+                wl_path = root / "wl.out"
+                vocabulary = sp.srepr(sp.Tuple(*(sp.Symbol(name) for name in sorted(names))))
+                py_operand = "c_s0" if "c_s0" in names else "left"
+                py_path.write_text(
+                    f"PY_S11CC1_SYNTHETIC: Symbol('{py_operand}')\n"
+                    f"PY_S11CC1_LOCAL_VOCABULARY: {vocabulary}\n",
+                    encoding="utf-8",
+                )
+                wl_path.write_text("WL_S11CC1_SYNTHETIC: cS0\n", encoding="utf-8")
+                stream = io.StringIO()
+                with contextlib.redirect_stdout(stream):
+                    code = comparator.run(["--py", str(py_path), "--wl", str(wl_path)])
+                self.assertEqual(code, 0)
+                rendered = stream.getvalue()
+                self.assertIn("SPELLING_INJECTIVITY collisions=0", rendered)
+                if names == required:
+                    self.assertIn("reserved_names=12 mechanical_spellings=12", rendered)
+                    self.assertIn("('cS0', 'c_s0')", rendered)
+                    self.assertIn("operand_B = Symbol('c_s0')", rendered)
+                    self.assertIn("A_minus_B = Integer(0)", rendered)
+                else:
+                    self.assertIn("active_c1_folds=[]", rendered)
+                    self.assertIn("operand_B = Symbol('cS0')", rendered)
+                    self.assertNotIn("A_minus_B = Integer(0)", rendered)
+
     def test_partial_synthetic_vocabulary_does_not_activate_spelling_folds(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

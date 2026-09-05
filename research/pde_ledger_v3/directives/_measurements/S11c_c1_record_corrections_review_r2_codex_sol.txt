@@ -1,0 +1,60 @@
+## Ranked findings
+
+- MUST: none
+- SHOULD: none
+- NIT: none
+
+### Fold 1 — grazing attribution is now correct
+
+Corrected record:
+
+> “The **DtN inverse `N⁻¹`** (hence `Z=iρ_mω·N⁻¹`) … carries a `~1/η` Laurent pole … ⛔ **NOT the permeable face-closure resolvent** … which … is regular at grazing (`O(η)`, and … `·Z → ρ_m²/Λ_A`).”  
+> — [step record](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:146)
+
+Source:
+
+> “At exact double grazing \(N=\eta B\), so \(N^{-1}\), and therefore \(Z\), scales as \(1/\eta\). But … \([I+aZ]^{-1}=O(\eta)\).”  
+> — [round-1 Codex-sol report](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_record_corrections_review_codex_sol.txt:5248)
+
+Independent SymPy evidence:
+
+- [Script](/tmp/S11c_c1_round2_grazing_inverse_check.py:1)
+- [Literal stdout](/tmp/S11c_c1_round2_grazing_inverse_check.stdout:1)
+
+The stdout confirms:
+
+- \(Z_1\propto1/(q_{\rm in}q_{\rm out})\), with residual zero.
+- \(\eta N^{-1}\) and \(\eta Z\) have nonzero limits.
+- The permeable resolvent has no \(1/\eta\) pole and is \(O(\eta)\).
+- \([I+(\Lambda_A/\rho_m^2)Z]^{-1}Z\to(\rho_m^2/\Lambda_A)I\), residual zero.
+
+The retained scope is correct and sufficient: exact grazing remains `NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER`; \(Z_1\) is non-grazing only; and the inverse expansion requires \(\lVert N_0^{-1}N_1\rVert\ll1\), with both momentum legs kept away from grazing.
+
+### Fold 2 — energy sign and residual operands are now correct
+
+Corrected record:
+
+> “`P_face + P_∞ = 0` (traction work + **positive outgoing** far-field Poynting = 0 …).”  
+> “define … `B` as **minus** outgoing Poynting — `A−B=P_face−(−P_∞)=0` — or emit `A+B`.”  
+> — [step record](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:174)
+
+Source:
+
+> “`A+B` (work-on-slab + flux-to-infinity): `0` … PY compared to **minus outgoing**, which is the `A+B` identity.”  
+> — [original Grok report](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_spec_retro_review_grok.txt:58)
+
+The independent calculation prints `P_face+P_out=0`, `A−B=0` for \(B=-P_{\infty}\), and `−2P_out` for the wrong \(B=+P_{\infty}\): [stdout](/tmp/S11c_c1_round2_density_energy_recovery_check.stdout:16). The identity and both permitted residual conventions are mutually consistent.
+
+### Remaining corrections
+
+- Density is correctly stated as first shape order and \(O(\epsilon\eta)\), not \(O(\eta^2)\). The computed derivative is `−eps*mu_theta0*w1_profile/rho_br`, residual zero: [stdout](/tmp/S11c_c1_round2_density_energy_recovery_check.stdout:5); compare the corrected [seal 5](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_comparator_reconcile.md:148) with the [source finding](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_spec_retro_review_grok.txt:80).
+
+- No-reopen is confirmed. The real folded export has 24 density-bearing leaves; every leaf is exactly \(F/\rho\) with density-independent \(F\), zero `Derivative` atoms, and no exact `w1_profile` baked in. All four actual flat pressure-coefficient rebindings have residual zero: [script](/tmp/S11c_c1_round2_density_energy_recovery_check.py:1), [stdout](/tmp/S11c_c1_round2_density_energy_recovery_check.stdout:7). This matches the [adjudication](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_spec_retro_review_adjudication.md:31) and corrected record.
+
+- Independence is scoped accurately: supplied composition and expected values are fidelity evidence, while the independently re-derived two-momentum kernel retains genuine confirmation. Compare [record](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:157) with [source](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_spec_retro_review_codex_sol.txt:204).
+
+- The complete seven-item lower-severity union is present and accurately dispositioned: energy orientation; graph versus outward height and \(N/Z\) terminology; density multiplier naming; Hermitian \(K_a\); all second-shape grades; drain-tilt versus convection; and flat-\(Z_0\)/rigid-shift leakage. They appear consecutively at [step lines 174–200](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:174). No claim-level source item was dropped or misattributed.
+
+The working tree was not modified; only the required `/tmp` evidence files were created.
+
+**CLEAR** — both round-1 folds are physically correct, introduce no new defect, and the record corrections remain accurate and complete. c1’s engines and exports stand; **NO REOPEN c1**.

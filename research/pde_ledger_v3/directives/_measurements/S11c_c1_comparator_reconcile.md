@@ -145,11 +145,22 @@ residual collapses to 0 ONLY after I MAP the WL field to PY's constant (`rhoBrBg
 one to the other is a [[feedback_handcode_comparison_never_blanket_collapse]]-style collapse of exactly the kind
 rule 17 forbids.** The comparator correctly SURFACES the difference (bare-PY vs applied-WL); it is not the
 orchestrator's to fold away pre-adjudication. ⇒ **Seal 5 stays a SURFACED rule-17 representational difference —
-UNDECIDED.** PY's freeze is *harmless within c1's local first-order emit* (ρ multiplies first-order shape
-quantities, so ρ(x)−ρ₀ = O(η) makes the difference O(η²)), but PY's EXPORT carries a constant-ρ response where
-WL's carries a field-ρ(x) response. ⛔ **MANDATORY re-adjudication in c2** (not conditional): c2's self-energy fold
+UNDECIDED.** ⚠ **CORRECTED (retrospective spec review, `_measurements/S11c_c1_spec_retro_review_adjudication.md`):
+the density-variation channel is O(εη), ⛔ NOT the "harmless O(η²)" this file earlier claimed** (both retro legs
+disproved that reading independently — Codex-sol and Grok each computed the derivative). ρ enters as `μ_s=μ_θ/ρ`
+with `μ_θ=O(ε)` (`.py:841`, `.wl:748`), so re-binding `rho_br_bg_rho4_constant` to the live `background_density_map`
+relation `ρ=ρ_br(1+η·w₁)` gives `d(μ_s)/dη|₀ = −μ_θ·w₁/ρ_br ≠ 0` — a channel **FIRST-order in the shape η** (a
+zero-jet, flat `μ_θ→δp_s` channel, ⛔ not an O(η²) remainder). ⛔ **It is NOT a dropped channel:** PY carries the
+density **opaquely** — a bare `1/ρ` symbol, **0 derivatives**, never combined with `w1_profile` (verified against
+the REAL export by both retro legs AND an independent Codex-sol verify pass that substituted the live relation into
+the actual exported pressure coefficient, residual 0) — so the O(εη) channel is **recoverable in c2** by exactly
+that re-binding. ⇒ this is a field-vs-constant **representational** question that stays **UNDECIDED** (both engines
+carry ρ opaquely and agree on the functional form; whether PY's constant is globally the WL field is the open
+question), ⛔ NOT a lost physics channel and ⛔ NOT harmless-because-higher-order — c1's engines/exports STAND (no
+reopen), the c2 fold recovers it. ⛔ **MANDATORY re-adjudication in c2** (not conditional): c2's self-energy fold
 sums/couples over the face, which is exactly where ρ's x-dependence becomes load-bearing — resolve it with a valid
-field-vs-field comparison there (or the deferred symbolic residual). [[feedback_never_freeze_a_varying_field]]
+field-vs-field comparison there (c2 v2 §3d.1 mandates binding `rho_br_bg_rho4_constant` to
+`background_density_map`), or the deferred symbolic residual. [[feedback_never_freeze_a_varying_field]]
 [[feedback_basis_independence_must_not_freeze_spurion]]
 
 ---

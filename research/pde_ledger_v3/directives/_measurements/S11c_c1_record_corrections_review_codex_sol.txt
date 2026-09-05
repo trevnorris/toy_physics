@@ -1,0 +1,66 @@
+Two record-level fixes remain. The density/no-reopen resolution is correct; c1 does not need reopening.
+
+## MUST-FIX — grazing singularity is attributed to the wrong inverse
+
+**Corrected record:**
+
+> “The face-response operator inverse `[I+(Λ_A/ρ_m²)Z]⁻¹` is nonanalytic … a two-mode exact inverse scales as `~1/η`.”  
+> — [step record](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:146)
+
+**Source leg:**
+
+> “The Neumann-to-Dirichlet correction contains `N₁/(q(k)q(k′))` … a two-mode exact inverse scales as `1/(ηc)`.”  
+> — [Codex-sol report](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_spec_retro_review_codex_sol.txt:147)
+
+The source leg’s more precise wording is right. At exact double grazing, \(N=\eta B\), so \(N^{-1}\), and therefore \(Z=i\rho_m\omega N^{-1}\), scales as \(1/\eta\). But for generic nonzero \(a=\Lambda_A/\rho_m^2\),
+
+\[
+[I+aZ]^{-1}=O(\eta),
+\]
+
+and \([I+aZ]^{-1}Z\) can remain finite. The explicit two-mode calculation prints:
+
+- `face-closure D^-1 has a 1/eta pole ... = False`
+- `Z=C*N^-1 has a 1/eta pole = True`
+
+Evidence: [script](/tmp/s11c_c1_record_grazing_scope.py:1), [literal stdout](/tmp/s11c_c1_record_grazing_scope.stdout:11).
+
+Required edit: replace “face-response operator inverse `[I+…Z]⁻¹`” with “Neumann-to-Dirichlet inverse `N⁻¹`, hence `Z=iρ_mωN⁻¹`.”
+
+The resulting scope is otherwise correct and sufficient: exact grazing remains `NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER`; \(Z_1\) is only a non-grazing asymptotic coefficient, with both momentum legs bounded away from grazing so the inverse-expansion norm is small. No degenerate threshold result is established.
+
+## SHOULD-FIX — energy parenthetical has the sign backwards
+
+**Corrected record:**
+
+> “`P_face + P_∞ = 0` (traction work + **minus** outgoing far-field Poynting = 0)”  
+> — [step record](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:170)
+
+**Source report:**
+
+> “`A+B` (work-on-slab + flux-to-infinity): `0` … PY compared to **minus outgoing**, which is the `A+B` identity.”  
+> — [Grok report](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_c1_spec_retro_review_grok.txt:58)
+
+If \(P_\infty\) denotes positive outgoing Poynting flux, the physical identity is
+
+\[
+P_{\rm face}+P_\infty=0.
+\]
+
+For an `A−B` residual, set \(B=-P_\infty\), giving \(P_{\rm face}-(-P_\infty)=0\). Thus the parenthetical should say “traction work + outgoing far-field Poynting,” while retaining the later, correct instruction to define the subtraction operand as minus outgoing flux.
+
+## Checks that pass
+
+- **Density order:** confirmed first order in \(\eta\), overall \(O(\epsilon\eta)\); the former \(O(\eta^2)\) claim was wrong. [Script](/tmp/s11c_c1_record_density_order.py:1), [stdout](/tmp/s11c_c1_record_density_order.stdout:1).
+
+- **Recoverability/no reopen:** the real folded RHO4 export has 24 density-bearing physical-response leaves, all \(F/\rho\) with \(F\) density-independent, zero density derivatives, and no x-space density-profile factor baked into the reciprocal. Rebinding the actual pressure coefficient gives the normalized coefficient
+  \(-\mu_\theta w_1/\rho_{\rm br}\) with residual zero. No irrecoverable density structure was found. [Script](/tmp/s11c_c1_record_export_recovery.py:1), [stdout](/tmp/s11c_c1_record_export_recovery.stdout:5).
+
+- The live fold relation is exactly
+  `rho_br_bg_rho4_constant = W_bg*rho_br/W_0 = rho_br*(1+eta_bg*w1_profile)`, and the c2 specification explicitly mandates that binding before folding. [c2 specification](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:228).
+
+- **Independence scope:** accurate. Supplied composition/expected values count as fidelity evidence; the two-momentum kernel retains genuine independent confirmation.
+
+- **Completeness:** all three MUST-level dispositions and the complete union of the seven lower-severity source items are present. No source-report SHOULD/NIT/MUST item was dropped or materially misattributed.
+
+**Verdict: fix the grazing inverse identification and the energy-sign parenthetical. NO REOPEN c1; the engines and exports stand.**

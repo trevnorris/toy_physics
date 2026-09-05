@@ -1,0 +1,125 @@
+I'll start from the source reports, adjudication, and real exports so I can form an independent view before reading the corrected records.Source reports and adjudication first; I’ll keep the corrected records unread until that view is in place.Source reports agree the density channel is O(εη). Next I’ll inspect the real exports and run independent SymPy checks before reading the corrected records.I have the source picture. Next I’ll write independent SymPy checks for density order, export recoverability, and grazing, then read the corrected records.I’ll run the density-order, export-recovery, and grazing checks as independent SymPy scripts under `/tmp`.Density and recoverability scripts failed; I’ll inspect their stdout and fix them.The recoverability crash was a matrix-subtraction bug, not an irrecoverable channel. I’ll finish the recovery computation, then read the corrected records.Computations settle points 1–2: the density channel is O(εη) and recoverable. I’ll read the corrected records now and check them against that view.**Verdict: not CLEAR.** One SHOULD-FIX (grazing inverse attribution). No MUST-FIX. **Do not REOPEN c1** — PY’s RHO4_CONSTANT response is not irrecoverable.
+
+Independent computations (working tree untouched):
+
+| Check | Script | Stdout |
+|---|---|---|
+| Density order | `/tmp/s11c_c1_density_channel_order.py` | `/tmp/s11c_c1_density_channel_order.stdout` |
+| Export recoverability | `/tmp/s11c_c1_export_recoverability.py` | `/tmp/s11c_c1_export_recoverability.stdout` |
+| Grazing inverse | `/tmp/s11c_c1_grazing_nonanalytic.py` | `/tmp/s11c_c1_grazing_nonanalytic.stdout` |
+| \(K_a\) Hermitian | `/tmp/s11c_c1_ka_hermitian.py` | `/tmp/s11c_c1_ka_hermitian.stdout` |
+
+---
+
+## Ranked findings
+
+### SHOULD-FIX — the grazing bullet attributes \(\sim 1/\eta\) to the wrong inverse
+
+**Record** (`steps/S11c_c1_curved_bulk_closure.md`, Exact grazing bullet):
+
+> The face-response operator inverse `[I+(Λ_A/ρ_m²)Z]⁻¹` is **nonanalytic as `q_out→0`** (the grazing limit; a two-mode exact inverse scales as ~`1/η`, ⛔ not a Taylor series in η), so the first-shape coefficient `Z₁` is a valid **non-grazing asymptotic** coefficient ONLY — `‖N₀⁻¹N₁‖≪1` imposed on both legs, away from grazing.
+
+**Source (Codex, the \(\sim 1/\eta\) computation):** the Neumann-to-Dirichlet inverse, not \(D^{-1}\):
+
+> The Neumann-to-Dirichlet correction contains \(N_1/(q(k)q(k'))\) … At exact double grazing, a two-mode exact inverse scales as \(1/(\eta c)\), not as a Taylor series in \(\eta\).
+
+**Source (Grok):** rest-frame/grazing is sound; non-uniformity is poles in each of \(q(k)\), \(q(k')\). Grok never claimed \([I+(\Lambda_A/\rho_m^2)Z]^{-1}\sim 1/\eta\).
+
+**Computation** (`/tmp/s11c_c1_grazing_nonanalytic.stdout`):
+
+- At exact double grazing \(q=0\): \(N^{-1}|_{q=0}=\frac{1}{c\eta}\sigma_x\) and \(Z\sim 1/\eta\) (pole; not a Taylor series in \(\eta\)).
+- The same two-mode model for \(D=[I+(\Lambda_A/\rho_m^2)Z]\): \(D^{-1}|_{q=0}\) is \(O(\eta)\) on the off-diagonal and \(O(\eta^2)\) on the diagonal when \(\Lambda_A\neq 0\). Limit \(\eta\to 0\) of \(D^{-1}Z\) is the finite permeability value \(\rho_m^2/\Lambda_A\).
+- Flat symbol: \(D_0^{-1}=q\rho_m/(\Lambda_A\omega+q\rho_m)\to 0\) like \(q\) as \(q\to 0\), not like \(1/\eta\).
+- \(Z_1\sim 1/q^2\) diverges as \(q\to 0\); the \(\eta\)-series of \(N^{-1}\) has radius \(\sim|q|/c\to 0\). So \(Z_1\) is a valid **non-grazing** asymptotic coefficient only, with \(\|N_0^{-1}N_1\|\ll 1\) on both legs.
+
+The **claim scope** the bullet is trying to implement is correct and sufficient: mark exact grazing `NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER`; do not claim the threshold response from first-shape \(Z_1\). The **justification sentence is a physics misstatement**: \([I+(\Lambda_A/\rho_m^2)Z]^{-1}\) is not the \(\sim 1/\eta\) object. Naming it as such over-claims a singularity of the permeable inverse (which is regular at grazing when \(\Lambda_A\neq 0\)) and under-names \(N^{-1}\) / \(Z\).
+
+**Fix:** say \(N^{-1}\) (equivalently \(Z=i\rho_m\omega N^{-1}\)) is \(\sim 1/\eta\) at exact double grazing, and that the first-shape expansion of \(Z\) fails as \(q_{\mathrm{out}}\to 0\). Keep the `NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER` / \(Z_1\) / \(\|N_0^{-1}N_1\|\ll 1\) scope unchanged.
+
+---
+
+No MUST-FIX. No dropped or misattributed claim-level item from either source report (completeness below). No-reopen stands.
+
+---
+
+## Load-bearing points 1–5
+
+### 1. Density channel order — record is right; “harmless \(O(\eta^2)\)” is wrong
+
+**Record:** \(d(\mu_s)/d\eta|_0=-\mu_\theta\cdot w_1/\rho_{\mathrm{br}}\), first-order in \(\eta\), overall \(O(\varepsilon\eta)\).
+
+**Sources (both legs):**
+
+- Grok: `d(mu_s)/d(eta)|_0 = -mu_theta*w1/rho_br ≠ 0` — “first-order-in-η (zero-jet) multiplication on the flat \(\mu_\theta\to\delta p\) channel, not an \(O(\eta^2)\) remainder.”
+- Codex: \(\rho_{\mathrm{br,bg}}=\rho_{\mathrm{br}}(1+\eta w_1)\), \(\beta=\rho_{\mathrm{br}}^{-1}(1-\eta w_1)+O(\eta^2)\); live-minus-frozen pressure is \(O(\varepsilon\eta)\), “The computation above disproves [harmless \(O(\eta^2)\)]: it is \(O(\varepsilon\eta)\).”
+
+**Computation** (`/tmp/s11c_c1_density_channel_order.stdout`):
+
+```
+d(mu_s)/d(eta)|_0 = -eps*mu_theta0*w1/rho_br
+channel_residual (computed - claimed) = 0
+d(mu_s)/d(eta)|_0 == 0 is False
+codex_residual (dp_diff_1 - codex_term) = 0
+VERDICT_HARMLESS_O_ETA2: WRONG
+```
+
+Seal-5 replacement in both records is accurate.
+
+### 2. Recoverability / no-reopen — override is right; nothing irrecoverable
+
+Folded via `scripts/ledger_fold.py` `load_model(S11c_b_exports, S11c_c1_exports)` (the prompt’s `reduction/ledger_fold.py` path does not exist; the real module is `scripts/ledger_fold.py`).
+
+**Export facts** (`/tmp/s11c_c1_export_recoverability.stdout`):
+
+- All four RHO4_CONSTANT flat PRESSURE MU_THETA coefficients are an exact reciprocal of the bare symbol `rho_br_bg_rho4_constant`, with **0** `Derivative`s and **no** literal `w1_profile` atom.
+- First-shape MU_THETA coefficients are the same opaque \(1/\rho\) times the DtN \(Z_1\) (which carries `s11cc1_w1_profile_hat_transfer`). That is \(1/\rho\times Z_1\), not a baked \(\rho=\rho_{\mathrm{br}}(1+\eta w_1)\) substitution. Still an exact reciprocal; 0 density derivatives.
+- `background_density_map` (RHO4_CONSTANT): `Eq(rho_br_bg_rho4_constant, W_bg*rho_br/W_0)` and `Eq(W_bg, W_0*(eta_bg*w1_profile + 1))`, hence \(\rho_{\mathrm{br}}(1+\eta_{\mathrm{bg}} w_1)\). Map VALUE[1] is exactly `rho_br*(eta_bg*w1_profile + 1)`.
+- Re-bind into \(\mu_\theta/\rho\) and into the **actual** exported flat pressure coefficient: recovered \(O(\eta)\) coefficient \(-\mu_\theta w_1/\rho_{\mathrm{br}}\) / \(-w_1\times(\mathrm{expr}|_{\rho=\rho_{\mathrm{br}}})\), residual **0** on all four anchoring/face cases.
+
+```
+VERDICT_IRRECOVERABLE: NO
+VERDICT_RECOVERY_RESIDUAL: 0
+```
+
+Nothing in PY’s exported RHO4_CONSTANT response is irrecoverable by a downstream re-bind of that symbol. The record’s “STANDS, no reopen, recoverable in c2” framing is right. Codex’s reopen severity was overstated; Grok’s engine disposition was right.
+
+### 3. Grazing scoping — scope is right; named inverse is wrong
+
+Covered in the SHOULD-FIX above. Operational scope (`NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER`, \(Z_1\) non-grazing only, \(\|N_0^{-1}N_1\|\ll 1\) on both legs, threshold solve deferred) matches Codex MUST #2’s first option and is not an over- or under-statement of what c1 may claim. Do not reopen for a degenerate solve.
+
+### 4. Independence scoping — accurate
+
+**Record:** parenthetical on “agreement is independent construction”; new *Independence is SCOPED* bullet; supplied composition / rigid-shift cancellation / flat \(Z_0=\rho_m\omega/q_{\mathrm{out}}\) / zero-jet are fidelity, not discovery; the two-momentum kernel is independently confirmed.
+
+**Sources:**
+
+- Codex MUST #3: spec supplies composition, rigid cancellation, flat \(Z_0\), expected zero-jet at lines 247–260 and 467–476; “Cross-engine agreement establishes fidelity to the supplied structure, not independent discovery. The kernel’s correctness is nevertheless independently established by this review’s boundary solve.”
+- Grok: composition schematic + typed \(Z_0\) + “must cancel” are rule-3/5 leaks; kernel confirmed by two routes with one-sided corruption; engines derived \(Z\) from acoustics.
+
+The record neither erases the kernel confirmation nor lets supplied-value agreement pose as discovery. The two-engine parenthetical plus the dedicated bullet are the right split.
+
+### 5. Carry-forward completeness + accuracy — complete; each item accurate
+
+All seven lower-severity items from the two source reports are present and correctly attributed:
+
+| # | Record item | Sources | Accuracy |
+|---|---|---|---|
+| 1 | Energy identity \(P_{\mathrm{face}}+P_\infty=0\) / minus outgoing Poynting; literal \(A-B=-2\delta p V^*\) and vanishes for the wrong \(t\) sign; PY used `-outgoing_flux` | Grok SHOULD; Codex SHOULD | Matches both. Grok: `A+B = 0`, `A-B = -2*dp*conjugate(V)`. Codex: `P_traction,slab+P_∞=0`. |
+| 2 | \(h_s\) graph-odd vs outward-even \(a_s=(W_{\mathrm{bg}}-W_0)/2\); \(Z=i\rho_m\omega N^{-1}\), \(N_1=-(N_0 M_a N_0+\mathrm{Div}(a\nabla)+\kappa^2 M_a)\) | Grok SHOULD; Codex SHOULD | Engines used the even height (both legs). \(N\) vs \(Z\) is Codex’s extra; record includes it. |
+| 3 | Name \(\beta=M_{1/\rho_{\mathrm{br,bg}}}\) so the freeze is un-emittable; carry to the c2 directive | Grok SHOULD; Codex MUST #1 (naming piece, after no-reopen override) | Right object, right destination. |
+| 4 | \(K_a=(Z-Z_a^\dagger)/(2i)\) is Hermitian; \((Z-Z_a^\dagger)/2\) is the anti-Hermitian part | Codex NIT only | Confirmed: `/tmp/s11c_c1_ka_hermitian.stdout` has \(K_a^\dagger-K_a=0\). Attribution “Codex NIT” is correct (Grok did not raise it). |
+| 5 | Evanescent completion is \(\eta^2/\eta\cdot\sigma_W/\sigma_W^2\), not only \(O(\eta^2)\) | Codex NIT; Grok said the physical \(O(\eta^2)\) caveat is right | Record does not pretend Grok demanded the grade expansion. |
+| 6 | \(O(\sigma_W^2)\) is drain-**tilt** \(\hat n\cdot\hat w-s\), not convection | Grok NIT | Codex treated the projection statement as correct and did not make this distinction; attribution “Grok NIT” is right. |
+| 7 | Flat \(Z_0\) / rigid-shift “must cancel” rule-5 leakage, folded into independence scoping | Grok NIT ×2; Codex MUST #3 | Physics correct; claim-scope only. |
+
+Nothing claim-level (MUST/SHOULD/NIT) from either source report is dropped or misattributed. Codex MUST #1’s “regenerate exports” piece is the adjudicated override, not a drop: the record keeps seal 5 UNDECIDED as a field-vs-constant representational question and states the channel is recoverable, which the export re-bind confirms.
+
+---
+
+## Verdict
+
+**Not CLEAR.** Exact list to fix:
+
+1. **SHOULD-FIX** the Exact-grazing bullet: replace “the face-response operator inverse \([I+(\Lambda_A/\rho_m^2)Z]^{-1}\) is nonanalytic as \(q_{\mathrm{out}}\to 0\) (~ \(1/\eta\))” with “\(N^{-1}\) (and \(Z=i\rho_m\omega N^{-1}\)) is \(\sim 1/\eta\) at exact double grazing; the first-shape \(Z_1\) expansion is valid only for \(\|N_0^{-1}N_1\|\ll 1\) on both legs.” Keep `NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER`.
+
+Density order, no-reopen/recoverability, independence scoping, and the seven carry-forward items are accurate and complete. **Do not REOPEN c1.**

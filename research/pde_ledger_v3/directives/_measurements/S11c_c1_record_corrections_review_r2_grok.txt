@@ -1,0 +1,145 @@
+I'll start by reading the review-legs skill and the round-1/source reports first, then form an independent view before touching the corrected records.I'll read the source reports first and form an independent view before opening the corrected records.The Codex-sol report is huge, so I’ll extract its findings and then read the original retro reports.I'll pull the Codex-sol round-1 verdict and the rest of the original Codex retro report, then form the independent view.I'll extract Codex's round-1 ranked findings next, then run independent computations before opening the corrected records.I have the source picture. Next I’ll run independent SymPy checks for the two folds, then density order and recoverability, and only after that open the corrected records.I'll write independent SymPy scripts under `/tmp` and run them before opening the corrected records.Grazing, energy, density, and Hermitian checks are in. Next I’ll run export recoverability.Independent computations are in. I’ll read the corrected records and the working-tree diff next.I’ll read the corrected sections in full so I can check the two folds against the rest of the record.I’ll inspect the export’s output names so I don’t miss a non-PRESSURE density channel.I missed FLUX/TRACTION by name; the diagnostic shows those channels are opaque too. The two folds check out — writing the review.
+
+**Verdict: CLEAR.** Both folds are physically correct and introduce no new defect. Density order, no-reopen, independence scoping, and the seven carry-forward items remain accurate and complete. **Do not REOPEN c1.**
+
+Independent computations (working tree untouched):
+
+| Check | Script | Stdout |
+|---|---|---|
+| Grazing inverse (fold 1) | `/tmp/s11c_c1_r2_grazing_inverse.py` | `/tmp/s11c_c1_r2_grazing_inverse.stdout` |
+| Energy residual (fold 2) | `/tmp/s11c_c1_r2_energy_residual.py` | `/tmp/s11c_c1_r2_energy_residual.stdout` |
+| Density order | `/tmp/s11c_c1_r2_density_order.py` | `/tmp/s11c_c1_r2_density_order.stdout` |
+| Export recoverability | `/tmp/s11c_c1_r2_export_recovery.py` | `/tmp/s11c_c1_r2_export_recovery.stdout` |
+| Output-name audit | `/tmp/s11c_c1_r2_export_outputs.py` | `/tmp/s11c_c1_r2_export_outputs.stdout` |
+| \(K_a\) Hermitian | `/tmp/s11c_c1_r2_ka_hermitian.py` | `/tmp/s11c_c1_r2_ka_hermitian.stdout` |
+
+No MUST-FIX. No SHOULD-FIX. No NIT that changes physics, claim-scope, or completeness.
+
+---
+
+## Fold 1 — grazing inverse attribution: physically right; scope still sufficient
+
+**Corrected record** (`steps/S11c_c1_curved_bulk_closure.md`, Exact grazing bullet):
+
+> The **DtN inverse `N⁻¹`** (hence `Z=iρ_mω·N⁻¹`) is **nonanalytic as `q_out→0`** (the grazing limit; at exact double grazing `N=η·B` so `N⁻¹` — and thus `Z` — carries a `~1/η` Laurent pole, ⛔ not a Taylor series in η), so the first-shape coefficient `Z₁` is a valid **non-grazing asymptotic** coefficient ONLY — `‖N₀⁻¹N₁‖≪1` imposed on both legs (both momentum legs bounded away from grazing). ⚠ It is `N⁻¹`/`Z` that is singular, ⛔ **NOT the permeable face-closure resolvent `[I+(Λ_A/ρ_m²)Z]⁻¹`**, which for generic `Λ_A≠0` is **regular** at grazing (`O(η)`, and `[I+(Λ_A/ρ_m²)Z]⁻¹·Z → ρ_m²/Λ_A` finite …
+
+**Source (Codex retro MUST #2):** the \(\sim 1/\eta\) object is the Neumann-to-Dirichlet inverse, not the face-closure resolvent:
+
+> The Neumann-to-Dirichlet correction contains \(N_1/(q(k)q(k'))\) … At exact double grazing, a two-mode exact inverse scales as \(1/(\eta c)\), not as a Taylor series in \(\eta\).
+
+**Source (Grok retro):** rest-frame/grazing sound; non-uniformity is poles in each of \(q(k)\), \(q(k')\). Grok never claimed \([I+(\Lambda_A/\rho_m^2)Z]^{-1}\sim 1/\eta\).
+
+**Source (round-1 both legs, the defect this fold repairs):** Grok SHOULD and Codex MUST both required replacing “face-response inverse \([I+\cdots Z]^{-1}\) is \(\sim 1/\eta\)” with \(N^{-1}\) / \(Z\).
+
+**Computation** (`/tmp/s11c_c1_r2_grazing_inverse.stdout`):
+
+- Flat symbol: \(Z_0=\rho_m\omega/q\), \(D_0^{-1}=q\rho_m/(\Lambda_A\omega+q\rho_m)\to 0\) as \(q\to 0\), and \(D_0^{-1}Z_0\to\rho_m^2/\Lambda_A\).
+- First-shape \(Z_1\) off-diagonal \(\propto 1/(q\,q_{\mathrm{in}})\); \(\|N_0^{-1}N_1\|\sim|c/q|\). The \(\eta\)-series of \(N^{-1}\) has radius \(\sim|q|/c\to 0\) as \(q\to 0\).
+- Exact double grazing \(N=\eta B\): \(N^{-1}=(1/(c\eta))\sigma_x\), \(Z\sim 1/\eta\). Printed: `N^{-1} has 1/eta pole = True`, `Z has 1/eta pole = True`.
+- Same model, \(\Lambda_A\neq 0\): \(D^{-1}\) is \(O(\eta)\) off-diagonal and \(O(\eta^2)\) on the diagonal. Printed: `D^{-1} has 1/eta pole (Lambda_A != 0) = False`. Limit \(\eta\to 0\) of \(D^{-1}Z\) is \(\rho_m^2/\Lambda_A\cdot I\), residual **0**.
+- Impermeable control \(\Lambda_A=0\): \(D^{-1}=I\) and the pole survives in \(Z\).
+
+The fold names the right singular object. “\(O(\eta)\)” for the permeable resolvent is the leading matrix order (off-diagonal); the physically relevant closed factor \(D^{-1}Z\) is finite. Retained scope is still correct and sufficient: exact grazing stays `NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER`; \(Z_1\) is a non-grazing asymptotic coefficient only; \(\|N_0^{-1}N_1\|\ll 1\) on **both** legs. The finite grazing limit of \(D^{-1}Z\) is a property of the *exact* two-mode inverse, not of the first-shape \(Z_1\) expansion, so the deferred degenerate threshold solve is still required. No new defect.
+
+---
+
+## Fold 2 — energy-residual parenthetical: identity and residual-operand instruction are both now correct
+
+**Corrected record** (Carry-forward › Energy-residual orientation):
+
+> The independent energy identity is `P_face + P_∞ = 0` (traction work + **positive outgoing** far-field Poynting = 0, with `P_∞` the outgoing flux), ⛔ NOT the literal `A−B` the spec wrote — a literal `A−B` on the written operands is `−2·δp·V*` for the supplied `t_s` and vanishes only for the WRONG `t` sign. … (to write it as a **vanishing `A−B` residual**, define the bulk subtraction operand `B` as **minus** outgoing Poynting — `A−B = P_face−(−P_∞) = 0` — or emit `A+B`).
+
+**Source (Grok retro SHOULD):**
+
+> `A-B  (face t·v minus outgoing Poynting): -2*dp*conjugate(V)`  
+> `A+B  (work-on-slab + flux-to-infinity): 0`  
+> PY compared to **`-`outgoing** … which is the `A+B` identity.
+
+**Source (Codex retro SHOULD):**
+
+> traction work on the slab must be compared with the **negative** outgoing far-field flux: \(P_{\mathrm{traction,slab}}+P_{\infty}=0\). Computation confirms only \(P_{\mathrm{face}}-(-P_\infty)=0\).
+
+**Source (round-1 both legs):** the old parenthetical “traction work + **minus** outgoing = 0” contradicted \(P_{\mathrm{face}}+P_\infty=0\).
+
+**Computation** (`/tmp/s11c_c1_r2_energy_residual.stdout`), with \(t_n=-(\delta p+\Lambda_X\mathcal A)\), \(P_{\mathrm{face}}=t_n V^*\), \(P_\infty=+(\delta p+\Lambda_X\mathcal A)V^*\):
+
+```
+P_face + P_inf = 0
+A - B_wrong (+outgoing) = -2*(A*Lambda_X + delta_p)*conjugate(V)
+A - B_right (-outgoing) = 0
+A + B_outgoing = 0
+A_flip - B_outgoing = 0   <-- vanishes for the WRONG t sign
+```
+
+If \(P_\infty\) denotes positive outgoing flux, \(P_{\mathrm{face}}+P_\infty=0\) *is* “traction work + positive outgoing = 0”. The subtraction operand that makes a vanishing \(A-B\) is \(B=-P_\infty\). The old “+ minus outgoing” gloss is gone; the residual instruction is kept and is the same identity. No new defect.
+
+---
+
+## Re-confirmations (unchanged from round 1; both previous legs cleared them)
+
+### Density channel is \(O(\varepsilon\eta)\), first-order in \(\eta\)
+
+**Record (both files):** \(d(\mu_s)/d\eta|_0=-\mu_\theta\cdot w_1/\rho_{\mathrm{br}}\), first-order in \(\eta\), overall \(O(\varepsilon\eta)\); the earlier “harmless \(O(\eta^2)\)” is wrong.
+
+**Sources (both retro legs):** Grok `d(mu_s)/d(eta)|_0 = -mu_theta*w1/rho_br ≠ 0`; Codex live-minus-frozen pressure \(O(\varepsilon\eta)\).
+
+**Computation** (`/tmp/s11c_c1_r2_density_order.stdout`):
+
+```
+d(mu_s)/d(eta)|_0 = -epsilon*mu_theta0*w1/rho_br
+channel_residual (computed - claimed) = 0
+d(mu_s)/d(eta)|_0 == 0 is False
+VERDICT_HARMLESS_O_ETA2: WRONG
+VERDICT_ORDER: first-order-in-eta, overall O(eps*eta)
+```
+
+Seal-5 replacement in both records is accurate.
+
+### No-reopen / recoverability — c1 STANDS
+
+**Record:** PY carries \(\rho\) opaquely (0 derivatives, no `w1_profile` baked in); re-bind to `background_density_map` recovers the \(O(\varepsilon\eta)\) channel; engines/exports STAND.
+
+**Computation** (`/tmp/s11c_c1_r2_export_recovery.stdout`, `/tmp/s11c_c1_r2_export_outputs.stdout`):
+
+- Fold via `scripts/ledger_fold.py` `load_model(S11c_b_exports, S11c_c1_exports)`.
+- `background_density_map`: `Eq(rho_br_bg_rho4_constant, W_bg*rho_br/W_0)`, `Eq(W_bg, W_0*(eta_bg*w1_profile + 1))`, VALUE[RHO4] `= rho_br*(eta_bg*w1_profile + 1)`.
+- Four RHO4_CONSTANT keys × three physical outputs (`PRESSURE`, `RELATIVE_FLUX`, `TRACTION_NORMAL_AMPLITUDE`) = 24 density-bearing leaves; every one is \(F/\rho\) with **0** density derivatives and **0** literal `w1_profile` in the reciprocal. Shape leaves carry `s11cc1_w1_profile_hat_transfer` (surface Fourier), not a baked \(\rho=\rho_{\mathrm{br}}(1+\eta w_1)\).
+- Re-bind of the actual exported flat PRESSURE MU_THETA coefficient: recovered \(O(\eta)\) piece \(-w_1\times(\mathrm{expr}|_{\rho=\rho_{\mathrm{br}}})\), residual **0**. Same for \(\mu_\theta/\rho\to -\mu_\theta w_1/\rho_{\mathrm{br}}\).
+
+```
+VERDICT_IRRECOVERABLE: NO
+VERDICT_RECOVERY_RESIDUAL: 0
+VERDICT_ALL_LEAVES_OPAQUE: True
+```
+
+Nothing in PY’s exported RHO4_CONSTANT response is irrecoverable by a downstream re-bind. **Do not REOPEN c1.**
+
+### Independence scoping — accurate
+
+**Record:** parenthetical on “agreement is independent construction”; dedicated *Independence is SCOPED* bullet; supplied composition / rigid-shift / flat \(Z_0=\rho_m\omega/q_{\mathrm{out}}\) / zero-jet = fidelity; two-momentum kernel independently confirmed.
+
+**Sources:** Codex MUST #3 (spec supplies those values; kernel independently established by the boundary solve); Grok (composition schematic + typed \(Z_0\) + “must cancel” are rule-3/5 leaks; kernel confirmed by two routes).
+
+The record neither erases the kernel confirmation nor lets supplied-value agreement pose as discovery.
+
+### Carry-forward completeness + accuracy — complete; each item accurate
+
+All seven lower-severity items from the two source reports are present and correctly attributed:
+
+| # | Record item | Sources | Accuracy |
+|---|---|---|---|
+| 1 | Energy identity \(P_{\mathrm{face}}+P_\infty=0\) / residual operand \(B=-P_\infty\) or emit \(A+B\); literal \(A-B=-2\delta p V^*\) vanishes for the wrong \(t\) sign; PY used `-outgoing_flux` | Grok SHOULD; Codex SHOULD | Matches both; fold 2 removed the self-contradictory “minus outgoing” gloss |
+| 2 | \(h_s\) graph-odd vs outward-even \(a_s=(W_{\mathrm{bg}}-W_0)/2\); \(Z=i\rho_m\omega N^{-1}\), \(N_1=-(N_0 M_a N_0+\mathrm{Div}(a\nabla)+\kappa^2 M_a)\) | Grok SHOULD; Codex SHOULD | Engines used the even height (both legs). \(N\) vs \(Z\) is Codex’s extra; record includes it |
+| 3 | Name \(\beta=M_{1/\rho_{\mathrm{br,bg}}}\) so the freeze is un-emittable; carry to the c2 directive | Grok SHOULD; Codex MUST #1 (naming piece, after no-reopen override) | Right object, right destination |
+| 4 | \(K_a=(Z-Z_a^\dagger)/(2i)\) is Hermitian; \((Z-Z_a^\dagger)/2\) is the anti-Hermitian part | Codex NIT only | Confirmed: `/tmp/s11c_c1_r2_ka_hermitian.stdout` has \(K_a^\dagger-K_a=0\). Attribution “Codex NIT” is correct |
+| 5 | Evanescent completion is \(\eta^2/\eta\cdot\sigma_W/\sigma_W^2\), not only \(O(\eta^2)\) | Codex NIT; Grok said the physical \(O(\eta^2)\) caveat is right | Record does not pretend Grok demanded the grade expansion |
+| 6 | \(O(\sigma_W^2)\) is drain-**tilt** \(\hat n\cdot\hat w-s\), not convection | Grok NIT | Codex treated the projection statement as correct; attribution “Grok NIT” is right |
+| 7 | Flat \(Z_0\) / rigid-shift “must cancel” rule-5 leakage, folded into independence scoping | Grok NIT ×2; Codex MUST #3 | Physics correct; claim-scope only |
+
+Nothing claim-level (MUST/SHOULD/NIT) from either source report is dropped or misattributed. Codex MUST #1’s “regenerate exports” piece remains the adjudicated override, not a drop.
+
+---
+
+## Verdict
+
+**CLEAR** — the two folds are physically correct and introduce no new defect; the rest of the corrections remain accurate and complete. **Do not REOPEN c1.**

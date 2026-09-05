@@ -135,11 +135,13 @@ reason, never silently dropped (reuse the S11c-b `axis_mismatch_detail`).
    have no real PY reserved name (a physics identification, not a spelling). ⚠ **`qOut[…]`, `w1Profile…[…]`,
    `w1Jet…[…]` STAY applied heads**, even though `mechanical_lower_camel("q_out")=="qOut"` — the head spelling
    matching is exactly the trap.
-   ⚠ **The bulk sound speed is NOT a mechanical inverse.** PY has bare `Symbol('c_s0')`; WL writes `cS0`. But
-   `mechanical_lower_camel("c_s0")=="cs0"` (lowercase), NOT `cS0` — so `c_s0↔cS0` is a **reviewed** spelling
-   normalization, not a mechanical one. Confirm it is already in the inherited S11c-a `PARAM` map; ⛔ if it is
-   not, do NOT invent a non-mechanical rename — let the `c_s0`/`cS0` difference surface as a residual and flag
-   it for adjudication.
+   ⚠ **The bulk sound speed IS a mechanical inverse — add it** (corrected 2026-09-05 after the build flagged
+   the original arithmetic error). PY has bare `Symbol('c_s0')`; WL writes `cS0`; and
+   `mechanical_lower_camel("c_s0") == "cS0"` (the first piece `c` keeps case, the second `s0`→`S0` — verify:
+   `python3 -c "import S11b_cross_engine_comparator as m; print(m.mechanical_lower_camel('c_s0'))"`). So
+   `cS0←c_s0` is a genuine BARE-symbol mechanical fold, the same kind as the 11 above — add it (activation-gated
+   on the real PY `Symbol('c_s0')`, like the others). (The original text here wrongly claimed it was `cs0`; that
+   error excluded a legitimate fold and is fixed by the comparator repair `S11c_c1_comparator_repair_directive.md`.)
 2. **μ_θ is OPAQUE and SEALED — no registry surgery.** ⚠ The S11c-b `mu_theta_L/M` / `muThetaOperand` registry
    does **not** exist in these streams (grep: absent both sides). PY emits face-specific composites
    `s11cc1_mu_theta_lab_held_{plus,minus}`, `s11cc1_mu_theta_material_advected_{plus,minus}`, `mu_theta_drive`;

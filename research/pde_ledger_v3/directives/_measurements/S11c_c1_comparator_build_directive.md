@@ -150,3 +150,7 @@ Leg outputs (outside repo): `<scratch>/grok_c1_comparator_review.txt`, agent tra
 **Verdict:** comparator SOUND + committed as the reviewed baseline. Scoped repair to follow (gated): R1 add the
 `cS0←c_s0` mechanical fold (+ fix this directive's fold-1 cS0 paragraph); R2 parse the WL held-integral energy
 leaves so the operand is displayed. No soundness change.
+
+**Correction 2026-09-05:** this directive's fold-1 `cS0` paragraph (which wrongly claimed
+`mechanical_lower_camel("c_s0")=="cs0"`) is now CORRECTED to `"cS0"` — a legitimate bare-symbol mechanical fold
+to add. The correction is carried by the gated repair `S11c_c1_comparator_repair_directive.md`.

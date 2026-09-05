@@ -17,12 +17,18 @@ setsid nohup bash -c "cd /var/projects/toy_physics && grok --prompt-file …/_le
 ```
 Both `EXIT=0`. Codex log 1.17 MB (162 k tokens); Grok log 20 KB. Neither reviewed the other's output.
 
-## Verdicts
-- **Codex:** "Do not release this directive to the builder" — **5 MUST-FIX**, no NITs. Core DtN/response/
-  dissipation/emit-list/WL-run obligations otherwise wired correctly.
-- **Grok:** "Not safe to build as-is" — **3 MUST-FIX** (= Codex's 1,2+3,5). §3a/§3b/Λ_X wiring, emit list, three
-  clauses, and run-time "imports nothing" otherwise sound. Grok **explicitly judged the blindness framing sound
-  and the copy-test correctly-scoped** (disagreeing with Codex's finding 4 as a full defect).
+## Verdicts (literal)
+- **Codex** (`codex_wl_dirreview.log`): a 10-question review ending "**Ambiguity-safe: no.** The visible T-a
+  target, unresolved `μ_θ` representation contract, non-structural blindness test, and incomplete symbol
+  transliteration table can all be followed literally while producing either a vacuous or trivially mismatching
+  control. There are no merely cosmetic NITs worth delaying the five gate-level repairs above." — **5 MUST-FIX**,
+  no NITs; core DtN/response/dissipation/emit-list/WL-run obligations otherwise wired correctly.
+- **Grok** (`grok_wl_dirreview.log`): "**Not safe to build as-is.** Three MUST-FIX defects would either leak an
+  answer into the build or make the T7 join compare the wrong objects. Spec fidelity on §3a/§3b/Λ_X, the emit
+  list, the three clauses, and runtime 'imports nothing' are otherwise sound. Do not launch the Codex builder
+  until the three MUST-FIX items below are cut." — **3 MUST-FIX** (= Codex's 1,2+3,5). Grok **explicitly judged
+  the blindness framing sound and the copy-test correctly-scoped** (disagreeing with Codex's finding 4 as a full
+  defect).
 
 ## Orchestrator rule-13 verification of the load-bearing findings
 - **`mu_theta_operator` is a composite, not an atom** (Codex #3 / Grok Finding 2b) — CONFIRMED. Command:

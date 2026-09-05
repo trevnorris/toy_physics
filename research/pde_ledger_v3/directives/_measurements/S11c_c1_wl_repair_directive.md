@@ -1,5 +1,22 @@
 # _measurements — S11c_c1_wl_repair_directive.md (the repair fold + its 2-leg re-review)
 
+> **⛔⛔ CORRECTION (2026-09-04) — this repair DIRECTIVE skipped its rule-7 decision legs; run retroactively they
+> found it NOT sound, and the repair-2 decision gate then relocated the parity finding. Read with these overrides:**
+> 1. **The repair directive was built WITHOUT its 2 decision legs** (rule 7 gap; [[feedback_directive_design_review]]).
+>    The remediation is `_measurements/S11c_c1_wl_remediation_plan.md`; the retroactive decision-leg record is
+>    `_measurements/S11c_c1_wl_repair_directive_review.md`.
+> 2. **The "byte-identical protected core" below (lines ~16–22) OVER-PROTECTED two objects that were actually
+>    defective (emit-only):** `NONINVERTIBILITY_CONDITION`/`fredholmFunctionSpaceOperator` still carried the
+>    single-leg freeze, and `PERMEABLE_DISSIPATION_VS_OMEGA_TAU` carried a dead parity axis. Both are fixed by
+>    repair-2 (baseline `13f0bd2c`).
+> 3. **The "Residual NIT — R4b parity LABELLING" section below is REFUTED.** `PERMEABLE_PORT_HERMITIAN` is
+>    **correct**: its diagonal blocks are the congruence `Aᵀ·diag(P₊,P₋)·A` (both even combinations, coupling odd),
+>    correct given `V_s=s∂_tζ_s`. The claim "the `DELTA_W` diagonal block should be `(plus−minus)`" is a category
+>    error (a coordinate's parity ≠ the parity of its diagonal block in a quadratic form). See the plan's
+>    CORRECTION note and `_measurements/S11c_c1_wl_repair2_directive_review.md`.
+> 4. **"c1's WOLFRAM per-engine side is DONE" (Verdict) OVERSTATES** — per-engine review is complete; c1 is not
+>    done until the remediation (repair-2 + records + both `.out`) and T7. See [[project_s11c_c_state]].
+
 The repair directive folds the three MUST-FIX of the WL build review (`_measurements/S11c_c1_wl_build_review.md`;
 2 legs, Codex-written engine ⇒ fresh Claude Agent + Grok) plus four biting NITs. The repair was itself 2-leg
 re-reviewed (prompt `directives/_legs/S11c_c1_wl_repair_review.md`, serialized: fresh-Claude Agent then Grok, both
@@ -7,8 +24,24 @@ ablating Mathematica). **Both verdicts: all four repaired controls now BITE; the
 NO MUST-FIX.** Raw Grok report `…/scratchpad/grok_wl_repair_review.log`; leg-1 report returned inline. Both legs'
 saved ablation scripts + stdout are under `/tmp/{...}/wlrepair1_*` and `/tmp/s11cc1_wl_rereview/`.
 
+## Commands (literal)
+```bash
+# Repair build (Codex, detached; danger-full-access)
+codex exec -c model_reasoning_effort=xhigh --sandbox danger-full-access "$(<…/S11c_c1_wl_repair_directive.md)" \
+  > …/scratchpad/codex_wl_repair.log 2>&1
+# Re-review leg 1 — fresh Claude Agent (in-process), serialized FIRST
+# Re-review leg 2 — Grok, serialized SECOND (both ablate Mathematica; 2-seat)
+grok --prompt-file …/_legs/S11c_c1_wl_repair_review.md --cwd /var/projects/toy_physics \
+  --model grok-4.6 --effort high --permission-mode bypassPermissions --output-format plain \
+  > …/scratchpad/grok_wl_repair_review.log 2>&1
+```
+⛔ **These re-review legs are NOT the directive's decision legs** — the repair DIRECTIVE's rule-7 decision gate was
+skipped (see the CORRECTION banner); it was run retroactively in `_measurements/S11c_c1_wl_repair_directive_review.md`.
+
 ## Deliverable verification (orchestrator, rule 13; vs committed baseline `e139bc61`)
-- `git diff --stat e139bc61` = +443/−103, one file; hunks land in `operatorCompositionFromDerivation` (R1),
+- `git diff --stat e139bc61 13f0bd2c -- <the .wl>` = **+443/−103, engine-scoped (one file)**; the full commit
+  `e139bc61..13f0bd2c` is **4 files, +691/−103** (the .wl + `S11c_c1_wl_repair_directive.md` +
+  `_legs/S11c_c1_wl_repair_review.md` + this record). Hunks land in `operatorCompositionFromDerivation` (R1),
   `deriveEnergyOperands` + the outgoing-half-space energy construction (R2/R3), the response traction/source-
   equation plumbing (R3/R4a), the real-admissibility test (R4d), the parity-port blocks (R4b), the layer-potential
   operand + `REP_INVARIANCE` emits (R4c). 51 tags unchanged; all tasks ran; blindness scan 0; `mathematica/out/`
@@ -60,5 +93,9 @@ saved ablation scripts + stdout are under `/tmp/{...}/wlrepair1_*` and `/tmp/s11
   disagreement vs PY, adjudicated after the run — like the omega/μ_θ representational residuals), ⛔ not a blocker.
 
 ## Verdict
-Repair CLEARED (2 fresh legs, both "no MUST-FIX"; all four controls bite by independent one-sided corruption;
-core byte-identical). ⭐ **c1's WOLFRAM per-engine side is DONE.** NEXT = the T7 cross-engine comparator.
+Repair-1 CLEARED its own 2 re-review legs (all four re-reviewed controls bite; core byte-identical) — but see the
+CORRECTION banner: the repair DIRECTIVE skipped its decision legs, which (run retroactively) + the repair-2
+decision gate found two emit-only defects the re-review was structurally blind to (over-protected
+`NONINVERTIBILITY_CONDITION`; dead parity axis in `PERMEABLE_DISSIPATION_VS_OMEGA_TAU`). ⭐ **c1's WOLFRAM
+per-engine REVIEW is complete; c1 is NOT done** — NEXT = the FULL REMEDIATION (repair-2 → records → both `.out`),
+THEN the T7 cross-engine comparator. Plan: `_measurements/S11c_c1_wl_remediation_plan.md`.

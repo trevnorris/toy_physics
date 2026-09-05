@@ -17,29 +17,54 @@ the emit-only propagations + the audit-trail + the missing canonical output, the
 |---|---|---|---|
 | 1 | R1 invariant LEAKS residual=0 + re-enters at `DTN_KERNEL` (rule 5/3/6) | no (code genuinely unfroze) | directive |
 | 2 | `NONINVERTIBILITY_CONDITION` over-protected → input-leg freeze PERSISTS in `fredholmFunctionSpaceOperator` (`.wl:580-597`, both `gZero` on `momentumOutput`; used by `NONINVERTIBILITY_CONDITION` `.wl:1537-1549`) | **YES — PROPAGATED**, re-review structurally blind | directive + CODE (emit-only) |
-| 3 | R4b parity labels not bound to `ζ_s=ζ_c+sδW/2` → DELTA_W/ZETA_C **SWAPPED** (`PERMEABLE_PORT_HERMITIAN`) | **YES — PROPAGATED** | directive + CODE (emit-only) |
+| 3 | ~~R4b parity labels → DELTA_W/ZETA_C SWAPPED in `PERMEABLE_PORT_HERMITIAN`~~ **CORRECTED** (see note ↓): the real defect is a **dead parity axis** in `PERMEABLE_DISSIPATION_VS_OMEGA_TAU` (`.wl:1713-1736`) | **YES — PROPAGATED** | directive + CODE (emit-only) |
 | 4 | R2 "independent data" wording + no φ-driver requirement | no (code bound `V_s`) | directive |
 | 5 | R1 `Ŵ`-in-composition over-spec; R1 probe scope; blanket "no residual" disclaimer inconsistency | no | directive NITs |
 | 6 | rule-2 records point to ephemeral `/tmp` logs, not literal output; "+443/−103 one file" is engine-scoped not the 4-file commit | n/a | record |
 | 7 | neither c1 engine's canonical `.out` committed (WL nor SymPy) | n/a | repo state |
 
+> **⭐ CORRECTION — defect #3 relocated by the repair-2 decision gate (2026-09-04; Codex + Grok, both exit 0;
+> record `_measurements/S11c_c1_wl_repair2_directive_review.md`).** The retroactive legs reported a "parity swap"
+> in `PERMEABLE_PORT_HERMITIAN`. The repair-2 decision legs (and my own verification, rule 13) **refute** that:
+> `PERMEABLE_PORT_HERMITIAN` is **correct** — its `deltaWHermitian=(plus+minus)/4`, `zetaCHermitian=plus+minus`,
+> coupling `(plus−minus)/2` are exactly the **congruence** `Aᵀ·diag(P₊,P₋)·A` blocks under `A=faceToParityMatrix
+> =[[1/2,1],[1/2,-1]]`, correct given the outward orientation `V_s=s∂_tζ_s` (`S11c_a:58`). The naive
+> `DELTA_W=(ζ₊−ζ₋)` reading (which the retroactive finding and my first repair-2 draft both made) is a **category
+> error** that vanishes the thickness port at equal faces — building it would have **corrupted a correct object**.
+> The genuine propagated parity defect is a **dead parity axis** in `PERMEABLE_DISSIPATION_VS_OMEGA_TAU`
+> (curved per-face memory Hermitian form emitted under both `PARITY_*` keys; should be the parity **combination**,
+> spec §3b `:308-320`), with `UNIFORM_LIMIT_*` the same pattern on a flat object (NIT). This is the gate working:
+> it caught a wrong fix **before** any build. ⇒ Item A below is updated accordingly.
+
 ## THE PLAN — four items, in order. ⛔ Do NOT start T7 until all four are done.
 
 ### (A) Repair-2 — fix the 2 PROPAGATED emit-only code defects, FULLY GATED
 1. **Author `directives/S11c_c1_wl_repair2_directive.md`** (orchestrator-written). Fixes:
-   - **Defect 2:** the `NONINVERTIBILITY_CONDITION` / Fredholm operator must be the operator whose invertibility
-     is in question — the **unfrozen two-leg DtN** `[I+(Λ_A/ρ_m²)Z]` (spec §3b `:299-302`), OR its **diagonal
-     symbol** where `k=k′` (spec `:299-303` "its symbol where it is diagonal") using a genuine **dummy** momentum,
-     ⛔ NOT both `N_0` factors frozen to `momentumOutput`. Name the object; do NOT re-protect it byte-identical.
-     The construction invariant: the emitted operator carries both legs (or a genuine dummy for the diagonal
-     symbol), ⛔ not `momentumOutput` in both slots. ⛔ No leaked residual value (learn from defect 1 — do NOT say
-     "minus X is zero"; use a re-freeze control that MOVES).
-   - **Defect 3:** bind the `DELTA_W`/`ZETA_C` labels to the supplied map `δW≡ζ_+−ζ_-`, `ζ_c≡(ζ_++ζ_-)/2`,
-     `ζ_s=ζ_c+sδW/2` (spec `:76-83`, `:274-277`) via a **computed forward/inverse basis-binding residual** tying
-     each key to its definition — ⛔ without pre-registering which combination is even/odd or that they differ.
-   - ⛔ Protect byte-identical ONLY the genuinely-sound core (`DTN_KERNEL`, flat symbol, `DTN_RIGID_SHIFT_*`, the
-     kernel-derived `DTN_HERMITIAN/REGIME/PARITY`, the response inverse `FACE_RESPONSE`, T-a..T-i, μ_θ) — ⛔ NOT
-     `NONINVERTIBILITY_CONDITION` (that is what's being fixed).
+   - **Defect 2 (R1):** the `NONINVERTIBILITY_CONDITION` / Fredholm operator must be the **two-leg DtN** `Z`
+     inside `[I+(Λ_A/ρ_m²)Z]` — the SAME both-legs construction as `DTN_OPERATOR`/`operatorCompositionFrom
+     Derivation` (carrying `q_out(momentumOutput)`, `q_out(momentumInput)`, and the profile source), ⛔ NOT both
+     `N_0` factors frozen to `momentumOutput`. ⛔ **Do NOT add a "diagonal-symbol reduction of the full operator at
+     `k=k′`"** — the nonuniform operator is not diagonal, `k=k′` selects a diagonal slice, and a fresh dummy there
+     only renames the freeze (repair-2 decision-gate catch); the only legitimate diagonal symbol is the
+     already-emitted **flat** `FLAT_DIAGONAL_SYMBOL_RELATION`/`DEGENERATE_LOCI_*` (keep unchanged). Tag count stays
+     51. Construction invariant: probes `FREDHOLM_Z_HAS_Q_INPUT`/`_OUTPUT` computed from the emitted operator; the
+     re-freeze control is **constructor-level** (`rightLegMomentum→momentumOutput`, as `.wl:1329-1332`) and MOVES
+     the probe — ⛔ not a post-hoc `momentumInput→momentumOutput` substitution (the `Count` probe is syntactic).
+     ⛔ No leaked residual value / no "minus X is zero" (learn from defect 1).
+   - **Defect 3 (R2 — CORRECTED, see the note above):** fix the **dead parity axis** in
+     `PERMEABLE_DISSIPATION_VS_OMEGA_TAU` (`.wl:1713-1736`, per-face memory Hermitian form under both `PARITY_*`
+     keys): emit the **parity-combination** memory Hermitian form per parity (via the SAME change of basis
+     `PERMEABLE_PORT_HERMITIAN`/`portParityCombination` already uses), its ωτ_I limits computed on the combined
+     form. Construction invariant: the `PARITY_DELTA_W` and `PARITY_ZETA_C` payloads are **distinct computed
+     objects** in the curved case, and a one-sided corruption of only the `+`-face memory form MOVES them
+     differently. ⛔ Do NOT hand-write block arithmetic and ⛔ do NOT pre-register even/odd. `UNIFORM_LIMIT_*` is
+     the same pattern on a flat (parity-independent) object — a lighter NIT, fix only if it preserves
+     `UNIFORM_LIMIT_RESIDUAL`. ⛔ **`PERMEABLE_PORT_HERMITIAN` is correct (congruence) — leave it byte-identical.**
+   - ⛔ Protect byte-identical ONLY the genuinely-sound core (`DTN_KERNEL`, flat symbol, `DTN_OPERATOR`,
+     `DTN_RIGID_SHIFT_*`, the kernel-derived `DTN_HERMITIAN/REGIME/PARITY`, the response inverse `FACE_RESPONSE`,
+     **`PERMEABLE_PORT_HERMITIAN`** (correct congruence), the repaired `ENERGY_*` audit, the flat diagonal-symbol
+     loci, T-a..T-i, μ_θ) — ⛔ NOT `NONINVERTIBILITY_CONDITION`/`fredholmFunctionSpaceOperator` and ⛔ NOT
+     `PERMEABLE_DISSIPATION_VS_OMEGA_TAU` (those are what's being fixed).
 2. ⛔ **2 DECISION legs on the repair-2 directive BEFORE the build** (Codex + Grok — orchestrator-written). Fold once.
 3. Detached Mathematica build (setsid+marker+Monitor; danger-full-access; one kernel; RSS watch).
 4. 2 re-review legs (fresh Claude Agent + Grok, serialized) — ablate: the Fredholm operator now carries both legs

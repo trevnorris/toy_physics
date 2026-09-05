@@ -6,6 +6,22 @@ The WL engine `mathematica/S11c_c1_bulk_closure_mathematica_audit.wl` is **Codex
 `directives/_legs/S11c_c1_wl_build_review.md`. Raw Grok report: `…/scratchpad/grok_wl_build_review.log`; leg-1
 report returned inline. Leg saved-artifact paths are listed in each leg's report.
 
+## Commands (literal)
+```bash
+# Build (Codex, detached; setsid+marker+Monitor; danger-full-access for Mathematica)
+codex exec -c model_reasoning_effort=xhigh --sandbox danger-full-access "$(<…/S11c_c1_wl_build_directive.md)" \
+  > …/scratchpad/codex_wl_build.log 2>&1            # 603,683 build tokens
+# Leg 1 — fresh Claude Agent (in-process, general-purpose; no shell command), serialized FIRST
+# Leg 2 — Grok, serialized SECOND (both ablate Mathematica kernels; 2-seat licence)
+grok --prompt-file …/_legs/S11c_c1_wl_build_review.md --cwd /var/projects/toy_physics \
+  --model grok-4.6 --effort high --permission-mode bypassPermissions --output-format plain \
+  > …/scratchpad/grok_wl_build_review.log 2>&1
+```
+> ⚠ Note (repair-2 gate, 2026-09-04): Grok's NIT below — "`PERMEABLE_PORT_HERMITIAN` parity keys … both get the
+> same per-face matrix" — correctly identified the **fake-parity-axis** pattern; repair-1 fixed it in
+> `PERMEABLE_PORT_HERMITIAN` (to the correct congruence, distinct blocks), but the **identical pattern in
+> `PERMEABLE_DISSIPATION_VS_OMEGA_TAU`** was outside that NIT's scope and is what repair-2 R2 fixes.
+
 ## Deliverable verification (orchestrator)
 - `.wl` = 79,824 bytes / 1,862 lines; builder §8 report: 51 tags (50 shared + 1 local), all §3–§6 tasks ran,
   none skipped/deferred; `muTheta` one opaque operand; 603,683 build tokens.

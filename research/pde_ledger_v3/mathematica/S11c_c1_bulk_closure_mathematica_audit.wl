@@ -574,27 +574,13 @@ operatorCompositionRecordFromDerivation[anchoring_,
 operatorCompositionFromDerivation[anchoring_] :=
   operatorCompositionRecordFromDerivation[anchoring]["COMPOSITION"];
 
-(* The Fredholm condition is a formal one-variable function-space
-   operator.  Its Fourier momentum is a dummy coordinate, rather than
-   either external kernel leg. *)
-fredholmFunctionSpaceOperator[anchoring_] := Module[
-  {nZero, gZero, multiplication, dtnVariation,
-   inverseVariation, flatOperator, firstOperator},
-  nZero = FourierMultiplier[1/(I qOut[omega, momentumOutput])];
-  gZero = FourierMultiplier[I qOut[omega, momentumOutput]];
-  multiplication = MultiplicationOperator[
-    (WBg @@ anchorArguments[anchoring] - W0)/2];
-  dtnVariation = OperatorSum[
-    -OperatorComposition[gZero, multiplication, gZero],
-    -DivergenceOperator[multiplication, GradientOperator],
-    -ScalarMultiplier[kappa^2] multiplication];
-  inverseVariation = -OperatorComposition[
-    nZero, dtnVariation, nZero];
-  flatOperator = FourierMultiplier[flatSymbolC1];
-  firstOperator = OperatorComposition[
-    ScalarMultiplier[I rhoM omega], inverseVariation];
-  OperatorSum[flatOperator, firstOperator]
-];
+(* The Fredholm condition uses the same two-external-leg DtN constructor
+   as the emitted curved operator.  The explicit right-leg argument keeps
+   the constructor-level momentum-freeze control at that same boundary. *)
+fredholmFunctionSpaceOperator[anchoring_,
+    rightLegMomentum_:momentumInput] :=
+  operatorCompositionRecordFromDerivation[
+    anchoring, rightLegMomentum]["COMPOSITION"];
 
 operatorKernelExpansionRules = {
   HoldPattern[DivergenceOperator[
@@ -1534,18 +1520,34 @@ emitShared["FACE_RESPONSE_COEFFS", Map[
   Function[response, responseCoefficients[response]],
   mainFaceResponses]];
 
-fredholmPayload = Association@Table[anchoring -> <|
-  "OPERATOR" -> OperatorSum[IdentityOperator,
+fredholmPayload = Association@Table[anchoring -> Module[
+  {fredholmZ, refrozenFredholmZ, fredholmOperator},
+  fredholmZ = fredholmFunctionSpaceOperator[anchoring];
+  refrozenFredholmZ = fredholmFunctionSpaceOperator[
+    anchoring, momentumOutput];
+  fredholmOperator = OperatorSum[IdentityOperator,
     OperatorComposition[ScalarMultiplier[lambdaA/rhoM^2],
-      fredholmFunctionSpaceOperator[anchoring]]],
-  "NONINVERTIBILITY_RELATION" -> relationalObject[
-    Inactive[Det][OperatorSum[IdentityOperator,
-      OperatorComposition[ScalarMultiplier[lambdaA/rhoM^2],
-        fredholmFunctionSpaceOperator[anchoring]]]], 0],
-  "FLAT_DIAGONAL_SYMBOL_RELATION" -> flatDegeneracyEquation,
-  "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}},
-  "DIMENSION_L_T_M" -> dimensionZero|>,
-  {anchoring, anchorings}];
+      fredholmZ]];
+  <|
+    "OPERATOR" -> fredholmOperator,
+    "Z_OPERATOR" -> fredholmZ,
+    "FREDHOLM_Z_HAS_Q_INPUT" -> computedContainmentProbe[
+      fredholmZ, qOut[omega, momentumInput]],
+    "FREDHOLM_Z_HAS_Q_OUTPUT" -> computedContainmentProbe[
+      fredholmZ, qOut[omega, momentumOutput]],
+    "RIGHTMOST_REFROZEN_Z_OPERATOR" -> refrozenFredholmZ,
+    "RIGHTMOST_REFROZEN_FREDHOLM_Z_HAS_Q_INPUT" ->
+      computedContainmentProbe[
+        refrozenFredholmZ, qOut[omega, momentumInput]],
+    "RIGHTMOST_REFROZEN_FREDHOLM_Z_HAS_Q_OUTPUT" ->
+      computedContainmentProbe[
+        refrozenFredholmZ, qOut[omega, momentumOutput]],
+    "NONINVERTIBILITY_RELATION" -> relationalObject[
+      Inactive[Det][fredholmOperator], 0],
+    "FLAT_DIAGONAL_SYMBOL_RELATION" -> flatDegeneracyEquation,
+    "MULTIGRADE_EPSILON_ETA_SIGMAW" -> {{0, 0, 0}},
+    "DIMENSION_L_T_M" -> dimensionZero|>
+  ], {anchoring, anchorings}];
 emitShared["NONINVERTIBILITY_CONDITION", fredholmPayload];
 Clear[fredholmPayload];
 
@@ -1659,6 +1661,51 @@ portParityBlock[combination_Association, "ZETA_C"] := <|
   "COUPLING_TO_OTHER_COMBINATION" ->
     combination["ZETA_C_TO_DELTA_W_BLOCK"]|>;
 
+(* Reuse the protected face-to-parity constructor for the memory form.
+   The corruption changes one first-jet source only while constructing the
+   plus-face port; the minus-face constructor remains the baseline one. *)
+plusFaceMemoryCorruptionWeights = ReplacePart[
+  unitSlopeWeights, 1 -> -unitSlopeWeights[[1]]];
+oneSidedPlusFaceMemoryPortBase[anchoring_, density_] :=
+    oneSidedPlusFaceMemoryPortBase[anchoring, density] = Module[
+  {corruptedDirectCases},
+  corruptedDirectCases = ReplacePart[directMain,
+    Key[anchoring] -> directCase[anchoring,
+      plusFaceMemoryCorruptionWeights, qOutputLive, qInputLive]];
+  Block[{directMain = corruptedDirectCases},
+    curvedPortResponse[anchoring, 1, density, memoryKernelHandles]]
+];
+memoryPortCaseForAxes[anchoring_, face_, density_, outputRegime_,
+    inputRegime_, construction_] := Module[{basePort},
+  basePort = If[
+    construction === "PLUS_FACE_FIRST_JET_SIGNFLIP" && face === 1,
+    oneSidedPlusFaceMemoryPortBase[anchoring, density],
+    memoryPortBase[anchoring, face, density]];
+  Map[grazingExpression[#, outputRegime, inputRegime] &, basePort]
+];
+memoryPortParityCombination[anchoring_, density_, outputRegime_,
+    inputRegime_, construction_] := Block[{portCaseForAxes},
+  portCaseForAxes[localAnchoring_, localFace_, localDensity_,
+      localOutputRegime_, localInputRegime_] :=
+    memoryPortCaseForAxes[localAnchoring, localFace, localDensity,
+      localOutputRegime, localInputRegime, construction];
+  portParityCombination[anchoring, density, outputRegime, inputRegime]
+];
+memoryParityMatrixEndpoint[hermitianForm_, timeSymbol_, endpoint_] :=
+ Module[{endpointRules},
+  endpointRules = Thread[memoryKernelHandles ->
+    memoryLawEndpoint[timeSymbol, endpoint]];
+  (hermitianForm /. endpointRules) /. realMemoryParameterRules
+];
+memoryParityLimitPackage[hermitianForm_] := Association@Table[
+  ToString[timeSymbol, InputForm] -> <|
+    "OMEGA_TAU_OPERAND" -> omega timeSymbol,
+    "ZERO_LIMIT" -> memoryParityMatrixEndpoint[
+      hermitianForm, timeSymbol, 0],
+    "INFINITE_LIMIT" -> memoryParityMatrixEndpoint[
+      hermitianForm, timeSymbol, Infinity]|>,
+  {timeSymbol, {tauA, tauV, tauX}}];
+
 beginAssociationEmission[sharedObject["PERMEABLE_PORT_HERMITIAN"]];
 firstPortEmission = True;
 Do[
@@ -1714,26 +1761,78 @@ beginAssociationEmission[
   sharedObject["PERMEABLE_DISSIPATION_VS_OMEGA_TAU"]];
 firstMemoryEmission = True;
 Do[
-  portCase = portCaseForAxes[anchoring, face, density,
+  portCombination = portParityCombination[anchoring, density,
     outputRegime, inputRegime];
-  appendAssociationEmission[portCaseKey[anchoring, face, density,
-    outputRegime, inputRegime, parity], <|
-      "HERMITIAN_FORM" -> portCase["HERMITIAN_FORM"],
+  memoryCombination = memoryPortParityCombination[anchoring, density,
+    outputRegime, inputRegime, "BASE"];
+  corruptedMemoryCombination = memoryPortParityCombination[
+    anchoring, density, outputRegime, inputRegime,
+    "PLUS_FACE_FIRST_JET_SIGNFLIP"];
+  baseMemoryParityPayloads = AssociationMap[
+    Function[currentParity,
+      portParityBlock[memoryCombination, currentParity][
+        "HERMITIAN_FORM"]], {"DELTA_W", "ZETA_C"}];
+  corruptedMemoryParityPayloads = AssociationMap[
+    Function[currentParity,
+      portParityBlock[corruptedMemoryCombination, currentParity][
+        "HERMITIAN_FORM"]], {"DELTA_W", "ZETA_C"}];
+  memoryParityCorruptionMove = AssociationMap[
+    Function[currentParity, Together[
+      corruptedMemoryParityPayloads[currentParity] -
+        baseMemoryParityPayloads[currentParity]]],
+    {"DELTA_W", "ZETA_C"}];
+  Do[
+    portBlock = portParityBlock[portCombination, parity];
+    memoryBlock = portParityBlock[memoryCombination, parity];
+    appendAssociationEmission[portParityCaseKey[anchoring, density,
+      outputRegime, inputRegime, parity], <|
+      "HERMITIAN_FORM" -> portBlock["HERMITIAN_FORM"],
+      "MEMORY_HERMITIAN_FORM" -> memoryBlock["HERMITIAN_FORM"],
       "INPUT_DIMENSIONS_L_T_M" -> {dimensionVelocity, dimensionMuS},
       "OUTPUT_DIMENSIONS_L_T_M" -> {dimensionPressure, dimensionFlux},
       "POWER_DIMENSION_L_T_M" -> dimensionPressure + dimensionVelocity,
       "MULTIGRADE_EPSILON_ETA_SIGMAW" ->
-        portCaseGrade[anchoring, face, density],
+        DeleteDuplicates[Join[
+          portCaseGrade[anchoring, 1, density],
+          portCaseGrade[anchoring, -1, density]]],
       "INDEPENDENT_MEMORY_LIMITS" ->
-        memoryLimitPackage[anchoring, face, density,
-          outputRegime, inputRegime]|>,
-    firstMemoryEmission];
-  firstMemoryEmission = False;
-  Clear[portCase];
+        memoryParityLimitPackage[
+          memoryBlock["HERMITIAN_FORM"]]|>, firstMemoryEmission];
+    firstMemoryEmission = False,
+    {parity, {"DELTA_W", "ZETA_C"}}];
+  appendAssociationEmission[portParityCaseKey[anchoring, density,
+    outputRegime, inputRegime,
+    "PLUS_FACE_CONSTRUCTION_CONTROL"], <|
+      "BASE_PARITY_COMBINATION_OPERAND" ->
+        baseMemoryParityPayloads,
+      "CORRUPTED_PARITY_COMBINATION_OPERAND" ->
+        corruptedMemoryParityPayloads,
+      "CORRUPTION_MOVE_CORRUPTED_MINUS_BASE" ->
+        memoryParityCorruptionMove,
+      "BASE_PARITY_PAYLOAD_IDENTITY_TEST_OBJECT" -> relationalObject[
+        baseMemoryParityPayloads["DELTA_W"],
+        baseMemoryParityPayloads["ZETA_C"]],
+      "CORRUPTION_MOVE_IDENTITY_TEST_OBJECT" -> relationalObject[
+        memoryParityCorruptionMove["DELTA_W"],
+        memoryParityCorruptionMove["ZETA_C"]],
+      "BASE_FACE_MEMORY_HERMITIAN_OPERANDS" -> <|
+        "FACE_1" -> memoryPortCaseForAxes[anchoring, 1, density,
+          outputRegime, inputRegime, "BASE"]["HERMITIAN_FORM"],
+        "FACE_-1" -> memoryPortCaseForAxes[anchoring, -1, density,
+          outputRegime, inputRegime, "BASE"]["HERMITIAN_FORM"]|>,
+      "CORRUPTED_FACE_MEMORY_HERMITIAN_OPERANDS" -> <|
+        "FACE_1" -> memoryPortCaseForAxes[anchoring, 1, density,
+          outputRegime, inputRegime,
+          "PLUS_FACE_FIRST_JET_SIGNFLIP"]["HERMITIAN_FORM"],
+        "FACE_-1" -> memoryPortCaseForAxes[anchoring, -1, density,
+          outputRegime, inputRegime,
+          "PLUS_FACE_FIRST_JET_SIGNFLIP"]["HERMITIAN_FORM"]|>|>];
+  Clear[portCombination, portBlock, memoryCombination, memoryBlock,
+    corruptedMemoryCombination, baseMemoryParityPayloads,
+    corruptedMemoryParityPayloads, memoryParityCorruptionMove];
   ClearSystemCache[],
-  {anchoring, anchorings}, {face, faces},
-  {density, densityRepresentatives}, {outputRegime, regimes},
-  {inputRegime, regimes}, {parity, {"DELTA_W", "ZETA_C"}}];
+  {anchoring, anchorings}, {density, densityRepresentatives},
+  {outputRegime, regimes}, {inputRegime, regimes}];
 endAssociationEmission[];
 Clear[firstPortEmission, firstMemoryEmission, portCase];
 

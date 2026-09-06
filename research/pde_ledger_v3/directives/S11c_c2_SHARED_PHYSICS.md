@@ -311,42 +311,43 @@ representative `ρ` HELD FIXED across the two routes** (⛔ the routes are the *
 anchoring axis):
 
 ```text
-route 1 (Eulerian):    I_E^{α,ρ}     = extract( close(SLAB)   − SLAB   ) ,
-route 2 (material→E):   I_{M→E}^{α,ρ} = extract( T_{M→E}[ close(SLAB_M) − SLAB_M ] ) .
+route 1 (Eulerian):  I_E^{α,ρ}     = extract( close(SLAB)   − SLAB   ) ,
+route 2 (material):  I_{M→E}^{α,ρ} = extract( close(SLAB_M) − SLAB_M ) .
 ```
-⭐⭐ **MAP-THEN-EXTRACT — the order is load-bearing, ⛔ NEVER extract-then-map.** `extract` (§3c) is a **lossy,
-intrinsically-Eulerian projection** (Helmholtz `restricted(·,TRANSVERSE/LONGITUDINAL)`, div/curl, fixed Eulerian test
-functions), and the `N4` map mixes sectors (`θ_material = θ + u·∇ρ⁰/ρ`), so `extract` and `T_{M→E}` do **NOT
-commute**: extracting the material rows first and mapping afterward drops the advective off-diagonal — exactly the
-channel `N6` tests. Apply `T_{M→E}` to the material **carrier** first, then the SINGLE Eulerian `extract` on both
-routes (there is no `extract_M`). This is the parent house pattern (`S11c_b_brane_operator_sympy_audit.py:2762-2783`:
-`material_pullback` on the density → `operator_from_density`).
+⭐⭐ **NO separate `T` on the increment.** This is the parent house pattern `a.task_rep_invariance` (native material vs
+Eulerian face quantities, differenced directly — NO field redefinition) applied to the c2 face-slot increment: build
+route 2's carrier from **native material-route face ingredients** (the material→Eulerian map lives INSIDE those
+builders, via the covector inverse-transpose) and difference directly against route 1. ⛔ Do NOT apply a field-
+redefinition `T` to the carrier / closed increment / extracted rows: the increment is **δp-slot-only** (`S_P` carries
+no field `θ`), so a θ-shift on it is a no-op/annihilating, and `material_pullback` is a bulk-density quadratic whose 2nd
+scale-derivative ANNIHILATES linear rows. ⭐ **The full route-2 construction is the reviewed, cleared astra spec**
+`_measurements/S11c_c2_N6_route2_spec_astra.md` (fresh-Claude + Grok CLEAR) — build route 2 exactly as it specifies.
 
 where, at this SAME fixed anchoring `α` (and density `ρ`):
 - **route 1** is c2's §3c increment built in **Eulerian** variables — the §3a substitution of the imported same-`α`
-  c1 closed face response into the imported Eulerian `slab_operator` (`SLAB`), then the §3c weak extraction. ⛔
-  "Eulerian graph/level-set" is S11c-a **substrate** language, ⛔ not c2's construction: c2 **folds**, it does not
-  re-differentiate the interface.
+  c1 closed face response into the imported Eulerian `slab_operator` (`SLAB`), then the §3c weak extraction.
 - **`SLAB_M`** is the **native material-coordinate** δp-slot pressure carrier at this same `α` — the direct sibling
-  of route 1's `SLAB`, ⛔ not an already-imported operand. Build it from the **S11c-a MATERIAL face sources**
-  (traction / `closure_shape_deriv` / face velocity `V_s`, `S11c-a §5a` face-flattening for this `α`) folded into the
-  **same δp slots** the S11c-b face-fold uses (a NAMED existing construction, ⛔ not a new recipe). ⚠ The S11c-a
-  material face builder **already maps its covector to Eulerian** (inverse-transpose) — account for that, ⛔ no
-  double-map. ⛔⛔ There is **no ready-made callable** for `SLAB_M`: `build_operator(route="MATERIAL")` folds the bulk
-  map in and keeps Eulerian faces, so it is ⛔ NOT `SLAB_M`.
-- **`close(SLAB_M)`** is the §3a substitution of the **imported same-`α`** c1 closed face response
-  `s11c_c1_face_response` into `SLAB_M` — the close operand **IS that imported response**, ⛔ NOT a second DtN
-  construction, ⛔ NOT c1's Hanzawa operand standing in for "material."
-- **`T_{M→E}`** is the `N4` representation map — the field redefinition `θ → θ + u·∇ρ⁰/ρ` (`Δρ = δρ_E + u·∇ρ⁰`), the
-  anchoring-branched `e_W` shift (`e_W → e_W + u·∇W/W` for `LAB_HELD`, unchanged for `MATERIAL`), × Jacobian
-  `1 + tr(∇u)`. ⛔⛔ **It is NOT `material_pullback` applied to the carrier/extracted rows** — that callable is a
-  **bulk-density quadratic map** (it ends in a 2nd scale-derivative that ANNIHILATES the linear carrier rows, never
-  touches the δp face slots, and — trial-only — misses the **reverse u-row channel** `δθ_M = δθ_E + δu·∇ρ/ρ`, the
-  off-diagonal N6 tests). The representation difference must instead be realized **at the action / virtual-work SCALAR
-  level** (native material faces + any bulk field redefinition on the scalar), with the **Eulerian variation taken
-  AFTER** (so BOTH the forward and reverse off-diagonals are generated), then the SINGLE Eulerian `extract`. ⛔ Do NOT
-  re-transform the already-Eulerian imported `close` response. The exact construction pipeline is the builder's to
-  design; the build legs gate it.
+  of route 1's `SLAB`. Build it from the **S11c-a MATERIAL face sources** (traction / `closure_shape_deriv` / virtual
+  work / face velocity `V_s` via the `route="MATERIAL"` builders, already Eulerian-mapped via the covector
+  inverse-transpose) folded into the **same δp symbols** the S11c-b face-fold uses, closed with **material μ_θ**. ⚠ The
+  material face builder ALREADY maps the covector — ⛔ no double-map. ⛔⛔ There is **no ready-made callable**:
+  `build_operator(route="MATERIAL")` folds the bulk map in but keeps Eulerian faces, so it is ⛔ NOT `SLAB_M` (a thin
+  material face-fold adapter must be built).
+- **μ_θ binding (the load-bearing spec decision):** route 2 binds **material μ_θ** (from `operator_from_density` on the
+  material-route bulk density), at BOTH the face substrate AND the c1 response source; route 1 binds the imported
+  **Eulerian** μ_θ. This is the *constitutive-and-face* N6 — ⛔ NOT a geometry-only test (Eulerian μ_θ on both routes),
+  which makes the N4 advection channel vacuous. N4 enters through the **closed pressure source μ** (the direct μ terms
+  in the open face rows are δp-independent and cancel in the increment).
+- **`close(·)`** is the §3a substitution of the **imported same-`(α,ρ)`** c1 response `s11c_c1_face_response` into the
+  carrier — **opaque** to any coordinate map (⛔ never re-transform it; ⛔ no `θ`-substitution / Jacobian into
+  `DELTA_P` / `Z` / resolvent), route 2 using material `V_s` + material μ_θ in the source slots. ⛔ NOT a second DtN
+  construction.
+- **The reverse-u channel is grade-suppressed — ⛔ NOT a mandatory survival requirement.** The N4-induced reverse-U
+  pressure carrier is `(U-carrier grade) × (N4 μ grade)` = 0 (`LAB_HELD`: U carrier ≡ 0) or `O(σ_W²)`
+  (`MATERIAL_ADVECTED`: U carrier `O(σ_W)`) — **outside** the retained `(η^{≤1},σ_W^{≤1})` rectangle (verified on the
+  imported operator). ⇒ ⛔ do NOT require a retained reverse-U N4 contribution to survive (that manufactures a channel
+  this fold lacks); the live N4 signal is in the **forward μ/pressure-source** couplings. Report reverse-block
+  `t`-sensitivities and **permit computed absence**; ⛔ never credit `extract`'s existing U-row curl as an N4 witness.
 - ⛔ Do NOT reconstruct the bulk DtN by S11c-a's global scaling `w′=[w−ζ_c]/[W_bg+δW]` (`c1 §5a`: secular at
   infinity). ⛔ `Δρ` still does not bridge `LAB_HELD ↔ MATERIAL_ADVECTED`.
 
@@ -371,11 +372,12 @@ to two distinct physical setups, the exact freeze/identification `N4` exists to 
 source** and recompute it, leaving the other route unchanged. Two probes: (i) a **tilt** probe — reverse one face's
 first-jet slope term in `n̂_s` on the **Eulerian** route, built through the **same carrier factory** as that route's
 baseline (⛔ NOT by editing the imported operator, ⛔ NOT by altering only the c1 DtN kernel jet — that does not move
-the slab carrier's normal-derived coefficients); (ii) an **N4 advection** probe — omit the map's advective term
-`u·∇ρ⁰/ρ` (the `N4` `θ`-shift) only inside `T_{M→E}` (⛔ NOT from the common `δp_s`-independent slab base, which
-cancels in the increment per §3c and so would not move it). ⚠ That term is **structurally ABSENT for `RHO4_CONSTANT`**
-(`ρ₄=ρ_br/W₀` constant ⇒ `∇ρ₄=0`) and PRESENT for `RHOBR_CONSTANT` (`ρ₄=ρ_br/W_bg`, live `W_bg`) — the live probe is
-`RHOBR_CONSTANT`; for `RHO4_CONSTANT` emit the computed absence, ⛔ never an `A−A`. Emit the package
+the slab carrier's normal-derived coefficients); (ii) an **N4 advection** probe — a source tag `t` on the material
+bulk-density θ-advection `u·∇ρ₄/ρ₄` inside the **material μ_θ** construction (baseline `t=1`, corrupted `t=0`),
+recomputed μ bound at BOTH the face and the c1-source (⛔ NOT omitting `BACKGROUND_ADVECTION` from the `δp`-independent
+mass base, which cancels per §3c and would not move the increment). ⚠ That term is **structurally ABSENT for
+`RHO4_CONSTANT`** (`ρ₄=ρ_br/W₀` constant ⇒ `∇ρ₄=0`) and PRESENT for `RHOBR_CONSTANT` (`ρ₄=ρ_br/W_bg`, live `W_bg`) —
+the live probe is `RHOBR_CONSTANT`; for `RHO4_CONSTANT` emit the computed absence, ⛔ never an `A−A`. Emit the package
 `S11CC2_CONTROL_INDEPENDENCE_{BASE,CORRUPTED,RESIDUAL}[α,ρ,probe]`: **PRINT** the operands and residual, ⛔ do not
 assert; the disposition — the corrupted route moved while the **uncorrupted** route did not — is adjudicated on our
 side. ⛔ Do not emit an `A−A` control where emitted provenance shows the mutated source is structurally absent.

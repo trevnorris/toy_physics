@@ -8,10 +8,13 @@ the c2 audit **never ran** — the audit's `REP_INVARIANCE_*` loop is the obsole
 
 - **Deliverable:** `research/pde_ledger_v3/scripts/S11c_c2_N6_diagnostic_sympy.py` (a dedicated companion, sibling of
   `S11c_c2_FG_diagnostic_sympy.py`), plus its transcript OUTSIDE the repo.
-- **Governing physics (SUPPLIED — the ONLY spec you read):** `directives/S11c_c2_SHARED_PHYSICS.md` §5c (the object),
-  with §3a (the close operation), §3c (the weak increment + slot-linearity + `extract`), §1d (routing), §5d
-  (density), §6 (dimensions/multigrade contract). ⛔ Do NOT read any `_measurements/` design or adjudication record —
-  they are orchestrator notes that state a physics expectation you must not see.
+- **Governing physics (SUPPLIED):** `directives/S11c_c2_SHARED_PHYSICS.md` §5c (the object), with §3a (close), §3c
+  (weak increment + slot-linearity + `extract`), §1d (routing), §5d (density), §6 (dimensions/multigrade contract);
+  and the **authoritative, reviewed-CLEAR route-2 construction spec**
+  `research/pde_ledger_v3/_measurements/S11c_c2_N6_route2_spec_astra.md` (astra-authored, fresh-Claude + Grok CLEAR;
+  target withheld) — **build route 2 exactly as it specifies.** ⛔ Do NOT read any OTHER `_measurements/` design or
+  adjudication record — those state a physics expectation you must not see (the astra route-2 spec is the sole
+  exception, and it withholds the target).
 - **This is a pure-SymPy build. No Mathematica.** Watch memory/time (§ "Budget").
 
 ⛔ **You are BUILDING the object §5c NAMES. You are NOT handed, and must NOT invent, any expected value for any
@@ -21,26 +24,26 @@ PIT whose numeric output we adjudicate — ⛔ **residual-zero is NEVER a builde
 
 ---
 
-## 1 · The object — §5c's two coordinate routes at a FIXED anchoring, MAP-THEN-EXTRACT
+## 1 · The object — §5c's two coordinate routes at a FIXED anchoring (⛔ NO `T` on the increment)
 
 For **each fixed anchoring `α`** and density representative `ρ` (⛔ the two routes are the *representation* axis; the
 anchoring and density are HELD FIXED across the two routes), construct the c2 self-energy increment two independent
 ways and difference them:
 
 ```text
-route 1 (Eulerian):    I_E^{α,ρ}     = extract( close(SLAB)   − SLAB   )
-route 2 (material→E):   I_{M→E}^{α,ρ} = extract( T_{M→E}[ close(SLAB_M) − SLAB_M ] )
+route 1 (Eulerian):  I_E^{α,ρ}     = extract( close(SLAB)   − SLAB   )
+route 2 (material):  I_{M→E}^{α,ρ} = extract( close(SLAB_M) − SLAB_M )
 R_N6^{α,ρ} = I_E^{α,ρ} − I_{M→E}^{α,ρ}
 ```
 
-⭐⭐ **MAP-THEN-EXTRACT is load-bearing — ⛔ NEVER extract-then-map.** `extract` (§3c,
-`scripts/S11c_c2_selfenergy_fold_sympy_audit.py:325-342`) is a **lossy, intrinsically-Eulerian projection** (Helmholtz
-`restricted(·,TRANSVERSE/LONGITUDINAL)`, div/curl, fixed Eulerian test functions `s11cc2Test*`), and `T_{M→E}` mixes
-sectors (`θ → θ + u·∇ρ⁰/ρ`), so the two do **NOT commute**: extracting the material rows first and mapping afterward
-silently drops the advective off-diagonal — exactly the channel N6 tests. Apply `T_{M→E}` to the material **carrier
-increment** first, then the SINGLE Eulerian `extract` on both routes. **There is no `extract_M`.** This mirrors the
-parent house pattern (`scripts/S11c_b_brane_operator_sympy_audit.py:2762-2783`: `material_pullback` on the density →
-`operator_from_density`).
+⭐⭐ **There is NO separate `T` on the increment** — route 2 mirrors the parent `a.task_rep_invariance` (native material
+vs Eulerian face quantities, differenced directly): build route 2's carrier from **native material-route face
+ingredients** (the material→Eulerian map lives INSIDE those builders, via the covector inverse-transpose) closed with
+**material μ_θ**, and difference directly against route 1. ⛔ Do NOT apply a field-redefinition to the carrier / closed
+increment / extracted rows: the increment is δp-slot-only (`S_P` carries no `θ`), so a θ-shift is a no-op/annihilating,
+and `material_pullback` is a bulk-density quadratic that ANNIHILATES linear rows. ⭐ **Build route 2 EXACTLY per the
+cleared astra spec `_measurements/S11c_c2_N6_route2_spec_astra.md`** (the definitions below are the summary; that spec
+is authoritative on the pipeline, the μ_θ binding, the controls, and the finite-field PIT contract).
 
 Emit, keyed by object + anchoring + density (§5c tags):
 ```text
@@ -56,18 +59,20 @@ Definitions (all §5c, at the SAME fixed `α,ρ` — read them verbatim, ⛔ do 
 - **`close(X)`** = the §3a substitution of the **imported same-`α` c1 closed face response** `s11c_c1_face_response`
   into `X`; **`extract`** = the single §3c Eulerian weak extraction. Route 1 is c2's current Eulerian increment.
 - **`SLAB_M`** = the **native material-coordinate** δp-slot pressure carrier at this same `α` — built from the
-  **S11c-a MATERIAL face sources** (traction / `closure_shape_deriv` / face velocity `V_s`) folded into the **same δp
-  slots** the S11c-b face-fold uses (a NAMED existing construction, ⛔ not a new recipe). ⚠ The S11c-a material face
-  builder **already maps its covector to Eulerian** (inverse-transpose) — account for that, ⛔ no double-map. ⛔⛔ There
-  is **no ready-made callable** for `SLAB_M`: `build_operator(route="MATERIAL")` folds the bulk map in and keeps
-  Eulerian faces — ⛔ it is NOT `SLAB_M`.
-- **`T_{M→E}`** = the `N4` representation map: `θ → θ + u·∇ρ⁰/ρ`, the anchoring-branched `e_W` shift (`e_W → e_W +
-  u·∇W/W` for `LAB_HELD`, unchanged for `MATERIAL`), × Jacobian `1+tr(∇u)`. ⛔⛔ **It is NOT `material_pullback`
-  applied to the carrier/extracted rows** (see §3): that callable is a bulk-density quadratic map whose final 2nd
-  scale-derivative ANNIHILATES the linear carrier rows, never touches the δp face slots, and (trial-only) misses the
-  reverse u-row channel `δθ_M = δθ_E + δu·∇ρ/ρ` — the off-diagonal N6 tests. The map is realized at the **action /
-  virtual-work SCALAR level with the Eulerian variation taken AFTER**, then the single Eulerian `extract`. ⛔ Do NOT
-  re-transform the already-Eulerian imported `close` response.
+  **S11c-a MATERIAL face sources** (traction / `closure_shape_deriv` / virtual work / face velocity `V_s` via the
+  `route="MATERIAL"` builders, already Eulerian-mapped via the covector inverse-transpose) folded into the **same δp
+  symbols** the S11c-b face-fold uses, closed with **material μ_θ**. ⚠ The material face builder ALREADY maps the
+  covector — ⛔ no double-map. ⛔⛔ **No ready-made callable** for `SLAB_M`: `build_operator(route="MATERIAL")` folds the
+  bulk map in but keeps Eulerian faces — a thin material face-fold adapter must be built (astra spec §3, §8).
+- **μ_θ binding (the load-bearing decision):** route 2 binds **material μ_θ** (from `operator_from_density` on the
+  material-route bulk density) at BOTH the face substrate AND the c1 response source; route 1 binds the imported
+  **Eulerian** μ_θ. ⛔ NOT geometry-only (Eulerian μ_θ both routes) — that makes the N4 advection channel vacuous. N4
+  enters through the **closed pressure source μ** (the open face rows' direct μ terms are δp-independent and cancel).
+- **Reverse-u channel is GRADE-SUPPRESSED, ⛔ NOT a mandatory survival requirement:** the N4-induced reverse-U pressure
+  carrier is 0 (`LAB_HELD`, U carrier ≡ 0) or `O(σ_W²)` (`MATERIAL_ADVECTED`, U carrier `O(σ_W)`) — outside the
+  retained `(η^{≤1},σ_W^{≤1})` rectangle (verified on the imported operator). ⛔ Do NOT require a reverse-U N4
+  contribution to survive; the live N4 signal is the **forward μ/pressure-source** couplings. Report reverse-block
+  `t`-sensitivities + **permit computed absence**; ⛔ never credit `extract`'s existing U-row curl as an N4 witness.
 
 ---
 
@@ -121,41 +126,39 @@ residual, and the slot-linearity guard) by polynomial identity testing:
 the single §3c `extract`. Reuse `bind_inputs / load_model / extract / retained_shape / difference` (as the F/G
 companion does), ⛔ but not `build_case` end-to-end (§2a).
 
-**Route 2 (material→E) — you DESIGN the typed pipeline; this names the OBJECT + REFS + definition-of-done.**
-⭐ The exact route-2 CAS pipeline is yours to design and build — ⛔ the orchestrator does NOT hand you a recipe (two
-prior recipes were type-wrong). Build the object §5c names, satisfying every DoD clause below; the **build review legs
-will gate the construction** (types, annihilation, reverse channel, double-map).
+**Route 2 (material) — build EXACTLY per the cleared astra spec `_measurements/S11c_c2_N6_route2_spec_astra.md`.**
+That spec (astra-authored, fresh-Claude + Grok CLEAR) is authoritative on the pipeline; follow its §2–§8. This is the
+summary + the definition-of-done the **build review legs will gate**:
 
-*Verified refs (reuse these; ⛔ do not re-derive):*
-- native material δp-slot carrier: the **S11c-a MATERIAL face sources** (traction / `closure_shape_deriv` / face
-  velocity `V_s`, `scripts/S11c_a_interface_geometry_sympy_audit.py:703-845`) folded into the **same δp slots** the
-  **S11c-b face-fold** uses; ⚠ that S11c-a builder **already maps its covector to Eulerian** (inverse-transpose,
-  `:742-755`) — account for it, ⛔ no double-map.
-- the `N4` field redefinition / Jacobian: `material_pullback` (`scripts/S11c_b_brane_operator_sympy_audit.py:1916-1981`)
-  — read it as the **definition of the field map**, ⛔ do NOT call it on carrier/extracted rows (its 2nd scale-
-  derivative annihilates linear rows; it never touches δp slots).
-- `close` = the same imported same-`α` c1 response (`s11c_c1_face_response`), with route-2 `V_s` = **material** face
-  velocity; ⛔ do not reconstruct the DtN; ⛔ do not re-transform the already-Eulerian response.
-- the trial-only `representation_pullback` (`scripts/S11c_c2_selfenergy_fold_sympy_audit.py:1136-1171`) — ⛔ NOT the
-  map (it misses the reverse channel).
+*Verified refs (from the astra spec; ⛔ do not re-derive):*
+- native material δp-slot carrier: **S11c-a MATERIAL face sources** (traction / `closure_shape_deriv` / virtual work /
+  `V_s` via `route="MATERIAL"`, `scripts/S11c_a_interface_geometry_sympy_audit.py:703-845`) folded into the **same δp
+  symbols** the **S11c-b face-fold** uses (`face_generalized_force_rows`, `bind_mu_theta_operand` — bind μ_θ BEFORE
+  `diff(..., δv)`, `scripts/S11c_b_brane_operator_sympy_audit.py:2135-2179`); ⚠ the S11c-a builder already maps its
+  covector to Eulerian (`:742-755`) — ⛔ no double-map.
+- **material μ_θ** = `operator_from_density` amplitude on the material-pulled-back bulk *scalar*
+  (`material_pullback` `:1916-1981` used ONLY on that scalar, ⛔ never on rows/slots); bound at BOTH the face and the
+  c1-source. Route 1 uses the imported Eulerian μ_θ.
+- `close` = the same imported same-`(α,ρ)` c1 response (`s11c_c1_face_response`), **opaque** (⛔ no θ-sub / Jacobian
+  into `DELTA_P`/`Z`/resolvent); route-2 source slots use material `V_s` + material μ_θ.
 
 *Definition of done (the build legs will check each):*
-1. **Native, not a re-pullback of route 1** — route 2 is built from material face sources + material `V_s`, ⛔ never by
+1. **Native, not a re-pullback of route 1** — material face sources + material `V_s` + material μ_θ, ⛔ never by
    transforming route 1's operand.
-2. **Map-then-extract, at the SCALAR level** — any bulk `N4` field redefinition is applied to the action / virtual-
-   work scalar with the **Eulerian variation taken AFTER**, then the SINGLE Eulerian `extract`. ⛔ Never `extract` on
-   unmapped material rows (Eulerian tests ⇒ ill-posed).
-3. **No annihilation** — the material increment must be a nonzero linear carrier; ⛔ if a step (e.g. a 2nd scale-
-   derivative on linear rows) sends `I_{M→E}→0`, that is a construction bug — emit the intermediate size/grade as a
-   computed check.
-4. **Reverse channel present** — the reverse u-row off-diagonal (`δθ_M = δθ_E + δu·∇ρ/ρ`) must appear, not just the
-   forward θ-row; a trial-only map that drops it is wrong.
-5. **No double-map** — do not map geometry the S11c-a material builder already mapped.
-6. **Carrier-first, no `build_case` end-to-end** (§2a); truncate/evaluate coefficients before closure expansion.
+2. **No `T` on the increment; single Eulerian `extract`** — the material→Eulerian map lives inside the material face
+   builders, ⛔ not a field redefinition applied to the carrier / closed increment / extracted rows.
+3. **No annihilation** — `material_pullback` only on the bulk *scalar* to get μ_θ (⛔ never on linear rows/slots).
+4. **Reverse-u is GRADE-SUPPRESSED, ⛔ NOT mandatory** — the N4 reverse-U pressure carrier is 0 (`LAB_HELD`) or
+   `O(σ_W²)` (`MATERIAL_ADVECTED`), outside the retained rectangle. Report reverse-block `t`-sensitivities and **permit
+   computed absence**; the live N4 signal is the forward μ/pressure-source path. ⛔ Never force a reverse channel; ⛔
+   never credit `extract`'s U-row curl as an N4 witness.
+5. **No double-map** — do not re-map geometry the S11c-a material builder already mapped.
+6. **Carrier-first, no `build_case` end-to-end** (§2a); a thin material face-fold adapter is required (astra §8);
+   truncate/evaluate coefficients before closure expansion.
 
-**Independence is the whole point (build-skill corollary 3 + one-sided corruption).** Route 1 (native Eulerian) and
-route 2 (native material) must be structurally different constructions; verify by §4's one-sided corruptions — if
-corrupting one route moves the other's operand, they were never independent and `R_N6` is decoration.
+**Independence is the whole point.** Route 1 (imported Eulerian) and route 2 (native material) must be structurally
+different constructions; verify by §4's one-sided corruptions — if corrupting one route moves the other's operand,
+they were never independent and `R_N6` is decoration.
 
 ---
 
@@ -172,9 +175,10 @@ adjudicated on our side.
    through the **same injectable Eulerian carrier factory** (at the S11c-a face-source level), and **PIT-check the
    uncorrupted factory output against the imported carrier** before using the control (so a nonzero residual is the
    mutation, ⛔ not reconstruction drift). The material operand keeps its provenance/sample values.
-2. **N4 advection probe** — omit the map's advective term `u·∇ρ⁰/ρ` (the `N4` `θ`-shift) only inside `T_{M→E}`, AFTER
-   constructing the native material carrier increment (⛔ NOT from the `δp_s`-independent slab base, which cancels per
-   §3c; the Eulerian route is unchanged).
+2. **N4 advection probe** — a source tag `t` on the material bulk-density θ-advection `u·∇ρ₄/ρ₄` inside the **material
+   μ_θ** construction (baseline `t=1`, corrupted `t=0`), the recomputed μ bound at BOTH the face and the c1-source
+   (astra §6). ⛔ NOT omitting `BACKGROUND_ADVECTION` from the `δp`-independent mass base (cancels per §3c); the
+   Eulerian route is unchanged.
 
 ⛔ **NO `A−A` control.** That advective term is **structurally ABSENT for `RHO4_CONSTANT`** (`ρ₄=ρ_br/W₀` ⇒ `∇ρ₄=0`)
 and PRESENT for `RHOBR_CONSTANT` (`ρ₄=ρ_br/W_bg`, live `W_bg`) — the **live probe is `RHOBR_CONSTANT`**; for
@@ -252,5 +256,6 @@ superseded by §4; do not carry the old `REP_INVARIANCE_*` names forward.
   increment + slot-linearity + `extract`, the c1 imported face response, the S11c-a/b material builders. A passing
   build does NOT verify these — it computes the N6 residual GIVEN them.
 - **WITHHELD:** any expected value / acceptance criterion for `R_N6` or the controls. There is none to supply; §5c
-  fixes no target. The diff is adjudicated on our side. ⛔ Do not read the `_measurements/` records; ⛔ do not iterate
-  toward a zero residual; a certified nonzero is the most valuable output available.
+  fixes no target. The diff is adjudicated on our side. ⛔ Do not read the `_measurements/` records **other than the
+  cleared route-2 spec `S11c_c2_N6_route2_spec_astra.md`** (which withholds the target); ⛔ do not iterate toward a
+  zero residual; a certified nonzero is the most valuable output available.

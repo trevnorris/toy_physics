@@ -37,14 +37,19 @@ dummy artifact, not a real difference), and the semantic guard **bites** every r
 distinct marker term, and an in-integrand change (the Agent's "B2 returned clean" was its own no-op corruption,
 not a guard gap). This independently corroborates Grok and refutes both of the Agent's apparent defects.
 
-## Verdict — the export repair is SOUND; correct to commit
-Faithful compaction (my 5/5 + Grok + astra's in-run guard), guards bite (my check + Grok), membership minimal +
-correct (increment EMIT-only; both closed operators, all 4 cases; exported==required closure), transparency (no
-Dummy/UnevaluatedExpr; `display` shrunk to the root name), singular locus preserved (astra's pole-revert +
-`reciprocal_powers_unchanged`), physics unchanged (no construction touched; TRIAGE byte-identical), no overstep.
-The 2-leg discipline is met in substance: Grok is a complete clean leg, my rule-13 verification independently
-re-confirms the load-bearing guard-bite + faithfulness, and the Agent's clean checks corroborate while its two
-divergences are conclusively artifacts of its cross-process method.
+## Verdict — the export repair is TECHNICALLY SOUND; ⚠ ONE usable leg + a PROCEDURAL gap (corrected 2026-09-06)
+**Technical soundness (well-supported):** faithful compaction (my 5/5 + Grok + astra's in-run guard), guards bite
+(my check + Grok), membership minimal + correct (increment EMIT-only; both closed operators, all 4 cases;
+exported==required closure), transparency (no Dummy/UnevaluatedExpr; `display` shrunk to the root name), singular
+locus preserved (astra's pole-revert + `reciprocal_powers_unchanged`), physics unchanged (no construction touched;
+TRIAGE byte-identical), no overstep.
+⚠ **PROCEDURAL GAP (Codex-sol compact-prep verify): the 2-leg discipline was NOT met.** Only **Grok** produced a
+complete usable CLEAR report; the fresh-Claude leg wedged and never produced a usable report, and my rule-13
+verification — however thorough — is **NOT a leg** (`CLAUDE.md`: both reports usable; orchestrator verification is
+never a leg; no commit before both legs report). ⇒ calling this "2 re-review legs / re-reviewed clear" was an
+**over-claim**. The commit `aa76105a` stands as the technically-supported reviewed baseline (Grok + my verify), but
+**one complete usable fresh-Claude publication re-review leg is OWED** before procedural clearance — run it (with
+foreground-only instructions to avoid the wedging) BEFORE advancing to the WL build.
 
 ⚠ **Process note (for leg-quality tracking):** the fresh-Claude leg repeatedly wedged on reaped background waiters
 and its cross-process semantic method produced false-positive FAILs; a same-process comparison (as Grok and I did)

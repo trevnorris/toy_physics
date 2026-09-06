@@ -57,14 +57,22 @@ residue), i.e. a property of the §3c increment representation, not a fold error
 is O(εη) (it decouples at η→0, verified in F).
 
 ### E (N6 rep-invariance) — Grok CONFIRMED "does not vanish (σ channel)"; Claude "leading order holds, σ_W deferred"
-**Verified: leading-order rep-invariance HOLDS; the remnant is σ_W-sector only.**
-Command: `_measurements/S11c_c2_adjudication_verify_EG.py` → `…_verify_EG.out`. Independent test: does
-`REP_INVARIANCE_RESIDUAL.subs(sigma_W→0) == 0`? **Literal result (both densities, all 6 blocks):**
-`full_zero=False` but `sigmaW->0_zero=True` — setting σ_W→0 annihilates the entire residual ⇒ **every**
-non-invariance term carries a σ_W factor. So the leading O(ε) and O(εη) representation-invariance holds exactly;
-the non-invariance is confined to the **σ_W drain sector** (the known c1 drain-projection O(σ_W²) carry-forward;
-full evaluation matches the ≥64 GB deferred rep-invariance family). **⇒ not a load-bearing c2 defect;** surfaced +
-carried forward. The step record must claim rep-invariance only at leading order, with the σ_W remnant open.
+**⚠ CORRECTED 2026-09-06 (Codex-sol compact-prep verify, rule 13): E is OPEN — my earlier "false positive / cleanly
+deferred" was an OVER-REACH; Grok's E is NOT disproven.**
+Command: `_measurements/S11c_c2_adjudication_verify_EG.py` → `…_verify_EG.out`. The test proved only:
+`REP_INVARIANCE_RESIDUAL.subs(sigma_W→0) == 0` for every block, both densities (`full_zero=False`,
+`sigmaW->0_zero=True`) — every non-invariance term carries a σ_W factor, so leading O(ε)/O(εη) rep-invariance holds
+**in the σ_W→0 projection**. ⛔ **That is confinement, NOT full N6.** The retained remnant sits at grades
+`(1,0,1)=O(εσ_W)` and `(1,1,1)=O(εησ_W)` — **LINEAR in σ_W**; and σ_W is an **independent first-shape-order
+bookkeeper** alongside η (`S11c_c1_SHARED_PHYSICS.md:223`), so `O(εσ_W)` is **retained physics at the same order as
+O(εη)**, NOT a deferrable higher term. My association with the **O(σ_W²) drain-projection** carry-forward was WRONG
+(a linear-σ_W residual is not that second-order object), and the only explicit c2 ≥64 GB deferral is the full
+cross-engine / four-giant-family work (`S11c_c2_SHARED_PHYSICS.md:39`), NOT this already-emitted single-engine N6
+residual. **⇒ DISPOSITION: N6 rep-invariance is established only after projecting to σ_W=0; the retained
+`O(εσ_W)`/`O(εησ_W)` residual is UNRESOLVED and may be a `representation_pullback` build defect.** It must be
+resolved — as a pullback defect fix, or a separately-reviewed scope/spec decision — **BEFORE the WL build**, ⛔ not
+filed as a cleared/deferred note. (The fresh-Claude leg's "UNSETTLED / possible pullback incompleteness" was closer
+to correct than my "false positive.")
 
 ### G (adjointness) — Grok CONFIRMED "blocks not adjoint; suppressed check hides asymmetry"; Claude "honest omission"
 **Verified: SOUND; Grok's G is a FALSE POSITIVE (refuted a claim the builder never made).**
@@ -82,20 +90,29 @@ defect; omission is correct.
 
 ---
 
-## VERDICT — the c2 fold physics is SOUND (zero confirmed physics defects)
+## VERDICT (⚠ CORRECTED 2026-09-06) — the c2 fold WIRING + A/C/D + F are SOUND; E/N6 is OPEN
 
-The fresh-Claude leg's verdict holds. Grok's four "CONFIRMED" flags are all false positives (F, G) or a label
-dispute where leading order is clean (B is F's residue; E's leading order cancels). Both legs + my verification
-agree the load-bearing fold construction is physically correct.
+The fold **wiring** (δp not J_s, operator-inverse, kernel bridge, V_s→face_velocity, computed jets, ε-strip) and
+the A/C/D1–D6 constructions are supported (both legs + my verification). **F** resolves narrowly (the genuine
+closed coupling decouples; the literal §3c increment retains the open slot → a wording fix). **G** is a measured
+**directional/one-way** SymPy increment (both blocks emitted; ⛔ NO dissipativity/passivity claim is established —
+only directionality; a physics interpretation awaits the WL comparison). **B** is F's residue, not a defect.
+⛔ **E/N6 is OPEN** (corrected E section above): rep-invariance holds only in the σ_W→0 projection; the retained
+`O(εσ_W)`/`O(εησ_W)` residual is UNRESOLVED (possible `representation_pullback` defect) — Grok's E is NOT disproven.
+**⇒ this is NOT "0 confirmed defects": the core fold is sound, but N6 has an open retained-order finding to resolve
+before the WL build.** [The earlier verdict "physics SOUND / F/G/E all false positives" was an over-reach.]
 
-**Carry-forwards / caveats (step-record interpretation, ⛔ NOT build defects):**
-1. **F:** the emitted uniform-limit object is non-vanishing purely from the §3c `−extract(open)` bare-slot
-   representation. Interpret as **"the genuine closure-induced coupling decouples,"** ⛔ not "the increment
-   vanishes." ⇒ **light spec clarification owed** to `S11c_c2_SHARED_PHYSICS.md` §5e (the "increment must vanish"
-   wording) + §3c (the increment carries the open-slot O(ε) piece by construction) — a wording fix that does not
-   change what is computed; folds under spec review-until-clear.
-2. **E:** leading-order (O(ε), O(εη)) representation-invariance ESTABLISHED; the σ_W-sector remnant is SURFACED +
-   deferred (drain-projection O(σ_W²); ≥64 GB rep-invariance family). Record must not claim full rep-invariance.
+**Carry-forwards / caveats:**
+1. **F** (wording, not a defect): the emitted uniform-limit object is non-vanishing purely from the §3c
+   `−extract(open)` bare-slot representation. Interpret as **"the genuine closure-induced coupling decouples,"**
+   ⛔ not "the increment vanishes." ⇒ **light spec clarification owed** to `S11c_c2_SHARED_PHYSICS.md` §5e (the
+   "increment must vanish" wording) + §3c (the increment carries the open-slot O(ε) piece by construction) — a
+   wording fix that does not change what is computed; folds under spec review-until-clear. ⚠ After the spec edit,
+   the committed export's `BUILD_INPUT_DIGESTS` (which pins the spec) goes stale ⇒ regenerate or lawfully repin +
+   reverify the export before advancing.
+2. **E** (⛔ OPEN — NOT a cleared/deferred note): resolve the retained `O(εσ_W)`/`O(εησ_W)` N6 residual as a
+   `representation_pullback` defect fix or a separately-reviewed scope/spec decision BEFORE the WL build. The record
+   must NOT claim full rep-invariance (only σ_W→0-projected).
 3. **G:** the induced self-energy is **directional** (transverse→{θ,e_W}; reverse block identically zero) —
    expected from δp residing only in the θ/mechanical rows; both blocks emitted; no adjointness residual (correct
    per §3b). Record it as a physics feature.

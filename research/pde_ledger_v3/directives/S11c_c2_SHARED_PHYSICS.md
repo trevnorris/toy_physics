@@ -311,24 +311,40 @@ representative `ρ` HELD FIXED across the two routes** (⛔ the routes are the *
 anchoring axis):
 
 ```text
-route 1 (Eulerian):    I_E^{α,ρ}     = extract( close(SLAB) ) − extract(SLAB) ,
-route 2 (material→E):   I_{M→E}^{α,ρ} = T_{M→E}[ extract( close(SLAB_M) ) − extract(SLAB_M) ] .
+route 1 (Eulerian):    I_E^{α,ρ}     = extract( close(SLAB)   − SLAB   ) ,
+route 2 (material→E):   I_{M→E}^{α,ρ} = extract( T_{M→E}[ close(SLAB_M) − SLAB_M ] ) .
 ```
+⭐⭐ **MAP-THEN-EXTRACT — the order is load-bearing, ⛔ NEVER extract-then-map.** `extract` (§3c) is a **lossy,
+intrinsically-Eulerian projection** (Helmholtz `restricted(·,TRANSVERSE/LONGITUDINAL)`, div/curl, fixed Eulerian test
+functions), and the `N4` map mixes sectors (`θ_material = θ + u·∇ρ⁰/ρ`), so `extract` and `T_{M→E}` do **NOT
+commute**: extracting the material rows first and mapping afterward drops the advective off-diagonal — exactly the
+channel `N6` tests. Apply `T_{M→E}` to the material **carrier** first, then the SINGLE Eulerian `extract` on both
+routes (there is no `extract_M`). This is the parent house pattern (`S11c_b_brane_operator_sympy_audit.py:2762-2783`:
+`material_pullback` on the density → `operator_from_density`).
 
 where, at this SAME fixed anchoring `α` (and density `ρ`):
 - **route 1** is c2's §3c increment built in **Eulerian** variables — the §3a substitution of the imported same-`α`
   c1 closed face response into the imported Eulerian `slab_operator` (`SLAB`), then the §3c weak extraction. ⛔
   "Eulerian graph/level-set" is S11c-a **substrate** language, ⛔ not c2's construction: c2 **folds**, it does not
   re-differentiate the interface.
-- **`SLAB_M`** is S11c-b's **material-coordinate** construction of `slab_operator` at this same `α` (`S11c-b §5a`:
-  `x=x(X,t)` and the S11c-a §5a face-flattening coordinate that belongs to that `α`). It is **constructed in this
-  control** (the direct sibling of route 1's `SLAB`), ⛔ not an already-imported operand. ⛔ `SLAB_M` is that
-  material-coordinate operator **BEFORE** the `N4` map-back; `T_{M→E}` is applied **once, to the increment**, in the
-  route-2 formula above — ⛔ it is NOT already folded into `SLAB_M` (else the increment would be double-mapped).
+- **`SLAB_M`** is the **native UNMAPPED material-coordinate** construction of `slab_operator` at this same `α`
+  (`S11c-b §5a`: `x=x(X,t)` and the S11c-a §5a face-flattening coordinate that belongs to that `α`) — the direct
+  sibling of route 1's `SLAB`, at the **density/action level BEFORE** the `N4` map-back. It is **constructed in this
+  control**, ⛔ not an already-imported operand. ⛔⛔ There is **no ready-made callable** that returns it:
+  `build_operator(route="MATERIAL")` **already folds the map in** (`material_pullback` runs before extraction), so it
+  is ⛔ NOT `SLAB_M` — calling it as `SLAB_M` double-maps. Build `SLAB_M` natively from the S11c-a material
+  face-flattening geometry + material face sources; `T_{M→E}` is applied **once, to the material increment `close(
+  SLAB_M) − SLAB_M`, BEFORE the single Eulerian `extract`** (⛔ not folded into `SLAB_M`, ⛔ not applied after
+  extract).
 - **`close(SLAB_M)`** is the §3a substitution of the **imported same-`α`** c1 closed face response
   `s11c_c1_face_response` into `SLAB_M` — the close operand **IS that imported response**, ⛔ NOT a second DtN
   construction, ⛔ NOT c1's Hanzawa operand standing in for "material."
-- **`T_{M→E}`** is the S11c-a/S11b map + Jacobian (`N4`: `Δρ = δρ_E + u·∇ρ⁰`).
+- **`T_{M→E}`** is the explicit `N4` field redefinition **× Jacobian**, applied to the material carrier increment
+  density: `θ → θ + u·∇ρ⁰/ρ` (`Δρ = δρ_E + u·∇ρ⁰`), the anchoring-branched `e_W` shift (`e_W → e_W + u·∇W/W` for
+  `LAB_HELD`, unchanged for `MATERIAL`), and their gradients, all scaled by the Jacobian `1 + tr(∇u)` — i.e. exactly
+  `material_pullback` (`S11c_b_brane_operator_sympy_audit.py:1942-1981`). It transforms the trial fields and their
+  jets in the carrier density; the single downstream Eulerian `extract` supplies the Eulerian test covectors and
+  measure. ⛔ Do NOT re-transform the already-Eulerian imported `close` response.
 - ⛔ Do NOT reconstruct the bulk DtN by S11c-a's global scaling `w′=[w−ζ_c]/[W_bg+δW]` (`c1 §5a`: secular at
   infinity). ⛔ `Δρ` still does not bridge `LAB_HELD ↔ MATERIAL_ADVECTED`.
 

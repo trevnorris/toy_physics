@@ -9,8 +9,8 @@ it carries NO bare delta_p_{plus,minus}/d_w_delta_p symbols; every bare-delta_p 
 therefore comes only from -extract(open). Zero those bare slots -> what remains is
 extract(close)|_uniform. .doit() the Integrals and test == 0.
 """
-import sys; sys.path.insert(0,'/tmp/c2_ablate_agent')
-from load_tag import value_of, to_dict
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from S11c_c2_stdout_loader import value_of, to_dict  # committed loader (needs the .out; see loader's OUT path)
 import sympy as sp
 
 BARE = {'delta_p_minus','delta_p_plus','d_w_delta_p_minus','d_w_delta_p_plus'}

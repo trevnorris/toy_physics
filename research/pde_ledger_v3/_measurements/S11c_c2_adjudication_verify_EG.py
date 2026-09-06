@@ -1,6 +1,6 @@
 """Orchestrator's independent checks for E (N6) and G (adjointness/directionality)."""
-import sys; sys.path.insert(0,'/tmp/c2_ablate_agent')
-from load_tag import value_of, to_dict
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from S11c_c2_stdout_loader import value_of, to_dict  # committed loader (needs the .out; see loader's OUT path)
 import sympy as sp
 
 def blocks(tag):

@@ -55,14 +55,19 @@ Definitions (all §5c, at the SAME fixed `α,ρ` — read them verbatim, ⛔ do 
 - **`SLAB`** = the imported Eulerian `slab_operator` for this `α`.
 - **`close(X)`** = the §3a substitution of the **imported same-`α` c1 closed face response** `s11c_c1_face_response`
   into `X`; **`extract`** = the single §3c Eulerian weak extraction. Route 1 is c2's current Eulerian increment.
-- **`SLAB_M`** = the **native UNMAPPED material-coordinate** c2 pressure carrier at this same `α`, at the
-  density/action level BEFORE the map (S11c-a material face-flattening geometry + material face sources). ⛔⛔ There is
-  **no ready-made callable** for it: `build_operator(route="MATERIAL")` already folds the map in (`material_pullback`
-  runs before extraction) and supplies Eulerian face slots — ⛔ it is NOT `SLAB_M`, calling it double-maps.
-- **`T_{M→E}`** = the explicit `N4` field redefinition × Jacobian, = exactly `material_pullback`
-  (`scripts/S11c_b_brane_operator_sympy_audit.py:1942-1981`): `θ → θ + u·∇ρ⁰/ρ`, the anchoring-branched `e_W` shift
-  (`e_W → e_W + u·∇W/W` for `LAB_HELD`, unchanged for `MATERIAL`), their gradient jets, all × Jacobian `1+tr(∇u)`.
-  Applied **once**, to `close(SLAB_M) − SLAB_M`, before the single Eulerian `extract`.
+- **`SLAB_M`** = the **native material-coordinate** δp-slot pressure carrier at this same `α` — built from the
+  **S11c-a MATERIAL face sources** (traction / `closure_shape_deriv` / face velocity `V_s`) folded into the **same δp
+  slots** the S11c-b face-fold uses (a NAMED existing construction, ⛔ not a new recipe). ⚠ The S11c-a material face
+  builder **already maps its covector to Eulerian** (inverse-transpose) — account for that, ⛔ no double-map. ⛔⛔ There
+  is **no ready-made callable** for `SLAB_M`: `build_operator(route="MATERIAL")` folds the bulk map in and keeps
+  Eulerian faces — ⛔ it is NOT `SLAB_M`.
+- **`T_{M→E}`** = the `N4` representation map: `θ → θ + u·∇ρ⁰/ρ`, the anchoring-branched `e_W` shift (`e_W → e_W +
+  u·∇W/W` for `LAB_HELD`, unchanged for `MATERIAL`), × Jacobian `1+tr(∇u)`. ⛔⛔ **It is NOT `material_pullback`
+  applied to the carrier/extracted rows** (see §3): that callable is a bulk-density quadratic map whose final 2nd
+  scale-derivative ANNIHILATES the linear carrier rows, never touches the δp face slots, and (trial-only) misses the
+  reverse u-row channel `δθ_M = δθ_E + δu·∇ρ/ρ` — the off-diagonal N6 tests. The map is realized at the **action /
+  virtual-work SCALAR level with the Eulerian variation taken AFTER**, then the single Eulerian `extract`. ⛔ Do NOT
+  re-transform the already-Eulerian imported `close` response.
 
 ---
 
@@ -116,22 +121,41 @@ residual, and the slot-linearity guard) by polynomial identity testing:
 the single §3c `extract`. Reuse `bind_inputs / load_model / extract / retained_shape / difference` (as the F/G
 companion does), ⛔ but not `build_case` end-to-end (§2a).
 
-**Route 2 (material→E) — MAP-THEN-EXTRACT, built NATIVELY.**
-- Construct the **native unmapped material carrier** `SLAB_M` (density/action level) from the **S11c-a material
-  face-flattening / exact material-map geometry** (`scripts/S11c_a_interface_geometry_sympy_audit.py:703-815`) plus
-  the material face sources — the direct sibling of route 1's Eulerian carrier. ⛔ Do NOT re-pullback the Eulerian
-  carrier; ⛔ do NOT call `build_operator(route="MATERIAL")` (it already maps).
-- Form the material carrier increment `close(SLAB_M) − SLAB_M` (same imported same-`α` c1 response into both).
-- Apply `T_{M→E}` = `material_pullback` (§1 definition; field redef + anchoring-branched `e_W` shift + jets × Jacobian
-  `1+tr(∇u)`) **once** to that increment. ⛔ NOT the trial-field-only `representation_pullback`
-  (`scripts/S11c_c2_selfenergy_fold_sympy_audit.py:1136-1171`) — it misses the transformation the map+extract needs.
-- Then the SINGLE Eulerian `extract` (⛔ never `extract` on unmapped material rows — the Eulerian test functions make
-  it ill-posed; ⛔ never re-transform the already-Eulerian imported `close` response).
+**Route 2 (material→E) — you DESIGN the typed pipeline; this names the OBJECT + REFS + definition-of-done.**
+⭐ The exact route-2 CAS pipeline is yours to design and build — ⛔ the orchestrator does NOT hand you a recipe (two
+prior recipes were type-wrong). Build the object §5c names, satisfying every DoD clause below; the **build review legs
+will gate the construction** (types, annihilation, reverse channel, double-map).
+
+*Verified refs (reuse these; ⛔ do not re-derive):*
+- native material δp-slot carrier: the **S11c-a MATERIAL face sources** (traction / `closure_shape_deriv` / face
+  velocity `V_s`, `scripts/S11c_a_interface_geometry_sympy_audit.py:703-845`) folded into the **same δp slots** the
+  **S11c-b face-fold** uses; ⚠ that S11c-a builder **already maps its covector to Eulerian** (inverse-transpose,
+  `:742-755`) — account for it, ⛔ no double-map.
+- the `N4` field redefinition / Jacobian: `material_pullback` (`scripts/S11c_b_brane_operator_sympy_audit.py:1916-1981`)
+  — read it as the **definition of the field map**, ⛔ do NOT call it on carrier/extracted rows (its 2nd scale-
+  derivative annihilates linear rows; it never touches δp slots).
+- `close` = the same imported same-`α` c1 response (`s11c_c1_face_response`), with route-2 `V_s` = **material** face
+  velocity; ⛔ do not reconstruct the DtN; ⛔ do not re-transform the already-Eulerian response.
+- the trial-only `representation_pullback` (`scripts/S11c_c2_selfenergy_fold_sympy_audit.py:1136-1171`) — ⛔ NOT the
+  map (it misses the reverse channel).
+
+*Definition of done (the build legs will check each):*
+1. **Native, not a re-pullback of route 1** — route 2 is built from material face sources + material `V_s`, ⛔ never by
+   transforming route 1's operand.
+2. **Map-then-extract, at the SCALAR level** — any bulk `N4` field redefinition is applied to the action / virtual-
+   work scalar with the **Eulerian variation taken AFTER**, then the SINGLE Eulerian `extract`. ⛔ Never `extract` on
+   unmapped material rows (Eulerian tests ⇒ ill-posed).
+3. **No annihilation** — the material increment must be a nonzero linear carrier; ⛔ if a step (e.g. a 2nd scale-
+   derivative on linear rows) sends `I_{M→E}→0`, that is a construction bug — emit the intermediate size/grade as a
+   computed check.
+4. **Reverse channel present** — the reverse u-row off-diagonal (`δθ_M = δθ_E + δu·∇ρ/ρ`) must appear, not just the
+   forward θ-row; a trial-only map that drops it is wrong.
+5. **No double-map** — do not map geometry the S11c-a material builder already mapped.
+6. **Carrier-first, no `build_case` end-to-end** (§2a); truncate/evaluate coefficients before closure expansion.
 
 **Independence is the whole point (build-skill corollary 3 + one-sided corruption).** Route 1 (native Eulerian) and
-route 2 (native material, then mapped) must be structurally different constructions; verify by §4's one-sided
-corruptions — if corrupting one route moves the other's operand, they were never independent and `R_N6` is
-decoration. ⛔ Do NOT build route 2 by transforming route 1.
+route 2 (native material) must be structurally different constructions; verify by §4's one-sided corruptions — if
+corrupting one route moves the other's operand, they were never independent and `R_N6` is decoration.
 
 ---
 
@@ -142,16 +166,20 @@ unchanged. Emit `S11CC2_CONTROL_INDEPENDENCE_{BASE,CORRUPTED,RESIDUAL}[α,ρ,pro
 (via the same PIT), ⛔ do not assert; the disposition (corrupted route moved, uncorrupted route did not) is
 adjudicated on our side.
 
-1. **Tilt probe** — reverse one face's first-jet slope term in `n̂_s` on the **Eulerian** route; rebuild only that
-   route. The material operand keeps its provenance/sample values.
-2. **N4 advection probe** — omit the advective `u·∇ρ⁰` term only inside `T_{M→E}` (the `material_pullback` map),
-   AFTER constructing the native material carrier increment (⛔ NOT from the `δp_s`-independent slab base, which
-   cancels per §3c; the Eulerian route is unchanged).
+1. **Tilt probe** — reverse one face's first-jet slope term in `n̂_s` on the **Eulerian** route. ⛔ The imported
+   operator is already materialized and the c2 slope override only alters the c1 DtN kernel jet — that does NOT move
+   the slab carrier's normal-derived coefficients. Build BOTH the uncorrupted baseline and the slope-corrupted operand
+   through the **same injectable Eulerian carrier factory** (at the S11c-a face-source level), and **PIT-check the
+   uncorrupted factory output against the imported carrier** before using the control (so a nonzero residual is the
+   mutation, ⛔ not reconstruction drift). The material operand keeps its provenance/sample values.
+2. **N4 advection probe** — omit the map's advective term `u·∇ρ⁰/ρ` (the `N4` `θ`-shift) only inside `T_{M→E}`, AFTER
+   constructing the native material carrier increment (⛔ NOT from the `δp_s`-independent slab base, which cancels per
+   §3c; the Eulerian route is unchanged).
 
-⛔ **NO `A−A` control.** If emitted provenance shows a mutated source is **structurally absent** for a representative
-(§5c: `RHOBR_CONSTANT` — frozen surface density — may have the advection source structurally absent), **emit that
-absence as a computed structural fact** — ⛔ do not difference an operand against an identical copy. ⛔ Corrupting one
-*anchoring* is NOT this test.
+⛔ **NO `A−A` control.** That advective term is **structurally ABSENT for `RHO4_CONSTANT`** (`ρ₄=ρ_br/W₀` ⇒ `∇ρ₄=0`)
+and PRESENT for `RHOBR_CONSTANT` (`ρ₄=ρ_br/W_bg`, live `W_bg`) — the **live probe is `RHOBR_CONSTANT`**; for
+`RHO4_CONSTANT` **emit the computed absence as a structural fact**, ⛔ do not difference an operand against an
+identical copy. ⛔ Corrupting one *anchoring* is NOT this test.
 
 ---
 

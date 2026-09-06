@@ -31,20 +31,22 @@ found the extract-then-map ordering defect + the callable/leak/dimension fixes n
    **guarded, not assumed — via the SAME finite-field PIT** (Grok-3: ⛔ never a second full-symbolic increment to
    "guard" the first). Include every route-specific closure ingredient (`μ_θ`, face velocity, normals, slot
    coefficients).
-2. **Native UNMAPPED material carrier `SLAB_M`, ⛔ not a re-pullback of the Eulerian, ⛔ not `build_operator(MATERIAL)`
-   wholesale.** ⛔⛔ `build_operator(route="MATERIAL")` (`S11c_b_brane_operator_sympy_audit.py:2762-2783`) **already
-   folds the map in** (`material_pullback` runs before `operator_from_density` extracts) AND supplies Eulerian face
-   slots — so it is NOT an unmapped `SLAB_M`; calling it double-maps (Codex-2 / Grok-1). Build the native unmapped
-   material pressure-carrier density from the **S11c-a material face-flattening geometry + material face sources**
-   (`S11c_a_interface_geometry_sympy_audit.py:703-815`) — the direct sibling of route 1's Eulerian carrier, at the
-   density/action level BEFORE the map.
-3. **Map-then-extract with `T_{M→E}` = the explicit `material_pullback` field-redef × Jacobian, applied to the
-   carrier increment DENSITY, then the SINGLE Eulerian `extract`.** `T_{M→E}` = `θ→θ+u·∇ρ⁰/ρ`, anchoring-branched
-   `e_W` shift, and their jets, × Jacobian `1+tr(∇u)` (exactly `material_pullback`
-   `S11c_b_brane_operator_sympy_audit.py:1942-1981`), applied ONCE to `close(SLAB_M) − SLAB_M`; then the §3c Eulerian
-   `extract` supplies the Eulerian test covectors + measure. ⛔ Never the trial-field-only `representation_pullback`
-   (`selfenergy_fold:1136-1171`, misses tests). ⛔ Never `extract` on unmapped material rows (Eulerian test functions
-   ⇒ ill-posed — Grok-2). ⛔ Never re-transform the already-Eulerian imported `close` response.
+2. **Native material δp-slot carrier `SLAB_M` from MATERIAL FACE SOURCES, ⛔ not `build_operator(MATERIAL)`
+   wholesale.** ⛔⛔ `build_operator(route="MATERIAL")` (`:2762-2783`) folds the bulk map in + keeps Eulerian faces — NOT
+   `SLAB_M`. Build it from the **S11c-a MATERIAL face sources** (traction / `closure_shape_deriv` / face velocity `V_s`,
+   `S11c_a_interface_geometry_sympy_audit.py:703-845`) folded into the **same δp slots** the S11c-b face-fold uses. ⚠
+   That S11c-a builder **already maps the covector to Eulerian** (inverse-transpose `:742-755`) — account for it, ⛔ no
+   double-map (Codex-r2-1 / Grok-r2-F1).
+3. **Map-then-extract; ⛔ `T_{M→E}` is NOT `material_pullback` on the carrier rows.** ⛔⛔ `material_pullback`
+   (`:1916-1981`) is a bulk-density quadratic map — its final 2nd scale-derivative **ANNIHILATES the linear carrier
+   rows** (`I_{M→E}≈0`), it never touches δp face slots, and (trial-only) misses the **reverse u-row channel** (the
+   N6 off-diagonal). Read it as the DEFINITION of the field map only. The `N4` representation difference is realized
+   **at the action / virtual-work SCALAR level (native material faces + any bulk field redefinition on the scalar),
+   Eulerian variation taken AFTER**, then the SINGLE Eulerian `extract` (⛔ never `extract` on unmapped material rows —
+   ill-posed; ⛔ never the trial-only `representation_pullback` `selfenergy_fold:1136-1171`; ⛔ never re-transform the
+   already-Eulerian `close` response). ⭐ **The exact route-2 pipeline is astra's to design (build legs gate);** open
+   question — whether a bulk field map is needed at all, or native material faces + material `V_s` already give the
+   material increment.
 4. **Close both routes with the SAME imported same-`α` c1 response** (⛔ do not reconstruct the DtN).
 5. **Residual test = exact finite-field PIT** (⛔ not full-symbolic, ⛔ not bare float): split by retained
    `(ε,η,σ_W)` grade / six weak blocks / formal-integral signature / non-`Integral` remainder (normalize only the
@@ -59,11 +61,13 @@ found the extract-then-map ordering defect + the callable/leak/dimension fixes n
      coords consistently (⛔ never `k_in=k_out`, ⛔ never evaluate the integral); `Z`/resolvents/Fourier = SAME
      definitions both routes, sampled generically-but-coherently (⛔ never `Z→0`/scalar/independent-random); test every
      admissible branch cell away from transition/singular surfaces.
-6. **Controls:** **Tilt** — mutate one face's `n̂_s` slope at the **Eulerian** source, rebuild only that route (the
-   material operand keeps its provenance/sample values). **Advection** — omit the `u·∇ρ⁰` term only inside `T_{M→E}`
-   (the `material_pullback` map) AFTER constructing the native material carrier increment (Eulerian route unchanged).
-   ⚠ `RHOBR_CONSTANT` (frozen surface density) may have the advection source **structurally absent** — emit that
-   absence, ⛔ NOT an `A−A` (§5c forbids A−A controls).
+6. **Controls:** **Tilt** — reverse one face's `n̂_s` slope on the **Eulerian** route, built through the **same
+   injectable carrier factory** as that route's baseline, PIT-checked against the imported carrier first (⛔ NOT by
+   editing the imported operator, ⛔ NOT via the c1-DtN-kernel-jet override, which does not move the slab carrier's
+   normal-derived coefficients — Codex-r2-3). **Advection** — omit the map's advective term `u·∇ρ⁰/ρ` (the `N4`
+   `θ`-shift) only inside `T_{M→E}` (Eulerian route unchanged). ⚠ **Structurally ABSENT for `RHO4_CONSTANT`**
+   (`ρ₄=ρ_br/W₀` ⇒ `∇ρ₄=0`), PRESENT for `RHOBR_CONSTANT` (live `W_bg`) — the live probe is `RHOBR_CONSTANT`; for
+   `RHO4_CONSTANT` emit the computed absence, ⛔ NOT an `A−A` (Codex-r2-2 / Grok-r2-F2; my directive had this reversed).
 7. **Dimensions (Codex-5b, §6 contract):** restore `[L,T,M]` + an **able-to-fail** dimensional-consistency result +
    `(ε,η,σ_W)` multigrade (`N12`) on every emitted object.
 

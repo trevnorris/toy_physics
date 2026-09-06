@@ -1,0 +1,169 @@
+I'll start by reading the review-legs skill and the governing physics, then write an independent derivation before touching the script's output.I’ll copy the files into a sandbox, then read the spec, imports, and fold machinery so I can derive the physics independently before using the script’s output.The load-bearing functions are next: extract, kernel bridge, fold construction, and the control/re-adjudication paths.I’ll inspect the imported objects and the stdout index first, then write an independent derivation against those inputs rather than the script’s printed values.I’ll write an independent derivation that inspects the imported objects and reconstructs the fold physics from those inputs.The first derivation hit a Tuple-shaped U-row; I’ll handle that and inspect where the mechanical pressure slots actually live.The uniform-limit operand still carries a bare `delta_p_minus` slot — I’ll parse that payload and finish the independent derivation.The response VALUE is nested; I’ll unwrap it, parse the uniform operand, and start a TRIAGE form ablation.The uniform increment is genuinely nonzero, and the two off-diagonal blocks are not adjoint. Next I’ll inspect the kernel legs and run a TRIAGE-scale form ablation.The plus/minus swap plus a jet-sign flip cancelled on this symmetric LAB_HELD case. I’ll apply a real form change: collapse the two q-legs and drop the jet substitution.Independent derivation scripts and stdout (do not treat the audit as a source of truth):
+
+| Role | Script | Stdout |
+|---|---|---|
+| Inverse, ε-powers, density live relation, traction covector, kernel legs | `/tmp/c2_review/independent_derive3.py` | `/tmp/c2_review/independent_derive3.out` |
+| FIRST_SHAPE atoms, all `face_velocity` cases, increment MULTIGRADE scan | `/tmp/c2_review/inspect_kernel_and_velocity.py` | `/tmp/c2_review/inspect_kernel_and_velocity.out` |
+| One-case fold inspect (maps, slots, grades) | `/tmp/c2_review/inspect_fold_once.py` | `/tmp/c2_review/inspect_fold_once.out` |
+| Uniform / zero-DtN operand parse | `/tmp/c2_review/parse_uniform_operand.py` | `/tmp/c2_review/parse_uniform_operand.out` |
+| FORM ablation (q-leg collapse + drop jets + flip pressure) | same inspector on `/tmp/c2_ablate_form/scripts/...` | `/tmp/c2_review/inspect_fold_form2.out` |
+
+---
+
+## A. Fold map — **sound on the construction; two inherited caveats**
+
+**Pressure, not `J_s`.** Independent inspect of `slab_operator` EXPANDED rows: θ and e_W carry `delta_p_±` / `d_w_delta_p_±` only; no `J_s` / `delta_j` / `relative_flux` slots (`independent_derive3.out`, `independent_derive2.out`). `build_face`@510–512 substitutes exactly those four slot names. One-case run: `SUBSTITUTION_KEYS = [d_w_delta_p_minus, d_w_delta_p_plus, delta_p_minus, delta_p_plus]`, `HAS_J_SLOT False`, `CLOSED_HAS_DELTA_P []` (slots fully replaced), `INC_HAS_J []` (`inspect_fold_once.out:5–6,33–38`). c1’s `J` and `T` leaves exist on the response and are not substituted.
+
+**w-jets are differentiated.** `build_face`@506–509: `sp.diff(extension * kernel, NORMAL)` then eval at the reference face. One-case: `JET_EQUALS_PRESSURE False`, `JET_ZERO False` for both faces. Not hand-typed.
+
+**Operator inverse, not scalar division.** Independent reconstruction from §1d:
+
+\[
+\bigl[I + (\Lambda_A/\rho_m^2)Z\bigr]\delta p = Z\cdot\text{source},\quad \Lambda_A=\Lambda_A^0/(1-i\omega\tau_A).
+\]
+
+Against every c1 `RESOLVENT_DEFINITION`: `INVERSE_OPERAND_RESIDUAL 0` (`independent_derive3.out:14–15` and all eight cases). `kernel_bridge`@396–398 evaluates that operand as a 2×2 matrix and `upper_triangular_solve`s it. Diagonal of `RESOLVENT_KERNEL_MATRIX` is `1/(1 + Λ_A ω /(ρ_m q_out (1−iωτ_A)))`, not a scalar `1/Z`.
+
+**Kernel bridge, both q-legs.** `dtn_kernel` FIRST_SHAPE carries `s11cc1_q_out_input` and `s11cc1_q_out_output` (`inspect_kernel_and_velocity.out:1–7`). Fold matrix is `[[z0(q_out), z1], [0, z0(q_in)]]` (`inspect_fold_once.out:12`). Increment has both `k_input` and `k_output`, no `dtn_operator` atoms (`INC_HAS_DTN_OP []`). Whole-form tags are the empty tuple (170–180 bytes). **Caveat (inherited, not a c2 freeze):** FIRST_SHAPE has `k_input` only, no `k_output`; `k·k′` is `|k_in|²`. That is the c1 kernel c2 consumes. Both *q* legs stay live; Fourier transfer is `Ŵ(k_out−k_in)`.
+
+**Symbol map.** Independently: `V_s` is S11c-a `face_velocity` (interfacial normal speed), `μ_θ` is `mu_theta_operator`. Script: `c1_V → face_velocity/ε`, `c1_μ → μ_θ/ε` (`build_face`@489–499). One-case IDENTIFICATIONS: `s11cc1_V_lab_held_plus → W_0 e_W_t / 2`. For LAB_HELD, `face_velocity = W_0 e_W_t ε / 2` on **both** faces (no `u`); MATERIAL adds `−σ u·∇w₁` (`inspect_kernel_and_velocity.out:26–33`). Same-sign ± is in the S11c-a export, not invented here. LAB_HELD `U_BODY_BALANCE` has no `δp` slots (inherited S11c-b); mechanical `δp` on LAB_HELD lives in e_W / face-force, consistent with V being thickness-only.
+
+**Disposition A:** fold map is physically the right substitution. Inherited: FIRST_SHAPE `k`-leg content; ± `face_velocity` sign.
+
+---
+
+## B. ε-normalization — **strip-one is correct; the increment is not purely O(εη)**
+
+Independent ε-powers (`independent_derive3.out`):
+
+- c1 `DELTA_P`: ε¹; strip one → ε⁰.
+- Slab slot coefficients: ε¹ on every `delta_p` / `d_w_delta_p` hit.
+- `face_velocity` and `mu_theta_operator`: ε¹.
+
+`build_face`@487,493–494 strips exactly one ε from the source and from the slab amplitudes. Naive double-ε does **not** happen.
+
+Emitted increment MULTIGRADE (byte-offset scan of the 2.57 MB tag):
+
+`(0,0,0), (1,0,0), (1,0,1), (1,1,0), (1,1,1)`
+
+i.e. it contains **O(ε) with no η**. Closed coupling kernel the same. Spec §4 / N12 says the self-energy increment lands at O(εη). The O(ε) piece is the local flat `Z_0` substitution into the open slots (same object as F). Not a double-ε bug; it is a grade of the increment the spec forbade.
+
+**Disposition B:** strip-one implemented correctly. **CONFIRMED:** increment is not O(εη)-only.
+
+---
+
+## C. Close-then-extract — **sound; commutator nonzero; FORM ablation bites**
+
+`build_case`@553–563: `closed = source.subs(substitutions)` then `extract(closed)`; increment = `extract(close)−extract(open)`. `run`@900–906: `close(extract)` is the imported open kernel with the same substitutions (`regression` only). `ORDERING_COMMUTATOR` is 431 555 bytes, MULTIGRADE includes `(1,0,1)` and `(1,1,1)` — not byte-identical, not Integer(0).
+
+FORM ablation (copy under `/tmp/c2_ablate_form` only): collapse `q_out_input → q_out_output` (`kernel_bridge`@378–380) **and** replace jets by 0 and flip pressure sign (`build_face`@510–512). Literal increment size:
+
+| block | baseline | FORM-ablated |
+|---|---|---|
+| TRANSVERSE→THICKNESS THETA | 268452 | **173410** |
+| TRANSVERSE→THICKNESS E_W | 536127 | **346325** |
+
+A first attempt (swap ± slots **and** flip jet sign) was a **no-op** on LAB_HELD because `P_+ ≈ P_−` and the two flips cancel; that is a symmetry of this case, not evidence of a typed payload. The q-collapse + dropped-jet ablation moves the object. Closure threading is load-bearing.
+
+**Disposition C:** `extract(close)` is what is built; commutator is genuinely nonzero.
+
+---
+
+## D. Six re-adjudications
+
+**D1. Density live-vs-frozen — sound.** Independent: `Eq(rho_br_bg_rho4_constant, W_bg ρ_br / W_0)` with residual 0 against `W_bg ρ_br / W_0`; RHOBR is the bare `ρ_br` (`independent_derive3.out:157–160`). Fold binds `{rho_br_bg_rho4_constant: ρ_br(1+η w₁)}` (`inspect_fold_once.out:10`). Live field, not a constant, not `ρ_m`, not a `∇ρ` jet (`DENSITY_IS_RHO_M False`). `DENSITY_LIVE_MINUS_FROZEN` is 1.5–1.9 MB with grades `(1,1,0)` and `(1,1,1)` — freeze is observable. `∇ρ→0` is not what is tested.
+
+**D2. `t_s` covector — sound.** S11c-a `traction` is a 4×1 matrix carrying `δp`, `Λ_X`, `d_w_delta_p` (`independent_derive3.out:184–189`). `traction_pairing`@772–792 uses that covector, not c1’s UNDECIDED `T` leaf. Native form.
+
+**D3. DtN whole-form — sound.** All four `DTN_WHOLEFORM_DEPENDENCE` tags are the empty tuple. Increment has no noncommutative `dtn_operator` atoms. Load-bearing object is the kernel matrix.
+
+**D4. Traction-vs-slab pairing — independent route; residual not Integer(0).** Algebra at `traction_pairing`@800–803:
+
+`KINETIC_STORED = SLAB_POWER − FACE_POWER` ⇒ emitted residual `= FACE_POWER − TRACTION_POWER`.
+
+That is two constructions (slab `FACE_GENERALIZED_FORCE_ROWS` vs S11c-a traction), not `A − (A/B)B`. One-sided `flip=True` only negates traction (`@778–779`). `TRACTION_SIGN_RESIDUAL` is 7.9 MB, `Add(...)`, grades `(1,0,0)…(1,1,1)` — it moves. Pairing residual itself is 11.6 MB `Add(...)`. Whether it *simplifies* to 0 is unsettled (too large to SZ here); it is not a structural zero of the tautology kind.
+
+**D5. Flat-symbol usage — sound.** `dtn_flat_symbol` appears only in `FLAT_SYMBOL_USAGE` (`run`@917–919). Increment has `INC_HAS_FLAT []`. Residual `KERNEL_DIAGONAL − REGRESSION = 0` with both sides `ω ρ_m / q_out`. No MATERIAL off-diagonal term consumes it.
+
+**D6. `μ_R` FORM — moved.** `modulus_form`@959–977 is `m1_profile → m1_profile²` including jets (not a rescale). `MU_R_FORM_RESIDUAL` is 5.3 MB. Control re-enters at the composed `μ_θ` operand (`control(..., mu_override=...)`@926).
+
+**Disposition D:** D1, D2, D3, D5 sound. D4 independent and the sign corruption bites; pairing residual not shown to vanish. D6 form control bites.
+
+---
+
+## E. N6 representation invariance — **CONFIRMED: residual does not vanish (σ channel)**
+
+`REP_INVARIANCE_RESIDUAL_RHO4` is 5 582 453 bytes, **not** Integer(0). MULTIGRADE is **only** `(1,0,1)` and `(1,1,1)` — O(εσ) and O(εησ). The O(ε) and O(εη) grades of the two increments are **absent** from the residual (they match). Operand sizes are unequal: LAB 2.57 MB vs mapped MATERIAL 4.74 MB.
+
+One-sided `FLIP_FACE_SLOPE` (`kernel_bridge`@385–388, only `face==1`): `REP_INDEPENDENCE_{MATERIAL,LAB}_RESIDUAL` are 1.24 / 1.20 MB with grades `(1,0,1),(1,1,1)`. Each route moves. They are separate `build_case` calls, so corrupting MATERIAL cannot move LAB.
+
+Spec §5c predicted the residual vanishes. It does not, at slope order. Either the Eulerian↔material pullback (`representation_pullback`@980–1015) is incomplete in σ, or the two anchorings differ at O(εσ). Not a typed-zero tag.
+
+**Disposition E:** **CONFIRMED** nonzero at O(εσ). O(ε) / O(εη) appear invariant.
+
+---
+
+## F. Uniform limit — **CONFIRMED: genuinely nonzero (astra’s concern is real)**
+
+Parsed `UNIFORM_LIMIT_OPERAND` (16 655 bytes, all four cases structurally the same):
+
+- **Not** Integer(0). No η, no σ, no `W_bg`.
+- TRANSVERSE→THICKNESS **THETA** and **E_W** nonzero; DIV_U and the entire THICKNESS→TRANSVERSE block **identically 0**.
+- Remaining **open-slot** symbols `delta_p_minus` and `delta_p_plus` (from `−extract(open)`), **plus** closed-response `Integral`s of `G_theta_u Λ_A0` × transverse trial curls (local `Z_0` acting on `μ_θ(u)`).
+
+Explicit THETA head (`parse_uniform_operand.out`):
+
+```text
+I*Λ_A0*δp_minus*ε*TestTheta/(ω ρ_m τ_A + I ρ_m)
++ I*Λ_A0*δp_plus*ε*TestTheta/(ω ρ_m τ_A + I ρ_m)
+− 2I*Λ_A0*ε*TestTheta*Integral(ω ρ_m (G_theta_u Λ_A0 (curl A) / (ρ_br ρ_m …) + …))
+```
+
+`ZERO_DTN_OPERAND` (6 282 bytes) is only the leftover open slots (including η-weighted jets) with **no** Integrals — so the Integrals in the uniform operand are the closed flat response, not an unsimplified zero.
+
+This is the substitution increment `extract(close)−extract(open)` at η=σ=0, `W_bg→W_0`. It cannot vanish: close replaces δp by `Z_0·source(V,μ_θ)`, open still has the symbolic slot. Spec §5e predicted vanish (S11b decoupling). Two separate failures sit in the same object: (i) leftover open-slot terms, (ii) a surviving local `Z_0 μ_θ` transverse→θ / e_W coupling.
+
+**Disposition F:** **CONFIRMED** decoupling failure of *this* increment. Not a large structurally-zero expression.
+
+---
+
+## G. Tautology / operand-theatre
+
+- **§3c increment** is tagged `SELF_ENERGY_INCREMENT`, not `*_RESIDUAL`. Honest export.
+- **No** `SELF_ENERGY_ADJOINTNESS_RESIDUAL` in the 154-tag index. The builder’s claim that the blocks are adjoint by construction is **not honest**: for LAB_HELD, THICKNESS→TRANSVERSE increment is identically 0 while TRANSVERSE→THICKNESS is a 268 k-char expression (and the same split appears in the uniform operand). Those blocks are independently extracted (`extract`@326–343); they are not forced adjoint. Suppressing the residual hides a real asymmetry.
+- **Ordering commutator, routing, μ_R, traction-sign, N6 independence:** two-route or operand-minus-corrupted-operand; FORM / one-sided tests move them.
+- **FLAT_SYMBOL residual 0:** two c1 exports of the same diagonal formula; regression-only, as specified.
+- **Traction pairing residual** reduces to `FACE_POWER − TRACTION_POWER` (see D4); not a tautology.
+- No physics `assert` precedes a residual emit.
+
+**Disposition G:** increment tagging is honest. **CONFIRMED:** adjoint-by-construction is false.
+
+---
+
+## FORM / one-sided ablation summary
+
+| Ablation | What moved | Literal |
+|---|---|---|
+| Collapse `q_in→q_out` + drop jets + flip `δp` (FORM) | increment THETA/E_W sstr | 268452→173410 / 536127→346325 |
+| Swap ± slots + flip jet (LAB_HELD) | nothing (symmetry no-op) | sizes identical |
+| Density live vs frozen | `DENSITY_LIVE_MINUS_FROZEN` | 1.5 MB, grades O(εη) |
+| `t_s` sign flip, traction only | `TRACTION_SIGN_RESIDUAL` | 7.9 MB `Add` |
+| `FLIP_FACE_SLOPE` one route | independence residuals | 1.2 MB, grades O(εσ) |
+| `μ_R` profile `m→m²` | `MU_R_FORM_RESIDUAL` | 5.3 MB |
+| Uniform η=σ=0 | increment | 16 kB, explicit δp + Integrals |
+
+---
+
+## One-line dispositions
+
+| Item | Disposition |
+|---|---|
+| **A** | Fold map sound (pressure not `J_s`; jets differentiated; operator inverse; kernel both q-legs; `V_s→face_velocity`). |
+| **B** | ε-strip-one correct. **CONFIRMED:** increment MULTIGRADE includes O(ε), not only O(εη). |
+| **C** | `extract(close)` is built; commutator nonzero; FORM ablation of threading/q-legs moves the increment. |
+| **D** | D1–D3, D5 sound. D4 independent, sign corruption bites. D6 form control bites. |
+| **E** | **CONFIRMED:** N6 residual does not vanish; leftover is the σ grades. One-sided slope test moves one route. |
+| **F** | **CONFIRMED:** uniform-limit increment is genuinely nonzero (open-slot `δp_±` + local `Z_0 μ_θ` Integrals). |
+| **G** | Increment is an export, not a dressed residual. **CONFIRMED:** off-diagonal blocks are not adjoint; the suppressed check would have shown it. |
+
+**Overall.** The fold *wiring* (slots, inverse, kernel, density live-binding, ε-strip, no `J_s`) is physically the right construction. The *increment as defined* is not the S11b-decoupled self-energy the spec claims: it keeps an O(ε) local-response piece, it does not vanish as η→0, the N6 residual fails at O(εσ), and the two off-diagonal blocks are not adjoint. What must change is the increment/control objects (subtract the open-slot leftover and/or test `extract(close)|_{η=0}` for decoupling; repair or surface the σ-channel N6 residual; stop claiming adjointness), not the substitution of closed `δp` into the slab slots.

@@ -1,0 +1,2339 @@
+{
+  "stdout_path": "/tmp/S11c_c2_selfenergy_fold_sympy_audit.out",
+  "stdout_bytes": 498811405,
+  "tag_count": 154,
+  "duplicates": [],
+  "untagged": [],
+  "tags": {
+    "PY_S11CC2_DIMENSION_COEFFICIENT_BINDINGS": {
+      "line": 1,
+      "byte_offset": 0,
+      "byte_count": 11735,
+      "sha256": "541d5b4568cda5b3ef0c7a33170efe1e3cd28a2d98159e2003f06170acbf047a",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 866,
+      "write_key": "s11cc2DimensionCoefficientBindings",
+      "computation_lines": [
+        234
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_LAB_HELD_RHO4_CONSTANT": {
+      "line": 2,
+      "byte_offset": 11735,
+      "byte_count": 4013128,
+      "sha256": "493396097f966baa95fb5fc7ba27b9d98c4083a65210c0b7fbaabd733fdbe30f",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorLabHeldRho4Constant",
+      "computation_lines": [
+        553,
+        559
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_TERM_ORIGINS_LAB_HELD_RHO4_CONSTANT": {
+      "line": 3,
+      "byte_offset": 4024863,
+      "byte_count": 4396607,
+      "sha256": "20a3cf204b49106287a6376bf71265fd4418c4cc088c1beabb7bfe0c6c7451f5",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorTermOriginsLabHeldRho4Constant",
+      "computation_lines": [
+        550,
+        560
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_PARITY_BLOCKS_LAB_HELD_RHO4_CONSTANT": {
+      "line": 4,
+      "byte_offset": 8421470,
+      "byte_count": 3533252,
+      "sha256": "bb1f391d83df7a1874f464006d20ad8f24db79520f7527954da35d1a8f7663cd",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorParityBlocksLabHeldRho4Constant",
+      "computation_lines": [
+        884,
+        885
+      ]
+    },
+    "PY_S11CC2_CLOSED_COUPLING_KERNEL_LAB_HELD_RHO4_CONSTANT": {
+      "line": 5,
+      "byte_offset": 11954722,
+      "byte_count": 4366525,
+      "sha256": "3b27e0f66f558bde4b575dbc40127c0e5f272117dfc07137d107e976aef62b75",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedCouplingKernelLabHeldRho4Constant",
+      "computation_lines": [
+        561
+      ]
+    },
+    "PY_S11CC2_CLOSED_COUPLING_KERNEL_TERM_ORIGINS_LAB_HELD_RHO4_CONSTANT": {
+      "line": 6,
+      "byte_offset": 16321247,
+      "byte_count": 4189623,
+      "sha256": "f7f8157e4b9c92c46f4b811ebe7d26c4035fc491ee3fc0e19e36fa8886efc909",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedCouplingKernelTermOriginsLabHeldRho4Constant",
+      "computation_lines": [
+        887
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_CLOSED_EXTRACT_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 7,
+      "byte_offset": 20510870,
+      "byte_count": 4356956,
+      "sha256": "e1c1b850f16264464554ecd40a16c641aa38cc56792eb2dc5b683bc3d3cb07a2",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyClosedExtractOperandLabHeldRho4Constant",
+      "computation_lines": [
+        561
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_OPEN_EXTRACT_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 8,
+      "byte_offset": 24867826,
+      "byte_count": 1812958,
+      "sha256": "dc3f19d006ef1d3b5e9f7f2db864d75282909e094a344661b3bd30fd16c8c510",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyOpenExtractOperandLabHeldRho4Constant",
+      "computation_lines": [
+        562
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_INCREMENT_LAB_HELD_RHO4_CONSTANT": {
+      "line": 9,
+      "byte_offset": 26680784,
+      "byte_count": 2575252,
+      "sha256": "36aeed907ebec2b9d847d3703ee4c435453ecfa992a71364391ae3a9e2fc14fc",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyIncrementLabHeldRho4Constant",
+      "computation_lines": [
+        563
+      ]
+    },
+    "PY_S11CC2_FOLD_SYMBOL_MAP_LAB_HELD_RHO4_CONSTANT": {
+      "line": 10,
+      "byte_offset": 29256036,
+      "byte_count": 3535040,
+      "sha256": "29063e3d05a71d9fb2d879bbf6ef2da18126ea8e4b46eb13376ad9c448727fcd",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(0), Integer(2)), Tuple(Integer(0), Integer(1), Integer(0)), Tuple(Integer(0), Integer(1), Integer(1)), Tuple(Integer(0), Integer(1), Integer(2)), Tuple(Integer(0), Integer(2), Integer(0)), Tuple(Integer(0), Integer(2), Integer(1)), Tuple(Integer(0), Integer(2), Integer(2)), Tuple(Integer(0), Integer(3), Integer(0)), Tuple(Integer(0), Integer(3), Integer(1)), Tuple(Integer(0), Integer(3), Integer(2)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(1), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2FoldSymbolMapLabHeldRho4Constant",
+      "computation_lines": [
+        397,
+        484,
+        499,
+        501,
+        509
+      ]
+    },
+    "PY_S11CC2_ORDERING_EXTRACT_FIRST_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 11,
+      "byte_offset": 32791076,
+      "byte_count": 4227179,
+      "sha256": "88ec663c083fef2f5076af7a1f8e98bbd1af9dca39a8065bc6e91dcb4a08fd80",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 905,
+      "write_key": "s11cc2OrderingExtractFirstOperandLabHeldRho4Constant",
+      "computation_lines": [
+        901,
+        904
+      ]
+    },
+    "PY_S11CC2_ORDERING_COMMUTATOR_LAB_HELD_RHO4_CONSTANT": {
+      "line": 12,
+      "byte_offset": 37018255,
+      "byte_count": 431555,
+      "sha256": "7a1bb720962982230ab9e340fbf90c190925426c3f287c51c4ef7316a5e626c6",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 906,
+      "write_key": "s11cc2OrderingCommutatorLabHeldRho4Constant",
+      "computation_lines": [
+        906
+      ]
+    },
+    "PY_S11CC2_TRACTION_MECHANICAL_CONTRIB_LAB_HELD_RHO4_CONSTANT": {
+      "line": 13,
+      "byte_offset": 37449810,
+      "byte_count": 3820491,
+      "sha256": "a500ae35bb900546ccc63c65a6a3f1ca9c6a19a4f0993e4dc304cdcdcf94c78b",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 908,
+      "write_key": "s11cc2TractionMechanicalContribLabHeldRho4Constant",
+      "computation_lines": [
+        780,
+        784
+      ]
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_LAB_HELD_RHO4_CONSTANT": {
+      "line": 14,
+      "byte_offset": 41270301,
+      "byte_count": 13730136,
+      "sha256": "6b4695d7340d953cc7a908b8bb21f663e4a347c48275cd1462ac24e181bbb052",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 909,
+      "write_key": "s11cc2TractionSlabPowerPairingLabHeldRho4Constant",
+      "computation_lines": [
+        792,
+        798,
+        799,
+        800,
+        801
+      ]
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
+      "line": 15,
+      "byte_offset": 55000437,
+      "byte_count": 11622816,
+      "sha256": "10d656084e2d702efd3f2eb43932052ba52bd584b02088cf143fad662ba44ae6",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 910,
+      "write_key": "s11cc2TractionSlabPowerPairingResidualLabHeldRho4Constant",
+      "computation_lines": [
+        803
+      ]
+    },
+    "PY_S11CC2_TRACTION_SIGN_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 16,
+      "byte_offset": 66623253,
+      "byte_count": 13730299,
+      "sha256": "97d6bc0394562ee9513a34ddb1d90754c47eb42cd1156aac78412b5926596bdd",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 912,
+      "write_key": "s11cc2TractionSignOperandLabHeldRho4Constant",
+      "computation_lines": [
+        779,
+        792,
+        801
+      ]
+    },
+    "PY_S11CC2_TRACTION_SIGN_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
+      "line": 17,
+      "byte_offset": 80353552,
+      "byte_count": 7918643,
+      "sha256": "cc844a36366a1453009da959a0d4a9e26d2e92d20987c84bf3cce59f1b188fc4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 913,
+      "write_key": "s11cc2TractionSignResidualLabHeldRho4Constant",
+      "computation_lines": [
+        913
+      ]
+    },
+    "PY_S11CC2_DTN_WHOLEFORM_DEPENDENCE_LAB_HELD_RHO4_CONSTANT": {
+      "line": 18,
+      "byte_offset": 88272195,
+      "byte_count": 170,
+      "sha256": "818f72568479a85184c8438040969230f071f1e2982281c09ea5121977656c3e",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple()), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 916,
+      "write_key": "s11cc2DtnWholeformDependenceLabHeldRho4Constant",
+      "computation_lines": [
+        915,
+        916
+      ]
+    },
+    "PY_S11CC2_FLAT_SYMBOL_USAGE_LAB_HELD_RHO4_CONSTANT": {
+      "line": 19,
+      "byte_offset": 88272365,
+      "byte_count": 804,
+      "sha256": "71344c611a99776c8fa50d7e3ff18c9c1d11e4482a848888cd854f6869d71eea",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 919,
+      "write_key": "s11cc2FlatSymbolUsageLabHeldRho4Constant",
+      "computation_lines": [
+        918,
+        919
+      ]
+    },
+    "PY_S11CC2_ROUTING_MECHANICAL_ONLY_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 20,
+      "byte_offset": 88273169,
+      "byte_count": 1709943,
+      "sha256": "f871bcfc8fe3e41acef05e0632453b436da013cc5f98a327c01544e6f4159bdc",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2RoutingMechanicalOnlyOperandLabHeldRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        920
+      ]
+    },
+    "PY_S11CC2_ROUTING_MECHANICAL_ONLY_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
+      "line": 21,
+      "byte_offset": 89983112,
+      "byte_count": 856943,
+      "sha256": "2c1565118f38a4b18db6d9ac885aec486a03c26e68c34d134f634cfbdd3387e0",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2RoutingMechanicalOnlyResidualLabHeldRho4Constant",
+      "computation_lines": [
+        768,
+        920
+      ]
+    },
+    "PY_S11CC2_ROUTING_TRACTION_CHANNEL_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 22,
+      "byte_offset": 90840055,
+      "byte_count": 1709413,
+      "sha256": "be248dc39036407c9516300b034c7e67d5428e602a2c73851ce4a2c4cfc405d9",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2RoutingTractionChannelOperandLabHeldRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        921
+      ]
+    },
+    "PY_S11CC2_ROUTING_TRACTION_CHANNEL_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
+      "line": 23,
+      "byte_offset": 92549468,
+      "byte_count": 857626,
+      "sha256": "97adffb72af96728b8b14fbd5dfa3092a5782f08a4cf0247775d59d7ee75abf4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2RoutingTractionChannelResidualLabHeldRho4Constant",
+      "computation_lines": [
+        768,
+        921
+      ]
+    },
+    "PY_S11CC2_ZERO_DTN_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 24,
+      "byte_offset": 93407094,
+      "byte_count": 6282,
+      "sha256": "eaff5b8c8f833891d97e7edca91d6ee5036dd4fb294150d3b1c797522bdb89df",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(1), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2ZeroDtnOperandLabHeldRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        922
+      ]
+    },
+    "PY_S11CC2_ZERO_DTN_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
+      "line": 25,
+      "byte_offset": 93413376,
+      "byte_count": 2560452,
+      "sha256": "e3b01db0c90380d386e430b88ca1b9767dd9a12601e47c87e84a6289d6a369b4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2ZeroDtnResidualLabHeldRho4Constant",
+      "computation_lines": [
+        768,
+        922
+      ]
+    },
+    "PY_S11CC2_LAMBDA_A_LIMIT_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 26,
+      "byte_offset": 95973828,
+      "byte_count": 4406,
+      "sha256": "12d538a923741a532c99c44e6c344c5bdbece5765db8808630e6b638802b1f2f",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(1), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2LambdaALimitOperandLabHeldRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        923
+      ]
+    },
+    "PY_S11CC2_LAMBDA_A_LIMIT_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
+      "line": 27,
+      "byte_offset": 95978234,
+      "byte_count": 2562371,
+      "sha256": "c26073110c14443c46b44fc75cc3902e08fcbbfb5fd44a03fc8c07843e8e0ec0",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2LambdaALimitResidualLabHeldRho4Constant",
+      "computation_lines": [
+        768,
+        923
+      ]
+    },
+    "PY_S11CC2_IMPERMEABLE_LIMIT_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 28,
+      "byte_offset": 98540605,
+      "byte_count": 4409,
+      "sha256": "f64d094330870f255f72ab4643f9452afb4f0c345140654e59eb79bc1ab20604",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(1), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2ImpermeableLimitOperandLabHeldRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        924
+      ]
+    },
+    "PY_S11CC2_IMPERMEABLE_LIMIT_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
+      "line": 29,
+      "byte_offset": 98545014,
+      "byte_count": 2562374,
+      "sha256": "0c120b3301c9decad1c6c4b8a12c42b5d9409c95d30f91a2ab8551bb6542126c",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2ImpermeableLimitResidualLabHeldRho4Constant",
+      "computation_lines": [
+        768,
+        924
+      ]
+    },
+    "PY_S11CC2_UNIFORM_LIMIT_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 30,
+      "byte_offset": 101107388,
+      "byte_count": 16655,
+      "sha256": "c4d77e02e2711c3badc37cb33a2f8ce92be2eac3be9d40c4810cc838e5f362ef",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2UniformLimitOperandLabHeldRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        925
+      ]
+    },
+    "PY_S11CC2_UNIFORM_LIMIT_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
+      "line": 31,
+      "byte_offset": 101124043,
+      "byte_count": 2550016,
+      "sha256": "ca103cd118f27b163760a1955a3f59712805f0691bac762d524a43574b685348",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2UniformLimitResidualLabHeldRho4Constant",
+      "computation_lines": [
+        768,
+        925
+      ]
+    },
+    "PY_S11CC2_MU_R_FORM_OPERAND_LAB_HELD_RHO4_CONSTANT": {
+      "line": 32,
+      "byte_offset": 103674059,
+      "byte_count": 3288349,
+      "sha256": "4228d4015e09dff08bd5abf44564331dd1d0be92c221b42865382edb3fd86657",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2MuRFormOperandLabHeldRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        926
+      ]
+    },
+    "PY_S11CC2_MU_R_FORM_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
+      "line": 33,
+      "byte_offset": 106962408,
+      "byte_count": 5319734,
+      "sha256": "a26afa6b39dbacd68c71d30968fac751db8f128e78553d8e6bd5f28e01b701cc",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2MuRFormResidualLabHeldRho4Constant",
+      "computation_lines": [
+        768,
+        926
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 34,
+      "byte_offset": 112282142,
+      "byte_count": 3131875,
+      "sha256": "6ec79c7404d3d631a23332aba02e08f5914a35b1448d7691ba918005d8122584",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorLabHeldRhobrConstant",
+      "computation_lines": [
+        553,
+        559
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_TERM_ORIGINS_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 35,
+      "byte_offset": 115414017,
+      "byte_count": 3056958,
+      "sha256": "b8ee10cfb88efeabc2e9d14e2b271bf0514f9973dbe8ed02b516aa0549d9d061",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorTermOriginsLabHeldRhobrConstant",
+      "computation_lines": [
+        550,
+        560
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_PARITY_BLOCKS_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 36,
+      "byte_offset": 118470975,
+      "byte_count": 2863428,
+      "sha256": "e2e78760fb2cec239efda1d70cba0723b432118e54d06611f73bad063df1799d",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorParityBlocksLabHeldRhobrConstant",
+      "computation_lines": [
+        884,
+        885
+      ]
+    },
+    "PY_S11CC2_CLOSED_COUPLING_KERNEL_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 37,
+      "byte_offset": 121334403,
+      "byte_count": 3417565,
+      "sha256": "691c694382d7711adce8510fceace53c9e6e1fad7e2250de40b1f81faa4a59c8",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedCouplingKernelLabHeldRhobrConstant",
+      "computation_lines": [
+        561
+      ]
+    },
+    "PY_S11CC2_CLOSED_COUPLING_KERNEL_TERM_ORIGINS_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 38,
+      "byte_offset": 124751968,
+      "byte_count": 2904370,
+      "sha256": "f48af6c23cbe70abbf4bc1d663c9bd5239db63bf8707bb33d9f20fadf5641242",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedCouplingKernelTermOriginsLabHeldRhobrConstant",
+      "computation_lines": [
+        887
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_CLOSED_EXTRACT_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 39,
+      "byte_offset": 127656338,
+      "byte_count": 3407996,
+      "sha256": "d8eec5b7010193742119f75969dc956032de68ee812c8e0e4d9c2f0a6770af78",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyClosedExtractOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        561
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_OPEN_EXTRACT_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 40,
+      "byte_offset": 131064334,
+      "byte_count": 1506401,
+      "sha256": "603e5032aed09e06187bfe5656514a89b394ff15f8e647e6c52f22e76e0af864",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyOpenExtractOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        562
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_INCREMENT_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 41,
+      "byte_offset": 132570735,
+      "byte_count": 1930219,
+      "sha256": "6d003d9541d7401987e732313f2c98a05ad8fdd08b9547d069248dae16a225f8",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyIncrementLabHeldRhobrConstant",
+      "computation_lines": [
+        563
+      ]
+    },
+    "PY_S11CC2_FOLD_SYMBOL_MAP_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 42,
+      "byte_offset": 134500954,
+      "byte_count": 2221101,
+      "sha256": "216f59822b89a4ceeec88029f52599e852beac105433baf9172aa02d72d10dd2",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(0), Integer(2)), Tuple(Integer(0), Integer(1), Integer(0)), Tuple(Integer(0), Integer(1), Integer(1)), Tuple(Integer(0), Integer(1), Integer(2)), Tuple(Integer(0), Integer(2), Integer(0)), Tuple(Integer(0), Integer(2), Integer(1)), Tuple(Integer(0), Integer(2), Integer(2)), Tuple(Integer(1), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2FoldSymbolMapLabHeldRhobrConstant",
+      "computation_lines": [
+        397,
+        484,
+        499,
+        501,
+        509
+      ]
+    },
+    "PY_S11CC2_ORDERING_EXTRACT_FIRST_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 43,
+      "byte_offset": 136722055,
+      "byte_count": 3387667,
+      "sha256": "3559b1ad0c4ecfad4d3cfc3dd3873b7fa54c192d9dd658abd4b8b15be919d066",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 905,
+      "write_key": "s11cc2OrderingExtractFirstOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        901,
+        904
+      ]
+    },
+    "PY_S11CC2_ORDERING_COMMUTATOR_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 44,
+      "byte_offset": 140109722,
+      "byte_count": 402185,
+      "sha256": "8bd8bee1d7fac0b9fd60f3238d6f06caf4d0a7b6eb475384937caa8fa6929053",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 906,
+      "write_key": "s11cc2OrderingCommutatorLabHeldRhobrConstant",
+      "computation_lines": [
+        906
+      ]
+    },
+    "PY_S11CC2_TRACTION_MECHANICAL_CONTRIB_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 45,
+      "byte_offset": 140511907,
+      "byte_count": 2315371,
+      "sha256": "334ec0ca3832d7cd5cff21a89e057bdd6c8d96e42fdaab659b213ea678348e03",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 908,
+      "write_key": "s11cc2TractionMechanicalContribLabHeldRhobrConstant",
+      "computation_lines": [
+        780,
+        784
+      ]
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 46,
+      "byte_offset": 142827278,
+      "byte_count": 9957583,
+      "sha256": "3be955bbfdfe6ce0b0bd5122d22d39d49d5f311a4c9364bfa5952261afa820d0",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 909,
+      "write_key": "s11cc2TractionSlabPowerPairingLabHeldRhobrConstant",
+      "computation_lines": [
+        792,
+        798,
+        799,
+        800,
+        801
+      ]
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 47,
+      "byte_offset": 152784861,
+      "byte_count": 8392937,
+      "sha256": "17093ae2abd5af485ed7420819f7e1e978b0ebae4be1d1b225f64bb3be5f9092",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 910,
+      "write_key": "s11cc2TractionSlabPowerPairingResidualLabHeldRhobrConstant",
+      "computation_lines": [
+        803
+      ]
+    },
+    "PY_S11CC2_TRACTION_SIGN_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 48,
+      "byte_offset": 161177798,
+      "byte_count": 9957746,
+      "sha256": "1c62bbbdca67e6b637ce08cd7761c455f0847a708257c57fc558726cf52ec689",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 912,
+      "write_key": "s11cc2TractionSignOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        779,
+        792,
+        801
+      ]
+    },
+    "PY_S11CC2_TRACTION_SIGN_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 49,
+      "byte_offset": 171135544,
+      "byte_count": 4774734,
+      "sha256": "2b2e73cd5d98a2d0345b4bf6c7c441aa64c702cfc0f6521f37dc2fc7d227e8e4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 913,
+      "write_key": "s11cc2TractionSignResidualLabHeldRhobrConstant",
+      "computation_lines": [
+        913
+      ]
+    },
+    "PY_S11CC2_DTN_WHOLEFORM_DEPENDENCE_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 50,
+      "byte_offset": 175910278,
+      "byte_count": 171,
+      "sha256": "f0b7e44dcdacf653c3a56c1ae7c57f693eb1559e72be8021218e37873440c23c",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple()), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 916,
+      "write_key": "s11cc2DtnWholeformDependenceLabHeldRhobrConstant",
+      "computation_lines": [
+        915,
+        916
+      ]
+    },
+    "PY_S11CC2_FLAT_SYMBOL_USAGE_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 51,
+      "byte_offset": 175910449,
+      "byte_count": 805,
+      "sha256": "6cc2373cb84ae406fb4256e38dec2adec9821ae8a11608a218f02dd415934b67",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 919,
+      "write_key": "s11cc2FlatSymbolUsageLabHeldRhobrConstant",
+      "computation_lines": [
+        918,
+        919
+      ]
+    },
+    "PY_S11CC2_ROUTING_MECHANICAL_ONLY_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 52,
+      "byte_offset": 175911254,
+      "byte_count": 1280020,
+      "sha256": "efcf4034ac710e6338fd8e25ae86accf82218e7ec8b8a801441e636873762f5e",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2RoutingMechanicalOnlyOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        920
+      ]
+    },
+    "PY_S11CC2_ROUTING_MECHANICAL_ONLY_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 53,
+      "byte_offset": 177191274,
+      "byte_count": 641860,
+      "sha256": "c4ace7917962a79aae53e00d121684d2724e8215c02d09a4a3ba994926f7d5e7",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2RoutingMechanicalOnlyResidualLabHeldRhobrConstant",
+      "computation_lines": [
+        768,
+        920
+      ]
+    },
+    "PY_S11CC2_ROUTING_TRACTION_CHANNEL_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 54,
+      "byte_offset": 177833134,
+      "byte_count": 1279564,
+      "sha256": "3b32b145d785b0ec4f6b7fefab353f3230a1d6b1f363dd43976d4d0652eda097",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2RoutingTractionChannelOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        921
+      ]
+    },
+    "PY_S11CC2_ROUTING_TRACTION_CHANNEL_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 55,
+      "byte_offset": 179112698,
+      "byte_count": 642417,
+      "sha256": "1c1a7d0ea3622c1d05d364cb094293f180eb387aba3805778ee0c5338467b451",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2RoutingTractionChannelResidualLabHeldRhobrConstant",
+      "computation_lines": [
+        768,
+        921
+      ]
+    },
+    "PY_S11CC2_ZERO_DTN_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 56,
+      "byte_offset": 179755115,
+      "byte_count": 6283,
+      "sha256": "87ac6f2cb2824da82dd7949cc5de1d5ffdf1d30870211be9fb86ab1fe717a504",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(1), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2ZeroDtnOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        922
+      ]
+    },
+    "PY_S11CC2_ZERO_DTN_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 57,
+      "byte_offset": 179761398,
+      "byte_count": 1915445,
+      "sha256": "2e1ca838ef6be04b69d18fae0b5770404aa4308721e22cd0d1db7b5c9093be96",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2ZeroDtnResidualLabHeldRhobrConstant",
+      "computation_lines": [
+        768,
+        922
+      ]
+    },
+    "PY_S11CC2_LAMBDA_A_LIMIT_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 58,
+      "byte_offset": 181676843,
+      "byte_count": 4407,
+      "sha256": "2c0070a92c6d5e43e16579fe4b7e39e676cd1c22d934bc236e3453eaa516f5b2",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(1), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2LambdaALimitOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        923
+      ]
+    },
+    "PY_S11CC2_LAMBDA_A_LIMIT_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 59,
+      "byte_offset": 181681250,
+      "byte_count": 1917364,
+      "sha256": "e3be1c6586805b8816a1a61be69926e5dfc7a2dd0cf7a8c3b7187ec57b917940",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2LambdaALimitResidualLabHeldRhobrConstant",
+      "computation_lines": [
+        768,
+        923
+      ]
+    },
+    "PY_S11CC2_IMPERMEABLE_LIMIT_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 60,
+      "byte_offset": 183598614,
+      "byte_count": 4410,
+      "sha256": "ccf12a18b4bf490123114616a05e37b1ae2a745bd64deb67fa7b9a3a33818369",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(1), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2ImpermeableLimitOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        924
+      ]
+    },
+    "PY_S11CC2_IMPERMEABLE_LIMIT_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 61,
+      "byte_offset": 183603024,
+      "byte_count": 1917367,
+      "sha256": "01875ea3c160aabd5e014a00d5dfc78afe5b836bb4bd0c752501bca7b4573447",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2ImpermeableLimitResidualLabHeldRhobrConstant",
+      "computation_lines": [
+        768,
+        924
+      ]
+    },
+    "PY_S11CC2_UNIFORM_LIMIT_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 62,
+      "byte_offset": 185520391,
+      "byte_count": 16656,
+      "sha256": "c45ff8dbdf756f91f4bf112909eee9a944d84866ec05a761479faf369f9fb757",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2UniformLimitOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        925
+      ]
+    },
+    "PY_S11CC2_UNIFORM_LIMIT_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 63,
+      "byte_offset": 185537047,
+      "byte_count": 1905009,
+      "sha256": "735153a83b35a11d19da76a3e0f1173331eccdf3a21cf59e1605441bd870523c",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2UniformLimitResidualLabHeldRhobrConstant",
+      "computation_lines": [
+        768,
+        925
+      ]
+    },
+    "PY_S11CC2_MU_R_FORM_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 64,
+      "byte_offset": 187442056,
+      "byte_count": 2460094,
+      "sha256": "f5db7c8a97095be43d19568fbc5498676237f969079772ec6241cddc7bd7784b",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2MuRFormOperandLabHeldRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        926
+      ]
+    },
+    "PY_S11CC2_MU_R_FORM_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
+      "line": 65,
+      "byte_offset": 189902150,
+      "byte_count": 3882204,
+      "sha256": "157d2a218a41246dd50063fbdcfb2e266ea4578bcaad5377df828dd40264ae85",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2MuRFormResidualLabHeldRhobrConstant",
+      "computation_lines": [
+        768,
+        926
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 66,
+      "byte_offset": 193784354,
+      "byte_count": 4437985,
+      "sha256": "6bf9e1944b91acc8a097e8d5189630f63715ac1413e7e3cccd4f2c1f34bdf89e",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        553,
+        559
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_TERM_ORIGINS_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 67,
+      "byte_offset": 198222339,
+      "byte_count": 5050165,
+      "sha256": "34bd7197939c88431c2e2ac6a5a32b44051242f2285db71a374e0bea6b3e9d3f",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorTermOriginsMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        550,
+        560
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_PARITY_BLOCKS_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 68,
+      "byte_offset": 203272504,
+      "byte_count": 4040716,
+      "sha256": "388c579d1e78b1d94ee8a2908198d503e8284790fbd5e9d76068e064c3fbcad1",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorParityBlocksMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        884,
+        885
+      ]
+    },
+    "PY_S11CC2_CLOSED_COUPLING_KERNEL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 69,
+      "byte_offset": 207313220,
+      "byte_count": 6000541,
+      "sha256": "9969162b5340e8a549a57b26a4e4347844911540ee5897fb3edaad590fbf75f5",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedCouplingKernelMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        561
+      ]
+    },
+    "PY_S11CC2_CLOSED_COUPLING_KERNEL_TERM_ORIGINS_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 70,
+      "byte_offset": 213313761,
+      "byte_count": 9173840,
+      "sha256": "7583d2dd1438624f5a10b5c2cfb66fe7aed3efdb81f809a2bd16f1a15276ba72",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(0), Integer(2)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedCouplingKernelTermOriginsMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        887
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_CLOSED_EXTRACT_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 71,
+      "byte_offset": 222487601,
+      "byte_count": 5990972,
+      "sha256": "2ed606da9148577f467f1ce88607e81448eed6a28e055323810884081451b7c6",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyClosedExtractOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        561
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_OPEN_EXTRACT_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 72,
+      "byte_offset": 228478573,
+      "byte_count": 1895584,
+      "sha256": "7fa11206a191ec4416c339ee48ac81460dd7ee32acfa2d7808c56b2e0ab39e1b",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyOpenExtractOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        562
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_INCREMENT_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 73,
+      "byte_offset": 230374157,
+      "byte_count": 4204540,
+      "sha256": "2e18d1a92635942178a8481c167a6aca8ee7cfbab0bbcb5c82e6a04d01c2c0f3",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyIncrementMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        563
+      ]
+    },
+    "PY_S11CC2_FOLD_SYMBOL_MAP_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 74,
+      "byte_offset": 234578697,
+      "byte_count": 3579897,
+      "sha256": "0c33553de3167eaa86e4dd36a49e1441ced213c0dbdbfd1ee318f6f078680ba6",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(0), Integer(2)), Tuple(Integer(0), Integer(1), Integer(0)), Tuple(Integer(0), Integer(1), Integer(1)), Tuple(Integer(0), Integer(1), Integer(2)), Tuple(Integer(0), Integer(2), Integer(0)), Tuple(Integer(0), Integer(2), Integer(1)), Tuple(Integer(0), Integer(2), Integer(2)), Tuple(Integer(0), Integer(3), Integer(0)), Tuple(Integer(0), Integer(3), Integer(1)), Tuple(Integer(0), Integer(3), Integer(2)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(1), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2FoldSymbolMapMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        397,
+        484,
+        499,
+        501,
+        509
+      ]
+    },
+    "PY_S11CC2_ORDERING_EXTRACT_FIRST_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 75,
+      "byte_offset": 238158594,
+      "byte_count": 4551148,
+      "sha256": "847269ed7bccf978c0118a41f32b7c151f6dda7429295b0e4c1b6d762623094c",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 905,
+      "write_key": "s11cc2OrderingExtractFirstOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        901,
+        904
+      ]
+    },
+    "PY_S11CC2_ORDERING_COMMUTATOR_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 76,
+      "byte_offset": 242709742,
+      "byte_count": 1788273,
+      "sha256": "b6ec5b4805f9651bea56cc011cd0c11568b99a6a352e2f2cacb6c1de5ac20323",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 906,
+      "write_key": "s11cc2OrderingCommutatorMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        906
+      ]
+    },
+    "PY_S11CC2_TRACTION_MECHANICAL_CONTRIB_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 77,
+      "byte_offset": 244498015,
+      "byte_count": 3862584,
+      "sha256": "e63fba60459196716694c6cb203089b4d1f6ac2845914e8f30bee8b5ee6e1957",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 908,
+      "write_key": "s11cc2TractionMechanicalContribMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        780,
+        784
+      ]
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 78,
+      "byte_offset": 248360599,
+      "byte_count": 15232502,
+      "sha256": "646218a639b27d266ba7abd8f30f35b9e49c2e33cab2ca3a376d87badd3e7ef2",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 909,
+      "write_key": "s11cc2TractionSlabPowerPairingMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        792,
+        798,
+        799,
+        800,
+        801
+      ]
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 79,
+      "byte_offset": 263593101,
+      "byte_count": 12698484,
+      "sha256": "715c71f5af50cfe723aa00e8d42aa88839ed19c36acc97dfc7de3dbc930200eb",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 910,
+      "write_key": "s11cc2TractionSlabPowerPairingResidualMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        803
+      ]
+    },
+    "PY_S11CC2_TRACTION_SIGN_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 80,
+      "byte_offset": 276291585,
+      "byte_count": 15232613,
+      "sha256": "80002230b4e9fdee96fa808fb73a600cee62376f8d17195ad86e00ce7a2df971",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 912,
+      "write_key": "s11cc2TractionSignOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        779,
+        792,
+        801
+      ]
+    },
+    "PY_S11CC2_TRACTION_SIGN_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 81,
+      "byte_offset": 291524198,
+      "byte_count": 7573948,
+      "sha256": "5fee97e5702819275e1dc2f8d2388082ccc4e3e19f2af2f07350361d50d2b5a9",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 913,
+      "write_key": "s11cc2TractionSignResidualMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        913
+      ]
+    },
+    "PY_S11CC2_DTN_WHOLEFORM_DEPENDENCE_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 82,
+      "byte_offset": 299098146,
+      "byte_count": 179,
+      "sha256": "f6f4775c98f597c54af31d3f941685647f14b18ee9446233668d11a1aaed24c2",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple()), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 916,
+      "write_key": "s11cc2DtnWholeformDependenceMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        915,
+        916
+      ]
+    },
+    "PY_S11CC2_FLAT_SYMBOL_USAGE_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 83,
+      "byte_offset": 299098325,
+      "byte_count": 813,
+      "sha256": "e8b509df8ae11fd3a0285027566b7e421e72e25d0676a3d46ac85140b90a1cc7",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 919,
+      "write_key": "s11cc2FlatSymbolUsageMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        918,
+        919
+      ]
+    },
+    "PY_S11CC2_ROUTING_MECHANICAL_ONLY_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 84,
+      "byte_offset": 299099138,
+      "byte_count": 3317086,
+      "sha256": "cc7b74bf9b8816b7d2b2b82ec4ff853e2ebcbb4e069ad3b389b1729136645683",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2RoutingMechanicalOnlyOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        920
+      ]
+    },
+    "PY_S11CC2_ROUTING_MECHANICAL_ONLY_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 85,
+      "byte_offset": 302416224,
+      "byte_count": 879140,
+      "sha256": "eb8a5bb4ba984063e4ddd1b02c6a6db6b7e4deeabb19452e789da831250163c4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2RoutingMechanicalOnlyResidualMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        768,
+        920
+      ]
+    },
+    "PY_S11CC2_ROUTING_TRACTION_CHANNEL_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 86,
+      "byte_offset": 303295364,
+      "byte_count": 2520370,
+      "sha256": "5f88e0d179746b1d139d33d51ac8b7c23a196b51633409db2f30f210268a7fc8",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2RoutingTractionChannelOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        921
+      ]
+    },
+    "PY_S11CC2_ROUTING_TRACTION_CHANNEL_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 87,
+      "byte_offset": 305815734,
+      "byte_count": 1676102,
+      "sha256": "cb7532bc3ea08b5089933d4b7229179e4850b54cf721c96be6b9fe8d5fef9f7c",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2RoutingTractionChannelResidualMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        768,
+        921
+      ]
+    },
+    "PY_S11CC2_ZERO_DTN_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 88,
+      "byte_offset": 307491836,
+      "byte_count": 18456,
+      "sha256": "42fe7ac2b506bd0bac8bc74a8f9758223d46bf39aa96f2762411dbec7b81ffb4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2ZeroDtnOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        922
+      ]
+    },
+    "PY_S11CC2_ZERO_DTN_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 89,
+      "byte_offset": 307510292,
+      "byte_count": 4177656,
+      "sha256": "fad82abc2877ff9558733974b115652611db24a390fad3dbcf76c9466c3798ed",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2ZeroDtnResidualMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        768,
+        922
+      ]
+    },
+    "PY_S11CC2_LAMBDA_A_LIMIT_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 90,
+      "byte_offset": 311687948,
+      "byte_count": 231335,
+      "sha256": "007d6832cb250d565bd606eb5567f536a7dae1a71e0a3f94a7c41b879a86e9b2",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2LambdaALimitOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        923
+      ]
+    },
+    "PY_S11CC2_LAMBDA_A_LIMIT_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 91,
+      "byte_offset": 311919283,
+      "byte_count": 4394335,
+      "sha256": "f768fd640010cbdd874f068276c902ad40dd3348d8a256a64ac9613556e22644",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2LambdaALimitResidualMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        768,
+        923
+      ]
+    },
+    "PY_S11CC2_IMPERMEABLE_LIMIT_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 92,
+      "byte_offset": 316313618,
+      "byte_count": 182114,
+      "sha256": "a019f4d619159a8c219a0562e5b2f6c9ec1babcb2a21fb952fee8114ad0b07ef",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2ImpermeableLimitOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        924
+      ]
+    },
+    "PY_S11CC2_IMPERMEABLE_LIMIT_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 93,
+      "byte_offset": 316495732,
+      "byte_count": 4345114,
+      "sha256": "2a06b50fc00c182a77aae1c0d53aa80453c6af61982769d585ac188fa2dcecb9",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2ImpermeableLimitResidualMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        768,
+        924
+      ]
+    },
+    "PY_S11CC2_UNIFORM_LIMIT_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 94,
+      "byte_offset": 320840846,
+      "byte_count": 16664,
+      "sha256": "f8f89b13d5c8fe2d123f33d00c7012638df920bc746ffbac34dd582221531d17",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2UniformLimitOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        925
+      ]
+    },
+    "PY_S11CC2_UNIFORM_LIMIT_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 95,
+      "byte_offset": 320857510,
+      "byte_count": 4179304,
+      "sha256": "8df00d40734122a43412112d2a94b320aa943dadbde5423bfa881a1f2b013b74",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2UniformLimitResidualMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        768,
+        925
+      ]
+    },
+    "PY_S11CC2_MU_R_FORM_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 96,
+      "byte_offset": 325036814,
+      "byte_count": 4917637,
+      "sha256": "329317ccddf2fb302b7683f147e75bb18a072a00fd613a867d0ea92b6e85bf30",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2MuRFormOperandMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        563,
+        766,
+        926
+      ]
+    },
+    "PY_S11CC2_MU_R_FORM_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "line": 97,
+      "byte_offset": 329954451,
+      "byte_count": 5452871,
+      "sha256": "3ff41040dbccb0043bfbe61b788d15ee3b0f3297976ccd2927122f5137a42512",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2MuRFormResidualMaterialAdvectedRho4Constant",
+      "computation_lines": [
+        768,
+        926
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 98,
+      "byte_offset": 335407322,
+      "byte_count": 3489829,
+      "sha256": "319710368c10fd480774bb1ce5450d3f085926d7ebf38e82778906b3255d23d6",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        553,
+        559
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_TERM_ORIGINS_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 99,
+      "byte_offset": 338897151,
+      "byte_count": 3576380,
+      "sha256": "2b82caa9deee595ef1e952c0d40c5f65237d671e1fdbabfc1931a98821daf199",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorTermOriginsMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        550,
+        560
+      ]
+    },
+    "PY_S11CC2_CLOSED_SLAB_OPERATOR_PARITY_BLOCKS_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 100,
+      "byte_offset": 342473531,
+      "byte_count": 3303824,
+      "sha256": "fccfd267255142eeee7d7b296bc9fba6c0b5fc346e88ff5c3227c6030677938c",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedSlabOperatorParityBlocksMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        884,
+        885
+      ]
+    },
+    "PY_S11CC2_CLOSED_COUPLING_KERNEL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 101,
+      "byte_offset": 345777355,
+      "byte_count": 4856918,
+      "sha256": "28a678f95eb53ff3a9e576a3043d6209dc0273189fc0b409018aa21c8ad758e2",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedCouplingKernelMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        561
+      ]
+    },
+    "PY_S11CC2_CLOSED_COUPLING_KERNEL_TERM_ORIGINS_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 102,
+      "byte_offset": 350634273,
+      "byte_count": 7145727,
+      "sha256": "15d3f46c989bc9907aa5af58114d208cb249ec5609b30352b96e096ed42c8f1a",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(0), Integer(2)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2ClosedCouplingKernelTermOriginsMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        887
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_CLOSED_EXTRACT_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 103,
+      "byte_offset": 357780000,
+      "byte_count": 4847349,
+      "sha256": "bb68da0c711f88a53a9c849cdb88ce8e62d9f1ca484a8324376e3c6ca6235a17",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyClosedExtractOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        561
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_OPEN_EXTRACT_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 104,
+      "byte_offset": 362627349,
+      "byte_count": 1613350,
+      "sha256": "2508cb9b9705db5d223873a1cc4f3081e0666b9a8808705524b61590c1a7c27a",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyOpenExtractOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        562
+      ]
+    },
+    "PY_S11CC2_SELF_ENERGY_INCREMENT_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 105,
+      "byte_offset": 364240699,
+      "byte_count": 3330109,
+      "sha256": "a156487cc5ca0548c4de98537149927c535be7cb0fb15f0c2a6c0105714d2a5f",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2SelfEnergyIncrementMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        563
+      ]
+    },
+    "PY_S11CC2_FOLD_SYMBOL_MAP_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 106,
+      "byte_offset": 367570808,
+      "byte_count": 2265958,
+      "sha256": "6f6a19c2058cab5c99e43b66b2c948274d4505983fd7edaac28297e6773a1936",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1)), Tuple(Integer(0), Integer(0), Integer(2)), Tuple(Integer(0), Integer(1), Integer(0)), Tuple(Integer(0), Integer(1), Integer(1)), Tuple(Integer(0), Integer(1), Integer(2)), Tuple(Integer(0), Integer(2), Integer(0)), Tuple(Integer(0), Integer(2), Integer(1)), Tuple(Integer(0), Integer(2), Integer(2)), Tuple(Integer(1), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 893,
+      "write_key": "s11cc2FoldSymbolMapMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        397,
+        484,
+        499,
+        501,
+        509
+      ]
+    },
+    "PY_S11CC2_ORDERING_EXTRACT_FIRST_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 107,
+      "byte_offset": 369836766,
+      "byte_count": 3703268,
+      "sha256": "7a153429fecd7c0fb676587303f8fd0f52029e0b9e910687217f06d4f3d91229",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 905,
+      "write_key": "s11cc2OrderingExtractFirstOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        901,
+        904
+      ]
+    },
+    "PY_S11CC2_ORDERING_COMMUTATOR_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 108,
+      "byte_offset": 373540034,
+      "byte_count": 1573417,
+      "sha256": "b3ee892530a854121c7c3f371c0b2634dd766d55e7a979d87e761351d28debf9",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 906,
+      "write_key": "s11cc2OrderingCommutatorMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        906
+      ]
+    },
+    "PY_S11CC2_TRACTION_MECHANICAL_CONTRIB_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 109,
+      "byte_offset": 375113451,
+      "byte_count": 2350450,
+      "sha256": "5c36fe76f2ad9743edf655b793d514d3b95aa2fbcd348bdf036c2b04353de8d4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 908,
+      "write_key": "s11cc2TractionMechanicalContribMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        780,
+        784
+      ]
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 110,
+      "byte_offset": 377463901,
+      "byte_count": 11218386,
+      "sha256": "f195d93ab9550280e68ee6917829e4c4eac95141e329e5c04fb9feacb7187bda",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 909,
+      "write_key": "s11cc2TractionSlabPowerPairingMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        792,
+        798,
+        799,
+        800,
+        801
+      ]
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 111,
+      "byte_offset": 388682287,
+      "byte_count": 9309719,
+      "sha256": "e0dbbc12f58b594ffecfa14ea09a78cdc77ca9d14df02175fcd3f802a5cbd1b4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 910,
+      "write_key": "s11cc2TractionSlabPowerPairingResidualMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        803
+      ]
+    },
+    "PY_S11CC2_TRACTION_SIGN_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 112,
+      "byte_offset": 397992006,
+      "byte_count": 11218497,
+      "sha256": "7f30943b13b313cd7aa1eab427dc11b8baebd0dc2b480492895cd186447510d4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 912,
+      "write_key": "s11cc2TractionSignOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        779,
+        792,
+        801
+      ]
+    },
+    "PY_S11CC2_TRACTION_SIGN_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 113,
+      "byte_offset": 409210503,
+      "byte_count": 4549679,
+      "sha256": "dc79e4850d905b2f3093993fa9c6bf15f7bc7a951544dbde85c78b705769e9a4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 913,
+      "write_key": "s11cc2TractionSignResidualMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        913
+      ]
+    },
+    "PY_S11CC2_DTN_WHOLEFORM_DEPENDENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 114,
+      "byte_offset": 413760182,
+      "byte_count": 180,
+      "sha256": "e026dbf07064715eb20bd0eee0f2d7e12c39e933bf4b03b988cf1370fa3b3e9d",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple()), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 916,
+      "write_key": "s11cc2DtnWholeformDependenceMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        915,
+        916
+      ]
+    },
+    "PY_S11CC2_FLAT_SYMBOL_USAGE_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 115,
+      "byte_offset": 413760362,
+      "byte_count": 814,
+      "sha256": "b432b7ac95dd64c2083225b966665b856fb73746618c750712b6a98ca91615c5",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 919,
+      "write_key": "s11cc2FlatSymbolUsageMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        918,
+        919
+      ]
+    },
+    "PY_S11CC2_ROUTING_MECHANICAL_ONLY_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 116,
+      "byte_offset": 413761176,
+      "byte_count": 2657765,
+      "sha256": "5109d06862759f8fcec3000b4a444928bab17570a58606fec481ca2d3aeaabae",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2RoutingMechanicalOnlyOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        920
+      ]
+    },
+    "PY_S11CC2_ROUTING_MECHANICAL_ONLY_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 117,
+      "byte_offset": 416418941,
+      "byte_count": 664057,
+      "sha256": "e5ea7b86cbf8d67757ab648f7186117c7889d78019d23c2314aacdb04a47560e",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2RoutingMechanicalOnlyResidualMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        768,
+        920
+      ]
+    },
+    "PY_S11CC2_ROUTING_TRACTION_CHANNEL_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 118,
+      "byte_offset": 417082998,
+      "byte_count": 1977211,
+      "sha256": "9cd61160d6d4a1b4a265285fa183281f3da28c80711759bb52113238de35a2fb",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2RoutingTractionChannelOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        921
+      ]
+    },
+    "PY_S11CC2_ROUTING_TRACTION_CHANNEL_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 119,
+      "byte_offset": 419060209,
+      "byte_count": 1344727,
+      "sha256": "71d712c71206485a1b78a50adbf5b4d181778764bb98279e4e38a842b74ef3bf",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2RoutingTractionChannelResidualMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        768,
+        921
+      ]
+    },
+    "PY_S11CC2_ZERO_DTN_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 120,
+      "byte_offset": 420404936,
+      "byte_count": 18457,
+      "sha256": "4007197bb67a0a6dec827324f98c0197ac0767444993c5d212fc769bdb5d9504",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2ZeroDtnOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        922
+      ]
+    },
+    "PY_S11CC2_ZERO_DTN_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 121,
+      "byte_offset": 420423393,
+      "byte_count": 3303251,
+      "sha256": "1a1c6baf9b9db2b111cbca259746a5cd66af63489233f1360f7a4a56bf44004d",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2ZeroDtnResidualMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        768,
+        922
+      ]
+    },
+    "PY_S11CC2_LAMBDA_A_LIMIT_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 122,
+      "byte_offset": 423726644,
+      "byte_count": 231336,
+      "sha256": "2949fb63aa314d131b46209ab1aa236c23a60cdb8072b3344cd102feea1d7127",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2LambdaALimitOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        923
+      ]
+    },
+    "PY_S11CC2_LAMBDA_A_LIMIT_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 123,
+      "byte_offset": 423957980,
+      "byte_count": 3519930,
+      "sha256": "33c26df3575f14cb577093c26ef6e241207db7a5625a4bce296692b55181a58a",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2LambdaALimitResidualMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        768,
+        923
+      ]
+    },
+    "PY_S11CC2_IMPERMEABLE_LIMIT_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 124,
+      "byte_offset": 427477910,
+      "byte_count": 182115,
+      "sha256": "be3fe1d52dc2340731fb80719faa16bd29f238e63f25b136fedd58f06e45e5d2",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2ImpermeableLimitOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        924
+      ]
+    },
+    "PY_S11CC2_IMPERMEABLE_LIMIT_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 125,
+      "byte_offset": 427660025,
+      "byte_count": 3470709,
+      "sha256": "502260943a47f6939528620285fa7e41892fdc8010df4f950a582542adcfe959",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2ImpermeableLimitResidualMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        768,
+        924
+      ]
+    },
+    "PY_S11CC2_UNIFORM_LIMIT_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 126,
+      "byte_offset": 431130734,
+      "byte_count": 16665,
+      "sha256": "c2df023fa7b6e25d9a7b3753a23bed6b483d8478c17224abcdbd010be6ff1cf5",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2UniformLimitOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        925
+      ]
+    },
+    "PY_S11CC2_UNIFORM_LIMIT_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 127,
+      "byte_offset": 431147399,
+      "byte_count": 3304899,
+      "sha256": "602471ad04722aa2be1b2523b984ad840132e4f0f53ed53b6a99f6252301a345",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2UniformLimitResidualMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        768,
+        925
+      ]
+    },
+    "PY_S11CC2_MU_R_FORM_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 128,
+      "byte_offset": 434452298,
+      "byte_count": 3859984,
+      "sha256": "4b81754e38f8b9d3738c85750d548ae49ee4867d1638a11a98abdb1cc536e896",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 767,
+      "write_key": "s11cc2MuRFormOperandMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        563,
+        766,
+        926
+      ]
+    },
+    "PY_S11CC2_MU_R_FORM_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "line": 129,
+      "byte_offset": 438312282,
+      "byte_count": 4015341,
+      "sha256": "f919e892f6217dd539d90572cd333f03793a7d3fdab9c6128c81df9163bc7ced",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 768,
+      "write_key": "s11cc2MuRFormResidualMaterialAdvectedRhobrConstant",
+      "computation_lines": [
+        768,
+        926
+      ]
+    },
+    "PY_S11CC2_DENSITY_LIVE_MINUS_FROZEN_LAB_HELD": {
+      "line": 130,
+      "byte_offset": 442327623,
+      "byte_count": 1524219,
+      "sha256": "119eab43d554716bb35093c51fb3595dd7e7e22c98be1b8c9a76851db46baaed",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 930,
+      "write_key": "s11cc2DensityLiveMinusFrozenLabHeld",
+      "computation_lines": [
+        930
+      ]
+    },
+    "PY_S11CC2_DENSITY_LIVE_MINUS_FROZEN_MATERIAL_ADVECTED": {
+      "line": 131,
+      "byte_offset": 443851842,
+      "byte_count": 1940349,
+      "sha256": "ffce85878edfc1f567806e9822cafbeb03a4f02cec5bed38a0cf86149256cce7",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 930,
+      "write_key": "s11cc2DensityLiveMinusFrozenMaterialAdvected",
+      "computation_lines": [
+        930
+      ]
+    },
+    "PY_S11CC2_REP_INVARIANCE_LAB_OPERAND_RHO4_CONSTANT": {
+      "line": 132,
+      "byte_offset": 445792191,
+      "byte_count": 2565667,
+      "sha256": "57ecffe26e922d33d5f1014844732f6bdad6d30cf7e807e8d36d6a1c82510665",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 939,
+      "write_key": "s11cc2RepInvarianceLabOperandRho4Constant",
+      "computation_lines": [
+        563
+      ]
+    },
+    "PY_S11CC2_REP_INVARIANCE_MATERIAL_OPERAND_RHO4_CONSTANT": {
+      "line": 133,
+      "byte_offset": 448357858,
+      "byte_count": 4739926,
+      "sha256": "158ffb9a4942bf60c4ce64e6221299ff79bdb0971ff90125495332b963afd298",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 940,
+      "write_key": "s11cc2RepInvarianceMaterialOperandRho4Constant",
+      "computation_lines": [
+        934,
+        935,
+        936,
+        937,
+        938
+      ]
+    },
+    "PY_S11CC2_REP_INVARIANCE_RESIDUAL_RHO4_CONSTANT": {
+      "line": 134,
+      "byte_offset": 453097784,
+      "byte_count": 5582453,
+      "sha256": "990f9d207db23c71c49904cc58af7d4e528e7862843a9c62b84917b564def87d",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 941,
+      "write_key": "s11cc2RepInvarianceResidualRho4Constant",
+      "computation_lines": [
+        941
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_NORMAL_OPERANDS_RHO4_CONSTANT": {
+      "line": 135,
+      "byte_offset": 458680237,
+      "byte_count": 1554,
+      "sha256": "34a734be53eb6ae6c59ac1153f9e4ad0f4b8332f24f2b460fcde58057e0ceef1",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 943,
+      "write_key": "s11cc2RepIndependenceMaterialNormalOperandsRho4Constant",
+      "computation_lines": [
+        420,
+        423,
+        424
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_OPERAND_RHO4_CONSTANT": {
+      "line": 136,
+      "byte_offset": 458681791,
+      "byte_count": 4780166,
+      "sha256": "857e403208c712fddd3ec26c046e031300746d8ccd4b5f27a8ed2e2cf8aa7420",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 944,
+      "write_key": "s11cc2RepIndependenceMaterialOperandRho4Constant",
+      "computation_lines": [
+        563,
+        942,
+        947
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_RESIDUAL_RHO4_CONSTANT": {
+      "line": 137,
+      "byte_offset": 463461957,
+      "byte_count": 1237382,
+      "sha256": "89dfd11e0ec5cfae3c40d0ee3c5a7c2cebf50e59c3cd77048400a5c3db614ce7",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 945,
+      "write_key": "s11cc2RepIndependenceMaterialResidualRho4Constant",
+      "computation_lines": [
+        945
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_LAB_OPERAND_RHO4_CONSTANT": {
+      "line": 138,
+      "byte_offset": 464699339,
+      "byte_count": 2565669,
+      "sha256": "7fc0d1ea9fbe6fedc6107b3d4bf8880877ef33dc1fcc50484d981a45db5bd7e2",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 946,
+      "write_key": "s11cc2RepIndependenceLabOperandRho4Constant",
+      "computation_lines": [
+        563
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_LAB_NORMAL_OPERANDS_RHO4_CONSTANT": {
+      "line": 139,
+      "byte_offset": 467265008,
+      "byte_count": 1549,
+      "sha256": "ea3b3f0c3b98edb6e997484909cd2470a8f60ad517a13299c27c0cb03af5188d",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 948,
+      "write_key": "s11cc2RepIndependenceLabNormalOperandsRho4Constant",
+      "computation_lines": [
+        420,
+        423,
+        424
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_LAB_CORRUPTED_OPERAND_RHO4_CONSTANT": {
+      "line": 140,
+      "byte_offset": 467266557,
+      "byte_count": 3134251,
+      "sha256": "d8809471283f78e81cb29df3ae936b160affc03375367a5a7e0a11b84efd99e2",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 949,
+      "write_key": "s11cc2RepIndependenceLabCorruptedOperandRho4Constant",
+      "computation_lines": [
+        563,
+        947
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_LAB_RESIDUAL_RHO4_CONSTANT": {
+      "line": 141,
+      "byte_offset": 470400808,
+      "byte_count": 1204095,
+      "sha256": "0949a4c61496d3d2b385ac68def6274c1e7b57fa56bb5f9943321e3c056a4feb",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 950,
+      "write_key": "s11cc2RepIndependenceLabResidualRho4Constant",
+      "computation_lines": [
+        950
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_COMPANION_OPERAND_RHO4_CONSTANT": {
+      "line": 142,
+      "byte_offset": 471604903,
+      "byte_count": 4194963,
+      "sha256": "842ab168a83f27647b1bb014e5c148de200015f5667b52c040c8dd056dff7af9",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 951,
+      "write_key": "s11cc2RepIndependenceMaterialCompanionOperandRho4Constant",
+      "computation_lines": [
+        563
+      ]
+    },
+    "PY_S11CC2_REP_INVARIANCE_LAB_OPERAND_RHOBR_CONSTANT": {
+      "line": 143,
+      "byte_offset": 475799866,
+      "byte_count": 1920634,
+      "sha256": "9063541944ccd59b6114b89b9af52a260ce0511c9098e084f7fcc56e09bc9d0e",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 939,
+      "write_key": "s11cc2RepInvarianceLabOperandRhobrConstant",
+      "computation_lines": [
+        563
+      ]
+    },
+    "PY_S11CC2_REP_INVARIANCE_MATERIAL_OPERAND_RHOBR_CONSTANT": {
+      "line": 144,
+      "byte_offset": 477720500,
+      "byte_count": 4231716,
+      "sha256": "eb40345a47690b3f0a2fa48bb8e29d8ab1d9daf29690c2b57d5b4bd437200628",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 940,
+      "write_key": "s11cc2RepInvarianceMaterialOperandRhobrConstant",
+      "computation_lines": [
+        934,
+        935,
+        936,
+        937,
+        938
+      ]
+    },
+    "PY_S11CC2_REP_INVARIANCE_RESIDUAL_RHOBR_CONSTANT": {
+      "line": 145,
+      "byte_offset": 481952216,
+      "byte_count": 5653817,
+      "sha256": "79bcc2b571fa4f12a0da0fe24351155b20279a4caf7e9b881c731f44a94d5d35",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 941,
+      "write_key": "s11cc2RepInvarianceResidualRhobrConstant",
+      "computation_lines": [
+        941
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_NORMAL_OPERANDS_RHOBR_CONSTANT": {
+      "line": 146,
+      "byte_offset": 487606033,
+      "byte_count": 1555,
+      "sha256": "5494d80af7db305cb6aeb9c05fe5336747c13aa1a996ce8e27b0339cf3b95a8f",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 943,
+      "write_key": "s11cc2RepIndependenceMaterialNormalOperandsRhobrConstant",
+      "computation_lines": [
+        420,
+        423,
+        424
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_OPERAND_RHOBR_CONSTANT": {
+      "line": 147,
+      "byte_offset": 487607588,
+      "byte_count": 3417286,
+      "sha256": "de280234314e2a99a5b63f26eb9b0f769a3a373511456ec6d0ddf5d5da2f7d13",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 944,
+      "write_key": "s11cc2RepIndependenceMaterialOperandRhobrConstant",
+      "computation_lines": [
+        563,
+        942,
+        947
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_RESIDUAL_RHOBR_CONSTANT": {
+      "line": 148,
+      "byte_offset": 491024874,
+      "byte_count": 260560,
+      "sha256": "76b5392492322e089a7e9bc808fc8874323ae6604d120374c5d50cab7322151d",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 945,
+      "write_key": "s11cc2RepIndependenceMaterialResidualRhobrConstant",
+      "computation_lines": [
+        945
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_LAB_OPERAND_RHOBR_CONSTANT": {
+      "line": 149,
+      "byte_offset": 491285434,
+      "byte_count": 1920636,
+      "sha256": "7f785b478e9e6586e4ba6e335889c2d84730b6bef7a79b4aa215c02ad4238c43",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 946,
+      "write_key": "s11cc2RepIndependenceLabOperandRhobrConstant",
+      "computation_lines": [
+        563
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_LAB_NORMAL_OPERANDS_RHOBR_CONSTANT": {
+      "line": 150,
+      "byte_offset": 493206070,
+      "byte_count": 1550,
+      "sha256": "4b962a1824e6285bf2afd930d0d58f4e4e5fa971c532d7332096488ef6037474",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(0), Integer(0), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 948,
+      "write_key": "s11cc2RepIndependenceLabNormalOperandsRhobrConstant",
+      "computation_lines": [
+        420,
+        423,
+        424
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_LAB_CORRUPTED_OPERAND_RHOBR_CONSTANT": {
+      "line": 151,
+      "byte_offset": 493207620,
+      "byte_count": 2017410,
+      "sha256": "d969a8ef3389668c6864c46cf83ba851974e1302f8391cca9f6f431d8fabc873",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 949,
+      "write_key": "s11cc2RepIndependenceLabCorruptedOperandRhobrConstant",
+      "computation_lines": [
+        563,
+        947
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_LAB_RESIDUAL_RHOBR_CONSTANT": {
+      "line": 152,
+      "byte_offset": 495225030,
+      "byte_count": 260555,
+      "sha256": "e11b7312d4382813d43656c24450d133beaedcedd4be6f3760d6d210125d1b8c",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 950,
+      "write_key": "s11cc2RepIndependenceLabResidualRhobrConstant",
+      "computation_lines": [
+        950
+      ]
+    },
+    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_COMPANION_OPERAND_RHOBR_CONSTANT": {
+      "line": 153,
+      "byte_offset": 495485585,
+      "byte_count": 3320532,
+      "sha256": "eb1ad8d59382698b3c2ab4f3aacac9de90891290ec4ccf82206c4455e92e12d4",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 951,
+      "write_key": "s11cc2RepIndependenceMaterialCompanionOperandRhobrConstant",
+      "computation_lines": [
+        563
+      ]
+    },
+    "PY_S11CC2_EXPORT_ROUNDTRIP": {
+      "line": 154,
+      "byte_offset": 498806117,
+      "byte_count": 5288,
+      "sha256": "3539c7305a61c9dc313a45d4ff34cfe534a350d36f851e9ab1e0fd1bdc2f00be",
+      "multigrade": "Tuple(Str('MULTIGRADE'), Tuple(Tuple(Integer(0), Integer(0), Integer(0)))), ",
+      "dimension_field_present": true,
+      "dimension_has_nan": false,
+      "emit_line": 849,
+      "write_key": "s11cc2ExportRoundtrip",
+      "computation_lines": [
+        848
+      ]
+    }
+  }
+}

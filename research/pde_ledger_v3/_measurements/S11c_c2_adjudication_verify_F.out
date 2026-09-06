@@ -1,0 +1,36 @@
+==== PY_S11CC2_UNIFORM_LIMIT_OPERAND_LAB_HELD_RHO4_CONSTANT
+   [TRANSVERSE_TO_THICKNESS/THETA] full_block_zero=False bare_slots=['delta_p_minus', 'delta_p_plus'] n_Integral=1  closed_part_zero(expand)=False  closed_part_zero(doit)=True
+        SURVIVING(closed_part) head: -2*I*Lambda_A_0*epsilon_shape*s11cc2TestTheta(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)*Integral(0, (s11cc1_k_output_1, -oo, oo), (s11cc1_k_output_2, -oo, oo), (s11cc1_k_output_3, -oo, oo), (s11cc2Y1,
+   [TRANSVERSE_TO_THICKNESS/E_W] full_block_zero=False bare_slots=['delta_p_minus', 'delta_p_plus'] n_Integral=1  closed_part_zero(expand)=False  closed_part_zero(doit)=True
+        SURVIVING(closed_part) head: 2*I*Lambda_X_0*W_0*epsilon_shape*s11cc2TestE(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)*Integral(0, (s11cc1_k_output_1, -oo, oo), (s11cc1_k_output_2, -oo, oo), (s11cc1_k_output_3, -oo, oo), (s11cc2Y1, 
+   [TRANSVERSE_TO_THICKNESS/DIV_U] block ZERO
+   [THICKNESS_TO_TRANSVERSE/THETA] block ZERO
+   [THICKNESS_TO_TRANSVERSE/E_W] block ZERO
+   [THICKNESS_TO_TRANSVERSE/DIV_U] block ZERO
+==== PY_S11CC2_UNIFORM_LIMIT_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT
+   [TRANSVERSE_TO_THICKNESS/THETA] full_block_zero=False bare_slots=['delta_p_minus', 'delta_p_plus'] n_Integral=1  closed_part_zero(expand)=False  closed_part_zero(doit)=True
+        SURVIVING(closed_part) head: -2*I*Lambda_A_0*epsilon_shape*s11cc2TestTheta(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)*Integral(0, (s11cc1_k_output_1, -oo, oo), (s11cc1_k_output_2, -oo, oo), (s11cc1_k_output_3, -oo, oo), (s11cc2Y1,
+   [TRANSVERSE_TO_THICKNESS/E_W] full_block_zero=False bare_slots=['delta_p_minus', 'delta_p_plus'] n_Integral=1  closed_part_zero(expand)=False  closed_part_zero(doit)=True
+        SURVIVING(closed_part) head: 2*I*Lambda_X_0*W_0*epsilon_shape*s11cc2TestE(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)*Integral(0, (s11cc1_k_output_1, -oo, oo), (s11cc1_k_output_2, -oo, oo), (s11cc1_k_output_3, -oo, oo), (s11cc2Y1, 
+   [TRANSVERSE_TO_THICKNESS/DIV_U] block ZERO
+   [THICKNESS_TO_TRANSVERSE/THETA] block ZERO
+   [THICKNESS_TO_TRANSVERSE/E_W] block ZERO
+   [THICKNESS_TO_TRANSVERSE/DIV_U] block ZERO
+==== PY_S11CC2_UNIFORM_LIMIT_OPERAND_LAB_HELD_RHOBR_CONSTANT
+   [TRANSVERSE_TO_THICKNESS/THETA] full_block_zero=False bare_slots=['delta_p_minus', 'delta_p_plus'] n_Integral=1  closed_part_zero(expand)=False  closed_part_zero(doit)=True
+        SURVIVING(closed_part) head: -2*I*Lambda_A_0*epsilon_shape*s11cc2TestTheta(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)*Integral(0, (s11cc1_k_output_1, -oo, oo), (s11cc1_k_output_2, -oo, oo), (s11cc1_k_output_3, -oo, oo), (s11cc2Y1,
+   [TRANSVERSE_TO_THICKNESS/E_W] full_block_zero=False bare_slots=['delta_p_minus', 'delta_p_plus'] n_Integral=1  closed_part_zero(expand)=False  closed_part_zero(doit)=True
+        SURVIVING(closed_part) head: 2*I*Lambda_X_0*W_0*epsilon_shape*s11cc2TestE(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)*Integral(0, (s11cc1_k_output_1, -oo, oo), (s11cc1_k_output_2, -oo, oo), (s11cc1_k_output_3, -oo, oo), (s11cc2Y1, 
+   [TRANSVERSE_TO_THICKNESS/DIV_U] block ZERO
+   [THICKNESS_TO_TRANSVERSE/THETA] block ZERO
+   [THICKNESS_TO_TRANSVERSE/E_W] block ZERO
+   [THICKNESS_TO_TRANSVERSE/DIV_U] block ZERO
+==== PY_S11CC2_UNIFORM_LIMIT_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT
+   [TRANSVERSE_TO_THICKNESS/THETA] full_block_zero=False bare_slots=['delta_p_minus', 'delta_p_plus'] n_Integral=1  closed_part_zero(expand)=False  closed_part_zero(doit)=True
+        SURVIVING(closed_part) head: -2*I*Lambda_A_0*epsilon_shape*s11cc2TestTheta(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)*Integral(0, (s11cc1_k_output_1, -oo, oo), (s11cc1_k_output_2, -oo, oo), (s11cc1_k_output_3, -oo, oo), (s11cc2Y1,
+   [TRANSVERSE_TO_THICKNESS/E_W] full_block_zero=False bare_slots=['delta_p_minus', 'delta_p_plus'] n_Integral=1  closed_part_zero(expand)=False  closed_part_zero(doit)=True
+        SURVIVING(closed_part) head: 2*I*Lambda_X_0*W_0*epsilon_shape*s11cc2TestE(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)*Integral(0, (s11cc1_k_output_1, -oo, oo), (s11cc1_k_output_2, -oo, oo), (s11cc1_k_output_3, -oo, oo), (s11cc2Y1, 
+   [TRANSVERSE_TO_THICKNESS/DIV_U] block ZERO
+   [THICKNESS_TO_TRANSVERSE/THETA] block ZERO
+   [THICKNESS_TO_TRANSVERSE/E_W] block ZERO
+   [THICKNESS_TO_TRANSVERSE/DIV_U] block ZERO

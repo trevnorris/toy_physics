@@ -1,0 +1,33 @@
+==== G: SELF_ENERGY_INCREMENT block directionality (LAB_HELD_RHO4) ====
+   THICKNESS_TO_TRANSVERSE/DIV_U    zero=True  bytes~10
+   THICKNESS_TO_TRANSVERSE/E_W      zero=True  bytes~10
+   THICKNESS_TO_TRANSVERSE/THETA    zero=True  bytes~10
+   TRANSVERSE_TO_THICKNESS/DIV_U    zero=True  bytes~10
+   TRANSVERSE_TO_THICKNESS/E_W      zero=False  bytes~1708669
+   TRANSVERSE_TO_THICKNESS/THETA    zero=False  bytes~855746
+==== G: CLOSED_COUPLING_KERNEL block directionality (LAB_HELD_RHO4) ====
+   THICKNESS_TO_TRANSVERSE/DIV_U    zero=False  bytes~77695
+   THICKNESS_TO_TRANSVERSE/E_W      zero=False  bytes~156361
+   THICKNESS_TO_TRANSVERSE/THETA    zero=False  bytes~83329
+   TRANSVERSE_TO_THICKNESS/DIV_U    zero=False  bytes~708125
+   TRANSVERSE_TO_THICKNESS/E_W      zero=False  bytes~2251947
+   TRANSVERSE_TO_THICKNESS/THETA    zero=False  bytes~1078305
+==== E: REP_INVARIANCE_RESIDUAL sigma_W-sector confinement (RHO4) ====
+    PY_S11CC2_REP_INVARIANCE_RESIDUAL_RHO4_CONSTANT blocks=6 sigma_W_symbol=[sigma_W]
+      THICKNESS_TO_TRANSVERSE/DIV_U    full_zero=False  sigmaW->0_zero=True
+      THICKNESS_TO_TRANSVERSE/E_W      full_zero=False  sigmaW->0_zero=True
+      THICKNESS_TO_TRANSVERSE/THETA    full_zero=False  sigmaW->0_zero=True
+      TRANSVERSE_TO_THICKNESS/DIV_U    full_zero=False  sigmaW->0_zero=True
+      TRANSVERSE_TO_THICKNESS/E_W      full_zero=False  sigmaW->0_zero=True
+      TRANSVERSE_TO_THICKNESS/THETA    full_zero=False  sigmaW->0_zero=True
+    PY_S11CC2_REP_INVARIANCE_RESIDUAL_RHOBR_CONSTANT blocks=6 sigma_W_symbol=[sigma_W]
+      THICKNESS_TO_TRANSVERSE/DIV_U    full_zero=False  sigmaW->0_zero=True
+      THICKNESS_TO_TRANSVERSE/E_W      full_zero=False  sigmaW->0_zero=True
+      THICKNESS_TO_TRANSVERSE/THETA    full_zero=False  sigmaW->0_zero=True
+      TRANSVERSE_TO_THICKNESS/DIV_U    full_zero=False  sigmaW->0_zero=True
+      TRANSVERSE_TO_THICKNESS/E_W      full_zero=False  sigmaW->0_zero=True
+      TRANSVERSE_TO_THICKNESS/THETA    full_zero=False  sigmaW->0_zero=True
+=== builder report: adjointness justification ===
+70:There is no independent adjointness construction in this implementation, so no `SELF_ENERGY_ADJOINTNESS_RESIDUAL` is emitted. Both off-diagonal blocks are emitted. The traction pairing compares the slab's inherited generalized-force contribution to independently composed native covector work; its kinetic/stored operand is the full slab mechanical power with the inherited face generalized-force rows removed. The test velocities use the imported velocity amplitudes, with the external wave epsilon divided out consistently with the pressure map; physical quadratic mechanical power restores that test-amplitude epsilon. This is a comparison of face work, not an independent derivation of all kinetic and stored energies. It does not adjudicate c1's separate far-field ENERGY audit.
+
+[exited with code 0]

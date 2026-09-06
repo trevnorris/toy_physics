@@ -19,7 +19,9 @@ weakens a gate.
 1. **Identify the object and the artifact's role.** Supply verified equations; withhold the target-answer
    criterion (the expected-value acceptance test, only); construct independently; preserve disagreement. (M1, M2)
 2. **Measure every claim.** Compute and emit *before* guards; interpret in records; attach the command and
-   its literal stdout in a `_measurements/` file. This binds the orchestrator too. (E1)
+   its literal stdout in a `_measurements/` file — **this grounding duty binds the orchestrator too, CAS claims
+   included**. But I personally author/run only **mechanical fact-lookups**; a CAS computation that adjudicates a
+   finding is a **Codex-written script reviewed under G1**, ⛔ never one I author or privately clear. (E1)
 3. **Pick two non-author legs.** Orchestrator-written → Codex + Grok; Codex-written → fresh Claude + Grok.
    Launch on sight, before inspecting the result. (G1, G3)
 4. **Use the right exit.** *Decision list:* two legs, verify, fold **once**, go. *Physics spec / script /
@@ -96,10 +98,26 @@ A script **prints** computed objects — ⛔ it never states conclusions. Emit b
 **then** guard (a residual asserted zero always prints `0` and carries no information). Interpretation
 belongs to the step record. ⛔⛔ **This binds the orchestrator too** — the half I keep exempting: every
 review-leg prompt I write says *"a prose derivation is worth nothing; show the script and its literal
-stdout, or the claim is discarded,"* and the same standard applies to anything I write. **A claim about an
+stdout, or the claim is discarded,"* and the same standard applies to anything I claim. **A claim about an
 artifact carries the command that produced it**, and the commands + their literal output go in a
-`_measurements/` file beside the document. If I am deciding in prose what the engines should compute, I have
-**inverted the method** — fix the instrument; ⛔ don't reason around it. *(evidence: L-R2, L-R4)*
+`_measurements/` file beside the document — ⛔ **this grounding duty is unconditional; a CAS-backed claim is NOT
+exempt from it.** ⛔⛔ **But grounding is NOT a licence to AUTHOR the instrument.** The only thing I author and
+run **myself** is a **mechanical fact-lookup**: existence, verbatim retrieval, literal-match counting, or the
+cardinality/shape of an explicitly named stored object — ⛔ with **no** derived predicate and **no** algebraic,
+numeric, symbolic, unit/dimensional, `subs`, simplify, solve, differentiate, limit, tolerance, or truncation
+step. ⭐ **Anything else used to adjudicate a review question is an INSTRUMENT** — regardless of language, length,
+filename, or library — because whoever writes it fixes the framing, method, and truncation and then judges its
+output (the single-engine bias this architecture exists to remove). ⇒ ⛔⛔ **I NEVER author a CAS
+analysis/diagnostic/verify script (⛔ not in `_measurements/`, ⛔ not under "rule 13"), and I NEVER adjudicate
+from an instrument I ran privately.** I own the **question** — and run it by Codex first, to agree it is the
+right one, at the **retained order**, ⛔ not a convenient proxy — and the **adjudication** (G4). The instrument is
+**Codex-written and reviewed under G1** (Codex-written → fresh Claude + Grok; the review must confirm both that
+the script answers the question AND that the question is asked at the retained order, not a convenient proxy)
+before its output is trusted. If I am deciding in prose what the engines should compute, I have **inverted the
+method** — fix the instrument by
+**routing it to Codex**, ⛔ don't reason around it, and ⛔ don't **become** the instrument. *(evidence: L-R2,
+L-R4; and L-CAS — the 2026-09-06 E over-clear, resolved with my own biased `verify_EG` on a σ_W→0 proxy, is the
+measured relapse.)*
 
 **E2 — Ablate to test; FORM tests physics, COEFFICIENT tests arithmetic; a check against a nonexistent
 script goes to the build review.** *(was R14, R17)*
@@ -147,6 +165,9 @@ the directive does not pay the tax for the build. *(evidence: L-R8)*
 green. "A leg that finds nothing is weak evidence" is my prior; ⛔ put it in a leg's prompt and it becomes a
 quota (keep it in rationale, out of rendered instructions). A finding is not a mandate — **verify it
 myself** (legs have been wrong in both directions); obtain **both** reports before adjudicating or editing.
+⛔⛔ **"Verify it myself" = I OWN the judgment, ⛔ NOT that I author OR privately run the CAS instrument** — a
+physics-CAS verification is Codex-written and reviewed under G1 (E1); I adjudicate from the reviewed script + its
+filed stdout + the legs, and author/run only mechanical fact-lookups myself.
 If successive revisions keep breeding defects in the material just changed, **change the author** — ⛔ don't
 fold a fourth time (author change waives neither review nor clearance). Commit the exact **reviewed
 baseline** before a repair overwrites it (recording unresolved findings); that preservation commit is not
@@ -211,6 +232,14 @@ are such). Each control that has an entry references it below as `L-R#`.
   orchestrator.**
 - **L-R4 (E1) — the broken instrument.** The tell: many turns reasoning toward an answer a script would
   settle in one. The cause, measured: the instrument was broken, so no measurement was available.
+- **L-CAS (E1) — the orchestrator AS the instrument.** Measured 2026-09-06: reading E1 ("this binds the
+  orchestrator too"; commands go in `_measurements/`) + G4 ("verify it myself") as licence, I hand-authored the
+  CAS scripts `verify_F.py`/`verify_EG.py`, ran them, and used them to overrule a leg's F/E/G findings — then
+  **over-cleared E/N6** (rep-invariance holds only in the σ_W→0 projection, not the retained order I claimed).
+  A Codex-sol pass caught the over-reach. The defect: **when I write the instrument I pick the framing and
+  truncation and then judge my own output — one engine as builder and judge**, the bias the two-engine
+  architecture removes. ⇒ a CAS computation that answers a review question is Codex-written and reviewed under
+  G1 (fresh Claude + Grok) before its output is trusted; only mechanical fact-lookups are the orchestrator's to write.
 - **L-R7 (G1, G2) — six spec defects.** Measured 2026-08-09: six spec defects, each costing a build round
   *plus* two legs, when two legs before the build would have caught them — three "level-above" misses, one
   exception named instead of the property (which bred a regression), measured counts stated four lines above

@@ -26,8 +26,8 @@ the chain at the ACTION / the imported operands, ⛔ never at a result.*
 
 **Corollaries (all bind):** a hand-typed CAS object is still hand-typed (delete `Solve`/`subs` and the emit must
 move); a tag **name** names the object, ⛔ never its value/sign/order/parity/grade; **no tautological residual** — the
-§3c increment is an **EXPORT REPRESENTATION**, ⛔ not a check (emit both operands and the increment; ⛔ do not dress a
-structural zero as a check); the §3b adjointness residual and the §3d.4 pairing residual are emitted **only if a
+§3c increment is a **comparison/emit representation** (EMIT-only → `.out`, ⛔ NOT a ledger export), ⛔ not a check
+(emit both operands and the increment; ⛔ do not dress a structural zero as a check); the §3b adjointness residual and the §3d.4 pairing residual are emitted **only if a
 genuine independent second route exists** (⛔ else emit the objects and say there is none); emission is **never**
 conditional on a payload's VALUE (only on which package/quantity). ⛔ Every anti-example in this directive uses
 **placeholder** symbols. ⛔ Run `reduction/derived_or_declared.py` on the deliverable after the build (triage, not a
@@ -196,18 +196,30 @@ scripts/ledger_fold.py}` (§D3). ⛔ Never `git add -f` a big `.out`; ⛔ never 
 
 ⭐⭐ **EMIT ≠ EXPORT — export ONLY what a future step binds (D1); everything else is EMIT-only (→ the `.out`).** §4
 lists what to **emit** (PRINT to stdout, for review + the T7 comparator). The **export delta** is far smaller: per
-`directives/S11c_decisions.md:51`, S11c-c hands S11c-d exactly **"the coupled nonlocal self-energy operator."** ⇒
-**EXPORT only the coupled self-energy operator** — `S11CC2_CLOSED_COUPLING_KERNEL` (the re-extracted closed
-off-diagonal coupling = the self-energy operator; pin whether S11c-d also needs the full `S11CC2_CLOSED_SLAB_OPERATOR`
-— default NO, the coupling kernel is the deliverable) — plus its bind-closure of new coordinate/function/dimension
-declarations. ⛔ **EMIT-ONLY (→ `.out`, ⛔ NOT the ledger export):** `S11CC2_SELF_ENERGY_INCREMENT` and its two
-same-extract operands (a **comparator representation**, §3c — the T7 comparator reads it from stdout; ⛔ nothing
-downstream binds it), every `…_TERM_ORIGINS` / `…_PARITY_BLOCKS`, the six §3d re-adjudication objects, and every §5
-control operand/residual. ⭐ **Store the exported operator COMPRESSED (held/factored — ⛔ NOT `sp.expand`ed):** the
-comparator canonicalizes `A−B` itself, so the export must not carry the fully-expanded form; PRINT the expanded form
-to `.out` only. ⚠ **Measured (astra's first build over-exported):** three fully-expanded closed objects = **60 MB**
+`directives/S11c_decisions.md:47,52,83`, S11c-c hands S11c-d the **coupled nonlocal self-energy operator**, and d's
+declared scope is resonances / local spectrum / Bloch / WKB (⛔ not only Born). ⇒ **EXPORT both closed operators**:
+- `S11CC2_CLOSED_SLAB_OPERATOR` — the **full closed operator**; its transverse **diagonal** block carries the closure
+  (spec §2, `S11c_c2_SHARED_PHYSICS.md:135`), which d needs for the closed spectral equation / resolvent-poles; the
+  frozen S11c-b `slab_operator` is still pressure-slot/open, so d **cannot** re-close it without repeating c2.
+- `S11CC2_CLOSED_COUPLING_KERNEL` — the re-extracted **off-diagonal** coupling d binds for its linear-mixing / Born /
+  leakage calculation.
+Each **all four `(α,ρ)` cases**, plus only its recursive new coordinate/function/dimension bind-closure. ⚠ There is
+**no S11c-d manifest yet** (d unbuilt), so this membership is grounded in d's DECLARED scope, ⛔ not a verified bind;
+d's actual `IMPORT_KEYS` confirms it when built (a c2 export d never binds is the flag then; D1).
+⛔ **EMIT-ONLY (→ `.out`, ⛔ NOT the ledger export):** `S11CC2_SELF_ENERGY_INCREMENT` and its two same-extract
+operands (a **comparison/emit representation**, §3c — the T7 comparator reads it from stdout; ⛔ nothing downstream
+binds it), every `…_TERM_ORIGINS` / `…_PARITY_BLOCKS`, the six §3d re-adjudication objects, and every §5 control
+operand/residual.
+⭐ **Store the exported operators in a TRANSPARENT compact encoding** — an ordinary algebraically-equivalent factored
+SymPy expression (`sp.factor`/`collect`/common-subexpression), ⛔ **NOT `sp.expand`ed** and ⛔ **NOT an opaque
+`UnevaluatedExpr`/hold** (a downstream `diff` must stay evaluable). The comparator canonicalizes `A−B` on the
+**expanded stdout**, so the export need not be expanded; PRINT the expanded form to `.out` only. ⛔ **Require a
+casewise semantic-equivalence check** `canonicalize(expanded_emitted_root − decode(compact_export_root)) == 0` per
+case (the existing serialization round-trip proves storage identity, ⛔ NOT equivalence after a new compaction — D4).
+⚠ **Measured (astra's first build over-exported):** three fully-expanded closed objects = **60 MB**
 (`ClosedCouplingKernel` 24.7 MB, `ClosedSlabOperator` 19.9 MB, `SelfEnergyIncrement` 15.9 MB) — the fix is
-**membership** (export only the one bound operator) **+ representation** (held/factored, not expanded).
+**membership** (drop the increment; keep BOTH closed operators) **+ representation** (transparent factored, not
+expanded).
 
 ---
 

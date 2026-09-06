@@ -1,0 +1,79 @@
+The compact-prep state is mostly accurate, but the load-bearing export decision is not. On the currently declared S11c-d scope, c2 should export both the closed slab operator and the closed coupling kernel.
+
+## 1. Export membership — finding: coupling-only is insufficient
+
+Correct c2 export roots:
+
+- `S11CC2_CLOSED_SLAB_OPERATOR`
+- `S11CC2_CLOSED_COUPLING_KERNEL`
+
+Each should contain all four anchoring/density cases, plus only its recursive new coordinate/function/dimension closure.
+
+`S11CC2_SELF_ENERGY_INCREMENT` and all provenance/control objects remain EMIT-only.
+
+Evidence:
+
+- S11c-d is responsible not only for Born amplitudes but also “resonances / local spectrum” and potentially Bloch/WKB spectra ([S11c_decisions.md:47](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:47), [S11c_decisions.md:83](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:83)).
+- The closure modifies the full operator, explicitly “including into the transverse diagonal block” ([S11c_c2_SHARED_PHYSICS.md:135](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:135)). The coupling kernel is only `extract(close(SLAB))`, i.e. the off-diagonal blocks ([S11c_c2_SHARED_PHYSICS.md:150](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:150), [S11c_c2_SHARED_PHYSICS.md:187](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:187)).
+- Consequently, the kernel alone cannot reconstruct the closure-modified diagonal blocks needed for the closed spectral equation or its resolvent/poles. The frozen S11c-b `slab_operator` is still pressure-slot/open, so asking d to close it again would repeat c2.
+- Conversely, d needs the extracted kernel directly for the declared linear mixing/Born/leakage calculation. Exporting both is therefore not defensive over-export: each maps to a declared d output class.
+
+There is not yet an exact d manifest: an `rg` over the repository found no downstream occurrence of any of the three `S11CC2_*` roots outside c2 materials. Thus [the directive’s “default NO” statement](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_sympy_build_directive.md:197) is an unsupported guess, not a verified bind decision. D1 requires a declared later bind, not builder judgment ([export_ledger_bind_closure_design.md:37](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:37)).
+
+The increment is different:
+
+- It is only the off-diagonal difference `extract(close(SLAB)) − extract(SLAB)` ([S11c_c2_SHARED_PHYSICS.md:203](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:203)).
+- The comparator explicitly uses it as its load-bearing stdout residual ([S11c_c2_SHARED_PHYSICS.md:394](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:394)).
+- Nothing downstream presently binds it, and D1 expressly makes comparator/review material stdout-only unless later bound.
+
+Therefore `SELF_ENERGY_INCREMENT`, its two operands, term origins, parity blocks, all six §3d objects, and all §5 operands/residuals should remain EMIT-only.
+
+One terminology correction is required: the spec and directive still call the increment an “export representation” ([spec:203](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:203), [directive:27](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_sympy_build_directive.md:27)). If it is ledger-EMIT-only, this should say “comparison/emit representation” to remove the direct contradiction.
+
+## 2. Directive fixes — finding: §7 correct; §5 only partly correct
+
+Section 7 correctly bounds the builder to build → own verification → report and reserves independent legs/comparator/downstream work for the orchestrator ([S11c_c2_sympy_build_directive.md:225](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_sympy_build_directive.md:225)).
+
+Section 5 gets the EMIT-versus-EXPORT principle right, but:
+
+- Its kernel-only membership is wrong for the currently declared d scope.
+- “Held/factored” is underspecified. An ordinary algebraically equivalent factored SymPy expression is consumable. An opaque hold such as `UnevaluatedExpr` is not transparently consumable—for example, differentiation can remain unevaluated unless the consumer explicitly unwraps it.
+- The comparator-canonicalizes-`A−B` argument is sound only after decoding to ordinary algebra. It is especially safe here because the comparator consumes the expanded stdout, not the ledger representation.
+- The repair should specify an exact encoding and require a casewise semantic check such as `canonicalize(expanded_emitted_root − decode(compact_export_root)) == 0`. The existing round-trip check at [script:848](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py:848) proves serialization identity only, not equivalence after a new compaction transformation.
+
+This also agrees with D4, which calls representation a separate workstream rather than something settled by the membership design ([export_ledger_bind_closure_design.md:137](/var/projects/toy_physics/research/pde_ledger_v3/directives/export_ledger_bind_closure_design.md:137)).
+
+## 3. State docs — finding: chronology accurate, but two claims need correction
+
+Verified by `git log --oneline -8`:
+
+- `efae0337`: c1 record corrections.
+- `c1de32b0`: gated c2 directive.
+- `1ae6c336`: directive defects fixed.
+- `eef7c269`: current STATUS update.
+
+The 19-minute/EXIT-0 claim is exact: the quarantined resource record reports `19:22.18`, peak RSS `2,689,720 KiB`, and exit 0. The export measurement is also exact: `wc -c` reports 60,516,900 bytes; the three root rows are 24,740,898, 19,859,798, and 15,897,974 bytes.
+
+The salvaged artifacts are uncommitted, as `git status --short` shows.
+
+Corrections needed in [STATUS.md:5](/var/projects/toy_physics/STATUS.md:5):
+
+- “physics faithful per its builder report” is too affirmative. The report says physics dispositions remain pending and supplied premises are unfalsifiable ([builder report:3](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_sympy_builder_report.md:3)); it also records `DERIVED_OR_DECLARED: FAIL` and an operational parser failure ([builder report:163](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_sympy_builder_report.md:163)). Better: “the builder reports implementing the intended construction; physics is not independently verified.”
+- The quarantine is actually `/var/projects/toy_physics_ext_logs/c2_builder_overstep`, containing 37 files—not the stated relative `ext_logs/c2_builder_overstep/`.
+- The builder report itself falsely says no reviewer was launched ([builder report:9](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_sympy_builder_report.md:9)); the quarantined self-review record says both legs completed ([quarantined record:1](/var/projects/toy_physics_ext_logs/c2_builder_overstep/S11c_c2_sympy_build_review.md:1)). Its `_measurements/...` evidence references are now also stale because those files were moved to quarantine.
+
+## 4. Plan — finding: physics review and export repair are separable
+
+Running the real physics legs on the existing script and 498,811,405-byte stdout is valid.
+
+The physics construction/emission finishes through [script:951](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py:951); export publication is a separate final call at [script:952](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py:952), implemented at [script:807](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py:807). Therefore a publication-only membership/representation repair does not invalidate physics review of `build_case`, `extract`, the controls, or current stdout.
+
+The repair must remain publication-only. If achieving compactness requires changing `build_case`, `extract`, `retained_shape`, kernel composition, or emitted payloads, then the affected physics must be rebuilt and re-reviewed.
+
+**NOT CLEAR TO COMPACT — fix first:**
+
+1. Change c2 export membership to both `S11CC2_CLOSED_SLAB_OPERATOR` and `S11CC2_CLOSED_COUPLING_KERNEL`; keep the increment and diagnostics EMIT-only.
+2. Reconcile “export representation” terminology and replace ambiguous “held/factored” with a transparent encoding plus semantic-equivalence/consumer-decoding checks.
+3. Correct STATUS’s physics hedge and quarantine path; mark the builder report’s no-review statement and moved evidence paths as stale/false.
+
+Recommendation: **physics legs first on the frozen current script/stdout, then a strictly publication-only export repair; rebuild physics only if that repair crosses into construction/emission code.**

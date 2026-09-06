@@ -1,0 +1,153 @@
+I'll review the S11c-c2 export-repair directive against the real scripts and architecture, one pass, without changing the tree. First I'll load the review skill and the handed files.The directive is in hand. Next I’ll ground R1–R4 against the script, export architecture, and what S11c-d actually binds.The three named sites match the script. Next I’ll check `publish`/`export_key`, SHARED_PHYSICS, and whether S11c-d actually binds both operators.The export objects are nested payloads, not single expressions. I’ll read §2/§3c/§7, the parent row schema, and how consumers actually bind those fields.Checking one structural detail: how `cases()` parses parent rows, so compaction cannot break that schema.# Decision review — S11c-c2 export-repair directive
+
+**Verdict: do not hand to the builder as-is.** R1 membership, the three edit sites, display hygiene, and the overstep fence are sound. **R2 as written would let the builder store the wrong object type or run a zero-test that does not apply to the real payload.** Fold the two R2 items below once, then hand it.
+
+---
+
+## 1. Scope — three edit sites
+
+**Finding: correct and complete for the repair, with the fence correctly placed.** Not a MUST-FIX.
+
+`EXPORT_ROOTS` (script:48–51), the `export_key` map (script:894–896), and `publish` (script:807–853) are exactly the membership, the fill path, and the serialization path.
+
+- Membership is `EXPORT_ROOTS` → `check_consumer(combined, EXPORT_ROOTS)` (script:824–825). Dropping `s11cc2SelfEnergyIncrement` here is what removes it from the delta.
+- The map is the only place emit payloads are copied into `exports` (script:893–898). Dropping the increment entry there is required; leaving it while shrinking `EXPORT_ROOTS` would `KeyError` at script:898 (`exports` is keyed from `EXPORT_ROOTS` at script:874).
+- Compaction, `display`, and the round-trip live only in `publish` (script:808 `display=sp.sstr(v)`; 838–839 srepr of `value`; 848–851 srepr `==`).
+
+Construction does not need to change. `emit` (script:746–761) already prints the expanded payload to `.out` and must keep doing that (directive:32, emit at ~890). `build_case` already consumes the inherited `EXPANDED` slot (script:527–542) and `retained_shape` already `expand`s Adds (script:323); un-expanding there would be a physics-adjacent rewrite, which the fence correctly forbids.
+
+`exports = {k: {} for k in EXPORT_ROOTS}` (script:874) is inside the physics loop but follows `EXPORT_ROOTS` — it does not need its own edit. The carve-out “physics loop 856–951 except the one `export_key` dict” is the right fence.
+
+**Nit.** A compact/walk helper *adjacent to* `publish` is still publication. “ONLY these three sites” should not force a STOP for that helper. STOP remains correct if the change wants to touch `emit` / `build_case` / `retained_shape` / `extract`.
+
+---
+
+## 2. R1 membership
+
+**Finding: exporting both closed operators (all 4 cases) and making the increment EMIT-only is correct per D1.** Not under-export; residual over-export risk is the one D1 already accepts while S11c-d is unbuilt.
+
+**S11c-d needs both, not one.**
+
+- Decisions table (S11c_decisions.md:51–52): S11c-c hands d the “coupled nonlocal self-energy/**operator**”; d’s own outputs are “scattering amplitudes / **resonances / local spectrum**” *and* Born/Bloch/WKB (N5 at :86–87). Resonances / local spectrum are properties of the **closed full operator**, not of the off-diagonal block alone.
+- Spec §2 (SHARED_PHYSICS.md:137–138): closing threads `Z` through the operator **including the transverse diagonal**. The frozen parent `slab_operator` is still the open/pressure-slot operator. Re-closing at consume time is forbidden (export_ledger_bind_closure_design.md:134: “Never a PY re-derivation of an inherited object at consume time”).
+- Spec §3b (SHARED_PHYSICS.md:189–196): `s11cc2ClosedCouplingKernel` is the re-extracted **off-diagonal** block — what a Born / linear-mixing / leakage calculation binds. N1 again bars d from re-extracting it.
+- Therefore: slab operator for the closed spectral equation; coupling kernel for mixing/Born. The original c2 build directive already stated this (S11c_c2_sympy_build_directive.md:197–208) and noted d has no `IMPORT_KEYS` yet.
+
+**The increment is genuinely a non-binding comparator representation.**
+
+- Spec §3c (SHARED_PHYSICS.md:214–215): “This is an **export representation**, ⛔ not a residual check.” It drops the bulk/kinetic base (:216–218) and exists so the T7 comparator can join stdout.
+- Adjudication (S11c_c2_physics_review_adjudication.md:49–51, 108–111): the increment is not the S11b-decoupled self-energy; STEP B already dropped it to EMIT-only.
+- Measured file: `s11cc2SelfEnergyIncrement` is 15 897 975 bytes of the 60 516 900-byte delta — a comparator object, not a later bind.
+
+`term_origins` / parity / §3d / §5 / increment-operands are already *not* in `EXPORT_ROOTS` (only the three named keys are in the map at script:894–896). The directive is making that explicit, not newly cutting them.
+
+**Over-export?** If d later binds only one of the two operators, the unused one is a D1 flag at d-build time (already recorded at S11c_c2_sympy_build_directive.md:207–208). Exporting only the kernel would **under-export** the closure-modified diagonal. Exporting only the slab operator would force d to re-extract, which D1/N1 forbid.
+
+---
+
+## 3. R2 representation — **MUST-FIX**
+
+**Finding: the goal (transparent compact, importable, differentiable, semantic identity) is right. The stated method is not sufficient on the real payload, and CSE as a stored form is unsound.**
+
+### What is actually stored
+
+Each export root is **one key holding all four cases**, not four keys. The row `value` is `cas({case: emit_payload})` (script:874, 893–898, 952), and each emit payload is (script:754–759):
+
+`VALUE`, `MULTIGRADE`, `DIMENSION_L_T_M`, plus `COMPUTED_BRANCH_BINDINGS` / `FOURIER_PROFILE_BINDINGS`.
+
+A downstream `load_model` consumer will parse it the way this engine already parses parents: `fold[key]['value']` then `cases()` → `named(v, 'VALUE')` (script:178, 84–85). `cases()` **requires** that Tuple-of-(case, VALUE-record) shape. Replacing the row with a bare factored operator, or with a CSE `(replacements, reduced)` pair, would make the kernel unbindable even if algebraically related.
+
+Measured: `s11cc2ClosedCouplingKernel` 24 740 899 bytes, `s11cc2ClosedSlabOperator` 19 859 799 bytes, both starting `Tuple(Tuple(Tuple(Str('LAB_HELD'), Str('RHO4_CONSTANT')), Tuple(Tuple(Str('VALUE'), …`.
+
+### CSE is not a legal stored form
+
+`sp.cse` returns dummy replacements plus a reduced expression. Those dummies are not in `NEW_DIMENSIONS` (script:52, 119–136), so `check_consumer` treats them as free/structural (ledger_fold.py:241–242: zero identity rows → skip). A later `diff` on the stored value then differentiates an incomplete CSE skeleton, not the operator.
+
+srepr does not preserve DAG sharing: CSE-then-substitute-back does not shrink the file. CSE only shrinks the file if the replacement table is stored — which is exactly the “opaque wrapper / string that only re-parses” the directive forbids (directive:39–40).
+
+`factor` / `cancel` / `together` / `collect` remain valid **if they stay one expression of the same type as the emitted leaf**.
+
+### The written zero-test does not apply to this object
+
+`sp.expand(decoded_compact − emitted_expanded) == 0` (directive:41–42) subtracts two **cased Tuples**. SymPy will not do the elementwise operator compare `difference()` already implements (script:100–109). The physics adjudication already showed the related failure: `expand` leaves `Integral(0,…)` unevaluated (S11c_c2_physics_review_adjudication.md:47). These operators are Integral-rich (Fourier / DtN). A top-level `expand(A−B)` will either false-hard-stop or miss integrand drift.
+
+“Or an equivalent canonical zero-test” is too loose: the previous builder already ignored a compact-form requirement. The formula in the directive is the one they will copy.
+
+A factored **leaf** remains importable and differentiable: `_restore` evals srepr into a real `sp.Basic` (generated file header; ledger_fold.py:51–65), and `factor`/`collect` do not wrap `UnevaluatedExpr`. The silent-loss cases the leaf check **would** miss are: dropped symbol assumptions, `Eq(evaluate=False)` vs evaluated `Equality`, and Integral-representation changes that `expand` does not enter. Walking leaves with the existing Integral Dummy-protection (script:106–109) closes the last of those.
+
+**Nit (same heading).** “Upgrade” the srepr `==` roundtrip (script:848–851) should **not** delete it. That check is serialization fidelity of the compact form. Add the semantic leaf test against the emitted object; keep `_restore(compact) == compact`.
+
+---
+
+## 4. R3 hygiene (`display`)
+
+**Finding: dropping/shrinking `display` on the operator rows is safe.** No consumer binds it.
+
+| Reader | What it uses |
+|---|---|
+| `load_model` (ledger_fold.py:120–123) | whole row, no field filter |
+| `check_consumer` (ledger_fold.py:230–233) | `value` (+ `dimension_key` if present) |
+| `assert_delta_is_minimal` (ledger_fold.py:330–342) | keys only |
+| this engine’s parent consume (script:178, 181) | `fold[key]['value']` and two `step` checks |
+| `promotion_delta` (ledger_fold.py:389) | **defaults** `display` if missing; that is a writer helper, not a consumer bind |
+
+Every `display` hit in the other audits is the **writer’s own** `live_record["display"]` while emitting *that* step’s completeness tag, not a read of a parent row.
+
+Measured: on `s11cc2ClosedCouplingKernel`, `'value'` is at index 31 and `'display'` at 18 641 596 — roughly 6 MB of sstr duplicate on that one row. Same pattern on the slab operator (`display` at 15 072 870 of a 19.9 MB line). Coordinate rows already have tiny `display` (e.g. `'s11cc2X1'`).
+
+**Do not drop** `value` / `value_kind` / `class` / `step` / `route` / `dimension_key` (directive:50–51 is right). `dimension_key` is a real closure edge (ledger_fold.py:255–264).
+
+**No other non-binding oversized field** belongs in this repair: `MULTIGRADE` is a small grade Tuple (script:721–728); `COMPUTED_BRANCH_BINDINGS` is the outgoing-momentum Piecewise map (script:449, 757); `FOURIER_PROFILE_BINDINGS` is a handful of Integral identities (script:732–743). Cutting them would be an `emit` schema change, which the fence forbids. They are not the 60 MB.
+
+**Nit.** S9 D3 still says “carry a human-readable rendering” (S9_REWRITE_PLAN.md:217–219); bind-closure D4 parked dropping `display` as needing an explicit supersession (export_ledger_bind_closure_design.md:143–145). Add one sentence: this repair supersedes that clause **for the giant operator rows**; short coordinate `display` may stay.
+
+---
+
+## 5. R4 guards
+
+**Finding: the listed set is the right publish-side set for a correct minimal delta.** Not a MUST-FIX.
+
+| Guard | Where | Role after the repair |
+|---|---|---|
+| F9 collision | script:820–822 | still F9a (`candidates ∩ fold` raises). Compaction does not rename keys. |
+| `check_consumer(combined, EXPORT_ROOTS)` | script:824 | becomes the two-root bind-closure + new-symbol rows. Currently 71 keys: 3 operators + 68 declarations. Dropping the increment drops that row; declarations stay if the two operators still reference them. |
+| `assert_delta_is_minimal` | script:826 | still “delta keys = own closure”. Mechanically tautological with how `delta` is built, but it is the D3 minimum-mode tripwire if `delta` construction drifts. |
+| `BUILD_INPUT_DIGESTS` | script:827–829 | five paths unchanged; audit sha will move. Correct. |
+| `_restore` roundtrip | script:845–851 | keep as **structural** compact↔restore; add semantic leaf identity vs emitted (R2 fold). |
+
+`assert_lookups_equal_manifest` (script:860) is this step’s **import** smoke-test, not a delta-minimality guard. Correctly omitted from R4.
+
+`check_consumer` does not read `display` (ledger_fold.py:230–233), so dropping it does not break closure.
+
+---
+
+## 6. Leak / overstep
+
+**Finding: no physics expected-value leak. Overstep bound is correct and needed.**
+
+- `60 MB`, `~16 MB`, `~19 min`, `~1.4 GB` are measurements of the existing artifact (confirmed: export file is 60 516 900 bytes), not a target the builder iterates toward.
+- “Dramatically below the 60 MB baseline **(report the number)**” is a verify-and-report instruction, not an acceptance size.
+- No specific factored form, no pre-registered residual.
+- “Print zero then hard-stop” is a serialization identity guard (same class as the existing `raise ValueError('serialization roundtrip')` at script:850–851), not a physics expected value under M2.
+
+Directive:77–79 correctly ends the job at build → verify → report and forbids skill-reading / self-review / launching legs. That is the right bound given the previous build’s overstep.
+
+**Nit.** “Confirm the physics `.out` tags are unchanged in identity” (directive:69) should mean **tag names / emit keys**, not a 499 MB payload diff. Identity follows from not touching construction; do not send the builder into a byte-compare of `.out`.
+
+---
+
+## MUST-FIX (fold these, then hand)
+
+1. **Stored form.** Compact only the **operator expression leaves** (the per-case `VALUE` slots). Keep the existing cased payload tree (`4 (anchoring, density)` × `VALUE` / `MULTIGRADE` / `DIMENSION_L_T_M` / bindings) so a later `cases()`/`named(..., 'VALUE')` consumer still parses it. **CSE is not a stored representation** — no replacement table, no dummy symbols. Allowed rewrites: `factor` / `cancel` / `together` / `collect` (or equivalent) that remain one evaluable `sp.Basic` of the same type as the emitted leaf.
+
+2. **Semantic check.** Do **not** use `expand(decoded − emitted) == 0` on the wrapper Tuple. Walk the tree the script already has (`tree` script:88–97, `difference` script:100–109): per `(object, case)` (and per expression leaf), Integral-aware. Print each literal result, **then** hard-stop on nonzero. Keep the `_restore` structural roundtrip of the compact form; do not replace it with the semantic test.
+
+## Nits (optional in the same fold; not blockers)
+
+- Allow a publication helper next to `publish`; STOP only for construction/`emit`.
+- Explicitly supersede S9 D3’s human-readable clause for the giant operator rows.
+- “`.out` identity” = tag/key identity, not payload bytes.
+
+---
+
+**Exact fold list, then go:** apply MUST-FIX 1 and 2 to `research/pde_ledger_v3/directives/S11c_c2_export_repair_directive.md` R2 (and the verify bullets that repeat the Tuple-subtraction formula). Everything else can stand. This is not iterate-to-green.

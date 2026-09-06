@@ -102,6 +102,15 @@ only directionality; a physics interpretation awaits the WL comparison). **B** i
 **⇒ this is NOT "0 confirmed defects": the core fold is sound, but N6 has an open retained-order finding to resolve
 before the WL build.** [The earlier verdict "physics SOUND / F/G/E all false positives" was an over-reach.]
 
+> ⚠⚠ **SUPERSEDED 2026-09-06 (E) — see `_measurements/S11c_c2_N6_spec_adjudication_record.md`.** Re-grounding E the
+> corrected way (Codex-vetted question → 2-leg spec adjudication) found the deeper truth: **c2 §5c MIS-SPECIFIED N6**
+> — it compared the two *anchorings* (distinct physics), but N6 (parent S11c-a §5a / sibling c1) is Eulerian-vs-
+> material-coordinate **within a fixed anchoring**. The current `REP_INVARIANCE_RESIDUAL` is the wrong object (a
+> nonzero value is *expected*, not a defect); **c2's real N6 was never run — it is UNTESTED**. The "σ_W→0 residual /
+> possible `representation_pullback` defect" framing above is retired. Spec §5c corrected (2-leg review-until-clear);
+> a build correction (the material-coordinate route) + the F/G re-grounding remain owed. The biased `verify_EG` E
+> conclusion is retired.
+
 **Carry-forwards / caveats:**
 1. **F** (wording, not a defect): the emitted uniform-limit object is non-vanishing purely from the §3c
    `−extract(open)` bare-slot representation. Interpret as **"the genuine closure-induced coupling decouples,"**

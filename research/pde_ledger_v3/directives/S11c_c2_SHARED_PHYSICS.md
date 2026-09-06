@@ -300,16 +300,75 @@ mechanical rows, dropping it from the θ-row flux terms; (ii) drop `Λ_X` from `
 self-energy increment (nonzero residual vs §3c). ⛔ Tests that the §1d routing is load-bearing, ⛔ not that any
 channel is nonzero.
 
-### 5c · The N6 independent-route control — the two anchorings ARE the representation-invariance pair
+### 5c · The N6 independent-route control — the two COORDINATE constructions at a FIXED anchoring
 
-`N6` requires **two independently-constructed routes** compared after field redefinition, then one-sided corruption
-— ⛔ not a bare one-sided corruption. The two routes for c2 are the **two anchorings** `α∈{L,M}` (LAB_HELD /
-MATERIAL_ADVECTED): construct the self-energy increment in each, map Eulerian↔material by the S11c-a/S11b field
-redefinition (`Δρ = δρ_E + u·∇ρ⁰`), and emit their residual `S11CC2_REP_INVARIANCE_RESIDUAL` — it must vanish (the
-same operator in two representations). **Then** corrupt **one route only** — flip one face's slope term in `n̂_s`, or
-omit its advective `u·∇Σ_E⁰` contribution — and require the increment to move while the other route's contribution
-does not (the independence test between the ≥2 same-order channels, `N3`/`N4`). ⛔ A zero residual proves nothing
-unless each route is shown to move alone.
+`N6`/`N4` require **two independently-constructed routes of the same object, compared after the exact
+Eulerian↔material field redefinition, then a one-sided independence corruption** — ⛔ not a bare one-sided
+corruption. Per the parent pattern (`S11c_a_SHARED_PHYSICS.md` §5a "Representation-invariance routes N4/N6" +
+`S11c_b_SHARED_PHYSICS.md` §5a; `S11c_decisions.md` N4/N6), the two routes are the **Eulerian and
+material-coordinate constructions of the SAME self-energy increment**, with the **anchoring `α` AND the density
+representative `ρ` HELD FIXED across the two routes** (⛔ the routes are the *representation* axis, ⛔ never the
+anchoring axis):
+
+```text
+route 1 (Eulerian):    I_E^{α,ρ}     = extract( close(SLAB) ) − extract(SLAB) ,
+route 2 (material→E):   I_{M→E}^{α,ρ} = T_{M→E}[ extract( close(SLAB_M) ) − extract(SLAB_M) ] .
+```
+
+where, at this SAME fixed anchoring `α` (and density `ρ`):
+- **route 1** is c2's §3c increment built in **Eulerian** variables — the §3a substitution of the imported same-`α`
+  c1 closed face response into the imported Eulerian `slab_operator` (`SLAB`), then the §3c weak extraction. ⛔
+  "Eulerian graph/level-set" is S11c-a **substrate** language, ⛔ not c2's construction: c2 **folds**, it does not
+  re-differentiate the interface.
+- **`SLAB_M`** is S11c-b's **material-coordinate** construction of `slab_operator` at this same `α` (`S11c-b §5a`:
+  `x=x(X,t)` and the S11c-a §5a face-flattening coordinate that belongs to that `α`). It is **constructed in this
+  control** (the direct sibling of route 1's `SLAB`), ⛔ not an already-imported operand. ⛔ `SLAB_M` is that
+  material-coordinate operator **BEFORE** the `N4` map-back; `T_{M→E}` is applied **once, to the increment**, in the
+  route-2 formula above — ⛔ it is NOT already folded into `SLAB_M` (else the increment would be double-mapped).
+- **`close(SLAB_M)`** is the §3a substitution of the **imported same-`α`** c1 closed face response
+  `s11c_c1_face_response` into `SLAB_M` — the close operand **IS that imported response**, ⛔ NOT a second DtN
+  construction, ⛔ NOT c1's Hanzawa operand standing in for "material."
+- **`T_{M→E}`** is the S11c-a/S11b map + Jacobian (`N4`: `Δρ = δρ_E + u·∇ρ⁰`).
+- ⛔ Do NOT reconstruct the bulk DtN by S11c-a's global scaling `w′=[w−ζ_c]/[W_bg+δW]` (`c1 §5a`: secular at
+  infinity). ⛔ `Δρ` still does not bridge `LAB_HELD ↔ MATERIAL_ADVECTED`.
+
+Emit both operands and their residual, keyed by object and anchoring (and density):
+
+```text
+S11CC2_REP_INVARIANCE_EULERIAN_OPERAND[α,ρ] = I_E^{α,ρ} ,
+S11CC2_REP_INVARIANCE_MATERIAL_OPERAND[α,ρ] = I_{M→E}^{α,ρ} ,
+S11CC2_REP_INVARIANCE_RESIDUAL[α,ρ]         = I_E^{α,ρ} − I_{M→E}^{α,ρ} .
+```
+
+`N6` is the physics requirement that these two are the **same operator in two representations**; the uncorrupted
+residual is that representation-invariance measurement — its **computed value is the finding**, ⛔ no target value
+is supplied, and the diff is adjudicated on our side (⛔ never a builder exit condition). ⛔⛔ The field redefinition
+`Δρ = δρ_E + u·∇ρ⁰` relates **two descriptions of one perturbation of a fixed background**, ⛔ NEVER the two
+anchorings: using it to bridge `LAB_HELD ↔ MATERIAL_ADVECTED` is a **category error** — a same-state rewrite applied
+to two distinct physical setups, the exact freeze/identification `N4` exists to prevent. The two anchorings are
+**distinct physical anchorings, not alternate representations of one branch** (`S11c_a_SHARED_PHYSICS.md` §2c); `c1`
+§5a makes this same cut and ⛔ forbids treating `MATERIAL_ADVECTED` as the second N6 route.
+
+**Then** the `N3`/`N4` independence probe, still at fixed `α`, `ρ`: mutate **one representation route only at its
+source** and recompute it, leaving the other route unchanged. Two probes: (i) a **tilt** probe — reverse one face's
+first-jet slope term in `n̂_s` on the **Eulerian** route; (ii) an **N4 advection** probe — omit the advective
+`u·∇Σ_E⁰` term only from the **material→Eulerian map-back** (⛔ NOT from the common `δp_s`-independent slab base,
+which cancels in the increment per §3c and so would not move it). Emit the package
+`S11CC2_CONTROL_INDEPENDENCE_{BASE,CORRUPTED,RESIDUAL}[α,ρ,probe]`: **PRINT** the operands and residual, ⛔ do not
+assert; the disposition — the corrupted route moved while the **uncorrupted** route did not — is adjudicated on our
+side. ⛔ Do not emit an `A−A` control where emitted provenance shows the mutated source is structurally absent.
+⛔ Corrupting one *anchoring* is NOT this test (it only shows two distinct setups differ, which was never in doubt).
+
+**The cross-anchoring difference is a SEPARATE, MANDATORY contract, ⛔ not N6.** Emit it — this is the reclassified
+former object, ⛔ not optional:
+
+```text
+S11CC2_ANCHORING_L_MINUS_M[ρ] = S11CC2_SELF_ENERGY_INCREMENT[LAB_HELD, ρ] − S11CC2_SELF_ENERGY_INCREMENT[MATERIAL_ADVECTED, ρ]
+```
+
+on the same footing as `S11CC2_DENSITY_LIVE_MINUS_FROZEN` (§5d): it measures whether two distinct physical setups
+differ, its residual is a **computed outcome with ⛔ no prescribed zero target**, and it must ⛔ never be labeled a
+representation-invariance residual.
 
 ### 5d · The background-density field-vs-field re-adjudication (rule 17, §3d.1)
 

@@ -1,0 +1,10 @@
+{
+  "anchoring": "LAB_HELD",
+  "density": "RHO4_CONSTANT",
+  "routing": null,
+  "overrides": "None",
+  "mu_form": false,
+  "velocity_control": false,
+  "started": 1788668343.222882,
+  "finished": 1788668367.7281387
+}

@@ -47,7 +47,6 @@ FACES = (1, -1)
 REPRESENTATION = 'DELTA_W'
 EXPORT_ROOTS = frozenset((
     's11cc2ClosedSlabOperator', 's11cc2ClosedCouplingKernel',
-    's11cc2SelfEnergyIncrement',
 ))
 NEW_DIMENSIONS = {}
 COMPUTATION_LINES = {}
@@ -804,9 +803,62 @@ def traction_pairing(inputs, case, model, *, flip=False):
     return tree(covectors,lambda e:retained_shape(e,inputs)),pairing,residual
 
 
+def publication_compact(value):
+    """Factor VALUE entries while preserving reciprocal and Integral boundaries.
+
+    Temporary atoms shield denominators and calculus objects from factor_terms;
+    they are substituted back immediately, never serialized or used as CSE.
+    """
+    @lru_cache(maxsize=None)
+    def compact(expression):
+        if isinstance(expression, sp.MatrixBase):
+            return expression.applyfunc(compact)
+        if isinstance(expression, sp.Tuple):
+            return sp.Tuple(*(compact(v) for v in expression))
+        if isinstance(expression, Str) or expression.is_Atom:
+            return expression
+        if isinstance(expression, sp.Integral):
+            return sp.Integral(compact(expression.function), *expression.limits)
+        if (expression.is_Pow and expression.exp.is_negative) or isinstance(
+                expression, (sp.Function, sp.Derivative)):
+            return expression
+        protected = {}
+
+        @lru_cache(maxsize=None)
+        def shield(node):
+            if isinstance(node, sp.Integral) or isinstance(node, (sp.Function, sp.Derivative)) or (
+                    node.is_Pow and node.exp.is_negative):
+                token = sp.Dummy(commutative=node.is_commutative)
+                protected[token] = compact(node)
+                return token
+            if not node.args:
+                return node
+            return node.func(*(shield(a) for a in node.args))
+
+        shielded = shield(expression)
+        grouped = sp.collect(shielded, list(protected), exact=True)
+        result = sp.factor_terms(grouped, fraction=False).xreplace(protected)
+        if result.atoms(sp.Dummy) - expression.atoms(sp.Dummy):
+            raise ValueError('publication temporary escaped')
+        # Factoring can expose an identically zero coefficient and erase the
+        # reciprocal it multiplied. Keep that original subexpression intact.
+        before_poles = {p for p in expression.atoms(sp.Pow) if p.exp.is_negative}
+        after_poles = {p for p in result.atoms(sp.Pow) if p.exp.is_negative}
+        return result if before_poles == after_poles else expression
+
+    return compact(value)
+
+
 def publish(inputs, fold, objects):
-    candidates={k:{'value':v,'display':sp.sstr(v),'value_kind':'COMPUTED_OBJECT',
-                   'class':'DERIVED','step':'S11c-c2','route':'F9A_ABSENT'} for k,v in objects.items()}
+    if set(objects) != EXPORT_ROOTS:
+        raise ValueError('publication root membership')
+    compact_objects = {}
+    for key, value in objects.items():
+        compact_objects[key] = sp.Tuple(*(sp.Tuple(case, sp.Tuple(*(
+            sp.Tuple(label, publication_compact(item) if str(label) == 'VALUE' else item)
+            for label, item in payload))) for case, payload in value))
+    candidates={k:{'value':v,'display':k,'value_kind':'COMPUTED_OBJECT',
+                   'class':'DERIVED','step':'S11c-c2','route':'F9A_ABSENT'} for k,v in compact_objects.items()}
     all_atoms=set().union(*(v.atoms(sp.Symbol,AppliedUndef) for v in objects.values()))
     for atom in all_atoms:
         declaration=atom.func if isinstance(atom,AppliedUndef) else atom
@@ -820,6 +872,7 @@ def publish(inputs, fold, objects):
     collisions=set(candidates)&set(fold)
     if collisions:
         raise ValueError(('F9 collision',sorted(collisions)))
+    print('EXPORT_F9_COLLISIONS = ' + repr(sorted(collisions)), flush=True)
     combined=dict(fold)|candidates
     closure=check_consumer(combined,EXPORT_ROOTS)['closure']-set(fold)
     delta={k:candidates[k] for k in sorted(closure)}
@@ -849,8 +902,112 @@ def publish(inputs, fold, objects):
     emit('EXPORT_ROUNDTRIP',comparison,inputs)
     if any(delta[k]['value']!=restored[k]['value'] for k in delta):
         raise ValueError('serialization roundtrip')
+    # Separate semantic guard: the generated module's restored values versus
+    # the original emitted payload, with strict containers before arithmetic.
+    evidence = []
+
+    def record(path, check, result):
+        line = f'EXPORT_SEMANTIC {path} {check} = {result}'
+        print(line, flush=True)
+        evidence.append(line)
+        if result is not True:
+            raise ValueError(('emitted/compact mismatch', path, check, result))
+
+    def entries(value, path):
+        record(path, 'mapping_tuple', isinstance(value, sp.Tuple))
+        record(path, 'pair_arities', all(isinstance(p, sp.Tuple) and len(p) == 2 for p in value))
+        result = dict(value)
+        record(path, 'unique_keys', len(result) == len(value))
+        return result
+
+    def poles(value):
+        # Exact bases AND exponents: stronger than a pole-set comparison.
+        return {p for p in value.atoms(sp.Pow) if p.exp.is_negative}
+
+    def semantic(original, decoded, path):
+        if isinstance(original, Mapping):
+            record(path, 'mapping_type', type(decoded) is type(original))
+            record(path, 'mapping_keys', set(original) == set(decoded))
+            for key in original:
+                semantic(original[key], decoded[key], f'{path}/{key}')
+        elif isinstance(original, sp.MatrixBase):
+            record(path, 'matrix_type', type(decoded) is type(original))
+            record(path, 'matrix_shape', decoded.shape == original.shape)
+            for i in range(original.rows):
+                for j in range(original.cols):
+                    semantic(original[i, j], decoded[i, j], f'{path}[{i},{j}]')
+        elif isinstance(original, (sp.Tuple, tuple, list)):
+            record(path, 'tuple_type', type(decoded) is type(original))
+            record(path, 'tuple_arity', len(decoded) == len(original))
+            if original and all(isinstance(p, sp.Tuple) and len(p) == 2 and
+                                isinstance(p[0], Str) for p in original):
+                left, right = entries(original, path + '/emitted'), entries(decoded, path + '/restored')
+                record(path, 'mapping_keys', set(left) == set(right))
+                for key in left:
+                    semantic(left[key], right[key], f'{path}/{key}')
+            else:
+                for i in range(len(original)):
+                    semantic(original[i], decoded[i], f'{path}[{i}]')
+        elif isinstance(original, Str):
+            record(path, 'Str_label', type(decoded) is Str and original == decoded)
+        else:
+            record(path, 'algebraic_leaf', isinstance(original, sp.Expr) and isinstance(decoded, sp.Expr))
+            record(path, 'reciprocal_powers_unchanged', poles(original) == poles(decoded))
+            # Expand integrands with their unchanged reciprocal/calculus atoms
+            # protected, then protect identical Integral atoms as in difference.
+            # These local check-only dummies never enter a published value.
+            atoms = (poles(original) | poles(decoded) |
+                     original.atoms(sp.Function, sp.Derivative) |
+                     decoded.atoms(sp.Function, sp.Derivative))
+            protected = {v: sp.Dummy('publicationCoefficient') for v in atoms}
+            unprotect = {v: k for k, v in protected.items()}
+
+            @lru_cache(maxsize=None)
+            def normalize_integrals(value):
+                replacements = {}
+                for integral in value.atoms(sp.Integral):
+                    integrand = sp.expand(normalize_integrals(integral.function).xreplace(protected))
+                    integrand = integrand.xreplace(unprotect)
+                    replacements[integral] = (sp.S.Zero if integrand == 0 else
+                                              sp.Integral(integrand, *integral.limits))
+                return value.xreplace(replacements)
+
+            expression = normalize_integrals(decoded) - normalize_integrals(original)
+            integrals = {v: sp.Dummy('publicationIntegral') for v in expression.atoms(sp.Integral)}
+            residual = sp.expand(expression.xreplace(integrals))
+            print(f'EXPORT_SEMANTIC {path} expanded_difference = {residual}', flush=True)
+            evidence.append(f'EXPORT_SEMANTIC {path} expanded_difference = {residual}')
+            record(path, 'expanded_difference_is_zero', residual == 0)
+
+    sizes = {}
+    expected_cases = {cas((a, d)) for a in ANCHORINGS for d in DENSITIES}
+    for key in sorted(EXPORT_ROOTS):
+        original_cases = entries(objects[key], key + '/emitted')
+        decoded_cases = entries(restored[key]['value'], key + '/restored')
+        record(key, 'case_keys', set(original_cases) == set(decoded_cases) == expected_cases)
+        sizes[key] = {}
+        for case in original_cases:
+            path_name = key + '/' + '/'.join(map(str, case))
+            original = entries(original_cases[case], path_name + '/emitted')
+            decoded = entries(decoded_cases[case], path_name + '/restored')
+            record(path_name, 'payload_keys', set(original) == set(decoded))
+            for label in original:
+                if str(label) == 'VALUE':
+                    semantic(original[label], decoded[label], path_name + '/VALUE')
+                    counts = {'emitted_srepr_bytes': len(sp.srepr(original[label]).encode()),
+                              'compact_srepr_bytes': len(sp.srepr(decoded[label]).encode())}
+                    sizes[key]['/'.join(map(str, case))] = counts
+                    print('EXPORT_VALUE_BYTES ' + path_name + ' = ' + repr(counts), flush=True)
+                else:
+                    record(path_name + '/' + str(label), 'metadata_exact', original[label] == decoded[label])
+    restored_closure = check_consumer(dict(fold) | dict(restored), EXPORT_ROOTS)['closure'] - set(fold)
+    restored_guard = assert_delta_is_minimal(restored, restored_closure)
+    print('EXPORT_RESTORED_CLOSURE = ' + repr(sorted(restored_closure)), flush=True)
+    print('EXPORT_RESTORED_MINIMALITY = ' + repr({k: sorted(v) for k, v in restored_guard.items()}), flush=True)
+    record('delta', 'closure_unchanged', restored_closure == closure)
     temporary.replace(path)
-    return {'keys':sorted(delta),'own_closure':sorted(closure),'guard':{k:sorted(v) for k,v in guard.items()},'digests':digests}
+    return {'keys':sorted(delta),'own_closure':sorted(closure),'guard':{k:sorted(v) for k,v in guard.items()},'digests':digests,
+            'publication_semantic': evidence, 'publication_value_bytes': sizes}
 
 
 def run():
@@ -892,8 +1049,7 @@ def run():
             ):
                 payload=emit(quantity,obj,inputs,case)
                 export_key={'CLOSED_SLAB_OPERATOR':'s11cc2ClosedSlabOperator',
-                            'CLOSED_COUPLING_KERNEL':'s11cc2ClosedCouplingKernel',
-                            'SELF_ENERGY_INCREMENT':'s11cc2SelfEnergyIncrement'}.get(quantity)
+                            'CLOSED_COUPLING_KERNEL':'s11cc2ClosedCouplingKernel'}.get(quantity)
                 if export_key:
                     exports[export_key][case]=payload
             # Regression-only bind of the predecessor's already-extracted kernel.

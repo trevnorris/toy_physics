@@ -1,0 +1,7 @@
+closed slab operator: 5 algebraic leaves
+FAITHFUL (compact==emitted):      5/5  fails=[]
+GUARD BITES x2 corruption:        5/5  slipped=[]
+GUARD BITES +marker corruption:   5/5  slipped=[]
+INTEGRAND corruption on /THETA: bites=True
+
+[exited with code 0]

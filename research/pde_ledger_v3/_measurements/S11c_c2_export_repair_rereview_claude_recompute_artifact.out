@@ -1,0 +1,15 @@
+=== s11cc2ClosedSlabOperator ('LAB_HELD', 'RHO4_CONSTANT') ===
+  leaves compared: 5
+=== s11cc2ClosedCouplingKernel ('LAB_HELD', 'RHO4_CONSTANT') ===
+  leaves compared: 6
+
+===== SUMMARY =====
+total algebraic leaves compared: 11
+nonzero difference leaves: 2
+   NONZERO s11cc2ClosedSlabOperator/LAB_HELD/RHO4_CONSTANT/VALUE/THETA -> 2*_Dummy_34*I*Lambda_A_0*epsilon_shape*eta_bg*sigma_W/(omega*rho_m*tau_A + I*rho_m) - 2*_Dummy_44*I*Lambda_A_0*epsilon_shape*eta_bg*sigma_W/(omega*rho_m*tau_A + I*rho_m)
+   NONZERO s11cc2ClosedSlabOperator/LAB_HELD/RHO4_CONSTANT/VALUE/E_W -> -2*_Dummy_49*I*Lambda_X_0*W_0*epsilon_shape*eta_bg*sigma_W/(2*omega*rho_m*tau_X + 2*I*rho_m) + _Dummy_49*W_0*epsilon_shape*eta_bg*sigma_W + 2*_Dummy_59*I*Lambda_X_0*W_0*epsilon_shape*eta_bg*sigma_W/(2
+pole-set mismatches: 0
+container shape mismatches: 0
+compact leaves containing Dummy: 0 []
+compact leaves containing UnevaluatedExpr: 0 []
+VERDICT: FAIL

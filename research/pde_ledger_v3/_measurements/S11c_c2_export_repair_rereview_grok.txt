@@ -1,0 +1,173 @@
+I'll start by reading the review skill and the export-repair directive so the six checks run against the actual requirements, not a paraphrase.I'll inspect the export-repair diff, fold machinery, and current artifacts first, then run the six checks independently in `/tmp`.Diff is publication-only so far. Next I’ll inspect TRIAGE/run/publish, the export module structure, and fold consumers before any re-run.TRIAGE returns before `publish`, so I’ll set up isolated `/tmp` copies, inspect `emit`/`publish` wiring, then run baseline vs current one case at a time.The 476 MB log grep is still running. I’ll set up the `/tmp` sandbox in parallel and keep the construction-hash comparison moving.Construction functions match the baseline; `run()` only differs at the export map. I’ll kill the 476 MB grep, instrument TRIAGE copies, and start the current one-case re-run.I'll instrument the TRIAGE copies, start the current one-case run, and write the membership and export-line extractors in parallel.Construction is unchanged except the export map. Next I’ll run current TRIAGE, then membership and the independent semantic comparison.Current TRIAGE finished in 71s. I’ll start the baseline TRIAGE next and run the membership ablation in parallel — it does not load parent exports.Baseline and current TRIAGE outputs are byte-identical. Next I’ll fix the semantic script and run membership, then the independent compact-vs-emitted comparison.Membership is clean: increment absent, both operators present in a 4-case tree, closure minimal. Next is the independent compact-vs-emitted semantic check.The ablation subtracted whole Tuples; I’ll walk algebraic leaves instead so the corrupted compact is compared the same way the guard does.Transparency is clean. Next I’ll re-run `publish` itself on a compaction that adds a real term, so the script’s own semantic guard has to hard-stop.# Independent re-review — S11c-c2 EXPORT REPAIR
+
+**Verdict:** the publication-only repair is **correct to commit**. No confirmed defect in physics, membership, compaction, singular locus, stored form, or guard bite. One hygiene gap (missing builder report) does not change what is computed or exported.
+
+All work was in `/tmp/s11cc2_export_review/`. The working tree was not modified.
+
+---
+
+## 1. Physics unchanged — **no finding**
+
+**Diff scope.** Against `8f3a017f`, every construction `def` is byte-identical. The only body changes are `publish` and `run`; the only added def is `publication_compact`.
+
+```
+CHANGED_DEFS ['publish', 'run']
+added {'publication_compact'}
+N_IDENTICAL 36  N_CHANGED 2
+```
+
+`run()`’s unified diff is **only** the `export_key` map dropping `SELF_ENERGY_INCREMENT` (`S11c_c2_selfenergy_fold_sympy_audit.py:1051-1052`). `build_case` / `build_face` / `extract` / `kernel_bridge` / `retained_shape` / `emit` / `traction_pairing` / `control` / `grade_object` are unchanged.
+
+**Emitted physics.** TRIAGE (`S11CC2_PACKAGE=TRIAGE`, one case, three core objects) of `git show 8f3a017f:…` vs the current script:
+
+| | current | baseline |
+|---|---|---|
+| stdout bytes | 10 966 662 | 10 966 662 |
+| pickle bytes | 250 680 | 250 680 |
+| `CLOSED_SLAB_OPERATOR` tag | 4 013 128 | identical |
+| `CLOSED_COUPLING_KERNEL` tag | 4 366 525 | identical |
+| `SELF_ENERGY_INCREMENT` tag | 2 575 252 | identical |
+
+Stdout and pickle are **byte-identical**. Increment is still **emitted**.
+
+Scripts / stdout:
+- `/tmp/s11cc2_export_review/check1_run_diff.py` → `measurements/check1_run_diff.out`
+- `/tmp/s11cc2_export_review/measurements/check1_all_defs.out`
+- `/tmp/s11cc2_export_review/measurements/check1_triage_cmp.out`
+- TRIAGE: `measurements/triage_{current,baseline}.out`
+
+---
+
+## 2. Membership — **no finding**
+
+Independent `load_model` / `check_consumer` / `assert_delta_is_minimal` on the generated module (not the script’s `EXPORT_SEMANTIC` printer):
+
+| check | result |
+|---|---|
+| file size | **22 441 522 B (21.4 MB)** |
+| `s11cc2SelfEnergyIncrement` | **absent** |
+| `s11cc2ClosedSlabOperator`, `s11cc2ClosedCouplingKernel` | present |
+| cases each | all 4 `(anchoring, density)` |
+| payload labels | `VALUE`, `MULTIGRADE`, `DIMENSION_L_T_M`, `COMPUTED_BRANCH_BINDINGS`, `FOURIER_PROFILE_BINDINGS` |
+| `display` | short root name (24 / 26 chars), not `sstr(value)` |
+| leaked increment / origins / parity / control keys | **none** |
+| `load_model(b, c1, this delta)` | binds both operators; 0 overwrites |
+| `check_consumer` closure | resolves; own closure = 70 rows |
+| `assert_delta_is_minimal` | **PASS**; written keys == own closure |
+| `BUILD_INPUT_DIGESTS` | matches `sha256sum` of the five pinned files |
+
+Script: `/tmp/s11cc2_export_review/check2_membership.py`  
+Stdout: `/tmp/s11cc2_export_review/measurements/check2_membership.out`
+
+---
+
+## 3. Semantic equivalence (recomputed) — **no finding**
+
+For `LAB_HELD/RHO4_CONSTANT`, compact `exports.py` VALUE vs TRIAGE-emitted VALUE, with **strict containers** (case keys, tuple arities, mapping keys, matrix shapes) and **Integral-aware** `expand(compact − emitted)` (integrands expanded under protected reciprocal/calculus atoms; remaining `Integral`s Dummy-protected). Pole identity **and** `(base, exp)` signature **and** `together().as_numer_denom()` denominator atoms compared per leaf.
+
+```
+SEMANTIC_PASS s11cc2ClosedSlabOperator
+SEMANTIC_PASS s11cc2ClosedCouplingKernel
+N_LEAVES_ZERO 11 N_LEAVES_NONZERO 0
+N_POLE_IDENTITY_OK 11 FAIL 0
+N_POLE_SIG_FAIL 0 N_DEN_ATOM_FAIL 0
+BOOLEAN_FAILURES []
+```
+
+11 algebraic leaves = slab `U[0,1,2]`, `THETA`, `E_W` (5) + kernel two directions × `{THETA, E_W, DIV_U}` (6). No dropped trailing channel. Compact sizes match the build’s `EXPORT_VALUE_BYTES` (slab 4 002 816 → 2 271 711; kernel 4 355 993 → 3 375 460).
+
+Script: `/tmp/s11cc2_export_review/check3_semantic.py`  
+Stdout: `/tmp/s11cc2_export_review/measurements/check3_semantic.out`
+
+---
+
+## 4. Transparency + no information loss — **no finding**
+
+Grep + post-import atom walk of `S11c_c2_exports.py`:
+
+```
+TEXT_Dummy_COUNT 0
+TEXT_UnevaluatedExpr_COUNT 0
+TEXT_cse_COUNT 0
+DUMMY_HITS [] N 0
+UNEVAL_HITS [] N 0
+NON_BASIC [] N 0
+```
+
+Stored values are `sp.Basic` (`Tuple` of evaluable expressions). `sp.diff` on four `VALUE` leaves succeeded (`U[0..2]` wrt `sigma_W`, `THETA` wrt `omega`). Short `display`. Pole sets unchanged on all 11 leaves (check 3). Temporary `Dummy`s in `publication_compact` are substituted back before serialization (`:841-842`).
+
+Script: `/tmp/s11cc2_export_review/check4_transparency.py`  
+Stdout: `/tmp/s11cc2_export_review/measurements/check4_transparency.out`
+
+---
+
+## 5. FORM ablation — guards **do bite** — **no finding**
+
+**(a) Compaction.** Copied the script to `/tmp`; made algebraic leaves `out + 1` after the pole-preserving choice (pole atom set unchanged; a real term added). Independent leafwise residual:
+
+```
+CLOSED_SLAB_OPERATOR HONEST_LEAVES_ZERO 5 NONZERO 0
+CLOSED_SLAB_OPERATOR CORRUPT_LEAVES_ZERO 0 NONZERO 5
+CORRUPT_SAMPLE ('VALUE/U[0]', 1, True)   # residual 1, poles unchanged
+GUARD_BITES CLOSED_SLAB_OPERATOR
+CLOSED_COUPLING_KERNEL ... CORRUPT_LEAVES_ZERO 0 NONZERO 6
+GUARD_BITES CLOSED_COUPLING_KERNEL
+```
+
+Then **re-ran `publish()`** on the corrupted copy (TRIAGE one case, replicated to four case keys). The script’s own check hard-stopped:
+
+```
+EXPORT_SEMANTIC .../THETA expanded_difference_is_zero = False
+PUBLISH_RAISED ValueError ('emitted/compact mismatch',
+  's11cc2ClosedCouplingKernel/LAB_HELD/RHO4_CONSTANT/VALUE/TRANSVERSE_TO_THICKNESS/THETA',
+  'expanded_difference_is_zero', False)
+```
+
+**(b) Membership.** Re-add increment to `EXPORT_ROOTS` only, and drop `ClosedSlabOperator` from `EXPORT_ROOTS`, then call `publish` with the two-operator object dict:
+
+```
+RESULT readd_increment ValueError publication root membership
+RESULT drop_slab       ValueError publication root membership
+MEMBERSHIP_READD_BITES True
+MEMBERSHIP_DROP_BITES True
+```
+
+The first-line guard (`publish:853-854`) fires before compact. That is the intended hard-stop; `assert_delta_is_minimal` is not reached because membership already failed.
+
+Scripts / stdout:
+- `/tmp/s11cc2_export_review/check5_compact_ablation.py` → `measurements/check5_compact_ablation.out`
+- `/tmp/s11cc2_export_review/check5_publish_ablation.py` → `measurements/check5_publish_ablation.out`
+- `/tmp/s11cc2_export_review/check5_membership_ablation.py` → `measurements/check5_membership_ablation.out`
+
+---
+
+## 6. No overstep — **no finding** (hygiene note below)
+
+Working-tree delta from this repair:
+
+```
+ M research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py
+?? research/pde_ledger_v3/scripts/S11c_c2_exports.py
+?? research/pde_ledger_v3/_measurements/S11c_c2_sympy_guard_evidence.json
+?? research/pde_ledger_v3/_measurements/S11c_c2_sympy_progress.json
+?? research/pde_ledger_v3/directives/_legs/S11c_c2_export_repair_rereview_prompt.md
+```
+
+No self-review / derived-or-declared / output-checker / finalize artifacts. `guard_evidence.json` is the expected checkpoint. `progress.json` is the unchanged `build_case` harness (`:533`). The `_legs/` prompt is orchestrator-created for this review.
+
+---
+
+## CONFIRMED defects
+
+**None.** Physics unchanged; compact ≡ emitted on all 11 leaves; poles preserved; increment absent from the delta; both operators bindable/differentiable; both new guards hard-stop under one-sided corruption.
+
+## Unsettled (not physics)
+
+- **`S11c_c2_export_repair_builder_report.md` is absent.** The directive asked for it; it is not in the tree. That is a builder-report gap, not an export defect.
+- Membership is defined by `EXPORT_ROOTS`. Re-adding the increment to **both** `EXPORT_ROOTS` and the `export_key` map would export it and pass minimality (it would be a declared root). The new `set(objects) != EXPORT_ROOTS` catch is desync, not a hardcoded ban. The committed `EXPORT_ROOTS` content is the control; it is correct.
+
+---
+
+## Commit?
+
+**Yes — the export repair is correct to commit** (script + `S11c_c2_exports.py` + the expected `S11c_c2_sympy_guard_evidence.json` checkpoint). Optional: add the missing builder report and `progress.json` if you want the directive’s report file in the same commit; neither changes the exported physics.

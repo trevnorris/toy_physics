@@ -111,6 +111,13 @@ before the WL build.** [The earlier verdict "physics SOUND / F/G/E all false pos
 > a build correction (the material-coordinate route) + the F/G re-grounding remain owed. The biased `verify_EG` E
 > conclusion is retired.
 
+> ⚠⚠ **F/G DEFERRED 2026-09-06 — see `_measurements/S11c_c2_FG_regrounding_deferred.md`.** F and G were re-grounded
+> through the full corrected pipeline (question-vet + a 4-round reviewed build directive), but the astra build hit a
+> **tractability wall** (full-symbolic weak-kernel / six-block / adjoint over all retained grades on the c2 operands:
+> ~11 min / ~150 MB per case, ~78 build iterations — un-adjudicable). ⇒ the retired `verify_F`/`verify_EG` F/G
+> conclusions are **withdrawn** (⛔ do not rely on them); the correct re-grounding is a **numeric-probe** diagnostic,
+> OWED as a separate build. The increment VALUES are unaffected — only the F/G interpretations were biased.
+
 **Carry-forwards / caveats:**
 1. **F** (wording, not a defect): the emitted uniform-limit object is non-vanishing purely from the §3c
    `−extract(open)` bare-slot representation. Interpret as **"the genuine closure-induced coupling decouples,"**

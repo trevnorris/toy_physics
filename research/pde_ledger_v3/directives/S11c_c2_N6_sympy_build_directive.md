@@ -220,8 +220,8 @@ superseded by §4; do not carry the old `REP_INVARIANCE_*` names forward.
 2. ⛔ **The tag name is output too.** A name may name **the object**, ⛔ never its value, sign, ratio, or the shape of
    the answer.
 3. ⛔ **No tautological residual.** Emit a difference only where the two operands were produced by INDEPENDENT ROUTES
-   (route 1 native-Eulerian, route 2 native-material-then-mapped — verified independent by §4's one-sided
-   corruption). ⛔ If `q:=A/B` and you emit `A − q·B`, it is zero by construction for any input. Where no second route
+   (route 1 native-Eulerian, route 2 native-material face-fold already Eulerian-mapped inside its source builders —
+   verified independent by §4's one-sided corruption). ⛔ If `q:=A/B` and you emit `A − q·B`, it is zero by construction for any input. Where no second route
    exists, emit the objects and say so.
 4. ⛔ **Emission must never be conditional on a payload's value.** Whether a tag appears may depend only on which
    object/representative it belongs to — ⛔ never on whether its value is zero. Tag names unique; payloads may

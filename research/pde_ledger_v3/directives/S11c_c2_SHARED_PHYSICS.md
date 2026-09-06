@@ -302,8 +302,8 @@ channel is nonzero.
 
 ### 5c · The N6 independent-route control — the two COORDINATE constructions at a FIXED anchoring
 
-`N6`/`N4` require **two independently-constructed routes of the same object, compared after the exact
-Eulerian↔material field redefinition, then a one-sided independence corruption** — ⛔ not a bare one-sided
+`N6`/`N4` require **two independently-constructed routes of the same object, expressed in the common Eulerian face
+basis by their native builders and compared directly, then a one-sided independence corruption** — ⛔ not a bare one-sided
 corruption. Per the parent pattern (`S11c_a_SHARED_PHYSICS.md` §5a "Representation-invariance routes N4/N6" +
 `S11c_b_SHARED_PHYSICS.md` §5a; `S11c_decisions.md` N4/N6), the two routes are the **Eulerian and
 material-coordinate constructions of the SAME self-energy increment**, with the **anchoring `α` AND the density

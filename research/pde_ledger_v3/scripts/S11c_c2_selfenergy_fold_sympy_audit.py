@@ -1087,24 +1087,7 @@ def run():
     for density in DENSITIES:
         lab=baselines[(ANCHORINGS[0],density)]
         material=baselines[(ANCHORINGS[1],density)]
-        mapped_closed=extract(representation_pullback(material['closed'],inputs,density),inputs)
-        mapped_open=extract(representation_pullback(material['open'],inputs,density),inputs)
-        mapped_closed=tree(mapped_closed,lambda e:retained_shape(e,inputs))
-        mapped_open=tree(mapped_open,lambda e:retained_shape(e,inputs))
-        mapped=difference(mapped_closed,mapped_open)
-        emit('REP_INVARIANCE_LAB_OPERAND',lab['increment'],inputs,(density,))
-        emit('REP_INVARIANCE_MATERIAL_OPERAND',mapped,inputs,(density,))
-        emit('REP_INVARIANCE_RESIDUAL',difference(mapped,lab['increment']),inputs,(density,))
-        corruption=build_case(inputs,ANCHORINGS[1],density,overrides={'FLIP_FACE_SLOPE':True})
-        emit('REP_INDEPENDENCE_MATERIAL_NORMAL_OPERANDS',sp.Tuple(*normal_slope_control(inputs,ANCHORINGS[1],1)),inputs,(density,))
-        emit('REP_INDEPENDENCE_MATERIAL_OPERAND',corruption['increment'],inputs,(density,))
-        emit('REP_INDEPENDENCE_MATERIAL_RESIDUAL',difference(corruption['increment'],material['increment']),inputs,(density,))
-        emit('REP_INDEPENDENCE_LAB_OPERAND',lab['increment'],inputs,(density,))
-        lab_corruption=build_case(inputs,ANCHORINGS[0],density,overrides={'FLIP_FACE_SLOPE':True})
-        emit('REP_INDEPENDENCE_LAB_NORMAL_OPERANDS',sp.Tuple(*normal_slope_control(inputs,ANCHORINGS[0],1)),inputs,(density,))
-        emit('REP_INDEPENDENCE_LAB_CORRUPTED_OPERAND',lab_corruption['increment'],inputs,(density,))
-        emit('REP_INDEPENDENCE_LAB_RESIDUAL',difference(lab_corruption['increment'],lab['increment']),inputs,(density,))
-        emit('REP_INDEPENDENCE_MATERIAL_COMPANION_OPERAND',material['increment'],inputs,(density,))
+        emit('ANCHORING_L_MINUS_M',difference(lab['increment'],material['increment']),inputs,(density,))
     measurements['export']=publish(inputs,fold,{k:cas(v) for k,v in exports.items()})
     measurements['computation_lines']=COMPUTATION_LINES
     measurements['elapsed_seconds']=time.monotonic()-started

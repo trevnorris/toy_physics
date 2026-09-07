@@ -142,7 +142,7 @@ settled physics is not reopened by a new author — it is the drafting that fail
 | Role | Does | Does not |
 |---|---|---|
 | **Claude (orchestrator)** | Decides what scaffolding says; reviews the resulting diff; re-runs each named acceptance command itself; performs ablations; gates; banks; commits explicit paths | Review its own build. Hand-type a long scaffolding document — write the decision list instead |
-| **Codex** (always `-c model_reasoning_effort=xhigh`) | Default builder: designs, writes and runs scripts, iterates to exit 0, applies fixes | Decide the verdict; review what it wrote |
+| **Codex** (always `-c model_reasoning_effort=xhigh`) | Default builder: designs, writes and runs scripts, iterates to exit 0, applies fixes; implements committed ablation harnesses (§4) from the orchestrator's cleared knife-list | Decide the verdict; review what it wrote; **choose the harness's targets/knives** |
 | **Review legs** (fresh agent / Grok) | Read code against equations term-by-term; try to break it; mutate disposable scratch copies for orchestrator-assigned ablations | Write or mutate any live deliverable; be reused across legs; carry context between reviews |
 | **Scaffolding applier** | Applies an orchestrator-authored decision list to a **prose** file; Claude reviews the diff | Touch code, math, or any deliverable; review its own application |
 
@@ -156,6 +156,73 @@ orchestrator ablation is supplementary; the fresh leg still owns the verdict.
 A **form** control tests physics; a **coefficient** control tests arithmetic — scaling never leaves the
 family. Demand a script and its literal stdout: a prose re-derivation is the same defect relocated into the
 review.
+
+**Committed ablation harnesses — the durable form** *(adopted 2026-09-07 — codex-sol + Grok reviewed → SOUND-WITH-CHANGES, folded; user signed off)*.
+The review-instrument ablation above is *ephemeral*: it leaves no committed, replayable knife — the strongest
+defect-catcher in the method reduced to a leg's `/tmp` scratch (its script + stdout are recorded per E1, but a
+later reviewer cannot replay the exact mutation). For every **physics-bearing engine in a cross-engine pair**,
+additionally build a *committed* ablation harness — S1 (a control that holds leaves an artifact whose absence
+you can see) applied to the mandatory FORM ablation.
+
+- **Wrap the live engine, never re-derive it.** The harness runs the canonical production engine *unchanged*
+  for its baseline, then a copy differing by exactly one declared upstream mutation. Any reproducer is
+  mechanically extracted from — or calls — the named production construction; an independently reimplemented
+  baseline is not provenance evidence (a second derivation that agrees at baseline is the designed-to-agree
+  risk relocated: a harness that copies a hand-typed `H` for its baseline and computes `H+δ` corrupted matches
+  byte-for-byte and diffs nonzero, yet proves nothing about whether the engine computed `H`).
+- **Orchestrator-owned knives; the manifest does NOT replace the decision list.** The target/knife list stays
+  the **orchestrator's**, never the builder's (the existing §4 rule) — a builder choosing its own teeth writes
+  the knife its payload already passes. Before any harness builder launches, the orchestrator writes that
+  target/knife decision list and gates it once under **G2** (Codex + Grok); the harness then *mirrors* the
+  cleared list in an executable manifest and its build legs verify one-to-one. Embedding a manifest in the
+  script does not waive G2. [`directive-design-review`]
+- **Construction site ≠ observation site; print, don't PASS.** Force the perturbation on the object's
+  **construction**, emit the `(baseline, corrupted, diff)` triple of the **emitted tag**, *then* guard (E1) —
+  a `PASS` tag is the residual-asserted-zero defect in a new file. Zero-diff under a claimed FORM knife is a
+  **fail**, not a skip; mutating the emit/diff wrapper is theater. A **FORM** knife changes
+  tensor/sector/index/derivative/field dependence while preserving enough type, dimension, retained grade and
+  domain to still run; a sign flip or scalar rescale *alone* is a coefficient test. A **coefficient** knife is
+  allowed only when the list names it as a channel a FORM knife cannot see (the N6 Φ-coefficient precedent).
+  Two-route objects: corrupt one route; the other must stay. [`per-tooth-ablation`, `xform-prefix-is-not-a-form-control`]
+- **Scope = the claim-dependency frontier, not "every line."** Cover every independent physics-bearing
+  construction whose output enters the comparator or supports a claim/control — each independent construction
+  path gets a genuine FORM knife (N6 was five knives, not forty tags). Mechanical/arithmetic checks get their
+  appropriate perturbation, never a relabeled FORM. Imported objects are marked explicitly: a consumer harness
+  proves the step *depends* on an imported row; only the *producer's* harness proves that row was computed.
+- **Drift guard = tagged-payload identity, not full stdout.** The uncorrupted run's **load-bearing tagged
+  payloads** must match the engine's committed tags — ⛔ not full stdout (progress, RSS, timestamps, banners
+  are nondeterministic and already are on these engines). This is copy-identity, ⛔ not the cut
+  byte-identical-**restore** quarantine.
+- **Commit the evidence, and ablate the harness itself.** Commit/annex the harness *and* its exact invocation,
+  source/output digests, and literal `(baseline, corrupted, diff)` transcript through the normal
+  `_measurements/` record — a committed-but-never-run harness is a capability, not evidence (E1). Verify the
+  harness by ablating **it**: a coefficient-rescale or dead-path mutation must **fail to report a bite**
+  (Phase 4's "ablate the harness" applies to this artifact too).
+- **Both engines, never one — including an already-shipped sibling.** The comparator is only as trustworthy as
+  the weaker-verified engine, and the *designed-to-agree* risk is symmetric. Adopting at N6 covers **both** N6
+  engines now — the existing SymPy N6 scripts that emit joined tags *and* the WL engine — not only the next
+  rebuild. [`matching-number-is-not-evidence`]
+- **Authorship.** The orchestrator never writes it (CAS instrument). A fresh non-orchestrator builder writes
+  each engine's harness, preferably a different model family than that engine's author; a WL-competence
+  exception (fresh astra) is allowed and recorded, provided astra did not choose the targets/knives — which is
+  safe here precisely because the knife list is orchestrator-owned and G2-cleared. Each invocation receives
+  only its engine and the cleared list (not the sibling engine, its output, or the comparator). Codex-written
+  → **fresh Claude agent + Grok**, review-until-clear; the orchestrator adjudicates from the triples, not a
+  tag.
+- **Forward, not retroactive; deferral is scope, and the trigger is dependency, not disagreement.** Adopt from
+  S11c-c2 N6 onward; prior steps keep their ephemeral review; blanket backfill is a **user-scoped S11 closeout
+  pass** *before* S11 is declared complete. Retrofit a prior object early when a later claim **depends on it as
+  a supplied premise** and it has no committed bite-triple — risk-ranked by claim ancestry, known-defect
+  history, scoped independence and unresolved controls — ⛔ **not** only when a comparator disagreement traces
+  to it (designed-to-agree, common-mode error and shared freezes produce *agreement*, the precise failures
+  this exists to catch). *(Both review legs flagged the S11c-b `slab_operator` pressure-slot carrier —
+  `∂(slab rows)/∂(δp±, ∂_w δp±)|_{P=0}` plus the #90 `closure_shape_deriv` fold — as the highest-value early
+  retrofit: c2 binds it as a supplied/unfalsifiable premise and becomes c2's `C_E/C_M`, yet its #90 sign and
+  cross-engine residual are still deferred.)* [`re-scope-blocker-vs-downstream-need`, `never-freeze-a-varying-field`]
+
+The ephemeral leg-ablation is **not** retired and is **not** discharged by a green harness — legs still
+FORM-ablate a `/tmp` copy against the orchestrator's list, choosing knives the builder did not. The committed
+harness is the durable record that those controls bite.
 
 ---
 
@@ -349,7 +416,9 @@ follow the numerical docs as written.
 3. Review per §3.2 → fold → go.
 4. Builder executes dual-engine → exit 0, with the inline dimensional firewall.
 5. Orchestrator re-runs each **named** acceptance command and reads its literal exit code.
-6. Review legs: term-by-term fidelity and per-tooth ablation, target list owned by the orchestrator.
+6. Review legs: term-by-term fidelity and per-tooth ablation, target list owned by the orchestrator;
+   physics-bearing engines also get a committed ablation harness (§4) built from that same orchestrator-owned,
+   G2-gated knife-list — both engines of a cross-engine pair.
 7. Harness verified by ablating the harness, not by reading its self-report.
 8. Any hole → builder remediates → re-verify on a fresh agent.
 9. Both legs reported → **then** commit. Bank: `STATUS.md`, memory.

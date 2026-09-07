@@ -14,7 +14,7 @@ Convergent evidence (both legs, against /tmp copies; working tree untouched):
 - **One-sided route corruption** (zero material μ only): Eulerian operand **BYTE-IDENTICAL**; Material + Residual MOVE;
   TILT (route-1) identical ⇒ the two routes are structurally INDEPENDENT; `R_N6` is genuinely `I_E − I_{M→E}`, not
   decoration.
-- **N6-specifics all pass:** no `T`/no annihilation (`I_{M→E}` a live carrier); material μ at both sites, face-μ
+- **N6 construction checks pass:** no `T`/no annihilation (`I_{M→E}` a live carrier); material μ at both sites, face-μ
   verifiably cancels from the δp carrier (`SLOT_GUARD`/`CLOSURE_GUARD` residuals = 0, matching spec §4); shared δp
   symbols (`PRESSURE_IDENTITY` all True); opaque c1 (no θ-sub/Jacobian into `DELTA_P`/`Z`/resolvent); **reverse blocks
   computed-ZERO** (grade-suppression holds in the actual output; the curl is NOT credited as an N4 witness); RHO4 emits
@@ -22,7 +22,8 @@ Convergent evidence (both legs, against /tmp copies; working tree untouched):
   residual 0), ⛔ not `FLIP_FACE_SLOPE`.
 - **PIT sound:** primes {1000000009, 998244353, 1000000033} verified prime & ≡1 mod4; ≥8 draws (11–12); joint singular
   rejection; branch cells before modular reduction; on-shell `q` derived from `k`; honest FN bound with **max** per-prime
-  (`conditional_good_prime`), δ≈5.7e-70; residual-zero ⛔ never an exit; **0 `assert`s** (AST scan). Dimensions:
+  (`conditional_good_prime`, `family·max(per_prime)` at diagnostic:692) — emitted **δ≈5.78e-21 per case, ~9.17e-21
+  four-case union**; residual-zero ⛔ never an exit; **0 `assert`s** (AST scan). Dimensions:
   able-to-fail diagnostic yields nan on the deliberate bad operand; distinct weak dims, no energy-stamping.
 - `reduction/derived_or_declared.py` failing to classify the emit = that legacy tool's colon-tagged-srepr grammar vs this
   diagnostic's purpose-built JSONL (no export/LEDGER write); the derived-vs-declared property is instead established by

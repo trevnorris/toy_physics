@@ -50,17 +50,46 @@ Three findings, each grounded in the tally:
    LAB_HELD.RHO4 (h_α only) → 18; MATERIAL_ADVECTED.RHOBR (a_ρ only) → 18; LAB_HELD.RHOBR (both) → 18. ⇒ the residual
    is DRIVEN by exactly the sanctioned defining-relation content and nothing else.
 
-⇒ **Disposition: the per-engine (SymPy) N6 representation-invariance control is SATISFIED.** `R_N6` is not an
-invariance failure — it is the geometry-invariant carrier (reconciled to zero) plus the sanctioned material↔Eulerian
-constitutive channel, factoring entirely through the defining relations, with no unexplained remainder.
+⇒ ~~**Disposition: the per-engine (SymPy) N6 representation-invariance control is SATISFIED.**~~ **⛔⛔ THIS
+CONCLUSION WAS AN OVER-CLEAR — CORRECTED BELOW (2026-09-06 adjudication review).**
 
-## Scope + honest caveats (⛔ do not over-read — L-CAS)
-- **Per-engine (SymPy) only.** The cross-engine **blind Wolfram** N6 is still OWED (independent second engine).
-- **Retained order** `(η^{≤1}, σ_W^{≤1})` — the residual is nonzero AT this order (⛔ this is NOT the earlier
-  σ_W→0-projection over-clear; the claim is `R_N6 = sanctioned source channel`, ⛔ NOT `R_N6 = 0`).
-- **PIT semantics:** the `0/80` carrier bridge and the `MATERIAL_ADVECTED.RHO4` `R_N6=0` are "no nonzero found" at the
-  conditional bound δ≈3.97e-20 — a bounded conditional zero, ⛔ not an absolute certificate. But the carrier bridge is
-  a build-leg-verified LIVE control, so its zero is a genuine reconciliation, not a false-negative dead knife. The
-  18-column `R_N6`/`SOURCE_CHANNEL` and the `SPLIT_CHECK = 0` are the certified (one-sided / structural) parts.
-- **Instrument, not orchestrator, computed it:** the disposition comes from the astra-built, twice-build-leg-cleared
-  reconcile instrument; the orchestrator only tallied emitted booleans and adjudicated (no private CAS).
+## ⛔⛔ CORRECTION — adjudication review caught an over-clear (Codex-sol; Grok missed it)
+The two adjudication-review legs SPLIT: **Grok = ADJUDICATION SOUND; Codex-sol = OVER-CLEAR** (reports
+`scratchpad/{codex,grok}_N6rc_adjrev.log`). I verified the split (G4): **Codex-sol is right; Grok's defense fails.**
+- **Localization is NOT quotient reduction (the over-clear).** Given `ΔC=0`, `R_N6 = E − M = I(C_M,es) − I(C_M,ms)
+  = B(C_M, es−ms) = B(C_M, ΔS)` is an **algebraic tautology** — the residual is trivially the source channel for
+  **any** source-route discrepancy, including a wrong pullback coefficient or velocity map. So "R_N6 localizes to the
+  source channel" establishes the CARRIER reconciles, but says **nothing** about whether the source residual is
+  sanctioned. Calling `ΔS` "a defining-relation quantity ⇒ in the ideal ⇒ vanishes modulo the relations" is
+  **circular/vacuous** — `ΔS` is by construction the source difference; the instrument emits the frozen relations as
+  METADATA and performs **no ideal reduction / factorization / independent predicted transform**
+  (`scripts/S11c_c2_N6_reconcile_sympy.py:194,:207`). The directive's own discriminating bridge `b_E = b_M`
+  (`SOURCE_BRIDGE_RESIDUAL`) is certified **NONZERO** in 3 cases — I treated that as "expected N4" with no proof.
+- **The `a_ρ+h_α` truth table is a SUPPORT check, not proof.** A real noncovariant defect proportional to either
+  shift has the **identical** 2×2 vanishing pattern and the same retained-`σ_W^1` columns, so
+  `MATERIAL_ADVECTED.RHO4 → R_N6=0` cannot prove "nothing else." (Grok's non-vacuity claims — a bad remainder would
+  show as a carrier/cross channel, or extra blocks/grades — fail: a source-proportional non-covariance shows in
+  neither.)
+
+## Corrected disposition — per-engine retained-order N6 remains OPEN
+**ESTABLISHED (both legs):**
+- The **geometric carrier reconciles** — `CARRIER_BRIDGE_RESIDUAL = C_E − C_M` no-nonzero (conditional δ≈3.97e-20) in
+  all 4 cases, and it is a build-leg-verified LIVE control (material-normal FORM knife moves it 0→4). The
+  mechanical/geometric part of the increment carries no representation dependence.
+- The **residual localizes entirely to the constitutive SOURCE channel** — `R_N6 = B(C_M, ΔS)`, `SPLIT_CHECK=0`,
+  `CARRIER_CHANNEL = CROSS = 0` (⚠ tautological given `ΔC=0`, so this is localization, ⛔ NOT sanctioned-ness).
+
+**NOT ESTABLISHED (the OPEN item):** whether the source discrepancy (`b_E ≠ b_M`, nonzero in 3 cases) is the
+**sanctioned covariant transformation** vs a real non-covariance. This needs an **independent** test the current
+instrument does not perform: EITHER (a) a quotient reduction of `R_N6` by the defining-relation ideal
+(`θ_M−θ_E−a_ρ=0`, `e_M−e_E−h_α=0`, prolongations) with a vanishing remainder, OR (b) an independently-derived
+**predicted source transformation** (what `b_M − b_E` MUST be under exact covariance) matched against the actual
+`ΔS`. ⇒ **per-engine retained-order N6 is OPEN pending that test.**
+
+## Scope + honest caveats
+- **Per-engine (SymPy) only.** The cross-engine **blind Wolfram** N6 is still OWED regardless.
+- **Retained order** `(η^{≤1}, σ_W^{≤1})` — the residual is nonzero at retained `σ_W^1`/`ησ_W^1` (⛔ not a σ_W→0
+  slice). The over-clear was NOT a projection error this time; it was mistaking **localization for reduction**.
+- **PIT semantics:** all-zero = "no nonzero found" at conditional δ, ⛔ never absolute certified zero.
+- **Instrument, not orchestrator, computed the tally;** the over-clear was in the orchestrator's ADJUDICATION prose —
+  caught by the adjudication-review gate (the reason it exists). The instrument + carrier/localization results STAND.

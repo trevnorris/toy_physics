@@ -54,3 +54,8 @@ premise AND both routes. Still owed (route to the WL engine / comparator / step 
   the fully-mapped-to-common-variables operator). **Cross-engine agreement remains OWED.**
 
 ⇒ Per-engine (SymPy) N6 CLOSED as covariance-satisfied. NEXT = blind Wolfram engine N6.
+
+## Owed / durable-evidence
+- The ~499 MB reviewed `.out` (and the covariance/reconcile per-case `.out`, ~13-17 MB each) are ephemeral in `/tmp`
+  — reproducible from the committed instruments; preserve or regenerate if needed for the step record.
+- F/G numeric re-grounding PAUSED INDEFINITELY (user 2026-09-06: effort too large, not blocking physics).

@@ -37,3 +37,10 @@ Non-circularity (imported `μ_E` + supplied `Φ`, forbidding `material_pullback`
 no residual-zero exit; conditional PIT semantics; strict-vs-covariance withheld. ⚠ Note: the vet `.log` files are in
 /tmp (Codex read-only couldn't reach them) — the committed adjudication record carried the needed content; for the
 re-review, reference the committed adjudication, not /tmp logs.
+
+## Re-review (round 2, scoped confirmation of v2) — BOTH LEGS CLEAR → CLEAR TO BUILD
+Both re-review legs (Codex-sol + Grok, `scratchpad/{codex,grok}_N6cov_rereview.log`, EXIT=0) confirmed the 3 folds
+landed (F1 Φ prolonged to μ_E's rank-2 jets via `total_derivative`+`DERIVATIVE_MAP` `simultaneous=True` + domain census;
+F2a `R_COV_INCREMENT`=`closed_response` sig 6/9/12; F2b concrete wave-linear junk knife `κ_j·J_μ·e_W`) and found no
+regression → **DIRECTIVE SOUND — CLEAR TO BUILD**. Reviewed baseline committed `123d9a18`; astra build → 2 build legs
+BUILD CLEAR (`_measurements/S11c_c2_N6_covariance_build_clearance.md`).

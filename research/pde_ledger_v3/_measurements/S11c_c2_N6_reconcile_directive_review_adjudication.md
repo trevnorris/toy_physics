@@ -69,3 +69,9 @@ unmodified-factory = imported `C_E` (baseline nonzero = reconstruction drift; ro
 **Round-2 held sound (both legs):** the corrected question, three-way split, `es`/`ms` pinning + in-process `pit()`,
 jet bridge, coefficient-level carrier test, source outside `Z`, one-sided PIT reading, script clauses + corollaries.
 ⇒ v3 (both R2 folds applied) → one scoped round-3 confirmation before the astra build.
+
+## Round 3 (scoped confirmation of v3) — BOTH LEGS CLEAR → CLEAR TO BUILD
+Both re-review legs (Codex-sol + Grok, `scratchpad/{codex,grok}_N6rc_r3.log`, EXIT=0) confirmed the two round-2 folds
+landed (carrier bite = material covector/normal map with `ms` held, ⛔ not the Eulerian-factory tilt; `SPLIT_CHECK`
+verify = samplewise-zero numerators) and found no regression → **DIRECTIVE SOUND — CLEAR TO BUILD**. Reviewed baseline
+committed `08d72d46`; astra build → 2 build legs BUILD CLEAR (`_measurements/S11c_c2_N6_reconcile_build_clearance.md`).

@@ -1,6 +1,6 @@
 # S11c-b carrier ablation-harness knife-list — G2 decision gate: NOT-SOUND → re-author owed (2026-09-07)
 
-**Artifact:** `directives/S11c_b_carrier_ablation_harness_directive.md` (orchestrator-written knife-list; UNCOMMITTED).
+**Artifact:** `directives/S11c_b_carrier_ablation_harness_directive.md` (orchestrator-written knife-list; committed NOT-SOUND baseline `dc4d4977`, superseded by the re-author).
 **Legs (G1 orchestrator-written → Codex + Grok; G2 one-pass decision gate):** codex-sol (gpt-5.6-sol xhigh) + Grok
 (grok-4.6 high), parallel, identical prompt. Raw logs: `scratchpad/s11cb_gate/{sol,grok}.log` (session-scratch —
 the exact line-level site corrections live there). **Both verdicts: NOT-SOUND / remove-and-retarget.**
@@ -8,7 +8,7 @@ the exact line-level site corrections live there). **Both verdicts: NOT-SOUND / 
 ## The load-bearing finding (both legs, independent; orchestrator-VERIFIED G4)
 My knife-list targeted the **wrong object.** The pressure-slot carrier c2 binds — `∂(slab rows)/∂(δp±,∂_wδp±)|_{P=0}`
 — is **face-law-sourced**, NOT energy-basis or constraint-sourced. Verified in N6's own extractor
-`scripts/S11c_c2_N6_diagnostic_sympy.py`: `pressure_coefficients` (`:409-411`) = `∂(rows)/∂p .xreplace(p→0)`, and
+`scripts/S11c_c2_N6_diagnostic_sympy.py`: `pressure_coefficients` (`:410-412`) = `∂(rows)/∂p .xreplace(p→0)`, and
 `rows` (`:311`) = `{U, E_W, THETA: mass−correction}` built from `face_generalized_force_rows` — the traction /
 virtual-work / #90-closure face laws. `N6_BASE_SOURCE_DEPENDENCY` (`:325`) measures `energy.has(p)` (energy is
 P-independent). ⇒ **K1 (energy-spurion freeze) and K2 (constraint fold) move P-independent objects that are NOT in
@@ -68,4 +68,4 @@ wrong object (a 26=26-class energy freeze sold as a bite on `C_E`).
 ## Disposition
 The G2 gate did its job (caught a wrong-object knife-list before any build). ⛔ Do NOT build the current K1–K4.
 NEXT = re-author the knife-list per this spec (physics-bearing targets → review-until-clear), then build. The
-current directive stays UNCOMMITTED.
+current directive is committed as the reviewed NOT-SOUND baseline (`dc4d4977`), superseded by the re-author.

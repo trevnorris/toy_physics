@@ -58,15 +58,19 @@ byte-identical) — TRUE and unaffected. ⚠ BUT the compact-prep verify caught 
 outcome-value-free**: two residual soft-leaks of the expected-zero outcomes (`ΔC=0`≡`C_E=C_M`; `R_cov=0`) survived my
 round-3 lint (scrubbed post-hoc; see the directive-review adjudication's POST-HOC CORRECTION), so **"outcome-blind
 authorship" was weaker than claimed** — astra saw that the carrier + source-naturality residuals are expected to vanish.
-⭐ **This did NOT compromise the engine, and the build legs are the direct proof:** the risk of leaking the expected
-zeros is a *designed-to-agree / fix-until-matches* engine (forced zeros). A forced/hardcoded zero **cannot move under
-corruption** — yet both legs showed the carrier knife moves `C_E−C_M` off zero and the Φ knife moves `R_cov` off zero
-(one-sided, others fixed), the non-circularity ablation proves the routes independent, and both legs independently
-DERIVED the physics and line-traced every object to a computation. ⇒ the residuals are **genuinely computed from the
-physics**, not tuned to the leaked zeros. **No rebuild is required** — the ablations verify exactly what the (breached)
-value-free-directive control was meant to protect; the leak was a directive/records defect (now fixed), not a
-substantive blindness failure. (User to confirm this disposition; the alternative for maximal rigor is a fresh-builder
-rebuild + repeat legs.)
+⭐ **What the ablations DO and do NOT establish:** the risk of leaking the expected zeros is a *designed-to-agree /
+fix-until-matches* engine (forced zeros). The build legs **rule OUT a forced/hardcoded-zero, an `A−A`, or a
+directly-circular engine** — a forced zero cannot move under corruption, yet both legs showed the carrier knife moves
+`C_E−C_M` off zero and the Φ knife moves `R_cov` off zero (one-sided, others fixed), the non-circularity ablation proves
+the routes independent, and both legs independently DERIVED the physics and line-traced every object. ⚠ This **strongly
+supports** genuine computation but does **NOT logically exclude** a construction tuned (after seeing the expected zeros)
+to vanish at baseline yet still move under corruption. ⚠⚠ **REBUILD DECIDED (user 2026-09-07, maximal rigor):** the
+engine + `.out` will be **REBUILT fresh from the scrubbed value-free directive `28f87dec` + repeat build legs** before
+the comparator — removing exactly that residual outcome-blindness uncertainty on a governing control. The current
+`48a0b4e7`/`2829a30c` are the strongly-supported-genuine baseline being replaced.
 
 ## Next
-Commit reviewed baseline → generate + commit the reviewed `.out` (git-annex/GIN) → c2 T7 comparator + reconcile.
+(0) **REBUILD** the blind WL N6 engine fresh from the scrubbed directive `28f87dec` (fresh `gpt-6-astra`, stateless) →
+verify → 2 fresh build legs → replace the engine `.wl` + regenerate the `.out` → commit. (1) then the c2 T7 comparator +
+reconcile. The current `.out` is committed to the **local** git-annex (`2829a30c`, 397 MB; GIN/GitHub push DEFERRED) and
+will be replaced by the rebuilt result.

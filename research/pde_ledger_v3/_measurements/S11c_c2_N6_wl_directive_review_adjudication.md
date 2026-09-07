@@ -78,13 +78,19 @@ directive (`33c45297`) and that my round-3 leaked-value lint reported "empty":
   expectation) but tightened it anyway to be airtight.)
 **Scrubbed + re-committed** (both leaks removed to outcome-neutral wording; re-grep CLEAN). ⇒ the "outcome-value-free
 directive" claim was over-stated; import-freedom + isolated-vs-in-repo blindness are unaffected.
-⭐ **The ENGINE is NOT rebuilt, and here is why the leak did not cause the harm blindness prevents:** the risk of leaking
-the expected zeros is a *designed-to-agree / fix-until-matches* engine. The **build-leg FORM ablations directly refute
-that** — both legs showed every knife BITES one-sided: the carrier knife moves `C_E−C_M` off zero, the Φ knife moves
-`R_cov` off zero. **A forced/hardcoded zero cannot bite under corruption; these do** ⇒ the residuals are genuinely
-computed, and both legs independently derived the physics and line-traced the construction. The substantive blindness
-goal (genuine independent computation) is verified by the ablations, not by the directive being value-free. See the
-build-review record. ⇒ corrected clearance SHA is the re-commit of the scrubbed directive.
+⚠⚠ **REBUILD DECIDED (user 2026-09-07, maximal rigor).** The current engine `48a0b4e7` + `.out` `2829a30c` stand as the
+**genuine-per-ablations baseline** (see below) but will be **REPLACED by a fresh rebuild** from the scrubbed value-free
+directive (`28f87dec`), followed by fresh build legs, before the comparator — belt-and-suspenders on a governing
+(blindness) control, ⛔ NOT because the engine is known-bad.
+⭐ **What the ablations DO and do NOT establish (so the rebuild is insurance on a residual uncertainty, not a repair of a
+known defect):** the risk of leaking the expected zeros is a *designed-to-agree / fix-until-matches* engine. The
+**build-leg ablations rule OUT a forced/hardcoded-zero, an `A−A`, or a directly-circular engine** — both legs showed
+every control BITES one-sided (the carrier knife moves `C_E−C_M` off zero, the Φ knife moves `R_cov` off zero; a forced
+zero cannot move under corruption), and both legs independently derived the physics and line-traced the construction.
+⚠ **They STRONGLY SUPPORT genuine computation but do NOT logically exclude** a construction tuned (after seeing the
+expected zeros) to vanish at baseline yet still move under corruption. The rebuild removes exactly that residual
+outcome-blindness uncertainty. The corrected clearance SHA of the (now value-free) directive is `28f87dec`; the rebuild
+re-establishes outcome-blind authorship from it.
 
 ## Next
 Commit the reviewed directive baseline → astra WL build (`gpt-6-astra` high; Mathematica; detached; 2-seat;

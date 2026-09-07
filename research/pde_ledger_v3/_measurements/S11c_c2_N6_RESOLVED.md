@@ -22,18 +22,19 @@ transform covariantly (like a vector's components under a change of basis).
    to the source channel `B(C_M, ΔS)` (SPLIT_CHECK=0, carrier/cross=0) — i.e. to `μ`, where the advection enters.
 3. **The frame-change is implemented CORRECTLY (the decisive test).** `R_cov = ms − source_terms(μ_E.subs(Φ), V_E)`
    (the actual material source vs the prediction from transforming the Eulerian source by the DECLARED, independently
-   prolonged map Φ — built without `material_pullback`) = **0 in all 4 cases** (no nonzero at δ≈2.6e-22), knives bite
-   (84, 4). ⇒ the material construction faithfully implements Φ; the nonzero `R_N6` is exactly the Φ-image of the
+   prolonged map Φ — built without `material_pullback`) shows **no nonzero found in all 4 cases** (conditional
+   δ≈2.6e-22), knives bite (84, 4). ⇒ strong evidence the material construction faithfully implements Φ; the nonzero
+   `R_N6` is (to that bound) the Φ-image of the
    source. (`_measurements/S11c_c2_N6_covariance_build_clearance.md`.)
 
 ⭐ **The reconciliation of the two readings (astra):** a comparison pushed all the way to genuinely COMMON variables
-must still vanish. `R_N6 ≠ 0` is acceptable ONLY because `R_cov = 0` proves that difference is the transformation
-content itself, not an additional physical response. Reading A (Codex-sol) is wrong as a demand for identical
+must still vanish. `R_N6 ≠ 0` is acceptable ONLY because `R_cov` shows no nonzero found (conditional δ≈2.6e-22) —
+strong evidence that difference is the transformation content itself, not an additional physical response. Reading A (Codex-sol) is wrong as a demand for identical
 coefficients across DIFFERENT field definitions, but its kernel — equality in common variables — is mandatory and IS
 met. Reading B is the correct notion for this object.
 
 ## ⚠ CARRY-FORWARD caveats (astra) — Reading B does NOT close these; they are PREMISE checks, not defects
-`R_cov=0` proves the material builder IMPLEMENTS the declared Φ; it cannot exclude an error SHARED by the declared
+`R_cov` no-nonzero (conditional δ≈2.6e-22) is strong evidence the material builder IMPLEMENTS the declared Φ; it cannot exclude an error SHARED by the declared
 premise AND both routes. Still owed (route to the WL engine / comparator / step record, ⛔ not pre-cleared):
 1. **Is Φ itself physically correct?** Derive Φ (signs, thickness anchoring `h_α`) from the actual material motion +
    density/measure transformation — not merely confirm the builder reproduces the declared Φ.

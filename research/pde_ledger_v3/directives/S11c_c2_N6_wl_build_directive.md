@@ -173,8 +173,9 @@ localization); SOURCE and CROSS are **closed-response-only** contractions over t
 `build_increment`-style affine contraction on `ΔS`, which re-adds a spurious `−C·p`). Emit the structural guard
 `SPLIT_CHECK = CARRIER + SOURCE + CROSS − R_N6` and its per-sample numerators — it must be **samplewise-zero** (⛔ not a
 structural zero node, ⛔ not a literal `0`). Whether the carrier reconciles and where `R_N6` localizes are **computed
-outcomes**, ⛔ not assumed; note only that carrier-localization is necessary-not-sufficient (it holds identically once
-`ΔC=0`), which is why the source-naturality test is decisive.
+outcomes**, ⛔ not assumed; note only that a fully carrier-localized residual would be **necessary-not-sufficient** for
+representation invariance (localization to the source channel is automatic whenever the carrier bridge is small, ⛔ so it
+proves nothing on its own), which is why the source-naturality test is the decisive one.
 
 **The field map `Φ` (the source-naturality crux).** `Φ: θ ↦ θ + a_ρ, e_W ↦ e_W + h_α`, with `a_ρ = u_i D_iρ₄/ρ₄`,
 `h_α = u_i D_iW_bg/W_bg` at `LAB_HELD` else `0` (`RHO4_CONSTANT ⇒ g_i=0 ⇒ a_ρ=0`, a computed absence). ⛔⛔ **Prolong Φ to
@@ -198,8 +199,9 @@ measures the **complete combined-source square**, including the **independently 
 discrepancy as necessarily constitutive: the square can fail through the velocity channel too. Only downstream
 adjudication, after observing the velocity bridge (`V_E` vs `V_M`), may isolate the μ sub-square. Also emit
 `R_COV_INCREMENT = closed_response(C_M, R_cov)` over the
-closed-response integral families **only** (⛔ never the affine `I(C_M, R_cov)` — it re-adds the bare `−C_M·p` and would
-emit a certified-nonzero increment even at `R_cov=0`, the affine trap the reconcile forbade).
+closed-response integral families **only** (⛔ never the affine `I(C_M, R_cov)` — it re-adds the source-independent bare
+`−C_M·p` term, which is nonzero **regardless of the source residual** and so would misreport a discrepancy that the
+source did not carry; the affine trap the reconcile forbade).
 
 ⛔ **None of `R_N6`, `C_E−C_M`, or `R_cov` is pre-judged.** A raw nonzero `R_N6` is a computed measurement, ⛔ not a
 disagreement; the disposition is adjudicated on our side after the build legs. ⛔ **This WL engine must NOT subtract its
@@ -356,8 +358,8 @@ predicate.
    (corollary 3): the two operands of every residual come from **independent routes** (Eulerian vs material builders;
    re-derived-`μ_E`+Φ vs material pullback), verified by one-sided corruption — ⛔ never differencing an object against
    its own substitution. Where no second route exists, emit the objects and say so.
-3. **Interpretation belongs to the step record.** ⛔ No terminal `VERDICT`/`PASS`/`FAIL`; ⛔ never label `R_cov=0` "N6
-   passes" or `R_cov≠0` "N6 fails."
+3. **Interpretation belongs to the step record.** ⛔ No terminal `VERDICT`/`PASS`/`FAIL`; ⛔ never label a zero residual
+   "N6 passes" or a nonzero residual "N6 fails" — PRINT the residual and decide nothing.
 4. **Emission is conditional only on which package/quantity a tag belongs to, ⛔ never on a payload's value** (corollary
    4): identical payloads across the two routes are the INVARIANCE finding and must both appear; a boolean-valued test
    is emitted as a typed CAS object retaining its operands (an `Inactive[Equal][a,b]`), ⛔ never a native boolean (the

@@ -52,5 +52,21 @@ CLEAR.** ⚠ Scope: this clears the ENGINE (correct construction, biting control
 disposition (carrier/`R_cov` matching, the T7 join) is the comparator/reconcile stage — ⛔ NOT claimed here, ⛔ neither
 engine subtracts its own discrepancy and calls it covariance.
 
+## ⚠ BLINDNESS — PRECISE POSITION (corrected 2026-09-07, compact-prep Codex-verify)
+"Blindness byte-identical" above = **import-freedom + isolated-vs-in-repo** (astra imported nothing; both runs
+byte-identical) — TRUE and unaffected. ⚠ BUT the compact-prep verify caught that the build directive was **not fully
+outcome-value-free**: two residual soft-leaks of the expected-zero outcomes (`ΔC=0`≡`C_E=C_M`; `R_cov=0`) survived my
+round-3 lint (scrubbed post-hoc; see the directive-review adjudication's POST-HOC CORRECTION), so **"outcome-blind
+authorship" was weaker than claimed** — astra saw that the carrier + source-naturality residuals are expected to vanish.
+⭐ **This did NOT compromise the engine, and the build legs are the direct proof:** the risk of leaking the expected
+zeros is a *designed-to-agree / fix-until-matches* engine (forced zeros). A forced/hardcoded zero **cannot move under
+corruption** — yet both legs showed the carrier knife moves `C_E−C_M` off zero and the Φ knife moves `R_cov` off zero
+(one-sided, others fixed), the non-circularity ablation proves the routes independent, and both legs independently
+DERIVED the physics and line-traced every object to a computation. ⇒ the residuals are **genuinely computed from the
+physics**, not tuned to the leaked zeros. **No rebuild is required** — the ablations verify exactly what the (breached)
+value-free-directive control was meant to protect; the leak was a directive/records defect (now fixed), not a
+substantive blindness failure. (User to confirm this disposition; the alternative for maximal rigor is a fresh-builder
+rebuild + repeat legs.)
+
 ## Next
 Commit reviewed baseline → generate + commit the reviewed `.out` (git-annex/GIN) → c2 T7 comparator + reconcile.

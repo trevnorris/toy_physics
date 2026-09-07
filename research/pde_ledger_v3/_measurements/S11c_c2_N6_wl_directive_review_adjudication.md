@@ -60,12 +60,31 @@ Both legs did a fresh full pass and confirmed all four round-2 folds landed with
   wins"); the legs' substance did not conflict. G4: Codex right — a physics-neutral consistency fix (Codex: "No payload
   physics needs changing"). **Folded:** heading → "matched namespaces"; intro + `standardEmissionName` now wire all
   three prefixes (`N6RC_`/`N6COV_`/diagnostic `N6_`), routing the six guard objects through the diagnostic-family case.
-  Mechanically verified (three-prefix wiring consistent, no "two namespaces" residue, final leaked-value lint empty).
+  Mechanically verified (three-prefix wiring consistent, no "two namespaces" residue). ⚠ **My leaked-value lint here was
+  INCOMPLETE — it missed two residual soft-leaks; see the POST-HOC CORRECTION below.**
 
 **Stopping rule met (substantive, ⛔ not "both legs green"):** after the round-3 fold nothing outstanding changes what is
 computed or may be claimed — the object contract was cleared by both legs, and the only round-3 change was a
 physics-neutral scaffolding-consistency fix both legs' substance agreed on. Convergence 12 → 4 → 1(trivial). Rule-15
-watch clear (round 3 bred no new regression). ⇒ **DIRECTIVE CLEAR-TO-BUILD.**
+watch clear (round 3 bred no new regression). ⇒ **DIRECTIVE CLEAR-TO-BUILD** (⚠ corrected — see below).
+
+## ⚠ POST-HOC CORRECTION (compact-prep Codex-sol verify, 2026-09-07) — the round-3 "value-free" clearance OVER-CLAIMED
+The compact-prep verify caught **two residual soft-leaks of the expected-zero outcomes** that survived into the committed
+directive (`33c45297`) and that my round-3 leaked-value lint reported "empty":
+- **`ΔC=0`** (≡ the observed `C_E=C_M`) in the carrier-localization logic ("...holds identically once `ΔC=0`"). ⚠ My
+  round-3 lint actually flagged this and I **wrongly rationalized it as "hypothetical logic"** — that was the error.
+- **`R_cov=0`** in the affine-trap explanation ("...emit a certified-nonzero increment even at `R_cov=0`").
+  (Codex also flagged the symmetric no-VERDICT clause `R_cov=0/R_cov≠0` — I judged that NOT a leak (G4; symmetric, no
+  expectation) but tightened it anyway to be airtight.)
+**Scrubbed + re-committed** (both leaks removed to outcome-neutral wording; re-grep CLEAN). ⇒ the "outcome-value-free
+directive" claim was over-stated; import-freedom + isolated-vs-in-repo blindness are unaffected.
+⭐ **The ENGINE is NOT rebuilt, and here is why the leak did not cause the harm blindness prevents:** the risk of leaking
+the expected zeros is a *designed-to-agree / fix-until-matches* engine. The **build-leg FORM ablations directly refute
+that** — both legs showed every knife BITES one-sided: the carrier knife moves `C_E−C_M` off zero, the Φ knife moves
+`R_cov` off zero. **A forced/hardcoded zero cannot bite under corruption; these do** ⇒ the residuals are genuinely
+computed, and both legs independently derived the physics and line-traced the construction. The substantive blindness
+goal (genuine independent computation) is verified by the ablations, not by the directive being value-free. See the
+build-review record. ⇒ corrected clearance SHA is the re-commit of the scrubbed directive.
 
 ## Next
 Commit the reviewed directive baseline → astra WL build (`gpt-6-astra` high; Mathematica; detached; 2-seat;

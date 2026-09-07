@@ -2,7 +2,7 @@
 
 ## Artifact
 `research/pde_ledger_v3/mathematica/S11c_c2_N6_mathematica_audit.wl` (current working tree; a Codex-written blind
-Mathematica engine, 1004 lines). It reproduces, independently and blind, the per-engine c2 N6 checks the SymPy side
+Mathematica engine, ~1028 lines). It reproduces, independently and blind, the per-engine c2 N6 checks the SymPy side
 established: (1) the **carrier reconcile** `C_E − C_M`, and (2) the **source-naturality** residual
 `R_cov = ms − ms_pred` (the commuting square), at fixed anchoring `α∈{LAB_HELD, MATERIAL_ADVECTED}` and density
 `ρ∈{RHO4_CONSTANT, RHOBR_CONSTANT}`, with able-to-fail FORM controls.

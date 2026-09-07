@@ -163,6 +163,14 @@ unitSupport[Power[x_, n_?NumberQ]] := (If[ListQ[#], n #, #] & /@ unitSupport[x])
 unitSupport[x_] := {Missing["Units", HoldForm[x]]};
 dimensionRecord[x_] := With[{support = unitSupport[x]},
   <|"SUPPORT" -> support, "CONSISTENCY_OPERAND" -> relationalObject[Length[support], 1]|>];
+(* Metadata contains physical operands as well as labels. Inspect the operands
+   recursively rather than assigning dimensionless units to a whole metadata tag.
+   An unrecognized formal operator remains an explicit unknown. *)
+dimensionTree[x_Association] := Map[dimensionTree, x];
+dimensionTree[x_List] := dimensionTree /@ x;
+dimensionTree[Rule[l_, r_]] := <|"DOMAIN" -> dimensionTree[l], "IMAGE" -> dimensionTree[r]|>;
+dimensionTree[x_String] := <|"METADATA_SUPPORT" -> {{0, 0, 0}}|>;
+dimensionTree[x_] := dimensionRecord[x];
 
 (* Enumerate O(3)-even scalar contractions. Only the theta-bearing summands can
    enter either held-fixed theta derivative: the pullback of eW and u is theta-free.
@@ -219,7 +227,10 @@ constructEnergy[] := Module[{ts, candidates, retained, density = 0, coeff, uu, k
   <|"DENSITY" -> density, "GENERATED_CONTRACTIONS" -> candidates,
     "THETA_DEPENDENT_CONTRACTIONS" -> retained, "DIVERGENCE_QUOTIENT" -> quotient,
     "THETA_INDEPENDENT_CENSUS" -> Map[Function[f, <|"TERM" -> f,
-      "THETA_DERIVATIVE" -> el[f]|>], Complement[candidates, retained]],
+      "THETA_DERIVATIVE" -> el[f]|>],
+      Select[candidates, FreeQ[#, Alternatives @@ thetaAtoms] &]],
+    "QUOTIENT_DISCARDED_CENSUS" -> Map[Function[f, <|"TERM" -> f,
+      "EULER_SIGNATURE" -> energyEulerVector[f]|>], Complement[candidates, quotient["BASIS"]]],
     "REPRESENTATIVE" -> Inactive[Modulo][retained, Inactive[Div][compactSupportFlux]]|>];
 
 phiMap[expression_, a_, h_] := Module[{domain, rules, uncovered},
@@ -374,30 +385,32 @@ sourceBind[solve_, mu_, velocity_, density_] :=
 momentum = Association[Table[leg -> Table[declare[Symbol[leg <> ToString[i]], {-1, 0, 0}], {i, 3}],
   {leg, {"kOut", "kIn", "kMiddle"}}]];
 qLeg = Association[Map[# -> declare[Symbol["q" <> #], {-1, 0, 0}] &, {"Out", "In", "Middle"}]];
-constructKernel[] := Module[{zz, height, heightJets, p0, n0, p1, n1, z1,
+constructKernel[s_Integer] := Module[{zz, height, heightJets, p0, n0, p1, n1, z1,
     coordinates = {acousticX1, acousticX2, acousticX3}, wave, flatWave, pressureField,
     normalTrace, pressureTrace, dispersionEquation, dispersionRoot, mixedNormal},
   zz = <||>;
   height = declare[heightTransform, {4, 0, 0}];
   heightJets = Table[declare[Symbol["heightJetTransform" <> ToString[i]], {3, 0, 0}], {i, 3}];
-  wave = Exp[I (momentum["kIn"].coordinates + qLeg["In"] acousticW - omega acousticTime)];
+  (* acousticW is the laboratory normal coordinate. The supplied orientation
+     and graph map enter separately for each disconnected exterior half-space. *)
+  wave = Exp[I (momentum["kIn"].coordinates + s qLeg["In"] acousticW - omega acousticTime)];
   flatWave = wave /. acousticW -> 0;
   pressureField = -rhoM D[wave, acousticTime];
-  pressureTrace = pressureField /. acousticW -> shapeParameter height;
-  normalTrace = (D[wave, acousticW] - shapeParameter Sum[heightJets[[i]] D[wave, coordinates[[i]]], {i, 3}]) /.
-    acousticW -> shapeParameter height;
+  pressureTrace = pressureField /. acousticW -> s shapeParameter height;
+  normalTrace = (s D[wave, acousticW] - shapeParameter Sum[heightJets[[i]] D[wave, coordinates[[i]]], {i, 3}]) /.
+    acousticW -> s shapeParameter height;
   p0 = Cancel[(pressureTrace /. shapeParameter -> 0)/flatWave];
   n0 = Cancel[(normalTrace /. shapeParameter -> 0)/flatWave];
   p1 = Cancel[(D[pressureTrace, shapeParameter] /. shapeParameter -> 0)/flatWave];
   n1 = Cancel[(D[normalTrace, shapeParameter] /. shapeParameter -> 0)/flatWave];
-  mixedNormal = Cancel[(D[(D[wave, acousticW] - slopeMarker Sum[heightJets[[i]] D[wave, coordinates[[i]]], {i, 3}]) /.
-    acousticW -> heightMarker height, heightMarker, slopeMarker] /. {heightMarker -> 0, slopeMarker -> 0})/flatWave];
+  mixedNormal = Cancel[(D[(s D[wave, acousticW] - slopeMarker Sum[heightJets[[i]] D[wave, coordinates[[i]]], {i, 3}]) /.
+    acousticW -> s heightMarker height, heightMarker, slopeMarker] /. {heightMarker -> 0, slopeMarker -> 0})/flatWave];
   Do[AssociateTo[zz, leg -> (Cancel[p0/n0] /. qLeg["In"] -> qLeg[leg])], {leg, Keys[qLeg]}];
   dispersionEquation = Expand[Cancel[(D[wave, {acousticTime, 2}] - cS0^2 (
     Sum[D[wave, {coordinates[[i]], 2}], {i, 3}] + D[wave, {acousticW, 2}]))/wave]];
   dispersionRoot = qSquared /. First[Solve[(dispersionEquation /. qLeg["In"]^2 -> qSquared) == 0, qSquared]];
   z1 = p1/n0 - zz["Out"] n1/n0;
-  <|"FLAT" -> zz, "SHAPE" -> z1,
+  <|"FACE" -> s, "FLAT" -> zz, "SHAPE" -> z1,
     "TRACE_PRESSURE" -> {p0, p1}, "TRACE_CONORMAL" -> {n0, n1}, "TRACE_MIXED_CONORMAL" -> mixedNormal,
     "JET_FOURIER_IDENTITY" -> Thread[heightJets -> I (momentum["kOut"] - momentum["kIn"]) height],
     "BULK_EQUATION_OPERAND" -> dispersionEquation,
@@ -710,7 +723,8 @@ allFamilies[map_] := Module[{out = map},
 probeCase[case_] := Module[{compiled, flatNodes, degreesByCell, primeList, seeds = {}, tables, metadata,
     pointRows = {}, rejectedRows = {}, bounds = {}, variables, sampleAtoms, chart, chartAtoms, atomStreams,
     d, excluded, numeratorDegree, seed, attempts, valid, samples, rejected, row, nodeValues,
-    allValues, prime, cell, point, chartPairs, bad, drawCount = 8, bound, unionCount, metadataCases},
+    allValues, prime, cell, point, chartPairs, bad, drawCount = 8, bound, unionCount, metadataCases,
+    probePositions, positionCursor = 0, positions},
   leafExpressions = {}; leafIndex = <||>; nodeDefinitions = {}; nodeIndices = <||>;
   compiled = Association[KeyValueMap[Function[{name, entries}, name -> Association[
     KeyValueMap[Function[{key, values}, key -> (compileCircuit /@ values)], entries]]], numericObjects]];
@@ -718,8 +732,14 @@ probeCase[case_] := Module[{compiled, flatNodes, degreesByCell, primeList, seeds
   unionCount = Length[flatNodes];
   primeList = {1000000009, 998244353, 1004535809};
   If[!And @@ (PrimeQ /@ primeList), Quit[96]];
-  tables = Association[KeyValueMap[Function[{name, entries}, name -> Association[
-    KeyValueMap[Function[{key, values}, key -> {}], entries]]], compiled]];
+  (* Store one joint draw once. Cell positions follow the identical ordered
+     flattening used above; emission slices these rows without rebuilding a
+     growing nested Association separately for every cell of every draw. *)
+  probePositions = Association[KeyValueMap[Function[{name, entries}, name -> Association[
+    KeyValueMap[Function[{key, values},
+      positions = Range[positionCursor + 1, positionCursor + Length[values]];
+      positionCursor += Length[values]; key -> positions], entries]]], compiled]];
+  tables = {};
   variables = DeleteDuplicates[Cases[leafExpressions, _Symbol, Infinity]];
   variables = Select[variables, Context[#] === "Global`" &];
   Do[cell = branchCells[[cellIndex]]; chart = chartRules[cell];
@@ -767,10 +787,8 @@ probeCase[case_] := Module[{compiled, flatNodes, degreesByCell, primeList, seeds
         If[!bad, evaluateCompiledNodes[prime]; bad = AnyTrue[nodeValueCache, Last[#] === 0 &]];
         If[bad, rejected++; Continue[]];
         valid++; AppendTo[samples, point];
-        KeyValueMap[Function[{name, entries}, KeyValueMap[Function[{key, nodes},
-          nodeValues = evaluateNode[#, prime] & /@ nodes;
-          row = {cellIndex, prime, valid, First /@ nodeValues, Last /@ nodeValues};
-          With[{old = tables[name]}, AssociateTo[tables, name -> Append[old, key -> Append[old[key], row]]]]], entries]], compiled]];
+        nodeValues = evaluateNode[#, prime] & /@ flatNodes;
+        AppendTo[tables, {cellIndex, prime, valid, First /@ nodeValues, Last /@ nodeValues}]];
       If[valid < drawCount, WriteString[$Messages[[1]], "Joint sampler exhausted at case ", ToString[case], "\n"]; Quit[98]];
       AppendTo[pointRows, <|"CELL" -> cell, "PRIME" -> prime, "ATOMS" -> sampleAtoms,
         "ATOM_SEEDS" -> (Hash[{seed, SymbolName[#]}, "SHA256"] & /@ sampleAtoms), "DRAWS" -> samples|>];
@@ -787,13 +805,13 @@ probeCase[case_] := Module[{compiled, flatNodes, degreesByCell, primeList, seeds
       "COMPONENT_AXES" -> If[name === "GUARD:SLOT_GUARD_RESIDUAL",
         Join[{"G_LINEAR"}, Flatten[Table[{"G_CROSS", p, q}, {p, pressureSlots}, {q, pressureSlots}], 1],
           Table[{"DENOMINATOR_PRESSURE_DEPENDENCY", p}, {p, pressureSlots}]], Range[Length[values]]],
-      "PROBE_NUMERATORS" -> SparseArray[tables[name][key][[All, 4]]],
-      "PROBE_DENOMINATORS" -> SparseArray[tables[name][key][[All, 5]], Automatic, 1],
+      "PROBE_NUMERATORS" -> SparseArray[tables[[All, 4, probePositions[name][key]]]],
+      "PROBE_DENOMINATORS" -> SparseArray[tables[[All, 5, probePositions[name][key]]], Automatic, 1],
       "SAMPLE_INDEX" -> {case, HoldForm[jointCaseSampleIndex]}|>], entries]];
     put[parts[[1]], parts[[2]], case, payload]]], numericObjects];
   putMeta["LOCAL", "PROBE", case, <|"PRIMES" -> Map[# -> Inactive[PrimeQ][#] &, primeList],
     "CELLS" -> branchCells, "SAMPLE_POINTS" -> pointRows, "SEEDS" -> seeds, "REJECTIONS" -> rejectedRows,
-    "SAMPLE_INDEX" -> First[Values[First[Values[tables]]]][[All, 1 ;; 3]],
+    "SAMPLE_INDEX" -> tables[[All, 1 ;; 3]],
     "BOUNDS" -> bounds, "FAMILY_CARDINALITY" -> unionCount,
     "CONDITIONAL_UNION_BOUND" -> Min[1, Total[Table[Max[Lookup[Select[bounds, #["CELL"] === bc &], "FAMILY_BOUND"]], {bc, branchCells}]]],
     "BAD_PRIME_CONDITION" -> Inactive[Exists][goodPrime, Inactive[And][
@@ -834,7 +852,9 @@ buildCase[case_List] := Module[{anchor = case[[1]], densityKind = case[[2]], den
     emit[{"COV", "PHI_DOMAIN_CENSUS"}, outputMetadata["COV:PHI_DOMAIN_CENSUS"]]; Quit[92]];
   muPred = muE /. predictedMap["MAP"];
   appendAssociationEmission[{case, "AMPLITUDES"}, LeafCount /@ {muE, muM, muPred}];
-  sourceSolve = sourceConstruction[]; kernel = constructKernel[]; response = responseFamilies[kernel];
+  sourceSolve = sourceConstruction[];
+  kernel = Association[Table[s -> constructKernel[s], {s, faces}]];
+  response = Map[responseFamilies, kernel];
   massData = massSubstrate[anchor, density4];
   Do[AssociateTo[geometriesE, s -> graphGeometry[anchor, s]];
     AssociateTo[geometriesM, s -> materialGeometry[anchor, s, materialNormalKnife]];
@@ -865,15 +885,15 @@ buildCase[case_List] := Module[{anchor = case[[1]], densityKind = case[[2]], den
   addNumeric["COV", "SOURCE_CONTROL_DELTA", mapCombine[sMMap, baselineMap, sub]];
   addNumeric["COV", "R_COV_CONTROL_DELTA", mapCombine[covDelta, baselineCov, sub]];
   appendAssociationEmission[{case, "SOURCES"}, {Length[sEMap], Length[sMMap]}];
-  eOperand = joinFaceMaps[buildContraction[ce[#], es[#], response, #, True] &];
-  mOperand = joinFaceMaps[buildContraction[cm[#], ms[#], response, #, True] &];
+  eOperand = joinFaceMaps[buildContraction[ce[#], es[#], response[#], #, True] &];
+  mOperand = joinFaceMaps[buildContraction[cm[#], ms[#], response[#], #, True] &];
   rawResidual = mapCombine[eOperand, mOperand, sub];
-  carrierChannel = joinFaceMaps[buildContraction[ce[#] - cm[#], ms[#], response, #, True] &];
-  sourceChannel = joinFaceMaps[buildContraction[cm[#], es[#] - ms[#], response, #, False] &];
-  crossChannel = joinFaceMaps[buildContraction[ce[#] - cm[#], es[#] - ms[#], response, #, False] &];
+  carrierChannel = joinFaceMaps[buildContraction[ce[#] - cm[#], ms[#], response[#], #, True] &];
+  sourceChannel = joinFaceMaps[buildContraction[cm[#], es[#] - ms[#], response[#], #, False] &];
+  crossChannel = joinFaceMaps[buildContraction[ce[#] - cm[#], es[#] - ms[#], response[#], #, False] &];
   splitSum = mapCombine[mapCombine[carrierChannel, allFamilies[sourceChannel], add], allFamilies[crossChannel], add];
   splitCheck = mapCombine[splitSum, rawResidual, sub];
-  covIncrement = joinFaceMaps[buildContraction[cm[#], ms[#] - predicted[#], response, #, False] &];
+  covIncrement = joinFaceMaps[buildContraction[cm[#], ms[#] - predicted[#], response[#], #, False] &];
   MapThread[addNumeric["RC", #1, #2] &, {{"EULERIAN_OPERAND", "MATERIAL_OPERAND", "R_N6",
     "CARRIER_CHANNEL", "SOURCE_CHANNEL", "CROSS_CHANNEL", "SPLIT_SUM", "SPLIT_CHECK"},
     {eOperand, mOperand, rawResidual, carrierChannel, sourceChannel, crossChannel, splitSum, splitCheck}}];
@@ -895,7 +915,7 @@ buildCase[case_List] := Module[{anchor = case[[1]], densityKind = case[[2]], den
         {g, gradeIndices}];
       Do[imageRules = <||>;
         Do[sourceForGuard = atPoint[finish[If[route === "EULERIAN", es[face], ms[face]]], "Y"];
-          pressureImage = gMul[response[familyName], graded[sourceForGuard]];
+          pressureImage = gMul[response[face][familyName], graded[sourceForGuard]];
           AssociateTo[imageRules, pressureSlots[[If[face === 1, 1, 3]]] -> pressureImage];
           AssociateTo[imageRules, pressureSlots[[If[face === 1, 2, 4]]] -> gScale[pressureImage, normalContinuation[face]]],
           {face, faces}];
@@ -966,6 +986,8 @@ buildCase[case_List] := Module[{anchor = case[[1]], densityKind = case[[2]], den
   dimObject = Association[KeyValueMap[Function[{name, entries}, name -> Association[
     KeyValueMap[Function[{key, values}, key -> (keyDimensionRecord[#, key] & /@ values)], entries]]], numericObjects]];
   putMeta["RC", "DIMENSIONS", case, <|"OBJECTS" -> dimObject,
+    "METADATA_OBJECTS" -> Association[Map[Function[id, id -> dimensionTree[outputMetadata[id][case]]],
+      Select[Keys[outputMetadata], # =!= "RC:DIMENSIONS" && KeyExistsQ[outputMetadata[#], case] &]]],
     "BASE_OPERAND" -> deltaPPlus, "CONTROL_OPERAND" -> deltaPPlus + W0 deltaPMinus,
     "EXPRESSION_DIFFERENCE" -> sub[deltaPPlus, deltaPPlus + W0 deltaPMinus],
     "DIMENSION_OPERANDS" -> {unitSupport[deltaPPlus], unitSupport[deltaPPlus + W0 deltaPMinus]},
@@ -997,7 +1019,9 @@ Do[With[{id = objectId[family, name]},
     appendAssociationEmissionFromSpool[Normal[outputObjects[id]]]; endAssociationEmission[],
     If[KeyExistsQ[outputMetadata, id], emit[{family, name}, outputMetadata[id]]]]],
   {family, {"RC", "COV", "GUARD"}},
-  {name, Switch[family, "RC", rcNames, "COV", covNames, "GUARD", guardNames]}];
+  {name, Switch[family, "RC", DeleteCases[rcNames, "DIMENSIONS"], "COV", covNames, "GUARD", guardNames]}];
+(* Dimensional guard operands follow the numerical comparisons in every family. *)
+emit[{"RC", "DIMENSIONS"}, outputMetadata["RC:DIMENSIONS"]];
 emit[{"LOCAL", "PROBE"}, outputMetadata["LOCAL:PROBE"]];
 emit[{"LOCAL", "INVENTORY"}, <|"TAGS" -> Append[emittedNames, "WL_S11CC2_N6_LOCAL_INVENTORY"],
   "SYMBOLS" -> Names["Global`*"], "DIMENSION_REGISTRY" -> unitRegistry|>];

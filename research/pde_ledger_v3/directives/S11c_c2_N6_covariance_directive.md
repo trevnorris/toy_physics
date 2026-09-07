@@ -24,10 +24,19 @@ R_cov   = ms − ms_pred                                    # source-naturality 
 ```
 - **`μ_E`** = the imported Eulerian constitutive amplitude `es` already uses (`inputs.mu/ε`, reconcile `:199,:207`) —
   ⛔ NOT a parallel reconstruction of μ.
-- **`Φ`** = the already-emitted frozen field + jet maps, used as a **`.subs` substitution** (NOT metadata):
-  `θ ↦ θ + a_ρ`, `e_W ↦ e_W + h_α`, and their spatial derivative prolongations `D_i(θ+a_ρ)`, `D_i(e_W+h_α)`
-  (`a_ρ = u_i D_iρ₄/ρ₄`, `h_α = u_i D_iW_bg/W_bg` at LAB_HELD else 0; RHO4 ⇒ `g_i=0⇒a_ρ=0`). This is the N4 map the
-  reconcile predeclared as SUPPLIED/unfalsifiable.
+- **`Φ` (the crux — prolong to the jet order PRESENT IN `μ_E`, ⛔ NOT the energy-level 0+1 dict).** `μ_E = EL(E) =
+  ∂E/∂θ − Σ_i D_i(∂E/∂(∂_iθ))` is already varied, so `D_i` of the first-jet flux writes **second** jets
+  (`theta_second`/`theta_didi`, `e_W_didi`) into `μ_E` (confirmed present in the imported composite,
+  `S11c_b_exports.py:5629`; `DERIVATIVE_MAP` `S11c_b_brane_operator_sympy_audit.py:733`). The energy-level frozen dict
+  (`frozen_relations` reconcile `:53-57` / `material_pullback` `b:1946-1968`) is fields + first jets ONLY — complete
+  for the scalar density `E`, **incomplete for `μ`**. ⛔⛔ Do NOT reuse it as the amplitude substitution. Instead
+  `μ_E.subs(Φ)` = the **differential prolongation of the declared field map through EVERY θ/`e_W` jet symbol that
+  occurs in imported `μ_E`** (currently rank-2): `θ_I ↦ D_I(θ+a_ρ)`, `e_{W,I} ↦ D_I(e_W+h_α)` for each multi-index `I`
+  present, with `a_ρ = u_i D_iρ₄/ρ₄`, `h_α = u_i D_iW_bg/W_bg` at LAB_HELD else 0 (RHO4 ⇒ `g_i=0⇒a_ρ=0`). Generate the
+  prolonged map with the LIVE `b.total_derivative(..., background_depth=3)` + `DERIVATIVE_MAP` chain (⛔ not a hand-typed
+  extension), apply with `simultaneous=True`, and emit a **pre-substitution domain-coverage census** proving every
+  imported θ/`e_W` jet atom in `μ_E` has a map entry (an uncovered atom = a silent covariance mislabel). `Φ` is the N4
+  map the reconcile predeclared as SUPPLIED/unfalsifiable; the prolongation adds no new premise, only completes it.
 - **`V_E`, `V_M`** are the Eulerian and material face velocities; the reconcile established `V_E`≡`V_M` (SHA-equal), so
   `R_cov` isolates the μ channel — carry both to keep the source circuits honest.
 - ⛔⛔ **NON-CIRCULARITY IS THE WHOLE POINT.** `ms_pred` must be built by substituting the SUPPLIED `Φ` into the
@@ -39,7 +48,10 @@ R_cov   = ms − ms_pred                                    # source-naturality 
 - **Emit** (tag prefix `S11CC2_N6COV_`), each columns + `numerator_denominator` + `nonzero_modular_numerator` under one
   in-process joint PIT per case (⛔ never a cross-run join): `SOURCE_ACTUAL` (`ms`), `SOURCE_PREDICTED` (`ms_pred`),
   `R_COV` (`ms−ms_pred`) keyed face/wave/grade **before** `Z`/resolvent/weak extraction (carrier-class); and the
-  end-to-end guard `R_COV_INCREMENT = B(C_M, R_cov)`. Also emit the frozen `Φ` used (the substitution map), a
+  end-to-end guard `R_COV_INCREMENT` = the reconcile **`closed_response`** on `(m_coeff, R_cov)` (signatures 6/9/12
+  ONLY, same column keying as `SOURCE_CHANNEL`). ⛔⛔ NOT `build_increment(C_M, R_cov)` / `I(C_M, R_cov)` — that re-adds
+  the bare `−C_M·p` signature-0 term and would emit a certified-nonzero increment when `R_cov=0` (the affine trap the
+  reconcile already forbade). Also emit the frozen `Φ` used (the substitution map), a
   provenance census that `ms_pred` is built from imported `μ_E` + supplied `Φ` (⛔ not `material_pullback`), and the
   PIT provenance (primes/draws/δ, `family·max(per_prime)`).
 
@@ -55,8 +67,12 @@ R_cov   = ms − ms_pred                                    # source-naturality 
 - **Φ-coefficient knife:** in a /tmp COPY, make the ACTUAL material path use `2·a_ρ` (or drop `h_α`) while `ms_pred`
   keeps the DECLARED `Φ` (`κ=1`) ⇒ `R_cov` MUST move, even though the `a_ρ+h_α` 4-case truth table is unchanged. Use
   `RHOBR_CONSTANT` for the `a_ρ` knife, `LAB_HELD` for the `h_α` knife. This is what the truth table cannot see.
-- **θ-independent junk knife:** inject θ-independent junk into `μ_M` ⇒ `R_cov` nonzero at `MATERIAL_ADVECTED.RHO4`
-  (where `R_N6=0`).
+- **θ-independent-junk knife (make it concretely executable):** ⚠ `wave_terms` (diagnostic `:363`) requires every
+  nonzero term to carry exactly one recognized wave, so a literal θ-independent constant ERRORS or is projected away
+  (vacuous control). Instead, an ACTUAL-only, wave-LINEAR perturbation inserted after `μ_M` and before `source_terms`:
+  add `κ_j · J_μ · e_W` to `μ_M` with a fresh nonzero-sampled `J_μ`, `DIMENSION_SCHEMA[J_μ]=(-1,-2,1)`, baseline
+  `κ_j=0`, corrupted `κ_j=1`; keep `μ_E∘Φ` (the prediction) UNCHANGED ⇒ `R_cov` MUST move (nonzero at
+  `MATERIAL_ADVECTED.RHO4` where `R_N6=0` and the truth table is dark). Emit the source-level control delta.
 - ⛔ The instrument must be structured so these corruptions bite (the actual-material Φ and the prediction Φ are
   SEPARATELY parameterizable); ⛔ do not bake a corruption into the shipped emit. If a knife's derivative is
   annihilated by retained projection at source level, that component is untestable at this order — emit the computed

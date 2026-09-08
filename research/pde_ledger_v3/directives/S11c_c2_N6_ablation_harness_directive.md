@@ -12,29 +12,55 @@ Use the S11c-b carrier harness shape:
 
 ## Global harness contract
 
-1. **Computed payloads only.** For every listed mutation, print a tagged
-   `{baseline, corrupted, diff}` triple. For arithmetic tables, subtract on shared keys and record a tagged
-   `MISSING` entry on either side for a key-set change; never coerce absence to numeric zero. For structured metadata,
-   print the two canonicalized payloads and a deterministic key-aligned structural delta. Payloads contain no
-   interpretation, acceptance label, or physics conclusion.
+1. **Compact computed payloads only; never symbolic objects.** For the CANONICAL baseline, unablated copy, and every
+   listed FORM, NO-OP/IDENTITY, and COEFFICIENT ×2 run, print tagged `{baseline, corrupted, diff}` records for every
+   certified or DEAD object containing only the object's compact PIT fingerprint and SHA-256 digest. The SymPy PIT
+   fingerprint is the engine-emitted `n.pit` projection keyed by object and
+   `probe`/`route`: retain the emitted column keys and `nonzero_modular_numerator` bitmap/tally, but do not print the
+   `numerator_denominator` sample matrix or an arithmetic DAG. The WL PIT fingerprint is a compact association keyed
+   as `{case, "PROBE", cellIndex, prime}` whose value records the engine-emitted valid/rejected counts, the selected
+   object's `nonzero_count`, and `circuit_leaves`; derive it only from that object's emitted `PROBE_NUMERATORS` and the
+   engine's `LOCAL:PROBE` sample index. Hash the exact selected object payload before transcript projection with
+   `n.sha(obj)` for SymPy (the function at `scripts/S11c_c2_N6_diagnostic_sympy.py:91`) and use the corresponding
+   `emitted_object_sha256` entry from WL `RUN_PROVENANCE`. For non-PIT metadata, print the digest and any already-small
+   scalar fields only; if the engine supplies no digest, compute only `n.sha(obj)` in the worker. There is no symbolic
+   fallback. The `diff` member is a deterministic key-aligned arithmetic/bitmap delta or digest equality bit, not a
+   symbolic difference. Small scalar residuals (`R_N6`, `R_cov`, `SPLIT_CHECK`, slot/closure guard residuals) and
+   already-compact arithmetic key-aligned tables remain direct payloads. Subtract arithmetic tables on shared keys
+   and record a tagged `MISSING` entry on either side for a key-set change; never coerce absence to numeric zero.
+   The knife's mechanically visible payload is a moved PIT fingerprint and/or changed digest between the identical
+   CANONICAL/NO-OP records and FORM/COEFFICIENT records. Payloads contain no interpretation, acceptance label, or
+   physics conclusion.
 2. **Wrap the live engine.** Obtain every object from the engine's production entrypoint and emitted tags. Do not
    reconstruct an engine object in the harness, and do not patch an extractor, emitter, serializer, or diff routine.
 3. **One mutation, one source site.** Locate the named function or top-level assignment with `ast`/held WL source,
    count the exact old fragment as one inside that scope, replace it, and re-parse before execution. Line numbers are
    current-tree anchors; the literal fragment and named scope are authoritative.
-4. **Temporary copies only.** Put every changed engine tree under a fresh `/tmp` directory. Do not edit a production
-   engine. Print a unified source diff and SHA-256 for every temporary variant.
-5. **Process isolation.** Run the canonical baseline, unablated copy, FORM variants, identity variants, and
-   coefficient companions one at a time. Each SymPy run uses a fresh worker subprocess. Each WL run uses a fresh
-   kernel under `timeout 600`; never overlap WL kernels.
+4. **Temporary copies and compact spools only.** Put every changed engine tree under a fresh `/tmp` directory. Do not
+   edit a production engine. Print a unified source diff and SHA-256 for every temporary variant. A worker may spool
+   the engine's raw output only inside its fresh temporary directory long enough to compute the compact fingerprints
+   and digests; never copy, echo, or embed a full symbolic object, full symbolic difference, arithmetic DAG, or raw
+   engine transcript in a harness transcript, including on an error path. Discard the temporary spool with the tree.
+5. **Process isolation and WL budget.** Run the canonical baseline, unablated copy, FORM variants, identity variants,
+   and coefficient companions one at a time. Each SymPy run uses a fresh worker subprocess pinned as stated below.
+   Every WL label, including CANONICAL and the unablated copy, means the production source plus the same declared
+   build-scoped, NON-KNIFE budget patch in a fresh `/tmp` copy: retain only `{"LAB_HELD","RHOBR_CONSTANT"}` and use
+   four valid PIT draws per prime/cell. Apply the exact two edits specified under Harness 1 before any knife patch;
+   print the budget-patch diff and both the production and executed-source SHA-256 values separately from the knife
+   diff. Use one fresh kernel under `timeout --kill-after=5 600` for each label and never overlap WL kernels. Never
+   launch the unrestricted four-case engine from this harness.
 6. **Imported siblings.** A SymPy worker's temporary `scripts/` directory goes first on `sys.path`. Copy the target
    engine and its locally imported N6/S11c-a/S11c-b siblings into that directory, patch only the named file, and let
    ordinary imports resolve there. Fresh workers prevent module caches and `_FACE_CACHE` from crossing variants.
-7. **Canonical-copy drift print.** Run an unablated temporary copy through the same worker path and print its object
-   triple, engine-source digests, emitted-object digests, and source-path provenance next to the canonical run.
-8. **Guards follow payloads.** Print operands and residuals before schema and integrity guards. Guards may cover exact
-   patch count, parseability, subprocess exit, tag presence, key alignment, serialization, and production-source
-   immutability; they do not classify a physics payload.
+7. **Canonical-copy drift print.** Run an unablated temporary copy through the same worker path and print its compact
+   PIT-fingerprint/digest records, engine-source digests, emitted-object digests, and source-path provenance next to
+   the canonical run. For WL, CANONICAL and the unablated copy both carry the identical NON-KNIFE budget patch and
+   differ only in temporary path; compare their executed-source hashes as well as the untouched production hash.
+8. **Guards follow compact payloads.** Print compact operands and residuals before schema and integrity guards. Guards
+   may cover exact knife and budget-patch counts, parseability, subprocess exit, tag presence, key alignment,
+   serialization, transcript byte count, and production-source immutability; they do not classify a physics payload.
+   On failure, print only bounded diagnostics (exit code, stderr tail/size, spool SHA-256, and missing tags), never the
+   raw object-bearing stdout or a symbolic payload.
 9. **Self-tests for every retained FORM knife.** Run and print:
 
    - the exact FORM variant specified below;
@@ -42,7 +68,8 @@ Use the S11c-b carrier harness shape:
    - the exact same-site **COEFFICIENT ×2** companion specified below; and
    - the knife's named one-sided **DEAD print set** from the same baseline and corrupted runs.
 
-For every DEAD line below, print these named objects as triples and add no statement about their values.
+For every DEAD line below, print these named objects as the compact fingerprint/digest triples defined in clause 1
+and add no statement about their values.
 
 Every harness opens with a manifest recording the engine, pinned case, exact scope, old fragment, replacement,
 classification, printed-object list, source hashes, Python/SymPy or Wolfram versions, and invocation.
@@ -59,7 +86,9 @@ classification, printed-object list, source hashes, Python/SymPy or Wolfram vers
 - `scripts/S11c_c2_N6_reconcile_ablation_harness.py`
 - `_measurements/S11c_c2_N6_reconcile_ablation_harness.md`
 
-The transcript records the exact invocation, manifests, source patches and hashes, and literal printed triples.
+Each transcript is a KB-scale compact record of the exact invocation, manifests, source patches and hashes, PIT
+fingerprint/digest triples, small scalar residuals/tables, and guards. It never contains a full symbolic object,
+symbolic difference, arithmetic DAG, PIT sample matrix, or raw engine transcript.
 
 ---
 
@@ -67,9 +96,49 @@ The transcript records the exact invocation, manifests, source patches and hashe
 
 Engine: `mathematica/S11c_c2_N6_mathematica_audit.wl`.
 
-Run the complete production file. Its driver at lines 1011–1014 evaluates all four cases from
-`Tuples[{{"LAB_HELD", "MATERIAL_ADVECTED"}, {"RHO4_CONSTANT", "RHOBR_CONSTANT"}}]`. Do not marker-truncate the
-file. The Python driver serializes all kernel invocations and parses the printed `WL_S11CC2_*` assignments.
+Run the complete production file for the retained case; do not marker-truncate it. Static inspection finds no
+environment or command-line parameter for either case selection or PIT draws, so every WL run applies these two
+declared build-scoped, NON-KNIFE edits to its `/tmp` engine copy before any knife edit:
+
+1. In the unique top-level `Do` driver at lines 1011–1014 whose body calls `buildCase[case]`, replace its exact old
+   iterator
+
+   ```wl
+   {case, Tuples[{{"LAB_HELD", "MATERIAL_ADVECTED"}, {"RHO4_CONSTANT", "RHOBR_CONSTANT"}}]}
+   ```
+
+   by
+
+   ```wl
+   {case, {{"LAB_HELD", "RHOBR_CONSTANT"}}}
+   ```
+
+   This selects the single SymPy-matched case without changing `buildCase`. The separate SETUP metadata occurrence
+   of the four-case `Tuples[...]` at lines 582–583 is not the driver and is not patched.
+2. In `probeCase`, replace the unique adaptive draw-count assignment at line 760
+
+   ```wl
+   drawCount = If[0 < bound < 1, Max[8, Ceiling[Log[2^-80/Max[1, unionCount]]/Log[bound]]], 8];
+   ```
+
+   by
+
+   ```wl
+   drawCount = 4;
+   ```
+
+   The emitted bounds and actual draw count remain production-computed payloads; this edit changes only the number
+   of valid PIT samples, not `numericObjects`, the prime list, branch cells, or any knife site.
+
+The held-source matcher must find exactly one driver `Do` containing `buildCase[case]` and exactly one old draw-count
+assignment inside `probeCase`, then re-parse the complete held source. The case edit merely changes which argument is
+passed to the unchanged `buildCase`, and the draw edit occurs after `numericObjects` has been constructed and compiled;
+therefore the retained case's per-case symbolic objects are unchanged. `caseOrdinal`-derived PIT seeds may differ from
+the retained case's ordinal in the former four-case schedule; every compared variant uses the same restricted schedule
+and must print its actual seeds. Print the two restriction diffs, their SHA-256 values, and the manifest classification
+`BUDGET_RESTRICTION / NON-KNIFE` for every run. The Python driver serializes all kernel invocations, parses the printed
+`WL_S11CC2_*` assignments into compact fingerprints/digests, and runs each kernel under
+`timeout --kill-after=5 600`.
 
 Primary print set:
 
@@ -265,7 +334,7 @@ Every diagnostic run also extracts the engine's own three named control objects 
   `S11CC2_CONTROL_INDEPENDENCE_CORRUPTED`, `S11CC2_CONTROL_INDEPENDENCE_RESIDUAL`.
 
 Print each native control group in the order `{BASE, CORRUPTED, RESIDUAL}` and retain the `probe` label. Also include
-each of those six named objects in the harness's variant triples.
+each of those six named objects in the harness's compact fingerprint/digest variant triples.
 
 ### K_EW_rowdrop — FORM
 
@@ -483,3 +552,24 @@ or orchestration step. Do not commit. Do not alter any file outside the named ha
 - Reconcile operand classification and vague RESCALE → one `ms` read collapses onto `es`; the coefficient companion
   doubles that exact `ms` addend at lines 211–212.
 - Isolation and builder scope → fresh subprocess/kernel, temporary sibling-first imports, build→run→report→stop.
+- Output-contract revision → every CANONICAL, unablated-copy, FORM, NO-OP/IDENTITY, and COEFFICIENT ×2 record now
+  prints only compact PIT nonzero fingerprints, per-object SHA-256 digests, small scalar/key-aligned tables, and
+  bounded guards. Full symbolic objects/differences, arithmetic DAGs, PIT sample matrices, and raw engine stdout are
+  forbidden even on failures; deliverable transcripts are KB-scale.
+- Coverage verification against all four engines → every certified and DEAD arithmetic object in the diagnostic and
+  reconcile harnesses is inserted into `objects` and passed to `n.pit`; the five covariance arithmetic objects
+  (`R_COV`, `SOURCE_ACTUAL`, `SOURCE_PREDICTED`, `R_COV_INCREMENT`, `R_COV_CONTROL_DELTA`) are likewise passed to
+  `n.pit`; and every WL arithmetic object named by the primary/DEAD sets is inserted by `addNumeric` and processed by
+  `probeCase`. The only named non-PIT objects are covariance/WL `FROZEN_PHI` and `PHI_DOMAIN_CENSUS`: the SymPy
+  worker must compute the minimal `n.sha(obj)` digest before transcript projection, while WL uses each object's
+  `emitted_object_sha256` from `RUN_PROVENANCE`. Thus every certified and DEAD object has a compact PIT fingerprint
+  and/or digest, with no uncovered object and no symbolic fallback.
+- WL budget revision → the engine exposes no case-selection or draw-count environment/parameter knob. Every WL
+  CANONICAL/copy/knife run therefore patches only its `/tmp` source: in the unique top-level driver `Do` containing
+  `buildCase[case]`, replace the four-case iterator by
+  `{case, {{"LAB_HELD", "RHOBR_CONSTANT"}}}`; in the unique `probeCase` draw assignment, replace the adaptive
+  eight-draw expression by `drawCount = 4;`. Static source tracing verifies that the first edit only selects the
+  argument to unchanged `buildCase` and the second occurs after per-case object construction/compilation, so retained
+  per-case symbolic objects are unchanged. Both edits are declared `BUDGET_RESTRICTION / NON-KNIFE`, source-diffed
+  and hashed separately from every frozen knife, and every fresh serialized kernel remains under
+  `timeout --kill-after=5 600`.

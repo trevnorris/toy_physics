@@ -186,11 +186,23 @@ the tree for hygiene, not as a blindness claim). ⛔⛔ **This applies to these 
 prose I drift from under load, so the ones that hold are the ones that leave an artifact whose absence you
 can **see** (the at-a-glance gate record is one illustration, not a new mandate). *(evidence: L-R12)*
 
-Operational runbooks stay authoritative in the skills — `.claude/skills/build/SKILL.md` and
-`.claude/skills/review-legs/SKILL.md`. A root summary cannot replace their identical-prompt,
-first-principles-script/stdout, mandatory-form-ablation, source-staging + directive-exclusion,
+Operational runbooks stay authoritative in the skills — `.claude/skills/build/SKILL.md`,
+`.claude/skills/review-legs/SKILL.md`, and `.claude/skills/agent-roles/SKILL.md`. A root summary cannot replace
+their identical-prompt, first-principles-script/stdout, mandatory-form-ablation, source-staging + directive-exclusion,
 authorship-pairing, fixed-baseline, kernel-serialization/budget/sandbox, leak-probe, orphan-memory
 diagnosis, and real-deliverable-verification obligations; ⛔ do not infer a weaker reading from a summary.
+
+⭐ **Role discipline (`agent-roles` skill).** Keep each engine strictly to its task: the builder builds/runs/reports
+(⛔ never reviews or spawns), a review leg reviews ONE artifact and returns a verdict (⛔ never orchestrates or
+spawns), and the **orchestrator never authors OR self-clears an instrument** — any script that *composes*
+observations into a decision (done/hung/passed) or adjudicates a claim is Codex-written + reviewed; a **single
+observation** (`test -s`/`ls`/`pgrep`, or one `timeout` on one child kernel) is not. Enforce by capability bounds
+where the launch actually sets them, packet absence, the provenance gate (a writer's own review is discarded), and
+progress-aware investigation — not "don't" prose (S1). When a long-running job seems stuck, check whether the **named deliverable grew**
+(⛔ not CPU or log-heartbeat, which a runaway self-review also produces) — growth ⇒ leave it; no growth ⇒
+**investigate and judge** (a builder's own spawned review is discarded and stopped there), ⛔ never a top-level
+wall-clock-kill (legitimate runs take hours; per-kernel `timeout` budgets stay). The writer of an artifact is never
+in the process tree that reviews it.
 
 ---
 

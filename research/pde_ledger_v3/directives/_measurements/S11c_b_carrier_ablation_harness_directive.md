@@ -1,5 +1,9 @@
 # Grounding for S11c-b carrier ablation-harness directive — mechanical fact-lookups (E1)
 
+> Revised 2026-09-07: the directive's "Build & review discipline" section was rewritten to end the builder's task
+> at build→run-once→report (no review-launch — it had caused astra to self-review). No site claim changed; the
+> fact-lookups below still ground every cited engine site.
+
 Every site the directive cites, confirmed by grep line-location / verbatim read in the live engines
 (unchanged since `dc4d4977`). Mechanical fact-lookups only (existence + line + verbatim retrieval;
 no derived/algebraic predicate). Each command is shown inline below with its literal stdout — re-run any to reproduce.

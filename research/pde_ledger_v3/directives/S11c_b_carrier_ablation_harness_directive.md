@@ -174,13 +174,13 @@ Print all transcripts. ⛔ No assertion, no verdict — interpretation is the or
    zero/nonzero carries no information.
 3. Interpretation belongs to the review / step record, ⛔ not the script.
 
-## Build & review discipline
-- **Author:** a fresh `gpt-6-astra` (WL + Python). The knives are orchestrator-owned; astra implements without
-  choosing targets. Each engine's harness may be a separate invocation; ⛔ neither receives the sibling engine's
-  output.
-- **Reviewed** (astra-written → G1): a **fresh Claude agent + Grok**, review-until-clear, serialized if both ablate
-  Mathematica. **Verify the harness by ablating the harness itself** — the dead-path self-test and the live-rescale
-  contrast must behave as a genuine construction-dependence test, not a self-report.
-- Commit the reviewed baseline before any repair overwrites it; commit the transcript with it.
+## Build discipline — YOUR TASK ENDS AT: write the two harnesses, run each once, report
+- Write the two harness scripts (implementing the three knives + the three self-tests above) and run **each once**
+  single-case to emit its transcript, then **report** what you produced. ⛔⛔ **That is the whole task.** ⛔ Do NOT
+  review the harnesses, ⛔ do NOT launch or spawn any review agent / second engine / "independent" leg, ⛔ do NOT
+  iterate "review-until-clear," ⛔ do NOT ablate-the-harness as a review pass. The harness's own three self-tests
+  ARE the deliverable — implement and run them once; their **interpretation** and any independent review happen
+  **downstream, not here.** ⛔ Do NOT `git commit`.
+- Each engine's harness may be a separate run; ⛔ neither receives the sibling engine's output.
 - ⛔ Never run two memory-heavy CAS jobs concurrently (30 GB box; serialize). ⛔ Wrap every WL kernel run in
   `timeout 600`. ⛔ Never run the emit `Do` / `COUPLING_KERNEL` / 4-case path (≥64 GB).

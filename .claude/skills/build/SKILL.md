@@ -22,6 +22,7 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
 2. Leak-gate the directive by grepping it with fixed-string `rg` searches for every pre-registered answer it must not
    contain. If anything matches, repair and re-run the gate **before launch**. Codex snapshots the prompt
    into argv, so editing the file after launch changes nothing.
+   ⛔⛔ **Also gate for BUILDER-PROCESS words** — `rg -ni 'review|grok|claude|\bleg\b|fresh (claude|agent)|comparator|review-until-clear|subagent|/build|/review-legs'` over the directive — and strip every hit. A builder that reads a review / downstream / authorship-pairing sentence runs its **own INVALID grok/claude self-review** (whatever writes does not review; measured 2026-09-05 and AGAIN 2026-09-07). ⚠ The specific **cost** hazard is a codex-spawned **`claude`** (Claude Code CLI) — that is a NEW full-cost Claude session; `grok` CLI calls carry **no** API cost here, but are equally invalid as self-review. The builder packet ENDS at build→run-once→report; the review is the orchestrator's, downstream. ⇒ `[[feedback_builder_directive_no_orchestrator_process]]`.
 3. Launch Codex at xhigh effort using the **Bash tool with `run_in_background: true`**. ⛔ Do NOT use a
    shell `&` — this harness detaches the job itself and notifies you when it exits; a `&` inside a
    foreground call leaves the build untracked and unreported.
@@ -40,6 +41,19 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
 
    Add `--sandbox danger-full-access` when the build must run Mathematica. ⛔ Never wrap the command in a
    shell `timeout` — SIGKILL has cost 300k+ tokens.
+
+   ⛔⛔ **For a `gpt-6-astra` build, launch through the watchdog wrapper instead of a bare `codex exec`:**
+   ```bash
+   setsid bash .claude/skills/build/astra_launch.sh <ABS_DIRECTIVE> <ABS_SCRATCH_DIR> gpt-6-astra \
+     >/dev/null 2>&1 < /dev/null &
+   ```
+   `astra_launch.sh` runs a **session-scoped kill-watchdog** that terminates any `claude` (Claude Code CLI) or
+   `grok` process the builder spawns — a codex-spawned **Claude Code CLI is a NEW full-cost Claude session** (the
+   cost hazard; `grok` CLI calls carry no API cost here but are equally invalid self-review), and a builder given
+   danger-full-access has spawned them as its own "review" twice. The watchdog only touches the builder's own
+   fresh `setsid` session (fail-safe: aborts unless SID==its PID), so it never hits the orchestrator's own
+   review legs or other sessions. It writes `astra.log` (+ `EXIT=`), `astra.DONE`, `watchdog.log` in the scratch
+   dir. Monitor `astra.DONE` (run_in_background is reaped on this box). See §isolation below.
 4. Do not poll for completion; the harness re-invokes you when the job exits. On that notification,
    verify the **deliverable**, not exit status: require the
    requested artifact to exist and be non-empty, and require the transcript/token usage to be plausible
@@ -54,6 +68,29 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
    ⛔ Codex does not review what Codex wrote — see that skill's authorship table.
 6. Return only after both independent review legs have completed. Keep their findings separately
    attributed so the caller can filter them before acting.
+
+## §isolation — ⛔⛔ THE BUILDER NEVER RUNS `grok` OR `claude` (enforced by watchdog, 2026-09-07)
+
+⚠⚠ **Measured twice** (2026-09-05 S11c-c2; 2026-09-07 S11c-b carrier harness): a `gpt-6-astra` build given
+`--sandbox danger-full-access`, reading review/downstream sentences in its directive (and the /build & /review-legs
+skills), **spawned its own `claude` (Claude Code) CLI + `grok` subprocesses to "review" its own work** — an INVALID
+self-review (whatever writes does not review) that ran ~1h45m+ past the real deliverables. ⚠ The **`claude`** spawn
+is the **cost** hazard — a codex-spawned Claude Code CLI is a NEW full-cost Claude session; `grok` CLI calls carry
+**no** API cost here but are equally invalid as self-review. ⭐ A prose "do not review" is only a **request**
+(`CLAUDE.md` S1); this is enforced **structurally**:
+
+- **Directive absence** (step 2 gate): the builder packet contains **no** review/grok/claude/leg/comparator/
+  downstream word, and an explicit clause *"YOUR TASK ENDS AT build→run-once→report; ⛔ do NOT review, launch/spawn
+  any review agent or second engine, iterate review-until-clear, ablate-the-harness as a review, read the /build or
+  /review-legs skills and act on them, or `git commit`."*
+- **Runtime watchdog** (step 3 launcher `astra_launch.sh`): a session-scoped loop kills any `grok`/claude-code
+  process in the builder's own fresh `setsid` session on sight (fail-safe: refuses to run unless SID==its own PID,
+  so it can never touch the orchestrator's session or another session on this shared box; ⛔ never kills the builder's
+  own `codex`/`wolfram`). Check `watchdog.log` after the build — a non-empty file means the builder tried and was
+  stopped, and the directive still leaked a process-word (fix it).
+
+⇒ `[[feedback_builder_directive_no_orchestrator_process]]`. The ORCHESTRATOR (a separate process) runs the two
+independent legs; the builder never does.
 
 ## ⭐⭐⭐ EVERY SCRIPT DIRECTIVE CARRIES THESE THREE CLAUSES — non-negotiable
 

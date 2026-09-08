@@ -22,33 +22,37 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
 2. Leak-gate the directive by grepping it with fixed-string `rg` searches for every pre-registered answer it must not
    contain. If anything matches, repair and re-run the gate **before launch**. Codex snapshots the prompt
    into argv, so editing the file after launch changes nothing.
-   ⛔⛔ **Also gate for BUILDER-PROCESS words** — `rg -ni 'review|grok|claude|\bleg\b|fresh (claude|agent)|review-until-clear|subagent|/build|/review-legs'` over the directive's authored body (⛔ not `comparator` — a comparator build names it) — and strip every hit; append the fixed end-of-task clause only AFTER gating. A builder that reads a review / downstream / authorship-pairing sentence runs its **own INVALID self-review** (whatever writes must not review itself; measured 2026-09-05 and AGAIN 2026-09-07, ~1h45m wasted after the deliverables were already done). The builder packet ENDS at build→run-once→report; the review is the orchestrator's, downstream. ⇒ `.claude/skills/agent-roles/SKILL.md`, `[[feedback_builder_directive_no_orchestrator_process]]`.
-3. **Launch detached with `setsid` + a `DONE`-marker** — ⛔ NOT `run_in_background` (reaped on this box), ⛔ NOT a
-   bare foreground `&` (untracked). The launcher is a **thin one-liner, ⛔ never a supervisor/watchdog**; keep the
-   model / effort / sandbox OUT of a copy-pasted command and choose them per task:
+   ⭐ **Keep the builder in its lane:** the directive bounds the builder to build → run → report → **stop**, and ⛔
+   must not instruct or allow it to call, spawn, or launch any other AI / review / agent — a builder handed a review
+   or downstream instruction runs an INVALID self-review of its own work (measured 2026-09-07, hours wasted). Keep
+   review/downstream instructions out of the builder's packet entirely.
+3. Launch Codex at xhigh effort using the **Bash tool with `run_in_background: true`**. ⛔ Do NOT use a
+   shell `&` — this harness detaches the job itself and notifies you when it exits; a `&` inside a
+   foreground call leaves the build untracked and unreported.
+
    ```bash
-   setsid bash -c 'cd /var/projects/toy_physics; <CMD> > ABS_LOG 2>&1 < /dev/null; \
-     echo "EXIT=$?" >> ABS_LOG; touch ABS_DONE' >/dev/null 2>&1 < /dev/null &
+   codex exec -c model_reasoning_effort=xhigh "$(</absolute/directive.md)" \
+     > /absolute/path/OUTSIDE/the/repo/codex-build.log 2>&1
    ```
-   where `<CMD>` = `codex exec -m <model> -c model_reasoning_effort=xhigh "$(<ABS_DIRECTIVE)"` — pick `<model>` per
-   the codex-model memory (`gpt-6-astra` for hard-physics code, and only on explicit user OK); add
-   `--sandbox danger-full-access` ONLY when the build runs Mathematica. ⛔ Never wrap `<CMD>` in a shell `timeout`
-   — SIGKILL has cost 300k+ tokens.
 
-   ⭐ **Write the raw transcript (`ABS_LOG`) OUTSIDE the repository — ⚠ as TREE HYGIENE, ⛔ not as a blindness claim.**
-   ⚠ A transcript carries the engine's complete tag values verbatim and is noise in the tree. ⛔⛔ **It is NOT a leak
-   to be plugged by relocation:** the 2026-08-03 measurement (files in `_scratch/`, reachable by none of the naming
-   conventions) is evidence that ⭐ **hiding cannot work** ⇒ the CUT table at §137 below, and `CLAUDE.md` rule 12.
+   ⭐ **Write the raw transcript OUTSIDE the repository — ⚠ as TREE HYGIENE, ⛔ not as a blindness claim.**
+   ⚠ A transcript carries the engine's complete tag values verbatim and is noise in the tree.
+   ⛔⛔ **It is NOT a leak to be plugged by relocation:** the same measurement (2026-08-03, several such
+   files sitting in `_scratch/`, reachable by none of the naming conventions) is evidence that ⭐ **hiding
+   cannot work**, ⛔ not that it should be done harder ⇒ the CUT table at §137 below, and `CLAUDE.md`
+   rule 12.
 
-   Then watch `ABS_DONE` + **deliverable growth** with a progress-aware `Monitor` (see
-   `.claude/skills/agent-roles/SKILL.md`): ⛔ never wall-clock-kill (builds iterate for hours); no-deliverable-progress
-   ⇒ investigate, don't kill. ⛔ Do NOT bolt a kill-watchdog on: the step-2 gate + end-of-task clause remove the
-   self-review *trigger*, and the residual (a full-access builder can still spawn) is caught by the **provenance
-   gate** (its self-review is discarded) + the progress-aware check, ⛔ never a self-cleared supervisor. See §isolation.
-4. When the `DONE`-marker fires (or the Monitor summons you), verify the **deliverable**, not exit status: require
-   the requested artifact to exist and be non-empty, and require the transcript/token usage to be plausible
+   Add `--sandbox danger-full-access` when the build must run Mathematica. ⛔ Never wrap the command in a
+   shell `timeout` — SIGKILL has cost 300k+ tokens.
+4. Do not poll for completion; the harness re-invokes you when the job exits. On that notification,
+   verify the **deliverable**, not exit status: require the
+   requested artifact to exist and be non-empty, and require the transcript/token usage to be plausible
    for the requested build. Exit 0 plus `hook: Stop` has accompanied an empty prompt and no work; the
    measured tell was about 3k tokens instead of 37k+.
+   ⚠ **If a build runs long and you are watching it, ⛔ do NOT kill it on elapsed time** — a legitimate build can run
+   for hours while it iterates (measured: a ~3h codex run that was working). Judge by whether the **deliverable is
+   still growing** (⛔ not CPU or a scrolling log — a runaway self-review also burns CPU and grows a log while
+   producing nothing); investigate before killing, never on a timer.
 5. Do not open the deliverable or read its results. Immediately read and execute
    `.claude/skills/review-legs/SKILL.md` with the deliverable and `--check` from this invocation.
    ⛔ **There is no `--do-not-read` argument to pass** — it was cut 2026-08-12 (rule 12).
@@ -58,29 +62,6 @@ successful build without running `.claude/skills/review-legs/SKILL.md` yourself.
    ⛔ Codex does not review what Codex wrote — see that skill's authorship table.
 6. Return only after both independent review legs have completed. Keep their findings separately
    attributed so the caller can filter them before acting.
-
-## §isolation — the builder never runs its own review (see the `agent-roles` skill)
-
-⚠⚠ **Measured twice** (2026-09-05 S11c-c2; 2026-09-07 S11c-b carrier harness): a `gpt-6-astra` build given
-`--sandbox danger-full-access`, reading review/downstream sentences in its directive (and the /build & /review-legs
-skills), **spawned its own review subprocesses to "review" its own work** — INVALID self-review that ran ~1h45m past
-the real deliverables. ⭐ A prose "do not review" is only a **request** (`CLAUDE.md` S1). Layered control:
-
-- **Packet absence removes the TRIGGER** (necessary, not sufficient): the builder packet carries **no**
-  review/grok/claude/leg/downstream word (step-2 gate) and ends with the fixed clause *"YOUR TASK ENDS AT
-  build→run-once→report. Do not review, launch or spawn any agent or second engine, iterate, read the /build or
-  /review-legs skills and act on them, or commit."*
-- ⚠ **Honest limit:** under `danger-full-access` the builder can still exec `grok`/`claude` and read the skills off
-  disk — so the above is **behavioral**, backstopped by (a) the **provenance gate** — a builder's own "review" is
-  **discarded**, never evidence, never clears anything; and (b) **progress-aware monitoring** — out-of-role children
-  and a self-review show up as **no growth of the named deliverable** ⇒ you investigate and stop those children as a
-  judgment.
-- ⛔ **Do NOT re-add a kill-watchdog.** An earlier session authored a session-scoped kill-loop, self-cleared it, and
-  gated on it — the exact single-engine over-reach the pipeline removes; it is **removed.** When something seems
-  stuck, **investigate progress-aware** (⛔ never top-level wall-clock-kill) — see the `agent-roles` skill.
-
-⇒ `.claude/skills/agent-roles/SKILL.md`, `[[feedback_builder_directive_no_orchestrator_process]]`. The ORCHESTRATOR
-(a separate process) runs the two independent legs; the builder never does.
 
 ## ⭐⭐⭐ EVERY SCRIPT DIRECTIVE CARRIES THESE THREE CLAUSES — non-negotiable
 

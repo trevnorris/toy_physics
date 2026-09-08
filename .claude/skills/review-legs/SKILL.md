@@ -68,11 +68,9 @@ reader-critical content placed in one is invisible in the PDF. This has happened
 "report a finding only if it catches a way the physics could be wrong; do not report 'the script would be wrong on a different input'."
 ## Ablation sandbox
 {{COPY_TO_TMP_AND_ABLATE_THE_COPY — ⛔ never modify the working tree}}
-## Bounds — the LAST block of every review packet
-Write your report to {{REPORT_PATH}} and exit. Save any check-script + its literal stdout to named `/tmp` paths and
-cite them. ⛔ Do NOT spawn agents, build `run_all`/`watch`/supervisor orchestration, modify the working tree, repair
-findings, or iterate — review-until-clear is the orchestrator's loop, not yours. Wrap each CAS kernel run in
-`timeout 600` and never run more than one at a time; a timeout is a reported finding, not a retry.
+## Bounds (end every review packet with this)
+Write your report and exit. ⛔ Do not spawn agents or build `run_all` / `watch` / supervisor orchestration — a leg
+twice deadlocked doing exactly that; iterating to clearance is the orchestrator's job, not the leg's.
 ```
 
 ⛔ **There is no quarantine rule field.** ⚠ It said to hand reviewers `git show <sha>:<path>` because "the
@@ -98,9 +96,7 @@ is the closest thing to self-review the architecture allows, and it displaces th
 defects, so the substitution did not announce itself — ⭐ a productive review is not evidence the
 composition was right.
 
-Launch a Codex review leg at xhigh, in the background, with the same rendered prompt (its read-only-to-the-tree
-discipline is behavioral — the Bounds block + "ablate /tmp copies, never modify the working tree"; ⛔ do not add
-`-s read-only`, which would block the leg's required /tmp evidence writes):
+Launch a Codex review leg read-only, at xhigh, in the background, with the same rendered prompt:
 
 ```bash
 codex exec -c model_reasoning_effort=xhigh "$(</absolute/review-prompt.md)" \

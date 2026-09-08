@@ -65,8 +65,44 @@ DEAD/one-sided control's DIGEST may move even when its object is unchanged: a po
 controls (never a false negative; the nonzero fingerprint stays robust). Interpretation caveat for the build
 review, not a directive defect.
 
-## Disposition
-Revision-1 = **NOT-SOUND**, 3 findings unresolved at this commit (preservation baseline, ⛔ not acceptance).
-FOLD → revision-2 delegated to Codex-sol (keeps the directive Codex-authored; re-review stays fresh-Opus +
-Grok): fix F1 (repin WL to actualJunkCase), F2 (remove R_N6/R_cov carve-out), F3 (digest = harness full-
-payload SHA), + record the Q3 caveat. Then re-review-until-clear.
+## Disposition (round 1)
+Revision-1 = **NOT-SOUND**, 3 findings unresolved at commit `d94a8421` (preservation baseline, ⛔ not
+acceptance). FOLD → revision-2 delegated to Codex-sol (keeps the directive Codex-authored; re-review stays
+fresh-Opus + Grok): fix F1 (repin WL to actualJunkCase), F2 (remove R_N6/R_cov carve-out), F3 (digest =
+harness full-payload SHA), + record the Q3 caveat.
+
+## FOLD ROUND 2 — re-review → CLEARED
+Revision-2 (Codex-sol fold) re-reviewed by two legs on the folded directive (Codex-authored → fresh Opus
+agent + Grok), identical prompt `_legs/S11c_c2_N6_fold_round2_rereview_prompt.md`, fold diff handed to both
+`_legs/S11c_c2_N6_fold_round2.diff`. Reports: `_legs/S11c_c2_N6_fold_round2_agent_report.md` (Opus),
+`_legs/S11c_c2_N6_fold_round2_grok_report.md` (Grok).
+
+**Both legs: SOUND** (Q1–Q4), and the orchestrator re-verified each fix against the engine (G4):
+- **F1 resolved** — WL budget pin now `{"MATERIAL_ADVECTED","RHO4_CONSTANT"}` = `actualJunkCase` (audit.wl:21);
+  under it `activeJunk = actualJunkCoefficient` (:845) so K_junk bites; K_carrier (:860) and K_split_route
+  (:892) are not case-gated (live in any case). Both legs confirmed **no** SymPy knife is case-gated (Grok's
+  per-knife table): all three SymPy pins stay `LAB_HELD/RHOBR_CONSTANT`, every SymPy knife live there. No
+  inert knife anywhere.
+- **F2 resolved** — the "direct payload" carve-out for R_N6/R_cov/SPLIT_CHECK/guard residuals is deleted
+  (grep = 0 for "small scalar"/"direct payload"/"already-compact"); they route through compact PIT + digest;
+  the surviving scalar allowance cannot admit a heavy ARITHMETIC/table object; clauses 4/8 + Deliverables
+  close success and error transcripts.
+- **F3 resolved** — per-object digest is harness-computed over the full emitted payload before compaction
+  (WL: emitted `WL_S11CC2_* = payload` text incl. ARITHMETIC + PROBE_NUMERATORS, mechanism at
+  ablation_harness_wl.py:190; SymPy: `n.sha` over the parsed emitted PIT payload, ⛔ not a raw DAG Node). It
+  is a genuine same-support-FORM witness; the only digest-only objects (FROZEN_PHI/PHI_DOMAIN_CENSUS) are
+  moved by the one live knife that touches them (cov K_rank → substitution_map). No blind spot for a live
+  knife.
+- **Q4** — knives byte-frozen (diff touches no `### K_*` block); clause 1 ↔ coverage note ↔ CHANGE-LOG
+  consistent; drawCount=4 / one case / timeout unchanged (no regression).
+
+**Stopping rule (G4):** nothing outstanding changes what is computed or may be claimed ⇒ **revision-2 = CLEARED
+as the governing build spec.**
+
+**Two build-review nits carried forward (non-blocking, ⛔ NOT directive defects):**
+1. The recorded sampler caveat names the WL sampler (audit.wl:774–791); the SymPy `pit` sampler
+   (diagnostic_sympy.py:744–755) has the same false-positive-on-DEAD behavior (never a false negative). The
+   BUILD review must apply sampler-awareness to a moved DEAD digest on BOTH engines.
+2. The rebuild must NOT reproduce the failed harnesses' error-path raw-stdout dumps
+   (ablation_harness_wl.py:180–181/196; covariance_ablation_harness.py:156–159) — already forbidden by
+   clauses 4/8; the build --check + build review must verify KB-scale transcripts and no raw dump on any path.

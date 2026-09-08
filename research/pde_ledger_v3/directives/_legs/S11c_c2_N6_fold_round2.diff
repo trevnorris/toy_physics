@@ -1,0 +1,145 @@
+--- REV1 (d94a8421 reviewed NOT-SOUND baseline)
++++ REV2 (fold round 2)
+@@ -20,17 +20,23 @@
+    `numerator_denominator` sample matrix or an arithmetic DAG. The WL PIT fingerprint is a compact association keyed
+    as `{case, "PROBE", cellIndex, prime}` whose value records the engine-emitted valid/rejected counts, the selected
+    object's `nonzero_count`, and `circuit_leaves`; derive it only from that object's emitted `PROBE_NUMERATORS` and the
+-   engine's `LOCAL:PROBE` sample index. Hash the exact selected object payload before transcript projection with
+-   `n.sha(obj)` for SymPy (the function at `scripts/S11c_c2_N6_diagnostic_sympy.py:91`) and use the corresponding
+-   `emitted_object_sha256` entry from WL `RUN_PROVENANCE`. For non-PIT metadata, print the digest and any already-small
+-   scalar fields only; if the engine supplies no digest, compute only `n.sha(obj)` in the worker. There is no symbolic
+-   fallback. The `diff` member is a deterministic key-aligned arithmetic/bitmap delta or digest equality bit, not a
+-   symbolic difference. Small scalar residuals (`R_N6`, `R_cov`, `SPLIT_CHECK`, slot/closure guard residuals) and
+-   already-compact arithmetic key-aligned tables remain direct payloads. Subtract arithmetic tables on shared keys
+-   and record a tagged `MISSING` entry on either side for a key-set change; never coerce absence to numeric zero.
+-   The knife's mechanically visible payload is a moved PIT fingerprint and/or changed digest between the identical
+-   CANONICAL/NO-OP records and FORM/COEFFICIENT records. Payloads contain no interpretation, acceptance label, or
+-   physics conclusion.
++   engine's `LOCAL:PROBE` sample index. Every per-object digest is HARNESS-computed, not read from an engine field.
++   For WL, the driver computes SHA-256 over the object's exact full emitted `WL_S11CC2_* = payload` text before
++   compaction, including `ARITHMETIC` and `PROBE_NUMERATORS`. For SymPy, compute `n.sha` over the parsed emitted PIT
++   payload; do not hash the in-memory raw object, because the arithmetic DAG `Node` is not `sympify`-able. In both
++   paths the full pre-projection emitted/parsed payload is hashed and then discarded; only its digest reaches the
++   transcript. This full-payload digest is the sole faithful witness when a FORM change does not move the nonzero
++   tally, so it is load-bearing. For non-PIT metadata, print the digest and only genuinely scalar integer/rational
++   fields having no `ARITHMETIC` or table payload. There is no symbolic fallback. The `diff` member is a deterministic
++   key-aligned arithmetic/bitmap delta or digest equality bit, not a symbolic difference. `R_N6`, `R_cov`/`R_COV`,
++   `SPLIT_CHECK`, and the slot/closure guard residuals are certified objects like every other: print their compact PIT
++   fingerprint (including the nonzero tally, e.g. `R_N6` -> `18/288` and `R_cov` -> `0`) plus the harness-computed
++   digest, and never print the engine's raw heavy tag or table. The only direct-payload allowance is for a value that
++   is already a genuine scalar integer/rational with no `ARITHMETIC` or table payload. Compute deltas on compact PIT
++   arithmetic/bitmap tables over shared keys and record a tagged `MISSING` entry on either side for a key-set change;
++   never coerce absence to numeric zero. The knife's mechanically visible payload is a moved PIT fingerprint and/or
++   changed digest between the identical CANONICAL/NO-OP records and FORM/COEFFICIENT records. Payloads contain no
++   interpretation, acceptance label, or physics conclusion.
+ 2. **Wrap the live engine.** Obtain every object from the engine's production entrypoint and emitted tags. Do not
+    reconstruct an engine object in the harness, and do not patch an extractor, emitter, serializer, or diff routine.
+ 3. **One mutation, one source site.** Locate the named function or top-level assignment with `ast`/held WL source,
+@@ -44,11 +50,14 @@
+ 5. **Process isolation and WL budget.** Run the canonical baseline, unablated copy, FORM variants, identity variants,
+    and coefficient companions one at a time. Each SymPy run uses a fresh worker subprocess pinned as stated below.
+    Every WL label, including CANONICAL and the unablated copy, means the production source plus the same declared
+-   build-scoped, NON-KNIFE budget patch in a fresh `/tmp` copy: retain only `{"LAB_HELD","RHOBR_CONSTANT"}` and use
+-   four valid PIT draws per prime/cell. Apply the exact two edits specified under Harness 1 before any knife patch;
+-   print the budget-patch diff and both the production and executed-source SHA-256 values separately from the knife
+-   diff. Use one fresh kernel under `timeout --kill-after=5 600` for each label and never overlap WL kernels. Never
+-   launch the unrestricted four-case engine from this harness.
++   build-scoped, NON-KNIFE budget patch in a fresh `/tmp` copy: retain only
++   `{"MATERIAL_ADVECTED","RHO4_CONSTANT"}` (the engine's `actualJunkCase`) and use four valid PIT draws per prime/cell.
++   This is the unique case in which all three WL knives are simultaneously live. The WL harness is an independent
++   certificate and need not share the SymPy harnesses' pinned case; all three SymPy harness pins remain unchanged.
++   Apply the exact two edits specified under Harness 1 before any knife patch; print the budget-patch diff and both
++   the production and executed-source SHA-256 values separately from the knife diff. Use one fresh kernel under
++   `timeout --kill-after=5 600` for each label and never overlap WL kernels. Never launch the unrestricted four-case
++   engine from this harness.
+ 6. **Imported siblings.** A SymPy worker's temporary `scripts/` directory goes first on `sys.path`. Copy the target
+    engine and its locally imported N6/S11c-a/S11c-b siblings into that directory, patch only the named file, and let
+    ordinary imports resolve there. Fresh workers prevent module caches and `_FACE_CACHE` from crossing variants.
+@@ -86,9 +95,10 @@
+ - `scripts/S11c_c2_N6_reconcile_ablation_harness.py`
+ - `_measurements/S11c_c2_N6_reconcile_ablation_harness.md`
+ 
+-Each transcript is a KB-scale compact record of the exact invocation, manifests, source patches and hashes, PIT
+-fingerprint/digest triples, small scalar residuals/tables, and guards. It never contains a full symbolic object,
+-symbolic difference, arithmetic DAG, PIT sample matrix, or raw engine transcript.
++Each transcript is a KB-scale compact record of the exact invocation, manifests, source patches and hashes, compact
++PIT-fingerprint/full-payload-digest triples, genuinely scalar integer/rational metadata, and guards. It never contains
++a full symbolic object, symbolic difference, arithmetic DAG, PIT sample matrix, raw residual table, or raw engine
++transcript.
+ 
+ ---
+ 
+@@ -110,11 +120,14 @@
+    by
+ 
+    ```wl
+-   {case, {{"LAB_HELD", "RHOBR_CONSTANT"}}}
++   {case, {{"MATERIAL_ADVECTED", "RHO4_CONSTANT"}}}
+    ```
+ 
+-   This selects the single SymPy-matched case without changing `buildCase`. The separate SETUP metadata occurrence
+-   of the four-case `Tuples[...]` at lines 582–583 is not the driver and is not patched.
++   This selects the unique all-WL-knives-live case, equal to `actualJunkCase` at line 21, without changing
++   `buildCase`: `K_junk` is live there, while `K_carrier` and `K_split_route` are not case-gated. The WL harness is an
++   independent certificate and need not share the SymPy harnesses' case. The three SymPy harnesses remain pinned to
++   `--anchoring LAB_HELD --density RHOBR_CONSTANT`. The separate SETUP metadata occurrence of the four-case
++   `Tuples[...]` at lines 582–583 is not the driver and is not patched.
+ 2. In `probeCase`, replace the unique adaptive draw-count assignment at line 760
+ 
+    ```wl
+@@ -553,23 +566,42 @@
+   doubles that exact `ms` addend at lines 211–212.
+ - Isolation and builder scope → fresh subprocess/kernel, temporary sibling-first imports, build→run→report→stop.
+ - Output-contract revision → every CANONICAL, unablated-copy, FORM, NO-OP/IDENTITY, and COEFFICIENT ×2 record now
+-  prints only compact PIT nonzero fingerprints, per-object SHA-256 digests, small scalar/key-aligned tables, and
+-  bounded guards. Full symbolic objects/differences, arithmetic DAGs, PIT sample matrices, and raw engine stdout are
+-  forbidden even on failures; deliverable transcripts are KB-scale.
++  prints only compact PIT nonzero fingerprints, harness-computed per-object full-payload SHA-256 digests, genuinely
++  scalar integer/rational metadata having no `ARITHMETIC` or table payload, and bounded guards. Full symbolic
++  objects/differences, arithmetic DAGs, PIT sample matrices, raw residual tables, and raw engine stdout are forbidden
++  even on failures; deliverable transcripts are KB-scale.
+ - Coverage verification against all four engines → every certified and DEAD arithmetic object in the diagnostic and
+   reconcile harnesses is inserted into `objects` and passed to `n.pit`; the five covariance arithmetic objects
+   (`R_COV`, `SOURCE_ACTUAL`, `SOURCE_PREDICTED`, `R_COV_INCREMENT`, `R_COV_CONTROL_DELTA`) are likewise passed to
+   `n.pit`; and every WL arithmetic object named by the primary/DEAD sets is inserted by `addNumeric` and processed by
+-  `probeCase`. The only named non-PIT objects are covariance/WL `FROZEN_PHI` and `PHI_DOMAIN_CENSUS`: the SymPy
+-  worker must compute the minimal `n.sha(obj)` digest before transcript projection, while WL uses each object's
+-  `emitted_object_sha256` from `RUN_PROVENANCE`. Thus every certified and DEAD object has a compact PIT fingerprint
+-  and/or digest, with no uncovered object and no symbolic fallback.
++  `probeCase`. This includes `R_N6`, `R_cov`/`R_COV`, `SPLIT_CHECK`, and the slot/closure guard residuals; their raw
++  tags/tables are not scalar transcript payloads. The only named non-PIT objects are covariance/WL `FROZEN_PHI` and
++  `PHI_DOMAIN_CENSUS`. The harness computes every digest before transcript projection: WL hashes the full emitted
++  `WL_S11CC2_* = payload` text, and SymPy applies `n.sha` to the parsed emitted PIT payload rather than to a raw DAG
++  `Node`. Thus every certified and DEAD object has a compact PIT fingerprint and/or harness-computed digest, with no
++  uncovered object and no symbolic fallback.
+ - WL budget revision → the engine exposes no case-selection or draw-count environment/parameter knob. Every WL
+   CANONICAL/copy/knife run therefore patches only its `/tmp` source: in the unique top-level driver `Do` containing
+   `buildCase[case]`, replace the four-case iterator by
+-  `{case, {{"LAB_HELD", "RHOBR_CONSTANT"}}}`; in the unique `probeCase` draw assignment, replace the adaptive
+-  eight-draw expression by `drawCount = 4;`. Static source tracing verifies that the first edit only selects the
+-  argument to unchanged `buildCase` and the second occurs after per-case object construction/compilation, so retained
+-  per-case symbolic objects are unchanged. Both edits are declared `BUDGET_RESTRICTION / NON-KNIFE`, source-diffed
+-  and hashed separately from every frozen knife, and every fresh serialized kernel remains under
+-  `timeout --kill-after=5 600`.
++  `{case, {{"MATERIAL_ADVECTED", "RHO4_CONSTANT"}}}`; in the unique `probeCase` draw assignment, replace the adaptive
++  eight-draw expression by `drawCount = 4;`. The retained case is `actualJunkCase`, the unique case in which all three
++  WL knives are live; the independent WL certificate need not share the unchanged SymPy case pins. Static source
++  tracing verifies that the first edit only selects the argument to unchanged `buildCase` and the second occurs after
++  per-case object construction/compilation, so retained per-case symbolic objects are unchanged. Both edits are
++  declared `BUDGET_RESTRICTION / NON-KNIFE`, source-diffed and hashed separately from every frozen knife, and every
++  fresh serialized kernel remains under `timeout --kill-after=5 600`.
++- FOLD round 2, WL case liveness → repinned only the WL budget restriction to
++  `{"MATERIAL_ADVECTED","RHO4_CONSTANT"}` = `actualJunkCase`, where `K_junk`, `K_carrier`, and `K_split_route` are all
++  live; the three SymPy pins stay `LAB_HELD`/`RHOBR_CONSTANT` because the WL harness is an independent certificate.
++- FOLD round 2, residual compaction → removed the direct-payload carve-out for `R_N6`, `R_cov`/`R_COV`,
++  `SPLIT_CHECK`, and slot/closure guard residuals; they route through compact PIT fingerprints plus digests, and their
++  raw heavy tags/tables never enter a transcript.
++- FOLD round 2, digest provenance → made the per-object SHA-256 explicitly harness-computed over the full emitted
++  payload before compaction (WL full assignment text; SymPy `n.sha` over the parsed emitted PIT payload), after which
++  the full payload is discarded. It is not an engine `RUN_PROVENANCE` field and is the load-bearing witness for a
++  same-support FORM change.
++- Build-review note, Opus Q3 caveat → the joint-rejection PIT sampler at `audit.wl:774–791` can shift the accepted
++  sample set when a knife changes singularity structure. A DEAD/one-sided control's digest may therefore move even
++  when its object is unchanged, creating a possible false positive on DEAD controls, never a false negative; the
++  nonzero fingerprint remains robust. The later executable BUILD review must weigh a moved DEAD digest with this
++  sampler-awareness.

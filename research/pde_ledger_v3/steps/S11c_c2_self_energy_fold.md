@@ -17,13 +17,18 @@ command in `_measurements/` (rule 2).
 > **PER-ENGINE (SymPy) — the self-energy fold is SOUND.** The fold **wiring** (substitute the closed `δp_s(V_s,μ_θ)`
 > + its w-jets into the symbolic `δp_±` slots — ⛔ not a closed `J_s`; operator-inverse response; the `dtn_operator`→
 > `dtn_kernel` bridge; `V_s→face_velocity`; computed w-jets; the ε-strip) and the A/C/D1–D6 constructions are
-> **two-leg confirmed** (fresh Claude agent + Grok, review-until-clear, + my rule-13 verification; `8f3a017f`).
-> ⛔ **NOT "0 defects"** (the `8f3a017f` commit subject overstates — corrected in the adjudication record): **F** =
-> the genuine closure-induced coupling **DECOUPLES** at the uniform limit (⛔ not "the increment vanishes"; a light
-> §5e/§3c wording clarification is **OWED** — §5e still reads "must vanish"); **G** = the induced self-energy is
-> **directional/one-way** (transverse→{θ,e_W}; reverse block identically zero; both blocks emitted; ⛔ NO
-> dissipativity/passivity claim). **F/G numeric re-grounding is PAUSED INDEFINITELY** (user 2026-09-06: hit a
-> tractability wall, effort too large, ⛔ NOT blocking physics; the increment VALUES are unaffected, `cfb2494c`).
+> **two-leg confirmed** (fresh Claude agent + Grok, review-until-clear, + my rule-13 verification; `8f3a017f`), and
+> the emitted increment/kernel **VALUES are unaffected** by everything below. ⛔ **NOT "0 defects"** (the `8f3a017f`
+> commit subject overstates — the adjudication record was itself corrected). ⛔ **F and G are NOT established
+> physics:** their STEP-A adjudication instruments (`verify_F`/`verify_EG`) were **WITHDRAWN**
+> (`_measurements/S11c_c2_FG_regrounding_deferred.md:28-30`), so the earlier "F = the genuine coupling decouples" and
+> "G = directional/one-way" are **withdrawn interpretations**, ⛔ not adjudicated results (recorded as raw
+> observations only). **F/G re-grounding is OWED** — a numeric-probe (Schwartz–Zippel) diagnostic
+> (`..._FG_regrounding_deferred.md:31-36`) — but was **PAUSED INDEFINITELY** by user decision after the full-symbolic
+> route hit a tractability wall (`cfb2494c`): a **standing, presently non-blocking debt** (⛔ do not resurface it as a
+> BLOCKER; ⛔ pausing did NOT discharge it). A separate light §5e/§3c wording clarification is **OWED** (§5e still
+> reads "must vanish"; the §3c increment retains the `−extract(open)` open-slot O(ε) piece by construction — a
+> structural fact independent of the withdrawn `verify_F`).
 > **CROSS-ENGINE (this box) = the N6 representation-invariance thread ONLY.** There is **no WL self-energy engine and
 > no self-energy comparator**; the assembled self-energy operator's full cross-engine residual is **DEFERRED**
 > (≥64 GB, with c1's four giants, `DEFERRED_HEAVY_RUNS.md`). What WAS done cross-engine is **N6**: a blind Wolfram N6
@@ -59,8 +64,9 @@ the increment.
   the sibling specs (`S9_export_chain_rebuild_directive.md:16-18` is the only cross-engine control), and reproduces
   the carrier reconcile `C_E−C_M` + the source-naturality `R_cov`. ⚠ It re-derives the N6 objects, ⛔ NOT the
   assembled self-energy increment. Rebuilt fresh from the scrubbed value-free directive `28f87dec` → certified
-  engine `e11f2f82`; the compared `.out` is `ae73b884` (regenerated, sha `e5cea55b`, annex/GIN — `datalad get` after
-  a fresh checkout), superseding the stale first-clearance `48a0b4e7`.
+  engine `e11f2f82` (the `.wl` engine content sha256 `e5cea55b…`); the compared `.out` is committed at `ae73b884`
+  (regenerated from that engine, annex/GIN — `datalad get` the `.out` after a fresh checkout), superseding the stale
+  first-clearance `48a0b4e7`.
 - **SymPy N6 engines** (the rep-invariance thread, all astra-built, all build-leg-cleared): the diagnostic
   `S11c_c2_N6_diagnostic_sympy.py` (`I_{M→E}`, `R_N6`), the reconcile `S11c_c2_N6_reconcile_sympy.py` (carrier
   bridge `C_E−C_M`, source bridge, 3-way split), and the covariance `S11c_c2_N6_covariance_sympy.py` (the decisive
@@ -72,14 +78,18 @@ the increment.
   ⛔ There is **no** cross-engine comparator for the self-energy operator itself.
 
 ## The arc (each result: commit/record + how verified)
-- **Self-energy fold — per-engine SOUND** (`8f3a017f`; adjudication `_measurements/S11c_c2_physics_review_adjudication.md`).
-  Both legs (fresh Claude + Grok) agreed the fold wiring + A/C/D1–D6 with shown CAS; the legs SPLIT on B/E/F/G, which
-  I resolved myself (rule 13, scripts + literal stdout beside the record): **F** false-positive (Grok saw
-  `Integral(...)` unevaluated; `.doit()` → integrand literally 0 ⇒ the closure-induced coupling decouples, all 4
-  cases, both nonzero blocks); **B** = F's `−extract(open)` open-slot residue, not a defect (genuine self-energy is
-  O(εη)); **G** = directional/one-way (reverse block identically zero, both emitted; no adjointness residual — correct
-  per §3b); **E/N6** the original finding was itself later superseded (below). ⚠ My first "0 defects / F,G,E all
-  false-positive" verdict was an **over-reach** (Codex-sol compact-prep verify, rule 13) — corrected in the record.
+- **Self-energy fold — the WIRING + A/C/D + increment VALUES are per-engine SOUND** (`8f3a017f`; adjudication
+  `_measurements/S11c_c2_physics_review_adjudication.md`). Both legs (fresh Claude + Grok) agreed the fold wiring +
+  A/C/D1–D6 with shown CAS. The legs SPLIT on B/E/F/G; I first resolved those with orchestrator-authored scripts —
+  ⛔ **those F/G conclusions were later WITHDRAWN** (the corrected process: orchestrator never authors the CAS
+  instrument, CLAUDE.md `6f8dbd34`): **F** (the raw observation was `.doit()` → integrand literally 0, "the
+  closure-induced coupling decouples") and **G** (the raw observation was a directional/one-way increment, reverse
+  block identically zero, both blocks emitted, no adjointness residual per §3b) are **withdrawn interpretations**,
+  ⛔ NOT adjudicated physics; **B** was F's `−extract(open)` open-slot residue. ⚠ My first "0 defects / F,G,E all
+  false-positive" verdict was an **over-reach** (Codex-sol compact-prep verify, rule 13). F/G were then re-grounded
+  the corrected way (question-vet + a 4-round reviewed build directive) but hit a tractability wall → numeric
+  re-grounding OWED, PAUSED (below). **E/N6** was itself superseded (§5c mis-spec, below). ⇒ what STANDS from this
+  build is the wiring + A/C/D + the emitted increment/kernel VALUES.
 - **§5c MIS-SPECIFIED N6, then CORRECTED** (`30d4b72d`). The self-energy engine's own `REP_INVARIANCE_RESIDUAL`
   compared the two ANCHORINGS (distinct physics per S11c-a §2c) — the WRONG object (a nonzero value is EXPECTED,
   ⛔ not a defect). The real N6 (parent S11c-a §5a / sibling c1) is **Eulerian-vs-material-coordinate within a FIXED
@@ -104,10 +114,11 @@ the increment.
   *Method notes*.
 
 ## Established (per-engine / cross-engine) vs owed (surfaced/deferred/paused)
-- **ESTABLISHED — per-engine SymPy SOUND (2-leg):** the self-energy fold wiring + A/C/D1–D6; the closed-slab operator
-  + closed coupling kernel + the substitution increment; F (the genuine closure-induced coupling decouples, O(εη)); G
-  (directional). **PER-ENGINE N6 = operator covariance (Reading B)**, in BOTH engines (SymPy `R_cov` no-nonzero; blind
-  WL reproduces carrier + `R_cov`).
+- **ESTABLISHED — per-engine SymPy SOUND (2-leg):** the self-energy fold wiring + A/C/D1–D6 and the emitted
+  closed-slab operator + closed coupling kernel + substitution-increment **VALUES**. ⛔ **NOT F or G** — those
+  interpretations rest on the WITHDRAWN `verify_F`/`verify_EG` instruments (numeric re-grounding OWED/paused, below);
+  they are recorded as raw observations, ⛔ not established physics. **PER-ENGINE N6 = operator covariance
+  (Reading B)**, in BOTH engines (SymPy `R_cov` no-nonzero; blind WL reproduces carrier + `R_cov`).
 - **ESTABLISHED — cross-engine (N6 thread, dual-engine, on this box):** every MATCHED comparison in the
   vanishing/control/premise subset agreed — `R_cov`/`R_cov_baseline`/`R_cov_control_delta` (160/0 each), the carrier
   bridge `CARRIER_BRIDGE_RESIDUAL` (320/0), `SOURCE_CONTROL_DELTA` (160/0), + genuine nonzero-operand/support
@@ -125,17 +136,23 @@ the increment.
 - **DEFERRED (≥64 GB, `DEFERRED_HEAVY_RUNS.md`):** the assembled self-energy operator's full cross-engine residual +
   c1's four giant families. c2 was constructible + N6-cross-engine-testable on this box for its own increment (§7);
   the full residual is the ≥64 GB work.
-- **PAUSED INDEFINITELY (⛔ not owed):** the F/G numeric re-grounding (user 2026-09-06; not blocking physics;
-  increment values unaffected).
+- **OWED but PAUSED INDEFINITELY (non-blocking):** the F/G numeric-probe re-grounding
+  (`_measurements/S11c_c2_FG_regrounding_deferred.md:31-42`) — a standing debt the user paused 2026-09-06 (the
+  full-symbolic route hit a tractability wall); ⛔ do not resurface it as a BLOCKER, ⛔ but pausing did NOT discharge
+  it. The increment VALUES are unaffected; the withdrawn `verify_F`/`verify_EG` F/G conclusions do NOT stand.
 
 ## Method notes
-- ⭐ **`I_{M→E}` is the MATERIAL-anchoring increment, ⛔ NOT a "mapped-to-Eulerian operand."** `I_{M→E}^{α,ρ} =
-  extract(close(SLAB_M) − SLAB_M)` (`S11c_c2_N6_diagnostic_sympy.py`; SHARED_PHYSICS §5c) is built from the native
-  S11c-a MATERIAL face sources folded into the same `δp` symbols and differenced directly — **no `T`/pullback on the
-  increment**. The label "`M→E` mapped-operand" misleads: the map to common variables is **not** applied to
-  `I_{M→E}` — the frame-change faithfulness is checked SEPARATELY by `R_cov` (source-naturality). ⇒ preserve BOTH
-  findings: `R_N6 = I_E − I_{M→E}` **nonzero (18/288)** AND `R_cov` **no-nonzero** — they are consistent under
-  Reading B, not contradictory. [[feedback_reconcile_representational_bridge]]
+- ⭐ **`I_{M→E}` is the NATIVE MATERIAL-COORDINATE-ROUTE increment at a FIXED anchoring `α`, ⛔ NOT an anchoring and
+  ⛔ NOT a "mapped-to-Eulerian operand."** `I_{M→E}^{α,ρ} = extract(close(SLAB_M) − SLAB_M)`
+  (`S11c_c2_N6_diagnostic_sympy.py:806-853`; SHARED_PHYSICS §5c:305-320) — N6's two routes are Eulerian vs
+  material-COORDINATE at the SAME `(α,ρ)` (the routes are the **representation** axis, ⛔ **never** the anchoring axis
+  `{LAB_HELD, MATERIAL_ADVECTED}` — conflating them is exactly the §5c mis-spec that `30d4b72d` corrected). The two
+  increments are differenced directly with **no separate `T`/final pullback on the increment**, because the material
+  builder ALREADY performs the internal covector conversion (inverse-transpose) into the **common Eulerian face
+  basis**. The "`M→E` mapped-operand" label misleads by implying `I_{M→E}` is the full frame-transformed (Φ) image —
+  it is not; the FULL frame-change faithfulness is checked SEPARATELY by `R_cov` (source-naturality). ⇒ preserve BOTH
+  findings: `R_N6 = I_E − I_{M→E}` **nonzero (18/288)** AND `R_cov` **no-nonzero** — consistent under Reading B, not
+  contradictory. [[feedback_reconcile_representational_bridge]]
 - ⭐ **A nonzero cross-engine residual is not a disagreement** (the comparator prints raw, rule 2). The N6 disposition
   is Path B: the surfaced operand residuals are carried as a DEBT because the only sound reconcile instrument is
   UPSTREAM of the EL differentiation that produced the source operands (a new emit path in both engines, or a
@@ -146,10 +163,13 @@ the increment.
   the builder reproduces the declared Φ (`R_cov` cannot exclude an error SHARED by the declared premise AND both
   routes); (2) does the face velocity `V` transform correctly — `V_E≡V_M` (SHA-equal) is BUILDER agreement, and the
   prediction uses `V_E`, not `Φ(V_E)`; (3) extracted-block omitted-block leakage. [[feedback_never_freeze_a_varying_field]]
-- ⚠ **F wording is OWED** (⛔ not applied): SHARED_PHYSICS §5e still says the uniform-limit increment "must vanish";
-  the correct statement is **"the genuine closure-induced coupling decouples"** (the emitted object retains the §3c
-  `−extract(open)` open-slot O(ε) piece by construction). A light §5e/§3c clarification (review-until-clear) is owed;
-  after it, the export's `BUILD_INPUT_DIGESTS` (which pins the spec) goes stale ⇒ lawfully repin + reverify.
+- ⚠ **A §5e/§3c wording clarification is OWED** (⛔ not applied): SHARED_PHYSICS §5e still says the uniform-limit
+  increment "must vanish", but the §3c increment retains the `−extract(open)` open-slot O(ε) piece **by
+  construction** (a structural fact about the increment's definition, independent of the withdrawn `verify_F`). ⇒
+  the "must vanish" wording is imprecise and owes a clarification (review-until-clear); ⛔ the settled replacement is
+  NOT yet established (whether "the genuine closure-induced coupling decouples" holds is exactly the F question the
+  OWED numeric-probe re-grounding must decide — do not assert it here). After the spec edit, the export's
+  `BUILD_INPUT_DIGESTS` (which pins the spec) goes stale ⇒ lawfully repin + reverify.
 - ⛔ **Rule 17 (background density) — a SURFACED freeze re-adjudicated in c2, ⛔ not waved through** (c1 seal 5). c2's
   fold sums over the face where `ρ(x)`'s variation is load-bearing; §3d.1 binds `rho_br_bg_rho4_constant` to the
   `background_density_map` before the fold (the O(εη) channel `d(μ_s)/dη|₀ = −μ_θ w₁/ρ_br`), so the freeze cannot be
@@ -175,7 +195,9 @@ These change what may be CLAIMED, ⛔ not any computed object. c2's engines/expo
   WL input-leg, equal on `k=k′`); (6) `μ_R,bg` form control (c1-reserved for c2). Each is emitted per-engine SymPy;
   the c1-UNDECIDED imports (i)–(v) among them stay cross-engine-UNDECIDED.
 - **c1 ENERGY** (PY closed-form vs WL far-field integral) — UNDECIDED, deferred with c1's giants.
-- **F/G re-grounding** — PAUSED INDEFINITELY (record it so a future reader does not resurface it as owed).
+- **F/G interpretations** — a standing OWED debt (the numeric-probe re-grounding), **PAUSED INDEFINITELY** and
+  presently non-blocking (⛔ do not resurface it as a BLOCKER; ⛔ but pausing did not discharge it — the `verify_F`/
+  `verify_EG` conclusions are withdrawn, the increment VALUES stand).
 
 ## Census (§3d control/premise leaves) — a FACT-LOOKUP, ⛔ no instrument
 The 8 nonzero control/premise leaves the N6 comparator surfaced (`N6COV_ACTUAL_CONTROL_PARAMETERS` 4,

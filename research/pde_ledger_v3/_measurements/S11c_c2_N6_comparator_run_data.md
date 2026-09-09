@@ -6,9 +6,10 @@ is the reconcile/step-record stage. ⛔ Nothing here is adjudicated.
 
 ## Reproduce
 `python3 research/pde_ledger_v3/scripts/S11c_c2_N6_cross_engine_comparator.py` (defaults: the committed WL `.out`
-`ae73b884` + the 3 committed SymPy `.out`s `7c0790ab`). Ran ~2.86 h, peak RSS ~330 MB, output ~1.6 GB (kept in
-scratchpad `n6cmp_run.out`, ⛔ not committed — reproducible). Mechanical tally: `scratchpad/n6cmp_tally.py` →
-`scratchpad/n6cmp_tally.txt`.
+`ae73b884` + the 3 committed SymPy `.out`s `7c0790ab`). Ran ~2.86 h, peak RSS ~330 MB, output ~1.6 GB — ⛔ NOT
+committed, REPRODUCIBLE by re-running the command. The mechanical tally is COMMITTED alongside this record at
+`_measurements/S11c_c2_N6_comparator_run_tally.txt`. ⚠ session `/tmp` scratchpad artifacts (the raw `.out`, the
+`n6cmp_tally.py` helper) are EPHEMERAL — ⛔ do not expect them across a compact; re-run to regenerate.
 
 ## RUN_ACCOUNTING (clean)
 `{families: 34, families_with_join: 15, families_with_unpaired: 34, parse_failed: 0, deferred_oversize: 0,
@@ -25,17 +26,20 @@ on this box (contrary to the ≥64 GB worry; N6's largest ~80 MB); nothing force
 
 ⚠ **SURFACED computed residuals (⛔ disposition deferred to reconcile — rep-difference vs genuine?):**
 - `N6RC_CARRIER_EULERIAN` / `CARRIER_MATERIAL` — 280 ZERO / **40 NONZERO** each. The blind-WL graph-geometry carrier vs
-  the imported-slab SymPy carrier — the DO-NOT-FOLD representational residual (the carrier BRIDGE already = 0, so the
-  object reconciles; the 40 are the raw basis difference the representational reconcile addresses).
+  the imported-slab SymPy carrier — the DO-NOT-FOLD representational residual. ⚠ The carrier BRIDGE residual vanishes on
+  matched keys, but that does ⛔ NOT dispose of these 40 cross-engine operand residuals; whether they reconcile
+  representationally or genuinely differ is UNADJUDICATED (the reconcile stage's job).
 - `N6COV_SOURCE_ACTUAL` / `SOURCE_BASELINE` / `SOURCE_PREDICTED` — 16 ZERO / **76 NONZERO** each; `N6COV_FROZEN_PHI`
   42 ZERO / 18 NONZERO. The constitutive SOURCE channel + the field map Φ — consistent with the per-engine finding
   that the residual localizes to the constitutive source (source bridge nonzero in 3 cases). ⚠ Whether the two
   engines' sources AGREE (rep-difference) or genuinely differ is THE open cross-engine question for the reconcile.
 
-**No matched symbolic sibling (⇒ compared STRUCTURALLY only; different WL block/kernel/component vocabularies):**
+**ENTIRELY UNMATCHED cross-engine (different WL block/kernel/component vocabularies):**
 `N6RC_R_N6`, `SPLIT_CHECK`, `SPLIT_SUM`, `EULERIAN/MATERIAL_OPERAND`, `*_CHANNEL`, `CROSS_CHANNEL`, `DIMENSIONS`, all
-guards — entirely UNDECIDED (unmatched typed keys → pairing table). ⇒ R_N6's cross-engine comparison is STRUCTURAL,
-⛔ not symbolic.
+guards — all UNDECIDED (unmatched typed keys → pairing table), with **NO matched symbolic sibling AND no structural
+support line** (the support-tally 400/0 is entirely SOURCE+CARRIER, above; these families contribute none). ⇒ there
+is **NO direct cross-engine comparison of R_N6 itself** — the N6 cross-engine evidence rests on R_cov + the carrier
+bridge + the SOURCE/CARRIER support, ⛔ not on R_N6.
 
 ## STRUCTURAL channel — support AGREES where matched
 - support: 400 ZERO / **0 NONZERO** / 1680 UNDECIDED ⇒ the nonzero-SUPPORT agrees on every matched key (0 support

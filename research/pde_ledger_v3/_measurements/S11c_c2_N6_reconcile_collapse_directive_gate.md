@@ -107,3 +107,37 @@ authoring to Codex-sol**: fold the round-2 MUST findings into v3 with the explic
 crosswalk + typed scopes + map-6 removal + corruption-locality/dropped-map controls; keep everything both legs
 found sound. Authorship changes O→Codex ⇒ v3's review legs are **fresh Claude + Grok** (Codex-written → not
 Codex-reviewed). NEXT = Codex authors v3 → fresh-Claude + Grok review-until-clear → astra build.
+
+## v3 (Codex-authored) review: legs SPLIT → orchestrator VERIFIED (G4) → DIRECTIVE NOT-SOUND (one map-4 MUST).
+Codex authored v3 (`362` lines): 19-row frozen map-4 table with `R_W=W_0/W_bg` scales, map-6 removed
+(`LIVE_DENSITY_PREMISE` census-only), typed-scope allow-list, corruption-locality + dropped-primitive controls,
+frozen 6-row census crosswalk. Leak-gate clean. Review legs (Codex-written ⇒ fresh **Opus Agent** + Grok):
+- **Opus Agent: DIRECTIVE SOUND** — independently re-derived all 19 map-4 rows (incl. the E14 triangular mixing
+  + the first-jet index→structure map from `enumerate_new_candidates`) and confirmed the table CORRECT; all
+  other maps/order/witness/controls/census/fence SOUND. Reports `_legs/S11c_c2_N6_reconcile_collapse_v3_review_opus.md`.
+- **Grok: DIRECTIVE NOT-SOUND** — one MUST: the map-4 `R_W` rows (E02,E03,E04,E05,E13,E14) are correct
+  UNGRADED constructor identities but applied as production rewrites on already-GRADED numeric leaves, which
+  does not commute. Report `_legs/S11c_c2_N6_reconcile_collapse_v3_review_grok.md`.
+- **⭐ Orchestrator G4 verification (legs split ⇒ verify myself; L-R13):** GROK IS RIGHT. Confirmed via the
+  engines: WL `profileRules[]` expands `WBg → W0(1+etaBg·w1Profile)` (`.wl:127-131`) and SymPy `grades()` does
+  `xreplace(inputs.profiles)` (`diagnostic:245-248`) — BOTH engines expand `WBg→W0` BEFORE grade extraction, so
+  the graded numeric leaves carry `W0`, NOT a live `W_bg`. Applying `cCoupling → R_W·C = (W_0/W_bg)·C`
+  (directive:110,E02) to a graded leaf inserts a spurious live `W_bg` (in R_W's denominator) absent from both
+  the WL and SymPy graded leaves ⇒ a nonzero residual that is a STAGE ARTIFACT, not a §3 cross-engine difference.
+  Opus's SOUND verified the UNGRADED table (correct) but did NOT check graded-application commutativity — a
+  false-negative on the stage. ⇒ DIRECTIVE NOT-SOUND on the map-4 R_W application stage.
+- **Also FOLD (Opus OBS-1):** the builder `test_` must ASSERT the WL `energyCoefficient↔contraction` map against
+  the actual `constructEnergy` output (the WL retained order derives from Mathematica `DeleteDuplicates`+`RowReduce`
+  pivot order, not hand-reproducible; a WL-index error fails safe → `residual_remains`, but assert it anyway).
+- **Note for the DISPOSITION (Opus OBS-2, ⛔ not the directive):** adjudicate by weighting the R_W-normalization
+  rows + the surviving residual, NOT the count of collapsed rename-only rows (those collapse by construction;
+  their independence was already established by the comparator's structural matching — c1 precedent).
+
+## v3 disposition — the map-4 R_W application stage is a THIRD distinct, deeper map-4 finding (not-frozen →
+needs-scales → graded-stage). It is Codex-authored content ⇒ the fix returns to Codex (v4): re-express the 6
+R_W rows so the identity is applied consistently with the graded rectangle without reintroducing a live `W_bg`
+into a grade (per-grade images, or a consistent-expansion of `W_bg` on both operands before the coefficientwise
+compare — ⛔ never expanding `R_W` in η, which the tripwire forbids). Keep everything both legs found sound; add
+the OBS-1 test assertion. Then re-review (fresh Claude + Grok). ⚠ Effort note: this is the 3rd map-4 round;
+scope-checkpoint with the user before committing to further collapse-instrument rounds vs surfacing the residuals
+as UNDECIDED (the c1 precedent).

@@ -62,6 +62,48 @@ keeping the directive orchestrator-owned; the re-review legs verify each constru
 name/structure fact that bites. Every admitted map is a NAME/STRUCTURE correspondence — ⛔ no construction-stage
 operation is an operand rewrite.
 
-## Disposition
+## Round 1 disposition
 Folded ONCE (all findings convergent + verified). ⛔ physics-bearing directive ⇒ re-review (2 decision legs on
-v2) until clear before the build. NEXT = relaunch Codex + Grok on v2.
+v2). Relaunched Codex + Grok on v2.
+
+## Round 2 verdict: BOTH **DIRECTIVE NOT-SOUND** again — but CONVERGENT + NARROWER (v1 hazards resolved).
+Reports `_legs/S11c_c2_N6_reconcile_collapse_directive_{codex,grok}_r2.md`. Both legs explicitly confirm the
+round-1 hazards are FIXED (no whole-object equality remains; map-2 degree-2 + map-4 η-re-expansion correctly
+excluded) and that retained order, the three-valued witness, BASELINE-as-duplicate, value-free discipline, the
+fence, and the import-primitives extraction reuse are all SOUND. Remaining convergent MUST findings — all about
+**explicitly FREEZING the physics-bearing pieces** rather than letting astra construct them:
+- **M-a (both) — map 4 (energy-basis coefficient pairing) is not frozen.** The pairing carries physics
+  normalization/scale, NOT mechanical spelling: WL `bRho/2·WBg·θ²`, `cCoupling·WBg·θ·eW`, else
+  `energyCoefficient<i>` (`.wl:211,217,222-226`) vs SymPy `B_rho_3·W_bg/(2·W_0)`, `C·W_bg`, `kappa_theta/2`
+  (`brane:1584-1594`), first-jet `gamma_s11cb_*` (`brane:357,1820`). So the table needs leftover scales
+  (`B_rho_3 = bRho·W_0`, `energyCoefficient↔kappa_theta/2`). "astra constructs from sites" delegates a
+  residual-changing choice ⇒ the directive must SUPPLY the complete frozen contraction-ID table (orientation +
+  scale per pair), or a deterministic reviewed basis-change algorithm + its expected table.
+- **M-b (both) — map 6 (leftover density) has no surviving emitted atom name.** Both engines rebind live density
+  INSIDE source construction (PY `diagnostic:378,382` → `inputs.density[(ρ,)][1]`; WL `sourceBind` `rhoFace→density3`,
+  `density3=density4·WBg` `.wl:839,380`), so `density3`/`inputs.density[…]` are expressions/locals, not emitted
+  names. Map 6 is therefore either inert (its control can't bite) or a new constant↔live-expression rewrite
+  (reopens the c1 rule-17 hazard). ⇒ REMOVE from the production rewrite dictionary; keep live-density only as a
+  separately-emitted premise/census comparison.
+- **M-c (Codex) — typed map scopes.** The source-wave bare↔applied-`Y` map is justified ONLY at the source
+  extraction boundary (`diagnostic:392`; WL `sourceMap` bare jets `.wl:707`); applying it to Φ (an abstract jet
+  map with no `Y` evaluation, `cov:63`; WL `:236`) changes the claim from abstract-jet-map equality to
+  after-point-evaluation equality. ⇒ freeze each map with a typed family/stage scope (source-wave → `SOURCE_*`
+  only; Φ gets domain/multi-index spelling + pre-grade profile substitution, ⛔ not source-point evaluation).
+- **M-d (both) — controls incomplete.** Corruption control needs LOCALITY (nonzero delta on ≥1 declared-use
+  leaf AND zero delta OUTSIDE the use-set — else an over-broad map passes); add a real DROPPED-map control
+  (delete each active primitive, require a residual on a predeclared defining-relation operand); run blanket
+  through the same extraction/rewrite/witness path.
+- **M-e (Codex) — census crosswalk must be FROZEN exactly, not "e.g."** Enumerate `DOMAIN`/`COVERAGE`/
+  `UNCOVERED`/`MAX_RANK` ↔ SymPy counterparts + `kappa_a↔ADVECTION`, `kappa_j↔JUNK`; ⛔ `MATERIAL_NORMAL` is
+  ONE-SIDED (WL-only, like `THICKNESS`) — do not synthesize a SymPy zero for it.
+
+## Round 2 disposition — ⭐ RULE 15: CHANGE THE AUTHOR (2nd heavy round at the build-directive gate).
+Two decision-gate rounds NOT-SOUND on the same material (the frozen dictionary). The remaining fixes are exactly
+the error-prone explicit-table specification (map-4 scales, census crosswalk) that hand-authoring has repeatedly
+gotten wrong (the N6 route-2 precedent: hand-written maps failed 3× → Codex authored → CLEAR). The rule-15-armed
+condition ("a 2nd heavy round at the build-directive gate ⇒ hand re-author to Codex") is met. ⇒ **DELEGATE v3
+authoring to Codex-sol**: fold the round-2 MUST findings into v3 with the explicit frozen map-4 table + census
+crosswalk + typed scopes + map-6 removal + corruption-locality/dropped-map controls; keep everything both legs
+found sound. Authorship changes O→Codex ⇒ v3's review legs are **fresh Claude + Grok** (Codex-written → not
+Codex-reviewed). NEXT = Codex authors v3 → fresh-Claude + Grok review-until-clear → astra build.

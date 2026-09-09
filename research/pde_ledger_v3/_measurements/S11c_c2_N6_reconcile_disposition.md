@@ -27,17 +27,32 @@ scoped the orchestrator's verdict TWICE, so this disposition is NOT self-cleared
 
 - **Per-engine N6 = operator covariance (Reading B), in BOTH engines.** SymPy `R_cov` (source-naturality residual
   `ms − source_terms(μ_E.subs(Φ), V_E)`) gives no nonzero found at conditional δ≈2.6e-22 all 4 cases, knives bite
-  (`d21c8ff5`, `_measurements/S11c_c2_N6_RESOLVED.md`); blind WL reproduces the carrier reconcile `C_E−C_M` and
-  the source-naturality `R_cov` per-engine (`48a0b4e7`, own WL primes/degrees, import-free). Reading B stands
-  (`d21c8ff5`, user-adopted).
-- **Cross-engine, every MATCHED vanishing agreed.** SYMBOLIC channel: `N6COV_R_COV` /
-  `R_COV_BASELINE` / `R_COV_CONTROL_DELTA` — 160 ZERO / 0 NONZERO each; `N6COV_SOURCE_CONTROL_DELTA` 160/0;
-  `N6RC_CARRIER_BRIDGE_RESIDUAL` 320/0; `N6RC_ADVECTION_ABSENCE` 6/0; `N6RC_FROZEN_RELATIONS` 8/0. STRUCTURAL
-  support: 400 ZERO / 0 NONZERO (every matched support key agrees; no support disagreement).
-- ⚠⚠ **These matched zeros are `(0)−(0)`.** Each matched object (`R_cov`, the carrier bridge `C_E−C_M`) is
-  *already 0 within each engine*, so its cross-engine difference is 0 **trivially** and says NOTHING about whether
-  the underlying OPERANDS agree cross-engine (`reconcile_question.md` §2, grounded both engine sources). ⇒ this is
-  a **dual-engine confirmation of the VANISHING statement (Reading B), ⛔ NOT operand AGREE.**
+  (`d21c8ff5`, `_measurements/S11c_c2_N6_RESOLVED.md`); the blind WL engine reproduces the carrier reconcile
+  `C_E−C_M` and the source-naturality `R_cov` per-engine (own WL primes/degrees, import-free). ⚠ The WL `.out`
+  actually compared is `ae73b884` (regenerated from certified engine `e11f2f82`, sha `e5cea55b`), which
+  SUPERSEDES the stale first-clearance engine `48a0b4e7`; the 160/0 matched `R_cov` zeros (§1 next bullet) would
+  not vanish had the compared stream carried a live residual. Reading B stands (`d21c8ff5`, user-adopted).
+- **Cross-engine, every matched comparison IN THE VANISHING / CONTROL / PREMISE SUBSET agreed — but of two
+  DIFFERENT kinds (⛔ do not conflate them; and ⛔ this is NOT "every matched key agreed" — the carrier/source/Φ
+  families also have matched keys, and 40/76/18 of THOSE are NONZERO, §2).**
+  SYMBOLIC channel:
+  - **(a) within-engine-zero objects → the cross-engine 0 is `(0)−(0)` (TRIVIAL):** `N6COV_R_COV` /
+    `R_COV_BASELINE` / `R_COV_CONTROL_DELTA` — 160 ZERO / 0 NONZERO each; `N6COV_SOURCE_CONTROL_DELTA` 160/0
+    (`ACTUAL≡BASELINE` at shipped settings); `N6RC_CARRIER_BRIDGE_RESIDUAL` 320/0; plus the ZERO-valued
+    `N6RC_ADVECTION_ABSENCE` 6/0 leaves and the four ZERO leaves of `N6RC_FROZEN_RELATIONS`.
+  - **(b) genuine NONZERO-operand agreements (⛔ NOT `(0)−(0)` — a small positive cross-engine signal):** the
+    OTHER four `N6RC_FROZEN_RELATIONS` matched leaves are equalities of NONZERO premise operands — `h_α = u·∇W/W_bg`
+    in the two LAB_HELD cases, `a_ρ` in the two RHOBR_CONSTANT cases (`reconcile_sympy.py:48`, `.wl:839`) — and the
+    STRUCTURAL support total 400 ZERO / 0 NONZERO is agreement between two `NONZERO_WITNESSED` observations (if
+    either side reported `NO_NONZERO_FOUND` the comparator returns UNDECIDED, not zero — `comparator:537`). ⇒ these
+    are genuine nonzero-operand/support agreements, ⛔ NOT within-engine trivialities.
+- ⚠⚠ **The load-bearing `(0)−(0)` caveat attaches to (a), NOT (b).** Each object in (a) — `R_cov`, the carrier
+  bridge `C_E−C_M`, the control-delta — is *already 0 within each engine*, so its cross-engine difference is 0
+  **trivially** and says NOTHING about whether the underlying OPERANDS (`C_E`/`C_M`; ACTUAL/PREDICTED/BASELINE; Φ)
+  agree cross-engine (`reconcile_question.md` §2, grounded both engine sources). ⇒ the covariance-channel matched
+  zeros are a **dual-engine confirmation of the VANISHING statement (Reading B), ⛔ NOT operand AGREE.** The (b)
+  agreements are genuine but are premise/support operands, ⛔ NOT the surfaced carrier/source/Φ operands that the
+  debt (§2) concerns.
 
 ⇒ Honest headline: **operator covariance is confirmed by two independent engines; the constitutive COMPONENTS
 were NOT put into a common thickness coordinate at graded order; cross-engine operand agreement is carried as a
@@ -52,9 +67,12 @@ The substantive cross-engine signal is in the SURFACED operand residuals, which 
 - **SOURCE + Φ** `N6COV_SOURCE_ACTUAL` / `SOURCE_BASELINE` / `SOURCE_PREDICTED` — 16 ZERO / **76 NONZERO** each
   (`SOURCE_BASELINE` is a nominal-control DUPLICATE of `SOURCE_ACTUAL` at shipped settings — ⛔ not a third
   discriminator); `N6COV_FROZEN_PHI` 42 ZERO / **18 NONZERO**. The constitutive source channel + the field map Φ.
-- **`R_N6` itself, the channels, and the guards are ENTIRELY UNMATCHED** (`N6RC_R_N6`, `SPLIT_CHECK`, `SPLIT_SUM`,
-  `*_OPERAND`, `*_CHANNEL`, `CROSS_CHANNEL`, `DIMENSIONS`, all guards — all UNDECIDED, no matched sibling, no
-  structural support line). ⭐ This is a **SCHEMA non-join** — different WL block/kernel/component vocabularies,
+- **`R_N6` itself, the channels, the reconcile-engine sources, and the guards are ENTIRELY UNMATCHED**
+  (`N6RC_R_N6`, `SPLIT_CHECK`, `SPLIT_SUM`, `*_OPERAND`, `*_CHANNEL`, `CROSS_CHANNEL`, `DIMENSIONS`, the
+  reconcile-engine sources `N6RC_SOURCE_EULERIAN` / `N6RC_SOURCE_MATERIAL` / `N6RC_SOURCE_BRIDGE_RESIDUAL` (each
+  0/0/640), all guards — all UNDECIDED, no matched sibling, no structural support line; question doc §1.iii
+  requires the RC sources stay schema-UNDECIDED). ⭐ This is a **SCHEMA non-join** — different WL
+  block/kernel/component vocabularies,
   and a `(face,grade)` vs `{face,wave,grade}` key shape (`reconcile:105-111` vs `.wl:708-711`) — ⛔ NOT
   heaviness, ⛔ NOT a measured residual. ⇒ there is **NO direct cross-engine comparison of `R_N6` itself**; the N6
   cross-engine evidence rests on `R_cov` + the carrier bridge + the SOURCE/CARRIER support, ⛔ not on `R_N6`.
@@ -89,10 +107,17 @@ post-construction graded coefficient-table bridge cannot reconcile the channel-(
    retained-order tripwire forbids. Every v4 option (per-grade images / re-expand `W_bg` / apply-then-grade)
    reinserts a spurious `W_bg`, mixes grades, or leaves η^1 uncollapsed. (This is the v3 MUST I verified via G4.)
 
-⇒ The correct instrument applies the thickness/basis transformation **UPSTREAM of EL** — a new emit path in BOTH
-engines (cost ≥ the doomed instrument + 2 engine reviews), and even that would validate a REPLAY, ⛔ NOT
-retroactively reconcile the already-emitted `.out` streams. A/C as scoped are not "one more fix"; A's real risk
-is a **false-AGREE over-clear** (freeze `W_bg→W_0` at η^0, drop η^1 — the same class as the L-CAS relapse). ⭐
+⇒ The post-EL graded coefficient table (map 4) is **insufficient** for both reasons above. A sound instrument is
+NOT unique: the cleaner one applies the thickness/basis transformation **UPSTREAM of EL** (a new emit path in BOTH
+engines, retaining the live background + its jets through every derivative before profile-expansion/grade
+extraction); an acknowledged alternative is a **derivative-aware coefficient-field / chain-rule bridge** that
+carries the coefficient jets and their chain rules (astra consult:48) — but the current frozen `.out` were
+constructed WITHOUT those coefficient derivatives, so neither reaches them without new construction (cost ≥ the
+doomed instrument + 2 engine reviews). ⚠ **And a canonicalized replay validates the REPLAY; it does NOT
+retroactively reconcile the already-emitted `.out` streams UNLESS the relation of the old streams to that replay
+is separately established** (astra consult:50). Both routes were declined in favor of Path B (both experts). A/C
+as scoped are not "one more fix"; A's real risk is a **false-AGREE over-clear** (freeze `W_bg→W_0` at η^0, drop
+η^1 — the same class as the L-CAS relapse). ⭐
 The recurring map-4 difficulty (3 *distinct*, deepening findings across 3 rounds) was the architecture signalling
 the mis-decomposition, ⛔ not a sequence of fixable nits. [[feedback_reconcile_bridge_must_precede_el]]
 [[feedback_decompose_before_building_gates]]

@@ -141,3 +141,16 @@ compare — ⛔ never expanding `R_W` in η, which the tripwire forbids). Keep e
 the OBS-1 test assertion. Then re-review (fresh Claude + Grok). ⚠ Effort note: this is the 3rd map-4 round;
 scope-checkpoint with the user before committing to further collapse-instrument rounds vs surfacing the residuals
 as UNDECIDED (the c1 precedent).
+
+## RESOLVED 2026-09-09 — collapse-instrument series CLOSED at v3 NOT-SOUND; user adopted PATH B.
+A 2-expert strategy consult (astra `gpt-6-astra` + Grok `grok-4.6`, full-context advisory) BOTH recommended
+**Path B** for a structural reason, not diminishing returns: the post-construction graded coefficient-table
+bridge is the WRONG OBJECT. (1) astra — map 4 is a DENSITY identity but the operands are `μ=EL(density)`;
+`EL(T·L)≠T(EL·L)` for the position-dependent `R_W`, so it misses product-rule terms (E04/E14 counterexample, a
+term survives at σ_W^1) — before grading. (2) Grok — the ungraded `R_W` (a ratio of two η-dependent series)
+cannot be per-grade rewritten without cross-grade convolution, forbidden by the tripwire. The correct instrument
+is upstream of EL (new emit path in both engines ≥ A cost) and would not reconcile the already-emitted `.out`.
+⇒ collapse instrument NOT built; ⛔ do NOT author a v4. Disposition = surface UNDECIDED + carry the cross-engine
+operand corroboration as an explicit DEBT. Full plan + the honest-writeup spec: `S11c_c2_N6_reconcile_disposition_PATH_B.md`.
+Consult reports `_legs/S11c_c2_N6_reconcile_strategy_consult_{astra,grok}.md`. NEXT = write the disposition
+record + c2 step record (Path B), each 2-leg review-until-clear.

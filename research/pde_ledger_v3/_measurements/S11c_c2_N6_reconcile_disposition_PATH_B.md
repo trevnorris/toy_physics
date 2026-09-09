@@ -32,7 +32,8 @@ channel-(b) source operands:
 engines — cost ≥ Path A + 2 engine reviews), and even that would validate a REPLAY, ⛔ not retroactively
 reconcile the already-emitted `.out` streams. A/C as scoped are not "one more fix"; A's real risk is a
 **false-AGREE over-clear** (freeze `W_bg→W_0` at η^0, drop η^1 — same class as the L-CAS relapse). The recurring
-map-4 difficulty (3 distinct findings across 4 rounds) was the architecture signalling the mis-decomposition.
+map-4 difficulty (3 distinct findings across 3 rounds: v1 `7f1ed738`, v2 `adf178b9`, v3 `6cfa7148`) was the
+architecture signalling the mis-decomposition.
 
 ## ⛔ How to write B HONESTLY (both experts; the disposition record + step record MUST state ALL of these)
 1. **EARNED:** per-engine operator covariance (Reading B), BOTH engines, biting knives (SymPy δ≈2.6e-22; WL own

@@ -1,0 +1,153 @@
+{
+  "status": "STOPPED_FOR_SHEET_CONTINUATION_REPAIR",
+  "case": "LAB_HELD__RHO4_CONSTANT",
+  "candidate_index": 8,
+  "continuations": [
+    {
+      "steps": 16,
+      "startK": 0.6073036538859136,
+      "endK": [
+        0.6073036538859136,
+        0.008491689256673306
+      ],
+      "initialQ": [
+        0.0,
+        6.393885579388964
+      ],
+      "engineQ": [
+        0.08065640747826253,
+        -6.393830415309923
+      ],
+      "continuedQ": [
+        -0.08065640747826251,
+        6.393830415309923
+      ],
+      "enginePhysicalSheetFlag": true,
+      "rootDifference": [
+        0.16131281495652505,
+        -12.787660830619846
+      ],
+      "oppositeRootResidual": 1.3877787807814457e-17,
+      "maximumRadicalResidual": 1.4210854715202004e-14,
+      "minimumRadicalMagnitude": 6.393885579388964,
+      "minimumBranchPointDistance": 0.6367834491465243
+    },
+    {
+      "steps": 64,
+      "startK": 0.6073036538859136,
+      "endK": [
+        0.6073036538859136,
+        0.008491689256673306
+      ],
+      "initialQ": [
+        0.0,
+        6.393885579388964
+      ],
+      "engineQ": [
+        0.08065640747826253,
+        -6.393830415309923
+      ],
+      "continuedQ": [
+        -0.08065640747826251,
+        6.393830415309923
+      ],
+      "enginePhysicalSheetFlag": true,
+      "rootDifference": [
+        0.16131281495652505,
+        -12.787660830619846
+      ],
+      "oppositeRootResidual": 1.3877787807814457e-17,
+      "maximumRadicalResidual": 1.4210854715202004e-14,
+      "minimumRadicalMagnitude": 6.393885579388964,
+      "minimumBranchPointDistance": 0.6367834491465243
+    },
+    {
+      "steps": 256,
+      "startK": 0.6073036538859136,
+      "endK": [
+        0.6073036538859136,
+        0.008491689256673306
+      ],
+      "initialQ": [
+        0.0,
+        6.393885579388964
+      ],
+      "engineQ": [
+        0.08065640747826253,
+        -6.393830415309923
+      ],
+      "continuedQ": [
+        -0.08065640747826251,
+        6.393830415309923
+      ],
+      "enginePhysicalSheetFlag": true,
+      "rootDifference": [
+        0.16131281495652505,
+        -12.787660830619846
+      ],
+      "oppositeRootResidual": 1.3877787807814457e-17,
+      "maximumRadicalResidual": 1.4210854715202004e-14,
+      "minimumRadicalMagnitude": 6.393885579388964,
+      "minimumBranchPointDistance": 0.6367834491465243
+    }
+  ],
+  "probe_dimension_constraints": "()",
+  "artifacts": {
+    "scripts/out/S11c_d_channel_reentry_preflight.out": {
+      "bytes": 14310873,
+      "sha256": "d382d62c39d39275147ff58fdb519b28e58fb42c36dc11a620f527fa81c002e7"
+    },
+    "scripts/out/S11c_d_sheet_continuation_probe.out": {
+      "bytes": 8256,
+      "sha256": "1c036eb028d9d846714731581126819077ef72cb13138a730e75a17a115f569a"
+    }
+  },
+  "completed_integrated_case": {
+    "exit_code": 0,
+    "wall_seconds": 703.5670768907294,
+    "output_bytes": 14310873,
+    "stderr_bytes": 0
+  },
+  "interrupted_full_run": {
+    "tool_exit_code": 130,
+    "captured_bytes": 11464502,
+    "published": false
+  },
+  "existing_main_transcript": {
+    "is_symlink": true,
+    "bytes": 41302466,
+    "sha256": "cdb687660b739afdc2a30333e0f8002f4e73bfaa5d40301eae29da588a975dc1"
+  },
+  "engine_sha256": "263e3b191699e5e7df6c695bfd20617e1d1afa8dc6529aeee75016582d36ed4b",
+  "probe_sha256": "538bb2cdce2ceb4f2ca27886223b9422562a5ba42d7abafa8dfd53157f810f26",
+  "remaining_constructions": [
+    "ALL_CARRIER_INVERSE_FOURIER_ROUNDTRIPS",
+    "FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS",
+    "MIXED_GRADE_MODE_JETS",
+    "GENERIC_DOMAIN_SHEET_CONTINUATION",
+    "CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION",
+    "COMPLETE_TWO_ENDED_SCATTERING",
+    "POLES_RIESZ_OVERLAP",
+    "SURVIVAL",
+    "FLUX_BOOKKEEPING",
+    "WEAK_COEFFICIENTS",
+    "SECTION_5_CONTROLS",
+    "OWN_ROWS_EXPORT"
+  ],
+  "focused_slab_current_check": {
+    "wall_seconds": 31.624828026629984,
+    "peak_rss_kib": 83792,
+    "stdout_sha256": "1ecef02a7098d27bfe6b7b263e65c5defbea549a442e68ce0c85417015a7b8cd",
+    "stderr_bytes": 0,
+    "records": {
+      "PY_S11CD_CONSERVATIVE_MATERIAL_CONSTRAINT_RETAINED_RESIDUAL_REFERENCE": "Matrix([[0, 0, 0, 0, 0]])",
+      "PY_S11CD_CONSERVATIVE_VARIATION_RECONSTRUCTION_RESIDUAL_REFERENCE": "0",
+      "PY_S11CD_CONSERVATIVE_NORMAL_BOUNDARY_RESIDUAL_REFERENCE": "0",
+      "PY_S11CD_CHECK_DIMENSIONS_REFERENCE": "()",
+      "PY_S11CD_CONSERVATIVE_MATERIAL_CONSTRAINT_RETAINED_RESIDUAL_RIGHT": "Matrix([[0, 0, 0, 0, 0]])",
+      "PY_S11CD_CONSERVATIVE_VARIATION_RECONSTRUCTION_RESIDUAL_RIGHT": "0",
+      "PY_S11CD_CONSERVATIVE_NORMAL_BOUNDARY_RESIDUAL_RIGHT": "0",
+      "PY_S11CD_CHECK_DIMENSIONS_RIGHT": "()"
+    }
+  }
+}

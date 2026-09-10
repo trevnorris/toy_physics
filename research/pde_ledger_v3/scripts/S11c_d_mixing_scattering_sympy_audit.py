@@ -18,6 +18,7 @@ from pathlib import Path
 import hashlib
 import inspect
 import argparse
+import json
 import pickle
 import faulthandler
 import os
@@ -38,7 +39,7 @@ from ledger_fold import load_model, check_consumer, assert_lookups_equal_manifes
 HERE = Path(__file__).resolve()
 ROOT = HERE.parent.parent
 CLOSED_KEYS = ('s11cc2ClosedSlabOperator', 's11cc2ClosedCouplingKernel')
-IMPORT_KEYS = CLOSED_KEYS + ('L_W', 'omega')
+IMPORT_KEYS = CLOSED_KEYS + ('L_W', 'omega', 'energy_basis_variable')
 # Direct dimension operands; the original root/constant lookups remain intact.
 DIMENSION_CARRIERS = (
     's11cc2Coefficientw1Profile', 's11cc2Coefficientm1Profile',
@@ -57,6 +58,7 @@ BUILD_INPUT_PATHS = (
     HERE, ROOT / 'scripts/S11c_b_exports.py',
     ROOT / 'scripts/S11c_c1_exports.py', ROOT / 'scripts/S11c_c2_exports.py',
     ROOT / 'directives/S11c_d_SHARED_PHYSICS.md', ROOT / 'scripts/ledger_fold.py',
+    ROOT / 'directives/S11b_SHARED_PHYSICS.md',
 )
 EMISSION_LINES = {}
 PHYSICAL_METADATA = None
@@ -1395,6 +1397,279 @@ class ConstantEndPencil:
         nullspace = curl.nullspace()
         return curl, tuple(nullspace), tuple(curl*v for v in nullspace)
 
+    def field_lift(self, pencil):
+        """Differentiate the existing sector ansatz into physical field columns."""
+        labels = ('A0', 'A1', 'A2', 'Theta', 'E', 'Phi')
+        amplitudes = sp.symbols('s11cdFieldLiftAmplitude0:6')
+        trials = {sp.Function('s11cdReducedTrial'+label):
+                  (lambda z, j=j: amplitudes[j]*sp.exp(sp.I*self.kn*z))
+                  for j, label in enumerate(labels)}
+        ansatz = [pencil.trial_ansatz(sector)
+                  for sector in ('TRANSVERSE', 'THETA', 'E_W', 'LONGITUDINAL')]
+        fields = sp.Tuple(*(sum(a[f](self.r.z) for a in ansatz) for f in pencil.fields))
+        wave = dag_substitute(fields, trials)
+        return sp.ImmutableMatrix(5, 6, lambda i, j:
+            self.phase_terms(sp.diff(wave[i], amplitudes[j]), self.r.z).get(self.kn, sp.S.Zero))
+
+
+class UniformSlabCurrent:
+    """S11b conservative boundary work after the tangential energy reduction.
+
+    The material virtual constraint is applied to the reduced stored-energy
+    variation. Normal integration by parts computes its boundary work, then
+    the harmonic time translation computes the slab energy-current bilinear.
+    Bulk/face responses never enter this varied functional. Their contribution
+    is a separate balance-law construction, not part of this slab operand.
+    """
+
+    def __init__(self, reduction, energy_row, ends, mass_symbol):
+        self.r, self.ends = reduction, ends
+        self.mass_symbol = mass_symbol
+        self.energy_cases = {str(case): named(payload, 'VALUE')
+                             for case, payload in energy_row['value']}
+        r = reduction
+        self.phase_coordinate = sp.Symbol('s11cdCurrentPhase', real=True)
+        self.virtual_parameter = sp.Symbol('s11cdCurrentVariationParameter', real=True)
+        self.leg_momenta = sp.symbols('s11cdCurrentLeftMomentum s11cdCurrentRightMomentum', real=True)
+        self.fields = tuple(tuple(sp.Function('s11cdCurrent'+side+name)
+                                  for name in ('U1', 'U2', 'U3', 'Theta', 'E'))
+                            for side in ('Plus', 'Minus'))
+        self.variations = tuple(tuple(sp.Function('s11cdCurrentVariation'+side+name)
+                                      for name in ('U1', 'U2', 'U3', 'E'))
+                                for side in ('Plus', 'Minus'))
+        self.amplitudes = tuple(sp.symbols('s11cdCurrent'+side+'Amplitude0:5')
+                                for side in ('Plus', 'Minus'))
+        units = PHYSICAL_METADATA.dimensions
+        units.known[self.phase_coordinate] = units.zero
+        units.known[self.virtual_parameter] = units.zero
+        for momentum in self.leg_momenta:
+            units.known[momentum] = units.measure(ends.kn)
+        field_units = [units.known[sp.Function('s11cdReducedField'+name)]
+                       for name in ('u1', 'u2', 'u3', 'theta', 'eW')]
+        for functions, variations, amplitudes in zip(self.fields, self.variations, self.amplitudes):
+            for f, a, unit in zip(functions, amplitudes, field_units):
+                units.known[f] = unit
+                units.known[a] = unit
+            for f, unit in zip(variations, (*field_units[:3], field_units[4])):
+                units.known[f] = unit
+        self.field_units = field_units
+        self.phase = sp.exp(sp.I*(sum(k*x for k, x in zip(r.tangents, r.x[:2]))
+                                 -r.omega*r.t+self.phase_coordinate))
+
+    @lru_cache(maxsize=None)
+    def retained(self, value):
+        """Compute the rectangular first-background-grade Taylor projection."""
+        eta, sigma = (self.r.symbols[n] for n in ('eta_bg','sigma_W'))
+        return sp.expand(sum(sp.diff(value,eta,a,sigma,b).subs({eta:0,sigma:0})*
+                             eta**a*sigma**b for a in range(2) for b in range(2)))
+
+    @lru_cache(maxsize=None)
+    def construct(self, anchoring, end):
+        r, z = self.r, self.r.z
+        body = self.energy_cases[anchoring]
+        source = sp.Add(*(row[4] if str(row[0]) in ('W_BG', 'MU_R_BG') else row[3]
+                          for row in body[1:]))
+        background = {}
+        for atom in source.atoms(sp.Symbol):
+            match = re.fullmatch(r'([wm])1_profile((?:_d[123](?:d[123])*)?)', atom.name)
+            if match:
+                constant = r.end_values[(match[1], end)] if end is not None else sp.S.Zero
+                indices = re.findall(r'd([123])', match[2])
+                background[atom] = sp.diff(constant, r.xi, len(indices)) if indices else constant
+        if end is None:
+            background.update({r.symbols[n]: sp.S.Zero for n in ('eta_bg', 'sigma_W')})
+        uniform_source = source.xreplace(background)
+        # Field carriers are an explicit +/- harmonic ansatz. Their spatial
+        # factors are differentiated before selecting the zero phase harmonic.
+        fields = tuple((plus(z)*self.phase+minus(z)/self.phase)/2
+                       for plus, minus in zip(*self.fields))
+        source_names = {'u_1': 0, 'u_2': 1, 'u_3': 2, 'theta': 3, 'e_W': 4}
+        field_map, parameter_map = {}, {}
+        for atom in source.atoms(sp.Symbol):
+            name = re.sub(r'^grad_theta_([123])$', r'theta_d\1', atom.name)
+            match = re.fullmatch(r'(u_[123]|theta|e_W)((?:_t{1,2})?(?:_?d[123])*)', name)
+            if match:
+                field, suffix = match.groups()
+                value = fields[source_names[field]]
+                for index in re.findall(r'd([123])', suffix):
+                    value = sp.diff(value, r.x[int(index)-1] if index != '3' else z)
+                if '_tt' in suffix:
+                    value = sp.diff(value, r.t, 2)
+                elif '_t' in suffix:
+                    value = sp.diff(value, r.t)
+                field_map[atom] = value
+                PHYSICAL_METADATA.dimensions.known[atom] = PHYSICAL_METADATA.dimensions.measure(value)
+            elif atom.name in r.symbols:
+                parameter_map[atom] = r.symbols[atom.name]
+                PHYSICAL_METADATA.dimensions.known[atom] = PHYSICAL_METADATA.dimensions.measure(parameter_map[atom])
+        harmonic_energy = uniform_source.xreplace(parameter_map).xreplace(field_map)
+        energy = sp.expand(self.ends.phase_terms(sp.expand(harmonic_energy),
+                                                self.phase_coordinate).get(0, sp.S.Zero))
+        # The inherited field is measured against W_0. At a changed end it
+        # need not be the local-background thickness fraction. Extract the
+        # homogeneous material constraint from the actual mass row with the
+        # two supplied mass-transfer drivers disabled, before varying energy.
+        no_transfer = {r.symbols[n]:sp.S.Zero for n in ('Lambda_A_0','Lambda_V_0')}
+        mass_control = self.mass_symbol.subs(no_transfer).applyfunc(sp.cancel)
+        constraint_coefficients = tuple(self.retained(sp.cancel(v/mass_control[3])) for v in mass_control)
+        constraint_residual = sp.ImmutableMatrix(1,5,lambda i,j:
+            sp.expand(constraint_coefficients[j]*mass_control[3]-mass_control[j]))
+        virtual = {}
+        for sign, functions, variations in zip((1, -1), self.fields, self.variations):
+            displacement = [f(z) for f in variations[:3]]
+            thickness = variations[3](z)
+            density = sp.S.Zero
+            for index, test in zip((0,1,2,4), (*displacement,thickness)):
+                coefficient = constraint_coefficients[index].subs(
+                    {a:sign*a for a in (*r.tangents,r.omega)}, simultaneous=True)
+                # SymPy Limit carries unknown commutativity. It is an end
+                # coefficient here, not a normal differential operator.
+                constants = {limit:sp.Dummy(real=True) for limit in coefficient.atoms(sp.Limit)}
+                restore = {v:k for k,v in constants.items()}
+                polynomial = sp.Poly(coefficient.xreplace(constants), self.ends.kn)
+                density -= sum(c.xreplace(restore)*sp.diff(test,z,power[0])/sp.I**power[0]
+                               for power,c in polynomial.terms())
+            virtual.update({f(z): f(z)+self.virtual_parameter*v
+                            for f, v in zip(functions, (*displacement, density, thickness))})
+        action = -energy
+        variation = sp.expand(sp.diff(action.subs(virtual, simultaneous=True).doit(),
+                                      self.virtual_parameter).subs(self.virtual_parameter, 0))
+        bulk, boundary, reconstruction = sp.S.Zero, sp.S.Zero, sp.S.Zero
+        for test in (f(z) for group in self.variations for f in group):
+            jets = {test} | {d for d in variation.atoms(sp.Derivative) if d.expr == test}
+            for jet in sorted(jets, key=sp.default_sort_key):
+                order = sum(n for variable, n in jet.variable_count) if isinstance(jet, sp.Derivative) else 0
+                coefficient = sp.diff(variation, jet)
+                reconstruction += coefficient*jet
+                bulk += (-1)**order*sp.diff(coefficient, z, order)*test
+                boundary += sum((-1)**j*sp.diff(coefficient, z, j)*sp.diff(test, z, order-1-j)
+                                for j in range(order))
+        variation_residual = sp.expand(variation-reconstruction)
+        boundary_residual = sp.expand(reconstruction-bulk-sp.diff(boundary, z))
+        time_shift = {}
+        for sign, functions, variations in zip((1, -1), self.fields, self.variations):
+            factor = sp.cancel(sp.diff(self.phase**sign, r.t)/(self.phase**sign))
+            time_shift.update({v(z): factor*f(z) for v, f in
+                               zip(variations, (*functions[:3], functions[4]))})
+        untruncated_current = sp.expand(boundary.subs(time_shift, simultaneous=True).doit())
+        current = self.retained(untruncated_current)
+        right_momentum, left_momentum = self.leg_momenta[1], self.leg_momenta[0]
+        wave = {}
+        for sign, momentum, functions, amplitudes in zip(
+                (1, -1), (right_momentum, left_momentum), self.fields, self.amplitudes):
+            wave.update({f(z): a*sp.exp(sign*sp.I*momentum*z)
+                         for f, a in zip(functions, amplitudes)})
+        polarized = sp.expand(current.subs(wave, simultaneous=True).doit().subs(z, 0))
+        matrix = sp.ImmutableMatrix(5, 5, lambda i, j:
+            sp.diff(polarized, self.amplitudes[1][i], self.amplitudes[0][j]))
+        return {'SOURCE_ENERGY': source, 'UNIFORM_SOURCE_ENERGY': uniform_source,
+                'SOURCE_PARAMETER_ALIGNMENT': tuple(parameter_map.items()),
+                'ZERO_TRANSFER_MASS_ROW': mass_control,
+                'MATERIAL_CONSTRAINT_COEFFICIENTS': constraint_coefficients,
+                'MATERIAL_CONSTRAINT_TRUNCATION_REMAINDER': constraint_residual,
+                'MATERIAL_CONSTRAINT_RETAINED_RESIDUAL': constraint_residual.applyfunc(self.retained),
+                'TANGENTIAL_ENERGY_REDUCTION': energy, 'VIRTUAL_VARIATION': variation,
+                'VARIATION_RECONSTRUCTION_RESIDUAL': variation_residual,
+                'NORMAL_BOUNDARY_WORK': boundary, 'NORMAL_BOUNDARY_RESIDUAL': boundary_residual,
+                'SLAB_CURRENT_BEFORE_BACKGROUND_PROJECTION': untruncated_current,
+                'SLAB_CURRENT_BACKGROUND_REMAINDER': sp.expand(untruncated_current-current),
+                'SLAB_CURRENT': current, 'SLAB_CURRENT_MATRIX': matrix}
+
+    def emit(self, anchoring, end, suffix):
+        result = self.construct(anchoring, end)
+        dimensions = PHYSICAL_METADATA.dimensions
+        energy_unit = dimensions.measure(result['TANGENTIAL_ENERGY_REDUCTION'])
+        current_unit = dimensions.measure(result['SLAB_CURRENT'])
+        for key, value in result.items():
+            zero_units = None
+            if key in ('VARIATION_RECONSTRUCTION_RESIDUAL', 'NORMAL_BOUNDARY_RESIDUAL'):
+                zero_units = {(): energy_unit}
+            elif key == 'SLAB_CURRENT_MATRIX':
+                zero_units = {(5*i+j,): tuple(a-b-c for a,b,c in
+                    zip(current_unit, self.field_units[i], self.field_units[j]))
+                    for i in range(5) for j in range(5)}
+            elif key in ('MATERIAL_CONSTRAINT_TRUNCATION_REMAINDER', 'MATERIAL_CONSTRAINT_RETAINED_RESIDUAL'):
+                zero_units = {(i,):dimensions.measure(result['ZERO_TRANSFER_MASS_ROW'][i]) for i in range(5)}
+            elif key == 'SLAB_CURRENT_BACKGROUND_REMAINDER':
+                zero_units = {():current_unit}
+            physical('CONSERVATIVE_'+key+'_'+suffix, value, zero_dimensions=zero_units)
+        physical('CONSERVATIVE_CURRENT_NORMAL_LEGS_'+suffix, self.leg_momenta)
+        return result
+
+
+class ChannelInput:
+    """Explicit profile and numerical parameter input, separate from PIT.
+
+    Parameter values are coefficients in the declared L/T/M reference frame.
+    This supplies an instance of the interface class, never a class-wide
+    spectral assertion. Every required algebraic carrier must be bound.
+    """
+
+    def __init__(self, reduction, specification):
+        self.r = reduction
+        self.specification = specification
+        self.parameters = {name: sp.Rational(value)
+                           for name, value in specification['parameters'].items()}
+        self.frame = tuple(specification['unit_frame'])
+        if len(self.frame) != 3 or len(set(self.frame)) != 3:
+            raise ValueError('channel input needs three distinct L/T/M reference-unit names')
+        self.profiles = {p: sp.sympify(specification['profiles'][p],
+                                      locals={'xi': reduction.xi}) for p in ('w', 'm')}
+        if any(f.free_symbols-set((reduction.xi,)) for f in self.profiles.values()):
+            raise ValueError('channel profiles contain unbound parameters')
+        self.limits = {key: sp.limit(self.profiles[p], reduction.xi, end)
+                       for (p, end), key in reduction.end_values.items()}
+        if any(value.is_finite is not True or value.is_real is not True
+               for value in self.limits.values()):
+            raise ValueError('channel input profile limits are unresolved or non-finite')
+        eta = self.parameters['eta_bg']
+        self.origin = {reduction.symbols['eta_bg']: eta,
+                       reduction.symbols['sigma_W']:
+                           eta*self.parameters['W_0']/self.parameters['L_W']}
+        if self.parameters['L_W'] <= 0 or self.parameters['W_0'] <= 0:
+            raise ValueError('channel input length scales must be positive')
+        if self.parameters['omega'] <= 0:
+            raise ValueError('the implemented channel chart requires positive real frequency')
+
+    def mapping(self, algebraic, relation, live):
+        atoms = (algebraic.free_symbols | relation.free_symbols)-set(live)
+        missing = sorted(a.name for a in atoms if a.name not in self.parameters)
+        if missing:
+            raise ValueError(('unbound channel parameters', missing))
+        mapping = {a: self.parameters[a.name] for a in atoms}
+        for limit in algebraic.atoms(sp.Limit):
+            mapping[limit] = self.limits[limit]
+        return mapping
+
+    def emit_inputs(self):
+        r = self.r
+        emit('CHANNEL_INPUT_SPECIFICATION', self.specification)
+        emit('CHANNEL_INPUT_SHA256', hashlib.sha256(json.dumps(
+            self.specification, sort_keys=True, separators=(',', ':')).encode()).hexdigest())
+        emit('CHANNEL_INPUT_UNIT_FRAME', self.frame)
+        parameter_symbols = dict(r.symbols)
+        parameter_symbols.update({a.name: a for a in r.tangents})
+        emit('CHANNEL_INPUT_PARAMETER_VALUES', [
+            (name, {'CARRIER': parameter_symbols[name], 'COEFFICIENT': value,
+                    'DIMENSION_L_T_M': PHYSICAL_METADATA.dimensions.measure(parameter_symbols[name]),
+                    'MULTIGRADE': sorted(PHYSICAL_METADATA.coefficients(value))})
+            for name, value in self.parameters.items()])
+        physical('CHANNEL_INPUT_BACKGROUND_ORIGIN', tuple(self.origin.values()),
+                 zero_dimensions={(i,): (0, 0, 0) for i in range(len(self.origin))})
+        for name, expression in self.profiles.items():
+            left = self.limits[r.end_values[(name, -sp.oo)]]
+            right = self.limits[r.end_values[(name, sp.oo)]]
+            derivative = sp.diff(expression, r.xi)
+            zero_transfer = sp.integrate(derivative, (r.xi, -sp.oo, sp.oo))
+            jump = right-left
+            physical('CHANNEL_PROFILE_'+name.upper(), (expression, left, right),
+                     zero_dimensions={(i,): (0, 0, 0) for i in range(3)})
+            physical('CHANNEL_PROFILE_MOMENT_OPERANDS_'+name.upper(),
+                     (derivative, zero_transfer, jump),
+                     zero_dimensions={(i,): (0, 0, 0) for i in range(3)})
+            physical('CHANNEL_PROFILE_MOMENT_RESIDUAL_'+name.upper(), zero_transfer-jump,
+                     zero_dimensions={(): (0, 0, 0)})
+
 
 class FullPencilModes:
     """Carrier-first spectral PIT on the positive-frequency retarded chart.
@@ -1414,7 +1689,14 @@ class FullPencilModes:
         self.indices = (1, 2, 3, 4, 5)
         self.embedding = sp.ImmutableMatrix(sp.eye(6)[:, self.indices])
         self.unitless = PHYSICAL_METADATA.dimensions.zero
+        self.closed_operands = None
         PHYSICAL_METADATA.dimensions.known[self.q] = PHYSICAL_METADATA.dimensions.measure(self.r.omega)
+
+    def set_closed_operands(self, strong, lift, current, current_builder):
+        self.closed_operands = (strong, lift*self.embedding,
+                                current['SLAB_CURRENT_MATRIX'], current_builder.leg_momenta,
+                                current_builder.field_units,
+                                PHYSICAL_METADATA.dimensions.measure(current['SLAB_CURRENT']))
 
     def numeric_metadata(self, value, unit):
         """Units inherited from the solved equation; grades from coefficients."""
@@ -1450,7 +1732,8 @@ class FullPencilModes:
                 if isinstance(expression,Str):
                     continue
                 substituted = expression.subs({self.eta:sp.Rational(index+1,101),
-                                               self.sigma:sp.Rational(index+2,103)})
+                                               self.sigma:sp.Rational(index+2,103),
+                                               self.r.symbols['epsilon_shape']:sp.Rational(index+3,107)})
                 seed = hashlib.sha256((str(path)+':'+str(index)).encode()).digest()
                 weight = (int.from_bytes(seed[:2],'big')%97+1)/101
                 total += weight*complex(substituted)
@@ -1555,15 +1838,34 @@ class FullPencilModes:
         for sample_index in range(3):
             self.solve_sample(algebraic, relation, quotient_units, suffix, end_sign, sample_index)
 
-    def solve_sample(self, algebraic, relation, quotient_units, suffix, end_sign, sample_index):
+    def solve_input(self, full, suffix, end_sign, channel_input, *, reference=False):
+        name = 'INPUT_'+suffix
+        quotient, quotient_units = self.quotient(full, name)
+        algebraic, relation, differences = self.analytic(quotient)
+        physical('SPECTRAL_INPUT_BRANCH_JOIN_RESIDUAL_'+suffix, differences,
+                 zero_dimensions={(i,): self.unitless for i in range(len(differences))})
+        if any(d != 0 for d in differences):
+            raise NotImplementedError('unjoined real-axis bulk sheets')
+        mapping = channel_input.mapping(algebraic, relation,
+                                         (self.k, self.q, self.eta, self.sigma))
+        origin = ({self.eta: sp.S.Zero, self.sigma: sp.S.Zero}
+                  if reference else channel_input.origin)
+        return self.solve_sample(algebraic, relation, quotient_units, name,
+                                 end_sign, 0, carrier_values=mapping,
+                                 grade_origin=origin,
+                                 record_kind='INPUT_REFERENCE' if reference else 'INPUT_END')
+
+    def solve_sample(self, algebraic, relation, quotient_units, suffix, end_sign, sample_index,
+                     *, carrier_values=None, grade_origin=None, record_kind='PIT'):
         name = suffix+'_'+str(sample_index)
-        mapping = self.sample(algebraic, relation, sample_index)
+        mapping = self.sample(algebraic, relation, sample_index) if carrier_values is None else carrier_values
+        origin = {self.eta: sp.S.Zero, self.sigma: sp.S.Zero} if grade_origin is None else grade_origin
         sampled = algebraic.xreplace(mapping)
         relation_sample = relation.xreplace(mapping)
         k_squared = sp.solve(relation_sample, self.k**2)[0]
         # The determinant is even in k on this input. Polynomial division
         # verifies this algebraic elimination rather than discarding odd terms.
-        baseline = sampled.subs({self.eta: 0, self.sigma: 0}).applyfunc(sp.cancel)
+        baseline = sampled.subs(origin).applyfunc(sp.cancel)
         (numerator, denominator), cleared, row_denominators = self.rational_determinant(baseline)
         relation_k = sp.Poly(self.k**2-k_squared, self.k)
         eliminated = sp.rem(sp.Poly(numerator, self.k), relation_k).as_expr()
@@ -1573,17 +1875,19 @@ class FullPencilModes:
         factors = sp.sqf_list(polynomial)[1]
         roots = [(complex(root), int(multiplicity)) for factor, multiplicity in factors
                  for root in sp.nroots(factor, n=30, maxsteps=300)]
-        emit('SPECTRAL_PIT_CARRIER_VALUES_'+name, mapping)
-        emit('METADATA_SPECTRAL_PIT_CARRIER_VALUES_'+name,
+        emit('SPECTRAL_'+record_kind+'_CARRIER_VALUES_'+name, mapping)
+        physical('SPECTRAL_'+record_kind+'_LOCAL_GRADE_ORIGIN_'+name, tuple(origin.values()),
+                 zero_dimensions={(i,): self.unitless for i in range(len(origin))})
+        emit('METADATA_SPECTRAL_'+record_kind+'_CARRIER_VALUES_'+name,
              cas([(str(k), {'DIMENSION_L_T_M': PHYSICAL_METADATA.dimensions.measure(k),
                              'MULTIGRADE': tuple(PHYSICAL_METADATA.coefficients(v))}) for k,v in mapping.items()]))
-        emit('SPECTRAL_PIT_ELIMINATION_'+name, carrier_fingerprint(cas((cleared, row_denominators,
+        emit('SPECTRAL_'+record_kind+'_ELIMINATION_'+name, carrier_fingerprint(cas((cleared, row_denominators,
                                                                numerator, denominator, polynomial.as_expr()))))
         # All coefficients in this diagnostic have been expressed in the
         # numerical unit frame. Physical k/q and row/column units are emitted
         # below, separately from the dimensionless polynomial coordinates.
         elimination = cas((cleared, row_denominators,numerator,denominator,polynomial.as_expr()))
-        emit('METADATA_SPECTRAL_PIT_ELIMINATION_'+name,
+        emit('METADATA_SPECTRAL_'+record_kind+'_ELIMINATION_'+name,
              self.numeric_metadata(elimination,lambda p:self.unitless))
         # Numeric arrays use the restored units of each original column/row;
         # they are coefficients, not dimensionless physical modes by fiat.
@@ -1591,21 +1895,46 @@ class FullPencilModes:
         dimensions = PHYSICAL_METADATA.dimensions
         column_units = [dimensions.known[sp.Function('s11cdReducedTrial'+labels[j])] for j in self.indices]
         row_units = [tuple(a+b for a, b in zip(quotient_units[(5*i,)], column_units[0])) for i in range(5)]
-        emit('SPECTRAL_PIT_RESTORED_UNITS_'+name, cas({'K': dimensions.measure(self.k),
+        emit('SPECTRAL_'+record_kind+'_RESTORED_UNITS_'+name, cas({'K': dimensions.measure(self.k),
              'Q': dimensions.measure(self.q), 'RIGHT_COLUMNS': column_units,
              'LEFT_COLUMNS': [tuple(-x for x in d) for d in row_units],
              'PENCIL': quotient_units}))
         qk = sp.solve(sp.diff(relation_sample, self.k)+sp.diff(relation_sample, self.q)*sp.Symbol('s11cdqk'),
                       sp.Symbol('s11cdqk'))[0]
         lk = baseline.diff(self.k)+baseline.diff(self.q)*qk
-        derivatives = [sampled.diff(g).subs({self.eta: 0, self.sigma: 0}) for g in (self.eta, self.sigma)]
+        derivatives = [sampled.diff(g).subs(origin) for g in (self.eta, self.sigma)]
         evaluate = sp.lambdify((self.k, self.q), baseline, 'numpy', cse=True)
         evaluate_k = sp.lambdify((self.k, self.q), lk, 'numpy', cse=True)
         evaluate_grades = [sp.lambdify((self.k, self.q), d, 'numpy', cse=True) for d in derivatives]
         qw = sp.solve(sp.diff(relation, self.r.omega)+sp.diff(relation, self.q)*sp.Symbol('s11cdqw'),
                       sp.Symbol('s11cdqw'))[0]
-        lw = (algebraic.diff(self.r.omega)+algebraic.diff(self.q)*qw).xreplace(mapping).subs({self.eta:0,self.sigma:0})
+        lw = (algebraic.diff(self.r.omega)+algebraic.diff(self.q)*qw).xreplace(mapping).subs(origin)
         evaluate_w = sp.lambdify((self.k, self.q), lw, 'numpy', cse=True)
+        # A second construction evaluates the original pencil at neighboring
+        # frequencies. Continue the radical locally from the measured root;
+        # no differentiated expression is an operand of this difference check.
+        fixed_except_omega = {a: v for a, v in mapping.items() if a != self.r.omega}
+        frequency_family = algebraic.xreplace(fixed_except_omega).subs(origin)
+        evaluate_frequency = sp.lambdify((self.r.omega, self.k, self.q),
+                                         frequency_family, 'numpy', cse=True)
+        radical_squared = sp.solve(relation, self.q**2)[0].xreplace(fixed_except_omega)
+        evaluate_radical_squared = sp.lambdify((self.r.omega, self.k), radical_squared, 'numpy')
+        field_evaluators = None
+        if carrier_values is not None and self.closed_operands is not None:
+            strong, lift, slab_current, current_legs, field_units, current_unit = self.closed_operands
+            strong_algebraic, strong_relation, strong_join = self.analytic(strong)
+            physical('INPUT_CLOSED_FIELD_BRANCH_JOIN_RESIDUAL_'+name, strong_join,
+                     zero_dimensions={(i,):self.unitless for i in range(len(strong_join))})
+            physical('INPUT_CLOSED_FIELD_RADICAL_RELATION_RESIDUAL_'+name,
+                     sp.expand(strong_relation-relation),
+                     zero_dimensions={():tuple(2*v for v in dimensions.measure(self.q))})
+            evaluate_strong = sp.lambdify((self.k,self.q),
+                strong_algebraic.xreplace(mapping).subs(origin), 'numpy', cse=True)
+            evaluate_lift = sp.lambdify(self.k, lift.xreplace(mapping), 'numpy', cse=True)
+            current_at_input = slab_current.xreplace(mapping).subs(origin)
+            field_evaluators = (evaluate_strong, evaluate_lift, current_at_input,
+                                current_legs, field_units)
+        omega_point = float(mapping[self.r.omega])
         kval = sp.lambdify(self.q, k_squared, 'numpy')
         denominator_value = sp.lambdify((self.k, self.q), denominator, 'numpy')
         outputs = []
@@ -1637,11 +1966,85 @@ class FullPencilModes:
                     dual = left[:, -nullity:]
                     derivative = np.asarray(evaluate_k(kroot, qroot), dtype=complex)
                     pairing = dual.conj().T@derivative@right
+                    omega_derivative = np.asarray(evaluate_w(kroot, qroot), dtype=complex)
+                    omega_pairing = dual.conj().T@omega_derivative@right
+                    omega_rank = np.linalg.matrix_rank(omega_pairing, tol=1e-9)
+                    mode_id = name+'_'+str(len(outputs))
+                    if field_evaluators is not None:
+                        evaluate_strong, evaluate_lift, current_at_input, current_legs, field_units = field_evaluators
+                        lifted = np.asarray(evaluate_lift(kroot), dtype=complex)@right
+                        closed_residual = np.asarray(evaluate_strong(kroot,qroot), dtype=complex)@lifted
+                        current_matrix = current_at_input.subs({current_legs[0]:kroot.conjugate(),
+                                                               current_legs[1]:kroot})
+                        physical_fields = sp.ImmutableMatrix(lifted)
+                        slab_pairing = physical_fields.conjugate().T*current_matrix*physical_fields
+                        slab_pairing = slab_pairing.applyfunc(sp.expand)
+                        record['CLOSED_PHYSICAL_FIELD_RESIDUAL'] = sp.ImmutableMatrix(closed_residual)
+                        record['CONSERVATIVE_SLAB_CURRENT_PAIRING'] = slab_pairing
+                        emit('INPUT_CLOSED_PHYSICAL_FIELDS_'+mode_id, self.compact_fingerprint(physical_fields))
+                        emit('METADATA_INPUT_CLOSED_PHYSICAL_FIELDS_'+mode_id,
+                             self.numeric_metadata(physical_fields, lambda p:field_units[p[0]//nullity]))
+                        emit('INPUT_CONSERVATIVE_SLAB_CURRENT_OPERAND_'+mode_id,
+                             self.compact_fingerprint(current_matrix))
+                        emit('METADATA_INPUT_CONSERVATIVE_SLAB_CURRENT_OPERAND_'+mode_id,
+                             self.numeric_metadata(current_matrix, lambda p:tuple(a-b-c for a,b,c in
+                                zip(current_unit,field_units[p[0]//5],field_units[p[0]%5]))))
                     overlap = dual.conj().T@right
                     record.update({'RIGHT_RESIDUAL': sp.ImmutableMatrix(matrix@right),
                                    'LEFT_RESIDUAL': sp.ImmutableMatrix(matrix.conj().T@dual),
                                    'K_DERIVATIVE_PAIRING': sp.ImmutableMatrix(pairing),
+                                   'OMEGA_DERIVATIVE_PAIRING': sp.ImmutableMatrix(omega_pairing),
+                                   'OMEGA_PAIRING_SINGULAR_VALUES': list(map(self.number,
+                                       np.linalg.svd(omega_pairing, compute_uv=False))),
+                                   'OMEGA_PAIRING_RANK': int(omega_rank),
+                                   'OMEGA_NORMALIZATION_DEFINED': bool(omega_rank == nullity),
                                    'OVERLAP_SINGULAR_VALUES': list(map(self.number, np.linalg.svd(overlap, compute_uv=False)))})
+                    difference_pairs, difference_operands = [], []
+                    for divisor in (1000, 2000):
+                        step = abs(omega_point)/divisor
+                        perturbed = []
+                        radicals = []
+                        for delta in (-step, step):
+                            candidate = complex(evaluate_radical_squared(omega_point+delta, kroot))**0.5
+                            continued = min((candidate, -candidate), key=lambda value: abs(value-qroot))
+                            radicals.append(continued)
+                            perturbed.append(np.asarray(evaluate_frequency(
+                                omega_point+delta, kroot, continued), dtype=complex))
+                        difference_pair = dual.conj().T@((perturbed[1]-perturbed[0])/(2*step))@right
+                        difference_pairs.append((self.number(step), sp.ImmutableMatrix(difference_pair),
+                                                 sp.ImmutableMatrix(difference_pair-omega_pairing)))
+                        difference_operands.append((self.number(step),
+                            tuple(map(self.number, radicals)),
+                            tuple(sp.ImmutableMatrix(value) for value in perturbed)))
+                    record['OMEGA_PAIRING_DIFFERENCE_QUOTIENTS'] = difference_pairs
+                    emit('OMEGA_DIFFERENCE_PENCIL_OPERANDS_'+mode_id,
+                         self.compact_fingerprint(difference_operands))
+                    emit('METADATA_OMEGA_DIFFERENCE_PENCIL_OPERANDS_'+mode_id,
+                         self.numeric_metadata(difference_operands, lambda p:
+                             dimensions.measure(self.r.omega) if p[1] < 2 else
+                             quotient_units[(p[3],)]))
+                    if omega_rank == nullity:
+                        # Normalize the whole nullspace. The omega derivative
+                        # includes the computed bulk-radical chain rule above;
+                        # neither a group velocity nor an Euclidean overlap
+                        # substitutes for the nonlinear-pencil pairing.
+                        normalized_dual = dual@np.linalg.inv(omega_pairing).conj().T
+                        normalized_pairing = normalized_dual.conj().T@omega_derivative@right
+                        record.update({
+                            'OMEGA_NORMALIZED_PAIRING': sp.ImmutableMatrix(normalized_pairing),
+                            'OMEGA_NORMALIZATION_RESIDUAL': sp.ImmutableMatrix(
+                                normalized_pairing-np.eye(nullity)),
+                            'OMEGA_NORMALIZED_LEFT_RESIDUAL': sp.ImmutableMatrix(
+                                matrix.conj().T@normalized_dual),
+                        })
+                        normalized_left_units = [tuple(w-v for w, v in zip(
+                            dimensions.measure(self.r.omega), d)) for d in row_units]
+                        normalized_left = sp.ImmutableMatrix(normalized_dual)
+                        emit('LEFT_MODE_OMEGA_NORMALIZED_'+mode_id,
+                             self.compact_fingerprint(normalized_left))
+                        emit('METADATA_LEFT_MODE_OMEGA_NORMALIZED_'+mode_id,
+                             self.numeric_metadata(normalized_left,
+                                 lambda p: normalized_left_units[p[0]//nullity]))
                     if np.linalg.matrix_rank(overlap, tol=1e-9) == nullity:
                         projector = right@np.linalg.solve(overlap, dual.conj().T)
                         # These weights are computed from the full nullspace
@@ -1678,16 +2081,17 @@ class FullPencilModes:
                         left_forcing = perturbation.conj().T@dual+derivative.conj().T@dual@left_shift
                         left_correction = np.linalg.lstsq(np.vstack((matrix.conj().T, dual.conj().T)),
                             np.vstack((-left_forcing, np.zeros((nullity,nullity)))), rcond=None)[0]
-                        right_polynomial += grade*sp.ImmutableMatrix(right_correction)
-                        left_polynomial += grade*sp.ImmutableMatrix(left_correction)
-                        k_polynomial += grade*sp.ImmutableMatrix(shift_matrix)
+                        local_coordinate = grade-origin[grade]
+                        right_polynomial += local_coordinate*sp.ImmutableMatrix(right_correction)
+                        left_polynomial += local_coordinate*sp.ImmutableMatrix(left_correction)
+                        k_polynomial += local_coordinate*sp.ImmutableMatrix(shift_matrix)
                         if projector_polynomial is not None:
                             inverse_overlap = np.linalg.inv(overlap)
                             overlap_correction = left_correction.conj().T@right+dual.conj().T@right_correction
                             projector_correction = (right_correction@inverse_overlap@dual.conj().T
                                 +right@inverse_overlap@left_correction.conj().T
                                 -right@inverse_overlap@overlap_correction@inverse_overlap@dual.conj().T)
-                            projector_polynomial += grade*sp.ImmutableMatrix(projector_correction)
+                            projector_polynomial += local_coordinate*sp.ImmutableMatrix(projector_correction)
                         jet_modes = []
                         for j, shift in enumerate(shifts):
                             vector = right@vectors[:,j]
@@ -1696,18 +2100,17 @@ class FullPencilModes:
                             correction = np.linalg.lstsq(augmented, np.concatenate((-forcing, np.zeros(nullity))), rcond=None)[0]
                             jet_modes.append((self.number(shift),sp.ImmutableMatrix(matrix@correction+forcing)))
                         jets.append((grade, jet_modes, sp.ImmutableMatrix(matrix.conj().T@left_correction+left_forcing)))
-                    record['FIRST_GRADE_IMPLICIT_MODES'] = jets
+                    record['FIRST_GRADE_IMPLICIT_MODES' if grade_origin is None else
+                           'LOCAL_GRADE_IMPLICIT_MODES'] = jets
                     record['IMPLICIT_MODE_JET_DEFINED'] = bool(jet_defined)
                     if np.linalg.matrix_rank(pairing, tol=1e-9) == nullity:
-                        frequency_slopes = np.linalg.eigvals(-np.linalg.solve(pairing,
-                            dual.conj().T@np.asarray(evaluate_w(kroot,qroot),dtype=complex)@right))
+                        frequency_slopes = np.linalg.eigvals(-np.linalg.solve(pairing, omega_pairing))
                         record['RETARDED_K_FREQUENCY_SLOPES'] = list(map(self.number,frequency_slopes))
                         record['INCOMING'] = [bool(physical_sheet and abs(kroot.imag)<1e-10 and end_sign*x.real<0)
                                               for x in frequency_slopes]
                         record['OUTGOING'] = [bool(physical_sheet and abs(kroot.imag)<1e-10 and end_sign*x.real>0)
                                               for x in frequency_slopes]
-                    mode_id = name+'_'+str(len(outputs))
-                    coefficient_label = 'JET' if jet_defined else 'BASE_COEFFICIENT'
+                    coefficient_label = ('JET' if grade_origin is None else 'LOCAL_JET') if jet_defined else 'BASE_COEFFICIENT'
                     for label, value, unit_fn in (
                         ('RIGHT_MODE_'+coefficient_label, right_polynomial, lambda p: column_units[p[0]//nullity]),
                         ('LEFT_MODE_'+coefficient_label, left_polynomial, lambda p: tuple(-v for v in row_units[p[0]//nullity])),
@@ -1722,13 +2125,31 @@ class FullPencilModes:
                 outputs.append(cas(record))
         # Numeric mode coefficients and literal residuals are intentionally
         # bounded; the symbolic input SHA and exact carrier values accompany them.
-        emit('FULL_PENCIL_MODE_PIT_'+name, outputs)
+        emit('FULL_PENCIL_MODE_'+record_kind+'_'+name, outputs)
         def record_unit(path):
             key = path[1] if len(path)>1 else ''
             if key in ('K',): return dimensions.measure(self.k)
             if key == 'Q': return dimensions.measure(self.q)
             if key == 'HELMHOLTZ_CHART_OPERAND': return tuple(2*v for v in dimensions.measure(self.k))
             if key == 'RADICAL_RESIDUAL': return tuple(2*v for v in dimensions.measure(self.q))
+            if key == 'CONSERVATIVE_SLAB_CURRENT_PAIRING':
+                return self.closed_operands[-1]
+            if key == 'CLOSED_PHYSICAL_FIELD_RESIDUAL':
+                n = int(named(outputs[path[0]], 'NULLITY'))
+                i = path[2]//n
+                # Strong-equation row units follow the actual field lift.
+                strong, lift, _, _, field_units, _ = self.closed_operands
+                source = next(j for j in range(5) if strong[i,j] != 0)
+                return tuple(a+b for a,b in zip(dimensions.measure(strong[i,source]),field_units[source]))
+            if key in ('OMEGA_DERIVATIVE_PAIRING', 'OMEGA_PAIRING_SINGULAR_VALUES'):
+                return tuple(-v for v in dimensions.measure(self.r.omega))
+            if key == 'OMEGA_PAIRING_DIFFERENCE_QUOTIENTS':
+                return tuple((1 if path[3] == 0 else -1)*v
+                             for v in dimensions.measure(self.r.omega))
+            if key == 'OMEGA_NORMALIZED_LEFT_RESIDUAL':
+                n = int(named(outputs[path[0]], 'NULLITY'))
+                i = path[2]//n
+                return tuple(w-v for w, v in zip(dimensions.measure(self.r.omega), column_units[i]))
             if key in ('RIGHT','LEFT_ADJOINT','RIGHT_RESIDUAL','LEFT_RESIDUAL'):
                 n = int(named(outputs[path[0]],'NULLITY'))
                 i = path[2]//n
@@ -1740,7 +2161,8 @@ class FullPencilModes:
             # Remaining values are coefficients/diagnostics in the explicitly
             # emitted numerical unit frame, not additional physical fields.
             return self.unitless
-        emit('METADATA_FULL_PENCIL_MODE_PIT_'+name, self.numeric_metadata(outputs,record_unit))
+        emit('METADATA_FULL_PENCIL_MODE_'+record_kind+'_'+name, self.numeric_metadata(outputs,record_unit))
+        return outputs
 
 
 def run():
@@ -1752,6 +2174,11 @@ def run():
     parser.add_argument('--case', choices=['ALL']+[a+'__'+r for a in
         ('LAB_HELD', 'MATERIAL_ADVECTED') for r in ('RHO4_CONSTANT', 'RHOBR_CONSTANT')], default='ALL')
     parser.add_argument('--dev-symbol-cache', type=Path)
+    channel_options = parser.add_mutually_exclusive_group()
+    channel_options.add_argument('--channel-input-json',
+                                 help='explicit unit_frame, parameters and independent w/m profile input')
+    channel_options.add_argument('--channel-input-file', type=Path,
+                                 help='JSON file containing the same explicit channel input')
     options = parser.parse_args()
     selected = lambda case: options.case == 'ALL' or '__'.join(map(str, case)) == options.case
     fold, audit = load_model('scripts/S11c_b_exports.py', 'scripts/S11c_c1_exports.py', 'scripts/S11c_c2_exports.py')
@@ -1773,6 +2200,11 @@ def run():
     reduction = EdgeReduction(rows)
     dimensions = DimensionAnalysis(rows, reduction)
     PHYSICAL_METADATA = PhysicalMetadata(dimensions, reduction)
+    input_text = (options.channel_input_file.read_text() if options.channel_input_file
+                  else options.channel_input_json)
+    channel_input = ChannelInput(reduction, json.loads(input_text)) if input_text else None
+    if channel_input is not None:
+        channel_input.emit_inputs()
     reconstruction = EdgeReconstruction(reduction)
     physical('FOURIER_NORMALIZATION_COMPUTATION', reduction.normalization_operands)
     emit('INFERRED_INPUT_DIMENSIONS', {str(k): v for k, v in dimensions.known.items()})
@@ -1890,6 +2322,13 @@ def run():
         fingerprinted('TRANSVERSE_CURL_GAUGE_RESIDUAL_'+suffix, cas(gauge_residual),
                       {(i, j): curl_unit for i, v in enumerate(gauge_residual) for j in range(len(v))})
         modes = FullPencilModes(ends, curl, weak_symbol_units)
+        lift = ends.field_lift(pencil)
+        lift_field_units = [dimensions.known[f] for f in pencil.fields]
+        lift_trial_units = [dimensions.known[sp.Function('s11cdReducedTrial'+label)]
+                            for label in ('A0','A1','A2','Theta','E','Phi')]
+        fingerprinted('CLOSED_PHYSICAL_FIELD_LIFT_'+suffix, lift,
+                      {(6*i+j,):tuple(a-b for a,b in zip(lift_field_units[i],lift_trial_units[j]))
+                       for i in range(5) for j in range(6)})
         for label, end in (('REFERENCE', None), ('LEFT', -sp.oo), ('RIGHT', sp.oo)):
             if end is not None:
                 physical('PROFILE_END_TRANSLATION_LIMIT_OPERANDS_'+label+'_'+suffix,
@@ -1905,10 +2344,15 @@ def run():
                           constant_blocks, block_units)
             strong_symbol = ends.strong_matrix(pencil, constant_strong)
             full_symbol = ends.weak_matrix(constant_blocks)
+            current_builder = UniformSlabCurrent(reduction, rows['energy_basis_variable'], ends,
+                                                strong_symbol[3,:])
+            current = current_builder.emit(str(case[0]), end, label+'_'+suffix)
+            modes.set_closed_operands(strong_symbol, lift, current, current_builder)
             if options.dev_symbol_cache:
                 options.dev_symbol_cache.mkdir(parents=True, exist_ok=True)
                 with (options.dev_symbol_cache/(label+'_'+suffix+'.pickle')).open('wb') as stream:
-                    pickle.dump((full_symbol, curl, weak_symbol_units, dimensions.known), stream)
+                    pickle.dump((full_symbol, curl, weak_symbol_units, dimensions.known,
+                                 strong_symbol, rows['energy_basis_variable']['value']), stream)
             fingerprinted('CLOSED_OPERATOR_SYMBOL_'+label+'_'+suffix, strong_symbol, strong_symbol_units)
             fingerprinted('FULL_SECTOR_PENCIL_SYMBOL_'+label+'_'+suffix, full_symbol, weak_symbol_units)
             for direction, rs, cs in (('TH', range(3), range(3, 6)), ('HT', range(3, 6), range(3))):
@@ -1936,6 +2380,9 @@ def run():
                 raise ValueError(('uncontracted asymptotic symbol', label, case))
             if label != 'REFERENCE':
                 modes.solve(full_symbol, label+'_'+suffix, -1 if label == 'LEFT' else 1)
+            if channel_input is not None:
+                modes.solve_input(full_symbol, label+'_'+suffix, -1 if label == 'LEFT' else 1,
+                                  channel_input, reference=label == 'REFERENCE')
     emit('PENCIL_DIMENSION_CONSTRAINT_RESIDUALS', sorted(dimensions.constraints, key=sp.default_sort_key))
     if dimensions.constraints:
         raise ValueError('pencil dimensional analysis has surfaced unresolved constraints')
@@ -1945,10 +2392,12 @@ def run():
                                       'REFERENCE_AND_END_CANONICAL_COUPLINGS', 'SIMULTANEOUS_END_TRANSLATION',
                                       'CLASS_RESTRICTED_ACTION_RECONSTRUCTION', 'GAUGE_QUOTIENT_CHARTS',
                                       'POSITIVE_FREQUENCY_SPECTRAL_PIT', 'FIRST_GRADE_END_MODE_JETS',
-                                      'NULLSPACE_CLASSIFIER_PROJECTORS'))
+                                      'NULLSPACE_CLASSIFIER_PROJECTORS', 'NONLINEAR_FREQUENCY_PAIRING',
+                                      'S11B_CONSERVATIVE_SLAB_CURRENT', 'CLOSED_PHYSICAL_FIELD_LIFT'))
+    emit('CHANNEL_INPUT_EXECUTION', channel_input is not None)
     emit('OUTSTANDING_CONSTRUCTIONS', ('ALL_CARRIER_INVERSE_FOURIER_ROUNDTRIPS',
          'FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS', 'MIXED_GRADE_MODE_JETS',
-         'GENERIC_DOMAIN_SHEET_CONTINUATION', 'S11B_CURRENT', 'NONLINEAR_PENCIL_NORMALIZATION',
+         'GENERIC_DOMAIN_SHEET_CONTINUATION', 'CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION',
          'COMPLETE_TWO_ENDED_SCATTERING', 'POLES_RIESZ_OVERLAP', 'SURVIVAL',
          'FLUX_BOOKKEEPING', 'WEAK_COEFFICIENTS', 'SECTION_5_CONTROLS', 'OWN_ROWS_EXPORT'))
     emit('RESOURCE_MEASUREMENTS', (time.monotonic()-started,

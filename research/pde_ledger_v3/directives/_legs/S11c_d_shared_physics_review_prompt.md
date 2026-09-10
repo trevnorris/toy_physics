@@ -1,4 +1,4 @@
-# Independent physics review — S11c-d SHARED PHYSICS spec (v9)
+# Independent physics review — S11c-d SHARED PHYSICS spec (v10)
 
 ## Artifact
 `/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md`
@@ -7,18 +7,18 @@ This is an **orchestrator-written physics spec** — the physics authority that 
 Wolfram that imports nothing and re-derives) will read to independently construct the same objects, plus their
 comparator. An error here makes **both** engines agree on the same wrong thing, so it is reviewed until clear.
 
-⚠ This is **spec v9** (a Codex-authored base folded across many two-leg gates; the Fourier-reduction approach — keep
-the object + the supplied `f̂_red` 1-D convention + a leak-safe CONTROL in the spec, defer the exact element census +
-`(2π)` bookkeeping to the build directive — is endorsed as legitimate by both legs). The latest fold closed two
-completeness gaps: (F1) `𝓛(y_n;ω,k_∥)` is now **bound** to the engine's **reduced** closed operator + reduced kernel as
-its construction operands (⛔ not the imported unreduced rows); (F2) the §1c control now requires reducing **every
-convention-bearing 3-D element** of both rows — every hat at any argument **and** every 3-D integral measure (in-plane
-position `d³y` **and** momentum-convolution `d³k` over output/input/middle momenta) — with no element left in a 3-D
-convention; §7 joins the reduced rows **and** the S-matrix/`𝓛` built from them. Give it a **full, fresh independent
-review** — ⛔ do not assume the fold is correct or complete, and ⛔ do not merely check a prior finding list; derive
-your own view from the sources. In particular judge whether `𝓛` can still be assembled from mixed 3-D/1-D conventions
-anywhere (is it truly bound to the reduced rows, and does the control's element principle leave no convention-bearing
-content un-reduced?), whether the deferral remains legitimate, and whether anything the fold touched newly broke.
+⚠ This is **spec v10** (a Codex-authored base folded across many two-leg gates; the Fourier-reduction approach — name
+the object, supply only `f̂_red`, keep a leak-safe CONTROL in the spec, defer the element census + `(2π)` bookkeeping to
+the build directive — is endorsed by both legs). The latest fold closed the residual F1 seam with **one universal
+rule** (§2, "Reduced-representation rule, governing for §§3–6"): wherever §3/§5/§6 refers to "the imported closed
+operator" in constructing `𝓛` — its currents, modes, normalization, resolvent, poles, S-matrix, conversion fraction,
+survival functional, or the §5a routes — it denotes the engine's **§1c-reduced** closed operator (and reduced kernel),
+never the unreduced 3-D rows; §3a/§3b/§5a/§6/§0.2/§5b were individually qualified to match. Give it a **full, fresh
+independent review** — ⛔ do not assume the fold is correct or complete, and ⛔ do not merely check a prior finding
+list; derive your own view from the sources. In particular judge whether **any** object that feeds `𝓛`, the flux
+normalization, the S-matrix, the conversion fraction, the survival functional, or the pole set can **still** be built
+from unreduced 3-D content anywhere (does the universal rule + the individual qualifiers leave no seam?), whether the
+deferral remains legitimate, and whether anything the fold touched newly broke.
 
 ## Your role
 Form your **own** view of what S11c-d must be from the requirements and the real c2 exports **first**, then read the

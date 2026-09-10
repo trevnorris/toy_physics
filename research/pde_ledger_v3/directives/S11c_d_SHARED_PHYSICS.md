@@ -1,4 +1,4 @@
-# S11c-d — SHARED PHYSICS v9 (profile-conditioned transverse↔thickness scattering at a thickness interface)
+# S11c-d — SHARED PHYSICS v10 (profile-conditioned transverse↔thickness scattering at a thickness interface)
 
 **S11c-d** is the S11c-d sub-step of the S11c curved-interface program — the **fifth build unit** after the c1/c2
 split (`directives/S11c_decisions.md` row `:52`). It consumes S11c-c2's closed operator and closed off-diagonal
@@ -13,15 +13,16 @@ Wolfram engine imports nothing and re-derives every consumed object from the sib
 (`S9_export_chain_rebuild_directive.md:16-18` is the only cross-engine control). Blindness is the control: an
 agreement is independent construction, not a copy.
 
-⭐ This is a **Codex `gpt-5.6-sol`-authored physics spec**, now v9 under `CLAUDE.md` rule 15 after the
+⭐ This is a **Codex `gpt-5.6-sol`-authored physics spec**, now v10 under `CLAUDE.md` rule 15 after the
 orchestrator-authored v2/v3 folds bred new defects. Its lineage is **Codex-authored v4 → orchestrator §1c/nit fold
 (v5) → v6 Codex Fourier refix → v7 Codex Fourier-defer (rule 15, per Grok's round-6 F1) → v8 Codex closed-row/jet-hat
-Fourier-control refix → v9 Codex reduced-row-operand/all-measure Fourier-control refix**. It is the physics authority
+Fourier-control refix → v9 Codex reduced-row-operand/all-measure Fourier-control refix → v10 Codex universal
+reduced-representation threading**. It is the physics authority
 both blind
 engines read. Per G1/G2 it is physics-bearing and gets **two non-author legs — a fresh Claude agent + Grok — reviewed
 UNTIL CLEAR** (spec row, ⛔ not the decision-list one-pass); both reports precede any commit, and a reviewed baseline
 is preserved before a repair overwrites it. The **build directive** that follows this spec gets its own two decision
-legs before any builder (the G2 TRIGGER). **Spec v9** retains the v3 §0–§8 structural frame and folds every round-3
+legs before any builder (the G2 TRIGGER). **Spec v10** retains the v3 §0–§8 structural frame and folds every round-3
 finding; no wording from a prior version is authoritative where the round-3 derivation corrected it.
 
 ⭐ **The profile-class + regime decision (§1c–§1d) was settled by a three-way physics consult** (orchestrator + `gpt-6-astra`
@@ -40,7 +41,8 @@ interface, Born in contrast `η` with sharpness `σ_W` and kinematics `Q_nL_W` k
    gate (§1c/§5c).
 2. The **profile-conditioned transverse↔thickness mixing response** (§3a): the linear mixing (the **full** imported
    off-diagonal vertex — tilt `∇w₁`, modulus-gradient `∇m₁`, N4 advection), built on the **two-asymptote distorted
-   basis** of the full `W₋`- and `W₊`-asymptotic block operators obtained from `s11cc2ClosedSlabOperator` and
+   basis** of the full `W₋`- and `W₊`-asymptotic block operators obtained **after the §1c reduction of the two rows**
+   `s11cc2ClosedSlabOperator` and
    `s11cc2ClosedCouplingKernel`; the uniform and two end baselines are computed before any sector-diagonal
    simplification (§2).
 3. The **two DISTINCT photon-kill channels** (`N13`, §3b): continuum conversion (into the thickness continuum / bulk
@@ -50,7 +52,7 @@ interface, Born in contrast `η` with sharpness `σ_W` and kinematics `Q_nL_W` k
    its uniform baseline, its separate zero-jet-contrast and first-jet pieces, the physical total conversion flux and
    its baseline/interference slots, and the separately named induced-field quadratic form on the homotopy
    `λ ≡ η` (`L_W`, shapes fixed).
-5. The **scattering-coordinate covariance regression** on the imported closed kernel and its one-sided
+5. The **scattering-coordinate covariance regression** on the §1c-reduced closed kernel and its one-sided
    shape-sensitivity mutations (§5a). It does **not** discharge c2's kernel-level N6/N3/N4 independence debt. Also in
    scope are the profile-**FORM** ablation (§5c) and the flux-normalized falsification **FORM** (§5d; the numeric bound
    withheld, `N7`).
@@ -334,9 +336,20 @@ coupling kernel — the object `𝓛(y_n;ω,k_∥)` is constructed from that eng
 with its **reduced closed coupling kernel** (the §1c reduction of `s11cc2ClosedCouplingKernel`) used as the canonical
 off-diagonal extraction. The reduced rows are the construction operands of `𝓛`, ⛔ not the imported unreduced rows
 and ⛔ not merely comparator objects; **full** means the complete retained reduced operator, not a modulus-only
-projection. It includes the tilt,
+projection. The reduced slab-operator off-diagonal block should agree with that kernel by c2's re-extraction; a
+**nonzero** reduced-operator-block-vs-reduced-kernel off-diagonal residual is itself a **surfaced finding**, ⛔ not
+silently overridden by the canonical designation. It includes the tilt,
 modulus-gradient, and N4 advection content carried by that kernel. The modulus-gradient projection is only one
 subchannel; projecting onto it alone drops other retained terms and is an ablation, not the S11c-d object.
+
+⭐ **Reduced-representation rule (governing for §§3–6).** **Any** reference anywhere in §§3–6 to the
+imported/closed operator, kernel, or vertex — **however phrased** ("the imported closed operator", "the closed
+operator", "the imported operator", "the imported vertex", "consumed verbatim", "derived from the imported kernel", …)
+— in constructing `𝓛`, its **currents, modes, normalization, resolvent, poles, S-matrix, conversion fraction,
+survival functional, profile moments/form factors, or the §5a routes**, denotes the engine's **§1c-reduced** closed
+operator (and reduced coupling kernel), ⛔ **never** the unreduced 3-D rows. ⛔ No downstream current, resolvent, mode,
+amplitude, flux, form factor, or covariance residual is built from unreduced 3-D content — the unreduced rows are
+operands of the §1c reduction **only**.
 
 Before defining channels, each engine block-decomposes its reduced operator at the retained grades. In the display
 below `𝓛(y_n)` denotes the operator/kernel, not multiplication by a local matrix; `y_n` is the retained edge-normal
@@ -386,8 +399,9 @@ higher-order prediction. The continuum Born domain excludes thresholds, resonanc
 and long coherent regions in which repeated conversion accumulates.
 
 **Bound-pole exemption and its limitation.** The pole solve of §3b uses the resolvent of the retained
-first-shape-order imported operator and is exempt from the continuum re-expansion because re-expansion cannot create a
-pole. This exemption does not improve the parent-theory accuracy: omitted `O(η²,σ_W²)` operator terms are the same
+first-shape-order **§1c-reduced operator** (the reduced `𝓛(ω)`) and is exempt from the continuum re-expansion because
+re-expansion cannot create a pole. This exemption does not improve the parent-theory accuracy: omitted
+`O(η²,σ_W²)` operator terms are the same
 order as a weak binding energy `E∼λ²`. Therefore pole existence and location are, by default, spectrum of the
 **truncated operator**, not a controlled parent-theory channel. Promotion to a physical claim requires the
 threshold/separation and remainder conditions stated in §3b.
@@ -424,7 +438,8 @@ not well-defined at a degeneracy is reported as a domain limitation rather than 
 labels.
 
 **Modal energy current and normalization.** Derive `J` from the S11b quadratic energy current, evaluated on the
-imported closed operator and including its closed/nonlocal bulk contribution; do not import or cite a c2
+**§1c-reduced closed operator** (the reduced `𝓛_e` of §2) and including its closed/nonlocal bulk contribution; do not
+import or cite a c2
 traction–slab-pairing EMIT tag. For each asymptotic end, compute right modes `r_a` and adjoint/left modes `l_a` of
 `𝓛_e^full(ω,k_n,k_∥)`. For a simple mode use the nonlinear-pencil normalization
 
@@ -432,7 +447,7 @@ traction–slab-pairing EMIT tag. For each asymptotic end, compute right modes `
 N_{ab}^{(e)} ≡ ⟨l_a, (∂_ω𝓛_e^full) r_b⟩ ,
 ⟨l_a, (∂_ω𝓛_e^full) r_a⟩ = 1 ,
 J_{ab}^{(e)} ≡ the polarized S11b normal energy-current bilinear 𝓙_n[l_a,r_b]
-                evaluated with the imported closed operator .
+                evaluated on the §1c-reduced closed operator (the reduced 𝓛_e of §2) .
 ```
 
 For a degenerate mode space, emit the matrices `N^{(e)}` and `J^{(e)}` and choose a current-orthogonal channel basis.
@@ -709,7 +724,8 @@ x^i = X^i + u^i(X,t)
 ```
 
 with the anchoring held fixed. It is not a flattening of the slab interface faces. Route E constructs the §2–§3
-scattering problem directly in Eulerian `x` coordinates. Route M rewrites the same imported closed operator in `X`,
+scattering problem — the reduced `𝓛(y_n;ω,k_∥)` — directly in Eulerian coordinates. Route M rewrites in `X` the §2–§3 scattering problem built
+on the **reduced** closed operator,
 including the chart Jacobian, covector/mode maps, conserved tangential measure, and the S11b current, and maps the
 scattering data **inside the construction** back to the common Eulerian channel basis. Emit
 
@@ -758,7 +774,8 @@ the unequal asymptotes of one interface. Therefore run three separate uniform co
    zero-jet contrast;
 3. the uniform reference with `η=σ_W=0`.
 
-In each construction, recompute the full operator, `K`, its asymptotic modes, currents, and S-matrix/coupling object;
+In each construction, recompute the **reduced** full operator, reduced `K`, its asymptotic modes, currents, and
+S-matrix/coupling object;
 do not insert a stated coupling value. These regressions expose what the imported first-shape-order operator computes
 on each constant background. They do not validate a gradient coefficient, sign, or parity and do not close the
 withdrawn F or the c2 N6 debt. In the common inherited field basis, emit the reference coupling as baseline, each
@@ -811,8 +828,10 @@ localized gradient, so no non-perturbative lab number is inferred from this reta
 
 - **Method.** Balance laws + the binding material virtual-displacement rule + variational derivatives with held-fixed
   fields named + prescribed external virtual work (S11b), ⛔ never an irreversible response kernel in an ordinary
-  action. The closed operator and its off-diagonal extraction are the c2 exports consumed verbatim. Compute
-  `K₀,K₋,K₊`; define modes and currents from the full asymptotic block pencils; then construct the complete two-ended
+  action. Under the §2 reduced-representation rule, the construction operands of `𝓛` are the **computed §1c
+  reductions** of the c2 exports, consumed without further constitutive modification (the c2 exports are imported
+  verbatim as the **operands of that reduction only**). Compute `K₀,K₋,K₊`; define modes and currents from the **reduced**
+  full asymptotic block pencils; then construct the complete two-ended
   scattering matrix and re-expand its continuum response to the retained background rectangle (§2). The bound-pole
   solve is exempt only in the limited truncated-model sense of §2/§3b.
 - **Dimensions.** Restore `[L,T,M]` on every emitted object, dimensional consistency able-to-fail

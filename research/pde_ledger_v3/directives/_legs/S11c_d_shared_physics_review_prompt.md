@@ -1,4 +1,4 @@
-# Independent physics review — S11c-d SHARED PHYSICS spec (v1)
+# Independent physics review — S11c-d SHARED PHYSICS spec (v2, post-fold)
 
 ## Artifact
 `/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md`
@@ -6,6 +6,10 @@
 This is an **orchestrator-written physics spec** — the physics authority that TWO blind CAS engines (one SymPy, one
 Wolfram that imports nothing and re-derives) will read to independently construct the same objects, plus their
 comparator. An error here makes **both** engines agree on the same wrong thing, so it is reviewed until clear.
+
+⚠ This is **spec v2**, folded once from a two-leg gate that returned NOT-SOUND. Give it a **full, fresh independent
+review** — ⛔ do not merely check that prior findings were addressed; derive your own view and report anything that
+changes what an engine computes or what the spec may claim (including anything a fold may have newly introduced).
 
 ## Your role
 Form your **own** view of what S11c-d must be from the requirements and the real c2 exports **first**, then read the

@@ -1,11 +1,11 @@
 # S11c-d — SHARED PHYSICS (the profile-conditioned transverse↔thickness mixing/leakage for a localized-interface profile)
 
-**S11c-d** is the fourth sub-step of the S11c curved-interface program (`directives/S11c_decisions.md` row `:52`). It
-consumes S11c-c2's closed operator and closed off-diagonal kernel and produces the **profile-conditioned linear
-mixing** between the uniform transverse (light) sector and the thickness/breathing (self-energy) sector, for an
-**explicitly named localized-interface profile class**, together with the two distinct photon-kill channels and the
-flux-normalized leakage FORM. This document is the physics authority for the two blind S11c-d engines and their
-comparator. Tag prefix `S11CD_`.
+**S11c-d** is the S11c-d sub-step of the S11c curved-interface program — the **fifth build unit** after the c1/c2
+split (`directives/S11c_decisions.md` row `:52`). It consumes S11c-c2's closed operator and closed off-diagonal
+kernel and produces the **profile-conditioned linear mixing** between the uniform transverse (light) sector and the
+thickness/breathing (self-energy) sector, for an **explicitly named localized-interface profile class**, together with
+the two distinct photon-kill channels and the flux-normalized leakage FORM. This document is the physics authority for
+the two blind S11c-d engines and their comparator. Tag prefix `S11CD_`.
 
 The SymPy engine reads the inherited model through `ledger_fold.load_model` over the atomic frozen base
 `scripts/S11c_b_exports.py` with the c1 and c2 deltas folded on top (§7), binding only its declared `IMPORT_KEYS`; the
@@ -15,48 +15,60 @@ agreement is independent construction, not a copy.
 
 ⭐ This is an **orchestrator-written physics spec** (the physics authority both blind engines read). Per `CLAUDE.md`
 G1/G2 it is physics-bearing and gets **two legs — Codex `gpt-5.6-sol` xhigh + Grok — reviewed UNTIL CLEAR** (spec
-row, ⛔ not the decision-list one-pass): leg→fold→leg until nothing outstanding changes what is computed or may be
-claimed; both reports before any commit; the reviewed baseline is preserved before any repair overwrites it. The
-**build directive** that follows this spec gets its **own** two decision legs before any builder (the TRIGGER, `G2`).
-⚠ **Spec v1.**
+row, ⛔ not the decision-list one-pass); both reports before any commit; the reviewed baseline is preserved before any
+repair overwrites it. The **build directive** that follows this spec gets its **own** two decision legs before any
+builder (the TRIGGER, `G2`). ⚠ **Spec v3** — folded from two two-leg gates (`_legs/S11c_d_shared_physics_review_*`,
+both rounds NOT-SOUND, convergent). Round-1 fixed: nonexistent export rows, a reinstated withdrawn F, an `η`/`σ_W`
+collapse, the reserved-key thickness name, undefined interface scattering, a 1D-well over-claim, an `F′(0)`
+fraction-slope error. Round-2 fixed: the leftover export-key casing + increment-in-consume-set; an over-constrained
+`λ`; an unnamed interface axis + backwards WKB direction; the thickness profile not itself constrained to an
+interface; "supported only where `∇μ_R≠0`" (which drops tilt/advection and re-implies F); bound capture folded into a
+continuum flux; a class-wide bound-existence claim; a non-canonical S-matrix; and — the deepest — a `route1 − Φ(route2)`
+N6 that applies the constitutive map `Φ` to scattering amplitudes/modes/flux (the c2 type error relocated) and has no
+constructible mutation site.
 
 ⭐ **The profile-class + regime decision (§1c–§1d) was settled by a three-way physics consult** (orchestrator + `gpt-6-astra`
-xhigh + `grok-4.6`, `directives/_legs/S11c_d_profile_class_consult.md`) and the user's approval: **localized interface,
-Born in contrast `η` with sharpness `σ_W` and kinematics `kL` kept live** — ⛔ **not "weak-gradient."** The two
-engines' load-bearing corrections (the grade-conflation that "weak-gradient" hides, and the strong-edge bridge as an
-unresolved obligation rather than a reduction) are folded into §1d, §3d, §5.
+xhigh + `grok-4.6`, `_legs/S11c_d_profile_class_consult{,_astra,_grok}.md`) and the user's approval: **localized
+interface, Born in contrast `η` with sharpness `σ_W` and kinematics `Q_nL_W` kept live** (§1d).
 
 ---
 
 ## 0 · Scope
 
 **In scope.**
-1. **NAME the profile class** = a **localized interface** in the background thickness field `W₀(x)` (§1c): smooth,
-   asymptotically constant, with a localized gradient of finite integrated jump `∫W₀′ dx = W₊ − W₋ ≠ 0` — ⛔ **not** a
-   defect bump (`∫W₀′ dx = 0`, a distinct object, §1c/§5c).
-2. The **profile-conditioned transverse↔thickness mixing response** (§3a): the linear mixing driven by `∇μ_R ≠ 0`
-   (`∝ k·a`), organized as **one insertion of `S11CC2_CLOSED_COUPLING_KERNEL` between the diagonal sector responses
-   (resolvents / Green operators) of `S11CC2_CLOSED_SLAB_OPERATOR`** (distorted-wave Born, §2).
+1. **NAME the profile class** = a **localized interface** in the inherited background profiles (§1c): smooth,
+   asymptotically constant, with a finite integrated jump — required on **both** the thickness `w₁` (`Δw₁ ≠ 0`, so the
+   asymptotes `W₋ ≠ W₊`, §2) and the modulus `m₁` (`Δm₁ ≠ 0`, the mixer), kept **independent**; ⛔ **not** a defect
+   bump (zero jump, §5c).
+2. The **profile-conditioned transverse↔thickness mixing response** (§3a): the linear mixing (the **full** imported
+   off-diagonal vertex — tilt `∇w₁`, modulus-gradient `∇m₁`, N4 advection), built on the **two-asymptote distorted
+   basis** of `s11cc2ClosedSlabOperator` (its `W₋`- and `W₊`-asymptotic diagonal operators) with one insertion of
+   `s11cc2ClosedCouplingKernel` (§2).
 3. The **two DISTINCT photon-kill channels** (`N13`, §3b): continuum conversion (into the thickness continuum / bulk
-   escape) **and** capture into a **bound** thickness/breathing pole; and the confinement question (`N10`) as a
-   computed object.
-4. The **order bookkeeping** (`N12`, §3c): converted amplitude `O(εη)`, absolute converted flux `O(ε²η²)`, **and** the
-   flux-normalized dimensionless conversion fraction `O(η²)` — emit **both** the absolute and fractional labels.
-5. The **N6 independent shape/coordinate-route control + one-sided corruption** (§5a), the profile-**form** ablation
-   (§5c), and the flux-normalized falsification **FORM** (§5d; the numeric bound withheld, `N7`).
+   escape) **and** a **profile-functional, conditional** bound thickness/breathing pole (computed existence, ⛔ not
+   assumed); and the confinement question (`N10`) as a computed object.
+4. The **order bookkeeping** (`N12` + the inherited `(ε,η,σ_W)` multigrade, §3c): the full multigraded amplitude
+   including its uniform component `A_0`, the **induced** amplitude `ΔA = A − A_0`, the transverse-channel flux
+   pairing, and the flux-normalized conversion fraction on the named homotopy `λ ≡ η` (`L_W`, shapes fixed).
+5. The **N6 insertion-construction independence control** (two scattering-coordinate constructions on the imported
+   kernel + one-sided profile-atom corruption, §5a), the profile-**form** ablation (§5c), and the flux-normalized
+   falsification **FORM** (§5d; the numeric bound withheld, `N7`).
 
 **Out of scope (named, not solved).**
 - The **order-unity slit edge** (finite-`ΔW`, non-perturbative) — a **downstream obligation named in §3d**, ⛔ not a
-  mechanical reduction of the weak result: a nonzero Born coefficient gives **no** general lower bound on order-unity
-  conversion (§3d counterexample). Its construction (piecewise-uniform jump / matched interior-exterior / an effective
-  interface response with explicit undetermined parameters) is **new** and belongs to the S11c-e strong-edge stage,
-  where its weak limit must reproduce S11c-d.
+  mechanical reduction: a nonzero Born coefficient gives **no** general lower bound on order-unity conversion (§3d
+  counterexample). Its construction (piecewise-uniform jump / matched interior-exterior / an effective interface
+  response with explicit undetermined parameters) is **new** and belongs to the S11c-e strong-edge stage, where its
+  weak limit must reproduce S11c-d.
 - The **falsification magnitude** — needs the throat interior `R1` (`V3_STEP_PLAN.md:1179`); only the FORM is
   computable now (`N7`). The withheld `O(1)`/grating reductio is diffed **orchestrator-side**, ⛔ never a builder
   target.
-- A **global dispersion `ω(k)`** for generic `W₀(x)` (`N5`/`N10`, forbidden); the **nonlinear-light program** (`N10`);
-  the **periodic→Bloch** and **slowly-varying→WKB** classes (§1d rejects them for this endgame; a periodic profile is
-  a later evaluation of the **same** kernel, not an S11c-d class).
+- A **global dispersion `ω(k)`** for generic profiles (`N5`/`N10`, forbidden); the **nonlinear-light program**
+  (`N10`); the **periodic→Bloch** and **slowly-varying→WKB** classes (§1d; ⛔ a periodic profile is a **distinct** N5
+  object, not this interface S-matrix on a periodic profile).
+- The **kernel-level Eulerian↔material representation N6** — that was **c2's** control and is carried as
+  cross-engine-UNCLOSED DEBT (§1b); S11c-d ⛔ does not re-derive the material **closed operator** (it is not in the
+  consume-set), it tests **insertion-construction** independence (§5a).
 - The **full cross-engine self-energy operand residual** and c1's four giant families (≥64 GB,
   `DEFERRED_HEAVY_RUNS.md`). S11c-d must be constructible and cross-engine-testable on this box for its own mixing
   object, and **name — not silently absorb** — anything it cannot close here (§1b).
@@ -68,24 +80,31 @@ unresolved obligation rather than a reduction) are folded into §1d, §3d, §5.
 Everything in §1 is an input. The mixing response, the two channels, the leakage FORM, and every control disposition
 of §§3–5 are **outputs**; ⛔ none is stated here.
 
-### 1a · Inheritance and the consumed c2 exports
+### 1a · Inheritance and the consumed c2 exports (the REAL export rows)
 
-The DOFs, sector split, background ansatz, `(ε,η,σ_W)` power counting (`N12`), and admissibility are exactly S11c-a
-§§1–2 / S11c-b §§1–2 / S11c-c2 §1, inherited by pointer. S11c-d consumes one already-built, per-engine-reviewed model,
-**S11c-c2** (`scripts/S11c_c2_exports.py`; step record `steps/S11c_c2_self_energy_fold.md`; disposition
-`_measurements/S11c_c2_N6_reconcile_disposition.md`):
+The DOFs, sector split, background ansatz, `(ε,η,σ_W)` power counting (`N12` + S11c-a §2), and admissibility are
+exactly S11c-a §§1–2 / S11c-b §§1–2 / S11c-c2 §1, inherited by pointer. S11c-d consumes one already-built,
+per-engine-reviewed model, **S11c-c2** (`scripts/S11c_c2_exports.py`; step record
+`steps/S11c_c2_self_energy_fold.md`; disposition `_measurements/S11c_c2_N6_reconcile_disposition.md`). The c2 delta's
+own-rows that S11c-d binds (exact `IMPORT_KEYS` root set fixed at the build directive, §7), by their **real** write-keys:
 
-- **`S11CC2_CLOSED_SLAB_OPERATOR`** — the closure-modified variable-coefficient slab operator over `{u,θ,e_W}`, per
-  `(anchoring α, density ρ)`, assembled two-face, with `S11CC2_CLOSED_SLAB_OPERATOR_TERM_ORIGINS` and
-  `S11CC2_CLOSED_SLAB_OPERATOR_PARITY_BLOCKS`. Its **diagonal blocks** supply the local sector spectra / resolvents
-  (the transverse response `G_T`, the thickness response `G_H` and its poles).
-- **`S11CC2_CLOSED_COUPLING_KERNEL`** — the re-extracted **off-diagonal** transverse↔`{θ,e_W,u_L}` block(s), with
-  `S11CC2_CLOSED_COUPLING_KERNEL_TERM_ORIGINS`. This is the **mixing vertex** S11c-d inserts.
-- the self-energy increment `S11CC2_SELF_ENERGY_INCREMENT`, its operands, and the six §3d re-adjudication objects — as
-  provenance for the disposition of §1b, ⛔ not re-opened here.
-- inherited by pointer through c2: the S11c-a T-a..T-i face substrate, `S11CB_MU_THETA_OPERATOR`,
-  `background_density_map`, the `Λ_{A,V,X}` closure channels, the two-momentum DtN kernel `dtn_kernel`, and the
-  constants/profile carriers (`W_0`, `W_bg`, `w1_profile`, `L_W`, `sigma_W`, `eta_bg`, `mu_R`, `rho_m`, `rho_br`, …).
+- **`s11cc2ClosedSlabOperator`** — the closure-modified variable-coefficient slab operator over `{u,θ,e_W}`, per
+  `(anchoring α, density ρ)`. Its **diagonal blocks** supply the local sector operators / resolvents (the transverse
+  response and the thickness response with its poles), including the two **asymptotic** diagonal operators (§2).
+- **`s11cc2ClosedCouplingKernel`** — the re-extracted **off-diagonal** transverse↔`{θ,e_W,u_L}` block(s): the **full**
+  mixing vertex (tilt `∇w₁`, modulus-gradient `∇m₁`, and N4 advection channels; ⛔ not `∇w₁` alone, ⛔ not `∇m₁`
+  alone), multigraded `(ε,η,σ_W)`; its Fourier content is on the **momentum transfer** `Q = k_out − k_in`
+  (`s11cc2FourierW1ProfileHatTransfer(−k_input + k_output, …)`), ⛔ not a single unspecified `k`.
+- the **field carriers** `s11cc2Fieldtheta`, `s11cc2FieldeW`, `s11cc2Fieldu{1,2,3}`; the **profile coefficients**
+  `s11cc2Coefficientw1Profile`, `s11cc2Coefficientm1Profile`; the **Fourier-of-profile** carriers
+  `s11cc2FourierW1ProfileHatTransfer`, `s11cc2FourierW1ProfileJetHat*` (+ their `*Dimension` rows); and the inherited
+  constants/kernels reachable through the fold (`W_0`, `mu_R`, `eta_bg`, `sigma_W`, `L_W`, `rho_m`, `rho_br`,
+  `Lambda_{A,V,X}_0`, `tau_{A,V,X}`, `omega`, `c_s0`, `dtn_kernel`, `background_density_map`, …).
+
+⛔ **There are NO c2 term-origin, parity, self-energy-increment, or six-§3d-re-adjudication export rows** — those are
+**step-record provenance** (`steps/S11c_c2_self_energy_fold.md`; the increment was dropped to EMIT-only, `:56`), ⛔ not
+importable objects. S11c-d neither binds nor assumes them; where it needs such provenance it derives it anew as an
+S11c-d output.
 
 ### 1b · What is per-engine-SOUND vs cross-engine-UNCLOSED in the c2 import — SUPPLIED HONESTLY (rule 6/16)
 
@@ -94,25 +113,28 @@ carried cross-engine operand DEBT is MATERIAL to this consumer — ⛔ NOT dismi
 (`steps/S11c_c2_self_energy_fold.md:214-219`).
 
 ⭐ **PER-ENGINE SOUND (SymPy, 2-leg):** the self-energy fold wiring + A/C/D1–D6 and the emitted
-**`S11CC2_CLOSED_SLAB_OPERATOR` + `S11CC2_CLOSED_COUPLING_KERNEL` + increment VALUES**. These are the operands
-S11c-d consumes.
+**`s11cc2ClosedSlabOperator` + `s11cc2ClosedCouplingKernel` VALUES**. These two rows are the operands S11c-d consumes.
+(The self-energy **increment** value is per-engine-SOUND **parent provenance** — ⛔ it is EMIT-only, not an S11c-d
+import.)
 
 ⭐ **CROSS-ENGINE, dual-engine confirmed (the N6 thread only, on this box):** **operator covariance (Reading B)** — the
-material builder implements the declared frame change `Φ` (`R_cov` no-nonzero in both engines). ⚠ The matched
-covariance-channel cross-engine zeros are **`(0)−(0)`** — a dual-engine confirmation of the **vanishing** statement,
-⛔ **NOT operand agreement.** Preserved together: `R_N6 = I_E − I_{M→E}` **nonzero (18/288)** AND `R_cov` **no-nonzero**
-(consistent under Reading B).
+material builder implements the declared frame change `Φ` (`R_cov` no-nonzero in both engines), on the specified
+control/premise subset. ⚠ The matched covariance-channel cross-engine zeros are **`(0)−(0)`** — a dual-engine
+confirmation of the **vanishing** statement, ⛔ **NOT operand agreement.** ⚠ **`R_N6 = I_E − I_{M→E} = 18/288` is the
+per-engine SymPy RAW result and was ENTIRELY SCHEMA-UNMATCHED** — there is **no** direct cross-engine comparison of
+`R_N6` itself (`_measurements/S11c_c2_N6_reconcile_disposition.md`); only the Reading-B covariance vanishing + the
+control/premise subset are dual-engine. Both are preserved (`R_N6` nonzero raw, `R_cov` no-nonzero) as consistent
+under Reading B.
 
 ⛔ **CROSS-ENGINE UNCLOSED — S11c-d must NOT treat these as closed (a supplied, unfalsifiable-in-this-build premise it
 names honestly, `M2`/rule 16):**
 - **the cross-engine OPERAND DEBT** — the surfaced blind-WL-vs-imported **carrier (40)**, constitutive **source (76)**,
   and **Φ (18)** residuals are **UNADJUDICATED**, and the leftover SHAPE was **not inspected**. The v3 collapse
-  instrument was CLOSED **NOT-SOUND** (the post-EL graded coefficient table is the wrong object,
-  `_measurements/S11c_c2_N6_reconcile_disposition.md`); the only sound reconcile instrument is **upstream of the EL
-  differentiation**. ⛔ **Do NOT let "representational-difference-UNADJUDICATED" become "known to be just thickness"**:
-  the alternatives include a genuine constitutive-convention mismatch OR an implementation error. Because S11c-d's
-  mixing rides on `S11CC2_CLOSED_COUPLING_KERNEL`, this DEBT is a **live premise on the object S11c-d builds** —
-  S11c-d **names** it as unclosed and ⛔ does not pre-adjudicate it.
+  instrument was CLOSED **NOT-SOUND**; the only sound reconcile is **upstream of the EL differentiation**. ⛔ **Do NOT
+  let "representational-difference-UNADJUDICATED" become "known to be just thickness"** — the alternatives include a
+  genuine constitutive-convention mismatch OR an implementation error. Because S11c-d's mixing rides on
+  `s11cc2ClosedCouplingKernel`, this DEBT is a **live premise on the object S11c-d builds** — S11c-d **names** it as
+  unclosed and ⛔ does not pre-adjudicate it.
 - **the two S11c-b sign conventions** that multiply the substituted `δp_s` slots and do **not** cancel from c2's
   residual (`steps/S11c_b_variable_coefficient_operator.md:112-115`): the **face-generalized-force** convention (PY
   `+diff` vs WL `−linearVirtualVariation`) and the **#90 closure-fold** sign. (The kinetic `−K/+K` convention is a bulk
@@ -125,88 +147,104 @@ names honestly, `M2`/rule 16):**
 - **F and G are WITHDRAWN interpretations** — the uniform-limit decoupling (F) and directionality (G) rest on the
   retired `verify_F`/`verify_EG` instruments; numeric-probe re-grounding is a standing OWED debt, **PAUSED
   INDEFINITELY / non-blocking**. ⛔ Do not resurface it as a BLOCKER; ⛔ but pausing did not discharge it — the F/G
-  conclusions do **not** stand, only the increment VALUES do.
+  conclusions do **not** stand, only the increment VALUES do. ⚠ **In particular, "the sectors decouple at uniform
+  background" is exactly the withdrawn F** — S11c-d treats the uniform amplitude as a **computed** object `A_0` (§3c),
+  ⛔ never as an assumed zero.
 
 ⛔ Folding any of the above to force cross-engine closure is the exact defect this rebuild exists to catch (rule 1/6).
 
 ### 1c · The background profile class — SUPPLIED framing (`N5`/`N12`/`N14`/`N15`)
 
-⭐ **The named class is a LOCALIZED INTERFACE.** The background thickness profile is
+⭐ **The named class is a LOCALIZED INTERFACE, stated on the INHERITED profiles along a NAMED in-plane normal** (S11c-a
+§2a, `:171-192`). ⛔ Never write the varying thickness as `W_0`/`W₀(x)` — `W_0` and `mu_R` are **reserved constant
+ledger keys** (`N14`); the varying fields are `W_bg`, `μ_R,bg`, via the inherited profiles `w₁ (=
+s11cc2Coefficientw1Profile)`, `m₁ (= s11cc2Coefficientm1Profile)`. The in-plane coordinate `y` is a 3-vector; **name a
+unit interface normal `n̂`** (e.g. `y¹`), with the profiles depending on `ξ ≡ n̂·y/L_W` and uniform along the edge:
 
 ```text
-W₀(x) = W̄₀·[ 1 + η·f(x/L_W) ] ,     f asymptotically constant,  f(−∞) ≠ f(+∞)  ⇒  ∫ W₀′(x) dx = W₊ − W₋ ≠ 0 ,
-σ_W = η·W̄₀/L_W  (the first-jet / sharpness grade, kept live) ,   L_W independent of η .
+ξ ≡ n̂·y/L_W ,   W_bg ≡ W̄₀[1 + η w₁(ξ)] ,   μ_R,bg ≡ μ̄_R[1 + η m₁(ξ)] ,   σ_W ≡ η W̄₀/L_W ,
+∂_{yᵢ}W_bg = σ_W n̂ᵢ w₁′(ξ) ,   ∂_{yᵢ}μ_R,bg = (μ̄_R/W̄₀) σ_W n̂ᵢ m₁′(ξ) ,   W̄₀ ≡ W_0 ,  μ̄_R ≡ mu_R .
 ```
 
-- ⭐ **An interface is NOT a bump.** A single edge has a localized **gradient** but **different asymptotic
-  backgrounds** (`∫W₀′ ≠ 0`); a defect bump returns to its original background (`∫W₀′ = 0`). Their low-momentum-transfer
-  coupling content can differ (§5c). ⛔ A bump must **not** silently stand in for a single edge. A smooth finite barrier
-  with two transitions is the corresponding localized model for **two** edges.
-- A specific shape (e.g. `f(ξ) = (1+tanh ξ)/2`) is a **representative**, ⛔ not the class — keep `f` general within the
-  localized-interface class (or name a representative as a representative). The mixing vertex depends on `∇w₁`.
-- **Admissibility (`N12`).** Name which quantities vary (`W₀(x)`, `μ_R(x)`, `ρ_br⁰(x)`), the profile's **anchoring**
-  (material-advected vs lab/Eulerian-held — inherited as the anchoring `α`, `N4`), and the **stationary equations or
-  the named force** that holds it — an inadmissible background silently sources spurious coupling.
+- ⭐ **`w₁` and `m₁` are INDEPENDENT `O(1)` profiles** (S11c-a `:190`; ⛔ no engine may tie them, ⛔ no `m₁ = m₁[w₁]`).
+  The **interface** condition (asymptotically constant, finite jump) is required on **both**: `Δw₁ ≡ w₁(+∞) − w₁(−∞) ≠
+  0` (the thickness interface, so the asymptotes `W₋ ≠ W₊`, §2) **and** `Δm₁ ≡ m₁(+∞) − m₁(−∞) ≠ 0` (the modulus
+  interface, the mixer). A specific shape (e.g. `(1+tanh ξ)/2`) is a **representative**, ⛔ not the class.
+- ⭐ **An interface is NOT a bump.** The invariant discriminant is the **zero-transfer moment** `m̂₁′(Q_n=0) = Δm₁`
+  (and `ŵ₁′(0) = Δw₁`): **nonzero** for an interface, **zero** for a bump. A bump returns to its background and has a
+  different low-`Q` vertex; ⛔ a bump must **not** silently stand in for a single edge (§5c).
+- **Momentum transfer / form factor.** Scattering conserves the tangential (edge-parallel) momentum; the **normal
+  momentum transfer** is `Q_n ≡ k_{out,n} − k_{in,n}` (along `n̂`). The localized-edge form factor is `m̂₁′(Q_nL_W)`
+  (and `ŵ₁′(Q_nL_W)`) — one reduced 1-D Fourier convention along `n̂`; the edge-parallel momenta stay live parameters.
+- **Admissibility (`N12`).** Name which quantities vary (`W_bg`, `μ_R,bg`, `ρ_br,bg⁰` — both density representatives
+  with their two asymptotic values `W_±`, `μ_±`), the anchoring (material-advected vs lab/Eulerian-held, inherited
+  `α`, `N4`), and the stationary equations or the named force that holds the background — an inadmissible background
+  silently sources spurious coupling.
 - **Names (`N14`).** Every spatially-varying field/kernel/observable gets a **fresh** injective standard name; ⛔ never
-  reuse an imported S11b/c1/c2 key (`W_0`, `e_W`, `rho_br`, `v_0`, `slab_operator`, `coupling_kernel`, …) for a varying
-  object — `F9`'s object comparison proves a false equal, and for `rho_br` it is the `∇Σ_E⁰=0` freeze that drops the
-  advective channel.
-- **Invariants (`N15`).** Inherit S11b's invariants with variable coefficients; **emit any new gradient-of-background
-  invariants as RESULTS** (new constants if they appear) — e.g. the edge form factor / integrated-jump moment. ⛔
-  Neither smuggle them in by an `W₀→W₀(x)` substitution into the uniform energy, nor forbid them.
+  reuse an imported constant key (`W_0`, `mu_R`, `e_W`, `rho_br`, `v_0`, `slab_operator`, `coupling_kernel`, …) for a
+  varying object.
+- **Invariants (`N15`, at the RIGHT layer).** S11c-d consumes c2's operator/kernel **verbatim** — it ⛔ may **not**
+  invent a new local constitutive constant (that is the variable-coefficient-operator stage's job, `N15`;
+  `decisions:143`). It emits **profile moments and Fourier form factors DERIVED from the imported kernel** (e.g. the
+  integrated-jump moment `Δm₁`, `m̂₁′(Q_nL_W)`) — profile/scattering **data**, ⛔ not new constitutive invariants. If
+  the scattering exposes a **missing** local invariant, record it as an **upstream N15 debt**, ⛔ do not add it in d.
 
 ### 1d · The regime — SUPPLIED (Born in CONTRAST, sharpness LIVE)
 
-⭐ **Born in the contrast `η`; the sharpness `σ_W` and the kinematic `kL_W` are INDEPENDENT live grades.** The three
-scales are distinct and must not be conflated:
+⭐ **Born in the contrast `η`; the sharpness `σ_W` and the kinematic `Q_nL_W` are LIVE.** The three quantities are
+distinct and must not be conflated (S11c-a `:189-198`):
 
 ```text
-η    = contrast          (Born / scatterer strength) ,
-σ_W  = η·W̄₀/L_W = first-jet / sharpness   (the adiabaticity axis; the WKB axis) ,
-kL_W = kinematic         (is the edge sharp on the WAVE) .
+η      = contrast          (Born / scatterer strength;  a background bookkeeper) ,
+σ_W    = η·W̄₀/L_W = first-jet / sharpness   (an INDEPENDENT background bookkeeper — ⛔ never a common order with η) ,
+Q_nL_W = kinematic         (is the edge sharp on the WAVE — a PARAMETER, ⛔ not a grade) .
 ```
 
-⛔⛔ **"Weak-GRADIENT" is the wrong name and is FORBIDDEN in the build framing** — it identifies gradient with
-contrast. A builder handed "weak-gradient" will Taylor-expand the profile in `σ_W` or send `L_W → ∞`, which **kills the
-Fourier form factor of a localized edge and slides the object toward WKB** — the one class that does not match an edge.
-⭐ Say instead: **localized interface, Born in contrast `η`, `σ_W` live** — ⛔ do not expand the profile in
-derivatives, ⛔ do not send `L_W → ∞`. Weak **contrast** does not require WKB: provided the frozen approximation holds,
-`kL_W` need not be large.
-
-⚠ The retained rectangle is the inherited `(η^{≤1}, σ_W^{≤1})` (`N12`). ⛔ **Do NOT set `η → O(1)` inside the c2
-operators**: `S11CC2_CLOSED_SLAB_OPERATOR` / `S11CC2_CLOSED_COUPLING_KERNEL` are **first-shape-order** truncations, and
-`η = O(1)` uses an incomplete operator exactly where the missing `O(η²)` pieces compete — that is a bookkeeping
-violation, not "going non-perturbative." Keeping `η` a formal symbol does **not** restore the missing error control
-(§3d).
+⚠ **The imported operator/kernel are ALREADY a first-`σ_W` shape expansion** — so "weak contrast" is well-defined;
+what is **forbidden** is: ⛔ an **additional** `σ_W → 0` / `L_W → ∞` limit, ⛔ **expanding away the form factor**
+`m̂₁′(Q_nL_W)`, and ⛔ setting **`η → O(1)` inside the first-shape-order operators** (an incomplete operator exactly
+where the missing `O(η²)` pieces compete). ⭐ **The form-factor kinematics (corrected):** `Q_nL_W → 0` is the
+**zero-transfer / sudden** limit, where `m̂₁′(Q_nL_W) → Δm₁` (the integrated jump, maximal conversion); `|Q_nL_W| ≫ 1`
+(reached by `L_W → ∞`, i.e. `σ_W → 0`) is the **WKB / adiabatic** regime, where the form factor is suppressed
+(Riemann–Lebesgue) and conversion is small — the class N5 says does not match a sharp edge. ⭐ Keep **Born in contrast
+`η`, `σ_W` and the `Q_nL_W` form factor LIVE.** Weak **contrast** does not require WKB.
 
 ---
 
-## 2 · The mixing object and the distorted-wave-Born organization — SUPPLIED framing
+## 2 · The mixing object and the two-asymptote distorted-wave organization — SUPPLIED framing
 
-The object is the **linear mixing** between the uniform transverse sector and the thickness sector, supported only
-where `∇μ_R ≠ 0` (the localized gradient). With a **uniform** background the two sectors decouple identically (S11b);
-mixing is sourced by the gradient (`∝ k·a`). The natural organization is **distorted-wave Born**: the diagonal blocks
-of `S11CC2_CLOSED_SLAB_OPERATOR` supply the incoming/outgoing sector fields, and the intersector conversion is one
-insertion of `S11CC2_CLOSED_COUPLING_KERNEL`:
+The object is the **linear mixing** between the transverse sector and the thickness sector, carried by the **full**
+imported off-diagonal vertex (tilt `∇w₁`, modulus-gradient `∇m₁`, N4 advection). ⚠ **Constitutive** mixing is *driven
+by* `∇μ_R,bg ≠ 0` (`V3_STEP_PLAN.md:1179`, the modulus subchannel); ⛔ but this is **not** the whole support — a
+`μ_R`-only projection **drops** the tilt and advection channels §1a requires and is an **ablation**, not the object.
+The uniform-background amplitude is a **computed** object `A_0` (§3c), ⛔ not an assumed zero (the withdrawn F, §1b).
+
+Because the interface has different asymptotes `W₋ ≠ W₊` (`Δw₁ ≠ 0`), the two ends carry **distinct** diagonal
+operators, wavenumbers, and flux velocities — so name the two-asymptote distorted basis:
 
 ```text
-mixing response  =  [  − G_H⁺ · K_HT · ψ_T^{in,D}  ]_{εη}          (one kernel insertion; the reverse uses the other block)
-where   G_H⁺   = outgoing Green operator / resolvent of the thickness-diagonal block of S11CC2_CLOSED_SLAB_OPERATOR ,
-        K_HT   = the transverse→thickness block of S11CC2_CLOSED_COUPLING_KERNEL (the off-diagonal vertex) ,
-        ψ_T^{in,D} = the incoming transverse solution of the uncoupled DIAGONAL problem .
+L₋ = the W₋-asymptotic diagonal operator ,   L₊ = the W₊-asymptotic diagonal operator   (from s11cc2ClosedSlabOperator) ;
+FIX one incident end and the open OUTGOING channels at each end, with an outgoing/Jost boundary prescription ;
+mixing response  =  ( thickness outgoing resolvent )  ·  K_HT  ·  ( incoming transverse distorted solution )   at O(ε·[first shape order]) ,
+where K_HT = the transverse→thickness block of s11cc2ClosedCouplingKernel (the FULL vertex), the reverse uses the other block .
 ```
 
-⭐ The **scattering labels are frequency and asymptotic incoming/outgoing channels** — these do **not** require, and
-do **not** imply, a global `ω(k)` for the inhomogeneous slab (`N5`). Two framing obligations:
-- ⭐ **Re-expand to the retained `η` order.** Keeping the profile-dependent diagonal solutions unexpanded is a useful
-  partial resummation, but its extra powers are **not** a complete higher-order prediction — retain the specified
-  `(η^{≤1}, σ_W^{≤1})` grade.
-- ⭐ **Specify a REGULAR scattering domain.** Exclude unresolved threshold/resonance enhancements and interaction
-  lengths that make repeated conversion appreciable — a weak pointwise gradient can accumulate a large conversion over
-  a sufficiently long coherent region.
-- ⚠ **Sub-choice deferred to the build directive** (they coincide at leading `O(η²)`): plain Born on the **uniform**
-  sector modes vs distorted-wave Born on the **profile-dressed** diagonal Green operator `G_H⁺(ω;W₀)`. The leading
-  conversion is the same; the build directive fixes which, and re-expands to the retained grade either way.
+⭐ The **scattering labels are frequency and asymptotic incoming/outgoing channels** — these do **not** require, and do
+**not** imply, a global `ω(k)` (`N5`). Framing obligations:
+- ⚠ **At the retained first-shape order and away from thresholds, uniform-mode Born and the two-asymptote
+  distorted-wave construction coincide** (`G = G₀ + O(η,σ_W)`, `K = O(first shape)` ⇒ the continuum object is the
+  uniform-mode matrix element of `K` at that order); ⛔ do not claim a retained-order difference. The two-asymptote
+  basis is the **threshold / regular-domain organization** and fixes the `L±` kinematics — build the directive's
+  regression on uniform modes only away from thresholds.
+- ⭐ **Re-expand the continuum response to the retained background grade** (first order in each of `η`, `σ_W`); keeping
+  the profile-dependent diagonal solutions unexpanded is a partial resummation, not a complete higher-order
+  prediction. ⚠ **Exception:** a **bound-pole** spectral solve (§3b) is a **resummation** `G = (G₀⁻¹ − V)⁻¹` that the
+  first-order continuum re-expansion **cannot** create — that spectral solve is **exempt** from the continuum
+  re-expansion and carries its own stated error limitation. The "regular scattering domain" (exclude threshold /
+  resonance enhancement and long coherent regions where repeated conversion accumulates) governs the **continuum**
+  Born validity only; ⛔ it does not delete the §3b bound object.
+- ⛔ **State no overall sign** in the insertion (an `i0`/Lippmann–Schwinger convention); let each engine's resolvent
+  convention fix it. The comparator's load-bearing residual is the mixing amplitude, §7.
 
 ---
 
@@ -216,17 +254,22 @@ Every object below is computed for both anchorings `α` and both density represe
 `(ε,η,σ_W)` multigrade and restored `[L,T,M]` dimension, and states no component value, sign, order, parity, or grade
 in this document.
 
-### 3a · The profile-conditioned mixing response (continuum channel)
+### 3a · The profile-conditioned mixing response (continuum channel) — a CANONICAL S-matrix object
 
-Emit the mixing response of §2 for the localized-interface profile, both intersector directions (both exported
-off-diagonal blocks), per `(α,ρ)`. Its outgoing-channel projections are the **conversion / scattering amplitudes**.
+Emit the mixing response of §2 for the localized-interface profile, on the two-asymptote distorted basis, per
+`(α,ρ)`. ⭐ **Fix the canonical object for blind comparison:** **one** named incident end (or the complete channel
+matrix with both ends emitted separately), **one** amplitude normalization (flux-normalized to unit incoming flux, so
+the amplitude carries the explicit `√(v_out/v_in)` factor — ⛔ do not offer "unit-flux OR `J_out/J_in`" as
+interchangeable, they differ), and explicit branch labels `(incoming end, outgoing end, channel, ω, k_∥)`. Emit the
+field-normalized raw amplitude separately if desired. Its continuum-channel projections are the **conversion /
+scattering amplitudes**.
 
 ```text
-⇒ S11CD_MIXING_RESPONSE (per (α,ρ), both directions) , S11CD_MIXING_RESPONSE_TERM_ORIGINS ,
-  S11CD_CONVERSION_AMPLITUDE  (outgoing-channel projections) .
+⇒ S11CD_MIXING_RESPONSE (per (α,ρ), fixed incident end or full matrix) , S11CD_CONVERSION_AMPLITUDE (flux-normalized, labelled channels) ,
+  S11CD_ASYMPTOTIC_OPERATORS (L₋, L₊, open-channel set, v_in/v_out) .
 ```
 
-### 3b · The two DISTINCT photon-kill channels (`N13`) + confinement
+### 3b · The two DISTINCT photon-kill channels (`N13`) — the bound pole is a PROFILE-FUNCTIONAL CONDITIONAL
 
 `N13`: "confinement of light" = **survival of the transverse polarization channel**. Conversion into a **bound**
 breathing/thickness mode kills the photon **exactly as** bulk radiation does — the two are **distinct emitted
@@ -234,68 +277,94 @@ objects**, ⛔ not one "energy stays in the slab" statement.
 
 - **(i) continuum conversion** — transverse → the thickness **continuum** / bulk escape (the §3a amplitude projected on
   the radiating/continuum channel).
-- **(ii) bound-mode capture** — transverse → a **bound** thickness/breathing pole (a resolvent **pole** of the
-  thickness-diagonal block of `S11CC2_CLOSED_SLAB_OPERATOR`; a weak attractive well binds a mode in 1D, so this is a
-  real photon-kill channel at **small** `η`, and is **not** a Bloch band). Emit the pole/residue object and the
-  transverse→bound coupling.
+- **(ii) bound-mode capture — a PROFILE-FUNCTIONAL, COMPUTED CONDITIONAL, ⛔ no class-wide existence claim.** A class
+  with a fixed asymptotic jump contains both monotone steps **and** profiles with localized overshoots/wells, which
+  have **different** pole sets — so existence/absence ⛔ cannot be asserted class-wide. ⛔ Do **not** invoke the 1D
+  weak-well theorem (it needs equal asymptotes + an attractive self-adjoint well; the interface has different
+  asymptotes and the thickness operator is multi-component, `ω`-dependent, nonlocal, possibly **non-Hermitian** from
+  the outgoing bulk response). ⇒ emit a **profile-functional Jost / Evans determinant** and its zeros, with left/right
+  residues and the nonlinear-eigenvalue (`∂_ωL_H`) normalization and spectral coupling — **PERMIT COMPUTED ABSENCE**.
+  A **true bound pole** is a **physical-sheet, normalizable, zero-width** pole with **every radiation channel closed**
+  (⛔ "below both continua" alone is insufficient for the non-Hermitian operator); distinguish it from a **second-sheet
+  resonance**. A true bound state carries **no** asymptotic outgoing flux, so a **capture rate** requires a named
+  protocol (wave-packet / switching, or a resonance width); ⛔ a pole residue + coupling alone is **not** a conversion
+  probability — either define the protocol or emit only the spectral overlap / coupling. ⚠ A found pole is a localized
+  **bound/resonance** object, ⛔ **not** a Bloch band (and an empty pole set is not a band either — the interface is
+  nonperiodic regardless).
 - The **confinement question** (`N10`): whether transverse-channel survival is **unconditional** — emit the computed
-  object, ⛔ not a claim.
+  object (a possibly-empty pole set + the continuum conversion), ⛔ not a claim.
 
 ```text
-⇒ S11CD_CONTINUUM_CONVERSION , S11CD_BOUND_MODE_CAPTURE (pole + residue + coupling) , S11CD_CONFINEMENT_CONDITION .
+⇒ S11CD_CONTINUUM_CONVERSION , S11CD_BOUND_MODE_SPECTRAL_TEST (Jost/Evans determinant, zeros, residues, coupling; may be empty) ,
+  S11CD_CAPTURE_PROTOCOL (or spectral-overlap-only) , S11CD_CONFINEMENT_CONDITION .
 ```
 
-### 3c · The leakage order bookkeeping — the export representation (`N12`; the ε²-cancellation correction)
+### 3c · The order bookkeeping — `(ε,η,σ_W)` multigrade + the named homotopy; the flux is the transverse continuum channel
 
-With incident field amplitude `ε` and contrast `η`, in the **linear** theory:
+⭐ **Every object is multigraded `(ε,η,σ_W)` from its actual data dependency (S11c-a `:195`); ⛔ no engine may assign a
+common order to `η` and `σ_W`, and `Q_nL_W` is a kinematic parameter, ⛔ not a grade.** Retain first order in wave
+(`ε¹`) and first shape order in **each** background bookkeeper (`η^{≤1}`, `σ_W^{≤1}`).
+
+- **Emit the FULL multigraded amplitude including its uniform component `A_0`** (the `(η⁰,σ_W⁰)` part). ⛔ Do **not**
+  assume `A_0 = 0` (that is the withdrawn F, §1b). The **leakage-relevant** object is the **induced amplitude**
+  `ΔA ≡ A − A_0` (the part sourced by the gradient) — emit it as a named object.
+- **The named homotopy.** `λ ≡ η` at **fixed** `L_W` and fixed shapes `w₁`, `m₁` (so `σ_W = η W̄₀/L_W` **tracks**; this
+  is a physical **path**, ⛔ not a freeze of the formal `(ε,η,σ_W)` multigrade). On it the induced amplitude is
+  `ΔA = O(ελ)`, the induced converted flux `O(ε²λ²)`, `J_in = O(ε²)`, and the flux-normalized fraction
+  `C = J_conv/J_in = O(λ²) = O(η²)` (the incident `ε²` **cancels** in the linear theory). ⭐ Emit **both** the formal
+  `(ε,η,σ_W)` amplitude multigrade **and** the homotopy `λ`-orders. The `N12` labels (`O(εη)` coupling, `O(ε²η²)`
+  leakage, `O(η²)` fraction) apply to `ΔA` (⛔ do not attach them to the total `A` unless `A_0` is computed zero).
+  ⚠ An `O(ε²λ²)` **observable** of a **linear** mixing is not the excluded nonlinear-light program (an `O(ε²)`
+  **vertex** would be, `N10`/`N12`).
+- **Flux normalization (the N13-correct observable).** `J` is the inherited **transverse-polarization-channel** energy
+  flux (the S11b quadratic energy / c2 traction–slab pairing bilinear form). `J_conv` = the **continuum** (thickness /
+  bulk) outgoing transverse-channel flux **ONLY** — ⛔ **do not fold bound capture into `J_conv`** (a stationary bound
+  state carries no outgoing flux; a non-flux overlap in a flux is dimensionally illegal). ⛔ Do not use total
+  mechanical energy or bare bulk Poynting (they hide the bound channel). ⚠ A **total photon-loss** fraction, if named,
+  is a **separately-named** sum of the continuum fraction and the bound-capture probability — **same-dimension
+  probabilities**, combined only **after** the §3b capture protocol exists, ⛔ never as a term inside `J`. The
+  **magnitude** is `R1`-blocked; only the FORM is computed here.
 
 ```text
-converted amplitude       ψ_H      = O(ε η)   ,
-absolute converted flux    J_conv   = O(ε² η²) ,
-incident flux              J_in     = O(ε²)    ,
-dimensionless conversion FRACTION   C = J_conv / J_in = O(ε⁰ η²) = O(η²)     (the incident ε² CANCELS) .
-```
-
-⭐ **Emit BOTH labels — absolute (`O(ε²η²)`) and fractional (`O(η²)`) — and keep both visible.** A normalized /
-per-photon conversion rate in a linear theory **cannot** retain the incident `ε²`; the flux-**normalized** dimensionless
-conversion FORM (the S11c-e observable, `N7`) is therefore `O(η²)`, while `N12`'s "`O(ε²η²)` leakage rate" is the
-**absolute** converted power. ⚠ Naming both prevents an accidental intensity dependence, and prevents a mis-ordered
-`O(ε²η²)`/`O(η²)` term from being read as the excluded nonlinear-light program (`N10`/`N12`). The **magnitude** is
-`R1`-blocked (out of scope); only the FORM is computed here.
-
-```text
-⇒ S11CD_CONVERSION_FRACTION_FORM (flux-normalized, O(η²)) , S11CD_CONVERSION_POWER (absolute, O(ε²η²)) .
+⇒ S11CD_AMPLITUDE_MULTIGRADE (incl. A_0) , S11CD_INDUCED_AMPLITUDE (ΔA) , S11CD_TRANSVERSE_FLUX_PAIRING ,
+  S11CD_CONVERSION_FRACTION_FORM (continuum, O(λ²)) , S11CD_CONVERSION_POWER (absolute, O(ε²λ²)) .
 ```
 
 ### 3d · The strong-edge bridge — NAMED as a downstream obligation, ⛔ NOT solved, ⛔ NOT a reduction
 
-⭐⭐ **S11c-d establishes the WEAK matching coefficient only; it does NOT establish the order-unity edge form.** A lab
-slit edge is **localized + order-unity contrast**. S11c-d honestly delivers `F′(0)` (the `O(η)` slope of the
-conversion); the lab bounds `F(1)`.
+⭐⭐ **S11c-d establishes the WEAK coefficients only; it does NOT establish the order-unity edge form.** A lab slit
+edge is **localized + order-unity contrast**. Emit **separately** (⛔ do not conflate an amplitude slope with a
+fraction slope): the leading **amplitude** coefficient `∂_λ(A_H/ε)|₀` **and** the leading **fraction** coefficient
+`lim_{λ→0} C/λ² = ½C''(0)`. ⚠ **The slope of the fraction itself vanishes** (`C = O(λ²) ⇒ C'(0) = 0`) — so "the `O(η)`
+slope of the conversion" is the wrong object. ⛔ **State no value or sign for the amplitude coefficient** — it is a
+computed object and **can vanish** (a form-factor node `Q_nL_W = nπ` with `Δm₁ ≠ 0`, a `k·a = 0` selection rule); the
+strong-edge statements below are **conditional on a nonzero computed coefficient**. The lab bounds the **strong
+conversion fraction** `C_strong` at order-unity contrast, ⛔ **not** "`F(1)`" of an amplitude.
 
 ⛔⛔ **A nonzero Born coefficient supplies NO general positive lower bound on strong-edge conversion.** Illustrative
 counterexample (⛔ not a model of the slab): a lossless two-mode coupler with dimensionless integrated coupling `G`,
 
 ```text
-A_H = −i ε sin(η G) ,     C = sin²(η G) = η²G² + O(η⁴) ,     C → 0  at finite η G .
+A_H = −i ε sin(η G) ,     C = sin²(η G) = η²G² + O(η⁴) ,     C = 0  at finite nonzero  η G = nπ .
 ```
 
 The converted amplitude starts at `O(εη)` and the flux at `O(ε²η²)` **exactly as required**, yet the exact conversion
-can return to **zero** at finite coupling. ⛔ **Do NOT evaluate the Born coefficient at `η=1` and compare that number
-to the lab** — that identifies `F′(0)` with `F(1)`, the invalid extrapolation `N7` names.
+returns to **zero** at finite coupling. ⛔ **Do NOT evaluate the Born coefficient at `η=1` and compare that number to
+the lab** — that identifies the weak coefficient with `C_strong(1)`, the invalid extrapolation `N7` names.
 
 ⭐ **The downstream obligation, stated now (owned by the S11c-e strong-edge stage):** a **justified finite-contrast
-response** — a piecewise-uniform (finite-`ΔW`) matching, matched interior/exterior solutions, or an effective interface
-response whose undetermined parameters remain **explicit** — whose **weak limit reproduces S11c-d**. This is a **NEW
-construction** (each uniform side is `η`-exact; the finite-`ΔW` matching is not a first-jet kernel). ⚠ Born can miss
-repeated conversion/reconversion, diagonal reflection, resonance shifts, and altered channel availability — these
+response** — a piecewise-uniform (finite-`ΔW`) matching, matched interior/exterior solutions, or an effective
+interface response whose undetermined parameters remain **explicit** — whose **weak limit reproduces S11c-d**. This is
+a **NEW construction** (each uniform side is `η`-exact; the finite-`ΔW` matching is not a first-jet kernel). ⚠ Born can
+miss repeated conversion/reconversion, diagonal reflection, resonance shifts, and altered channel availability — these
 change **frequency and angular dependence**, not just magnitude. ⇒ if the finite-contrast response cannot be
 established in scope, the honest S11c-e outcome is a **conditional constraint on edge-response parameters** (or a
 deferred numerical exclusion), ⛔ **not** a shape-independent exclusion — and the unknown interior coupling need **not**
 factor as `C_edge(ω,ϑ) = C_interior·F(ω,ϑ)` (repeated scattering can put it inside resonance denominators).
 
 ```text
-⇒ S11CD_WEAK_MATCHING_COEFFICIENT (F′(0)) , S11CD_STRONG_EDGE_OBLIGATION (named premise, ⛔ not solved here) .
+⇒ S11CD_WEAK_AMPLITUDE_COEFFICIENT (∂_λ(A_H/ε)|₀, no value/sign) , S11CD_WEAK_FRACTION_COEFFICIENT (½C''(0)) ,
+  S11CD_STRONG_EDGE_OBLIGATION (named premise, ⛔ not solved here) .
 ```
 
 ---
@@ -304,17 +373,21 @@ factor as `C_edge(ω,ϑ) = C_interior·F(ω,ϑ)` (repeated scattering can put it
 
 Per anchoring `α∈{L,M}` and density representative `ρ∈{ρ_4D,ρ_br}`, multigraded and dimensioned:
 
-- The **profile-conditioned mixing response** + its term-origins + the conversion amplitude — §3a.
-- The **two photon-kill channels** (continuum conversion; bound-mode pole + residue + coupling) + the confinement
-  condition — §3b.
-- The **leakage bookkeeping** — the flux-normalized conversion FRACTION FORM (`O(η²)`) and the absolute converted power
-  (`O(ε²η²)`) — §3c.
-- The **weak matching coefficient** `F′(0)` and the named strong-edge obligation — §3d.
+- The **mixing response** + conversion amplitude (canonical, flux-normalized, labelled) + the asymptotic operators /
+  channels / velocities — §3a.
+- The **two photon-kill channels** (continuum conversion; the **profile-functional** bound-pole spectral test —
+  Jost/Evans zeros / residues / coupling, possibly empty; the capture protocol or spectral-overlap-only) + the
+  confinement condition — §3b.
+- The **leakage bookkeeping** — the full multigraded amplitude incl. `A_0`, the induced amplitude `ΔA`, the
+  transverse-flux pairing, the continuum conversion FRACTION FORM (`O(λ²)`), and the absolute converted power
+  (`O(ε²λ²)`) — §3c.
+- The **weak amplitude coefficient** (no value/sign) and **weak fraction coefficient**, and the named strong-edge
+  obligation — §3d.
 - The **control outputs** of §5, each emitted as the object and its literal residual.
-- Any **new gradient-of-background invariant** surfaced (`N15`, e.g. the edge form factor).
+- **Profile moments / form factors** derived from the imported kernel (`N15` data, ⛔ no new constitutive constants).
 
-Every result carries its `(ε,η,σ_W)` order (`N12`) and its restored `[L,T,M]` dimension. ⛔ No result is reported
-without both.
+Every result carries its `(ε,η,σ_W)` order (and, on the homotopy, its `λ`-order) and its restored `[L,T,M]` dimension.
+⛔ No result is reported without both.
 
 ---
 
@@ -324,67 +397,88 @@ without both.
 object and its literal residual; ⛔ none asserts a target value. A **coefficient** rescale tests arithmetic; only a
 **form** change tests physics.
 
-### 5a · The N6 control — the independent shape/coordinate route + one-sided corruption (`decisions:94-104`)
+### 5a · The N6 control — INSERTION-construction independence on the imported kernel + one-sided profile-atom corruption
 
-⭐ **The genuine control (rule 14), ⛔ NOT the uniform limit.** Derive the off-diagonal mixing two independent ways and
-compare, then corrupt one route only:
+⚠ **The kernel-level Eulerian↔material representation N6 was c2's control** (and is cross-engine-UNCLOSED DEBT, §1b);
+S11c-d ⛔ does **not** re-derive the material **closed operator** (it is not in the consume-set, and no face-normal
+carrier factory is imported). S11c-d's N6 tests the **INSERTION / scattering-construction** coordinate-independence on
+the **imported** closed kernel:
 
 ```text
-route 1 (level-set / graph):    derive the off-diagonal mixing by direct level-set / graph linearization of the
-                                 localized-interface faces ;
-route 2 (flattened material):   derive it AGAIN after flattening the faces into material coordinates, then transform
-                                 Eulerian ↔ material EXACTLY into the common Eulerian face basis ;
-S11CD_REP_INVARIANCE_RESIDUAL[α,ρ] = route1 − route2      (the representation-invariance measurement) .
+route 1 (Eulerian scattering coords):   the §2 mixing insertion (distorted waves + flux pairing) built in the Eulerian
+                                        in-plane scattering coordinates, on the imported closed kernel ;
+route 2 (material-flattened coords):    the SAME insertion built after flattening the interface faces to material
+                                        in-plane coordinates and transforming the SCATTERING problem back into the
+                                        common Eulerian basis (the coordinate map lives INSIDE the construction) ;
+S11CD_INSERTION_INVARIANCE_RESIDUAL[α,ρ] = route1 − route2      (differenced DIRECTLY in the common basis) .
 ```
 
-`N6` is the physics requirement that these are the **same operator in two representations** — the uncorrupted residual
-is the measurement, its **computed value is the finding**, ⛔ no target value is supplied, and the diff is adjudicated
-on our side (⛔ never a builder exit condition). Then the **one-sided independence corruption** (still at fixed `α,ρ`):
-mutate **one route only at its source** and require a **nonzero** residual while the **uncorrupted** route is unmoved —
+⛔⛔ **No `Φ` on the amplitude / modes / flux.** `Φ` is the constitutive field map (c2's `R_cov` acted on the source
+`μ`); it is **not** defined on scattering amplitudes, incoming/outgoing modes, or the flux bilinear form — writing
+`route1 − Φ(route2)` is the c2 type error relocated (a θ-shift that annihilates). Difference the two constructions
+directly in the common Eulerian basis (⛔ no separate final transform on the amplitude, as c2 §5c). If a
+naturality/covariance residual is emitted at all, it is the naturality of the **maps that actually act on scattering
+data** (the incoming-data map, the measure) — ⛔ never a global `Φ` on the mixing amplitude.
 
-- **(i) tilt probe (`N3`):** reverse **one** face's first-jet slope term in the outward normal `n̂_s` on **one** route
-  (through that route's own carrier factory, ⛔ not by editing the imported operator, ⛔ not by altering only the DtN
-  kernel jet).
-- **(ii) N4 advection probe:** omit / flip **one** route's advective-density term (`u·∇ρ₄/ρ₄`); ⚠ this term is
-  **structurally absent for `RHO4_CONSTANT`** (`∇ρ₄=0`) and present for `RHOBR_CONSTANT` — the live probe is
+⭐ Both residuals are **computed measurements** — their **values are the findings**, ⛔ no target is supplied, ⛔ never a
+builder exit condition; the diff is adjudicated on **our** side; keep the carrier/source/Φ operand DEBT (§1b)
+explicitly unclosed.
+
+**The one-sided independence corruption** acts on the SOURCES THAT EXIST at this step — the **imported kernel's
+explicit profile atoms** (⛔ not by editing the whole operator, ⛔ not a fresh face level-set rebuild), still at fixed
+`α,ρ`, **PRINT** the residual (⛔ do not require a nonzero value):
+- **(i) tilt probe (`N3`):** reverse the **thickness first-jet slope atom** (`w₁′`/the `∇w₁` factor in the kernel) on
+  **one** route only.
+- **(ii) N4 advection probe:** omit / flip the **advective-density atom** (`u·∇ρ₄/ρ₄`) on **one** route only; ⚠ this
+  atom is **structurally absent for `RHO4_CONSTANT`** (`∇ρ₄=0`) and present for `RHOBR_CONSTANT` — the live probe is
   `RHOBR_CONSTANT`; for `RHO4_CONSTANT` emit the **computed absence**, ⛔ never an `A−A`.
 
-⚠ There are **≥2 same-order channels** (tilt `N3`; advection `N4`); the one-sided corruption is the **independence test
-between them**, ⛔ so "the gradient channel" (singular) is wrong. ⛔ `∇W₀→0` / `η→0` is **NOT** an accepted corruption
-(it is the vacuous uniform limit renamed, `N6`). ⛔ Corrupting one **anchoring** is not this test (it only shows two
-distinct physical setups differ). The `M→E` map lives **inside** route 2's native builders (covector inverse-transpose)
-— ⛔ no separate `T` on the differenced object; the field redefinition `Δρ` relates two descriptions of **one**
-perturbation, ⛔ never the two anchorings.
+⚠ There are **≥2 same-order channels** (tilt `N3`; advection `N4`); the one-sided corruption is the **independence
+test between them**. ⛔ `∇W_bg→0` / `η→0` is **NOT** an accepted corruption (the vacuous uniform limit renamed, `N6`);
+⛔ corrupting one **anchoring** is not this test; ⛔ `Δρ` never bridges `LAB_HELD ↔ MATERIAL_ADVECTED`.
 
 ```text
-⇒ S11CD_REP_INVARIANCE_{ROUTE1,ROUTE2,RESIDUAL}[α,ρ] , S11CD_CONTROL_INDEPENDENCE_{BASE,CORRUPTED,RESIDUAL}[α,ρ,probe] .
+⇒ S11CD_INSERTION_INVARIANCE_RESIDUAL[α,ρ] , S11CD_CONTROL_INDEPENDENCE_{BASE,CORRUPTED,RESIDUAL}[α,ρ,probe] .
 ```
 
-### 5b · The uniform limit — REGRESSION smoke-test only
+### 5b · The uniform regression — zero the JETS, keep the asymptotes live
 
-`W₀→W̄₀` (`η→0`): the off-diagonal mixing must vanish (S11b decoupling). ⭐ **Secondary smoke test only** — it cannot
-see the coefficient, sign, or parity of the gradient coupling (S11b: coupling identically zero); it is a useful check
-for a forbidden gradient-**independent** term. ⛔ It is **not** the N6 control (§5a).
+⭐ The forbidden object the smoke test must catch is a **gradient-independent** coupling term — which a bare `η→0`
+would erase automatically (`K_bad = c·η → 0` whatever `c`). ⇒ the regression sets the profile **jets** to zero
+(`w₁′ = m₁′ = 0`, i.e. constant `w₁`, `m₁`) while retaining **live** `η` and the **arbitrary constant asymptotes**
+`W_±`, `μ_±` — and emits the computed coupling, which **must** be a computed object (⛔ not asserted "must vanish":
+whether the closure-induced coupling decouples at uniform background is the withdrawn F, §1b). Keep the full
+`η = σ_W = 0` reference as an **additional** regression. The uniform regression cannot see the gradient coupling's
+coefficient/sign/parity — it is **secondary**, ⛔ not the N6 control (§5a).
+
+```text
+⇒ S11CD_UNIFORM_REGRESSION (jets→0, asymptotes live; + the η=σ_W=0 reference) .
+```
 
 ### 5c · The profile-FORM ablation + the edge-vs-bump discriminant
 
-- **Form ablation.** Perturb the **FORM** of `f(ξ)` (the localized-gradient shape) and require the mixing / leakage to
-  **move** — ⛔ a coefficient rescale of `η` is insufficient; only a form change tests the coupling.
-- **Edge-vs-bump discriminant.** Emit the mixing object for the **interface** (`∫W₀′ ≠ 0`) and — as the discriminant —
-  for a **bump** (`∫W₀′ = 0`), and their difference: the low-momentum-transfer content differs, so a bump must **not**
-  stand in for the edge. ⛔ Do not freeze a specific representative shape as "the slit."
+- **Form ablation.** Perturb the **FORM** of `m₁(ξ)` (and `w₁(ξ)`) and emit the **baseline operand, the altered-form
+  operand, and their residual** — ⛔ do not assert that the mixing "must move"; whether it moved is adjudicated on our
+  side (a coefficient rescale of `η` would be arithmetic, only a form change tests the coupling).
+- **Edge-vs-bump discriminant — the zero-transfer moment.** The canonical discriminant is the zero-transfer moment
+  `m̂₁′(Q_n=0) = Δm₁` (and `ŵ₁′(0) = Δw₁`): **nonzero** for an interface, **zero** for a bump. Emit the low-`Q`
+  (zero-transfer) content of the mixing vertex and its dependence on that moment; a bump (zero moment) has a different
+  low-`Q` vertex and ⛔ must not stand in for the edge. ⛔ Do not freeze a specific representative shape as "the slit."
 
 ```text
-⇒ S11CD_PROFILE_FORM_ABLATION , S11CD_EDGE_MINUS_BUMP .
+⇒ S11CD_PROFILE_FORM_ABLATION (baseline, altered, residual) , S11CD_ZERO_TRANSFER_MOMENT_DEPENDENCE .
 ```
 
-### 5d · The falsification FORM control (`N7`)
+### 5d · The falsification FORM control (`N7`; the boundary refinement is N2-permitted)
 
-Emit the **flux-normalized dimensionless conversion FORM** (§3c, `O(η²)`; `∝ k·a`, supported where `∇μ_R ≠ 0`, carrying
-the `σ_W` form factor). ⛔⛔ The `O(1)`-fraction / diffraction-grating reductio and the withheld numeric lab bound are
-**orchestrator-side**, ⛔ never in the builder-facing acceptance text (the builder iterates toward any target it can
-see); the magnitude is `R1`-blocked. ⚠ A slit edge is an order-unity localized gradient — the FORM here is the
-**weak-contrast** object (§3d states which), ⛔ not a non-perturbative lab number.
+Emit the **flux-normalized dimensionless conversion FORM** (§3c, continuum, `O(λ²)`; `∝ k·a`, carrying the
+`m̂₁′(Q_nL_W)` form factor). ⚠ The FORM is the **full** imported vertex projected on the conversion channel — ⛔ not a
+`∇μ_R`-only projection. The decision-list table places the FORM and confinement interpretation at S11c-e; N2 permits a
+spec-stage boundary refinement, so computing the FORM here is not a defect — but ⛔ d's FORM must **not** become e's
+withheld `O(1)` target. ⛔⛔ The `O(1)`-fraction / diffraction-grating reductio and the withheld numeric lab bound are
+**orchestrator-side**, ⛔ never in the builder-facing acceptance text; the magnitude is `R1`-blocked. ⚠ A slit edge is
+an order-unity localized gradient — the FORM here is the **weak-contrast** object (§3d), ⛔ not a non-perturbative lab
+number.
 
 ---
 
@@ -393,12 +487,13 @@ see); the magnitude is `R1`-blocked. ⚠ A slit edge is an order-unity localized
 - **Method.** Balance laws + the binding material virtual-displacement rule + variational derivatives with held-fixed
   fields named + prescribed external virtual work (S11b), ⛔ never an irreversible response kernel in an ordinary
   action. The diagonal responses and the off-diagonal vertex are the c2 exports consumed verbatim; the mixing is one
-  kernel insertion (§2), re-expanded to the retained grade.
+  kernel insertion on the two-asymptote distorted basis (§2), re-expanded to the retained background grade (the
+  bound-pole spectral solve exempt, §2/§3b).
 - **Dimensions.** Restore `[L,T,M]` on every emitted object, dimensional consistency able-to-fail
   ([[feedback_dimensional_consistency_check]]); `(ε,η,σ_W)` multigrade on every object (`N12`).
 - **Rest-frame limit.** Inherit `N11a` inert; S11c-d constructs **no** convective operator. Every result inherits the
-  c1/S11b smallness domain (`|q_out·v_bulk_normal_0/ω|≪1` + boundary-layer/subsonic), ⛔ never aliasing
-  `v_bulk_normal_0` to `v_0` (`N14`/`N11`).
+  c1/S11b smallness domain (`|q_out·v_bulk_normal_0/ω|≪1` + boundary-layer/subsonic; large `k c_s0/|ω|` is
+  **necessary, ⛔ not sufficient**), ⛔ never aliasing `v_bulk_normal_0` to `v_0` (`N14`/`N11`).
 - **Script obligations.** The three build-skill clauses bind the build directive (`.claude/skills/build/SKILL.md`): a
   script PRINTS computed objects and never states conclusions; PRINT the residual, do not assert it; interpretation is
   the step record. ⛔ No hand-typed CAS object standing in for a computed one; every control re-enters at the
@@ -406,18 +501,18 @@ see); the magnitude is `R1`-blocked. ⚠ A slit edge is an order-unity localized
   **not** checks; the §5 residuals are emitted with both operands, and a two-route residual is emitted only where an
   **independent** second route exists.
 - **Serialize CAS jobs; watch RSS.** c2's self-energy `.out` was ~499 MB and the full cross-engine residual is the
-  ≥64 GB work; S11c-d's mixing is a **derived insertion** on the closed operator — measure the process that runs,
-  defer heavy controls in-band→out-of-band (`DEFERRED_HEAVY_RUNS.md`), ⛔ never two memory-heavy CAS jobs concurrently.
-  Detached launch (harness reaps `run_in_background`). Mathematica: 2-seat licence, `--sandbox danger-full-access`,
-  serialize dual ablations.
+  ≥64 GB work; S11c-d's mixing is a **derived insertion** on the closed operator (plus a spectral solve) — measure the
+  process that runs, defer heavy controls in-band→out-of-band (`DEFERRED_HEAVY_RUNS.md`), ⛔ never two memory-heavy CAS
+  jobs concurrently. Detached launch (harness reaps `run_in_background`). Mathematica: 2-seat licence,
+  `--sandbox danger-full-access`, serialize dual ablations.
 
 ---
 
 ## 7 · Names, F9 reservations, chain output, and export schema
 
 **F9 / `N14` reservations.** Every new object gets a **fresh** injective `mechanical_lower_camel` name; ⛔ never reuse
-an imported S11c-c2/c1/S11c-b/S11b key (`closed_slab_operator`, `closed_coupling_kernel`, `slab_operator`,
-`coupling_kernel`, `dtn_kernel`, `mu_theta_operator`, `w1_profile`, `W_0`, `e_W`, `rho_br`, `v_0`, …) for a new S11c-d
+an imported S11c-c2/c1/S11c-b/S11b key (`s11cc2ClosedSlabOperator`, `s11cc2ClosedCouplingKernel`, `slab_operator`,
+`coupling_kernel`, `dtn_kernel`, `mu_theta_operator`, `W_0`, `mu_R`, `e_W`, `rho_br`, `v_0`, …) for a new S11c-d
 object.
 
 **Chain output (`N1`/`N8`; topology = the two-leg-gated `directives/export_ledger_bind_closure_design.md` §D1–§D3).**
@@ -425,21 +520,23 @@ The SymPy engine reads the inherited model via the **positional** `load_model` c
 `scripts/S11c_b_exports.py` with the c1 and c2 deltas folded on top (signature `load_model(base_path, *delta_paths)`,
 `scripts/ledger_fold.py:102`; ⛔ NOT keyword form), binding only its declared `IMPORT_KEYS`, and writes
 `scripts/S11c_d_exports.py` as its **own-rows delta** (§D2, ⛔ not the accumulated whole-model file). ⛔ The exact
-`IMPORT_KEYS` **root set** (minimal roots whose recursive closure covers the §1a consume-set) is fixed at the **build
-directive** against the real export files, ⛔ not enumerated-then-frozen here; its two decision legs verify it, and that
-the guard (`check_consumer`/`assert_lookups_equal_manifest`/`assert_delta_is_minimal`) passes on the fold — ⚠ noting
-the guard passes on **key existence**, so it will **not** catch a wrong-provenance binding; that is the directive's +
+`IMPORT_KEYS` **root set** (minimal roots whose recursive closure covers the §1a consume-set — the two c2 closed
+rows + the field/coefficient/Fourier carriers + the reachable constants) is fixed at the **build directive** against
+the real export files, ⛔ not enumerated-then-frozen here; its two decision legs verify it, and that the guard
+(`check_consumer`/`assert_lookups_equal_manifest`/`assert_delta_is_minimal`) passes on the fold — ⚠ noting the guard
+passes on **key existence**, so it will **not** catch a wrong-provenance binding (⛔ the `s11cc2Fieldtheta`-vs-
+`s11cc2FieldTheta` casing and the increment-vs-operator distinction are exactly this hazard); that is the directive's +
 legs' responsibility. `BUILD_INPUT_DIGESTS` pins, per §D3, `{this sub-step's SymPy audit, scripts/S11c_b_exports.py,
-scripts/S11c_c1_exports.py, scripts/S11c_c2_exports.py, this spec, scripts/ledger_fold.py}`. ⛔ Never `git add -f` a big
-`.out`; ⛔ never annex an `*_exports.py`.
+scripts/S11c_c1_exports.py, scripts/S11c_c2_exports.py, this spec, scripts/ledger_fold.py}`. ⛔ Never `git add -f` a
+big `.out`; ⛔ never annex an `*_exports.py`.
 
 **The comparator (`N8`, frozen `T7` contract).** The S11c-d comparator joins the two blind engines' emitted objects by
 name, pairs residual operands, is three-valued, rejects a native boolean, and PRINTS/decides nothing (rule 2). ⚠ Its
-load-bearing residual is on the **mixing response / conversion amplitude** (§3a) — which **rides on the carried
-cross-engine operand DEBT** (§1b); the comparator **SURFACES** the DEBT and the §1b representation questions (the
-staged representational bridge, [[feedback_reconcile_representational_bridge]], ⛔ never a blanket collapse), ⛔ does
-not pre-adjudicate them. The full per-object symbolic residual + c1's four giants remain deferred
-(`DEFERRED_HEAVY_RUNS.md`); S11c-d names, ⛔ does not pre-adjudicate, whatever it cannot close on this box.
+load-bearing residual is on the **mixing amplitude** (§3a) — which **rides on the carried cross-engine operand DEBT**
+(§1b); the comparator **SURFACES** the DEBT and the §1b representation questions (the staged representational bridge,
+[[feedback_reconcile_representational_bridge]], ⛔ never a blanket collapse), ⛔ does not pre-adjudicate them. The full
+per-object symbolic residual + c1's four giants remain deferred (`DEFERRED_HEAVY_RUNS.md`); S11c-d names, ⛔ does not
+pre-adjudicate, whatever it cannot close on this box.
 
 **The blind Wolfram engine** re-derives the §§1–2 supplied inputs, the S11c-a face substrate, the S11c-b slab-operator
 and c2 closed-operator/kernel rows it consumes, and the localized-interface mixing — importing nothing (the only
@@ -449,18 +546,23 @@ cross-engine control). ⛔ The denylist stays cut (`N9`/rule 12); blindness is e
 
 ## 8 · Supplied versus computed; builder report
 
-**SUPPLIED (unfalsifiable in this build):** all of §1 (the c2 exports and their per-engine-SOUND vs
-cross-engine-UNCLOSED disposition — the operand DEBT, the two S11c-b signs, the six §3d re-adjudications, the 3 N6
-premise caveats, the withdrawn F/G), the §1c localized-interface class and its admissibility, the §1d regime
-(Born-in-contrast, `σ_W`/`kL` live), the §2 distorted-wave-Born organization, `N11a`, `N12`, `N13`.
+**SUPPLIED (unfalsifiable in this build):** all of §1 (the two c2 export operand rows and their per-engine-SOUND vs
+cross-engine-UNCLOSED disposition — the operand DEBT, the raw/schema-unmatched `R_N6`, the two S11c-b signs, the six
+§3d re-adjudications, the 3 N6 premise caveats, the withdrawn F/G, and that no term-origin/parity/increment/§3d rows
+are importable), the §1c localized-interface class on the inherited `w₁`/`m₁` along the named normal `n̂` and its
+admissibility, the §1d regime (Born-in-contrast, `σ_W`/`Q_nL_W` live), the §2 two-asymptote distorted-wave
+organization, `N11a`, `N12`, `N13`.
 
-**COMPUTED (outputs, ⛔ none stated here):** the profile-conditioned mixing response and conversion amplitude (§3a);
-the two photon-kill channels and the confinement condition (§3b); the flux-normalized conversion FRACTION FORM and the
-absolute converted power (§3c); the weak matching coefficient (§3d); every control residual (§5); any new
-gradient-of-background invariant (`N15`); the `(ε,η,σ_W)` orders and `[L,T,M]` dimensions.
+**COMPUTED (outputs, ⛔ none stated here):** the mixing response and canonical conversion amplitude and asymptotic
+operators (§3a); the two photon-kill channels (the **profile-functional conditional** bound-pole spectral test) and the
+confinement condition (§3b); the full multigraded amplitude incl. `A_0`, the induced amplitude, the transverse-flux
+pairing, the continuum conversion FRACTION FORM and the absolute converted power (§3c); the weak amplitude coefficient
+(no value/sign) and weak fraction coefficient (§3d); every control residual — the insertion-invariance and one-sided
+corruption residuals (§5a), the uniform regression (§5b); the profile moments / form factors (`N15` data); the
+`(ε,η,σ_W)`/`λ` orders and `[L,T,M]` dimensions.
 
 **Builder report.** The build directive states, per emitted object, which line computed it (`.claude/skills/build`);
-declares the profile class (§1c), the regime grades (§1d), the insertion organization (§2), and the leakage
-bookkeeping (§3c) it implemented; and reports the literal residuals of §5 — ⛔ never a prose conclusion. The
+declares the profile class (§1c), the regime grades (§1d), the distorted-basis insertion organization (§2), and the
+leakage bookkeeping (§3c) it implemented; and reports the literal residuals of §5 — ⛔ never a prose conclusion. The
 disposition of every §5 residual and the strong-edge obligation (§3d) is read on **our** side, in the step record,
 ⛔ not asserted by the script (rule 5).

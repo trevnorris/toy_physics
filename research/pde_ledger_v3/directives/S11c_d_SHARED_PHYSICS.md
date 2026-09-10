@@ -1,4 +1,4 @@
-# S11c-d — SHARED PHYSICS v8 (profile-conditioned transverse↔thickness scattering at a thickness interface)
+# S11c-d — SHARED PHYSICS v9 (profile-conditioned transverse↔thickness scattering at a thickness interface)
 
 **S11c-d** is the S11c-d sub-step of the S11c curved-interface program — the **fifth build unit** after the c1/c2
 split (`directives/S11c_decisions.md` row `:52`). It consumes S11c-c2's closed operator and closed off-diagonal
@@ -13,14 +13,15 @@ Wolfram engine imports nothing and re-derives every consumed object from the sib
 (`S9_export_chain_rebuild_directive.md:16-18` is the only cross-engine control). Blindness is the control: an
 agreement is independent construction, not a copy.
 
-⭐ This is a **Codex `gpt-5.6-sol`-authored physics spec**, now v8 under `CLAUDE.md` rule 15 after the
+⭐ This is a **Codex `gpt-5.6-sol`-authored physics spec**, now v9 under `CLAUDE.md` rule 15 after the
 orchestrator-authored v2/v3 folds bred new defects. Its lineage is **Codex-authored v4 → orchestrator §1c/nit fold
 (v5) → v6 Codex Fourier refix → v7 Codex Fourier-defer (rule 15, per Grok's round-6 F1) → v8 Codex closed-row/jet-hat
-Fourier-control refix**. It is the physics authority both blind
+Fourier-control refix → v9 Codex reduced-row-operand/all-measure Fourier-control refix**. It is the physics authority
+both blind
 engines read. Per G1/G2 it is physics-bearing and gets **two non-author legs — a fresh Claude agent + Grok — reviewed
 UNTIL CLEAR** (spec row, ⛔ not the decision-list one-pass); both reports precede any commit, and a reviewed baseline
 is preserved before a repair overwrites it. The **build directive** that follows this spec gets its own two decision
-legs before any builder (the G2 TRIGGER). **Spec v8** retains the v3 §0–§8 structural frame and folds every round-3
+legs before any builder (the G2 TRIGGER). **Spec v9** retains the v3 §0–§8 structural frame and folds every round-3
 finding; no wording from a prior version is authoritative where the round-3 derivation corrected it.
 
 ⭐ **The profile-class + regime decision (§1c–§1d) was settled by a three-way physics consult** (orchestrator + `gpt-6-astra`
@@ -98,14 +99,18 @@ own-rows that S11c-d binds (exact `IMPORT_KEYS` root set fixed at the build dire
 - **`s11cc2ClosedCouplingKernel`** — the re-extracted **off-diagonal** transverse↔`{θ,e_W,u_L}` block(s): the **full**
   mixing vertex (tilt `∇w₁`, modulus-gradient `∇m₁`, and N4 advection channels; ⛔ not `∇w₁` alone, ⛔ not `∇m₁`
   alone), multigraded `(ε,η,σ_W)`. **Both** closed rows — `s11cc2ClosedSlabOperator` **and**
-  `s11cc2ClosedCouplingKernel` — carry the same kind of 3-D Fourier content: the Fourier-of-profile hats, both the
-  transfer hat `s11cc2FourierW1ProfileHatTransfer` and the jet-hat family
-  `s11cc2FourierW1ProfileJetHat{1,2,3}`, evaluated at transfer and middle-leg (intermediate-momentum) arguments, over
-  each row's already-present in-plane position integrals. The `s11cc2MiddleMomentum*` are dummy integration
-  variables, ⛔ not Fourier symbols; the Fourier symbols on the middle leg are those transfer and jet hats evaluated
-  at mixed intermediate-momentum arguments. Neither closed row carries any 3-D momentum deltas: c2 stripped them;
-  those remain on c1's `dtn_kernel`, still ⛔ not the 3-D→1-D reduction operand. The exact per-row Fourier-symbol
-  census, `(2π)` bookkeeping, and operand construction are fixed at the **build directive** against the real rows and
+  `s11cc2ClosedCouplingKernel` — carry the same kind of convention-bearing 3-D Fourier content: every
+  Fourier-of-profile hat, including the transfer hat `s11cc2FourierW1ProfileHatTransfer` and the jet-hat family
+  `s11cc2FourierW1ProfileJetHat{1,2,3}` at transfer and middle-leg (intermediate-momentum) arguments, and every 3-D
+  integral measure already present in either row. Those measures include the in-plane position integrals `d³y` and
+  the momentum-convolution integrals `d³k` over `s11cc1_k_output_*`, `s11cc1_k_input_*`, and
+  `s11cc2MiddleMomentum*`, each carrying the `(2π)` measure and each therefore a reduction target. The momentum
+  variables themselves are dummy integration variables, ⛔ not Fourier symbols; the Fourier symbols on the middle
+  leg are the transfer and jet hats evaluated at mixed intermediate-momentum arguments. Neither closed row carries
+  any 3-D momentum deltas: c2 stripped them;
+  those remain on c1's `dtn_kernel`, still ⛔ not the 3-D→1-D reduction operand. The exact per-row census of
+  convention-bearing Fourier symbols and integral measures, `(2π)` bookkeeping, and operand construction are fixed
+  at the **build directive** against the real rows and
   verified by its own two decision legs, ⛔ not enumerated here.
 - the **field carriers** `s11cc2Fieldtheta`, `s11cc2FieldeW`, `s11cc2Fieldu{1,2,3}`; the **profile coefficients**
   `s11cc2Coefficientw1Profile`, `s11cc2Coefficientm1Profile`; the **Fourier-of-profile** carriers
@@ -232,15 +237,18 @@ The first line is an ordinary integral only for a localized/subtracted `f`; for 
 
 ⚠⚠ **The imported c2 carriers' normalization is NOT supplied — it must be COMPUTED, ⛔ not asserted.** The only
 supplied Fourier convention here is the reduced one-dimensional definition `f̂_red` above. ⛔ **Do not supply a
-numeric `(2π)`/`δ²(Q_∥)` map for the imported carriers.** Each engine must **COMPUTE and EMIT the 3-D→1-D reduction of
-its own closed-operator and closed-kernel Fourier content — every profile-transfer hat, jet hat, and hat at a
-middle-leg (intermediate-momentum) argument together with the rows' already-present in-plane position integrals —
-for **both rows**, each as an object with BOTH operands**: (i) the 3-D carrier as it actually appears in that engine's
-own closed operator or closed coupling kernel, and (ii) the corresponding reduced one-dimensional operator or kernel
+numeric `(2π)`/`δ²(Q_∥)` map for the imported carriers.** Each engine must **COMPUTE and EMIT** the 3-D→1-D reduction
+of every convention-bearing 3-D element of its own closed operator and closed coupling kernel — hats at any argument,
+including every profile-transfer hat and jet hat at transfer and middle-leg (intermediate-momentum) arguments, and
+every 3-D integral measure, including every in-plane position integral `d³y` and every momentum-convolution integral
+`d³k` over output, input, and middle momenta — with no convention-bearing element of either row left in a 3-D
+convention. For **both rows**, each reduction is an object with **BOTH operands**: (i) the 3-D row as it actually
+appears in that engine's own closed operator or closed coupling kernel, and (ii) the corresponding reduced
+one-dimensional operator or kernel
 obtained by applying that same engine's own realized Fourier convention, ⛔ not by binding `dtn_kernel` and ⛔ not by
 typing a `[L_W/(2π)]` or `(2π)²L_W` map, to the §1c interface geometry `f=f(n̂·y/L_W)` and
 `∂_{yᵢ}f=n̂ᵢf′(ξ)/L_W`. The supplied `f̂_red` is only the one-dimensional convention template, applied per Fourier
-symbol with that symbol's own transfer or middle-leg argument. The exact Fourier-symbol census,
+symbol with that symbol's own transfer or middle-leg argument. The exact convention-bearing-element census,
 `(2π)`/dimensional bookkeeping, and operand construction are fixed at the **build directive** against the real rows
 and verified by its own two decision legs, ⛔ not typed in this spec. This spec supplies only `f̂_red`, the
 reduce-your-own-closed-operator-and-kernel requirement, and the comparator-join control. The comparator joins the two
@@ -322,19 +330,23 @@ live quantities.
 ## 2 · The mixing object and the two-asymptote distorted-wave organization — SUPPLIED framing
 
 After each engine performs the §1c 3-D→1-D reduction of **both** imported rows — the closed operator and the closed
-coupling kernel — the object `𝓛(y;ω,k_∥)` is the linear scattering/mixing generated by the **full imported closed
-operator**, with `s11cc2ClosedCouplingKernel` used as its canonical off-diagonal extraction. It includes the tilt,
+coupling kernel — the object `𝓛(y_n;ω,k_∥)` is constructed from that engine's **full reduced closed slab operator**,
+with its **reduced closed coupling kernel** (the §1c reduction of `s11cc2ClosedCouplingKernel`) used as the canonical
+off-diagonal extraction. The reduced rows are the construction operands of `𝓛`, ⛔ not the imported unreduced rows
+and ⛔ not merely comparator objects; **full** means the complete retained reduced operator, not a modulus-only
+projection. It includes the tilt,
 modulus-gradient, and N4 advection content carried by that kernel. The modulus-gradient projection is only one
 subchannel; projecting onto it alone drops other retained terms and is an ablation, not the S11c-d object.
 
-Before defining channels, each engine block-decomposes the imported operator at the retained grades. In the display
-below `𝓛(y)` denotes the operator/kernel, not multiplication by a local matrix. For a nonlocal normal kernel, an end
+Before defining channels, each engine block-decomposes its reduced operator at the retained grades. In the display
+below `𝓛(y_n)` denotes the operator/kernel, not multiplication by a local matrix; `y_n` is the retained edge-normal
+scattering coordinate. For a nonlocal normal kernel, an end
 limit means simultaneous translation of both normal arguments to that end followed by the translation-invariant
 asymptotic symbol at fixed `(ω,k_∥,k_n)`:
 
 ```text
-𝓛(y;ω,k_∥) = [ L_TT(y)   K_TH(y) ] ,
-              [ K_HT(y)   L_HH(y) ]
+𝓛(y_n;ω,k_∥) = [ L_TT(y_n)   K_TH(y_n) ] ,
+                [ K_HT(y_n)   L_HH(y_n) ]
 
 K₀  = the complete (η⁰,σ_W⁰) off-diagonal block at the uniform reference background ,
 K₋  = lim_{ξ→−∞} K(ξ) at the left constant background ,
@@ -847,10 +859,12 @@ big `.out`; ⛔ never annex an `*_exports.py`.
 
 **The comparator (`N8`, frozen `T7` contract).** The S11c-d comparator joins the two blind engines' emitted objects by
 name, pairs residual operands, is three-valued, rejects a native boolean, and PRINTS/decides nothing (rule 2). ⚠ Its
-load-bearing residuals include the complete flux-normalized S-matrix/mixing amplitudes, modal currents, total and
-induced-field conversion forms, survival functional, bound Riesz data (§3), and the §1c **reduced-operator and
-reduced-kernel join**, sourced from each row's both-operand reduction record, whose join key includes the reduced
-transfer-hat and jet-hat symbols at transfer and middle-leg arguments. These d objects **remain conditional
+load-bearing residuals include the §1c **reduced-operator and reduced-kernel join** sourced from each row's
+both-operand reduction record and covering every convention-bearing element required there; the `𝓛` and complete
+flux-normalized S-matrix/mixing amplitudes that each engine constructs from those reduced rows; and modal currents,
+total and induced-field conversion forms, survival functional, and bound Riesz data (§3). Thus the join tests both
+the reduced construction operands and the object built from them, ⛔ not a side reduction while `𝓛` uses unreduced
+content. These d objects **remain conditional
 on and PROPAGATE** the material c2 operand debt (§1b). A final projected amplitude residual cannot directly surface
 the carrier (40), source (76), or `Φ` (18) families: the c2 disposition identifies a schema non-join, and projection
 or channel summation can cancel operand differences. Agreement on a d projection therefore compares only that d
@@ -895,8 +909,10 @@ strong-edge handoff (§3d);
 the downstream coordinate-covariance and shape-sensitivity operands/residuals (§5a), three uniform regressions (§5b),
 profile-form controls and thickness/modulus discriminants (§5c), and the computed falsification projection (§5d);
 all derived profile moments/form factors, each engine's 3-D→1-D reduction of both closed rows — operator and kernel —
-over the profile-transfer hat, jet-hat family, and hats at middle-leg arguments together with the already-present
-in-plane integrals, with both operands, and each engine's 3-D↔1-D reconstruction; and every output's
+over every convention-bearing 3-D element, including all profile hats at transfer and middle-leg arguments and all
+`d³y` position and `d³k` momentum-convolution measures over output, input, and middle momenta, with both operands and
+no element left in a 3-D convention; each engine's 3-D↔1-D reconstruction; the `𝓛` / S-matrix constructed from those
+reduced rows; and every output's
 `(ε,η,σ_W)`/`λ` order and `[L,T,M]` dimension.
 
 **Builder report.** The build directive states, per emitted object, which line computed it (`.claude/skills/build`);

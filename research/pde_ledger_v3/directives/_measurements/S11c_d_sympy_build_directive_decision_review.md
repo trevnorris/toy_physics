@@ -72,6 +72,27 @@ from emit-only.
 - **Q6 builder-lane + script clauses:** three clauses, structural rule, four corollaries, non-tautological §5a,
   FORM ablation, value-independent emission, build→verify→report→stop — all present.
 
-## Disposition
+## Disposition (round 1)
 NOT CLEAR round 1. Fold all four verified must-fix findings (F1, Q3, Q4, Q7), then re-review (physics-bearing content
-meets the spec bar → review-until-clear). Reviewed baseline preserved before the fold.
+meets the spec bar → review-until-clear). Reviewed baseline preserved before the fold (`86b71819`).
+
+## Round 2 — re-review of the folded directive → CLEAR (both legs SOUND)
+Fresh legs, identical prompt `_legs/S11c_d_sympy_build_directive_decision_review_prompt_r2.md` (Codex-sol xhigh +
+Grok-4.6 high), both verifying the folds AND re-scanning the whole directive computationally against the real rows.
+
+- **Grok r2: CLEAR (sound)** — all four folds correct + complete; whole-directive re-scan found no new must-fix. One
+  cosmetic **nit** (a leftover "§F1 slot below" label with no matching heading; does not change computation/claims) —
+  fixed before commit.
+- **Codex r2: CLEAR (sound)** — no must-fix, no nit. Independently confirmed: five-slot payload across all 8 cases;
+  `FOURIER_PROFILE_BINDINGS` = transfer-only 3-D definitions, not valid reduced answers; ONM bindings cover
+  `k_out`/`k_in`/`k_mid`; no convention-bearing element missed; no typed reduction relation or withheld acceptance
+  order remains; bound pole/Riesz + spectral overlap correctly exported; import provenance, script clauses, leak
+  discipline, HELD-PHYSICS, builder lane sound.
+
+Both legs independently re-derived the census against the real rows (scripts + literal stdout under each leg's own
+`/tmp`). Raw transcripts: `scratchpad/S11cd_dir_r2_{codex,grok}.txt`.
+
+**CLEARED** (round-2 gate: both legs SOUND). Stopping rule met — nothing outstanding changes what is computed or may
+be claimed (the fixed cosmetic nit did neither). The build directive is the governing build-mechanical authority for
+the S11c-d SymPy engine; the cleared spec `399a8516` remains the physics authority. NEXT = the SymPy build
+(`gpt-6-astra` high) → 2 build legs (fresh Claude + Grok) → blind WL → T7 → reconcile → step record.

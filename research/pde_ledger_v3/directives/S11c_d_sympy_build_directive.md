@@ -151,10 +151,11 @@ on the **real** 3-parent fold (⛔ not by reading — run it).
   — §3) but is ⛔ **NOT** bound as the reduction-convention operand (§3).
 
 **Case structure (per closed row).** Each `Closed*` value is a nested `Tuple`-of-pairs association list of **4
-case-entries** keyed `Tuple(Str(α), Str(ρ))`, α∈{`LAB_HELD`,`MATERIAL_ADVECTED`}, ρ∈{`RHO4_CONSTANT`,`RHOBR_CONSTANT`},
-payload under `Str('VALUE')`. Slab components `{U, THETA, E_W}`; coupling = outer sector layer
-`{TRANSVERSE_TO_THICKNESS, THICKNESS_TO_TRANSVERSE}` then components `{THETA, E_W, DIV_U}`. Iterate all 4 `(α,ρ)`
-cases (spec §3/§4).
+case-entries** keyed `Tuple(Str(α), Str(ρ))`, α∈{`LAB_HELD`,`MATERIAL_ADVECTED`}, ρ∈{`RHO4_CONSTANT`,`RHOBR_CONSTANT`}.
+⚠ Each case payload has **FIVE slots** — `VALUE`, `MULTIGRADE`, `DIMENSION_L_T_M`, `COMPUTED_BRANCH_BINDINGS`,
+`FOURIER_PROFILE_BINDINGS` (⛔ not `VALUE` alone; the last two carry convention-bearing 3-D content — see §3). In
+`VALUE`: slab components `{U, THETA, E_W}`; coupling = outer sector layer `{TRANSVERSE_TO_THICKNESS,
+THICKNESS_TO_TRANSVERSE}` then components `{THETA, E_W, DIV_U}`. Iterate all 4 `(α,ρ)` cases (spec §3/§4).
 
 ---
 
@@ -171,9 +172,10 @@ the engine's **computed** reduction — spec §1c).
 coupling kernel — applying its **own realized Fourier convention** to the §1c interface geometry `f=f(n̂·y/L_W)`,
 `∂_{yᵢ}f=n̂ᵢf′(ξ)/L_W`, with **no** convention-bearing element left in a 3-D convention. The **only** supplied
 convention is the reduced one-dimensional template `f̂_red(s) ≡ ∫dξ e^{−isξ}f(ξ)`, `s≡Q_nL_W`, `Q≡k_out−k_in`. ⛔ Do
-**NOT** supply/type a numeric `[L_W/(2π)]` or `(2π)²L_W` map or a `δ²(Q_∥)` map; ⛔ do **NOT** bind `dtn_kernel` as
-the reduction-convention operand (it is c1's two-momentum DtN kernel carried inside the closed rows, ⛔ not the
-3-D→1-D reduction operand).
+**NOT** supply/type a numeric `(2π)`/normalization map for the imported carriers (⛔ no typed reduction factor of any
+form); ⛔ do **NOT** bind `dtn_kernel` as the reduction-convention operand (it is c1's two-momentum DtN kernel carried
+inside the closed rows, ⛔ not the 3-D→1-D reduction operand). ⚠ Nor may the engine bind c2's OWN 3-D hat definitions
+as its reduction (the `FOURIER_PROFILE_BINDINGS` slot, census below) — the same hazard class.
 
 **The census — the convention-bearing 3-D elements ACTUALLY PRESENT in the real closed rows (⛔ reduce every one;
 this enumerates WHAT, ⛔ never the reduction result).** Verified per row against `s11cc2ClosedSlabOperator` and
@@ -200,17 +202,37 @@ this enumerates WHAT, ⛔ never the reduction result).** Verified per row agains
   hats + explicit `Integral` measures**, ⛔ not on delta-sharpened momenta.
 - The normal-momentum carrier `s11cc2OutgoingNormalMomentum` is present; carry/reduce it per the §1c edge-normal
   geometry alongside the other momenta.
+- ⛔⛔ **The census is NOT `VALUE`-only.** Each `(α,ρ)` case of **both** closed rows is a **five-slot** payload —
+  `VALUE`, `MULTIGRADE`, `DIMENSION_L_T_M`, `COMPUTED_BRANCH_BINDINGS`, `FOURIER_PROFILE_BINDINGS` (verified: each slot
+  key appears 8× = 4 cases × 2 rows). The last two carry **convention-bearing 3-D content** the reduction must account
+  for:
+  - **`FOURIER_PROFILE_BINDINGS`** = c2's **own** 3-D definitions of the profile hats (each hat written as a `d³Y`
+    real-space integral in c2's realized 3-D convention), **at the transfer argument only**. ⛔⛔ This is a
+    **ready-made 3-D convention map sitting ON the consumed row** — the **same hazard class as `dtn_kernel` and a typed
+    `(2π)` map**: ⛔ the SymPy engine must **NOT** `subs`/bind this slot as its reduction (that types c2's convention
+    instead of computing the engine's own), and ⛔ must not rely on it as the reduction at all (it covers **transfer
+    only**, so leaning on it leaves the middle-leg hats — which `VALUE` also applies — unreduced). The engine computes
+    its **own** 1-D reduction of every applied hat in `VALUE` (transfer AND both middle-leg forms, per the census
+    above); the `FOURIER_PROFILE_BINDINGS` 3-D forms are, at most, the **(i) 3-D operand** side of the both-operand
+    record, ⛔ never the reduced answer.
+  - **`COMPUTED_BRANCH_BINDINGS`** = the 3-D root definitions of `s11cc2OutgoingNormalMomentum` at **all three**
+    momentum sites (`k_out`, `k_in`, `k_mid`). ONM is applied throughout `VALUE` at those three sites; carry/reduce
+    its definition consistently at **all three** sites (⛔ not transfer only), per the §1c edge-normal geometry.
+  ⛔ Do **NOT** type c2's numeric 3-D factor as the 1-D reduction result — the reduction is the engine's own computed
+  object (both-operand record, below).
 
 ⚠ This census is fixed against the **committed** c2 rows (digests in `BUILD_INPUT_DIGESTS`, §5); the two decision legs
-re-run it on the real fold and confirm the build reduces **every** enumerated element with **no** convention-bearing
-element left in a 3-D convention.
+re-run it on the real fold and confirm the build reduces **every** enumerated element — across **all five payload
+slots** — with **no** convention-bearing element left in a 3-D convention.
 
 **Both-operand emission (⛔ not an `A−A` tautology).** For **each** convention-bearing element of **each** row, emit a
 reduction record with **BOTH** operands: **(i)** the 3-D element **as it actually appears** in that engine's own
 closed operator/kernel, and **(ii)** the corresponding **reduced** one-dimensional object obtained by applying that
-engine's own realized convention. ⛔ Do **NOT** manufacture the 3-D operand by defining `A_3D ≡ [L_W/(2π)]δ²(Q_∥)A_edge`
-and subtracting it from itself (`A−A`, spec §1c). Each engine additionally computes and emits its own 3-D↔1-D
-**reconstruction round-trip** for both rows from those exposed operand pairs.
+engine's own realized convention. ⛔ Do **NOT** manufacture the 3-D operand from a typed normalization map and then
+subtract it from itself (an `A−A` tautology — zero by construction, for any input; spec §1c). The (i) 3-D operand is
+the element **as it actually appears** on the row (incl. the `FOURIER_PROFILE_BINDINGS` 3-D forms), ⛔ never a typed
+re-statement. Each engine additionally computes and emits its own 3-D↔1-D **reconstruction round-trip** for both rows
+from those exposed operand pairs.
 
 **Flux `δ²(Q_∥)` stripping (distinct step).** When forming flux/rate, ⛔ never square an unstripped tangential
 `δ²(Q_∥)`: remove that factor before the per-unit-edge-area limit using the engine's **computed** reduction + the
@@ -274,18 +296,24 @@ annex an `*_exports.py`.
 **emit** (PRINT to stdout, for review + the T7 comparator). The **export delta** is far smaller: per
 `directives/S11c_decisions.md:52`, S11c-d hands S11c-e **scattering amplitudes / resonances / local spectrum**, and
 S11c-e's declared scope is the **flux-normalized dimensionless conversion observable + leakage + confinement** whose
-weak limit must reproduce S11c-d (`S11c_d_SHARED_PHYSICS.md:60-65`). ⇒ **EXPORT the objects S11c-e's leakage
-observable + strong-edge weak limit binds** — the mixing response / complete channel S-matrix / conversion amplitude,
-the continuum `T→H` flux functional + transverse survival functional (the `N13` confinement object), and the §3d
-weak coefficients that the finite-contrast response must reproduce — plus only their recursive new
-coordinate/function/dimension bind-closure. ⚠ There is **no S11c-e manifest yet** (e unbuilt), so this membership is
-grounded in e's **DECLARED scope**, ⛔ not a verified bind; S11c-e's actual `IMPORT_KEYS` confirms it when built (a
-S11c-d export e never binds is the flag then; D1). The two decision legs settle the exact export membership against
-that declared scope.
+weak limit must reproduce S11c-d (`S11c_d_SHARED_PHYSICS.md:60-65`). The declared handoff (`S11c_decisions.md:52`) is
+**scattering amplitudes / resonances / local spectrum**. ⇒ **EXPORT the objects S11c-e's leakage observable +
+strong-edge weak limit + resonance/local-spectrum scope binds** —
+- the mixing response / complete channel S-matrix / conversion amplitude (`S11CD_COMPLETE_CHANNEL_S_MATRIX`,
+  `S11CD_CONVERSION_AMPLITUDE`);
+- the continuum `T→H` flux functional + transverse survival functional (the `N13` confinement object);
+- ⭐ the **canonical resonance/local-spectrum outputs** — `S11CD_BOUND_POLE_SET_AND_RIESZ_DATA` +
+  `S11CD_BOUND_SPECTRAL_OVERLAP` (§3b; the decision-list "resonances / local spectrum" handoff — ⛔ **not** emit-only);
+- the §3d weak coefficients that the finite-contrast response must reproduce;
+— plus only their recursive new coordinate/function/dimension bind-closure. ⚠ There is **no S11c-e manifest yet** (e
+unbuilt), so this membership is grounded in e's **DECLARED scope** + the decision-list handoff, ⛔ not a verified bind;
+S11c-e's actual `IMPORT_KEYS` confirms it when built (a S11c-d export e never binds is the flag then; D1). The two
+decision legs settle the exact export membership against that declared scope.
 
-⛔ **EMIT-ONLY (→ `.out`, ⛔ NOT the ledger export):** the §3 reduction records/reconstruction round-trips, the bound
-Riesz data, the amplitude-component/flux-slot bookkeeping, and **every §5 control operand/residual** (comparison/emit
-representations — the T7 reads them from stdout; ⛔ nothing downstream binds them).
+⛔ **EMIT-ONLY (→ `.out`, ⛔ NOT the ledger export):** the §3 reduction records/reconstruction round-trips, the
+amplitude-component/flux-slot bookkeeping, and **every §5 control operand/residual** (comparison/emit representations
+— the T7 reads them from stdout; ⛔ nothing downstream binds them). ⚠ The bound pole set / Riesz residues/projectors /
+spectral overlap are **EXPORTED** (above), ⛔ not emit-only — they are the declared resonance/local-spectrum handoff.
 
 ⭐ **Store the exported objects in a TRANSPARENT compact encoding** — an ordinary algebraically-equivalent factored
 SymPy expression (`sp.factor`/`collect`/CSE), ⛔ **NOT `sp.expand`ed** and ⛔ **NOT an opaque `UnevaluatedExpr`/hold**
@@ -313,10 +341,11 @@ covariance / naturality status quantities are the **c2 IMPORT's** status (orches
 not need), ⛔ **NOT** an S11c-d expected output; S11c-d's engines re-derive the mixing and never compute them. ⛔ Do
 **NOT** resurface the c2 F/G re-grounding as a blocker (paused, non-blocking).
 
-⛔ **WITHHELD (the one acceptance criterion — orchestrator-side):** the S11c-d **falsification numeric bound / the
-`O(1)` grating reductio** (§0/§5d — magnitude is `R1`-blocked; only the FORM is computable now, `N7`). The directive
-and script emit only the computed flux-normalized dimensionless conversion **FORM**; the numeric bound + the reductio
-are diffed **on our side**, ⛔ never a builder target.
+⛔ **WITHHELD (the one acceptance criterion — orchestrator-side):** the S11c-d **falsification acceptance criterion**
+(the numeric magnitude bound / the withheld reductio), which stays **orchestrator-side** (§0/§5d — magnitude is
+`R1`-blocked; only the FORM is computable now, `N7`). ⛔ Its expected value/order is not stated here. The directive
+and script emit only the computed flux-normalized dimensionless conversion **FORM**; the acceptance criterion is
+diffed **on our side**, ⛔ never a builder target.
 
 ⚠ **Before launch, leak-gate this directive** ([[feedback_grep_acceptance_dodgeable]] / build-skill §195): `rg` for
 co-occurring step symbols in proximity (e.g. a profile/amplitude symbol beside a typed coefficient, `sin` beside

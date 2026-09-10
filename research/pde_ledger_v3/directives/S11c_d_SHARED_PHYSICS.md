@@ -82,8 +82,10 @@ of §§3–5 are **outputs**; ⛔ none is stated here.
 ### 1a · Inheritance and the consumed c2 exports (the REAL export rows)
 
 The DOFs, sector split, background ansatz, `(ε,η,σ_W)` power counting (`N12` + S11c-a §2), and admissibility are
-exactly S11c-a §§1–2 / S11c-b §§1–2 / S11c-c2 §1, inherited by pointer. S11c-d consumes one already-built,
-per-engine-reviewed model, **S11c-c2** (`scripts/S11c_c2_exports.py`; step record
+exactly S11c-a §§1–2 / S11c-b §§1–2 / S11c-c2 §1, inherited by pointer. S11c-d consumes the already-built,
+per-engine-reviewed **S11c-c2** model (reconstructed from the frozen base + the c1 delta + the c2 delta via
+`load_model`, §7 — c2 is a bind-closure own-rows delta, ⛔ not an accumulated whole-model file)
+(`scripts/S11c_c2_exports.py`; step record
 `steps/S11c_c2_self_energy_fold.md`; disposition `_measurements/S11c_c2_N6_reconcile_disposition.md`). The c2 delta's
 own-rows that S11c-d binds (exact `IMPORT_KEYS` root set fixed at the build directive, §7), by their **real** write-keys:
 
@@ -120,10 +122,11 @@ import.)
 ⭐ **CROSS-ENGINE, dual-engine confirmed (the N6 thread only, on this box):** **operator covariance (Reading B)** — the
 material builder implements the declared frame change `Φ` (`R_cov` no-nonzero in both engines), on the specified
 control/premise subset. ⚠ The matched covariance-channel cross-engine zeros are **`(0)−(0)`** — a dual-engine
-confirmation of the **vanishing** statement, ⛔ **NOT operand agreement.** ⚠ **`R_N6 = I_E − I_{M→E} = 18/288` is the
-per-engine SymPy RAW result and was ENTIRELY SCHEMA-UNMATCHED** — there is **no** direct cross-engine comparison of
-`R_N6` itself (`_measurements/S11c_c2_N6_reconcile_disposition.md`); only the Reading-B covariance vanishing + the
-control/premise subset are dual-engine. Both are preserved (`R_N6` nonzero raw, `R_cov` no-nonzero) as consistent
+confirmation of the **vanishing** statement, ⛔ **NOT operand agreement.** ⚠ **`R_N6 = I_E − I_{M→E}` is nonzero as a
+per-engine SymPy RAW census (18 of 288 columns nonzero, ⛔ a count — not an algebraic residual value) and was ENTIRELY
+SCHEMA-UNMATCHED** — there is **no** direct cross-engine comparison of `R_N6` itself
+(`_measurements/S11c_c2_N6_reconcile_disposition.md`); only the Reading-B covariance vanishing + the control/premise
+subset are dual-engine. Both are preserved (`R_N6` nonzero raw census, `R_cov` no-nonzero) as consistent
 under Reading B.
 
 ⛔ **CROSS-ENGINE UNCLOSED — S11c-d must NOT treat these as closed (a supplied, unfalsifiable-in-this-build premise it
@@ -147,9 +150,12 @@ names honestly, `M2`/rule 16):**
 - **F and G are WITHDRAWN interpretations** — the uniform-limit decoupling (F) and directionality (G) rest on the
   retired `verify_F`/`verify_EG` instruments; numeric-probe re-grounding is a standing OWED debt, **PAUSED
   INDEFINITELY / non-blocking**. ⛔ Do not resurface it as a BLOCKER; ⛔ but pausing did not discharge it — the F/G
-  conclusions do **not** stand, only the increment VALUES do. ⚠ **In particular, "the sectors decouple at uniform
-  background" is exactly the withdrawn F** — S11c-d treats the uniform amplitude as a **computed** object `A_0` (§3c),
-  ⛔ never as an assumed zero.
+  conclusions do **not** stand, only the increment VALUES do. ⚠ **The withdrawn F is specifically the c2 *increment*
+  interpretation** (whether the closure-induced coupling in the closed kernel decouples at uniform background — the
+  retired `verify_F` question). ⛔ It does **not** retract S11b's uniform decoupling, which stands as prior art
+  (`M3` oracle). ⇒ for c2's closed kernel, S11c-d treats the uniform amplitude/baseline as a **computed** object
+  `A_0`/`K_0` (§3c), ⛔ never as an assumed zero (⛔ do not type `K_0=0` from S11b) — the computation, not the F label,
+  settles it.
 
 ⛔ Folding any of the above to force cross-engine closure is the exact defect this rebuild exists to catch (rule 1/6).
 
@@ -207,31 +213,29 @@ f̂_red(s) ≡ ∫_{−∞}^{∞} dξ exp(−isξ) f(ξ) ,
 f(ξ) = (1/2π)∫_{−∞}^{∞} ds exp(+isξ) f̂_red(s) .
 ```
 
-The first line is an ordinary integral only for a localized/subtracted `f`; for a full step it is distributional. For
-every c2 three-dimensional profile carrier, use its actual `(2π)⁻³` convention and the identities
+The first line is an ordinary integral only for a localized/subtracted `f`; for a full step it is distributional.
 
-```text
-(2π)⁻³∫d³y exp(−iQ·y) f(ξ)
-    = [L_W/(2π)] δ²(Q_∥) f̂_red(s) ,
-(2π)⁻³∫d³y exp(−iQ·y) L_W∂_{yᵢ}f(ξ)
-    = [L_W/(2π)] δ²(Q_∥) n̂ᵢ (f′)̂_red(s) .
-```
+⚠⚠ **The imported c2 carrier's normalization is NOT supplied — it must be COMPUTED, ⛔ not asserted.** The c2 engine's
+transform convention is an **unnormalised forward transform with a normalised inverse** (`c1` uses `DiracDelta(k−k′)`
+with no `(2π)³` coefficient; the `(2π)⁻³` sits on the application/inverse — the c2 self-energy fold's own stated
+convention, `scripts/S11c_c2_selfenergy_fold_sympy_audit.py`), so `s11cc2FourierW1ProfileHatTransfer` /
+`s11cc2FourierW1ProfileJetHat{i}` are ⛔ **not** equal to the normalized `(2π)⁻³∫d³y e^{−iQ·y}(·)`. ⛔ **Do not supply
+a numeric `(2π)`/`δ²(Q_∥)` map for the imported carrier** — a supplied constant map about an imported object is an
+`M2` leak, and a wrong one (e.g. off by `(2π)³`) is a defect **both engines would share**. ⇒ **each engine COMPUTES
+the 3-D→1-D reduction factor** by reducing the one-profile insertion **as it actually appears in
+`s11cc2ClosedCouplingKernel`** against the imported kernel's own flat identity (its `DiracDelta³(k_out−k_in)` piece),
+using the S11c-d reduced transform `f̂_red` above and the geometry `∂_{yᵢ}f = n̂ᵢ f′(ξ)/L_W`; it **emits that reduction
+factor as an object with BOTH operands** (the imported carrier, and the derived reduced form), so the tangential
+`δ²(Q_∥)`, the `2π`, and the dimensional content **fall out of that computation**, ⛔ not a supplied constant.
 
-Thus `s11cc2FourierW1ProfileHatTransfer` maps by the first identity (with coordinate-space/asymptotic subtraction for
-the step), and each `s11cc2FourierW1ProfileJetHat{i}` maps by the second identity; their exported `*Dimension` rows
-are carried. Apply the same convention to every `m₁` or higher-jet form factor derived from the imported kernel. The
-comparator uses the **reduced per-unit-edge-area coefficient obtained after factoring exactly
-`[L_W/(2π)]δ²(Q_∥)`**, and each engine also emits the reconstruction of the 3-D carrier. This fixes tangential momentum
-conservation, the `2π` normalization, and the dimensional conversion. For each one-profile-insertion transition
-kernel define
-
-```text
-A_3D(k_out,k_in) ≡ [L_W/(2π)]δ²(Q_∥) A_edge(k_out,n,k_in,n;k_∥) ;
-```
-
-`A_edge` is the amplitude compared and used in the per-unit-edge-area flux/rate. Neither engine squares an
-unstripped `δ²(Q_∥)` when forming flux; the standard tangential box/continuum normalization is removed before the
-per-area limit.
+**Reconstruction round-trips against the DERIVED map, ⛔ not a tautology.** The 3-D↔1-D reconstruction each engine emits
+compares the imported 3-D carrier to its **computed** reduced form — ⛔ **not** a defined
+`A_3D ≡ [L_W/(2π)]δ²(Q_∥)A_edge` (that is `A−A`: it manufactures the 3-D object from the reduced one and checks
+nothing). The comparator joins the **reduced kernels so obtained** (each engine's computed reduction), ⛔ **not** a
+pre-factored `[L_W/(2π)]` coefficient. ⚠ Separately, when forming flux/rate, neither engine squares an unstripped
+`δ²(Q_∥)`: the standard tangential box/continuum normalization is removed before the per-unit-edge-area limit (a
+flux-normalization convention S11c-d fixes, distinct from — and ⛔ not a substitute for — the computed carrier
+reduction above).
 
 **Branchwise density admissibility (`N12`/`N4`), verbatim from S11c-a §2b.** Let
 `ρ_4D,ref⁰ ≡ rho_br/W_0` and carry the full fields, their gradients, and both asymptotic values live:
@@ -741,13 +745,16 @@ end-specific modes/currents beside those triplets rather than subtracting unlike
 - **Form ablation.** Perturb the **FORM** of `m₁(ξ)` (and `w₁(ξ)`) and emit the **baseline operand, the altered-form
   operand, and their residual**, with no prescribed residual disposition. A coefficient rescale of `η` tests
   arithmetic; the form change tests the profile dependence.
-- **Thickness edge-vs-bump discriminant.** Emit `(w₁′)̂_red(0)=Δw₁`. `Δw₁` is the class discriminator: the in-class
-  thickness interface has unequal thickness ends, whereas a thickness bump returns to the same thickness. The
-  ablation changes the thickness profile from the interface family to a bump family and emits the resulting
-  zero-transfer operands/residual without an expected value.
-- **Independent modulus control.** Emit `(m₁′)̂_red(0)=Δm₁` as the analogous per-profile discriminator of the modulus
-  subchannel. A constant or modulus bump is allowed inside the thickness-interface class, so its modulus moment does
-  not reclassify the thickness object. Emit the full vertex's zero-transfer dependence; do not replace it by a
+- **Thickness edge-vs-bump discriminant.** Emit the **two operands separately** — `(w₁′)̂_red(0)` (the reduced form
+  factor at zero transfer) **and** `Δw₁ ≡ w₁(+∞)−w₁(−∞)` (the jump from the asymptotic limits) — and their residual;
+  ⛔ do not assert the identity `(w₁′)̂_red(0)=Δw₁` as a single payload (it is a Fourier theorem, ⛔ not a scattering
+  result). `Δw₁` is the class discriminator: the in-class thickness interface has unequal thickness ends, whereas a
+  thickness bump returns to the same thickness. The ablation changes the thickness profile from the interface family
+  to a bump family and emits the resulting zero-transfer operands/residual without an expected value.
+- **Independent modulus control.** Emit the analogous **two operands** `(m₁′)̂_red(0)` and `Δm₁ ≡ m₁(+∞)−m₁(−∞)` (and
+  their residual) as the per-profile discriminator of the modulus subchannel — ⛔ again not the identity as a single
+  payload. A constant or modulus bump is allowed inside the thickness-interface class, so its modulus moment does not
+  reclassify the thickness object. Emit the full vertex's zero-transfer dependence; do not replace it by a
   modulus-only projection or freeze one representative shape as “the slit.”
 
 ```text

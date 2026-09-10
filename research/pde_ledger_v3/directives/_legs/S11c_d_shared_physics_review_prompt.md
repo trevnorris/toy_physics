@@ -1,4 +1,4 @@
-# Independent physics review — S11c-d SHARED PHYSICS spec (v4, Codex-authored under rule 15)
+# Independent physics review — S11c-d SHARED PHYSICS spec (v5)
 
 ## Artifact
 `/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md`
@@ -7,10 +7,12 @@ This is an **orchestrator-written physics spec** — the physics authority that 
 Wolfram that imports nothing and re-derives) will read to independently construct the same objects, plus their
 comparator. An error here makes **both** engines agree on the same wrong thing, so it is reviewed until clear.
 
-⚠ This is **spec v4**, re-authored by a different author (Codex, under rule 15) from a sound v3 base plus a large
-fix-set. Give it a **full, fresh independent review** — ⛔ do not assume the re-author fixed everything, and ⛔ do not
-merely check a prior finding list; derive your own view from the sources and report anything that changes what an
-engine computes or what the spec may claim (including anything the re-author may have newly introduced or over-fixed).
+⚠ This is **spec v5** (a Codex-authored v4 base that a two-leg gate found SOUND / NOT-SOUND-on-one-item, then one
+surgical orchestrator fold: the c2 Fourier-carrier normalization is no longer supplied — each engine must COMPUTE the
+3-D→1-D reduction from the imported kernel — plus four claim-hygiene nits). Give it a **full, fresh independent
+review** — ⛔ do not assume the fold is correct or complete, and ⛔ do not merely check a prior finding list; derive
+your own view from the sources and report anything that changes what an engine computes or what the spec may claim
+(including anything the fold may have newly introduced).
 
 ## Your role
 Form your **own** view of what S11c-d must be from the requirements and the real c2 exports **first**, then read the

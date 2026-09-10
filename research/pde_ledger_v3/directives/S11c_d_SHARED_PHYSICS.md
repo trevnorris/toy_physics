@@ -1,4 +1,4 @@
-# S11c-d — SHARED PHYSICS v4 (profile-conditioned transverse↔thickness scattering at a thickness interface)
+# S11c-d — SHARED PHYSICS v6 (profile-conditioned transverse↔thickness scattering at a thickness interface)
 
 **S11c-d** is the S11c-d sub-step of the S11c curved-interface program — the **fifth build unit** after the c1/c2
 split (`directives/S11c_decisions.md` row `:52`). It consumes S11c-c2's closed operator and closed off-diagonal
@@ -13,13 +13,14 @@ Wolfram engine imports nothing and re-derives every consumed object from the sib
 (`S9_export_chain_rebuild_directive.md:16-18` is the only cross-engine control). Blindness is the control: an
 agreement is independent construction, not a copy.
 
-⭐ This is a **Codex `gpt-5.6-sol`-authored physics spec**, re-authored as v4 under `CLAUDE.md` rule 15 after the
-orchestrator-authored v2/v3 folds bred new defects. It is the physics authority both blind engines read. Per G1/G2 it
-is physics-bearing and gets **two non-author legs — a fresh Claude agent + Grok — reviewed UNTIL CLEAR** (spec row,
-⛔ not the decision-list one-pass); both reports precede any commit, and a reviewed baseline is preserved before a
-repair overwrites it. The **build directive** that follows this spec gets its own two decision legs before any builder
-(the G2 TRIGGER). **Spec v4** retains the v3 §0–§8 structural frame and folds every round-3 finding; no wording from a
-prior version is authoritative where the round-3 derivation corrected it.
+⭐ This is a **Codex `gpt-5.6-sol`-authored physics spec**, now v6 under `CLAUDE.md` rule 15 after the
+orchestrator-authored v2/v3 folds bred new defects. Its lineage is **Codex-authored v4 → orchestrator §1c/nit fold
+(v5) → this Codex §1c-Fourier refix (v6, rule 15, per Grok's round-5 F1)**. It is the physics authority both blind
+engines read. Per G1/G2 it is physics-bearing and gets **two non-author legs — a fresh Claude agent + Grok — reviewed
+UNTIL CLEAR** (spec row, ⛔ not the decision-list one-pass); both reports precede any commit, and a reviewed baseline
+is preserved before a repair overwrites it. The **build directive** that follows this spec gets its own two decision
+legs before any builder (the G2 TRIGGER). **Spec v6** retains the v3 §0–§8 structural frame and folds every round-3
+finding; no wording from a prior version is authoritative where the round-3 derivation corrected it.
 
 ⭐ **The profile-class + regime decision (§1c–§1d) was settled by a three-way physics consult** (orchestrator + `gpt-6-astra`
 xhigh + `grok-4.6`, `_legs/S11c_d_profile_class_consult{,_astra,_grok}.md`) and the user's approval: **localized
@@ -205,7 +206,7 @@ with the additional half-line tail premise that makes `f_loc∈L¹`. Retain the 
 transform of the constant-plus-Heaviside part. If that tail premise is unavailable, the zero-jet step remains in
 coordinate space; it is not assigned an ordinary transform.
 
-**Exact reduced transform and the c2 carrier map.** Put
+**Exact reduced transform and the computed c2 carrier reduction.** Put
 
 ```text
 Q ≡ k_out − k_in ,   Q_n ≡ n̂·Q ,   Q_∥ ≡ Q − n̂Q_n ,   s ≡ Q_nL_W ,
@@ -215,27 +216,23 @@ f(ξ) = (1/2π)∫_{−∞}^{∞} ds exp(+isξ) f̂_red(s) .
 
 The first line is an ordinary integral only for a localized/subtracted `f`; for a full step it is distributional.
 
-⚠⚠ **The imported c2 carrier's normalization is NOT supplied — it must be COMPUTED, ⛔ not asserted.** The c2 engine's
-transform convention is an **unnormalised forward transform with a normalised inverse** (`c1` uses `DiracDelta(k−k′)`
-with no `(2π)³` coefficient; the `(2π)⁻³` sits on the application/inverse — the c2 self-energy fold's own stated
-convention, `scripts/S11c_c2_selfenergy_fold_sympy_audit.py`), so `s11cc2FourierW1ProfileHatTransfer` /
-`s11cc2FourierW1ProfileJetHat{i}` are ⛔ **not** equal to the normalized `(2π)⁻³∫d³y e^{−iQ·y}(·)`. ⛔ **Do not supply
-a numeric `(2π)`/`δ²(Q_∥)` map for the imported carrier** — a supplied constant map about an imported object is an
-`M2` leak, and a wrong one (e.g. off by `(2π)³`) is a defect **both engines would share**. ⇒ **each engine COMPUTES
-the 3-D→1-D reduction factor** by reducing the one-profile insertion **as it actually appears in
-`s11cc2ClosedCouplingKernel`** against the imported kernel's own flat identity (its `DiracDelta³(k_out−k_in)` piece),
-using the S11c-d reduced transform `f̂_red` above and the geometry `∂_{yᵢ}f = n̂ᵢ f′(ξ)/L_W`; it **emits that reduction
-factor as an object with BOTH operands** (the imported carrier, and the derived reduced form), so the tangential
-`δ²(Q_∥)`, the `2π`, and the dimensional content **fall out of that computation**, ⛔ not a supplied constant.
+⚠⚠ **The imported c2 carrier's normalization is NOT supplied — it must be COMPUTED, ⛔ not asserted.** The only
+supplied Fourier convention here is the reduced one-dimensional definition `f̂_red` above. ⛔ **Do not supply a
+numeric `(2π)`/`δ²(Q_∥)` map for the imported carrier.** Each engine must **COMPUTE and EMIT the 3-D→1-D reduction of
+its own closed-kernel Fourier symbols as an object with BOTH operands**: (i) the 3-D carrier as it actually appears in
+that engine's own closed coupling kernel, and (ii) the reduced one-dimensional kernel obtained by applying that same
+engine's own Fourier convention — the convention realized in its own construction of the two-momentum identity /
+profile insertion, ⛔ not a typed `[L_W/(2π)]` or `(2π)²L_W` map — to the §1c interface geometry
+`f=f(n̂·y/L_W)` and `∂_{yᵢ}f=n̂ᵢf′(ξ)/L_W`. The `2π`, the tangential `δ²(Q_∥)`, and the dimensional content must fall
+out of each engine's own computation. The comparator joins the two engines' **reduced kernels**, ⛔ not a pre-factored
+coefficient; their agreement or residual on that reduced kernel is the measurement.
 
-**Reconstruction round-trips against the DERIVED map, ⛔ not a tautology.** The 3-D↔1-D reconstruction each engine emits
-compares the imported 3-D carrier to its **computed** reduced form — ⛔ **not** a defined
-`A_3D ≡ [L_W/(2π)]δ²(Q_∥)A_edge` (that is `A−A`: it manufactures the 3-D object from the reduced one and checks
-nothing). The comparator joins the **reduced kernels so obtained** (each engine's computed reduction), ⛔ **not** a
-pre-factored `[L_W/(2π)]` coefficient. ⚠ Separately, when forming flux/rate, neither engine squares an unstripped
-`δ²(Q_∥)`: the standard tangential box/continuum normalization is removed before the per-unit-edge-area limit (a
-flux-normalization convention S11c-d fixes, distinct from — and ⛔ not a substitute for — the computed carrier
-reduction above).
+**Reconstruction round-trips against each engine's COMPUTED reduction, ⛔ not a tautology.** Each engine computes and
+emits its own 3-D↔1-D reconstruction from the two independently exposed operands above; it does not manufacture the
+3-D operand by defining `A_3D ≡ [L_W/(2π)]δ²(Q_∥)A_edge` and then subtract it from itself (that is `A−A`). ⚠
+Separately, when forming flux/rate, neither engine squares an unstripped tangential `δ²(Q_∥)`: remove that factor
+before the per-unit-edge-area limit using the engine's computed reduction and the standard tangential box/continuum
+normalization. This flux step is distinct from, and ⛔ not a substitute for, the computed carrier reduction.
 
 **Branchwise density admissibility (`N12`/`N4`), verbatim from S11c-a §2b.** Let
 `ρ_4D,ref⁰ ≡ rho_br/W_0` and carry the full fields, their gradients, and both asymptotic values live:
@@ -858,8 +855,9 @@ cross-engine control). ⛔ The denylist stays cut (`N9`/rule 12); blindness is e
 cross-engine-UNCLOSED disposition — the operand DEBT, the raw/schema-unmatched `R_N6`, the two S11c-b signs, the six
 §3d re-adjudications, the 3 N6 premise caveats, the withdrawn F/G, and that no term-origin/parity/increment/§3d rows
 are importable); the §1c localized **thickness** interface (`Δw₁≠0`) with independent unrestricted-class `m₁`, the
-branchwise density maps, short-range-jet domain, exact reduced Fourier/3-D carrier convention, and admissibility; the
-§1d regime (Born in `η`, with `σ_W`, `Q_nL_W`, and local `kL_W`/gap kinematics separate and live); the §2 requirement
+branchwise density maps, short-range-jet domain, the one-dimensional `f̂_red` reduced-transform convention, and
+admissibility; the §1d regime (Born in `η`, with `σ_W`, `Q_nL_W`, and local `kL_W`/gap kinematics separate and live);
+the §2 requirement
 to compute the uniform/end baselines and define channels from full asymptotic block pencils; and `N11a`, `N12`,
 `N13`. No baseline value is supplied.
 
@@ -872,8 +870,8 @@ quadratic form, and operands for the conditional `N12` disposition (§3c); the w
 strong-edge handoff (§3d);
 the downstream coordinate-covariance and shape-sensitivity operands/residuals (§5a), three uniform regressions (§5b),
 profile-form controls and thickness/modulus discriminants (§5c), and the computed falsification projection (§5d);
-all derived profile moments/form factors and their 3-D reconstruction; and every output's `(ε,η,σ_W)`/`λ` order and
-`[L,T,M]` dimension.
+all derived profile moments/form factors, each engine's 3-D→1-D reduction factor with both operands, and each engine's
+3-D↔1-D reconstruction; and every output's `(ε,η,σ_W)`/`λ` order and `[L,T,M]` dimension.
 
 **Builder report.** The build directive states, per emitted object, which line computed it (`.claude/skills/build`);
 declares the profile class (§1c), the regime grades (§1d), the distorted-basis insertion organization (§2), and the

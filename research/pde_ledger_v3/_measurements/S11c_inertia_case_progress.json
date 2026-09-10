@@ -1,0 +1,25 @@
+[
+  {
+    "frame": "task_coupling_kernel",
+    "locals": [
+      {
+        "name": "branch",
+        "addr": 130732620851088,
+        "arg": false,
+        "repr": "\"MATERIAL_ADVECTED\""
+      },
+      {
+        "name": "representative",
+        "addr": 130732620866800,
+        "arg": false,
+        "repr": "\"RHOBR_CONSTANT\""
+      },
+      {
+        "name": "case",
+        "addr": 130732527408320,
+        "arg": false,
+        "repr": "(\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\")"
+      }
+    ]
+  }
+]

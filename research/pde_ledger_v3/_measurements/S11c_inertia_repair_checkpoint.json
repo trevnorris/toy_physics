@@ -1,0 +1,35 @@
+{
+  "updated_utc": "2026-09-10T21:29:43.166787+00:00",
+  "root": "/var/projects/toy_physics/research/pde_ledger_v3",
+  "active_stage": "completed inertia repair and regeneration",
+  "repair_completed": true,
+  "repair_pending": [],
+  "completed_stages": [
+    "b four-case primaries",
+    "c1 full run",
+    "c2 full run",
+    "fresh sign/energy diagnostic",
+    "c2 export-delta check",
+    "d full four-case prototype"
+  ],
+  "d_program_complete": false,
+  "d_export_exists": false,
+  "d_outstanding_constructions": [
+    "ALL_CARRIER_INVERSE_FOURIER_ROUNDTRIPS",
+    "FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS",
+    "MIXED_GRADE_MODE_JETS",
+    "GENERIC_DOMAIN_SHEET_CONTINUATION",
+    "S11B_CURRENT",
+    "NONLINEAR_PENCIL_NORMALIZATION",
+    "COMPLETE_TWO_ENDED_SCATTERING",
+    "POLES_RIESZ_OVERLAP",
+    "SURVIVAL",
+    "FLUX_BOOKKEEPING",
+    "WEAK_COEFFICIENTS",
+    "SECTION_5_CONTROLS",
+    "OWN_ROWS_EXPORT"
+  ],
+  "baseline": "/tmp/s11c-inertia-repair-baseline",
+  "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md",
+  "scope": "SymPy conservative inertia repair only. Existing b heavy controls, shear normalization, and cross-engine debts remain open. No reviews, WL, comparator, downstream physics stage, or commits."
+}

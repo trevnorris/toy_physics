@@ -1,0 +1,21 @@
+{
+  "stage": "c1",
+  "command": "python -u scripts/S11c_c1_bulk_closure_sympy_audit.py",
+  "exit_code": 0,
+  "elapsed_seconds": 299.32,
+  "stdout_bytes": 90722851,
+  "stderr_bytes": 0,
+  "maximum_rss_kib": 1651888,
+  "time_file": "/tmp/s11c-inertia-rebuild/c1.time",
+  "stdout_path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+  "installation_note": "Recovered wrapper cross-filesystem rename error by copying to a destination-local staging file and atomically replacing the working-tree path. Producer was not rerun.",
+  "native_resources": {
+    "native_wall_seconds": 299.32,
+    "maximum_rss_kib": 1651888,
+    "native_exit_status": 0,
+    "user_seconds": 295.79,
+    "system_seconds": 2.35,
+    "stderr_bytes": 0,
+    "time_log_sha256": "a6fa5f774a71f2b94c2b035c596a70812c465b839703bb03a429d0f0b2f07910"
+  }
+}

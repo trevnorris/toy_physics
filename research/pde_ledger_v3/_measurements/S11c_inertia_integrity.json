@@ -1,0 +1,66 @@
+{
+  "unchanged_inputs": {
+    "scripts/S11c_c1_bulk_closure_sympy_audit.py": {
+      "expected": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "actual": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20"
+    },
+    "scripts/S11c_c2_selfenergy_fold_sympy_audit.py": {
+      "expected": "fb509840c5b7b46ea96c8c18db4ba038177f0ea855b6c7a149707e913067d65c",
+      "actual": "fb509840c5b7b46ea96c8c18db4ba038177f0ea855b6c7a149707e913067d65c"
+    },
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": {
+      "expected": "8ee927b9fe4c2237332ad8045cf9928f63a8450d48b8185ef939e1507fded524",
+      "actual": "8ee927b9fe4c2237332ad8045cf9928f63a8450d48b8185ef939e1507fded524"
+    },
+    "scripts/S11c_a_exports.py": {
+      "expected": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "actual": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17"
+    },
+    "scripts/S11b_exports.py": {
+      "expected": "e5fd228654de2000699cca8ff4f1a6b041056c22dd8a4da41f493566d446c27e",
+      "actual": "e5fd228654de2000699cca8ff4f1a6b041056c22dd8a4da41f493566d446c27e"
+    },
+    "directives/S11c_b_SHARED_PHYSICS.md": {
+      "expected": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89",
+      "actual": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+    },
+    "directives/S11c_c1_SHARED_PHYSICS.md": {
+      "expected": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "actual": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+    },
+    "directives/S11c_c2_SHARED_PHYSICS.md": {
+      "expected": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1",
+      "actual": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1"
+    },
+    "directives/S11c_d_SHARED_PHYSICS.md": {
+      "expected": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "actual": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+    },
+    "scripts/ledger_fold.py": {
+      "expected": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "actual": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+    }
+  },
+  "input_mismatches": [],
+  "original_annex_objects": {
+    "scripts/out/S11c_b_brane_operator_sympy_audit.out": {
+      "original_object": "/var/projects/toy_physics/.git/annex/objects/fZ/1X/MD5E-s84386811--397b2b83752ec8484636e2e77b3ba50c.out/MD5E-s84386811--397b2b83752ec8484636e2e77b3ba50c.out",
+      "bytes": 84386811,
+      "expected_bytes": 84386811,
+      "md5": "397b2b83752ec8484636e2e77b3ba50c",
+      "expected_md5": "397b2b83752ec8484636e2e77b3ba50c",
+      "working_tree_is_symlink": false
+    },
+    "scripts/out/S11c_c1_bulk_closure_sympy_audit.out": {
+      "original_object": "/var/projects/toy_physics/.git/annex/objects/m2/7p/MD5E-s90722857--9cd0312e09ed822913be16af50f102ca.out/MD5E-s90722857--9cd0312e09ed822913be16af50f102ca.out",
+      "bytes": 90722857,
+      "expected_bytes": 90722857,
+      "md5": "9cd0312e09ed822913be16af50f102ca",
+      "expected_md5": "9cd0312e09ed822913be16af50f102ca",
+      "working_tree_is_symlink": false
+    }
+  },
+  "annex_mismatches": [],
+  "diagnostic_archive_sha256": "961dc00bae81b77e1f4833fbba5d5e43d3b566c1add06db42c7d6d4fa3d025fc",
+  "diagnostic_archive_expected_sha256": "961dc00bae81b77e1f4833fbba5d5e43d3b566c1add06db42c7d6d4fa3d025fc"
+}

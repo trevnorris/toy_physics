@@ -1,0 +1,20 @@
+{
+  "stage": "b",
+  "command": "S11CB_PRIMARIES_ONLY=1 S11CB_PROJECTION_WORKERS=1 python -u scripts/S11c_b_brane_operator_sympy_audit.py",
+  "exit_code": 0,
+  "elapsed_seconds": 7333,
+  "stdout_bytes": 183296966,
+  "stderr_bytes": 0,
+  "maximum_rss_kib": 1940800,
+  "time_file": "/tmp/s11c-inertia-rebuild/b.time",
+  "stdout_path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_b_brane_operator_sympy_audit.out",
+  "native_resources": {
+    "native_wall_seconds": 7333.0,
+    "maximum_rss_kib": 1940800,
+    "native_exit_status": 0,
+    "user_seconds": 7314.04,
+    "system_seconds": 3.35,
+    "stderr_bytes": 0,
+    "time_log_sha256": "26486d83b685171f199c72d77a4cb2df317f61c55749c5312c2067e668a34bbf"
+  }
+}

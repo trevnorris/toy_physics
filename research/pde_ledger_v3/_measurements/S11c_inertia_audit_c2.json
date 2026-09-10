@@ -1,0 +1,20 @@
+{
+  "stage": "c2",
+  "export_sha256": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+  "export_bytes": 22441418,
+  "rows": 70,
+  "added_keys": [],
+  "removed_keys": [],
+  "changed_value_serializations": [
+    "s11cc2ClosedCouplingKernel",
+    "s11cc2ClosedSlabOperator"
+  ],
+  "pin_mismatches": {},
+  "pins": {
+    "scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "fb509840c5b7b46ea96c8c18db4ba038177f0ea855b6c7a149707e913067d65c",
+    "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+    "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+    "directives/S11c_c2_SHARED_PHYSICS.md": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+  }
+}

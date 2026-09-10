@@ -1,0 +1,18 @@
+{
+  "stage": "b",
+  "export_sha256": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+  "export_bytes": 61607905,
+  "rows": 2441,
+  "added_keys": [],
+  "removed_keys": [],
+  "changed_value_serializations": [
+    "slab_operator"
+  ],
+  "pin_mismatches": {},
+  "pins": {
+    "S11c_b_brane_operator_sympy_audit.py": "36c52ad3b54697690d2b225d9a6051e80ca218c575b07cb4c28a9d770aa1feca",
+    "S11c_a_exports.py": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+    "S11c_b_SHARED_PHYSICS.md": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+  },
+  "changed_c1_direct_input_serializations": []
+}

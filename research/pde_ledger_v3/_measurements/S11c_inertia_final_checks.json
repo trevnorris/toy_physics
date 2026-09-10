@@ -1,0 +1,69 @@
+{
+  "tag_count": 403,
+  "duplicate_tags": [],
+  "physical_record_count": 394,
+  "groups": {
+    "ROW_MINUS_ACTION": {
+      "count": 24,
+      "values": [
+        "0"
+      ]
+    },
+    "CLOSED_MINUS_OPEN": {
+      "count": 24,
+      "values": [
+        "Matrix([\n[0],\n[0],\n[0]])"
+      ]
+    },
+    "CLOSED_SCALAR_ROWS": {
+      "count": 24,
+      "values": [
+        "(0, 0)"
+      ]
+    },
+    "THICKNESS_ROW_MINUS_ACTION": {
+      "count": 4,
+      "values": [
+        "0"
+      ]
+    },
+    "STANDING_WAVE_ENERGY_RATES": {
+      "count": 4,
+      "values": [
+        "(0, 0)"
+      ]
+    },
+    "S11B_ACTION_PURE_CURL_RESIDUAL": {
+      "count": 4,
+      "values": [
+        "0"
+      ]
+    },
+    "S11B_STORED_PURE_CURL_RESIDUAL": {
+      "count": 4,
+      "values": [
+        "0"
+      ]
+    },
+    "S11CB_MINUS_S11B_STIFFNESS": {
+      "count": 4,
+      "values": [
+        "k**2*mu_S/2"
+      ]
+    },
+    "FREQUENCY_SQUARED_PAIR_DIFFERENCES": {
+      "count": 48,
+      "values": [
+        "0"
+      ]
+    }
+  },
+  "missing_leaf_units": 0,
+  "dimension_constraints": "()",
+  "dimension_unresolved": "()",
+  "cache_flag": "False",
+  "input_pin_mismatches": [],
+  "resource_measurements": "(117.01603370253, 1713640)",
+  "output_bytes": 419788,
+  "output_sha256": "3f1b1cca3dcf586d5a7bcc65f8178d408e648fc36667c27439d540ca152e54c9"
+}

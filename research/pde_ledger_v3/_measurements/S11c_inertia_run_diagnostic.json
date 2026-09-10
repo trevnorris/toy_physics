@@ -1,0 +1,27 @@
+{
+  "stage": "diagnostic",
+  "command": [
+    "/usr/bin/time",
+    "-v",
+    "-o",
+    "/tmp/s11c-inertia-rebuild/diagnostic.time",
+    "/usr/bin/python",
+    "-u",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_transverse_sign_diagnostic.py"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 118.94367675110698,
+  "stdout_bytes": 419788,
+  "stderr_bytes": 0,
+  "time_file": "/tmp/s11c-inertia-rebuild/diagnostic.time",
+  "stdout_path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_transverse_sign_diagnostic.out",
+  "native_resources": {
+    "native_wall_seconds": 118.91,
+    "maximum_rss_kib": 1713640,
+    "native_exit_status": 0,
+    "user_seconds": 115.68,
+    "system_seconds": 4.57,
+    "stderr_bytes": 0,
+    "time_log_sha256": "916bda546a3d7e89e28173ae0cd72ee08c38cf5868e7f520f8425f56981373d2"
+  }
+}

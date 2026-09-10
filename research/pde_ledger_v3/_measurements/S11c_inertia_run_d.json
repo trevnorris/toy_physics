@@ -1,0 +1,27 @@
+{
+  "stage": "d",
+  "command": [
+    "/usr/bin/time",
+    "-v",
+    "-o",
+    "/tmp/s11c-inertia-rebuild/d.time",
+    "/usr/bin/python",
+    "-u",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 1381.3516651885584,
+  "stdout_bytes": 41302466,
+  "stderr_bytes": 0,
+  "time_file": "/tmp/s11c-inertia-rebuild/d.time",
+  "stdout_path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out",
+  "native_resources": {
+    "native_wall_seconds": 1381.3,
+    "maximum_rss_kib": 1718528,
+    "native_exit_status": 0,
+    "user_seconds": 1413.78,
+    "system_seconds": 214.84,
+    "stderr_bytes": 0,
+    "time_log_sha256": "9be20e30f9da118bea9e015649bcb87776b73f1dfd5e42fae11e1f0e5a75090a"
+  }
+}

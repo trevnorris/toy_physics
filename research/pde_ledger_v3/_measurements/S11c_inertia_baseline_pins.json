@@ -1,0 +1,19 @@
+{
+  "b": {
+    "S11c_b_brane_operator_sympy_audit.py": {
+      "pinned": "2a1fef275636dd210c8864ab1762859f63a4dfb054008fa21620e54b14e47fd2",
+      "current": "36c52ad3b54697690d2b225d9a6051e80ca218c575b07cb4c28a9d770aa1feca"
+    }
+  },
+  "c1": {},
+  "c2": {
+    "scripts/S11c_c2_selfenergy_fold_sympy_audit.py": {
+      "pinned": "24d3ecb40c999604d6dc529cd004d62a9db9cb4186d50896663d35d46499d2e3",
+      "current": "fb509840c5b7b46ea96c8c18db4ba038177f0ea855b6c7a149707e913067d65c"
+    },
+    "directives/S11c_c2_SHARED_PHYSICS.md": {
+      "pinned": "e0b8e5deb1b2cb321d128c2f3ba65b1209f68fac38d8d5839b2811222e69fe89",
+      "current": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1"
+    }
+  }
+}

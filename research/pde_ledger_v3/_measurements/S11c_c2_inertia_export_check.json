@@ -1,0 +1,251 @@
+{
+  "leaf_count": 44,
+  "zero_acceleration_residual_counts": {
+    "0": 44
+  },
+  "literal_delta_zero_counts": {
+    "False": 22,
+    "True": 22
+  },
+  "literal_nonzero_delta_paths": [
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        0
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        1
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        2
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "E_W"
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        0
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        1
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        2
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "E_W"
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        0
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        1
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        2
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "E_W"
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        0
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        1
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        2
+      ]
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "E_W"
+      ]
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "DIV_U"
+      ]
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "DIV_U"
+      ]
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "DIV_U"
+      ]
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "DIV_U"
+      ]
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "DIV_U"
+      ]
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "DIV_U"
+      ]
+    }
+  ],
+  "output_bytes": 19258050
+}

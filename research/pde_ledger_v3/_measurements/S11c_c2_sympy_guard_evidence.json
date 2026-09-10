@@ -927,10 +927,10 @@
       "allowed_infra_keys": []
     },
     "digests": {
-      "scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "24d3ecb40c999604d6dc529cd004d62a9db9cb4186d50896663d35d46499d2e3",
-      "scripts/S11c_b_exports.py": "053af8042ac0e4e00b04986ce5c19e41b8d16fcf9b99dbbb9aa1d40f258f72b9",
-      "scripts/S11c_c1_exports.py": "8e29b4a4afc8d0d3cd98c6febff63b25c17f787724415e9fca78db778681533f",
-      "directives/S11c_c2_SHARED_PHYSICS.md": "e0b8e5deb1b2cb321d128c2f3ba65b1209f68fac38d8d5839b2811222e69fe89",
+      "scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "fb509840c5b7b46ea96c8c18db4ba038177f0ea855b6c7a149707e913067d65c",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "directives/S11c_c2_SHARED_PHYSICS.md": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1",
       "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
     },
     "publication_semantic": [
@@ -1369,38 +1369,38 @@
     "publication_value_bytes": {
       "s11cc2ClosedCouplingKernel": {
         "LAB_HELD/RHO4_CONSTANT": {
-          "emitted_srepr_bytes": 4355993,
-          "compact_srepr_bytes": 3375460
+          "emitted_srepr_bytes": 4356110,
+          "compact_srepr_bytes": 3375538
         },
         "LAB_HELD/RHOBR_CONSTANT": {
-          "emitted_srepr_bytes": 3407032,
-          "compact_srepr_bytes": 2596031
+          "emitted_srepr_bytes": 3407071,
+          "compact_srepr_bytes": 2596070
         },
         "MATERIAL_ADVECTED/RHO4_CONSTANT": {
-          "emitted_srepr_bytes": 5990000,
-          "compact_srepr_bytes": 4422717
+          "emitted_srepr_bytes": 5990117,
+          "compact_srepr_bytes": 4422795
         },
         "MATERIAL_ADVECTED/RHOBR_CONSTANT": {
-          "emitted_srepr_bytes": 4846376,
-          "compact_srepr_bytes": 3523299
+          "emitted_srepr_bytes": 4846415,
+          "compact_srepr_bytes": 3523338
         }
       },
       "s11cc2ClosedSlabOperator": {
         "LAB_HELD/RHO4_CONSTANT": {
-          "emitted_srepr_bytes": 4002816,
-          "compact_srepr_bytes": 2271711
+          "emitted_srepr_bytes": 4002712,
+          "compact_srepr_bytes": 2271607
         },
         "LAB_HELD/RHOBR_CONSTANT": {
-          "emitted_srepr_bytes": 3121562,
-          "compact_srepr_bytes": 1718913
+          "emitted_srepr_bytes": 3121497,
+          "compact_srepr_bytes": 1718848
         },
         "MATERIAL_ADVECTED/RHO4_CONSTANT": {
-          "emitted_srepr_bytes": 4427664,
-          "compact_srepr_bytes": 2502613
+          "emitted_srepr_bytes": 4427560,
+          "compact_srepr_bytes": 2502509
         },
         "MATERIAL_ADVECTED/RHOBR_CONSTANT": {
-          "emitted_srepr_bytes": 3479507,
-          "compact_srepr_bytes": 1928763
+          "emitted_srepr_bytes": 3479442,
+          "compact_srepr_bytes": 1928698
         }
       }
     }
@@ -1930,99 +1930,19 @@
       "emit_line": 1086,
       "write_key": "s11cc2DensityLiveMinusFrozenMaterialAdvected"
     },
-    "PY_S11CC2_REP_INVARIANCE_LAB_OPERAND_RHO4_CONSTANT": {
-      "emit_line": 1095,
-      "write_key": "s11cc2RepInvarianceLabOperandRho4Constant"
+    "PY_S11CC2_ANCHORING_L_MINUS_M_RHO4_CONSTANT": {
+      "emit_line": 1090,
+      "write_key": "s11cc2AnchoringLMinusMRho4Constant"
     },
-    "PY_S11CC2_REP_INVARIANCE_MATERIAL_OPERAND_RHO4_CONSTANT": {
-      "emit_line": 1096,
-      "write_key": "s11cc2RepInvarianceMaterialOperandRho4Constant"
-    },
-    "PY_S11CC2_REP_INVARIANCE_RESIDUAL_RHO4_CONSTANT": {
-      "emit_line": 1097,
-      "write_key": "s11cc2RepInvarianceResidualRho4Constant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_NORMAL_OPERANDS_RHO4_CONSTANT": {
-      "emit_line": 1099,
-      "write_key": "s11cc2RepIndependenceMaterialNormalOperandsRho4Constant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_OPERAND_RHO4_CONSTANT": {
-      "emit_line": 1100,
-      "write_key": "s11cc2RepIndependenceMaterialOperandRho4Constant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_RESIDUAL_RHO4_CONSTANT": {
-      "emit_line": 1101,
-      "write_key": "s11cc2RepIndependenceMaterialResidualRho4Constant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_LAB_OPERAND_RHO4_CONSTANT": {
-      "emit_line": 1102,
-      "write_key": "s11cc2RepIndependenceLabOperandRho4Constant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_LAB_NORMAL_OPERANDS_RHO4_CONSTANT": {
-      "emit_line": 1104,
-      "write_key": "s11cc2RepIndependenceLabNormalOperandsRho4Constant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_LAB_CORRUPTED_OPERAND_RHO4_CONSTANT": {
-      "emit_line": 1105,
-      "write_key": "s11cc2RepIndependenceLabCorruptedOperandRho4Constant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_LAB_RESIDUAL_RHO4_CONSTANT": {
-      "emit_line": 1106,
-      "write_key": "s11cc2RepIndependenceLabResidualRho4Constant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_COMPANION_OPERAND_RHO4_CONSTANT": {
-      "emit_line": 1107,
-      "write_key": "s11cc2RepIndependenceMaterialCompanionOperandRho4Constant"
-    },
-    "PY_S11CC2_REP_INVARIANCE_LAB_OPERAND_RHOBR_CONSTANT": {
-      "emit_line": 1095,
-      "write_key": "s11cc2RepInvarianceLabOperandRhobrConstant"
-    },
-    "PY_S11CC2_REP_INVARIANCE_MATERIAL_OPERAND_RHOBR_CONSTANT": {
-      "emit_line": 1096,
-      "write_key": "s11cc2RepInvarianceMaterialOperandRhobrConstant"
-    },
-    "PY_S11CC2_REP_INVARIANCE_RESIDUAL_RHOBR_CONSTANT": {
-      "emit_line": 1097,
-      "write_key": "s11cc2RepInvarianceResidualRhobrConstant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_NORMAL_OPERANDS_RHOBR_CONSTANT": {
-      "emit_line": 1099,
-      "write_key": "s11cc2RepIndependenceMaterialNormalOperandsRhobrConstant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_OPERAND_RHOBR_CONSTANT": {
-      "emit_line": 1100,
-      "write_key": "s11cc2RepIndependenceMaterialOperandRhobrConstant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_RESIDUAL_RHOBR_CONSTANT": {
-      "emit_line": 1101,
-      "write_key": "s11cc2RepIndependenceMaterialResidualRhobrConstant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_LAB_OPERAND_RHOBR_CONSTANT": {
-      "emit_line": 1102,
-      "write_key": "s11cc2RepIndependenceLabOperandRhobrConstant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_LAB_NORMAL_OPERANDS_RHOBR_CONSTANT": {
-      "emit_line": 1104,
-      "write_key": "s11cc2RepIndependenceLabNormalOperandsRhobrConstant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_LAB_CORRUPTED_OPERAND_RHOBR_CONSTANT": {
-      "emit_line": 1105,
-      "write_key": "s11cc2RepIndependenceLabCorruptedOperandRhobrConstant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_LAB_RESIDUAL_RHOBR_CONSTANT": {
-      "emit_line": 1106,
-      "write_key": "s11cc2RepIndependenceLabResidualRhobrConstant"
-    },
-    "PY_S11CC2_REP_INDEPENDENCE_MATERIAL_COMPANION_OPERAND_RHOBR_CONSTANT": {
-      "emit_line": 1107,
-      "write_key": "s11cc2RepIndependenceMaterialCompanionOperandRhobrConstant"
+    "PY_S11CC2_ANCHORING_L_MINUS_M_RHOBR_CONSTANT": {
+      "emit_line": 1090,
+      "write_key": "s11cc2AnchoringLMinusMRhobrConstant"
     },
     "PY_S11CC2_EXPORT_ROUNDTRIP": {
       "emit_line": 902,
       "write_key": "s11cc2ExportRoundtrip"
     }
   },
-  "elapsed_seconds": 1447.0734347105026,
-  "peak_rss_kib": 1917760
+  "elapsed_seconds": 2232.6664241096005,
+  "peak_rss_kib": 1862840
 }

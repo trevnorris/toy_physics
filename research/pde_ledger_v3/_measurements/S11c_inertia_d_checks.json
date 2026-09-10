@@ -1,0 +1,40 @@
+{
+  "tag_count": 7509,
+  "duplicate_tags": [],
+  "missing_final_records": [],
+  "reduced_case_records": [
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT",
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHOBR_CONSTANT",
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHO4_CONSTANT",
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHOBR_CONSTANT",
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT",
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHOBR_CONSTANT",
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHO4_CONSTANT",
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHOBR_CONSTANT"
+  ],
+  "spectral_pit_sample_count": 24,
+  "dimension_records": {
+    "PENCIL_DIMENSION_CONSTRAINT_RESIDUALS": "()",
+    "REDUCED_DIMENSION_CONSTRAINT_RESIDUALS": "()",
+    "REDUCED_DIMENSION_UNRESOLVED": "()"
+  },
+  "outstanding_constructions": [
+    "ALL_CARRIER_INVERSE_FOURIER_ROUNDTRIPS",
+    "FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS",
+    "MIXED_GRADE_MODE_JETS",
+    "GENERIC_DOMAIN_SHEET_CONTINUATION",
+    "S11B_CURRENT",
+    "NONLINEAR_PENCIL_NORMALIZATION",
+    "COMPLETE_TWO_ENDED_SCATTERING",
+    "POLES_RIESZ_OVERLAP",
+    "SURVIVAL",
+    "FLUX_BOOKKEEPING",
+    "WEAK_COEFFICIENTS",
+    "SECTION_5_CONTROLS",
+    "OWN_ROWS_EXPORT"
+  ],
+  "resource_measurements": "(1377.90353072062, 1718528)",
+  "input_pin_mismatches": [],
+  "output_bytes": 41302466,
+  "output_sha256": "cdb687660b739afdc2a30333e0f8002f4e73bfaa5d40301eae29da588a975dc1"
+}

@@ -1,0 +1,56 @@
+{
+  "b": {
+    "native_wall_seconds": 7333.0,
+    "maximum_rss_kib": 1940800,
+    "native_exit_status": 0,
+    "user_seconds": 7314.04,
+    "system_seconds": 3.35,
+    "stderr_bytes": 0,
+    "time_log_sha256": "26486d83b685171f199c72d77a4cb2df317f61c55749c5312c2067e668a34bbf"
+  },
+  "c1": {
+    "native_wall_seconds": 299.32,
+    "maximum_rss_kib": 1651888,
+    "native_exit_status": 0,
+    "user_seconds": 295.79,
+    "system_seconds": 2.35,
+    "stderr_bytes": 0,
+    "time_log_sha256": "a6fa5f774a71f2b94c2b035c596a70812c465b839703bb03a429d0f0b2f07910"
+  },
+  "c2": {
+    "native_wall_seconds": 2237.15,
+    "maximum_rss_kib": 1862840,
+    "native_exit_status": 0,
+    "user_seconds": 2228.56,
+    "system_seconds": 3.39,
+    "stderr_bytes": 0,
+    "time_log_sha256": "18a428f0d27f7eca8bb1b0574bf3e48ef886838b18246feb40a573a8b4d963e5"
+  },
+  "diagnostic": {
+    "native_wall_seconds": 118.91,
+    "maximum_rss_kib": 1713640,
+    "native_exit_status": 0,
+    "user_seconds": 115.68,
+    "system_seconds": 4.57,
+    "stderr_bytes": 0,
+    "time_log_sha256": "916bda546a3d7e89e28173ae0cd72ee08c38cf5868e7f520f8425f56981373d2"
+  },
+  "d": {
+    "native_wall_seconds": 1381.3,
+    "maximum_rss_kib": 1718528,
+    "native_exit_status": 0,
+    "user_seconds": 1413.78,
+    "system_seconds": 214.84,
+    "stderr_bytes": 0,
+    "time_log_sha256": "9be20e30f9da118bea9e015649bcb87776b73f1dfd5e42fae11e1f0e5a75090a"
+  },
+  "c2-check": {
+    "native_wall_seconds": 227.96,
+    "maximum_rss_kib": 1676144,
+    "native_exit_status": 0,
+    "user_seconds": 224.91,
+    "system_seconds": 2.88,
+    "stderr_bytes": 0,
+    "time_log_sha256": "7bb39ea99e618dc43cb84ec5a7b71794b9f8a2056f10a184655c55a507cf8744"
+  }
+}

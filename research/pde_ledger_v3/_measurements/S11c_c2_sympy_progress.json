@@ -1,10 +1,10 @@
 {
-  "anchoring": "LAB_HELD",
-  "density": "RHO4_CONSTANT",
+  "anchoring": "MATERIAL_ADVECTED",
+  "density": "RHOBR_CONSTANT",
   "routing": null,
   "overrides": "None",
-  "mu_form": false,
+  "mu_form": true,
   "velocity_control": false,
-  "started": 1788668343.222882,
-  "finished": 1788668367.7281387
+  "started": 1789073004.4492896,
+  "finished": 1789073030.2541707
 }

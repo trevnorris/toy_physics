@@ -1,0 +1,27 @@
+{
+  "stage": "c2",
+  "command": [
+    "/usr/bin/time",
+    "-v",
+    "-o",
+    "/tmp/s11c-inertia-rebuild/c2.time",
+    "/usr/bin/python",
+    "-u",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 2237.1629095077515,
+  "stdout_bytes": 455631816,
+  "stderr_bytes": 0,
+  "time_file": "/tmp/s11c-inertia-rebuild/c2.time",
+  "stdout_path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out",
+  "native_resources": {
+    "native_wall_seconds": 2237.15,
+    "maximum_rss_kib": 1862840,
+    "native_exit_status": 0,
+    "user_seconds": 2228.56,
+    "system_seconds": 3.39,
+    "stderr_bytes": 0,
+    "time_log_sha256": "18a428f0d27f7eca8bb1b0574bf3e48ef886838b18246feb40a573a8b4d963e5"
+  }
+}

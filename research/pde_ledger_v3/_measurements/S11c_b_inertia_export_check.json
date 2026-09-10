@@ -1,0 +1,30 @@
+{
+  "source": "scripts/out/S11c_b_inertia_export_check.out",
+  "cases": [
+    {
+      "case": "(LAB_HELD, RHO4_CONSTANT)",
+      "action_and_nonkinetic_residuals": "((0, 0, 0, 0), (0, 0, 0, 0))",
+      "other_slot_count": 9,
+      "unequal_other_slots": []
+    },
+    {
+      "case": "(LAB_HELD, RHOBR_CONSTANT)",
+      "action_and_nonkinetic_residuals": "((0, 0, 0, 0), (0, 0, 0, 0))",
+      "other_slot_count": 9,
+      "unequal_other_slots": []
+    },
+    {
+      "case": "(MATERIAL_ADVECTED, RHO4_CONSTANT)",
+      "action_and_nonkinetic_residuals": "((0, 0, 0, 0), (0, 0, 0, 0))",
+      "other_slot_count": 9,
+      "unequal_other_slots": []
+    },
+    {
+      "case": "(MATERIAL_ADVECTED, RHOBR_CONSTANT)",
+      "action_and_nonkinetic_residuals": "((0, 0, 0, 0), (0, 0, 0, 0))",
+      "other_slot_count": 9,
+      "unequal_other_slots": []
+    }
+  ],
+  "output_sha256": "ca5e79a5ffbbd17b54e86fcda41a55251c74b23f426fad4db48dae5eb8bf89e5"
+}

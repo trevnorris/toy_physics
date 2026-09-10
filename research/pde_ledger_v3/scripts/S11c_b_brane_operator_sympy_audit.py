@@ -2287,6 +2287,24 @@ def corrupt_evolution_origin_source(origins: sp.Tuple) -> sp.Tuple:
     )
 
 
+def kinetic_balance_from_energy(rhobr: sp.Expr) -> tuple[tuple[sp.Expr, ...], sp.Expr]:
+    # Supplied kinetic energy at quadratic wave order on the stationary
+    # background. Material advection of its coefficients first contributes at
+    # cubic wave order. Use d_t(dT/dq_t) with the stored +delta U normalization.
+    velocities = (*u_t, e_t)
+    accelerations = (*u_tt, e_tt)
+    kinetic_density = epsilon**2 * (
+        rhobr * dot(u_t, u_t) + mu_W * (W_bg * e_t)**2
+    ) / 2
+    momenta = tuple(sp.diff(kinetic_density, velocity) for velocity in velocities)
+    balances = tuple(
+        sp.expand(sum(sp.diff(momentum, velocity) * acceleration
+                      for velocity, acceleration in zip(velocities, accelerations)) / epsilon)
+        for momentum in momenta
+    )
+    return balances[:3], balances[3]
+
+
 def operator_from_density(
     density: sp.Expr,
     representative: str,
@@ -2302,6 +2320,7 @@ def operator_from_density(
         background_first=background_first,
         zero_sources=zero_sources,
     )
+    u_kinetic, e_kinetic = kinetic_balance_from_energy(rhobr)
     u_local = tuple(epsilon * sp.diff(density, u[a]) for a in DIRECTIONS)
     u_flux = tuple(
         tuple(epsilon * sp.diff(density, grad_u[a][i]) for i in DIRECTIONS)
@@ -2322,7 +2341,7 @@ def operator_from_density(
                     for i in DIRECTIONS
                 )
             )
-            - (epsilon * rhobr * u_tt[a] if include_kinetic else 0)
+            + (u_kinetic[a] if include_kinetic else 0)
         )
         for a in DIRECTIONS
     )
@@ -2360,7 +2379,7 @@ def operator_from_density(
                 for i in DIRECTIONS
             )
         )
-        - (epsilon * mu_W * W_bg**2 * e_tt if include_kinetic else 0)
+        + (e_kinetic if include_kinetic else 0)
     )
     advective_constraint = epsilon * dot(u_t, rhobr_gradient)
     operator = {
@@ -2885,18 +2904,17 @@ def build_operator(
         background_first=background_first,
         zero_sources=zero_sources,
     )
-    u_kinetic = tuple(epsilon * rhobr * u_tt[a] for a in DIRECTIONS)
-    e_kinetic = epsilon * mu_W * W_bg**2 * e_tt
+    u_kinetic, e_kinetic = kinetic_balance_from_energy(rhobr)
     raw_u_balance = operator["U_BODY_BALANCE"]
     raw_e_balance = operator["E_W_BALANCE"]
     raw_internal_u = tuple(
         sp.expand(
-            named_tuple_row(raw_u_balance, "EXPANDED")[a] + u_kinetic[a]
+            named_tuple_row(raw_u_balance, "EXPANDED")[a] - u_kinetic[a]
         )
         for a in DIRECTIONS
     )
     raw_internal_e = sp.expand(
-        named_tuple_row(raw_e_balance, "EXPANDED") + e_kinetic
+        named_tuple_row(raw_e_balance, "EXPANDED") - e_kinetic
     )
     fold = constraint_fold_from_source(
         raw_internal_u,
@@ -2943,7 +2961,7 @@ def build_operator(
             Str("EXPANDED"),
             sp.Tuple(
                 *(
-                    sp.expand(reduced_u[a]["EXPANDED"] - u_kinetic[a])
+                    sp.expand(reduced_u[a]["EXPANDED"] + u_kinetic[a])
                     for a in DIRECTIONS
                 )
             ),
@@ -2967,7 +2985,7 @@ def build_operator(
         ),
         sp.Tuple(
             Str("EXPANDED"),
-            sp.expand(reduced_e["EXPANDED"] - e_kinetic),
+            sp.expand(reduced_e["EXPANDED"] + e_kinetic),
         ),
     )
     face_rows = face_generalized_force_rows(
@@ -3217,22 +3235,7 @@ def build_operator(
         sp.Tuple(Str("BULK_ENERGY"), sp.Tuple(*energy_origins)),
         sp.Tuple(
             Str("KINETIC"),
-            sp.Tuple(
-                sp.Tuple(
-                    *(
-                        epsilon
-                        * density_pair(
-                            representative,
-                            background_depth=background_depth,
-                            background_first=background_first,
-                            zero_sources=zero_sources,
-                        )[1]
-                        * u_tt[a]
-                        for a in DIRECTIONS
-                    )
-                ),
-                epsilon * mu_W * W_bg**2 * e_tt,
-            ),
+            sp.Tuple(sp.Tuple(*u_kinetic), e_kinetic),
         ),
         sp.Tuple(
             Str("FACE_VIRTUAL_WORK"),

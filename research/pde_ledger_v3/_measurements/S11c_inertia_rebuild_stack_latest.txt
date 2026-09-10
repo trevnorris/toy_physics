@@ -1,0 +1,19 @@
+Process 569621: python -u scripts/S11c_b_brane_operator_sympy_audit.py
+Python v3.10.12 (/usr/bin/python3.10)
+
+Thread 0x76E690BB0000 (active+gil): "MainThread"
+    wrapper (sympy/core/cache.py:72)
+    fallback (sympy/core/basic.py:1257)
+    _subs (sympy/core/basic.py:1285)
+    wrapper (sympy/core/cache.py:72)
+    fallback (sympy/core/basic.py:1257)
+    _subs (sympy/core/basic.py:1285)
+    wrapper (sympy/core/cache.py:72)
+    subs (sympy/core/basic.py:1162)
+    restrict_expression (S11c_b_brane_operator_sympy_audit.py:3445)
+    weak_operator_blocks (S11c_b_brane_operator_sympy_audit.py:3693)
+    build_kernel (S11c_b_brane_operator_sympy_audit.py:3747)
+    task_coupling_kernel (S11c_b_brane_operator_sympy_audit.py:4163)
+    run_task (S11c_b_brane_operator_sympy_audit.py:5450)
+    run (S11c_b_brane_operator_sympy_audit.py:5467)
+    <module> (S11c_b_brane_operator_sympy_audit.py:5589)

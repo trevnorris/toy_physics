@@ -1,4 +1,4 @@
-# Independent physics review — S11c-d SHARED PHYSICS spec (v6)
+# Independent physics review — S11c-d SHARED PHYSICS spec (v7)
 
 ## Artifact
 `/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md`
@@ -7,16 +7,19 @@ This is an **orchestrator-written physics spec** — the physics authority that 
 Wolfram that imports nothing and re-derives) will read to independently construct the same objects, plus their
 comparator. An error here makes **both** engines agree on the same wrong thing, so it is reviewed until clear.
 
-⚠ This is **spec v6** (a Codex-authored base, folded across several two-leg gates; the latest fold surgically
-re-did the §1c Fourier-carrier treatment and §8: the c2 carrier convention is no longer supplied — each engine must
-EMIT the 3-D→1-D reduction of its OWN closed-kernel Fourier symbols with both operands, and the comparator joins those;
-`f̂_red` is the only supplied 1-D convention). Give it a **full, fresh independent review** — ⛔ do not assume the fold
-is correct or complete, and ⛔ do not merely check a prior finding list; derive your own view from the sources and
-report anything that changes what an engine computes or what the spec may claim. In particular, confirm the §1c
-Fourier treatment is now both **executable** on the real consume-set (the c2 kernel `s11cc2ClosedCouplingKernel` — note
-c2 strips its momentum-deltas, which live on c1's `dtn_kernel`) and **leak-free / blindness-safe** (no supplied `(2π)`
-map, no pointer into any engine's construction script), and that §8 lists `f̂_red` SUPPLIED but the reduction factor
-COMPUTED.
+⚠ This is **spec v7** (a Codex-authored base folded across several two-leg gates). The latest fold changed the
+**Fourier-reduction treatment** in §1a/§1c/§7: the spec now keeps only the object, the supplied `f̂_red` 1-D
+convention, and the leak-safe CONTROL (each engine reduces its OWN closed-kernel Fourier content — transfer AND
+middle-leg symbols + in-plane integrals — with its OWN convention, both operands; the comparator joins the reduced
+kernels), makes §1a's kernel description accurate (no 3-D deltas — c2 strips them, they live on c1's `dtn_kernel`,
+which must NOT be bound as the reduction convention; the content includes the required three-leg middle-leg
+second-scattering), and **defers** the exact Fourier-symbol enumeration + `(2π)` bookkeeping to the build directive
+(its own two decision legs, against the real kernel — as §7 already defers `IMPORT_KEYS`). Give it a **full, fresh
+independent review** — ⛔ do not assume the fold is correct or complete, and ⛔ do not merely check a prior finding
+list; derive your own view from the sources and report anything that changes what an engine computes or what the spec
+may claim. In particular judge whether the deferral is legitimate (does the leak-safety survive in the CONTROL, and is
+the deferred material genuinely build-level?), whether §1a's kernel description is now accurate against the real
+`s11cc2ClosedCouplingKernel`, and whether §7 wires the reduced-kernel join.
 
 ## Your role
 Form your **own** view of what S11c-d must be from the requirements and the real c2 exports **first**, then read the

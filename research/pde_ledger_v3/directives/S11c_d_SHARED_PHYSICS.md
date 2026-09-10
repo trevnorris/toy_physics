@@ -1,4 +1,4 @@
-# S11c-d — SHARED PHYSICS v6 (profile-conditioned transverse↔thickness scattering at a thickness interface)
+# S11c-d — SHARED PHYSICS v7 (profile-conditioned transverse↔thickness scattering at a thickness interface)
 
 **S11c-d** is the S11c-d sub-step of the S11c curved-interface program — the **fifth build unit** after the c1/c2
 split (`directives/S11c_decisions.md` row `:52`). It consumes S11c-c2's closed operator and closed off-diagonal
@@ -13,13 +13,13 @@ Wolfram engine imports nothing and re-derives every consumed object from the sib
 (`S9_export_chain_rebuild_directive.md:16-18` is the only cross-engine control). Blindness is the control: an
 agreement is independent construction, not a copy.
 
-⭐ This is a **Codex `gpt-5.6-sol`-authored physics spec**, now v6 under `CLAUDE.md` rule 15 after the
+⭐ This is a **Codex `gpt-5.6-sol`-authored physics spec**, now v7 under `CLAUDE.md` rule 15 after the
 orchestrator-authored v2/v3 folds bred new defects. Its lineage is **Codex-authored v4 → orchestrator §1c/nit fold
-(v5) → this Codex §1c-Fourier refix (v6, rule 15, per Grok's round-5 F1)**. It is the physics authority both blind
+(v5) → v6 Codex Fourier refix → v7 Codex Fourier-defer (rule 15, per Grok's round-6 F1)**. It is the physics authority both blind
 engines read. Per G1/G2 it is physics-bearing and gets **two non-author legs — a fresh Claude agent + Grok — reviewed
 UNTIL CLEAR** (spec row, ⛔ not the decision-list one-pass); both reports precede any commit, and a reviewed baseline
 is preserved before a repair overwrites it. The **build directive** that follows this spec gets its own two decision
-legs before any builder (the G2 TRIGGER). **Spec v6** retains the v3 §0–§8 structural frame and folds every round-3
+legs before any builder (the G2 TRIGGER). **Spec v7** retains the v3 §0–§8 structural frame and folds every round-3
 finding; no wording from a prior version is authoritative where the round-3 derivation corrected it.
 
 ⭐ **The profile-class + regime decision (§1c–§1d) was settled by a three-way physics consult** (orchestrator + `gpt-6-astra`
@@ -96,13 +96,19 @@ own-rows that S11c-d binds (exact `IMPORT_KEYS` root set fixed at the build dire
   (§2).
 - **`s11cc2ClosedCouplingKernel`** — the re-extracted **off-diagonal** transverse↔`{θ,e_W,u_L}` block(s): the **full**
   mixing vertex (tilt `∇w₁`, modulus-gradient `∇m₁`, and N4 advection channels; ⛔ not `∇w₁` alone, ⛔ not `∇m₁`
-  alone), multigraded `(ε,η,σ_W)`; its Fourier content is on the **momentum transfer** `Q = k_out − k_in`
-  (`s11cc2FourierW1ProfileHatTransfer(−k_input + k_output, …)`), ⛔ not a single unspecified `k`.
+  alone), multigraded `(ε,η,σ_W)`; its Fourier content appears as the profile-transfer carrier and the middle-leg
+  symbols of the required three-leg second-scattering, over the kernel's already-present in-plane position integrals.
+  The closed kernel carries **no** 3-D momentum deltas: c2 stripped them, and c1's `dtn_kernel` deltas are ⛔ not the
+  3-D→1-D operand. The exact Fourier-symbol enumeration (transfer versus middle-leg), `(2π)` bookkeeping, and operand
+  construction are fixed at the **build directive** against the real kernel and verified by its own two decision legs,
+  ⛔ not enumerated here.
 - the **field carriers** `s11cc2Fieldtheta`, `s11cc2FieldeW`, `s11cc2Fieldu{1,2,3}`; the **profile coefficients**
   `s11cc2Coefficientw1Profile`, `s11cc2Coefficientm1Profile`; the **Fourier-of-profile** carriers
   `s11cc2FourierW1ProfileHatTransfer`, `s11cc2FourierW1ProfileJetHat*` (+ their `*Dimension` rows); and the inherited
   constants/kernels reachable through the fold (`W_0`, `mu_R`, `eta_bg`, `sigma_W`, `L_W`, `rho_m`, `rho_br`,
   `Lambda_{A,V,X}_0`, `tau_{A,V,X}`, `omega`, `c_s0`, `dtn_kernel`, `background_density_map`, …).
+  Here `dtn_kernel` remains reachable only for other inherited uses; it is ⛔ not bound as the reduction-convention
+  operand.
 
 ⛔ **There are NO c2 term-origin, parity, self-energy-increment, or six-§3d-re-adjudication export rows** — those are
 **step-record provenance** (`steps/S11c_c2_self_energy_fold.md`; the increment was dropped to EMIT-only, `:56`), ⛔ not
@@ -206,7 +212,7 @@ with the additional half-line tail premise that makes `f_loc∈L¹`. Retain the 
 transform of the constant-plus-Heaviside part. If that tail premise is unavailable, the zero-jet step remains in
 coordinate space; it is not assigned an ordinary transform.
 
-**Exact reduced transform and the computed c2 carrier reduction.** Put
+**Exact reduced transform and the computed closed-kernel reduction.** For the profile-transfer variable, put
 
 ```text
 Q ≡ k_out − k_in ,   Q_n ≡ n̂·Q ,   Q_∥ ≡ Q − n̂Q_n ,   s ≡ Q_nL_W ,
@@ -219,13 +225,16 @@ The first line is an ordinary integral only for a localized/subtracted `f`; for 
 ⚠⚠ **The imported c2 carrier's normalization is NOT supplied — it must be COMPUTED, ⛔ not asserted.** The only
 supplied Fourier convention here is the reduced one-dimensional definition `f̂_red` above. ⛔ **Do not supply a
 numeric `(2π)`/`δ²(Q_∥)` map for the imported carrier.** Each engine must **COMPUTE and EMIT the 3-D→1-D reduction of
-its own closed-kernel Fourier symbols as an object with BOTH operands**: (i) the 3-D carrier as it actually appears in
-that engine's own closed coupling kernel, and (ii) the reduced one-dimensional kernel obtained by applying that same
-engine's own Fourier convention — the convention realized in its own construction of the two-momentum identity /
-profile insertion, ⛔ not a typed `[L_W/(2π)]` or `(2π)²L_W` map — to the §1c interface geometry
-`f=f(n̂·y/L_W)` and `∂_{yᵢ}f=n̂ᵢf′(ξ)/L_W`. The `2π`, the tangential `δ²(Q_∥)`, and the dimensional content must fall
-out of each engine's own computation. The comparator joins the two engines' **reduced kernels**, ⛔ not a pre-factored
-coefficient; their agreement or residual on that reduced kernel is the measurement.
+its own closed-kernel Fourier content — every profile-transfer and middle-leg Fourier symbol together with the
+already-present in-plane position integrals — as an object with BOTH operands**: (i) the 3-D carrier as it actually
+appears in that engine's own closed coupling kernel, and (ii) the reduced one-dimensional kernel obtained by applying
+that same engine's own realized Fourier convention, ⛔ not by binding `dtn_kernel` and ⛔ not by typing a
+`[L_W/(2π)]` or `(2π)²L_W` map, to the §1c interface geometry `f=f(n̂·y/L_W)` and
+`∂_{yᵢ}f=n̂ᵢf′(ξ)/L_W`. The exact Fourier-symbol set, `(2π)`/dimensional bookkeeping, and operand construction are
+fixed at the **build directive** against the real kernel and verified by its own two decision legs, ⛔ not typed in
+this spec. This spec supplies only `f̂_red`, the reduce-your-own-kernel requirement, and the comparator-join control.
+The comparator joins the two engines' **reduced kernels**, ⛔ not a pre-factored coefficient; their agreement or
+residual on that reduced kernel is the measurement.
 
 **Reconstruction round-trips against each engine's COMPUTED reduction, ⛔ not a tautology.** Each engine computes and
 emits its own 3-D↔1-D reconstruction from the two independently exposed operands above; it does not manufacture the
@@ -826,7 +835,8 @@ big `.out`; ⛔ never annex an `*_exports.py`.
 **The comparator (`N8`, frozen `T7` contract).** The S11c-d comparator joins the two blind engines' emitted objects by
 name, pairs residual operands, is three-valued, rejects a native boolean, and PRINTS/decides nothing (rule 2). ⚠ Its
 load-bearing residuals include the complete flux-normalized S-matrix/mixing amplitudes, modal currents, total and
-induced-field conversion forms, survival functional, and bound Riesz data (§3). These d objects **remain conditional
+induced-field conversion forms, survival functional, bound Riesz data (§3), and the §1c **both-operand reduced-kernel
+join**, whose join key includes the profile-transfer and middle-leg reduced symbols. These d objects **remain conditional
 on and PROPAGATE** the material c2 operand debt (§1b). A final projected amplitude residual cannot directly surface
 the carrier (40), source (76), or `Φ` (18) families: the c2 disposition identifies a schema non-join, and projection
 or channel summation can cancel operand differences. Agreement on a d projection therefore compares only that d
@@ -870,8 +880,9 @@ quadratic form, and operands for the conditional `N12` disposition (§3c); the w
 strong-edge handoff (§3d);
 the downstream coordinate-covariance and shape-sensitivity operands/residuals (§5a), three uniform regressions (§5b),
 profile-form controls and thickness/modulus discriminants (§5c), and the computed falsification projection (§5d);
-all derived profile moments/form factors, each engine's 3-D→1-D reduction factor with both operands, and each engine's
-3-D↔1-D reconstruction; and every output's `(ε,η,σ_W)`/`λ` order and `[L,T,M]` dimension.
+all derived profile moments/form factors, each engine's 3-D→1-D closed-kernel reduction over the profile-transfer and
+middle-leg Fourier content and already-present in-plane integrals, with both operands, and each engine's 3-D↔1-D
+reconstruction; and every output's `(ε,η,σ_W)`/`λ` order and `[L,T,M]` dimension.
 
 **Builder report.** The build directive states, per emitted object, which line computed it (`.claude/skills/build`);
 declares the profile class (§1c), the regime grades (§1d), the distorted-basis insertion organization (§2), and the

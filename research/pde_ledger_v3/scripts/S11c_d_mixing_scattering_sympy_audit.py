@@ -2744,6 +2744,283 @@ class FullPencilModes:
         return outputs
 
 
+class EndSpectrumCoverage:
+    """Finite algebraic end spectrum in the original five physical fields.
+
+    All carriers are bound before exact rational elimination. Rational Taylor
+    bounds isolate the roots of every square-free factor. Their disjoint disks
+    and the factor degrees provide finite-root coverage on the algebraic
+    radical curve, separately from membership in the Fourier sheet chart.
+    This is retained-operator data, not a global profile dispersion relation.
+    """
+
+    def __init__(self, modes, strong, full, lift, strong_units):
+        self.modes, self.r = modes, modes.r
+        self.k, self.q = modes.k, modes.q
+        self.strong, self.full, self.lift = strong, full, lift
+        self.strong_units = strong_units
+        dimensions = PHYSICAL_METADATA.dimensions
+        fields = tuple(sp.Function('s11cdReducedField'+name)
+                       for name in ('u1','u2','u3','theta','eW'))
+        self.field_units = [dimensions.known[f] for f in fields]
+        self.row_units = [tuple(a+b for a,b in zip(strong_units[(5*i,)],self.field_units[0]))
+                          for i in range(5)]
+        self.dimensions = dimensions
+
+    @staticmethod
+    def absolute_bounds(value):
+        a,b = sp.expand(value).as_real_imag()
+        return max(abs(a),abs(b)),abs(a)+abs(b)
+
+    @classmethod
+    def isolate(cls, polynomial, digits=50):
+        """Exact rational sufficient Rouche inequalities on computed disks."""
+        factors = sp.sqf_list(polynomial)[1]
+        records, values = [], []
+        for factor_index,(factor,multiplicity) in enumerate(factors):
+            roots = sp.nroots(factor,n=digits,maxsteps=500)
+            refined = sp.nroots(factor,n=digits+30,maxsteps=500)
+            for index,root in enumerate(roots):
+                real,imag = root.as_real_imag()
+                center = sp.Rational(str(real))+sp.I*sp.Rational(str(imag))
+                other = min(refined,key=lambda z:abs(complex(z-root)))
+                radius = sp.Rational(1,10**(digits//2))
+                coefficients = []
+                derivative = factor
+                for order in range(factor.degree()+1):
+                    coefficients.append(sp.expand(derivative.eval(center)/sp.factorial(order)))
+                    derivative = derivative.diff()
+                lower = cls.absolute_bounds(coefficients[1])[0]*radius
+                upper = cls.absolute_bounds(coefficients[0])[1]+sum(
+                    cls.absolute_bounds(c)[1]*radius**order for order,c in enumerate(coefficients[2:],2))
+                records.append({'FACTOR':factor_index,'FACTOR_DEGREE':factor.degree(),
+                    'ROOT_INDEX':index,'MULTIPLICITY':multiplicity,'CENTER':center,'RADIUS':radius,
+                    'LINEAR_TERM_LOWER_BOUND':sp.N(lower,20),'REMAINDER_UPPER_BOUND':sp.N(upper,20),
+                    'EXACT_BOUND_DIFFERENCE_SIGN':sp.sign(lower-upper),
+                    'ONE_ROOT_DISK':bool(lower>upper),
+                    'EXACT_TAYLOR_BOUND_SHA256':hashlib.sha256(sp.srepr(cas((coefficients,lower,upper))).encode()).hexdigest(),
+                    'PRECISION_REFINEMENT_DIFFERENCE':sp.N(other-root,25),
+                    'FACTOR_RESIDUAL':sp.N(factor.eval(other),25)})
+                values.append(other)
+        separation = []
+        for i,a in enumerate(records):
+            for j,b in enumerate(records[:i]):
+                square = sp.expand((a['CENTER']-b['CENTER'])*sp.conjugate(a['CENTER']-b['CENTER']))
+                gap = square-(a['RADIUS']+b['RADIUS'])**2
+                separation.append((i,j,sp.sign(gap)))
+        covered = sum(r['MULTIPLICITY'] for r in records if r['ONE_ROOT_DISK'])
+        result = {'DEGREE':polynomial.degree(), 'DISTINCT_ROOT_COUNT':len(records),
+                  'COUNT_WITH_MULTIPLICITY':sum(r['MULTIPLICITY'] for r in records),
+                  'ISOLATED_COUNT_WITH_MULTIPLICITY':covered,
+                  'DEGREE_COUNT_RESIDUAL':polynomial.degree()-covered,
+                  'DISK_SEPARATION_SIGNS':separation,
+                  'ALL_DISKS_DISJOINT':all(s>0 for _,_,s in separation),
+                  'ROOT_DISKS':records,'DECIMAL_PRECISIONS':(digits,digits+30)}
+        result['FINITE_POLYNOMIAL_ROOT_COVERAGE'] = bool(covered==polynomial.degree()
+            and result['ALL_DISKS_DISJOINT'] and all(r['ONE_ROOT_DISK'] for r in records))
+        return result,values
+
+    def emit(self, tag, value, unit=None, *, heavy=False):
+        body = cas(value)
+        if heavy:
+            numeric = not (body.free_symbols-set(PHYSICAL_METADATA.generators))
+            payload = self.modes.compact_fingerprint(body) if numeric else carrier_fingerprint(body)
+        else:
+            payload = body
+        emit(tag,payload)
+        emit('METADATA_'+tag,self.modes.numeric_metadata(body,unit or (lambda p:self.dimensions.zero)))
+
+    def construct(self, suffix, end_sign, *, channel_input=None, reference=False, sample_index=0):
+        m,d = self.modes,self.dimensions
+        join_suffix = ('INPUT_' if channel_input else 'PIT_')+suffix+'_'+str(sample_index)
+        algebraic,relation,join = m.analytic(self.strong)
+        weak,weak_relation,weak_join = m.analytic(self.full)
+        relation_residual = sp.expand(relation-weak_relation)
+        self.emit('END_SPECTRUM_BRANCH_JOIN_'+join_suffix,join+weak_join)
+        self.emit('END_SPECTRUM_RADICAL_JOIN_'+join_suffix,relation_residual,
+                  lambda p:tuple(2*v for v in d.measure(self.q)))
+        if any(v!=0 for v in join+weak_join) or relation_residual!=0:
+            raise NotImplementedError('end spectrum has unjoined branch operands')
+        live = (self.k,self.q,m.eta,m.sigma)
+        if channel_input is None:
+            mapping = m.sample(weak,relation,sample_index)
+            origin = {m.eta:sp.S.Zero,m.sigma:sp.S.Zero}
+            kind = 'PIT'
+        else:
+            mapping = channel_input.mapping(algebraic,relation,live)
+            # Include any carrier that is present only in the coordinate lift.
+            mapping.update({s:channel_input.parameters[s.name] for s in self.lift.free_symbols-set(live)})
+            origin = {m.eta:sp.S.Zero,m.sigma:sp.S.Zero} if reference else channel_input.origin
+            kind = 'INPUT'
+        name = kind+'_'+suffix+'_'+str(sample_index)
+        prefix = 'END_SPECTRUM_'+name
+        physical = algebraic.xreplace(mapping).subs(origin).applyfunc(sp.cancel)
+        weak_bound = weak.xreplace(mapping).subs(origin).applyfunc(sp.cancel)
+        bound_relation = relation.xreplace(mapping)
+        unbound_lift = self.lift[:,m.indices]
+        lift = unbound_lift.xreplace(mapping)
+        dual = unbound_lift.xreplace({s:-s for s in (*self.r.tangents,self.k)}).xreplace(mapping).T
+        quotient = weak_bound.extract(m.indices,m.indices)
+        pullback = (dual*physical*lift).applyfunc(sp.cancel)
+        residual = (quotient-pullback).applyfunc(sp.cancel)
+        quotient_units = {(5*i+j,):m.units[(6*ri+cj,)] for i,ri in enumerate(m.indices) for j,cj in enumerate(m.indices)}
+        self.emit(prefix+'_BOUND_CARRIERS',tuple((str(k),v) for k,v in mapping.items()),
+                  lambda p:d.measure(next(k for k in mapping if str(k)==p[0])))
+        self.emit(prefix+'_GRADE_ORIGIN',tuple(origin.items()))
+        self.emit(prefix+'_UNIT_FRAME',channel_input.frame if channel_input else ('PIT_L','PIT_T','PIT_M'))
+        self.emit(prefix+'_EVALUATION_BINDING',{'BACKGROUND_ORIGIN':tuple(origin.items()),
+            'RETAINED_OPERATOR_EVALUATION':True,'CONTINUUM_REEXPANSION_PERFORMED':False,
+            'PARAMETER_DOMAIN':{'POSITIVE_REAL_FREQUENCY':mapping[self.r.omega]>0,
+                               'FINITE_BOUND_CARRIERS':all(v.is_finite is True for v in mapping.values())}})
+        self.emit(prefix+'_SOURCE_GRADE_SUPPORT',tuple((path,tuple(sorted(PHYSICAL_METADATA.coefficients(value))))
+            for path,value in leaves(algebraic)))
+        self.emit(prefix+'_PHYSICAL_PENCIL',physical,lambda p:self.strong_units[p],heavy=True)
+        self.emit(prefix+'_QUOTIENT_PENCIL',quotient,lambda p:quotient_units[p],heavy=True)
+        self.emit(prefix+'_PULLBACK_PENCIL',pullback,lambda p:quotient_units[p],heavy=True)
+        self.emit(prefix+'_PULLBACK_RESIDUAL',residual,lambda p:quotient_units[p])
+        if any(v!=0 for v in residual):
+            raise NotImplementedError(('physical/sector end-symbol mismatch',name))
+        k_square = sp.solve(bound_relation,self.k**2)[0]
+        divisor = sp.Poly(self.k**2-k_square,self.k)
+        (numerator,denominator),cleared,row_denominators = m.rational_determinant(physical)
+        reduced = sp.rem(sp.Poly(numerator,self.k),divisor).as_expr()
+        self.emit(prefix+'_ELIMINATION_K_REMAINDER',reduced.has(self.k))
+        if reduced.has(self.k):
+            raise NotImplementedError(('non-even physical end determinant',name))
+        polynomial = sp.Poly(reduced,self.q)
+        if polynomial.is_zero:
+            self.emit(prefix+'_DETERMINANT_DOMAIN',{'IDENTICALLY_ZERO':True,'POLYNOMIAL_DEGREE':polynomial.degree()})
+            return {'DEFINED':False,'STATUS':'IDENTICALLY_SINGULAR_PHYSICAL_PENCIL'}
+        # Denominator norm on the two k lifts: exact gcd finds any shared root.
+        row_denominator = sp.lcm(row_denominators)
+        norm = sp.expand(row_denominator*row_denominator.xreplace({self.k:-self.k}))
+        norm = sp.rem(sp.Poly(norm,self.k),divisor).as_expr()
+        denominator_polynomial = sp.Poly(sp.fraction(sp.cancel(norm))[0],self.q)
+        denominator_common = sp.gcd(polynomial,denominator_polynomial)
+        normal_threshold = sp.Poly(sp.fraction(sp.cancel(k_square))[0],self.q)
+        normal_common = sp.gcd(polynomial,normal_threshold)
+        branch_common = sp.gcd(polynomial,sp.Poly(self.q,self.q))
+        self.emit(prefix+'_ELIMINATION_OPERANDS',(cleared,row_denominators,numerator,denominator,polynomial.as_expr()),heavy=True)
+        # These are coefficient polynomials in the declared numerical unit
+        # frame; physical root and pencil units are emitted independently.
+        self.emit(prefix+'_COEFFICIENT_COORDINATE_UNITS',{'K':d.measure(self.k),'Q':d.measure(self.q),
+            'PHYSICAL_PENCIL':self.strong_units,'RIGHT_FIELDS':self.field_units,'EQUATION_ROWS':self.row_units})
+        self.emit(prefix+'_EXCEPTION_POLYNOMIALS',{'DENOMINATOR_NORM':denominator_polynomial.as_expr(),
+            'DENOMINATOR_GCD':denominator_common.as_expr(),'NORMAL_THRESHOLD_GCD':normal_common.as_expr(),
+            'RADICAL_BRANCH_GCD':branch_common.as_expr()},heavy=True)
+        self.emit(prefix+'_EXCEPTION_DEGREES',{'DENOMINATOR_GCD':denominator_common.degree(),
+            'NORMAL_THRESHOLD_GCD':normal_common.degree(),'RADICAL_BRANCH_GCD':branch_common.degree()})
+        lift_determinants = (sp.factor(lift.det()),sp.factor(dual.det()))
+        lift_determinant_unit = d.measure(unbound_lift.det())
+        chart_factor = sp.rem(sp.Poly(sp.expand(sp.prod(lift_determinants)),self.k),divisor).as_expr()
+        self.emit(prefix+'_COORDINATE_DETERMINANT_OPERANDS',lift_determinants,
+                  lambda p:lift_determinant_unit,heavy=True)
+        self.emit(prefix+'_COORDINATE_FACTOR_ON_CURVE',chart_factor,heavy=True)
+        self.emit(prefix+'_AXIAL_CHART_IDENTICALLY_SINGULAR',chart_factor==0)
+        quotient_fraction,_,_ = m.rational_determinant(quotient)
+        quotient_eliminated = sp.rem(sp.Poly(quotient_fraction[0],self.k),divisor).as_expr()
+        self.emit(prefix+'_QUOTIENT_ELIMINATION_K_REMAINDER',quotient_eliminated.has(self.k))
+        if not quotient_eliminated.has(self.k):
+            quotient_polynomial = sp.Poly(quotient_eliminated,self.q)
+            self.emit(prefix+'_POLYNOMIAL_DEGREES',{'PHYSICAL':polynomial.degree(),
+                'QUOTIENT':quotient_polynomial.degree(),'COORDINATE_FACTOR':sp.Poly(chart_factor,self.q).degree()})
+            self.emit(prefix+'_QUOTIENT_ELIMINATION',quotient_polynomial.as_expr(),heavy=True)
+        determinant_residual = sp.cancel(quotient_fraction[0]/quotient_fraction[1]
+                                        -sp.prod(lift_determinants)*numerator/denominator)
+        self.emit(prefix+'_DETERMINANT_PULLBACK_RESIDUAL',determinant_residual)
+        certificate,roots = self.isolate(polynomial)
+        self.emit(prefix+'_ROOT_COVERAGE',certificate,lambda p:
+            d.measure(self.q) if 'ROOT_DISKS' in p and p[-1] in ('CENTER','RADIUS','PRECISION_REFINEMENT_DIFFERENCE') else d.zero)
+        # Direct evaluations of the original rational matrix, not the cleared
+        # polynomial, supply the physical mode residuals and left/right spaces.
+        evaluate = sp.lambdify((self.k,self.q),physical,'numpy',cse=True)
+        native_lift = self.lift.xreplace(mapping)
+        field_lifts = [native_lift[:,tuple(i for i in range(6) if i!=axis)] for axis in range(3)]
+        sheet = BulkSheetPath(bound_relation,self.k,self.q)
+        records = []
+        for root_index,(qroot,disk) in enumerate(zip(roots,certificate['ROOT_DISKS'])):
+            normal_square = k_square.subs(self.q,qroot)
+            for direction in (1,-1):
+                kroot = sp.N(direction*sp.sqrt(normal_square),50)
+                kvalue,qvalue = complex(kroot),complex(qroot)
+                matrix = np.asarray(evaluate(kvalue,qvalue),dtype=complex)
+                mode_tag = prefix+'_MODE_'+str(len(records))
+                record = {'ROOT_DISK_INDEX':root_index,'NORMAL_LIFT_SIGN':direction,
+                    'K':kroot,'Q':qroot,'MULTIPLICITY':disk['MULTIPLICITY'],
+                    'FINITE_PENCIL':bool(np.isfinite(matrix).all()),
+                    'RADICAL_RESIDUAL':sp.N(bound_relation.subs({self.k:kroot,self.q:qroot}),25),
+                    'DETERMINANT_NUMERATOR_RESIDUAL':sp.N(numerator.subs({self.k:kroot,self.q:qroot}),25),
+                    'ROW_DENOMINATOR_VALUES':tuple(sp.N(v.subs({self.k:kroot,self.q:qroot}),25) for v in row_denominators),
+                    'REAL_NORMAL_MOMENTUM':bool(abs(kvalue.imag)<1e-10),
+                    'DECAY_AT_END':bool(end_sign*kvalue.imag>1e-10),
+                    'NORMAL_THRESHOLD':bool(abs(kvalue)<1e-10), 'RADICAL_BRANCH_POINT':bool(abs(qvalue)<1e-10)}
+                membership,path = sheet.classify(kvalue,qvalue)
+                record['FIXED_FREQUENCY_SHEET_MEMBERSHIP'] = membership
+                self.emit(mode_tag+'_SHEET_PATH',path,lambda p:
+                    d.measure(self.k) if p[0] in ('START_K','END_K','BRANCH_POINTS','MINIMUM_BRANCH_POINT_DISTANCE','GEOMETRIC_RESOLUTION') else
+                    tuple(2*v for v in d.measure(self.q)) if p[-1]=='MAXIMUM_RADICAL_RESIDUAL' else
+                    d.measure(self.q) if p[-1] in ('SEED_Q','END_Q','REFINEMENT_DIFFERENCE','SHEET_DIFFERENCE','OPPOSITE_SHEET_DIFFERENCE') else d.zero)
+                if record['FINITE_PENCIL']:
+                    left,singular,right_h = np.linalg.svd(matrix)
+                    tolerance = 1e-8*max(1.,singular[0])
+                    nullity = int(np.sum(singular<tolerance))
+                    record.update({'SINGULAR_VALUES':list(map(m.number,singular)),
+                                   'RANK_THRESHOLD':tolerance,'NULLITY':nullity,
+                                   'ALGEBRAIC_GEOMETRIC_MULTIPLICITY_DIFFERENCE':disk['MULTIPLICITY']-nullity})
+                    if nullity:
+                        right,dual_mode = right_h.conj().T[:,-nullity:],left[:,-nullity:]
+                        self.emit(mode_tag+'_RIGHT',sp.ImmutableMatrix(right),lambda p:self.field_units[p[0]//nullity],heavy=True)
+                        self.emit(mode_tag+'_LEFT',sp.ImmutableMatrix(dual_mode),lambda p:tuple(-v for v in self.row_units[p[0]//nullity]),heavy=True)
+                        self.emit(mode_tag+'_RIGHT_RESIDUAL',sp.ImmutableMatrix(matrix@right),lambda p:self.row_units[p[0]//nullity])
+                        self.emit(mode_tag+'_LEFT_RESIDUAL',sp.ImmutableMatrix(matrix.conj().T@dual_mode),lambda p:tuple(-v for v in self.field_units[p[0]//nullity]))
+                        overlap = dual_mode.conj().T@right
+                        overlap_rank = np.linalg.matrix_rank(overlap,tol=1e-9)
+                        record['LEFT_RIGHT_OVERLAP_RANK'] = int(overlap_rank)
+                        record['CLASSIFIER_DEFINED'] = False
+                        if overlap_rank==nullity:
+                            projector = right@np.linalg.solve(overlap,dual_mode.conj().T)
+                            self.emit(mode_tag+'_PROJECTOR',sp.ImmutableMatrix(projector),lambda p:tuple(
+                                a-b for a,b in zip(self.field_units[p[0]//5],self.field_units[p[0]%5])),heavy=True)
+                            self.emit(mode_tag+'_PROJECTOR_RESIDUAL',sp.ImmutableMatrix(projector@projector-projector),lambda p:tuple(
+                                a-b for a,b in zip(self.field_units[p[0]//5],self.field_units[p[0]%5])))
+                            charts = [np.array(v.subs(self.k,kroot),dtype=complex) for v in field_lifts]
+                            determinants = [np.linalg.det(v) for v in charts]
+                            axis = int(np.argmax(np.abs(determinants)))
+                            record['FIELD_LIFT_CHART_DETERMINANTS'] = tuple(map(m.number,determinants))
+                            record['FIELD_LIFT_CHART_AXIS'] = axis
+                            if np.linalg.matrix_rank(charts[axis],tol=1e-9)==5:
+                                sector = charts[axis]@np.diag([1,1,0,0,0])@np.linalg.inv(charts[axis])
+                                weight = np.trace(sector@projector)/nullity
+                                other = np.trace((np.eye(5)-sector)@projector)/nullity
+                                record['CLASSIFIER_WEIGHTS'] = (m.number(weight),m.number(other))
+                                mixed = abs(weight)>1e-7 and abs(other)>1e-7
+                                record['CLASSIFIER_DEFINED'] = not mixed
+                                record['CLASSIFIER_STATUS'] = ('MIXED_SUBSPACE_DOMAIN' if mixed else
+                                    'TRANSVERSE_LIKE' if abs(weight)>abs(other) else 'THICKNESS_LIKE')
+                            else:
+                                record['CLASSIFIER_STATUS'] = 'SINGULAR_HELMHOLTZ_FIELD_CHART'
+                        else:
+                            record['CLASSIFIER_STATUS'] = 'SINGULAR_LEFT_RIGHT_OVERLAP'
+                self.emit(mode_tag+'_RECORD',record,lambda p:
+                    d.measure(self.k) if p[0]=='K' else d.measure(self.q) if p[0]=='Q' else
+                    tuple(2*v for v in d.measure(self.q)) if p[0]=='RADICAL_RESIDUAL' else
+                    lift_determinant_unit if p[0]=='FIELD_LIFT_CHART_DETERMINANTS' else d.zero)
+                records.append(record)
+        summary = {'CANDIDATE_COUNT':len(records),
+            'FINITE_PENCIL_COUNT':sum(v['FINITE_PENCIL'] for v in records),
+            'NULLITY_COUNTS':dict(Counter(v.get('NULLITY',0) for v in records)),
+            'SHEET_COUNTS':dict(Counter(str(v['FIXED_FREQUENCY_SHEET_MEMBERSHIP']) for v in records)),
+            'CLASSIFIER_COUNTS':dict(Counter(v.get('CLASSIFIER_STATUS','NO_NULLSPACE') for v in records)),
+            'ALGEBRAIC_ROOT_COVERAGE':certificate['FINITE_POLYNOMIAL_ROOT_COVERAGE'],
+            'REGULAR_DENOMINATOR_DOMAIN':denominator_common.degree()==0,
+            'REGULAR_NORMAL_LIFT_DOMAIN':normal_common.degree()==0 and branch_common.degree()==0}
+        summary['REGULAR_ALGEBRAIC_MODE_COVERAGE'] = bool(summary['ALGEBRAIC_ROOT_COVERAGE']
+            and summary['REGULAR_DENOMINATOR_DOMAIN'] and summary['REGULAR_NORMAL_LIFT_DOMAIN']
+            and all(v['FINITE_PENCIL'] and v.get('NULLITY',0)>0 for v in records))
+        self.emit(prefix+'_SUMMARY',summary)
+        return {'CERTIFICATE':certificate,'RECORDS':records,'SUMMARY':summary}
+
+
 def run():
     global PHYSICAL_METADATA
     os.chdir(ROOT)
@@ -2762,6 +3039,8 @@ def run():
                                  help='explicit unit_frame, parameters and independent w/m profile input')
     channel_options.add_argument('--channel-input-file', type=Path,
                                  help='JSON file containing the same explicit channel input')
+    parser.add_argument('--channel-input-scope', choices=('modes-and-jets','spectrum'), default='modes-and-jets',
+                        help='select explicit-input spectrum records with or without the additional legacy mode jets')
     options = parser.parse_args()
     selected = lambda case: options.case == 'ALL' or '__'.join(map(str, case)) == options.case
     fold, audit = load_model('scripts/S11c_b_exports.py', 'scripts/S11c_c1_exports.py', 'scripts/S11c_c2_exports.py')
@@ -2978,9 +3257,15 @@ def run():
                 raise ValueError(('uncontracted asymptotic symbol', label, case))
             if label != 'REFERENCE':
                 modes.solve(full_symbol, label+'_'+suffix, -1 if label == 'LEFT' else 1)
-            if channel_input is not None:
+            if channel_input is not None and options.channel_input_scope=='modes-and-jets':
                 modes.solve_input(full_symbol, label+'_'+suffix, -1 if label == 'LEFT' else 1,
                                   channel_input, reference=label == 'REFERENCE')
+            spectrum = EndSpectrumCoverage(modes,strong_symbol,full_symbol,lift,strong_symbol_units)
+            spectrum.construct(label+'_'+suffix,-1 if label=='LEFT' else 1,
+                               reference=label=='REFERENCE',sample_index=0)
+            if channel_input is not None:
+                spectrum.construct(label+'_'+suffix,-1 if label=='LEFT' else 1,
+                                   channel_input=channel_input,reference=label=='REFERENCE')
     emit('PENCIL_DIMENSION_CONSTRAINT_RESIDUALS', sorted(dimensions.constraints, key=sp.default_sort_key))
     if dimensions.constraints:
         raise ValueError('pencil dimensional analysis has surfaced unresolved constraints')
@@ -2993,6 +3278,7 @@ def run():
                                       'POSITIVE_FREQUENCY_SPECTRAL_PIT', 'FIRST_GRADE_END_MODE_JETS',
                                       'NULLSPACE_CLASSIFIER_PROJECTORS', 'NONLINEAR_FREQUENCY_PAIRING',
                                       'REGULAR_RECTANGULAR_MODE_JETS',
+                                      'PHYSICAL_FIELD_END_SPECTRUM_COVERAGE',
                                       'S11B_CONSERVATIVE_SLAB_CURRENT', 'CLOSED_PHYSICAL_FIELD_LIFT'))
     emit('CHANNEL_INPUT_EXECUTION', channel_input is not None)
     emit('OUTSTANDING_CONSTRUCTIONS', ('FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS',

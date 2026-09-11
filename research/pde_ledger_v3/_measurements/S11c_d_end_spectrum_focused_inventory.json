@@ -1,0 +1,2414 @@
+{
+  "instrumentSha256": "ee88d8204d12a2be5342a0dd5bb86eb3e04265e1959448b5ae10ac8471988512",
+  "results": [
+    {
+      "path": "/tmp/s11cd-end-spectrum-20260910/checked_reference/full.out",
+      "bytes": 535311,
+      "sha256": "b8219199c68694b752b271f2527085fe3395e181cae957237b4999f5179130e9",
+      "uniqueTags": 356,
+      "duplicates": [],
+      "newSpectrumTags": 178,
+      "missingMetadata": [],
+      "metadataGaps": [],
+      "unmatchedResidualMetadata": [],
+      "dimensionConstraints": {},
+      "sourcePins": null,
+      "packets": {
+        "END_SPECTRUM_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0": {
+          "modes": [
+            {
+              "index": 0,
+              "k": [
+                0.0025578911521601075,
+                3.73994268221644
+              ],
+              "q": [
+                -37.345911804411514,
+                0.025615564955351652
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.8126677422703836e-48
+            },
+            {
+              "index": 1,
+              "k": [
+                -0.0025578911521601075,
+                -3.73994268221644
+              ],
+              "q": [
+                -37.345911804411514,
+                0.025615564955351652
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.8115006190722543e-48
+            },
+            {
+              "index": 2,
+              "k": [
+                0.010416078031715865,
+                2.6919362333062384
+              ],
+              "q": [
+                -26.84496467939697,
+                0.10444944963567346
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.0290714370923363e-48
+            },
+            {
+              "index": 3,
+              "k": [
+                -0.010416078031715865,
+                -2.6919362333062384
+              ],
+              "q": [
+                -26.84496467939697,
+                0.10444944963567346
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.0290714370923363e-48
+            },
+            {
+              "index": 4,
+              "k": [
+                0.006215554595293818,
+                -0.22290103905637115
+              ],
+              "q": [
+                -0.9920324548234428,
+                -0.13965808990081588
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 4.343890927094198e-51
+            },
+            {
+              "index": 5,
+              "k": [
+                -0.006215554595293818,
+                0.22290103905637115
+              ],
+              "q": [
+                -0.9920324548234428,
+                -0.13965808990081588
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 4.3315466587285605e-51
+            },
+            {
+              "index": 6,
+              "k": [
+                0.5977384314285294,
+                0.00844828813103602
+              ],
+              "q": [
+                -0.08011785867764575,
+                6.3030472594379665
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 4.790110031389193e-50
+            },
+            {
+              "index": 7,
+              "k": [
+                -0.5977384314285294,
+                -0.00844828813103602
+              ],
+              "q": [
+                -0.08011785867764575,
+                6.3030472594379665
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 4.781305425570664e-50
+            },
+            {
+              "index": 8,
+              "k": [
+                0.6073036538859136,
+                0.008491689256673306
+              ],
+              "q": [
+                0.08065640747826253,
+                -6.393830415309923
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 7.700222093542972e-50
+            },
+            {
+              "index": 9,
+              "k": [
+                -0.6073036538859136,
+                -0.008491689256673306
+              ],
+              "q": [
+                0.08065640747826253,
+                -6.393830415309923
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 7.700222093542972e-50
+            },
+            {
+              "index": 10,
+              "k": [
+                0.0035133221586750077,
+                -2.691860137498179
+              ],
+              "q": [
+                26.844200618323637,
+                0.03523059599946061
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 8.145649575881945e-49
+            },
+            {
+              "index": 11,
+              "k": [
+                -0.0035133221586750077,
+                2.691860137498179
+              ],
+              "q": [
+                26.844200618323637,
+                0.03523059599946061
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 8.133610898505493e-49
+            },
+            {
+              "index": 12,
+              "k": [
+                0.0020845051037914147,
+                3.7399140323156757
+              ],
+              "q": [
+                37.345624886422314,
+                -0.020874921525111466
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 3.00025688116547e-49
+            },
+            {
+              "index": 13,
+              "k": [
+                -0.0020845051037914147,
+                -3.7399140323156757
+              ],
+              "q": [
+                37.345624886422314,
+                -0.020874921525111466
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 2.9961633956873865e-49
+            },
+            {
+              "index": 14,
+              "k": [
+                0.7852812659593165,
+                0.0
+              ],
+              "q": [
+                0.0,
+                -8.103497187428813
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 15,
+              "k": [
+                -0.7852812659593165,
+                0.0
+              ],
+              "q": [
+                0.0,
+                -8.103497187428813
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 16,
+              "k": [
+                0.7852812659593165,
+                0.0
+              ],
+              "q": [
+                0.0,
+                8.103497187428813
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 17,
+              "k": [
+                -0.7852812659593165,
+                0.0
+              ],
+              "q": [
+                0.0,
+                8.103497187428813
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            }
+          ],
+          "boundCarriers": {
+            "rho_br": "1",
+            "mu_S": "1/2",
+            "G_W_u": "1/10",
+            "mu_W": "1",
+            "W_0": "1",
+            "k_W": "4",
+            "Lambda_V_0": "0",
+            "rho_m": "1/10",
+            "c_s0": "10",
+            "G_theta_u": "1/10",
+            "s11cdTangentialMomentum2": "1/10",
+            "kappa_theta_W": "1/10",
+            "kappa_theta": "1/3",
+            "s11cdTangentialMomentum1": "1/5",
+            "tau_V": "1/10",
+            "tau_X": "1/10",
+            "Lambda_X_0": "0",
+            "Lambda_A_0": "1/100",
+            "mu_R": "1",
+            "kappa_W": "1/2",
+            "omega": "1",
+            "B_rho_3": "4",
+            "C": "1/4",
+            "tau_A": "1/10"
+          },
+          "gradeOrigin": {
+            "eta_bg": "0",
+            "sigma_W": "0"
+          },
+          "unitFrame": [
+            "L_ref",
+            "T_ref",
+            "M_ref"
+          ],
+          "exceptionDegrees": {
+            "DENOMINATOR_GCD": 0,
+            "NORMAL_THRESHOLD_GCD": 0,
+            "RADICAL_BRANCH_GCD": 0
+          },
+          "polynomialDegrees": {
+            "PHYSICAL": 11,
+            "QUOTIENT": 15,
+            "COORDINATE_FACTOR": 4
+          },
+          "summary": {
+            "CANDIDATE_COUNT": 18,
+            "FINITE_PENCIL_COUNT": 18,
+            "NULLITY_COUNTS": [
+              [
+                1,
+                14
+              ],
+              [
+                2,
+                4
+              ]
+            ],
+            "SHEET_COUNTS": [
+              [
+                "True",
+                10
+              ],
+              [
+                "False",
+                8
+              ]
+            ],
+            "CLASSIFIER_COUNTS": [
+              [
+                "THICKNESS_LIKE",
+                14
+              ],
+              [
+                "TRANSVERSE_LIKE",
+                4
+              ]
+            ],
+            "ALGEBRAIC_ROOT_COVERAGE": true,
+            "REGULAR_DENOMINATOR_DOMAIN": true,
+            "REGULAR_NORMAL_LIFT_DOMAIN": true,
+            "REGULAR_ALGEBRAIC_MODE_COVERAGE": true
+          },
+          "inputBinding": {
+            "profiles": {
+              "w": "(1+tanh(xi))/2",
+              "m": "(1-tanh(xi)**2)/3"
+            },
+            "unitFrame": [
+              "L_ref",
+              "T_ref",
+              "M_ref"
+            ],
+            "parameters": {
+              "B_rho_3": "4",
+              "C": "1/4",
+              "G_W_u": "1/10",
+              "G_theta_u": "1/10",
+              "Lambda_A_0": "1/100",
+              "Lambda_V_0": "0",
+              "Lambda_X_0": "0",
+              "W_0": "1",
+              "L_W": "10",
+              "eta_bg": "1/100",
+              "c_s0": "10",
+              "k_W": "4",
+              "kappa_W": "1/2",
+              "kappa_theta": "1/3",
+              "kappa_theta_W": "1/10",
+              "mu_R": "1",
+              "mu_S": "1/2",
+              "mu_W": "1",
+              "omega": "1",
+              "rho_br": "1",
+              "rho_m": "1/10",
+              "tau_A": "1/10",
+              "tau_V": "1/10",
+              "tau_X": "1/10",
+              "s11cdTangentialMomentum1": "1/5",
+              "s11cdTangentialMomentum2": "1/10"
+            },
+            "canonicalInputSha256": "e66173474a76d6e903af5d51d9087c80f13bc9f5e8275d80beaab6d2a4607044"
+          }
+        }
+      },
+      "coverage": {
+        "END_SPECTRUM_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0": {
+          "polynomialDegree": 11,
+          "distinctRadicalRoots": 9,
+          "countWithMultiplicity": 11,
+          "degreeCountResidual": 0,
+          "allDisksDisjoint": true,
+          "allDisksIsolated": true,
+          "boundSigns": {
+            "1": 9
+          },
+          "precisionRefinementMaximum": 2.8402599540672384e-50,
+          "finitePolynomialRootCoverage": true
+        }
+      },
+      "emittedInputSha256": null,
+      "recomputedInputSha256": "e66173474a76d6e903af5d51d9087c80f13bc9f5e8275d80beaab6d2a4607044",
+      "inputDigestMismatch": false,
+      "maximumResidualByDimension": {
+        "RELATION_RESIDUAL|(0, -2, 0)": 0.0,
+        "PULLBACK_RESIDUAL|(-5, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-3, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-5, -1, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-3, -1, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-1, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(0, 0, 0)": 0.0,
+        "RIGHT_RESIDUAL|(-2, -2, 1)": 3.829109149388872e-15,
+        "RIGHT_RESIDUAL|(-3, -1, 1)": 1.6809821809278741e-15,
+        "RIGHT_RESIDUAL|(-1, -2, 1)": 1.864588087382261e-15,
+        "LEFT_RESIDUAL|(-1, 0, 0)": 2.5710510948747873e-15,
+        "LEFT_RESIDUAL|(0, 0, 0)": 1.3753033931853064e-15,
+        "PROJECTOR_RESIDUAL|(0, 0, 0)": 4.440892098500626e-16,
+        "PROJECTOR_RESIDUAL|(1, 0, 0)": 3.3766115072321297e-16,
+        "PROJECTOR_RESIDUAL|(-1, 0, 0)": 1.1150912609939193e-16
+      },
+      "legacyRegularRootComparisons": [],
+      "legacySymbolDigests": {},
+      "legacyPacketDigests": {},
+      "completionMarkers": 0
+    },
+    {
+      "path": "/tmp/s11cd-end-spectrum-20260910/checked_left/full.out",
+      "bytes": 540255,
+      "sha256": "56a1f00204d4b9bd34cf57cb36be9b57e3c45cef725eb88c66fafeec6207a64d",
+      "uniqueTags": 356,
+      "duplicates": [],
+      "newSpectrumTags": 178,
+      "missingMetadata": [],
+      "metadataGaps": [],
+      "unmatchedResidualMetadata": [],
+      "dimensionConstraints": {},
+      "sourcePins": null,
+      "packets": {
+        "END_SPECTRUM_INPUT_LEFT_LAB_HELD_RHO4_CONSTANT_0": {
+          "modes": [
+            {
+              "index": 0,
+              "k": [
+                0.0025578911521601075,
+                3.73994268221644
+              ],
+              "q": [
+                -37.345911804411514,
+                0.025615564955351652
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.8126677422703836e-48
+            },
+            {
+              "index": 1,
+              "k": [
+                -0.0025578911521601075,
+                -3.73994268221644
+              ],
+              "q": [
+                -37.345911804411514,
+                0.025615564955351652
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.8115006190722543e-48
+            },
+            {
+              "index": 2,
+              "k": [
+                0.010416078031715865,
+                2.6919362333062384
+              ],
+              "q": [
+                -26.84496467939697,
+                0.10444944963567346
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.0290714370923363e-48
+            },
+            {
+              "index": 3,
+              "k": [
+                -0.010416078031715865,
+                -2.6919362333062384
+              ],
+              "q": [
+                -26.84496467939697,
+                0.10444944963567346
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.0290714370923363e-48
+            },
+            {
+              "index": 4,
+              "k": [
+                0.006215554595293818,
+                -0.22290103905637115
+              ],
+              "q": [
+                -0.9920324548234428,
+                -0.13965808990081588
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 4.343890927094198e-51
+            },
+            {
+              "index": 5,
+              "k": [
+                -0.006215554595293818,
+                0.22290103905637115
+              ],
+              "q": [
+                -0.9920324548234428,
+                -0.13965808990081588
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 4.3315466587285605e-51
+            },
+            {
+              "index": 6,
+              "k": [
+                0.5977384314285294,
+                0.00844828813103602
+              ],
+              "q": [
+                -0.08011785867764575,
+                6.3030472594379665
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 4.790110031389193e-50
+            },
+            {
+              "index": 7,
+              "k": [
+                -0.5977384314285294,
+                -0.00844828813103602
+              ],
+              "q": [
+                -0.08011785867764575,
+                6.3030472594379665
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 4.781305425570664e-50
+            },
+            {
+              "index": 8,
+              "k": [
+                0.6073036538859136,
+                0.008491689256673306
+              ],
+              "q": [
+                0.08065640747826253,
+                -6.393830415309923
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 7.700222093542972e-50
+            },
+            {
+              "index": 9,
+              "k": [
+                -0.6073036538859136,
+                -0.008491689256673306
+              ],
+              "q": [
+                0.08065640747826253,
+                -6.393830415309923
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 7.700222093542972e-50
+            },
+            {
+              "index": 10,
+              "k": [
+                0.0035133221586750077,
+                -2.691860137498179
+              ],
+              "q": [
+                26.844200618323637,
+                0.03523059599946061
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 8.145649575881945e-49
+            },
+            {
+              "index": 11,
+              "k": [
+                -0.0035133221586750077,
+                2.691860137498179
+              ],
+              "q": [
+                26.844200618323637,
+                0.03523059599946061
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 8.133610898505493e-49
+            },
+            {
+              "index": 12,
+              "k": [
+                0.0020845051037914147,
+                3.7399140323156757
+              ],
+              "q": [
+                37.345624886422314,
+                -0.020874921525111466
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 3.00025688116547e-49
+            },
+            {
+              "index": 13,
+              "k": [
+                -0.0020845051037914147,
+                -3.7399140323156757
+              ],
+              "q": [
+                37.345624886422314,
+                -0.020874921525111466
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 2.9961633956873865e-49
+            },
+            {
+              "index": 14,
+              "k": [
+                0.7852812659593165,
+                0.0
+              ],
+              "q": [
+                0.0,
+                -8.103497187428813
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 15,
+              "k": [
+                -0.7852812659593165,
+                0.0
+              ],
+              "q": [
+                0.0,
+                -8.103497187428813
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 16,
+              "k": [
+                0.7852812659593165,
+                0.0
+              ],
+              "q": [
+                0.0,
+                8.103497187428813
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 17,
+              "k": [
+                -0.7852812659593165,
+                0.0
+              ],
+              "q": [
+                0.0,
+                8.103497187428813
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            }
+          ],
+          "boundCarriers": {
+            "tau_V": "1/10",
+            "Lambda_V_0": "0",
+            "omega": "1",
+            "s11cdTangentialMomentum2": "1/10",
+            "Lambda_X_0": "0",
+            "C": "1/4",
+            "rho_m": "1/10",
+            "k_W": "4",
+            "mu_S": "1/2",
+            "rho_br": "1",
+            "s11cdTangentialMomentum1": "1/5",
+            "W_0": "1",
+            "Lambda_A_0": "1/100",
+            "B_rho_3": "4",
+            "mu_W": "1",
+            "G_theta_u": "1/10",
+            "kappa_theta": "1/3",
+            "kappa_W": "1/2",
+            "tau_A": "1/10",
+            "mu_R": "1",
+            "c_s0": "10",
+            "kappa_theta_W": "1/10",
+            "tau_X": "1/10",
+            "G_W_u": "1/10",
+            "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+            "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0"
+          },
+          "gradeOrigin": {
+            "eta_bg": "1/100",
+            "sigma_W": "1/1000"
+          },
+          "unitFrame": [
+            "L_ref",
+            "T_ref",
+            "M_ref"
+          ],
+          "exceptionDegrees": {
+            "DENOMINATOR_GCD": 0,
+            "NORMAL_THRESHOLD_GCD": 0,
+            "RADICAL_BRANCH_GCD": 0
+          },
+          "polynomialDegrees": {
+            "PHYSICAL": 11,
+            "QUOTIENT": 15,
+            "COORDINATE_FACTOR": 4
+          },
+          "summary": {
+            "CANDIDATE_COUNT": 18,
+            "FINITE_PENCIL_COUNT": 18,
+            "NULLITY_COUNTS": [
+              [
+                1,
+                14
+              ],
+              [
+                2,
+                4
+              ]
+            ],
+            "SHEET_COUNTS": [
+              [
+                "True",
+                10
+              ],
+              [
+                "False",
+                8
+              ]
+            ],
+            "CLASSIFIER_COUNTS": [
+              [
+                "THICKNESS_LIKE",
+                14
+              ],
+              [
+                "TRANSVERSE_LIKE",
+                4
+              ]
+            ],
+            "ALGEBRAIC_ROOT_COVERAGE": true,
+            "REGULAR_DENOMINATOR_DOMAIN": true,
+            "REGULAR_NORMAL_LIFT_DOMAIN": true,
+            "REGULAR_ALGEBRAIC_MODE_COVERAGE": true
+          },
+          "inputBinding": {
+            "profiles": {
+              "w": "(1+tanh(xi))/2",
+              "m": "(1-tanh(xi)**2)/3"
+            },
+            "unitFrame": [
+              "L_ref",
+              "T_ref",
+              "M_ref"
+            ],
+            "parameters": {
+              "B_rho_3": "4",
+              "C": "1/4",
+              "G_W_u": "1/10",
+              "G_theta_u": "1/10",
+              "Lambda_A_0": "1/100",
+              "Lambda_V_0": "0",
+              "Lambda_X_0": "0",
+              "W_0": "1",
+              "L_W": "10",
+              "eta_bg": "1/100",
+              "c_s0": "10",
+              "k_W": "4",
+              "kappa_W": "1/2",
+              "kappa_theta": "1/3",
+              "kappa_theta_W": "1/10",
+              "mu_R": "1",
+              "mu_S": "1/2",
+              "mu_W": "1",
+              "omega": "1",
+              "rho_br": "1",
+              "rho_m": "1/10",
+              "tau_A": "1/10",
+              "tau_V": "1/10",
+              "tau_X": "1/10",
+              "s11cdTangentialMomentum1": "1/5",
+              "s11cdTangentialMomentum2": "1/10"
+            },
+            "canonicalInputSha256": "e66173474a76d6e903af5d51d9087c80f13bc9f5e8275d80beaab6d2a4607044"
+          }
+        }
+      },
+      "coverage": {
+        "END_SPECTRUM_INPUT_LEFT_LAB_HELD_RHO4_CONSTANT_0": {
+          "polynomialDegree": 11,
+          "distinctRadicalRoots": 9,
+          "countWithMultiplicity": 11,
+          "degreeCountResidual": 0,
+          "allDisksDisjoint": true,
+          "allDisksIsolated": true,
+          "boundSigns": {
+            "1": 9
+          },
+          "precisionRefinementMaximum": 2.8402599540672384e-50,
+          "finitePolynomialRootCoverage": true
+        }
+      },
+      "emittedInputSha256": null,
+      "recomputedInputSha256": "e66173474a76d6e903af5d51d9087c80f13bc9f5e8275d80beaab6d2a4607044",
+      "inputDigestMismatch": false,
+      "maximumResidualByDimension": {
+        "RELATION_RESIDUAL|(0, -2, 0)": 0.0,
+        "PULLBACK_RESIDUAL|(-5, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-3, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-5, -1, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-3, -1, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-1, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(0, 0, 0)": 0.0,
+        "RIGHT_RESIDUAL|(-2, -2, 1)": 3.829109149388872e-15,
+        "RIGHT_RESIDUAL|(-3, -1, 1)": 1.6809821809278741e-15,
+        "RIGHT_RESIDUAL|(-1, -2, 1)": 1.864588087382261e-15,
+        "LEFT_RESIDUAL|(-1, 0, 0)": 2.5710510948747873e-15,
+        "LEFT_RESIDUAL|(0, 0, 0)": 1.3753033931853064e-15,
+        "PROJECTOR_RESIDUAL|(0, 0, 0)": 4.440892098500626e-16,
+        "PROJECTOR_RESIDUAL|(1, 0, 0)": 3.3766115072321297e-16,
+        "PROJECTOR_RESIDUAL|(-1, 0, 0)": 1.1150912609939193e-16
+      },
+      "legacyRegularRootComparisons": [],
+      "legacySymbolDigests": {},
+      "legacyPacketDigests": {},
+      "completionMarkers": 0
+    },
+    {
+      "path": "/tmp/s11cd-end-spectrum-20260910/checked_right/full.out",
+      "bytes": 542383,
+      "sha256": "4a2f82dd742dbdfdb8a098274bcc0047072dc8795a93b6e031f247fcaa066f8d",
+      "uniqueTags": 356,
+      "duplicates": [],
+      "newSpectrumTags": 178,
+      "missingMetadata": [],
+      "metadataGaps": [],
+      "unmatchedResidualMetadata": [],
+      "dimensionConstraints": {},
+      "sourcePins": null,
+      "packets": {
+        "END_SPECTRUM_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0": {
+          "modes": [
+            {
+              "index": 0,
+              "k": [
+                0.002540346967449647,
+                3.753638159636256
+              ],
+              "q": [
+                -37.48306211057239,
+                0.025439605994851906
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 3.838600105138679e-49
+            },
+            {
+              "index": 1,
+              "k": [
+                -0.002540346967449647,
+                -3.753638159636256
+              ],
+              "q": [
+                -37.48306211057239,
+                0.025439605994851906
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 3.7886075261614834e-49
+            },
+            {
+              "index": 2,
+              "k": [
+                0.010335383805500262,
+                2.6545401252990186
+              ],
+              "q": [
+                -26.469952562557722,
+                0.10364843290605079
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 5.273366734655167e-49
+            },
+            {
+              "index": 3,
+              "k": [
+                -0.010335383805500262,
+                -2.6545401252990186
+              ],
+              "q": [
+                -26.469952562557722,
+                0.10364843290605079
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 5.2486683964937204e-49
+            },
+            {
+              "index": 4,
+              "k": [
+                0.006257823191659067,
+                -0.22289563800620518
+              ],
+              "q": [
+                -0.9920184823508175,
+                -0.1406064017607288
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.8776504379753798e-51
+            },
+            {
+              "index": 5,
+              "k": [
+                -0.006257823191659067,
+                0.22289563800620518
+              ],
+              "q": [
+                -0.9920184823508175,
+                -0.1406064017607288
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.8527919629750944e-51
+            },
+            {
+              "index": 6,
+              "k": [
+                0.5977305549992945,
+                0.008408840372219879
+              ],
+              "q": [
+                -0.07974365029565303,
+                6.302973094349872
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.2136515549073945e-50
+            },
+            {
+              "index": 7,
+              "k": [
+                -0.5977305549992945,
+                -0.008408840372219879
+              ],
+              "q": [
+                -0.07974365029565303,
+                6.302973094349872
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.1421551000803596e-50
+            },
+            {
+              "index": 8,
+              "k": [
+                0.6073133778783011,
+                0.008447440326909276
+              ],
+              "q": [
+                0.0802362373989386,
+                -6.39392335143138
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 7.759542228926802e-51
+            },
+            {
+              "index": 9,
+              "k": [
+                -0.6073133778783011,
+                -0.008447440326909276
+              ],
+              "q": [
+                0.0802362373989386,
+                -6.39392335143138
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 7.6811327634766e-51
+            },
+            {
+              "index": 10,
+              "k": [
+                0.003721749603820333,
+                -2.6544705474744767
+              ],
+              "q": [
+                26.469253798492435,
+                0.03732358601275927
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.1529710550235875e-48
+            },
+            {
+              "index": 11,
+              "k": [
+                -0.003721749603820333,
+                2.6544705474744767
+              ],
+              "q": [
+                26.469253798492435,
+                0.03732358601275927
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.1522681654636032e-48
+            },
+            {
+              "index": 12,
+              "k": [
+                0.0021102316146301885,
+                3.753611118070582
+              ],
+              "q": [
+                37.48279130265147,
+                -0.021132334532992996
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 5.6975320833387425e-49
+            },
+            {
+              "index": 13,
+              "k": [
+                -0.0021102316146301885,
+                -3.753611118070582
+              ],
+              "q": [
+                37.48279130265147,
+                -0.021132334532992996
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 5.596052666710936e-49
+            },
+            {
+              "index": 14,
+              "k": [
+                0.7895146188218007,
+                0.0
+              ],
+              "q": [
+                0.0,
+                -8.144527815247077
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 15,
+              "k": [
+                -0.7895146188218007,
+                0.0
+              ],
+              "q": [
+                0.0,
+                -8.144527815247077
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 16,
+              "k": [
+                0.7895146188218007,
+                0.0
+              ],
+              "q": [
+                0.0,
+                8.144527815247077
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 17,
+              "k": [
+                -0.7895146188218007,
+                0.0
+              ],
+              "q": [
+                0.0,
+                8.144527815247077
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            }
+          ],
+          "boundCarriers": {
+            "Lambda_V_0": "0",
+            "tau_V": "1/10",
+            "kappa_W": "1/2",
+            "tau_X": "1/10",
+            "W_0": "1",
+            "rho_br": "1",
+            "c_s0": "10",
+            "G_theta_u": "1/10",
+            "s11cdTangentialMomentum1": "1/5",
+            "G_W_u": "1/10",
+            "B_rho_3": "4",
+            "kappa_theta_W": "1/10",
+            "C": "1/4",
+            "mu_W": "1",
+            "rho_m": "1/10",
+            "k_W": "4",
+            "mu_R": "1",
+            "tau_A": "1/10",
+            "kappa_theta": "1/3",
+            "mu_S": "1/2",
+            "Lambda_X_0": "0",
+            "omega": "1",
+            "Lambda_A_0": "1/100",
+            "s11cdTangentialMomentum2": "1/10",
+            "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "0",
+            "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "1"
+          },
+          "gradeOrigin": {
+            "eta_bg": "1/100",
+            "sigma_W": "1/1000"
+          },
+          "unitFrame": [
+            "L_ref",
+            "T_ref",
+            "M_ref"
+          ],
+          "exceptionDegrees": {
+            "DENOMINATOR_GCD": 0,
+            "NORMAL_THRESHOLD_GCD": 0,
+            "RADICAL_BRANCH_GCD": 0
+          },
+          "polynomialDegrees": {
+            "PHYSICAL": 11,
+            "QUOTIENT": 15,
+            "COORDINATE_FACTOR": 4
+          },
+          "summary": {
+            "CANDIDATE_COUNT": 18,
+            "FINITE_PENCIL_COUNT": 18,
+            "NULLITY_COUNTS": [
+              [
+                1,
+                14
+              ],
+              [
+                2,
+                4
+              ]
+            ],
+            "SHEET_COUNTS": [
+              [
+                "True",
+                10
+              ],
+              [
+                "False",
+                8
+              ]
+            ],
+            "CLASSIFIER_COUNTS": [
+              [
+                "THICKNESS_LIKE",
+                14
+              ],
+              [
+                "TRANSVERSE_LIKE",
+                4
+              ]
+            ],
+            "ALGEBRAIC_ROOT_COVERAGE": true,
+            "REGULAR_DENOMINATOR_DOMAIN": true,
+            "REGULAR_NORMAL_LIFT_DOMAIN": true,
+            "REGULAR_ALGEBRAIC_MODE_COVERAGE": true
+          },
+          "inputBinding": {
+            "profiles": {
+              "w": "(1+tanh(xi))/2",
+              "m": "(1-tanh(xi)**2)/3"
+            },
+            "unitFrame": [
+              "L_ref",
+              "T_ref",
+              "M_ref"
+            ],
+            "parameters": {
+              "B_rho_3": "4",
+              "C": "1/4",
+              "G_W_u": "1/10",
+              "G_theta_u": "1/10",
+              "Lambda_A_0": "1/100",
+              "Lambda_V_0": "0",
+              "Lambda_X_0": "0",
+              "W_0": "1",
+              "L_W": "10",
+              "eta_bg": "1/100",
+              "c_s0": "10",
+              "k_W": "4",
+              "kappa_W": "1/2",
+              "kappa_theta": "1/3",
+              "kappa_theta_W": "1/10",
+              "mu_R": "1",
+              "mu_S": "1/2",
+              "mu_W": "1",
+              "omega": "1",
+              "rho_br": "1",
+              "rho_m": "1/10",
+              "tau_A": "1/10",
+              "tau_V": "1/10",
+              "tau_X": "1/10",
+              "s11cdTangentialMomentum1": "1/5",
+              "s11cdTangentialMomentum2": "1/10"
+            },
+            "canonicalInputSha256": "e66173474a76d6e903af5d51d9087c80f13bc9f5e8275d80beaab6d2a4607044"
+          }
+        }
+      },
+      "coverage": {
+        "END_SPECTRUM_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0": {
+          "polynomialDegree": 11,
+          "distinctRadicalRoots": 9,
+          "countWithMultiplicity": 11,
+          "degreeCountResidual": 0,
+          "allDisksDisjoint": true,
+          "allDisksIsolated": true,
+          "boundSigns": {
+            "1": 9
+          },
+          "precisionRefinementMaximum": 4.494551486407026e-50,
+          "finitePolynomialRootCoverage": true
+        }
+      },
+      "emittedInputSha256": null,
+      "recomputedInputSha256": "e66173474a76d6e903af5d51d9087c80f13bc9f5e8275d80beaab6d2a4607044",
+      "inputDigestMismatch": false,
+      "maximumResidualByDimension": {
+        "RELATION_RESIDUAL|(0, -2, 0)": 0.0,
+        "PULLBACK_RESIDUAL|(-5, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-3, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-5, -1, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-3, -1, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-1, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(0, 0, 0)": 0.0,
+        "RIGHT_RESIDUAL|(-2, -2, 1)": 3.1057899194877425e-15,
+        "RIGHT_RESIDUAL|(-3, -1, 1)": 2.159233940399377e-15,
+        "RIGHT_RESIDUAL|(-1, -2, 1)": 2.145258255315747e-15,
+        "LEFT_RESIDUAL|(-1, 0, 0)": 2.5942807051103923e-15,
+        "LEFT_RESIDUAL|(0, 0, 0)": 1.790180836524724e-15,
+        "PROJECTOR_RESIDUAL|(0, 0, 0)": 2.2591401799415137e-16,
+        "PROJECTOR_RESIDUAL|(1, 0, 0)": 4.449557262054371e-16,
+        "PROJECTOR_RESIDUAL|(-1, 0, 0)": 1.1236938283130691e-16
+      },
+      "legacyRegularRootComparisons": [],
+      "legacySymbolDigests": {},
+      "legacyPacketDigests": {},
+      "completionMarkers": 0
+    },
+    {
+      "path": "/tmp/s11cd-end-spectrum-20260910/checked_axis/full.out",
+      "bytes": 559656,
+      "sha256": "06d611073bbf447bc94d3659009c617e9f29419e9a347f8aee05597ef7080b60",
+      "uniqueTags": 356,
+      "duplicates": [],
+      "newSpectrumTags": 178,
+      "missingMetadata": [],
+      "metadataGaps": [],
+      "unmatchedResidualMetadata": [],
+      "dimensionConstraints": {},
+      "sourcePins": null,
+      "packets": {
+        "END_SPECTRUM_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0": {
+          "modes": [
+            {
+              "index": 0,
+              "k": [
+                0.0025439605994851907,
+                3.748306211057239
+              ],
+              "q": [
+                -37.48306211057239,
+                0.025439605994851906
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.4394242947799106e-48
+            },
+            {
+              "index": 1,
+              "k": [
+                -0.0025439605994851907,
+                -3.748306211057239
+              ],
+              "q": [
+                -37.48306211057239,
+                0.025439605994851906
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.4394242947799106e-48
+            },
+            {
+              "index": 2,
+              "k": [
+                0.010364843290605079,
+                2.646995256255772
+              ],
+              "q": [
+                -26.469952562557722,
+                0.10364843290605079
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.1048242271026598e-50
+            },
+            {
+              "index": 3,
+              "k": [
+                -0.010364843290605079,
+                -2.646995256255772
+              ],
+              "q": [
+                -26.469952562557722,
+                0.10364843290605079
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.1048242271026598e-50
+            },
+            {
+              "index": 4,
+              "k": [
+                0.01406064017607288,
+                -0.09920184823508174
+              ],
+              "q": [
+                -0.9920184823508175,
+                -0.1406064017607288
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.601042264142399e-51
+            },
+            {
+              "index": 5,
+              "k": [
+                -0.01406064017607288,
+                0.09920184823508174
+              ],
+              "q": [
+                -0.9920184823508175,
+                -0.1406064017607288
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.601042264142399e-51
+            },
+            {
+              "index": 6,
+              "k": [
+                0.6302973094349872,
+                0.007974365029565304
+              ],
+              "q": [
+                -0.07974365029565303,
+                6.302973094349872
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 5.674507959976759e-50
+            },
+            {
+              "index": 7,
+              "k": [
+                -0.6302973094349872,
+                -0.007974365029565304
+              ],
+              "q": [
+                -0.07974365029565303,
+                6.302973094349872
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 5.674507959976759e-50
+            },
+            {
+              "index": 8,
+              "k": [
+                0.639392335143138,
+                0.00802362373989386
+              ],
+              "q": [
+                0.0802362373989386,
+                -6.39392335143138
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 6.44326894948474e-50
+            },
+            {
+              "index": 9,
+              "k": [
+                -0.639392335143138,
+                -0.00802362373989386
+              ],
+              "q": [
+                0.0802362373989386,
+                -6.39392335143138
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 6.44326894948474e-50
+            },
+            {
+              "index": 10,
+              "k": [
+                0.0037323586012759273,
+                -2.6469253798492436
+              ],
+              "q": [
+                26.469253798492435,
+                0.03732358601275927
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.841902168209118e-49
+            },
+            {
+              "index": 11,
+              "k": [
+                -0.0037323586012759273,
+                2.6469253798492436
+              ],
+              "q": [
+                26.469253798492435,
+                0.03732358601275927
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.841902168209118e-49
+            },
+            {
+              "index": 12,
+              "k": [
+                0.0021132334532992995,
+                3.748279130265147
+              ],
+              "q": [
+                37.48279130265147,
+                -0.021132334532992996
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 8.495874051145228e-49
+            },
+            {
+              "index": 13,
+              "k": [
+                -0.0021132334532992995,
+                -3.748279130265147
+              ],
+              "q": [
+                37.48279130265147,
+                -0.021132334532992996
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 8.495874051145228e-49
+            },
+            {
+              "index": 14,
+              "k": [
+                0.8144527815247078,
+                0.0
+              ],
+              "q": [
+                0.0,
+                -8.144527815247077
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 15,
+              "k": [
+                -0.8144527815247078,
+                0.0
+              ],
+              "q": [
+                0.0,
+                -8.144527815247077
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 16,
+              "k": [
+                0.8144527815247078,
+                0.0
+              ],
+              "q": [
+                0.0,
+                8.144527815247077
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            },
+            {
+              "index": 17,
+              "k": [
+                -0.8144527815247078,
+                0.0
+              ],
+              "q": [
+                0.0,
+                8.144527815247077
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 5.701898048196684e-50
+            }
+          ],
+          "boundCarriers": {
+            "Lambda_X_0": "0",
+            "mu_R": "1",
+            "rho_br": "1",
+            "rho_m": "1/10",
+            "mu_W": "1",
+            "G_theta_u": "1/10",
+            "s11cdTangentialMomentum1": "0",
+            "B_rho_3": "4",
+            "Lambda_A_0": "1/100",
+            "tau_V": "1/10",
+            "s11cdTangentialMomentum2": "1/10",
+            "Lambda_V_0": "0",
+            "omega": "1",
+            "W_0": "1",
+            "k_W": "4",
+            "c_s0": "10",
+            "G_W_u": "1/10",
+            "tau_X": "1/10",
+            "kappa_theta_W": "1/10",
+            "mu_S": "1/2",
+            "kappa_theta": "1/3",
+            "tau_A": "1/10",
+            "kappa_W": "1/2",
+            "C": "1/4",
+            "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "1",
+            "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "0"
+          },
+          "gradeOrigin": {
+            "eta_bg": "1/100",
+            "sigma_W": "1/1000"
+          },
+          "unitFrame": [
+            "L_ref",
+            "T_ref",
+            "M_ref"
+          ],
+          "exceptionDegrees": {
+            "DENOMINATOR_GCD": 0,
+            "NORMAL_THRESHOLD_GCD": 0,
+            "RADICAL_BRANCH_GCD": 0
+          },
+          "polynomialDegrees": {
+            "PHYSICAL": 11,
+            "QUOTIENT": "-oo",
+            "COORDINATE_FACTOR": "-oo"
+          },
+          "summary": {
+            "CANDIDATE_COUNT": 18,
+            "FINITE_PENCIL_COUNT": 18,
+            "NULLITY_COUNTS": [
+              [
+                1,
+                14
+              ],
+              [
+                2,
+                4
+              ]
+            ],
+            "SHEET_COUNTS": [
+              [
+                "True",
+                10
+              ],
+              [
+                "False",
+                8
+              ]
+            ],
+            "CLASSIFIER_COUNTS": [
+              [
+                "THICKNESS_LIKE",
+                14
+              ],
+              [
+                "TRANSVERSE_LIKE",
+                4
+              ]
+            ],
+            "ALGEBRAIC_ROOT_COVERAGE": true,
+            "REGULAR_DENOMINATOR_DOMAIN": true,
+            "REGULAR_NORMAL_LIFT_DOMAIN": true,
+            "REGULAR_ALGEBRAIC_MODE_COVERAGE": true
+          },
+          "inputBinding": {
+            "profiles": {
+              "w": "(1+tanh(xi))/2",
+              "m": "(1-tanh(xi)**2)/3"
+            },
+            "unitFrame": [
+              "L_ref",
+              "T_ref",
+              "M_ref"
+            ],
+            "parameters": {
+              "B_rho_3": "4",
+              "C": "1/4",
+              "G_W_u": "1/10",
+              "G_theta_u": "1/10",
+              "Lambda_A_0": "1/100",
+              "Lambda_V_0": "0",
+              "Lambda_X_0": "0",
+              "W_0": "1",
+              "L_W": "10",
+              "eta_bg": "1/100",
+              "c_s0": "10",
+              "k_W": "4",
+              "kappa_W": "1/2",
+              "kappa_theta": "1/3",
+              "kappa_theta_W": "1/10",
+              "mu_R": "1",
+              "mu_S": "1/2",
+              "mu_W": "1",
+              "omega": "1",
+              "rho_br": "1",
+              "rho_m": "1/10",
+              "tau_A": "1/10",
+              "tau_V": "1/10",
+              "tau_X": "1/10",
+              "s11cdTangentialMomentum1": "0",
+              "s11cdTangentialMomentum2": "1/10"
+            },
+            "canonicalInputSha256": "b913714e0d208dedca76ebd5882c2de70a1a5fb79541c5ada045eacae40b492f"
+          }
+        }
+      },
+      "coverage": {
+        "END_SPECTRUM_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0": {
+          "polynomialDegree": 11,
+          "distinctRadicalRoots": 9,
+          "countWithMultiplicity": 11,
+          "degreeCountResidual": 0,
+          "allDisksDisjoint": true,
+          "allDisksIsolated": true,
+          "boundSigns": {
+            "1": 9
+          },
+          "precisionRefinementMaximum": 4.212228469197963e-50,
+          "finitePolynomialRootCoverage": true
+        }
+      },
+      "emittedInputSha256": null,
+      "recomputedInputSha256": "b913714e0d208dedca76ebd5882c2de70a1a5fb79541c5ada045eacae40b492f",
+      "inputDigestMismatch": false,
+      "maximumResidualByDimension": {
+        "RELATION_RESIDUAL|(0, -2, 0)": 0.0,
+        "PULLBACK_RESIDUAL|(-5, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-3, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-5, -1, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-3, -1, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-1, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(0, 0, 0)": 0.0,
+        "RIGHT_RESIDUAL|(-2, -2, 1)": 2.2975598761666636e-15,
+        "RIGHT_RESIDUAL|(-3, -1, 1)": 1.6863349241626492e-15,
+        "RIGHT_RESIDUAL|(-1, -2, 1)": 1.027290294945464e-15,
+        "LEFT_RESIDUAL|(-1, 0, 0)": 3.5466658802454486e-15,
+        "LEFT_RESIDUAL|(0, 0, 0)": 2.6852712547870858e-15,
+        "PROJECTOR_RESIDUAL|(0, 0, 0)": 4.445768331151997e-16,
+        "PROJECTOR_RESIDUAL|(1, 0, 0)": 3.3766115072321297e-16,
+        "PROJECTOR_RESIDUAL|(-1, 0, 0)": 1.6675917617219396e-16
+      },
+      "legacyRegularRootComparisons": [],
+      "legacySymbolDigests": {},
+      "legacyPacketDigests": {},
+      "completionMarkers": 0
+    },
+    {
+      "path": "/tmp/s11cd-end-spectrum-20260910/checked_pit/full.out",
+      "bytes": 535123,
+      "sha256": "af61fec5526973b25d886b0c5ff1f923bc315a15056521bd8ee22210553b5661",
+      "uniqueTags": 356,
+      "duplicates": [],
+      "newSpectrumTags": 178,
+      "missingMetadata": [],
+      "metadataGaps": [],
+      "unmatchedResidualMetadata": [],
+      "dimensionConstraints": {},
+      "sourcePins": null,
+      "packets": {
+        "END_SPECTRUM_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0": {
+          "modes": [
+            {
+              "index": 0,
+              "k": [
+                0.0076804771550447746,
+                1.8209981358029725
+              ],
+              "q": [
+                -0.803446502577741,
+                0.003438552836792433
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 5.867031521240817e-52
+            },
+            {
+              "index": 1,
+              "k": [
+                -0.0076804771550447746,
+                -1.8209981358029725
+              ],
+              "q": [
+                -0.803446502577741,
+                0.003438552836792433
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 5.8412070294869735e-52
+            },
+            {
+              "index": 2,
+              "k": [
+                0.031471878747061886,
+                0.8196164026637554
+              ],
+              "q": [
+                -0.3510236072828187,
+                0.014515498305033774
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.5030939831772902e-52
+            },
+            {
+              "index": 3,
+              "k": [
+                -0.031471878747061886,
+                -0.8196164026637554
+              ],
+              "q": [
+                -0.3510236072828187,
+                0.014515498305033774
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.5030939831772902e-52
+            },
+            {
+              "index": 4,
+              "k": [
+                0.00015812421424365723,
+                -0.7416665290078467
+              ],
+              "q": [
+                -0.31490103316916085,
+                -7.356444090491341e-05
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.5839434154603595e-52
+            },
+            {
+              "index": 5,
+              "k": [
+                -0.00015812421424365723,
+                0.7416665290078467
+              ],
+              "q": [
+                -0.31490103316916085,
+                -7.356444090491341e-05
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.579445552079282e-52
+            },
+            {
+              "index": 6,
+              "k": [
+                0.008424630850109319,
+                0.1959678318693944
+              ],
+              "q": [
+                -0.007338148728006163,
+                0.04444103061055279
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 2.3587250143506942e-54
+            },
+            {
+              "index": 7,
+              "k": [
+                -0.008424630850109319,
+                -0.1959678318693944
+              ],
+              "q": [
+                -0.007338148728006163,
+                0.04444103061055279
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "True",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 2.3587250143506942e-54
+            },
+            {
+              "index": 8,
+              "k": [
+                9.163061530114459e-05,
+                0.7416757743878739
+              ],
+              "q": [
+                0.3149053339143971,
+                -4.262944156493577e-05
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.4479985866853363e-52
+            },
+            {
+              "index": 9,
+              "k": [
+                -9.163061530114459e-05,
+                -0.7416757743878739
+              ],
+              "q": [
+                0.3149053339143971,
+                -4.262944156493577e-05
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.445896286325292e-52
+            },
+            {
+              "index": 10,
+              "k": [
+                0.028216039735022902,
+                0.8250119372716032
+              ],
+              "q": [
+                0.35350710637922544,
+                -0.01300747817559478
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.2944582741621697e-52
+            },
+            {
+              "index": 11,
+              "k": [
+                -0.028216039735022902,
+                -0.8250119372716032
+              ],
+              "q": [
+                0.35350710637922544,
+                -0.01300747817559478
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 1.2944582741621697e-52
+            },
+            {
+              "index": 12,
+              "k": [
+                0.05472987030122005,
+                1.8275251911150623
+              ],
+              "q": [
+                0.8063738362245102,
+                -0.024501141965259765
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 8.407816019054115e-52
+            },
+            {
+              "index": 13,
+              "k": [
+                -0.05472987030122005,
+                -1.8275251911150623
+              ],
+              "q": [
+                0.8063738362245102,
+                -0.024501141965259765
+              ],
+              "nullity": 1,
+              "multiplicity": 1,
+              "multiplicityDifference": 0,
+              "sheet": "False",
+              "classifier": "THICKNESS_LIKE",
+              "radicalResidual": 8.390220360032089e-52
+            },
+            {
+              "index": 14,
+              "k": [
+                0.0,
+                0.7496313505882902
+              ],
+              "q": [
+                -0.31860463952009727,
+                0.0
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "UNRESOLVED",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 1.200554871944638e-52
+            },
+            {
+              "index": 15,
+              "k": [
+                0.0,
+                -0.7496313505882902
+              ],
+              "q": [
+                -0.31860463952009727,
+                0.0
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "UNRESOLVED",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 1.200554871944638e-52
+            },
+            {
+              "index": 16,
+              "k": [
+                0.0,
+                0.7496313505882902
+              ],
+              "q": [
+                0.31860463952009727,
+                0.0
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "UNRESOLVED",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 1.200554871944638e-52
+            },
+            {
+              "index": 17,
+              "k": [
+                0.0,
+                -0.7496313505882902
+              ],
+              "q": [
+                0.31860463952009727,
+                0.0
+              ],
+              "nullity": 2,
+              "multiplicity": 2,
+              "multiplicityDifference": 0,
+              "sheet": "UNRESOLVED",
+              "classifier": "TRANSVERSE_LIKE",
+              "radicalResidual": 1.200554871944638e-52
+            }
+          ],
+          "boundCarriers": {
+            "B_rho_3": "14/9",
+            "C": "1/3",
+            "G_W_u": "9/8",
+            "G_theta_u": "6/5",
+            "Lambda_A_0": "1",
+            "Lambda_V_0": "5/3",
+            "Lambda_X_0": "9/11",
+            "W_0": "2",
+            "c_s0": "4/9",
+            "k_W": "2/3",
+            "kappa_W": "13/6",
+            "kappa_theta": "4/7",
+            "kappa_theta_W": "13/5",
+            "mu_R": "1/3",
+            "mu_S": "7/3",
+            "mu_W": "2/3",
+            "omega": "1/3",
+            "rho_br": "7/6",
+            "rho_m": "6/13",
+            "s11cdTangentialMomentum1": "2/7",
+            "s11cdTangentialMomentum2": "8/11",
+            "tau_A": "5/2",
+            "tau_V": "11/4",
+            "tau_X": "4/9",
+            "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "7/4",
+            "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "1"
+          },
+          "gradeOrigin": {
+            "eta_bg": "0",
+            "sigma_W": "0"
+          },
+          "unitFrame": [
+            "PIT_L",
+            "PIT_T",
+            "PIT_M"
+          ],
+          "exceptionDegrees": {
+            "DENOMINATOR_GCD": 0,
+            "NORMAL_THRESHOLD_GCD": 0,
+            "RADICAL_BRANCH_GCD": 0
+          },
+          "polynomialDegrees": {
+            "PHYSICAL": 11,
+            "QUOTIENT": 15,
+            "COORDINATE_FACTOR": 4
+          },
+          "summary": {
+            "CANDIDATE_COUNT": 18,
+            "FINITE_PENCIL_COUNT": 18,
+            "NULLITY_COUNTS": [
+              [
+                1,
+                14
+              ],
+              [
+                2,
+                4
+              ]
+            ],
+            "SHEET_COUNTS": [
+              [
+                "True",
+                6
+              ],
+              [
+                "False",
+                8
+              ],
+              [
+                "UNRESOLVED",
+                4
+              ]
+            ],
+            "CLASSIFIER_COUNTS": [
+              [
+                "THICKNESS_LIKE",
+                14
+              ],
+              [
+                "TRANSVERSE_LIKE",
+                4
+              ]
+            ],
+            "ALGEBRAIC_ROOT_COVERAGE": true,
+            "REGULAR_DENOMINATOR_DOMAIN": true,
+            "REGULAR_NORMAL_LIFT_DOMAIN": true,
+            "REGULAR_ALGEBRAIC_MODE_COVERAGE": true
+          }
+        }
+      },
+      "coverage": {
+        "END_SPECTRUM_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0": {
+          "polynomialDegree": 11,
+          "distinctRadicalRoots": 9,
+          "countWithMultiplicity": 11,
+          "degreeCountResidual": 0,
+          "allDisksDisjoint": true,
+          "allDisksIsolated": true,
+          "boundSigns": {
+            "1": 9
+          },
+          "precisionRefinementMaximum": 6.541928188473283e-52,
+          "finitePolynomialRootCoverage": true
+        }
+      },
+      "emittedInputSha256": null,
+      "recomputedInputSha256": "e66173474a76d6e903af5d51d9087c80f13bc9f5e8275d80beaab6d2a4607044",
+      "inputDigestMismatch": false,
+      "maximumResidualByDimension": {
+        "RELATION_RESIDUAL|(0, -2, 0)": 0.0,
+        "PULLBACK_RESIDUAL|(-5, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-3, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-5, -1, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-3, -1, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(-1, -2, 1)": 0.0,
+        "PULLBACK_RESIDUAL|(0, 0, 0)": 0.0,
+        "RIGHT_RESIDUAL|(-2, -2, 1)": 4.996207195739818e-15,
+        "RIGHT_RESIDUAL|(-3, -1, 1)": 1.3517848686956847e-15,
+        "RIGHT_RESIDUAL|(-1, -2, 1)": 7.273443782444743e-15,
+        "LEFT_RESIDUAL|(-1, 0, 0)": 3.249921907987027e-15,
+        "LEFT_RESIDUAL|(0, 0, 0)": 7.993605777301127e-15,
+        "PROJECTOR_RESIDUAL|(0, 0, 0)": 4.4427071699023996e-14,
+        "PROJECTOR_RESIDUAL|(1, 0, 0)": 5.564421850464315e-15,
+        "PROJECTOR_RESIDUAL|(-1, 0, 0)": 1.4483891842270672e-15
+      },
+      "legacyRegularRootComparisons": [],
+      "legacySymbolDigests": {},
+      "legacyPacketDigests": {},
+      "completionMarkers": 0
+    }
+  ],
+  "wallSeconds": 6.710481305606663,
+  "peakRssKiB": 68980
+}

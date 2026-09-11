@@ -4,6 +4,12 @@
 completed. The regenerated transcript and focused evidence are published under
 `scripts/out/`. This extends checkpoint `aff093da` and conveys no review clearance.
 
+Historical note, 2026-09-11: this evidence was saved in checkpoint `c5af3181`.
+The canonical main transcript now contains the subsequent
+[end-spectrum checkpoint](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_spectrum_report.md).
+Its preservation inventory reproduces the inverse-Fourier results below;
+the earlier run records and annex payload retain the original evidence.
+
 ## Computed construction
 
 [FourierCarrierReconstruction](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1006)

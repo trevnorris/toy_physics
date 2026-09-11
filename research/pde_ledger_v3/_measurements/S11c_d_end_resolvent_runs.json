@@ -1,0 +1,2110 @@
+{
+  "checkpoint": "718e5ced0d43dfe473d08e9e105da69211b44740",
+  "status": "FULL_RUN_INVENTORIED_AND_PUBLISHED_UNCOMMITTED",
+  "scope": "Constant-end inverse symbols, normal-momentum Laurent residues and finite-offset inverse banks; full profile resolvent, continuum measure and frequency pole solve remain open.",
+  "producer_manifest": "/tmp/s11cd-joint-sheet-20260911/full/manifest.json",
+  "producer_manifest_sha256": "fba15ae49971145cded5283c10f1ef17bce4448b49a7d0e5a2f966f73e40100b",
+  "producer_run_record": "_measurements/S11c_d_joint_sheet_runs.json",
+  "previous_main_payload": {
+    "path": "/var/projects/toy_physics/.git/annex/objects/Mx/pQ/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out",
+    "bytes": 104669285,
+    "sha256": "e51274711cf0fa7ea59758c3d11eadbd35dc02639b1b2f72c234f208bf4e1030"
+  },
+  "focused_runs": {
+    "reference_final": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_resolvent_check.py",
+        "--manifest",
+        "/tmp/s11cd-joint-sheet-20260911/full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--end",
+        "REFERENCE"
+      ],
+      "run_directory": "/tmp/s11cd-end-resolvent-20260911/reference_final",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "f4ba59ed2bfe37bfd0594e9ec81f7418a54ff372356092e71f9fcc34bc5bdc9f",
+        "_measurements/S11c_d_end_resolvent_check.py": "2f42f82be139b00c9210af8de1d08caba3d88e867040b0a8be080b388d960722"
+      },
+      "exit_code": 0,
+      "wall_seconds": 142.47444748599082,
+      "peak_rss_kib": 183240,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "f4ba59ed2bfe37bfd0594e9ec81f7418a54ff372356092e71f9fcc34bc5bdc9f",
+        "_measurements/S11c_d_end_resolvent_check.py": "2f42f82be139b00c9210af8de1d08caba3d88e867040b0a8be080b388d960722"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 3945664,
+          "sha256": "9560e35f21ce33a8bc40f50bf301f0e3c27fcf41d6c2ec4cdeebe9a0428e01b0"
+        }
+      }
+    },
+    "left_final": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_resolvent_check.py",
+        "--manifest",
+        "/tmp/s11cd-joint-sheet-20260911/full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--end",
+        "LEFT"
+      ],
+      "run_directory": "/tmp/s11cd-end-resolvent-20260911/left_final",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "f4ba59ed2bfe37bfd0594e9ec81f7418a54ff372356092e71f9fcc34bc5bdc9f",
+        "_measurements/S11c_d_end_resolvent_check.py": "2f42f82be139b00c9210af8de1d08caba3d88e867040b0a8be080b388d960722"
+      },
+      "exit_code": 0,
+      "wall_seconds": 100.85402068961412,
+      "peak_rss_kib": 179836,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "f4ba59ed2bfe37bfd0594e9ec81f7418a54ff372356092e71f9fcc34bc5bdc9f",
+        "_measurements/S11c_d_end_resolvent_check.py": "2f42f82be139b00c9210af8de1d08caba3d88e867040b0a8be080b388d960722"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 3130955,
+          "sha256": "9fb35c7dab949f92723967db73196bffc72b62ca20350299ab44dc702a2a64cb"
+        }
+      }
+    },
+    "right_final": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_resolvent_check.py",
+        "--manifest",
+        "/tmp/s11cd-joint-sheet-20260911/full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--end",
+        "RIGHT"
+      ],
+      "run_directory": "/tmp/s11cd-end-resolvent-20260911/right_final",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "f4ba59ed2bfe37bfd0594e9ec81f7418a54ff372356092e71f9fcc34bc5bdc9f",
+        "_measurements/S11c_d_end_resolvent_check.py": "2f42f82be139b00c9210af8de1d08caba3d88e867040b0a8be080b388d960722"
+      },
+      "exit_code": 0,
+      "wall_seconds": 143.1991370515898,
+      "peak_rss_kib": 179996,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "f4ba59ed2bfe37bfd0594e9ec81f7418a54ff372356092e71f9fcc34bc5bdc9f",
+        "_measurements/S11c_d_end_resolvent_check.py": "2f42f82be139b00c9210af8de1d08caba3d88e867040b0a8be080b388d960722"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 3134720,
+          "sha256": "24fa1507bb38b92b3071946d857f0e10889fa181b90f724b282f3b4c24c264b6"
+        }
+      }
+    },
+    "pit_precise_fixed": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "python",
+        "_measurements/S11c_d_end_resolvent_check.py",
+        "--manifest",
+        "/tmp/s11cd-joint-sheet-20260911/full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--pit"
+      ],
+      "run_directory": "/tmp/s11cd-end-resolvent-20260911/pit_precise_fixed",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "f4ba59ed2bfe37bfd0594e9ec81f7418a54ff372356092e71f9fcc34bc5bdc9f",
+        "_measurements/S11c_d_end_resolvent_check.py": "2f42f82be139b00c9210af8de1d08caba3d88e867040b0a8be080b388d960722"
+      },
+      "exit_code": 0,
+      "wall_seconds": 131.881495074369,
+      "peak_rss_kib": 185088,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "f4ba59ed2bfe37bfd0594e9ec81f7418a54ff372356092e71f9fcc34bc5bdc9f",
+        "_measurements/S11c_d_end_resolvent_check.py": "2f42f82be139b00c9210af8de1d08caba3d88e867040b0a8be080b388d960722"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 4112614,
+          "sha256": "e5bd670f79e71c8cdf5d607d226df5d326c613f9e7981ad1cbf3c808f0e07e51"
+        }
+      }
+    }
+  },
+  "focused_inventory": {
+    "path": "/tmp/s11cd-end-resolvent-20260911/focused_inventory.json",
+    "sha256": "d3b3553fb9abee6ddc2c033c4ef68e8ff9a24eabc11f381b0beafad724163c5c"
+  },
+  "source_checks": {
+    "engineSha256": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+    "changedExistingDefinitions": [
+      "run"
+    ],
+    "removedDefinitions": [],
+    "addedDefinitions": [
+      "EndResolventAudit"
+    ]
+  },
+  "runtime": {
+    "python": "3.10.12 (main, Jul 15 2026, 23:40:17) [GCC 11.4.0]",
+    "platform": "Linux-7.0.9-76070009-generic-x86_64-with-glibc2.35",
+    "sympy": "1.14.0",
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "mpmath": "1.3.0"
+  },
+  "full_run_manifest": "/tmp/s11cd-end-resolvent-20260911/full/manifest.json",
+  "full_run_harness_sha256": "ff0ff5a11e2c6f2a745bd709f7663e9f4845bc6732e2ece704b00765515eae3b",
+  "lane": {
+    "review_legs": false,
+    "comparator": false,
+    "wolfram": false,
+    "downstream": false,
+    "commit_after_build": false
+  },
+  "development_note": "Initial reference/PIT double-precision checks completed; near-pole inverse products required 40/60-digit evaluation. The first precise PIT pass failed on mpmath negative slice indices; the final source uses explicit nonnegative starts. Only the four final successful source-pinned focused runs were published alongside the fresh full run.",
+  "solver_contract_sha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "full_run": {
+    "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+    "command": [
+      "/usr/bin/python",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "--case",
+      "ALL",
+      "--channel-input-file",
+      "_measurements/S11c_d_channel_preflight_input.json",
+      "--channel-input-scope",
+      "spectrum",
+      "--dev-symbol-cache",
+      "/tmp/s11cd-end-resolvent-20260911/full/symbols"
+    ],
+    "run_directory": "/tmp/s11cd-end-resolvent-20260911/full",
+    "source_hashes_before": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+      "_measurements/S11c_d_inverse_fourier_inventory.py": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567",
+      "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+      "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+      "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+      "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+      "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+      "_measurements/S11c_d_joint_sheet_check.py": "f4ba59ed2bfe37bfd0594e9ec81f7418a54ff372356092e71f9fcc34bc5bdc9f",
+      "_measurements/S11c_d_end_resolvent_check.py": "2f42f82be139b00c9210af8de1d08caba3d88e867040b0a8be080b388d960722"
+    },
+    "exit_code": 0,
+    "wall_seconds": 7265.55926498957,
+    "peak_rss_kib": 1727696,
+    "source_hashes_after": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+      "_measurements/S11c_d_inverse_fourier_inventory.py": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567",
+      "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+      "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+      "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+      "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+      "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+      "_measurements/S11c_d_joint_sheet_check.py": "f4ba59ed2bfe37bfd0594e9ec81f7418a54ff372356092e71f9fcc34bc5bdc9f",
+      "_measurements/S11c_d_end_resolvent_check.py": "2f42f82be139b00c9210af8de1d08caba3d88e867040b0a8be080b388d960722"
+    },
+    "artifacts": {
+      "stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "full.out": {
+        "bytes": 189492142,
+        "sha256": "b04b50c87e227498a7acf48dec0a8a46e3e2288bb09045f479c9de2523a1d617"
+      },
+      "progress.json": {
+        "bytes": 140,
+        "sha256": "70b2e26d48bf6e5e31c9cb42da0f94a3475f045b9b3c38522157747bca011528"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 73684,
+        "sha256": "d38ea2ae3946344c902b0fcc6e5a5e2ab31effbaf6fd916d994fa466010349f7"
+      },
+      "symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 88952,
+        "sha256": "043ff9586f3eda56fc15906a9a52d4c32e885a7e236abeb4e42fa12f7c21a58e"
+      },
+      "symbols/LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 89193,
+        "sha256": "b687bb441e32fcd60dc39c488c3e2e320564863a6d37ba5c07bef06264ad2b16"
+      },
+      "symbols/REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 73873,
+        "sha256": "ba97dc1cd6b1231759d0d4ea9468eb00c328d07b9d6eb341f5b926baee705522"
+      },
+      "symbols/LEFT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 87821,
+        "sha256": "549f7d2dde0591ce98e6d614c80eaa7d5019796b9f72097d3530716b18211ee8"
+      },
+      "symbols/RIGHT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 87871,
+        "sha256": "796a58af5745f57fca4f7f5ffba06f2a6696b6b55e694c198cf920f3585d0ccb"
+      },
+      "symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 86434,
+        "sha256": "1d67de8755d4498eb5470860502026d579bdd74a93e9a3ba8edab8ae336be9c0"
+      },
+      "symbols/RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 89002,
+        "sha256": "d701ca7cc3241f812fae48805a0836bca071bee96c6f13eae4e2a09595628438"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 69903,
+        "sha256": "ffe5c5bed3a4614e8fe136b0b69228521de592c7d0e9e6b5556d2c500110d946"
+      },
+      "symbols/LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 87821,
+        "sha256": "c90e5f3b3411c109d271d09099a9b6dce856bcdadaed032036a7a3cac934f7bd"
+      },
+      "symbols/REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 73893,
+        "sha256": "19d61db7e97aedac7913f279931d3ce02a6475cdf1a5946143512676e05eebfe"
+      },
+      "symbols/RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 87630,
+        "sha256": "ed9546a8422ec4be24c636e3589b11d2a46cf5d5c491c6661be682e5e11eaee9"
+      }
+    }
+  },
+  "inventory_runs": [
+    {
+      "name": "resolvent_inventory",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_resolvent_inventory.py",
+        "/tmp/s11cd-end-resolvent-20260911/full/full.out",
+        "--baseline",
+        "/var/projects/toy_physics/.git/annex/objects/Mx/pQ/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out",
+        "--output",
+        "/tmp/s11cd-end-resolvent-20260911/full_inventory.json"
+      ],
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "exit_code": 0,
+      "wall_seconds": 185.83610057458282,
+      "peak_rss_kib": 286592,
+      "stderr_bytes": 0,
+      "instrument_sha256": "ba5834dc98156db7d367efabec07d5aba653b33862f91f57ecb662545b8c5d06"
+    },
+    {
+      "name": "joint_inventory",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_joint_sheet_inventory.py",
+        "/tmp/s11cd-end-resolvent-20260911/full/full.out",
+        "--baseline",
+        "/var/projects/toy_physics/.git/annex/objects/Mx/pQ/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out",
+        "--output",
+        "/tmp/s11cd-end-resolvent-20260911/joint_inventory.json"
+      ],
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "exit_code": 0,
+      "wall_seconds": 49.45559239201248,
+      "peak_rss_kib": 279840,
+      "stderr_bytes": 0,
+      "instrument_sha256": "b0351b79686de0fa48caea67a960c821d9f0f0a16de6f64350d27b47fcb01886"
+    },
+    {
+      "name": "spectrum_inventory",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_spectrum_inventory.py",
+        "/tmp/s11cd-end-resolvent-20260911/full/full.out",
+        "--baseline",
+        "/var/projects/toy_physics/.git/annex/objects/Mx/pQ/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out",
+        "--output",
+        "/tmp/s11cd-end-resolvent-20260911/spectrum_inventory.json"
+      ],
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "exit_code": 0,
+      "wall_seconds": 123.89534114021808,
+      "peak_rss_kib": 305032,
+      "stderr_bytes": 0,
+      "instrument_sha256": "ee88d8204d12a2be5342a0dd5bb86eb3e04265e1959448b5ae10ac8471988512"
+    },
+    {
+      "name": "inverse_inventory",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_inverse_fourier_inventory.py",
+        "/tmp/s11cd-end-resolvent-20260911/full/full.out"
+      ],
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "exit_code": 0,
+      "wall_seconds": 5.517481989227235,
+      "peak_rss_kib": 282000,
+      "stderr_bytes": 0,
+      "instrument_sha256": "6456d01d429b1ed833fc86ce443336ed185351ade5c2f3070a8afd9d24c42567"
+    }
+  ],
+  "inventories": {
+    "full_inventory.json": {
+      "path": "_measurements/S11c_d_end_resolvent_inventory.json",
+      "bytes": 3895881,
+      "sha256": "5312e11a2485a2756c75e5025ed08058024a6a8be2320c3dad3d62dad507e03c"
+    },
+    "focused_inventory.json": {
+      "path": "_measurements/S11c_d_end_resolvent_focused_inventory.json",
+      "bytes": 799152,
+      "sha256": "d3b3553fb9abee6ddc2c033c4ef68e8ff9a24eabc11f381b0beafad724163c5c"
+    },
+    "joint_inventory.json": {
+      "path": "_measurements/S11c_d_end_resolvent_joint_inventory.json",
+      "bytes": 2702032,
+      "sha256": "1e528011dadeaf862efffe178a7d21c78568190868c00323529fa3b7cd975c9f"
+    },
+    "spectrum_inventory.json": {
+      "path": "_measurements/S11c_d_end_resolvent_spectrum_inventory.json",
+      "bytes": 315086,
+      "sha256": "7ca5bf750d0eaa7c80066f2da5386acd4ad872a233017f1f9477f152b9c0fc54"
+    },
+    "inverse_inventory.json": {
+      "path": "_measurements/S11c_d_end_resolvent_inverse_inventory.json",
+      "bytes": 4691,
+      "sha256": "91d54278b3e92833ac408c4b10921f29069acbdf2e2bef44fa8f58792c3a5e5f"
+    }
+  },
+  "publication": {
+    "previousAnnexPayloadPreserved": {
+      "path": "/var/projects/toy_physics/.git/annex/objects/Mx/pQ/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out",
+      "bytes": 104669285,
+      "sha256": "e51274711cf0fa7ea59758c3d11eadbd35dc02639b1b2f72c234f208bf4e1030"
+    },
+    "published": [
+      {
+        "source": "/tmp/s11cd-end-resolvent-20260911/full/full.out",
+        "published": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out",
+        "bytes": 189492142,
+        "sha256": "b04b50c87e227498a7acf48dec0a8a46e3e2288bb09045f479c9de2523a1d617",
+        "replaced_symlink": "../../../../.git/annex/objects/Mx/pQ/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out",
+        "is_symlink_after": false
+      },
+      {
+        "source": "/tmp/s11cd-end-resolvent-20260911/reference_final/full.out",
+        "published": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_end_resolvent_reference.out",
+        "bytes": 3945664,
+        "sha256": "9560e35f21ce33a8bc40f50bf301f0e3c27fcf41d6c2ec4cdeebe9a0428e01b0",
+        "replaced_symlink": null,
+        "is_symlink_after": false
+      },
+      {
+        "source": "/tmp/s11cd-end-resolvent-20260911/pit_precise_fixed/full.out",
+        "published": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_end_resolvent_pit.out",
+        "bytes": 4112614,
+        "sha256": "e5bd670f79e71c8cdf5d607d226df5d326c613f9e7981ad1cbf3c808f0e07e51",
+        "replaced_symlink": null,
+        "is_symlink_after": false
+      },
+      {
+        "source": "/tmp/s11cd-end-resolvent-20260911/left_final/full.out",
+        "published": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_end_resolvent_left.out",
+        "bytes": 3130955,
+        "sha256": "9fb35c7dab949f92723967db73196bffc72b62ca20350299ab44dc702a2a64cb",
+        "replaced_symlink": null,
+        "is_symlink_after": false
+      },
+      {
+        "source": "/tmp/s11cd-end-resolvent-20260911/right_final/full.out",
+        "published": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_end_resolvent_right.out",
+        "bytes": 3134720,
+        "sha256": "24fa1507bb38b92b3071946d857f0e10889fa181b90f724b282f3b4c24c264b6",
+        "replaced_symlink": null,
+        "is_symlink_after": false
+      }
+    ],
+    "totalBytes": 203816095,
+    "method": "copy, fsync, hash, atomic os.replace of directory entry; no write through annex symlink"
+  },
+  "evidence_summary": {
+    "resolvent": {
+      "bytes": 189492142,
+      "sha256": "b04b50c87e227498a7acf48dec0a8a46e3e2288bb09045f479c9de2523a1d617",
+      "uniqueTags": 109612,
+      "packetCount": 24,
+      "totals": {
+        "NATIVE_CANDIDATE_COUNT": 432,
+        "RESIDUE_COUNT": 432,
+        "CONTOUR_CANDIDATE_COUNT": 432,
+        "NULLITY_DIFFERENCE_COUNT": 0,
+        "BANK_PAIR_COUNT": 192,
+        "BANK_INVERSE_COUNT": 384,
+        "SUBTRACTION_UNRESOLVED_COUNT": 0,
+        "ORIGINAL_UNRESOLVED_CANDIDATE_COUNT": 48
+      },
+      "poleStatuses": {
+        "REGULAR_LAURENT_RESIDUE": 432
+      },
+      "contourCount": 1728,
+      "contourDiagnosticMaxima": {
+        "MAXIMUM_RADICAL_RESIDUAL": 6.821216045706097e-13,
+        "MAXIMUM_COEFFICIENT_CONDITION": 1205607.7948442358,
+        "MAXIMUM_COEFFICIENT_INVERSE_RESIDUAL": 8.9998625312386e-11,
+        "ROOT_CLOSURE_RESIDUAL": 9.757791778904789e-16,
+        "SEED_REFINEMENT_DIFFERENCE": 0,
+        "SEED_ODE_DIFFERENCE": 1.4210856409267797e-14
+      },
+      "duplicates": [],
+      "metadataGaps": [],
+      "unmatchedObjects": [],
+      "nonfiniteObjects": [],
+      "dimensionalConstraints": {
+        "REDUCED_DIMENSION_CONSTRAINT_RESIDUALS": [],
+        "REDUCED_DIMENSION_UNRESOLVED": [],
+        "PENCIL_DIMENSION_CONSTRAINT_RESIDUALS": []
+      },
+      "completionMarkers": 1
+    },
+    "continuationPreservation": {
+      "path": "/var/projects/toy_physics/.git/annex/objects/Mx/pQ/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out",
+      "sha256": "e51274711cf0fa7ea59758c3d11eadbd35dc02639b1b2f72c234f208bf4e1030",
+      "rawDifferences": 24,
+      "associationOrderOnlyDifferences": 24,
+      "semanticDifferences": 0
+    },
+    "nativePreservation": {
+      "path": "/var/projects/toy_physics/.git/annex/objects/Mx/pQ/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out",
+      "sha256": "e51274711cf0fa7ea59758c3d11eadbd35dc02639b1b2f72c234f208bf4e1030",
+      "nativeDifferences": 24,
+      "nativeAssociationOrderOnlyDifferences": 24,
+      "nativeSemanticDifferences": 0,
+      "legacyDifferences": 0
+    },
+    "continuation": {
+      "packets": 24,
+      "pathStatuses": {
+        "TRANSPORTED": 480,
+        "BRANCH_LOCUS_ON_PATH": 24
+      },
+      "metadataGaps": [],
+      "dimensionalConstraints": {
+        "REDUCED_DIMENSION_CONSTRAINT_RESIDUALS": [],
+        "REDUCED_DIMENSION_UNRESOLVED": [],
+        "PENCIL_DIMENSION_CONSTRAINT_RESIDUALS": []
+      },
+      "banks": 192,
+      "originalUnresolved": 48
+    },
+    "spectrum": {
+      "duplicates": [],
+      "missingMetadata": [],
+      "metadataGaps": [],
+      "unmatchedResidualMetadata": [],
+      "dimensionConstraints": {
+        "REDUCED_DIMENSION_CONSTRAINT_RESIDUALS": [],
+        "REDUCED_DIMENSION_UNRESOLVED": [],
+        "PENCIL_DIMENSION_CONSTRAINT_RESIDUALS": []
+      },
+      "inputDigestMismatch": false,
+      "completionMarkers": 1,
+      "baselineComparison": {
+        "path": "/var/projects/toy_physics/.git/annex/objects/Mx/pQ/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out",
+        "sha256": "e51274711cf0fa7ea59758c3d11eadbd35dc02639b1b2f72c234f208bf4e1030",
+        "symbolDigestDifferences": [],
+        "packetDigestDifferences": []
+      },
+      "packetCount": 24,
+      "certificateCount": 24,
+      "allFiniteCoverage": true,
+      "coverageExceptions": {},
+      "legacySymbolCount": 12,
+      "legacyPacketCount": 24
+    },
+    "inverse": {
+      "duplicate_tags": [],
+      "process_completion": "Integer(8)",
+      "literal_residuals": {
+        "INVERSE_FOURIER_WEAK_KERNEL_CHARACTER_RESIDUAL_": {
+          "objects": 1,
+          "entries": 1,
+          "nonzero": []
+        },
+        "CARRIER_INVERSE_RESIDUAL_": {
+          "objects": 96,
+          "entries": 288,
+          "nonzero": []
+        },
+        "CARRIER_INVERSE_REMAINDER_CENSUS_": {
+          "objects": 96,
+          "entries": 288,
+          "nonzero": []
+        },
+        "CARRIER_SOURCE_IMAGE_RESIDUAL_": {
+          "objects": 96,
+          "entries": 96,
+          "nonzero": []
+        },
+        "BRANCH_RECONSTRUCTION_RESIDUAL_": {
+          "objects": 24,
+          "entries": 24,
+          "nonzero": []
+        }
+      },
+      "residual_projections": {
+        "RECONSTRUCTION_INTEGRAL_RESIDUAL_": {
+          "objects": 222,
+          "entries": 666,
+          "maximum_absolute_projection": 0.0
+        },
+        "RECONSTRUCTION_ROW_RESIDUAL_": {
+          "objects": 8,
+          "entries": 132,
+          "maximum_absolute_projection": 0.0
+        }
+      },
+      "coverage_gaps": [],
+      "dimension_records": {
+        "REDUCED_DIMENSION_CONSTRAINT_RESIDUALS": "Tuple()",
+        "REDUCED_DIMENSION_UNRESOLVED": "Tuple()"
+      },
+      "zero_map_metadata": [],
+      "outstanding": "Tuple(Str('FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS'), Str('GENERIC_DOMAIN_SHEET_CONTINUATION'), Str('CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION'), Str('COMPLETE_TWO_ENDED_SCATTERING'), Str('POLES_RIESZ_OVERLAP'), Str('SURVIVAL'), Str('FLUX_BOOKKEEPING'), Str('WEAK_COEFFICIENTS'), Str('SECTION_5_CONTROLS'), Str('OWN_ROWS_EXPORT'))",
+      "carriers": 96
+    },
+    "residualMaximaByDimension": {
+      "PROJECTOR_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 2.1556631856153973e-15,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_4_PROJECTOR_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "PROJECTOR_RESIDUAL|(0, 0, 0)": {
+        "maximum": 7.556269149270526e-14,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_16_PROJECTOR_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "PROJECTOR_RESIDUAL|(1, 0, 0)": {
+        "maximum": 2.3113650365408955e-14,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_4_PROJECTOR_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          0,
+          0
+        ]
+      },
+      "RIGHT_LAURENT_RESIDUAL|(-3, 1, 0)": {
+        "maximum": 2.674302845509261e-16,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0_POLE_2_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -3,
+          1,
+          0
+        ]
+      },
+      "RIGHT_LAURENT_RESIDUAL|(-2, 0, 0)": {
+        "maximum": 6.779045936947303e-16,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_2_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          0,
+          0
+        ]
+      },
+      "RIGHT_LAURENT_RESIDUAL|(-2, 1, 0)": {
+        "maximum": 3.5566146649215975e-15,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_4_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          1,
+          0
+        ]
+      },
+      "RIGHT_LAURENT_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 1.232066225847921e-15,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_14_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "RIGHT_LAURENT_RESIDUAL|(0, -1, 0)": {
+        "maximum": 1.0823927555015764e-15,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_0_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "RIGHT_LAURENT_RESIDUAL|(0, 0, 0)": {
+        "maximum": 3.3820826609804605e-15,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_4_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "RIGHT_LAURENT_RESIDUAL|(1, -1, 0)": {
+        "maximum": 1.0582211329225846e-15,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_12_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          -1,
+          0
+        ]
+      },
+      "LEFT_LAURENT_RESIDUAL|(-2, 0, 0)": {
+        "maximum": 1.1092634298142335e-15,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0_POLE_0_LEFT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          0,
+          0
+        ]
+      },
+      "LEFT_LAURENT_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 9.930136612989092e-16,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_0_LEFT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "LEFT_LAURENT_RESIDUAL|(0, 0, 0)": {
+        "maximum": 1.7535258724711857e-15,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_16_LEFT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "SECOND_LAURENT_MOMENT|(-1, 2, -1)": {
+        "maximum": 8.065708705916778e-17,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_10_CONTOUR_0_64_SECOND_LAURENT_MOMENT_MAXIMA",
+        "dimension": [
+          -1,
+          2,
+          -1
+        ]
+      },
+      "SECOND_LAURENT_MOMENT|(0, 2, -1)": {
+        "maximum": 2.828295658855061e-17,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_11_CONTOUR_0_64_SECOND_LAURENT_MOMENT_MAXIMA",
+        "dimension": [
+          0,
+          2,
+          -1
+        ]
+      },
+      "SECOND_LAURENT_MOMENT|(1, 1, -1)": {
+        "maximum": 5.2547634360131875e-17,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_10_CONTOUR_0_64_SECOND_LAURENT_MOMENT_MAXIMA",
+        "dimension": [
+          1,
+          1,
+          -1
+        ]
+      },
+      "SECOND_LAURENT_MOMENT|(1, 2, -1)": {
+        "maximum": 8.281610551855101e-16,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_14_CONTOUR_1_32_SECOND_LAURENT_MOMENT_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "SECOND_LAURENT_MOMENT|(2, 1, -1)": {
+        "maximum": 2.247363460425613e-17,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_9_CONTOUR_1_32_SECOND_LAURENT_MOMENT_MAXIMA",
+        "dimension": [
+          2,
+          1,
+          -1
+        ]
+      },
+      "MODAL_RESIDUE_RESIDUAL|(0, 2, -1)": {
+        "maximum": 1.3614498044690046e-13,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_12_CONTOUR_1_32_MODAL_RESIDUE_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          2,
+          -1
+        ]
+      },
+      "MODAL_RESIDUE_RESIDUAL|(1, 2, -1)": {
+        "maximum": 3.0450618637910297e-13,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_CONTOUR_1_32_MODAL_RESIDUE_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "MODAL_RESIDUE_RESIDUAL|(2, 1, -1)": {
+        "maximum": 4.322642184440399e-13,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_13_CONTOUR_1_32_MODAL_RESIDUE_RESIDUAL_MAXIMA",
+        "dimension": [
+          2,
+          1,
+          -1
+        ]
+      },
+      "MODAL_RESIDUE_RESIDUAL|(2, 2, -1)": {
+        "maximum": 5.606951219776699e-12,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_CONTOUR_1_32_MODAL_RESIDUE_RESIDUAL_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "MODAL_RESIDUE_RESIDUAL|(3, 1, -1)": {
+        "maximum": 9.687664514735588e-14,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_13_CONTOUR_1_32_MODAL_RESIDUE_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "MODAL_PROJECTOR_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 1.0469078679978097e-12,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_CONTOUR_1_32_MODAL_PROJECTOR_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "MODAL_PROJECTOR_RESIDUAL|(0, 0, 0)": {
+        "maximum": 1.9277419967091363e-11,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_CONTOUR_1_32_MODAL_PROJECTOR_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "MODAL_PROJECTOR_RESIDUAL|(1, 0, 0)": {
+        "maximum": 2.662839296772109e-12,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_CONTOUR_1_32_MODAL_PROJECTOR_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          0,
+          0
+        ]
+      },
+      "NODE_REFINEMENT_OUTER|(0, 2, -1)": {
+        "maximum": 3.304650963898245e-14,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_12_NODE_REFINEMENT_OUTER_MAXIMA",
+        "dimension": [
+          0,
+          2,
+          -1
+        ]
+      },
+      "NODE_REFINEMENT_OUTER|(1, 2, -1)": {
+        "maximum": 6.09105181853875e-14,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_NODE_REFINEMENT_OUTER_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "NODE_REFINEMENT_OUTER|(2, 1, -1)": {
+        "maximum": 1.0495727206907111e-13,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_13_NODE_REFINEMENT_OUTER_MAXIMA",
+        "dimension": [
+          2,
+          1,
+          -1
+        ]
+      },
+      "NODE_REFINEMENT_OUTER|(2, 2, -1)": {
+        "maximum": 1.1280431152147398e-12,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_4_NODE_REFINEMENT_OUTER_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "NODE_REFINEMENT_OUTER|(3, 1, -1)": {
+        "maximum": 2.3491842091065562e-14,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_12_NODE_REFINEMENT_OUTER_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "NODE_REFINEMENT_INNER|(0, 2, -1)": {
+        "maximum": 1.1120771346294489e-13,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_13_NODE_REFINEMENT_INNER_MAXIMA",
+        "dimension": [
+          0,
+          2,
+          -1
+        ]
+      },
+      "NODE_REFINEMENT_INNER|(1, 2, -1)": {
+        "maximum": 2.3035104771000487e-13,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_NODE_REFINEMENT_INNER_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "NODE_REFINEMENT_INNER|(2, 1, -1)": {
+        "maximum": 3.5340325434837564e-13,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_13_NODE_REFINEMENT_INNER_MAXIMA",
+        "dimension": [
+          2,
+          1,
+          -1
+        ]
+      },
+      "NODE_REFINEMENT_INNER|(2, 2, -1)": {
+        "maximum": 4.23275996522428e-12,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_NODE_REFINEMENT_INNER_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "NODE_REFINEMENT_INNER|(3, 1, -1)": {
+        "maximum": 7.907481234981463e-14,
+        "tag": "END_RESOLVENT_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0_POLE_12_NODE_REFINEMENT_INNER_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "RADIUS_REFINEMENT|(0, 2, -1)": {
+        "maximum": 5.528739599472125e-14,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_1_RADIUS_REFINEMENT_MAXIMA",
+        "dimension": [
+          0,
+          2,
+          -1
+        ]
+      },
+      "RADIUS_REFINEMENT|(1, 2, -1)": {
+        "maximum": 2.580792387009982e-13,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_8_RADIUS_REFINEMENT_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "RADIUS_REFINEMENT|(2, 1, -1)": {
+        "maximum": 1.6584618088543237e-13,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_1_RADIUS_REFINEMENT_MAXIMA",
+        "dimension": [
+          2,
+          1,
+          -1
+        ]
+      },
+      "RADIUS_REFINEMENT|(2, 2, -1)": {
+        "maximum": 4.6148957412053604e-12,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_8_RADIUS_REFINEMENT_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "RADIUS_REFINEMENT|(3, 1, -1)": {
+        "maximum": 3.6667192734447246e-14,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_1_RADIUS_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_PRECISION_REFINEMENT|(1, 2, -1)": {
+        "maximum": 7.251936648297535e-42,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_PRECISION_REFINEMENT|(2, 2, -1)": {
+        "maximum": 6.202390082909436e-42,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_2_M1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_PRECISION_REFINEMENT|(3, 1, -1)": {
+        "maximum": 1.5784109513150813e-41,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_PRECISION_REFINEMENT|(3, 2, -1)": {
+        "maximum": 8.285460578816546e-42,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_0_M1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_PRECISION_REFINEMENT|(4, 1, -1)": {
+        "maximum": 7.132775298098793e-42,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_2_1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          4,
+          1,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_LEFT_INVERSE_RESIDUAL|(-2, 1, 0)": {
+        "maximum": 7.2060802473480715e-65,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_0_M1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          1,
+          0
+        ]
+      },
+      "FREQUENCY_BANK_LEFT_INVERSE_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 1.4995339900531547e-65,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_0_1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "FREQUENCY_BANK_LEFT_INVERSE_RESIDUAL|(-1, 1, 0)": {
+        "maximum": 1.61985775662073e-64,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_M1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          1,
+          0
+        ]
+      },
+      "FREQUENCY_BANK_LEFT_INVERSE_RESIDUAL|(0, 0, 0)": {
+        "maximum": 1.3446611917524614e-64,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_M1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "FREQUENCY_BANK_LEFT_INVERSE_RESIDUAL|(1, -1, 0)": {
+        "maximum": 3.7395873548389433e-65,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_0_1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          -1,
+          0
+        ]
+      },
+      "FREQUENCY_BANK_LEFT_INVERSE_RESIDUAL|(1, 0, 0)": {
+        "maximum": 1.3111566101604174e-64,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          0,
+          0
+        ]
+      },
+      "FREQUENCY_BANK_LEFT_INVERSE_RESIDUAL|(2, -1, 0)": {
+        "maximum": 2.5968827348716183e-64,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_M1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          2,
+          -1,
+          0
+        ]
+      },
+      "FREQUENCY_BANK_RIGHT_INVERSE_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 7.014841704654666e-65,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_0_1_RIGHT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "FREQUENCY_BANK_RIGHT_INVERSE_RESIDUAL|(0, 0, 0)": {
+        "maximum": 2.416684306012783e-64,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_2_1_RIGHT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "FREQUENCY_BANK_RIGHT_INVERSE_RESIDUAL|(1, 0, 0)": {
+        "maximum": 1.6102566529401492e-64,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_2_1_RIGHT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          0,
+          0
+        ]
+      },
+      "FREQUENCY_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(1, 2, -1)": {
+        "maximum": 9.972774239617184e-17,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_1_2_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(2, 2, -1)": {
+        "maximum": 1.3092278833360675e-16,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_1_0_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(3, 1, -1)": {
+        "maximum": 2.220446049250313e-16,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_0_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(3, 2, -1)": {
+        "maximum": 1.9945548479234367e-16,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(4, 1, -1)": {
+        "maximum": 1.0007415106216802e-16,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_1_2_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          4,
+          1,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_JUMP_RESIDUAL|(1, 2, -1)": {
+        "maximum": 1.1417953322865468e-62,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_1_1_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_JUMP_RESIDUAL|(2, 2, -1)": {
+        "maximum": 3.5058438550506453e-62,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_0_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_JUMP_RESIDUAL|(3, 1, -1)": {
+        "maximum": 3.8893845486632136e-62,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_2_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_JUMP_RESIDUAL|(3, 2, -1)": {
+        "maximum": 4.191040267341222e-62,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_2_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_JUMP_RESIDUAL|(4, 1, -1)": {
+        "maximum": 3.8893845486632136e-62,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_1_0_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          4,
+          1,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_JUMP_REFINEMENT|(1, 2, -1)": {
+        "maximum": 0.0007313526175506907,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_INVERSE_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_JUMP_REFINEMENT|(2, 2, -1)": {
+        "maximum": 0.00012151700244021342,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_INVERSE_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_JUMP_REFINEMENT|(3, 1, -1)": {
+        "maximum": 0.0012623863313968545,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_INVERSE_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_JUMP_REFINEMENT|(3, 2, -1)": {
+        "maximum": 0.0003834277334520309,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_INVERSE_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "FREQUENCY_BANK_INVERSE_JUMP_REFINEMENT|(4, 1, -1)": {
+        "maximum": 0.0001364560408979448,
+        "tag": "END_RESOLVENT_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_FREQUENCY_CUT_BANK_0_1_INVERSE_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          4,
+          1,
+          -1
+        ]
+      },
+      "PRECISION_40_RIGHT_LAURENT_RESIDUAL|(-3, 1, 0)": {
+        "maximum": 3.065440890292129e-81,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_40_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -3,
+          1,
+          0
+        ]
+      },
+      "PRECISION_40_RIGHT_LAURENT_RESIDUAL|(-2, 0, 0)": {
+        "maximum": 8.537912018179808e-82,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_40_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          0,
+          0
+        ]
+      },
+      "PRECISION_40_RIGHT_LAURENT_RESIDUAL|(-2, 1, 0)": {
+        "maximum": 4.025275007349243e-40,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_40_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          1,
+          0
+        ]
+      },
+      "PRECISION_40_RIGHT_LAURENT_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 1.1475467494002843e-40,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_40_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "PRECISION_40_RIGHT_LAURENT_RESIDUAL|(0, -1, 0)": {
+        "maximum": 1.1107545273875443e-81,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_17_PRECISION_40_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "PRECISION_40_RIGHT_LAURENT_RESIDUAL|(0, 0, 0)": {
+        "maximum": 4.149913040945179e-40,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_40_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "PRECISION_40_RIGHT_LAURENT_RESIDUAL|(1, -1, 0)": {
+        "maximum": 3.3293902420332064e-81,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_40_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          -1,
+          0
+        ]
+      },
+      "PRECISION_40_LEFT_LAURENT_RESIDUAL|(-2, 0, 0)": {
+        "maximum": 2.1383260051697425e-81,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_17_PRECISION_40_LEFT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          0,
+          0
+        ]
+      },
+      "PRECISION_40_LEFT_LAURENT_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 8.460801240896885e-41,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_40_LEFT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "PRECISION_40_LEFT_LAURENT_RESIDUAL|(0, 0, 0)": {
+        "maximum": 1.796374781972023e-40,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_40_LEFT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "PRECISION_60_RIGHT_LAURENT_RESIDUAL|(-3, 1, 0)": {
+        "maximum": 2.178003895793176e-112,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_17_PRECISION_60_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -3,
+          1,
+          0
+        ]
+      },
+      "PRECISION_60_RIGHT_LAURENT_RESIDUAL|(-2, 0, 0)": {
+        "maximum": 2.9772423738701616e-104,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_17_PRECISION_60_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          0,
+          0
+        ]
+      },
+      "PRECISION_60_RIGHT_LAURENT_RESIDUAL|(-2, 1, 0)": {
+        "maximum": 9.389513324640099e-61,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_60_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          1,
+          0
+        ]
+      },
+      "PRECISION_60_RIGHT_LAURENT_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 1.947856662076032e-52,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_17_PRECISION_60_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "PRECISION_60_RIGHT_LAURENT_RESIDUAL|(0, -1, 0)": {
+        "maximum": 1.4962487624821476e-104,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_60_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "PRECISION_60_RIGHT_LAURENT_RESIDUAL|(0, 0, 0)": {
+        "maximum": 4.821176786445557e-61,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_17_PRECISION_60_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "PRECISION_60_RIGHT_LAURENT_RESIDUAL|(1, -1, 0)": {
+        "maximum": 3.034343355767637e-113,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_60_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          -1,
+          0
+        ]
+      },
+      "PRECISION_60_LEFT_LAURENT_RESIDUAL|(-2, 0, 0)": {
+        "maximum": 1.4716711796934947e-103,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_17_PRECISION_60_LEFT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          0,
+          0
+        ]
+      },
+      "PRECISION_60_LEFT_LAURENT_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 1.9478566623035303e-52,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_17_PRECISION_60_LEFT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "PRECISION_60_LEFT_LAURENT_RESIDUAL|(0, 0, 0)": {
+        "maximum": 5.6999868638821825e-61,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_15_PRECISION_60_LEFT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_PRECISION_REFINEMENT|(1, 2, -1)": {
+        "maximum": 1.811477606694551e-39,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_PRECISION_REFINEMENT|(2, 2, -1)": {
+        "maximum": 6.432994932121858e-32,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_PRECISION_REFINEMENT|(3, 1, -1)": {
+        "maximum": 8.856325444750253e-40,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_M1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_PRECISION_REFINEMENT|(3, 2, -1)": {
+        "maximum": 4.851730294392071e-25,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_PRECISION_REFINEMENT|(4, 1, -1)": {
+        "maximum": 6.76285509591016e-33,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_M1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          4,
+          1,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_LEFT_INVERSE_RESIDUAL|(-2, 1, 0)": {
+        "maximum": 6.31710071234104e-64,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_M1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          1,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_LEFT_INVERSE_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 1.6300445601581814e-64,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_LEFT_INVERSE_RESIDUAL|(-1, 1, 0)": {
+        "maximum": 3.167056963919073e-56,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_M1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          1,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_LEFT_INVERSE_RESIDUAL|(0, 0, 0)": {
+        "maximum": 3.8305059039098956e-57,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_LEFT_INVERSE_RESIDUAL|(1, -1, 0)": {
+        "maximum": 8.764897241768366e-65,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_M1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          -1,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_LEFT_INVERSE_RESIDUAL|(1, 0, 0)": {
+        "maximum": 2.1514322198147385e-56,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_M1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          0,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_LEFT_INVERSE_RESIDUAL|(2, -1, 0)": {
+        "maximum": 2.1343567510596244e-64,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          2,
+          -1,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_RIGHT_INVERSE_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 1.625260345841024e-63,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_1_RIGHT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_RIGHT_INVERSE_RESIDUAL|(0, 0, 0)": {
+        "maximum": 3.1036278366604936e-56,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_1_RIGHT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_RIGHT_INVERSE_RESIDUAL|(1, 0, 0)": {
+        "maximum": 2.199273530682264e-56,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_1_RIGHT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          0,
+          0
+        ]
+      },
+      "MOMENTUM_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(1, 2, -1)": {
+        "maximum": 8.105245902932503e-15,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_1_2_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(2, 2, -1)": {
+        "maximum": 2.987598940678947e-07,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_1_2_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(3, 1, -1)": {
+        "maximum": 4.071658748137585e-15,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(3, 2, -1)": {
+        "maximum": 2.2556457350415964,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_1_2_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(4, 1, -1)": {
+        "maximum": 3.039304165476005e-08,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          4,
+          1,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_RESIDUAL|(1, 2, -1)": {
+        "maximum": 5.277455686592922e-61,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_RESIDUAL|(2, 2, -1)": {
+        "maximum": 9.936451786210955e-54,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_RESIDUAL|(3, 1, -1)": {
+        "maximum": 2.8046750840405163e-61,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_RESIDUAL|(3, 2, -1)": {
+        "maximum": 4.631084565362403e-52,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_RESIDUAL|(4, 1, -1)": {
+        "maximum": 5.949812947832537e-60,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          4,
+          1,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_REFINEMENT|(1, 2, -1)": {
+        "maximum": 0.009786093422291113,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_INVERSE_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_REFINEMENT|(2, 2, -1)": {
+        "maximum": 1.040917577186179,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_INVERSE_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_REFINEMENT|(3, 1, -1)": {
+        "maximum": 0.0023030488911542656,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_INVERSE_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_REFINEMENT|(3, 2, -1)": {
+        "maximum": 283743691.2705949,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_INVERSE_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_REFINEMENT|(4, 1, -1)": {
+        "maximum": 0.027286528519924354,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_INVERSE_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          4,
+          1,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_REGULAR_JUMP_REFINEMENT|(1, 2, -1)": {
+        "maximum": 0.009786093422291113,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_REGULAR_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          1,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_REGULAR_JUMP_REFINEMENT|(2, 2, -1)": {
+        "maximum": 1.040917577186179,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_REGULAR_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_REGULAR_JUMP_REFINEMENT|(3, 1, -1)": {
+        "maximum": 0.0023030488911542656,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_REGULAR_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          1,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_REGULAR_JUMP_REFINEMENT|(3, 2, -1)": {
+        "maximum": 18.962706380034252,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_REGULAR_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_REGULAR_JUMP_REFINEMENT|(4, 1, -1)": {
+        "maximum": 0.027286528519924354,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_1_REGULAR_JUMP_REFINEMENT_MAXIMA",
+        "dimension": [
+          4,
+          1,
+          -1
+        ]
+      }
+    },
+    "selectedResidualMaxima": {
+      "MODAL_RESIDUE_RESIDUAL": {
+        "category": "MODAL_RESIDUE_RESIDUAL|(2, 2, -1)",
+        "maximum": 5.606951219776699e-12,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_CONTOUR_1_32_MODAL_RESIDUE_RESIDUAL_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "MODAL_PROJECTOR_RESIDUAL": {
+        "category": "MODAL_PROJECTOR_RESIDUAL|(0, 0, 0)",
+        "maximum": 1.9277419967091363e-11,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_CONTOUR_1_32_MODAL_PROJECTOR_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "BANK_INVERSE_JUMP_RESIDUAL": {
+        "category": "MOMENTUM_BANK_INVERSE_JUMP_RESIDUAL|(3, 2, -1)",
+        "maximum": 4.631084565362403e-52,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "DOUBLE_INVERSE_JUMP_RESIDUAL": {
+        "category": "MOMENTUM_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(3, 2, -1)",
+        "maximum": 2.2556457350415964,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_1_2_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "BANK_LEFT_INVERSE_RESIDUAL": {
+        "category": "MOMENTUM_BANK_LEFT_INVERSE_RESIDUAL|(-1, 1, 0)",
+        "maximum": 3.167056963919073e-56,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_M1_LEFT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          -1,
+          1,
+          0
+        ]
+      },
+      "BANK_RIGHT_INVERSE_RESIDUAL": {
+        "category": "MOMENTUM_BANK_RIGHT_INVERSE_RESIDUAL|(0, 0, 0)",
+        "maximum": 3.1036278366604936e-56,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_1_RIGHT_INVERSE_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "INVERSE_PRECISION_REFINEMENT": {
+        "category": "MOMENTUM_BANK_INVERSE_PRECISION_REFINEMENT|(3, 2, -1)",
+        "maximum": 4.851730294392071e-25,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "RIGHT_LAURENT_RESIDUAL": {
+        "category": "RIGHT_LAURENT_RESIDUAL|(-2, 1, 0)",
+        "maximum": 3.5566146649215975e-15,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_4_RIGHT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          -2,
+          1,
+          0
+        ]
+      },
+      "LEFT_LAURENT_RESIDUAL": {
+        "category": "LEFT_LAURENT_RESIDUAL|(0, 0, 0)",
+        "maximum": 1.7535258724711857e-15,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_16_LEFT_LAURENT_RESIDUAL_MAXIMA",
+        "dimension": [
+          0,
+          0,
+          0
+        ]
+      },
+      "NODE_REFINEMENT_OUTER": {
+        "category": "NODE_REFINEMENT_OUTER|(2, 2, -1)",
+        "maximum": 1.1280431152147398e-12,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_4_NODE_REFINEMENT_OUTER_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "NODE_REFINEMENT_INNER": {
+        "category": "NODE_REFINEMENT_INNER|(2, 2, -1)",
+        "maximum": 4.23275996522428e-12,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_5_NODE_REFINEMENT_INNER_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      },
+      "RADIUS_REFINEMENT": {
+        "category": "RADIUS_REFINEMENT|(2, 2, -1)",
+        "maximum": 4.6148957412053604e-12,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_POLE_8_RADIUS_REFINEMENT_MAXIMA",
+        "dimension": [
+          2,
+          2,
+          -1
+        ]
+      }
+    },
+    "scalarResidualMaximum": 2.0140194859802794e-12,
+    "bankSubtractedPoleTerms": 144
+  },
+  "output_profile": {
+    "bytes": 189492142,
+    "families": {
+      "other": 114503054,
+      "resolvent_objects": 24576504,
+      "resolvent_metadata": 50412584
+    },
+    "largestLines": [
+      {
+        "bytes": 14406893,
+        "tag": "PY_S11CD_EMISSION_LINES"
+      },
+      {
+        "bytes": 649115,
+        "tag": "PY_S11CD_ACTION_INTEGRAL_REDUCTION_s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHOBR_CONSTANT_65"
+      },
+      {
+        "bytes": 649114,
+        "tag": "PY_S11CD_ACTION_INTEGRAL_REDUCTION_s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHO4_CONSTANT_73"
+      },
+      {
+        "bytes": 649106,
+        "tag": "PY_S11CD_ACTION_INTEGRAL_REDUCTION_s11cc2ClosedCouplingKernel_LAB_HELD_RHOBR_CONSTANT_11"
+      },
+      {
+        "bytes": 649105,
+        "tag": "PY_S11CD_ACTION_INTEGRAL_REDUCTION_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_13"
+      },
+      {
+        "bytes": 620020,
+        "tag": "PY_S11CD_ACTION_INTEGRAL_REDUCTION_s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHO4_CONSTANT_56"
+      },
+      {
+        "bytes": 601575,
+        "tag": "PY_S11CD_ACTION_INTEGRAL_REDUCTION_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_8"
+      },
+      {
+        "bytes": 473247,
+        "tag": "PY_S11CD_ACTION_INTEGRAL_REDUCTION_s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHOBR_CONSTANT_13"
+      },
+      {
+        "bytes": 473246,
+        "tag": "PY_S11CD_ACTION_INTEGRAL_REDUCTION_s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHO4_CONSTANT_13"
+      },
+      {
+        "bytes": 473238,
+        "tag": "PY_S11CD_ACTION_INTEGRAL_REDUCTION_s11cc2ClosedSlabOperator_LAB_HELD_RHOBR_CONSTANT_13"
+      }
+    ]
+  },
+  "verification_harnesses": {
+    "run_full.py": "ff0ff5a11e2c6f2a745bd709f7663e9f4845bc6732e2ece704b00765515eae3b",
+    "run_stage.py": "b44430e6a4e5479b7d651cb4125ebe611b5a1c2da7467913d857cf19065f86c1",
+    "run_inventories.py": "ded74b60346776104e4f698d136b4f41e05570c682009d483ff05bcd64a8e4c6",
+    "publish.py": "7f854fd8aa8f104aa9062d50b8327dbbd395120a35574b98044509703deebd09",
+    "summarize.py": "1c320f7a27703fc3bb873bbec7804ed7a0cd90317bffc48ea60e46673aa9fd0d",
+    "finish_records.py": "026b75240d8e43bb2f7975f0dac641f4fa4d122bc6d13a98d2370b52ca115caf"
+  },
+  "preservation_note": "Original continuation, native spectra and legacy operands are compared to checkpoint 718e5ced. Raw carrier-association ordering differences remain recorded separately from semantic differences.",
+  "stratum_coverage_inspection": {
+    "S11c_d_stratum_coverage_note.md": "c5c6b7255ee74d20c1bc8abbd1d23cb7e9449ba8b81f61fd2dfd2b2e20e70723",
+    "S11c_d_stratum_coverage_evidence.json": "fa856880560ab5d4902db3ddb936527150deb4915bfa8963456a0f2e073b226b"
+  },
+  "post_build_commit": null,
+  "export_exists": false,
+  "final_checks": {
+    "contract_matches_718e5ced": true,
+    "contract_sha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+    "task_diff_check_exit": 0,
+    "whitespace_errors": [],
+    "missing_report_links": [],
+    "current_source_differences": [],
+    "ast_definition_change": {
+      "changed": [
+        "run"
+      ],
+      "removed": [],
+      "added": [
+        "EndResolventAudit"
+      ]
+    },
+    "compiled": [
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "_measurements/S11c_d_end_resolvent_check.py",
+      "_measurements/S11c_d_end_resolvent_inventory.py"
+    ],
+    "export_exists": false,
+    "unavailable_directive_checks": [
+      "reduction/derived_or_declared.py",
+      "reduction/engine_output_checks.py"
+    ],
+    "git_head": "718e5ced0d43dfe473d08e9e105da69211b44740",
+    "task_files": [
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "_measurements/S11c_d_sympy_builder_report.md",
+      "_measurements/S11c_d_joint_sheet_report.md",
+      "_measurements/S11c_d_end_resolvent_check.py",
+      "_measurements/S11c_d_end_resolvent_focused_inventory.json",
+      "_measurements/S11c_d_end_resolvent_inventory.json",
+      "_measurements/S11c_d_end_resolvent_inventory.py",
+      "_measurements/S11c_d_end_resolvent_inverse_inventory.json",
+      "_measurements/S11c_d_end_resolvent_joint_inventory.json",
+      "_measurements/S11c_d_end_resolvent_plan.md",
+      "_measurements/S11c_d_end_resolvent_report.md",
+      "_measurements/S11c_d_end_resolvent_runs.json",
+      "_measurements/S11c_d_end_resolvent_spectrum_inventory.json",
+      "_measurements/S11c_d_stratum_coverage_evidence.json",
+      "_measurements/S11c_d_stratum_coverage_note.md"
+    ],
+    "report_hashes": {
+      "_measurements/S11c_d_sympy_builder_report.md": "ed6fb8185ce40210f19c0418014df98ac4804f993958dacfa5cfca3f9602057e",
+      "_measurements/S11c_d_joint_sheet_report.md": "c201fec6dc0a6c7845008f303dcbf0eac394fbfa716ae68e747bdf1ed0f1b07a",
+      "_measurements/S11c_d_end_resolvent_plan.md": "bd122b823a4d7c653f9a2bccee7ff1f177c74a37e6bff0658a0d3d7b5b3c949f",
+      "_measurements/S11c_d_end_resolvent_report.md": "96a29b178aa5a11da75f136bcdc05001240172edc92125b23cf5ad9e97e494d3",
+      "_measurements/S11c_d_stratum_coverage_note.md": "c5c6b7255ee74d20c1bc8abbd1d23cb7e9449ba8b81f61fd2dfd2b2e20e70723"
+    }
+  },
+  "remaining_constructions": [
+    "FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS",
+    "GENERIC_DOMAIN_SHEET_CONTINUATION",
+    "CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION",
+    "COMPLETE_TWO_ENDED_SCATTERING",
+    "POLES_RIESZ_OVERLAP",
+    "SURVIVAL",
+    "FLUX_BOOKKEEPING",
+    "WEAK_COEFFICIENTS",
+    "SECTION_5_CONTROLS",
+    "OWN_ROWS_EXPORT"
+  ],
+  "concurrent_work_excluded": "All S10 and Lean changes belong to the other session and were left untouched."
+}

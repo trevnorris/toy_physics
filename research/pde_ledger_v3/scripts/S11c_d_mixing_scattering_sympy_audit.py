@@ -3360,6 +3360,427 @@ class BulkContinuationAudit:
         return summary
 
 
+class EndResolventAudit(BulkContinuationAudit):
+    """Inverse end pencils, local Laurent residues and finite-offset banks.
+
+    A normal-momentum Laurent ansatz supplies the derivative pairing. Cauchy
+    quadrature is a separate inverse-matrix construction on its local radical
+    lift. These are fixed-frequency end data, not profile-frequency poles.
+    """
+
+    def __init__(self, modes, strong, strong_units, branch_bindings):
+        super().__init__(modes,strong,strong_units,branch_bindings)
+        d=self.dimensions
+        self.field_units=[d.known[sp.Function('s11cdReducedField'+name)]
+                          for name in ('u1','u2','u3','theta','eW')]
+        self.row_units=[tuple(a+b for a,b in zip(strong_units[(5*i,)],self.field_units[0])) for i in range(5)]
+        self.bank_matrices={};self.bank_operands={};self.poles=[]
+
+    def matrix_unit(self,kind):
+        d=self.dimensions;kdim=d.measure(self.modes.k)
+        if kind=='inverse':a,b,extra=self.field_units,self.row_units,d.zero
+        elif kind=='residue':a,b,extra=self.field_units,self.row_units,kdim
+        elif kind=='second_moment':a,b,extra=self.field_units,self.row_units,tuple(2*x for x in kdim)
+        elif kind=='field_map':a,b,extra=self.field_units,self.field_units,d.zero
+        elif kind=='source_map':a,b,extra=self.row_units,self.row_units,d.zero
+        elif kind=='field_residue_map':a,b,extra=self.field_units,self.field_units,kdim
+        elif kind=='source_residue_map':a,b,extra=self.row_units,self.row_units,kdim
+        elif kind=='pencil_derivative':a,b,extra=self.row_units,self.field_units,tuple(-x for x in kdim)
+        else:raise ValueError(('end resolvent matrix unit',kind))
+        return lambda p:tuple(x-y+z for x,y,z in zip(a[p[0]//5],b[p[0]%5],extra))
+
+    def output(self,label,value,unit=None,heavy=False):
+        if not (heavy and isinstance(value,sp.MatrixBase)):
+            return EndSpectrumCoverage.emit(self,self.prefix+'_'+label,value,unit,heavy=heavy)
+        # Tensor axes restore every entry's dimension without repeating a
+        # leaf-path table for each contour matrix. Grades are computed for the
+        # evaluated tensor; the unbound source support is emitted separately.
+        unit=unit or (lambda p:self.dimensions.zero)
+        body=cas(value);rows,columns=value.shape
+        numeric=not (body.free_symbols-set(PHYSICAL_METADATA.generators))
+        payload=self.modes.compact_fingerprint(body)if numeric else carrier_fingerprint(body)
+        emit(self.prefix+'_'+label,payload)
+        row_units=[tuple(unit((i*columns,)))for i in range(rows)]
+        column_offsets=[tuple(a-b for a,b in zip(unit((j,)),row_units[0]))for j in range(columns)]
+        encoding_residual=sorted({tuple(a-b-c for a,b,c in zip(unit((i*columns+j,)),row_units[i],column_offsets[j]))
+                                 for i in range(rows)for j in range(columns)})
+        original=self.modes.numeric_metadata(body,unit)
+        grades=set();homotopy=set()
+        for group in original:
+            grades.update(tuple(v)for v in named(group,'MULTIGRADE'))
+            homotopy.update(tuple(v)for v in named(group,'EPSILON_LAMBDA_SUPPORT'))
+        emit('METADATA_'+self.prefix+'_'+label,{'REPRESENTATION':'MATRIX_AXIS_DIMENSIONS','SHAPE':(rows,columns),
+            'ROW_DIMENSIONS_L_T_M':row_units,'COLUMN_DIMENSION_OFFSETS_L_T_M':column_offsets,
+            'AXIS_ENCODING_RESIDUAL':encoding_residual,'MULTIGRADE':sorted(grades),'EPSILON_LAMBDA_SUPPORT':sorted(homotopy)})
+        if any(any(v)for v in encoding_residual):raise ValueError('nonseparable matrix dimensions')
+
+    def residual(self,label,value,kind):
+        value=sp.ImmutableMatrix(value);unit=self.matrix_unit(kind)
+        self.output(label,value,unit,True)
+        groups={}
+        for i,v in enumerate(value):
+            dimension=unit((i,))
+            groups[dimension]=max(groups.get(dimension,0.),abs(complex(v)))
+        records=[{'DIMENSION_L_T_M':key,'MAXIMUM_ABSOLUTE':v} for key,v in sorted(groups.items())]
+        self.output(label+'_MAXIMA',records,lambda p:records[p[0]]['DIMENSION_L_T_M']
+                    if p[-1]=='MAXIMUM_ABSOLUTE' else self.dimensions.zero)
+        return float(np.max(np.abs(np.asarray(value,dtype=complex))))
+
+    def emit(self,tag,value,unit=None,*,heavy=False):
+        # The parent emits its existing objects unchanged. Retain the actual
+        # computed bank matrices and path endpoints as construction operands.
+        super().emit(tag,value,unit,heavy=heavy)
+        matrix=re.search(r'_((?:FREQUENCY|MOMENTUM)_CUT_BANK_\d+)_MATRIX_(\d+)_(M1|1)$',tag)
+        bank=re.search(r'_((?:FREQUENCY|MOMENTUM)_CUT_BANK_\d+)_BANK_OPERANDS_(\d+)$',tag)
+        if matrix:
+            label,index,side=matrix.groups()
+            self.bank_matrices[(label,int(index),-1 if side=='M1' else 1)]=np.asarray(value,dtype=complex)
+        if bank:
+            label,index=bank.groups();self.bank_operands[(label,int(index))]=value
+
+    def local_circle(self,center,qcenter,radius,nodes):
+        """Cauchy integrals from the circle ansatz and the computed inverse."""
+        phase=np.exp(2j*np.pi*np.arange(nodes+1)/nodes)
+        offsets=radius*phase;points=center+offsets
+        seed=self.transport.trace([(self.frequency,center),(self.frequency,points[0])],seed=qcenter)
+        if not seed['PATH_DEFINED']:return {'DEFINED':False,'STATUS':seed['STATUS'],'SEED_PATH':seed}
+        root=complex(seed['END_Q']);radicals=[];matrices=[];inverses=[];derivatives=[]
+        denominator_minimum=float('inf');condition=0.;inverse_error=0.;radical_error=0.
+        for point in points:
+            candidate=complex(self.square_evaluate(self.frequency,point))**.5
+            root=min((candidate,-candidate),key=lambda v:abs(v-root))
+            radicals.append(root)
+            matrix=np.asarray(self.evaluate(self.frequency,point,root),dtype=complex)
+            derivative=np.asarray(self.derivative_evaluate(self.frequency,point,root),dtype=complex)
+            denominator=np.asarray(self.denominator_evaluate(self.frequency,point,root),dtype=complex)
+            if not np.isfinite(matrix).all() or not np.isfinite(derivative).all():
+                return {'DEFINED':False,'STATUS':'NONFINITE_CONTOUR_OPERATOR'}
+            try:inverse=np.linalg.solve(matrix,np.eye(5))
+            except np.linalg.LinAlgError:return {'DEFINED':False,'STATUS':'SINGULAR_CONTOUR_OPERATOR'}
+            condition=max(condition,float(np.linalg.cond(matrix)))
+            inverse_error=max(inverse_error,float(np.max(np.abs(matrix@inverse-np.eye(5)))),
+                              float(np.max(np.abs(inverse@matrix-np.eye(5)))))
+            radical_error=max(radical_error,abs(root*root-self.square_evaluate(self.frequency,point)))
+            denominator_minimum=min(denominator_minimum,float(np.min(np.abs(denominator))))
+            matrices.append(matrix);inverses.append(inverse);derivatives.append(derivative)
+        inverses=np.asarray(inverses[:-1]);derivatives=np.asarray(derivatives[:-1])
+        # The circle derivative is i*(k-center); the 2*pi/N quadrature and
+        # 1/(2*pi*i) Cauchy measure produce these computed sample weights.
+        angle=sp.Symbol('s11cdEndResolventContourAngle',real=True)
+        displacement=sp.Symbol('s11cdEndResolventContourRadius',positive=True)
+        circle=displacement*sp.exp(sp.I*angle)
+        weight=sp.simplify(sp.diff(circle,angle)*(2*sp.pi/nodes)/(2*sp.pi*sp.I))
+        weights=np.asarray(sp.lambdify((displacement,angle),weight,'numpy')(
+            radius,2*np.pi*np.arange(nodes)/nodes),dtype=complex)
+        residue=np.einsum('n,nij->ij',weights,inverses)
+        moment=np.einsum('n,n,nij->ij',weights,offsets[:-1],inverses)
+        projector=np.einsum('n,nij,njk->ik',weights,inverses,derivatives)
+        determinants=np.asarray([np.linalg.det(v) for v in matrices])
+        winding=float(np.sum(np.angle(determinants[1:]/determinants[:-1]))/(2*np.pi))
+        return {'DEFINED':True,'STATUS':'CONTOUR_EVALUATED','RESIDUE':residue,
+            'SECOND_LAURENT_MOMENT':moment,'DERIVATIVE_INTEGRAL':projector,
+            'DERIVATIVE_TRACE':complex(np.trace(projector)),'DETERMINANT_WINDING':winding,
+            'ROOT_CLOSURE_RESIDUAL':radicals[-1]-radicals[0],
+            'MAXIMUM_RADICAL_RESIDUAL':radical_error,'MINIMUM_DENOMINATOR_COEFFICIENT':denominator_minimum,
+            'MAXIMUM_COEFFICIENT_CONDITION':condition,'MAXIMUM_COEFFICIENT_INVERSE_RESIDUAL':inverse_error,
+            'SEED_REFINEMENT_DIFFERENCE':seed['REFINEMENT_DIFFERENCE'],
+            'SEED_ODE_DIFFERENCE':seed['ODE_DIFFERENCE'],'NODES':nodes,'RADIUS':radius}
+
+    def pole(self,index,record,records,excluded):
+        m,d=self.modes,self.dimensions
+        center,qcenter=complex(record['K']),complex(record['Q'])
+        tag='POLE_'+str(index)
+        status={'K':record['K'],'Q':record['Q'],'ROOT_DISK_INDEX':record['ROOT_DISK_INDEX'],
+            'ORIGINAL_SHEET_MEMBERSHIP':record['FIXED_FREQUENCY_SHEET_MEMBERSHIP'],
+            'ALGEBRAIC_MULTIPLICITY':record['MULTIPLICITY'],'RESIDUE_DEFINED':False,
+            'CONTOUR_DEFINED':False,'FLOAT_MANTISSA_BITS':np.finfo(float).nmant+1,
+            'COEFFICIENT_SVD_RELATIVE_TOLERANCE':1e-8,'COORDINATE_RELATIVE_TOLERANCE':512*np.finfo(float).eps}
+        unit=lambda p:d.measure(m.k) if p[-1] in ('K','RADIUS','MINIMUM_LOCUS_DISTANCE') else (
+                      d.measure(m.q) if p[-1]=='Q' else d.zero)
+        matrix=np.asarray(self.evaluate(self.frequency,center,qcenter),dtype=complex)
+        derivative=np.asarray(self.derivative_evaluate(self.frequency,center,qcenter),dtype=complex)
+        self.output(tag+'_ORIGINAL_OPERATOR',sp.ImmutableMatrix(matrix),lambda p:self.strong_units[p],True)
+        self.output(tag+'_TOTAL_K_DERIVATIVE',sp.ImmutableMatrix(derivative),self.matrix_unit('pencil_derivative'),True)
+        left,singular,right_h=np.linalg.svd(matrix)
+        nullity=int(np.sum(singular<1e-8*max(1.,singular[0])))
+        status['NULLITY']=nullity
+        status['NULLITY_DIFFERENCE_FROM_NATIVE']=nullity-int(record.get('NULLITY',0))
+        if nullity and qcenter and center:
+            right,dual=right_h.conj().T[:,-nullity:],left[:,-nullity:]
+            pairing=dual.conj().T@derivative@right
+            rank=int(np.linalg.matrix_rank(pairing,tol=1e-10*max(1.,np.linalg.norm(pairing))))
+            status['DERIVATIVE_PAIRING_RANK']=rank
+            self.output(tag+'_RIGHT',sp.ImmutableMatrix(right),lambda p:self.field_units[p[0]//nullity],True)
+            self.output(tag+'_LEFT',sp.ImmutableMatrix(dual),lambda p:tuple(-v for v in self.row_units[p[0]//nullity]),True)
+            self.output(tag+'_DERIVATIVE_PAIRING',sp.ImmutableMatrix(pairing),lambda p:tuple(-v for v in d.measure(m.k)))
+            if rank==nullity:
+                # R=right*C is the Laurent ansatz. Projecting its constant
+                # equation with the left nullspace computes the system for C.
+                coefficients=np.linalg.solve(pairing,dual.conj().T)
+                residue=right@coefficients
+                projector=residue@derivative
+                status['RESIDUE_DEFINED']=True
+                self.output(tag+'_RESIDUE',sp.ImmutableMatrix(residue),self.matrix_unit('residue'),True)
+                self.output(tag+'_DERIVATIVE_PROJECTOR',sp.ImmutableMatrix(projector),self.matrix_unit('field_map'),True)
+                self.residual(tag+'_PROJECTOR_RESIDUAL',projector@projector-projector,'field_map')
+                self.residual(tag+'_RIGHT_LAURENT_RESIDUAL',matrix@residue,'source_residue_map')
+                self.residual(tag+'_LEFT_LAURENT_RESIDUAL',residue@matrix,'field_residue_map')
+                self.poles.append({'index':index,'K':center,'Q':qcenter,'RESIDUE':residue,'PROJECTOR':projector})
+            else:status['STATUS']='SINGULAR_DERIVATIVE_PAIRING'
+        else:status['STATUS']='THRESHOLD_OR_EMPTY_NULLSPACE'
+        scale=max(1.,abs(center));tolerance=status['COORDINATE_RELATIVE_TOLERANCE']*scale
+        others=[];coincident=[]
+        for j,other in enumerate(records):
+            if j==index:continue
+            distance=abs(complex(other['K'])-center)
+            if distance<=tolerance:coincident.append({'INDEX':j,'K_DISTANCE':distance,'Q_DISTANCE':abs(complex(other['Q'])-qcenter)})
+            else:others.append(distance)
+        distances=[abs(z-center) for z in excluded]+others
+        clearance=min(distances,default=0.)
+        radius=clearance/5
+        status.update({'MINIMUM_LOCUS_DISTANCE':clearance,'RADIUS':radius,'COINCIDENT_K_CANDIDATES':coincident})
+        if radius<=tolerance or any(v['Q_DISTANCE']<=512*np.finfo(float).eps*max(1.,abs(qcenter)) for v in coincident):
+            status['CONTOUR_STATUS']='UNRESOLVED_LOCAL_SEPARATION'
+        else:
+            runs=[]
+            for radius_index,factor in enumerate((1.,.5)):
+                for nodes in (32,64):
+                    result=self.local_circle(center,qcenter,factor*radius,nodes)
+                    matrices={key:result.pop(key) for key in ('RESIDUE','SECOND_LAURENT_MOMENT','DERIVATIVE_INTEGRAL') if key in result}
+                    contour_tag=tag+'_CONTOUR_'+str(radius_index)+'_'+str(nodes)
+                    self.output(contour_tag+'_RECORD',result,lambda p:
+                        d.measure(m.k) if p[-1]=='RADIUS' else d.measure(m.q) if p[-1] in
+                        ('ROOT_CLOSURE_RESIDUAL','SEED_REFINEMENT_DIFFERENCE','SEED_ODE_DIFFERENCE') else
+                        tuple(2*v for v in d.measure(m.q)) if p[-1]=='MAXIMUM_RADICAL_RESIDUAL' else d.zero)
+                    if result['DEFINED']:
+                        self.output(contour_tag+'_RESIDUE',sp.ImmutableMatrix(matrices['RESIDUE']),self.matrix_unit('residue'),True)
+                        self.output(contour_tag+'_DERIVATIVE_INTEGRAL',sp.ImmutableMatrix(matrices['DERIVATIVE_INTEGRAL']),self.matrix_unit('field_map'),True)
+                        self.residual(contour_tag+'_SECOND_LAURENT_MOMENT',matrices['SECOND_LAURENT_MOMENT'],'second_moment')
+                        self.output(contour_tag+'_POLE_COUNT_RESIDUAL',result['DERIVATIVE_TRACE']-int(record['MULTIPLICITY']))
+                        self.output(contour_tag+'_WINDING_TRACE_RESIDUAL',result['DERIVATIVE_TRACE']-result['DETERMINANT_WINDING'])
+                        if status['RESIDUE_DEFINED']:
+                            self.residual(contour_tag+'_MODAL_RESIDUE_RESIDUAL',matrices['RESIDUE']-residue,'residue')
+                            self.residual(contour_tag+'_MODAL_PROJECTOR_RESIDUAL',matrices['DERIVATIVE_INTEGRAL']-projector,'field_map')
+                        runs.append((radius_index,nodes,result,matrices))
+            status['CONTOUR_DEFINED']=len(runs)==4
+            status['CONTOUR_STATUS']='FOUR_CONTOURS_EVALUATED' if len(runs)==4 else 'INCOMPLETE_CONTOUR_EVALUATION'
+            if len(runs)==4:
+                for label,a,b in [('NODE_REFINEMENT_OUTER',runs[0],runs[1]),('NODE_REFINEMENT_INNER',runs[2],runs[3]),
+                                  ('RADIUS_REFINEMENT',runs[1],runs[3])]:
+                    self.residual(tag+'_'+label,a[3]['RESIDUE']-b[3]['RESIDUE'],'residue')
+            if status['RESIDUE_DEFINED']:status['STATUS']='REGULAR_LAURENT_RESIDUE'
+        self.output(tag+'_RECORD',status,lambda p:d.measure(m.k) if p[-1]=='K_DISTANCE' else
+                    d.measure(m.q) if p[-1]=='Q_DISTANCE' else unit(p))
+        return status
+
+    @staticmethod
+    def mp_number(value,digits=65):
+        import mpmath as mp
+        real,imag=sp.N(sp.sympify(value),digits).as_real_imag()
+        return mp.mpc(str(real),str(imag))
+
+    def precise_pole(self,index,digits):
+        import mpmath as mp
+        key=(index,digits)
+        if key in self.precise_poles:return self.precise_poles[key]
+        native=self.native_records[index]
+        point=(self.mp_number(self.exact_frequency),self.mp_number(native['K']),self.mp_number(native['Q']))
+        matrix=mp.matrix(self.mp_evaluate(*point));derivative=mp.matrix(self.mp_derivative(*point))
+        left,singular,right_h=mp.svd(matrix)
+        nullity=sum(v<mp.mpf('1e-8')*max(1,singular[0])for v in singular)
+        result={'DEFINED':False,'NULLITY':nullity,'DECIMAL_DIGITS':digits}
+        if nullity:
+            right,dual=right_h.H[:,matrix.cols-nullity:],left[:,matrix.rows-nullity:]
+            pairing=dual.H*derivative*right
+            _,s,_=mp.svd(pairing)
+            rank=sum(v<mp.mpf('1e-30')*max(1,s[0])for v in s)
+            result['PAIRING_NULLITY']=rank
+            if rank==0:
+                residue=right*(pairing**-1)*dual.H
+                result.update({'DEFINED':True,'RESIDUE':residue,'K':point[1],'Q':point[2]})
+                tag='POLE_'+str(index)+'_PRECISION_'+str(digits)
+                self.output(tag+'_RESIDUE',sp.ImmutableMatrix(residue),self.matrix_unit('residue'),True)
+                self.residual(tag+'_RIGHT_LAURENT_RESIDUAL',matrix*residue,'source_residue_map')
+                self.residual(tag+'_LEFT_LAURENT_RESIDUAL',residue*matrix,'field_residue_map')
+        self.output('POLE_'+str(index)+'_PRECISION_'+str(digits)+'_RECORD',
+                    {k:v for k,v in result.items()if k not in ('RESIDUE','K','Q')})
+        self.precise_poles[key]=result
+        return result
+
+    def inverse_banks(self):
+        import mpmath as mp
+        with mp.workdps(60):return self.precise_inverse_banks()
+
+    def precise_inverse_banks(self):
+        import mpmath as mp
+        m,d=self.modes,self.dimensions
+        summaries=[];previous={}
+        for (label,index),operands in self.bank_operands.items():
+            tag=label+'_'+str(index);inverses=[];matrices=[];regular=[];records=[];raw_inverses=[];raw_matrices=[]
+            for operand in operands:
+                side=int(operand['SIDE']);key=(label,index,side);suffix=tag+'_'+str(side).replace('-','M')
+                record=dict(operand);record.update({'INVERSE_DEFINED':False,'SUBTRACTION_DEFINED':False})
+                if key not in self.bank_matrices or not operand['PATH_DEFINED']:
+                    records.append(record);continue
+                raw_matrix=self.bank_matrices[key]
+                try:raw_inverse=np.linalg.solve(raw_matrix,np.eye(5))
+                except np.linalg.LinAlgError:record['DOUBLE_INVERSE_DEFINED']=False
+                else:
+                    record['DOUBLE_INVERSE_DEFINED']=bool(np.isfinite(raw_inverse).all())
+                    record['DOUBLE_COEFFICIENT_CONDITION']=float(np.linalg.cond(raw_matrix))
+                    self.output(suffix+'_DOUBLE_INVERSE',sp.ImmutableMatrix(raw_inverse),self.matrix_unit('inverse'),True)
+                    raw_inverses.append(raw_inverse);raw_matrices.append(raw_matrix)
+                candidates=[]
+                if label.startswith('MOMENTUM'):
+                    target=complex(operand['K'])-side*float(operand['OFFSET'])
+                    center_root=complex(self.square_evaluate(self.frequency,target))**.5
+                    center_root=min((center_root,-center_root),key=lambda z:abs(z-complex(operand['END_Q'])))
+                    tolerance=512*np.finfo(float).eps
+                    candidates=[(j,v)for j,v in enumerate(self.native_records)
+                        if abs(complex(v['K'])-target)<=tolerance*max(1.,abs(target))
+                        and abs(complex(v['Q'])-center_root)<=tolerance*max(1.,abs(center_root))]
+                evaluated=[]
+                for digits in (40,60):
+                    with mp.workdps(digits):
+                        omega=self.mp_number(self.exact_frequency if label.startswith('MOMENTUM') else operand['OMEGA'])
+                        normal=(self.mp_number(candidates[0][1]['K'])+side*self.mp_number(operand['OFFSET'])
+                                if candidates else self.mp_number(operand['K']))
+                        radical=mp.sqrt(self.mp_square(omega,normal));old_q=self.mp_number(operand['END_Q'])
+                        radical=min((radical,-radical),key=lambda v:abs(v-old_q))
+                        matrix=mp.matrix(self.mp_evaluate(omega,normal,radical))
+                        try:inverse=matrix**-1
+                        except ZeroDivisionError:
+                            self.output(suffix+'_PRECISION_'+str(digits)+'_DOMAIN',{'INVERSE_DEFINED':False})
+                            continue
+                        subtraction=mp.zeros(5);matches=[]
+                        for candidate_index,_ in candidates:
+                            pole=self.precise_pole(candidate_index,digits)
+                            if pole['DEFINED']:
+                                subtraction+=pole['RESIDUE']/(normal-pole['K']);matches.append(candidate_index)
+                        evaluated.append((digits,matrix,inverse,subtraction,matches,omega,normal,radical))
+                record['DECIMAL_PRECISIONS']=[v[0]for v in evaluated]
+                record['NATIVE_CANDIDATES_AT_TARGET']=[j for j,_ in candidates]
+                if len(evaluated)==2:
+                    _,matrix,inverse,subtraction,matches,omega,normal,radical=evaluated[-1]
+                    record.update({'INVERSE_DEFINED':True,'SUBTRACTION_DEFINED':len(matches)==len(candidates),
+                        'SUBTRACTED_NORMAL_POLE_INDICES':matches,
+                        'REFINED_COORDINATES':{'OMEGA':omega,'K':normal,'END_Q':radical}})
+                    self.output(suffix+'_REFINED_OPERATOR',sp.ImmutableMatrix(matrix),lambda p:self.strong_units[p],True)
+                    self.output(suffix+'_OPERATOR_PRECISION_DIFFERENCE',sp.ImmutableMatrix(matrix-mp.matrix(raw_matrix)),
+                                lambda p:self.strong_units[p],True)
+                    self.output(suffix+'_COORDINATE_PRECISION_DIFFERENCE',{'OMEGA':omega-self.mp_number(operand['OMEGA']),
+                        'K':normal-self.mp_number(operand['K']),'END_Q':radical-self.mp_number(operand['END_Q'])},self.path_unit)
+                    self.output(suffix+'_INVERSE',sp.ImmutableMatrix(inverse),self.matrix_unit('inverse'),True)
+                    self.residual(suffix+'_INVERSE_PRECISION_REFINEMENT',inverse-evaluated[0][2],'inverse')
+                    self.residual(suffix+'_LEFT_INVERSE_RESIDUAL',matrix*inverse-mp.eye(5),'source_map')
+                    self.residual(suffix+'_RIGHT_INVERSE_RESIDUAL',inverse*matrix-mp.eye(5),'field_map')
+                    if label.startswith('MOMENTUM') and record['SUBTRACTION_DEFINED']:
+                        self.output(suffix+'_LOCAL_POLE_SUBTRACTION',sp.ImmutableMatrix(subtraction),self.matrix_unit('inverse'),True)
+                        regular.append(inverse-subtraction)
+                        self.output(suffix+'_REGULAR_PART',sp.ImmutableMatrix(regular[-1]),self.matrix_unit('inverse'),True)
+                    else:record['SUBTRACTION_SCOPE']='NOT_APPLICABLE_FREQUENCY_BANK'
+                    inverses.append(inverse);matrices.append(matrix)
+                records.append(record)
+            self.output(tag+'_BANK_RECORDS',records,lambda p:d.measure(self.r.omega if label.startswith('FREQUENCY') else m.k)
+                        if p[-1]=='OFFSET' else self.path_unit(p))
+            if len(raw_inverses)==2:
+                self.residual(tag+'_DOUBLE_INVERSE_JUMP_RESIDUAL',raw_inverses[1]-raw_inverses[0]+
+                    raw_inverses[1]@(raw_matrices[1]-raw_matrices[0])@raw_inverses[0],'inverse')
+            if len(inverses)==2:
+                jump=inverses[1]-inverses[0]
+                identity_operand=-inverses[1]*(matrices[1]-matrices[0])*inverses[0]
+                self.output(tag+'_INVERSE_JUMP',sp.ImmutableMatrix(jump),self.matrix_unit('inverse'),True)
+                self.output(tag+'_INVERSE_JUMP_IDENTITY_OPERAND',sp.ImmutableMatrix(identity_operand),self.matrix_unit('inverse'),True)
+                self.residual(tag+'_INVERSE_JUMP_RESIDUAL',jump-identity_operand,'inverse')
+                regular_jump=regular[1]-regular[0]if len(regular)==2 else None
+                if regular_jump is not None:self.output(tag+'_REGULAR_JUMP',sp.ImmutableMatrix(regular_jump),self.matrix_unit('inverse'),True)
+                if label in previous:
+                    self.residual(tag+'_INVERSE_JUMP_REFINEMENT',jump-previous[label][0],'inverse')
+                    if regular_jump is not None and previous[label][1] is not None:
+                        self.residual(tag+'_REGULAR_JUMP_REFINEMENT',regular_jump-previous[label][1],'inverse')
+                previous[label]=(jump,regular_jump)
+            summaries.append({'LABEL':label,'REFINEMENT':index,'INVERSE_COUNT':len(inverses),
+                'SUBTRACTION_DEFINED':all(v['SUBTRACTION_DEFINED']for v in records),
+                'SUBTRACTED_POLE_COUNT':sum(len(v.get('SUBTRACTED_NORMAL_POLE_INDICES',()))for v in records)})
+        self.output('BANK_SUMMARY',summaries)
+        return summaries
+
+    def construct(self,suffix,*,channel_input=None,reference=False,sample_index=0,spectrum=None):
+        m,d=self.modes,self.dimensions;w,k,q=self.r.omega,m.k,m.q
+        self.prefix='END_RESOLVENT_'+('INPUT_' if channel_input else 'PIT_')+suffix+'_'+str(sample_index)
+        self.bank_matrices={};self.bank_operands={};self.poles=[]
+        self.native_records=spectrum['RECORDS'];self.precise_poles={}
+        algebraic,relation,joins=m.analytic(self.strong)
+        if channel_input is None:
+            mapping=m.sample(algebraic,relation,sample_index);frequency=mapping.pop(w)
+            origin={m.eta:sp.S.Zero,m.sigma:sp.S.Zero};frame=('PIT_L','PIT_T','PIT_M')
+        else:
+            mapping=channel_input.mapping(algebraic,relation,(w,k,q,m.eta,m.sigma))
+            frequency=channel_input.parameters['omega']
+            origin={m.eta:sp.S.Zero,m.sigma:sp.S.Zero} if reference else channel_input.origin;frame=channel_input.frame
+        bound=algebraic.xreplace(mapping).subs(origin).applyfunc(sp.cancel)
+        relation=relation.xreplace(mapping);self.frequency=float(frequency);self.exact_frequency=frequency
+        square=sp.solve(relation,q**2)[0]
+        scale=sp.sqrt(-sp.Poly(square,k).nth(2))
+        seed=scale*self.bindings[0][1].xreplace(dict(zip(self.bindings[0][0].args,(*self.r.tangents,k)))).xreplace(mapping)
+        self.transport=JointBulkSheetPath(relation,w,k,q,seed)
+        derivative_variable=sp.Symbol('s11cdEndResolventRadicalMomentumDerivative')
+        qderivative=sp.solve(sp.diff(relation,k)+sp.diff(relation,q)*derivative_variable,derivative_variable)[0]
+        derivative=bound.diff(k)+bound.diff(q)*qderivative
+        self.evaluate=sp.lambdify((w,k,q),bound,'numpy',cse=True)
+        self.derivative_evaluate=sp.lambdify((w,k,q),derivative,'numpy',cse=True)
+        self.square_evaluate=sp.lambdify((w,k),square,'numpy')
+        self.mp_evaluate=sp.lambdify((w,k,q),bound,'mpmath',cse=True)
+        self.mp_derivative=sp.lambdify((w,k,q),derivative,'mpmath',cse=True)
+        self.mp_square=sp.lambdify((w,k),square,'mpmath')
+        denominators=tuple(sp.lcm([sp.denom(bound[i,j])for j in range(5)])for i in range(5))
+        self.denominator_evaluate=sp.lambdify((w,k,q),denominators,'numpy',cse=True)
+        self.output('UNIT_FRAME',frame)
+        self.output('BOUND_CARRIERS',[(str(s),v)for s,v in mapping.items()],lambda p:d.measure(next(s for s in mapping if str(s)==p[0])))
+        self.output('GRADE_ORIGIN',[(str(s),v)for s,v in origin.items()])
+        self.output('SOURCE_GRADE_SUPPORT',tuple((path,tuple(sorted(PHYSICAL_METADATA.coefficients(v))))for path,v in leaves(algebraic)))
+        self.output('INPUT_BINDING',channel_input.specification if channel_input else {'PIT_SAMPLE':sample_index})
+        self.output('FREQUENCY',frequency,lambda p:d.measure(w))
+        self.output('COEFFICIENT_COORDINATE_UNITS',{'FIELDS':self.field_units,'EQUATION_ROWS':self.row_units,
+                    'K':d.measure(k),'Q':d.measure(q)})
+        self.output('SCOPE',{'CONSTANT_END_RESOLVENT':True,'NORMAL_MOMENTUM_LAURENT_DATA':True,
+            'PROFILE_FREQUENCY_POLE_SOLVE':False,'FULL_PROFILE_RESOLVENT':False,'CONTINUUM_MEASURE':False,
+            'FLUX_NORMALIZATION':False,'CONTINUUM_REEXPANSION_PERFORMED':False})
+        self.output('SOURCE_BRANCH_JOIN_RESIDUAL',joins)
+        self.output('OPERATOR',bound,lambda p:self.strong_units[p],True)
+        self.output('TOTAL_K_DERIVATIVE',derivative,self.matrix_unit('pencil_derivative'),True)
+        self.output('RADICAL_K_DERIVATIVE',qderivative,lambda p:tuple(a-b for a,b in zip(d.measure(q),d.measure(k))),True)
+        self.output('RADICAL_DERIVATIVE_RESIDUAL',sp.simplify(sp.diff(relation,k)+sp.diff(relation,q)*qderivative),
+                    lambda p:tuple(2*a-b for a,b in zip(d.measure(q),d.measure(k))))
+        fixed=relation.subs(w,frequency)
+        branch_points=[complex(v)for v in sp.Poly(square.subs(w,frequency),k).all_roots()]
+        loci=[];denominator_points=[]
+        for denominator in denominators:
+            norm=sp.Poly(sp.resultant(denominator.subs(w,frequency),fixed,q),k)
+            points=[]
+            if norm.degree()>0:
+                for factor,_ in sp.sqf_list(norm)[1]:points.extend(sp.nroots(factor,n=30,maxsteps=500))
+            loci.append({'COEFFICIENT_POLYNOMIAL':norm.as_expr(),'ROOTS':points})
+            denominator_points.extend(complex(v)for v in points)
+        self.output('DENOMINATOR_LOCUS_OPERANDS',loci,lambda p:d.measure(k) if 'ROOTS'in p else d.zero,True)
+        self.output('BRANCH_POINTS',branch_points,lambda p:d.measure(k))
+        self.output('DENOMINATOR_POINTS',denominator_points,lambda p:d.measure(k))
+        pole_records=[self.pole(i,v,self.native_records,branch_points+denominator_points)
+                      for i,v in enumerate(self.native_records)]
+        continuation=super().construct(suffix,channel_input=channel_input,reference=reference,
+                                        sample_index=sample_index,spectrum=spectrum)
+        banks=self.inverse_banks()
+        summary={'NATIVE_CANDIDATE_COUNT':len(self.native_records),'RESIDUE_COUNT':len(self.poles),
+            'CONTOUR_CANDIDATE_COUNT':sum(v['CONTOUR_DEFINED']for v in pole_records),
+            'NULLITY_DIFFERENCE_COUNT':sum(v['NULLITY_DIFFERENCE_FROM_NATIVE']!=0 for v in pole_records),
+            'POLE_STATUSES':dict(Counter(v.get('STATUS','UNRESOLVED')for v in pole_records)),
+            'BANK_PAIR_COUNT':len(banks),'BANK_INVERSE_COUNT':sum(v['INVERSE_COUNT']for v in banks),
+            'SUBTRACTION_UNRESOLVED_COUNT':sum(not v['SUBTRACTION_DEFINED']for v in banks),
+            'ORIGINAL_UNRESOLVED_CANDIDATE_COUNT':continuation['ORIGINAL_UNRESOLVED_CANDIDATE_COUNT']}
+        self.output('SUMMARY',summary)
+        return summary
+
+
 def run():
     global PHYSICAL_METADATA
     os.chdir(ROOT)
@@ -3605,7 +4026,7 @@ def run():
             spectrum = EndSpectrumCoverage(modes,strong_symbol,full_symbol,lift,strong_symbol_units)
             spectral_result = spectrum.construct(label+'_'+suffix,-1 if label=='LEFT' else 1,
                                reference=label=='REFERENCE',sample_index=0)
-            continuation = BulkContinuationAudit(modes,strong_symbol,strong_symbol_units,
+            continuation = EndResolventAudit(modes,strong_symbol,strong_symbol_units,
                 reduced_branch_bindings[(CLOSED_KEYS[0],case)])
             continuation.construct(label+'_'+suffix,reference=label=='REFERENCE',sample_index=0,spectrum=spectral_result)
             if channel_input is not None:
@@ -3627,6 +4048,7 @@ def run():
                                       'REGULAR_RECTANGULAR_MODE_JETS',
                                       'PHYSICAL_FIELD_END_SPECTRUM_COVERAGE',
                                       'EXPLICIT_JOINT_BULK_SHEET_PATHS_AND_CUT_BANKS',
+                                      'CONSTANT_END_RESOLVENTS_AND_NORMAL_POLE_RESIDUES',
                                       'S11B_CONSERVATIVE_SLAB_CURRENT', 'CLOSED_PHYSICAL_FIELD_LIFT'))
     emit('CHANNEL_INPUT_EXECUTION', channel_input is not None)
     emit('OUTSTANDING_CONSTRUCTIONS', ('FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS',

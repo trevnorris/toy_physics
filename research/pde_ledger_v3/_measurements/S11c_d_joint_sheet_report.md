@@ -4,7 +4,12 @@
 after preservation checkpoint `cc6f8b3c`. All four focused checks, the fresh
 four-case regeneration, inventories and atomic publication completed. This is
 an unreviewed runnable checkpoint; the complete S11c-d engine and export remain
-unfinished. The new build changes have no subsequent commit.
+unfinished. This checkpoint was subsequently saved as `718e5ced` using
+DataLad/git-annex for its outputs. The later
+[end-resolvent checkpoint](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_report.md)
+regenerated the canonical main output. This report retains the historical
+joint-sheet evidence; its original main transcript is linked below from the
+preserved annex payload.
 
 ## Computation
 
@@ -79,7 +84,7 @@ defines the construction scope and stop condition.
 The full run exited 0 with empty stderr in `5779.514` seconds (96.3 minutes),
 peak child RSS `1725656` KiB. Source hashes before and after match the published
 engine and inputs. The
-[104,669,285-byte main transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
+[104,669,285-byte main transcript](/var/projects/toy_physics/.git/annex/objects/Mx/pQ/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out/MD5E-s104669285--9a91e625b06d0613d85cd5947b81fd25.out)
 has SHA-256 `e51274711cf0fa7ea59758c3d11eadbd35dc02639b1b2f72c234f208bf4e1030`.
 It has 38,828 unique tags, one completion marker, no duplicate tags, no new
 metadata gaps or nonfinite objects, and three empty dimensional-constraint
@@ -129,8 +134,8 @@ stderr in `31.785`, `152.228` and `6.853` seconds; peak child RSS was `185288`,
 hashes, runtime versions and publication hashes.
 
 All five successful transcripts are in `scripts/out/` (106,367,981 bytes total).
-Atomic replacement left the previous annex payload unchanged. They remain
-working files for the next user-requested DataLad/git-annex save. The engine
+Atomic replacement left the previous annex payload unchanged. They were subsequently
+saved through DataLad/git-annex at `718e5ced`. The engine
 and both new instruments compile. Only `run` changed among pre-existing engine
 definitions; no definition was removed. The directive-named
 `reduction/derived_or_declared.py` and `reduction/engine_output_checks.py` remain

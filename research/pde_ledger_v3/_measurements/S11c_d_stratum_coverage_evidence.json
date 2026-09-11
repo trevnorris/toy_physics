@@ -1,0 +1,709 @@
+{
+  "scope": "Read-only code and committed 718e5ced inventory inspection prompted by the S10 Lean stratum-coverage concern. No new physical sample or generic-domain certificate.",
+  "engine_sha256": "9e0b80f805606efe87d94fd4f98d5b44db0f9a22a891e1c86bb1f83c3cc94fab",
+  "inventory_pins": {
+    "_measurements/S11c_d_joint_sheet_spectrum_inventory.json": "23132f6afb408b253eaa23b0430fea3d5c019f737a6c7f5e48c4b6f8801950c1",
+    "_measurements/S11c_d_joint_sheet_inventory.json": "32a69afed935c2b8e3baae5473811105e702826ab8c88f4ea6fbc2f3f978c8bc"
+  },
+  "native_packet_count": 24,
+  "native_candidate_count": 432,
+  "native_nullity_counts": {
+    "1": 336,
+    "2": 96
+  },
+  "native_algebraic_geometric_difference_counts": {
+    "0": 432
+  },
+  "native_sheet_counts": {
+    "True": 192,
+    "False": 192,
+    "UNRESOLVED": 48
+  },
+  "native_exception_degrees": {
+    "END_SPECTRUM_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_LEFT_LAB_HELD_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_REFERENCE_LAB_HELD_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_REFERENCE_LAB_HELD_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_LEFT_LAB_HELD_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    },
+    "END_SPECTRUM_INPUT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0": {
+      "DENOMINATOR_GCD": 0,
+      "NORMAL_THRESHOLD_GCD": 0,
+      "RADICAL_BRANCH_GCD": 0
+    }
+  },
+  "path_count": 504,
+  "undefined_path_count": 24,
+  "undefined_path_unique_identifiers": 24,
+  "undefined_paths": [
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0",
+      "label": "FREQUENCY_BRANCH_INTERSECTION",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": 0.6404585977110625,
+      "vertices": [
+        {
+          "OMEGA": 0.7395378875865843,
+          "K": 0.2857142857142857
+        },
+        {
+          "OMEGA": 0.36976894379329217,
+          "K": 0.2857142857142857
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_0",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 0.09743198744239423
+      },
+      "vertices": [
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": 0
+        },
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": {
+            "real": 0.0,
+            "imag": -0.7496313505882902
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_1",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 0.09743198744239423
+      },
+      "vertices": [
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": 0
+        },
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": {
+            "real": 0.0,
+            "imag": 0.7496313505882902
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0",
+      "label": "FREQUENCY_BRANCH_INTERSECTION",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": 5.196152422706632,
+      "vertices": [
+        {
+          "OMEGA": 6.0,
+          "K": 0.2
+        },
+        {
+          "OMEGA": 3.0,
+          "K": 0.2
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_0",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 2.0
+      },
+      "vertices": [
+        {
+          "OMEGA": 1.0,
+          "K": 0
+        },
+        {
+          "OMEGA": 1.0,
+          "K": {
+            "real": 0.0,
+            "imag": -0.30000000000000004
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_1",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 2.0
+      },
+      "vertices": [
+        {
+          "OMEGA": 1.0,
+          "K": 0
+        },
+        {
+          "OMEGA": 1.0,
+          "K": {
+            "real": 0.0,
+            "imag": 0.30000000000000004
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_LAB_HELD_RHOBR_CONSTANT_0",
+      "label": "FREQUENCY_BRANCH_INTERSECTION",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": 0.6404585977110625,
+      "vertices": [
+        {
+          "OMEGA": 0.7395378875865843,
+          "K": 0.2857142857142857
+        },
+        {
+          "OMEGA": 0.36976894379329217,
+          "K": 0.2857142857142857
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_LAB_HELD_RHOBR_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_0",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 0.09743198744239423
+      },
+      "vertices": [
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": 0
+        },
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": {
+            "real": 0.0,
+            "imag": -0.7496313505882902
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_LAB_HELD_RHOBR_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_1",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 0.09743198744239423
+      },
+      "vertices": [
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": 0
+        },
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": {
+            "real": 0.0,
+            "imag": 0.7496313505882902
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_LAB_HELD_RHOBR_CONSTANT_0",
+      "label": "FREQUENCY_BRANCH_INTERSECTION",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": 5.196152422706632,
+      "vertices": [
+        {
+          "OMEGA": 6.0,
+          "K": 0.2
+        },
+        {
+          "OMEGA": 3.0,
+          "K": 0.2
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_LAB_HELD_RHOBR_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_0",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 2.0
+      },
+      "vertices": [
+        {
+          "OMEGA": 1.0,
+          "K": 0
+        },
+        {
+          "OMEGA": 1.0,
+          "K": {
+            "real": 0.0,
+            "imag": -0.30000000000000004
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_LAB_HELD_RHOBR_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_1",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 2.0
+      },
+      "vertices": [
+        {
+          "OMEGA": 1.0,
+          "K": 0
+        },
+        {
+          "OMEGA": 1.0,
+          "K": {
+            "real": 0.0,
+            "imag": 0.30000000000000004
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "label": "FREQUENCY_BRANCH_INTERSECTION",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": 0.6404585977110625,
+      "vertices": [
+        {
+          "OMEGA": 0.7395378875865843,
+          "K": 0.2857142857142857
+        },
+        {
+          "OMEGA": 0.36976894379329217,
+          "K": 0.2857142857142857
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_0",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 0.09743198744239423
+      },
+      "vertices": [
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": 0
+        },
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": {
+            "real": 0.0,
+            "imag": -0.7496313505882902
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_1",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 0.09743198744239423
+      },
+      "vertices": [
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": 0
+        },
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": {
+            "real": 0.0,
+            "imag": 0.7496313505882902
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "label": "FREQUENCY_BRANCH_INTERSECTION",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": 5.196152422706632,
+      "vertices": [
+        {
+          "OMEGA": 6.0,
+          "K": 0.2
+        },
+        {
+          "OMEGA": 3.0,
+          "K": 0.2
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_0",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 2.0
+      },
+      "vertices": [
+        {
+          "OMEGA": 1.0,
+          "K": 0
+        },
+        {
+          "OMEGA": 1.0,
+          "K": {
+            "real": 0.0,
+            "imag": -0.30000000000000004
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_1",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 2.0
+      },
+      "vertices": [
+        {
+          "OMEGA": 1.0,
+          "K": 0
+        },
+        {
+          "OMEGA": 1.0,
+          "K": {
+            "real": 0.0,
+            "imag": 0.30000000000000004
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "label": "FREQUENCY_BRANCH_INTERSECTION",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": 0.6404585977110625,
+      "vertices": [
+        {
+          "OMEGA": 0.7395378875865843,
+          "K": 0.2857142857142857
+        },
+        {
+          "OMEGA": 0.36976894379329217,
+          "K": 0.2857142857142857
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_0",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 0.09743198744239423
+      },
+      "vertices": [
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": 0
+        },
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": {
+            "real": 0.0,
+            "imag": -0.7496313505882902
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_PIT_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_1",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 0.09743198744239423
+      },
+      "vertices": [
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": 0
+        },
+        {
+          "OMEGA": 0.3333333333333333,
+          "K": {
+            "real": 0.0,
+            "imag": 0.7496313505882902
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "label": "FREQUENCY_BRANCH_INTERSECTION",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": 5.196152422706632,
+      "vertices": [
+        {
+          "OMEGA": 6.0,
+          "K": 0.2
+        },
+        {
+          "OMEGA": 3.0,
+          "K": 0.2
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_0",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 2.0
+      },
+      "vertices": [
+        {
+          "OMEGA": 1.0,
+          "K": 0
+        },
+        {
+          "OMEGA": 1.0,
+          "K": {
+            "real": 0.0,
+            "imag": -0.30000000000000004
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    },
+    {
+      "packet": "JOINT_SHEET_INPUT_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "label": "MOMENTUM_BRANCH_RAY_INTERSECTION_1",
+      "STATUS": "BRANCH_LOCUS_ON_PATH",
+      "PATH_DEFINED": false,
+      "SEED_Q": {
+        "real": 0.0,
+        "imag": 2.0
+      },
+      "vertices": [
+        {
+          "OMEGA": 1.0,
+          "K": 0
+        },
+        {
+          "OMEGA": 1.0,
+          "K": {
+            "real": 0.0,
+            "imag": 0.30000000000000004
+          }
+        }
+      ],
+      "cutEncounters": 0,
+      "branchIntersections": 1
+    }
+  ],
+  "limitations": [
+    "No parameter-space exceptional-locus enumeration",
+    "No exhaustive joint frequency/momentum region atlas",
+    "SVD ranks depend on the emitted numerical threshold",
+    "No independent exact rank certificate for every modal subspace",
+    "REGULAR_ALGEBRAIC_MODE_COVERAGE does not explicitly require algebraic/geometric multiplicity agreement",
+    "No profile-dependent frequency pole solve or bound-state existence result"
+  ]
+}

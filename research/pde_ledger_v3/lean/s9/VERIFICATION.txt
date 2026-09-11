@@ -1,0 +1,44 @@
+S9 pilot verification — 2026-09-11
+Command: LAKE_CACHE_DIR=.lake/cache lake build
+Working directory: research/pde_ledger_v3/lean
+Exit status: 0
+Library targets: S9Pilot, S10Pilot, S10Controls, S10Anisotropic, S10Audit
+Pilot modules: warningAsError = true
+Total audited declarations: 250 (21 S9, 34 S10 baseline, 48 controls, 48 anisotropic, 99 Q6/Q7 audit)
+
+info: s9/S9Pilot.lean:28:0: 'S9Pilot.candidateOmegaSq_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:29:0: 'ClassicalMechanics.planeWave_waveEquation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:30:0: 'S9Pilot.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:31:0: 'S9Pilot.modal_stationary_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:32:0: 'S9Pilot.planeWave_lagrangian' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:33:0: 'S9Pilot.eulerLagrange_planeWave' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:34:0: 'S9Pilot.s9_plane_wave_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:35:0: 'S9Pilot.propagating_planeWave_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:36:0: 'S9Pilot.coneValue_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:37:0: 'S9Pilot.concrete_transverse_wave' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:38:0: 'S9Pilot.concrete_longitudinal_not_wave' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:39:0: 'S9Pilot.coord_integration_by_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:40:0: 'S9Pilot.relative_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:41:0: 'S9Pilot.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:42:0: 'S9Pilot.relativeAction_deriv_eq_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:43:0: 'S9Pilot.actionStationary_iff_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:44:0: 'S9Pilot.finiteAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:45:0: 'S9Pilot.s9_variational_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:46:0: 'S9Pilot.propagating_variational_mode_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:47:0: 'S9Pilot.concrete_transverse_stationary' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s9/S9Pilot.lean:48:0: 'S9Pilot.concrete_longitudinal_detected_by_test' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (3779 jobs).
+
+SHA-256 of verified sources and dependency pins; paths relative to lean/:
+9f2ca3c19eeaae99471e373f00a78ec355749e34d85957e1524483a3b8ff817c  s9/S9Pilot.lean
+dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56  s9/S9Pilot/Action.lean
+66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666  s9/S9Pilot/Analytic.lean
+0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1  s9/S9Pilot/Certificate.lean
+28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324  s9/S9Pilot/FiniteAction.lean
+8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21  s9/S9Pilot/PlaneWave.lean
+bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3  s9/S9Pilot/Spectrum.lean
+5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2  s9/S9Pilot/Variation.lean
+1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36  s9/S9Pilot/VariationalCertificate.lean
+302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b  lean-toolchain
+749f67669c4f2a92daef047d9c925afc8d457d35b2adc5a7f8d4ac30fbe24b09  lakefile.toml
+91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e  lake-manifest.json

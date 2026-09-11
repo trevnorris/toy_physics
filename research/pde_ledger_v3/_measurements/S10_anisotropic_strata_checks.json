@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "canonical_focused_pair",
+      "outcome": "PASS",
+      "root_cases": 10
+    },
+    {
+      "name": "stratum_number_permutation",
+      "outcome": "PASS"
+    },
+    {
+      "name": "corrupt_transverse_count",
+      "outcome": "REJECTED",
+      "reason": "S10_XFORM_ANISO_D3_Q8_STRATUM2_ROOT3_: N3 mismatch"
+    },
+    {
+      "name": "omit_perpendicular_rerun",
+      "outcome": "REJECTED",
+      "reason": "S10_XFORM_ANISO_D3_: a discovered stratum lacks a rerun"
+    },
+    {
+      "name": "corrupt_root_list",
+      "outcome": "REJECTED",
+      "reason": "S10_XFORM_ANISO_D3_Q8_STRATUM2_: emitted roots do not exhaust the emitted determinant"
+    },
+    {
+      "name": "PY_generic_outputs_unchanged",
+      "outcome": "PASS",
+      "rows": 48
+    },
+    {
+      "name": "WL_generic_outputs_unchanged",
+      "outcome": "PASS",
+      "rows": 48
+    },
+    {
+      "name": "subset_export_guard",
+      "outcome": "REJECTED",
+      "export_sha256": "bc8de16bae05dcf6caa71d82184f5aa95e2a9d6fd157fdbb674b88f185ed34c9"
+    }
+  ]
+}

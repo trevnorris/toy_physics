@@ -1,0 +1,94 @@
+S10 stiffness-form and scalar-control verification — 2026-09-11
+Command: LAKE_CACHE_DIR=.lake/cache lake build
+Working directory: research/pde_ledger_v3/lean
+Exit status: 0
+Library targets: S9Pilot, S10Pilot, S10Controls, S10Anisotropic, S10Audit
+Pilot modules: warningAsError = true
+Total audited declarations: 250 (21 S9, 34 S10 baseline, 48 controls, 48 anisotropic, 99 Q6/Q7 audit)
+
+info: s10/S10Controls.lean:9:0: 'S10Controls.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:10:0: 'S10Controls.fullGradient_mode_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:11:0: 'S10Controls.divergence_modeJet' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:12:0: 'S10Controls.modalAction_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:13:0: 'S10Controls.modalAction_variation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:14:0: 'S10Controls.momentum_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:15:0: 'S10Controls.momentum_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:16:0: 'S10Controls.eulerLagrange_planeWave' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:17:0: 'S10Controls.relative_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:18:0: 'S10Controls.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:19:0: 'S10Controls.actionStationary_iff_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:20:0: 'S10Controls.finiteAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:21:0: 'S10Controls.phaseAverage_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:22:0: 'S10Controls.phaseAverage_variation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:23:0: 'S10Controls.phaseAverage_stationary_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:24:0: 'S10Controls.full_stationary_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:25:0: 'S10Controls.div_propagating_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:26:0: 'S10Controls.div_zero_frequency_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:27:0: 'S10Controls.actionStationary_iff_mem_amplitudeSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:28:0: 'S10Controls.full_variational_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:29:0: 'S10Controls.div_propagating_variational_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:30:0: 'S10Controls.full_on_cone_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:31:0: 'S10Controls.full_zero_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:32:0: 'S10Controls.div_on_cone_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:33:0: 'S10Controls.div_zero_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:34:0: 'S10Controls.full_mode_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:35:0: 'S10Controls.div_mode_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:36:0: 'S10Controls.stiffness_comparison_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:37:0: 'S10Controls.longitudinal_control_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:38:0: 'S10Controls.transverse_control_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:39:0: 'S10Controls.dimension_one_stiffness_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:40:0: 'S10Controls.concrete_distinct_densities' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:42:0: 'S10ScalarControls.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:43:0: 'S10ScalarControls.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:44:0: 'S10ScalarControls.modalAction_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:45:0: 'S10ScalarControls.phaseAverage_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:46:0: 'S10ScalarControls.spectralAction_variation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:47:0: 'S10ScalarControls.variational_planeWave_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:48:0: 'S10ScalarControls.nonzero_root_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:49:0: 'S10ScalarControls.cone_modeSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:50:0: 'S10ScalarControls.zero_modeSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:51:0: 'S10ScalarControls.positive_variational_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:52:0: 'S10ScalarControls.negative_control_no_real_wave' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:53:0: 'S10ScalarControls.coneValue_scaling_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:54:0: 'S10ScalarControls.signflip_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:55:0: 'S10ScalarControls.zero_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:56:0: 'S10ScalarControls.negative_root_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Controls.lean:57:0: 'S10ScalarControls.coefficient_changes_frequency' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (3779 jobs).
+
+SHA-256 of verified sources and dependency pins; paths relative to lean/:
+afcd9d04d66e5a5928bf0ea52a4ad47537e52a47acb54c084eca68d1fbd9e4a5  s10/S10Controls.lean
+e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566  s10/S10Controls/Action.lean
+bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5  s10/S10Controls/Analytic.lean
+d3f37ba6980025a321f9d30a20eb088d2ce84a40716cce9d7e5fd819f1c0a2a5  s10/S10Controls/Certificate.lean
+c93c492df5ecd5d54dbb7d82c207c7ccc550a393ee7f34c8bcdecbbbf3fb610b  s10/S10Controls/Checks.lean
+39d7b54632a8303aeead81a92cce2728ffd7a0c655fd627e26f5c07927dee2c2  s10/S10Controls/FiniteAction.lean
+ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba  s10/S10Controls/PhaseAverage.lean
+14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e  s10/S10Controls/PlaneWave.lean
+a1f087321d879560fd2bd224dbaee6c4111447f6f6bcd3ad4d7e166ec47ebf52  s10/S10Controls/Scalar.lean
+63b1ccf3e6976b80e5c7d4f7b82cda3b6ad4ddb8561ec2565987b68cc47c22ab  s10/S10Controls/Spectrum.lean
+0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e  s10/S10Controls/Variation.lean
+b5c8f3db8a1497007ccffd6127a82cccdcc153fb911122b0b748afcf0132aae0  s10/S10Pilot.lean
+a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c  s10/S10Pilot/Action.lean
+f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d  s10/S10Pilot/Analytic.lean
+8c2c6c891ba06904977131aa7b1a10f60d0103ff2630cfbc29bccfdfae526d9e  s10/S10Pilot/Certificate.lean
+b401864093e3ee646fb2ef473b0b65f67336bcc99d1f50603e385c28b85c0306  s10/S10Pilot/EdgeCases.lean
+08c22604314893d735839a833052bc3e7989150b63c397b56bc04573ac73fbe7  s10/S10Pilot/FiniteAction.lean
+2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429  s10/S10Pilot/PhaseAverage.lean
+d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb  s10/S10Pilot/PlaneWave.lean
+2831cdc8fef1bd7f2015779564163ac92030c55ce6be2f389404a59b421810e3  s10/S10Pilot/Specialization.lean
+2bd131d15cebac4a233a1304da4461dc2da3cab2e9142155ffcc842649459e83  s10/S10Pilot/Spectrum.lean
+f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d  s10/S10Pilot/Variation.lean
+1ca37546644e8b5a1c49d8c8c29ae0384d9cc95437834e647688456b0d16778a  s10/S10Pilot/VariationalCertificate.lean
+9f2ca3c19eeaae99471e373f00a78ec355749e34d85957e1524483a3b8ff817c  s9/S9Pilot.lean
+dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56  s9/S9Pilot/Action.lean
+66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666  s9/S9Pilot/Analytic.lean
+0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1  s9/S9Pilot/Certificate.lean
+28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324  s9/S9Pilot/FiniteAction.lean
+8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21  s9/S9Pilot/PlaneWave.lean
+bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3  s9/S9Pilot/Spectrum.lean
+5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2  s9/S9Pilot/Variation.lean
+1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36  s9/S9Pilot/VariationalCertificate.lean
+302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b  lean-toolchain
+749f67669c4f2a92daef047d9c925afc8d457d35b2adc5a7f8d4ac30fbe24b09  lakefile.toml
+91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e  lake-manifest.json

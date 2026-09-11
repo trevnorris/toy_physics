@@ -1,0 +1,60 @@
+{
+  "date": "2026-09-11",
+  "scope": "Focused XFORM_ANISO D3/D4 reruns; sampled-stratum comparison, not production export regeneration",
+  "hash_capture": "Final source/output snapshot after successful runs; pre-change digests retained separately",
+  "versions": {
+    "python": "3.10.12",
+    "sympy": "1.14.0"
+  },
+  "execution": [
+    {
+      "engine": "SymPy",
+      "arguments": [
+        "--package",
+        "XFORM_ANISO",
+        "--no-export"
+      ],
+      "exit_status": 0
+    },
+    {
+      "engine": "Wolfram",
+      "command": "WolframKernel -script research/pde_ledger_v3/mathematica/S10_brane_mode_spectrum_mathematica_audit.wl",
+      "environment": {
+        "S10_PACKAGES": "XFORM_ANISO"
+      },
+      "exit_status": 0
+    },
+    {
+      "engine": "focused comparator",
+      "exit_status": 0,
+      "status": "PASS",
+      "root_cases": 10
+    },
+    {
+      "engine": "validation instrument",
+      "status": "PASS",
+      "checks": 8
+    }
+  ],
+  "pre_change_sha256": {
+    "scripts/S10_exports.py": "bc8de16bae05dcf6caa71d82184f5aa95e2a9d6fd157fdbb674b88f185ed34c9",
+    "scripts/S10_brane_mode_spectrum_sympy_audit.py": "7de1764c1c7ff7a87c70074db8d73b8a259aa53294e272e905531c901fd1bb33",
+    "mathematica/S10_brane_mode_spectrum_mathematica_audit.wl": "d50d156549a450ac32bc6299bc7dbd25ce9ad7636a55d3e42e58bddac587d7df",
+    "directives/S10_SHARED_PHYSICS.md": "b9342fcc2d0f2ea70493f71a80bf8c481ef53e7acf232070690d3e8ad2b2bdb7"
+  },
+  "final_sha256": {
+    "directives/S10_SHARED_PHYSICS.md": "3538a68ab4f7ff2ae15abcc53f6dca36686c7a7ceffd006a355a395f0230bb51",
+    "scripts/S10_brane_mode_spectrum_sympy_audit.py": "f609d57afe9b4dedaaf93a5f49b08572779916cf3d14306ae7ea5da60be7f6fe",
+    "mathematica/S10_brane_mode_spectrum_mathematica_audit.wl": "188d9221b6dd50dbbf4c5dabbf521d6431f5634e8d50216a55a50e584861b8e6",
+    "scripts/S10_anisotropic_strata_comparator.py": "8523627fb522fd311e62b6a6df8eaa8f8592c4dbc672754fb8b82cfbf7c8f3a9",
+    "scripts/S10_cross_engine_comparator.py": "99f482508d5117d6c5220af8c7c607bcec22b4442b1e14c4486ee53edbe6e622",
+    "_measurements/S10_anisotropic_strata_check.py": "55918a245ca4e2a955b2a1c40a20b79dfed928d3086de637104c68a58c4aa894",
+    "_measurements/S10_anisotropic_strata_checks.json": "f67974b5f898117dcb770f6386c1e815c9e10d5fc4e78333ed4b05ac2c73958d",
+    "scripts/out/S10_anisotropic_strata_sympy_audit.out": "10ebaecb24b1ca92131566a37197f73cb9b93c8925299ec404838b50fdce75cf",
+    "mathematica/out/S10_anisotropic_strata_mathematica_audit.out": "0718871c408ea2839668d40f68c7ff143e9520e3be4dbb5dcd1e4cdad9f57ccd",
+    "scripts/out/S10_anisotropic_strata_comparator.json": "03f42686607ff403fd087d89ca543c0be8e1dac01ba7ae15cb756fd892d3f478",
+    "scripts/S10_exports.py": "bc8de16bae05dcf6caa71d82184f5aa95e2a9d6fd157fdbb674b88f185ed34c9"
+  },
+  "S10_export_unchanged": true,
+  "Wolfram_Solve_svars_diagnostics": 20
+}

@@ -1,0 +1,192 @@
+S10 Q6/Q7 audit verification — 2026-09-11
+Command: LAKE_CACHE_DIR=.lake/cache lake build
+Working directory: research/pde_ledger_v3/lean
+Exit status: 0
+Library targets: S9Pilot, S10Pilot, S10Controls, S10Anisotropic, S10Audit
+Pilot modules: warningAsError = true
+Total audited declarations: 250 (21 S9, 34 S10 baseline, 48 controls, 48 anisotropic, 99 Q6/Q7 audit)
+
+info: s10/S10Audit.lean:3:0: 'S10Audit.packageAction_uses_stiffness' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:4:0: 'S10Audit.epsilonCurl_eq_jetCurl' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:5:0: 'S10Audit.curlSquared_eq_stiffness' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:6:0: 'S10Audit.main_q7' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:7:0: 'S10Audit.signFlip_q7' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:8:0: 'S10Audit.anisotropic_q7' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:9:0: 'S10Audit.coefficientScale_q7' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:10:0: 'S10Audit.fullGradient_q7' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:11:0: 'S10Audit.divergenceOnly_q7' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:12:0: 'S10Audit.q7_control_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:14:0: 'S10Audit.Expr.HasDim.rescale' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:15:0: 'S10Audit.Expr.infer_iff_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:16:0: 'S10Audit.stiffnessTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:17:0: 'S10Audit.actionTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:18:0: 'S10Audit.stiffnessTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:19:0: 'S10Audit.action_term_equations' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:20:0: 'S10Audit.isotropic_dimension_solve' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:21:0: 'S10Audit.anisotropic_dimension_solve' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:22:0: 'S10Audit.coefficient_scale_free_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:23:0: 'S10Audit.coefficient_scale_declared_dimensionless' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:24:0: 'S10Audit.solved_action_terms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:25:0: 'S10Audit.solved_action_infer' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:26:0: 'S10Audit.inferred_ratio_field_blind' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:27:0: 'S10Audit.inferred_rho_LTM' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:28:0: 'S10Audit.inferred_mu_LTM' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:29:0: 'S10Audit.normKTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:30:0: 'S10Audit.ordinaryRootTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:31:0: 'S10Audit.extraRootTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:32:0: 'S10Audit.ordinaryRootTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:33:0: 'S10Audit.extraRootTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:34:0: 'S10Audit.root_ratio_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:35:0: 'S10Audit.bare_field_square_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:36:0: 'S10Audit.dropped_wavevector_changes_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:37:0: 'S10Audit.actionTree_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:38:0: 'S10Audit.unknown_coefficient_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:39:0: 'S10Audit.anisotropic_scale_is_unknown' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:40:0: 'S10Audit.declared_scale_is_not_unknown' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:41:0: 'S10Audit.anisotropic_equation_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:42:0: 'S10Audit.action_unit_covariance' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:43:0: 'S10Audit.dimensionless_factor_is_invisible' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:44:0: 'S10Audit.bare_field_is_counted' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:45:0: 'S10Audit.curlSquaredTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:46:0: 'S10Audit.q7DifferenceTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:47:0: 'S10Audit.q7DifferenceTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:49:0: 'S10Audit.matrixTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:50:0: 'S10Audit.actionMatrix_mulVec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:51:0: 'S10Audit.matrixDim_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:52:0: 'S10Audit.coefficientTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:53:0: 'S10Audit.stiffnessMatrixTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:54:0: 'S10Audit.matrixTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:55:0: 'S10Audit.stackedTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:56:0: 'S10Audit.staticRootTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:57:0: 'S10Audit.staticRootTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:58:0: 'S10Audit.detTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:59:0: 'S10Audit.detTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:60:0: 'S10Audit.minorTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:61:0: 'S10Audit.minorTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:62:0: 'S10Audit.matrix_minor_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:63:0: 'S10Audit.stacked_minor_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:64:0: 'S10Audit.rowScale_mulVec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:65:0: 'S10Audit.rowScale_kernel_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:66:0: 'S10Audit.rowScale_rank' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:67:0: 'S10Audit.matrixTree_unit_covariance' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:68:0: 'S10Audit.matrixTree_unit_kernel_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:69:0: 'S10Audit.matrixTree_unit_rank' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:70:0: 'S10Audit.minorTree_unit_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:71:0: 'S10Audit.mulVecTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:72:0: 'S10Audit.dotKTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:73:0: 'S10Audit.longitudinalResidualTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:74:0: 'S10Audit.mulVecTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:75:0: 'S10Audit.n5_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:76:0: 'S10Audit.dotKTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:77:0: 'S10Audit.longitudinalResidualTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:78:0: 'S10Audit.chartVector_coordinate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:79:0: 'S10Audit.chartVector_transverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:80:0: 'S10Audit.transverse_ext' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:81:0: 'S10Audit.chart_reconstruct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:82:0: 'S10Audit.chart_linearIndependent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:83:0: 'S10Audit.transverse_chart_reconstruct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:84:0: 'S10Audit.ordinary_chart_reconstruct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:85:0: 'S10Audit.transverse_pivot_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:86:0: 'S10Audit.chartVector_ordinary' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:87:0: 'S10Audit.ordinary_pivot_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:88:0: 'S10Audit.chartVectorTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:89:0: 'S10Audit.chartVectorTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:90:0: 'S10Audit.unit_reconstruct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:91:0: 'S10Audit.unit_linearIndependent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:92:0: 'S10Audit.unitVectorTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:93:0: 'S10Audit.longitudinalBasisTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:94:0: 'S10Audit.extraBasisTree_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:95:0: 'S10Audit.unitVectorTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:96:0: 'S10Audit.longitudinalBasisTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:97:0: 'S10Audit.extraBasisTree_hasDim' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:98:0: 'S10Audit.normalized_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:99:0: 'S10Audit.normalized_linearIndependent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:100:0: 'S10Audit.longitudinalBasis_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:101:0: 'S10Audit.extraBasis_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:102:0: 'S10Audit.longitudinalBasis_linearIndependent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: s10/S10Audit.lean:103:0: 'S10Audit.extraBasis_linearIndependent' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (3779 jobs).
+
+Mutation checks: isolated scratch copies, canonical sources unchanged.
+double_epsilon_contraction: exit 1 (expected); rejected by epsilonCurl_eq_jetCurl.
+drop_root_wavevector: exit 1 (expected); rejected by ordinaryRootTree_eval, ordinaryRootTree_hasDim.
+Full mutation record: ../_measurements/S10_lean_q6_q7_checks.json (relative to lean/).
+
+
+Matrix/minor/basis mutation checks (canonical sources unchanged):
+wrong_stack_row_unit: exit 1 (expected); rejected by stackedTree_hasDim.
+drop_determinant_cofactor_sign: exit 1 (expected); rejected by detTree_eval, detTree_hasDim.
+wrong_transverse_basis_sign: exit 1 (expected); rejected by chartVector_transverse, chartVectorTree_eval.
+Full mutation record: ../_measurements/S10_lean_matrix_checks.json (relative to lean/).
+
+SHA-256 of verified sources and dependency pins; paths relative to lean/:
+9f2ca3c19eeaae99471e373f00a78ec355749e34d85957e1524483a3b8ff817c  s9/S9Pilot.lean
+dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56  s9/S9Pilot/Action.lean
+66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666  s9/S9Pilot/Analytic.lean
+0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1  s9/S9Pilot/Certificate.lean
+28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324  s9/S9Pilot/FiniteAction.lean
+8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21  s9/S9Pilot/PlaneWave.lean
+bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3  s9/S9Pilot/Spectrum.lean
+5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2  s9/S9Pilot/Variation.lean
+1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36  s9/S9Pilot/VariationalCertificate.lean
+b5c8f3db8a1497007ccffd6127a82cccdcc153fb911122b0b748afcf0132aae0  s10/S10Pilot.lean
+a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c  s10/S10Pilot/Action.lean
+f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d  s10/S10Pilot/Analytic.lean
+8c2c6c891ba06904977131aa7b1a10f60d0103ff2630cfbc29bccfdfae526d9e  s10/S10Pilot/Certificate.lean
+b401864093e3ee646fb2ef473b0b65f67336bcc99d1f50603e385c28b85c0306  s10/S10Pilot/EdgeCases.lean
+08c22604314893d735839a833052bc3e7989150b63c397b56bc04573ac73fbe7  s10/S10Pilot/FiniteAction.lean
+2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429  s10/S10Pilot/PhaseAverage.lean
+d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb  s10/S10Pilot/PlaneWave.lean
+2831cdc8fef1bd7f2015779564163ac92030c55ce6be2f389404a59b421810e3  s10/S10Pilot/Specialization.lean
+2bd131d15cebac4a233a1304da4461dc2da3cab2e9142155ffcc842649459e83  s10/S10Pilot/Spectrum.lean
+f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d  s10/S10Pilot/Variation.lean
+1ca37546644e8b5a1c49d8c8c29ae0384d9cc95437834e647688456b0d16778a  s10/S10Pilot/VariationalCertificate.lean
+afcd9d04d66e5a5928bf0ea52a4ad47537e52a47acb54c084eca68d1fbd9e4a5  s10/S10Controls.lean
+e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566  s10/S10Controls/Action.lean
+bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5  s10/S10Controls/Analytic.lean
+d3f37ba6980025a321f9d30a20eb088d2ce84a40716cce9d7e5fd819f1c0a2a5  s10/S10Controls/Certificate.lean
+c93c492df5ecd5d54dbb7d82c207c7ccc550a393ee7f34c8bcdecbbbf3fb610b  s10/S10Controls/Checks.lean
+39d7b54632a8303aeead81a92cce2728ffd7a0c655fd627e26f5c07927dee2c2  s10/S10Controls/FiniteAction.lean
+ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba  s10/S10Controls/PhaseAverage.lean
+14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e  s10/S10Controls/PlaneWave.lean
+a1f087321d879560fd2bd224dbaee6c4111447f6f6bcd3ad4d7e166ec47ebf52  s10/S10Controls/Scalar.lean
+63b1ccf3e6976b80e5c7d4f7b82cda3b6ad4ddb8561ec2565987b68cc47c22ab  s10/S10Controls/Spectrum.lean
+0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e  s10/S10Controls/Variation.lean
+dd1ee8be77649a97c703aa08c72adff2db2c68d45f8341147cdd53ee7bb5f86e  s10/S10Anisotropic.lean
+cf43d3690f214271a3e96d18137886c5dd2a14297beeb20ec590c9cb38e10d49  s10/S10Anisotropic/Action.lean
+be2f8f2da95cf8679d033894c4eee3aa610941d4babd9708966e846920bcb597  s10/S10Anisotropic/Analytic.lean
+9262328444911c596064b19e47ed3ba7d767731656582e0ec6a71e7bc1ff4aea  s10/S10Anisotropic/Census.lean
+47b659b6c9491aa213c7a704bb1a73d355b2e4e0aa4a250763cb7a9bab72d1d5  s10/S10Anisotropic/Certificate.lean
+12d0f2a710b1f9071f21cfbfdaff7990555e2c0017902096710ed234e405dca2  s10/S10Anisotropic/Checks.lean
+0fc1a4a0dd4fc4b41a9a86b85f1bdd2fd8d7ad8f0e2b489bee719d178f722120  s10/S10Anisotropic/FiniteAction.lean
+1e8d0b330ccc2f689a836b05650fae56cdfc4c4b4fff3b77857e6284a5521014  s10/S10Anisotropic/Geometry.lean
+b9929ed837fdc3b7f69492880ee3d932c5130baae4e472087f858ca443411887  s10/S10Anisotropic/PhaseAverage.lean
+0d411ec311492766040a17728624366a109efdc6421f892c5efa601712ea4075  s10/S10Anisotropic/PlaneWave.lean
+b7246c8c5ac9bf3eb0bd858066f85ce1e86be2c9f2a010abeaecdee567319bc4  s10/S10Anisotropic/Scaling.lean
+7f17127134b98a14232c124ce50d5c9e4d83a89b43e2c654c157cea566151489  s10/S10Anisotropic/Spectrum.lean
+49dc93c231dfcb258c2761049e6c9479af3b02f8aab5035cd4e7a994e51dbe57  s10/S10Anisotropic/Variation.lean
+17aa1c35b6ef4bfbcf52b32ef50c7a02cd9f0869206a3705dc6ec3b6a6356503  s10/S10Audit.lean
+d6aee182d76c3a6f86f317f3be710381638590c0253ee57e23885e1efee267f8  s10/S10Audit/ActionTrees.lean
+8d76c954f15e38362e61c349433f864ed6d7f366dfae6476e702d1fccac5407c  s10/S10Audit/Checks.lean
+338e93e37ec11de112e199269188531aac9e88672bca9d6e4d3415f98f99d0d6  s10/S10Audit/CoefficientInventory.lean
+3ec19dcd7e1541a22541788b5c2ed4f1d51eec805d91ecb16b9d4d75d6545901  s10/S10Audit/Curl.lean
+aa56254eca1b64b7128905d9c1da1850d0ee37c0bc46789b25279e2caafc786d  s10/S10Audit/DimensionSolve.lean
+775b6af9061eb826315a3c9b7404f6fb110daf2efcc80287121dad490b61c737  s10/S10Audit/Dimensions.lean
+0345d93c86a28dddb26a46ba2249f529db6244c4d92666aa6becd59add7f1a35  s10/S10Audit/Packages.lean
+f8ab983a8e66cfff270106b94601f1b5688fb1f553dc6de4a793649787de2024  s10/S10Audit/RootDimensions.lean
+9e7b5b76966c9050c37b97cedbf155930d70a8db8a1ed0da675186513c56f73f  s10/S10Audit/MatrixTrees.lean
+42237ebceef88e933ea4d6c3b725625dabb648a91ff10ff4225c7ba1aac55824  s10/S10Audit/MinorTrees.lean
+16bc5ed9376745d91e4b47f2a20d22ed92a36f969af0170bfbaf02102fbe3dfd  s10/S10Audit/MatrixCovariance.lean
+ca40022697e6eaa9c945d5b431aff2e86e31018f9b0ee021a1929b0f948a6aa1  s10/S10Audit/ResidualTrees.lean
+6abf0349a7cceb81e869815f4800625d1e3477e115507891eec5f60efbf4739b  s10/S10Audit/BasisTrees.lean
+e4f531f7890630cb7db10e9b1fd79b5bf6e4d2c3071a0c3a035f057d6ee77246  s10/S10Audit/NormalizedTrees.lean
+749f67669c4f2a92daef047d9c925afc8d457d35b2adc5a7f8d4ac30fbe24b09  lakefile.toml
+91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e  lake-manifest.json
+302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b  lean-toolchain
+15f5be5a08212bf3f6c1bbfae114e3eb9b7077891c03fd9260751e63fe6c7066  .lake/packages/Physlib/Physlib/Mathematics/LeviCivita/Basic.lean
+67d4e1b59769f07dab1f15ed7e5c431ef0f8ab6381cc0953574920c60c65259b  .lake/packages/Physlib/Physlib/Mathematics/KroneckerDelta/Basic.lean
+b69d82dba7a28fd3be15e0ee27b92999e76c7f652a3d4342f1f825d5ab2b816b  .lake/packages/Physlib/Physlib/Units/Dimension.lean
+5976be2919d054c8d85a4fb585705f62ff074f38ac3e0c86305e735e0baef143  .lake/packages/Physlib/Physlib/Units/Exponent.lean
+138798bd419b6e42497808f29ad6c836d83aae46bf3759a226d65bb6efcce4d3  ../_measurements/S10_lean_matrix_check.py
+f42e81931839b3c99a2f4b2740d832d271b70a31154cf93253c5bb4bd4b78212  ../_measurements/S10_lean_matrix_checks.json
+a7cc71d55a208dcf4db7d07dd0a18d77548f04d4b1dec4d5227cd3894477447a  ../_measurements/S10_lean_q6_q7_check.py

@@ -2,11 +2,37 @@
 
 ## Record boundary
 
-This record reports the S10 computation that was actually emitted by the live
+This record reports the S10 computation emitted by the original full-sweep
 SymPy and Wolfram engines and the narrower set of claims that survives their
-live comparator. It does not turn a supplied action into an explanation of that
+broad comparator. It does not turn a supplied action into an explanation of that
 action, and it does not turn the symbolic sweep in D into a derivation that the
 physical brane has D = 3.
+
+**2026-09-11 extension:** Lean now supplies variational and mode-classification
+proofs for all six action families. It also identified a second anisotropic
+exceptional direction, perpendicular to the distinguished axis. The focused
+CAS repair and ten passing root comparisons are recorded below and in
+[the repair report](../_measurements/S10_anisotropic_strata_report.md).
+The original full-sweep outputs, broad comparator and `S10_exports.py` remain
+unchanged; references to the live join below describe that retained comparator
+artifact, not the new focused comparison. General formal coverage and remaining
+Q6/Q7/integration obligations are listed in [COVERAGE.md](../lean/s10/COVERAGE.md).
+
+The subsequent [Q6/Q7 Lean extension](../lean/s10/Q6_Q7_RESULT.md) now proves
+the action/root dimensional analysis and the six-package Levi-Civita comparison.
+It derives the anisotropic scale's units, retains the coefficient-scale free
+family until its declaration is supplied, and makes the homogeneity check's
+dependence on the dimension solve explicit. These proofs do not change the
+retained CAS/comparator dispositions described below.
+
+The [matrix and basis extension](../lean/s10/MATRIX_RESULT.md) additionally
+proves dimensions for the six modal matrices, mixed-unit N3 minors, complete
+coordinate bases and N5/N6 residuals. Unit changes preserve entire kernels,
+ranks and minor zero loci. Basis charts include explicit nonzero denominators
+and pivot-existence proofs. The full Lean build now audits 250 declarations;
+certifying actual CAS emissions and reconciling route normalizations remain
+separate obligations. This extension leaves the retained outputs and exports
+unchanged.
 
 The measured generic result is:
 
@@ -31,16 +57,18 @@ keeps `S_curl` and changes the kinetic quadratic form on one distinguished
 axis to `s_ρ(∂_t u_1)² + Σ_{j=2..D}(∂_t u_j)²`, with `s_ρ > 0` and
 `s_ρ ≠ 1`. Thus the isotropic inertia value is not admitted by this control.
 Writing each root as `N2 / N3`, where N2 is total nullity and N3 is the
-basis-independent exactly-transverse nullity, the committed readings are:
+basis-independent exactly-transverse nullity, the original and focused readings are:
 
 | D | case | roots in emitted order: N2 / N3 | total N2 / N3 over propagating roots |
 |---:|---|---|---:|
 | 3 | MAIN, generic | zero `1 / 0`; positive `2 / 2` | `2 / 2` |
 | 3 | ANISO, generic | zero `1 / 0`; positive `1 / 1`; positive `1 / 0` | `2 / 1` |
-| 3 | ANISO, allowed stratum | zero `1 / 0`; positive `2 / 2` | `2 / 2` |
+| 3 | ANISO, parallel stratum | zero `1 / 0`; positive `2 / 2` | `2 / 2` |
+| 3 | ANISO, perpendicular stratum (new) | zero `1 / 0`; positive `1 / 1`; positive `1 / 1` | `2 / 2` |
 | 4 | MAIN, generic | zero `1 / 0`; positive `3 / 3` | `3 / 3` |
 | 4 | ANISO, generic | zero `1 / 0`; positive `2 / 2`; positive `1 / 0` | `3 / 2` |
-| 4 | ANISO, allowed stratum | zero `1 / 0`; positive `3 / 3` | `3 / 3` |
+| 4 | ANISO, parallel stratum | zero `1 / 0`; positive `3 / 3` | `3 / 3` |
+| 4 | ANISO, perpendicular stratum (new) | zero `1 / 0`; positive `2 / 2`; positive `1 / 1` | `3 / 3` |
 
 Therefore the measured inertia-form change does not remove a propagating
 mode: at both shared dimensions its total N2 nullity over the positive roots
@@ -51,7 +79,7 @@ additional positive root, instead of MAIN's N3 nullity D − 1 on one positive
 root. MAIN itself is unchanged at every measured D; this is an added condition
 on the headline's generality, not a retraction of the MAIN result.
 
-The allowed ANISO stratum is `k_2 = ... = k_D = 0` with `k_1 ≠ 0`, so the
+The parallel ANISO stratum is `k_2 = ... = k_D = 0` with `k_1 ≠ 0`, so the
 wavevector has zero obliquity to the distinguished inertia axis. There the two
 generic positive branches coalesce, and the rerun restores N2 / N3 totals
 `2 / 2` at D = 3 and `3 / 3` at D = 4. This is distinct from restoring
@@ -67,8 +95,11 @@ XCOEF_SCALE nevertheless moves the nonzero root's coefficient, and SIGNFLIP
 moves that root's sign and stability; their unchanged N3 counts do not mean
 that nothing physical moved.
 
-The N3 rerun also shows that modal obliquity vanishes on that stratum: every
-propagating null direction there is exactly transverse.
+The perpendicular stratum is `k_1 = 0` with a nonzero remaining wavevector.
+Here the positive branches remain distinct, but the extra branch's N3 rises
+from zero to one. Its N2 is unchanged. Both exceptional directions have total
+propagating N2 / N3 equal to `(D − 1) / (D − 1)`; the Lean classification proves
+this throughout those directions under the supplied assumptions.
 
 SymPy emits the MAIN operands at :366, :397, :404, :462, :469; :677,
 :708, :715, :773, and :780, and the ANISO generic and stratum operands at
@@ -83,8 +114,10 @@ corresponding operands at :240, :257, :260, :270, :273; :462, :480, :483,
 mathematica/out/S10_brane_mode_spectrum_mathematica_audit.out.
 
 The generic per-root N2 and N3 integer rows above have joined comparator PASS
-verdicts; the stratum locus and rerun are paired raw readings only, because
-their engine tag names do not join. The positivity of ANISO's third root is a
+verdicts. In the original broad join the parallel locus and rerun are paired
+raw readings only, because their engine tag names do not join. The new focused
+comparison covers both exceptional directions at its explicit witnesses.
+The positivity of ANISO's third root in the original CAS record is a
 premise-backed inference from its emitted expression under `ρ_br > 0`, `μ_R > 0`,
 `s_ρ > 0`, and nonzero real wavevector, not a joined sign verdict: its live
 sign rows remain unresolved by the comparator. N3, as specified at
@@ -104,8 +137,9 @@ headline because the headline is otherwise independently quotable.
 
 The physical selection D = 3 is not made in S10. The live S10 computation keeps
 D symbolic for dimensions and evaluates an indexed sweep at D = 2, 3, 4, 5.
-Consequently, S10 establishes the conditional map D ↦ D − 1 for the cases
-measured; it does not establish which D nature selects.
+The new Lean baseline proof establishes the conditional map D ↦ D − 1 for
+arbitrary finite D with a nonzero wavevector, extending the measured sweep.
+Neither establishes which D nature selects.
 
 ## What was supplied and what was computed
 
@@ -242,7 +276,7 @@ and Q6 rows are enumerated in the comparator section.
 The controls show that the mode count is action-sensitive: the two form
 controls alter the nullity structure, the sign flip preserves the count while
 making the propagating root unstable, anisotropic inertia creates an additional
-branch and an exceptional stratum, and a dimensionless coefficient rescaling
+branch and exceptional strata, and a dimensionless coefficient rescaling
 moves the positive root without moving the count.
 
 The comparison that fixes the headline's scope is visible at every shared
@@ -344,13 +378,14 @@ independent route for that convention.
 
 ## Exceptional strata
 
-ANISO has an allowed exceptional stratum. It changes the generic answer rather
-than merely relabelling it:
+The original full sweep found the parallel locus, where the positive roots
+coalesce. The Lean extension additionally proves the perpendicular N3 change,
+which occurs without an N2 rank drop or a root coincidence:
 
-| case | generic nonzero transverse nullities | allowed-stratum spectrum | allowed-stratum positive-root transverse nullity |
-|---|---|---|---:|
-| ANISO, D = 3 | 1 and 0 | 2 roots | 2 |
-| ANISO, D = 4 | 2 and 0 | 2 roots | 3 |
+| case | generic positive-root N3 values | parallel positive-root N3 | perpendicular positive-root N3 values |
+|---|---|---:|---|
+| ANISO, D = 3 | 1 and 0 | 2 | 1 and 1 |
+| ANISO, D = 4 | 2 and 0 | 3 | 2 and 1 |
 
 SymPy emits the D = 3 allowed locus and stratum rerun at
 scripts/out/S10_brane_mode_spectrum_sympy_audit.out:3269, :3289-3290,
@@ -360,19 +395,27 @@ mathematica/out/S10_brane_mode_spectrum_mathematica_audit.out:2246,
 :2258-2259, :2276, :2279, :2289, :2292, and D = 4 at :2601, :2613-2614,
 :2631, :2634, :2644, :2647.
 
-There is no live cross-engine stratum verdict. Measurement of the live join
+There is no stratum verdict in the original broad comparator. Measurement of that join
 found 275 Python stratum-tag names, 102 Wolfram stratum-tag names, and 0 shared
 stratum-tag names. The shared specification itself records that the as-built
 stratum names are not aligned at directives/S10_SHARED_PHYSICS.md:484-502.
-Thus the table above is a paired reading of raw artifacts, not a comparator
-pass, and the comparator establishes no exceptional-stratum result.
+That original comparator therefore supplies no exceptional-stratum result.
 
-Both raw engines report the same exceptional movement, but they consume the
-same shared action and assumptions. That common-mode limitation applies to the
-exceptional table as well. Completeness is also not established inside either
-engine: the specification assigns completeness to an orchestrator and says the
-engine does not assert it (directives/S10_SHARED_PHYSICS.md:385-408). No live
-artifact supplies that completeness verdict.
+The focused repair now discovers rank loci for both `M_r` and `[M_r; k^T]`,
+and partitions the discovered Wolfram regions by membership before sampling.
+Both engines rerun both directions at D=3 and D=4. The new
+[focused comparator](../scripts/out/S10_anisotropic_strata_comparator.json)
+passes all ten root cases, matching direction geometry and `r/|k|²` and
+checking ranks and complete emitted bases at each witness. It does not prove
+equivalence of the general Boolean loci or completeness of the CAS discovery
+algorithm. The arbitrary-D direction classification instead comes from
+[the Lean proof](../lean/s10/ANISOTROPIC_RESULT.md).
+
+The [repair report](../_measurements/S10_anisotropic_strata_report.md) records
+the exact commands, limits, mutation checks and unchanged export hash. All
+three implementations still depend on the same supplied action and assumptions.
+Full-sweep regeneration and integration with the broad comparator/export chain
+remain open.
 
 ## Dimensional result
 
@@ -701,9 +744,11 @@ instrument.
    does not compare the underlying route constructions. The shared specification
    expressly denies that the two routes are independent physics derivations.
 
-6. **Exceptional-stratum cross-engine agreement remains open.** There are zero
-   shared stratum names and no live completeness verdict, despite matching raw
-   tables.
+6. **Exceptional-stratum integration remains open.** The original broad join
+   has no shared stratum names. The new focused comparator passes ten root
+   cases across both anisotropic directions, and Lean proves their general
+   classification; neither is a full production comparator/export refresh or
+   a general certification of the CAS discovery algorithm.
 
 7. **The historical before/after Q7 failure count is not reproducible from the
    live tree.** The harness that produced it was deleted. Re-establishing that

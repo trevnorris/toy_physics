@@ -7,10 +7,7 @@ from pathlib import Path
 
 
 EXPORT_PATH = Path(__file__).with_name("S10_exports.py")  # CONTROL · generated-module publication path
-if __name__ == "__main__":
-    EXPORT_PATH.unlink(missing_ok=True)
-
-
+import argparse
 import itertools
 import os
 import re
@@ -1664,38 +1661,43 @@ def run_package_dimension(
 
     for index, (root, objects) in enumerate(zip(roots, q4_by_root), 1):
         root_prefix = prefix + f"ROOT{index}_"
-        root_matrix = objects["N1_MATRIX"]
-        generic_rank = int(objects["N2_RANK"])
-        if not isinstance(root_matrix, sp.MatrixBase):
-            raise RuntimeError("Q8 root matrix is not a matrix")
-        minors = rank_drop_minors(sp.Matrix(root_matrix), generic_rank)
-        emit_physical(emitter, walker, root_prefix + "Q8_RANK_DROP_MINORS", sp.Tuple(*minors))
-        rank_locus = solve_real_locus(minors, kvec, assumptions, impossible=(generic_rank == 0))
-        rank_allowed = locus_allowed_data(rank_locus, kvec, k_squared, assumptions)
-        emitter.emit(root_prefix + "Q8_RANK_DROP_LOCUS", rank_locus.expression())
-        emitter.emit(root_prefix + "Q8_RANK_DROP_REALITY_FILTER", rank_locus.reality_filter)
-        emitter.emit(root_prefix + "Q8_RANK_DROP_ALLOWED_OPERANDS", rank_allowed.operands)
-        emitter.emit(root_prefix + "Q8_RANK_DROP_ALLOWED_TEST", rank_allowed.allowed)
-        emitter.emit(root_prefix + "Q8_RANK_DROP_ALLOWED_WITNESSES", rank_allowed.witnesses)
-        emitter.emit(
-            root_prefix + "Q8_RANK_DROP_BRANCH_ALLOWED_OPERANDS",
-            rank_allowed.branch_operands,
-        )
-        emitter.emit(
-            root_prefix + "Q8_RANK_DROP_BRANCH_ALLOWED_TESTS",
-            rank_allowed.branch_tests,
-        )
-        emitter.emit(
-            root_prefix + "Q8_RANK_DROP_BRANCH_ALLOWED_WITNESSES",
-            rank_allowed.branch_witnesses,
-        )
+        for family, matrix_key, rank_key in (
+            ("RANK_DROP", "N1_MATRIX", "N2_RANK"),
+            ("TRANSVERSE_RANK_DROP", "N3_STACKED_MATRIX", "N3_STACKED_RANK"),
+        ):
+            root_matrix = objects[matrix_key]
+            generic_rank = int(objects[rank_key])
+            if not isinstance(root_matrix, sp.MatrixBase):
+                raise RuntimeError("Q8 rank input is not a matrix")
+            rank_prefix = root_prefix + "Q8_" + family
+            minors = rank_drop_minors(sp.Matrix(root_matrix), generic_rank)
+            emit_physical(emitter, walker, rank_prefix + "_MINORS", sp.Tuple(*minors))
+            rank_locus = solve_real_locus(minors, kvec, assumptions, impossible=(generic_rank == 0))
+            rank_allowed = locus_allowed_data(rank_locus, kvec, k_squared, assumptions)
+            emitter.emit(rank_prefix + "_LOCUS", rank_locus.expression())
+            emitter.emit(rank_prefix + "_REALITY_FILTER", rank_locus.reality_filter)
+            emitter.emit(rank_prefix + "_ALLOWED_OPERANDS", rank_allowed.operands)
+            emitter.emit(rank_prefix + "_ALLOWED_TEST", rank_allowed.allowed)
+            emitter.emit(rank_prefix + "_ALLOWED_WITNESSES", rank_allowed.witnesses)
+            emitter.emit(
+                rank_prefix + "_BRANCH_ALLOWED_OPERANDS",
+                rank_allowed.branch_operands,
+            )
+            emitter.emit(
+                rank_prefix + "_BRANCH_ALLOWED_TESTS",
+                rank_allowed.branch_tests,
+            )
+            emitter.emit(
+                rank_prefix + "_BRANCH_ALLOWED_WITNESSES",
+                rank_allowed.branch_witnesses,
+            )
+            local_prefix = "PY_S10_LOCAL_" + rank_prefix.removeprefix("PY_S10_")
+            emitter.emit(local_prefix + "_SOLVER_OUTPUT", rank_locus.raw_solver_output)
+            emitter.emit(local_prefix + "_SOLVER_ROUTE", rank_locus.solver_route)
+            enroll_locus(rank_locus, rank_allowed)
         emitter.emit(root_prefix + "Q8_ROOT_COINCIDENCE_LOCI", coincidence_loci)
         emitter.emit(root_prefix + "Q8_ROOT_COINCIDENCE_ALLOWED_OPERANDS", coincidence_operands)
         emitter.emit(root_prefix + "Q8_ROOT_COINCIDENCE_ALLOWED_TESTS", coincidence_tests)
-        local_prefix = "PY_S10_LOCAL_" + root_prefix.removeprefix("PY_S10_")
-        emitter.emit(local_prefix + "Q8_RANK_DROP_SOLVER_OUTPUT", rank_locus.raw_solver_output)
-        emitter.emit(local_prefix + "Q8_RANK_DROP_SOLVER_ROUTE", rank_locus.solver_route)
-        enroll_locus(rank_locus, rank_allowed)
 
     allowed_strata = [
         candidate
@@ -2330,13 +2332,24 @@ def write_exports(emitter: Emitter, own_records: Sequence[ExportRecord]) -> None
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--package", action="append", choices=[p.name for p in PACKAGES],
+                        help="Run selected packages; requires --no-export.")
+    parser.add_argument("--no-export", action="store_true",
+                        help="Emit the audit without replacing the downstream S10 export module.")
+    args = parser.parse_args()
+    if args.package and not args.no_export:
+        parser.error("a package subset requires --no-export")
+    selected = tuple(p for p in PACKAGES if not args.package or p.name in args.package)
+    if not args.no_export:
+        EXPORT_PATH.unlink(missing_ok=True)
     emitter = Emitter()
     declared_pairs = [
-        (package.name, n) for package in PACKAGES for n in package.dimensions
+        (package.name, n) for package in selected for n in package.dimensions
     ]
     completed_pairs: list[tuple[str, int]] = []
     derived_dimensions: dict[sp.Symbol, tuple[sp.Expr, ...]] | None = None
-    for package in PACKAGES:
+    for package in selected:
         for n in package.dimensions:
             current = run_package_dimension(emitter, package, n)
             completed_pairs.append((package.name, n))
@@ -2357,6 +2370,8 @@ def main() -> int:
     local_list_tag = "PY_S10_LOCAL_TAG_NAMES"
     local_names = [*emitter.local_names, local_list_tag]
     emitter.emit(local_list_tag, sp.Tuple(*(Str(name) for name in local_names)))  # DERIVED · local emission-name inventory
+    if args.no_export:
+        return 0
     main_component_counts = next(
         package.dimensions for package in PACKAGES if package.name == "MAIN"
     )

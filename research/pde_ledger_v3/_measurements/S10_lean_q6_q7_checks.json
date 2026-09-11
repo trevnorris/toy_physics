@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "scope": "two isolated source mutations",
+  "checks": [
+    {
+      "name": "double_epsilon_contraction",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "wall_seconds": 14.967,
+      "source": "lean/s10/S10Audit/Curl.lean",
+      "canonical_sha256_before": "3ec19dcd7e1541a22541788b5c2ed4f1d51eec805d91ecb16b9d4d75d6545901",
+      "canonical_sha256_after": "3ec19dcd7e1541a22541788b5c2ed4f1d51eec805d91ecb16b9d4d75d6545901",
+      "mutation_sha256": "256eb4f2e6b978ace27cb522d7bb48ad495980468c9676303021046ad5c815ee",
+      "failed_theorems": [
+        "epsilonCurl_eq_jetCurl"
+      ],
+      "diagnostic_error_lines": [
+        15
+      ],
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/q6_q7/Curl.lean"
+      ],
+      "log_sha256": "f0c1688066416dde73beb8df7fdf269776e68ed10c98743d93dd6c7f382d8e3a"
+    },
+    {
+      "name": "drop_root_wavevector",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "wall_seconds": 9.575,
+      "source": "lean/s10/S10Audit/RootDimensions.lean",
+      "canonical_sha256_before": "f8ab983a8e66cfff270106b94601f1b5688fb1f553dc6de4a793649787de2024",
+      "canonical_sha256_after": "f8ab983a8e66cfff270106b94601f1b5688fb1f553dc6de4a793649787de2024",
+      "mutation_sha256": "0734b167173d97d02a8deb8500fe70c5a8489a57cf9f602f96ae1127aedc6cb5",
+      "failed_theorems": [
+        "ordinaryRootTree_eval",
+        "ordinaryRootTree_hasDim"
+      ],
+      "diagnostic_error_lines": [
+        29,
+        33,
+        68
+      ],
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/q6_q7/RootDimensions.lean"
+      ],
+      "log_sha256": "101906112b8d78ae2893045b000d40026e5c62dbcee71fc57407e9c9dbcf3c05"
+    }
+  ]
+}

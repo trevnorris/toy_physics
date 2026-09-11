@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "scope": "three isolated matrix/minor/basis source mutations",
+  "checks": [
+    {
+      "name": "wrong_stack_row_unit",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "wall_seconds": 19.691,
+      "source": "lean/s10/S10Audit/MatrixTrees.lean",
+      "canonical_sha256_before": "9e7b5b76966c9050c37b97cedbf155930d70a8db8a1ed0da675186513c56f73f",
+      "canonical_sha256_after": "9e7b5b76966c9050c37b97cedbf155930d70a8db8a1ed0da675186513c56f73f",
+      "mutation_sha256": "0195b44135306afbc96f0fa4a585c7308fc164b9370e65bacdcaa4149835e405",
+      "failed_theorems": [
+        "stackedTree_hasDim"
+      ],
+      "diagnostic_error_lines": [
+        148
+      ],
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/matrix/MatrixTrees.lean"
+      ],
+      "log_sha256": "c9db35700ee82c9c974d9060cb584ee3bc5a858313e6c0bc1c4ccf057f7d777c"
+    },
+    {
+      "name": "drop_determinant_cofactor_sign",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "wall_seconds": 8.333,
+      "source": "lean/s10/S10Audit/MinorTrees.lean",
+      "canonical_sha256_before": "42237ebceef88e933ea4d6c3b725625dabb648a91ff10ff4225c7ba1aac55824",
+      "canonical_sha256_after": "42237ebceef88e933ea4d6c3b725625dabb648a91ff10ff4225c7ba1aac55824",
+      "mutation_sha256": "8238798e61547d8cf7bf086bf7d9a6ce7896d9b1a794cd0c8b61da4a5fef5f77",
+      "failed_theorems": [
+        "detTree_eval",
+        "detTree_hasDim"
+      ],
+      "diagnostic_error_lines": [
+        24,
+        36
+      ],
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/matrix/MinorTrees.lean"
+      ],
+      "log_sha256": "c7053bc92c1f9d80ed25e21b77b9773ea39223c452d3ff3002dc280eb6dd1025"
+    },
+    {
+      "name": "wrong_transverse_basis_sign",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "wall_seconds": 8.525,
+      "source": "lean/s10/S10Audit/BasisTrees.lean",
+      "canonical_sha256_before": "6abf0349a7cceb81e869815f4800625d1e3477e115507891eec5f60efbf4739b",
+      "canonical_sha256_after": "6abf0349a7cceb81e869815f4800625d1e3477e115507891eec5f60efbf4739b",
+      "mutation_sha256": "c123de7413c7431880c64690b7170f908c0a639eb93f1f697a3e8c63532dba78",
+      "failed_theorems": [
+        "chartVector_transverse",
+        "chartVectorTree_eval"
+      ],
+      "diagnostic_error_lines": [
+        20,
+        121,
+        122,
+        123,
+        123,
+        123
+      ],
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/matrix/BasisTrees.lean"
+      ],
+      "log_sha256": "4d164c73f2e1776c3f04559eb46c91c7e843264667efa7b5d71f400990a10e73"
+    }
+  ]
+}

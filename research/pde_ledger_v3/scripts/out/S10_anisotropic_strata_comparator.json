@@ -1,0 +1,369 @@
+{
+  "status": "PASS",
+  "scope": "sampled strata: normalized roots and N2/N3/N4/N7 counts",
+  "inputs": {
+    "research/pde_ledger_v3/scripts/out/S10_anisotropic_strata_sympy_audit.out": "10ebaecb24b1ca92131566a37197f73cb9b93c8925299ec404838b50fdce75cf",
+    "research/pde_ledger_v3/mathematica/out/S10_anisotropic_strata_mathematica_audit.out": "0718871c408ea2839668d40f68c7ff143e9520e3be4dbb5dcd1e4cdad9f57ccd"
+  },
+  "diagnostics": {
+    "WL_Solve_svars_messages": 20
+  },
+  "PY": {
+    "D3_parallel": {
+      "point": [
+        "1",
+        "0",
+        "0"
+      ],
+      "norm_squared": "1",
+      "prefix": "S10_XFORM_ANISO_D3_Q8_STRATUM1_",
+      "modes": [
+        {
+          "root": "0",
+          "root_over_norm": "0",
+          "N2": 1,
+          "N3": 0,
+          "N4": 1,
+          "N2_rank": 2,
+          "N3_rank": 3,
+          "N7": 1
+        },
+        {
+          "root": "muR/rhoBr",
+          "root_over_norm": "muR/rhoBr",
+          "N2": 2,
+          "N3": 2,
+          "N4": 0,
+          "N2_rank": 1,
+          "N3_rank": 1,
+          "N7": 2
+        }
+      ]
+    },
+    "D3_perpendicular": {
+      "point": [
+        "0",
+        "1",
+        "0"
+      ],
+      "norm_squared": "1",
+      "prefix": "S10_XFORM_ANISO_D3_Q8_STRATUM2_",
+      "modes": [
+        {
+          "root": "0",
+          "root_over_norm": "0",
+          "N2": 1,
+          "N3": 0,
+          "N4": 1,
+          "N2_rank": 2,
+          "N3_rank": 3,
+          "N7": 1
+        },
+        {
+          "root": "muR/rhoBr",
+          "root_over_norm": "muR/rhoBr",
+          "N2": 1,
+          "N3": 1,
+          "N4": 0,
+          "N2_rank": 2,
+          "N3_rank": 2,
+          "N7": 1
+        },
+        {
+          "root": "muR/(rhoBr*sRho)",
+          "root_over_norm": "muR/(rhoBr*sRho)",
+          "N2": 1,
+          "N3": 1,
+          "N4": 0,
+          "N2_rank": 2,
+          "N3_rank": 2,
+          "N7": 1
+        }
+      ]
+    },
+    "D4_parallel": {
+      "point": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "norm_squared": "1",
+      "prefix": "S10_XFORM_ANISO_D4_Q8_STRATUM1_",
+      "modes": [
+        {
+          "root": "0",
+          "root_over_norm": "0",
+          "N2": 1,
+          "N3": 0,
+          "N4": 1,
+          "N2_rank": 3,
+          "N3_rank": 4,
+          "N7": 1
+        },
+        {
+          "root": "muR/rhoBr",
+          "root_over_norm": "muR/rhoBr",
+          "N2": 3,
+          "N3": 3,
+          "N4": 0,
+          "N2_rank": 1,
+          "N3_rank": 1,
+          "N7": 3
+        }
+      ]
+    },
+    "D4_perpendicular": {
+      "point": [
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      "norm_squared": "1",
+      "prefix": "S10_XFORM_ANISO_D4_Q8_STRATUM2_",
+      "modes": [
+        {
+          "root": "0",
+          "root_over_norm": "0",
+          "N2": 1,
+          "N3": 0,
+          "N4": 1,
+          "N2_rank": 3,
+          "N3_rank": 4,
+          "N7": 1
+        },
+        {
+          "root": "muR/rhoBr",
+          "root_over_norm": "muR/rhoBr",
+          "N2": 2,
+          "N3": 2,
+          "N4": 0,
+          "N2_rank": 2,
+          "N3_rank": 2,
+          "N7": 2
+        },
+        {
+          "root": "muR/(rhoBr*sRho)",
+          "root_over_norm": "muR/(rhoBr*sRho)",
+          "N2": 1,
+          "N3": 1,
+          "N4": 0,
+          "N2_rank": 3,
+          "N3_rank": 3,
+          "N7": 1
+        }
+      ]
+    }
+  },
+  "WL": {
+    "D3_parallel": {
+      "point": [
+        "27",
+        "0",
+        "0"
+      ],
+      "norm_squared": "729",
+      "prefix": "S10_XFORM_ANISO_D3_STRATUM1_",
+      "modes": [
+        {
+          "root": "0",
+          "root_over_norm": "0",
+          "N2": 1,
+          "N3": 0,
+          "N4": 1,
+          "N2_rank": 2,
+          "N3_rank": 3,
+          "N7": 1
+        },
+        {
+          "root": "729*muR/rhoBr",
+          "root_over_norm": "muR/rhoBr",
+          "N2": 2,
+          "N3": 2,
+          "N4": 0,
+          "N2_rank": 1,
+          "N3_rank": 1,
+          "N7": 2
+        }
+      ]
+    },
+    "D3_perpendicular": {
+      "point": [
+        "0",
+        "27",
+        "-1/2"
+      ],
+      "norm_squared": "2917/4",
+      "prefix": "S10_XFORM_ANISO_D3_STRATUM2_",
+      "modes": [
+        {
+          "root": "0",
+          "root_over_norm": "0",
+          "N2": 1,
+          "N3": 0,
+          "N4": 1,
+          "N2_rank": 2,
+          "N3_rank": 3,
+          "N7": 1
+        },
+        {
+          "root": "2917*muR/(4*rhoBr)",
+          "root_over_norm": "muR/rhoBr",
+          "N2": 1,
+          "N3": 1,
+          "N4": 0,
+          "N2_rank": 2,
+          "N3_rank": 2,
+          "N7": 1
+        },
+        {
+          "root": "2917*muR/(4*rhoBr*sRho)",
+          "root_over_norm": "muR/(rhoBr*sRho)",
+          "N2": 1,
+          "N3": 1,
+          "N4": 0,
+          "N2_rank": 2,
+          "N3_rank": 2,
+          "N7": 1
+        }
+      ]
+    },
+    "D4_parallel": {
+      "point": [
+        "27",
+        "0",
+        "0",
+        "0"
+      ],
+      "norm_squared": "729",
+      "prefix": "S10_XFORM_ANISO_D4_STRATUM1_",
+      "modes": [
+        {
+          "root": "0",
+          "root_over_norm": "0",
+          "N2": 1,
+          "N3": 0,
+          "N4": 1,
+          "N2_rank": 3,
+          "N3_rank": 4,
+          "N7": 1
+        },
+        {
+          "root": "729*muR/rhoBr",
+          "root_over_norm": "muR/rhoBr",
+          "N2": 3,
+          "N3": 3,
+          "N4": 0,
+          "N2_rank": 1,
+          "N3_rank": 1,
+          "N7": 3
+        }
+      ]
+    },
+    "D4_perpendicular": {
+      "point": [
+        "0",
+        "27",
+        "-1/2",
+        "-9/5"
+      ],
+      "norm_squared": "73249/100",
+      "prefix": "S10_XFORM_ANISO_D4_STRATUM2_",
+      "modes": [
+        {
+          "root": "0",
+          "root_over_norm": "0",
+          "N2": 1,
+          "N3": 0,
+          "N4": 1,
+          "N2_rank": 3,
+          "N3_rank": 4,
+          "N7": 1
+        },
+        {
+          "root": "73249*muR/(100*rhoBr)",
+          "root_over_norm": "muR/rhoBr",
+          "N2": 2,
+          "N3": 2,
+          "N4": 0,
+          "N2_rank": 2,
+          "N3_rank": 2,
+          "N7": 2
+        },
+        {
+          "root": "73249*muR/(100*rhoBr*sRho)",
+          "root_over_norm": "muR/(rhoBr*sRho)",
+          "N2": 1,
+          "N3": 1,
+          "N4": 0,
+          "N2_rank": 3,
+          "N3_rank": 3,
+          "N7": 1
+        }
+      ]
+    }
+  },
+  "joined": [
+    {
+      "case": "D3_parallel",
+      "root_over_norm": "0",
+      "N2": 1,
+      "N3": 0
+    },
+    {
+      "case": "D3_parallel",
+      "root_over_norm": "muR/rhoBr",
+      "N2": 2,
+      "N3": 2
+    },
+    {
+      "case": "D3_perpendicular",
+      "root_over_norm": "0",
+      "N2": 1,
+      "N3": 0
+    },
+    {
+      "case": "D3_perpendicular",
+      "root_over_norm": "muR/rhoBr",
+      "N2": 1,
+      "N3": 1
+    },
+    {
+      "case": "D3_perpendicular",
+      "root_over_norm": "muR/(rhoBr*sRho)",
+      "N2": 1,
+      "N3": 1
+    },
+    {
+      "case": "D4_parallel",
+      "root_over_norm": "0",
+      "N2": 1,
+      "N3": 0
+    },
+    {
+      "case": "D4_parallel",
+      "root_over_norm": "muR/rhoBr",
+      "N2": 3,
+      "N3": 3
+    },
+    {
+      "case": "D4_perpendicular",
+      "root_over_norm": "0",
+      "N2": 1,
+      "N3": 0
+    },
+    {
+      "case": "D4_perpendicular",
+      "root_over_norm": "muR/rhoBr",
+      "N2": 2,
+      "N3": 2
+    },
+    {
+      "case": "D4_perpendicular",
+      "root_over_norm": "muR/(rhoBr*sRho)",
+      "N2": 1,
+      "N3": 1
+    }
+  ]
+}

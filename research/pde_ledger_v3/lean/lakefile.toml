@@ -1,0 +1,33 @@
+name = "pde_ledger"
+version = "0.1.0"
+defaultTargets = ["S9Pilot", "S10Pilot", "S10Controls", "S10Anisotropic", "S10Audit"]
+
+[[require]]
+name = "Physlib"
+git = "https://github.com/leanprover-community/physlib.git"
+rev = "8b2b23701c07409f882c49e0bd290a214e44450c"
+
+[[lean_lib]]
+name = "S9Pilot"
+srcDir = "s9"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S10Pilot"
+srcDir = "s10"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S10Controls"
+srcDir = "s10"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S10Anisotropic"
+srcDir = "s10"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S10Audit"
+srcDir = "s10"
+leanOptions = { warningAsError = true }

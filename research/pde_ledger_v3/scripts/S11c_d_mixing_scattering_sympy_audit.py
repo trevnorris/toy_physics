@@ -893,6 +893,8 @@ class EdgeReduction:
         normal = sp.Integral(coefficient*normal_phase*self.fourier_mass**len(self.y[:2]),
                              (self.zp, -sp.oo, sp.oo))
         normal = normal.transform(self.zp, (self.ell*self.xi, self.xi))
+        if isinstance(normal, sp.Integral) and normal.function == 0:
+            normal = normal.doit()
         return self.prescribe(normal), constraints
 
     @lru_cache(maxsize=None)
@@ -1001,6 +1003,264 @@ class EdgeReduction:
                     'FOURIER_PROFILE_BINDINGS': profile_records})
 
 
+class FourierCarrierReconstruction:
+    """Inverse transforms on the supplied smooth interface class.
+
+    Source operands come from the imported three-dimensional definitions;
+    image operands come from hat(). Neither route supplies the other's answer.
+    A computed Gaussian approximate identity supplies weak delta kernels.
+    Abel rational terms are inverted by residues on the two coordinate
+    half-lines before removing the regulator. The symmetric value at the
+    subtraction origin is retained on both terms of the decomposition.
+    """
+
+    def __init__(self, reduction):
+        self.r = reduction
+        self.q = sp.symbols('s11cdInverseMomentum1:4', real=True)
+        self.u = sp.symbols('s11cdInverseSource1:4', real=True)
+        self.x = sp.symbols('s11cdInversePosition1:4', real=True)
+        self.s = sp.symbols('s11cdInverseTransfer1:4', real=True)
+        self.a = sp.Symbol('s11cdInverseGaussianRegulator', positive=True)
+        self.p = sp.Symbol('s11cdInversePositiveCoordinate', positive=True)
+        self.nu = sp.Symbol('s11cdInverseTestFrequency', real=True)
+        self.c = sp.Symbol('s11cdInverseDeltaWeight', real=True)
+        self.complex_transfer = sp.Symbol('s11cdInverseComplexTransfer')
+        units = PHYSICAL_METADATA.dimensions
+        for v in (*self.u, *self.x, *self.s, self.a, self.p, self.nu, self.c, self.complex_transfer):
+            units.known[v] = units.zero
+        for v in self.q:
+            units.known[v] = units.measure(reduction.tangents[0])
+        units.measure.cache_clear()
+        s, x = self.s[2], self.x[2]
+        self.gaussian_ansatz = sp.exp(-self.a*s**2+sp.I*s*x)
+        self.gaussian = sp.integrate(self.gaussian_ansatz, (s, -sp.oo, sp.oo))
+        self.mass = sp.integrate(self.gaussian, (x, -sp.oo, sp.oo))
+        self.delta_ansatz = self.c*sp.DiracDelta(x)
+        delta_mass = sp.integrate(self.delta_ansatz, (x, -sp.oo, sp.oo))
+        weight = sp.solve(delta_mass-self.mass, self.c)
+        if len(weight) != 1:
+            raise NotImplementedError(('inverse delta weight', weight))
+        self.delta = self.delta_ansatz.subs(self.c, weight[0])
+        character = sp.exp(-sp.I*self.nu*x)
+        gaussian_character = sp.integrate(self.gaussian*character, (x, -sp.oo, sp.oo))
+        delta_character = sp.integrate(self.delta*character, (x, -sp.oo, sp.oo))
+        weak_character = sp.limit(gaussian_character, self.a, 0, dir='+')
+        moment = sp.integrate(x**2*self.gaussian, (x, -sp.oo, sp.oo))/self.mass
+        # The contour orientation is computed from a unit-circle ansatz.
+        theta = sp.Symbol('s11cdInverseContourAngle', real=True)
+        units.known[theta] = units.zero
+        circle = sp.exp(sp.I*theta)
+        self.cauchy_weight = sp.integrate(sp.diff(circle, theta)/circle,
+                                         (theta, 0, self.mass))
+        self.kernel_record = (self.gaussian_ansatz, self.gaussian, self.mass,
+                              self.delta_ansatz, delta_mass, cas(weight), self.delta,
+                              character, gaussian_character, weak_character, delta_character,
+                              moment, sp.limit(moment, self.a, 0, dir='+'),
+                              circle, self.cauchy_weight)
+        self.kernel_residual = weak_character-delta_character
+
+    def emit_kernel(self):
+        self.physical_zeros('INVERSE_FOURIER_WEAK_KERNEL_OPERANDS', self.kernel_record)
+        physical('INVERSE_FOURIER_WEAK_KERNEL_CHARACTER_RESIDUAL', self.kernel_residual,
+                 zero_dimensions={(): PHYSICAL_METADATA.dimensions.zero})
+
+    def physical_zeros(self, name, value, overrides=None):
+        # These inverse-coordinate coefficients are dimensionless. Images and
+        # argument-chart residuals have separate units supplied by their maps.
+        units = PHYSICAL_METADATA.dimensions
+        for substitution in cas(value).atoms(sp.Subs):
+            if any(point == 0 for point in substitution.point):
+                # Evaluation at the numerical origin preserves the units of
+                # the dimensionless inverse-coordinate derivative operand.
+                chart_operand = sp.Subs(substitution.expr, substitution.variables,
+                    tuple(self.x[2] if point == 0 else point for point in substitution.point))
+                units.known[substitution] = units.measure(chart_operand)
+        zeros = {path: PHYSICAL_METADATA.dimensions.zero
+                 for path, expression in leaves(cas(value)) if expression == 0}
+        zeros.update(overrides or {})
+        physical(name, value, zero_dimensions=zeros)
+
+    @lru_cache(maxsize=None)
+    def template(self, function, definitions):
+        equations = [eq for eq in definitions if eq.lhs.func == function]
+        if len(equations) != 1:
+            raise NotImplementedError(('source Fourier definition count', function, len(equations)))
+        equation = equations[0]
+        argument_equations = tuple(a-q for a, q in zip(equation.lhs.args, self.q))
+        solved = sp.solve(argument_equations, self.r.momentum_groups[0], dict=True)
+        if len(solved) != 1:
+            raise NotImplementedError(('source Fourier argument chart', solved))
+        substitution = solved[0]
+        source = equation.rhs.subs(substitution, simultaneous=True)
+        argument_residual = tuple(sp.expand(a.subs(substitution)-q)
+                                  for a, q in zip(equation.lhs.args, self.q))
+        return source, cas(substitution), cas(argument_residual)
+
+    @lru_cache(maxsize=None)
+    def source_definition(self, node, definitions):
+        source, _, _ = self.template(node.func, definitions)
+        return source.xreplace(dict(zip(self.q, node.args)))
+
+    @lru_cache(maxsize=None)
+    def source_image(self, node, definitions):
+        image, constraints = self.r.profile_definition(self.source_definition(node, definitions))
+        if isinstance(image, sp.Integral):
+            # Integral linearity separates the source Fourier coefficient
+            # while keeping the computed normal measure Jacobian inside.
+            jacobian = sp.diff(self.r.ell*self.r.xi, self.r.xi)
+            coefficient, dependent = image.function.as_independent(self.r.xi, as_Add=False)
+            image = (coefficient/jacobian)*sp.Integral(jacobian*dependent, *image.limits)
+        return image, constraints
+
+    @lru_cache(maxsize=None)
+    def source_inverse(self, function, definitions):
+        r = self.r
+        source, substitution, argument_residual = self.template(function, definitions)
+        phases = list(source.function.atoms(sp.exp))
+        if len(phases) != 1:
+            raise NotImplementedError(('source inverse phase multiplicity', len(phases)))
+        phase = phases[0]
+        profile_map = {f.func: (lambda *args, fn=f.func: r.applied_ansatz(fn(*args)))
+                       for f in source.function.atoms(AppliedUndef)}
+        coefficient = dag_substitute(source.function.xreplace({phase: 1}), profile_map)
+        position_map = dict(zip(r.y, (r.ell*u for u in self.u)))
+        momentum_map = dict(zip(self.q, (s/r.ell for s in self.s)))
+        position_jacobian = sp.Matrix([position_map[y] for y in r.y]).jacobian(self.u).det()
+        momentum_jacobian = sp.Matrix([momentum_map[q] for q in self.q]).jacobian(self.s).det()
+        inverse_phase = sp.I*sum(s*x for s, x in zip(self.s, self.x))
+        exponent = sp.expand(phase.args[0].xreplace(position_map).xreplace(momentum_map)+inverse_phase)
+        constraints = tuple(sp.expand(sp.diff(exponent, s)/sp.I) for s in self.s)
+        remainder = sp.simplify(exponent-sp.I*sum(s*c for s, c in zip(self.s, constraints)))
+        if remainder != 0:
+            raise NotImplementedError(('source inverse phase remainder', remainder))
+        kernels = tuple(self.delta.subs(self.x[2], constraint) for constraint in constraints)
+        body = coefficient.subs(position_map, simultaneous=True).doit()*position_jacobian*momentum_jacobian
+        if body.has(*self.s, *self.q):
+            raise NotImplementedError(('momentum-dependent source inverse coefficient', body))
+        inverse_integrand = body*sp.prod(kernels)
+        value = sp.integrate(inverse_integrand, *((u, -sp.oo, sp.oo) for u in self.u))
+        return value, cas((source, substitution, argument_residual, coefficient,
+                           position_jacobian, momentum_jacobian, exponent, constraints,
+                           inverse_integrand, value))
+
+    @lru_cache(maxsize=None)
+    def invert_image(self, image, normal_argument):
+        r, s, x = self.r, self.s[2], self.x[2]
+        variables = sorted(normal_argument.free_symbols, key=sp.default_sort_key)
+        if not variables:
+            raise NotImplementedError(('inverse normal argument chart', normal_argument))
+        variable = variables[0]
+        roots = sp.solve(normal_argument-s/r.ell, variable)
+        if len(roots) != 1:
+            raise NotImplementedError(('inverse normal argument roots', roots))
+        substitution = {variable: roots[0]}
+        momentum_jacobian = sp.diff(s/r.ell, s)
+        normalized = sp.expand(image.subs(substitution, simultaneous=True)*momentum_jacobian,
+                               power_exp=False)
+        old_momenta = set(r.normal_map[g[2]] for g in r.momentum_groups)
+        if dag_free_symbols(normalized) & old_momenta:
+            raise NotImplementedError(('uncontracted inverse normal transfer', normal_argument))
+        # Nested Limit objects are independent coefficient carriers here.
+        # SymPy otherwise leaves elementary integrals and limits unevaluated.
+        constants = {value: sp.Symbol('s11cdInverseEndCoefficient'+str(i))
+                     for i, value in enumerate(sorted(normalized.atoms(sp.Limit), key=sp.default_sort_key))}
+        for value, symbol in constants.items():
+            PHYSICAL_METADATA.dimensions.known[symbol] = PHYSICAL_METADATA.dimensions.measure(value)
+        restored_constants = {v: k for k, v in constants.items()}
+        coefficient_image = normalized.xreplace(constants)
+        integrals = sorted(coefficient_image.atoms(sp.Integral), key=sp.default_sort_key)
+        regular, rational, witnesses = sp.S.Zero, sp.S.Zero, []
+        for powers, coefficient in polynomial_terms(coefficient_image, integrals):
+            if not any(powers):
+                rational += coefficient
+                continue
+            if sum(powers) != 1:
+                raise NotImplementedError(('inverse profile integral degree', powers))
+            integral = integrals[powers.index(1)]
+            phases = list(integral.function.atoms(sp.exp))
+            if len(phases) != 1 or coefficient.has(s):
+                raise NotImplementedError(('inverse profile convolution form', integral))
+            phase = phases[0]
+            exponent = sp.expand(phase.args[0]+sp.I*s*x)
+            constraint = sp.expand(sp.diff(exponent, s)/sp.I)
+            if sp.simplify(exponent-sp.I*s*constraint) != 0:
+                raise NotImplementedError(('inverse profile phase remainder', exponent))
+            kernel = self.delta.subs(x, constraint)
+            body = coefficient*integral.function.xreplace({phase: 1})*kernel
+            convolution = sp.integrate(sp.expand(body), *integral.limits)
+            regular += convolution
+            witnesses.append((integral, coefficient, exponent, kernel, body, convolution))
+        raw_rational = rational
+        rational = sp.cancel(rational)
+        analytic = rational.xreplace({s: self.complex_transfer})
+        poles = sp.solve(sp.denom(analytic), self.complex_transfer) if analytic != 0 else []
+        upper, lower, residue_rows = sp.S.Zero, sp.S.Zero, []
+        for pole in poles:
+            imaginary = sp.simplify(sp.im(pole))
+            residue = sp.residue(sp.exp(sp.I*self.complex_transfer*x)*analytic, self.complex_transfer, pole)
+            residue_rows.append((pole, imaginary, residue))
+            if imaginary.is_positive:
+                upper += self.cauchy_weight*residue
+            elif imaginary.is_negative:
+                lower -= self.cauchy_weight*residue
+            else:
+                raise NotImplementedError(('inverse Abel contour pole', pole))
+        if rational != 0 and sp.limit(rational, s, sp.oo) != 0:
+            raise NotImplementedError(('inverse Abel polynomial part', rational))
+        origin = (upper.subs(x, 0)+lower.subs(x, 0))/2
+        coordinates = (self.p, -self.p, sp.S.Zero)
+        regulated = tuple(sp.simplify(regular.subs(x, position)+part.subs(x, position))
+                          for position, part in zip(coordinates, (upper, lower, origin)))
+        weak = tuple(sp.limit(v, r.regulator, 0, dir='+') if v.has(r.regulator) else v
+                     for v in regulated)
+        tangent_integrals = tuple(sp.Integral(sp.exp(sp.I*s*x)*sp.DiracDelta(s/r.ell)/r.ell,
+                                               (s, -sp.oo, sp.oo))
+                                 for s, x in zip(self.s[:2], self.x[:2]))
+        tangent_inverse = sp.prod(v.doit() for v in tangent_integrals)
+        weak = tuple(sp.simplify(tangent_inverse*v).xreplace(restored_constants) for v in weak)
+        operands = cas((image, normal_argument, substitution, momentum_jacobian, normalized,
+                        witnesses, rational, residue_rows, coordinates, regulated, weak,
+                        tangent_integrals, tangent_inverse, raw_rational, restored_constants,
+                        analytic, poles))
+        return cas(weak), operands
+
+    def carrier(self, node, definitions, suffix):
+        r = self.r
+        source = self.source_definition(node, definitions)
+        image, tangent_arguments = r.hat(node)
+        source_image, constraints = self.source_image(node, definitions)
+        raw_source_image = r.profile_definition(source)[0]
+        source_point, source_operands = self.source_inverse(node.func, definitions)
+        reconstructed, inverse_operands = self.invert_image(
+            image, node.args[2].xreplace(r.normal_map))
+        coordinates = (self.p, -self.p, sp.S.Zero)
+        source_values = cas(tuple(source_point.subs(self.x[2], p) for p in coordinates))
+        residual = cas(tuple(sp.simplify(a-b) for a, b in zip(reconstructed, source_values)))
+        unit = PHYSICAL_METADATA.dimensions.measure(node)
+        inverse_unit = tuple(a+3*b for a, b in zip(unit, PHYSICAL_METADATA.dimensions.measure(self.q[0])))
+        self.physical_zeros('CARRIER_INVERSE_SOURCE_OPERANDS_'+suffix, source_operands,
+                            {(2, i): PHYSICAL_METADATA.dimensions.measure(self.q[i]) for i in range(3)})
+        self.physical_zeros('CARRIER_INVERSE_REDUCED_OPERANDS_'+suffix, inverse_operands,
+                            {(0,): tuple(a-b for a, b in zip(inverse_unit,
+                                PHYSICAL_METADATA.dimensions.measure(self.q[0])))})
+        physical('CARRIER_INVERSE_VALUES_'+suffix, (source_values, reconstructed),
+                 zero_dimensions={(i, j): inverse_unit for i in range(2) for j in range(3)})
+        physical('CARRIER_INVERSE_RESIDUAL_'+suffix, residual,
+                 zero_dimensions={(i,): inverse_unit for i in range(3)})
+        self.physical_zeros('CARRIER_INVERSE_REMAINDER_CENSUS_'+suffix,
+            (len(reconstructed.atoms(sp.Integral)), int(reconstructed.has(r.regulator)),
+             len(dag_free_symbols(reconstructed) & set(r.normal_map[g[2]] for g in r.momentum_groups))))
+        image_unit = tuple(a-b for a, b in zip(inverse_unit, PHYSICAL_METADATA.dimensions.measure(self.q[0])))
+        self.physical_zeros('CARRIER_INVERSE_ARGUMENT_OPERANDS_'+suffix,
+                 (node, source, image, tangent_arguments, source_image, constraints),
+                 {(2,): image_unit, (4,): image_unit})
+        self.physical_zeros('CARRIER_SOURCE_LINEARITY_OPERANDS_'+suffix, (raw_source_image, source_image),
+                            {(0,): image_unit, (1,): image_unit})
+        delta = sp.prod(sp.DiracDelta(c) for c in constraints)
+        physical('CARRIER_SOURCE_IMAGE_RESIDUAL_'+suffix, (image-source_image)*delta,
+                 zero_dimensions={(): unit})
+
+
 class EdgeReconstruction:
     """Reconstruct on the supplied tangentially homogeneous ansatz class.
 
@@ -1011,8 +1271,9 @@ class EdgeReconstruction:
     arbitrary three-dimensional backgrounds.
     """
 
-    def __init__(self, reduction):
+    def __init__(self, reduction, carriers):
         self.r = reduction
+        self.carriers = carriers
 
     def lift(self, value):
         r = self.r
@@ -1020,7 +1281,7 @@ class EdgeReconstruction:
         return map_leaves(value, lambda e: e.xreplace(inverse)*r.wave_phase(r.x))
 
     @lru_cache(maxsize=None)
-    def source_integral(self, original):
+    def source_integral(self, original, definitions):
         r = self.r
         variables = tuple(l[0] for l in original.limits)
         phases = [e for e in original.function.atoms(sp.exp)
@@ -1033,7 +1294,7 @@ class EdgeReconstruction:
         source = r.branches(r.strip_local(original.function.xreplace({phase: 1})))
         hats = sorted((f for f in source.atoms(AppliedUndef)
                        if f.func.__name__.startswith('s11cc2Fourier')), key=sp.default_sort_key)
-        data = {h: r.hat(h) for h in hats}
+        data = {h: self.carriers.source_image(h, definitions) for h in hats}
         source = source.xreplace({h: image for h, (image, _) in data.items() if image == 0})
         hats = [h for h in hats if source.has(h)]
         momenta = tuple(k for k in r.tangent_momenta if k in variables)
@@ -1073,11 +1334,11 @@ class EdgeReconstruction:
             witnesses.append((original_constraints, steps))
         return sp.Add(*terms), cas(witnesses)
 
-    def row(self, source, reduced, records, suffix, source_units):
+    def row(self, source, reduced, records, suffix, source_units, definitions):
         r = self.r
         replacements = {}
         for index, (original, image, _) in enumerate(records):
-            independent, witness = self.source_integral(original)
+            independent, witness = self.source_integral(original, definitions)
             replacements[original] = independent
             restored, source_on_class = self.lift(image), self.lift(independent)
             residual = tree_difference(restored, source_on_class)
@@ -2492,6 +2753,10 @@ def run():
     parser.add_argument('--case', choices=['ALL']+[a+'__'+r for a in
         ('LAB_HELD', 'MATERIAL_ADVECTED') for r in ('RHO4_CONSTANT', 'RHOBR_CONSTANT')], default='ALL')
     parser.add_argument('--dev-symbol-cache', type=Path)
+    parser.add_argument('--dev-stop-after-reduction', action='store_true',
+                        help='emit a reduction-only development checkpoint')
+    parser.add_argument('--dev-reduction-cache', type=Path,
+                        help='save imported operands for focused reconstruction checks')
     channel_options = parser.add_mutually_exclusive_group()
     channel_options.add_argument('--channel-input-json',
                                  help='explicit unit_frame, parameters and independent w/m profile input')
@@ -2518,12 +2783,18 @@ def run():
     reduction = EdgeReduction(rows)
     dimensions = DimensionAnalysis(rows, reduction)
     PHYSICAL_METADATA = PhysicalMetadata(dimensions, reduction)
+    if options.dev_reduction_cache:
+        options.dev_reduction_cache.parent.mkdir(parents=True, exist_ok=True)
+        with options.dev_reduction_cache.open('wb') as stream:
+            pickle.dump(({k: dict(v) for k, v in rows.items()}, dimensions.known), stream)
     input_text = (options.channel_input_file.read_text() if options.channel_input_file
                   else options.channel_input_json)
     channel_input = ChannelInput(reduction, json.loads(input_text)) if input_text else None
     if channel_input is not None:
         channel_input.emit_inputs()
-    reconstruction = EdgeReconstruction(reduction)
+    carriers = FourierCarrierReconstruction(reduction)
+    reconstruction = EdgeReconstruction(reduction, carriers)
+    carriers.emit_kernel()
     physical('FOURIER_NORMALIZATION_COMPUTATION', reduction.normalization_operands)
     emit('INFERRED_INPUT_DIMENSIONS', {str(k): v for k, v in dimensions.known.items()})
     physical('ZERO_JET_DISTRIBUTIONAL_PRESCRIPTION', reduction.distribution_record)
@@ -2541,6 +2812,7 @@ def run():
             suffix = '_'.join((row_key, *(str(v) for v in case)))
             value = named(payload, 'VALUE')
             value_units = payload_units(value, named(payload, 'DIMENSION_L_T_M'))
+            definitions = tuple(named(payload, 'FOURIER_PROFILE_BINDINGS'))
             for index, hat in enumerate(sorted(payload.atoms(AppliedUndef), key=sp.default_sort_key)):
                 if hat.func.__name__.startswith('s11cc2Fourier'):
                     hat_reduction = reduction.hat(hat)
@@ -2549,6 +2821,7 @@ def run():
                     physical('PROFILE_CARRIER_REDUCTION_' + suffix + '_' + str(index),
                              (hat, hat_reduction), operands=(hat, hat_reduction[0]),
                              zero_dimensions={(0,):hat_unit,(1,):image_unit})
+                    carriers.carrier(hat, definitions, suffix+'_'+str(index))
             tangent_map = {k: q for group in reduction.momentum_groups
                            for k, q in zip(group[:2], reduction.tangents)}
             for index, equation in enumerate(named(payload, 'COMPUTED_BRANCH_BINDINGS')):
@@ -2585,7 +2858,7 @@ def run():
                 physical('ACTION_INTEGRAL_REDUCTION_' + suffix + '_' + str(index), record,
                          operands=record[:2], zero_dimensions={(i,):dimensions.measure(record[0]) for i in range(2)})
             physical('REDUCED_ACTION_ROWS_' + suffix, reduced, zero_dimensions=value_units)
-            reconstruction.row(value, reduced, records, suffix, value_units)
+            reconstruction.row(value, reduced, records, suffix, value_units, definitions)
             reduced_payload = reduction.payload(payload, reduced)
             physical('REDUCED_FIVE_SLOT_PAYLOAD_'+suffix, reduced_payload, operands=reduced, zero_dimensions=value_units)
             for slot in ('COMPUTED_BRANCH_BINDINGS','FOURIER_PROFILE_BINDINGS'):
@@ -2610,6 +2883,13 @@ def run():
     emit('REDUCED_DIMENSION_UNRESOLVED', unresolved)
     if dimensions.constraints or unresolved:
         raise ValueError('reduced dimensional analysis has surfaced unresolved constraints')
+    if options.dev_stop_after_reduction:
+        emit('DEVELOPMENT_STOP', 'AFTER_REDUCTION')
+        emit('RESOURCE_MEASUREMENTS', (time.monotonic()-started,
+                                      resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
+        emit('EMISSION_LINES', EMISSION_LINES.copy())
+        emit('PROCESS_COMPLETION', sp.Integer(os.getpid()))
+        return
     for case, _ in rows[CLOSED_KEYS[0]]['value']:
         if not selected(case):
             continue
@@ -2709,13 +2989,13 @@ def run():
                                       'FULL_SECTOR_BLOCK_ACTION', 'REFERENCE_AND_END_SYMBOLS',
                                       'REFERENCE_AND_END_CANONICAL_COUPLINGS', 'SIMULTANEOUS_END_TRANSLATION',
                                       'CLASS_RESTRICTED_ACTION_RECONSTRUCTION', 'GAUGE_QUOTIENT_CHARTS',
+                                      'ALL_CARRIER_INVERSE_FOURIER_ROUNDTRIPS',
                                       'POSITIVE_FREQUENCY_SPECTRAL_PIT', 'FIRST_GRADE_END_MODE_JETS',
                                       'NULLSPACE_CLASSIFIER_PROJECTORS', 'NONLINEAR_FREQUENCY_PAIRING',
                                       'REGULAR_RECTANGULAR_MODE_JETS',
                                       'S11B_CONSERVATIVE_SLAB_CURRENT', 'CLOSED_PHYSICAL_FIELD_LIFT'))
     emit('CHANNEL_INPUT_EXECUTION', channel_input is not None)
-    emit('OUTSTANDING_CONSTRUCTIONS', ('ALL_CARRIER_INVERSE_FOURIER_ROUNDTRIPS',
-         'FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS',
+    emit('OUTSTANDING_CONSTRUCTIONS', ('FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS',
          'GENERIC_DOMAIN_SHEET_CONTINUATION', 'CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION',
          'COMPLETE_TWO_ENDED_SCATTERING', 'POLES_RIESZ_OVERLAP', 'SURVIVAL',
          'FLUX_BOOKKEEPING', 'WEAK_COEFFICIENTS', 'SECTION_5_CONTROLS', 'OWN_ROWS_EXPORT'))

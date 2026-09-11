@@ -1,5 +1,11 @@
 # S11c-d regular rectangular mode jets
 
+Historical record of checkpoint `aff093da`. The canonical main transcript has
+since been regenerated for the
+[inverse-Fourier checkpoint](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_inverse_fourier_report.md).
+The sizes, hashes, code line references and verification results below describe
+the preserved mode-jet checkpoint; its run record and inventory remain unchanged.
+
 2026-09-10. This construction extends the repaired S11c-d engine at checkpoint
 `f9e28f5f28dcb4b66d954d883b2977075598ca76`. It computes regular end-mode
 coefficients through the retained `(eta,sigma_W)` rectangle. The four-case

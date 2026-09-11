@@ -1,86 +1,61 @@
-# S11c-d builder checkpoint: regular mixed mode jets
+# S11c-d builder checkpoint: carrier inverse Fourier reconstruction
 
-2026-09-10. The engine now computes regular end-mode jets through the retained
-`(eta,sigma_W)` rectangle. The full four-case run and output inventory completed,
-and the regenerated transcript is published at its canonical path. This is an
-unreviewed runnable checkpoint; the complete S11c-d engine and export remain
-unfinished.
+2026-09-10. The all-carrier inverse-Fourier construction is complete across all
+four cases. The full run, output inventories and canonical publication completed.
+This is an unreviewed runnable checkpoint; the complete S11c-d engine and export
+remain unfinished.
 
-## Computed extension
+[FourierCarrierReconstruction](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1006)
+computes independent source and reduced-image inverses for every profile and
+jet carrier, including both middle-leg arguments. It derives weak kernels and
+normalizations by integration, retains the regulated zero-jet tail through
+inversion, and reconstructs both half-lines and the subtraction origin. The
+source route for the two full rows now uses the actual imported Fourier
+bindings. The forward Fourier reduction, import fold and spectral construction
+are preserved. The [construction report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_inverse_fourier_report.md)
+identifies the computation sites, scope and focused mutation evidence.
 
-[RectangularModeJets](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1762)
-derives the implicit radical chain rule and pencil Taylor coefficients from
-the computed reduced operands. Its
-[augmented solve](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1826)
-computes right and adjoint-left invariant-pair coefficients at grades `10`,
-`01`, and `11`, retaining matrix normal momenta for degenerate clusters. The
-[radical and classifier construction](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1869)
-computes the radical jet, overlap-inverse series and oblique classifier projector.
-These are regular cluster jets, not Riesz data. Singular Jacobians retain explicit
-status. The [emission](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2359)
-prints literal equation/gauge residuals and fingerprints the heavy objects,
-with grade and restored dimension metadata. The prior first-grade route remains
-computed for operand/difference checks.
+The full run took `3706.142` seconds, peak RSS `1723024` KiB, with exit 0 and
+empty stderr. The [81,914,994-byte transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
+contains 25,306 unique tags. All 96 carrier inverses have zero residuals (288
+dimensioned entries); the 96 source-image and 24 branch residuals are also zero.
+All 222 integral and eight row residual fingerprints have zero projections.
+The five-slot census, metadata coverage and all three dimensional checks pass.
+Deliberate source-weight, source/image-phase and Abel-removal mutations produce
+the corresponding live residuals; vanishing tangential jets remain zero.
+These are mathematical transform controls, not the Section 5 physical controls.
 
-## Checks and artifacts
+All 12 full-sector pencil symbols and all 528 root/nullity/sheet records match
+checkpoint `aff093da` literally. The 528 regular jets and 64 unresolved sheet
+labels are preserved. No additional upstream repair was needed for this step.
+Exact commands, source/cache linkage, hashes and resource records are in the
+[run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_inverse_fourier_runs.json),
+with the [carrier inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_inverse_fourier_inventory.json)
+and [spectral inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_inverse_fourier_spectrum_inventory.json).
+All successful transcripts are under `scripts/out/`; atomic publication
+preserved the previous annex payload. The engine and both new instruments
+compile. The directive-named `reduction/derived_or_declared.py` and
+`reduction/engine_output_checks.py` remain absent. No review leg, comparator,
+Wolfram engine, downstream stage or commit ran during the build.
 
-Three sequential focused checks on one case passed with empty stderr and empty
-dimensional constraints. The production check uses a second PIT sample. The
-original-coordinate check computes absent sigma dependence at that constant end.
-A mathematical parameter pullback exercises nonzero mixed coefficients; its
-right/left coefficient residual maxima are `1.99967e-14` and `1.09836e-13` in the
-declared numerical coefficient frame. Independent direct-pencil mixed residuals
-fall `0.593519 → 0.297380 → 0.148845` when the step is halved twice. This is not a
-physical profile ablation or a Section 5 control.
+The user subsequently requested a local preservation checkpoint. The three
+output payloads (83,389,349 bytes total) are saved through DataLad/git-annex;
+the source, instruments, reports and inventories use ordinary Git. This save
+does not confer review clearance or complete the engine or export.
 
-The full run took `3728.55` seconds, peak RSS `1721664` KiB, exit 0 and empty
-stderr. Its
-[78,707,339-byte transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
-contains all 12 reference/end symbols and 24 mode packets, with 528 defined
-rectangular jets (336 scalar and 192 two-dimensional nullspaces). All three
-dimensional records are empty; tag, source-pin and residual-metadata coverage
-checks passed. These are PIT candidates, not a physical open-channel census.
-All 12 stored symbol payloads and all 528 root/nullity/sheet records match the
-repaired checkpoint literally, including its 64 unresolved sheet labels.
+`ALL_CARRIER_INVERSE_FOURIER_ROUNDTRIPS` is removed from the live TODO. Ten
+constructions remain: full end spectra; generic sheet continuation; closed
+nonlocal current and flux normalization; complete two-ended scattering;
+poles/Riesz/overlap; survival; flux bookkeeping; weak coefficients; Section 5
+controls; and own-row export. The next spectrum work must go beyond the current
+regular reference/end mode jets and their PIT domains. `scripts/S11c_d_exports.py`
+remains absent because its required roots are uncomputed.
 
-Full-run grade-10 residual maxima remain recorded by physical dimension: for
-example, `9.35918e-14` at `[L,T,M]=[-1,-2,1]` on the right and `5.85929e-14` at
-`[0,0,0]` on the left. All grade-01 and grade-11 equation residuals are literal
-zeros. The nonzero pullback check above exercises the mixed computation.
-Detailed scalar results and per-object scope are in the
-[construction report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_rectangular_mode_jet_report.md),
-with exact commands, hashes and producer/cache linkage in the
-[run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_rectangular_mode_jet_runs.json)
-and literal full-run counts in the
-[inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_mode_jet_output_inventory.json).
-
-The engine and both new instruments compile. The directive-named
-`reduction/derived_or_declared.py` and `reduction/engine_output_checks.py`
-are absent and were not executed. Publication preserved the
-previous annex payload; its hash was checked after replacing the main path.
-The user subsequently requested a local preservation checkpoint. Its four
-new/regenerated `.out` payloads (81,982,175 bytes) use DataLad/git-annex;
-sources, reports and JSON remain ordinary Git. This save conveys no review
-clearance. No review leg, comparator, Wolfram engine or downstream stage ran.
-
-## Remaining program and inherited limits
-
-`MIXED_GRADE_MODE_JETS` is removed from the live TODO; 11 constructions remain:
-all-carrier inverse-Fourier round trips; full end-spectrum coverage; generic
-sheet continuation; closed nonlocal bulk current and flux normalization;
-complete two-ended scattering; poles/Riesz/overlap; survival; flux bookkeeping;
-weak coefficients; Section 5 controls; and own-row export. The regular jets do
-not settle singular clusters, generic individual branches or full spectral
-coverage. `scripts/S11c_d_exports.py` remains absent because its required roots
-are uncomputed; no placeholder export or empty pole set was supplied.
-
-The positional parent fold, Fourier reduction, field lift, frequency
-normalization and partial slab current are preserved. The full nonlocal current
-and derivative/flux identities remain unfinished. Section 1 inputs remain
-SUPPLIED and unfalsifiable here; the separate shear-normalization and c2
-cross-engine operand/sign debts remain open. The prior fixed-frequency repair
-is recorded in the
-[historical repair report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_repair_report.md).
+Section 1 inputs remain SUPPLIED and unfalsifiable here. The separate
+shear-normalization and c2 cross-engine operand/sign debts remain open. The
+[prior mode-jet report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_rectangular_mode_jet_report.md)
+and [fixed-frequency repair report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_repair_report.md)
+retain their historical evidence.
 
 ## Retained user-approved solver/export contract
 

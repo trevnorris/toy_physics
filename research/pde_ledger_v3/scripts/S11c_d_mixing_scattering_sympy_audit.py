@@ -1759,6 +1759,145 @@ class BulkSheetPath:
         return Str('UNRESOLVED'),record
 
 
+class RectangularModeJets:
+    """Implicit invariant-pair ansatz in the retained two-grade rectangle.
+
+    Matrix normal momenta retain a degenerate mode cluster without choosing
+    separate, possibly incompatible eigenvectors for its two perturbations.
+    All pencil Taylor coefficients include the implicit bulk-root chain rule.
+    """
+
+    grades = ((1, 0), (0, 1), (1, 1))
+
+    @staticmethod
+    def polynomial(series, eta, sigma, origin):
+        terms = [sp.ImmutableMatrix(value)*(eta-origin[eta])**a*(sigma-origin[sigma])**b
+                 for (a,b),value in series.items()]
+        return sum(terms,sp.zeros(*terms[0].shape))
+
+    def __init__(self, pencil, relation, k, q, eta, sigma, origin):
+        self.k, self.q, self.parameters = k, q, (eta, sigma)
+        dummy = sp.Dummy('s11cdImplicitRootDerivative')
+        self.root_derivatives = {v: sp.solve(sp.diff(relation, v)
+            + sp.diff(relation, q)*dummy, dummy)[0] for v in (k, eta, sigma)}
+        def derivative(value, coordinate):
+            return value.diff(coordinate)+value.diff(q)*self.root_derivatives[coordinate]
+        indices = ((0,0,0), (1,0,0), (0,1,0), (1,1,0),
+                   (0,0,1), (1,0,1), (0,1,1), (0,0,2))
+        self.pencil_coefficients, self.radical_coefficients = {}, {}
+        for index in indices:
+            a,b,j = index
+            operator, radical = pencil, q
+            for coordinate, count in ((eta,a), (sigma,b), (k,j)):
+                for _ in range(count):
+                    operator = derivative(operator, coordinate)
+                    radical = derivative(radical, coordinate)
+            self.pencil_coefficients[index] = (operator/sp.factorial(j)).subs(origin).applyfunc(sp.cancel)
+            self.radical_coefficients[index] = sp.cancel((radical/sp.factorial(j)).subs(origin))
+        self.evaluate = sp.lambdify((k,q), tuple(self.pencil_coefficients.values()), 'numpy', cse=True)
+        self.evaluate_radical = sp.lambdify((k,q), tuple(self.radical_coefficients.values()), 'numpy', cse=True)
+
+    @staticmethod
+    def multiply(a, b):
+        result = {}
+        for (i,j), av in a.items():
+            for (m,n), bv in b.items():
+                index = (i+m,j+n)
+                if max(index) <= 1:
+                    value = av@bv
+                    result[index] = result.get(index, np.zeros_like(value))+value
+        return result
+
+    @classmethod
+    def equation(cls, coefficients, modes, shift):
+        n = modes[(0,0)].shape[1]
+        powers = [{(0,0):np.eye(n,dtype=complex)}, shift]
+        powers.append(cls.multiply(shift,shift))
+        result = {}
+        for (a,b,j), matrix in coefficients.items():
+            for (c,d), value in cls.multiply(modes,powers[j]).items():
+                index = (a+c,b+d)
+                if max(index) <= 1:
+                    term = matrix@value
+                    result[index] = result.get(index,np.zeros_like(term))+term
+        return result
+
+    @classmethod
+    def pair(cls, coefficients, basis):
+        rows, n = basis.shape
+        count = (rows+n)*n
+        zero_mode = np.zeros_like(basis)
+        zero_root = np.zeros((n,n),dtype=complex)
+        seed = {(0,0):basis}
+        linear_coefficients = {index:coefficients[index] for index in ((0,0,0),(0,0,1))}
+        # Differentiate the invariant-pair/gauge ansatz by coefficient probes.
+        # Its coefficient at this grade is exactly linear in these unknowns.
+        columns = []
+        for index in range(count):
+            direction = np.zeros(count,dtype=complex)
+            direction[index] = 1
+            dr, dk = direction[:rows*n].reshape(rows,n), direction[rows*n:].reshape(n,n)
+            equation = cls.equation(linear_coefficients, {**seed,(1,0):dr}, {(1,0):dk})[(1,0)]
+            columns.append(np.concatenate((equation.ravel(),(basis.conj().T@dr).ravel())))
+        jacobian = np.column_stack(columns)
+        singular = np.linalg.svd(jacobian,compute_uv=False)
+        threshold = np.finfo(float).eps*max(jacobian.shape)*singular[0]
+        rank = int(np.count_nonzero(singular>threshold))
+        diagnostics = {'JACOBIAN_SINGULAR_VALUES':singular.tolist(), 'JACOBIAN_RANK':rank,
+                       'JACOBIAN_RANK_THRESHOLD':threshold, 'UNKNOWN_COUNT':count}
+        if rank != count:
+            diagnostics['STATUS'] = 'SINGULAR_INVARIANT_PAIR_JACOBIAN'
+            return None,None,diagnostics,jacobian
+        modes, shift = dict(seed), {}
+        residuals = {}
+        for grade in cls.grades:
+            forcing = cls.equation(coefficients,modes,shift).get(grade,zero_mode)
+            rhs = -np.concatenate((forcing.ravel(),zero_root.ravel()))
+            solved = np.linalg.solve(jacobian,rhs)
+            modes[grade] = solved[:rows*n].reshape(rows,n)
+            shift[grade] = solved[rows*n:].reshape(n,n)
+            equation = cls.equation(coefficients,modes,shift).get(grade,zero_mode)
+            gauge = basis.conj().T@modes[grade]
+            residuals[grade] = {'EQUATION':equation, 'GAUGE':gauge,
+                               'LINEAR_SYSTEM':jacobian@solved-rhs}
+        diagnostics['STATUS'] = 'COMPUTED_INVARIANT_PAIR'
+        diagnostics['BASE_EQUATION'] = coefficients[(0,0,0)]@basis
+        diagnostics['COEFFICIENT_RESIDUALS'] = residuals
+        diagnostics['ROOT_COEFFICIENT_COMMUTATOR'] = shift[(1,0)]@shift[(0,1)]-shift[(0,1)]@shift[(1,0)]
+        return modes,shift,diagnostics,jacobian
+
+    def construct(self, k, q, right, left):
+        coefficients = {index:np.asarray(value,dtype=complex) for index,value in
+                        zip(self.pencil_coefficients,self.evaluate(k,q))}
+        r,kr,rd,rj = self.pair(coefficients,right)
+        l,kl,ld,lj = self.pair({i:v.conj().T for i,v in coefficients.items()},left)
+        result = {'RIGHT_DIAGNOSTICS':rd,'LEFT_DIAGNOSTICS':ld,
+                  'RIGHT_JACOBIAN':rj,'LEFT_JACOBIAN':lj,
+                  'DEFINED':r is not None and l is not None}
+        if not result['DEFINED']:
+            return result
+        n = right.shape[1]
+        identity = np.eye(n,dtype=complex)
+        radical = {index:complex(value)*identity for index,value in
+                   zip(self.radical_coefficients,self.evaluate_radical(k,q))}
+        qseries = self.equation(radical,{(0,0):identity},kr)
+        result.update(RIGHT=r,LEFT=l,K={(0,0):k*identity,**kr},Q=qseries)
+        overlap = self.multiply({i:v.conj().T for i,v in l.items()},r)
+        result['OVERLAP_SINGULAR_VALUES'] = np.linalg.svd(overlap[(0,0)],compute_uv=False).tolist()
+        if np.linalg.matrix_rank(overlap[(0,0)],tol=1e-9) == n:
+            inverse = {(0,0):np.linalg.inv(overlap[(0,0)])}
+            for grade in self.grades:
+                known = self.multiply(overlap,inverse).get(grade,np.zeros((n,n),complex))
+                inverse[grade] = -inverse[(0,0)]@known
+            projector = self.multiply(self.multiply(r,inverse),{i:v.conj().T for i,v in l.items()})
+            result['PROJECTOR'] = projector
+            square = self.multiply(projector,projector)
+            result['PROJECTOR_RESIDUAL'] = {i:square[i]-v for i,v in projector.items()}
+            result['INVERSE_OVERLAP_RESIDUAL'] = self.multiply(overlap,inverse)
+            result['INVERSE_OVERLAP_RESIDUAL'][(0,0)] -= identity
+        return result
+
+
 class FullPencilModes:
     """Carrier-first spectral PIT on the positive-frequency retarded chart.
 
@@ -1813,18 +1952,22 @@ class FullPencilModes:
         """
         body = cas(value)
         digest = hashlib.sha256(sp.srepr(body).encode()).hexdigest()
+        @lru_cache(maxsize=None)
+        def evaluated(expression,index):
+            if expression.is_number:
+                return complex(expression)
+            return complex(expression.subs({self.eta:sp.Rational(index+1,101),
+                                            self.sigma:sp.Rational(index+2,103),
+                                            self.r.symbols['epsilon_shape']:sp.Rational(index+3,107)}))
         samples = []
         for index in range(3):
             total = 0j
             for path, expression in leaves(body):
                 if isinstance(expression,Str):
                     continue
-                substituted = expression.subs({self.eta:sp.Rational(index+1,101),
-                                               self.sigma:sp.Rational(index+2,103),
-                                               self.r.symbols['epsilon_shape']:sp.Rational(index+3,107)})
                 seed = hashlib.sha256((str(path)+':'+str(index)).encode()).digest()
                 weight = (int.from_bytes(seed[:2],'big')%97+1)/101
-                total += weight*complex(substituted)
+                total += weight*evaluated(expression,index)
             samples.append(self.number(total))
         return cas({'OBJECT_SHA256':digest,'NUMERIC_UNIT_FRAME_TENSOR_PIT':samples})
 
@@ -2008,6 +2151,23 @@ class FullPencilModes:
                                          frequency_family, 'numpy', cse=True)
         radical_squared = sp.solve(relation, self.q**2)[0].xreplace(fixed_except_omega)
         evaluate_radical_squared = sp.lambdify((self.r.omega, self.k), radical_squared, 'numpy')
+        rectangular_jets = RectangularModeJets(sampled,relation_sample,self.k,self.q,
+                                               self.eta,self.sigma,origin)
+        derivative_indices = tuple(rectangular_jets.pencil_coefficients)
+        derivative_values = cas(tuple(rectangular_jets.pencil_coefficients.values()))
+        emit('RECTANGULAR_PENCIL_TAYLOR_INDICES_'+record_kind+'_'+name,derivative_indices)
+        emit('METADATA_RECTANGULAR_PENCIL_TAYLOR_INDICES_'+record_kind+'_'+name,
+             self.numeric_metadata(cas(derivative_indices),lambda p:self.unitless))
+        emit('RECTANGULAR_PENCIL_TAYLOR_OPERANDS_'+record_kind+'_'+name,
+             carrier_fingerprint(derivative_values))
+        emit('METADATA_RECTANGULAR_PENCIL_TAYLOR_OPERANDS_'+record_kind+'_'+name,
+             self.numeric_metadata(derivative_values,lambda p:tuple(a-derivative_indices[p[0]][2]*b
+                 for a,b in zip(quotient_units[(p[1],)],dimensions.measure(self.k)))))
+        radical_values = cas(tuple(rectangular_jets.radical_coefficients.values()))
+        emit('RECTANGULAR_RADICAL_TAYLOR_OPERANDS_'+record_kind+'_'+name,radical_values)
+        emit('METADATA_RECTANGULAR_RADICAL_TAYLOR_OPERANDS_'+record_kind+'_'+name,
+             self.numeric_metadata(radical_values,lambda p:tuple(a-derivative_indices[p[0]][2]*b
+                 for a,b in zip(dimensions.measure(self.q),dimensions.measure(self.k)))))
         field_evaluators = None
         if carrier_values is not None and self.closed_operands is not None:
             strong, lift, slab_current, current_legs, field_units, current_unit = self.closed_operands
@@ -2193,6 +2353,59 @@ class FullPencilModes:
                     record['FIRST_GRADE_IMPLICIT_MODES' if grade_origin is None else
                            'LOCAL_GRADE_IMPLICIT_MODES'] = jets
                     record['IMPLICIT_MODE_JET_DEFINED'] = bool(jet_defined)
+                    rectangle = rectangular_jets.construct(kroot,qroot,right,dual)
+                    record['RECTANGULAR_MODE_JET_DEFINED'] = rectangle['DEFINED']
+                    record['RECTANGULAR_JACOBIAN_COEFFICIENT_DIAGNOSTICS'] = {
+                        side:{key:value for key,value in rectangle[side+'_DIAGNOSTICS'].items()
+                              if key in ('JACOBIAN_SINGULAR_VALUES','JACOBIAN_RANK',
+                                         'JACOBIAN_RANK_THRESHOLD','UNKNOWN_COUNT','STATUS')}
+                        for side in ('RIGHT','LEFT')}
+                    for side in ('RIGHT','LEFT'):
+                        jacobian = sp.ImmutableMatrix(rectangle[side+'_JACOBIAN'])
+                        tag = 'RECTANGULAR_'+side+'_JACOBIAN_COEFFICIENTS_'+mode_id
+                        emit(tag,self.compact_fingerprint(jacobian))
+                        # Coefficients in the declared row/column unit frame;
+                        # physical mode/pencil residuals carry restored units below.
+                        emit('METADATA_'+tag,self.numeric_metadata(jacobian,lambda p:self.unitless))
+                    if rectangle['DEFINED']:
+                        old_polynomials = (right_polynomial,left_polynomial,k_polynomial)
+                        right_polynomial = rectangular_jets.polynomial(rectangle['RIGHT'],self.eta,self.sigma,origin)
+                        left_polynomial = rectangular_jets.polynomial(rectangle['LEFT'],self.eta,self.sigma,origin)
+                        k_polynomial = rectangular_jets.polynomial(rectangle['K'],self.eta,self.sigma,origin)
+                        q_polynomial = rectangular_jets.polynomial(rectangle['Q'],self.eta,self.sigma,origin)
+                        record['RECTANGULAR_EQUATION_COEFFICIENT_RESIDUALS'] = {
+                            side:{'G'+''.join(map(str,g)):sp.ImmutableMatrix(value['EQUATION'])
+                                  for g,value in rectangle[side+'_DIAGNOSTICS']['COEFFICIENT_RESIDUALS'].items()}
+                            for side in ('RIGHT','LEFT')}
+                        record['RECTANGULAR_GAUGE_COEFFICIENT_RESIDUALS'] = {
+                            side:{'G'+''.join(map(str,g)):sp.ImmutableMatrix(value['GAUGE'])
+                                  for g,value in rectangle[side+'_DIAGNOSTICS']['COEFFICIENT_RESIDUALS'].items()}
+                            for side in ('RIGHT','LEFT')}
+                        record['RECTANGULAR_ROOT_COEFFICIENT_COMMUTATORS'] = tuple(sp.ImmutableMatrix(
+                            rectangle[side+'_DIAGNOSTICS']['ROOT_COEFFICIENT_COMMUTATOR']) for side in ('RIGHT','LEFT'))
+                        emit('BULK_RADICAL_MODE_JET_'+mode_id,self.compact_fingerprint(q_polynomial))
+                        emit('METADATA_BULK_RADICAL_MODE_JET_'+mode_id,
+                             self.numeric_metadata(q_polynomial,lambda p:dimensions.measure(self.q)))
+                        for label,old,new,unit_fn in (
+                            ('RIGHT',old_polynomials[0],right_polynomial,lambda p:column_units[p[0]//nullity]),
+                            ('LEFT',old_polynomials[1],left_polynomial,lambda p:tuple(-v for v in row_units[p[0]//nullity])),
+                            ('ROOT',old_polynomials[2],k_polynomial,lambda p:dimensions.measure(self.k))):
+                            first = new-(self.eta-origin[self.eta])*(self.sigma-origin[self.sigma])*new.diff(
+                                self.eta,self.sigma).subs(origin)
+                            for kind,value in (('LEGACY_OPERAND',old),('RECTANGULAR_OPERAND',first),('RESIDUAL',first-old)):
+                                tag='FIRST_JET_ROUTE_'+label+'_'+kind+'_'+mode_id
+                                emit(tag,self.compact_fingerprint(value))
+                                emit('METADATA_'+tag,self.numeric_metadata(value,unit_fn))
+                        if 'PROJECTOR' in rectangle:
+                            projector_polynomial = rectangular_jets.polynomial(rectangle['PROJECTOR'],self.eta,self.sigma,origin)
+                            projector_residual = rectangular_jets.polynomial(rectangle['PROJECTOR_RESIDUAL'],self.eta,self.sigma,origin)
+                            tag='CLASSIFIER_PROJECTOR_RECTANGLE_RESIDUAL_'+mode_id
+                            emit(tag,self.compact_fingerprint(projector_residual))
+                            emit('METADATA_'+tag,self.numeric_metadata(projector_residual,lambda p:
+                                tuple(a-b for a,b in zip(column_units[p[0]//5],column_units[p[0]%5]))))
+                        jet_defined = True
+                    record['FIRST_GRADE_PROJECTED_JET_DEFINED'] = record['IMPLICIT_MODE_JET_DEFINED']
+                    record['IMPLICIT_MODE_JET_DEFINED'] = bool(jet_defined)
                     if np.linalg.matrix_rank(pairing, tol=1e-9) == nullity:
                         frequency_slopes = np.linalg.eigvals(-np.linalg.solve(pairing, omega_pairing))
                         record['RETARDED_K_FREQUENCY_SLOPES'] = list(map(self.number,frequency_slopes))
@@ -2231,6 +2444,12 @@ class FullPencilModes:
                 return self.unitless
             if key == 'HELMHOLTZ_CHART_OPERAND': return tuple(2*v for v in dimensions.measure(self.k))
             if key == 'RADICAL_RESIDUAL': return tuple(2*v for v in dimensions.measure(self.q))
+            if key == 'RECTANGULAR_ROOT_COEFFICIENT_COMMUTATORS':
+                return tuple(2*v for v in dimensions.measure(self.k))
+            if key == 'RECTANGULAR_EQUATION_COEFFICIENT_RESIDUALS':
+                n = int(named(outputs[path[0]],'NULLITY'))
+                i = path[-1]//n
+                return row_units[i] if path[2]=='RIGHT' else tuple(-v for v in column_units[i])
             if key == 'CONSERVATIVE_SLAB_CURRENT_PAIRING':
                 return self.closed_operands[-1]
             if key == 'CLOSED_PHYSICAL_FIELD_RESIDUAL':
@@ -2492,10 +2711,11 @@ def run():
                                       'CLASS_RESTRICTED_ACTION_RECONSTRUCTION', 'GAUGE_QUOTIENT_CHARTS',
                                       'POSITIVE_FREQUENCY_SPECTRAL_PIT', 'FIRST_GRADE_END_MODE_JETS',
                                       'NULLSPACE_CLASSIFIER_PROJECTORS', 'NONLINEAR_FREQUENCY_PAIRING',
+                                      'REGULAR_RECTANGULAR_MODE_JETS',
                                       'S11B_CONSERVATIVE_SLAB_CURRENT', 'CLOSED_PHYSICAL_FIELD_LIFT'))
     emit('CHANNEL_INPUT_EXECUTION', channel_input is not None)
     emit('OUTSTANDING_CONSTRUCTIONS', ('ALL_CARRIER_INVERSE_FOURIER_ROUNDTRIPS',
-         'FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS', 'MIXED_GRADE_MODE_JETS',
+         'FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS',
          'GENERIC_DOMAIN_SHEET_CONTINUATION', 'CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION',
          'COMPLETE_TWO_ENDED_SCATTERING', 'POLES_RIESZ_OVERLAP', 'SURVIVAL',
          'FLUX_BOOKKEEPING', 'WEAK_COEFFICIENTS', 'SECTION_5_CONTROLS', 'OWN_ROWS_EXPORT'))

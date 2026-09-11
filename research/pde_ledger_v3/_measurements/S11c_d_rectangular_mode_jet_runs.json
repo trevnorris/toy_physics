@@ -1,0 +1,349 @@
+{
+  "checkpoint_parent": "f9e28f5f28dcb4b66d954d883b2977075598ca76",
+  "status": "completed runnable rectangular-mode-jet checkpoint; full S11c-d program unfinished",
+  "focused_checks": {
+    "run_directory": "/tmp/s11cd-mode-jets-20260910-195830",
+    "source_hashes_before": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "c1d207b5f885343e7efb82be34cfca9d8dd9a0a69d75b339304372a196ef0683",
+      "_measurements/S11c_d_rectangular_mode_jet_check.py": "2ff2b7cb2aceb5fdec421fb2ae278c9436f77b009ec09b99bc6a1c64159432ee",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    },
+    "checks": {
+      "production": {
+        "command": [
+          "/usr/bin/python3",
+          "-u",
+          "_measurements/S11c_d_rectangular_mode_jet_check.py",
+          "--manifest",
+          "/tmp/s11cd-sheet-full-0l4gsvk9/manifest.json",
+          "--sample",
+          "2",
+          "--production"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 101.90929515752941,
+        "peak_rss_kib": 122652,
+        "stdout_bytes": 1951282,
+        "stdout_sha256": "2dee88b1f78b31bf917f5267bf425251698da386bba45a95c3e357bf7234d8d9",
+        "stderr_bytes": 0
+      },
+      "native": {
+        "command": [
+          "/usr/bin/python3",
+          "-u",
+          "_measurements/S11c_d_rectangular_mode_jet_check.py",
+          "--manifest",
+          "/tmp/s11cd-sheet-full-0l4gsvk9/manifest.json"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 50.746079383417964,
+        "peak_rss_kib": 122524,
+        "stdout_bytes": 649968,
+        "stdout_sha256": "118d0ade624576c2ac020e18fb99a0ed4c67fc898a32f7c14e28f257719e50f8",
+        "stderr_bytes": 0
+      },
+      "pullback": {
+        "command": [
+          "/usr/bin/python3",
+          "-u",
+          "_measurements/S11c_d_rectangular_mode_jet_check.py",
+          "--manifest",
+          "/tmp/s11cd-sheet-full-0l4gsvk9/manifest.json",
+          "--pullback"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 56.7918476741761,
+        "peak_rss_kib": 122628,
+        "stdout_bytes": 673586,
+        "stdout_sha256": "bbbdb0ec90b43111203683c07ae87934e538380b08e59f8e34c19d467666586e",
+        "stderr_bytes": 0
+      }
+    },
+    "source_hashes_after": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "c1d207b5f885343e7efb82be34cfca9d8dd9a0a69d75b339304372a196ef0683",
+      "_measurements/S11c_d_rectangular_mode_jet_check.py": "2ff2b7cb2aceb5fdec421fb2ae278c9436f77b009ec09b99bc6a1c64159432ee",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    }
+  },
+  "producer_manifest": {
+    "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "--dev-symbol-cache",
+      "/tmp/s11cd-sheet-full-0l4gsvk9/symbols"
+    ],
+    "run_directory": "/tmp/s11cd-sheet-full-0l4gsvk9",
+    "source_hashes_before": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5646b5ea4cf8a9a6ec7477df860c9c1a6d0c4ec54168d15d5d0608f5923c68c2",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    },
+    "exit_code": 0,
+    "wall_seconds": 2495.664518425241,
+    "peak_rss_kib": 1721064,
+    "source_hashes_after": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5646b5ea4cf8a9a6ec7477df860c9c1a6d0c4ec54168d15d5d0608f5923c68c2",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    },
+    "artifacts": {
+      "full.out": {
+        "bytes": 55823604,
+        "sha256": "6e4e8f047c20440202040677967e33f922ca6f3739e6482580800165d65354b1"
+      },
+      "stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 85252,
+        "sha256": "3750fa50533fec7194d10f34383aee986e400de30258c06c8a72b1c2ece4b7ef"
+      },
+      "symbols/LEFT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 83972,
+        "sha256": "9c313f7d1993d8a172213ff2b2073ed3ab52ef73745103331db61f0c9037330e"
+      },
+      "symbols/LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 85349,
+        "sha256": "af9115c3a7ee3646663c54da6f07bbf842c9898a371611e8b3feaf3ec1aed284"
+      },
+      "symbols/LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 83972,
+        "sha256": "9c313f7d1993d8a172213ff2b2073ed3ab52ef73745103331db61f0c9037330e"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 69009,
+        "sha256": "cfe283da90b07a49f0882120b997298d1850cf0f6f82b9793fa4cff957b3b026"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 70370,
+        "sha256": "627f28c85a0a3e7161f0f4e01b7cd58bf6b09c10ee4e863cf99a8aef0215af35"
+      },
+      "symbols/REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 70390,
+        "sha256": "b82477490c49a4cb7bcbb2550591ac03630a4be535b47a80ad47f0a482d7497f"
+      },
+      "symbols/REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 70370,
+        "sha256": "627f28c85a0a3e7161f0f4e01b7cd58bf6b09c10ee4e863cf99a8aef0215af35"
+      },
+      "symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 85458,
+        "sha256": "5774083fd3f0ed9778aed88b4f6214d58ac211efae464699e703549248938a74"
+      },
+      "symbols/RIGHT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 84082,
+        "sha256": "045f7473d71472c3a03bc52e9061ec5fb9ddf01a86790672fbba7ad1e34fdf2b"
+      },
+      "symbols/RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 85465,
+        "sha256": "17405dbb773544aa9187ac8da013a62e3a301b43b272c7ce1397a462e59d3cfb"
+      },
+      "symbols/RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 84082,
+        "sha256": "045f7473d71472c3a03bc52e9061ec5fb9ddf01a86790672fbba7ad1e34fdf2b"
+      }
+    }
+  },
+  "published_artifacts": {
+    "scripts/out/S11c_d_rectangular_mode_jets_production.out": {
+      "bytes": 1951282,
+      "sha256": "2dee88b1f78b31bf917f5267bf425251698da386bba45a95c3e357bf7234d8d9",
+      "source": "/tmp/s11cd-mode-jets-20260910-195830/production.out"
+    },
+    "scripts/out/S11c_d_rectangular_mode_jets_native.out": {
+      "bytes": 649968,
+      "sha256": "118d0ade624576c2ac020e18fb99a0ed4c67fc898a32f7c14e28f257719e50f8",
+      "source": "/tmp/s11cd-mode-jets-20260910-195830/native.out"
+    },
+    "scripts/out/S11c_d_rectangular_mode_jets_pullback.out": {
+      "bytes": 673586,
+      "sha256": "bbbdb0ec90b43111203683c07ae87934e538380b08e59f8e34c19d467666586e",
+      "source": "/tmp/s11cd-mode-jets-20260910-195830/pullback.out"
+    },
+    "scripts/out/S11c_d_mixing_scattering_sympy_audit.out": {
+      "bytes": 78707339,
+      "sha256": "a5f512c5af0e671377469c705002fa99a41095aa0f304f1c6a163d60002422ef",
+      "source": "/tmp/s11cd-mode-jets-20260910-195830/full/full.out"
+    }
+  },
+  "previous_main_artifact": {
+    "path": "scripts/out/S11c_d_mixing_scattering_sympy_audit.out",
+    "annex_symlink": true,
+    "resolved_content": "/var/projects/toy_physics/.git/annex/objects/J0/99/MD5E-s55823604--6e877e2d674d14e136a8aecc07a358d7.out/MD5E-s55823604--6e877e2d674d14e136a8aecc07a358d7.out",
+    "bytes": 55823604,
+    "sha256": "6e4e8f047c20440202040677967e33f922ca6f3739e6482580800165d65354b1"
+  },
+  "full_run": {
+    "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "--dev-symbol-cache",
+      "/tmp/s11cd-mode-jets-20260910-195830/full/symbols"
+    ],
+    "run_directory": "/tmp/s11cd-mode-jets-20260910-195830/full",
+    "source_hashes_before": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "c1d207b5f885343e7efb82be34cfca9d8dd9a0a69d75b339304372a196ef0683",
+      "_measurements/S11c_d_rectangular_mode_jet_check.py": "2ff2b7cb2aceb5fdec421fb2ae278c9436f77b009ec09b99bc6a1c64159432ee",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    },
+    "exit_code": 0,
+    "wall_seconds": 3728.5500989686698,
+    "peak_rss_kib": 1721664,
+    "source_hashes_after": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "c1d207b5f885343e7efb82be34cfca9d8dd9a0a69d75b339304372a196ef0683",
+      "_measurements/S11c_d_rectangular_mode_jet_check.py": "2ff2b7cb2aceb5fdec421fb2ae278c9436f77b009ec09b99bc6a1c64159432ee",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    },
+    "artifacts": {
+      "full.out": {
+        "bytes": 78707339,
+        "sha256": "a5f512c5af0e671377469c705002fa99a41095aa0f304f1c6a163d60002422ef"
+      },
+      "stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 85252,
+        "sha256": "1aa51f72e423dfbc619e53c19843931286f8a09e4624e4745f836f669c9cb012"
+      },
+      "symbols/LEFT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 86524,
+        "sha256": "46952a1f68308337a3c89506706093c1d1d94658b48e35e48b8c770192b3b5ab"
+      },
+      "symbols/LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 87811,
+        "sha256": "6479d39cb381f2a0687b754fbf82f183c8ada99951f4d70b863c9a98d0d1627b"
+      },
+      "symbols/LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 86440,
+        "sha256": "fef18ca4a04ddbe39cd4614a6c72389b17226bc4b6b890f84bacd926a01f8709"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 68990,
+        "sha256": "8eb17d473df58dccb01f18433be6f00b5e1b552451680ad349876f96b2ea74b9"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 72719,
+        "sha256": "ff1634163724574eebf3d10231bee07253e1120c2423018c764b1df3b7091c12"
+      },
+      "symbols/REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 72714,
+        "sha256": "d88518c853b31a444064559821d2311e66536e77d5dc776633cf5ab95f82d931"
+      },
+      "symbols/REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 72698,
+        "sha256": "00b85b5222168717018202ac1c2221d772fbd9e3c830d89c0a6b19f20c7f6058"
+      },
+      "symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 87950,
+        "sha256": "5db2c8e24d5647ee1ad24e25cee777fd47ef3dea597116500a2cbc65851151e6"
+      },
+      "symbols/RIGHT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 86872,
+        "sha256": "4c375b68aacf515b4bc80300a9fe707d220e37805700075dd43c75f1719fad93"
+      },
+      "symbols/RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 87982,
+        "sha256": "e9ea0e1f9a26357102e260c2caab346f55c4262001945479952a05882904d887"
+      },
+      "symbols/RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 86622,
+        "sha256": "459775377593f02d34c14cbe0e1781418c088b8cc1d62115ebae1d8536c0759c"
+      }
+    }
+  },
+  "inventory_run": {
+    "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+    "command": [
+      "/usr/bin/python3",
+      "_measurements/S11c_d_mode_jet_output_inventory.py",
+      "/tmp/s11cd-mode-jets-20260910-195830/full/full.out",
+      "--baseline",
+      "/tmp/s11cd-sheet-full-0l4gsvk9/full.out"
+    ],
+    "source_hashes_before": {
+      "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+      "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+    },
+    "exit_code": 0,
+    "wall_seconds": 84.28266964480281,
+    "peak_rss_kib": 166172,
+    "source_hashes_after": {
+      "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+      "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+    },
+    "artifacts": {
+      "inventory.json": {
+        "bytes": 158041,
+        "sha256": "ead8d886128558efd0d30d681a08381bac8143057ef9e5e948bdf06ad7e60410"
+      },
+      "inventory.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "previous_annex_sha256_after_publication": "6e4e8f047c20440202040677967e33f922ca6f3739e6482580800165d65354b1",
+  "inventory_publication": {
+    "path": "_measurements/S11c_d_mode_jet_output_inventory.json",
+    "bytes": 158041,
+    "sha256": "ead8d886128558efd0d30d681a08381bac8143057ef9e5e948bdf06ad7e60410"
+  },
+  "verification": {
+    "python_compilation": "engine and focused instrument compiled before the frozen runs; inventory recompiled after its final edits",
+    "missing_directive_checkers": [
+      "reduction/derived_or_declared.py",
+      "reduction/engine_output_checks.py"
+    ],
+    "commit_performed": false,
+    "review_or_downstream_run": false,
+    "diff_check_exit_code": 0,
+    "final_frozen_sources_match": true,
+    "published_artifact_hashes_verified": true,
+    "report_local_links_verified": true,
+    "new_text_files_have_no_trailing_whitespace": true,
+    "scope": "Completed builder run and publication, before the subsequent user-requested preservation save"
+  },
+  "preservation_checkpoint": {
+    "authorization": "User explicitly requested a local checkpoint commit after the completed builder run",
+    "review_status": "Unreviewed builder checkpoint; no review or downstream clearance",
+    "output_payload_bytes": 81982175,
+    "output_storage": "DataLad/git-annex under the existing repository attributes",
+    "other_storage": "Ordinary Git for sources, reports and JSON",
+    "push_requested": false
+  }
+}

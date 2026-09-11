@@ -1,26 +1,86 @@
-# S11c-d builder checkpoint: fixed-frequency sheet repair
+# S11c-d builder checkpoint: regular mixed mode jets
 
-2026-09-10. The original complex-momentum sheet error is repaired in d. A computed Fourier kernel connects the real-axis outgoing seed to the counterexample inside its absolute-convergence strip; this finding requires no upstream producer/export change. The repaired four-case run completed and its canonical transcript is published. This is an unreviewed builder checkpoint, not completion of the S11c-d program.
+2026-09-10. The engine now computes regular end-mode jets through the retained
+`(eta,sigma_W)` rectangle. The full four-case run and output inventory completed,
+and the regenerated transcript is published at its canonical path. This is an
+unreviewed runnable checkpoint; the complete S11c-d engine and export remain
+unfinished.
 
-## Computed repair
+## Computed extension
 
-[BulkSheetPath](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1674) replaces the radical half-plane predicate with root transport from real normal momentum, at positive real frequency. It computes branch points, path clearance, two adaptive refinements, radical residuals and root-match differences. Paths intersecting a branch point or failing numerical resolution emit `UNRESOLVED`; their candidates remain recorded. Incoming/outgoing flags cannot accept unresolved sheet labels. Their frequency slopes remain diagnostics until the full current is constructed.
+[RectangularModeJets](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1762)
+derives the implicit radical chain rule and pencil Taylor coefficients from
+the computed reduced operands. Its
+[augmented solve](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1826)
+computes right and adjoint-left invariant-pair coefficients at grades `10`,
+`01`, and `11`, retaining matrix normal momenta for degenerate clusters. The
+[radical and classifier construction](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1869)
+computes the radical jet, overlap-inverse series and oblique classifier projector.
+These are regular cluster jets, not Riesz data. Singular Jacobians retain explicit
+status. The [emission](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2359)
+prints literal equation/gauge residuals and fingerprints the heavy objects,
+with grade and restored dimension metadata. The prior first-grade route remains
+computed for operand/difference checks.
 
-The [Fourier probe](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_fourier_sheet_probe.py) derives the spatial kernel from the computed reduced radical and actual c2 branch bindings. At the explicit input it obtains the strip `|Im(k_n)| < 0.2` in inverse-length reference units. For the original candidate, its refined kernel integral gives `q = −0.08065640747826197 + 6.393830415309923 i` in inverse-time reference units: the opposite of the old physical-sheet label, with opposite-root difference `5.53e-16 − 1.92e-16 i`. The repaired selector labels the old root false. This is a fixed-frequency continuation chart, not a construction of complex-frequency pole sheets or the full nonlocal resolvent.
+## Checks and artifacts
 
-## Checks and artifact status
+Three sequential focused checks on one case passed with empty stderr and empty
+dimensional constraints. The production check uses a second PIT sample. The
+original-coordinate check computes absent sigma dependence at that constant end.
+A mathematical parameter pullback exercises nonzero mixed coefficients; its
+right/left coefficient residual maxima are `1.99967e-14` and `1.09836e-13` in the
+declared numerical coefficient frame. Independent direct-pencil mixed residuals
+fall `0.593519 → 0.297380 → 0.148845` when the step is halved twice. This is not a
+physical profile ablation or a Section 5 control.
 
-The fresh pre-repair one-case input run completed in 801.55 s, with peak RSS 1,720,624 KiB, exit 0 and empty stderr. Its pinned pencil feeds the Fourier probe and cached checks. The independent ODE endpoint differs from the Fourier endpoint by about `1.14e-13`; its maximum sampled equation residual is separately `2.48e-10`. Two local frequency/momentum path-order checks differ by at most `1.26e-15`. Quadrature precision and cutoff are recorded; the quadrature error estimate excludes the truncated tail.
+The full run took `3728.55` seconds, peak RSS `1721664` KiB, exit 0 and empty
+stderr. Its
+[78,707,339-byte transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
+contains all 12 reference/end symbols and 24 mode packets, with 528 defined
+rectangular jets (336 scalar and 192 two-dimensional nullspaces). All three
+dimensional records are empty; tag, source-pin and residual-metadata coverage
+checks passed. These are PIT candidates, not a physical open-channel census.
+All 12 stored symbol payloads and all 528 root/nullity/sheet records match the
+repaired checkpoint literally, including its 64 unresolved sheet labels.
 
-Cached controls cover 198 candidate records in nine packets (six PIT, three explicit input). All 170 resolved paths complete independent ODE transport, with maximum relative difference `4.98e-12`. All 18 deliberately intersecting branch-locus paths remain unresolved. These are candidate counts, not open-channel counts. The three diagnostic instruments exit 0 and emit empty dimensional constraints. All six engine/instrument Python files compile. The repaired four-case/PIT run completed in 2,495.66 s with peak RSS 1,721,064 KiB, exit 0 and empty stderr. Its 55,823,604-byte transcript contains all 12 reference/end symbols and 24 mode packets (528 candidate records), with no missing path records or mode metadata, no duplicate tags, unchanged source pins and three empty dimensional records. It retains 64 unresolved sheet labels. The explicit physical input is covered by the separate baseline and cached checks above.
+Full-run grade-10 residual maxima remain recorded by physical dimension: for
+example, `9.35918e-14` at `[L,T,M]=[-1,-2,1]` on the right and `5.85929e-14` at
+`[0,0,0]` on the left. All grade-01 and grade-11 equation residuals are literal
+zeros. The nonzero pullback check above exercises the mixed computation.
+Detailed scalar results and per-object scope are in the
+[construction report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_rectangular_mode_jet_report.md),
+with exact commands, hashes and producer/cache linkage in the
+[run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_rectangular_mode_jet_runs.json)
+and literal full-run counts in the
+[inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_mode_jet_output_inventory.json).
 
-Commands, hashes and source/cache linkage are in [the run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_repair_runs.json); scalar results, canonical diagnostic output paths and scope are in [the repair report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_repair_report.md). The [output inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_output_inventory.json) records the full-run checks. The directive’s two named `reduction/` checker scripts are absent; they were not executed. The old annex payloads remain preserved at checkpoint `55e298b`. Storage policy for the user-requested preservation checkpoint: the five published `.out` payloads go through DataLad/git-annex; scripts, reports and JSON stay in ordinary Git. The checkpoint conveys no review clearance. No review leg, comparator, Wolfram engine or downstream stage ran.
+The engine and both new instruments compile. The directive-named
+`reduction/derived_or_declared.py` and `reduction/engine_output_checks.py`
+are absent and were not executed. Publication preserved the
+previous annex payload; its hash was checked after replacing the main path.
+The user subsequently requested a local preservation checkpoint. Its four
+new/regenerated `.out` payloads (81,982,175 bytes) use DataLad/git-annex;
+sources, reports and JSON remain ordinary Git. This save conveys no review
+clearance. No review leg, comparator, Wolfram engine or downstream stage ran.
 
 ## Remaining program and inherited limits
 
-The positional three-parent fold, Fourier reduction, full quotient-pencil candidates, frequency normalization, field lift and partial slab current are preserved. The slab current still lacks the nonlocal bulk contribution, complete biorthogonal current, derivative identity and flux normalization. All spec §1 inputs remain SUPPLIED and unfalsifiable here; the separate shear-normalization and c2 cross-engine operand/sign debts remain open.
+`MIXED_GRADE_MODE_JETS` is removed from the live TODO; 11 constructions remain:
+all-carrier inverse-Fourier round trips; full end-spectrum coverage; generic
+sheet continuation; closed nonlocal bulk current and flux normalization;
+complete two-ended scattering; poles/Riesz/overlap; survival; flux bookkeeping;
+weak coefficients; Section 5 controls; and own-row export. The regular jets do
+not settle singular clusters, generic individual branches or full spectral
+coverage. `scripts/S11c_d_exports.py` remains absent because its required roots
+are uncomputed; no placeholder export or empty pole set was supplied.
 
-The 12 live TODOs remain: all-carrier Fourier round trips; full end spectra; mixed-grade jets; generic sheet continuation; closed bulk current/flux normalization; complete two-ended scattering; poles/Riesz/overlap; survival; flux bookkeeping; weak coefficients; §5 controls; and own-row export. The generic continuation TODO retains complex-frequency paths, cut-bank/continuum treatment and full spectral coverage. `scripts/S11c_d_exports.py` is absent because its required roots are uncomputed; no placeholder export or empty pole set was substituted.
+The positional parent fold, Fourier reduction, field lift, frequency
+normalization and partial slab current are preserved. The full nonlocal current
+and derivative/flux identities remain unfinished. Section 1 inputs remain
+SUPPLIED and unfalsifiable here; the separate shear-normalization and c2
+cross-engine operand/sign debts remain open. The prior fixed-frequency repair
+is recorded in the
+[historical repair report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_repair_report.md).
 
 ## Retained user-approved solver/export contract
 

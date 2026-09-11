@@ -1,0 +1,4734 @@
+{
+  "transcript": "/tmp/s11cd-mode-jets-20260910-195830/full/full.out",
+  "bytes": 78707339,
+  "sha256": "a5f512c5af0e671377469c705002fa99a41095aa0f304f1c6a163d60002422ef",
+  "tag_count": 23766,
+  "duplicate_tags": {},
+  "source_pins": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "c1d207b5f885343e7efb82be34cfca9d8dd9a0a69d75b339304372a196ef0683",
+    "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+    "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+    "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+  },
+  "changed_source_pins": [],
+  "full_symbol_tags": [
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_REFERENCE_LAB_HELD_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_LEFT_LAB_HELD_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_RIGHT_LAB_HELD_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_REFERENCE_LAB_HELD_RHOBR_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_LEFT_LAB_HELD_RHOBR_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_RIGHT_LAB_HELD_RHOBR_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT"
+  ],
+  "mode_packets": [
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    }
+  ],
+  "sheet_label_counts": {
+    "True": 224,
+    "False": 240,
+    "UNRESOLVED": 64
+  },
+  "dimension_records": {
+    "PY_S11CD_REDUCED_DIMENSION_CONSTRAINT_RESIDUALS": "Tuple()",
+    "PY_S11CD_REDUCED_DIMENSION_UNRESOLVED": "Tuple()",
+    "PY_S11CD_PENCIL_DIMENSION_CONSTRAINT_RESIDUALS": "Tuple()"
+  },
+  "outstanding_constructions": [
+    "ALL_CARRIER_INVERSE_FOURIER_ROUNDTRIPS",
+    "FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS",
+    "GENERIC_DOMAIN_SHEET_CONTINUATION",
+    "CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION",
+    "COMPLETE_TWO_ENDED_SCATTERING",
+    "POLES_RIESZ_OVERLAP",
+    "SURVIVAL",
+    "FLUX_BOOKKEEPING",
+    "WEAK_COEFFICIENTS",
+    "SECTION_5_CONTROLS",
+    "OWN_ROWS_EXPORT"
+  ],
+  "completion_records": [
+    "Integer(8)"
+  ],
+  "execution_records": {
+    "PY_S11CD_IMPLEMENTATION_CHECKPOINT": "Tuple(Str('REDUCED_ACTION'), Str('DIMENSIONS'), Str('MULTIGRADES'), Str('ABEL_WEAK_PRESCRIPTION'), Str('PENCIL_ACTION'), Str('OFF_DIAGONAL_EXTRACTION'), Str('FULL_SECTOR_BLOCK_ACTION'), Str('REFERENCE_AND_END_SYMBOLS'), Str('REFERENCE_AND_END_CANONICAL_COUPLINGS'), Str('SIMULTANEOUS_END_TRANSLATION'), Str('CLASS_RESTRICTED_ACTION_RECONSTRUCTION'), Str('GAUGE_QUOTIENT_CHARTS'), Str('POSITIVE_FREQUENCY_SPECTRAL_PIT'), Str('FIRST_GRADE_END_MODE_JETS'), Str('NULLSPACE_CLASSIFIER_PROJECTORS'), Str('NONLINEAR_FREQUENCY_PAIRING'), Str('REGULAR_RECTANGULAR_MODE_JETS'), Str('S11B_CONSERVATIVE_SLAB_CURRENT'), Str('CLOSED_PHYSICAL_FIELD_LIFT'))",
+    "PY_S11CD_CHANNEL_INPUT_EXECUTION": "false",
+    "PY_S11CD_RESOURCE_MEASUREMENTS": "Tuple(Float('3723.2953068902716', precision=53), Integer(1721664))"
+  },
+  "coverage_gaps": {
+    "missing_symbols": [],
+    "extra_symbols": [],
+    "missing_mode_packets": [],
+    "extra_mode_packets": [],
+    "missing_mode_metadata": [],
+    "missing_branch_paths": []
+  },
+  "baseline_spectrum_inventory": {
+    "transcript": "/tmp/s11cd-sheet-full-0l4gsvk9/full.out",
+    "baseline_records": 528,
+    "current_records": 528,
+    "identical_literal_records": true,
+    "different_record_indices": []
+  },
+  "baseline_symbol_inventory": {
+    "baseline_symbols": 12,
+    "current_symbols": 12,
+    "identical_literal_payloads": true,
+    "different_symbols": []
+  },
+  "rectangular_jet_states": {
+    "True": 528
+  },
+  "nullspace_dimensions": {
+    "1": 336,
+    "2": 192
+  },
+  "rectangular_residuals_by_dimension": [
+    {
+      "side": "RIGHT",
+      "grade": "G10",
+      "dimension_l_t_m": [
+        "-3",
+        "-2",
+        "1"
+      ],
+      "maximum_absolute_coefficient": 1.509903313490213e-14,
+      "entries": 2160
+    },
+    {
+      "side": "RIGHT",
+      "grade": "G10",
+      "dimension_l_t_m": [
+        "-3",
+        "-1",
+        "1"
+      ],
+      "maximum_absolute_coefficient": 7.114303597610951e-14,
+      "entries": 720
+    },
+    {
+      "side": "RIGHT",
+      "grade": "G10",
+      "dimension_l_t_m": [
+        "-1",
+        "-2",
+        "1"
+      ],
+      "maximum_absolute_coefficient": 9.35918009759007e-14,
+      "entries": 720
+    },
+    {
+      "side": "RIGHT",
+      "grade": "G01",
+      "dimension_l_t_m": [
+        "-3",
+        "-2",
+        "1"
+      ],
+      "maximum_absolute_coefficient": 0.0,
+      "entries": 2160
+    },
+    {
+      "side": "RIGHT",
+      "grade": "G01",
+      "dimension_l_t_m": [
+        "-3",
+        "-1",
+        "1"
+      ],
+      "maximum_absolute_coefficient": 0.0,
+      "entries": 720
+    },
+    {
+      "side": "RIGHT",
+      "grade": "G01",
+      "dimension_l_t_m": [
+        "-1",
+        "-2",
+        "1"
+      ],
+      "maximum_absolute_coefficient": 0.0,
+      "entries": 720
+    },
+    {
+      "side": "RIGHT",
+      "grade": "G11",
+      "dimension_l_t_m": [
+        "-3",
+        "-2",
+        "1"
+      ],
+      "maximum_absolute_coefficient": 0.0,
+      "entries": 2160
+    },
+    {
+      "side": "RIGHT",
+      "grade": "G11",
+      "dimension_l_t_m": [
+        "-3",
+        "-1",
+        "1"
+      ],
+      "maximum_absolute_coefficient": 0.0,
+      "entries": 720
+    },
+    {
+      "side": "RIGHT",
+      "grade": "G11",
+      "dimension_l_t_m": [
+        "-1",
+        "-2",
+        "1"
+      ],
+      "maximum_absolute_coefficient": 0.0,
+      "entries": 720
+    },
+    {
+      "side": "LEFT",
+      "grade": "G10",
+      "dimension_l_t_m": [
+        "-2",
+        "0",
+        "0"
+      ],
+      "maximum_absolute_coefficient": 2.3832327871173822e-14,
+      "entries": 2160
+    },
+    {
+      "side": "LEFT",
+      "grade": "G10",
+      "dimension_l_t_m": [
+        "0",
+        "0",
+        "0"
+      ],
+      "maximum_absolute_coefficient": 5.859285502108464e-14,
+      "entries": 1440
+    },
+    {
+      "side": "LEFT",
+      "grade": "G01",
+      "dimension_l_t_m": [
+        "-2",
+        "0",
+        "0"
+      ],
+      "maximum_absolute_coefficient": 0.0,
+      "entries": 2160
+    },
+    {
+      "side": "LEFT",
+      "grade": "G01",
+      "dimension_l_t_m": [
+        "0",
+        "0",
+        "0"
+      ],
+      "maximum_absolute_coefficient": 0.0,
+      "entries": 1440
+    },
+    {
+      "side": "LEFT",
+      "grade": "G11",
+      "dimension_l_t_m": [
+        "-2",
+        "0",
+        "0"
+      ],
+      "maximum_absolute_coefficient": 0.0,
+      "entries": 2160
+    },
+    {
+      "side": "LEFT",
+      "grade": "G11",
+      "dimension_l_t_m": [
+        "0",
+        "0",
+        "0"
+      ],
+      "maximum_absolute_coefficient": 0.0,
+      "entries": 1440
+    }
+  ],
+  "rectangular_coverage_gaps": [],
+  "baseline_inventory_exit_code": 0,
+  "baseline_inventory_stderr": "",
+  "fingerprint_residual_projections": {
+    "PY_S11CD_FIRST_JET_ROUTE_RIGHT_RESIDUAL_": {
+      "objects": 528,
+      "sample_values": 1584,
+      "maximum_absolute_numeric_frame_projection": 5.039927372045941e-16
+    },
+    "PY_S11CD_FIRST_JET_ROUTE_LEFT_RESIDUAL_": {
+      "objects": 528,
+      "sample_values": 1584,
+      "maximum_absolute_numeric_frame_projection": 5.827682242234197e-16
+    },
+    "PY_S11CD_FIRST_JET_ROUTE_ROOT_RESIDUAL_": {
+      "objects": 528,
+      "sample_values": 1584,
+      "maximum_absolute_numeric_frame_projection": 1.8113916852904085e-16
+    },
+    "PY_S11CD_CLASSIFIER_PROJECTOR_RECTANGLE_RESIDUAL_": {
+      "objects": 528,
+      "sample_values": 1584,
+      "maximum_absolute_numeric_frame_projection": 7.669894845033615e-15
+    }
+  },
+  "spectral_records": [
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 0,
+      "k": "0.0076804771550446696 + 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 1,
+      "k": "-0.0076804771550446696 - 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 2,
+      "k": "0.031471878747061845 + 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 3,
+      "k": "-0.031471878747061845 - 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 4,
+      "k": "0.0001581242142436954 - 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 5,
+      "k": "-0.0001581242142436954 + 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 6,
+      "k": "0.0084246308501093169 + 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 7,
+      "k": "-0.0084246308501093169 - 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 8,
+      "k": "9.1630615301166546e-5 + 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 9,
+      "k": "-9.1630615301166546e-5 - 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 10,
+      "k": "0.028216039735022846 + 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 11,
+      "k": "-0.028216039735022846 - 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 12,
+      "k": "0.054729870301220118 + 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 13,
+      "k": "-0.054729870301220118 - 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 14,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 15,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 16,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 17,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 18,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 19,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 20,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 21,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 0,
+      "k": "0.1810478844245631 + 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 1,
+      "k": "-0.1810478844245631 - 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 2,
+      "k": "0.016186386265211673 + 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 3,
+      "k": "-0.016186386265211673 - 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 4,
+      "k": "0.47321062425512317 + 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 5,
+      "k": "-0.47321062425512317 - 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 6,
+      "k": "4.0262096670092067 + 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 7,
+      "k": "-4.0262096670092067 - 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 8,
+      "k": "0.47255468097151387 + 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 9,
+      "k": "-0.47255468097151387 - 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 10,
+      "k": "0.0012640703850392212 - 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 11,
+      "k": "-0.0012640703850392212 + 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 12,
+      "k": "0.30045063044005327 + 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 13,
+      "k": "-0.30045063044005327 - 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 14,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 15,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 16,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 17,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 18,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 19,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 20,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 21,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 0,
+      "k": "0.040113240296637785 + 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 1,
+      "k": "-0.040113240296637785 - 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 2,
+      "k": "0.013661958802344587 + 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 3,
+      "k": "-0.013661958802344587 - 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 4,
+      "k": "1.2031538946941505 + 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 5,
+      "k": "-1.2031538946941505 - 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 6,
+      "k": "1.3969589688601001 + 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 7,
+      "k": "-1.3969589688601001 - 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 8,
+      "k": "1.2505539640383914 - 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 9,
+      "k": "-1.2505539640383914 + 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 10,
+      "k": "0.0069562505009145535 + 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 11,
+      "k": "-0.0069562505009145535 - 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 12,
+      "k": "0.049829554337082173 + 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 13,
+      "k": "-0.049829554337082173 - 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 14,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 15,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 16,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 17,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 18,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 19,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 20,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 21,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 0,
+      "k": "0.0076804771550446696 + 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 1,
+      "k": "-0.0076804771550446696 - 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 2,
+      "k": "0.031471878747061845 + 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 3,
+      "k": "-0.031471878747061845 - 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 4,
+      "k": "0.0001581242142436954 - 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 5,
+      "k": "-0.0001581242142436954 + 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 6,
+      "k": "0.0084246308501093169 + 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 7,
+      "k": "-0.0084246308501093169 - 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 8,
+      "k": "9.1630615301166546e-5 + 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 9,
+      "k": "-9.1630615301166546e-5 - 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 10,
+      "k": "0.028216039735022846 + 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 11,
+      "k": "-0.028216039735022846 - 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 12,
+      "k": "0.054729870301220118 + 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 13,
+      "k": "-0.054729870301220118 - 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 14,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 15,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 16,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 17,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 18,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 19,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 20,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidate": 21,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 0,
+      "k": "0.1810478844245631 + 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 1,
+      "k": "-0.1810478844245631 - 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 2,
+      "k": "0.016186386265211673 + 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 3,
+      "k": "-0.016186386265211673 - 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 4,
+      "k": "0.47321062425512317 + 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 5,
+      "k": "-0.47321062425512317 - 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 6,
+      "k": "4.0262096670092067 + 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 7,
+      "k": "-4.0262096670092067 - 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 8,
+      "k": "0.47255468097151387 + 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 9,
+      "k": "-0.47255468097151387 - 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 10,
+      "k": "0.0012640703850392212 - 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 11,
+      "k": "-0.0012640703850392212 + 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 12,
+      "k": "0.30045063044005327 + 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 13,
+      "k": "-0.30045063044005327 - 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 14,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 15,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 16,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 17,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 18,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 19,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 20,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidate": 21,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 0,
+      "k": "0.040113240296637785 + 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 1,
+      "k": "-0.040113240296637785 - 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 2,
+      "k": "0.013661958802344587 + 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 3,
+      "k": "-0.013661958802344587 - 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 4,
+      "k": "1.2031538946941505 + 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 5,
+      "k": "-1.2031538946941505 - 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 6,
+      "k": "1.3969589688601001 + 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 7,
+      "k": "-1.3969589688601001 - 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 8,
+      "k": "1.2505539640383914 - 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 9,
+      "k": "-1.2505539640383914 + 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 10,
+      "k": "0.0069562505009145535 + 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 11,
+      "k": "-0.0069562505009145535 - 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 12,
+      "k": "0.049829554337082173 + 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 13,
+      "k": "-0.049829554337082173 - 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 14,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 15,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 16,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 17,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 18,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 19,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 20,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidate": 21,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 0,
+      "k": "0.0076804771550446696 + 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 1,
+      "k": "-0.0076804771550446696 - 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 2,
+      "k": "0.031471878747061845 + 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 3,
+      "k": "-0.031471878747061845 - 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 4,
+      "k": "0.0001581242142436954 - 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 5,
+      "k": "-0.0001581242142436954 + 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 6,
+      "k": "0.0084246308501093169 + 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 7,
+      "k": "-0.0084246308501093169 - 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 8,
+      "k": "9.1630615301166546e-5 + 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 9,
+      "k": "-9.1630615301166546e-5 - 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 10,
+      "k": "0.028216039735022846 + 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 11,
+      "k": "-0.028216039735022846 - 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 12,
+      "k": "0.054729870301220118 + 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 13,
+      "k": "-0.054729870301220118 - 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 14,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 15,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 16,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 17,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 18,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 19,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 20,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 21,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 0,
+      "k": "0.1810478844245631 + 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 1,
+      "k": "-0.1810478844245631 - 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 2,
+      "k": "0.016186386265211673 + 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 3,
+      "k": "-0.016186386265211673 - 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 4,
+      "k": "0.47321062425512317 + 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 5,
+      "k": "-0.47321062425512317 - 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 6,
+      "k": "4.0262096670092067 + 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 7,
+      "k": "-4.0262096670092067 - 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 8,
+      "k": "0.47255468097151387 + 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 9,
+      "k": "-0.47255468097151387 - 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 10,
+      "k": "0.0012640703850392212 - 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 11,
+      "k": "-0.0012640703850392212 + 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 12,
+      "k": "0.30045063044005327 + 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 13,
+      "k": "-0.30045063044005327 - 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 14,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 15,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 16,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 17,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 18,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 19,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 20,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 21,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 0,
+      "k": "0.040113240296637785 + 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 1,
+      "k": "-0.040113240296637785 - 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 2,
+      "k": "0.013661958802344587 + 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 3,
+      "k": "-0.013661958802344587 - 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 4,
+      "k": "1.2031538946941505 + 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 5,
+      "k": "-1.2031538946941505 - 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 6,
+      "k": "1.3969589688601001 + 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 7,
+      "k": "-1.3969589688601001 - 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 8,
+      "k": "1.2505539640383914 - 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 9,
+      "k": "-1.2505539640383914 + 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 10,
+      "k": "0.0069562505009145535 + 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 11,
+      "k": "-0.0069562505009145535 - 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 12,
+      "k": "0.049829554337082173 + 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 13,
+      "k": "-0.049829554337082173 - 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 14,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 15,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 16,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 17,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 18,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 19,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 20,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 21,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 0,
+      "k": "0.0076804771550446696 + 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 1,
+      "k": "-0.0076804771550446696 - 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 2,
+      "k": "0.031471878747061845 + 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 3,
+      "k": "-0.031471878747061845 - 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 4,
+      "k": "0.0001581242142436954 - 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 5,
+      "k": "-0.0001581242142436954 + 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 6,
+      "k": "0.0084246308501093169 + 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 7,
+      "k": "-0.0084246308501093169 - 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 8,
+      "k": "9.1630615301166546e-5 + 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 9,
+      "k": "-9.1630615301166546e-5 - 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 10,
+      "k": "0.028216039735022846 + 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 11,
+      "k": "-0.028216039735022846 - 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 12,
+      "k": "0.054729870301220118 + 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 13,
+      "k": "-0.054729870301220118 - 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 14,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 15,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 16,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 17,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 18,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 19,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 20,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidate": 21,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 0,
+      "k": "0.1810478844245631 + 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 1,
+      "k": "-0.1810478844245631 - 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 2,
+      "k": "0.016186386265211673 + 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 3,
+      "k": "-0.016186386265211673 - 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 4,
+      "k": "0.47321062425512317 + 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 5,
+      "k": "-0.47321062425512317 - 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 6,
+      "k": "4.0262096670092067 + 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 7,
+      "k": "-4.0262096670092067 - 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 8,
+      "k": "0.47255468097151387 + 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 9,
+      "k": "-0.47255468097151387 - 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 10,
+      "k": "0.0012640703850392212 - 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 11,
+      "k": "-0.0012640703850392212 + 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 12,
+      "k": "0.30045063044005327 + 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 13,
+      "k": "-0.30045063044005327 - 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 14,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 15,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 16,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 17,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 18,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 19,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 20,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidate": 21,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 0,
+      "k": "0.040113240296637785 + 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 1,
+      "k": "-0.040113240296637785 - 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 2,
+      "k": "0.013661958802344587 + 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 3,
+      "k": "-0.013661958802344587 - 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 4,
+      "k": "1.2031538946941505 + 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 5,
+      "k": "-1.2031538946941505 - 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 6,
+      "k": "1.3969589688601001 + 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 7,
+      "k": "-1.3969589688601001 - 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 8,
+      "k": "1.2505539640383914 - 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 9,
+      "k": "-1.2505539640383914 + 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 10,
+      "k": "0.0069562505009145535 + 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 11,
+      "k": "-0.0069562505009145535 - 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 12,
+      "k": "0.049829554337082173 + 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 13,
+      "k": "-0.049829554337082173 - 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 14,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 15,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 16,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 17,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 18,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 19,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 20,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidate": 21,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 0,
+      "k": "0.0076804771550446696 + 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 1,
+      "k": "-0.0076804771550446696 - 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 2,
+      "k": "0.031471878747061845 + 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 3,
+      "k": "-0.031471878747061845 - 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 4,
+      "k": "0.0001581242142436954 - 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 5,
+      "k": "-0.0001581242142436954 + 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 6,
+      "k": "0.0084246308501093169 + 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 7,
+      "k": "-0.0084246308501093169 - 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 8,
+      "k": "9.1630615301166546e-5 + 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 9,
+      "k": "-9.1630615301166546e-5 - 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 10,
+      "k": "0.028216039735022846 + 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 11,
+      "k": "-0.028216039735022846 - 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 12,
+      "k": "0.054729870301220118 + 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 13,
+      "k": "-0.054729870301220118 - 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 14,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 15,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 16,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 17,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 18,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 19,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 20,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 21,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 0,
+      "k": "0.1810478844245631 + 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 1,
+      "k": "-0.1810478844245631 - 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 2,
+      "k": "0.016186386265211673 + 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 3,
+      "k": "-0.016186386265211673 - 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 4,
+      "k": "0.47321062425512317 + 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 5,
+      "k": "-0.47321062425512317 - 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 6,
+      "k": "4.0262096670092067 + 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 7,
+      "k": "-4.0262096670092067 - 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 8,
+      "k": "0.47255468097151387 + 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 9,
+      "k": "-0.47255468097151387 - 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 10,
+      "k": "0.0012640703850392212 - 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 11,
+      "k": "-0.0012640703850392212 + 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 12,
+      "k": "0.30045063044005327 + 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 13,
+      "k": "-0.30045063044005327 - 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 14,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 15,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 16,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 17,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 18,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 19,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 20,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 21,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 0,
+      "k": "0.040113240296637785 + 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 1,
+      "k": "-0.040113240296637785 - 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 2,
+      "k": "0.013661958802344587 + 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 3,
+      "k": "-0.013661958802344587 - 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 4,
+      "k": "1.2031538946941505 + 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 5,
+      "k": "-1.2031538946941505 - 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 6,
+      "k": "1.3969589688601001 + 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 7,
+      "k": "-1.3969589688601001 - 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 8,
+      "k": "1.2505539640383914 - 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 9,
+      "k": "-1.2505539640383914 + 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 10,
+      "k": "0.0069562505009145535 + 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 11,
+      "k": "-0.0069562505009145535 - 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 12,
+      "k": "0.049829554337082173 + 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 13,
+      "k": "-0.049829554337082173 - 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 14,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 15,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 16,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 17,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 18,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 19,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 20,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 21,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 0,
+      "k": "0.0076804771550446696 + 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 1,
+      "k": "-0.0076804771550446696 - 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 2,
+      "k": "0.031471878747061845 + 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 3,
+      "k": "-0.031471878747061845 - 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 4,
+      "k": "0.0001581242142436954 - 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 5,
+      "k": "-0.0001581242142436954 + 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 6,
+      "k": "0.0084246308501093169 + 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 7,
+      "k": "-0.0084246308501093169 - 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 8,
+      "k": "9.1630615301166546e-5 + 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 9,
+      "k": "-9.1630615301166546e-5 - 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 10,
+      "k": "0.028216039735022846 + 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 11,
+      "k": "-0.028216039735022846 - 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 12,
+      "k": "0.054729870301220118 + 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 13,
+      "k": "-0.054729870301220118 - 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 14,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 15,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 16,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 17,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 18,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 19,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 20,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidate": 21,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 0,
+      "k": "0.1810478844245631 + 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 1,
+      "k": "-0.1810478844245631 - 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 2,
+      "k": "0.016186386265211673 + 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 3,
+      "k": "-0.016186386265211673 - 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 4,
+      "k": "0.47321062425512317 + 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 5,
+      "k": "-0.47321062425512317 - 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 6,
+      "k": "4.0262096670092067 + 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 7,
+      "k": "-4.0262096670092067 - 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 8,
+      "k": "0.47255468097151387 + 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 9,
+      "k": "-0.47255468097151387 - 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 10,
+      "k": "0.0012640703850392212 - 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 11,
+      "k": "-0.0012640703850392212 + 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 12,
+      "k": "0.30045063044005327 + 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 13,
+      "k": "-0.30045063044005327 - 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 14,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 15,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 16,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 17,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 18,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 19,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 20,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidate": 21,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 0,
+      "k": "0.040113240296637785 + 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 1,
+      "k": "-0.040113240296637785 - 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 2,
+      "k": "0.013661958802344587 + 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 3,
+      "k": "-0.013661958802344587 - 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 4,
+      "k": "1.2031538946941505 + 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 5,
+      "k": "-1.2031538946941505 - 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 6,
+      "k": "1.3969589688601001 + 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 7,
+      "k": "-1.3969589688601001 - 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 8,
+      "k": "1.2505539640383914 - 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 9,
+      "k": "-1.2505539640383914 + 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 10,
+      "k": "0.0069562505009145535 + 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 11,
+      "k": "-0.0069562505009145535 - 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 12,
+      "k": "0.049829554337082173 + 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 13,
+      "k": "-0.049829554337082173 - 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 14,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 15,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 16,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 17,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 18,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 19,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 20,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidate": 21,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 0,
+      "k": "0.0076804771550446696 + 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 1,
+      "k": "-0.0076804771550446696 - 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 2,
+      "k": "0.031471878747061845 + 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 3,
+      "k": "-0.031471878747061845 - 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 4,
+      "k": "0.0001581242142436954 - 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 5,
+      "k": "-0.0001581242142436954 + 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 6,
+      "k": "0.0084246308501093169 + 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 7,
+      "k": "-0.0084246308501093169 - 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 8,
+      "k": "9.1630615301166546e-5 + 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 9,
+      "k": "-9.1630615301166546e-5 - 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 10,
+      "k": "0.028216039735022846 + 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 11,
+      "k": "-0.028216039735022846 - 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 12,
+      "k": "0.054729870301220118 + 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 13,
+      "k": "-0.054729870301220118 - 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 14,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 15,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 16,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 17,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 18,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 19,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 20,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 21,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 0,
+      "k": "0.1810478844245631 + 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 1,
+      "k": "-0.1810478844245631 - 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 2,
+      "k": "0.016186386265211673 + 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 3,
+      "k": "-0.016186386265211673 - 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 4,
+      "k": "0.47321062425512317 + 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 5,
+      "k": "-0.47321062425512317 - 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 6,
+      "k": "4.0262096670092067 + 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 7,
+      "k": "-4.0262096670092067 - 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 8,
+      "k": "0.47255468097151387 + 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 9,
+      "k": "-0.47255468097151387 - 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 10,
+      "k": "0.0012640703850392212 - 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 11,
+      "k": "-0.0012640703850392212 + 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 12,
+      "k": "0.30045063044005327 + 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 13,
+      "k": "-0.30045063044005327 - 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 14,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 15,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 16,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 17,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 18,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 19,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 20,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 21,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 0,
+      "k": "0.040113240296637785 + 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 1,
+      "k": "-0.040113240296637785 - 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 2,
+      "k": "0.013661958802344587 + 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 3,
+      "k": "-0.013661958802344587 - 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 4,
+      "k": "1.2031538946941505 + 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 5,
+      "k": "-1.2031538946941505 - 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 6,
+      "k": "1.3969589688601001 + 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 7,
+      "k": "-1.3969589688601001 - 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 8,
+      "k": "1.2505539640383914 - 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 9,
+      "k": "-1.2505539640383914 + 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 10,
+      "k": "0.0069562505009145535 + 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 11,
+      "k": "-0.0069562505009145535 - 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 12,
+      "k": "0.049829554337082173 + 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 13,
+      "k": "-0.049829554337082173 - 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 14,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 15,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 16,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 17,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 18,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 19,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 20,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 21,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 0,
+      "k": "0.0076804771550446696 + 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 1,
+      "k": "-0.0076804771550446696 - 1.8209981358029728*I",
+      "q": "-0.80344650257774097 + 0.0034385528367924332*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 2,
+      "k": "0.031471878747061845 + 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 3,
+      "k": "-0.031471878747061845 - 0.81961640266375546*I",
+      "q": "-0.35102360728281867 + 0.014515498305033774*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 4,
+      "k": "0.0001581242142436954 - 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 5,
+      "k": "-0.0001581242142436954 + 0.7416665290078468*I",
+      "q": "-0.31490103316916085 - 7.3564440904913412e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 6,
+      "k": "0.0084246308501093169 + 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 7,
+      "k": "-0.0084246308501093169 - 0.1959678318693944*I",
+      "q": "-0.0073381487280061632 + 0.044441030610552788*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 8,
+      "k": "9.1630615301166546e-5 + 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 9,
+      "k": "-9.1630615301166546e-5 - 0.74167577438787391*I",
+      "q": "0.31490533391439712 - 4.2629441564935767e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 10,
+      "k": "0.028216039735022846 + 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 11,
+      "k": "-0.028216039735022846 - 0.82501193727160316*I",
+      "q": "0.35350710637922544 - 0.013007478175594779*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 12,
+      "k": "0.054729870301220118 + 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 13,
+      "k": "-0.054729870301220118 - 1.8275251911150623*I",
+      "q": "0.8063738362245102 - 0.024501141965259765*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 14,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 15,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "-0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 16,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 17,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "-0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 18,
+      "k": "4.5901681701922848e-17 + 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 19,
+      "k": "-4.5901681701922848e-17 - 0.74963135058829022*I",
+      "q": "0.31860463952009727",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 20,
+      "k": "4.7845865617125352e-17 + 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidate": 21,
+      "k": "-4.7845865617125352e-17 - 0.78138228345409477*I",
+      "q": "0.33333333333333331",
+      "nullity": 2,
+      "sheet": "UNRESOLVED"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 0,
+      "k": "0.1810478844245631 + 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 1,
+      "k": "-0.1810478844245631 - 0.99301676739361655*I",
+      "q": "-1.2417795791491273 + 0.013030108495754873*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 2,
+      "k": "0.016186386265211673 + 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 3,
+      "k": "-0.016186386265211673 - 0.46536606861729568*I",
+      "q": "-1.2147086137344822 + 0.00055810384240085502*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 4,
+      "k": "0.47321062425512317 + 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 5,
+      "k": "-0.47321062425512317 - 0.0010139901388415368*I",
+      "q": "-1.198288750681139 + 3.6038710676812622e-5*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 6,
+      "k": "4.0262096670092067 + 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 7,
+      "k": "-4.0262096670092067 - 0.0012858540923573376*I",
+      "q": "-0.0085689645740131878 + 0.054375371949157578*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 8,
+      "k": "0.47255468097151387 + 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 9,
+      "k": "-0.47255468097151387 - 0.00056972269893990068*I",
+      "q": "1.1983120206990077 - 2.0220327529924595e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 10,
+      "k": "0.0012640703850392212 - 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 11,
+      "k": "-0.0012640703850392212 + 0.47587199519819029*I",
+      "q": "1.2150844064984967 + 4.4555104458932297e-5*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 12,
+      "k": "0.30045063044005327 + 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 13,
+      "k": "-0.30045063044005327 - 1.0533059935266684*I",
+      "q": "1.2443069522307557 - 0.022889834723708685*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 14,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 15,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "-1.2222222222222223",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 16,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 17,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "-1.2121809749576928",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 18,
+      "k": "2.3568338638331035e-17 + 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 19,
+      "k": "-2.3568338638331035e-17 - 0.38490017945974675*I",
+      "q": "1.2121809749576928",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 20,
+      "k": "3.9671425411136069e-17 + 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidate": 21,
+      "k": "-3.9671425411136069e-17 - 0.64788354387170011*I",
+      "q": "1.2222222222222223",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 0,
+      "k": "0.040113240296637785 + 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 1,
+      "k": "-0.040113240296637785 - 1.8773382185829304*I",
+      "q": "-1.2682003779479938 + 0.017666866157323872*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 2,
+      "k": "0.013661958802344587 + 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 3,
+      "k": "-0.013661958802344587 - 1.4773607855894484*I",
+      "q": "-1.0996630023762624 + 0.0054608098623203536*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 4,
+      "k": "1.2031538946941505 + 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 5,
+      "k": "-1.2031538946941505 - 0.10453801043353377*I",
+      "q": "-0.37725714315891512 + 0.099191639906924145*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 6,
+      "k": "1.3969589688601001 + 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 7,
+      "k": "-1.3969589688601001 - 0.0013796656594557686*I",
+      "q": "0.0039848055748790343 - 0.14390222170994785*I",
+      "nullity": 1,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 8,
+      "k": "1.2505539640383914 - 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 9,
+      "k": "-1.2505539640383914 + 0.14132372377763264*I",
+      "q": "0.35077349789202522 + 0.1499021515606366*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 10,
+      "k": "0.0069562505009145535 + 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 11,
+      "k": "-0.0069562505009145535 - 1.4782601615560647*I",
+      "q": "1.1000312006819735 - 0.0027812383745636528*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 12,
+      "k": "0.049829554337082173 + 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 13,
+      "k": "-0.049829554337082173 - 1.8888614072024068*I",
+      "q": "1.2732461547720018 - 0.021993373691835249*I",
+      "nullity": 1,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 14,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 15,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "-1.1818181818181819",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 16,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 17,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "-1.1345042209243512",
+      "nullity": 2,
+      "sheet": "False"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 18,
+      "k": "9.572910351891479e-17 + 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 19,
+      "k": "-9.572910351891479e-17 - 1.5633749026342145*I",
+      "q": "1.1345042209243512",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 20,
+      "k": "1.0268975592453801e-16 + 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    },
+    {
+      "packet": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidate": 21,
+      "k": "-1.0268975592453801e-16 - 1.6770509831248426*I",
+      "q": "1.1818181818181819",
+      "nullity": 2,
+      "sheet": "True"
+    }
+  ]
+}

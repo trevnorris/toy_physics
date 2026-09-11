@@ -1,5 +1,11 @@
 # S11c-d: Fourier connection and fixed-frequency sheet repair
 
+Historical record of checkpoint `f9e28f5`. The canonical main transcript has
+since been regenerated for the
+[rectangular mode-jet checkpoint](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_rectangular_mode_jet_report.md).
+The sizes, hashes and verification results below describe the preserved
+sheet-repair run; its run record and inventory remain unchanged.
+
 2026-09-10. **The original counterexample is resolved within the computed Fourier domain.** The repair is in d; no upstream producer/export was changed. The complete d program remains unfinished. Four-case regeneration completed with exit 0, and the checked main transcript is published. This builder record and the instruments are unreviewed.
 
 ## Construction that resolves the scope question

@@ -1,0 +1,277 @@
+{
+  "checkpoint": "55e298b70a8b289c8e6b16ebd0b627edb20d7294",
+  "pre_repair_run": {
+    "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "--case",
+      "LAB_HELD__RHO4_CONSTANT",
+      "--dev-symbol-cache",
+      "/tmp/s11cd-contour-fresh-57pxrlk0/symbols",
+      "--channel-input-file",
+      "_measurements/S11c_d_channel_preflight_input.json"
+    ],
+    "source_hashes_before": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "263e3b191699e5e7df6c695bfd20617e1d1afa8dc6529aeee75016582d36ed4b",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+    },
+    "run_directory": "/tmp/s11cd-contour-fresh-57pxrlk0",
+    "exit_code": 0,
+    "wall_seconds": 801.5451325820759,
+    "peak_rss_kib": 1720624,
+    "source_hashes_after": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "263e3b191699e5e7df6c695bfd20617e1d1afa8dc6529aeee75016582d36ed4b",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+    },
+    "artifacts": {
+      "preflight.out": {
+        "bytes": 15882954,
+        "sha256": "26e5f6cf7799c205b15770bf1b9f46cd9a5098a4877f73fd10b30986e000db6b"
+      },
+      "stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 85280,
+        "sha256": "f7c1fc575463d4f79d21360e4034b0f850b4538687e5991b6f39e686166febf3"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 69023,
+        "sha256": "d9cfda2842e85e991d3a26838bfb1d0376fea26207a4bffb2f6b3be47b94ba23"
+      },
+      "symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 85469,
+        "sha256": "760569abe90dc87edaa6a4f7b648d4ab0051df226416ba88604623452e3fbcc0"
+      }
+    }
+  },
+  "published_diagnostics": {
+    "scripts/out/S11c_d_channel_reentry_preflight.out": {
+      "source": "/tmp/s11cd-contour-fresh-57pxrlk0/preflight.out",
+      "bytes": 15882954,
+      "sha256": "26e5f6cf7799c205b15770bf1b9f46cd9a5098a4877f73fd10b30986e000db6b",
+      "prior": {
+        "was_symlink": true,
+        "sha256": "d382d62c39d39275147ff58fdb519b28e58fb42c36dc11a620f527fa81c002e7"
+      }
+    },
+    "scripts/out/S11c_d_fourier_sheet_probe.out": {
+      "source": "/tmp/s11cd-contour-fresh-57pxrlk0/fourier-probe-v2.out",
+      "bytes": 36365,
+      "sha256": "cde67357c189f578b0c32ab6d76d9e51ee71e6153af02147515f603cb69de4f2",
+      "prior": {
+        "was_symlink": false
+      }
+    },
+    "scripts/out/S11c_d_sheet_continuation_probe.out": {
+      "source": "/tmp/s11cd-contour-fresh-57pxrlk0/repaired-path-check.out",
+      "bytes": 13844,
+      "sha256": "260e43d5e0e7f9d9ef43fd6517b1a10d03f13112da9d3d48b43ae9e34e7a4dc2",
+      "prior": {
+        "was_symlink": true,
+        "sha256": "1c036eb028d9d846714731581126819077ef72cb13138a730e75a17a115f569a"
+      }
+    },
+    "scripts/out/S11c_d_sheet_path_controls.out": {
+      "source": "/tmp/s11cd-contour-fresh-57pxrlk0/path-controls-v2.out",
+      "bytes": 313768,
+      "sha256": "bba7564bf6fa9094b2b2b68d9221d36abb86a2c2ea4c35074b1ccacbd29237b3",
+      "prior": {
+        "was_symlink": false
+      }
+    }
+  },
+  "fourier_probe": {
+    "command": "python3 -u scripts/S11c_d_fourier_sheet_probe.py --run-manifest /tmp/s11cd-contour-fresh-57pxrlk0/manifest.json --scope-lookup _measurements/S11c_d_sheet_scope_lookup.json --input _measurements/S11c_d_channel_preflight_input.json",
+    "exit_code": 0,
+    "stderr_bytes": 0
+  },
+  "cached_path_check": {
+    "command": "python3 -u scripts/S11c_d_sheet_continuation_probe.py --symbol-cache /tmp/s11cd-contour-fresh-57pxrlk0/symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle --transcript /tmp/s11cd-contour-fresh-57pxrlk0/preflight.out --input _measurements/S11c_d_channel_preflight_input.json --candidate-index 8",
+    "exit_code": 0,
+    "stderr_bytes": 0
+  },
+  "cached_controls": {
+    "command": "python3 -u scripts/S11c_d_sheet_path_controls.py --symbol-cache /tmp/s11cd-contour-fresh-57pxrlk0/symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle --transcript /tmp/s11cd-contour-fresh-57pxrlk0/preflight.out",
+    "exit_code": 0,
+    "stderr_bytes": 0
+  },
+  "full_run_status": "COMPLETED_EXIT_0",
+  "full_run_manifest": "/tmp/s11cd-sheet-full-0l4gsvk9/manifest.json",
+  "syntax_check": {
+    "method": "Python compile(source_bytes, path, exec); no execution",
+    "files": [
+      {
+        "path": "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sha256": "5646b5ea4cf8a9a6ec7477df860c9c1a6d0c4ec54168d15d5d0608f5923c68c2"
+      },
+      {
+        "path": "scripts/S11c_d_sheet_continuation_probe.py",
+        "sha256": "9678ca64904fdb250f082acb115d1c1767722bda8c4e9f6c3df3c0722ff0a32d"
+      },
+      {
+        "path": "scripts/S11c_d_fourier_sheet_probe.py",
+        "sha256": "90808180224034cfecb27e0cb436d0ccf36956fba4c92ed7d20be9efd2cb532e"
+      },
+      {
+        "path": "scripts/S11c_d_sheet_path_controls.py",
+        "sha256": "28a01f6a9be7ee7a80272af8678597de0a2c3251259f6409e0bab502d1a35022"
+      },
+      {
+        "path": "_measurements/S11c_d_sheet_output_inventory.py",
+        "sha256": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f"
+      },
+      {
+        "path": "_measurements/S11c_d_sheet_scope_lookup.py",
+        "sha256": "19fbe803730d521a5056c8a16767add3c267b6caa602735274a0ec591549c3fe"
+      }
+    ],
+    "exit_code": 0
+  },
+  "full_run": {
+    "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "--dev-symbol-cache",
+      "/tmp/s11cd-sheet-full-0l4gsvk9/symbols"
+    ],
+    "run_directory": "/tmp/s11cd-sheet-full-0l4gsvk9",
+    "source_hashes_before": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5646b5ea4cf8a9a6ec7477df860c9c1a6d0c4ec54168d15d5d0608f5923c68c2",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    },
+    "exit_code": 0,
+    "wall_seconds": 2495.664518425241,
+    "peak_rss_kib": 1721064,
+    "source_hashes_after": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5646b5ea4cf8a9a6ec7477df860c9c1a6d0c4ec54168d15d5d0608f5923c68c2",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    },
+    "artifacts": {
+      "full.out": {
+        "bytes": 55823604,
+        "sha256": "6e4e8f047c20440202040677967e33f922ca6f3739e6482580800165d65354b1"
+      },
+      "stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 85252,
+        "sha256": "3750fa50533fec7194d10f34383aee986e400de30258c06c8a72b1c2ece4b7ef"
+      },
+      "symbols/LEFT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 83972,
+        "sha256": "9c313f7d1993d8a172213ff2b2073ed3ab52ef73745103331db61f0c9037330e"
+      },
+      "symbols/LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 85349,
+        "sha256": "af9115c3a7ee3646663c54da6f07bbf842c9898a371611e8b3feaf3ec1aed284"
+      },
+      "symbols/LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 83972,
+        "sha256": "9c313f7d1993d8a172213ff2b2073ed3ab52ef73745103331db61f0c9037330e"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 69009,
+        "sha256": "cfe283da90b07a49f0882120b997298d1850cf0f6f82b9793fa4cff957b3b026"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 70370,
+        "sha256": "627f28c85a0a3e7161f0f4e01b7cd58bf6b09c10ee4e863cf99a8aef0215af35"
+      },
+      "symbols/REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 70390,
+        "sha256": "b82477490c49a4cb7bcbb2550591ac03630a4be535b47a80ad47f0a482d7497f"
+      },
+      "symbols/REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 70370,
+        "sha256": "627f28c85a0a3e7161f0f4e01b7cd58bf6b09c10ee4e863cf99a8aef0215af35"
+      },
+      "symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 85458,
+        "sha256": "5774083fd3f0ed9778aed88b4f6214d58ac211efae464699e703549248938a74"
+      },
+      "symbols/RIGHT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 84082,
+        "sha256": "045f7473d71472c3a03bc52e9061ec5fb9ddf01a86790672fbba7ad1e34fdf2b"
+      },
+      "symbols/RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 85465,
+        "sha256": "17405dbb773544aa9187ac8da013a62e3a301b43b272c7ce1397a462e59d3cfb"
+      },
+      "symbols/RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 84082,
+        "sha256": "045f7473d71472c3a03bc52e9061ec5fb9ddf01a86790672fbba7ad1e34fdf2b"
+      }
+    }
+  },
+  "published_full_run": {
+    "source": "/tmp/s11cd-sheet-full-0l4gsvk9/full.out",
+    "destination": "scripts/out/S11c_d_mixing_scattering_sympy_audit.out",
+    "bytes": 55823604,
+    "sha256": "6e4e8f047c20440202040677967e33f922ca6f3739e6482580800165d65354b1",
+    "prior": {
+      "was_symlink": true,
+      "sha256": "cdb687660b739afdc2a30333e0f8002f4e73bfaa5d40301eae29da588a975dc1",
+      "annex_object": "/var/projects/toy_physics/.git/annex/objects/Kp/Mq/MD5E-s41302466--0a1ed8fa3ce5028e2fc311016c4e4099.out/MD5E-s41302466--0a1ed8fa3ce5028e2fc311016c4e4099.out"
+    },
+    "prior_annex_hash_after_publication": "cdb687660b739afdc2a30333e0f8002f4e73bfaa5d40301eae29da588a975dc1"
+  },
+  "full_output_inventory": {
+    "command": "python3 _measurements/S11c_d_sheet_output_inventory.py /tmp/s11cd-sheet-full-0l4gsvk9/full.out",
+    "path": "_measurements/S11c_d_sheet_output_inventory.json",
+    "sha256": "1af1ba2b79123822c1b942f33f63f102b5ee02e904f4c19c91f9041d8fb230d8",
+    "source_sha256": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+    "exit_code": 0,
+    "stderr_bytes": 0
+  },
+  "publication_checks": {
+    "engine_exit_code": 0,
+    "stderr_bytes": 0,
+    "changed_run_sources": [],
+    "changed_emitted_sources": [],
+    "duplicate_tags": {},
+    "coverage_gaps": {
+      "missing_symbols": [],
+      "extra_symbols": [],
+      "missing_mode_packets": [],
+      "extra_mode_packets": [],
+      "missing_mode_metadata": [],
+      "missing_branch_paths": []
+    },
+    "completion_count": 1,
+    "dimension_records": {
+      "PY_S11CD_REDUCED_DIMENSION_CONSTRAINT_RESIDUALS": "Tuple()",
+      "PY_S11CD_REDUCED_DIMENSION_UNRESOLVED": "Tuple()",
+      "PY_S11CD_PENCIL_DIMENSION_CONSTRAINT_RESIDUALS": "Tuple()"
+    },
+    "capture_hash_matches_manifest": true,
+    "capture_hash_matches_inventory": true
+  }
+}

@@ -50,6 +50,19 @@ def run():
     else:
         raise ValueError('reference input mode packet is absent')
     k_end,q_engine = complex(candidate['K']),complex(candidate['Q'])
+    if hasattr(engine,'BulkSheetPath'):
+        selected,details=engine.BulkSheetPath(relation.xreplace(bindings),modes.k,modes.q).classify(k_end,q_engine)
+        record={'selectedPhysicalSheet':selected,'path':details}
+        engine.emit('SHEET_PROBE_ENGINE_PATH',record)
+        def path_unit(path):
+            if any(k in path for k in ('START_K','END_K','BRANCH_POINTS','MINIMUM_BRANCH_POINT_DISTANCE','GEOMETRIC_RESOLUTION')):
+                return dimensions.measure(modes.k)
+            if 'MAXIMUM_RADICAL_RESIDUAL' in path:
+                return tuple(2*v for v in dimensions.measure(modes.q))
+            if any(k in path for k in ('SEED_Q','END_Q','REFINEMENT_DIFFERENCE','SHEET_DIFFERENCE','OPPOSITE_SHEET_DIFFERENCE')):
+                return dimensions.measure(modes.q)
+            return dimensions.zero
+        engine.emit('METADATA_SHEET_PROBE_ENGINE_PATH',modes.numeric_metadata(engine.cas(record),path_unit))
     k_start = complex(k_end.real)
     initial_square = complex(evaluate(k_start))
     engine.emit('SHEET_PROBE_REAL_AXIS_OPERAND',engine.cas(initial_square))

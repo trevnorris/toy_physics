@@ -1,0 +1,297 @@
+{
+  "transcript": "/tmp/s11cd-sheet-full-0l4gsvk9/full.out",
+  "bytes": 55823604,
+  "sha256": "6e4e8f047c20440202040677967e33f922ca6f3739e6482580800165d65354b1",
+  "tag_count": 9894,
+  "duplicate_tags": {},
+  "source_pins": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5646b5ea4cf8a9a6ec7477df860c9c1a6d0c4ec54168d15d5d0608f5923c68c2",
+    "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+    "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+    "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+  },
+  "changed_source_pins": [],
+  "full_symbol_tags": [
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_REFERENCE_LAB_HELD_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_LEFT_LAB_HELD_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_RIGHT_LAB_HELD_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_REFERENCE_LAB_HELD_RHOBR_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_LEFT_LAB_HELD_RHOBR_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_RIGHT_LAB_HELD_RHOBR_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT",
+    "PY_S11CD_FULL_SECTOR_PENCIL_SYMBOL_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT"
+  ],
+  "mode_packets": [
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHO4_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_LAB_HELD_RHOBR_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_0",
+      "candidates": 22,
+      "labels": {
+        "True": 6,
+        "False": 8,
+        "UNRESOLVED": 8
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_1",
+      "candidates": 22,
+      "labels": {
+        "False": 10,
+        "True": 12
+      },
+      "branch_path_records": 22
+    },
+    {
+      "tag": "PY_S11CD_FULL_PENCIL_MODE_PIT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_2",
+      "candidates": 22,
+      "labels": {
+        "False": 12,
+        "True": 10
+      },
+      "branch_path_records": 22
+    }
+  ],
+  "sheet_label_counts": {
+    "True": 224,
+    "False": 240,
+    "UNRESOLVED": 64
+  },
+  "dimension_records": {
+    "PY_S11CD_REDUCED_DIMENSION_CONSTRAINT_RESIDUALS": "Tuple()",
+    "PY_S11CD_REDUCED_DIMENSION_UNRESOLVED": "Tuple()",
+    "PY_S11CD_PENCIL_DIMENSION_CONSTRAINT_RESIDUALS": "Tuple()"
+  },
+  "outstanding_constructions": [
+    "ALL_CARRIER_INVERSE_FOURIER_ROUNDTRIPS",
+    "FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS",
+    "MIXED_GRADE_MODE_JETS",
+    "GENERIC_DOMAIN_SHEET_CONTINUATION",
+    "CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION",
+    "COMPLETE_TWO_ENDED_SCATTERING",
+    "POLES_RIESZ_OVERLAP",
+    "SURVIVAL",
+    "FLUX_BOOKKEEPING",
+    "WEAK_COEFFICIENTS",
+    "SECTION_5_CONTROLS",
+    "OWN_ROWS_EXPORT"
+  ],
+  "completion_records": [
+    "Integer(9)"
+  ],
+  "execution_records": {
+    "PY_S11CD_IMPLEMENTATION_CHECKPOINT": "Tuple(Str('REDUCED_ACTION'), Str('DIMENSIONS'), Str('MULTIGRADES'), Str('ABEL_WEAK_PRESCRIPTION'), Str('PENCIL_ACTION'), Str('OFF_DIAGONAL_EXTRACTION'), Str('FULL_SECTOR_BLOCK_ACTION'), Str('REFERENCE_AND_END_SYMBOLS'), Str('REFERENCE_AND_END_CANONICAL_COUPLINGS'), Str('SIMULTANEOUS_END_TRANSLATION'), Str('CLASS_RESTRICTED_ACTION_RECONSTRUCTION'), Str('GAUGE_QUOTIENT_CHARTS'), Str('POSITIVE_FREQUENCY_SPECTRAL_PIT'), Str('FIRST_GRADE_END_MODE_JETS'), Str('NULLSPACE_CLASSIFIER_PROJECTORS'), Str('NONLINEAR_FREQUENCY_PAIRING'), Str('S11B_CONSERVATIVE_SLAB_CURRENT'), Str('CLOSED_PHYSICAL_FIELD_LIFT'))",
+    "PY_S11CD_CHANNEL_INPUT_EXECUTION": "false",
+    "PY_S11CD_RESOURCE_MEASUREMENTS": "Tuple(Float('2491.293511075899', precision=53), Integer(1721064))"
+  },
+  "coverage_gaps": {
+    "missing_symbols": [],
+    "extra_symbols": [],
+    "missing_mode_packets": [],
+    "extra_mode_packets": [],
+    "missing_mode_metadata": [],
+    "missing_branch_paths": []
+  }
+}

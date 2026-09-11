@@ -1671,6 +1671,94 @@ class ChannelInput:
                      zero_dimensions={(): (0, 0, 0)})
 
 
+class BulkSheetPath:
+    """Fixed positive-real-frequency chart attached to the real Fourier line.
+
+    Transport from Re(k) to k along the vertical segment. Branch points and
+    segment clearance are computed from the actual reduced radical relation.
+    A segment hitting a branch point is unresolved; no root is reselected at
+    complex momentum. This chart does not supply complex-frequency pole paths.
+    """
+
+    def __init__(self, relation, momentum, radical):
+        self.k, self.q = momentum, radical
+        self.square = sp.solve(relation, radical**2)[0]
+        coordinate = sp.Dummy('s11cdSheetComplexMomentum')
+        polynomial = sp.Poly(self.square.xreplace({momentum:coordinate}), coordinate)
+        if polynomial.degree() != 2 or any(c.is_real is not True for c in polynomial.all_coeffs()):
+            raise NotImplementedError('sheet transport requires the real quadratic bulk radical')
+        self.points = tuple(complex(p.evalf(30)) for p in polynomial.all_roots())
+        self.evaluate = sp.lambdify(momentum,self.square,'numpy')
+        self.cache = {}
+
+    def transport(self, target):
+        if target in self.cache:
+            return self.cache[target]
+        start = complex(target.real)
+        delta = target-start
+        closest = [start+(min(1.,max(0.,((p-start)*delta.conjugate()).real/abs(delta)**2))*delta
+                         if delta else 0) for p in self.points]
+        clearance = min(abs(a-b) for a,b in zip(self.points,closest))
+        scale = max(abs(target),*(abs(p) for p in self.points))
+        result = {'START_K':start,'END_K':target,'BRANCH_POINTS':self.points,
+                  'MINIMUM_BRANCH_POINT_DISTANCE':clearance,
+                  'GEOMETRIC_RESOLUTION':256*np.finfo(float).eps*scale,
+                  'PATH_DEFINED':False}
+        # Real-axis value of the already joined positive-frequency operand.
+        # This is the only seed selection; subsequent roots are transported.
+        seed = complex(self.evaluate(start))**0.5
+        result['SEED_Q'] = seed
+        if clearance <= result['GEOMETRIC_RESOLUTION'] or abs(seed) == 0:
+            result['STATUS'] = 'BRANCH_LOCUS_ON_PATH'
+            self.cache[target] = result
+            return result
+        routes = []
+        for fraction in (0.25,0.125):
+            u, root, count, residual = 0.,seed,0,abs(seed**2-self.evaluate(start))
+            while u < 1 and count < 4096:
+                position = start+u*delta
+                distance = min(abs(position-p) for p in self.points)
+                step = min(1-u,fraction*distance/abs(delta)) if delta else 1.
+                if u+step == u:
+                    break
+                u = min(1.,u+step)
+                position = start+u*delta
+                candidate = complex(self.evaluate(position))**0.5
+                root = min((candidate,-candidate),key=lambda value:abs(value-root))
+                residual = max(residual,abs(root**2-self.evaluate(position)))
+                count += 1
+            routes.append({'STEP_FRACTION':fraction,'STEPS':count,'PARAMETER_REACHED':u,
+                           'END_Q':root,'MAXIMUM_RADICAL_RESIDUAL':residual})
+        result['REFINEMENTS'] = routes
+        result['REFINEMENT_DIFFERENCE'] = routes[0]['END_Q']-routes[1]['END_Q']
+        result['PATH_DEFINED'] = all(r['PARAMETER_REACHED'] == 1 for r in routes)
+        result['STATUS'] = 'TRANSPORTED' if result['PATH_DEFINED'] else 'PATH_RESOLUTION_LIMIT'
+        self.cache[target] = result
+        return result
+
+    def classify(self, momentum, radical):
+        record = dict(self.transport(momentum))
+        if not record['PATH_DEFINED']:
+            return Str('UNRESOLVED'),record
+        endpoint = record['REFINEMENTS'][-1]['END_Q']
+        scale = max(abs(endpoint),abs(radical))
+        record['SHEET_DIFFERENCE'] = radical-endpoint
+        record['OPPOSITE_SHEET_DIFFERENCE'] = radical+endpoint
+        record['RELATIVE_REFINEMENT_DIFFERENCE'] = abs(record['REFINEMENT_DIFFERENCE'])/scale
+        record['RELATIVE_SHEET_DIFFERENCE'] = abs(radical-endpoint)/scale
+        record['RELATIVE_OPPOSITE_SHEET_DIFFERENCE'] = abs(radical+endpoint)/scale
+        tolerance = max(1e-9,256*np.finfo(float).eps*(1+abs(momentum)/record['MINIMUM_BRANCH_POINT_DISTANCE']))
+        record['RELATIVE_MATCH_TOLERANCE'] = tolerance
+        record['MATCH_RESOLVED'] = (tolerance < 1e-3 and
+                                   record['RELATIVE_REFINEMENT_DIFFERENCE'] <= tolerance)
+        same = record['RELATIVE_SHEET_DIFFERENCE'] <= tolerance
+        opposite = record['RELATIVE_OPPOSITE_SHEET_DIFFERENCE'] <= tolerance
+        if record['MATCH_RESOLVED'] and same != opposite:
+            return bool(same),record
+        record['STATUS'] = 'ROOT_MATCH_UNRESOLVED'
+        return Str('UNRESOLVED'),record
+
+
 class FullPencilModes:
     """Carrier-first spectral PIT on the positive-frequency retarded chart.
 
@@ -1862,6 +1950,7 @@ class FullPencilModes:
         origin = {self.eta: sp.S.Zero, self.sigma: sp.S.Zero} if grade_origin is None else grade_origin
         sampled = algebraic.xreplace(mapping)
         relation_sample = relation.xreplace(mapping)
+        sheet_path = BulkSheetPath(relation_sample,self.k,self.q)
         k_squared = sp.solve(relation_sample, self.k**2)[0]
         # The determinant is even in k on this input. Polynomial division
         # verifies this algebraic elimination rather than discarding odd terms.
@@ -1948,10 +2037,11 @@ class FullPencilModes:
                 left, singular, right_h = np.linalg.svd(matrix)
                 tol = 1e-8*max(1., singular[0])
                 nullity = int(np.sum(singular < tol))
-                physical_sheet = qroot.real >= -1e-10 and (abs(qroot.real) > 1e-10 or qroot.imag >= 0)
+                physical_sheet, sheet_record = sheet_path.classify(kroot,qroot)
                 record = {'K': self.number(kroot), 'Q': self.number(qroot), 'MULTIPLICITY': multiplicity,
                           'SINGULAR_VALUES': list(map(self.number, singular)), 'NULLITY': nullity,
                           'PHYSICAL_BULK_SHEET': physical_sheet,
+                          'BULK_SHEET_PATH': sheet_record,
                           'DENOMINATOR': self.number(denominator_value(kroot, qroot)),
                           'RADICAL_RESIDUAL': self.number(complex(relation_sample.subs({self.k:kroot,self.q:qroot}))),
                           'DECAY_AT_END': bool(end_sign*kroot.imag > 1e-10),
@@ -2106,9 +2196,9 @@ class FullPencilModes:
                     if np.linalg.matrix_rank(pairing, tol=1e-9) == nullity:
                         frequency_slopes = np.linalg.eigvals(-np.linalg.solve(pairing, omega_pairing))
                         record['RETARDED_K_FREQUENCY_SLOPES'] = list(map(self.number,frequency_slopes))
-                        record['INCOMING'] = [bool(physical_sheet and abs(kroot.imag)<1e-10 and end_sign*x.real<0)
+                        record['INCOMING'] = [bool(physical_sheet is True and abs(kroot.imag)<1e-10 and end_sign*x.real<0)
                                               for x in frequency_slopes]
-                        record['OUTGOING'] = [bool(physical_sheet and abs(kroot.imag)<1e-10 and end_sign*x.real>0)
+                        record['OUTGOING'] = [bool(physical_sheet is True and abs(kroot.imag)<1e-10 and end_sign*x.real>0)
                                               for x in frequency_slopes]
                     coefficient_label = ('JET' if grade_origin is None else 'LOCAL_JET') if jet_defined else 'BASE_COEFFICIENT'
                     for label, value, unit_fn in (
@@ -2130,6 +2220,15 @@ class FullPencilModes:
             key = path[1] if len(path)>1 else ''
             if key in ('K',): return dimensions.measure(self.k)
             if key == 'Q': return dimensions.measure(self.q)
+            if key == 'BULK_SHEET_PATH':
+                item = path[-1]
+                if path[2] in ('START_K','END_K','BRANCH_POINTS','MINIMUM_BRANCH_POINT_DISTANCE','GEOMETRIC_RESOLUTION'):
+                    return dimensions.measure(self.k)
+                if item == 'MAXIMUM_RADICAL_RESIDUAL':
+                    return tuple(2*v for v in dimensions.measure(self.q))
+                if item in ('SEED_Q','END_Q','REFINEMENT_DIFFERENCE','SHEET_DIFFERENCE','OPPOSITE_SHEET_DIFFERENCE'):
+                    return dimensions.measure(self.q)
+                return self.unitless
             if key == 'HELMHOLTZ_CHART_OPERAND': return tuple(2*v for v in dimensions.measure(self.k))
             if key == 'RADICAL_RESIDUAL': return tuple(2*v for v in dimensions.measure(self.q))
             if key == 'CONSERVATIVE_SLAB_CURRENT_PAIRING':

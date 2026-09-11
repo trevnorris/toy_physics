@@ -1,49 +1,26 @@
-# S11c-d checkpoint: paused for sheet continuation
+# S11c-d builder checkpoint: fixed-frequency sheet repair
 
-2026-09-10. **Stopped at the user's requested change-of-approach boundary.** The repaired inertia supports propagating transverse modes at the explicit preflight input. A subsequent check found a separate defect in the prototype's complex-momentum sheet labels. Sheet continuation must be repaired before completing the bulk current or scattering. The four-case regeneration was interrupted; the published main `.out` and its annex object are unchanged. No export or commit was made.
+2026-09-10. The original complex-momentum sheet error is repaired in d. A computed Fourier kernel connects the real-axis outgoing seed to the counterexample inside its absolute-convergence strip; this finding requires no upstream producer/export change. The repaired four-case run completed and its canonical transcript is published. This is an unreviewed builder checkpoint, not completion of the S11c-d program.
 
-All spec §1 inputs remain SUPPLIED and unfalsifiable. The S11b/b shear-normalization discrepancy and c2 cross-engine operand debt remain open. This finding concerns the d continuation rule and does not adjudicate upstream response/face signs. No review leg, comparator, Wolfram engine, or downstream stage was launched.
+## Computed repair
 
-## Finding and next step
+[BulkSheetPath](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1674) replaces the radical half-plane predicate with root transport from real normal momentum, at positive real frequency. It computes branch points, path clearance, two adaptive refinements, radical residuals and root-match differences. Paths intersecting a branch point or failing numerical resolution emit `UNRESOLVED`; their candidates remain recorded. Incoming/outgoing flags cannot accept unresolved sheet labels. Their frequency slopes remain diagnostics until the full current is constructed.
 
-At engine line 1951, `PHYSICAL_BULK_SHEET` is assigned by a half-plane test on the radical. At the reference `LAB_HELD × RHO4_CONSTANT` input, candidate 8 has `k_n = 0.607303653886 + 0.008491689257 i`. The engine labels `q = 0.080656407478 − 6.393830415310 i` physical. Continuation from real `k_n` on the outgoing branch instead gives its opposite, `q = −0.080656407478 + 6.393830415310 i`.
-
-The probe derives the radical relation from the cached **computed reduced pencil**, then transports its root along the straight momentum path. Refinements at 16, 64, and 256 steps agree. The opposite-root residual is `1.39e-17`; the largest radical-equation residual is `1.43e-14`; the minimum distance to a computed branch point is `0.636783449147` in inverse-length reference units. The engine's `q` is in inverse-time reference units and equals `c_s0` times the bulk normal wavenumber.
-
-This is a bounded counterexample, not a generic sheet construction. Small equation and normalization residuals can occur on either sheet. **Do not use the current complex-root sheet flags to declare channels or classify poles.** The real-momentum transverse preflight is unaffected.
-
-Next: implement continuation from a stated physical/outgoing reference, retaining branch points, paths, domain failures and unresolved cases; rerun the end-channel census; then resume bulk-current/scattering construction. This changes the immediate work order, so the repair was not started after the stop.
-
-## Preserved additions
-
-| Construction | Engine source anchor and coverage |
-|---|---|
-| Import/Fourier wiring | Existing three-parent fold and one-dimensional reduction preserved; inherited energy root added with lookup witness. |
-| Explicit physical input | `ChannelInput`, line 1600: independent step/bump profiles, computed limits and derivative-integral/jump residuals, rational L/T/M input, physical homotopy. Separate from PIT. |
-| Finite end solves | `solve_input`, line 1841: full reference/end quotient pencils, candidate roots and local jets. Complex sheet labels have the defect above; bulk continuous spectrum remains unconstructed. |
-| Frequency normalization | `solve_sample`, line 1858: full nullspace pairing including the radical chain rule, normalized left bases where defined, and independent nearby-frequency checks. |
-| Closed-field check | `field_lift`, line 1400: differentiate the existing sector ansatz, then test lifted modes in the five-field equations. |
-| Slab current | `UniformSlabCurrent`, line 1415: reduce inherited energy before variation; extract the material constraint from the zero-transfer mass row; integrate normal boundary work; emit retained current and discarded grades. |
-
-The changed-end constraint's thickness weight depends on `W_0/W_bg`; its first-order expansion is computed from the mass row. The slab pairing on physical right fields remains a **partial** current operand. The nonlocal bulk contribution, full biorthogonal current, derivative identity and flux normalization are unfinished.
+The [Fourier probe](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_fourier_sheet_probe.py) derives the spatial kernel from the computed reduced radical and actual c2 branch bindings. At the explicit input it obtains the strip `|Im(k_n)| < 0.2` in inverse-length reference units. For the original candidate, its refined kernel integral gives `q = −0.08065640747826197 + 6.393830415309923 i` in inverse-time reference units: the opposite of the old physical-sheet label, with opposite-root difference `5.53e-16 − 1.92e-16 i`. The repaired selector labels the old root false. This is a fixed-frequency continuation chart, not a construction of complex-frequency pole sheets or the full nonlocal resolvent.
 
 ## Checks and artifact status
 
-The integrated one-case input run completed with exit 0, empty stderr, 703.57 s wall time and 14,310,873 bytes. Its transverse roots are doubly degenerate: `k_n = ±0.785281265959` at reference/left and `±0.789514618822` at right. Measured transverse frequency-normalization residuals reach `5.11e-16`; nearby-frequency differences are below `1.7e-13`. Its preserved transcript, `scripts/out/S11c_d_channel_reentry_preflight.out`, predates the latest slab-current refinement.
+The fresh pre-repair one-case input run completed in 801.55 s, with peak RSS 1,720,624 KiB, exit 0 and empty stderr. Its pinned pencil feeds the Fourier probe and cached checks. The independent ODE endpoint differs from the Fourier endpoint by about `1.14e-13`; its maximum sampled equation residual is separately `2.48e-10`. Two local frequency/momentum path-order checks differ by at most `1.26e-15`. Quadrature precision and cutoff are recorded; the quadrature error estimate excludes the truncated tail.
 
-The latest focused slab-current check at reference/right completed in 31.62 s with peak RSS 83,792 KiB. Variation, boundary, and retained-constraint residuals are zero; dimension constraints are empty. Both scripts compile. A complete integrated run of the latest source has **not** finished; the interrupted full capture was not published.
+Cached controls cover 198 candidate records in nine packets (six PIT, three explicit input). All 170 resolved paths complete independent ODE transport, with maximum relative difference `4.98e-12`. All 18 deliberately intersecting branch-locus paths remain unresolved. These are candidate counts, not open-channel counts. The three diagnostic instruments exit 0 and emit empty dimensional constraints. All six engine/instrument Python files compile. The repaired four-case/PIT run completed in 2,495.66 s with peak RSS 1,721,064 KiB, exit 0 and empty stderr. Its 55,823,604-byte transcript contains all 12 reference/end symbols and 24 mode packets (528 candidate records), with no missing path records or mode metadata, no duplicate tags, unchanged source pins and three empty dimensional records. It retains 64 unresolved sheet labels. The explicit physical input is covered by the separate baseline and cached checks above.
 
-The diagnostic is `scripts/S11c_d_sheet_continuation_probe.py` (relation at line 42; continuation at line 68), with completed output `scripts/out/S11c_d_sheet_continuation_probe.out`. It finished with empty stderr and dimension constraints. `S11c_d_sheet_continuation_diagnosis.json` records the measured data, hashes, focused-current checks and unchanged main-transcript hash. Input is `S11c_d_channel_preflight_input.json`.
+Commands, hashes and source/cache linkage are in [the run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_repair_runs.json); scalar results, canonical diagnostic output paths and scope are in [the repair report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_repair_report.md). The [output inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_output_inventory.json) records the full-run checks. The directive’s two named `reduction/` checker scripts are absent; they were not executed. The old annex payloads remain preserved at checkpoint `55e298b`. Storage policy for the user-requested preservation checkpoint: the five published `.out` payloads go through DataLad/git-annex; scripts, reports and JSON stay in ordinary Git. The checkpoint conveys no review clearance. No review leg, comparator, Wolfram engine or downstream stage ran.
 
-Reproduction: run the engine with `--case LAB_HELD__RHO4_CONSTANT --dev-symbol-cache /tmp/s11cd-sheet-cache --channel-input-file _measurements/S11c_d_channel_preflight_input.json`, capturing stdout in a fresh scratch file. Run the probe with that reference cache via `--symbol-cache`, that stdout via `--transcript`, the same JSON via `--input`, and `--candidate-index 8`. The current complex sheet labels remain under repair.
+## Remaining program and inherited limits
 
-The inertia-repair manifest and `S11c_inertia_d_checks.json` remain historical records of commit `a74da30`, including the still-published main transcript. They do not describe the current uncommitted source. See [the repair record](S11c_inertia_repair_report.md).
+The positional three-parent fold, Fourier reduction, full quotient-pencil candidates, frequency normalization, field lift and partial slab current are preserved. The slab current still lacks the nonlocal bulk contribution, complete biorthogonal current, derivative identity and flux normalization. All spec §1 inputs remain SUPPLIED and unfalsifiable here; the separate shear-normalization and c2 cross-engine operand/sign debts remain open.
 
-## Remaining program
-
-The 12 live TODOs are: all-carrier Fourier round trips; full end spectra; mixed-grade jets; generic sheet continuation; closed bulk current/flux normalization; complete two-ended scattering; poles/Riesz/overlap; survival; flux bookkeeping; weak coefficients; §5 controls; and export. Frequency pairing is implemented for finite algebraic pencils; general-domain coverage remains outstanding.
-
-`scripts/S11c_d_exports.py` is absent because its required roots have not been computed. No empty pole set, empty S-matrix, or placeholder export substitutes for an unexecuted solve.
+The 12 live TODOs remain: all-carrier Fourier round trips; full end spectra; mixed-grade jets; generic sheet continuation; closed bulk current/flux normalization; complete two-ended scattering; poles/Riesz/overlap; survival; flux bookkeeping; weak coefficients; §5 controls; and own-row export. The generic continuation TODO retains complex-frequency paths, cut-bank/continuum treatment and full spectral coverage. `scripts/S11c_d_exports.py` is absent because its required roots are uncomputed; no placeholder export or empty pole set was substituted.
 
 ## Retained user-approved solver/export contract
 

@@ -6,9 +6,15 @@ and remains unreviewed. The complete S11c-d engine and export remain unfinished.
 The [plan](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_spectrum_plan.md)
 records the authorized scope and stop condition.
 
+This report retains the evidence saved in `cc6f8b3c`. The canonical main
+transcript now contains the subsequent
+[joint-sheet construction](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_report.md).
+The original payload remains in git-annex at the digest recorded below; its
+historical run, inventories and other focused outputs have not been rewritten.
+
 ## Computed construction
 
-[EndSpectrumCoverage](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2747)
+[EndSpectrumCoverage](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2876)
 in the existing engine consumes
 both computed constant-end representations: the five-field closed operator
 and the full canonical sector pencil. The actual field ansatz constructs the
@@ -22,7 +28,7 @@ of assuming evenness. Polynomial gcds identify intersections with denominator,
 normal-threshold and radical-branch loci. The quotient determinant and coordinate
 factor remain separate operands; their pullback residual is computed.
 
-The [isolate computation](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2776) square-free-factorizes the resulting
+The [isolate computation](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2905) square-free-factorizes the resulting
 polynomial and computes roots at 50 and 80 decimal digits. Exact rational
 Taylor bounds around rational centers establish one-root disks when the linear
 term strictly dominates the remainder. Exact disk-separation comparisons and
@@ -91,7 +97,7 @@ certificate or establish a global error bound on modal fields.
 
 The full run exited 0 with empty stderr in `3963.933` seconds (66.1 minutes),
 peak RSS `1724396` KiB. Source hashes before and after the run match. The
-[95,506,147-byte main transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
+[original 95,506,147-byte transcript](/var/projects/toy_physics/.git/annex/objects/PP/Xv/MD5E-s95506147--05127e0fb60b8671f900c3713a593753.out/MD5E-s95506147--05127e0fb60b8671f900c3713a593753.out)
 has SHA-256 `1db1d902fb35e00002e375b33a6e04db350896fe5f26a2aa6435463e0f5aca77`,
 33,436 unique tags, one completion marker, no metadata gaps, and three empty
 dimensional-constraint records. Its emitted and recomputed input digests agree.

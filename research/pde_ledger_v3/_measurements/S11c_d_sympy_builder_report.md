@@ -1,70 +1,84 @@
-# S11c-d builder checkpoint: regular algebraic end spectra
+# S11c-d builder checkpoint: joint bulk-sheet paths and cut banks
 
-2026-09-11. Regular finite algebraic spectrum coverage at the bound inputs is
-implemented and verified across all four cases. The focused checks, full run,
-inventories and canonical publication completed. This is an unreviewed runnable
-checkpoint extending `c5af3181`; the full S11c-d engine and export remain unfinished.
+2026-09-11. The planned bulk-radical continuation construction is implemented,
+run across all four cases and published. The prior regular end-spectrum
+checkpoint was first saved at user request as `cc6f8b3c`: six `.out` files through
+DataLad/git-annex, the other files through Git. This subsequent build is an
+unreviewed runnable checkpoint with no further commit. The complete S11c-d
+engine and export remain unfinished.
 
-[EndSpectrumCoverage](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2747)
-consumes the computed physical five-field operator and canonical sector pencil.
-It constructs their coordinate pullback, clears rational denominators, computes
-the radical polynomial and exceptional-locus gcds, isolates its finite roots,
-and evaluates left/right nullspaces in the original physical matrix. The output
-retains both normal-momentum lifts, multiplicities, sheet and classifier domain
-records, equation residuals and oblique nullspace projector residuals. Heavy
-objects have compact fingerprints and digests with input, grade and dimension
-metadata. These are finite-input algebraic modes, not flux-normalized channels.
-The [plan](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_spectrum_plan.md)
-and [construction report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_spectrum_report.md)
-detail the computation and remaining domains.
+[JointBulkSheetPath](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2023)
+transports the actual reduced bulk radical along explicit frequency/momentum
+paths, starting from the separately reduced real-axis branch operand. It
+computes segment branch loci, two adaptive root transports, implicit-ODE
+transport, cut encounters and dimensioned residuals.
+[BulkContinuationAudit](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3153)
+computes real-axis matrix joins, upper/lower rays, local path-order checks,
+winding and branch-intersection controls, and refined frequency/momentum cut
+banks. Both bank values are evaluated in the original rational physical matrix;
+their matrices, jump and denominator operands are emitted with fingerprints,
+digests, input frames, grades and restored L/T/M dimensions.
+The [plan](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_plan.md)
+and [construction report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_report.md)
+detail the computation and its domain.
 
-The full run took `3963.933` seconds, peak RSS `1724396` KiB, with exit 0 and
-empty stderr. The [95,506,147-byte transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
-has 33,436 unique tags with no metadata gaps and three empty dimensional
-constraint records. All 24 native polynomial certificates account for their
-roots: 432 `(k,q)` candidate records across reference/left/right, physical-input
-and algebraic-PIT packets. Each degree-11 polynomial has nine distinct radical
-roots and 18 candidates. All isolation and separation checks hold, with zero
-degree-count and pullback residuals. The largest root-refinement difference is
-`5.796e-50` in inverse-time reference units. Dimensioned field/projector residual
-maxima are retained in the construction report and inventory.
+The fresh full run completed in `5779.514` seconds, peak child RSS `1725656` KiB,
+exit 0 and empty stderr. Source hashes before/after match. The
+[104,669,285-byte main transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
+has 38,828 unique tags, one completion marker, no new metadata gaps or nonfinite
+objects, and three empty dimensional-constraint records. It contains 24
+continuation packets: 504 paths, of which 480 transport and 24 deliberate branch
+intersections remain unresolved, plus 192 bank pairs. All 48 original native
+PIT unresolved candidate labels remain explicit.
 
-The 12 physical-input packets have no unresolved sheet labels; the 12 native
-PIT packets retain 48. These classify the existing fixed-frequency chart and
-do not count open channels. All 12 previous full-sector symbols and all 528
-legacy candidate records are unchanged, including their earlier unresolved
-labels. All 96 carrier inverse-Fourier checks remain intact, with 288 zero
-inverse residual entries and zero projections of the 222 integral and eight
-row residual fingerprints. No additional upstream repair was needed.
+The physical real-axis matrix joins have 400 exact zero residual entries.
+PIT joins evaluate both actual operands at 40/60 digits; their maximum residuals
+are `2.870e-42` at `[-2,-2,1]` and `9.724e-63` at `[-4,-1,1]`. The maximum
+ODE/root-transport endpoint difference is `6.397e-12` at `[0,-1,0]`; the maximum
+sampled ODE radical residual is `3.386e-11` at `[0,-2,0]`. The root refinements
+agree in these samples. Local path-order and double-loop return residuals are
+at most `4.450e-16` and `4.441e-16`, both at `[0,-1,0]`. The four final focused
+checks and three full inventories exit 0 with empty stderr.
 
-The [run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_spectrum_runs.json)
-retains commands, source/cache linkage, hashes, publication and resource records;
-the [spectrum inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_spectrum_inventory.json)
-and [Fourier preservation inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_spectrum_inverse_inventory.json)
-retain the computed checks. All six successful transcripts are in `scripts/out/`
-(98,218,875 bytes total). Atomic publication preserved the previous annex payload;
-the user subsequently requested a preservation checkpoint. Its six outputs
-are saved through DataLad/git-annex; source, instruments, reports and inventories
-use ordinary Git. This local save conveys no review clearance. The engine and two
-new instruments compile. Only `run` changed among pre-existing engine definitions.
-The directive-named `reduction/derived_or_declared.py` and
-`reduction/engine_output_checks.py` remain absent. No review leg, comparator,
-Wolfram engine, downstream stage or commit ran in this build.
+The 24 native finite-root certificates and their 432 candidate records remain
+intact. Among 8,016 native payloads including metadata, 24 raw differences are
+only carrier-association/metadata ordering; their values, dimensions and grades
+match. All numerical native records, 12 earlier full-sector symbols and 528
+legacy candidate records are unchanged. All 96 inverse-Fourier carriers retain
+zero inverse/source-image/remainder/branch residuals; projections of the 222
+integral and eight row residual fingerprints remain zero. No upstream repair
+was indicated by these checks.
 
-All ten live TODO items remain. Full spectra still require generic sheet
-continuation, cut-bank/continuum treatment, exceptional threshold/denominator
-loci, mixed degeneracies and generalized modes at defective roots. The other
-constructions are closed nonlocal current/flux normalization; complete two-ended
-scattering; poles/Riesz/overlap; survival; flux bookkeeping; weak coefficients;
-Section 5 controls; and own-row export. The spectrum constructor is a regular
-algebraic checkpoint within that program. `scripts/S11c_d_exports.py` remains
-absent because its required constructions are unfinished.
+The [run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_runs.json)
+retains commands, source/input/cache provenance, resources and publication
+hashes. The [joint inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_inventory.json),
+[spectrum inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_spectrum_inventory.json)
+and [Fourier inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_inverse_inventory.json)
+retain the computed evidence. All five successful transcripts are published in
+`scripts/out/` (106,367,981 bytes total); atomic replacement preserved the old
+annex payload. They are working files for the next user-requested DataLad save.
+The engine and both new instruments compile. Only `run` changed among existing
+definitions; none was removed. The directive-named
+`reduction/derived_or_declared.py` and `reduction/engine_output_checks.py` remain
+absent and were not run. The solver/export contract below is unchanged.
 
-Section 1 inputs remain SUPPLIED and unfalsifiable here. The separate
-shear-normalization and c2 cross-engine operand/sign debts remain open. The
-[previous inverse-Fourier report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_inverse_fourier_report.md)
-retains its historical checkpoint evidence. Transform and coordinate/input
-checks do not supply the Section 5 physical profile-FORM controls.
+All ten live TODOs remain. Explicit bulk-radical paths do not yet construct a
+global physical sheet or the full profile-resolvent contour, including other
+singularities and contour pinches. Finite-offset banks are not a completed
+continuum measure. Double-precision path clearance and sampled ODE residuals
+are diagnostics, not global certificates. Full spectra still require
+exceptional threshold/denominator domains, mixed degeneracies and generalized
+modes at defective roots. Negative-frequency branch checks do not extend the
+positive-frequency channel-input API or provide scattering data.
+
+Closed nonlocal current/flux normalization, complete two-ended scattering,
+poles/Riesz/overlap, survival, flux bookkeeping, weak coefficients, Section 5
+controls and own-row export remain later constructions.
+`scripts/S11c_d_exports.py` remains absent because its required objects have not
+been computed. Section 1 inputs remain SUPPLIED and unfalsifiable here; the
+separate shear-normalization and c2 cross-engine operand/sign debts remain
+open. No review leg, comparator, Wolfram engine, downstream stage or subsequent
+commit ran. Stop at this build/run/report checkpoint.
 
 ## Retained user-approved solver/export contract
 

@@ -2020,6 +2020,135 @@ class BulkSheetPath:
         return Str('UNRESOLVED'),record
 
 
+class JointBulkSheetPath:
+    """Lift explicit paths on the computed quadratic bulk radical curve.
+
+    A real-axis seed is evaluated from a reduced branch operand. Root matching
+    and implicit-ODE integration then transport that seed without a decay test.
+    Frequency-cut encounters are recorded only in the fixed-real-k chart where
+    S11b specifies them; joint paths retain their explicit history instead.
+    """
+
+    def __init__(self, relation, frequency, momentum, radical, real_axis_seed):
+        self.w,self.k,self.q = frequency,momentum,radical
+        self.relation = relation
+        self.square = sp.solve(relation,radical**2)[0]
+        polynomial = sp.Poly(self.square,frequency,momentum)
+        if polynomial.total_degree()!=2 or polynomial.as_expr().free_symbols-{frequency,momentum}:
+            raise NotImplementedError('joint transport requires a bound quadratic radical')
+        self.coefficients = [(powers,complex(value)) for powers,value in polynomial.terms()]
+        self.evaluate = sp.lambdify((frequency,momentum),self.square,'numpy')
+        self.seed_expression = real_axis_seed
+        self.seed = sp.lambdify((frequency,momentum),real_axis_seed,
+                               [{'sqrt':np.lib.scimath.sqrt},'numpy'])
+        self.dw,self.dk = sp.symbols('s11cdJointPathFrequencyTangent s11cdJointPathMomentumTangent')
+        derivative = sp.Symbol('s11cdJointPathRadicalDerivative')
+        self.derivative = sp.solve(sp.diff(relation,frequency)*self.dw+
+            sp.diff(relation,momentum)*self.dk+sp.diff(relation,radical)*derivative,derivative)[0]
+        self.ode = sp.lambdify((frequency,momentum,radical,self.dw,self.dk),self.derivative,'numpy')
+
+    def segment(self, start, end):
+        # Substitute the affine path ansatz into the computed polynomial.
+        from numpy.polynomial import Polynomial
+        w,k = (Polynomial((a,b-a)) for a,b in zip(start,end))
+        polynomial = sum((coefficient*w**i*k**j for (i,j),coefficient in self.coefficients),Polynomial([0j]))
+        roots = tuple(complex(v) for v in polynomial.roots())
+        clearance = min((abs(z-complex(min(1.,max(0.,z.real)))) for z in roots),default=float('inf'))
+        tolerance = 512*np.finfo(float).eps
+        hit = any(-tolerance<=z.real<=1+tolerance and abs(z.imag)<=tolerance*max(1.,abs(z)) for z in roots)
+        cut_records=[]
+        fixed_real_k = start[1]==end[1] and start[1].imag==0
+        if fixed_real_k:
+            branch_points = np.polynomial.Polynomial([
+                sum(c*start[1]**j for (i,j),c in self.coefficients if i==power)
+                for power in range(3)]).roots()
+            dw=end[0]-start[0]
+            for point in branch_points:
+                if abs(point.imag)>tolerance*max(1.,abs(point)):continue
+                if dw.real:
+                    t=(point.real-start[0].real)/dw.real
+                    if 0<=t<=1 and (start[0]+t*dw).imag<0:
+                        cut_records.append({'PARAMETER':t,'OMEGA':start[0]+t*dw,'BRANCH_OMEGA':complex(point)})
+                elif start[0].real==point.real and min(start[0].imag,end[0].imag)<0:
+                    cut_records.append({'PARAMETER_INTERVAL':(0.,1.),'BRANCH_OMEGA':complex(point)})
+        return polynomial,{'ZERO_PARAMETERS':roots,'PARAMETER_CLEARANCE':clearance,
+            'BRANCH_INTERSECTION':hit,'FIXED_REAL_K_CUT_CHART':fixed_real_k,
+            'DOWNWARD_FREQUENCY_CUT_ENCOUNTERS':cut_records}
+
+    def trace(self, vertices, seed=None):
+        from scipy.integrate import solve_ivp
+        vertices=tuple(tuple(complex(x) for x in v) for v in vertices)
+        result={'VERTICES':[{'OMEGA':w,'K':k} for w,k in vertices],
+                'PATH_DEFINED':False,'SEED_FROM_REAL_AXIS':seed is None,
+                'FLOAT_MANTISSA_BITS':np.finfo(float).nmant+1,
+                'GEOMETRIC_PARAMETER_TOLERANCE':512*np.finfo(float).eps}
+        if len(vertices)<2 or not all(np.isfinite(z) for v in vertices for z in v):
+            result['STATUS']='INVALID_PATH_VERTICES'
+            return result
+        if seed is None and any(z.imag for z in vertices[0]):
+            result['STATUS']='NO_REAL_AXIS_SEED'
+            return result
+        seed=complex(self.seed(*vertices[0])) if seed is None else complex(seed)
+        result['SEED_Q']=seed
+        result['SEED_RADICAL_RESIDUAL']=seed**2-self.evaluate(*vertices[0])
+        segments=[self.segment(a,b) for a,b in zip(vertices,vertices[1:])]
+        result['SEGMENTS']=[data for _,data in segments]
+        if seed==0 or any(data['BRANCH_INTERSECTION'] for _,data in segments):
+            result['STATUS']='BRANCH_LOCUS_ON_PATH'
+            return result
+        result['SEED_RELATIVE_RESIDUAL']=abs(result['SEED_RADICAL_RESIDUAL'])/max(abs(seed)**2,abs(self.evaluate(*vertices[0])))
+        if result['SEED_RELATIVE_RESIDUAL']>result['GEOMETRIC_PARAMETER_TOLERANCE']:
+            result['STATUS']='SEED_RELATION_UNRESOLVED'
+            return result
+        refinements=[]
+        for fraction in (0.25,0.125):
+            root=seed;count=0;maximum=abs(result['SEED_RADICAL_RESIDUAL']);angle=0.;completed=0
+            for polynomial,data in segments:
+                t=0.;previous=complex(polynomial(t))
+                while t<1 and count<16384:
+                    distance=min((abs(t-z) for z in data['ZERO_PARAMETERS']),default=float('inf'))
+                    step=min(1-t,fraction*distance)
+                    if t+step==t:break
+                    t=min(1.,t+step)
+                    value=complex(polynomial(t))
+                    candidate=value**0.5
+                    root=min((candidate,-candidate),key=lambda q:abs(q-root))
+                    maximum=max(maximum,abs(root**2-value))
+                    angle+=np.angle(value/previous)
+                    previous=value;count+=1
+                completed+=int(t==1.)
+                if t<1:break
+            refinements.append({'STEP_FRACTION':fraction,'STEPS':count,'COMPLETED_SEGMENTS':completed,
+                'END_Q':root,'MAXIMUM_RADICAL_RESIDUAL':maximum,'RADICAND_ARGUMENT_CHANGE':angle})
+        result['REFINEMENTS']=refinements
+        result['REFINEMENT_DIFFERENCE']=refinements[-1]['END_Q']-refinements[0]['END_Q']
+        if not all(v['COMPLETED_SEGMENTS']==len(segments) for v in refinements):
+            result['STATUS']='PATH_RESOLUTION_LIMIT'
+            return result
+        root=seed;ode_maximum=abs(result['SEED_RADICAL_RESIDUAL']);ode_steps=0;ode_status=[]
+        result['ODE_RELATIVE_TOLERANCE']=3e-12
+        result['ODE_ABSOLUTE_TOLERANCE']=3e-14*max(abs(seed),np.finfo(float).tiny)
+        for start,end in zip(vertices,vertices[1:]):
+            dw,dk=(b-a for a,b in zip(start,end))
+            solution=solve_ivp(lambda t,q:np.asarray([self.ode(start[0]+t*dw,start[1]+t*dk,q[0],dw,dk)]),
+                (0.,1.),np.asarray([root]),rtol=result['ODE_RELATIVE_TOLERANCE'],atol=result['ODE_ABSOLUTE_TOLERANCE'])
+            ode_status.append(int(solution.status));ode_steps+=len(solution.t)
+            ode_maximum=max(ode_maximum,max(abs(q*q-self.evaluate(start[0]+t*dw,start[1]+t*dk))
+                for t,q in zip(solution.t,solution.y[0])))
+            root=solution.y[0,-1]
+            if solution.status!=0:break
+        result.update({'ODE_END_Q':complex(root),'ODE_STEPS':ode_steps,'ODE_STATUSES':ode_status,
+            'ODE_MAXIMUM_RADICAL_RESIDUAL':ode_maximum,
+            'ODE_DIFFERENCE':complex(root)-refinements[-1]['END_Q'],
+            'END_Q':refinements[-1]['END_Q'],
+            'CLOSED_COORDINATE_PATH':vertices[0]==vertices[-1],
+            'END_TO_SEED_RATIO':refinements[-1]['END_Q']/seed,
+            'RADICAND_ARGUMENT_TURNS':refinements[-1]['RADICAND_ARGUMENT_CHANGE']/(2*np.pi)})
+        result['PATH_DEFINED']=len(ode_status)==len(segments) and all(v==0 for v in ode_status)
+        result['STATUS']='TRANSPORTED' if result['PATH_DEFINED'] else 'ODE_RESOLUTION_LIMIT'
+        return result
+
+
 class RectangularModeJets:
     """Implicit invariant-pair ansatz in the retained two-grade rectangle.
 
@@ -3021,6 +3150,216 @@ class EndSpectrumCoverage:
         return {'CERTIFICATE':certificate,'RECORDS':records,'SUMMARY':summary}
 
 
+class BulkContinuationAudit:
+    """Reduced-source joins, explicit radical paths and rational-matrix banks."""
+
+    emit = EndSpectrumCoverage.emit
+
+    def __init__(self, modes, strong, strong_units, branch_bindings):
+        self.modes,self.r = modes,modes.r
+        self.dimensions = PHYSICAL_METADATA.dimensions
+        self.strong,self.strong_units,self.bindings = strong,strong_units,branch_bindings
+
+    def path_unit(self, path):
+        d=self.dimensions;m=self.modes
+        if path[-1] in ('OMEGA','BRANCH_OMEGA'):return d.measure(self.r.omega)
+        if path[-1]=='K':return d.measure(m.k)
+        if path[-1] in ('SEED_Q','END_Q','ODE_END_Q','REFINEMENT_DIFFERENCE','ODE_DIFFERENCE','ODE_ABSOLUTE_TOLERANCE'):
+            return d.measure(m.q)
+        if path[-1] in ('SEED_RADICAL_RESIDUAL','MAXIMUM_RADICAL_RESIDUAL','ODE_MAXIMUM_RADICAL_RESIDUAL'):
+            return tuple(2*v for v in d.measure(m.q))
+        return d.zero
+
+    def construct(self, suffix, *, channel_input=None, reference=False, sample_index=0, spectrum=None):
+        m,d=self.modes,self.dimensions
+        w,k,q=self.r.omega,m.k,m.q
+        algebraic,relation,join=m.analytic(self.strong)
+        if channel_input is None:
+            mapping=m.sample(algebraic,relation,sample_index)
+            frequency=mapping.pop(w)
+            origin={m.eta:sp.S.Zero,m.sigma:sp.S.Zero}
+            frame=('PIT_L','PIT_T','PIT_M')
+        else:
+            mapping=channel_input.mapping(algebraic,relation,(w,k,q,m.eta,m.sigma))
+            frequency=channel_input.parameters['omega']
+            origin={m.eta:sp.S.Zero,m.sigma:sp.S.Zero} if reference else channel_input.origin
+            frame=channel_input.frame
+        prefix='JOINT_SHEET_'+('INPUT_' if channel_input else 'PIT_')+suffix+'_'+str(sample_index)
+        def output(label,value,unit=None,heavy=False):
+            self.emit(prefix+'_'+label,value,unit,heavy=heavy)
+        output('UNIT_FRAME',frame)
+        output('BOUND_CARRIERS',[(str(s),v) for s,v in mapping.items()],
+               lambda p:d.measure(next(s for s in mapping if str(s)==p[0])))
+        output('GRADE_ORIGIN',[(str(s),v) for s,v in origin.items()])
+        output('SOURCE_GRADE_SUPPORT',tuple((path,tuple(sorted(PHYSICAL_METADATA.coefficients(value))))
+               for path,value in leaves(algebraic)))
+        output('INPUT_BINDING',channel_input.specification if channel_input else {'PIT_SAMPLE':sample_index})
+        output('OPERATOR_SCOPE',{'RETAINED_OPERATOR_EVALUATION':True,'CONTINUUM_REEXPANSION_PERFORMED':False,
+            'FULL_RESOLVENT_CONTOUR_CONSTRUCTED':False,'CONTINUUM_MEASURE_CONSTRUCTED':False})
+        original=self.strong.xreplace(mapping).subs(origin)
+        bound=algebraic.xreplace(mapping).subs(origin).applyfunc(sp.cancel)
+        relation=relation.xreplace(mapping)
+        square=sp.solve(relation,q**2)[0]
+        scale=sp.sqrt(-sp.Poly(square,k).nth(2))
+        seed_operands=tuple(rhs.xreplace(dict(zip(lhs.args,(*self.r.tangents,k)))).xreplace(mapping)
+                            for lhs,rhs in self.bindings)
+        seeds=tuple(scale*value for value in seed_operands)
+        seed_differences=tuple(sp.simplify(value-seeds[0]) for value in seeds)
+        output('REDUCED_REAL_AXIS_BRANCH_OPERANDS',seed_operands,lambda p:d.measure(k))
+        output('RADICAL_SCALE',scale,lambda p:tuple(a-b for a,b in zip(d.measure(q),d.measure(k))))
+        output('SCALED_REAL_AXIS_SEED',seeds[0],lambda p:d.measure(q))
+        output('SOURCE_BRANCH_JOIN_RESIDUAL',join)
+        output('REDUCED_SEED_JOIN_RESIDUAL',seed_differences,lambda p:d.measure(q))
+        output('RELATION',relation,lambda p:tuple(2*v for v in d.measure(q)))
+        if any(v!=0 for v in join+seed_differences):
+            raise NotImplementedError('joint-path reduced branch operands do not join')
+        transport=JointBulkSheetPath(relation,w,k,q,seeds[0])
+        d.known[transport.dw]=d.measure(w);d.known[transport.dk]=d.measure(k)
+        output('IMPLICIT_DIFFERENTIAL',transport.derivative,lambda p:d.measure(q))
+        k0=mapping[self.r.tangents[0]]
+        # Polynomial roots retain complex loci even though the source Fourier
+        # coordinates carry real-axis assumptions.
+        frequency_points=sp.Poly(square.subs(k,k0),w).all_roots()
+        momentum_points=sp.Poly(square.subs(w,frequency),k).all_roots()
+        output('FREQUENCY_BRANCH_POINTS',frequency_points,lambda p:d.measure(w))
+        output('MOMENTUM_BRANCH_POINTS',momentum_points,lambda p:d.measure(k))
+        cone=max(frequency_points)
+        w0,kbase=float(frequency),float(k0)
+        evaluate=sp.lambdify((w,k,q),bound,'numpy',cse=True)
+        denominators=tuple(sp.denom(v) for v in bound)
+        evaluate_denominators=sp.lambdify((w,k,q),denominators,'numpy',cse=True)
+        paths=[];bank_pairs=[];joins=[]
+        def trace(label,vertices,seed=None):
+            data=transport.trace(vertices,seed=seed)
+            output(label,data,self.path_unit)
+            paths.append((label,data))
+            return data
+
+        if reference:
+            for i,factor in enumerate((sp.Rational(1,2),sp.Integer(2),sp.Rational(-1,2),sp.Integer(-2))):
+                point={w:factor*cone,k:k0}
+                root=sp.simplify(seeds[0].subs(point))
+                source_operand=original.subs(point)
+                continued_operand=bound.subs({**point,q:root})
+                if channel_input is None:
+                    # Algebraic PIT coefficients can generate large number
+                    # fields. Evaluate both actual operands before comparison.
+                    source=source_operand.evalf(40)
+                    continued=continued_operand.evalf(40)
+                    residual=source-continued
+                    refined_source=source_operand.evalf(60)
+                    refined_continued=continued_operand.evalf(60)
+                    refined_residual=refined_source-refined_continued
+                    scales=[max(sp.S.One,abs(a),abs(b)) for a,b in zip(refined_source,refined_continued)]
+                    scaled=max(abs(v)/scale for v,scale in zip(refined_residual,scales))
+                    output('REAL_AXIS_JOIN_PRECISION_'+str(i),{'DECIMAL_DIGITS':(40,60),
+                        'MAXIMUM_SCALED_RESIDUAL':scaled,'ENTRY_COEFFICIENT_SCALE_FLOOR':1,
+                        'MATCH_TOLERANCE':sp.Rational(1,10**30)})
+                    output('REAL_AXIS_REFINED_MATRIX_RESIDUAL_'+str(i),refined_residual,lambda p:self.strong_units[p])
+                    output('REAL_AXIS_SOURCE_REFINEMENT_'+str(i),refined_source-source,lambda p:self.strong_units[p])
+                    output('REAL_AXIS_ALGEBRAIC_REFINEMENT_'+str(i),refined_continued-continued,lambda p:self.strong_units[p])
+                    joined=bool(scaled<sp.Rational(1,10**30))
+                else:
+                    source=source_operand.applyfunc(sp.simplify)
+                    continued=continued_operand.applyfunc(sp.simplify)
+                    residual=(source-continued).applyfunc(sp.simplify)
+                    output('REAL_AXIS_JOIN_PRECISION_'+str(i),{'ARITHMETIC':'EXACT'})
+                    joined=all(v==0 for v in residual)
+                output('REAL_AXIS_POINT_'+str(i),{'OMEGA':point[w],'K':k0,'END_Q':root},self.path_unit)
+                output('REAL_AXIS_SOURCE_MATRIX_'+str(i),source,lambda p:self.strong_units[p],True)
+                output('REAL_AXIS_ALGEBRAIC_MATRIX_'+str(i),continued,lambda p:self.strong_units[p],True)
+                output('REAL_AXIS_MATRIX_RESIDUAL_'+str(i),residual,lambda p:self.strong_units[p])
+                output('REAL_AXIS_RADICAL_RESIDUAL_'+str(i),sp.simplify(relation.subs({**point,q:root})),
+                       lambda p:tuple(2*v for v in d.measure(q)))
+                if not joined:raise NotImplementedError('real-axis source/algebraic matrix join differs')
+                for direction in (-1,1):
+                    trace('FREQUENCY_RAY_'+str(i)+'_'+str(direction).replace('-','M'),
+                          [(complex(point[w]),kbase),(complex(point[w]+direction*sp.I*cone/5),kbase)])
+            trace('FREQUENCY_BRANCH_INTERSECTION',[(2*float(cone),kbase),(float(cone),kbase)])
+            points=[complex(v) for v in momentum_points]
+            dw=1j*min(abs(w0-complex(v)) for v in frequency_points)/10
+            dk=1j*min(abs(kbase-v) for v in points)/10
+            a=trace('LOCAL_FREQUENCY_THEN_MOMENTUM',[(w0,kbase),(w0+dw,kbase),(w0+dw,kbase+dk)])
+            b=trace('LOCAL_MOMENTUM_THEN_FREQUENCY',[(w0,kbase),(w0,kbase+dk),(w0+dw,kbase+dk)])
+            if a['PATH_DEFINED'] and b['PATH_DEFINED']:
+                output('LOCAL_PATH_ORDER_RESIDUAL',a['END_Q']-b['END_Q'],lambda p:d.measure(q))
+            center=complex(cone);radius=float(cone)/3
+            loop=[(center+radius*np.exp(2j*np.pi*j/32),kbase) for j in range(32)]
+            loop.append(loop[0])
+            first=trace('FREQUENCY_WINDING_ONCE',loop)
+            if first['PATH_DEFINED']:
+                second=trace('FREQUENCY_WINDING_TWICE',loop,seed=first['END_Q'])
+                if second['PATH_DEFINED']:
+                    output('WINDING_RETURN_OPERANDS',(first['SEED_Q'],first['END_Q'],second['END_Q']),lambda p:d.measure(q))
+                    output('WINDING_DOUBLE_RETURN_RESIDUAL',second['END_Q']-first['SEED_Q'],lambda p:d.measure(q))
+
+        def banks(label,coordinate,target,offset_scale):
+            previous=None
+            for refinement,epsilon in enumerate((1e-3,1e-5,1e-7)):
+                bank=[]
+                for side in (-1,1):
+                    endpoint=target+side*epsilon*offset_scale
+                    vertices=([(endpoint.real,kbase),(endpoint,kbase)] if coordinate=='OMEGA' else
+                              [(w0,endpoint.real),(w0,endpoint)])
+                    data=trace(label+'_'+str(refinement)+'_'+str(side).replace('-','M'),vertices)
+                    record={'SIDE':side,'OFFSET':epsilon*offset_scale,'OMEGA':vertices[-1][0],'K':vertices[-1][1],
+                            'PATH_DEFINED':data['PATH_DEFINED']}
+                    if data['PATH_DEFINED']:
+                        point=(*vertices[-1],data['END_Q'])
+                        matrix=np.asarray(evaluate(*point),dtype=complex)
+                        denominator_values=np.asarray(evaluate_denominators(*point),dtype=complex)
+                        record.update({'END_Q':data['END_Q'],'FINITE_MATRIX':bool(np.isfinite(matrix).all()),
+                                       'MINIMUM_DENOMINATOR_COEFFICIENT':float(np.min(np.abs(denominator_values)))})
+                        output(label+'_MATRIX_'+str(refinement)+'_'+str(side).replace('-','M'),
+                               sp.ImmutableMatrix(matrix),lambda p:self.strong_units[p],True)
+                        output(label+'_DENOMINATORS_'+str(refinement)+'_'+str(side).replace('-','M'),
+                               tuple(denominator_values))
+                        bank.append((record,matrix))
+                    else:bank.append((record,None))
+                output(label+'_BANK_OPERANDS_'+str(refinement),[v[0] for v in bank],lambda p:
+                       d.measure(w if coordinate=='OMEGA' else k) if p[-1]=='OFFSET' else self.path_unit(p))
+                if all(v[0]['PATH_DEFINED'] and v[0]['FINITE_MATRIX'] for v in bank):
+                    gap=bank[1][0]['END_Q']-bank[0][0]['END_Q']
+                    jump=bank[1][1]-bank[0][1]
+                    output(label+'_RADICAL_JUMP_'+str(refinement),gap,lambda p:d.measure(q))
+                    output(label+'_MATRIX_JUMP_'+str(refinement),sp.ImmutableMatrix(jump),lambda p:self.strong_units[p],True)
+                    if previous is not None:
+                        output(label+'_RADICAL_REFINEMENT_'+str(refinement),
+                               tuple(v[0]['END_Q']-old for v,old in zip(bank,previous)),lambda p:d.measure(q))
+                    previous=[v[0]['END_Q'] for v in bank]
+                    bank_pairs.append({'LABEL':label,'REFINEMENT':refinement,'RADICAL_JUMP':gap})
+
+        if reference:
+            for i,point in enumerate(frequency_points):
+                banks('FREQUENCY_CUT_BANK_'+str(i),'OMEGA',complex(point-sp.I*cone/3),float(cone))
+        unresolved=[] if spectrum is None else [v for v in spectrum['RECORDS']
+            if str(v['FIXED_FREQUENCY_SHEET_MEMBERSHIP'])=='UNRESOLVED']
+        targets=sorted({complex(v['K']) for v in unresolved},key=lambda z:(z.real,z.imag))
+        target_source='UNRESOLVED_NATIVE_CANDIDATES'
+        if not targets:
+            target_source='COMPUTED_BRANCH_RAY_PROBES'
+            targets=[1.5*complex(v) if complex(v).imag else complex(v)+.5j*max(abs(complex(t)) for t in momentum_points)
+                     for v in momentum_points]
+        output('MOMENTUM_BANK_TARGET_SOURCE',target_source)
+        output('MOMENTUM_BANK_TARGETS',targets,lambda p:d.measure(k))
+        output('ORIGINAL_UNRESOLVED_CANDIDATES',[(v['K'],v['Q']) for v in unresolved],
+               lambda p:d.measure(k if p[-1]==0 else q))
+        for i,target in enumerate(targets):
+            if reference:trace('MOMENTUM_BRANCH_RAY_INTERSECTION_'+str(i),[(w0,target.real),(w0,target)])
+            banks('MOMENTUM_CUT_BANK_'+str(i),'K',target,max(abs(complex(v)) for v in momentum_points))
+        resolved=[v for _,v in paths if v['PATH_DEFINED']]
+        summary={'PATH_COUNT':len(paths),'DEFINED_PATH_COUNT':len(resolved),
+            'PATH_STATUSES':dict(Counter(v['STATUS'] for _,v in paths)),
+            'BANK_PAIR_COUNT':len(bank_pairs),'ORIGINAL_UNRESOLVED_CANDIDATE_COUNT':len(unresolved),
+            'CUT_ENCOUNTER_COUNT':sum(len(s['DOWNWARD_FREQUENCY_CUT_ENCOUNTERS']) for _,v in paths for s in v.get('SEGMENTS',())),
+            'MAXIMUM_REFINEMENT_DIFFERENCE':max((abs(v['REFINEMENT_DIFFERENCE']) for v in resolved),default=sp.S.Zero),
+            'MAXIMUM_ODE_DIFFERENCE':max((abs(v['ODE_DIFFERENCE']) for v in resolved),default=sp.S.Zero),
+            'MAXIMUM_ODE_RADICAL_RESIDUAL':max((v['ODE_MAXIMUM_RADICAL_RESIDUAL'] for v in resolved),default=sp.S.Zero)}
+        output('SUMMARY',summary,lambda p:d.measure(q) if p[-1] in ('MAXIMUM_REFINEMENT_DIFFERENCE','MAXIMUM_ODE_DIFFERENCE') else
+               tuple(2*v for v in d.measure(q)) if p[-1]=='MAXIMUM_ODE_RADICAL_RESIDUAL' else d.zero)
+        return summary
+
+
 def run():
     global PHYSICAL_METADATA
     os.chdir(ROOT)
@@ -3084,6 +3423,7 @@ def run():
              sp.Lt(sp.Integral(sp.Abs(localized, evaluate=False),
                                (reduction.xi, -sp.oo, sp.oo)), sp.oo, evaluate=False))
     reduced_rows = {}
+    reduced_branch_bindings = {}
     for row_key in CLOSED_KEYS:
         for case, payload in rows[row_key]['value']:
             if not selected(case):
@@ -3139,6 +3479,8 @@ def run():
             physical('REDUCED_ACTION_ROWS_' + suffix, reduced, zero_dimensions=value_units)
             reconstruction.row(value, reduced, records, suffix, value_units, definitions)
             reduced_payload = reduction.payload(payload, reduced)
+            reduced_branch_bindings[(row_key,case)] = tuple((eq.lhs,eq.rhs)
+                for eq in named(reduced_payload,'COMPUTED_BRANCH_BINDINGS'))
             physical('REDUCED_FIVE_SLOT_PAYLOAD_'+suffix, reduced_payload, operands=reduced, zero_dimensions=value_units)
             for slot in ('COMPUTED_BRANCH_BINDINGS','FOURIER_PROFILE_BINDINGS'):
                 for index, equation in enumerate(named(reduced_payload,slot)):
@@ -3261,11 +3603,16 @@ def run():
                 modes.solve_input(full_symbol, label+'_'+suffix, -1 if label == 'LEFT' else 1,
                                   channel_input, reference=label == 'REFERENCE')
             spectrum = EndSpectrumCoverage(modes,strong_symbol,full_symbol,lift,strong_symbol_units)
-            spectrum.construct(label+'_'+suffix,-1 if label=='LEFT' else 1,
+            spectral_result = spectrum.construct(label+'_'+suffix,-1 if label=='LEFT' else 1,
                                reference=label=='REFERENCE',sample_index=0)
+            continuation = BulkContinuationAudit(modes,strong_symbol,strong_symbol_units,
+                reduced_branch_bindings[(CLOSED_KEYS[0],case)])
+            continuation.construct(label+'_'+suffix,reference=label=='REFERENCE',sample_index=0,spectrum=spectral_result)
             if channel_input is not None:
-                spectrum.construct(label+'_'+suffix,-1 if label=='LEFT' else 1,
+                spectral_result = spectrum.construct(label+'_'+suffix,-1 if label=='LEFT' else 1,
                                    channel_input=channel_input,reference=label=='REFERENCE')
+                continuation.construct(label+'_'+suffix,channel_input=channel_input,
+                                       reference=label=='REFERENCE',spectrum=spectral_result)
     emit('PENCIL_DIMENSION_CONSTRAINT_RESIDUALS', sorted(dimensions.constraints, key=sp.default_sort_key))
     if dimensions.constraints:
         raise ValueError('pencil dimensional analysis has surfaced unresolved constraints')
@@ -3279,6 +3626,7 @@ def run():
                                       'NULLSPACE_CLASSIFIER_PROJECTORS', 'NONLINEAR_FREQUENCY_PAIRING',
                                       'REGULAR_RECTANGULAR_MODE_JETS',
                                       'PHYSICAL_FIELD_END_SPECTRUM_COVERAGE',
+                                      'EXPLICIT_JOINT_BULK_SHEET_PATHS_AND_CUT_BANKS',
                                       'S11B_CONSERVATIVE_SLAB_CURRENT', 'CLOSED_PHYSICAL_FIELD_LIFT'))
     emit('CHANNEL_INPUT_EXECUTION', channel_input is not None)
     emit('OUTSTANDING_CONSTRUCTIONS', ('FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS',

@@ -1,0 +1,67 @@
+{
+  "source": "computed reference packet",
+  "originalCriteria": {
+    "FINITE_ALGEBRAIC_ROOT_COVERAGE": true,
+    "DENOMINATOR_DOMAIN": true,
+    "NORMAL_LIFT_DOMAIN": true,
+    "FINITE_NONEMPTY_NULLSPACES": true,
+    "ALGEBRAIC_GEOMETRIC_MULTIPLICITIES": true,
+    "FULL_BASIS_RANKS": true,
+    "NORMAL_DERIVATIVE_PAIRING_RANKS": true
+  },
+  "recordMetadataDeletionControls": [
+    {
+      "deletedField": "ALGEBRAIC_GEOMETRIC_MULTIPLICITY_DIFFERENCE",
+      "criteria": {
+        "FINITE_ALGEBRAIC_ROOT_COVERAGE": true,
+        "DENOMINATOR_DOMAIN": true,
+        "NORMAL_LIFT_DOMAIN": true,
+        "FINITE_NONEMPTY_NULLSPACES": true,
+        "ALGEBRAIC_GEOMETRIC_MULTIPLICITIES": false,
+        "FULL_BASIS_RANKS": true,
+        "NORMAL_DERIVATIVE_PAIRING_RANKS": true
+      },
+      "regularCoverage": false
+    },
+    {
+      "deletedField": "RIGHT_BASIS_RANK",
+      "criteria": {
+        "FINITE_ALGEBRAIC_ROOT_COVERAGE": true,
+        "DENOMINATOR_DOMAIN": true,
+        "NORMAL_LIFT_DOMAIN": true,
+        "FINITE_NONEMPTY_NULLSPACES": true,
+        "ALGEBRAIC_GEOMETRIC_MULTIPLICITIES": true,
+        "FULL_BASIS_RANKS": false,
+        "NORMAL_DERIVATIVE_PAIRING_RANKS": true
+      },
+      "regularCoverage": false
+    },
+    {
+      "deletedField": "LEFT_BASIS_RANK",
+      "criteria": {
+        "FINITE_ALGEBRAIC_ROOT_COVERAGE": true,
+        "DENOMINATOR_DOMAIN": true,
+        "NORMAL_LIFT_DOMAIN": true,
+        "FINITE_NONEMPTY_NULLSPACES": true,
+        "ALGEBRAIC_GEOMETRIC_MULTIPLICITIES": true,
+        "FULL_BASIS_RANKS": false,
+        "NORMAL_DERIVATIVE_PAIRING_RANKS": true
+      },
+      "regularCoverage": false
+    },
+    {
+      "deletedField": "NORMAL_DERIVATIVE_PAIRING_RANK",
+      "criteria": {
+        "FINITE_ALGEBRAIC_ROOT_COVERAGE": true,
+        "DENOMINATOR_DOMAIN": true,
+        "NORMAL_LIFT_DOMAIN": true,
+        "FINITE_NONEMPTY_NULLSPACES": true,
+        "ALGEBRAIC_GEOMETRIC_MULTIPLICITIES": true,
+        "FULL_BASIS_RANKS": true,
+        "NORMAL_DERIVATIVE_PAIRING_RANKS": false
+      },
+      "regularCoverage": false
+    }
+  ],
+  "developmentTranscriptSha256": "548e01764964d2868fc5385b7da929827d593d597cf5c8a933c2f8740afab226"
+}

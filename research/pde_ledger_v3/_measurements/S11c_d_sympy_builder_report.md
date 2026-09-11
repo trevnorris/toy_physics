@@ -1,86 +1,81 @@
-# S11c-d builder checkpoint: constant-end resolvents and normal-momentum residues
+# S11c-d builder checkpoint: paused exceptional-domain construction
 
-2026-09-11. The user-requested prior checkpoint was committed as `718e5ced`:
-five `.out` files through DataLad/git-annex and twelve other files through Git.
-The subsequent constant-end resolvent construction is implemented, run across
-all four cases, inventoried and published. It remains an unreviewed runnable
-checkpoint with no later commit. The complete S11c-d engine and export remain
-unfinished.
+2026-09-11. Work resumed from `56595cf7`, preserving the S11c-d `f22cb682`
+producer. The source is runnable and the frozen reference check completed.
+Work then stopped under the user's instruction to pause when the breakdown
+needs changing. The right-end check was interrupted. **No fresh four-case run
+was started: the main transcript still represents `f22cb682`, not this source.**
 
-[EndResolventAudit](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3363)
-extends the existing continuation builder. It derives the total normal-momentum
-derivative of the computed physical end operator, constructs full-subspace
-Laurent residues, and independently integrates inverse matrices on two radii
-with 32/64 contour nodes. It evaluates both cut-bank inverses at 40/60 digits
-and explicitly subtracts computed local normal-momentum poles where applicable.
-Original double-precision operands, coordinate refinements, sheet labels,
-residuals, grades and restored L/T/M dimensions remain visible. These are
-fixed-frequency end data; profile-frequency bound poles and their Riesz data
-remain separate future constructions. The
-[plan](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_plan.md)
-and [construction report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_report.md)
-record the computation and its limits.
+The reason is a separate bulk-continuum threshold. The new end-mode resultants
+find exceptional points of the discrete end roots. The completed reference
+operands also give a collision of bulk normal branch points at frequency
+coefficient `sqrt(5)` (`2.2360679775` in the declared time unit), where none of
+the fifteen current end-mode exclusion conditions vanishes and the end-spectrum
+polynomial has no radical root at zero. Bulk branch/denominator strata need
+an independent family of records before intersecting them with end-mode loci.
+This is a coverage finding; it does not establish an upstream operator error.
+The [scope probe](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_bulk_threshold_scope_probe.json)
+and [paused plan](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_exceptional_strata_plan.md)
+record the next required change.
 
-The single fresh full run completed in `7265.559` seconds, peak child RSS
-`1727696` KiB, exit 0 and empty stderr. Source hashes before/after match the
-current files. The transcript contains 24 packets, 432 regular Laurent
-residues, 1,728 contours and 384 bank inverses. It records 144 local pole
-subtractions, no nullity differences and no unresolved subtraction at these
-bank targets. The maximum modal/Cauchy residue difference is `5.607e-12` at
-`[2,2,-1]`, and the derivative-projector difference is `1.928e-11` at `[0,0,0]`.
-Near-pole cancellation produces a raw double inverse-jump residual of `2.256`
-at `[3,2,-1]`; the refined 60-digit calculation gives at most `4.632e-52` at
-that dimension. Those are finite-input residuals, not global error bounds.
+The [regularity criteria](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2967)
+now include algebraic/geometric multiplicity agreement, ranks of both full
+bases, and the normal-derivative pairing rank. A development reference run
+retained all 18 candidates; each new criterion was true. Software controls
+removing required record fields prevent regular coverage from being reported.
+Existing root isolation, import wiring, Fourier reduction, sheet paths and
+constant-end resolvent computations are retained.
 
-All four final focused checks and four full inventories exit 0 with empty
-stderr. The main output has 109,612 unique tags, one completion marker, empty
-dimensional constraints and no new metadata gaps or nonfinite objects.
-All 24 native root certificates and 432 candidate records are preserved.
-Native and continuation comparisons each retain 24 carrier-association/metadata
-ordering differences with no semantic difference. The 504 earlier paths,
-192 bank pairs, 48 unresolved sheet labels, 12 legacy full-sector symbols and
-528 legacy candidate records remain intact. All 96 inverse-Fourier carriers
-retain zero inverse/source-image/remainder/branch residuals; projections of
-222 integral and eight row residual fingerprints remain zero. No upstream
-operand mismatch was indicated.
+[EndExceptionalSlice](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3193)
+computes square-free multiplicities, end-mode exclusion polynomials, exact
+real-locus gcds/intervals, and generic rank identities on a declared frequency
+slice with other carriers bound. Determinant order and identities for all
+minors of the required size bound nullity from both sides on the recorded
+regular domain. This is a frequency-slice certificate, not a parameter-variety
+or global-sheet certificate. The reference factors have degrees seven and two
+with multiplicities one and two; 1+25 minor identities have zero remainders
+and reconstruction residuals.
 
-The [run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_runs.json)
-contains the source/input/cache pins, resources, inventories and publication
-hashes. The [main transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
-is 189,492,142 bytes; the four focused outputs bring the total to 203,816,095
-bytes. This exceeds the original tens-of-MB target: the new numerical objects
-occupy 24.6 MB, their metadata 50.4 MB, and the emission index is now 14.4 MB.
-Heavy objects still use fingerprints/digests; metadata/output compaction remains
-a mechanical size debt. All five files are in `scripts/out/`; atomic publication
-preserved the old annex payload. They await the next user-requested DataLad save.
-The engine and new instruments compile. Only `run` changed among existing
-definitions, one class was added and none removed. The directive-named
-`reduction/derived_or_declared.py` and `reduction/engine_output_checks.py` remain
-absent and were not run. The solver/export contract below is unchanged.
+The [targeted threshold computation](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3342)
+uses the original rational physical matrix and exact full bases. At the
+computed end-mode threshold (`0.27386127875` in the declared time unit), both
+radical roots give matrix rank three, both nullities/basis ranks two, one
+coincident normal lift and normal-derivative pairing rank zero. Equation
+residuals are emitted. Generalized threshold modes, exceptional-point physical
+sheet membership and the zero-frequency intersection remain unresolved.
 
-The user's S10 Lean concern is addressed in the
-[stratum-coverage note](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_stratum_coverage_note.md).
-Native checks visit every isolated root and both normal lifts; nullspace
-residuals use all computed basis columns under recorded numerical tolerances.
-Each of the 24 unresolved branch-intersection tests has its own path record.
-These checks do not enumerate all joint sheet regions or exceptional parameter
-strata. A representative witness also requires constant rank/property on its
-stratum or explicit handling of exceptional subloci. The regular-coverage
-summary does not explicitly gate on algebraic/geometric multiplicity agreement,
-although all committed native candidate differences are zero. This guard and
-targeted exceptional-locus coverage need attention before extending the domain.
-No checks were rerun solely for this read-only inspection.
+The frozen reference run used engine SHA
+`ed359f16e78deccffdbce8f15cbb7e9735d60344e8fe0b38d5dd5e8ea457419e`,
+completed in 363.169 seconds at 265,436 KiB peak child RSS, exit zero, empty
+stderr and unchanged source hashes. Its
+[reference transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_reference.out)
+is 254,459 bytes with 179 unique tags, empty dimensional constraints and no
+metadata gaps, unmatched objects or nonfinite payloads. Source-index decoding
+restores all 176 preceding tag assignments. The
+[run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_exceptional_strata_runs.json)
+separates this completion from the deliberately interrupted right-end run.
 
-All ten broad TODOs remain. The full profile resolvent, Fourier Green-function
-reconstruction, global sheet/continuum measure, exceptional/defective modes,
-closed nonlocal current/flux normalization, scattering, profile-frequency
-poles/Riesz/overlap, survival, bookkeeping, weak coefficients, Section 5 controls
-and own-row export remain unfinished. `scripts/S11c_d_exports.py` remains absent
-because its required objects have not been computed. Section 1 inputs remain
-SUPPLIED and unfalsifiable here; shear-normalization and c2 cross-engine
-operand/sign debts remain open. The other session's S10 and Lean work is
-untouched. No review leg, comparator, Wolfram engine, downstream stage or
-subsequent commit ran. Stop at this build/run/report checkpoint.
+The [output codec](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_output_codec.py:19)
+shares exact payload text and records source-line positions compactly. Every
+tag, dimension/grade payload, residual and digest survives decoding. The old
+189,492,142-byte transcript encodes to 52,531,413 bytes with zero payload or
+source-line assignment differences. Updated inventory readers accept both
+representations; the codec's command-line expansion writes the previous
+representation to a separate new file. The main annex payload is unchanged.
+The eight-point solver/export contract below is byte-identical. Compilation
+and whitespace checks completed. The directive-named reduction triage tools
+remain absent and were not run.
+
+All ten broad TODOs remain, including full sheet/exceptional coverage, closed
+nonlocal current and flux normalization, scattering, profile-frequency
+poles/Riesz/overlap, survival, bookkeeping, weak coefficients, Section 5
+controls and the own-row export. `scripts/S11c_d_exports.py` remains absent.
+These are constant-end results, not section 3b profile-dependent bound poles.
+Section 1 and the carried c2 operand/sign debts remain supplied premises.
+S10/Lean files were not edited here; new changes in those areas appeared during
+this work and were left untouched. No review leg, comparator, Wolfram engine,
+downstream stage or commit ran. The remaining focused checks, full regeneration
+and main-output publication await the coverage-plan revision.
 
 ## Retained user-approved solver/export contract
 

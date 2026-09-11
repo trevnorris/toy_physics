@@ -11,6 +11,7 @@ import time
 
 from S11c_d_joint_sheet_inventory import association,portable,binding_order_comparison
 from S11c_d_joint_sheet_check import engine,_restore
+from S11c_d_output_codec import decoded_lines
 import sympy as sp
 
 
@@ -20,7 +21,7 @@ def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def inspect(path):
     tags=set();duplicates=[];pending={};gaps=[];nonfinite=[];packets={};constraints={}
     residuals={};old={};metadata_counts={}
-    for line in path.open():
+    for line in decoded_lines(path):
         tag,sep,payload=line.rstrip('\n').partition(': ')
         if not sep:continue
         tag=tag.removeprefix('PY_S11CD_')

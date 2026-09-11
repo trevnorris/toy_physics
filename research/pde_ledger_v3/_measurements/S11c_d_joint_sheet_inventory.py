@@ -15,6 +15,7 @@ import sympy as sp
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from ledger_fold import _restore
+from S11c_d_output_codec import decoded_lines
 from S11c_d_mixing_scattering_sympy_audit import leaves
 from S11c_d_end_spectrum_inventory import input_json
 
@@ -26,7 +27,7 @@ def binding_order_comparison(left,right,names):
     """Compare association keys and metadata path sets; retain raw differences."""
     def collect(path):
         values={}
-        for line in path.open():
+        for line in decoded_lines(path):
             tag,separator,payload=line.rstrip('\n').partition(': ')
             tag=tag.removeprefix('PY_S11CD_')
             if separator and tag in names:values[tag]=payload
@@ -76,7 +77,7 @@ def portable(value):
 def inspect(path):
     tags=set();duplicates=[];pending={};metadata=set();gaps=[];packets={};native={};legacy={};pins=None
     residuals={};constraints={};nonfinite=[];specification=None
-    for line in path.open():
+    for line in decoded_lines(path):
         tag,separator,payload=line.rstrip('\n').partition(': ')
         if not separator:continue
         tag=tag.removeprefix('PY_S11CD_')

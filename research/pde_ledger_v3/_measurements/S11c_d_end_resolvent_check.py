@@ -8,6 +8,7 @@ import resource
 import time
 
 from S11c_d_joint_sheet_check import load,engine,_restore
+from S11c_d_output_codec import decoded_lines
 
 
 def run():
@@ -26,7 +27,7 @@ def run():
     manifest=json.loads(args.manifest.read_text())
     prefix='PY_S11CD_END_SPECTRUM_'+('PIT_' if args.pit else 'INPUT_')+args.end+'_LAB_HELD_RHO4_CONSTANT_0_MODE_'
     records=[]
-    for line in (Path(manifest['run_directory'])/'full.out').open():
+    for line in decoded_lines(Path(manifest['run_directory'])/'full.out'):
         tag,_,payload=line.partition(': ')
         if tag.startswith(prefix) and tag.endswith('_RECORD'):
             records.append({str(k):v for k,v in _restore(payload)})

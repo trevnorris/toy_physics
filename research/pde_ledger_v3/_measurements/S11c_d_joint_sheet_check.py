@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts'))
 import S11c_d_mixing_scattering_sympy_audit as engine
 from ledger_fold import _restore
+from S11c_d_output_codec import decoded_lines
 
 
 def digest(path):
@@ -32,7 +33,11 @@ def load(args):
         if digest(path) != manifest['artifacts'][str(path.relative_to(base))]['sha256']:
             raise ValueError(('producer artifact mismatch', str(path)))
     for name, expected in manifest['source_hashes_after'].items():
-        if name != 'scripts/S11c_d_mixing_scattering_sympy_audit.py' and digest(ROOT/name) != expected:
+        # Producer instruments can acquire a lossless transcript reader.
+        # Verify their frozen producer sources; physical inputs remain pinned
+        # against the current files consumed by the new construction.
+        source = base/'source'/name if name.startswith('_measurements/') else ROOT/name
+        if name not in ('scripts/S11c_d_mixing_scattering_sympy_audit.py','scripts/S11c_d_output_codec.py') and digest(source) != expected:
             raise ValueError(('producer input mismatch', name))
     frozen = base/'source/scripts/S11c_d_mixing_scattering_sympy_audit.py'
     if digest(frozen) != manifest['source_hashes_after']['scripts/S11c_d_mixing_scattering_sympy_audit.py']:
@@ -54,7 +59,7 @@ def load(args):
     inputs = engine.ChannelInput(r,specification)
     prefix='PY_S11CD_REDUCED_BINDING_OPERANDS_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_COMPUTED_BRANCH_BINDINGS_'
     bindings=[]
-    for line in (base/'full.out').open():
+    for line in decoded_lines(base/'full.out'):
         if line.startswith(prefix):bindings.append(_restore(line.partition(': ')[2]))
     if not bindings:raise ValueError('missing reduced branch operands')
     field_units=[dims.known[sp.Function('s11cdReducedField'+name)] for name in ('u1','u2','u3','theta','eW')]
@@ -89,7 +94,7 @@ def run():
         manifest=json.loads(args.manifest.read_text())
         prefix='PY_S11CD_END_SPECTRUM_'+('PIT_' if args.pit else 'INPUT_')+args.end+'_LAB_HELD_RHO4_CONSTANT_0_MODE_'
         records=[]
-        for line in (Path(manifest['run_directory'])/'full.out').open():
+        for line in decoded_lines(Path(manifest['run_directory'])/'full.out'):
             tag,_,payload=line.partition(': ')
             if tag.startswith(prefix) and tag.endswith('_RECORD'):
                 records.append({str(k):v for k,v in _restore(payload)})

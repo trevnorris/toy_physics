@@ -1,0 +1,721 @@
+{
+  "instrumentSha256": "6875b2479e0695bb93c354b26d68b5948830a7215dbbb1058cda0374ae082e35",
+  "results": [
+    {
+      "transcript": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_reference.out",
+      "sha256": "a7beaa0028869621926d8a7e17b0d99b6b1c1cbcb3f1312e6d9da7a29ce1c44b",
+      "bytes": 254459,
+      "uniqueTags": 179,
+      "duplicates": [],
+      "metadataGaps": [],
+      "nonfiniteObjects": [],
+      "unmatchedObjects": [],
+      "dimensionConstraints": {
+        "EXCEPTIONAL_PREFLIGHT_DIMENSION_CONSTRAINTS": [],
+        "METADATA_EXCEPTIONAL_PREFLIGHT_DIMENSION_CONSTRAINTS": []
+      },
+      "packetCount": 1,
+      "packets": {
+        "END_EXCEPTIONAL_SLICE_INPUT_REFERENCE_LAB_HELD_RHO4": {
+          "records": {
+            "UNIT_FRAME": [
+              "L_ref",
+              "T_ref",
+              "M_ref"
+            ],
+            "BOUND_CARRIERS": {
+              "mu_S": 0.5,
+              "s11cdTangentialMomentum1": 0.2,
+              "W_0": 1,
+              "kappa_theta_W": 0.1,
+              "mu_R": 1,
+              "C": 0.25,
+              "s11cdTangentialMomentum2": 0.1,
+              "tau_A": 0.1,
+              "B_rho_3": 4,
+              "Lambda_X_0": 0,
+              "c_s0": 10,
+              "Lambda_A_0": 0.01,
+              "k_W": 4,
+              "tau_X": 0.1,
+              "mu_W": 1,
+              "G_W_u": 0.1,
+              "tau_V": 0.1,
+              "rho_br": 1,
+              "rho_m": 0.1,
+              "Lambda_V_0": 0,
+              "G_theta_u": 0.1,
+              "kappa_theta": 0.3333333333333333,
+              "kappa_W": 0.5
+            },
+            "GRADE_ORIGIN": {
+              "eta_bg": 0,
+              "sigma_W": 0
+            },
+            "SOURCE_GRADE_SUPPORT": [
+              [
+                [
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  1
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  2
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  3
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  4
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  5
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  6
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  7
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  8
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  9
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  10
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  11
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  12
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  13
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  14
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  15
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  16
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  17
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  18
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  19
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  20
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  21
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  22
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  23
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  24
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ]
+            ],
+            "SPECTRAL_COORDINATE_UNITS": {
+              "FREQUENCY": [
+                0,
+                -1,
+                0
+              ],
+              "NORMAL": [
+                -1,
+                0,
+                0
+              ],
+              "RADICAL": [
+                0,
+                -1,
+                0
+              ],
+              "COEFFICIENT_COORDINATES": [
+                "s11cdExceptionFrequencyCoordinate",
+                "s11cdExceptionNormalCoordinate",
+                "s11cdExceptionRadicalCoordinate"
+              ]
+            },
+            "BRANCH_JOIN_RESIDUALS": [],
+            "DETERMINANT_DOMAIN": {
+              "DEFINED": true,
+              "DEGREE": 11
+            },
+            "FACTOR_DEGREES_AND_MULTIPLICITIES": [
+              [
+                7,
+                1
+              ],
+              [
+                2,
+                2
+              ]
+            ],
+            "GENERIC_RANK_SUMMARY": [
+              {
+                "FACTOR_INDEX": 0,
+                "GENERIC_DETERMINANT_MULTIPLICITY": 1,
+                "RANK_IDENTITY_CONSTRUCTION_DEFINED": true,
+                "TESTED_MINOR_SIZE": 5,
+                "MINOR_COUNT": 1,
+                "NONZERO_REMAINDER_COUNT": 0,
+                "IDENTITY_RECONSTRUCTION_RESIDUALS": [
+                  0
+                ]
+              },
+              {
+                "FACTOR_INDEX": 1,
+                "GENERIC_DETERMINANT_MULTIPLICITY": 2,
+                "RANK_IDENTITY_CONSTRUCTION_DEFINED": true,
+                "TESTED_MINOR_SIZE": 4,
+                "MINOR_COUNT": 25,
+                "NONZERO_REMAINDER_COUNT": 0,
+                "IDENTITY_RECONSTRUCTION_RESIDUALS": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ],
+            "LOCUS_DETERMINANT_CONTENT_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 0,
+              "REAL_INTERVALS": []
+            },
+            "LOCUS_RADICAL_NORMAL_LEADING_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 0,
+              "REAL_INTERVALS": []
+            },
+            "LOCUS_FACTOR_0_LEADING_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 0,
+              "REAL_INTERVALS": []
+            },
+            "LOCUS_FACTOR_0_DISCRIMINANT_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 6,
+              "REAL_INTERVALS": [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  6
+                ]
+              ]
+            },
+            "LOCUS_FACTOR_0_DENOMINATOR_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 6,
+              "REAL_INTERVALS": [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  6
+                ]
+              ]
+            },
+            "LOCUS_FACTOR_0_NORMAL_THRESHOLD_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 0,
+              "REAL_INTERVALS": []
+            },
+            "LOCUS_FACTOR_0_RADICAL_BRANCH_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 4,
+              "REAL_INTERVALS": [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  4
+                ]
+              ]
+            },
+            "LOCUS_FACTOR_0_RANK_IDENTITY_DENOMINATOR_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 0,
+              "REAL_INTERVALS": []
+            },
+            "LOCUS_FACTOR_1_LEADING_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 0,
+              "REAL_INTERVALS": []
+            },
+            "LOCUS_FACTOR_1_DISCRIMINANT_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 2,
+              "REAL_INTERVALS": [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  2
+                ]
+              ]
+            },
+            "LOCUS_FACTOR_1_DENOMINATOR_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 4,
+              "REAL_INTERVALS": [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  4
+                ]
+              ]
+            },
+            "LOCUS_FACTOR_1_NORMAL_THRESHOLD_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 4,
+              "REAL_INTERVALS": [
+                [
+                  [
+                    -0.27386127875258304,
+                    -0.27386127875258304
+                  ],
+                  2
+                ],
+                [
+                  [
+                    0.27386127875258304,
+                    0.27386127875258304
+                  ],
+                  2
+                ]
+              ]
+            },
+            "LOCUS_FACTOR_1_RADICAL_BRANCH_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 2,
+              "REAL_INTERVALS": [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  2
+                ]
+              ]
+            },
+            "LOCUS_FACTOR_0_1_INTERSECTION_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 6,
+              "REAL_INTERVALS": [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  6
+                ]
+              ]
+            },
+            "LOCUS_FACTOR_1_RANK_IDENTITY_DENOMINATOR_REAL_ISOLATION": {
+              "IDENTICALLY_ZERO": false,
+              "GCD_DEGREE": 0,
+              "REAL_INTERVALS": []
+            },
+            "TARGET_0_FREQUENCY": 0,
+            "TARGET_0_INCIDENT_LOCUS_LABELS": [
+              "FACTOR_0_DISCRIMINANT",
+              "FACTOR_0_DENOMINATOR",
+              "FACTOR_0_RADICAL_BRANCH",
+              "FACTOR_1_DISCRIMINANT",
+              "FACTOR_1_DENOMINATOR",
+              "FACTOR_1_RADICAL_BRANCH",
+              "FACTOR_0_1_INTERSECTION"
+            ],
+            "TARGET_0_LOCUS_SUBSTITUTION_RESIDUALS": {
+              "FACTOR_0_DISCRIMINANT": 0,
+              "FACTOR_0_DENOMINATOR": 0,
+              "FACTOR_0_RADICAL_BRANCH": 0,
+              "FACTOR_1_DISCRIMINANT": 0,
+              "FACTOR_1_DENOMINATOR": 0,
+              "FACTOR_1_RADICAL_BRANCH": 0,
+              "FACTOR_0_1_INTERSECTION": 0
+            },
+            "TARGET_0_STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION",
+            "TARGET_1_FREQUENCY": 0.27386127875258304,
+            "TARGET_1_INCIDENT_LOCUS_LABELS": [
+              "FACTOR_1_NORMAL_THRESHOLD"
+            ],
+            "TARGET_1_LOCUS_SUBSTITUTION_RESIDUALS": {
+              "FACTOR_1_NORMAL_THRESHOLD": 0
+            },
+            "TARGET_1_NORMAL_THRESHOLD_GCD_DEGREE": 2,
+            "TARGET_1_RADICAL_ROOT_COUNT": 2,
+            "TARGET_1_RADICAL_ROOT_DEGREE_RESIDUAL": 0,
+            "TARGET_1_NORMAL_THRESHOLD_0_NORMAL_LIFT_ROOT_COUNT": 1,
+            "TARGET_1_NORMAL_THRESHOLD_0_POINT": {
+              "OMEGA": 0.27386127875258304,
+              "K": 0,
+              "Q": {
+                "real": 0.0,
+                "imag": -2.219234102117215
+              }
+            },
+            "TARGET_1_NORMAL_THRESHOLD_0_RADICAL_RESIDUAL": 0,
+            "TARGET_1_NORMAL_THRESHOLD_0_DENOMINATOR_COEFFICIENT_VALUES": [
+              375,
+              375,
+              75,
+              {
+                "real": 66577.02306351643,
+                "imag": 6392.551495406009
+              },
+              {
+                "real": 13315.404612703289,
+                "imag": 1278.5102990812018
+              }
+            ],
+            "TARGET_1_NORMAL_THRESHOLD_0_FINITE_PENCIL_DOMAIN": true,
+            "TARGET_1_NORMAL_THRESHOLD_0_RIGHT_RESIDUAL": "Matrix([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])",
+            "TARGET_1_NORMAL_THRESHOLD_0_LEFT_RESIDUAL": "Matrix([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])",
+            "TARGET_1_NORMAL_THRESHOLD_0_RANK_RECORD": {
+              "MATRIX_RANK": 3,
+              "RIGHT_NULLITY": 2,
+              "LEFT_NULLITY": 2,
+              "RIGHT_BASIS_RANK": 2,
+              "LEFT_BASIS_RANK": 2,
+              "NORMAL_DERIVATIVE_PAIRING_RANK": 0,
+              "NORMAL_LIFT_COUNT": 1,
+              "REGULAR_NORMAL_LIFT_DOMAIN": false
+            },
+            "TARGET_1_NORMAL_THRESHOLD_0_STATUS": "THRESHOLD_SUBSPACE_COMPUTED_GENERALIZED_NORMAL_MODES_UNRESOLVED",
+            "TARGET_1_NORMAL_THRESHOLD_1_NORMAL_LIFT_ROOT_COUNT": 1,
+            "TARGET_1_NORMAL_THRESHOLD_1_POINT": {
+              "OMEGA": 0.27386127875258304,
+              "K": 0,
+              "Q": {
+                "real": 0.0,
+                "imag": 2.219234102117215
+              }
+            },
+            "TARGET_1_NORMAL_THRESHOLD_1_RADICAL_RESIDUAL": 0,
+            "TARGET_1_NORMAL_THRESHOLD_1_DENOMINATOR_COEFFICIENT_VALUES": [
+              375,
+              375,
+              75,
+              {
+                "real": -66577.02306351643,
+                "imag": 10039.125229748974
+              },
+              {
+                "real": -13315.404612703289,
+                "imag": 2007.825045949795
+              }
+            ],
+            "TARGET_1_NORMAL_THRESHOLD_1_FINITE_PENCIL_DOMAIN": true,
+            "TARGET_1_NORMAL_THRESHOLD_1_RIGHT_RESIDUAL": "Matrix([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])",
+            "TARGET_1_NORMAL_THRESHOLD_1_LEFT_RESIDUAL": "Matrix([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])",
+            "TARGET_1_NORMAL_THRESHOLD_1_RANK_RECORD": {
+              "MATRIX_RANK": 3,
+              "RIGHT_NULLITY": 2,
+              "LEFT_NULLITY": 2,
+              "RIGHT_BASIS_RANK": 2,
+              "LEFT_BASIS_RANK": 2,
+              "NORMAL_DERIVATIVE_PAIRING_RANK": 0,
+              "NORMAL_LIFT_COUNT": 1,
+              "REGULAR_NORMAL_LIFT_DOMAIN": false
+            },
+            "TARGET_1_NORMAL_THRESHOLD_1_STATUS": "THRESHOLD_SUBSPACE_COMPUTED_GENERALIZED_NORMAL_MODES_UNRESOLVED",
+            "COVERAGE_BOUNDARIES": {
+              "BOUND_PARAMETER_FREQUENCY_SLICE": true,
+              "REAL_LOCUS_ENUMERATION_DEFINED": true,
+              "TARGET_FREQUENCY_COUNT": 2,
+              "PARAMETER_VARIETY_ATLAS_COMPUTED": false,
+              "COMPLEX_EXCEPTION_ROOT_ISOLATION_COMPUTED": false,
+              "GENERALIZED_DEFECTIVE_MODES_COMPUTED": false,
+              "TARGET_PHYSICAL_SHEET_MEMBERSHIP_COMPUTED": false,
+              "PROFILE_FREQUENCY_BOUND_POLES_COMPUTED": false
+            }
+          },
+          "statuses": {
+            "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION": 1,
+            "THRESHOLD_SUBSPACE_COMPUTED_GENERALIZED_NORMAL_MODES_UNRESOLVED": 2
+          }
+        }
+      },
+      "nativeRegularity": {},
+      "sourceIndexChecks": [
+        {
+          "indexedTags": 176,
+          "missingAssignments": 0
+        }
+      ],
+      "completionMarkers": 1
+    }
+  ],
+  "wallSeconds": 1.245337094180286,
+  "peakRssKiB": 75924
+}

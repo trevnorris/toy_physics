@@ -15,6 +15,7 @@ import sympy as sp
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from ledger_fold import _restore
+from S11c_d_output_codec import decoded_lines
 from S11c_d_mixing_scattering_sympy_audit import leaves
 
 
@@ -47,7 +48,7 @@ def read(path):
     legacy_symbols={};legacy_packets={};coverage={};source_pins=None;constraints={}
     metadata_gaps=[]
     specification=None;emitted_input_digest=None
-    for line in path.open():
+    for line in decoded_lines(path):
         tag,separator,payload=line.rstrip('\n').partition(': ')
         if not separator:continue
         tag=tag.removeprefix('PY_S11CD_')

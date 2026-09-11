@@ -1,0 +1,62 @@
+{
+  "scope": "read-only check of already computed reference-slice operands; no atlas construction",
+  "engineSha256": "ed359f16e78deccffdbce8f15cbb7e9735d60344e8fe0b38d5dd5e8ea457419e",
+  "referenceManifestSha256": "5cfcfe2c20e2070247564deccb0053365e0db0982e71d1095db901651fe7719f",
+  "coefficientCoordinateDimension": [
+    0,
+    0,
+    0
+  ],
+  "records": [
+    {
+      "analysisCache": "/tmp/s11cd-exceptional-strata-20260911/analysis/11a7747eaf16ad9be9ec613b944e06a2b662b1ff181b6654c8a8a9cce72c7506.pickle",
+      "analysisCacheSha256": "254232c5846bc33daab2cbe8dc3016de3c0f5fe869b782064cab8ed7923aed75",
+      "relationCoefficients": "Add(Mul(Integer(-1), Pow(Symbol('s11cdExceptionFrequencyCoordinate'), Integer(2))), Mul(Integer(100), Pow(Symbol('s11cdExceptionNormalCoordinate'), Integer(2))), Pow(Symbol('s11cdExceptionRadicalCoordinate'), Integer(2)), Integer(5))",
+      "branchDiscriminantCoefficients": "Add(Mul(Integer(400), Pow(Symbol('s11cdExceptionFrequencyCoordinate'), Integer(2))), Integer(-2000))",
+      "frequencyCoefficient": "Pow(Integer(5), Rational(1, 2))",
+      "frequencyInDeclaredTimeUnit": 2.23606797749979,
+      "frequencyDimension": [
+        0,
+        -1,
+        0
+      ],
+      "multigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "epsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "branchDiscriminantResidual": "0",
+      "normalBranchRootsAtThreshold": [
+        "0"
+      ],
+      "endSpectrumSharesRadicalBranchRoot": false,
+      "endSpectrumRemainderSha256": "c49aea17e15279544368df910b95af3042688aac3c557393c88dec5f0be406cc",
+      "endSpectrumRemainderIsZero": false,
+      "existingEndModeConditionsVanishing": {
+        "DETERMINANT_CONTENT": false,
+        "RADICAL_NORMAL_LEADING": false,
+        "FACTOR_0_LEADING": false,
+        "FACTOR_0_DISCRIMINANT": false,
+        "FACTOR_0_DENOMINATOR": false,
+        "FACTOR_0_NORMAL_THRESHOLD": false,
+        "FACTOR_0_RADICAL_BRANCH": false,
+        "FACTOR_0_RANK_IDENTITY_DENOMINATOR": false,
+        "FACTOR_1_LEADING": false,
+        "FACTOR_1_DISCRIMINANT": false,
+        "FACTOR_1_DENOMINATOR": false,
+        "FACTOR_1_NORMAL_THRESHOLD": false,
+        "FACTOR_1_RADICAL_BRANCH": false,
+        "FACTOR_0_1_INTERSECTION": false,
+        "FACTOR_1_RANK_IDENTITY_DENOMINATOR": false
+      }
+    }
+  ]
+}

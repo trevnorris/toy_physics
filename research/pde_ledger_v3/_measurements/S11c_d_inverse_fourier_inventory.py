@@ -12,6 +12,7 @@ import sympy as sp
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts'))
 from ledger_fold import _restore
+from S11c_d_output_codec import decoded_lines
 
 
 def association(value):
@@ -31,7 +32,7 @@ def run():
                 'METADATA_CARRIER_', 'METADATA_INVERSE_FOURIER_', 'METADATA_RECONSTRUCTION_',
                 'METADATA_BRANCH_RECONSTRUCTION_', 'OUTSTANDING_CONSTRUCTIONS',
                 'REDUCED_DIMENSION_', 'INVERSE_CHECK_DIMENSION_')
-    for line in args.transcript.open():
+    for line in decoded_lines(args.transcript):
         tag, sep, body = line.partition(': ')
         if not sep:
             continue

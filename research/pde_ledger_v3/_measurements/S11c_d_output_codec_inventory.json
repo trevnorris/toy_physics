@@ -1,0 +1,27 @@
+{
+  "source": "/var/projects/toy_physics/.git/annex/objects/2M/zQ/MD5E-s189492142--0ba05c9532fa74aea39b84d725f75091.out/MD5E-s189492142--0ba05c9532fa74aea39b84d725f75091.out",
+  "sourceSha256": "b04b50c87e227498a7acf48dec0a8a46e3e2288bb09045f479c9de2523a1d617",
+  "sourceBytes": 189492142,
+  "encodedBytes": 52531413,
+  "records": 109612,
+  "distinctSharedPayloads": 9470,
+  "payloadMismatches": [],
+  "unencodedPayloadSha256": "63e299b525845652d8427f7075c9ecaa20b4fb9739967fce3bbef91407a6a843",
+  "decodedPayloadSha256": "63e299b525845652d8427f7075c9ecaa20b4fb9739967fce3bbef91407a6a843",
+  "sourceIndexChecks": [
+    {
+      "tagCount": 109610,
+      "differentAssignments": 0,
+      "oldBytes": 14406893,
+      "newBytes": 1554707
+    }
+  ],
+  "malformedReferenceRejections": [
+    true,
+    true
+  ],
+  "instrumentSha256": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+  "codecSha256": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+  "wallSeconds": 10.117555132135749,
+  "peakRssKiB": 259424
+}

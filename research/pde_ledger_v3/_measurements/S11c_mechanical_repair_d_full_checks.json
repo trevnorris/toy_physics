@@ -1,0 +1,631 @@
+{
+  "updatedUtc": "2026-09-12T22:26:21.767143+00:00",
+  "nativeManifest": "/tmp/s11c-mechanical-repair-20260912/d_full/manifest.json",
+  "nativeManifestSha256": "a7f3ba4542fbdf4e072ae775f5985ed01d2e4a26fc209c84b7d55496a887d6bc",
+  "nativeWallSeconds": 9989.253917069174,
+  "nativePeakRssKiB": 1734840,
+  "nativeExitCode": 0,
+  "nativeStderrBytes": 0,
+  "sourcePinsStable": true,
+  "nativeArtifact": {
+    "bytes": 83848737,
+    "sha256": "312935010ef56ce0eabe7b1685e906dfb785c40e02978c7b93fdbb4af11bae52"
+  },
+  "rechecks": {
+    "path": "_measurements/S11c_mechanical_repair_d_rechecks.json",
+    "sha256": "2bb9cdcc18362e2bea1cfc79a8092eae2697009d46238a45db5311713ea8a938",
+    "stages": 9,
+    "allExitZero": true
+  },
+  "spectrum": {
+    "packets": 24,
+    "candidates": 432,
+    "nullities": {
+      "1": 336,
+      "2": 96
+    },
+    "coverage": {
+      "(11, 9, 11, 0, True, True)": 24
+    },
+    "regularity": {
+      "('FINITE_ALGEBRAIC_ROOT_COVERAGE', True)": 24,
+      "('DENOMINATOR_DOMAIN', True)": 24,
+      "('NORMAL_LIFT_DOMAIN', True)": 24,
+      "('FINITE_NONEMPTY_NULLSPACES', True)": 24,
+      "('ALGEBRAIC_GEOMETRIC_MULTIPLICITIES', True)": 24,
+      "('FULL_BASIS_RANKS', True)": 24,
+      "('NORMAL_DERIVATIVE_PAIRING_RANKS', True)": 24
+    },
+    "maximumResidualByDimension": {
+      "PULLBACK_RESIDUAL|(-5, -2, 1)": 0.0,
+      "PULLBACK_RESIDUAL|(-3, -2, 1)": 0.0,
+      "PULLBACK_RESIDUAL|(-5, -1, 1)": 0.0,
+      "PULLBACK_RESIDUAL|(-3, -1, 1)": 0.0,
+      "PULLBACK_RESIDUAL|(-1, -2, 1)": 0.0,
+      "PULLBACK_RESIDUAL|(0, 0, 0)": 0.0,
+      "RIGHT_RESIDUAL|(-2, -2, 1)": 4.7231752266122105e-15,
+      "RIGHT_RESIDUAL|(-3, -1, 1)": 1.2847524736298756e-15,
+      "RIGHT_RESIDUAL|(-1, -2, 1)": 3.3711426323249294e-15,
+      "LEFT_RESIDUAL|(-1, 0, 0)": 2.9170911021411456e-15,
+      "LEFT_RESIDUAL|(0, 0, 0)": 3.2023728339893768e-15,
+      "PROJECTOR_RESIDUAL|(0, 0, 0)": 4.449299500566018e-14,
+      "PROJECTOR_RESIDUAL|(1, 0, 0)": 1.452356741593167e-14,
+      "PROJECTOR_RESIDUAL|(-1, 0, 0)": 6.485071087474307e-15
+    }
+  },
+  "jointSheet": {
+    "packets": 24,
+    "pathStatuses": {
+      "TRANSPORTED": 480,
+      "BRANCH_LOCUS_ON_PATH": 24
+    }
+  },
+  "exceptional": {
+    "packets": 24,
+    "stageLocalStatuses": {
+      "{'UNRESOLVED_ZERO_FREQUENCY_INTERSECTION': 1, 'THRESHOLD_SUBSPACE_COMPUTED_GENERALIZED_NORMAL_MODES_UNRESOLVED': 2}": 12,
+      "{'UNRESOLVED_SINGULAR_ENTRY_DENOMINATOR': 6, 'FINITE_BRANCH_POINT_MATRIX_COMPUTED': 1, 'TRANSPORTED': 24}": 12
+    },
+    "sourceIndexChecks": [
+      {
+        "indexedTags": 229634,
+        "missingAssignments": 0
+      }
+    ]
+  },
+  "resolvent": {
+    "totals": {
+      "NATIVE_CANDIDATE_COUNT": 432,
+      "RESIDUE_COUNT": 432,
+      "CONTOUR_CANDIDATE_COUNT": 432,
+      "NULLITY_DIFFERENCE_COUNT": 0,
+      "BANK_PAIR_COUNT": 192,
+      "BANK_INVERSE_COUNT": 384,
+      "SUBTRACTION_UNRESOLVED_COUNT": 0,
+      "ORIGINAL_UNRESOLVED_CANDIDATE_COUNT": 48
+    },
+    "poleStatuses": {
+      "REGULAR_LAURENT_RESIDUE": 432
+    },
+    "contours": 1728,
+    "selectedResidualsByDimension": {
+      "MOMENTUM_BANK_INVERSE_PRECISION_REFINEMENT|(3, 2, -1)": {
+        "maximum": 4.851730307618526e-25,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_0_2_1_INVERSE_PRECISION_REFINEMENT_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_DOUBLE_INVERSE_JUMP_RESIDUAL|(3, 2, -1)": {
+        "maximum": 2.3508087365723638,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_1_2_DOUBLE_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      },
+      "MOMENTUM_BANK_INVERSE_JUMP_RESIDUAL|(3, 2, -1)": {
+        "maximum": 4.0192237586793586e-52,
+        "tag": "END_RESOLVENT_PIT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0_MOMENTUM_CUT_BANK_1_2_INVERSE_JUMP_RESIDUAL_MAXIMA",
+        "dimension": [
+          3,
+          2,
+          -1
+        ]
+      }
+    }
+  },
+  "thresholdModes": {
+    "counts": {
+      "objects": 52416,
+      "fingerprints": 14508,
+      "rightChainSpaces": 24,
+      "individualChains": 96,
+      "leftChainSpaces": 24,
+      "oppositeSheetPoints": 12,
+      "bulkPaths": 336,
+      "definedBulkPaths": 336,
+      "approachModeNodes": 192,
+      "normalPaths": 144,
+      "definedNormalPaths": 144,
+      "pathModeNodes": 2448,
+      "sourceSheetMatches": 12,
+      "completion": 1
+    },
+    "sourceIndexChecks": [
+      {
+        "indexedTags": 229634,
+        "missingAssignments": 0
+      }
+    ],
+    "residualMaximaByDimension": {
+      "OTHER_RESIDUAL|(0, -1, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          0,
+          -1,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_SOURCE_SEED_JOIN_RESIDUALS"
+      },
+      "RADICAL_TAYLOR_RESIDUAL|(0, -2, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          0,
+          -2,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RADICAL_TAYLOR_RESIDUAL_0"
+      },
+      "RADICAL_TAYLOR_RESIDUAL|(1, -2, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          1,
+          -2,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RADICAL_TAYLOR_RESIDUAL_1"
+      },
+      "RADICAL_TAYLOR_RESIDUAL|(2, -2, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          2,
+          -2,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RADICAL_TAYLOR_RESIDUAL_2"
+      },
+      "OTHER_RESIDUAL|(0, 0, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          0,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RIGHT_UNIT_FRAME_0_RESIDUAL"
+      },
+      "EQUATION_RESIDUAL|(-2, -2, 1)": {
+        "maximum": 4.243742298514163e-16,
+        "dimension": [
+          -2,
+          -2,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHOBR_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_LOWER_M1_NODE_14_RIGHT_EQUATION_RESIDUAL"
+      },
+      "EQUATION_RESIDUAL|(-3, -1, 1)": {
+        "maximum": 4.945667218539106e-16,
+        "dimension": [
+          -3,
+          -1,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHOBR_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_UPPER_M1_NODE_13_RIGHT_EQUATION_RESIDUAL"
+      },
+      "EQUATION_RESIDUAL|(-1, -2, 1)": {
+        "maximum": 1.554131583197496e-15,
+        "dimension": [
+          -1,
+          -2,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHOBR_CONSTANT_TARGET_1_ROOT_1_LIFT_0_UNFOLDING_1_LOWER_M1_NODE_11_RIGHT_EQUATION_RESIDUAL"
+      },
+      "EQUATION_RESIDUAL|(-2, -1, 1)": {
+        "maximum": 0.0,
+        "dimension": [
+          -2,
+          -1,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RIGHT_CHAIN_0_EQUATION_RESIDUAL_1"
+      },
+      "EQUATION_RESIDUAL|(0, -2, 1)": {
+        "maximum": 0.0,
+        "dimension": [
+          0,
+          -2,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RIGHT_CHAIN_0_EQUATION_RESIDUAL_1"
+      },
+      "PLANE_EQUATION_RESIDUAL|(-1, -2, 1)": {
+        "maximum": 0.0,
+        "dimension": [
+          -1,
+          -2,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RIGHT_CHAIN_0_PLANE_EQUATION_RESIDUAL_0"
+      },
+      "PLANE_EQUATION_RESIDUAL|(-2, -1, 1)": {
+        "maximum": 0.0,
+        "dimension": [
+          -2,
+          -1,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RIGHT_CHAIN_0_PLANE_EQUATION_RESIDUAL_0"
+      },
+      "PLANE_EQUATION_RESIDUAL|(0, -2, 1)": {
+        "maximum": 0.0,
+        "dimension": [
+          0,
+          -2,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RIGHT_CHAIN_0_PLANE_EQUATION_RESIDUAL_0"
+      },
+      "PLANE_EQUATION_RESIDUAL|(-2, -2, 1)": {
+        "maximum": 0.0,
+        "dimension": [
+          -2,
+          -2,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RIGHT_CHAIN_0_PLANE_EQUATION_RESIDUAL_1"
+      },
+      "PLANE_EQUATION_RESIDUAL|(-3, -1, 1)": {
+        "maximum": 0.0,
+        "dimension": [
+          -3,
+          -1,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_RIGHT_CHAIN_0_PLANE_EQUATION_RESIDUAL_1"
+      },
+      "EQUATION_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 3.1398937743592686e-16,
+        "dimension": [
+          -1,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_1_LIFT_0_UNFOLDING_1_UPPER_M1_NODE_9_LEFT_EQUATION_RESIDUAL"
+      },
+      "EQUATION_RESIDUAL|(0, 0, 0)": {
+        "maximum": 2.3387519327550258e-15,
+        "dimension": [
+          0,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_1_LIFT_0_UNFOLDING_1_UPPER_M1_NODE_13_LEFT_EQUATION_RESIDUAL"
+      },
+      "EQUATION_RESIDUAL|(1, 0, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          1,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_LEFT_CHAIN_0_EQUATION_RESIDUAL_1"
+      },
+      "PLANE_EQUATION_RESIDUAL|(0, 0, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          0,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_LEFT_CHAIN_0_PLANE_EQUATION_RESIDUAL_0"
+      },
+      "PLANE_EQUATION_RESIDUAL|(1, 0, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          1,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_LEFT_CHAIN_0_PLANE_EQUATION_RESIDUAL_0"
+      },
+      "PLANE_EQUATION_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          -1,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_LEFT_CHAIN_0_PLANE_EQUATION_RESIDUAL_1"
+      },
+      "SOURCE_ROOT_RESIDUAL|(0, -1, 0)": {
+        "maximum": 4.438802799970922,
+        "dimension": [
+          0,
+          -1,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_SOURCE_ROOT_RESIDUAL"
+      },
+      "DETERMINANT_CHAIN_MULTIPLICITY_RESIDUAL|(0, 0, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          0,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_DETERMINANT_CHAIN_MULTIPLICITY_RESIDUAL"
+      },
+      "THRESHOLD_RESIDUAL|(-2, 0, 0)": {
+        "maximum": 0.0,
+        "dimension": [
+          -2,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_THRESHOLD_RESIDUAL"
+      },
+      "BULK_PATH_ENDPOINT_RESIDUAL|(0, -1, 0)": {
+        "maximum": 4.648141360318014e-16,
+        "dimension": [
+          0,
+          -1,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_APPROACH_0_ABOVE_0_BULK_PATH_ENDPOINT_RESIDUAL"
+      },
+      "MATRIX_REFINEMENT|(-3, -2, 1)": {
+        "maximum": 2.602005724476418e-43,
+        "dimension": [
+          -3,
+          -2,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_APPROACH_0_BELOW_0_MATRIX_REFINEMENT"
+      },
+      "MATRIX_REFINEMENT|(-2, -2, 1)": {
+        "maximum": 6.00840608847186e-42,
+        "dimension": [
+          -2,
+          -2,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_APPROACH_0_BELOW_0_MATRIX_REFINEMENT"
+      },
+      "MATRIX_REFINEMENT|(-4, -1, 1)": {
+        "maximum": 3.4840491496386605e-43,
+        "dimension": [
+          -4,
+          -1,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHOBR_CONSTANT_TARGET_1_ROOT_1_LIFT_0_UNFOLDING_1_APPROACH_1_BELOW_0_MATRIX_REFINEMENT"
+      },
+      "MATRIX_REFINEMENT|(-3, -1, 1)": {
+        "maximum": 2.902238041403253e-42,
+        "dimension": [
+          -3,
+          -1,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_1_LIFT_0_UNFOLDING_1_APPROACH_0_BELOW_0_MATRIX_REFINEMENT"
+      },
+      "MATRIX_REFINEMENT|(-1, -2, 1)": {
+        "maximum": 2.238185536798586e-41,
+        "dimension": [
+          -1,
+          -2,
+          1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHOBR_CONSTANT_TARGET_1_ROOT_1_LIFT_0_UNFOLDING_1_APPROACH_0_ABOVE_0_MATRIX_REFINEMENT"
+      },
+      "RADICAL_RESIDUAL|(0, -2, 0)": {
+        "maximum": 1.9687068406417326e-15,
+        "dimension": [
+          0,
+          -2,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_UPPER_M1_NODE_5_RADICAL_RESIDUAL"
+      },
+      "NORMAL_SQUARE_RESIDUAL|(-2, 0, 0)": {
+        "maximum": 8.894686785499114e-18,
+        "dimension": [
+          -2,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_UPPER_M1_NODE_16_NORMAL_SQUARE_RESIDUAL"
+      },
+      "GAUGE_RESIDUAL|(0, 0, 0)": {
+        "maximum": 1.1015494072452725e-15,
+        "dimension": [
+          0,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_1_LIFT_0_UNFOLDING_1_LOOP_M1_NODE_11_RIGHT_GAUGE_RESIDUAL"
+      },
+      "OTHER_RESIDUAL|(2, 0, 0)": {
+        "maximum": 7.905703038527793e-13,
+        "dimension": [
+          2,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_1_LIFT_0_UNFOLDING_1_APPROACH_1_1_RIGHT_RESIDUAL"
+      },
+      "OTHER_RESIDUAL|(1, 0, 0)": {
+        "maximum": 7.98735679771838e-14,
+        "dimension": [
+          1,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_1_LIFT_0_UNFOLDING_1_APPROACH_1_1_RIGHT_RESIDUAL"
+      },
+      "OTHER_RESIDUAL|(3, 2, -1)": {
+        "maximum": 1.6773019940401915e-14,
+        "dimension": [
+          3,
+          2,
+          -1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_APPROACH_1_1_LEFT_RESIDUAL"
+      },
+      "OTHER_RESIDUAL|(4, 1, -1)": {
+        "maximum": 1.3020405178107662e-14,
+        "dimension": [
+          4,
+          1,
+          -1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_APPROACH_1_1_LEFT_RESIDUAL"
+      },
+      "OTHER_RESIDUAL|(2, 2, -1)": {
+        "maximum": 5.0420469780181926e-15,
+        "dimension": [
+          2,
+          2,
+          -1
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_APPROACH_1_1_LEFT_RESIDUAL"
+      },
+      "BULK_SEED_RESIDUAL|(0, -1, 0)": {
+        "maximum": 5.220757084027191e-16,
+        "dimension": [
+          0,
+          -1,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_UPPER_M1_BULK_SEED_RESIDUAL"
+      },
+      "NORMAL_ENDPOINT_RESIDUAL|(-1, 0, 0)": {
+        "maximum": 1.1796119636642288e-16,
+        "dimension": [
+          -1,
+          0,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_UPPER_M1_NORMAL_ENDPOINT_RESIDUAL"
+      },
+      "NODE_BULK_ENDPOINT_RESIDUAL|(0, -1, 0)": {
+        "maximum": 5.220757084027191e-16,
+        "dimension": [
+          0,
+          -1,
+          0
+        ],
+        "tag": "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_1_ROOT_0_LIFT_0_UNFOLDING_1_LOOP_M1_NODE_BULK_ENDPOINT_RESIDUAL"
+      }
+    }
+  },
+  "modeJets": {
+    "states": {
+      "True": 528
+    },
+    "nullspaceDimensions": {
+      "1": 336,
+      "2": 192
+    },
+    "fingerprintResidualProjections": {
+      "PY_S11CD_FIRST_JET_ROUTE_RIGHT_RESIDUAL_": {
+        "objects": 528,
+        "sample_values": 1584,
+        "maximum_absolute_numeric_frame_projection": 6.3710259332831565e-16
+      },
+      "PY_S11CD_FIRST_JET_ROUTE_LEFT_RESIDUAL_": {
+        "objects": 528,
+        "sample_values": 1584,
+        "maximum_absolute_numeric_frame_projection": 4.95525188073882e-16
+      },
+      "PY_S11CD_FIRST_JET_ROUTE_ROOT_RESIDUAL_": {
+        "objects": 528,
+        "sample_values": 1584,
+        "maximum_absolute_numeric_frame_projection": 1.8113916852904085e-16
+      },
+      "PY_S11CD_CLASSIFIER_PROJECTOR_RECTANGLE_RESIDUAL_": {
+        "objects": 528,
+        "sample_values": 1584,
+        "maximum_absolute_numeric_frame_projection": 7.669894845033615e-15
+      }
+    }
+  },
+  "inverseFourier": {
+    "carrierCounts": {
+      "s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT": 12,
+      "s11cc2ClosedSlabOperator_LAB_HELD_RHOBR_CONSTANT": 12,
+      "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHO4_CONSTANT": 12,
+      "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHOBR_CONSTANT": 12,
+      "s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT": 12,
+      "s11cc2ClosedCouplingKernel_LAB_HELD_RHOBR_CONSTANT": 12,
+      "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHO4_CONSTANT": 12,
+      "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHOBR_CONSTANT": 12
+    },
+    "literalResiduals": {
+      "INVERSE_FOURIER_WEAK_KERNEL_CHARACTER_RESIDUAL_": {
+        "objects": 1,
+        "entries": 1,
+        "nonzero": []
+      },
+      "CARRIER_INVERSE_RESIDUAL_": {
+        "objects": 96,
+        "entries": 288,
+        "nonzero": []
+      },
+      "CARRIER_INVERSE_REMAINDER_CENSUS_": {
+        "objects": 96,
+        "entries": 288,
+        "nonzero": []
+      },
+      "CARRIER_SOURCE_IMAGE_RESIDUAL_": {
+        "objects": 96,
+        "entries": 96,
+        "nonzero": []
+      },
+      "BRANCH_RECONSTRUCTION_RESIDUAL_": {
+        "objects": 24,
+        "entries": 24,
+        "nonzero": []
+      }
+    },
+    "residualProjections": {
+      "RECONSTRUCTION_INTEGRAL_RESIDUAL_": {
+        "objects": 222,
+        "entries": 666,
+        "maximum_absolute_projection": 0.0
+      },
+      "RECONSTRUCTION_ROW_RESIDUAL_": {
+        "objects": 8,
+        "entries": 132,
+        "maximum_absolute_projection": 0.0
+      }
+    },
+    "dimensionRecords": {
+      "REDUCED_DIMENSION_CONSTRAINT_RESIDUALS": "Tuple()",
+      "REDUCED_DIMENSION_UNRESOLVED": "Tuple()"
+    }
+  },
+  "codec": {
+    "source": "/tmp/s11c-mechanical-repair-20260912/d_full/expanded.out",
+    "sourceSha256": "47840ea9041d242743e24ee00c42421a48203d3bad7e55e956616fb103b395bf",
+    "sourceBytes": 314015203,
+    "encodedBytes": 83848737,
+    "records": 229636,
+    "distinctSharedPayloads": 16259,
+    "payloadMismatches": [],
+    "unencodedPayloadSha256": "8d988dc188093d13fc0ff707000dc58feeec4ad251fed3e7824cd4deddec49dd",
+    "decodedPayloadSha256": "8d988dc188093d13fc0ff707000dc58feeec4ad251fed3e7824cd4deddec49dd",
+    "sourceIndexChecks": [
+      {
+        "tagCount": 229634,
+        "differentAssignments": 0,
+        "oldBytes": 34310489,
+        "newBytes": 1586766
+      }
+    ],
+    "malformedReferenceRejections": [
+      true,
+      true
+    ],
+    "instrumentSha256": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+    "codecSha256": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "wallSeconds": 14.381071356125176,
+    "peakRssKiB": 421616
+  },
+  "outstandingConstructions": "Tuple(Str('FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS'), Str('GENERIC_DOMAIN_SHEET_CONTINUATION'), Str('CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION'), Str('COMPLETE_TWO_ENDED_SCATTERING'), Str('POLES_RIESZ_OVERLAP'), Str('SURVIVAL'), Str('FLUX_BOOKKEEPING'), Str('WEAK_COEFFICIENTS'), Str('SECTION_5_CONTROLS'), Str('OWN_ROWS_EXPORT'))",
+  "scope": "Observed results at the supplied point, slice, bank, path and contour domains. No global parameter or sheet coverage. Earlier exceptional-census unresolved threshold labels are followed by the separately computed threshold chains. Constant-end normal-momentum residues do not establish profile-frequency bound poles. The previously documented raw double-precision bank cancellation and upstream triage limitations remain explicit."
+}

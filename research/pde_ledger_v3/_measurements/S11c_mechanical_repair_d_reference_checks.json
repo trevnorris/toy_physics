@@ -1,0 +1,263 @@
+{
+  "producerManifestSha256": "4cc4bea644d0d8e86af56f181a757f50ab2f8a6845ce45d40a2ee326012ef0eb",
+  "exitCode": 0,
+  "sourcePinsStable": true,
+  "sourcePinMismatches": [],
+  "artifactPinMismatches": [],
+  "tagCount": 251,
+  "duplicateTags": [],
+  "dimensionRecords": {
+    "PY_S11CD_MECHANICAL_REPAIR_REFERENCE_DIMENSION_CONSTRAINTS": "Tuple()",
+    "PY_S11CD_MECHANICAL_REPAIR_REFERENCE_DIMENSION_UNRESOLVED": "Tuple()"
+  },
+  "zeroMapMetadataTags": [],
+  "unknownUnitMetadataTags": [],
+  "reconstructionChecks": [
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_0",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_1",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_2",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_3",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_4",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_5",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_6",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_7",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_8",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_9",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_10",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_11",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_12",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT_13",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_ROW_RESIDUAL_s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT",
+      "scalars": 5,
+      "literalZeroScalarDigests": 5,
+      "samples": 15,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_0",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_1",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_2",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_3",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_4",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_5",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_6",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_7",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_8",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_9",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_10",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_11",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_12",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_INTEGRAL_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT_13",
+      "scalars": 1,
+      "literalZeroScalarDigests": 1,
+      "samples": 3,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    {
+      "tag": "PY_S11CD_RECONSTRUCTION_ROW_RESIDUAL_s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT",
+      "scalars": 6,
+      "literalZeroScalarDigests": 6,
+      "samples": 18,
+      "nonzeroSamples": 0,
+      "nonfiniteSamples": 0
+    }
+  ],
+  "reconstructionObjects": 30,
+  "reconstructionScalars": 39,
+  "literalZeroScalarDigests": 39,
+  "nonzeroReconstructionSamples": 0,
+  "nonfiniteReconstructionSamples": 0,
+  "scope": "LAB_HELD/RHO4_CONSTANT reduction and reference symbols; no spectrum"
+}

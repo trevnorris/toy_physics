@@ -1,0 +1,34 @@
+[
+  {
+    "stage": "d_reference",
+    "path": "scripts/out/S11c_mechanical_repair_d_reference.out",
+    "bytes": 966023,
+    "sha256": "fc5e0274d9e087b88e0e4e86c811d731c47593f379263625bfd4916ece8a9196",
+    "previousSha256": null,
+    "previousAnnexPayload": null,
+    "previousAnnexPayloadUnchanged": null,
+    "producerManifestSha256": "4cc4bea644d0d8e86af56f181a757f50ab2f8a6845ce45d40a2ee326012ef0eb"
+  },
+  {
+    "stage": "d_current",
+    "path": "scripts/out/S11c_d_nonlocal_current_reference_preflight.out",
+    "bytes": 1735781,
+    "sha256": "d61e60cd06dd1f39f0528ff609a4a224d0c278e4e3e79318047947ab63f543ae",
+    "previousSha256": "d7f354f784efdb2bd55ee2f3380bbb6769bfa47e92273a3abd233f33acb0bab8",
+    "previousAnnexPayload": "/var/projects/toy_physics/.git/annex/objects/X1/WG/MD5E-s1738791--0f80ce797fb59b01f8500b2e425864e6.out/MD5E-s1738791--0f80ce797fb59b01f8500b2e425864e6.out",
+    "previousAnnexPayloadUnchanged": true,
+    "producerManifestSha256": "7da13b818c11c2618cbbd2e6c455495477620f145a1172090f0a3640671f51b2"
+  },
+  {
+    "stage": "d_full",
+    "path": "scripts/out/S11c_d_mixing_scattering_sympy_audit.out",
+    "bytes": 83848737,
+    "sha256": "312935010ef56ce0eabe7b1685e906dfb785c40e02978c7b93fdbb4af11bae52",
+    "previousSha256": "ebc8ec7ead14b446a4cf4ad056188729e725e4bfe22662a290234bd354292322",
+    "previousAnnexPayload": "/var/projects/toy_physics/.git/annex/objects/jx/FZ/MD5E-s83919481--46ff3118596f9dd8a81eb11b7dff85d1.out/MD5E-s83919481--46ff3118596f9dd8a81eb11b7dff85d1.out",
+    "previousAnnexPayloadUnchanged": true,
+    "producerManifestSha256": "a7f3ba4542fbdf4e072ae775f5985ed01d2e4a26fc209c84b7d55496a887d6bc",
+    "checksPath": "_measurements/S11c_mechanical_repair_d_full_checks.json",
+    "checksSha256": "b72e839a0bc093a422f6cb5d701bc534d7bb5e2e19f85bfaa4b5b4619a896fc5"
+  }
+]

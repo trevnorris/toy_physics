@@ -1,0 +1,27 @@
+{
+  "source": "/tmp/s11c-mechanical-repair-20260912/d_full/expanded.out",
+  "sourceSha256": "47840ea9041d242743e24ee00c42421a48203d3bad7e55e956616fb103b395bf",
+  "sourceBytes": 314015203,
+  "encodedBytes": 83848737,
+  "records": 229636,
+  "distinctSharedPayloads": 16259,
+  "payloadMismatches": [],
+  "unencodedPayloadSha256": "8d988dc188093d13fc0ff707000dc58feeec4ad251fed3e7824cd4deddec49dd",
+  "decodedPayloadSha256": "8d988dc188093d13fc0ff707000dc58feeec4ad251fed3e7824cd4deddec49dd",
+  "sourceIndexChecks": [
+    {
+      "tagCount": 229634,
+      "differentAssignments": 0,
+      "oldBytes": 34310489,
+      "newBytes": 1586766
+    }
+  ],
+  "malformedReferenceRejections": [
+    true,
+    true
+  ],
+  "instrumentSha256": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+  "codecSha256": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+  "wallSeconds": 14.381071356125176,
+  "peakRssKiB": 421616
+}

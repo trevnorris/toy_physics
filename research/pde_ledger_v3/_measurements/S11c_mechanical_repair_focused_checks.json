@@ -1,0 +1,50 @@
+{
+  "b_case": {
+    "records": 15,
+    "duplicateKeys": 0,
+    "sourcePinsStable": true,
+    "stderrBytes": 0,
+    "nonfiniteOrUnknownMetadata": 0,
+    "literalResiduals": {
+      "s11cMechanicalRepairActionLoadResidual": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)], [Integer(0)]])",
+      "s11cMechanicalRepairNonFacePreservationResidual": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)], [Integer(0)]])",
+      "s11cMechanicalRepairMassPreservationResidual": "Integer(0)",
+      "s11cMechanicalRepairPhysicalForcePreservationResidual": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)], [Integer(0)]])",
+      "s11cMechanicalRepairChemicalPreservationResidual": "Integer(0)"
+    },
+    "publishedPath": "scripts/out/S11c_mechanical_repair_b_case.out",
+    "outputBytes": 118120,
+    "outputSha256": "d628c2ee3c391f68c674280398b77fc685ffd0dd4b8bf5f827bac2999f5f625f",
+    "producerManifestSha256": "bc00c795ceac43ae432e83ab78eae15e73fa31724cb894341ee564c4a92cd47e"
+  },
+  "c2_case": {
+    "records": 11,
+    "duplicateKeys": 0,
+    "sourcePinsStable": true,
+    "stderrBytes": 0,
+    "nonfiniteOrUnknownMetadata": 0,
+    "canonicalPowerResidualZero": true,
+    "canonicalPowerResidualPit": [
+      "Integer(0)",
+      "Integer(0)",
+      "Integer(0)"
+    ],
+    "kineticNormalizationResidual": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)], [Integer(0)]])",
+    "controlPitSamples": {
+      "s11cMechanicalRepairC2TractionSignResidual": [
+        "Add(Float('74.6918045746771475344888632', precision=83), Mul(Float('15.677896206772518040821216', precision=83), I))",
+        "Add(Float('290198.997396004317570830666', precision=83), Mul(Float('253324.498010590028635569994', precision=83), I))",
+        "Add(Float('7.59804486337065342788090168', precision=83), Mul(Float('12.8438951795603197334204444', precision=83), I))"
+      ],
+      "s11cMechanicalRepairC2FaceRoutingResidual": [
+        "Add(Float('-74.6918045746771475344888632', precision=83), Mul(Integer(-1), Float('15.677896206772518040821216', precision=83), I))",
+        "Add(Float('-290198.997396004317570830666', precision=83), Mul(Integer(-1), Float('253324.498010590028635569994', precision=83), I))",
+        "Add(Float('-7.59804486337065342788090168', precision=83), Mul(Integer(-1), Float('12.8438951795603197334204444', precision=83), I))"
+      ]
+    },
+    "publishedPath": "scripts/out/S11c_mechanical_repair_c2_case.out",
+    "outputBytes": 308291,
+    "outputSha256": "e8d02fdf14a01d64eb5ff36e8b9110226e21c8340e632b57d89ce5fdfaf7aac1",
+    "producerManifestSha256": "dce44c330530a6c3cf195f897903f9ad6fe86ab51852d66590ee744d48318cab"
+  }
+}

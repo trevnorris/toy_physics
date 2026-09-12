@@ -1,0 +1,55 @@
+{
+  "run_directory": "/tmp/s11c-mechanical-repair-20260912/c2_triage",
+  "command": [
+    "/usr/bin/python",
+    "-u",
+    "/var/projects/toy_physics_review_w3/baseline/HEAD_tree/research/pde_ledger_v3/reduction/derived_or_declared.py",
+    "scripts/S11c_c2_selfenergy_fold_sympy_audit.py"
+  ],
+  "environment_overrides": {
+    "S11CC2_PACKAGE": "TRIAGE"
+  },
+  "scope": "required native derived-or-declared dependency triage; real LAB_HELD/RHO4 primary closure package; excludes power-control emissions and writes no export",
+  "status": "completed with literal triage FAIL",
+  "sourcePinMismatchesAtLaunch": [],
+  "startedEpoch": 1789238822.6645262,
+  "startedUtc": "2026-09-12T18:47:02.664529+00:00",
+  "exit_code": 1,
+  "wall_seconds": 1420.25,
+  "peak_rss_kib": 1648232,
+  "finishedUtc": "2026-09-12T19:11:39.368640+00:00",
+  "c2ExportAfterSha256": "d78efd6c9bdf8d860d25c1d9f02e7bbfa67d8f722671a2ec7fe72e5fb8decc8e",
+  "c2ExportUnchanged": true,
+  "literalDiagnostics": [
+    "BASELINE: RAN tags=4 symbols=2046",
+    "PERTURBATION collapse(s11cc2X1=s11cc2X2): SKIPPED reason=exit=1; last_output=\"TypeError: unsupported operand type(s) for -: 'StrictGreaterThan' and 'StrictLessThan'\"",
+    "PERTURBATION collapse(s11cc2X3=s11cc2Y1): RAN tags=4 comparable=4",
+    "PERTURBATION collapse(s11cc2Y2=s11cc2Y3): SKIPPED reason=exit=1; last_output=\"TypeError: unsupported operand type(s) for -: 'StrictGreaterThan' and 'StrictLessThan'\"",
+    "PERTURBATION collapse(s11cc2Time=s11cc2NormalCoordinate): RAN tags=4 comparable=4",
+    "PERTURBATION collapse(s11cc2MiddleMomentum1=s11cc2MiddleMomentum2): RAN tags=4 comparable=4",
+    "PERTURBATION collapse(s11cc2MiddleNormalMomentum=A_T_s11cb_1): RAN tags=4 comparable=4",
+    "PERTURBATIONS_RAN: 4/6",
+    "CONSTANT_COUNT: 1",
+    "DERIVED_TAGS: count=3 tags=PY_S11CC2_CLOSED_SLAB_OPERATOR_LAB_HELD_RHO4_CONSTANT,PY_S11CC2_CLOSED_COUPLING_KERNEL_LAB_HELD_RHO4_CONSTANT,PY_S11CC2_SELF_ENERGY_INCREMENT_LAB_HELD_RHO4_CONSTANT",
+    "SUPPLIED_PREMISES: path=/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.premises status=MISSING (treated as an empty declaration) declared=0",
+    "UNDECLARED_CONSTANTS: count=1 tags=PY_S11CC2_DIMENSION_COEFFICIENT_BINDINGS",
+    "DERIVED_OR_DECLARED: FAIL"
+  ],
+  "artifacts": {
+    "resources.txt": {
+      "bytes": 979,
+      "sha256": "b0106c715b124682280b00da2799d73196f8e2b882a58722bc45fca41c38a968"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "full.out": {
+      "bytes": 13148,
+      "sha256": "5d802acbf0bdcb98de3fd4021c089bf80d17de360eb3809919938a31de2d6816"
+    }
+  },
+  "sourcePinsStable": true,
+  "producerManifestSha256": "3bbc858848771c2b9ef1391c24e52700da525e59095df81e600a9876b2574cf5",
+  "publishedPath": "scripts/out/S11c_mechanical_repair_c2_triage.out"
+}

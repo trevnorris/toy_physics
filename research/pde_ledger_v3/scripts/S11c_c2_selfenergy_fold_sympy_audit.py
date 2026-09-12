@@ -30,7 +30,7 @@ sys.path.insert(0, str(HERE.parent))
 from ledger_fold import load_model, check_consumer, assert_lookups_equal_manifest, assert_delta_is_minimal
 
 IMPORT_KEYS = (
-    'slab_operator', 'slab_operator_term_origins', 'mu_theta_operator',
+    'slab_operator', 'slab_operator_term_origins', 'mu_theta_operator', 'energy_basis_variable',
     'closure_shape_deriv', 'face_normal', 'conormal_deriv',
     'face_measure_shape_deriv', 'face_velocity', 'relative_flux',
     'kinematic_balance', 'traction', 'face_shift', 'background_density_map',
@@ -193,6 +193,8 @@ class Inputs:
         self.slab = cases(values['slab_operator'])
         self.origins = cases(values['slab_operator_term_origins'])
         self.mu = cases(values['mu_theta_operator'])
+        self.energy = {str(branch):named(payload,'VALUE')
+                       for branch,payload in values['energy_basis_variable']}
         self.response = cases(named(values['s11c_c1_face_response'], 'CASES'))
         self.kernel = cases(values['dtn_kernel'])
         self.density = cases(values['background_density_map'])
@@ -528,7 +530,7 @@ def expanded_rows(operator):
         ('U','U_BODY_BALANCE'),('THETA','THETA_BALANCE'),('E_W','E_W_BALANCE'))}
 
 
-def build_case(inputs, anchoring, density, *, overrides=None, routing=None, mu_override=None, velocity_override=None, input_map=None):
+def build_case(inputs, anchoring, density, *, overrides=None, routing=None, mu_override=None, velocity_override=None, input_map=None, face_work_routing=sp.S.One):
     """All controls enter at these imported operands, before close/extract."""
     progress_path=ROOT/'_measurements/S11c_c2_sympy_progress.json'
     progress={'anchoring':anchoring,'density':density,'routing':routing,
@@ -541,6 +543,16 @@ def build_case(inputs, anchoring, density, *, overrides=None, routing=None, mu_o
     imported = expanded_rows(operator)
     pre_map = {} if input_map is None else input_map
     source_rows = tree(imported, lambda e:e.subs(numeric_overrides).xreplace(pre_map))
+    if face_work_routing != 1:
+        # A control on the imported open face-work contribution, before any
+        # pressure closure. It never changes a computed closed operator.
+        face_origin=named(named(inputs.origins[(anchoring,density)],'FACE_VIRTUAL_WORK'),'ROWS')
+        face_u=named(named(face_origin,'U'),'EXPANDED')
+        face_e=named(named(face_origin,'E_W'),'EXPANDED')
+        source_load=tree({'U':face_u,'E_W':face_e},lambda e:e.subs(numeric_overrides).xreplace(pre_map))
+        source_rows['U']=tuple(row+(face_work_routing-1)*load
+                               for row,load in zip(source_rows['U'],source_load['U']))
+        source_rows['E_W']+=(face_work_routing-1)*source_load['E_W']
     substitutions, maps, face_rows = {}, {}, {}
     for face in FACES:
         sub, fmap = build_face(inputs,anchoring,face,density,overrides,mu_override,velocity_override)
@@ -742,7 +754,7 @@ def profile_bindings(inputs):
     return sp.Tuple(*equations)
 
 
-def emit(quantity, value, inputs, case=(), *, key=None):
+def emit(quantity, value, inputs, case=(), *, key=None, dimension_metadata=None):
     tag = 'PY_S11CC2_' + quantity
     if case:
         tag += '_' + '_'.join(str(c).replace('-','MINUS') for c in case)
@@ -751,7 +763,7 @@ def emit(quantity, value, inputs, case=(), *, key=None):
         raise ValueError(('duplicate write-key',write_key))
     EMITTED_KEYS.add(write_key)
     body={'VALUE':value,'MULTIGRADE':grade_object(value,inputs),
-          'DIMENSION_L_T_M':dimensions(value)}
+          'DIMENSION_L_T_M':dimensions(value) if dimension_metadata is None else dimension_metadata}
     if quantity in ('CLOSED_SLAB_OPERATOR','CLOSED_COUPLING_KERNEL','SELF_ENERGY_INCREMENT'):
         body['COMPUTED_BRANCH_BINDINGS']=sp.Tuple(*(sp.Eq(k,v,evaluate=False) for k,v in COMPUTED_BINDINGS.items()))
         body['FOURIER_PROFILE_BINDINGS']=profile_bindings(inputs)
@@ -766,6 +778,51 @@ def control(inputs, case, baseline, name, **kwargs):
     emit(name+'_OPERAND',changed['increment'],inputs,case)
     emit(name+'_RESIDUAL',difference(changed['increment'],baseline['increment']),inputs,case)
     return changed
+
+
+@lru_cache(maxsize=4)
+def conservative_power_variation(inputs, case):
+    """Power from separately differentiated constrained energy terms and T.
+
+    BULK_ENERGY contains b's term-by-term variations under the material virtual
+    constraint, computed separately from its assembled slab operator. Summing
+    these source variations does not subtract any face term from a slab row.
+    This route tests external-work routing; it is not a second derivation of
+    b's energy basis or material constraint.
+    """
+    anchoring,density=case
+    fields=[wave_jet(inputs.a(f'u_{i}')) for i in range(1,4)]+[wave_jet(inputs.a('e_W'))]
+    rates=sp.ImmutableMatrix([sp.diff(value,TIME) for value in fields])
+    energy_terms={}
+    for label,term in named(inputs.origins[case],'BULK_ENERGY'):
+        vector=sp.ImmutableMatrix([*named(named(term,'U'),'EXPANDED'),named(named(term,'E_W'),'EXPANDED')])
+        energy_terms[str(label)]=inputs.physical_fields(vector)
+    stored=sp.ImmutableMatrix([sp.Add(*(row[i] for row in energy_terms.values())) for i in range(4)])
+    basis=inputs.energy[anchoring]
+    energy=sp.Add(*(row[4] if str(row[0]) in ('W_BG','MU_R_BG') else row[3] for row in basis[1:]))
+    energy=inputs.physical_fields(energy)
+    potential_action=-energy
+    action_anchor=sp.diff(potential_action,inputs.a('k_W'),fields[3],2)/inputs.eps
+    stored_anchor=sp.diff(stored[3],inputs.a('k_W'),fields[3])
+    action_to_row=sp.cancel(stored_anchor/action_anchor)
+    rho=inputs.density[(density,)][1]
+    kinetic=inputs.eps**2*(rho*sum(v*v for v in rates[:3])+
+                          inputs.a('mu_W')*(inputs.values['W_bg']*rates[3])**2)/2
+    kinetic_action=sp.ImmutableMatrix([-sp.diff(sp.diff(kinetic,rate),TIME)/inputs.eps for rate in rates])
+    kinetic_rows=tree(action_to_row*kinetic_action,lambda e:retained_shape(e,inputs))
+    source_kinetic=named(inputs.origins[case],'KINETIC')
+    source_kinetic=inputs.physical_fields(sp.ImmutableMatrix([*source_kinetic[0],source_kinetic[1]]))
+    action_internal=kinetic_action-stored
+    conservative=tree(action_to_row*action_internal,lambda e:retained_shape(e,inputs))
+    return {'ENERGY_TERM_VARIATIONS':energy_terms,'KINETIC_ENERGY':retained_shape(kinetic,inputs),
+            'STORED_STIFFNESS_COEFFICIENT':stored_anchor,'ACTION_STIFFNESS_COEFFICIENT':action_anchor,
+            'ACTION_TO_ROW_MULTIPLIER':action_to_row,
+            'KINETIC_ACTION_ROWS':kinetic_action,'KINETIC_SOURCE_ROWS':source_kinetic,
+            'KINETIC_NORMALIZATION_RESIDUAL':difference(source_kinetic,kinetic_rows),
+            'CONSTRAINED_STORED_VARIATION_ROWS':stored,'KINETIC_STORED_ROWS':conservative,
+            'KINETIC_POWER':(rates.T*kinetic_rows)[0],
+            'STORED_POWER':(rates.T*stored)[0],
+            'KINETIC_STORED_POWER':(rates.T*conservative)[0]}
 
 
 def traction_pairing(inputs, case, model, *, flip=False):
@@ -796,10 +853,14 @@ def traction_pairing(inputs, case, model, *, flip=False):
     e_velocity=wave_jet(inputs.a('e_W_t'))
     slab_power=sum(r*v for r,v in zip(model['closed']['U'],velocities))+model['closed']['E_W']*e_velocity
     face_power=sum(r*v for r,v in zip(independent_force['U'],velocities))+independent_force['E_W']*e_velocity
-    kinetic_stored=slab_power-face_power
-    pairing=tree({'SLAB_POWER':slab_power,'KINETIC_STORED_POWER':kinetic_stored,
-                  'TRACTION_POWER':power,'FACE_GENERALIZED_POWER':face_power},lambda e:retained_shape(e,inputs))
-    residual=pairing['SLAB_POWER']-pairing['KINETIC_STORED_POWER']-pairing['TRACTION_POWER']
+    conservative=conservative_power_variation(inputs,case)
+    multiplier=conservative['ACTION_TO_ROW_MULTIPLIER']
+    pairing=tree({'SLAB_POWER':slab_power,'KINETIC_STORED_POWER':conservative['KINETIC_STORED_POWER'],
+                  'KINETIC_POWER':conservative['KINETIC_POWER'],'STORED_POWER':conservative['STORED_POWER'],
+                  'TRACTION_POWER':power,'FACE_GENERALIZED_POWER':face_power,
+                  'ACTION_TO_ROW_MULTIPLIER':multiplier,
+                  'TRACTION_ROW_POWER':multiplier*power},lambda e:retained_shape(e,inputs))
+    residual=difference(pairing['SLAB_POWER'],pairing['KINETIC_STORED_POWER']+pairing['TRACTION_ROW_POWER'])
     return tree(covectors,lambda e:retained_shape(e,inputs)),pairing,residual
 
 
@@ -1061,12 +1122,25 @@ def run():
             emit('ORDERING_EXTRACT_FIRST_OPERAND',aligned,inputs,case)
             emit('ORDERING_COMMUTATOR',difference(model['closed_kernel'],aligned),inputs,case)
             covectors,pairing,residual=traction_pairing(inputs,case,model)
+            conservative=conservative_power_variation(inputs,case)
+            conservative_dimensions=dimensions(conservative)
+            mechanical_dimensions=dimensions(conservative['KINETIC_SOURCE_ROWS'])
+            conservative_dimensions['KINETIC_NORMALIZATION_RESIDUAL']=mechanical_dimensions
+            conservative_dimensions['ENERGY_TERM_VARIATIONS']={
+                label:mechanical_dimensions for label in conservative['ENERGY_TERM_VARIATIONS']}
+            emit('TRACTION_CONSERVATIVE_VARIATION',conservative,inputs,case,dimension_metadata=conservative_dimensions)
             emit('TRACTION_MECHANICAL_CONTRIB',covectors,inputs,case)
             emit('TRACTION_SLAB_POWER_PAIRING',pairing,inputs,case)
-            emit('TRACTION_SLAB_POWER_PAIRING_RESIDUAL',residual,inputs,case)
+            power_dimension=dimensions(pairing['SLAB_POWER'])
+            emit('TRACTION_SLAB_POWER_PAIRING_RESIDUAL',residual,inputs,case,dimension_metadata=power_dimension)
             _,corrupt_pairing,corrupt_residual=traction_pairing(inputs,case,model,flip=True)
             emit('TRACTION_SIGN_OPERAND',corrupt_pairing,inputs,case)
-            emit('TRACTION_SIGN_RESIDUAL',corrupt_residual-residual,inputs,case)
+            emit('TRACTION_SIGN_RESIDUAL',corrupt_residual-residual,inputs,case,dimension_metadata=power_dimension)
+            routed=build_case(inputs,*case,face_work_routing=-sp.S.One)
+            _,routed_pairing,routed_residual=traction_pairing(inputs,case,routed)
+            emit('TRACTION_ROW_ROUTING_SOURCE_OPERAND',routed['open'],inputs,case)
+            emit('TRACTION_ROW_ROUTING_OPERAND',routed_pairing,inputs,case)
+            emit('TRACTION_ROW_ROUTING_RESIDUAL',difference(routed_residual,residual),inputs,case,dimension_metadata=power_dimension)
             whole_atoms=inputs.values['dtn_operator'].atoms(sp.Symbol)
             used=cas(model['increment']).atoms(sp.Symbol)&whole_atoms
             emit('DTN_WHOLEFORM_DEPENDENCE',sp.Tuple(*sorted((a for a in used if not a.is_commutative),key=str)),inputs,case)

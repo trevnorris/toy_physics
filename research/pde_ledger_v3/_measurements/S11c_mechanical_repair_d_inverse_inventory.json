@@ -1,0 +1,113 @@
+{
+  "transcript": "/tmp/s11c-mechanical-repair-20260912/d_full/full.out",
+  "bytes": 83848737,
+  "sha256": "312935010ef56ce0eabe7b1685e906dfb785c40e02978c7b93fdbb4af11bae52",
+  "unique_tags": 229636,
+  "duplicate_tags": [],
+  "process_completion": "Integer(8)",
+  "carrier_counts_by_case": {
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT": 12,
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHOBR_CONSTANT": 12,
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHO4_CONSTANT": 12,
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHOBR_CONSTANT": 12,
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT": 12,
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHOBR_CONSTANT": 12,
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHO4_CONSTANT": 12,
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHOBR_CONSTANT": 12
+  },
+  "source_census_counts_by_case": {
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT": 12,
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHOBR_CONSTANT": 12,
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHO4_CONSTANT": 12,
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHOBR_CONSTANT": 12,
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT": 12,
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHOBR_CONSTANT": 12,
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHO4_CONSTANT": 12,
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHOBR_CONSTANT": 12
+  },
+  "five_slot_counts": {
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT": 5,
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHOBR_CONSTANT": 5,
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHO4_CONSTANT": 5,
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHOBR_CONSTANT": 5,
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT": 5,
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHOBR_CONSTANT": 5,
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHO4_CONSTANT": 5,
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHOBR_CONSTANT": 5
+  },
+  "action_integral_counts": {
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT": 14,
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHOBR_CONSTANT": 14,
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHO4_CONSTANT": 14,
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHOBR_CONSTANT": 14,
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT": 14,
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHOBR_CONSTANT": 12,
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHO4_CONSTANT": 74,
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHOBR_CONSTANT": 66
+  },
+  "branch_counts": {
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHO4_CONSTANT": 3,
+    "s11cc2ClosedSlabOperator_LAB_HELD_RHOBR_CONSTANT": 3,
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHO4_CONSTANT": 3,
+    "s11cc2ClosedSlabOperator_MATERIAL_ADVECTED_RHOBR_CONSTANT": 3,
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHO4_CONSTANT": 3,
+    "s11cc2ClosedCouplingKernel_LAB_HELD_RHOBR_CONSTANT": 3,
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHO4_CONSTANT": 3,
+    "s11cc2ClosedCouplingKernel_MATERIAL_ADVECTED_RHOBR_CONSTANT": 3
+  },
+  "carrier_types": {
+    "s11cc2FourierW1ProfileHatTransfer": 24,
+    "s11cc2FourierW1ProfileJetHat1": 24,
+    "s11cc2FourierW1ProfileJetHat2": 24,
+    "s11cc2FourierW1ProfileJetHat3": 24
+  },
+  "literal_residuals": {
+    "INVERSE_FOURIER_WEAK_KERNEL_CHARACTER_RESIDUAL_": {
+      "objects": 1,
+      "entries": 1,
+      "nonzero": []
+    },
+    "CARRIER_INVERSE_RESIDUAL_": {
+      "objects": 96,
+      "entries": 288,
+      "nonzero": []
+    },
+    "CARRIER_INVERSE_REMAINDER_CENSUS_": {
+      "objects": 96,
+      "entries": 288,
+      "nonzero": []
+    },
+    "CARRIER_SOURCE_IMAGE_RESIDUAL_": {
+      "objects": 96,
+      "entries": 96,
+      "nonzero": []
+    },
+    "BRANCH_RECONSTRUCTION_RESIDUAL_": {
+      "objects": 24,
+      "entries": 24,
+      "nonzero": []
+    }
+  },
+  "residual_projections": {
+    "RECONSTRUCTION_INTEGRAL_RESIDUAL_": {
+      "objects": 222,
+      "entries": 666,
+      "maximum_absolute_projection": 0.0
+    },
+    "RECONSTRUCTION_ROW_RESIDUAL_": {
+      "objects": 8,
+      "entries": 132,
+      "maximum_absolute_projection": 0.0
+    }
+  },
+  "inverse_residual_dimensions": {
+    "(0, 0, 0)": 288
+  },
+  "zero_map_metadata": [],
+  "coverage_gaps": [],
+  "dimension_records": {
+    "REDUCED_DIMENSION_CONSTRAINT_RESIDUALS": "Tuple()",
+    "REDUCED_DIMENSION_UNRESOLVED": "Tuple()"
+  },
+  "outstanding": "Tuple(Str('FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS'), Str('GENERIC_DOMAIN_SHEET_CONTINUATION'), Str('CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION'), Str('COMPLETE_TWO_ENDED_SCATTERING'), Str('POLES_RIESZ_OVERLAP'), Str('SURVIVAL'), Str('FLUX_BOOKKEEPING'), Str('WEAK_COEFFICIENTS'), Str('SECTION_5_CONTROLS'), Str('OWN_ROWS_EXPORT'))"
+}

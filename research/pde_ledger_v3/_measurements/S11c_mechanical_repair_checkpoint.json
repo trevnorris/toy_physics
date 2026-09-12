@@ -1,0 +1,47 @@
+{
+  "updatedUtc": "2026-09-12T22:27:40.312621+00:00",
+  "repairAuthorized": true,
+  "repairCompleted": true,
+  "baseline": "/tmp/s11c-mechanical-repair-20260912/baseline",
+  "activeStage": null,
+  "activeRunDirectory": null,
+  "implemented": [
+    "b action-normalized face-work load; physical-force operand retained",
+    "c2 power from separate constrained energy-term variations and kinetic action",
+    "c2 incoming face-work routing control; energy-basis direct import"
+  ],
+  "pending": [],
+  "currentSourceHashes": {
+    "scripts/S11c_b_brane_operator_sympy_audit.py": "ec7afc2da4822acfce3eef9aad9162b56f76d7c3629e19a3ddc6c779a0bd8037",
+    "scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "4d6e1f8d80180b5aafa755ef92cc7b30eafe634b3f2c7712d25bfd744428e76f"
+  },
+  "scope": "User-authorized SymPy mechanical-load repair. No S10/Lean edits, authority change, review legs, comparator, Wolfram run, downstream stage, incomplete export, or commit.",
+  "completed": [
+    "native b LAB_HELD/RHO4_CONSTANT: action-load and preservation residuals zero",
+    "native one-case c2: canonical power and kinetic residuals zero; traction and routing controls nonzero at all three PIT samples",
+    "full b primary run: 2441 export rows; four changed roots; no changed c1 direct input; no provenance or execution failures",
+    "four-case b checks: 200 zero residual scalars; 202 unique keys; metadata complete; native and check transcripts published",
+    "c1 refresh: all 44 exported values unchanged; native checks and pins completed; transcript published",
+    "native c2: 70 export rows; closed slab and coupling roots changed; 387 true and 44 zero serialization checks; exact direct-import lookup set",
+    "four-case c2 checks: 20 exact zero residual entries; 24 finite nonzero control samples; clean metadata and domain-endpoint census; native and check transcripts published",
+    "c2 scoped legacy triage completed: baseline 4 tags/2046 symbols, 4 of 6 trials ran, two known inequality errors, 3 derived tags and constant dimension-binding verdict FAIL preserved",
+    "fresh d reference: 39 reconstruction scalar digests match literal zero; dimensions resolved",
+    "repaired d current: five mechanical and five mass coefficients agree; every recorded residual zero; independent stiffness anchor agrees; reference transcript published",
+    "Full four-case d rebuild, nine inventory stages, metadata/source-index/codec checks and atomic publication completed; old annex payload preserved."
+  ],
+  "metadataFollowup": "c2 per-term zero vector components inherit the actual kinetic source-row dimensions; physical constructor ASTs unchanged from the successful focused run",
+  "preparedChecks": [
+    "S11c_mechanical_repair_stage_inventory.py",
+    "S11c_mechanical_repair_b_export_check.py",
+    "S11c_mechanical_repair_c2_output_check.py",
+    "S11c_mechanical_repair_d_reference.py",
+    "S11c_mechanical_repair_run_current.py"
+  ],
+  "originalMechanicalMismatchResolved": true,
+  "nextStep": "Resume the one-case reduced nonlocal current and mode/flux normalization, retaining exceptional-domain boundaries; then complete two-ended matching/scattering.",
+  "fullDChecks": "_measurements/S11c_mechanical_repair_d_full_checks.json",
+  "fullDRechecks": "_measurements/S11c_mechanical_repair_d_rechecks.json",
+  "fullDTranscriptSha256": "312935010ef56ce0eabe7b1685e906dfb785c40e02978c7b93fdbb4af11bae52",
+  "engineComplete": false,
+  "committed": false
+}

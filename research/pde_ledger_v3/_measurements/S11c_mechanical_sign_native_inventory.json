@@ -1,0 +1,1472 @@
+{
+  "sourcePins": {
+    "_measurements/S11c_mechanical_sign_audit.py": "188461743e9f54514051d3c952fb7e1f5e09e8ecb88a93a5a56202f29ffa676a",
+    "_measurements/S11c_inertia_artifact_audit.py": "13e05393cc7404c0223f1300964cf577af1968b4268881eb5663a40151cb05b5",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/S11b_interface_coupling_law_sympy_audit.py": "e7ba853ded139f5795d659fc7f495fc7de57e3937185aa829c5873568bd5d6c6",
+    "scripts/S11c_a_interface_geometry_sympy_audit.py": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+    "scripts/S11c_b_brane_operator_sympy_audit.py": "36c52ad3b54697690d2b225d9a6051e80ca218c575b07cb4c28a9d770aa1feca",
+    "scripts/S11c_c1_bulk_closure_sympy_audit.py": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+    "scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "fb509840c5b7b46ea96c8c18db4ba038177f0ea855b6c7a149707e913067d65c",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "57f4da77b0f53a0b122222f86d432f58c972968afb57fb892a1a5422fb6ee591",
+    "scripts/S11b_exports.py": "e5fd228654de2000699cca8ff4f1a6b041056c22dd8a4da41f493566d446c27e",
+    "scripts/S11c_a_exports.py": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+    "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+    "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+    "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "directives/S11c_a_SHARED_PHYSICS.md": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4",
+    "directives/S11c_b_SHARED_PHYSICS.md": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89",
+    "directives/S11c_c1_SHARED_PHYSICS.md": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+    "directives/S11c_c2_SHARED_PHYSICS.md": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+  },
+  "case": "ALL",
+  "resources": {
+    "wallSeconds": 294.0496337329969,
+    "peakRssKiB": 1659452
+  },
+  "records": [
+    {
+      "writeKey": "s11cMechanicalSignSourcePins",
+      "scalarLeaves": 0,
+      "payloadBytes": 2626,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignConsumedExportPinResidual",
+      "scalarLeaves": 3,
+      "payloadBytes": 166,
+      "residual": true,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantNativeGeometryWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 3917,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantConsumedGeometryWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 3917,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantGeometryReplayResidual",
+      "scalarLeaves": 3,
+      "payloadBytes": 90,
+      "residual": true,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantExtractedExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 15267,
+      "residual": false,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantStoredExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 15267,
+      "residual": false,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantForceReplayResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantBoundFaceWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 16036,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantWorkReconstructionResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantFaceSumResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantZeroFaceSourceControl",
+      "scalarLeaves": 5,
+      "payloadBytes": 254,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 5,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantAssembledMechanicalRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 32096,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantControlledMechanicalRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 30583,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantAssembledFaceIncrement",
+      "scalarLeaves": 4,
+      "payloadBytes": 15267,
+      "residual": false,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantControlledExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": false,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantAssemblyMinusExternalForceResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantStoredEnergy",
+      "scalarLeaves": 1,
+      "payloadBytes": 11745,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantKineticEnergy",
+      "scalarLeaves": 1,
+      "payloadBytes": 1365,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantStiffnessActionCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 63,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantStiffnessRowCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 45,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantActionToRowScale",
+      "scalarLeaves": 1,
+      "payloadBytes": 11,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantKineticActionRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 1152,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantNativeKineticRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 1048,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantInertiaActionCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 207,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantInertiaRowCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 176,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantKineticActionToRowScale",
+      "scalarLeaves": 1,
+      "payloadBytes": 11,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantOrientationAnchorResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantKineticNormalizationResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantActionNormalizedFaceLoad",
+      "scalarLeaves": 4,
+      "payloadBytes": 15225,
+      "residual": false,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantAssemblyMinusActionLoadResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 15266,
+      "residual": true,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantAssemblyPlusActionLoadResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantOriginalReciprocalBases",
+      "scalarLeaves": 14,
+      "payloadBytes": 7224,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 14,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantNormalizationDivisors",
+      "scalarLeaves": 2,
+      "payloadBytes": 279,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 2,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRho4ConstantLiveFaceParameterSymbols",
+      "scalarLeaves": 91,
+      "payloadBytes": 2416,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 91,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantNativeGeometryWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 3997,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantConsumedGeometryWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 3997,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantGeometryReplayResidual",
+      "scalarLeaves": 3,
+      "payloadBytes": 90,
+      "residual": true,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantExtractedExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 15226,
+      "residual": false,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantStoredExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 15226,
+      "residual": false,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantForceReplayResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantBoundFaceWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 15915,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantWorkReconstructionResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantFaceSumResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantZeroFaceSourceControl",
+      "scalarLeaves": 5,
+      "payloadBytes": 254,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 5,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantAssembledMechanicalRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 32059,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantControlledMechanicalRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 30586,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantAssembledFaceIncrement",
+      "scalarLeaves": 4,
+      "payloadBytes": 15226,
+      "residual": false,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantControlledExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": false,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantAssemblyMinusExternalForceResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantStoredEnergy",
+      "scalarLeaves": 1,
+      "payloadBytes": 11745,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantKineticEnergy",
+      "scalarLeaves": 1,
+      "payloadBytes": 789,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantStiffnessActionCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 63,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantStiffnessRowCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 45,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantActionToRowScale",
+      "scalarLeaves": 1,
+      "payloadBytes": 11,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantKineticActionRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 669,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantNativeKineticRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 604,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantInertiaActionCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 207,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantInertiaRowCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 176,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantKineticActionToRowScale",
+      "scalarLeaves": 1,
+      "payloadBytes": 11,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantOrientationAnchorResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantKineticNormalizationResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantActionNormalizedFaceLoad",
+      "scalarLeaves": 4,
+      "payloadBytes": 15266,
+      "residual": false,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantAssemblyMinusActionLoadResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 15226,
+      "residual": true,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantAssemblyPlusActionLoadResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantOriginalReciprocalBases",
+      "scalarLeaves": 14,
+      "payloadBytes": 7224,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 14,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantNormalizationDivisors",
+      "scalarLeaves": 2,
+      "payloadBytes": 279,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 2,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignLabHeldRhobrConstantLiveFaceParameterSymbols",
+      "scalarLeaves": 91,
+      "payloadBytes": 2416,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 91,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantNativeGeometryWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 5131,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantConsumedGeometryWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 5131,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantGeometryReplayResidual",
+      "scalarLeaves": 3,
+      "payloadBytes": 90,
+      "residual": true,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantExtractedExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 16274,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantStoredExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 16274,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantForceReplayResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantBoundFaceWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 16447,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantWorkReconstructionResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantFaceSumResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantZeroFaceSourceControl",
+      "scalarLeaves": 5,
+      "payloadBytes": 254,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 5,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantAssembledMechanicalRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 32734,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantControlledMechanicalRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 30585,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantAssembledFaceIncrement",
+      "scalarLeaves": 4,
+      "payloadBytes": 16274,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantControlledExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": false,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantAssemblyMinusExternalForceResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantStoredEnergy",
+      "scalarLeaves": 1,
+      "payloadBytes": 11745,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantKineticEnergy",
+      "scalarLeaves": 1,
+      "payloadBytes": 1365,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantStiffnessActionCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 63,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantStiffnessRowCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 45,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantActionToRowScale",
+      "scalarLeaves": 1,
+      "payloadBytes": 11,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantKineticActionRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 1152,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantNativeKineticRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 1048,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantInertiaActionCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 207,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantInertiaRowCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 176,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantKineticActionToRowScale",
+      "scalarLeaves": 1,
+      "payloadBytes": 11,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantOrientationAnchorResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantKineticNormalizationResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantActionNormalizedFaceLoad",
+      "scalarLeaves": 4,
+      "payloadBytes": 16274,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantAssemblyMinusActionLoadResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 16271,
+      "residual": true,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantAssemblyPlusActionLoadResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantOriginalReciprocalBases",
+      "scalarLeaves": 14,
+      "payloadBytes": 7224,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 14,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantNormalizationDivisors",
+      "scalarLeaves": 2,
+      "payloadBytes": 279,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 2,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRho4ConstantLiveFaceParameterSymbols",
+      "scalarLeaves": 91,
+      "payloadBytes": 2416,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 91,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantNativeGeometryWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 5062,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantConsumedGeometryWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 5064,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantGeometryReplayResidual",
+      "scalarLeaves": 3,
+      "payloadBytes": 90,
+      "residual": true,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantExtractedExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 16233,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantStoredExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 16233,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantForceReplayResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantBoundFaceWork",
+      "scalarLeaves": 3,
+      "payloadBytes": 16364,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 3,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantWorkReconstructionResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantFaceSumResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantZeroFaceSourceControl",
+      "scalarLeaves": 5,
+      "payloadBytes": 254,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 5,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantAssembledMechanicalRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 32693,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantControlledMechanicalRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 30586,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantAssembledFaceIncrement",
+      "scalarLeaves": 4,
+      "payloadBytes": 16233,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantControlledExternalForce",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": false,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantAssemblyMinusExternalForceResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantStoredEnergy",
+      "scalarLeaves": 1,
+      "payloadBytes": 11745,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantKineticEnergy",
+      "scalarLeaves": 1,
+      "payloadBytes": 789,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantStiffnessActionCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 63,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantStiffnessRowCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 45,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantActionToRowScale",
+      "scalarLeaves": 1,
+      "payloadBytes": 11,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantKineticActionRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 669,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantNativeKineticRows",
+      "scalarLeaves": 4,
+      "payloadBytes": 604,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantInertiaActionCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 207,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantInertiaRowCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 176,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantKineticActionToRowScale",
+      "scalarLeaves": 1,
+      "payloadBytes": 11,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantOrientationAnchorResidual",
+      "scalarLeaves": 1,
+      "payloadBytes": 10,
+      "residual": true,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantKineticNormalizationResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantActionNormalizedFaceLoad",
+      "scalarLeaves": 4,
+      "payloadBytes": 16315,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantAssemblyMinusActionLoadResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 16234,
+      "residual": true,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantAssemblyPlusActionLoadResidual",
+      "scalarLeaves": 4,
+      "payloadBytes": 78,
+      "residual": true,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantOriginalReciprocalBases",
+      "scalarLeaves": 14,
+      "payloadBytes": 7224,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 14,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantNormalizationDivisors",
+      "scalarLeaves": 2,
+      "payloadBytes": 279,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 2,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignMaterialAdvectedRhobrConstantLiveFaceParameterSymbols",
+      "scalarLeaves": 91,
+      "payloadBytes": 2416,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 91,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignS11bDimensionBindings",
+      "scalarLeaves": 12,
+      "payloadBytes": 336,
+      "residual": false,
+      "zeroLeaves": 7,
+      "nonzeroLeaves": 5,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignS11bThicknessRow",
+      "scalarLeaves": 1,
+      "payloadBytes": 4348,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignS11bBulkContribution",
+      "scalarLeaves": 1,
+      "payloadBytes": 3712,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignS11bThicknessWithoutBulk",
+      "scalarLeaves": 1,
+      "payloadBytes": 1055,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignS11bStiffnessCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 45,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignS11bInertiaCoefficient",
+      "scalarLeaves": 1,
+      "payloadBytes": 97,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignDownstreamDependencies",
+      "scalarLeaves": 11,
+      "payloadBytes": 3826,
+      "residual": false,
+      "zeroLeaves": 11,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignSourceStabilityResidual",
+      "scalarLeaves": 21,
+      "payloadBytes": 1345,
+      "residual": true,
+      "zeroLeaves": 21,
+      "nonzeroLeaves": 0,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignWallSeconds",
+      "scalarLeaves": 1,
+      "payloadBytes": 41,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    },
+    {
+      "writeKey": "s11cMechanicalSignPeakRssKiB",
+      "scalarLeaves": 1,
+      "payloadBytes": 16,
+      "residual": false,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 1,
+      "nonfiniteLeaves": 0,
+      "unknownDimensions": 0
+    }
+  ]
+}

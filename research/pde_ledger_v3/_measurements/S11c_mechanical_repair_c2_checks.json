@@ -1,0 +1,283 @@
+{
+  "helperExitCode": 0,
+  "records": 24,
+  "canonicalOrKineticScalars": 20,
+  "nonzeroCanonicalOrKineticRecords": [],
+  "controlRecords": [
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSignResidualLabHeldRho4ConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 420,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "74.6918045746771475344889 + 15.6778962067725180408212*I",
+          "290198.997396004317570831 + 253324.49801059002863557*I",
+          "7.5980448633706534278809 + 12.8438951795603197334204*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionRowRoutingResidualLabHeldRho4ConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 420,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-74.6918045746771475344889 - 15.6778962067725180408212*I",
+          "-290198.997396004317570831 - 253324.49801059002863557*I",
+          "-7.5980448633706534278809 - 12.8438951795603197334204*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSignResidualLabHeldRhobrConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 420,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "29.3213100412204564673241 - 26.4875020214327471186724*I",
+          "-101313.24167592282899453 - 88515.7790849650824940792*I",
+          "-23.0503160534399476890358 - 42.0630197864507916287163*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionRowRoutingResidualLabHeldRhobrConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 420,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-29.3213100412204564673241 + 26.4875020214327471186724*I",
+          "101313.24167592282899453 + 88515.7790849650824940792*I",
+          "23.0503160534399476890358 + 42.0630197864507916287163*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSignResidualMaterialAdvectedRho4ConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 816,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "308.483672293400529816345 + 8.29631481759432027835005*I",
+          "272189.698683758485212497 + 237829.215884927057872626*I",
+          "-119.291948229068234919118 - 210.419406698651911203983*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionRowRoutingResidualMaterialAdvectedRho4ConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 816,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-308.483672293400529816345 - 8.29631481759432027835005*I",
+          "-272189.698683758485212497 - 237829.215884927057872626*I",
+          "119.291948229068234919118 + 210.419406698651911203983*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSignResidualMaterialAdvectedRhobrConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 816,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "55.1614583019048526897469 - 25.4544644663097347389041*I",
+          "-112055.076865785843435247 - 97798.6563725006447724608*I",
+          "51.4435580087228639906203 + 106.019148400221898434575*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionRowRoutingResidualMaterialAdvectedRhobrConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 816,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-55.1614583019048526897469 + 25.4544644663097347389041*I",
+          "112055.076865785843435247 + 97798.6563725006447724608*I",
+          "-51.4435580087228639906203 - 106.019148400221898434575*I"
+        ]
+      ]
+    }
+  ],
+  "controlSampleCount": 24,
+  "finiteNonzeroControlSampleCount": 24,
+  "infiniteDomainEndpoints": 6456,
+  "nonfiniteOutsideDomainRecords": [],
+  "nonfiniteRepresentationRecords": [],
+  "sourcePinsStable": true,
+  "duplicateKeys": [],
+  "metadataRecords": [
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionConservativeVariationLabHeldRho4ConstantActionToRowMultiplier",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionConservativeVariationLabHeldRho4ConstantKineticNormalizationResidual",
+      "dimensionLTM": "Tuple(ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-1)], [Integer(-2)], [Integer(1)]]))",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSlabPowerPairingResidualLabHeldRho4ConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSlabPowerPairingResidualLabHeldRho4ConstantCanonical",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSignResidualLabHeldRho4ConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionRowRoutingResidualLabHeldRho4ConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionConservativeVariationLabHeldRhobrConstantActionToRowMultiplier",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionConservativeVariationLabHeldRhobrConstantKineticNormalizationResidual",
+      "dimensionLTM": "Tuple(ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-1)], [Integer(-2)], [Integer(1)]]))",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSlabPowerPairingResidualLabHeldRhobrConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSlabPowerPairingResidualLabHeldRhobrConstantCanonical",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSignResidualLabHeldRhobrConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionRowRoutingResidualLabHeldRhobrConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionConservativeVariationMaterialAdvectedRho4ConstantActionToRowMultiplier",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionConservativeVariationMaterialAdvectedRho4ConstantKineticNormalizationResidual",
+      "dimensionLTM": "Tuple(ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-1)], [Integer(-2)], [Integer(1)]]))",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSlabPowerPairingResidualMaterialAdvectedRho4ConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSlabPowerPairingResidualMaterialAdvectedRho4ConstantCanonical",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSignResidualMaterialAdvectedRho4ConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionRowRoutingResidualMaterialAdvectedRho4ConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionConservativeVariationMaterialAdvectedRhobrConstantActionToRowMultiplier",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionConservativeVariationMaterialAdvectedRhobrConstantKineticNormalizationResidual",
+      "dimensionLTM": "Tuple(ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-2)], [Integer(-2)], [Integer(1)]]), ImmutableDenseMatrix([[Integer(-1)], [Integer(-2)], [Integer(1)]]))",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSlabPowerPairingResidualMaterialAdvectedRhobrConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSlabPowerPairingResidualMaterialAdvectedRhobrConstantCanonical",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(0), Integer(0), Integer(0)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionSignResidualMaterialAdvectedRhobrConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    },
+    {
+      "writeKey": "s11cMechanicalRepairFullC2TractionRowRoutingResidualMaterialAdvectedRhobrConstantOperand",
+      "dimensionLTM": "ImmutableDenseMatrix([[Integer(-1)], [Integer(-3)], [Integer(1)]])",
+      "epsEtaSigmaOrder": "Tuple(Tuple(Integer(1), Integer(0), Integer(0)), Tuple(Integer(1), Integer(0), Integer(1)), Tuple(Integer(1), Integer(1), Integer(0)), Tuple(Integer(1), Integer(1), Integer(1)))"
+    }
+  ],
+  "metadataUnknownOrNonfiniteMentions": 0,
+  "shortOperands": {
+    "s11cMechanicalRepairFullC2TractionConservativeVariationLabHeldRho4ConstantActionToRowMultiplier": "Integer(-1)",
+    "s11cMechanicalRepairFullC2TractionConservativeVariationLabHeldRho4ConstantKineticNormalizationResidual": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)], [Integer(0)]])",
+    "s11cMechanicalRepairFullC2TractionConservativeVariationLabHeldRhobrConstantActionToRowMultiplier": "Integer(-1)",
+    "s11cMechanicalRepairFullC2TractionConservativeVariationLabHeldRhobrConstantKineticNormalizationResidual": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)], [Integer(0)]])",
+    "s11cMechanicalRepairFullC2TractionConservativeVariationMaterialAdvectedRho4ConstantActionToRowMultiplier": "Integer(-1)",
+    "s11cMechanicalRepairFullC2TractionConservativeVariationMaterialAdvectedRho4ConstantKineticNormalizationResidual": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)], [Integer(0)]])",
+    "s11cMechanicalRepairFullC2TractionConservativeVariationMaterialAdvectedRhobrConstantActionToRowMultiplier": "Integer(-1)",
+    "s11cMechanicalRepairFullC2TractionConservativeVariationMaterialAdvectedRhobrConstantKineticNormalizationResidual": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)], [Integer(0)]])"
+  },
+  "wallSeconds": 88.93986898940057,
+  "peakRssKiB": 619608,
+  "stderrBytes": 0,
+  "stdoutBytes": 310433,
+  "stdoutSha256": "18778c6bbd9810edf964e8f3e85db582cd5558db56a3e7bfae1782f9a012f18f",
+  "sourcePins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_c2_output_check.py": "7357342289eb64ed26a29f6bf686013bb86e6cfb50d6792c8df2ca33260b75f7",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "4d6e1f8d80180b5aafa755ef92cc7b30eafe634b3f2c7712d25bfd744428e76f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "57f4da77b0f53a0b122222f86d432f58c972968afb57fb892a1a5422fb6ee591",
+    "/tmp/s11c-mechanical-repair-20260912/c2_full/manifest.json": "69a6af38b527404f6afb7ad5983183559563ef30d422a637ed838f4bb0cf4991"
+  },
+  "producerManifestSha256": "69a6af38b527404f6afb7ad5983183559563ef30d422a637ed838f4bb0cf4991",
+  "domainCensusScope": "Infinite integration and limit endpoints are syntax of the domain; this count is not a convergence test.",
+  "publishedPath": "scripts/out/S11c_mechanical_repair_c2_output_check.out",
+  "publishedSha256": "18778c6bbd9810edf964e8f3e85db582cd5558db56a3e7bfae1782f9a012f18f"
+}

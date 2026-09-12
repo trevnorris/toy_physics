@@ -1,0 +1,335 @@
+{
+  "instrumentSha256": "415c491a72026988b0899d210433ffc9c651f9545db78d319e9f2ccaffb45900",
+  "producerManifestSha256": "9ad3a9487651576001c92009154f8846a1452cb40aaf4298f3841a5673678af8",
+  "transcriptSha256": "6562bc5effda32c0bbf11b8eb1087356ebefe2827220d03f954544f0a0c797dd",
+  "recordCount": 144,
+  "issues": [],
+  "residuals": {
+    "s11cMechanicalSignConsumedExportPinResidual": {
+      "scalarLeaves": 3,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRho4ConstantGeometryReplayResidual": {
+      "scalarLeaves": 3,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRho4ConstantForceReplayResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRho4ConstantWorkReconstructionResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRho4ConstantFaceSumResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRho4ConstantAssemblyMinusExternalForceResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRho4ConstantOrientationAnchorResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRho4ConstantKineticNormalizationResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRho4ConstantAssemblyMinusActionLoadResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1
+    },
+    "s11cMechanicalSignLabHeldRho4ConstantAssemblyPlusActionLoadResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRhobrConstantGeometryReplayResidual": {
+      "scalarLeaves": 3,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRhobrConstantForceReplayResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRhobrConstantWorkReconstructionResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRhobrConstantFaceSumResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRhobrConstantAssemblyMinusExternalForceResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRhobrConstantOrientationAnchorResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRhobrConstantKineticNormalizationResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignLabHeldRhobrConstantAssemblyMinusActionLoadResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 1
+    },
+    "s11cMechanicalSignLabHeldRhobrConstantAssemblyPlusActionLoadResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantGeometryReplayResidual": {
+      "scalarLeaves": 3,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantForceReplayResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantWorkReconstructionResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantFaceSumResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantAssemblyMinusExternalForceResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantOrientationAnchorResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantKineticNormalizationResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantAssemblyMinusActionLoadResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4
+    },
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantAssemblyPlusActionLoadResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantGeometryReplayResidual": {
+      "scalarLeaves": 3,
+      "zeroLeaves": 3,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantForceReplayResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantWorkReconstructionResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantFaceSumResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantAssemblyMinusExternalForceResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantOrientationAnchorResidual": {
+      "scalarLeaves": 1,
+      "zeroLeaves": 1,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantKineticNormalizationResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantAssemblyMinusActionLoadResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 0,
+      "nonzeroLeaves": 4
+    },
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantAssemblyPlusActionLoadResidual": {
+      "scalarLeaves": 4,
+      "zeroLeaves": 4,
+      "nonzeroLeaves": 0
+    },
+    "s11cMechanicalSignSourceStabilityResidual": {
+      "scalarLeaves": 21,
+      "zeroLeaves": 21,
+      "nonzeroLeaves": 0
+    }
+  },
+  "residualPit": {
+    "s11cMechanicalSignLabHeldRho4ConstantAssemblyMinusActionLoadResidual": [
+      {
+        "path": [
+          "0"
+        ],
+        "nonzeroPoints": 0,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "1"
+        ],
+        "nonzeroPoints": 0,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "2"
+        ],
+        "nonzeroPoints": 0,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "3"
+        ],
+        "nonzeroPoints": 3,
+        "pointCount": 3
+      }
+    ],
+    "s11cMechanicalSignLabHeldRhobrConstantAssemblyMinusActionLoadResidual": [
+      {
+        "path": [
+          "0"
+        ],
+        "nonzeroPoints": 0,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "1"
+        ],
+        "nonzeroPoints": 0,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "2"
+        ],
+        "nonzeroPoints": 0,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "3"
+        ],
+        "nonzeroPoints": 3,
+        "pointCount": 3
+      }
+    ],
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantAssemblyMinusActionLoadResidual": [
+      {
+        "path": [
+          "0"
+        ],
+        "nonzeroPoints": 3,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "1"
+        ],
+        "nonzeroPoints": 3,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "2"
+        ],
+        "nonzeroPoints": 3,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "3"
+        ],
+        "nonzeroPoints": 3,
+        "pointCount": 3
+      }
+    ],
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantAssemblyMinusActionLoadResidual": [
+      {
+        "path": [
+          "0"
+        ],
+        "nonzeroPoints": 3,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "1"
+        ],
+        "nonzeroPoints": 3,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "2"
+        ],
+        "nonzeroPoints": 3,
+        "pointCount": 3
+      },
+      {
+        "path": [
+          "3"
+        ],
+        "nonzeroPoints": 3,
+        "pointCount": 3
+      }
+    ]
+  },
+  "orientationAnchors": {
+    "s11cMechanicalSignLabHeldRho4ConstantActionToRowScale": "-1",
+    "s11cMechanicalSignLabHeldRho4ConstantKineticActionToRowScale": "-1",
+    "s11cMechanicalSignLabHeldRhobrConstantActionToRowScale": "-1",
+    "s11cMechanicalSignLabHeldRhobrConstantKineticActionToRowScale": "-1",
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantActionToRowScale": "-1",
+    "s11cMechanicalSignMaterialAdvectedRho4ConstantKineticActionToRowScale": "-1",
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantActionToRowScale": "-1",
+    "s11cMechanicalSignMaterialAdvectedRhobrConstantKineticActionToRowScale": "-1",
+    "s11cMechanicalSignS11bStiffnessCoefficient": "W_0**2",
+    "s11cMechanicalSignS11bInertiaCoefficient": "-W_0**2*omega**2"
+  },
+  "nonfiniteLeaves": 0,
+  "unknownDimensions": 0
+}

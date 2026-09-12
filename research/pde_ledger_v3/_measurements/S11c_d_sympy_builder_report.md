@@ -1,47 +1,59 @@
 # S11c-d SymPy builder checkpoint
 
-The bulk exceptional-geometry and generalized-threshold work was committed as
-`18f3236a`: 38 ordinary Git files and eight `.out` files through DataLad/git-annex.
-The verified full threshold transcript remains unchanged. Its construction and
-coverage boundaries are recorded in the
-[threshold report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_modes_report.md).
+The original mechanical-load mismatch is resolved in the fresh reduced
+LAB_HELD/RHO4_CONSTANT reference. All five mechanical coefficients now agree,
+the five mass coefficients still agree, and all 30 recorded current/energy
+residual scalars are zero. The independent stiffness anchor also agrees.
+The existing d formulas pass with the repaired exports. The
+[current report](S11c_d_nonlocal_current_report.md) records the scope and
+source-pinned evidence; the full repair history is in the
+[repair record](S11c_mechanical_repair_report.md).
 
-The next [current construction plan](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonlocal_current_plan.md)
-now has a runnable one-case preflight, but normalization is paused under the
-user's instruction to stop at a required change of work. The reconstructed
-S11b mass closure matches the reduced mass row exactly. The five mechanical-load
-coefficients are the negatives of the independently reconstructed S11b face-work
-load. The conservative thickness-stiffness coefficient anchors the same row
-orientation in both constructions. This touches the carried face-force/closure-
-fold sign debt; no sign was selected, inherited row changed, or upstream repair
-launched. A bounded sign audit is proposed before validated current normalization.
+S11c-b now obtains the face-work row multiplier from the action and stored
+stiffness coefficient, preserving the physical generalized force separately.
+The native four-case rebuild changes exactly four exported roots. All 188
+physical comparison scalars are zero, including kinetic orientation, mass,
+chemical, non-face preservation, and separate uniform S11b face-load checks.
+The c1 refresh leaves all 44 exported values unchanged.
 
-[SlabEnergyBalance](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:1870)
-computes the actual slab energy balance, its material density-rate boundary
-correction and chemical functional derivative.
-[ClosedAcousticEnergy](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2049)
-derives acoustic energy/current, depth integrals and both face closures. The
-[focused report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonlocal_current_report.md)
-records 25 zero scalar residuals, five nonzero mechanical comparison coefficients,
-and the zero mechanical sum and row-orientation residual. It states the precise
-scope: REFERENCE, LAB_HELD/RHO4_CONSTANT, with symbolic closure parameters.
+The rebuilt c2 export changes its closed slab and coupling roots; its
+self-energy increment is unchanged in the value census. All 431 serialization
+checks completed. The strengthened power reference uses separately computed
+constrained energy-term variations and a kinetic action variation, retaining
+its dependency on b's energy construction. Four canonical power residuals and
+16 kinetic entries are zero; both source controls are detected at all three
+PIT samples in each case. This is sampled control detection, not global
+nonvanishing. The scoped legacy dependency triage retains its documented
+boundary: four trials ran, two encountered the existing inequality error, and
+the invariant dimension-binding tag leaves the literal verdict `FAIL`.
 
-The focused run took 195.725 seconds and 200,248 KiB peak child RSS. Its output
-is 1,738,791 bytes with 146 unique tags, no metadata gaps or nonfinite objects,
-and eleven unchanged source pins. Exit zero records completed emission, not
-agreement of the mechanical comparison. All 38 previous top-level definitions
-are unchanged. The new classes are exercised only by the focused instrument;
-the main four-case output remains the committed threshold producer. Compilation,
-whitespace, artifact and contract-retention checks passed.
+The new reference reduction checks 39 scalar reconstruction digests against
+literal zero, with resolved dimensions. Its transcript and the repaired
+current transcript are published under `scripts/out/`, together with the
+upstream and repair-check outputs. The final native four-case d rebuild and
+all nine inventory stages are complete. The [full inventory](S11c_mechanical_repair_d_full_checks.json)
+records 432 isolated root/lift candidates across 24 packets, complete sampled
+basis/pairing ranks, 480 transported paths and 24 unresolved branch-locus paths,
+432 constant-end Laurent residues, and 24 right/24 left threshold chain spaces.
+Point, slice, bank, contour and exceptional-domain limitations remain explicit;
+these momentum poles do not supply the profile-frequency poles of §3b.
 
-All ten broad TODOs remain. Combined nonlocal current, left/right and flux
-normalization, two-ended scattering, profile-frequency poles, survival,
-bookkeeping, weak coefficients, controls and own-row export are unfinished.
-The previous finite-root, threshold and selected-sheet coverage limitations
-remain explicit. Section 1 premises, c2 operand/sign debt and the separate
-shear-normalization debt remain supplied. The new current work is uncommitted.
-No S10/Lean edit, review, comparator, Wolfram, downstream run, new full four-case
-regeneration, export or push occurred. The retained contract below is byte-identical.
+The native run took 9,989.25 seconds with 1,734,840 KiB peak RSS and empty
+stderr. Source pins are stable. Fourier reconstruction residuals/projections
+are zero, and metadata/coverage inventories have no gaps. Lossless round trips
+preserve all 229,636 tags and 229,634 indexed source-line assignments. The
+regenerated 83,848,737-byte production transcript is published under
+`scripts/out/`, with its previous annex payload preserved. The repair is
+complete; historical counts were not imposed as expected answers. Next is the
+one-case nonlocal current and mode/flux normalization work.
+
+All ten broad engine TODOs remain, including variable-profile nonlocal current,
+mode/flux normalization, complete two-ended scattering, profile-frequency
+bound poles, survival, bookkeeping, weak coefficients, controls, and own-row
+export. Existing exceptional-domain and upstream-debt boundaries remain open.
+The supplied physics and retained contract below are unchanged. No authority
+change, S10/Lean edit, review leg, comparator, Wolfram run, incomplete export,
+commit, or push occurred in this repair turn.
 
 ## Retained user-approved solver/export contract
 

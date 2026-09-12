@@ -1,0 +1,11 @@
+S10 contract closure: unchanged canonical proof sources
+Command: LAKE_CACHE_DIR=.lake/cache lake build
+Working directory: research/pde_ledger_v3/lean
+Exit status: 0
+Build completed successfully (3834 jobs).
+Selected axiom audits: 1962; 30 axiom-free; others use only propext, Classical.choice, Quot.sound.
+No warnings, admissions or custom axioms.
+Full build log SHA-256: e47a8f4be60b6082d289e340b4c328aeb6bade952c9d440d8e3bbf6d64f34961
+All 135 artifact hashes in CAS_BRIDGE_VERIFICATION.txt still match.
+Contract controls: 7 mathematical rejections, 6 positive controls; canonical sources unchanged.
+Proof build and mutation results do not constitute statement-fidelity review.

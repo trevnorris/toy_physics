@@ -15,6 +15,10 @@ One pinned Lean environment serves the step-specific source directories:
 See [CHECKPOINT.md](CHECKPOINT.md) for the original S9/S10 checkpoint and
 [s10/CAS_CHECKPOINT.md](s10/CAS_CHECKPOINT.md) for the subsequent CAS bridge
 checkpoint, validation evidence and resume plan.
+The later [S10 contract completion](s10/FIDELITY_REVIEW.md) records the compact
+coverage contract, both independent CLEAR fidelity reviews, mutation evidence
+and the stopping point for S10 Lean work. Separate CAS production and paper
+obligations remain in [COVERAGE.md](s10/COVERAGE.md).
 The subsequent [S10 CAS bridge](s10/CAS_BRIDGE_RESULT.md) connects 916 scalar
 expressions from the two anisotropic D3 transcripts to checked Lean objects,
 including complete minor families. Its [locus extension](s10/MINOR_LOCUS_RESULT.md)

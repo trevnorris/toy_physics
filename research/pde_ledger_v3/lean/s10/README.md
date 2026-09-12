@@ -1,8 +1,11 @@
 # S10 formalization
 
 Follow [the Lean scope policy](../FORMALIZATION_POLICY.md) before resuming work.
-The current task is to consolidate and review the compact S10 coverage contract;
-the committed CAS bridge is retained without further systematic expansion.
+The compact S10 Lean contract is complete: both independent fidelity reviews
+returned CLEAR, and the proof/build and mutation evidence pass. See
+[FIDELITY_REVIEW.md](FIDELITY_REVIEW.md) for the reviewed revision, dispositions
+and stopping point. The committed CAS bridge is retained without further
+systematic expansion.
 See [COVERAGE.md](COVERAGE.md) for the current Lean and production obligations.
 
 S10 proofs and reports live here. The Lean toolchain, dependency pins, and build

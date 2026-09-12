@@ -67,10 +67,12 @@ not complete end to end. The user subsequently stopped systematic CAS bridge
 expansion. The former plan to translate the remaining D3 metadata and then all
 D4/other-package emissions is superseded by the scope policy.
 
-Resume Lean work by consolidating the compact mathematical/coverage contract,
-checking its action/operator fidelity link and mutation coverage, and completing
-independent statement-fidelity review. Reuse the existing general proofs and
-bridge evidence. The finite completion criteria are in [COVERAGE.md](COVERAGE.md).
+The subsequent compact mathematical/coverage contract is now complete: its
+action/operator fidelity link and mutation coverage were checked, and fresh
+Claude and Grok statement-fidelity reviews both returned CLEAR. See
+[FIDELITY_REVIEW.md](FIDELITY_REVIEW.md) for evidence and dispositions and
+[COVERAGE.md](COVERAGE.md) for the closed C1–C4 criteria. Lean work stops at that
+scope; this historical bridge checkpoint does not create another expansion task.
 
 Production Q7 and stratum handling, the broad comparator/export pipeline and
 ledger/paper reconciliation retain their separate implementation obligations.

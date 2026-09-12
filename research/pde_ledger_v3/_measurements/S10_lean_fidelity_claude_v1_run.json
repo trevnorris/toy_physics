@@ -1,0 +1,27 @@
+{
+  "engine": "claude",
+  "session_id": "cad2e599-63c7-4417-878d-5bd5c3f7aed7",
+  "command": [
+    "claude",
+    "--print",
+    "--output-format",
+    "json",
+    "--tools",
+    "Read,Glob,Grep",
+    "--allowedTools",
+    "Read,Glob,Grep",
+    "--permission-mode",
+    "dontAsk",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--setting-sources",
+    "",
+    "--disable-slash-commands",
+    "--session-id",
+    "cad2e599-63c7-4417-878d-5bd5c3f7aed7"
+  ],
+  "cwd": "/tmp/s10-fidelity-review-v1",
+  "exit_status": 0,
+  "wall_seconds": 656.57
+}

@@ -1,0 +1,25 @@
+{
+  "engine": "grok",
+  "session_id": "d419314e-5241-48c0-9a9e-9fc04c8a891b",
+  "command": [
+    "grok",
+    "--cwd",
+    "/tmp/s10-fidelity-review-v1",
+    "--resume",
+    "d419314e-5241-48c0-9a9e-9fc04c8a891b",
+    "--prompt-file",
+    "/tmp/s10-fidelity-review-v1/GROK_RESUME_PROMPT.txt",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "dontAsk",
+    "--no-plan",
+    "--tools",
+    "Read,Search,ListDir",
+    "--no-subagents",
+    "--disable-web-search"
+  ],
+  "cwd": "/tmp/s10-fidelity-review-v1",
+  "exit_status": 0,
+  "wall_seconds": 122.531
+}

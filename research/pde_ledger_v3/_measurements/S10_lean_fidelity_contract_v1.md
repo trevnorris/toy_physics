@@ -9,27 +9,29 @@ not a claim that the supplied physical model has been derived.
 systematic CAS bridge expansion is stopped; the committed bridge remains
 evidence. Outstanding transcript fields are not automatically Lean obligations.
 
-**The scoped S10 Lean contract is complete.** C1–C4 below are closed: the existing
-six-family proofs supply the mathematical classification, the compact
-action/operator connection is identified, the essential controls pass, and
-independent Claude and Grok fidelity reviews both returned CLEAR. See
-[the review and disposition record](FIDELITY_REVIEW.md) and
-[the build record](CONTRACT_BUILD_VERIFICATION.txt).
+The finite Lean resume plan is:
 
-The Lean task stops here. The CAS production, comparator/export and paper tasks
-below retain separate completion criteria. A future discrepancy that invalidates
-the compact fidelity link would reopen that named obligation; it would not
-justify resuming systematic transcript translation.
+1. Consolidate the existing six-family proofs into a compact contract identifying
+   the action/operator, conventions, domain, exhaustive cases, roots and
+   full/transverse kernel counts. Reuse general theorems across dimensions.
+2. Check the compact connection to the actual CAS objects and map the relevant
+   mutation controls to each load-bearing contract claim. Add work only for an
+   identified mathematical or fidelity gap in that contract.
+3. Complete the two independent non-author fidelity reviews, resolve findings,
+   and record the contract's completion against the build and mutation evidence.
+
+Contract consolidation and review remain open; this policy change does not
+declare them complete. Once these items are satisfied, stop the Lean task.
+The CAS production, comparator/export and paper tasks below have separate
+completion criteria. A discrepancy that invalidates the compact fidelity link
+still blocks that link, even when the implementation repair belongs elsewhere.
 
 ## S10 work contract
 
 **Scope:** the conditional real plane-wave classification of the six supplied
 quadratic action families. The contract below assembles existing theorems; it
 introduces no new physical premise or requirement to translate more CAS output.
-Its status is **complete within the stated Lean scope**. The exact reviewed v1
-contract is [archived](../../_measurements/S10_lean_fidelity_contract_v1.md);
-subsequent wording clarifications and status updates are recorded in the review
-disposition. No canonical proof or control instrument changed after review.
+Its status is **prepared for independent fidelity review**, not final clearance.
 
 ### Claim and domain
 
@@ -40,11 +42,9 @@ use smooth backgrounds and smooth compact test variations. Plane waves are
 variations, not only variations within that ansatz. A relative action avoids
 assuming finite total action for a nondecaying plane wave.
 
-For ANISO, the distinguished index `e` is any `Fin D`, `sigma > 0`,
-`sigma != 1`, and `sigma` is declared dimensionless. For XCOEF_SCALE, the
-coefficient `c > 0`, `c != 1` is declared dimensionless. Here `c != 1` labels a
-nontrivial control and is needed only for distinctness from MAIN; the root and
-count formulas also hold at `c = 1`. SIGNFLIP is `c = -1`. The signed spectral variable `z` means
+For ANISO, the distinguished index `e` is any `Fin D`, `sigma > 0` and
+`sigma != 1`. For XCOEF_SCALE, the coefficient `c > 0`, `c != 1` is declared
+dimensionless. SIGNFLIP is `c = -1`. The signed spectral variable `z` means
 physical squared frequency considered as an arbitrary real number; a negative
 `z` is not a real-frequency cosine wave. ANISO's internal normalized variable
 is `rho * z / mu`; it must not be confused with physical `z`.
@@ -111,8 +111,7 @@ The CAS source connection is the six-entry `PACKAGES` selector,
 `buildPackage` in [the Wolfram builder](../../mathematica/S10_brane_mode_spectrum_mathematica_audit.wl).
 Map `rho_br` / `rhoBr` to `rho`, `mu_R` / `muR` to `mu`, `s_rho` / `sRho` to
 `sigma`, and `s` / `coefficientScale` to `c`. Both CAS engines distinguish their
-first displacement/velocity component (the amplitude index); this is Lean index
-`0`. Source correspondence for all
+first spatial component; this is Lean index `0`. Source correspondence for all
 six actions is reviewed at this compact construction boundary. It is not a
 claim that Lean executes or certifies either builder.
 
@@ -138,9 +137,9 @@ proof is required merely to combine existing checked statements in this table.
 
 | Contract obligation | Existing theorem anchors | Mutation / admissibility evidence |
 |---|---|---|
-| Action, variation and actual PDE; phase-average normalization | MAIN, form controls and ANISO: `lagrangian_variation`, `actionStationary_iff_eulerLagrange`, `eulerLagrange_planeWave`, `phaseAverage_eq`; scalar inherits MAIN stationarity via `lagrangian_eq`, `actionStationary_eq`, with `variational_planeWave_iff` and `phaseAverage_eq` | original action/form mutations in RESULT, CONTROLS_RESULT and ANISOTROPIC_RESULT; compact closure checks reproduce these with passing originals |
-| MAIN complete census and S9 specialization | `S10Pilot.s10_variational_certificate`, `propagating_variational_mode_iff`, `S10Pilot.Specialization` equalities; static N3 from `S10ScalarControls.zero_counts` at `c=1` and `S10Controls.longitudinal_inf_transverse` | nonzero wave existence and longitudinal counterexamples; stiffness normalization mutation |
-| FULLGRAD and DIVONLY full/static spaces | `S10Controls.stiffness_comparison_certificate`, `full_variational_iff`, `div_propagating_variational_iff`, `full_mode_counts`, `div_mode_counts`, `full_zero_space`, `div_zero_space`; DIVONLY static N3 follows from `T ∩ T = T` | wrong stiffness-form mutations; `longitudinal_control_witness`, `transverse_control_witness` |
+| Action, variation and actual PDE; phase-average normalization | each family's `lagrangian_variation`, `actionStationary_iff_eulerLagrange`, `eulerLagrange_planeWave`, `phaseAverage_eq`; scalar `lagrangian_eq`, `variational_planeWave_iff` | original action/form mutations in RESULT, CONTROLS_RESULT and ANISOTROPIC_RESULT; compact closure checks reproduce these with passing originals |
+| MAIN complete census and S9 specialization | `S10Pilot.s10_variational_certificate`, `propagating_variational_mode_iff`, `S10Pilot.Specialization` equalities | nonzero wave existence and longitudinal counterexamples; stiffness normalization mutation |
+| FULLGRAD and DIVONLY full/static spaces | `S10Controls.stiffness_comparison_certificate`, `full_variational_iff`, `div_propagating_variational_iff`, `full_mode_counts`, `div_mode_counts` | wrong stiffness-form mutations; `longitudinal_control_witness`, `transverse_control_witness` |
 | Coefficient and sign controls | `S10ScalarControls.nonzero_root_iff`, `cone_modeSpace`, `zero_modeSpace`, `positive_variational_certificate`, `negative_control_no_real_wave`, `negative_root_exists`, `coefficient_changes_frequency` | ignored coefficient/sign mutations and admissible concrete controls; `coneValue_scaling_ratio` |
 | Exhaustive ANISO cases and full subspaces | `S10Anisotropic.split_propagating_iff`, `parallel_kernel_iff`, `zero_variational_iff`, `split_variational_certificate`, `oblique_counts`, `perpendicular_counts`, `parallel_counts`, `zero_counts` | existing rejected `missing_parallel_branch`, `missing_perpendicular_branch`, `incomplete_parallel_kernel`, `dependent_parallel_basis`, `generic_count_beyond_chart`; concrete parallel/perpendicular/oblique controls |
 | Root coincidence, positivity and multiplicity distinctions | `frequency_coincidence_iff`, `extra_exactly_transverse_iff`, `nonzero_root_positive`; existing D3 RootBindings on their stated scope | rejected `collapsed_parallel_multiplicity`, `incomplete_cubic_root_multiset`, `confused_candidate_and_distinct_count`, `wrong_extra_root_sign`, `positive_root_without_nonzero_wavevector` |
@@ -158,19 +157,17 @@ and diagnostics retained. Canonical proof files are unchanged.
 
 ### Review, exclusions and finite completion
 
-The author is Codex. Fresh Claude and Grok reviews independently inspected the
-same fixed v1 contract and source/evidence packet; both returned CLEAR with no
-substantive blocker. They inspected definitions, premises, quantifiers,
-normalization, excluded cases, correspondence and mutation meaning. The
-[review record](FIDELITY_REVIEW.md) retains identities, packet hash, reports,
-editorial dispositions and limits. Reviewers did not rerun the build or controls.
+The author is Codex. Two fresh non-author fidelity reports are required on one
+fixed revision of this contract and its cited source/evidence packet. No such
+review is claimed complete yet. Reviewers must inspect definitions, premises,
+quantifiers, normalization, excluded cases, correspondence and mutation meaning.
 
 Completion consists only of: (C1) this contract mapped to existing theorems;
 (C2) the compact action/operator fidelity connection checked at the stated level;
 (C3) the essential controls documented with passing counterparts and substantive
 failure evidence; (C4) both independent reviews resolved, with build/axiom and
 source-provenance evidence retained. Only an identified gap in C1-C4 justifies
-further Lean implementation. **All four completion items are met.**
+further Lean implementation.
 
 Excluded: selecting physical D=3 or deriving the action, arbitrary Fourier/PDE
 completeness, interfaces, dissipation, nonlinear/strained backgrounds, an explicit
@@ -185,14 +182,14 @@ S10 tasks. This contract does not declare the full ledger pipeline complete.
 |---|---|---|
 | Supplied action and actual first variation | Baseline plus all five controls in Lean | Physical justification remains a premise. |
 | Compact-test stationarity and local PDE | All six action families | Boundary/interface and weak-solution extensions are outside this S10 setting. |
-| Real cosine phase average | All six actions; exact 0..2pi integral; actual anisotropic D3 matrices now prove `M_A = -2 M_B` and their action linkage | Compact normalization link complete above. Production route comparison remains separate; do not replicate the full expression bridge. |
+| Real cosine phase average | All six actions; exact 0..2pi integral; actual anisotropic D3 matrices now prove `M_A = -2 M_B` and their action linkage | Retain a compact action/operator normalization link in the contract. Production route comparison remains separate; do not replicate the full expression bridge. |
 | Baseline and form-control spectrum | Complete real plane-wave amplitude classification in arbitrary D | This does not prove completeness of general PDE solutions. |
 | Anisotropic spectrum and exceptional directions | Complete oblique, parallel, perpendicular, and static classifications in Lean | The focused CAS samples do not certify a general stratum-discovery algorithm. |
 | Coefficient and sign controls | Arbitrary real squared-frequency classification; positive/negative sign and N2/N3 counts | An exponential spacetime solution is not yet constructed. That construction is outside the current claim and requires an explicit contract extension. |
 | Q5 scaling | Nonzero root formulas and ratios, including the anisotropic extra branch | Zero-root ratio remains undefined, rather than assigned a value. |
-| Q6 dimensions | PhysLean expression checker and unit-change theorem; actual-action bridges, coefficient solve/inventory, full root ratios, Q7, matrices, mixed-unit minors, complete basis families and N5/N6 residuals; kernel/rank unit invariance and vacuity proved. Both engines' generic and exceptional anisotropic D3 matrices, determinants, roots, stacks, bases, residuals and emitted minors have checked expression bridges (916 scalar expressions including generic/exceptional counts, root lists, aggregate coincidence differences and spectrum solve operands), explicit domains and complete-kernel basis proofs. Fixed-point reruns have an explicit coordinate/physical scale convention. | Necessary dimensional/scaling invariants and parameter map are included in the completed contract. Remaining per-output metadata and other emitted cases belong to CAS/comparator coverage; no systematic Lean expansion is planned. |
+| Q6 dimensions | PhysLean expression checker and unit-change theorem; actual-action bridges, coefficient solve/inventory, full root ratios, Q7, matrices, mixed-unit minors, complete basis families and N5/N6 residuals; kernel/rank unit invariance and vacuity proved. Both engines' generic and exceptional anisotropic D3 matrices, determinants, roots, stacks, bases, residuals and emitted minors have checked expression bridges (916 scalar expressions including generic/exceptional counts, root lists, aggregate coincidence differences and spectrum solve operands), explicit domains and complete-kernel basis proofs. Fixed-point reruns have an explicit coordinate/physical scale convention. | Include the necessary dimensional/scaling invariants and parameter map in the compact contract. Remaining per-output metadata and other emitted cases belong to CAS/comparator coverage; no systematic Lean expansion is planned. |
 | Q7 ordinary three-dimensional curl | PhysLean Levi-Civita contraction and all six package comparisons, with exact action-stiffness linkage | Align the CAS implementations and production comparator with the explicit construction. |
-| Q8 focused CAS repair | Both engines inspect N2 and N3 matrices; ten sampled roots compare successfully. Lean now checks all 83 emitted D3 minors, completeness of the row/column selections, all 12 rank-drop locus predicates and all four targeted points, including both branches of the extra transverse locus. The rerun matrices, roots and all 12 printed basis vectors are connected to complete kernel proofs and physical rescaling. All 112 generic and exceptional rank/nullity/basis-count records are certified against the actual objects; generic bindings keep explicit chart assumptions and N4/N7 use signed subtraction. All six solution/distinct-root list pairs have determinant-completeness proofs; distinct counts, algebraic multiplicities and Wolfram candidate-filter counts are certified. The primary coincidence equations, guarded loci, allowed regions, Boolean/outcome decisions and SymPy witnesses are certified on the positive-coefficient domain, including the full parallel axis. All Q8/aggregate coincidence fields, all 16 reported root signs, eight empty root solver-condition lists, three spectrum solve operands/statuses and six retained/skipped-stratum records are now bound to their mathematical meanings. Lean resolves both SymPy undecided extra-root signs as positive. | Exhaustive cases and invariants are consolidated in the completed contract above. Production stratum handling and full comparator/export integration remain separate tasks; further metadata translation into Lean is not required. |
+| Q8 focused CAS repair | Both engines inspect N2 and N3 matrices; ten sampled roots compare successfully. Lean now checks all 83 emitted D3 minors, completeness of the row/column selections, all 12 rank-drop locus predicates and all four targeted points, including both branches of the extra transverse locus. The rerun matrices, roots and all 12 printed basis vectors are connected to complete kernel proofs and physical rescaling. All 112 generic and exceptional rank/nullity/basis-count records are certified against the actual objects; generic bindings keep explicit chart assumptions and N4/N7 use signed subtraction. All six solution/distinct-root list pairs have determinant-completeness proofs; distinct counts, algebraic multiplicities and Wolfram candidate-filter counts are certified. The primary coincidence equations, guarded loci, allowed regions, Boolean/outcome decisions and SymPy witnesses are certified on the positive-coefficient domain, including the full parallel axis. All Q8/aggregate coincidence fields, all 16 reported root signs, eight empty root solver-condition lists, three spectrum solve operands/statuses and six retained/skipped-stratum records are now bound to their mathematical meanings. Lean resolves both SymPy undecided extra-root signs as positive. | Consolidate the proved exhaustive cases and invariants into the CAS coverage contract. Production stratum handling and full comparator/export integration remain separate tasks; further metadata translation into Lean is not required. |
 | Ledger/paper alignment | New evidence recorded in S10 and linked proof reports | Reconcile the paper's historical claims and evidence pointers with the completed formal coverage. |
 
 The focused CAS rerun and its comparison are documented in

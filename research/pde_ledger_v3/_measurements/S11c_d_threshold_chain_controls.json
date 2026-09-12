@@ -1,0 +1,162 @@
+{
+  "instrumentSha256": "1605e451d3e84ad3d796106d7ff6f45c29bcf5a17f0a73a0e3edfc002446aae6",
+  "engineSha256": "5612475906982732e71b899190efe6bf833108041e9d694cf453b820efda7c6b",
+  "dimensionLTM": [
+    0,
+    0,
+    0
+  ],
+  "multigrade": [
+    [
+      0,
+      0,
+      0
+    ]
+  ],
+  "epsilonLambdaSupport": [
+    [
+      0,
+      0
+    ]
+  ],
+  "syntheticMatrixControls": [
+    {
+      "ansatz": "simple",
+      "matrix": "Matrix([[syntheticNormalIncrement, 0], [0, 1]])",
+      "maximumTaylorOrder": 3,
+      "determinant": "syntheticNormalIncrement",
+      "determinantValuation": 1,
+      "kernelCounts": [
+        1,
+        1
+      ],
+      "kernelIncrements": [
+        1,
+        0
+      ],
+      "stabilized": true,
+      "lengths": [
+        1
+      ],
+      "leadingBasisRank": 1,
+      "determinantMultiplicityResidual": 0,
+      "chainCountResidual": 0,
+      "blockKernelResiduals": [
+        "Matrix([[0], [0]])",
+        "Matrix([[0], [0], [0], [0]])"
+      ],
+      "chainResiduals": [
+        [
+          "Matrix([[0], [0]])"
+        ]
+      ]
+    },
+    {
+      "ansatz": "jordan",
+      "matrix": "Matrix([[syntheticNormalIncrement, 1], [0, syntheticNormalIncrement]])",
+      "maximumTaylorOrder": 3,
+      "determinant": "syntheticNormalIncrement**2",
+      "determinantValuation": 2,
+      "kernelCounts": [
+        1,
+        2,
+        2
+      ],
+      "kernelIncrements": [
+        1,
+        1,
+        0
+      ],
+      "stabilized": true,
+      "lengths": [
+        2
+      ],
+      "leadingBasisRank": 1,
+      "determinantMultiplicityResidual": 0,
+      "chainCountResidual": 0,
+      "blockKernelResiduals": [
+        "Matrix([[0], [0]])",
+        "Matrix([[0, 0], [0, 0], [0, 0], [0, 0]])",
+        "Matrix([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])"
+      ],
+      "chainResiduals": [
+        [
+          "Matrix([[0], [0]])",
+          "Matrix([[0], [0]])"
+        ]
+      ]
+    },
+    {
+      "ansatz": "mixed",
+      "matrix": "Matrix([[syntheticNormalIncrement**2, 0], [0, syntheticNormalIncrement**3]])",
+      "maximumTaylorOrder": 2,
+      "determinant": "syntheticNormalIncrement**5",
+      "determinantValuation": 5,
+      "kernelCounts": [
+        2,
+        4,
+        5
+      ],
+      "kernelIncrements": [
+        2,
+        2,
+        1
+      ],
+      "stabilized": false,
+      "lengths": "UNRESOLVED",
+      "leadingBasisRank": "UNRESOLVED",
+      "determinantMultiplicityResidual": "UNRESOLVED",
+      "chainCountResidual": "UNRESOLVED",
+      "blockKernelResiduals": [
+        "Matrix([[0, 0], [0, 0]])",
+        "Matrix([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])",
+        "Matrix([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]])"
+      ],
+      "chainResiduals": "UNRESOLVED"
+    },
+    {
+      "ansatz": "mixed",
+      "matrix": "Matrix([[syntheticNormalIncrement**2, 0], [0, syntheticNormalIncrement**3]])",
+      "maximumTaylorOrder": 3,
+      "determinant": "syntheticNormalIncrement**5",
+      "determinantValuation": 5,
+      "kernelCounts": [
+        2,
+        4,
+        5,
+        5
+      ],
+      "kernelIncrements": [
+        2,
+        2,
+        1,
+        0
+      ],
+      "stabilized": true,
+      "lengths": [
+        3,
+        2
+      ],
+      "leadingBasisRank": 2,
+      "determinantMultiplicityResidual": 0,
+      "chainCountResidual": 0,
+      "blockKernelResiduals": [
+        "Matrix([[0, 0], [0, 0]])",
+        "Matrix([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])",
+        "Matrix([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]])",
+        "Matrix([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]])"
+      ],
+      "chainResiduals": [
+        [
+          "Matrix([[0], [0]])",
+          "Matrix([[0], [0]])",
+          "Matrix([[0], [0]])"
+        ],
+        [
+          "Matrix([[0], [0]])",
+          "Matrix([[0], [0]])"
+        ]
+      ]
+    }
+  ]
+}

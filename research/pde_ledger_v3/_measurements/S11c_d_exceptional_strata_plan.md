@@ -5,23 +5,63 @@
 PROGRAM_BRIEF, S11c-d shared physics and build directive, together with the
 retained eight-point solver/export contract in the builder report.
 
-**Paused before full regeneration.** The reference preflight exposed a needed
-split in this plan. End-mode exceptional conditions are one family; bulk branch
-geometry and denominator strata must be enumerated independently of the
-end-mode determinant. At the supplied reference binding, the computed bulk
-branch-point collision is at frequency coefficient `sqrt(5)`, where none of
-the current end-mode exclusion conditions vanishes. The user asked for work to
-stop when the breakdown needs changing. The right-end focused run was
-interrupted; no four-case regeneration was started.
+**Resumed after user-requested checkpoint `3332fe0a`.** The accepted next
+move preserves the end-mode family and constructs an independent bulk
+branch/denominator family from the same reduced physical matrix and radical
+relation. The end determinant is an intersection operand only; it cannot gate
+bulk-locus enumeration. The reference scope probe at frequency `sqrt(5)` is
+retained as the concrete missing-locus example.
 
-The proposed next revision is to preserve the completed end-mode work and add
-an independent bulk branch/denominator family, including its thresholds,
-intersections, separate region/bank records and admissibility conditions.
-Intersect the two families only after preserving their separate identities.
-Then finish the remaining focused checks and perform the single full run.
-This is a downstream coverage repair, not evidence that an upstream operator
-needs rebuilding. The scope probe is in
-`_measurements/S11c_d_bulk_threshold_scope_probe.json`.
+The accepted implementation has four connected parts (completed for the stated finite slice):
+
+1. Compute the bulk radical branch polynomial and its degree-loss/coalescence
+   conditions. Extract the physical entry denominators before determinant
+   clearing, eliminate normal momentum, and retain their square-free factors,
+   multiplicities, leading coefficients, discriminants and intersections with
+   the branch and normal-zero loci. Separately eliminate the real/imaginary
+   denominator equations on the real normal axis: retain their shared curves
+   and the residual intersection projection, including degree/coalescence
+   conditions of shared curves. Isolate all real critical frequencies on
+   the specified bound-carrier slice, independently of end-mode roots.
+2. Preserve the two families and explicitly compute their intersections.
+   Evaluate each nonnegative bulk critical frequency at every computed branch
+   point and denominator lift. Test the original row denominators and physical
+   matrix; record singular or inadmissible targets individually. Do not replace
+   these targets with nearby regular witnesses.
+3. Partition the positive real frequency axis by the enumerated conditions.
+   At an exact rational witness in every interval, enumerate the real normal
+   axis cells separated by computed branch/denominator projections. Evaluate
+   both algebraic lifts and their full physical matrices, with residuals and
+   finite/invertible-domain records. Add separate continuation and matrix-bank
+   records around the computed branch rays in each frequency interval.
+   These are finite-slice algebraic/real-axis cells and selected complex paths;
+   they do not establish a global joint-sheet atlas or constant properties on
+   an unbound parameter variety. Physical sheet assignment remains separate.
+4. Finish the one-case reference/left/right checks, freeze the source, and run
+   all four cases once. Check old-object preservation, new locus/target/region
+   records, metadata, source hashes and compact-output decoding. Publish the
+   main transcript by atomic replacement and update concise reports. Keep the
+   solver/export contract byte-identical and all unresolved obligations visible.
+
+The checkpoint commit used DataLad for the new reference transcript and Git
+for the other nineteen files. No S10/Lean paths were included. Build changes
+after that checkpoint are separate working-tree progress.
+
+## Completed finite-slice checkpoint
+
+All four parts above are implemented. Four focused checks and one full
+four-case run completed from the same frozen engine source. Preservation,
+coverage, dimension, Fourier and lossless-decoding inventories passed. The
+58,095,644-byte main transcript and four focused transcripts are published;
+previous annex payloads are preserved. See [the construction record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_bulk_exceptional_report.md)
+and [run provenance](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_bulk_exceptional_runs.json).
+
+The next construction is generalized normal modes at the explicitly enumerated
+thresholds and exceptional-point physical-sheet continuation. Singular
+zero-frequency/denominator domains and global parameter/complex-sheet coverage
+remain bounded by the emitted scope records. These do not replace the later
+profile-frequency bound-pole search. All ten broad TODOs and the export remain
+open. No further construction or commit follows this build/run/report checkpoint.
 
 ## Scope and sequence
 
@@ -69,4 +109,4 @@ If the preflight exposes an upstream operand discrepancy, a necessary new
 physical premise, or a need to change this work breakdown, stop and tell the
 user before continuing the dependent work. Build/run/report only: no reviews,
 comparator, Wolfram, S10/Lean edits, downstream work, export placeholder, or
-commit in this turn.
+additional commit during the build.

@@ -1,3 +1,9 @@
+> Historical record of checkpoint `3332fe0a`. The canonical focused outputs
+> now contain the resumed bulk-family construction. See
+> [the bulk construction record](S11c_d_bulk_exceptional_report.md) and
+> [its run provenance](S11c_d_bulk_exceptional_runs.json) for the current work.
+> The earlier annex payload and its source-pinned run remain preserved.
+
 # S11c-d exceptional frequency slices and output compaction
 
 2026-09-11. Paused runnable source checkpoint from `56595cf7` and the S11c-d

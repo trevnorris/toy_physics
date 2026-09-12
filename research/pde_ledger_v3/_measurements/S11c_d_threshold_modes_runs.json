@@ -1,0 +1,761 @@
+{
+  "status": "VERIFIED_PUBLISHED_RUNNABLE_CHECKPOINT",
+  "checkpointCommit": "3332fe0a37a32671e507bc85828c4e5f59e42f3b",
+  "engineSha256": "5612475906982732e71b899190efe6bf833108041e9d694cf453b820efda7c6b",
+  "baselineMainSha256": "459c047acee94c5f307bd914809747954d4fb2b2d46bc36c78ace8e1b500e6c2",
+  "baselineProducerManifest": "/tmp/s11cd-exceptional-strata-20260911/bulk_full/manifest.json",
+  "retainedContractSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "stages": {
+    "reference_final_v3": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_check.py",
+        "--manifest",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--end",
+        "REFERENCE",
+        "--threshold-only",
+        "--analysis-cache",
+        "/tmp/s11cd-exceptional-strata-20260911/analysis"
+      ],
+      "run_directory": "/tmp/s11cd-threshold-20260911/reference_final_v3",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5612475906982732e71b899190efe6bf833108041e9d694cf453b820efda7c6b",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "a7e8a0a53d43bac2a837327e7d4c1237e3f50d57561f6fa99a87e31d0b979c52",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57",
+        "_measurements/S11c_d_threshold_chain_controls.py": "1605e451d3e84ad3d796106d7ff6f45c29bcf5a17f0a73a0e3edfc002446aae6",
+        "_measurements/S11c_d_threshold_modes_inventory.py": "cdf63987823c4cef416341a18be474bf5623a18cf62237114c7da46a9e15b8dc",
+        "_measurements/S11c_d_threshold_modes_plan.md": "ac77b026b62e787e8723e88b359036f06eae07ec419f36ba11563f7acf31f6ad"
+      },
+      "exit_code": 0,
+      "wall_seconds": 131.81467839423567,
+      "peak_rss_kib": 173212,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5612475906982732e71b899190efe6bf833108041e9d694cf453b820efda7c6b",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "a7e8a0a53d43bac2a837327e7d4c1237e3f50d57561f6fa99a87e31d0b979c52",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57",
+        "_measurements/S11c_d_threshold_chain_controls.py": "1605e451d3e84ad3d796106d7ff6f45c29bcf5a17f0a73a0e3edfc002446aae6",
+        "_measurements/S11c_d_threshold_modes_inventory.py": "cdf63987823c4cef416341a18be474bf5623a18cf62237114c7da46a9e15b8dc",
+        "_measurements/S11c_d_threshold_modes_plan.md": "ac77b026b62e787e8723e88b359036f06eae07ec419f36ba11563f7acf31f6ad"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 3706891,
+          "sha256": "a8c0db77beba6d917d0004057eaba2d5f5d7df3feb5470c33fe422b93ea8aac2"
+        },
+        "progress.json": {
+          "bytes": 140,
+          "sha256": "5a394ab4d285ff4e532f132bdf9b778452bea89647d69f7501c87e25b2bdf6de"
+        }
+      }
+    },
+    "left_final": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_check.py",
+        "--manifest",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--end",
+        "LEFT",
+        "--threshold-only",
+        "--analysis-cache",
+        "/tmp/s11cd-exceptional-strata-20260911/analysis"
+      ],
+      "run_directory": "/tmp/s11cd-threshold-20260911/left_final",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5612475906982732e71b899190efe6bf833108041e9d694cf453b820efda7c6b",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "a7e8a0a53d43bac2a837327e7d4c1237e3f50d57561f6fa99a87e31d0b979c52",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57",
+        "_measurements/S11c_d_threshold_chain_controls.py": "1605e451d3e84ad3d796106d7ff6f45c29bcf5a17f0a73a0e3edfc002446aae6",
+        "_measurements/S11c_d_threshold_modes_inventory.py": "cdf63987823c4cef416341a18be474bf5623a18cf62237114c7da46a9e15b8dc",
+        "_measurements/S11c_d_threshold_modes_plan.md": "ac77b026b62e787e8723e88b359036f06eae07ec419f36ba11563f7acf31f6ad"
+      },
+      "exit_code": 0,
+      "wall_seconds": 133.74980063550174,
+      "peak_rss_kib": 174272,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5612475906982732e71b899190efe6bf833108041e9d694cf453b820efda7c6b",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "a7e8a0a53d43bac2a837327e7d4c1237e3f50d57561f6fa99a87e31d0b979c52",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57",
+        "_measurements/S11c_d_threshold_chain_controls.py": "1605e451d3e84ad3d796106d7ff6f45c29bcf5a17f0a73a0e3edfc002446aae6",
+        "_measurements/S11c_d_threshold_modes_inventory.py": "cdf63987823c4cef416341a18be474bf5623a18cf62237114c7da46a9e15b8dc",
+        "_measurements/S11c_d_threshold_modes_plan.md": "ac77b026b62e787e8723e88b359036f06eae07ec419f36ba11563f7acf31f6ad"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 3668304,
+          "sha256": "86e506bd69d3094bcbd1434da85e60a7f300e3dd20c85845748e14a900e06c2d"
+        },
+        "progress.json": {
+          "bytes": 140,
+          "sha256": "52201ba103dae78af05dfe33cf9cd64c2062438554645532857e64b5d73b7b59"
+        }
+      }
+    },
+    "right_final": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_check.py",
+        "--manifest",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--end",
+        "RIGHT",
+        "--threshold-only",
+        "--analysis-cache",
+        "/tmp/s11cd-exceptional-strata-20260911/analysis"
+      ],
+      "run_directory": "/tmp/s11cd-threshold-20260911/right_final",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5612475906982732e71b899190efe6bf833108041e9d694cf453b820efda7c6b",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "a7e8a0a53d43bac2a837327e7d4c1237e3f50d57561f6fa99a87e31d0b979c52",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57",
+        "_measurements/S11c_d_threshold_chain_controls.py": "1605e451d3e84ad3d796106d7ff6f45c29bcf5a17f0a73a0e3edfc002446aae6",
+        "_measurements/S11c_d_threshold_modes_inventory.py": "cdf63987823c4cef416341a18be474bf5623a18cf62237114c7da46a9e15b8dc",
+        "_measurements/S11c_d_threshold_modes_plan.md": "ac77b026b62e787e8723e88b359036f06eae07ec419f36ba11563f7acf31f6ad"
+      },
+      "exit_code": 0,
+      "wall_seconds": 185.11537176650017,
+      "peak_rss_kib": 175132,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5612475906982732e71b899190efe6bf833108041e9d694cf453b820efda7c6b",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "a7e8a0a53d43bac2a837327e7d4c1237e3f50d57561f6fa99a87e31d0b979c52",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57",
+        "_measurements/S11c_d_threshold_chain_controls.py": "1605e451d3e84ad3d796106d7ff6f45c29bcf5a17f0a73a0e3edfc002446aae6",
+        "_measurements/S11c_d_threshold_modes_inventory.py": "cdf63987823c4cef416341a18be474bf5623a18cf62237114c7da46a9e15b8dc",
+        "_measurements/S11c_d_threshold_modes_plan.md": "ac77b026b62e787e8723e88b359036f06eae07ec419f36ba11563f7acf31f6ad"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 3662063,
+          "sha256": "1754b71b881d4ac2d2f29fe883c79ef3e468e693786548fa1b0c190aa80a3e98"
+        },
+        "progress.json": {
+          "bytes": 140,
+          "sha256": "9cab68324a0e24e7b47c472c2d738e831da6f1b41c62a56be5f06742dd2eb4a6"
+        }
+      }
+    },
+    "full": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "--case",
+        "ALL",
+        "--channel-input-file",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--channel-input-scope",
+        "spectrum",
+        "--dev-symbol-cache",
+        "/tmp/s11cd-threshold-20260911/full/symbols"
+      ],
+      "run_directory": "/tmp/s11cd-threshold-20260911/full",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5612475906982732e71b899190efe6bf833108041e9d694cf453b820efda7c6b",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "a7e8a0a53d43bac2a837327e7d4c1237e3f50d57561f6fa99a87e31d0b979c52",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57",
+        "_measurements/S11c_d_threshold_chain_controls.py": "1605e451d3e84ad3d796106d7ff6f45c29bcf5a17f0a73a0e3edfc002446aae6",
+        "_measurements/S11c_d_threshold_modes_inventory.py": "cdf63987823c4cef416341a18be474bf5623a18cf62237114c7da46a9e15b8dc",
+        "_measurements/S11c_d_threshold_modes_plan.md": "ac77b026b62e787e8723e88b359036f06eae07ec419f36ba11563f7acf31f6ad"
+      },
+      "child_pid": 8,
+      "exit_code": 0,
+      "wall_seconds": 10051.410505481064,
+      "peak_rss_kib": 1733148,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5612475906982732e71b899190efe6bf833108041e9d694cf453b820efda7c6b",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "a7e8a0a53d43bac2a837327e7d4c1237e3f50d57561f6fa99a87e31d0b979c52",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57",
+        "_measurements/S11c_d_threshold_chain_controls.py": "1605e451d3e84ad3d796106d7ff6f45c29bcf5a17f0a73a0e3edfc002446aae6",
+        "_measurements/S11c_d_threshold_modes_inventory.py": "cdf63987823c4cef416341a18be474bf5623a18cf62237114c7da46a9e15b8dc",
+        "_measurements/S11c_d_threshold_modes_plan.md": "ac77b026b62e787e8723e88b359036f06eae07ec419f36ba11563f7acf31f6ad"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 83919481,
+          "sha256": "ebc8ec7ead14b446a4cf4ad056188729e725e4bfe22662a290234bd354292322"
+        },
+        "progress.json": {
+          "bytes": 143,
+          "sha256": "285dc3ea10ebd4d603958a41550cb58a1ee4043a59d5162c9d416112324b0c21"
+        },
+        "symbols/REFERENCE_LAB_HELD_RHOBR_CONSTANT.pickle": {
+          "bytes": 73820,
+          "sha256": "6746ea07efe832f33f3456d89561fe50ef101622b5e8b72d787435fadb72c0b9"
+        },
+        "symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle": {
+          "bytes": 89063,
+          "sha256": "867c4ff67badc3b49c104145f79f1fd4fca05172983eb489c335cdff94c14bec"
+        },
+        "symbols/LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+          "bytes": 89074,
+          "sha256": "3f8027ec6ce83d79c9b08ec346464b7bd21c3b46774adf7919c4367912e48775"
+        },
+        "symbols/REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+          "bytes": 73820,
+          "sha256": "6746ea07efe832f33f3456d89561fe50ef101622b5e8b72d787435fadb72c0b9"
+        },
+        "symbols/LEFT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+          "bytes": 87705,
+          "sha256": "2e8313a90c3099123db3428a6c3328f7bea06601f53ca9cda1ab0a1542a37581"
+        },
+        "symbols/RIGHT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+          "bytes": 87669,
+          "sha256": "0a7ea7fd428cb49243371a81654155587d0b15b94b58e1f9c346219ef935127a"
+        },
+        "symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle": {
+          "bytes": 89063,
+          "sha256": "aba46b77b6de79996d867e4ea45f15097167215519e5ed34779f14984fe1a08b"
+        },
+        "symbols/RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+          "bytes": 89083,
+          "sha256": "ac8df05e40c6aeed98d06c1c6f4b3290fc0d4d90db5353832825c7fdbfd71c4c"
+        },
+        "symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle": {
+          "bytes": 69903,
+          "sha256": "ab632478aff58f8666d8dc3e2d839c524160df1c16ed7e5e9fc0c277438a4a99"
+        },
+        "symbols/LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+          "bytes": 87705,
+          "sha256": "7f571dc3bf2e0e4140e2016e6a832d1836b32e737fb241d13ed3d5a77e96a34a"
+        },
+        "symbols/REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+          "bytes": 73840,
+          "sha256": "3034dd77b77c716c447322366cb203c67c0651788700c2ffc8d66d95c1c04a46"
+        },
+        "symbols/RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+          "bytes": 87669,
+          "sha256": "0a7ea7fd428cb49243371a81654155587d0b15b94b58e1f9c346219ef935127a"
+        }
+      }
+    }
+  },
+  "developmentAttempts": {
+    "preflight": {
+      "initialAttempts": "Interrupted in general simplify and whole-expression number-field conversion; replaced by coefficient-tree arithmetic.",
+      "computedResult": "/tmp/s11cd-threshold-20260911/preflight.json"
+    },
+    "chains_reference_dev": "Failed sparse block with empty row; omit empty sparse rows.",
+    "chains_reference_dev_v2": "Completed chain construction before sheet implementation.",
+    "connection_reference_dev": "Completed initial local connections before full path-node census.",
+    "reference_final": "Completed path-node census before explicit unresolved-chain handling.",
+    "reference_final_v2": "Completed before exact exception-disk certificate."
+  },
+  "additionalCommitPerformed": false,
+  "exportWritten": false,
+  "reviewComparatorWolframOrDownstreamRun": false,
+  "verificationToolsUnavailable": [
+    "reduction/derived_or_declared.py",
+    "reduction/engine_output_checks.py"
+  ],
+  "verificationToolsSearch": "No matching files under repository (including hidden and ignored files), ~/.codex/skills or ~/.claude; dedicated dimension, coverage, preservation and codec inventories used.",
+  "fullManifest": "/tmp/s11cd-threshold-20260911/full/manifest.json",
+  "fullCommand": [
+    "/usr/bin/python",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+    "--case",
+    "ALL",
+    "--channel-input-file",
+    "_measurements/S11c_d_channel_preflight_input.json",
+    "--channel-input-scope",
+    "spectrum",
+    "--dev-symbol-cache",
+    "/tmp/s11cd-threshold-20260911/full/symbols"
+  ],
+  "focusedInventory": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_focused_inventory.json",
+  "verificationRuns": [
+    {
+      "kind": "resolvent",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_resolvent_inventory.py",
+        "/tmp/s11cd-threshold-20260911/full/full.out",
+        "--baseline",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_full_resolvent_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 329.8208909537643,
+      "stderrBytes": 0,
+      "stdoutBytes": 111
+    },
+    {
+      "kind": "joint",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_joint_sheet_inventory.py",
+        "/tmp/s11cd-threshold-20260911/full/full.out",
+        "--baseline",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_full_joint_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 50.14046463184059,
+      "stderrBytes": 0,
+      "stdoutBytes": 134
+    },
+    {
+      "kind": "spectrum",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_spectrum_inventory.py",
+        "/tmp/s11cd-threshold-20260911/full/full.out",
+        "--baseline",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_full_spectrum_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 124.76920247450471,
+      "stderrBytes": 0,
+      "stdoutBytes": 113
+    },
+    {
+      "kind": "exceptional",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_inventory.py",
+        "/tmp/s11cd-threshold-20260911/full/full.out",
+        "--baseline",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_full_exceptional_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 180.47468679118901,
+      "stderrBytes": 0,
+      "stdoutBytes": 0
+    },
+    {
+      "kind": "threshold",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_threshold_modes_inventory.py",
+        "/tmp/s11cd-threshold-20260911/full/full.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_full_modes_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 268.40909302420914,
+      "stderrBytes": 0,
+      "stdoutBytes": 0
+    },
+    {
+      "kind": "payload",
+      "command": [
+        "/usr/bin/python",
+        "/tmp/s11cd-threshold-20260911/payload_inventory.py"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 8.742837239988148,
+      "stderrBytes": 0,
+      "stdoutBytes": 708
+    },
+    {
+      "kind": "inverse",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_inverse_fourier_inventory.py",
+        "/tmp/s11cd-threshold-20260911/full/full.out"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 7.961665669456124,
+      "stderrBytes": 0,
+      "stdoutBytes": 4686
+    },
+    {
+      "kind": "expand",
+      "command": [
+        "/usr/bin/python",
+        "scripts/S11c_d_output_codec.py",
+        "/tmp/s11cd-threshold-20260911/full/full.out",
+        "/tmp/s11cd-threshold-20260911/full/expanded.out"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 14.482203074730933,
+      "stderrBytes": 0,
+      "stdoutBytes": 0
+    },
+    {
+      "kind": "codec",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_output_codec_check.py",
+        "/tmp/s11cd-threshold-20260911/full/expanded.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_full_codec_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 13.015346024185419,
+      "stderrBytes": 0,
+      "stdoutBytes": 932
+    },
+    {
+      "kind": "preservation",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_payload_preservation_inventory.py",
+        "_measurements/S11c_d_threshold_full_payload_inventory.json",
+        "_measurements/S11c_d_threshold_full_exceptional_inventory.json",
+        "--output",
+        "_measurements/S11c_d_threshold_full_payload_preservation.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 11.34258717019111,
+      "stderrBytes": 0,
+      "stdoutBytes": 1443
+    }
+  ],
+  "supplementalThresholdCensus": {
+    "command": [
+      "/usr/bin/python",
+      "/tmp/s11cd-threshold-20260911/threshold_summary.py"
+    ],
+    "exitCode": 0,
+    "instrumentWallSeconds": 4.628121681511402,
+    "result": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_full_summary.json"
+  },
+  "publication": {
+    "publications": [
+      {
+        "stage": "full",
+        "source": "/tmp/s11cd-threshold-20260911/full/full.out",
+        "published": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out",
+        "bytes": 83919481,
+        "sha256": "ebc8ec7ead14b446a4cf4ad056188729e725e4bfe22662a290234bd354292322",
+        "previousSha256": "459c047acee94c5f307bd914809747954d4fb2b2d46bc36c78ace8e1b500e6c2",
+        "replacedSymlink": false,
+        "publishedIsSymlink": false
+      },
+      {
+        "stage": "reference_final_v3",
+        "source": "/tmp/s11cd-threshold-20260911/reference_final_v3/full.out",
+        "published": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_threshold_modes_reference.out",
+        "bytes": 3706891,
+        "sha256": "a8c0db77beba6d917d0004057eaba2d5f5d7df3feb5470c33fe422b93ea8aac2",
+        "previousSha256": null,
+        "replacedSymlink": false,
+        "publishedIsSymlink": false
+      },
+      {
+        "stage": "left_final",
+        "source": "/tmp/s11cd-threshold-20260911/left_final/full.out",
+        "published": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_threshold_modes_left.out",
+        "bytes": 3668304,
+        "sha256": "86e506bd69d3094bcbd1434da85e60a7f300e3dd20c85845748e14a900e06c2d",
+        "previousSha256": null,
+        "replacedSymlink": false,
+        "publishedIsSymlink": false
+      },
+      {
+        "stage": "right_final",
+        "source": "/tmp/s11cd-threshold-20260911/right_final/full.out",
+        "published": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_threshold_modes_right.out",
+        "bytes": 3662063,
+        "sha256": "1754b71b881d4ac2d2f29fe883c79ef3e468e693786548fa1b0c190aa80a3e98",
+        "previousSha256": null,
+        "replacedSymlink": false,
+        "publishedIsSymlink": false
+      }
+    ],
+    "oldAnnexSha256": "b04b50c87e227498a7acf48dec0a8a46e3e2288bb09045f479c9de2523a1d617",
+    "oldAnnexBytes": 189492142,
+    "currentProducerPinsMatch": true
+  },
+  "scratchOnlyExpandedTranscript": "/tmp/s11cd-threshold-20260911/full/expanded.out",
+  "auxiliaryVerificationSources": {
+    "payload_inventory.py": {
+      "sha256": "1a1d7338f36b35a362524ad4fe0c006f98d5fbf7a1ea8fb304d6659718a65972",
+      "source": "import hashlib,json,pathlib,sys,time\nroot=pathlib.Path('/var/projects/toy_physics/research/pde_ledger_v3')\nsys.path.insert(0,str(root/'scripts'))\nfrom S11c_d_output_codec import decoded_lines\nbase=pathlib.Path('/tmp/s11cd-threshold-20260911')\nold=pathlib.Path('/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out')\nnew=base/'full/full.out'\nstarted=time.monotonic()\ndef sha(path):\n h=hashlib.sha256()\n with path.open('rb') as stream:\n  for block in iter(lambda:stream.read(1048576),b''):h.update(block)\n return h.hexdigest()\ndef read(path):\n values={};duplicates=[]\n for line in decoded_lines(path):\n  tag,_,payload=line.rstrip('\\n').partition(': ')\n  if tag in values:duplicates.append(tag)\n  values[tag]=hashlib.sha256(payload.encode()).hexdigest()\n return values,duplicates\na,ad=read(old);b,bd=read(new)\nchanged={k:{'before':v,'after':b[k]} for k,v in a.items() if k in b and b[k]!=v}\nresult={'baseline':str(old),'baselineSha256':sha(old),'transcript':str(new),'sha256':sha(new),\n 'baselineTagCount':len(a),'newTagCount':len(b),'unchangedPayloadCount':sum(b.get(k)==v for k,v in a.items()),\n 'missingTags':sorted(set(a)-set(b)),'addedTags':sorted(set(b)-set(a)),'changedPayloads':changed,\n 'baselineDuplicateTags':ad,'newDuplicateTags':bd,\n 'instrumentSha256':sha(pathlib.Path(__file__)),'codecSha256':sha(root/'scripts/S11c_d_output_codec.py'),\n 'wallSeconds':time.monotonic()-started}\n(root/'_measurements/S11c_d_threshold_full_payload_inventory.json').write_text(json.dumps(result,indent=2)+'\\n')\nprint(json.dumps({k:v for k,v in result.items() if k not in ('addedTags','changedPayloads')}|{'addedTagCount':len(result['addedTags']),'rawChangedCount':len(changed)}))\n"
+    },
+    "post_full_inventories.py": {
+      "sha256": "0e82e495bf81c85046a49c3dc77e8cd6a12994d99c012564e4e24e4bbf1f2d85",
+      "source": "import pathlib,subprocess,sys,json,time,hashlib\nroot=pathlib.Path('/var/projects/toy_physics/research/pde_ledger_v3');base=pathlib.Path('/tmp/s11cd-threshold-20260911');full=base/'full/full.out';baseline=base.parent/'s11cd-exceptional-strata-20260911/bulk_full/full.out'\nm=json.loads((base/'full/manifest.json').read_text())\nif m.get('exit_code')!=0 or m['source_hashes_before']!=m['source_hashes_after']:raise RuntimeError('stable completed full producer required')\ncommands=[]\nfor kind,instrument in [('resolvent','S11c_d_end_resolvent_inventory.py'),('joint','S11c_d_joint_sheet_inventory.py'),('spectrum','S11c_d_end_spectrum_inventory.py'),('exceptional','S11c_d_exceptional_strata_inventory.py')]:\n commands.append((kind,[sys.executable,'_measurements/'+instrument,str(full),'--baseline',str(baseline),'--output',str(root/'_measurements'/('S11c_d_threshold_full_'+kind+'_inventory.json'))]))\ncommands.append(('threshold',[sys.executable,'_measurements/S11c_d_threshold_modes_inventory.py',str(full),'--output',str(root/'_measurements/S11c_d_threshold_full_modes_inventory.json')]))\ncommands.append(('payload',[sys.executable,str(base/'payload_inventory.py')]))\ncommands.append(('inverse',[sys.executable,'_measurements/S11c_d_inverse_fourier_inventory.py',str(full)]))\ncommands.append(('expand',[sys.executable,'scripts/S11c_d_output_codec.py',str(full),str(base/'full/expanded.out')]))\ncommands.append(('codec',[sys.executable,'_measurements/S11c_d_output_codec_check.py',str(base/'full/expanded.out'),'--output',str(root/'_measurements/S11c_d_threshold_full_codec_inventory.json')]))\nrecords=[]\nfor name,command in commands:\n start=time.monotonic();out=base/'full'/('inventory_'+name+'.stdout');err=base/'full'/('inventory_'+name+'.stderr')\n with out.open('xb') as stdout,err.open('xb') as stderr:\n  result=subprocess.run(command,cwd=root,stdout=stdout,stderr=stderr)\n record={'kind':name,'command':command,'exitCode':result.returncode,'wallSeconds':time.monotonic()-start,'stderrBytes':err.stat().st_size,'stdoutBytes':out.stat().st_size}\n records.append(record)\n (base/'full/inventory_runs.json').write_text(json.dumps(records,indent=2)+'\\n');print(json.dumps(record),flush=True)\n if result.returncode:raise SystemExit(result.returncode)\n if name=='inverse':\n  value=json.loads(out.read_text());(root/'_measurements/S11c_d_threshold_full_inverse_inventory.json').write_text(json.dumps(value,indent=2)+'\\n')\n\ncommand=[sys.executable,'_measurements/S11c_d_payload_preservation_inventory.py','_measurements/S11c_d_threshold_full_payload_inventory.json','_measurements/S11c_d_threshold_full_exceptional_inventory.json','--output','_measurements/S11c_d_threshold_full_payload_preservation.json']\nstart=time.monotonic()\noutpath=base/'full/inventory_preservation.stdout';errpath=base/'full/inventory_preservation.stderr'\nwith outpath.open('x') as out,errpath.open('x') as err:\n result=subprocess.run(command,cwd=root,stdout=out,stderr=err)\nrecord={'kind':'preservation','command':command,'exitCode':result.returncode,'wallSeconds':time.monotonic()-start,'stderrBytes':errpath.stat().st_size,'stdoutBytes':outpath.stat().st_size}\nrecords.append(record)\n(base/'full/inventory_runs.json').write_text(json.dumps(records,indent=2)+'\\n');print(json.dumps(record),flush=True)\nif result.returncode:raise SystemExit(result.returncode)\n"
+    },
+    "publish_verified.py": {
+      "sha256": "3641de0d0e8d143423eb9584f2c4b2ff98f68cc8a9fede1f90db0491690d095a",
+      "source": "import hashlib,json,os,pathlib,shutil,tempfile\nroot=pathlib.Path('/var/projects/toy_physics/research/pde_ledger_v3');base=pathlib.Path('/tmp/s11cd-threshold-20260911')\ndef sha(path):\n h=hashlib.sha256()\n with path.open('rb') as f:\n  for chunk in iter(lambda:f.read(1048576),b''):h.update(chunk)\n return h.hexdigest()\nfull=json.loads((base/'full/manifest.json').read_text())\nif full.get('exit_code')!=0 or full['source_hashes_before']!=full['source_hashes_after']:raise RuntimeError('Completed stable full run required')\nif any(sha(root/p)!=v for p,v in full['source_hashes_after'].items()):raise RuntimeError('Current producer pins changed')\nannex=pathlib.Path('/var/projects/toy_physics/.git/annex/objects/2M/zQ/MD5E-s189492142--0ba05c9532fa74aea39b84d725f75091.out/MD5E-s189492142--0ba05c9532fa74aea39b84d725f75091.out')\nannex_sha='b04b50c87e227498a7acf48dec0a8a46e3e2288bb09045f479c9de2523a1d617'\nif sha(annex)!=annex_sha:raise RuntimeError('Previous annex payload changed')\nplan=[('full','S11c_d_mixing_scattering_sympy_audit.out','459c047acee94c5f307bd914809747954d4fb2b2d46bc36c78ace8e1b500e6c2'),('reference_final_v3','S11c_d_threshold_modes_reference.out',None),('left_final','S11c_d_threshold_modes_left.out',None),('right_final','S11c_d_threshold_modes_right.out',None)]\nchecked=[]\nfor stage,name,expected_previous in plan:\n src=base/stage/'full.out';dest=root/'scripts/out'/name;m=json.loads((base/stage/'manifest.json').read_text());digest=sha(src)\n if m.get('exit_code')!=0 or m['source_hashes_before']!=m['source_hashes_after'] or digest!=m['artifacts']['full.out']['sha256']:raise RuntimeError('Unverified producer '+stage)\n previous=sha(dest) if dest.exists() else None\n if previous not in (expected_previous,digest):raise RuntimeError('Destination differs from known baseline '+str(dest))\n checked.append((stage,src,dest,digest,previous,dest.is_symlink()))\nrecords=[]\nfor stage,src,dest,digest,previous,was_link in checked:\n fd,temp=tempfile.mkstemp(prefix='.'+dest.name+'.',suffix='.tmp',dir=dest.parent)\n try:\n  with os.fdopen(fd,'wb') as out,src.open('rb') as source:\n   shutil.copyfileobj(source,out,1048576);out.flush();os.fsync(out.fileno())\n  os.chmod(temp,0o644)\n  if sha(pathlib.Path(temp))!=digest:raise RuntimeError('Copy digest mismatch')\n  os.replace(temp,dest)\n finally:\n  if os.path.lexists(temp):os.unlink(temp)\n if sha(dest)!=digest:raise RuntimeError('Published digest mismatch')\n records.append({'stage':stage,'source':str(src),'published':str(dest),'bytes':dest.stat().st_size,'sha256':digest,'previousSha256':previous,'replacedSymlink':was_link,'publishedIsSymlink':dest.is_symlink()})\ndirfd=os.open(root/'scripts/out',os.O_RDONLY)\ntry:os.fsync(dirfd)\nfinally:os.close(dirfd)\nif sha(annex)!=annex_sha:raise RuntimeError('Annex preservation failed')\nresult={'publications':records,'oldAnnexSha256':annex_sha,'oldAnnexBytes':annex.stat().st_size,'currentProducerPinsMatch':True}\n(base/'publication.json').write_text(json.dumps(result,indent=2)+'\\n')\nprint(json.dumps(result))\n"
+    }
+  },
+  "verificationAndReportArtifacts": {
+    "_measurements/S11c_d_threshold_full_inverse_inventory.json": {
+      "bytes": 4686,
+      "sha256": "cb94829b76158a2daf2ac9caa82df8679d730c2e3361ed834224bfd37e12bda6"
+    },
+    "_measurements/S11c_d_threshold_full_summary.json": {
+      "bytes": 8668,
+      "sha256": "107fbc882961fe0b213e2194ef25f4e71d8c257cd5d3ab4893573f0c9699dee9"
+    },
+    "_measurements/S11c_d_threshold_full_exceptional_inventory.json": {
+      "bytes": 6912091,
+      "sha256": "3aa4510a03ab6706ae27dc046444f67d47ee1423f05ae17858661db5babf94d0"
+    },
+    "_measurements/S11c_d_threshold_full_payload_preservation.json": {
+      "bytes": 41840,
+      "sha256": "962ce7df9cb60c1762808103ff6af4057ef95d3261ae0b33016fd1ce3d6f6100"
+    },
+    "_measurements/S11c_d_threshold_full_resolvent_inventory.json": {
+      "bytes": 3895776,
+      "sha256": "33019c6e670fb6b6f245f9ed4ec3bd37343212847c566bece979e5f3ac63c769"
+    },
+    "_measurements/S11c_d_threshold_full_modes_inventory.json": {
+      "bytes": 3562874,
+      "sha256": "3d02e0431ce1573f78c64e91f8b8227459b21a68f847e48caa2bf85cceadc1c7"
+    },
+    "_measurements/S11c_d_threshold_full_spectrum_inventory.json": {
+      "bytes": 317754,
+      "sha256": "4bbfe8e48cc05feacd82970a6969e5bda5d7e702f126012f4251f5f154444d07"
+    },
+    "_measurements/S11c_d_threshold_full_joint_inventory.json": {
+      "bytes": 2858205,
+      "sha256": "649d731c0a5260c3aa1dcc4d88a0bd8ef47069255e7f602496b3f6863b461afe"
+    },
+    "_measurements/S11c_d_threshold_full_codec_inventory.json": {
+      "bytes": 932,
+      "sha256": "35cbdcca1b09dffc246db91afda0aa827c5cf3366a5ea801bb32cb924ec17bee"
+    },
+    "_measurements/S11c_d_threshold_full_payload_inventory.json": {
+      "bytes": 15402178,
+      "sha256": "d911b8b2ea628cea530ed24c92891b59a1ed96c2002202449d8559a00c5a89b9"
+    },
+    "_measurements/S11c_d_threshold_focused_inventory.json": {
+      "bytes": 914483,
+      "sha256": "541005ac0af240f63f850ddbd77cc1cc4b380dba1bfc3a561a930f6bfe799174"
+    },
+    "_measurements/S11c_d_threshold_chain_controls.json": {
+      "bytes": 4068,
+      "sha256": "f7ae9639a0e879517daac1dba20d2de8f41a0ef67e129b78d9f22c4425960c67"
+    },
+    "_measurements/S11c_d_threshold_modes_report.md": {
+      "bytes": 9472,
+      "sha256": "11ab0225dc263ee932d3e18942a2177b75c9cf9e9928f84f7c2c016d929f7506"
+    },
+    "_measurements/S11c_d_sympy_builder_report.md": {
+      "bytes": 7123,
+      "sha256": "bdc9f4c20fc818769d53abce32cc6b16130208d8f39d4b66a62a6ec22ca0b896"
+    }
+  },
+  "retainedContractByteIdentical": true,
+  "finalChecks": {
+    "pythonCompilation": {
+      "exitCode": 0,
+      "files": [
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "_measurements/S11c_d_exceptional_strata_check.py",
+        "_measurements/S11c_d_threshold_chain_controls.py",
+        "_measurements/S11c_d_threshold_modes_inventory.py"
+      ]
+    },
+    "scopedGitDiffCheck": {
+      "exitCode": 0,
+      "paths": [
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "_measurements/S11c_d_exceptional_strata_check.py",
+        "_measurements/S11c_d_sympy_builder_report.md"
+      ]
+    },
+    "fileHashAndReportLinks": {
+      "exitCode": 0,
+      "producerPins": 27,
+      "publishedOutputs": 4,
+      "verificationAndReportArtifacts": 14,
+      "problems": []
+    },
+    "exportExists": false
+  }
+}

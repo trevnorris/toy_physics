@@ -47,7 +47,7 @@ def native_preservation(before,after):
 
 
 def inspect(path):
-    tags=[];tag_set=set();duplicates=[];pending={};gaps=[];nonfinite=[];packets={};native={};constraints={};index_checks=[]
+    tags=[];tag_set=set();duplicates=[];pending={};gaps=[];nonfinite=[];packets={};native={};constraints={};index_checks=[];residuals={}
     for line in decoded_lines(path):
         full_tag,_,payload=line.rstrip('\n').partition(': ')
         tag=full_tag.removeprefix('PY_S11CD_')
@@ -63,7 +63,7 @@ def inspect(path):
             constraints[tag]=portable(_restore(payload))
         if tag.startswith('END_SPECTRUM_') and tag.endswith(('_REGULARITY_CRITERIA','_SUMMARY')):
             native[tag]=portable(_restore(payload))
-        if tag.startswith('METADATA_END_EXCEPTIONAL_SLICE_'):
+        if tag.startswith(('METADATA_END_EXCEPTIONAL_SLICE_','METADATA_BULK_EXCEPTIONAL_SLICE_')):
             name=tag.removeprefix('METADATA_');groups=_restore(payload);units={}
             for group in groups:
                 record=association(group)
@@ -75,18 +75,30 @@ def inspect(path):
                     units[key]=tuple(record['DIMENSION_L_T_M'])
             value=pending.pop(name,None)
             if value is None:gaps.append([name,'missing object'])
+            elif {'OBJECT_SHA256','OBJECT_SHA_AND_NUMERIC_PIT'}&set(association(value)):
+                for p,v in engine.leaves(value):
+                    if not isinstance(v,sp.core.symbol.Str) and v.has(sp.nan,sp.zoo,sp.oo,-sp.oo):
+                        nonfinite.append([name,'fingerprint',str(p),str(v)])
             elif not {'OBJECT_SHA256','OBJECT_SHA_AND_NUMERIC_PIT'}&set(association(value)):
                 for p,v in engine.leaves(value):
                     if isinstance(v,sp.core.symbol.Str):continue
                     if p not in units:gaps.append([name,'missing dimension',str(p)])
                     if v.has(sp.nan,sp.zoo,sp.oo,-sp.oo):nonfinite.append([name,str(p),str(v)])
+                    for category in ('RIGHT_INVERSE_RESIDUAL','LEFT_INVERSE_RESIDUAL','MATRIX_PRECISION_REFINEMENT',
+                                     'INVERSE_PRECISION_REFINEMENT','RADICAL_RESIDUAL','RIGHT_RESIDUAL','LEFT_RESIDUAL'):
+                        if name.endswith('_'+category) and getattr(v,'is_number',False):
+                            dimension=tuple(map(int,units.get(p,())))
+                            key=category+'|'+str(dimension);magnitude=abs(complex(v))
+                            if key not in residuals or magnitude>residuals[key]['maximum']:
+                                residuals[key]={'maximum':magnitude,'tag':name,'dimension':dimension}
             continue
-        if not tag.startswith('END_EXCEPTIONAL_SLICE_'):continue
+        if not tag.startswith(('END_EXCEPTIONAL_SLICE_','BULK_EXCEPTIONAL_SLICE_')):continue
         value=_restore(payload);pending[tag]=value
         prefix,_,label=tag.partition('_CONSTANT_')
         packet=packets.setdefault(prefix,{'records':{},'statuses':Counter()})
         data=portable(value)
         if label.endswith('STATUS'):packet['statuses'][str(value)]+=1
+        if 'STATUS' in association(value):packet['statuses'][str(association(value)['STATUS'])]+=1
         if not ('OBJECT_SHA256' in association(value) or 'OBJECT_SHA_AND_NUMERIC_PIT' in association(value)):
             packet['records'][label]=data
     for p in packets.values():p['statuses']=dict(p['statuses'])
@@ -94,6 +106,7 @@ def inspect(path):
         'bytes':path.stat().st_size,'uniqueTags':len(tag_set),'duplicates':duplicates,'metadataGaps':gaps,
         'nonfiniteObjects':nonfinite,'unmatchedObjects':sorted(pending),'dimensionConstraints':constraints,
         'packetCount':len(packets),'packets':packets,'nativeRegularity':native,'sourceIndexChecks':index_checks,
+        'residualMaximaByDimension':residuals,
         'completionMarkers':sum(t.endswith(('_EXCEPTIONAL_PREFLIGHT_PROCESS_COMPLETION','_PROCESS_COMPLETION'))
             and not t.startswith('PY_S11CD_METADATA_') for t in tag_set)}
 

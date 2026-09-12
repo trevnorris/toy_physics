@@ -1,81 +1,56 @@
-# S11c-d builder checkpoint: paused exceptional-domain construction
+# S11c-d SymPy builder checkpoint
 
-2026-09-11. Work resumed from `56595cf7`, preserving the S11c-d `f22cb682`
-producer. The source is runnable and the frozen reference check completed.
-Work then stopped under the user's instruction to pause when the breakdown
-needs changing. The right-end check was interrupted. **No fresh four-case run
-was started: the main transcript still represents `f22cb682`, not this source.**
+The finite generalized-threshold-mode checkpoint is complete, verified and
+published. It extends the previous finite-slice coverage work after Git checkpoint
+`3332fe0a`; both extensions remain uncommitted. The full S11c-d program and
+own-row export are still unfinished.
 
-The reason is a separate bulk-continuum threshold. The new end-mode resultants
-find exceptional points of the discrete end roots. The completed reference
-operands also give a collision of bulk normal branch points at frequency
-coefficient `sqrt(5)` (`2.2360679775` in the declared time unit), where none of
-the fifteen current end-mode exclusion conditions vanishes and the end-spectrum
-polynomial has no radical root at zero. Bulk branch/denominator strata need
-an independent family of records before intersecting them with end-mode loci.
-This is a coverage finding; it does not establish an upstream operator error.
-The [scope probe](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_bulk_threshold_scope_probe.json)
-and [paused plan](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_exceptional_strata_plan.md)
-record the next required change.
+[NormalTaylorChains](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3440)
+now computes exact full left/right chain spaces from the physical matrix germ.
+[ThresholdModeAudit](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3562)
+constructs polynomial normal modes, joins both radical lifts to the reduced
+Fourier seed, derives local frequency unfolding, and tracks both full mode
+spaces through approach points, bypasses and loops. Exact local exception-disk
+certificates exclude additional enumerated exceptional frequencies in the
+recorded neighborhood. The [construction report](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_modes_report.md)
+gives computation-line references, residuals and scope boundaries.
 
-The [regularity criteria](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:2967)
-now include algebraic/geometric multiplicity agreement, ranks of both full
-bases, and the normal-derivative pairing rank. A development reference run
-retained all 18 candidates; each new criterion was true. Software controls
-removing required record fields prevent regular coverage from being reported.
-Existing root isolation, import wiring, Fourier reduction, sheet paths and
-constant-end resolvent computations are retained.
+The four-case run completed in 10,051.411 seconds with 1,733,148 KiB peak child
+RSS, exit zero, empty stderr and 27 unchanged source/input pins. Three focused
+LAB_HELD/RHO4_CONSTANT runs use the same final source. The
+[main transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
+is 83,919,481 bytes, atomically published with three focused threshold outputs.
+The old annex data is preserved. [Run provenance](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_modes_runs.json)
+records hashes, resources, verification and development repairs.
 
-[EndExceptionalSlice](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3193)
-computes square-free multiplicities, end-mode exclusion polynomials, exact
-real-locus gcds/intervals, and generic rank identities on a declared frequency
-slice with other carriers bound. Determinant order and identities for all
-minors of the required size bound nullity from both sides on the recorded
-regular domain. This is a frequency-slice certificate, not a parameter-variety
-or global-sheet certificate. The reference factors have degrees seven and two
-with multiplicities one and two; 1+25 minor identities have zero remainders
-and reconstruction residuals.
+There are 24 finite threshold points, 48 complete left/right chain spaces and
+96 individual chains. Each space has kernel counts and basis ranks `[2,4,4]`,
+with two chains of length 2. All 7,320 exact scalar chain/block/polynomial-mode/
+radical/multiplicity residuals are zero. All 24 local disk certificates and
+connections are defined. The 192 approach points and 2,448 path nodes have full
+nullity 2 under the stated 53-bit SVD tolerance; all 144 normal and 336 bulk paths
+are defined. Residuals remain separated by restored dimensions in the
+[full census](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_threshold_full_summary.json).
+Twelve zero-frequency intersections remain explicitly unresolved.
 
-The [targeted threshold computation](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3342)
-uses the original rational physical matrix and exact full bases. At the
-computed end-mode threshold (`0.27386127875` in the declared time unit), both
-radical roots give matrix rank three, both nullities/basis ranks two, one
-coincident normal lift and normal-derivative pairing rank zero. Equation
-residuals are emitted. Generalized threshold modes, exceptional-point physical
-sheet membership and the zero-frequency intersection remain unresolved.
+Inventories found 229,636 unique tags with no new metadata gaps or nonfinite
+objects. All 124,804 previous tags are accounted for, with no unclassified
+physical changes. The prior 432 modes, 432 residues, 1,728 contours, 504 joint-sheet
+paths and their unresolved domains are preserved. Fourier reconstruction and
+solved dimensional residuals remain zero. Lossless decoding restores all payloads
+and 229,634 source-index assignments. The named generic triage helpers were not
+available; the dedicated inventories actually run are recorded in the report.
 
-The frozen reference run used engine SHA
-`ed359f16e78deccffdbce8f15cbb7e9735d60344e8fe0b38d5dd5e8ea457419e`,
-completed in 363.169 seconds at 265,436 KiB peak child RSS, exit zero, empty
-stderr and unchanged source hashes. Its
-[reference transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_reference.out)
-is 254,459 bytes with 179 unique tags, empty dimensional constraints and no
-metadata gaps, unmatched objects or nonfinite payloads. Source-index decoding
-restores all 176 preceding tag assignments. The
-[run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_exceptional_strata_runs.json)
-separates this completion from the deliberately interrupted right-end run.
-
-The [output codec](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_output_codec.py:19)
-shares exact payload text and records source-line positions compactly. Every
-tag, dimension/grade payload, residual and digest survives decoding. The old
-189,492,142-byte transcript encodes to 52,531,413 bytes with zero payload or
-source-line assignment differences. Updated inventory readers accept both
-representations; the codec's command-line expansion writes the previous
-representation to a separate new file. The main annex payload is unchanged.
-The eight-point solver/export contract below is byte-identical. Compilation
-and whitespace checks completed. The directive-named reduction triage tools
-remain absent and were not run.
-
-All ten broad TODOs remain, including full sheet/exceptional coverage, closed
-nonlocal current and flux normalization, scattering, profile-frequency
-poles/Riesz/overlap, survival, bookkeeping, weak coefficients, Section 5
-controls and the own-row export. `scripts/S11c_d_exports.py` remains absent.
-These are constant-end results, not section 3b profile-dependent bound poles.
-Section 1 and the carried c2 operand/sign debts remain supplied premises.
-S10/Lean files were not edited here; new changes in those areas appeared during
-this work and were left untouched. No review leg, comparator, Wolfram engine,
-downstream stage or commit ran. The remaining focused checks, full regeneration
-and main-output publication await the coverage-plan revision.
+All ten broad TODOs remain. Next is the reduced nonlocal S11b current and mode/
+flux normalization, followed by two-ended scattering, profile-frequency poles,
+survival, bookkeeping, weak coefficients, physics controls and export. Remaining
+singular, mixed/defective and global sheet domains stay explicit. These local
+normal-threshold results do not establish a global sheet atlas or a section 3b
+profile-frequency bound pole. Section 1 and the c2 operand/sign and
+shear-normalization debts remain supplied premises. No new premise, upstream
+repair or change of work breakdown was required. No S10/Lean edit, review,
+comparator, Wolfram, downstream run, export, commit or push was performed.
+The retained solver/export contract below is byte-identical.
 
 ## Retained user-approved solver/export contract
 

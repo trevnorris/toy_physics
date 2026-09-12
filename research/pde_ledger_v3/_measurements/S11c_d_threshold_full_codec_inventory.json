@@ -1,0 +1,27 @@
+{
+  "source": "/tmp/s11cd-threshold-20260911/full/expanded.out",
+  "sourceSha256": "dada6fdd136a436e18f24de189111509b389302c5a8ab5a2b3ec0845fb669baa",
+  "sourceBytes": 314180252,
+  "encodedBytes": 83919481,
+  "records": 229636,
+  "distinctSharedPayloads": 16304,
+  "payloadMismatches": [],
+  "unencodedPayloadSha256": "ad0d5fafd0fd8da5c38fd81558ec6f236190a11d2d952dfb6d917aa2caaeba4f",
+  "decodedPayloadSha256": "ad0d5fafd0fd8da5c38fd81558ec6f236190a11d2d952dfb6d917aa2caaeba4f",
+  "sourceIndexChecks": [
+    {
+      "tagCount": 229634,
+      "differentAssignments": 0,
+      "oldBytes": 34310489,
+      "newBytes": 1586766
+    }
+  ],
+  "malformedReferenceRejections": [
+    true,
+    true
+  ],
+  "instrumentSha256": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+  "codecSha256": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+  "wallSeconds": 11.938895056955516,
+  "peakRssKiB": 409044
+}

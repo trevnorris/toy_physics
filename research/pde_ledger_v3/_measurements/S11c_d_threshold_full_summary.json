@@ -1,0 +1,137 @@
+{
+  "transcript": "/tmp/s11cd-threshold-20260911/full/full.out",
+  "sha256": "ebc8ec7ead14b446a4cf4ad056188729e725e4bfe22662a290234bd354292322",
+  "counts": {
+    "objects": 52416,
+    "fingerprints": 14508,
+    "rightChainSpaces": 24,
+    "individualChains": 96,
+    "leftChainSpaces": 24,
+    "oppositeSheetPoints": 12,
+    "bulkPaths": 336,
+    "definedBulkPaths": 336,
+    "approachModeNodes": 192,
+    "normalPaths": 144,
+    "definedNormalPaths": 144,
+    "pathModeNodes": 2448,
+    "sourceSheetMatches": 12,
+    "completion": 1
+  },
+  "pointCount": 24,
+  "completePointCount": 24,
+  "chainCensusCount": 48,
+  "stabilizedCensusCount": 48,
+  "kernelCountPatterns": {
+    "[2, 4, 4]": 48
+  },
+  "kernelBasisRankPatterns": {
+    "[2, 4, 4]": 48
+  },
+  "chainLengthsRight": {
+    "[2, 2]": 24
+  },
+  "chainLengthsLeft": {
+    "[2, 2]": 24
+  },
+  "rankNullityResidualPatterns": {
+    "[0, 0, 0]": 48
+  },
+  "leadingBasisRankCounts": {
+    "2": 48
+  },
+  "nodeRankNullityCounts": {
+    "(3, 2)": 2640
+  },
+  "diskCount": 24,
+  "definedDiskCount": 24,
+  "diskConditionCounts": {
+    "15": 24
+  },
+  "connectionCount": 24,
+  "definedConnectionCount": 24,
+  "explicitUndefinedRecords": {
+    "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_LEFT_LAB_HELD_RHO4_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_REFERENCE_LAB_HELD_RHOBR_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_LEFT_LAB_HELD_RHOBR_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_RIGHT_LAB_HELD_RHOBR_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    },
+    "THRESHOLD_MODE_INPUT_RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT_TARGET_0_DOMAIN": {
+      "DEFINED": false,
+      "STATUS": "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION"
+    }
+  },
+  "exactResidualCounts": {
+    "radicalTaylorObjects": 72,
+    "radicalTaylorScalars": 72,
+    "blockKernelObjects": 144,
+    "blockKernelScalars": 5280,
+    "chainEquationObjects": 192,
+    "chainEquationScalars": 960,
+    "planeEquationObjects": 192,
+    "planeEquationScalars": 960,
+    "determinantChainMultiplicityObjects": 24,
+    "determinantChainMultiplicityScalars": 48
+  },
+  "nonzeroExactResiduals": [],
+  "loopCount": 48,
+  "normalLoopExchangeResidualMaximum": 2.0816681711721685e-17,
+  "normalLoopResidualDimensionLTM": [
+    -1,
+    0,
+    0
+  ],
+  "sourceIndexChecks": [
+    {
+      "indexedTags": 229634,
+      "missingAssignments": 0
+    }
+  ],
+  "inventoryIntegrity": {
+    "duplicates": [],
+    "metadataGaps": [],
+    "nonfiniteObjects": [],
+    "unmatchedObjects": []
+  },
+  "instrumentSha256": "25087ca401e72ffef85290ffb42177c302fa61498042a17391dc5c7a2fbd29f4",
+  "instrumentSource": "import sys,pathlib,json,hashlib,re,collections,time\nroot=pathlib.Path('/var/projects/toy_physics/research/pde_ledger_v3');sys.path.insert(0,str(root/'_measurements'));sys.path.insert(0,str(root/'scripts'))\nfrom S11c_d_joint_sheet_check import engine,_restore\nfrom S11c_d_joint_sheet_inventory import association\nfrom S11c_d_output_codec import decoded_lines\nstart=time.monotonic();base=pathlib.Path('/tmp/s11cd-threshold-20260911');full=base/'full/full.out'\nr=json.loads((root/'_measurements/S11c_d_threshold_full_modes_inventory.json').read_text())['results'][0]\nrecords=r['records'];censuses={k:v for k,v in records.items() if k.endswith(('_RIGHT_CENSUS','_LEFT_CENSUS'))}\ndisks={k:v for k,v in records.items() if k.endswith('_EXCEPTION_DISK_DOMAIN')}\nconnections={k:v for k,v in records.items() if k.endswith('_CONNECTION_SUMMARY')}\npoint_summaries={k:v for k,v in records.items() if re.search(r'_TARGET_\\d+_ROOT_\\d+_LIFT_\\d+_SUMMARY$',k)}\nranks={k:v for k,v in records.items() if k.endswith('_RANK_DOMAIN')}\nissues={k:v for k,v in records.items() if isinstance(v,dict) and v.get('DEFINED') is False}\nexact_counts=collections.Counter();nonzero=[];loop_residuals=[]\nfor line in decoded_lines(full):\n tag,_,payload=line.rstrip('\\n').partition(': ')\n if not tag.startswith('PY_S11CD_THRESHOLD_MODE_'):continue\n category=None\n for name,pattern in [('chainEquation',r'_CHAIN_\\d+_EQUATION_RESIDUAL_\\d+$'),('planeEquation',r'_PLANE_EQUATION_RESIDUAL_\\d+$'),('blockKernel',r'_UNIT_FRAME_\\d+_RESIDUAL$'),('radicalTaylor',r'_RADICAL_TAYLOR_RESIDUAL_\\d+$'),('determinantChainMultiplicity',r'_DETERMINANT_CHAIN_MULTIPLICITY_RESIDUAL$')]:\n  if re.search(pattern,tag):category=name;break\n if category:\n  exact_counts[category+'Objects']+=1\n  for path,value in engine.leaves(_restore(payload)):\n   if isinstance(value,engine.sp.core.symbol.Str):continue\n   exact_counts[category+'Scalars']+=1\n   if value!=0:nonzero.append({'tag':tag,'path':str(path),'value':str(value)})\n if '_LOOP_' in tag and tag.endswith('_NORMAL_PATH'):\n  a=association(_restore(payload));loop_residuals.append({'tag':tag,'endPlusSeedAbsolute':abs(complex(a['END_Q']+a['SEED_Q']))})\nresult={'transcript':str(full),'sha256':r['sha256'],'counts':r['counts'],'pointCount':len(point_summaries),\n 'completePointCount':sum(v['CHAINS_COMPLETE'] for v in point_summaries.values()),\n 'chainCensusCount':len(censuses),'stabilizedCensusCount':sum(v['STABILIZED'] for v in censuses.values()),\n 'kernelCountPatterns':dict(collections.Counter(str(v['KERNEL_COUNTS']) for v in censuses.values())),\n 'kernelBasisRankPatterns':dict(collections.Counter(str(v['KERNEL_BASIS_RANKS']) for v in censuses.values())),\n 'chainLengthsRight':dict(collections.Counter(str(v['RIGHT_LENGTHS']) for v in point_summaries.values())),\n 'chainLengthsLeft':dict(collections.Counter(str(v['LEFT_LENGTHS']) for v in point_summaries.values())),\n 'rankNullityResidualPatterns':dict(collections.Counter(str(v['RANK_NULLITY_RESIDUALS']) for v in censuses.values())),\n 'leadingBasisRankCounts':dict(collections.Counter(str(v['LEADING_BASIS_RANK']) for v in censuses.values())),\n 'nodeRankNullityCounts':dict(collections.Counter(str((v['RANK'],v['NULLITY'])) for v in ranks.values())),\n 'diskCount':len(disks),'definedDiskCount':sum(v['DEFINED'] for v in disks.values()),'diskConditionCounts':dict(collections.Counter(str(v['CONDITION_COUNT']) for v in disks.values())),\n 'connectionCount':len(connections),'definedConnectionCount':sum(v['DEFINED'] for v in connections.values()),\n 'explicitUndefinedRecords':issues,'exactResidualCounts':dict(exact_counts),'nonzeroExactResiduals':nonzero,\n 'loopCount':len(loop_residuals),'normalLoopExchangeResidualMaximum':max((v['endPlusSeedAbsolute'] for v in loop_residuals),default=None),'normalLoopResidualDimensionLTM':[-1,0,0],\n 'sourceIndexChecks':r['sourceIndexChecks'],'inventoryIntegrity':{k:r[k] for k in ('duplicates','metadataGaps','nonfiniteObjects','unmatchedObjects')},\n 'instrumentSha256':hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),'instrumentSource':pathlib.Path(__file__).read_text(),'wallSeconds':time.monotonic()-start}\nout=root/'_measurements/S11c_d_threshold_full_summary.json';out.write_text(json.dumps(result,indent=2)+'\\n')\nprint(json.dumps({k:v for k,v in result.items() if k not in ('instrumentSource','explicitUndefinedRecords')}))\nprint('Undefined status counts:',dict(collections.Counter(v.get('STATUS','UNNAMED') for v in issues.values())))\n",
+  "wallSeconds": 4.628121681511402
+}

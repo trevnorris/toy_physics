@@ -1,0 +1,833 @@
+{
+  "status": "FULL_REGENERATION_VERIFIED_AND_PUBLISHED",
+  "checkpointCommit": "3332fe0a37a32671e507bc85828c4e5f59e42f3b",
+  "engineSha256": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+  "focusedRuns": {
+    "reference": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_check.py",
+        "--manifest",
+        "/tmp/s11cd-end-resolvent-20260911/full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--end",
+        "REFERENCE",
+        "--analysis-cache",
+        "/tmp/s11cd-exceptional-strata-20260911/analysis"
+      ],
+      "run_directory": "/tmp/s11cd-exceptional-strata-20260911/bulk_reference_final_v3",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "40f1d95e8031ef1376d4054c77ea2f7bb41dc926eaf657ec55e6f8a0243a1900",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57"
+      },
+      "exit_code": 0,
+      "wall_seconds": 80.97164691239595,
+      "peak_rss_kib": 296192,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "40f1d95e8031ef1376d4054c77ea2f7bb41dc926eaf657ec55e6f8a0243a1900",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 1430179,
+          "sha256": "9f9ce1219b08b81d62ead62dc13eaa949f9dc564e6151443fa43336a1ac920cf"
+        },
+        "progress.json": {
+          "bytes": 137,
+          "sha256": "1df3e7a7346a281a33833e1083615aac972d70af369124e1231eb1cc7b98c099"
+        }
+      }
+    },
+    "left": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_check.py",
+        "--manifest",
+        "/tmp/s11cd-end-resolvent-20260911/full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--end",
+        "LEFT",
+        "--analysis-cache",
+        "/tmp/s11cd-exceptional-strata-20260911/analysis"
+      ],
+      "run_directory": "/tmp/s11cd-exceptional-strata-20260911/bulk_left_final_v2",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "40f1d95e8031ef1376d4054c77ea2f7bb41dc926eaf657ec55e6f8a0243a1900",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57"
+      },
+      "exit_code": 0,
+      "wall_seconds": 79.33772549033165,
+      "peak_rss_kib": 265548,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "40f1d95e8031ef1376d4054c77ea2f7bb41dc926eaf657ec55e6f8a0243a1900",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 1430172,
+          "sha256": "39550651689f2068bd076410679c6c92772b4c07b90d4ff9e145c4e36091d984"
+        },
+        "progress.json": {
+          "bytes": 139,
+          "sha256": "53cfa9e76013e4203f1e380d5bf074a09fc9c20227a546f5576f2637680da0bb"
+        }
+      }
+    },
+    "right": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_check.py",
+        "--manifest",
+        "/tmp/s11cd-end-resolvent-20260911/full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--end",
+        "RIGHT",
+        "--analysis-cache",
+        "/tmp/s11cd-exceptional-strata-20260911/analysis"
+      ],
+      "run_directory": "/tmp/s11cd-exceptional-strata-20260911/bulk_right_final_v3",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "40f1d95e8031ef1376d4054c77ea2f7bb41dc926eaf657ec55e6f8a0243a1900",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57"
+      },
+      "exit_code": 0,
+      "wall_seconds": 118.85531981661916,
+      "peak_rss_kib": 296272,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "40f1d95e8031ef1376d4054c77ea2f7bb41dc926eaf657ec55e6f8a0243a1900",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 1431191,
+          "sha256": "d06d803f5f12a91feb53cba5cbd45df059ea925691196e393e8b0c0a8363090b"
+        },
+        "progress.json": {
+          "bytes": 140,
+          "sha256": "04d8d808b04d6ca45b08bdec13bf00e786d4603b63fe9402664b3e74eafaece1"
+        }
+      }
+    },
+    "native": {
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_check.py",
+        "--manifest",
+        "/tmp/s11cd-end-resolvent-20260911/full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--end",
+        "REFERENCE",
+        "--native"
+      ],
+      "run_directory": "/tmp/s11cd-exceptional-strata-20260911/bulk_native_final_v2",
+      "source_hashes_before": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "40f1d95e8031ef1376d4054c77ea2f7bb41dc926eaf657ec55e6f8a0243a1900",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57"
+      },
+      "exit_code": 0,
+      "wall_seconds": 23.853083574213088,
+      "peak_rss_kib": 265476,
+      "source_hashes_after": {
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+        "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+        "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+        "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+        "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+        "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+        "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+        "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+        "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_exceptional_strata_check.py": "40f1d95e8031ef1376d4054c77ea2f7bb41dc926eaf657ec55e6f8a0243a1900",
+        "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+        "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+        "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+        "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+        "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57"
+      },
+      "artifacts": {
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "full.out": {
+          "bytes": 405694,
+          "sha256": "96ed8b9a44d1031a27f12fcdd959249f2d8c628838df679f576af61392f82332"
+        },
+        "progress.json": {
+          "bytes": 137,
+          "sha256": "4547e72461cabe81122460ddd0f0d7a9db0319031bcc6c329162b056fc2b9c33"
+        }
+      }
+    }
+  },
+  "focusedPublication": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_reference.out",
+      "sha256": "9f9ce1219b08b81d62ead62dc13eaa949f9dc564e6151443fa43336a1ac920cf",
+      "bytes": 1430179,
+      "previous": {
+        "exists": true,
+        "isSymlink": true,
+        "resolvedPath": "/var/projects/toy_physics/.git/annex/objects/KG/wx/MD5E-s254459--90e5f19039aa76a58766a140df8e666a.out/MD5E-s254459--90e5f19039aa76a58766a140df8e666a.out",
+        "sha256": "a7beaa0028869621926d8a7e17b0d99b6b1c1cbcb3f1312e6d9da7a29ce1c44b",
+        "bytes": 254459
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_left.out",
+      "sha256": "39550651689f2068bd076410679c6c92772b4c07b90d4ff9e145c4e36091d984",
+      "bytes": 1430172,
+      "previous": {
+        "exists": false
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_right.out",
+      "sha256": "d06d803f5f12a91feb53cba5cbd45df059ea925691196e393e8b0c0a8363090b",
+      "bytes": 1431191,
+      "previous": {
+        "exists": false
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_native.out",
+      "sha256": "96ed8b9a44d1031a27f12fcdd959249f2d8c628838df679f576af61392f82332",
+      "bytes": 405694,
+      "previous": {
+        "exists": false
+      }
+    }
+  ],
+  "focusedInventorySha256": "8f6927bd7975683e178c634c5a0db57d41c7dc6d50a84b4ac416eac5070c1721",
+  "projectionControlSha256": "8e69d7c254b5d4dc8ad8b41d182a79a23f03ce73c2dd683b35da5788dde9ebcc",
+  "fullRunManifest": "/tmp/s11cd-exceptional-strata-20260911/bulk_full/manifest.json",
+  "mainProductionRegenerated": true,
+  "exportExists": false,
+  "developmentStages": [
+    "bulk_reference_dev",
+    "bulk_reference_final",
+    "bulk_reference_final_v2",
+    "bulk_right_final",
+    "bulk_right_final_v2",
+    "bulk_left_final",
+    "bulk_native_final"
+  ],
+  "developmentFailures": {
+    "bulk_right_final": "Python integer decimal-conversion limit during computed coefficient fingerprinting",
+    "bulk_right_final_v2": "Three nonfinite binary64 tensor PIT samples for a finite exact coefficient; caught by the expanded inventory"
+  },
+  "additionalCommitPerformed": false,
+  "reviewComparatorWolframOrDownstreamRun": false,
+  "fullRun": {
+    "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+    "command": [
+      "/usr/bin/python",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "--case",
+      "ALL",
+      "--channel-input-file",
+      "_measurements/S11c_d_channel_preflight_input.json",
+      "--channel-input-scope",
+      "spectrum",
+      "--dev-symbol-cache",
+      "/tmp/s11cd-exceptional-strata-20260911/bulk_full/symbols"
+    ],
+    "run_directory": "/tmp/s11cd-exceptional-strata-20260911/bulk_full",
+    "source_hashes_before": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+      "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+      "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+      "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+      "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+      "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+      "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+      "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+      "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "_measurements/S11c_d_exceptional_strata_check.py": "40f1d95e8031ef1376d4054c77ea2f7bb41dc926eaf657ec55e6f8a0243a1900",
+      "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+      "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+      "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+      "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+      "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57"
+    },
+    "exit_code": 0,
+    "wall_seconds": 9632.054785175249,
+    "peak_rss_kib": 1730232,
+    "source_hashes_after": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+      "scripts/S11c_b_exports.py": "29e7b4eccb5d234d90b4ce8dcca8a567c3d22f7a57ab30e70c11d28b65a38372",
+      "scripts/S11c_c1_exports.py": "793cf7ec9a916d6c9c8cba7a4a5ba348c01c4f339407cae795ec42679e2b021b",
+      "scripts/S11c_c2_exports.py": "b9c93e972e2a2aff45c96334b2a88ebfd7991ba5ab274e626bf3608b36fa7896",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "_measurements/S11c_d_inverse_fourier_check.py": "42dc0f2f17435148d50e5058e38e3f9de1425fdac20d480a2236c637c4b23962",
+      "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+      "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+      "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+      "_measurements/S11c_d_end_spectrum_preflight.py": "d537348ffe641a4bb5a084c4b0531c3e58a5b9368fca1f31a6059a5623403742",
+      "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+      "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+      "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+      "_measurements/S11c_d_end_resolvent_check.py": "6feb4f2f5dfa7cf9e63f843799c9d98970957967484e870b162fb3e82a354dbc",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "_measurements/S11c_d_exceptional_strata_check.py": "40f1d95e8031ef1376d4054c77ea2f7bb41dc926eaf657ec55e6f8a0243a1900",
+      "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+      "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+      "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+      "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+      "_measurements/S11c_d_bulk_projection_check.py": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57"
+    },
+    "artifacts": {
+      "stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "full.out": {
+        "bytes": 58095644,
+        "sha256": "459c047acee94c5f307bd914809747954d4fb2b2d46bc36c78ace8e1b500e6c2"
+      },
+      "progress.json": {
+        "bytes": 142,
+        "sha256": "df5b81ff3032dac7f0c42d59b340208066021ce8dee67e4a8a967a23e39c865a"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 73820,
+        "sha256": "e9d7ba8dd18d6c5f5a938749229cdd973cd53c5b0d17ff40f4062ccce8583b16"
+      },
+      "symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 89063,
+        "sha256": "08089bc6c5f040ddb6be2a4d8e3a1f7d9820bc040607543592de838a1be5b1b6"
+      },
+      "symbols/LEFT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 89074,
+        "sha256": "cb8918aaee046452fe2ef7dae5237ce83268081b97be44403caf73f5744f0a84"
+      },
+      "symbols/REFERENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 73820,
+        "sha256": "e9d7ba8dd18d6c5f5a938749229cdd973cd53c5b0d17ff40f4062ccce8583b16"
+      },
+      "symbols/LEFT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 87705,
+        "sha256": "003d5035b22812232a647bc104999cb62f292495d839976f3b9e705363748f19"
+      },
+      "symbols/RIGHT_LAB_HELD_RHOBR_CONSTANT.pickle": {
+        "bytes": 87669,
+        "sha256": "64a5172399f430c79ae0fea69a03c3f39b092d450de127c3c1e16fbc18ff0c27"
+      },
+      "symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 89063,
+        "sha256": "5519e5b2e67c6867df0c6f221e8903ee02a3e0be71d11cde60503042eafa79d4"
+      },
+      "symbols/RIGHT_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 89089,
+        "sha256": "11f795e9d9e7f665bd845844fa12dd106c2d9a8289d39face59f06b443226583"
+      },
+      "symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle": {
+        "bytes": 69922,
+        "sha256": "0d92afcd48598c0990d61a4c2456c3c75de77849c7fcbbbc126a64b659043f72"
+      },
+      "symbols/LEFT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 87705,
+        "sha256": "f9d1a377eaf0bb94f7314893b4cdd9d7ba97e974f8f6fa719499f6d7a6783508"
+      },
+      "symbols/REFERENCE_MATERIAL_ADVECTED_RHO4_CONSTANT.pickle": {
+        "bytes": 73821,
+        "sha256": "a899215e47849e754b1378de8f17e5423187750ddf2a5bac9d9eb663e361995b"
+      },
+      "symbols/RIGHT_MATERIAL_ADVECTED_RHOBR_CONSTANT.pickle": {
+        "bytes": 87669,
+        "sha256": "64a5172399f430c79ae0fea69a03c3f39b092d450de127c3c1e16fbc18ff0c27"
+      }
+    }
+  },
+  "mainPublication": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out",
+    "sha256": "459c047acee94c5f307bd914809747954d4fb2b2d46bc36c78ace8e1b500e6c2",
+    "bytes": 58095644,
+    "previous": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out",
+      "isSymlink": true,
+      "resolvedPath": "/var/projects/toy_physics/.git/annex/objects/2M/zQ/MD5E-s189492142--0ba05c9532fa74aea39b84d725f75091.out/MD5E-s189492142--0ba05c9532fa74aea39b84d725f75091.out",
+      "sha256": "b04b50c87e227498a7acf48dec0a8a46e3e2288bb09045f479c9de2523a1d617",
+      "bytes": 189492142
+    }
+  },
+  "publicationChecks": {
+    "readyToPublish": true,
+    "checks": {
+      "completedStableProducer": true,
+      "currentSourcesPinned": true,
+      "producerHash": true,
+      "inventoryProcesses": true,
+      "inventoryTranscriptHashes": true,
+      "metadataAndFiniteObjects": true,
+      "solvedDimensionResiduals": true,
+      "completionMarkers": true,
+      "nativeRootCoverage": true,
+      "nativeMultiplicityAndCount": true,
+      "nativeExistingValuesPreserved": true,
+      "legacyValuesPreserved": true,
+      "oldSheetValuesPreserved": true,
+      "resolventCensus": true,
+      "newFiniteSliceRecords": true,
+      "scopeBoundariesRetained": true,
+      "allPriorPayloadsAccountedFor": true,
+      "fourierCensusAndResiduals": true,
+      "codecRoundTrip": true,
+      "sourceIndex": true,
+      "solverContract": true,
+      "exportAbsent": true
+    },
+    "fullTranscriptSha256": "459c047acee94c5f307bd914809747954d4fb2b2d46bc36c78ace8e1b500e6c2",
+    "newSliceTotals": {
+      "THRESHOLD_RANK_RECORDS": 24,
+      "EXACT_GENERIC_MINOR_IDENTITIES": 312,
+      "BULK_CRITICAL_FREQUENCY_COUNT": 24,
+      "END_CRITICAL_FREQUENCY_COUNT": 24,
+      "TARGET_POINT_COUNT": 84,
+      "FINITE_TARGET_POINT_COUNT": 12,
+      "FREQUENCY_REGION_COUNT": 36,
+      "NORMAL_CELL_COUNT": 60,
+      "BANK_PAIR_COUNT": 144,
+      "BANK_PATH_TRANSPORTED": 288,
+      "TARGET_ROOT_CENSUSES": 48,
+      "INTERVAL_WITNESSES": 96,
+      "CELL_RADICAL_LIFTS": 120,
+      "NUMERIC_INVERSE_DOMAIN_RECORDS": 408,
+      "NATIVE_REGULARITY_PACKETS": 24
+    },
+    "newSliceStatuses": {
+      "UNRESOLVED_ZERO_FREQUENCY_INTERSECTION": 12,
+      "THRESHOLD_SUBSPACE_COMPUTED_GENERALIZED_NORMAL_MODES_UNRESOLVED": 24,
+      "UNRESOLVED_SINGULAR_ENTRY_DENOMINATOR": 72,
+      "FINITE_BRANCH_POINT_MATRIX_COMPUTED": 12,
+      "TRANSPORTED": 288
+    },
+    "payloadClassificationCounts": {
+      "nativeAddedFieldsOrAssociationOrder": 936,
+      "producerProvenanceOrCheckpoint": 4,
+      "boundCarrierAssociationOrder": 48,
+      "sourceAlignmentOrderWithReindexedMetadata": 24,
+      "closureSetAndEdgeOrder": 1,
+      "inferredDimensionAssociationOrder": 1,
+      "injectiveDummyIdentityRenaming": 246
+    },
+    "inventoryArtifacts": {
+      "_measurements/S11c_d_bulk_full_codec_inventory.json": {
+        "sha256": "70497eef17ecf0f1d94734660eceeb829dfea7844b5952fd2d543ec3be46c18a",
+        "bytes": 945
+      },
+      "_measurements/S11c_d_bulk_full_exceptional_inventory.json": {
+        "sha256": "925de3dd3954b46e2fc9bb874461943677c0a9d6da0ae79b2aebe3333df5c718",
+        "bytes": 7086480
+      },
+      "_measurements/S11c_d_bulk_full_exceptional_inventory_summary.json": {
+        "sha256": "e4aa8607f5717f67b78c85bcb56f96e18fe943d86dae173cc5341fdebc734eef",
+        "bytes": 134123
+      },
+      "_measurements/S11c_d_bulk_full_inverse_inventory.json": {
+        "sha256": "4036a3d5444281e42732a2752b91626ad7cfdb58063b6605ac2ab26f87461e68",
+        "bytes": 4700
+      },
+      "_measurements/S11c_d_bulk_full_joint_inventory.json": {
+        "sha256": "f0e40440712cce57a59f27326fcf7a8a9235ab617f24e39e8227bf77842cbde2",
+        "bytes": 3016184
+      },
+      "_measurements/S11c_d_bulk_full_payload_inventory.json": {
+        "sha256": "c2dfd25dc07a9f1e4b5859af51fd0ca9e53cdeae93d7fd89b1deb981f23136a2",
+        "bytes": 2187603
+      },
+      "_measurements/S11c_d_bulk_full_payload_preservation.json": {
+        "sha256": "70a04d691ce192456d72a448f5f2464157c619f704055f6022fee4a622193b7f",
+        "bytes": 120529
+      },
+      "_measurements/S11c_d_bulk_full_resolvent_inventory.json": {
+        "sha256": "4600369f8fb155fdfd7bc24626b51ceccc86d576fe0ce5769f53c52fd017f266",
+        "bytes": 3895780
+      },
+      "_measurements/S11c_d_bulk_full_spectrum_inventory.json": {
+        "sha256": "c335cd0e839c7c712746dc6937347b8fbcc45e8092dba2c389dc2a40df4d40a1",
+        "bytes": 317758
+      }
+    },
+    "solvedDimensionResidualScope": "Raw INPUT_DIMENSION_CONSTRAINTS are retained equations; the three solved residual/unresolved lists are empty.",
+    "remainingBroadTodos": "Tuple(Str('FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS'), Str('GENERIC_DOMAIN_SHEET_CONTINUATION'), Str('CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION'), Str('COMPLETE_TWO_ENDED_SCATTERING'), Str('POLES_RIESZ_OVERLAP'), Str('SURVIVAL'), Str('FLUX_BOOKKEEPING'), Str('WEAK_COEFFICIENTS'), Str('SECTION_5_CONTROLS'), Str('OWN_ROWS_EXPORT'))",
+    "verificationInstrumentSha256": "45a3836abf9d0cdf1e015e51f0889f8464a96f63e94a56677e1c4ed795669658"
+  },
+  "inventoryRuns": [
+    {
+      "kind": "resolvent",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_resolvent_inventory.py",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out",
+        "--baseline",
+        "/tmp/s11cd-end-resolvent-20260911/full/full.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_bulk_full_resolvent_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 320.78824713639915,
+      "stderrBytes": 0,
+      "stdoutBytes": 111
+    },
+    {
+      "kind": "joint",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_joint_sheet_inventory.py",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out",
+        "--baseline",
+        "/tmp/s11cd-end-resolvent-20260911/full/full.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_bulk_full_joint_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 56.215097456239164,
+      "stderrBytes": 0,
+      "stdoutBytes": 133
+    },
+    {
+      "kind": "spectrum",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_spectrum_inventory.py",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out",
+        "--baseline",
+        "/tmp/s11cd-end-resolvent-20260911/full/full.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_bulk_full_spectrum_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 113.07430430408567,
+      "stderrBytes": 0,
+      "stdoutBytes": 113
+    },
+    {
+      "kind": "exceptional",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_inventory.py",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out",
+        "--baseline",
+        "/tmp/s11cd-end-resolvent-20260911/full/full.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_bulk_full_exceptional_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 195.99931739643216,
+      "stderrBytes": 0,
+      "stdoutBytes": 0
+    },
+    {
+      "kind": "payload",
+      "command": [
+        "/usr/bin/python",
+        "/tmp/s11cd-exceptional-strata-20260911/payload_inventory.py"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 7.192615093663335,
+      "stderrBytes": 0,
+      "stdoutBytes": 713
+    },
+    {
+      "kind": "inverse",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_inverse_fourier_inventory.py",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 5.948303364217281,
+      "stderrBytes": 0,
+      "stdoutBytes": 4700
+    },
+    {
+      "kind": "expand",
+      "command": [
+        "/usr/bin/python",
+        "scripts/S11c_d_output_codec.py",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/full.out",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/expanded.out"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 9.110842717811465,
+      "stderrBytes": 0,
+      "stdoutBytes": 0
+    },
+    {
+      "kind": "codec",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_output_codec_check.py",
+        "/tmp/s11cd-exceptional-strata-20260911/bulk_full/expanded.out",
+        "--output",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_bulk_full_codec_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 9.911024102009833,
+      "stderrBytes": 0,
+      "stdoutBytes": 945
+    }
+  ],
+  "verificationExtras": {
+    "sourceSnapshots": {
+      "payload_inventory.py": {
+        "path": "/tmp/s11cd-exceptional-strata-20260911/bulk_full/verification_source/payload_inventory.py",
+        "sha256": "33c515a06ecfecdef21ce3c5e133d95d85f886259a2eecd64b1859ee7a8d83e7"
+      },
+      "summarize_exceptional.py": {
+        "path": "/tmp/s11cd-exceptional-strata-20260911/bulk_full/verification_source/summarize_exceptional.py",
+        "sha256": "5daeab7de0255995d315e7769848de6b0f6646d9669dd0b694512966e5e572ef"
+      },
+      "publication_check.py": {
+        "path": "/tmp/s11cd-exceptional-strata-20260911/bulk_full/verification_source/publication_check.py",
+        "sha256": "45a3836abf9d0cdf1e015e51f0889f8464a96f63e94a56677e1c4ed795669658"
+      },
+      "S11c_d_payload_preservation_inventory.py": {
+        "path": "/tmp/s11cd-exceptional-strata-20260911/bulk_full/verification_source/S11c_d_payload_preservation_inventory.py",
+        "sha256": "0da2e6b3afdf7167a53bd2041b070b37ea8a1ce4d4412a3c7ad655d0ec2fd7bf",
+        "canonicalPath": "_measurements/S11c_d_payload_preservation_inventory.py"
+      }
+    },
+    "payloadPreservation": {
+      "path": "_measurements/S11c_d_bulk_full_payload_preservation.json",
+      "sha256": "70a04d691ce192456d72a448f5f2464157c619f704055f6022fee4a622193b7f"
+    },
+    "exceptionalSummary": {
+      "path": "_measurements/S11c_d_bulk_full_exceptional_inventory_summary.json",
+      "sha256": "e4aa8607f5717f67b78c85bcb56f96e18fe943d86dae173cc5341fdebc734eef"
+    }
+  },
+  "codecExpansion": {
+    "scratchOnly": true,
+    "path": "/tmp/s11cd-exceptional-strata-20260911/bulk_full/expanded.out",
+    "bytes": 217079452,
+    "sha256": "ede74613a2248da60cbeec61b8ec09139493bfba5219829330b344bd21cedd31"
+  },
+  "allTenBroadTodosRemain": true,
+  "finalVerification": {
+    "focusedPublications": [
+      {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_reference.out",
+        "publishedHashMatches": true,
+        "previousAnnexHashMatches": true
+      },
+      {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_left.out",
+        "publishedHashMatches": true
+      },
+      {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_right.out",
+        "publishedHashMatches": true
+      },
+      {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_exceptional_strata_native.out",
+        "publishedHashMatches": true
+      }
+    ],
+    "brokenReportLinks": [],
+    "pythonCompilationExitCode": 0,
+    "gitDiffCheckExitCode": 0,
+    "engineSha256": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+    "reportArtifacts": {
+      "S11c_d_bulk_exceptional_report.md": "844b4d9b318f5837ca899f4e7c5e2a21fa9a91b2cbac39cf5fb8f51c47d6d314",
+      "S11c_d_sympy_builder_report.md": "5a99c8d486adaa2469f4119fb6b45c2c39dc600697147aff89d3c384a5c24a38",
+      "S11c_d_exceptional_strata_plan.md": "1f7a9c72b7baa05bdd3d2abfbf83ff91ef8fdd41d17f155a57bf9409dd6e75d8"
+    }
+  }
+}

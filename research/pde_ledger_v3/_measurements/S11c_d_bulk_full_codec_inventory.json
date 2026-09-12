@@ -1,0 +1,27 @@
+{
+  "source": "/tmp/s11cd-exceptional-strata-20260911/bulk_full/expanded.out",
+  "sourceSha256": "ede74613a2248da60cbeec61b8ec09139493bfba5219829330b344bd21cedd31",
+  "sourceBytes": 217079452,
+  "encodedBytes": 58095644,
+  "records": 124804,
+  "distinctSharedPayloads": 10494,
+  "payloadMismatches": [],
+  "unencodedPayloadSha256": "089056e62490b34c6e2f2c90d7e384753d2846f96dd11f3eef4e429078b1c7cd",
+  "decodedPayloadSha256": "089056e62490b34c6e2f2c90d7e384753d2846f96dd11f3eef4e429078b1c7cd",
+  "sourceIndexChecks": [
+    {
+      "tagCount": 124802,
+      "differentAssignments": 0,
+      "oldBytes": 16606457,
+      "newBytes": 1565337
+    }
+  ],
+  "malformedReferenceRejections": [
+    true,
+    true
+  ],
+  "instrumentSha256": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+  "codecSha256": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+  "wallSeconds": 8.642276817001402,
+  "peakRssKiB": 286388
+}

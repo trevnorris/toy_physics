@@ -29,6 +29,11 @@ import signal
 import sys
 import time
 
+# Exact, locally computed elimination coefficients can exceed Python's default
+# decimal rendering limit. Their transcript representation remains fingerprinted.
+if hasattr(sys,'set_int_max_str_digits'):
+    sys.set_int_max_str_digits(0)
+
 import sympy as sp
 import numpy as np
 from sympy.core.function import AppliedUndef
@@ -3207,8 +3212,17 @@ identities are distinct from numerical full-basis checks at targeted points.
         for symbol in (self.w,self.k,self.q):
             self.d.known[symbol] = self.d.zero
 
-    def emit(self, tag, value, unit=None, *, heavy=False):
-        self.spectrum.emit(self.prefix+'_'+tag,value,unit,heavy=heavy)
+    def emit(self, tag, value, unit=None, *, heavy=False, coefficient=False):
+        if coefficient:
+            # Polynomial coefficients can be exact Gaussian rationals outside
+            # binary64 range even when the evaluated physical matrix is modest.
+            # Keep this symbolic-coefficient package on the arbitrary-precision
+            # carrier path, including when a particular coefficient is constant.
+            body=cas(value);name=self.prefix+'_'+tag
+            emit(name,carrier_fingerprint(body))
+            emit('METADATA_'+name,self.modes.numeric_metadata(body,unit or (lambda p:self.d.zero)))
+        else:
+            self.spectrum.emit(self.prefix+'_'+tag,value,unit,heavy=heavy)
 
     @staticmethod
     def real_condition(expression, w):
@@ -3320,7 +3334,7 @@ identities are distinct from numerical full-basis checks at targeted points.
             condition = data['REAL_CONDITIONS'][label]
             common = condition['GCD']
             self.emit('LOCUS_'+label,{'ELIMINATION_POLYNOMIAL':expression,'REAL_COEFFICIENT_POLYNOMIAL':condition['REAL'].as_expr(),
-                'IMAGINARY_COEFFICIENT_POLYNOMIAL':condition['IMAGINARY'].as_expr(),'REAL_LOCUS_GCD':common.as_expr()},heavy=True)
+                'IMAGINARY_COEFFICIENT_POLYNOMIAL':condition['IMAGINARY'].as_expr(),'REAL_LOCUS_GCD':common.as_expr()},coefficient=True)
             self.emit('LOCUS_'+label+'_REAL_ISOLATION',{'IDENTICALLY_ZERO':common.is_zero,
                 'GCD_DEGREE':common.degree(),'REAL_INTERVALS':condition['INTERVALS'] if condition['INTERVALS'] is not None else 'UNRESOLVED_IDENTICAL_LOCUS'})
             if not common.is_zero:
@@ -3421,6 +3435,882 @@ identities are distinct from numerical full-basis checks at targeted points.
                 'NORMAL_LIFT_COUNT':len(set(normal_roots)),
                 'REGULAR_NORMAL_LIFT_DOMAIN':bool(sp.simplify(data['K_SQUARE'].subs(point))!=0 and qroot!=0)})
             self.emit(prefix+'_STATUS','THRESHOLD_SUBSPACE_COMPUTED_GENERALIZED_NORMAL_MODES_UNRESOLVED')
+
+
+class NormalTaylorChains:
+    """Full root-chain spaces of a bound analytic matrix germ.
+
+    Block equations come from substituting a vector Taylor ansatz into the
+    computed matrix Taylor series. Exact arithmetic stays in one algebraic
+    coefficient field; general-purpose simplify can be costly on these roots.
+    A finite cap with no stabilized kernel count is explicitly unresolved.
+    """
+
+    @staticmethod
+    def coefficient_frame(domain):
+        # Convert the expression tree arithmetically. Asking from_sympy to
+        # find a fresh minimal polynomial for each whole rational expression
+        # needlessly repeats number-field isomorphism and factorization work.
+        @lru_cache(maxsize=None)
+        def convert(value):
+            if value.is_Rational:
+                return domain.convert(value)
+            if value.is_Add:
+                return sum((convert(v) for v in value.args),domain.zero)
+            if value.is_Mul:
+                result = domain.one
+                for factor in value.args:
+                    result *= convert(factor)
+                return result
+            if value.is_Pow and value.exp.is_Integer:
+                return convert(value.base)**int(value.exp)
+            return domain.from_sympy(value)
+        return convert
+
+    @staticmethod
+    def construct(jets, domain):
+        from sympy.polys.matrices import DomainMatrix
+        n = jets[0].rows
+        convert = NormalTaylorChains.coefficient_frame(domain)
+        matrices = []
+        for matrix in jets:
+            entries = {}
+            for i in range(n):
+                row = {j:convert(matrix[i,j]) for j in range(n)}
+                row = {j:v for j,v in row.items() if v!=domain.zero}
+                if row: entries[i] = row
+            matrices.append(DomainMatrix(entries,(n,n),domain))
+        blocks, kernels, counts, increments = [], [], [], []
+        previous = 0
+        for depth in range(1,len(jets)+1):
+            rows = [DomainMatrix.hstack(*[matrices[i-j] if i>=j else
+                    DomainMatrix.zeros((n,n),domain) for j in range(depth)]) for i in range(depth)]
+            block = DomainMatrix.vstack(*rows)
+            kernel = block.nullspace(divide_last=True).transpose()
+            blocks.append(block); kernels.append(kernel)
+            counts.append(kernel.shape[1]); increments.append(counts[-1]-previous)
+            previous = counts[-1]
+            if increments[-1]==0:
+                break
+        closed = increments[-1]==0
+        chains = []
+        chosen = DomainMatrix.zeros((n,0),domain)
+        if closed:
+            # The first coefficient of ker(T_d) spans chains of length >= d.
+            # Choose its complement to already-selected longer root chains.
+            for depth in range(len(kernels)-1,0,-1):
+                kernel = kernels[depth-1]
+                leading = kernel.extract(list(range(n)),list(range(kernel.shape[1])))
+                old_count = chosen.shape[1]
+                combined = chosen.hstack(leading)
+                _,pivots = combined.rref()
+                for column in (p-old_count for p in pivots if p>=old_count):
+                    vector = kernel.extract(list(range(n*depth)),[column])
+                    coefficients = tuple(vector.extract(list(range(n*j,n*(j+1))),[0]) for j in range(depth))
+                    residuals = tuple(sum((matrices[a].matmul(coefficients[b-a]) for a in range(b+1)),
+                                         DomainMatrix.zeros((n,1),domain)) for b in range(depth))
+                    chains.append({'LENGTH':depth,'COEFFICIENTS':tuple(v.to_Matrix() for v in coefficients),
+                                   'EQUATION_RESIDUALS':tuple(v.to_Matrix() for v in residuals)})
+                    chosen = chosen.hstack(coefficients[0])
+        result = {'KERNEL_COUNTS':tuple(counts),'KERNEL_INCREMENTS':tuple(increments),
+            'STABILIZED':closed,'BLOCKS':tuple(b.to_Matrix() for b in blocks),
+            'KERNELS':tuple(b.to_Matrix() for b in kernels),
+            'BLOCK_RANKS':tuple(b.rank() for b in blocks),
+            'KERNEL_BASIS_RANKS':tuple(v.rank() for v in kernels),
+            'RANK_NULLITY_RESIDUALS':tuple(b.shape[1]-b.rank()-v.rank() for b,v in zip(blocks,kernels)),
+            'BLOCK_KERNEL_RESIDUALS':tuple(b.matmul(v).to_Matrix() for b,v in zip(blocks,kernels)),
+            'ROOT_SPACE_DIMENSION':counts[0]}
+        if closed:
+            result.update({'CHAINS':chains,'LEADING_BASIS_RANK':chosen.rank(),
+                'CHAIN_LENGTH_SUM':sum(v['LENGTH'] for v in chains),
+                'CHAIN_COUNT_RESIDUAL':counts[0]-len(chains),
+                'TOTAL_MULTIPLICITY_RESIDUAL':counts[-1]-sum(v['LENGTH'] for v in chains)})
+        else:
+            result['STATUS'] = 'UNRESOLVED_CHAIN_LENGTH_BEYOND_TAYLOR_CAP'
+        return result
+
+    @staticmethod
+    @lru_cache(maxsize=24)
+    def at_point(physical, relation, w, k, q, frequency, normal, radical, maximum_order=4):
+        domain = sp.QQ.algebraic_field(sp.I,frequency,normal,radical)
+        convert = NormalTaylorChains.coefficient_frame(domain)
+        normal_form = lambda value: domain.to_sympy(convert(value))
+        point = {k:normal,q:radical}
+        germ = physical.subs(w,frequency)
+        curve = relation.subs(w,frequency)
+        slope = sp.cancel(-curve.diff(k)/curve.diff(q))
+        matrix_derivative, radical_derivative = germ, q
+        jets, radical_jets = [], []
+        for order in range(maximum_order+1):
+            jets.append((matrix_derivative.subs(point)/sp.factorial(order)).applyfunc(normal_form))
+            radical_jets.append(normal_form(radical_derivative.subs(point)/sp.factorial(order)))
+            right = NormalTaylorChains.construct(jets,domain)
+            left = NormalTaylorChains.construct([j.conjugate().T for j in jets],domain)
+            if right['STABILIZED'] and left['STABILIZED']:
+                break
+            matrix_derivative = (matrix_derivative.diff(k)+matrix_derivative.diff(q)*slope).applyfunc(sp.cancel)
+            radical_derivative = sp.cancel(radical_derivative.diff(k)+radical_derivative.diff(q)*slope)
+        delta = sp.Symbol('s11cdThresholdNormalIncrement')
+        radical_ansatz = sum(v*delta**j for j,v in enumerate(radical_jets))
+        curve_residual = sp.Poly(sp.expand(curve.subs({k:normal+delta,q:radical_ansatz})),delta)
+        return {'JETS':tuple(jets),'RADICAL_JETS':tuple(radical_jets),'RIGHT':right,'LEFT':left,
+            'RADICAL_TAYLOR_RESIDUALS':tuple(normal_form(curve_residual.nth(j)) for j in range(len(jets))),
+            'COMPUTED_TAYLOR_ORDER':len(jets)-1,'MAXIMUM_TAYLOR_ORDER':maximum_order,
+            'COEFFICIENT_FIELD_DEGREE':domain.ext.minpoly.degree()}
+
+
+class ThresholdModeAudit(EndExceptionalSlice):
+    """Generalized normal modes at enumerated finite threshold points."""
+
+    def __init__(self,spectrum,bindings):
+        super().__init__(spectrum)
+        self.bindings = bindings
+
+    def construct(self,suffix,channel_input,*,reference=False,end_data):
+        self.prefix = 'THRESHOLD_MODE_INPUT_'+suffix
+        m,d = self.modes,self.d
+        self.emit('UNIT_FRAME',channel_input.frame)
+        self.emit('SOURCE_SCOPE',{'BOUND_PARAMETER_FREQUENCY_SLICE':True,
+            'PROFILE_FREQUENCY_BOUND_POLES_COMPUTED':False,'FLUX_NORMALIZATION_COMPUTED':False})
+        data = end_data
+        self.emit('DETERMINANT_DOMAIN',data['DEFINED'])
+        if not data['DEFINED']:
+            return {'DEFINED':False}
+        algebraic,relation,joins = m.analytic(self.spectrum.strong)
+        mapping = channel_input.mapping(algebraic,relation,(m.r.omega,m.k,m.q,m.eta,m.sigma))
+        origin = {m.eta:0,m.sigma:0} if reference else channel_input.origin
+        coordinates = {m.r.omega:self.w,m.k:self.k,m.q:self.q}
+        self.original = self.spectrum.strong.xreplace(mapping).subs(origin).xreplace(coordinates)
+        square = sp.solve(data['RELATION'],self.q**2)[0]
+        scale = sp.sqrt(-sp.Poly(square,self.k).nth(2))
+        seeds = tuple(scale*rhs.xreplace(dict(zip(lhs.args,(*m.r.tangents,m.k)))).xreplace(mapping).xreplace(coordinates)
+                      for lhs,rhs in self.bindings)
+        self.seed = seeds[0]
+        self.transport = JointBulkSheetPath(data['RELATION'],self.w,self.k,self.q,self.seed)
+        self.emit('BOUND_CARRIERS',tuple((str(s),v) for s,v in mapping.items()),
+                  lambda p:d.measure(next(s for s in mapping if str(s)==p[0])))
+        self.emit('GRADE_ORIGIN',tuple((str(s),v) for s,v in origin.items()))
+        self.emit('SOURCE_GRADE_SUPPORT',tuple((p,tuple(sorted(PHYSICAL_METADATA.coefficients(v))))
+                                              for p,v in leaves(algebraic)))
+        self.emit('SOURCE_BRANCH_SEED',self.seed,lambda p:d.measure(m.q),heavy=True)
+        self.emit('SOURCE_BRANCH_JOIN_RESIDUALS',joins)
+        self.emit('SOURCE_SEED_JOIN_RESIDUALS',tuple(sp.simplify(v-self.seed) for v in seeds),lambda p:d.measure(m.q))
+        targets = {}
+        for label,condition in data['REAL_CONDITIONS'].items():
+            if not condition['GCD'].is_zero:
+                for root in condition['GCD'].sqf_part().real_roots():
+                    if root>=0: targets.setdefault(root,[]).append(label)
+        summaries = []
+        for i,(frequency,labels) in enumerate(sorted(targets.items(),key=lambda item:float(item[0]))):
+            tag = 'TARGET_'+str(i)
+            self.emit(tag+'_FREQUENCY',frequency,lambda p:d.measure(m.r.omega))
+            self.emit(tag+'_LOCUS_LABELS',labels)
+            if frequency==0:
+                self.emit(tag+'_DOMAIN',{'DEFINED':False,'STATUS':'UNRESOLVED_ZERO_FREQUENCY_INTERSECTION'})
+                continue
+            specialized = sp.Poly(data['POLYNOMIAL'].as_expr().subs(self.w,frequency),self.q,extension=True)
+            threshold = sp.Poly(data['TESTS']['NORMAL_THRESHOLD'].subs(self.w,frequency),self.q,extension=True)
+            common = sp.gcd(specialized,threshold)
+            roots = sp.solve(common.as_expr(),self.q)
+            self.emit(tag+'_ROOT_CENSUS',{'POLYNOMIAL_DEGREE':common.sqf_part().degree(),
+                'COMPUTED_ROOT_COUNT':len(roots),'DEGREE_RESIDUAL':common.sqf_part().degree()-len(roots)})
+            for j,radical in enumerate(roots):
+                name = tag+'_ROOT_'+str(j)
+                lifts = sp.solve(data['RELATION'].subs({self.w:frequency,self.q:radical}),self.k)
+                self.emit(name+'_NORMAL_LIFTS',lifts,lambda p:d.measure(m.k))
+                for h,normal in enumerate(lifts):
+                    summaries.append(self.point(data,name+'_LIFT_'+str(h),frequency,normal,radical))
+        summary = {'TARGET_FREQUENCY_COUNT':len(targets),'POINT_COUNT':len(summaries),
+            'GENERALIZED_POINT_COUNT':sum(v.get('CHAINS_COMPLETE',False) for v in summaries),
+            'POINTS':summaries,'GLOBAL_PARAMETER_OR_SHEET_ATLAS_COMPUTED':False,
+            'PROFILE_FREQUENCY_BOUND_POLES_COMPUTED':False}
+        self.emit('SUMMARY',summary)
+        return summary
+
+    def point(self,data,tag,frequency,normal,radical):
+        m,d = self.modes,self.d
+        point = {self.w:frequency,self.k:normal,self.q:radical}
+        self.emit(tag+'_POINT',{'OMEGA':frequency,'K':normal,'Q':radical},lambda p:
+                  d.measure(m.r.omega) if p[0]=='OMEGA' else d.measure(m.k) if p[0]=='K' else d.measure(m.q))
+        denominators = tuple(sp.cancel(v.subs(point)) for v in data['ROW_DENOMINATORS'])
+        self.emit(tag+'_DENOMINATOR_COEFFICIENT_VALUES',denominators)
+        finite = all(v!=0 and not v.has(sp.zoo,sp.nan,sp.oo,-sp.oo) for v in denominators)
+        domain = {'FINITE_DENOMINATOR_DOMAIN':finite,'ANALYTIC_RADICAL_CHART':radical!=0}
+        self.emit(tag+'_DOMAIN',domain)
+        if not finite or radical==0:
+            return {**domain,'CHAINS_COMPLETE':False}
+        computed = NormalTaylorChains.at_point(data['PHYSICAL'],data['RELATION'],self.w,self.k,self.q,
+                                               frequency,normal,radical)
+        k_unit,q_unit = d.measure(m.k),d.measure(m.q)
+        subtract = lambda a,b,j:tuple(x-j*y for x,y in zip(a,b))
+        self.emit(tag+'_TAYLOR_DOMAIN',{k:computed[k] for k in
+            ('COMPUTED_TAYLOR_ORDER','MAXIMUM_TAYLOR_ORDER','COEFFICIENT_FIELD_DEGREE')})
+        for j,matrix in enumerate(computed['JETS']):
+            self.emit(tag+'_MATRIX_TAYLOR_'+str(j),matrix,
+                      lambda p,j=j:subtract(self.spectrum.strong_units[p],k_unit,j),heavy=True)
+            self.emit(tag+'_RADICAL_TAYLOR_'+str(j),computed['RADICAL_JETS'][j],
+                      lambda p,j=j:subtract(q_unit,k_unit,j))
+            self.emit(tag+'_RADICAL_TAYLOR_RESIDUAL_'+str(j),computed['RADICAL_TAYLOR_RESIDUALS'][j],
+                      lambda p,j=j:subtract(tuple(2*x for x in q_unit),k_unit,j))
+        for side in ('RIGHT','LEFT'):
+            record = computed[side]
+            self.emit(tag+'_'+side+'_CENSUS',{k:v for k,v in record.items() if k not in
+                ('BLOCKS','KERNELS','BLOCK_KERNEL_RESIDUALS','CHAINS')})
+            # Block systems act on Taylor coefficients in the stated unit
+            # frame. Their coefficient matrices have no physical dimension;
+            # restored coefficient units accompany the physical chains below.
+            units = self.spectrum.field_units if side=='RIGHT' else tuple(tuple(-v for v in row) for row in self.spectrum.row_units)
+            row_units = self.spectrum.row_units if side=='RIGHT' else tuple(tuple(-v for v in row) for row in self.spectrum.field_units)
+            for index,(block,kernel,residual) in enumerate(zip(record['BLOCKS'],record['KERNELS'],record['BLOCK_KERNEL_RESIDUALS'])):
+                self.emit(tag+'_'+side+'_UNIT_FRAME_'+str(index)+'_COORDINATE_UNITS',
+                    {'ROW_COEFFICIENT_UNITS':tuple(subtract(unit,k_unit,j) for j in range(index+1) for unit in row_units),
+                     'COLUMN_COEFFICIENT_UNITS':tuple(subtract(unit,k_unit,j) for j in range(index+1) for unit in units)})
+                for label,value in (('BLOCK',block),('KERNEL',kernel),('RESIDUAL',residual)):
+                    self.emit(tag+'_'+side+'_UNIT_FRAME_'+str(index)+'_'+label,value,heavy=label!='RESIDUAL')
+            jets = computed['JETS'] if side=='RIGHT' else tuple(j.conjugate().T for j in computed['JETS'])
+            for index,chain in enumerate(record.get('CHAINS',())):
+                name = tag+'_'+side+'_CHAIN_'+str(index)
+                self.emit(name+'_LENGTH',chain['LENGTH'])
+                for j,(coefficient,residual) in enumerate(zip(chain['COEFFICIENTS'],chain['EQUATION_RESIDUALS'])):
+                    self.emit(name+'_COEFFICIENT_'+str(j),coefficient,
+                              lambda p,j=j:subtract(units[p[0]],k_unit,j),heavy=True)
+                    self.emit(name+'_EQUATION_RESIDUAL_'+str(j),residual,
+                              lambda p,j=j:subtract(row_units[p[0]],k_unit,j))
+                self.plane_wave(name,chain,jets,normal,units,row_units)
+        connection = self.connection(data,tag,frequency,normal,radical,computed)
+        summary = {**domain,'CHAINS_COMPLETE':all(computed[s]['STABILIZED'] and
+            computed[s]['CHAIN_COUNT_RESIDUAL']==0 and computed[s]['TOTAL_MULTIPLICITY_RESIDUAL']==0
+            for s in ('RIGHT','LEFT')),
+            'RIGHT_LENGTHS':tuple(c['LENGTH'] for c in computed['RIGHT']['CHAINS']) if computed['RIGHT']['STABILIZED'] else 'UNRESOLVED',
+            'LEFT_LENGTHS':tuple(c['LENGTH'] for c in computed['LEFT']['CHAINS']) if computed['LEFT']['STABILIZED'] else 'UNRESOLVED',
+            'CONNECTION':connection}
+        self.emit(tag+'_SUMMARY',summary)
+        return summary
+
+    def plane_wave(self,tag,chain,jets,normal,units,row_units):
+        # Polynomial coefficient of the root-function plane-wave ansatz.
+        delta,z = sp.symbols('s11cdThresholdAnsatzIncrement s11cdThresholdNormalPosition',real=True)
+        length = chain['LENGTH']
+        polynomial = sum((c*delta**j for j,c in enumerate(chain['COEFFICIENTS'])),sp.zeros(jets[0].cols,1))
+        wave = sp.exp(sp.I*(normal+delta)*z)*polynomial
+        mode = (wave.diff(delta,length-1).subs(delta,0)/sp.factorial(length-1))*sp.exp(-sp.I*normal*z)
+        mode = mode.applyfunc(sp.expand)
+        derivative_symbol = sp.diff(sp.exp(sp.I*delta*z),z)/sp.exp(sp.I*delta*z)/delta
+        applied = sum((matrix*mode.diff(z,j)/derivative_symbol**j for j,matrix in enumerate(jets)),
+                      sp.zeros(jets[0].rows,1)).applyfunc(sp.expand)
+        k_unit = self.d.measure(self.modes.k)
+        self.emit(tag+'_FOURIER_DIFFERENTIAL_COEFFICIENT',sp.simplify(derivative_symbol))
+        for power in range(length):
+            coefficient = mode.applyfunc(lambda v:sp.expand(v).coeff(z,power))
+            residual = applied.applyfunc(lambda v:sp.cancel(sp.expand(v).coeff(z,power),extension=True))
+            offset = length-1-power
+            self.emit(tag+'_PLANE_POLYNOMIAL_'+str(power),coefficient,
+                      lambda p:tuple(a-offset*b for a,b in zip(units[p[0]],k_unit)),heavy=True)
+            self.emit(tag+'_PLANE_EQUATION_RESIDUAL_'+str(power),residual,
+                      lambda p:tuple(a-offset*b for a,b in zip(row_units[p[0]],k_unit)))
+
+    def path_unit(self,path):
+        # Reuse the joint-path schema's restored units without substituting
+        # the threshold's normal coalescence for a bulk branch point.
+        proxy = BulkContinuationAudit.__new__(BulkContinuationAudit)
+        proxy.r,proxy.modes,proxy.dimensions = self.modes.r,self.modes,self.d
+        return proxy.path_unit(path)
+
+    def connection(self,data,tag,frequency,normal,radical,computed):
+        m,d = self.modes,self.d
+        point = {self.w:frequency,self.k:normal,self.q:radical}
+        source_root = sp.simplify(self.seed.subs(point))
+        source = self.original.subs(point).applyfunc(sp.simplify)
+        source_residual = (source-computed['JETS'][0]).applyfunc(sp.cancel)
+        self.emit(tag+'_SOURCE_ROOT',source_root,lambda p:d.measure(m.q))
+        self.emit(tag+'_SOURCE_ROOT_RESIDUAL',sp.simplify(radical-source_root),lambda p:d.measure(m.q))
+        self.emit(tag+'_SOURCE_MATRIX',source,lambda p:self.spectrum.strong_units[p],heavy=True)
+        self.emit(tag+'_SOURCE_MATRIX_RESIDUAL',source_residual,lambda p:self.spectrum.strong_units[p],heavy=True)
+        on_source = bool(sp.simplify(radical-source_root)==0)
+        self.emit(tag+'_REAL_AXIS_SHEET_JOIN',{'MATCHES_REDUCED_SEED':on_source,
+            'MATRIX_JOIN_ZERO':all(v==0 for v in source_residual),
+            'RADICAL_CHART_REGULAR':radical!=0,'FLUX_CHANNEL_LABEL_COMPUTED':False})
+        incident = [(i,f,a) for i,(f,a) in enumerate(data['FACTORS'])
+                    if sp.simplify(f.as_expr().subs(point))==0]
+        charts = []
+        valuations = []
+        field = sp.QQ.algebraic_field(sp.I,frequency,normal,radical)
+        convert = NormalTaylorChains.coefficient_frame(field)
+        slope = sp.cancel(-data['RELATION'].diff(self.k)/data['RELATION'].diff(self.q))
+        for i,factor,multiplicity in incident:
+            derivative = factor.as_expr()
+            coefficients = []
+            for order in range(9):
+                value = field.to_sympy(convert(derivative.subs(point)/sp.factorial(order)))
+                coefficients.append(value)
+                if value!=0: break
+                derivative = sp.cancel(derivative.diff(self.k)+derivative.diff(self.q)*slope)
+            resolved = coefficients[-1]!=0
+            valuation = len(coefficients)-1 if resolved else None
+            self.emit(tag+'_FACTOR_'+str(i)+'_LOCAL_TAYLOR_COEFFICIENTS',coefficients,coefficient=True)
+            valuations.append({'FACTOR_INDEX':i,'DETERMINANT_MULTIPLICITY':multiplicity,
+                'VALUATION_DEFINED':resolved,'NORMAL_ORDER':valuation if resolved else 'UNRESOLVED_TAYLOR_CAP'})
+        self.emit(tag+'_DETERMINANT_LOCAL_VALUATIONS',valuations)
+        if all(v['VALUATION_DEFINED'] for v in valuations) and all(computed[s]['STABILIZED'] for s in ('RIGHT','LEFT')):
+            total = sum(v['DETERMINANT_MULTIPLICITY']*v['NORMAL_ORDER'] for v in valuations)
+            self.emit(tag+'_DETERMINANT_CHAIN_MULTIPLICITY_RESIDUAL',
+                {side:total-computed[side]['CHAIN_LENGTH_SUM'] for side in ('RIGHT','LEFT')})
+        x = sp.Symbol('s11cdThresholdNormalSquareCoordinate')
+        for i,factor,multiplicity in incident:
+            polynomial = sp.Poly(sp.resultant(factor.as_expr(),data['RELATION'],self.q),self.k,
+                                 domain=sp.QQ_I.poly_ring(self.w)).sqf_part()
+            odd = sum(c*self.k**powers[0] for powers,c in polynomial.terms() if powers[0]%2)
+            squared = sum(c*x**(powers[0]//2) for powers,c in polynomial.terms() if powers[0]%2==0)
+            poly = sp.Poly(squared,x)
+            name = tag+'_UNFOLDING_'+str(i)
+            self.emit(name+'_FACTOR',factor.as_expr(),coefficient=True)
+            self.emit(name+'_NORMAL_PROJECTION',polynomial.as_expr(),coefficient=True)
+            self.emit(name+'_ODD_PROJECTION_RESIDUAL',odd,coefficient=True)
+            self.emit(name+'_DOMAIN',{'FACTOR_MULTIPLICITY':multiplicity,'NORMAL_SQUARE_DEGREE':poly.degree(),
+                'EVEN_PROJECTION':odd==0})
+            if odd!=0 or poly.degree()!=1:
+                charts.append({'DEFINED':False,'FACTOR_INDEX':i,'STATUS':'UNRESOLVED_NONQUADRATIC_NORMAL_UNFOLDING'})
+                continue
+            square = sp.cancel(sp.solve(poly.as_expr(),x)[0])
+            self.emit(name+'_NORMAL_SQUARE',square,lambda p:tuple(2*v for v in d.measure(m.k)),heavy=True)
+            self.emit(name+'_THRESHOLD_RESIDUAL',sp.simplify(square.subs(self.w,frequency)-normal**2),
+                      lambda p:tuple(2*v for v in d.measure(m.k)))
+            self.emit(name+'_FREQUENCY_SLOPE',sp.simplify(square.diff(self.w).subs(self.w,frequency)),
+                      lambda p:tuple(2*a-b for a,b in zip(d.measure(m.k),d.measure(m.r.omega))))
+            charts.append(self.local_chart(data,name,frequency,normal,radical,computed,square))
+        return {'MATCHES_REDUCED_REAL_AXIS_SEED':on_source,'INCIDENT_FACTOR_COUNT':len(incident),'CHARTS':charts,
+                'GLOBAL_SHEET_ATLAS_COMPUTED':False,'FLUX_CHANNEL_LABEL_COMPUTED':False}
+
+    def local_chart(self,data,tag,frequency,normal,radical,computed,square):
+        m,d = self.modes,self.d
+        disk = self.exception_disk(data,tag,frequency)
+        bases = {}
+        for side in ('RIGHT','LEFT'):
+            chains = computed[side].get('CHAINS')
+            if chains is None or not chains or any(c['LENGTH']!=2 for c in chains):
+                self.emit(tag+'_LOCAL_MODE_DOMAIN',{'DEFINED':False,'SIDE':side,
+                    'STATUS':'UNRESOLVED_NONUNIFORM_LENGTH_TWO_SECANT_CHART'})
+                return {'DEFINED':False}
+            zeroth = np.asarray(sp.Matrix.hstack(*(c['COEFFICIENTS'][0] for c in chains)).evalf(40),dtype=complex)
+            first = np.asarray(sp.Matrix.hstack(*(c['COEFFICIENTS'][1] for c in chains)).evalf(40),dtype=complex)
+            gauge = np.linalg.pinv(zeroth)
+            bases[side] = (zeroth,gauge,first-zeroth@gauge@first)
+        self.emit(tag+'_LOCAL_MODE_DOMAIN',{'DEFINED':True,'SVD_RELATIVE_TOLERANCE':1e-10,
+            'MATRIX_DECIMAL_DIGITS':(40,60),'SVD_FLOAT_MANTISSA_BITS':np.finfo(float).nmant+1,
+            'COEFFICIENT_GAUGE':'UNIT_FRAME_LEFT_INVERSE_OF_THRESHOLD_BASIS'})
+        evaluator = sp.lambdify((self.w,self.k,self.q),data['PHYSICAL'],'numpy',cse=True)
+        denominator_evaluator = sp.lambdify((self.w,self.k,self.q),data['ROW_DENOMINATORS'],'numpy',cse=True)
+        def node(name,wv,kv,qv,exact=False):
+            arguments = {self.w:wv,self.k:kv,self.q:qv}
+            if exact:
+                operand = data['PHYSICAL'].subs(arguments)
+                refined = operand.evalf(60); coarse = operand.evalf(40)
+                matrix = np.asarray(refined,dtype=complex)
+                self.emit(name+'_MATRIX_REFINEMENT',refined-coarse,lambda p:self.spectrum.strong_units[p])
+            else:
+                matrix = np.asarray(evaluator(complex(wv),complex(kv),complex(qv)),dtype=complex)
+            denominators = np.asarray(denominator_evaluator(complex(wv),complex(kv),complex(qv)),dtype=complex)
+            finite = bool(np.all(np.isfinite(matrix)) and np.all(np.isfinite(denominators)) and np.all(denominators!=0))
+            self.emit(name+'_POINT',{'OMEGA':wv,'K':kv,'Q':qv},lambda p:
+                d.measure(m.r.omega) if p[0]=='OMEGA' else d.measure(m.k) if p[0]=='K' else d.measure(m.q))
+            self.emit(name+'_RADICAL_RESIDUAL',sp.N(data['RELATION'].subs(arguments),25),
+                      lambda p:tuple(2*v for v in d.measure(m.q)))
+            self.emit(name+'_NORMAL_SQUARE_RESIDUAL',sp.N(kv**2-square.subs(self.w,wv),25),
+                      lambda p:tuple(2*v for v in d.measure(m.k)))
+            self.emit(name+'_DENOMINATOR_COEFFICIENT_VALUES',sp.ImmutableMatrix(denominators))
+            self.emit(name+'_FINITE_DOMAIN',finite)
+            if not finite: return {'DEFINED':False}
+            self.emit(name+'_PHYSICAL_MATRIX',sp.ImmutableMatrix(matrix),lambda p:self.spectrum.strong_units[p],heavy=True)
+            u,s,vh = np.linalg.svd(matrix)
+            tolerance = 1e-10*max(s)
+            rank = int(np.sum(s>tolerance)); nullity = matrix.shape[0]-rank
+            result = {'DEFINED':True,'RANK':rank,'NULLITY':nullity}
+            self.emit(name+'_UNIT_FRAME_SINGULAR_VALUES',sp.ImmutableMatrix(s))
+            self.emit(name+'_RANK_DOMAIN',{'RANK':rank,'NULLITY':nullity,'SVD_THRESHOLD':tolerance})
+            for side,raw,operator in (('RIGHT',vh.conj().T[:,rank:],matrix),('LEFT',u[:,rank:],matrix.conj().T)):
+                base,gauge,first = bases[side]
+                overlap = gauge@raw
+                overlap_rank = np.linalg.matrix_rank(overlap,tol=1e-10)
+                defined = nullity==base.shape[1] and overlap_rank==base.shape[1]
+                self.emit(name+'_'+side+'_GAUGE_DOMAIN',{'DEFINED':bool(defined),'OVERLAP_RANK':int(overlap_rank),
+                    'THRESHOLD_SPACE_DIMENSION':base.shape[1]})
+                if not defined: result['DEFINED']=False; continue
+                basis = raw@np.linalg.inv(overlap)
+                residual = operator@basis
+                units = self.spectrum.field_units if side=='RIGHT' else tuple(tuple(-v for v in row) for row in self.spectrum.row_units)
+                row_units = self.spectrum.row_units if side=='RIGHT' else tuple(tuple(-v for v in row) for row in self.spectrum.field_units)
+                self.emit(name+'_'+side+'_BASIS',sp.ImmutableMatrix(basis),lambda p:units[p[0]//nullity],heavy=True)
+                self.emit(name+'_'+side+'_EQUATION_RESIDUAL',sp.ImmutableMatrix(residual),lambda p:row_units[p[0]//nullity])
+                self.emit(name+'_'+side+'_GAUGE_RESIDUAL',sp.ImmutableMatrix(gauge@basis-np.eye(nullity)))
+                self.emit(name+'_'+side+'_THRESHOLD_BASIS_DIFFERENCE',sp.ImmutableMatrix(basis-base),
+                          lambda p:units[p[0]//nullity],heavy=True)
+                result[side] = basis
+            return result
+        approach = []
+        local_radius = disk['RADIUS']/2 if disk['DEFINED'] else frequency/100
+        self.emit(tag+'_LOCAL_RADIUS',local_radius,lambda p:d.measure(m.r.omega))
+        for index,divisor in enumerate((1,100)):
+            radius = local_radius/divisor
+            for direction in (-1,1):
+                wv = frequency+direction*radius
+                lifts = sp.solve(self.k**2-square.subs(self.w,wv),self.k)
+                pair = []
+                for index_k,kv in enumerate(lifts):
+                    name = tag+'_APPROACH_'+str(index)+'_'+('BELOW' if direction<0 else 'ABOVE')+'_'+str(index_k)
+                    qroots = sp.solve(data['RELATION'].subs({self.w:wv,self.k:kv}),self.q)
+                    qv = min(qroots,key=lambda root:abs(complex(sp.N(root-radical,30))))
+                    trace = self.transport.trace([(complex(frequency),complex(normal)),(complex(wv),complex(kv))],seed=complex(radical))
+                    self.emit(name+'_BULK_PATH',trace,self.path_unit)
+                    if trace['PATH_DEFINED']:
+                        self.emit(name+'_BULK_PATH_ENDPOINT_RESIDUAL',trace['END_Q']-complex(qv),lambda p:d.measure(m.q))
+                    pair.append(node(name,wv,kv,qv,exact=True))
+                defined = len(pair)==2 and all(v['DEFINED'] for v in pair)
+                approach.append(defined)
+                self.emit(tag+'_APPROACH_'+str(index)+'_'+str(direction).replace('-','M')+'_DOMAIN',defined)
+                if defined:
+                    for side in ('RIGHT','LEFT'):
+                        denominator = complex(lifts[1]-lifts[0])
+                        if side=='LEFT': denominator = denominator.conjugate()
+                        secant = (pair[1][side]-pair[0][side])/denominator
+                        units = self.spectrum.field_units if side=='RIGHT' else tuple(tuple(-v for v in row) for row in self.spectrum.row_units)
+                        count = bases[side][0].shape[1]
+                        for label,value in (('SECANT',secant),('CHAIN_OPERAND',bases[side][2]),('RESIDUAL',secant-bases[side][2])):
+                            self.emit(tag+'_APPROACH_'+str(index)+'_'+str(direction).replace('-','M')+'_'+side+'_'+label,
+                                sp.ImmutableMatrix(value),lambda p:tuple(a-b for a,b in zip(units[p[0]//count],d.measure(m.k))),
+                                heavy=label!='RESIDUAL')
+        paths = []
+        dummy,normal_root = sp.symbols('s11cdThresholdPathFixedCoordinate s11cdThresholdPathNormalRoot')
+        normal_transport = JointBulkSheetPath(normal_root**2-square,self.w,dummy,normal_root,sp.sqrt(square))
+        radius = float(local_radius)
+        for label,angle in (('UPPER',np.pi),('LOWER',-np.pi),('LOOP',2*np.pi)):
+            frequencies = [complex(frequency)+radius*np.exp(1j*angle*j/16) for j in range(17)]
+            frequencies[0] = complex(float(frequency)+radius)
+            frequencies[-1] = frequencies[0] if label=='LOOP' else complex(float(frequency)-radius)
+            for direction in (-1,1):
+                name = tag+'_'+label+'_'+str(direction).replace('-','M')
+                root = direction*complex(sp.N(sp.sqrt(square.subs(self.w,frequencies[0])),30))
+                normals = [root]
+                for wv in frequencies[1:]:
+                    candidate = complex(square.subs(self.w,wv))**0.5
+                    root = min((candidate,-candidate),key=lambda value:abs(value-root))
+                    normals.append(root)
+                normal_path = normal_transport.trace([(wv,0) for wv in frequencies],seed=normals[0])
+                # This auxiliary trace transports normal momentum as its root;
+                # all momentum/root entries therefore carry the normal unit.
+                def normal_path_unit(p):
+                    if p[-1] in ('SEED_Q','END_Q','ODE_END_Q','REFINEMENT_DIFFERENCE','ODE_DIFFERENCE','ODE_ABSOLUTE_TOLERANCE'):
+                        return d.measure(m.k)
+                    if p[-1] in ('SEED_RADICAL_RESIDUAL','MAXIMUM_RADICAL_RESIDUAL','ODE_MAXIMUM_RADICAL_RESIDUAL'):
+                        return tuple(2*v for v in d.measure(m.k))
+                    return self.path_unit(p)
+                self.emit(name+'_NORMAL_PATH',normal_path,normal_path_unit)
+                square0 = complex(data['RELATION'].subs({self.w:frequencies[0],self.k:normals[0],self.q:0}))
+                qcandidate = (-square0)**0.5
+                qstart = min((qcandidate,-qcandidate),key=lambda value:abs(value-complex(radical)))
+                initial = self.transport.trace([(complex(frequency),complex(normal)),(frequencies[0],normals[0])],seed=complex(radical))
+                self.emit(name+'_BULK_SEED_PATH',initial,self.path_unit)
+                bulk = self.transport.trace(list(zip(frequencies,normals)),seed=qstart)
+                self.emit(name+'_BULK_PATH',bulk,self.path_unit)
+                if initial['PATH_DEFINED']:
+                    self.emit(name+'_BULK_SEED_RESIDUAL',initial['END_Q']-qstart,lambda p:d.measure(m.q))
+                if normal_path['PATH_DEFINED']:
+                    self.emit(name+'_NORMAL_ENDPOINT_RESIDUAL',normal_path['END_Q']-normals[-1],lambda p:d.measure(m.k))
+                defined = bool(initial['PATH_DEFINED'] and normal_path['PATH_DEFINED'] and bulk['PATH_DEFINED'])
+                if defined:
+                    root = qstart
+                    node_records = []
+                    for node_index,(wv,kv) in enumerate(zip(frequencies,normals)):
+                        radicand = -complex(data['RELATION'].subs({self.w:wv,self.k:kv,self.q:0}))
+                        candidate = radicand**0.5
+                        root = min((candidate,-candidate),key=lambda value:abs(value-root))
+                        evaluated = node(name+'_NODE_'+str(node_index),m.number(wv),m.number(kv),m.number(root))
+                        node_records.append({key:evaluated[key] for key in ('DEFINED','RANK','NULLITY') if key in evaluated})
+                    self.emit(name+'_NODE_DOMAINS',node_records)
+                    self.emit(name+'_NODE_BULK_ENDPOINT_RESIDUAL',root-bulk['END_Q'],lambda p:d.measure(m.q))
+                    defined = defined and all(v['DEFINED'] for v in node_records)
+                paths.append({'LABEL':label,'INITIAL_NORMAL_SIGN':direction,'DEFINED':defined})
+        summary = {'DEFINED':all(approach) and all(v['DEFINED'] for v in paths),
+            'APPROACH_PAIR_COUNT':len(approach),'APPROACH_DEFINED_COUNT':sum(approach),'PATHS':paths,
+            'EXACT_MODE_EXCEPTION_DISK_DEFINED':disk['DEFINED'],
+            'AFFINE_BULK_SEGMENTS_BETWEEN_MODE_NODES':True,'GLOBAL_SHEET_ATLAS_COMPUTED':False,
+            'PHYSICAL_CURRENT_CHANNEL_LABEL_COMPUTED':False}
+        self.emit(tag+'_CONNECTION_SUMMARY',summary)
+        return summary
+
+    def exception_disk(self,data,tag,frequency):
+        # Exact rational Taylor dominance counts roots of each already-derived
+        # exception polynomial in a complex frequency disk. The target's
+        # algebraic multiplicity is obtained by polynomial division, not a
+        # witness. This keeps additional exceptional subloci out of the local
+        # mode neighborhood when the emitted inequalities certify it.
+        center = sp.Rational(str(sp.N(frequency,20)))
+        initial_radius = sp.Rational(str(sp.N(frequency/50,15)))
+        minimal = sp.Poly(sp.minpoly(frequency,self.w),self.w,domain=sp.QQ_I)
+        operands = []
+        for label,expression in data['LOCI'].items():
+            poly = sp.Poly(expression,self.w,domain=sp.QQ_I)
+            if poly.is_zero:
+                operands.append((label,poly,None,None));continue
+            quotient,multiplicity = poly,0
+            while quotient.degree()>=minimal.degree():
+                divided,remainder = quotient.div(minimal)
+                if not remainder.is_zero:break
+                quotient=divided;multiplicity+=1
+            shifted = poly.shift(center)
+            operands.append((label,poly,multiplicity,shifted))
+        attempts=[]
+        for attempt in range(4):
+            radius = initial_radius/10**attempt
+            inequalities=[]
+            for label,poly,multiplicity,shifted in operands:
+                if multiplicity is None:
+                    inequalities.append({'LABEL':label,'DEFINED':False,'STATUS':'IDENTICALLY_ZERO_CONDITION'});continue
+                lower = EndSpectrumCoverage.absolute_bounds(shifted.nth(multiplicity))[0]*radius**multiplicity
+                upper = sum(EndSpectrumCoverage.absolute_bounds(shifted.nth(j))[1]*radius**j
+                            for j in range(shifted.degree()+1) if j!=multiplicity)
+                sign = sp.sign(lower-upper)
+                inequalities.append({'LABEL':label,'DEFINED':bool(sign>0),'TARGET_MULTIPLICITY':multiplicity,
+                    'POLYNOMIAL_DEGREE':poly.degree(),'EXACT_DOMINANCE_SIGN':sign,
+                    'LOWER_BOUND':sp.N(lower,25),'OTHER_TERMS_UPPER_BOUND':sp.N(upper,25),
+                    'BOUND_OPERANDS_SHA256':hashlib.sha256(sp.srepr((lower,upper)).encode()).hexdigest(),
+                    'TAYLOR_RECONSTRUCTION_RESIDUAL':(shifted.shift(-center)-poly).as_expr()})
+            centered = bool(abs(frequency-center)<radius/2)
+            defined = centered and all(v['DEFINED'] for v in inequalities)
+            attempts.append({'ATTEMPT':attempt,'DEFINED':defined,'TARGET_IN_INNER_HALF_DISK':centered,
+                'RADIUS':radius,'INEQUALITIES':inequalities})
+            if defined:break
+        self.emit(tag+'_EXCEPTION_DISK_CENTER',center,lambda p:self.d.measure(self.modes.r.omega))
+        self.emit(tag+'_EXCEPTION_DISK_ATTEMPTS',attempts,lambda p:
+            self.d.measure(self.modes.r.omega) if p[-1]=='RADIUS' else self.d.zero)
+        result={'DEFINED':defined,'CENTER':center,'RADIUS':radius,'CONDITION_COUNT':len(operands)}
+        self.emit(tag+'_EXCEPTION_DISK_DOMAIN',result,lambda p:
+            self.d.measure(self.modes.r.omega) if p[-1] in ('CENTER','RADIUS') else self.d.zero)
+        return result
+
+
+class BulkExceptionalSlice(EndExceptionalSlice):
+    """Independent bulk geometry on the bound-carrier frequency slice.
+
+    The physical entry denominators and radical relation supply this family.
+    End-mode polynomials enter only the separately emitted intersections.
+    Real-axis cells and selected continuation paths do not define a global
+    complex-sheet atlas or a physical bound-pole search.
+    """
+
+    def __init__(self, spectrum, bindings):
+        super().__init__(spectrum)
+        self.bindings = bindings
+        self.r,self.dimensions=self.modes.r,self.d
+
+    @staticmethod
+    def real_normal_projection(relation,denominator,w,k,q):
+        projection=sp.Poly(sp.resultant(relation,denominator,q),k,w,domain=sp.QQ_I)
+        real=sp.Poly.from_dict({m:sp.re(c) for m,c in projection.terms()},k,w,domain=sp.QQ)
+        imaginary=sp.Poly.from_dict({m:sp.im(c) for m,c in projection.terms()},k,w,domain=sp.QQ)
+        common=sp.gcd(real,imaginary)
+        if common.is_zero:
+            return {'DEFINED':False,'PROJECTION':projection.as_expr(),'REAL':real.as_expr(),
+                    'IMAGINARY':imaginary.as_expr(),'SHARED':common.as_expr()}
+        real_quotient,imaginary_quotient=real.exquo(common),imaginary.exquo(common)
+        isolated=(sp.gcd(real_quotient,imaginary_quotient).as_expr()
+                  if real_quotient.is_zero or imaginary_quotient.is_zero else
+                  sp.resultant(real_quotient.as_expr(),imaginary_quotient.as_expr(),k))
+        shared=sp.Poly(common.as_expr(),k,domain=sp.QQ.poly_ring(w))
+        content,factors=shared.sqf_list()
+        loci={'DENOMINATOR_REAL_NORMAL_ISOLATED_PROJECTION':isolated,
+              'DENOMINATOR_REAL_NORMAL_SHARED_CONTENT':content}
+        for i,(factor,_) in enumerate(factors):
+            name='DENOMINATOR_REAL_NORMAL_SHARED_'+str(i)
+            loci[name+'_LEADING']=factor.LC()
+            loci[name+'_DISCRIMINANT']=factor.discriminant()
+            for j,(other,_) in enumerate(factors[:i]):
+                loci['DENOMINATOR_REAL_NORMAL_SHARED_'+str(j)+'_'+str(i)+'_INTERSECTION']=sp.resultant(factor.as_expr(),other.as_expr(),k)
+        return {'DEFINED':True,'PROJECTION':projection.as_expr(),'REAL':real.as_expr(),'IMAGINARY':imaginary.as_expr(),
+            'SHARED':common.as_expr(),'QUOTIENTS':(real_quotient.as_expr(),imaginary_quotient.as_expr()),
+            'RECONSTRUCTION_RESIDUALS':((real-common*real_quotient).as_expr(),(imaginary-common*imaginary_quotient).as_expr()),
+            'SHARED_FACTORS':[(f.as_expr(),a) for f,a in factors],'LOCI':loci}
+
+    @staticmethod
+    @lru_cache(maxsize=12)
+    def analyze(physical, relation, w, k, q):
+        denominators = tuple(sp.denom(sp.cancel(v)) for v in physical)
+        denominator = sp.lcm(denominators)
+        branch_radical=sp.Poly(sp.diff(relation,q),q).monic()
+        branch_radicals=sp.solve(branch_radical.as_expr(),q)
+        if len(branch_radicals)!=1:
+            raise NotImplementedError('bulk slice requires the computed single radical critical point')
+        branch = sp.Poly(relation.subs(q,branch_radicals[0]),k)
+        normal_zero = relation.subs(k,0)
+        norm = sp.Poly(sp.resultant(relation,denominator,k),q,domain=sp.QQ_I.poly_ring(w))
+        content,factors = norm.sqf_list() if not norm.is_zero else (sp.S.Zero,[])
+        loci = {'BRANCH_NORMAL_LEADING':branch.LC(),
+                'BRANCH_NORMAL_DISCRIMINANT':branch.discriminant(),
+                'BRANCH_NORMAL_ZERO':branch.eval(0),
+                'RADICAL_LEADING':sp.Poly(relation,q).LC(),
+                'DENOMINATOR_CONTENT':content}
+        for i,(factor,multiplicity) in enumerate(factors):
+            name='DENOMINATOR_FACTOR_'+str(i)
+            loci[name+'_LEADING']=factor.LC()
+            loci[name+'_DISCRIMINANT']=factor.discriminant()
+            loci[name+'_BRANCH']=sp.resultant(factor.as_expr(),branch_radical.as_expr(),q)
+            loci[name+'_NORMAL_ZERO']=sp.resultant(factor.as_expr(),normal_zero,q)
+            for j,(other,_) in enumerate(factors[:i]):
+                loci['DENOMINATOR_FACTOR_'+str(j)+'_'+str(i)+'_INTERSECTION']=sp.resultant(factor.as_expr(),other.as_expr(),q)
+        real_normal=BulkExceptionalSlice.real_normal_projection(relation,denominator,w,k,q)
+        if real_normal['DEFINED']:loci.update(real_normal['LOCI'])
+        else:loci['DENOMINATOR_REAL_NORMAL_IDENTICAL_PROJECTION']=real_normal['PROJECTION']
+        conditions={}
+        for label,expression in loci.items():
+            real,imaginary,common=EndExceptionalSlice.real_condition(expression,w)
+            conditions[label]={'REAL':real,'IMAGINARY':imaginary,'GCD':common,
+                'INTERVALS':None if common.is_zero else sp.polys.polytools.intervals(common,eps=sp.Rational(1,10**30))}
+        return {'RELATION':relation,'PHYSICAL':physical,'ENTRY_DENOMINATORS':denominators,
+                'DENOMINATOR':denominator,'DENOMINATOR_NORM':norm,'DENOMINATOR_FACTORS':factors,
+                'BRANCH':branch,'BRANCH_RADICAL':branch_radical.as_expr(),'NORMAL_ZERO':normal_zero,
+                'REAL_NORMAL_PROJECTION':real_normal,'LOCI':loci,'REAL_CONDITIONS':conditions}
+
+    @staticmethod
+    def nonnegative_targets(conditions):
+        result={}
+        for label,condition in conditions.items():
+            common=condition['GCD']
+            if not common.is_zero:
+                for root in common.sqf_part().real_roots():
+                    if root>=0:result.setdefault(root,[]).append(label)
+        return result
+
+    @staticmethod
+    def rational_between(lower,upper):
+        if lower is None:return sp.floor(upper)-1
+        if upper is None:return sp.ceiling(lower)+1
+        scale=sp.S.One
+        while True:
+            candidate=(sp.floor(lower*scale)+1)/scale
+            if lower<candidate<upper:return candidate
+            scale*=2
+
+    def point_unit(self,path):
+        if path[-1]=='OMEGA':return self.d.measure(self.modes.r.omega)
+        if path[-1]=='K':return self.d.measure(self.modes.k)
+        if path[-1]=='Q':return self.d.measure(self.modes.q)
+        return self.d.zero
+
+    def construct(self,suffix,channel_input,*,reference=False,end_data=None):
+        m,d=self.modes,self.d;w,k,q=self.w,self.k,self.q
+        self.prefix='BULK_EXCEPTIONAL_SLICE_INPUT_'+suffix
+        algebraic,relation,joins=m.analytic(self.spectrum.strong)
+        mapping=channel_input.mapping(algebraic,relation,(m.r.omega,m.k,m.q,m.eta,m.sigma))
+        origin={m.eta:sp.S.Zero,m.sigma:sp.S.Zero} if reference else channel_input.origin
+        coordinates={m.r.omega:w,m.k:k,m.q:q}
+        physical=algebraic.xreplace(mapping).subs(origin).xreplace(coordinates).applyfunc(sp.cancel)
+        relation=relation.xreplace(mapping).xreplace(coordinates)
+        self.emit('UNIT_FRAME',channel_input.frame)
+        self.emit('INPUT_BINDING',channel_input.specification)
+        self.emit('BOUND_CARRIERS',tuple((str(s),v) for s,v in mapping.items()),
+                  lambda p:d.measure(next(s for s in mapping if str(s)==p[0])))
+        self.emit('GRADE_ORIGIN',tuple((str(s),v) for s,v in origin.items()))
+        self.emit('SOURCE_GRADE_SUPPORT',tuple((p,tuple(sorted(PHYSICAL_METADATA.coefficients(v)))) for p,v in leaves(algebraic)))
+        self.emit('SPECTRAL_COORDINATE_UNITS',{'FREQUENCY':d.measure(m.r.omega),'NORMAL':d.measure(m.k),
+            'RADICAL':d.measure(m.q),'COEFFICIENT_COORDINATES':(w,k,q)})
+        self.emit('BRANCH_JOIN_RESIDUALS',joins)
+        self.emit('PHYSICAL_MATRIX_COEFFICIENTS',physical,lambda p:self.spectrum.strong_units[p],heavy=True)
+        self.emit('RADICAL_RELATION_COEFFICIENTS',relation,heavy=True)
+        data=self.analyze(physical,relation,w,k,q)
+        self.emit('GEOMETRY_OPERANDS',{key:data[key] for key in ('ENTRY_DENOMINATORS','DENOMINATOR','NORMAL_ZERO','BRANCH_RADICAL')},heavy=True)
+        self.emit('BRANCH_POLYNOMIAL',data['BRANCH'].as_expr(),heavy=True)
+        self.emit('DENOMINATOR_NORM',data['DENOMINATOR_NORM'].as_expr(),heavy=True)
+        self.emit('DENOMINATOR_FACTORS',[(f.as_expr(),a) for f,a in data['DENOMINATOR_FACTORS']],heavy=True)
+        self.emit('DENOMINATOR_FACTOR_DEGREES_AND_MULTIPLICITIES',[(f.degree(),a) for f,a in data['DENOMINATOR_FACTORS']])
+        self.emit('REAL_NORMAL_PROJECTION',data['REAL_NORMAL_PROJECTION'],heavy=True)
+        self.emit('REAL_NORMAL_PROJECTION_DOMAIN',{'DEFINED':data['REAL_NORMAL_PROJECTION']['DEFINED']})
+        if data['REAL_NORMAL_PROJECTION']['DEFINED']:
+            self.emit('REAL_NORMAL_PROJECTION_RECONSTRUCTION_RESIDUALS',data['REAL_NORMAL_PROJECTION']['RECONSTRUCTION_RESIDUALS'])
+        targets=self.nonnegative_targets(data['REAL_CONDITIONS'])
+        for label,condition in data['REAL_CONDITIONS'].items():
+            self.emit('LOCUS_'+label,{'ELIMINATION_POLYNOMIAL':data['LOCI'][label],
+                'REAL_COEFFICIENT_POLYNOMIAL':condition['REAL'].as_expr(),
+                'IMAGINARY_COEFFICIENT_POLYNOMIAL':condition['IMAGINARY'].as_expr(),
+                'REAL_LOCUS_GCD':condition['GCD'].as_expr()},coefficient=True)
+            self.emit('LOCUS_'+label+'_REAL_ISOLATION',{'IDENTICALLY_ZERO':condition['GCD'].is_zero,
+                'GCD_DEGREE':condition['GCD'].degree(),'REAL_INTERVALS':condition['INTERVALS']
+                if condition['INTERVALS'] is not None else 'UNRESOLVED_IDENTICAL_LOCUS'})
+        end_defined=end_data is not None and end_data['DEFINED']
+        end_targets=self.nonnegative_targets(end_data['REAL_CONDITIONS']) if end_defined else {}
+        intersections=[]
+        if end_defined:
+            for bulk_label,bulk_condition in data['REAL_CONDITIONS'].items():
+                for end_label,end_condition in end_data['REAL_CONDITIONS'].items():
+                    common=sp.gcd(bulk_condition['GCD'],end_condition['GCD'])
+                    intersections.append((bulk_label,end_label,common.as_expr(),common.degree()))
+        self.emit('END_FAMILY_INTERSECTIONS',intersections,heavy=True)
+        self.emit('FAMILY_TARGETS',{'BULK':tuple((root,labels) for root,labels in sorted(targets.items(),key=lambda v:float(v[0]))),
+            'END_MODE':tuple((root,labels) for root,labels in sorted(end_targets.items(),key=lambda v:float(v[0])))},
+            lambda p:d.measure(m.r.omega) if p[-1]==0 and len(p)==3 else d.zero)
+        target_records=[]
+        for i,(frequency,labels) in enumerate(sorted(targets.items(),key=lambda v:float(v[0]))):
+            tag='TARGET_'+str(i)
+            self.emit(tag+'_FREQUENCY',frequency,lambda p:d.measure(m.r.omega))
+            self.emit(tag+'_INCIDENT_LOCUS_LABELS',labels)
+            self.emit(tag+'_LOCUS_SUBSTITUTION_RESIDUALS',[(label,sp.simplify(data['LOCI'][label].subs(w,frequency))) for label in labels])
+            if end_defined:
+                self.emit(tag+'_END_LOCUS_INCIDENCE',[(label,sp.simplify(expression.subs(w,frequency))==0)
+                    for label,expression in end_data['LOCI'].items()])
+            components=[('BRANCH',sp.Poly(data['BRANCH_RADICAL'].subs(w,frequency),q,extension=True))]+[('DENOMINATOR_'+str(j),sp.Poly(f.as_expr().subs(w,frequency),q,extension=True))
+                for j,(f,_) in enumerate(data['DENOMINATOR_FACTORS'])]
+            for label,polynomial in components:
+                name=tag+'_'+label
+                self.emit(name+'_SPECIALIZED_POLYNOMIAL',polynomial.as_expr(),heavy=True)
+                if polynomial.is_zero:
+                    self.emit(name+'_STATUS','UNRESOLVED_IDENTICAL_COMPONENT');continue
+                radicals=sp.solve(polynomial.as_expr(),q)
+                self.emit(name+'_ROOT_CENSUS',{'DISTINCT_ROOT_COUNT':len(radicals),
+                    'DEGREE_COUNT_RESIDUAL':polynomial.sqf_part().degree()-len(radicals)})
+                for j,radical in enumerate(radicals):
+                    lifts=sp.solve(relation.subs({w:frequency,q:radical}),k)
+                    self.emit(name+'_RADICAL_'+str(j)+'_NORMAL_LIFT_COUNT',len(lifts))
+                    for h,normal in enumerate(lifts):
+                        point={w:frequency,k:normal,q:radical}
+                        point_tag=name+'_POINT_'+str(j)+'_'+str(h)
+                        values=tuple(sp.simplify(v.subs(point)) for v in data['ENTRY_DENOMINATORS'])
+                        regular=all(v!=0 and not v.has(sp.nan,sp.zoo,sp.oo,-sp.oo) for v in values)
+                        self.emit(point_tag,{'OMEGA':frequency,'K':normal,'Q':radical},self.point_unit)
+                        self.emit(point_tag+'_NORMAL_REALITY_RESIDUAL',sp.simplify(sp.im(normal)),lambda p:d.measure(m.k))
+                        self.emit(point_tag+'_RADICAL_RESIDUAL',sp.simplify(relation.subs(point)),lambda p:tuple(2*x for x in d.measure(m.q)))
+                        self.emit(point_tag+'_DENOMINATOR_VALUES',values)
+                        record={'FINITE_DENOMINATOR_DOMAIN':regular,'PHYSICAL_SHEET_MEMBERSHIP_COMPUTED':False}
+                        if end_defined:
+                            end_value=sp.simplify(end_data['POLYNOMIAL'].as_expr().subs(point))
+                            self.emit(point_tag+'_END_POLYNOMIAL_VALUE',end_value,heavy=True)
+                            record['END_POLYNOMIAL_VANISHES']=end_value==0
+                        if regular:
+                            matrix=physical.subs(point).applyfunc(sp.simplify)
+                            self.emit(point_tag+'_PHYSICAL_MATRIX',matrix,lambda p:self.spectrum.strong_units[p],heavy=True)
+                            rank=matrix.rank()
+                            record.update(MATRIX_RANK=rank,MATRIX_NULLITY=matrix.cols-rank)
+                        record['STATUS']='FINITE_BRANCH_POINT_MATRIX_COMPUTED' if regular else 'UNRESOLVED_SINGULAR_ENTRY_DENOMINATOR'
+                        self.emit(point_tag+'_DOMAIN',record)
+                        target_records.append(record)
+        square=sp.solve(relation,q**2)[0]
+        scale=sp.sqrt(-sp.Poly(square,k).nth(2))
+        seed_operands=tuple(rhs.xreplace(dict(zip(lhs.args,(*m.r.tangents,m.k)))).xreplace(mapping).xreplace(coordinates)
+            for lhs,rhs in self.bindings)
+        seeds=tuple(scale*v for v in seed_operands)
+        self.emit('SOURCE_BRANCH_SEED',seeds[0],lambda p:d.measure(m.q),heavy=True)
+        self.emit('SOURCE_SEED_JOIN_RESIDUALS',tuple(sp.simplify(v-seeds[0]) for v in seeds),lambda p:d.measure(m.q))
+        transport=JointBulkSheetPath(relation,w,k,q,seeds[0])
+        boundaries=sorted(set((sp.S.Zero,*targets,*end_targets)),key=float)
+        region_records=[]
+        for i,lower in enumerate(boundaries):
+            upper=boundaries[i+1] if i+1<len(boundaries) else None
+            frequency=self.rational_between(lower,upper)
+            self.emit('REGION_'+str(i)+'_FREQUENCY_INTERVAL',{'LOWER':lower,'UPPER':upper if upper is not None else 'UNBOUNDED',
+                'WITNESS':frequency,'WITNESS_INSIDE':bool(lower<frequency and (upper is None or frequency<upper))},
+                lambda p:d.zero if p[-1]=='WITNESS_INSIDE' else d.measure(m.r.omega))
+            region_records.append(self.region(data,'REGION_'+str(i),frequency,transport))
+        self.emit('SUMMARY',{'BULK_CRITICAL_FREQUENCY_COUNT':len(targets),'END_CRITICAL_FREQUENCY_COUNT':len(end_targets),
+            'TARGET_POINT_COUNT':len(target_records),'FINITE_TARGET_POINT_COUNT':sum(v['FINITE_DENOMINATOR_DOMAIN'] for v in target_records),
+            'FREQUENCY_REGION_COUNT':len(region_records),'REGIONS':region_records})
+        self.emit('COVERAGE_BOUNDARIES',{'BOUND_PARAMETER_FREQUENCY_SLICE':True,'NONNEGATIVE_FREQUENCY_DOMAIN':True,
+            'REAL_LOCUS_ENUMERATION_DEFINED':all(not c['GCD'].is_zero for c in data['REAL_CONDITIONS'].values()),
+            'END_FAMILY_INTERSECTIONS_DEFINED':end_defined,'PARAMETER_VARIETY_ATLAS_COMPUTED':False,
+            'GLOBAL_COMPLEX_SHEET_ATLAS_COMPUTED':False,'GENERALIZED_DEFECTIVE_MODES_COMPUTED':False,
+            'TARGET_PHYSICAL_SHEET_MEMBERSHIP_COMPUTED':False,'PROFILE_FREQUENCY_BOUND_POLES_COMPUTED':False})
+        return data
+
+    def numerical_matrix(self,data,tag,point):
+        import mpmath as mp
+        w,k,q=self.w,self.k,self.q
+        substituted=data['PHYSICAL'].subs(point)
+        denominators=tuple(sp.N(v.subs(point),40) for v in data['ENTRY_DENOMINATORS'])
+        finite=all(not v.has(sp.nan,sp.zoo,sp.oo,-sp.oo) and v!=0 for v in denominators)
+        self.emit(tag+'_DENOMINATOR_VALUES',denominators)
+        self.emit(tag+'_FINITE_DENOMINATOR_DOMAIN',finite)
+        if not finite:
+            self.emit(tag+'_STATUS','UNRESOLVED_SINGULAR_ENTRY_DENOMINATOR');return None
+        values=[]
+        for digits in (40,60):
+            matrix=substituted.evalf(digits)
+            with mp.workdps(digits):
+                numeric=mp.matrix([[mp.mpc(str(sp.re(matrix[i,j])),str(sp.im(matrix[i,j]))) for j in range(matrix.cols)] for i in range(matrix.rows)])
+                try:inverse=sp.ImmutableMatrix((numeric**-1).tolist())
+                except ZeroDivisionError:inverse=None
+            values.append((matrix,inverse))
+        def inverse_unit(p):
+            i,j=divmod(p[0],data['PHYSICAL'].cols)
+            return tuple(a-b for a,b in zip(self.spectrum.field_units[i],self.spectrum.row_units[j]))
+        self.emit(tag+'_PHYSICAL_MATRIX',values[1][0],lambda p:self.spectrum.strong_units[p],heavy=True)
+        self.emit(tag+'_MATRIX_PRECISION_REFINEMENT',(values[1][0]-values[0][0]).evalf(50),lambda p:self.spectrum.strong_units[p])
+        self.emit(tag+'_INVERSE_DOMAIN',{'DECIMAL_DIGITS':(40,60),'INVERSE_COMPUTED':all(v[1] is not None for v in values),
+            'ARITHMETIC_SCOPE':'MATRIX_EVALUATION_AT_STORED_POINTS'})
+        if any(v[1] is None for v in values):return None
+        inverse=values[1][1]
+        self.emit(tag+'_INVERSE',inverse,inverse_unit,heavy=True)
+        self.emit(tag+'_INVERSE_PRECISION_REFINEMENT',(inverse-values[0][1]).evalf(50),inverse_unit)
+        for label,residual,units in (
+            ('RIGHT_INVERSE_RESIDUAL',values[1][0]*inverse-sp.eye(inverse.rows),self.spectrum.row_units),
+            ('LEFT_INVERSE_RESIDUAL',inverse*values[1][0]-sp.eye(inverse.rows),self.spectrum.field_units)):
+            self.emit(tag+'_'+label,residual.evalf(50),lambda p:tuple(a-b for a,b in zip(units[p[0]//inverse.rows],units[p[0]%inverse.rows])))
+        return values[1][0],inverse
+
+    def region(self,data,tag,frequency,transport):
+        m,d=self.modes,self.d;w,k,q=self.w,self.k,self.q
+        relation=data['RELATION'].subs(w,frequency)
+        branch=sp.Poly(data['BRANCH'].as_expr().subs(w,frequency),k)
+        projected=sp.resultant(relation,data['DENOMINATOR'].subs(w,frequency),q)
+        real,imaginary,common=self.real_condition(projected,k)
+        self.emit(tag+'_NORMAL_PROJECTION_OPERANDS',(branch.as_expr(),projected,real.as_expr(),imaginary.as_expr(),common.as_expr()),heavy=True)
+        if common.is_zero:
+            self.emit(tag+'_STATUS','UNRESOLVED_IDENTICAL_NORMAL_PROJECTION')
+            return {'NORMAL_CELL_COUNT':0,'NORMAL_CELL_ENUMERATION_DEFINED':False,'BANK_PAIR_COUNT':0}
+        real_boundaries=sorted(set((*branch.sqf_part().real_roots(),*common.sqf_part().real_roots())),key=float)
+        self.emit(tag+'_REAL_NORMAL_BOUNDARIES',real_boundaries,lambda p:d.measure(m.k))
+        endpoints=[None,*real_boundaries,None];cell_count=0
+        for i,(lower,upper) in enumerate(zip(endpoints,endpoints[1:])):
+            normal=sp.S.Zero if lower is None and upper is None else self.rational_between(lower,upper)
+            self.emit(tag+'_CELL_'+str(i)+'_NORMAL_INTERVAL',{'LOWER':lower if lower is not None else 'UNBOUNDED',
+                'UPPER':upper if upper is not None else 'UNBOUNDED','WITNESS':normal,
+                'WITNESS_INSIDE':bool((lower is None or lower<normal) and (upper is None or normal<upper))},
+                lambda p:d.zero if p[-1]=='WITNESS_INSIDE' else d.measure(m.k))
+            radicals=sp.solve(relation.subs(k,normal),q)
+            self.emit(tag+'_CELL_'+str(i)+'_RADICAL_ROOT_COUNT',len(radicals))
+            for j,radical in enumerate(radicals):
+                name=tag+'_CELL_'+str(i)+'_LIFT_'+str(j)
+                point={w:frequency,k:normal,q:radical}
+                self.emit(name+'_POINT',{'OMEGA':frequency,'K':normal,'Q':radical},self.point_unit)
+                self.emit(name+'_RADICAL_RESIDUAL',sp.simplify(data['RELATION'].subs(point)),lambda p:tuple(2*v for v in d.measure(m.q)))
+                self.numerical_matrix(data,name,point)
+            cell_count+=1
+        branch_points=sp.solve(branch.as_expr(),k)
+        self.emit(tag+'_BRANCH_POINTS',branch_points,lambda p:d.measure(m.k))
+        bank_count=0;path_statuses=Counter()
+        for i,root in enumerate(branch_points):
+            z=complex(root);scale=max(abs(complex(v)) for v in branch_points)
+            target=1.5*z if z.imag else z+.5j*scale
+            self.emit(tag+'_BANK_'+str(i)+'_TARGET',{'K':target,'OMEGA':frequency},self.point_unit)
+            self.emit(tag+'_BANK_'+str(i)+'_OFFSETS',tuple(e*scale for e in (1e-4,1e-6)),lambda p:d.measure(m.k))
+            previous=None
+            for refinement,epsilon in enumerate((1e-4,1e-6)):
+                bank=[]
+                for side in (-1,1):
+                    endpoint=target+side*epsilon*scale
+                    path=transport.trace([(float(frequency),endpoint.real),(float(frequency),endpoint)])
+                    path_statuses[path['STATUS']]+=1
+                    name=tag+'_BANK_'+str(i)+'_'+str(refinement)+'_'+str(side).replace('-','M')
+                    self.emit(name+'_PATH',path,lambda p:BulkContinuationAudit.path_unit(self,p))
+                    value=None
+                    if path['PATH_DEFINED']:
+                        point={w:frequency,k:endpoint,q:path['END_Q']}
+                        value=self.numerical_matrix(data,name,point)
+                    bank.append((path,value))
+                if all(v[1] is not None for v in bank):
+                    jump=(bank[1][1][0]-bank[0][1][0]).evalf(50)
+                    self.emit(tag+'_BANK_'+str(i)+'_'+str(refinement)+'_MATRIX_JUMP',jump,lambda p:self.spectrum.strong_units[p],heavy=True)
+                    if previous is not None:
+                        self.emit(tag+'_BANK_'+str(i)+'_'+str(refinement)+'_MATRIX_JUMP_REFINEMENT',jump-previous,
+                                  lambda p:self.spectrum.strong_units[p],heavy=True)
+                    previous=jump;bank_count+=1
+        return {'NORMAL_CELL_COUNT':cell_count,'NORMAL_CELL_ENUMERATION_DEFINED':True,'BANK_PAIR_COUNT':bank_count,
+                'BANK_PATH_STATUSES':dict(path_statuses)}
 
 
 class BulkContinuationAudit:
@@ -4310,7 +5200,11 @@ def run():
                                    channel_input=channel_input,reference=label=='REFERENCE')
                 continuation.construct(label+'_'+suffix,channel_input=channel_input,
                                        reference=label=='REFERENCE',spectrum=spectral_result)
-                EndExceptionalSlice(spectrum).construct(label+'_'+suffix,channel_input,reference=label=='REFERENCE')
+                exceptional=EndExceptionalSlice(spectrum).construct(label+'_'+suffix,channel_input,reference=label=='REFERENCE')
+                BulkExceptionalSlice(spectrum,reduced_branch_bindings[(CLOSED_KEYS[0],case)]).construct(
+                    label+'_'+suffix,channel_input,reference=label=='REFERENCE',end_data=exceptional)
+                ThresholdModeAudit(spectrum,reduced_branch_bindings[(CLOSED_KEYS[0],case)]).construct(
+                    label+'_'+suffix,channel_input,reference=label=='REFERENCE',end_data=exceptional)
     emit('PENCIL_DIMENSION_CONSTRAINT_RESIDUALS', sorted(dimensions.constraints, key=sp.default_sort_key))
     if dimensions.constraints:
         raise ValueError('pencil dimensional analysis has surfaced unresolved constraints')
@@ -4327,6 +5221,8 @@ def run():
                                       'EXPLICIT_JOINT_BULK_SHEET_PATHS_AND_CUT_BANKS',
                                       'CONSTANT_END_RESOLVENTS_AND_NORMAL_POLE_RESIDUES',
                                       'EXCEPTIONAL_FREQUENCY_SLICE_AND_GENERIC_RANK_IDENTITIES',
+                                      'INDEPENDENT_BULK_BRANCH_AND_DENOMINATOR_FREQUENCY_SLICES',
+                                      'GENERALIZED_NORMAL_THRESHOLD_CHAINS',
                                       'S11B_CONSERVATIVE_SLAB_CURRENT', 'CLOSED_PHYSICAL_FIELD_LIFT'))
     emit('CHANNEL_INPUT_EXECUTION', channel_input is not None)
     emit('OUTSTANDING_CONSTRUCTIONS', ('FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS',

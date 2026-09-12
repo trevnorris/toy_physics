@@ -19,6 +19,8 @@ def run():
     parser.add_argument('--input',type=Path,required=True)
     parser.add_argument('--end',choices=('REFERENCE','LEFT','RIGHT'),default='REFERENCE')
     parser.add_argument('--native',action='store_true')
+    parser.add_argument('--end-only',action='store_true')
+    parser.add_argument('--threshold-only',action='store_true')
     parser.add_argument('--analysis-cache',type=Path)
     args=parser.parse_args()
     modes,strong,units,bindings,inputs,provenance=load(args)
@@ -37,8 +39,8 @@ def run():
     spectrum=engine.EndSpectrumCoverage(modes,strong,full,lift,units)
     if args.analysis_cache:
         args.analysis_cache.mkdir(parents=True,exist_ok=True)
-        def cached_method(method):
-            source=inspect.getsource(method)
+        def cached_method(method,dependencies=()):
+            source=inspect.getsource(method)+''.join(inspect.getsource(f) for f in dependencies)
             def cached(*operands):
                 key=hashlib.sha256((source+sp.srepr(engine.cas(operands))).encode()).hexdigest()
                 path=args.analysis_cache/(key+'.pickle')
@@ -49,6 +51,8 @@ def run():
             return cached
         for name in ('analyze','threshold_data'):
             setattr(engine.EndExceptionalSlice,name,staticmethod(cached_method(getattr(engine.EndExceptionalSlice,name))))
+        engine.BulkExceptionalSlice.analyze=staticmethod(cached_method(engine.BulkExceptionalSlice.analyze,
+            (engine.BulkExceptionalSlice.real_normal_projection,)))
     provenance['exceptionalInstrumentSha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     provenance['codecSha256']=hashlib.sha256((engine.ROOT/'scripts/S11c_d_output_codec.py').read_bytes()).hexdigest()
     def output(tag,value,unit=None):
@@ -58,7 +62,13 @@ def run():
         spectrum.construct(args.end+'_LAB_HELD_RHO4_CONSTANT',-1 if args.end=='LEFT' else 1,
             channel_input=inputs,reference=args.end=='REFERENCE')
     else:
-        engine.EndExceptionalSlice(spectrum).construct(args.end+'_LAB_HELD_RHO4_CONSTANT',inputs,reference=args.end=='REFERENCE')
+        data=engine.EndExceptionalSlice(spectrum).construct(args.end+'_LAB_HELD_RHO4_CONSTANT',inputs,reference=args.end=='REFERENCE')
+        if args.threshold_only:
+            engine.ThresholdModeAudit(spectrum,bindings).construct(args.end+'_LAB_HELD_RHO4_CONSTANT',inputs,
+                reference=args.end=='REFERENCE',end_data=data)
+        elif not args.end_only:
+            engine.BulkExceptionalSlice(spectrum,bindings).construct(args.end+'_LAB_HELD_RHO4_CONSTANT',inputs,
+                reference=args.end=='REFERENCE',end_data=data)
     output('DIMENSION_CONSTRAINTS',tuple(dims.constraints))
     output('RESOURCES',{'WALL_SECONDS':time.monotonic()-started,'PEAK_RSS_KIB':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss},
            lambda p:(0,1,0) if p[-1]=='WALL_SECONDS' else dims.zero)

@@ -1,0 +1,61 @@
+{
+  "inputKind": "SYNTHETIC_ALGEBRAIC_ANSATZ",
+  "physicalClaim": false,
+  "ansatz": {
+    "rationalMatrix": "ImmutableDenseMatrix([[Pow(Add(Symbol('probeRadical'), Mul(Integer(-1), I, Add(Symbol('probeFrequency'), Integer(-1))), Integer(-2)), Integer(-1))]])",
+    "radicalRelation": "Add(Mul(Integer(-1), Pow(Symbol('probeNormal'), Integer(2))), Pow(Symbol('probeRadical'), Integer(2)), Integer(-1))"
+  },
+  "coefficientDimensionsLTM": [
+    0,
+    0,
+    0
+  ],
+  "coefficientGradeEpsEtaSigma": [
+    0,
+    0,
+    0
+  ],
+  "coefficientLambdaOrder": 0,
+  "priorConditionTargets": [],
+  "independentRealProjectionTargets": [
+    [
+      "1",
+      [
+        "DENOMINATOR_REAL_NORMAL_ISOLATED_PROJECTION"
+      ]
+    ]
+  ],
+  "newTargetCount": 1,
+  "projectionReconstructionResiduals": [
+    "0",
+    "0"
+  ],
+  "points": [
+    {
+      "frequency": "1",
+      "normal": "-sqrt(3)",
+      "radical": "2",
+      "normalRealityResidual": "0",
+      "radicalResidual": "0",
+      "denominatorResidual": "0",
+      "incidentConditions": [
+        "DENOMINATOR_REAL_NORMAL_ISOLATED_PROJECTION"
+      ]
+    },
+    {
+      "frequency": "1",
+      "normal": "sqrt(3)",
+      "radical": "2",
+      "normalRealityResidual": "0",
+      "radicalResidual": "0",
+      "denominatorResidual": "0",
+      "incidentConditions": [
+        "DENOMINATOR_REAL_NORMAL_ISOLATED_PROJECTION"
+      ]
+    }
+  ],
+  "engineSha256": "bc3257ab3c846896e5af7f6b8221044bcb4113d21e4b7c8050d95ab9a93bcdb4",
+  "instrumentSha256": "f2753a88b3f4430deb048085f480b163b6a5e6189f876e352cc69f7ebf287e57",
+  "wallSeconds": 0.7842353750020266,
+  "peakRssKiB": 66808
+}

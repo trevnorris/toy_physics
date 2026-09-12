@@ -1,5 +1,10 @@
 # S10 CAS bridge checkpoint — 2026-09-11
 
+**Scope update after this checkpoint:** follow
+[FORMALIZATION_POLICY.md](../FORMALIZATION_POLICY.md) and
+[COVERAGE.md](COVERAGE.md). The bridge expansion plan has been superseded;
+the recorded proof and verification evidence below is preserved.
+
 This checkpoint records the S10 work after the
 [original S9/S10 checkpoint](../CHECKPOINT.md), commit `56595cf7`.
 It adds the bridge from the two focused anisotropic D3 CAS transcripts to
@@ -58,21 +63,22 @@ the working tree before checkpointing. Reproduction commands are in
 
 S9's original formalization pilot remains complete within its declared scope.
 S10's mathematical core covers all six supplied action families, but S10 is
-not complete end to end. Continue in this order:
+not complete end to end. The user subsequently stopped systematic CAS bridge
+expansion. The former plan to translate the remaining D3 metadata and then all
+D4/other-package emissions is superseded by the scope policy.
 
-1. Finish the focused D3 reality-filter traces and remaining Q5/Q6/period-average
-   metadata.
-2. Extend the actual-emission bridge to D4, the other action packages and the
-   remaining declared dimension cases.
-3. Align production Q7 with the explicit Levi-Civita construction and align
-   exceptional-stratum handling with the proved classification.
-4. Integrate and rerun the broad comparator/export pipeline, accounting for
-   unresolved naming, representation, sign and dimensional-count findings.
-5. Reconcile ledger/paper claims and refresh the final verification evidence.
+Resume Lean work by consolidating the compact mathematical/coverage contract,
+checking its action/operator fidelity link and mutation coverage, and completing
+independent statement-fidelity review. Reuse the existing general proofs and
+bridge evidence. The finite completion criteria are in [COVERAGE.md](COVERAGE.md).
+
+Production Q7 and stratum handling, the broad comparator/export pipeline and
+ledger/paper reconciliation retain their separate implementation obligations.
 
 An explicit exponentially growing spacetime solution for the negative-stiffness
-control is also not yet constructed. The supplied action and physical dimension
-remain premises. See [COVERAGE.md](COVERAGE.md) for the full boundary.
+control is also not yet constructed; adding that claim requires an explicit
+contract extension. The supplied action and physical dimension remain premises.
+See [COVERAGE.md](COVERAGE.md) for the full boundary.
 
 This checkpoint changes no CAS engine, input transcript, frozen export or S11
 file. The original full-sweep artifacts and `S10_exports.py` are preserved.

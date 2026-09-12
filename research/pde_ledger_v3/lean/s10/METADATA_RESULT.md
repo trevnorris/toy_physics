@@ -133,11 +133,12 @@ translated mathematical claims are checked by Lean's kernel.
 The primary, aggregate and Q8 coincidence records, root signs, root solver
 condition lists, spectrum solve operands/statuses, and skipped-stratum
 records selected here are now connected to their mathematical meanings.
-The next D3 data still needing integration include SymPy reality-filter traces,
-remaining Q5/Q6 dimensional/scaling metadata, and period-average condition
-records. D4 and other action packages, the production Q7 construction, the
-broad comparator/export chain and paper alignment remain in
-[COVERAGE.md](COVERAGE.md).
+The former plan to translate the remaining D3 metadata and D4/other-package
+outputs into Lean is superseded by
+[FORMALIZATION_POLICY.md](../FORMALIZATION_POLICY.md). Resume with the compact
+coverage contract, action/operator fidelity link, mutation mapping and fidelity
+review. Remaining CAS metadata coverage, production Q7, the broad comparator/export
+chain and paper alignment have separate obligations in [COVERAGE.md](COVERAGE.md).
 
 No CAS engine, input transcript, frozen export or S11 operand is changed by
 this extension. The combined scope and resume plan are recorded in

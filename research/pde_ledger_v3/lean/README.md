@@ -1,5 +1,11 @@
 # v3 PDE ledger Lean formalizations
 
+**Required before Lean work:** read and follow
+[FORMALIZATION_POLICY.md](FORMALIZATION_POLICY.md), as directed by
+[AGENTS.md](AGENTS.md). The deliverable is proof, compact object identification,
+an exhaustive coverage contract and mutation controls, with fidelity review.
+The earlier plan to extend the full S10 CAS bridge is superseded.
+
 One pinned Lean environment serves the step-specific source directories:
 
 - [s9/](s9/README.md): the original D=3 action, integrated variation, and mode census.

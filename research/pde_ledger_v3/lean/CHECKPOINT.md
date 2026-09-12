@@ -1,5 +1,10 @@
 # S9/S10 Lean checkpoint — 2026-09-11
 
+This records the original checkpoint. For current work, follow
+[FORMALIZATION_POLICY.md](FORMALIZATION_POLICY.md) and
+[s10/COVERAGE.md](s10/COVERAGE.md); systematic CAS bridge expansion is no longer
+part of the Lean completion plan. Historical evidence below is preserved.
+
 This checkpoint includes the pinned Lean/PhysLean environment, S9 and S10 proof
 sources, verification records, and the S10 changes outside `lean/`: the shared
 rank-stratum requirement, both CAS engines, focused transcripts/comparator,

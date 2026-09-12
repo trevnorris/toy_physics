@@ -1,5 +1,9 @@
 # S9 formalization pilot
 
+Read [the Lean scope policy](../FORMALIZATION_POLICY.md) before extending this
+pilot. Identify a specific theorem or fidelity/coverage-contract gap and reuse
+the existing proofs; exhaustive CAS transcript translation is not the goal.
+
 The original D=3 pilot proves the local action variation, integrated
 stationarity/PDE equivalence, real plane-wave reduction, and mode census. See
 [RESULT.md](RESULT.md) for its mathematical assumptions and scope, and

@@ -1,5 +1,10 @@
 # S10 formalization
 
+Follow [the Lean scope policy](../FORMALIZATION_POLICY.md) before resuming work.
+The current task is to consolidate and review the compact S10 coverage contract;
+the committed CAS bridge is retained without further systematic expansion.
+See [COVERAGE.md](COVERAGE.md) for the current Lean and production obligations.
+
 S10 proofs and reports live here. The Lean toolchain, dependency pins, and build
 cache are shared at [../](../README.md).
 

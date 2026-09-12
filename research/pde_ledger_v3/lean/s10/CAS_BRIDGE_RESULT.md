@@ -200,9 +200,13 @@ Exact outcomes are retained in the check record.
 
 ## Remaining integration
 
-Extend the bridge to reality-filter traces and remaining Q5/Q6/period-average
-metadata, then D=4 and
-other action packages. Q7 production construction, broad comparator
-and export integration, and ledger/paper reconciliation remain open in
-[COVERAGE.md](COVERAGE.md). This increment changes no CAS engine, frozen S10
-export or S11 operand.
+The former proposal to extend this bridge to remaining metadata, D4 and other
+action packages is superseded by [FORMALIZATION_POLICY.md](../FORMALIZATION_POLICY.md).
+Keep this evidence and consolidate the compact action/operator link, exhaustive
+coverage contract and relevant mutation controls. Complete fidelity review as
+specified in [COVERAGE.md](COVERAGE.md).
+
+Remaining CAS metadata coverage, Q7 production construction, broad comparator
+and export integration, and ledger/paper reconciliation retain their own
+implementation obligations. They do not require systematic Lean translation.
+This increment changes no CAS engine, frozen S10 export or S11 operand.

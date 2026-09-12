@@ -32,6 +32,11 @@ weakens a gate.
    reports; commit the reviewed baseline before a repair overwrites it. (E2, G4, M3)
 6. **Enforce, don't merely promise.** Bound handoffs and leave visible evidence; never revive quarantine or
    drop a control for cost; follow the annex/GIN policy for v3 `.out`. (S1, R11)
+7. **Prove key results formally when it earns its keep (Lean, a third engine).** Machine-checked deduction — a
+   different *kind* of check than the two CAS engines. Invest it in the theorem + a coverage contract + mutation
+   controls that fail for the intended reason, fidelity-reviewed by non-authors; ⛔ not a byte-level re-check of
+   the CAS (that is the comparator + numeric-PIT). Right-size per step; keep a per-step contract with a finite
+   completion list. (L1–L5)
 
 **Scope precedence:** classify an artifact by **function, then authorship** — the filename confers nothing.
 A packet serving several roles inherits **all** applicable controls. The decision-list one-pass exception
@@ -51,6 +56,7 @@ reduced count.
 | **Physics spec / shared spec / physics-bearing directive** | Two; O or Cx by actual author | Review the requested physics, complete premises, recipe/answer leakage; substantiate physics claims independently. Defer executable script-control tests to the build. | **Review-until-clear**: repair/re-review any change to computation or claims | Clear before using as governing physics. Directive review never pays the build tax. Both reports before any commit; reviewed baseline preserved before overwrite. |
 | **Script / physics-bearing build** | Two; O or Cx; normally Cx for `/build` | Independent derivation scripts + literal stdout; every load-bearing check ablated; **mandatory FORM ablation**; one-sided corruption for independence; emit-before-guard + output checks | **Review-until-clear**; change author when repairs breed defects (⛔ never a fourth fold) | Launch legs before inspecting results; both usable reports; preserve reviewed baseline before repair; accept only on substantive clearance. Serialize dual Mathematica ablations. |
 | **Step record / `.tex` card / physics-bearing prose** | Two; O or Cx; ⛔ never chosen by extension | Source-first fidelity; quote both sides; ⛔ no build directive in the packet; a measured physics claim still needs its command + stdout; for cards check suppressed macro fields | **Review-until-clear** about what may be claimed | Own artifact/version review required; script review alone is not record review. Both reports before commit. |
+| **Lean formalization / formal proof** | Two; O or Cx by author (⭐ orchestrator MAY author the *proof* — the kernel judges the deduction; the CAS *bridge* stays Cx under E1) | Review **statement fidelity** — object/operator identity (⛔ not invariants alone), parameter map, domain, quantifiers, retained order — ⛔ not "did it compile"; mutations must fail for the intended mathematical reason; guard vacuous truth (nonemptiness controls) | **Review-until-clear** on fidelity; a build/mutation run is not a leg | Proof + coverage contract + mutations + clean build/axiom audit (⛔ no admissions/custom physics axioms) + resolved fidelity review, then stop. Both reports before commit. (L) |
 | **Other / claimed non-physics** | Two if physics-bearing (G1); if you claim it is not, record why | First record whether it changes computation, premises, checks, or claims — if so it is physics-bearing, route to a row above | ⛔ Do not infer a one-pass or zero-review exemption from the suffix or an "administrative" label | The two-report commit gate has no non-physics exception. |
 
 **Observable gate record** *(new 2026-09-05, from the approved proposal; implements R12's observable-artifact
@@ -175,6 +181,61 @@ acceptance — accept the repaired result only after its own review and G4 clear
 
 ---
 
+## L · Prove it formally — the third engine (Lean)
+
+Lean is a **third engine of a different kind**: machine-checked deduction, not a CAS computation, so it does
+**not** share the common-convention/library/framing bug two CAS engines can share (M1). That is its value; its
+cost is real, so aim it precisely. Operational runbook: `research/pde_ledger_v3/lean/FORMALIZATION_POLICY.md`.
+
+**L1 — Lean proves the MATH; it does not re-do the CAS.** Spend Lean on the **theorem** — the result is
+independently machine-checked true, the check no amount of CAS agreement gives. ⛔ Do **not** use Lean to
+re-verify byte-by-byte what the engines computed: numeric/expression correspondence is the comparator +
+numeric-PIT job (cheap), and re-doing it in the kernel is redundant, blows cost, and *grows* the trust-surface.
+⛔ No systematic per-output CAS bridge; a small exact identity or a targeted certificate closing a **named**
+fidelity gap is fine, but "another output is unchecked" is not a gap.
+
+**L2 — The fidelity link is the actual control: prove the SAME object.** A proof of the wrong statement is a
+green check on nothing. Connect the proof to the engines at the **invariant / coverage-contract level** —
+counts, loci, roots, and especially "*exactly N strata / the count formula is X*" (Lean's highest-value output:
+the completeness anchor the CAS audits are checked against, and what feeds the stratify-before-sampling
+discipline). ⛔ **Invariants alone do not identify an operator** — different operators share them while acting on
+different spaces (a nonzero-scalar multiple preserves the kernel but not a resolvent's residues; a candidate
+root ≠ a root with a nonzero mode; algebraic multiplicity ≠ kernel dimension) — so pin the **actual
+action/operator, or a suitable equivalence for the claim**, too. ⛔ Never trim below this link; ⛔ never inflate
+it to byte-level.
+
+**L3 — A green proof is not evidence without mutation controls (FORM ablation, in Lean).** Every load-bearing
+claim needs a deliberately-wrong variant that **fails to verify — for the intended *mathematical* reason** (⛔ a
+syntax/import/timeout/broken-env failure is not a control). ⛔ **Guard vacuous truth**: contradictory hypotheses
+"prove" anything, so inspect assumptions for accidental inconsistency and include nonemptiness / passing
+controls (the formal analog of emit-before-guard, E1).
+
+**L4 — Lean is physics-bearing → it inherits G-review, and is right-sized by step.** Two non-author legs
+reviewed-until-clear, centered on **statement fidelity** (does the theorem encode the real object at the
+retained order/conventions), ⛔ not "did it compile"; a build/mutation run is not a leg. ⭐ **The E1 boundary:**
+the orchestrator **MAY author a Lean *proof*** — the kernel, not the author, judges the deduction, so it does
+**not** trip E1's instrument prohibition — but the *statement* is author-chosen, so **G1 governs the fidelity
+review by authorship** (orchestrator-authored → Codex + Grok; Codex-authored → fresh Claude + Grok; ⛔ never
+clear your own statement), and the **numeric-correspondence bridge stays an instrument under E1** (Codex-written,
+G1-reviewed — ⛔ the orchestrator authors the proof + contract, not the bridge). **Right-size:** closed/standard/
+calibration step → proof + contract + mutations (⛔ no byte-bridge, the lowest-value case); novel result → more
+of the L2 invariant connection, ⛔ still never the byte-bridge. Cost never drops L2/L3 (those are the controls);
+the byte-bridge above L2 is redundant, so trimming it is right-sizing, not weakening a gate (R11).
+
+**L5 — A per-step work contract + explicit completion list, or the scope has no floor.** Before substantive Lean
+work, write/reuse a short contract in the step's coverage doc (⛔ not a new planning doc each turn): **Claim ·
+Fidelity link · Coverage · Evidence · Review · Exclusions · Completion** (a *finite* deliverable list that ends
+the task). ⛔ Before each increment, name the open item it closes, or don't add it (formalizability is not a
+reason); an expansion names a concrete gap and is a **recorded scope change** the user agrees to. **Done** =
+theorem + contract proved, artifact link checked at the stated level, mutations pass, build/axiom audit clean
+(⛔ no admissions or custom physics axioms), fidelity reviews resolved — **then stop adding coverage**. Report
+obligations-closed, ⛔ not theorem/line counts. *(evidence: L-LEAN)*
+
+**Division of labor:** Lean = proof + coverage contract; CAS (SymPy + Wolfram) = the derivation; comparator +
+numeric-PIT = the numeric/expression correspondence — ⛔ no tool re-does another's job.
+
+---
+
 ## S · Enforce through observable artifacts
 
 **S1 — A prohibition is not a control; blindness is enforced by absence.** *(was R12)*
@@ -260,3 +321,10 @@ are such). Each control that has an entry references it below as `L-R#`.
   order, a rate, a shape — as if it were constant. It manufactures a wrong-but-consistent answer both engines
   can share, so the comparator reads agreement and the defect hides (26=26 was a coincidence of two frozen
   mechanisms). Caught only by a ground-truth anchor or a variable-coefficient/form ablation.
+- **L-LEAN (L) — the S10 over-bridge.** Measured 2026-09-11: the S10 Lean proof finished the math, then
+  insisted on a full byte-level CAS bridge (`lean/s10/S10Audit/CAS/PY.lean` 168 KB, `WL.lean` 123 KB,
+  `PYRerun`/`WLRerun` ~120–130 KB each) to formally certify *every* CAS output — burning tokens on a closed,
+  standard (MacCullagh) result for marginal assurance the comparator + numeric-PIT already delivered, while
+  *enlarging* the encoding trust-surface. The lesson: Lean's value is the proof + coverage contract; numeric
+  correspondence belongs to the CAS comparator; the fidelity link (L2) is the real control and the exhaustive
+  bridge above it is redundant.

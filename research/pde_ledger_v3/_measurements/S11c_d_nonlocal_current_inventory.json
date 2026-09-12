@@ -1,0 +1,115 @@
+{
+  "instrumentSha256": "97607761e3a28962c8d144397f9a1f1230b4c7150403bf5e11a441bd548dbb4e",
+  "producerManifestSha256": "1da8e09934b428c436a03a525573deb28c2839e07f2b1aa45042f3af6550dc79",
+  "tagCount": 146,
+  "metadataGaps": [],
+  "nonfiniteTags": [],
+  "zeroMapMetadataTags": [],
+  "dimensionConstraints": "Tuple()",
+  "unknownDimensionSymbols": [],
+  "residuals": {
+    "slab_VARIATION_RECONSTRUCTION_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "slab_ENERGY_IBP_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "slab_TRANSPORT_RECONSTRUCTION_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "slab_TRANSPORT_IBP_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "slab_CONSERVATIVE_VARIATION_RECONSTRUCTION_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "slab_CONSERVATIVE_BOUNDARY_RECONSTRUCTION_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "slab_CURRENT_DECOMPOSITION_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "slab_POLARIZATION_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "slab_CORRECTION_POLARIZATION_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "slab_ENERGY_BALANCE_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "slab_CHEMICAL_POLARIZATION_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "acoustic_LOCAL_ENERGY_BALANCE_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "acoustic_FINITE_DEPTH_DERIVATIVE_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "acoustic_DEPTH_PRIMITIVE_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "acoustic_DEPTH_RATE_JOIN_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "acoustic_ACOUSTIC_RADICAL_JOIN_RESIDUAL": {
+      "scalarCount": 1,
+      "nonzeroCount": 0
+    },
+    "acoustic_REDUCED_MASS_FACE_JOIN_RESIDUAL": {
+      "scalarCount": 5,
+      "nonzeroCount": 0
+    },
+    "acoustic_REDUCED_MECHANICAL_FACE_JOIN_RESIDUAL": {
+      "scalarCount": 5,
+      "nonzeroCount": 5
+    },
+    "faceEquations": {
+      "scalarCount": 4,
+      "nonzeroCount": 0
+    }
+  },
+  "mechanicalOrientationAnchor": {
+    "source": "Pow(Symbol('W_0', positive=True), Integer(2))",
+    "energy": "Pow(Symbol('W_0', positive=True), Integer(2))",
+    "residual": "Integer(0)",
+    "dimensionLTM": [
+      "2",
+      "0",
+      "0"
+    ],
+    "multigrade": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "epsilonLambdaSupport": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "massJoin": "ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0), Integer(0), Integer(0)]])",
+  "mechanicalSum": "ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0), Integer(0), Integer(0)]])",
+  "diagonalDepthIntegral": "Symbol('s11cdAcousticDepthCutoff', positive=True)",
+  "boundaryModulusLimit": "Integer(0)"
+}

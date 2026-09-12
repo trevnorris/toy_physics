@@ -1867,6 +1867,389 @@ class UniformSlabCurrent:
         return result
 
 
+class SlabEnergyBalance:
+    """Actual energy boundary work with the material mass-rate defect retained.
+
+    Only the reduced stored energy is varied. The material constraint acts on
+    virtual tests, while the two independent density time rates remain live
+    in the energy balance. No response is differentiated with respect to a
+    field. The conservative current is an independently reconstructed operand.
+    """
+
+    def __init__(self, conservative):
+        self.c = conservative
+        self.r = conservative.r
+        self.tests = tuple(tuple(sp.Function('s11cdBalanceVariation'+side+name)
+                                 for name in ('U1', 'U2', 'U3', 'Theta', 'E'))
+                           for side in ('Plus', 'Minus'))
+        dims = PHYSICAL_METADATA.dimensions
+        for group in self.tests:
+            for f, unit in zip(group, conservative.field_units):
+                dims.known[f] = unit
+
+    def parts(self, expression, tests):
+        """Coefficient extraction followed by normal integration by parts."""
+        z = self.r.z
+        euler, boundary, reconstructed = [], sp.S.Zero, sp.S.Zero
+        for test in tests:
+            row = sp.S.Zero
+            jets = {test} | {d for d in expression.atoms(sp.Derivative) if d.expr == test}
+            for jet in sorted(jets, key=sp.default_sort_key):
+                order = sum(n for _, n in jet.variable_count) if isinstance(jet, sp.Derivative) else 0
+                coefficient = sp.diff(expression, jet)
+                reconstructed += coefficient*jet
+                row += (-1)**order*sp.diff(coefficient, z, order)
+                boundary += sum((-1)**j*sp.diff(coefficient, z, j)*sp.diff(test, z, order-1-j)
+                                for j in range(order))
+            euler.append(sp.expand(row))
+        bulk = sp.Add(*(a*b for a, b in zip(euler, tests)))
+        return (sp.ImmutableMatrix(euler), sp.expand(boundary),
+                sp.expand(expression-reconstructed),
+                sp.expand(reconstructed-bulk-sp.diff(boundary, z)))
+
+    def virtual_map(self, coefficients):
+        c, r, z = self.c, self.r, self.r.z
+        virtual = {}
+        for sign, group in zip((1, -1), self.tests):
+            density = sp.S.Zero
+            for i in (0, 1, 2, 4):
+                coefficient = coefficients[i].subs(
+                    {a:sign*a for a in (*r.tangents, r.omega)}, simultaneous=True)
+                constants = {v:sp.Dummy(real=True) for v in coefficient.atoms(sp.Limit)}
+                restore = {v:k for k, v in constants.items()}
+                polynomial = sp.Poly(coefficient.xreplace(constants), c.ends.kn)
+                density -= sum(a.xreplace(restore)*sp.diff(group[i](z), z, power[0])/sp.I**power[0]
+                               for power, a in polynomial.terms())
+            virtual[group[3](z)] = density
+        return virtual
+
+    def matrix(self, expression):
+        c, z = self.c, self.r.z
+        wave = {}
+        for sign, momentum, functions, amplitudes in zip(
+                (1, -1), (c.leg_momenta[1], c.leg_momenta[0]), c.fields, c.amplitudes):
+            wave.update({f(z):a*sp.exp(sign*sp.I*momentum*z) for f, a in zip(functions, amplitudes)})
+        polarized = sp.expand(expression.subs(wave, simultaneous=True).doit().subs(z, 0))
+        matrix = sp.ImmutableMatrix(5, 5, lambda i, j:
+            sp.diff(polarized, c.amplitudes[1][i], c.amplitudes[0][j]))
+        reconstructed = (sp.ImmutableMatrix(1, 5, c.amplitudes[1])*matrix*
+                         sp.ImmutableMatrix(c.amplitudes[0]))[0]
+        return matrix, sp.expand(polarized-reconstructed)
+
+    @lru_cache(maxsize=None)
+    def construct(self, anchoring, end):
+        c, r, z = self.c, self.r, self.r.z
+        source = c.construct(anchoring, end)
+        tests = tuple(f(z) for group in self.tests for f in group)
+        variation_map = {f(z):f(z)+c.virtual_parameter*v(z)
+                         for fields, group in zip(c.fields, self.tests) for f, v in zip(fields, group)}
+        variation = sp.expand(sp.diff((-source['TANGENTIAL_ENERGY_REDUCTION']).subs(
+            variation_map, simultaneous=True).doit(), c.virtual_parameter).subs(c.virtual_parameter, 0))
+        euler, boundary, reconstruction, ibp = self.parts(variation, tests)
+        virtual = self.virtual_map(source['MATERIAL_CONSTRAINT_COEFFICIENTS'])
+        mechanical_tests = tuple(f(z) for group in self.tests for i, f in enumerate(group) if i != 3)
+        virtual_bulk = sp.expand(sp.Add(*(a*b for a, b in zip(euler, tests))).subs(
+            virtual, simultaneous=True).doit())
+        mechanical, transport, transport_reconstruction, transport_ibp = self.parts(virtual_bulk, mechanical_tests)
+        virtual_boundary = sp.expand(boundary.subs(virtual, simultaneous=True).doit()+transport)
+        old_tests = {f(z):v(z) for group, old in zip(self.tests, c.variations)
+                     for f, v in zip((*group[:3], group[4]), old)}
+        virtual_variation_residual = sp.expand(variation.subs(virtual, simultaneous=True).doit().subs(
+            old_tests, simultaneous=True).doit()-source['VIRTUAL_VARIATION'])
+        virtual_boundary_residual = sp.expand(virtual_boundary.subs(old_tests, simultaneous=True).doit()
+                                             -source['NORMAL_BOUNDARY_WORK'])
+        rates = {v(z):sp.cancel(sp.diff(c.phase**sign, r.t)/(c.phase**sign))*f(z)
+                 for sign, fields, group in zip((1, -1), c.fields, self.tests) for f, v in zip(fields, group)}
+        defects = tuple(sp.expand((group[3](z)-virtual[group[3](z)]).subs(rates, simultaneous=True).doit())
+                        for group in self.tests)
+        actual_boundary = sp.expand(boundary.subs(rates, simultaneous=True).doit())
+        chemical_transport = sp.expand(transport.subs(rates, simultaneous=True).doit())
+        current = c.retained(actual_boundary+chemical_transport)
+        defect_map = {test:sp.S.Zero for test in tests}
+        defect_map.update({group[3](z):defect for group, defect in zip(self.tests, defects)})
+        correction = c.retained(boundary.subs(defect_map, simultaneous=True).doit())
+        current_residual = sp.expand(current-source['SLAB_CURRENT']-correction)
+        matrix, polarization_residual = self.matrix(current)
+        correction_matrix, correction_polarization_residual = self.matrix(correction)
+        chemical_work = sp.expand(sum(-euler[5*i+3]*defect for i, defect in enumerate(defects)))
+        rate_variation = sp.expand(variation.subs(rates, simultaneous=True).doit())
+        mechanical_power = sp.expand(sum(a*b for a, b in zip(mechanical, mechanical_tests)).subs(
+            rates, simultaneous=True).doit())
+        balance_residual = c.retained(rate_variation-mechanical_power+chemical_work-sp.diff(current, z))
+        # The coefficient connecting an averaged quadratic variation to its
+        # positive harmonic is extracted from the same real-field ansatz.
+        probe = (c.amplitudes[0][3]*c.phase+c.amplitudes[1][3]/c.phase)/2
+        norm = sp.diff(c.ends.phase_terms(sp.expand(probe**2/2), c.phase_coordinate)[0],
+                       c.amplitudes[0][3], c.amplitudes[1][3])
+        chemical = sp.expand(-euler[8]/norm).coeff(r.symbols['epsilon_shape'], 2)
+        chemical_wave = chemical.subs({f(z):a*sp.exp(sp.I*c.ends.kn*z)
+                                      for f, a in zip(c.fields[0], c.amplitudes[0])}, simultaneous=True)
+        chemical_wave = sp.expand(chemical_wave.doit().subs(z, 0))
+        chemical_row = sp.ImmutableMatrix(1, 5, lambda i, j:sp.diff(chemical_wave, c.amplitudes[0][j]))
+        chemical_residual = sp.expand(chemical_wave-(chemical_row*sp.ImmutableMatrix(c.amplitudes[0]))[0])
+        return {'UNCONSTRAINED_VARIATION':variation, 'ENERGY_EULER_DERIVATIVES':-euler,
+                'UNCONSTRAINED_BOUNDARY_WORK':boundary,
+                'VARIATION_RECONSTRUCTION_RESIDUAL':reconstruction,
+                'ENERGY_IBP_RESIDUAL':ibp, 'MATERIAL_VIRTUAL_DENSITY_MAP':tuple(virtual.items()),
+                'CONSTRAINED_MECHANICAL_EULER_DERIVATIVES':mechanical,
+                'CHEMICAL_TRANSPORT_BOUNDARY':transport,
+                'TRANSPORT_RECONSTRUCTION_RESIDUAL':transport_reconstruction,
+                'TRANSPORT_IBP_RESIDUAL':transport_ibp,
+                'CONSERVATIVE_VARIATION_RECONSTRUCTION_RESIDUAL':virtual_variation_residual,
+                'CONSERVATIVE_BOUNDARY_RECONSTRUCTION_RESIDUAL':virtual_boundary_residual,
+                'MATERIAL_DENSITY_RATE_DEFECTS':defects, 'ACTUAL_TIME_BOUNDARY':actual_boundary,
+                'CHEMICAL_TRANSPORT_CURRENT':chemical_transport,
+                'MASS_RATE_CHEMICAL_WORK':chemical_work, 'MECHANICAL_POWER':mechanical_power,
+                'ACTUAL_ENERGY_RATE_VARIATION':rate_variation,
+                'MASS_RATE_BOUNDARY_CORRECTION':correction, 'SLAB_CURRENT':current,
+                'SLAB_CURRENT_MATRIX':matrix, 'MASS_RATE_CORRECTION_MATRIX':correction_matrix,
+                'CURRENT_DECOMPOSITION_RESIDUAL':current_residual,
+                'POLARIZATION_RESIDUAL':polarization_residual,
+                'CORRECTION_POLARIZATION_RESIDUAL':correction_polarization_residual,
+                'ENERGY_BALANCE_RESIDUAL':balance_residual,
+                'HARMONIC_VARIATION_NORMALIZATION':norm,
+                'CHEMICAL_FUNCTIONAL_DERIVATIVE':chemical,
+                'CHEMICAL_FIELD_ROW':chemical_row,
+                'CHEMICAL_POLARIZATION_RESIDUAL':chemical_residual}
+
+    def emit(self, anchoring, end, suffix):
+        result = self.construct(anchoring, end)
+        dims = PHYSICAL_METADATA.dimensions
+        energy = dims.measure(self.c.construct(anchoring, end)['TANGENTIAL_ENERGY_REDUCTION'])
+        current = dims.measure(result['SLAB_CURRENT'])
+        power = tuple(a+b for a, b in zip(energy, dims.measure(self.r.omega)))
+        for key, value in result.items():
+            units = None
+            if key.endswith('_MATRIX'):
+                units = {(5*i+j,):tuple(a-b-c for a, b, c in zip(current, self.c.field_units[i], self.c.field_units[j]))
+                         for i in range(5) for j in range(5)}
+            elif key == 'ENERGY_EULER_DERIVATIVES':
+                units = {(i,):tuple(a-b for a, b in zip(energy, self.c.field_units[i % 5])) for i in range(10)}
+            elif key == 'CONSTRAINED_MECHANICAL_EULER_DERIVATIVES':
+                units = {(i,):tuple(a-b for a, b in zip(energy, self.c.field_units[j]))
+                         for i, j in enumerate((0, 1, 2, 4)*2)}
+            elif key == 'CHEMICAL_FIELD_ROW':
+                units = {(j,):tuple(a-b-c for a, b, c in zip(energy, self.c.field_units[3], self.c.field_units[j]))
+                         for j in range(5)}
+            elif key == 'ACTUAL_ENERGY_RATE_VARIATION':
+                units = {():power}
+            elif key.endswith('_RESIDUAL'):
+                unit = (power if key == 'ENERGY_BALANCE_RESIDUAL' else current if key in (
+                    'CURRENT_DECOMPOSITION_RESIDUAL', 'POLARIZATION_RESIDUAL',
+                    'CORRECTION_POLARIZATION_RESIDUAL') else
+                    tuple(a+b for a, b in zip(energy, dims.measure(self.r.z))) if
+                    key == 'CONSERVATIVE_BOUNDARY_RECONSTRUCTION_RESIDUAL' else
+                    tuple(a-b for a, b in zip(energy, self.c.field_units[3])) if
+                    key == 'CHEMICAL_POLARIZATION_RESIDUAL' else energy)
+                units = {():unit}
+            physical('ENERGY_BALANCE_'+key+'_'+suffix, value, zero_dimensions=units)
+        return result
+
+
+class ClosedAcousticEnergy:
+    """Acoustic balance and closed face lift on an already reduced end."""
+
+    def __init__(self, balance, modes, strong):
+        self.balance, self.modes, self.strong = balance, modes, strong
+        self.c, self.r = balance.c, balance.r
+        self.depth = sp.Symbol('s11cdAcousticOutwardDepth', nonnegative=True)
+        self.height = sp.Symbol('s11cdAcousticDepthCutoff', positive=True)
+        self.qlegs = sp.symbols('s11cdAcousticLeftNormalMomentum s11cdAcousticRightNormalMomentum', complex=True)
+        self.alegs = sp.symbols('s11cdAcousticLeftAmplitude s11cdAcousticRightAmplitude')
+        self.phi = sp.Function('s11cdAcousticPotential')
+        self.energy_coefficients = sp.symbols('s11cdAcousticTimeEnergyCoefficient s11cdAcousticGradientEnergyCoefficient')
+        dims = PHYSICAL_METADATA.dimensions
+        length, frequency = dims.measure(self.r.z), dims.measure(self.r.omega)
+        potential = tuple(2*a+b for a, b in zip(length, frequency))
+        density = dims.measure(self.r.symbols['rho_m'])
+        dims.known[self.depth] = dims.known[self.height] = length
+        dims.known[self.phi] = potential
+        for q in self.qlegs:
+            dims.known[q] = tuple(-a for a in length)
+        for a in self.alegs:
+            dims.known[a] = potential
+        speed = dims.measure(self.r.symbols['c_s0'])
+        dims.known[self.energy_coefficients[0]] = tuple(a-2*b for a, b in zip(density, speed))
+        dims.known[self.energy_coefficients[1]] = density
+
+    @lru_cache(maxsize=None)
+    def construct(self, anchoring, end):
+        c, r, s = self.c, self.r, self.depth
+        rho, speed = (r.symbols[n] for n in ('rho_m', 'c_s0'))
+        positions = (*r.x[:2], r.z, s)
+        phi = self.phi(r.t, *positions)
+        velocity = sp.ImmutableMatrix([sp.diff(phi, x) for x in positions])
+        pressure = -rho*sp.diff(phi, r.t)
+        wave = sp.diff(phi, r.t, 2)-speed**2*sum(sp.diff(phi, x, 2) for x in positions)
+        local_flux = pressure*velocity
+        a, b = self.energy_coefficients
+        energy_ansatz = a*sp.diff(phi, r.t)**2+b*(velocity.T*velocity)[0]
+        balance_ansatz = sp.diff(energy_ansatz, r.t)+sum(sp.diff(local_flux[i], x) for i, x in enumerate(positions))
+        wave_evolution = sp.solve(wave, sp.diff(phi, r.t, 2))[0]
+        balance_on_wave = sp.expand(balance_ansatz.subs(sp.diff(phi, r.t, 2), wave_evolution))
+        jets = sorted(balance_on_wave.atoms(sp.Derivative), key=sp.default_sort_key)
+        coefficients = sp.solve(sp.Poly(balance_on_wave, *jets).coeffs(), (a, b), dict=True)[0]
+        energy = energy_ansatz.subs(coefficients)
+        local_residual = sp.expand(balance_on_wave.subs(coefficients))
+        qleft, qright = self.qlegs
+        aleft, aright = self.alegs
+        kleft, kright = c.leg_momenta
+        plus = aright*c.phase*sp.exp(sp.I*(kright*r.z+qright*s))
+        minus = aleft/c.phase*sp.exp(-sp.I*(kleft*r.z+qleft*s))
+        harmonic = r.symbols['epsilon_shape']*(plus+minus)/2
+        def average(expression):
+            return sp.expand(c.ends.phase_terms(sp.expand(expression.subs(phi, harmonic).doit()),
+                                                c.phase_coordinate).get(0, sp.S.Zero))
+        harmonic_energy = average(energy)
+        harmonic_flux = local_flux.applyfunc(average)
+        harmonic_wave = tuple(sp.cancel(wave.subs(phi, leg).doit()/leg) for leg in (minus, plus))
+        depth_factor = sp.exp(sp.I*(qright-qleft)*s)
+        current_coefficient = sp.simplify(harmonic_flux[2].subs(r.z, 0)/depth_factor)
+        generic_depth = sp.integrate(depth_factor, (s, 0, self.height))
+        diagonal_depth = sp.integrate(depth_factor.subs(qleft, qright), (s, 0, self.height))
+        finite_depth = sp.Piecewise((generic_depth, sp.Ne(qright, qleft)), (diagonal_depth, True))
+        finite_residual = sp.Piecewise((sp.simplify(sp.diff(generic_depth, self.height)-depth_factor.subs(s, self.height)),
+                                       sp.Ne(qright, qleft)),
+                                      (sp.simplify(sp.diff(diagonal_depth, self.height)-
+                                                   depth_factor.subs(qleft, qright).subs(s, self.height)), True))
+        decay = sp.Symbol('s11cdAcousticDepthDecay', positive=True)
+        oscillation = sp.Symbol('s11cdAcousticDepthOscillation', real=True)
+        dims = PHYSICAL_METADATA.dimensions
+        dims.known[decay] = dims.known[oscillation] = dims.measure(qright)
+        convergent_factor = sp.exp((-decay+sp.I*oscillation)*s)
+        # Integrate the exponential using its computed differential
+        # coefficient; verify the antiderivative before using its endpoints.
+        primitive = convergent_factor/sp.cancel(sp.diff(convergent_factor, s)/convergent_factor)
+        convergent_finite = primitive.subs(s, self.height)-primitive.subs(s, 0)
+        boundary_modulus = sp.simplify(sp.Abs(primitive.subs(s, self.height)))
+        boundary_modulus_limit = sp.limit(boundary_modulus, self.height, sp.oo)
+        # The modulus limit bounds both real and imaginary endpoint parts.
+        # A nonzero/unresolved bound is retained; it cannot define this limit.
+        infinite_depth = (boundary_modulus_limit-primitive.subs(s, 0) if boundary_modulus_limit == 0
+                          else sp.Limit(convergent_finite, self.height, sp.oo))
+        primitive_residual = sp.simplify(sp.diff(primitive, s)-convergent_factor)
+        depth_rate = sp.cancel(sp.diff(depth_factor, s)/depth_factor)
+        depth_map = {decay:-sp.re(depth_rate), oscillation:sp.im(depth_rate)}
+        depth_join = sp.simplify(sp.expand_complex((-decay+sp.I*oscillation).subs(depth_map)-depth_rate))
+
+        slab = self.balance.construct(anchoring, end)
+        chemical = (slab['CHEMICAL_FIELD_ROW']*sp.ImmutableMatrix(c.amplitudes[0]))[0]
+        time_rate = sp.cancel(sp.diff(c.phase, r.t)/c.phase)
+        surface_density = sp.cancel(c.mass_symbol.subs({r.symbols[n]:0 for n in ('Lambda_A_0', 'Lambda_V_0')})[3]/time_rate)
+        mus = sp.cancel(chemical/surface_density)
+        amplitude = self.alegs[1]
+        outgoing = amplitude*c.phase*sp.exp(sp.I*(self.modes.k*r.z+qright*s))
+        face_v = sp.cancel(sp.diff(outgoing, s).subs(s, 0)/(c.phase*sp.exp(sp.I*self.modes.k*r.z)))
+        face_p = sp.cancel((-rho*sp.diff(outgoing, r.t)).subs(s, 0)/(c.phase*sp.exp(sp.I*self.modes.k*r.z)))
+        kernels = {name:sp.cancel(r.symbols['Lambda_'+name+'_0']/(1-sp.I*r.omega*r.symbols['tau_'+name]))
+                   for name in ('A', 'V', 'X')}
+        faces = []
+        for sign in (-1, 1):
+            # Supplied face geometry and real-field harmonic ansatz.
+            displacement = sign*r.symbols['W_0']*c.amplitudes[0][4]*c.phase/2
+            outward_velocity = sp.cancel(sign*sp.diff(displacement, r.t)/c.phase)
+            outward_virtual_lift = sp.diff(sign*displacement/c.phase, c.amplitudes[0][4])
+            relative = rho*(face_v-outward_velocity)
+            affinity = mus-face_p/rho
+            closure = relative-kernels['A']*affinity-kernels['V']*outward_velocity
+            coefficient = sp.diff(closure, amplitude)
+            constant = closure.subs(amplitude, 0)
+            solution = sp.cancel(-constant/coefficient)
+            closed = {amplitude:solution}
+            faces.append({'ORIENTATION':sign, 'DISPLACEMENT':displacement,
+                          'OUTWARD_VELOCITY':outward_velocity, 'VIRTUAL_LIFT':outward_virtual_lift,
+                          'AMPLITUDE':solution, 'PRESSURE':sp.cancel(face_p.subs(closed)),
+                          'RELATIVE_MASS_FLUX':sp.cancel(relative.subs(closed)),
+                          'AFFINITY':sp.cancel(affinity.subs(closed)),
+                          'MECHANICAL_LOAD':sp.cancel(((face_p+kernels['X']*affinity)*outward_virtual_lift).subs(closed)),
+                          'AMPLITUDE_EQUATION_COEFFICIENT':coefficient,
+                          'AMPLITUDE_EQUATION_RECONSTRUCTION_RESIDUAL':sp.expand(closure-coefficient*amplitude-constant),
+                          'CLOSURE_RESIDUAL':sp.cancel(closure.subs(closed))})
+        algebraic, relation, joins = self.modes.analytic(self.strong)
+        acoustic_row = harmonic_wave[1].subs(kright, self.modes.k)
+        radical_scale = sp.sqrt(sp.Poly(relation, self.modes.q).nth(2)/sp.Poly(acoustic_row, qright).nth(2))
+        radical_map = {qright:radical_scale*self.modes.q}
+        radical_residual = sp.simplify(acoustic_row.subs(radical_map)-relation)
+        no_transfer = {r.symbols[n]:0 for n in ('Lambda_A_0', 'Lambda_V_0')}
+        no_face = {**no_transfer, r.symbols['Lambda_X_0']:0}
+        mass_increment = (algebraic[3, :]-algebraic[3, :].subs(no_transfer)).applyfunc(sp.cancel)
+        mechanical_increment = (algebraic[4, :]-algebraic[4, :].subs(no_face).subs(rho, 0)).applyfunc(sp.cancel)
+        mass_from_faces = sum(face['RELATIVE_MASS_FLUX'] for face in faces).subs(radical_map)
+        mechanical_from_faces = sum(face['MECHANICAL_LOAD'] for face in faces).subs(radical_map)
+        mass_face_row = sp.ImmutableMatrix(1, 5, lambda i, j:c.retained(sp.cancel(sp.diff(mass_from_faces, c.amplitudes[0][j]))))
+        mechanical_face_row = sp.ImmutableMatrix(1, 5, lambda i, j:c.retained(sp.cancel(sp.diff(mechanical_from_faces, c.amplitudes[0][j]))))
+        mass_join = (mass_increment-mass_face_row).applyfunc(lambda v:c.retained(sp.cancel(v)))
+        mechanical_join = (mechanical_increment-mechanical_face_row).applyfunc(lambda v:c.retained(sp.cancel(v)))
+        mechanical_sum = (mechanical_increment+mechanical_face_row).applyfunc(lambda v:c.retained(sp.cancel(v)))
+        faces = [{key:c.retained(value) for key, value in face.items()} for face in faces]
+        return {'ACOUSTIC_WAVE_EQUATION':wave, 'ACOUSTIC_PRESSURE':pressure,
+                'ACOUSTIC_VELOCITY':velocity, 'ENERGY_ANSATZ':energy_ansatz,
+                'ENERGY_COEFFICIENT_SOLVE':tuple(coefficients.items()), 'ACOUSTIC_ENERGY':energy,
+                'ACOUSTIC_LOCAL_CURRENT':local_flux, 'LOCAL_ENERGY_BALANCE_RESIDUAL':local_residual,
+                'HARMONIC_FIELD_ANSATZ':harmonic, 'HARMONIC_WAVE_ROWS':harmonic_wave,
+                'HARMONIC_ENERGY':harmonic_energy, 'HARMONIC_CURRENT':harmonic_flux,
+                'NORMAL_CURRENT_DEPTH_COEFFICIENT':current_coefficient,
+                'FINITE_DEPTH_INTEGRAL':finite_depth, 'FINITE_DEPTH_DERIVATIVE_RESIDUAL':finite_residual,
+                'DIAGONAL_DEPTH_INTEGRAL':diagonal_depth,
+                'CONVERGENT_DEPTH_FACTOR':convergent_factor, 'CONVERGENT_FINITE_DEPTH_INTEGRAL':convergent_finite,
+                'DEPTH_PRIMITIVE_RESIDUAL':primitive_residual,
+                'DEPTH_BOUNDARY_MODULUS':boundary_modulus, 'DEPTH_BOUNDARY_MODULUS_LIMIT':boundary_modulus_limit,
+                'CONVERGENT_INFINITE_DEPTH_INTEGRAL':infinite_depth, 'DEPTH_DECAY_BINDINGS':tuple(depth_map.items()),
+                'DEPTH_RATE_JOIN_RESIDUAL':depth_join, 'DEPTH_CONVERGENCE_DOMAIN':sp.Gt(-sp.re(depth_rate), 0),
+                'SLAB_SURFACE_DENSITY':surface_density, 'CHEMICAL_AFFINITY_DRIVER':c.retained(mus),
+                'MEMORY_KERNELS':kernels, 'FACE_RECORDS':faces,
+                'SOURCE_BRANCH_JOINS':joins, 'ACOUSTIC_RADICAL_SCALE':radical_scale,
+                'ACOUSTIC_RADICAL_JOIN_RESIDUAL':radical_residual,
+                'REDUCED_MASS_CLOSURE_INCREMENT':mass_increment,
+                'RECONSTRUCTED_MASS_FACE_ROW':mass_face_row,
+                'REDUCED_MECHANICAL_CLOSURE_INCREMENT':mechanical_increment,
+                'RECONSTRUCTED_MECHANICAL_FACE_ROW':mechanical_face_row,
+                'REDUCED_MASS_FACE_JOIN_RESIDUAL':mass_join,
+                'REDUCED_MECHANICAL_FACE_JOIN_RESIDUAL':mechanical_join,
+                'REDUCED_MECHANICAL_FACE_SUM':mechanical_sum}
+
+    def emit(self, anchoring, end, suffix):
+        result = self.construct(anchoring, end)
+        dims = PHYSICAL_METADATA.dimensions
+        def shifted(unit, other):
+            return tuple(a+b for a, b in zip(unit, other))
+        energy_unit = dims.measure(result['ACOUSTIC_ENERGY'])
+        for key, value in result.items():
+            units = None
+            if key == 'LOCAL_ENERGY_BALANCE_RESIDUAL':
+                units = {():shifted(energy_unit, dims.measure(self.r.omega))}
+            elif key in ('FINITE_DEPTH_DERIVATIVE_RESIDUAL', 'DEPTH_PRIMITIVE_RESIDUAL'):
+                units = {():dims.zero}
+            elif key == 'DEPTH_BOUNDARY_MODULUS_LIMIT':
+                units = {():dims.measure(self.height)}
+            elif key == 'DEPTH_RATE_JOIN_RESIDUAL':
+                units = {():dims.measure(self.qlegs[0])}
+            elif key == 'ACOUSTIC_RADICAL_JOIN_RESIDUAL':
+                units = {():tuple(2*a for a in dims.measure(self.r.omega))}
+            elif key == 'SOURCE_BRANCH_JOINS':
+                units = {(i,):dims.zero for i in range(len(value))}
+            elif key == 'FACE_RECORDS':
+                unit = dims.measure(result['SLAB_SURFACE_DENSITY'])
+                unit = shifted(unit, dims.measure(self.r.omega))
+                units = {(i, key):unit for i in range(len(value)) for key in
+                         ('CLOSURE_RESIDUAL', 'AMPLITUDE_EQUATION_RECONSTRUCTION_RESIDUAL')}
+            elif key in ('REDUCED_MASS_FACE_JOIN_RESIDUAL', 'REDUCED_MECHANICAL_FACE_JOIN_RESIDUAL', 'REDUCED_MECHANICAL_FACE_SUM'):
+                row = 3 if key == 'REDUCED_MASS_FACE_JOIN_RESIDUAL' else 4
+                field_units = self.c.field_units
+                index = next(j for j in range(5) if self.strong[row, j] != 0)
+                row_unit = shifted(dims.measure(self.strong[row, index]), field_units[index])
+                units = {(j,):tuple(a-b for a, b in zip(row_unit, field_units[j])) for j in range(5)}
+            if key == 'DEPTH_CONVERGENCE_DOMAIN':
+                emit('CLOSED_ACOUSTIC_'+key+'_'+suffix, value)
+                # Predicate grades follow its comparison operands; its
+                # output dimension is logical, not the decay-rate dimension.
+                emit('METADATA_CLOSED_ACOUSTIC_'+key+'_'+suffix,
+                     self.modes.numeric_metadata(value.lhs-value.rhs, lambda p:dims.zero))
+            else:
+                physical('CLOSED_ACOUSTIC_'+key+'_'+suffix, value, zero_dimensions=units)
+        return result
+
+
 class ChannelInput:
     """Explicit profile and numerical parameter input, separate from PIT.
 

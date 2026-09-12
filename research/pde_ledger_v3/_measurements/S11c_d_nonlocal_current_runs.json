@@ -1,0 +1,76 @@
+{
+  "command": [
+    "python",
+    "_measurements/S11c_d_nonlocal_current_check.py",
+    "--manifest",
+    "/tmp/s11cd-threshold-20260911/full/manifest.json",
+    "--input",
+    "_measurements/S11c_d_channel_preflight_input.json",
+    "--acoustic",
+    "--cache-result",
+    "/tmp/s11cd-current-20260912/final/objects.pickle"
+  ],
+  "run_directory": "/tmp/s11cd-current-20260912/final",
+  "source_hashes_before": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "57f4da77b0f53a0b122222f86d432f58c972968afb57fb892a1a5422fb6ee591",
+    "_measurements/S11c_d_nonlocal_current_check.py": "311f13f6b3ebdf67d6ea02b187eb42fecc52a6740b905cc467e7b78a98d9af64",
+    "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "_measurements/S11c_d_nonlocal_current_plan.md": "1c61a1f4b303e2b14972d3cdc8992646ef9fa9c2ecfabb9aa2b810d674f55a9e",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+    "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851"
+  },
+  "source_hashes_after": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "57f4da77b0f53a0b122222f86d432f58c972968afb57fb892a1a5422fb6ee591",
+    "_measurements/S11c_d_nonlocal_current_check.py": "311f13f6b3ebdf67d6ea02b187eb42fecc52a6740b905cc467e7b78a98d9af64",
+    "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "_measurements/S11c_d_nonlocal_current_plan.md": "1c61a1f4b303e2b14972d3cdc8992646ef9fa9c2ecfabb9aa2b810d674f55a9e",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+    "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851"
+  },
+  "exit_code": 0,
+  "wall_seconds": 195.72522774152458,
+  "peak_child_rss_kib": 200248,
+  "artifacts": {
+    "full.out": {
+      "bytes": 1738791,
+      "sha256": "d7f354f784efdb2bd55ee2f3380bbb6769bfa47e92273a3abd233f33acb0bab8"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "objects.pickle": {
+      "bytes": 102885,
+      "sha256": "cdd0e5ba73f3d5ed402a821f87857ac2349bc462eff660ff4911d5e4e8a5a352"
+    }
+  },
+  "checkpointCommit": "18f3236ab154e0ba935f2be6f22c7925bc0b957c",
+  "scope": "REFERENCE LAB_HELD/RHO4_CONSTANT symbolic current preflight; no mode normalization or physical pass inferred from exit zero",
+  "published_output": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_nonlocal_current_reference_preflight.out",
+  "definition_retention": {
+    "priorDefinitionCount": 38,
+    "changedPriorDefinitions": [],
+    "newDefinitions": [
+      "ClosedAcousticEnergy",
+      "SlabEnergyBalance"
+    ]
+  },
+  "prior_main_output_sha256": "ebc8ec7ead14b446a4cf4ad056188729e725e4bfe22662a290234bd354292322",
+  "inventory_sha256": "c2e856c208a2116f973aedba0ea0aff6ecc06091576fc543e7f7b1b5a63fb22e",
+  "development_repairs": [
+    "Compute the decaying antiderivative endpoint using its verified modulus bound; the initial generic complex limit was unresolved by SymPy.",
+    "Derive the equal-normal-momentum finite-depth integral from its own integrand; do not substitute into a singular generic quotient.",
+    "Expand real/imaginary parts for the exact depth-rate join; attach logical metadata from comparison operands."
+  ],
+  "stop_boundary": "Mechanical source/face difference has five nonzero coefficients; source/face sum vanishes. No inherited sign was changed."
+}

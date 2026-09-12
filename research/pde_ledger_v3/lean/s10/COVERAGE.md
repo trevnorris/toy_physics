@@ -7,14 +7,14 @@ not a claim that the supplied physical model has been derived.
 |---|---|---|
 | Supplied action and actual first variation | Baseline plus all five controls in Lean | Physical justification remains a premise. |
 | Compact-test stationarity and local PDE | All six action families | Boundary/interface and weak-solution extensions are outside this S10 setting. |
-| Real cosine phase average | All six actions; exact 0..2pi integral | CAS route-factor/comparator bookkeeping remains separate. |
+| Real cosine phase average | All six actions; exact 0..2pi integral; actual anisotropic D3 matrices now prove `M_A = -2 M_B` and their action linkage | Extend the route-factor bridge to other emitted packages and D4; integrate the comparator. |
 | Baseline and form-control spectrum | Complete real plane-wave amplitude classification in arbitrary D | This does not prove completeness of general PDE solutions. |
 | Anisotropic spectrum and exceptional directions | Complete oblique, parallel, perpendicular, and static classifications in Lean | The focused CAS samples do not certify a general stratum-discovery algorithm. |
 | Coefficient and sign controls | Arbitrary real squared-frequency classification; positive/negative sign and N2/N3 counts | An exponential spacetime solution is not yet constructed. |
 | Q5 scaling | Nonzero root formulas and ratios, including the anisotropic extra branch | Zero-root ratio remains undefined, rather than assigned a value. |
-| Q6 dimensions | PhysLean expression checker and unit-change theorem; actual-action bridges, coefficient solve/inventory, full root ratios, Q7, matrices, mixed-unit minors, complete basis families and N5/N6 residuals; kernel/rank unit invariance and vacuity proved | Connect actual CAS expressions and emissions, including basis normalizations, denominator domains and root substitutions. |
+| Q6 dimensions | PhysLean expression checker and unit-change theorem; actual-action bridges, coefficient solve/inventory, full root ratios, Q7, matrices, mixed-unit minors, complete basis families and N5/N6 residuals; kernel/rank unit invariance and vacuity proved. Both engines' generic and exceptional anisotropic D3 matrices, determinants, roots, stacks, bases, residuals and emitted minors have checked expression bridges (916 scalar expressions including generic/exceptional counts, root lists, aggregate coincidence differences and spectrum solve operands), explicit domains and complete-kernel basis proofs. Fixed-point reruns have an explicit coordinate/physical scale convention. | Extend to reality-filter traces and remaining Q5/Q6/period-average metadata, D4 and other packages; integrate with production. |
 | Q7 ordinary three-dimensional curl | PhysLean Levi-Civita contraction and all six package comparisons, with exact action-stiffness linkage | Align the CAS implementations and production comparator with the explicit construction. |
-| Q8 focused CAS repair | Both engines inspect N2 and N3 matrices; ten sampled roots compare successfully | Full production rerun and integration with the existing broad comparator/export chain. |
+| Q8 focused CAS repair | Both engines inspect N2 and N3 matrices; ten sampled roots compare successfully. Lean now checks all 83 emitted D3 minors, completeness of the row/column selections, all 12 rank-drop locus predicates and all four targeted points, including both branches of the extra transverse locus. The rerun matrices, roots and all 12 printed basis vectors are connected to complete kernel proofs and physical rescaling. All 112 generic and exceptional rank/nullity/basis-count records are certified against the actual objects; generic bindings keep explicit chart assumptions and N4/N7 use signed subtraction. All six solution/distinct-root list pairs have determinant-completeness proofs; distinct counts, algebraic multiplicities and Wolfram candidate-filter counts are certified. The primary coincidence equations, guarded loci, allowed regions, Boolean/outcome decisions and SymPy witnesses are certified on the positive-coefficient domain, including the full parallel axis. All Q8/aggregate coincidence fields, all 16 reported root signs, eight empty root solver-condition lists, three spectrum solve operands/statuses and six retained/skipped-stratum records are now bound to their mathematical meanings. Lean resolves both SymPy undecided extra-root signs as positive. | Bridge reality-filter traces and remaining Q5/Q6/period-average metadata; then full production rerun and integration with the existing broad comparator/export chain. |
 | Ledger/paper alignment | New evidence recorded in S10 and linked proof reports | Reconcile the paper's historical claims and evidence pointers with the completed formal coverage. |
 
 The focused CAS rerun and its comparison are documented in
@@ -22,6 +22,14 @@ The focused CAS rerun and its comparison are documented in
 The latest control results are in [SCALAR_RESULT.md](SCALAR_RESULT.md).
 The dimensional-analysis and curl extension is in [Q6_Q7_RESULT.md](Q6_Q7_RESULT.md).
 The matrix, minor and complete-basis extension is in [MATRIX_RESULT.md](MATRIX_RESULT.md).
+The first actual-expression bridge is in [CAS_BRIDGE_RESULT.md](CAS_BRIDGE_RESULT.md),
+with current build evidence in [CAS_BRIDGE_VERIFICATION.txt](CAS_BRIDGE_VERIFICATION.txt).
+The complete minor and exceptional-locus bridge is in [MINOR_LOCUS_RESULT.md](MINOR_LOCUS_RESULT.md).
+The exceptional matrices and complete bases are in [EXCEPTIONAL_RERUN_RESULT.md](EXCEPTIONAL_RERUN_RESULT.md).
+The exceptional rank/nullity and signed-count bindings are in [COUNT_RESULT.md](COUNT_RESULT.md).
+Root-list completeness and multiplicities are in [ROOT_RESULT.md](ROOT_RESULT.md).
+The primary coincidence loci, decisions and witnesses are in [COINCIDENCE_RESULT.md](COINCIDENCE_RESULT.md).
+The aggregate/Q8 fields, root signs, solve operands and stratum dispositions are in [METADATA_RESULT.md](METADATA_RESULT.md).
 
 S11c-d currently consumes the frozen S11c-b base and S11c-c1/c2 deltas.
 This increment preserves those files and `S10_exports.py`; it makes no changes

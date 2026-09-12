@@ -1,0 +1,1304 @@
+{
+  "status": "PASS",
+  "independent_parser_cells": 916,
+  "strict_parser_rejections": [
+    {
+      "name": "PY:__import__(\"os\")",
+      "outcome": "REJECTED",
+      "reason": "unsupported syntax at byte 11"
+    },
+    {
+      "name": "PY:sqrt(k1)",
+      "outcome": "REJECTED",
+      "reason": "unknown symbol sqrt"
+    },
+    {
+      "name": "WL:Sqrt[k1]",
+      "outcome": "REJECTED",
+      "reason": "unknown symbol Sqrt"
+    },
+    {
+      "name": "PY:unknown",
+      "outcome": "REJECTED",
+      "reason": "unknown symbol unknown"
+    },
+    {
+      "name": "PY:1.0",
+      "outcome": "REJECTED",
+      "reason": "unsupported syntax at byte 1"
+    },
+    {
+      "name": "PY:k1**(-1)",
+      "outcome": "REJECTED",
+      "reason": "only bounded natural powers are supported"
+    },
+    {
+      "name": "PY:k1**33",
+      "outcome": "REJECTED",
+      "reason": "only bounded natural powers are supported"
+    },
+    {
+      "name": "PY:k1^2",
+      "outcome": "REJECTED",
+      "reason": "wrong engine power syntax"
+    },
+    {
+      "name": "WL:k1**2",
+      "outcome": "REJECTED",
+      "reason": "wrong engine power syntax"
+    },
+    {
+      "name": "PY:k1 k2",
+      "outcome": "REJECTED",
+      "reason": "unconsumed token k2"
+    },
+    {
+      "name": "PY:[k1]+[k2]",
+      "outcome": "REJECTED",
+      "reason": "container arithmetic"
+    },
+    {
+      "name": "PY:Matrix([[k1],[k2,k3]])",
+      "outcome": "REJECTED",
+      "reason": "ragged matrix"
+    },
+    {
+      "name": "PY:1;2",
+      "outcome": "REJECTED",
+      "reason": "unsupported syntax at byte 1"
+    },
+    {
+      "name": "PY:9999999999999999999999999999999",
+      "outcome": "REJECTED",
+      "reason": "integer literal exceeds parser bound"
+    },
+    {
+      "name": "1/0",
+      "outcome": "REJECTED",
+      "reason": "literal zero denominator"
+    },
+    {
+      "name": "mu_R/(2-2)",
+      "outcome": "REJECTED",
+      "reason": "literal zero denominator"
+    },
+    {
+      "name": "mu_R*(1/(3-3))",
+      "outcome": "REJECTED",
+      "reason": "literal zero denominator"
+    },
+    {
+      "name": "rho_br*omegaSquared + mu_R*k1",
+      "outcome": "REJECTED",
+      "reason": "inhomogeneous additive branches: (-3, -2, 1) versus (-2, -2, 1)"
+    },
+    {
+      "name": "k1-k1+1",
+      "outcome": "REJECTED",
+      "reason": "inhomogeneous additive branches: (-1, 0, 0) versus (0, 0, 0)"
+    },
+    {
+      "name": "duplicate_tag",
+      "outcome": "REJECTED",
+      "reason": "/tmp/s10_bridge_y04939wh/input.out:1444: duplicate tag S10_XFORM_ANISO_D3_PREMISE_FIELD_SECTOR"
+    },
+    {
+      "name": "missing_selected_record",
+      "outcome": "REJECTED",
+      "reason": "PY: missing S10_XFORM_ANISO_D3_Q2_MATRIX_A"
+    },
+    {
+      "name": "wrong_engine",
+      "outcome": "REJECTED",
+      "reason": "/tmp/s10_bridge_y04939wh/input.out:1: wrong engine tag"
+    },
+    {
+      "name": "missing_exceptional_basis_vector",
+      "outcome": "REJECTED",
+      "reason": "wrong exceptional basis cardinality"
+    },
+    {
+      "name": "invalid_count:1/2",
+      "outcome": "REJECTED",
+      "reason": "count must be a bounded integral constant"
+    },
+    {
+      "name": "invalid_count:rho_br",
+      "outcome": "REJECTED",
+      "reason": "count must be a bounded integral constant"
+    },
+    {
+      "name": "invalid_count:33",
+      "outcome": "REJECTED",
+      "reason": "count must be a bounded integral constant"
+    },
+    {
+      "name": "invalid_count:[1]",
+      "outcome": "REJECTED",
+      "reason": "expected scalar count"
+    },
+    {
+      "name": "root_rules:PY:[{wrong: 0}]",
+      "outcome": "REJECTED",
+      "reason": "expected omegaSquared, got wrong"
+    },
+    {
+      "name": "root_rules:PY:[{omegaSquared: 0, k1: 1}]",
+      "outcome": "REJECTED",
+      "reason": "expected }, got ,"
+    },
+    {
+      "name": "root_rules:PY:[{omegaSquared: 0}] trailing",
+      "outcome": "REJECTED",
+      "reason": "empty or trailing solution payload"
+    },
+    {
+      "name": "root_rules:PY:[{omegaSquared: [0]}]",
+      "outcome": "REJECTED",
+      "reason": "expected one scalar root per solution rule"
+    },
+    {
+      "name": "root_rules:PY:[]",
+      "outcome": "REJECTED",
+      "reason": "empty or trailing solution payload"
+    },
+    {
+      "name": "root_rules:WL:{{omegaSquared -> ConditionalExpression[0, rhoBr > 0]}}",
+      "outcome": "REJECTED",
+      "reason": "unsupported syntax at byte 49"
+    },
+    {
+      "name": "root_rules:WL:{{omegaSquared -> 0, omegaSquared -> 1}}",
+      "outcome": "REJECTED",
+      "reason": "expected }, got ,"
+    },
+    {
+      "name": "root_rules:WL:{{k1 -> 0}}",
+      "outcome": "REJECTED",
+      "reason": "expected omegaSquared, got k1"
+    },
+    {
+      "name": "root_rules:WL:{omegaSquared -> 0}",
+      "outcome": "REJECTED",
+      "reason": "expected {, got omegaSquared"
+    },
+    {
+      "name": "root_rules:WL:{{omegaSquared -> 0.0}}",
+      "outcome": "REJECTED",
+      "reason": "unsupported syntax at byte 19"
+    },
+    {
+      "name": "root_counts:<|\"FilteredCandidateCount\" -> 3, \"DistinctRootCount\" -> 3, \"Extra\" -> 1|>",
+      "outcome": "REJECTED",
+      "reason": "unsupported syntax at byte 59"
+    },
+    {
+      "name": "root_counts:<|\"DistinctRootCount\" -> 3, \"DistinctRootCount\" -> 3|>",
+      "outcome": "REJECTED",
+      "reason": "expected \"FilteredCandidateCount\", got \"DistinctRootCount\""
+    },
+    {
+      "name": "root_counts:<|\"FilteredCandidateCount\" -> 3, \"DistinctRootCount\" -> 1/2|>",
+      "outcome": "REJECTED",
+      "reason": "count must be a bounded integral constant"
+    },
+    {
+      "name": "root_counts:<|\"FilteredCandidateCount\" -> 3|>",
+      "outcome": "REJECTED",
+      "reason": "expected ,, got |>"
+    },
+    {
+      "name": "coincidence:__import__(\"os\")",
+      "outcome": "REJECTED",
+      "reason": "unsupported coincidence function __import__"
+    },
+    {
+      "name": "coincidence:Run[1]",
+      "outcome": "REJECTED",
+      "reason": "unsupported coincidence function Run"
+    },
+    {
+      "name": "coincidence:k1 -> ConditionalExpression[0]",
+      "outcome": "REJECTED",
+      "reason": "wrong conditional assignment arity"
+    },
+    {
+      "name": "coincidence:k1 -> ConditionalExpression[0, Element[k1,Integers]]",
+      "outcome": "REJECTED",
+      "reason": "integer membership only for fixed D=3"
+    },
+    {
+      "name": "coincidence:Q.real(unknown)",
+      "outcome": "REJECTED",
+      "reason": "unsupported coincidence symbol unknown"
+    },
+    {
+      "name": "coincidence:k1 -> Sqrt[k2, k3]",
+      "outcome": "REJECTED",
+      "reason": "non-arithmetic coincidence function"
+    },
+    {
+      "name": "coincidence:Eq(k1,0) junk",
+      "outcome": "REJECTED",
+      "reason": "unconsumed coincidence tokens"
+    },
+    {
+      "name": "coincidence:k1 -> ConditionalExpression[0, sRho < 0]; 1",
+      "outcome": "REJECTED",
+      "reason": "unsupported coincidence syntax"
+    },
+    {
+      "name": "coincidence:Q.positive(k1**33)",
+      "outcome": "REJECTED",
+      "reason": "unbounded coincidence power"
+    },
+    {
+      "name": "coincidence:k1 -> ConditionalExpression[0,Maybe]",
+      "outcome": "REJECTED",
+      "reason": "unsupported coincidence symbol Maybe"
+    },
+    {
+      "name": "coincidence:Q.positive(1/0)",
+      "outcome": "REJECTED",
+      "reason": "literal zero denominator"
+    },
+    {
+      "name": "coincidence:k1 -> Sqrt[1/k2]",
+      "outcome": "REJECTED",
+      "reason": "denominator outside declared coefficient domain"
+    },
+    {
+      "name": "coincidence:True && False",
+      "outcome": "REJECTED",
+      "reason": "wrong logical operator syntax"
+    },
+    {
+      "name": "coincidence:True & False",
+      "outcome": "REJECTED",
+      "reason": "wrong logical operator syntax"
+    },
+    {
+      "name": "aggregate:duplicate_key",
+      "outcome": "REJECTED",
+      "reason": "unknown or duplicate association field"
+    },
+    {
+      "name": "aggregate:missing_key",
+      "outcome": "REJECTED",
+      "reason": "missing coincidence association field"
+    },
+    {
+      "name": "aggregate:noninteger_pair",
+      "outcome": "REJECTED",
+      "reason": "pair indices must be integers in 1..3"
+    },
+    {
+      "name": "aggregate:out_of_range_pair",
+      "outcome": "REJECTED",
+      "reason": "pair indices must be integers in 1..3"
+    },
+    {
+      "name": "aggregate:nonzero_equation_rhs",
+      "outcome": "REJECTED",
+      "reason": "aggregate equation must compare to literal zero"
+    },
+    {
+      "name": "aggregate:unknown_outcome",
+      "outcome": "REJECTED",
+      "reason": "unsupported coincidence symbol unresolved"
+    },
+    {
+      "name": "aggregate:missing_pair",
+      "outcome": "REJECTED",
+      "reason": "wrong coincidence sequence shape"
+    },
+    {
+      "name": "sign:2",
+      "outcome": "REJECTED",
+      "reason": "unsupported reported sign"
+    },
+    {
+      "name": "sign:1.0",
+      "outcome": "REJECTED",
+      "reason": "unsupported reported sign"
+    },
+    {
+      "name": "sign:positive",
+      "outcome": "REJECTED",
+      "reason": "unsupported reported sign"
+    },
+    {
+      "name": "sign:undecided",
+      "outcome": "REJECTED",
+      "reason": "unsupported reported sign"
+    },
+    {
+      "name": "sign:0;1",
+      "outcome": "REJECTED",
+      "reason": "unsupported reported sign"
+    },
+    {
+      "name": "composite_solve_variable",
+      "outcome": "REJECTED",
+      "reason": "spectrum operands require one expression and the exact omegaSquared variable"
+    }
+  ],
+  "lean_checks": [
+    {
+      "name": "PY_wrong_coefficient",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "62a05cfb1c84025f778a9cf76b0168c3ec2f11af526cc80b8ea2d088ae1d89fb",
+      "log_sha256": "000d1297d78c80cab52bfcf090489d9ed3a786fc712f027a22bc8ab64cc34435",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/PY_wrong_coefficient.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/PY_wrong_coefficient.lean:332:94: error: unsolved goals\nrho mu sigma z : \u211d\nk : Vec 3\n\u22a2 mu = 0 \u2228 k 1 = 0"
+    },
+    {
+      "name": "WL_wrong_coefficient",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "29ddd2693e4b2f434fea1ef5d408bf7ac5cdc33dc6b71153c24de8ad7cff6020",
+      "log_sha256": "804eadd5336c3035bcb7f2ba989589959b43087dd3d247260af83bcede5d0a3e",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/WL_wrong_coefficient.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/WL_wrong_coefficient.lean:308:94: error: unsolved goals\nrho mu sigma z : \u211d\nk : Vec 3\n\u22a2 -(k 1 ^ 2 * mu * 2) - k 2 ^ 2 * mu * 2 + z * rho * sigma * 2 =\n    -(k 1 ^ 2 * mu * 3) - k 2 ^ 2 * mu * 3 + z * rho * sigma * 3"
+    },
+    {
+      "name": "denominator_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "fa66985850fd70bb9852b8e8b5b2a860f652c98320feff1f92b65261f0122017",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/denominator_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "missing_chart_denominator",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "58b13ff5473e339fd16e9cc6618ff78be8bd544ecc5e93bf123f2edcf6f57d0f",
+      "log_sha256": "19faf2ffaa43b5e4b9b1fa2a91622ee161eec89dc1f346b2518c15c17db138fc",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/missing_chart_denominator.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/missing_chart_denominator.lean:4:38: error: unsolved goals\nsigma : \u211d\nk : Vec 3\n\u22a2 k 2 * (k 2)\u207b\u00b9 = 1"
+    },
+    {
+      "name": "wrong_basis_normalization",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "2a36c14ba73fc916e957230db648e586b006ca590f52f222078a9bf763a6ce34",
+      "log_sha256": "28c7248ec6784104c9684c2be10d3fd1ea187d84cb81a3fc8fb4eda074f03835",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/wrong_basis_normalization.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/wrong_basis_normalization.lean:4:68: error: unsolved goals\nsigma : \u211d\nk : Vec 3\nh : BasisDomain sigma k 0\n\u22a2 False"
+    },
+    {
+      "name": "unit_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "f2fbc4897b14b1f0f3ab94ba84fcc8c015390b3121cc901595632b2030a7e8cc",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/unit_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "wrong_slot_unit",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "5493555e53936e74f12fd0b2b5af10a92839b3e9a0b3eae64b72d57858ec57ab",
+      "log_sha256": "1b580be55e3c5442f71439b57928f755958537e8050117c60a30ee3cccc36f1b",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/wrong_slot_unit.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/wrong_slot_unit.lean:3:68: error: unsolved goals\n\u22a2 Dimension.ofFunction ![Dimension.Exponent.ofRat (-1), Dimension.Exponent.ofRat (-2), Dimension.Exponent.ofRat 1] =\n    Dimension.ofFunction ![Dimension.Exponent.ofRat (-2), Dimension.Exponent.ofRat (-2), Dimension.Exponent.ofRat 1]"
+    },
+    {
+      "name": "swapped_minor_selection",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "8520383efe8067a059df550fbd1162c92bd9bbd8f31b810e7b5c862b4898ce0a",
+      "log_sha256": "8a67004760fdc2e34ee243ceb24a37a056fe39a48482b4045370bd7f1987a6cb",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/swapped_minor_selection.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/swapped_minor_selection.lean:23:6: error: 'change' tactic failed, pattern\n  staticRankMinors mu k 1 =\n    rootMatrix rho mu sigma k 0 0 0 * rootMatrix rho mu sigma k 0 1 2 -\n      rootMatrix rho mu sigma k 0 0 2 * rootMatrix rho mu sigma k 0 1 0\nis not definitionally equal to target\n  staticRankMinors mu k (staticRankMap ((fun i => i) \u27e80, \u22ef\u27e9) ((fun i => i) \u27e81, \u22ef\u27e9)) =\n    (rootMatrix rho mu sigma k 0).submatrix (choose23 ((fun i => i) \u27e80, \u22ef\u27e9)) (choose23 ((fun i => i) \u27e81, \u22ef\u27e9)) 0 0 *\n        (rootMatrix rho mu sigma k 0).submatrix (choose23 ((fun i => i) \u27e80, \u22ef\u27e9)) (choose23 ((fun i => i) \u27e81, \u22ef\u27e9)) 1 1 -\n      (rootMatrix rho mu sigma k 0).submatrix (choose23 ((fun i => i) \u27e80, \u22ef\u27e9)) (choose23 ((fun i => i) \u27e81, \u22ef\u27e9)) 0 1 *\n        (rootMatrix rho mu sigma k 0).submatrix (choose23 ((fun i => i) \u27e80, \u22ef\u27e9)) (choose23 ((fun i => i) \u27e81, \u22ef\u27e9)) 1 0\ns10/_scratch/cas/swapped_minor_selection.lean:26:6: error: 'change' tactic failed, pattern\n  staticRankMinors mu k 2 =\n    rootMatrix rho mu sigma k 0 0 1 * rootMatrix rho mu sigma k 0 1 2 -\n      rootMatrix rho mu sigma k 0 0 2 * rootMatrix rho mu sigma k 0 1 1\nis not definitionally equal to target\n  staticRankMinors mu k (staticRankMap ((fun i => i) \u27e80, \u22ef\u27e9) ((fun i => i) \u27e82, \u22ef\u27e9)) =\n    (rootMatrix rho mu sigma k 0).submatrix (choose23 ((fun i => i) \u27e80, \u22ef\u27e9)) (choose23 ((fun i => i) \u27e82, \u22ef\u27e9)) 0 0 *\n        (rootMatrix rho mu sigma k 0).submatrix (choose23 ((fun i => i) \u27e80, \u22ef\u27e9)) (choose23 ((fun i => i) \u27e82, \u22ef\u27e9)) 1 1 -\n      (rootMatrix rho mu sigma k 0).submatrix (choose23 ((fun i => i) \u27e80, \u22ef\u27e9)) (choose23 ((fun i => i) \u27e82, \u22ef\u27e9)) 0 1 *\n        (rootMatrix rho mu sigma k 0).submatrix (choose23 ((fun i => i) \u27e80, \u22ef\u27e9)) (choose23 ((fun i => i) \u27e82, \u22ef\u27e9)) 1 0"
+    },
+    {
+      "name": "missing_perpendicular_branch",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "f81997d3b247fda845aa385f8d389529f073c5b01a8c405907aa93c9800c51fb",
+      "log_sha256": "08ade88a7a18daf72b5c2b31c46b706f3f0383b07a1da35a4736ede64ecd1563",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/missing_perpendicular_branch.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/missing_perpendicular_branch.lean:6:2: error: Tactic `tauto` failed\n\nk : Vec 3\n\u22a2 k 1 = 0 \u2227 k 2 = 0 \u2194 k 0 = 0 \u2228 k 1 = 0 \u2227 k 2 = 0"
+    },
+    {
+      "name": "missing_parallel_branch",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "6b25c36bdc6fef322ae452963c03f66db38538eeb59c8b1fc60ca968bc49e7c0",
+      "log_sha256": "6370b21554ed6dec2f609fc32069a908245186ad0c0d0f5fa811df72918a890f",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/missing_parallel_branch.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/missing_parallel_branch.lean:6:2: error: Tactic `tauto` failed\n\nk : Vec 3\n\u22a2 k 0 = 0 \u2194 k 0 = 0 \u2228 k 1 = 0 \u2227 k 2 = 0"
+    },
+    {
+      "name": "corrupt_conditional_guard",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "116d8cab2fb0344cc9cd37d0bc225ce5d8a5125129b1d0f29c74f8fb96b26ef9",
+      "log_sha256": "6868bf9a16cf1ce872919bb85662b412596c4fadc9d8cde1ff7dd5fd816439a7",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/corrupt_conditional_guard.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/corrupt_conditional_guard.lean:6:2: error: Tactic `tauto` failed\n\nk : Vec 3\n\u22a2 k 0 = 0 \u2227 0 < k 1 \u2227 k 1 < 0 \u2228 k 0 = 0 \u2227 k 2 \u2260 0 \u2227 k 1 = 0 \u2227 k 2 \u2260 0 \u2228 k 1 = 0 \u2227 k 2 = 0 \u2194 k 0 = 0 \u2228 k 1 = 0 \u2227 k 2 = 0"
+    },
+    {
+      "name": "parallel_basis_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "c4f7fad9ba80907043129d2f99509e4c6b0592ae0f5d9d142e57038a258aa78c",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/parallel_basis_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "dependent_parallel_basis",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "e508ed6d1ecbd8710485e3ab418fa52d1401785caff6943a6d96b9fef0cc568f",
+      "log_sha256": "2ab2213379cd402114a03831258876ed85a0ea332c4cfc707d7bac28b394c3d8",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/dependent_parallel_basis.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/dependent_parallel_basis.lean:11:4: error: Type mismatch: After simplification, term\n  h\n has type\n  c 0 + c 1 = 0\nbut is expected to have type\n  c 0 = 0\ns10/_scratch/cas/dependent_parallel_basis.lean:13:4: error: Type mismatch: After simplification, term\n  h\n has type\n  True\nbut is expected to have type\n  c 1 = 0"
+    },
+    {
+      "name": "incomplete_parallel_kernel",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "9db950f8571a21566b154448d977fd2ddfc99eb23edcac339ab4c7ae9e709a32",
+      "log_sha256": "f7e916fb56990547f205488ae58ebaabfc3691c0266e25643d06895be5901433",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/incomplete_parallel_kernel.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/incomplete_parallel_kernel.lean:5:68: error: unsolved goals\nsigma : \u211d\nhs : 0 < sigma\nhs1 : sigma \u2260 1\n\u22a2 False"
+    },
+    {
+      "name": "coordinate_scale_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "d48ea4a75d3db1ee35c8f3618491d35e5812aea493918b54c7cb62ad1de79d43",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/coordinate_scale_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "wrong_frequency_scale",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "76e4586a989fde09ed87f17179ced5dede88a6ba76e022839b489449fc221676",
+      "log_sha256": "5a7ced725b2bb9d684982b0aa7e12e94473b6f4e87c4ad27570e33268b0ef569",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/wrong_frequency_scale.lean"
+      ],
+      "diagnostic": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns10/_scratch/cas/wrong_frequency_scale.lean:6:50: error: unsolved goals\nrho mu sigma z c : \u211d\np : Vec 3\ni j : Fin 3\n\u22a2 ((rho * c * z * if i = 0 then sigma else 1) * if i = j then 1 else 0) -\n        (c ^ 2 * if i = j then 1 else 0) * mu * normSq p +\n      c ^ 2 * mu * p i * p j =\n    ((rho * c ^ 2 * z * if i = 0 then sigma else 1) * if i = j then 1 else 0) -\n        (c ^ 2 * if i = j then 1 else 0) * mu * normSq p +\n      c ^ 2 * mu * p i * p j"
+    },
+    {
+      "name": "wrong_coordinate_unit_scale",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "3fa214b5e9db4b55f64eb54f4a5c39e53e3c465e8d13dcd3d42e8f3a8762bc82",
+      "log_sha256": "afecde18ff9c186fcd6691b74af61d50304e4b7176e9bb169ae701d9f2da974d",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/wrong_coordinate_unit_scale.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/wrong_coordinate_unit_scale.lean:5:69: error: unsolved goals\n\u22a2 dimensions 1 (-2) 0 = dimensions 0 (-2) 0"
+    },
+    {
+      "name": "PY_wrong_count",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "f4b2d4eacdfae10e7ab9050e8d4c8c12b00ed8009418a257094eb1b793ef1b29",
+      "log_sha256": "af15a6e2c543cdb735e1e726918621750a598fa65167bfa8abf8642e6f50739b",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/PY_wrong_count.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/PY_wrong_count.lean:19:50: error: unsolved goals\nrho mu sigma z : \u211d\nk : Vec 3\n\u22a2 False"
+    },
+    {
+      "name": "WL_wrong_count",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "9c9769228b4f2b17642595c429575c1d720a5e7a0c5732eafcac0d97c2e9fc78",
+      "log_sha256": "7007f81ac7a729b4ec3456b597e8628e77b94477d271ba240e453f66682f119d",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/WL_wrong_count.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/WL_wrong_count.lean:19:50: error: unsolved goals\nrho mu sigma z : \u211d\nk : Vec 3\n\u22a2 False"
+    },
+    {
+      "name": "wrong_stack_domain_dimension",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "b429156e743435998cdaa2b435e25852898a67793642eac924e78706633d67f7",
+      "log_sha256": "c1dbd97321ac51b572c4e419f4e1cf54699e579ae8d4e806d6dae057b67fdf5c",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/wrong_stack_domain_dimension.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/wrong_stack_domain_dimension.lean:5:108: error: unsolved goals\nrho mu sigma : \u211d\nhr : rho \u2260 0\nhm : mu \u2260 0\nhs : 0 < sigma\nhs1 : sigma \u2260 1\n\u22a2 False"
+    },
+    {
+      "name": "signed_count_residual_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "c246f0a7ee7b4c41d42df7f6851e2e6b128fdf8b37ea2f4e0c4120ec41058cb7",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/signed_count_residual_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "truncated_count_residual",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "87320decb3e9a6a495e5b24dbb0fb4df4717491f9635509bf0f2f2dd2b2cb9cc",
+      "log_sha256": "496ec68ed9996e72349c164a18b6b884f541250aeeb8782059bbb7deb60bc756",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/truncated_count_residual.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/truncated_count_residual.lean:6:58: error: unsolved goals\nrho mu sigma : \u211d\nhr : rho \u2260 0\nhm : mu \u2260 0\nhs : 0 < sigma\nhs1 : sigma \u2260 1\n\u22a2 False"
+    },
+    {
+      "name": "PY_wrong_generic_count",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "c459bebd334abd03e1f5d6573fd7aaacb244f6ae1577d81213f544a8d2e558b4",
+      "log_sha256": "90cc43ffec3891d3cc053d04f42a592b2e01f29dbb2e292980c8d6df0c3f31bb",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/PY_wrong_generic_count.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/PY_wrong_generic_count.lean:19:50: error: unsolved goals\nrho mu sigma z : \u211d\nk : Vec 3\n\u22a2 False"
+    },
+    {
+      "name": "WL_wrong_generic_count",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "79b12b7ec69f2f4e956b8c0144e212bb78d0333de1d8a18c06cf0342e16f3167",
+      "log_sha256": "716667b1206afe18d6e5141ac0e2dacd472f327bd4dc013a6001e65fa8d82508",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/WL_wrong_generic_count.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/WL_wrong_generic_count.lean:19:50: error: unsolved goals\nrho mu sigma z : \u211d\nk : Vec 3\n\u22a2 False"
+    },
+    {
+      "name": "generic_perpendicular_boundary_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "fdd60424a69194cc52ccb3143bfc1a0c838982ccd33bd1df4e8a970745ecab5e",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/generic_perpendicular_boundary_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "generic_count_beyond_chart",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "1d0ab884b8b88743fd0c74ffaa72746e1fee9ac77a301a8a463e92e568e4be77",
+      "log_sha256": "61e1219d288ab3c077f22366f5c490c6a1c76f1191e06f2210e1420daadd9ccb",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/generic_count_beyond_chart.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/generic_count_beyond_chart.lean:7:103: error: unsolved goals\nrho mu sigma : \u211d\nhr : rho \u2260 0\nhm : mu \u2260 0\nhs : 0 < sigma\nhs1 : sigma \u2260 1\noutside : \u00acGenericChart sigma PYLoci.perpendicularPoint\nsame :\n  PYGenericCountReference.root2Stack rho mu sigma 0 PYLoci.perpendicularPoint = PYRerun.perpendicular2Stack rho mu sigma\n\u22a2 False"
+    },
+    {
+      "name": "root_multiplicity_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "6acefd81d84365579c4219659d86da50b288b2184abd59e19d60ae4182d8aba7",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/root_multiplicity_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "collapsed_parallel_multiplicity",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "fcec32c5e9a8fab776905c6525d940351dfc1988bc2bbc6f7900adec4996cccd",
+      "log_sha256": "fede008cb168a448dc2b7fd85a2d7680653590e8263e94b32d415f6bf30a9f28",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/collapsed_parallel_multiplicity.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/collapsed_parallel_multiplicity.lean:6:64: error: unsolved goals\nrho mu sigma : \u211d\nhr : rho \u2260 0\nhm : mu \u2260 0\nhs : 0 < sigma\nhs1 : sigma \u2260 1\n\u22a2 False"
+    },
+    {
+      "name": "incomplete_cubic_root_multiset",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "a5356f96e9c742ed5476ce7649b424d03becc0c46b332702066e5f8432f987d6",
+      "log_sha256": "9cd82609605f6fca0a1d6de3494c0e00115c1ce7c8c8b67a26b98beed08cd6b6",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/incomplete_cubic_root_multiset.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/incomplete_cubic_root_multiset.lean:6:54: error: unsolved goals\nrho mu sigma : \u211d\nk : Vec 3\nhr : rho \u2260 0\nhs : sigma \u2260 0\n\u22a2 False"
+    },
+    {
+      "name": "confused_candidate_and_distinct_count",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "9288a7029a195918ad907c538c606d4291afe23293b9fa851fa0d5b8c0348637",
+      "log_sha256": "b2da0e089738ab54c9a1a4f42cbb43c3b35d1090673ea697c10fc7f2386c7073",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/confused_candidate_and_distinct_count.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/confused_candidate_and_distinct_count.lean:19:50: error: unsolved goals\nrho mu sigma z : \u211d\nk : Vec 3\n\u22a2 False"
+    },
+    {
+      "name": "raw_root_filter_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "924f63eb2e1938c12ff180d3231e4f21b854bf4006370dba93c299c150ce15e5",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/raw_root_filter_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "unit_adapted_zero_filter",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "a6a0653b9d6516dcbb030dd6330d3a60f82ac83c9f753cad8d740cd0fe4e61e3",
+      "log_sha256": "ffee33b946f40af80a917281b31c7375421e952c7e00959d0703ba104e7b77d5",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/unit_adapted_zero_filter.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/unit_adapted_zero_filter.lean:5:61: error: Tactic `decide` proved that the proposition\n  frequencyFree WLRootsGeneric.n5 = true \u2227 frequencyFree ((Expr.atom Symbol.z).sub (Expr.atom Symbol.z)) = false\nis false"
+    },
+    {
+      "name": "guarded_locus_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "1e87a65831259cf5489ea27a5c9d3e2443fa05601262a89350a1cc4f56abc603",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/guarded_locus_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "allowed_banks_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "8561353d04a7ad3c7d06b547c9ee8f9fd8d179d596a138961a837282ebddb3fb",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/allowed_banks_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "printed_witness_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "19186bb63d24313eea5fa3a0e18746c0a4561e46435ec0f62d2e4c8efc103ef5",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/printed_witness_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "admit_negative_sigma_branches",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "e22e62848e626a40a7518a5df5c0778c24d6b36c0f19e8120373214f8b245ed1",
+      "log_sha256": "31bf363e683913c824f13efd2fc8726fde4f58fc4b55094d556a4de96967f92c",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/admit_negative_sigma_branches.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/admit_negative_sigma_branches.lean:15:2: error: aesop: failed to prove the goal after exhaustive search.\ns10/_scratch/cas/admit_negative_sigma_branches.lean:9:69: error: unsolved goals\ncase mp.inl.inl.inl.inl.inl.left\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nleft : _k 2 = -\u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma)\nh : _k 0 < -\u221a(-(_k 1 ^ 2 / _sigma))\n\u22a2 _k 0 = 0\n\ncase mp.inl.inl.inl.inl.inl.right.left\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nleft : _k 2 = -\u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma)\nh : _k 0 < -\u221a(-(_k 1 ^ 2 / _sigma))\n\u22a2 _k 1 = 0\n\ncase mp.inl.inl.inl.inl.inl.right.right\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nleft : _k 2 = -\u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma)\nh : _k 0 < -\u221a(-(_k 1 ^ 2 / _sigma))\n\u22a2 \u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma) = 0\n\ncase mp.inl.inl.inl.inl.inr.left\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nleft : _k 2 = -\u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma)\nh_1 : \u221a(-(_k 1 ^ 2 / _sigma)) < _k 0\n\u22a2 _k 0 = 0\n\ncase mp.inl.inl.inl.inl.inr.right.left\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nleft : _k 2 = -\u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma)\nh_1 : \u221a(-(_k 1 ^ 2 / _sigma)) < _k 0\n\u22a2 _k 1 = 0\n\ncase mp.inl.inl.inl.inl.inr.right.right\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nleft : _k 2 = -\u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma)\nh_1 : \u221a(-(_k 1 ^ 2 / _sigma)) < _k 0\n\u22a2 \u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma) = 0\n\ncase mp.inl.inl.inl.inr.inl.left\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nleft : _k 2 = \u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma)\nh : _k 0 < -\u221a(-(_k 1 ^ 2 / _sigma))\n\u22a2 _k 0 = 0\n\ncase mp.inl.inl.inl.inr.inl.right.left\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nleft : _k 2 = \u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma)\nh : _k 0 < -\u221a(-(_k 1 ^ 2 / _sigma))\n\u22a2 _k 1 = 0\n\ncase mp.inl.inl.inl.inr.inl.right.right\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nleft : _k 2 = \u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma)\nh : _k 0 < -\u221a(-(_k 1 ^ 2 / _sigma))\n\u22a2 \u221a(-_k 1 ^ 2 - _k 0 ^ 2 * _sigma) = 0\n\ncase mp.inl.inl.inl.inr.inr.left\n_rho _mu _sigma _lam : \u211d\n_a _k :"
+    },
+    {
+      "name": "omit_positive_parallel_bank",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "cacd90854b2c5b491db78e048a1e24faa99899de0f3926e39908e06bd8850493",
+      "log_sha256": "8431589a1b34b9d8e58a3115a747d66f47cd62500b41efca67283542b303c9c6",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/omit_positive_parallel_bank.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/omit_positive_parallel_bank.lean:15:2: error: aesop: failed to prove the goal after exhaustive search.\ns10/_scratch/cas/omit_positive_parallel_bank.lean:9:68: error: unsolved goals\ncase mpr\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nright : \u00ac_k 0 = 0\nleft : _k 1 = 0\nright_1 : _k 2 = 0\n\u22a2 _k 0 < 0"
+    },
+    {
+      "name": "coincidence_wrong_nonempty_status",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "4da4c91f84d3810bdac5e9f36d66b1d99f271c7e657d122b131fe07e3e18cbb6",
+      "log_sha256": "196a0e9d57e3ad59697c6525af1b0aab1b626102f4ac45cf2e2b30b9de4cfcc4",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/coincidence_wrong_nonempty_status.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/coincidence_wrong_nonempty_status.lean:9:82: error: unsolved goals\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\n_hd : coincidenceDomain _rho _mu _sigma _lam\n\u22a2 False"
+    },
+    {
+      "name": "coincidence_zero_witness",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "dab601e19aa9b9d919bfb8dc4d8aca48f7a7fa0b792920e2e4677379285b1cce",
+      "log_sha256": "fe2ff7db5e1a3062115d86dc917f978e27b3b8f63268c5703542b29e7942fe8e",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/coincidence_zero_witness.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/coincidence_zero_witness.lean:15:2: error: aesop: maximum number of rule applications (200) reached. Set the 'maxRuleApplications' option to increase the limit.\ns10/_scratch/cas/coincidence_zero_witness.lean:9:77: error: unsolved goals\ncase mp\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nright : _k 2 = 0\nleft : _k 0 = 0\nright_1 : _k 1 = 0\n\u22a2 False\n\ncase mpr\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\nleft : _k 0 = 1\nleft_1 : _k 1 = 0\nright : _k 2 = 0\n\u22a2 False"
+    },
+    {
+      "name": "coincidence_omit_axis_constraint",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "0485b370bde2c7d5abb558b2b601650ffda95f461a881a8e54cff8c0d2503fad",
+      "log_sha256": "b15d724feca17f0254a66f27008ab2fcd3521f94947b48132a9ded196d67f201",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/coincidence_omit_axis_constraint.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/coincidence_omit_axis_constraint.lean:15:2: error: aesop: failed to prove the goal after exhaustive search.\ns10/_scratch/cas/coincidence_omit_axis_constraint.lean:9:69: error: unsolved goals\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhs1 : \u00ac_sigma = 1\nhl : 0 < _lam\nhrn : 0 \u2264 _rho\nhsn : 0 \u2264 _sigma\nhmn : \u00ac_mu = 0\na : _k 1 = 0\n\u22a2 _k 2 = 0"
+    },
+    {
+      "name": "coincidence_reversed_difference",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "b55f9e22db998682aa22281fa128917a11ebe9dc6845b76ca0f9b2955383ffc0",
+      "log_sha256": "fa5033dfd3628f4578fb59e96fb8a361a44aa06676165185a670fc178edf90f0",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/coincidence_reversed_difference.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/coincidence_reversed_difference.lean:7:73: error: unsolved goals\nrho mu sigma z : \u211d\nk : Vec 3\nhr : rho \u2260 0\nhs : sigma \u2260 0\n\u22a2 -(mu * k 0 ^ 2) - mu * k 1 ^ 2 - mu * k 2 ^ 2 = mu * k 0 ^ 2 + mu * k 1 ^ 2 + mu * k 2 ^ 2"
+    },
+    {
+      "name": "q8_duplicate_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "105a2ccc8130ce417ed5f127e15c21726892f2195b47ceb5295ccb7cea9c4715",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/q8_duplicate_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "q8_duplicate_wrong_status",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "8830d5368884efc57a5bd98a10b5cd9510c01a49d5a140a4c24a8e734a9d819c",
+      "log_sha256": "75ed5d1d6df57f4636f004b4ffee93c5ab48c273c61124a0cb1d8bf5ce162d5c",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/q8_duplicate_wrong_status.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/q8_duplicate_wrong_status.lean:9:163: error: unsolved goals\n_rho _mu _sigma _lam : \u211d\n_a _k : Vec 3\n\u22a2 False"
+    },
+    {
+      "name": "aggregate_wrong_pair_index",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "064e7ff4c8b3545f1e87de00e5e939b3e904f1ff1947ce123ae9c619e8d012bf",
+      "log_sha256": "7f330db5ae14050d0ef024f6e5c1a3178284a40bbb04689e5f9294a9cb2c12a7",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/aggregate_wrong_pair_index.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/aggregate_wrong_pair_index.lean:8:64: error: Tactic `decide` proved that the proposition\n  probe = [(1, 2), (1, 3), (2, 3)]\nis false"
+    },
+    {
+      "name": "aggregate_wrong_root_difference",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "82e01887b27b3faa5ce0eced111e4e00cbe4abfabc29411196c6e61a008b8114",
+      "log_sha256": "5aa444b4f0a16bb7e846f35ae0682fbf7a9491cf437a682c65021be791ac196e",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/aggregate_wrong_root_difference.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/aggregate_wrong_root_difference.lean:283:113: error: unsolved goals\nrho mu sigma z : \u211d\nk : Vec 3\n_h0 : rho \u2260 0\n_h1 : sigma \u2260 0\n\u22a2 k 0 ^ 2 * mu * 2 + k 1 ^ 2 * mu * 2 + k 2 ^ 2 * mu * 2 = k 0 ^ 2 * mu + k 1 ^ 2 * mu + k 2 ^ 2 * mu"
+    },
+    {
+      "name": "undecided_sign_with_positive_proof_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "7e66b53ac5e958be7f6a3da31395604f3f14fcb5818b64a51c462bb67ea1a53b",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/undecided_sign_with_positive_proof_control.lean"
+      ],
+      "diagnostic": ""
+    },
+    {
+      "name": "wrong_extra_root_sign",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "0a6b16095d250786f116a8a8e9307909f6e77533724d6250347c765d2760af3d",
+      "log_sha256": "c991109be5318c31f185cdbbaab023d08d62d92d5b6ab4ed87b8b603a2065c35",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/wrong_extra_root_sign.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/wrong_extra_root_sign.lean:11:96: error: unsolved goals\n_rho _mu _sigma _lam z : \u211d\n_k : Vec 3\n_hd : coincidenceDomain _rho _mu _sigma _lam\n_hk : _k \u2260 0\nhr : 0 < _rho\nhm : 0 < _mu\nhs : 0 < _sigma\nhp :\n  match if 2 = 0 then ReportedSign.zero else ReportedSign.positive with\n  | ReportedSign.zero => referenceRoot _rho _mu _sigma _k 2 = 0\n  | ReportedSign.positive => 0 < referenceRoot _rho _mu _sigma _k 2\n  | ReportedSign.negative => referenceRoot _rho _mu _sigma _k 2 < 0\n  | ReportedSign.undecided => True\n\u22a2 referenceRoot _rho _mu _sigma _k 2 < 0"
+    },
+    {
+      "name": "positive_root_without_nonzero_wavevector",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "9b9fed83980c0619f78481e716f834d52c1cfb3565ea3979a718118478c1ce11",
+      "log_sha256": "11048523d2980290d721597620e79e92c04166d5f5abc0561641be14fe114f21",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/positive_root_without_nonzero_wavevector.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/positive_root_without_nonzero_wavevector.lean:9:42: error: unsolved goals\nrho mu sigma : \u211d\nk : Vec 3\nhr : 0 < rho\nhm : 0 < mu\nhs : 0 < sigma\n\u22a2 \u00ack = 0"
+    },
+    {
+      "name": "admitting_skipped_origin",
+      "outcome": "REJECTED",
+      "exit_status": 1,
+      "source_sha256": "2c1819582ae15277e1cabca1cc41fd8994f6f2b499fbee845e21b06e1796833d",
+      "log_sha256": "08fe36f4e392ceb94847322fe59387768a3cae4db9cfdf7f2ab50e9e3c9fd7d2",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/admitting_skipped_origin.lean"
+      ],
+      "diagnostic": "s10/_scratch/cas/admitting_skipped_origin.lean:7:36: error: unsolved goals\n\u22a2 False"
+    },
+    {
+      "name": "solver_operand_complete_control",
+      "outcome": "PASS",
+      "exit_status": 0,
+      "source_sha256": "ce4963a750a2f6c6318a58595779e1ce76127b6668a2a9ec44ca2289d7d65cca",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "s10/_scratch/cas/solver_operand_complete_control.lean"
+      ],
+      "diagnostic": ""
+    }
+  ],
+  "coordinate_sign_pattern_comparisons": 324,
+  "independently_parsed_points": 4,
+  "coordinate_parser_rejections": [
+    {
+      "name": "PY:((Eq(k4, 0),),)",
+      "outcome": "REJECTED",
+      "reason": "expected wavevector coordinate"
+    },
+    {
+      "name": "PY:((Eq(k1, 1),),)",
+      "outcome": "REJECTED",
+      "reason": "locus requires zero coordinate assignments"
+    },
+    {
+      "name": "PY:((Eq(k1, 0),),) trailing",
+      "outcome": "REJECTED",
+      "reason": "empty or trailing locus"
+    },
+    {
+      "name": "PY:((),)",
+      "outcome": "REJECTED",
+      "reason": "empty locus branch"
+    },
+    {
+      "name": "WL:{{k1 -> ConditionalExpression[0, k2 >= 0]}}",
+      "outcome": "REJECTED",
+      "reason": "unsupported coordinate syntax at 37"
+    },
+    {
+      "name": "WL:{{k1 -> ConditionalExpression[0, unknown > 0]}}",
+      "outcome": "REJECTED",
+      "reason": "expected wavevector coordinate"
+    },
+    {
+      "name": "WL:{{k1 -> ConditionalExpression[1, k2 > 0]}}",
+      "outcome": "REJECTED",
+      "reason": "locus requires zero coordinate assignments"
+    },
+    {
+      "name": "WL:{{k1 -> Unsafe[0]}}",
+      "outcome": "REJECTED",
+      "reason": "expected bounded integer"
+    },
+    {
+      "name": "WL:{k1 -> 1, k1 -> 0, k3 -> 0}",
+      "outcome": "REJECTED",
+      "reason": "point needs each coordinate exactly once"
+    },
+    {
+      "name": "PY:(Eq(k1, 1), Eq(k2, 0))",
+      "outcome": "REJECTED",
+      "reason": "point needs each coordinate exactly once"
+    },
+    {
+      "name": "WL:{k1 -> 1/0, k2 -> 0, k3 -> 0}",
+      "outcome": "REJECTED",
+      "reason": "literal zero denominator"
+    },
+    {
+      "name": "WL:{k1 -> ConditionalExpression[0, k2 > 0], k2 -> 0, k3 -> 1}",
+      "outcome": "REJECTED",
+      "reason": "a point cannot contain conditional coordinates"
+    }
+  ],
+  "independently_parsed_root_filters": 3,
+  "independently_parsed_coincidence_records": 56,
+  "independently_parsed_metadata_records": 48,
+  "canonical_sha256_before": {
+    "scripts/out/S10_anisotropic_strata_sympy_audit.out": "10ebaecb24b1ca92131566a37197f73cb9b93c8925299ec404838b50fdce75cf",
+    "mathematica/out/S10_anisotropic_strata_mathematica_audit.out": "0718871c408ea2839668d40f68c7ff143e9520e3be4dbb5dcd1e4cdad9f57ccd",
+    "lean/s10/S10Audit/CAS/WLCounts.lean": "3b29e166d4fb92f71068dce041899f0e472df10775e004747e3309ff77764266",
+    "lean/s10/S10Audit/CAS/PYGenericCounts.lean": "e3040e8766721dfc659e8dfd265c6c6e54906e9efaa4b3d1bd55f7714d1fbffa",
+    "lean/s10/S10Audit/CAS/WLGenericCounts.lean": "8f46b79892488b7cf446534f614b9cbd37fa1a5cccee29f95b9118e8c0fe1e0a",
+    "lean/s10/S10Audit/CAS/WLRootsGeneric.lean": "6038ea39f8ed3fd9b223489596c97c4e27f749c6cb107c726e689ce4ea58164d",
+    "lean/s10/S10Audit/CAS/WLMinors.lean": "ab55a02fbba3add7a4458341e0eda3f96fde787f5a5809cd55d1ed5004a90192",
+    "lean/s10/S10Audit/CAS/WLCoincidenceArithmeticPerpendicular.lean": "9e647c9ca37bd20f912fea3a2b4cc1d4fef66f0282b8e7172c563d8ea44093c8",
+    "lean/s10/S10Audit/CAS/CountSupport.lean": "8586d9364daa397b2c5f2c747e3bae55bf8b9f8e7cb7784406bc154d5c152b42",
+    "lean/s10/S10Audit/CAS/BasisCompletion.lean": "a69bd4a5628b1286f4899481c4e5a817111293fff326e63dc58fad8ca0a447e7",
+    "lean/s10/S10Audit/CAS/GenericCountBindings.lean": "56ffa0f7617b680eaa77e4a569d6dbd3623de1367b29c023092ac0980d48b0e5",
+    "lean/s10/S10Audit/CAS/WL.lean": "91fba1a62a54a06d5e8c20511b55b3c3348abca764a326c0047b4214aaae5b5a",
+    "lean/s10/S10Audit/CAS/MinorSupport.lean": "a0983e6f3dbd57213b4fdf6cd851949605f60682fb83e1e6a2f67818caec9a21",
+    "lean/s10/S10Audit/CAS/PYCounts.lean": "f1f5e44aa88198c9b7290d1383d8090e28e61e7e20e403a58cd785c7a1fb5830",
+    "lean/s10/S10Audit/CAS/Bindings.lean": "13abbf5516ef64898b8c6b211ee337e4bbeb8fcd12dcb859a8d9fad7b3b40802",
+    "lean/s10/S10Audit/CAS/WLRerun.lean": "52192a63ca0e3f48fc55b89817ab8c25fbc21ddd8f54d4e02a7b79a0792046d0",
+    "lean/s10/S10Audit/CAS/CountBindings.lean": "78e9330cda160b17f8b598719f0d31863d91650a42bc344938487ec7aa231b10",
+    "lean/s10/S10Audit/CAS/PYRecordsGeneric.lean": "fa3e94614d43c5ee54dcf83a7aae257cb560b413d08ac1d40a70a981bfb8767b",
+    "lean/s10/S10Audit/CAS/CountReference.lean": "0644c7cc863d1f6be618fb791a397ffb8e71e210d6456c8bd411b7feb9aaa1b6",
+    "lean/s10/S10Audit/CAS/PYMinors.lean": "6c4c1e7132977d6b3c407668f7d31399a9d37ac9532ebd7530f894c23f3e32fe",
+    "lean/s10/S10Audit/CAS/RerunSupport.lean": "445fd5434d1c363d709520132b85fba80bcf530cada2ad931283c45044448376",
+    "lean/s10/S10Audit/CAS/RerunBindings.lean": "2a00a0ce09eb1d1ccdf81d60fdf8046e82d16c6d0a350d4a41dab9756158df1d",
+    "lean/s10/S10Audit/CAS/RecordSupport.lean": "91bd12e129e92e3d441f4f1f0a67b2150f6c1f40e07e8e0e4eb40662da128d91",
+    "lean/s10/S10Audit/CAS/PYRootsParallel.lean": "9ec60a5c5f8991cdb44c604c98ad4ffb894a9b623423692d023fdd312bae6b0e",
+    "lean/s10/S10Audit/CAS/MinorLoci.lean": "8dc4052ea35894f57f0fabe41483c68335ce056437d1be2b64963784d7cba6aa",
+    "lean/s10/S10Audit/CAS/WLRootsPerpendicular.lean": "2e0b84ab2501456a385bb27b5fd987849dac272cb840dab0d9bcc7c19e22a2b9",
+    "lean/s10/S10Audit/CAS/StatusBindings.lean": "1b3806e2e345931fcfc7e64021db7cfab32aea173153f30488960475d6a40118",
+    "lean/s10/S10Audit/CAS/RerunReference.lean": "f23388b413b3935ec05ec4949b35a989235248156ebe314622d39c743499e2f7",
+    "lean/s10/S10Audit/CAS/PYRecordsParallel.lean": "4532e03c52387deca16434828918e5f05b1c6413522d763c294b30398d6e4675",
+    "lean/s10/S10Audit/CAS/PYRootsPerpendicular.lean": "59bc5bd72dff82654a3e52519d2a67efd003356509602cc0d6b868f5b89e3219",
+    "lean/s10/S10Audit/CAS/MinorReference.lean": "f78403d4afc718b2afa4da29dd49d4c1ef1f321578ee85b4aa32b7fde543dfac",
+    "lean/s10/S10Audit/CAS/WLCoincidenceArithmeticGeneric.lean": "449f09baf9b01de910481a69350c08ffef8f8b0a5d009f1103c1bf109b3fd8e1",
+    "lean/s10/S10Audit/CAS/GenericCountReference.lean": "339deaa4b7608961ec36afc872c8e8ef8e22afd7f39455da26ecedb8562b3fc1",
+    "lean/s10/S10Audit/CAS/WLCoincidenceArithmeticParallel.lean": "af0b5133e407ac2abab2c046a3a2f8ca0f7699625a36993dc894e03ec9709977",
+    "lean/s10/S10Audit/CAS/Support.lean": "b333594368b6a98e36147f7f13cf8db57d08fc1bf119ccca1b6d0037dac46b6c",
+    "lean/s10/S10Audit/CAS/PYRerun.lean": "27dd79a1662aff45213d161e67b6c55cdafd91692251d0e000a5d280fc6eb84b",
+    "lean/s10/S10Audit/CAS/RootSupport.lean": "584cf779cd58235110ea5f8a18bb3fdeda27e09fd4c74697c240fb1d7f271ba9",
+    "lean/s10/S10Audit/CAS/WLRecordsGeneric.lean": "a09141632f28fc9694786dbd7b99ca7fcd51755d8f0fb66510963c5709b0a651",
+    "lean/s10/S10Audit/CAS/RecordBindings.lean": "9d044986d667805a02d33017048629a5cfe2258840fdd9429ea3ed964e90ea0f",
+    "lean/s10/S10Audit/CAS/LocusBindings.lean": "212407baec7408f77855e08257825185d42967e059e21cee8bc0cc561bd11363",
+    "lean/s10/S10Audit/CAS/MinorBindings.lean": "b9d9ed9a897e7b894dc0d1fce079365541c354d998cfb41fb50c74389b5de031",
+    "lean/s10/S10Audit/CAS/CoincidenceSupport.lean": "f3d32c3ffc778b94811240e178093a050e03b6027c9d60a74b76f39d5d39b339",
+    "lean/s10/S10Audit/CAS/PYCoincidenceArithmeticGeneric.lean": "9511ad768d3652eaebfc411f8edb73a299fc7b5329231747fb886be6c396771d",
+    "lean/s10/S10Audit/CAS/WLLoci.lean": "01bbd454009f0cb61b24c3529067597f911dc91081cbdd19f34855b644914e21",
+    "lean/s10/S10Audit/CAS/WLRecordsPerpendicular.lean": "40889f751005e61d219157a17411d39e1c1deb5515d086540b306c88c008072d",
+    "lean/s10/S10Audit/CAS/GenericCountSupport.lean": "9f07333cc8bfd425ec616c7870633cb6e48148679d0063af88ea3c51768c3e14",
+    "lean/s10/S10Audit/CAS/PYCoincidenceArithmeticParallel.lean": "16d766bcf6b05de3e74406dd2c15502ec13259ded8cca4d9880eb9eecf13520d",
+    "lean/s10/S10Audit/CAS/WLRecordsParallel.lean": "08b050755a3b75ba45c50b91fb1e97f34d02f1733c2daad516f378d0f5ed5f13",
+    "lean/s10/S10Audit/CAS/RootBindings.lean": "45deabbb8c7147bc59279fca23d22a2247dd8b30704315e568e40263eb47cc59",
+    "lean/s10/S10Audit/CAS/Audit.lean": "54f71b2baa6f0c4bc8278a6638f98c7eec1cef324c9a4586a622159cda2805d0",
+    "lean/s10/S10Audit/CAS/PY.lean": "45e33c268c5a24e6afde07d8ed7b05333764d26895f405cacb8b8d6368f0b79d",
+    "lean/s10/S10Audit/CAS/WLRootsParallel.lean": "fa9d4adfc7e9e25a4e91137df086a82f639e1bdb8cf64d74500939b25478823c",
+    "lean/s10/S10Audit/CAS/CoincidenceBindings.lean": "b15f4d55cb0e816e73ca2cb64fac4a90e2cb64b37da4857139cf407cee4d249e",
+    "lean/s10/S10Audit/CAS/PYRootsGeneric.lean": "d52ce7be84bf4a3d8c6297555cf40075f87b8e220dd986da31537499fe88dd7e",
+    "lean/s10/S10Audit/CAS/PYLoci.lean": "bb1c78fe46a3214a8adb99e91b4e5d00983da4ab7af503f25a70d81a9c54cf25",
+    "lean/s10/S10Audit/CAS/PYCoincidenceArithmeticPerpendicular.lean": "dabf1f0da35bcbd306cffc007ea3b4fd2c1e950d3376e9d92837e6021482c5d7",
+    "lean/s10/S10Audit/CAS/PYRecordsPerpendicular.lean": "e73792c4a01b8d69d7ad5bcdd01df882523e77ab9cf8d941e29d33565435d5e6",
+    "scripts/S10_lean_cas_bridge.py": "43da2cb4a9b79173f84ef288f1b13c21574193b6fb961aee9496a7eb38a02e55",
+    "scripts/S10_lean_cas_minors.py": "a25c1b44bb7bfabfef409b3257412564cc456381e96011816939e8aafad50a65",
+    "scripts/S10_lean_cas_loci.py": "6e78698d46e8ccab4ce32e12767ac4ddcdeda8bf51da021021b6cbccc0910c2a",
+    "scripts/S10_lean_cas_reruns.py": "a64cefe88d0d132405ec6d1ab8ff9ecadabd77b7729f645ef16e2bc236023637",
+    "scripts/S10_lean_cas_counts.py": "89c3db51cc2d71cc4b334604415797527871bacca0d131ffb6c8e4655f69462d",
+    "scripts/S10_lean_cas_generic_counts.py": "655de1ecf92cda3e1cba63effe40f5ef49855f37f68f3306c1a1e2f9d147aaec",
+    "scripts/S10_lean_cas_roots.py": "f9e1a256ec7a20a4186720c973d8c3be634e671cdfcb46c74c4c4876451e30cd",
+    "scripts/S10_lean_cas_coincidence.py": "2c7eb0f157d771a2da915092739f80ddfd98f61e513250898b9fe361a7c12e31",
+    "scripts/S10_lean_cas_records.py": "ae41e4117833523e0455b7ff51de2735909e8c35eda01bd5df4368dcd861283c",
+    "scripts/S10_exports.py": "bc8de16bae05dcf6caa71d82184f5aa95e2a9d6fd157fdbb674b88f185ed34c9"
+  },
+  "canonical_sha256_after": {
+    "scripts/out/S10_anisotropic_strata_sympy_audit.out": "10ebaecb24b1ca92131566a37197f73cb9b93c8925299ec404838b50fdce75cf",
+    "mathematica/out/S10_anisotropic_strata_mathematica_audit.out": "0718871c408ea2839668d40f68c7ff143e9520e3be4dbb5dcd1e4cdad9f57ccd",
+    "lean/s10/S10Audit/CAS/WLCounts.lean": "3b29e166d4fb92f71068dce041899f0e472df10775e004747e3309ff77764266",
+    "lean/s10/S10Audit/CAS/PYGenericCounts.lean": "e3040e8766721dfc659e8dfd265c6c6e54906e9efaa4b3d1bd55f7714d1fbffa",
+    "lean/s10/S10Audit/CAS/WLGenericCounts.lean": "8f46b79892488b7cf446534f614b9cbd37fa1a5cccee29f95b9118e8c0fe1e0a",
+    "lean/s10/S10Audit/CAS/WLRootsGeneric.lean": "6038ea39f8ed3fd9b223489596c97c4e27f749c6cb107c726e689ce4ea58164d",
+    "lean/s10/S10Audit/CAS/WLMinors.lean": "ab55a02fbba3add7a4458341e0eda3f96fde787f5a5809cd55d1ed5004a90192",
+    "lean/s10/S10Audit/CAS/WLCoincidenceArithmeticPerpendicular.lean": "9e647c9ca37bd20f912fea3a2b4cc1d4fef66f0282b8e7172c563d8ea44093c8",
+    "lean/s10/S10Audit/CAS/CountSupport.lean": "8586d9364daa397b2c5f2c747e3bae55bf8b9f8e7cb7784406bc154d5c152b42",
+    "lean/s10/S10Audit/CAS/BasisCompletion.lean": "a69bd4a5628b1286f4899481c4e5a817111293fff326e63dc58fad8ca0a447e7",
+    "lean/s10/S10Audit/CAS/GenericCountBindings.lean": "56ffa0f7617b680eaa77e4a569d6dbd3623de1367b29c023092ac0980d48b0e5",
+    "lean/s10/S10Audit/CAS/WL.lean": "91fba1a62a54a06d5e8c20511b55b3c3348abca764a326c0047b4214aaae5b5a",
+    "lean/s10/S10Audit/CAS/MinorSupport.lean": "a0983e6f3dbd57213b4fdf6cd851949605f60682fb83e1e6a2f67818caec9a21",
+    "lean/s10/S10Audit/CAS/PYCounts.lean": "f1f5e44aa88198c9b7290d1383d8090e28e61e7e20e403a58cd785c7a1fb5830",
+    "lean/s10/S10Audit/CAS/Bindings.lean": "13abbf5516ef64898b8c6b211ee337e4bbeb8fcd12dcb859a8d9fad7b3b40802",
+    "lean/s10/S10Audit/CAS/WLRerun.lean": "52192a63ca0e3f48fc55b89817ab8c25fbc21ddd8f54d4e02a7b79a0792046d0",
+    "lean/s10/S10Audit/CAS/CountBindings.lean": "78e9330cda160b17f8b598719f0d31863d91650a42bc344938487ec7aa231b10",
+    "lean/s10/S10Audit/CAS/PYRecordsGeneric.lean": "fa3e94614d43c5ee54dcf83a7aae257cb560b413d08ac1d40a70a981bfb8767b",
+    "lean/s10/S10Audit/CAS/CountReference.lean": "0644c7cc863d1f6be618fb791a397ffb8e71e210d6456c8bd411b7feb9aaa1b6",
+    "lean/s10/S10Audit/CAS/PYMinors.lean": "6c4c1e7132977d6b3c407668f7d31399a9d37ac9532ebd7530f894c23f3e32fe",
+    "lean/s10/S10Audit/CAS/RerunSupport.lean": "445fd5434d1c363d709520132b85fba80bcf530cada2ad931283c45044448376",
+    "lean/s10/S10Audit/CAS/RerunBindings.lean": "2a00a0ce09eb1d1ccdf81d60fdf8046e82d16c6d0a350d4a41dab9756158df1d",
+    "lean/s10/S10Audit/CAS/RecordSupport.lean": "91bd12e129e92e3d441f4f1f0a67b2150f6c1f40e07e8e0e4eb40662da128d91",
+    "lean/s10/S10Audit/CAS/PYRootsParallel.lean": "9ec60a5c5f8991cdb44c604c98ad4ffb894a9b623423692d023fdd312bae6b0e",
+    "lean/s10/S10Audit/CAS/MinorLoci.lean": "8dc4052ea35894f57f0fabe41483c68335ce056437d1be2b64963784d7cba6aa",
+    "lean/s10/S10Audit/CAS/WLRootsPerpendicular.lean": "2e0b84ab2501456a385bb27b5fd987849dac272cb840dab0d9bcc7c19e22a2b9",
+    "lean/s10/S10Audit/CAS/StatusBindings.lean": "1b3806e2e345931fcfc7e64021db7cfab32aea173153f30488960475d6a40118",
+    "lean/s10/S10Audit/CAS/RerunReference.lean": "f23388b413b3935ec05ec4949b35a989235248156ebe314622d39c743499e2f7",
+    "lean/s10/S10Audit/CAS/PYRecordsParallel.lean": "4532e03c52387deca16434828918e5f05b1c6413522d763c294b30398d6e4675",
+    "lean/s10/S10Audit/CAS/PYRootsPerpendicular.lean": "59bc5bd72dff82654a3e52519d2a67efd003356509602cc0d6b868f5b89e3219",
+    "lean/s10/S10Audit/CAS/MinorReference.lean": "f78403d4afc718b2afa4da29dd49d4c1ef1f321578ee85b4aa32b7fde543dfac",
+    "lean/s10/S10Audit/CAS/WLCoincidenceArithmeticGeneric.lean": "449f09baf9b01de910481a69350c08ffef8f8b0a5d009f1103c1bf109b3fd8e1",
+    "lean/s10/S10Audit/CAS/GenericCountReference.lean": "339deaa4b7608961ec36afc872c8e8ef8e22afd7f39455da26ecedb8562b3fc1",
+    "lean/s10/S10Audit/CAS/WLCoincidenceArithmeticParallel.lean": "af0b5133e407ac2abab2c046a3a2f8ca0f7699625a36993dc894e03ec9709977",
+    "lean/s10/S10Audit/CAS/Support.lean": "b333594368b6a98e36147f7f13cf8db57d08fc1bf119ccca1b6d0037dac46b6c",
+    "lean/s10/S10Audit/CAS/PYRerun.lean": "27dd79a1662aff45213d161e67b6c55cdafd91692251d0e000a5d280fc6eb84b",
+    "lean/s10/S10Audit/CAS/RootSupport.lean": "584cf779cd58235110ea5f8a18bb3fdeda27e09fd4c74697c240fb1d7f271ba9",
+    "lean/s10/S10Audit/CAS/WLRecordsGeneric.lean": "a09141632f28fc9694786dbd7b99ca7fcd51755d8f0fb66510963c5709b0a651",
+    "lean/s10/S10Audit/CAS/RecordBindings.lean": "9d044986d667805a02d33017048629a5cfe2258840fdd9429ea3ed964e90ea0f",
+    "lean/s10/S10Audit/CAS/LocusBindings.lean": "212407baec7408f77855e08257825185d42967e059e21cee8bc0cc561bd11363",
+    "lean/s10/S10Audit/CAS/MinorBindings.lean": "b9d9ed9a897e7b894dc0d1fce079365541c354d998cfb41fb50c74389b5de031",
+    "lean/s10/S10Audit/CAS/CoincidenceSupport.lean": "f3d32c3ffc778b94811240e178093a050e03b6027c9d60a74b76f39d5d39b339",
+    "lean/s10/S10Audit/CAS/PYCoincidenceArithmeticGeneric.lean": "9511ad768d3652eaebfc411f8edb73a299fc7b5329231747fb886be6c396771d",
+    "lean/s10/S10Audit/CAS/WLLoci.lean": "01bbd454009f0cb61b24c3529067597f911dc91081cbdd19f34855b644914e21",
+    "lean/s10/S10Audit/CAS/WLRecordsPerpendicular.lean": "40889f751005e61d219157a17411d39e1c1deb5515d086540b306c88c008072d",
+    "lean/s10/S10Audit/CAS/GenericCountSupport.lean": "9f07333cc8bfd425ec616c7870633cb6e48148679d0063af88ea3c51768c3e14",
+    "lean/s10/S10Audit/CAS/PYCoincidenceArithmeticParallel.lean": "16d766bcf6b05de3e74406dd2c15502ec13259ded8cca4d9880eb9eecf13520d",
+    "lean/s10/S10Audit/CAS/WLRecordsParallel.lean": "08b050755a3b75ba45c50b91fb1e97f34d02f1733c2daad516f378d0f5ed5f13",
+    "lean/s10/S10Audit/CAS/RootBindings.lean": "45deabbb8c7147bc59279fca23d22a2247dd8b30704315e568e40263eb47cc59",
+    "lean/s10/S10Audit/CAS/Audit.lean": "54f71b2baa6f0c4bc8278a6638f98c7eec1cef324c9a4586a622159cda2805d0",
+    "lean/s10/S10Audit/CAS/PY.lean": "45e33c268c5a24e6afde07d8ed7b05333764d26895f405cacb8b8d6368f0b79d",
+    "lean/s10/S10Audit/CAS/WLRootsParallel.lean": "fa9d4adfc7e9e25a4e91137df086a82f639e1bdb8cf64d74500939b25478823c",
+    "lean/s10/S10Audit/CAS/CoincidenceBindings.lean": "b15f4d55cb0e816e73ca2cb64fac4a90e2cb64b37da4857139cf407cee4d249e",
+    "lean/s10/S10Audit/CAS/PYRootsGeneric.lean": "d52ce7be84bf4a3d8c6297555cf40075f87b8e220dd986da31537499fe88dd7e",
+    "lean/s10/S10Audit/CAS/PYLoci.lean": "bb1c78fe46a3214a8adb99e91b4e5d00983da4ab7af503f25a70d81a9c54cf25",
+    "lean/s10/S10Audit/CAS/PYCoincidenceArithmeticPerpendicular.lean": "dabf1f0da35bcbd306cffc007ea3b4fd2c1e950d3376e9d92837e6021482c5d7",
+    "lean/s10/S10Audit/CAS/PYRecordsPerpendicular.lean": "e73792c4a01b8d69d7ad5bcdd01df882523e77ab9cf8d941e29d33565435d5e6",
+    "scripts/S10_lean_cas_bridge.py": "43da2cb4a9b79173f84ef288f1b13c21574193b6fb961aee9496a7eb38a02e55",
+    "scripts/S10_lean_cas_minors.py": "a25c1b44bb7bfabfef409b3257412564cc456381e96011816939e8aafad50a65",
+    "scripts/S10_lean_cas_loci.py": "6e78698d46e8ccab4ce32e12767ac4ddcdeda8bf51da021021b6cbccc0910c2a",
+    "scripts/S10_lean_cas_reruns.py": "a64cefe88d0d132405ec6d1ab8ff9ecadabd77b7729f645ef16e2bc236023637",
+    "scripts/S10_lean_cas_counts.py": "89c3db51cc2d71cc4b334604415797527871bacca0d131ffb6c8e4655f69462d",
+    "scripts/S10_lean_cas_generic_counts.py": "655de1ecf92cda3e1cba63effe40f5ef49855f37f68f3306c1a1e2f9d147aaec",
+    "scripts/S10_lean_cas_roots.py": "f9e1a256ec7a20a4186720c973d8c3be634e671cdfcb46c74c4c4876451e30cd",
+    "scripts/S10_lean_cas_coincidence.py": "2c7eb0f157d771a2da915092739f80ddfd98f61e513250898b9fe361a7c12e31",
+    "scripts/S10_lean_cas_records.py": "ae41e4117833523e0455b7ff51de2735909e8c35eda01bd5df4368dcd861283c",
+    "scripts/S10_exports.py": "bc8de16bae05dcf6caa71d82184f5aa95e2a9d6fd157fdbb674b88f185ed34c9"
+  },
+  "instrument_sha256": "f0be1e52d4198cb1ec4aa4d91752751aaed7c03c8666b4169282be535e3d8f52"
+}

@@ -29,10 +29,42 @@ The [matrix and basis extension](../lean/s10/MATRIX_RESULT.md) additionally
 proves dimensions for the six modal matrices, mixed-unit N3 minors, complete
 coordinate bases and N5/N6 residuals. Unit changes preserve entire kernels,
 ranks and minor zero loci. Basis charts include explicit nonzero denominators
-and pivot-existence proofs. The full Lean build now audits 250 declarations;
-certifying actual CAS emissions and reconciling route normalizations remain
-separate obligations. This extension leaves the retained outputs and exports
-unchanged.
+and pivot-existence proofs. That committed checkpoint audits 250 declarations.
+
+The subsequent [CAS expression bridge](../lean/s10/CAS_BRIDGE_RESULT.md) certifies
+48 actual generic anisotropic D3 records from the two focused transcripts:
+250 scalar expressions with checked units, values, denominator domains and root
+substitutions. It proves `M_A = -2 M_B`, links route B to the action matrix,
+and proves that each displayed generic basis spans the full corresponding
+kernel. The [minor/locus extension](../lean/s10/MINOR_LOCUS_RESULT.md) adds all
+83 emitted D3 rank-drop minors, complete row/column selection maps, all 12
+exceptional-locus predicates and all four targeted points. It proves the
+parallel/perpendicular union from the complete minor families, retaining
+Wolfram's conditional guards. The [exceptional rerun extension](../lean/s10/EXCEPTIONAL_RERUN_RESULT.md)
+adds 338 scalar expressions for the targeted determinants, roots, matrices,
+stacks, bases and residuals. It proves completeness of all ten displayed
+kernels, retaining both vectors at each parallel double root, and restores
+physical units through an explicit wave-number scale. The current arithmetic
+bridge, including the [count extension](../lean/s10/COUNT_RESULT.md), covers
+916 scalar expressions. All 112 generic and exceptional N2/N3/N4/N7 records are identified
+with actual matrix ranks, kernel dimensions, basis cardinalities and signed
+residuals. Generic bindings retain their explicit chart assumptions; nonzero
+physical rescaling preserves the exceptional counts. The [root-list extension](../lean/s10/ROOT_RESULT.md)
+certifies the complete emitted solution/distinct-root lists, algebraic
+multiplicities and syntactic candidate-filter counts, including the parallel
+double root. The [coincidence extension](../lean/s10/COINCIDENCE_RESULT.md)
+certifies the primary emitted root differences, guarded coincidence loci,
+allowed regions, existence decisions and witnesses. Its proofs cover the whole
+parallel axis on the positive-coefficient domain, without a generic basis-chart
+restriction. The [metadata extension](../lean/s10/METADATA_RESULT.md) connects
+all Q8/aggregate coincidence fields, reported root signs, root-condition lists,
+spectrum solve operands/statuses and retained/skipped-stratum dispositions. It
+independently proves both extra-root signs that SymPy left undecided to be
+positive on the declared domain. Reality-filter traces, remaining Q5/Q6 and
+period-average metadata, D4, other packages and production comparator/export
+integration remain open.
+The retained outputs and exports are unchanged. Current full-build evidence
+is recorded in [CAS_BRIDGE_VERIFICATION.txt](../lean/s10/CAS_BRIDGE_VERIFICATION.txt).
 
 The measured generic result is:
 

@@ -118,7 +118,7 @@ Run from `research/pde_ledger_v3/lean`:
 LAKE_CACHE_DIR=.lake/cache lake build
 ```
 
-The full build succeeds with **250 audited declarations**, including 99 in
+The committed checkpoint build succeeded with **250 audited declarations**, including 99 in
 `S10Audit`, and only `propext`, `Classical.choice` and `Quot.sound`.
 There are no proof admissions. Two isolated source mutations are rejected:
 doubling the epsilon contraction breaks its curl identity, and dropping the
@@ -135,8 +135,20 @@ This completes the Lean action/root core of Q6 and the six-package Lean Q7
 comparison. The later [matrix and basis extension](MATRIX_RESULT.md) adds
 expression-tree dimensions for action-derived matrices, mixed-unit stacked
 minors, complete coordinate bases and N5/N6 residuals, with kernel/rank
-invariance under unit changes. The CAS expression/emission bridge and production
-CAS/export refresh remain open. The original CAS Q7 implementations still
+invariance under unit changes. The subsequent [CAS bridge pilot](CAS_BRIDGE_RESULT.md)
+connects the actual generic anisotropic D3 expressions from both engines. The
+[exceptional extension](EXCEPTIONAL_RERUN_RESULT.md) adds the targeted rerun
+matrices, roots, full bases and explicit coordinate-to-physical scale proofs.
+The [count bridge](COUNT_RESULT.md) further certifies the generic and exceptional
+N2/N3 ranks and nullities and the signed N4/N7 residuals, with explicit chart
+assumptions on the generic records. The [root-list extension](ROOT_RESULT.md)
+adds complete solution lists, distinct-root counts, algebraic multiplicities
+and syntactic filter counts. The [coincidence extension](COINCIDENCE_RESULT.md)
+adds primary root differences, guarded loci, allowed regions, decisions and witnesses.
+The [metadata extension](METADATA_RESULT.md) connects Q8/aggregate fields, root
+signs, solver operands/statuses and stratum dispositions.
+Other emitted cases and the production CAS/export refresh remain open.
+The original CAS Q7 implementations still
 require alignment with their explicit Levi-Civita construction requirement.
 The [coverage map](COVERAGE.md) keeps those tasks separate. These results are
 included in the [combined S9/S10 checkpoint](../CHECKPOINT.md).

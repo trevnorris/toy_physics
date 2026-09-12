@@ -104,7 +104,7 @@ does not imply that a residual vanishes; that is a separate algebraic claim.
 
 ## Verification and next boundary
 
-`LAKE_CACHE_DIR=.lake/cache lake build` passes with 250 audited declarations:
+At the committed checkpoint, `LAKE_CACHE_DIR=.lake/cache lake build` passed with 250 audited declarations:
 21 S9, 34 S10 baseline, 48 controls, 48 anisotropic and 99 in `S10Audit`.
 Only the standard logical axioms `propext`, `Classical.choice` and `Quot.sound`
 occur. Warnings are errors, and no proof admissions are used.
@@ -116,10 +116,22 @@ sign and an incorrect transverse-basis sign. Results are recorded in
 [AUDIT_VERIFICATION.txt](AUDIT_VERIFICATION.txt) records the build, audits and
 source hashes.
 
-The next step is the CAS expression/emission bridge: map actual emitted
-matrices, minors, bases and residuals into the checked expression language,
-retain denominator domains and root substitutions, and reconcile route
-normalizations. The production Q7 construction, broad comparator/export
+The subsequent [CAS bridge pilot](CAS_BRIDGE_RESULT.md) connects both engines'
+generic anisotropic D3 matrices, determinant, roots, bases and residuals,
+retaining denominator domains and root substitutions and proving the route
+normalizations. The [minor/locus extension](MINOR_LOCUS_RESULT.md) further
+connects the emitted D3 minors, complete selection maps, exceptional predicates
+and targeted points. The [exceptional rerun extension](EXCEPTIONAL_RERUN_RESULT.md)
+connects the targeted matrices, roots and complete bases, with physical units
+restored through an explicit scale. The [count extension](COUNT_RESULT.md)
+certifies all 112 generic and exceptional rank/nullity and signed-count records,
+with explicit domains and complete N1/N3 matrix bindings. The [root-list extension](ROOT_RESULT.md)
+connects complete solution lists, distinct-root counts, algebraic multiplicities
+and syntactic candidate filters. The [coincidence extension](COINCIDENCE_RESULT.md)
+connects primary equations, guarded loci, decisions and witnesses. The
+[metadata extension](METADATA_RESULT.md) connects Q8/aggregate fields, root
+signs, solver operands/statuses and stratum dispositions. Reality-filter traces,
+remaining Q5/Q6/period-average metadata, D4 and other packages remain to be connected. The production Q7 construction, broad comparator/export
 refresh and paper alignment also remain open in [COVERAGE.md](COVERAGE.md).
 This matrix increment changes no CAS engine or frozen export. It is included
 in the [combined S9/S10 checkpoint](../CHECKPOINT.md).

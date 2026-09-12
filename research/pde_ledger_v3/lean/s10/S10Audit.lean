@@ -1,4 +1,5 @@
 import S10Audit.NormalizedTrees
+import S10Audit.CAS.Audit
 
 #print axioms S10Audit.packageAction_uses_stiffness
 #print axioms S10Audit.epsilonCurl_eq_jetCurl

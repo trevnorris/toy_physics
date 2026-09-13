@@ -2072,6 +2072,47 @@ class ClosedAcousticEnergy:
         dims.known[self.energy_coefficients[0]] = tuple(a-2*b for a, b in zip(density, speed))
         dims.known[self.energy_coefficients[1]] = density
 
+    @staticmethod
+    @lru_cache(maxsize=1024)
+    def cancel_material_coefficient(value):
+        numerator, denominator = sp.together(value).as_numer_denom()
+        scale, numerator, denominator = sp.cancel((sp.expand(numerator), denominator))
+        return scale*numerator/denominator
+
+    def cancel_background_expression(self, value, label):
+        """Exact rational reconstruction with all background orders retained.
+
+        Field amplitudes and background powers are collected structurally.
+        Background-dependent denominator factors stay explicit; they are not
+        Taylor-expanded or treated as independent physical carriers. Only the
+        remaining material coefficients enter multivariate cancellation.
+        """
+        grades = (self.modes.eta, self.modes.sigma)
+        amplitudes = self.c.amplitudes[0]
+        checkpoint = getattr(self, 'rational_checkpoint', lambda name, source, calculate:calculate())
+        def reconstruct():
+            amplitude_terms = []
+            for ai, (powers, coefficient) in enumerate(polynomial_terms(value, amplitudes)):
+                numerator, denominator = sp.together(coefficient).as_numer_denom()
+                factors = sp.Mul.make_args(denominator)
+                dynamic = sp.Mul(*(f for f in factors if f.has(*grades)))
+                static = sp.Mul(*(f for f in factors if not f.has(*grades)))
+                background_terms = []
+                for exponents, material in polynomial_terms(numerator, grades):
+                    operand = material/static
+                    name = label+'_amplitude_'+str(ai)+'_grade_'+'_'.join(map(str,exponents))
+                    reduced = checkpoint(name, operand,
+                        lambda operand=operand:self.cancel_material_coefficient(operand))
+                    background_terms.append(reduced*sp.prod(g**p for g,p in zip(grades,exponents)))
+                amplitude_terms.append(sp.Add(*background_terms)/dynamic*
+                    sp.prod(a**p for a,p in zip(amplitudes,powers)))
+            return sp.Add(*amplitude_terms)
+        return checkpoint(label+'_reconstruction', value, reconstruct)
+
+    def cancel_background_row(self, row, label):
+        return sp.ImmutableMatrix(row.rows, row.cols, [
+            self.cancel_background_expression(v,label+'_'+str(i)) for i,v in enumerate(row)])
+
     @lru_cache(maxsize=None)
     def construct(self, anchoring, end):
         c, r, s = self.c, self.r, self.depth
@@ -2161,7 +2202,9 @@ class ClosedAcousticEnergy:
                           'AMPLITUDE':solution, 'PRESSURE':sp.cancel(face_p.subs(closed)),
                           'RELATIVE_MASS_FLUX':sp.cancel(relative.subs(closed)),
                           'AFFINITY':sp.cancel(affinity.subs(closed)),
-                          'MECHANICAL_LOAD':sp.cancel(((face_p+kernels['X']*affinity)*outward_virtual_lift).subs(closed)),
+                          'MECHANICAL_LOAD':self.cancel_background_expression(
+                              ((face_p+kernels['X']*affinity)*outward_virtual_lift).subs(closed),
+                              'face_'+str(sign)+'_mechanical_load'),
                           'AMPLITUDE_EQUATION_COEFFICIENT':coefficient,
                           'AMPLITUDE_EQUATION_RECONSTRUCTION_RESIDUAL':sp.expand(closure-coefficient*amplitude-constant),
                           'CLOSURE_RESIDUAL':sp.cancel(closure.subs(closed))})
@@ -2172,15 +2215,19 @@ class ClosedAcousticEnergy:
         radical_residual = sp.simplify(acoustic_row.subs(radical_map)-relation)
         no_transfer = {r.symbols[n]:0 for n in ('Lambda_A_0', 'Lambda_V_0')}
         no_face = {**no_transfer, r.symbols['Lambda_X_0']:0}
-        mass_increment = (algebraic[3, :]-algebraic[3, :].subs(no_transfer)).applyfunc(sp.cancel)
-        mechanical_increment = (algebraic[4, :]-algebraic[4, :].subs(no_face).subs(rho, 0)).applyfunc(sp.cancel)
+        mass_increment = self.cancel_background_row(
+            algebraic[3, :]-algebraic[3, :].subs(no_transfer), 'mass_increment')
+        mechanical_increment = self.cancel_background_row(
+            algebraic[4, :]-algebraic[4, :].subs(no_face).subs(rho, 0), 'mechanical_increment')
         mass_from_faces = sum(face['RELATIVE_MASS_FLUX'] for face in faces).subs(radical_map)
         mechanical_from_faces = sum(face['MECHANICAL_LOAD'] for face in faces).subs(radical_map)
-        mass_face_row = sp.ImmutableMatrix(1, 5, lambda i, j:c.retained(sp.cancel(sp.diff(mass_from_faces, c.amplitudes[0][j]))))
-        mechanical_face_row = sp.ImmutableMatrix(1, 5, lambda i, j:c.retained(sp.cancel(sp.diff(mechanical_from_faces, c.amplitudes[0][j]))))
-        mass_join = (mass_increment-mass_face_row).applyfunc(lambda v:c.retained(sp.cancel(v)))
-        mechanical_join = (mechanical_increment-mechanical_face_row).applyfunc(lambda v:c.retained(sp.cancel(v)))
-        mechanical_sum = (mechanical_increment+mechanical_face_row).applyfunc(lambda v:c.retained(sp.cancel(v)))
+        mass_face_row = sp.ImmutableMatrix(1, 5, lambda i, j:c.retained(
+            self.cancel_background_expression(sp.diff(mass_from_faces,c.amplitudes[0][j]),'mass_face_'+str(j))))
+        mechanical_face_row = sp.ImmutableMatrix(1, 5, lambda i, j:c.retained(
+            self.cancel_background_expression(sp.diff(mechanical_from_faces,c.amplitudes[0][j]),'mechanical_face_'+str(j))))
+        mass_join = self.cancel_background_row(mass_increment-mass_face_row,'mass_join').applyfunc(c.retained)
+        mechanical_join = self.cancel_background_row(mechanical_increment-mechanical_face_row,'mechanical_join').applyfunc(c.retained)
+        mechanical_sum = self.cancel_background_row(mechanical_increment+mechanical_face_row,'mechanical_sum').applyfunc(c.retained)
         faces = [{key:c.retained(value) for key, value in face.items()} for face in faces]
         return {'ACOUSTIC_WAVE_EQUATION':wave, 'ACOUSTIC_PRESSURE':pressure,
                 'ACOUSTIC_VELOCITY':velocity, 'ENERGY_ANSATZ':energy_ansatz,
@@ -3576,6 +3623,231 @@ class ModalCurrentSubspaces:
         output(prefix+'_DIMENSION_CONSTRAINTS',tuple(d.constraints),lambda path:d.zero)
 
 
+class AdjointCurrentMap:
+    """Power-map row representation and physical/mixed current contractions."""
+
+    def __init__(self, modal):
+        self.modal = modal
+        self.modes, self.r = modal.modes, modal.r
+        self.field, self.row = modal.field_units, modal.row_units
+        self.energy, self.power, self.current = modal.energy_unit, modal.power_unit, modal.current_unit
+        self.frequency, self.length = modal.frequency_unit, modal.length_unit
+
+    @staticmethod
+    def add(*units):return tuple(sum(v) for v in zip(*units))
+
+    @staticmethod
+    def negative(unit):return tuple(-v for v in unit)
+
+    def prepare(self):
+        m = self.modal
+        m.prepare()
+        b,p = m.symbolic_operands['POWER_MAP_PLUS'],m.symbolic_operands['PENCIL_PLUS']
+        weighted = b*p
+        operands = {'POWER_WEIGHTED_PENCIL':weighted}
+        residuals = {}
+        for label,variable in (('NORMAL',m.pairing.c.leg_momenta[1]),('FREQUENCY',m.pairing.frequencies[1])):
+            transport = m.scalar_operands[label+'_TRANSPORT']
+            direct = weighted.diff(variable)+transport*weighted.diff(m.pairing.acoustic.qlegs[1])
+            product = m.symbolic_operands[label+'_POWER_MAP_PLUS']*p+b*m.symbolic_operands[label+'_PENCIL_PLUS']
+            operands[label+'_DIRECT_DERIVATIVE'] = direct
+            operands[label+'_PRODUCT_DERIVATIVE'] = product
+            residuals[label+'_PRODUCT_RULE'] = (direct-product).applyfunc(m.pairing.carrier_expansion)
+        self.symbolic_operands, self.symbolic_residuals = operands,residuals
+        self.evaluate = {key:sp.lambdify(m.variables,value.xreplace(m.bindings),'numpy',cse=True)
+                         for key,value in operands.items() if key.endswith('DIRECT_DERIVATIVE')}
+
+    def construct(self, source, progress=lambda record:None):
+        self.prepare()
+        records = []
+        add,neg = self.add,self.negative
+        zero = (0,0,0)
+        velocity = add(self.length,self.frequency)
+        for old in source['RECORDS']:
+            n = old['NULLITY']
+            record = {'INDEX':old['INDEX'],'ROOT_DISK_INDEX':old['ROOT_DISK_INDEX'],
+                'NORMAL_LIFT_SIGN':old['NORMAL_LIFT_SIGN'],'NULLITY':n,'K':old['K'],'Q':old['Q'],
+                'NORMAL_REALITY_STATUS':old['NORMAL_REALITY_CERTIFICATE']['NORMAL_REALITY_STATUS'],
+                'SHEET_MEMBERSHIP':old['SHEET_MEMBERSHIP'],
+                'BULK_DECAY_DISK_CERTIFIED':old['BULK_DECAY_DISK_CERTIFIED'],
+                'SOURCE_CURRENT_NORMALIZATION_DEFINED':old['PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED'],
+                'COEFFICIENT_FRAME':'EPSILON_SQUARED_REMOVED_FOR_ROW_MAP_AND_PAIRING',
+                'NORM_FRAME':'NUMERIC_L_T_M_REFERENCE_UNIT_COEFFICIENTS','ITEMS':[]}
+            items = record['ITEMS']
+            def put(group,key,value,units,quadratic=False):
+                value = np.asarray(value,dtype=complex)
+                if value.ndim==1:value=value.reshape((-1,1))
+                dims = [units(i,j) if callable(units) else units for i in range(value.shape[0]) for j in range(value.shape[1])]
+                items.append({'GROUP':group,'NAME':key,'VALUE':value,'UNITS':tuple(dims),'EPSILON_POWER':2 if quadratic else 0})
+            right = old['FORMS']['RIGHT']
+            p,b = old['OPERANDS']['PENCIL_PLUS'],old['OPERANDS']['POWER_MAP_PLUS']
+            singular = np.linalg.svd(b,compute_uv=False)
+            threshold = 1e-10*max(1.,singular[0])
+            rank = int(np.sum(singular>threshold))
+            record.update({'POWER_MAP_RANK':rank,'POWER_MAP_RANK_THRESHOLD':threshold,
+                'FREQUENCY_PAIRING_RANK':old['FREQUENCY_PAIRING_RANK'],
+                'INVERTIBLE_FIELD_MAP_DEFINED':bool(rank==b.shape[0] and old['FREQUENCY_PAIRING_RANK']==n)})
+            put('OPERANDS','POWER_MAP',b,lambda i,j:add(self.power,neg(self.field[i]),neg(self.row[j])))
+            put('OPERANDS','POWER_MAP_SINGULAR_VALUES',singular,zero)
+            put('OPERANDS','PENCIL',p,lambda i,j:add(self.row[i],neg(self.field[j])))
+            put('OPERANDS','RIGHT',right,lambda i,j:self.field[i])
+            if not record['INVERTIBLE_FIELD_MAP_DEFINED']:
+                records.append(record);progress({'mode':old['INDEX'],'powerMapRank':rank,'mapDefined':False});continue
+            left = old['FORMS']['LEFT_FREQUENCY_NORMALIZED']
+            inverse = np.linalg.solve(b,np.eye(b.shape[0]))
+            adjoint = np.linalg.solve(b.conj().T,left)
+            weighted = b@p
+            bridge = old['FORMS']['POWER_LEFT_BRIDGE_FREQUENCY_NORMALIZED']
+            defect = old['FORMS']['POWER_LEFT_DEFECT']
+            field_defect = np.linalg.solve(b.conj().T,defect.conj().T)
+            row_left_unit = lambda i,j:add(self.frequency,neg(self.row[i]))
+            field_left_unit = lambda i,j:add(self.field[i],neg(self.energy))
+            q_unit = lambda i,j:add(self.power,neg(self.field[i]),neg(self.field[j]))
+            put('OPERANDS','LEFT_FREQUENCY_NORMALIZED',left,row_left_unit)
+            put('MAPS','INVERSE_POWER_MAP',inverse,lambda i,j:add(self.row[i],self.field[j],neg(self.power)))
+            put('MAPS','ADJOINT_FIELD',adjoint,field_left_unit)
+            put('MAPS','POWER_WEIGHTED_PENCIL',weighted,q_unit)
+            put('MAPS','PHYSICAL_BRIDGE',bridge,self.energy)
+            put('MAPS','POWER_COVECTOR_DEFECT',defect,lambda i,j:add(self.power,neg(self.row[j])))
+            put('MAPS','PHYSICAL_FIELD_DEFECT',field_defect,lambda i,j:self.field[i])
+            put('RESIDUALS','ROW_TO_FIELD',b.conj().T@adjoint-left,row_left_unit)
+            put('RESIDUALS','INVERSE_SOLVE_JOIN',adjoint-inverse.conj().T@left,field_left_unit)
+            put('RESIDUALS','ADJOINT_WEIGHTED_KERNEL',weighted.conj().T@adjoint,
+                lambda i,j:add(self.frequency,neg(self.field[i])))
+            put('RESIDUALS','RIGHT_WEIGHTED_KERNEL',weighted@right,lambda i,j:add(self.power,neg(self.field[i])))
+            put('RESIDUALS','PHYSICAL_FIELD_RECONSTRUCTION',adjoint@bridge.conj().T+field_defect-right,
+                lambda i,j:self.field[i])
+            k,q = complex(old['K']),complex(old['PHYSICAL_Q'])
+            omega,height = complex(old['OMEGA']),complex(old['DEPTH_CUTOFF'])
+            point = (omega,omega,k.conjugate(),k,q.conjugate(),q,height)
+            equal = old['EQUAL_DEPTH_BRANCH']
+            excluded = {'INFINITE_DEPTH_INTEGRAL'} | ({'DEPTH_INTEGRAL','DEPTH_INTEGRAL_Q'} if equal else set())
+            values = {key:np.asarray(f(*point),dtype=complex) for key,f in self.modal.evaluate.items() if key not in excluded}
+            put('RESIDUALS','SOURCE_POWER_MAP_JOIN',values['POWER_MAP_PLUS']-b,
+                lambda i,j:add(self.power,neg(self.field[i]),neg(self.row[j])))
+            put('RESIDUALS','SOURCE_PENCIL_JOIN',values['PENCIL_PLUS']-p,lambda i,j:add(self.row[i],neg(self.field[j])))
+            integral = complex(old['DEPTH_INTEGRAL'])
+            integral_q = complex(values['EQUAL_DEPTH_INTEGRAL_Q' if equal else 'DEPTH_INTEGRAL_Q'])
+            full_energy = values['ENERGY_SLAB']+integral*values['ENERGY_BULK']
+            full_current = values['CURRENT_SLAB']+integral*values['CURRENT_BULK']
+            forms = {'ENERGY_FINITE':(full_energy,self.energy,zero),
+                     'CURRENT_FINITE':(full_current,self.current,velocity)}
+            if old['BULK_DECAY_DISK_CERTIFIED']:
+                forms['CURRENT_INFINITE'] = (values['CURRENT_SLAB']+
+                    complex(old['INFINITE_DEPTH_INTEGRAL'])*values['CURRENT_BULK'],self.current,velocity)
+            for name,(value,unit,mixed_unit) in forms.items():
+                mixed = adjoint.conj().T@value@right
+                physical = right.conj().T@value@right
+                defect_part = field_defect.conj().T@value@right
+                put('OPERANDS',name+'_FIELD_MATRIX',value,lambda i,j:add(unit,neg(self.field[i]),neg(self.field[j])),True)
+                put('FORMS',name+'_MIXED',mixed,mixed_unit,True)
+                put('FORMS',name+'_PHYSICAL',physical,unit,True)
+                put('FORMS',name+'_BRIDGE_TERM',bridge@mixed,unit,True)
+                put('FORMS',name+'_DEFECT_TERM',defect_part,unit,True)
+                put('RESIDUALS',name+'_PHYSICAL_JOIN',physical-old['FORMS'][name],unit,True)
+                put('RESIDUALS',name+'_BRIDGE_RECONSTRUCTION',bridge@mixed+defect_part-physical,unit,True)
+            for label,var_unit,result_name,result_unit in (
+                ('NORMAL',neg(self.length),'CURRENT_FINITE',velocity),
+                ('FREQUENCY',self.frequency,'ENERGY_FINITE',zero)):
+                db,dp = values[label+'_POWER_MAP_PLUS'],values[label+'_PENCIL_PLUS']
+                direct = np.asarray(self.evaluate[label+'_DIRECT_DERIVATIVE'](*point),dtype=complex)
+                product = db@p+b@dp
+                canonical = left.conj().T@dp@right
+                correction = adjoint.conj().T@db@p@right
+                pairing = adjoint.conj().T@direct@right
+                derivative_unit = lambda i,j:add(q_unit(i,j),neg(var_unit))
+                put('OPERANDS',label+'_POWER_MAP_DERIVATIVE',db,
+                    lambda i,j:add(self.power,neg(self.field[i]),neg(self.row[j]),neg(var_unit)))
+                put('OPERANDS',label+'_WEIGHTED_DIRECT_DERIVATIVE',direct,derivative_unit)
+                put('OPERANDS',label+'_WEIGHTED_PRODUCT_DERIVATIVE',product,derivative_unit)
+                put('FORMS',label+'_CANONICAL_PAIRING',canonical,result_unit)
+                put('FORMS',label+'_WEIGHTED_PAIRING',pairing,result_unit)
+                put('FORMS',label+'_WEIGHT_DERIVATIVE_CORRECTION',correction,result_unit)
+                put('RESIDUALS',label+'_PRODUCT_RULE',direct-product,derivative_unit)
+                put('RESIDUALS',label+'_PAIRING_COVARIANCE',pairing-canonical-correction,result_unit)
+                if label=='FREQUENCY':
+                    put('RESIDUALS','WEIGHTED_FREQUENCY_NORMALIZATION',pairing-np.eye(n),zero)
+                transport = complex(values[label+'_TRANSPORT'])
+                de = values[label+'_ENERGY_SLAB']+integral*values[label+'_ENERGY_BULK']+integral_q*transport*values['ENERGY_BULK']
+                dj = values[label+'_CURRENT_SLAB']+integral*values[label+'_CURRENT_BULK']+integral_q*transport*values['CURRENT_BULK']
+                dtop = complex(values['TOP_FACTOR'])*(values[label+'_CURRENT_DEPTH']+
+                    height*complex(values[label+'_DEPTH_WEIGHT'])*values['CURRENT_DEPTH'])
+                derivative_balance = (complex(values[label+'_TIME_WEIGHT'])*full_energy+complex(values['TIME_RATE'])*de+
+                    complex(values[label+'_NORMAL_WEIGHT'])*full_current+complex(values['NORMAL_RATE'])*dj+
+                    values[label+'_POWER_INTERFACE']+dtop)
+                source_derivative = values[label+'_POWER_SOURCE']
+                isolated = complex(values[label+('_NORMAL_WEIGHT' if label=='NORMAL' else '_TIME_WEIGHT')])
+                physical_matrix = full_current if label=='NORMAL' else full_energy
+                other_source = adjoint.conj().T@(source_derivative-b@dp)@right
+                other_balance = adjoint.conj().T@(derivative_balance-isolated*physical_matrix)@right
+                mixed = adjoint.conj().T@physical_matrix@right
+                reconstructed = (canonical+other_source-other_balance)/isolated
+                put('FORMS',label+'_DERIVATIVE_WORK_PAIRING',adjoint.conj().T@b@dp@right,result_unit,True)
+                put('FORMS',label+'_OTHER_SOURCE_WORK',other_source,result_unit,True)
+                put('FORMS',label+'_OTHER_BALANCE_WORK',other_balance,result_unit,True)
+                put('FORMS',label+'_RECONSTRUCTED_MIXED_FORM',reconstructed,result_unit,True)
+                put('RESIDUALS',label+'_MIXED_BALANCE_DERIVATIVE',
+                    adjoint.conj().T@(derivative_balance-source_derivative)@right,result_unit,True)
+                put('RESIDUALS',label+'_MIXED_CURRENT_ENERGY_RECONSTRUCTION',reconstructed-mixed,result_unit,True)
+            transform = np.diag(np.arange(2,n+2,dtype=float)).astype(complex)+np.triu(np.ones((n,n))*(1/3+1j/5),1)
+            inverse_t = np.linalg.solve(transform,np.eye(n))
+            new_right,new_left = right@transform,left@inverse_t.conj().T
+            new_adjoint = np.linalg.solve(b.conj().T,new_left)
+            covectors = new_right.conj().T@b
+            gram = new_left.conj().T@new_left
+            new_bridge = np.linalg.solve(gram.T,(covectors@new_left).T).T
+            new_defect = covectors-new_bridge@new_left.conj().T
+            new_mixed = new_adjoint.conj().T@full_current@new_right
+            new_physical = new_right.conj().T@full_current@new_right
+            put('BASIS','CHANGE',transform,zero)
+            put('BASIS','RIGHT',new_right,lambda i,j:self.field[i])
+            put('BASIS','LEFT_NORMALIZED',new_left,row_left_unit)
+            put('BASIS','ADJOINT_FIELD',new_adjoint,field_left_unit)
+            put('BASIS','BRIDGE',new_bridge,self.energy)
+            put('BASIS','DEFECT',new_defect,lambda i,j:add(self.power,neg(self.row[j])))
+            put('BASIS','MIXED_CURRENT',new_mixed,velocity,True)
+            put('BASIS','PHYSICAL_CURRENT',new_physical,self.current,True)
+            put('RESIDUALS','BASIS_FREQUENCY_PAIRING',new_left.conj().T@values['FREQUENCY_PENCIL_PLUS']@new_right-np.eye(n),zero)
+            put('RESIDUALS','BASIS_FIELD_MAP',new_adjoint-adjoint@inverse_t.conj().T,field_left_unit)
+            put('RESIDUALS','BASIS_BRIDGE',new_bridge-transform.conj().T@bridge@transform,self.energy)
+            put('RESIDUALS','BASIS_DEFECT',new_defect-transform.conj().T@defect,lambda i,j:add(self.power,neg(self.row[j])))
+            put('RESIDUALS','BASIS_MIXED_CURRENT',new_mixed-inverse_t@(adjoint.conj().T@full_current@right)@transform,velocity,True)
+            put('RESIDUALS','BASIS_PHYSICAL_CURRENT',new_physical-transform.conj().T@old['FORMS']['CURRENT_FINITE']@transform,self.current,True)
+            if old['PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED']:
+                t = old['FORMS']['FIELD_TO_FLUX_MAP']
+                flux_current = t.conj().T@(bridge@(adjoint.conj().T@forms['CURRENT_INFINITE'][0]@right)+
+                    field_defect.conj().T@forms['CURRENT_INFINITE'][0]@right)@t
+                put('FORMS','RECONSTRUCTED_SIGNED_CURRENT',flux_current,zero,True)
+                put('RESIDUALS','SIGNED_CURRENT_RECONSTRUCTION',flux_current-old['FORMS']['SIGNED_CURRENT'],zero,True)
+            record['RESIDUAL_NORMS'] = {item['NAME']:float(np.linalg.norm(item['VALUE'])) for item in items if item['GROUP']=='RESIDUALS'}
+            records.append(record)
+            progress({'mode':old['INDEX'],'powerMapRank':rank,'mapDefined':True,
+                'maximumResidualNorm':max(record['RESIDUAL_NORMS'].values())})
+        return {'RECORDS':records,'SYMBOLIC_OPERANDS':self.symbolic_operands,'SYMBOLIC_RESIDUALS':self.symbolic_residuals}
+
+    def emit(self, result, provenance, prefix='ADJOINT_CURRENT_MAP'):
+        def output(tag,body,units,heavy=False):
+            body = cas(body)
+            emit(tag,carrier_fingerprint(body) if heavy=='carrier' else self.modes.compact_fingerprint(body) if heavy else body)
+            emit('METADATA_'+tag,self.modes.numeric_metadata(body,units))
+        output(prefix+'_PROVENANCE',provenance,lambda path:(0,0,0))
+        for group in ('SYMBOLIC_OPERANDS','SYMBOLIC_RESIDUALS'):
+            for name,value in result[group].items():
+                variable_unit = self.frequency if name.startswith('FREQUENCY_') else self.negative(self.length) if name.startswith('NORMAL_') else (0,0,0)
+                output(prefix+'_'+group+'_'+name,value,lambda path:self.add(self.power,
+                    self.negative(self.field[path[0]//5]),self.negative(self.field[path[0]%5]),self.negative(variable_unit)),
+                    'carrier' if group=='SYMBOLIC_OPERANDS' else False)
+        for record in result['RECORDS']:
+            tag = prefix+'_REFERENCE_LAB_HELD_RHO4_CONSTANT_'+str(record['INDEX'])
+            info = {k:v for k,v in record.items() if k!='ITEMS'}
+            output(tag+'_RECORD',info,lambda path:self.negative(self.length) if path[-1]=='K' else self.frequency if path[-1]=='Q' else (0,0,0))
+            for item in record['ITEMS']:
+                array = item['VALUE']
+                body = sp.ImmutableMatrix(*array.shape,[self.modes.number(v) for v in array.ravel()])*self.modal.epsilon**item['EPSILON_POWER']
+                output(tag+'_'+item['GROUP']+'_'+item['NAME'],body,lambda path:item['UNITS'][path[0]],item['GROUP']!='RESIDUALS')
+        output(prefix+'_DIMENSION_CONSTRAINTS',tuple(PHYSICAL_METADATA.dimensions.constraints),lambda path:(0,0,0))
+
+
 class ChannelInput:
     """Explicit profile and numerical parameter input, separate from PIT.
 
@@ -4902,6 +5174,185 @@ class EndSpectrumCoverage:
         summary['GLOBAL_SHEET_COVERAGE_COMPUTED'] = False
         self.emit(prefix+'_SUMMARY',summary)
         return {'CERTIFICATE':certificate,'RECORDS':records,'SUMMARY':summary}
+
+
+class EndModeFrequencyData:
+    """Frequency pairing on complete end subspaces, independent of current closure."""
+
+    def __init__(self, modes, strong, units, inputs):
+        self.modes,self.strong,self.units,self.inputs = modes,strong,units,inputs
+        self.d = PHYSICAL_METADATA.dimensions
+        self.field = [self.d.known[sp.Function('s11cdReducedField'+v)] for v in ('u1','u2','u3','theta','eW')]
+        self.row = [self.add(units[(5*i,)],self.field[0]) for i in range(5)]
+        self.frequency,self.length = self.d.measure(modes.r.omega),self.d.measure(modes.r.ell)
+        self.packets = []
+
+    @staticmethod
+    def add(*units):
+        return tuple(sum(v) for v in zip(*units))
+
+    @staticmethod
+    def negative(unit):
+        return tuple(-v for v in unit)
+
+    def put(self, name, value, unit=None, heavy=False):
+        if isinstance(value,np.ndarray):
+            value = sp.ImmutableMatrix(*value.shape,[self.modes.number(v) for v in value.ravel()])
+        body = cas(value)
+        unit = unit or (lambda path:self.d.zero)
+        dimensions = {path:tuple(unit(path)) for path,entry in leaves(body) if not isinstance(entry,Str)}
+        self.packets.append({'NAME':name,'VALUE':body,'UNITS':dimensions,'HEAVY':heavy})
+
+    def construct(self, native, coverage, progress=lambda item:None):
+        m = self.modes; w,k,q = m.r.omega,m.k,m.q
+        algebraic,relation,joins = m.analytic(self.strong)
+        mapping = self.inputs.mapping(algebraic,relation,(w,k,q,m.eta,m.sigma))
+        graded = algebraic.xreplace(mapping)
+        live = graded.subs(self.inputs.origin).applyfunc(sp.cancel)
+        wave = relation.xreplace(mapping)
+        frequency = self.inputs.parameters[w.name]
+        transport = sp.cancel(-wave.diff(w)/wave.diff(q))
+        derivative = (live.diff(w)+live.diff(q)*transport).applyfunc(sp.cancel)
+        physical = live.subs(w,frequency).applyfunc(sp.cancel)
+        bound_wave = wave.subs(w,frequency)
+        fixed = algebraic.xreplace({**mapping,w:frequency}).subs(self.inputs.origin).applyfunc(sp.cancel)
+        derivative_unit = lambda p:self.add(self.units[p],self.negative(self.frequency))
+        self.put('SOURCE_BRANCH_JOIN_RESIDUAL',joins)
+        self.put('MATERIAL_PROFILE_BINDINGS',tuple((str(a),b) for a,b in mapping.items()),
+                 lambda p:self.d.measure(next(a for a in mapping if str(a)==p[0])))
+        self.put('GRADE_ORIGIN',tuple(self.inputs.origin.items()))
+        self.put('UNIT_FRAME',self.inputs.frame)
+        self.put('SOURCE_GRADE_SUPPORT',tuple((p,tuple(sorted(PHYSICAL_METADATA.coefficients(v)))) for p,v in leaves(algebraic)))
+        self.put('LIVE_FREQUENCY_PENCIL',live,lambda p:self.units[p],'carrier')
+        self.put('BOUND_PENCIL',physical,lambda p:self.units[p],'carrier')
+        self.put('FREQUENCY_DERIVATIVE',derivative,derivative_unit,'carrier')
+        self.put('WAVE',wave,lambda p:self.add(self.frequency,self.frequency),'carrier')
+        self.put('RADICAL_FREQUENCY_TRANSPORT',transport,None,'carrier')
+        self.put('FREQUENCY_WAVE_TANGENCY_RESIDUAL',sp.cancel(wave.diff(w)+wave.diff(q)*transport),lambda p:self.frequency)
+        self.put('FREQUENCY_BINDING_RESIDUAL',(physical-fixed).applyfunc(sp.cancel),lambda p:self.units[p])
+        self.put('EVALUATION_DOMAIN',{'POSITIVE_FREQUENCY':frequency>0,'FREQUENCY':frequency,
+            'RETAINED_OPERATOR_EVALUATION':True,'CONTINUUM_REEXPANSION_PERFORMED':False,
+            'GLOBAL_PARAMETER_COVERAGE_COMPUTED':False,'GLOBAL_SHEET_COVERAGE_COMPUTED':False},
+            lambda p:self.frequency if p[-1]=='FREQUENCY' else self.d.zero)
+        progress({'stage':'frequency_derivative_constructed'})
+        (numerator,denominator),cleared,row_denominators = m.rational_determinant(physical)
+        square = sp.solve(bound_wave,k**2)[0]
+        remainder = sp.rem(sp.Poly(numerator,k),sp.Poly(k**2-square,k)).as_expr()
+        polynomial = sp.Poly(remainder,q)
+        elimination = (cleared,row_denominators,numerator,denominator,polynomial.as_expr())
+        self.put('ELIMINATION_COORDINATES',elimination,None,'carrier')
+        certificate = NormalRealityCoverage.construct(polynomial,bound_wave,denominator,k,q,coverage)
+        for name,value in certificate.items():
+            self.put('NORMAL_REALITY_'+name,value,lambda p:NormalRealityCoverage.unit(p,self.frequency,self.length),
+                     'carrier' if name in ('OPERANDS','AXES') else False)
+        progress({'stage':'reality_certificates_constructed','disks':len(certificate['DISKS'])})
+        evaluate = sp.lambdify((w,k,q),live,'numpy',cse=True)
+        diff_evaluate = sp.lambdify((w,k,q),derivative,'numpy',cse=True)
+        radical_square = sp.lambdify((w,k),sp.solve(wave,q**2)[0],'numpy',cse=True)
+        records = []; wf = float(frequency)
+        for index,old in enumerate(native):
+            n0 = len(self.packets); prefix = 'MODE_'+str(index)+'_'
+            kval,qval = complex(old['K']),complex(old['Q'])
+            matrix = np.asarray(evaluate(wf,kval,qval),dtype=complex)
+            disk = certificate['DISKS'][int(old['ROOT_DISK_INDEX'])]
+            info = {'INDEX':index,'ROOT_DISK_INDEX':int(old['ROOT_DISK_INDEX']),
+                'NORMAL_LIFT_SIGN':int(old['NORMAL_LIFT_SIGN']),'K':old['K'],'Q':old['Q'],
+                'MULTIPLICITY':int(old['MULTIPLICITY']),'SHEET_MEMBERSHIP':old['FIXED_FREQUENCY_SHEET_MEMBERSHIP'],
+                'NORMAL_REALITY_CERTIFICATE':disk,'EXACT_REAL_NORMAL':disk['NORMAL_REALITY_STATUS']=='PROVED_REAL',
+                'FINITE_PENCIL':bool(np.isfinite(matrix).all()),'FREQUENCY_NORMALIZATION_DEFINED':False}
+            def put(name,value,unit=None,heavy=True):self.put(prefix+name,value,unit,heavy)
+            if info['FINITE_PENCIL']:
+                left,singular,right_h = np.linalg.svd(matrix)
+                threshold = 1e-8*max(1.,singular[0]); n = int(np.sum(singular<threshold))
+                info.update({'NULLITY':n,'NATIVE_NULLITY_RESIDUAL':n-int(old['NULLITY']),
+                    'ALGEBRAIC_GEOMETRIC_MULTIPLICITY_DIFFERENCE':int(old['MULTIPLICITY'])-n,
+                    'COEFFICIENT_FRAME_RANK_THRESHOLD':threshold})
+                put('COEFFICIENT_FRAME_SINGULAR_VALUES',singular.reshape(-1,1))
+                if n:
+                    right,dual = right_h.conj().T[:,-n:],left[:,-n:]
+                    info.update({'RIGHT_BASIS_RANK':int(np.linalg.matrix_rank(right,tol=1e-9)),
+                                 'LEFT_BASIS_RANK':int(np.linalg.matrix_rank(dual,tol=1e-9))})
+                    right_units = lambda p:self.field[p[0]//n]
+                    left_units = lambda p:self.negative(self.row[p[0]//n])
+                    normalized_left_units = lambda p:self.add(self.frequency,left_units(p))
+                    field_map_units = lambda p:self.add(self.field[p[0]//5],self.negative(self.field[p[0]%5]))
+                    put('RIGHT_BASIS',right,right_units);put('LEFT_BASIS',dual,left_units)
+                    put('RIGHT_KERNEL_RESIDUAL',matrix@right,lambda p:self.row[p[0]//n],False)
+                    put('LEFT_KERNEL_RESIDUAL',matrix.conj().T@dual,lambda p:self.negative(self.field[p[0]//n]),False)
+                    regular = bool(disk['DENOMINATOR_EXCLUDED'] and not old['RADICAL_BRANCH_POINT'])
+                    info['REGULAR_FREQUENCY_CHART'] = regular
+                    if regular:
+                        dw = np.asarray(diff_evaluate(wf,kval,qval),dtype=complex)
+                        pairing = dual.conj().T@dw@right
+                        info['FINITE_FREQUENCY_PAIRING'] = bool(np.isfinite(pairing).all())
+                        put('FREQUENCY_MATRIX',dw,derivative_unit)
+                        put('FREQUENCY_PAIRING',pairing,lambda p:self.negative(self.frequency))
+                        for fi,relative in enumerate((1e-4,5e-5)):
+                            h = relative*max(1.,abs(wf))
+                            qsq = radical_square(wf,kval)
+                            shifted = [np.asarray(evaluate(wf+s*h,kval,
+                                qval*np.sqrt(complex(radical_square(wf+s*h,kval)/qsq))),dtype=complex) for s in (1,-1)]
+                            fd = (shifted[0]-shifted[1])/(2*h)
+                            put('FREQUENCY_DIFFERENCE_'+str(fi),fd,derivative_unit)
+                            put('FREQUENCY_DIFFERENCE_'+str(fi)+'_RESIDUAL',fd-dw,derivative_unit,False)
+                            self.put(prefix+'FREQUENCY_DIFFERENCE_'+str(fi)+'_STEP',h,lambda p:self.frequency)
+                        if info['FINITE_FREQUENCY_PAIRING']:
+                            ntol = 1e-9*max(1.,np.linalg.norm(pairing,2))
+                            rank = int(np.linalg.matrix_rank(pairing,tol=ntol))
+                            info.update({'FREQUENCY_PAIRING_RANK':rank,'FREQUENCY_PAIRING_THRESHOLD':ntol,
+                                         'FREQUENCY_PAIRING_CONDITION':float(np.linalg.cond(pairing))})
+                            if rank==n:
+                                normalized = dual@np.linalg.inv(pairing).conj().T
+                                projector = right@normalized.conj().T@dw
+                                info.update({'FREQUENCY_NORMALIZATION_DEFINED':True,
+                                    'FREQUENCY_PROJECTOR_RANK':int(np.linalg.matrix_rank(projector,tol=1e-9))})
+                                put('FREQUENCY_NORMALIZED_LEFT',normalized,normalized_left_units)
+                                put('FREQUENCY_FIELD_PROJECTOR',projector,field_map_units)
+                                put('FREQUENCY_NORMALIZATION_RESIDUAL',normalized.conj().T@dw@right-np.eye(n),None,False)
+                                put('NORMALIZED_LEFT_KERNEL_RESIDUAL',matrix.conj().T@normalized,
+                                    lambda p:self.add(self.frequency,self.negative(self.field[p[0]//n])),False)
+                                put('PROJECTOR_IDEMPOTENCY_RESIDUAL',projector@projector-projector,field_map_units,False)
+                                put('PROJECTOR_RANGE_RESIDUAL',projector@right-right,right_units,False)
+                                put('PROJECTOR_KERNEL_RESIDUAL',matrix@projector,lambda p:self.units[p],False)
+                                # Algorithmic basis changes act on every column, including degenerate spaces.
+                                c = np.diag(np.arange(2,n+2).astype(complex))+np.triu(np.full((n,n),.2j),1)
+                                b = np.diag(np.arange(3,n+3).astype(complex))+np.tril(np.full((n,n),.3),-1)
+                                rt,lt = right@c,dual@b; nt = lt.conj().T@dw@rt
+                                ln = lt@np.linalg.inv(nt).conj().T
+                                pt = rt@ln.conj().T@dw
+                                put('RIGHT_BASIS_CHANGE',c);put('LEFT_BASIS_CHANGE',b)
+                                put('CHANGED_FREQUENCY_PAIRING',nt,lambda p:self.negative(self.frequency))
+                                put('BASIS_PAIRING_COVARIANCE_RESIDUAL',nt-b.conj().T@pairing@c,lambda p:self.negative(self.frequency),False)
+                                put('BASIS_NORMALIZATION_COVARIANCE_RESIDUAL',ln-normalized@np.linalg.inv(c).conj().T,normalized_left_units,False)
+                                put('BASIS_PROJECTOR_COVARIANCE_RESIDUAL',pt-projector,field_map_units,False)
+            info['COEFFICIENT_FRAME_RESIDUAL_NORMS'] = {p['NAME'][len(prefix):]:float(np.linalg.norm(np.array(p['VALUE'],dtype=complex)))
+                for p in self.packets[n0:] if p['NAME'].endswith('_RESIDUAL') and isinstance(p['VALUE'],sp.MatrixBase)}
+            def info_units(path):
+                if 'NORMAL_REALITY_CERTIFICATE' in path:return NormalRealityCoverage.unit(path,self.frequency,self.length)
+                if path[-1]=='K':return self.negative(self.length)
+                if path[-1]=='Q':return self.frequency
+                if path[-1]=='FREQUENCY_PAIRING_THRESHOLD':return self.negative(self.frequency)
+                return self.d.zero
+            put('RECORD',info,info_units,False)
+            records.append(info);progress({'mode':index,'nullity':info.get('NULLITY'),
+                'frequencyNormalizationDefined':info['FREQUENCY_NORMALIZATION_DEFINED']})
+        self.put('DIMENSION_CONSTRAINTS',tuple(self.d.constraints))
+        return {'RECORDS':records,'NORMAL_REALITY_COVERAGE':certificate,'PACKETS':self.packets,
+                'PHYSICAL_PENCIL':physical,'ELIMINATION':elimination,'BOUND_MAPPING':{**mapping,w:frequency},
+                'NATIVE_RECORDS':native,'NATIVE_COVERAGE':coverage}
+
+    def emit(self, result, provenance, prefix):
+        self.put('PROVENANCE',provenance)
+        names = [p['NAME'] for p in result['PACKETS']]+['WRITE_KEYS']
+        keys = {name:'s11cd'+''.join(v.title() for v in (prefix+'_'+name).split('_')) for name in names}
+        self.put('WRITE_KEYS',keys)
+        if len(set(keys.values()))!=len(keys) or set(keys.values())&set(IMPORT_KEYS):
+            raise ValueError('end-frequency write-key collision')
+        for packet in result['PACKETS']:
+            tag = prefix+'_'+packet['NAME'];body = packet['VALUE']
+            payload = carrier_fingerprint(body) if packet['HEAVY']=='carrier' else self.modes.compact_fingerprint(body) if packet['HEAVY'] else body
+            emit(tag,payload)
+            emit('METADATA_'+tag,self.modes.numeric_metadata(body,lambda path:packet['UNITS'][path]))
 
 
 class EndExceptionalSlice:

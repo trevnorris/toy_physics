@@ -1,4 +1,7 @@
-# Deferred heavy runs — re-run these when a bigger box is available
+# Deferred heavy runs — resource limits and unfinished computations
+
+Entries distinguish memory limits, symbolic runtime limits, and the results
+that depend on them.
 
 Some in-band engine self-checks OOM the current **30 GB** dev box (the un-reduced variable-coefficient
 operators are ~50k+ LeafCount and several are held/expanded at once). Where that happens we run a memory-fitting

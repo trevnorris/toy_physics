@@ -1,0 +1,237 @@
+{
+  "case": "LAB_HELD_RHO4_CONSTANT",
+  "status": "RUNTIME_COMPLETE; RIGHT_SOURCE_CONSISTENCY_OPEN",
+  "runRoot": "/tmp/s11cd-right-source-resume-20260913",
+  "sources": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "03528a4e5bdc5762688fabf8023ef6186b90e56b1c0f2df9304be94933c8387b",
+    "_measurements/S11c_d_end_current_resumable.py": "f7e2bcdfcaee6a0c190daaca1f1a268b1a9757addefb834e9c386de647047e98",
+    "_measurements/S11c_d_current_runtime_metadata.py": "3ac1315684196a44cff3369f058680c4123cfe3b770b97cc00a25eb17a15358e",
+    "_measurements/S11c_d_end_current_source_validate.py": "3767015f1674c85b9e26b4e9626ceff4d04c460a243f9d88ffcd6a71b057f11f"
+  },
+  "producerManifestSha256": "a7f3ba4542fbdf4e072ae775f5985ed01d2e4a26fc209c84b7d55496a887d6bc",
+  "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+  "materialParametersBound": false,
+  "additionalBackgroundTruncation": false,
+  "right": {
+    "inventory": "_measurements/S11c_d_end_current_source_right_checkpoint.json",
+    "inventorySha256": "84a9a806f65b6b674f434f2b21c1b30b37de3d604c201668b6a0a82a6f3d2289",
+    "publication": {
+      "path": "scripts/out/S11c_d_end_current_source_right.out",
+      "sha256": "7d0987a2a552da82ddaf2dd864b1881bc710b6bb90aabf892162a51d22f6149d",
+      "bytes": 9520298
+    },
+    "retainedNonzeroScalars": 10,
+    "grades": [
+      [
+        0,
+        1,
+        0
+      ]
+    ],
+    "zeroArithmeticIdentities": 127
+  },
+  "left": {
+    "inventory": "_measurements/S11c_d_end_current_source_left_runtime_checkpoint.json",
+    "inventorySha256": "81426a2cc2b16e505451f0af109affc9471b726c949bfe7e6b6f453a4c36998e",
+    "publication": {
+      "path": "scripts/out/S11c_d_end_current_source_left_runtime.out",
+      "sha256": "d60af16865aef8437dc629f8849ba3550a0d5e5484432852c7b57670c9819234",
+      "bytes": 2625518
+    },
+    "retainedNonzeroScalars": 0,
+    "zeroArithmeticIdentities": 82,
+    "baselineRegression": {
+      "runDirectory": "/tmp/s11cd-both-end-current-20260913/left",
+      "objectsSha256": "85173be660d58bf5a40262d507ff8a8b3bfce2643ad71a9e44fb71fb60a48510",
+      "comparedObjects": 85,
+      "structurallyIdenticalObjects": 83,
+      "algebraicallyComparedLeaves": 2,
+      "parameterBindingsComparedByKey": 52,
+      "nonzeroResiduals": []
+    }
+  },
+  "nestedFaceResiduals": {
+    "RIGHT": {
+      "scalarCount": 4,
+      "nonzeroScalars": 0
+    },
+    "LEFT": {
+      "scalarCount": 4,
+      "nonzeroScalars": 0
+    }
+  },
+  "preservedArtifacts": {
+    "_measurements/S11c_d_end_current_source_stop.json": "aecc44195fab7c63254c39c02da0d5427c6edc41353bddb559c4b750ece83290",
+    "scripts/out/S11c_d_end_current_source_left.out": "a1b1d12eefcda0a150ed1286f632561ef2b08910f5063ee3481240c94a14f53d",
+    "scripts/out/S11c_d_end_frequency_left.out": "46325656f37afd8663d8d7d16d5357874ceda51ecca7f399c3d0803a34fe2fcd",
+    "scripts/out/S11c_d_end_frequency_right.out": "a2bfb261eb4d740668075efa6a52be1ad504e9e52d4ae7e368f64fc0a652b869"
+  },
+  "retainedContractSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "attempts": {
+    "right/attempt.json": {
+      "sha256": "e25e949bdda56c2281e709e9db6a94a65fd0d464efc7f7649cf6006370c8f55c",
+      "record": {
+        "status": "INTERRUPTED_FOR_EXACT_COEFFICIENT_EXTENSION",
+        "exitCode": 130,
+        "lastResource": {
+          "stage": "resource",
+          "activeStage": "acoustic_started",
+          "elapsedSeconds": 765.5571162439883,
+          "cpuSeconds": 767.755694248,
+          "peakRssKiB": 201356,
+          "processStatus": {
+            "VmSize": "1002912 kB",
+            "VmHWM": "201356 kB",
+            "VmRSS": "176864 kB",
+            "Threads": "18"
+          }
+        },
+        "nativeBottleneck": "ClosedAcousticEnergy.construct:2188 MECHANICAL_LOAD sp.cancel",
+        "reason": "Same dense GCD occurs before the isolated increment; extend exact collection without truncating background grades",
+        "files": {
+          "stack-samples.txt": "69233ae0528af06386fa6a5a5b2a1c56a5d0340f0a1aad7dfa3df3d5e390f3e4",
+          "state/signature.json": "93c62ce1a0a08309120d6d8c2fb4c43843874eb6c2322b1f1461774b55405ed4",
+          "progress.jsonl": "29c89d9e9775ecded301bf577f6ecf7256b33428ee2d32873d53556c3e684065",
+          "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "right_v2/attempt-stack8.json": {
+      "sha256": "7b237edc2c52fa0b2bfef6f2cfc3c57b94a1adf7f7939cc47e138c3fb5f149a0",
+      "record": {
+        "exitCode": 139,
+        "status": "SEGMENTATION_FAULT_IN_RECURSIVE_DENSE_GCD",
+        "activeStage": {
+          "stage": "resource",
+          "activeStage": "rational_mechanical_sum_4_amplitude_0_grade_1_0_started",
+          "elapsedSeconds": 585.3382324632257,
+          "cpuSeconds": 585.450776426,
+          "peakRssKiB": 201180,
+          "processStatus": {
+            "VmSize": "1002916 kB",
+            "VmHWM": "201180 kB",
+            "VmRSS": "176812 kB",
+            "Threads": "18"
+          }
+        },
+        "stackLimitBytes": 8388608,
+        "proposedStackLimitBytes": 268435456,
+        "stackCauseStatus": "INFERRED_FROM_RECURSIVE_TRACE_NOT_YET_ESTABLISHED",
+        "completedRationalOperations": 125,
+        "stderrSha256": "6f87f71b3a02af738ba3a7e13269b9b81e3b6be45251a85f327e53601dd17122"
+      }
+    },
+    "right_v2/attempt-stack256.json": {
+      "sha256": "a4e5916e97136cbb7efbf918aa12826a7118bd78bfea90260ac93146b4876778",
+      "record": {
+        "command": "ulimit -s 262144; python -u _measurements/S11c_d_end_current_resumable.py --resume ...",
+        "stackLimitBytes": 268435456,
+        "sourceSignatureSha256": "166aceae30aa352a5c5f0c5dd31045ccf5e676a725cadaeafc34f6994269cb56",
+        "exitCode": 139,
+        "status": "SEGMENTATION_FAULT_DURING_EQUIVALENCE_EXPANSION",
+        "lastResource": {
+          "stage": "proof_face_-1_mechanical_load_reconstruction_started",
+          "activeStage": "proof_face_-1_mechanical_load_reconstruction_started",
+          "elapsedSeconds": 284.8437972832471,
+          "cpuSeconds": 287.10136585,
+          "peakRssKiB": 201172
+        },
+        "acousticCompleted": true,
+        "completedRationalOperations": 127,
+        "stderrSha256": "c08f49ab9dd47fd26a6b97b24f9d6544912fd0066d6e50cae63e43b91232e0bc",
+        "stackCauseStatus": "NOT_ESTABLISHED; DIFFERENT_FAILURE_SITE_AFTER_SOURCE_COMPLETED"
+      }
+    },
+    "right_final/attempt.json": {
+      "sha256": "89e4a88fd12e9c5e755e21683855c83b5e6f0219bd970f9e52043209270bdd5f",
+      "record": {
+        "exitCode": 130,
+        "status": "INTERRUPTED_TO_COMBINE_EXACT_FRACTIONS_BEFORE_SPARSE_CONVERSION",
+        "lastResource": {
+          "stage": "resource",
+          "activeStage": "proof_mechanical_increment_4_reconstruction_started",
+          "elapsedSeconds": 1217.6613656980917,
+          "cpuSeconds": 1218.0626745,
+          "peakRssKiB": 1051208,
+          "processStatus": {
+            "VmSize": "6199956 kB",
+            "VmHWM": "1052012 kB",
+            "VmRSS": "1052012 kB",
+            "Threads": "18"
+          }
+        },
+        "completedIdentities": 96,
+        "nonzeroCompletedIdentities": 0,
+        "structureProbe": {
+          "originalDegrees": [
+            154,
+            146
+          ],
+          "combinedDegrees": [
+            21,
+            13
+          ],
+          "seconds": 0.6642309995368123
+        },
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "right_combined/attempt.json": {
+      "sha256": "f3812cc5a573f355cb563eedc1b7691f8ff60c3de429f111babf8e78530638b0",
+      "record": {
+        "exitCode": 1,
+        "status": "COMPUTED_ALGEBRA; RATIONAL_GRADE_METADATA_EMISSION_FAILED",
+        "completedIdentities": 127,
+        "nonzeroIdentities": 0,
+        "objectsSha256": "014f94f064e665d822d0d1f6ccff5f2edc5fc9c2e952bfbd370f0ddb58399979",
+        "lastResource": {
+          "stage": "resource",
+          "activeStage": "proof_mechanical_sum_4_reconstruction_saved",
+          "elapsedSeconds": 495.2858886672184,
+          "cpuSeconds": 494.685204348,
+          "peakRssKiB": 201776,
+          "processStatus": {
+            "VmSize": "5287636 kB",
+            "VmHWM": "201776 kB",
+            "VmRSS": "144808 kB",
+            "Threads": "18"
+          }
+        },
+        "stderrSha256": "959234a04d1f56743f1cab0b512bc28b877adcb17e7d6481aa651f2a4df344d2"
+      }
+    },
+    "right_published/attempt.json": {
+      "sha256": "2c08f03eb8a616f05c54946a3634c7a35013bdc0faf5e6d45fd3756a187bed25",
+      "record": {
+        "exitCode": 1,
+        "status": "COMPLETED_EMISSION_WITH_COMPUTED_SOURCE_RESIDUAL",
+        "wallSeconds": 345.7026500282809,
+        "peakRssKiB": 201436,
+        "retainedNonzeroScalars": 10,
+        "nonzeroCancellationIdentities": 0
+      }
+    },
+    "left_regression/attempt.json": {
+      "sha256": "190b79741a7a574a6c7a68b9e738fb4e69aa10664e07eff220b224711758c7fe",
+      "record": {
+        "exitCode": 0,
+        "status": "COMPLETED",
+        "wallSeconds": 123.02951580658555,
+        "peakRssKiB": 201636,
+        "retainedNonzeroScalars": 0,
+        "nonzeroCancellationIdentities": 0
+      }
+    }
+  },
+  "scope": {
+    "changedNativeNodesSinceFrequencyCheckpoint": [
+      "ClosedAcousticEnergy"
+    ],
+    "priorNativeSourceSha256": "5c8def226a4e8b33ba64f3cc41cc220123e6590f7f65ddb24517aac94ea006a1",
+    "physicsInputEdits": false,
+    "fourCaseRun": false,
+    "exportRegenerated": false,
+    "commitMade": false
+  },
+  "nextTask": "Trace retained mass/mechanical source-join differences to establish local versus upstream repair scope before changing a physical source formula."
+}

@@ -2,6 +2,21 @@
 
 ## Current focused checkpoint
 
+The right-end source construction and 127 exact arithmetic reconstruction
+checks have completed on this box; every arithmetic residual is zero. Its
+mass and mechanical source joins contain ten nonzero retained first-contrast
+entries. Both diagnostic transcripts are validated and published. The fresh LEFT
+regression preserves all 85 baseline source objects and has zero source and
+arithmetic residuals.
+The [source report](S11c_d_end_current_source_report.md) and
+[runtime plan](S11c_d_right_current_runtime_plan.md) retain the computed operands
+and original denominator exclusions. Next, trace this source discrepancy and
+determine whether a local or upstream repair is needed before changing a
+physical formula. The original LEFT and reference source proofs remain intact.
+Both-end frequency data are complete at the development binding: 36 candidates
+and 44 full basis directions; see the
+[frequency report](S11c_d_end_frequency_report.md).
+
 The higher-degree reality repair and all three source controls are complete.
 Every reference/control candidate has an exact per-disk normal-reality status
 at its supplied binding. The A/V-off control gains two scalar flux-normalized
@@ -11,8 +26,19 @@ Earlier spectra and modal tensors are preserved. See the
 [completed report](S11c_d_current_source_controls_report.md) and
 [repair plan](S11c_d_current_reality_repair_plan.md).
 
-Next is the canonical adjoint-row/physical-field current join, followed by
-both-end one-case matching. No new upstream repair or premise is indicated.
+That repair/control work is committed as `c7f2d879`, with `.out` payloads in
+DataLad/git-annex. The subsequent `AdjointCurrentMap` construction completes
+the explicit row-dual/field map on all 18 reference candidates and all 22 basis
+directions. Fifty symbolic product-rule residual scalars are zero; the largest
+numerical residual norm is 3.679e-13. Mixed-current, physical-current and
+bridge/defect forms remain distinct. See the
+[mapping report](S11c_d_adjoint_current_report.md) and
+[inventory](S11c_d_adjoint_current_checkpoint.json).
+
+Both-end physical-current construction retains the unresolved RIGHT source
+consistency dependency. Independent pencil/matching preparation can proceed;
+the location and scope of the source repair have not yet been determined.
+The new mapping and both-end source work are uncommitted.
 
 ## Completed focused checkpoint
 
@@ -46,10 +72,12 @@ and numerical tolerances. This is a focused reference result.
 
 The canonical row-dual frequency pairing and the physical right-field current
 remain separate typed objects. Their computed power-map bridge and defect
-are retained. The canonical adjoint-field current export still needs that
-explicit map; a bare row-dual vector cannot be inserted into a field-current
-slot without it. No upstream discrepancy or additional premise has been
-identified by this calculation.
+are retained. The new explicit field map solves B^dagger A = L_omega and
+checks the adjoint kernel for Q = B P, retaining derivatives of B and the
+full mixed-to-physical current reconstruction. Its numerical full-rank
+domain covers every reference candidate; global invertibility and exceptional
+subloci are not established. No upstream discrepancy or additional premise
+has been identified by this calculation.
 
 ## Completed reference implementation sequence
 
@@ -77,10 +105,13 @@ identified by this calculation.
    all three source controls, and the unchanged original-reference regression.
    Retain their changed spectra and all domains; the density rescale remains
    an arithmetic/load-routing check, not a profile-FORM physics control.
-2. Finish the canonical adjoint-row/physical-field current join using the
-   computed power maps, retaining projection defects and rank conditions.
-   Extend the verified full-subspace calculation to both ends and all cases;
-   preserve per-root exceptional outcomes and degenerate current matrices.
+2. Completed on the regular reference packet: the explicit adjoint-row/field
+   current join using the computed power map, projection defect and full
+   basis covariance checks. Both-end full frequency subspaces and exact reality
+   certificates are also complete at the development binding. Physical-current
+   extension retains the RIGHT source-consistency discrepancy; preserve its per-root domains
+   and full degenerate current matrices when it becomes available. Other cases
+   follow the one-case path.
 3. Continue the variable-profile current and matching work, controls and
    bookkeeping under the retained solver contract. Integrate the completed
    new emissions and run all four cases once when that stage is ready, then
@@ -99,5 +130,5 @@ downstream runs. All ten broad TODOs remain. Constant-end momentum poles are
 separate from §3b's profile-dependent frequency bound poles, whose existence
 requires a targeted spectral-locus calculation. If a new upstream discrepancy
 or additional physical premise requires changing this approach, stop and
-report it before making that change. The approved source-control certification repair is complete; the original
-stop evidence remains linked above.
+report it before making that change. The approved source-control certification
+repair is complete; the original stop evidence remains linked above.

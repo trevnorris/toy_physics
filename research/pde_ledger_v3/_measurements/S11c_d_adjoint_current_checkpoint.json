@@ -1,0 +1,941 @@
+{
+  "provenance": {
+    "producerManifestSha256": "4cc4bea644d0d8e86af56f181a757f50ab2f8a6845ce45d40a2ee326012ef0eb",
+    "cacheSha256": "9ef73d170890bd5dbb56ff720fabd8802d5ae0d12e7459532aa4e2bff089fcfe",
+    "producerTranscriptSha256": "fc5e0274d9e087b88e0e4e86c811d731c47593f379263625bfd4916ece8a9196",
+    "producerSources": {
+      "_measurements/S11c_mechanical_repair_d_reference.py": "7b252f656fed0674aa362cc7558f464ef2da5b0f399c2e157ce6c100b0d45755",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "57f4da77b0f53a0b122222f86d432f58c972968afb57fb892a1a5422fb6ee591",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+      "scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+      "scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+      "scripts/S11c_c2_exports.py": "d78efd6c9bdf8d860d25c1d9f02e7bbfa67d8f722671a2ec7fe72e5fb8decc8e"
+    },
+    "engineSha256": "5d4b398fabf5e3f6ec5b98bdeda8fd1cc35e27c8227e92f99802e143579e0bb4",
+    "instrumentSha256": "99c46a2a4ca0a5ce59255583929f284321f379a19ca2686d025be700fcbd8df1",
+    "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "end": "REFERENCE",
+    "case": "LAB_HELD_RHO4_CONSTANT",
+    "currentCacheSha256": "9296f4eb90ae639cf278614e155c75c5ee7228f1a3a3725a7357fd2bc2165432",
+    "currentManifestSha256": "7da13b818c11c2618cbbd2e6c455495477620f145a1172090f0a3640671f51b2",
+    "cachedConstructors": [
+      "UniformSlabCurrent",
+      "SlabEnergyBalance",
+      "ClosedAcousticEnergy",
+      "ConstantEndPencil.phase_terms"
+    ],
+    "currentCheckpointSha256": "c27be192c3ca649fa7d4f931c42965933f498e9e1450c61f0ae385bb97c37c9e",
+    "pairingCacheSha256": "0b70a465a91103cb5fb1a23496c5318e8aee346ef7d5ddb335c74f5df7f80b48",
+    "modalCheckpointSha256": "0f243a97ee2d54b6b03f9961fa2b7048af2f20368f555661516ce2ac7123c18e",
+    "modalCacheSha256": "e74da591fc2b5ecf7b8042e2a262051f057ad3e4388ef48ab07b4eab68d591ce",
+    "modalProducerEngineSha256": "e5d9dcef71544bcef0ec421ecbee0f711af33c8202ab2d2127ac96c90e02af08",
+    "rootLiftCount": 18
+  },
+  "recordCount": 18,
+  "definedFieldMaps": 18,
+  "fullSubspaceDirections": 22,
+  "sourceNormalizedSubspaces": 2,
+  "powerMapRanks": {
+    "5": 18
+  },
+  "symbolicResidualScalars": 50,
+  "symbolicNonzeroResidualScalars": 0,
+  "numericalResiduals": {
+    "ROW_TO_FIELD": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 5.347542221830668e-15
+    },
+    "INVERSE_SOLVE_JOIN": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 5.695433295429594e-14
+    },
+    "ADJOINT_WEIGHTED_KERNEL": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 8.363453284041492e-14
+    },
+    "RIGHT_WEIGHTED_KERNEL": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 1.6677704597511382e-15
+    },
+    "PHYSICAL_FIELD_RECONSTRUCTION": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 3.575254579077977e-16
+    },
+    "SOURCE_POWER_MAP_JOIN": {
+      "matrices": 18,
+      "scalars": 450,
+      "maximumNorm": 0.0
+    },
+    "SOURCE_PENCIL_JOIN": {
+      "matrices": 18,
+      "scalars": 450,
+      "maximumNorm": 0.0
+    },
+    "ENERGY_FINITE_PHYSICAL_JOIN": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 0.0
+    },
+    "ENERGY_FINITE_BRIDGE_RECONSTRUCTION": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 1.3324889691073412e-15
+    },
+    "CURRENT_FINITE_PHYSICAL_JOIN": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 0.0
+    },
+    "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 2.193368946011293e-16
+    },
+    "CURRENT_INFINITE_PHYSICAL_JOIN": {
+      "matrices": 8,
+      "scalars": 14,
+      "maximumNorm": 0.0
+    },
+    "CURRENT_INFINITE_BRIDGE_RECONSTRUCTION": {
+      "matrices": 8,
+      "scalars": 14,
+      "maximumNorm": 1.7763568394002505e-15
+    },
+    "NORMAL_PRODUCT_RULE": {
+      "matrices": 18,
+      "scalars": 450,
+      "maximumNorm": 2.014253044917518e-14
+    },
+    "NORMAL_PAIRING_COVARIANCE": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 2.845291731937278e-14
+    },
+    "NORMAL_MIXED_BALANCE_DERIVATIVE": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 3.6788334964896857e-13
+    },
+    "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 3.5886971820085194e-13
+    },
+    "FREQUENCY_PRODUCT_RULE": {
+      "matrices": 18,
+      "scalars": 450,
+      "maximumNorm": 1.955302054038875e-15
+    },
+    "FREQUENCY_PAIRING_COVARIANCE": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 8.88179503901636e-15
+    },
+    "WEIGHTED_FREQUENCY_NORMALIZATION": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 7.061544289183249e-15
+    },
+    "FREQUENCY_MIXED_BALANCE_DERIVATIVE": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 1.1667745942415786e-13
+    },
+    "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 1.139086659085919e-13
+    },
+    "BASIS_FREQUENCY_PAIRING": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 5.551271246043173e-15
+    },
+    "BASIS_FIELD_MAP": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 8.806084470642551e-19
+    },
+    "BASIS_BRIDGE": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 2.6947839919199092e-15
+    },
+    "BASIS_DEFECT": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 6.429222997325901e-16
+    },
+    "BASIS_MIXED_CURRENT": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 2.4953039544694365e-16
+    },
+    "BASIS_PHYSICAL_CURRENT": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 4.484587321511725e-16
+    },
+    "SIGNED_CURRENT_RECONSTRUCTION": {
+      "matrices": 2,
+      "scalars": 8,
+      "maximumNorm": 1.665630611331955e-16
+    }
+  },
+  "objectsSha256": "b55f9dd19a50fb4a9d89138c60179ac043707522a38bba4ffb556e039a8caee7",
+  "wallSeconds": 157.53165870159864,
+  "peakRssKiB": 125480,
+  "runDirectory": "/tmp/s11cd-adjoint-current-20260913/reference",
+  "exitCode": 0,
+  "tagCount": 2876,
+  "metadataTagCount": 1438,
+  "sourceAssignments": 2874,
+  "checkedTensorCount": 1410,
+  "checkedMetadataPaths": 11505,
+  "literalResidualScalars": 3056,
+  "checkedSymbolicZeroScalars": 50,
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5d4b398fabf5e3f6ec5b98bdeda8fd1cc35e27c8227e92f99802e143579e0bb4",
+    "_measurements/S11c_d_adjoint_current_check.py": "99c46a2a4ca0a5ce59255583929f284321f379a19ca2686d025be700fcbd8df1"
+  },
+  "validationSourceSha256": "50c9bb63e1434a5b751156f8879c5dc9748bf4cae37e6198a6b2720189bebdac",
+  "perModeMapSummary": [
+    {
+      "index": 0,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 5.347542221830668e-15,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 2.328803236589731e-16,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.3197489634218608e-17,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.834691684006085e-15,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.139086659085919e-13
+      },
+      "mixedCurrentReal": [
+        [
+          7.7265664386741015
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          -0.6264864552264594
+        ]
+      ],
+      "bridgeReal": [
+        [
+          -0.00042245768292931835
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          0.005924631285069141
+        ]
+      ],
+      "fieldDefectNorm": 0.380210732591447,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 1,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 5.347542221830668e-15,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 2.328803236589731e-16,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.3197489634218608e-17,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.834691684006085e-15,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.139086659085919e-13
+      },
+      "mixedCurrentReal": [
+        [
+          -7.7265664386741015
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          0.6264864552264594
+        ]
+      ],
+      "bridgeReal": [
+        [
+          -0.00042245768292931835
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          0.005924631285069141
+        ]
+      ],
+      "fieldDefectNorm": 0.380210732591447,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 2,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 0.0,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 1.1496396224696056e-16,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 2.830785224907664e-17,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.887815352608788e-16,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 5.551115123125783e-17
+      },
+      "mixedCurrentReal": [
+        [
+          0.30105318634837736
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          0.0036631267609406755
+        ]
+      ],
+      "bridgeReal": [
+        [
+          -0.006436448021219426
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.325925977036377
+        ]
+      ],
+      "fieldDefectNorm": 0.6342150792231992,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 3,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 0.0,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 1.1496396224696056e-16,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 2.830785224907664e-17,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.887815352608788e-16,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 5.551115123125783e-17
+      },
+      "mixedCurrentReal": [
+        [
+          -0.30105318634837736
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          -0.0036631267609406755
+        ]
+      ],
+      "bridgeReal": [
+        [
+          -0.006436448021219426
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.325925977036377
+        ]
+      ],
+      "fieldDefectNorm": 0.6342150792231992,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 4,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 2.7755575615628914e-17,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 8.568934530918749e-17,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.4304896245381992e-17,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.5886971820085194e-13,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 4.76749985125122e-15
+      },
+      "mixedCurrentReal": [
+        [
+          0.23503296729783413
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          -0.14911298138622653
+        ]
+      ],
+      "bridgeReal": [
+        [
+          -0.6125792423489872
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          0.9212557195290727
+        ]
+      ],
+      "fieldDefectNorm": 1.2429444781588659,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 5,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 2.7755575615628914e-17,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 8.568934530918749e-17,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.4304896245381992e-17,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.5886971820085194e-13,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 4.76749985125122e-15
+      },
+      "mixedCurrentReal": [
+        [
+          -0.23503296729783413
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          0.14911298138622653
+        ]
+      ],
+      "bridgeReal": [
+        [
+          -0.6125792423489872
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          0.9212557195290727
+        ]
+      ],
+      "fieldDefectNorm": 1.2429444781588659,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 6,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 0.0,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 6.206864911819203e-17,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 4.336808689942018e-19,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.734723475976807e-17,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 4.440892098500626e-16
+      },
+      "mixedCurrentReal": [
+        [
+          0.02024703064974775
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          1.3379034067222848
+        ]
+      ],
+      "bridgeReal": [
+        [
+          0.013938600405608778
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.4708498186140269
+        ]
+      ],
+      "fieldDefectNorm": 0.038919445173565,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 7,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 0.0,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 6.206864911819203e-17,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 4.336808689942018e-19,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.734723475976807e-17,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 4.440892098500626e-16
+      },
+      "mixedCurrentReal": [
+        [
+          -0.02024703064974775
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          -1.3379034067222848
+        ]
+      ],
+      "bridgeReal": [
+        [
+          0.013938600405608778
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.4708498186140269
+        ]
+      ],
+      "fieldDefectNorm": 0.038919445173565,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 8,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 1.1102235540206224e-16,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 8.346099601992939e-17,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.1103585416259206e-16,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 6.938893903907228e-18,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.5612511283791264e-17
+      },
+      "mixedCurrentReal": [
+        [
+          -0.014705139449166573
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          1.3913121498967955
+        ]
+      ],
+      "bridgeReal": [
+        [
+          -0.0016817241763286417
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.4627685957343993
+        ]
+      ],
+      "fieldDefectNorm": 0.021151418247640292,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 9,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 1.1102235540206224e-16,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 8.346099601992939e-17,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.1103585416259206e-16,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 6.938893903907228e-18,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.5612511283791264e-17
+      },
+      "mixedCurrentReal": [
+        [
+          0.014705139449166573
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          -1.3913121498967955
+        ]
+      ],
+      "bridgeReal": [
+        [
+          -0.0016817241763286417
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.4627685957343993
+        ]
+      ],
+      "fieldDefectNorm": 0.021151418247640292,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 10,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 5.551115123125783e-17,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 1.2769132018135157e-16,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.2228075079932738e-17,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 7.771638615002563e-16,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 4.163336342344337e-17
+      },
+      "mixedCurrentReal": [
+        [
+          -0.29560480451809845
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          0.015337968146644704
+        ]
+      ],
+      "bridgeReal": [
+        [
+          0.008077477904375449
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.3288318848652489
+        ]
+      ],
+      "fieldDefectNorm": 0.631705013444758,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 11,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 5.551115123125783e-17,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 1.2769132018135157e-16,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.2228075079932738e-17,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 7.771638615002563e-16,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 4.163336342344337e-17
+      },
+      "mixedCurrentReal": [
+        [
+          0.29560480451809845
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          -0.015337968146644704
+        ]
+      ],
+      "bridgeReal": [
+        [
+          0.008077477904375449
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.3288318848652489
+        ]
+      ],
+      "fieldDefectNorm": 0.631705013444758,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 12,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 2.220446049250313e-16,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 8.936120559927421e-18,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.9598153901411164e-17,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.3750962550581946e-14,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 5.684341886080802e-14
+      },
+      "mixedCurrentReal": [
+        [
+          7.633418522771228
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          -0.5858009211611
+        ]
+      ],
+      "bridgeReal": [
+        [
+          -0.0004121924485708801
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          0.006002702157786796
+        ]
+      ],
+      "fieldDefectNorm": 0.38010670520176837,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 13,
+      "nullity": 1,
+      "adjointFieldRank": 1,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 2.220446049250313e-16,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 8.936120559927421e-18,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.9598153901411164e-17,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.3750962550581946e-14,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 5.684341886080802e-14
+      },
+      "mixedCurrentReal": [
+        [
+          -7.633418522771228
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          0.5858009211611
+        ]
+      ],
+      "bridgeReal": [
+        [
+          -0.0004121924485708801
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          0.006002702157786796
+        ]
+      ],
+      "fieldDefectNorm": 0.38010670520176837,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 14,
+      "nullity": 2,
+      "adjointFieldRank": 2,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 1.894746198240528e-19,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 3.575254579077977e-16,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 2.193368946011293e-16,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.5041979233685506e-16,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.2463750748218572e-16
+      },
+      "mixedCurrentReal": [
+        [
+          2.0816681711721685e-17,
+          2.42861286636753e-17
+        ],
+        [
+          -1.734723475976807e-17,
+          1.734723475976807e-18
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          1.1779218989389746,
+          2.727852665973529e-16
+        ],
+        [
+          -4.119968255444917e-17,
+          1.177921898938975
+        ]
+      ],
+      "bridgeReal": [
+        [
+          0.0,
+          3.5561831257524545e-17
+        ],
+        [
+          -3.5561831257524545e-17,
+          8.673617379884035e-19
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.5000000000000001,
+          4.3042826247674526e-17
+        ],
+        [
+          4.3151246464923076e-17,
+          -0.5000000000000001
+        ]
+      ],
+      "fieldDefectNorm": 1.6126541035511066e-15,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 15,
+      "nullity": 2,
+      "adjointFieldRank": 2,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 1.894746198240528e-19,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 3.575254579077977e-16,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 2.193368946011293e-16,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.5041979233685506e-16,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.2463750748218572e-16
+      },
+      "mixedCurrentReal": [
+        [
+          -2.0816681711721685e-17,
+          -2.42861286636753e-17
+        ],
+        [
+          1.734723475976807e-17,
+          -1.734723475976807e-18
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          -1.1779218989389746,
+          -2.727852665973529e-16
+        ],
+        [
+          4.119968255444917e-17,
+          -1.177921898938975
+        ]
+      ],
+      "bridgeReal": [
+        [
+          0.0,
+          3.5561831257524545e-17
+        ],
+        [
+          -3.5561831257524545e-17,
+          8.673617379884035e-19
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.5000000000000001,
+          4.3042826247674526e-17
+        ],
+        [
+          4.3151246464923076e-17,
+          -0.5000000000000001
+        ]
+      ],
+      "fieldDefectNorm": 1.6126541035511066e-15,
+      "sourcePhysicalNormalization": false
+    },
+    {
+      "index": 16,
+      "nullity": 2,
+      "adjointFieldRank": 2,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 1.454337012199552e-18,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 1.5957559212467394e-16,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.611204706841282e-16,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.3594936354462705e-16,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 5.046488522505528e-17
+      },
+      "mixedCurrentReal": [
+        [
+          8.673617379884035e-18,
+          5.204170427930421e-18
+        ],
+        [
+          3.469446951953614e-18,
+          -5.204170427930421e-18
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          1.177921898938975,
+          -1.5975719011573908e-16
+        ],
+        [
+          -5.320722161472613e-17,
+          1.1779218989389748
+        ]
+      ],
+      "bridgeReal": [
+        [
+          0.0,
+          -2.42861286636753e-17
+        ],
+        [
+          2.3418766925686896e-17,
+          1.0842021724855044e-18
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.49999999999999994,
+          -3.5971117577637823e-16
+        ],
+        [
+          -4.027268969697406e-16,
+          -0.5000000000000001
+        ]
+      ],
+      "fieldDefectNorm": 1.3299163844770937e-15,
+      "sourcePhysicalNormalization": true
+    },
+    {
+      "index": 17,
+      "nullity": 2,
+      "adjointFieldRank": 2,
+      "diagnosticNorms": {
+        "ROW_TO_FIELD": 1.454337012199552e-18,
+        "PHYSICAL_FIELD_RECONSTRUCTION": 1.5957559212467394e-16,
+        "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 1.611204706841282e-16,
+        "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.3594936354462705e-16,
+        "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 5.046488522505528e-17
+      },
+      "mixedCurrentReal": [
+        [
+          -8.673617379884035e-18,
+          -5.204170427930421e-18
+        ],
+        [
+          -3.469446951953614e-18,
+          5.204170427930421e-18
+        ]
+      ],
+      "mixedCurrentImaginary": [
+        [
+          -1.177921898938975,
+          1.5975719011573908e-16
+        ],
+        [
+          5.320722161472613e-17,
+          -1.1779218989389748
+        ]
+      ],
+      "bridgeReal": [
+        [
+          0.0,
+          -2.42861286636753e-17
+        ],
+        [
+          2.3418766925686896e-17,
+          1.0842021724855044e-18
+        ]
+      ],
+      "bridgeImaginary": [
+        [
+          -0.49999999999999994,
+          -3.5971117577637823e-16
+        ],
+        [
+          -4.027268969697406e-16,
+          -0.5000000000000001
+        ]
+      ],
+      "fieldDefectNorm": 1.3299163844770937e-15,
+      "sourcePhysicalNormalization": true
+    }
+  ],
+  "artifacts": {
+    "full.out": {
+      "bytes": 1206643,
+      "sha256": "1c248e5f16f184ff5cef987289a5ece0f0e6f4a4dc89522f31647a8be13a7abd"
+    },
+    "objects.pickle": {
+      "bytes": 393616,
+      "sha256": "b55f9dd19a50fb4a9d89138c60179ac043707522a38bba4ffb556e039a8caee7"
+    },
+    "checks.json": {
+      "bytes": 6826,
+      "sha256": "e44b99625e74abdc5e9430ce4ca5e0cb11139d2c83f76886e791608563973fec"
+    },
+    "progress.jsonl": {
+      "bytes": 11097,
+      "sha256": "37ea3162e2aab404a49d81d1b42ae0a9e3851be3f8507d291bf57bea2dd1df8a"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "scope": "regular reference root subspaces; power-weighted row representation and physical-current reconstruction",
+  "pending": [
+    "BOTH_END_CURRENT_AND_MATCHING",
+    "FULL_CASE_INTEGRATION",
+    "GLOBAL_EXCEPTIONAL_COVERAGE",
+    "SCATTERING_PROFILE_FREQUENCY_POLES_BOOKKEEPING_EXPORT"
+  ],
+  "publication": {
+    "path": "scripts/out/S11c_d_adjoint_current_check.out",
+    "bytes": 1206643,
+    "sha256": "1c248e5f16f184ff5cef987289a5ece0f0e6f4a4dc89522f31647a8be13a7abd",
+    "storage": "uncommitted transcript; annex at next requested checkpoint"
+  }
+}

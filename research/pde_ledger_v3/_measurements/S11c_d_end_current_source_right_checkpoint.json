@@ -1,0 +1,1264 @@
+{
+  "provenance": {
+    "producerManifestSha256": "a7f3ba4542fbdf4e072ae775f5985ed01d2e4a26fc209c84b7d55496a887d6bc",
+    "cacheSha256": "fd73abe3564febb75a1d46c03b7e88c84ab5e0c14a438ded69b70abc26aad0ab",
+    "producerTranscriptSha256": "312935010ef56ce0eabe7b1685e906dfb785c40e02978c7b93fdbb4af11bae52",
+    "producerSources": {
+      "_measurements/S11c_mechanical_repair_run_stage.py": "d845be308a428eaafa6ab1d1a9b0dc229b5073433671529a0fad785bba1869f3",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "57f4da77b0f53a0b122222f86d432f58c972968afb57fb892a1a5422fb6ee591",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+      "scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+      "scripts/S11c_c2_exports.py": "d78efd6c9bdf8d860d25c1d9f02e7bbfa67d8f722671a2ec7fe72e5fb8decc8e",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+      "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+    },
+    "engineSha256": "03528a4e5bdc5762688fabf8023ef6186b90e56b1c0f2df9304be94933c8387b",
+    "instrumentSha256": "f7e2bcdfcaee6a0c190daaca1f1a268b1a9757addefb834e9c386de647047e98",
+    "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "end": "RIGHT",
+    "case": "LAB_HELD_RHO4_CONSTANT",
+    "instrumentPath": "_measurements/S11c_d_end_current_resumable.py",
+    "profileLimits": {
+      "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+      "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "1",
+      "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+      "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "0"
+    },
+    "endpoint": "oo",
+    "sourceEnergySha256": "962396dcb7c7abb5640b19e5b79fea5fb16a4a1a8b2b7f40d2c9fbec899e801c",
+    "sourceFiles": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "03528a4e5bdc5762688fabf8023ef6186b90e56b1c0f2df9304be94933c8387b",
+      "_measurements/S11c_d_end_current_resumable.py": "f7e2bcdfcaee6a0c190daaca1f1a268b1a9757addefb834e9c386de647047e98",
+      "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+      "_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+      "_measurements/S11c_d_current_runtime_metadata.py": "3ac1315684196a44cff3369f058680c4123cfe3b770b97cc00a25eb17a15358e",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+    },
+    "runtime": {
+      "sympy": "1.14.0",
+      "materialParametersBound": false,
+      "backgroundGradesTruncatedByCancellation": false
+    },
+    "seedRun": {
+      "path": "/tmp/s11cd-right-source-resume-20260913/right_combined",
+      "signatureSha256": "bcb135ded0c62ca3ffef1aa58d4dd24c807b75c25a04dc863ab975945dcdc006",
+      "records": {
+        "rational_mechanical_join_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_2_reconstruction.pickle",
+          "sha256": "3c1dae92edcb385b14a4bb8537df0ca62c7dde1a560c611134a8d8e0d7055d03"
+        },
+        "rational_mass_face_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "7670d90eb80d668eaa167348428398c4144fd13e2b7ffe0a017802188cc3cb1e"
+        },
+        "rational_mechanical_sum_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "354e3d16e9c103ad1605c7fe49ab4bbfce332421baec6109e0048f4e769ce411"
+        },
+        "proof_mass_increment_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_1_reconstruction.pickle",
+          "sha256": "559959f9db0a0a04099a077de8f37d957d00f70131d5a81f03d86d48c0e46fd3"
+        },
+        "proof_face_-1_mechanical_load_amplitude_0_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_0_grade_2_0.pickle",
+          "sha256": "2223058bfb33e1b26731e9cc6bf0252ab1562622980fafd3aace4fd567390465"
+        },
+        "proof_face_-1_mechanical_load_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_0_grade_1_0.pickle",
+          "sha256": "77c74912a2edc2ac80606dc58b0dffcf3ca5db3df2f9248fd34a41b367bb58fb"
+        },
+        "proof_mass_increment_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "af7dc07d6fb397af46b5fca09d597e30109812cc3635ab8e30a008de08ab1238"
+        },
+        "proof_mass_join_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_1_reconstruction.pickle",
+          "sha256": "d0ac398681e6089073948d5e6007261b084c39e90a17380eaf84c01e24e8cdcd"
+        },
+        "rational_mechanical_sum_2_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_2_amplitude_0_grade_1_0.pickle",
+          "sha256": "3309afa7787927a16d80bf7c01d2914371a65786b023aad166b882f5cda45638"
+        },
+        "proof_face_1_mechanical_load_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_0_grade_0_0.pickle",
+          "sha256": "f1d7980909775ea89c4c0cbc92fe24c4261f0978161611b47afbe87956f7c16d"
+        },
+        "rational_mechanical_increment_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_3_reconstruction.pickle",
+          "sha256": "a2153a6c47cb8aec2f4a4f0e48debf2edfff9bca7c9fd54d73bf652db141c0d8"
+        },
+        "proof_mechanical_face_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_2_reconstruction.pickle",
+          "sha256": "75c6230f83aab83d561c04fc4d8756067a754af57e6438741f1f5a26c7bb46c4"
+        },
+        "proof_mechanical_face_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_4_reconstruction.pickle",
+          "sha256": "3ee43ae0c3d571362778b034699615b646d0676ad260a685cc0fcf96850147f6"
+        },
+        "proof_mechanical_join_2_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_2_amplitude_0_grade_1_0.pickle",
+          "sha256": "7534bd2740eb0fecd51218f8d859ccaa4c3bb09468c0832ab7cd10b6a82fbd36"
+        },
+        "proof_mass_face_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "ca3653fe7c47f5b233395aff8d175962d47a6469ecea6c315f8e0bb685af5cbb"
+        },
+        "proof_mechanical_sum_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_0_reconstruction.pickle",
+          "sha256": "6155b72d565e2c9050b4d5fb0b99fb3472be3e10c105b3356cbbf47d8ee8002a"
+        },
+        "proof_face_-1_mechanical_load_amplitude_1_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_1_grade_2_0.pickle",
+          "sha256": "0c6ee77e903ed3c4c30db63efba29882596c967b096d8c20f8a8c9b219328bb9"
+        },
+        "rational_mechanical_join_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "17ea9abe565a8dbf92814d5855806f047a215fb811d83960f19ba661cfc1164c"
+        },
+        "rational_mechanical_increment_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "b65f3646175665e6883a68b8637363606de219d440da643e5fa6d000e4d38fdd"
+        },
+        "rational_mechanical_increment_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "dd999d1ac0c86f844103fdacdca075d5131259678c01d75634cea3c86f14d027"
+        },
+        "proof_mechanical_increment_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "d3a13eb853eda071a206634d7a89e7d6329b299fe85b657e6b1356049916b2b7"
+        },
+        "rational_mechanical_increment_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_1_reconstruction.pickle",
+          "sha256": "267d08f72d7e6cb818bf2151989093b7caa0b1098c4e5b645d900db9e59c4af4"
+        },
+        "rational_mass_join_2_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_2_amplitude_0_grade_1_0.pickle",
+          "sha256": "1f091472efbb5aa2ba65f7e26e7317de7fb918ca7cf077fa303cf04e6d268fbd"
+        },
+        "rational_face_-1_mechanical_load_amplitude_1_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_1_grade_0_0.pickle",
+          "sha256": "80aae209d7a1f5aafb77e1b7088b65777146ee20c3f6deb7335919610fd6d957"
+        },
+        "rational_mass_face_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "6168df299dade12b3309c426531d77d0df2db895cc888d38ca3afa7238a4a8f7"
+        },
+        "proof_mass_increment_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_4_reconstruction.pickle",
+          "sha256": "5cbdd7c35476d5763c001bd305bc4d65579136bbbdd4ffaf7cfd226e01861a10"
+        },
+        "proof_mechanical_face_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "34dbdbb441bfcae72dcce183f757c21c4a01179ade3b640c412ee18d291b3dd3"
+        },
+        "proof_mass_increment_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "9b45e46357bcfabdcb5779b4fae369d734c559c9d9ed0e845e4edd15834af42e"
+        },
+        "rational_face_1_mechanical_load_amplitude_1_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_1_grade_1_0.pickle",
+          "sha256": "39b0f5f53b1a634b3bb736bdf9e370cac9ed3388d60577700d56aaac61ed7d24"
+        },
+        "rational_mechanical_sum_0_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_0_amplitude_0_grade_1_0.pickle",
+          "sha256": "bb1923595cb5e68f1c44420b6260a30f72254b2f0f82088550a7fffdd6244a13"
+        },
+        "rational_mechanical_face_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "e54c2aaa5fdfd3a1a1cf110479f59d1d40b6954a8139fe4d6a4dd38d72114972"
+        },
+        "proof_mass_face_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "cee4d65b4e2bb776f37de71c2c7b22bbc00ac9418be673a664943ad71292292e"
+        },
+        "proof_face_-1_mechanical_load_amplitude_4_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_4_grade_0_0.pickle",
+          "sha256": "9156a2740234d1a34c7eeae8c3d9f75fd87d464d0874ea5a392b754ac1a62ce1"
+        },
+        "rational_mass_increment_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "048da76ab28851d4a01f6a5441f7c2c531341c1ac3e12b87a73c1816aa62f4ad"
+        },
+        "rational_mechanical_join_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "cc6015bcc0ec39c59f9938dd9e8afe77aaa0216007e3af350de86482ce8d954f"
+        },
+        "rational_mass_face_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_4_reconstruction.pickle",
+          "sha256": "6ddca7842c18f3ae6076799f6b380471276c871cef864970e80e1a06924d3049"
+        },
+        "proof_mechanical_face_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "7a4504ca816b1f061c55a73635e0ede1fd97f54a50fc0ae8f8fd986a635998ad"
+        },
+        "proof_face_1_mechanical_load_amplitude_2_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_2_grade_1_0.pickle",
+          "sha256": "a1b09ab4dfcb8a4ed23f15737ca6c5065f5ad723e507831422611d358aa32a23"
+        },
+        "proof_mechanical_join_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_0_reconstruction.pickle",
+          "sha256": "e58b6b30beb9c24c22b07bc03458fcc9101a2d4bba266b55a23b0da550cbae26"
+        },
+        "proof_mass_join_2_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_2_amplitude_0_grade_1_0.pickle",
+          "sha256": "0e65a0063bf459a4b1080085af27a591e7462e5284b053049adf24d2b8ea725c"
+        },
+        "proof_mass_join_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_2_reconstruction.pickle",
+          "sha256": "b6218f3bd620a6324a7cbf9b966a63c441d88c0d273e75b4af5a3b4b236664e1"
+        },
+        "proof_mass_face_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "5f0fd631489a0c53bde27b36453fce3fda094ea73f1d7161548b120c67a2f05d"
+        },
+        "proof_face_1_mechanical_load_amplitude_0_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_0_grade_2_0.pickle",
+          "sha256": "2223058bfb33e1b26731e9cc6bf0252ab1562622980fafd3aace4fd567390465"
+        },
+        "rational_mechanical_face_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "9f1ae6d4521074c2139c3d8e05cb0430e24be4aac2871054acc7c0bfcb034873"
+        },
+        "rational_mechanical_sum_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "a352a62b255fe2b40987a874a6ff95d28dcb8bcaed789df0ac53bfaa98ca6f7e"
+        },
+        "proof_face_1_mechanical_load_amplitude_1_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_1_grade_2_0.pickle",
+          "sha256": "a664d0975da9f1226f5d790d7439f0d110bc0f9dbcfdc3d984dc37459bf8789a"
+        },
+        "proof_mechanical_join_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_2_reconstruction.pickle",
+          "sha256": "1676af81b3a1f3a75942e6d5f3d99f51cf78829f7bce94044d8851cec7072d7e"
+        },
+        "rational_face_1_mechanical_load_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_0_grade_1_0.pickle",
+          "sha256": "11637007111fc7a1bcc3f0c543cb4d58b2140f6f7a94ded4d5e81a2d139f367f"
+        },
+        "rational_mechanical_join_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_3_reconstruction.pickle",
+          "sha256": "5ddfb4648f40c6ccb5b9e357cca09cd0e77fcfa225705c39cd42bdbc90246d10"
+        },
+        "proof_mass_join_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_4_reconstruction.pickle",
+          "sha256": "6d46c2986144471f16c95ed848cc027fd0dd2dcf029f1de6ecd58ac62f6a3fb4"
+        },
+        "proof_mechanical_increment_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "2a5be8bc5cb574c16c8ea4511fd37475110a706e34a6a18e8042d6bb559a1d16"
+        },
+        "proof_mechanical_join_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "8e523a499b9450fdcc9df52a41b0d9a8de320ced9ded979ef42018c52cc2a1a6"
+        },
+        "rational_mass_join_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_3_reconstruction.pickle",
+          "sha256": "a61ea60c062c074c660835fba5b759fd21245ce00b4e3880896e6a5308e96f7d"
+        },
+        "proof_mass_face_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "0fbef67b341710ddf52311981f696a861b46b5eb520d5104ba7eff9d2c710778"
+        },
+        "rational_mechanical_join_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "0111f7663e7ed5a68d6e988379d9df89e63a4fafa8e68965659716d303ece492"
+        },
+        "rational_mechanical_join_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "7ef6665149461236164bde2b91c47222cef3903d41d0359a37d472c3507511ec"
+        },
+        "proof_mass_join_1_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_1_amplitude_0_grade_1_0.pickle",
+          "sha256": "9404807fb8dfaed2a1ae9014b7499f6ab6b33f9b2a2630b465a599f7864e35e8"
+        },
+        "rational_mechanical_join_1_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_1_amplitude_0_grade_1_0.pickle",
+          "sha256": "0002f8a64410ab10f86d3b901b0ebe8b88a96bc2cc5b3ce48e3cca4c24e7c5bb"
+        },
+        "proof_mechanical_face_4_amplitude_0_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_4_amplitude_0_grade_2_0.pickle",
+          "sha256": "91f2c0a39162e0af3956bad8fa92339530ce8648411a2f47d69aee799a094a3f"
+        },
+        "proof_mechanical_sum_2_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_2_amplitude_0_grade_1_0.pickle",
+          "sha256": "3e686c93f9da42d7a04440ff4e1a138ba108216031bea3bfe0260173575fa798"
+        },
+        "proof_mechanical_join_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "8a179babfad5142c971f2995c8539ec9f2b6455f7747c7169fa3f2f099668d46"
+        },
+        "proof_mechanical_face_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_1_reconstruction.pickle",
+          "sha256": "9771fe3c9a3aa799e7df1a73353953e9ccab404f93ad9ca3cca5f49336b2b53c"
+        },
+        "proof_mass_increment_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "1de9c301e7ded857a83373982df735a12b484e4548ce566c743336e173f5a5dc"
+        },
+        "proof_mechanical_face_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_0_reconstruction.pickle",
+          "sha256": "242f48975d4bde111e2b2b91455e4f3bbc9e80993fbaf32854a397b047741eb8"
+        },
+        "proof_mechanical_sum_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "188452dea0c96f494344868688b7d8f0ee7e7bdc4617452f05925aeced93c29e"
+        },
+        "proof_mass_face_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_1_reconstruction.pickle",
+          "sha256": "6121586812c26898168515497c43d56f37fe0ed8a74b433fa10b6c022df08568"
+        },
+        "rational_mass_join_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "34bf94b78e1c09ed163e5002e6b3f97e5bb9491d3344b8d137664b658bbfea6e"
+        },
+        "proof_mass_face_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "8eb0bb5ac4347d761344962a6152687b03b784b0190ea74e2d65e08ba219a49c"
+        },
+        "rational_face_1_mechanical_load_amplitude_3_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_3_grade_0_0.pickle",
+          "sha256": "336ba57bda811857423be32aba518032793656d7fb763472f0f991663b23d256"
+        },
+        "rational_face_-1_mechanical_load_amplitude_3_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_3_grade_1_0.pickle",
+          "sha256": "336ba57bda811857423be32aba518032793656d7fb763472f0f991663b23d256"
+        },
+        "proof_face_1_mechanical_load_amplitude_2_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_2_grade_0_0.pickle",
+          "sha256": "a1b09ab4dfcb8a4ed23f15737ca6c5065f5ad723e507831422611d358aa32a23"
+        },
+        "proof_mechanical_join_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_4_reconstruction.pickle",
+          "sha256": "2dd1fb5f400358b74c58386ac4b49a90b30d4bf23126aa023963c4721a74b88a"
+        },
+        "proof_mechanical_join_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "24df3031049ec96c9aa6fdc46d8983f9963f1140970946039762eda454b9e5ad"
+        },
+        "proof_mass_increment_2_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_2_amplitude_0_grade_1_0.pickle",
+          "sha256": "29aeba9c0e3e7ce0265965d4fa7a07690ab39d6747c7c7be954b566543919ed2"
+        },
+        "proof_mechanical_increment_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_0_reconstruction.pickle",
+          "sha256": "4ba7837226bcd866f8f2fa62b99bbe6de9bf8670966e67ab95a53401f3eff56c"
+        },
+        "proof_mass_join_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "3a51748c6e1b07f08d1fd7905af7b7591328efe2872ef4141698df4d1da62aec"
+        },
+        "proof_mass_face_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "6eaafd4ed42d38519ed999240aa145574b61fa007910a7536e89b3096a6f40b2"
+        },
+        "rational_mass_join_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "163dd7a2040b8ab5dd79b462639ae08cb3b18a846bba80835ea556a91184a8ac"
+        },
+        "rational_mechanical_increment_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_0_reconstruction.pickle",
+          "sha256": "b5f4a3f0888528ac47d4ceaa90f2d506d462fd6d80cfc3215b4419a61c22de96"
+        },
+        "proof_mass_increment_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_2_reconstruction.pickle",
+          "sha256": "6c675fee22a74a9e569293daea3298258013f12382d6109faf50fab34b4ecf9f"
+        },
+        "proof_mechanical_increment_0_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_0_amplitude_0_grade_1_0.pickle",
+          "sha256": "fb9fed50bdcf3c803e6b85897f273e5e33be405c803106c839939e3721c50e99"
+        },
+        "proof_mass_join_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "fa39a3dcb3d27c399bf443d7c45062f8228ef806e0b14ae18615761d82b6a500"
+        },
+        "rational_mechanical_increment_2_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_2_amplitude_0_grade_1_0.pickle",
+          "sha256": "1f8628fd407101e9507ce552fc16c5a9636306a564a77a1011abaef08b6c44fe"
+        },
+        "rational_mechanical_sum_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "c055343dfeef2a821b93250a95e23ad2c4178e10774cf81d397d89247c6dd4b6"
+        },
+        "rational_face_1_mechanical_load_amplitude_2_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_2_grade_1_0.pickle",
+          "sha256": "269c262c287874703461424728add43a6173e9cb1ae58bb01a67d2199f93f6fa"
+        },
+        "rational_face_1_mechanical_load_amplitude_4_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_4_grade_1_0.pickle",
+          "sha256": "44652bbc7b710550b86f2ab267a8cd155d45820cb29802123c4a9e2a9cecef88"
+        },
+        "rational_mechanical_sum_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "8253bf2f02b086316a5646ae6f76be71ae9151e1411026609242a79cd514268b"
+        },
+        "acoustic": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/acoustic.pickle",
+          "sha256": "2df0414d1e3fb2a0f05eb6fe46e6d5d89fe83747c4faf54af20de251de62c484"
+        },
+        "rational_mechanical_face_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_1_reconstruction.pickle",
+          "sha256": "645870b52fef7912ac3901638f1f61ad86082381be2f298b320320f0c93f43f4"
+        },
+        "proof_face_1_mechanical_load_amplitude_1_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_1_grade_1_0.pickle",
+          "sha256": "61a33c50bb570a3306b11cdcaad48b3bf453a938936da032b8819a12fe4c739d"
+        },
+        "rational_face_1_mechanical_load_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_0_grade_0_0.pickle",
+          "sha256": "7f709ef3ef6316c064aa6bc40eb66a958e3777037722168e5be8fae00bca2a51"
+        },
+        "rational_mechanical_face_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "881b5752e8702607242ffd16747a4ebda65c5712954fff8509803fcc67b5916b"
+        },
+        "rational_mass_increment_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "3006c2623aacc452caae0a2dfdffc80bcf7df848ecd7394879a9d855fd6f05b6"
+        },
+        "rational_face_-1_mechanical_load_amplitude_1_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_1_grade_1_0.pickle",
+          "sha256": "9f76e2d75fea5b11cd82be1a2d19562a47bc7d8ff7f09f8033ea8cc8fc473848"
+        },
+        "rational_face_1_mechanical_load_amplitude_1_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_1_grade_0_0.pickle",
+          "sha256": "030bc15e85bf771c341d0843605f26739a42c51532373070d204e63cfd73df43"
+        },
+        "proof_mechanical_sum_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_3_reconstruction.pickle",
+          "sha256": "35c18ea5faab4fb7ccec71e64730fbeb82eb4322cfaeac33287e79da3e8ee11d"
+        },
+        "proof_mechanical_increment_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "0c0f8e0470dc0739596453dd25401e7268a5ae0afa95e737e2ef31909eb39422"
+        },
+        "proof_face_1_mechanical_load_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_reconstruction.pickle",
+          "sha256": "b836a39b259b31cee7e32ad39f4dd9b80bae9f85ec9b8556f03a0a17203d5c93"
+        },
+        "rational_mechanical_sum_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_4_reconstruction.pickle",
+          "sha256": "505eabcab6b30a8891d3471a19e27f0e15cc93e15d711548047912b8f6ed46f7"
+        },
+        "proof_mechanical_sum_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "ea0d0180a9bc0013181ed64c4c1325970cb3178581ec9264975dea951f5d02ed"
+        },
+        "proof_mechanical_face_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "67a509ccb87e288ed50db1db690c3407dd7f2266771321719a916205471ddb89"
+        },
+        "rational_mechanical_face_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "0aad8c1dabe65bea627c2ec7095729c18107426956dd877bd07e1fa3ff1f34c1"
+        },
+        "proof_mechanical_sum_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "dbb2dd7b8cbff03487ccc87b3d152822bf0895f54ea1de36e25ab8cd832da07f"
+        },
+        "proof_mechanical_increment_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "06c1651d2813e8763f20824133c57374a31fa301ffc29f954d874bde34700c14"
+        },
+        "proof_face_-1_mechanical_load_amplitude_4_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_4_grade_1_0.pickle",
+          "sha256": "9156a2740234d1a34c7eeae8c3d9f75fd87d464d0874ea5a392b754ac1a62ce1"
+        },
+        "rational_face_-1_mechanical_load_amplitude_4_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_4_grade_0_0.pickle",
+          "sha256": "44652bbc7b710550b86f2ab267a8cd155d45820cb29802123c4a9e2a9cecef88"
+        },
+        "rational_mass_increment_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "fc7f42224f165b4c61a02df5faf94179c792da98f8f74f318fa764f57497b110"
+        },
+        "proof_mechanical_face_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "794f6f86790d80029385520798720fc9833908fc9cf31f0c32ef8a1eb82f4ce8"
+        },
+        "proof_face_1_mechanical_load_amplitude_3_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_3_grade_0_0.pickle",
+          "sha256": "1278ba84cd3407fa8a74b55eecb4b8e5c4a2f71f4521709aa10589486295dc0c"
+        },
+        "rational_mechanical_sum_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "6a9be508fff0e8b9f462f119e36522afa52da6224ba360c1abba8a2773baf71f"
+        },
+        "proof_mechanical_sum_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "71d985a074c220fa518d0c77e00a75ab906d4724e23744b382b3e7c1821f8d98"
+        },
+        "proof_mechanical_join_1_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_1_amplitude_0_grade_1_0.pickle",
+          "sha256": "fe5dd6b21899a6eeaeedfc0307bae4c7ab721fe16f217724d3c56b7f719e1cf6"
+        },
+        "proof_mechanical_increment_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_3_reconstruction.pickle",
+          "sha256": "3d0bd6d41cd9cbca50f022baed5937bc1ef86e254b46214eb9f6c53288d34d5e"
+        },
+        "rational_mechanical_face_3_amplitude_0_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_3_amplitude_0_grade_2_0.pickle",
+          "sha256": "7858daa1517ceddd9805eba288e245828adff8628af139ec764418907c4d302f"
+        },
+        "rational_face_-1_mechanical_load_amplitude_4_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_4_grade_1_0.pickle",
+          "sha256": "44652bbc7b710550b86f2ab267a8cd155d45820cb29802123c4a9e2a9cecef88"
+        },
+        "proof_mechanical_face_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "c85a7a996f6d9e8eb7cb48b9ae8ec355c0f733bef0ae098c7e472c1602aa216f"
+        },
+        "proof_mechanical_sum_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_2_reconstruction.pickle",
+          "sha256": "f29436ddc3b50230c6e22ea466737f3c47b71a1acd9b520949867cdffda56416"
+        },
+        "proof_mass_face_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "c4a72055e24bc247790a1572b130bb5ac4334101c49085311d23f28ea317a42e"
+        },
+        "rational_mass_join_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_0_reconstruction.pickle",
+          "sha256": "8aff68ac105a908d7b90aad0c3930d42abab425141c67120c05b0a8d89ace9f9"
+        },
+        "proof_mass_increment_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "181fa5795b2b50e5b1acd6ac40623aacd69aed689b2ed68b7194d5e8f89fb52e"
+        },
+        "proof_mass_increment_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "eff0584d93a4b845b3d487b5fcc6fb82b418d511be17990b7d9f0b2596c5ff2e"
+        },
+        "proof_mechanical_increment_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "7c7fca9a573387e8c720eb75d0c22e12f30df65e03a8110b667c40392a17499b"
+        },
+        "proof_mechanical_sum_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "244be17847e9068abafed61cbdd4dcbcaf28d27c3e76572d481c212be27559db"
+        },
+        "rational_mass_join_0_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_0_amplitude_0_grade_1_0.pickle",
+          "sha256": "b747a0f43d0bc8d61776bc6f34cff7c5db523fcdbc87d52ef3975a8b660e670f"
+        },
+        "rational_mechanical_face_4_amplitude_0_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_4_amplitude_0_grade_2_0.pickle",
+          "sha256": "0ba1346f0cd9266a839dc7800fb987fab3e2a5b0d07d0be9d1431bed7bd1b3cd"
+        },
+        "rational_face_1_mechanical_load_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_reconstruction.pickle",
+          "sha256": "dcfb7f14fd70ef9619a52f7d202fec22339573a02cc11cc04561218c1f5cdced"
+        },
+        "proof_mechanical_sum_1_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_1_amplitude_0_grade_1_0.pickle",
+          "sha256": "1776805f9b67d38593680c0275d500a64886970ae46c19493ac236d0e162ff58"
+        },
+        "rational_mass_increment_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_3_reconstruction.pickle",
+          "sha256": "89790f7d3d8a67d7fead7868cb7c5197af9955e25fb5853931df51e8268477e7"
+        },
+        "rational_mechanical_increment_1_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_1_amplitude_0_grade_1_0.pickle",
+          "sha256": "3f5d6876ac0eb4a50d5ff572302597c73f05cc334ec01035e3b4c0d503a3cf41"
+        },
+        "rational_mechanical_increment_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "aa95075bbb34397b13b3f84b4195a9f54ca7d858b7d7cdd3085594b6adec694f"
+        },
+        "rational_mass_face_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "372ea83dc7638f9a932aea53a58f04d7cf07ebde6e35833d04290446de54ec84"
+        },
+        "rational_face_-1_mechanical_load_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_0_grade_1_0.pickle",
+          "sha256": "f04aef50f4e1cdfc91f29e7fc43c9954ea07e8f5e54946fc03653a82f0454482"
+        },
+        "rational_mass_join_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "f8032ecd73c5891155d2fc4e04d33aa8192d5550e735c2071a94ab16509c6663"
+        },
+        "rational_face_-1_mechanical_load_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_reconstruction.pickle",
+          "sha256": "dcfb7f14fd70ef9619a52f7d202fec22339573a02cc11cc04561218c1f5cdced"
+        },
+        "rational_mechanical_join_2_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_2_amplitude_0_grade_1_0.pickle",
+          "sha256": "c244921b28c00e507b135234e94d58e133eca16e12773bc3b82f60b9f2b88c98"
+        },
+        "rational_mechanical_sum_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_1_reconstruction.pickle",
+          "sha256": "5299f468f4a1d61fe096e14f550e1afe3c5589060cfcfaada5fe0b2fdf555eb3"
+        },
+        "proof_mass_increment_0_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_0_amplitude_0_grade_1_0.pickle",
+          "sha256": "9117bc61d6bb33e7ab4944ca97e27d7ade2e39fa28f97f100886127705f35a13"
+        },
+        "proof_face_1_mechanical_load_amplitude_4_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_4_grade_1_0.pickle",
+          "sha256": "9156a2740234d1a34c7eeae8c3d9f75fd87d464d0874ea5a392b754ac1a62ce1"
+        },
+        "rational_mass_join_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_4_reconstruction.pickle",
+          "sha256": "dbca649a11c2bd739f88f36326707386e4f900ecd76c740b35cd2e3480faa96c"
+        },
+        "proof_mechanical_sum_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_1_reconstruction.pickle",
+          "sha256": "8b922a0959f32b9556d5bf6c0bac82fa4db8293ccf0aab1d4868b010afbe0481"
+        },
+        "rational_mechanical_sum_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "6aacfb35cd38909947eb1d7453a9145e5a8f73204cdc27a79330a44f4248503b"
+        },
+        "proof_mechanical_increment_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_4_reconstruction.pickle",
+          "sha256": "be5f2c5ce12ecc88e6952ee62ce0d9eee56db858b9a546b8ca2fbd49199bb6ba"
+        },
+        "rational_mechanical_face_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "2e6e2a74ae7f74e7cf7f68a5fb34dc316b92ca7ad409191bd2dae0447d1de8a1"
+        },
+        "proof_mechanical_increment_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_1_reconstruction.pickle",
+          "sha256": "00c85188c8339b2471a206d772cd48c823e84ff4f8ab5f4f438939800bba14fb"
+        },
+        "proof_mass_increment_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_3_reconstruction.pickle",
+          "sha256": "b88c4b98a4cf4e6c2e9ec9ccdf22a27a075f9064cdc1182d15a3b88138673d15"
+        },
+        "proof_mass_increment_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "ee32f922341d9921fe10c14f50bfc0fb654e0818f0a75b9eebc858235a2aa8fd"
+        },
+        "proof_mechanical_sum_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_4_reconstruction.pickle",
+          "sha256": "45f6e87030fb3167faabc1a36040e0f5d35aa5f68beff4f887d5020609adb60f"
+        },
+        "proof_mechanical_sum_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "775d2e6d88af3e476c96d5ca23bd2c87f20e1a82001690b9009b177feaa1002c"
+        },
+        "rational_mass_increment_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "c67a19b471d538caf5ba3e67c8d3bb9dba1ecc4969948e7e69a92160f8d59386"
+        },
+        "rational_mechanical_increment_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_2_reconstruction.pickle",
+          "sha256": "bf51721c713d83e2b99de18ae7533b0635b2f458706c1a830a69ae19b2c750fd"
+        },
+        "proof_mass_join_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "68d17c57b0464a2f7736394ee9f6b02c1c1335ee23aba552b1ec4b45bba666a2"
+        },
+        "rational_face_1_mechanical_load_amplitude_3_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_3_grade_1_0.pickle",
+          "sha256": "336ba57bda811857423be32aba518032793656d7fb763472f0f991663b23d256"
+        },
+        "proof_mechanical_increment_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "de8313ba4ef9277da4c62f0a93e7dbaed5a0011f791db581a7c8eb650045d1b2"
+        },
+        "proof_mechanical_sum_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "e197da91abd2f4606d41db081fe5441799d4b05fd3e5f7d180753841268dc6fd"
+        },
+        "proof_mechanical_sum_0_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_sum_0_amplitude_0_grade_1_0.pickle",
+          "sha256": "d05abc99e34b43edfda30363db902bec29f17ec073fb6f2b5ccb39178ebbf988"
+        },
+        "proof_mass_face_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_4_reconstruction.pickle",
+          "sha256": "d249d407a9c80f9f980105e1c1f1bbf40a311166e4490abb5b70c6d9d86153f1"
+        },
+        "rational_mass_face_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_0_reconstruction.pickle",
+          "sha256": "9741b47dac5dffae941793a5b4be7fc9ee0b51b6650cfd08f279093a528bd93f"
+        },
+        "rational_mechanical_sum_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_3_reconstruction.pickle",
+          "sha256": "e730fcc096a3cadc1b710b7c2c08d03b8655345891a10d8647477652206c6582"
+        },
+        "proof_mechanical_join_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_1_reconstruction.pickle",
+          "sha256": "2d7385eece0a0095ba4e44afe729209b43fa65cbd69bb4d49e88fa0bfc7fb49b"
+        },
+        "proof_mass_join_0_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_0_amplitude_0_grade_1_0.pickle",
+          "sha256": "e5bfc743505b434396d98f0c4de4caebaab14c42ce7d4eba025ba632f7281f73"
+        },
+        "rational_mass_increment_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_1_reconstruction.pickle",
+          "sha256": "e26c4e8a6262b55a8876b6d66772d18385896eba8ef60b19cbd0d7b861704ae9"
+        },
+        "rational_mass_face_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_1_reconstruction.pickle",
+          "sha256": "723d8c4e42662fe800eb222a73d49bee3485b15d60e8356c82725ba3e700156e"
+        },
+        "rational_mass_face_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_3_reconstruction.pickle",
+          "sha256": "c35eff583c487bb5f73e0b772c69159006f36b7c3b5ce99c4c22d185bad05f2f"
+        },
+        "proof_mass_increment_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "3d7fe7260c9dd00906a57bf0e0172ba5d48da370dcfdc266706c23e09c029151"
+        },
+        "rational_mechanical_sum_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "50555bf181f25271f8c58a935e6ae3f7e45706c9689714e9aeff9d25a208823e"
+        },
+        "proof_mechanical_increment_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_2_reconstruction.pickle",
+          "sha256": "144f0b520bd35f8b413795a0e25a8c03095fb225a57401b087a165c8ed2d86f5"
+        },
+        "proof_mechanical_face_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "737754aab3665ee19771079f0a01d49a73f1ffe87ca7ea20facfa3adb6dc2f29"
+        },
+        "proof_mass_join_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_0_reconstruction.pickle",
+          "sha256": "cc0346cbccb31646dbe3a235a0ef093548cd16638bef4603358f6c9a9b00a06d"
+        },
+        "rational_mechanical_sum_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_2_reconstruction.pickle",
+          "sha256": "f3c3be43987f4ce0e5d37ef82aaf660f0b4f577a7ed52312fd0e99cd0aba9ce4"
+        },
+        "proof_mechanical_increment_1_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_1_amplitude_0_grade_1_0.pickle",
+          "sha256": "844a169f9d42b3bf9070afca2bbe73c0f50a67332aa84c4ec04beb14ddd070ae"
+        },
+        "rational_mass_increment_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_4_reconstruction.pickle",
+          "sha256": "5ac77c1a251b3fb4f20530c220cb4a5c55eca233bfdac98426099a7199f76c1c"
+        },
+        "proof_mass_face_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_2_reconstruction.pickle",
+          "sha256": "1e48fdb78b3949c12737dde5c8da72a75f7a6e284af07ac706947eb27bc50152"
+        },
+        "proof_face_-1_mechanical_load_amplitude_1_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_1_grade_1_0.pickle",
+          "sha256": "3a3f7d05b56a161998723814fa73e19e0cfc13be0ad85ef7d7269b2b395621b8"
+        },
+        "proof_face_-1_mechanical_load_amplitude_1_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_1_grade_0_0.pickle",
+          "sha256": "c291645f0707e30427af993a9a3642b56c6bde84d801f6387c1fa052bbfe5af7"
+        },
+        "rational_face_-1_mechanical_load_amplitude_3_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_3_grade_0_0.pickle",
+          "sha256": "336ba57bda811857423be32aba518032793656d7fb763472f0f991663b23d256"
+        },
+        "proof_mass_join_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "6a3de25679cee2bf57b6d2002c14d1dfae627f3fd4a09bd8ced4b96cf9184c22"
+        },
+        "rational_mass_face_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "68ea692c1c620e84b28d4ab080e2e922ec5dab229f1de940e4924305cdb2c5dd"
+        },
+        "proof_face_-1_mechanical_load_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_0_grade_0_0.pickle",
+          "sha256": "5f0a72d54f2010a9edabe5303687dc210291c4b2e0e76f13d2324e2b434c648c"
+        },
+        "proof_mass_join_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_3_reconstruction.pickle",
+          "sha256": "e620136a64311fbc6a1e0343d5ffa34b142e59c771a710a3ebce84bce33b37df"
+        },
+        "rational_face_-1_mechanical_load_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_0_grade_0_0.pickle",
+          "sha256": "7f709ef3ef6316c064aa6bc40eb66a958e3777037722168e5be8fae00bca2a51"
+        },
+        "proof_mass_increment_1_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_1_amplitude_0_grade_1_0.pickle",
+          "sha256": "2e85eb79a2b93a04b141a967be87c4b27f8e607fb82c618ee8a87aa7ad17aba0"
+        },
+        "rational_mass_join_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "dd404a87c312476674dd2d8f876ee6e93bb2f542c52b35d6faf0103603388cf4"
+        },
+        "rational_face_-1_mechanical_load_amplitude_2_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_2_grade_0_0.pickle",
+          "sha256": "269c262c287874703461424728add43a6173e9cb1ae58bb01a67d2199f93f6fa"
+        },
+        "rational_mass_increment_2_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_2_amplitude_0_grade_1_0.pickle",
+          "sha256": "13d9770ee38c0fbeb4e5dfe0d2039e0af1789caebc54a941e3d827e3d5ebe181"
+        },
+        "proof_mechanical_join_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "03eeeb01b8be13cf9c4162f7eacce77aa2478b1467decf41a6753a65f2b37204"
+        },
+        "proof_mass_join_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "222547305b7658486703b7f70a3b3e7cf1436d35ba319d21d5b444898a62ad20"
+        },
+        "rational_mass_increment_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_2_reconstruction.pickle",
+          "sha256": "68724decec2ef71c4a6e1a292e463d8156bd062b7e16c19ed5794a542a77546c"
+        },
+        "proof_mechanical_join_0_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_0_amplitude_0_grade_1_0.pickle",
+          "sha256": "1b2cbd073bf988b80cb2886aa050783d363ea06c00257aa0ae5014cb25a36b12"
+        },
+        "proof_mechanical_join_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "db2e659cecd4d6671192facdeafa05132c7491d7cdaefcf35636ef0a074a295c"
+        },
+        "proof_mass_face_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_0_reconstruction.pickle",
+          "sha256": "a27709061804e177462c9f1615b2fc00e5328a0f74cc9023afdfbf031c17392f"
+        },
+        "rational_mass_join_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "c9853fda4d6fe5001b5e0c5e8413bd22d62bd6cc666178692d0279fdeaa11d8a"
+        },
+        "rational_mechanical_increment_0_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_0_amplitude_0_grade_1_0.pickle",
+          "sha256": "6bfa4bb1aad6e3ccf9667d2b0fcf1693dae9870b7a400b7592fa8b6ea5476db8"
+        },
+        "rational_mechanical_face_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "2cd660fb5a48878766feabd31004264bdc27c4687b4439768858026aa000a697"
+        },
+        "rational_mechanical_join_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "c2a43038d0cf2b36f035fe3b0f0e4b42e646a133c4b452ecd7c7911da2ac4d7d"
+        },
+        "rational_face_1_mechanical_load_amplitude_4_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_4_grade_0_0.pickle",
+          "sha256": "44652bbc7b710550b86f2ab267a8cd155d45820cb29802123c4a9e2a9cecef88"
+        },
+        "rational_mechanical_face_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "7bfd680633f4660665c65450f571d73789a6f3468ef186b8be3af3ac6e0a76e7"
+        },
+        "rational_mechanical_increment_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "b58e7c02a3cc2abb77d6b5f1ac1c465b8054dcde687cd27b5eb87d1268366f90"
+        },
+        "rational_face_1_mechanical_load_amplitude_0_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_0_grade_2_0.pickle",
+          "sha256": "da43c24e7d0152617f774af29ec19ef19cf04b1737ac97e1ccb5d6b143817ce3"
+        },
+        "rational_mechanical_join_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "55dc4a11c9ea3ce19e0df9941db3152d885f26b7a29d24df2becee3411a398ca"
+        },
+        "proof_mechanical_face_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_3_reconstruction.pickle",
+          "sha256": "8976476c8ead9b7d428a3fe4dbabdef7e22caa7d99b1d7c2341f7641ca79c3d8"
+        },
+        "rational_mass_face_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "8ac9b5606c594bc9891df0a118028f1d4b3016ac31c6228ed1000ef9b291793f"
+        },
+        "rational_face_1_mechanical_load_amplitude_1_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_1_grade_2_0.pickle",
+          "sha256": "2eca12eafe61db53b02b7e21893a213bf5950064b71dc83c876e932e93f319bf"
+        },
+        "rational_mechanical_face_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_0_reconstruction.pickle",
+          "sha256": "79db71f131d11e629cb0792261e0cd3e51aaa20db4fac0c473d20179d37374b6"
+        },
+        "rational_mass_increment_1_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_1_amplitude_0_grade_1_0.pickle",
+          "sha256": "ab3b7f993c7acf80318dc8fbaa59ea4d1e301c2cdadf806ff0ff29c9f475ac97"
+        },
+        "rational_mass_increment_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "cb50ddb489187438daf906d26acb33d08f4f1cfa54f119800afd5d61314a11b3"
+        },
+        "rational_mass_join_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_2_reconstruction.pickle",
+          "sha256": "2016f06d688aa2d323f45a5d3c99cbc0db288c4df6159083e39a5f10225cedc2"
+        },
+        "rational_mass_join_1_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_1_amplitude_0_grade_1_0.pickle",
+          "sha256": "5c5355409e1c059c2fd7e2f1394d1f86456e6f954fd9b5e2d9564f3ba907cfa1"
+        },
+        "rational_mass_face_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "3533e8e3725c5bf2d3ac7e4f67a41c53ac7a28fc759468d4ac5e9fd7125f6073"
+        },
+        "rational_mechanical_join_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_4_reconstruction.pickle",
+          "sha256": "9affee230762e6d01638b3f9f424956c717e2d8ea8969331365a3de143be2a03"
+        },
+        "rational_face_-1_mechanical_load_amplitude_2_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_2_grade_1_0.pickle",
+          "sha256": "269c262c287874703461424728add43a6173e9cb1ae58bb01a67d2199f93f6fa"
+        },
+        "proof_face_-1_mechanical_load_amplitude_3_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_3_grade_0_0.pickle",
+          "sha256": "1278ba84cd3407fa8a74b55eecb4b8e5c4a2f71f4521709aa10589486295dc0c"
+        },
+        "proof_mechanical_face_1_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_1_amplitude_0_grade_0_0.pickle",
+          "sha256": "66b853bea2a20f63798b10f593d61ce5ec13a991f1e9f64b8c8a5c682196cad6"
+        },
+        "rational_mechanical_face_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_4_reconstruction.pickle",
+          "sha256": "9a8896c04e68e08b522fd9c6a0d4cdfc358cf794356b3db680d2158fa00bb512"
+        },
+        "proof_mass_face_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_face_3_reconstruction.pickle",
+          "sha256": "457b3f2b1ae3f069f042a7de381654109937f2e75a6f9ce9ee38bca2f893b48f"
+        },
+        "proof_face_-1_mechanical_load_amplitude_2_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_2_grade_1_0.pickle",
+          "sha256": "a1b09ab4dfcb8a4ed23f15737ca6c5065f5ad723e507831422611d358aa32a23"
+        },
+        "proof_face_-1_mechanical_load_amplitude_3_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_3_grade_1_0.pickle",
+          "sha256": "1278ba84cd3407fa8a74b55eecb4b8e5c4a2f71f4521709aa10589486295dc0c"
+        },
+        "rational_mechanical_increment_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "4e02bf35fbc4d19f01099b61760e56d93e3d593b14b8e913cd42c8637c6c7295"
+        },
+        "rational_mechanical_increment_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "4133be1727c7bed4037422ac6ed79407f1008864334315fa4a672b1bf535b6aa"
+        },
+        "rational_mechanical_increment_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "7eb9da850344556fde4aa3d02bef40886499599651a8a81a2c23d1ceda21f7e9"
+        },
+        "proof_mechanical_increment_2_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_2_amplitude_0_grade_1_0.pickle",
+          "sha256": "42d721c94d1a2c679725b95170dda00230b210cb4082a6233f124154c016ce4b"
+        },
+        "proof_face_1_mechanical_load_amplitude_4_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_4_grade_0_0.pickle",
+          "sha256": "9156a2740234d1a34c7eeae8c3d9f75fd87d464d0874ea5a392b754ac1a62ce1"
+        },
+        "proof_mechanical_face_3_amplitude_0_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_face_3_amplitude_0_grade_2_0.pickle",
+          "sha256": "13734a965b14f599869470937ceddab90168fc52df1d94fae6c96693e0b8f524"
+        },
+        "rational_mechanical_face_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_3_reconstruction.pickle",
+          "sha256": "0159d47466c6e2896cd48d4d8c25319f78699ab9d53cb8e401113b67f1096746"
+        },
+        "rational_mechanical_increment_4_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_increment_4_reconstruction.pickle",
+          "sha256": "637a3cbf4fec40a4124e7eb2daab0c30d8aaf721beb64a0fe260c8c9889c49ba"
+        },
+        "proof_face_-1_mechanical_load_amplitude_2_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_amplitude_2_grade_0_0.pickle",
+          "sha256": "a1b09ab4dfcb8a4ed23f15737ca6c5065f5ad723e507831422611d358aa32a23"
+        },
+        "rational_face_-1_mechanical_load_amplitude_0_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_0_grade_2_0.pickle",
+          "sha256": "da43c24e7d0152617f774af29ec19ef19cf04b1737ac97e1ccb5d6b143817ce3"
+        },
+        "rational_mass_increment_0_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_0_amplitude_0_grade_1_0.pickle",
+          "sha256": "f67c362111bbe8389491ecad83f17326d5b4a8c3b8b09a7ce0480e6d851016cb"
+        },
+        "rational_mechanical_join_3_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_3_amplitude_0_grade_0_0.pickle",
+          "sha256": "b3b7462a33faff08bc8383ed3d04cefebcf8eeaea25c76f4448e475791607416"
+        },
+        "proof_mechanical_increment_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_increment_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "f33ed9e69062560057ce5b6fe3783c4dce08c2c0a950bb23e4f2f1d5263b2a06"
+        },
+        "rational_mass_increment_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "ce597e0974cba5bfb6a527ae2c3e2171f8071349ed7feb1629a5f4831ab8a81f"
+        },
+        "rational_mass_increment_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "5ceabdea1d26609048af8de6a81908d2c961751c42e3fa351eb96dd6595307b4"
+        },
+        "rational_mass_increment_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_increment_0_reconstruction.pickle",
+          "sha256": "9e69192f77a59b63aef691d85b80c0c25f7e28f3573d3fcc532b2b512b58b1ff"
+        },
+        "rational_mechanical_sum_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_0_reconstruction.pickle",
+          "sha256": "342f5e99aa2043c34cf94f6ea07912e0e420c7a726a1ddf6148ad9bad798bc46"
+        },
+        "conservative": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/conservative.pickle",
+          "sha256": "343fe45cea1d81effb1a0db99c3ba575fdb6ddc55df7d8bc3e6837a94edcc5af"
+        },
+        "proof_face_1_mechanical_load_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_0_grade_1_0.pickle",
+          "sha256": "8c7b3ba60c1bb1c38b2fb6cbabeaa5871a5be64743a0ed9576f451821fddb311"
+        },
+        "rational_face_-1_mechanical_load_amplitude_1_grade_2_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_-1_mechanical_load_amplitude_1_grade_2_0.pickle",
+          "sha256": "2eca12eafe61db53b02b7e21893a213bf5950064b71dc83c876e932e93f319bf"
+        },
+        "proof_mechanical_join_3_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_3_reconstruction.pickle",
+          "sha256": "086238ab020f8a7b08ac738fa3414ff791c66a0bb9f027547e9d3c2f790c58ec"
+        },
+        "rational_mechanical_join_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_1_reconstruction.pickle",
+          "sha256": "6d9895648c4197bd8b3e34e76046ac095176d6e34f4227564bc868d82d3aea50"
+        },
+        "rational_mass_face_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_2_reconstruction.pickle",
+          "sha256": "f8eb838db513e7e71324814436b86325c28f0d62ebf7480faad637cc0c90ba27"
+        },
+        "rational_mechanical_join_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_0_reconstruction.pickle",
+          "sha256": "79b61103145af6da0a45e9417b82cd5aa2251de5d0f68e5fc549d921af03c113"
+        },
+        "rational_mechanical_join_0_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_join_0_amplitude_0_grade_1_0.pickle",
+          "sha256": "c39bda289c41abfc17a9f1945d345c6ca24809e06e7c60c18597c32ee2b28d38"
+        },
+        "proof_face_-1_mechanical_load_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_-1_mechanical_load_reconstruction.pickle",
+          "sha256": "8d16bcbeefbf696784c9f5b6d9e21523e584112c24e0572ea0d8435b48ea83d8"
+        },
+        "proof_face_1_mechanical_load_amplitude_1_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_1_grade_0_0.pickle",
+          "sha256": "f9fb7aa2257dedc2c7e4e6829d08168fa4a13239d603be0ef760a52a17f1c4d3"
+        },
+        "rational_mass_join_2_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_2_amplitude_0_grade_0_0.pickle",
+          "sha256": "fd01eca9b6f9d46ccf3c13bfb333bcbd558084ccbd7c641b9b91cfbdd1b03bb6"
+        },
+        "proof_mass_increment_0_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_increment_0_reconstruction.pickle",
+          "sha256": "db8deaf3c355ae71eca16cf5702d9805ec3bbd8ccf837351c296c32df802f6fe"
+        },
+        "rational_mass_join_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "f77fc26f495e165ebd94b54f360ac81374473008ed174cb46088a31cfaeac16b"
+        },
+        "proof_mass_join_3_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_3_amplitude_0_grade_1_0.pickle",
+          "sha256": "9bad2b2fad139a965c2d54a3528ae093fa9a07820b7eb1de7f898999e02e15be"
+        },
+        "proof_mechanical_join_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "b904a1c79cd8e19e12c565047adbed329824d598d65665758a8f15e85f73d3c0"
+        },
+        "proof_mass_join_0_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mass_join_0_amplitude_0_grade_0_0.pickle",
+          "sha256": "3b816b838e38b79c812fca203d58ae048d296b9d7b9e786e56ac3cef05899475"
+        },
+        "proof_face_1_mechanical_load_amplitude_3_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_face_1_mechanical_load_amplitude_3_grade_1_0.pickle",
+          "sha256": "1278ba84cd3407fa8a74b55eecb4b8e5c4a2f71f4521709aa10589486295dc0c"
+        },
+        "rational_mechanical_face_2_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_face_2_reconstruction.pickle",
+          "sha256": "62f581f87559a90c1d6e216726fe6065257c19ff40363f7fe27d2ec4342f42d9"
+        },
+        "rational_mass_face_4_amplitude_0_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_face_4_amplitude_0_grade_0_0.pickle",
+          "sha256": "f721930aa06a9d46e29ad037e8acc5a5a0176ccea32d7873e6f74996c21d04f1"
+        },
+        "balance": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/balance.pickle",
+          "sha256": "790be93d20474f4e0af9d82b15ff8088b3e9672c7af50cc9b53ae65b2f7c550c"
+        },
+        "rational_face_1_mechanical_load_amplitude_2_grade_0_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_face_1_mechanical_load_amplitude_2_grade_0_0.pickle",
+          "sha256": "269c262c287874703461424728add43a6173e9cb1ae58bb01a67d2199f93f6fa"
+        },
+        "rational_mass_join_1_reconstruction": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mass_join_1_reconstruction.pickle",
+          "sha256": "6fcd74665c51f9c332be47fb6e670731c0946a9c013a67e37777d3e476c50696"
+        },
+        "proof_mechanical_join_4_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/proof_mechanical_join_4_amplitude_0_grade_1_0.pickle",
+          "sha256": "65230ed9ee184fb0d31a18727325b800d5bd79987a9f58ed794a7ca6e1da30f4"
+        },
+        "rational_mechanical_sum_1_amplitude_0_grade_1_0": {
+          "path": "/tmp/s11cd-right-source-resume-20260913/right_combined/state/rational_mechanical_sum_1_amplitude_0_grade_1_0.pickle",
+          "sha256": "e1545e9d2c46fae11f6b128fa3dd78bcb98c7ee36a9dd414bc60237544ed693e"
+        }
+      }
+    }
+  },
+  "residualInventory": {
+    "conservative_MATERIAL_CONSTRAINT_RETAINED_RESIDUAL": {
+      "scalars": 5,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "conservative_VARIATION_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "conservative_NORMAL_BOUNDARY_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_VARIATION_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_ENERGY_IBP_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_TRANSPORT_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_TRANSPORT_IBP_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_CONSERVATIVE_VARIATION_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_CONSERVATIVE_BOUNDARY_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_CURRENT_DECOMPOSITION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_POLARIZATION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_CORRECTION_POLARIZATION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_ENERGY_BALANCE_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_CHEMICAL_POLARIZATION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_LOCAL_ENERGY_BALANCE_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_FINITE_DEPTH_DERIVATIVE_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_DEPTH_PRIMITIVE_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_DEPTH_RATE_JOIN_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_ACOUSTIC_RADICAL_JOIN_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_REDUCED_MASS_FACE_JOIN_RESIDUAL": {
+      "scalars": 5,
+      "rawNonzeroScalars": 5,
+      "retainedNonzeroScalars": 5,
+      "retainedGrades": [
+        [
+          0,
+          1,
+          0
+        ]
+      ]
+    },
+    "acoustic_REDUCED_MECHANICAL_FACE_JOIN_RESIDUAL": {
+      "scalars": 5,
+      "rawNonzeroScalars": 5,
+      "retainedNonzeroScalars": 5,
+      "retainedGrades": [
+        [
+          0,
+          1,
+          0
+        ]
+      ]
+    }
+  },
+  "objectsSha256": "14b18564b1a4297edf180f8aac4fa9a83352ea3a5a1b66cfc730bc9c5737e2f1",
+  "wallSeconds": 345.7026500282809,
+  "peakRssKiB": 201436,
+  "retainedNonzeroScalars": 10,
+  "cancellationIdentityCount": 127,
+  "nonzeroCancellationIdentities": 0,
+  "proofEmissionsSha256": "229b679b8e40daaf3578012a2893b21477bd9d193ca626f569b858731107af26",
+  "checkedCancellationObjects": 1651,
+  "runDirectory": "/tmp/s11cd-right-source-resume-20260913/right_published",
+  "tagCount": 3484,
+  "sourceAssignments": 3482,
+  "checkedSourceObjects": 85,
+  "checkedMetadataPaths": 368,
+  "literalSourceResidualScalars": 33,
+  "validationSourceSha256": "53e0c0f84d6101450e8141a781b0c7f9b7d72aa7d5716ddc31bdba6810682ed2",
+  "artifacts": {
+    "full.out": {
+      "bytes": 9520298,
+      "sha256": "7d0987a2a552da82ddaf2dd864b1881bc710b6bb90aabf892162a51d22f6149d"
+    },
+    "objects.pickle": {
+      "bytes": 874134,
+      "sha256": "14b18564b1a4297edf180f8aac4fa9a83352ea3a5a1b66cfc730bc9c5737e2f1"
+    },
+    "checks.json": {
+      "bytes": 82396,
+      "sha256": "9360e8bda696fcc3f5e3ef9b732d9600447fa3de618d398c7678d7ab52b6ff84"
+    },
+    "progress.jsonl": {
+      "bytes": 262739,
+      "sha256": "5b896471d3535dc30f8cca94d2f7fc69a29e525fc1cf199ec73b9e5889816799"
+    },
+    "stderr.txt": {
+      "bytes": 458,
+      "sha256": "4591ad9d89c0cf83658c714c8130822ec6ebe892bd84130ff0261621902e0aaf"
+    }
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_end_current_source_right.out",
+    "sha256": "7d0987a2a552da82ddaf2dd864b1881bc710b6bb90aabf892162a51d22f6149d",
+    "bytes": 9520298
+  }
+}

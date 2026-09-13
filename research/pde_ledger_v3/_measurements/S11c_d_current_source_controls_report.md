@@ -1,8 +1,9 @@
 # S11c-d current source controls — completed focused checkpoint
 
 The approved local reality repair and all three source controls are complete
-for the supplied LAB_HELD/RHO4_CONSTANT reference input. This is uncommitted
-builder work following `7ba922a9`; it is not completion of S11c-d.
+for the supplied LAB_HELD/RHO4_CONSTANT reference input. This builder work
+following `7ba922a9` was subsequently committed as `c7f2d879`, with its `.out`
+payloads in DataLad/git-annex. It is not completion of S11c-d.
 
 | Source control | Root/lift candidates | Exactly real / nonreal normal candidates | Normalized subspaces / basis directions | Largest numerical residual |
 |---|---:|---:|---:|---:|
@@ -104,8 +105,9 @@ as the diagnosis. Scratch attempts retain the repaired cache-guard, fingerprint
 selection and cache-provenance serialization errors; none is presented as a
 completed run.
 No export or full four-case production transcript was regenerated at this
-focused boundary. No S10/Lean/authority changes, reviewer, comparator, Wolfram,
-downstream run, commit or push occurred.
+focused boundary. The builder run made no S10/Lean/authority changes and
+launched no reviewer, comparator, Wolfram or downstream run. The later
+user-requested checkpoint is `c7f2d879`; no push occurred.
 
 Next: finish the canonical adjoint-row/physical-field current join with the
 computed power map and projection defect, then extend to both ends and the

@@ -1,45 +1,56 @@
 # S11c-d SymPy builder checkpoint
 
-The approved higher-degree normal-reality repair and three reference source
-controls are complete and uncommitted. No upstream physics or authority repair
-was needed. The original reference, source-control diagnosis and annexed
-production outputs are preserved.
+The LAB_HELD/RHO4_CONSTANT right-end source calculation now runs on this box
+with all material parameters symbolic. Native `ClosedAcousticEnergy` (coefficient collection at
+2082; mass/mechanical comparisons at 2228–2229) uses exact structural
+collection before material cancellation. The resumable instrument preserves
+raw operands and denominator exclusions; proof arithmetic combines fractions
+before sparse cross-multiplication. **All 127 exact reconstruction residuals
+are zero.** No physical input, source formula or extra truncation was changed.
 
-`NormalRealityCoverage` computes per-factor axis gcds, exact real-root
-intervals, unique joins into the existing certified disks, and normal-square
-sign bounds. All **68 reference/control root-lift candidates** have explicit
-real/nonreal statuses at their supplied bindings. The **79 exact
-certificate residuals** are zero. The A/V-off records 8 and 9 now receive
-computed signed-current maps: six normalized basis directions for that control.
-The reference, bulk-density and density-gradient packets each retain four.
-The gradient control computes its actual 14-candidate spectrum.
+The computed RIGHT source joins have **10 nonzero scalar entries**: five mass
+and five mechanical, each at `(epsilon,eta,sigma)=(0,1,0)`, lambda order one.
+The other 23 top-level source residual scalars are zero. This is a retained
+source-consistency discrepancy whose origin remains undetermined. It is no
+longer an uncomputed dependency deferred for machine capacity. See the
+[source report](S11c_d_end_current_source_report.md) and
+[runtime plan](S11c_d_right_current_runtime_plan.md).
 
-All **2,259 source-reconstruction scalars** are zero.
-The largest control numerical reconstruction residual is 4.341e-13; the
-original reference retains its previously measured residuals and every one of
-its 1,298 modal tensors unchanged. Checks span complete
-computed subspaces. Sheet/decay, threshold/denominator, normal/frequency rank,
-Hermiticity and current-rank gates remain separate. Algorithm fixtures cover
-zero/threshold and unresolved-certificate paths without claiming physical
-exceptional-locus coverage.
+The final source/proof replay and emission took 345.70 seconds at 201436 KiB
+peak RSS and produced 9520298 bytes. This excludes prior construction/proof
+attempts. Exit 1 followed complete emission through the computed-residual
+guard. Both transcripts are validated and atomically published. The fresh LEFT run
+took 123.03 seconds at 201636 KiB: all 33 source residual scalars and 82 exact
+arithmetic identities are zero. All 85 source objects agree with the preserved
+baseline (83 structurally; the complete 52-entry parameter map by key; two
+face-load expression comparisons with zero residual). See the
+[RIGHT inventory](S11c_d_end_current_source_right_checkpoint.json),
+[LEFT regression inventory](S11c_d_end_current_source_left_runtime_checkpoint.json)
+and [runtime inventory](S11c_d_right_current_runtime_checkpoint.json).
 
-The complete controls and reference transcripts have verified final emission
-indices, fingerprints, literal residuals, dimensions and grades. They were
-published atomically under `scripts/out/` (5,959,452 and
-1,212,298 bytes). The complete control run used
-447.21 seconds and 179,924 KiB peak RSS; source-checked
-caches preserve the two already completed packets. See the
-[source-control report](S11c_d_current_source_controls_report.md),
-[completed inventory](S11c_d_current_source_controls_completed.json), and
-[reference inventory](S11c_d_modal_reality_reference_checkpoint.json) for pins,
-per-object diagnostics, controls, and the retained interrupted checkpoint.
+The independent **both-end frequency construction is complete** for the
+LAB_HELD/RHO4_CONSTANT development binding: 36 isolated-root/lift candidates,
+44 full basis directions, 90 exact-zero reconstruction scalars and 3920
+numerical algebraic scalars with maximum norm 2.535e-13. The 1800 finite-frequency
+checks and complete subspace/rank/domain records remain unchanged. See the
+[frequency report](S11c_d_end_frequency_report.md),
+[LEFT inventory](S11c_d_end_frequency_left_checkpoint.json) and
+[RIGHT inventory](S11c_d_end_frequency_right_checkpoint.json). These algebraic
+frequency projectors do not constitute section 3b bound-pole/Riesz data.
 
-Next is the canonical adjoint-row/physical-field current join through the
-computed power map and projection defect, then both-end one-case matching.
-Global sheet/exceptional coverage and section 3b profile-frequency poles remain
-separate obligations. All ten broad TODOs and supplied upstream debts remain;
-no incomplete export or four-case production run was made. No S10/Lean edits,
-reviewer, comparator, Wolfram, downstream run, commit or push occurred.
+The runtime work is complete. Stop and assess the
+first-contrast source discrepancy before changing any physical formula. Trace
+it through the chemical driver, mass-rate normalization and face reconstruction
+to determine whether repair belongs here or upstream. Verified RIGHT physical
+current and flux normalization retain this dependency; the preserved end-pencil
+and frequency results keep their existing domains.
+
+All ten broad TODOs remain. Section 1 is supplied/unfalsifiable, and c2
+cross-engine operand debt, global/sheet/exceptional coverage, complete
+scattering, profile-frequency bound poles, controls/bookkeeping and export
+remain open. No full four-case regeneration, export, S10/Lean/authority edit,
+review/comparator/Wolfram/downstream run or commit was made. New outputs remain
+uncommitted for DataLad/git-annex storage at a requested checkpoint.
 
 ## Retained user-approved solver/export contract
 

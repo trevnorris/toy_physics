@@ -1,0 +1,370 @@
+{
+  "provenance": {
+    "producerManifestSha256": "4cc4bea644d0d8e86af56f181a757f50ab2f8a6845ce45d40a2ee326012ef0eb",
+    "cacheSha256": "9ef73d170890bd5dbb56ff720fabd8802d5ae0d12e7459532aa4e2bff089fcfe",
+    "producerTranscriptSha256": "fc5e0274d9e087b88e0e4e86c811d731c47593f379263625bfd4916ece8a9196",
+    "producerSources": {
+      "_measurements/S11c_mechanical_repair_d_reference.py": "7b252f656fed0674aa362cc7558f464ef2da5b0f399c2e157ce6c100b0d45755",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "57f4da77b0f53a0b122222f86d432f58c972968afb57fb892a1a5422fb6ee591",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+      "scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+      "scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+      "scripts/S11c_c2_exports.py": "d78efd6c9bdf8d860d25c1d9f02e7bbfa67d8f722671a2ec7fe72e5fb8decc8e"
+    },
+    "engineSha256": "e5d9dcef71544bcef0ec421ecbee0f711af33c8202ab2d2127ac96c90e02af08",
+    "instrumentSha256": "ebb98dc6f9f470ca70be3cf4bef4a4b6362d81bac4d65a079017195115f2dddb",
+    "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "end": "REFERENCE",
+    "case": "LAB_HELD_RHO4_CONSTANT",
+    "currentCacheSha256": "9296f4eb90ae639cf278614e155c75c5ee7228f1a3a3725a7357fd2bc2165432",
+    "currentManifestSha256": "7da13b818c11c2618cbbd2e6c455495477620f145a1172090f0a3640671f51b2",
+    "cachedConstructors": [
+      "UniformSlabCurrent",
+      "SlabEnergyBalance",
+      "ClosedAcousticEnergy",
+      "ConstantEndPencil.phase_terms"
+    ],
+    "currentCheckpointSha256": "c27be192c3ca649fa7d4f931c42965933f498e9e1450c61f0ae385bb97c37c9e",
+    "pairingCacheSha256": "0b70a465a91103cb5fb1a23496c5318e8aee346ef7d5ddb335c74f5df7f80b48",
+    "spectrumManifestSha256": "a7f3ba4542fbdf4e072ae775f5985ed01d2e4a26fc209c84b7d55496a887d6bc",
+    "spectrumTranscriptSha256": "312935010ef56ce0eabe7b1685e906dfb785c40e02978c7b93fdbb4af11bae52",
+    "spectrumCacheSha256": "f4a12ab66116432caa5e17290a57820972f3c4d77f5486346e5738cba21df8c7",
+    "spectrumPacket": "PY_S11CD_END_SPECTRUM_INPUT_REFERENCE_LAB_HELD_RHO4_CONSTANT_0",
+    "rootDiskCount": 9,
+    "rootLiftCount": 18,
+    "physicalPencilStructuralJoin": true
+  },
+  "recordCount": 18,
+  "nullityCounts": {
+    "1": 14,
+    "2": 4
+  },
+  "physicalCurrentNormalizationCount": 2,
+  "residualNormMaxima": {
+    "CONJUGATE_PENCIL": 1.1102230246251565e-16,
+    "CONJUGATE_POWER_MAP": 0.0,
+    "CURRENT_DIAGONALIZATION": 8.881784197001252e-16,
+    "CURRENT_HERMITIAN": 3.5753035911068985e-17,
+    "ENERGY_HERMITIAN": 4.440892098500626e-16,
+    "FINITE_BALANCE": 6.023666295925091e-15,
+    "FLUX_FREQUENCY_NORMALIZATION": 2.6884200281334924e-16,
+    "FLUX_LEFT_KERNEL": 7.977395765247087e-16,
+    "FLUX_RIGHT_KERNEL": 1.122942457432628e-15,
+    "FREQUENCY_BALANCE_DERIVATIVE": 2.14722304930185e-14,
+    "FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 2.1924603362153298e-14,
+    "FREQUENCY_NORMALIZATION": 5.551271246043173e-15,
+    "FREQUENCY_ROW_PAIRING_BRIDGE": 8.868773770931426e-17,
+    "INFINITE_CURRENT_HERMITIAN": 1.7763568394002505e-15,
+    "LEFT_BASIS": 9.549170877902112e-16,
+    "LEFT_KERNEL": 4.55039481291191e-15,
+    "LEFT_PROJECTOR": 7.427346254291088e-16,
+    "NORMALIZED_LEFT_KERNEL": 8.813369041164201e-14,
+    "NORMALIZED_POWER_LEFT_SPLIT": 8.93812849921021e-17,
+    "NORMAL_BALANCE_DERIVATIVE": 8.002793055797531e-13,
+    "NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 8.207529655138466e-13,
+    "NORMAL_ROW_PAIRING_BRIDGE": 4.2780337774645346e-14,
+    "POWER_LEFT_SPLIT": 0.0,
+    "RIGHT_BASIS": 6.767434675831941e-16,
+    "RIGHT_KERNEL": 5.494642295738235e-15,
+    "RIGHT_PROJECTOR": 8.162446303046368e-16,
+    "SIGNED_CURRENT_NORMALIZATION": 3.230317446442862e-16
+  },
+  "wallSeconds": 127.58802978601307,
+  "peakRssKiB": 145408,
+  "objectsSha256": "e74da591fc2b5ecf7b8042e2a262051f057ad3e4388ef48ab07b4eab68d591ce",
+  "cutoffBinding": {
+    "source": "W_0",
+    "value": "1",
+    "role": "finite-depth balance diagnostic; infinite-depth current separately conditioned"
+  },
+  "runDirectory": "/tmp/s11cd-reality-repair-20260913/reference",
+  "exitCode": 0,
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "e5d9dcef71544bcef0ec421ecbee0f711af33c8202ab2d2127ac96c90e02af08",
+    "_measurements/S11c_d_modal_subspace_check.py": "ebb98dc6f9f470ca70be3cf4bef4a4b6362d81bac4d65a079017195115f2dddb"
+  },
+  "tagCount": 2668,
+  "metadataTagCount": 1334,
+  "sourceAssignments": 2666,
+  "missingMetadataTags": [],
+  "undefinedZeroDimensions": [],
+  "dimensionConstraints": [],
+  "checkedTensorCount": 1298,
+  "checkedTensorMetadataPaths": 10528,
+  "previousReferenceTensorEquality": true,
+  "normalReality": {
+    "diskStatuses": {
+      "PROVED_NONREAL": 7,
+      "PROVED_REAL": 2
+    },
+    "candidateStatuses": {
+      "PROVED_NONREAL": 14,
+      "PROVED_REAL": 4
+    },
+    "axisSets": [
+      {
+        "FACTOR_INDEX": 0,
+        "AXIS": "REAL",
+        "GCD_DEGREE": 0,
+        "REAL_ROOT_COUNT": 0
+      },
+      {
+        "FACTOR_INDEX": 0,
+        "AXIS": "IMAGINARY",
+        "GCD_DEGREE": 0,
+        "REAL_ROOT_COUNT": 0
+      },
+      {
+        "FACTOR_INDEX": 1,
+        "AXIS": "REAL",
+        "GCD_DEGREE": 2,
+        "REAL_ROOT_COUNT": 0
+      },
+      {
+        "FACTOR_INDEX": 1,
+        "AXIS": "IMAGINARY",
+        "GCD_DEGREE": 2,
+        "REAL_ROOT_COUNT": 2
+      }
+    ],
+    "checkedAxisRootIntervals": 2,
+    "literalCertificateResiduals": 19,
+    "normalizedSubspaces": [
+      {
+        "index": 16,
+        "nullity": 2,
+        "k": "0.78528126595931647",
+        "nativeQ": "8.1034971874288111*I",
+        "currentEigenvalues": [
+          0.5889609494694872,
+          0.5889609494694873
+        ]
+      },
+      {
+        "index": 17,
+        "nullity": 2,
+        "k": "-0.78528126595931647",
+        "nativeQ": "8.1034971874288111*I",
+        "currentEigenvalues": [
+          -0.5889609494694873,
+          -0.5889609494694872
+        ]
+      }
+    ],
+    "normalizedBasisDirections": 4
+  },
+  "certificateMetadataPaths": 203,
+  "validationSourceSha256": "ef4cf975f34123cc4e585432e1311a395f70cbbd9d63640f0a2eef2b72ee1cb1",
+  "literalResidualInventory": {
+    "RIGHT_KERNEL": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 5.494642295738235e-15
+    },
+    "LEFT_KERNEL": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 4.55039481291191e-15
+    },
+    "RIGHT_BASIS": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 6.767434675831941e-16
+    },
+    "LEFT_BASIS": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 9.549170877902112e-16
+    },
+    "RIGHT_PROJECTOR": {
+      "matrices": 18,
+      "scalars": 450,
+      "maximumNorm": 8.162446303046368e-16
+    },
+    "LEFT_PROJECTOR": {
+      "matrices": 18,
+      "scalars": 450,
+      "maximumNorm": 7.427346254291088e-16
+    },
+    "CONJUGATE_PENCIL": {
+      "matrices": 18,
+      "scalars": 450,
+      "maximumNorm": 1.1102230246251565e-16
+    },
+    "CONJUGATE_POWER_MAP": {
+      "matrices": 18,
+      "scalars": 450,
+      "maximumNorm": 0.0
+    },
+    "FINITE_BALANCE": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 6.023666295925091e-15
+    },
+    "CURRENT_HERMITIAN": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 3.5753035911068985e-17
+    },
+    "ENERGY_HERMITIAN": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 4.440892098500626e-16
+    },
+    "POWER_LEFT_SPLIT": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 0.0
+    },
+    "NORMAL_BALANCE_DERIVATIVE": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 8.002793055797531e-13
+    },
+    "NORMAL_ROW_PAIRING_BRIDGE": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 4.2780337774645346e-14
+    },
+    "NORMAL_CURRENT_ENERGY_RECONSTRUCTION": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 8.207529655138466e-13
+    },
+    "FREQUENCY_BALANCE_DERIVATIVE": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 2.14722304930185e-14
+    },
+    "FREQUENCY_ROW_PAIRING_BRIDGE": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 8.868773770931426e-17
+    },
+    "FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 2.1924603362153298e-14
+    },
+    "NORMALIZED_POWER_LEFT_SPLIT": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 8.93812849921021e-17
+    },
+    "FREQUENCY_NORMALIZATION": {
+      "matrices": 18,
+      "scalars": 30,
+      "maximumNorm": 5.551271246043173e-15
+    },
+    "NORMALIZED_LEFT_KERNEL": {
+      "matrices": 18,
+      "scalars": 110,
+      "maximumNorm": 8.813369041164201e-14
+    },
+    "INFINITE_CURRENT_HERMITIAN": {
+      "matrices": 8,
+      "scalars": 14,
+      "maximumNorm": 1.7763568394002505e-15
+    },
+    "CURRENT_DIAGONALIZATION": {
+      "matrices": 8,
+      "scalars": 14,
+      "maximumNorm": 8.881784197001252e-16
+    },
+    "SIGNED_CURRENT_NORMALIZATION": {
+      "matrices": 2,
+      "scalars": 8,
+      "maximumNorm": 3.230317446442862e-16
+    },
+    "FLUX_FREQUENCY_NORMALIZATION": {
+      "matrices": 2,
+      "scalars": 8,
+      "maximumNorm": 2.6884200281334924e-16
+    },
+    "FLUX_RIGHT_KERNEL": {
+      "matrices": 2,
+      "scalars": 20,
+      "maximumNorm": 1.122942457432628e-15
+    },
+    "FLUX_LEFT_KERNEL": {
+      "matrices": 2,
+      "scalars": 20,
+      "maximumNorm": 7.977395765247087e-16
+    }
+  },
+  "literalResidualScalars": 2794,
+  "quadraticExtractionZeroScalars": 250,
+  "exactLowDegreeLiftCount": 4,
+  "bulkDecayDiskCertifiedCount": 8,
+  "physicalCurrentNormalizations": [
+    {
+      "index": 16,
+      "nullity": 2,
+      "k": "0.78528126595931647",
+      "physicalQ": "0.8103497187428812*I",
+      "signedCurrentEigenvalues": [
+        0.5889609494694872,
+        0.5889609494694873
+      ],
+      "powerCovectorProjectionDefectNorm": 3.575378831663417e-16
+    },
+    {
+      "index": 17,
+      "nullity": 2,
+      "k": "-0.78528126595931647",
+      "physicalQ": "0.8103497187428812*I",
+      "signedCurrentEigenvalues": [
+        -0.5889609494694873,
+        -0.5889609494694872
+      ],
+      "powerCovectorProjectionDefectNorm": 3.575378831663417e-16
+    }
+  ],
+  "normalizedBasisChannelCount": 4,
+  "numericalResidualDiagnostic": {
+    "norm": "Frobenius norm of numerical reference-unit coefficients",
+    "absoluteLimit": 1e-09,
+    "role": "implementation reconstruction check; not the withheld physical flux bound"
+  },
+  "scope": "all 18 isolated reference root/lift candidates; full subspaces, finite-depth current/energy reconstruction and conditionally convergent infinite-depth physical right-current normalization",
+  "pending": [
+    "CANONICAL_ADJOINT_CURRENT_EXPORT_JOIN",
+    "BOTH_END_AND_FOUR_CASE_INTEGRATION",
+    "VARIABLE_PROFILE_MATCHING",
+    "EXCEPTIONAL_DOMAIN_COVERAGE",
+    "SCATTERING_POLES_BOOKKEEPING_EXPORT"
+  ],
+  "artifacts": {
+    "full.out": {
+      "bytes": 1212298,
+      "sha256": "d5e1ae71c816bbd77894a90ee5696b0ae1a198474103cd424dbdf0d191f890a7"
+    },
+    "objects.pickle": {
+      "bytes": 259800,
+      "sha256": "e74da591fc2b5ecf7b8042e2a262051f057ad3e4388ef48ab07b4eab68d591ce"
+    },
+    "checks.json": {
+      "bytes": 4740,
+      "sha256": "e778dbb3612dd590892da1ebfb25c8352bb869d950422183e6ecdb573e2dab40"
+    },
+    "progress.jsonl": {
+      "bytes": 11790,
+      "sha256": "d75765361a3ddb6ce760071441b769d9d6629854dc465a90fa6c1c76a769bca0"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_modal_reality_reference_check.out",
+    "bytes": 1212298,
+    "sha256": "d5e1ae71c816bbd77894a90ee5696b0ae1a198474103cd424dbdf0d191f890a7",
+    "storage": "uncommitted transcript; annex on next requested checkpoint"
+  }
+}

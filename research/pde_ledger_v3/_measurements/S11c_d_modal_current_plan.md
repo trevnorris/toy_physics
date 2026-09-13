@@ -1,5 +1,19 @@
 # S11c-d combined modal current continuation
 
+## Current focused checkpoint
+
+The higher-degree reality repair and all three source controls are complete.
+Every reference/control candidate has an exact per-disk normal-reality status
+at its supplied binding. The A/V-off control gains two scalar flux-normalized
+spaces, giving six basis directions; the original reference retains four.
+The density-gradient control is complete on its actual reduced root set.
+Earlier spectra and modal tensors are preserved. See the
+[completed report](S11c_d_current_source_controls_report.md) and
+[repair plan](S11c_d_current_reality_repair_plan.md).
+
+Next is the canonical adjoint-row/physical-field current join, followed by
+both-end one-case matching. No new upstream repair or premise is indicated.
+
 ## Completed focused checkpoint
 
 The user approved the acoustic/face-lift split after the previous pause. It is
@@ -59,10 +73,10 @@ identified by this calculation.
 
 ## Next implementation sequence
 
-1. Exercise the planned mass-transfer, bulk-load and boundary-work source
-   controls in the focused case, mutating the action/imported operands and
-   reconstructing the affected current and pencil. Preserve each control's
-   changed spectrum and domain instead of reusing unaltered mode witnesses.
+1. Completed: higher-degree reality certification, affected normalization,
+   all three source controls, and the unchanged original-reference regression.
+   Retain their changed spectra and all domains; the density rescale remains
+   an arithmetic/load-routing check, not a profile-FORM physics control.
 2. Finish the canonical adjoint-row/physical-field current join using the
    computed power maps, retaining projection defects and rank conditions.
    Extend the verified full-subspace calculation to both ends and all cases;
@@ -85,5 +99,5 @@ downstream runs. All ten broad TODOs remain. Constant-end momentum poles are
 separate from §3b's profile-dependent frequency bound poles, whose existence
 requires a targeted spectral-locus calculation. If a new upstream discrepancy
 or additional physical premise requires changing this approach, stop and
-report it before making that change. No new change of approach is requested
-at this checkpoint.
+report it before making that change. The approved source-control certification repair is complete; the original
+stop evidence remains linked above.

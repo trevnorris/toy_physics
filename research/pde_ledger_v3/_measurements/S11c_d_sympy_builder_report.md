@@ -1,51 +1,45 @@
 # S11c-d SymPy builder checkpoint
 
-The preceding two-frequency current proof is committed as `5b007ddb`, with
-source/reports in Git and its `.out` in DataLad/git-annex. The earlier
-mechanical-load repair remains `c643112a`. This subsequent reference-subspace
-continuation is uncommitted; no new upstream repair is indicated.
+The approved higher-degree normal-reality repair and three reference source
+controls are complete and uncommitted. No upstream physics or authority repair
+was needed. The original reference, source-control diagnosis and annexed
+production outputs are preserved.
 
-The native `ModalCurrentSubspaces` builder computes full left/right spaces,
-nonlinear frequency pairings, and physical slab-plus-bulk current matrices for
-all **18 isolated root/lift candidates** in LAB_HELD/RHO4_CONSTANT REFERENCE:
-14 scalar and four two-dimensional spaces. All 18 frequency pairings have
-full computed rank. Its current/energy reconstruction retains the actual
-row-power bridge, projection defects, interface exchange, upper boundary and
-radical derivatives. It builds on the preceding 802-residual acoustic/slab
-proof without altering its constructor or the import/Fourier wiring.
+`NormalRealityCoverage` computes per-factor axis gcds, exact real-root
+intervals, unique joins into the existing certified disks, and normal-square
+sign bounds. All **68 reference/control root-lift candidates** have explicit
+real/nonreal statuses at their supplied bindings. The **79 exact
+certificate residuals** are zero. The A/V-off records 8 and 9 now receive
+computed signed-current maps: six normalized basis directions for that control.
+The reference, bulk-density and density-gradient packets each retain four.
+The gradient control computes its actual 14-candidate spectrum.
 
-Eight candidates have disk-certified bulk decay. Two physical-sheet,
-exactly real-normal two-dimensional spaces admit signed physical right-current
-normalization, giving four normalized basis directions. The maximum
-current-reconstruction residual is 8.21e-13 and the signed-current normalization
-residual is 3.24e-16 (rounded upward, double-precision reference-unit norms).
-The row-dual pairing and physical field current remain separate typed objects;
-their canonical adjoint-field export join remains ahead. No bare group velocity,
-sector label or generic spectral witness substitutes for the calculated forms.
+All **2,259 source-reconstruction scalars** are zero.
+The largest control numerical reconstruction residual is 4.341e-13; the
+original reference retains its previously measured residuals and every one of
+its 1,298 modal tensors unchanged. Checks span complete
+computed subspaces. Sheet/decay, threshold/denominator, normal/frequency rank,
+Hermiticity and current-rank gates remain separate. Algorithm fixtures cover
+zero/threshold and unresolved-certificate paths without claiming physical
+exceptional-locus coverage.
 
-The [subspace report](S11c_d_modal_subspace_report.md) and
-[inventory](S11c_d_modal_subspace_checkpoint.json) record scope, source pins,
-tolerances and residuals. The new focused transcript is **1,134,351 bytes**,
-with 1,330 object/metadata pairs, 2,658 indexed source assignments, 1,298 checked
-tensors and 2,794 numerical residual scalars in 27 families. Its 250 quadratic
-extraction scalar residuals are zero. SHA/PIT and literal payload checks,
-metadata coverage and restored dimensions passed. The final run took 128.69
-seconds and 145,324 KiB peak RSS, with exit zero and empty stderr. Correcting
-factor unit labels reproduced every computed tensor exactly. Publication under
-`scripts/out/` used an atomic replacement; the new transcript is uncommitted.
+The complete controls and reference transcripts have verified final emission
+indices, fingerprints, literal residuals, dimensions and grades. They were
+published atomically under `scripts/out/` (5,959,452 and
+1,212,298 bytes). The complete control run used
+447.21 seconds and 179,924 KiB peak RSS; source-checked
+caches preserve the two already completed packets. See the
+[source-control report](S11c_d_current_source_controls_report.md),
+[completed inventory](S11c_d_current_source_controls_completed.json), and
+[reference inventory](S11c_d_modal_reality_reference_checkpoint.json) for pins,
+per-object diagnostics, controls, and the retained interrupted checkpoint.
 
-Next are source-level mass-transfer, bulk-load and boundary-work controls,
-the canonical adjoint-field current join, and extension to both ends and all
-cases; see the [continuation plan](S11c_d_modal_current_plan.md). The four-case
-production transcript remains the committed repair checkpoint. No new full
-run or incomplete export was produced under the retained one-case contract.
-All ten broad TODOs remain, including completed-stage integration, scattering,
-profile-frequency bound poles, survival, bookkeeping, controls and export.
-Threshold, defective, sheet, denominator and convergence limitations and
-supplied upstream debts remain explicit. Constant-end momentum roots remain
-separate from section 3b's conditional profile-frequency bound poles. No
-S10/Lean or authority edits, review legs, comparator, Wolfram, downstream run
-or push occurred. Only the user-requested initial checkpoint was committed.
+Next is the canonical adjoint-row/physical-field current join through the
+computed power map and projection defect, then both-end one-case matching.
+Global sheet/exceptional coverage and section 3b profile-frequency poles remain
+separate obligations. All ten broad TODOs and supplied upstream debts remain;
+no incomplete export or four-case production run was made. No S10/Lean edits,
+reviewer, comparator, Wolfram, downstream run, commit or push occurred.
 
 ## Retained user-approved solver/export contract
 

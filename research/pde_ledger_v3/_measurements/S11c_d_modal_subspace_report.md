@@ -2,7 +2,7 @@
 
 Checkpoint `5b007ddb` saved the preceding two-frequency current proof, using
 Git for source/reports and DataLad/git-annex for its transcript. This subsequent
-continuation is uncommitted. No upstream repair or new physical premise is
+reference-subspace continuation is committed as `7ba922a9`. No upstream repair or new physical premise is
 indicated by its computed residuals.
 
 The native `ModalCurrentSubspaces` builder reconstructs **all 18 root/lift
@@ -76,8 +76,8 @@ against the retained payload, including SHA/PIT or literal comparisons and
 10,528 tensor metadata paths. The
 [checkpoint inventory](S11c_d_modal_subspace_checkpoint.json) records source,
 input, cache and transcript hashes. Publication is atomic under
-`scripts/out/S11c_d_modal_subspace_check.out`; annex it at the next requested
-checkpoint. The original current and four-case production transcripts remain
+`scripts/out/S11c_d_modal_subspace_check.out`; it was annexed in `7ba922a9`.
+The original current and four-case production transcripts remain
 the committed checkpoints.
 
 Next: source-level mass-transfer/bulk-load/boundary-work controls, the canonical
@@ -89,6 +89,15 @@ Constant-end normal-momentum roots are distinct from section 3b's conditional
 profile-frequency bound poles. Supplied section 1 premises and upstream debts
 remain supplied. No S10/Lean or authority edit, review leg, comparator, Wolfram,
 downstream run or push occurred.
+
+The later source controls exposed a higher-degree reality-certificate gap.
+The approved repair is now complete; see the
+[source-control report](S11c_d_current_source_controls_report.md) and
+[local repair plan](S11c_d_current_reality_repair_plan.md). A new reference rerun
+certifies all 18 normal-reality statuses while preserving all 1,298
+earlier tensors and the four normalized basis directions. Its separate
+[inventory](S11c_d_modal_reality_reference_checkpoint.json) and transcript
+preserve this original committed checkpoint.
 
 ## Runnable focused checkpoint
 

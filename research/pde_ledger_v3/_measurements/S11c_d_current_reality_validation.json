@@ -1,0 +1,311 @@
+{
+  "physicalPackets": {
+    "bulkDensityChange": {
+      "diskStatuses": {
+        "PROVED_NONREAL": 7,
+        "PROVED_REAL": 2
+      },
+      "candidateStatuses": {
+        "PROVED_NONREAL": 14,
+        "PROVED_REAL": 4
+      },
+      "axisSets": [
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 0,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 0,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 1,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 2,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 1,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 2,
+          "REAL_ROOT_COUNT": 2
+        }
+      ],
+      "checkedAxisRootIntervals": 2,
+      "literalCertificateResiduals": 19,
+      "normalizedSubspaces": [
+        {
+          "index": 16,
+          "nullity": 2,
+          "k": "0.78528126595931647",
+          "nativeQ": "8.1034971874288111*I",
+          "currentEigenvalues": [
+            0.5889609494694872,
+            0.5889609494694875
+          ]
+        },
+        {
+          "index": 17,
+          "nullity": 2,
+          "k": "-0.78528126595931647",
+          "nativeQ": "8.1034971874288111*I",
+          "currentEigenvalues": [
+            -0.5889609494694875,
+            -0.5889609494694872
+          ]
+        }
+      ],
+      "normalizedBasisDirections": 4
+    },
+    "densityGradientOff": {
+      "diskStatuses": {
+        "PROVED_NONREAL": 5,
+        "PROVED_REAL": 2
+      },
+      "candidateStatuses": {
+        "PROVED_NONREAL": 10,
+        "PROVED_REAL": 4
+      },
+      "axisSets": [
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 0,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 0,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 1,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 2,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 1,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 2,
+          "REAL_ROOT_COUNT": 2
+        }
+      ],
+      "checkedAxisRootIntervals": 2,
+      "literalCertificateResiduals": 19,
+      "normalizedSubspaces": [
+        {
+          "index": 12,
+          "nullity": 2,
+          "k": "0.78528126595931647",
+          "nativeQ": "8.1034971874288111*I",
+          "currentEigenvalues": [
+            0.5889609494694872,
+            0.5889609494694876
+          ]
+        },
+        {
+          "index": 13,
+          "nullity": 2,
+          "k": "-0.78528126595931647",
+          "nativeQ": "8.1034971874288111*I",
+          "currentEigenvalues": [
+            -0.5889609494694876,
+            -0.5889609494694872
+          ]
+        }
+      ],
+      "normalizedBasisDirections": 4
+    },
+    "massTransferOff": {
+      "diskStatuses": {
+        "PROVED_NONREAL": 5,
+        "PROVED_REAL": 4
+      },
+      "candidateStatuses": {
+        "PROVED_NONREAL": 10,
+        "PROVED_REAL": 8
+      },
+      "axisSets": [
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 0,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 7,
+          "REAL_ROOT_COUNT": 3
+        },
+        {
+          "FACTOR_INDEX": 1,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 2,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 1,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 2,
+          "REAL_ROOT_COUNT": 2
+        }
+      ],
+      "checkedAxisRootIntervals": 5,
+      "literalCertificateResiduals": 22,
+      "normalizedSubspaces": [
+        {
+          "index": 8,
+          "nullity": 1,
+          "k": "0.60667101220510722",
+          "nativeQ": "6.3878769325181066*I",
+          "currentEigenvalues": [
+            0.6297955419453776
+          ]
+        },
+        {
+          "index": 9,
+          "nullity": 1,
+          "k": "-0.60667101220510722",
+          "nativeQ": "6.3878769325181066*I",
+          "currentEigenvalues": [
+            -0.6297955419453776
+          ]
+        },
+        {
+          "index": 16,
+          "nullity": 2,
+          "k": "0.78528126595931647",
+          "nativeQ": "8.1034971874288111*I",
+          "currentEigenvalues": [
+            0.5889609494694877,
+            0.5889609494694881
+          ]
+        },
+        {
+          "index": 17,
+          "nullity": 2,
+          "k": "-0.78528126595931647",
+          "nativeQ": "8.1034971874288111*I",
+          "currentEigenvalues": [
+            -0.5889609494694881,
+            -0.5889609494694877
+          ]
+        }
+      ],
+      "normalizedBasisDirections": 6
+    },
+    "originalReference": {
+      "diskStatuses": {
+        "PROVED_NONREAL": 7,
+        "PROVED_REAL": 2
+      },
+      "candidateStatuses": {
+        "PROVED_NONREAL": 14,
+        "PROVED_REAL": 4
+      },
+      "axisSets": [
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 0,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 0,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 1,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 2,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 1,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 2,
+          "REAL_ROOT_COUNT": 2
+        }
+      ],
+      "checkedAxisRootIntervals": 2,
+      "literalCertificateResiduals": 19,
+      "normalizedSubspaces": [
+        {
+          "index": 16,
+          "nullity": 2,
+          "k": "0.78528126595931647",
+          "nativeQ": "8.1034971874288111*I",
+          "currentEigenvalues": [
+            0.5889609494694872,
+            0.5889609494694873
+          ]
+        },
+        {
+          "index": 17,
+          "nullity": 2,
+          "k": "-0.78528126595931647",
+          "nativeQ": "8.1034971874288111*I",
+          "currentEigenvalues": [
+            -0.5889609494694873,
+            -0.5889609494694872
+          ]
+        }
+      ],
+      "normalizedBasisDirections": 4
+    }
+  },
+  "exceptionalAlgorithmFixtures": {
+    "scope": "ALGORITHM_FIXTURES_NOT_PHYSICAL_SPECTRUM",
+    "axisSummary": {
+      "diskStatuses": {
+        "PROVED_NONREAL": 1,
+        "PROVED_REAL": 2
+      },
+      "candidateStatuses": {},
+      "axisSets": [
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 3,
+          "REAL_ROOT_COUNT": 1
+        },
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 3,
+          "REAL_ROOT_COUNT": 3
+        }
+      ],
+      "checkedAxisRootIntervals": 4,
+      "literalCertificateResiduals": 15,
+      "normalizedSubspaces": [],
+      "normalizedBasisDirections": 0
+    },
+    "originAxisRecords": 2,
+    "thresholdDiskCount": 2,
+    "checks": {
+      "originRecordedOnBothAxes": true,
+      "thresholdRootsKeptZero": true,
+      "thresholdNormalsReal": true,
+      "denominatorIntersectionNotExcluded": true,
+      "uncertifiedDiskRemainsUnresolved": true
+    }
+  },
+  "provenance": {
+    "engineSha256": "e5d9dcef71544bcef0ec421ecbee0f711af33c8202ab2d2127ac96c90e02af08",
+    "validationSourceSha256": "ef4cf975f34123cc4e585432e1311a395f70cbbd9d63640f0a2eef2b72ee1cb1",
+    "sourceControlsInventorySha256": "def90514332860d67733f0571016a86743b0131629967b32d1ef12408dc0e70a",
+    "referenceInventorySha256": "0f243a97ee2d54b6b03f9961fa2b7048af2f20368f555661516ce2ac7123c18e",
+    "validatorStdoutSha256": "5b178db2c9612d307f3f411c1880eb86d04f863d36d69d83017575389b8afc9c",
+    "validatorExitCode": 0
+  }
+}

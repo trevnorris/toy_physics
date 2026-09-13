@@ -2978,6 +2978,220 @@ class ClosedCurrentPairing:
 
 
 
+class CurrentSourceControls:
+    """Re-enter current construction at reduced rows and the energy input.
+
+    Each instance owns a fresh reduction view, current and closure builder.
+    Substitutions are applied before variation, face closure and polarization.
+    The original builders and their caches are not changed.
+    """
+
+    def __init__(self, baseline, source_energy):
+        self.baseline, self.source_energy = baseline, source_energy
+
+    def build(self, replacements):
+        from copy import copy
+        base = self.baseline
+        reduction = copy(base.r)
+        reduction.symbols = {name:value.xreplace(replacements)
+                             for name,value in base.r.symbols.items()}
+        energy_map = {symbol:replacements[base.r.symbols[symbol.name]]
+                      for symbol in self.source_energy.free_symbols
+                      if symbol.name in base.r.symbols and base.r.symbols[symbol.name] in replacements}
+        energy = self.source_energy.xreplace(energy_map)
+        strong = base.acoustic.strong.xreplace(replacements)
+        ends = copy(base.c.ends)
+        ends.r = reduction
+        modes = FullPencilModes(ends, base.modes.curl, base.modes.units)
+        current = UniformSlabCurrent(reduction, {'value':energy}, ends, strong[3,:])
+        balance = SlabEnergyBalance(current)
+        acoustic = ClosedAcousticEnergy(balance, modes, strong)
+        return ClosedCurrentPairing(acoustic), energy
+
+    @staticmethod
+    def spectrum(pairing, bindings):
+        """Recompute finite roots and domains of the altered physical pencil."""
+        m = pairing.modes
+        algebraic, relation, joins = m.analytic(pairing.acoustic.strong)
+        physical = algebraic.xreplace(bindings).applyfunc(sp.cancel)
+        curve = relation.xreplace(bindings)
+        (numerator, denominator), cleared, rows = m.rational_determinant(physical)
+        square = sp.solve(curve,m.k**2)[0]
+        divisor = sp.Poly(m.k**2-square,m.k)
+        remainder = sp.rem(sp.Poly(numerator,m.k),divisor).as_expr()
+        if remainder.has(m.k):
+            raise NotImplementedError('source-control normal elimination has an odd remainder')
+        polynomial = sp.Poly(remainder,m.q)
+        if polynomial.is_zero:
+            return {'DEFINED':False,'STATUS':'IDENTICALLY_SINGULAR_CONTROL_PENCIL',
+                    'PHYSICAL_PENCIL':physical,'POLYNOMIAL':polynomial.as_expr()}
+        row_denominator = sp.lcm(rows)
+        norm = sp.rem(sp.Poly(sp.expand(row_denominator*row_denominator.xreplace({m.k:-m.k})),m.k),divisor).as_expr()
+        exception_polynomials = {
+            'DENOMINATOR':sp.gcd(polynomial,sp.Poly(sp.fraction(sp.cancel(norm))[0],m.q)),
+            'NORMAL_THRESHOLD':sp.gcd(polynomial,sp.Poly(sp.fraction(sp.cancel(square))[0],m.q)),
+            'RADICAL_BRANCH':sp.gcd(polynomial,sp.Poly(m.q,m.q))}
+        coverage, roots = EndSpectrumCoverage.isolate(polynomial)
+        evaluate = sp.lambdify((m.k,m.q),physical,'numpy',cse=True)
+        sheet = BulkSheetPath(curve,m.k,m.q)
+        records, paths = [], []
+        for index,(q,disk) in enumerate(zip(roots,coverage['ROOT_DISKS'])):
+            for sign in (1,-1):
+                k = sp.N(sign*sp.sqrt(square.subs(m.q,q)),50)
+                matrix = np.asarray(evaluate(complex(k),complex(q)),dtype=complex)
+                finite = bool(np.isfinite(matrix).all())
+                singular = np.linalg.svd(matrix,compute_uv=False) if finite else None
+                threshold = 1e-8*max(1.,singular[0]) if finite else None
+                nullity = int(np.sum(singular<threshold)) if finite else None
+                membership, path = sheet.classify(complex(k),complex(q))
+                paths.append(path)
+                record = {'ROOT_DISK_INDEX':index,'NORMAL_LIFT_SIGN':sign,'K':k,'Q':q,
+                    'MULTIPLICITY':disk['MULTIPLICITY'],'FINITE_PENCIL':finite,
+                    'FIXED_FREQUENCY_SHEET_MEMBERSHIP':membership,
+                    'RADICAL_RESIDUAL':sp.N(curve.subs({m.k:k,m.q:q}),25),
+                    'ROW_DENOMINATOR_VALUES':tuple(sp.N(v.subs({m.k:k,m.q:q}),25) for v in rows)}
+                if finite:
+                    record.update({'NULLITY':nullity,'SINGULAR_VALUES':tuple(map(m.number,singular)),
+                                   'RANK_THRESHOLD':threshold})
+                records.append(record)
+        return {'DEFINED':True,'PHYSICAL_PENCIL':physical,'RADICAL_RELATION':curve,'BRANCH_JOIN_RESIDUALS':joins,
+            'ELIMINATION_OPERANDS':(cleared,tuple(rows),numerator,denominator,polynomial.as_expr()),
+            'EXCEPTION_POLYNOMIALS':{name:p.as_expr() for name,p in exception_polynomials.items()},
+            'EXCEPTION_DEGREES':{name:p.degree() for name,p in exception_polynomials.items()},
+            'COVERAGE':coverage,'RECORDS':records,'SHEET_PATHS':paths}
+
+
+class NormalRealityCoverage:
+    """Exact axis-root joins in the supplied reference-unit coordinate frame."""
+
+    @staticmethod
+    def interval_polynomial(polynomial, interval):
+        lo,hi = interval
+        result = (sp.S.Zero,sp.S.Zero)
+        for coefficient in polynomial.all_coeffs():
+            products = [v*w for v in result for w in (lo,hi)]
+            result = (min(products)+coefficient,max(products)+coefficient)
+        return result
+
+    @classmethod
+    def construct(cls, polynomial, curve, denominator, k, q, coverage):
+        x,y = sp.symbols('s11cdRealityAxisCoordinate s11cdRealityOtherCoordinate', real=True)
+        square = sp.cancel(sp.solve(curve,k**2)[0])
+        square_poly = sp.Poly(square,q)
+        axes = (('REAL',sp.S.One),('IMAGINARY',sp.I))
+        imaginary = sp.expand_complex(square.subs(q,x+sp.I*y)).expand().as_real_imag()[1]
+        axis_coefficient = square_poly.nth(2)
+        axis_residual = sp.expand(imaginary-2*axis_coefficient*x*y)
+        chart = bool(square_poly.degree()==2 and axis_coefficient.is_real and axis_coefficient!=0 and
+                     square_poly.nth(1)==0 and square_poly.nth(0).is_real and axis_residual==0)
+        factor_scale,factors = sp.sqf_list(polynomial)
+        disks = [{str(a):b for a,b in disk} if not isinstance(disk,dict) else disk
+                 for disk in coverage['ROOT_DISKS']]
+        denominator_norm = sp.Poly(sp.rem(sp.Poly(denominator*denominator.subs(k,-k),k),
+            sp.Poly(k**2-square,k)).as_expr(),q)
+        denominator_gcd = sp.gcd(polynomial,denominator_norm)
+        checks = {'AXIS_DECOMPOSITION_RESIDUAL':axis_residual,
+            'WAVE_ELIMINATION_RESIDUAL':sp.cancel(curve.subs(k**2,square)),
+            'FACTORIZATION_RESIDUAL':sp.expand(polynomial.as_expr()-factor_scale*
+                sp.prod(f.as_expr()**n for f,n in factors)),
+            'DEGREE_RESIDUAL':polynomial.degree()-int(coverage['DEGREE']),
+            'MULTIPLICITY_RESIDUAL':sum(f.degree()*n for f,n in factors)-int(coverage['COUNT_WITH_MULTIPLICITY'])}
+        operands = {'COORDINATE_FRAME':'SUPPLIED_L_T_M_REFERENCE_UNIT_COEFFICIENTS',
+            'BOUND_WAVE_COORDINATE':curve,'POLYNOMIAL_COORDINATE':polynomial.as_expr(),
+            'NORMAL_SQUARE_COORDINATE':square,'DENOMINATOR_COORDINATE':denominator,
+            'DENOMINATOR_NORM_COORDINATE':denominator_norm.as_expr(),
+            'DENOMINATOR_GCD_COORDINATE':denominator_gcd.as_expr(),
+            'AXIS_IMAGINARY_PART_COORDINATE':imaginary,'AXIS_FACTORIZATION_COORDINATE':sp.factor(imaginary),
+            'RADICAL_COORDINATE':x,'OTHER_COORDINATE':y,'REAL_AXIS_CHART_DEFINED':chart}
+        axis_records = []
+        if chart:
+            for factor_index,(factor,multiplicity) in enumerate(factors):
+                for axis,multiplier in axes:
+                    transformed = sp.expand(factor.monic().as_expr().subs(q,multiplier*x))
+                    real,imag = (sp.Poly(v,x,domain=sp.QQ) for v in transformed.as_real_imag())
+                    common = sp.gcd(real,imag).monic()
+                    intervals = common.intervals(eps=min(d['RADIUS'] for d in disks)**2)
+                    entry = {'FACTOR_INDEX':factor_index,'FACTOR_DEGREE':factor.degree(),
+                        'MULTIPLICITY':multiplicity,'AXIS':axis,
+                        'FACTOR_COORDINATE':factor.monic().as_expr(),
+                        'REAL_COORDINATE':real.as_expr(),'IMAGINARY_COORDINATE':imag.as_expr(),
+                        'GCD_COORDINATE':common.as_expr(),'GCD_DEGREE':common.degree(),
+                        'REAL_ROOT_COUNT':int(common.count_roots(-sp.oo,sp.oo)),
+                        'REAL_REMAINDER_COORDINATE':real.rem(common).as_expr(),
+                        'IMAGINARY_REMAINDER_COORDINATE':imag.rem(common).as_expr(),
+                        'ORIGIN_ROOT':common.eval(0)==0,'ROOTS':[]}
+                    axis_square = sp.Poly(square.subs(q,multiplier*x),x,domain=sp.QQ)
+                    threshold_gcd = sp.gcd(common,axis_square)
+                    entry['NORMAL_SQUARE_COORDINATE'] = axis_square.as_expr()
+                    entry['THRESHOLD_GCD_COORDINATE'] = threshold_gcd.as_expr()
+                    for interval,root_multiplicity in intervals:
+                        left,right = interval
+                        bounds = cls.interval_polynomial(axis_square,(left,right))
+                        threshold = bool(threshold_gcd.count_roots(left,right))
+                        refinements = 0
+                        while bounds[0]<=0<=bounds[1] and not threshold and left!=right and refinements<8:
+                            left,right = common.refine_root(left,right,eps=(right-left)/100)
+                            bounds = cls.interval_polynomial(axis_square,(left,right)); refinements+=1
+                        sign = 0 if threshold else 1 if bounds[0]>0 else -1 if bounds[1]<0 else None
+                        inside = []
+                        for disk_index,disk in enumerate(disks):
+                            if int(disk['FACTOR'])!=factor_index:continue
+                            margins = tuple(sp.expand(disk['RADIUS']**2-
+                                (sp.re(multiplier*t)-sp.re(disk['CENTER']))**2-
+                                (sp.im(multiplier*t)-sp.im(disk['CENTER']))**2) for t in (left,right))
+                            if all(v>0 for v in margins):inside.append((disk_index,margins))
+                        entry['ROOTS'].append({'RADICAL_INTERVAL':(left,right),
+                            'INTERVAL_ROOT_COUNT':int(common.count_roots(left,right)),
+                            'ROOT_MULTIPLICITY':root_multiplicity,'NORMAL_SQUARE_INTERVAL':bounds,
+                            'NORMAL_SQUARE_SIGN':sign if sign is not None else 'UNRESOLVED',
+                            'NORMAL_THRESHOLD_ROOT':threshold,'ORIGIN_ROOT':bool(common.eval(0)==0 and left<=0<=right),
+                            'REFINEMENTS':refinements,'DISK_JOINS':tuple(inside),
+                            'UNIQUE_DISK_JOIN':len(inside)==1})
+                    entry['REAL_ROOT_COUNT_RESIDUAL'] = sum(v['ROOT_MULTIPLICITY'] for v in entry['ROOTS'])-entry['REAL_ROOT_COUNT']
+                    check_prefix = str(factor_index)+'_'+axis+'_'
+                    for name in ('REAL_REMAINDER_COORDINATE','IMAGINARY_REMAINDER_COORDINATE','REAL_ROOT_COUNT_RESIDUAL'):
+                        checks[check_prefix+name] = entry[name]
+                    for ri,root in enumerate(entry['ROOTS']):
+                        checks[check_prefix+'INTERVAL_'+str(ri)+'_ROOT_COUNT_RESIDUAL'] = root['INTERVAL_ROOT_COUNT']-1
+                    axis_records.append(entry)
+        root_records = []
+        for disk_index,disk in enumerate(disks):
+            real_clearance = abs(sp.im(disk['CENTER']))-disk['RADIUS']
+            imag_clearance = abs(sp.re(disk['CENTER']))-disk['RADIUS']
+            matches = [(ai,ri) for ai,axis in enumerate(axis_records) for ri,root in enumerate(axis['ROOTS'])
+                       if root['UNIQUE_DISK_JOIN'] and root['DISK_JOINS'][0][0]==disk_index]
+            disk_valid = bool(disk['ONE_ROOT_DISK'] and coverage['FINITE_POLYNOMIAL_ROOT_COVERAGE'])
+            signs = {axis_records[ai]['ROOTS'][ri]['NORMAL_SQUARE_SIGN'] for ai,ri in matches}
+            status,nonzero = 'UNRESOLVED', 'UNRESOLVED'
+            if chart and disk_valid:
+                if real_clearance>0 and imag_clearance>0:
+                    status,nonzero = 'PROVED_NONREAL',True
+                elif signs=={1}:
+                    status,nonzero = 'PROVED_REAL',True
+                elif signs=={-1}:
+                    status,nonzero = 'PROVED_NONREAL',True
+                elif signs=={0}:
+                    status,nonzero = 'PROVED_REAL',False
+            root_records.append({'ROOT_DISK_INDEX':disk_index,'FACTOR_INDEX':int(disk['FACTOR']),
+                'CENTER':disk['CENTER'],'RADIUS':disk['RADIUS'],
+                'REAL_AXIS_CLEARANCE':real_clearance,'IMAGINARY_AXIS_CLEARANCE':imag_clearance,
+                'AXIS_ROOT_MATCHES':tuple(matches),'NORMAL_REALITY_STATUS':status,
+                'NORMAL_NONZERO':nonzero,'DENOMINATOR_EXCLUDED':denominator_gcd.degree()==0,
+                'CERTIFIED_DISK_INPUT':disk_valid})
+        return {'OPERANDS':operands,'CHECKS':checks,'AXES':axis_records,'DISKS':root_records}
+
+    @staticmethod
+    def unit(path, frequency_unit, length_unit):
+        key = next((v for v in reversed(path) if isinstance(v,str)),None)
+        if key in ('RADICAL_INTERVAL','CENTER','RADIUS','REAL_AXIS_CLEARANCE','IMAGINARY_AXIS_CLEARANCE'):
+            return frequency_unit
+        if key=='NORMAL_SQUARE_INTERVAL':return tuple(-2*v for v in length_unit)
+        # Disk-join entries are (dimensionless disk index, squared-distance margins).
+        if 'DISK_JOINS' in path and len(path)>=2 and path[-2]==1:
+            return tuple(2*v for v in frequency_unit)
+        return (0,0,0)
+
+
 class ModalCurrentSubspaces:
     """Full native mode spaces and the computed physical energy forms.
 
@@ -3066,6 +3280,7 @@ class ModalCurrentSubspaces:
         k_square = sp.solve(curve,m.k**2)[0]
         polynomial = sp.Poly(sp.rem(sp.Poly(numerator,m.k),sp.Poly(m.k**2-k_square,m.k)).as_expr(),m.q)
         factors = sp.sqf_list(polynomial)[1]
+        self.normal_reality = NormalRealityCoverage.construct(polynomial,curve,denominator,m.k,m.q,coverage)
         exact = {}
         for index,disk in enumerate(coverage['ROOT_DISKS']):
             disk = {str(k):v for k,v in disk}
@@ -3123,7 +3338,9 @@ class ModalCurrentSubspaces:
                 'NULLITY':nullity,'PRODUCER_NULLITY_RESIDUAL':nullity-int(source['NULLITY']),
                 'EXACT_LOW_DEGREE_LIFT':exact.get(index, {'STATUS':'HIGHER_DEGREE_ISOLATED_NUMERIC_ROOT'}),
                 'RADICAL_TRANSPORT_DENOMINATOR':self.modes.number(q),
-                'BULK_DECAY_NUMERIC':q.imag>0,'EXACT_REAL_NORMAL':bool(index in exact and exact[index]['REAL_K']),
+                'BULK_DECAY_NUMERIC':q.imag>0,
+                'NORMAL_REALITY_CERTIFICATE':self.normal_reality['DISKS'][int(source['ROOT_DISK_INDEX'])],
+                'EXACT_REAL_NORMAL':self.normal_reality['DISKS'][int(source['ROOT_DISK_INDEX'])]['NORMAL_REALITY_STATUS']=='PROVED_REAL',
                 'FORMS':{},'RESIDUALS':{},
                 'OPERANDS':{key:values[key] for key in ('PENCIL_PLUS','PENCIL_MINUS','NORMAL_PENCIL_PLUS',
                     'FREQUENCY_PENCIL_PLUS','POWER_MAP_PLUS','POWER_MAP_MINUS','ENERGY_SLAB','CURRENT_SLAB',
@@ -3134,10 +3351,13 @@ class ModalCurrentSubspaces:
             n_frequency = left.conj().T@values['FREQUENCY_PENCIL_PLUS']@right
             n_normal = left.conj().T@values['NORMAL_PENCIL_PLUS']@right
             n_threshold = 1e-9*max(1.,np.linalg.norm(n_frequency,2))
+            normal_threshold = 1e-9*max(1.,np.linalg.norm(n_normal,2))
             record.update({'RIGHT_BASIS_RANK':int(np.linalg.matrix_rank(right,tol=1e-9)),
                            'LEFT_BASIS_RANK':int(np.linalg.matrix_rank(left,tol=1e-9)),
                            'FREQUENCY_PAIRING_RANK':int(np.linalg.matrix_rank(n_frequency,tol=n_threshold)),
-                           'FREQUENCY_PAIRING_THRESHOLD':n_threshold})
+                           'FREQUENCY_PAIRING_THRESHOLD':n_threshold,
+                           'NORMAL_PAIRING_RANK':int(np.linalg.matrix_rank(n_normal,tol=normal_threshold)),
+                           'NORMAL_PAIRING_THRESHOLD':normal_threshold})
             forms,residuals = record['FORMS'],record['RESIDUALS']
             forms.update({'RIGHT':right,'LEFT':left,'N_FREQUENCY':n_frequency,'N_NORMAL':n_normal,
                           'RIGHT_COORDINATE_PROJECTOR':right@right.conj().T,
@@ -3202,7 +3422,10 @@ class ModalCurrentSubspaces:
             disk = {str(k):v for k,v in coverage['ROOT_DISKS'][int(source['ROOT_DISK_INDEX'])]}
             decay_certified = bool(scale.real>0 and scale.imag==0 and sp.im(disk['CENTER'])-disk['RADIUS']>0)
             record['BULK_DECAY_DISK_CERTIFIED'] = decay_certified
-            record['PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED'] = bool(decay_certified and record['EXACT_REAL_NORMAL'] and
+            certificate = record['NORMAL_REALITY_CERTIFICATE']
+            regular_normal = bool(certificate['NORMAL_NONZERO'] is True and certificate['DENOMINATOR_EXCLUDED'] and
+                                  record['NORMAL_PAIRING_RANK']==nullity)
+            record['PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED'] = bool(regular_normal and decay_certified and record['EXACT_REAL_NORMAL'] and
                 source['FIXED_FREQUENCY_SHEET_MEMBERSHIP']==sp.true and record['FREQUENCY_PAIRING_RANK']==nullity)
             if decay_certified:
                 infinite_integral = complex(self.evaluate['INFINITE_DEPTH_INTEGRAL'](*point))
@@ -3217,7 +3440,7 @@ class ModalCurrentSubspaces:
                 current_threshold = 1e-9*max(1.,np.linalg.norm(infinite_current,2))
                 record['CURRENT_RANK'] = int(np.sum(np.abs(eigenvalues)>current_threshold))
                 record['CURRENT_RANK_THRESHOLD'] = current_threshold
-                eligible = (record['EXACT_REAL_NORMAL'] and source['FIXED_FREQUENCY_SHEET_MEMBERSHIP']==sp.true and
+                eligible = (regular_normal and record['EXACT_REAL_NORMAL'] and source['FIXED_FREQUENCY_SHEET_MEMBERSHIP']==sp.true and
                     record['CURRENT_RANK']==nullity and record['FREQUENCY_PAIRING_RANK']==nullity and
                     self.norm(residuals['INFINITE_CURRENT_HERMITIAN'])<=1e-9*max(1.,self.norm(infinite_current)))
                 record['PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED'] = bool(eligible)
@@ -3240,7 +3463,8 @@ class ModalCurrentSubspaces:
                 'normalDerivative':record['RESIDUAL_NORMS']['NORMAL_BALANCE_DERIVATIVE'],
                 'frequencyDerivative':record['RESIDUAL_NORMS']['FREQUENCY_BALANCE_DERIVATIVE'],
                 'physicalCurrentNormalization':record.get('PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED',False)})
-        return {'RECORDS':outputs,'EXACT_SPECTRUM_RECONSTRUCTION_RESIDUALS':exact_residuals}
+        return {'RECORDS':outputs,'EXACT_SPECTRUM_RECONSTRUCTION_RESIDUALS':exact_residuals,
+                'NORMAL_REALITY_COVERAGE':self.normal_reality}
 
     def tensor_unit(self, group, key, path, nullity):
         d = PHYSICAL_METADATA.dimensions
@@ -3300,6 +3524,9 @@ class ModalCurrentSubspaces:
     def info_unit(self, path, record):
         d=PHYSICAL_METADATA.dimensions
         key=path[-1]
+        if 'NORMAL_REALITY_CERTIFICATE' in path:
+            return NormalRealityCoverage.unit(path,self.frequency_unit,self.length_unit)
+        if key=='NORMAL_PAIRING_THRESHOLD':return self.length_unit
         if key in ('FACTOR','FACTOR_RESIDUAL'):
             degree=sp.Poly(record['EXACT_LOW_DEGREE_LIFT']['FACTOR'],self.modes.q).degree()
             return tuple(degree*v for v in self.frequency_unit)
@@ -3312,7 +3539,7 @@ class ModalCurrentSubspaces:
         if key=='CURRENT_RANK_THRESHOLD':return self.current_unit
         return d.zero
 
-    def emit(self, computed, provenance):
+    def emit(self, computed, provenance, prefix='MODAL_SUBSPACE'):
         d=PHYSICAL_METADATA.dimensions
         def convert(value):
             if isinstance(value,np.ndarray):
@@ -3325,16 +3552,19 @@ class ModalCurrentSubspaces:
             return value
         def output(tag,value,unit,heavy=False):
             body=cas(convert(value))
-            emit(tag,self.modes.compact_fingerprint(body) if heavy else body)
+            emit(tag,carrier_fingerprint(body) if heavy=='carrier' else self.modes.compact_fingerprint(body) if heavy else body)
             emit('METADATA_'+tag,self.modes.numeric_metadata(body,unit))
-        output('MODAL_SUBSPACE_PROVENANCE',provenance,lambda path:d.zero)
-        output('MODAL_SUBSPACE_EXACT_SPECTRUM_RECONSTRUCTION_RESIDUALS',
+        output(prefix+'_PROVENANCE',provenance,lambda path:d.zero)
+        output(prefix+'_EXACT_SPECTRUM_RECONSTRUCTION_RESIDUALS',
                computed['EXACT_SPECTRUM_RECONSTRUCTION_RESIDUALS'],lambda path:d.zero)
+        for key,value in computed['NORMAL_REALITY_COVERAGE'].items():
+            output(prefix+'_NORMAL_REALITY_'+key,value,
+                   lambda path:NormalRealityCoverage.unit(path,self.frequency_unit,self.length_unit),'carrier' if key in ('OPERANDS','AXES') else False)
         for key,value in self.coefficient_residuals.items():
             units=self.pairing.output_units(key,value)
-            output('MODAL_SUBSPACE_QUADRATIC_EXTRACTION_'+key,value,lambda path:units[path])
+            output(prefix+'_QUADRATIC_EXTRACTION_'+key,value,lambda path:units[path])
         for record in computed['RECORDS']:
-            tag='MODAL_SUBSPACE_REFERENCE_LAB_HELD_RHO4_CONSTANT_'+str(record['INDEX'])
+            tag=prefix+'_REFERENCE_LAB_HELD_RHO4_CONSTANT_'+str(record['INDEX'])
             info={key:value for key,value in record.items() if key not in ('FORMS','RESIDUALS','OPERANDS')}
             output(tag+'_RECORD',info,lambda path:self.info_unit(path,info))
             for group in ('OPERANDS','FORMS','RESIDUALS'):
@@ -3343,7 +3573,7 @@ class ModalCurrentSubspaces:
                     if self.quadratic_quantity(group,key):value=self.epsilon**2*value
                     output(tag+'_'+group+'_'+key,value,
                            lambda path,g=group,k=key,n=record['NULLITY']:self.tensor_unit(g,k,path,n),group!='RESIDUALS')
-        output('MODAL_SUBSPACE_DIMENSION_CONSTRAINTS',tuple(d.constraints),lambda path:d.zero)
+        output(prefix+'_DIMENSION_CONSTRAINTS',tuple(d.constraints),lambda path:d.zero)
 
 
 class ChannelInput:

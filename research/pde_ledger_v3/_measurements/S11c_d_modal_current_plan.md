@@ -3,7 +3,7 @@
 ## Completed focused checkpoint
 
 The user approved the acoustic/face-lift split after the previous pause. It is
-now implemented and published: 802 literal zero scalar residuals in 34
+implemented and committed as `5b007ddb`: 802 literal zero scalar residuals in 34
 families, with complete metadata. The local acoustic balance is divided on
 both wave equations before the closed face lifts. Full five-field row joins,
 bulk/port matrix reconstructions, the slab balance and finite-depth composed
@@ -12,14 +12,32 @@ original denominator domain.
 
 Regular-sheet normal/frequency derivative operands, local wave tangency,
 source product-rule reconstructions and the equal-depth integral derivative
-are also computed and checked. The mode-contracted current/frequency-pairing
-relation and normalization remain ahead. The report and inventory specify
+are also computed and checked. The original report and inventory specify
 which checks are symbolic in material parameters and which use the declared
 reference material binding. This does not establish global spectral, sheet,
 threshold or defective-mode coverage. No new upstream repair is indicated by
 this checkpoint.
 
-## Next implementation sequence
+The new `ModalCurrentSubspaces` continuation covers all 18 isolated candidates
+in the LAB_HELD/RHO4_CONSTANT reference packet, with both momentum lifts and
+the complete 14 scalar and four two-dimensional nullspaces. All 18 frequency
+pairings have full computed rank. It contracts the finite-depth current and
+energy and reconstructs them from the actual pencil derivatives and row-power
+maps, preserving their source, interface, upper-boundary and projection-defect
+terms. Eight candidates have disk-certified bulk decay. Two physical-sheet,
+exactly real-normal two-dimensional spaces admit signed physical right-current
+normalization: four basis directions. See the
+[subspace report](S11c_d_modal_subspace_report.md) and its inventory for domains
+and numerical tolerances. This is a focused reference result.
+
+The canonical row-dual frequency pairing and the physical right-field current
+remain separate typed objects. Their computed power-map bridge and defect
+are retained. The canonical adjoint-field current export still needs that
+explicit map; a bare row-dual vector cannot be inserted into a field-current
+slot without it. No upstream discrepancy or additional premise has been
+identified by this calculation.
+
+## Completed reference implementation sequence
 
 1. Reuse the repaired reference's isolated-root records with their source and
    input pins. Reconstruct every full right/left subspace for each isolated
@@ -38,12 +56,22 @@ this checkpoint.
    reality, convergence and rank conditions allow it. Record evanescent,
    zero-current, threshold, defective and nonconvergent cases individually.
    The regular-sheet radical derivative does not apply at its zero denominator.
-4. Exercise the planned mass-transfer, bulk-load and boundary-work source
-   controls in the focused case. Continue the variable-profile current and
-   matching work, controls and bookkeeping under the retained solver contract.
-   Integrate the completed new emissions and run all four cases once when that
-   stage is ready, then write the complete export. Do not replace unfinished
-   objects with placeholders or promote a focused checkpoint to engine completion.
+
+## Next implementation sequence
+
+1. Exercise the planned mass-transfer, bulk-load and boundary-work source
+   controls in the focused case, mutating the action/imported operands and
+   reconstructing the affected current and pencil. Preserve each control's
+   changed spectrum and domain instead of reusing unaltered mode witnesses.
+2. Finish the canonical adjoint-row/physical-field current join using the
+   computed power maps, retaining projection defects and rank conditions.
+   Extend the verified full-subspace calculation to both ends and all cases;
+   preserve per-root exceptional outcomes and degenerate current matrices.
+3. Continue the variable-profile current and matching work, controls and
+   bookkeeping under the retained solver contract. Integrate the completed
+   new emissions and run all four cases once when that stage is ready, then
+   write the complete export. Do not replace unfinished objects with
+   placeholders or promote a focused checkpoint to engine completion.
 
 Preserve the native import wiring and Fourier reduction. Use the actual
 repaired closed pencil and independently retained response kernels; do not

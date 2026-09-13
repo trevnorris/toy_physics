@@ -1,41 +1,51 @@
 # S11c-d SymPy builder checkpoint
 
-The approved acoustic/face-lift split is implemented. The focused checkpoint
-has **802 literal zero scalar residuals in 34 families**, with complete
-metadata and no unresolved dimension constraints. No new upstream repair is
-indicated by these results. The completed mechanical-load repair remains
-committed as `c643112a`; this continuation is uncommitted.
+The preceding two-frequency current proof is committed as `5b007ddb`, with
+source/reports in Git and its `.out` in DataLad/git-annex. The earlier
+mechanical-load repair remains `c643112a`. This subsequent reference-subspace
+continuation is uncommitted; no new upstream repair is indicated.
 
-The native `ClosedCurrentPairing` builder verifies the local acoustic identity
-before closing the face amplitudes, reconstructs the full face rows and
-bulk/port matrices, and composes their finite-depth balance with the slab
-balance. The equal-depth branch has a separate wave reduction. Clearing the
-original inverse carriers resolves the unequal-depth composition without
-expanding the full response algebra; its denominator domain remains explicit.
-The original import wiring, Fourier reduction and current classes are intact.
+The native `ModalCurrentSubspaces` builder computes full left/right spaces,
+nonlinear frequency pairings, and physical slab-plus-bulk current matrices for
+all **18 isolated root/lift candidates** in LAB_HELD/RHO4_CONSTANT REFERENCE:
+14 scalar and four two-dimensional spaces. All 18 frequency pairings have
+full computed rank. Its current/energy reconstruction retains the actual
+row-power bridge, projection defects, interface exchange, upper boundary and
+radical derivatives. It builds on the preceding 802-residual acoustic/slab
+proof without altering its constructor or the import/Fourier wiring.
 
-Regular-sheet normal/frequency derivative operands retain the radical chain
-rule, row-power maps, interface exchange and upper-boundary current. Their
-local wave and source product-rule checks are complete. Full-subspace mode
-contraction, the modal current/frequency-pairing relation and flux normalization
-remain next in the [continuation plan](S11c_d_modal_current_plan.md).
+Eight candidates have disk-certified bulk decay. Two physical-sheet,
+exactly real-normal two-dimensional spaces admit signed physical right-current
+normalization, giving four normalized basis directions. The maximum
+current-reconstruction residual is 8.21e-13 and the signed-current normalization
+residual is 3.24e-16 (rounded upward, double-precision reference-unit norms).
+The row-dual pairing and physical field current remain separate typed objects;
+their canonical adjoint-field export join remains ahead. No bare group velocity,
+sector label or generic spectral witness substitutes for the calculated forms.
 
-The [current report](S11c_d_modal_current_report.md) and
-[checkpoint inventory](S11c_d_modal_current_checkpoint.json) specify the
-symbolic and reference-material-slice coverage. The new focused transcript
-under `scripts/out/` is 1,386,029 bytes, with 117 object/metadata pairs and 232
-indexed source assignments. Heavy objects and report hashes use fingerprints
-and DAG digests. The full calculation took 221.17 seconds; source-checked
-publication after correcting zero-object unit tags took 65.26 seconds.
+The [subspace report](S11c_d_modal_subspace_report.md) and
+[inventory](S11c_d_modal_subspace_checkpoint.json) record scope, source pins,
+tolerances and residuals. The new focused transcript is **1,134,351 bytes**,
+with 1,330 object/metadata pairs, 2,658 indexed source assignments, 1,298 checked
+tensors and 2,794 numerical residual scalars in 27 families. Its 250 quadratic
+extraction scalar residuals are zero. SHA/PIT and literal payload checks,
+metadata coverage and restored dimensions passed. The final run took 128.69
+seconds and 145,324 KiB peak RSS, with exit zero and empty stderr. Correcting
+factor unit labels reproduced every computed tensor exactly. Publication under
+`scripts/out/` used an atomic replacement; the new transcript is uncommitted.
 
-The four-case production transcript remains the committed repair checkpoint;
-no new full run or incomplete export was produced. All ten broad TODOs remain,
-including mode/flux normalization, scattering, profile-frequency bound poles,
-survival, bookkeeping, weak coefficients, controls and export. Threshold,
-defective, sheet, denominator and convergence limitations and supplied
-upstream debts remain explicit. Constant-end momentum poles remain distinct
-from §3b's profile-dependent frequency poles. No authority change, S10/Lean
-edit, review leg, comparator, Wolfram, downstream step, commit or push occurred.
+Next are source-level mass-transfer, bulk-load and boundary-work controls,
+the canonical adjoint-field current join, and extension to both ends and all
+cases; see the [continuation plan](S11c_d_modal_current_plan.md). The four-case
+production transcript remains the committed repair checkpoint. No new full
+run or incomplete export was produced under the retained one-case contract.
+All ten broad TODOs remain, including completed-stage integration, scattering,
+profile-frequency bound poles, survival, bookkeeping, controls and export.
+Threshold, defective, sheet, denominator and convergence limitations and
+supplied upstream debts remain explicit. Constant-end momentum roots remain
+separate from section 3b's conditional profile-frequency bound poles. No
+S10/Lean or authority edits, review legs, comparator, Wolfram, downstream run
+or push occurred. Only the user-requested initial checkpoint was committed.
 
 ## Retained user-approved solver/export contract
 

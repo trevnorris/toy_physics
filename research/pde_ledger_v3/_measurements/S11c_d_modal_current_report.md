@@ -5,7 +5,8 @@ The approved acoustic/face-lift split is implemented in the native
 scalar residuals in 34 families**, with no unresolved dimension constraints.
 The former bulk cancellation stall does not require another upstream repair
 on the evidence obtained here. Repair checkpoint `c643112a` remains committed;
-this continuation is uncommitted.
+this current checkpoint is committed as `5b007ddb`. Subsequent reference-mode
+work is recorded separately in the [subspace report](S11c_d_modal_subspace_report.md).
 
 | Computed residual group | Scalars |
 | --- | ---: |
@@ -60,7 +61,8 @@ The atomically replaced focused transcript is
 The [checkpoint inventory](S11c_d_modal_current_checkpoint.json) records the
 sources, proofs and publication. Heavy objects and report hashes use DAG-based
 carrier/PIT fingerprints, avoiding full symbolic expression serialization.
-The transcript is to be annexed at the next requested commit.
+The transcript was saved through DataLad/git-annex in `5b007ddb`; source and
+reports were saved in Git.
 
 Next is full-subspace mode contraction and the current/frequency-pairing
 relation, followed by conditional flux normalization and source controls; see
@@ -69,7 +71,8 @@ production transcript remains the repair checkpoint. All ten broad engine
 TODOs remain; no incomplete export or new four-case run was produced. Supplied
 upstream debts remain explicit. Constant-end momentum poles remain distinct
 from §3b's profile-dependent frequency poles. No S10/Lean or authority edits,
-review legs, comparator, Wolfram, downstream steps, commits or pushes occurred.
+review legs, comparator, Wolfram or downstream steps occurred. The later
+checkpoint commit was explicitly requested; no push occurred.
 
 ## Runnable guarded checkpoint
 

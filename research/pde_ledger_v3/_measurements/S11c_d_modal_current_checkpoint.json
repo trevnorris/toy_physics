@@ -1,0 +1,600 @@
+{
+  "provenance": {
+    "producerManifestSha256": "4cc4bea644d0d8e86af56f181a757f50ab2f8a6845ce45d40a2ee326012ef0eb",
+    "cacheSha256": "9ef73d170890bd5dbb56ff720fabd8802d5ae0d12e7459532aa4e2bff089fcfe",
+    "producerTranscriptSha256": "fc5e0274d9e087b88e0e4e86c811d731c47593f379263625bfd4916ece8a9196",
+    "producerSources": {
+      "_measurements/S11c_mechanical_repair_d_reference.py": "7b252f656fed0674aa362cc7558f464ef2da5b0f399c2e157ce6c100b0d45755",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "57f4da77b0f53a0b122222f86d432f58c972968afb57fb892a1a5422fb6ee591",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+      "scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+      "scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+      "scripts/S11c_c2_exports.py": "d78efd6c9bdf8d860d25c1d9f02e7bbfa67d8f722671a2ec7fe72e5fb8decc8e"
+    },
+    "engineSha256": "4aa82b4e990b6674602b7f39909b0ab8a393e7d85769b595756141ceffead65b",
+    "instrumentSha256": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+    "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "end": "REFERENCE",
+    "case": "LAB_HELD_RHO4_CONSTANT",
+    "currentCacheSha256": "9296f4eb90ae639cf278614e155c75c5ee7228f1a3a3725a7357fd2bc2165432",
+    "currentManifestSha256": "7da13b818c11c2618cbbd2e6c455495477620f145a1172090f0a3640671f51b2",
+    "cachedConstructors": [
+      "UniformSlabCurrent",
+      "SlabEnergyBalance",
+      "ClosedAcousticEnergy",
+      "ConstantEndPencil.phase_terms"
+    ],
+    "constructionCacheSha256": "051f601f2fa7d3dd1079a6c0f230744378dbd4cc2ef0a587db8f0b9e2bb3fe56",
+    "verificationCacheSha256": "08a0f7d2e8332be1f3ffbc0423e7c4076a5fafe8c062f67505c609e5e4615d1a",
+    "verificationCacheMethods": [
+      "__init__",
+      "polarize",
+      "construct",
+      "rational_coefficient",
+      "carrier_expansion",
+      "rational_reconstruction",
+      "wave_curve_reduction",
+      "split_balance_checks",
+      "split_derivative_checks"
+    ],
+    "verificationProducerEngineSha256": "536e2214b48fe7ea179d3fda0e9b4d8fe661347e57d324acb99b039efc4300a1",
+    "verificationProducerInstrumentSha256": "d8a77ec6b637963063d65c738532af7618ee2615a5bf550570f1bbb361e05e78"
+  },
+  "records": {
+    "OPEN_BULK_POLARIZATION_RESIDUAL": {
+      "scalars": 3,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "9301c5814e4603cb987b2543eaf628313954f5d0040b173a653cb557d41d27d9"
+    },
+    "OPEN_BULK_PAIR_COEFFICIENTS": {
+      "scalars": 3,
+      "nonzeroScalars": 3,
+      "fingerprintSha256": "a53329d2820a0ce22e9730a824d7113949a01773412b359c0b1d32c9f8a754ee"
+    },
+    "PORT_BILINEAR_WEIGHT": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "cfb22e41941d604a0d980cfe1fd3de238c85c5c96cd7f6e6f6eee8f0dac94554"
+    },
+    "OPEN_BULK_BALANCE_OPERAND": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "4f824dd1d08f11bb1862ed9604a23f36499b2e6c5ef8fefd619e057c73e591a1"
+    },
+    "OPEN_BULK_WAVE_QUOTIENTS": {
+      "scalars": 2,
+      "nonzeroScalars": 2,
+      "fingerprintSha256": "242d2e876b518b52ed3529514f42e87f55577d4dd86d8788506e9754488fd2c1"
+    },
+    "OPEN_BULK_WAVE_DENOMINATOR": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "50ace722eb2baae208eeaeb924866e97838d122cf21a89601de77614396a96df"
+    },
+    "OPEN_BULK_BALANCE_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "OPEN_BULK_DIVISION_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "EQUAL_DEPTH_WAVE_ROWS": {
+      "scalars": 2,
+      "nonzeroScalars": 2,
+      "fingerprintSha256": "981c5ffa3fb13b753612dfe5f7a3db661472db28e162a3d8dc1b5212d28914e8"
+    },
+    "EQUAL_DEPTH_WAVE_ELIMINANT": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "2bc7ebda3710326bb1c1b19ad130112947a3a376cf2d9ad7c659fa3620d3afeb"
+    },
+    "EQUAL_OPEN_WAVE_QUOTIENTS": {
+      "scalars": 2,
+      "nonzeroScalars": 2,
+      "fingerprintSha256": "036cb7e45a8aae98cd74f5974979f6cf5397191358f4aab3b41ceddab7b53bd8"
+    },
+    "EQUAL_OPEN_WAVE_DENOMINATOR": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "50ace722eb2baae208eeaeb924866e97838d122cf21a89601de77614396a96df"
+    },
+    "EQUAL_OPEN_BALANCE_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "EQUAL_OPEN_DIVISION_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "FACE_AMPLITUDE_ROWS": {
+      "scalars": 20,
+      "nonzeroScalars": 20,
+      "fingerprintSha256": "de998421a4e54be86447fe8f506b8fc825ab0f295198b078588818ae4609f97e"
+    },
+    "FACE_DENOMINATOR_FACTORS": {
+      "scalars": 20,
+      "nonzeroScalars": 20,
+      "fingerprintSha256": "a6aec36fcf42801a91917d8efe652fe2c33b9132645c80fee4a0e9bbc3be51d3"
+    },
+    "FACE_PORT_ROWS": {
+      "scalars": 140,
+      "nonzeroScalars": 124,
+      "fingerprintSha256": "51f2e51a0f49be11f4fd279b3a842b57b9b2dd8e9c9ed2d5459fa48548237b9e"
+    },
+    "FACE_LINEAR_LIFT_RESIDUAL": {
+      "scalars": 4,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "2e894d8e0bad4ecea8dbcffc201231b0226e2384889081f73b0e827ae9137f20"
+    },
+    "FACE_BULK_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 150,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "aa2529ec2905d53e37133a8073e0715679c9651ed31b10ef97212e4b8e573e8c"
+    },
+    "FACE_LEG_JOIN_RESIDUAL": {
+      "scalars": 100,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "1463b7446000dff29a542c6842000d09e39242bfbe9f55f39d7c6c5cce7488a8"
+    },
+    "FACE_PORT_LINEAR_LIFT_RESIDUAL": {
+      "scalars": 28,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "41964b58d04433c48c736ca17105abcccdfa84f396036370a257ef82dfddb131"
+    },
+    "FACE_PORT_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 150,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "aa2529ec2905d53e37133a8073e0715679c9651ed31b10ef97212e4b8e573e8c"
+    },
+    "FACE_OPEN_DEPTH_COEFFICIENT_RESIDUAL": {
+      "scalars": 2,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "946f0518c8388bf42892192e11d721e8fdf144d129ecd83c03888e68f847d835"
+    },
+    "FACE_PORT_COMPOSED_IDENTITY_RESIDUAL": {
+      "scalars": 50,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "de2dd0df13451004af7512229d0cba8a616100d08dda062a8c2d92058841453b"
+    },
+    "FACE_DEPTH_COMPOSED_JOIN_RESIDUAL": {
+      "scalars": 50,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "de2dd0df13451004af7512229d0cba8a616100d08dda062a8c2d92058841453b"
+    },
+    "DEPTH_PRIMITIVE_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "DEPTH_BOUNDARY_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "FINITE_COMPOSITION_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "f7ee2c7b141bf66cd26f2567ee16725f0094bf6676caae71686a3cb49b05e207"
+    },
+    "FINITE_COMPOSITION_DENOMINATOR_MATRIX": {
+      "scalars": 25,
+      "nonzeroScalars": 25,
+      "fingerprintSha256": "504a07c422d52e8fa64d47358c58e6123f6884f2c31da5bceddfcac5fc3defdb"
+    },
+    "FINITE_COMPOSITION_NUMERATOR_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "f7ee2c7b141bf66cd26f2567ee16725f0094bf6676caae71686a3cb49b05e207"
+    },
+    "EQUAL_DEPTH_TOTAL_ENERGY_MATRIX": {
+      "scalars": 25,
+      "nonzeroScalars": 25,
+      "fingerprintSha256": "28bc3a147638413673e4d1e2e1c296eb3b5bf07850f72d9216054be3a979f837"
+    },
+    "EQUAL_DEPTH_TOTAL_CURRENT_MATRIX": {
+      "scalars": 25,
+      "nonzeroScalars": 25,
+      "fingerprintSha256": "e5aa5498f195cd0bedfc05d6336fe0ca07e7b66095b54371dcefb91d5caa8482"
+    },
+    "EQUAL_DEPTH_COMPOSITION_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "f7ee2c7b141bf66cd26f2567ee16725f0094bf6676caae71686a3cb49b05e207"
+    },
+    "SLAB_BALANCE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "f7ee2c7b141bf66cd26f2567ee16725f0094bf6676caae71686a3cb49b05e207"
+    },
+    "BULK_COMPOSED_BALANCE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "f7ee2c7b141bf66cd26f2567ee16725f0094bf6676caae71686a3cb49b05e207"
+    },
+    "FINITE_COMPOSED_BALANCE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "f7ee2c7b141bf66cd26f2567ee16725f0094bf6676caae71686a3cb49b05e207"
+    },
+    "EQUAL_DEPTH_COMPOSED_BALANCE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "f7ee2c7b141bf66cd26f2567ee16725f0094bf6676caae71686a3cb49b05e207"
+    },
+    "EQUAL_DEPTH_RIGHT_PARTIAL_INTEGRAL": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "d1f79ce8ec7937490a1803f772d8441853c364566493a7f900233adbaabfb75b"
+    },
+    "EQUAL_DEPTH_RIGHT_PARTIAL_JOIN_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "NORMAL_RADICAL_TRANSPORT": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "7a0b031ec3fac785b8daaf72f787cb9b6f798df90a7af821a92080904a19de4f"
+    },
+    "NORMAL_RADICAL_DERIVATIVE_DENOMINATOR": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "42b96438e15d8e53361184052a0ddd306532c2ed617d5e4942be67daa8e6c7e2"
+    },
+    "NORMAL_RADICAL_TANGENCY_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "NORMAL_PHASE_DERIVATIVE_WEIGHTS": {
+      "scalars": 2,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "e868b1061618e105b23d184418c8c9bfb7059f129219d4ac088da9382b272580"
+    },
+    "NORMAL_BALANCE_DERIVATIVE_OPERANDS": {
+      "scalars": 100,
+      "nonzeroScalars": 100,
+      "fingerprintSha256": "b57c892229230f40a0927c54e44c58aad4f318033917d0e628db9429ccd8b72e"
+    },
+    "NORMAL_SOURCE_POWER_DERIVATIVE_MATRIX": {
+      "scalars": 25,
+      "nonzeroScalars": 25,
+      "fingerprintSha256": "9dd3559071ffa7028e80f31ad0b32c836acf6f87a60641f57240700b62938936"
+    },
+    "NORMAL_SOURCE_PRODUCT_DERIVATIVE_TERMS": {
+      "scalars": 100,
+      "nonzeroScalars": 40,
+      "fingerprintSha256": "58c06f8f957fccbeb21d8e7240cd4bd7a1f39d284f7944d062968a8a179df6ed"
+    },
+    "NORMAL_SOURCE_PRODUCT_DERIVATIVE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "f7ee2c7b141bf66cd26f2567ee16725f0094bf6676caae71686a3cb49b05e207"
+    },
+    "NORMAL_CLOSED_PENCIL_DERIVATIVE_MATRIX": {
+      "scalars": 25,
+      "nonzeroScalars": 23,
+      "fingerprintSha256": "7dc3d4801161192c07df6415d4e8115531baace10b607caeb5dc38afb7cae987"
+    },
+    "NORMAL_OPEN_BULK_TANGENT_OPERAND": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "NORMAL_OPEN_BULK_TANGENT_WAVE_QUOTIENTS": {
+      "scalars": 2,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "946f0518c8388bf42892192e11d721e8fdf144d129ecd83c03888e68f847d835"
+    },
+    "NORMAL_OPEN_BULK_TANGENT_DENOMINATOR": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "5518696f76b9bc6509b47431cfbd421eef4175aeb990fc5120511cd3b48766f3"
+    },
+    "NORMAL_OPEN_BULK_TANGENT_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "NORMAL_OPEN_BULK_TANGENT_DIVISION_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "NORMAL_DEPTH_BOUNDARY_DERIVATIVE_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "FREQUENCY_RADICAL_TRANSPORT": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "59b5feb32b1cbaea7dc19e31935f66c21cf0a90dd11dc7b66ab161ffea66ee61"
+    },
+    "FREQUENCY_RADICAL_DERIVATIVE_DENOMINATOR": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "42b96438e15d8e53361184052a0ddd306532c2ed617d5e4942be67daa8e6c7e2"
+    },
+    "FREQUENCY_RADICAL_TANGENCY_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "FREQUENCY_PHASE_DERIVATIVE_WEIGHTS": {
+      "scalars": 2,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "8be47e68e6cf062689da8f185e39cc931fba2010819b82c6ecaf1c5a2d5dbebf"
+    },
+    "FREQUENCY_BALANCE_DERIVATIVE_OPERANDS": {
+      "scalars": 100,
+      "nonzeroScalars": 100,
+      "fingerprintSha256": "695f9662855429b36037e4dd40dcb8ac72a0f936fa504bf00c8cf2b12e0055e3"
+    },
+    "FREQUENCY_SOURCE_POWER_DERIVATIVE_MATRIX": {
+      "scalars": 25,
+      "nonzeroScalars": 25,
+      "fingerprintSha256": "f53cb44debee9ec289e8e8beacec8f2e641060750be36cdf67fcbf96bd5266f4"
+    },
+    "FREQUENCY_SOURCE_PRODUCT_DERIVATIVE_TERMS": {
+      "scalars": 100,
+      "nonzeroScalars": 45,
+      "fingerprintSha256": "a6eb46d6fecf26ee9dac5e8ee113bb25d92e03e362eee5849a73ec9924bf45d7"
+    },
+    "FREQUENCY_SOURCE_PRODUCT_DERIVATIVE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "f7ee2c7b141bf66cd26f2567ee16725f0094bf6676caae71686a3cb49b05e207"
+    },
+    "FREQUENCY_CLOSED_PENCIL_DERIVATIVE_MATRIX": {
+      "scalars": 25,
+      "nonzeroScalars": 13,
+      "fingerprintSha256": "873d0f874c9ec07f4e95bf99d4d193f14590ea57e1941b5370130fbbbc88ea65"
+    },
+    "FREQUENCY_OPEN_BULK_TANGENT_OPERAND": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "5b5966a107521d91de5a0a1b663b1e53cc1eec6c7378e253f95608a1355b8e89"
+    },
+    "FREQUENCY_OPEN_BULK_TANGENT_WAVE_QUOTIENTS": {
+      "scalars": 2,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "c1c57b9d99bee838a041d8346fe5e3558ff94d58f65b787cb3ab4720beb75e9c"
+    },
+    "FREQUENCY_OPEN_BULK_TANGENT_DENOMINATOR": {
+      "scalars": 1,
+      "nonzeroScalars": 1,
+      "fingerprintSha256": "50ace722eb2baae208eeaeb924866e97838d122cf21a89601de77614396a96df"
+    },
+    "FREQUENCY_OPEN_BULK_TANGENT_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "FREQUENCY_OPEN_BULK_TANGENT_DIVISION_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "FREQUENCY_DEPTH_BOUNDARY_DERIVATIVE_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "3af543be4f3450ba06ab61c946268b5c2a8b42afdcec0c6b2b85cd6acf6767be"
+    },
+    "SLAB_CURRENT_DIAGONAL_JOIN_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0,
+      "fingerprintSha256": "f7ee2c7b141bf66cd26f2567ee16725f0094bf6676caae71686a3cb49b05e207"
+    }
+  },
+  "wallSeconds": 65.25853990484029,
+  "peakRssKiB": 123472,
+  "dimensionConstraints": [],
+  "tagCount": 234,
+  "metadataTagCount": 117,
+  "missingMetadataTags": [],
+  "undefinedZeroDimensions": [],
+  "sourceAssignments": 232,
+  "literalResidualInventory": {
+    "OPEN_BULK_POLARIZATION_RESIDUAL": {
+      "scalars": 3,
+      "nonzeroScalars": 0
+    },
+    "OPEN_BULK_BALANCE_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "OPEN_BULK_DIVISION_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "EQUAL_OPEN_BALANCE_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "EQUAL_OPEN_DIVISION_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "FACE_LINEAR_LIFT_RESIDUAL": {
+      "scalars": 4,
+      "nonzeroScalars": 0
+    },
+    "FACE_BULK_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 150,
+      "nonzeroScalars": 0
+    },
+    "FACE_LEG_JOIN_RESIDUAL": {
+      "scalars": 100,
+      "nonzeroScalars": 0
+    },
+    "FACE_PORT_LINEAR_LIFT_RESIDUAL": {
+      "scalars": 28,
+      "nonzeroScalars": 0
+    },
+    "FACE_PORT_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 150,
+      "nonzeroScalars": 0
+    },
+    "FACE_OPEN_DEPTH_COEFFICIENT_RESIDUAL": {
+      "scalars": 2,
+      "nonzeroScalars": 0
+    },
+    "FACE_PORT_COMPOSED_IDENTITY_RESIDUAL": {
+      "scalars": 50,
+      "nonzeroScalars": 0
+    },
+    "FACE_DEPTH_COMPOSED_JOIN_RESIDUAL": {
+      "scalars": 50,
+      "nonzeroScalars": 0
+    },
+    "DEPTH_PRIMITIVE_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "DEPTH_BOUNDARY_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "FINITE_COMPOSITION_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0
+    },
+    "FINITE_COMPOSITION_NUMERATOR_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0
+    },
+    "EQUAL_DEPTH_COMPOSITION_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0
+    },
+    "SLAB_BALANCE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0
+    },
+    "BULK_COMPOSED_BALANCE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0
+    },
+    "FINITE_COMPOSED_BALANCE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0
+    },
+    "EQUAL_DEPTH_COMPOSED_BALANCE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0
+    },
+    "EQUAL_DEPTH_RIGHT_PARTIAL_JOIN_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "NORMAL_RADICAL_TANGENCY_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "NORMAL_SOURCE_PRODUCT_DERIVATIVE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0
+    },
+    "NORMAL_OPEN_BULK_TANGENT_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "NORMAL_OPEN_BULK_TANGENT_DIVISION_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "NORMAL_DEPTH_BOUNDARY_DERIVATIVE_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "FREQUENCY_RADICAL_TANGENCY_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "FREQUENCY_SOURCE_PRODUCT_DERIVATIVE_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0
+    },
+    "FREQUENCY_OPEN_BULK_TANGENT_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "FREQUENCY_OPEN_BULK_TANGENT_DIVISION_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "FREQUENCY_DEPTH_BOUNDARY_DERIVATIVE_RESIDUAL": {
+      "scalars": 1,
+      "nonzeroScalars": 0
+    },
+    "SLAB_CURRENT_DIAGONAL_JOIN_RESIDUAL": {
+      "scalars": 25,
+      "nonzeroScalars": 0
+    }
+  },
+  "literalResidualScalars": 802,
+  "scope": "two-frequency local acoustic proof; full face-row and matrix reconstruction; slab and finite-depth composed balances at the material binding; equal-depth branch; regular-sheet derivative operands and local/source product checks",
+  "pending": [
+    "MODAL_CURRENT_DERIVATIVE_CONTRACTIONS",
+    "FULL_SUBSPACE_MODE_CURRENT_CONTRACTIONS",
+    "FLUX_NORMALIZATION",
+    "SOURCE_CONTROLS",
+    "FOUR_CASE_INTEGRATION"
+  ],
+  "workflowStatus": "RUNNABLE_FOCUSED_CHECKPOINT_APPROVED_SPLIT_IMPLEMENTED",
+  "runDirectory": "/tmp/s11cd-split-current-20260912/validated",
+  "exitCode": 0,
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "4aa82b4e990b6674602b7f39909b0ab8a393e7d85769b595756141ceffead65b",
+    "_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708"
+  },
+  "artifacts": {
+    "full.out": {
+      "bytes": 1386029,
+      "sha256": "9a2cee4e624b0be382931588ea51bdaa1a155744755922e43c7b0b5210a1fed5"
+    },
+    "objects.pickle": {
+      "bytes": 130080,
+      "sha256": "0b70a465a91103cb5fb1a23496c5318e8aee346ef7d5ddb335c74f5df7f80b48"
+    },
+    "check_objects.pickle": {
+      "bytes": 101906,
+      "sha256": "b16b9b8370c426caaf945ea06ef40efa6641ab8fc57e002360d734c2bf8b8488"
+    },
+    "checks.json": {
+      "bytes": 16431,
+      "sha256": "2c702be613530ab35c1f4408b209deaa51c46415d9bcfeaac2601df7737b41a3"
+    },
+    "progress.jsonl": {
+      "bytes": 13993,
+      "sha256": "500bbb39c25b869a2a03b11157d013a5859370bc2fb2f18010823835936caf9a"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "previousPublication": {
+    "path": "scripts/out/S11c_d_modal_current_check.out",
+    "bytes": 710528,
+    "sha256": "b6339f3a69cd5a9184971631ffcee9cc2412ea6fa6a7d28675f0858b9f5d05ca",
+    "storage": "uncommitted transcript; annex on next requested checkpoint"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_modal_current_check.out",
+    "bytes": 1386029,
+    "sha256": "9a2cee4e624b0be382931588ea51bdaa1a155744755922e43c7b0b5210a1fed5",
+    "storage": "uncommitted transcript; annex on next requested checkpoint"
+  }
+}

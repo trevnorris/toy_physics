@@ -1,59 +1,41 @@
 # S11c-d SymPy builder checkpoint
 
-The original mechanical-load mismatch is resolved in the fresh reduced
-LAB_HELD/RHO4_CONSTANT reference. All five mechanical coefficients now agree,
-the five mass coefficients still agree, and all 30 recorded current/energy
-residual scalars are zero. The independent stiffness anchor also agrees.
-The existing d formulas pass with the repaired exports. The
-[current report](S11c_d_nonlocal_current_report.md) records the scope and
-source-pinned evidence; the full repair history is in the
-[repair record](S11c_mechanical_repair_report.md).
+The approved acoustic/face-lift split is implemented. The focused checkpoint
+has **802 literal zero scalar residuals in 34 families**, with complete
+metadata and no unresolved dimension constraints. No new upstream repair is
+indicated by these results. The completed mechanical-load repair remains
+committed as `c643112a`; this continuation is uncommitted.
 
-S11c-b now obtains the face-work row multiplier from the action and stored
-stiffness coefficient, preserving the physical generalized force separately.
-The native four-case rebuild changes exactly four exported roots. All 188
-physical comparison scalars are zero, including kinetic orientation, mass,
-chemical, non-face preservation, and separate uniform S11b face-load checks.
-The c1 refresh leaves all 44 exported values unchanged.
+The native `ClosedCurrentPairing` builder verifies the local acoustic identity
+before closing the face amplitudes, reconstructs the full face rows and
+bulk/port matrices, and composes their finite-depth balance with the slab
+balance. The equal-depth branch has a separate wave reduction. Clearing the
+original inverse carriers resolves the unequal-depth composition without
+expanding the full response algebra; its denominator domain remains explicit.
+The original import wiring, Fourier reduction and current classes are intact.
 
-The rebuilt c2 export changes its closed slab and coupling roots; its
-self-energy increment is unchanged in the value census. All 431 serialization
-checks completed. The strengthened power reference uses separately computed
-constrained energy-term variations and a kinetic action variation, retaining
-its dependency on b's energy construction. Four canonical power residuals and
-16 kinetic entries are zero; both source controls are detected at all three
-PIT samples in each case. This is sampled control detection, not global
-nonvanishing. The scoped legacy dependency triage retains its documented
-boundary: four trials ran, two encountered the existing inequality error, and
-the invariant dimension-binding tag leaves the literal verdict `FAIL`.
+Regular-sheet normal/frequency derivative operands retain the radical chain
+rule, row-power maps, interface exchange and upper-boundary current. Their
+local wave and source product-rule checks are complete. Full-subspace mode
+contraction, the modal current/frequency-pairing relation and flux normalization
+remain next in the [continuation plan](S11c_d_modal_current_plan.md).
 
-The new reference reduction checks 39 scalar reconstruction digests against
-literal zero, with resolved dimensions. Its transcript and the repaired
-current transcript are published under `scripts/out/`, together with the
-upstream and repair-check outputs. The final native four-case d rebuild and
-all nine inventory stages are complete. The [full inventory](S11c_mechanical_repair_d_full_checks.json)
-records 432 isolated root/lift candidates across 24 packets, complete sampled
-basis/pairing ranks, 480 transported paths and 24 unresolved branch-locus paths,
-432 constant-end Laurent residues, and 24 right/24 left threshold chain spaces.
-Point, slice, bank, contour and exceptional-domain limitations remain explicit;
-these momentum poles do not supply the profile-frequency poles of §3b.
+The [current report](S11c_d_modal_current_report.md) and
+[checkpoint inventory](S11c_d_modal_current_checkpoint.json) specify the
+symbolic and reference-material-slice coverage. The new focused transcript
+under `scripts/out/` is 1,386,029 bytes, with 117 object/metadata pairs and 232
+indexed source assignments. Heavy objects and report hashes use fingerprints
+and DAG digests. The full calculation took 221.17 seconds; source-checked
+publication after correcting zero-object unit tags took 65.26 seconds.
 
-The native run took 9,989.25 seconds with 1,734,840 KiB peak RSS and empty
-stderr. Source pins are stable. Fourier reconstruction residuals/projections
-are zero, and metadata/coverage inventories have no gaps. Lossless round trips
-preserve all 229,636 tags and 229,634 indexed source-line assignments. The
-regenerated 83,848,737-byte production transcript is published under
-`scripts/out/`, with its previous annex payload preserved. The repair is
-complete; historical counts were not imposed as expected answers. Next is the
-one-case nonlocal current and mode/flux normalization work.
-
-All ten broad engine TODOs remain, including variable-profile nonlocal current,
-mode/flux normalization, complete two-ended scattering, profile-frequency
-bound poles, survival, bookkeeping, weak coefficients, controls, and own-row
-export. Existing exceptional-domain and upstream-debt boundaries remain open.
-The supplied physics and retained contract below are unchanged. No authority
-change, S10/Lean edit, review leg, comparator, Wolfram run, incomplete export,
-commit, or push occurred in this repair turn.
+The four-case production transcript remains the committed repair checkpoint;
+no new full run or incomplete export was produced. All ten broad TODOs remain,
+including mode/flux normalization, scattering, profile-frequency bound poles,
+survival, bookkeeping, weak coefficients, controls and export. Threshold,
+defective, sheet, denominator and convergence limitations and supplied
+upstream debts remain explicit. Constant-end momentum poles remain distinct
+from §3b's profile-dependent frequency poles. No authority change, S10/Lean
+edit, review leg, comparator, Wolfram, downstream step, commit or push occurred.
 
 ## Retained user-approved solver/export contract
 

@@ -10,9 +10,12 @@ are zero.** No physical input, source formula or extra truncation was changed.
 
 The computed RIGHT source joins have **10 nonzero scalar entries**: five mass
 and five mechanical, each at `(epsilon,eta,sigma)=(0,1,0)`, lambda order one.
-The other 23 top-level source residual scalars are zero. This is a retained
-source-consistency discrepancy whose origin remains undetermined. It is no
-longer an uncomputed dependency deferred for machine capacity. See the
+The other 23 top-level source residual scalars are zero. The subsequent [source trace](S11c_d_right_source_trace_report.md) accounts
+for all ten entries with the inherited normal-pressure-jet contributions and
+locates a c2 curved-face pressure/reference-slot binding mismatch. The chemical
+row and mass-rate density joins are exact at both ends. An upstream c2 trace
+map repair is required before verified RIGHT current normalization. No physical
+formula has been changed; this is no longer deferred for machine capacity. See the
 [source report](S11c_d_end_current_source_report.md) and
 [runtime plan](S11c_d_right_current_runtime_plan.md).
 

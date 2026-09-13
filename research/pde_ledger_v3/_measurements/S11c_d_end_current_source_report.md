@@ -109,3 +109,11 @@ Global parameter/sheet/exceptional coverage, complete scattering, section 3b
 profile-dependent frequency poles, controls/bookkeeping and export remain
 open. No S10/Lean or authority edit, full four-case rerun, review/comparator/
 Wolfram/downstream run, commit or push belongs to this checkpoint.
+
+## Subsequent source trace
+
+After checkpoint `f55e55b6`, the [exact provenance trace](S11c_d_right_source_trace_report.md)
+matched both chemical/density sources and reproduced all ten RIGHT differences
+from the inherited normal-pressure-jet terms. It identifies the c2 curved-face
+pressure/reference-slot binding as the next repair scope. The source outputs
+reported above remain unchanged. Work stops before the upstream repair.

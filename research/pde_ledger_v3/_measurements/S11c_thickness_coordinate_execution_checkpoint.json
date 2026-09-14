@@ -18,10 +18,12 @@
   "continuationState": "All eight endpoint stages committed; fresh RIGHT normalization active",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
-    "status": "ACTIVE",
-    "intervalMinutes": 30,
+    "status": "DELETED",
+    "confirmedByApp": true,
     "previousId": "continue-s11c-d-repair-and-build",
-    "previousUpdateResult": "not found in app; replacement created"
+    "previousStatus": "NOT_FOUND",
+    "observedUtc": "2026-09-14T18:38:12.381336+00:00",
+    "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
   "scope": "Regenerated b/c1/c2/d and all source/frequency/pairing prerequisites are committed. All three pairings have zero retained discrepancies. Endpoint current/adjoint normalization is now in progress.",
   "activeContinuation": {
@@ -159,5 +161,15 @@
     }
   },
   "normalizationExecutionCheckpoint": "S11c_d_end_normalization_execution_checkpoint.json",
-  "normalizationContinuationNotes": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/continuation_notes.json"
+  "normalizationContinuationNotes": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/continuation_notes.json",
+  "recurringFollowupHistory": [
+    {
+      "id": "continue-s11c-d-build",
+      "status": "ACTIVE",
+      "intervalMinutes": 30,
+      "previousId": "continue-s11c-d-repair-and-build",
+      "previousUpdateResult": "not found in app; replacement created"
+    }
+  ],
+  "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
 }

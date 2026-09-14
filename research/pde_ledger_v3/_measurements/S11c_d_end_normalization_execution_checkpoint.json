@@ -52,10 +52,22 @@
   },
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
-    "status": "ACTIVE",
-    "intervalMinutes": 30,
+    "status": "DELETED",
+    "confirmedByApp": true,
     "previousId": "continue-s11c-d-repair-and-build",
-    "previousUpdateResult": "not found in app; replacement created"
+    "previousStatus": "NOT_FOUND",
+    "observedUtc": "2026-09-14T18:38:12.381336+00:00",
+    "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "RIGHT normalization computing; no accepted modal or adjoint result yet. All prior endpoint pairings are validated and committed."
+  "scope": "RIGHT normalization computing; no accepted modal or adjoint result yet. All prior endpoint pairings are validated and committed.",
+  "recurringFollowupHistory": [
+    {
+      "id": "continue-s11c-d-build",
+      "status": "ACTIVE",
+      "intervalMinutes": 30,
+      "previousId": "continue-s11c-d-repair-and-build",
+      "previousUpdateResult": "not found in app; replacement created"
+    }
+  ],
+  "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
 }

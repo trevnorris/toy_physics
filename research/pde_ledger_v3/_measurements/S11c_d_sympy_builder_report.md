@@ -1,5 +1,9 @@
 # S11c-d SymPy builder checkpoint
 
+The user controls continuation. Scheduled follow-ups have been removed; do
+not create or recreate automations without an explicit scheduling request.
+The already-authorized calculation was left running.
+
 The thickness-coordinate repair and native b/c1/c2/d regeneration are committed
 through 8b2e3cf2. All eight fresh endpoint source/frequency/pairing stages are
 now validated, published and committed through **432db7e7**. RIGHT, LEFT and

@@ -15,8 +15,11 @@ symbolic construction has not yet produced per-mode records. No stderr is
 recorded. Current CPU/memory observations and exact live-log locations are in
 [S11c_d_end_normalization_execution_checkpoint.json](S11c_d_end_normalization_execution_checkpoint.json).
 This is an execution checkpoint, not a normalization result or a new physical
-finding. The job remains active. The app's prior follow-up was unavailable;
-a new 30-minute thread follow-up, `continue-s11c-d-build`, is confirmed ACTIVE.
+finding. The calculation was left running. On the user's instruction, the app's
+`continue-s11c-d-build` follow-up was deleted; the older
+`continue-s11c-d-repair-and-build` identifier was confirmed absent.
+The user controls continuation. Do not create or recreate scheduled tasks
+without an explicit scheduling request.
 
 After completion, follow the execution checkpoint's operational notes and
 [plan](S11c_d_end_normalization_plan.md): validate/publish/commit RIGHT, then

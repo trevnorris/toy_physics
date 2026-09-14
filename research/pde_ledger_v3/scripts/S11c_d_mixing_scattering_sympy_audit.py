@@ -3849,6 +3849,155 @@ class AdjointCurrentMap:
         output(prefix+'_DIMENSION_CONSTRAINTS',tuple(PHYSICAL_METADATA.dimensions.constraints),lambda path:(0,0,0))
 
 
+class TwoEndedMatchingChannels:
+    """Source-driven end bases and complete cross-mode current matrices.
+
+    The block assembly below is a coordinate map. Physical currents between
+    different roots are evaluated from the polarized source, never supplied
+    by a block-diagonal ansatz. No interior matching or S-matrix is solved here.
+    """
+
+    def __init__(self, modal_builder, modal, adjoint, end):
+        self.builder, self.modal, self.adjoint = modal_builder, modal, adjoint
+        self.end = end
+        self.orientation = {'LEFT': -1, 'RIGHT': 1}[end]
+
+    def construct(self):
+        b = self.builder
+        b.prepare()
+        candidates, eligible = [], []
+        native = self.modal['NATIVE_RECORDS']
+        adjoints = {r['INDEX']: r for r in self.adjoint['RECORDS']}
+        for record in self.modal['RECORDS']:
+            index, n = record['INDEX'], record['NULLITY']
+            old, adjoint = native[index], adjoints[index]
+            info = {key: record[key] for key in ('INDEX', 'ROOT_DISK_INDEX', 'NORMAL_LIFT_SIGN',
+                'K', 'Q', 'PHYSICAL_Q', 'OMEGA', 'NULLITY', 'SHEET_MEMBERSHIP',
+                'EXACT_REAL_NORMAL', 'BULK_DECAY_DISK_CERTIFIED',
+                'PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED')}
+            info.update({key: old[key] for key in
+                         ('CLASSIFIER_DEFINED', 'CLASSIFIER_WEIGHTS', 'CLASSIFIER_STATUS')})
+            info.update({'OUTWARD_END_ORIENTATION': self.orientation,
+                'OUTWARD_IMAGINARY_K_SIGN_NUMERIC': int(np.sign(self.orientation*complex(record['K']).imag)),
+                'ADJOINT_FIELD_MAP_DEFINED': adjoint['INVERTIBLE_FIELD_MAP_DEFINED'],
+                'RIGHT_RANK_MINUS_NULLITY': int(np.linalg.matrix_rank(record['FORMS']['RIGHT'], tol=1e-9))-n,
+                'LEFT_RANK_MINUS_NULLITY': int(np.linalg.matrix_rank(record['FORMS']['LEFT'], tol=1e-9))-n,
+                'NATIVE_NULLITY_RESIDUAL': n-int(old['NULLITY'])})
+            bases = {key: record['FORMS'][key] for key in
+                     ('RIGHT', 'LEFT', 'LEFT_FREQUENCY_NORMALIZED', 'FLUX_RIGHT', 'FLUX_LEFT')
+                     if key in record['FORMS']}
+            items = [item for item in adjoint['ITEMS'] if
+                     (item['GROUP'], item['NAME']) == ('MAPS', 'ADJOINT_FIELD')]
+            candidates.append({'INFO': info, 'BASES': bases, 'ADJOINT_FIELD_ITEMS': items})
+            if record['PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED']:
+                eligible.append(record)
+        sizes = [r['NULLITY'] for r in eligible]
+        offsets = np.cumsum([0]+sizes)
+        total = int(offsets[-1])
+        field_current = np.zeros((total, total), dtype=complex)
+        flux_current = np.zeros_like(field_current)
+        coordinate_map = np.zeros_like(field_current)
+        source_signed = np.zeros_like(field_current)
+        pairs, channels = [], []
+        for i, left in enumerate(eligible):
+            a = slice(offsets[i], offsets[i+1])
+            coordinate_map[a, a] = left['FORMS']['FIELD_TO_FLUX_MAP']
+            source_signed[a, a] = left['FORMS']['SIGNED_CURRENT']
+            for column in range(left['NULLITY']):
+                current = float(np.real(left['FORMS']['SIGNED_CURRENT'][column, column]))
+                outward = self.orientation*current
+                channels.append({'END': self.end, 'ROOT_DISK_INDEX': left['ROOT_DISK_INDEX'],
+                    'NORMAL_LIFT_SIGN': left['NORMAL_LIFT_SIGN'], 'RECORD_INDEX': left['INDEX'],
+                    'BASIS_COLUMN': column, 'MATRIX_COLUMN': int(offsets[i]+column),
+                    'DIRECTION': 'INCOMING' if outward < 0 else 'OUTGOING' if outward > 0 else 'UNRESOLVED'})
+            for j, right in enumerate(eligible):
+                c = slice(offsets[j], offsets[j+1])
+                qleft, qright = complex(left['PHYSICAL_Q']), complex(right['PHYSICAL_Q'])
+                if not (qleft.imag > 0 and qright.imag > 0):
+                    raise ValueError('cross-mode infinite-depth current requires the recorded decay domain')
+                point = (complex(left['OMEGA']), complex(right['OMEGA']), complex(left['K']).conjugate(),
+                         complex(right['K']), qleft.conjugate(), qright, complex(right['DEPTH_CUTOFF']))
+                slab = np.asarray(b.evaluate['CURRENT_SLAB'](*point), dtype=complex)
+                bulk = np.asarray(b.evaluate['CURRENT_BULK'](*point), dtype=complex)
+                depth = complex(b.evaluate['INFINITE_DEPTH_INTEGRAL'](*point))
+                depth_rate = complex(b.evaluate['DEPTH_RATE'](*point))
+                current = slab+depth*bulk
+                if not np.isfinite(current).all() or not np.isfinite(depth):
+                    raise ValueError('non-finite cross-mode current operand')
+                field_current[a, c] = left['FORMS']['RIGHT'].conj().T@current@right['FORMS']['RIGHT']
+                flux_current[a, c] = left['FORMS']['FLUX_RIGHT'].conj().T@current@right['FORMS']['FLUX_RIGHT']
+                pairs.append({'LEFT_RECORD_INDEX': left['INDEX'], 'RIGHT_RECORD_INDEX': right['INDEX'],
+                    'DEPTH_INTEGRAL': depth, 'DEPTH_RATE': depth_rate, 'CURRENT_SLAB': slab,
+                    'CURRENT_BULK': bulk, 'COMPOSED_CURRENT': current})
+        transformed = coordinate_map.conj().T@field_current@coordinate_map
+        diagonal = np.zeros_like(flux_current)
+        for i in range(len(eligible)):
+            block = slice(offsets[i], offsets[i+1])
+            diagonal[block, block] = flux_current[block, block]
+        return {'CANDIDATES': candidates, 'CHANNELS': channels, 'PAIR_OPERANDS': pairs,
+            'FIELD_CURRENT': field_current, 'FLUX_CURRENT': flux_current,
+            'FIELD_TO_FLUX_MAP': coordinate_map, 'TRANSFORMED_CURRENT': transformed,
+            'OUTWARD_CURRENT': self.orientation*flux_current,
+            'SOURCE_SIGNED_CURRENT_BLOCKS': source_signed,
+            'INTER_ROOT_CURRENT': flux_current-diagonal,
+            'RESIDUALS': {'BASIS_CHANGE': flux_current-transformed,
+                'SOURCE_DIAGONAL_BLOCKS': diagonal-source_signed,
+                'HERMITIAN': flux_current-flux_current.conj().T},
+            'COUNTS': {'CANDIDATES': len(candidates), 'BASIS_DIRECTIONS': sum(r['INFO']['NULLITY'] for r in candidates),
+                'OPEN_RECORDS': len(eligible), 'OPEN_BASIS_DIRECTIONS': total,
+                'INCOMING': sum(r['DIRECTION']=='INCOMING' for r in channels),
+                'OUTGOING': sum(r['DIRECTION']=='OUTGOING' for r in channels),
+                'EVALUATED_RECORD_PAIRS': len(pairs)}}
+
+    def emit(self, result, provenance, prefix):
+        b, modes = self.builder, self.builder.modes
+        zero = PHYSICAL_METADATA.dimensions.zero
+        def converted(value):
+            if isinstance(value, np.ndarray):
+                return sp.ImmutableMatrix(*value.shape, [modes.number(v) for v in value.ravel()])
+            if isinstance(value, (complex, np.complexfloating)):
+                return modes.number(value)
+            if isinstance(value, dict):
+                return {k: converted(v) for k, v in value.items()}
+            if isinstance(value, (tuple, list)):
+                return tuple(converted(v) for v in value)
+            return value
+        def output(name, value, unit=lambda p: zero, quadratic=False, heavy=False):
+            body = cas(converted(value))
+            if quadratic:
+                body = b.epsilon**2*body
+            emit(prefix+'_'+name, modes.compact_fingerprint(body) if heavy else body)
+            emit('METADATA_'+prefix+'_'+name, modes.numeric_metadata(body, unit))
+        output('PROVENANCE', provenance)
+        output('COUNTS', result['COUNTS'])
+        output('CHANNELS', result['CHANNELS'])
+        for candidate in result['CANDIDATES']:
+            info = candidate['INFO']; tag = 'CANDIDATE_'+str(info['INDEX'])
+            output(tag+'_INFO', info, lambda p: b.info_unit(p, info))
+            for key, value in candidate['BASES'].items():
+                output(tag+'_'+key, value, lambda p, k=key, n=info['NULLITY']: b.tensor_unit('FORMS', k, p, n), heavy=True)
+            for item in candidate['ADJOINT_FIELD_ITEMS']:
+                output(tag+'_ADJOINT_FIELD', item['VALUE'], lambda p: item['UNITS'][p[0]], heavy=True)
+        for i, pair in enumerate(result['PAIR_OPERANDS']):
+            tag = 'PAIR_'+str(i)
+            output(tag+'_DOMAIN', {k: v for k, v in pair.items() if not isinstance(v, np.ndarray)},
+                lambda p: b.length_unit if p[-1]=='DEPTH_INTEGRAL' else
+                tuple(-v for v in b.length_unit) if p[-1]=='DEPTH_RATE' else zero)
+            for key in ('CURRENT_SLAB', 'CURRENT_BULK', 'COMPOSED_CURRENT'):
+                base_unit = b.power_unit if key=='CURRENT_BULK' else b.current_unit
+                output(tag+'_'+key, pair[key],
+                    lambda p, u=base_unit: tuple(u[j]-b.field_units[p[0]//5][j]-b.field_units[p[0]%5][j] for j in range(3)),
+                    quadratic=True, heavy=True)
+        for key in ('FIELD_CURRENT', 'FLUX_CURRENT', 'TRANSFORMED_CURRENT', 'OUTWARD_CURRENT',
+                    'SOURCE_SIGNED_CURRENT_BLOCKS', 'INTER_ROOT_CURRENT'):
+            output(key, result[key], lambda p, k=key: b.current_unit if k=='FIELD_CURRENT' else zero,
+                   quadratic=True, heavy=True)
+        output('FIELD_TO_FLUX_MAP', result['FIELD_TO_FLUX_MAP'],
+               lambda p: tuple(-v/2 for v in b.current_unit), heavy=True)
+        for key, value in result['RESIDUALS'].items():
+            output('RESIDUAL_'+key, value, quadratic=True)
+
+
 class ChannelInput:
     """Explicit profile and numerical parameter input, separate from PIT.
 

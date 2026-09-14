@@ -1,0 +1,15 @@
+{
+  "status": "PREPARED",
+  "plan": "S11c_d_variable_profile_matching_plan.md",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914",
+  "scope": "One supplied case, both complete physical-end channel bases and polarized cross-mode currents; no variable-profile interior solve yet.",
+  "sourceSha256": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "172518e06987676868818f5747ed839f6ce180094649533bd6a385c714913665",
+    "_measurements/S11c_d_matching_channels_check.py": "bc403b1732e2b4f8ad7f3bee64d984e86e58f60a50c5d960636f4dda6a33421e"
+  },
+  "existingEngineConstructorAstJoins": {
+    "LEFT": true,
+    "RIGHT": true
+  },
+  "next": "Run the focused construction/serialization validation and inspect all literal residuals before accepting publication."
+}

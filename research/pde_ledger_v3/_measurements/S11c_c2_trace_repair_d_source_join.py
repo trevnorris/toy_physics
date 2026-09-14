@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Join scoped and full native cache operands without altering either producer."""
-import hashlib,json,pickle,sys
+import argparse,hashlib,json,pickle,sys
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(root/'scripts'))
 import sympy as sp
-base=Path('/tmp/s11c-trace-repair-20260913')
+parser=argparse.ArgumentParser()
+parser.add_argument('--run-root',type=Path,default=Path('/tmp/s11c-trace-repair-20260913'))
+parser.add_argument('--report',type=Path,default=root/'_measurements/S11c_c2_trace_repair_d_source_joins.json')
+args=parser.parse_args();base=args.run_root
 def sha(p):
  h=hashlib.sha256()
  with p.open('rb') as f:
@@ -18,6 +21,10 @@ report={'scope':'Structural joins of independently executed calls to the same na
  'manifests':{n:{'path':str(p),'sha256':sha(p)} for n,p in manifest_paths.items()},'ends':{}}
 for name,m in manifest.items():
  if m['exit_code']!=0 or m['source_hashes_before']!=m['source_hashes_after']:raise ValueError(('producer incomplete/changed',name))
+ for path,pin in m['source_hashes_after'].items():
+  if sha(root/path)!=pin or sha(base/name/'source'/path)!=pin:raise ValueError(('source pin',name,path))
+common_sources=manifest['d_ends']['source_hashes_before'].keys()&manifest['d_full']['source_hashes_before'].keys()
+if any(manifest['d_ends']['source_hashes_before'][p]!=manifest['d_full']['source_hashes_before'][p] for p in common_sources):raise ValueError('scoped/full source inputs differ')
 for end in ('REFERENCE','LEFT','RIGHT'):
  payloads={};records={}
  for name,m in manifest.items():
@@ -29,7 +36,7 @@ for end in ('REFERENCE','LEFT','RIGHT'):
  common=a[3].keys()&b[3].keys();units={k:a[3][k]==b[3][k] for k in common}
  report['ends'][end]={'cachePins':records,'structuralJoins':joins,'sharedDimensionBindings':len(common),
   'differentSharedDimensionBindings':[sp.srepr(k) for k,v in units.items() if not v]}
-path=root/'_measurements/S11c_c2_trace_repair_d_source_joins.json'
+path=args.report
 path.write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report,indent=2))
 if any(not all(v['structuralJoins'].values()) or v['differentSharedDimensionBindings'] for v in report['ends'].values()):raise SystemExit(1)

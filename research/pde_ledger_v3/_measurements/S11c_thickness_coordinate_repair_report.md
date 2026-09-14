@@ -95,3 +95,11 @@ validation, not a new endpoint balance result. See the
 Fresh pairing publication supports a new suffix and never replaces the original
 RIGHT discrepancy. End-to-end fresh construction/emission remains to be run
 after the repaired production imports exist.
+
+Prepared validation tools are committed at **a01fd555**. A serial continuation
+controller now has the concrete b/c1/c2/d command plan and per-stage commit
+paths. Its plan-only run and Python compilation complete; actual producer and
+physics-check results remain pending. The controller saves its progress under
+`/tmp/s11c-thickness-coordinate-20260914/continuation` and writes a tracked
+regeneration status at each validated producer checkpoint. It never pushes or
+changes a physical source, and it stops with evidence if a validator fails.

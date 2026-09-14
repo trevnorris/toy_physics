@@ -73,3 +73,21 @@ payloads are immutable; never redirect through an annex symlink. Commit ordinary
 code, exports, reports and inventories in Git and transcripts through DataLad/
 git-annex. A producer checkpoint may legitimately leave downstream artifacts
 historical until their explicitly tracked regeneration finishes.
+
+## Serial producer continuation
+
+`S11c_thickness_coordinate_continue.py` waits for the already-running b
+manifest, then executes steps 2–4 in dependency order. It does not start a
+second b run. Every producer is followed by its physical/artifact validators,
+atomic publication and a local DataLad/Git checkpoint before the next producer
+starts. c1 value preservation, b action/delta checks and c2 imported-delta/
+nonkinetic checks remain separate requirements. d uses a fresh scoped symbol
+run, full four-case output, the nine inventories and scoped/full source joins.
+
+The controller stops on a failed command, nonempty stderr, changed pinned
+instrument, failed artifact check or unrelated staged changes; it preserves the
+active command and logs for investigation. Such a stop requires investigation,
+not automatic user permission. It does not interpret numerical spectral
+residuals as global coverage. Its saved command plan has been generated and
+checked for executable instrument paths; the long stages still need to run.
+Fresh endpoint/current work in steps 5–6 follows this native regeneration queue.

@@ -45,17 +45,28 @@ issues are absent on the audited b domain. The [repair plan](S11c_wolfram_pressu
 is user approved. The complete focused repair check has 218 zero residuals;
 native four-case validation has 9,968,256 zero required numerator evaluations.
 The repaired main transcript is committed at `5acfdf30` and its complete annex
-payload hash is verified. REFERENCE construction started at 23:03:14 UTC using
-the prepared input/current/pairing packets. A refreshed preflight verified all
-16 joins, including unchanged pairing constructors and prepared sources. Its
-completion watcher delivered the successful constructor exit after 166.28 seconds
-(202,188 KiB peak RSS). Construction records 18 candidates, all 22 basis directions,
-18 invertible adjoint field maps and two current-normalized subspaces. Its 250
-coefficient and 50 symbolic residual scalars are zero; the pre/post-emission
-packet hashes match. Full-subspace validation and independent remainder accounting
-are now launched with a separate completion/error watcher. These constructor
-results are provisional until validation passes.
-Accepted SymPy results are unchanged.
-Existing sheet/exceptional-domain limits remain.
+payload hash is verified. REFERENCE construction completed in 166.28 seconds
+at 202,188 KiB peak RSS; validation completed in 90.72 seconds, both with empty
+stderr. Its 18 candidates, all 22 basis directions, 18 invertible adjoint field
+maps and two normalized subspaces passed. The original transcript has 5,586
+tags, 23,907 metadata paths and 5,850 numerical residual scalars. The 250
+coefficient and 50 symbolic residual scalars are zero. All pre/post-emission
+packet joins agree exactly. Every right and adjoint rank equals its full
+computed nullity, including all four two-dimensional candidates.
+
+REFERENCE's independently computed discarded balance matrices vanish. Its 275
+exact remainder checks are zero; the largest residual-minus-remainder norm is
+8.21e-13 and no raw norm exceeds the diagnostic threshold. The original and
+remainder transcripts are published with complete pins in [the checkpoint](S11c_d_end_normalization_reference_thickness_repair_checkpoint.json).
+The validator's prose scope originally copied the physical-end finite-contrast
+label; the validated domain operand already identified the zero-background
+REFERENCE evaluation. A recorded metadata-only correction fixes that label,
+preserves the original validation record and all residual/artifact pins, and
+updates future validator output without rerunning the scientific calculation.
+
+RIGHT, LEFT and REFERENCE normalization are complete for the supplied case.
+The next construction is one-case variable-profile matching from the reduced
+rows and these full end subspaces. The complete S-matrix, continuum re-expansion,
+profile-frequency poles and global exceptional coverage remain open.
 Owned scripts use user-authorized local completion/error wake-ups; no recurring
 checks or model polling are active.

@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T23:08:14.471976+00:00",
+  "observedUtc": "2026-09-14T23:11:41.264090+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,7 +15,7 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "REFERENCE validation launched; local completion/error watcher armed.",
+  "continuationState": "REFERENCE validated; save annex outputs and commit, then begin variable-profile matching.",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
     "status": "DELETED",
@@ -25,7 +25,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "Accepted SymPy RIGHT/LEFT remain unchanged. REFERENCE construction completed; normalization validation is launched after the committed Mathematica repair.",
+  "scope": "RIGHT/LEFT/REFERENCE normalization are validated on the supplied case. REFERENCE annex publication checkpoint precedes one-case variable-profile matching.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -198,5 +198,6 @@
   "wolframAuditStatus": "COMPLETED_COMMITTED",
   "wolframRepairExecution": "S11c_wolfram_pressure_trace_repair_execution.json",
   "wolframRepairCheckpoint": "S11c_wolfram_pressure_trace_native_checkpoint.json",
-  "wolframRepairCommit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34"
+  "wolframRepairCommit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
+  "normalizationReferenceCheckpoint": "S11c_d_end_normalization_reference_thickness_repair_checkpoint.json"
 }

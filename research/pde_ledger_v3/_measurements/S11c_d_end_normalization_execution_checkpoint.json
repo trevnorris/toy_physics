@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T23:08:14.469061+00:00",
+  "observedUtc": "2026-09-14T23:11:41.261769+00:00",
   "active": {
     "stage": "reference_validate",
     "command": [
@@ -14,7 +14,11 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_validate.stderr",
     "startedUtc": "2026-09-14T23:07:22.036191+00:00",
     "childPid": 1907580,
-    "status": "running"
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 90.71888879407197,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-14T23:08:52.755152+00:00"
   },
   "stderrBytes": 0,
   "recurringFollowup": {
@@ -26,7 +30,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "RIGHT/LEFT remain accepted. REFERENCE construction completed; full-subspace validation/publication has been launched. REFERENCE normalization is not accepted until the validator passes.",
+  "scope": "RIGHT, LEFT and REFERENCE current/adjoint normalization are validated on the supplied case, including every isolated-root/lift subspace and independent retained/remainder accounting. Variable-profile matching remains uncomputed.",
   "recurringFollowupHistory": [
     {
       "id": "continue-s11c-d-build",
@@ -150,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "On reference_validate completion inspect full-subspace, metadata, packet, source and independent remainder checks; save accepted outputs through DataLad/git-annex and commit.",
+  "nextStage": "Save and hash-verify REFERENCE annex publications, commit normalization, then construct the one-case variable-profile matching inputs and reduced-operator assembly under the retained solver/export contract.",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -331,7 +335,7 @@
   "wolframAuditStatus": "COMPLETED_COMMITTED",
   "wolframRepairExecution": "S11c_wolfram_pressure_trace_repair_execution.json",
   "referencePreparation": {
-    "status": "CONSTRUCTION_COMPLETE_VALIDATION_LAUNCHED",
+    "status": "VALIDATED_PUBLICATION_PENDING_COMMIT",
     "preflight": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference-preflight.json",
     "changes": [
       "Save atomic modal/adjoint construction packets before emission while retaining the established final packets and unit registries.",
@@ -546,13 +550,77 @@
     "validatorSha256": "ff43b7d97a37908dbc87ec35a35d27628386454290f0e9e343e357341b4b44f3"
   },
   "referenceValidationCompletionWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 1907574,
     "jobPid": 1907573,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-14T23:07:22.053621+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "003a8eddeb45740705760f2c6ad8c438d0863bc977b657c85f7a9deff79e36c4",
-    "notifications": {}
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-14T23:08:53.164240+00:00"
+      }
+    }
+  },
+  "referenceValidationInvocation": {
+    "stage": "reference_validate",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_end_normalization_validate.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference",
+      "--publish"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_validate.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_validate.stderr",
+    "startedUtc": "2026-09-14T23:07:22.036191+00:00",
+    "childPid": 1907580,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 90.71888879407197,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-14T23:08:52.755152+00:00"
+  },
+  "referenceCheckpoint": "S11c_d_end_normalization_reference_thickness_repair_checkpoint.json",
+  "referenceCheckpointSha256": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+  "referenceResult": {
+    "recordCount": 18,
+    "basisDirections": 22,
+    "definedFieldMaps": 18,
+    "physicalCurrentNormalizationCount": 2,
+    "tagCount": 5586,
+    "metadataPaths": 23907,
+    "numericResidualScalars": 5850,
+    "publications": {
+      "full.out": {
+        "path": "scripts/out/S11c_d_end_normalization_reference_thickness_repair.out",
+        "bytes": 3307684,
+        "sha256": "1e12bb2be8b123dbe2161f2bc47bc2360c897aec89e72af77accc59e35b43c36"
+      },
+      "remainders.out": {
+        "path": "scripts/out/S11c_d_end_normalization_reference_thickness_repair_remainders.out",
+        "bytes": 353511,
+        "sha256": "55c42d1fcfcd8065cba1c2d06e5aed3f3bb32a1593ab3abc804c3db2174abd36"
+      }
+    },
+    "constructionPacketJoins": {
+      "modal": true,
+      "adjoint": true
+    },
+    "residualNormsAboveDiagnosticThreshold": {},
+    "discardedGradesEtaSigma": {
+      "FINITE": [],
+      "EQUAL": [],
+      "NORMAL": [],
+      "NORMAL_EQUAL": [],
+      "FREQUENCY": [],
+      "FREQUENCY_EQUAL": []
+    },
+    "maximumResidualMinusRemainderNorm": 8.207529655138466e-13,
+    "remainderExactScalars": 275
   }
 }

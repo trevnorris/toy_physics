@@ -26,9 +26,11 @@ is complete on its validated domain: 218 zero focused residuals and 9,968,256
 zero native numerator evaluations across four cases under the adopted covariance
 criterion. Raw R_N6 remains a representation diagnostic. The repaired main
 transcript is committed at `5acfdf30` and its annex payload hash is verified.
-REFERENCE construction completed: 18 candidates, 22 basis directions and 18
-invertible maps. Its full-subspace validation is launched with a local
-completion/error watcher; no accepted normalization result is claimed yet.
+REFERENCE normalization is validated: 18 candidates, all 22 basis directions,
+18 invertible maps, 5,586 tags and 5,850 numerical residual scalars. Its discarded
+balance matrices vanish; all 275 exact remainder checks are zero and the largest
+residual-minus-remainder norm is 8.21e-13. Pre/post-emission packet joins agree.
+RIGHT/LEFT/REFERENCE normalization is complete on the supplied case.
 LEFT is committed at b271c71b; the accepted SymPy chain remains unchanged.
 See [the native checkpoint](S11c_wolfram_pressure_trace_native_checkpoint.json).
 See the [normalization report](S11c_d_end_normalization_report.md) and

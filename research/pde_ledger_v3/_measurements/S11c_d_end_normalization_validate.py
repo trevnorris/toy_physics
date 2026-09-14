@@ -28,6 +28,13 @@ def json_value(value):
     return json.loads(json.dumps(value))
 
 
+def normalization_scope(end):
+    origin = ('zero-background reference evaluation' if end == 'REFERENCE'
+              else 'finite-contrast retained-operator evaluation')
+    return ('One supplied case, complete isolated root/lift subspaces, ' + origin +
+            '; continuum re-expansion and global exceptional coverage remain open.')
+
+
 def same_packet(a, b):
     """Compare saved numerical/symbolic construction trees without tolerances."""
     if isinstance(a, np.ndarray):
@@ -229,7 +236,7 @@ def validate(base):
         'artifacts':{name:{'bytes':(base/name).stat().st_size,'sha256':digest(base/name)} for name in
             ('full.out','stderr.txt','modal.pickle','adjoint.pickle','checks.json','progress.jsonl','arguments.json',
              'remainders.out','remainders.pickle')},
-        'scope':'One supplied case, complete isolated root/lift subspaces, finite-contrast retained-operator evaluation; continuum re-expansion and global exceptional coverage remain open.'}
+        'scope':normalization_scope(summary['end'])}
     (base/'validation.json').write_text(json.dumps(inventory,indent=2)+'\n')
     return inventory
 

@@ -12,8 +12,9 @@ is user approved. The repair passed its focused tests and native four-case
 regeneration/validation: 218 exact focused residuals and 9,968,256 native
 numerator evaluations are zero under the adopted covariance criterion.
 The native annex publication is committed at `5acfdf30` and hash-verified.
-REFERENCE construction started at 23:03:14 UTC with a local completion watcher;
-accepted SymPy results remain unchanged. The license allows at most two
+REFERENCE construction and validation completed successfully. RIGHT, LEFT and
+REFERENCE normalization are now accepted on the supplied case; publish/commit
+the REFERENCE checkpoint before variable-profile matching. The license allows at most two
 Mathematica scripts across sessions; heavy CAS jobs remain serial.
 
 Prerequisites completed: all eight endpoint stages are validated, published
@@ -73,6 +74,7 @@ are now saved before emission, alongside the established final packets. The
 validator checks their exact structural equality. Progress identifies emission
 stages and resource use; periodic stack diagnostics stay in the run directory.
 The accepted REFERENCE input/current/pairing hashes passed a read-only preflight.
-Execute its scientific run after the repaired native Wolfram publication.
+The fresh REFERENCE scientific run and independent remainder validation have
+completed; pre/post-emission construction packets agree exactly.
 Use a local completion/error watcher for each owned long-running script;
 no recurring checks or model polling while a healthy job runs.

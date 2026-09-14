@@ -1,0 +1,79 @@
+{
+  "scope": "Structural joins of independently executed calls to the same native constructors; provenance checks, not an independent physics derivation.",
+  "instrumentSha256": "2a0ca443c677568db0ae99698723a8313e121fc83799dd963dab9b3cf82652b2",
+  "manifests": {
+    "d_ends": {
+      "path": "/tmp/s11c-thickness-coordinate-20260914/d_ends/manifest.json",
+      "sha256": "9625f4c0d7b1d2d53ff30f5a669633f24a64848ec493a869f63fcd7fbf89d34b"
+    },
+    "d_full": {
+      "path": "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+      "sha256": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421"
+    }
+  },
+  "ends": {
+    "REFERENCE": {
+      "cachePins": {
+        "d_ends": {
+          "path": "/tmp/s11c-thickness-coordinate-20260914/d_ends/symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle",
+          "sha256": "ed654936fa31b079925fff26be539208c771af4c7010291519536662db06ee64"
+        },
+        "d_full": {
+          "path": "/tmp/s11c-thickness-coordinate-20260914/d_full/symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle",
+          "sha256": "b453f91c68e6f9281716805de18081cee7bdc348f4cd32ca40ed66a3e2225fbd"
+        }
+      },
+      "structuralJoins": {
+        "weakPencil": true,
+        "curl": true,
+        "weakUnits": true,
+        "strongPencil": true,
+        "energyBasis": true
+      },
+      "sharedDimensionBindings": 229,
+      "differentSharedDimensionBindings": []
+    },
+    "LEFT": {
+      "cachePins": {
+        "d_ends": {
+          "path": "/tmp/s11c-thickness-coordinate-20260914/d_ends/symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle",
+          "sha256": "a39749f50acfd74e706690a08901483ea8356a8850958c635e7d94d35806b74d"
+        },
+        "d_full": {
+          "path": "/tmp/s11c-thickness-coordinate-20260914/d_full/symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle",
+          "sha256": "35e5dba88a3d367a3be84d148e9fe3aee2c85d34076b269219ca0e10fa0a27f4"
+        }
+      },
+      "structuralJoins": {
+        "weakPencil": true,
+        "curl": true,
+        "weakUnits": true,
+        "strongPencil": true,
+        "energyBasis": true
+      },
+      "sharedDimensionBindings": 229,
+      "differentSharedDimensionBindings": []
+    },
+    "RIGHT": {
+      "cachePins": {
+        "d_ends": {
+          "path": "/tmp/s11c-thickness-coordinate-20260914/d_ends/symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle",
+          "sha256": "ef56f5bea09d0b3d8952ff858b599fc977ba187f374200a1a4a1564b3c750bc9"
+        },
+        "d_full": {
+          "path": "/tmp/s11c-thickness-coordinate-20260914/d_full/symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle",
+          "sha256": "1d52bed28683e0736324e3cf46b3a69cdc092df6368b1036595b40dc4aaae8e2"
+        }
+      },
+      "structuralJoins": {
+        "weakPencil": true,
+        "curl": true,
+        "weakUnits": true,
+        "strongPencil": true,
+        "energyBasis": true
+      },
+      "sharedDimensionBindings": 229,
+      "differentSharedDimensionBindings": []
+    }
+  }
+}

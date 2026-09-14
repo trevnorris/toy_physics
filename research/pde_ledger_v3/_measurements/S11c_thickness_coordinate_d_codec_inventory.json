@@ -1,0 +1,27 @@
+{
+  "source": "/tmp/s11c-thickness-coordinate-20260914/d_full/expanded.out",
+  "sourceSha256": "0252e8f8c08f5c418dd57ddccf9a512ece793d46a30b38c453ef04f2d7543642",
+  "sourceBytes": 313988486,
+  "encodedBytes": 83989687,
+  "records": 229636,
+  "distinctSharedPayloads": 16412,
+  "payloadMismatches": [],
+  "unencodedPayloadSha256": "3e1cfe8eb4be581408e1eca793bad67bd47f43efc5db34cf1d1db8de0c8bf2a7",
+  "decodedPayloadSha256": "3e1cfe8eb4be581408e1eca793bad67bd47f43efc5db34cf1d1db8de0c8bf2a7",
+  "sourceIndexChecks": [
+    {
+      "tagCount": 229634,
+      "differentAssignments": 0,
+      "oldBytes": 34310489,
+      "newBytes": 1586766
+    }
+  ],
+  "malformedReferenceRejections": [
+    true,
+    true
+  ],
+  "instrumentSha256": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+  "codecSha256": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+  "wallSeconds": 6.341830785386264,
+  "peakRssKiB": 408956
+}

@@ -59,13 +59,66 @@ Serial native producers and recorded physical/artifact checks. Each completed pr
 }
 ```
 
-Remaining native producers: d.
+## Completed d
 
-The c2 artifact checkpoint is 537d78fd. Its post-save hash check stopped the
-queue on truncated annex content before d started. The complete producer output
-restored the existing annex key; full size/SHA256 and git-annex fsck now pass
-for all five b/c1/c2 transcripts. See
-[recovery evidence](S11c_thickness_coordinate_c2_annex_recovery_checkpoint.json).
-The truncation cause remains unresolved. Resume at d with the existing checks.
+```json
+{
+  "nativeWallSeconds": 4166.187866047025,
+  "nativePeakRssKiB": 2476192,
+  "nativeArtifact": {
+    "bytes": 83989687,
+    "sha256": "19822837896b084fb8bcbd11b16aa5120e2c5b01c1c3084357aed279b7b70ce8"
+  },
+  "spectrum": {
+    "packets": 24,
+    "candidates": 432,
+    "nullities": {
+      "1": 336,
+      "2": 96
+    },
+    "coverage": {
+      "(11, 9, 11, 0, True, True)": 24
+    },
+    "maximumResidualByDimension": {
+      "PULLBACK_RESIDUAL|(-5, -2, 1)": 0.0,
+      "PULLBACK_RESIDUAL|(-3, -2, 1)": 0.0,
+      "PULLBACK_RESIDUAL|(-5, -1, 1)": 0.0,
+      "PULLBACK_RESIDUAL|(-3, -1, 1)": 0.0,
+      "PULLBACK_RESIDUAL|(-1, -2, 1)": 0.0,
+      "PULLBACK_RESIDUAL|(0, 0, 0)": 0.0,
+      "RIGHT_RESIDUAL|(-2, -2, 1)": 4.7231752266122105e-15,
+      "RIGHT_RESIDUAL|(-3, -1, 1)": 1.5118541179209328e-15,
+      "RIGHT_RESIDUAL|(-1, -2, 1)": 2.6947576617039376e-15,
+      "LEFT_RESIDUAL|(-1, 0, 0)": 3.773782390822243e-15,
+      "LEFT_RESIDUAL|(0, 0, 0)": 3.2023728339893768e-15,
+      "PROJECTOR_RESIDUAL|(0, 0, 0)": 4.449299500566018e-14,
+      "PROJECTOR_RESIDUAL|(1, 0, 0)": 1.452356741593167e-14,
+      "PROJECTOR_RESIDUAL|(-1, 0, 0)": 6.485071087474307e-15
+    }
+  },
+  "jointSheet": {
+    "packets": 24,
+    "pathStatuses": {
+      "TRANSPORTED": 480,
+      "BRANCH_LOCUS_ON_PATH": 24
+    }
+  },
+  "outstandingConstructions": [
+    "FULL_END_SPECTRA_BEYOND_REFERENCE_MODE_JETS",
+    "GENERIC_DOMAIN_SHEET_CONTINUATION",
+    "CLOSED_NONLOCAL_BULK_CURRENT_AND_FLUX_NORMALIZATION",
+    "COMPLETE_TWO_ENDED_SCATTERING",
+    "POLES_RIESZ_OVERLAP",
+    "SURVIVAL",
+    "FLUX_BOOKKEEPING",
+    "WEAK_COEFFICIENTS",
+    "SECTION_5_CONTROLS",
+    "OWN_ROWS_EXPORT"
+  ],
+  "failures": []
+}
+```
+
+Remaining native producers: none in this regeneration queue.
 
 Fresh endpoint/reference sources, two-frequency pairing and full current/adjoint normalization remain separate next steps. Native point/path/stratum records do not establish global coverage, scattering or section 3b profile-frequency bound poles.

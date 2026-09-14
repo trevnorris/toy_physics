@@ -114,3 +114,46 @@ underestimate for that transcript. The source/export checks and later producers
 remain pending. A recurring thread follow-up was rejected by automatic approval
 review pending explicit user authorization; none was created. This does not
 stop the already-authorized one-time producer/validation/commit queue.
+
+## Export-check execution repair and c2 control propagation
+
+The b native producer completed in **6296.63 seconds**, at **1,942,292 KiB**
+peak RSS, with empty stderr and stable source pins. Its saved transcript is
+183,361,030 bytes; the new export has 2441 rows and no added or removed keys.
+Only `slab_operator` and `slab_operator_term_origins` changed. The production
+annex output remains historical until the actual action/export check completes.
+
+The first export check was interrupted after about 98 minutes. Its preserved
+traceback locates the cost in `Poly` metadata domain inference, which attempted
+a dense GCD over dozens of material coefficients. No physical comparison had
+been emitted. The restarted instrument uses the expression coefficient domain
+for perturbation polynomials, one projection worker, per-object progress and
+timed stack traces. This changes metadata computation, not the action or rows.
+The old attempt and traceback remain under `continuation` and `b_checks`; the
+fresh attempt is `b_checks_exdomain` under the same pinned run root.
+
+A serialized AST census finds four changed KINETIC provenance components and
+28 identical other origin/metadata components. The new algebraic check restores
+each actual KINETIC operand and compares it with the independent action and
+saved native helper, alongside complete slab-row delta accounting. All other
+export values and provenance components have explicit preservation checks.
+These checks are running; their final aggregate is not yet available.
+
+The c2 independent conservative-power control repeats the old `W_bg*e_W`
+coordinate in its kinetic action. Its source now differentiates `W_0*e_W`,
+using the same supplied reference normalization. The c2 full export validation
+will emit both source-extracted actions, their differences, current native
+assembly joins and imported-origin normalization residuals for all four cases.
+It permits a changed KINETIC provenance component only when the completed b
+proof accounts for all four of its components; every other provenance component
+(including stored energy and face work) must remain identical. These new c2
+checks have compiled but have not yet run. The existing face-trace closure is
+preserved. No physical authority was changed.
+
+The continuation controller supports a fresh attempt directory and explicit
+start stage. It verifies published, committed predecessor artifacts before
+resuming, preserves previous logs, and writes `active_continuation.json` for
+follow-up discovery. Its c1-through-d plan-only run and Python compilation pass.
+The earlier automatic-approval rejection is resolved: the user explicitly
+approved continued recurring repairs and commits, and the active 30-minute
+thread follow-up is `continue-s11c-d-repair-and-build`.

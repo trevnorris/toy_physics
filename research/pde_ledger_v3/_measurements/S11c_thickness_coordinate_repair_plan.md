@@ -91,3 +91,16 @@ not automatic user permission. It does not interpret numerical spectral
 residuals as global coverage. Its saved command plan has been generated and
 checked for executable instrument paths; the long stages still need to run.
 Fresh endpoint/current work in steps 5–6 follows this native regeneration queue.
+
+## Validated-stage restart after the metadata stall
+
+Preserve the completed b native run. Complete `b_checks_exdomain`, including
+its KINETIC provenance accounting, validate/publish it and the native output,
+and commit the b checkpoint. Correct c2's independent kinetic action at the
+same defining coordinate; its full validation must retain and compare the old
+source action and current imported kinetic origins. Resume the serial controller
+with `--start-at c1 --state-directory /tmp/s11c-thickness-coordinate-20260914/continuation_after_b`.
+The restart checks prior published and committed artifacts and never reruns b.
+Read the run root's `active_continuation.json` for the current queue directory;
+older `continuation` logs remain failure evidence. Continue steps 5–6 after the
+native producer queue. The user-approved recurring follow-up remains active.

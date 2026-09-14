@@ -2,6 +2,8 @@
 """Track the measured b row change through c2's field and weak restrictions."""
 import argparse
 import ast
+import copy
+import faulthandler
 import hashlib
 import json
 from pathlib import Path
@@ -20,6 +22,7 @@ import S11c_d_mixing_scattering_sympy_audit as d
 from ledger_fold import _restore,load_model
 from S11c_inertia_artifact_audit import export_data,locate
 from S11c_d_end_pairing_emit import small_literal
+from S11c_thickness_coordinate_origin_components import origin_components
 
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -57,12 +60,34 @@ def closure_slots(inputs):
     return tuple(result)
 
 
+def kinetic_action_from_source(source):
+    """Compile the actual kinetic action assignments, before row normalization."""
+    function=next(node for node in ast.parse(source.read_text()).body
+        if isinstance(node,ast.FunctionDef) and node.name=='conservative_power_variation')
+    names={'fields','rates','rho','kinetic','kinetic_action'}
+    assignments=[copy.deepcopy(node) for node in function.body if isinstance(node,ast.Assign)
+        and len(node.targets)==1 and isinstance(node.targets[0],ast.Name) and node.targets[0].id in names]
+    if {node.targets[0].id for node in assignments}!=names:raise ValueError('kinetic source assignment coverage')
+    code=compile(ast.fix_missing_locations(ast.Module(body=assignments,type_ignores=[])),str(source),'exec')
+    def compute(inputs,case):
+        scope={**vars(c2),'inputs':inputs,'case':case,'density':case[1]}
+        exec(code,scope)
+        return scope['kinetic'],scope['kinetic_action']
+    return compute
+
+
 def run():
     parser=argparse.ArgumentParser()
     parser.add_argument('--baseline',type=Path,required=True)
     parser.add_argument('--b-checkpoint',type=Path,required=True)
     parser.add_argument('--run-directory',type=Path,required=True)
     args=parser.parse_args();base=args.run_directory;base.mkdir(parents=True,exist_ok=False)
+    stack_stream=(base/'stacks.log').open('w')
+    faulthandler.dump_traceback_later(300,repeat=True,file=stack_stream)
+    def progress(operation,**values):
+        with (base/'progress.jsonl').open('a') as stream:
+            stream.write(json.dumps({'operation':operation,'wallSeconds':time.monotonic()-STARTED,**values})+'\n')
+    progress('source_snapshot')
     paths=[ROOT/'scripts'/('S11c_'+stage+'_exports.py') for stage in ('b','c1','c2')]
     paths += [args.baseline/'scripts'/('S11c_'+stage+'_exports.py') for stage in ('b','c1','c2')]
     paths += [Path(__file__),args.b_checkpoint,ROOT/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py',
@@ -70,6 +95,9 @@ def run():
         ROOT/'scripts/S11c_d_output_codec.py',ROOT/'directives/S11c_c2_SHARED_PHYSICS.md',
         *(ROOT/'_measurements'/name for name in ('S11c_inertia_artifact_audit.py','S11c_d_end_pairing_emit.py',
           'S11c_d_end_pairing_check.py','S11c_d_modal_current_check.py','S11c_d_joint_sheet_check.py'))]
+    paths.append(ROOT/'_measurements/S11c_thickness_coordinate_origin_components.py')
+    old_control_source=args.baseline/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py'
+    paths.append(old_control_source)
     pins={str(p):sha(p) for p in paths};snapshots={}
     for i,path in enumerate(paths):
         relative=Path('source')/str(i)/path.name;target=base/relative
@@ -81,11 +109,14 @@ def run():
     for i,stage in enumerate(('b','c1','c2')):
         new[stage],export_pins[stage],_=export_data(paths[i])
         old[stage],_,_=export_data(paths[i+3])
+    old_origins=origin_components(old['b']['slab_operator_term_origins'])
+    new_origins=origin_components(new['b']['slab_operator_term_origins'])
     fold,_=load_model(str(paths[0]),str(paths[1]));inputs=c2.bind_inputs(fold)
     slot_keys=closure_slots(inputs)
     lam=sp.Symbol('s11cThicknessCoordinateC2ExportLambda');unused=sp.Dummy('unusedGrade')
     records=[];checks={};keys=set()
     def output(name,value,unit=(0,0,0)):
+        progress('emit',object=name)
         body=d.cas(value);key='s11cThicknessCoordinateC2'+name
         if key in keys or key in fold or key in new['c2']:raise ValueError('write-key collision')
         keys.add(key);metadata=[]
@@ -116,15 +147,58 @@ def run():
     output('ChangedValueSerializations',changed)
     output('KeySetDifference',{stage:(sorted(new[stage].keys()-old[stage].keys()),
                                     sorted(old[stage].keys()-new[stage].keys())) for stage in new})
-    # The native closure reads these rows in addition to slab_operator. Their
-    # exact preservation is the premise for transporting only the slab delta.
+    # KINETIC provenance changes together with slab_operator and was separately
+    # joined to the action by the current b proof. Every other provenance
+    # component (including face work and stored energy) must stay identical.
+    output('OriginComponentKeySetDifference',(sorted(new_origins.keys()-old_origins.keys()),
+                                             sorted(old_origins.keys()-new_origins.keys())))
+    if old_origins.keys()!=new_origins.keys():raise ValueError('origin key set changed; emitted')
+    origin_checks={}
+    origin_operands=[]
+    for path in sorted(new_origins):
+        if path[1:]==('VALUE','KINETIC'):
+            label=''.join(part.title().replace('_','') for part in path[0])
+            for suffix in ('OriginActionResidual','OriginBaselineSourceResidual','OriginDeltaAccountingResidual'):
+                evidence=proof['checks'][label+suffix]
+                if evidence['scalars']!=4 or evidence['nonzero']:
+                    raise ValueError(('b kinetic origin evidence incomplete',path,suffix))
+        else:
+            before,after=old_origins[path],new_origins[path]
+            origin_checks[str(path)]=sp.Integer(before!=after)
+            origin_operands.append((path,hashlib.sha256(before.encode()).hexdigest(),hashlib.sha256(after.encode()).hexdigest()))
+    output('OtherOriginIdentityOperands',origin_operands)
+    output('OtherOriginPreservationResidual',origin_checks)
+    # All other input rows are exact preservation prerequisites for transporting
+    # only the measured slab delta through the native field and weak maps.
     dependency_checks={}
     for stage in ('b','c1'):
         dependency_checks[stage]={key:sp.Integer(old[stage][key]!=new[stage][key])
-            for key in old[stage].keys()&new[stage].keys() if key!='slab_operator'}
+            for key in old[stage].keys()&new[stage].keys()
+            if key not in ('slab_operator','slab_operator_term_origins')}
     output('OtherInputPreservationResidual',dependency_checks)
     if any(old[stage].keys()!=new[stage].keys() for stage in new):raise ValueError('export key set changed; emitted')
     if any(v for values in dependency_checks.values() for v in values):raise ValueError('closure dependency changed; emitted')
+    if any(origin_checks.values()):raise ValueError('nonkinetic origin changed; emitted')
+    historical_action=kinetic_action_from_source(old_control_source)
+    native_action=kinetic_action_from_source(ROOT/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py')
+    for case in inputs.slab:
+        label=''.join(part.title().replace('_','') for part in case)+'KineticControl'
+        current=c2.conservative_power_variation(inputs,case)
+        old_energy,old_action=historical_action(inputs,case)
+        new_energy,new_action=native_action(inputs,case)
+        normalized=c2.tree(current['ACTION_TO_ROW_MULTIPLIER']*new_action,lambda v:c2.retained_shape(v,inputs))
+        historical=c2.tree(current['ACTION_TO_ROW_MULTIPLIER']*old_action,lambda v:c2.retained_shape(v,inputs))
+        output(label+'BaselineActionEnergy',old_energy,(-1,-2,1))
+        output(label+'NativeActionEnergy',new_energy,(-1,-2,1))
+        output(label+'ActionEnergyDelta',c2.difference(new_energy,old_energy),(-1,-2,1))
+        units=lambda path:(-2,-2,1) if path[0]<3 else (-1,-2,1)
+        for name,value in (
+            ('BaselineActionRows',historical),('NativeActionRows',normalized),
+            ('ImportedOriginRows',current['KINETIC_SOURCE_ROWS']),
+            ('NormalizationResidual',current['KINETIC_NORMALIZATION_RESIDUAL']),
+            ('SourceAssemblyResidual',c2.difference(new_action,current['KINETIC_ACTION_ROWS'])),
+            ('BaselineToCorrectedDifference',c2.difference(historical,normalized))):
+            output(label+name,value,units)
     old_b=c2.cases(_restore(old['b']['slab_operator']));new_b=c2.cases(_restore(new['b']['slab_operator']))
     expanded={};component_census=[]
     for case in new_b:
@@ -177,6 +251,8 @@ def run():
         'nonzeroResidualScalars':sum(v['nonzero'] for v in checks.values()),
         'wallSeconds':elapsed,'peakRssKiB':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss}
     (base/'checks.json').write_text(json.dumps(summary,indent=2)+'\n')
+    progress('complete',nonzeroResidualScalars=summary['nonzeroResidualScalars'])
+    faulthandler.cancel_dump_traceback_later();stack_stream.close()
     if summary['nonzeroResidualScalars']:raise ValueError('c2 export residual; inspect emitted operands')
 
 

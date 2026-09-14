@@ -2,8 +2,10 @@
 """Compare all regenerated b cases with independent action and saved sources."""
 import argparse
 import ast
+import faulthandler
 import hashlib
 import json
+import os
 from pathlib import Path
 import pickle
 import resource
@@ -14,11 +16,13 @@ STARTED=time.monotonic()
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(ROOT/'_measurements')]
 import sympy as sp
+os.environ['S11CB_PROJECTION_WORKERS']='1'
 import S11c_b_brane_operator_sympy_audit as b
 import S11c_d_mixing_scattering_sympy_audit as d
 from ledger_fold import _restore
 from S11c_inertia_artifact_audit import export_data,locate
 from S11c_d_end_pairing_emit import small_literal
+from S11c_thickness_coordinate_origin_components import origin_components
 
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -33,6 +37,12 @@ def run():
     parser.add_argument('--baseline',type=Path,required=True)
     parser.add_argument('--run-directory',type=Path,required=True)
     args=parser.parse_args();base=args.run_directory;base.mkdir(parents=True,exist_ok=False)
+    stack_stream=(base/'stacks.log').open('w')
+    faulthandler.dump_traceback_later(300,repeat=True,file=stack_stream)
+    def progress(operation,**values):
+        with (base/'progress.jsonl').open('a') as stream:
+            stream.write(json.dumps({'operation':operation,'wallSeconds':time.monotonic()-STARTED,**values})+'\n')
+    progress('source_snapshot')
     paths=[ROOT/'scripts/S11c_b_exports.py',ROOT/'scripts/S11c_b_brane_operator_sympy_audit.py',
         ROOT/'scripts/S11c_a_exports.py',ROOT/'directives/S11c_b_SHARED_PHYSICS.md',Path(__file__),
         args.baseline/'scripts/S11c_b_exports.py',args.baseline/'scripts/S11c_b_brane_operator_sympy_audit.py']
@@ -41,6 +51,7 @@ def run():
         'scripts/S11c_d_output_codec.py','_measurements/S11c_inertia_artifact_audit.py',
         '_measurements/S11c_d_end_pairing_emit.py','_measurements/S11c_d_end_pairing_check.py',
         '_measurements/S11c_d_modal_current_check.py','_measurements/S11c_d_joint_sheet_check.py')]
+    paths.append(ROOT/'_measurements/S11c_thickness_coordinate_origin_components.py')
     pins={str(p):sha(p) for p in paths}
     snapshots={}
     for i,path in enumerate(paths):
@@ -48,6 +59,10 @@ def run():
         target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(path,target)
         snapshots[str(path)]=str(relative)
     old_values,_,_=export_data(baseline_export);new_values,export_pins,_=export_data(paths[0])
+    progress('origin_components')
+    old_origins=origin_components(old_values['slab_operator_term_origins'])
+    new_origins=origin_components(new_values['slab_operator_term_origins'])
+    progress('restore_slab')
     before=dict(_restore(old_values['slab_operator']));after=dict(_restore(new_values['slab_operator']))
     tree=ast.parse(baseline_script.read_text())
     helper=next(node for node in tree.body if isinstance(node,ast.FunctionDef) and node.name=='kinetic_balance_from_energy')
@@ -55,6 +70,7 @@ def run():
     baseline_inertia=namespace['kinetic_balance_from_energy']
     lam=sp.Symbol('s11cThicknessCoordinateExportLambda');records=[];residuals={};keys=set()
     def output(name,value,units=None):
+        progress('emit',object=name)
         body=d.cas(value);key='s11cThicknessCoordinateB'+name
         if key in keys or key in b.INCOMING_LEDGER:raise ValueError('write-key collision')
         keys.add(key);metadata=[]
@@ -63,8 +79,10 @@ def run():
             unit=units(path) if callable(units) else units
             if unit is None:unit=tuple(b.dimension_of(leaf))
             expression=leaf.xreplace(b.PROFILE_GRADE_SUBS)
-            polynomial=sp.Poly(sp.expand(expression),b.epsilon,b.eta_bg,b.sigma_W)
-            support=sp.Poly(sp.expand(expression.subs({b.eta_bg:lam,b.sigma_W:lam*b.W0/b.L_W})),b.epsilon,lam)
+            # The generators are perturbation grades, not material parameters.
+            # Keep coefficients in EX to avoid fraction-field GCD inference.
+            polynomial=sp.Poly(sp.expand(expression),b.epsilon,b.eta_bg,b.sigma_W,domain=sp.EX)
+            support=sp.Poly(sp.expand(expression.subs({b.eta_bg:lam,b.sigma_W:lam*b.W0/b.L_W})),b.epsilon,lam,domain=sp.EX)
             metadata.append({'path':path,'dimensionLTM':unit,
                 'multigrade':sorted(g for g,c in polynomial.terms() if c!=0),
                 'epsilonLambdaSupport':sorted(g for g,c in support.terms() if c!=0)})
@@ -81,6 +99,19 @@ def run():
     changed=sorted(k for k in new_values.keys()&old_values.keys() if new_values[k]!=old_values[k])
     output('ChangedValueSerializations',changed)
     output('KeySetDifference',(sorted(new_values.keys()-old_values.keys()),sorted(old_values.keys()-new_values.keys())))
+    output('OtherExportPreservationResidual',{key:sp.Integer(new_values[key]!=old_values[key])
+        for key in new_values.keys()&old_values.keys() if key not in ('slab_operator','slab_operator_term_origins')},tuple(b.DIM_ZERO))
+    output('OriginComponentKeySetDifference',(sorted(new_origins.keys()-old_origins.keys()),sorted(old_origins.keys()-new_origins.keys())))
+    if new_values.keys()!=old_values.keys() or new_origins.keys()!=old_origins.keys():
+        raise ValueError('export/component key set changed; inspect emitted differences')
+    other_origins=[]
+    for path in sorted(new_origins):
+        if path[1:]!=('VALUE','KINETIC'):
+            old,new=old_origins[path],new_origins[path]
+            other_origins.append((path,hashlib.sha256(old.encode()).hexdigest(),
+                hashlib.sha256(new.encode()).hexdigest(),sp.Integer(old!=new)))
+    output('OtherOriginIdentityOperands',other_origins,tuple(b.DIM_ZERO))
+    output('OtherOriginPreservationResidual',tuple(row[-1] for row in other_origins),tuple(b.DIM_ZERO))
     t=sp.Symbol('s11cThicknessCoordinateActionTime',real=True)
     fields=tuple(sp.Function('s11cThicknessCoordinateActionField'+str(i))(t) for i in range(4))
     accelerations=(*b.u_tt,b.e_tt);reverse={sp.diff(f,t,2):a for f,a in zip(fields,accelerations)}
@@ -99,12 +130,21 @@ def run():
         extracted=new_rows.applyfunc(lambda row:sp.expand(sum(sp.diff(row,a)*a for a in accelerations)))
         old_extracted=old_rows.applyfunc(lambda row:sp.expand(sum(sp.diff(row,a)*a for a in accelerations)))
         expected_delta=action_rows-old_source
+        origin_values=[]
+        for origins in (old_origins,new_origins):
+            value=_restore(origins[(case,'VALUE','KINETIC')])
+            origin_values.append(sp.ImmutableMatrix([*value[0],value[1]]))
+        old_origin,new_origin=origin_values
         for name,value in [('BeforeRows',old_rows),('AfterRows',new_rows),('NativeInertia',extracted),
             ('BaselineInertia',old_extracted),('ActionInertia',action_rows),('BaselineSourceInertia',old_source),
             ('RowDelta',new_rows-old_rows),('ActionDerivedDelta',expected_delta),
             ('ActionResidual',extracted-action_rows),('BaselineSourceResidual',old_extracted-old_source),
             ('NonkineticPreservationResidual',new_rows.xreplace(zero)-old_rows.xreplace(zero)),
-            ('FullDeltaAccountingResidual',new_rows-old_rows-expected_delta)]:
+            ('FullDeltaAccountingResidual',new_rows-old_rows-expected_delta),
+            ('BaselineOriginInertia',old_origin),('NativeOriginInertia',new_origin),
+            ('OriginDelta',new_origin-old_origin),('OriginActionResidual',new_origin-action_rows),
+            ('OriginBaselineSourceResidual',old_origin-old_source),
+            ('OriginDeltaAccountingResidual',new_origin-old_origin-expected_delta)]:
             output(label+name,value.applyfunc(sp.expand),units)
         slots=[]
         for key,value in current:
@@ -125,10 +165,13 @@ def run():
         'sourcePinsAfter':{p:sha(Path(p)) for p in pins},'sourceSnapshots':snapshots,'checks':residuals,'objects':len(records),
         'objectsSha256':sha(target),'cases':[list(map(str,c)) for c in after],
         'changedValueSerializations':changed,'addedKeys':sorted(new_values.keys()-old_values.keys()),
+        'originComponents':len(new_origins),'otherOriginComponents':len(other_origins),
         'removedKeys':sorted(old_values.keys()-new_values.keys()),'otherSlotsPerCase':preserved,
         'nonzeroResidualScalars':sum(v['nonzero'] for v in residuals.values()),
         'wallSeconds':elapsed,'peakRssKiB':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss}
     (base/'checks.json').write_text(json.dumps(summary,indent=2)+'\n')
+    progress('complete',nonzeroResidualScalars=summary['nonzeroResidualScalars'])
+    faulthandler.cancel_dump_traceback_later();stack_stream.close()
     if summary['nonzeroResidualScalars']:raise ValueError('b export residual; inspect emitted operands')
 
 

@@ -920,8 +920,9 @@ def conservative_power_variation(inputs, case):
     stored_anchor=sp.diff(stored[3],inputs.a('k_W'),fields[3])
     action_to_row=sp.cancel(stored_anchor/action_anchor)
     rho=inputs.density[(density,)][1]
+    # e_W is deltaW/W_0; differentiate the defining physical thickness field.
     kinetic=inputs.eps**2*(rho*sum(v*v for v in rates[:3])+
-                          inputs.a('mu_W')*(inputs.values['W_bg']*rates[3])**2)/2
+                          inputs.a('mu_W')*sp.diff(inputs.values['W_0']*fields[3],TIME)**2)/2
     kinetic_action=sp.ImmutableMatrix([-sp.diff(sp.diff(kinetic,rate),TIME)/inputs.eps for rate in rates])
     kinetic_rows=tree(action_to_row*kinetic_action,lambda e:retained_shape(e,inputs))
     source_kinetic=named(inputs.origins[case],'KINETIC')

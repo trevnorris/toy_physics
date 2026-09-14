@@ -112,19 +112,44 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--run-root',type=Path,required=True)
     parser.add_argument('--plan-only',action='store_true')
-    args=parser.parse_args();base=args.run_root.resolve();rows=plan(base)
+    parser.add_argument('--start-at',choices=('b','c1','c2','d'),default='b')
+    parser.add_argument('--state-directory',type=Path)
+    args=parser.parse_args();base=args.run_root.resolve();all_rows=plan(base)
+    index=next(i for i,row in enumerate(all_rows) if row['stage']==args.start_at)
+    predecessors,rows=all_rows[:index],all_rows[index:]
     if args.plan_only:
         for row in rows:
             for _,command,_ in row['steps']:
                 if not (ROOT/command[1]).is_file():raise ValueError(('instrument missing',command[1]))
             print(json.dumps(row),flush=True)
         return
-    state=base/'continuation';state.mkdir(exist_ok=False)
+    completed=[]
+    for row in predecessors:
+        result=describe(row)
+        export=ROOT/'scripts'/('S11c_'+row['stage']+'_exports.py')
+        if sha(export)!=result['exportSha256']:raise ValueError('predecessor export changed')
+        evidence={p:sha(ROOT/p) for p in row['evidence']}
+        outputs={p:{'sha256':sha(ROOT/p),'bytes':(ROOT/p).stat().st_size} for p in row['outputs']}
+        if outputs[row['outputs'][0]]['sha256']!=result['nativeOutputSha256']:
+            raise ValueError('predecessor published transcript changed')
+        committed=subprocess.check_output(['git','diff','HEAD','--name-only','--',
+            *[str((ROOT/p).relative_to(REPO)) for p in row['ordinary']+row['outputs']]],cwd=REPO,text=True)
+        if committed.strip():raise ValueError('predecessor checkpoint has uncommitted changes')
+        completed.append({'stage':row['stage'],'result':result,'evidence':evidence,'outputs':outputs})
+    state=args.state_directory.resolve() if args.state_directory else base/'continuation'
+    state.relative_to(base)  # Keep every attempt under the pinned run root.
+    state.mkdir(exist_ok=False)
     plan_file=state/'plan.json';plan_file.write_text(json.dumps(rows,indent=2)+'\n')
     files={str(Path(__file__).relative_to(ROOT)),M+PREFIX+'d_recheck_plan.json'}
     files|={command[1] for row in rows for _,command,_ in row['steps']}
     pins={p:sha(ROOT/p) for p in sorted(files)}
     (state/'source_pins.json').write_text(json.dumps(pins,indent=2)+'\n')
+    (state/'completed_predecessors.json').write_text(json.dumps(completed,indent=2)+'\n')
+    pointer=base/'active_continuation.json'
+    temporary=base/'active_continuation.json.new'
+    temporary.write_text(json.dumps({'stateDirectory':str(state),'startAt':args.start_at,
+        'controllerSha256':sha(Path(__file__)),'planSha256':sha(plan_file)},indent=2)+'\n')
+    temporary.replace(pointer)
     events=[]
     def progress(event):
         event={**event,'utc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime())}
@@ -143,7 +168,6 @@ def main():
         if 'exit_code' in producer:break
         time.sleep(15)
     if producer['exit_code']!=0:raise ValueError('b producer failed; inspect preserved output')
-    completed=[]
     for row in rows:
         stable();progress({'stage':row['stage'],'event':'started'})
         for name,command,transcript in row['steps']:
@@ -169,7 +193,7 @@ def main():
         for item in completed:
             text+='## Completed '+item['stage']+'\n\n'
             text+='```json\n'+json.dumps(item['result'],indent=2)+'\n```\n\n'
-        pending=[v['stage'] for v in rows if v['stage'] not in {x['stage'] for x in completed}]
+        pending=[v['stage'] for v in all_rows if v['stage'] not in {x['stage'] for x in completed}]
         text+='Remaining native producers: '+(', '.join(pending) if pending else 'none in this regeneration queue')+'.\n\n'
         text+='Fresh endpoint/reference sources, two-frequency pairing and full current/adjoint normalization remain separate next steps. Native point/path/stratum records do not establish global coverage, scattering or section 3b profile-frequency bound poles.\n'
         STATUS.write_text(text)

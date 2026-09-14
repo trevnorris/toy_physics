@@ -1,18 +1,24 @@
 {
-  "observedUtc": "2026-09-14T10:45:08.177170+00:00",
+  "observedUtc": "2026-09-14T13:43:46.748466+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
-  "producerCompleted": false,
-  "currentProducerSourcesMatch": true,
-  "producerStdoutBytes": 616006,
-  "producerStderrBytes": 0,
-  "continuationProgress": {
-    "stage": "waiting_for_b",
-    "manifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
-    "utc": "2026-09-14T10:40:14Z"
+  "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
+  "producerCompleted": true,
+  "producerExitCode": 0,
+  "producerWallSeconds": 6296.630407462828,
+  "producerPeakRssKiB": 1942292,
+  "firstExportCheck": "interrupted; preserved metadata-domain GCD traceback",
+  "firstExportCheckTracebackSha256": "1a3341e59e5d18f9cf362f4ec31662d0ef5897be74ee036f8808213d436b67ce",
+  "activeExportCheckDirectory": "/tmp/s11c-thickness-coordinate-20260914/b_checks_exdomain",
+  "activeExportCheckProgress": {
+    "operation": "emit",
+    "wallSeconds": 303.6005769884214,
+    "object": "LabHeldRhobrConstantAfterRows"
   },
-  "continuationStderrBytes": 0,
-  "continuationCommit": "e9b3d6d1",
-  "preparedValidationCommit": "a01fd555",
-  "recurringFollowup": "not created; automatic approval review requested explicit authorization for recurring unattended repairs/commits",
-  "scope": "A running-process checkpoint, not completed export regeneration or an endpoint balance result."
+  "continuationState": "stopped after first export check; restart at c1 only after validated b commit",
+  "recurringFollowup": {
+    "id": "continue-s11c-d-repair-and-build",
+    "status": "ACTIVE",
+    "userApproved": true
+  },
+  "scope": "Completed native b producer; physical export validation running; c2 source control propagated but full verification pending."
 }

@@ -1,0 +1,20 @@
+{
+  "scope": "Prepared normalization adapters; physical execution pending endpoint queue completion",
+  "syntax": {
+    "S11c_d_end_normalization_check.py": true,
+    "S11c_d_end_normalization_run.py": true,
+    "S11c_d_end_normalization_validate.py": true
+  },
+  "sourceSha256": {
+    "_measurements/S11c_d_end_normalization_check.py": "bacf421e5d9489b99d975f083e5524a6a341456c065ef873eb99727a0f0e3579",
+    "_measurements/S11c_d_end_normalization_run.py": "beb43bb362d31ac130ad313eb4c6f4b1db027fa88e7e0f969a26ff30afafb5a1",
+    "_measurements/S11c_d_end_normalization_validate.py": "0380f9436ba88f75e9a4cffacaa183995c1632ceb06636604dd4841cc88d99e1"
+  },
+  "serialGuard": {
+    "probe": "active endpoint queue refuses second heavy stage",
+    "exitCode": 1,
+    "blockedByExistingQueueLock": true,
+    "childLogsCreated": false,
+    "scope": "operational serialization guard; no physical calculation"
+  }
+}

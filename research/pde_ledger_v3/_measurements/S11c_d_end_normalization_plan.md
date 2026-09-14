@@ -1,0 +1,50 @@
+# S11c-d current and adjoint normalization after the thickness repair
+
+The user authorized continuing and committing each substantive step on
+2026-09-14, with a stop before another upstream physical repair. This extends
+step 6 of the thickness-coordinate repair plan and the existing native
+`ModalCurrentSubspaces` and `AdjointCurrentMap` constructions.
+
+Prerequisites: the eight-stage endpoint queue must finish and commit its
+fresh source, frequency and independent-frequency pairing checkpoints. RIGHT
+pairing is committed at 7c2001b6 and LEFT at 86e61755, both with zero retained
+discrepancy. Reference pairing is running when this plan is written. Keep
+the queue's native source pins unchanged until it finishes.
+
+1. Add an explicit context parameter to the two existing modal/adjoint
+   emitters, preserving their reference defaults and calculation bodies.
+   No energy, balance, mode or derivative formula changes in this step.
+2. Source-check the new pairing packet and native spectrum. Join the complete
+   physical pencil, material/profile bindings, grade origin, isolated disks
+   and both normal-momentum lifts. Reuse the computed raw objects together
+   with their independent-grade retained/remainder checkpoint; do not replace
+   a physical endpoint with the reference calculation.
+3. Run RIGHT, then LEFT, then a fresh REFERENCE regression, sequentially.
+   Use the supplied finite-contrast homotopy at physical ends and the zero
+   background origin only at REFERENCE. Compute every full modal subspace,
+   frequency/current form and adjoint field map using the existing engine.
+   Compare full coordinate projectors and the frequency derivative to the
+   independently validated end-frequency packet. Basis rotations are allowed;
+   missing directions or rank/property mismatches are not.
+4. Apply the specified outward orientations to computed signed currents and
+   emit incoming/outgoing basis-column records. Preserve every closed,
+   evanescent, wrong-sheet and unresolved candidate as a domain record.
+   The reference regression has no physical end orientation.
+5. Validate literal residuals, heavy-object fingerprints, every emitted
+   metadata path, full-basis ranks, source joins and transcript census.
+   A finite-contrast raw balance discrepancy must be investigated against its
+   recorded truncation remainder; it cannot be silently accepted as closure.
+   Publish each accepted transcript atomically and save with DataLad/git-annex;
+   commit ordinary source, plan, report and inventory files with Git. Verify
+   full payload hashes after annexing before the next stage.
+
+All new runs live under the physical repository path
+`/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/`.
+Keep failed attempts and their source snapshots. The native b/c1/c2/d producer
+and existing endpoint packets remain reusable subject to constructor/input
+joins; a metadata or emission adapter does not require regenerating them.
+
+After accepted normalization, continue one-case variable-profile matching
+under the unchanged solver/export contract. This checkpoint does not claim
+global exceptional coverage, a continuum re-expansion, a complete S-matrix,
+or section 3b profile-dependent frequency poles. Those remain program work.

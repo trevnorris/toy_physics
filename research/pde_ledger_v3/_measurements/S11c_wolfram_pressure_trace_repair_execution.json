@@ -1,5 +1,5 @@
 {
-  "status": "NATIVE_FULL_RUNNING",
+  "status": "NATIVE_FULL_VALIDATION_RUNNING",
   "baseline": "S11c_wolfram_pressure_trace_repair_baseline.json",
   "plan": "S11c_wolfram_pressure_trace_repair_plan.md",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/focused-full",
@@ -120,8 +120,9 @@
   },
   "caseEnvironment": {},
   "remaining": [
-    "regenerate and validate native four-case c2 output",
-    "publish/commit native evidence; resume REFERENCE normalization"
+    "Complete inert four-case native validation under adopted covariance criterion; retain raw R_N6 diagnostic.",
+    "Verify emission comparison and canonical publication, save through DataLad/git-annex and commit repair disposition.",
+    "Resume prepared REFERENCE normalization with a local completion/error watcher."
   ],
   "sourcesFrozenWhileRunning": true,
   "developmentCheckpoint": "S11c_wolfram_pressure_trace_focused_development_checkpoint.json",
@@ -298,7 +299,7 @@
   },
   "nativeDevelopmentCommit": "66412e41",
   "nativeFullManifest": {
-    "status": "running",
+    "status": "completed",
     "head": "66412e4166b6811b62ef76a3c69f1860963dc4a0",
     "startedUtc": "2026-09-14T21:47:56.125087+00:00",
     "sources": {
@@ -374,14 +375,45 @@
     "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full",
     "sourceTransform": null,
     "caseEnvironment": {},
-    "childPid": 1880576
+    "childPid": 1880576,
+    "exitCode": 0,
+    "wallSeconds": 3196.554500593804,
+    "peakRssKiB": 1062960,
+    "finishedUtc": "2026-09-14T22:41:12.680014+00:00",
+    "output": {
+      "bytes": 496254757,
+      "sha256": "08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sourceStability": {
+      "mathematica/S11c_b_brane_operator_mathematica_audit.wl": true,
+      "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": true,
+      "mathematica/S11c_c2_N6_mathematica_audit.wl": true,
+      "directives/S11b_SHARED_PHYSICS.md": true,
+      "directives/S11c_a_SHARED_PHYSICS.md": true,
+      "directives/S11c_b_SHARED_PHYSICS.md": true,
+      "directives/S11c_c1_SHARED_PHYSICS.md": true,
+      "directives/S11c_c2_SHARED_PHYSICS.md": true,
+      "_measurements/S11c_wolfram_repair_audit_plan.md": true,
+      "_measurements/S11c_wolfram_repair_audit_run.py": true,
+      "_measurements/S11c_wolfram_pressure_trace_repair_plan.md": true,
+      "_measurements/S11c_wolfram_pressure_trace_repair_baseline.json": true
+    },
+    "priorOutputStability": {
+      "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": true,
+      "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": true,
+      "mathematica/out/S11c_c2_N6_mathematica_audit.out": true
+    }
   },
   "completionWatcher": {
     "watcher": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full/completion-watcher",
     "watcherPid": 1892052,
     "jobSupervisorPid": 1880558,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
-    "status": "waiting",
+    "status": "finished",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "previousProgressMonitorStopped": 1883242,
     "modelPolling": "disabled",
@@ -389,6 +421,53 @@
       "completion",
       "detected issue"
     ],
-    "globalPreference": "/home/trevnorris/.codex/AGENTS.md"
+    "globalPreference": "/home/trevnorris/.codex/AGENTS.md",
+    "delivery": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-14T22:41:15.616462+00:00"
+      }
+    }
+  },
+  "observedUtc": "2026-09-14T22:46:51.312969+00:00",
+  "nativeFullManifestSha256": "ed6ac426a4fa94bc38f9afe3261b6c6edc34922c082f7503ca428b5aa025f988",
+  "nativeFullValidationInvocation": {
+    "status": "running",
+    "supervisorPid": 1899061,
+    "command": [
+      "/usr/bin/python",
+      "-u",
+      "_measurements/S11c_wolfram_pressure_trace_validate.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full",
+      "--kind",
+      "native",
+      "--expected-cases",
+      "4",
+      "--publish",
+      "mathematica/out/S11c_c2_N6_mathematica_audit.out"
+    ],
+    "startedUtc": "2026-09-14T22:46:06.173370+00:00",
+    "sourceSha256": {
+      "_measurements/S11c_wolfram_pressure_trace_validate.py": "9ee6c86a2993e016044b7072c11823083839a261ab2b6fbde768e6956b51e484",
+      "scripts/S11c_c2_N6_ablation_harness_wl.py": "2820a3f194aabc4242c898378f10f4962a0f9a6c72c848dfe57867716c07d908"
+    },
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full/validation.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full/validation.stderr",
+    "childPid": 1899069,
+    "watcherPid": 1899071,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full/validation-completion-watcher"
+  },
+  "nativeFullValidationSupervisorSha256": "356ce4e2b9896e0484862659743af5bad432aa8572e3411b662fee3ab60de39d",
+  "validationCompletionWatcher": {
+    "status": "waiting",
+    "watcherPid": 1899071,
+    "jobPid": 1899061,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-14T22:46:06.275980+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "3037976c33cbe99a7a417a0f27d0c96de6eaa807256c85e73b6e5a4f48d6e32a",
+    "notifications": {}
   }
 }

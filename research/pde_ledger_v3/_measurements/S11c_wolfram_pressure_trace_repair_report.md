@@ -38,7 +38,11 @@ stderr and all source/prior-output pins stable. Its transcript has 126,423,192
 bytes. The [development validation](S11c_wolfram_pressure_trace_native_development_checkpoint.json)
 finds zero nonzero numerators across nine required residual families, with no
 zero sample denominators. All 144 new trace components have complete family,
-face, grade and restored-dimension joins. The four-case regeneration is next.
+face, grade and restored-dimension joins. The four-case regeneration completed in 3,196.55 seconds at 1,062,960 KiB
+peak RSS with exit zero, empty stderr and stable source/prior-output hashes.
+Its 496,254,757-byte transcript is undergoing inert four-case validation before
+publication. The local completion watcher delivered its event successfully;
+validation now has its own completion/error watcher, with no model polling.
 
 The first validator incorrectly required raw `R_N6` equality. The adopted
 [Reading B](S11c_c2_N6_RESOLVED.md) requires operator covariance and channel

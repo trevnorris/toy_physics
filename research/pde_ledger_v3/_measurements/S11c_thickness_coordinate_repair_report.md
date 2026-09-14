@@ -1,4 +1,4 @@
-# S11c thickness-coordinate repair: source diagnosis
+# S11c thickness-coordinate repair: source fix and regeneration
 
 The endpoint-pairing diagnostic is committed at **f796f7ba**. The user then
 authorized autonomous continuation and a commit at each substantive step.
@@ -48,7 +48,23 @@ independent test. The frozen historical `committed_strong_rows` stays historical
 No S11b/S11c-a law, authority, face-trace closure or d current formula requires a
 change from this evidence.
 
-The producer repair and regeneration are next. Baseline source/export copies
+The source diagnosis is committed at **3c062ae5**. The native kinetic helper now
+composes physical thickness through `local_thickness_map` before differentiating
+its stationary-background velocity. The existing momentum/time-variation
+assembly and the frozen historical comparison are preserved. The independent
+time-action check uses the defining reference-normalized physical field and
+returns **eight literal-zero inertia-minus-action components** across both
+density representatives, with symbolic material/background inputs. The
+[action checkpoint](S11c_thickness_coordinate_action_checkpoint.json) pins the
+4751-byte [output](../scripts/out/S11c_b_inertia_action_after_coordinate_repair.out),
+SHA256 `df08264820d43e3053ef41de07f02eb2d5c5faa35f4340c161492d7cfdfd04db`.
+Python compilation and whitespace checks pass.
+
+Full producer regeneration is next. The serial runner extends the existing
+trace-repair staging to b/c1, preserves the established b primaries/single-worker
+scope, snapshots inputs, measures resources and leaves publication separate.
+Current b/c1/c2/d exports and production outputs still describe the pre-repair
+operator until their recorded regeneration completes. Baseline source/export copies
 and all accessible S11c output hashes are recorded in
 [S11c_thickness_coordinate_baseline.json](S11c_thickness_coordinate_baseline.json).
 After the source fix, regenerate b, c1, c2 and d in order, then rebuild actual

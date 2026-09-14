@@ -2320,8 +2320,12 @@ def kinetic_balance_from_energy(rhobr: sp.Expr) -> tuple[tuple[sp.Expr, ...], sp
     # cubic wave order. Use d_t(dT/dq_t) with the stored +delta U normalization.
     velocities = (*u_t, e_t)
     accelerations = (*u_tt, e_tt)
+    # e_W is normalized by W_0; the local fraction has a separate source map.
+    # Compose physical thickness before taking its stationary-background rate.
+    local_thickness, _ = local_thickness_map()
+    physical_thickness_rate = sp.diff(W_bg * local_thickness, e_W) * e_t
     kinetic_density = epsilon**2 * (
-        rhobr * dot(u_t, u_t) + mu_W * (W_bg * e_t)**2
+        rhobr * dot(u_t, u_t) + mu_W * physical_thickness_rate**2
     ) / 2
     momenta = tuple(sp.diff(kinetic_density, velocity) for velocity in velocities)
     balances = tuple(

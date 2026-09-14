@@ -12,9 +12,10 @@ h = sp.Function('inertiaCheckE')(t)
 jet_map = dict(zip((*b.u_tt, b.e_tt), (sp.diff(f, t, 2) for f in (*fields, h))))
 for representative in b.DENSITY_REPS:
     density = b.density_pair(representative)[1]
-    # Supplied T; independent functional time differentiation, not the helper.
+    # Supplied T with the defining e_W=deltaW/W_0 coordinate; independent
+    # functional time differentiation, not the producer's local map/helper.
     T = b.epsilon**2 * (density * sum(sp.diff(f, t)**2 for f in fields)
-                        + b.mu_W * sp.diff(b.W_bg * h, t)**2) / 2
+                        + b.mu_W * sp.diff(b.W0 * h, t)**2) / 2
     action = sp.Tuple(*(sp.diff(sp.diff(T, sp.diff(f, t)), t) / b.epsilon
                         for f in (*fields, h)))
     raw, _ = b.operator_from_density(sp.S.Zero, representative)

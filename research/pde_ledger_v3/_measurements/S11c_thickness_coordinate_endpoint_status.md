@@ -34,6 +34,18 @@ Fresh calculations against the regenerated native producer. Each stage uses its 
 }
 ```
 
-Remaining planned stages: reference_source, right_frequency, left_frequency, right_pairing, left_pairing, reference_pairing.
+## reference_source
+
+```json
+{
+  "tagCount": 146,
+  "residualScalarCount": 30,
+  "nonzeroResidualCount": 0,
+  "wallSeconds": 40.5872370749712,
+  "peakRssKiB": 200784
+}
+```
+
+Remaining planned stages: right_frequency, left_frequency, right_pairing, left_pairing, reference_pairing.
 
 Full endpoint current/adjoint maps and outward orientations precede variable-profile matching. No global exceptional coverage, complete scattering or profile-frequency bound-pole claim.

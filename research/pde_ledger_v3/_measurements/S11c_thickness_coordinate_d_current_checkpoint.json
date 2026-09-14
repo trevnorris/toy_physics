@@ -1,0 +1,42 @@
+{
+  "manifest": "/tmp/s11c-thickness-coordinate-20260914/reference_current/manifest.json",
+  "manifestSha256": "a5bb9251aa6023560cba0c6e22f730d81db95301941e362ba44ed8ece30ed42a",
+  "instrumentSha256": "e9c8d8a60a5eae18d5244bdc5b02c1895e55f3c5102e7b7744d81c3b5194f250",
+  "checksPath": "_measurements/S11c_thickness_coordinate_d_current_checks.json",
+  "checksSha256": "5987e3848787ef383679814eab3f2518b67fd614e72b03e9ea6216caa029dc8f",
+  "wallSeconds": 40.5872370749712,
+  "peakRssKiB": 200784,
+  "tagCount": 146,
+  "residualScalarCount": 30,
+  "nonzeroResidualCount": 0,
+  "mechanicalOrientationAnchor": {
+    "source": "Pow(Symbol('W_0', positive=True), Integer(2))",
+    "energy": "Pow(Symbol('W_0', positive=True), Integer(2))",
+    "residual": "Integer(0)",
+    "dimensionLTM": [
+      "2",
+      "0",
+      "0"
+    ],
+    "multigrade": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "epsilonLambdaSupport": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "failures": [],
+  "scope": "LAB_HELD/RHO4_CONSTANT reference current and acoustic source; no endpoint flux normalization.",
+  "publication": {
+    "path": "scripts/out/S11c_d_nonlocal_current_reference_thickness_repair.out",
+    "bytes": 1495332,
+    "sha256": "fe0a4de332dc12d0542b4aaa004baa8fb826682f58f2f82c0b702b6cfbe63f73"
+  }
+}

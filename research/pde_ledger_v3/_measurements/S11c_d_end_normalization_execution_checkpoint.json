@@ -154,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Implement steps 1\u20132 of S11c_d_variable_profile_matching_plan.md: source-driven two-end channel data and complete cross-mode current matrices.",
+  "nextStage": "Matching-channel construction is running; follow S11c_d_matching_channels_execution.json.",
   "operationalResolutions": {
     "constructorLogLink": [
       {

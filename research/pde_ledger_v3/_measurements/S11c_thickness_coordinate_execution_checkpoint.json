@@ -15,7 +15,7 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "RIGHT/LEFT/REFERENCE normalization committed; two-end matching channel construction is next.",
+  "continuationState": "RIGHT/LEFT/REFERENCE normalization committed; source-driven two-end matching-channel construction is running.",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
     "status": "DELETED",
@@ -201,5 +201,6 @@
   "wolframRepairCommit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
   "normalizationReferenceCheckpoint": "S11c_d_end_normalization_reference_thickness_repair_checkpoint.json",
   "normalizationReferenceCommit": "9862156cc46a8aec10aff3d4a3935cbdf11c4684",
-  "nextMatchingPlan": "S11c_d_variable_profile_matching_plan.md"
+  "nextMatchingPlan": "S11c_d_variable_profile_matching_plan.md",
+  "matchingExecution": "S11c_d_matching_channels_execution.json"
 }

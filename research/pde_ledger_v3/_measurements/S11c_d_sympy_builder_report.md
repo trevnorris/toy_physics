@@ -42,6 +42,10 @@ ordinary sources, reports and inventories use Git. The user controls continuatio
 Owned jobs use user-authorized local completion/error wake-ups, with no recurring
 checks or model polling.
 
+The [matching-channel construction](S11c_d_matching_channels_report.md) now
+computes source-driven two-end bases and full cross-mode currents. Its first
+focused run is active; no result is accepted until its checks complete.
+
 The complete two-ended variable-profile S-matrix, profile-frequency bound
 poles/residues/overlap, survival, flux bookkeeping, weak coefficients, section 5
 controls and final own-row export remain program work. Per-root and full-subspace

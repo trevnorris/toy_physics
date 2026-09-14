@@ -28,6 +28,12 @@ from S11c_thickness_coordinate_origin_components import origin_components
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def polynomial_support(expression,*generators):
+    """Compute complete support for the small raw kinetic-action diagnostics."""
+    polynomial=sp.Poly(sp.expand(expression),*generators,domain=sp.EX)
+    return tuple(sorted(grade for grade,coefficient in polynomial.terms() if coefficient!=0))
+
+
 def leaves(value,units,path=()):
     if isinstance(units,sp.MatrixBase):
         yield path,value,tuple(units)
@@ -115,7 +121,7 @@ def run():
     slot_keys=closure_slots(inputs)
     lam=sp.Symbol('s11cThicknessCoordinateC2ExportLambda');unused=sp.Dummy('unusedGrade')
     records=[];checks={};keys=set()
-    def output(name,value,unit=(0,0,0)):
+    def output(name,value,unit=(0,0,0),*,polynomial_metadata=False):
         progress('emit',object=name)
         body=d.cas(value);key='s11cThicknessCoordinateC2'+name
         if key in keys or key in fold or key in new['c2']:raise ValueError('write-key collision')
@@ -123,12 +129,16 @@ def run():
         for path,leaf in d.leaves(body):
             if isinstance(leaf,d.Str):continue
             expression=leaf.xreplace(inputs.profiles)
-            support=c2.grades(expression,inputs.eps,inputs.eta,inputs.sigma)
             homotopy=expression.subs({inputs.eta:lam,inputs.sigma:lam*inputs.values['W_0']/inputs.values['L_W']})
-            lambda_support=c2.grades(homotopy,inputs.eps,lam,unused)
+            if polynomial_metadata:
+                support=polynomial_support(expression,inputs.eps,inputs.eta,inputs.sigma)
+                lambda_support=polynomial_support(homotopy,inputs.eps,lam)
+            else:
+                support=c2.grades(expression,inputs.eps,inputs.eta,inputs.sigma)
+                lambda_support={g[:2] for g in c2.grades(homotopy,inputs.eps,lam,unused)}
             metadata.append({'path':path,'dimensionLTM':unit(path) if callable(unit) else unit,
-                'gradeConvention':'NATIVE_STRUCTURAL_RETAINED_SUPPORT',
-                'multigrade':sorted(support),'epsilonLambdaSupport':sorted({g[:2] for g in lambda_support})})
+                'gradeConvention':'EXACT_POLYNOMIAL_SUPPORT' if polynomial_metadata else 'NATIVE_STRUCTURAL_RETAINED_SUPPORT',
+                'multigrade':sorted(support),'epsilonLambdaSupport':sorted(lambda_support)})
         heavy=not small_literal(body)
         record={'writeKey':key,'value':d.carrier_fingerprint(body) if heavy else body,
                 'representation':'CARRIER_PIT_SHA' if heavy else 'LITERAL','metadata':metadata}
@@ -188,9 +198,9 @@ def run():
         new_energy,new_action=native_action(inputs,case)
         normalized=c2.tree(current['ACTION_TO_ROW_MULTIPLIER']*new_action,lambda v:c2.retained_shape(v,inputs))
         historical=c2.tree(current['ACTION_TO_ROW_MULTIPLIER']*old_action,lambda v:c2.retained_shape(v,inputs))
-        output(label+'BaselineActionEnergy',old_energy,(-1,-2,1))
-        output(label+'NativeActionEnergy',new_energy,(-1,-2,1))
-        output(label+'ActionEnergyDelta',c2.difference(new_energy,old_energy),(-1,-2,1))
+        output(label+'BaselineActionEnergy',old_energy,(-1,-2,1),polynomial_metadata=True)
+        output(label+'NativeActionEnergy',new_energy,(-1,-2,1),polynomial_metadata=True)
+        output(label+'ActionEnergyDelta',c2.difference(new_energy,old_energy),(-1,-2,1),polynomial_metadata=True)
         units=lambda path:(-2,-2,1) if path[0]<3 else (-1,-2,1)
         for name,value in (
             ('BaselineActionRows',historical),('NativeActionRows',normalized),
@@ -198,7 +208,7 @@ def run():
             ('NormalizationResidual',current['KINETIC_NORMALIZATION_RESIDUAL']),
             ('SourceAssemblyResidual',c2.difference(new_action,current['KINETIC_ACTION_ROWS'])),
             ('BaselineToCorrectedDifference',c2.difference(historical,normalized))):
-            output(label+name,value,units)
+            output(label+name,value,units,polynomial_metadata=True)
     old_b=c2.cases(_restore(old['b']['slab_operator']));new_b=c2.cases(_restore(new['b']['slab_operator']))
     expanded={};component_census=[]
     for case in new_b:

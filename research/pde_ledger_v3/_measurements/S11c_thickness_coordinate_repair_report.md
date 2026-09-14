@@ -231,3 +231,31 @@ and a commit before d. Its plan-only run validated the completed c2 artifacts;
 Python compilation and whitespace checks pass. Physical c2 action/control and
 closure-delta results are still pending, and production c2/d outputs remain
 historical until validated publication. Preserve the failed guard attempt.
+
+The dependency-guard restart is committed at **a866a6e1**. Its fresh check
+passed the repaired guard and emitted all four kinetic-control comparisons.
+Before publication, inspection found incomplete order metadata on the newly
+exposed raw kinetic actions: the inherited structural rule multiplies the
+support of a power's base and can omit intermediate orders in a squared sum.
+This affects the raw diagnostic action; it does not change the computed action
+or the retained native producer. The attempt was interrupted with its output
+and traceback preserved in `c2_checks_values` and `continuation_after_c2_native`.
+
+The focused checker now computes exact expression-domain polynomial support
+for every small kinetic diagnostic, including the lambda homotopy and zero
+operands. Reconstructing **108 actual emitted scalars** under the imported
+profile definitions gives **216 zero polynomial reconstruction residuals**;
+**50 metadata descriptors** change. See the
+[kinetic grade checkpoint](S11c_thickness_coordinate_c2_kinetic_grade_checkpoint.json).
+The other closure-object metadata retains its explicitly named native
+structural convention. No native source, export or physical operand changed.
+The metadata regression took 2.59 seconds at 334,668 KiB peak RSS.
+
+All four native power-residual payloads are byte-identical to the committed
+baseline, including their metadata; the
+[power-preservation checkpoint](S11c_thickness_coordinate_c2_power_preservation_checkpoint.json)
+pins both transcripts and the four exact comparisons. This is preservation of
+the recorded raw residuals, not a new simplification or physical verdict.
+Resume the completed c2 producer's validation in `c2_checks_exact` under
+`continuation_after_c2_metadata`, then let the existing publication/commit/d
+queue proceed. The full closure-delta comparison remains to finish.

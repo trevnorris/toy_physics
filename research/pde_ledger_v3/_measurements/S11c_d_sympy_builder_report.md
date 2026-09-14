@@ -12,8 +12,9 @@ and its independent time-action test are repaired; eight generic inertia/action
 components are zero. The source repair is committed at 3b52afcb. The full b producer has completed;
 its four-case export comparison completed with 2634 zero residual scalars
 and validated metadata/source joins after the metadata-domain bottleneck repair.
-The c2 independent kinetic control needs the same coordinate propagation and
-is prepared for full regeneration/validation. Execution and the approved
+The c2 independent kinetic control is repaired and its native producer has
+completed. Focused export validation is restarting with a corrected dependency
+guard and exact order metadata for the new raw-action diagnostics. Execution and the approved
 recurring continuation are recorded in the active repair report. Downstream
 artifacts remain historical until each producer's validated regeneration finishes.
 

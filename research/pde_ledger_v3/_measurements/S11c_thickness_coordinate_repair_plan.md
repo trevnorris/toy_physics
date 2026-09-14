@@ -127,3 +127,12 @@ The controller verifies the saved native run before reuse and still executes
 all artifact/physical checks and publication gates. Never rerun the completed
 c2 producer merely to repair this checker. Current queue discovery continues
 through `active_continuation.json`.
+
+
+The c2 raw-action metadata inspection requires one further checker-only restart:
+use `--check-directory-suffix exact --state-directory
+/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_metadata` with
+`--start-at c2 --reuse-completed-producer c2`. Exact polynomial metadata is
+used for the newly emitted small kinetic diagnostics; the native producer is
+unchanged and remains reusable under its source/artifact guards. Earlier
+attempts remain intact. Current state is always the active pointer's directory.

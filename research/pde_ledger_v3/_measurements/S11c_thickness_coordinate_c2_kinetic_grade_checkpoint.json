@@ -1,0 +1,4456 @@
+{
+  "sourceBExportSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+  "sourceTranscript": "/tmp/s11c-thickness-coordinate-20260914/c2_checks_values.out",
+  "sourceTranscriptSha256": "c65cdd7e8cdb30fedfe3afdecb98e97b3d939ddc2e70ef2ee3b0fa2de4c5f01a",
+  "instrumentSha256": "12d28e857033e8ade6514cc67c15013b84d1695069b2d08d6a0537d069dff732",
+  "profileBindingsSrepr": "Tuple(Tuple(Symbol('mu_R_bg'), Mul(Symbol('mu_R', positive=True), Add(Mul(Symbol('eta_bg', real=True), Symbol('m1_profile', real=True)), Integer(1)))), Tuple(Symbol('W_bg_d1'), Mul(Symbol('sigma_W', real=True), Symbol('w1_profile_d1', real=True))), Tuple(Symbol('rho_4D_bg_rho4_constant'), Mul(Pow(Symbol('W_0', positive=True), Integer(-1)), Symbol('rho_br', positive=True))), Tuple(Symbol('mu_R_bg_d2'), Mul(Pow(Symbol('W_0', positive=True), Integer(-1)), Symbol('m1_profile_d2', real=True), Symbol('mu_R', positive=True), Symbol('sigma_W', real=True))), Tuple(Symbol('e_W_bg'), Mul(Symbol('W_0', positive=True), Pow(Symbol('W_bg'), Integer(-1)), Symbol('e_W'))), Tuple(Symbol('W_bg_d3'), Mul(Symbol('sigma_W', real=True), Symbol('w1_profile_d3', real=True))), Tuple(Symbol('rho_4D_bg_rhobr_constant'), Mul(Pow(Symbol('W_bg'), Integer(-1)), Symbol('rho_br', positive=True))), Tuple(Symbol('W_bg'), Mul(Symbol('W_0', positive=True), Add(Mul(Symbol('eta_bg', real=True), Symbol('w1_profile', real=True)), Integer(1)))), Tuple(Symbol('rho_br_bg_rho4_constant'), Mul(Pow(Symbol('W_0', positive=True), Integer(-1)), Symbol('W_bg'), Symbol('rho_br', positive=True))), Tuple(Symbol('W_bg_d2'), Mul(Symbol('sigma_W', real=True), Symbol('w1_profile_d2', real=True))), Tuple(Symbol('mu_R_bg_d3'), Mul(Pow(Symbol('W_0', positive=True), Integer(-1)), Symbol('m1_profile_d3', real=True), Symbol('mu_R', positive=True), Symbol('sigma_W', real=True))), Tuple(Symbol('rho_br_bg_rhobr_constant'), Symbol('rho_br', positive=True)), Tuple(Symbol('mu_R_bg_d1'), Mul(Pow(Symbol('W_0', positive=True), Integer(-1)), Symbol('m1_profile_d1', real=True), Symbol('mu_R', positive=True), Symbol('sigma_W', real=True))))",
+  "scalarRecords": [
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlBaselineActionEnergy",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Rational(1, 2), Pow(Symbol('epsilon_shape'), Integer(2)), Add(Mul(Pow(Symbol('W_bg'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Symbol('rho_br', positive=True), Add(Mul(Symbol('eta_bg', real=True), Symbol('w1_profile', real=True)), Integer(1)), Add(Pow(Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlNativeActionEnergy",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Rational(1, 2), Pow(Symbol('epsilon_shape'), Integer(2)), Add(Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Symbol('rho_br', positive=True), Add(Mul(Symbol('eta_bg', real=True), Symbol('w1_profile', real=True)), Integer(1)), Add(Pow(Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlActionEnergyDelta",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Rational(1, 2), Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('epsilon_shape'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Pow(Symbol('W_bg'), Integer(2)), Pow(Symbol('epsilon_shape'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlBaselineActionRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlBaselineActionRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlBaselineActionRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlBaselineActionRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('mu_W', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlNativeActionRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlNativeActionRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlNativeActionRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlNativeActionRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlImportedOriginRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlImportedOriginRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlImportedOriginRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlImportedOriginRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlNormalizationResidual",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlNormalizationResidual",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlNormalizationResidual",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlNormalizationResidual",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRho4ConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('mu_W', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlBaselineActionEnergy",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Rational(1, 2), Pow(Symbol('epsilon_shape'), Integer(2)), Add(Mul(Pow(Symbol('W_bg'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Symbol('rho_br', positive=True), Add(Pow(Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlNativeActionEnergy",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Rational(1, 2), Pow(Symbol('epsilon_shape'), Integer(2)), Add(Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Symbol('rho_br', positive=True), Add(Pow(Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlActionEnergyDelta",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Rational(1, 2), Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('epsilon_shape'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Pow(Symbol('W_bg'), Integer(2)), Pow(Symbol('epsilon_shape'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlBaselineActionRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlBaselineActionRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlBaselineActionRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlBaselineActionRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('mu_W', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlNativeActionRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlNativeActionRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlNativeActionRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlNativeActionRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlImportedOriginRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlImportedOriginRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlImportedOriginRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlImportedOriginRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlNormalizationResidual",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlNormalizationResidual",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlNormalizationResidual",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlNormalizationResidual",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2LabHeldRhobrConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('mu_W', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlBaselineActionEnergy",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Rational(1, 2), Pow(Symbol('epsilon_shape'), Integer(2)), Add(Mul(Pow(Symbol('W_bg'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Symbol('rho_br', positive=True), Add(Mul(Symbol('eta_bg', real=True), Symbol('w1_profile', real=True)), Integer(1)), Add(Pow(Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlNativeActionEnergy",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Rational(1, 2), Pow(Symbol('epsilon_shape'), Integer(2)), Add(Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Symbol('rho_br', positive=True), Add(Mul(Symbol('eta_bg', real=True), Symbol('w1_profile', real=True)), Integer(1)), Add(Pow(Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlActionEnergyDelta",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Rational(1, 2), Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('epsilon_shape'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Pow(Symbol('W_bg'), Integer(2)), Pow(Symbol('epsilon_shape'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlBaselineActionRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlBaselineActionRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlBaselineActionRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlBaselineActionRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('mu_W', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlNativeActionRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlNativeActionRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlNativeActionRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlNativeActionRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlImportedOriginRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlImportedOriginRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlImportedOriginRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('rho_br', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlImportedOriginRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlNormalizationResidual",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlNormalizationResidual",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlNormalizationResidual",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlNormalizationResidual",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRho4ConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('mu_W', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlBaselineActionEnergy",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Rational(1, 2), Pow(Symbol('epsilon_shape'), Integer(2)), Add(Mul(Pow(Symbol('W_bg'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Symbol('rho_br', positive=True), Add(Pow(Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlNativeActionEnergy",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Rational(1, 2), Pow(Symbol('epsilon_shape'), Integer(2)), Add(Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Symbol('rho_br', positive=True), Add(Pow(Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlActionEnergyDelta",
+      "path": [],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Rational(1, 2), Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('epsilon_shape'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))), Mul(Integer(-1), Rational(1, 2), Pow(Symbol('W_bg'), Integer(2)), Pow(Symbol('epsilon_shape'), Integer(2)), Symbol('mu_W', positive=True), Pow(Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(1))), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlBaselineActionRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlBaselineActionRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlBaselineActionRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlBaselineActionRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Add(Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('mu_W', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))), Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2)))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlNativeActionRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlNativeActionRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlNativeActionRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlNativeActionRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlImportedOriginRows",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu1')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlImportedOriginRows",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu2')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlImportedOriginRows",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Symbol('epsilon_shape'), Symbol('rho_br', positive=True), Derivative(Function('s11cc2Fieldu3')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlImportedOriginRows",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          0
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('mu_W', positive=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlNormalizationResidual",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlNormalizationResidual",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlNormalizationResidual",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlNormalizationResidual",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlSourceAssemblyResidual",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        0
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        1
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        2
+      ],
+      "dimensionLTM": [
+        -2,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "afterMultigrade": [],
+      "beforeEpsilonLambdaSupport": [
+        [
+          0,
+          0
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Integer(0)"
+    },
+    {
+      "key": "s11cThicknessCoordinateC2MaterialAdvectedRhobrConstantKineticControlBaselineToCorrectedDifference",
+      "path": [
+        3
+      ],
+      "dimensionLTM": [
+        -1,
+        -2,
+        1
+      ],
+      "beforeMultigrade": [
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "afterMultigrade": [
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "beforeEpsilonLambdaSupport": [
+        [
+          1,
+          1
+        ]
+      ],
+      "afterEpsilonLambdaSupport": [
+        [
+          1,
+          1
+        ]
+      ],
+      "reconstructionResidual": "0",
+      "lambdaReconstructionResidual": "0",
+      "operandSrepr": "Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('epsilon_shape'), Symbol('eta_bg', real=True), Symbol('mu_W', positive=True), Symbol('w1_profile', real=True), Derivative(Function('s11cc2FieldeW')(Symbol('s11cc2X1', real=True), Symbol('s11cc2X2', real=True), Symbol('s11cc2X3', real=True), Symbol('s11cc2Time', real=True)), Tuple(Symbol('s11cc2Time', real=True), Integer(2))))"
+    }
+  ],
+  "changedMetadataScalars": 50,
+  "nonzeroReconstructionResiduals": 0,
+  "wallSeconds": 2.5873337453231215,
+  "peakRssKiB": 334668,
+  "scope": "Exact polynomial metadata reconstruction from the actual emitted raw kinetic operands and inherited profile definitions. Physical operands and native c2 producer are unchanged."
+}

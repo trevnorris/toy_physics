@@ -1,0 +1,38 @@
+{
+  "scope": "Exact native power-residual serialization comparison with the committed transcript; no algebraic simplification or new power verdict.",
+  "sameTagSet": true,
+  "records": {
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
+      "identical": true,
+      "beforeBytes": 1126718,
+      "afterBytes": 1126718,
+      "beforeSha256": "c95eb3e4e0186f9c724de7ff59f2a9951b48ef004e2210a89d92a8fe5dc511c4",
+      "afterSha256": "c95eb3e4e0186f9c724de7ff59f2a9951b48ef004e2210a89d92a8fe5dc511c4"
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
+      "identical": true,
+      "beforeBytes": 870938,
+      "afterBytes": 870938,
+      "beforeSha256": "d09c72ce8e55ebf199d754fef5bedd7fff7db8ac416363e0761d109d21c639d7",
+      "afterSha256": "d09c72ce8e55ebf199d754fef5bedd7fff7db8ac416363e0761d109d21c639d7"
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
+      "identical": true,
+      "beforeBytes": 1343186,
+      "afterBytes": 1343186,
+      "beforeSha256": "eeb8b0464ee82e0045179c4541f712dfb5f0603aaa3e3883db8e683fe93b7185",
+      "afterSha256": "eeb8b0464ee82e0045179c4541f712dfb5f0603aaa3e3883db8e683fe93b7185"
+    },
+    "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
+      "identical": true,
+      "beforeBytes": 1669631,
+      "afterBytes": 1669631,
+      "beforeSha256": "1bb14ff718e362983403a8de305743595fe6567c5bcead0ca340fdcd9fbdda66",
+      "afterSha256": "1bb14ff718e362983403a8de305743595fe6567c5bcead0ca340fdcd9fbdda66"
+    }
+  },
+  "transcripts": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out": "9e3a2da7d56cb7124e7b96ea47d0a459c48aecf5224d8d8431804316e9c6c289",
+    "/tmp/s11c-thickness-coordinate-20260914/c2_full/full.out": "9712191e3af5e7bbc2eb65824ca283f0c5cb3a35d5e21632d0821412ec018864"
+  }
+}

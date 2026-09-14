@@ -176,3 +176,16 @@ path (183,361,030 bytes), preserving its previous annex payload. See the
 [b artifact inventory](S11c_thickness_coordinate_b_stage_inventory.json) and
 [validated action/export checkpoint](S11c_thickness_coordinate_b_export_checkpoint.json).
 c1/c2/d regeneration and fresh endpoint/reference balance remain next.
+
+The validated b artifact checkpoint is **1175b686**. Its native and focused
+outputs are both confirmed annex pointers with unchanged payload hashes.
+Before starting the remaining queue, the shared export validator now records
+improper-integral endpoint nodes separately from nonfinite value nodes. An
+actual saved c2 coupling integral has six infinite endpoints and no nonfinite
+coefficient; explicit infinite/NaN/complex-infinite coefficient probes and an
+infinite-integrand probe remain detected. See the
+[domain-syntax checkpoint](S11c_thickness_coordinate_integral_domain_checkpoint.json).
+This is validation of expression syntax, not convergence or integral evaluation.
+The regression took 72.70 seconds at 3,875,140 KiB peak RSS while selecting the
+actual operand from the serialized c2 export. It ran after b validation ended;
+no concurrent heavy CAS job was launched. c1/c2/d are ready to resume serially.

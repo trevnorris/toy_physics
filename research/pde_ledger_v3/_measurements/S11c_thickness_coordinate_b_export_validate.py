@@ -20,6 +20,33 @@ from S11c_d_modal_current_check import engine,digest
 def assoc(value):return {str(k):v for k,v in value}
 
 
+def nonfinite_census(body):
+    """Distinguish explicit improper-integration domains from nonfinite values.
+
+    c2 exports retain definite integrals on the whole real line. Their exact
+    +/-oo endpoint nodes describe domains; they are not evaluated coefficients.
+    No other occurrence of infinity, NaN or complex infinity is exempted.
+    """
+    visited=set();bad=set();endpoints=0
+    def visit(node):
+        nonlocal endpoints
+        if node in visited:return
+        visited.add(node)
+        if node in (sp.nan,sp.zoo,sp.oo,-sp.oo):
+            bad.add(sp.srepr(node));return
+        if isinstance(node,sp.Integral):
+            visit(node.function)
+            for limit in node.limits:
+                visit(limit[0])
+                for endpoint in limit[1:]:
+                    if endpoint in (sp.oo,-sp.oo):endpoints+=1
+                    else:visit(endpoint)
+        else:
+            for arg in node.args:visit(arg)
+    visit(body)
+    return {'nonfiniteValueNodes':sorted(bad),'improperIntegralEndpointNodes':endpoints}
+
+
 def run():
     parser=argparse.ArgumentParser()
     parser.add_argument('--run-directory',type=Path,required=True)
@@ -37,7 +64,7 @@ def run():
     objects=pickle.loads((base/'objects.pickle').read_bytes())
     lines=[json.loads(line) for line in args.transcript.read_text().splitlines()]
     if len(lines)!=len(objects) or len(lines)!=summary['objects']:raise ValueError('trace census')
-    paths=0;keys=[];nonfinite=[];computed_checks={}
+    paths=0;keys=[];nonfinite=[];computed_checks={};integration_domains={}
     for item,line in zip(objects,lines):
         actual={k:_restore(v) for k,v in line.items()}
         expected={k:engine.cas(v) for k,v in item['record'].items()}
@@ -45,7 +72,10 @@ def run():
         body=item['body'];keys.append(item['key'])
         value=engine.carrier_fingerprint(body) if str(actual['representation'])=='CARRIER_PIT_SHA' else body
         if value!=actual['value']:raise ValueError(('trace fingerprint',item['key']))
-        if body.has(sp.nan,sp.zoo,sp.oo,-sp.oo):nonfinite.append(item['key'])
+        domain=nonfinite_census(body)
+        if domain['nonfiniteValueNodes']:nonfinite.append(item['key'])
+        if domain['improperIntegralEndpointNodes']:
+            integration_domains[item['key']]=domain['improperIntegralEndpointNodes']
         metadata=[assoc(v) for v in actual['metadata']]
         source_paths=[p for p,v in engine.leaves(body) if not isinstance(v,engine.Str)]
         if Counter(tuple(int(v) if not isinstance(v,engine.Str) else str(v) for v in m['path']) for m in metadata)!=Counter(source_paths):
@@ -67,6 +97,7 @@ def run():
     inventory={**summary,'runDirectory':str(base),'validatorSha256':digest(Path(__file__)),
         'metadataPaths':paths,'residualScalars':residual_scalars,'nonzeroResidualScalars':nonzero,
         'nonfiniteObjects':nonfinite,'transcript':{'bytes':args.transcript.stat().st_size,'sha256':digest(args.transcript)}}
+    inventory['improperIntegralEndpointNodesByObject']=integration_domains
     print(json.dumps({k:inventory[k] for k in ('objects','metadataPaths','residualScalars','nonzeroResidualScalars','transcript')},indent=2))
     if args.publish:
         stem='S11c_thickness_coordinate_'+args.stage+'_export'

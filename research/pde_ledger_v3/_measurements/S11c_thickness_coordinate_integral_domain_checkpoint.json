@@ -1,0 +1,46 @@
+{
+  "sourceExport": "scripts/S11c_c2_exports.py",
+  "sourceExportSha256": "97160450e8b1d9aa654cebb2ea0d2074df24186f337fad2ee850bb5b200e7579",
+  "sourceRoot": "s11cc2ClosedCouplingKernel",
+  "selectedIntegralSrepr": "Integral(Mul(Rational(1, 8), Pow(pi, Integer(-3)), Function('s11cc2Coefficientw1Profile')(Symbol('s11cc2Y1', real=True), Symbol('s11cc2Y2', real=True), Symbol('s11cc2Y3', real=True)), exp(Mul(Integer(-1), I, Add(Mul(Symbol('s11cc2Y1', real=True), Add(Mul(Integer(-1), Symbol('s11cc1_k_input_1', real=True)), Symbol('s11cc1_k_output_1', real=True))), Mul(Symbol('s11cc2Y2', real=True), Add(Mul(Integer(-1), Symbol('s11cc1_k_input_2', real=True)), Symbol('s11cc1_k_output_2', real=True))), Mul(Symbol('s11cc2Y3', real=True), Add(Mul(Integer(-1), Symbol('s11cc1_k_input_3', real=True)), Symbol('s11cc1_k_output_3', real=True))))))), Tuple(Symbol('s11cc2Y1', real=True), -oo, oo), Tuple(Symbol('s11cc2Y2', real=True), -oo, oo), Tuple(Symbol('s11cc2Y3', real=True), -oo, oo))",
+  "selectedIntegralSha256": "b2e100d0ea2941c959e702e31687abe97820f5c31e6fe5a455ad6e812dda8b3e",
+  "instrumentSha256": "bc76c2907ef5b256f05b290d66ad7e6ee37168ac3e35824486356bebe386a916",
+  "computedCensuses": {
+    "actualSavedIntegral": {
+      "nonfiniteValueNodes": [],
+      "improperIntegralEndpointNodes": 6
+    },
+    "infiniteCoefficient": {
+      "nonfiniteValueNodes": [
+        "oo"
+      ],
+      "improperIntegralEndpointNodes": 0
+    },
+    "infiniteIntegrand": {
+      "nonfiniteValueNodes": [
+        "oo"
+      ],
+      "improperIntegralEndpointNodes": 2
+    },
+    "undefinedCoefficient": {
+      "nonfiniteValueNodes": [
+        "nan"
+      ],
+      "improperIntegralEndpointNodes": 0
+    },
+    "complexInfiniteCoefficient": {
+      "nonfiniteValueNodes": [
+        "zoo"
+      ],
+      "improperIntegralEndpointNodes": 0
+    },
+    "finiteCoefficient": {
+      "nonfiniteValueNodes": [],
+      "improperIntegralEndpointNodes": 0
+    }
+  },
+  "checksComplete": true,
+  "wallSeconds": 72.6964159058407,
+  "peakRssKiB": 3875140,
+  "scope": "Validator domain-syntax regression using an actual pre-regeneration c2 integral plus explicit nonfinite-value probes; not an integral evaluation or c2 physical check."
+}

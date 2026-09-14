@@ -22,17 +22,20 @@ residual-minus-remainder norm is 8.21e-13.
 The [Mathematica audit](S11c_wolfram_repair_audit_report.md) found a duplicate
 pressure shift in native c2 N6. The three mechanical issues are absent on the
 audited b domain (200 zero residuals). The [repair plan](S11c_wolfram_pressure_trace_repair_plan.md)
-is user approved and in progress before REFERENCE or further scattering. LEFT is committed
-at b271c71b; the accepted SymPy chain remains unchanged. The full focused
-Mathematica repair check has 218 zero residuals; native c2 regeneration is next.
-See S11c_wolfram_pressure_trace_repair_execution.json.
+is complete on its validated domain: 218 zero focused residuals and 9,968,256
+zero native numerator evaluations across four cases under the adopted covariance
+criterion. Raw R_N6 remains a representation diagnostic. The repaired main
+transcript is published; REFERENCE resumes after the annex commit and hash check.
+LEFT is committed at b271c71b; the accepted SymPy chain remains unchanged.
+See [the native checkpoint](S11c_wolfram_pressure_trace_native_checkpoint.json).
 See the [normalization report](S11c_d_end_normalization_report.md) and
 [plan](S11c_d_end_normalization_plan.md) for complete evidence and boundaries.
 
 All working runs and source snapshots live in the repository's _scratch/s11c/.
 Published .out files use DataLad/git-annex with post-save full-hash verification;
 ordinary sources, reports and inventories use Git. The user controls continuation.
-No scheduled follow-ups are active or authorized.
+Owned jobs use user-authorized local completion/error wake-ups, with no recurring
+checks or model polling.
 
 The complete two-ended variable-profile S-matrix, profile-frequency bound
 poles/residues/overlap, survival, flux bookkeeping, weak coefficients, section 5

@@ -1,6 +1,6 @@
 {
   "kind": "MANUAL_REPOSITORY_WORK_QUEUE",
-  "status": "REPAIR_AUTHORIZED_IN_PROGRESS",
+  "status": "REPAIR_VALIDATED_NATIVE_PUBLICATION_COMPLETE",
   "recordedUtc": "2026-09-14T20:09:08.997024+00:00",
   "authorization": "User approved queuing the four-issue Mathematica audit and specified a maximum of two concurrent Mathematica scripts.",
   "plan": "_measurements/S11c_wolfram_repair_audit_plan.md",
@@ -19,7 +19,7 @@
     "maxConcurrentHeavyCasJobsAcrossEngines": 1,
     "internalParallelKernelsMustRespectLicenseLimit": true
   },
-  "scheduling": "No automation, timer, scheduled task or automatic restart.",
+  "scheduling": "User-authorized local completion/error wake-ups for owned jobs; no recurring model polling or scheduled checks.",
   "issues": [
     {
       "id": "conservative_inertia_sign",
@@ -39,7 +39,10 @@
       "status": "PRESENT",
       "scope": "c2 N6 native image assignments and affine trace on the exact constant-height diagonal locus; c1 pressure independently joined to the boundary solution",
       "earliestAffectedProducer": "mathematica/S11c_c2_N6_mathematica_audit.wl",
-      "unexecutedCoverage": "nonconstant-profile ordered two/three-leg eta/sigma inverse; no absence or global spectral claim"
+      "unexecutedCoverage": "nonconstant-profile ordered two/three-leg eta/sigma inverse; no absence or global spectral claim",
+      "statusMeaning": "Historical pre-repair audit disposition; counterexample retained.",
+      "repairStatus": "REPAIRED_ON_VALIDATED_DOMAIN",
+      "repairEvidence": "S11c_wolfram_pressure_trace_native_checkpoint.json"
     },
     {
       "id": "thickness_kinetic_coordinate",
@@ -89,9 +92,9 @@
     "leftValidation": "COMMITTED",
     "leftCheckpoint": "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json",
     "leftCommit": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
-    "auditStatus": "AUDIT_COMPLETE_REPAIR_AUTHORIZED",
+    "auditStatus": "AUDIT_COMPLETE_REPAIR_VALIDATED",
     "activeProcess": null,
-    "nextAction": "Complete ordered Mathematica c2 reference-pressure repair, focused verification, native four-case regeneration and publication; then resume REFERENCE normalization."
+    "nextAction": "Commit and verify the repaired native transcript, then construct and validate REFERENCE normalization."
   },
   "evidenceRoot": "/var/projects/toy_physics/_scratch/s11c",
   "publicationRoot": "mathematica/out",
@@ -105,9 +108,37 @@
     "pathMeaning": "Actual Wolfram script path",
     "specifiedBy": "User"
   },
-  "updatedUtc": "2026-09-14T21:10:40.559839+00:00",
+  "updatedUtc": "2026-09-14T22:58:16.615840+00:00",
   "report": "_measurements/S11c_wolfram_repair_audit_report.md",
   "checkpoint": "_measurements/S11c_wolfram_repair_audit_checkpoint.json",
   "repairPlan": "_measurements/S11c_wolfram_pressure_trace_repair_plan.md",
-  "repairAuthorization": "User approved the Mathematica c2 repair after audit checkpoint 946acc84."
+  "repairAuthorization": "User approved the Mathematica c2 repair after audit checkpoint 946acc84.",
+  "repairDisposition": {
+    "status": "REPAIRED_ON_VALIDATED_DOMAIN",
+    "report": "S11c_wolfram_pressure_trace_repair_report.md",
+    "nativeCheckpoint": "S11c_wolfram_pressure_trace_native_checkpoint.json",
+    "focusedCheckpoint": "S11c_wolfram_pressure_trace_focused_checkpoint.json",
+    "result": {
+      "cases": 4,
+      "tags": 44,
+      "residualFamilies": 9,
+      "numeratorScalars": 9968256,
+      "nonzeroNumerators": 0,
+      "denominatorZeros": 0,
+      "traceComponents": 576,
+      "sampleRowsPerCase": 408,
+      "realAxisCellsPerCase": 17,
+      "publication": {
+        "path": "mathematica/out/S11c_c2_N6_mathematica_audit.out",
+        "bytes": 496254757,
+        "sha256": "08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254"
+      },
+      "scope": "native recorded real-axis cells and joint samples, excluding stated singular/diagonal loci; not global spectral coverage"
+    },
+    "limits": [
+      "Adopted operator-covariance criterion; raw R_N6 remains a representation diagnostic.",
+      "Singular/diagonal and threshold exclusions remain; no global spectral coverage.",
+      "Historical ablations were not rerun; cross-engine operand agreement remains open."
+    ]
+  }
 }

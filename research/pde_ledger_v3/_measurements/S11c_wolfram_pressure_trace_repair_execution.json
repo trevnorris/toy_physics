@@ -1,5 +1,5 @@
 {
-  "status": "NATIVE_FULL_VALIDATION_RUNNING",
+  "status": "NATIVE_FULL_VALIDATED_PUBLISHED",
   "baseline": "S11c_wolfram_pressure_trace_repair_baseline.json",
   "plan": "S11c_wolfram_pressure_trace_repair_plan.md",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/focused-full",
@@ -120,11 +120,10 @@
   },
   "caseEnvironment": {},
   "remaining": [
-    "Complete inert four-case native validation under adopted covariance criterion; retain raw R_N6 diagnostic.",
-    "Verify emission comparison and canonical publication, save through DataLad/git-annex and commit repair disposition.",
-    "Resume prepared REFERENCE normalization with a local completion/error watcher."
+    "Save the validated canonical native transcript through DataLad/git-annex, verify its hash and commit the repair disposition.",
+    "Resume prepared REFERENCE normalization."
   ],
-  "sourcesFrozenWhileRunning": true,
+  "sourcesFrozenWhileRunning": false,
   "developmentCheckpoint": "S11c_wolfram_pressure_trace_focused_development_checkpoint.json",
   "developmentResult": {
     "residualScalars": 158,
@@ -430,10 +429,10 @@
       }
     }
   },
-  "observedUtc": "2026-09-14T22:46:51.312969+00:00",
+  "observedUtc": "2026-09-14T22:58:16.614325+00:00",
   "nativeFullManifestSha256": "ed6ac426a4fa94bc38f9afe3261b6c6edc34922c082f7503ca428b5aa025f988",
   "nativeFullValidationInvocation": {
-    "status": "running",
+    "status": "completed",
     "supervisorPid": 1899061,
     "command": [
       "/usr/bin/python",
@@ -457,17 +456,50 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full/validation.stderr",
     "childPid": 1899069,
     "watcherPid": 1899071,
-    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full/validation-completion-watcher"
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full/validation-completion-watcher",
+    "exitCode": 0,
+    "wallSeconds": 601.6119481166825,
+    "finishedUtc": "2026-09-14T22:56:07.797374+00:00",
+    "stderrBytes": 0,
+    "sourceStability": {
+      "_measurements/S11c_wolfram_pressure_trace_validate.py": true,
+      "scripts/S11c_c2_N6_ablation_harness_wl.py": true
+    }
   },
   "nativeFullValidationSupervisorSha256": "356ce4e2b9896e0484862659743af5bad432aa8572e3411b662fee3ab60de39d",
   "validationCompletionWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 1899071,
     "jobPid": 1899061,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-14T22:46:06.275980+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "3037976c33cbe99a7a417a0f27d0c96de6eaa807256c85e73b6e5a4f48d6e32a",
-    "notifications": {}
-  }
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-14T22:56:08.305757+00:00"
+      }
+    }
+  },
+  "nativeFullCheckpoint": "S11c_wolfram_pressure_trace_native_checkpoint.json",
+  "nativeFullResult": {
+    "cases": 4,
+    "tags": 44,
+    "residualFamilies": 9,
+    "numeratorScalars": 9968256,
+    "nonzeroNumerators": 0,
+    "denominatorZeros": 0,
+    "traceComponents": 576,
+    "sampleRowsPerCase": 408,
+    "realAxisCellsPerCase": 17,
+    "publication": {
+      "path": "mathematica/out/S11c_c2_N6_mathematica_audit.out",
+      "bytes": 496254757,
+      "sha256": "08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254"
+    },
+    "scope": "native recorded real-axis cells and joint samples, excluding stated singular/diagonal loci; not global spectral coverage"
+  },
+  "nativeFullEmissionDelta": "S11c_wolfram_pressure_trace_emission_delta.json"
 }

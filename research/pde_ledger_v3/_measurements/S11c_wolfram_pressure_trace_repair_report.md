@@ -32,17 +32,31 @@ rerun completed in 20.80 seconds with 158 zero development residual scalars.
 
 The five existing ablation-harness selector literals still occur exactly once;
 no historical ablation result is being treated as a new repaired run. The old
-main c2 output remains historical until native regeneration completes. The native
+main c2 output remains preserved in annex history. The native
 development case completed in 1,004.16 seconds at 588,792 KiB peak RSS with empty
 stderr and all source/prior-output pins stable. Its transcript has 126,423,192
 bytes. The [development validation](S11c_wolfram_pressure_trace_native_development_checkpoint.json)
 finds zero nonzero numerators across nine required residual families, with no
 zero sample denominators. All 144 new trace components have complete family,
-face, grade and restored-dimension joins. The four-case regeneration completed in 3,196.55 seconds at 1,062,960 KiB
-peak RSS with exit zero, empty stderr and stable source/prior-output hashes.
-Its 496,254,757-byte transcript is undergoing inert four-case validation before
-publication. The local completion watcher delivered its event successfully;
-validation now has its own completion/error watcher, with no model polling.
+face, grade and restored-dimension joins.
+
+The [four-case native checkpoint](S11c_wolfram_pressure_trace_native_checkpoint.json)
+records 44 tags and **9,968,256 zero numerator evaluations** across the nine
+required residual families, with no zero checked sample denominators. Each case
+uses 17 recorded real-axis cells, three primes and eight draws (408 sample rows).
+All 576 new trace components have complete family/face/grade/dimension joins.
+The CAS run took 3,196.55 seconds at 1,062,960 KiB peak RSS; inert validation
+took 601.61 seconds. Both exited zero with empty stderr and stable source pins.
+The validated 496,254,757-byte [main transcript](../mathematica/out/S11c_c2_N6_mathematica_audit.out)
+has SHA-256 `08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254`.
+Both completion watchers delivered their events without model polling.
+
+The [emission inventory](S11c_wolfram_pressure_trace_emission_delta.json)
+finds 26 unchanged assignments, 14 changed assignments, four added trace tags
+and none removed. Unchanged assignments include the carrier/source operands,
+covariance families and slot guards. Pressure-contracted operands, channel
+representations, closure guards and associated metadata change. Changed hashes
+do not imply a nonzero residual; the residual validation above is separate.
 
 The first validator incorrectly required raw `R_N6` equality. The adopted
 [Reading B](S11c_c2_N6_RESOLVED.md) requires operator covariance and channel
@@ -52,11 +66,16 @@ entries (20,736 numerator samples). The failed validation and source snapshot
 are retained. The validator now records those diagnostics and checks covariance,
 its increment, carrier/cross channels, the split, slot/closure guards and physical
 trace reconstruction. This corrects validation scope; no producer rerun or new
-physical repair is indicated. Cross-engine operand agreement remains an open debt.
+physical repair is indicated. The full run retains 20,736 nonzero raw numerator
+samples in each of LAB_HELD/RHO4_CONSTANT, LAB_HELD/RHOBR_CONSTANT and
+MATERIAL_ADVECTED/RHOBR_CONSTANT; MATERIAL_ADVECTED/RHO4_CONSTANT has zero.
+These are representation diagnostics under Reading B. Cross-engine operand
+agreement remains an open debt.
 
 b/c1 sources and outputs, all SymPy producers/exports and accepted LEFT/RIGHT
 normalization, authorities, S10/Lean and the retained solver/export contract are
 unchanged. Matching-denominator and threshold exclusions remain explicit. This
 is a repair of the existing c2 N6 instrument, not a full c2 self-energy or d
-engine. No review, comparator, scheduler or push has run. REFERENCE normalization
-resumes after the native regeneration checkpoint closes this repair.
+engine. No review, comparator, recurring scheduler or push has run. This closes
+the authorized pressure-trace repair on its validated domain. REFERENCE
+normalization resumes after committing and hash-verifying the annex publication.

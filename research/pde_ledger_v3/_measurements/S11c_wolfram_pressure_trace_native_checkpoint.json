@@ -1,0 +1,1020 @@
+{
+  "kind": "native",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full",
+  "manifest": {
+    "status": "completed",
+    "head": "66412e4166b6811b62ef76a3c69f1860963dc4a0",
+    "startedUtc": "2026-09-14T21:47:56.125087+00:00",
+    "sources": {
+      "mathematica/S11c_b_brane_operator_mathematica_audit.wl": {
+        "bytes": 140124,
+        "sha256": "c77d5cd79a08f785021fa6574ed15ab91d0b4ad12f0ef1c06a2c2c01a7c6cca3"
+      },
+      "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": {
+        "bytes": 100559,
+        "sha256": "58b6557969814c65926b0e0848666ee0819b778c094ee68b4b27a85f218de181"
+      },
+      "mathematica/S11c_c2_N6_mathematica_audit.wl": {
+        "bytes": 77671,
+        "sha256": "ad85604e5d0d07e90bcf2bb8248af239c5521ed0707bacde4da81a8e11866456"
+      },
+      "directives/S11b_SHARED_PHYSICS.md": {
+        "bytes": 76540,
+        "sha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+      },
+      "directives/S11c_a_SHARED_PHYSICS.md": {
+        "bytes": 28887,
+        "sha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4"
+      },
+      "directives/S11c_b_SHARED_PHYSICS.md": {
+        "bytes": 39529,
+        "sha256": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+      },
+      "directives/S11c_c1_SHARED_PHYSICS.md": {
+        "bytes": 50376,
+        "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+      },
+      "directives/S11c_c2_SHARED_PHYSICS.md": {
+        "bytes": 41229,
+        "sha256": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1"
+      },
+      "_measurements/S11c_wolfram_repair_audit_plan.md": {
+        "bytes": 6123,
+        "sha256": "038107789395a012ca0675e97c664a46fb4da13b4e742ef154e51ee694c50e74"
+      },
+      "_measurements/S11c_wolfram_repair_audit_run.py": {
+        "bytes": 6272,
+        "sha256": "e766e7d499e3af6975697e0cc244f029378c0d9a2ac47fa0def3d87dc8f26780"
+      },
+      "_measurements/S11c_wolfram_pressure_trace_repair_plan.md": {
+        "bytes": 4151,
+        "sha256": "e5f9aceb2d4f887592efd4c0a33ef95a87ff9946f1e3348a7c4aa5540552b3e3"
+      },
+      "_measurements/S11c_wolfram_pressure_trace_repair_baseline.json": {
+        "bytes": 1738,
+        "sha256": "82277d495bb5d63aef9da6e3e0df32be381d3c4ff527bdf17400ee070a95ba40"
+      }
+    },
+    "priorOutputs": {
+      "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": {
+        "bytes": 156163159,
+        "sha256": "b7c744a3e698f25a0911463b97d257826a61c4af3c625686c53786a14571b9b5"
+      },
+      "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": {
+        "bytes": 81881078,
+        "sha256": "d63e616786eebb58d24e2270d5e449c3151b150071a341d4a36bdfbc00a17fdd"
+      },
+      "mathematica/out/S11c_c2_N6_mathematica_audit.out": {
+        "bytes": 397864807,
+        "sha256": "6531a9f11c8162eed3cc616c174261546af02fa902760309f128b3862293bff8"
+      }
+    },
+    "command": [
+      "math",
+      "-script",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full/sources/mathematica/S11c_c2_N6_mathematica_audit.wl"
+    ],
+    "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full",
+    "sourceTransform": null,
+    "caseEnvironment": {},
+    "childPid": 1880576,
+    "exitCode": 0,
+    "wallSeconds": 3196.554500593804,
+    "peakRssKiB": 1062960,
+    "finishedUtc": "2026-09-14T22:41:12.680014+00:00",
+    "output": {
+      "bytes": 496254757,
+      "sha256": "08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sourceStability": {
+      "mathematica/S11c_b_brane_operator_mathematica_audit.wl": true,
+      "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": true,
+      "mathematica/S11c_c2_N6_mathematica_audit.wl": true,
+      "directives/S11b_SHARED_PHYSICS.md": true,
+      "directives/S11c_a_SHARED_PHYSICS.md": true,
+      "directives/S11c_b_SHARED_PHYSICS.md": true,
+      "directives/S11c_c1_SHARED_PHYSICS.md": true,
+      "directives/S11c_c2_SHARED_PHYSICS.md": true,
+      "_measurements/S11c_wolfram_repair_audit_plan.md": true,
+      "_measurements/S11c_wolfram_repair_audit_run.py": true,
+      "_measurements/S11c_wolfram_pressure_trace_repair_plan.md": true,
+      "_measurements/S11c_wolfram_pressure_trace_repair_baseline.json": true
+    },
+    "priorOutputStability": {
+      "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": true,
+      "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": true,
+      "mathematica/out/S11c_c2_N6_mathematica_audit.out": true
+    }
+  },
+  "manifestPin": {
+    "bytes": 4500,
+    "sha256": "ed6ac426a4fa94bc38f9afe3261b6c6edc34922c082f7503ca428b5aa025f988"
+  },
+  "validationSource": {
+    "bytes": 13716,
+    "sha256": "9ee6c86a2993e016044b7072c11823083839a261ab2b6fbde768e6956b51e484"
+  },
+  "result": {
+    "parserSource": {
+      "path": "scripts/S11c_c2_N6_ablation_harness_wl.py",
+      "bytes": 18513,
+      "sha256": "2820a3f194aabc4242c898378f10f4962a0f9a6c72c848dfe57867716c07d908"
+    },
+    "tagCount": 44,
+    "tags": [
+      "WL_S11CC2_N6_LOCAL_SETUP",
+      "WL_S11CC2_N6_LOCAL_CONSTRUCTION",
+      "WL_S11CC2_N6RC_CARRIER_EULERIAN",
+      "WL_S11CC2_N6RC_CARRIER_MATERIAL",
+      "WL_S11CC2_N6RC_CARRIER_BRIDGE_RESIDUAL",
+      "WL_S11CC2_N6RC_SOURCE_EULERIAN",
+      "WL_S11CC2_N6RC_SOURCE_MATERIAL",
+      "WL_S11CC2_N6RC_SOURCE_BRIDGE_RESIDUAL",
+      "WL_S11CC2_N6RC_CARRIER_CHANNEL",
+      "WL_S11CC2_N6RC_SOURCE_CHANNEL",
+      "WL_S11CC2_N6RC_CROSS_CHANNEL",
+      "WL_S11CC2_N6RC_EULERIAN_OPERAND",
+      "WL_S11CC2_N6RC_MATERIAL_OPERAND",
+      "WL_S11CC2_N6RC_R_N6",
+      "WL_S11CC2_N6RC_SPLIT_SUM",
+      "WL_S11CC2_N6RC_SPLIT_CHECK",
+      "WL_S11CC2_N6RC_FROZEN_RELATIONS",
+      "WL_S11CC2_N6RC_PROVENANCE",
+      "WL_S11CC2_N6RC_ADVECTION_ABSENCE",
+      "WL_S11CC2_N6COV_SOURCE_ACTUAL",
+      "WL_S11CC2_N6COV_SOURCE_PREDICTED",
+      "WL_S11CC2_N6COV_R_COV",
+      "WL_S11CC2_N6COV_SOURCE_BASELINE",
+      "WL_S11CC2_N6COV_R_COV_BASELINE",
+      "WL_S11CC2_N6COV_SOURCE_CONTROL_DELTA",
+      "WL_S11CC2_N6COV_R_COV_CONTROL_DELTA",
+      "WL_S11CC2_N6COV_R_COV_INCREMENT",
+      "WL_S11CC2_N6COV_FROZEN_PHI",
+      "WL_S11CC2_N6COV_PHI_DOMAIN_CENSUS",
+      "WL_S11CC2_N6COV_ACTUAL_CONTROL_PARAMETERS",
+      "WL_S11CC2_N6COV_PROVENANCE",
+      "WL_S11CC2_N6_SLOT_GUARD_NATIVE",
+      "WL_S11CC2_N6_SLOT_GUARD_CARRIER",
+      "WL_S11CC2_N6_SLOT_GUARD_RESIDUAL",
+      "WL_S11CC2_N6_CLOSURE_GUARD_NATIVE",
+      "WL_S11CC2_N6_CLOSURE_GUARD_CARRIER",
+      "WL_S11CC2_N6_CLOSURE_GUARD_RESIDUAL",
+      "wlS11cc2PressureTracePhysicalResponse",
+      "wlS11cc2PressureTraceReferenceResponse",
+      "wlS11cc2PressureTraceReconstructedPressure",
+      "wlS11cc2PressureTraceReconstructionResidual",
+      "WL_S11CC2_N6RC_DIMENSIONS",
+      "WL_S11CC2_N6_LOCAL_PROBE",
+      "WL_S11CC2_N6_LOCAL_INVENTORY"
+    ],
+    "cases": {
+      "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+        "sampleRows": 408,
+        "cells": 17,
+        "primes": [
+          998244353,
+          1000000009,
+          1004535809
+        ],
+        "familyCardinality": 12120
+      },
+      "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+        "sampleRows": 408,
+        "cells": 17,
+        "primes": [
+          998244353,
+          1000000009,
+          1004535809
+        ],
+        "familyCardinality": 12120
+      },
+      "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+        "sampleRows": 408,
+        "cells": 17,
+        "primes": [
+          998244353,
+          1000000009,
+          1004535809
+        ],
+        "familyCardinality": 12120
+      },
+      "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+        "sampleRows": 408,
+        "cells": 17,
+        "primes": [
+          998244353,
+          1000000009,
+          1004535809
+        ],
+        "familyCardinality": 12120
+      }
+    },
+    "residuals": {
+      "WL_S11CC2_N6RC_CARRIER_BRIDGE_RESIDUAL": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 240,
+          "sampleRows": 408,
+          "numeratorScalars": 97920,
+          "nonzeroNumerators": 0
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 240,
+          "sampleRows": 408,
+          "numeratorScalars": 97920,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 240,
+          "sampleRows": 408,
+          "numeratorScalars": 97920,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 240,
+          "sampleRows": 408,
+          "numeratorScalars": 97920,
+          "nonzeroNumerators": 0
+        }
+      },
+      "WL_S11CC2_N6RC_CARRIER_CHANNEL": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 0
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 0
+        }
+      },
+      "WL_S11CC2_N6RC_CROSS_CHANNEL": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 0
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 0
+        }
+      },
+      "WL_S11CC2_N6RC_SPLIT_CHECK": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 0
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 0
+        }
+      },
+      "WL_S11CC2_N6COV_R_COV": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 72,
+          "sampleRows": 408,
+          "numeratorScalars": 29376,
+          "nonzeroNumerators": 0
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 72,
+          "sampleRows": 408,
+          "numeratorScalars": 29376,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 72,
+          "sampleRows": 408,
+          "numeratorScalars": 29376,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 72,
+          "sampleRows": 408,
+          "numeratorScalars": 29376,
+          "nonzeroNumerators": 0
+        }
+      },
+      "WL_S11CC2_N6COV_R_COV_INCREMENT": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 0
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 0
+        }
+      },
+      "WL_S11CC2_N6_SLOT_GUARD_RESIDUAL": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 120,
+          "sampleRows": 408,
+          "numeratorScalars": 1028160,
+          "nonzeroNumerators": 0
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 120,
+          "sampleRows": 408,
+          "numeratorScalars": 1028160,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 120,
+          "sampleRows": 408,
+          "numeratorScalars": 1028160,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 120,
+          "sampleRows": 408,
+          "numeratorScalars": 1028160,
+          "nonzeroNumerators": 0
+        }
+      },
+      "WL_S11CC2_N6_CLOSURE_GUARD_RESIDUAL": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 360,
+          "sampleRows": 408,
+          "numeratorScalars": 146880,
+          "nonzeroNumerators": 0
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 360,
+          "sampleRows": 408,
+          "numeratorScalars": 146880,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 360,
+          "sampleRows": 408,
+          "numeratorScalars": 146880,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 360,
+          "sampleRows": 408,
+          "numeratorScalars": 146880,
+          "nonzeroNumerators": 0
+        }
+      },
+      "wlS11cc2PressureTraceReconstructionResidual": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 36,
+          "sampleRows": 408,
+          "numeratorScalars": 14688,
+          "nonzeroNumerators": 0
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 36,
+          "sampleRows": 408,
+          "numeratorScalars": 14688,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 36,
+          "sampleRows": 408,
+          "numeratorScalars": 14688,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 36,
+          "sampleRows": 408,
+          "numeratorScalars": 14688,
+          "nonzeroNumerators": 0
+        }
+      }
+    },
+    "nonzeroCertifiedNumerators": 0,
+    "rawRepresentationDiagnostics": {
+      "WL_S11CC2_N6RC_R_N6": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 20736
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 20736
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 288,
+          "sampleRows": 408,
+          "numeratorScalars": 323136,
+          "nonzeroNumerators": 20736
+        }
+      },
+      "WL_S11CC2_N6RC_SOURCE_CHANNEL": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 20736
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 20736
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 0
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "entries": 216,
+          "sampleRows": 408,
+          "numeratorScalars": 264384,
+          "nonzeroNumerators": 20736
+        }
+      }
+    },
+    "interpretationSources": {
+      "S11c_c2_N6_RESOLVED.md": {
+        "bytes": 5477,
+        "sha256": "3a5ef6e58d5bf45c8e880fd74c3e3be7e79e8298e1dda18212f5160964e35906"
+      },
+      "S11c_c2_N6_reconcile_disposition_PATH_B.md": {
+        "bytes": 8867,
+        "sha256": "fe9f97b6a5828b0c35d3924bceebbf08819faa1ffebf5d254783cc068ff63052"
+      }
+    },
+    "conditionalUnionBounds": {
+      "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": "1336607079697237813779356020330556220062346994080333197067158189474241064713950395281623823394708326200352169205852448913059120355061796108570545397518563069200975641843121560263291399362643662623574872628283207023549146263803177230528338495923779526008245726700298979423676525370815200387098773618739099116375139555646131458994822717500446052692316854519705968255492324556336996269844660578305209151175021857432446524120103554478749881132345530613771691034836071646230295265981907334973261314693085206271287485590988045483815890591574948125886346369734058668383887/131213577286543950619230405973419664639176869638476397383680880291639001842707766550351525173000913762696787707263671328421821580463871734008934298925012995135248180623805859942777322847975841358850033213110904994003967167785660818610797622023681628573231088330761778726327316176767258604109730523350192061585976605709129600083346609387670193775463548466639463559464798908822745543580569513527257335287182218570440048347705790559747047904546757548218347862148615694876580025475600969560979944718683250170914400697158275976588710409210088228348307097889396152582021674833216293703406960640000000",
+      "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": "5859249231193887948402377042267854772694761064265087705901384259059848649381237642734812220532963924011059914713013539553256623150701480989206319760349587077623550226851182786258503982259309889072740522527016418037849259025377475866806336336353348156278683145267705987707309952589191107247854148364073269137208791379528408744348121397130013254883774816080988701977597760409164873958505806044638303917980089726370992329009852556047724350577528784060904508374393140360766913151620339220935063287999831040865252366504824379778196960377099656935089999/1432274573987479487316900287550221249553138302636415044749368106039901954749619199249256603318563233729095641550796043821567264783095941292087011103881450861445845375958610564357629318257376626666344646725312925856497077871388515763133580733813566478719484799223555041671323363076900601009239312558587176007626442975073614779503743993668212476569514458024254288621427800687050719108045828133035857962247125695619691598695871355733216109347265143046539524566846168763267922412637996095026893253693967389555615135025577182529929501064492289788785288696502852688333840957440000000",
+      "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": "92292080994582895508782574065055944116372550156660529358156350968669713328720734579992552954065640734381066295461175423827521937979722913400136319040748011410889331057469678598536472659538365773806891087234784639735870584058885448900855673703392863389514374144911653780587508781532820975405048046023719633348622808186901272120480806631841075001795836909727625811776454818384146001608101013733370615516067090393357980894763511849484095974577608553484080703036777244484731720124312996274700465002898075543955640247013697933880450038041477820932604553815537665871501364822829331930738610417194501/34331517202360871600564540302460779587222502629271511045034247999427167478645616255905869379199644885156735406544979418054480670452456531544962095397043088714164286245925848574565331239035519305224566884006283355302011824328783339656353583261446342188634995213499394212684058395574551847292707789929598363965495378273297522368320923226762222395459491322085199628842219106142942405677515235481096097800511951485703152290470680316677150836284220955115545078464715306548745047469753646802939567146209348409039661872489738546700081322734794656834964681684848077065033972833992447915706401392094090314958103361717679547840000000",
+      "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": "3775434091677172071368238005003390818980590150108065242978285951787914790369695406058525264147405819223087584252579130066605079008964582367741993652027524107023940883777780938038653016867114341898123984851137588452012957992659427270335949001382298022846915872489807242092340394546454659281591893226158203154758028387114714574065551612328825076698173101133473385911217591674006739166598407003892940886295367683457135683078056424878987528674409675518442249672269604133389948764071674820057994992711778046685436706880068731194274489560703443394147973165274879836507969249311258096613434253420677/3956039964141295554933546605075774148273366208531740046543479053379448212962729702042404437627457402798636393018471181975542933315648294878324571574473750395724328982158438933976131893118419711856147142390154748309942707165834078402414550757889353123342589634171480033824845054038448980319127955564156392027454966274436773538045694515613355259247933972934443469627174839247355186088935254010543722017550662250378575413019446753329585896270492817304023105743310128673535282906100526702154139777058771599410777297103438480563636555821060774467852847378803645241382118301018166237238405809193789690549081653248000000000000000"
+    },
+    "traceDimensions": {
+      "wlS11cc2PressureTracePhysicalResponse": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        }
+      },
+      "wlS11cc2PressureTraceReferenceResponse": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        }
+      },
+      "wlS11cc2PressureTraceReconstructedPressure": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        }
+      },
+      "wlS11cc2PressureTraceReconstructionResidual": {
+        "{\"LAB_HELD\", \"RHO4_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"LAB_HELD\", \"RHOBR_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHO4_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "{\"MATERIAL_ADVECTED\", \"RHOBR_CONSTANT\"}": {
+          "keys": 36,
+          "components": 36,
+          "restoredDimensionJoinNonzero": 0,
+          "grades": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        }
+      }
+    },
+    "emissionSha256": {
+      "WL_S11CC2_N6_LOCAL_SETUP": "e3ee7bbd8a95730eca902d5563e93b32d8d0bc921d7122567196a0cb021b0ba9",
+      "WL_S11CC2_N6_LOCAL_CONSTRUCTION": "19d1be0261036a6be2f1378a2e483ab2d2a3b4fd4c507db21fb6887435b52559",
+      "WL_S11CC2_N6RC_CARRIER_EULERIAN": "d378938d41e4c2ac371a9a266728411b4e294a51cc6b0192fd99a776cb6bc125",
+      "WL_S11CC2_N6RC_CARRIER_MATERIAL": "e27cdddbb1b1705841ba00b53fff458b350271c928ecf66d8cce702d692817c4",
+      "WL_S11CC2_N6RC_CARRIER_BRIDGE_RESIDUAL": "7587c75f88848575ef999aed26b66af51f32d27e30360ed5923013fd5bc77070",
+      "WL_S11CC2_N6RC_SOURCE_EULERIAN": "d36d8cb18d43ed7930862f8d01229085ee4f253a18f5116db6b5c059573db77a",
+      "WL_S11CC2_N6RC_SOURCE_MATERIAL": "fea196cd2cfeceefa8af93f5bc3bdf5b88e7bac13dd6c37ee42a127f701ea291",
+      "WL_S11CC2_N6RC_SOURCE_BRIDGE_RESIDUAL": "f6e74cadcf45b4addf9f60029325af0dbf755fc4bfba02f70c78e942b7084789",
+      "WL_S11CC2_N6RC_CARRIER_CHANNEL": "362811483e3a27df1c8f3f7962b23574435e79cbecd03df2b2412a460acbf404",
+      "WL_S11CC2_N6RC_SOURCE_CHANNEL": "7a1b3496f43d58934e13205dc4cc8a398fcd419ba3a160e85503a470cf2ed13b",
+      "WL_S11CC2_N6RC_CROSS_CHANNEL": "ed830e77f0a37cec655973ecb7fa39262587dbfebdee1486a54a74e49d7f6e6d",
+      "WL_S11CC2_N6RC_EULERIAN_OPERAND": "12675504c2f85c371880132220c8faf26955ebcf52c004ebfd257c2873a31354",
+      "WL_S11CC2_N6RC_MATERIAL_OPERAND": "f76eaf64b639d5de46debf940a6bb10ddeed41010eb577cd8d27e5fa94268213",
+      "WL_S11CC2_N6RC_R_N6": "2f4cbe22a33c05e551823bc97572f1c7e39a809d765536636ea339dac0c46e56",
+      "WL_S11CC2_N6RC_SPLIT_SUM": "dfbcbc9f61e4737ff03c9e7401fe711b2bf91c59950ec7d1a45a017ef6ff4697",
+      "WL_S11CC2_N6RC_SPLIT_CHECK": "1a35595fc348b3bc63cfc417b9c335253f3f6781c89fd9fba20b62bcfc6bff86",
+      "WL_S11CC2_N6RC_FROZEN_RELATIONS": "18efc298b785c7c1db85842934f23d8ee421505ca4a8ce705bb07c455a1da321",
+      "WL_S11CC2_N6RC_PROVENANCE": "d354aefa4b7ae62682a1b3689316d26ed25cb763d98f351ed9bf6ffe744ecb98",
+      "WL_S11CC2_N6RC_ADVECTION_ABSENCE": "6f837daa6fd168a5a2da3df9e7b98e33b41a67591135fe61fe4e1953398eb893",
+      "WL_S11CC2_N6COV_SOURCE_ACTUAL": "44d0ce405f3ad6239dfbdf87b0a43524b824c95ee2046e01c25db13c10c0517c",
+      "WL_S11CC2_N6COV_SOURCE_PREDICTED": "bafbf568dc212230f35bd06932cf689e78dd0473baeeb3d0c32f7dd5069b0b1f",
+      "WL_S11CC2_N6COV_R_COV": "4a1196ac9f27e5cc20423ac47f4b2ecf3985327e223b7029403ccc366cfc5728",
+      "WL_S11CC2_N6COV_SOURCE_BASELINE": "275f345671caa500a5cae06798e0be92ce0d5b047791d3cd4431b07f0efe0893",
+      "WL_S11CC2_N6COV_R_COV_BASELINE": "2cf45a7dc32595213c06d07d809ab833e5b0dededbfe537cd0e31a1e6b140be4",
+      "WL_S11CC2_N6COV_SOURCE_CONTROL_DELTA": "86748d7415024f6941cecc045e6764457a97694a9b25c99a839ce1185e3ce981",
+      "WL_S11CC2_N6COV_R_COV_CONTROL_DELTA": "04b097acb88ea8c7f0e13bf8cddfd97f7f100a7482d631376da9b44223fced4c",
+      "WL_S11CC2_N6COV_R_COV_INCREMENT": "19af3da7aab83b741ab2fd2bfae1e94faa159e05de3783dc324011ad2e47191c",
+      "WL_S11CC2_N6COV_FROZEN_PHI": "22c27b80ec65ba00382f322efad0bcb2486cc268cf31868651147b2bef7be5a5",
+      "WL_S11CC2_N6COV_PHI_DOMAIN_CENSUS": "a1878b60c79ed0de1bf4347c0d65370649547bf7ca88db108ff1790434d312f9",
+      "WL_S11CC2_N6COV_ACTUAL_CONTROL_PARAMETERS": "a9bafbf18d933fac9b79f13732cfb328e127cfe013be6bbe7470a49d983093b7",
+      "WL_S11CC2_N6COV_PROVENANCE": "827674f9575e7688078905549cdf4a51822caa2d978e05329c91ea728532d096",
+      "WL_S11CC2_N6_SLOT_GUARD_NATIVE": "4331914b907acef26cf35b12d9a8ed4e70aad24414669d9fd24e7b69cfff616f",
+      "WL_S11CC2_N6_SLOT_GUARD_CARRIER": "049e67ebf7da8db201ee1d8f889320dd44127ceb3d85644c4848f33ff78d669e",
+      "WL_S11CC2_N6_SLOT_GUARD_RESIDUAL": "4284ab9297e1ad3787fb5e2da76357ea9292904143047429a9fe53da144300c9",
+      "WL_S11CC2_N6_CLOSURE_GUARD_NATIVE": "ddc0ff1eb5118662ea572ba3cefbbd7b78292d2a867990befd9512d18b6ee6f6",
+      "WL_S11CC2_N6_CLOSURE_GUARD_CARRIER": "37fe7fb14586d1ff40f66b805c5106870e23550d9d5fd57dc6f98ed6b696ffaf",
+      "WL_S11CC2_N6_CLOSURE_GUARD_RESIDUAL": "6a7768008a52341d8f477859b22b6f6884277cee232e86320d784c0e1118ab1f",
+      "wlS11cc2PressureTracePhysicalResponse": "09010b3657df4d94c948c1d64dc9f9bf7e83ed579b1ed3f10e2d5803769fc3d4",
+      "wlS11cc2PressureTraceReferenceResponse": "ae3eee1b7311befba8cb7b4cf97a55c64cbc8826cb70f1cd3298924b00040098",
+      "wlS11cc2PressureTraceReconstructedPressure": "4f32d5cc1939f29441569d6fb231b33108cf571911d779f1740a58824843ce52",
+      "wlS11cc2PressureTraceReconstructionResidual": "4374dc23ce79d0358812c73fdc8c73b92e61938a37dfd4b417245b03c529e041",
+      "WL_S11CC2_N6RC_DIMENSIONS": "fc507c1471e104b4e0b653765f0d83c078b1768070ca582934e80a58ca1bc4fb",
+      "WL_S11CC2_N6_LOCAL_PROBE": "447118da5315ceef32294b0b418dae0faf61e07c109298cdea8e875cf3aacefb",
+      "WL_S11CC2_N6_LOCAL_INVENTORY": "508f511b3ce40abde2091689f926d1d26702007b291ba848018b91e45a8bc06f"
+    },
+    "sampleDenominatorZeroScalars": 0,
+    "scope": "native recorded real-axis cells and joint samples, excluding stated singular/diagonal loci; not global spectral coverage"
+  },
+  "publication": {
+    "path": "mathematica/out/S11c_c2_N6_mathematica_audit.out",
+    "bytes": 496254757,
+    "sha256": "08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254"
+  }
+}

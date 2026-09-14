@@ -1,5 +1,10 @@
 # S11c Mathematica audit of the four SymPy repairs
 
+Update: the user subsequently approved the pressure-trace repair. Its focused
+and native four-case checks passed; see the [repair report](S11c_wolfram_pressure_trace_repair_report.md)
+and [native checkpoint](S11c_wolfram_pressure_trace_native_checkpoint.json).
+The original audit disposition and counterexample below are retained as history.
+
 **A pressure-trace defect is present in the native Mathematica c2 N6 engine.**
 The user-requested audit is checkpointed; producer repair awaits approval under
 the standing instruction to stop when another upstream repair is needed.

@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T20:54:58.471394+00:00",
+  "observedUtc": "2026-09-14T22:58:16.616469+00:00",
   "active": {
     "stage": "left_validate",
     "command": [
@@ -30,7 +30,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "RIGHT and LEFT normalization are validated on the supplied case. LEFT has no raw residual norms above the diagnostic threshold and its independently computed discarded balance matrices vanish. REFERENCE and further scattering remain behind the queued Mathematica audit.",
+  "scope": "RIGHT and LEFT normalization remain validated on the supplied case. The Mathematica c2 pressure repair passed focused and native four-case validation; REFERENCE is ready after the publication commit.",
   "recurringFollowupHistory": [
     {
       "id": "continue-s11c-d-build",
@@ -40,7 +40,7 @@
       "previousUpdateResult": "not found in app; replacement created"
     }
   ],
-  "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone.",
+  "continuationPolicy": "Continue user-authorized work using silent local completion/error wake-ups for owned scripts. No model polling, routine progress messages, recurring checks or overlapping heavy CAS. Stop for user input only for a distinct upstream physical repair.",
   "previousExecutionSnapshot": {
     "active": {
       "stage": "right_construct",
@@ -154,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Complete approved Mathematica c2 reference-pressure repair and native regeneration, then resume REFERENCE normalization.",
+  "nextStage": "Commit and hash-verify native Mathematica publication, then run REFERENCE normalization from reference-preflight.json.",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -342,10 +342,10 @@
   },
   "leftCommit": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
   "wolframAuditCheckpoint": "S11c_wolfram_repair_audit_checkpoint.json",
-  "wolframAuditStatus": "REPAIR_AUTHORIZED_IN_PROGRESS",
+  "wolframAuditStatus": "REPAIR_VALIDATED_NATIVE_PUBLICATION_COMPLETE",
   "wolframRepairExecution": "S11c_wolfram_pressure_trace_repair_execution.json",
   "referencePreparation": {
-    "status": "READY_WAITING_FOR_WOLFRAM_REPAIR_PUBLICATION",
+    "status": "READY_AFTER_NATIVE_PUBLICATION_COMMIT",
     "preflight": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference-preflight.json",
     "changes": [
       "Save atomic modal/adjoint construction packets before emission while retaining the established final packets and unit registries.",
@@ -357,5 +357,6 @@
       "_measurements/S11c_d_end_normalization_validate.py": "ff43b7d97a37908dbc87ec35a35d27628386454290f0e9e343e357341b4b44f3"
     },
     "validation": "Python syntax checks; no scientific construction or regeneration while the serial Mathematica run is active."
-  }
+  },
+  "wolframRepairCheckpoint": "S11c_wolfram_pressure_trace_native_checkpoint.json"
 }

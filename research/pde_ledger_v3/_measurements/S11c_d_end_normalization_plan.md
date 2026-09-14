@@ -8,10 +8,11 @@ step 6 of the thickness-coordinate repair plan and the existing native
 Queue disposition, 2026-09-14: LEFT is validated and committed at b271c71b.
 The [Mathematica audit](S11c_wolfram_repair_audit_report.md) found a duplicate
 physical/reference pressure shift in c2 N6. Its [repair plan](S11c_wolfram_pressure_trace_repair_plan.md)
-is user approved. The native repair has passed its focused tests; native c2
-regeneration remains. REFERENCE and scattering wait for that checkpoint;
-accepted SymPy results remain unchanged. The sequence below
-resumes after the repaired audit disposition. The license allows at most two
+is user approved. The repair passed its focused tests and native four-case
+regeneration/validation: 218 exact focused residuals and 9,968,256 native
+numerator evaluations are zero under the adopted covariance criterion.
+REFERENCE resumes after the native annex publication commit and hash check;
+accepted SymPy results remain unchanged. The license allows at most two
 Mathematica scripts across sessions; heavy CAS jobs remain serial.
 
 Prerequisites completed: all eight endpoint stages are validated, published
@@ -72,3 +73,5 @@ validator checks their exact structural equality. Progress identifies emission
 stages and resource use; periodic stack diagnostics stay in the run directory.
 The accepted REFERENCE input/current/pairing hashes passed a read-only preflight.
 Execute its scientific run after the repaired native Wolfram publication.
+Use a local completion/error watcher for each owned long-running script;
+no recurring checks or model polling while a healthy job runs.

@@ -1,0 +1,255 @@
+{
+  "baseline": {
+    "path": "mathematica/out/S11c_c2_N6_mathematica_audit.out",
+    "annexContentPath": "/var/projects/toy_physics/.git/annex/objects/14/P8/MD5E-s397864807--e28aaf402fc2b73fc2d44cf671fc420a.out/MD5E-s397864807--e28aaf402fc2b73fc2d44cf671fc420a.out",
+    "bytes": 397864807,
+    "sha256": "6531a9f11c8162eed3cc616c174261546af02fa902760309f128b3862293bff8"
+  },
+  "publication": {
+    "path": "mathematica/out/S11c_c2_N6_mathematica_audit.out",
+    "bytes": 496254757,
+    "sha256": "08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254"
+  },
+  "validationCheckpoint": "S11c_wolfram_pressure_trace_native_checkpoint.json",
+  "validationCheckpointSha256": "be2e5e8f7067c085d141f8943d30bb06a60d36d6ce4c92a69f7e6ac5538dc1fa",
+  "unchanged": [
+    "WL_S11CC2_N6COV_ACTUAL_CONTROL_PARAMETERS",
+    "WL_S11CC2_N6COV_FROZEN_PHI",
+    "WL_S11CC2_N6COV_PHI_DOMAIN_CENSUS",
+    "WL_S11CC2_N6COV_PROVENANCE",
+    "WL_S11CC2_N6COV_R_COV",
+    "WL_S11CC2_N6COV_R_COV_BASELINE",
+    "WL_S11CC2_N6COV_R_COV_CONTROL_DELTA",
+    "WL_S11CC2_N6COV_R_COV_INCREMENT",
+    "WL_S11CC2_N6COV_SOURCE_ACTUAL",
+    "WL_S11CC2_N6COV_SOURCE_BASELINE",
+    "WL_S11CC2_N6COV_SOURCE_CONTROL_DELTA",
+    "WL_S11CC2_N6COV_SOURCE_PREDICTED",
+    "WL_S11CC2_N6RC_ADVECTION_ABSENCE",
+    "WL_S11CC2_N6RC_CARRIER_BRIDGE_RESIDUAL",
+    "WL_S11CC2_N6RC_CARRIER_CHANNEL",
+    "WL_S11CC2_N6RC_CARRIER_EULERIAN",
+    "WL_S11CC2_N6RC_CARRIER_MATERIAL",
+    "WL_S11CC2_N6RC_CROSS_CHANNEL",
+    "WL_S11CC2_N6RC_FROZEN_RELATIONS",
+    "WL_S11CC2_N6RC_SOURCE_BRIDGE_RESIDUAL",
+    "WL_S11CC2_N6RC_SOURCE_EULERIAN",
+    "WL_S11CC2_N6RC_SOURCE_MATERIAL",
+    "WL_S11CC2_N6_LOCAL_SETUP",
+    "WL_S11CC2_N6_SLOT_GUARD_CARRIER",
+    "WL_S11CC2_N6_SLOT_GUARD_NATIVE",
+    "WL_S11CC2_N6_SLOT_GUARD_RESIDUAL"
+  ],
+  "changed": [
+    "WL_S11CC2_N6_LOCAL_CONSTRUCTION",
+    "WL_S11CC2_N6RC_SOURCE_CHANNEL",
+    "WL_S11CC2_N6RC_EULERIAN_OPERAND",
+    "WL_S11CC2_N6RC_MATERIAL_OPERAND",
+    "WL_S11CC2_N6RC_R_N6",
+    "WL_S11CC2_N6RC_SPLIT_SUM",
+    "WL_S11CC2_N6RC_SPLIT_CHECK",
+    "WL_S11CC2_N6RC_PROVENANCE",
+    "WL_S11CC2_N6_CLOSURE_GUARD_NATIVE",
+    "WL_S11CC2_N6_CLOSURE_GUARD_CARRIER",
+    "WL_S11CC2_N6_CLOSURE_GUARD_RESIDUAL",
+    "WL_S11CC2_N6RC_DIMENSIONS",
+    "WL_S11CC2_N6_LOCAL_PROBE",
+    "WL_S11CC2_N6_LOCAL_INVENTORY"
+  ],
+  "added": [
+    "wlS11cc2PressureTracePhysicalResponse",
+    "wlS11cc2PressureTraceReconstructedPressure",
+    "wlS11cc2PressureTraceReconstructionResidual",
+    "wlS11cc2PressureTraceReferenceResponse"
+  ],
+  "removed": [],
+  "emissions": {
+    "WL_S11CC2_N6COV_ACTUAL_CONTROL_PARAMETERS": {
+      "before": "a9bafbf18d933fac9b79f13732cfb328e127cfe013be6bbe7470a49d983093b7",
+      "after": "a9bafbf18d933fac9b79f13732cfb328e127cfe013be6bbe7470a49d983093b7"
+    },
+    "WL_S11CC2_N6COV_FROZEN_PHI": {
+      "before": "22c27b80ec65ba00382f322efad0bcb2486cc268cf31868651147b2bef7be5a5",
+      "after": "22c27b80ec65ba00382f322efad0bcb2486cc268cf31868651147b2bef7be5a5"
+    },
+    "WL_S11CC2_N6COV_PHI_DOMAIN_CENSUS": {
+      "before": "a1878b60c79ed0de1bf4347c0d65370649547bf7ca88db108ff1790434d312f9",
+      "after": "a1878b60c79ed0de1bf4347c0d65370649547bf7ca88db108ff1790434d312f9"
+    },
+    "WL_S11CC2_N6COV_PROVENANCE": {
+      "before": "827674f9575e7688078905549cdf4a51822caa2d978e05329c91ea728532d096",
+      "after": "827674f9575e7688078905549cdf4a51822caa2d978e05329c91ea728532d096"
+    },
+    "WL_S11CC2_N6COV_R_COV": {
+      "before": "4a1196ac9f27e5cc20423ac47f4b2ecf3985327e223b7029403ccc366cfc5728",
+      "after": "4a1196ac9f27e5cc20423ac47f4b2ecf3985327e223b7029403ccc366cfc5728"
+    },
+    "WL_S11CC2_N6COV_R_COV_BASELINE": {
+      "before": "2cf45a7dc32595213c06d07d809ab833e5b0dededbfe537cd0e31a1e6b140be4",
+      "after": "2cf45a7dc32595213c06d07d809ab833e5b0dededbfe537cd0e31a1e6b140be4"
+    },
+    "WL_S11CC2_N6COV_R_COV_CONTROL_DELTA": {
+      "before": "04b097acb88ea8c7f0e13bf8cddfd97f7f100a7482d631376da9b44223fced4c",
+      "after": "04b097acb88ea8c7f0e13bf8cddfd97f7f100a7482d631376da9b44223fced4c"
+    },
+    "WL_S11CC2_N6COV_R_COV_INCREMENT": {
+      "before": "19af3da7aab83b741ab2fd2bfae1e94faa159e05de3783dc324011ad2e47191c",
+      "after": "19af3da7aab83b741ab2fd2bfae1e94faa159e05de3783dc324011ad2e47191c"
+    },
+    "WL_S11CC2_N6COV_SOURCE_ACTUAL": {
+      "before": "44d0ce405f3ad6239dfbdf87b0a43524b824c95ee2046e01c25db13c10c0517c",
+      "after": "44d0ce405f3ad6239dfbdf87b0a43524b824c95ee2046e01c25db13c10c0517c"
+    },
+    "WL_S11CC2_N6COV_SOURCE_BASELINE": {
+      "before": "275f345671caa500a5cae06798e0be92ce0d5b047791d3cd4431b07f0efe0893",
+      "after": "275f345671caa500a5cae06798e0be92ce0d5b047791d3cd4431b07f0efe0893"
+    },
+    "WL_S11CC2_N6COV_SOURCE_CONTROL_DELTA": {
+      "before": "86748d7415024f6941cecc045e6764457a97694a9b25c99a839ce1185e3ce981",
+      "after": "86748d7415024f6941cecc045e6764457a97694a9b25c99a839ce1185e3ce981"
+    },
+    "WL_S11CC2_N6COV_SOURCE_PREDICTED": {
+      "before": "bafbf568dc212230f35bd06932cf689e78dd0473baeeb3d0c32f7dd5069b0b1f",
+      "after": "bafbf568dc212230f35bd06932cf689e78dd0473baeeb3d0c32f7dd5069b0b1f"
+    },
+    "WL_S11CC2_N6RC_ADVECTION_ABSENCE": {
+      "before": "6f837daa6fd168a5a2da3df9e7b98e33b41a67591135fe61fe4e1953398eb893",
+      "after": "6f837daa6fd168a5a2da3df9e7b98e33b41a67591135fe61fe4e1953398eb893"
+    },
+    "WL_S11CC2_N6RC_CARRIER_BRIDGE_RESIDUAL": {
+      "before": "7587c75f88848575ef999aed26b66af51f32d27e30360ed5923013fd5bc77070",
+      "after": "7587c75f88848575ef999aed26b66af51f32d27e30360ed5923013fd5bc77070"
+    },
+    "WL_S11CC2_N6RC_CARRIER_CHANNEL": {
+      "before": "362811483e3a27df1c8f3f7962b23574435e79cbecd03df2b2412a460acbf404",
+      "after": "362811483e3a27df1c8f3f7962b23574435e79cbecd03df2b2412a460acbf404"
+    },
+    "WL_S11CC2_N6RC_CARRIER_EULERIAN": {
+      "before": "d378938d41e4c2ac371a9a266728411b4e294a51cc6b0192fd99a776cb6bc125",
+      "after": "d378938d41e4c2ac371a9a266728411b4e294a51cc6b0192fd99a776cb6bc125"
+    },
+    "WL_S11CC2_N6RC_CARRIER_MATERIAL": {
+      "before": "e27cdddbb1b1705841ba00b53fff458b350271c928ecf66d8cce702d692817c4",
+      "after": "e27cdddbb1b1705841ba00b53fff458b350271c928ecf66d8cce702d692817c4"
+    },
+    "WL_S11CC2_N6RC_CROSS_CHANNEL": {
+      "before": "ed830e77f0a37cec655973ecb7fa39262587dbfebdee1486a54a74e49d7f6e6d",
+      "after": "ed830e77f0a37cec655973ecb7fa39262587dbfebdee1486a54a74e49d7f6e6d"
+    },
+    "WL_S11CC2_N6RC_DIMENSIONS": {
+      "before": "a2166e8cde2bc31043105a091660e754e3e3831a3ad44e468a64f676efcc573d",
+      "after": "fc507c1471e104b4e0b653765f0d83c078b1768070ca582934e80a58ca1bc4fb"
+    },
+    "WL_S11CC2_N6RC_EULERIAN_OPERAND": {
+      "before": "ebdee8ebaf43242bd0feff158c91a51abd71aae675605e1df9b1a9213ff2e37f",
+      "after": "12675504c2f85c371880132220c8faf26955ebcf52c004ebfd257c2873a31354"
+    },
+    "WL_S11CC2_N6RC_FROZEN_RELATIONS": {
+      "before": "18efc298b785c7c1db85842934f23d8ee421505ca4a8ce705bb07c455a1da321",
+      "after": "18efc298b785c7c1db85842934f23d8ee421505ca4a8ce705bb07c455a1da321"
+    },
+    "WL_S11CC2_N6RC_MATERIAL_OPERAND": {
+      "before": "e257990d1d2685c2109061d1804b321b8c85d0decc2135f5e87caae89275ca36",
+      "after": "f76eaf64b639d5de46debf940a6bb10ddeed41010eb577cd8d27e5fa94268213"
+    },
+    "WL_S11CC2_N6RC_PROVENANCE": {
+      "before": "7887771b602afae1d9a54f237ffa18f1c067068d9e5bcdbe0bc1c664b1e7a397",
+      "after": "d354aefa4b7ae62682a1b3689316d26ed25cb763d98f351ed9bf6ffe744ecb98"
+    },
+    "WL_S11CC2_N6RC_R_N6": {
+      "before": "d0b7289157ed4ddc803dac01ec1507ebc648a79ad7a76848373a9f265d07304c",
+      "after": "2f4cbe22a33c05e551823bc97572f1c7e39a809d765536636ea339dac0c46e56"
+    },
+    "WL_S11CC2_N6RC_SOURCE_BRIDGE_RESIDUAL": {
+      "before": "f6e74cadcf45b4addf9f60029325af0dbf755fc4bfba02f70c78e942b7084789",
+      "after": "f6e74cadcf45b4addf9f60029325af0dbf755fc4bfba02f70c78e942b7084789"
+    },
+    "WL_S11CC2_N6RC_SOURCE_CHANNEL": {
+      "before": "e20fc601520ce63e77f0105fa24414e492ccc97f65f0faef2ea1d33b7c1c2349",
+      "after": "7a1b3496f43d58934e13205dc4cc8a398fcd419ba3a160e85503a470cf2ed13b"
+    },
+    "WL_S11CC2_N6RC_SOURCE_EULERIAN": {
+      "before": "d36d8cb18d43ed7930862f8d01229085ee4f253a18f5116db6b5c059573db77a",
+      "after": "d36d8cb18d43ed7930862f8d01229085ee4f253a18f5116db6b5c059573db77a"
+    },
+    "WL_S11CC2_N6RC_SOURCE_MATERIAL": {
+      "before": "fea196cd2cfeceefa8af93f5bc3bdf5b88e7bac13dd6c37ee42a127f701ea291",
+      "after": "fea196cd2cfeceefa8af93f5bc3bdf5b88e7bac13dd6c37ee42a127f701ea291"
+    },
+    "WL_S11CC2_N6RC_SPLIT_CHECK": {
+      "before": "70beb2d331f97713098b08e51decbb931f452514443bd2496b6185b952a16ce0",
+      "after": "1a35595fc348b3bc63cfc417b9c335253f3f6781c89fd9fba20b62bcfc6bff86"
+    },
+    "WL_S11CC2_N6RC_SPLIT_SUM": {
+      "before": "b7d6065b4c3c14f59d75f51db075ed5e5aec0ff7ff0aa10d2ce5ebd984731a2c",
+      "after": "dfbcbc9f61e4737ff03c9e7401fe711b2bf91c59950ec7d1a45a017ef6ff4697"
+    },
+    "WL_S11CC2_N6_CLOSURE_GUARD_CARRIER": {
+      "before": "e003f3612373986c0650eb3c0e6f80fb1f8776bb2b8437d5560c79b3c099105e",
+      "after": "37fe7fb14586d1ff40f66b805c5106870e23550d9d5fd57dc6f98ed6b696ffaf"
+    },
+    "WL_S11CC2_N6_CLOSURE_GUARD_NATIVE": {
+      "before": "8ff466ed518dd118c996b887f4f8a497e9554530c0e700e4cdb8c0923ea1e09e",
+      "after": "ddc0ff1eb5118662ea572ba3cefbbd7b78292d2a867990befd9512d18b6ee6f6"
+    },
+    "WL_S11CC2_N6_CLOSURE_GUARD_RESIDUAL": {
+      "before": "9b98721fa625749344e6a6a78d2d71ccdbf041b04fa8518604a53723a6152eb6",
+      "after": "6a7768008a52341d8f477859b22b6f6884277cee232e86320d784c0e1118ab1f"
+    },
+    "WL_S11CC2_N6_LOCAL_CONSTRUCTION": {
+      "before": "332c3a2c98af2d7e6d2035fa31ad9271a2075e24d1963f796e979754f0eb3f11",
+      "after": "19d1be0261036a6be2f1378a2e483ab2d2a3b4fd4c507db21fb6887435b52559"
+    },
+    "WL_S11CC2_N6_LOCAL_INVENTORY": {
+      "before": "751443f6baf882fa2be89c3b01b0ac7aa40d4ea86bfd5c96ee2fa0e620375db7",
+      "after": "508f511b3ce40abde2091689f926d1d26702007b291ba848018b91e45a8bc06f"
+    },
+    "WL_S11CC2_N6_LOCAL_PROBE": {
+      "before": "412efaa700f38106e95b0e2923a9ada88a42cc33e4dd2596018a387d374a938d",
+      "after": "447118da5315ceef32294b0b418dae0faf61e07c109298cdea8e875cf3aacefb"
+    },
+    "WL_S11CC2_N6_LOCAL_SETUP": {
+      "before": "e3ee7bbd8a95730eca902d5563e93b32d8d0bc921d7122567196a0cb021b0ba9",
+      "after": "e3ee7bbd8a95730eca902d5563e93b32d8d0bc921d7122567196a0cb021b0ba9"
+    },
+    "WL_S11CC2_N6_SLOT_GUARD_CARRIER": {
+      "before": "049e67ebf7da8db201ee1d8f889320dd44127ceb3d85644c4848f33ff78d669e",
+      "after": "049e67ebf7da8db201ee1d8f889320dd44127ceb3d85644c4848f33ff78d669e"
+    },
+    "WL_S11CC2_N6_SLOT_GUARD_NATIVE": {
+      "before": "4331914b907acef26cf35b12d9a8ed4e70aad24414669d9fd24e7b69cfff616f",
+      "after": "4331914b907acef26cf35b12d9a8ed4e70aad24414669d9fd24e7b69cfff616f"
+    },
+    "WL_S11CC2_N6_SLOT_GUARD_RESIDUAL": {
+      "before": "4284ab9297e1ad3787fb5e2da76357ea9292904143047429a9fe53da144300c9",
+      "after": "4284ab9297e1ad3787fb5e2da76357ea9292904143047429a9fe53da144300c9"
+    },
+    "wlS11cc2PressureTracePhysicalResponse": {
+      "before": null,
+      "after": "09010b3657df4d94c948c1d64dc9f9bf7e83ed579b1ed3f10e2d5803769fc3d4"
+    },
+    "wlS11cc2PressureTraceReconstructedPressure": {
+      "before": null,
+      "after": "4f32d5cc1939f29441569d6fb231b33108cf571911d779f1740a58824843ce52"
+    },
+    "wlS11cc2PressureTraceReconstructionResidual": {
+      "before": null,
+      "after": "4374dc23ce79d0358812c73fdc8c73b92e61938a37dfd4b417245b03c529e041"
+    },
+    "wlS11cc2PressureTraceReferenceResponse": {
+      "before": null,
+      "after": "ae3eee1b7311befba8cb7b4cf97a55c64cbc8826cb70f1cd3298924b00040098"
+    }
+  },
+  "unchangedPriorOutputs": {
+    "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": {
+      "bytes": 156163159,
+      "sha256": "b7c744a3e698f25a0911463b97d257826a61c4af3c625686c53786a14571b9b5"
+    },
+    "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": {
+      "bytes": 81881078,
+      "sha256": "d63e616786eebb58d24e2270d5e449c3151b150071a341d4a36bdfbc00a17fdd"
+    }
+  },
+  "scope": "Exact emitted-assignment byte hashes in the same native engine. Changed representations are not a nonzero-residual claim; native residual validation is separate. No cross-engine comparator was run."
+}

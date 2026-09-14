@@ -1,35 +1,24 @@
 {
-  "observedUtc": "2026-09-14T20:09:08.997024+00:00",
+  "observedUtc": "2026-09-14T20:28:32.731215+00:00",
   "active": {
-    "stage": "left_construct",
+    "stage": "left_validate",
     "command": [
       "python",
       "-u",
-      "_measurements/S11c_d_end_normalization_check.py",
-      "--manifest",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json",
-      "--input",
-      "_measurements/S11c_d_channel_preflight_input.json",
-      "--pairing-checkpoint",
-      "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json",
-      "--source-checkpoint",
-      "_measurements/S11c_d_end_current_source_left_thickness_repair_checkpoint.json",
-      "--frequency-checkpoint",
-      "_measurements/S11c_d_end_frequency_left_thickness_repair_checkpoint.json",
-      "--end",
-      "LEFT",
+      "_measurements/S11c_d_end_normalization_validate.py",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left",
+      "--publish"
     ],
-    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stdout",
-    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stderr",
-    "startedUtc": "2026-09-14T19:22:51.598436+00:00",
-    "childPid": 1828879,
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_validate.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_validate.stderr",
+    "startedUtc": "2026-09-14T20:25:15.944823+00:00",
+    "childPid": 1846069,
     "status": "completed",
     "exitCode": 0,
-    "wallSeconds": 178.1779149742797,
+    "wallSeconds": 56.45177965052426,
     "stderrBytes": 0,
-    "finishedUtc": "2026-09-14T19:25:49.776432+00:00"
+    "finishedUtc": "2026-09-14T20:26:12.396683+00:00"
   },
   "stderrBytes": 0,
   "recurringFollowup": {
@@ -41,7 +30,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "RIGHT is accepted at 0da0f746. LEFT constructor completed successfully, with validation and publication pending. The user-authorized Mathematica audit of four earlier upstream repairs is queued next after the LEFT checkpoint.",
+  "scope": "RIGHT and LEFT normalization are validated on the supplied case. LEFT has no raw residual norms above the diagnostic threshold and its independently computed discarded balance matrices vanish. REFERENCE and further scattering remain behind the queued Mathematica audit.",
   "recurringFollowupHistory": [
     {
       "id": "continue-s11c-d-build",
@@ -165,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Validate/publish/commit LEFT; then the queued Mathematica audit, before REFERENCE or further scattering.",
+  "nextStage": "Commit the accepted LEFT checkpoint, then execute the four-issue Mathematica audit before REFERENCE or scattering.",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -325,6 +314,30 @@
       "state": "R"
     }
   },
-  "leftValidationStatus": "PENDING",
-  "queuedAudit": "S11c_wolfram_repair_audit_queue.json"
+  "leftValidationStatus": "VALIDATED_AND_PUBLISHED",
+  "queuedAudit": "S11c_wolfram_repair_audit_queue.json",
+  "leftCheckpoint": "S11c_d_end_normalization_left_thickness_repair_checkpoint.json",
+  "leftCheckpointSha256": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+  "leftResult": {
+    "recordCount": 18,
+    "basisDirections": 22,
+    "definedFieldMaps": 18,
+    "physicalCurrentNormalizationCount": 2,
+    "tagCount": 5990,
+    "metadataPaths": 28146,
+    "numericResidualScalars": 5850,
+    "publications": {
+      "full.out": {
+        "path": "scripts/out/S11c_d_end_normalization_left_thickness_repair.out",
+        "bytes": 3475174,
+        "sha256": "fc9d2cc3e28f476c58a588c08317ea6bd62b61ad68620a2ac05968f89eef0fef"
+      },
+      "remainders.out": {
+        "path": "scripts/out/S11c_d_end_normalization_left_thickness_repair_remainders.out",
+        "bytes": 343316,
+        "sha256": "51f2ec4c343324c27c04cf902afcbc976704abf41f64e18eae5d0c458aff9776"
+      }
+    },
+    "maximumResidualMinusRemainderNorm": 8.207529655138466e-13
+  }
 }

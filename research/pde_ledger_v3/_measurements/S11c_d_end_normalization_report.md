@@ -29,12 +29,20 @@ actual constructor and persists child completion before log bookkeeping.
 All eight fresh source/frequency/pairing prerequisites remain committed through
 432db7e7, with 802 zero retained pairing scalars at each of RIGHT, LEFT and
 REFERENCE. RIGHT is committed at 0da0f746 and preparation at 8ca2f3b0.
-LEFT construction finished successfully in 178.18 seconds with empty stderr;
-its validation and publication are pending. After that checkpoint, the
-[user-approved Mathematica audit](S11c_wolfram_repair_audit_plan.md) of the four
-upstream repairs now takes priority over REFERENCE and further scattering.
-The audit has not started. It is limited to two concurrent Mathematica scripts
-across sessions, with heavy CAS runs kept serial. The remaining normalization
-and scattering program resumes after the audit disposition and any required
-repair approval. Existing sheet/exceptional-domain limits remain.
+LEFT construction finished successfully in 178.18 seconds and validation in
+56.45 seconds, both with empty stderr. Its 18 candidates, 22 basis directions,
+18 adjoint field maps, and two normalized two-dimensional subspaces passed the
+full checks. The original transcript has 5,990 tags, 28,146 metadata paths and
+5,850 numerical residual scalars. No raw norm exceeds the 1e-8 diagnostic
+threshold. Its independently computed discarded balance matrices vanish;
+275 exact remainder checks are zero and the largest contraction difference
+is 8.21e-13. The LEFT original and remainder transcripts are published with
+source pins in [the checkpoint](S11c_d_end_normalization_left_thickness_repair_checkpoint.json).
+
+The [user-approved Mathematica audit](S11c_wolfram_repair_audit_plan.md) of the
+four upstream repairs is next, before REFERENCE or further scattering. No
+Mathematica physics result is yet claimed. Two concurrent Mathematica scripts
+is the license ceiling; heavy CAS jobs remain serial. The remaining program
+resumes after the audit disposition and any required repair approval.
+Existing sheet/exceptional-domain limits remain.
 The user controls continuation; no scheduled follow-ups are active or authorized.

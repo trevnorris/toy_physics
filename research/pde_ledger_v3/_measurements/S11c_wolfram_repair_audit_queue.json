@@ -1,6 +1,6 @@
 {
   "kind": "MANUAL_REPOSITORY_WORK_QUEUE",
-  "status": "QUEUED",
+  "status": "READY_AFTER_LEFT_COMMIT",
   "recordedUtc": "2026-09-14T20:09:08.997024+00:00",
   "authorization": "User approved queuing the four-issue Mathematica audit and specified a maximum of two concurrent Mathematica scripts.",
   "plan": "_measurements/S11c_wolfram_repair_audit_plan.md",
@@ -80,7 +80,8 @@
       "stderrBytes": 0,
       "finishedUtc": "2026-09-14T19:25:49.776432+00:00"
     },
-    "leftValidation": "PENDING"
+    "leftValidation": "VALIDATED_AND_PUBLISHED",
+    "leftCheckpoint": "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json"
   },
   "evidenceRoot": "/var/projects/toy_physics/_scratch/s11c",
   "publicationRoot": "mathematica/out",
@@ -94,5 +95,5 @@
     "pathMeaning": "Actual Wolfram script path",
     "specifiedBy": "User"
   },
-  "updatedUtc": "2026-09-14T20:11:01.454188+00:00"
+  "updatedUtc": "2026-09-14T20:28:32.731215+00:00"
 }

@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T20:09:08.997024+00:00",
+  "observedUtc": "2026-09-14T20:28:32.731215+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,7 +15,7 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "LEFT constructor completed; validate/checkpoint it, then run the queued four-issue Mathematica audit before further construction.",
+  "continuationState": "RIGHT and LEFT normalization validated; checkpoint LEFT, then the four-issue Mathematica audit.",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
     "status": "DELETED",
@@ -25,7 +25,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "Prior repaired SymPy producers and RIGHT normalization remain accepted within their recorded domains. LEFT is constructed but unvalidated. Mathematica applicability of the four upstream repairs remains unaudited.",
+  "scope": "RIGHT and LEFT full-subspace normalization accepted on the supplied case. Mathematica applicability of the four upstream repairs remains unaudited; REFERENCE/scattering continuation awaits that audit disposition.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -174,35 +174,24 @@
   "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone.",
   "normalizationCheckpoint": "S11c_d_end_normalization_execution_checkpoint.json",
   "activeNormalization": {
-    "stage": "left_construct",
+    "stage": "left_validate",
     "command": [
       "python",
       "-u",
-      "_measurements/S11c_d_end_normalization_check.py",
-      "--manifest",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json",
-      "--input",
-      "_measurements/S11c_d_channel_preflight_input.json",
-      "--pairing-checkpoint",
-      "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json",
-      "--source-checkpoint",
-      "_measurements/S11c_d_end_current_source_left_thickness_repair_checkpoint.json",
-      "--frequency-checkpoint",
-      "_measurements/S11c_d_end_frequency_left_thickness_repair_checkpoint.json",
-      "--end",
-      "LEFT",
+      "_measurements/S11c_d_end_normalization_validate.py",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left",
+      "--publish"
     ],
-    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stdout",
-    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stderr",
-    "startedUtc": "2026-09-14T19:22:51.598436+00:00",
-    "childPid": 1828879,
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_validate.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_validate.stderr",
+    "startedUtc": "2026-09-14T20:25:15.944823+00:00",
+    "childPid": 1846069,
     "status": "completed",
     "exitCode": 0,
-    "wallSeconds": 178.1779149742797,
+    "wallSeconds": 56.45177965052426,
     "stderrBytes": 0,
-    "finishedUtc": "2026-09-14T19:25:49.776432+00:00"
+    "finishedUtc": "2026-09-14T20:26:12.396683+00:00"
   },
   "queuedMathematicaAudit": "S11c_wolfram_repair_audit_queue.json"
 }

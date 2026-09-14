@@ -8,7 +8,9 @@ changes. The instrument now requires exact AST agreement for every consumed
 helper function, while still verifying full frozen snapshots and other source
 pins. All eight end/function joins pass; the failed attempt is preserved under
 repository `_scratch/s11c/s11c-matching-channels-20260914/complete`. No physical
-constructor changed and no channel-current result is accepted yet.
+constructor changed and no channel-current result is accepted yet. The fresh
+`retry-02` run is active with its own completion/error watcher after compatibility
+repair commit `2953fa48`.
 
 The construction consumes the accepted LEFT/RIGHT current/adjoint packets,
 preserves every isolated-root/lift basis and classifier/domain record, and

@@ -1,18 +1,18 @@
 {
-  "status": "SOURCE_CHECK_REPAIRED_READY_TO_RETRY",
+  "status": "RUNNING",
   "plan": "S11c_d_variable_profile_matching_plan.md",
-  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02",
   "scope": "One supplied case, both complete physical-end channel bases and polarized cross-mode currents; no variable-profile interior solve yet.",
   "sourceSha256": {
     "scripts/S11c_d_mixing_scattering_sympy_audit.py": "172518e06987676868818f5747ed839f6ce180094649533bd6a385c714913665",
-    "_measurements/S11c_d_matching_channels_check.py": "bc403b1732e2b4f8ad7f3bee64d984e86e58f60a50c5d960636f4dda6a33421e"
+    "_measurements/S11c_d_matching_channels_check.py": "6b0d48a2403535f82681ad8eb6d8b156dfe3baeb0b0f462a175e0f1ddb3b0fd7"
   },
   "existingEngineConstructorAstJoins": {
     "LEFT": true,
     "RIGHT": true
   },
   "next": "Run the focused construction/serialization validation and inspect all literal residuals before accepting publication.",
-  "observedUtc": "2026-09-14T23:24:50.785551+00:00",
+  "observedUtc": "2026-09-14T23:27:29.918276+00:00",
   "implementationCommit": "0f5498ba",
   "active": {
     "stage": "channels_construct",
@@ -21,26 +21,22 @@
       "-u",
       "_measurements/S11c_d_matching_channels_check.py",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/complete",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02/complete",
       "--publish"
     ],
-    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/channels_construct.stdout",
-    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/channels_construct.stderr",
-    "startedUtc": "2026-09-14T23:24:00.467357+00:00",
-    "childPid": 1913905,
-    "status": "failed",
-    "exitCode": 1,
-    "wallSeconds": 1.580861059948802,
-    "stderrBytes": 657,
-    "finishedUtc": "2026-09-14T23:24:02.048319+00:00"
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02/channels_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02/channels_construct.stderr",
+    "startedUtc": "2026-09-14T23:26:57.181077+00:00",
+    "childPid": 1915513,
+    "status": "running"
   },
   "launch": {
-    "launchedUtc": "2026-09-14T23:24:00.373369+00:00",
+    "launchedUtc": "2026-09-14T23:26:57.071290+00:00",
     "command": [
       "/usr/bin/python",
       "_measurements/S11c_d_end_normalization_run.py",
       "--run-root",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02",
       "--stage",
       "channels_construct",
       "--",
@@ -48,28 +44,22 @@
       "-u",
       "_measurements/S11c_d_matching_channels_check.py",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/complete",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02/complete",
       "--publish"
     ],
-    "supervisorPid": 1913900,
-    "watcherPid": 1913901,
-    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/completion-watcher"
+    "supervisorPid": 1915507,
+    "watcherPid": 1915508,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02/completion-watcher"
   },
   "completionWatcher": {
-    "status": "finished",
-    "watcherPid": 1913901,
-    "jobPid": 1913900,
+    "status": "waiting",
+    "watcherPid": 1915508,
+    "jobPid": 1915507,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
-    "startedUtc": "2026-09-14T23:24:00.475919+00:00",
+    "startedUtc": "2026-09-14T23:26:57.175136+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
-    "messageSha256": "5cf64a22f5594fdb24072c21d8f733465ddf07801222926b2e7afb42d71dd5f8",
-    "notifications": {
-      "completion": {
-        "status": "queued",
-        "exitCode": 0,
-        "finishedUtc": "2026-09-14T23:24:03.101934+00:00"
-      }
-    }
+    "messageSha256": "05cfcb6d8b96cce5df24557349645952c26ee0cb3a5a0d68e7fd7952e819376f",
+    "notifications": {}
   },
   "failedAttempt": {
     "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/complete",
@@ -108,5 +98,6 @@
       "load_native": true,
       "put": true
     }
-  }
+  },
+  "sourceCompatibilityRepairCommit": "2953fa48"
 }

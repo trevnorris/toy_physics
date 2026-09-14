@@ -1,0 +1,251 @@
+{
+  "stage": "b",
+  "newExportSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+  "sourcePins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_b_export_check.py": "7cf68ce2323a23afa72078654d09f441ad8e4add467cadd880779f28ee2aa622",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_b_brane_operator_sympy_audit.py": "ec7afc2da4822acfce3eef9aad9162b56f76d7c3629e19a3ddc6c779a0bd8037",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_inertia_artifact_audit.py": "13e05393cc7404c0223f1300964cf577af1968b4268881eb5663a40151cb05b5",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_emit.py": "765dc2f8f80359c2e9958a5e043ae22fe366f07320e9cb54702602bb47055349",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_origin_components.py": "92bdd05016aa87a7bf9bd50b773fa76435ee4d288b13c06b82f2eda10f56b406"
+  },
+  "sourcePinsAfter": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_b_export_check.py": "7cf68ce2323a23afa72078654d09f441ad8e4add467cadd880779f28ee2aa622",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_b_brane_operator_sympy_audit.py": "ec7afc2da4822acfce3eef9aad9162b56f76d7c3629e19a3ddc6c779a0bd8037",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_inertia_artifact_audit.py": "13e05393cc7404c0223f1300964cf577af1968b4268881eb5663a40151cb05b5",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_emit.py": "765dc2f8f80359c2e9958a5e043ae22fe366f07320e9cb54702602bb47055349",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_origin_components.py": "92bdd05016aa87a7bf9bd50b773fa76435ee4d288b13c06b82f2eda10f56b406"
+  },
+  "sourceSnapshots": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "source/0/S11c_b_exports.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": "source/1/S11c_b_brane_operator_sympy_audit.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py": "source/2/S11c_a_exports.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md": "source/3/S11c_b_SHARED_PHYSICS.md",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_b_export_check.py": "source/4/S11c_thickness_coordinate_b_export_check.py",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_b_exports.py": "source/5/S11c_b_exports.py",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_b_brane_operator_sympy_audit.py": "source/6/S11c_b_brane_operator_sympy_audit.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/ledger_fold.py": "source/7/ledger_fold.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "source/8/S11c_d_mixing_scattering_sympy_audit.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_output_codec.py": "source/9/S11c_d_output_codec.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_inertia_artifact_audit.py": "source/10/S11c_inertia_artifact_audit.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_emit.py": "source/11/S11c_d_end_pairing_emit.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": "source/12/S11c_d_end_pairing_check.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_modal_current_check.py": "source/13/S11c_d_modal_current_check.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_check.py": "source/14/S11c_d_joint_sheet_check.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_origin_components.py": "source/15/S11c_thickness_coordinate_origin_components.py"
+  },
+  "checks": {
+    "ExportPinResidual": {
+      "scalars": 3,
+      "nonzero": 0
+    },
+    "OtherExportPreservationResidual": {
+      "scalars": 2439,
+      "nonzero": 0
+    },
+    "OtherOriginPreservationResidual": {
+      "scalars": 28,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantActionResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantBaselineSourceResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantNonkineticPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantFullDeltaAccountingResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantOriginActionResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantOriginBaselineSourceResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantOriginDeltaAccountingResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantOtherSlotPreservationResidual": {
+      "scalars": 9,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantActionResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantBaselineSourceResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantNonkineticPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantFullDeltaAccountingResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantOriginActionResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantOriginBaselineSourceResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantOriginDeltaAccountingResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantOtherSlotPreservationResidual": {
+      "scalars": 9,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantActionResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantBaselineSourceResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantNonkineticPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantFullDeltaAccountingResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantOriginActionResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantOriginBaselineSourceResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantOriginDeltaAccountingResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantOtherSlotPreservationResidual": {
+      "scalars": 9,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantActionResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantBaselineSourceResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantNonkineticPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantFullDeltaAccountingResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantOriginActionResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantOriginBaselineSourceResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantOriginDeltaAccountingResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantOtherSlotPreservationResidual": {
+      "scalars": 9,
+      "nonzero": 0
+    },
+    "SourcePinStabilityResidual": {
+      "scalars": 16,
+      "nonzero": 0
+    }
+  },
+  "objects": 91,
+  "objectsSha256": "f9a41a7f828057872182a07c0fa63216c706cfd2f74cccaddcff891e375ff21e",
+  "cases": [
+    [
+      "LAB_HELD",
+      "RHO4_CONSTANT"
+    ],
+    [
+      "LAB_HELD",
+      "RHOBR_CONSTANT"
+    ],
+    [
+      "MATERIAL_ADVECTED",
+      "RHO4_CONSTANT"
+    ],
+    [
+      "MATERIAL_ADVECTED",
+      "RHOBR_CONSTANT"
+    ]
+  ],
+  "changedValueSerializations": [
+    "slab_operator",
+    "slab_operator_term_origins"
+  ],
+  "addedKeys": [],
+  "originComponents": 32,
+  "otherOriginComponents": 28,
+  "removedKeys": [],
+  "otherSlotsPerCase": {
+    "LAB_HELD/RHO4_CONSTANT": 9,
+    "LAB_HELD/RHOBR_CONSTANT": 9,
+    "MATERIAL_ADVECTED/RHO4_CONSTANT": 9,
+    "MATERIAL_ADVECTED/RHOBR_CONSTANT": 9
+  },
+  "nonzeroResidualScalars": 0,
+  "wallSeconds": 595.9662875747308,
+  "peakRssKiB": 1717600,
+  "runDirectory": "/tmp/s11c-thickness-coordinate-20260914/b_checks_exdomain",
+  "validatorSha256": "311d6177b80646bc817f31945c381902d937d905b284159607992b175cbd69f7",
+  "metadataPaths": 2876,
+  "residualScalars": 2634,
+  "nonfiniteObjects": [],
+  "transcript": {
+    "bytes": 1361873,
+    "sha256": "7620bb53be733b28bfbc1abbd71e940ba1be9ea6db7bde5b436df5a47a4cadd8"
+  },
+  "publication": "scripts/out/S11c_thickness_coordinate_b_export.out"
+}

@@ -10,7 +10,8 @@ boundary below: the source trace identifies b's kinetic coordinate mismatch
 with 142 exact-zero accounting/regression scalars. The native b kinetic ansatz
 and its independent time-action test are repaired; eight generic inertia/action
 components are zero. The source repair is committed at 3b52afcb. The full b producer has completed;
-its export comparison is running after a metadata-domain bottleneck repair.
+its four-case export comparison completed with 2634 zero residual scalars
+and validated metadata/source joins after the metadata-domain bottleneck repair.
 The c2 independent kinetic control needs the same coordinate propagation and
 is prepared for full regeneration/validation. Execution and the approved
 recurring continuation are recorded in the active repair report. Downstream

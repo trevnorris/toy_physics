@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T13:43:46.748466+00:00",
+  "observedUtc": "2026-09-14T13:51:24.190364+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -10,15 +10,16 @@
   "firstExportCheckTracebackSha256": "1a3341e59e5d18f9cf362f4ec31662d0ef5897be74ee036f8808213d436b67ce",
   "activeExportCheckDirectory": "/tmp/s11c-thickness-coordinate-20260914/b_checks_exdomain",
   "activeExportCheckProgress": {
-    "operation": "emit",
-    "wallSeconds": 303.6005769884214,
-    "object": "LabHeldRhobrConstantAfterRows"
+    "operation": "validated_and_published",
+    "objects": 91,
+    "residualScalars": 2634,
+    "nonzeroResidualScalars": 0
   },
-  "continuationState": "stopped after first export check; restart at c1 only after validated b commit",
+  "continuationState": "b validated and published; checkpoint commit precedes c1 restart",
   "recurringFollowup": {
     "id": "continue-s11c-d-repair-and-build",
     "status": "ACTIVE",
     "userApproved": true
   },
-  "scope": "Completed native b producer; physical export validation running; c2 source control propagated but full verification pending."
+  "scope": "Completed and validated native b export/output; c1/c2/d and fresh endpoint/reference checks remain pending."
 }

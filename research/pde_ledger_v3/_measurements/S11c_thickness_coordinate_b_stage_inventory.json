@@ -1,0 +1,36 @@
+{
+  "stage": "b",
+  "producerExitCode": 0,
+  "producerSourcePinsStable": true,
+  "currentSourcePinMismatches": [],
+  "transcriptSha256": "693f0e804ca5fc3e418406cd049aa3d4c56263e101a7f1ae3078172d674cf98f",
+  "transcriptBytes": 183361030,
+  "exportSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+  "exportBytes": 61624077,
+  "stderrBytes": 0,
+  "tagCount": 31,
+  "duplicateTags": [],
+  "nativeExecutionRecords": {
+    "PY_S11CB_LOCAL_OPERATIONAL_EXCEPTIONS": "Tuple()",
+    "PY_S11CB_LOCAL_RUN_TASKS": "Tuple(Str('ENERGY_BASIS'), Str('SLAB_OPERATOR'), Str('COUPLING_KERNEL'), Str('ADMISSIBILITY'))",
+    "PY_S11CB_LOCAL_SKIPPED_TASKS": "Tuple(Str('PROJECTION_EQUIVALENCE'), Str('REP_INVARIANCE'), Str('INDEPENDENCE'), Str('FORM'), Str('HESSIAN_FREEZE'), Str('COEFFICIENT'), Str('JET_ZERO'), Str('TOWER_DEPTH'), Str('UNIFORM'), Str('HOMOGENEITY'))",
+    "PY_S11CB_LOCAL_TASK_TIMING_SECONDS": "Tuple(Tuple(Str('ENERGY_BASIS'), Float('40.79632479', precision=30)), Tuple(Str('SLAB_OPERATOR'), Float('2683.9846115', precision=30)), Tuple(Str('COUPLING_KERNEL'), Float('3063.4715233', precision=30)), Tuple(Str('ADMISSIBILITY'), Float('216.08529329', precision=30)), Tuple(Str('EXPORT'), Float('262.49046755', precision=30)), Tuple(Str('TOTAL'), Float('6266.8286591', precision=30)))"
+  },
+  "exportRows": 2441,
+  "directImportKeys": [],
+  "changedValueSerializations": [
+    "slab_operator",
+    "slab_operator_term_origins"
+  ],
+  "addedKeys": [],
+  "removedKeys": [],
+  "exportPinMismatches": [],
+  "published": true,
+  "transcriptMatchesProducerArtifact": true,
+  "exportMatchesProducerArtifact": true,
+  "changedC1DirectInputs": [],
+  "physicalCheckSha256": "479a8567bf071e8f6fc0e54576f9d02c3ec01e3bb65da842bebba859598921d3",
+  "operationalOrProvenanceFailures": [],
+  "publishedPath": "scripts/out/S11c_b_brane_operator_sympy_audit.out",
+  "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b"
+}

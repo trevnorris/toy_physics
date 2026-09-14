@@ -157,3 +157,22 @@ follow-up discovery. Its c1-through-d plan-only run and Python compilation pass.
 The earlier automatic-approval rejection is resolved: the user explicitly
 approved continued recurring repairs and commits, and the active 30-minute
 thread follow-up is `continue-s11c-d-repair-and-build`.
+
+The export-check preparation is committed at **f618178a**. The restarted b
+comparison completed in **595.97 seconds**, at **1,717,600 KiB** peak RSS:
+**2634 zero residual scalars**, with **91 objects and 2876 metadata paths**.
+The validator restored every emitted record, recomputed carrier fingerprints
+and the residual census, checked metadata paths and source snapshots, and found
+no nonfinite objects. The four KINETIC provenance changes are fully accounted
+for; all 28 other provenance components and other export values are preserved.
+The physical comparison remains generic in the retained material/background
+symbols across all four cases; this is not a generic spectral witness.
+
+The focused [b export transcript](../scripts/out/S11c_thickness_coordinate_b_export.out)
+is 1,361,873 bytes, SHA256
+`7620bb53be733b28bfbc1abbd71e940ba1be9ea6db7bde5b436df5a47a4cadd8`.
+The complete native b output has been atomically published at its production
+path (183,361,030 bytes), preserving its previous annex payload. See the
+[b artifact inventory](S11c_thickness_coordinate_b_stage_inventory.json) and
+[validated action/export checkpoint](S11c_thickness_coordinate_b_export_checkpoint.json).
+c1/c2/d regeneration and fresh endpoint/reference balance remain next.

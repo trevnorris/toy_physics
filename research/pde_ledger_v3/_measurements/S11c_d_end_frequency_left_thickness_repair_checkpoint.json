@@ -1,0 +1,333 @@
+{
+  "runDirectory": "/tmp/s11c-thickness-coordinate-20260914/end_frequency_left",
+  "summary": {
+    "provenance": {
+      "producerManifestSha256": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
+      "cacheSha256": "35e5dba88a3d367a3be84d148e9fe3aee2c85d34076b269219ca0e10fa0a27f4",
+      "producerTranscriptSha256": "19822837896b084fb8bcbd11b16aa5120e2c5b01c1c3084357aed279b7b70ce8",
+      "producerSources": {
+        "_measurements/S11c_thickness_coordinate_run_stage.py": "4ceed1f51d256e12cc14f05268d3354f220a80cb4c798916e56f1aed2bc579f4",
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+        "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+        "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+      },
+      "engineSha256": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+      "instrumentSha256": "7dccb58242c5a66cfd46be0bdcea8b6a9b16975df04c5d992c9a1cff3f43fa0d",
+      "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+      "end": "LEFT",
+      "case": "LAB_HELD_RHO4_CONSTANT",
+      "nativePacket": "PY_S11CD_END_SPECTRUM_INPUT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "sourceMethodJoins": {
+        "FullPencilModes.analytic": true,
+        "FullPencilModes.rational_determinant": true,
+        "EndSpectrumCoverage.construct": true,
+        "EndSpectrumCoverage.isolate": true
+      },
+      "profileLimits": {
+        "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+        "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "1",
+        "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+        "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "0"
+      }
+    },
+    "sourceFiles": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "_measurements/S11c_d_end_frequency_check.py": "7dccb58242c5a66cfd46be0bdcea8b6a9b16975df04c5d992c9a1cff3f43fa0d",
+      "_measurements/S11c_d_end_frequency_validate.py": "f7ed602c4363bdb0a052b89625cb2de07e71755d2d71b3af1497e415715e68f3",
+      "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+      "_measurements/S11c_d_current_reality_check.py": "ef4cf975f34123cc4e585432e1311a395f70cbbd9d63640f0a2eef2b72ee1cb1",
+      "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+    },
+    "arguments": {
+      "manifest": "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+      "input": "_measurements/S11c_d_channel_preflight_input.json",
+      "run_directory": "/tmp/s11c-thickness-coordinate-20260914/end_frequency_left",
+      "end": "LEFT"
+    },
+    "prefix": "END_FREQUENCY_LEFT_LAB_HELD_RHO4_CONSTANT",
+    "nativePacketJoins": {
+      "PHYSICAL_PENCIL_FINGERPRINT": true,
+      "ELIMINATION_FINGERPRINT": true
+    },
+    "recordCount": 18,
+    "nullityCounts": {
+      "1": 14,
+      "2": 4
+    },
+    "basisDirections": 22,
+    "frequencyNormalizedCount": 18,
+    "exactResidualScalars": 45,
+    "nonzeroExactResidualScalars": 0,
+    "normalReality": {
+      "diskStatuses": {
+        "PROVED_NONREAL": 7,
+        "PROVED_REAL": 2
+      },
+      "candidateStatuses": {
+        "PROVED_NONREAL": 14,
+        "PROVED_REAL": 4
+      },
+      "axisSets": [
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 0,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 0,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 0,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 1,
+          "AXIS": "REAL",
+          "GCD_DEGREE": 2,
+          "REAL_ROOT_COUNT": 0
+        },
+        {
+          "FACTOR_INDEX": 1,
+          "AXIS": "IMAGINARY",
+          "GCD_DEGREE": 2,
+          "REAL_ROOT_COUNT": 2
+        }
+      ],
+      "checkedAxisRootIntervals": 2,
+      "literalCertificateResiduals": 19,
+      "normalizedSubspaces": [],
+      "normalizedBasisDirections": 0
+    },
+    "residualNormMaxima": {
+      "BASIS_NORMALIZATION_COVARIANCE_RESIDUAL": 3.1112849693530256e-14,
+      "BASIS_PAIRING_COVARIANCE_RESIDUAL": 3.974211730761873e-15,
+      "BASIS_PROJECTOR_COVARIANCE_RESIDUAL": 1.9675284659067282e-13,
+      "FREQUENCY_DIFFERENCE_0_RESIDUAL": 2.564003147643288e-07,
+      "FREQUENCY_DIFFERENCE_1_RESIDUAL": 6.396506758603732e-08,
+      "FREQUENCY_NORMALIZATION_RESIDUAL": 2.8951074449790722e-15,
+      "LEFT_KERNEL_RESIDUAL": 4.074716202131478e-15,
+      "NORMALIZED_LEFT_KERNEL_RESIDUAL": 7.308683917486756e-14,
+      "PROJECTOR_IDEMPOTENCY_RESIDUAL": 1.4832368306495818e-13,
+      "PROJECTOR_KERNEL_RESIDUAL": 1.8518667347798814e-13,
+      "PROJECTOR_RANGE_RESIDUAL": 4.129430686348092e-15,
+      "RIGHT_KERNEL_RESIDUAL": 3.5609922738874504e-15
+    },
+    "objectsSha256": "78de2b7f6bbb4d54ad8a5b2a08038e419068536f2141a435afde94947de59db9",
+    "wallSeconds": 23.640359436161816,
+    "peakRssKiB": 201096
+  },
+  "checks": [
+    {
+      "index": 0,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 1.544137419653956e-14,
+      "normalization": 2.8951074449790722e-15
+    },
+    {
+      "index": 1,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 1.544137419653956e-14,
+      "normalization": 2.8951074449790722e-15
+    },
+    {
+      "index": 2,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 2.7034931381320947e-16,
+      "normalization": 4.444989847405319e-16
+    },
+    {
+      "index": 3,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 2.7034931381320947e-16,
+      "normalization": 4.444989847405319e-16
+    },
+    {
+      "index": 4,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 3.238887726578723e-16,
+      "normalization": 1.1102230246251565e-16
+    },
+    {
+      "index": 5,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 3.238887726578723e-16,
+      "normalization": 1.1102230246251565e-16
+    },
+    {
+      "index": 6,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 2.1265185846062203e-16,
+      "normalization": 2.47198095326695e-17
+    },
+    {
+      "index": 7,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 2.1265185846062203e-16,
+      "normalization": 2.47198095326695e-17
+    },
+    {
+      "index": 8,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 1.4922112294999407e-16,
+      "normalization": 1.1107649934270853e-16
+    },
+    {
+      "index": 9,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 1.4922112294999407e-16,
+      "normalization": 1.1107649934270853e-16
+    },
+    {
+      "index": 10,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 2.395719752517678e-16,
+      "normalization": 2.26075470176578e-16
+    },
+    {
+      "index": 11,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 2.395719752517678e-16,
+      "normalization": 2.26075470176578e-16
+    },
+    {
+      "index": 12,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 8.03855299769738e-15,
+      "normalization": 1.8452761694870047e-15
+    },
+    {
+      "index": 13,
+      "nullity": 1,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 8.03855299769738e-15,
+      "normalization": 1.8452761694870047e-15
+    },
+    {
+      "index": 14,
+      "nullity": 2,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 1.5727894771188092e-16,
+      "normalization": 1.5819143303996432e-16
+    },
+    {
+      "index": 15,
+      "nullity": 2,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 1.5727894771188092e-16,
+      "normalization": 1.5819143303996432e-16
+    },
+    {
+      "index": 16,
+      "nullity": 2,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 1.935819248434978e-16,
+      "normalization": 3.230844253262371e-16
+    },
+    {
+      "index": 17,
+      "nullity": 2,
+      "pairingReconstruction": 0.0,
+      "projectorReconstruction": 1.935819248434978e-16,
+      "normalization": 3.230844253262371e-16
+    }
+  ],
+  "normalReality": {
+    "diskStatuses": {
+      "PROVED_NONREAL": 7,
+      "PROVED_REAL": 2
+    },
+    "candidateStatuses": {
+      "PROVED_NONREAL": 14,
+      "PROVED_REAL": 4
+    },
+    "axisSets": [
+      {
+        "FACTOR_INDEX": 0,
+        "AXIS": "REAL",
+        "GCD_DEGREE": 0,
+        "REAL_ROOT_COUNT": 0
+      },
+      {
+        "FACTOR_INDEX": 0,
+        "AXIS": "IMAGINARY",
+        "GCD_DEGREE": 0,
+        "REAL_ROOT_COUNT": 0
+      },
+      {
+        "FACTOR_INDEX": 1,
+        "AXIS": "REAL",
+        "GCD_DEGREE": 2,
+        "REAL_ROOT_COUNT": 0
+      },
+      {
+        "FACTOR_INDEX": 1,
+        "AXIS": "IMAGINARY",
+        "GCD_DEGREE": 2,
+        "REAL_ROOT_COUNT": 2
+      }
+    ],
+    "checkedAxisRootIntervals": 2,
+    "literalCertificateResiduals": 19,
+    "normalizedSubspaces": [],
+    "normalizedBasisDirections": 0
+  },
+  "tagCount": 1018,
+  "objectCount": 508,
+  "metadataPaths": 6573,
+  "residualScalars": 2886,
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "_measurements/S11c_d_end_frequency_check.py": "7dccb58242c5a66cfd46be0bdcea8b6a9b16975df04c5d992c9a1cff3f43fa0d",
+    "_measurements/S11c_d_end_frequency_validate.py": "f7ed602c4363bdb0a052b89625cb2de07e71755d2d71b3af1497e415715e68f3",
+    "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "_measurements/S11c_d_current_reality_check.py": "ef4cf975f34123cc4e585432e1311a395f70cbbd9d63640f0a2eef2b72ee1cb1",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+  },
+  "artifacts": {
+    "full.out": {
+      "sha256": "2b901d0216732454bf2e3293ca859aa69f3dc1873b6c6a08015b68429c7db02d",
+      "bytes": 793820
+    },
+    "stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "objects.pickle": {
+      "sha256": "78de2b7f6bbb4d54ad8a5b2a08038e419068536f2141a435afde94947de59db9",
+      "bytes": 602696
+    },
+    "checks.json": {
+      "sha256": "90d415f590fe3cadd2dd898e8b09b50982ff03f4fcd07ccc23ea9a7ff2503cfd",
+      "bytes": 5975
+    },
+    "progress.jsonl": {
+      "sha256": "7c12e5283adbed6a9ca2984ca1912eea83095aaca235fed345d4a4dbbfde2709",
+      "bytes": 9975
+    }
+  },
+  "publishedTranscript": "scripts/out/S11c_d_end_frequency_left_thickness_repair.out"
+}

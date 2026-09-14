@@ -9,8 +9,11 @@ and [plan](S11c_thickness_coordinate_repair_plan.md) supersede the historical st
 boundary below: the source trace identifies b's kinetic coordinate mismatch
 with 142 exact-zero accounting/regression scalars. The native b kinetic ansatz
 and its independent time-action test are repaired; eight generic inertia/action
-components are zero. Serial producer regeneration is next; current production
-exports and outputs remain historical until that regeneration finishes.
+components are zero. The source repair is committed at 3b52afcb, and the full b
+producer is running. Export comparisons and fresh endpoint arithmetic-cache
+handling are prepared; their execution status is recorded in the active repair
+report. Production exports and outputs remain historical until each producer's
+validated regeneration finishes.
 
 The source repair cleared all ten original RIGHT discrepancies. Both fresh
 LAB_HELD/RHO4_CONSTANT end-source packets have 33 zero top-level retained

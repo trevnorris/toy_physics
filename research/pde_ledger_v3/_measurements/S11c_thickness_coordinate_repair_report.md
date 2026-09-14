@@ -60,7 +60,9 @@ density representatives, with symbolic material/background inputs. The
 SHA256 `df08264820d43e3053ef41de07f02eb2d5c5faa35f4340c161492d7cfdfd04db`.
 Python compilation and whitespace checks pass.
 
-Full producer regeneration is next. The serial runner extends the existing
+The source repair is committed at **3b52afcb**. Full b regeneration is running
+under `/tmp/s11c-thickness-coordinate-20260914/b_full`; the remaining producers
+follow it serially. The serial runner extends the existing
 trace-repair staging to b/c1, preserves the established b primaries/single-worker
 scope, snapshots inputs, measures resources and leaves publication separate.
 Current b/c1/c2/d exports and production outputs still describe the pre-repair
@@ -73,3 +75,23 @@ remain historical until their replacement is validated. No full S-matrix,
 section 3b profile-frequency pole set, global exceptional coverage or d export
 is established here. No S10/Lean/authority edit, review/comparator/Wolfram,
 downstream physics run or push occurred.
+
+Regeneration checks are prepared for all four b cases (independent action,
+baseline source, nonkinetic preservation, full delta accounting and other
+slots) and all c2 components (actual imported delta through native field/weak
+maps, closure-key independence and other-input preservation). Their numerical
+or algebraic results are **not yet available**; Python compilation is the
+current check on this preparation. The nine existing d inventories now accept
+an explicit plan/report prefix, preserving their historical defaults and data.
+
+The fresh endpoint worker runner rebuilds the physical construction and reuses
+only exact operands of the unchanged pure native arithmetic helpers. The cache
+reader validated **338 distinct operands and three completed boundary
+comparisons** in 8.20 seconds at 78,760 KiB peak RSS. It restores both recorded
+stack limits (256 MiB); an initial inspection with an unlimited hard limit was
+correctly rejected by the exact runtime guard. This is cache provenance
+validation, not a new endpoint balance result. See the
+[arithmetic inventory](S11c_thickness_coordinate_arithmetic_cache_inventory.json).
+Fresh pairing publication supports a new suffix and never replaces the original
+RIGHT discrepancy. End-to-end fresh construction/emission remains to be run
+after the repaired production imports exist.

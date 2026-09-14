@@ -4,6 +4,7 @@
 This records execution and immutable inputs. Physical coverage and residuals
 remain the outputs of the existing inventory instruments, inspected separately.
 """
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -26,7 +27,13 @@ def digest(path):
 
 
 def run():
-    plan = json.loads(PLAN.read_text())
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--plan', type=Path, default=PLAN)
+    parser.add_argument('--report', type=Path,
+                        default=ROOT/'_measurements/S11c_c2_trace_repair_d_rechecks.json')
+    args = parser.parse_args()
+    plan_path = args.plan.resolve()
+    plan = json.loads(plan_path.read_text())
     producer_path = Path(plan['nativeProducerManifest'])
     producer = json.loads(producer_path.read_text())
     pins = producer['source_hashes_before']
@@ -45,7 +52,7 @@ def run():
     instruments = {Path(stage['command'][1]) for stage in plan['stages']}
     instruments.update(path.relative_to(ROOT) for path in
                        (ROOT / '_measurements').glob('S11c_d_*inventory.py'))
-    instruments.update((Path(__file__).relative_to(ROOT), PLAN.relative_to(ROOT)))
+    instruments.update((Path(__file__).relative_to(ROOT), plan_path.relative_to(ROOT)))
     instrument_pins = {str(path): digest(ROOT / path) for path in sorted(instruments)}
     for path in instruments:
         frozen = destination / 'source' / path
@@ -55,7 +62,8 @@ def run():
               'producerManifestSha256': digest(producer_path),
               'producerSourceHashes': pins, 'instrumentHashesBefore': instrument_pins,
               'stages': [], 'scope': plan['scope']}
-    report_path = ROOT / '_measurements/S11c_c2_trace_repair_d_rechecks.json'
+    report_path = args.report
+    if report_path.exists():raise ValueError('recheck report already exists')
     report_path.write_text(json.dumps(report, indent=2) + '\n')
     for stage in plan['stages']:
         name = stage['name']

@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import pickle
+import re
 import shutil
 import tempfile
 
@@ -25,7 +26,11 @@ def run():
     parser=argparse.ArgumentParser()
     parser.add_argument('--run-directory',type=Path,required=True)
     parser.add_argument('--publish',action='store_true')
+    parser.add_argument('--publication-suffix',default='',
+                        help='Optional fresh checkpoint suffix; existing publications are never replaced.')
     args=parser.parse_args();base=args.run_directory
+    if args.publication_suffix and not re.fullmatch(r'[a-z][a-z0-9_]*',args.publication_suffix):
+        raise ValueError('publication suffix must be a lowercase identifier')
     summary=json.loads((base/'checks.json').read_text());emission=json.loads((base/'emission.json').read_text())
     for name,sha in summary['sourceFiles'].items():
         if digest(ROOT/name)!=sha or digest(base/'source'/name)!=sha:raise ValueError(('source pin',name))
@@ -108,6 +113,7 @@ def run():
     print(json.dumps({k:inventory[k] for k in ['end','objectCount','tagCount','metadataPaths','retainedResidualScalars','retainedNonzeroScalars']},indent=2))
     if args.publish:
         stem='S11c_d_end_pairing_'+summary['end'].lower()
+        if args.publication_suffix:stem+='_'+args.publication_suffix
         target=ROOT/'scripts/out'/(stem+'.out')
         if target.exists() or target.is_symlink():raise ValueError('publication target exists')
         with tempfile.NamedTemporaryFile(dir=target.parent,prefix='.s11cd-end-pairing-',delete=False) as stream:

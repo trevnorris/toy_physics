@@ -55,6 +55,9 @@ def worker_record(base):
     state=base/'worker-state'
     if not state.exists():return None
     signature=json.loads((state/'signature.json').read_text())
+    if signature.get('mode')=='FRESH_CONSTRUCTION_EXACT_SCALAR_CACHE':
+        from S11c_d_end_pairing_fresh_workers import runtime_record
+        return runtime_record(base)
     source=ROOT/'_measurements/S11c_d_end_pairing_workers.py'
     if digest(source)!=signature['environment']['workerSha256'] or digest(state/source.name)!=digest(source):
         raise ValueError('worker instrument source pin')

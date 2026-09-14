@@ -1,0 +1,27 @@
+{
+  "sourceSha256": "107ed77b2471fbb0d5d9916cd567d6951ff88dc91c15f99ed06674e85e8f0db2",
+  "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_right_checkpoint.json",
+  "checkpointSha256": "c222e2c96a60f760bd60c48943e12d939abff3d8771d58d9e6f2ee77ed1ba926",
+  "distinctExactOperands": 338,
+  "methods": [
+    "carrier_expansion",
+    "rational_coefficient"
+  ],
+  "completedBoundaryComparisons": 3,
+  "environment": {
+    "python": "3.10.12 (main, Jul 15 2026, 23:40:17) [GCC 11.4.0]",
+    "executable": "/usr/bin/python3.10",
+    "executableSha256": "94df6ff4b32aafdba90e38c0aed70880fe44ee4cf88ecdf411641158f120c1af",
+    "sympy": "1.14.0",
+    "sympyInitSha256": "4e9476348ba105feab28d82f5bcf6cdba2e3e84de6e059bbfe7a13728c0a4ab0",
+    "nativeSha256": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "workerSha256": "296de12915450ed2ed2ff0ad1a7778a550da0f4139355cc9b6c22a3449cbeb23",
+    "stackLimitBytes": [
+      268435456,
+      268435456
+    ]
+  },
+  "wallSeconds": 8.197639777325094,
+  "peakRssKiB": 78760,
+  "scope": "Read-only exact-operand cache and completed boundary validation; no fresh physical construction."
+}

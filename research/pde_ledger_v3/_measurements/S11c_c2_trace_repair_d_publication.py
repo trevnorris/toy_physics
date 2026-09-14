@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import tempfile
 
@@ -25,13 +26,16 @@ def digest(path):
 def run():
     parser = argparse.ArgumentParser()
     parser.add_argument('--publish', action='store_true')
+    parser.add_argument('--prefix',default=PREFIX)
     args = parser.parse_args()
-    plan_path = MEASUREMENTS / (PREFIX + 'recheck_plan.json')
+    prefix = args.prefix
+    if not re.fullmatch(r'[A-Za-z][A-Za-z0-9_]*_',prefix):raise ValueError('invalid inventory prefix')
+    plan_path = MEASUREMENTS / (prefix + 'recheck_plan.json')
     plan = json.loads(plan_path.read_text())
     manifest_path = Path(plan['nativeProducerManifest'])
     manifest = json.loads(manifest_path.read_text())
     base = Path(manifest['run_directory'])
-    checks_path = MEASUREMENTS / (PREFIX + 'rechecks.json')
+    checks_path = MEASUREMENTS / (prefix + 'rechecks.json')
     checks = json.loads(checks_path.read_text())
     failures = []
 
@@ -132,7 +136,7 @@ def run():
         'scope': ('Computed point, slice, bank, path and contour domains only. Preserve exceptional-domain records '
                   'and nonzero numerical residuals in the inventories. No global parameter/sheet coverage, '
                   'physical flux normalization, complete scattering or profile-frequency bound-pole claim.')}
-    report_path = MEASUREMENTS / (PREFIX + 'full_checks.json')
+    report_path = MEASUREMENTS / (prefix + 'full_checks.json')
     report_path.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps({key: report[key] for key in ('nativeWallSeconds', 'nativePeakRssKiB', 'nativeArtifact', 'failures')}, indent=2))
     if failures:
@@ -156,7 +160,7 @@ def run():
                        'previousAnnexPayloadUnchanged': digest(old_payload) == old_hash if old_payload else None,
                        'producerManifestSha256': digest(manifest_path),
                        'checksPath': str(report_path.relative_to(ROOT)), 'checksSha256': digest(report_path)}
-        (MEASUREMENTS / (PREFIX + 'publication.json')).write_text(json.dumps(publication, indent=2) + '\n')
+        (MEASUREMENTS / (prefix + 'publication.json')).write_text(json.dumps(publication, indent=2) + '\n')
 
 
 if __name__ == '__main__':

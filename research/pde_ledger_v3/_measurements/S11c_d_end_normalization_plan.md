@@ -11,7 +11,8 @@ physical/reference pressure shift in c2 N6. Its [repair plan](S11c_wolfram_press
 is user approved. The repair passed its focused tests and native four-case
 regeneration/validation: 218 exact focused residuals and 9,968,256 native
 numerator evaluations are zero under the adopted covariance criterion.
-REFERENCE resumes after the native annex publication commit and hash check;
+The native annex publication is committed at `5acfdf30` and hash-verified.
+REFERENCE construction started at 23:03:14 UTC with a local completion watcher;
 accepted SymPy results remain unchanged. The license allows at most two
 Mathematica scripts across sessions; heavy CAS jobs remain serial.
 

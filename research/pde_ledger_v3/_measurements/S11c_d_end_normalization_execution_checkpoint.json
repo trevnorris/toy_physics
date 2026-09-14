@@ -1,24 +1,29 @@
 {
-  "observedUtc": "2026-09-14T22:58:16.616469+00:00",
+  "observedUtc": "2026-09-14T23:04:12.647679+00:00",
   "active": {
-    "stage": "left_validate",
+    "stage": "reference_construct",
     "command": [
       "python",
       "-u",
-      "_measurements/S11c_d_end_normalization_validate.py",
+      "_measurements/S11c_d_end_normalization_check.py",
+      "--manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+      "--input",
+      "_measurements/S11c_d_channel_preflight_input.json",
+      "--pairing-checkpoint",
+      "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json",
+      "--current-manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/reference_current/manifest.json",
+      "--end",
+      "REFERENCE",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left",
-      "--publish"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference"
     ],
-    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_validate.stdout",
-    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_validate.stderr",
-    "startedUtc": "2026-09-14T20:25:15.944823+00:00",
-    "childPid": 1846069,
-    "status": "completed",
-    "exitCode": 0,
-    "wallSeconds": 56.45177965052426,
-    "stderrBytes": 0,
-    "finishedUtc": "2026-09-14T20:26:12.396683+00:00"
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_construct.stderr",
+    "startedUtc": "2026-09-14T23:03:14.879482+00:00",
+    "childPid": 1905938,
+    "status": "running"
   },
   "stderrBytes": 0,
   "recurringFollowup": {
@@ -30,7 +35,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "RIGHT and LEFT normalization remain validated on the supplied case. The Mathematica c2 pressure repair passed focused and native four-case validation; REFERENCE is ready after the publication commit.",
+  "scope": "RIGHT/LEFT remain accepted. REFERENCE construction is running after the committed and annex-verified native Mathematica c2 repair; no REFERENCE normalization result is claimed yet.",
   "recurringFollowupHistory": [
     {
       "id": "continue-s11c-d-build",
@@ -154,7 +159,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Commit and hash-verify native Mathematica publication, then run REFERENCE normalization from reference-preflight.json.",
+  "nextStage": "On constructor completion inspect its invocation and stderr, then run reference_validate with publication and its own completion/error watcher.",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -217,16 +222,6 @@
     "wallSeconds": 178.00134505704045,
     "stderrBytes": 0,
     "finishedUtc": "2026-09-14T19:18:48.357757+00:00"
-  },
-  "lastProgress": {
-    "elapsedSeconds": 176.7439244473353,
-    "stage": "completed",
-    "summary": {
-      "recordCount": 18,
-      "basisDirections": 22,
-      "definedFieldMaps": 18,
-      "wallSeconds": 176.65256766974926
-    }
   },
   "leftPreparationCommit": "8ca2f3b0",
   "previousLeftRunningSnapshot": {
@@ -342,10 +337,10 @@
   },
   "leftCommit": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
   "wolframAuditCheckpoint": "S11c_wolfram_repair_audit_checkpoint.json",
-  "wolframAuditStatus": "REPAIR_VALIDATED_NATIVE_PUBLICATION_COMPLETE",
+  "wolframAuditStatus": "COMPLETED_COMMITTED",
   "wolframRepairExecution": "S11c_wolfram_pressure_trace_repair_execution.json",
   "referencePreparation": {
-    "status": "READY_AFTER_NATIVE_PUBLICATION_COMMIT",
+    "status": "RUNNING",
     "preflight": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference-preflight.json",
     "changes": [
       "Save atomic modal/adjoint construction packets before emission while retaining the established final packets and unit registries.",
@@ -356,7 +351,124 @@
       "_measurements/S11c_d_end_normalization_check.py": "94a8685b7f27a2a3dbe594c910d3223c78b282489c37ce7b6a2805ab6055c230",
       "_measurements/S11c_d_end_normalization_validate.py": "ff43b7d97a37908dbc87ec35a35d27628386454290f0e9e343e357341b4b44f3"
     },
-    "validation": "Python syntax checks; no scientific construction or regeneration while the serial Mathematica run is active."
+    "validation": "Python syntax checks; no scientific construction or regeneration while the serial Mathematica run is active.",
+    "launchPreflight": {
+      "status": "PASSED",
+      "checks": {
+        "earlierPreflight": true,
+        "pairingCheckpoint": true,
+        "producerManifest": true,
+        "currentManifest": true,
+        "currentCache": true,
+        "input": true,
+        "pairingArtifact:full.out": true,
+        "pairingArtifact:complete.pickle": true,
+        "pairingArtifact:checks.json": true,
+        "pairingArtifact:emission.json": true,
+        "pairingArtifact:emissions.pickle": true,
+        "pairingConstructor:ClosedCurrentPairing": true,
+        "pairingConstructor:polynomial_terms": true,
+        "preparedSource:_measurements/S11c_d_end_normalization_check.py": true,
+        "preparedSource:_measurements/S11c_d_end_normalization_validate.py": true,
+        "nativePublication": true
+      },
+      "preflightSha256": "ba72a79c4ec32c6277500431bfd315b1177361e34404a1efd27ede01bb85f5d2",
+      "nativeAnnexVerification": {
+        "commit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
+        "path": "research/pde_ledger_v3/mathematica/out/S11c_c2_N6_mathematica_audit.out",
+        "isSymlink": true,
+        "bytes": 496254757,
+        "sha256": "08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254",
+        "annexKey": "MD5E-s496254757--7a429434ad5c5157b0c5a75287db6784.out",
+        "gitEntry": "120000 4f43a8d28298799b6371b8190f6e92a1df4140f0 0\tresearch/pde_ledger_v3/mathematica/out/S11c_c2_N6_mathematica_audit.out"
+      },
+      "processCensusSha256": "49c71a8bab7c162427925711629fead31c7d53f17d87df92b4325cda700d5e3f"
+    }
   },
-  "wolframRepairCheckpoint": "S11c_wolfram_pressure_trace_native_checkpoint.json"
+  "wolframRepairCheckpoint": "S11c_wolfram_pressure_trace_native_checkpoint.json",
+  "preReferenceExecutionSnapshot": {
+    "active": {
+      "stage": "left_validate",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_end_normalization_validate.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left",
+        "--publish"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_validate.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_validate.stderr",
+      "startedUtc": "2026-09-14T20:25:15.944823+00:00",
+      "childPid": 1846069,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 56.45177965052426,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-14T20:26:12.396683+00:00"
+    },
+    "lastProgress": {
+      "elapsedSeconds": 176.7439244473353,
+      "stage": "completed",
+      "summary": {
+        "recordCount": 18,
+        "basisDirections": 22,
+        "definedFieldMaps": 18,
+        "wallSeconds": 176.65256766974926
+      }
+    }
+  },
+  "wolframRepairCommit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
+  "wolframAnnexVerification": {
+    "commit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
+    "path": "research/pde_ledger_v3/mathematica/out/S11c_c2_N6_mathematica_audit.out",
+    "isSymlink": true,
+    "bytes": 496254757,
+    "sha256": "08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254",
+    "annexKey": "MD5E-s496254757--7a429434ad5c5157b0c5a75287db6784.out",
+    "gitEntry": "120000 4f43a8d28298799b6371b8190f6e92a1df4140f0 0\tresearch/pde_ledger_v3/mathematica/out/S11c_c2_N6_mathematica_audit.out"
+  },
+  "referenceLaunch": {
+    "launchedUtc": "2026-09-14T23:03:14.796508+00:00",
+    "supervisorPid": 1905935,
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914",
+      "--stage",
+      "reference_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_end_normalization_check.py",
+      "--manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+      "--input",
+      "_measurements/S11c_d_channel_preflight_input.json",
+      "--pairing-checkpoint",
+      "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json",
+      "--current-manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/reference_current/manifest.json",
+      "--end",
+      "REFERENCE",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference"
+    ],
+    "preflightSha256": "1b514a1374b7892c778cdfdb86eae9221effaeae82dd0751b0bd2ea5c2ccc8ff",
+    "repairCommit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference-completion-watcher",
+    "supervisorSourceSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+    "watcherPid": 1905936
+  },
+  "referenceCompletionWatcher": {
+    "status": "waiting",
+    "watcherPid": 1905936,
+    "jobPid": 1905935,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-14T23:03:14.902163+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "e8be2d3840a8d94f4f288c2687925e5cac1d854a2f10450df79bc5c2dc440a13",
+    "notifications": {}
+  }
 }

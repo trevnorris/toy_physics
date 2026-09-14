@@ -1,6 +1,6 @@
 {
   "kind": "MANUAL_REPOSITORY_WORK_QUEUE",
-  "status": "REPAIR_VALIDATED_NATIVE_PUBLICATION_COMPLETE",
+  "status": "COMPLETED_COMMITTED",
   "recordedUtc": "2026-09-14T20:09:08.997024+00:00",
   "authorization": "User approved queuing the four-issue Mathematica audit and specified a maximum of two concurrent Mathematica scripts.",
   "plan": "_measurements/S11c_wolfram_repair_audit_plan.md",
@@ -94,7 +94,7 @@
     "leftCommit": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
     "auditStatus": "AUDIT_COMPLETE_REPAIR_VALIDATED",
     "activeProcess": null,
-    "nextAction": "Commit and verify the repaired native transcript, then construct and validate REFERENCE normalization."
+    "nextAction": "Audit/repair queue is complete. REFERENCE normalization is running under S11c_d_end_normalization_execution_checkpoint.json."
   },
   "evidenceRoot": "/var/projects/toy_physics/_scratch/s11c",
   "publicationRoot": "mathematica/out",
@@ -108,7 +108,7 @@
     "pathMeaning": "Actual Wolfram script path",
     "specifiedBy": "User"
   },
-  "updatedUtc": "2026-09-14T22:58:16.615840+00:00",
+  "updatedUtc": "2026-09-14T23:04:12.646618+00:00",
   "report": "_measurements/S11c_wolfram_repair_audit_report.md",
   "checkpoint": "_measurements/S11c_wolfram_repair_audit_checkpoint.json",
   "repairPlan": "_measurements/S11c_wolfram_pressure_trace_repair_plan.md",
@@ -139,6 +139,16 @@
       "Adopted operator-covariance criterion; raw R_N6 remains a representation diagnostic.",
       "Singular/diagonal and threshold exclusions remain; no global spectral coverage.",
       "Historical ablations were not rerun; cross-engine operand agreement remains open."
-    ]
+    ],
+    "publicationCommit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
+    "annexVerification": {
+      "commit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
+      "path": "research/pde_ledger_v3/mathematica/out/S11c_c2_N6_mathematica_audit.out",
+      "isSymlink": true,
+      "bytes": 496254757,
+      "sha256": "08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254",
+      "annexKey": "MD5E-s496254757--7a429434ad5c5157b0c5a75287db6784.out",
+      "gitEntry": "120000 4f43a8d28298799b6371b8190f6e92a1df4140f0 0\tresearch/pde_ledger_v3/mathematica/out/S11c_c2_N6_mathematica_audit.out"
+    }
   }
 }

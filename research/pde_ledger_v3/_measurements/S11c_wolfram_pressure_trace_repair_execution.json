@@ -1,5 +1,5 @@
 {
-  "status": "NATIVE_FULL_VALIDATED_PUBLISHED",
+  "status": "COMPLETED_COMMITTED",
   "baseline": "S11c_wolfram_pressure_trace_repair_baseline.json",
   "plan": "S11c_wolfram_pressure_trace_repair_plan.md",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/focused-full",
@@ -119,10 +119,7 @@
     }
   },
   "caseEnvironment": {},
-  "remaining": [
-    "Save the validated canonical native transcript through DataLad/git-annex, verify its hash and commit the repair disposition.",
-    "Resume prepared REFERENCE normalization."
-  ],
+  "remaining": [],
   "sourcesFrozenWhileRunning": false,
   "developmentCheckpoint": "S11c_wolfram_pressure_trace_focused_development_checkpoint.json",
   "developmentResult": {
@@ -429,7 +426,7 @@
       }
     }
   },
-  "observedUtc": "2026-09-14T22:58:16.614325+00:00",
+  "observedUtc": "2026-09-14T23:04:12.644413+00:00",
   "nativeFullManifestSha256": "ed6ac426a4fa94bc38f9afe3261b6c6edc34922c082f7503ca428b5aa025f988",
   "nativeFullValidationInvocation": {
     "status": "completed",
@@ -501,5 +498,16 @@
     },
     "scope": "native recorded real-axis cells and joint samples, excluding stated singular/diagonal loci; not global spectral coverage"
   },
-  "nativeFullEmissionDelta": "S11c_wolfram_pressure_trace_emission_delta.json"
+  "nativeFullEmissionDelta": "S11c_wolfram_pressure_trace_emission_delta.json",
+  "nativePublicationCommit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
+  "nativeAnnexVerification": {
+    "commit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
+    "path": "research/pde_ledger_v3/mathematica/out/S11c_c2_N6_mathematica_audit.out",
+    "isSymlink": true,
+    "bytes": 496254757,
+    "sha256": "08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254",
+    "annexKey": "MD5E-s496254757--7a429434ad5c5157b0c5a75287db6784.out",
+    "gitEntry": "120000 4f43a8d28298799b6371b8190f6e92a1df4140f0 0\tresearch/pde_ledger_v3/mathematica/out/S11c_c2_N6_mathematica_audit.out"
+  },
+  "nextStage": "REFERENCE normalization resumed; see S11c_d_end_normalization_execution_checkpoint.json."
 }

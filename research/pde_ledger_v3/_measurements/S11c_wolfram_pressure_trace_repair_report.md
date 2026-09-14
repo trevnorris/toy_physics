@@ -78,4 +78,6 @@ unchanged. Matching-denominator and threshold exclusions remain explicit. This
 is a repair of the existing c2 N6 instrument, not a full c2 self-energy or d
 engine. No review, comparator, recurring scheduler or push has run. This closes
 the authorized pressure-trace repair on its validated domain. REFERENCE
-normalization resumes after committing and hash-verifying the annex publication.
+normalization has resumed after publication commit `5acfdf30` and full-hash
+verification. The main transcript is a locked annex symlink with key
+`MD5E-s496254757--7a429434ad5c5157b0c5a75287db6784.out`.

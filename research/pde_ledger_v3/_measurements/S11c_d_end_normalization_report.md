@@ -44,8 +44,12 @@ found a duplicate physical/reference pressure shift in c2 N6; the three mechanic
 issues are absent on the audited b domain. The [repair plan](S11c_wolfram_pressure_trace_repair_plan.md)
 is user approved. The complete focused repair check has 218 zero residuals;
 native four-case validation has 9,968,256 zero required numerator evaluations.
-The repaired main transcript is published; REFERENCE resumes after its annex
-commit and full-hash verification. Accepted SymPy results are unchanged.
+The repaired main transcript is committed at `5acfdf30` and its complete annex
+payload hash is verified. REFERENCE construction started at 23:03:14 UTC using
+the prepared input/current/pairing packets. A refreshed preflight verified all
+16 joins, including unchanged pairing constructors and prepared sources. Its
+completion/error watcher is armed; no normalization result is claimed yet.
+Accepted SymPy results are unchanged.
 Existing sheet/exceptional-domain limits remain.
 Owned scripts use user-authorized local completion/error wake-ups; no recurring
 checks or model polling are active.

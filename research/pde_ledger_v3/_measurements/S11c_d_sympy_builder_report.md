@@ -25,7 +25,8 @@ audited b domain (200 zero residuals). The [repair plan](S11c_wolfram_pressure_t
 is complete on its validated domain: 218 zero focused residuals and 9,968,256
 zero native numerator evaluations across four cases under the adopted covariance
 criterion. Raw R_N6 remains a representation diagnostic. The repaired main
-transcript is published; REFERENCE resumes after the annex commit and hash check.
+transcript is committed at `5acfdf30` and its annex payload hash is verified.
+REFERENCE construction is running with its local completion/error watcher.
 LEFT is committed at b271c71b; the accepted SymPy chain remains unchanged.
 See [the native checkpoint](S11c_wolfram_pressure_trace_native_checkpoint.json).
 See the [normalization report](S11c_d_end_normalization_report.md) and

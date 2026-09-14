@@ -28,8 +28,11 @@ actual constructor and persists child completion before log bookkeeping.
 
 All eight fresh source/frequency/pairing prerequisites remain committed through
 432db7e7, with 802 zero retained pairing scalars at each of RIGHT, LEFT and
-REFERENCE. Next compute LEFT, then REFERENCE, serially and apply the same
-independent remainder check. The [plan](S11c_d_end_normalization_plan.md) retains
+REFERENCE. RIGHT is committed at 0da0f746 and preparation at 8ca2f3b0. LEFT is now
+running after its source, native root/lift, physical-pencil and independent
+frequency joins completed. Host PID 1828879 was observed using one CPU with
+no stderr. After its constructor finishes, validate/publish/commit LEFT, then
+compute REFERENCE serially with the same independent remainder check. The [plan](S11c_d_end_normalization_plan.md) retains
 variable-profile scattering, section 3b frequency poles, bookkeeping, controls
 and final export as later work. Existing sheet/exceptional-domain limits remain.
 The user controls continuation; no scheduled follow-ups are active or authorized.

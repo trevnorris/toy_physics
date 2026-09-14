@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T19:20:12.337270+00:00",
+  "observedUtc": "2026-09-14T19:24:13.746282+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,7 +15,7 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "All eight endpoint prerequisites committed; RIGHT normalization validated and published; LEFT next",
+  "continuationState": "RIGHT normalization committed at 0da0f746; fresh LEFT normalization running after preparation 8ca2f3b0",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
     "status": "DELETED",
@@ -25,7 +25,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "Regenerated b/c1/c2/d and endpoint prerequisites remain complete. RIGHT normalization has explicit discarded-grade accounting; LEFT and REFERENCE normalization and full scattering remain.",
+  "scope": "Regenerated b/c1/c2/d and endpoint prerequisites remain complete. RIGHT normalization has validated discarded-grade accounting; LEFT is computing and REFERENCE follows validation. Full scattering remains program work.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -172,5 +172,32 @@
     }
   ],
   "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone.",
-  "normalizationCheckpoint": "S11c_d_end_normalization_execution_checkpoint.json"
+  "normalizationCheckpoint": "S11c_d_end_normalization_execution_checkpoint.json",
+  "activeNormalization": {
+    "stage": "left_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_end_normalization_check.py",
+      "--manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+      "--input",
+      "_measurements/S11c_d_channel_preflight_input.json",
+      "--pairing-checkpoint",
+      "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json",
+      "--source-checkpoint",
+      "_measurements/S11c_d_end_current_source_left_thickness_repair_checkpoint.json",
+      "--frequency-checkpoint",
+      "_measurements/S11c_d_end_frequency_left_thickness_repair_checkpoint.json",
+      "--end",
+      "LEFT",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stderr",
+    "startedUtc": "2026-09-14T19:22:51.598436+00:00",
+    "childPid": 1828879,
+    "status": "running"
+  }
 }

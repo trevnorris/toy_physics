@@ -1,24 +1,31 @@
 {
-  "observedUtc": "2026-09-14T19:21:59.488377+00:00",
+  "observedUtc": "2026-09-14T19:24:13.746282+00:00",
   "active": {
-    "stage": "right_validate_remainder",
+    "stage": "left_construct",
     "command": [
       "python",
       "-u",
-      "_measurements/S11c_d_end_normalization_validate.py",
+      "_measurements/S11c_d_end_normalization_check.py",
+      "--manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+      "--input",
+      "_measurements/S11c_d_channel_preflight_input.json",
+      "--pairing-checkpoint",
+      "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json",
+      "--source-checkpoint",
+      "_measurements/S11c_d_end_current_source_left_thickness_repair_checkpoint.json",
+      "--frequency-checkpoint",
+      "_measurements/S11c_d_end_frequency_left_thickness_repair_checkpoint.json",
+      "--end",
+      "LEFT",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right",
-      "--publish"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left"
     ],
-    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right_validate_remainder.stdout",
-    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right_validate_remainder.stderr",
-    "startedUtc": "2026-09-14T19:15:50.356306+00:00",
-    "childPid": 1825610,
-    "status": "completed",
-    "exitCode": 0,
-    "wallSeconds": 178.00134505704045,
-    "stderrBytes": 0,
-    "finishedUtc": "2026-09-14T19:18:48.357757+00:00"
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stderr",
+    "startedUtc": "2026-09-14T19:22:51.598436+00:00",
+    "childPid": 1828879,
+    "status": "running"
   },
   "stderrBytes": 0,
   "recurringFollowup": {
@@ -30,7 +37,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "RIGHT normalization validated and published with explicit eta-squared discarded-grade evidence. LEFT and REFERENCE remain next; no global coverage or continuum re-expansion claimed.",
+  "scope": "RIGHT validated and committed at 0da0f746 with explicit discarded-grade accounting. LEFT source, native root/lift, physical-pencil and independent-frequency joins have completed; its modal/adjoint calculation is running. No LEFT normalization result is yet accepted.",
   "recurringFollowupHistory": [
     {
       "id": "continue-s11c-d-build",
@@ -154,7 +161,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "LEFT full-subspace normalization prepared; constructor launch follows this checkpoint",
+  "nextStage": "Validate/publish/commit LEFT after construction, then construct and validate REFERENCE",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -197,5 +204,82 @@
   "nextValidationChanges": [
     "Snapshot validator and remainder helper automatically before execution and verify their pins afterward.",
     "Use the actual REFERENCE/end condition for the finite-contrast domain flag. RIGHT numerical and evidence construction bodies are unchanged."
-  ]
+  ],
+  "rightValidationInvocation": {
+    "stage": "right_validate_remainder",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_end_normalization_validate.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right",
+      "--publish"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right_validate_remainder.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right_validate_remainder.stderr",
+    "startedUtc": "2026-09-14T19:15:50.356306+00:00",
+    "childPid": 1825610,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 178.00134505704045,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-14T19:18:48.357757+00:00"
+  },
+  "lastProgress": {
+    "elapsedSeconds": 21.23237520828843,
+    "stage": "loaded",
+    "provenance": {
+      "producerManifestSha256": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
+      "cacheSha256": "35e5dba88a3d367a3be84d148e9fe3aee2c85d34076b269219ca0e10fa0a27f4",
+      "producerTranscriptSha256": "19822837896b084fb8bcbd11b16aa5120e2c5b01c1c3084357aed279b7b70ce8",
+      "producerSources": {
+        "_measurements/S11c_thickness_coordinate_run_stage.py": "4ceed1f51d256e12cc14f05268d3354f220a80cb4c798916e56f1aed2bc579f4",
+        "scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+        "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+        "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+        "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+        "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+        "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+      },
+      "engineSha256": "d1c94521de128e6f11357ac990664dee1ae481333cb04806f9ce88d37c6b118a",
+      "instrumentSha256": "bacf421e5d9489b99d975f083e5524a6a341456c065ef873eb99727a0f0e3579",
+      "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+      "end": "LEFT",
+      "case": "LAB_HELD_RHO4_CONSTANT",
+      "sourceCheckpointSha256": "cac0e90a1d8fed39e4cc341124daad4cb1f3e83fb4eac5ba42d1dce583c7493a",
+      "sourcePacketSha256": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
+      "sourceConstructors": [
+        "UniformSlabCurrent",
+        "SlabEnergyBalance",
+        "ClosedAcousticEnergy",
+        "ConstantEndPencil",
+        "polynomial_terms"
+      ],
+      "sourceEnergySha256": "962396dcb7c7abb5640b19e5b79fea5fb16a4a1a8b2b7f40d2c9fbec899e801c",
+      "sourcePencilStructuralJoin": true,
+      "sourceProfileStructuralJoin": true,
+      "pairingCheckpointSha256": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+      "pairingCacheSha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+      "pairingRetainedResidualScalars": 802,
+      "pairingRetainedNonzeroScalars": 0,
+      "nativePacket": "PY_S11CD_END_SPECTRUM_INPUT_LEFT_LAB_HELD_RHO4_CONSTANT_0",
+      "rootDiskCount": 9,
+      "rootLiftCount": 18,
+      "physicalPencilJoin": true,
+      "frequencyCheckpointSha256": "4461685e302f1d4d34fb14cc073a468afb0fac60955b7e163e630b147d0b8b22",
+      "frequencyCacheSha256": "78de2b7f6bbb4d54ad8a5b2a08038e419068536f2141a435afde94947de59db9"
+    }
+  },
+  "resources": {
+    "pid": 1828879,
+    "observedElapsedSeconds": 30,
+    "cpuPercent": 103,
+    "residentKiB": 135536,
+    "state": "R"
+  },
+  "leftPreparationCommit": "8ca2f3b0"
 }

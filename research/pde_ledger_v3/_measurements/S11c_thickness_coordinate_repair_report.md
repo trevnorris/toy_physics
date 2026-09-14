@@ -103,3 +103,14 @@ physics-check results remain pending. The controller saves its progress under
 `/tmp/s11c-thickness-coordinate-20260914/continuation` and writes a tracked
 regeneration status at each validated producer checkpoint. It never pushes or
 changes a physical source, and it stops with evidence if a validator fails.
+
+The serial controller is committed at **e9b3d6d1** and launched. The
+[execution checkpoint](S11c_thickness_coordinate_execution_checkpoint.json)
+records the live b producer and waiting continuation, stable current producer
+sources and empty stderr at observation. A read-only host process inspection
+shows b actively using CPU at 216,720 KiB RSS. The committed baseline b timing
+tag records 13,813 seconds (about 3.8 hours); earlier two-hour guidance was an
+underestimate for that transcript. The source/export checks and later producers
+remain pending. A recurring thread follow-up was rejected by automatic approval
+review pending explicit user authorization; none was created. This does not
+stop the already-authorized one-time producer/validation/commit queue.

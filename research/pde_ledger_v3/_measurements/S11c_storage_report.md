@@ -42,3 +42,10 @@ Code, reports, inventories and recovery tooling are in Git. The migration does
 not change any physical construction, published result or source pin. The
 storage pause is recorded separately because the running calculation's elapsed
 wall time includes it.
+
+The migration is committed at **409ef53a**. Both verified processes resumed
+at **2026-09-14 17:43:47 UTC**, after a **546.52-second** pause. Their process
+identities were checked before `SIGCONT`; the RIGHT pairing resumed CPU work
+with empty calculation/controller stderr. See the
+[resume checkpoint](S11c_storage_resume_checkpoint.json). This is continuation
+of the same unfinished calculation, not a rerun or a new physical result.

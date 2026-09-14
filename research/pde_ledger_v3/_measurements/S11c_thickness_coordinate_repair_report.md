@@ -391,3 +391,9 @@ no fresh pairing result is claimed by this storage checkpoint. The recurring
 follow-up now starts discovery from the durable path. Continue the same paused
 processes after committing the verified relocation; record their storage pause
 separately from physical calculation results.
+
+Storage migration is committed at **409ef53a**. The same controller and RIGHT
+pairing processes resumed at **2026-09-14 17:43:47 UTC** after a recorded
+546.52-second pause. The recovery helper, canonical runtime discovery and
+updated recurring follow-up are in place; no live source or frozen signature
+was rewritten. New calculation directories use the durable repository tree.

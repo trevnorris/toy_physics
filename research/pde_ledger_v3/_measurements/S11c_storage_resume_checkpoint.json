@@ -1,0 +1,20 @@
+{
+  "resumedUtc": "2026-09-14T17:43:47.832799+00:00",
+  "pausedUtc": "2026-09-14T17:34:41.314108+00:00",
+  "pauseSeconds": 546.518691,
+  "storageCommit": "409ef53a3e3662c0a15a6342b70af1fa7ac83a90",
+  "processes": {
+    "1773860": {
+      "state": "S",
+      "startTicks": "876869934",
+      "command": "python -u _measurements/S11c_thickness_coordinate_endpoint_continue.py --state-directory /tmp/s11c-thickness-coordinate-20260914/endpoint_continuation --adopt-construction "
+    },
+    "1780408": {
+      "state": "R",
+      "startTicks": "876916344",
+      "command": "python _measurements/S11c_d_end_pairing_fresh_workers.py --arithmetic-checkpoint _measurements/S11c_d_end_pairing_right_checkpoint.json --manifest /tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json --input _measurements/S11c_d_channel_preflight_input.json --run-directory /tmp/s11c-thickness-coordinate-20260914/end_pairing_right --end RIGHT --source-checkpoint _measurements/S11c_d_end_current_source_right_thickness_repair_checkpoint.json "
+    }
+  },
+  "durableRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914",
+  "scope": "Resume the same verified processes after storage-only relocation. The ongoing RIGHT pairing wall clock includes this pause; no physical result is supplied by this record."
+}

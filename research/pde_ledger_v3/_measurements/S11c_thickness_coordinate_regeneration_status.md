@@ -39,6 +39,26 @@ Serial native producers and recorded physical/artifact checks. Each completed pr
 }
 ```
 
-Remaining native producers: c2, d.
+## Completed c2
+
+```json
+{
+  "stage": "c2",
+  "exportRows": 70,
+  "changedValueSerializations": [
+    "s11cc2ClosedSlabOperator"
+  ],
+  "addedKeys": [],
+  "removedKeys": [],
+  "nativeOutputBytes": 530883300,
+  "nativeOutputSha256": "9712191e3af5e7bbc2eb65824ca283f0c5cb3a35d5e21632d0821412ec018864",
+  "exportSha256": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+  "failures": [],
+  "residualScalars": 2846,
+  "nonzeroResidualScalars": 0
+}
+```
+
+Remaining native producers: d.
 
 Fresh endpoint/reference sources, two-frequency pairing and full current/adjoint normalization remain separate next steps. Native point/path/stratum records do not establish global coverage, scattering or section 3b profile-frequency bound poles.

@@ -930,9 +930,9 @@
       "allowed_infra_keys": []
     },
     "digests": {
-      "scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "546a9a26a54d48d1531774bb5307b5031fc8c9f9add68a8c07c5def95840034e",
-      "scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
-      "scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+      "scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
       "directives/S11c_c2_SHARED_PHYSICS.md": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1",
       "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
     },
@@ -1390,115 +1390,115 @@
       },
       "s11cc2ClosedSlabOperator": {
         "LAB_HELD/RHO4_CONSTANT": {
-          "emitted_srepr_bytes": 6197706,
-          "compact_srepr_bytes": 3030385
+          "emitted_srepr_bytes": 6197336,
+          "compact_srepr_bytes": 3030040
         },
         "LAB_HELD/RHOBR_CONSTANT": {
-          "emitted_srepr_bytes": 4648083,
-          "compact_srepr_bytes": 2336978
+          "emitted_srepr_bytes": 4647713,
+          "compact_srepr_bytes": 2336633
         },
         "MATERIAL_ADVECTED/RHO4_CONSTANT": {
-          "emitted_srepr_bytes": 6946470,
-          "compact_srepr_bytes": 3405303
+          "emitted_srepr_bytes": 6946100,
+          "compact_srepr_bytes": 3404958
         },
         "MATERIAL_ADVECTED/RHOBR_CONSTANT": {
-          "emitted_srepr_bytes": 5262837,
-          "compact_srepr_bytes": 2681232
+          "emitted_srepr_bytes": 5262467,
+          "compact_srepr_bytes": 2680887
         }
       }
     }
   },
   "computation_lines": {
     "PY_S11CC2_DIMENSION_COEFFICIENT_BINDINGS": {
-      "emit_line": 1198,
+      "emit_line": 1199,
       "write_key": "s11cc2DimensionCoefficientBindings"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorLabHeldRho4Constant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_TERM_ORIGINS_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorTermOriginsLabHeldRho4Constant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_PARITY_BLOCKS_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorParityBlocksLabHeldRho4Constant"
     },
     "PY_S11CC2_CLOSED_COUPLING_KERNEL_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedCouplingKernelLabHeldRho4Constant"
     },
     "PY_S11CC2_CLOSED_COUPLING_KERNEL_TERM_ORIGINS_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedCouplingKernelTermOriginsLabHeldRho4Constant"
     },
     "PY_S11CC2_SELF_ENERGY_CLOSED_EXTRACT_OPERAND_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyClosedExtractOperandLabHeldRho4Constant"
     },
     "PY_S11CC2_SELF_ENERGY_OPEN_EXTRACT_OPERAND_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyOpenExtractOperandLabHeldRho4Constant"
     },
     "PY_S11CC2_SELF_ENERGY_INCREMENT_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyIncrementLabHeldRho4Constant"
     },
     "PY_S11CC2_FOLD_SYMBOL_MAP_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2FoldSymbolMapLabHeldRho4Constant"
     },
     "PY_S11CC2_ORDERING_EXTRACT_FIRST_OPERAND_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1236,
+      "emit_line": 1237,
       "write_key": "s11cc2OrderingExtractFirstOperandLabHeldRho4Constant"
     },
     "PY_S11CC2_ORDERING_COMMUTATOR_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1237,
+      "emit_line": 1238,
       "write_key": "s11cc2OrderingCommutatorLabHeldRho4Constant"
     },
     "PY_S11CC2_TRACTION_CONSERVATIVE_VARIATION_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1245,
+      "emit_line": 1246,
       "write_key": "s11cc2TractionConservativeVariationLabHeldRho4Constant"
     },
     "PY_S11CC2_TRACTION_MECHANICAL_CONTRIB_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1246,
+      "emit_line": 1247,
       "write_key": "s11cc2TractionMechanicalContribLabHeldRho4Constant"
     },
     "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1247,
+      "emit_line": 1248,
       "write_key": "s11cc2TractionSlabPowerPairingLabHeldRho4Constant"
     },
     "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1249,
+      "emit_line": 1250,
       "write_key": "s11cc2TractionSlabPowerPairingResidualLabHeldRho4Constant"
     },
     "PY_S11CC2_TRACTION_SIGN_OPERAND_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1251,
+      "emit_line": 1252,
       "write_key": "s11cc2TractionSignOperandLabHeldRho4Constant"
     },
     "PY_S11CC2_TRACTION_SIGN_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1252,
+      "emit_line": 1253,
       "write_key": "s11cc2TractionSignResidualLabHeldRho4Constant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_SOURCE_OPERAND_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1255,
+      "emit_line": 1256,
       "write_key": "s11cc2TractionRowRoutingSourceOperandLabHeldRho4Constant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_OPERAND_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1256,
+      "emit_line": 1257,
       "write_key": "s11cc2TractionRowRoutingOperandLabHeldRho4Constant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_RESIDUAL_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1257,
+      "emit_line": 1258,
       "write_key": "s11cc2TractionRowRoutingResidualLabHeldRho4Constant"
     },
     "PY_S11CC2_DTN_WHOLEFORM_DEPENDENCE_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1260,
+      "emit_line": 1261,
       "write_key": "s11cc2DtnWholeformDependenceLabHeldRho4Constant"
     },
     "PY_S11CC2_FLAT_SYMBOL_USAGE_LAB_HELD_RHO4_CONSTANT": {
-      "emit_line": 1263,
+      "emit_line": 1264,
       "write_key": "s11cc2FlatSymbolUsageLabHeldRho4Constant"
     },
     "PY_S11CC2_ROUTING_MECHANICAL_ONLY_OPERAND_LAB_HELD_RHO4_CONSTANT": {
@@ -1558,91 +1558,91 @@
       "write_key": "s11cc2MuRFormResidualLabHeldRho4Constant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorLabHeldRhobrConstant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_TERM_ORIGINS_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorTermOriginsLabHeldRhobrConstant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_PARITY_BLOCKS_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorParityBlocksLabHeldRhobrConstant"
     },
     "PY_S11CC2_CLOSED_COUPLING_KERNEL_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedCouplingKernelLabHeldRhobrConstant"
     },
     "PY_S11CC2_CLOSED_COUPLING_KERNEL_TERM_ORIGINS_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedCouplingKernelTermOriginsLabHeldRhobrConstant"
     },
     "PY_S11CC2_SELF_ENERGY_CLOSED_EXTRACT_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyClosedExtractOperandLabHeldRhobrConstant"
     },
     "PY_S11CC2_SELF_ENERGY_OPEN_EXTRACT_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyOpenExtractOperandLabHeldRhobrConstant"
     },
     "PY_S11CC2_SELF_ENERGY_INCREMENT_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyIncrementLabHeldRhobrConstant"
     },
     "PY_S11CC2_FOLD_SYMBOL_MAP_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2FoldSymbolMapLabHeldRhobrConstant"
     },
     "PY_S11CC2_ORDERING_EXTRACT_FIRST_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1236,
+      "emit_line": 1237,
       "write_key": "s11cc2OrderingExtractFirstOperandLabHeldRhobrConstant"
     },
     "PY_S11CC2_ORDERING_COMMUTATOR_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1237,
+      "emit_line": 1238,
       "write_key": "s11cc2OrderingCommutatorLabHeldRhobrConstant"
     },
     "PY_S11CC2_TRACTION_CONSERVATIVE_VARIATION_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1245,
+      "emit_line": 1246,
       "write_key": "s11cc2TractionConservativeVariationLabHeldRhobrConstant"
     },
     "PY_S11CC2_TRACTION_MECHANICAL_CONTRIB_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1246,
+      "emit_line": 1247,
       "write_key": "s11cc2TractionMechanicalContribLabHeldRhobrConstant"
     },
     "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1247,
+      "emit_line": 1248,
       "write_key": "s11cc2TractionSlabPowerPairingLabHeldRhobrConstant"
     },
     "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1249,
+      "emit_line": 1250,
       "write_key": "s11cc2TractionSlabPowerPairingResidualLabHeldRhobrConstant"
     },
     "PY_S11CC2_TRACTION_SIGN_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1251,
+      "emit_line": 1252,
       "write_key": "s11cc2TractionSignOperandLabHeldRhobrConstant"
     },
     "PY_S11CC2_TRACTION_SIGN_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1252,
+      "emit_line": 1253,
       "write_key": "s11cc2TractionSignResidualLabHeldRhobrConstant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_SOURCE_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1255,
+      "emit_line": 1256,
       "write_key": "s11cc2TractionRowRoutingSourceOperandLabHeldRhobrConstant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1256,
+      "emit_line": 1257,
       "write_key": "s11cc2TractionRowRoutingOperandLabHeldRhobrConstant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_RESIDUAL_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1257,
+      "emit_line": 1258,
       "write_key": "s11cc2TractionRowRoutingResidualLabHeldRhobrConstant"
     },
     "PY_S11CC2_DTN_WHOLEFORM_DEPENDENCE_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1260,
+      "emit_line": 1261,
       "write_key": "s11cc2DtnWholeformDependenceLabHeldRhobrConstant"
     },
     "PY_S11CC2_FLAT_SYMBOL_USAGE_LAB_HELD_RHOBR_CONSTANT": {
-      "emit_line": 1263,
+      "emit_line": 1264,
       "write_key": "s11cc2FlatSymbolUsageLabHeldRhobrConstant"
     },
     "PY_S11CC2_ROUTING_MECHANICAL_ONLY_OPERAND_LAB_HELD_RHOBR_CONSTANT": {
@@ -1702,91 +1702,91 @@
       "write_key": "s11cc2MuRFormResidualLabHeldRhobrConstant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_TERM_ORIGINS_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorTermOriginsMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_PARITY_BLOCKS_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorParityBlocksMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_CLOSED_COUPLING_KERNEL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedCouplingKernelMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_CLOSED_COUPLING_KERNEL_TERM_ORIGINS_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedCouplingKernelTermOriginsMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_SELF_ENERGY_CLOSED_EXTRACT_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyClosedExtractOperandMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_SELF_ENERGY_OPEN_EXTRACT_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyOpenExtractOperandMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_SELF_ENERGY_INCREMENT_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyIncrementMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_FOLD_SYMBOL_MAP_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2FoldSymbolMapMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_ORDERING_EXTRACT_FIRST_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1236,
+      "emit_line": 1237,
       "write_key": "s11cc2OrderingExtractFirstOperandMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_ORDERING_COMMUTATOR_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1237,
+      "emit_line": 1238,
       "write_key": "s11cc2OrderingCommutatorMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_TRACTION_CONSERVATIVE_VARIATION_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1245,
+      "emit_line": 1246,
       "write_key": "s11cc2TractionConservativeVariationMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_TRACTION_MECHANICAL_CONTRIB_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1246,
+      "emit_line": 1247,
       "write_key": "s11cc2TractionMechanicalContribMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1247,
+      "emit_line": 1248,
       "write_key": "s11cc2TractionSlabPowerPairingMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1249,
+      "emit_line": 1250,
       "write_key": "s11cc2TractionSlabPowerPairingResidualMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_TRACTION_SIGN_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1251,
+      "emit_line": 1252,
       "write_key": "s11cc2TractionSignOperandMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_TRACTION_SIGN_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1252,
+      "emit_line": 1253,
       "write_key": "s11cc2TractionSignResidualMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_SOURCE_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1255,
+      "emit_line": 1256,
       "write_key": "s11cc2TractionRowRoutingSourceOperandMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1256,
+      "emit_line": 1257,
       "write_key": "s11cc2TractionRowRoutingOperandMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_RESIDUAL_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1257,
+      "emit_line": 1258,
       "write_key": "s11cc2TractionRowRoutingResidualMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_DTN_WHOLEFORM_DEPENDENCE_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1260,
+      "emit_line": 1261,
       "write_key": "s11cc2DtnWholeformDependenceMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_FLAT_SYMBOL_USAGE_MATERIAL_ADVECTED_RHO4_CONSTANT": {
-      "emit_line": 1263,
+      "emit_line": 1264,
       "write_key": "s11cc2FlatSymbolUsageMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_ROUTING_MECHANICAL_ONLY_OPERAND_MATERIAL_ADVECTED_RHO4_CONSTANT": {
@@ -1846,91 +1846,91 @@
       "write_key": "s11cc2MuRFormResidualMaterialAdvectedRho4Constant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_TERM_ORIGINS_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorTermOriginsMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_CLOSED_SLAB_OPERATOR_PARITY_BLOCKS_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedSlabOperatorParityBlocksMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_CLOSED_COUPLING_KERNEL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedCouplingKernelMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_CLOSED_COUPLING_KERNEL_TERM_ORIGINS_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2ClosedCouplingKernelTermOriginsMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_SELF_ENERGY_CLOSED_EXTRACT_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyClosedExtractOperandMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_SELF_ENERGY_OPEN_EXTRACT_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyOpenExtractOperandMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_SELF_ENERGY_INCREMENT_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2SelfEnergyIncrementMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_FOLD_SYMBOL_MAP_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1225,
+      "emit_line": 1226,
       "write_key": "s11cc2FoldSymbolMapMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_ORDERING_EXTRACT_FIRST_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1236,
+      "emit_line": 1237,
       "write_key": "s11cc2OrderingExtractFirstOperandMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_ORDERING_COMMUTATOR_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1237,
+      "emit_line": 1238,
       "write_key": "s11cc2OrderingCommutatorMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_TRACTION_CONSERVATIVE_VARIATION_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1245,
+      "emit_line": 1246,
       "write_key": "s11cc2TractionConservativeVariationMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_TRACTION_MECHANICAL_CONTRIB_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1246,
+      "emit_line": 1247,
       "write_key": "s11cc2TractionMechanicalContribMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1247,
+      "emit_line": 1248,
       "write_key": "s11cc2TractionSlabPowerPairingMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_TRACTION_SLAB_POWER_PAIRING_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1249,
+      "emit_line": 1250,
       "write_key": "s11cc2TractionSlabPowerPairingResidualMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_TRACTION_SIGN_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1251,
+      "emit_line": 1252,
       "write_key": "s11cc2TractionSignOperandMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_TRACTION_SIGN_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1252,
+      "emit_line": 1253,
       "write_key": "s11cc2TractionSignResidualMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_SOURCE_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1255,
+      "emit_line": 1256,
       "write_key": "s11cc2TractionRowRoutingSourceOperandMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1256,
+      "emit_line": 1257,
       "write_key": "s11cc2TractionRowRoutingOperandMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_TRACTION_ROW_ROUTING_RESIDUAL_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1257,
+      "emit_line": 1258,
       "write_key": "s11cc2TractionRowRoutingResidualMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_DTN_WHOLEFORM_DEPENDENCE_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1260,
+      "emit_line": 1261,
       "write_key": "s11cc2DtnWholeformDependenceMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_FLAT_SYMBOL_USAGE_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
-      "emit_line": 1263,
+      "emit_line": 1264,
       "write_key": "s11cc2FlatSymbolUsageMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_ROUTING_MECHANICAL_ONLY_OPERAND_MATERIAL_ADVECTED_RHOBR_CONSTANT": {
@@ -1990,26 +1990,26 @@
       "write_key": "s11cc2MuRFormResidualMaterialAdvectedRhobrConstant"
     },
     "PY_S11CC2_DENSITY_LIVE_MINUS_FROZEN_LAB_HELD": {
-      "emit_line": 1274,
+      "emit_line": 1275,
       "write_key": "s11cc2DensityLiveMinusFrozenLabHeld"
     },
     "PY_S11CC2_DENSITY_LIVE_MINUS_FROZEN_MATERIAL_ADVECTED": {
-      "emit_line": 1274,
+      "emit_line": 1275,
       "write_key": "s11cc2DensityLiveMinusFrozenMaterialAdvected"
     },
     "PY_S11CC2_ANCHORING_L_MINUS_M_RHO4_CONSTANT": {
-      "emit_line": 1278,
+      "emit_line": 1279,
       "write_key": "s11cc2AnchoringLMinusMRho4Constant"
     },
     "PY_S11CC2_ANCHORING_L_MINUS_M_RHOBR_CONSTANT": {
-      "emit_line": 1278,
+      "emit_line": 1279,
       "write_key": "s11cc2AnchoringLMinusMRhobrConstant"
     },
     "PY_S11CC2_EXPORT_ROUNDTRIP": {
-      "emit_line": 1077,
+      "emit_line": 1078,
       "write_key": "s11cc2ExportRoundtrip"
     }
   },
-  "elapsed_seconds": 4455.504396383651,
-  "peak_rss_kib": 2649512
+  "elapsed_seconds": 1870.7878482574597,
+  "peak_rss_kib": 2649620
 }

@@ -1,0 +1,1208 @@
+{
+  "stage": "c2",
+  "newExportSha256": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+  "sourcePins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_c2_exports.py": "97160450e8b1d9aa654cebb2ea0d2074df24186f337fad2ee850bb5b200e7579",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_export_check.py": "12d28e857033e8ade6514cc67c15013b84d1695069b2d08d6a0537d069dff732",
+    "_measurements/S11c_thickness_coordinate_b_export_checkpoint.json": "1c8c2e2b8d1f1bd7d4fb73843ae2bee9eb41865c7aacf11b35e2b2e169ac2258",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_inertia_artifact_audit.py": "13e05393cc7404c0223f1300964cf577af1968b4268881eb5663a40151cb05b5",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_emit.py": "765dc2f8f80359c2e9958a5e043ae22fe366f07320e9cb54702602bb47055349",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_origin_components.py": "92bdd05016aa87a7bf9bd50b773fa76435ee4d288b13c06b82f2eda10f56b406",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "546a9a26a54d48d1531774bb5307b5031fc8c9f9add68a8c07c5def95840034e"
+  },
+  "sourcePinsAfter": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_c2_exports.py": "97160450e8b1d9aa654cebb2ea0d2074df24186f337fad2ee850bb5b200e7579",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_export_check.py": "12d28e857033e8ade6514cc67c15013b84d1695069b2d08d6a0537d069dff732",
+    "_measurements/S11c_thickness_coordinate_b_export_checkpoint.json": "1c8c2e2b8d1f1bd7d4fb73843ae2bee9eb41865c7aacf11b35e2b2e169ac2258",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_inertia_artifact_audit.py": "13e05393cc7404c0223f1300964cf577af1968b4268881eb5663a40151cb05b5",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_emit.py": "765dc2f8f80359c2e9958a5e043ae22fe366f07320e9cb54702602bb47055349",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_origin_components.py": "92bdd05016aa87a7bf9bd50b773fa76435ee4d288b13c06b82f2eda10f56b406",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "546a9a26a54d48d1531774bb5307b5031fc8c9f9add68a8c07c5def95840034e"
+  },
+  "sourceSnapshots": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "source/0/S11c_b_exports.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py": "source/1/S11c_c1_exports.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_exports.py": "source/2/S11c_c2_exports.py",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_b_exports.py": "source/3/S11c_b_exports.py",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_c1_exports.py": "source/4/S11c_c1_exports.py",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_c2_exports.py": "source/5/S11c_c2_exports.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_export_check.py": "source/6/S11c_thickness_coordinate_c2_export_check.py",
+    "_measurements/S11c_thickness_coordinate_b_export_checkpoint.json": "source/7/S11c_thickness_coordinate_b_export_checkpoint.json",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "source/8/S11c_c2_selfenergy_fold_sympy_audit.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/ledger_fold.py": "source/9/ledger_fold.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "source/10/S11c_d_mixing_scattering_sympy_audit.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_output_codec.py": "source/11/S11c_d_output_codec.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md": "source/12/S11c_c2_SHARED_PHYSICS.md",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_inertia_artifact_audit.py": "source/13/S11c_inertia_artifact_audit.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_emit.py": "source/14/S11c_d_end_pairing_emit.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": "source/15/S11c_d_end_pairing_check.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_modal_current_check.py": "source/16/S11c_d_modal_current_check.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_check.py": "source/17/S11c_d_joint_sheet_check.py",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_origin_components.py": "source/18/S11c_thickness_coordinate_origin_components.py",
+    "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "source/19/S11c_c2_selfenergy_fold_sympy_audit.py"
+  },
+  "checks": {
+    "ExportPinResidual": {
+      "scalars": 14,
+      "nonzero": 0
+    },
+    "BActionCheckpointSourceJoinResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "OtherOriginPreservationResidual": {
+      "scalars": 28,
+      "nonzero": 0
+    },
+    "OtherInputPreservationResidual": {
+      "scalars": 2483,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantKineticControlNormalizationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantKineticControlSourceAssemblyResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantKineticControlNormalizationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantKineticControlSourceAssemblyResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantKineticControlNormalizationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantKineticControlSourceAssemblyResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantKineticControlNormalizationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantKineticControlSourceAssemblyResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "LabHeldRho4ConstantClosureSlotDependenceResidual": {
+      "scalars": 20,
+      "nonzero": 0
+    },
+    "LabHeldRhobrConstantClosureSlotDependenceResidual": {
+      "scalars": 20,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRho4ConstantClosureSlotDependenceResidual": {
+      "scalars": 20,
+      "nonzero": 0
+    },
+    "MaterialAdvectedRhobrConstantClosureSlotDependenceResidual": {
+      "scalars": 20,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent0FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent0NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent1FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent1NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent2FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent2NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent3FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent3NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent4FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent4NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent5FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantComponent5NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRho4ConstantOtherPayloadSlotPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent0FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent0NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent1FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent1NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent2FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent2NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent3FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent3NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent4FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent4NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent5FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantComponent5NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelLabHeldRhobrConstantOtherPayloadSlotPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent0FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent0NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent1FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent1NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent2FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent2NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent3FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent3NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent4FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent4NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent5FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent5NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRho4ConstantOtherPayloadSlotPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent0FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent0NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent1FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent1NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent2FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent2NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent3FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent3NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent4FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent4NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent5FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent5NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedCouplingKernelMaterialAdvectedRhobrConstantOtherPayloadSlotPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantComponent0FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantComponent0NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantComponent1FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantComponent1NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantComponent2FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantComponent2NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantComponent3FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantComponent3NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantComponent4FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantComponent4NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRho4ConstantOtherPayloadSlotPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantComponent0FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantComponent0NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantComponent1FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantComponent1NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantComponent2FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantComponent2NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantComponent3FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantComponent3NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantComponent4FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantComponent4NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorLabHeldRhobrConstantOtherPayloadSlotPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent0FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent0NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent1FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent1NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent2FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent2NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent3FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent3NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent4FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent4NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRho4ConstantOtherPayloadSlotPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent0FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent0NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent1FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent1NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent2FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent2NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent3FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent3NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent4FullDeltaAccountingResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent4NonkineticPreservationResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "ClosedSlabOperatorMaterialAdvectedRhobrConstantOtherPayloadSlotPreservationResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "OtherC2ExportPreservationResidual": {
+      "scalars": 68,
+      "nonzero": 0
+    },
+    "SourcePinStabilityResidual": {
+      "scalars": 20,
+      "nonzero": 0
+    }
+  },
+  "objects": 418,
+  "objectsSha256": "87ff4774b6f20fa8a1ea1ed863f305e5ad12cbf899b4b22f3f3cbfa2d2327458",
+  "cases": [
+    [
+      "LAB_HELD",
+      "RHO4_CONSTANT"
+    ],
+    [
+      "LAB_HELD",
+      "RHOBR_CONSTANT"
+    ],
+    [
+      "MATERIAL_ADVECTED",
+      "RHO4_CONSTANT"
+    ],
+    [
+      "MATERIAL_ADVECTED",
+      "RHOBR_CONSTANT"
+    ]
+  ],
+  "components": [
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "E_W"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "DIV_U"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "E_W"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "DIV_U"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "E_W"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "DIV_U"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "E_W"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "DIV_U"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "E_W"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "DIV_U"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "E_W"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "DIV_U"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "E_W"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "TRANSVERSE_TO_THICKNESS",
+        "DIV_U"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "E_W"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedCouplingKernel",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "THICKNESS_TO_TRANSVERSE",
+        "DIV_U"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        0
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        1
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        2
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "E_W"
+      ],
+      "deltaIsZero": false
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        0
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        1
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        2
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "E_W"
+      ],
+      "deltaIsZero": false
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        0
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        1
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "U",
+        2
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "path": [
+        "E_W"
+      ],
+      "deltaIsZero": false
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        0
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        1
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "U",
+        2
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "THETA"
+      ],
+      "deltaIsZero": true
+    },
+    {
+      "root": "s11cc2ClosedSlabOperator",
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "path": [
+        "E_W"
+      ],
+      "deltaIsZero": false
+    }
+  ],
+  "changedValueSerializations": [
+    "s11cc2ClosedSlabOperator"
+  ],
+  "nonzeroResidualScalars": 0,
+  "wallSeconds": 364.39976058434695,
+  "peakRssKiB": 2632892,
+  "runDirectory": "/tmp/s11c-thickness-coordinate-20260914/c2_checks_exact",
+  "validatorSha256": "bc76c2907ef5b256f05b290d66ad7e6ee37168ac3e35824486356bebe386a916",
+  "metadataPaths": 3244,
+  "residualScalars": 2846,
+  "nonfiniteObjects": [],
+  "transcript": {
+    "bytes": 7073937,
+    "sha256": "7faeffea42e78dcb334c052ee270bfd5cb85994eb3cc59c5dbd29b925d2d4d2d"
+  },
+  "improperIntegralEndpointNodesByObject": {
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRho4ConstantComponent0BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRho4ConstantComponent0AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRho4ConstantComponent0ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRho4ConstantComponent0ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRho4ConstantComponent1BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRho4ConstantComponent1AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRho4ConstantComponent1ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRho4ConstantComponent1ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRhobrConstantComponent0BeforeOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRhobrConstantComponent0AfterOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRhobrConstantComponent0ZeroAccelerationBeforeOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRhobrConstantComponent0ZeroAccelerationAfterOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRhobrConstantComponent1BeforeOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRhobrConstantComponent1AfterOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRhobrConstantComponent1ZeroAccelerationBeforeOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelLabHeldRhobrConstantComponent1ZeroAccelerationAfterOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent0BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent0AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent0ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent0ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent1BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent1AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent1ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent1ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent2BeforeOperand": 264,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent2AfterOperand": 264,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent2ZeroAccelerationBeforeOperand": 264,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent2ZeroAccelerationAfterOperand": 264,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent3BeforeOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent3AfterOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent3ZeroAccelerationBeforeOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent3ZeroAccelerationAfterOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent4BeforeOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent4AfterOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent4ZeroAccelerationBeforeOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent4ZeroAccelerationAfterOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent5BeforeOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent5AfterOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent5ZeroAccelerationBeforeOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRho4ConstantComponent5ZeroAccelerationAfterOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent0BeforeOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent0AfterOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent0ZeroAccelerationBeforeOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent0ZeroAccelerationAfterOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent1BeforeOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent1AfterOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent1ZeroAccelerationBeforeOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent1ZeroAccelerationAfterOperand": 186,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent2BeforeOperand": 216,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent2AfterOperand": 216,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent2ZeroAccelerationBeforeOperand": 216,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent2ZeroAccelerationAfterOperand": 216,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent3BeforeOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent3AfterOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent3ZeroAccelerationBeforeOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent3ZeroAccelerationAfterOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent4BeforeOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent4AfterOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent4ZeroAccelerationBeforeOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent4ZeroAccelerationAfterOperand": 198,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent5BeforeOperand": 162,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent5AfterOperand": 162,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent5ZeroAccelerationBeforeOperand": 162,
+    "s11cThicknessCoordinateC2ClosedCouplingKernelMaterialAdvectedRhobrConstantComponent5ZeroAccelerationAfterOperand": 162,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRho4ConstantComponent3BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRho4ConstantComponent3AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRho4ConstantComponent3ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRho4ConstantComponent3ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRho4ConstantComponent4BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRho4ConstantComponent4AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRho4ConstantComponent4ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRho4ConstantComponent4ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRhobrConstantComponent3BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRhobrConstantComponent3AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRhobrConstantComponent3ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRhobrConstantComponent3ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRhobrConstantComponent4BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRhobrConstantComponent4AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRhobrConstantComponent4ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorLabHeldRhobrConstantComponent4ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent0BeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent0AfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent0ZeroAccelerationBeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent0ZeroAccelerationAfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent1BeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent1AfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent1ZeroAccelerationBeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent1ZeroAccelerationAfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent2BeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent2AfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent2ZeroAccelerationBeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent2ZeroAccelerationAfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent3BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent3AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent3ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent3ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent4BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent4AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent4ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRho4ConstantComponent4ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent0BeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent0AfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent0ZeroAccelerationBeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent0ZeroAccelerationAfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent1BeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent1AfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent1ZeroAccelerationBeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent1ZeroAccelerationAfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent2BeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent2AfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent2ZeroAccelerationBeforeOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent2ZeroAccelerationAfterOperand": 66,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent3BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent3AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent3ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent3ZeroAccelerationAfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent4BeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent4AfterOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent4ZeroAccelerationBeforeOperand": 210,
+    "s11cThicknessCoordinateC2ClosedSlabOperatorMaterialAdvectedRhobrConstantComponent4ZeroAccelerationAfterOperand": 210
+  },
+  "publication": "scripts/out/S11c_thickness_coordinate_c2_export.out"
+}

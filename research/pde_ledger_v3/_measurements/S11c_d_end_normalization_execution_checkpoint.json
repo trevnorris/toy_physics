@@ -1,28 +1,19 @@
 {
-  "observedUtc": "2026-09-14T23:04:12.647679+00:00",
+  "observedUtc": "2026-09-14T23:08:14.469061+00:00",
   "active": {
-    "stage": "reference_construct",
+    "stage": "reference_validate",
     "command": [
       "python",
       "-u",
-      "_measurements/S11c_d_end_normalization_check.py",
-      "--manifest",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json",
-      "--input",
-      "_measurements/S11c_d_channel_preflight_input.json",
-      "--pairing-checkpoint",
-      "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json",
-      "--current-manifest",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/reference_current/manifest.json",
-      "--end",
-      "REFERENCE",
+      "_measurements/S11c_d_end_normalization_validate.py",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference",
+      "--publish"
     ],
-    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_construct.stdout",
-    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_construct.stderr",
-    "startedUtc": "2026-09-14T23:03:14.879482+00:00",
-    "childPid": 1905938,
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_validate.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_validate.stderr",
+    "startedUtc": "2026-09-14T23:07:22.036191+00:00",
+    "childPid": 1907580,
     "status": "running"
   },
   "stderrBytes": 0,
@@ -35,7 +26,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "RIGHT/LEFT remain accepted. REFERENCE construction is running after the committed and annex-verified native Mathematica c2 repair; no REFERENCE normalization result is claimed yet.",
+  "scope": "RIGHT/LEFT remain accepted. REFERENCE construction completed; full-subspace validation/publication has been launched. REFERENCE normalization is not accepted until the validator passes.",
   "recurringFollowupHistory": [
     {
       "id": "continue-s11c-d-build",
@@ -159,7 +150,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "On constructor completion inspect its invocation and stderr, then run reference_validate with publication and its own completion/error watcher.",
+  "nextStage": "On reference_validate completion inspect full-subspace, metadata, packet, source and independent remainder checks; save accepted outputs through DataLad/git-annex and commit.",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -340,7 +331,7 @@
   "wolframAuditStatus": "COMPLETED_COMMITTED",
   "wolframRepairExecution": "S11c_wolfram_pressure_trace_repair_execution.json",
   "referencePreparation": {
-    "status": "RUNNING",
+    "status": "CONSTRUCTION_COMPLETE_VALIDATION_LAUNCHED",
     "preflight": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference-preflight.json",
     "changes": [
       "Save atomic modal/adjoint construction packets before emission while retaining the established final packets and unit registries.",
@@ -462,13 +453,106 @@
     "watcherPid": 1905936
   },
   "referenceCompletionWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 1905936,
     "jobPid": 1905935,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-14T23:03:14.902163+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "e8be2d3840a8d94f4f288c2687925e5cac1d854a2f10450df79bc5c2dc440a13",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-14T23:06:01.536728+00:00"
+      }
+    }
+  },
+  "referenceConstructorInvocation": {
+    "stage": "reference_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_end_normalization_check.py",
+      "--manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+      "--input",
+      "_measurements/S11c_d_channel_preflight_input.json",
+      "--pairing-checkpoint",
+      "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json",
+      "--current-manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/reference_current/manifest.json",
+      "--end",
+      "REFERENCE",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference_construct.stderr",
+    "startedUtc": "2026-09-14T23:03:14.879482+00:00",
+    "childPid": 1905938,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 166.27776439022273,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-14T23:06:01.157329+00:00"
+  },
+  "referenceConstructorResult": {
+    "recordCount": 18,
+    "basisDirections": 22,
+    "nullityCounts": {
+      "1": 14,
+      "2": 4
+    },
+    "definedFieldMaps": 18,
+    "physicalCurrentNormalizationCount": 2,
+    "coefficientResidualScalars": 250,
+    "coefficientNonzeroScalars": 0,
+    "symbolicResidualScalars": 50,
+    "symbolicNonzeroScalars": 0,
+    "wallSeconds": 164.85549529176205,
+    "peakRssKiB": 202188,
+    "objects": {
+      "modal.pickle": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+      "adjoint.pickle": "5558d2e1b304a5cfdb3ea88be184d2a5394dd00bcfb38c361aeb5e9cd05dde7e",
+      "modal-pre-emission.pickle": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+      "adjoint-pre-emission.pickle": "5558d2e1b304a5cfdb3ea88be184d2a5394dd00bcfb38c361aeb5e9cd05dde7e"
+    },
+    "prePostEmissionPacketHashJoins": {
+      "modal": true,
+      "adjoint": true
+    }
+  },
+  "referenceValidationLaunch": {
+    "launchedUtc": "2026-09-14T23:07:21.949230+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914",
+      "--stage",
+      "reference_validate",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_end_normalization_validate.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference",
+      "--publish"
+    ],
+    "supervisorPid": 1907573,
+    "watcherPid": 1907574,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference-validation-completion-watcher",
+    "validatorSha256": "ff43b7d97a37908dbc87ec35a35d27628386454290f0e9e343e357341b4b44f3"
+  },
+  "referenceValidationCompletionWatcher": {
+    "status": "waiting",
+    "watcherPid": 1907574,
+    "jobPid": 1907573,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-14T23:07:22.053621+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "003a8eddeb45740705760f2c6ad8c438d0863bc977b657c85f7a9deff79e36c4",
     "notifications": {}
   }
 }

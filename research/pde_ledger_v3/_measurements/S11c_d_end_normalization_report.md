@@ -48,7 +48,13 @@ The repaired main transcript is committed at `5acfdf30` and its complete annex
 payload hash is verified. REFERENCE construction started at 23:03:14 UTC using
 the prepared input/current/pairing packets. A refreshed preflight verified all
 16 joins, including unchanged pairing constructors and prepared sources. Its
-completion/error watcher is armed; no normalization result is claimed yet.
+completion watcher delivered the successful constructor exit after 166.28 seconds
+(202,188 KiB peak RSS). Construction records 18 candidates, all 22 basis directions,
+18 invertible adjoint field maps and two current-normalized subspaces. Its 250
+coefficient and 50 symbolic residual scalars are zero; the pre/post-emission
+packet hashes match. Full-subspace validation and independent remainder accounting
+are now launched with a separate completion/error watcher. These constructor
+results are provisional until validation passes.
 Accepted SymPy results are unchanged.
 Existing sheet/exceptional-domain limits remain.
 Owned scripts use user-authorized local completion/error wake-ups; no recurring

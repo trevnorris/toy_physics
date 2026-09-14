@@ -1,0 +1,10 @@
+{
+  "helperSha256": "d00e521f69b9661d01ed311ee68afdf7df3c6acdd0eae7231b7c792f9e30ac39",
+  "scope": "Isolated operational recovery fixtures, not physical result evidence.",
+  "probes": {
+    "missingAliasRestored": true,
+    "AliasRecoveredAfterRemoval": true,
+    "ConflictingFilePreservedAndRejected": true,
+    "durablePayloadUnchanged": true
+  }
+}

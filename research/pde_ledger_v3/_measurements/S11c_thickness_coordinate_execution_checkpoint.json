@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T17:29:17.136900+00:00",
+  "observedUtc": "2026-09-14T17:42:40.398015+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,13 +15,13 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "RIGHT source validated, published and committed; serial endpoint queue constructing LEFT",
+  "continuationState": "RIGHT pairing temporarily suspended for verified durable-storage migration; resume same processes after checkpoint",
   "recurringFollowup": {
     "id": "continue-s11c-d-repair-and-build",
     "status": "ACTIVE",
     "userApproved": true
   },
-  "scope": "Native regeneration complete. Fresh RIGHT source validated with 85 source objects, 33 zero retained source residuals and 127 zero cancellation identities. LEFT/reference sources, frequency packets and all three fresh pairings remain in the active serial queue. Normalization adapters are planned, not computed.",
+  "scope": "Native b/c1/c2/d and all three fresh source/two endpoint frequency checkpoints are committed. RIGHT pairing is paused for storage relocation. No fresh pairing result yet. Important local runs and caches now live in the repository; validated artifacts remain in Git/DataLad.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -58,7 +58,7 @@
   "dProducerManifestSha256": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
   "dProducerWallSeconds": 4166.187866047025,
   "dProducerPeakRssKiB": 2476192,
-  "activeEndpointPointer": "/tmp/s11c-thickness-coordinate-20260914/active_endpoint.json",
+  "activeEndpointPointer": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/active_endpoint.json",
   "activeEndpoint": {
     "stage": "right_source",
     "operation": "construct",
@@ -106,8 +106,8 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-14T17:21:47.648428+00:00"
   },
-  "endpointContinuationInstruction": "FIRST read active_endpoint_controller.json and the named progress.json and logs. It owns the serial endpoint stages and must not be duplicated. If running, preserve it. If failed, inspect the latest operation and saved operands; fix within scope and checkpoint before resuming. active_endpoint.json records the earlier adopted single RIGHT construction, and active_continuation.json records the completed native queue. After endpoint_plan_complete, inspect all commits/residuals and continue with full endpoint current/adjoint normalization from the retained plan.",
-  "activeEndpointControllerPointer": "/tmp/s11c-thickness-coordinate-20260914/active_endpoint_controller.json",
+  "endpointContinuationInstruction": "FIRST read the durable activeEndpointControllerPointer. All run data is under /var/projects/toy_physics/_scratch/s11c. Historical absolute /tmp paths are compatibility links; if missing, run _measurements/S11c_storage_paths.py --restore from the ledger. New run directories must use repository paths. The current source-pinned queue retains its existing path spellings and must not be duplicated. Inspect storage pause/resume records before acting on stopped processes. After the endpoint plan completes, continue full current/adjoint normalization from the retained plan.",
+  "activeEndpointControllerPointer": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/active_endpoint_controller.json",
   "activeEndpointController": {
     "controllerPid": 1773860,
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/endpoint_continuation",
@@ -115,12 +115,23 @@
     "controllerSha256": "46fd4d3380438deba8c280ccb0c150a3a96c852b0ec2e5462266fae4503bf8bd",
     "latest": {
       "event": "child_running",
-      "stage": "left_source",
-      "operation": "construct",
-      "childPid": 1775733,
-      "utc": "2026-09-14T17:27:24Z"
+      "stage": "right_pairing",
+      "operation": "construct_and_check",
+      "childPid": 1780408,
+      "utc": "2026-09-14T17:32:26Z"
     }
   },
   "rightSourceCommit": "fba5f1fb",
-  "rightSourceCheckpoint": "S11c_d_end_current_source_right_thickness_repair_checkpoint.json"
+  "rightSourceCheckpoint": "S11c_d_end_current_source_right_thickness_repair_checkpoint.json",
+  "durableRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914",
+  "storageMigrationCheckpoint": "S11c_storage_migration_checkpoint.json",
+  "storageReport": "S11c_storage_report.md",
+  "storagePauseRecord": "/var/projects/toy_physics/_scratch/s11c-storage-migration-20260914/paused.json",
+  "endpointCompletedCommits": {
+    "right_source": "fba5f1fbadd3f19c3e48d9f3426986741cf93996",
+    "left_source": "d71768122bacb877f47a6f5ae0051c3fde08bbdb",
+    "reference_source": "6a27099c58c419594f0a64daeba9213fbfba09f4",
+    "right_frequency": "8996df48fdc42bc564732fb0cd01ab54c4cb6652",
+    "left_frequency": "c05e25d1da8a4a5ebdb5709487b6cc7e952f73f6"
+  }
 }

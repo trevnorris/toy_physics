@@ -1,5 +1,9 @@
 # S11c-d SymPy builder checkpoint
 
+Working runs and caches are now durably stored inside the repository under
+`_scratch/s11c/`; see the [verified storage migration](S11c_storage_report.md).
+Old `/tmp` paths in historical records are recoverable compatibility links.
+
 Checkpoint **a05b05e3** commits the completed c2 trace repair and regenerated d
 artifacts: 50 ordinary Git files and 11 DataLad/git-annex transcript pointers.
 The endpoint diagnostic continuation below is committed at f796f7ba. No push

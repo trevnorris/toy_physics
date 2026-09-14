@@ -1,5 +1,14 @@
 # S11c thickness-coordinate repair and return to endpoint pairing
 
+**Durable storage:** all active and retained S11c working runs now live under
+`/var/projects/toy_physics/_scratch/s11c/`. The active root is
+`s11c-thickness-coordinate-20260914` there. Historical `/tmp` paths below and
+in frozen plans are compatibility aliases; their data is physically in the
+repository. Use repository paths for all new runs. Read
+[S11c_storage_report.md](S11c_storage_report.md) for link recovery and the
+verified migration map. The active endpoint controller's source-pinned plan
+remains unchanged during its current execution.
+
 The user authorized autonomous continuation on 2026-09-14: pause only when their
 input is required, and commit each substantive step. This supersedes earlier
 method-change/repair-stop and no-commit instructions for this work. Continue to

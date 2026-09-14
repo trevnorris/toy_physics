@@ -372,3 +372,22 @@ instruments. Their required endpoint adapters are recorded in the active
 repair plan's normalization handoff. The native constructors already retrieve
 the endpoint energy/acoustic context. No live pinned implementation changed;
 normalization work still requires the completed fresh pairing checkpoints.
+
+## Durable working-data relocation
+
+The user corrected the use of `/tmp` for important working data. The active
+controller and RIGHT pairing process were paused, and **35 run directories
+plus 80 adjacent files** moved to the repository's `_scratch/s11c/` tree.
+All **10,718 files / 13,891,191,404 bytes** retain their hashes and inodes.
+Compatibility aliases preserve frozen absolute-path signatures; all 115 paths
+resolve to durable repository data. The live controller's 32 pins also match.
+See the [storage report](S11c_storage_report.md) for the migration inventory,
+tested link-recovery helper and restart instructions. New runs use repository
+paths directly. Existing published `.out` pointers and payloads are unchanged.
+
+Before the pause, the endpoint queue had committed RIGHT, LEFT and reference
+sources and both endpoint frequency packets. RIGHT pairing was computing;
+no fresh pairing result is claimed by this storage checkpoint. The recurring
+follow-up now starts discovery from the durable path. Continue the same paused
+processes after committing the verified relocation; record their storage pause
+separately from physical calculation results.

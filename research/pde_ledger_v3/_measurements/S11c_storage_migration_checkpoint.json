@@ -1,0 +1,1162 @@
+{
+  "completedUtc": "2026-09-14T17:39:53.412465+00:00",
+  "durableRoot": "/var/projects/toy_physics/_scratch/s11c",
+  "entries": [
+    {
+      "oldPath": "/tmp/S11c_d_mixing_scattering_sympy_audit.pyc",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/S11c_d_mixing_scattering_sympy_audit.pyc",
+      "files": 1,
+      "bytes": 144459,
+      "symlinks": 0,
+      "treeInventorySha256": "6595ea374530b397b48f2f9e041195546278eaa6eb21bd843254fdfaadde7be4",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/S11c_d_mode_jet_output_inventory.pyc",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/S11c_d_mode_jet_output_inventory.pyc",
+      "files": 1,
+      "bytes": 3627,
+      "symlinks": 0,
+      "treeInventorySha256": "4208dd37836aa8772a179ded2fbfd949d56ab7aefc6ea14add0942d53718907a",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/S11c_d_rectangular_mode_jet_check.pyc",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/S11c_d_rectangular_mode_jet_check.pyc",
+      "files": 1,
+      "bytes": 11491,
+      "symlinks": 0,
+      "treeInventorySha256": "c2b7d59995d65f5d6fbc73ebb7304aac761e56072917cbe2d96f37b1f9827fcd",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/S11c_d_sympy_builder_report.before_solver_contract.md",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/S11c_d_sympy_builder_report.before_solver_contract.md",
+      "files": 1,
+      "bytes": 4370278,
+      "symlinks": 0,
+      "treeInventorySha256": "8d26b87f760be589392cc156aaf2341b4214edd77e7bc8899c3f0c33a5fdd8d6",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11c-mechanical-repair-20260912",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11c-mechanical-repair-20260912",
+      "files": 231,
+      "bytes": 2726284291,
+      "symlinks": 0,
+      "treeInventorySha256": "bf95e095be16d07ce1902c69451c4dddba786fc40d44892fba67a616f3ac553e",
+      "verifiedEntries": 310,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11c-thickness-coordinate-20260914",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914",
+      "files": 1782,
+      "bytes": 2949589852,
+      "symlinks": 0,
+      "treeInventorySha256": "fec2186a420ae5d1f2a2a44772d22a65bd43c2b652e570168f1020a6ca632bb1",
+      "verifiedEntries": 1964,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11c-trace-repair-20260913",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11c-trace-repair-20260913",
+      "files": 1571,
+      "bytes": 1813241861,
+      "symlinks": 0,
+      "treeInventorySha256": "1e7f5008381add95e671d384a90c3ff210c10c59c07ff7582e501b3eb3b72cb4",
+      "verifiedEntries": 1649,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-adjoint-current-20260913",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-adjoint-current-20260913",
+      "files": 14,
+      "bytes": 2147929,
+      "symlinks": 0,
+      "treeInventorySha256": "9ee3e67a21b4533ce58638d76c48eb7b546b79fcb1f7336661323c4cca07e008",
+      "verifiedEntries": 19,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-both-end-current-20260913",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-both-end-current-20260913",
+      "files": 16,
+      "bytes": 3112747,
+      "symlinks": 0,
+      "treeInventorySha256": "4b50edf12522fc8dc6402ec857c1476d3bae110bed60f2b9c822cf998e6c4421",
+      "verifiedEntries": 25,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-bulkDensityChange-reality.pickle",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-bulkDensityChange-reality.pickle",
+      "files": 1,
+      "bytes": 7555,
+      "symlinks": 0,
+      "treeInventorySha256": "37f50b8fdb1340c1daea7559d060bc4c48b7a67a062b4f42229dde82ceaf73ea",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-channel-preflight.err",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-channel-preflight.err",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "1b4b00e1a7ed4fb49dc0186320bbb5e2e4064923886b08ebb207a7ef0dd0d35d",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-channel-preflight.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-channel-preflight.out",
+      "files": 1,
+      "bytes": 156985,
+      "symlinks": 0,
+      "treeInventorySha256": "7daf5088a151b376239c4a72b66707b3f05aa68c8468cf5c9a19f57896fca4c1",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-channel-preflight.py",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-channel-preflight.py",
+      "files": 1,
+      "bytes": 2411,
+      "symlinks": 0,
+      "treeInventorySha256": "a65ca941bf499fdfd9a7c9b6fe0f728ca775007e3dd01d2f55730b784f1e09b5",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-checkpoint-paths.json",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-checkpoint-paths.json",
+      "files": 1,
+      "bytes": 2554,
+      "symlinks": 0,
+      "treeInventorySha256": "8713272994f6f0746628c697bf92546fe61bd0e3d8d09fb5e8f902e0cc57d286",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-contour-fresh-57pxrlk0",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-contour-fresh-57pxrlk0",
+      "files": 16,
+      "bytes": 16767765,
+      "symlinks": 0,
+      "treeInventorySha256": "a44fbd8bf715b9cf65c4bcc61016e038b9d06c043b6aa3b1ae67698b2ac50aa2",
+      "verifiedEntries": 18,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-current-20260912",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-current-20260912",
+      "files": 34,
+      "bytes": 5671533,
+      "symlinks": 0,
+      "treeInventorySha256": "cad331174e401bd35fc9121146d59bc0f48dc82b59b3bdbfcdf7999044b82516",
+      "verifiedEntries": 41,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-end-frequency-20260913",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-end-frequency-20260913",
+      "files": 43,
+      "bytes": 5748980,
+      "symlinks": 0,
+      "treeInventorySha256": "61077353f3df19021ccdd3186df369bd511b2e01d26763d4e6ff2360ad66f8f6",
+      "verifiedEntries": 56,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-end-pairing-20260914",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-end-pairing-20260914",
+      "files": 663,
+      "bytes": 8332502,
+      "symlinks": 0,
+      "treeInventorySha256": "4a957d43f194d4f58941d96deb89ab88a669879486f4e24e68e8f0c53de28273",
+      "verifiedEntries": 673,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-end-pairing-worker-boundary.stderr",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-end-pairing-worker-boundary.stderr",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "d5caf1086bb0a3291b27aabe18521643f59ecff118eaab8a97e5696f282c7d48",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-end-pairing-worker-boundary.stdout",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-end-pairing-worker-boundary.stdout",
+      "files": 1,
+      "bytes": 2083,
+      "symlinks": 0,
+      "treeInventorySha256": "c284e2f4f2785a743d45593223863dc69c667cbec8d6b85a5197e15e9fd97d73",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-end-pairing-workers-20260914",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-end-pairing-workers-20260914",
+      "files": 1088,
+      "bytes": 89909082,
+      "symlinks": 0,
+      "treeInventorySha256": "f480e03059686a9dec023f860eb520c71ca066599cca8ab25c7ce29898684b7a",
+      "verifiedEntries": 1226,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-end-resolvent-20260911",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-end-resolvent-20260911",
+      "files": 208,
+      "bytes": 908859577,
+      "symlinks": 0,
+      "treeInventorySha256": "a6185b329713565c28f3c5aea0cb9d84f60461a9def7d97c8bf8e9596db324d8",
+      "verifiedEntries": 250,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-end-resolvent-checkpoint",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-end-resolvent-checkpoint",
+      "files": 5,
+      "bytes": 14251,
+      "symlinks": 0,
+      "treeInventorySha256": "4a770848954efa201d9ae4bcece17b2681003918d8f9e73977a48bf744f7c1e9",
+      "verifiedEntries": 6,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-end-spectrum-20260910",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-end-spectrum-20260910",
+      "files": 174,
+      "bytes": 700033102,
+      "symlinks": 0,
+      "treeInventorySha256": "79c730eef0438da0226663cd2eb702b1acfa2abcf0c6a67fa8ef7c9b0fc7bc75",
+      "verifiedEntries": 211,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-end-spectrum-checkpoint-files.json",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-end-spectrum-checkpoint-files.json",
+      "files": 1,
+      "bytes": 841,
+      "symlinks": 0,
+      "treeInventorySha256": "0d15a88b3e596449c4dbf2ff3247dce249b62abfd24a45e5d3af983b15599981",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-end-spectrum-checkpoint-message.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-end-spectrum-checkpoint-message.txt",
+      "files": 1,
+      "bytes": 3578,
+      "symlinks": 0,
+      "treeInventorySha256": "7c3429771e0ac13ecf920f98f034f240d66baad4bd99848b5fd1f9bb160becc9",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-exceptional-checkpoint",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-exceptional-checkpoint",
+      "files": 5,
+      "bytes": 10646,
+      "symlinks": 0,
+      "treeInventorySha256": "0b2f1cf3bfdeba025d5e5a7e2e67ca0bc415d433e9b9ad44397d036cdd47c17f",
+      "verifiedEntries": 6,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-exceptional-strata-20260911",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-exceptional-strata-20260911",
+      "files": 475,
+      "bytes": 1493499909,
+      "symlinks": 0,
+      "treeInventorySha256": "979685305c6cd6c5490f6170548beed12f4afd765a4b0945d7949599a4fdf4fc",
+      "verifiedEntries": 549,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-inertia-reentry-mode-census.json",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-inertia-reentry-mode-census.json",
+      "files": 1,
+      "bytes": 7280,
+      "symlinks": 0,
+      "treeInventorySha256": "c32cb212a587ef48deb80bfe7d0b2d8c40e263ccab2545b46522d1da702a7fe6",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-inertia-reentry-threshold-check.json",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-inertia-reentry-threshold-check.json",
+      "files": 1,
+      "bytes": 7002,
+      "symlinks": 0,
+      "treeInventorySha256": "d7dc180b80792a6c914b7ed1f22893019b4aa94c13d02a13e59b97257ab612d1",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-inertia-scope-probe.py",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-inertia-scope-probe.py",
+      "files": 1,
+      "bytes": 1859,
+      "symlinks": 0,
+      "treeInventorySha256": "d273e1b8275a5c66e87b21d6acbe8156518085904720cb2ae61d3a0d40421f9e",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-inspect-reality.py",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-inspect-reality.py",
+      "files": 1,
+      "bytes": 574,
+      "symlinks": 0,
+      "treeInventorySha256": "eb32e712e6a6a383026adb098e5bc958ca163aa37a29d58301c58d3e84ef26eb",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-inverse-20260910",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-inverse-20260910",
+      "files": 65,
+      "bytes": 174650815,
+      "symlinks": 0,
+      "treeInventorySha256": "c57a9dfc5b3314436f78856490b7c61fe5313173a99b9cba614f7fcbdf323c3b",
+      "verifiedEntries": 72,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-inverse-checkpoint-message.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-inverse-checkpoint-message.txt",
+      "files": 1,
+      "bytes": 3447,
+      "symlinks": 0,
+      "treeInventorySha256": "cb516db5f12726291eed7391013d9654e248414dcd941721926b5fa3df00fa1a",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-inverse-checkpoint-paths.json",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-inverse-checkpoint-paths.json",
+      "files": 1,
+      "bytes": 939,
+      "symlinks": 0,
+      "treeInventorySha256": "96a3d8f65456934b27f643368a5c1b11c232400e0362eedb56a9023066a3edc4",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-inverse-checkpoint-presave.json",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-inverse-checkpoint-presave.json",
+      "files": 1,
+      "bytes": 2800,
+      "symlinks": 0,
+      "treeInventorySha256": "908c3bcedd32cd957ea8083e55805f57f37ee7c3c232048e82e8cf53d4b8a9ff",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-joint-sheet-20260911",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-joint-sheet-20260911",
+      "files": 234,
+      "bytes": 966798519,
+      "symlinks": 0,
+      "treeInventorySha256": "7f6f530a1a3fe973224fc18cbb8c6862a9c31a3b3783ab67bde0041ff92ac212",
+      "verifiedEntries": 286,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-joint-sheet-checkpoint-message.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-joint-sheet-checkpoint-message.txt",
+      "files": 1,
+      "bytes": 4050,
+      "symlinks": 0,
+      "treeInventorySha256": "f514ced08b7946e0377b8544d813c27a093e55d488b0d5f5158c096281d640df",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-joint-sheet-checkpoint-paths.json",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-joint-sheet-checkpoint-paths.json",
+      "files": 1,
+      "bytes": 1266,
+      "symlinks": 0,
+      "treeInventorySha256": "a7eb9be7b321bcb1bf251f6e729c8008b484ce2d6ab2ace92e26c5a9960e24d3",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-massTransferOff-reality.pickle",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-massTransferOff-reality.pickle",
+      "files": 1,
+      "bytes": 7023,
+      "symlinks": 0,
+      "treeInventorySha256": "885c3037e9def486d4e771e2bb05870862dcd9d1fd05b8969ab4131eccf46149",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-modal-checkpoint-20260912",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-modal-checkpoint-20260912",
+      "files": 3,
+      "bytes": 5307,
+      "symlinks": 0,
+      "treeInventorySha256": "4a892a3b3822c224191a1938e012e298385d97f43a1be789c8bf7778e7bd1f73",
+      "verifiedEntries": 4,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-modal-current-20260912",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-modal-current-20260912",
+      "files": 51,
+      "bytes": 44699547,
+      "symlinks": 0,
+      "treeInventorySha256": "59ff893ed98684c98e2a0d10f26eacd506b86d87d3f7052d3be9c81d6efdf600",
+      "verifiedEntries": 88,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-modal-subspaces-20260912",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-modal-subspaces-20260912",
+      "files": 23,
+      "bytes": 4314926,
+      "symlinks": 0,
+      "treeInventorySha256": "0d89f4323d6499d0445deb821268da52714b894c59f521366359161546b99f03",
+      "verifiedEntries": 36,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-mode-dev.err",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-mode-dev.err",
+      "files": 1,
+      "bytes": 817,
+      "symlinks": 0,
+      "treeInventorySha256": "b2047ea64485a2d3aab164acca6c3fd33ab599e2c7160961b5a29a78197feeea",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-mode-dev.exit",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-mode-dev.exit",
+      "files": 1,
+      "bytes": 2,
+      "symlinks": 0,
+      "treeInventorySha256": "33af4cbf1117662381cef77f212da1161fac70c137eb138cbd5eada7ca60d11b",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-mode-dev.launch",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-mode-dev.launch",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "40e502ccb8f63feb021f262f0764e65de2745515ab194c9c12dc9ff3ed55ce17",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-mode-dev.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-mode-dev.out",
+      "files": 1,
+      "bytes": 927437,
+      "symlinks": 0,
+      "treeInventorySha256": "689a8d54831dfc0507aaa1fbb3eb7ea8fbae5ad277b893150a8d5a40062660b7",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-mode-dev.py",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-mode-dev.py",
+      "files": 1,
+      "bytes": 958,
+      "symlinks": 0,
+      "treeInventorySha256": "b3b136ba6b1ac5377659778df6e42eeb20fe82cdc7b6bdeab52baf9e84b39f62",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-mode-jets-20260910-195830",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-mode-jets-20260910-195830",
+      "files": 40,
+      "bytes": 168604032,
+      "symlinks": 0,
+      "treeInventorySha256": "57687e9e9b9663f1b69885666308221d969fbaa333ed9f2f3ed65098fd57deed",
+      "verifiedEntries": 47,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-pairing-checkpoint-message.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-pairing-checkpoint-message.txt",
+      "files": 1,
+      "bytes": 2967,
+      "symlinks": 0,
+      "treeInventorySha256": "902d106d5f354d7323122c211076175a6227d89dcebf70df26a20fa2be518c48",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-reality-class.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-reality-class.txt",
+      "files": 1,
+      "bytes": 8488,
+      "symlinks": 0,
+      "treeInventorySha256": "e0cc0ebc1b6f7e6ca40bc0093240e5cf0d0115149dbeddc488df7dba41c7e6a7",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-reality-commit-20260913",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-reality-commit-20260913",
+      "files": 4,
+      "bytes": 12137,
+      "symlinks": 0,
+      "treeInventorySha256": "4ef7810ae2b31c71dde6433ec65da4617d6c06fe345fa6324380b9a792ea3c81",
+      "verifiedEntries": 5,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-reality-repair-20260913",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-reality-repair-20260913",
+      "files": 55,
+      "bytes": 20931630,
+      "symlinks": 0,
+      "treeInventorySha256": "aed2d255819758dade9e7dfd07be61fa2cfbb99dd862f75df72fe8ce46a88a0d",
+      "verifiedEntries": 84,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-reality-trial.py",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-reality-trial.py",
+      "files": 1,
+      "bytes": 1788,
+      "symlinks": 0,
+      "treeInventorySha256": "36cb65d2f071d6f7e9da5edeadd98c34c9a1d18ba9be8b5f8cfdf1447f31e2ab",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-check.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-check.out",
+      "files": 1,
+      "bytes": 625868,
+      "symlinks": 0,
+      "treeInventorySha256": "fd4035518adb7155e601b3c8b758fa2974bf894ce54edda6ec30fd55aa11018d",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-check.stderr",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-check.stderr",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "e5c5d3884d60e49ea776f32c81d4b8aa9d3e7cc045530fa96ff25d5fd51605b3",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-checkpoint-files.json",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-checkpoint-files.json",
+      "files": 1,
+      "bytes": 2521,
+      "symlinks": 0,
+      "treeInventorySha256": "5d514115dd667d00402e4fa56766de698584fe1ceda2f741fd827def24776d0d",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-checkpoint-message.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-checkpoint-message.txt",
+      "files": 1,
+      "bytes": 3967,
+      "symlinks": 0,
+      "treeInventorySha256": "4557236fec2957f0c750244bc2dc4b600a37db998324b7a27bb6aa2a5113c525",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-checkpoint-verification.json",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-checkpoint-verification.json",
+      "files": 1,
+      "bytes": 3829,
+      "symlinks": 0,
+      "treeInventorySha256": "d27d00c16acdc8eaf27fd085593fb04c9810468a3a0acb14383f77efa15e2cdb",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-production-v2.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-production-v2.out",
+      "files": 1,
+      "bytes": 1927171,
+      "symlinks": 0,
+      "treeInventorySha256": "6f583cefec68c2f64e68ac097629e8a1511dae826e803f43eecc65d1c58783c3",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-production-v2.stderr",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-production-v2.stderr",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "1c71b9c85b2bc91638558aedc81f0d2c6761eb4e5ffc27e2ab4cfd06a00ef61d",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-production.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-production.out",
+      "files": 1,
+      "bytes": 211068,
+      "symlinks": 0,
+      "treeInventorySha256": "c99222fb127d2e17ed147e2e00e297cca724acf3f429060e7c29713772e2a69a",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-production.stderr",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-production.stderr",
+      "files": 1,
+      "bytes": 1120,
+      "symlinks": 0,
+      "treeInventorySha256": "ed80f214d6685ec455d691df4fd45190ea1b94e412785b59fb1679020d923cac",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-pullback.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-pullback.out",
+      "files": 1,
+      "bytes": 671018,
+      "symlinks": 0,
+      "treeInventorySha256": "954f6a194e3eef7481806dbc3b8d3b74aa340401202a9a98f1e5cb10bd3daff5",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-rectangular-pullback.stderr",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-rectangular-pullback.stderr",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "205e39193d38b8afb0e880bd37e32c300c16a3383b61f6904027e75025f5e904",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-reentry",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-reentry",
+      "files": 58,
+      "bytes": 43698865,
+      "symlinks": 0,
+      "treeInventorySha256": "391c6c0a1e94f0281d248d3eaa2817060ba2e7dc992bca5268c784882d5fe21c",
+      "verifiedEntries": 61,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-right-source-resume-20260913",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-right-source-resume-20260913",
+      "files": 3247,
+      "bytes": 44921569,
+      "symlinks": 0,
+      "treeInventorySha256": "c1b90f85b7c410d22d049cc81ace39f8a148ab45d6111e3f6a4e31edf701dbff",
+      "verifiedEntries": 3278,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-right-source-trace-20260913",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-right-source-trace-20260913",
+      "files": 53,
+      "bytes": 175398797,
+      "symlinks": 0,
+      "treeInventorySha256": "21a0ad1e5cc9478da7a817b177b3a5aaebf17de096b829a7fd2425e0decf7cd3",
+      "verifiedEntries": 65,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-runtime-checkpoint-message.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-runtime-checkpoint-message.txt",
+      "files": 1,
+      "bytes": 5067,
+      "symlinks": 0,
+      "treeInventorySha256": "e778e92a43bad48ca4a3b7da385887039a3983f7a79eed972a2e43f0769dd65d",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sheet-checkpoint-commit.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sheet-checkpoint-commit.txt",
+      "files": 1,
+      "bytes": 3086,
+      "symlinks": 0,
+      "treeInventorySha256": "c2b01f4570df69632fe3b7246618395d9f0336a5f678249af7a43cdd1b21e2d3",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sheet-full-0l4gsvk9",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sheet-full-0l4gsvk9",
+      "files": 19,
+      "bytes": 56790581,
+      "symlinks": 0,
+      "treeInventorySha256": "5cdba11e032982e7d84a8f23e3753895db0c4de4787312887df3d045a6f28a6d",
+      "verifiedEntries": 21,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sheet-repair-commit-message.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sheet-repair-commit-message.txt",
+      "files": 1,
+      "bytes": 3750,
+      "symlinks": 0,
+      "treeInventorySha256": "3406e795b89b92b21e8d0b51bc3fc66e2fe6bf22e6ea7d047e6879e64009a630",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sheet-scope-lookup.stderr",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sheet-scope-lookup.stderr",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "3e7a71378b4d66e5b13cc398276d9092c525d23295efbe5b78dc1abc7c7d190e",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sign-audit-20260912",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sign-audit-20260912",
+      "files": 61,
+      "bytes": 238645406,
+      "symlinks": 0,
+      "treeInventorySha256": "b1982abc8a9498bc9c29947b5eb681d0e25b4ef9247e7ad0d067b802718cad36",
+      "verifiedEntries": 72,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sign-development.err",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sign-development.err",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "339ae5501c0a93e45320464fe4472a3afdea820410697bc29c0a651f06c668cb",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sign-development.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sign-development.out",
+      "files": 1,
+      "bytes": 420044,
+      "symlinks": 0,
+      "treeInventorySha256": "98fbdc6c08b897d4787f80a987b35f1b5ff9c4ba2c09551e23fe14860005b6d9",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sign-final.err",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sign-final.err",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "bf5dfb25a4e509c62ebe5b437f72ec7b1ee5ba78be3bf5b748b3d56829d0c139",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sign-inputs.err",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sign-inputs.err",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "18d6df7e88cb8a60ae951738a2628ec4b2461a47124f7130a1f6f96fc1498b7f",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sign-inputs.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sign-inputs.out",
+      "files": 1,
+      "bytes": 4722,
+      "symlinks": 0,
+      "treeInventorySha256": "ca17fefd091e80e3e7d9684ca6df25193ff85efbf296f141ae5cf8e600fe462d",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sign-inputs.pickle",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sign-inputs.pickle",
+      "files": 1,
+      "bytes": 4982043,
+      "symlinks": 0,
+      "treeInventorySha256": "7eb83cae37b6155b642949c3baf08e6e6b41163eea48fc53b812708621fe77c7",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-sign-inputs.py",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-sign-inputs.py",
+      "files": 1,
+      "bytes": 1357,
+      "symlinks": 0,
+      "treeInventorySha256": "fd1b28d6f97b232c41c96eac6dedb8ae68a1d52bac254c45f1bb5fc8b3bf2164",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-source-controls-20260913",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-source-controls-20260913",
+      "files": 21,
+      "bytes": 9984682,
+      "symlinks": 0,
+      "treeInventorySha256": "33147fc8dd55b8f674ed4e4769df614265b6c1a8c45a0fe2559e98bb0df0b293",
+      "verifiedEntries": 34,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-source-trace-commit-message.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-source-trace-commit-message.txt",
+      "files": 1,
+      "bytes": 3609,
+      "symlinks": 0,
+      "treeInventorySha256": "1d12d1248b3d5c0727af965bf530466458e29a7953a4f65b95ed831effd03811",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-split-current-20260912",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-split-current-20260912",
+      "files": 43,
+      "bytes": 7148481,
+      "symlinks": 0,
+      "treeInventorySha256": "5ad64aa85c9dec7224f9ed357c149e3c379fc7acc1cfaafed23dc3eddc073692",
+      "verifiedEntries": 63,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-combined.err",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-combined.err",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "555cc97f8882d908452c62c574fe3d7f73c9229b7970f3714aade00b54c851d6",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-combined.exit",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-combined.exit",
+      "files": 1,
+      "bytes": 2,
+      "symlinks": 0,
+      "treeInventorySha256": "03449ba60f9b173c5ada57738377a0fbae2bcab0393b01b86a1717145a41fbfa",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-combined.launch",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-combined.launch",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "c951cad666a303c422f13741bfaffda583478561fbc1dba7749e51d121486b0a",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-combined.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-combined.out",
+      "files": 1,
+      "bytes": 16911668,
+      "symlinks": 0,
+      "treeInventorySha256": "4e4ae2e4d3924f630a2b19a33e5fc88b34cf1331b01ce0367de205d44488dc98",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-derived-required.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-derived-required.out",
+      "files": 1,
+      "bytes": 146,
+      "symlinks": 0,
+      "treeInventorySha256": "b1e1b70790ef322d028410559e2b38db46c63e452c9621e040b33f1c6390a22b",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-dev.err",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-dev.err",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "709312c9141a2a6610d9445ec0f14a0613e3cfd8d86fe4c900fda8e894d522dd",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-dev.exit",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-dev.exit",
+      "files": 1,
+      "bytes": 2,
+      "symlinks": 0,
+      "treeInventorySha256": "b3f665370b75b060e729e12e67d871606a261ac6a0d98b73584435e0409cc8d8",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-dev.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-dev.out",
+      "files": 1,
+      "bytes": 5394535,
+      "symlinks": 0,
+      "treeInventorySha256": "931847dee903f4ad68b9a7ecb9441ecba432076aad1eb890154fb75c0a4f8c7f",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-final.exit",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-final.exit",
+      "files": 1,
+      "bytes": 2,
+      "symlinks": 0,
+      "treeInventorySha256": "af0da15999b216076f82bd6bd4304c48419562eeebe907af58edae061c8b2c74",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-final.launch",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-final.launch",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "2e94fdf90c8a0218e374e604a1cc1cb363d53e50a5df7e856d7ea2d5bee600e9",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-final.time",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-final.time",
+      "files": 1,
+      "bytes": 794,
+      "symlinks": 0,
+      "treeInventorySha256": "818e0f48a0cd59cba21b8369a0ab817eb31c833cd2e0f88d88d0f00a6ca6ffd3",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-launch.log",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-launch.log",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "1036a9c1177e160567684c1c80228065e8b370315d32ae87e9f15bab7d860bdb",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-output-fallback.err",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-output-fallback.err",
+      "files": 1,
+      "bytes": 141,
+      "symlinks": 0,
+      "treeInventorySha256": "6e3698f570e66ee064bde5f14be4f1fea884843980f9dd2f2b281dc18595707c",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-output-fallback.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-output-fallback.out",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "ee06e1c9034acd84f51a8782cfd3d6562eaf0bad707cc122e5a0d7d10fb5f49f",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-output-required.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-output-required.out",
+      "files": 1,
+      "bytes": 147,
+      "symlinks": 0,
+      "treeInventorySha256": "8c588bda8460c1b5b24e191af76a9eb783de6995beaac72f894f08ab4e3542a5",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-report-checks.err",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-report-checks.err",
+      "files": 1,
+      "bytes": 0,
+      "symlinks": 0,
+      "treeInventorySha256": "454bad595a7012bc063f5c01ea5ddf5df893aed35677cdc3846c3f518130be4a",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-report-checks.out",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-report-checks.out",
+      "files": 1,
+      "bytes": 350,
+      "symlinks": 0,
+      "treeInventorySha256": "a5c8b5217d75d4c2e40f4b57590f87bf254527334644d6207d5c3b55f033bae8",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-report.py",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-report.py",
+      "files": 1,
+      "bytes": 16031,
+      "symlinks": 0,
+      "treeInventorySha256": "71d3c182fbcf3abbea15d9c9fadb648c2647210852291e9eb61d2c3ee13716e9",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-stageb2-symbols",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-stageb2-symbols",
+      "files": 3,
+      "bytes": 44686,
+      "symlinks": 0,
+      "treeInventorySha256": "4f3ac839f16651d21c57ebbc57cfe263690744ae436a1537179362b0521105d7",
+      "verifiedEntries": 4,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-subspace-commit-20260913",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-subspace-commit-20260913",
+      "files": 3,
+      "bytes": 5640,
+      "symlinks": 0,
+      "treeInventorySha256": "85a821036d5b384b27cad0a56160193db4ba5e52b36ce20a51adadda2edd76b0",
+      "verifiedEntries": 4,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd-threshold-20260911",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd-threshold-20260911",
+      "files": 253,
+      "bytes": 934434604,
+      "symlinks": 0,
+      "treeInventorySha256": "829df8b7b1daaae127c3990869fe9ad9b9374770bd2ed1ee0698c4782606850d",
+      "verifiedEntries": 286,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd_face_port_split.pyfrag",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd_face_port_split.pyfrag",
+      "files": 1,
+      "bytes": 3826,
+      "symlinks": 0,
+      "treeInventorySha256": "8ad53dd3ae5b893871835804cdf967013ca5f406e1d0d1db9c731bc5cdd17973",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd_modal_emit.pyfrag",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd_modal_emit.pyfrag",
+      "files": 1,
+      "bytes": 6655,
+      "symlinks": 0,
+      "treeInventorySha256": "fc764b77c2f4a25dcaa0050b6865c95d3296d78a0e45fa6ff8489301367e31cd",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd_modal_subspace_class.pyfrag",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd_modal_subspace_class.pyfrag",
+      "files": 1,
+      "bytes": 18691,
+      "symlinks": 0,
+      "treeInventorySha256": "e41ad2ebe26cbb3f34447fa2af9273fa0fbe7bcf4bf996123c3cd7e51e892e19",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd_pairing_class.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd_pairing_class.txt",
+      "files": 1,
+      "bytes": 12761,
+      "symlinks": 0,
+      "treeInventorySha256": "d3a38b0c6d5a3f1a03d51722aa9a5817dc4eb83d72568551a8cc32669324e2d8",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd_pairing_emit.txt",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd_pairing_emit.txt",
+      "files": 1,
+      "bytes": 3998,
+      "symlinks": 0,
+      "treeInventorySha256": "d75c301150bf97b017b20bb1f123e5869c49062ce09ed4834c579f3affde57d5",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd_resume",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd_resume",
+      "files": 58,
+      "bytes": 229394059,
+      "symlinks": 0,
+      "treeInventorySha256": "1ac6f2cffdc1ef49391d759ad5a04d34988c1a573160317a89c5e2adb0fabcc8",
+      "verifiedEntries": 60,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd_split_derivatives.pyfrag",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd_split_derivatives.pyfrag",
+      "files": 1,
+      "bytes": 4490,
+      "symlinks": 0,
+      "treeInventorySha256": "9228353b509aa4f957965f20941ec5bb74271a346cb8c1c16992b742af5e849b",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd_split_methods.pyfrag",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd_split_methods.pyfrag",
+      "files": 1,
+      "bytes": 9536,
+      "symlinks": 0,
+      "treeInventorySha256": "6cbbee31a3bd4038ced3b8601cee6bf45fe3c0044aefe238b5121fb4fa2e5dce",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd_stageB",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd_stageB",
+      "files": 19,
+      "bytes": 10541145,
+      "symlinks": 0,
+      "treeInventorySha256": "776c96d6872aeb03ca97f96e759d61775eede52f0db5321f11d58c9d497df304",
+      "verifiedEntries": 21,
+      "allFileHashesAndInodesPreserved": true
+    },
+    {
+      "oldPath": "/tmp/s11cd_verification_cache.pyfrag",
+      "durablePath": "/var/projects/toy_physics/_scratch/s11c/s11cd_verification_cache.pyfrag",
+      "files": 1,
+      "bytes": 3375,
+      "symlinks": 0,
+      "treeInventorySha256": "40fc901bd5f22229f4cb20c617f080276489b52467630e1ddbe9687f7f1172b6",
+      "verifiedEntries": 1,
+      "allFileHashesAndInodesPreserved": true
+    }
+  ],
+  "filesInventory": "/var/projects/toy_physics/_scratch/s11c-storage-migration-20260914/files.jsonl",
+  "filesInventorySha256": "68665cc3e34dc431ddfe04d43292467b057dda943c831d99cdd4f58353f094de",
+  "regularFiles": 10718,
+  "bytes": 13891191404,
+  "missingDependencyReferences": [],
+  "scope": "Same-filesystem relocation under the repository; all regular-file SHA256 hashes and inodes preserved. Historical absolute paths remain compatibility symlinks. No physics, published artifact, or pinned source changed."
+}

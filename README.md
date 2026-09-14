@@ -116,6 +116,21 @@ python research/pde_ledger_v3/_measurements/S11c_storage_paths.py --restore
 The helper refuses to overwrite conflicting files or links. The migration
 checkpoint records the durable paths and the file-hash verification inventory.
 
+## Long-running scripts
+
+Run scripts silently by default. Do not spend model turns repeatedly checking
+healthy jobs or sending routine progress updates. Keep logs and checkpoints in
+the repository, and use a lightweight local completion/error watcher when the
+assistant needs to resume afterward. Completion wakes the assistant to validate
+and continue; investigate or notify the user when an issue is detected. Provide
+status when the user asks. Do not create recurring model-polling automations
+unless explicitly requested.
+
+`scripts/codex_job_watch.py` waits on an owned supervisor process and uses
+`codex queue` to notify the existing session. It makes no model calls while
+waiting. Give each watcher its own durable directory and a continuation message
+file. Use `--error-log` only when nonempty content actually means an issue.
+
 ## Papers List
 
 All papers are archived on Zenodo under author Norris, T. (2026). Within each section, papers are listed in reading order (foundations first, extensions later).

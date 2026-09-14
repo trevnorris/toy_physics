@@ -375,5 +375,20 @@
     "sourceTransform": null,
     "caseEnvironment": {},
     "childPid": 1880576
+  },
+  "completionWatcher": {
+    "watcher": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full/completion-watcher",
+    "watcherPid": 1892052,
+    "jobSupervisorPid": 1880558,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "status": "waiting",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "previousProgressMonitorStopped": 1883242,
+    "modelPolling": "disabled",
+    "notificationEvents": [
+      "completion",
+      "detected issue"
+    ],
+    "globalPreference": "/home/trevnorris/.codex/AGENTS.md"
   }
 }

@@ -1,5 +1,10 @@
 # S11c-d both-end current continuation
 
+The user authorized autonomous repair/continuation and a commit at each substantive
+step on 2026-09-14. Earlier stop/no-commit wording below records historical
+boundaries; the active [thickness-coordinate repair plan](S11c_thickness_coordinate_repair_plan.md)
+governs the current investigation and regeneration. Ask only for required input.
+
 Continue from the verified reference adjoint/current map, retaining its source
 snapshots, transcript and inventory. The active development case remains
 LAB_HELD/RHO4_CONSTANT with the supplied profile and parameter file.

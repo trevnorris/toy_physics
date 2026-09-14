@@ -1,0 +1,96 @@
+{
+  "sourcePins": {
+    "scripts/S11c_b_brane_operator_sympy_audit.py": "ec7afc2da4822acfce3eef9aad9162b56f76d7c3629e19a3ddc6c779a0bd8037",
+    "scripts/S11c_a_exports.py": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+    "scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+    "scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+    "scripts/S11c_c2_exports.py": "97160450e8b1d9aa654cebb2ea0d2074df24186f337fad2ee850bb5b200e7579",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "directives/S11c_b_SHARED_PHYSICS.md": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "_measurements/S11c_b_inertia_action_check.py": "0b61e7b111fa6d1794a2b15b10160afded9fffeaef0119ae90a7d878e2b731fd",
+    "_measurements/S11c_thickness_coordinate_trace.py": "46c696a970dec0927d152824983d6319d795e8c8a683b24e0672e8adaf35ef7e",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+    "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+  },
+  "sourcePinsAfter": {
+    "scripts/S11c_b_brane_operator_sympy_audit.py": "ec7afc2da4822acfce3eef9aad9162b56f76d7c3629e19a3ddc6c779a0bd8037",
+    "scripts/S11c_a_exports.py": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+    "scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+    "scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+    "scripts/S11c_c2_exports.py": "97160450e8b1d9aa654cebb2ea0d2074df24186f337fad2ee850bb5b200e7579",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "directives/S11c_b_SHARED_PHYSICS.md": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "_measurements/S11c_b_inertia_action_check.py": "0b61e7b111fa6d1794a2b15b10160afded9fffeaef0119ae90a7d878e2b731fd",
+    "_measurements/S11c_thickness_coordinate_trace.py": "46c696a970dec0927d152824983d6319d795e8c8a683b24e0672e8adaf35ef7e",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+    "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+  },
+  "checks": {
+    "LocalMapJoinResidual": {
+      "scalars": 1,
+      "nonzero": 0
+    },
+    "Rho4ConstantNativeAssemblyJoinResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "Rho4ConstantUniformCoordinateJoinResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "RhobrConstantNativeAssemblyJoinResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "RhobrConstantUniformCoordinateJoinResidual": {
+      "scalars": 4,
+      "nonzero": 0
+    },
+    "Leg0NativeSourceJoinResidual": {
+      "scalars": 25,
+      "nonzero": 0
+    },
+    "Leg1NativeSourceJoinResidual": {
+      "scalars": 25,
+      "nonzero": 0
+    },
+    "SlabBalanceResidualAccountingResidual": {
+      "scalars": 25,
+      "nonzero": 0
+    },
+    "FiniteComposedBalanceResidualAccountingResidual": {
+      "scalars": 25,
+      "nonzero": 0
+    },
+    "EqualDepthComposedBalanceResidualAccountingResidual": {
+      "scalars": 25,
+      "nonzero": 0
+    }
+  },
+  "objects": 40,
+  "objectsSha256": "0d89ab6c1813fd801b05292ff7f9d1aa9a5eca212c176d47a911dc07c26b6e58",
+  "wallSeconds": 21.925961589440703,
+  "peakRssKiB": 233392,
+  "pairingCheckpointSha256": "c222e2c96a60f760bd60c48943e12d939abff3d8771d58d9e6f2ee77ed1ba926",
+  "runDirectory": "/tmp/s11c-thickness-coordinate-20260914/trace-complete",
+  "validatorSha256": "a98ed0a3df542c73237b98573491ac234cc06f86ea62492bd2be3768db304b5d",
+  "metadataPaths": 453,
+  "residualScalars": 142,
+  "nonzeroResidualScalars": 0,
+  "nonfiniteObjects": [],
+  "transcript": {
+    "bytes": 146008,
+    "sha256": "932dbe60ef1b6b426a98ee5629bf868f7c7a88c3722706640128c82c91d8557f"
+  },
+  "publication": "scripts/out/S11c_thickness_coordinate_trace.out"
+}

@@ -2,7 +2,13 @@
 
 Checkpoint **a05b05e3** commits the completed c2 trace repair and regenerated d
 artifacts: 50 ordinary Git files and 11 DataLad/git-annex transcript pointers.
-No push was made. The continuation described below is uncommitted.
+The endpoint diagnostic continuation below is committed at f796f7ba. No push
+was made. The user has authorized autonomous continuation and commits at each
+substantive step. The active [coordinate repair report](S11c_thickness_coordinate_repair_report.md)
+and [plan](S11c_thickness_coordinate_repair_plan.md) supersede the historical stop
+boundary below: the source trace identifies b's kinetic coordinate mismatch
+with 142 exact-zero accounting/regression scalars. Producer repair and serial
+regeneration are the next steps.
 
 The source repair cleared all ten original RIGHT discrepancies. Both fresh
 LAB_HELD/RHO4_CONSTANT end-source packets have 33 zero top-level retained

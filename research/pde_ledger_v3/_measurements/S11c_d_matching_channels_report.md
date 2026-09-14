@@ -2,8 +2,13 @@
 
 The first variable-profile matching checkpoint is implemented in the existing
 engine's `TwoEndedMatchingChannels`, committed at `0f5498ba`. The focused run
-is active under repository `_scratch/s11c/s11c-matching-channels-20260914/`, with
-a local completion/error watcher. No channel-current result is accepted yet.
+stopped after 1.58 seconds at the full-file normalization-helper pin, before any
+channel calculation. Accepted end packets predate logging/pre-emission storage
+changes. The instrument now requires exact AST agreement for every consumed
+helper function, while still verifying full frozen snapshots and other source
+pins. All eight end/function joins pass; the failed attempt is preserved under
+repository `_scratch/s11c/s11c-matching-channels-20260914/complete`. No physical
+constructor changed and no channel-current result is accepted yet.
 
 The construction consumes the accepted LEFT/RIGHT current/adjoint packets,
 preserves every isolated-root/lift basis and classifier/domain record, and

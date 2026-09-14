@@ -43,8 +43,19 @@ def source_context(end):
         if digest(base/'source'/name) != expected:
             raise ValueError(('normalization source snapshot changed', end, name))
         if name not in ('scripts/S11c_d_mixing_scattering_sympy_audit.py',
+                        '_measurements/S11c_d_end_normalization_check.py',
                         '_measurements/S11c_d_end_normalization_validate.py') and digest(ROOT/name) != expected:
             raise ValueError(('normalization helper changed', end, name))
+    helper = '_measurements/S11c_d_end_normalization_check.py'
+    old_helper = ast.parse((base/'source'/helper).read_text())
+    new_helper = ast.parse((ROOT/helper).read_text())
+    helper_joins = {}
+    for name in ('checked_artifacts', 'load_pairing', 'load_native', 'put'):
+        old_node = next(n for n in old_helper.body if getattr(n, 'name', None) == name)
+        new_node = next(n for n in new_helper.body if getattr(n, 'name', None) == name)
+        helper_joins[name] = ast.dump(old_node) == ast.dump(new_node)
+    if not all(helper_joins.values()):
+        raise ValueError(('consumed normalization helper changed', end, helper_joins))
     frozen = ast.parse((base/'source/scripts/S11c_d_mixing_scattering_sympy_audit.py').read_text())
     current = ast.parse(Path(engine.__file__).read_text())
     current.body = [n for n in current.body if getattr(n, 'name', None) != 'TwoEndedMatchingChannels']
@@ -72,6 +83,7 @@ def source_context(end):
         'producerManifestSha256': provenance['producerManifestSha256'], 'end': end,
         'modalSha256': digest(base/'modal.pickle'), 'adjointSha256': digest(base/'adjoint.pickle'),
         'unitFrame': inputs.frame, 'profileSpecification': inputs.specification['profiles'],
+        'normalizationHelperFunctionJoins': helper_joins,
         'physicalPencilJoin': provenance['physicalPencilJoin']}
     return engine.TwoEndedMatchingChannels(builder, modal, adjoint, end), source, checkpoint
 

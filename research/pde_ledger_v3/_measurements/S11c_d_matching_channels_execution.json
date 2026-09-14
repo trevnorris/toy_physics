@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "SOURCE_CHECK_REPAIRED_READY_TO_RETRY",
   "plan": "S11c_d_variable_profile_matching_plan.md",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914",
   "scope": "One supplied case, both complete physical-end channel bases and polarized cross-mode currents; no variable-profile interior solve yet.",
@@ -69,6 +69,44 @@
         "exitCode": 0,
         "finishedUtc": "2026-09-14T23:24:03.101934+00:00"
       }
+    }
+  },
+  "failedAttempt": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/complete",
+    "invocation": {
+      "stage": "channels_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_matching_channels_check.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/complete",
+        "--publish"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/channels_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/channels_construct.stderr",
+      "startedUtc": "2026-09-14T23:24:00.467357+00:00",
+      "childPid": 1913905,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 1.580861059948802,
+      "stderrBytes": 657,
+      "finishedUtc": "2026-09-14T23:24:02.048319+00:00"
+    },
+    "reason": "Full-file normalization-helper pin predates logging/pre-emission storage changes; consumed source-loading and emission function ASTs agree exactly. No channel calculation started."
+  },
+  "normalizationHelperFunctionJoins": {
+    "left": {
+      "checked_artifacts": true,
+      "load_pairing": true,
+      "load_native": true,
+      "put": true
+    },
+    "right": {
+      "checked_artifacts": true,
+      "load_pairing": true,
+      "load_native": true,
+      "put": true
     }
   }
 }

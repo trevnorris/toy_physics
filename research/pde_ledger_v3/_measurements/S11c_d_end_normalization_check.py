@@ -7,6 +7,7 @@ packet. Finite-contrast evaluations retain their truncated-operator scope.
 """
 import argparse
 from collections import Counter
+import faulthandler
 import json
 from pathlib import Path
 import pickle
@@ -16,12 +17,13 @@ import time
 import numpy as np
 import sympy as sp
 
-from S11c_d_end_pairing_check import build, ROOT
+from S11c_d_end_pairing_check import build, ROOT, atomic
 from S11c_d_modal_current_check import digest, source_node, engine
 from S11c_d_joint_sheet_check import decoded_lines, _restore
 from S11c_d_current_reality_check import check_certificate
 
 CASE = 'LAB_HELD_RHO4_CONSTANT'
+STACK_STREAM = None
 SOURCES = ('scripts/S11c_d_mixing_scattering_sympy_audit.py',
     'scripts/S11c_d_output_codec.py', 'scripts/ledger_fold.py',
     '_measurements/S11c_d_end_normalization_check.py',
@@ -226,6 +228,7 @@ def orientations(modal, builder, end, prefix):
 
 
 def main():
+    global STACK_STREAM
     parser = argparse.ArgumentParser()
     for name in ('manifest','input','pairing-checkpoint','run-directory'):
         parser.add_argument('--'+name,type=Path,required=True)
@@ -237,13 +240,18 @@ def main():
     base.relative_to(ROOT.parents[1]/'_scratch/s11c')
     base.mkdir(parents=True,exist_ok=False)
     started = time.monotonic()
+    STACK_STREAM = (base/'stack-samples.txt').open('a')
+    faulthandler.enable()
+    faulthandler.dump_traceback_later(120,repeat=True,file=STACK_STREAM)
     pins = {name:digest(ROOT/name) for name in SOURCES}
     for name in SOURCES:
         target = base/'source'/name;target.parent.mkdir(parents=True,exist_ok=True)
         target.write_bytes((ROOT/name).read_bytes())
     def progress(record):
         with (base/'progress.jsonl').open('a') as stream:
-            stream.write(json.dumps({'elapsedSeconds':time.monotonic()-started,**record})+'\n')
+            stream.write(json.dumps({'elapsedSeconds':time.monotonic()-started,
+                'cpuSeconds':time.process_time(),
+                'peakRssKiB':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,**record})+'\n')
     (base/'arguments.json').write_text(json.dumps({k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()},indent=2)+'\n')
     pairing, current, inputs, provenance = load_pairing(args)
     records, coverage, binding, physical = load_native(args,pairing,inputs,provenance)
@@ -262,6 +270,11 @@ def main():
     modal['SCALAR_OPERANDS'] = builder.scalar_operands
     modal['NATIVE_RECORDS'] = records
     modal['NATIVE_COVERAGE'] = coverage
+    # Keep a construction packet before potentially lengthy serialization. The
+    # established post-emission packet still includes the final unit registry.
+    atomic(base/'modal-pre-emission.pickle',pickle.dumps(
+        (modal,engine.PHYSICAL_METADATA.dimensions.known),protocol=5))
+    progress({'stage':'modal_emission_started','constructionPacketSha256':digest(base/'modal-pre-emission.pickle')})
     builder.emit(modal,provenance,prefix+'_MODAL',context=args.end+'_'+CASE)
     (base/'modal.pickle').write_bytes(pickle.dumps((modal,engine.PHYSICAL_METADATA.dimensions.known),protocol=5))
     progress({'stage':'modal_saved','sha256':digest(base/'modal.pickle')})
@@ -269,6 +282,9 @@ def main():
     oriented = orientations(modal,builder,args.end,prefix)
     adjoint_builder = engine.AdjointCurrentMap(builder)
     adjoint = adjoint_builder.construct(modal,progress)
+    atomic(base/'adjoint-pre-emission.pickle',pickle.dumps(
+        (adjoint,engine.PHYSICAL_METADATA.dimensions.known),protocol=5))
+    progress({'stage':'adjoint_emission_started','constructionPacketSha256':digest(base/'adjoint-pre-emission.pickle')})
     adjoint_builder.emit(adjoint,provenance,prefix+'_ADJOINT',context=args.end+'_'+CASE)
     (base/'adjoint.pickle').write_bytes(pickle.dumps((adjoint,engine.PHYSICAL_METADATA.dimensions.known),protocol=5))
     reality = check_certificate(modal['NORMAL_REALITY_COVERAGE'],modal['RECORDS'])
@@ -288,7 +304,8 @@ def main():
         'frequencyJoins':joins,'orientationRecords':[{**v,'SHEET_MEMBERSHIP':str(v['SHEET_MEMBERSHIP'])} for v in oriented],
         'normalReality':reality,'wallSeconds':time.monotonic()-started,
         'peakRssKiB':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
-        'objects':{name:digest(base/name) for name in ('modal.pickle','adjoint.pickle')}}
+        'objects':{name:digest(base/name) for name in
+            ('modal.pickle','adjoint.pickle','modal-pre-emission.pickle','adjoint-pre-emission.pickle')}}
     # Map identities and finite-contrast physical balance diagnostics remain
     # separate. A nonzero raw balance cannot be silently accepted as closure;
     # retained/remainder accounting stays in the linked pairing checkpoint.
@@ -312,4 +329,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    finally:
+        faulthandler.cancel_dump_traceback_later()
+        if STACK_STREAM is not None:
+            STACK_STREAM.close()

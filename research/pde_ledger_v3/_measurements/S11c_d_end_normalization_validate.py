@@ -28,6 +28,17 @@ def json_value(value):
     return json.loads(json.dumps(value))
 
 
+def same_packet(a, b):
+    """Compare saved numerical/symbolic construction trees without tolerances."""
+    if isinstance(a, np.ndarray):
+        return isinstance(b, np.ndarray) and a.dtype == b.dtype and np.array_equal(a, b)
+    if isinstance(a, dict):
+        return isinstance(b, dict) and list(a) == list(b) and all(same_packet(a[k], b[k]) for k in a)
+    if isinstance(a, (tuple, list)):
+        return type(a) is type(b) and len(a) == len(b) and all(same_packet(x, y) for x, y in zip(a, b))
+    return bool(a == b)
+
+
 def validate(base):
     summary = json.loads((base/'checks.json').read_text())
     validation_sources = {}
@@ -64,6 +75,14 @@ def validate(base):
         raise ValueError('normalization source/input joins')
     modal, known = pickle.loads((base/'modal.pickle').read_bytes())
     adjoint, adjoint_known = pickle.loads((base/'adjoint.pickle').read_bytes())
+    construction_packet_joins = {}
+    for name, final_packet in (('modal', modal), ('adjoint', adjoint)):
+        early_name = name+'-pre-emission.pickle'
+        if early_name in summary['objects']:
+            early, early_known = pickle.loads((base/early_name).read_bytes())
+            construction_packet_joins[name] = same_packet(early, final_packet)
+            if not construction_packet_joins[name]:
+                raise ValueError('pre/post emission construction packet changed')
     engine.PHYSICAL_METADATA.dimensions.known.update(known)
     engine.PHYSICAL_METADATA.dimensions.known.update(adjoint_known)
     if modal['NATIVE_RECORDS'] != native or modal['NATIVE_COVERAGE'] != coverage:
@@ -202,6 +221,7 @@ def validate(base):
         'metadataPaths':paths,'numericResidualScalars':residual_scalars,
         'sourceAssignments':len(indexed),'validationSourceSha256':digest(Path(__file__)),
         'validationSourceSnapshots':validation_sources,
+        'constructionPacketJoins':construction_packet_joins,
         'residualNormsAboveDiagnosticThreshold':diagnostic,
         'unaccountedResidualNormsAboveDiagnosticThreshold':unaccounted,
         'remainderAccounting':remainder_summary,'remainderEvidence':remainder_evidence,

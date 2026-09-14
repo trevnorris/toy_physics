@@ -343,5 +343,19 @@
   "leftCommit": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
   "wolframAuditCheckpoint": "S11c_wolfram_repair_audit_checkpoint.json",
   "wolframAuditStatus": "REPAIR_AUTHORIZED_IN_PROGRESS",
-  "wolframRepairExecution": "S11c_wolfram_pressure_trace_repair_execution.json"
+  "wolframRepairExecution": "S11c_wolfram_pressure_trace_repair_execution.json",
+  "referencePreparation": {
+    "status": "READY_WAITING_FOR_WOLFRAM_REPAIR_PUBLICATION",
+    "preflight": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference-preflight.json",
+    "changes": [
+      "Save atomic modal/adjoint construction packets before emission while retaining the established final packets and unit registries.",
+      "Label modal/adjoint emission stages and include CPU time/peak RSS in progress events; save stack diagnostics every 120 seconds.",
+      "Validate exact pre/post-emission construction packet equality and pin all saved objects."
+    ],
+    "sourceSha256": {
+      "_measurements/S11c_d_end_normalization_check.py": "94a8685b7f27a2a3dbe594c910d3223c78b282489c37ce7b6a2805ab6055c230",
+      "_measurements/S11c_d_end_normalization_validate.py": "ff43b7d97a37908dbc87ec35a35d27628386454290f0e9e343e357341b4b44f3"
+    },
+    "validation": "Python syntax checks; no scientific construction or regeneration while the serial Mathematica run is active."
+  }
 }

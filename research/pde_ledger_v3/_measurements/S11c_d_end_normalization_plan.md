@@ -65,3 +65,10 @@ After accepted normalization, continue one-case variable-profile matching
 under the unchanged solver/export contract. This checkpoint does not claim
 global exceptional coverage, a continuum re-expansion, a complete S-matrix,
 or section 3b profile-dependent frequency poles. Those remain program work.
+
+REFERENCE execution preparation: atomic modal and adjoint construction packets
+are now saved before emission, alongside the established final packets. The
+validator checks their exact structural equality. Progress identifies emission
+stages and resource use; periodic stack diagnostics stay in the run directory.
+The accepted REFERENCE input/current/pairing hashes passed a read-only preflight.
+Execute its scientific run after the repaired native Wolfram publication.

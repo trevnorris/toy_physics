@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "VALIDATED_PUBLISHED_PENDING_COMMIT",
   "plan": "S11c_d_variable_profile_matching_plan.md",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02",
   "scope": "One supplied case, both complete physical-end channel bases and polarized cross-mode currents; no variable-profile interior solve yet.",
@@ -11,8 +11,8 @@
     "LEFT": true,
     "RIGHT": true
   },
-  "next": "Run the focused construction/serialization validation and inspect all literal residuals before accepting publication.",
-  "observedUtc": "2026-09-14T23:27:29.918276+00:00",
+  "next": "Save and hash-verify the annex publication, commit, then assemble the reduced variable-profile operator.",
+  "observedUtc": "2026-09-14T23:41:48.974268+00:00",
   "implementationCommit": "0f5498ba",
   "active": {
     "stage": "channels_construct",
@@ -28,7 +28,11 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02/channels_construct.stderr",
     "startedUtc": "2026-09-14T23:26:57.181077+00:00",
     "childPid": 1915513,
-    "status": "running"
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 748.9145888341591,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-14T23:39:26.095775+00:00"
   },
   "launch": {
     "launchedUtc": "2026-09-14T23:26:57.071290+00:00",
@@ -52,14 +56,20 @@
     "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02/completion-watcher"
   },
   "completionWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 1915508,
     "jobPid": 1915507,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-14T23:26:57.175136+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "05cfcb6d8b96cce5df24557349645952c26ee0cb3a5a0d68e7fd7952e819376f",
-    "notifications": {}
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-14T23:39:26.515046+00:00"
+      }
+    }
   },
   "failedAttempt": {
     "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/complete",
@@ -99,5 +109,67 @@
       "put": true
     }
   },
-  "sourceCompatibilityRepairCommit": "2953fa48"
+  "sourceCompatibilityRepairCommit": "2953fa48",
+  "checkpoint": "S11c_d_matching_channels_checkpoint.json",
+  "result": {
+    "ends": {
+      "LEFT": {
+        "counts": {
+          "CANDIDATES": 18,
+          "BASIS_DIRECTIONS": 22,
+          "OPEN_RECORDS": 2,
+          "OPEN_BASIS_DIRECTIONS": 4,
+          "INCOMING": 2,
+          "OUTGOING": 2,
+          "EVALUATED_RECORD_PAIRS": 4
+        },
+        "orientationSetResidual": 0,
+        "residualNorms": {
+          "BASIS_CHANGE": 5.030427171101225e-16,
+          "SOURCE_DIAGONAL_BLOCKS": 4.0001236194178663e-16,
+          "HERMITIAN": 3.630996168041221e-16
+        },
+        "interRootCurrentNorm": 2.826390231615466e-17,
+        "candidateRankResiduals": {
+          "RIGHT_RANK_MINUS_NULLITY": 0,
+          "LEFT_RANK_MINUS_NULLITY": 0,
+          "NATIVE_NULLITY_RESIDUAL": 0
+        }
+      },
+      "RIGHT": {
+        "counts": {
+          "CANDIDATES": 18,
+          "BASIS_DIRECTIONS": 22,
+          "OPEN_RECORDS": 2,
+          "OPEN_BASIS_DIRECTIONS": 4,
+          "INCOMING": 2,
+          "OUTGOING": 2,
+          "EVALUATED_RECORD_PAIRS": 4
+        },
+        "orientationSetResidual": 0,
+        "residualNorms": {
+          "BASIS_CHANGE": 6.332718603644312e-16,
+          "SOURCE_DIAGONAL_BLOCKS": 4.811775234224893e-16,
+          "HERMITIAN": 3.175638105327006e-16
+        },
+        "interRootCurrentNorm": 3.5279014337841726e-17,
+        "candidateRankResiduals": {
+          "RIGHT_RANK_MINUS_NULLITY": 0,
+          "LEFT_RANK_MINUS_NULLITY": 0,
+          "NATIVE_NULLITY_RESIDUAL": 0
+        }
+      }
+    },
+    "tagCount": 500,
+    "metadataPaths": 2763,
+    "writeKeyCount": 248,
+    "wallSeconds": 747.3573462516069,
+    "peakRssKiB": 282156,
+    "publication": {
+      "path": "scripts/out/S11c_d_matching_channels.out",
+      "bytes": 309046,
+      "sha256": "92e7750c02cfe95efef5ad74be7f01db16e8555ab5abba65a0946252f41d0bf6"
+    },
+    "scope": "One supplied case: both-end full candidate bases and cross-mode boundary currents. No interior solve, S-matrix, continuum re-expansion or global spectral coverage."
+  }
 }

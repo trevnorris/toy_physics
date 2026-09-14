@@ -154,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Matching-channel construction is running; follow S11c_d_matching_channels_execution.json.",
+  "nextStage": "Matching-channel data passed; commit/hash-verify its annex checkpoint, then continue reduced variable-profile operator assembly.",
   "operationalResolutions": {
     "constructorLogLink": [
       {

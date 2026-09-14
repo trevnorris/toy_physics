@@ -1,0 +1,141 @@
+{
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02/complete",
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "172518e06987676868818f5747ed839f6ce180094649533bd6a385c714913665",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "_measurements/S11c_d_end_normalization_check.py": "94a8685b7f27a2a3dbe594c910d3223c78b282489c37ce7b6a2805ab6055c230",
+    "_measurements/S11c_d_end_normalization_validate.py": "c8c2e28d10dcff145de2b6210ef03f63cd9734e62661204238afa82ce897dd34",
+    "_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+    "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "_measurements/S11c_d_current_reality_check.py": "ef4cf975f34123cc4e585432e1311a395f70cbbd9d63640f0a2eef2b72ee1cb1",
+    "_measurements/S11c_d_matching_channels_check.py": "6b0d48a2403535f82681ad8eb6d8b156dfe3baeb0b0f462a175e0f1ddb3b0fd7",
+    "_measurements/S11c_d_variable_profile_matching_plan.md": "b48cd0248e43f7d9c7fa926c71ed415b904e08f81c8ea01816cb05f3a109879d"
+  },
+  "sources": {
+    "LEFT": {
+      "normalizationCheckpoint": "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json",
+      "normalizationCheckpointSha256": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+      "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+      "producerManifestSha256": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
+      "end": "LEFT",
+      "modalSha256": "ed645d29c0633c60585ad79bf2918dedc9500a8558873bbe148cb2b1de851312",
+      "adjointSha256": "8f8b7a516a4cefdb6ed597f138369a08907dd66d0984500940e28360e9cd89f1",
+      "unitFrame": [
+        "L_ref",
+        "T_ref",
+        "M_ref"
+      ],
+      "profileSpecification": {
+        "w": "(1+tanh(xi))/2",
+        "m": "(1-tanh(xi)**2)/3"
+      },
+      "normalizationHelperFunctionJoins": {
+        "checked_artifacts": true,
+        "load_pairing": true,
+        "load_native": true,
+        "put": true
+      },
+      "physicalPencilJoin": true
+    },
+    "RIGHT": {
+      "normalizationCheckpoint": "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json",
+      "normalizationCheckpointSha256": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+      "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+      "producerManifestSha256": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
+      "end": "RIGHT",
+      "modalSha256": "bd968b271b68d6bf9ec18bf75307594d8a5d0ca779541b40486cf299cb0c5497",
+      "adjointSha256": "26313fd4f061495547373a2a9ae131d24483e539cd52f054e6a7381d5bf89129",
+      "unitFrame": [
+        "L_ref",
+        "T_ref",
+        "M_ref"
+      ],
+      "profileSpecification": {
+        "w": "(1+tanh(xi))/2",
+        "m": "(1-tanh(xi)**2)/3"
+      },
+      "normalizationHelperFunctionJoins": {
+        "checked_artifacts": true,
+        "load_pairing": true,
+        "load_native": true,
+        "put": true
+      },
+      "physicalPencilJoin": true
+    }
+  },
+  "ends": {
+    "LEFT": {
+      "counts": {
+        "CANDIDATES": 18,
+        "BASIS_DIRECTIONS": 22,
+        "OPEN_RECORDS": 2,
+        "OPEN_BASIS_DIRECTIONS": 4,
+        "INCOMING": 2,
+        "OUTGOING": 2,
+        "EVALUATED_RECORD_PAIRS": 4
+      },
+      "orientationSetResidual": 0,
+      "residualNorms": {
+        "BASIS_CHANGE": 5.030427171101225e-16,
+        "SOURCE_DIAGONAL_BLOCKS": 4.0001236194178663e-16,
+        "HERMITIAN": 3.630996168041221e-16
+      },
+      "interRootCurrentNorm": 2.826390231615466e-17,
+      "candidateRankResiduals": {
+        "RIGHT_RANK_MINUS_NULLITY": 0,
+        "LEFT_RANK_MINUS_NULLITY": 0,
+        "NATIVE_NULLITY_RESIDUAL": 0
+      }
+    },
+    "RIGHT": {
+      "counts": {
+        "CANDIDATES": 18,
+        "BASIS_DIRECTIONS": 22,
+        "OPEN_RECORDS": 2,
+        "OPEN_BASIS_DIRECTIONS": 4,
+        "INCOMING": 2,
+        "OUTGOING": 2,
+        "EVALUATED_RECORD_PAIRS": 4
+      },
+      "orientationSetResidual": 0,
+      "residualNorms": {
+        "BASIS_CHANGE": 6.332718603644312e-16,
+        "SOURCE_DIAGONAL_BLOCKS": 4.811775234224893e-16,
+        "HERMITIAN": 3.175638105327006e-16
+      },
+      "interRootCurrentNorm": 3.5279014337841726e-17,
+      "candidateRankResiduals": {
+        "RIGHT_RANK_MINUS_NULLITY": 0,
+        "LEFT_RANK_MINUS_NULLITY": 0,
+        "NATIVE_NULLITY_RESIDUAL": 0
+      }
+    }
+  },
+  "tagCount": 500,
+  "metadataPaths": 2763,
+  "writeKeyCount": 248,
+  "wallSeconds": 747.3573462516069,
+  "peakRssKiB": 282156,
+  "artifacts": {
+    "full.out": {
+      "bytes": 309046,
+      "sha256": "92e7750c02cfe95efef5ad74be7f01db16e8555ab5abba65a0946252f41d0bf6"
+    },
+    "left.pickle": {
+      "bytes": 28421,
+      "sha256": "cfbdbb2968f73d9063e187de7055c15d4faaedcb6560f7b8b6ab0370a8342f21"
+    },
+    "right.pickle": {
+      "bytes": 28319,
+      "sha256": "2144e7a856bf96ce272d35c2bed7e32c9eaa372526b62d635169c564717dd2e1"
+    }
+  },
+  "scope": "One supplied case: both-end full candidate bases and cross-mode boundary currents. No interior solve, S-matrix, continuum re-expansion or global spectral coverage.",
+  "publication": {
+    "path": "scripts/out/S11c_d_matching_channels.out",
+    "bytes": 309046,
+    "sha256": "92e7750c02cfe95efef5ad74be7f01db16e8555ab5abba65a0946252f41d0bf6"
+  }
+}

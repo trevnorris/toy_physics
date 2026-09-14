@@ -43,8 +43,10 @@ Owned jobs use user-authorized local completion/error wake-ups, with no recurrin
 checks or model polling.
 
 The [matching-channel construction](S11c_d_matching_channels_report.md) now
-computes source-driven two-end bases and full cross-mode currents. Its first
-focused run is active; no result is accepted until its checks complete.
+is validated: all 36 candidates and 44 basis directions are retained, with two
+incoming and two outgoing directions per end. All cross-mode currents were
+evaluated; reconstruction residual norms are below 6.34e-16. The 500-tag packet
+and 2,763 metadata paths passed full replay. Reduced operator assembly is next.
 
 The complete two-ended variable-profile S-matrix, profile-frequency bound
 poles/residues/overlap, survival, flux bookkeeping, weak coefficients, section 5

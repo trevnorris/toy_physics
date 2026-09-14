@@ -1,20 +1,44 @@
 # S11c thickness-coordinate regeneration status
 
-b is regenerated, validated and atomically published. Its native run took
-6296.63 seconds at 1,942,292 KiB peak RSS. The export contains 2441 rows with
-no added or removed keys; only the slab operator and its kinetic provenance
-changed. The all-four-case comparison records 2634 zero residual scalars,
-91 objects and 2876 metadata paths, including action, source, full delta,
-nonkinetic and other-export preservation checks. Native stdout is 183,361,030
-bytes; the focused check is 1,361,873 bytes. Source and output pins validate.
+Serial native producers and recorded physical/artifact checks. Each completed producer is committed locally; transcripts use DataLad/git-annex. No push.
 
-c1, c2 and d remain to regenerate serially. c2's independent kinetic control
-source now uses the supplied reference-normalized thickness; its four-case
-physical checks are prepared for the c2 regeneration checkpoint. Fresh endpoint
-and reference sources, independent-frequency pairings and current/adjoint
-normalization follow the native queue, then variable-profile matching.
+## Completed b
 
-Original annex payloads and the interrupted metadata attempt are preserved.
-Global exceptional coverage, full scattering and section 3b profile-dependent
-frequency poles remain unestablished. No push, S10/Lean/authority edit,
-reviewer/comparator/Wolfram or downstream physics run occurred.
+```json
+{
+  "stage": "b",
+  "exportRows": 2441,
+  "changedValueSerializations": [
+    "slab_operator",
+    "slab_operator_term_origins"
+  ],
+  "addedKeys": [],
+  "removedKeys": [],
+  "nativeOutputBytes": 183361030,
+  "nativeOutputSha256": "693f0e804ca5fc3e418406cd049aa3d4c56263e101a7f1ae3078172d674cf98f",
+  "exportSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+  "failures": [],
+  "residualScalars": 2634,
+  "nonzeroResidualScalars": 0
+}
+```
+
+## Completed c1
+
+```json
+{
+  "stage": "c1",
+  "exportRows": 44,
+  "changedValueSerializations": [],
+  "addedKeys": [],
+  "removedKeys": [],
+  "nativeOutputBytes": 90722854,
+  "nativeOutputSha256": "eb4bd18893804a76b15218628fd994834c6bce63b9655f2c42f0f14d855d6da4",
+  "exportSha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+  "failures": []
+}
+```
+
+Remaining native producers: c2, d.
+
+Fresh endpoint/reference sources, two-frequency pairing and full current/adjoint normalization remain separate next steps. Native point/path/stratum records do not establish global coverage, scattering or section 3b profile-frequency bound poles.

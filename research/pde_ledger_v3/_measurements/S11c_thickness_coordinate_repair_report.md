@@ -297,3 +297,32 @@ Recovery is committed at **5a81223f**. The controller resumed at d at
 The scoped-symbol worker was observed live using CPU, with empty controller
 and worker stderr. Full d production, rechecks, source joins and publication
 follow serially; no fresh endpoint check has started.
+
+## Native regeneration complete; fresh endpoint construction started
+
+The full four-case d producer completed in **4166.19 seconds**, at
+**2,476,192 KiB** peak RSS, with stable source pins and empty stderr. All nine
+recorded inventories, scoped/full source joins and publication checks passed.
+The production checkpoint is **8b2e3cf2**. Its annexed transcript contains
+**83,989,687 bytes**, SHA256
+`19822837896b084fb8bcbd11b16aa5120e2c5b01c1c3084357aed279b7b70ce8`;
+the controller's post-save hash check and a fresh targeted annex fsck pass.
+
+The native spectrum inventory retains 24 packets and 432 root/lift candidates,
+including 336 scalar and 96 two-dimensional nullspaces. Joint-sheet records
+contain 480 transported paths and 24 separate branch-locus-on-path records.
+The numerical residuals, exceptional and threshold records remain in their
+[full inventory](S11c_thickness_coordinate_d_full_checks.json). These measured
+domains do not establish global coverage or profile-frequency bound poles.
+All ten broad native outstanding constructions retain their current scope.
+
+The prepared endpoint plan is now executing. Fresh RIGHT source construction
+started at **2026-09-14 17:14:12 UTC** in `end_source_right`, using the new full
+d manifest and unchanged supplied input. The active endpoint operation is
+recorded at `/tmp/s11c-thickness-coordinate-20260914/active_endpoint.json`;
+the native `active_continuation.json` now identifies a completed queue, not a
+live job. Follow the endpoint operation before launching any other heavy CAS
+job. Validate, publish and commit its completed packet before the next planned
+stage. LEFT/reference sources, both frequency packets and the three fresh
+pairings remain pending. The original retained two-frequency discrepancy is
+not yet retested by these successful native regeneration checks.

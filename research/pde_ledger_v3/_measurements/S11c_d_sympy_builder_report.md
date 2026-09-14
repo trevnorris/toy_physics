@@ -17,8 +17,12 @@ The c2 independent kinetic control and focused export validation are complete:
 537d78fd. A post-save check stopped the queue on truncated c2 annex content;
 the intact producer output restored the same annex key, and all five b/c1/c2
 transcripts pass full hash and git-annex checks. The truncation cause remains
-unresolved. Recovery is committed at 5a81223f; the queue resumed at d and its
-scoped-symbol worker is running. Execution and the approved
+unresolved. Recovery is committed at 5a81223f. The complete b/c1/c2/d native
+queue is now committed through **8b2e3cf2**: d took 4166.19 seconds at
+2,476,192 KiB peak RSS, and its nine inventories and source joins passed their
+recorded checks. The 83,989,687-byte d transcript is annexed and its full hash
+is verified. Fresh RIGHT endpoint current construction is now running; the
+independent-frequency balance has not yet been recomputed. Execution and the approved
 recurring continuation are recorded in the active repair report. Downstream
 artifacts remain historical until each producer's validated regeneration finishes.
 

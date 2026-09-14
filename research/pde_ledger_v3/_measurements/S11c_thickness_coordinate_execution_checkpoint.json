@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T15:38:39.444509+00:00",
+  "observedUtc": "2026-09-14T17:15:15.956417+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,13 +15,13 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "running d scoped-symbol preparation; full d producer/rechecks/publication follow serially",
+  "continuationState": "native regeneration complete and committed; fresh RIGHT endpoint source construction running",
   "recurringFollowup": {
     "id": "continue-s11c-d-repair-and-build",
     "status": "ACTIVE",
     "userApproved": true
   },
-  "scope": "b/c1/c2 complete and committed; annex recovery committed at 5a81223f. Verified live d scoped-symbol worker; fresh endpoint/reference checks remain pending.",
+  "scope": "b/c1/c2/d native regeneration complete through 8b2e3cf2. Fresh endpoint/reference sources, frequency packets, independent-frequency pairing and current/adjoint normalization remain pending.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -29,18 +29,9 @@
     "planSha256": "5fb5b81c6faa51be848ba1bceeb013b36c26bc5fdf9fb0f6ed16c05993186411"
   },
   "continuationProgress": {
-    "stage": "d",
-    "operation": "d_scoped_symbols",
-    "event": "started",
-    "command": [
-      "/usr/bin/python",
-      "_measurements/S11c_c2_trace_repair_d_ends.py",
-      "--run-directory",
-      "/tmp/s11c-thickness-coordinate-20260914/d_ends"
-    ],
-    "stdout": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex/d_scoped_symbols.stdout",
-    "stderr": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex/d_scoped_symbols.stderr",
-    "utc": "2026-09-14T15:37:45Z"
+    "stage": "native_regeneration_complete",
+    "remaining": "fresh endpoint/reference sources, two-frequency pairing and current/adjoint normalization",
+    "utc": "2026-09-14T16:55:52Z"
   },
   "continuationStderrBytes": 0,
   "c1ProducerManifest": "/tmp/s11c-thickness-coordinate-20260914/c1_full/manifest.json",
@@ -60,5 +51,56 @@
   },
   "c2AnnexRecoveryCheckpoint": "S11c_thickness_coordinate_c2_annex_recovery_checkpoint.json",
   "nextContinuationStateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
-  "c2AnnexRecoveryCommit": "5a81223f"
+  "c2AnnexRecoveryCommit": "5a81223f",
+  "dCommit": "8b2e3cf2",
+  "dProducerCompleted": true,
+  "dProducerManifest": "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+  "dProducerManifestSha256": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
+  "dProducerWallSeconds": 4166.187866047025,
+  "dProducerPeakRssKiB": 2476192,
+  "activeEndpointPointer": "/tmp/s11c-thickness-coordinate-20260914/active_endpoint.json",
+  "activeEndpoint": {
+    "stage": "right_source",
+    "operation": "construct",
+    "status": "running",
+    "supervisorPid": 1770163,
+    "runDirectory": "/tmp/s11c-thickness-coordinate-20260914/end_source_right",
+    "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_endpoint_plan.json",
+    "planSha256": "60d3a7f835167c305dbb3e76f46e539242f7458ae5597b2ad03b972b0cea0e31",
+    "command": [
+      "python",
+      "_measurements/S11c_d_end_current_resumable.py",
+      "--manifest",
+      "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+      "--input",
+      "_measurements/S11c_d_channel_preflight_input.json",
+      "--run-directory",
+      "/tmp/s11c-thickness-coordinate-20260914/end_source_right",
+      "--end",
+      "RIGHT"
+    ],
+    "startedUtc": "2026-09-14T17:14:12.815219+00:00",
+    "remainingSteps": [
+      {
+        "name": "validate_publish",
+        "command": [
+          "python",
+          "_measurements/S11c_d_end_current_source_validate.py",
+          "--run-directory",
+          "/tmp/s11c-thickness-coordinate-20260914/end_source_right",
+          "--publication-suffix",
+          "thickness_repair",
+          "--publish"
+        ]
+      }
+    ],
+    "ordinary": [
+      "_measurements/S11c_d_end_current_source_right_thickness_repair_checkpoint.json"
+    ],
+    "annex": [
+      "scripts/out/S11c_d_end_current_source_right_thickness_repair.out"
+    ],
+    "childPid": 1770165
+  },
+  "endpointContinuationInstruction": "Read active_endpoint.json and its invocation/progress/checks before launching work. If construction is live, preserve it. After successful completion, execute its remaining validator/publisher, inspect residuals, checkpoint via Git/DataLad, then proceed to the next stage of the endpoint plan. Native active_continuation.json records a completed queue; do not rerun it."
 }

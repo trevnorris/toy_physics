@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T17:45:19.709030+00:00",
+  "observedUtc": "2026-09-14T18:18:48.117682+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,13 +15,13 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "RIGHT pairing resumed in the same process after verified durable-storage relocation",
+  "continuationState": "All eight endpoint stages committed; fresh RIGHT normalization active",
   "recurringFollowup": {
     "id": "continue-s11c-d-repair-and-build",
     "status": "ACTIVE",
     "userApproved": true
   },
-  "scope": "Native b/c1/c2/d and all three fresh sources/two endpoint frequency checkpoints are committed. RIGHT pairing resumed after a separately recorded 546.52-second storage pause. Important local runs and caches reside in the repository; no fresh pairing result yet.",
+  "scope": "Regenerated b/c1/c2/d and all source/frequency/pairing prerequisites are committed. All three pairings have zero retained discrepancies. Endpoint current/adjoint normalization is now in progress.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -106,7 +106,7 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-14T17:21:47.648428+00:00"
   },
-  "endpointContinuationInstruction": "FIRST read the durable activeEndpointControllerPointer. All run data is under /var/projects/toy_physics/_scratch/s11c. Historical absolute /tmp paths are compatibility links; if missing, run _measurements/S11c_storage_paths.py --restore from the ledger. New run directories must use repository paths. The current source-pinned queue retains its existing path spellings and must not be duplicated. Inspect storage pause/resume records before acting on stopped processes. After the endpoint plan completes, continue full current/adjoint normalization from the retained plan.",
+  "endpointContinuationInstruction": "Endpoint queue is complete: do not restart it. FIRST inspect activeNormalizationPointer for the current serial normalization run. Follow S11c_d_end_normalization_plan.md and preserve every durable log. RIGHT, LEFT and REFERENCE current/adjoint maps precede variable-profile matching. No new upstream physical repair without user confirmation.",
   "activeEndpointControllerPointer": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/active_endpoint_controller.json",
   "activeEndpointController": {
     "controllerPid": 1773860,
@@ -114,11 +114,9 @@
     "planSha256": "60d3a7f835167c305dbb3e76f46e539242f7458ae5597b2ad03b972b0cea0e31",
     "controllerSha256": "46fd4d3380438deba8c280ccb0c150a3a96c852b0ec2e5462266fae4503bf8bd",
     "latest": {
-      "event": "child_running",
-      "stage": "right_pairing",
-      "operation": "construct_and_check",
-      "childPid": 1780408,
-      "utc": "2026-09-14T17:32:26Z"
+      "event": "endpoint_plan_complete",
+      "remaining": "Join verified pairing/source/frequency objects to full endpoint current and adjoint-field maps with outward orientations, then implement variable-profile matching under the retained solver/export contract.",
+      "utc": "2026-09-14T18:17:06Z"
     }
   },
   "rightSourceCommit": "fba5f1fb",
@@ -132,8 +130,30 @@
     "left_source": "d71768122bacb877f47a6f5ae0051c3fde08bbdb",
     "reference_source": "6a27099c58c419594f0a64daeba9213fbfba09f4",
     "right_frequency": "8996df48fdc42bc564732fb0cd01ab54c4cb6652",
-    "left_frequency": "c05e25d1da8a4a5ebdb5709487b6cc7e952f73f6"
+    "left_frequency": "c05e25d1da8a4a5ebdb5709487b6cc7e952f73f6",
+    "right_pairing": "7c2001b630cd560a936646d55269c5254ee8827d",
+    "left_pairing": "86e61755c22e60a1254a5604b6691b858a09f115",
+    "reference_pairing": "432db7e74c45028b9ddd9edfa5f535317428c686"
   },
   "storageResumeCheckpoint": "S11c_storage_resume_checkpoint.json",
-  "storageMigrationCommit": "409ef53a3e3662c0a15a6342b70af1fa7ac83a90"
+  "storageMigrationCommit": "409ef53a3e3662c0a15a6342b70af1fa7ac83a90",
+  "activeNormalizationPointer": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/active.json",
+  "normalizationPlan": "S11c_d_end_normalization_plan.md",
+  "normalizationPairingChecks": {
+    "right": {
+      "retainedResidualScalars": 802,
+      "retainedNonzeroScalars": 0,
+      "wallSeconds": 962.0330720329657
+    },
+    "left": {
+      "retainedResidualScalars": 802,
+      "retainedNonzeroScalars": 0,
+      "wallSeconds": 418.1881384458393
+    },
+    "reference": {
+      "retainedResidualScalars": 802,
+      "retainedNonzeroScalars": 0,
+      "wallSeconds": 567.1135055590421
+    }
+  }
 }

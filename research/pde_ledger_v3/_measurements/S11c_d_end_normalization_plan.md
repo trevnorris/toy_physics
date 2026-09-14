@@ -5,11 +5,12 @@ The user authorized continuing and committing each substantive step on
 step 6 of the thickness-coordinate repair plan and the existing native
 `ModalCurrentSubspaces` and `AdjointCurrentMap` constructions.
 
-Prerequisites: the eight-stage endpoint queue must finish and commit its
-fresh source, frequency and independent-frequency pairing checkpoints. RIGHT
-pairing is committed at 7c2001b6 and LEFT at 86e61755, both with zero retained
-discrepancy. Reference pairing is running when this plan is written. Keep
-the queue's native source pins unchanged until it finishes.
+Prerequisites completed: all eight endpoint stages are validated, published
+and committed through 432db7e7. RIGHT pairing is committed at 7c2001b6, LEFT
+at 86e61755, and REFERENCE at 432db7e7. Each has 802 retained residual scalars,
+all zero. The native source context extension follows this completed queue.
+Read `_scratch/s11c/s11c-end-normalization-20260914/active.json` at the
+repository root for the current normalization command and durable live logs.
 
 1. Add an explicit context parameter to the two existing modal/adjoint
    emitters, preserving their reference defaults and calculation bodies.

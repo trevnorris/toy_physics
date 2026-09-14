@@ -1,102 +1,33 @@
 # S11c-d SymPy builder checkpoint
 
-Working runs and caches are now durably stored inside the repository under
-`_scratch/s11c/`; see the [verified storage migration](S11c_storage_report.md).
-Old `/tmp` paths in historical records are recoverable compatibility links.
+The thickness-coordinate repair and native b/c1/c2/d regeneration are committed
+through 8b2e3cf2. All eight fresh endpoint source/frequency/pairing stages are
+now validated, published and committed through **432db7e7**. RIGHT, LEFT and
+REFERENCE two-frequency pairings each contain 802 retained residual scalars,
+all zero. RIGHT is committed at 7c2001b6; LEFT at 86e61755. The earlier three
+RIGHT retained discrepancies are preserved in their historical checkpoint.
 
-Checkpoint **a05b05e3** commits the completed c2 trace repair and regenerated d
-artifacts: 50 ordinary Git files and 11 DataLad/git-annex transcript pointers.
-The endpoint diagnostic continuation below is committed at f796f7ba. No push
-was made. The user has authorized autonomous continuation and commits at each
-substantive step. The active [coordinate repair report](S11c_thickness_coordinate_repair_report.md)
-and [plan](S11c_thickness_coordinate_repair_plan.md) supersede the historical stop
-boundary below: the source trace identifies b's kinetic coordinate mismatch
-with 142 exact-zero accounting/regression scalars. The native b kinetic ansatz
-and its independent time-action test are repaired; eight generic inertia/action
-components are zero. The source repair is committed at 3b52afcb. The full b producer has completed;
-its four-case export comparison completed with 2634 zero residual scalars
-and validated metadata/source joins after the metadata-domain bottleneck repair.
-The c2 independent kinetic control and focused export validation are complete:
-2846 zero residual scalars, 418 objects and 3244 metadata paths, committed at
-537d78fd. A post-save check stopped the queue on truncated c2 annex content;
-the intact producer output restored the same annex key, and all five b/c1/c2
-transcripts pass full hash and git-annex checks. The truncation cause remains
-unresolved. Recovery is committed at 5a81223f. The complete b/c1/c2/d native
-queue is now committed through **8b2e3cf2**: d took 4166.19 seconds at
-2,476,192 KiB peak RSS, and its nine inventories and source joins passed their
-recorded checks. The 83,989,687-byte d transcript is annexed and its full hash
-is verified. Fresh RIGHT source construction completed with 127 zero
-cancellation identities and no retained nonzero source residual. Validation
-and annex publication completed at **fba5f1fb**: 85 source objects, 33 retained
-source residual scalars and 3484 tags. The serial endpoint queue is constructing LEFT; the
-independent-frequency balance has not yet been recomputed. Execution and the approved
-recurring continuation are recorded in the active repair report. Downstream
-artifacts remain historical until each producer's validated regeneration finishes.
+The next stage is fresh full-subspace current and adjoint normalization at both
+ends, with a new reference regression. The prepared runner, validator and
+serial-job guard are committed at **5bb2c811**; see the
+[normalization plan](S11c_d_end_normalization_plan.md). The native emitters now
+accept the actual end/case context; an AST comparison verifies that their
+calculation bodies are unchanged. RIGHT normalization is running. Its results
+are not yet validated or published.
 
-The source repair cleared all ten original RIGHT discrepancies. Both fresh
-LAB_HELD/RHO4_CONSTANT end-source packets have 33 zero top-level retained
-scalars; RIGHT has 127 zero exact arithmetic identities, and LEFT has 82 and
-preserves all 85 baseline objects. All four c2 cases and both faces have 208
-exact-zero trace/source residuals. The c2 export passed 44 exact comparisons
-and 387 structural/metadata/reciprocal checks; all four canonical power
-residuals are zero. See the [repair report](S11c_c2_trace_repair_report.md).
+All important working runs are stored under the repository's `_scratch/s11c/`.
+Published `.out` files use DataLad/git-annex with post-save full-hash checks;
+ordinary sources, reports and inventories use Git. Historical `/tmp` paths
+are compatibility links; see the [storage report](S11c_storage_report.md).
+The [execution checkpoint](S11c_thickness_coordinate_execution_checkpoint.json)
+points to the live durable normalization record.
 
-The committed four-case d regeneration took 10,396.23 seconds at 2,475,936 KiB
-peak RSS. All nine inventories passed their recorded checks, including source
-pins, individual root/lift and full-subspace records, distinct exceptional
-and sheet domains, and lossless codec/source-index reconstruction. The refreshed
-end-frequency and reference-current sources remain the prerequisites below.
-
-The native pairing and modal source lookups now carry the actual endpoint
-context. RIGHT construction saved 42 source-driven objects with independent
-frequency legs, face lifts, energy/current matrices, row-power maps and
-finite-depth operands. The construction body after its context guard and all
-seven polarization/arithmetic/check methods are AST-identical to the committed
-implementation. No physical formula changed.
-
-After two native expansion crashes, the user authorized sequential isolated
-scalar workers. Three actual process-boundary comparisons returned literal
-residuals 0. The resumed RIGHT balance and derivative calculation completed
-in **2395.36 seconds**, with **131 new scalar workers** and maximum measured
-RSS **209,852 KiB**. The source, exact operands, returned values and successful
-worker exits are pinned. This workload is now runnable on the machine; the
-original crash cause remains unresolved. No resource deferral was added.
-
-The result contains **802 residual scalars across 34 families**. There are
-75 raw nonzero entries; **three remain nonzero at retained order** and 799
-are literal zero. The three entries are the same thickness-diagonal term in
-the slab balance and its finite-depth/equal-depth compositions. Its computed
-grade is (2,1,0); it vanishes at equal frequencies. The diagonal current join
-and local derivative reconstruction checks therefore do not settle this new
-two-frequency balance. All raw expressions, projections and remainders remain
-available. See the [pairing report](S11c_d_end_pairing_report.md),
-[boundary inventory](S11c_d_end_pairing_worker_boundary_checkpoint.json) and
-[both-end plan](S11c_d_both_end_current_plan.md).
-
-The endpoint checker computes the balance packet and projections; the emitter
-prints all operands and residuals before its retained-discrepancy guard. The
-bounded focused transcript has 3,664,117 bytes. Large repeated expression trees
-use computed fingerprints; short residuals remain literal. Validation and atomic
-publication completed: **187 objects, 374 tags and 4,848 metadata paths**, with
-no unresolved dimension constraints or nonfinite objects. The
-[published transcript](../scripts/out/S11c_d_end_pairing_right.out) and
-[checkpoint](S11c_d_end_pairing_right_checkpoint.json) preserve the three nonzero
-retained entries; validation certifies the recorded output, not balance closure.
-
-Work stops before a new physical repair, as requested. The proposed next step
-is to trace the thickness kinetic energy, face-displacement lift and source
-row-power operands at independent frequencies, then determine whether the fix
-belongs in d or an earlier source. LEFT/reference pairing regression and full
-endpoint current/adjoint normalization remain unfinished. No new d export or
-four-case production regeneration was made at this retained-discrepancy stop;
-the validated committed production outputs remain in place. No further commit,
-S10/Lean/authority edit, review leg, comparator, Wolfram or downstream run occurred.
-
-All ten broad native TODOs remain. Section 1 is supplied/unfalsifiable; c2
-cross-engine operand debt, global/sheet/exceptional coverage, complete
-scattering, profile-frequency bound poles, controls/bookkeeping and the d export
-remain open. Constant-end normal-momentum poles do not supply section 3b's
-profile-dependent frequency poles.
+The complete two-ended variable-profile S-matrix, profile-frequency bound
+poles/residues/overlap, survival, flux bookkeeping, weak coefficients, section 5
+controls and final own-row export remain program work. Existing per-root and
+full-subspace checks retain their stated sheet and exceptional-domain limits.
+The supplied physical premises and c2 operand debt remain inherited premises,
+not independently verified by this builder. No final S11c_d_exports.py exists.
 
 ## Retained user-approved solver/export contract
 

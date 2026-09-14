@@ -3587,7 +3587,7 @@ class ModalCurrentSubspaces:
         if key=='CURRENT_RANK_THRESHOLD':return self.current_unit
         return d.zero
 
-    def emit(self, computed, provenance, prefix='MODAL_SUBSPACE'):
+    def emit(self, computed, provenance, prefix='MODAL_SUBSPACE', context='REFERENCE_LAB_HELD_RHO4_CONSTANT'):
         d=PHYSICAL_METADATA.dimensions
         def convert(value):
             if isinstance(value,np.ndarray):
@@ -3612,7 +3612,7 @@ class ModalCurrentSubspaces:
             units=self.pairing.output_units(key,value)
             output(prefix+'_QUADRATIC_EXTRACTION_'+key,value,lambda path:units[path])
         for record in computed['RECORDS']:
-            tag=prefix+'_REFERENCE_LAB_HELD_RHO4_CONSTANT_'+str(record['INDEX'])
+            tag=prefix+'_'+context+'_'+str(record['INDEX'])
             info={key:value for key,value in record.items() if key not in ('FORMS','RESIDUALS','OPERANDS')}
             output(tag+'_RECORD',info,lambda path:self.info_unit(path,info))
             for group in ('OPERANDS','FORMS','RESIDUALS'):
@@ -3826,7 +3826,7 @@ class AdjointCurrentMap:
                 'maximumResidualNorm':max(record['RESIDUAL_NORMS'].values())})
         return {'RECORDS':records,'SYMBOLIC_OPERANDS':self.symbolic_operands,'SYMBOLIC_RESIDUALS':self.symbolic_residuals}
 
-    def emit(self, result, provenance, prefix='ADJOINT_CURRENT_MAP'):
+    def emit(self, result, provenance, prefix='ADJOINT_CURRENT_MAP', context='REFERENCE_LAB_HELD_RHO4_CONSTANT'):
         def output(tag,body,units,heavy=False):
             body = cas(body)
             emit(tag,carrier_fingerprint(body) if heavy=='carrier' else self.modes.compact_fingerprint(body) if heavy else body)
@@ -3839,7 +3839,7 @@ class AdjointCurrentMap:
                     self.negative(self.field[path[0]//5]),self.negative(self.field[path[0]%5]),self.negative(variable_unit)),
                     'carrier' if group=='SYMBOLIC_OPERANDS' else False)
         for record in result['RECORDS']:
-            tag = prefix+'_REFERENCE_LAB_HELD_RHO4_CONSTANT_'+str(record['INDEX'])
+            tag = prefix+'_'+context+'_'+str(record['INDEX'])
             info = {k:v for k,v in record.items() if k!='ITEMS'}
             output(tag+'_RECORD',info,lambda path:self.negative(self.length) if path[-1]=='K' else self.frequency if path[-1]=='Q' else (0,0,0))
             for item in record['ITEMS']:

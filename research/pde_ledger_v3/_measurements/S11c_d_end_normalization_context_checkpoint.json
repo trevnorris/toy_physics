@@ -1,0 +1,9 @@
+{
+  "scope": "Emitter context extension only",
+  "changedMethods": [
+    "ModalCurrentSubspaces.emit",
+    "AdjointCurrentMap.emit"
+  ],
+  "calculationBodiesUnchanged": true,
+  "engineSha256": "d1c94521de128e6f11357ac990664dee1ae481333cb04806f9ce88d37c6b118a"
+}

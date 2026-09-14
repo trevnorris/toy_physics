@@ -15,7 +15,7 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "REFERENCE validated; save annex outputs and commit, then begin variable-profile matching.",
+  "continuationState": "RIGHT/LEFT/REFERENCE normalization committed; two-end matching channel construction is next.",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
     "status": "DELETED",
@@ -199,5 +199,7 @@
   "wolframRepairExecution": "S11c_wolfram_pressure_trace_repair_execution.json",
   "wolframRepairCheckpoint": "S11c_wolfram_pressure_trace_native_checkpoint.json",
   "wolframRepairCommit": "5acfdf30ebb3f315849363b4421c5b3a5a423e34",
-  "normalizationReferenceCheckpoint": "S11c_d_end_normalization_reference_thickness_repair_checkpoint.json"
+  "normalizationReferenceCheckpoint": "S11c_d_end_normalization_reference_thickness_repair_checkpoint.json",
+  "normalizationReferenceCommit": "9862156cc46a8aec10aff3d4a3935cbdf11c4684",
+  "nextMatchingPlan": "S11c_d_variable_profile_matching_plan.md"
 }

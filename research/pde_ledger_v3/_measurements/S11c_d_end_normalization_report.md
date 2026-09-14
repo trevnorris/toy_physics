@@ -65,6 +65,7 @@ preserves the original validation record and all residual/artifact pins, and
 updates future validator output without rerunning the scientific calculation.
 
 RIGHT, LEFT and REFERENCE normalization are complete for the supplied case.
+REFERENCE is committed at `9862156c`; both annexed payload hashes are verified.
 The next construction is one-case variable-profile matching from the reduced
 rows and these full end subspaces. The complete S-matrix, continuum re-expansion,
 profile-frequency poles and global exceptional coverage remain open.

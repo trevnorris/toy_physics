@@ -154,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Save and hash-verify REFERENCE annex publications, commit normalization, then construct the one-case variable-profile matching inputs and reduced-operator assembly under the retained solver/export contract.",
+  "nextStage": "Implement steps 1\u20132 of S11c_d_variable_profile_matching_plan.md: source-driven two-end channel data and complete cross-mode current matrices.",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -335,7 +335,7 @@
   "wolframAuditStatus": "COMPLETED_COMMITTED",
   "wolframRepairExecution": "S11c_wolfram_pressure_trace_repair_execution.json",
   "referencePreparation": {
-    "status": "VALIDATED_PUBLICATION_PENDING_COMMIT",
+    "status": "COMPLETED_COMMITTED",
     "preflight": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference-preflight.json",
     "changes": [
       "Save atomic modal/adjoint construction packets before emission while retaining the established final packets and unit registries.",
@@ -622,5 +622,25 @@
     },
     "maximumResidualMinusRemainderNorm": 8.207529655138466e-13,
     "remainderExactScalars": 275
+  },
+  "referenceCommit": "9862156cc46a8aec10aff3d4a3935cbdf11c4684",
+  "referenceAnnexVerification": {
+    "commit": "9862156cc46a8aec10aff3d4a3935cbdf11c4684",
+    "outputs": [
+      {
+        "path": "scripts/out/S11c_d_end_normalization_reference_thickness_repair.out",
+        "bytes": 3307684,
+        "sha256": "1e12bb2be8b123dbe2161f2bc47bc2360c897aec89e72af77accc59e35b43c36",
+        "isSymlink": true,
+        "annexKey": "MD5E-s3307684--8317a9837fed39a86605d061edcb55d8.out"
+      },
+      {
+        "path": "scripts/out/S11c_d_end_normalization_reference_thickness_repair_remainders.out",
+        "bytes": 353511,
+        "sha256": "55c42d1fcfcd8065cba1c2d06e5aed3f3bb32a1593ab3abc804c3db2174abd36",
+        "isSymlink": true,
+        "annexKey": "MD5E-s353511--a4c4d554c45f2bad15474dd5a0675f4c.out"
+      }
+    ]
   }
 }

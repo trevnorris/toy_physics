@@ -189,3 +189,18 @@ This is validation of expression syntax, not convergence or integral evaluation.
 The regression took 72.70 seconds at 3,875,140 KiB peak RSS while selecting the
 actual operand from the serialized c2 export. It ran after b validation ended;
 no concurrent heavy CAS job was launched. c1/c2/d are ready to resume serially.
+
+The integral-domain validation preparation is committed at **3abb2936**.
+The controller resumed at c1 under `continuation_after_b`, after checking the
+published and committed b predecessors; its active pointer records the new
+state directory. Initial controller and c1 stderr are empty. The older queue
+remains preserved as interrupted-attempt evidence.
+
+While c1 runs, the fresh endpoint command plan now lists the actual source,
+frequency and independent-frequency worker/emitter/validator invocations, fresh
+publication paths and per-stage commit boundaries. The reference-current
+publisher accepts a new suffix/checkpoint path and refuses existing targets;
+its runner describes the supplied producer rather than the historical repair.
+Python compilation, CLI parsing and instrument-path checks pass. No fresh
+endpoint source, frequency or pairing result has yet been computed after this
+coordinate repair; the native queue remains the prerequisite.

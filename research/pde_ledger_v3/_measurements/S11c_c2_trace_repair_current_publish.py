@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import tempfile
 
@@ -23,7 +24,12 @@ def run():
     parser = argparse.ArgumentParser()
     parser.add_argument('--manifest', type=Path, required=True)
     parser.add_argument('--checks', type=Path, required=True)
+    parser.add_argument('--publication-suffix', default='trace_repair')
+    parser.add_argument('--checkpoint', type=Path,
+                        default=ROOT/'_measurements/S11c_c2_trace_repair_d_current_checkpoint.json')
     args = parser.parse_args()
+    if not re.fullmatch('[a-z][a-z0-9_]*',args.publication_suffix):
+        raise ValueError('publication suffix must be a lowercase identifier')
     manifest = json.loads(args.manifest.read_text())
     checks = json.loads(args.checks.read_text())
     base = Path(manifest['run_directory'])
@@ -69,9 +75,9 @@ def run():
     print(json.dumps(report, indent=2), flush=True)
     if failures:
         raise SystemExit(1)
-    target = ROOT / 'scripts/out/S11c_d_nonlocal_current_reference_trace_repair.out'
-    if target.exists() or target.is_symlink():
-        raise FileExistsError(target)
+    target = ROOT / 'scripts/out' / ('S11c_d_nonlocal_current_reference_'+args.publication_suffix+'.out')
+    for path in (target,args.checkpoint):
+        if path.exists() or path.is_symlink():raise FileExistsError(path)
     with tempfile.NamedTemporaryFile(dir=target.parent, prefix='.s11cd-current-trace-', delete=False) as stream:
         temporary = Path(stream.name)
         with (base / 'full.out').open('rb') as source:
@@ -83,8 +89,7 @@ def run():
     os.replace(temporary, target)
     report['publication'] = {'path': str(target.relative_to(ROOT)),
                              'bytes': target.stat().st_size, 'sha256': digest(target)}
-    (ROOT / '_measurements/S11c_c2_trace_repair_d_current_checkpoint.json').write_text(
-        json.dumps(report, indent=2) + '\n')
+    args.checkpoint.write_text(json.dumps(report, indent=2) + '\n')
 
 
 if __name__ == '__main__':

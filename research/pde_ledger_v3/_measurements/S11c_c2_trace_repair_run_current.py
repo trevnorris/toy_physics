@@ -49,7 +49,7 @@ def run():
                '--acoustic', '--require-zero-residuals',
                '--cache-result', str(destination/'objects.pickle')]
     manifest = {'run_directory': str(destination), 'command': command,
-                'scope': 'reduced LAB_HELD/RHO4_CONSTANT reference current and acoustic load after c2 trace repair',
+                'scope': 'reduced LAB_HELD/RHO4_CONSTANT reference current and acoustic load against the supplied full producer',
                 'source_hashes_before': pins, 'reference_manifest_sha256_before': digest(reference)}
     _, hard_stack = resource.getrlimit(resource.RLIMIT_STACK)
     resource.setrlimit(resource.RLIMIT_STACK, (256 * 1024 * 1024, hard_stack))

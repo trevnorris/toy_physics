@@ -104,3 +104,16 @@ The restart checks prior published and committed artifacts and never reruns b.
 Read the run root's `active_continuation.json` for the current queue directory;
 older `continuation` logs remain failure evidence. Continue steps 5–6 after the
 native producer queue. The user-approved recurring follow-up remains active.
+
+
+## Fresh endpoint command plan
+
+After the active native queue finishes, follow
+[S11c_thickness_coordinate_endpoint_plan.json](S11c_thickness_coordinate_endpoint_plan.json).
+It records fresh source/frequency/pairing directories, actual CLI arguments,
+output/checkpoint paths, prerequisites and per-stage commit boundaries. The
+reference-current publisher now accepts a fresh suffix and checkpoint path;
+existing targets are rejected. Source or pairing discrepancies remain computed
+evidence to investigate, with complete operands emitted before repair where
+available. This plan is prepared, not executed. Full endpoint current/adjoint
+normalization and variable-profile matching follow those refreshed packets.

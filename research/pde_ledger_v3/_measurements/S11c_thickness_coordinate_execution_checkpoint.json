@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T13:51:24.190364+00:00",
+  "observedUtc": "2026-09-14T13:59:09.661237+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,11 +15,36 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "b validated and published; checkpoint commit precedes c1 restart",
+  "continuationState": "active serial c1/c2/d regeneration after validated b checkpoint 1175b686",
   "recurringFollowup": {
     "id": "continue-s11c-d-repair-and-build",
     "status": "ACTIVE",
     "userApproved": true
   },
-  "scope": "Completed and validated native b export/output; c1/c2/d and fresh endpoint/reference checks remain pending."
+  "scope": "b completed, validated, published and committed; c1 running in serial queue; fresh endpoint command plan prepared but unexecuted.",
+  "activeContinuation": {
+    "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_b",
+    "startAt": "c1",
+    "controllerSha256": "894b33e45acfaf257a83b6f5f697a54047f9fa03dd09e9699654f46da855a9ed",
+    "planSha256": "d3d4d1ab73bf4a41c3d36279a68cfb520b0845a1ee730e9c8305f0f32f369b73"
+  },
+  "continuationProgress": {
+    "stage": "c1",
+    "operation": "c1_producer",
+    "event": "started",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_thickness_coordinate_run_stage.py",
+      "--run-directory",
+      "/tmp/s11c-thickness-coordinate-20260914/c1_full",
+      "c1"
+    ],
+    "stdout": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_b/c1_producer.stdout",
+    "stderr": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_b/c1_producer.stderr",
+    "utc": "2026-09-14T13:55:50Z"
+  },
+  "continuationStderrBytes": 0,
+  "c1ProducerManifest": "/tmp/s11c-thickness-coordinate-20260914/c1_full/manifest.json",
+  "c1ProducerCompleted": false,
+  "c1SourcePinsCurrentlyStable": true
 }

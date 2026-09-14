@@ -1,0 +1,472 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+  "runRoot": "/tmp/s11c-thickness-coordinate-20260914",
+  "nativeProducerManifest": "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+  "input": "_measurements/S11c_d_channel_preflight_input.json",
+  "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+  "prerequisite": "The active serial c1/c2/d queue has completed and committed all validated native producer/output/source joins. Inspect its active_continuation.json and final progress event before any endpoint job.",
+  "execution": "Run stages in the recorded order, one heavy CAS job at a time. Use exclusive fresh files, collect exit codes and stderr, inspect computed residuals, update concise reports and commit each validated stage before the next. Git for ordinary files, DataLad/git-annex for annex paths. No push.",
+  "failureHandling": "Preserve a failed attempt. If a complete packet contains retained discrepancies, emit its computed operands and residuals for diagnosis before a repair; do not pass dependent source gates. Never substitute an empty result or zero for an unfinished calculation.",
+  "cacheRule": "Fresh physical sources and packets. Reuse only exact scalar arithmetic operands under the existing helper/runtime/source checks; never relabel or reuse the old RIGHT physical packet.",
+  "coverageBoundary": "The development case is LAB_HELD/RHO4_CONSTANT. End frequency checks include every native root/lift and complete computed subspace under their stated numerical tolerances. These checks do not establish global exceptional coverage or section 3b profile-frequency bound poles.",
+  "instrumentPathsChecked": [
+    "_measurements/S11c_c2_trace_repair_current_publish.py",
+    "_measurements/S11c_c2_trace_repair_run_current.py",
+    "_measurements/S11c_d_end_current_resumable.py",
+    "_measurements/S11c_d_end_current_source_validate.py",
+    "_measurements/S11c_d_end_frequency_check.py",
+    "_measurements/S11c_d_end_frequency_validate.py",
+    "_measurements/S11c_d_end_pairing_emit.py",
+    "_measurements/S11c_d_end_pairing_fresh_workers.py",
+    "_measurements/S11c_d_end_pairing_validate.py",
+    "_measurements/S11c_d_nonlocal_current_inventory.py"
+  ],
+  "stages": [
+    {
+      "name": "right_source",
+      "requires": [
+        "validated_native_regeneration"
+      ],
+      "createRunDirectoryBefore": "/tmp/s11c-thickness-coordinate-20260914/end_source_right",
+      "steps": [
+        {
+          "name": "construct",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_current_resumable.py",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--input",
+            "_measurements/S11c_d_channel_preflight_input.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_source_right",
+            "--end",
+            "RIGHT"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/end_source_right/full.out",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/end_source_right/stderr.txt"
+        },
+        {
+          "name": "validate_publish",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_current_source_validate.py",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_source_right",
+            "--publication-suffix",
+            "thickness_repair",
+            "--publish"
+          ]
+        }
+      ],
+      "ordinary": [
+        "_measurements/S11c_d_end_current_source_right_thickness_repair_checkpoint.json"
+      ],
+      "annex": [
+        "scripts/out/S11c_d_end_current_source_right_thickness_repair.out"
+      ]
+    },
+    {
+      "name": "left_source",
+      "requires": [
+        "validated_native_regeneration"
+      ],
+      "createRunDirectoryBefore": "/tmp/s11c-thickness-coordinate-20260914/end_source_left",
+      "steps": [
+        {
+          "name": "construct",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_current_resumable.py",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--input",
+            "_measurements/S11c_d_channel_preflight_input.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_source_left",
+            "--end",
+            "LEFT"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/end_source_left/full.out",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/end_source_left/stderr.txt"
+        },
+        {
+          "name": "validate_publish",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_current_source_validate.py",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_source_left",
+            "--publication-suffix",
+            "thickness_repair",
+            "--publish"
+          ]
+        }
+      ],
+      "ordinary": [
+        "_measurements/S11c_d_end_current_source_left_thickness_repair_checkpoint.json"
+      ],
+      "annex": [
+        "scripts/out/S11c_d_end_current_source_left_thickness_repair.out"
+      ]
+    },
+    {
+      "name": "reference_source",
+      "requires": [
+        "validated_native_regeneration"
+      ],
+      "runnerCreatesFreshDirectory": "/tmp/s11c-thickness-coordinate-20260914/reference_current",
+      "steps": [
+        {
+          "name": "construct",
+          "command": [
+            "python",
+            "_measurements/S11c_c2_trace_repair_run_current.py",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/reference_current"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/reference_current.runner.stdout",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/reference_current.runner.stderr"
+        },
+        {
+          "name": "inventory",
+          "command": [
+            "python",
+            "_measurements/S11c_d_nonlocal_current_inventory.py",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/reference_current/manifest.json",
+            "--output",
+            "_measurements/S11c_thickness_coordinate_d_current_checks.json"
+          ]
+        },
+        {
+          "name": "publish",
+          "command": [
+            "python",
+            "_measurements/S11c_c2_trace_repair_current_publish.py",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/reference_current/manifest.json",
+            "--checks",
+            "_measurements/S11c_thickness_coordinate_d_current_checks.json",
+            "--publication-suffix",
+            "thickness_repair",
+            "--checkpoint",
+            "_measurements/S11c_thickness_coordinate_d_current_checkpoint.json"
+          ]
+        }
+      ],
+      "ordinary": [
+        "_measurements/S11c_thickness_coordinate_d_current_checks.json",
+        "_measurements/S11c_thickness_coordinate_d_current_checkpoint.json"
+      ],
+      "annex": [
+        "scripts/out/S11c_d_nonlocal_current_reference_thickness_repair.out"
+      ]
+    },
+    {
+      "name": "right_frequency",
+      "requires": [
+        "validated_native_regeneration"
+      ],
+      "createRunDirectoryBefore": "/tmp/s11c-thickness-coordinate-20260914/end_frequency_right",
+      "steps": [
+        {
+          "name": "construct",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_frequency_check.py",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--input",
+            "_measurements/S11c_d_channel_preflight_input.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_frequency_right",
+            "--end",
+            "RIGHT"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/end_frequency_right/full.out",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/end_frequency_right/stderr.txt"
+        },
+        {
+          "name": "validate_publish",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_frequency_validate.py",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_frequency_right",
+            "--publication-suffix",
+            "thickness_repair",
+            "--publish"
+          ]
+        }
+      ],
+      "ordinary": [
+        "_measurements/S11c_d_end_frequency_right_thickness_repair_checkpoint.json"
+      ],
+      "annex": [
+        "scripts/out/S11c_d_end_frequency_right_thickness_repair.out"
+      ]
+    },
+    {
+      "name": "left_frequency",
+      "requires": [
+        "validated_native_regeneration"
+      ],
+      "createRunDirectoryBefore": "/tmp/s11c-thickness-coordinate-20260914/end_frequency_left",
+      "steps": [
+        {
+          "name": "construct",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_frequency_check.py",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--input",
+            "_measurements/S11c_d_channel_preflight_input.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_frequency_left",
+            "--end",
+            "LEFT"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/end_frequency_left/full.out",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/end_frequency_left/stderr.txt"
+        },
+        {
+          "name": "validate_publish",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_frequency_validate.py",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_frequency_left",
+            "--publication-suffix",
+            "thickness_repair",
+            "--publish"
+          ]
+        }
+      ],
+      "ordinary": [
+        "_measurements/S11c_d_end_frequency_left_thickness_repair_checkpoint.json"
+      ],
+      "annex": [
+        "scripts/out/S11c_d_end_frequency_left_thickness_repair.out"
+      ]
+    },
+    {
+      "name": "right_pairing",
+      "requires": [
+        "right_source",
+        "left_source",
+        "reference_source",
+        "right_frequency",
+        "left_frequency"
+      ],
+      "createRunDirectoryBefore": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_right",
+      "steps": [
+        {
+          "name": "construct_and_check",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_pairing_fresh_workers.py",
+            "--arithmetic-checkpoint",
+            "_measurements/S11c_d_end_pairing_right_checkpoint.json",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--input",
+            "_measurements/S11c_d_channel_preflight_input.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_pairing_right",
+            "--end",
+            "RIGHT",
+            "--source-checkpoint",
+            "_measurements/S11c_d_end_current_source_right_thickness_repair_checkpoint.json"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_right/calculation.stdout",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_right/calculation.stderr"
+        },
+        {
+          "name": "emit",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_pairing_emit.py",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--input",
+            "_measurements/S11c_d_channel_preflight_input.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_pairing_right",
+            "--end",
+            "RIGHT",
+            "--source-checkpoint",
+            "_measurements/S11c_d_end_current_source_right_thickness_repair_checkpoint.json"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_right/full.out",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_right/emission.stderr"
+        },
+        {
+          "name": "validate_publish",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_pairing_validate.py",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_pairing_right",
+            "--publication-suffix",
+            "thickness_repair",
+            "--publish"
+          ]
+        }
+      ],
+      "ordinary": [
+        "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json"
+      ],
+      "annex": [
+        "scripts/out/S11c_d_end_pairing_right_thickness_repair.out"
+      ]
+    },
+    {
+      "name": "left_pairing",
+      "requires": [
+        "right_source",
+        "left_source",
+        "reference_source",
+        "right_frequency",
+        "left_frequency"
+      ],
+      "createRunDirectoryBefore": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_left",
+      "steps": [
+        {
+          "name": "construct_and_check",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_pairing_fresh_workers.py",
+            "--arithmetic-checkpoint",
+            "_measurements/S11c_d_end_pairing_right_checkpoint.json",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--input",
+            "_measurements/S11c_d_channel_preflight_input.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_pairing_left",
+            "--end",
+            "LEFT",
+            "--source-checkpoint",
+            "_measurements/S11c_d_end_current_source_left_thickness_repair_checkpoint.json"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_left/calculation.stdout",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_left/calculation.stderr"
+        },
+        {
+          "name": "emit",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_pairing_emit.py",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--input",
+            "_measurements/S11c_d_channel_preflight_input.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_pairing_left",
+            "--end",
+            "LEFT",
+            "--source-checkpoint",
+            "_measurements/S11c_d_end_current_source_left_thickness_repair_checkpoint.json"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_left/full.out",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_left/emission.stderr"
+        },
+        {
+          "name": "validate_publish",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_pairing_validate.py",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_pairing_left",
+            "--publication-suffix",
+            "thickness_repair",
+            "--publish"
+          ]
+        }
+      ],
+      "ordinary": [
+        "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json"
+      ],
+      "annex": [
+        "scripts/out/S11c_d_end_pairing_left_thickness_repair.out"
+      ]
+    },
+    {
+      "name": "reference_pairing",
+      "requires": [
+        "right_source",
+        "left_source",
+        "reference_source",
+        "right_frequency",
+        "left_frequency"
+      ],
+      "createRunDirectoryBefore": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_reference",
+      "steps": [
+        {
+          "name": "construct_and_check",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_pairing_fresh_workers.py",
+            "--arithmetic-checkpoint",
+            "_measurements/S11c_d_end_pairing_right_checkpoint.json",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--input",
+            "_measurements/S11c_d_channel_preflight_input.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_pairing_reference",
+            "--end",
+            "REFERENCE",
+            "--current-manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/reference_current/manifest.json"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_reference/calculation.stdout",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_reference/calculation.stderr"
+        },
+        {
+          "name": "emit",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_pairing_emit.py",
+            "--manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+            "--input",
+            "_measurements/S11c_d_channel_preflight_input.json",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_pairing_reference",
+            "--end",
+            "REFERENCE",
+            "--current-manifest",
+            "/tmp/s11c-thickness-coordinate-20260914/reference_current/manifest.json"
+          ],
+          "stdout": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_reference/full.out",
+          "stderr": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_reference/emission.stderr"
+        },
+        {
+          "name": "validate_publish",
+          "command": [
+            "python",
+            "_measurements/S11c_d_end_pairing_validate.py",
+            "--run-directory",
+            "/tmp/s11c-thickness-coordinate-20260914/end_pairing_reference",
+            "--publication-suffix",
+            "thickness_repair",
+            "--publish"
+          ]
+        }
+      ],
+      "ordinary": [
+        "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json"
+      ],
+      "annex": [
+        "scripts/out/S11c_d_end_pairing_reference_thickness_repair.out"
+      ]
+    }
+  ],
+  "remainingAfterPlan": "Join verified pairing/source/frequency objects to full endpoint current and adjoint-field maps with outward orientations, then implement variable-profile matching under the retained solver/export contract."
+}

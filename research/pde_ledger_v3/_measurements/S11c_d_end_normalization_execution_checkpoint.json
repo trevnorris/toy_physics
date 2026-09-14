@@ -1,0 +1,61 @@
+{
+  "observedUtc": "2026-09-14T18:34:01.450466+00:00",
+  "active": {
+    "stage": "right_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_end_normalization_check.py",
+      "--manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+      "--input",
+      "_measurements/S11c_d_channel_preflight_input.json",
+      "--pairing-checkpoint",
+      "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json",
+      "--source-checkpoint",
+      "_measurements/S11c_d_end_current_source_right_thickness_repair_checkpoint.json",
+      "--frequency-checkpoint",
+      "_measurements/S11c_d_end_frequency_right_thickness_repair_checkpoint.json",
+      "--end",
+      "RIGHT",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right_construct.stderr",
+    "startedUtc": "2026-09-14T18:18:04.211526+00:00",
+    "childPid": 1810527,
+    "status": "running"
+  },
+  "resources": {
+    "pid": "1810527",
+    "state": "Rl",
+    "cpuPercent": "100",
+    "residentKiB": "158720",
+    "elapsedSeconds": "957",
+    "cpuTime": "00:15:57"
+  },
+  "stderrBytes": 0,
+  "lastProgress": {
+    "elapsedSeconds": 30.77725554537028,
+    "stage": "loaded"
+  },
+  "pendingValidationNotes": {
+    "activeConstructor": "right_construct",
+    "doNotEditPinnedSourcesWhileRunning": true,
+    "afterConstructor": [
+      "First launcher version examined command[1], which was -u; link right_construct.stdout/stderr to right/full.out and right/stderr.txt after child exit if missing. Launcher is fixed for subsequent runs.",
+      "Validator provenance comparison needs JSON normalization because sourceConstructors/cachedConstructors are tuples in memory and lists in the checks JSON. Preserve the producer snapshot; changing the validator alone must not force a new physical calculation. Verify the frozen validator pin and record the new validator hash, with all physical producer pins still exact.",
+      "Add a summary orientation-record comparison using the same JSON normalization.",
+      "For future constructors save modal and adjoint objects before their emitters, and add periodic stack/progress diagnostics to separate durable files. Do not edit or restart the currently computing constructor merely for instrumentation."
+    ]
+  },
+  "recurringFollowup": {
+    "id": "continue-s11c-d-build",
+    "status": "ACTIVE",
+    "intervalMinutes": 30,
+    "previousId": "continue-s11c-d-repair-and-build",
+    "previousUpdateResult": "not found in app; replacement created"
+  },
+  "scope": "RIGHT normalization computing; no accepted modal or adjoint result yet. All prior endpoint pairings are validated and committed."
+}

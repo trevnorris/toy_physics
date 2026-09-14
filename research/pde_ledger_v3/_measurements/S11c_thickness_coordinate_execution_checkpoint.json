@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T18:18:48.117682+00:00",
+  "observedUtc": "2026-09-14T18:34:01.450466+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -17,9 +17,11 @@
   },
   "continuationState": "All eight endpoint stages committed; fresh RIGHT normalization active",
   "recurringFollowup": {
-    "id": "continue-s11c-d-repair-and-build",
+    "id": "continue-s11c-d-build",
     "status": "ACTIVE",
-    "userApproved": true
+    "intervalMinutes": 30,
+    "previousId": "continue-s11c-d-repair-and-build",
+    "previousUpdateResult": "not found in app; replacement created"
   },
   "scope": "Regenerated b/c1/c2/d and all source/frequency/pairing prerequisites are committed. All three pairings have zero retained discrepancies. Endpoint current/adjoint normalization is now in progress.",
   "activeContinuation": {
@@ -155,5 +157,7 @@
       "retainedNonzeroScalars": 0,
       "wallSeconds": 567.1135055590421
     }
-  }
+  },
+  "normalizationExecutionCheckpoint": "S11c_d_end_normalization_execution_checkpoint.json",
+  "normalizationContinuationNotes": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/continuation_notes.json"
 }

@@ -17,7 +17,8 @@ The c2 independent kinetic control and focused export validation are complete:
 537d78fd. A post-save check stopped the queue on truncated c2 annex content;
 the intact producer output restored the same annex key, and all five b/c1/c2
 transcripts pass full hash and git-annex checks. The truncation cause remains
-unresolved. The queue is ready to resume at d. Execution and the approved
+unresolved. Recovery is committed at 5a81223f; the queue resumed at d and its
+scoped-symbol worker is running. Execution and the approved
 recurring continuation are recorded in the active repair report. Downstream
 artifacts remain historical until each producer's validated regeneration finishes.
 

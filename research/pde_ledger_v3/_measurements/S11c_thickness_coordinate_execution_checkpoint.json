@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T15:36:57.853839+00:00",
+  "observedUtc": "2026-09-14T15:38:39.444509+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,29 +15,34 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "c2 validated and committed; truncated annex payload recovered and verified; ready to restart at d",
+  "continuationState": "running d scoped-symbol preparation; full d producer/rechecks/publication follow serially",
   "recurringFollowup": {
     "id": "continue-s11c-d-repair-and-build",
     "status": "ACTIVE",
     "userApproved": true
   },
-  "scope": "b/c1/c2 complete and committed. All five annex transcripts verified. d and fresh endpoint/reference checks remain pending.",
+  "scope": "b/c1/c2 complete and committed; annex recovery committed at 5a81223f. Verified live d scoped-symbol worker; fresh endpoint/reference checks remain pending.",
   "activeContinuation": {
-    "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_metadata",
-    "startAt": "c2",
+    "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
+    "startAt": "d",
     "controllerSha256": "aaf719cb663660b0b2d1af5ddd57fcc96a8cabb74d9f4279e9a8e42a0e2af0fd",
-    "planSha256": "d981edea1c36f6a85d3620ff4c4f5e97f14fb8186b0f608f1cd548b63a8049a9"
+    "planSha256": "5fb5b81c6faa51be848ba1bceeb013b36c26bc5fdf9fb0f6ed16c05993186411"
   },
   "continuationProgress": {
-    "stage": "c2",
-    "operation": "c2_publish",
-    "event": "exited",
-    "exitCode": 0,
-    "stdoutSha256": "683c7b65eba470cae266eef69afb517320849b9ef23e98bd04c96b3bb2dc64fb",
-    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "utc": "2026-09-14T14:57:53Z"
+    "stage": "d",
+    "operation": "d_scoped_symbols",
+    "event": "started",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_c2_trace_repair_d_ends.py",
+      "--run-directory",
+      "/tmp/s11c-thickness-coordinate-20260914/d_ends"
+    ],
+    "stdout": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex/d_scoped_symbols.stdout",
+    "stderr": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex/d_scoped_symbols.stderr",
+    "utc": "2026-09-14T15:37:45Z"
   },
-  "continuationStderrBytes": 467,
+  "continuationStderrBytes": 0,
   "c1ProducerManifest": "/tmp/s11c-thickness-coordinate-20260914/c1_full/manifest.json",
   "c1ProducerCompleted": true,
   "c1SourcePinsCurrentlyStable": true,
@@ -54,5 +59,6 @@
     "metadataPaths": 3244
   },
   "c2AnnexRecoveryCheckpoint": "S11c_thickness_coordinate_c2_annex_recovery_checkpoint.json",
-  "nextContinuationStateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex"
+  "nextContinuationStateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
+  "c2AnnexRecoveryCommit": "5a81223f"
 }

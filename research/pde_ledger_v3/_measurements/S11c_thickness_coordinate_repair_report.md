@@ -291,3 +291,9 @@ Resume the existing serial controller at d in a fresh
 Its predecessor and post-save content checks remain enabled. Fresh endpoint
 sources, independent-frequency pairing and full current/adjoint normalization
 remain pending; c2's action/export checks alone do not settle that balance.
+
+Recovery is committed at **5a81223f**. The controller resumed at d at
+**2026-09-14 15:37:45 UTC**, after verifying its committed predecessors.
+The scoped-symbol worker was observed live using CPU, with empty controller
+and worker stderr. Full d production, rechecks, source joins and publication
+follow serially; no fresh endpoint check has started.

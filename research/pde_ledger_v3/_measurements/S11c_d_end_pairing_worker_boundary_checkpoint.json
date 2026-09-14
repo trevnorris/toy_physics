@@ -1,0 +1,98 @@
+{
+  "runDirectory": "/tmp/s11cd-end-pairing-workers-20260914/right",
+  "status": "worker_boundary_validated",
+  "comparisons": [
+    {
+      "method": "rational_coefficient",
+      "baseline": {
+        "kind": "diagnostic_seed",
+        "packet": "/tmp/s11cd-end-pairing-20260914/right-diagnostic/scalar-state/rational_coefficient_5a7fc6087e61d9c351e85404791958e829ebff9d295215074e5a53ddb022cf41.pickle",
+        "sha256": "a4d79ad14cb99a53671c5336baa5eb7fe3ae7c99f6d6fe00dde072e4f117a411",
+        "input": "/tmp/s11cd-end-pairing-20260914/right-diagnostic/scalar-state/rational_coefficient_5a7fc6087e61d9c351e85404791958e829ebff9d295215074e5a53ddb022cf41.input.pickle",
+        "inputSha256": "5a7fc6087e61d9c351e85404791958e829ebff9d295215074e5a53ddb022cf41"
+      },
+      "structuralEquality": true,
+      "literalResidual": "0",
+      "comparisonPacket": "/tmp/s11cd-end-pairing-workers-20260914/right/worker-state/boundary_0.pickle",
+      "comparisonSha256": "57fa341ed2ddf78b9c3c067f601abaf07261fd25d1c006d3daea28f76c39e182"
+    },
+    {
+      "method": "carrier_expansion",
+      "baseline": {
+        "kind": "diagnostic_seed",
+        "packet": "/tmp/s11cd-end-pairing-20260914/right-diagnostic/scalar-state/carrier_expansion_5044f211b0a1a645cbcdbe5ec1e7b99d4b19d613de12bd22176af94c5a2bbe3f.pickle",
+        "sha256": "e03d5ec73e2767daf8eb863c4ce5af1981ce4d3e52c949bfce1216da8e3a1e68",
+        "input": "/tmp/s11cd-end-pairing-20260914/right-diagnostic/scalar-state/carrier_expansion_5044f211b0a1a645cbcdbe5ec1e7b99d4b19d613de12bd22176af94c5a2bbe3f.input.pickle",
+        "inputSha256": "5044f211b0a1a645cbcdbe5ec1e7b99d4b19d613de12bd22176af94c5a2bbe3f"
+      },
+      "structuralEquality": true,
+      "literalResidual": "0",
+      "comparisonPacket": "/tmp/s11cd-end-pairing-workers-20260914/right/worker-state/boundary_1.pickle",
+      "comparisonSha256": "62333125b297cdb4fecffa7a4fccb2b76a4cf45b6752ad99108d285730f63168"
+    },
+    {
+      "method": "carrier_expansion",
+      "baseline": {
+        "kind": "isolated_probe",
+        "path": "/tmp/s11cd-end-pairing-20260914/isolated-scalar.pickle",
+        "sha256": "519e21f7ab2614ed3af411dc0d193473efa25b53d6cd18374b6b6bdaac4e0eee"
+      },
+      "structuralEquality": true,
+      "literalResidual": "0",
+      "comparisonPacket": "/tmp/s11cd-end-pairing-workers-20260914/right/worker-state/boundary_2.pickle",
+      "comparisonSha256": "13bf741afe84f149a99468d076e06d4ad1baa22b64858a58a9ea6c280cd8acb4"
+    }
+  ],
+  "signature": {
+    "environment": {
+      "python": "3.10.12 (main, Jul 15 2026, 23:40:17) [GCC 11.4.0]",
+      "executable": "/usr/bin/python3.10",
+      "executableSha256": "94df6ff4b32aafdba90e38c0aed70880fe44ee4cf88ecdf411641158f120c1af",
+      "sympy": "1.14.0",
+      "sympyInitSha256": "4e9476348ba105feab28d82f5bcf6cdba2e3e84de6e059bbfe7a13728c0a4ab0",
+      "nativeSha256": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+      "workerSha256": "296de12915450ed2ed2ff0ad1a7778a550da0f4139355cc9b6c22a3449cbeb23",
+      "stackLimitBytes": [
+        268435456,
+        268435456
+      ]
+    },
+    "checkerSignatureSha256": "5c63d4b729bace653f0b77c53c974e5846d6206b9ad9b53d82a6cc227cf8ed69",
+    "seedRun": "/tmp/s11cd-end-pairing-20260914/right-diagnostic",
+    "seedSignatureSha256": "5c63d4b729bace653f0b77c53c974e5846d6206b9ad9b53d82a6cc227cf8ed69"
+  },
+  "resources": [
+    {
+      "requestSha256": "646a10bd85c64454746f7ef11a31c192e60111c30253f845bfc6d4bca0da6b78",
+      "sourceSha256": "5a7fc6087e61d9c351e85404791958e829ebff9d295215074e5a53ddb022cf41",
+      "resultSha256": "31418ebb6d8cc8fa554c696954290fa7fd38ce2c97ed6bfef7c9fe6704600bb4",
+      "method": "rational_coefficient",
+      "wallSeconds": 0.04558040201663971,
+      "cpuSeconds": 2.007052754,
+      "peakRssKiB": 75324,
+      "environmentStable": true
+    },
+    {
+      "requestSha256": "e51223d58bb8d77baa3abd5426c2877b91e8b514e931f7406e2a7bb3cf07c59e",
+      "sourceSha256": "f6e25d7d8e234bcc0fb25f7af9693819986731abe4a340dc4fe28e862ff32a71",
+      "resultSha256": "5a2923ac20fb0a075032e38b7ac066c3830cce4c42b885794b3f17bf52248927",
+      "method": "carrier_expansion",
+      "wallSeconds": 71.12928960006684,
+      "cpuSeconds": 73.284553114,
+      "peakRssKiB": 88704,
+      "environmentStable": true
+    },
+    {
+      "requestSha256": "bc6a1ec385054b0432e04c54d181ccd8503cb8e7a3d240a473059901519a19d2",
+      "sourceSha256": "98da5ec55d5758247bb1302781c5d1bb4c03fa5dc978582b2ef6935d74b4ce7d",
+      "resultSha256": "519e21f7ab2614ed3af411dc0d193473efa25b53d6cd18374b6b6bdaac4e0eee",
+      "method": "carrier_expansion",
+      "wallSeconds": 23.441231031902134,
+      "cpuSeconds": 26.09631865,
+      "peakRssKiB": 76904,
+      "environmentStable": true
+    }
+  ],
+  "boundarySha256": "4188fcca9ced819af8ea2178d337c7817b1f8a1d2e0bbc3788e0788a4942c91e",
+  "scope": "Three actual source-pinned scalar calculations; equality of unchanged helper results across the process boundary. No completed endpoint-balance verdict."
+}

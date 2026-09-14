@@ -1,0 +1,81 @@
+{
+  "runDirectory": "/tmp/s11cd-end-pairing-20260914/right",
+  "observedExitCode": 139,
+  "status": "runtime_failure_before_balance_packet",
+  "constructionSha256": "d2b26ea099649fad007a549edc1dc4e9dc6723579c34d509d1341108efba5839",
+  "completedStages": [
+    {
+      "stage": "construction_started",
+      "activeStage": "construction_started",
+      "elapsedSeconds": 16.750655937939882,
+      "cpuSeconds": 19.216573692,
+      "peakRssKiB": 201504
+    },
+    {
+      "stage": "construction_saved",
+      "sha256": "d2b26ea099649fad007a549edc1dc4e9dc6723579c34d509d1341108efba5839",
+      "activeStage": "construction_saved",
+      "elapsedSeconds": 258.58697857521474,
+      "cpuSeconds": 260.996857934,
+      "peakRssKiB": 201504
+    },
+    {
+      "stage": "balance_started",
+      "activeStage": "balance_started",
+      "elapsedSeconds": 258.93451011087745,
+      "cpuSeconds": 261.34433891,
+      "peakRssKiB": 201504
+    },
+    {
+      "stage": "open_acoustic_divisions",
+      "activeStage": "open_acoustic_divisions",
+      "elapsedSeconds": 259.2571532642469,
+      "cpuSeconds": 261.666896221,
+      "peakRssKiB": 201504
+    },
+    {
+      "stage": "closed_face",
+      "face": 0,
+      "activeStage": "closed_face",
+      "elapsedSeconds": 1469.0114060258493,
+      "cpuSeconds": 1470.967141441,
+      "peakRssKiB": 201504
+    }
+  ],
+  "lastResource": {
+    "stage": "resource",
+    "activeStage": "closed_face",
+    "elapsedSeconds": 2070.7866608081385,
+    "cpuSeconds": 2072.569216767,
+    "peakRssKiB": 201504
+  },
+  "artifacts": {
+    "construction.pickle": {
+      "bytes": 672445,
+      "sha256": "d2b26ea099649fad007a549edc1dc4e9dc6723579c34d509d1341108efba5839"
+    },
+    "construction.sha256": {
+      "bytes": 65,
+      "sha256": "ef0dee819cc8a8b427e590df5e7687358df71820813d65f58a2744769a22be79"
+    },
+    "signature.json": {
+      "bytes": 3179,
+      "sha256": "5c63d4b729bace653f0b77c53c974e5846d6206b9ad9b53d82a6cc227cf8ed69"
+    },
+    "progress.jsonl": {
+      "bytes": 10131,
+      "sha256": "9d9afa576a8844a59e67930437f679b65f5a3c32f4981f656379a12b6ab5cbc9"
+    },
+    "stack-samples.txt": {
+      "bytes": 19771,
+      "sha256": "d38b75704f32ef4892d50742aa0d3d0bb191b6f20629cd8eeb937bab3d9ac9a8"
+    }
+  },
+  "stderr": {
+    "path": "/tmp/s11cd-end-pairing-20260914/right.stderr",
+    "sha256": "73536eecfcf38b0c69ce755e7cf6fcaa8833918713e8e11d8ebc0692383e043b"
+  },
+  "observedFatalFrames": "apport exception hook; original exception not recorded",
+  "balancePacketExists": false,
+  "completePacketExists": false
+}

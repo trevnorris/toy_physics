@@ -1,0 +1,126 @@
+{
+  "checkpointCommit": "a05b05e3",
+  "status": "paused_before_execution_method_change",
+  "case": "LAB_HELD_RHO4_CONSTANT",
+  "end": "RIGHT",
+  "nativeSourceSha256": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+  "unchangedNativeArithmeticAst": {
+    "polarize": true,
+    "rational_coefficient": true,
+    "wave_curve_reduction": true,
+    "carrier_expansion": true,
+    "rational_reconstruction": true,
+    "split_balance_checks": true,
+    "split_derivative_checks": true,
+    "constructBodyAfterContextGuard": true
+  },
+  "construction": {
+    "path": "/tmp/s11cd-end-pairing-20260914/right/construction.pickle",
+    "sha256": "d2b26ea099649fad007a549edc1dc4e9dc6723579c34d509d1341108efba5839",
+    "bytes": 672445,
+    "objectKeys": [
+      "FREQUENCY_LEGS",
+      "NORMAL_LEGS",
+      "BULK_LEGS",
+      "BEAT_PHASE",
+      "BEAT_RATES",
+      "SOURCE_BRANCH_JOINS",
+      "ACOUSTIC_WAVE_ROWS",
+      "KINETIC_ACTION_ANSATZ",
+      "STORED_ENERGY_MATRIX",
+      "KINETIC_ENERGY_MATRIX",
+      "SLAB_ENERGY_MATRIX",
+      "SLAB_CURRENT_MATRIX",
+      "SLAB_POLARIZATION_RESIDUALS",
+      "PLUS_ROW_POWER_MAP",
+      "MINUS_ROW_POWER_MAP",
+      "ROW_POWER_RECONSTRUCTION_RESIDUAL",
+      "CLOSED_PENCIL_LEGS",
+      "SOURCE_POWER_MATRIX",
+      "FACE_RECORDS",
+      "OPEN_BULK_ENERGY_COEFFICIENT",
+      "OPEN_BULK_CURRENT_COEFFICIENTS",
+      "OPEN_BULK_PRESSURE_SCALES",
+      "OPEN_BULK_VELOCITY_SCALES",
+      "FACE_LEG_OBJECTS",
+      "DEPTH_PHASE_FACTOR",
+      "DEPTH_PHASE_RATE",
+      "DEPTH_PRIMITIVE",
+      "BULK_ENERGY_DENSITY_MATRIX",
+      "BULK_NORMAL_CURRENT_DENSITY_MATRIX",
+      "BULK_DEPTH_CURRENT_MATRIX",
+      "PORT_POWER_MATRIX",
+      "INTERFACE_POWER_MATRIX",
+      "GENERIC_DEPTH_INTEGRAL",
+      "GENERIC_DEPTH_DOMAIN",
+      "EQUAL_DEPTH_INTEGRAL",
+      "EQUAL_DEPTH_DOMAIN",
+      "FINITE_TOTAL_ENERGY_MATRIX",
+      "FINITE_TOTAL_CURRENT_MATRIX",
+      "TOP_BOUNDARY_POWER_MATRIX",
+      "SLAB_BALANCE_RESIDUAL",
+      "BULK_DENSITY_BALANCE_RESIDUAL",
+      "FINITE_BALANCE_RESIDUAL"
+    ],
+    "objectCount": 42
+  },
+  "originalAttemptInventory": {
+    "path": "_measurements/S11c_d_end_pairing_right_failed_attempt.json",
+    "sha256": "cac4e5fa91bd40eba297895d334d4ed988b7f4b029b9b90f79da4c01c5160540"
+  },
+  "diagnosticAttemptInventory": {
+    "path": "_measurements/S11c_d_end_pairing_right_diagnostic_attempt.json",
+    "sha256": "ab727b9671f963a0c2822110843f8eabb7e3a85e30ed2759923bbd774ea572ae"
+  },
+  "isolatedScalar": {
+    "sourceSha256": "4e3bd7945c10a0c4081ab3f6957eb999832cbc0784bf0530cacdda2f99111494",
+    "nativeSha256": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "valueIsLiteralZero": true,
+    "wallSeconds": 22.8323795767501,
+    "peakRssKiB": 75728,
+    "payloadSha256": "519e21f7ab2614ed3af411dc0d193473efa25b53d6cd18374b6b6bdaac4e0eee",
+    "observedExitCode": 0,
+    "stderrBytes": 0,
+    "resultLiteral": "0",
+    "artifacts": {
+      "isolated-scalar.json": {
+        "path": "/tmp/s11cd-end-pairing-20260914/isolated-scalar.json",
+        "sha256": "6bc564165b9b496cec76a2d0a8ac099c7fcc7f4147855e195e52b830c74216ce",
+        "bytes": 350
+      },
+      "isolated-scalar.pickle": {
+        "path": "/tmp/s11cd-end-pairing-20260914/isolated-scalar.pickle",
+        "sha256": "519e21f7ab2614ed3af411dc0d193473efa25b53d6cd18374b6b6bdaac4e0eee",
+        "bytes": 13791
+      },
+      "isolated-scalar.stdout": {
+        "path": "/tmp/s11cd-end-pairing-20260914/isolated-scalar.stdout",
+        "sha256": "81ba282cdfff3357dc4944efe7d95c504b787b04d4131365c8f7f451da585c9d",
+        "bytes": 569
+      },
+      "isolated-scalar.stderr": {
+        "path": "/tmp/s11cd-end-pairing-20260914/isolated-scalar.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "isolated-scalar.stack.txt": {
+        "path": "/tmp/s11cd-end-pairing-20260914/isolated-scalar.stack.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  },
+  "balanceVerdictAvailable": false,
+  "leftPairingComputed": false,
+  "referenceRegressionComputed": false,
+  "newPairingTranscriptPublished": false,
+  "fullFourCaseRegenerationAfterContextExtension": false,
+  "nextExecutionExperiment": "Isolated, sequential scalar workers using unchanged native helpers and checked exact-operand caches; validate the process boundary before full resume.",
+  "rootCause": "Unresolved. Two long processes exited 139; the active input from the second run completed alone under the same native helper.",
+  "sourceFiles": {
+    "_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "_measurements/S11c_d_end_pairing_diagnose.py": "3bea2d0d98c3dad4ed4c3ce5fc9aa96c17a915f7141bea2fd435b8804d7f5d12",
+    "_measurements/S11c_d_end_pairing_emit.py": "f2962f86403414e3847321474693a7f4e93f3ca92421f291f31c887b54810cb9",
+    "_measurements/S11c_d_end_pairing_validate.py": "81c2a7817bc7e48a5390f279adc901c0ca22a98dfa72781b6e873aa302916058"
+  }
+}

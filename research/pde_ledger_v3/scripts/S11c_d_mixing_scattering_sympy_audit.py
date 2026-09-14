@@ -2298,15 +2298,16 @@ class ClosedAcousticEnergy:
 
 
 class ClosedCurrentPairing:
-    """Two-frequency energy/port balance on the computed closed reference.
+    """Two-frequency energy/port balance on a computed constant background.
 
     The harmonic ansatz polarizes both the stored-energy boundary work and
     the acoustic balance. Reduced row residuals enter a separate source-work
     ansatz. The depth cutoff and interface exchange remain live operands.
     """
 
-    def __init__(self, acoustic):
+    def __init__(self, acoustic, anchoring='LAB_HELD', end=None):
         self.acoustic = acoustic
+        self.anchoring, self.end = anchoring, end
         self.balance, self.c, self.r = acoustic.balance, acoustic.c, acoustic.r
         self.modes = acoustic.modes
         self.frequencies = sp.symbols('s11cdPairingLeftFrequency s11cdPairingRightFrequency', real=True)
@@ -2364,8 +2365,8 @@ class ClosedCurrentPairing:
 
     @lru_cache(maxsize=None)
     def construct(self, anchoring, end):
-        if end is not None:
-            raise ValueError('two-frequency reference construction requires a reference reduction')
+        if (anchoring, end) != (self.anchoring, self.end):
+            raise ValueError('two-frequency source context differs from requested background')
         c, r, a, b = self.c, self.r, self.acoustic, self.balance
         slab = b.construct(anchoring, end)
         conservative = c.construct(anchoring, end)
@@ -2858,7 +2859,7 @@ class ClosedCurrentPairing:
 
     def check_output_units(self, key, value, result):
         dims = PHYSICAL_METADATA.dimensions
-        energy = dims.measure(self.c.construct('LAB_HELD', None)['TANGENTIAL_ENERGY_REDUCTION'])
+        energy = dims.measure(self.c.construct(self.anchoring, self.end)['TANGENTIAL_ENERGY_REDUCTION'])
         length, frequency = dims.measure(self.r.z), dims.measure(self.r.omega)
         add = lambda u, v:tuple(a+b for a, b in zip(u, v))
         sub = lambda u, v:tuple(a-b for a, b in zip(u, v))
@@ -2954,7 +2955,7 @@ class ClosedCurrentPairing:
     def output_units(self, key, value):
         """Restore coefficient units from the energy balance and field basis."""
         dims = PHYSICAL_METADATA.dimensions
-        energy = dims.measure(self.c.construct('LAB_HELD', None)['TANGENTIAL_ENERGY_REDUCTION'])
+        energy = dims.measure(self.c.construct(self.anchoring, self.end)['TANGENTIAL_ENERGY_REDUCTION'])
         length, frequency = dims.measure(self.r.z), dims.measure(self.r.omega)
         add = lambda u, v:tuple(a+b for a, b in zip(u, v))
         sub = lambda u, v:tuple(a-b for a, b in zip(u, v))
@@ -3257,7 +3258,7 @@ class ModalCurrentSubspaces:
         self.field_units = pairing.c.field_units
         d = PHYSICAL_METADATA.dimensions
         self.row_units = [d.measure(v) for v in pairing.residual_amplitudes[0]]
-        self.energy_unit = d.measure(pairing.c.construct('LAB_HELD', None)['TANGENTIAL_ENERGY_REDUCTION'])
+        self.energy_unit = d.measure(pairing.c.construct(pairing.anchoring, pairing.end)['TANGENTIAL_ENERGY_REDUCTION'])
         self.frequency_unit, self.length_unit = d.measure(self.r.omega), d.measure(self.r.z)
         self.power_unit = tuple(a+b for a,b in zip(self.energy_unit, self.frequency_unit))
         self.current_unit = tuple(a+b for a,b in zip(self.power_unit, self.length_unit))
@@ -3293,7 +3294,7 @@ class ModalCurrentSubspaces:
             'EQUAL_DEPTH_INTEGRAL':result['EQUAL_DEPTH_INTEGRAL'],
             'EQUAL_DEPTH_INTEGRAL_Q':sp.limit(sp.diff(result['GENERIC_DEPTH_INTEGRAL'],qright),qright,qleft),
             'TOP_FACTOR':result['DEPTH_PHASE_FACTOR'].subs(p.acoustic.depth,p.acoustic.height)}
-        old_bulk = p.acoustic.construct('LAB_HELD',None)
+        old_bulk = p.acoustic.construct(p.anchoring,p.end)
         rate_map = dict(old_bulk['DEPTH_DECAY_BINDINGS'])
         decay = next(v for v in rate_map if 'Decay' in v.name)
         oscillation = next(v for v in rate_map if 'Oscillation' in v.name)

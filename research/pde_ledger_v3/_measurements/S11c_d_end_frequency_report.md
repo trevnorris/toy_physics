@@ -1,5 +1,40 @@
 # S11c-d end-frequency checkpoint
 
+## Current repair refresh
+
+Both end-frequency packets have been recomputed from the full native producer
+using the repaired c2 trace binding. The actual operator/elimination fingerprints,
+isolated-root/lift records and source/input pins join at both ends. Each packet
+contains 18 candidates, 22 full basis directions, 18 full-rank frequency pairings
+and 45 exact-zero reconstruction/certificate scalars. Each end still has four
+exactly real and fourteen nonreal normal candidates at the supplied binding.
+
+| Refresh result | LEFT | RIGHT |
+| --- | ---: | ---: |
+| Wall seconds / peak RSS KiB | 30.73 / 201012 | 49.84 / 201044 |
+| Largest algebraic coefficient-frame residual norm | 1.968e-13 | 2.103e-13 |
+| Frequency-difference error, relative step 1e-4 | 2.564e-7 | 2.544e-7 |
+| Frequency-difference error, relative step 5e-5 | 6.397e-8 | 6.356e-8 |
+
+Both publication validators reconstruct 508 objects, 1,018 tags and 6,573
+metadata paths per end. The finite-step residuals above remain nonzero.
+The independent exact normal-reality certificate and complete subspace/rank
+checks remain in each packet. These are pointwise algebraic frequency data,
+not physical-current normalization or section 3b frequency-pole/Riesz data.
+
+- [LEFT refresh](../scripts/out/S11c_d_end_frequency_left_trace_repair.out),
+  793,815 bytes; [inventory](S11c_d_end_frequency_left_trace_repair_checkpoint.json).
+- [RIGHT refresh](../scripts/out/S11c_d_end_frequency_right_trace_repair.out),
+  793,349 bytes; [inventory](S11c_d_end_frequency_right_trace_repair_checkpoint.json).
+
+The [c2 repair](S11c_c2_trace_repair_report.md) has cleared the source discrepancy
+at both ends; LEFT also preserves all 85 baseline source objects. The next
+implementation is the [both-end two-frequency physical current](S11c_d_both_end_current_plan.md),
+followed by variable-profile matching. Earlier packets and the report below
+retain their original input/provenance and are historical.
+
+## Earlier end-frequency checkpoint
+
 Both LEFT and RIGHT LAB_HELD/RHO4_CONSTANT frequency calculations are complete
 at the supplied profile/parameter binding. The separate right acoustic-current
 source calculation was unfinished when these frequency packets were built. It

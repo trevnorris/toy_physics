@@ -1,5 +1,20 @@
 # S11c-d right-current runtime investigation — 2026-09-13
 
+## Subsequent source repair
+
+The [c2 trace repair](S11c_c2_trace_repair_report.md) is implemented and its
+full four-case export/transcript is validated. Fresh symbolic LEFT/RIGHT source
+checks now have zero retained residuals and all exact arithmetic identities
+are zero; LEFT preserves all 85 baseline source objects. See the
+[current source report](S11c_d_end_current_source_report.md). The investigation
+below records the earlier input and diagnosis; its stop was superseded by the
+user's authorization to repair. Full downstream d regeneration, its nine output inventories, both
+end-frequency refreshes and the reference-current source refresh are complete
+and published. The [both-end physical-current extension](S11c_d_both_end_current_plan.md)
+is next.
+
+## Historical investigation
+
 The user clarified that a run lasting several hours is acceptable if this
 box can complete it. Reactivate the required right-end source construction;
 the previous deferral and stop inventories remain historical evidence.

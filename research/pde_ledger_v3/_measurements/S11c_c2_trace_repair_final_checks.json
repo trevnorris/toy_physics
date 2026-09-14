@@ -1,0 +1,138 @@
+{
+  "instrumentSha256": "39b0a6d2e8cb5c272ec3f66caf41d3e4934ccb9a662bdf543a4da256a7e12c3e",
+  "baselinePreserved": {
+    "scripts/S11c_b_exports.py": true,
+    "scripts/S11c_c1_exports.py": true,
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": true
+  },
+  "producerSourcePins": {
+    "c2_full": {
+      "exitCode": 0,
+      "beforeAfterEqual": true,
+      "currentMismatches": []
+    },
+    "d_full": {
+      "exitCode": 0,
+      "beforeAfterEqual": true,
+      "currentMismatches": []
+    },
+    "current_reference": {
+      "exitCode": 0,
+      "beforeAfterEqual": true,
+      "currentMismatches": []
+    }
+  },
+  "retainedContractSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "publishedArtifacts": {
+    "scripts/S11c_c2_exports.py": {
+      "sha256": "97160450e8b1d9aa654cebb2ea0d2074df24186f337fad2ee850bb5b200e7579",
+      "bytes": 30672491,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out": {
+      "sha256": "9e3a2da7d56cb7124e7b96ea47d0a459c48aecf5224d8d8431804316e9c6c289",
+      "bytes": 530910368,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_d_mixing_scattering_sympy_audit.out": {
+      "sha256": "f8b16e08920a9f5856bc26a4b2f37060673abbe87b9820e74014e7542d265fa3",
+      "bytes": 83972570,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_d_nonlocal_current_reference_trace_repair.out": {
+      "sha256": "34f5cd6bf8cf20c9a0106300a5b017a0b4de1b0759e56e54afd0d4ddf4236209",
+      "bytes": 1495327,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_c2_trace_repair_d_ends.out": {
+      "sha256": "9cc69cb361d8430c18a39f8f40b8c6b74d9ae2fcbcfb97ea7eb4a96c1b972a14",
+      "bytes": 1701422,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_c2_trace_repair_power.out": {
+      "sha256": "7aee3a1d8fe8fea2068f9803119ff1f1f56c8d314b92e44aaee69d30dc8bdd5c",
+      "bytes": 273533,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_c2_trace_repair_maps.out": {
+      "sha256": "c224b35e1376a4ca708e86c512ee8cf929c267980a1db0fbfd12b25b3afff57a",
+      "bytes": 1575712,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_c2_trace_repair_case.out": {
+      "sha256": "7d518735828d2913a6a0e93e71fdb0a5d6268a50c778c2d45e001f75df464142",
+      "bytes": 2095956,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_d_end_current_source_left_trace_repair.out": {
+      "sha256": "57d28cc10b83167bf6b48ec70d0d600f1a7d9d5f6a1271a0803ad70ef6fcdd97",
+      "bytes": 2625497,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_d_end_current_source_right_trace_repair.out": {
+      "sha256": "97737027919eb8e217e0fd79df10481ce6862d7384f9b10932f2cdac4f3a8d1e",
+      "bytes": 8789042,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_d_end_frequency_left_trace_repair.out": {
+      "sha256": "86c34dddf93260233ebaaf81cb6979aee1e8b642ce35d060699ccfd811875968",
+      "bytes": 793815,
+      "matchesInventory": true
+    },
+    "scripts/out/S11c_d_end_frequency_right_trace_repair.out": {
+      "sha256": "eedd1ce5ccdbb34bc96958a2fc825546ac6b81f4a3426baa3075c64956e17d03",
+      "bytes": 793349,
+      "matchesInventory": true
+    }
+  },
+  "parsedPython": [
+    "_measurements/S11c_d_end_frequency_validate.py",
+    "scripts/S11c_c2_exports.py",
+    "scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+    "_measurements/S11c_c2_trace_repair_check.py",
+    "_measurements/S11c_c2_trace_repair_current_publish.py",
+    "_measurements/S11c_c2_trace_repair_d_ends.py",
+    "_measurements/S11c_c2_trace_repair_d_publication.py",
+    "_measurements/S11c_c2_trace_repair_d_recheck.py",
+    "_measurements/S11c_c2_trace_repair_d_source_join.py",
+    "_measurements/S11c_c2_trace_repair_power_check.py",
+    "_measurements/S11c_c2_trace_repair_run_current.py",
+    "_measurements/S11c_c2_trace_repair_run_stage.py",
+    "_measurements/S11c_c2_trace_repair_stage_inventory.py",
+    "_measurements/S11c_c2_trace_repair_validate.py"
+  ],
+  "parsedJson": [
+    "_measurements/S11c_c2_sympy_guard_evidence.json",
+    "_measurements/S11c_c2_sympy_progress.json",
+    "_measurements/S11c_c2_trace_repair_case_checkpoint.json",
+    "_measurements/S11c_c2_trace_repair_d_codec_inventory.json",
+    "_measurements/S11c_c2_trace_repair_d_current_checkpoint.json",
+    "_measurements/S11c_c2_trace_repair_d_current_checks.json",
+    "_measurements/S11c_c2_trace_repair_d_ends_checkpoint.json",
+    "_measurements/S11c_c2_trace_repair_d_exceptional_inventory.json",
+    "_measurements/S11c_c2_trace_repair_d_full_checks.json",
+    "_measurements/S11c_c2_trace_repair_d_inverse_inventory.json",
+    "_measurements/S11c_c2_trace_repair_d_joint_inventory.json",
+    "_measurements/S11c_c2_trace_repair_d_mode_jets_inventory.json",
+    "_measurements/S11c_c2_trace_repair_d_publication.json",
+    "_measurements/S11c_c2_trace_repair_d_recheck_plan.json",
+    "_measurements/S11c_c2_trace_repair_d_rechecks.json",
+    "_measurements/S11c_c2_trace_repair_d_resolvent_inventory.json",
+    "_measurements/S11c_c2_trace_repair_d_source_joins.json",
+    "_measurements/S11c_c2_trace_repair_d_spectrum_inventory.json",
+    "_measurements/S11c_c2_trace_repair_d_threshold_modes_inventory.json",
+    "_measurements/S11c_c2_trace_repair_maps_checkpoint.json",
+    "_measurements/S11c_c2_trace_repair_power_checkpoint.json",
+    "_measurements/S11c_c2_trace_repair_stage_inventory.json",
+    "_measurements/S11c_d_end_current_source_left_trace_repair_checkpoint.json",
+    "_measurements/S11c_d_end_current_source_right_trace_repair_checkpoint.json",
+    "_measurements/S11c_d_end_frequency_left_trace_repair_checkpoint.json",
+    "_measurements/S11c_d_end_frequency_right_trace_repair_checkpoint.json"
+  ],
+  "gitDiffCheck": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "failures": []
+}

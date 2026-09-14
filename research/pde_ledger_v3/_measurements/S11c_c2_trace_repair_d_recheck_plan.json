@@ -1,0 +1,104 @@
+{
+  "status": "prepared; execute after repaired source joins and native four-case completion",
+  "scope": "Reinventory the fresh four-case native output and its lossless expanded view. Historical root counts and classifications are not targets. Preserve explicit point/path and exceptional-domain limitations. Run serially after native completion and inspect outputs before publication.",
+  "nativeProducerManifest": "/tmp/s11c-trace-repair-20260913/d_full/manifest.json",
+  "stages": [
+    {
+      "name": "spectrum",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_spectrum_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_spectrum_inventory.json"
+      ],
+      "result": "_measurements/S11c_c2_trace_repair_d_spectrum_inventory.json"
+    },
+    {
+      "name": "joint",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_joint_sheet_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_joint_inventory.json"
+      ],
+      "result": "_measurements/S11c_c2_trace_repair_d_joint_inventory.json"
+    },
+    {
+      "name": "exceptional",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_exceptional_inventory.json"
+      ],
+      "result": "_measurements/S11c_c2_trace_repair_d_exceptional_inventory.json"
+    },
+    {
+      "name": "resolvent",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_resolvent_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_resolvent_inventory.json"
+      ],
+      "result": "_measurements/S11c_c2_trace_repair_d_resolvent_inventory.json"
+    },
+    {
+      "name": "threshold_modes",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_threshold_modes_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_threshold_modes_inventory.json"
+      ],
+      "result": "_measurements/S11c_c2_trace_repair_d_threshold_modes_inventory.json"
+    },
+    {
+      "name": "inverse",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_inverse_fourier_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out"
+      ],
+      "result": "_measurements/S11c_c2_trace_repair_d_inverse_inventory.json",
+      "captureStdoutAsResult": true
+    },
+    {
+      "name": "codec_expand",
+      "command": [
+        "/usr/bin/python",
+        "scripts/S11c_d_output_codec.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "/tmp/s11c-trace-repair-20260913/d_full/expanded.out"
+      ],
+      "result": "/tmp/s11c-trace-repair-20260913/d_full/expanded.out"
+    },
+    {
+      "name": "mode_jets",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_mode_jet_output_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/expanded.out"
+      ],
+      "result": "_measurements/S11c_c2_trace_repair_d_mode_jets_inventory.json",
+      "captureStdoutAsResult": true
+    },
+    {
+      "name": "codec",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_output_codec_check.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/expanded.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_codec_inventory.json"
+      ],
+      "result": "_measurements/S11c_c2_trace_repair_d_codec_inventory.json"
+    }
+  ],
+  "remainingAfterThese": "Verify codec/source-index roundtrip, source and artifact hashes, completion and metadata census; summarize actual counts and unresolved domains; publish atomically and update reports."
+}

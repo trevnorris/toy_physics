@@ -475,6 +475,80 @@ def integral(integrand,*limits):
     return sp.S.Zero if integrand==0 else sp.Integral(integrand,*limits)
 
 
+def reference_pressure_kernels(inputs, anchoring, face, density, pmat, second, ko, ki, qo, overrides):
+    """Invert the inherited affine face trace in the retained kernel algebra.
+
+    The incoming response is a physical-face pressure. The slab slots are a
+    reference-face value and lab-normal jet. Trace coefficients come from
+    face_shift, and the normal multiplier is differentiated from an outgoing
+    reference continuation before forming the two/three-leg operator solve.
+    """
+    label = 'plus' if face == 1 else 'minus'
+    pressure_slot, jet_slot = (inputs.a(prefix+label) for prefix in ('delta_p_', 'd_w_delta_p_'))
+    source = inputs.geometry['face_shift'][(anchoring,face,REPRESENTATION,density)][0]
+    trace = sp.cancel(source/inputs.eps).subs(overrides).xreplace(inputs.profiles)
+    value_coefficient = sp.diff(trace, pressure_slot)
+    height = sp.diff(trace, jet_slot)
+    constant = trace.subs({pressure_slot:0,jet_slot:0}, simultaneous=True)
+    reconstruction = sp.expand(trace-value_coefficient*pressure_slot-height*jet_slot-constant)
+    profile = inputs.a('w1_profile')
+    height_constant = height.subs(profile,0)
+    height_coefficient = sp.diff(height,profile)
+    height_reconstruction = sp.expand(height-height_constant-height_coefficient*profile)
+    height_hat = height_coefficient*inputs.a('s11cc1_w1_profile_hat_transfer')
+    # The normalized transform is the existing computed profile binding;
+    # applying it to the extracted linear height coefficient adds no convention.
+    transform = profile_bindings(inputs)[0]
+    height_transform = sp.Integral(height_coefficient*transform.rhs.function,*transform.rhs.limits)
+    height_kernel = fourier_profiles(inputs,height_hat,ko,ki)
+    reference = face*inputs.values['W_0']/2
+    extension = sp.exp(sp.I*face*qo*(NORMAL-reference))
+    normal_output = sp.diff(extension,NORMAL).subs(NORMAL,reference)
+    qi = inputs.a('s11cc1_q_out_input')
+    normal_input = normal_output.xreplace({qo:qi})
+    trace_two = sp.Matrix([[value_coefficient+height_constant*normal_output,
+                            height_hat*normal_input],
+                           [0,value_coefficient+height_constant*normal_input]])
+    reference_two = trace_two.upper_triangular_solve(pmat)
+    two_residual = (trace_two*reference_two-pmat).applyfunc(sp.cancel)
+    left = dict(zip(ki,MIDDLE))|{qi:MIDDLE_Q}
+    right = dict(zip(ko,MIDDLE))|{qo:MIDDLE_Q}
+    normal_middle = normal_output.xreplace({qo:MIDDLE_Q})
+    transfer = fourier_profiles(inputs,pmat[0,1],ko,ki)
+    response_three = sp.Matrix([[pmat[0,0],transfer.xreplace(left),second],
+        [0,pmat[0,0].xreplace(dict(zip(ko,MIDDLE))|{qo:MIDDLE_Q}),transfer.xreplace(right)],
+        [0,0,pmat[1,1]]])
+    trace_three = sp.Matrix([[value_coefficient+height_constant*normal_output,
+        height_kernel.xreplace(left)*normal_middle,0],
+        [0,value_coefficient+height_constant*normal_middle,height_kernel.xreplace(right)*normal_input],
+        [0,0,value_coefficient+height_constant*normal_input]])
+    reference_three_raw = trace_three.upper_triangular_solve(response_three)
+    reference_three = reference_three_raw.applyfunc(lambda e:retained_shape(e,inputs))
+    three_residual = (trace_three*reference_three-response_three).applyfunc(
+        lambda e:sp.cancel(retained_shape(e,inputs)))
+    reference_two = reference_two.applyfunc(lambda e:retained_shape(e,inputs))
+    target = coordinate('s11cc2PhysicalFacePressureTarget',dimension(pressure_slot))
+    equation = trace-target
+    reference_value_solve = sp.solve(equation,pressure_slot)[0]
+    return reference_two,reference_three[0,2],{
+        'SOURCE':source,'AMPLITUDE_TRACE':trace,'VALUE_COEFFICIENT':value_coefficient,
+        'NORMAL_JET_COEFFICIENT':height,'CONSTANT_OPERAND':constant,
+        'TRACE_RECONSTRUCTION_RESIDUAL':reconstruction,
+        'HEIGHT_CONSTANT':height_constant,'HEIGHT_PROFILE_COEFFICIENT':height_coefficient,
+        'HEIGHT_RECONSTRUCTION_RESIDUAL':height_reconstruction,
+        'HEIGHT_FOURIER_DEFINITION':height_transform,'HEIGHT_FOURIER_KERNEL':height_kernel,
+        'REFERENCE_NORMAL_EXTENSION':extension,'REFERENCE_NORMAL_MULTIPLIER':normal_output,
+        'TWO_LEG_TRACE_OPERATOR':trace_two,'TWO_LEG_FACE_RESPONSE':pmat,
+        'TWO_LEG_REFERENCE_RESPONSE':reference_two,'TWO_LEG_TRACE_RESIDUAL':two_residual,
+        'THREE_LEG_TRACE_OPERATOR':trace_three,'THREE_LEG_FACE_RESPONSE':response_three,
+        'THREE_LEG_REFERENCE_RESPONSE_BEFORE_PROJECTION':reference_three_raw,
+        'THREE_LEG_REFERENCE_RESPONSE':reference_three,'THREE_LEG_TRACE_RESIDUAL':three_residual,
+        'PHYSICAL_PRESSURE_TARGET':target,'REFERENCE_VALUE_EQUATION':equation,
+        'REFERENCE_VALUE_SOLVE':reference_value_solve,
+        'REFERENCE_VALUE_SOLVE_RESIDUAL':sp.cancel(equation.subs(pressure_slot,reference_value_solve)),
+    }
+
+
 def build_face(inputs, anchoring, face, density, overrides=None, mu_override=None, velocity_override=None):
     overrides = {} if overrides is None else overrides
     numeric_overrides = {k:v for k,v in overrides.items() if isinstance(k,sp.Basic)}
@@ -500,17 +574,21 @@ def build_face(inputs, anchoring, face, density, overrides=None, mu_override=Non
     stage2 = {c1_mu: mu_amplitude, c1_v: velocity}
     composed_source = sp.expand(source.subs(stage2, simultaneous=True).subs(numeric_overrides).xreplace(inputs.profiles))
     pressure = kernel_apply(inputs, pmat[0,0], pmat[0,1], composed_source, ko, ki,second)
-    # Stage 3: normal jet from the outgoing continuation ansatz, differentiated
-    # before evaluating at the reference face.  The output leg belongs to w.
+    # Stage 3: convert the physical-face response to the reference continuation
+    # before taking its normal derivative. The output leg belongs to w.
+    reference_matrix,reference_second,trace_map = reference_pressure_kernels(
+        inputs,anchoring,face,density,pmat,second,ko,ki,qo,numeric_overrides)
     reference = face * inputs.values['W_0'] / 2
     extension = sp.exp(sp.I * face * qo * (NORMAL-reference))
-    jet_diagonal = sp.diff(extension * pmat[0,0], NORMAL).subs(NORMAL,reference)
-    jet_transfer = sp.diff(extension * pmat[0,1], NORMAL).subs(NORMAL,reference)
-    jet_second=sp.diff(extension*second,NORMAL).subs(NORMAL,reference)
+    jet_diagonal = sp.diff(extension * reference_matrix[0,0], NORMAL).subs(NORMAL,reference)
+    jet_transfer = sp.diff(extension * reference_matrix[0,1], NORMAL).subs(NORMAL,reference)
+    jet_second=sp.diff(extension*reference_second,NORMAL).subs(NORMAL,reference)
     normal_jet = kernel_apply(inputs, jet_diagonal, jet_transfer, composed_source, ko, ki,jet_second)
     pressure_slot = inputs.a('delta_p_' + label)
     jet_slot = inputs.a('d_w_delta_p_' + label)
-    replacements = {pressure_slot: pressure, jet_slot: normal_jet}
+    reference_pressure = trace_map['REFERENCE_VALUE_SOLVE'].subs(
+        {trace_map['PHYSICAL_PRESSURE_TARGET']:pressure,jet_slot:normal_jet},simultaneous=True)
+    replacements = {pressure_slot: reference_pressure, jet_slot: normal_jet}
     return replacements, {
         'DENSITY_BINDING': sp.Tuple(*[sp.Tuple(k,v) for k,v in density_map.items()]),
         'DELTA_P_SOURCE': delta_p_source,
@@ -521,6 +599,10 @@ def build_face(inputs, anchoring, face, density, overrides=None, mu_override=Non
         'PRESSURE_KERNEL_MATRIX': pmat,
         'PRESSURE_SECOND_SCATTERING_KERNEL':second,
         'PRESSURE': pressure,
+        'REFERENCE_PRESSURE':reference_pressure,
+        'REFERENCE_PRESSURE_KERNEL_MATRIX':reference_matrix,
+        'REFERENCE_PRESSURE_SECOND_SCATTERING_KERNEL':reference_second,
+        'REFERENCE_TRACE_MAP':trace_map,
         'NORMAL_JET': normal_jet,
     }
 
@@ -696,6 +778,31 @@ def dimensions(value):
     return sp.ImmutableMatrix(dimension(value))
 
 
+def reference_trace_dimensions(inputs, value):
+    """Typed zeros in the weighted triangular trace/response operators."""
+    result=dimensions(value)
+    pressure=dimension(value['PHYSICAL_PRESSURE_TARGET'])
+    normal=dimension(value['REFERENCE_NORMAL_MULTIPLIER'])
+    height=tuple(-a for a in normal)
+    weight=dimension(profile_bindings(inputs)[0].lhs)
+    impedance=dimension(next(iter(cases(inputs.values['dtn_flat_symbol']).values())))
+    def unit(v):return sp.ImmutableMatrix(v)
+    for key in ('TRACE_RECONSTRUCTION_RESIDUAL','CONSTANT_OPERAND','REFERENCE_VALUE_EQUATION',
+                'REFERENCE_VALUE_SOLVE','REFERENCE_VALUE_SOLVE_RESIDUAL'):
+        result[key]=unit(pressure)
+    for key in ('NORMAL_JET_COEFFICIENT','HEIGHT_CONSTANT','HEIGHT_PROFILE_COEFFICIENT',
+                'HEIGHT_RECONSTRUCTION_RESIDUAL'):
+        result[key]=unit(height)
+    for key in ('HEIGHT_FOURIER_DEFINITION','HEIGHT_FOURIER_KERNEL'):
+        result[key]=unit(tuple(a+b for a,b in zip(height,weight)))
+    for key,v in value.items():
+        if isinstance(v,sp.MatrixBase):
+            base=(0,0,0) if key.endswith('TRACE_OPERATOR') else impedance
+            result[key]=sp.Tuple(*(unit(tuple(a+(j-i)*b for a,b in zip(base,weight)))
+                                  for i in range(v.rows) for j in range(v.cols)))
+    return result
+
+
 @lru_cache(maxsize=131072)
 def grades(expression, epsilon, eta, sigma):
     """Structural multigrade support, including arbitrary-profile integrands.
@@ -762,6 +869,13 @@ def emit(quantity, value, inputs, case=(), *, key=None, dimension_metadata=None)
     if write_key in EMITTED_KEYS:
         raise ValueError(('duplicate write-key',write_key))
     EMITTED_KEYS.add(write_key)
+    if quantity == 'FOLD_SYMBOL_MAP' and dimension_metadata is None:
+        dimension_metadata=dimensions(value)
+        for face,record in value.items():
+            trace_units=reference_trace_dimensions(inputs,record['REFERENCE_TRACE_MAP'])
+            dimension_metadata[face]['REFERENCE_TRACE_MAP']=trace_units
+            dimension_metadata[face]['REFERENCE_PRESSURE_KERNEL_MATRIX']=trace_units['TWO_LEG_REFERENCE_RESPONSE']
+            dimension_metadata[face]['REFERENCE_PRESSURE_SECOND_SCATTERING_KERNEL']=trace_units['THREE_LEG_REFERENCE_RESPONSE'][2]
     body={'VALUE':value,'MULTIGRADE':grade_object(value,inputs),
           'DIMENSION_L_T_M':dimensions(value) if dimension_metadata is None else dimension_metadata}
     if quantity in ('CLOSED_SLAB_OPERATOR','CLOSED_COUPLING_KERNEL','SELF_ENERGY_INCREMENT'):

@@ -1,0 +1,259 @@
+{
+  "producerManifest": "/tmp/s11c-trace-repair-20260913/d_full/manifest.json",
+  "producerManifestSha256": "7ca3fe48024c886473f5aef1a9f5c9327337f1f281ac75d4477603ddc7fb53e4",
+  "producerSourceHashes": {
+    "_measurements/S11c_c2_trace_repair_run_stage.py": "7150b36177deff5b11cd25d17fe8cad30b14d172c32c1d36f407b0e766b6e964",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "03528a4e5bdc5762688fabf8023ef6186b90e56b1c0f2df9304be94933c8387b",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+    "scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+    "scripts/S11c_c2_exports.py": "97160450e8b1d9aa654cebb2ea0d2074df24186f337fad2ee850bb5b200e7579",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+    "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+  },
+  "instrumentHashesBefore": {
+    "_measurements/S11c_c2_trace_repair_d_recheck.py": "4fa88934f714e20aea32c556314567222125fc5a2c6e7a50aeebff3d3f1940e8",
+    "_measurements/S11c_c2_trace_repair_d_recheck_plan.json": "6bab06ab943619af5660a3c0db200dd2934dfdd52945771bf2cb2576be04e796",
+    "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+    "_measurements/S11c_d_end_spectrum_inventory.py": "bb39a8c859a8a32fcd9ceeab9cb2a226074e5736b8317d0afedcde69e36d1280",
+    "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+    "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+    "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+    "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+    "_measurements/S11c_d_nonlocal_current_inventory.py": "97607761e3a28962c8d144397f9a1f1230b4c7150403bf5e11a441bd548dbb4e",
+    "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+    "_measurements/S11c_d_payload_preservation_inventory.py": "0da2e6b3afdf7167a53bd2041b070b37ea8a1ce4d4412a3c7ad655d0ec2fd7bf",
+    "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+    "_measurements/S11c_d_threshold_modes_inventory.py": "cdf63987823c4cef416341a18be474bf5623a18cf62237114c7da46a9e15b8dc",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717"
+  },
+  "stages": [
+    {
+      "name": "spectrum",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_spectrum_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_spectrum_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 64.2710098810494,
+      "stderrBytes": 0,
+      "stdout": "/tmp/s11c-trace-repair-20260913/d_full/recheck/spectrum.stdout",
+      "stdoutSha256": "41ef68ab3f99b5427c43ff936109789aa69f37e90afeffd56ed0e2f16f5e4577",
+      "stderr": "/tmp/s11c-trace-repair-20260913/d_full/recheck/spectrum.stderr",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_spectrum_inventory.json",
+        "bytes": 317386,
+        "sha256": "e82af845d99a29a96e6107979e0121ba20230aa62632b7dfb14025e4926302e5"
+      }
+    },
+    {
+      "name": "joint",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_joint_sheet_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_joint_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 27.029997364617884,
+      "stderrBytes": 0,
+      "stdout": "/tmp/s11c-trace-repair-20260913/d_full/recheck/joint.stdout",
+      "stdoutSha256": "5f4240ccae425bffc9716941fbc9235bb4fb2d6e580263ab37959583b0bda717",
+      "stderr": "/tmp/s11c-trace-repair-20260913/d_full/recheck/joint.stderr",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_joint_inventory.json",
+        "bytes": 2854672,
+        "sha256": "3a7ddeb4618a16f31055c116a3b6b7cbf500c6cf48acc169b81d7eb26bd4a32a"
+      }
+    },
+    {
+      "name": "exceptional",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_exceptional_strata_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_exceptional_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 178.0908953184262,
+      "stderrBytes": 0,
+      "stdout": "/tmp/s11c-trace-repair-20260913/d_full/recheck/exceptional.stdout",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "/tmp/s11c-trace-repair-20260913/d_full/recheck/exceptional.stderr",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_exceptional_inventory.json",
+        "bytes": 6909007,
+        "sha256": "57db30aac0cbd1008e9ac1270222d09c023b830a0ce39639162aaf02938a2f4a"
+      }
+    },
+    {
+      "name": "resolvent",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_resolvent_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_resolvent_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 163.8986772056669,
+      "stderrBytes": 0,
+      "stdout": "/tmp/s11c-trace-repair-20260913/d_full/recheck/resolvent.stdout",
+      "stdoutSha256": "bac414f9c057023a352897c9154746d6d630f3a2aede55e9af37992beb1ec8bc",
+      "stderr": "/tmp/s11c-trace-repair-20260913/d_full/recheck/resolvent.stderr",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_resolvent_inventory.json",
+        "bytes": 3911886,
+        "sha256": "52e9e0a6a0e4cb91f46472e358640d8f852c000dde237db5b7a028a8852d1a80"
+      }
+    },
+    {
+      "name": "threshold_modes",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_threshold_modes_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_threshold_modes_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 264.27893485408276,
+      "stderrBytes": 0,
+      "stdout": "/tmp/s11c-trace-repair-20260913/d_full/recheck/threshold_modes.stdout",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "/tmp/s11c-trace-repair-20260913/d_full/recheck/threshold_modes.stderr",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_threshold_modes_inventory.json",
+        "bytes": 3562643,
+        "sha256": "bb7820e3160a209832e14cc43c76e4c3a0bc5fba6a0c12474666f44d6d300ba7"
+      }
+    },
+    {
+      "name": "inverse",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_inverse_fourier_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 6.634569523856044,
+      "stderrBytes": 0,
+      "stdout": "/tmp/s11c-trace-repair-20260913/d_full/recheck/inverse.stdout",
+      "stdoutSha256": "c33a94acd664371b99f407cb06598a93e289f0b329ef097375b479307b1ea45e",
+      "stderr": "/tmp/s11c-trace-repair-20260913/d_full/recheck/inverse.stderr",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_inverse_inventory.json",
+        "bytes": 4690,
+        "sha256": "c33a94acd664371b99f407cb06598a93e289f0b329ef097375b479307b1ea45e"
+      }
+    },
+    {
+      "name": "codec_expand",
+      "command": [
+        "/usr/bin/python",
+        "scripts/S11c_d_output_codec.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/full.out",
+        "/tmp/s11c-trace-repair-20260913/d_full/expanded.out"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 14.457900711335242,
+      "stderrBytes": 0,
+      "stdout": "/tmp/s11c-trace-repair-20260913/d_full/recheck/codec_expand.stdout",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "/tmp/s11c-trace-repair-20260913/d_full/recheck/codec_expand.stderr",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": {
+        "path": "/tmp/s11c-trace-repair-20260913/d_full/expanded.out",
+        "bytes": 314000831,
+        "sha256": "1be5ee0dc207a4620ba0e914af990a98aa701bded12e0810f499a1f209bf6f59"
+      }
+    },
+    {
+      "name": "mode_jets",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_mode_jet_output_inventory.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/expanded.out"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 72.45791792031378,
+      "stderrBytes": 0,
+      "stdout": "/tmp/s11c-trace-repair-20260913/d_full/recheck/mode_jets.stdout",
+      "stdoutSha256": "f684d63acb0d42c2767908d4c13af9ccacfc54c4bbaf1dfaa38b468911a83a95",
+      "stderr": "/tmp/s11c-trace-repair-20260913/d_full/recheck/mode_jets.stderr",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_mode_jets_inventory.json",
+        "bytes": 158184,
+        "sha256": "f684d63acb0d42c2767908d4c13af9ccacfc54c4bbaf1dfaa38b468911a83a95"
+      }
+    },
+    {
+      "name": "codec",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_output_codec_check.py",
+        "/tmp/s11c-trace-repair-20260913/d_full/expanded.out",
+        "--output",
+        "_measurements/S11c_c2_trace_repair_d_codec_inventory.json"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 14.85869756527245,
+      "stderrBytes": 0,
+      "stdout": "/tmp/s11c-trace-repair-20260913/d_full/recheck/codec.stdout",
+      "stdoutSha256": "718e890fb220af7ef3f9c0b85978be1cc0e55533131cfc2546d5f4ba2fb391d6",
+      "stderr": "/tmp/s11c-trace-repair-20260913/d_full/recheck/codec.stderr",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_codec_inventory.json",
+        "bytes": 936,
+        "sha256": "718e890fb220af7ef3f9c0b85978be1cc0e55533131cfc2546d5f4ba2fb391d6"
+      }
+    }
+  ],
+  "scope": "Reinventory the fresh four-case native output and its lossless expanded view. Historical root counts and classifications are not targets. Preserve explicit point/path and exceptional-domain limitations. Run serially after native completion and inspect outputs before publication.",
+  "instrumentHashesAfter": {
+    "_measurements/S11c_c2_trace_repair_d_recheck.py": "4fa88934f714e20aea32c556314567222125fc5a2c6e7a50aeebff3d3f1940e8",
+    "_measurements/S11c_c2_trace_repair_d_recheck_plan.json": "6bab06ab943619af5660a3c0db200dd2934dfdd52945771bf2cb2576be04e796",
+    "_measurements/S11c_d_end_resolvent_inventory.py": "3384f4801f56895fe9a9ddfd5aa04f082e07b9bbcd23f3170f8440c30a9e4af4",
+    "_measurements/S11c_d_end_spectrum_inventory.py": "bb39a8c859a8a32fcd9ceeab9cb2a226074e5736b8317d0afedcde69e36d1280",
+    "_measurements/S11c_d_exceptional_strata_inventory.py": "3528bb44f58c09003fb8f56c177fed26e36c04769d8a414adb4eeab3909e6c05",
+    "_measurements/S11c_d_inverse_fourier_inventory.py": "45c779b7bdb694d19cebf36cda6baf27987314b3b1fe6e7c9e1250f407860b94",
+    "_measurements/S11c_d_joint_sheet_inventory.py": "888be2aad08e1de90e1760578ca8cb17b5e486ad22813cd5525d8bcdae02bf84",
+    "_measurements/S11c_d_mode_jet_output_inventory.py": "d03eb2433786dc47a234cf664ddf80e2c2639241ff7ee98885f909b7155f6443",
+    "_measurements/S11c_d_nonlocal_current_inventory.py": "97607761e3a28962c8d144397f9a1f1230b4c7150403bf5e11a441bd548dbb4e",
+    "_measurements/S11c_d_output_codec_check.py": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+    "_measurements/S11c_d_payload_preservation_inventory.py": "0da2e6b3afdf7167a53bd2041b070b37ea8a1ce4d4412a3c7ad655d0ec2fd7bf",
+    "_measurements/S11c_d_sheet_output_inventory.py": "cbbb071282e92a95865b83f4f13948f6101345a269f9fe3bd28f77ded35d300f",
+    "_measurements/S11c_d_threshold_modes_inventory.py": "cdf63987823c4cef416341a18be474bf5623a18cf62237114c7da46a9e15b8dc",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717"
+  },
+  "producerSourceHashesAfter": {
+    "_measurements/S11c_c2_trace_repair_run_stage.py": "7150b36177deff5b11cd25d17fe8cad30b14d172c32c1d36f407b0e766b6e964",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "03528a4e5bdc5762688fabf8023ef6186b90e56b1c0f2df9304be94933c8387b",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+    "scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+    "scripts/S11c_c2_exports.py": "97160450e8b1d9aa654cebb2ea0d2074df24186f337fad2ee850bb5b200e7579",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+    "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+  },
+  "producerManifestSha256After": "7ca3fe48024c886473f5aef1a9f5c9327337f1f281ac75d4477603ddc7fb53e4"
+}

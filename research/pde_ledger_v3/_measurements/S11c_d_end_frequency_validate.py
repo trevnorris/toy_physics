@@ -77,11 +77,17 @@ def validate(base):
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--run-directory',type=Path,required=True)
-    parser.add_argument('--publish',action='store_true');args=parser.parse_args()
+    parser.add_argument('--publish',action='store_true')
+    parser.add_argument('--publication-suffix',default='');args=parser.parse_args()
     inventory=validate(args.run_directory)
     if args.publish:
+        import re
+        if args.publication_suffix and not re.fullmatch('[a-z0-9_]+',args.publication_suffix):
+            raise ValueError('publication suffix')
         end=inventory['summary']['arguments']['end'].lower()
-        destination=ROOT/'scripts/out'/('S11c_d_end_frequency_'+end+'.out')
+        suffix='_'+args.publication_suffix if args.publication_suffix else ''
+        stem='S11c_d_end_frequency_'+end+suffix
+        destination=ROOT/'scripts/out'/(stem+'.out')
         if destination.exists() or destination.is_symlink():raise ValueError('publication destination exists')
         handle,temp=tempfile.mkstemp(prefix='.s11cd-end-frequency-',dir=destination.parent)
         try:
@@ -91,7 +97,7 @@ def main():
         finally:
             if Path(temp).exists():Path(temp).unlink()
         inventory['publishedTranscript']=str(destination.relative_to(ROOT))
-        target=ROOT/'_measurements'/('S11c_d_end_frequency_'+end+'_checkpoint.json')
+        target=ROOT/'_measurements'/(stem+'_checkpoint.json')
     else:target=args.run_directory/'validation.json'
     target.write_text(json.dumps(inventory,indent=2)+'\n')
     print(json.dumps({'inventory':str(target),'objects':inventory['objectCount'],'tags':inventory['tagCount'],

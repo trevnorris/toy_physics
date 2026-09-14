@@ -1,0 +1,11 @@
+{
+  "path": "scripts/out/S11c_d_mixing_scattering_sympy_audit.out",
+  "bytes": 83972570,
+  "sha256": "f8b16e08920a9f5856bc26a4b2f37060673abbe87b9820e74014e7542d265fa3",
+  "previousSha256": "312935010ef56ce0eabe7b1685e906dfb785c40e02978c7b93fdbb4af11bae52",
+  "previousAnnexPayload": "/var/projects/toy_physics/.git/annex/objects/Fq/7j/MD5E-s83848737--938d7595a96a607179e6f5784ecd6838.out/MD5E-s83848737--938d7595a96a607179e6f5784ecd6838.out",
+  "previousAnnexPayloadUnchanged": true,
+  "producerManifestSha256": "7ca3fe48024c886473f5aef1a9f5c9327337f1f281ac75d4477603ddc7fb53e4",
+  "checksPath": "_measurements/S11c_c2_trace_repair_d_full_checks.json",
+  "checksSha256": "7c325a9023d3c3a73f8b4235a458b74eabcfaeabbe3f2b29d6c87862be57d28d"
+}

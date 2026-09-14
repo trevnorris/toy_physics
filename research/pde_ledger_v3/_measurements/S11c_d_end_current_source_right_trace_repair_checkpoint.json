@@ -1,0 +1,218 @@
+{
+  "provenance": {
+    "producerManifestSha256": "76c062c373a6b1d3fa428484f7baa17f472f12a309f9c317b8c7fb6ab877f2a5",
+    "cacheSha256": "3f0ee49da04461be823b6288c90d37cbd0b61bc777d080245a9b3eac1085bb26",
+    "producerTranscriptSha256": "9cc69cb361d8430c18a39f8f40b8c6b74d9ae2fcbcfb97ea7eb4a96c1b972a14",
+    "producerSources": {
+      "_measurements/S11c_c2_trace_repair_d_ends.py": "410c6fe8284e3f7f8c148ba8cc3a01b5bb4d8d25b5193d1415f8cc64e71a92de",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "03528a4e5bdc5762688fabf8023ef6186b90e56b1c0f2df9304be94933c8387b",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+      "scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+      "scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+      "scripts/S11c_c2_exports.py": "97160450e8b1d9aa654cebb2ea0d2074df24186f337fad2ee850bb5b200e7579"
+    },
+    "engineSha256": "03528a4e5bdc5762688fabf8023ef6186b90e56b1c0f2df9304be94933c8387b",
+    "instrumentSha256": "f7e2bcdfcaee6a0c190daaca1f1a268b1a9757addefb834e9c386de647047e98",
+    "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "end": "RIGHT",
+    "case": "LAB_HELD_RHO4_CONSTANT",
+    "instrumentPath": "_measurements/S11c_d_end_current_resumable.py",
+    "profileLimits": {
+      "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+      "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "1",
+      "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+      "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "0"
+    },
+    "endpoint": "oo",
+    "sourceEnergySha256": "962396dcb7c7abb5640b19e5b79fea5fb16a4a1a8b2b7f40d2c9fbec899e801c",
+    "sourceFiles": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "03528a4e5bdc5762688fabf8023ef6186b90e56b1c0f2df9304be94933c8387b",
+      "_measurements/S11c_d_end_current_resumable.py": "f7e2bcdfcaee6a0c190daaca1f1a268b1a9757addefb834e9c386de647047e98",
+      "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+      "_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+      "_measurements/S11c_d_current_runtime_metadata.py": "3ac1315684196a44cff3369f058680c4123cfe3b770b97cc00a25eb17a15358e",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+    },
+    "runtime": {
+      "sympy": "1.14.0",
+      "materialParametersBound": false,
+      "backgroundGradesTruncatedByCancellation": false
+    }
+  },
+  "residualInventory": {
+    "conservative_MATERIAL_CONSTRAINT_RETAINED_RESIDUAL": {
+      "scalars": 5,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "conservative_VARIATION_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "conservative_NORMAL_BOUNDARY_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_VARIATION_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_ENERGY_IBP_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_TRANSPORT_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_TRANSPORT_IBP_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_CONSERVATIVE_VARIATION_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_CONSERVATIVE_BOUNDARY_RECONSTRUCTION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_CURRENT_DECOMPOSITION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_POLARIZATION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_CORRECTION_POLARIZATION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_ENERGY_BALANCE_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "slab_CHEMICAL_POLARIZATION_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_LOCAL_ENERGY_BALANCE_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_FINITE_DEPTH_DERIVATIVE_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_DEPTH_PRIMITIVE_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_DEPTH_RATE_JOIN_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_ACOUSTIC_RADICAL_JOIN_RESIDUAL": {
+      "scalars": 1,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_REDUCED_MASS_FACE_JOIN_RESIDUAL": {
+      "scalars": 5,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    },
+    "acoustic_REDUCED_MECHANICAL_FACE_JOIN_RESIDUAL": {
+      "scalars": 5,
+      "rawNonzeroScalars": 0,
+      "retainedNonzeroScalars": 0,
+      "retainedGrades": []
+    }
+  },
+  "objectsSha256": "4401e698646952ee193dfeba92e68ce519a822a527160db448b640ed67e4334f",
+  "wallSeconds": 822.1625851737335,
+  "peakRssKiB": 153048,
+  "retainedNonzeroScalars": 0,
+  "cancellationIdentityCount": 127,
+  "nonzeroCancellationIdentities": 0,
+  "proofEmissionsSha256": "45ab0837ff23a89ea4d22130de34c3f4b70bdba13cd669f841160e346942a123",
+  "checkedCancellationObjects": 1651,
+  "runDirectory": "/tmp/s11c-trace-repair-20260913/source_right",
+  "tagCount": 3484,
+  "sourceAssignments": 3482,
+  "checkedSourceObjects": 85,
+  "checkedMetadataPaths": 368,
+  "literalSourceResidualScalars": 33,
+  "validationSourceSha256": "3767015f1674c85b9e26b4e9626ceff4d04c460a243f9d88ffcd6a71b057f11f",
+  "artifacts": {
+    "full.out": {
+      "bytes": 8789042,
+      "sha256": "97737027919eb8e217e0fd79df10481ce6862d7384f9b10932f2cdac4f3a8d1e"
+    },
+    "objects.pickle": {
+      "bytes": 764000,
+      "sha256": "4401e698646952ee193dfeba92e68ce519a822a527160db448b640ed67e4334f"
+    },
+    "checks.json": {
+      "bytes": 7371,
+      "sha256": "f68f59c5f9e4cd8e49146d789250f7ff0c9975f7a517000f0ff7b19992286dab"
+    },
+    "progress.jsonl": {
+      "bytes": 146834,
+      "sha256": "a22836b92750dc08748a0a8b7fcf5fc616ad8627555ad78797633b91f8bc999b"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_end_current_source_right_trace_repair.out",
+    "sha256": "97737027919eb8e217e0fd79df10481ce6862d7384f9b10932f2cdac4f3a8d1e",
+    "bytes": 8789042
+  }
+}

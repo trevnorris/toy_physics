@@ -1,4 +1,32 @@
-# S11c-d both-end current source — runtime repaired, RIGHT joins nonzero
+# S11c-d both-end current source — repaired joins
+
+The authorized c2 reference/physical-pressure trace repair has cleared the
+RIGHT source discrepancy. Fresh LAB_HELD/RHO4_CONSTANT calculations retain
+all material symbols and the supplied endpoint limits. Both ends have 33 zero
+top-level source residual scalars. RIGHT has 127 zero exact arithmetic
+identities; LEFT has 82. LEFT preserves all 85 baseline source objects
+(84 structurally, the complete 52-entry parameter map by symbolic key).
+
+Both packets passed source/payload/fingerprint/dimension/grade validation and
+were atomically published under fresh names:
+
+- [RIGHT transcript](../scripts/out/S11c_d_end_current_source_right_trace_repair.out)
+  and [inventory](S11c_d_end_current_source_right_trace_repair_checkpoint.json):
+  822.16 seconds, 153,048 KiB peak RSS, 8,789,042 bytes.
+- [LEFT transcript](../scripts/out/S11c_d_end_current_source_left_trace_repair.out)
+  and [inventory](S11c_d_end_current_source_left_trace_repair_checkpoint.json):
+  127.13 seconds, 123,724 KiB peak RSS, 2,625,497 bytes.
+
+See the [repair report](S11c_c2_trace_repair_report.md) for the actual c2 trace
+construction and all-case upstream checks. Full d regeneration and all nine
+output inventories are complete; the main transcript, both end-frequency
+refreshes and reference-current source refresh are validated and published.
+Scoped/full pencil joins hold at reference and both ends. Next extend the
+existing two-frequency current construction to both source-checked ends. These source
+joins alone do not establish physical flux normalization or global spectral
+coverage. The earlier failed packet and runtime history below remain intact.
+
+## Historical runtime checkpoint before the c2 trace repair
 
 The all-material-symbolic RIGHT source construction for LAB_HELD/RHO4_CONSTANT
 and its exact arithmetic checks have completed on this box. The runtime refactor preserves

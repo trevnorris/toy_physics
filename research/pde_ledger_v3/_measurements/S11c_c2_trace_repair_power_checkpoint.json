@@ -1,0 +1,336 @@
+{
+  "sourcePins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_power_check.py": "f66edea5e1fb4a7f505c56544ad7a70782c0990a1fb196fa0d25f081fff50649",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "546a9a26a54d48d1531774bb5307b5031fc8c9f9add68a8c07c5def95840034e",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "03528a4e5bdc5762688fabf8023ef6186b90e56b1c0f2df9304be94933c8387b",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_check.py": "37d36d1334c53351a099d57ffbcbafaaa37b2e17b48efd67b651788859bb2599",
+    "/tmp/s11c-trace-repair-20260913/c2_full/manifest.json": "a94675b351edccdcfcdf0c6f5b4e314fa57d2adc4df1648d092a2c36b19ac3aa",
+    "/tmp/s11c-trace-repair-20260913/maps_one/inputs.pickle": "f5e778458d318b43e0c1e95b74ffcf66d56871eaa0cff24c693d06b6cc348f5f",
+    "/tmp/s11c-trace-repair-20260913/maps_one/inputs.json": "c24f90cb46d387c68313b323a934bd13c27099749eb63187089b3177ea055844"
+  },
+  "sourcePinsAfter": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_power_check.py": "f66edea5e1fb4a7f505c56544ad7a70782c0990a1fb196fa0d25f081fff50649",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "546a9a26a54d48d1531774bb5307b5031fc8c9f9add68a8c07c5def95840034e",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "03528a4e5bdc5762688fabf8023ef6186b90e56b1c0f2df9304be94933c8387b",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_check.py": "37d36d1334c53351a099d57ffbcbafaaa37b2e17b48efd67b651788859bb2599",
+    "/tmp/s11c-trace-repair-20260913/c2_full/manifest.json": "a94675b351edccdcfcdf0c6f5b4e314fa57d2adc4df1648d092a2c36b19ac3aa",
+    "/tmp/s11c-trace-repair-20260913/maps_one/inputs.pickle": "f5e778458d318b43e0c1e95b74ffcf66d56871eaa0cff24c693d06b6cc348f5f",
+    "/tmp/s11c-trace-repair-20260913/maps_one/inputs.json": "c24f90cb46d387c68313b323a934bd13c27099749eb63187089b3177ea055844"
+  },
+  "producerManifestSha256": "a94675b351edccdcfcdf0c6f5b4e314fa57d2adc4df1648d092a2c36b19ac3aa",
+  "records": [
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionConservativeVariationLabHeldRho4ConstantActionToRowMultiplier",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionConservativeVariationLabHeldRho4ConstantKineticNormalizationResidual",
+      "scalarLeaves": 4,
+      "nonzeroLeaves": 0,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSlabPowerPairingResidualLabHeldRho4ConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 252,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-0.e-143 + 0.e-144*I",
+          "0.e-132 + 0.e-132*I",
+          "-0.e-137 + 0.e-137*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSlabPowerPairingResidualLabHeldRho4ConstantCanonical",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 0,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSignResidualLabHeldRho4ConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 252,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "132.381586405927232151731 + 15.6187138479912824773617*I",
+          "290198.809432691150859153 + 253324.16520149464193921*I",
+          "7.59571033050255960647006 + 12.8456173538818858521083*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionRowRoutingResidualLabHeldRho4ConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 252,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-132.381586405927232151731 - 15.6187138479912824773617*I",
+          "-290198.809432691150859153 - 253324.16520149464193921*I",
+          "-7.59571033050255960647006 - 12.8456173538818858521083*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionConservativeVariationLabHeldRhobrConstantActionToRowMultiplier",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionConservativeVariationLabHeldRhobrConstantKineticNormalizationResidual",
+      "scalarLeaves": 4,
+      "nonzeroLeaves": 0,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSlabPowerPairingResidualLabHeldRhobrConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 252,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-0.e-143 + 0.e-144*I",
+          "0.e-132 + 0.e-132*I",
+          "-0.e-137 + 0.e-137*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSlabPowerPairingResidualLabHeldRhobrConstantCanonical",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 0,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSignResidualLabHeldRhobrConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 252,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "87.0110918724705410845664 - 26.5466843802139826821319*I",
+          "-101313.429639235995706208 - 88516.1118940604691904393*I",
+          "-23.0526505863080415104467 - 42.0612976121292255100285*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionRowRoutingResidualLabHeldRhobrConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 252,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-87.0110918724705410845664 + 26.5466843802139826821319*I",
+          "101313.429639235995706208 + 88516.1118940604691904393*I",
+          "23.0526505863080415104467 + 42.0612976121292255100285*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionConservativeVariationMaterialAdvectedRho4ConstantActionToRowMultiplier",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionConservativeVariationMaterialAdvectedRho4ConstantKineticNormalizationResidual",
+      "scalarLeaves": 4,
+      "nonzeroLeaves": 0,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSlabPowerPairingResidualMaterialAdvectedRho4ConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 504,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-0.e-143 + 0.e-145*I",
+          "0.e-133 + 0.e-132*I",
+          "-0.e-138 + 0.e-137*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSlabPowerPairingResidualMaterialAdvectedRho4ConstantCanonical",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 0,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSignResidualMaterialAdvectedRho4ConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 504,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "318.942787056256578938787 + 8.28558509973475022142799*I",
+          "272223.767710614806222428 + 237889.538731006604981527*I",
+          "-146.397655486991284769632 - 190.423649240930216151542*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionRowRoutingResidualMaterialAdvectedRho4ConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 504,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-318.942787056256578938787 - 8.28558509973475022142799*I",
+          "-272223.767710614806222428 - 237889.538731006604981527*I",
+          "146.397655486991284769632 + 190.423649240930216151542*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionConservativeVariationMaterialAdvectedRhobrConstantActionToRowMultiplier",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionConservativeVariationMaterialAdvectedRhobrConstantKineticNormalizationResidual",
+      "scalarLeaves": 4,
+      "nonzeroLeaves": 0,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSlabPowerPairingResidualMaterialAdvectedRhobrConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 504,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-0.e-140 - 0.e-141*I",
+          "0.e-133 + 0.e-132*I",
+          "-0.e-135 + 0.e-136*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSlabPowerPairingResidualMaterialAdvectedRhobrConstantCanonical",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 0,
+      "infiniteDomainEndpoints": 0,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionSignResidualMaterialAdvectedRhobrConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 504,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "65.6205730647609018121894 - 25.4651941841693047958261*I",
+          "-112021.007838929522425317 - 97738.3335264210976635597*I",
+          "24.3378507507998141401061 + 126.014905857943593487016*I"
+        ]
+      ]
+    },
+    {
+      "writeKey": "s11cc2TraceRepairFullPowerTractionRowRoutingResidualMaterialAdvectedRhobrConstantOperand",
+      "scalarLeaves": 1,
+      "nonzeroLeaves": 1,
+      "infiniteDomainEndpoints": 504,
+      "nonfiniteOutsideDomainEndpoints": 0,
+      "nonfiniteRepresentationLeaves": 0,
+      "pitSamples": [
+        [
+          "-65.6205730647609018121894 + 25.4651941841693047958261*I",
+          "112021.007838929522425317 + 97738.3335264210976635597*I",
+          "-24.3378507507998141401061 - 126.014905857943593487016*I"
+        ]
+      ]
+    }
+  ],
+  "wallSeconds": 130.8238700851798,
+  "peakRssKiB": 661700,
+  "publication": {
+    "path": "scripts/out/S11c_c2_trace_repair_power.out",
+    "bytes": 273533,
+    "sha256": "7aee3a1d8fe8fea2068f9803119ff1f1f56c8d314b92e44aaee69d30dc8bdd5c"
+  },
+  "runDirectory": "/tmp/s11c-trace-repair-20260913/c2_power",
+  "checkedKeys": 24
+}

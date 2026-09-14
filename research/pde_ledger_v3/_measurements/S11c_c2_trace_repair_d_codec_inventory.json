@@ -1,0 +1,27 @@
+{
+  "source": "/tmp/s11c-trace-repair-20260913/d_full/expanded.out",
+  "sourceSha256": "1be5ee0dc207a4620ba0e914af990a98aa701bded12e0810f499a1f209bf6f59",
+  "sourceBytes": 314000831,
+  "encodedBytes": 83972570,
+  "records": 229636,
+  "distinctSharedPayloads": 16415,
+  "payloadMismatches": [],
+  "unencodedPayloadSha256": "1a82e196c7985c234c0580380b08538dccb9b1bf0a1dcfa6245ee38c5a5e4ce4",
+  "decodedPayloadSha256": "1a82e196c7985c234c0580380b08538dccb9b1bf0a1dcfa6245ee38c5a5e4ce4",
+  "sourceIndexChecks": [
+    {
+      "tagCount": 229634,
+      "differentAssignments": 0,
+      "oldBytes": 34310489,
+      "newBytes": 1586766
+    }
+  ],
+  "malformedReferenceRejections": [
+    true,
+    true
+  ],
+  "instrumentSha256": "fc4cf99488708ba3a8b1cde8c7a98c6e5a6c23f5856476b9c138cc09401a9c85",
+  "codecSha256": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+  "wallSeconds": 13.688771598041058,
+  "peakRssKiB": 418960
+}

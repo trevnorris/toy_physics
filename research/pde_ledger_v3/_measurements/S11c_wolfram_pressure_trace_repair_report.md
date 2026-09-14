@@ -32,9 +32,23 @@ rerun completed in 20.80 seconds with 158 zero development residual scalars.
 
 The five existing ablation-harness selector literals still occur exactly once;
 no historical ablation result is being treated as a new repaired run. The old
-main c2 output remains historical until native regeneration completes. The next
-stage is one complete native development case with its original adaptive PIT,
-followed by the full four-case native output and validation/publication.
+main c2 output remains historical until native regeneration completes. The native
+development case completed in 1,004.16 seconds at 588,792 KiB peak RSS with empty
+stderr and all source/prior-output pins stable. Its transcript has 126,423,192
+bytes. The [development validation](S11c_wolfram_pressure_trace_native_development_checkpoint.json)
+finds zero nonzero numerators across nine required residual families, with no
+zero sample denominators. All 144 new trace components have complete family,
+face, grade and restored-dimension joins. The four-case regeneration is next.
+
+The first validator incorrectly required raw `R_N6` equality. The adopted
+[Reading B](S11c_c2_N6_RESOLVED.md) requires operator covariance and channel
+reconstruction; raw coefficients in different field frames need not coincide.
+Both the old and repaired development transcripts have the same 18 nonzero raw
+entries (20,736 numerator samples). The failed validation and source snapshot
+are retained. The validator now records those diagnostics and checks covariance,
+its increment, carrier/cross channels, the split, slot/closure guards and physical
+trace reconstruction. This corrects validation scope; no producer rerun or new
+physical repair is indicated. Cross-engine operand agreement remains an open debt.
 
 b/c1 sources and outputs, all SymPy producers/exports and accepted LEFT/RIGHT
 normalization, authorities, S10/Lean and the retained solver/export contract are

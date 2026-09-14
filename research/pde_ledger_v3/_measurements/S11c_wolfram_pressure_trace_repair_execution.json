@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_VALIDATED_NATIVE_REGENERATION_PENDING",
+  "status": "NATIVE_DEVELOPMENT_VALIDATED_FULL_REGENERATION_PENDING",
   "baseline": "S11c_wolfram_pressure_trace_repair_baseline.json",
   "plan": "S11c_wolfram_pressure_trace_repair_plan.md",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/focused-full",
@@ -120,8 +120,6 @@
   },
   "caseEnvironment": {},
   "remaining": [
-    "commit repair and full focused evidence",
-    "run native development case with full PIT",
     "regenerate and validate native four-case c2 output",
     "publish/commit native evidence; resume REFERENCE normalization"
   ],
@@ -141,5 +139,161 @@
   "focusedResult": {
     "residualScalars": 218,
     "nonzeroResidualScalars": 0
+  },
+  "repairCommit": "f7bcc1e4f72f65711cb0199858368ab3ec8ee27f",
+  "nativeDevelopmentManifest": {
+    "status": "completed",
+    "head": "f7bcc1e4f72f65711cb0199858368ab3ec8ee27f",
+    "startedUtc": "2026-09-14T21:21:42.097565+00:00",
+    "sources": {
+      "mathematica/S11c_b_brane_operator_mathematica_audit.wl": {
+        "bytes": 140124,
+        "sha256": "c77d5cd79a08f785021fa6574ed15ab91d0b4ad12f0ef1c06a2c2c01a7c6cca3"
+      },
+      "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": {
+        "bytes": 100559,
+        "sha256": "58b6557969814c65926b0e0848666ee0819b778c094ee68b4b27a85f218de181"
+      },
+      "mathematica/S11c_c2_N6_mathematica_audit.wl": {
+        "bytes": 77671,
+        "sha256": "ad85604e5d0d07e90bcf2bb8248af239c5521ed0707bacde4da81a8e11866456"
+      },
+      "directives/S11b_SHARED_PHYSICS.md": {
+        "bytes": 76540,
+        "sha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+      },
+      "directives/S11c_a_SHARED_PHYSICS.md": {
+        "bytes": 28887,
+        "sha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4"
+      },
+      "directives/S11c_b_SHARED_PHYSICS.md": {
+        "bytes": 39529,
+        "sha256": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+      },
+      "directives/S11c_c1_SHARED_PHYSICS.md": {
+        "bytes": 50376,
+        "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+      },
+      "directives/S11c_c2_SHARED_PHYSICS.md": {
+        "bytes": 41229,
+        "sha256": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1"
+      },
+      "_measurements/S11c_wolfram_repair_audit_plan.md": {
+        "bytes": 6123,
+        "sha256": "038107789395a012ca0675e97c664a46fb4da13b4e742ef154e51ee694c50e74"
+      },
+      "_measurements/S11c_wolfram_repair_audit_run.py": {
+        "bytes": 6272,
+        "sha256": "e766e7d499e3af6975697e0cc244f029378c0d9a2ac47fa0def3d87dc8f26780"
+      },
+      "_measurements/S11c_wolfram_pressure_trace_repair_plan.md": {
+        "bytes": 4151,
+        "sha256": "e5f9aceb2d4f887592efd4c0a33ef95a87ff9946f1e3348a7c4aa5540552b3e3"
+      },
+      "_measurements/S11c_wolfram_pressure_trace_repair_baseline.json": {
+        "bytes": 1738,
+        "sha256": "82277d495bb5d63aef9da6e3e0df32be381d3c4ff527bdf17400ee070a95ba40"
+      }
+    },
+    "priorOutputs": {
+      "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": {
+        "bytes": 156163159,
+        "sha256": "b7c744a3e698f25a0911463b97d257826a61c4af3c625686c53786a14571b9b5"
+      },
+      "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": {
+        "bytes": 81881078,
+        "sha256": "d63e616786eebb58d24e2270d5e449c3151b150071a341d4a36bdfbc00a17fdd"
+      },
+      "mathematica/out/S11c_c2_N6_mathematica_audit.out": {
+        "bytes": 397864807,
+        "sha256": "6531a9f11c8162eed3cc616c174261546af02fa902760309f128b3862293bff8"
+      }
+    },
+    "command": [
+      "math",
+      "-script",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-development/executed.wl"
+    ],
+    "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-development",
+    "sourceTransform": {
+      "kind": "CASE_RESTRICTION_ONLY",
+      "old": "{case, Tuples[{{\"LAB_HELD\", \"MATERIAL_ADVECTED\"}, {\"RHO4_CONSTANT\", \"RHOBR_CONSTANT\"}}]}",
+      "new": "{case, {{\"LAB_HELD\", \"RHO4_CONSTANT\"}}}",
+      "occurrences": 1,
+      "executedPin": {
+        "bytes": 77622,
+        "sha256": "7fd4945e2e3b623088c0fbd7575ed6025ed6891f569b8d88e4bd751c117403cd"
+      }
+    },
+    "caseEnvironment": {},
+    "childPid": 1869403,
+    "exitCode": 0,
+    "wallSeconds": 1004.1614688122645,
+    "peakRssKiB": 588792,
+    "finishedUtc": "2026-09-14T21:38:26.259451+00:00",
+    "output": {
+      "bytes": 126423192,
+      "sha256": "0a933ef272b416f6ba504add775870f513ceb491648972baa3e1fba7bc6f7474"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sourceStability": {
+      "mathematica/S11c_b_brane_operator_mathematica_audit.wl": true,
+      "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": true,
+      "mathematica/S11c_c2_N6_mathematica_audit.wl": true,
+      "directives/S11b_SHARED_PHYSICS.md": true,
+      "directives/S11c_a_SHARED_PHYSICS.md": true,
+      "directives/S11c_b_SHARED_PHYSICS.md": true,
+      "directives/S11c_c1_SHARED_PHYSICS.md": true,
+      "directives/S11c_c2_SHARED_PHYSICS.md": true,
+      "_measurements/S11c_wolfram_repair_audit_plan.md": true,
+      "_measurements/S11c_wolfram_repair_audit_run.py": true,
+      "_measurements/S11c_wolfram_pressure_trace_repair_plan.md": true,
+      "_measurements/S11c_wolfram_pressure_trace_repair_baseline.json": true
+    },
+    "priorOutputStability": {
+      "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": true,
+      "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": true,
+      "mathematica/out/S11c_c2_N6_mathematica_audit.out": true
+    }
+  },
+  "nativeDevelopmentProgress": {
+    "completedSampleGroups": 51,
+    "sampleGroups": 51,
+    "phase": "validated",
+    "stderrBytes": 0
+  },
+  "referencePreflight": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference-preflight.json",
+  "validationRequirementCorrection": {
+    "status": "VALIDATOR_STRICT_EQUALITY_REQUIREMENT_WITHDRAWN",
+    "sourceSha256": "2a56e39c5a24c78796d995c1e64365af9d8d6e7bd499c375ebcd7df14107a1a7",
+    "result": "native-unresolved-inventory.json",
+    "baselineComparison": "r-n6-baseline-comparison.json",
+    "reason": "The validator incorrectly required raw R_N6=0; the user-adopted Reading B requires covariance plus channel reconstruction. The pre-repair and repaired LAB_HELD/RHO4_CONSTANT outputs both have the same 18 raw nonzero entries and 20736 nonzero numerator samples. No producer change or CAS rerun is indicated.",
+    "replacementChecks": [
+      "R_COV",
+      "R_COV_INCREMENT",
+      "CARRIER_BRIDGE_RESIDUAL",
+      "CARRIER_CHANNEL",
+      "CROSS_CHANNEL",
+      "SPLIT_CHECK",
+      "SLOT_GUARD_RESIDUAL",
+      "CLOSURE_GUARD_RESIDUAL",
+      "PressureTraceReconstructionResidual"
+    ],
+    "retainedDiagnostics": [
+      "R_N6",
+      "SOURCE_CHANNEL"
+    ]
+  },
+  "nativeDevelopmentCheckpoint": "S11c_wolfram_pressure_trace_native_development_checkpoint.json",
+  "nativeDevelopmentResult": {
+    "residualFamilies": 9,
+    "numeratorScalars": 2492064,
+    "nonzero": 0,
+    "denominatorZeros": 0
   }
 }

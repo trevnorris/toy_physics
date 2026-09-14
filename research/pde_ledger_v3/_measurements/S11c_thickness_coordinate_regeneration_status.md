@@ -61,4 +61,11 @@ Serial native producers and recorded physical/artifact checks. Each completed pr
 
 Remaining native producers: d.
 
+The c2 artifact checkpoint is 537d78fd. Its post-save hash check stopped the
+queue on truncated annex content before d started. The complete producer output
+restored the existing annex key; full size/SHA256 and git-annex fsck now pass
+for all five b/c1/c2 transcripts. See
+[recovery evidence](S11c_thickness_coordinate_c2_annex_recovery_checkpoint.json).
+The truncation cause remains unresolved. Resume at d with the existing checks.
+
 Fresh endpoint/reference sources, two-frequency pairing and full current/adjoint normalization remain separate next steps. Native point/path/stratum records do not establish global coverage, scattering or section 3b profile-frequency bound poles.

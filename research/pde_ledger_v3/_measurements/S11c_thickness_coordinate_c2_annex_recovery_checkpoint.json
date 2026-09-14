@@ -1,0 +1,104 @@
+{
+  "before": {
+    "observedUtc": "2026-09-14T15:31:07.015498+00:00",
+    "commit": "537d78fd",
+    "target": "research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out",
+    "annexPointer": "../../../../.git/annex/objects/pF/Kj/MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out/MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out",
+    "source": "/tmp/s11c-thickness-coordinate-20260914/c2_full/full.out",
+    "sourceBytes": 530883300,
+    "sourceSha256": "9712191e3af5e7bbc2eb65824ca283f0c5cb3a35d5e21632d0821412ec018864",
+    "corruptAnnexObject": "/var/projects/toy_physics/.git/annex/objects/pF/Kj/MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out/MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out",
+    "corruptBytes": 79560704,
+    "corruptSha256": "bfd96bf0c6b9a97127579c1931cb0b436d00f83b7ae9c70eca19bf25d7d859bf",
+    "samePrefix": true,
+    "freeDiskBytes": 248251506688,
+    "scope": "Restore the committed annex key from its intact validated producer output. No physics or Git pointer change; cause of truncation is not yet established.",
+    "staging": "/tmp/s11c-thickness-coordinate-20260914/annex_recovery/validated_c2.out"
+  },
+  "quarantine": {
+    "command": [
+      "git",
+      "annex",
+      "fsck",
+      "--numcopies=1",
+      "--json",
+      "--",
+      "research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out"
+    ],
+    "exitCode": 1,
+    "stdout": "{\"dead\":[],\"command\":\"fsck\",\"success\":false,\"input\":[\"research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out\"],\"untrusted\":[],\"key\":\"MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out\",\"error-messages\":[],\"file\":\"research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out\"}\n",
+    "stderr": "  research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out: Bad file size (451.32 MB smaller); moved to .git/annex/bad/MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out\n  ** No known copies exist of research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out\nfsck: 1 failed\n"
+  },
+  "reinject": {
+    "utc": "2026-09-14T15:35:10.405020+00:00",
+    "command": [
+      "git",
+      "annex",
+      "reinject",
+      "/tmp/s11c-thickness-coordinate-20260914/annex_recovery/validated_c2.out",
+      "research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out"
+    ],
+    "exitCode": 0,
+    "stdout": "reinject /tmp/s11c-thickness-coordinate-20260914/annex_recovery/validated_c2.out (checksum...) ok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  "verification": {
+    "verifiedUtc": "2026-09-14T15:35:56.605740+00:00",
+    "payloads": [
+      {
+        "path": "research/pde_ledger_v3/scripts/out/S11c_b_brane_operator_sympy_audit.out",
+        "bytes": 183361030,
+        "sha256": "693f0e804ca5fc3e418406cd049aa3d4c56263e101a7f1ae3078172d674cf98f",
+        "isSymlink": true
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+        "bytes": 90722854,
+        "sha256": "eb4bd18893804a76b15218628fd994834c6bce63b9655f2c42f0f14d855d6da4",
+        "isSymlink": true
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out",
+        "bytes": 530883300,
+        "sha256": "9712191e3af5e7bbc2eb65824ca283f0c5cb3a35d5e21632d0821412ec018864",
+        "isSymlink": true
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_b_export.out",
+        "bytes": 1361873,
+        "sha256": "7620bb53be733b28bfbc1abbd71e940ba1be9ea6db7bde5b436df5a47a4cadd8",
+        "isSymlink": true
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_c2_export.out",
+        "bytes": 7073937,
+        "sha256": "7faeffea42e78dcb334c052ee270bfd5cb85994eb3cc59c5dbd29b925d2d4d2d",
+        "isSymlink": true
+      }
+    ],
+    "fsck": {
+      "command": [
+        "git",
+        "annex",
+        "fsck",
+        "--numcopies=1",
+        "--json",
+        "--",
+        "research/pde_ledger_v3/scripts/out/S11c_b_brane_operator_sympy_audit.out",
+        "research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+        "research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out",
+        "research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_b_export.out",
+        "research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_c2_export.out"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"command\":\"fsck\",\"note\":\"checksum...\",\"success\":true,\"input\":[\"research/pde_ledger_v3/scripts/out/S11c_b_brane_operator_sympy_audit.out\"],\"key\":\"MD5E-s183361030--9c557f4c708b8729945aecf869ae7ebd.out\",\"error-messages\":[],\"file\":\"research/pde_ledger_v3/scripts/out/S11c_b_brane_operator_sympy_audit.out\"}\n{\"command\":\"fsck\",\"note\":\"checksum...\",\"success\":true,\"input\":[\"research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out\"],\"key\":\"MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out\",\"error-messages\":[],\"file\":\"research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out\"}\n{\"command\":\"fsck\",\"note\":\"checksum...\",\"success\":true,\"input\":[\"research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out\"],\"key\":\"MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out\",\"error-messages\":[],\"file\":\"research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out\"}\n{\"command\":\"fsck\",\"note\":\"checksum...\",\"success\":true,\"input\":[\"research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_b_export.out\"],\"key\":\"MD5E-s1361873--6f4302fd9495750e05edf579f6bc9788.out\",\"error-messages\":[],\"file\":\"research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_b_export.out\"}\n{\"command\":\"fsck\",\"note\":\"checksum...\",\"success\":true,\"input\":[\"research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_c2_export.out\"],\"key\":\"MD5E-s7073937--4c8906c5174247ee6454c7b13991a1ab.out\",\"error-messages\":[],\"file\":\"research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_c2_export.out\"}\n",
+      "stderr": ""
+    },
+    "nativeProducerPreserved": {
+      "path": "/tmp/s11c-thickness-coordinate-20260914/c2_full/full.out",
+      "bytes": 530883300,
+      "sha256": "9712191e3af5e7bbc2eb65824ca283f0c5cb3a35d5e21632d0821412ec018864"
+    }
+  },
+  "scope": "Recovery of the existing c2 annex key from the intact validated native producer. No source, export or pointer change; truncation cause unresolved. The post-save guard stopped d before it began."
+}

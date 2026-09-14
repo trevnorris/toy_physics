@@ -12,9 +12,12 @@ and its independent time-action test are repaired; eight generic inertia/action
 components are zero. The source repair is committed at 3b52afcb. The full b producer has completed;
 its four-case export comparison completed with 2634 zero residual scalars
 and validated metadata/source joins after the metadata-domain bottleneck repair.
-The c2 independent kinetic control is repaired and its native producer has
-completed. Focused export validation is restarting with a corrected dependency
-guard and exact order metadata for the new raw-action diagnostics. Execution and the approved
+The c2 independent kinetic control and focused export validation are complete:
+2846 zero residual scalars, 418 objects and 3244 metadata paths, committed at
+537d78fd. A post-save check stopped the queue on truncated c2 annex content;
+the intact producer output restored the same annex key, and all five b/c1/c2
+transcripts pass full hash and git-annex checks. The truncation cause remains
+unresolved. The queue is ready to resume at d. Execution and the approved
 recurring continuation are recorded in the active repair report. Downstream
 artifacts remain historical until each producer's validated regeneration finishes.
 

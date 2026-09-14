@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T14:49:56.470098+00:00",
+  "observedUtc": "2026-09-14T15:36:57.853839+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,35 +15,29 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "completed c2 native producer retained; exact raw-action metadata regression passed; fresh c2 validation restart prepared",
+  "continuationState": "c2 validated and committed; truncated annex payload recovered and verified; ready to restart at d",
   "recurringFollowup": {
     "id": "continue-s11c-d-repair-and-build",
     "status": "ACTIVE",
     "userApproved": true
   },
-  "scope": "b/c1 committed. Native c2 completed; focused guard repaired and raw-action metadata verified on 108 actual scalars. Full c2 closure-delta/artifact validation and d regeneration remain pending.",
+  "scope": "b/c1/c2 complete and committed. All five annex transcripts verified. d and fresh endpoint/reference checks remain pending.",
   "activeContinuation": {
-    "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_b",
-    "startAt": "c1",
-    "controllerSha256": "894b33e45acfaf257a83b6f5f697a54047f9fa03dd09e9699654f46da855a9ed",
-    "planSha256": "d3d4d1ab73bf4a41c3d36279a68cfb520b0845a1ee730e9c8305f0f32f369b73"
+    "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_metadata",
+    "startAt": "c2",
+    "controllerSha256": "aaf719cb663660b0b2d1af5ddd57fcc96a8cabb74d9f4279e9a8e42a0e2af0fd",
+    "planSha256": "d981edea1c36f6a85d3620ff4c4f5e97f14fb8186b0f608f1cd548b63a8049a9"
   },
   "continuationProgress": {
-    "stage": "c1",
-    "operation": "c1_producer",
-    "event": "started",
-    "command": [
-      "/usr/bin/python",
-      "_measurements/S11c_thickness_coordinate_run_stage.py",
-      "--run-directory",
-      "/tmp/s11c-thickness-coordinate-20260914/c1_full",
-      "c1"
-    ],
-    "stdout": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_b/c1_producer.stdout",
-    "stderr": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_b/c1_producer.stderr",
-    "utc": "2026-09-14T13:55:50Z"
+    "stage": "c2",
+    "operation": "c2_publish",
+    "event": "exited",
+    "exitCode": 0,
+    "stdoutSha256": "683c7b65eba470cae266eef69afb517320849b9ef23e98bd04c96b3bb2dc64fb",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "utc": "2026-09-14T14:57:53Z"
   },
-  "continuationStderrBytes": 0,
+  "continuationStderrBytes": 467,
   "c1ProducerManifest": "/tmp/s11c-thickness-coordinate-20260914/c1_full/manifest.json",
   "c1ProducerCompleted": true,
   "c1SourcePinsCurrentlyStable": true,
@@ -51,5 +45,14 @@
   "c2ProducerManifest": "/tmp/s11c-thickness-coordinate-20260914/c2_full/manifest.json",
   "c2ProducerCompleted": true,
   "c2ProducerWallSeconds": 1874.0308460230008,
-  "c2MetadataCheckpoint": "S11c_thickness_coordinate_c2_kinetic_grade_checkpoint.json"
+  "c2MetadataCheckpoint": "S11c_thickness_coordinate_c2_kinetic_grade_checkpoint.json",
+  "c2Commit": "537d78fd",
+  "c2ExportValidation": {
+    "residualScalars": 2846,
+    "nonzeroResidualScalars": 0,
+    "objects": 418,
+    "metadataPaths": 3244
+  },
+  "c2AnnexRecoveryCheckpoint": "S11c_thickness_coordinate_c2_annex_recovery_checkpoint.json",
+  "nextContinuationStateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex"
 }

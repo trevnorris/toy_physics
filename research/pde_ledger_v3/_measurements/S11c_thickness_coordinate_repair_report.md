@@ -259,3 +259,35 @@ the recorded raw residuals, not a new simplification or physical verdict.
 Resume the completed c2 producer's validation in `c2_checks_exact` under
 `continuation_after_c2_metadata`, then let the existing publication/commit/d
 queue proceed. The full closure-delta comparison remains to finish.
+
+## Completed c2 validation and annex-content recovery
+
+The exact-metadata restart completed in **364.40 seconds**, at **2,632,892 KiB**
+peak RSS. All **2846 residual scalars are zero**, across **418 objects and
+3244 metadata paths**. The 44 component records account for all four cases;
+only `s11cc2ClosedSlabOperator` changes among the 70 native export values.
+The native output, focused transcript and export/inventories were committed at
+**537d78fd**. See the
+[c2 export checkpoint](S11c_thickness_coordinate_c2_export_checkpoint.json).
+
+The controller's post-save hash check then stopped the queue before d. The
+native annex object contained 79,560,704 bytes, an exact prefix of its expected
+530,883,300 bytes. The complete validated producer output remained intact in
+`/tmp/s11c-thickness-coordinate-20260914/c2_full/full.out`. Disk space was not
+exhausted; the cause of truncation has not been established.
+
+Targeted `git annex fsck` quarantined the bad object. `git annex reinject`
+restored the existing key from a verified recovery copy, preserving the original
+producer output and the quarantined payload. No Git pointer, export or physics
+source changed. SHA256 and file-size comparisons now match all three native
+b/c1/c2 outputs and both focused transcripts; targeted annex fsck succeeds for
+all five. The recovered native c2 SHA256 is
+`9712191e3af5e7bbc2eb65824ca283f0c5cb3a35d5e21632d0821412ec018864`.
+The [recovery checkpoint](S11c_thickness_coordinate_c2_annex_recovery_checkpoint.json)
+records the observed failure, quarantine, reinjection and verification results.
+
+Resume the existing serial controller at d in a fresh
+`continuation_after_c2_annex` directory after committing this recovery record.
+Its predecessor and post-save content checks remain enabled. Fresh endpoint
+sources, independent-frequency pairing and full current/adjoint normalization
+remain pending; c2's action/export checks alone do not settle that balance.

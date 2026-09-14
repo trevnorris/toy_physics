@@ -4,7 +4,7 @@
   "recordedUtc": "2026-09-14T20:09:08.997024+00:00",
   "authorization": "User approved queuing the four-issue Mathematica audit and specified a maximum of two concurrent Mathematica scripts.",
   "plan": "_measurements/S11c_wolfram_repair_audit_plan.md",
-  "planSha256": "82a0d98dcc593cbdd228d8652d5b8ed2c5982427b7cf4c01b267eff8594c3438",
+  "planSha256": "038107789395a012ca0675e97c664a46fb4da13b4e742ef154e51ee694c50e74",
   "after": [
     "Validate, publish and commit the completed LEFT normalization."
   ],
@@ -84,5 +84,15 @@
   },
   "evidenceRoot": "/var/projects/toy_physics/_scratch/s11c",
   "publicationRoot": "mathematica/out",
-  "storage": "Published .out files through DataLad/git-annex; ordinary sources, reports and inventories through Git."
+  "storage": "Published .out files through DataLad/git-annex; ordinary sources, reports and inventories through Git.",
+  "launchCommand": {
+    "executable": "math",
+    "arguments": [
+      "-script",
+      "<path>"
+    ],
+    "pathMeaning": "Actual Wolfram script path",
+    "specifiedBy": "User"
+  },
+  "updatedUtc": "2026-09-14T20:11:01.454188+00:00"
 }

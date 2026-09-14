@@ -59,6 +59,10 @@ substitute an empty result. If a discrepancy is found, identify the earliest
 affected producer and which descendants need changed values versus refreshed
 source pins. Report and stop before modifying that producer.
 
+Launch each audit with the user-specified command `math -script <path>`, where
+`<path>` is the actual Wolfram script path. Record that exact invocation with
+the run's durable logs and source pins.
+
 Execution is serial by default. The hard maximum is two concurrently running
 Mathematica scripts across sessions, including scripts outside this audit.
 Check occupied Wolfram processes/license use before launch. Internal parallel

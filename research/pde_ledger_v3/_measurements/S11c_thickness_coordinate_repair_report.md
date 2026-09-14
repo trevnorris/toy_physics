@@ -348,3 +348,11 @@ residual counts, missing census fields and changed payloads; see the
 [controller checkpoint](S11c_thickness_coordinate_endpoint_controller_checkpoint.json).
 These are execution guards, not physical evidence. No native construction or
 validator changed in this preparation.
+
+The executor preparation is committed at **195566c2**. The serial endpoint
+queue started at **2026-09-14 17:24:43 UTC**, adopted the completed RIGHT
+construction and began its validator/publisher. Runtime discovery is
+`active_endpoint_controller.json` under the run root; the tracked execution
+checkpoint explicitly gives this pointer priority over the two completed
+earlier queues. Subsequent stages retain the existing order and separate
+publication/commit boundaries.

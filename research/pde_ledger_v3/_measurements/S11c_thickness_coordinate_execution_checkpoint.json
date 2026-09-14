@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T17:15:15.956417+00:00",
+  "observedUtc": "2026-09-14T17:25:34.991282+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,13 +15,13 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "native regeneration complete and committed; fresh RIGHT endpoint source construction running",
+  "continuationState": "serial endpoint queue active; completed RIGHT construction adopted for validation and publication",
   "recurringFollowup": {
     "id": "continue-s11c-d-repair-and-build",
     "status": "ACTIVE",
     "userApproved": true
   },
-  "scope": "b/c1/c2/d native regeneration complete through 8b2e3cf2. Fresh endpoint/reference sources, frequency packets, independent-frequency pairing and current/adjoint normalization remain pending.",
+  "scope": "Native b/c1/c2/d queue complete. Fresh RIGHT source constructed with zero retained residuals and 127 zero cancellation identities. Endpoint validator/publication and subsequent planned stages are managed serially.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -62,7 +62,7 @@
   "activeEndpoint": {
     "stage": "right_source",
     "operation": "construct",
-    "status": "running",
+    "status": "construction_complete",
     "supervisorPid": 1770163,
     "runDirectory": "/tmp/s11c-thickness-coordinate-20260914/end_source_right",
     "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_endpoint_plan.json",
@@ -100,7 +100,25 @@
     "annex": [
       "scripts/out/S11c_d_end_current_source_right_thickness_repair.out"
     ],
-    "childPid": 1770165
+    "childPid": 1770165,
+    "exitCode": 0,
+    "wallSeconds": 454.8330445634201,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-14T17:21:47.648428+00:00"
   },
-  "endpointContinuationInstruction": "Read active_endpoint.json and its invocation/progress/checks before launching work. If construction is live, preserve it. After successful completion, execute its remaining validator/publisher, inspect residuals, checkpoint via Git/DataLad, then proceed to the next stage of the endpoint plan. Native active_continuation.json records a completed queue; do not rerun it."
+  "endpointContinuationInstruction": "FIRST read active_endpoint_controller.json and the named progress.json and logs. It owns the serial endpoint stages and must not be duplicated. If running, preserve it. If failed, inspect the latest operation and saved operands; fix within scope and checkpoint before resuming. active_endpoint.json records the earlier adopted single RIGHT construction, and active_continuation.json records the completed native queue. After endpoint_plan_complete, inspect all commits/residuals and continue with full endpoint current/adjoint normalization from the retained plan.",
+  "activeEndpointControllerPointer": "/tmp/s11c-thickness-coordinate-20260914/active_endpoint_controller.json",
+  "activeEndpointController": {
+    "controllerPid": 1773860,
+    "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/endpoint_continuation",
+    "planSha256": "60d3a7f835167c305dbb3e76f46e539242f7458ae5597b2ad03b972b0cea0e31",
+    "controllerSha256": "46fd4d3380438deba8c280ccb0c150a3a96c852b0ec2e5462266fae4503bf8bd",
+    "latest": {
+      "event": "child_running",
+      "stage": "right_source",
+      "operation": "validate_publish",
+      "childPid": 1773905,
+      "utc": "2026-09-14T17:24:44Z"
+    }
+  }
 }

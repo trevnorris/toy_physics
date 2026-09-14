@@ -1,12 +1,12 @@
 {
   "kind": "MANUAL_REPOSITORY_WORK_QUEUE",
-  "status": "READY_AFTER_LEFT_COMMIT",
+  "status": "AUDITED_DEFECT_REQUIRES_USER_APPROVAL",
   "recordedUtc": "2026-09-14T20:09:08.997024+00:00",
   "authorization": "User approved queuing the four-issue Mathematica audit and specified a maximum of two concurrent Mathematica scripts.",
   "plan": "_measurements/S11c_wolfram_repair_audit_plan.md",
   "planSha256": "038107789395a012ca0675e97c664a46fb4da13b4e742ef154e51ee694c50e74",
   "after": [
-    "Validate, publish and commit the completed LEFT normalization."
+    "LEFT prerequisite committed at b271c71b4601adf3aaa1457a4ac04a44f2f57995."
   ],
   "before": [
     "REFERENCE normalization construction",
@@ -24,22 +24,28 @@
     {
       "id": "conservative_inertia_sign",
       "sympyRepairCommit": "a74da30a",
-      "status": "NOT_YET_AUDITED"
+      "status": "ABSENT_ON_AUDITED_DOMAIN",
+      "scope": "b native kinetic terms and assembly coefficients in raw/frozen/live constructors; both density representatives; both constrained stored-variation routes on the stated energy probe"
     },
     {
       "id": "mechanical_load_normalization",
       "sympyRepairCommit": "c643112a",
-      "status": "NOT_YET_AUDITED"
+      "status": "ABSENT_ON_AUDITED_DOMAIN",
+      "scope": "b prescribed face work, all five generalized components and power, both faces/routes/anchorings/densities with symbolic stationary width; not full closed c2 power"
     },
     {
       "id": "reference_physical_pressure_trace",
       "sympyRepairCommit": "a05b05e3",
-      "status": "NOT_YET_AUDITED"
+      "status": "PRESENT",
+      "scope": "c2 N6 native image assignments and affine trace on the exact constant-height diagonal locus; c1 pressure independently joined to the boundary solution",
+      "earliestAffectedProducer": "mathematica/S11c_c2_N6_mathematica_audit.wl",
+      "unexecutedCoverage": "nonconstant-profile ordered two/three-leg eta/sigma inverse; no absence or global spectral claim"
     },
     {
       "id": "thickness_kinetic_coordinate",
       "sympyRepairCommit": "3b52afcb",
-      "status": "NOT_YET_AUDITED"
+      "status": "ABSENT_ON_AUDITED_DOMAIN",
+      "scope": "b native kinetic terms against the physical deltaW=W0*eW action with symbolic nonuniform width, both densities, all three constructors"
     }
   ],
   "dispositions": [
@@ -80,8 +86,12 @@
       "stderrBytes": 0,
       "finishedUtc": "2026-09-14T19:25:49.776432+00:00"
     },
-    "leftValidation": "VALIDATED_AND_PUBLISHED",
-    "leftCheckpoint": "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json"
+    "leftValidation": "COMMITTED",
+    "leftCheckpoint": "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json",
+    "leftCommit": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
+    "auditStatus": "AUDITED_DEFECT_REQUIRES_USER_APPROVAL",
+    "activeProcess": null,
+    "nextAction": "Obtain user approval for S11c_wolfram_pressure_trace_repair_plan.md before editing the native c2 producer. REFERENCE/scattering remains paused at this decision."
   },
   "evidenceRoot": "/var/projects/toy_physics/_scratch/s11c",
   "publicationRoot": "mathematica/out",
@@ -95,5 +105,8 @@
     "pathMeaning": "Actual Wolfram script path",
     "specifiedBy": "User"
   },
-  "updatedUtc": "2026-09-14T20:28:32.731215+00:00"
+  "updatedUtc": "2026-09-14T20:54:58.471394+00:00",
+  "report": "_measurements/S11c_wolfram_repair_audit_report.md",
+  "checkpoint": "_measurements/S11c_wolfram_repair_audit_checkpoint.json",
+  "repairPlan": "_measurements/S11c_wolfram_pressure_trace_repair_plan.md"
 }

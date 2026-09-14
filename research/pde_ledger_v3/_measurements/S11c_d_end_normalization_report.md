@@ -39,10 +39,11 @@ threshold. Its independently computed discarded balance matrices vanish;
 is 8.21e-13. The LEFT original and remainder transcripts are published with
 source pins in [the checkpoint](S11c_d_end_normalization_left_thickness_repair_checkpoint.json).
 
-The [user-approved Mathematica audit](S11c_wolfram_repair_audit_plan.md) of the
-four upstream repairs is next, before REFERENCE or further scattering. No
-Mathematica physics result is yet claimed. Two concurrent Mathematica scripts
-is the license ceiling; heavy CAS jobs remain serial. The remaining program
-resumes after the audit disposition and any required repair approval.
+LEFT is committed at b271c71b. The [Mathematica audit](S11c_wolfram_repair_audit_report.md)
+found a duplicate physical/reference pressure shift in c2 N6; the three mechanical
+issues are absent on the audited b domain. The [repair plan](S11c_wolfram_pressure_trace_repair_plan.md)
+requires user approval before changing that producer. REFERENCE and scattering
+remain paused at this decision; the accepted SymPy results are unchanged.
+No CAS process is active.
 Existing sheet/exceptional-domain limits remain.
 The user controls continuation; no scheduled follow-ups are active or authorized.

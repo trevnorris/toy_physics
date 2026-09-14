@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T20:28:32.731215+00:00",
+  "observedUtc": "2026-09-14T20:54:58.471394+00:00",
   "active": {
     "stage": "left_validate",
     "command": [
@@ -154,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Commit the accepted LEFT checkpoint, then execute the four-issue Mathematica audit before REFERENCE or scattering.",
+  "nextStage": "Obtain user approval for S11c_wolfram_pressure_trace_repair_plan.md before editing the native c2 producer. REFERENCE/scattering remains paused at this decision.",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -339,5 +339,8 @@
       }
     },
     "maximumResidualMinusRemainderNorm": 8.207529655138466e-13
-  }
+  },
+  "leftCommit": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
+  "wolframAuditCheckpoint": "S11c_wolfram_repair_audit_checkpoint.json",
+  "wolframAuditStatus": "AUDITED_DEFECT_REQUIRES_USER_APPROVAL"
 }

@@ -1,0 +1,412 @@
+{
+  "recordedUtc": "2026-09-14T20:53:06.511195+00:00",
+  "status": "AUDITED_DEFECT_REQUIRES_USER_APPROVAL",
+  "published": true,
+  "leftPrerequisiteCommit": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
+  "mechanical": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-repair-audit-20260914/mechanical-final",
+    "manifest": {
+      "status": "completed",
+      "head": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
+      "startedUtc": "2026-09-14T20:49:39.667161+00:00",
+      "sources": {
+        "mathematica/S11c_b_brane_operator_mathematica_audit.wl": {
+          "bytes": 140124,
+          "sha256": "c77d5cd79a08f785021fa6574ed15ab91d0b4ad12f0ef1c06a2c2c01a7c6cca3"
+        },
+        "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": {
+          "bytes": 100559,
+          "sha256": "58b6557969814c65926b0e0848666ee0819b778c094ee68b4b27a85f218de181"
+        },
+        "mathematica/S11c_c2_N6_mathematica_audit.wl": {
+          "bytes": 72941,
+          "sha256": "e5cea55b4c061323e3a2e84acb4cc9716a3bf9f1a3ee53e8f0303c275714e745"
+        },
+        "directives/S11b_SHARED_PHYSICS.md": {
+          "bytes": 76540,
+          "sha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+        },
+        "directives/S11c_a_SHARED_PHYSICS.md": {
+          "bytes": 28887,
+          "sha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4"
+        },
+        "directives/S11c_b_SHARED_PHYSICS.md": {
+          "bytes": 39529,
+          "sha256": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+        },
+        "directives/S11c_c1_SHARED_PHYSICS.md": {
+          "bytes": 50376,
+          "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+        },
+        "directives/S11c_c2_SHARED_PHYSICS.md": {
+          "bytes": 41229,
+          "sha256": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1"
+        },
+        "_measurements/S11c_wolfram_repair_audit_plan.md": {
+          "bytes": 6123,
+          "sha256": "038107789395a012ca0675e97c664a46fb4da13b4e742ef154e51ee694c50e74"
+        },
+        "_measurements/S11c_wolfram_repair_audit_run.py": {
+          "bytes": 4726,
+          "sha256": "dd05870d2ad22312efb2de73d4bb234ce3a2e89e62abe7265f4a3b1dbe072fe2"
+        },
+        "mathematica/S11c_wolfram_mechanical_repair_audit.wl": {
+          "bytes": 14106,
+          "sha256": "f4eaf36d5dc4ae2ea76b06952bf59700ee9879af84e6a7291238544265cfce48"
+        }
+      },
+      "priorOutputs": {
+        "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": {
+          "bytes": 156163159,
+          "sha256": "b7c744a3e698f25a0911463b97d257826a61c4af3c625686c53786a14571b9b5"
+        },
+        "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": {
+          "bytes": 81881078,
+          "sha256": "d63e616786eebb58d24e2270d5e449c3151b150071a341d4a36bdfbc00a17fdd"
+        },
+        "mathematica/out/S11c_c2_N6_mathematica_audit.out": {
+          "bytes": 397864807,
+          "sha256": "6531a9f11c8162eed3cc616c174261546af02fa902760309f128b3862293bff8"
+        }
+      },
+      "command": [
+        "math",
+        "-script",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-repair-audit-20260914/mechanical-final/sources/mathematica/S11c_wolfram_mechanical_repair_audit.wl"
+      ],
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-repair-audit-20260914/mechanical-final",
+      "childPid": 1855266,
+      "exitCode": 0,
+      "wallSeconds": 18.686670788563788,
+      "peakRssKiB": 404884,
+      "finishedUtc": "2026-09-14T20:49:58.354584+00:00",
+      "output": {
+        "bytes": 504957,
+        "sha256": "2abe073d929302c3a024e6cce23e46e9c4c8fa40f8ebccbefd24676977b8d5b2"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceStability": {
+        "mathematica/S11c_b_brane_operator_mathematica_audit.wl": true,
+        "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": true,
+        "mathematica/S11c_c2_N6_mathematica_audit.wl": true,
+        "directives/S11b_SHARED_PHYSICS.md": true,
+        "directives/S11c_a_SHARED_PHYSICS.md": true,
+        "directives/S11c_b_SHARED_PHYSICS.md": true,
+        "directives/S11c_c1_SHARED_PHYSICS.md": true,
+        "directives/S11c_c2_SHARED_PHYSICS.md": true,
+        "_measurements/S11c_wolfram_repair_audit_plan.md": true,
+        "_measurements/S11c_wolfram_repair_audit_run.py": true,
+        "mathematica/S11c_wolfram_mechanical_repair_audit.wl": true
+      },
+      "priorOutputStability": {
+        "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": true,
+        "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": true,
+        "mathematica/out/S11c_c2_N6_mathematica_audit.out": true
+      }
+    },
+    "manifestPin": {
+      "bytes": 4189,
+      "sha256": "d20398ba276ac90e86edc937d8dde83b8f9a5f67b393c48254398d870363a3fa"
+    },
+    "summary": {
+      "wlRepairInertia": {
+        "records": 24,
+        "zeroResiduals": 24,
+        "nonzeroResiduals": {}
+      },
+      "wlRepairStoredProbe": {
+        "records": 64,
+        "zeroResiduals": 64,
+        "nonzeroResiduals": {}
+      },
+      "wlRepairFaceWork": {
+        "records": 16,
+        "zeroResiduals": 16,
+        "nonzeroResiduals": {}
+      },
+      "wlRepairFaceRow": {
+        "records": 80,
+        "zeroResiduals": 80,
+        "nonzeroResiduals": {}
+      },
+      "wlRepairFacePower": {
+        "records": 16,
+        "zeroResiduals": 16,
+        "nonzeroResiduals": {}
+      },
+      "mutationRetainedNonzeroComponents": 112,
+      "inertiaSignActionNonzeroComponents": 24,
+      "coordinateActionNonzeroComponents": 6,
+      "assemblyCoefficients": [
+        [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ]
+      ]
+    },
+    "summaryPin": {
+      "bytes": 807,
+      "sha256": "89ba40277cf6a0f4efe281650b88db002694749968f16cf432c7e1887fd8c1de"
+    },
+    "tagCount": 393,
+    "physicalRecordCount": 362,
+    "keyDigest": "3146e12cc611c6527951f7106ecaa8a6856a4f3933aeef09fe2f460cd21341d5",
+    "publication": {
+      "path": "mathematica/out/S11c_wolfram_mechanical_repair_audit.out",
+      "bytes": 504957,
+      "sha256": "2abe073d929302c3a024e6cce23e46e9c4c8fa40f8ebccbefd24676977b8d5b2"
+    }
+  },
+  "pressureTrace": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-repair-audit-20260914/trace-final",
+    "manifest": {
+      "status": "completed",
+      "head": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
+      "startedUtc": "2026-09-14T20:50:45.160527+00:00",
+      "sources": {
+        "mathematica/S11c_b_brane_operator_mathematica_audit.wl": {
+          "bytes": 140124,
+          "sha256": "c77d5cd79a08f785021fa6574ed15ab91d0b4ad12f0ef1c06a2c2c01a7c6cca3"
+        },
+        "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": {
+          "bytes": 100559,
+          "sha256": "58b6557969814c65926b0e0848666ee0819b778c094ee68b4b27a85f218de181"
+        },
+        "mathematica/S11c_c2_N6_mathematica_audit.wl": {
+          "bytes": 72941,
+          "sha256": "e5cea55b4c061323e3a2e84acb4cc9716a3bf9f1a3ee53e8f0303c275714e745"
+        },
+        "directives/S11b_SHARED_PHYSICS.md": {
+          "bytes": 76540,
+          "sha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+        },
+        "directives/S11c_a_SHARED_PHYSICS.md": {
+          "bytes": 28887,
+          "sha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4"
+        },
+        "directives/S11c_b_SHARED_PHYSICS.md": {
+          "bytes": 39529,
+          "sha256": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+        },
+        "directives/S11c_c1_SHARED_PHYSICS.md": {
+          "bytes": 50376,
+          "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+        },
+        "directives/S11c_c2_SHARED_PHYSICS.md": {
+          "bytes": 41229,
+          "sha256": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1"
+        },
+        "_measurements/S11c_wolfram_repair_audit_plan.md": {
+          "bytes": 6123,
+          "sha256": "038107789395a012ca0675e97c664a46fb4da13b4e742ef154e51ee694c50e74"
+        },
+        "_measurements/S11c_wolfram_repair_audit_run.py": {
+          "bytes": 4726,
+          "sha256": "dd05870d2ad22312efb2de73d4bb234ce3a2e89e62abe7265f4a3b1dbe072fe2"
+        },
+        "mathematica/S11c_wolfram_pressure_trace_audit.wl": {
+          "bytes": 11529,
+          "sha256": "f069ed15d570a94af989fe273c2f9667ba8952bd05622047aed5309176fe91c3"
+        }
+      },
+      "priorOutputs": {
+        "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": {
+          "bytes": 156163159,
+          "sha256": "b7c744a3e698f25a0911463b97d257826a61c4af3c625686c53786a14571b9b5"
+        },
+        "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": {
+          "bytes": 81881078,
+          "sha256": "d63e616786eebb58d24e2270d5e449c3151b150071a341d4a36bdfbc00a17fdd"
+        },
+        "mathematica/out/S11c_c2_N6_mathematica_audit.out": {
+          "bytes": 397864807,
+          "sha256": "6531a9f11c8162eed3cc616c174261546af02fa902760309f128b3862293bff8"
+        }
+      },
+      "command": [
+        "math",
+        "-script",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-repair-audit-20260914/trace-final/sources/mathematica/S11c_wolfram_pressure_trace_audit.wl"
+      ],
+      "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-repair-audit-20260914/trace-final",
+      "childPid": 1855978,
+      "exitCode": 0,
+      "wallSeconds": 19.12712133489549,
+      "peakRssKiB": 404760,
+      "finishedUtc": "2026-09-14T20:51:04.288469+00:00",
+      "output": {
+        "bytes": 224106,
+        "sha256": "54bf7b3238c5c9cd10c3be1842b74c0ad4bf5a84924c5527cfb57989c42d47fd"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceStability": {
+        "mathematica/S11c_b_brane_operator_mathematica_audit.wl": true,
+        "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": true,
+        "mathematica/S11c_c2_N6_mathematica_audit.wl": true,
+        "directives/S11b_SHARED_PHYSICS.md": true,
+        "directives/S11c_a_SHARED_PHYSICS.md": true,
+        "directives/S11c_b_SHARED_PHYSICS.md": true,
+        "directives/S11c_c1_SHARED_PHYSICS.md": true,
+        "directives/S11c_c2_SHARED_PHYSICS.md": true,
+        "_measurements/S11c_wolfram_repair_audit_plan.md": true,
+        "_measurements/S11c_wolfram_repair_audit_run.py": true,
+        "mathematica/S11c_wolfram_pressure_trace_audit.wl": true
+      },
+      "priorOutputStability": {
+        "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": true,
+        "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": true,
+        "mathematica/out/S11c_c2_N6_mathematica_audit.out": true
+      }
+    },
+    "manifestPin": {
+      "bytes": 4169,
+      "sha256": "892567ca56f7659afd2c7e80924d32bf0377791e3aa76855c18e5466e2a7b234"
+    },
+    "summary": {
+      "cases": 8,
+      "records": 85,
+      "c1JoinResiduals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "nativeResponseJoinResiduals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "independentAffineResiduals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "nativeFoldResiduals": [
+        "((-1/2*I)*auditContrast*etaBg*LambdaA0*muTheta*omega*qIn*rhoM*W0)/(rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaA0*muTheta*omega^2*qIn*rhoM*tauV*W0)/(2*rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*LambdaV0*omega*qIn*rhoM*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*omega*qIn*rhoM^2*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaV0*omega^2*qIn*rhoM*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauV*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) + ((I/2)*auditContrast*etaBg*omega^3*qIn*rhoM^2*tauA*tauV*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV))",
+        "((-1/2*I)*auditContrast*etaBg*LambdaA0*muTheta*omega*qIn*rhoM*W0)/(rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaA0*muTheta*omega^2*qIn*rhoM*tauV*W0)/(2*rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*LambdaV0*omega*qIn*rhoM*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*omega*qIn*rhoM^2*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaV0*omega^2*qIn*rhoM*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauV*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) + ((I/2)*auditContrast*etaBg*omega^3*qIn*rhoM^2*tauA*tauV*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV))",
+        "((-1/2*I)*auditContrast*etaBg*LambdaA0*muTheta*omega*qIn*rhoM*W0)/(rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaA0*muTheta*omega^2*qIn*rhoM*tauV*W0)/(2*rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*LambdaV0*omega*qIn*rhoM*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*omega*qIn*rhoM^2*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaV0*omega^2*qIn*rhoM*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauV*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) + ((I/2)*auditContrast*etaBg*omega^3*qIn*rhoM^2*tauA*tauV*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV))",
+        "((-1/2*I)*auditContrast*etaBg*LambdaA0*muTheta*omega*qIn*rhoM*W0)/(rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaA0*muTheta*omega^2*qIn*rhoM*tauV*W0)/(2*rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*LambdaV0*omega*qIn*rhoM*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*omega*qIn*rhoM^2*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaV0*omega^2*qIn*rhoM*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauV*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) + ((I/2)*auditContrast*etaBg*omega^3*qIn*rhoM^2*tauA*tauV*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV))",
+        "((-1/2*I)*auditContrast*etaBg*LambdaA0*muTheta*omega*qIn*rhoM*W0)/(rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaA0*muTheta*omega^2*qIn*rhoM*tauV*W0)/(2*rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*LambdaV0*omega*qIn*rhoM*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*omega*qIn*rhoM^2*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaV0*omega^2*qIn*rhoM*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauV*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) + ((I/2)*auditContrast*etaBg*omega^3*qIn*rhoM^2*tauA*tauV*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV))",
+        "((-1/2*I)*auditContrast*etaBg*LambdaA0*muTheta*omega*qIn*rhoM*W0)/(rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaA0*muTheta*omega^2*qIn*rhoM*tauV*W0)/(2*rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*LambdaV0*omega*qIn*rhoM*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*omega*qIn*rhoM^2*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaV0*omega^2*qIn*rhoM*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauV*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) + ((I/2)*auditContrast*etaBg*omega^3*qIn*rhoM^2*tauA*tauV*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV))",
+        "((-1/2*I)*auditContrast*etaBg*LambdaA0*muTheta*omega*qIn*rhoM*W0)/(rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaA0*muTheta*omega^2*qIn*rhoM*tauV*W0)/(2*rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*LambdaV0*omega*qIn*rhoM*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*omega*qIn*rhoM^2*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaV0*omega^2*qIn*rhoM*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauV*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) + ((I/2)*auditContrast*etaBg*omega^3*qIn*rhoM^2*tauA*tauV*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV))",
+        "((-1/2*I)*auditContrast*etaBg*LambdaA0*muTheta*omega*qIn*rhoM*W0)/(rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaA0*muTheta*omega^2*qIn*rhoM*tauV*W0)/(2*rhoBr*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*LambdaV0*omega*qIn*rhoM*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - ((I/2)*auditContrast*etaBg*omega*qIn*rhoM^2*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*LambdaV0*omega^2*qIn*rhoM*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauA*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) - (auditContrast*etaBg*omega^2*qIn*rhoM^2*tauV*vFace*W0)/(2*(I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV)) + ((I/2)*auditContrast*etaBg*omega^3*qIn*rhoM^2*tauA*tauV*vFace*W0)/((I*LambdaA0*omega + I*qIn*rhoM + omega*qIn*rhoM*tauA)*(I + omega*tauV))"
+      ],
+      "witnessResiduals": [
+        "(143*I)/20",
+        "(143*I)/20",
+        "(143*I)/20",
+        "(143*I)/20",
+        "(143*I)/20",
+        "(143*I)/20",
+        "(143*I)/20",
+        "(143*I)/20"
+      ]
+    },
+    "summaryPin": {
+      "bytes": 9425,
+      "sha256": "987a6297f86f979f4f242bb0e897ac5b66cf4884bb5fa0b07bffa415aff623f8"
+    },
+    "tagCount": 85,
+    "physicalRecordCount": 64,
+    "keyDigest": "f35aa5369213fcaeb20b76682915beed8d5b95a9969637abb6e85c031e55b3b8",
+    "publication": {
+      "path": "mathematica/out/S11c_wolfram_pressure_trace_audit.out",
+      "bytes": 224106,
+      "sha256": "54bf7b3238c5c9cd10c3be1842b74c0ad4bf5a84924c5527cfb57989c42d47fd"
+    }
+  },
+  "inventorySource": {
+    "bytes": 7234,
+    "sha256": "95d0f27bc10c8fe2329b1a00e18805261df77f911bc609ff0b88126d0b9de891"
+  },
+  "issues": [
+    {
+      "id": "conservative_inertia_sign",
+      "status": "ABSENT_ON_AUDITED_DOMAIN",
+      "scope": "b native kinetic terms and assembly coefficients in raw/frozen/live constructors; both density representatives; both constrained stored-variation routes on the stated energy probe"
+    },
+    {
+      "id": "mechanical_load_normalization",
+      "status": "ABSENT_ON_AUDITED_DOMAIN",
+      "scope": "b prescribed face work, all five generalized components and power, both faces/routes/anchorings/densities with symbolic stationary width; not full closed c2 power"
+    },
+    {
+      "id": "reference_physical_pressure_trace",
+      "status": "PRESENT",
+      "scope": "c2 N6 native image assignments and affine trace on the exact constant-height diagonal locus; c1 pressure independently joined to the boundary solution",
+      "earliestAffectedProducer": "mathematica/S11c_c2_N6_mathematica_audit.wl",
+      "unexecutedCoverage": "nonconstant-profile ordered two/three-leg eta/sigma inverse; no absence or global spectral claim"
+    },
+    {
+      "id": "thickness_kinetic_coordinate",
+      "status": "ABSENT_ON_AUDITED_DOMAIN",
+      "scope": "b native kinetic terms against the physical deltaW=W0*eW action with symbolic nonuniform width, both densities, all three constructors"
+    }
+  ],
+  "nextAction": "Obtain user approval for S11c_wolfram_pressure_trace_repair_plan.md before editing the native c2 producer. REFERENCE/scattering remains paused at this decision.",
+  "unchanged": [
+    "native b/c1/c2 Wolfram producers and prior transcripts",
+    "all SymPy producers/exports/accepted normalization outputs",
+    "physics authorities",
+    "S10/Lean",
+    "retained solver/export contract"
+  ],
+  "developmentRuns": {
+    "mechanical-01": "Completed exploratory mechanical run; final adds computed summary and action-level negative-kinetic mutation.",
+    "trace-01": "Completed counterexample; final uses explicit SeriesCoefficient selection to remove beyond-order rational remainders from retained metadata. Raw evidence preserved."
+  }
+}

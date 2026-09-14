@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T20:28:32.731215+00:00",
+  "observedUtc": "2026-09-14T20:54:58.471394+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,7 +15,7 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "RIGHT and LEFT normalization validated; checkpoint LEFT, then the four-issue Mathematica audit.",
+  "continuationState": "RIGHT and LEFT committed; Mathematica c2 trace defect audited; await user repair approval.",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
     "status": "DELETED",
@@ -25,7 +25,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "RIGHT and LEFT full-subspace normalization accepted on the supplied case. Mathematica applicability of the four upstream repairs remains unaudited; REFERENCE/scattering continuation awaits that audit disposition.",
+  "scope": "Accepted SymPy normalization remains unchanged. The Mathematica c2 N6 pressure-slot audit found a duplicate shift; producer repair requires approval before REFERENCE/scattering.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -193,5 +193,6 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-14T20:26:12.396683+00:00"
   },
-  "queuedMathematicaAudit": "S11c_wolfram_repair_audit_queue.json"
+  "queuedMathematicaAudit": "S11c_wolfram_repair_audit_queue.json",
+  "wolframAuditCheckpoint": "S11c_wolfram_repair_audit_checkpoint.json"
 }

@@ -19,10 +19,11 @@ adjoint field maps, with no raw norm above the diagnostic threshold. Its
 independently computed discarded balance matrices vanish; the largest
 residual-minus-remainder norm is 8.21e-13.
 
-The [Mathematica audit of four upstream repairs](S11c_wolfram_repair_audit_plan.md)
-is next, before REFERENCE and further scattering. This focused audit
-authorization is separate from the original SymPy-only lane. Two concurrent
-Mathematica scripts is the license ceiling; heavy CAS jobs remain serial.
+The [Mathematica audit](S11c_wolfram_repair_audit_report.md) found a duplicate
+pressure shift in native c2 N6. The three mechanical issues are absent on the
+audited b domain (200 zero residuals). The [repair plan](S11c_wolfram_pressure_trace_repair_plan.md)
+awaits user approval before REFERENCE or further scattering. LEFT is committed
+at b271c71b; the accepted SymPy chain remains unchanged. No CAS run is active.
 See the [normalization report](S11c_d_end_normalization_report.md) and
 [plan](S11c_d_end_normalization_plan.md) for complete evidence and boundaries.
 

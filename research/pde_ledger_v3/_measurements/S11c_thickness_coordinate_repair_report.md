@@ -326,3 +326,25 @@ job. Validate, publish and commit its completed packet before the next planned
 stage. LEFT/reference sources, both frequency packets and the three fresh
 pairings remain pending. The original retained two-frequency discrepancy is
 not yet retested by these successful native regeneration checks.
+
+RIGHT source construction completed in **453.55 seconds**, at **201,604 KiB**
+peak RSS. Its saved census has **127 cancellation identities**, all zero, and
+no retained nonzero source residual. Its validator/publication remains next;
+these construction results do not yet supply a fresh two-frequency pairing.
+
+The prepared endpoint stages now have a serial executor,
+`S11c_thickness_coordinate_endpoint_continue.py`. It can adopt the completed
+RIGHT construction without repeating it, runs each existing validator, checks
+published payload hashes and the recorded residual census, and commits before
+the next stage. It uses an exclusive controller lock, source/input/plan pins,
+fresh log files, and stops on any command or publication failure. A failed
+pairing emitter preserves its full diagnostic output before the stop. The
+separate `active_endpoint_controller.json` points to its live progress; consult
+it before the earlier single-construction `active_endpoint.json`.
+
+Compilation and the complete eight-stage command-plan check pass. Isolated
+operational fixtures exercise accepted exact payloads and rejection of nonzero
+residual counts, missing census fields and changed payloads; see the
+[controller checkpoint](S11c_thickness_coordinate_endpoint_controller_checkpoint.json).
+These are execution guards, not physical evidence. No native construction or
+validator changed in this preparation.

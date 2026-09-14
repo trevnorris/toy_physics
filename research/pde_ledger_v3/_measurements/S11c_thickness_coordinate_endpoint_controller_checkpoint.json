@@ -1,0 +1,10 @@
+{
+  "instrumentSha256": "46fd4d3380438deba8c280ccb0c150a3a96c852b0ec2e5462266fae4503bf8bd",
+  "scope": "Operational fixture tests only; no physical computation or acceptance evidence.",
+  "probes": {
+    "matchingArtifactAccepted": true,
+    "nonzeroResidualRejected": true,
+    "missingCensusRejected": true,
+    "changedPayloadRejected": true
+  }
+}

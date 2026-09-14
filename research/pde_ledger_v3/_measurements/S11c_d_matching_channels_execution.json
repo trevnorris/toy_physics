@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLISHED_PENDING_COMMIT",
+  "status": "COMPLETED_COMMITTED",
   "plan": "S11c_d_variable_profile_matching_plan.md",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02",
   "scope": "One supplied case, both complete physical-end channel bases and polarized cross-mode currents; no variable-profile interior solve yet.",
@@ -11,7 +11,7 @@
     "LEFT": true,
     "RIGHT": true
   },
-  "next": "Save and hash-verify the annex publication, commit, then assemble the reduced variable-profile operator.",
+  "next": "Construct and validate the full reduced-action source packet, then assemble its local and nonlocal numerical actions.",
   "observedUtc": "2026-09-14T23:41:48.974268+00:00",
   "implementationCommit": "0f5498ba",
   "active": {
@@ -171,5 +171,14 @@
       "sha256": "92e7750c02cfe95efef5ad74be7f01db16e8555ab5abba65a0946252f41d0bf6"
     },
     "scope": "One supplied case: both-end full candidate bases and cross-mode boundary currents. No interior solve, S-matrix, continuum re-expansion or global spectral coverage."
+  },
+  "publicationCommit": "3a5d3d25d0689816bfbe24c6cdf9904673635c3a",
+  "annexVerification": {
+    "commit": "3a5d3d25d0689816bfbe24c6cdf9904673635c3a",
+    "path": "scripts/out/S11c_d_matching_channels.out",
+    "bytes": 309046,
+    "sha256": "92e7750c02cfe95efef5ad74be7f01db16e8555ab5abba65a0946252f41d0bf6",
+    "isSymlink": true,
+    "annexKey": "MD5E-s309046--5776f0c5d65070224633a1b3d4c55b09.out"
   }
 }

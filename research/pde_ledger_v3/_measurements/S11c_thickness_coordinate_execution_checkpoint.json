@@ -15,7 +15,7 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "Both-end matching-channel data validated; annex checkpoint precedes reduced variable-profile operator assembly.",
+  "continuationState": "Both-end matching channels are committed and annex-verified at 3a5d3d25; reduced variable-profile operator assembly is next.",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
     "status": "DELETED",
@@ -202,5 +202,7 @@
   "normalizationReferenceCheckpoint": "S11c_d_end_normalization_reference_thickness_repair_checkpoint.json",
   "normalizationReferenceCommit": "9862156cc46a8aec10aff3d4a3935cbdf11c4684",
   "nextMatchingPlan": "S11c_d_variable_profile_matching_plan.md",
-  "matchingExecution": "S11c_d_matching_channels_execution.json"
+  "matchingExecution": "S11c_d_matching_channels_execution.json",
+  "matchingPublicationCommit": "3a5d3d25d0689816bfbe24c6cdf9904673635c3a",
+  "operatorAssemblyExecution": "S11c_d_reduced_action_source_execution.json"
 }

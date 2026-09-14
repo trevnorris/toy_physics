@@ -154,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Matching-channel data passed; commit/hash-verify its annex checkpoint, then continue reduced variable-profile operator assembly.",
+  "nextStage": "Matching channels are committed and annex-verified at 3a5d3d25. Continue reduced variable-profile operator assembly.",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -642,5 +642,7 @@
         "annexKey": "MD5E-s353511--a4c4d554c45f2bad15474dd5a0675f4c.out"
       }
     ]
-  }
+  },
+  "matchingPublicationCommit": "3a5d3d25d0689816bfbe24c6cdf9904673635c3a",
+  "operatorAssemblyExecution": "S11c_d_reduced_action_source_execution.json"
 }

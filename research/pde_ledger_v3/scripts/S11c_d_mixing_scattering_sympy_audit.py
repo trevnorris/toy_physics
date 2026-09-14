@@ -7257,6 +7257,29 @@ class EndResolventAudit(BulkContinuationAudit):
         return summary
 
 
+def save_reduced_action_cache(path, rows, payloads, branch_bindings, reduction,
+                              dimensions, specification, source_digests):
+    """Persist computed reduction operands and state, without changing them."""
+    path = path.resolve()
+    path.relative_to(ROOT.parents[1]/'_scratch/s11c')
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        raise ValueError('reduced action cache already exists')
+    plain_rows = {key: dict(value) for key, value in rows.items()}
+    state = dict(vars(reduction))
+    state['rows'] = plain_rows
+    packet = {'schema': 1, 'rows': plain_rows, 'payloads': payloads,
+              'branchBindings': branch_bindings, 'reductionState': state,
+              'dimensionState': dict(vars(dimensions)),
+              'inputSpecification': specification, 'sourceDigests': source_digests}
+    temporary = path.with_name(path.name+'.new')
+    with temporary.open('xb') as stream:
+        pickle.dump(packet, stream, protocol=5)
+        stream.flush()
+        os.fsync(stream.fileno())
+    temporary.replace(path)
+
+
 def run():
     global PHYSICAL_METADATA
     os.chdir(ROOT)
@@ -7270,6 +7293,8 @@ def run():
                         help='emit a reduction-only development checkpoint')
     parser.add_argument('--dev-reduction-cache', type=Path,
                         help='save imported operands for focused reconstruction checks')
+    parser.add_argument('--dev-reduced-action-cache', type=Path,
+                        help='save computed five-slot reduced rows and their live assembly state')
     channel_options = parser.add_mutually_exclusive_group()
     channel_options.add_argument('--channel-input-json',
                                  help='explicit unit_frame, parameters and independent w/m profile input')
@@ -7286,8 +7311,9 @@ def run():
     emit('IMPORT_FOLD', audit)
     emit('IMPORT_LOOKUPS', sorted(witness['lookups']))
     emit('IMPORT_CLOSURE', {k: v for k, v in closure.items() if k != 'resolved_imports'})
-    emit('BUILD_INPUT_DIGESTS', {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
-                               for p in BUILD_INPUT_PATHS})
+    source_digests = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+                      for p in BUILD_INPUT_PATHS}
+    emit('BUILD_INPUT_DIGESTS', source_digests)
     for row_key in CLOSED_KEYS:
         for case, payload in rows[row_key]['value']:
             if not selected(case):
@@ -7320,6 +7346,7 @@ def run():
              sp.Lt(sp.Integral(sp.Abs(localized, evaluate=False),
                                (reduction.xi, -sp.oo, sp.oo)), sp.oo, evaluate=False))
     reduced_rows = {}
+    reduced_payloads = {}
     reduced_branch_bindings = {}
     for row_key in CLOSED_KEYS:
         for case, payload in rows[row_key]['value']:
@@ -7376,6 +7403,7 @@ def run():
             physical('REDUCED_ACTION_ROWS_' + suffix, reduced, zero_dimensions=value_units)
             reconstruction.row(value, reduced, records, suffix, value_units, definitions)
             reduced_payload = reduction.payload(payload, reduced)
+            reduced_payloads[(row_key, case)] = reduced_payload
             reduced_branch_bindings[(row_key,case)] = tuple((eq.lhs,eq.rhs)
                 for eq in named(reduced_payload,'COMPUTED_BRANCH_BINDINGS'))
             physical('REDUCED_FIVE_SLOT_PAYLOAD_'+suffix, reduced_payload, operands=reduced, zero_dimensions=value_units)
@@ -7401,6 +7429,10 @@ def run():
     emit('REDUCED_DIMENSION_UNRESOLVED', unresolved)
     if dimensions.constraints or unresolved:
         raise ValueError('reduced dimensional analysis has surfaced unresolved constraints')
+    if options.dev_reduced_action_cache:
+        save_reduced_action_cache(options.dev_reduced_action_cache, rows, reduced_payloads,
+                                  reduced_branch_bindings, reduction, dimensions,
+                                  channel_input.specification if channel_input else None, source_digests)
     if options.dev_stop_after_reduction:
         emit('DEVELOPMENT_STOP', 'AFTER_REDUCTION')
         emit('RESOURCE_MEASUREMENTS', (time.monotonic()-started,

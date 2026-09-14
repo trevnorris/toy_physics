@@ -1,0 +1,16 @@
+{
+  "status": "PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914",
+  "plan": "S11c_d_variable_profile_matching_plan.md",
+  "planStep": 3,
+  "prerequisiteCommit": "3a5d3d25d0689816bfbe24c6cdf9904673635c3a",
+  "nativeConstructorAstJoin": true,
+  "physicalInputJoins": true,
+  "sourceSha256": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "0d0ef5da7136f8a2033bd0fb076c56523d9097f972748b652b93b8778adc5101",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754"
+  },
+  "scope": "One supplied case: native reduction, complete five-slot source storage and all five native probe-action columns. Numerical action assembly and integration remain subsequent work.",
+  "next": "Run one source materialization and validate saved-object/emission/source joins. Preserve operands before any runtime repair. Then implement local/nonlocal numerical action assembly and its independent action residuals.",
+  "watching": "Silent local completion/error wake-up; no model polling, recurring checks or overlapping heavy CAS."
+}

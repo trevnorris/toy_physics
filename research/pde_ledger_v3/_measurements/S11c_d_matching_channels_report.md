@@ -39,3 +39,6 @@ The next construction is the source-driven local/nonlocal operator assembly.
 There is no interior solve, complete S-matrix, continuum re-expansion or
 profile-frequency pole result yet. Existing exceptional-domain limits and c2
 operand debt remain.
+
+Publication is committed at `3a5d3d25`; the canonical 309,046-byte annex
+payload SHA-256 is `92e7750c02cfe95efef5ad74be7f01db16e8555ab5abba65a0946252f41d0bf6`.

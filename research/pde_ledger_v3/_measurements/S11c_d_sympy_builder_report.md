@@ -46,7 +46,9 @@ The [matching-channel construction](S11c_d_matching_channels_report.md) now
 is validated: all 36 candidates and 44 basis directions are retained, with two
 incoming and two outgoing directions per end. All cross-mode currents were
 evaluated; reconstruction residual norms are below 6.34e-16. The 500-tag packet
-and 2,763 metadata paths passed full replay. Reduced operator assembly is next.
+and 2,763 metadata paths passed full replay. The packet is committed and annex-verified at 3a5d3d25. Reduced operator
+assembly starts with a durable cache of the actual five-slot reduced rows and
+native probe actions; no interior solve is claimed for that source checkpoint.
 
 The complete two-ended variable-profile S-matrix, profile-frequency bound
 poles/residues/overlap, survival, flux bookkeeping, weak coefficients, section 5

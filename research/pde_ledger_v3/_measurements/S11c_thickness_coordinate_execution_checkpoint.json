@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T13:59:09.661237+00:00",
+  "observedUtc": "2026-09-14T14:40:12.362822+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,13 +15,13 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "active serial c1/c2/d regeneration after validated b checkpoint 1175b686",
+  "continuationState": "c2 producer complete; guard-only failure diagnosed and repaired; fresh validation continuation prepared",
   "recurringFollowup": {
     "id": "continue-s11c-d-repair-and-build",
     "status": "ACTIVE",
     "userApproved": true
   },
-  "scope": "b completed, validated, published and committed; c1 running in serial queue; fresh endpoint command plan prepared but unexecuted.",
+  "scope": "b/c1 validated and committed. Native c2 completed with artifact inventory passing. Actual c2 action/export validation awaits fresh guard restart; no native rerun needed.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_b",
     "startAt": "c1",
@@ -45,6 +45,10 @@
   },
   "continuationStderrBytes": 0,
   "c1ProducerManifest": "/tmp/s11c-thickness-coordinate-20260914/c1_full/manifest.json",
-  "c1ProducerCompleted": false,
-  "c1SourcePinsCurrentlyStable": true
+  "c1ProducerCompleted": true,
+  "c1SourcePinsCurrentlyStable": true,
+  "c1Commit": "847d47c6",
+  "c2ProducerManifest": "/tmp/s11c-thickness-coordinate-20260914/c2_full/manifest.json",
+  "c2ProducerCompleted": true,
+  "c2ProducerWallSeconds": 1874.0308460230008
 }

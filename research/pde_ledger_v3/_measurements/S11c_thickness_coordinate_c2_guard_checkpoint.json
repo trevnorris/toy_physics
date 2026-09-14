@@ -1,0 +1,49 @@
+{
+  "observedUtc": "2026-09-14T14:40:12.362822+00:00",
+  "diagnosis": {
+    "b": {
+      "changedValues": [
+        "slab_operator",
+        "slab_operator_term_origins"
+      ],
+      "addedKeys": [],
+      "removedKeys": [],
+      "dependencyResidualCount": 2439,
+      "dependencyNonzeroResiduals": {},
+      "oldGuard": true,
+      "valueGuard": false,
+      "sourceHashes": {
+        "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_b_exports.py": "b587abab38579416d221382669ccee5832c0cc1e3ca0fff4ec5c83832d5dff4c",
+        "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084"
+      }
+    },
+    "c1": {
+      "changedValues": [],
+      "addedKeys": [],
+      "removedKeys": [],
+      "dependencyResidualCount": 44,
+      "dependencyNonzeroResiduals": {},
+      "oldGuard": true,
+      "valueGuard": false,
+      "sourceHashes": {
+        "/tmp/s11c-thickness-coordinate-20260914/baseline/scripts/S11c_c1_exports.py": "d20eb2dc0140f08799c3e7c2101d5df0d20c8fba1738ffca93dcfa98b3473c1a",
+        "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc"
+      }
+    }
+  },
+  "guardSourceSha256": "553f88f57cdb5a4204ea07a9f7fc8025fdce69391606fc1da0ba09441fc5e9f7",
+  "executedGuardAst": "If(test=Subscript(value=Subscript(value=Name(id='checks', ctx=Load()), slice=Constant(value='OtherInputPreservationResidual'), ctx=Load()), slice=Constant(value='nonzero'), ctx=Load()), body=[Raise(exc=Call(func=Name(id='ValueError', ctx=Load()), args=[Constant(value='closure dependency changed; emitted')], keywords=[]))], orelse=[])",
+  "checks": {
+    "actualPreservationCensus": {
+      "nonzeroResidualScalars": 0,
+      "guardRejected": false
+    },
+    "oneNonzeroCensusProbe": {
+      "nonzeroResidualScalars": 1,
+      "guardRejected": true
+    }
+  },
+  "tracebackPath": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_b/c2_export_check.stderr",
+  "tracebackSha256": "206e74cf252d71d94a26ba02696445357cf5e06585a64d0326a3b383a8c00f26",
+  "scope": "Guard regression on the actual b/c1 preservation census and one explicit nonzero-count probe. The c2 physical export comparison stopped before its action and closure-delta checks."
+}

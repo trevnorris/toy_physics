@@ -204,3 +204,30 @@ its runner describes the supplied producer rather than the historical repair.
 Python compilation, CLI parsing and instrument-path checks pass. No fresh
 endpoint source, frequency or pairing result has yet been computed after this
 coordinate repair; the native queue remains the prerequisite.
+
+## c2 export-guard restart
+
+c1 completed in **515.16 seconds**, at **1,652,564 KiB** peak RSS. All 44
+exported values are unchanged, source/artifact checks pass, and its 90,722,854-
+byte transcript is annexed in checkpoint **847d47c6**. c2 then completed in
+**1874.03 seconds**, at **2,649,620 KiB**, with empty stderr, stable sources
+and a saved 530,883,300-byte native transcript. Its artifact inventory passes;
+only `s11cc2ClosedSlabOperator` changes among its 70 exported values.
+
+The focused c2 check stopped at its dependency guard. The emitted b/c1
+preservation data contain **2483 zero scalar differences**, but the guard
+iterated dictionary keys, so nonempty row names triggered it. The guard now
+uses the nonzero count computed from the emitted residual payload. The actual
+zero census is accepted and an explicit one-nonzero-count probe is rejected;
+see [guard checkpoint](S11c_thickness_coordinate_c2_guard_checkpoint.json).
+No native physics source or computed operand changed in this guard repair.
+
+Resume only validation in fresh `c2_checks_values` and
+`continuation_after_c2_native` directories. The controller's explicit completed-
+producer reuse checks successful exit, stable/current sources, every saved
+artifact and the actual current export before skipping the native run. The
+stage inventory still runs, followed by physical export checks, publication
+and a commit before d. Its plan-only run validated the completed c2 artifacts;
+Python compilation and whitespace checks pass. Physical c2 action/control and
+closure-delta results are still pending, and production c2/d outputs remain
+historical until validated publication. Preserve the failed guard attempt.

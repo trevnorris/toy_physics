@@ -177,7 +177,7 @@ def run():
             if key not in ('slab_operator','slab_operator_term_origins')}
     output('OtherInputPreservationResidual',dependency_checks)
     if any(old[stage].keys()!=new[stage].keys() for stage in new):raise ValueError('export key set changed; emitted')
-    if any(v for values in dependency_checks.values() for v in values):raise ValueError('closure dependency changed; emitted')
+    if checks['OtherInputPreservationResidual']['nonzero']:raise ValueError('closure dependency changed; emitted')
     if any(origin_checks.values()):raise ValueError('nonkinetic origin changed; emitted')
     historical_action=kinetic_action_from_source(old_control_source)
     native_action=kinetic_action_from_source(ROOT/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py')

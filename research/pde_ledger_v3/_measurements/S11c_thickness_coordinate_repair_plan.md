@@ -117,3 +117,13 @@ existing targets are rejected. Source or pairing discrepancies remain computed
 evidence to investigate, with complete operands emitted before repair where
 available. This plan is prepared, not executed. Full endpoint current/adjoint
 normalization and variable-profile matching follow those refreshed packets.
+
+
+After the c2 producer completed, its dependency guard was repaired to read the
+computed residual census rather than dictionary keys. Resume with
+`--start-at c2 --reuse-completed-producer c2 --check-directory-suffix values
+--state-directory /tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_native`.
+The controller verifies the saved native run before reuse and still executes
+all artifact/physical checks and publication gates. Never rerun the completed
+c2 producer merely to repair this checker. Current queue discovery continues
+through `active_continuation.json`.

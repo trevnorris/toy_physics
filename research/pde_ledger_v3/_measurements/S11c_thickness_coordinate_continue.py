@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 import subprocess
 import sys
 import time
@@ -30,9 +31,10 @@ def sha(path):
     return h.hexdigest()
 
 
-def plan(base):
+def plan(base,check_suffix=''):
     baseline=base/'baseline'
     py=sys.executable
+    def check_directory(stage):return base/(stage+'_checks'+('_'+check_suffix if check_suffix else ''))
     def native(stage):
         command=[py,M+PREFIX+'run_stage.py','--run-directory',str(base/(stage+'_full')),stage]
         if stage=='d':command+=['--','--case','ALL','--dev-symbol-cache',str(base/'d_full/symbols'),
@@ -41,15 +43,15 @@ def plan(base):
     def inventory(stage,publish=False):
         command=[py,M+PREFIX+'stage_inventory.py',stage,'--run-directory',str(base/(stage+'_full')),
                  '--baseline',str(baseline)]
-        if stage in ('b','c2') and publish:command+=['--physical-check',str(base/(stage+'_checks/checks.json'))]
+        if stage in ('b','c2') and publish:command+=['--physical-check',str(check_directory(stage)/'checks.json')]
         return command+(['--publish'] if publish else [])
     def export_check(stage):
         command=[py,M+PREFIX+stage+'_export_check.py','--baseline',str(baseline),
-                 '--run-directory',str(base/(stage+'_checks'))]
+                 '--run-directory',str(check_directory(stage))]
         if stage=='c2':command+=['--b-checkpoint',M+PREFIX+'b_export_checkpoint.json']
         return command
     def export_validate(stage):return [py,M+PREFIX+'b_export_validate.py','--stage',stage,
-        '--run-directory',str(base/(stage+'_checks')),'--transcript',str(base/(stage+'_checks.out')),'--publish']
+        '--run-directory',str(check_directory(stage)),'--transcript',str(check_directory(stage))+'.out','--publish']
     rows=[]
     for stage,title in (('b','Regenerate the kinetic-coordinate-correct b primaries'),
                         ('c1','Regenerate c1 against the corrected b export'),
@@ -57,7 +59,7 @@ def plan(base):
         steps=[] if stage=='b' else [(stage+'_producer',native(stage),None)]
         steps.append((stage+'_inventory',inventory(stage),None))
         if stage in ('b','c2'):
-            steps.extend([(stage+'_export_check',export_check(stage),str(base/(stage+'_checks.out'))),
+            steps.extend([(stage+'_export_check',export_check(stage),str(check_directory(stage))+'.out'),
                           (stage+'_export_validate',export_validate(stage),None)])
         steps.append((stage+'_publish',inventory(stage,True),None))
         script={'b':'brane_operator','c1':'bulk_closure','c2':'selfenergy_fold'}[stage]
@@ -114,9 +116,34 @@ def main():
     parser.add_argument('--plan-only',action='store_true')
     parser.add_argument('--start-at',choices=('b','c1','c2','d'),default='b')
     parser.add_argument('--state-directory',type=Path)
-    args=parser.parse_args();base=args.run_root.resolve();all_rows=plan(base)
+    parser.add_argument('--check-directory-suffix',default='')
+    parser.add_argument('--reuse-completed-producer',choices=('c1','c2'),action='append',default=[])
+    args=parser.parse_args();base=args.run_root.resolve()
+    if args.check_directory_suffix and not re.fullmatch('[a-z][a-z0-9_]*',args.check_directory_suffix):
+        raise ValueError('check-directory suffix must be a lowercase identifier')
+    all_rows=plan(base,args.check_directory_suffix)
     index=next(i for i,row in enumerate(all_rows) if row['stage']==args.start_at)
     predecessors,rows=all_rows[:index],all_rows[index:]
+    reused=[]
+    for stage in args.reuse_completed_producer:
+        matches=[row for row in rows if row['stage']==stage]
+        if len(matches)!=1 or stage in {v['stage'] for v in reused}:
+            raise ValueError('reuse must name a unique selected producer')
+        path=base/(stage+'_full/manifest.json');manifest=json.loads(path.read_text())
+        if manifest.get('exit_code')!=0 or manifest['source_hashes_before']!=manifest['source_hashes_after']:
+            raise ValueError('reuse requires a completed producer with stable sources')
+        if manifest['source_hashes_after']!={n:sha(ROOT/n) for n in manifest['source_hashes_after']}:
+            raise ValueError('completed producer source no longer matches')
+        for name,record in manifest['artifacts'].items():
+            artifact=path.parent/name
+            if sha(artifact)!=record['sha256'] or artifact.stat().st_size!=record['bytes']:
+                raise ValueError(('completed producer artifact mismatch',name))
+        export='S11c_'+stage+'_exports.py'
+        if sha(ROOT/'scripts'/export)!=manifest['artifacts'][export]['sha256']:
+            raise ValueError('current export differs from completed producer')
+        row=matches[0]
+        row['steps']=[step for step in row['steps'] if step[0]!=stage+'_producer']
+        reused.append({'stage':stage,'manifest':str(path),'manifestSha256':sha(path)})
     if args.plan_only:
         for row in rows:
             for _,command,_ in row['steps']:
@@ -145,6 +172,7 @@ def main():
     pins={p:sha(ROOT/p) for p in sorted(files)}
     (state/'source_pins.json').write_text(json.dumps(pins,indent=2)+'\n')
     (state/'completed_predecessors.json').write_text(json.dumps(completed,indent=2)+'\n')
+    (state/'reused_producers.json').write_text(json.dumps(reused,indent=2)+'\n')
     pointer=base/'active_continuation.json'
     temporary=base/'active_continuation.json.new'
     temporary.write_text(json.dumps({'stateDirectory':str(state),'startAt':args.start_at,

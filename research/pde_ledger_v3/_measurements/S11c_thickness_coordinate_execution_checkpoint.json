@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T19:24:13.746282+00:00",
+  "observedUtc": "2026-09-14T20:09:08.997024+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,7 +15,7 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "RIGHT normalization committed at 0da0f746; fresh LEFT normalization running after preparation 8ca2f3b0",
+  "continuationState": "LEFT constructor completed; validate/checkpoint it, then run the queued four-issue Mathematica audit before further construction.",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
     "status": "DELETED",
@@ -25,7 +25,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "Regenerated b/c1/c2/d and endpoint prerequisites remain complete. RIGHT normalization has validated discarded-grade accounting; LEFT is computing and REFERENCE follows validation. Full scattering remains program work.",
+  "scope": "Prior repaired SymPy producers and RIGHT normalization remain accepted within their recorded domains. LEFT is constructed but unvalidated. Mathematica applicability of the four upstream repairs remains unaudited.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -198,6 +198,11 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stderr",
     "startedUtc": "2026-09-14T19:22:51.598436+00:00",
     "childPid": 1828879,
-    "status": "running"
-  }
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 178.1779149742797,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-14T19:25:49.776432+00:00"
+  },
+  "queuedMathematicaAudit": "S11c_wolfram_repair_audit_queue.json"
 }

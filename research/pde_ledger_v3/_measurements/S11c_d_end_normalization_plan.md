@@ -5,6 +5,14 @@ The user authorized continuing and committing each substantive step on
 step 6 of the thickness-coordinate repair plan and the existing native
 `ModalCurrentSubspaces` and `AdjointCurrentMap` constructions.
 
+Queue update, user-approved 2026-09-14: finish validation and checkpointing of
+LEFT, whose constructor has completed, then perform the
+[Mathematica audit of four upstream repairs](S11c_wolfram_repair_audit_plan.md).
+That audit now precedes REFERENCE construction and further scattering work.
+The original normalization sequence below resumes after the audit disposition
+and any required user-approved repair. The license allows at most two
+Mathematica scripts across sessions; heavy CAS jobs remain serial.
+
 Prerequisites completed: all eight endpoint stages are validated, published
 and committed through 432db7e7. RIGHT pairing is committed at 7c2001b6, LEFT
 at 86e61755, and REFERENCE at 432db7e7. Each has 802 retained residual scalars,

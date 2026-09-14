@@ -13,8 +13,13 @@ exact finite-contrast balance or a higher-order continuum prediction.
 The thickness-coordinate repair and native b/c1/c2/d regeneration are committed
 through 8b2e3cf2. All eight endpoint source/frequency/pairing prerequisites remain
 committed through 432db7e7; RIGHT, LEFT and REFERENCE each have 802 zero retained
-pairing residual scalars. RIGHT is committed at 0da0f746. LEFT normalization is now running; REFERENCE
-follows its validation.
+pairing residual scalars. RIGHT is committed at 0da0f746. LEFT construction
+has completed successfully; validation and publication are pending.
+After the LEFT checkpoint, the user-approved
+[Mathematica audit of four upstream repairs](S11c_wolfram_repair_audit_plan.md)
+now precedes REFERENCE and further scattering. This focused audit authorization
+is separate from the original SymPy-only lane. Two concurrent Mathematica
+scripts is the license ceiling; heavy CAS jobs remain serial.
 See the [normalization report](S11c_d_end_normalization_report.md) and
 [plan](S11c_d_end_normalization_plan.md) for complete evidence and boundaries.
 

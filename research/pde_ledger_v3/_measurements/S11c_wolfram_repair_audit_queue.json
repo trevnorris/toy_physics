@@ -1,0 +1,88 @@
+{
+  "kind": "MANUAL_REPOSITORY_WORK_QUEUE",
+  "status": "QUEUED",
+  "recordedUtc": "2026-09-14T20:09:08.997024+00:00",
+  "authorization": "User approved queuing the four-issue Mathematica audit and specified a maximum of two concurrent Mathematica scripts.",
+  "plan": "_measurements/S11c_wolfram_repair_audit_plan.md",
+  "planSha256": "82a0d98dcc593cbdd228d8652d5b8ed2c5982427b7cf4c01b267eff8594c3438",
+  "after": [
+    "Validate, publish and commit the completed LEFT normalization."
+  ],
+  "before": [
+    "REFERENCE normalization construction",
+    "Further S11c-d variable-profile scattering construction"
+  ],
+  "limits": {
+    "maxConcurrentMathematicaScripts": 2,
+    "countOtherSessions": true,
+    "defaultConcurrentAuditScripts": 1,
+    "maxConcurrentHeavyCasJobsAcrossEngines": 1,
+    "internalParallelKernelsMustRespectLicenseLimit": true
+  },
+  "scheduling": "No automation, timer, scheduled task or automatic restart.",
+  "issues": [
+    {
+      "id": "conservative_inertia_sign",
+      "sympyRepairCommit": "a74da30a",
+      "status": "NOT_YET_AUDITED"
+    },
+    {
+      "id": "mechanical_load_normalization",
+      "sympyRepairCommit": "c643112a",
+      "status": "NOT_YET_AUDITED"
+    },
+    {
+      "id": "reference_physical_pressure_trace",
+      "sympyRepairCommit": "a05b05e3",
+      "status": "NOT_YET_AUDITED"
+    },
+    {
+      "id": "thickness_kinetic_coordinate",
+      "sympyRepairCommit": "3b52afcb",
+      "status": "NOT_YET_AUDITED"
+    }
+  ],
+  "dispositions": [
+    "PRESENT",
+    "ABSENT_ON_AUDITED_DOMAIN",
+    "UNRESOLVED"
+  ],
+  "repairBoundary": "Report any confirmed new upstream defect and its repair/regeneration plan; stop for user approval before changing the producer.",
+  "currentWork": {
+    "leftConstructor": {
+      "stage": "left_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_end_normalization_check.py",
+        "--manifest",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json",
+        "--input",
+        "_measurements/S11c_d_channel_preflight_input.json",
+        "--pairing-checkpoint",
+        "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json",
+        "--source-checkpoint",
+        "_measurements/S11c_d_end_current_source_left_thickness_repair_checkpoint.json",
+        "--frequency-checkpoint",
+        "_measurements/S11c_d_end_frequency_left_thickness_repair_checkpoint.json",
+        "--end",
+        "LEFT",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left_construct.stderr",
+      "startedUtc": "2026-09-14T19:22:51.598436+00:00",
+      "childPid": 1828879,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 178.1779149742797,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-14T19:25:49.776432+00:00"
+    },
+    "leftValidation": "PENDING"
+  },
+  "evidenceRoot": "/var/projects/toy_physics/_scratch/s11c",
+  "publicationRoot": "mathematica/out",
+  "storage": "Published .out files through DataLad/git-annex; ordinary sources, reports and inventories through Git."
+}
